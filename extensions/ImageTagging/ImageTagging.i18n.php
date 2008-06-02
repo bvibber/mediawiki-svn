@@ -118,6 +118,28 @@ $messages['cs'] = array(
 	'imagetagging-taggedimages-displaying' => 'Zobrazuje se $1 - $2 z $3 obrázků „$4”',
 );
 
+/** German (Deutsch)
+ * @author DaSch
+ */
+$messages['de'] = array(
+	'taggedimages'                      => 'Bilder mit Tags',
+	'imagetagging-addimagetag'          => 'Tags hinzufügen',
+	'imagetagging-article'              => 'Seite:',
+	'imagetagging-imghistory'           => 'Versionen',
+	'imagetagging-images'               => 'Bild',
+	'imagetagging-log-tagged'           => 'Bild [[$1|$2]] wurde von $4 mit [[$3]] getagged',
+	'imagetagging-new'                  => '<sup><span style="color:red">Neu!</span></sup>',
+	'imagetagging-removetag'            => 'Tag entfernen',
+	'imagetagging-done-button'          => 'Tagging erledigt',
+	'imagetagging-tagcancel-button'     => 'Abbrechen',
+	'imagetagging-tagging-instructions' => 'Klick auf Personen oder Dinge in dem Bild um sie mit einem Tag zu versehen.',
+	'imagetagging-addingtag'            => 'Füge Tag hinzu…',
+	'imagetagging-removingtag'          => 'Entferne Tag…',
+	'imagetagging-addtagsuccess'        => 'Hinzugefügte Tags.',
+	'imagetagging-removetagsuccess'     => 'Entfernte Tags.',
+	'imagetagging-oneuniquetagmessage'  => 'Dieses Bild hat bereits einen Tag mit diesem Namen.',
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */

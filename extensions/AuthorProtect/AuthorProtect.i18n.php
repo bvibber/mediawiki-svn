@@ -84,6 +84,25 @@ $messages['bg'] = array(
 	'authorprotect-failure'   => 'Защитата беше неуспешна',
 );
 
+/** Catalan (Català)
+ * @author Jordi Roqué
+ */
+$messages['ca'] = array(
+	'authorprotect'            => 'Protegir pàgina de no-autors',
+	'authorprotect-desc'       => "Permet a l'autor d'una pàgina protegir-la d'altres usuaris",
+	'authorprotect-notauthor'  => "No sou l'autor d'aquesta pàgina",
+	'authorprotect-confirm'    => 'Canvi dels nivells de protecció',
+	'authorprotect-edit'       => "Restricció d'edició als autors",
+	'authorprotect-move'       => 'Restricció de reanomenament als autors',
+	'authorprotect-expiry'     => 'Data de caducitat',
+	'authorprotect-reason'     => 'Raó',
+	'authorprotect-intro'      => 'Useu aquesta pantalla per a blocar aquesta pàgina als no-autors',
+	'authorprotect-success'    => 'Protegida!',
+	'authorprotect-failure'    => 'Desprotegida!',
+	'protect-level-author'     => 'Protecció dels no-autors',
+	'restriction-level-author' => "Restringida a l'autor",
+);
+
 /** Czech (Česky)
  * @author Matěj Grabovský
  */
@@ -234,6 +253,25 @@ $messages['hi'] = array(
 	'restriction-level-author' => 'लेखक-सुरक्षित',
 );
 
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
+$messages['hsb'] = array(
+	'authorprotect'            => 'Stronu přećiwo wužiwarjam škitać, kotřiž awtorojo njejsu',
+	'authorprotect-desc'       => 'Zmóžnja awtorej strony ju přećiwo druhim wužiwarjam škitać',
+	'authorprotect-notauthor'  => 'Njejsy awtor tuteje strony',
+	'authorprotect-confirm'    => 'Škitowe schodźenki změnić',
+	'authorprotect-edit'       => 'Wobdźěłanje na awtorow wobmjezować',
+	'authorprotect-move'       => 'Přesunjenje na awtorow wobmjezować',
+	'authorprotect-expiry'     => 'Čas spadnjenja',
+	'authorprotect-reason'     => 'Přičina',
+	'authorprotect-intro'      => 'Wužij tutón formular, zo by tutu stronu přećiwo wužiwarjam škitał, kotřiz awtorojo njejsu',
+	'authorprotect-success'    => 'Škitanje je so poradźiło!',
+	'authorprotect-failure'    => 'Škitanje njeje so poradźiło!',
+	'protect-level-author'     => 'Přećiwo wužiwarjam škitać, kotřiž awtorojo njejsu',
+	'restriction-level-author' => 'Za awtorow škitane',
+);
+
 /** Ido (Ido)
  * @author Malafaya
  */
@@ -267,7 +305,7 @@ $messages['jv'] = array(
 	'authorprotect'            => 'Reksa kaca saka non-pangripta',
 	'authorprotect-desc'       => 'Marengaké pangripta sawijining kaca ngreksa saka panganggo liyané',
 	'authorprotect-notauthor'  => 'Panjenengan dudu pangripta kaca iki',
-	'authorprotect-confirm'    => 'Reksa',
+	'authorprotect-confirm'    => 'Ngowahi tahap pangreksan',
 	'authorprotect-edit'       => 'Watesana panyuntingan kanggo para pangripta waé',
 	'authorprotect-move'       => 'Watesana pangalihan kaca kanggo para pangripta',
 	'authorprotect-expiry'     => 'Wektu kadaluwarsa',
@@ -460,12 +498,13 @@ $messages['ps'] = array(
 
 /** Portuguese (Português)
  * @author Malafaya
+ * @author 555
  */
 $messages['pt'] = array(
 	'authorprotect'            => 'Proteger página contra não-autores',
 	'authorprotect-desc'       => 'Permite ao autor de uma página protegê-la de outros utilizadores',
 	'authorprotect-notauthor'  => 'Você não é o autor desta página',
-	'authorprotect-confirm'    => 'Proteger',
+	'authorprotect-confirm'    => 'Alterar níveis de protecção',
 	'authorprotect-edit'       => 'Restringir edição a autores',
 	'authorprotect-move'       => 'Restringir mover da página a autores',
 	'authorprotect-expiry'     => 'Tempo de expiração',
@@ -534,6 +573,13 @@ $messages['stq'] = array(
 	'restriction-level-author' => 'Autor-schutsed',
 );
 
+/** Sundanese (Basa Sunda)
+ * @author Irwangatot
+ */
+$messages['su'] = array(
+	'authorprotect-reason' => 'Alesan',
+);
+
 /** Swedish (Svenska)
  * @author Lejonel
  * @author M.M.S.
@@ -586,7 +632,19 @@ $messages['uk'] = array(
  * @author Candalua
  */
 $messages['vec'] = array(
-	'authorprotect-desc' => "Permete a l'autor de na pagina de protègiarla da i altri utenti",
+	'authorprotect'            => 'Protèzi la pagina dai non-autori',
+	'authorprotect-desc'       => "Permete a l'autor de na pagina de protègiarla da i altri utenti",
+	'authorprotect-notauthor'  => "No te sì mìa l'autor de sta pagina",
+	'authorprotect-confirm'    => 'Canbia livèi de protession',
+	'authorprotect-edit'       => 'Ristrenzi le modifiche ai soli autori',
+	'authorprotect-move'       => 'Ristrenzi i spostamenti ai soli autori',
+	'authorprotect-expiry'     => 'Scadensa',
+	'authorprotect-reason'     => 'Motivo',
+	'authorprotect-intro'      => 'Dòpara sto modulo par blocar sta pagina par i non-autori',
+	'authorprotect-success'    => 'Proteto con sucesso!',
+	'authorprotect-failure'    => 'Protession mìa riussìa',
+	'protect-level-author'     => 'Protèzi dai non-autori',
+	'restriction-level-author' => "Proteto da l'autor",
 );
 
 /** Vietnamese (Tiếng Việt)

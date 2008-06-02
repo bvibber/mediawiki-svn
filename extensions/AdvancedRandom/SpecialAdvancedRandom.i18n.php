@@ -206,6 +206,13 @@ $messages['mr'] = array(
 	'advancedrandom-desc' => 'असे एक अविशिष्ट पान मिळवा की ज्याचे चर्चा अथवा विषयपान दिलेल्या पानाशी जोडलेले आहे, जसे की अविशिष्ट विशेष लेख मिळविण्यासाठी [[Special:AdvancedRandom/Template:Featured/Talk]] हे वापरता येईल अथवा अविशिष्ट जीएफडीएल (GFDL) संचिका मिळविण्यासाठी [[Special:AdvancedRandom/Template:GFDL/Image]] हे वापरता येईल',
 );
 
+/** Low German (Plattdüütsch)
+ * @author Slomox
+ */
+$messages['nds'] = array(
+	'advancedrandom' => 'Tofällige Sied (verbetert)',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

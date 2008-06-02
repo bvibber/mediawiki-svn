@@ -711,6 +711,15 @@ $messages['mr'] = array(
 	'changeauthor-logpagename'          => 'लेखक बदल सूची',
 );
 
+/** Low German (Plattdüütsch)
+ * @author Slomox
+ */
+$messages['nds'] = array(
+	'changeauthor-pagenameform-go' => 'Los',
+	'changeauthor-comment'         => 'Kommentar:',
+	'changeauthor-nosuchuser'      => 'Gifft keen Bruker „$1“.',
+);
+
 /** Dutch (Nederlands)
  * @author SPQRobin
  * @author Siebrand

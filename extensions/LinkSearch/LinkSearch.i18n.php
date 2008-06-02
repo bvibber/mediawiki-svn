@@ -948,10 +948,11 @@ $messages['stq'] = array(
 
 /** Sundanese (Basa Sunda)
  * @author Kandar
+ * @author Irwangatot
  */
 $messages['su'] = array(
 	'linksearch'       => 'Sungsi tumbu ramat',
-	'linksearch-desc'  => '[[Husus:Sungsitumbu|Sungsi kaca nu ngandung tumbu kaluar]] luyu jeung pola husus',
+	'linksearch-desc'  => '[[Special:Linksearch|Sungsi kaca nu ngandung tumbu kaluar]] luyu jeung pola husus',
 	'linksearch-pat'   => 'Pola sungsi:',
 	'linksearch-ns'    => 'Spasi ngaran:',
 	'linksearch-ok'    => 'Sungsi',

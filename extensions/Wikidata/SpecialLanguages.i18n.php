@@ -496,6 +496,13 @@ $wdMessages['br'] = array(
 	'ow_db_consistency_not_found'           => "<h2>Fazi</h2>Evit doare eo brein an diaz titouroù, n'hall ket wikidata kavout roadennoù reizh liammet ouzh ar ster termenet-mañ (ID). Marteze eo bet kollet. Kit e darempred gant oberiataer pe merer ar servijer.",
 );
 
+/** Catalan (Català)
+ * @author Jordi Roqué
+ */
+$wdMessages['ca'] = array(
+	'ow_Language' => 'Idioma',
+);
+
 /** Czech (Česky)
  * @author Matěj Grabovský
  */
@@ -575,6 +582,13 @@ Operace kopírování se neuskutečnila.',
 Možná jste se snažili na tuto stránku přistupovat přímo. Běžně se sem nemůžete dostat.',
 	'ow_db_consistency_not_found'           => '<h2>Chyba</h2>
 Nastal problém s konzistencí databáze. Wikidata nemůže najít platné údaje spojené s tímto ID definovaného významu. Je možné, že jsou ztracené. Prosím kontaktujte správce serveru.',
+);
+
+/** Church Slavic (Словѣньскъ)
+ * @author ОйЛ
+ */
+$wdMessages['cu'] = array(
+	'ow_LinkAttributeValues' => 'съвѧ́ꙁи',
 );
 
 /** Danish (Dansk)
@@ -1040,7 +1054,7 @@ $wdMessages['gl'] = array(
 	'ow_dm_not_present'                => 'non introducido',
 	'ow_will_insert'                   => 'Insertará o seguinte:',
 	'ow_contents_of_mapping'           => 'Contidos do trazado dun mapa',
-	'ow_available_contexts'            => 'Contextos disponíbeis',
+	'ow_available_contexts'            => 'Contextos dispoñíbeis',
 	'ow_add_concept_link'              => 'Engadir ligazón a outros conceptos',
 	'ow_AlternativeDefinition'         => 'Definición alternativa',
 	'ow_AlternativeDefinitions'        => 'Definicións alternativas',
@@ -2983,6 +2997,13 @@ Kontaktier dän Serveradminstrator.',
 	'ow_please_proved_dc2'                  => 'Dät lät, as wan an dien Iengoawe failt "?dc2=<something>" (dc2=dataset context 2, dataset to copy TO) <br />
 Kontaktier dän Serveradminstrator.',
 	'ow_copy_successful'                    => '<h2>Kopierjen mäd Ärfoulch</h2>Dien Doaten schiene mäd Ärfoulch kopierd wuuden tou weesen. Ferjät nit noch moal tou wröigjen uum sichertougungen!',
+);
+
+/** Sundanese (Basa Sunda)
+ * @author Irwangatot
+ */
+$wdMessages['su'] = array(
+	'ow_save' => 'Simpen',
 );
 
 /** Swedish (Svenska)

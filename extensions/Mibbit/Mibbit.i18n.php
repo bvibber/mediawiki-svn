@@ -270,6 +270,19 @@ Anonymným používateľom sa meno vygeneruje automaticky, ale je možné ho zme
 	'right-mibbit'  => 'Používať Mibbit chat',
 );
 
+/** Sundanese (Basa Sunda)
+ * @author Irwangatot
+ */
+$messages['su'] = array(
+	'mibbit'        => 'Ngobrol make Mibbit',
+	'mibbit-desc'   => 'nambahan hiji [[Special:Mibbit|kaca husus]] anu dipaké pikeun chat kalawan téla jeung pamaké wiki séjén.',
+	'mibbit-header' => "Kaca husus ieu ngawidian anjeun pikeun ''kolaborasi'' kalawan téla jeung pamaké wiki séjén.
+Pikeun nyambung ,ukur neken tombol \"Connect\".
+Lamun anjeun asup log mangka ngaran samaran anjeun baris kacantum.
+pamaké anon baris di béré sacara otomatis, tapi éta bisa dirobah.",
+	'right-mibbit'  => 'Kaci ngagunakeun Mibbit chat',
+);
+
 /** Swedish (Svenska)
  * @author Lejonel
  * @author M.M.S.

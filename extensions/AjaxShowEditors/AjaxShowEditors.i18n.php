@@ -468,6 +468,18 @@ $messages['mr'] = array(
 	'ajax-se-usernotfound'     => 'त्रूटी:सदस्य मिळाला नाही',
 );
 
+/** Low German (Plattdüütsch)
+ * @author Slomox
+ */
+$messages['nds'] = array(
+	'ajax-se-title'            => 'Warrt jüst ännert vun:',
+	'ajax-se-pending'          => 'tööv op aktuell maken… (klick op dissen Kassen oder fang dat ännern an)',
+	'ajax-se-idling'           => '(vör $1 s)',
+	'ajax-se-pagedoesnotexist' => 'Sied gifft dat nich',
+	'ajax-se-userinvalid'      => 'FEHLER: ungülligen Bruker',
+	'ajax-se-usernotfound'     => 'FEHLER: Bruker nich funnen',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

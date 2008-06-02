@@ -180,6 +180,13 @@ $messages['mr'] = array(
 	'contributionseditcount-desc' => '[[Special:Contributions]] वर संपादन संख्या दर्शविते',
 );
 
+/** Low German (Plattdüütsch)
+ * @author Slomox
+ */
+$messages['nds'] = array(
+	'contributionseditcount' => 'Disse Bruker hett $1 Ännern.',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

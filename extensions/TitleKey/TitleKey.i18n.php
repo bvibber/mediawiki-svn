@@ -35,6 +35,13 @@ $messages['dsb'] = array(
 	'titlekey-desc' => 'Proces w slězynje za naraźenje pytanja za titlami',
 );
 
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
+$messages['eo'] = array(
+	'titlekey-desc' => 'Etendilo por serĉosugestoj laŭ titola prefikso',
+);
+
 /** French (Français)
  * @author Grondin
  */
@@ -145,6 +152,13 @@ $messages['sk'] = array(
  */
 $messages['sv'] = array(
 	'titlekey-desc' => 'Bakstycke för sökning efter titelprefix',
+);
+
+/** Vèneto (Vèneto)
+ * @author Candalua
+ */
+$messages['vec'] = array(
+	'titlekey-desc' => 'Motor de sugerimento de riçerca par prefissi de titolo',
 );
 
 /** Vietnamese (Tiếng Việt)

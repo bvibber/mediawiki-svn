@@ -50,3 +50,34 @@ $messages['es'] = array(
 	'piwik-countries'  => 'Países',
 	'piwik-browsers'   => 'Navegadores',
 );
+
+/** Galician (Galego)
+ * @author Toliño
+ */
+$messages['gl'] = array(
+	'piwik-lastvisits' => 'Últimas visitas',
+	'piwik-countries'  => 'Países',
+	'piwik-browsers'   => 'Navegadores',
+);
+
+/** Dutch (Nederlands)
+ * @author SPQRobin
+ * @author Siebrand
+ */
+$messages['nl'] = array(
+	'piwik-desc'       => "Voegt het Piwik-script toe aan pagina's in MediaWiki voor tracking en voegt [[Special:Piwik|een aantal statistieken]] toe",
+	'piwik-lastvisits' => 'Meest recente bezoeken',
+	'piwik-countries'  => 'Landen',
+	'piwik-browsers'   => 'Browsers',
+);
+
+/** Swedish (Svenska)
+ * @author Lejonel
+ */
+$messages['sv'] = array(
+	'piwik-desc'       => 'Lägger till Piwik-script för spårning i MediaWiki och visar [[Special:Piwiki|lite statistik]]',
+	'piwik-lastvisits' => 'Senaste besök',
+	'piwik-countries'  => 'Länder',
+	'piwik-browsers'   => 'Webbläsare',
+);
+

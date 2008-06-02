@@ -299,7 +299,7 @@ $messages['cs'] = array(
 	'ogg-play-video'          => 'Přehrát video',
 	'ogg-play-sound'          => 'Přehrát zvuk',
 	'ogg-no-player'           => 'Váš systém zřejmě neobsahuje žádný podporovaný přehrávač. <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">Váš systém zřejmě neobsahuje žádný podporovaný přehrávač. </a>.',
-	'ogg-no-xiphqt'           => 'Nemáte doplněk XiphQT pro QuickTime. QuickTime nemůže přehrávat soubory ogg bez tohoto doplňku. <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">Stáhněte XiphQT</a> nebo vyberte jiný přehrávač.',
+	'ogg-no-xiphqt'           => 'Nemáte rozšíření XiphQT pro QuickTime. QuickTime nemůže přehrávat soubory ogg bez tohoto rozšíření. <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">Stáhněte XiphQT</a> nebo vyberte jiný přehrávač.',
 	'ogg-player-videoElement' => 'element &lt;video&gt;',
 	'ogg-player-oggPlugin'    => 'Zásuvný modul Ogg',
 	'ogg-player-thumbnail'    => 'Pouze snímek náhledu',
@@ -1874,6 +1874,7 @@ $messages['tg-cyrl'] = array(
  * @author Erkan Yilmaz
  * @author Srhat
  * @author Mach
+ * @author Runningfridgesrule
  */
 $messages['tr'] = array(
 	'ogg-short-audio'       => 'Ogg $1 ses dosyası, $2',
@@ -1890,6 +1891,7 @@ $messages['tr'] = array(
 	'ogg-play-video'        => 'Video filmini oynat',
 	'ogg-play-sound'        => 'Sesi oynat',
 	'ogg-player-oggPlugin'  => 'Ogg eklentisi',
+	'ogg-player-thumbnail'  => 'Henüz sadece resimdir',
 	'ogg-player-soundthumb' => 'Oynatıcı yok',
 	'ogg-player-selected'   => '(seçilmiş)',
 	'ogg-more'              => 'Daha...',

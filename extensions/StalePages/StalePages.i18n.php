@@ -123,7 +123,8 @@ $messages['ml'] = array(
  * @author Kaustubh
  */
 $messages['mr'] = array(
-	'stalepages' => 'शिळी पाने',
+	'stalepages'         => 'शिळी पाने',
+	'stalepages-summary' => 'गेल्या $1 दिवसांत संपादन न झालेल्या पानांची यादी खाली दिलेली आहे.',
 );
 
 /** Low German (Plattdüütsch)

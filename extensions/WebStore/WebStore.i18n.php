@@ -527,9 +527,38 @@ $messages['ml'] = array(
  * @author Mahitgar
  */
 $messages['mr'] = array(
+	'inplace_access_denied'            => 'ही सेवा क्लायंट आयपीने थांबविलेली आहे.',
+	'inplace_scaler_no_temp'           => 'योग्य तात्पुरती डिरेक्टरी नाही.
+$wgLocalTmpDirectory ची किंमत योग्य अशा डिरेक्टरीने बदला.',
 	'inplace_scaler_not_enough_params' => 'पुरेसे परमीटर्स नाहीत.',
+	'inplace_scaler_invalid_image'     => 'चुकीचे चित्र, आकार निश्चित करता आलेला नाही.',
+	'webstore_access'                  => 'ही सेवा क्लायंट आयपीने थांबविलेली आहे.',
+	'webstore_path_invalid'            => 'संचिकानाव चुकीचे होते.',
+	'webstore_dest_open'               => 'लक्ष्य संचिका उघडू शकत नाही "$1".',
+	'webstore_dest_lock'               => 'लक्ष्य संचिकेला कुलुप लावता आलेले नाही "$1".',
+	'webstore_dest_mkdir'              => 'लक्ष्य डिरेक्टरी तयार करू शकलेलो नाही "$1".',
+	'webstore_archive_lock'            => 'आर्चिव्ह संचिकेला कुलुप लावता आलेले नाही "$1".',
+	'webstore_archive_mkdir'           => 'आर्चिव्ह डिरेक्टरी तयार करता आलेली नाही "$1".',
+	'webstore_src_open'                => 'स्रोत संचिका उघडता आलेली नाही "$1".',
+	'webstore_src_close'               => 'स्रोत संचिका बंद करण्यामध्ये त्रुटी "$1".',
+	'webstore_src_delete'              => 'स्रोत संचिका वगळण्यामध्ये त्रुटी "$1".',
+	'webstore_rename'                  => 'संचिका "$1" चे नाव "$2" ला बदलण्यामध्ये त्रुटी.',
+	'webstore_lock_open'               => 'कुलुपबंद संचिका "$1" उघडण्यामध्ये त्रुटी.',
+	'webstore_lock_close'              => 'कुलुपबंद संचिका "$1" बंद करण्यामध्ये त्रुटी.',
+	'webstore_dest_exists'             => 'त्रुटी, लक्ष्य डिरेक्टरी "$1" अगोदरच अस्तित्वात आहे.',
+	'webstore_temp_open'               => 'तात्पुरती संचिका "$1" उघडण्यामध्ये त्रुटी.',
+	'webstore_temp_copy'               => 'तात्पुरती संचिका "$1" ची प्रत "$2" मध्ये करण्यात त्रुटी.',
+	'webstore_temp_close'              => 'तात्पुरती संचिका "$1" बंद करण्यामध्ये त्रुटी.',
+	'webstore_temp_lock'               => 'तात्पुरती संचिका "$1" ला कुलुप लावण्यात त्रुटी.',
 	'webstore_no_file'                 => 'कोणतीही संचिका चढवली नाही',
+	'webstore_invalid_zone'            => 'चुकीचा झोन "$1".',
+	'webstore_no_deleted'              => 'वगळलेल्या संचिकांसाठी आर्चिव्ह डिरेक्टरी सांगितलेली नाही.',
+	'webstore_curl'                    => ' cURL मध्ये त्रुटी: $1',
 	'webstore_404'                     => 'संचिका सापडली नाही.',
+	'webstore_php_warning'             => 'PHP इशारा: $1',
+	'webstore_metadata_not_found'      => 'संचिका सापडली नाही: $1',
+	'webstore_no_response'             => 'सर्व्हरकडून उत्तर नाही',
+	'webstore_php_error'               => 'PHP त्रुट्या आलेल्या आहेत:',
 );
 
 /** Dutch (Nederlands)

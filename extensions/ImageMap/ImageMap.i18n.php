@@ -201,7 +201,10 @@ $messages['el'] = array(
  * @author Yekrats
  */
 $messages['eo'] = array(
-	'imagemap_description' => 'Pri ĉi tiu bildo',
+	'imagemap_desc'          => 'Permesas klientflankajn klakeblajn bildmapojn uzante etikedon <tt><nowiki><imagemap></nowiki></tt>',
+	'imagemap_invalid_image' => '&lt;imagemap&gt;: bildo estas aŭ nevalida aŭ neekzista',
+	'imagemap_invalid_title' => '&lt;imagemap&gt;: nevalida titolo en ligilo ĉe linio $1',
+	'imagemap_description'   => 'Pri ĉi tiu bildo',
 );
 
 /** Basque (Euskara)

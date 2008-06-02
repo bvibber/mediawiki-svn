@@ -283,12 +283,33 @@ $messages['ml'] = array(
  * @author Mahitgar
  */
 $messages['mr'] = array(
-	'spamregex'                 => 'स्पॅमरेजएक्स',
-	'spamregex-log-2'           => '$1वर',
-	'spamregex-unblock-success' => 'अनब्लॉक यशस्वी',
-	'spamregex-block-success'   => 'ब्लॉक यशस्वी',
-	'spamregex-text'            => '(मजकूर)',
-	'spamregex-summary-log'     => 'आढावा',
+	'spamregex'                      => 'स्पॅमरेजएक्स',
+	'spamregex-desc'                 => 'संपादित पानांमधील नको असलेल्या नोंदी रेग्युलर एक्स्प्रेशन आधारित प्रणाली वापरून [[Special:Spamregex|वेगळ्या करा]].',
+	'spamregex_summary'              => 'या पानाच्या सारांशामध्ये हा मजकूर सापडला.',
+	'spamregex-intro'                => 'एखाद्या पानाच्या मजकूरात काही फ्रेजेस जतन होण्यापासून पूर्णपणे थांबविण्यासाठी ह्या अर्जाचा वापर करा.
+जर मजकूरा मध्ये दिलेले एक्स्प्रेशन आले तर बदल जतन होणार नाहीत, व जतन करु इच्छिणार्‍या सदस्याला कारण दर्शविले जाईल.
+काळजी घ्या, एक्स्प्रेशन्स खूप छोटे किंवा नेहमीच्या वापरातले नकोत.',
+	'spamregex-page-title'           => 'स्पॅम रेजएक्स नको असलेल्या एक्स्प्रेशन्स ब्लॉक',
+	'spamregex-currently-blocked'    => "'''सध्या ब्लॉक केलेले फ्रेजेस:'''",
+	'spamregex-no-currently-blocked' => "'''सध्या एकही ब्लॉक केलेला फ्रेज नाही.'''",
+	'spamregex-log-1'                => "* '''$1''' $2 ([{{SERVER}}$3&text=$4 काढा]) (ने) वाढविलेला",
+	'spamregex-log-2'                => '$1वर',
+	'spamregex-page-title-1'         => 'रेग्युलर एक्स्प्रेशन्स वापरून फ्रेज ब्लॉक करा',
+	'spamregex-unblock-success'      => 'अनब्लॉक यशस्वी',
+	'spamregex-unblock-message'      => "फ्रेज '''$1''' ला संपादित करण्यापासून अनब्लॉक केलेले आहे.",
+	'spamregex-page-title-2'         => 'रेग्युलर एक्स्प्रेशन्सचा वापर करून फ्रेजेस जतन होण्यापासून ब्लॉक करा',
+	'spamregex-block-success'        => 'ब्लॉक यशस्वी',
+	'spamregex-block-message'        => "फ्रेज '''$1''' ला ब्लॉक केलेले आहे.",
+	'spamregex-warning-1'            => 'ब्लॉक करण्यासाठी एक फ्रेज द्या.',
+	'spamregex-error-1'              => 'चुकीची रेग्युलर एक्स्प्रेशन्स.',
+	'spamregex-warning-2'            => 'कृपया कमीतकमी एक ब्लॉकिंग मोड तपासा.',
+	'spamregex-already-blocked'      => '"$1" ला अगोदरच ब्लॉक केलेले आहे',
+	'spamregex-phrase-block'         => 'ब्लॉक करण्यासाठी फ्रेज:',
+	'spamregex-phrase-block-text'    => 'पानाच्या मजकूरातून फ्रेज ब्लॉक करा',
+	'spamregex-phrase-block-summary' => 'सारांशातून फ्रेज ब्लॉक करा',
+	'spamregex-block-submit'         => 'ही&nbsp;फ्रेज&nbsp;ब्लॉक&nbsp;करा',
+	'spamregex-text'                 => '(मजकूर)',
+	'spamregex-summary-log'          => 'आढावा',
 );
 
 /** Dutch (Nederlands)

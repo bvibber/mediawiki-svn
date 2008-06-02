@@ -353,17 +353,24 @@ $messages['ml'] = array(
  * @author Mahitgar
  */
 $messages['mr'] = array(
-	'todo'              => 'करण्याची यादी',
-	'todo-tab'          => 'करावयाच्या गोष्टी',
-	'todo-new-queue'    => 'नवे',
-	'todo-item-list'    => 'तुमचे आयटेम्स',
-	'todo-no-item'      => 'करावयाच्या नोंदी नाहीत.',
-	'todo-add-queue'    => 'रांग वाढवा...',
-	'todo-list-change'  => 'बदल',
-	'todo-list-cancel'  => 'रद्द करा',
-	'todo-new-item'     => 'नवीन नोंद',
-	'todo-form-details' => 'तपशील:',
-	'todo-form-submit'  => 'पृच्छा पाठवा',
+	'todo'                  => 'करण्याची यादी',
+	'todo-tab'              => 'करावयाच्या गोष्टी',
+	'todo-new-queue'        => 'नवे',
+	'todo-mail-subject'     => '$1 च्या करावयच्या गोष्टींच्या यादीतील पूर्ण झालेल्या नोंदी',
+	'todo-invalid-item'     => 'चुकीचा किंवा अस्तित्वात नसलेला आयटम',
+	'todo-unrecognize-type' => 'अनोळखी प्रकार',
+	'todo-item-list'        => 'तुमचे आयटेम्स',
+	'todo-no-item'          => 'करावयाच्या नोंदी नाहीत.',
+	'todo-invalid-owner'    => 'या आयटमचा चुकीचा मालक',
+	'todo-add-queue'        => 'रांग वाढवा...',
+	'todo-move-queue'       => 'रांगेमध्ये हलवा...',
+	'todo-list-for'         => '(ची) करावयाच्या गोष्टींची यादी',
+	'todo-list-change'      => 'बदल',
+	'todo-list-cancel'      => 'रद्द करा',
+	'todo-new-item'         => 'नवीन नोंद',
+	'todo-issue-summary'    => 'चर्चा सारांश:',
+	'todo-form-details'     => 'तपशील:',
+	'todo-form-submit'      => 'पृच्छा पाठवा',
 );
 
 /** Dutch (Nederlands)

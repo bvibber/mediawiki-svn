@@ -197,6 +197,7 @@ Eliminado: $6
 Un cordial saúdo,
 
 $2',
+	'userrightsnotif-desc'    => 'Envía unha notificación por correo electrónico aos usuarios unha vez que os seus dereitos cambien',
 );
 
 $messages['hsb'] = array(
@@ -271,6 +272,13 @@ $messages['ml'] = array(
 
 $2',
 	'userrightsnotif-desc' => 'അവകാശങ്ങളില്‍ വന്ന വ്യത്യാസങ്ങളെക്കുറിച്ച് ഉപയോക്താക്കള്‍ക്ക് ഇമെയില്‍ അറിയിപ്പ് അയക്കുന്നു',
+);
+
+/** Marathi (मराठी)
+ * @author Kaustubh
+ */
+$messages['mr'] = array(
+	'userrightsnotifysubject' => '$1 वरील गट सदस्यत्व बदल',
 );
 
 /** Dutch (Nederlands)

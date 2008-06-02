@@ -954,10 +954,13 @@ $messages['tg-cyrl'] = array(
 );
 
 /** Turkish (Türkçe)
+ * @author Runningfridgesrule
  * @author Erkan Yilmaz
  */
 $messages['tr'] = array(
-	'pdtest_ok' => 'Tamam',
+	'pdtest_no_changes' => 'Değişiklik bulunmadı.',
+	'pdtest_title'      => 'Bağlam başlığı:',
+	'pdtest_ok'         => 'Tamam',
 );
 
 /** Ukrainian (Українська)

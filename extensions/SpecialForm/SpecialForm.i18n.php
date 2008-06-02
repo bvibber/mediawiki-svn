@@ -318,15 +318,26 @@ $messages['ml'] = array(
  * @author Mahitgar
  */
 $messages['mr'] = array(
-	'form'              => 'अर्ज',
-	'formnoname'        => 'अर्ज नाव नाही',
-	'formbadname'       => 'चुकीचे अर्ज नाव',
-	'formpattern'       => '$1-अर्ज',
-	'formtitlepattern'  => 'नवीन वाढवा $1',
-	'formsave'          => 'जतन करा',
-	'formarticleexists' => 'पान अस्तित्वात आहे',
-	'formbadpagename'   => 'चुकीचे पान नाव',
-	'formsaveerror'     => 'अर्ज जतन करण्यात त्रुटी',
+	'form'                         => 'अर्ज',
+	'formnoname'                   => 'अर्ज नाव नाही',
+	'formnonametext'               => 'तुम्ही एक अर्ज नाव देणे आवश्यक आहे, उदा "Special:Form/अर्जनाव".',
+	'formbadname'                  => 'चुकीचे अर्ज नाव',
+	'formbadnametext'              => 'या नावाचा अर्ज अस्तित्वात नाही.',
+	'formpattern'                  => '$1-अर्ज',
+	'formtitlepattern'             => 'नवीन वाढवा $1',
+	'formsave'                     => 'जतन करा',
+	'formindexmismatch'            => 'या अर्जामध्ये चुकीचे नाव रकाने तसेच साचे जे $1 पासून सुरु होतात, आहेत.',
+	'formarticleexists'            => 'पान अस्तित्वात आहे',
+	'formarticleexiststext'        => '[[$1]] हे पान अगोदरच अस्तित्वात आहे',
+	'formbadpagename'              => 'चुकीचे पान नाव',
+	'formbadpagenametext'          => 'तुम्ही दिलेल्या अर्ज माहितीमुळे चुकीचे पृष्ठ नाव तयार होत आहे, "$1".',
+	'formrequiredfieldpluralerror' => '$1 रकाने या अर्जाकरिता आवश्यक आहेत.
+कृपया ते भरा.',
+	'formrequiredfielderror'       => '$1 रकाना या अर्जाकरिता आवश्यक आहेत.
+कृपया ते भरा.',
+	'formsavesummary'              => '[[Special:Form/$1]] वापरुन नवीन पान',
+	'formsaveerror'                => 'अर्ज जतन करण्यात त्रुटी',
+	'formsaveerrortext'            => "'$1' पान जतन करण्यामध्ये अनोळखी त्रुटी आलेली आहे.",
 );
 
 $messages['nl'] = array(

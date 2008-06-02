@@ -356,7 +356,7 @@ $messages['eo'] = array(
 	'sign-viewfield-reviewedby'    => 'Kontrolanto',
 	'sign-viewfield-reviewcomment' => 'Komento',
 	'sign-review-comment'          => 'Komento',
-	'sign-submitreview'            => 'Aldoni recenzon',
+	'sign-submitreview'            => 'Aldoni kontrolon',
 );
 
 $messages['ext'] = array(
@@ -813,6 +813,7 @@ $messages['krj'] = array(
 $messages['ksh'] = array(
 	'sign-realname'           => 'Name:',
 	'sign-viewfield-realname' => 'Name',
+	'sign-viewfield-agent'    => 'Brauser',
 );
 
 $messages['la'] = array(
@@ -839,6 +840,10 @@ $messages['lb'] = array(
 	'sign-phone'                    => 'Telefonsnummer:',
 	'sign-bday'                     => 'Alter:',
 	'sign-email'                    => 'E-Mail-Adress:',
+	'sign-list-anonymous'           => 'Als anonym weisen',
+	'sign-list-hidephone'           => "D'Telefeonsnummer net weisen",
+	'sign-list-hidebday'            => 'Den Alter net weisen',
+	'sign-list-hideemail'           => "D'E-Mailadress net weisen",
 	'sign-submit'                   => 'Dokument ënnerschreiwen',
 	'sign-viewfield-realname'       => 'Numm',
 	'sign-viewfield-address'        => 'Adress',

@@ -155,6 +155,13 @@ $messages['mr'] = array(
 	'nstab-comments'    => 'समीक्षा',
 );
 
+/** Low German (Plattdüütsch)
+ * @author Slomox
+ */
+$messages['nds'] = array(
+	'nstab-comments' => 'Kommentar',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

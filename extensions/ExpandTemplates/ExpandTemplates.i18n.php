@@ -189,7 +189,7 @@ $messages['co'] = array(
  */
 $messages['cs'] = array(
 	'expandtemplates'                  => 'Substituce šablon',
-	'expandtemplates-desc'             => 'Rozbaluje šablony, funkce syntaktického analyzátoru a proměnné; zobrazuje rozbalený wikitext a náhled stránky, jak se zobrazí',
+	'expandtemplates-desc'             => 'Rozbaluje šablony, funkce parseru a proměnné; zobrazuje rozbalený wikitext a náhled stránky, jak se zobrazí',
 	'expand_templates_intro'           => 'Pomocí této speciální stránky můžete nechat v textu substituovat všechny šablony a funkce parseru jako <code><nowiki>{{</nowiki>#if:…...}}</code> či proměnné jako <code><nowiki>{{</nowiki>CURRENTDAY}}</code> – tzn. prakticky všechno v dvojitých složených závorkách. K tomu se používají přímo odpovídající funkce parseru MediaWiki.',
 	'expand_templates_title'           => 'Název stránky kvůli kontextu pro {{PAGENAME}} apod.:',
 	'expand_templates_input'           => 'Vstupní text:',
@@ -244,6 +244,8 @@ $messages['el'] = array(
  */
 $messages['eo'] = array(
 	'expandtemplates'                  => 'Ampleksigu ŝablonojn',
+	'expandtemplates-desc'             => '[[Special:ExpandTemplates|Etendas ŝablonojn, sintaksaj funkciojn, kaj variablojn]] montri etenditan vikitekston kaj antaŭvidi faritan paĝon',
+	'expand_templates_title'           => 'Kunteksta titolo, por {{PAGENAME}}, ktp.:',
 	'expand_templates_input'           => 'Enigu tekston:',
 	'expand_templates_output'          => 'Rezulto',
 	'expand_templates_xml_output'      => 'XML-eligo',
@@ -708,7 +710,7 @@ $messages['ksh'] = array(
 	'expand_templates_output'          => 'Wat erus kütt es',
 	'expand_templates_xml_output'      => 'XML ußjevve',
 	'expand_templates_ok'              => 'Loß Jonn!',
-	'expand_templates_remove_comments' => 'De ennere Kommentare fottlooße',
+	'expand_templates_remove_comments' => 'De ėnner Kommentare fottloohße',
 	'expand_templates_generate_xml'    => 'Och dä XML-Parser-Boum zeije',
 	'expand_templates_preview'         => 'Vör-Aansich',
 );
@@ -1112,9 +1114,11 @@ $messages['stq'] = array(
 
 /** Sundanese (Basa Sunda)
  * @author Kandar
+ * @author Irwangatot
  */
 $messages['su'] = array(
 	'expandtemplates'             => 'Mekarkeun citakan',
+	'expandtemplates-desc'        => '[[Special:Expandtemplates|Ngembangkeun citakan, fungsi parser sarta variabel]] pikeun némbongkeun hasil teks wiki sarta pramidang kaca hasilna',
 	'expand_templates_input'      => 'Téks input:',
 	'expand_templates_output'     => 'Hasil:',
 	'expand_templates_xml_output' => 'Output XML',

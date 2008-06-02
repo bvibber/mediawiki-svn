@@ -117,6 +117,14 @@ $messages['br'] = array(
 	'scanset_prev' => '&lt; Kent',
 );
 
+/** Catalan (Català)
+ * @author Paucabot
+ */
+$messages['ca'] = array(
+	'scanset_next' => 'Següent &gt;',
+	'scanset_prev' => '&lt; Anterior',
+);
+
 /** Czech (Česky)
  * @author Matěj Grabovský
  * @author Danny B.
@@ -165,8 +173,9 @@ $messages['de'] = array(
  * @author Yekrats
  */
 $messages['eo'] = array(
-	'scanset_next' => 'Sekva &gt;',
-	'scanset_prev' => '&lt; Antaŭa',
+	'scanset_unrecognised_index_format' => 'ScanSet: Nekonata formato de indekso',
+	'scanset_next'                      => 'Sekva &gt;',
+	'scanset_prev'                      => '&lt; Antaŭa',
 );
 
 /** فارسی (فارسی)

@@ -30,10 +30,12 @@ $messages['bg'] = array(
 );
 
 /** Catalan (Català)
+ * @author Jordi Roqué
  * @author SMP
  */
 $messages['ca'] = array(
 	'absenteelandlord-reason' => "La base de dades s'ha blocat automàticament a causa de la inactivitat dels seus administradors.",
+	'absenteelandlord-desc'   => 'Bloca automàticament la base de dades del viqui si tots els administradors fa temps que estan inactius',
 );
 
 /** Czech (Česky)
@@ -92,6 +94,14 @@ $messages['hi'] = array(
 $messages['hr'] = array(
 	'absenteelandlord-reason' => 'Baza je automatski zaključana uslijed neaktivnosti administratora.',
 	'absenteelandlord-desc'   => 'Automatski zaključava wiki bazu ukoliko su svi administratori neaktivni neko vrijeme',
+);
+
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
+$messages['hsb'] = array(
+	'absenteelandlord-reason' => 'Datowa banka bu awtomatisce zawrjena, dokelž žadyn administrator aktiwny njeje.',
+	'absenteelandlord-desc'   => 'Awtomatiske zawrjenja wikijoweje datoweje banki, jeli administratorojo su njeaktiwni za wěstu dobu.',
 );
 
 /** Indonesian (Bahasa Indonesia)
@@ -213,6 +223,14 @@ $messages['sk'] = array(
 $messages['stq'] = array(
 	'absenteelandlord-reason' => 'Ju Doatenboank wuude automatisk speerd, deer naan Administrator aktiv is.',
 	'absenteelandlord-desc'   => 'Automatisk Speere fon ju Doatenboank, wan aal Administratore foar ne bestimde Tied inaktiv sunt',
+);
+
+/** Sundanese (Basa Sunda)
+ * @author Irwangatot
+ */
+$messages['su'] = array(
+	'absenteelandlord-reason' => 'Basis data geus dikonci sacara otomatis alatan teu aktifna kuncén.',
+	'absenteelandlord-desc'   => 'Ngonci basis data wiki sacara otomatis lamun sakumna kuncén henteu aktip salila période nu tangtu.',
 );
 
 /** Swedish (Svenska)

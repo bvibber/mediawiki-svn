@@ -156,6 +156,7 @@ $messages['ca'] = array(
 	'sitematrix-others'    => 'Altres projectes de Wikimedia',
 	'sitematrix-total'     => "'''Recompte total: $1'''",
 	'sitematrix-sitetotal' => 'Total',
+	'sitematrix-private'   => 'privat',
 );
 
 $messages['cdo'] = array(
@@ -260,12 +261,14 @@ $messages['el'] = array(
  */
 $messages['eo'] = array(
 	'sitematrix'           => 'Listo de vikioj de Wikimedia',
+	'sitematrix-summary'   => 'Ĉi tiu speciala paĝo montras ĉiujn vikiojn de Wikimedia.',
 	'sitematrix-language'  => 'Lingvo',
 	'sitematrix-project'   => 'Nomo de projekto, interprojekta ligilo kaj intervikia ligilo',
 	'sitematrix-others'    => 'Aliaj projektoj de Wikimedia',
 	'sitematrix-total'     => "'''Tuta nombrado: $1'''",
 	'sitematrix-sitetotal' => 'Tuto',
 	'sitematrix-private'   => 'privata',
+	'sitematrix-fishbowl'  => 'redaktado estas limigita',
 );
 
 $messages['es'] = array(
@@ -1070,12 +1073,15 @@ $messages['stq'] = array(
  */
 $messages['su'] = array(
 	'sitematrix'           => 'Béréndélan wiki Wikimédia',
+	'sitematrix-summary'   => 'Kaca husus ieu ngamuat béréndélan ti kabeh wiki Wikimédia',
 	'sitematrix-desc'      => 'Témbongkeun [[Special:SiteMatrix|béréndélan wiki Wikimédia]]',
 	'sitematrix-language'  => 'Basa',
 	'sitematrix-project'   => 'Ngaran proyék , tumbu interproyék jeung tumbu interwiki',
 	'sitematrix-others'    => 'Proyék laina ti Wikimedia',
 	'sitematrix-total'     => "'''Jumlah: $1'''",
 	'sitematrix-sitetotal' => 'Jumlah',
+	'sitematrix-private'   => 'pribadi',
+	'sitematrix-fishbowl'  => 'ngédit teu di idinan',
 );
 
 /** Swedish (Svenska)
@@ -1159,6 +1165,7 @@ $messages['to'] = array(
 );
 
 /** Turkish (Türkçe)
+ * @author Runningfridgesrule
  * @author Mach
  * @author Erkan Yilmaz
  * @author לערי ריינהארט
@@ -1168,6 +1175,8 @@ $messages['tr'] = array(
 	'sitematrix-language'  => 'Dil',
 	'sitematrix-others'    => 'Diğer Wikimedia projeleri',
 	'sitematrix-sitetotal' => 'Toplam',
+	'sitematrix-private'   => 'mahrem',
+	'sitematrix-fishbowl'  => 'değiştirmek engellendi',
 );
 
 /** Ukrainian (Українська)

@@ -220,6 +220,13 @@ $messages['cs'] = array(
 	'newuserlog-autocreate-entry' => 'Účet vytvořen automaticky',
 );
 
+/** Church Slavic (Словѣньскъ)
+ * @author ОйЛ
+ */
+$messages['cu'] = array(
+	'newuserlog-create-entry' => 'но́въ по́льꙃєватєл҄ь',
+);
+
 /** Danish (Dansk)
  * @author Morten
  */
@@ -281,6 +288,7 @@ $messages['eml'] = array(
 $messages['eo'] = array(
 	'newuserlogpage'              => 'Protokolo de uzanto-kreado',
 	'newuserlogpagetext'          => 'Ĉi tio estas protokolo de uzantokreadoj',
+	'newuserlog-desc'             => 'Aldonas [[Special:Log/newusers|protokolon pri kontkreado]] al [[Special:Log]]',
 	'newuserlog-byemail'          => 'pasvorto sendita retpoŝte',
 	'newuserlog-create-entry'     => 'Nova uzanto',
 	'newuserlog-create2-entry'    => 'kreis konton por $1',
@@ -615,14 +623,14 @@ $messages['kk-latn'] = array(
 );
 
 /** Khmer (ភាសាខ្មែរ)
- * @author Chhorran
  * @author Lovekhmer
  * @author គីមស៊្រុន
+ * @author Chhorran
  */
 $messages['km'] = array(
-	'newuserlogpage'              => 'កំណត់ហេតុ នៃការបង្កើតគណនី',
+	'newuserlogpage'              => 'កំណត់ហេតុនៃការបង្កើតគណនី',
 	'newuserlogpagetext'          => 'នេះជា កំណត់ហេតុ នៃការបង្កើត អ្នកប្រើប្រាស់',
-	'newuserlog-desc'             => 'បន្ថែម [[Special:Log/newusers|កំណត់ហេតុ នៃ ការបង្កើត គណនី]] ទៅ [[Special:Log]]',
+	'newuserlog-desc'             => 'បន្ថែម[[Special:Log/newusers|កំនត់ហេតុនៃការបង្កើតគណនី]]ទៅ[[Special:Log|កំនត់ហេតុ]]',
 	'newuserlog-byemail'          => 'ពាក្យសំងាត់ត្រូវបានផ្ញើតាមអ៊ីមែល',
 	'newuserlog-create-entry'     => 'អ្នកប្រើប្រាស់ថ្មី',
 	'newuserlog-create2-entry'    => "បានបង្កើតគណនីសំរាប់'''$1'''",
@@ -1015,14 +1023,16 @@ $messages['stq'] = array(
 
 /** Sundanese (Basa Sunda)
  * @author Kandar
+ * @author Irwangatot
  */
 $messages['su'] = array(
-	'newuserlogpage'           => 'Log pamaké anyar',
-	'newuserlogpagetext'       => 'Di handap ieu béréndélan log pamaké anyar',
-	'newuserlog-desc'          => 'Nambahkeun [[Husus:Log/newusers|log nyieun rekening]] ka [[Husus:Log]]',
-	'newuserlog-byemail'       => 'Sandi geus dikirim maké surélék.',
-	'newuserlog-create-entry'  => 'Pamaké anyar',
-	'newuserlog-create2-entry' => 'rekening pikeun $1 geus dijieun',
+	'newuserlogpage'              => 'Log pamaké anyar',
+	'newuserlogpagetext'          => 'Di handap ieu béréndélan log pamaké anyar',
+	'newuserlog-desc'             => 'Nambahkeun [[Special:Log/newusers|log nyieun rekening]] ka [[Special:Log]]',
+	'newuserlog-byemail'          => 'Sandi geus dikirim maké surélék.',
+	'newuserlog-create-entry'     => 'Pamaké anyar',
+	'newuserlog-create2-entry'    => 'rekening pikeun $1 geus dijieun',
+	'newuserlog-autocreate-entry' => 'rekening pamaké dijieun sacara otomatis',
 );
 
 /** Swedish (Svenska)

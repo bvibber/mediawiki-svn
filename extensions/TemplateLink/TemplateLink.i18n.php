@@ -133,9 +133,11 @@ $messages['lb'] = array(
 
 /** Marathi (मराठी)
  * @author Mahitgar
+ * @author Kaustubh
  */
 $messages['mr'] = array(
 	'templatelink'          => 'साचे दुवा',
+	'templatelink_empty'    => 'तुम्ही एक पॅरॅमीटर देणे आवश्यक आहे.',
 	'templatelink_newtitle' => '$1 (आंतरन्यास)',
 );
 

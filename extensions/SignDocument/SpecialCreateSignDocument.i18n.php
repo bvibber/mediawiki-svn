@@ -377,11 +377,13 @@ $messages['la'] = array(
  */
 $messages['lb'] = array(
 	'createsigndoc-pagename'          => 'Säit:',
+	'createsigndoc-allowedgroup'      => 'Erlaabte Grupp:',
 	'createsigndoc-email'             => 'E-mail Adress:',
 	'createsigndoc-extaddress'        => 'Stad, Regioun/Bundesstaat, Land:',
 	'createsigndoc-phone'             => 'Telefonsnummer:',
 	'createsigndoc-bday'              => 'Geburtsdag:',
 	'createsigndoc-minage'            => 'Mindesalter:',
+	'createsigndoc-introtext'         => 'Aféierung:',
 	'createsigndoc-hidden'            => 'Verstoppt',
 	'createsigndoc-optional'          => 'Fakultativ',
 	'createsigndoc-error-generic'     => 'Feeler: $1',

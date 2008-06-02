@@ -259,9 +259,11 @@ $messages['el'] = array(
  * @author Yekrats
  */
 $messages['eo'] = array(
-	'usernameblacklist-desc' => 'Aldonas [[MediaWiki:Usernameblacklist|Forbarlisto de uzantonomoj]] por malpermesi la kreadon de uzantokontoj laŭ unu aŭ pluraj regulesprimoj.',
-	'blacklistedusername'    => 'Malpermesita uzantnomo',
-	'right-uboverride'       => 'Astataŭigi la salutnoman nigraliston',
+	'usernameblacklist-desc'  => 'Aldonas [[MediaWiki:Usernameblacklist|Forbarlisto de uzantonomoj]] por malpermesi la kreadon de uzantokontoj laŭ unu aŭ pluraj regulesprimoj.',
+	'blacklistedusername'     => 'Malpermesita uzantnomo',
+	'blacklistedusernametext' => 'La salutnomo kiun vi elektis kongruas listeron en [[MediaWiki:Usernameblacklist|listo de nigralistaj salutnomoj]].
+Bonvolu elekti alian nomon.',
+	'right-uboverride'        => 'Astataŭigi la salutnoman nigraliston',
 );
 
 /** Spanish (Español)

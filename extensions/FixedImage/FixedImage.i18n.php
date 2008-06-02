@@ -25,11 +25,25 @@ $messages['bg'] = array(
 	'fixedimage-desc' => 'Добавяне на етикета <tt><nowiki><fundraising></nowiki></tt> като картинка',
 );
 
+/** Czech (Česky)
+ * @author Matěj Grabovský
+ */
+$messages['cs'] = array(
+	'fixedimage-desc' => 'Přidává značku <tt>&lt;fundraising&gt;</tt> jako obrázek',
+);
+
 /** German (Deutsch)
  * @author Raimond Spekking
  */
 $messages['de'] = array(
 	'fixedimage-desc' => 'Ergänzt das <tt><nowiki><fundraising></nowiki></tt>-Tag',
+);
+
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
+$messages['eo'] = array(
+	'fixedimage-desc' => 'Aldonas etikedon <tt><nowiki><fundraising></nowiki></tt> kiel bildon',
 );
 
 /** French (Français)
@@ -136,6 +150,13 @@ $messages['sv'] = array(
  */
 $messages['te'] = array(
 	'fixedimage-desc' => '<tt><nowiki><fundraising></nowiki></tt> అనే టాగుని బొమ్మగా చేరుస్తుంది',
+);
+
+/** Ukrainian (Українська)
+ * @author Ahonc
+ */
+$messages['uk'] = array(
+	'fixedimage-desc' => 'Додає тег <tt><nowiki><fundraising></nowiki></tt> як зображення',
 );
 
 /** Vèneto (Vèneto)

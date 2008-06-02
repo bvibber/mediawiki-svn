@@ -58,8 +58,14 @@ $messages['fr'] = array(
 	'eval_code'   => 'Code',
 );
 
+/** Galician (Galego)
+ * @author Alma
+ * @author Xosé
+ * @author Toliño
+ */
 $messages['gl'] = array(
 	'eval'        => 'Aval',
+	'eval-desc'   => 'Engade [[Special:Eval|unha interface]] á función <code>eval()</code>',
 	'eval_submit' => 'Avaliar',
 	'eval_escape' => 'Saída de Escape',
 	'eval_out'    => 'Saída',

@@ -989,6 +989,15 @@ $messages['mr'] = array(
 	'badimages-page'           => '{{ns:help}}:चुकीच्या चित्रांची यादी',
 );
 
+/** Low German (Plattdüütsch)
+ * @author Slomox
+ */
+$messages['nds'] = array(
+	'badimages-add-btn' => 'Tofögen',
+	'badimages-name'    => 'Naam:',
+	'badimages-reason'  => 'Grund:',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  * @author SPQRobin

@@ -531,8 +531,10 @@ $messages['stq'] = array(
 
 /** Sundanese (Basa Sunda)
  * @author Kandar
+ * @author Irwangatot
  */
 $messages['su'] = array(
+	'deletedcontributions'      => 'Kontribusi nu dihapus',
 	'deletedcontributions-desc' => 'Leler kuncén kawenangan [[Special:DeletedContributions|nyungsi éditan nu geus dihapus]] ti hiji pamaké',
 );
 
@@ -582,7 +584,7 @@ $messages['tr'] = array(
  * @author Ahonc
  */
 $messages['uk'] = array(
-	'deletedcontributions'      => 'Вилучені редагування користувачів',
+	'deletedcontributions'      => 'Вилучений внесок користувача',
 	'deletedcontributions-desc' => 'Дає адміністраторам можливість [[Special:DeletedContributions|переглядати вилучені редагування]] користувачів',
 );
 

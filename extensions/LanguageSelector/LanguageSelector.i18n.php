@@ -50,9 +50,11 @@ $messages['br'] = array(
 
 /** Catalan (Català)
  * @author SMP
+ * @author Jordi Roqué
  */
 $messages['ca'] = array(
 	'languageselector'         => 'Idioma',
+	'languageselector-desc'    => "Selector d'idioma a cada pàgina (incloent visitants anònims)",
 	'languageselector-setlang' => 'selecciona',
 );
 
@@ -152,7 +154,7 @@ $messages['gl'] = array(
  */
 $messages['gv'] = array(
 	'languageselector'         => 'Çhengey',
-	'languageselector-desc'    => 'Reihder hengey er dagh ooilley ghuillag, gys sleih er keayrt myrgeddin',
+	'languageselector-desc'    => 'Reihder çhengey er dagh ooilley ghuillag, gys sleih er keayrt myrgeddin',
 	'languageselector-setlang' => 'soiaghey',
 );
 
@@ -400,6 +402,15 @@ $messages['pt-br'] = array(
 	'languageselector-setlang' => 'selecionar',
 );
 
+/** Quechua (Runa Simi)
+ * @author AlimanRuna
+ */
+$messages['qu'] = array(
+	'languageselector'         => 'Rimay',
+	'languageselector-desc'    => "Tukuy p'anqakunapi rimay akllana, watukuqkunapaqpas",
+	'languageselector-setlang' => 'churay',
+);
+
 /** Russian (Русский)
  * @author Александр Сигачёв
  */
@@ -439,6 +450,15 @@ $messages['stq'] = array(
 	'languageselector'         => 'Sproake',
 	'languageselector-desc'    => 'Sproakenuutwoal ap älke Siede, uk foar Besäikere',
 	'languageselector-setlang' => 'sätte',
+);
+
+/** Sundanese (Basa Sunda)
+ * @author Irwangatot
+ */
+$messages['su'] = array(
+	'languageselector'         => 'Basa',
+	'languageselector-desc'    => 'Pilihan basa keur kabeh kaca, ogé keur nu sindang',
+	'languageselector-setlang' => 'set',
 );
 
 /** Swedish (Svenska)

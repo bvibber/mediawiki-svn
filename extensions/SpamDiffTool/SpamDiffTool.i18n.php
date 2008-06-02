@@ -279,6 +279,7 @@ $messages['ksh'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
+	'spamdifftool_spam_link_text'   => 'bäi de Spam derbäisetzen',
 	'spamdifftool_option_domain'    => 'all vun dësem Domain',
 	'spamdifftool_option_subdomain' => 'all vun dësem Subdomain',
 	'spamdifftool_option_none'      => 'näischt',
@@ -306,6 +307,12 @@ $messages['mr'] = array(
 	'spamdifftool_confirm'          => "तुम्ही या नोंदी स्पॅम ब्लॅकलिस्ट मध्ये वाढवू इच्छिता याची खात्री करा.
 (अडचण नोंदविण्यासाठी <a href='$1' target='new'>इथे</a> टिचकी द्या.)",
 	'spamdifftool_summary'          => 'स्पॅम ब्लॅकलिस्ट मध्ये वाढवित आहे',
+	'spamdifftool_urls_detected'    => 'संपादनामध्ये खालील URL आढळल्या आहेत, स्पॅम ब्लॅकलिस्ट मध्ये या पैकी कुठल्या URL तुम्ही घालू इच्छिता?
+हे विकल्प जास्तीत जास्त त्रासदायक पासून कमी त्रासदायक प्रमाणे दिले जातात, एखादा पूर्ण डोमेन ब्लॉक केल्यास त्या डोमेन मधील सर्व दुवे ब्लॉक केले जातील.
+
+जे डोमेन सदस्यनावे वापरतात त्या डोमेनला पूर्ण ब्लॉक न करण्याची खात्री करा, उदा. blogpost.com, geocities.com, इ.',
+	'spamdifftool_no_urls_detected' => "एकही URL सापडली नाही.
+परत जाण्यासाठी <a href='$1'>इथे</a> टिचकी द्या.",
 	'spamdifftool_spam_link_text'   => 'स्पॅम मध्ये वाढवा',
 	'spamdifftool_option_domain'    => 'या डोमेन मधील सर्व',
 	'spamdifftool_option_subdomain' => 'या सबडोमेन मधील सर्व',

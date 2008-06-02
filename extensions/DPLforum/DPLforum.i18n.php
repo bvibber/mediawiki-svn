@@ -125,6 +125,14 @@ $messages['mr'] = array(
 	'dplforum-toomany' => 'डीपीएल चर्चासत्र: खूप जास्त वर्ग!',
 );
 
+/** Low German (Plattdüütsch)
+ * @author Slomox
+ */
+$messages['nds'] = array(
+	'dplforum-by'    => 'vun',
+	'dplforum-never' => 'Nie',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

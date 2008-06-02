@@ -316,6 +316,7 @@ $messages['lb'] = array(
 	'talkhere-notalk'      => "''(Nach keng Bemierkung)''",
 	'talkhere-addcomment'  => 'Bemierkung derbäisetzen',
 	'talkhere-beforeinput' => 'Dir kënnt eng Bemierkung hei ënnendrënner derbäisetzen.',
+	'talkhere-collapse'    => 'Editeur verstoppen',
 );
 
 /** Malayalam (മലയാളം)

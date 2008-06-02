@@ -311,6 +311,7 @@ $messages['lb'] = array(
 	'player-title'       => 'Spiller',
 	'player-playertitle' => 'Spiller: $1',
 	'player-file'        => 'Numm vum Fichier',
+	'player-not-found'   => 'Fichier net fonnt',
 	'player-goto-page'   => 'Säit',
 	'player-goto-file'   => 'Fichier',
 );

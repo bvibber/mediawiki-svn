@@ -352,6 +352,15 @@ $messages['mr'] = array(
 	'edituser-exempt'   => 'दिलेला सदस्य संपादित करू शकत नाही',
 );
 
+/** Low German (Plattdüütsch)
+ * @author Slomox
+ */
+$messages['nds'] = array(
+	'edituser'          => 'Bruker ännern',
+	'edituser-username' => 'Naam',
+	'edituser-dosearch' => 'Söken',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  * @author SPQRobin

@@ -163,8 +163,10 @@ Un tamm pasianted mar plij.',
 
 /** Catalan (Català)
  * @author SMP
+ * @author Jordi Roqué
  */
 $messages['ca'] = array(
+	'youtubeauthsub_title'    => 'Títol',
 	'youtubeauthsub_category' => 'Categoria',
 );
 

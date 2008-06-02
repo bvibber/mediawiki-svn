@@ -514,7 +514,9 @@ $messages['uk'] = array(
  * @author Candalua
  */
 $messages['vec'] = array(
-	'block_title_error-desc' => 'Fornisse na maniera senpliçe par inpedir el salvatagio o la creassion de pagine con çerti titoli',
+	'block_title_error_page_title' => 'Titolo blocà',
+	'block_title_error-desc'       => 'Fornisse na maniera senpliçe par inpedir el salvatagio o la creassion de pagine con çerti titoli',
+	'block_title_error'            => 'Ne despiase, ma no xe permesso de salvar na pagina co sto titolo.',
 );
 
 /** Vietnamese (Tiếng Việt)

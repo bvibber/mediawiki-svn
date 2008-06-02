@@ -288,6 +288,8 @@ Il existe plusieurs [http://wiki.openid.net/Public_OpenID_providers fournisseur 
  * @author Toliño
  */
 $messages['gl'] = array(
+	'openiderrortext'               => 'Ocorreu un erro durante a verificación do URL do OpenID.',
+	'openidconfigerror'             => 'Erro na configuración do OpenID',
 	'openidserverlogininstructions' => 'Insira o seu contrasinal embaixo para acceder a $3 como o usuario $2 (páxina de usuario $1).',
 	'openidnopolicy'                => 'O sitio non especificou unha política de privacidade.',
 	'openidpolicy'                  => 'Comprobe a <a target="_new" href="$1">política de privacidade</a> para máis información.',
@@ -573,6 +575,7 @@ $messages['lb'] = array(
 	'openidchoosefull'         => 'Äre ganze Numm ($1)',
 	'openidchooseauto'         => 'Een Numm deen automatesch generéiert gouf ($1)',
 	'openidchoosemanual'       => 'E Numm vun ärer Wiel:',
+	'openidchooseexisting'     => 'E Benotzerkont den et op dëser Wiki scho gëtt:',
 	'openidchoosepassword'     => 'Passwuert:',
 	'openidnousername'         => 'Kee Benotzernumm uginn.',
 );

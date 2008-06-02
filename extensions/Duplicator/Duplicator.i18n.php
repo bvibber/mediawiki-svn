@@ -583,6 +583,7 @@ $messages['mr'] = array(
 $messages['nds'] = array(
 	'duplicator-options' => 'Opschonen',
 	'duplicator-source'  => 'Born:',
+	'duplicator-summary' => 'Kopeert vun [[$1]]',
 );
 
 /** Dutch (Nederlands)

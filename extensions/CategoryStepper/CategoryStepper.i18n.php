@@ -214,6 +214,14 @@ $messages['mr'] = array(
 	'categorystepper-start' => '(वर्गाची शेवट)',
 );
 
+/** Low German (Plattdüütsch)
+ * @author Slomox
+ */
+$messages['nds'] = array(
+	'categorystepper-end'   => '(Enn vun de Kategorie)',
+	'categorystepper-start' => '(Anfang vun de Kategorie)',
+);
+
 /** Dutch (Nederlands)
  * @author SPQRobin
  * @author Siebrand

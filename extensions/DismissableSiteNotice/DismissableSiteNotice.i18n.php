@@ -286,6 +286,13 @@ $messages['jv'] = array(
 	'sitenotice-desc'  => 'Marengaké para panganggo nutup wara-wara situs',
 );
 
+/** Kara-Kalpak (Qaraqalpaqsha)
+ * @author Atabek
+ */
+$messages['kaa'] = array(
+	'sitenotice_close' => 'jasırıw',
+);
+
 $messages['kk-arab'] = array(
 	'sitenotice_close' => 'تاسالاتۋ',
 );
@@ -469,8 +476,13 @@ $messages['stq'] = array(
 	'sitenotice-desc'  => 'Ferlööwet Benutsere dät Sluuten fon ju Sitenotice',
 );
 
+/** Sundanese (Basa Sunda)
+ * @author Irwangatot
+ * @author Kandar
+ */
 $messages['su'] = array(
 	'sitenotice_close' => 'bubarkeun',
+	'sitenotice-desc'  => 'Matak bisa pamaké pikeun nutupan béwara loka',
 );
 
 /** Swedish (Svenska)

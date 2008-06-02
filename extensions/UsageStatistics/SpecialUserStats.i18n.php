@@ -475,21 +475,32 @@ $messages['ml'] = array(
 );
 
 /** Marathi (मराठी)
- * @author Mahitgar
  * @author Kaustubh
+ * @author Mahitgar
  */
 $messages['mr'] = array(
-	'usagestatisticsallusers'        => 'सर्व सदस्य',
-	'usagestatisticsinterval'        => 'मध्यंतर',
-	'usagestatisticstype'            => 'प्रकार',
-	'usagestatisticsstart'           => 'सुरुवातीचा दिनांक',
-	'usagestatisticsend'             => 'शेवटची तारीख',
-	'usagestatisticsintervalday'     => 'दिवस',
-	'usagestatisticsintervalweek'    => 'आठवडा',
-	'usagestatisticsintervalmonth'   => 'महीना',
-	'usagestatisticscumulative'      => 'एकूण',
-	'usagestatisticscumulative-text' => 'एकूण',
-	'usagestatisticscalselect'       => 'निवडा',
+	'specialuserstats'                => 'वापर सांख्यिकी',
+	'usagestatistics'                 => 'वापर सांख्यिकी',
+	'usagestatisticsfor'              => '<h2>[[User:$1|$1]] ची वापर सांख्यिकी</h2>',
+	'usagestatisticsallusers'         => 'सर्व सदस्य',
+	'usagestatisticsinterval'         => 'मध्यंतर',
+	'usagestatisticstype'             => 'प्रकार',
+	'usagestatisticsstart'            => 'सुरुवातीचा दिनांक',
+	'usagestatisticsend'              => 'शेवटची तारीख',
+	'usagestatisticssubmit'           => 'सांख्यिकी तयार करा',
+	'usagestatisticsnostart'          => '* <font color=red>कृपया सुरुवातीची तारीख द्या</font>',
+	'usagestatisticsnoend'            => '* <font color=red>कृपया शेवटची तारीख द्या</font>',
+	'usagestatisticsbadstartend'      => '<b>चुकीची <i>सुरु</i> अथवा/किंवा <i>समाप्तीची</i> तारीख!</b>',
+	'usagestatisticsintervalday'      => 'दिवस',
+	'usagestatisticsintervalweek'     => 'आठवडा',
+	'usagestatisticsintervalmonth'    => 'महीना',
+	'usagestatisticsincremental'      => 'इन्क्रिमेंटल',
+	'usagestatisticsincremental-text' => 'इन्क्रिमेंटल',
+	'usagestatisticscumulative'       => 'एकूण',
+	'usagestatisticscumulative-text'  => 'एकूण',
+	'usagestatisticscalselect'        => 'निवडा',
+	'usagestatistics-editindividual'  => 'एकटा सदस्य $1 संपादन सांख्यिकी',
+	'usagestatistics-editpages'       => 'एकटा सदस्य $1 पृष्ठ सांख्यिकी',
 );
 
 /** Dutch (Nederlands)

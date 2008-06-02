@@ -363,8 +363,10 @@ $2',
 
 /** Hawaiian (Hawai`i)
  * @author Kalani
+ * @author Singularity
  */
 $allMessages['haw'] = array(
+	'mywhitelistpages'   => 'Ka‘u mau ‘ao‘ao',
 	'whitelisttableedit' => 'E ho‘opololei',
 );
 
@@ -555,6 +557,7 @@ $allMessages['ml'] = array(
  */
 $allMessages['mr'] = array(
 	'mywhitelistpages'         => 'माझी पाने',
+	'whitelistfor'             => '<center><b>$1</b>बद्दलची सध्याची माहिती</center>',
 	'whitelisttablemodify'     => 'बदला',
 	'whitelisttablemodifyall'  => 'सर्व',
 	'whitelisttablemodifynone' => 'काहीही नाही',
@@ -568,7 +571,11 @@ $allMessages['mr'] = array(
 	'whitelisttableremove'     => 'काढा',
 	'whitelistnewtabledate'    => 'समाप्तीची तारीख:',
 	'whitelistnewtableprocess' => 'कार्य',
+	'whitelistpagelist'        => '{{SITENAME}} पाने $1 साठीची',
 	'whitelistbadtitle'        => 'चुकीचे शीर्षक -',
+	'whitelistrequestconf'     => 'नवीन पानांची मागणी $1 ला पाठविलेली आहे',
+	'whitelistnonrestricted'   => "सदस्य '''$1''' हा प्रतिबंधित सदस्य नाही.
+हे पान फक्त प्रतिबंधित सदस्यांसाठीच आहे",
 	'whitelistnever'           => 'कधीही नाही',
 	'whitelistnummatches'      => ' - $1 जुळण्या',
 );

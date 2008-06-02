@@ -329,6 +329,14 @@ $messages['mr'] = array(
 	'editmsg-patch-success'    => 'पॅच यशस्वी.',
 );
 
+/** Low German (Plattdüütsch)
+ * @author Slomox
+ */
+$messages['nds'] = array(
+	'editmsg-search'     => 'Söök',
+	'editmsg-new-search' => 'Ne’e Söök',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

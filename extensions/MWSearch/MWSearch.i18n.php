@@ -53,6 +53,13 @@ $messages['de'] = array(
 	'mwsearch-desc' => 'Hintergrundprozess für die Lucene-Suchmaschine',
 );
 
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
+$messages['eo'] = array(
+	'mwsearch-desc' => "Etendilo ''MWSearch''",
+);
+
 /** Persian (فارسی)
  * @author Huji
  */

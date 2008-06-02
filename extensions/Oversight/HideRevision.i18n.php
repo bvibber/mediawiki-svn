@@ -284,12 +284,14 @@ $messages['ca'] = array(
 	'hiderevision-reason'         => 'Motiu (es registrarà de forma privada):',
 	'hiderevision-submit'         => 'Amaga aquestes dades permanentment',
 	'hiderevision-tab'            => 'Amaga la revisió',
+	'hiderevision-noreason'       => "Descriviu la raó de l'eliminació.",
 	'hiderevision-status'         => 'Revisió $1: $2',
 	'hiderevision-error-missing'  => "No s'ha trobat a la base de dades.",
 	'hiderevision-archive-status' => 'Revisió eliminada de $1: $2',
 	'oversight-log-hiderev'       => 'esborrada una edició de $1',
 	'oversight-view'              => 'detalls',
 	'oversight-prev'              => 'Darrera revisió anterior',
+	'oversight-hidden'            => 'Revisió oculta',
 );
 
 /** Corsican (Corsu)
@@ -437,10 +439,13 @@ Forigitaĵoj ne estos videbla al iu ajn per la retejo, sed la forigoj estas skri
 	'hiderevision-reason'         => 'Kialo (estos protokolita private)',
 	'hiderevision-submit'         => 'Kaŝu ĉi tiuj datenoj ĉiam',
 	'hiderevision-tab'            => 'Kaŝu revizion',
+	'hiderevision-norevisions'    => 'Neniuj revizioj specifigita por forigo.',
 	'hiderevision-noreason'       => 'Vi nepre priskribu la kialon por ĉi tiu forigo.',
 	'hiderevision-status'         => 'Revizio $1: $2',
 	'hiderevision-success'        => 'Arkivita kaj forigita sukcese.',
 	'hiderevision-error-missing'  => 'Ne trovita en datumbazo.',
+	'hiderevision-error-current'  => 'Ne povas forigi la lastan redakton de paĝo.
+Malfaru ĉi tiun ŝanĝon antaŭe.',
 	'hiderevision-error-delete'   => 'Ne povas aldoni al arkivo. Ĉu ĝi estis antaŭe forigita?',
 	'hiderevision-archive-status' => 'Forigis revizion de $1: $2',
 	'oversight-log-hiderev'       => 'forigis redakton de $1',
@@ -451,6 +456,13 @@ Forigitaĵoj ne estos videbla al iu ajn per la retejo, sed la forigoj estas skri
 	'oversight-hidden'            => 'Kaŝita revizio',
 	'oversight-header'            => 'Jen listo de revizioj laste daŭre kaŝitaj de publika vido.
 Dono de ĉi tiu informo eble povus rezulti en daŭra malgajno de Kontrolanto-rajtoj.',
+);
+
+/** Spanish (Español)
+ * @author Titoxd
+ */
+$messages['es'] = array(
+	'right-hiderevision' => 'Revisar y restaurar revisiones escondidas de los Bibliotecarios',
 );
 
 /** Basque (Euskara)
@@ -1883,6 +1895,16 @@ por administrador da base de dados, caso você tenha cometido um engano.",
 Liberar tais dados poderá resultar na perda em definitivo dos privilégios de oversight.',
 );
 
+/** Quechua (Runa Simi)
+ * @author AlimanRuna
+ */
+$messages['qu'] = array(
+	'right-hiderevision'   => 'Kamachiqkunamanta pakasqa musuqchasqakunata qhawaspa paqarichiy',
+	'oversight-difference' => "(ñawpaqllan kakuqraq llamk'apusqamanta wakin kay)",
+	'oversight-prev'       => "Kay p'anqap kunan kachkayninpa ñawpaqllan llamk'apusqa",
+	'oversight-hidden'     => "Pakasqa llamk'apusqa",
+);
+
 /** Romani (Romani)
  * @author Desiphral
  */
@@ -2304,12 +2326,15 @@ $messages['tg-cyrl'] = array(
 );
 
 /** Turkish (Türkçe)
+ * @author Runningfridgesrule
  * @author SPQRobin
  * @author Karduelis
  */
 $messages['tr'] = array(
 	'hiderevision-continue'      => 'Devam',
 	'hiderevision-error-missing' => 'Veritabanında bulunamadı',
+	'hiderevision-error-delete'  => 'Arşivlenilemedi; daha önce silindi mi?',
+	'oversight-view'             => 'detaylar',
 );
 
 /** Ukrainian (Українська)

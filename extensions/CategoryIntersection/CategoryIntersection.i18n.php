@@ -106,8 +106,10 @@ $messages['fr'] = array(
  * @author Toliño
  */
 $messages['gl'] = array(
-	'categoryintersection-doit'    => 'Poñer as páxinas en todas estas categorías',
-	'categoryintersection-results' => 'A procura deu $1 {{PLURAL:$1|resultado|resultados}}.',
+	'categoryintersection'               => 'Intersección de categorías',
+	'categoryintersection-doit'          => 'Poñer as páxinas en todas estas categorías',
+	'categoryintersection-maxcategories' => 'O número máximo de interseccións de categorías é de $1.',
+	'categoryintersection-results'       => 'A procura deu $1 {{PLURAL:$1|resultado|resultados}}.',
 );
 
 /** Hindi (हिन्दी)

@@ -28,9 +28,11 @@ $messages['en'] = array(
 
 /** Afrikaans (Afrikaans)
  * @author Arnobarnard
+ * @author Naudefj
  */
 $messages['af'] = array(
 	'dt_viewxml_categories' => 'Ketagorieë',
+	'dt_viewxml_namespaces' => 'Naamruimtes',
 	'dt_xml_name'           => 'Naam',
 	'dt_xml_title'          => 'Titel',
 );
@@ -72,10 +74,12 @@ $messages['bg'] = array(
 );
 
 /** Catalan (Català)
+ * @author Jordi Roqué
  * @author SMP
  */
 $messages['ca'] = array(
-	'dt_xml_page' => 'Pàgina',
+	'dt_xml_page'  => 'Pàgina',
+	'dt_xml_title' => 'Títol',
 );
 
 /** Czech (Česky)
@@ -368,6 +372,13 @@ $messages['mr'] = array(
 	'dt_xml_title'                => 'शीर्षक',
 	'dt_xml_id'                   => 'क्रमांक (आयडी)',
 	'dt_xml_freetext'             => 'मुक्त मजकूर',
+);
+
+/** Low German (Plattdüütsch)
+ * @author Slomox
+ */
+$messages['nds'] = array(
+	'dt_xml_name' => 'Naam',
 );
 
 /** Dutch (Nederlands)

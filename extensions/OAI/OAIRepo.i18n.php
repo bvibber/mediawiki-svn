@@ -18,6 +18,13 @@ $messages['ar'] = array(
 	'oai-desc' => 'يوفر واجهة مستودع [http://www.openarchives.org/OAI/openarchivesprotocol.html OAI-PMH]',
 );
 
+/** Czech (Česky)
+ * @author Matěj Grabovský
+ */
+$messages['cs'] = array(
+	'oai-desc' => 'Posktuje rozhraní k [http://www.openarchives.org/OAI/openarchivesprotocol.html OAI-PMH] úložišti',
+);
+
 /** German (Deutsch)
  * @author Raimond Spekking
  */
@@ -30,6 +37,13 @@ $messages['de'] = array(
  */
 $messages['fr'] = array(
 	'oai-desc' => 'Fournit une interface de dépôt [http://www.openarchives.org/OAI/openarchivesprotocol.html OAI-PMH]',
+);
+
+/** Galician (Galego)
+ * @author Toliño
+ */
+$messages['gl'] = array(
+	'oai-desc' => 'Proporciona a interface [http://www.openarchives.org/OAI/openarchivesprotocol.html OAI-PMH] no repositorio',
 );
 
 /** Hindi (हिन्दी)
@@ -46,6 +60,13 @@ $messages['id'] = array(
 	'oai-desc' => 'Menyediakan antarmuka tempat penyimpanan [http://www.openarchives.org/OAI/openarchivesprotocol.html OAI-PMH]',
 );
 
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$messages['lb'] = array(
+	'oai-desc' => 'Stellt den [http://www.openarchives.org/OAI/openarchivesprotocol.html OAI-PMH] Repertoires-Interface zur Verfügung',
+);
+
 /** Marathi (मराठी)
  * @author Kaustubh
  */
@@ -58,6 +79,13 @@ $messages['mr'] = array(
  */
 $messages['nl'] = array(
 	'oai-desc' => 'Biedt een interface naar de [http://www.openarchives.org/OAI/openarchivesprotocol.html OAI-PMH-repository]',
+);
+
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ */
+$messages['no'] = array(
+	'oai-desc' => 'Gir tilgang til grensesnittet til [http://www.openarchives.org/OAI/openarchivesprotocol.html OAI-PMH]',
 );
 
 /** Occitan (Occitan)
@@ -79,6 +107,20 @@ $messages['ru'] = array(
  */
 $messages['sk'] = array(
 	'oai-desc' => 'Poskytuje rozhranie k úložisku [http://www.openarchives.org/OAI/openarchivesprotocol.html OAI-PMH]',
+);
+
+/** Swedish (Svenska)
+ * @author M.M.S.
+ */
+$messages['sv'] = array(
+	'oai-desc' => 'Ger tillgång till gränssnittet till [http://www.openarchives.org/OAI/openarchivesprotocol.html OAI-PMH]',
+);
+
+/** Vèneto (Vèneto)
+ * @author Candalua
+ */
+$messages['vec'] = array(
+	'oai-desc' => "Fornisse un'interfacia al depòsito [http://www.openarchives.org/OAI/openarchivesprotocol.html OAI-PMH]",
 );
 
 /** Vietnamese (Tiếng Việt)

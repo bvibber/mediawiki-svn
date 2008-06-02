@@ -430,8 +430,11 @@ $messages['mr'] = array(
  * @author Slomox
  */
 $messages['nds'] = array(
-	'chemFunctions_Formula' => 'Formel',
-	'chemFunctions_Name'    => 'IUPAC-Naam',
+	'chemFunctions_CAS'      => 'CAS-Nummer',
+	'chemFunctions_ATCCode'  => 'ATCCode',
+	'chemFunctions_ECNumber' => 'ECNumber',
+	'chemFunctions_Formula'  => 'Formel',
+	'chemFunctions_Name'     => 'IUPAC-Naam',
 );
 
 /** Dutch (Nederlands)

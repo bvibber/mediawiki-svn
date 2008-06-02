@@ -164,6 +164,13 @@ $messages['ko'] = array(
 	'poem-desc' => '시 형식을 위해 <tt>&lt;poem&gt;</tt> 태그를 추가',
 );
 
+/** Ripoarisch (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'poem-desc' => 'Brengk et <tt>&lt;poem&gt;</tt>-Kommando met, för Jedeeshte ze jeshtallde',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */

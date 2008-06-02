@@ -295,12 +295,16 @@ $messages['ml'] = array(
  */
 $messages['mr'] = array(
 	'tasklist'               => 'कार्य यादी',
+	'tasklistbyproject'      => 'प्रकल्पानुसार कामांची यादी',
 	'tasklistunknownproject' => 'अनोळखी प्रकल्प',
 	'tasklistunspecuser'     => 'न दिलेला सदस्य',
 	'tasklistincorrectuser'  => 'चुकीचे सदस्यनाव',
 	'tasklistemail'          => 'प्रिय %s',
+	'tasklistemailsubject'   => '[%s] कार्य यादी बदल',
 	'tasklistmytasks'        => 'माझ्या जबाबदार्‍या',
 	'tasklistchooseproj'     => 'प्रकल्प निवडा:',
+	'tasklistprojdisp'       => 'दर्शवा',
+	'tasklistbyname'         => '== %s साठीची करायच्या गोष्टींची यादी ==',
 );
 
 /** Dutch (Nederlands)

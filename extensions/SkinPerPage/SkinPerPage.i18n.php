@@ -169,6 +169,13 @@ $messages['sk'] = array(
 	'skinperpage-desc' => 'Pridáva značku <tt>&lt;skin&gt;</tt>, ktorá umožňuje na jednotlivej stránke použiť odlišnú tému vzhľadu',
 );
 
+/** Sundanese (Basa Sunda)
+ * @author Irwangatot
+ */
+$messages['su'] = array(
+	'skinperpage-desc' => 'Nambahan tag <tt>&lt;kulit&gt;</tt> pikeun ngagunakeun kulit anu béda pér kaca',
+);
+
 /** Swedish (Svenska)
  * @author M.M.S.
  */
@@ -210,3 +217,4 @@ $messages['zh-hans'] = array(
 $messages['zh-hant'] = array(
 	'skinperpage-desc' => '加入<tt>&lt;skin&gt;</tt>標籤在每一頁面中使用不同的面版',
 );
+

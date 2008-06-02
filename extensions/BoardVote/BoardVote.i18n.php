@@ -1573,6 +1573,12 @@ Siitä muodostuu seuraava salattu muoto, joka on julkisesti näkyvillä sivulla 
 	'boardvote_bot'            => 'Tunnuksellasi on botti-merkintä wikissä. Bottitunnus ei ole oikeutettu äänestämään.',
 	'boardvote_welcome'        => "Tervetuloa '''$1'''!",
 	'go_to_board_vote'         => 'Wikimedian johtokunnan valtuutettujen vaalit 2008',
+	'boardvote_redirecting'    => 'Paremman turvallisuuden ja läpinäkyvyyden vuoksi äänestys tapahtuu ulkoisella, itsenäisesti hallitulla palvelimella.
+
+Sinut ohjataan ulkoiselle palvelimelle 20 sekunnissa. [$1 Napsauta tästä] siirtyäksesi heti.
+
+Allekirjoittamattomasta sertifikaatista saattaa näkyä turvallisuusvaroitus.',
+	'right-boardvote'          => 'Hallinnoida vaaleja',
 );
 
 $messages['fo'] = array(
@@ -1586,14 +1592,15 @@ $messages['fo'] = array(
 /** French (Français)
  * @author Guérin Nicolas
  * @author Grondin
+ * @author Lejonel
  * @author Sherbrooke
  */
 $messages['fr'] = array(
 	'boardvote'                => 'Élection au conseil d’administration de la Wikimedia Foundation',
 	'boardvote-desc'           => "[http://meta.wikimedia.org/wiki/Board_elections/2008/fr Élection au conseil d'administration de la Wikimedia Foundation]",
-	'boardvote_entry'          => '* [[Special:Boardvote/vote?uselang=fr|Vote]]
-* [[Special:Boardvote/list?uselang=fr|Liste des votes enregistrés]]
-* [[Special:Boardvote/dump?uselang=fr|Enregistrements cryptés]]',
+	'boardvote_entry'          => '* [[Special:Boardvote/vote|Vote]]
+* [[Special:Boardvote/list|Liste des votes enregistrés]]
+* [[Special:Boardvote/dump|Enregistrements cryptés]]',
 	'boardvote_intro'          => '<p>Bienvenue à l\'élection 2008 du conseil d\'administration de la<i><a href="http://wikimediafoundation.org/wiki/Accueil" class="extiw" title="foundation:Accueil">Wikimedia Foundation</a></i>.
 Nous votons pour une personne qui représentera la communauté des utilisateurs sur les différents projets Wikimedia.
 Cette personne et le conseil d\'administration contribueront à orienter la direction de ces projets et représenteront <i>vos</i> intérêts et <i>vos</i> préoccupations auprès du conseil d\'administration.
@@ -1621,11 +1628,11 @@ Il a été crypté avec la clé publique des administrateurs de l’élection :
 
 <pre>$2</pre>
 
-Suit la version cryptée ci-dessous, qui sera affichée publiquement sur [[Special:Boardvote/dump?uselang=fr|cette page]].
+Suit la version cryptée ci-dessous, qui sera affichée publiquement sur [[Special:Boardvote/dump|cette page]].
 
 <pre>$3</pre>
 
-[[Special:Boardvote/entry?uselang=fr|Retour]]',
+[[Special:Boardvote/entry|Retour]]',
 	'boardvote_invalidentered' => '<p><strong>Erreur</strong> : la préférence pour un candidat doit être exprimée uniquement par des nombres entiers positifs (1, 2, 3…) ou bien être laissée vide.</p>',
 	'boardvote_nosession'      => 'Impossible de déterminer votre identifiant Wikimedia.<br />
 Veuillez vous rendre sur votre wiki d’origine, vous enregistrer, et vous rendre sur la page <nowiki>[[Special:Boardvote]]</nowiki>.<br />
@@ -1646,7 +1653,7 @@ $1 pour les données cryptées.</p>',
 	'boardvote_strike'         => 'Biffer',
 	'boardvote_unstrike'       => 'Débiffer',
 	'boardvote_needadmin'      => "Seuls les administrateurs de l'élection peuvent effectuer cette opération.",
-	'boardvote_sitenotice'     => '<a href="{{localurle:Special:Boardvote/vote?uselang=fr}}">Élection au conseil d’administration de la Wikimedia Foundation</a> : le vote est ouvert jusqu’au 22 juin.',
+	'boardvote_sitenotice'     => '<a href="{{localurle:Special:Boardvote/vote}}">Élection au conseil d’administration de la Wikimedia Foundation</a> : le vote est ouvert jusqu’au 22 juin.',
 	'boardvote_notstarted'     => 'Le vote n’est pas encore commencé.',
 	'boardvote_closed'         => 'L’élection est désormais terminée. Le résultat est ou sera proclamé sur [http://meta.wikimedia.org/wiki/Board_elections/2008/Results/fr la page dédiée] (fr).',
 	'boardvote_edits_many'     => 'plusieurs ',
@@ -2690,13 +2697,13 @@ $messages['jv'] = array(
 
 <p>Mangga diwaca dhisik pranyatan lan wangsulan para kandidat minangka saksama sadurungé panjenengan miwiti nyoblos. Saben kandidat iku panganggo sing wis dikurmati, sing wis nyumbangsihaké wektu lan daya upaya supaya nggawé proyèk-proyèk iki dadi sawijining lingkungan sing ramah lan duwé komitmen kanggo nggolèk serta nyebaraké kawruh umat manungsa sacara bébas.</p>
 
-<p>Please rank the candidates according to your preferences by filling in a number beside the box (1 = favourite candidate, 2 = second favourite, ...).
-You may give the same preference to more than one candidate and may keep candidates unranked.
-It is presumed that you prefer all ranked candidates to all not ranked candidates and that you are indifferent between all not ranked candidates.</p>
+<p>Mangga paringana peringkat marang kandidat-kandidat miturut préferènsi panjenengan mawa nglebokaké sawijining angka ing sandhingé  kothak (1 = kandidat favorit, 2 = favorit kapindho, ...).
+Panjenengan bisa mènèhi peringkat sing padha kanggo luwih saka kandidat siji lan ora mènèhi peringkat kanggo kandidat sing liya.
+Kami bakal ngasumsi yèn panjenengan luwih nyenengi kabèh kandidat sing panjenengan wènèhi peringkat tinimbang sing ora, lan yèn panjenengan ora ketarik marang présèntasi kandidat sing ora diwènèhi peringkat.</p>
 
-<p>The winner of the election will be calculated using the Schulze method.</p>
+<p>Pamenang pamilihan iki bakal dikalkulasi mawa métode Schulze.</p>
 
-<p>For more information, see:</p>
+<p>Kanggo informasi sabanjuré, mangga wacanen:</p>
 <ul><li><a href="http://meta.wikimedia.org/wiki/Board_elections/2008" class="external">Board elections 2008</a></li>
 <li><a href="http://meta.wikimedia.org/wiki/Board_elections/2008/Candidates" class="external">Candidates</a></li>
 <li><a href="http://en.wikipedia.org/wiki/Schulze_method" class="external">Schulze method</a></li></ul>',
@@ -2720,8 +2727,8 @@ Vèrsi sin diènkripsi kapacak ing ngisor iki. Kasil iku bakal dituduhaké sacar
 [[Special:Boardvote/entry|Back]]',
 	'boardvote_nosession'    => 'Idèntitas panganggo Wikimedia panjenengan ora bisa ditemtokaké.
 Mangga log mlebu ing wiki ing ngendi panjenengan duwé hak kanggo mèlu coblosan, lan tumujua menyang <nowiki>[[Special:Boardvote]]</nowiki>.
-Panjenengan kudu nganggo sawijining rékening (akun) mawa minimal $1 kontribusi sadurungé $2, lan suntingan kapisan sadurungé $3.',
-	'boardvote_notloggedin'  => 'Panjenengan ora mlebu log. Supaya bisa mèlu nyoblos, panjenengan kudu nganggo rékening (akun) mawa paling ora $1 suntingan sadurungé $2, lan suntingan sing kapisan dilakoni sadurungé $3.',
+Panjenengan kudu nganggo sawijining rékening (akun) mawa minimal $1 kontribusi sadurungé $2, lan nggawé minimal $3 suntingan antara $4 lan $5.',
+	'boardvote_notloggedin'  => 'Panjenengan ora mlebu log. Supaya bisa mèlu nyoblos, panjenengan kudu nganggo rékening (akun) mawa paling ora $1 suntingan sadurungé $2, lan kudu nglakoni $3 suntingan antara $4 lan $5.',
 	'boardvote_notqualified' => 'Panjenengan ora bisa mèlu mènèhaké swara ing pamilihan iki. Panjenengan kudu wis nglakoni $3 suntingan sadurungé $2, lan suntingan kapisan wis ana sadurungé $5.',
 	'boardvote_novotes'      => 'Durung ana sing nyoblos.',
 	'boardvote_time'         => 'Wektu',

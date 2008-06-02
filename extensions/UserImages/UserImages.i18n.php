@@ -165,6 +165,15 @@ $messages['ml'] = array(
 	'userimages-noimages' => '$1 ചിത്രങ്ങള്‍ അപ്‌ലോഡ് ചെയ്തിട്ടില്ല.',
 );
 
+/** Marathi (मराठी)
+ * @author Kaustubh
+ */
+$messages['mr'] = array(
+	'userimages-caption'  => '$1 ने चढविलेली चित्रे',
+	'userimages-noname'   => 'चुकीचे सदस्यनाव अथवा नाव दिलेले नाही.',
+	'userimages-noimages' => '$1 ने एकही चित्र चढविलेले नाही',
+);
+
 /* nld / Dutch */
 $messages['nl'] = array(
 	'userimages-caption' => 'Afbeeldingen toegevoegd door $1',

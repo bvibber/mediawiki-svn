@@ -53,6 +53,13 @@ $messages['fr'] = array(
 	'ajax-qp-desc' => 'Ajoute du script AJAX aux pages de requêtes telles que [[Special:Shortpages]]',
 );
 
+/** Galician (Galego)
+ * @author Toliño
+ */
+$messages['gl'] = array(
+	'ajax-qp-desc' => 'Engadir algún AJAX a QueryPages tales como [[Special:Shortpages]]',
+);
+
 /** Hindi (हिन्दी)
  * @author Kaustubh
  */

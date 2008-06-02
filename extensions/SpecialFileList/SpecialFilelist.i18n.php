@@ -349,6 +349,7 @@ $messages['mn'] = array(
  */
 $messages['mr'] = array(
 	'filelist'              => 'संचिका यादी',
+	'filelist-desc'         => 'चढविलेल्या संचिकांची यादी करण्यासाठी विशेष पान',
 	'filelist-show-list'    => 'यादी दाखवा',
 	'filelist-show-gallery' => 'प्रदर्शन दाखवा',
 	'filelist-image-desc'   => 'माहिती',
@@ -498,6 +499,17 @@ $messages['srn'] = array(
  */
 $messages['stq'] = array(
 	'filelist-image-desc' => 'Beschrieuwenge',
+);
+
+/** Sundanese (Basa Sunda)
+ * @author Irwangatot
+ */
+$messages['su'] = array(
+	'filelist'              => 'Daptar Gambar',
+	'filelist-desc'         => 'Kaca husus keur daptar gambar nu dimuat',
+	'filelist-show-list'    => 'Tembongkeun daptar',
+	'filelist-show-gallery' => 'Tembongkeun Galeri',
+	'filelist-image-desc'   => 'katarangan',
 );
 
 /** Swedish (Svenska)

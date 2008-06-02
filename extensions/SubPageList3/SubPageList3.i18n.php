@@ -123,6 +123,15 @@ $messages['lb'] = array(
 	'spl3_nosubpages' => '$1 huet keng Ënnersäite fir ze weisen',
 );
 
+/** Marathi (मराठी)
+ * @author Kaustubh
+ */
+$messages['mr'] = array(
+	'spl3-desc'       => '<code><nowiki><splist /></nowiki></code> टॅग चा वापर करून आपोआप उपपानांची यादी तयार करते',
+	'spl3_debug'      => 'विकल्प $1 साठी अनोळखी किंमत.',
+	'spl3_nosubpages' => '$1 ला यादी करण्यासाठी उपपाने नाहीत.',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

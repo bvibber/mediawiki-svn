@@ -59,8 +59,10 @@ $messages['de'] = array(
  * @author Yekrats
  */
 $messages['eo'] = array(
+	'simpleantispam'       => 'Via redakto spronis la kontraŭspamilon.',
 	'simpleantispam-label' => 'Kontrolo kontraŭ spamo.
 NE ENIGU ion ajn!',
+	'simpleantispam-desc'  => 'Aldonas simplan kontraŭspamilon/kontraŭrobotilon al paĝoj',
 );
 
 /** Finnish (Suomi)
@@ -242,3 +244,4 @@ $messages['zh-hant'] = array(
 '''不要'''加入這個！",
 	'simpleantispam-desc'  => '加一個簡單的垃圾／機械人檢查表格',
 );
+

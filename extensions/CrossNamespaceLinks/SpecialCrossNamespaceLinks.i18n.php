@@ -142,8 +142,9 @@ $messages['dsb'] = array(
  * @author Yekrats
  */
 $messages['eo'] = array(
-	'crossnamespacelinks'     => 'Trans-nomspacaj ligiloj',
-	'crossnamespacelinkstext' => '$1: $2 {{PLURAL:$2|ligilo|ligiloj}} al $3',
+	'crossnamespacelinks'      => 'Trans-nomspacaj ligiloj',
+	'crossnamespacelinks-desc' => '[[Special:CrossNamespaceLinks|Montras ligilojn trans nomspacoj]] evitindajn en {{SITENAME}}',
+	'crossnamespacelinkstext'  => '$1: $2 {{PLURAL:$2|ligilo|ligiloj}} al $3',
 );
 
 $messages['es'] = array(
@@ -487,7 +488,8 @@ $messages['nan'] = array(
  * @author Slomox
  */
 $messages['nds'] = array(
-	'crossnamespacelinks' => 'Sieden mit Lenken na annere Naamrüüm',
+	'crossnamespacelinks'     => 'Sieden mit Lenken na annere Naamrüüm',
+	'crossnamespacelinkstext' => '$1: $2 {{PLURAL:$2|Lenk|Lenken}} na $3',
 );
 
 /** Dutch (Nederlands)

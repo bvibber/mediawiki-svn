@@ -338,6 +338,7 @@ To móže husto serwer sylnišo wobćežić, prošu wužij tuž tutu funkciju zr
 	'querybtn'        => 'Wotprašenje wotesłać',
 	'selectonly'      => 'Su jenož wotprašenja dowolene, kotrež su jenož čitajomne.',
 	'querysuccessful' => 'Wotprašenje wuspěšne',
+	'right-asksql'    => 'SQL-wotprašenja  wuwjasć',
 );
 
 /** Hungarian (Magyar)
@@ -729,6 +730,7 @@ Dit kon oafte dän Server oarich beläästigje, bruuk dät deeruum spoarsoam.",
 
 /** Sundanese (Basa Sunda)
  * @author Kandar
+ * @author Irwangatot
  */
 $messages['su'] = array(
 	'asksql'          => 'Pamundut SQL',
@@ -739,6 +741,7 @@ $messages['su'] = array(
 	'querybtn'        => 'Kirimkeun pamundut',
 	'selectonly'      => 'Ngan pamundut ukur-maca nu diwenangkeun.',
 	'querysuccessful' => 'Pamundut tos laksana',
+	'right-asksql'    => 'Jieun SQL quéri',
 );
 
 /** Swedish (Svenska)

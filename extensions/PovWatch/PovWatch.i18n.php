@@ -112,6 +112,13 @@ $messages['bg'] = array(
 	'right-povwatch_user'              => 'добавяне на страници в списъка за наблюдение на други потребители',
 );
 
+/** Catalan (Català)
+ * @author Jordi Roqué
+ */
+$messages['ca'] = array(
+	'povwatch_title' => 'Títol:',
+);
+
 /** Danish (Dansk)
  * @author Jon Harald Søby
  */
@@ -170,7 +177,7 @@ $messages['eo'] = array(
 	'povwatch_invalid_title'   => 'La enigita titolo estis nevalida',
 	'povwatch_unknown_subpage' => 'Nekonata subpaĝo.',
 	'povwatch_title'           => 'Titolo:',
-	'povwatch_comment'         => 'Skribu komenton:',
+	'povwatch_comment'         => 'Komento por protokolo:',
 	'povwatch_added'           => 'aldonita',
 );
 
@@ -371,14 +378,15 @@ Klickt op de Knäppchen hei ënnendrënner fir iech anzeschreiwen.",
 
 /** Limburgish (Limburgs)
  * @author Ooswesthoesbes
+ * @author Tibor
  */
 $messages['li'] = array(
 	'povwatch'                         => 'POV-Beloer',
 	'povwatch_no_session'              => "Fout: 't formeleer kós neet verwèrk waere ómdet de sessiegegaeves verlaore zeen gegange.",
-	'povwatch_not_allowed_push'        => "Doe bös geine administrator van POV-Beloer en kins gein pazjena's op volglies zitte.",
+	'povwatch_not_allowed_push'        => "De bis geine administrator van PovWatch en kèns gein pazjena's op volglieste zètte.",
 	'povwatch_already_subscribed'      => 'Doe bös al geabonneertdj op POV-Beloer',
 	'povwatch_subscribed'              => 'Doe bös noe geabonneerdj op POV-Beloer',
-	'povwatch_not_subscribed'          => 'Doe bös neet geabonneerdj op POV-Beloer, dus doe kans neet oetsjrieve.',
+	'povwatch_not_subscribed'          => 'De bis neet geabonneerd op PovWatch, dus de kèns neet oetsjrieve.',
 	'povwatch_unsubscribed'            => 'Doe bös oetgesjreve van POV-Beloer',
 	'povwatch_invalid_title'           => 'De opgegaeve pazjenanaam is óngeljig',
 	'povwatch_pushed'                  => '[[$1]] is succesvol toegeweze aan $2 volglies van gebroekers.',
@@ -390,7 +398,7 @@ $messages['li'] = array(
 	'povwatch_not_allowed_subscribers' => 'Doe moogs de lies van abonnees op POV-Beloer neet bekieke.',
 	'povwatch_unknown_subpage'         => 'Ónbekindje subpazjena.',
 	'povwatch_push'                    => 'Toewieze',
-	'povwatch_push_intro'              => "Gebroek 't óngerstäönde formeleer óm pazjena's op de volglies van abonnees te zitte. Bön veurzichtig bie 't inveure van de pazjena; zelfs neet bestäönde pazjena's kinne toegevoeg waere en doe kans de pazjena neet wisse es dae is toegeweze.",
+	'povwatch_push_intro'              => "Gebroek 't óngersjtaonde formeleer óm pazjena's op de volglies van abonnees te zètte. Bis veurzichtig bie 't inveure van de pazjena; zelfs neet-besjtaonde pazjena's kónne toegevoeg waere en de kèns de pazjena neet wusje es die is toegeweze.",
 	'povwatch_title'                   => 'Pazjena:',
 	'povwatch_comment'                 => 'Logbookopmèrking:',
 	'povwatch_no_log'                  => "'t Logbook is laeg.",

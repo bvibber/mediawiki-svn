@@ -287,6 +287,13 @@ $messages['sv'] = array(
 	'purgecache-button'  => 'Rensa',
 );
 
+/** Thai (ไทย)
+ * @author Passawuth
+ */
+$messages['th'] = array(
+	'purgecache' => 'ล้างแคช',
+);
+
 /** Ukrainian (Українська)
  * @author Ahonc
  */

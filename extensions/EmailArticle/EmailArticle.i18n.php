@@ -197,6 +197,13 @@ $messages['mr'] = array(
 	'ea-selectcss'        => 'सीएसएस स्टाइलशीट पाठवा',
 );
 
+/** Low German (Plattdüütsch)
+ * @author Slomox
+ */
+$messages['nds'] = array(
+	'ea-fromgroup' => 'Vun Grupp:',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

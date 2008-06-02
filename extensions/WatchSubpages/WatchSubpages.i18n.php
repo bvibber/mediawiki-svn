@@ -96,8 +96,11 @@ Pour cocher ou décocher plusieurs pages, le fait de tenir enfoncée la touche �
  * @author Toliño
  */
 $messages['gl'] = array(
-	'watchsubpages-desc' => '[[Special:WatchSubpages|Engadir rapidamente todas as subpáxinas]] dunha páxina á listaxe de vixilancia',
-	'watchsubpages'      => 'Vixiar as subpáxinas',
+	'watchsubpages'                      => 'Vixiar as subpáxinas',
+	'watchsubpages-addedtowatchlist'     => 'O seguinte foi engadido á súa listaxe de vixilancia.',
+	'watchsubpages-addtitles'            => 'Engadir páxinas',
+	'watchsubpages-addtitlestowatchlist' => 'Engadir páxinas á listaxe de vixilancia',
+	'watchsubpages-desc'                 => '[[Special:WatchSubpages|Engadir rapidamente todas as subpáxinas]] dunha páxina á listaxe de vixilancia',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -125,7 +128,9 @@ $messages['ml'] = array(
  * @author Kaustubh
  */
 $messages['mr'] = array(
-	'watchsubpages-addtitles' => 'पाने वाढवा',
+	'watchsubpages'                      => 'उपपाने पहा',
+	'watchsubpages-addtitles'            => 'पाने वाढवा',
+	'watchsubpages-addtitlestowatchlist' => 'पृष्ठे पहार्‍याच्या सूचीत टाका',
 );
 
 /** Dutch (Nederlands)
@@ -202,6 +207,21 @@ Pri označovaní alebo odznačovaní viacerých stránok môžete držaním klá
 $messages['sr-ec'] = array(
 	'watchsubpages-desc' => 'Брзо [[Special:WatchSubpages|додај све подстранице]] странице на списак надгледања',
 	'watchsubpages'      => 'Надгледај подстранице',
+);
+
+/** Sundanese (Basa Sunda)
+ * @author Irwangatot
+ */
+$messages['su'] = array(
+	'watchsubpages'                      => 'Awaskeun sub artikel',
+	'watchsubpages-addedtowatchlist'     => 'Ieu geus di tambahkeun ka awaskeuneun anjeun',
+	'watchsubpages-addtitles'            => 'Asupkeun kaca',
+	'watchsubpages-addtitlestowatchlist' => 'Asupkeun kaca ka awaskeuneun',
+	'watchsubpages-desc'                 => 'Gancang [[Special:WatchSubpages|asupkeun kabeh sub kaca ]] ieu ka awaskeunen',
+	'watchsubpages-form'                 => 'Pilih kaca keur di asupkeun ka awaskeuneun 
+Keur ngasupkeun kaca, contreng kotak di gigireuna, tuluy klik "Asupkeun kaca".
+
+Keur milih loba kaca, tahan konci shift keur anjeun bisa milih kotak lainna',
 );
 
 /** Swedish (Svenska)

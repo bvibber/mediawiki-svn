@@ -257,6 +257,13 @@ $messages['stq'] = array(
 	'seealso' => 'Sjuch uk',
 );
 
+/** Sundanese (Basa Sunda)
+ * @author Irwangatot
+ */
+$messages['su'] = array(
+	'seealso' => 'Tempo ogé',
+);
+
 /** Swedish (Svenska)
  * @author Lejonel
  * @author SPQRobin

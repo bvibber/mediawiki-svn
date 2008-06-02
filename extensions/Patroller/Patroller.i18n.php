@@ -40,8 +40,10 @@ $messages['en'] = array(
 
 /** Afrikaans (Afrikaans)
  * @author Arnobarnard
+ * @author Naudefj
  */
 $messages['af'] = array(
+	'patrol-revert'        => 'Rol terug',
 	'patrol-revert-reason' => 'Rede:',
 );
 
@@ -444,7 +446,11 @@ $messages['km'] = array(
  * @author Purodha
  */
 $messages['ksh'] = array(
+	'patrol-endorse'       => 'Jootheiße',
+	'patrol-revert'        => 'Zeröck nemme',
 	'patrol-revert-reason' => 'Aanlass:',
+	'patrol-skip'          => 'Övverjonn',
+	'patrol-reverting'     => 'Zeröck nemme: $1',
 );
 
 $messages['la'] = array(
@@ -455,14 +461,18 @@ $messages['la'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
-	'patrol'               => 'Kontroll vun den Ännerungen',
-	'patrol-endorse'       => 'Bestätegen',
-	'patrol-revert'        => 'Zrécksetzen',
-	'patrol-revert-reason' => 'Grond:',
-	'patrol-skip'          => 'Iwwersprangen',
-	'patrol-reverting'     => 'Zrécksetzen: $1',
-	'patrol-reverted-ok'   => "D'Ännerung gouf zréckgesat.",
-	'patrol-resume'        => 'Hei clicke fir weiderzefueren.',
+	'patrol'                 => 'Kontroll vun den Ännerungen',
+	'patrol-endorse'         => 'Bestätegen',
+	'patrol-revert'          => 'Zrécksetzen',
+	'patrol-revert-reason'   => 'Grond:',
+	'patrol-skip'            => 'Iwwersprangen',
+	'patrol-reverting'       => 'Zrécksetzen: $1',
+	'patrol-reverted-ok'     => "D'Ännerung gouf zréckgesat.",
+	'patrol-reverted-failed' => "D'Ännerung konnt net zréck gesat ginn.",
+	'patrol-reasons'         => "* Einfache Vandalismus
+* Test vun engem neie Benotzer
+* Kuckt d'Diskussiounssäit",
+	'patrol-resume'          => 'Hei clicke fir weiderzefueren.',
 );
 
 /** Malayalam (മലയാളം)

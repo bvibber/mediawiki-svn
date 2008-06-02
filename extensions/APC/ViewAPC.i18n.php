@@ -601,6 +601,8 @@ Une nouvelle version $2 est disponible sur http://pecl.php.net/package/APC/$2',
 $messages['gl'] = array(
 	'viewapc'                       => 'Información ACP',
 	'right-apc'                     => 'Usar todas as características en Special:ViewAPC',
+	'viewapc-apc-not-available'     => 'A información da memoria caché non está dispoñible.
+Parece que APC non funciona.',
 	'viewapc-clear-confirm'         => 'Desexa borrar a memoria caché?',
 	'viewapc-clear-user-cache'      => 'Borrar a memoria caché do usuario',
 	'viewapc-info-general'          => 'Información xeral',
@@ -609,14 +611,23 @@ $messages['gl'] = array(
 	'viewapc-filecache-info'        => 'Información da memoria caché do ficheiro',
 	'viewapc-usercache-info'        => 'Información caché do usuario',
 	'viewapc-cached-files-d'        => '$1 {{PLURAL:$1|ficheiro|ficheiros}} ($2)',
+	'viewapc-rps'                   => '$1 solicitudes por segundo',
+	'viewapc-info-runtime'          => 'Información do funcionamento',
 	'viewapc-memory-usage'          => 'Uso da memoria',
+	'viewapc-display-attribute'     => 'Atributo',
+	'viewapc-display-value'         => 'Valor',
 	'viewapc-display-filename'      => 'Nome do ficheiro',
+	'viewapc-display-device'        => 'Dispositivo',
 	'viewapc-display-info'          => 'Nome',
+	'viewapc-display-type'          => 'Tipo',
 	'viewapc-display-mtime'         => 'Modificado',
 	'viewapc-display-creation_time' => 'Creado',
 	'viewapc-display-deletion_time' => 'Borrado',
+	'viewapc-display-no-delete'     => 'Non borrado',
 	'viewapc-display-access_time'   => 'Accedido',
+	'viewapc-display-ref_count'     => 'Contador de referencias',
 	'viewapc-display-mem_size'      => 'Tamaño',
+	'viewapc-display-too-big'       => "''O contido é demasiado grande para amosalo.''",
 	'viewapc-ls-options-legend'     => 'Opcións',
 	'viewapc-ls-submit'             => 'Ir!',
 	'viewapc-ls-header-name'        => 'Nome',
@@ -628,6 +639,7 @@ $messages['gl'] = array(
 	'viewapc-ls-delete'             => '[Borrar agora]',
 	'viewapc-ls-scope-active'       => 'Activo',
 	'viewapc-ls-scope-deleted'      => 'Borrado',
+	'viewapc-ls-scope-both'         => 'Ambos',
 	'viewapc-ls-sort-size'          => 'Tamaño',
 	'viewapc-ls-sort-name'          => 'Nome',
 	'viewapc-ls-sort-accessed'      => 'Último acceso',
@@ -635,6 +647,15 @@ $messages['gl'] = array(
 	'viewapc-ls-sort-created'       => 'Creado',
 	'viewapc-ls-sort-deleted'       => 'Borrado',
 	'viewapc-ls-limit-none'         => 'Todos',
+	'viewapc-ls-more'               => "''Hai $1 {{PLURAL:$1|entrada|entradas}} máis''",
+	'viewapc-ls-nodata'             => "''Os datos non coinciden''",
+	'viewapc-delete-ok'             => 'A entrada <nowiki>$1</nowiki> da memoria caché foi borrada.',
+	'viewapc-delete-failed'         => 'Houbo un fallo ao eliminar a entrada <nowiki>$1</nowiki> da memoria caché.',
+	'viewapc-version-info'          => 'Información da versión',
+	'viewapc-version-changelog'     => 'Rexistro de cambios',
+	'viewapc-version-ok'            => 'Está executando a última versión de APC ($1)',
+	'viewapc-version-old'           => 'Está executando unha versión vella de APC ($1)
+A nova versión $2 está dispoñible en http://pecl.php.net/package/APC/$2',
 	'viewapc-filecache-cleared'     => "'''''A memoria caché do ficheiro foi borrada.'''''",
 );
 
@@ -951,6 +972,7 @@ $messages['lb'] = array(
 	'viewapc-ls-header-name'        => 'Numm',
 	'viewapc-ls-header-hits'        => 'Treffer',
 	'viewapc-ls-header-size'        => 'Gréisst',
+	'viewapc-ls-header-accessed'    => 'Läschten Zougrëff',
 	'viewapc-ls-header-modified'    => 'Läscht Ännerung',
 	'viewapc-ls-header-deleted'     => 'Geläscht',
 	'viewapc-ls-delete'             => '[Elo läschen]',
@@ -960,6 +982,7 @@ $messages['lb'] = array(
 	'viewapc-ls-sort-hits'          => 'Treffer',
 	'viewapc-ls-sort-size'          => 'Gréisst',
 	'viewapc-ls-sort-name'          => 'Numm',
+	'viewapc-ls-sort-accessed'      => 'Läschten Zougrëff',
 	'viewapc-ls-sort-modified'      => 'Läscht Ännerung',
 	'viewapc-ls-sort-deleted'       => 'Geläscht',
 	'viewapc-ls-limit-none'         => 'Alleguer',
@@ -1156,6 +1179,42 @@ $messages['mr'] = array(
 नवीन आवृत्ती $2 http://pecl.php.net/package/APC/$2 इथे उपलब्ध आहे',
 	'viewapc-filecache-cleared'     => "'''''संचिका सय रिकामी केली.'''''",
 	'viewapc-usercache-cleared'     => "'''''प्रणाली सय रिकामी केली.'''''",
+);
+
+/** Low German (Plattdüütsch)
+ * @author Slomox
+ */
+$messages['nds'] = array(
+	'viewapc-desc'                  => '[[Special:ViewAPC|Bekiek un verwalt den APC-Cache]] mit MediaWiki',
+	'viewapc-clear-confirm'         => 'Wullt du den Cache leddig maken?',
+	'viewapc-clear-user-cache'      => 'Bruker-Cache leddig maken',
+	'viewapc-apc-version'           => 'APC-Version',
+	'viewapc-php-version'           => 'PHP-Version',
+	'viewapc-start-time'            => 'Starttied',
+	'viewapc-cached-files-d'        => '$1 {{PLURAL:$1|Datei|Datein}} ($2)',
+	'viewapc-rps'                   => '$1 Affragen per Sekunn',
+	'viewapc-memory-usage'          => 'Spieker-Bruuk',
+	'viewapc-memory-free'           => 'Free: $1 ($2)',
+	'viewapc-memory-used'           => 'Bruukt: $1 ($2)',
+	'viewapc-display-value'         => 'Weert',
+	'viewapc-display-filename'      => 'Dateinaam',
+	'viewapc-display-info'          => 'Naam',
+	'viewapc-display-type'          => 'Typ',
+	'viewapc-display-deletion_time' => 'Wegsmeten',
+	'viewapc-display-mem_size'      => 'Grött',
+	'viewapc-ls-options-legend'     => 'Opschonen',
+	'viewapc-ls-submit'             => 'Los',
+	'viewapc-ls-header-name'        => 'Naam',
+	'viewapc-ls-header-size'        => 'Grött',
+	'viewapc-ls-header-deleted'     => 'Wegsmeten',
+	'viewapc-ls-delete'             => '[Nu wegsmieten]',
+	'viewapc-ls-scope-deleted'      => 'Wegsmeten',
+	'viewapc-ls-scope-both'         => 'Beid',
+	'viewapc-ls-sort-size'          => 'Grött',
+	'viewapc-ls-sort-name'          => 'Naam',
+	'viewapc-ls-sort-modified'      => 'Toletzt ännert',
+	'viewapc-ls-sort-created'       => 'Opstellt',
+	'viewapc-ls-sort-deleted'       => 'Wegsmeten',
 );
 
 /** Dutch (Nederlands)
@@ -1821,6 +1880,13 @@ Zdá sa, že APC nebeží.',
 Novšia verzia $2 je dostupná na http://pecl.php.net/package/APC/$2',
 	'viewapc-filecache-cleared'     => "'''''Vyrovnávacia pamäť súborov bola vyčistená.'''''",
 	'viewapc-usercache-cleared'     => "'''''Vyrovnávacia pamäť aplikácie bola vyčistená.'''''",
+);
+
+/** Sundanese (Basa Sunda)
+ * @author Irwangatot
+ */
+$messages['su'] = array(
+	'viewapc-desc' => '[[Special:ViewAPC|Tembongkeun sarta atur APC cache]] migunakeun Mediawiki',
 );
 
 /** Swedish (Svenska)
