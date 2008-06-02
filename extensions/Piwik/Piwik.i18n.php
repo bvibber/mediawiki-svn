@@ -13,7 +13,7 @@ $messages = array();
 $messages['en'] = array(
 	'piwik-desc'       => 'Inserts Piwik script into MediaWiki pages for tracking and adds a [[Special:Piwik|special page]] with some stats',
 	'piwik'            => 'Piwik',
-	'piwik-lastvisits' => 'Last Visits',
+	'piwik-lastvisits' => 'Last visits',
 	'piwik-countries'  => 'Countries',
 	'piwik-browsers'   => 'Browsers',
 );
