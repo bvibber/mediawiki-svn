@@ -4,13 +4,13 @@
  */
 
 $wgExtensionCredits['other'][] = array(
-	'name' => 'Tab0',
-	'author' => 'Agbad',
-	'description' => 'Adds "0" tab, linking to the edit page of the first section of the page',
+	'name'           => 'Tab0',
+	'author'         => 'Agbad',
+	'description'    => 'Adds "0" tab, linking to the edit page of the first section of the page',
 	'descriptionmsg' => 'tab0-desc',
-	'svn-date' => '$LastChangedDate$',
-	'svn-revision' => '$LastChangedRevision$',
-	'url' => 'http://www.mediawiki.org/wiki/Extension:Tab0',
+	'svn-date'       => '$LastChangedDate$',
+	'svn-revision'   => '$LastChangedRevision$',
+	'url'            => 'http://www.mediawiki.org/wiki/Extension:Tab0',
 );
 
 $wgExtensionMessagesFiles['Tab0'] = dirname( __FILE__ ) . '/Tab0.i18n.php';
