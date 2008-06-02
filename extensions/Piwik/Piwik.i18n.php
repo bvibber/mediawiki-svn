@@ -11,7 +11,7 @@ $messages = array();
  * @author Isb1009
  */
 $messages['en'] = array(
-	'piwik-desc'       => 'Inserts Piwik script into MediaWiki pages for tracking and adds a [[Special:Piwik|special page]] with some stats',
+	'piwik-desc'       => 'Inserts Piwik script into MediaWiki pages for tracking and adds [[Special:Piwik|some stats]]',
 	'piwik'            => 'Piwik',
 	'piwik-lastvisits' => 'Last visits',
 	'piwik-countries'  => 'Countries',
