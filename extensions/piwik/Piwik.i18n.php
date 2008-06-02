@@ -11,7 +11,7 @@ $messages = array();
  * @author Isb1009
  */
 $messages['en'] = array(
-	'piwik-desc' => 'Inserts Piwik script into MediaWiki pages for tracking',
+	'piwik-desc' => 'Inserts Piwik script into MediaWiki pages for tracking and adds a [[Special:Piwik|special page]] with some stats',
 	'piwik' => 'Piwik',
 	'lastvisits' => 'Last Visits',
 	'countries' => 'Countries',
@@ -25,8 +25,19 @@ $messages['ca'] = array(
 	'piwik-desc' => 'Insereix el codi de Piwik dins les pàgines del MediaWiki per a fer les estadístiques',
 	'piwik' => 'Piwik',
 	'lastvisits' => 'Darreres visites',
-	'countries' => 'Pa&iuml;sos',
+	'countries' => 'Països',
 	'browsers' => 'Navegadors',
+);
+
+/** German (Deutsch)
+ * @author Raimond Spekking
+ */
+$messages['de'] = array(
+	'piwik-desc' => 'Fügt ein Piwik-Skript zum Tracking in MediaWiki-Seiten ein und ergänzt eine [[Special:Piwik|Spezialseite]] mit einigen Statistiken',
+	'piwik'      => 'Piwik',
+	'lastvisits' => 'Letzte Besuche',
+	'countries'  => 'Länder',
+	'browsers'   => 'Browser',
 );
 
 /** Spanish (Castellano)
@@ -39,5 +50,3 @@ $messages['es'] = array(
 	'countries' => 'Países',
 	'browsers' => 'Navegadores',
 );
-
-
