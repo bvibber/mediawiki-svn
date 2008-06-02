@@ -5297,16 +5297,21 @@ $messages['yue'] = array(
 * [[Special:Boardvote/list|列示至今已經投咗票嘅投票]]
 * [[Special:Boardvote/dump|選舉記錄傾印]]",
 	'boardvote_intro'         => "
-<p>歡迎嚟到Wikimedia理事委員會嘅第二次選舉。我哋而家去為我哋嘅Wikimedia計劃進行投票，選出兩位人兄。佢哋會幫手去決定Wikimedia計劃將來嘅發展方向，無論個人定係團體，係畀理事委員之中代表<em>你</em>嘅興趣同埋關懷。另外佢哋會決定點樣運用所得來嘅錢同埋點樣整收入。</p>
+<p>歡迎嚟到2008年度Wikimedia理事委員會選舉。我哋而家去為我哋嘅Wikimedia計劃進行投票，選出兩位人兄。佢哋會幫手去決定Wikimedia計劃將來嘅發展方向，無論個人定係團體，係畀理事委員之中代表<em>你</em>嘅興趣同埋關懷。另外佢哋會決定點樣運用所得來嘅錢同埋點樣整收入。</p>
 
 <p>響投票之前，請小心咁去睇吓有關候選人嘅表達同埋有關嘅回應。每一個候選人係一位受到尊重嘅用戶，佢哋係用咗唔少時間同埋動力去令到呢啲計劃繼續進行到一個受歡迎嘅環境同埋自由咁發放人類嘅知識。</p>
 
-<p>你可以向幾多位候選人投票都得。響每個位置中獲得最多票數嘅候選人會成為優勝者。如果有打和嘅情況，會另設決勝回合。</p>
+<p>請將候選者根據你嘅喜好響個盒前面加入排名 (1 = 最喜愛嘅候選者，2 = 第二最喜愛嘅候選者zxab  ...)。
+你可以將相同嘅排名畀多過一位候選者，以及可以唔將部份候選者唔排名。
+建議你將全部候選者都做個排名，即係顥示到你係對未排名嘅候選者有相同嘅對待。</p>
+
+<p>呢次嘅選舉將會用Schulze嘅方法去計出最多得票去選出優勝者。要睇更多嘅資料，請睇吓管方嘅選舉頁。</p>
 
 <p>要睇更多嘅資料，睇吓：</p>
-<ul><li><a href=\"http://meta.wikimedia.org/wiki/Board_elections/2008\" class=\"external\">選舉FAQ</a></li>
-<li><a href=\"http://meta.wikimedia.org/wiki/Board_elections/2008/Candidates\" class=\"external\">候選人</a></li></ul>
-",
+<p>For more information, see:</p>
+<ul><li><a href=\"http://meta.wikimedia.org/wiki/Board_elections/2008\" class=\"external\">理事會選舉2008</a></li>
+<li><a href=\"http://meta.wikimedia.org/wiki/Board_elections/2008/Candidates\" class=\"external\">候選人</a></li>
+<li><a href=\"http://en.wikipedia.org/wiki/Schulze_method\" class=\"external\">Schulze方法</a></li></ul>",
 	'boardvote_intro_change'  => "<p>你已經投咗票。
 但係你可以利用下面嘅表格去改你嘅投票。請響每一位心目中嘅候選人打剔。</p>",
 	'boardvote_entered'       => "多謝，你嘅投票已經被記錄落嚟。
@@ -5324,6 +5329,7 @@ $messages['yue'] = array(
 <pre>$3</pre>
 
 [[Special:Boardvote/entry|返去]]",
+	'boardvote_invalidentered'=> "<p><strong>錯誤</strong>: 候選者喜好一定要以正整數表示 (1, 2, 3, ....)，又或者係留低空白。</p>",
 	'boardvote_nosession'     => "我唔知你嘅維基媒體用戶ID。 唔該登入你合資格嘅維基，然後去嗰度嘅<nowiki>[[Special:Boardvote]]</nowiki>。你要喺$2之前要有至少$1次編輯，第一次編輯要早過$3。",
 	'boardvote_notloggedin'   => "你仲未登入。要投票，你一定要用一個響$2之前最少有$1次貢獻，而且響$3之前作第一次編輯嘅戶口。",
 	'boardvote_notqualified'  => "你仲未有資格響呢次選舉度投票。你需要用響$2之前最少有$1次編輯，你而家有$1次編輯。而且，你嘅第一次編輯響$4，佢係需要響$5之前。",
@@ -5349,6 +5355,8 @@ $1去睇加密嘅資料。</p>",
 	'group-boardvote-member'  => '理事會投票管理員',
 	'grouppage-boardvote'     => '{{ns:project}}:理事會投票管理員',
 	'boardvote_blocked'       => '對唔住，響你註冊咗嘅維基度，你被封住咗。封住咗嘅用戶係唔畀投票嘅。',
+	'boardvote_bot'           => '你響所註冊咗嘅wiki度加咗旗做機械人。
+機械人戶口係唔容許去投票。',
 	'boardvote_welcome'       => "'''$1'''，歡迎你！",
 	'go_to_board_vote'        => 'Wikimedia理事委員會選舉2008',
 	'boardvote_redirecting'   => '為咗好啲嘅保安同埋透明度，我哋用一個外置、獨立控制嘅伺服器去搞呢次嘅投票。
@@ -5356,6 +5364,7 @@ $1去睇加密嘅資料。</p>",
 20秒之內你會彈去呢個外置伺服器。如果你想即刻去，就[$1 撳呢度]。
 
 你有可能會收到一個安全警告，話個憑證冇簽到。',
+	'right-boardvote'         => '選舉管理者',
 );
 
 /** Zeeuws (Zeêuws)
