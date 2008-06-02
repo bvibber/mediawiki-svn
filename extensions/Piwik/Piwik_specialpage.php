@@ -2,6 +2,7 @@
 /**
  * Implements Special:Piwik
  */
+
 class Piwik extends SpecialPage {
 	function __construct() {
 		parent::__construct( 'Piwik' );
@@ -19,7 +20,7 @@ class Piwik extends SpecialPage {
 		$lastvisits = wfMsg('lastvisits');
 		$countries = wfMsg('countries');
 		$browsers = wfMsg('browsers');
-		
+
 		// checking
 		$piwikpage = <<<PIWIK
 		<h2>{$lastvisits}</h2>
@@ -29,9 +30,8 @@ class Piwik extends SpecialPage {
 		<h2>{$browsers}</h2>
 		<iframe src="{$wgPiwikURL}/index.php?module=Widgetize&amp;action=iframe&amp;moduleToWidgetize=UserSettings&amp;actionToWidgetize=getBrowser&amp;idSite={$wgPiwikIDSite}&amp;period=day&amp;date=yesterday" marginheight="0" marginwidth="0" frameborder="0" scrolling="no" height="320" width="100%"></iframe>
 
-		
 PIWIK;
-				
+
 		$wgOut->addHTML($piwikpage);
-		}
 	}
+}

@@ -7,7 +7,7 @@ var _pk_download_extensions = "7z|aac|avi|csv|doc|exe|flv|gif|gz|jpe?g|js|mp(3|4
 
 // Beginning script
 function _pk_plug_normal(_pk_pl) {
-	if (_pk_tm.indexOf(_pk_pl) != -1 && (navigator.mimeTypes[_pk_pl].enabledPlugin != null)) 
+	if (_pk_tm.indexOf(_pk_pl) != -1 && (navigator.mimeTypes[_pk_pl].enabledPlugin != null))
 		return '1';
 	return '0';
 }
@@ -31,7 +31,7 @@ if((typeof (navigator.cookieEnabled) == "undefined") && (_pk_cookie == '0')) {
 	_pk_cookie=(document.cookie.indexOf("_pk_testcookie")!=-1)? '1' : '0';
 }
 
-var _pk_dir='0',_pk_fla='0',_pk_pdf='0',_pk_qt = '0',_pk_rea = '0',_pk_wma='0'; 
+var _pk_dir='0',_pk_fla='0',_pk_pdf='0',_pk_qt = '0',_pk_rea = '0',_pk_wma='0';
 if (_pk_win && _pk_ie){
 	_pk_dir = _pk_plug_ie("SWCtl.SWCtl.1");
 	_pk_fla = _pk_plug_ie("ShockwaveFlash.ShockwaveFlash.1");
@@ -50,12 +50,12 @@ if (_pk_win && _pk_ie){
 	_pk_rea = _pk_plug_normal("audio/x-pn-realaudio-plugin");
 	_pk_wma = _pk_plug_normal("application/x-mplayer2");
 }
-	
+
 var _pk_rtu = '';
 try {
 	_pk_rtu = top.document.referrer;
 } catch(e1) {
-	if(parent){ 
+	if(parent){
 		try{ _pk_rtu = parent.document.referrer; } catch(e2) { _pk_rtu=''; }
 	}
 }
@@ -88,7 +88,7 @@ function _pk_getUrlLog( _pk_action_name, _pk_site, _pk_pkurl, _pk_custom_vars )
 			}
 		}
 	}
-	
+
 	var _pk_url = document.location.href;
 	var _pk_da = new Date();
 	var _pk_src = _pk_pkurl
@@ -111,18 +111,18 @@ function piwik_log( _pk_action_name, _pk_site, _pk_pkurl, _pk_custom_vars )
 	var _pk_src = _pk_getUrlLog(_pk_action_name, _pk_site, _pk_pkurl, _pk_custom_vars );
 	document.writeln('<img src="'+_pk_src+'" alt="Piwik" style="border:0" />');
 	if(!_pk_action_name || _pk_action_name=="") _pk_called=1;
-	
+
   _pk_init_tracker(_pk_site, _pk_pkurl);
 }
 
-function _pk_add_event(elm, evType, fn, useCapture) 
+function _pk_add_event(elm, evType, fn, useCapture)
 {
-	if (elm.addEventListener) { 
-		elm.addEventListener(evType, fn, useCapture); 
-		return true; 
-	} else if (elm.attachEvent) { 
-		var r = elm.attachEvent('on' + evType, fn); 
-		return r; 
+	if (elm.addEventListener) {
+		elm.addEventListener(evType, fn, useCapture);
+		return true;
+	} else if (elm.attachEvent) {
+		var r = elm.attachEvent('on' + evType, fn);
+		return r;
 	} else {
 		elm['on' + evType] = fn;
 	}
@@ -130,7 +130,7 @@ function _pk_add_event(elm, evType, fn, useCapture)
 
 var _pk_tracker_site, _pk_tracker_url;
 
-function _pk_init_tracker(_pk_site, _pk_pkurl) 
+function _pk_init_tracker(_pk_site, _pk_pkurl)
 {
 	if( typeof(piwik_install_tracker) != "undefined" )
 		_pk_install_tracker = piwik_install_tracker;
@@ -167,7 +167,7 @@ function _pk_pause(_pk_time_msec) {
 }
 
 // _pk_type only 'download' and 'link' types supported
-function piwik_track(url, _pk_site, _pk_url, _pk_type) 
+function piwik_track(url, _pk_site, _pk_url, _pk_type)
 {
 	var _pk_image = new Image();
 	_pk_image.onLoad = function() { _pk_dummy(); };
@@ -177,7 +177,7 @@ function piwik_track(url, _pk_site, _pk_url, _pk_type)
 
 function _pk_is_site_hostname(_pk_hostname) {
 	for(i = 0; i < _pk_hosts_alias.length; i++)
-		if( _pk_hostname == _pk_hosts_alias[i] ) 
+		if( _pk_hostname == _pk_hosts_alias[i] )
 			return true;
 	return false;
 }
@@ -189,7 +189,7 @@ function _pk_click(e)
 	if (typeof e == 'undefined')
 		var e = window.event;
 
-	if (typeof e.target != 'undefined') 
+	if (typeof e.target != 'undefined')
 		source = e.target;
 	else if (typeof e.srcElement != 'undefined')
 		source = e.srcElement;
@@ -213,7 +213,7 @@ function _pk_click(e)
 	}
 	else _pk_link_type = (_pk_download.test(source.href) ? 'download' : 'link');
 
-	if( _pk_not_site_hostname || _pk_link_type == 'download' ) 
+	if( _pk_not_site_hostname || _pk_link_type == 'download' )
 		piwik_track(source.href, _pk_tracker_site, _pk_tracker_url, _pk_link_type);
 
 	return true;

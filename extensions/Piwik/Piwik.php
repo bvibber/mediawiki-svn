@@ -8,9 +8,6 @@
  * @licence GNU General Public Licence 2.0
  */
 
-
-
-
 if ( !defined( 'MEDIAWIKI' ) ) {
 	die( 'This file is a MediaWiki extension, it is not a valid entry point' );
 }
@@ -25,8 +22,6 @@ $wgExtensionCredits['specialpage'][] = array(
 	'descriptionurl' => 'piwik-desc',
 	'url'            => 'http://www.mediawiki.org/wiki/Extension:Piwik_Integration',
 );
-
-
 
 $wgHooks['SkinAfterBottomScripts'][]  = 'efPiwikHookText';
 
@@ -81,17 +76,16 @@ $wgExtensionMessagesFiles['Piwik'] = $dir . 'Piwik.i18n.php';
 $wgSpecialPages['Piwik'] = 'Piwik'; # Let MediaWiki know about your new special page.
 $wgHooks['LanguageGetSpecialPageAliases'][] = 'Piwik'; # Add any aliases for the special page.
 
- 
 function Piwik(&$specialPageArray, $code) {
   # The localized title of the special page is among the messages of the extension:
 
   wfLoadExtensionMessages('Piwik');
   $text = wfMsg('piwik');
- 
+
   # Convert from title in text form to DBKey and put it into the alias array:
   $title = Title::newFromText($text);
   $specialPageArray['Piwik'][] = $title->getDBKey();
- 
+
   return true;
 }
 
