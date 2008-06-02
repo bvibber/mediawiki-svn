@@ -101,6 +101,7 @@ A security warning about an unsigned certificate may be displayed.',
  * @author Arnobarnard
  * @author Spacebirdy
  * @author SPQRobin
+ * @author Siebrand
  */
 $messages['af'] = array(
 	'boardvote'                => 'Wikimedia-Trusteeraadverkiesing',
@@ -310,7 +311,7 @@ $messages['ar'] = array(
 
 <pre>$3</pre>
 
-[[Special:Boardvote/entry|Back]]',
+[[Special:Boardvote/entry|رجوع]]',
 	'boardvote_invalidentered' => '<p><strong>خطأ</strong>: تفضيل المرشح يجب أن يتم التعبير عنه كرقم صحيح موجب فقط (1، 2، 3، ....)، أو  
 يترك فارغا.</p>',
 	'boardvote_nosession'      => 'رقم المستخدم في ويكيميديا لك لم يمكن تحديده.
@@ -473,6 +474,7 @@ $messages['bcl'] = array(
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  * @author Red Winged Duck
+ * @author Siebrand
  */
 $messages['be-tarask'] = array(
 	'boardvote'            => 'Выбары ў Апякунскую раду фундацыі Wikimedia',
@@ -500,6 +502,7 @@ $messages['be-tarask'] = array(
  * @author DCLXVI
  * @author Spiritia
  * @author Borislav
+ * @author Siebrand
  */
 $messages['bg'] = array(
 	'boardvote'              => 'Избори за борда на Фондация Уикимедия',
@@ -691,6 +694,7 @@ Ur c'hemenn surentez diwall a-zivout un testeni disin a c'hallo dont war wel mar
 
 /** Catalan (Català)
  * @author SMP
+ * @author Siebrand
  */
 $messages['ca'] = array(
 	'boardvote'                => "Eleccions al Consell d'Administració de la Fundació Wikimedia",
@@ -862,6 +866,7 @@ $messages['cu'] = array(
 
 /** Welsh (Cymraeg)
  * @author Lloffiwr
+ * @author Siebrand
  */
 $messages['cy'] = array(
 	'boardvote'                => 'Etholiad Bwrdd Ymddiriedolwyr Sefydliad Wikimedia',
@@ -950,6 +955,7 @@ Hwyrach y gwelwch rybudd gwarchodaeth ynglŷn â thystysgrif heb ei arwyddo.",
  * @author Morten
  * @author Jon Harald Søby
  * @author Jan Friberg
+ * @author Siebrand
  */
 $messages['da'] = array(
 	'boardvote'          => 'Valg af medlemmer til Wikimedias bestyrelse',
@@ -1060,6 +1066,38 @@ $messages['diq'] = array(
 
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'boardvote'              => 'Wólby do rady administratorow Wikimedije',
+	'boardvote-desc'         => '[[meta:Board elections/2008|Wólby do rady administratorow Wikimedije]]',
+	'boardvote_entry'        => '* [[{{ns:special}}:Boardvote/vote|Głosowaś]]
+* [[{{ns:special}}:Boardvote/list|Lisćina doněntejšnych głosow]]
+* [[{{ns:special}}:Boardvote/dump|Skoděrowane wólbne zapiski]]',
+	'boardvote_novotes'      => 'Až doněnta njejo nichten wótgłosował.',
+	'boardvote_time'         => 'Cas',
+	'boardvote_user'         => 'Wužywaŕ',
+	'boardvote_edits'        => 'Změny',
+	'boardvote_days'         => 'Dny',
+	'boardvote_ip'           => 'IP',
+	'boardvote_ua'           => 'Wobznamjenje wobglědowaka',
+	'boardvote_dumplink'     => 'How kliknuś',
+	'boardvote_submit'       => 'W pórědku',
+	'boardvote_strike'       => 'Wušmarnuś',
+	'boardvote_unstrike'     => 'Wušmarnjenje slědk wześ',
+	'boardvote_sitenotice'   => '<a href="{{localurle:Special:Boardvote/vote}}">Wólby do rady administratorow Wikimedije</a>: Wótgłosowanje jo až do 22. junija móžno.',
+	'boardvote_notstarted'   => 'Wótgłosowanje hyšći njejo se zachopiło',
+	'boardvote_closed'       => 'Wólby su něnto skóńcone, glědaj [http://meta.wikimedia.org/wiki/Board_elections/2008/Results wuslědki].',
+	'boardvote_edits_many'   => 'wjele',
+	'group-boardvote'        => 'Wólbne administratory',
+	'group-boardvote-member' => 'Wólbny administrator',
+	'grouppage-boardvote'    => '{{ns:project}}:Wólbny administrator',
+	'boardvote_welcome'      => "Witaj '''$1'''!",
+	'go_to_board_vote'       => 'Wólby administratorow Wikimedije 2008',
+	'right-boardvote'        => 'Wólby administrowaś',
+);
+
 /** Ewe (Eʋegbe)
  * @author M.M.S.
  */
@@ -1074,7 +1112,6 @@ $messages['ee'] = array(
  * @author ZaDiak
  * @author MF-Warburg
  * @author Siebrand
- * @author Badseed
  */
 $messages['el'] = array(
 	'boardvote'                => 'Εκλογές για το Διοικητικό Συμβούλιο του Ιδρύματος Wikimedia',
@@ -1132,15 +1169,21 @@ $messages['el'] = array(
 	'boardvote_edits'          => 'Επεξεργασίες',
 	'boardvote_days'           => 'Ημέρες',
 	'boardvote_ip'             => 'IP',
+	'boardvote_ua'             => 'User agent',
 	'boardvote_listintro'      => '<p>Αυτός είναι ένας κατάλογος με όλες τις ψηφοφορίες που έχουν καταγραφεί μέχρι σήμερα. $1 για τα κρυπτογραφημένα δεδομένα</p>',
 	'boardvote_dumplink'       => 'Πάτησε εδώ',
 	'boardvote_submit'         => 'Εντάξει',
+	'boardvote_strike'         => 'Μαρκάρισμα',
+	'boardvote_unstrike'       => 'Ξεμαρκάρισμα',
 	'boardvote_needadmin'      => 'Μόνο διαχειριστές εκλογών μπορούν να κάνουν αυτή την ενέργεια.',
 	'boardvote_sitenotice'     => '<a href="{{localurle:Special:Boardvote/vote}}">Εκλογές Διοικητικού Συμβουλίου Wikimedia</a>:
 Η ψηφοφορία είναι ανοιχτή μέχρι 22 Ιουνίου',
 	'boardvote_notstarted'     => 'Η ψηφοφορία δεν έχει αρχίσει ακόμη',
 	'boardvote_closed'         => 'Η ψηφοφορίας έχει κλείσει, δείτε [http://meta.wikimedia.org/wiki/Board_elections/2008/Results την σελίδα αποτελεσμάτων για τις εκλογές] σύντομα.',
 	'boardvote_edits_many'     => 'πολλές',
+	'group-boardvote'          => 'Διαχειριστές ψηφοφορίας συμβουλίου',
+	'group-boardvote-member'   => 'Διαχειριστής ψηφοφορίας συμβουλίου',
+	'grouppage-boardvote'      => '{{ns:project}}:Διαχειριστής ψηφοφορίας συμβουλίου',
 	'boardvote_blocked'        => 'Σας έχει επιβληθεί φραγή στο wiki όπου είστε εγγεγραμμένος.
 Χρήστες υπό φραγή δεν επιτρέπεται να ψηφίσουν.',
 	'boardvote_bot'            => 'Έχετε σήμανση bot στο wiki όπου είστε εγγεγραμμένος.
@@ -1152,24 +1195,25 @@ $messages['el'] = array(
 Θα μεταφερθείτε αυτόματα στον εξωτερικό αυτό server σε 20 δευτερόλεπτα. [$1 Πατήστε εδώ] για να μεταφερθείτε εκεί άμεσα.
 
 Μπορεί να εμφανιστεί μια προειδοποίηση ασφάλειας για ένα μη επικυρωμένο πιστοποιητικό.',
+	'right-boardvote'          => 'Διαχείριση εκλογών',
 );
 
 /** Esperanto (Esperanto)
  * @author Yekrats
- * @author Siebrand
+ * @author ArnoLagrange
  */
 $messages['eo'] = array(
-	'boardvote'              => 'Baloto por la "Administra Konsilantaro de Wikimedia Fondaĵo"',
-	'boardvote-desc'         => '[[meta:Board elections/2008|Baloto de "Administra Konsilantaro de Wikimedia Fondaĵo"]]',
-	'boardvote_entry'        => '* [[Speciala:Boardvote/vote|Baloto]]
+	'boardvote'                => 'Baloto por la "Administra Konsilantaro de Vikimedia Fondaĵo"',
+	'boardvote-desc'           => '[[meta:Board elections/2008|Baloto de "Administra Konsilantaro de Vikimedia Fondaĵo"]]',
+	'boardvote_entry'          => '* [[Speciala:Boardvote/vote|Baloto]]
 * [[Speciala:Boardvote/list|Ĝisdata balotlisto]]
 * [[Speciala:Boardvote/dump|Ĉifrita elsxutaĵo de la esprimitaj voĉoj]]',
-	'boardvote_intro'        => '<p>Bonvenon al la 2008 baloto por la Administra Konsilantaro de \'\'Wikimedia\'\'. 
-Ni vocxdonas por unu persono reprezenti la uzantarojn de la diversaj projektoj de \'\'Wikimedia\'\'. Tiu persono helpos determini la estontaj direkto de la Wikimedia-projektoj, sole kaj grupe, kaj reprezentos <em>viajn</em> interesojn kaj koncernojn al la Administrantaro. Tiu decidos fojojn generi enspezon kaj la elspezo de tiu mono.</p>
+	'boardvote_intro'          => '<p>Bonvenon al la 2008-jara baloto por la Administra Konsilantaro de \'\'Vikimedio\'\'. 
+Ni voĉdonas por unu persono kiu reprezentos la uzantarojn de la diversaj projektoj de \'\'Vikimedio\'\'. Tiu persono helpos determini la estontajn direktojn de la Vikimedio-projektoj, sole kaj grupe, kaj reprezentos <em>viajn</em> interesojn kaj zorgojn al la Administrantaro. Tiu decidos fojojn generi enspezon kaj la elspezo de tiu mono.</p>
 
-<p>Bonvolu atente legi la proklamojn kaj respondojn al demandoj de la kandidatoj antaux ol vocxodoni. Cxiu el la kandidatoj estas respektata uzanto, kiu kontribuis per konsiderinda tempo kaj peno por igi tiujn projektojn bonetosa medio dedicxita al disvolvigxo kaj libera disdono de homaj scioj.</p>
+<p>Bonvolu atente legi la proklamojn kaj respondojn al demandoj de la kandidatoj antaŭ ol voĉodoni. Ĉiu el la kandidatoj estas respektata uzanto, kiu kontribuis per konsiderinda tempo kaj peno por igi tiujn projektojn bonetosa medio dediĉita al disvolviĝo kaj libera disdono de homaj scioj.</p>
 
-<p>Bonvolu rangigi la kandidatojn laŭ viaj preferoj per enigo de nombro apud la skatolo (1 = prefera kandidato, 2 = dua preferato, ktp.) Vi povas doni la saman preferon al pli ol unu kandidato, kaj povas lasi kandidatojn senrangajn. Supozite ke vi preferas cxiujn rangitajn kandidatojn pli ol senrangitaj kandidatoj, kaj vi estas indiferenta inter ĉiuj senrangitaj kandidatoj.</p>
+<p>Bonvolu vicigi la kandidatojn laŭ viaj preferoj per enigo de nombro apud la skatolo (1 = prefera kandidato, 2 = dua preferato, ktp.) Vi povas doni la saman preferon al pli ol unu kandidato, kaj povas lasi kandidatojn senvicajn. Estas supozite ke vi preferas ĉiujn vicigitajn kandidatojn pli ol senvicaj kandidatoj, kaj vi estas indiferenta inter ĉiuj senvicaj kandidatoj.</p>
 
 <p>La gajnanto de la balotado estos kalkulita uzante la Metodon Schulze. Por plua informo, rigardu la oficialajn paĝojn de la balotado.</p>
 
@@ -1177,73 +1221,78 @@ Ni vocxdonas por unu persono reprezenti la uzantarojn de la diversaj projektoj d
 <ul><li><a href="http://meta.wikimedia.org/wiki/Board_elections/2008" class="external">Balotado de la Administrantaro 2008</a></li>
 <li><a href="http://meta.wikimedia.org/wiki/Board_elections/2008/Candidates" class="external">Kandidatoj</a></li>
 <li><a href="http://en.wikipedia.org/wiki/Schulze_method" class="external">Metodo Schulze</a></li></ul>',
-	'boardvote_intro_change' => '<p>Vi estas jam balotita. Tamen vi povas ŝanĝi vian baloton per la jena formularo. Bonvolu elekti la kvadratetojn apud la kanditatoj kiujn vi elektas.</p>',
-	'boardvote_entered'      => 'Dankon! Via baloto estas registrita.
+	'boardvote_intro_change'   => '<p>Vi estas jam balotinta. Tamen vi povas ŝanĝi vian baloton per la jena formularo. Bonvolu elekti la kvadratetojn apud la kandidatoj kiujn vi elektas.</p>',
+	'boardvote_entered'        => 'Dankon! Via baloto estas registrita.
 
-Se vi deziras, vi povas registri la sekvantajn detalojn. La registrajxo de via baloto estas: 
+Se vi deziras, vi povas registri la sekvantajn detalojn. La registraĵo de via baloto estas: 
 
 <pre>$1</pre>
 
-Gxi estis encxifrita per la publika sxlosilo de la Balotadministrantoj:
+Ĝi estis enĉifrita per la publika ŝlosilo de la Balotadministrantoj:
 
 <pre>$2</pre>
 
-La rezultanta cxifrita versio sekvas. Gxi estos publike montrita sur [[Speciala:Boardvote/dump]]. 
+La rezultanta ĉifrita versio sekvas. Ĝi estos publike montrita sur [[Speciala:Boardvote/dump]]. 
 
 <pre>$3</pre>
 
 [[Speciala:Boardvote/entry|Reen]]',
-	'boardvote_nosession'    => 'Via uzanto-identigo de WikiMedia ne estas determinebla.
+	'boardvote_invalidentered' => '<p><strong>Eraro</strong>: Prefero de kandidato devas esti esprimita nur per pozitiva entjero (1, 2, 3, ....), aŭ lasite malplena.</p>',
+	'boardvote_nosession'      => 'Via uzanto-identigo de WikiMedia ne estas determinebla.
 Bonvolu ensaluti la Vikion kie vi estas registrita kaj iri al <nowiki>[[Special:Boardvote]]</nowiki>.
-Vi devas uzi konton kun almenaŭ $1 kontribuoj antaŭ $2, kaj nepre havas $3 kontribuojn inter $3 kaj $5.',
-	'boardvote_notloggedin'  => 'Vi ne estas ensalutinta.
-Por voĉdoni, vi povas nepre el uzanto-konto kun almenaŭ $1 kontribuoj antaŭ $2, kaj faris almenaŭ $3 kontribuojn inter $4 kaj $5.',
-	'boardvote_notqualified' => 'Vi ne rajtas voĉdoni en ĉi tiu baloto.
-Vi nepre devis fari almenaŭ $1 kontribuojn antaŭ $2, kaj faris almenaŭ $3 kontribuojn inter $4 kaj $5.',
-	'boardvote_novotes'      => 'Neniu ne jam voĉdonis.',
-	'boardvote_time'         => 'Tempo',
-	'boardvote_user'         => 'Uzanto',
-	'boardvote_edits'        => 'Redaktoj',
-	'boardvote_days'         => 'Tagoj',
-	'boardvote_ip'           => 'IP-adreso',
-	'boardvote_ua'           => 'Retlegilo de la uzanto.',
-	'boardvote_listintro'    => 'Jen listo de ĉiuj balotoj registritaj
+Vi devas uzi konton kun almenaŭ $1 kontribuoj antaŭ $2, kaj nepre esti farinta $3 kontribuojn inter $3 kaj $5.',
+	'boardvote_notloggedin'    => 'Vi ne estas ensalutinta.
+Voĉdonu nepre el uzanto-konto kun almenaŭ $1 kontribuoj antaŭ $2, kie vi faris almenaŭ $3 kontribuojn inter $4 kaj $5.',
+	'boardvote_notqualified'   => 'Vi ne rajtas voĉdoni en ĉi tiu baloto.
+Vi nepre estu farinta almenaŭ $1 kontribuojn antaŭ $2, kaj almenaŭ $3 kontribuojn inter $4 kaj $5.',
+	'boardvote_novotes'        => 'Neniu jam estas voĉdoninta.',
+	'boardvote_time'           => 'Tempo',
+	'boardvote_user'           => 'Uzanto',
+	'boardvote_edits'          => 'Redaktoj',
+	'boardvote_days'           => 'Tagoj',
+	'boardvote_ip'             => 'IP-adreso',
+	'boardvote_ua'             => 'Retlegilo de la uzanto.',
+	'boardvote_listintro'      => 'Jen listo de ĉiuj balotoj registritaj
 ĝis nun. $1 por la ĉifritaj datumoj.',
-	'boardvote_dumplink'     => 'Klaku ĉi tien',
-	'boardvote_submit'       => 'Ek!',
-	'boardvote_strike'       => 'Trastreku',
-	'boardvote_unstrike'     => 'Maltrastreku',
-	'boardvote_needadmin'    => 'Nur balotadministrantoj povas fari tiun agon.',
-	'boardvote_sitenotice'   => '<a href="{{localurle:Special:Boardvote/vote}}">Baloto por la Administra Konsilantaro de Wikimedia</a>: Baloto malfermita ĝis la 22-a de junio.',
-	'boardvote_notstarted'   => 'Balotado ne jam komenciĝis',
-	'boardvote_closed'       => 'La Balotado estas ŝlosita. Vidu la [http://meta.wikimedia.org/wiki/Board_elections/2008/Results la balotado-paĝo por rezultoj] baldaŭ.',
-	'boardvote_edits_many'   => 'multaj',
-	'group-boardvote'        => 'Balotadministrantoj',
-	'group-boardvote-member' => 'Balotadministranto',
-	'grouppage-boardvote'    => '{{ns:project}}:Balotadministranto',
-	'boardvote_blocked'      => 'Bedaŭrinde vi estis forbarita ĉe via registrita vikio. Forbaritaj uzantoj ne estas permesita voĉdoni.',
-	'boardvote_bot'          => 'Vi estas markita kiel roboto en via registrita vikio.
-Robotaj kontoj ne estas permesita voĉdoni.',
-	'boardvote_welcome'      => "Bonvenon '''$1'''!",
-	'go_to_board_vote'       => '2008 Balotado de Wikimedia Administrantaro',
-	'boardvote_redirecting'  => 'Por pli bona sekureco kaj travidebleco, ni konduktas la voĉdonadon ĉe ekstera sendepende kontrolita servilo. 
+	'boardvote_dumplink'       => 'Klaku ĉi tien',
+	'boardvote_submit'         => 'Ek!',
+	'boardvote_strike'         => 'Trastreku',
+	'boardvote_unstrike'       => 'Maltrastreku',
+	'boardvote_needadmin'      => 'Nur balotadministrantoj povas fari tiun agon.',
+	'boardvote_sitenotice'     => '<a href="{{localurle:Special:Boardvote/vote}}">Baloto por la Administra Konsilantaro de Wikimedia</a>: Baloto malfermita ĝis la 22-a de junio.',
+	'boardvote_notstarted'     => 'Balotado ne jam komenciĝis',
+	'boardvote_closed'         => 'La Balotado estas ŝlosita. Vidu la [http://meta.wikimedia.org/wiki/Board_elections/2008/Results la balotado-paĝo por rezultoj] baldaŭ.',
+	'boardvote_edits_many'     => 'multaj',
+	'group-boardvote'          => 'Balotadministrantoj',
+	'group-boardvote-member'   => 'Balotadministranto',
+	'grouppage-boardvote'      => '{{ns:project}}:Balotadministranto',
+	'boardvote_blocked'        => 'Bedaŭrinde vi estis forbarita en la vikio kie vi estas registrita. Forbaritaj uzantoj  ne rajtas voĉdoni.',
+	'boardvote_bot'            => 'Vi estas markita kiel roboto en la vikio kie vi estas registrita.
+Robotaj kontoj ne rajtas voĉdoni.',
+	'boardvote_welcome'        => "Bonvenon '''$1'''!",
+	'go_to_board_vote'         => '2008-jara balotado de Vikimedia Administrantaro',
+	'boardvote_redirecting'    => 'Por pli bona sekureco kaj travidebleco, ni regas la balotadon ĉe ekstera sendepende kontrolita servilo. 
 
-Vi estos alidirektita al ĉi servilo en 20 sekundoj. [$1 Klaku ĉi tien] iri tie nun. 
+Vi estos alidirektita al ĉi servilo post 20 sekundoj. [$1 Klaku ĉi tien] por iri tie nun. 
 
 Sekureca averto pri nevalida atesto eble estos montrata.',
-	'right-boardvote'        => 'Administri balotadojn',
+	'right-boardvote'          => 'Administri balotadojn',
 );
 
 /** Spanish (Español)
+ * @author Ascánder
  * @author Lin linao
  * @author Titoxd
- * @author Siebrand
  * @author Bengoa
+ * @author Siebrand
  */
 $messages['es'] = array(
-	'boardvote'              => 'Elección del Consejo de Administración de la Fundación Wikimedia',
-	'boardvote-desc'         => '[[meta:Board elections/2008|Elección del Consejo de Administración de la Fundación Wikimedia]]',
-	'boardvote_intro'        => '<p>Bienvenido a la segunda elección del Consejo de Administración de la Fundación Wikimedia. Estamos votando por dos personas para que representen a la comunidad de usuarios de todos los proyectos de Wikimedia. Los dos candidatos elegidos yudarán a determinar la dirección que tomarán en el futuro los proyectos de Wikimedia, individualmente y como grupo, y representan <em>tus</em> intereses y preocupaciones ante el Consejo de Administración. Ellos decidirán la forma de obtener financiamiento y el destino del dinero recaudado.</p>
+	'boardvote'                => 'Elección del Consejo de Administración de la Fundación Wikimedia',
+	'boardvote-desc'           => '[[meta:Board elections/2008|Elección del Consejo de Administración de la Fundación Wikimedia]]',
+	'boardvote_entry'          => '* [[Special:Boardvote/vote|Voto]]
+* [[Special:Boardvote/list|Lista de votos hasta ahora]]
+* [[Special:Boardvote/dump|Producir un registro codificado de la elección]]',
+	'boardvote_intro'          => '<p>Bienvenido a la segunda elección del Consejo de Administración de la Fundación Wikimedia. Estamos votando por dos personas para que representen a la comunidad de usuarios de todos los proyectos de Wikimedia. Los dos candidatos elegidos yudarán a determinar la dirección que tomarán en el futuro los proyectos de Wikimedia, individualmente y como grupo, y representan <em>tus</em> intereses y preocupaciones ante el Consejo de Administración. Ellos decidirán la forma de obtener financiamiento y el destino del dinero recaudado.</p>
 
 <p>Por favor, antes de votar lee cuidadosamente las afirmaciones de los candidatos y sus respuestas a las consultas. Cada uno de ellos es un usuario respetado, que ha contribuido con mucho tiempo y esfuerzo para crear en estos proyectos un buen ambiente agradable destinado a la promoción y libre distribución del conocimiento humano.</p>
 
@@ -1252,25 +1301,61 @@ $messages['es'] = array(
 <p>Para más información, lee:</p>
 <ul><li><a href="http://meta.wikimedia.org/wiki/Board_elections/2008" class="external">Election FAQ</a></li>
 <li><a href="http://meta.wikimedia.org/wiki/Board_elections/2008/Candidates" class="external">Candidates</a></li></ul>',
-	'boardvote_notloggedin'  => 'No has iniciado sesión. 
+	'boardvote_intro_change'   => '<p>¡Ya votaste! Sin embargo, puedes cambiar tu voto usando el formulario siguiente. Por favor clasifica a los candidatos en tu orden de preferencias; un número más pequeño indica una mayor preferencia para un candidato particular. Puedes dar la misma preferencia a más de un candidato y dejar candidatos sin puntuación.</p>',
+	'boardvote_entered'        => 'Gracias, tu voto ha sido registrado.
+
+Si lo deseas, puedes guardar los siguientes detalles. El registro de tu voto es:
+
+<pre>$1</pre>
+
+ha sido codificado con la clave pública de los Administradores de la elección:
+
+<pre>$2</pre>
+
+La versión codificada resultante está a continuación. Será mostrada públicamente al [[Special:Boardvote/dump|Producir un registro codificado de la elección]].
+
+<pre>$3</pre>
+
+[[Special:Boardvote/entry|Regresar]]',
+	'boardvote_invalidentered' => '<p><strong>Error</strong>: la preferencia hacia un candidato debe expresarse como un entero positivo (1, 2, 3, ....), o dejarse en blanco.</p>',
+	'boardvote_nosession'      => 'Tu identificador de usuario Wikimedia no pudo ser determinado.
+Por favor, conéctate en el wiki en el que calificas para votar, y pulsa <nowiki>[[Special:Boardvote]]</nowiki>.
+Debes usar otra cuenta con un mínimo de $1 contribuciones antes del $2, y haber hecho al menos $3 modificaciones entre $4 y $5.',
+	'boardvote_notloggedin'    => 'No has iniciado sesión. 
 Para votar, necesitas tener $1 ediciones antes del $2, y haber hecho por lo menos $3 ediciones entre el $4 y el $5.',
-	'boardvote_notqualified' => 'No cumples con los requisitos para votar en esta elección. 
+	'boardvote_notqualified'   => 'No cumples con los requisitos para votar en esta elección. 
 Necesitas tener $1 ediciones antes del $2, y haber hecho por lo menos $3 ediciones entre el $4 y el $5.',
-	'boardvote_novotes'      => 'Nadie ha votado todavía.',
-	'boardvote_time'         => 'Tiempo',
-	'boardvote_user'         => 'Usuario',
-	'boardvote_edits'        => 'Ediciones',
-	'boardvote_days'         => 'Días',
-	'boardvote_ip'           => 'IP',
-	'boardvote_dumplink'     => 'Haz click aquí',
-	'boardvote_notstarted'   => 'La votación todavía no ha comenzado',
-	'boardvote_closed'       => 'El período de votación finalizó. Pronto podrás ver el resultado [http://meta.wikimedia.org/wiki/Board_elections/2008/Results/es en la página de las elecciones].',
-	'boardvote_welcome'      => "¡Bienvenido, '''$1'''!",
-	'boardvote_redirecting'  => 'Para mejorar la seguridad y la transparencia, la votación se está realizando en un servidor externo y controlado independientemente.
+	'boardvote_novotes'        => 'Nadie ha votado todavía.',
+	'boardvote_time'           => 'Tiempo',
+	'boardvote_user'           => 'Usuario',
+	'boardvote_edits'          => 'Ediciones',
+	'boardvote_days'           => 'Días',
+	'boardvote_ip'             => 'IP',
+	'boardvote_ua'             => 'Navegador',
+	'boardvote_listintro'      => '<p>Esta en una lista con todos los votos que hasta ahora han sido registrados.
+$1 para los datos codificados.</p>',
+	'boardvote_dumplink'       => 'Haz click aquí',
+	'boardvote_needadmin'      => 'Sólo los administradores de la elección pueden realizar esta operación.',
+	'boardvote_sitenotice'     => '<a href="{{localurle:Special:Boardvote/vote}}">Elecciones del Consejo de Administración de Wikimedia</a>:
+Votación abierta hasta el 22 de junio',
+	'boardvote_notstarted'     => 'La votación todavía no ha comenzado',
+	'boardvote_closed'         => 'El período de votación finalizó. Pronto podrás ver el resultado [http://meta.wikimedia.org/wiki/Board_elections/2008/Results/es en la página de las elecciones].',
+	'boardvote_edits_many'     => 'muchos',
+	'group-boardvote'          => 'Administradores de la elección',
+	'group-boardvote-member'   => 'Administrador de la elección',
+	'grouppage-boardvote'      => '{{ns:project}}:Administrador de la elección',
+	'boardvote_blocked'        => 'Has sido bloqueado en tu wiki de registro.
+Los usuarios bloqueados no pueden votar.',
+	'boardvote_bot'            => 'Tienes estatus de bot en tu wiki de registro.
+Las cuantas de Bots no pueden votar.',
+	'boardvote_welcome'        => "¡Bienvenido, '''$1'''!",
+	'go_to_board_vote'         => 'Elección del Consejo de Administración de la Fundación Wikimedia de 2008',
+	'boardvote_redirecting'    => 'Para mejorar la seguridad y la transparencia, la votación se está realizando en un servidor externo y controlado independientemente.
 
 Serás redireccionado a este servidor externo en 20 segundos. [$1 Haz click aquí] para ir ahora.
 
-Un aviso de seguridad sobre un certificado no cifrado podría aparacer.',
+Un aviso de seguridad sobre un certificado no cifrado podría aparecer.',
+	'right-boardvote'          => 'Administrar elecciones',
 );
 
 /** Basque (Euskara)
@@ -1419,14 +1504,15 @@ $messages['fa'] = array(
  * @author Nike
  * @author M.M.S.
  * @author Str4nd
+ * @author Siebrand
  */
 $messages['fi'] = array(
-	'boardvote'              => 'Wikimedian johtokunnan valtuutettujen vaalit',
-	'boardvote-desc'         => '[[meta:Board elections/2008|Wikimedian johtokunnan valtuutettujen vaalit]]',
-	'boardvote_entry'        => '* [[Special:Boardvote/vote|Äänestä]]
+	'boardvote'                => 'Wikimedian johtokunnan valtuutettujen vaalit',
+	'boardvote-desc'           => '[[meta:Board elections/2008|Wikimedian johtokunnan valtuutettujen vaalit]]',
+	'boardvote_entry'          => '* [[Special:Boardvote/vote|Äänestä]]
 * [[Special:Boardvote/list|Listaa tähänastiset äänet]]
 * [[Special:Boardvote/dump|Salattu äänestystallenne]]',
-	'boardvote_intro'        => '<p>Tervetuloa Wikimedian johtokunnan vuoden 2008 vaaleihin. Äänestämme henkilöitä edustamaan Wikimedian projektien yhteisöjä.
+	'boardvote_intro'          => '<p>Tervetuloa Wikimedian johtokunnan vuoden 2008 vaaleihin. Äänestämme henkilöitä edustamaan Wikimedian projektien yhteisöjä.
 He määrittävät sen suunnan, jonka Wikimedian projektit tulevaisuudessa ottavat, ja edustavat <em>sinun</em> etujasi ja huoliasi johtokunnalle.
 He päättävät tavoista hankkia varoja ja niiden käytöstä.</p>
 
@@ -1443,8 +1529,8 @@ Tasaäänten sattuessa, järjestetään uusintavaalit.</p>
 <ul><li><a href="http://meta.wikimedia.org/wiki/Board_elections/2008" class="external">Johtokuntavaalit 2008</a></li>
 <li><a href="http://meta.wikimedia.org/wiki/Board_elections/2008/Candidates" class="external">Ehdokkaat</a></li>
 <li><a href="http://fi.wikipedia.org/wiki/Schulzen_menetelmä" class="external">Schulzen menetelmä</a></li></ul>',
-	'boardvote_intro_change' => '<p>Olet jo äänestänyt. Voit kuitenkin muuttaa ääntäsi käyttämällä alla olevaa lomaketta. Napsauta kunkin hyväksymäsi ehdokkaan vieressä olevaa ruutua.</p>',
-	'boardvote_entered'      => 'Kiitos. Äänesi on tallennettu.
+	'boardvote_intro_change'   => '<p>Olet jo äänestänyt. Voit kuitenkin muuttaa ääntäsi käyttämällä alla olevaa lomaketta. Napsauta kunkin hyväksymäsi ehdokkaan vieressä olevaa ruutua.</p>',
+	'boardvote_entered'        => 'Kiitos. Äänesi on tallennettu.
 
 Mikäli haluat, voit kirjata itsellesi seuraavat tiedot. Äänestystietueesi on:
 
@@ -1459,33 +1545,34 @@ Siitä muodostuu seuraava salattu muoto, joka on julkisesti näkyvillä sivulla 
 <pre>$3</pre>
 
 [[Special:Boardvote/entry|Takaisin]]',
-	'boardvote_nosession'    => 'Järjestelmä ei pysty määrittämään käyttäjätunnustasi. Kirjaudu sisään projektissa, jossa sinulla on äänioikeuteen riittävät ehdot täytetty ja mene sivulle <nowiki>[[Special:Boardvote]]</nowiki>. Sinun täytyy käyttää käyttäjätunnusta, jolla on ainakin $1 muokkausta ennen $2, ja vähintään $3 muokkausta aikavälillä $4 ja $5.',
-	'boardvote_notloggedin'  => 'Et ole kirjautunut sisään. Äänestääksesi sinulla täytyy olla käyttäjätunnus, vähintään $1 muokkausta ennen $2 ja vähintään $3 muokkausta aikavälillä $4 ja $5.',
-	'boardvote_notqualified' => 'Et ole äänioikeutettu näissä vaaleissa. Sinulla täytyy olla $1 muokkausta ennen $2, ja vähintään $3 muokkausta aikavälillä $4 ja $5.',
-	'boardvote_novotes'      => 'Kukaan ei ole vielä äänestänyt.',
-	'boardvote_time'         => 'Aika',
-	'boardvote_user'         => 'Käyttäjä',
-	'boardvote_edits'        => 'Muokkausta',
-	'boardvote_days'         => 'Päivää',
-	'boardvote_ip'           => 'IP-osoite',
-	'boardvote_ua'           => 'Käyttäjäagentti',
-	'boardvote_listintro'    => '<p>Tämä on lista kaikista äänistä, jotka on kirjattu tähän mennessä. $1 nähdäksesi tiedot salattuna.</p>',
-	'boardvote_dumplink'     => 'Napsauta tästä',
-	'boardvote_submit'       => 'OK',
-	'boardvote_strike'       => 'Älä tue',
-	'boardvote_unstrike'     => 'Palauta tuetuksi',
-	'boardvote_needadmin'    => 'Vain vaalitarkastajat voivat suorittaa tämän toiminnon.',
-	'boardvote_sitenotice'   => '<a href="{{localurle:Special:Boardvote/vote}}">Wikimedian johtokunnan vaalit</a>: Äänestys avoinna 22. kesäkuuta asti',
-	'boardvote_notstarted'   => 'Äänestys ei ole vielä alkanut',
-	'boardvote_closed'       => 'Äänestys on päättynyt. Tulokset ovat [http://meta.wikimedia.org/wiki/Board_elections/2008/Results äänestyssivulla].',
-	'boardvote_edits_many'   => 'monta',
-	'group-boardvote'        => 'johtokuntavaalien järjestäjät',
-	'group-boardvote-member' => 'johtokuntavaalien järjestäjä',
-	'grouppage-boardvote'    => '{{ns:project}}:Johtokuntavaalien järjestäjä',
-	'boardvote_blocked'      => 'Valitettavasti muokkausestosi projektissa johon olet kirjautunut estää sinua äänestämästä.',
-	'boardvote_bot'          => 'Tunnuksellasi on botti-merkintä wikissä. Bottitunnus ei ole oikeutettu äänestämään.',
-	'boardvote_welcome'      => "Tervetuloa '''$1'''!",
-	'go_to_board_vote'       => 'Wikimedian johtokunnan valtuutettujen vaalit 2008',
+	'boardvote_invalidentered' => '<p><strong>Virhe</strong>: Ehdokassijan voi merkitä ainoastaan positiivisilla kokonaisluvuilla (1, 2, 3, ...), tai jättää tyhjäksi.</p>',
+	'boardvote_nosession'      => 'Järjestelmä ei pysty määrittämään käyttäjätunnustasi. Kirjaudu sisään projektissa, jossa sinulla on äänioikeuteen riittävät ehdot täytetty ja mene sivulle <nowiki>[[Special:Boardvote]]</nowiki>. Sinun täytyy käyttää käyttäjätunnusta, jolla on ainakin $1 muokkausta ennen $2, ja vähintään $3 muokkausta aikavälillä $4 ja $5.',
+	'boardvote_notloggedin'    => 'Et ole kirjautunut sisään. Äänestääksesi sinulla täytyy olla käyttäjätunnus, vähintään $1 muokkausta ennen $2 ja vähintään $3 muokkausta aikavälillä $4 ja $5.',
+	'boardvote_notqualified'   => 'Et ole äänioikeutettu näissä vaaleissa. Sinulla täytyy olla $1 muokkausta ennen $2, ja vähintään $3 muokkausta aikavälillä $4 ja $5.',
+	'boardvote_novotes'        => 'Kukaan ei ole vielä äänestänyt.',
+	'boardvote_time'           => 'Aika',
+	'boardvote_user'           => 'Käyttäjä',
+	'boardvote_edits'          => 'Muokkausta',
+	'boardvote_days'           => 'Päivää',
+	'boardvote_ip'             => 'IP-osoite',
+	'boardvote_ua'             => 'Käyttäjäagentti',
+	'boardvote_listintro'      => '<p>Tämä on lista kaikista äänistä, jotka on kirjattu tähän mennessä. $1 nähdäksesi tiedot salattuna.</p>',
+	'boardvote_dumplink'       => 'Napsauta tästä',
+	'boardvote_submit'         => 'OK',
+	'boardvote_strike'         => 'Älä tue',
+	'boardvote_unstrike'       => 'Palauta tuetuksi',
+	'boardvote_needadmin'      => 'Vain vaalitarkastajat voivat suorittaa tämän toiminnon.',
+	'boardvote_sitenotice'     => '<a href="{{localurle:Special:Boardvote/vote}}">Wikimedian johtokunnan vaalit</a>: Äänestys avoinna 22. kesäkuuta asti',
+	'boardvote_notstarted'     => 'Äänestys ei ole vielä alkanut',
+	'boardvote_closed'         => 'Äänestys on päättynyt. Tulokset ovat [http://meta.wikimedia.org/wiki/Board_elections/2008/Results äänestyssivulla].',
+	'boardvote_edits_many'     => 'monta',
+	'group-boardvote'          => 'johtokuntavaalien järjestäjät',
+	'group-boardvote-member'   => 'johtokuntavaalien järjestäjä',
+	'grouppage-boardvote'      => '{{ns:project}}:Johtokuntavaalien järjestäjä',
+	'boardvote_blocked'        => 'Valitettavasti muokkausestosi projektissa johon olet kirjautunut estää sinua äänestämästä.',
+	'boardvote_bot'            => 'Tunnuksellasi on botti-merkintä wikissä. Bottitunnus ei ole oikeutettu äänestämään.',
+	'boardvote_welcome'        => "Tervetuloa '''$1'''!",
+	'go_to_board_vote'         => 'Wikimedian johtokunnan valtuutettujen vaalit 2008',
 );
 
 $messages['fo'] = array(
@@ -1497,89 +1584,90 @@ $messages['fo'] = array(
 );
 
 /** French (Français)
- * @author Sherbrooke
+ * @author Guérin Nicolas
  * @author Grondin
+ * @author Sherbrooke
  */
 $messages['fr'] = array(
-	'boardvote'                => 'Élections au conseil d’administration de Wikimedia Foundation',
-	'boardvote-desc'           => "[[meta:Board elections/2008|Élections au conseil d'administration de Wikimedia Foundation]]",
-	'boardvote_entry'          => '* [[Special:Boardvote/vote|Vote]]
-* [[Special:Boardvote/list|Liste des votes enregistrés]]
-* [[Special:Boardvote/dump|Enregistrements cryptés]]',
-	'boardvote_intro'          => '<p>Bienvenue aux  élections 2008 du conseil d\'administration de <i><a href="http://wikimediafoundation.org/wiki/Accueil" class="extiw" title="foundation:Accueil">la Wikimedia Foundation</a></i>.
+	'boardvote'                => 'Élection au conseil d’administration de la Wikimedia Foundation',
+	'boardvote-desc'           => "[http://meta.wikimedia.org/wiki/Board_elections/2008/fr Élection au conseil d'administration de la Wikimedia Foundation]",
+	'boardvote_entry'          => '* [[Special:Boardvote/vote?uselang=fr|Vote]]
+* [[Special:Boardvote/list?uselang=fr|Liste des votes enregistrés]]
+* [[Special:Boardvote/dump?uselang=fr|Enregistrements cryptés]]',
+	'boardvote_intro'          => '<p>Bienvenue à l\'élection 2008 du conseil d\'administration de la<i><a href="http://wikimediafoundation.org/wiki/Accueil" class="extiw" title="foundation:Accueil">Wikimedia Foundation</a></i>.
 Nous votons pour une personne qui représentera la communauté des utilisateurs sur les différents projets Wikimedia.
 Cette personne et le conseil d\'administration contribueront à orienter la direction de ces projets et représenteront <i>vos</i> intérêts et <i>vos</i> préoccupations auprès du conseil d\'administration.
 Ils décideront des moyens de financement et de l\'affectation des fonds.</p>
 
 <p>Lisez attentivement les déclarations des candidats et leurs réponses aux questions avant de voter.
-Tous les candidats sont des utilisateurs respectés, qui ont donné beaucoup de temps et d\'effort pour faire de ces projets un endroit accueillant dédié au développement de la libre diffusion du savoir humain.</p>
+Tous les candidats sont des utilisateurs respectés, qui ont donné beaucoup de temps et d\'effort pour faire de ces projets un endroit accueillant dédié au développement et à la libre diffusion du savoir humain.</p>
 
-<p>Ranger les candidats pour qui vous votez selon vos préférences à côté de la boîte (1 = candidat favori, 2 = deuxième candidat favori…). Vous pouvez donner la même préférence à plusieurs canditats ou bien n’en ranger aucun. Il sera présumé que vous préférerez tous les candidats rangés par rapport à ceux qui ne le sont pas vous laissant indifférent pour ces derniers.</>
+<p>Veuillez classer les candidats par ordre de préférence en mettant un nombre à côté de la boîte (1 = candidat favori, 2 = deuxième candidat favori…). Vous pouvez donner la même préférence à plusieurs candidats ou bien n’en ranger aucun. Il sera présumé que vous préférerez tous les candidats classés à ceux qui ne le sont pas ainsi que vous êtes indifférent entre tous les candidats non classés.</>
 
 <p>Le vainqueur de l’élection sera désigné selon le calcul utilisant la méthode Schulze.
 
-<p>Pour plus d\'information, voyez :</p>
-<ul><li><a href="http://meta.wikimedia.org/wiki/Board_elections/2008" class="external">Élection 2008 au Conseil d’administration</a></li>
-<li><a href="http://meta.wikimedia.org/wiki/Board_elections/2008/Candidates" class="external">Candidats</a></li>
-<li><a href="http://en.wikipedia.org/wiki/Schulze_method" class="external">Méthode Schulze</a></li></ul>',
-	'boardvote_intro_change'   => '<p>Vous avez déjà voté. Cependant vous pouvez modifier votre vote en utilisant le formulaire ci-dessous. Merci de cocher les cases en regard de chaque candidat qui a votre support.</p></p>',
+<p>Pour plus d\'information, veuillez consulter les pages suivantes :</p>
+<ul><li><a href="http://meta.wikimedia.org/wiki/Board_elections/2008/fr" class="external">Élection 2008 au Conseil d’administration</a></li>
+<li><a href="http://meta.wikimedia.org/wiki/Board_elections/2008/Candidates/fr" class="external">Candidats</a></li>
+<li><a href="http://fr.wikipedia.org/wiki/M%C3%A9thode_Schulze" class="external">Méthode Schulze</a></li></ul>',
+	'boardvote_intro_change'   => "<p>Vous avez déjà voté. Cependant vous pouvez modifier votre vote en utilisant le formulaire ci-dessous. Veuillez classer les candidats par ordre de préférence : plus petit sera le nombre associé, plus grande sera votre préférence envers un candidat particulier. Vous avez le droit de donner la même préférence à plus d'un candidat et aussi de garder des candidats hors classement.</p>",
 	'boardvote_entered'        => 'Merci, votre vote a été enregistré.
 
-Si vous le souhaitez, vous pouvez enregistrer les détails suivants. Votre historique de vote est :
+Si vous le souhaitez, vous pouvez enregistrer les détails suivants. Votre enregistrement de vote est :
 
 <pre>$1</pre>
 
-Il a été crypté avec la clé publique des scrutateurs officiels pour l’élection :
+Il a été crypté avec la clé publique des administrateurs de l’élection :
 
 <pre>$2</pre>
 
-La version cryptée suit. Elle sera affichée publiquement sur [[Special:Boardvote/dump]].
+Suit la version cryptée ci-dessous, qui sera affichée publiquement sur [[Special:Boardvote/dump?uselang=fr|cette page]].
 
 <pre>$3</pre>
 
-[[Special:Boardvote/entry|Retour]]',
-	'boardvote_invalidentered' => '<p><strong>Erreur</strong> : la préférence pour un candidat doit être exprimée uniquement sur des nombres positifs dans leur totalité (1, 2, 3…) ou bien laissée vide.</p>',
-	'boardvote_nosession'      => 'Impossible de déterminer votre identifiant Wikimedia.<br>
-Veuillez vous rendre sur votre wiki d’origine, vous enregistrer, et vous rendre sur la page <nowiki>[[Special:Boardvote]]</nowiki>.<br>
-Vous devez posséder un compte avec au moins $1 contributions effectuées avant le $2, et avoir effectué votre première édition avant le $3.',
+[[Special:Boardvote/entry?uselang=fr|Retour]]',
+	'boardvote_invalidentered' => '<p><strong>Erreur</strong> : la préférence pour un candidat doit être exprimée uniquement par des nombres entiers positifs (1, 2, 3…) ou bien être laissée vide.</p>',
+	'boardvote_nosession'      => 'Impossible de déterminer votre identifiant Wikimedia.<br />
+Veuillez vous rendre sur votre wiki d’origine, vous enregistrer, et vous rendre sur la page <nowiki>[[Special:Boardvote]]</nowiki>.<br />
+Vous devez posséder un compte avec au moins $1 contributions effectuées avant le $2, et avoir effectué au moins $3 contributions entre le $4 et le $5.',
 	'boardvote_notloggedin'    => 'Vous n’êtes actuellement pas authentifié. Pour voter, vous devez utiliser un compte comportant au moins $1 contributions avant le $2, et avoir effectuer au moins $3 contributions entre le $4 et le $5.',
-	'boardvote_notqualified'   => 'Vous ne répondez pas à l’une des conditions requises pour voter lors de ce scrutin. Il est nécessaire d’avoir $3 contributions avant le $2,  et vous en avez effectuées $1. En outre, votre première modification date du $4, et elle doit avoir été faite avant le $5.',
+	'boardvote_notqualified'   => "Désolé, mais vous ne répondez pas actuellement aux conditions requises pour voter lors de ce scrutin. Il vous est nécessaire d’avoir au moins $1 contributions avant le $2, et d'avoir au moins $3 contributions entre le $4 et le $5.",
 	'boardvote_novotes'        => 'Personne n’a encore voté.',
 	'boardvote_time'           => 'Heure ',
 	'boardvote_user'           => 'Utilisateur',
 	'boardvote_edits'          => 'Modifications ',
 	'boardvote_days'           => 'Jours',
 	'boardvote_ip'             => 'IP',
-	'boardvote_ua'             => 'Représentant de l’utilisateur',
-	'boardvote_listintro'      => 'Liste des personnes ayant voté :<br /><br />',
+	'boardvote_ua'             => 'Agent utilisateur',
+	'boardvote_listintro'      => '<p>Liste de tous les votes ayant été enregistrés à ce jour.
+$1 pour les données cryptées.</p>',
 	'boardvote_dumplink'       => 'Cliquez ici',
 	'boardvote_submit'         => 'Valider',
 	'boardvote_strike'         => 'Biffer',
 	'boardvote_unstrike'       => 'Débiffer',
-	'boardvote_needadmin'      => 'Seuls les administrateurs du vote peuvent effectuer cette opération.',
-	'boardvote_sitenotice'     => '<a href="{{localurle:Special:Boardvote/vote}}">Élections au conseil d’administration de Wikimedia Foundation</a> :  Vote ouvert jusqu’au 12 juillet',
+	'boardvote_needadmin'      => "Seuls les administrateurs de l'élection peuvent effectuer cette opération.",
+	'boardvote_sitenotice'     => '<a href="{{localurle:Special:Boardvote/vote?uselang=fr}}">Élection au conseil d’administration de la Wikimedia Foundation</a> : le vote est ouvert jusqu’au 22 juin.',
 	'boardvote_notstarted'     => 'Le vote n’est pas encore commencé.',
-	'boardvote_closed'         => 'L’élection est désormais close. Le résultat est proclamé sur [[meta:Election results 2008/fr|la page de résultats]] (fr).',
+	'boardvote_closed'         => 'L’élection est désormais terminée. Le résultat est ou sera proclamé sur [http://meta.wikimedia.org/wiki/Board_elections/2008/Results/fr la page dédiée] (fr).',
 	'boardvote_edits_many'     => 'plusieurs ',
 	'group-boardvote'          => 'Membres votants du conseil d’administration',
 	'group-boardvote-member'   => 'Membre votant du conseil d’administration',
-	'grouppage-boardvote'      => '{{ns:project}}:membre votant du conseil d’administration',
+	'grouppage-boardvote'      => '{{ns:project}} : membre votant du conseil d’administration',
 	'boardvote_blocked'        => 'Désolé, mais vous avez été bloqué sur votre wiki d’origine. Les utilisateurs bloqués ne peuvent pas voter.',
-	'boardvote_bot'            => 'Désolé, vous avez le statut de bot sur le wiki où vous êtes enregistré.<br>Les comptes de bot ne sont pas autorisés à voter.',
+	'boardvote_bot'            => 'Désolé, vous avez le statut de bot sur le wiki où vous êtes enregistré.<br />Les comptes de bot ne sont pas autorisés à voter.',
 	'boardvote_welcome'        => "Bienvenue '''$1'''!",
-	'go_to_board_vote'         => 'Élections 2008 au Conseil d’administration de la Wikimedia Foundation',
-	'boardvote_redirecting'    => 'Pour plus de transparence et sécurité le vote se déroule sur un serveur externe et indépendant.
+	'go_to_board_vote'         => 'Élection 2008 au conseil d’administration de la Wikimedia Foundation',
+	'boardvote_redirecting'    => "Pour plus de transparence et de sécurité, le vote se déroule sur un serveur externe et indépendant.
 
-Vous serez redirigé à ce serveur externe en 20 secondes. [$1 Cliquez ici] pour y aller maintenant.
+Vous serez redirigé vers ce serveur externe sous 20 secondes. [$1 Cliquez ici] pour un accès immédiat.
 
-Un avertissement concernant un certificat non signé sera peut-être affiché.',
+Un avertissement de sécurité concernant un certificat non signé peut éventuellement s'afficher au préalable.",
 	'right-boardvote'          => 'Administrer les élections',
 );
 
 /** Franco-Provençal (Arpetan)
  * @author ChrisPtDe
  * @author Siebrand
- * @author SieBot
  */
 $messages['frp'] = array(
 	'boardvote'              => 'Èlèccions u Consèly d’administracion de la Wikimedia Foundation',
@@ -1660,16 +1748,28 @@ $messages['fur'] = array(
 );
 
 /** Irish (Gaeilge)
+ * @author Alison
  * @author SPQRobin
  */
 $messages['ga'] = array(
-	'boardvote_dumplink' => 'Gliogáil anseo',
+	'boardvote_entry'      => '* [[Special:Boardvote/vote|Vótáil]]
+* [[Special:Boardvote/list|Liosta na vótaí chun dáta]]
+* [[Special:Boardvote/dump|Dumpa criptithe na taifead toghchán]]',
+	'boardvote_novotes'    => 'Níl vóta tugtha le éinne fós.',
+	'boardvote_time'       => 'Am',
+	'boardvote_user'       => 'Úsáideoir',
+	'boardvote_days'       => 'Lae',
+	'boardvote_ip'         => 'Seoladh IP',
+	'boardvote_dumplink'   => 'Gliogáil anseo',
+	'boardvote_edits_many' => 'a lán',
+	'boardvote_welcome'    => "Fáilte '''$1'''!",
 );
 
 /** Galician (Galego)
  * @author Toliño
  * @author Xosé
  * @author Alma
+ * @author Siebrand
  */
 $messages['gl'] = array(
 	'boardvote'                => 'Eleccións dos Membros do Consello de Administración da Wikimedia',
@@ -1677,7 +1777,7 @@ $messages['gl'] = array(
 	'boardvote_entry'          => '* [[Special:Boardvote/vote|Votar]]
 * [[Special:Boardvote/list|Listaxe de votos ata a data]]
 * [[Special:Boardvote/dump|Crear un baleiramento do rexistro cifrado das eleccións]]',
-	'boardvote_intro'          => '<p>Dámoslle a benvida ás Eleccións do Consello de Administración da Wikimedia do ano 2008.
+	'boardvote_intro'          => '<p>Dámoslle a benvida ás Eleccións dos Membros do Consello de Administración da Wikimedia do ano 2008.
 Estamos a escoller unha persoa para que represente á comunidade de usuarios dos diversos proxectos da Wikimedia.
 Axudarán a determinar a dirección futura que tomarán os proxectos da Wikimedia, individualmente e como grupo, e representarán os <em>seus</em> intereses e preocupacións no Consello de Administración.
 Decidirán maneiras de xerar ingresos e o destino do diñeiro obtido.</p>
@@ -1859,6 +1959,7 @@ $messages['he'] = array(
 
 /** Hindi (हिन्दी)
  * @author Kaustubh
+ * @author Siebrand
  */
 $messages['hi'] = array(
 	'boardvote'                => 'विकिमीडिया विश्वस्त मंडल चुनाव',
@@ -1949,7 +2050,6 @@ $messages['hi'] = array(
  * @author Dnik
  * @author Suradnik13
  * @author Siebrand
- * @author SieBot
  */
 $messages['hr'] = array(
 	'boardvote'              => 'Izbori za Odbor povjerenika Wikimedije',
@@ -2022,14 +2122,15 @@ Moguće je da ćete vidjeti sigurnosno upozorenje o nepotpisanom certifikatu.',
 
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
+ * @author Siebrand
  */
 $messages['hsb'] = array(
-	'boardvote'              => 'Wólby za kuratorij Wikimedia',
-	'boardvote-desc'         => '[[meta:Board elections/2008|Wólby kuratorija Wikimedije]]',
-	'boardvote_entry'        => '* [[{{ns:special}}:Boardvote/vote|Wothłosować]]
+	'boardvote'                => 'Wólby za kuratorij Wikimedia',
+	'boardvote-desc'           => '[[meta:Board elections/2008|Wólby kuratorija Wikimedije]]',
+	'boardvote_entry'          => '* [[{{ns:special}}:Boardvote/vote|Wothłosować]]
 * [[{{ns:special}}:Boardvote/list|Dotal wotedate hłosy]]
 * [[{{ns:special}}:Boardvote/dump|Zaklučowane wólbne zapiski]]',
-	'boardvote_intro'        => '<blockquote>
+	'boardvote_intro'          => '<blockquote>
 <p>
 Witaj k štwórtej wólbje do kuratorija Wikimedija. Wola so třo wužiwarjo, zo bychu zhromadźenstwo wužiwarjow we wšelakich projektach reprezentowali. Tući třo wužiwarjo wola so za dobu dweju lět. Budu pomhać, přichodny směr projektow Wikimedije postajić, jednotliwje a jako skupina a reprezentuja <em>twoje</em> zajimy a naležnosće. Budu nimo wjele druhich wěcow wo dochodach a wudawkach rozsudźeć.
 </p>
@@ -2044,8 +2145,8 @@ Witaj k štwórtej wólbje do kuratorija Wikimedija. Wola so třo wužiwarjo, zo
 <ul><li><a href="http://meta.wikimedia.org/wiki/Board_elections/2008/FAQ/de" class="external">FAQ k wólbam</a></li>
 <li><a href="http://meta.wikimedia.org/wiki/Board_elections/2008/Candidates/hsb" class="external">Kandidaća</a></li></ul>
 </blockquote>',
-	'boardvote_intro_change' => '<p>Sy hižo wothłosował. Ale móžeš swoje wothłosowanje ze slědowacym formularom změnić. Markěruj prošu kašćiki pódla kandidatow, za kotrychž hłosuješ.</p>',
-	'boardvote_entered'      => 'Dźakujemy so ći, twój hłós bu zregistrowany.
+	'boardvote_intro_change'   => '<p>Sy hižo wothłosował. Ale móžeš swoje wothłosowanje ze slědowacym formularom změnić. Markěruj prošu kašćiki pódla kandidatow, za kotrychž hłosuješ.</p>',
+	'boardvote_entered'        => 'Dźakujemy so ći, twój hłós bu zregistrowany.
 
 Jeli chceš, móžeš slědowace podrobnosce zapisować. Twoje zregistrowane wothłosowanje je:
 
@@ -2060,33 +2161,36 @@ Slěduje nastata zaklučowana wersija. Budźe so na [[{{ns:special}}:Boardvote/d
 <pre>$3</pre>
 
 [[{{ns:special}}:Boardvote/entry|Wróćo]]',
-	'boardvote_nosession'    => 'Twój wužiwarski ID za Wikimediju njehodźi so zwěsćić. Prošu přizjew so w tym wikiju, w kotrymž sy za wólbu pušćeny a dźi tam k <nowiki>[[Special:Boardvote]]</nowiki>. Zo by wolić móhł, dyrbiš wužiwarske konto měć, kotrež znajmjeńša $1 přinoškow před $2 pokazuje, přeni přinošk dyrbi před $3 być.',
-	'boardvote_notloggedin'  => 'Njejsy so přizjewił. Zo by wohthłosować móhł, dyrbiš přizjewjeny być a wužiwarske konto wužiwać, z kotrymž sy znajmjeńša $1 změnow před $2 činił a hdźež prěnja změna je před $3.',
-	'boardvote_notqualified' => 'Njejsy woprawnjeny so na tutej wólbje wobdźělić. Dyrbiš $3 změnow před $2 činić a twoja prěnja změna dyrbi před $5 być.',
-	'boardvote_novotes'      => 'Dotal nichtó njeje hłosował.',
-	'boardvote_time'         => 'Čas',
-	'boardvote_user'         => 'Wužiwar',
-	'boardvote_edits'        => 'Změny',
-	'boardvote_days'         => 'Dny',
-	'boardvote_ip'           => 'IP-adresa',
-	'boardvote_ua'           => 'Klient',
-	'boardvote_listintro'    => '<p>To je lisćina wšěch hłosow, kotrež buchu dotal wotedate. $1 za zaklučowane daty.</p>',
-	'boardvote_dumplink'     => 'Tu kliknyć',
-	'boardvote_submit'       => 'Hłosować',
-	'boardvote_strike'       => 'Hłos wušmórnyć',
-	'boardvote_unstrike'     => 'Wušmórnjenje hłosu cofnyć',
-	'boardvote_needadmin'    => 'Jenož wólbni administratorojo móža tutu akciju přewjesć.',
-	'boardvote_sitenotice'   => '<a href="{{localurle:Special:Boardvote/vote}}">Wólby za kuratorij Wikimedija</a>:',
-	'boardvote_notstarted'   => 'Wólba hišće njeje so započała.',
-	'boardvote_closed'       => 'Wólba je zakónčena. Wuslědki móžeš na [http://meta.wikimedia.org/wiki/Election_results_2008/hsb na Wikimediji] widźeć.',
-	'boardvote_edits_many'   => 'mnohe',
-	'group-boardvote'        => 'Wólbni administratorojo',
-	'group-boardvote-member' => 'Wólbny administrator',
-	'grouppage-boardvote'    => '{{ns:project}}:Wólbny administrator',
-	'boardvote_blocked'      => 'Wodaj, ale ty bu we swojim wikiju zablokowany. Zablokowani wužiwarjo njesmědźa so na wólbje wobdźělić.',
-	'boardvote_welcome'      => "Witaj '''$1'''!",
-	'go_to_board_vote'       => 'Wólby k Wikimedija-kuratorijej 2008',
-	'boardvote_redirecting'  => 'Zo bychmy wěstosć a transparencu zaručili, přewjedźemy wólby na eksternym, njewotwisnje kontrolowanym serwerje. Sposrědkujemy tam w běhu 20 sekundow. [$1 Klikń tu] zo by so bjesporědnje tam dóstał. Je móžno, zo widźiš naprjedy wěstotne warnowanje wo njesignowanym certifikaće.',
+	'boardvote_invalidentered' => '<p><strong>Zmylk</strong> Porjad kandidatow dyrbi so přez pozitiwnu cyłu ličbu zwuraznić (1, 2, 3, ...) abo wostaj kašćiki prózdne.</p>',
+	'boardvote_nosession'      => 'Twój wužiwarski ID za Wikimediju njehodźi so zwěsćić. Prošu přizjew so w tym wikiju, w kotrymž sy za wólbu pušćeny a dźi tam k <nowiki>[[Special:Boardvote]]</nowiki>. Zo by wolić móhł, dyrbiš wužiwarske konto měć, kotrež znajmjeńša $1 přinoškow před $2 pokazuje, přeni přinošk dyrbi před $3 być.',
+	'boardvote_notloggedin'    => 'Njejsy so přizjewił. Zo by wohthłosować móhł, dyrbiš přizjewjeny być a wužiwarske konto wužiwać, z kotrymž sy znajmjeńša $1 změnow před $2 činił a hdźež prěnja změna je před $3.',
+	'boardvote_notqualified'   => 'Njejsy woprawnjeny so na tutej wólbje wobdźělić. Dyrbiš $3 změnow před $2 činić a twoja prěnja změna dyrbi před $5 być.',
+	'boardvote_novotes'        => 'Dotal nichtó njeje hłosował.',
+	'boardvote_time'           => 'Čas',
+	'boardvote_user'           => 'Wužiwar',
+	'boardvote_edits'          => 'Změny',
+	'boardvote_days'           => 'Dny',
+	'boardvote_ip'             => 'IP-adresa',
+	'boardvote_ua'             => 'Klient',
+	'boardvote_listintro'      => '<p>To je lisćina wšěch hłosow, kotrež buchu dotal wotedate. $1 za zaklučowane daty.</p>',
+	'boardvote_dumplink'       => 'Tu kliknyć',
+	'boardvote_submit'         => 'Hłosować',
+	'boardvote_strike'         => 'Hłos wušmórnyć',
+	'boardvote_unstrike'       => 'Wušmórnjenje hłosu cofnyć',
+	'boardvote_needadmin'      => 'Jenož wólbni administratorojo móža tutu akciju přewjesć.',
+	'boardvote_sitenotice'     => '<a href="{{localurle:Special:Boardvote/vote}}">Wólby za kuratorij Wikimedija</a>:',
+	'boardvote_notstarted'     => 'Wólba hišće njeje so započała.',
+	'boardvote_closed'         => 'Wólba je zakónčena. Wuslědki móžeš na [http://meta.wikimedia.org/wiki/Election_results_2008/hsb na Wikimediji] widźeć.',
+	'boardvote_edits_many'     => 'mnohe',
+	'group-boardvote'          => 'Wólbni administratorojo',
+	'group-boardvote-member'   => 'Wólbny administrator',
+	'grouppage-boardvote'      => '{{ns:project}}:Wólbny administrator',
+	'boardvote_blocked'        => 'Wodaj, ale ty bu we swojim wikiju zablokowany. Zablokowani wužiwarjo njesmědźa so na wólbje wobdźělić.',
+	'boardvote_bot'            => 'Sy w swojim zregistrowanym wikiju jako boćik woznamjenjeny. Boćiki njesmědźa hłosować.',
+	'boardvote_welcome'        => "Witaj '''$1'''!",
+	'go_to_board_vote'         => 'Wólby k Wikimedija-kuratorijej 2008',
+	'boardvote_redirecting'    => 'Zo bychmy wěstosć a transparencu zaručili, přewjedźemy wólby na eksternym, njewotwisnje kontrolowanym serwerje. Sposrědkujemy tam w běhu 20 sekundow. [$1 Klikń tu] zo by so bjesporědnje tam dóstał. Je móžno, zo widźiš naprjedy wěstotne warnowanje wo njesignowanym certifikaće.',
+	'right-boardvote'          => 'Wólby administrować',
 );
 
 /** Haitian (Kreyòl ayisyen)
@@ -2258,7 +2362,7 @@ $messages['ia'] = array(
 
 /** Indonesian (Bahasa Indonesia)
  * @author Rex
- * @author Meursault2004
+ * @author Siebrand
  */
 $messages['id'] = array(
 	'boardvote'                => 'Pemilihan anggota Dewan Pengawas Wikimedia Foundation',
@@ -2382,17 +2486,18 @@ sem að þú styður.</p>',
 );
 
 /** Italian (Italiano)
+ * @author Melos
  * @author BrokenArrow
  * @author Gianfranco
  * @author Siebrand
  */
 $messages['it'] = array(
-	'boardvote'              => 'Elezioni del Consiglio direttivo della Wikimedia Foundation',
-	'boardvote-desc'         => '[[meta:Board elections/2008|Elezioni del Consiglio direttivo Wikimedia]]',
-	'boardvote_entry'        => '* [[Special:Boardvote/vote|Vota]]
+	'boardvote'                => 'Elezioni del Consiglio direttivo della Wikimedia Foundation',
+	'boardvote-desc'           => '[[meta:Board elections/2008|Elezioni del Consiglio direttivo Wikimedia]]',
+	'boardvote_entry'          => '* [[Special:Boardvote/vote|Vota]]
 * [[Special:Boardvote/list|Visualizza i voti espressi sinora]]
 * [[Special:Boardvote/dump|Scarica i voti in forma cifrata]]',
-	'boardvote_intro'        => '<blockquote>
+	'boardvote_intro'          => '<blockquote>
 <p>
 Benvenuto/a alla quarta elezione per il consiglio direttivo Wikimedia, l\'autorità a capo della Wikimedia Foundation. Si vota per le tre persone che rappresenteranno la comunità di utenti dei vari progetti Wikimedia. Gli eletti rimarranno in carica per due anni nel consiglio direttivo ed aiuteranno a determinare il futuro orientamento dei progetti Wikimedia, individualmente e come gruppo, rappresentando i <em>tuoi</em> interessi e le tue idee. Decideranno in merito a vari temi, tra cui, in particolare, le modalità di raccolta e investimento dei fondi.</p>
 
@@ -2406,8 +2511,8 @@ Benvenuto/a alla quarta elezione per il consiglio direttivo Wikimedia, l\'autori
 <ul><li><a href="http://meta.wikimedia.org/wiki/Board_elections/2008/FAQ" class="external">FAQ sulle elezioni (in inglese)</a></li>
 <li><a href="http://meta.wikimedia.org/wiki/Board_elections/2008/Candidates/it" class="external">Candidati</a></li></ul>
 </blockquote>',
-	'boardvote_intro_change' => '<p>Il voto è già stato espresso. Per cambiarlo, usare il modulo sottostante. Spuntare la casella a fianco di ciascuno dei candidati che si desidera sostenere.</p>',
-	'boardvote_entered'      => "Il voto è stato registrato. Grazie.
+	'boardvote_intro_change'   => '<p>Il voto è già stato espresso. Per cambiarlo, usare il modulo sottostante. Spuntare la casella a fianco di ciascuno dei candidati che si desidera sostenere.</p>',
+	'boardvote_entered'        => "Il voto è stato registrato. Grazie.
 
 Se lo si desidera, è possibile registrare i dettagli del proprio voto, riportati di seguito:
 
@@ -2422,35 +2527,39 @@ Il voto espresso in forma cifrata è riportato di seguito. È inoltre visibile a
 <pre>$3</pre>
 
 [[Special:Boardvote/entry|Indietro]]",
-	'boardvote_nosession'    => "Non siamo in grado di determinare il tuo ID utente Wikimedia. Per favore, esegui il login nel progetto in cui hai i requisiti per votare, e vai alla pagina <nowiki>[[Speciale:Boardvote]]</nowiki>. Devi usare un account con almeno $1 contributi prima di $2 e con il primo contributo precedente a $3.
+	'boardvote_invalidentered' => '<p><strong>Errore</strong>: la preferenza per il candidato deve essere espressa solo con un numero intero positivo (1, 2, 3, ....), oppure lascia vuoto.</p>',
+	'boardvote_nosession'      => "Non siamo in grado di determinare il tuo ID utente Wikimedia. Per favore, esegui il login nel progetto in cui hai i requisiti per votare, e vai alla pagina <nowiki>[[Speciale:Boardvote]]</nowiki>. Devi usare un account con almeno $1 contributi prima di $2 e con il primo contributo precedente a $3.
 
 È necessario impostare il proprio browser affinché accetti i cookie dal nostro server di voto esterno: '''wikimedia.spi-inc.org'''.",
-	'boardvote_notloggedin'  => "Accesso non effettuato. Per esprimere un voto è necessario disporre di un'utenza che abbia effettuato almeno $1 contributi prima del $2; la prima modifica registrata deve essere precedente al $3.",
-	'boardvote_notqualified' => 'Non hai i requisiti necessari per votare in questa elezione. Devi necessariamente avere $3 contributi prima di $2, e il tuo primo contributo deve essere stato compiuto prima di $5.',
-	'boardvote_novotes'      => 'Non ha ancora votato nessuno.',
-	'boardvote_time'         => 'Data e ora',
-	'boardvote_user'         => 'Utente',
-	'boardvote_edits'        => 'Modifiche',
-	'boardvote_days'         => 'Giorni',
-	'boardvote_ip'           => 'IP',
-	'boardvote_ua'           => 'User agent',
-	'boardvote_listintro'    => "<p>Di seguito viene riportato l'elenco dei voti registrati sinora. $1 per scaricare i dati in forma cifrata.</p>",
-	'boardvote_dumplink'     => 'Fare clic qui',
-	'boardvote_submit'       => 'OK',
-	'boardvote_strike'       => 'Annulla questo voto',
-	'boardvote_unstrike'     => 'Elimina annullamento',
-	'boardvote_needadmin'    => 'Operazione riservata ai componenti della commissione elettorale.',
-	'boardvote_sitenotice'   => '<a href="{{localurle:Special:Boardvote/vote}}">Elezioni del Consiglio direttivo Wikimedia</a>: è possibile votare fino al 12 luglio',
-	'boardvote_notstarted'   => 'La votazione non è ancora iniziata',
-	'boardvote_closed'       => 'La votazione è conclusa, si invita a consultare  [http://meta.wikimedia.org/wiki/Elections_for_the_Board_of_Trustees_of_the_Wikimedia_Foundation%2C_2008/It la pagina dei risultati].',
-	'boardvote_edits_many'   => 'molti',
-	'group-boardvote'        => 'Commissione elettorale',
-	'group-boardvote-member' => 'Commissario elettorale',
-	'grouppage-boardvote'    => '{{ns:project}}:Commissario elettorale',
-	'boardvote_blocked'      => 'Siamo spiacenti, sei stato bloccato nel progetto in cui sei registrato. Gli utenti bloccati non hanno diritto di voto.',
-	'boardvote_welcome'      => "Benvenuto/a '''$1'''!",
-	'go_to_board_vote'       => 'Elezioni 2007 del Board di Wikimedia',
-	'boardvote_redirecting'  => 'Per una migliore sicurezza e trasparenza, il voto si tiene su un server esterno, a controllo indipendente. Sarai reindirizzato a questo server esterno in 20 secondi. [$1 Clicca qui] per raggiungerlo direttamente. Potrebbe apparire un avviso di sicurezza riguardante un certificato di protezione non verificato.',
+	'boardvote_notloggedin'    => "Accesso non effettuato. Per esprimere un voto è necessario disporre di un'utenza che abbia effettuato almeno $1 contributi prima del $2; la prima modifica registrata deve essere precedente al $3.",
+	'boardvote_notqualified'   => 'Non hai i requisiti necessari per votare in questa elezione. Devi necessariamente avere $3 contributi prima di $2, e il tuo primo contributo deve essere stato compiuto prima di $5.',
+	'boardvote_novotes'        => 'Non ha ancora votato nessuno.',
+	'boardvote_time'           => 'Data e ora',
+	'boardvote_user'           => 'Utente',
+	'boardvote_edits'          => 'Modifiche',
+	'boardvote_days'           => 'Giorni',
+	'boardvote_ip'             => 'IP',
+	'boardvote_ua'             => 'User agent',
+	'boardvote_listintro'      => "<p>Di seguito viene riportato l'elenco dei voti registrati sinora. $1 per scaricare i dati in forma cifrata.</p>",
+	'boardvote_dumplink'       => 'Fare clic qui',
+	'boardvote_submit'         => 'OK',
+	'boardvote_strike'         => 'Annulla questo voto',
+	'boardvote_unstrike'       => 'Elimina annullamento',
+	'boardvote_needadmin'      => 'Operazione riservata ai componenti della commissione elettorale.',
+	'boardvote_sitenotice'     => '<a href="{{localurle:Special:Boardvote/vote}}">Elezioni del Consiglio direttivo Wikimedia</a>: è possibile votare fino al 12 luglio',
+	'boardvote_notstarted'     => 'La votazione non è ancora iniziata',
+	'boardvote_closed'         => 'La votazione è conclusa, si invita a consultare  [http://meta.wikimedia.org/wiki/Elections_for_the_Board_of_Trustees_of_the_Wikimedia_Foundation%2C_2008/It la pagina dei risultati].',
+	'boardvote_edits_many'     => 'molti',
+	'group-boardvote'          => 'Commissione elettorale',
+	'group-boardvote-member'   => 'Commissario elettorale',
+	'grouppage-boardvote'      => '{{ns:project}}:Commissario elettorale',
+	'boardvote_blocked'        => 'Siamo spiacenti, sei stato bloccato nel progetto in cui sei registrato. Gli utenti bloccati non hanno diritto di voto.',
+	'boardvote_bot'            => 'Nella tua wiki dove sei registrato hai lo status di bot.
+Non è permesso votare alle utenze con lo status di bot.',
+	'boardvote_welcome'        => "Benvenuto/a '''$1'''!",
+	'go_to_board_vote'         => 'Elezioni 2008 del Board di Wikimedia',
+	'boardvote_redirecting'    => 'Per una migliore sicurezza e trasparenza, il voto si tiene su un server esterno, a controllo indipendente. Sarai reindirizzato a questo server esterno in 20 secondi. [$1 Clicca qui] per raggiungerlo direttamente. Potrebbe apparire un avviso di sicurezza riguardante un certificato di protezione non verificato.',
+	'right-boardvote'          => 'Amministrare le elezioni',
 );
 
 /** Japanese (日本語)
@@ -2910,15 +3019,52 @@ $messages['krj'] = array(
  * @author Purodha
  */
 $messages['ksh'] = array(
-	'boardvote'              => 'Waahle för_t „Wikimedia Board of Trustees“ (De forantwochtlijje Füürshtändt bëij Wikkimedija)',
-	'boardvote_entry'        => '* [[Special:Boardvote/vote|Affshtemme]]
-* [[Special:Boardvote/list|Zëĳsh de affjejovvene Shtemme beß jäz]]
-* [[Special:Boardvote/dump|Zëĳsh de affjejovvene Shtemme beß jäz en ÷:ksh:MediaWiki:MediaWiki:boardvote_dumplink]]',
-	'boardvote_intro_change' => '<p>Do häß alld fröjer affjeshtemmp.
-Do kannß ävver Ding affjejovvene Shtemm änndere.
-Maach unge ëijnfach e Höksche odder Ding Krüzzje
-nevven di Kandidaate, di de ungershtözze wellß.</p>',
-	'boardvote_entered'      => 'Häzlijjen Dangk. Ding Shtemm eß jäz faßßjehallde.
+	'boardvote'                => 'Waahle för_t „<span lang="en">Wikimedia Board of Trustees</span>“ (De forantwochtlijje Füürshtändt bëij Wikkimedija)',
+	'boardvote-desc'           => '[[meta:Board elections/2008|Wahle för de Förshtänd en de Wikimedia-Shteftong]]',
+	'boardvote_entry'          => '* [[Special:Boardvote/vote|Affshtemme]]
+* [[Special:Boardvote/list|Zëijsh de affjejovve Shtemme beß jäz]]
+* [[Special:Boardvote/dump|Zëijsh de affjejovve Shtemme beß jäz en {{int:boardvote_dumplink}}]]',
+	'boardvote_intro'          => "<p>Welkomme zor Waahle för de Förshtänd en de Wikimedia-Shteftong.
+Mer wähle ëijne Metmaacher för de Jemëijnschaff fun alle Medmaacher en alle Wikimeedija Projëkte ze rëpresëntėere.
+Hä odder it soll hëlleve, de Wääsch en de Zokunnf faßzekloppe för de Projëkte,
+un Ding Belange un Mëinong jäjeövver der andere Förshtänd wiggerzejëvve.
+Onge fill ander Saache weed doh och övvere et Jëld entschiide.</p>
+
+<p>Looer Der aan, wat di Kandidaate jeeder övver sėsh sëllver opjeschrevve hann.
+Fon dänne es jede'ëijn enne Metmaacher, dä Respäkk fodeent hät,
+un ald fill Zick opjewandt hät, öm Joods för uns Wiki-Projëkte ze donn.
+Loor och, wat se op de Froore fon de andere Metmaacher jeantwoot han,
+un wat Do dofon hällß</p>
+
+<p>Do kannß dä Kandidaate, di de ungershtözze wellß,
+en Nommer jevve. En kleinere Nommer bedügg, dat De
+dä Kandidaat leever han wells, well saare
+de Nommer Ëinß eß och för Ding Nommer Ëinß.
+Do kannß desellve Nommer aan mieh wi ëijne Kandidaat fojevve,
+wann se Der ejaal jähn sin,
+Do moß nit alle Nommer bruche un kannß Nommere övvershprenge,
+un De kanns och jannz oohne en Rëijefollsch afshtemme
+un jaa këin Nommere aanjëvve.</p>
+
+<p>Bëim Ußzälle shtëijt jaa këij Nommer noch schlääshter doh,
+wi jeede Nomer,
+un Kandidaate met ejaale Nommere sin orr_ejahl joht draan.</p>
+
+<p>Wann ußjezalld_eß, weed noh däm Schulze singe Metood der Waalsiijer ußjeräschnet.</p>
+
+<p>Mieh Ėnnfommazjohne fengk mer op dä Sigge:</p>
+<ul><li>de <a href=\"http://meta.wikimedia.org/wiki/Board_elections/2008\" class=\"external\">Waahle för de Förshtänd en de Wikimedia-Shteftong.</a> (''op änglesch'')</li>
+<li>de <a href=\"http://meta.wikimedia.org/wiki/Board_elections/2008/Candidates\" class=\"external\">Kandidaate</a>  (''op änglesch'')</li>
+<li>dem <a href=\"http://de.wikipedia.org/wiki/Schulze-Methode\" class=\"external\">Schulze sing Metood</a> (''op dütsch'')</li></ul>",
+	'boardvote_intro_change'   => '<p>Do häß alld fröjer affjeshtemmp.
+Do kannß ävver Ding affjejovve Shtemm änndere.
+Jiv dä Kandidaate, di de ungershtözze wellß,
+en Nommer. En kleinere Nommer bedügg, dat De
+dä Kandidaat leever han wells. Do kannß desellve
+Nommer aan mieh wi ëijne Kandidaat fojevve, wann
+se Der ejaal jähn sin, un De kanns och jannz oohne
+en Rëijefollsch afshtemme.</p>',
+	'boardvote_entered'        => 'Häzlijjen Dangk. Ding Shtemm eß jäz faßßjehallde.
 
 Wänn_De wellß, donn Der de Ëijnzelhëĳte fun hee shpëijshere. Ding Daate fun de Affshtemmung sinn:
 
@@ -2932,31 +3078,68 @@ Hee de foschlößßelte Väsjohn fun_Dinge Daate:
 
 <pre>$3</pre>
 
-Alle Shtemme kannß_De_Der [[Special:Boardvote/dump|hee en ÷:ksh:MediaWiki:MediaWiki:boardvote_dumplink]] aanluure.<br />Sönß [[Special:Boardvote/entry|jangk zerögk]]',
-	'boardvote_notloggedin'  => 'Do beß nit aanjemälldt.
+Alle Shtemme kannß_De_Der [[Special:Boardvote/dump|hee en {{int:boardvote_dumplink}}]] aanluure.<br />Sönß [[Special:Boardvote/entry|jangk zerögk]]',
+	'boardvote_invalidentered' => '<p><strong>Verdonn!</strong> Do moß de Rëijefollsh för Ding Kandidaate met Zahle, wi 1, 2, 3, 4,&nbsp;…, un esu wigger usdrökke; odder schriif jaa nix en di Käßje erėnn!</p>',
+	'boardvote_nosession'      => 'Ding Medmaacher-Nommer (ID) en ennem Wikimedija-Wiki es nit kloh.
+Jangk en e Wiki, woh de wähle darrefß,
+un donn Dėsh doh enlogge,
+dann jangk doh noh <nowiki>[[Special:Boardvote]]</nowiki>.
+
+För affshtemme ze dörrəve, moß de aanjemeldt un enjelog sinn,
+un Do moßß unger Dingem Metmmacher-Naam
+füür_em $2 minnßtenß $1 Bëijdrääsh,
+un zwesche em $4 un em $5 winnishßdenß $3 Bëijdrääsh
+jemaat hann.',
+	'boardvote_notloggedin'    => 'Do beß nit aanjemälldt.
 För affshtemme ze dörrəve, moß de aanjemelldt sinn,
-un Do moßß füür_em $2 minnßtenß $1 Bëijdrääsh unger Däm ÷:ksh:User_Naam jemaat hann.',
-	'boardvote_notqualified' => "'''Schaadt.'''
-Ding beßheerijje $1 Bëijdrääsh füür_em $2 sin_nit jenooch.
-Mer moßß winnishßtenß $3 Bëijdrääsh füürem Shtėshdaach jeschrevve hann,
-iih dat mer bëijem Affshtemme övver de Diräktoore
-un Füüshtändt zohjelooße eß.
+un Do moßß  unger Dingem Metmmacher-Naam
+füür_em $2 minnßtenß $1 Bëijdrääsh,
+un zwesche em $4 un em $5 winnishßdenß $3 Bëijdrääsh
+jemaat hann.',
+	'boardvote_notqualified'   => "'''Schaadt.'''
+Ding beßheerijje Bëijdrääsh füür_em $2 sin_nit jenooch.
+Mer moßß winnishßtenß $1 Bëijdrääsh füür dämm Shtėshdaach jeschrevve hann,
+un zwesche em $4 un em $5 winnishßdenß $3 Bëijdrääsh jemaat hann,
+iih dat mer bëijem Affshtemme hee zohjelooße eß.
 Beß nit kott.
 Bëijm nääkße Mool klabb_et beshtemmp.",
-	'boardvote_novotes'      => 'Noch hät Këijne hee affjeshtimmp…',
-	'boardvote_time'         => 'Dattum un Zigk',
-	'boardvote_user'         => 'Metmaacher',
-	'boardvote_edits'        => 'Bëijdrääsh',
-	'boardvote_days'         => 'Dare',
-	'boardvote_ip'           => 'IP Adress',
-	'boardvote_listintro'    => '<p>Hee küdd_en Lėßß med_all dä Shtemme,
+	'boardvote_novotes'        => 'Noch hät Këijne hee affjeshtėmmp&nbsp;…',
+	'boardvote_time'           => 'Dattum un Zigk',
+	'boardvote_user'           => 'Metmaacher',
+	'boardvote_edits'          => 'Bëijdrääsh',
+	'boardvote_days'           => 'Dare',
+	'boardvote_ip'             => 'IP Adress',
+	'boardvote_ua'             => 'Brauser',
+	'boardvote_listintro'      => '<p>Hee küdd_en Lėßß med_all dä Shtemme,
 di_mer heß_jäz faßßjehallde hann,
 noh_m Allfabet zotteet.</p>
 <p>(Mer künne die Daate och en $1 aanzëije)</p>',
-	'boardvote_dumplink'     => 'Foschlößßeldt',
-	'boardvote_needadmin'    => 'Nuur de ÷:ksh:MediaWiki:group-sysop fö_de Waahle künne dat maache.',
-	'boardvote_closed'       => 'De Waahl ess_eröm, luuer dann op de [http://meta.wikimedia.org/wiki/Elections_for_the_Board_of_Trustees_of_the_Wikimedia_Foundation Sigk medt_te Waal_Äjeepnißße], wadd_errußß_koohm.',
-	'boardvote_edits_many'   => '— janz fill —',
+	'boardvote_dumplink'       => 'Foschlößßeldt',
+	'boardvote_submit'         => 'Afshtemme',
+	'boardvote_strike'         => 'Shtemm zeröknëmme',
+	'boardvote_unstrike'       => 'Et Zeröknëmme zeröknëmme',
+	'boardvote_needadmin'      => 'Nuur de Kommitëter för de Wikimedia-Waahle künne dat maache.',
+	'boardvote_sitenotice'     => 'De <a href="{{localurle:Special:Boardvote/vote}}">Wahle för de Förshtänd en de Wikimedia-Shteftong</a> jonn beß zom 22. Juni.',
+	'boardvote_notstarted'     => 'Affshtemme jëijdt noch nėt. De Waahl häd_non_nėd_aanjefange.',
+	'boardvote_closed'         => 'De Waahl ess_eröm, luuer dann op de [http://meta.wikimedia.org/wiki/Board_elections/2008/Results Sigk medt_te Waal_Äjeepnißße], wadd_errußß_koohm.',
+	'boardvote_edits_many'     => '— janz fill —',
+	'group-boardvote'          => 'Wikimedia-Wahl-Kommitëtere',
+	'group-boardvote-member'   => 'Wikimedia-Wahl-Kommitëter',
+	'grouppage-boardvote'      => '{{ns:project}}:Wikimedia-Wahl-Kommitëter',
+	'boardvote_blocked'        => 'Do beß in Dingem Wiki jeshpëcht.
+Jespëchte Metmaacher dörve he nit afshtemme.',
+	'boardvote_bot'            => 'Do bess_enne Bot en Dingem Wiki.
+Als Bot darfß De ävver nit afshtemme.',
+	'boardvote_welcome'        => "Hallo '''$1'''!",
+	'go_to_board_vote'         => 'Wahle för de Förshtänd en de Wikimedia-Shteftong',
+	'boardvote_redirecting'    => 'För de Sesherhëijd_un Dörschseeshtėshkëijt hüjer ze maache,
+löüf dat met dä Afshtemmong ob_ennem extra ßööver.
+
+Doh weeß De en 20 Sekonde hen ömjelengk.
+För dä Fäll, dat dat nit klapp, jangk noh $1.
+
+Womöschlesh kriß De och en Warnong fun wääje de Sesherhëijt fonn_ennem Zächtifikaat.',
+	'right-boardvote'          => 'Wahle för de Shtefftong betreue',
 );
 
 $messages['la'] = array(
@@ -2971,6 +3154,7 @@ $messages['la'] = array(
 
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
+ * @author Siebrand
  */
 $messages['lb'] = array(
 	'boardvote'                => 'Wale fir de Wikimedia Board of Trustees',
@@ -3100,25 +3284,25 @@ positie. In geval de stemme stake wordt er een tweede ronde gehoude.</p>
 <p>Meer informatie:</p>
 <ul><li><a href="http://meta.wikimedia.org/wiki/Board_elections/2008" class="external">Bestuursverkiezing FAQ</a></li>
 <li><a href="http://meta.wikimedia.org/wiki/Board_elections/2008/Candidates" class="external">Kandidate</a></li></ul>',
-	'boardvote_intro_change' => "<p>De höbs al gesjtömp. De kins dien sjtöm verangere mit 't óngersjtäönde formeleer. Vink estebleef de vekskes nao edere kandidaat dies te sjteunt aan.</p>",
+	'boardvote_intro_change' => "<p>De höbs al gesjtömp. De kèns dien sjtöm verangere mit 't óngersjtäönde formeleer. Vink estebleef de vekskes nao edere kandidaat daes te sjteunt aan.</p>",
 	'boardvote_entered'      => 'Danke. Dien sjtöm is verwirk.
 
-Es te wils, kins te de volgende gegaeves beware. Dien sjtöm:
+Es te wils, kèns te de volgende gegaeves beware. Dien sjtöm:
 
 <pre>$1</pre>
 
-Dees is versjleuteld mit de publieke sleutel van de Verkezingskemissie:
+Dees is versjleuteld mit de publieke sjleutel van de Verkezingskemissie:
 
 <pre>$2</pre>
 
-Noe volg de versleuteldje versie. Dees is aopebaar en nao te zeen op [[Special:Boardvote/dump]].
+Noe volg de versjleutelde versie. Dees is aopebaar en nao te zeen op [[Special:Boardvote/dump]].
 
 <pre>$3</pre>
 
 [[Special:Boardvote/entry|Trök]]',
 	'boardvote_nosession'    => "Dien Wikimedia-gebroekersnómmer kan neet bepaold waere. Meld dich aan in de wiki woes te voldeis aan de eise en gank nao <nowiki>[[Special:Boardvote]]</nowiki>. Gebroek 'n gebroekersaccount mit minstes $1 biedrages veur $2 en mit dien ierste bewirking veur $3.",
-	'boardvote_notloggedin'  => 'De bis neet aangemeld. De kins sjtömme wens te veur $2 minstes $1 bewirkinge höbs gemaak en dien ierste bewirking mót veur $3 gemaak zeen.',
-	'boardvote_notqualified' => 'De kins neet sjtumme in dees verkezing. De mós $3 bewirkinge gemaak höbbe veur $2 en dien ierste bewirking mót veur $5 gemaak zeen.',
+	'boardvote_notloggedin'  => 'De bis neet aangemeld. De kèns sjtömme wens te veur $2 minstes $1 bewirkinge höbs gemaak en dien ierste bewirking mót veur $3 gemaak zeen.',
+	'boardvote_notqualified' => 'De kèns neet sjtömme in dees verkezing. De mós $3 bewirkinge gemaak höbbe veur $2 en dien ierste bewirking mót veur $5 gemaak zeen.',
 	'boardvote_novotes'      => "D'r is door nag nemes gestömp.",
 	'boardvote_time'         => 'Tied',
 	'boardvote_user'         => 'Gebroeker',
@@ -3216,7 +3400,7 @@ Paskutinė koduota versija žemiau. Ji bus viešai rodoma [[Special:Boardvote/du
 	'boardvote_edits_many'   => 'daug',
 	'boardvote_blocked'      => 'Atsiprašome, jūs buvote užblokuotas wiki, kurioje užsiregistravote. Užblokuotiems naudotojams nėra leidžiama balsuoti.',
 	'boardvote_welcome'      => "Sveiki '''$1'''!",
-	'go_to_board_vote'       => 'Vikimedijos tarybos rinkimai 2007',
+	'go_to_board_vote'       => 'Wikimedia tarybos rinkimai 2007',
 	'boardvote_redirecting'  => 'Pagerintam saugumui ir aiškumui, mes balsavimą leidžiame išoriniame, nepriklausomai kontroliuojamame serveryje.
 
 Jūs būsite peradresuotas į šį išorinį serverį po 20 sekundžių. [$1 Spauskite čia], jei norite patekti dabar.
@@ -3227,6 +3411,7 @@ Gali būti rodomas saugumo įspėjimas apie nepasirašytą sertifikatą.',
 /** Malayalam (മലയാളം)
  * @author Jacob.jose
  * @author Shijualex
+ * @author Siebrand
  */
 $messages['ml'] = array(
 	'boardvote'                => 'വിക്കിമീഡിയ ബോര്‍ഡ് ഓഫ് ട്രസ്റ്റീസിനായുള്ള തിരഞ്ഞെടുപ്പ്',
@@ -3323,6 +3508,7 @@ $messages['ml'] = array(
 /** Marathi (मराठी)
  * @author Kaustubh
  * @author Mahitgar
+ * @author Siebrand
  */
 $messages['mr'] = array(
 	'boardvote'                => 'विकिमीडिया विश्वस्त मंडळ निवडणूक',
@@ -3427,6 +3613,7 @@ $messages['nan'] = array(
 
 /** Low German (Plattdüütsch)
  * @author Slomox
+ * @author Siebrand
  */
 $messages['nds'] = array(
 	'boardvote'              => 'Wahlen to dat Wikimedia-Kuratorium',
@@ -3568,6 +3755,7 @@ $messages['nn'] = array(
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
+ * @author Siebrand
  */
 $messages['no'] = array(
 	'boardvote'                => 'Valg til Wikimedia-styret',
@@ -3636,7 +3824,11 @@ Valget er åpent til 22. juni kl. 00.00 (UTC)',
 Det er ikke tillatt å stemme med robotkontoer.',
 	'boardvote_welcome'        => "Velkommen, '''$1'''!",
 	'go_to_board_vote'         => 'Styrevalg i Wikimedia 2008',
-	'boardvote_redirecting'    => 'Stemmegivingen blir avholdt på en ekstern tjener som kontrolleres av en uavhengig tredjepart for å øke sikkerheten og åpenheten rundt valget. Du blir omdirigert til denne tjener om 20&nbsp;sekunder. [$1 Klikk her] for å gå direkte til tjeneren. Du vil muligens få en sikkerhetsadvarsel om et usignert sertifikat.',
+	'boardvote_redirecting'    => 'Stemmegivingen blir avholdt på en ekstern tjener som kontrolleres av en uavhengig tredjepart for å øke sikkerheten og åpenheten rundt valget.
+
+Du blir omdirigert til denne tjeneren om 20&nbsp;sekunder. [$1 Klikk her] for å gå direkte til tjeneren.
+
+Du vil muligens få en sikkerhetsadvarsel om et usignert sertifikat.',
 	'right-boardvote'          => 'Administrere styrevalg',
 );
 
@@ -3652,6 +3844,7 @@ $messages['nso'] = array(
 
 /** Occitan (Occitan)
  * @author Cedric31
+ * @author Siebrand
  */
 $messages['oc'] = array(
 	'boardvote'                => 'Eleccions al conselh d’administracion de la Wikimedia Foundation',
@@ -3938,76 +4131,88 @@ $messages['ps'] = array(
 );
 
 /** Portuguese (Português)
+ * @author 555
  * @author Malafaya
  * @author Brunoy Anastasiya Seryozhenko
- * @author 555
  */
 $messages['pt'] = array(
 	'boardvote'                => 'Eleições para o Board of Trustees da Wikimedia Foundation',
-	'boardvote-desc'           => '[[meta:Board elections/2008|Eleições para o Conselho de Administração da Wikimedia]]',
+	'boardvote-desc'           => '[[meta:Board elections/2008|Eleições para o Comité de Administração da Wikimedia]]',
 	'boardvote_entry'          => '* [[Special:Boardvote/vote|Votar]]
 * [[Special:Boardvote/list|Listar votos por data]]
 * [[Special:Boardvote/dump|Dados encriptados da eleição]]',
-	'boardvote_intro'          => '
-<p>Bem-vindo à segunda edição das eleições para o Comité da Fundação Wikimedia. A votação irá designar duas pessoas para representar a comunidade de utilizadores nos vários projectos Wikimedia. Essas duas pessoas irão ajudar a determinar a orientação futura a seguir pelos projectos Wikimedia, individualmente ou como um todo, e representar os <em>seus</em> interesses e preocupações em relação ao Comité. Irão, também, tomar as decisões respeitantes ao financiamento e alocação de fundos.</p>
+	'boardvote_intro'          => '<p>Bem-vindo às eleições de 2008 para o Comitê da Wikimedia Foundation.
+Estaremos votando em uma pessoa que irá representar a comunidade de usuários nos vários projetos Wikimedia. Essas duas pessoas irão ajudar a determinar a orientação futura a ser seguida pelos projetos Wikimedia, individualmente ou como um todo, e representar os <em>seus</em> interesses e preocupações em relação ao Comitê.
+Irão, também, tomar as decisões relativas a formas de obtenção e alocação de fundos.</p>
 
-<p>Por favor, leia cuidadosamente os discursos dos candidatos e respostas a perguntas antes de votar. Cada um dos candidatos é um utilizador respeitado, consideravelmente em tempo e dedicação para tornar estes projectos um ambiente acolhedor empenhado na procura e livre distribuição do conhecimento humano.</p>
+<p>Por favor, leia cuidadosamente as declarações dos candidatos e suas respostas a perguntas antes de votar. Cada um dos candidatos é um usuário respeitado, tendo contribuído com tempo e dedicação para tornar estes projetos um ambiente acolhedor empenhado na procura e livre distribuição do conhecimento humano.</p>
 
-<p>Poderá votar em tantos candidatos quantos desejar. O candidato que apurar mais votos em cada posição será declarado vencedor dessa posição. Em caso de empate, serão lançadas votações para desempate.</p>
+<p>Pontue os candidatos de acordo com a sua preferência inserindo um número junto ao box fornecido (1 = candidato favorito, 2 = segunda preferência de candidato, ...).
+Você poderá demonstrar o mesmo nível de preferência para mais de um candidato, bem como manter candidatos sem pontuação alguma.
+Será assumido que você prefere todos os candidatos pontuados do que os não-pontuados, e que você é indiferente em relação aos que não receberam pontuação.</p>
+
+<p>O vencedor da eleição será calculado usando o método de Schulze. Para mais informações, veja as páginas oficiais da eleição.</p>
 
 <p>Para mais informações, consulte:</p>
 <ul><li><a href="http://meta.wikimedia.org/wiki/Board_elections/2008" class="external">FAQ de eleição</a></li>
-<li><a href="http://meta.wikimedia.org/wiki/Board_elections/2008/Candidates" class="external">Candidatos</a></li></ul>
-',
-	'boardvote_intro_change'   => '<p>Já votou anteriormente. Contudo pode alterar o seu voto utilizando o formulário abaixo. Por favor marque a caixa ao lado de cada candidato que aprovar.</p>',
+<li><a href="http://meta.wikimedia.org/wiki/Board_elections/2008/Candidates" class="external">Candidatos</a></li>
+<li><a href="http://en.wikipedia.org/wiki/Schulze_method" class="external">método de Schulze</a></li></ul>',
+	'boardvote_intro_change'   => '<p>Você já votou. Porém, você pode mudar
+seu voto usando o formulário abaixo. Por favor, pontue os candidatos de acordo com suas preferências, onde o menor número 
+indica uma alta preferência por um candidato em específico. Você também pode pontuar da mesma forma mais de um
+candidato, podendo manter os demais candidatos sem pontuação alguma.</p>',
 	'boardvote_entered'        => 'Obrigado, o seu voto foi registado.
 
 Se desejar pode guardar os seguintes detalhes. O seu registo de voto é:
 
 <pre>$1</pre>
 
-Foi encriptado com a chave pública dos Administradores da Eleição:
+Seu voto foi encriptado com a chave pública dos Administradores da Eleição:
 
 <pre>$2</pre>
 
-A versão da encriptação segue-se, e será publicada em [[Special:Boardvote/dump]].
+A versão encripitada resultante se encontra a seguir. Ela será publicada em [[Special:Boardvote/dump]].
 
 <pre>$3</pre>
 
 [[Special:Boardvote/entry|Voltar]]',
-	'boardvote_invalidentered' => '<p><strong>Erro</strong>: as preferências dos candidatos devem ser expressas em números inteiros positivos apenas (1, 2, 3, ....), ou 
-deixe vazio.</p>',
+	'boardvote_invalidentered' => '<p><strong>Erro</strong>: as preferências por candidatos devem ser expressas apenas em números inteiros  e positivos (1, 2, 3, ....) ou 
+deixadas em branco.</p>',
 	'boardvote_nosession'      => 'Não foi possível determinar o seu ID de utilizador Wikimedia.
 Por favor, efectue login no wiki onde está qualificado a votar e vá a <nowiki>[[Special:Boardvote]]</nowiki>.
-Deverá usar uma conta com pelo menos $1 contribuições antes de $2, e ter feito pelo menos $3 contribuições entre $4 e $5.',
-	'boardvote_notloggedin'    => 'Você não está logado.
-Para votar, você deve usar uma conta com pelo menos $1 contribuições antes de $2, e com contribuições feitas pelo menos $3 entre $4 e $5.',
-	'boardvote_notqualified'   => 'Desculpe, mas só fez $1 edições antes de $2. Precisa de ter no mínimo $3 edições de modo a poder votar.',
+Deverá usar uma conta com pelo menos $1 contribuições feitas antes de $2, e ter feito pelo menos $3 contribuições entre $4 e $5.',
+	'boardvote_notloggedin'    => 'Você não está autenticado.
+Para votar, você deve usar uma conta com pelo menos $1 contribuições feitas antes de $2, tendo feito ao menos $3 entre $4 e $5.',
+	'boardvote_notqualified'   => 'Você não está qualificado a votar nesta eleição.
+Seria necessário ter feito ao menos $1 edições antes de $2, tendo feito $3 edições entre $4 e $5.',
 	'boardvote_novotes'        => 'Ninguém votou até ao momento.',
 	'boardvote_time'           => 'Data',
 	'boardvote_user'           => 'Utilizador',
-	'boardvote_edits'          => 'Contribuições',
+	'boardvote_edits'          => 'Edições',
 	'boardvote_days'           => 'Dias',
 	'boardvote_ip'             => 'IP',
-	'boardvote_ua'             => 'Agente do utilizador',
-	'boardvote_listintro'      => '<p>Esta é uma lista de todos votos registados até à data. $1 para os dados encriptados.</p>',
+	'boardvote_ua'             => '"User agent"',
+	'boardvote_listintro'      => '<p>Esta é uma lista de todos votos registados até o momento.
+$1 para acessar os dados encriptados.</p>',
 	'boardvote_dumplink'       => 'Clique aqui',
 	'boardvote_submit'         => 'OK',
 	'boardvote_strike'         => 'Riscar',
-	'boardvote_unstrike'       => 'Limpar risco',
+	'boardvote_unstrike'       => 'Remover risco',
 	'boardvote_needadmin'      => 'Apenas administradores podem efectuar esta operação.',
-	'boardvote_sitenotice'     => '<a href="{{localurle:Especial:Boardvote/vote}}">Comité da Fundação Wikimedia</a>: Votação aberta até 12 de Julho',
+	'boardvote_sitenotice'     => '<a href="{{localurle:Especial:Boardvote/vote}}">Comité da Wikimedia Foundation</a>:
+Votação aberta até 22 de Julho',
 	'boardvote_notstarted'     => 'A votação ainda não começou',
-	'boardvote_closed'         => 'As eleições estão agora encerradas, ver [http://meta.wikimedia.org/wiki/Elections_for_the_Board_of_Trustees_of_the_Wikimedia_Foundation%2C_2008/Pt a página de eleições para os resultados] brevemente.',
+	'boardvote_closed'         => 'As eleições estão agora encerradas. Acesse [http://meta.wikimedia.org/wiki/Board_elections/2008/Results a página de eleições para os resultados] brevemente.',
 	'boardvote_edits_many'     => 'muitos',
 	'group-boardvote'          => 'Board vote administradores',
 	'group-boardvote-member'   => 'Board vote administrador',
 	'grouppage-boardvote'      => '{{ns:project}}:Administrador da votação para o Conselho',
-	'boardvote_blocked'        => 'Desculpe, mas a sua conta foi bloqueada no seu wiki de registo. Utilizadores bloqueados não estão autorizados a votar.',
+	'boardvote_blocked'        => 'Desculpe, mas a sua conta foi bloqueada no seu wiki de registo.
+Utilizadores bloqueados não estão autorizados a votar.',
 	'boardvote_bot'            => "Você possui uma permissão de ''Bot'' em sua Wiki.
 Contas com permissão de ''Bot'' não podem votar.",
 	'boardvote_welcome'        => "Bem-vindo, '''$1'''!",
-	'go_to_board_vote'         => 'Eleições para o Conselho de Administração da Wikimedia 2008',
+	'go_to_board_vote'         => 'Eleições de 2008 para o Comité de Administração da Wikimedia',
 	'boardvote_redirecting'    => 'Para maior segurança e transparência, estamos a realizar a votação num servidor externo controlado independentemente.
 
 Será redireccionado para este servidor externo dentro de 20 segundos. [$1 Clique aqui] para ser redireccionado agora.
@@ -4017,33 +4222,41 @@ Um aviso de segurança sobre um certificado não assinado poderá eventualmente 
 );
 
 /** Brazilian Portuguese (Português do Brasil)
+ * @author 555
  * @author Brunoy Anastasiya Seryozhenko
  */
 $messages['pt-br'] = array(
-	'boardvote_intro'        => '<p>Bem-vindo às eleições de 2008 para o Comitê da Fundação Wikimedia. A votação irá designar duas pessoas para representar a comunidade de usuários nos vários projetos Wikimedia. Essas duas pessoas irão ajudar a determinar a orientação futura a seguir pelos projetos Wikimedia, individualmente ou como um todo, e representar os <em>seus</em> interesses e preocupações em relação ao Comitê. Irão, também, tomar as decisões respeitantes ao financiamento e alocação de fundos.</p>
+	'boardvote_intro'        => '<p>Bem-vindo às eleições de 2008 para o Comitê da Wikimedia Foundation.
+Estaremos votando em uma pessoa que irá representar a comunidade de usuários nos vários projetos Wikimedia. Essas duas pessoas irão ajudar a determinar a orientação futura a ser seguida pelos projetos Wikimedia, individualmente ou como um todo, e representar os <em>seus</em> interesses e preocupações em relação ao Comitê.
+Irão, também, tomar as decisões relativas a formas de obtenção e alocação de fundos.</p>
 
-<p>Por favor, leia cuidadosamente os discursos dos candidatos e respostas a perguntas antes de votar. Cada um dos candidatos é um usuário respeitado, consideravelmente em tempo e dedicação para tornar estes projetos um ambiente acolhedor empenhado na procura e livre distribuição do conhecimento humano.</p>
+<p>Por favor, leia cuidadosamente as declarações dos candidatos e suas respostas a perguntas antes de votar. Cada um dos candidatos é um usuário respeitado, tendo contribuído com tempo e dedicação para tornar estes projetos um ambiente acolhedor empenhado na procura e livre distribuição do conhecimento humano.</p>
 
-<p>Poderá votar em tantos candidatos quantos desejar. O candidato que apurar mais votos em cada posição será declarado vencedor dessa posição. Em caso de empate, serão lançadas votações para desempate.</p>
+<p>Pontue os candidatos de acordo com a sua preferência inserindo um número junto ao box fornecido (1 = candidato favorito, 2 = segunda preferência de candidato, ...).
+Você poderá demonstrar o mesmo nível de preferência para mais de um candidato, bem como manter candidatos sem pontuação alguma.
+Será assumido que você prefere todos os candidatos pontuados do que os não-pontuados, e que você é indiferente em relação aos que não receberam pontuação.</p>
+
+<p>O vencedor da eleição será calculado usando o método de Schulze. Para mais informações, veja as páginas oficiais da eleição.</p>
 
 <p>Para mais informações, consulte:</p>
 <ul><li><a href="http://meta.wikimedia.org/wiki/Board_elections/2008" class="external">FAQ de eleição</a></li>
-<li><a href="http://meta.wikimedia.org/wiki/Board_elections/2008/Candidates" class="external">Candidatos</a></li></ul>',
+<li><a href="http://meta.wikimedia.org/wiki/Board_elections/2008/Candidates" class="external">Candidatos</a></li>
+<li><a href="http://en.wikipedia.org/wiki/Schulze_method" class="external">método de Schulze</a></li></ul>',
 	'boardvote_intro_change' => '<p>Você já votou. Porém, você pode mudar
-seu voto usando o formulário abaixo. Por favor, liste os candidatos de acordo com suas preferências, onde o menor número 
-indica uma alta preferências por um candidato em particular. Você também pode dar a mesma preferência para mais de um
-candidato e pode manter os outros candidatos fora da classificação geral.</p>',
+seu voto usando o formulário abaixo. Por favor, pontue os candidatos de acordo com suas preferências, onde o menor número 
+indica uma alta preferência por um candidato em específico. Você também pode pontuar da mesma forma mais de um
+candidato, podendo manter os demais candidatos sem pontuação alguma.</p>',
 	'boardvote_entered'      => 'Obrigado, o seu voto foi registado.
 
 Se desejar pode guardar os seguintes detalhes. O seu registo de voto é:
 
 <pre>$1</pre>
 
-Foi encriptado com a chave pública dos Administradores da Eleição:
+Seu voto foi encriptado com a chave pública dos Administradores da Eleição:
 
 <pre>$2</pre>
 
-A versão da encriptação continua, e será publicada em [[Special:Boardvote/dump]].
+A versão encripitada resultante se encontra a seguir. Ela será publicada em [[Special:Boardvote/dump]].
 
 <pre>$3</pre>
 
@@ -4055,6 +4268,7 @@ Deverá usar uma conta com pelo menos $1 contribuições antes de $2, e ter feit
 
 /** Quechua (Runa Simi)
  * @author AlimanRuna
+ * @author Siebrand
  */
 $messages['qu'] = array(
 	'boardvote'             => 'Wikimedia sunqullisqa runakunata akllanakuy',
@@ -4098,7 +4312,9 @@ $messages['ro'] = array(
 
 /** Russian (Русский)
  * @author Александр Сигачёв
+ * @author Kaganer
  * @author HalanTul
+ * @author Siebrand
  */
 $messages['ru'] = array(
 	'boardvote'                => 'Выборы в Совет поверенных фонда «Викимедиа»',
@@ -4122,7 +4338,7 @@ $messages['ru'] = array(
 <ul><li><a href="http://meta.wikimedia.org/wiki/Board_elections/2008/ru" class="external">Выборы в Совет поверенных 2008</a></li>
 <li><a href="http://meta.wikimedia.org/wiki/Board_elections/2008/Candidates/Ru" class="external">Кандидаты</a></li>
 <li><a href="http://ru.wikipedia.org/wiki/Метод_Шульца" class="external">Метод Шульца</a> (<a href="http://ru.wikipedia.org/wiki/Парадокс_Кондорсе" class="external">Парадокс Кондорсе</a>)</li></ul>',
-	'boardvote_intro_change'   => '<p>Вы уже проголосовали. Тем не менее, с помощью приведённой ниже формы вы можете изменить свое решение. Пожалуйста, отметьте тех кандидатов, кандидатуры которых вы поддерживаете.</p>',
+	'boardvote_intro_change'   => '<p>Вы уже проголосовали. Тем не менее, с помощью приведённой ниже формы вы можете изменить свое решение. Пожалуйста,  расположите кандидатов в порядке, отражающим ваши предпочтения, заполнив поля числами так, чтобы наименьший номер указывал на ваше наивысшее предпочтение конкретного кандидата. Вы можете указать нескольким кандидатам одинаковое число, а также не указывать напротив некоторых кандидатов числа.</p>',
 	'boardvote_entered'        => 'Спасибо, ваш голос учтён.
 
 При желании, вы можете записать следующую информацию. Номер вашего бюллетеня:
@@ -4139,11 +4355,13 @@ $messages['ru'] = array(
 
 [[Special:Boardvote/entry|Назад]]',
 	'boardvote_invalidentered' => '<p><strong>Ошибка.</strong> Предпочтение кандидата должно быть выражено положительным целым числом (1, 2, 3, ....) или оставлено пустым.</p>',
-	'boardvote_nosession'      => 'Невозможно определить ваш идентификатор участника Викимедии.
-Пожалуйста, представьтесь в проекте, где ваша учётная запись удовлетворяет предъявляемым требованиям и перейдите на страницу <nowiki>[[Special:Boardvote]]</nowiki>.
-Требования к учётной записи: $1 правок до $2, не менее $3 правок с $4 по $5.',
-	'boardvote_notloggedin'    => 'Вы не представились. Чтобы проголосовать, вы должны быть зарегистрированным пользователем и сделать не менее $1 правок до $2, первая правка должна быть до $3.',
-	'boardvote_notqualified'   => 'Извините, на вашем счету лишь $3 правок до $2. Необходимо как минимум $1 для участия в голосовании. Ваше первая правка была сделана $4, к голосованию допускаются только участники сделавшие первую правку до $5.',
+	'boardvote_nosession'      => 'Невозможно определить ваш идентификатор участника проектов Викимедиа.
+Пожалуйста, представьтесь в том проекте, где ваша учётная запись удовлетворяет предъявляемым требованиям, и перейдите на страницу <nowiki>[[Special:Boardvote]]</nowiki>.
+Вы должны быть зарегистрированным участником, сделавшим не менее $1 правок до $2, и не менее $3 правок с $4 до $5.',
+	'boardvote_notloggedin'    => 'Вы не представились.
+Чтобы проголосовать, вы должны быть зарегистрированным участником и сделать не менее $1 правок до $2, и не менее $3 правок с $4 до $5.',
+	'boardvote_notqualified'   => 'К сожалению, вы не можете принять участие в этих выборах.
+Чтобы проголосовать, вы должны быть зарегистрированным участником и сделать не менее $1 правок до $2, и не менее $3 правок с $4 до $5.',
 	'boardvote_novotes'        => 'Никто ещё не проголосовал. ',
 	'boardvote_time'           => 'Время',
 	'boardvote_user'           => 'Участник',
@@ -4152,22 +4370,22 @@ $messages['ru'] = array(
 	'boardvote_ip'             => 'IP',
 	'boardvote_ua'             => 'Браузер',
 	'boardvote_listintro'      => '<p>Это список всех принятых на данный момент бюллетеней для голосования. В зашифрованном виде они доступны $1.</p>',
-	'boardvote_dumplink'       => 'здесь',
+	'boardvote_dumplink'       => 'Нажмите здесь',
 	'boardvote_submit'         => 'OK',
 	'boardvote_strike'         => 'Зачеркнуть',
 	'boardvote_unstrike'       => 'Убрать зачёркивание',
 	'boardvote_needadmin'      => 'Эта операция доступна только администрации выборов.',
-	'boardvote_sitenotice'     => '<a href="{{localurle:Special:Boardvote/vote}}">Выборы в Совет поверенных фонда «Викимедиа»</a>: Голосование открыто до 12 июля',
+	'boardvote_sitenotice'     => '<a href="{{localurle:Special:Boardvote/vote}}">Выборы в Совет поверенных фонда «Викимедиа»</a>: Голосование открыто до 22 июня',
 	'boardvote_notstarted'     => 'Голосование ещё не началось',
-	'boardvote_closed'         => 'Голосование окончено, см. [[m:Elections for the Board of Trustees of the Wikimedia Foundation, 2008/En|страницу результатов]].',
+	'boardvote_closed'         => 'Голосование окончено, см. [http://meta.wikimedia.org/wiki/Board_elections/2008/Results страницу результатов].',
 	'boardvote_edits_many'     => 'много',
 	'group-boardvote'          => 'Члены избиркома',
 	'group-boardvote-member'   => 'член избиркома',
 	'grouppage-boardvote'      => '{{ns:project}}:Член избиркома',
 	'boardvote_blocked'        => 'Извините, но вы заблокированы в вашем вики-проекте. Заблокированные участники не могут голосовать.',
-	'boardvote_bot'            => 'Извините, в вики, где вы зарегистрированы, у вас установлен флаг бота. Учётные записи ботов не допускаются к голосованию.',
+	'boardvote_bot'            => 'Извините, но в вики-проекте, в котором вы зарегистрированы, у вас установлен флаг бота. Учётные записи ботов не допускаются к голосованию.',
 	'boardvote_welcome'        => "Добро пожаловать, '''$1'''!",
-	'go_to_board_vote'         => 'Выборы в совет поверенных Викимедиа 2008',
+	'go_to_board_vote'         => 'Выборы 2008 года в совет поверенных фонда «Викимедиа»',
 	'boardvote_redirecting'    => 'Для увеличения безопасности и прозрачности мы проводим голосование на внешнем, независимо управляемом сервере.
 
 Вы будете перенаправлены на этот внешний сервер через 20 секунд. [$1 Нажмите сюда], чтобы перейти туда прямо сейчас.
@@ -4330,39 +4548,48 @@ Môže sa zobraziť bezpečnostné varovanie o nepodpísanom certifikáte.',
 	'right-boardvote'          => 'Spravovať voľby',
 );
 
+/** Serbian (Српски / Srpski)
+ * @author Kale
+ */
+$messages['sr'] = array(
+	'boardvote_welcome' => "Добродошли '''$1'''!",
+);
+
 /** Serbian Cyrillic ekavian (ћирилица)
  * @author Kale
  * @author Sasa Stefanovic
  */
 $messages['sr-ec'] = array(
-	'boardvote'                => 'Избор за Одбор повереника Викимедија Фондације',
+	'boardvote'                => 'Избор за Одбор повереника Задужбине Викимедија',
 	'boardvote-desc'           => '[[meta:Board elections/2008/sr|Избори за Викимедијин Одбор повереника]]',
 	'boardvote_entry'          => '* [[Special:Boardvote/vote|Гласај]]
-* [[Special:Boardvote/list|Списак гласова до датума]]
-* [[Special:Boardvote/dump|Енкриптован запис гласања]]',
-	'boardvote_intro'          => '
-<p>Добро дошли на треће изборе за Викимедијин Одбор повереника.
-Гласамо за једну особу која би представљала заједницу корисника разних Викимедијиних пројеката.
-Она ће помоћи да се утврди будући смер којим ће Викимедијини пројекти да се крећу,
-индивидуално и као група, и представљаће <em>ваше</em> интересе и бриге Одбору повереника.
-Одлучиће како да се стварају приноси и како да се расподели прикупљен новац.</p>
+* [[Special:Boardvote/list|Списак досадашњих гласова]]
+* [[Special:Boardvote/dump|Шифрован запис гласања]]',
+	'boardvote_intro'          => '<p>Добродошли на Изборе за Викимедијин Одбор повереника 2008.
+Гласамо за једну особу која треба да представља заједницу корисника различитих Викимедијиних пројеката.
+Та особа ће помоћи у обликовању будућег правца којим ће Викимедијини пројекти ићи, како појединачно тако и као скуп, и представљаће <em>ваше</em> интересе и бриге Одбору повереника.
+Одлучиваће, такође, о начинима прикупљања средстава и расподели прикупљеног новца.</p>
 
-<p>Молимо прочитајте изјаве кандидата и одговоре на претраге пажљиво пре него што гласате.
-Сваки од кандидата је поштовани корисник, који је допринео значајним временом и напорима да
-ови пројекти буду добродошло окружење са слободном дистрибуцијом људског знања као циљем.</p>
+<p>Молимо вас да пре гласања пажљиво прочитате изјаве кандидата и одговоре на постављена питања.
+Сваки од кандидата је цењени корисник који је значајном количином времена и напора допринео томе да ови пројекти буду пријатно окружење посвећено стремљењу ка, и слободној дистрибуцији људског знања.</p>
 
-<p>Можете гласати за онолико кандидата за колико желите. Кандидат са највише гласова у сваком положају
-ће бити проглашени победником тог положаја. У случају нерешеног, ново гласање ће бити одржано.</p>
+<p>Молимо вас рангирајте кандидате сходно вашој наклоности уписивањем броја поред квадратића (1 = фаворит, 2 = други по реду, ...).
+Можете назначити и исту наклоњеност према више од једног кандидата, а можете и оставити кандидате нерангиранима.
+Узима се претпоставка да сте наклоњенији свим рангираним кандидатима више него свим нерангираним, као и да сте подједнако индиферентни према свим нерангираним кандидатима.</p>
 
-<p>За више информација, погледајте:</p>
-<ul><li><a href="http://meta.wikimedia.org/wiki/Board_elections/2008" class="external">Најчешће постављена питања избора</a></li>
-<li><a href="http://meta.wikimedia.org/wiki/Board_elections/2008/Candidates" class="external">Кандидати</a></li></ul>
-',
-	'boardvote_intro_change'   => '<p>Гласали сте раније. Међутим, можете променити ваш глас користећи формулар испод.
-Молимо одаберите кандидате за које гласате.</p>',
-	'boardvote_entered'        => 'Хвала вам, ваш глас је снимљен.
+<p>Победник избора ће бити добијен применом Шулцовог метода. За више информација погледајте званичне странице избора.</p>
 
-Уколико желите, можете сачувати следеће детаље. Ваше гласачки снимак је:
+<p>For more information, see:</p>
+<ul><li><a href="http://meta.wikimedia.org/wiki/Board_elections/2008/sr" class="external">Избори за Одбор 2008.</a></li>
+<li><a href="http://meta.wikimedia.org/wiki/Board_elections/2008/Candidates/sr" class="external">Кандидати</a></li>
+<li><a href="http://en.wikipedia.org/wiki/Schulze_method" class="external">Шулцов метод (текст на енглеском језику)</a></li></ul>',
+	'boardvote_intro_change'   => '<p>Већ сте гласали. Ипак, можете променити
+ваш глас користећи формулар испод. Молимо рангирајте кандидате сходно редоследу ваше наклоњености, при чему мањи број
+означава већу наклоњеност према датом кандидату. Можете назначити исту наклоњеност према више
+од једног кандидата а можете и оставити кандидате нерангиранима.</p>',
+	'boardvote_entered'        => 'Хвала вам, ваш глас је забележен.
+
+Уколико желите, можете сачувати следеће детаље. Број записа вашег гласа је:
 
 <pre>$1</pre>
 
@@ -4370,7 +4597,7 @@ $messages['sr-ec'] = array(
 
 <pre>$2</pre>
 
-Следи резултујућа шифрирана верзија. Биће јавно представљена на [[Special:Boardvote/dump]].
+Следи резултујућа шифрирана верзија. Биће јавно доступна на [[Special:Boardvote/dump]].
 
 <pre>$3</pre>
 
@@ -4380,34 +4607,39 @@ $messages['sr-ec'] = array(
 	'boardvote_nosession'      => 'Ваш Викимедијин кориснички ID се не може утврдити.
 Молимо вас, пријавите се на викију где задовољавате предуслове за право гласа, и идите на <nowiki>[[Special:Boardvote]]</nowiki>.
 Морате користити налог са најмање $1 измена направљених пре $2, и са најмање $3 измена између $4 и $5.',
-	'boardvote_notloggedin'    => 'Нисте пријављени. Да бисте гласали, морате да имате налог са бар $1 измена пре $2, где је прва измена пре $3.',
-	'boardvote_notqualified'   => 'Жао нам је, нисте квалификовани да гласате на овом избору. Морате да имате овде бар $3 измена пре $2, а ви имате $1. Такође, ваша прва измена на овом викију је била у $4, а треба да буде пре $5.',
-	'boardvote_novotes'        => 'Још нико није гласао.',
+	'boardvote_notloggedin'    => 'Нисте пријављени.
+Да бисте гласали, морате користити налог са најмање $1 измена направљених пре $2, и са најмање $3 измена између $4 и $5.',
+	'boardvote_notqualified'   => 'Не задовољавате услове за гласање на овим изборима.
+Неопходно је да сте направили најмање $1 измена пре $2, и најмање $3 измена између $4 и $5.',
+	'boardvote_novotes'        => 'Нико још увек није гласао.',
 	'boardvote_time'           => 'Време',
 	'boardvote_user'           => 'Корисник',
 	'boardvote_edits'          => 'Измена',
 	'boardvote_days'           => 'Дана',
 	'boardvote_ip'             => 'ИП',
 	'boardvote_ua'             => 'Кориснички агент',
-	'boardvote_listintro'      => '<p>Ово је списак свих гласова који су снимљени до сада. $1 за шифриране податке.</p>',
+	'boardvote_listintro'      => '<p>Ово је списак свих гласова који су снимљени до сада.
+$1 за шифроване податке.</p>',
 	'boardvote_dumplink'       => 'Кликните овде',
 	'boardvote_submit'         => 'У реду',
-	'boardvote_strike'         => 'Прецртано',
+	'boardvote_strike'         => 'Прецртај',
 	'boardvote_unstrike'       => 'Непрецртано',
-	'boardvote_needadmin'      => 'Само администратори гласања могу да изводе ову операцију.',
-	'boardvote_sitenotice'     => '<a href="{{localurle:Special:Boardvote/vote}}">Избори за Викимедијин Одбор</a>:  Гласање отворено до 21. септембра',
+	'boardvote_needadmin'      => 'Само администратори гласања могу да изврше ову операцију.',
+	'boardvote_sitenotice'     => '<a href="{{localurle:Special:Boardvote/vote}}">Избори за Викимедијин Одбор</a>:
+Гласање отворено до 22. јуна',
 	'boardvote_notstarted'     => 'Гласање још није почело',
-	'boardvote_closed'         => 'Гласање је завршено, погледајте [http://meta.wikimedia.org/wiki/Elections_for_the_Board_of_Trustees_of_the_Wikimedia_Foundation%2C_2008/En страницу за гласање за резултате] ускоро.',
+	'boardvote_closed'         => 'Гласање је завршено, ускоро погледајте [http://meta.wikimedia.org/wiki/Board_elections/2008/Results/sr страну посвећену резултатима избора].',
 	'boardvote_edits_many'     => 'много',
-	'group-boardvote'          => 'изборна комисија',
-	'group-boardvote-member'   => 'изборна комисија',
+	'group-boardvote'          => 'Администратори гласања за Одбор',
+	'group-boardvote-member'   => 'Администратор гласања за Одбор',
 	'grouppage-boardvote'      => '{{ns:project}}:Администратор гласања за Одбор',
-	'boardvote_blocked'        => 'Жао нам је, блокирани сте на вашој Вики. Блокираним корисницима је забрањено да гласају.',
+	'boardvote_blocked'        => 'Жао нам је, блокирани сте на вашој Вики.
+Блокираним корисницима није дозвољено да гласају.',
 	'boardvote_bot'            => 'Означени сте као бот на вашем викију.
 Бот налозима није дозвољено да гласају.',
 	'boardvote_welcome'        => "Добро дошли '''$1'''!",
 	'go_to_board_vote'         => 'Избори за Викимедијин Одбор 2008.',
-	'boardvote_redirecting'    => 'Из разлога побољшане сигурности и транспарентности, гласање спроводимо на спољашњем, независно констролисаном серверу.
+	'boardvote_redirecting'    => 'Из разлога побољшане сигурности и транспарентности, гласање спроводимо на спољашњем, независно контролисаном серверу.
 
 Бићете преусмерени на овај спољашњи сервер кроз 20 секунди. [$1 Кликните овде] да бисте одмах отишли тамо.
 
@@ -4562,64 +4794,123 @@ Du wädst in 20 Sekunden tou dissen externen Server fääre lat. [$1 klik hier],
 /** Sundanese (Basa Sunda)
  * @author Irwangatot
  * @author Kandar
- * @author Siebrand
  */
 $messages['su'] = array(
-	'boardvote'              => 'Saémbara Anggota Déwan Kapercayaan Yayasan Wikimedia',
-	'boardvote_notloggedin'  => 'Anjeun can asup log. Pikeun nyoara, anjeun kudu maké rekening nu sahanteuna geus boga $1 kontribusi ti méméh $3 nepi ka $2.',
-	'boardvote_notqualified' => 'Anjeun teu nedunan sarat pikeun ngilu milih. Anjeun kudu grus boga $3 éditan saméméh $2, nu sahanteuna geus dimimitian saméméh $5.',
-	'boardvote_novotes'      => 'Acan aya pamilih.',
-	'boardvote_time'         => 'Wanci',
-	'boardvote_user'         => 'Pamaké',
-	'boardvote_edits'        => 'Édit',
-	'boardvote_days'         => 'Poé',
-	'boardvote_ip'           => 'IP',
-	'boardvote_ua'           => 'Agén pamaké',
-	'boardvote_listintro'    => '<p>Di handap ieu béréndélan sakabéh sora nu geus kacatet. $1 pikeun enkripsi data.</p>',
-	'boardvote_dumplink'     => 'Klik di dieu',
-	'boardvote_submit'       => 'Kintun',
-	'boardvote_unstrike'     => 'Hapus nu dicoret',
-	'boardvote_needadmin'    => 'Ngan kuncén saémbara nu bisa ngalakukeun ieu.',
-	'boardvote_notstarted'   => 'Saémbara can dimimitian',
-	'boardvote_closed'       => 'Saémbara geus ditutup, tempo [http://meta.wikimedia.org/wiki/Elections_for_the_Board_of_Trustees_of_the_Wikimedia_Foundation%2C_2008/En kaca saémbara keur hasilna] teu lila.',
-	'boardvote_edits_many'   => 'loba',
-	'group-boardvote'        => 'Kuncén saémbara anggota dewan',
-	'group-boardvote-member' => 'Kuncén saémbara anggota dewan',
-	'grouppage-boardvote'    => '{{ns:project}}:Kuncén saémbara anggota dewan',
-	'boardvote_blocked'      => 'Punten, anjeun keur dipeungpeuk di wiki. Pamaké nu keur dipeungpeuk teu kaci ngilu milih.',
-	'boardvote_welcome'      => "Bagéa, '''$1'''!",
+	'boardvote'                => 'Saémbara Anggota Déwan Pangawas Yayasan Wikimedia',
+	'boardvote-desc'           => '[[meta:Board elections/2008|Saémbara Anggota Déwan Kapercayaan Yayasan Wikimedia]]',
+	'boardvote_entry'          => '* [[Special:Boardvote/vote|pemungutan sora]]
+* [[Special:Boardvote/list|Daptar sora nepi ayeuna]]
+* [[Special:Boardvote/dump|Data pamilihan dienkripsi]]',
+	'boardvote_intro'          => '<p>Wilujeng Sumping di Saémbara Anggota Déwan Pangawas Wikimedia 2008.
+Urang baris milih hiji jalma pikeun ngawakilan komunitas pamaké ti sakumna proyek Wikimedia.
+Anggota Déwan baris mantuan nangtukeun arah ka hareup ti proyek-proyek Wikimedia, boh pikeun unggal proyek boh sacara sakabéh, sarta maranéhanana baris ngawakilan kapentingan <em>anjeun</em> ka Déwan Pangawas.
+Maranéhanana baris nangtukeun cara-cara meunangkeun pangasupan sarta keurnaon duit anu dipibanda.</p>
+
+<p>Saacan mere sora, kudu maca leuwih tiheula kalawan saksama pananya sarta jawaban calon ka patarosan-patarosan.
+Saban calon nyaéta pamaké anu diaku, anu geus menyumbangkan lila sarta usaha pikeun ngajadikeun proyek-proyek ieu jadi hiji lingkungan anu soméah anu komit pikeun ngahontal sarta sumebarna pangaweruh umat manusa sacara bébas.</p>
+
+<p>Mangga bikeun rengking ka calon-calon nurutkeun preferensi Anjeun kalawan ngasupkeun hiji angka di gigireun / sabeulah kotak (1 = calon favorit, 2 = favorit kadua,...).
+Anjeun bisa mikeun rengking anu sarua pikeun leuwih ti hiji calon sarta kaci henteu mikeun rengking pikeun calon anu séjén.
+Kami baris ngasumsikeun yén Anjeun leuwih mikaresep sakumna calon anu Anjeun béré rengking tinimbang anu henteu, sarta yén Anjeun henteu kabetot ka presentasi calon anu henteu dibéré ingetan.</p>
+
+<p>Numeunang pamilihan ieu baris diitung ngagunakeun padika Schulze. Pikeun informasi leuwih jentre, tempo kaca pamilihan resmi.</p>
+
+<p>Keur Katerangan sejen, tempo:</p>
+<ul><li><a href="http://meta.wikimedia.org/wiki/Board_elections/2008" class="external">Pamilihan Déwan 2008</a></li>
+<li><a href="http://meta.wikimedia.org/wiki/Board_elections/2008/Candidates" class="external">Calon</a></li>
+<li><a href="http://en.wikipedia.org/wiki/Schulze_method" class="external">Metode Schulze</a></li></ul>',
+	'boardvote_intro_change'   => '<p>Anjeun geus milih saméméhna. Sanajan kitu, Anjeun masih bisa ngaganti pilihan Anjeun dina isian ieu. Sumangga bikeun rengking para calon luyu kalawan preferensi Anjeun, di mana peunteun anu leuwih leutik némbongkeun preferensi leuwih luhur ka calon anu dipilih. Anjeun bisa mikeun rengking anu sarua pikeun leuwih ti hiji calon sarta kaci henteu mikeun rengking pikeun calon anu séjén.</p>',
+	'boardvote_entered'        => 'Hatur nuhun, pilihan Anjeun geus dicatet.
+
+Lamun daék, Anjeun bisa nyatet rincian ieu. Catetan sora Anjeun nyaéta:
+
+<pre>$1</pre>
+
+Catetan kasebut geus dienkripsi kalawan konci publik para Administrator Pemilihan:
+
+<pre>$2</pre>
+
+Vérsi nukaenkripsi kacantum di handapeun ieu. Hasil kasebut baris ditampilkeun pikeun publik di [[Special:Boardvote/dump]].
+
+<pre>$3</pre>
+
+[[Special:Boardvote/entry|Balik deui]]',
+	'boardvote_invalidentered' => '<p><strong>Kasalahan</strong>: rengking kandidat kudu dina angka positif (1, 2, 3, ...), atawa dikosongkeun.</p>',
+	'boardvote_nosession'      => 'Anjeun kudu asup log kalawan ngaran pamaké Wikimedia anu sah.
+Sumangga asup log ka wiki di mana Anjeun nyumponan sarat pikeun milih, saterusna indit ka halaman <nowiki>[[Special:Boardvote]]</nowiki>.
+
+Anjeun kudu ngagunakeun rekening kalawan kontribusi saeutikna $1 saméméh $2, sarta geus ngabogaan saeutikna $3 kontribusi antara $4 sarta $5.',
+	'boardvote_notloggedin'    => 'Anjeun can asup log. 
+Pikeun nyoara, anjeun kudu maké rekening nu sahanteuna geus boga $1 kontribusi saméméh $2, sahanteuna boga $3 kontibusi antara $4 jeung $5.',
+	'boardvote_notqualified'   => 'Anjeun teu nedunan sarat pikeun ngilu milih. 
+Anjeun kudu grus boga minimal $1 éditan saméméh $2, jeung boga minimal $3 kontibusi antara $4 jeung $5.',
+	'boardvote_novotes'        => 'Acan aya pamilih.',
+	'boardvote_time'           => 'Wanci',
+	'boardvote_user'           => 'Pamaké',
+	'boardvote_edits'          => 'Édit',
+	'boardvote_days'           => 'Poé',
+	'boardvote_ip'             => 'IP',
+	'boardvote_ua'             => 'Agén pamaké',
+	'boardvote_listintro'      => '<p>Di handap ieu béréndélan sakabéh sora nu geus kacatet. $1 pikeun enkripsi data.</p>',
+	'boardvote_dumplink'       => 'Klik di dieu',
+	'boardvote_submit'         => 'Kintun',
+	'boardvote_strike'         => 'Coret',
+	'boardvote_unstrike'       => 'Hapus nu dicoret',
+	'boardvote_needadmin'      => 'Ngan kuncén saémbara nu bisa ngalakukeun ieu.',
+	'boardvote_sitenotice'     => '<a href="{{localurle:Special:Boardvote/vote}}">Pamilihan Dewan Wikimedia</a>: Pamilihan dibuka nepi ka 22 Juni',
+	'boardvote_notstarted'     => 'Saémbara can dimimitian',
+	'boardvote_closed'         => 'Saémbara geus ditutup, tempo [http://meta.wikimedia.org/wiki/Board_elections/2008/Results kaca saémbara keur hasilna] teu lila.',
+	'boardvote_edits_many'     => 'loba',
+	'group-boardvote'          => 'Kuncén saémbara anggota dewan',
+	'group-boardvote-member'   => 'Kuncén saémbara anggota dewan',
+	'grouppage-boardvote'      => '{{ns:project}}:Kuncén saémbara anggota dewan',
+	'boardvote_blocked'        => 'Punten, anjeun keur dipeungpeuk di wiki. Pamaké nu keur dipeungpeuk teu kaci ngilu milih.',
+	'boardvote_bot'            => 'Anjeun kadaptar minangka bot dina wiki tempat Anjeun kadaptar.
+Rekening bot henteu diidinan pikeun mikeun sora.',
+	'boardvote_welcome'        => "Bagéa, '''$1'''!",
+	'go_to_board_vote'         => 'Saémbara Anggota Déwan Kapercayaan Yayasan Wikimedia 2008',
+	'boardvote_redirecting'    => 'Pikeun kaamanan sarta transparansi anu leuwih alus, kami ngalakonan pemungutan sora kalawan ngagunakeun server eksternal anu dikontrol sacara independen.
+
+Anjeun baris dipindahkeun ka server eksternal kasebut dina waktu 20 detik. [$1 Klik di dieu] pikeun langsung nuju ka ditu.
+
+Hiji peringatan kaamanan ngeunaan sértipikat teu nandaan meureun baris mecenghul.',
+	'right-boardvote'          => 'Administrasi pamilihan',
 );
 
 /** Swedish (Svenska)
- * @author M.M.S.
  * @author Lejonel
  * @author Sannab
+ * @author M.M.S.
  * @author SPQRobin
+ * @author Siebrand
  */
 $messages['sv'] = array(
 	'boardvote'                => 'Val till Wikimedias styrelse (Wikimedia Board of Trustees)',
 	'boardvote-desc'           => '[[meta:Board elections/2008|Val till Wikimedias styrelse]]',
-	'boardvote_entry'          => '* [[m:Election_candidates_2008/Sv|Kandidaternas presentationer]]
-* [[Special:Boardvote/vote|Rösta]]
+	'boardvote_entry'          => '* [[Special:Boardvote/vote|Rösta]]
 * [[Special:Boardvote/list|Lista röster]]
 * [[Special:Boardvote/dump|Dumpa krypterad röstpost]]',
-	'boardvote_intro'          => '<p>Välkommen till det tredje valet till Wikimedia Foundations styrelse. Vi ska välja en person som ska representera wikigemenskapen, det vill säga användarna på de olika Wikimedia-projekten. Denna person ska, tillsammans med styrelsens andra användarrepresentant, hjälpa till att bestämma Wikimediaprojektens framtida inriktning vart för sig och som grupp, och i styrelsen representera <em>dina</em> intressen och bekymmer. Styrelsen ska besluta om sätt att få in pengar och hur dessa ska fördelas.</p>
+	'boardvote_intro'          => '<p>Välkommen till 2008 års val till Wikimedia Foundations styrelse.
+Vi ska välja en person som ska representera wikigemenskapen, det vill säga användarna på de olika Wikimedia-projekten. Denna person ska hjälpa till att bestämma Wikimediaprojektens framtida inriktning, vart för sig och som grupp, och i styrelsen representera <em>dina</em> intressen och bekymmer. Styrelsen ska besluta om sätt att få in pengar och hur dessa ska fördelas.</p>
 
-<p>Innan du röstar, läs kandidaternas programförklaringar och deras svar på andra användares frågor. Alla kandidaterna är respekterade anvädnare som lagt ner åtskillig tid och möda för att göra projekten till en välkomnande miljö, ägnat åt inskaffande och fri spridning av mänsklig kunskap.</p>
+<p>Innan du röstar, läs kandidaternas programförklaringar och deras svar på andra användares frågor. Alla kandidaterna är respekterade användare som lagt ner åtskillig tid och möda för att göra projekten till en välkomnande miljö, ägnat åt inskaffande och fri spridning av mänsklig kunskap.</p>
 
-<p>Du kan rösta på så många kandidater som du önskar. Den kandidat som fått flest röster kommer att bli vald. Om det skulle bli oavgjort mellan några kandidater, kommer en extra valomgång att arrangeras.</p>
+<p>Rangordna kandidaterna som du vill rösta på genom att fylla i ett tal bredvid rutan (1 = din favoritkandidat, 2 = din andrahandsfavorit, ...).
+Du kan ge flera kandidater samma rangordning och du kan låta bli rangordna kandidater.
+Det förutsätts att du föredrar rangordnade kandidater före kandidater som du ger någon rang, och att du inte har några åsikter om kandidaterna utan rangordning.</p>
 
-<p>En påminnelse: du får bara rösta en gång. Även om du har 400 redigeringar på flera olika projekt, innebär inte det att du har rätt att rösta flera gånger. Om du vill ändra din röst innan valet är slut, var snäll gör det från det projekt som du tidigare röstat ifrån.</p>
+<p>Vinnaren av valet kommer att bestämmas med hjälp av Schulzes metod. Se de officiella valsidorna för mer information.</p>
 
-<p>Mera information hittas på:</p>
-<ul><li><a href="http://meta.wikipedia.org/wiki/Election_FAQ_2008/Sv" class="external">Vanliga frågor</a></li>
-<li><a href="http://meta.wikipedia.org/wiki/Election_candidates_2008/Sv" class="external">Kandidaterna</a></li></ul>',
-	'boardvote_intro_change'   => '<p>Du har redan röstat. Emellertid kan du ändra din röst genom att använda nedanstående formulär. Var god markera rutorna invid de kandidater du röstar på.</p>
-
-<ul><li><a href="http://meta.wikimedia.org/wiki/Board_elections/2008/Candidates/Sv" class="external">Kandidaternas presentationer</a></li>',
+<p>Mer information finns på:</p>
+<ul><li><a href="http://meta.wikimedia.org/wiki/Board_elections/2008/sv" class="external">Styrelseval 2008</a></li>
+<li><a href="http://meta.wikimedia.org/wiki/Board_elections/2008/Candidates/sv" class="external">Kandidaterna</a></li>
+<li><a href="http://en.wikipedia.org/wiki/Schulze_method" class="external">Schulze method</a> (på engelska)</li></ul>',
+	'boardvote_intro_change'   => '<p>Du har redan röstat. Emellertid kan du ändra din röst genom att använda nedanstående formulär. 
+Rangordna kandidaterna som du vill rösta på genom att fylla i ett tal bredvid rutan (1 = din favoritkandidat, 2 = din andrahandsfavorit, ...).
+Du kan ge flera kandidater samma rangordning och du kan låta bli att ge kandidater någon rangordning.</p>',
 	'boardvote_entered'        => 'Tack för det. Din röst är registrerad.
 
-Om du så önskar, kan du notera följande detaljer. Din röst är registrerad som :
+Om du så önskar, kan du notera följande detaljer. Din röst är registrerad som:
 
 <pre>$1</pre>
 
@@ -4632,14 +4923,14 @@ Den resulterande krypterade versionen följer här. Den kommer att visas öppet 
 <pre>$3</pre>
 
 [[Special:Boardvote/entry|Tillbaka]]',
-	'boardvote_invalidentered' => '<p><strong>Fel</strong>: inställningar för kandidater måste anges med positiva heltal (1, 2, 3, ....), eller låta fältet vara tomt.</p>',
+	'boardvote_invalidentered' => '<p><strong>Fel</strong>: rangordningen av kandidater måste anges med positiva heltal (1, 2, 3, ...), eller lämnas tomt.</p>',
 	'boardvote_nosession'      => 'Ditt användar-ID på Wikimedia kunde inte verifieras.
-Var god logga in på den wikin som du är kvalificierad att rösta på, och gå till <nowiki>[[Special:Boardvote]]</nowiki>.
-Du måste använda ett konto som har gjort minst $1 ändringar före $2, och ha gjort minst $3 ändringar mellan $4 och $5.',
-	'boardvote_notloggedin'    => 'Du är inte inloggad. För att rösta måste du ha ett konto med minst $1 bidrag före $2.',
-	'boardvote_notqualified'   => "Tyvärr har du enbart gjort $1 redigeringar före $2. Du måste ha minst $3 redigeringar för att få rösta.
-
-Om du fick detta meddelande trots att du '''har gjort''' fler än $1 redigeringar i ett Wikimediaprojekt, v g försäkra dig om att du röstar från rätt projekt.",
+Logga in på den wiki där du är har rätt att rösta, och gå till <nowiki>[[Special:Boardvote]]</nowiki>.
+Du måste använda ett konto som har gjort minst $1 redigeringar före $2, och har gjort minst $3 redigeringar mellan $4 och $5.',
+	'boardvote_notloggedin'    => 'Du är inte inloggad.
+För att rösta måste du ha ett konto med minst $1 bidrag före $2, och ha gjort minst $3 redigeringar mellan $4 och $5.',
+	'boardvote_notqualified'   => 'Du har inte rätt att rösta i det här valet.
+Du måste ha gjort minst $1 redigeringar före $2, och minst $3 redigeringar mellan $4 och $5.',
 	'boardvote_novotes'        => 'Ingen har röstat ännu.',
 	'boardvote_time'           => 'Tid',
 	'boardvote_user'           => 'Användare',
@@ -4654,7 +4945,7 @@ $1 för de krypterade uppgifterna.</p>',
 	'boardvote_strike'         => 'Stryk',
 	'boardvote_unstrike'       => 'Återställ efter strykning',
 	'boardvote_needadmin'      => 'Endast valadministratörer kan utföra denna operation.',
-	'boardvote_sitenotice'     => '<a href="{{localurle:Special:Boardvote/vote}}">Styrelseval i Wikimediastiftelsen</a>: Röstningen är öppen tills den 22 juni',
+	'boardvote_sitenotice'     => '<a href="{{localurle:Special:Boardvote/vote}}">Styrelseval i Wikimediastiftelsen</a>: Röstningen är öppen till den 22 juni',
 	'boardvote_notstarted'     => 'Röstning har ej påbörjats än',
 	'boardvote_closed'         => 'Röstningen är nu stängd, se [http://meta.wikimedia.org/wiki/Board_elections/2008/Results valsidan för resultat] snart.',
 	'boardvote_edits_many'     => 'många',
@@ -4698,6 +4989,7 @@ $messages['ta'] = array(
  * @author Veeven
  * @author Chaduvari
  * @author Mpradeep
+ * @author Siebrand
  */
 $messages['te'] = array(
 	'boardvote'                => 'వికీమీడియా ట్రస్టుబోర్డు ఎన్నికలు',
@@ -4874,6 +5166,7 @@ $messages['to'] = array(
  * @author SPQRobin
  * @author Erkan Yilmaz
  * @author Srhat
+ * @author Runningfridgesrule
  */
 $messages['tr'] = array(
 	'boardvote'              => 'Wikimedia Mütevelli Heyeti Seçimleri',
@@ -4892,6 +5185,7 @@ $messages['tr'] = array(
 	'boardvote_notstarted'   => 'Oylama henüz başlamadı',
 	'boardvote_edits_many'   => 'çok',
 	'boardvote_welcome'      => "Hoş geldiniz '''$1'''!",
+	'go_to_board_vote'       => '2008 Wikimedia Yönetim Kurulu Seçimleri',
 );
 
 /** Tahitian (Reo Mā`ohi)
@@ -4904,6 +5198,7 @@ $messages['ty'] = array(
 /** Ukrainian (Українська)
  * @author Ahonc
  * @author AS
+ * @author Siebrand
  */
 $messages['uk'] = array(
 	'boardvote'                => 'Вибори до Ради повірених фонду «Вікімедіа»',
@@ -4920,7 +5215,7 @@ $messages['uk'] = array(
 <p>Будь ласка, розташуйте кандидатів у порядку, що відображає ваші вподобання, заповнивши поля числами (1 — найкращий, 2 — наступний за вподобанням ...)
 Ви можете зазначити однакове число для кількох кандидатів, або не зазначати навпроти деяких кандидатів числа. Це буде означати, що серед ваших обранців ви нікому не надаєте перевагу, але виділяєте їх серед інших кандидатів.</p>
 
-<p>Переможець буде визначений за допомогою метода Шульца.</p>
+<p>Переможець буде визначений за допомогою метода Шульца. Подробиці можна дізнатися на офіційних сторінках голосування.</p>
 
 <p>Додаткова інформація:</p>
 <ul><li><a href="http://meta.wikimedia.org/wiki/Board_elections/2008/uk" class="external">Виборих до Ради повріених 2008</a></li>
@@ -4975,7 +5270,7 @@ $messages['uk'] = array(
 Облікові записи ботів не допускаються до голосування.',
 	'boardvote_welcome'        => "Ласкаво просимо, '''$1'''!",
 	'go_to_board_vote'         => 'Вибори до Ради повірених Вікімедіа 2008',
-	'boardvote_redirecting'    => "Для збільшення безпеки і прозорості, ми проводимо голосування на зовнішньому, не залежно керованому сервері.
+	'boardvote_redirecting'    => "Для збільшення безпеки і прозорості, ми проводимо голосування на зовнішньому, незалежно керованому сервері.
 
 Ви будете переадресовані на цей зовнішній сервер через 20 секунд. [$1 Клацніть сюди], щоб перейти туди прямо зараз.
 
@@ -4985,6 +5280,7 @@ $messages['uk'] = array(
 
 /** Vèneto (Vèneto)
  * @author Candalua
+ * @author Siebrand
  */
 $messages['vec'] = array(
 	'boardvote'                => 'Elezion del Consejo diretivo de la Wikimedia Foundation',
@@ -5290,6 +5586,19 @@ $1 po les dnêyes sourdant des bultins.</p>',
 	'boardvote_dumplink' => 'Clitchîz chal',
 );
 
+/** Yiddish (ייִדיש)
+ * @author פוילישער
+ */
+$messages['yi'] = array(
+	'boardvote_notloggedin' => 'איר זענט אריינלאגירט.
+צו שטימען דארפֿט איר ניצן א קאנטע מיט מינדערסטן $1 בײַשטייערונגען פֿאר $2, און מינדערסטן $3 בײַשטייערונגען צווישן $4 און $5.',
+	'boardvote_time'        => 'צײַט',
+	'boardvote_user'        => 'באניצער',
+	'boardvote_edits'       => 'רעדאקטירונגען',
+	'boardvote_days'        => 'טעג',
+	'boardvote_edits_many'  => 'אסאך',
+);
+
 $messages['yue'] = array(
 	'boardvote'               => "Wikimedia理事委員會選舉",
 	'boardvote-desc'          => '[[meta:Board elections/2008|Wikimedia理事委員會選舉]]',
@@ -5369,6 +5678,7 @@ $1去睇加密嘅資料。</p>",
 
 /** Zeeuws (Zeêuws)
  * @author NJ
+ * @author Siebrand
  */
 $messages['zea'] = array(
 	'boardvote'              => 'Wikimedia Board of Trustees-verkiezieng',
