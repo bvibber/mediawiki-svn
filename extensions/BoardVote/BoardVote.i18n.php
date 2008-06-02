@@ -1575,7 +1575,7 @@ Siitä muodostuu seuraava salattu muoto, joka on julkisesti näkyvillä sivulla 
 	'go_to_board_vote'         => 'Wikimedian johtokunnan valtuutettujen vaalit 2008',
 	'boardvote_redirecting'    => 'Paremman turvallisuuden ja läpinäkyvyyden vuoksi äänestys tapahtuu ulkoisella, itsenäisesti hallitulla palvelimella.
 
-Sinut ohjataan ulkoiselle palvelimelle 20 sekunnissa. [$1 Napsauta tästä] siirtyäksesi heti.
+Sinut ohjataan ulkoiselle palvelimelle 20 sekunnin kuluttua. Vaihtoehtoisesti voit siirtyä heti napsauttamalla [$1 tästä].
 
 Allekirjoittamattomasta sertifikaatista saattaa näkyä turvallisuusvaroitus.',
 	'right-boardvote'          => 'Hallinnoida vaaleja',

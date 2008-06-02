@@ -649,9 +649,12 @@ $messages['ko'] = array(
 	'newuserlog-create-entry' => '새 사용자',
 );
 
+/** Ripoarisch (Ripoarisch)
+ * @author Purodha
+ */
 $messages['ksh'] = array(
-	'newuserlogpage'           => 'Logbooch för nöü Users',
-	'newuserlogpagetext'       => 'He sin de Users opjelėßß, di sesh nöü aanjemäldt han.',
+	'newuserlogpage'           => 'Logbooch för nöü Metmaachere',
+	'newuserlogpagetext'       => 'He sin de Metmaacher opjelėßß, di sesh nöü aanjemäldt han.',
 	'newuserlog-create-entry'  => 'eß enne nöüje User',
 	'newuserlog-create2-entry' => 'Nöüje Zojang enjerėshdt för „$1“',
 );

@@ -1118,8 +1118,13 @@ $messages['krj'] = array(
 /** Ripoarisch (Ripoarisch)
  * @author Purodha
  */
-$messages['ksh'] = array();
+$messages['ksh'] = array(
+	'ogg-more' => 'Enshtelle&nbsp;…',
+);
 
+/** Latin (Latina)
+ * @author SPQRobin
+ */
 $messages['la'] = array(
 	'ogg-more' => 'Plus...',
 );

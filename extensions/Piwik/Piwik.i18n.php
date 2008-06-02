@@ -29,6 +29,15 @@ $messages['ca'] = array(
 	'piwik-browsers'   => 'Navegadors',
 );
 
+/** Czech (Česky)
+ * @author Matěj Grabovský
+ */
+$messages['cs'] = array(
+	'piwik-desc'      => 'Vkládá Piwik skript do wiki stránek pro vyhledávání a přidává [[{{special:Piwik}}|nějaké statistiky]]',
+	'piwik-countries' => 'Země',
+	'piwik-browsers'  => 'Prohlížeče',
+);
+
 /** German (Deutsch)
  * @author Raimond Spekking
  */
@@ -60,6 +69,15 @@ $messages['gl'] = array(
 	'piwik-browsers'   => 'Navegadores',
 );
 
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$messages['lb'] = array(
+	'piwik-lastvisits' => 'Läscht Visiten',
+	'piwik-countries'  => 'Länner',
+	'piwik-browsers'   => 'Browser',
+);
+
 /** Dutch (Nederlands)
  * @author SPQRobin
  * @author Siebrand
@@ -71,11 +89,32 @@ $messages['nl'] = array(
 	'piwik-browsers'   => 'Browsers',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ */
+$messages['no'] = array(
+	'piwik-desc'       => 'Legger til et Piwik-skript for sporing i MediaWiki og viser [[Special:Piwik|litt statistikk]]',
+	'piwik-lastvisits' => 'Siste besøk',
+	'piwik-countries'  => 'Land',
+	'piwik-browsers'   => 'Nettlesere',
+);
+
+/** Sundanese (Basa Sunda)
+ * @author Irwangatot
+ */
+$messages['su'] = array(
+	'piwik-desc'       => 'Ngasupkeun skrip Piwiki ka kaca MediaWiki keur ngalacak jeung ngasupkeun [[Special:Piwiki|sababaraha statistik]]',
+	'piwik-lastvisits' => 'pamungkas nganjang',
+	'piwik-countries'  => 'Nagara',
+	'piwik-browsers'   => 'Panyungsi',
+);
+
 /** Swedish (Svenska)
  * @author Lejonel
+ * @author Jon Harald Søby
  */
 $messages['sv'] = array(
-	'piwik-desc'       => 'Lägger till Piwik-script för spårning i MediaWiki och visar [[Special:Piwiki|lite statistik]]',
+	'piwik-desc'       => 'Lägger till Piwik-script för spårning i MediaWiki och visar [[Special:Piwik|lite statistik]]',
 	'piwik-lastvisits' => 'Senaste besök',
 	'piwik-countries'  => 'Länder',
 	'piwik-browsers'   => 'Webbläsare',

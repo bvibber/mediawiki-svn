@@ -21,6 +21,20 @@ $messages['nl'] = array(
 	'antibot-desc' => 'Simpel framework voor controle op spambots en trigger payloads',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ */
+$messages['no'] = array(
+	'antibot-desc' => 'Enkel struktur for kontroll av spambotter',
+);
+
+/** Sundanese (Basa Sunda)
+ * @author Irwangatot
+ */
+$messages['su'] = array(
+	'antibot-desc' => 'Rangka basajan keur spambot pamariksa jeung pamicu alat',
+);
+
 /** Swedish (Svenska)
  * @author M.M.S.
  */

@@ -188,9 +188,11 @@ Les images non pertinentes pourront être supprimées immédiatement. Voyez la p
  */
 $messages['gl'] = array(
 	'multipleupload'                   => 'Enviar ficheiros',
+	'multipleupload-desc'              => 'Permítelles aos usuarios [[Special:MultipleUpload|cargar varios ficheiros á vez]]',
 	'multipleupload-ignoreallwarnings' => "Ignorar '''todas as advertencias''' e gardar os ficheiros igual.",
 	'multipleupload-saveallfiles'      => 'Gardar todos os ficheiros',
 	'multipleupload-addresswarnings'   => 'Faga caso das advertencias antes volver enviar ficheiros.',
+	'multipleupload-page'              => '{{ns:project}}:Políticas de borrado de ficheiros',
 	'multipleupload-text'              => "Envíe varios ficheiros aquí.
 
 Escolla \"Navegar\" (ou \"Browse\") e escolla cada un dos ficheiros que queira enviar. Pode enviar entre 1 e \$1 ficheiros de cada vez.
