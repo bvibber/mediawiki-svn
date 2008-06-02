@@ -11,42 +11,42 @@ $messages = array();
  * @author Isb1009
  */
 $messages['en'] = array(
-	'piwik-desc' => 'Inserts Piwik script into MediaWiki pages for tracking and adds a [[Special:Piwik|special page]] with some stats',
-	'piwik'      => 'Piwik',
-	'lastvisits' => 'Last Visits',
-	'countries'  => 'Countries',
-	'browsers'   => 'Browsers',
+	'piwik-desc'       => 'Inserts Piwik script into MediaWiki pages for tracking and adds a [[Special:Piwik|special page]] with some stats',
+	'piwik'            => 'Piwik',
+	'piwik-lastvisits' => 'Last Visits',
+	'piwik-countries'  => 'Countries',
+	'piwik-browsers'   => 'Browsers',
 );
 
 /** Catalan (Català)
  * @author Isb1009
  */
 $messages['ca'] = array(
-	'piwik-desc' => 'Insereix el codi de Piwik dins les pàgines del MediaWiki per a fer les estadístiques',
-	'piwik'      => 'Piwik',
-	'lastvisits' => 'Darreres visites',
-	'countries'  => 'Països',
-	'browsers'   => 'Navegadors',
+	'piwik-desc'       => 'Insereix el codi de Piwik dins les pàgines del MediaWiki per a fer les estadístiques',
+	'piwik'            => 'Piwik',
+	'piwik-lastvisits' => 'Darreres visites',
+	'piwik-countries'  => 'Països',
+	'piwik-browsers'   => 'Navegadors',
 );
 
 /** German (Deutsch)
  * @author Raimond Spekking
  */
 $messages['de'] = array(
-	'piwik-desc' => 'Fügt ein Piwik-Skript zum Tracking in MediaWiki-Seiten ein und ergänzt eine [[Special:Piwik|Spezialseite]] mit einigen Statistiken',
-	'piwik'      => 'Piwik',
-	'lastvisits' => 'Letzte Besuche',
-	'countries'  => 'Länder',
-	'browsers'   => 'Browser',
+	'piwik-desc'       => 'Fügt ein Piwik-Skript zum Tracking in MediaWiki-Seiten ein und ergänzt eine [[Special:Piwik|Spezialseite]] mit einigen Statistiken',
+	'piwik'            => 'Piwik',
+	'piwik-lastvisits' => 'Letzte Besuche',
+	'piwik-countries'  => 'Länder',
+	'piwik-browsers'   => 'Browser',
 );
 
 /** Spanish (Castellano)
  * @author Isb1009
  */
 $messages['es'] = array(
-	'piwik-desc' => 'Inseta el código de Piwik en las páginas de la wiki MediaWiki para hacer las estadísticas',
-	'piwik'      => 'Piwik',
-	'lastvisits' => 'Últimas visitas',
-	'countries'  => 'Países',
-	'browsers'   => 'Navegadores',
+	'piwik-desc'       => 'Inseta el código de Piwik en las páginas de la wiki MediaWiki para hacer las estadísticas',
+	'piwik'            => 'Piwik',
+	'piwik-lastvisits' => 'Últimas visitas',
+	'piwik-countries'  => 'Países',
+	'piwik-browsers'   => 'Navegadores',
 );
