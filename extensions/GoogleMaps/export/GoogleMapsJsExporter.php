@@ -78,16 +78,12 @@ JAVASCRIPT;
         $title = GoogleMaps::fixStringDirection($pTitle, $this->mLanguage->isRTL());
 
         if (is_string($pCaption)) {
-            $caption = preg_replace('/[\r\n]+/', ' ', $pCaption);
-        } else if (is_array($pCaption)) {
-            foreach ($pCaption as $tab) {
-                $tab['gm-caption'] = preg_replace('/[\r\n]+/', ' ', $tab['gm-caption']);
-            }
+            $captionNoNewlines = preg_replace('/[\r\n]+/', ' ', $pCaption);
         }
         $options = array();
         // choose the appropriate icon for the marker
         $options['icon']      = $pIcon ? "mapIcons['{$pIcon}']" : "GME_DEFAULT_ICON";
-        $options['clickable'] = $title || (is_string($pCaption) ? $caption : count($pCaption)) ? "true" : "false";
+        $options['clickable'] = $title || (is_string($pCaption) ? $captionNoNewlines : count($pCaption)) ? "true" : "false";
 
         if (!($pIsLine && $options['clickable'] == "false")) {
             $this->mOutput .= " marker = new GMarker(new GLatLng({$pLat}, {$pLon}), { ";
@@ -109,9 +105,9 @@ JAVASCRIPT;
                 $this->mOutput .= " marker.title = '".addslashes($title)."';";
                 $this->mOutput .= " marker.title_link = '".addslashes($pTitleLink)."';";
             }
-            if( $caption ) {
+            if( $captionNoNewlines ) {
                 $this->mOutput .= " marker.caption += '" .
-                    addslashes( GoogleMaps::fixBlockDirection(GoogleMaps::fixTidy($caption), $this->mLanguage->isRTL())) .
+                    addslashes( GoogleMaps::fixBlockDirection(GoogleMaps::fixTidy($captionNoNewlines), $this->mLanguage->isRTL())) .
                     "';";
             }
         // if there's tabs add them to the marker
@@ -121,7 +117,8 @@ JAVASCRIPT;
                 $tabs[] = "new GInfoWindowTab('" .
                     addslashes(GoogleMaps::fixStringDirection($t['title'], $this->mLanguage->isRTL())).
                     "', '".
-                    addslashes(GoogleMaps::fixBlockDirection(GoogleMaps::fixTidy($t['gm-caption']), $this->mLanguage->isRTL())) .
+                    addslashes(preg_replace('/[\r\n]+/', ' ', GoogleMaps::fixBlockDirection(
+                        GoogleMaps::fixTidy($t['gm-caption']), $this->mLanguage->isRTL()))) .
                     "')";
             }
             $this->mOutput .= " marker.tabs = [ ".implode(',', $tabs)." ]; ";

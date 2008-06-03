@@ -398,7 +398,7 @@ JAVASCRIPT;
             $o = array_merge($o, array('number_of_maps' => $this->mGoogleMapsOnThisPage,
                 'incompatible_message' => $this->translateMessage( 'gm-incompatible-browser' ),
                 'incompatible_message_link' => $this->translateMessage( 'gm-incompatible-browser-link' )));
-            $img_exporter = new GoogleMapsImgExporter($this->mApiKey);
+            $img_exporter = new GoogleMapsImgExporter($this->mApiKey, $this->mLanguageCode);
             $img_exporter->addHeader($o);
             self::renderContent($pContent, $pParser, $pLocalParser, $img_exporter, $o);
             $img_exporter->addTrailer();
@@ -474,7 +474,7 @@ JAVASCRIPT;
                     $tabs[] = array( 'title' => $matches[1], 'gm-caption' => $parsed);
                     $state = GOOGLE_MAPS_PARSE_ADD_MARKER;
                 }
-                else if ($syntax != "0" && preg_match( '/^\/([^\\\\]+)\\\\$/', $line, $matches ) ) {
+                else if ($syntax != "0" && preg_match( '/^\/([^\\\\]+)\\\\ *$/', $line, $matches ) ) {
                     if (count($tabs)) {
                         $parsed = self::parseWikiText($pParser, $pLocalParser, $caption, $pParser->mTitle, $pParser->mOptions);
                         $tabs[count($tabs)-1]['gm-caption'] = $parsed;
@@ -486,7 +486,7 @@ JAVASCRIPT;
                     $exporter->addXmlSource($line);
                 }
                 // the line is a regular point
-                else if( preg_match( "/^(?:\(([.a-zA-Z0-9_-]*?)\) *)?([0-9.-]+), *([0-9.-]+)(?:, ?(.+))?/", $line, $matches ) ) {
+                else if( preg_match( "/^(?:\(([.a-zA-Z0-9_-]*?)\))? *([0-9.-]+), *([0-9.-]+)(?:, ?(.+))?/", $line, $matches ) ) {
                     // first create the previous marker, now that we have all the tab/caption info
                     if( $state == GOOGLE_MAPS_PARSE_ADD_MARKER ) {
                         self::addMarker($exporter, $pParser, $pLocalParser, $lat, $lon, 
@@ -681,7 +681,7 @@ JAVASCRIPT;
 
 		// our defaults, in	case $wgGoogleMapsDefaults isn't specified.
 		$o = array(
-			'api'         => 2.95,
+			'api'         => 2.108,
 			'color'       => '#758bc5',
 			'controls'    => 'medium',
 			'doubleclick' => 'recenter',
