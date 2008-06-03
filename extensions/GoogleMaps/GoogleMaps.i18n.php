@@ -1400,6 +1400,13 @@ $wgGoogleMapsMessages['ksh'] = array(
 	'gm-search' => 'Sööke',
 );
 
+/** Kurdish (Kurdî / كوردی)
+ * @author Bangin
+ */
+$wgGoogleMapsMessages['ku'] = array(
+	'gm-search' => 'Lêbigere',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */

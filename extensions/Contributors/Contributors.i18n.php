@@ -960,6 +960,13 @@ $messages['uk'] = array(
 	'contributors-nosuchpage'  => 'Сторінка «$1» не існує.',
 );
 
+/** Vèneto (Vèneto)
+ * @author Candalua
+ */
+$messages['vec'] = array(
+	'contributors-desc' => 'Riassume i prinçipali autori de na pagina',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
  */

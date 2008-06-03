@@ -257,7 +257,9 @@ $messages['km'] = array(
  * @author Purodha
  */
 $messages['ksh'] = array(
-	'languageselector' => 'Sproch',
+	'languageselector'         => 'Sproch',
+	'languageselector-desc'    => 'Shprooche-Wahl op jede Sigk, och för namelose Metmaacher, un oohne Aanměllde',
+	'languageselector-setlang' => 'Setze',
 );
 
 /** Latin (Latina)

@@ -1350,6 +1350,13 @@ $messages['ksh'] = array(
 	'mv_search_and'  => ', un',
 );
 
+/** Kurdish (Kurdî / كوردی)
+ * @author Bangin
+ */
+$messages['ku'] = array(
+	'mv_tool_search' => 'Lêbigere',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */

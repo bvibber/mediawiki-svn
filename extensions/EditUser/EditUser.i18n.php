@@ -313,6 +313,13 @@ $messages['ksh'] = array(
 	'edituser-dosearch' => 'Sööke',
 );
 
+/** Kurdish (Kurdî / كوردی)
+ * @author Bangin
+ */
+$messages['ku'] = array(
+	'edituser-dosearch' => 'Lêbigere',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */

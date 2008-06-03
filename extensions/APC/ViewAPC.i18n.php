@@ -1886,7 +1886,23 @@ Novšia verzia $2 je dostupná na http://pecl.php.net/package/APC/$2',
  * @author Irwangatot
  */
 $messages['su'] = array(
-	'viewapc-desc' => '[[Special:ViewAPC|Tembongkeun sarta atur APC cache]] migunakeun Mediawiki',
+	'viewapc'                    => 'Katerangan APC',
+	'viewapc-desc'               => '[[Special:ViewAPC|Pintonkeun sarta ngatur APC cache]] migunakeun Mediawiki',
+	'right-apc'                  => 'Paké kabeh kaistimiwaan di Special:ViewAPC',
+	'viewapc-apc-not-available'  => 'Henteu sadia katerangan sindangan.
+APC hanteu katingali jalan.',
+	'viewapc-clear-confirm'      => 'Anjeun hayang ngabersihkeun sindangan?',
+	'viewapc-clear-user-cache'   => 'Bersihkeun sindangan pamaké',
+	'viewapc-clear-code-cache'   => 'Bersihkeun sindangan opcode',
+	'viewapc-mode-version-check' => 'Pariksa vérsi',
+	'viewapc-info-general'       => 'Katerangan umum',
+	'viewapc-apc-version'        => 'Vérsi APC',
+	'viewapc-php-version'        => 'Vérsi PHP',
+	'viewapc-start-time'         => 'Waktu mitembeyan',
+	'viewapc-ls-limit-none'      => 'Sadayana',
+	'viewapc-version-info'       => 'Katerangan vérsi',
+	'viewapc-version-changelog'  => 'Log parobahan',
+	'viewapc-version-failed'     => 'Henteu bisa nyokot katerangan vérsi',
 );
 
 /** Swedish (Svenska)

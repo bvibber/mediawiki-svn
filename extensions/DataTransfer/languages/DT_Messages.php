@@ -317,7 +317,8 @@ $messages['krj'] = array(
  * @author Purodha
  */
 $messages['ksh'] = array(
-	'dt_xml_name' => 'Name',
+	'dt_viewxml_namespaces' => 'Appachtemangs',
+	'dt_xml_name'           => 'Name',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

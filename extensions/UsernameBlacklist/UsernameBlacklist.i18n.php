@@ -166,12 +166,13 @@ $messages['br'] = array(
 
 /** Catalan (Català)
  * @author SMP
+ * @author Jordi Roqué
  */
 $messages['ca'] = array(
 	'blacklistedusername'             => 'Nom no permès',
 	'blacklistedusernametext'         => "El nom d'usuari que heu escollit forma part de la [[MediaWiki:Usernameblacklist|llista de noms no permesos]]. Escolliu-ne un altre de diferent, si us plau.",
 	'usernameblacklist'               => "<pre>
-# Les línies d'aquesta lliste seran usades com a expressió regular (regexp)
+# Les línies d'aquesta llista seran usades com a expressió regular (regexp)
 # per a prohibir el registre de certs noms d'usuari.
 # Cada ítem ha d'estar dins una llista no ordenada. Per exemple:
 #

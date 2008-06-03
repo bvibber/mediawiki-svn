@@ -359,6 +359,17 @@ $messages['tr'] = array(
 	'pageby-anon'         => '<i>anonim</i>',
 );
 
+/** Vèneto (Vèneto)
+ * @author Candalua
+ */
+$messages['vec'] = array(
+	'pageby-desc'         => "Mostra i contribudori a l'interno de na pagina wiki doparando el tag <code><nowiki><pageby></nowiki></code>",
+	'pageby-first'        => 'Pagina creà da $1 ($2)',
+	'pageby-last'         => 'Modificà <a href="$3">l\'ultima olta</a> da $1 ($2)',
+	'pageby-contributors' => 'Contribudori:',
+	'pageby-anon'         => '<i>anonimo</i>',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
  */

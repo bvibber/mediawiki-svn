@@ -193,3 +193,10 @@ $messages['sv'] = array(
 	'newsextension-desc' => 'Visar skräddarsydda senaste ändringar på en wikisida, eller en RSS- eller Atom-matning',
 );
 
+/** Vèneto (Vèneto)
+ * @author Candalua
+ */
+$messages['vec'] = array(
+	'newsextension-desc' => 'Mostra i canbiamenti reçenti personalizà su le pagine wiki o come feed RSS o Atom',
+);
+

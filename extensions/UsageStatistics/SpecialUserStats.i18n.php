@@ -186,6 +186,35 @@ $messages['br'] = array(
 	'usagestatistics-editpages'       => 'Stadegoù $1 ar pajennoù gant an implijer e-unan',
 );
 
+/** Catalan (Català)
+ * @author Jordi Roqué
+ */
+$messages['ca'] = array(
+	'specialuserstats'                => "Estadístiques d'ús",
+	'usagestatistics'                 => "Estadístiques d'ús",
+	'usagestatistics-desc'            => "Mostrar estadístiques d'ús d'usuaris individuals i globals del wiki",
+	'usagestatisticsfor'              => "<h2>Estadístiques d'ús de [[User:$1|$1]]</h2>",
+	'usagestatisticsallusers'         => 'Tots els usuaris',
+	'usagestatisticsinterval'         => 'Interval',
+	'usagestatisticstype'             => 'Tipus',
+	'usagestatisticsstart'            => "Data d'inici",
+	'usagestatisticsend'              => "Data d'acabament",
+	'usagestatisticssubmit'           => "Generació d'estadístiques",
+	'usagestatisticsnostart'          => "* <font color=red>Si us plau, especifiqueu una data d'inici</font>",
+	'usagestatisticsnoend'            => "* <font color=red>Si us plau, especifiqueu una data d'acabament</font>",
+	'usagestatisticsbadstartend'      => "<b>Data <i>d'inici</i> i/o <i>d'acabament</i> incorrecta!</b>",
+	'usagestatisticsintervalday'      => 'Dia',
+	'usagestatisticsintervalweek'     => 'Setmana',
+	'usagestatisticsintervalmonth'    => 'Mes',
+	'usagestatisticsincremental'      => 'Incrementals',
+	'usagestatisticsincremental-text' => 'incrementals',
+	'usagestatisticscumulative'       => 'Acumulatives',
+	'usagestatisticscumulative-text'  => 'acumulatives',
+	'usagestatisticscalselect'        => 'Selecció',
+	'usagestatistics-editindividual'  => "Estadístiques $1 d'edicions de l'usuari",
+	'usagestatistics-editpages'       => "Estadístiques $1 de pàgines de l'usuari",
+);
+
 /** Danish (Dansk)
  * @author Jon Harald Søby
  */

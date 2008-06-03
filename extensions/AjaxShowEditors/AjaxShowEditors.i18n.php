@@ -121,6 +121,19 @@ $messages['cs'] = array(
 	'ajax-se-usernotfound'     => 'CHYBA: uživatel nebly nalezen',
 );
 
+/** Danish (Dansk)
+ * @author Jan Friberg
+ */
+$messages['da'] = array(
+	'ajax-se-desc'             => 'Vis hvilke brugere som redigerer samme side',
+	'ajax-se-title'            => 'Redigere lige nu:',
+	'ajax-se-pending'          => 'afventer genindlæsning… (klik på denne boks eller påbegynd redigering)',
+	'ajax-se-idling'           => '($1s siden)',
+	'ajax-se-pagedoesnotexist' => 'Siden eksister ikke',
+	'ajax-se-userinvalid'      => 'Fejl: ugyldig bruger',
+	'ajax-se-usernotfound'     => 'Fejl: bruger ikke fundet',
+);
+
 /** German (Deutsch)
  * @author Raimond Spekking
 */

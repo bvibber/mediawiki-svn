@@ -66,6 +66,14 @@ $messages['cs'] = array(
 	'advancedrandom-desc' => 'Vrátí náhodnou stránku, která sama nebo jí příslušná diskuse odkazuje na zadanou stránku. Je možné ho použít na získání náhodného nejlepšího článku ve tvaru [[{{ns:Special}}:AdvancedRandom/Šablona:Nejlepší článek/Diskuse]] nebo na získání náhodného GFDL souboru ve tvaru [[{{ns:Special}}:AdvancedRandom/Šablona:GFDL/Soubor]]',
 );
 
+/** Danish (Dansk)
+ * @author Jan Friberg
+ */
+$messages['da'] = array(
+	'advancedrandom'      => 'Avanceret tilfældig side',
+	'advancedrandom-desc' => 'Find en tilfældig side som linker til en bestemt side, kan bruges som [[Special:AdvancedRandom/Template:Featured/Talk]] til at få en tilfældig fremragende artikel eller [[Special:AdvancedRandom/Template:GFDL/Image]] for at få en tilfældig GFDL fil',
+);
+
 /** German (Deutsch)
  * @author Raimond Spekking
  */

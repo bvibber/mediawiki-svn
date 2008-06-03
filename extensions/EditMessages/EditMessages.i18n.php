@@ -273,6 +273,13 @@ $messages['ksh'] = array(
 	'editmsg-search' => 'Sööke',
 );
 
+/** Kurdish (Kurdî / كوردی)
+ * @author Bangin
+ */
+$messages['ku'] = array(
+	'editmsg-search' => 'Lêbigere',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */

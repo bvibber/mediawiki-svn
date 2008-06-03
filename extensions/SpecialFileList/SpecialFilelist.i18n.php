@@ -566,10 +566,13 @@ $messages['tg-cyrl'] = array(
 );
 
 /** Vèneto (Vèneto)
+ * @author Candalua
  * @author Siebrand
  */
 $messages['vec'] = array(
-	'filelist-image-desc' => 'desc',
+	'filelist-show-list'    => 'Mostra lista',
+	'filelist-show-gallery' => 'Mostra galeria',
+	'filelist-image-desc'   => 'desc',
 );
 
 /** Vietnamese (Tiếng Việt)

@@ -1168,6 +1168,13 @@ $messages['uk'] = array(
 	'changeauthor-logpagename'          => 'Журнал змін авторів',
 );
 
+/** Vèneto (Vèneto)
+ * @author Candalua
+ */
+$messages['vec'] = array(
+	'changeauthor-desc' => "Permete de canbiar l'autor de na version",
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Vinhtantran
  * @author Minh Nguyen

@@ -126,6 +126,13 @@ $messages['sv'] = array(
 	'pnghandler-desc' => 'Ändra storleken på PNG-bilder med pngds',
 );
 
+/** Vèneto (Vèneto)
+ * @author Candalua
+ */
+$messages['vec'] = array(
+	'pnghandler-desc' => 'Ridimensiona i PNG doparando pngds',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Vinhtantran
  */

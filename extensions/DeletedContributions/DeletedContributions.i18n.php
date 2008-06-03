@@ -130,10 +130,9 @@ $messages['el'] = array(
 
 /** Esperanto (Esperanto)
  * @author Yekrats
- * @author SPQRobin
  */
 $messages['eo'] = array(
-	'deletedcontributions'      => 'Forigitaj kontribuoj de la uzulo',
+	'deletedcontributions'      => 'Forigitaj kontribuoj de uzantoj',
 	'deletedcontributions-desc' => 'Donas al administrantoj la kapablon [[Special:DeletedContributions|rigardi forigitajn redaktojn]] de uzanto',
 );
 

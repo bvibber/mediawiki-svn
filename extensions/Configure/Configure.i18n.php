@@ -785,6 +785,9 @@ $messages['ksh'] = array(
 	'configure-section-specialpages' => 'Sondersigge',
 );
 
+/** Kurdish (Kurdî / كوردی) */
+$messages['ku'] = array();
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
@@ -1779,6 +1782,7 @@ $messages['uk'] = array(
  * @author Candalua
  */
 $messages['vec'] = array(
+	'configure-desc'      => 'Permete ai utenti autorizà de [[Special:Configure|configurar]] la wiki tramite na interfacia web-based',
 	'right-configure'     => 'Configura la wiki',
 	'right-configure-all' => 'Configura tute le inpostassion de la wiki',
 );

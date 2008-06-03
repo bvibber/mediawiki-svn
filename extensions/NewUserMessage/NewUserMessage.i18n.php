@@ -191,6 +191,13 @@ $messages['te'] = array(
 	'newusermessage-desc' => 'కొత్తగా చేరిన వాడుకరుల చర్చా పేజీలకు ఓ [[MediaWiki:NewUserMessage|సందేశాన్ని]] చేర్చండి',
 );
 
+/** Vèneto (Vèneto)
+ * @author Candalua
+ */
+$messages['vec'] = array(
+	'newusermessage-desc' => 'Zonta un [[MediaWiki:NewUserMessage|messagio]] a le pagine de discussion dei utenti novi',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Vinhtantran
  */

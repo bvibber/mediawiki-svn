@@ -105,6 +105,15 @@ Masukan ini '''DILARANG'''!",
 	'simpleantispam-desc'  => 'Tambahkan pemeriksaan spam/bot sederhana ke formulir-formulir',
 );
 
+/** Ripoarisch (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'simpleantispam'       => 'Deine Änderung hät unsere SPAMschotz op der Plan jeroofe',
+	'simpleantispam-label' => 'SPAMschotz — donn hee nix endraare!',
+	'simpleantispam-desc'  => 'Deit enne ëijfache Schoz jäje Bots un SPAM bëij de Formolare dobëij',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */

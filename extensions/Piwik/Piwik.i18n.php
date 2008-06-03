@@ -60,6 +60,16 @@ $messages['es'] = array(
 	'piwik-browsers'   => 'Navegadores',
 );
 
+/** French (Français)
+ * @author Grondin
+ */
+$messages['fr'] = array(
+	'piwik-desc'       => 'Ajoute un script Piwik dans les pages Mediawiki pour le pistage et ajoute [[Special:Piwik|quelques statistiques]]',
+	'piwik-lastvisits' => 'Dernières visites',
+	'piwik-countries'  => 'Pays',
+	'piwik-browsers'   => 'Navigateurs',
+);
+
 /** Galician (Galego)
  * @author Toliño
  */
@@ -67,6 +77,16 @@ $messages['gl'] = array(
 	'piwik-lastvisits' => 'Últimas visitas',
 	'piwik-countries'  => 'Países',
 	'piwik-browsers'   => 'Navegadores',
+);
+
+/** Ripoarisch (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'piwik-desc'       => 'Fööch e Piwik-Skrip en et Wiki en, för MediaWiki-Sigge ze verfollje, un de [[Special:Piwik|Sondersigg]] met e paa Statistike',
+	'piwik-lastvisits' => 'De lëtzte Besooche',
+	'piwik-countries'  => 'Ländere',
+	'piwik-browsers'   => 'Brauser',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -99,6 +119,16 @@ $messages['no'] = array(
 	'piwik-browsers'   => 'Nettlesere',
 );
 
+/** Occitan (Occitan)
+ * @author Cedric31
+ */
+$messages['oc'] = array(
+	'piwik-desc'       => 'Ajusta un escript Piwik dins las paginas Mediawiki per lo pistatge e ajusta [[Special:Piwik|qualques estatisticas]]',
+	'piwik-lastvisits' => 'Darrièras visitas',
+	'piwik-countries'  => 'Païses',
+	'piwik-browsers'   => 'Navigadors',
+);
+
 /** Sundanese (Basa Sunda)
  * @author Irwangatot
  */
@@ -118,5 +148,15 @@ $messages['sv'] = array(
 	'piwik-lastvisits' => 'Senaste besök',
 	'piwik-countries'  => 'Länder',
 	'piwik-browsers'   => 'Webbläsare',
+);
+
+/** Vietnamese (Tiếng Việt)
+ * @author Vinhtantran
+ */
+$messages['vi'] = array(
+	'piwik-desc'       => 'Chèn mã Piwik vào các trang MediaWiki để dò và thêm một [[Special:Piwik|trang đặc biệt]] với một số thống kê',
+	'piwik-lastvisits' => 'Lần thăm cuối',
+	'piwik-countries'  => 'Quốc gia',
+	'piwik-browsers'   => 'Trình duyệt',
 );
 

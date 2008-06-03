@@ -46,6 +46,13 @@ $messages['cs'] = array(
 	'ajax-qp-desc' => 'Přidává AJAX na stránky s dotazy jako [[{{ns:Special}}:Shortpages|{{MediaWiki:shortpages}}]]',
 );
 
+/** Danish (Dansk)
+ * @author Jan Friberg
+ */
+$messages['da'] = array(
+	'ajax-qp-desc' => 'Tilføj nogle AJAX-funktioner til visse specialssider, som [[Special:Shortpages]].',
+);
+
 /** French (Français)
  * @author Grondin
  */
@@ -191,6 +198,13 @@ $messages['tg-cyrl'] = array(
  */
 $messages['uk'] = array(
 	'ajax-qp-desc' => 'Додає трохи AJAX до QueryPages, наприклад, [[Special:Shortpages]]',
+);
+
+/** Vèneto (Vèneto)
+ * @author Candalua
+ */
+$messages['vec'] = array(
+	'ajax-qp-desc' => 'Zonta dei script AJAX a le pagine de query come [[Special:Shortpages|Speciale:PagineCurte]]',
 );
 
 /** Vietnamese (Tiếng Việt)

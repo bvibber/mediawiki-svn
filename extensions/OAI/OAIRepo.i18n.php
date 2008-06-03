@@ -60,6 +60,13 @@ $messages['id'] = array(
 	'oai-desc' => 'Menyediakan antarmuka tempat penyimpanan [http://www.openarchives.org/OAI/openarchivesprotocol.html OAI-PMH]',
 );
 
+/** Ripoarisch (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'oai-desc' => 'De [http://www.openarchives.org/OAI/openarchivesprotocol.html OAI-PMH] Schnettshtëll',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */

@@ -249,7 +249,7 @@ $messages['el'] = array(
  */
 $messages['eo'] = array(
 	'crosswikiblock-desc'           => 'Permesas forbari uzantojn ĉe aliaj vikioj uzante [[Special:Crosswikiblock|specialan paĝon]]',
-	'crosswikiblock'                => 'Forbaru uzanton ĉe alia vikio',
+	'crosswikiblock'                => 'Forbari uzanton ĉe alia vikio',
 	'crosswikiblock-header'         => 'Ĉi paĝo permesas forbari uzanton ĉe alia vikio.
 Bonvolu verigi se vi rajtas agi en ĉi vikio kaj viaj agoj sekvas ĉiujn kondutmanierojn.',
 	'crosswikiblock-target'         => 'IP-adreso aŭ uzanto-nomo kaj cela vikio:',
@@ -257,15 +257,15 @@ Bonvolu verigi se vi rajtas agi en ĉi vikio kaj viaj agoj sekvas ĉiujn kondutm
 	'crosswikiblock-reason'         => 'Kialo:',
 	'crosswikiblock-submit'         => 'Forbari ĉi tiun uzanton',
 	'crosswikiblock-anononly'       => 'Forbari nur anonimajn uzantojn',
-	'crosswikiblock-nocreate'       => 'Preventu kreadon de kontoj',
+	'crosswikiblock-nocreate'       => 'Preventi kreadon de kontoj',
 	'crosswikiblock-autoblock'      => 'Aŭtomate forbaru la lastan IP-adreson uzatan de ĉi uzanto, kaj iujn ajn postajn el kiujn ili provas redakti.',
 	'crosswikiblock-noemail'        => 'Preventu de uzanto sendi retpoŝton',
-	'crosswikiunblock'              => 'Malforbaru uzanton ĉe alia vikio',
-	'crosswikiunblock-header'       => 'Ĉi paĝo permesas malforbari uzanton ĉe alia vikio.
+	'crosswikiunblock'              => 'Restarigi uzanton ĉe alia vikio',
+	'crosswikiunblock-header'       => 'Ĉi tiu paĝo permesas malforbari uzanton ĉe alia vikio.
 Bonvolu verigi se vi rajtas agi en ĉi vikio kaj viaj agoj sekvas ĉiujn kondutmanierojn.',
 	'crosswikiunblock-user'         => 'Uzanto-nomo, IP-adreso, aŭ forbaro-identigo kaj cela vikio:',
 	'crosswikiunblock-reason'       => 'Kialo:',
-	'crosswikiunblock-submit'       => 'Malforbaru ĉi uzanton',
+	'crosswikiunblock-submit'       => 'Restarigi ĉi tiun uzanton',
 	'crosswikiunblock-success'      => "Uzanto '''$1''' malforbarita sukcese.
 
 Reen:
@@ -280,7 +280,7 @@ Reen:
 	'crosswikiblock-noreason'       => 'Nenia kialo donata.',
 	'crosswikiblock-notoken'        => 'Nevalida redakta ĵetono.',
 	'crosswikiblock-alreadyblocked' => 'Uzanto $3 jam estas forbarita.',
-	'crosswikiblock-noblock'        => 'Ĉi uzanto ne estas forbarita.',
+	'crosswikiblock-noblock'        => 'Ĉi tiu uzanto ne estas forbarita.',
 	'crosswikiblock-success'        => "Uzanto '''$3''' sukcese forbarita.
 
 Reen:
@@ -1279,6 +1279,13 @@ $messages['tg-cyrl'] = array(
  */
 $messages['tr'] = array(
 	'crosswikiunblock-reason' => 'Neden:',
+);
+
+/** Vèneto (Vèneto)
+ * @author Candalua
+ */
+$messages['vec'] = array(
+	'crosswikiblock-desc' => 'Permete de blocar utenti de altre wiki doparando na [[Special:Crosswikiblock|pagina special]]',
 );
 
 /** Vietnamese (Tiếng Việt)

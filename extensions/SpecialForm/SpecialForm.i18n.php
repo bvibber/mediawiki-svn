@@ -541,6 +541,7 @@ $messages['stq'] = array(
 
 /** Sundanese (Basa Sunda)
  * @author Kandar
+ * @author Irwangatot
  */
 $messages['su'] = array(
 	'form'                         => 'Formulir',
@@ -554,6 +555,7 @@ $messages['su'] = array(
 	'formindexmismatch'            => 'Ieu formulir mibanda pola jeung citakan ngaran nu pasalia ti indéks $1 ka handap.',
 	'formarticleexists'            => 'Kaca Aya',
 	'formarticleexiststext'        => 'Kaca [[$1]] geus aya.',
+	'formbadpagename'              => 'Ngaran judul goréng',
 	'formbadpagenametext'          => 'Data formulir nu diasupkeun ngahasilkeun ngaran kaca nu teu payus, "$1".',
 	'formrequiredfieldpluralerror' => 'Eusieun $1 kudu dieusian. Mangga eusian heula.',
 	'formsaveerrortext'            => "Aya éror nu teu kanyahoan nalika nyimpen kaca '$1'.",

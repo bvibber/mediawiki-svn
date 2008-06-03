@@ -604,7 +604,15 @@ $messages['krj'] = array(
  * @author Purodha
  */
 $messages['ksh'] = array(
+	'linksearch'    => 'Lėngkß op Websigge sööke',
 	'linksearch-ok' => 'Sööke',
+);
+
+/** Kurdish (Kurdî / كوردی)
+ * @author Bangin
+ */
+$messages['ku'] = array(
+	'linksearch-ok' => 'Lêbigere',
 );
 
 $messages['la'] = array(

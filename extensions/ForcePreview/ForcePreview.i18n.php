@@ -96,6 +96,15 @@ $messages['km'] = array(
 	'forcepreview' => 'រក្សាទុក ទំព័រ (ជាដំបូង ត្រូវប្រើប្រាស់ មើលមុន)',
 );
 
+/** Ripoarisch (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'forcepreview'             => 'De Sigg Avspeichere (Ävver doför donn de Vör-Aansich beloore)',
+	'forcepreview-desc'        => 'Donn dä Metmaacher met winnisch Privvileejie de Vör-Aansich för_em Avspeichere obb_et Ouch dröcke',
+	'right-forcepreviewexempt' => 'Darf Avspeichere, oohne doför de Vör-Aansich belooert ze han',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */

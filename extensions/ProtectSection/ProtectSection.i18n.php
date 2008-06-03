@@ -241,3 +241,12 @@ $messages['tr'] = array(
 	'protectsection_forbidden' => 'Yasaklanmış',
 );
 
+/** Vèneto (Vèneto)
+ * @author Candalua
+ */
+$messages['vec'] = array(
+	'protectsection_add_remove' => 'Ti gà sercà de zontar o cavar na sezion proteta',
+	'protectsection_modify'     => 'Ti gà sercà de modificar del testo proteto',
+	'protectsection_forbidden'  => 'Proibìo',
+);
+

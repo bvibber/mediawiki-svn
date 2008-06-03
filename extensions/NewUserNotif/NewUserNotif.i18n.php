@@ -338,6 +338,17 @@ $messages['tr'] = array(
 Yeni kullanıcı hesabı, $2,$3 üzerinde $4'te oluşturuldu.",
 );
 
+/** Vèneto (Vèneto)
+ * @author Candalua
+ */
+$messages['vec'] = array(
+	'newusernotifsubj'  => 'Nova notifica utente par $1',
+	'newusernotif-desc' => 'Manda notifica par e-mail quando xe creà un account utente',
+	'newusernotifbody'  => 'Ciao $1,
+
+Un novo account utente, $2, el xe stà creà su $2 in data $4.',
+);
+
 $messages['yue'] = array(
 	'newusernotifsubj' => '$1嘅新用戶通知',
 	'newusernotifbody' => "你好 $1，

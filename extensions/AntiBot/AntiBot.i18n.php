@@ -14,6 +14,27 @@ $messages['en'] = array(
 	'antibot-desc' => 'Simple framework for spambot checks and trigger payloads',
 );
 
+/** Danish (Dansk)
+ * @author Jan Friberg
+ */
+$messages['da'] = array(
+	'antibot-desc' => 'Simpel struktur for kontrol af spamrobotter',
+);
+
+/** French (Français)
+ * @author Grondin
+ */
+$messages['fr'] = array(
+	'antibot-desc' => 'Simple cadre pour les vérifications du bot anti spam et des charges utiles du trigger.',
+);
+
+/** Ripoarisch (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'antibot-desc' => 'En ëijfach Jundlaach för SPAM un SPAMbots ze fenge',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */
@@ -28,6 +49,13 @@ $messages['no'] = array(
 	'antibot-desc' => 'Enkel struktur for kontroll av spambotter',
 );
 
+/** Occitan (Occitan)
+ * @author Cedric31
+ */
+$messages['oc'] = array(
+	'antibot-desc' => 'Quadre simple per las verificacions del bòt antispam e de las cargas utilas del trigger.',
+);
+
 /** Sundanese (Basa Sunda)
  * @author Irwangatot
  */
@@ -40,5 +68,12 @@ $messages['su'] = array(
  */
 $messages['sv'] = array(
 	'antibot-desc' => 'Enkel struktur för spambotskontroller och nyttolastsutlösare.',
+);
+
+/** Vietnamese (Tiếng Việt)
+ * @author Vinhtantran
+ */
+$messages['vi'] = array(
+	'antibot-desc' => 'Bộ khung đơn giản để kiểm tra spambot và tải trang tự động',
 );
 

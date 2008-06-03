@@ -873,8 +873,12 @@ $messages['stq'] = array(
 
 /** Sundanese (Basa Sunda)
  * @author Kandar
+ * @author Irwangatot
  */
 $messages['su'] = array(
+	'pdtest_page_missing' => 'Kaca nu diasupkeun euweuh dina basis data.',
+	'pdtest_no_changes'   => 'Teu kapangih parobahan',
+	'pdtest_time_report'  => '<b>$1</b> merlukeun $2 detik, <b>$3</b> merlukeun $4 detik.',
 	'pdtest_text'         => 'Téks input:',
 	'pdtest_ok'           => 'Heug',
 	'pdtest_get_text'     => 'Téang téks dina kaca',

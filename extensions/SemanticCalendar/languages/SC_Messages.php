@@ -341,6 +341,16 @@ $messages['tg-cyrl'] = array(
 	'sc_gotomonth'     => 'Рафтан ба моҳ',
 );
 
+/** Vèneto (Vèneto)
+ * @author Candalua
+ */
+$messages['vec'] = array(
+	'sc_previousmonth' => 'Mese preçedente',
+	'sc_nextmonth'     => 'Mese sucessivo',
+	'sc_today'         => 'Ancuó',
+	'sc_gotomonth'     => 'Và al mese',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
  */

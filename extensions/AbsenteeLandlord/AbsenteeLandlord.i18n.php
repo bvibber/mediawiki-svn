@@ -46,6 +46,14 @@ $messages['cs'] = array(
 	'absenteelandlord-desc'   => 'Automaticky zamyká wiki databázi, pokud jsou všichni správci po určitou dobu neaktivní',
 );
 
+/** Danish (Dansk)
+ * @author Jan Friberg
+ */
+$messages['da'] = array(
+	'absenteelandlord-reason' => 'Databasen er låst per automatik grundet inaktivitet fra administratorerne.',
+	'absenteelandlord-desc'   => 'Låser automatisk databasen hvis administratorerne er inaktive for et vist tidsrum',
+);
+
 /** German (Deutsch)
  * @author Raimond Spekking
  */
