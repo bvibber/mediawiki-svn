@@ -18,7 +18,7 @@ class Piwik extends SpecialPage {
 		$specialcharsURL = str_replace($badCharsInURL, $goodCharsInURL, $wgPiwikURL);
 
 		$lastvisits = wfMsg('piwik-lastvisits');
-		$countries = wfMsg('piwiki-countries');
+		$countries = wfMsg('piwik-countries');
 		$browsers = wfMsg('piwik-browsers');
 
 		// checking
