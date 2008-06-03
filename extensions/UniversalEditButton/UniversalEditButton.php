@@ -2,6 +2,15 @@
 
 // For experimental browser widget :)
 
+$wgExtensionCredits['other'][] = array(
+	'name'           => 'UniversalEditButton',
+	'url'            => 'http://www.mediawiki.org/wiki/Extension:UniversalEditButton',
+	'svn-date'       => '$LastChangedDate$',
+	'svn-revision'   => '$LastChangedRevision$',
+	'description'    => 'For experimental browser widget :)',
+	'author'         => 'Brion Vibber',
+);
+
 $wgHooks['BeforePageDisplay'][] = 'efUniversalEditLink';
 
 function efUniversalEditLink( $output, $skin ) {
