@@ -57,6 +57,8 @@ function wfSetupBoardVote() {
 	if ( isset( $_SESSION['bvLang'] ) && !isset( $_REQUEST['uselang'] ) ) {
 		wfDebug( __METHOD__.": Setting user language to {$_SESSION['bvLang']}\n" );
 		$_REQUEST['uselang'] = $_SESSION['bvLang'];
+		global $wgLang;
+		$wgLang = Language::factory( $_SESSION['bvLang'] );
 	}
 }
 
