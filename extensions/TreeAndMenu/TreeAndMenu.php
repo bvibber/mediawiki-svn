@@ -107,16 +107,9 @@ class TreeAndMenu {
 		# If root, parse as wikitext
 		if (isset($args['root'])) {
 			$p = clone $parser;
-			$args['root'] = $p->parse($args['root'], $parser->mTitle, $parser->mOptions, true, true)->getText();
+			$html = $p->parse($args['root'], $parser->mTitle, $parser->mOptions, false, true)->getText();
+			$args['root'] = addslashes($html);
 		}
-
-		# If root, parse as wikitext
-		if (isset($args['root'])) {
-				$p = clone $parser;
-				$html = $p->parse($args['root'], $parser->mTitle, $parser->mOptions, false, true)->getText();
-				$args['root'] = addslashes($html);
-		}
-
 
 		# Create a unique id for this tree or use id supplied in args and store args wrt id
 		$this->id = isset($args['id']) ? $args['id'] : uniqid('');
