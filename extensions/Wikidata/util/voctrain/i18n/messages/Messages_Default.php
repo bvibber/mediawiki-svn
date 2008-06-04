@@ -2,6 +2,6 @@
 
 $fallback=false;
 
-require_once("Messages_eng.php");
+include("Messages_eng.php");
 
 ?>

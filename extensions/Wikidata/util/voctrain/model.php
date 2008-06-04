@@ -45,6 +45,24 @@ public $view;
 		$empty=DBTools::doQuery("UPDATE exercises SET completion=100 WHERE id='$id'");
 	}
 
+
+	public function setUserLanguage($username, $language) {
+		global $mysql_info;
+		DBTools::connect($mysql_info);
+
+		$language=mysql_real_escape_string($language);
+		$empty=DBTools::doQuery("UPDATE auth SET uiLanguage=\"$language\"");
+	}
+
+	public function getUserLanguage($username) {
+		global $mysql_info;
+		DBTools::connect($mysql_info);
+
+		$username=mysql_real_escape_string($username);
+		$row=DBTools::doQuery("SELECT uiLanguage from auth where username=\"$username\"");
+		return $row["uiLanguage"];
+	}
+
 	/** retrieve the exercice we're using for this session */
 	public function getExercise($username) {
 

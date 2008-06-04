@@ -10,25 +10,28 @@ class NoSuchMessageFileException extends LocalisationException {};
 class Language {
 
 	private $code; #language code, mostly for debugging purposes
-	private $messages; 
-	private $fallback=false;
+	private $messages; # assoc array of translations
+	private $fallback=false; #a different Language object to fall back to
+				 # if we can't find a particular entry in $messages
 
-	public function __construct($code=null) {
+	public function __construct($code="Default") {
+		if (!$code) 
+			$code="Default";
 		$this->code=$code;
-		if ($code) 
-			$this->loadMessages($code);
+		$this->loadMessages($code);
+
 
 	}
 
 	public function loadMessages($code="Default") {
-		$messages="Messages_$code.php";
-		$path=dirname(__FILE__)."/messages/$messages";
+		$messages_filename="Messages_$code.php";
+		$path=dirname(__FILE__)."/messages/$messages_filename";
 		if (file_exists($path)) {
 			include($path);	
 			if (isset($messages)) {
 				$this->messages=$messages; #messages is from the included file
 			} else {
-				throw new LocalisationException("messages file format problem, there's no $messages");
+				throw new LocalisationException("messages file format problem, there's no messages in $path");
 			}
 			
 			if (isset($fallback)) {
@@ -58,13 +61,11 @@ class Language {
 		$languageNames=Language::getAllLanguageNames();
 
 		$messageFiles = glob( dirname(__FILE__)."/messages/Messages_*.php" );
-		var_dump($messageFiles);
 		$names = array();
 		foreach ( $messageFiles as $file ) {
 			$m = array();
 			if( preg_match( '/Messages_([a-z_]+)\.php$/', $file, $m ) ) {
 				$code = str_replace( '_', '-', strtolower( $m[1] ) );
-				var_dump($code);
 				if ( isset( $languageNames[$code] ) ) {
 					$names[$code] = $languageNames[$code];
 				}
@@ -81,7 +82,8 @@ class Language {
 		}
 	}
 
-	/** translate the phrase, but doesn't do any substitutions. use printf,sprintf, or vsprintf for that */
+	/** translate the phrase, but doesn't do any substitutions. 
+	 * Use printf,sprintf, or vsprintf etc...  for subsitutions */
 	public function translate($phrase) {
 		if ($this->translation_exists($phrase)) {
 			return $this->messages[$phrase];
@@ -94,6 +96,7 @@ class Language {
 	
 
 	# == Diverse sprintf-ish functions 
+	# (see also: php documentation for non-i18nified versions)
 
 	/** i18nsprint is a simpler way to go about things, will do i18n replacement
 	on antyhing enclosed in <|  |>, any %signs in these substrings
@@ -111,6 +114,7 @@ class Language {
 	}
 
 
+	# internationalized printf
 	public function printf($phrase) {
 		$args=func_get_args();
 		$str=$this->vsprintf($phrase, $args);
@@ -129,10 +133,10 @@ class Language {
 		return vsprintf($this->translate($phrase),$array);
 	}
 
-	/** assoc variant on vsprintf,
+	/** assoc variant of vsprintf,
 	 * (modified from sprintf2 by "matt", 10-Mar-2008 06:13,
 	 *  http://nl2.php.net/manual/en/function.sprintf.php )
-	 * original Apparently  Copyright © 2001-2008 The PHP Group, copied here
+	 * original apparently  Copyright © 2001-2008 The PHP Group, copied here
 	 * on condition that copyright notice is retained. )
 	 */
 	function vsprintf2($phrase='', $vars=array(), $char='%') {

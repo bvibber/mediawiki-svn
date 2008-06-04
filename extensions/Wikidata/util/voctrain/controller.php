@@ -37,8 +37,10 @@ class Controller {
 
 		$this->login();
 		$logged_in=$this->auth->checkAuth();
+		$this->setLanguage();
 		if ($_REQUEST["action"]=="logout")
 			$logged_in=false;
+		
 		$this->view->header($logged_in);
 		$logged_in=$this->auth->checkAuth();
 		if ($logged_in) {
@@ -69,6 +71,13 @@ class Controller {
 	/** What to do when we don't know what to do */
 	public function default_action() {
 		$this->run_exercise(true);
+	}
+
+	/** sets the ui language */
+	public function setLanguage() {
+		$username=$this->auth->getUsername();
+		$userLanguage=$this->model->getUserLanguage($username);
+		$this->view->setLanguage_byCode($userLanguage);
 	}
 
 	/**create a new exercise using $this->view->exercise_setup();
@@ -122,7 +131,6 @@ class Controller {
 	public function run_exercise($continue=false) {
 		# obtain an exercise
 		$userName=$this->auth->getUsername();
-		
 		$exercise=$this->model->getExercise($userName);
 		if ($exercise===null) {
 			$exercise=$this->create_exercise();
@@ -216,9 +224,17 @@ class Controller {
 		$auth=new Auth("DB", $options, "_displayLogin");
 		$username=$_REQUEST["username"];
 		$password=$_REQUEST["password"];
+		#to be implemented
+		#if ($username="") {
+		#	$this->view->provideUsername();
+		#	$this->view->footer();
+		#	exit;
+		#}
 		$success=$auth->addUser($username, $password);
 		if ($success===true) {
 			$this->auth->setAuth($username);
+			$this->model->setUserLanguage($username,$_REQUEST["userLanguage"]);
+			$this->setLanguage();
 			$this->view->header(true);
 			$this->view->userAdded($username);
 			$this->view->footer();

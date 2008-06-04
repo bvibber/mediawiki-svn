@@ -54,6 +54,14 @@ $messages=array(
 	"Omegawiki"=>"Omegawiki",
 	"Exercise complete"=>"Exercise complete",
 	"Exercise terminated"=>"Exercise terminated",
-	"Start a new exercise"=>"Start a new exercise"
+	"Start a new exercise"=>"Start a new exercise",
+	"User name"=>"User name",
+	"Password"=>"Password",
+	"Login"=>"Login",
+	"Create new user"=>"Create new user",
+	"Switch language"=>"Switch language",
+	"Language"=>"Language",
+	"Log in"=>"Log in",
+	"Omegawiki vocabulary trainer"=>"Omegawiki vocabulary trainer"
 	);
 ?>

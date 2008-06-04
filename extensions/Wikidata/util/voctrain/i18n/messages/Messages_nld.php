@@ -21,9 +21,9 @@ $messages=array(
 	"Set up your exercise"=>"Stel uw oefening op",
 	"Number of questions"=>"Aantal vragen",
 	"Languages"=>"Talen",
-	"Please specify the languages you want to test in"=>"Geef aub de talen op waarin je wilt oefen",
+	"Please specify the languages you want to test in"=>"Geef aub de talen op waarin u wilt oefen",
 	"(eg, eng for English, deu for Deutch (German))."=>"(bijv, eng voor English (Engels), deu voor Deutch (Duits)).",
-	"Depending on your test set, some combinations might work better than others."=>"Afhankelijk van je testset, werken sommige combinaties beter dan anderen.",
+	"Depending on your test set, some combinations might work better than others."=>"Afhankelijk van uw testset, werken sommige combinaties beter dan anderen.",
 	"Questions"=>"Vragen",
 	"Answers"=>"Antwoorden",
 	"start exercise"=>"start oefening",
@@ -32,7 +32,7 @@ $messages=array(
 	"There are %questions_remaining questions remaining, out of a total of %questions_total."=>
 		"Er zikn nog %questions_remaining over, uit een totaal van %questions_total.",
 	"Definition"=>"Definitie",
-	"Dictionary definition to help you"=>"Dictionary definitie om je te helpen",
+	"Dictionary definition to help you"=>"Woordenboek definitie om u te helpen",
 	"Word"=>"Woord",
 	"Please type your answer here"=>"Typ alstublieft hier uw antwoord.",
 	"submit answer"=>"antwoord submitten",
@@ -52,6 +52,13 @@ $messages=array(
 	"Omegawiki"=>"Omegawiki",
 	"Exercise complete"=>"Oefening voltooid",
 	"Exercise terminated"=>"Oefening afgebroken",
-	"Start a new exercise"=>"Start een nieuwe oefening"
+	"Start a new exercise"=>"Start een nieuwe oefening",
+	"User name"=>"Gebruikersnaam",
+	"Password"=>"Wachtwoord",
+	"Login"=>"Inloggen",
+	"Create new user"=>"Nieuwe gebruiker aanmaken",
+	"Switch language"=>"Wijzig taal",
+	"Language"=>"Taal"
+
 	);
 ?>

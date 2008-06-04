@@ -15,23 +15,57 @@ function _displayLogin($username = null, $status = null, &$auth = null) {
 	}
 	# I shouldn't be dealing with $_REQUEST here neither... but this function
 	# breaks all the other rules anyways :-P
+	
+	$language=new Language('Default');
 
-	echo "<h1>Log In. Omegawiki vocabulary trainer</h1>";
+	$language->i18nprint("<h1><|Log in|>. <|Omegawiki vocabulary trainer|></h1>");
 	if (isset($_REQUEST["defaultCollection"])) {
 		$defaultCollection=(int) $_REQUEST["defaultCollection"];
 		echo "<form method=\"post\" action=\"trainer.php?defaultCollection=$defaultCollection\">";
 	} else {
 		echo "<form method=\"post\" action=\"trainer.php\">";
 	}
-	echo '<fieldset class="settings">';
-	echo"<div class='datarow'><label>User name: </label><input type=\"text\" name=\"username\" /></div><br/>";
-	echo "<div class='datarow'><label>Password: </label><input type=\"password\" name=\"password\" /></div><br/>";
-	echo '</fieldset>';
-	echo '<fieldset class="settings">';
-	echo '<div class="datarow"><input type="submit" value="Login"/> <input type="submit" value="Create new user" name="new_user"></div>';
-	echo '</fieldset>';
-	echo "</form>";
+	$language->i18nprint('
+	 <fieldset class="settings">
+	<div class="datarow"><label><|User name|>: </label><input type="text" name="username" /></div><br/>
+	<div class="datarow"><label><|Password|>: </label><input type="password" name="password" /></div><br/>
+	<div class="datarow"><label><|Language|>: </label>'._langSelect().'</div><br/>
+	</fieldset>
+	<fieldset class="settings">
+	<div class="datarow">
+		<input type="submit" value="<|Login|>"/> 
+		<input type="submit" value="<|Create new user|>" name="new_user">
+		<!--<input type="submit" value="<|Switch language|>" name="switch_language">-->
+	</div>
+	</fieldset>
+	</form>');
 }
+
+function _langSelect($default="eng") {
+	$names=Language::getI18NLanguageNames();
+
+	$select="<select name='userLanguage'>\n";
+	foreach ($names as $iso639_3=>$name){
+		$select .= "	
+			<option
+				value='$iso639_3' "; 
+
+		if ($iso639_3 == $default) { # check-mark default language
+			$select.= "
+				selected";
+		}
+
+		$select.= "
+			> 
+				".$name." 
+			</option>
+			";
+	}
+	$select.= "</select>\n";
+	return $select;
+
+}
+
 
 
 /** ~MVC:  Generate html for user interface */
@@ -41,9 +75,12 @@ class View {
 	public $language;
 
 	public function __construct($language_code="Default") {
-		$this->language=new language($language_code);
+		$this->setLanguage_byCode($language_code);
 	}
 
+	public function setLanguage_byCode($code) {
+		$this->language=new Language($code);
+	}
 	/** print everyones favorite friendly message! */
 	public function hello() {
 		$this->language->i18nprint("<h1><|Hello World|></h1>");
@@ -128,7 +165,6 @@ class View {
 					(".$collection->count.")
 				</option>
 			";
-			flush();
 		}
 		$select.= "</select>\n";
 		return $select;

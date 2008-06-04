@@ -7,6 +7,7 @@ DROP TABLE IF EXISTS `auth`;
 CREATE TABLE `auth` (
 	username VARCHAR(50) default '' NOT NULL,
 	password VARCHAR(32) default '' NOT NULL,
+	`uiLanguage` 	CHAR(3) ,
 	PRIMARY KEY (username),
 	KEY (password)
 ) ENGINE=INNODB;
