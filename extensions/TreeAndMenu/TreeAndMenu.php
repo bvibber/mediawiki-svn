@@ -14,7 +14,7 @@
 
 if (!defined('MEDIAWIKI')) die('Not an entry point.');
 
-define('TREEANDMENU_VERSION','1.0.1, 2008-05-15');
+define('TREEANDMENU_VERSION','1.0.2, 2008-06-05');
 
 # Set any unset images to default titles
 if (!isset($wgTreeViewImages) || !is_array($wgTreeViewImages)) $wgTreeViewImages = array();
@@ -103,6 +103,20 @@ class TreeAndMenu {
 		
 		# Store args for this tree for later use
 		foreach ($args as $arg) if (preg_match('/^(\\w+?)\\s*=\\s*(.+)$/s',$arg,$m)) $args[$m[1]] = $m[2]; else $text = $arg;
+
+		# If root, parse as wikitext
+		if (isset($args['root'])) {
+			$p = clone $parser;
+			$args['root'] = $p->parse($args['root'], $parser->mTitle, $parser->mOptions, true, true)->getText();
+		}
+
+		# If root, parse as wikitext
+		if (isset($args['root'])) {
+				$p = clone $parser;
+				$html = $p->parse($args['root'], $parser->mTitle, $parser->mOptions, false, true)->getText();
+				$args['root'] = addslashes($html);
+		}
+
 
 		# Create a unique id for this tree or use id supplied in args and store args wrt id
 		$this->id = isset($args['id']) ? $args['id'] : uniqid('');
