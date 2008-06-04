@@ -1,8 +1,12 @@
 <?php
 
+
+# provide an iso 693_3 code to fall back to
+# (or false if you absolutely don't want to fall back to english)
 $fallback=false;
 
-#do not translate words starting with '%'   (ie %action  myst 
+# Words starting with '%' (ie %action, or %questions_total) are
+# "variable names", for use by the program. Don't translate those!
 
 $messages=array(
 	"Hello World"=>"HELLO WIKI!",
