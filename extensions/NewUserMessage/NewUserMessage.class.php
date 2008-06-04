@@ -40,9 +40,6 @@ class NewUserMessage {
 			$flags = 0;
 			if ($wgNewUserMinorEdit) $flags = $flags | EDIT_MINOR;
 			if ($wgNewUserSupressRC) $flags = $flags | EDIT_SUPPRESS_RC;
-			if (!$wgNewUserMessageEditor) $wgNewUserMessageEditor = 'Admin';
-			if (!$wgNewUserMessageTemplate) $wgNewUserMessageTemplate = 'MediaWiki:NewUserMessage';
-			if (!$wgNewUserEditSummary) $wgNewUserEditSummary = "Adding [[$wgNewUserMessageTemplate|welcome message]] to new user's talk page";
 
 			$article->doEdit('{'.'{'."$wgNewUserMessageTemplate|$name}}", $wgNewUserEditSummary, $flags);
 			$wgUser = $parkedWgUser;

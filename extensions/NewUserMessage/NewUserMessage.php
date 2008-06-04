@@ -12,23 +12,23 @@
 if (!defined('MEDIAWIKI'))
 	die('Not an entry point.');
 
-define('NEWUSERMESSAGE_VERSION','1.2, 2008-06-04');
+define('NEWUSERMESSAGE_VERSION','1.2.1, 2008-06-04');
 
 // Specify a template to wrap the new user message within
 $wgNewUserMessageTemplate = 'MediaWiki:NewUserMessage';
 
-// Should the new user message creation be a minor edit?
-$wgNewUserMinorEdit = true;
-
 // Set the username of the user that makes the edit on user talk pages. If
 // this user does not exist, the new user will show up as editing user.
-// default: $wgNewUserMessageEditor = 'Admin';
+$wgNewUserMessageEditor = 'Admin';
 
 // Edit summary for the recent changes entry of a new users message
-// default: $wgNewUserEditSummary = "Adding [[$wgNewUserMessageTemplate|welcome message]] to new user's talk page";
+$wgNewUserEditSummary = "Adding [[$wgNewUserMessageTemplate|welcome message]] to new user's talk page";
 
 // Specify whether or not the new user message creation should show up in recent changes
-// default: $wgNewUserSupressRC = false;
+$wgNewUserSupressRC = false;
+
+// Should the new user message creation be a minor edit?
+$wgNewUserMinorEdit = true;
 
 $dir = dirname(__FILE__) . '/';
 $wgExtensionMessagesFiles['NewUserMessage'] = $dir . 'NewUserMessage.i18n.php';
