@@ -37,11 +37,12 @@ if (empty ($wgEditSimilarCounterValue)) {
 $wgExtensionFunctions[] = 'wfEditSimilarSetup';
 
 $wgExtensionCredits['other'][] = array(
-        'name' => 'EditSimilar',
-        'version' => '1.16',
-        'author' => array('Bartek Łapiński', '[http://inside.wikia.com/wiki/User:TOR Łukasz \'TOR\' Garczewski]'),
-        'url' => 'http://www.mediawiki.org/wiki/Extension:EditSimilar',
-        'description' => 'Encourages users to edit an article similar (by categories) to the one they just had edited.',
+        'name'           => 'EditSimilar',
+        'version'        => '1.17',
+        'author'         => array('Bartek Łapiński', '[http://inside.wikia.com/wiki/User:TOR Łukasz \'TOR\' Garczewski]'),
+        'url'            => 'http://www.mediawiki.org/wiki/Extension:EditSimilar',
+        'description'    => 'Encourages users to edit an article similar (by categories) to the one they just had edited.',
+        'descriptionmsg' => 'editsimilar-desc',
 );
 
 /*
