@@ -552,6 +552,7 @@ $settings = array(
 			'wgMaxRedirectLinksRetrieved' => 'int',
 			'wgSortSpecialPages' => 'bool',
 			'wgSpecialPageGroups' => 'array',
+			'wgSpecialVersionShowHooks' => 'bool',
 			'wgUseNPPatrol' => 'bool',
 		),
 		'recentchanges' => array(
@@ -1104,6 +1105,7 @@ $settingsVersion = array(
 	'wgRCLinkLimits' => array( array( '1.13alpha', '>=' ) ),
 	'wgRCLinkDays' => array( array( '1.13alpha', '>=' ) ),
 	'wgMaximumMovedPages' => array( array( '1.13alpha', '>=' ) ),
+	'wgSpecialVersionShowHooks' => array( array( '1.13alpha', '>=' ) ),
 ## Obsolete
 	'wgProfileSampleRate' => array( array( '1.8alpha', '<' ) ),
 	'wgProfilerType' => array( array( '1.8alpha', '<' ) ),
