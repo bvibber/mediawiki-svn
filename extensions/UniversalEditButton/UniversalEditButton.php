@@ -13,7 +13,7 @@ $wgExtensionCredits['other'][] = array(
 
 $wgHooks['BeforePageDisplay'][] = 'efUniversalEditLink';
 
-function efUniversalEditLink( $output, $skin ) {
+function efUniversalEditLink( $output ) {
 	global $wgArticle, $wgTitle, $wgUser;
 	if( isset( $wgArticle ) &&
 		isset( $wgTitle ) &&
