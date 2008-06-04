@@ -900,7 +900,7 @@ Schriev däm Metmaacher singe Metmaacher Name hee eren, un Loss Jonn!',
 	'already_bureaucrat'   => 'Dä Metmaacher es ald ene Bürrokrad.',
 );
 
-$messages['ku'] = array(
+$messages['ku-latn'] = array(
 	'makesysopname'        => 'Navê bikarhêner:',
 );
 

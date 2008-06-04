@@ -1653,7 +1653,7 @@ $wdMessages['ksh'] = array(
 /** Kurdish (Kurdî / كوردی)
  * @author Bangin
  */
-$wdMessages['ku'] = array(
+$wdMessages['ku-latn'] = array(
 	'ow_history' => 'Dîrok',
 	'ow_Source'  => 'Çavkanî',
 );

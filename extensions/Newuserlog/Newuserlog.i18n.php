@@ -661,7 +661,7 @@ $messages['ksh'] = array(
 	'newuserlog-create2-entry' => 'Nöüje Zojang enjerėshdt för „$1“',
 );
 
-$messages['ku'] = array(
+$messages['ku-latn'] = array(
 	'newuserlogpage'           => 'Reşahiya çêkirina hesabên nû',
 	'newuserlog-create-entry'  => 'Bikarhênerekî nuh',
 );

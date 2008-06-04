@@ -845,16 +845,6 @@ $messages['ksh'] = array(
 	'badimages-reason'  => 'Aanlass:',
 );
 
-/** Kurdish (Kurdî / كوردی)
- * @author Bangin
- */
-$messages['ku'] = array(
-	'badimages-name'       => 'Nav:',
-	'badimages-reason'     => 'Sedem:',
-	'badimages-remove'     => '(jêbibe)',
-	'badimages-remove-btn' => 'Jêbibe',
-);
-
 /** Kurdish (Latin) (Kurdî / كوردی (Latin))
  * @author Bangin
  */

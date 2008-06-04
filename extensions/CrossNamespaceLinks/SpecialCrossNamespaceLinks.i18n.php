@@ -406,7 +406,7 @@ $messages['ksh'] = array(
 	'crossnamespacelinkstext'     => '$1 hät {{PLURAL:$2|eine Lengk|$2&nbsp;Lengks|keine Lengk}} en et Apachtemang „$3“'
 );
 
-$messages['ku'] = array(
+$messages['ku-latn'] = array(
 	'crossnamespacelinks'         => 'Linkên ji boşahiya navekê bo boşahiya navekê din',
 );
 

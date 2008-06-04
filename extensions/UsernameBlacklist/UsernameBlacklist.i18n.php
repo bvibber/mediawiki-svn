@@ -679,11 +679,6 @@ $messages['ksh'] = array(
 	'right-uboverride' => 'De Liss met verbodde Metmaacher-Name övverjonn',
 );
 
-/* Kurdi */
-$messages['ku'] = array(
-	'blacklistedusernametext' => 'Wê navî yê te hilbijart li ser [[MediaWiki:Usernameblacklist|lîstêya navên nebaş]] e. Xêra xwe navekî din hilbijêre.',
-);
-
 /** Kurdish (Latin) (Kurdî / كوردی (Latin))
  * @author Bangin
  */

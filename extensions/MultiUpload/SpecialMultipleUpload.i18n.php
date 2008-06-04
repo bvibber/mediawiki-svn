@@ -287,7 +287,7 @@ $messages['km'] = array(
 /** Kurdish (Kurdî / كوردی)
  * @author Bangin
  */
-$messages['ku'] = array(
+$messages['ku-latn'] = array(
 	'multipleupload' => "Wêneyan ya data'yan barbike",
 );
 
