@@ -1,6 +1,7 @@
 <?php
 
 require_once("settings.php");
+require_once("i18n/language.php");
 
 $header_printed=false;
 /** This shouldn't be here at all but PEAR:Auth hates me.
@@ -37,45 +38,51 @@ function _displayLogin($username = null, $status = null, &$auth = null) {
 class View {
 
 	public $model;
-	
+	public $language;
+
+	public function __construct($language_code="Default") {
+		$this->language=new language($language_code);
+	}
+
 	/** print everyones favorite friendly message! */
 	public function hello() {
-		print "<h1>HELLO WIKI!</h1>";
+		$this->language->i18nprint("<h1><|Hello World|></h1>");
 	}
 	
 	/** @deprecated */
 	public function permissionDenied() {
-		print "<h1>Permission Denied</h1>";
-		print "<a href='trainer.php'>Try again?</a>";
+		$this->language->i18nprint("<h1><|Permission Denied|></h1>");
+		$this->language->i18nprint("<a href='trainer.php'><|try again?|></a>");
 	}
 
 	/** an action was provided, but we've never heard of it 
 	    "?action=UnintelligibleGibberish" */
 	public function actionUnknown($action){
-		print "<h1>Action unknown</h1>";
-		print "I don't know what to do with '$action'";
-		print "<a href='trainer.php'>Try again?</a>";
+		$this->language->i18nprint("<h1><|Action unknown|></h1>");
+		$this->language->i18nprint("<|I don't know what to do with '%action'.|>", array("action"=>$action));
+		$this->language->i18nprint("<a href='trainer.php'><|try_again?|></a>");
 	}
 
 	/** say hello to the new user */
 	public function userAdded($username) {
-		print "<h1>User added</h1>";
-		print "<p>Hello, $username, welcome to the omega language trainer</p>";
-		print "<p><a href='trainer.php'>continue</a></p>";
+
+		$this->language->i18nprint("<h1><|User added|></h1>");
+		$this->language->i18nprint("<p><|Hello, %username, welcome to the omega language trainer|></p>",array("username"=>$username));
+		$this->language->i18nprint("<p><a href='trainer.php'><|continue|></a></p>");
 	}
 
 	/** Big form, allows user to set parameters for their next exercise */
 	public function exercise_setup($collectionList, $defaultCollection=null) {
-		print "
-		<h1>Set up your exercise</h1>
+		$this->language->i18nprint("
+		<h1><|Set up your exercise|></h1>
 		<form method='post' action='?'>
-		<h2> collection </h2>
+		<h2><|collection|></h2>
 		<fieldset class=settings>
 		<div class='datarow'>
 		".$this->collectionSelect($collectionList, $defaultCollection)."
 		</div>
 		</fieldset>
-		<h2>number of questions</h2>
+		<h2><|Number of questions|></h2>
 		<fieldset class='settings'>
 		<div class='datarow'><input type='radio' value='10' name='exercise_size' /><label>10</label></div><br/>
 		<div class='datarow'><input type='radio' value='25' name='exercise_size' checked /><label>25</label></div><br/>
@@ -85,17 +92,17 @@ class View {
 		</fieldset>
 		</p>
 		</fieldset>
-		<h2>languages</h2>
+		<h2><|Languages|></h2>
 		<fieldset class='settings'>
 		<!-- should be a dropdown, perhaps -->
-		Please specify the languages you want to test in <a href='http://www.sil.org/ISO639-3/codes.asp'>ISO-639-3 format</a>. (eg, eng for English, deu for Deutch (German)). Depending on your test set, some combinations might work better than others.
-		<div class='datarow'><label>Questions:</label> <input type='text' value='eng' name='questionLanguage'/></div><br/>
-		<div class='datarow'><label>Answers: </label><input type='text' value='deu' name='answerLanguage'/></li></div><br/>
+		<|Please specify the languages you want to test in|> <a href='http://www.sil.org/ISO639-3/codes.asp'><|ISO-639-3 format|></a>. <|(eg, eng for English, deu for Deutch (German)).|> <|Depending on your test set, some combinations might work better than others.|>
+		<div class='datarow'><label><|Questions|>:</label> <input type='text' value='eng' name='questionLanguage'/></div><br/>
+		<div class='datarow'><label><|Answers|>: </label><input type='text' value='deu' name='answerLanguage'/></li></div><br/>
 		<hr/>
 		</p>
-		<input type='submit' value='start exercise'/> 
+		<input type='submit' value='<|start exercise|>'/> 
 		</form>
-		";
+		");
 	}
 
 	public function collectionSelect($collectionList, $defaultCollection=null) {
@@ -143,47 +150,51 @@ class View {
 		$questions_total=$exercise->countQuestionsTotal();
 		$answers=implode(", ",$question->getAnswers());
 
-		print"<form method='post' action='?action=run_exercise'>
-			There are $questions_remaining questions remaining, out of a total of $questions_total.
-			<h1>Question</h1>
+		$this->language->i18nprint(
+			"<form method='post' action='?action=run_exercise'>
+			<|There are %questions_remaining questions remaining, out of a total of %questions_total.|>
+			<h1><|Question|></h1>
 			<hr>
-			<h2>Definition</h2>
+			<h2><|Definition|></h2>
 			<p class='result'>
-			<i>Dictionary definition to help you:</i><br/>
+			<i><|Dictionary definition to help you|>:</i><br/>
 			$definitions 
 			</p>
 			<hr>
-			<h2>Word</h2>
+			<h2><|Word|></h2>
 			<p class='result'>
-			<i>The word to translate:</i><br/>
+			<i><|The word to translate|>:</i><br/>
 			$words
 			</p>
 			<hr>
 			<input type='hidden' name='questionDmid' value='$questionDmid'/>
-			<h2>Answer</h2>
-			<fieldset class='settings'>";
+			<h2><|Answer|></h2>
+			<fieldset class='settings'>", array(
+				"questions_remaining"=>$questions_remaining,
+				"questions_total"=>$questions_total
+			));
 			if ($peek) {
-				print"
-					<i>peek:</i>$answers<br/>";
+				$this->language->i18nprint("
+					<i><|peek|>:</i>$answers<br/>");
 			}
-			print"
-			<i>Please type your answer here</i><br/>
+			$this->language->i18nprint("
+			<i><|Please type your answer here|></i><br/>
 
 			<input type='text' value='' name='userAnswer' />
-			<input type='submit' value='submit answer' name='submitAnswer' />
+			<input type='submit' value='<|submit answer|>' name='submitAnswer' />
 			</fieldset>
 			<fieldset class='settings'>
-			<input type='submit' value='peek' name='peek' />
-			<input type='submit' value='skip ->' name='skip' />
-			<input type='submit' value='I know it/do not ask again' name='hide' />
+			<input type='submit' value='<|peek|>' name='peek' />
+			<input type='submit' value='<|skip|> ->' name='skip' />
+			<input type='submit' value='<|I know it/do not ask again|>' name='hide' />
 			".
 			#<input type='submit' value='never ask again' name='never_ask' />
 			"
-			<input type='submit' value='abort exercise' name='abort' />
-			<input type='submit' value='list answers' name='list_answers' />
+			<input type='submit' value='<|abort exercise|>' name='abort' />
+			<input type='submit' value='<|list answers|>' name='list_answers' />
 			</fieldset>
 			</form>
-		";
+		");
 	}
 
 	/** Show the answer to a question */
@@ -199,40 +210,40 @@ class View {
 		} elseif ($correct===false) {
 			$result="<span style='color:#DD0000'>WRONG</span>";
 		} elseif ($correct===null) {
-			$result="PEEK";
+			$result="<|peek|>";
 		} else {
 			throw new Exception("unexpected outcome from question");
 		}
 
-		print"<form method='post' action='?action=run_exercise'>
+		$this->language->i18nprint("<form method='post' action='?action=run_exercise'>
 			<h2>$result</h2>
-			Definitions: $definitions 
+			<|Definitions|>: $definitions 
 			<hr>
-			Question: $words
+			<|Question|>: $words
 			<hr>
-			Answer (one of): $answers
+			<|Answer|> (<|one of|>): $answers
 			<hr>
 			<input type='hidden' name='questionDmid' value='$questionDmid'/>
 			<input type='submit' value='continue ->' name='continue' />
 			</form>
-		";
+		");
 	}
 
 	/** show a nice final table on completion of the exercise */
 	public function complete($exercise) {
 		
-		print "<h1> Exercise complete </h1>";
+		$this->language->i18nprint("<h1> <|Exercise complete|> </h1>");
 		$this->allQuestionsTable($exercise);
-		print "<a href='?action=create_exercise'>Start a new exercise</a>";
+		$this->language->i18nprint("<a href='?action=create_exercise'><|Start a new exercise|></a>");
 	}
 
 	public function listAnswers($exercise) {
-		print "<h1> list of questions and answers </h1>";
+		$this->language->i18nprint("<h1> <|list of questions and answers|> </h1>");
 		$this->allQuestionsTable($exercise);
 		print"<fieldset class='settings'>";
 		print"<form method='post' action='?action=run_exercise'>";
 		print "<div style='float:right;'>";
-		print"<input type='submit' value='continue ->' name='continue' />";
+		$this->language->i18nprint("<input type='submit' value='<|continue|> ->' name='continue' />");
 		print"</div>";
 		print"</fieldset>";
 		print"</form>";
@@ -244,7 +255,7 @@ class View {
 	 */
 	public function allQuestionsTable($exercise) {
 		print "<table>";
-		print "<tr><th>Definition</th><th>Question</th><th>Answer(s)</th></tr>";
+		$this->language->i18nprint("<tr><th><|Definition|></th><th><|Question|></th><th><|Answer(s)|></th></tr>");
 		try {
 			$exercise->rewind();
 			foreach ($exercise as $question) {
@@ -265,8 +276,8 @@ class View {
 	 * all the untouched questions 
 	*/
 	public function aborted() {
-		print "<h1> Exercise terminated </h1>\n";
-		print "<a href='?action=create_exercise'>Start a new exercise</a>";
+		$this->language->i18nprint("<h1> <|Exercise terminated|> </h1>\n");
+		$this->language->i18nprint("<a href='?action=create_exercise'><|Start a new exercise|></a>");
 	}
 
 	/** fugly function to print HTML header */
@@ -291,7 +302,7 @@ print'<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www
 <div id="container">
 ';
 		if ($showlogout) {
-			print'<a href="?action=logout">logout</a>';
+			$this->language->i18nprint('<a href="?action=logout"><|logout|></a>');
 		}
 		global $header_printed;
 		$header_printed=true;
@@ -299,12 +310,12 @@ print'<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www
 
 	/** fugly function to print HTML footer */
 	public function footer() {
-print'
-<p class="footer">Powered by <a href="http://www.omegawiki.org/">Omegawiki</a></p>
+	$this->language->i18nprint('
+<p class="footer"><|Powered by|> <a href="http://www.omegawiki.org/"><|Omegawiki|></a></p>
 </div>
 </body>
 </html>
-';
+');
 	}
 
 

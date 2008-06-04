@@ -1,0 +1,9 @@
+<?php
+
+$fallback="eng";
+
+$messages=array(
+	"Hello World"=>"Hallo Wereld!",
+	"farewell"=>"vaarwel"
+)
+?>
