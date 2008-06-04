@@ -164,6 +164,13 @@ Inscrigatz '''PAS RES''' dedins !",
 	'simpleantispam-desc'  => 'Apondís al formulari la verificacion d’un bòt tarabastejaire',
 );
 
+/** Polish (Polski)
+ * @author Sp5uhe
+ */
+$messages['pl'] = array(
+	'simpleantispam' => 'Twoja edycja zostanie sprawdzona mechanizmem antyspamowym',
+);
+
 /** Portuguese (Português)
  * @author 555
  */

@@ -322,6 +322,13 @@ $messages['mr'] = array(
 	'spamdifftool_submit_buttom'    => 'पाठवा',
 );
 
+/** Low German (Plattdüütsch)
+ * @author Slomox
+ */
+$messages['nds'] = array(
+	'spamdifftool_option_none' => 'nix',
+);
+
 /** Dutch (Nederlands)
  * @author SPQRobin
  * @author Siebrand

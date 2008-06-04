@@ -27,6 +27,13 @@ $messages['krl'] = array(
 	'linksearch-ok' => 'Ečindy',
 );
 
+/** Eastern Mari (Олык Марий йылме)
+ * @author Сай
+ */
+$messages['mhr'] = array(
+	'linksearch-ok' => 'Кучал',
+);
+
 /** Afrikaans (Afrikaans)
  * @author Arnobarnard
  * @author SPQRobin
@@ -611,7 +618,7 @@ $messages['ksh'] = array(
 /** Kurdish (Kurdî / كوردی)
  * @author Bangin
  */
-$messages['ku'] = array(
+$messages['ku-latn'] = array(
 	'linksearch-ok' => 'Lêbigere',
 );
 

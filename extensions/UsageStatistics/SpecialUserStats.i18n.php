@@ -532,6 +532,19 @@ $messages['mr'] = array(
 	'usagestatistics-editpages'       => 'एकटा सदस्य $1 पृष्ठ सांख्यिकी',
 );
 
+/** Low German (Plattdüütsch)
+ * @author Slomox
+ */
+$messages['nds'] = array(
+	'usagestatisticsallusers'      => 'All Brukers',
+	'usagestatisticsinterval'      => 'Tiedruum',
+	'usagestatisticstype'          => 'Typ',
+	'usagestatisticsintervalday'   => 'Dag',
+	'usagestatisticsintervalweek'  => 'Week',
+	'usagestatisticsintervalmonth' => 'Maand',
+	'usagestatisticscalselect'     => 'Utwählen',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  * @author SPQRobin

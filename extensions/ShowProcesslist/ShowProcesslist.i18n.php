@@ -260,6 +260,14 @@ $messages['mr'] = array(
 	'showprocesslist-info'    => 'माहिती',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Aurora
+ */
+$messages['ms'] = array(
+	'showprocesslist-user' => 'Pengguna',
+	'showprocesslist-time' => 'Masa',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

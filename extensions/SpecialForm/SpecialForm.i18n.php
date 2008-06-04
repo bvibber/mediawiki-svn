@@ -340,6 +340,15 @@ $messages['mr'] = array(
 	'formsaveerrortext'            => "'$1' पान जतन करण्यामध्ये अनोळखी त्रुटी आलेली आहे.",
 );
 
+/** Low German (Plattdüütsch)
+ * @author Slomox
+ */
+$messages['nds'] = array(
+	'form'              => 'Formular',
+	'formsave'          => 'Spiekern',
+	'formarticleexists' => 'Sied gifft dat al',
+);
+
 $messages['nl'] = array(
 	'form' => 'Formulier',
 	'formnoname' => 'Geen formuliernaam',

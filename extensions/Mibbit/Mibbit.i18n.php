@@ -317,5 +317,6 @@ $messages['vi'] = array(
 	'mibbit'        => 'Tán gẫu Mibbit',
 	'mibbit-desc'   => 'Thêm một [[Special:Mibbit|trang đặc biệt]] để chat thời gian thực với thành viên khác trong wiki',
 	'mibbit-header' => 'Trang đặc biệt này để cho bạn chat thời gian thực với thành viên khác trong wiki. Để kết nối, chỉ việc nhấn chuộc vào nút “Connect”. Nếu bạn đã đăng nhập, tên hiệu đã được nhập vào trước. Các người vô danh có tên hiệu tự động; có thể thay đổi tên này.',
+	'right-mibbit'  => 'Được phép sử dụng chat Mibbit',
 );
 

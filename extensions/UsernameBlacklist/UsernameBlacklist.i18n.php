@@ -869,6 +869,7 @@ $messages['oc'] = array(
 /** Polish (Polski)
  * @author Sp5uhe
  * @author Derbeth
+ * @author Beau
  */
 $messages['pl'] = array(
 	'usernameblacklist-desc'          => 'Dodaje funkcjonalność [[MediaWiki:Usernameblacklist|listy zabronionych nazw użytkowników]] do ograniczania możliwości tworzenia kont użytkowników odpowiadających jednemu lub wielu wyrażeniom regularnym',
@@ -883,7 +884,7 @@ $messages['pl'] = array(
 # * [Bb]ar
 </pre>',
 	'usernameblacklist-invalid-lines' => '{{PLURAL:$1|Następująca linia|Następujące linie}} na liście zabronionych nazw użytkowników {{PLURAL:$1|jest niepoprawna|są niepoprawne}} ; popraw {{PLURAL:$1|ją|je}} przed zapisaniem:',
-	'right-uboverride'                => 'Zarządzanie listą zabronionych nazw użytkowników',
+	'right-uboverride'                => 'Wyłącza ograniczenia nakładane przez rozszerzenie Username Blacklist, które blokuje tworzenie kont o nazwach pasujących do zdefiniowanych wzorców',
 );
 
 /* Piedmontese (Bèrto 'd Sèra) */

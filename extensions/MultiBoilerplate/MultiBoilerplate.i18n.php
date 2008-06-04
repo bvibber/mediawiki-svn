@@ -183,3 +183,12 @@ $messages['sv'] = array(
 	'multiboilerplate-submit' => 'Ladda',
 );
 
+/** Vietnamese (Tiếng Việt)
+ * @author Vinhtantran
+ */
+$messages['vi'] = array(
+	'multiboilerplate-desc'   => 'Cho phép một bảng thông báo được chọn từ hộp thả xuống đặt phía trên khung soạn thảo khi sửa đổi trang',
+	'multiboilerplate-legend' => 'Chọn bảng thông báo',
+	'multiboilerplate-submit' => 'Tải',
+);
+

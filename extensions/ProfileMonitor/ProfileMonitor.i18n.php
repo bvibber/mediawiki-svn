@@ -236,6 +236,13 @@ $messages['mr'] = array(
 	'profiling-no-data'      => 'जुळणारा डाटा सापडला नाही.',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Aurora
+ */
+$messages['ms'] = array(
+	'profiling-ok' => 'OK',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

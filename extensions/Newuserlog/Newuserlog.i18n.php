@@ -389,11 +389,13 @@ $messages['frp'] = array(
 
 /** Friulian (Furlan)
  * @author MF-Warburg
+ * @author Klenje
  */
 $messages['fur'] = array(
-	'newuserlogpage'           => 'Regjistri dai gnûfs utents',
-	'newuserlog-create-entry'  => 'al è rivât il gnûf utent',
-	'newuserlog-create2-entry' => 'creade une identitât par $1',
+	'newuserlogpage'              => 'Regjistri dai gnûfs utents',
+	'newuserlog-create-entry'     => 'al è rivât il gnûf utent',
+	'newuserlog-create2-entry'    => 'creade une identitât par $1',
+	'newuserlog-autocreate-entry' => 'Identitât creade in automatic',
 );
 
 /** Irish (Gaeilge)

@@ -133,6 +133,13 @@ $messages['mr'] = array(
 	'watchsubpages-addtitlestowatchlist' => 'पृष्ठे पहार्‍याच्या सूचीत टाका',
 );
 
+/** Low German (Plattdüütsch)
+ * @author Slomox
+ */
+$messages['nds'] = array(
+	'watchsubpages-addtitles' => 'Sieden tofögen',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

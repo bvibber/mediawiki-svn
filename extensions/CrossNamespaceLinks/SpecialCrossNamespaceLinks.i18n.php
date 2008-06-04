@@ -211,6 +211,13 @@ $messages['frp'] = array(
 	'crossnamespacelinkstext'     => '$1 : at $2 {{PLURAL:$2|lim|lims}} vers l’èspâço de nom « $3 »',
 );
 
+/** Friulian (Furlan)
+ * @author Klenje
+ */
+$messages['fur'] = array(
+	'crossnamespacelinkstext' => '$1: $2 {{PLURAL:$2|leam|leams}} al non dai spazis $3',
+);
+
 /** Galician (Galego)
  * @author Xosé
  * @author Toliño

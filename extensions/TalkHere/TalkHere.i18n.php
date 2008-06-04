@@ -339,6 +339,13 @@ $messages['mr'] = array(
 	'talkhere-collapse'    => 'संपादनस्थळ लपवा',
 );
 
+/** Low German (Plattdüütsch)
+ * @author Slomox
+ */
+$messages['nds'] = array(
+	'talkhere-talkpage' => 'Diskuschoonssied',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

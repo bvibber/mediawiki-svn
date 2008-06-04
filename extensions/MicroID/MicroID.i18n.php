@@ -109,3 +109,10 @@ $messages['sv'] = array(
 	'tog-microid' => 'Publicerer en <a href="http://microid.org/">MicroID</a> för att bekräfta konton för externa tjänster',
 );
 
+/** Vietnamese (Tiếng Việt)
+ * @author Vinhtantran
+ */
+$messages['vi'] = array(
+	'tog-microid' => 'Xuất bản một <a href="http://microid.org/">MicroID</a> để xác nhận tài khoản bằng những dịch vụ bên ngoài',
+);
+

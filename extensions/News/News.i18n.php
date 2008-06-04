@@ -200,3 +200,10 @@ $messages['vec'] = array(
 	'newsextension-desc' => 'Mostra i canbiamenti reçenti personalizà su le pagine wiki o come feed RSS o Atom',
 );
 
+/** Vietnamese (Tiếng Việt)
+ * @author Vinhtantran
+ */
+$messages['vi'] = array(
+	'newsextension-desc' => 'Hiển thị các thay đổi gần đây đã tinh chỉnh trên các trang của một wiki hoặc bằng feed RSS hoặc Atom',
+);
+

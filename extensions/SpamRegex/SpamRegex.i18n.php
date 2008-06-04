@@ -312,6 +312,14 @@ $messages['mr'] = array(
 	'spamregex-summary-log'          => 'आढावा',
 );
 
+/** Low German (Plattdüütsch)
+ * @author Slomox
+ */
+$messages['nds'] = array(
+	'spamregex-log-2' => 'op $1',
+	'spamregex-text'  => '(Text)',
+);
+
 /** Dutch (Nederlands)
  * @author SPQRobin
  * @author Siebrand

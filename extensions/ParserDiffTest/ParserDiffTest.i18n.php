@@ -651,6 +651,13 @@ $messages['mr'] = array(
 	'pdt_comparing_page'  => '[[$1]] च्या पार्सर आउटपुटमधील फरक पहात आहे',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Aurora
+ */
+$messages['ms'] = array(
+	'pdtest_ok' => 'OK',
+);
+
 /** Low German (Plattdüütsch)
  * @author Slomox
  */

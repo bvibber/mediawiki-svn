@@ -355,6 +355,13 @@ $messages['mr'] = array(
 	'filelist-image-desc'   => 'माहिती',
 );
 
+/** Low German (Plattdüütsch)
+ * @author Slomox
+ */
+$messages['nds'] = array(
+	'filelist' => 'Dateilist',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  * @author SPQRobin

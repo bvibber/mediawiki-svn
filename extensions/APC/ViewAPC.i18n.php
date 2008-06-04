@@ -214,6 +214,7 @@ $messages['bg'] = array(
 	'viewapc-ls-sort-name'        => 'Име',
 	'viewapc-version-info'        => 'Информация за версията',
 	'viewapc-version-changelog'   => 'Дневник на промените',
+	'viewapc-version-failed'      => 'Беше невъзможно да се извлече информация за версията.',
 );
 
 /** Czech (Česky)
@@ -1551,7 +1552,7 @@ Una version novèla $2 es disponibla a http://pecl.php.net/package/APC/$2',
 $messages['pl'] = array(
 	'viewapc'                       => 'Informacje o APC',
 	'viewapc-desc'                  => '[[Special:ViewAPC|Podgląd oraz zarządzanie pamięcią APC]] z użyciem MediaWiki',
-	'right-apc'                     => 'Wżyj pełnej funkcjonalności Special:ViewAPC',
+	'right-apc'                     => 'Użyj pełnej funkcjonalności Special:ViewAPC',
 	'viewapc-apc-not-available'     => 'Brak informacji o pamięci podręcznej.
 Możliwe, że APC nie jest uruchomione.',
 	'viewapc-clear-confirm'         => 'Czy chcesz wyczyścić pamięć podręczną?',

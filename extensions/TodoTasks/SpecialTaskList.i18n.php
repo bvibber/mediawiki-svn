@@ -307,6 +307,17 @@ $messages['mr'] = array(
 	'tasklistbyname'         => '== %s साठीची करायच्या गोष्टींची यादी ==',
 );
 
+/** Low German (Plattdüütsch)
+ * @author Slomox
+ */
+$messages['nds'] = array(
+	'tasklistunknownproject' => 'Unbekannt Projekt',
+	'tasklistemail'          => 'Leve %s',
+	'tasklistmytasks'        => 'Miene Opgaven',
+	'tasklistchooseproj'     => 'Projekt utwählen:',
+	'tasklistbyname'         => '== Opgavenlist för %s ==',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  * @author SPQRobin

@@ -571,6 +571,22 @@ $messages['mr'] = array(
 	'youtubeauthsub_jserror_nodesc'      => 'कृपया व्हिडियोची माहिती लिहा.',
 );
 
+/** Low German (Plattdüütsch)
+ * @author Slomox
+ */
+$messages['nds'] = array(
+	'youtubeauthsub'              => 'YouTube-Video hoochladen',
+	'youtubeauthsub-desc'         => 'Verlööft Brukers Videos direkt op YouTube [[Special:YouTubeAuthSub|hoochtoladen]]',
+	'youtubeauthsub_info'         => 'Geev disse Informatschonen an, dat du en Video na YouTube hoochladen kannst:',
+	'youtubeauthsub_title'        => 'Titel',
+	'youtubeauthsub_description'  => 'Beschrieven',
+	'youtubeauthsub_password'     => 'YouTube-Passswoord',
+	'youtubeauthsub_keywords'     => 'Slötelwöör',
+	'youtubeauthsub_category'     => 'Kategorie',
+	'youtubeauthsub_submit'       => 'Hoochladen',
+	'youtubeauthsub_uploadbutton' => 'Hoochladen',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

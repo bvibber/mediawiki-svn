@@ -203,8 +203,13 @@ $messages['oc'] = array(
 	'minnamelength-desc'  => 'Exigís una longor minimala per un nom d’utilizaire.',
 );
 
+/** Polish (Polski)
+ * @author McMonster
+ * @author Derbeth
+ */
 $messages['pl'] = array(
 	'minnamelength-error' => 'Twoja nazwa użytkownika jest za krótka. Minimalna długość to $1.',
+	'minnamelength-desc'  => 'Narzuca minimalną długość nazwy użytkownika',
 );
 
 /* Piedmontese (Bèrto 'd Sèra) */
@@ -274,6 +279,14 @@ $messages['te'] = array(
  */
 $messages['tg-cyrl'] = array(
 	'minnamelength-error' => 'Номи корбарии шумо хеле кӯтоҳ аст. Дарозии он дасти кам $1 бошад.',
+);
+
+/** Vietnamese (Tiếng Việt)
+ * @author Vinhtantran
+ */
+$messages['vi'] = array(
+	'minnamelength-error' => 'Tên người dùng của bạn quá ngắn. Chiều dài tối thiểu là $1.',
+	'minnamelength-desc'  => 'Bắt buộc phải có chiều dài tên người dùng tối thiểu',
 );
 
 /* Cantonese (Shinjiman) */

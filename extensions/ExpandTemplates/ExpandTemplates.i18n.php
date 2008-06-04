@@ -814,7 +814,8 @@ $messages['mr'] = array(
  * @author Aurora
  */
 $messages['ms'] = array(
-	'expandtemplates' => 'Kembangkan templat',
+	'expandtemplates'     => 'Kembangkan templat',
+	'expand_templates_ok' => 'OK',
 );
 
 $messages['nan'] = array(

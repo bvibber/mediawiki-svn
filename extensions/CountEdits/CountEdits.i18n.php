@@ -531,6 +531,13 @@ $messages['mr'] = array(
 	'countedits-nocontribs'   => 'या विकिवर योगदान केलेले नाही.',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Aurora
+ */
+$messages['ms'] = array(
+	'countedits-ok' => 'OK',
+);
+
 $messages['nds'] = array(
 	'countedits' => 'Tellen, wo faken de Bruker Sieden ännert hett',
 	'countedits-warning' => '\'\'\'Wohrschau:\'\'\' Schasst de Deern nich na ehr Schört reken. Wo faken en Bruker Sieden ännert hett, seggt nix över sien Arbeit ut.',

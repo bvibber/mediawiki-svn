@@ -14,6 +14,13 @@ $messages['en'] = array(
 	'antibot-desc' => 'Simple framework for spambot checks and trigger payloads',
 );
 
+/** Czech (Česky)
+ * @author Mormegil
+ */
+$messages['cs'] = array(
+	'antibot-desc' => 'Jednoduchá kostra systému pro detekci spamujících botů a ochranu před nimi',
+);
+
 /** Danish (Dansk)
  * @author Jan Friberg
  */

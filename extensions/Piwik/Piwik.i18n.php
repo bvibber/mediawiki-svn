@@ -93,6 +93,7 @@ $messages['ksh'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
+	'piwik-desc'       => 'Setzt Piwik-Script op Mediawiki Säiten derbäi fir den Tracking ze maachen a setzt [[Special:Piwik|e puer Statistiken]] derbäi',
 	'piwik-lastvisits' => 'Läscht Visiten',
 	'piwik-countries'  => 'Länner',
 	'piwik-browsers'   => 'Browser',

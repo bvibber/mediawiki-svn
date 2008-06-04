@@ -593,3 +593,25 @@ $messages['th'] = array(
 	'multiupload-fileuploaded'         => 'ไฟล์ถูกอัปโหลดเรียบร้อยแล้ว',
 );
 
+/** Vietnamese (Tiếng Việt)
+ * @author Vinhtantran
+ */
+$messages['vi'] = array(
+	'multipleupload'                   => 'Tải tập tin lên',
+	'multipleupload-desc'              => 'Cho phép thành viên [[Special:MultipleUpload|tải vài tập tin lên cùng lúc]]',
+	'multipleupload-ignoreallwarnings' => "Bỏ qua '''tất cả các cảnh báo''' là lưu tập tin bằng bất cứ giá nào.",
+	'multipleupload-saveallfiles'      => 'Lưu tất cả tập tin',
+	'multipleupload-addresswarnings'   => 'Xin hãy chú ý bất cứ cảnh báo nào trước khi tải tập tin lên lại.',
+	'multipleupload-page'              => '{{ns:project}}:Quy định xóa tập tin',
+	'multipleupload-text'              => "Tải nhiều tập tin lên cùng lúc tại đây.
+
+Chọn 'Browse' và chọn từng tập tin mà bạn muốn tải lên.
+Bạn có thể tải lên từ 1 đến $1 tập tin cùng lúc.
+
+Bạn có thể nhập vào một '''Tên tập tin đích''' tùy chọn và cung cấp một '''Tóm tắt''' mô tả tập tin của bạn.
+
+Những tập tin không phù hợp sẽ bị xóa lập tức, mời xem [[{{MediaWiki:Multipleupload-page}}|quy định xóa tập tin]].",
+	'multiupload-fileuploaded'         => 'Tập tin đã được tải lên.',
+	'multiupload-toolbox'              => 'Tải nhiều tập tin',
+);
+

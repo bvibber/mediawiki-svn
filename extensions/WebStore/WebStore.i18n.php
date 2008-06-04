@@ -561,6 +561,14 @@ $wgLocalTmpDirectory ची किंमत योग्य अशा डिर�
 	'webstore_php_error'               => 'PHP त्रुट्या आलेल्या आहेत:',
 );
 
+/** Low German (Plattdüütsch)
+ * @author Slomox
+ */
+$messages['nds'] = array(
+	'inplace_scaler_not_enough_params' => 'Nich noog Parameters.',
+	'webstore_404'                     => 'Datei nich funnen.',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

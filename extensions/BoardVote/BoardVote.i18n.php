@@ -471,29 +471,45 @@ $messages['bcl'] = array(
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
+ * @author Cesco
  * @author Red Winged Duck
  * @author Siebrand
  */
 $messages['be-tarask'] = array(
-	'boardvote'            => 'Выбары ў Апякунскую раду фундацыі Wikimedia',
-	'boardvote-desc'       => '[[meta:Board elections/2008|Выбары ў Апякунскую раду фундацыі Wikimedia]]',
-	'boardvote_novotes'    => 'Яшчэ ніхто не прагаласаваў.',
-	'boardvote_time'       => 'Час',
-	'boardvote_user'       => 'Удзельнік',
-	'boardvote_edits'      => 'Колькасьць правак',
-	'boardvote_days'       => 'Дні',
-	'boardvote_ip'         => 'IP-адрасы',
-	'boardvote_ua'         => 'Браўзэр',
-	'boardvote_listintro'  => '<p>Гэта сьпіс усіх запісаных галасоў на цяперашні момант. $1 дзеля зашыфраваных зьвестак.</p>',
-	'boardvote_strike'     => 'Закрэсьліць',
-	'boardvote_unstrike'   => 'Адкрэсьліць',
-	'boardvote_needadmin'  => 'Толькі адміністратары выбараў могуць выконваць гэтае дзеяньне.',
-	'boardvote_notstarted' => 'Галасаваньне яшчэ не пачалося',
-	'boardvote_edits_many' => 'шмат',
-	'boardvote_blocked'    => 'Выбачайце, але Вы былі заблякаваныя ў Вашым вікі-праекце. Заблякаваным удзельнікам і ўдзельніцам не дазволена галасаваць.',
-	'boardvote_welcome'    => "Вітаем, '''$1'''!",
-	'go_to_board_vote'     => 'Выбары ў Апякунскую раду фундацыі Wikimedia 2008 году',
-	'right-boardvote'      => 'Адміністраваньне выбараў',
+	'boardvote'              => 'Выбары ў Апякунскую раду фундацыі Wikimedia',
+	'boardvote-desc'         => '[[meta:Board elections/2008|Выбары ў Апякунскую раду фундацыі Wikimedia]]',
+	'boardvote_notloggedin'  => 'Вы не ўвайшлі ў сыстэму.
+Каб прагаласаваць, вы павінны быць зарэгістраваным удзельнікам і зрабіць не меней $1 правак да $2, і не меней $3 правак з $4 да $5.',
+	'boardvote_notqualified' => 'Нажаль, вы ня можаце прыняць удзел у гэтых выбарах.
+Каб прагаласаваць, вы павінны быць зарэгістраваным удзельнікам і зрабіць не меней $1 правак да $2, і не меней $3 правак з $4 да $5.',
+	'boardvote_novotes'      => 'Яшчэ ніхто не прагаласаваў.',
+	'boardvote_time'         => 'Час',
+	'boardvote_user'         => 'Удзельнік',
+	'boardvote_edits'        => 'Колькасьць правак',
+	'boardvote_days'         => 'Дні',
+	'boardvote_ip'           => 'IP-адрасы',
+	'boardvote_ua'           => 'Браўзэр',
+	'boardvote_listintro'    => '<p>Гэта сьпіс усіх запісаных галасоў на цяперашні момант. $1 дзеля зашыфраваных зьвестак.</p>',
+	'boardvote_dumplink'     => 'Націсьніце тут',
+	'boardvote_strike'       => 'Закрэсьліць',
+	'boardvote_unstrike'     => 'Адкрэсьліць',
+	'boardvote_needadmin'    => 'Толькі адміністратары выбараў могуць выконваць гэтае дзеяньне.',
+	'boardvote_sitenotice'   => '<a href="{{localurle:Special:Boardvote/vote}}">Выбары ў Раду павераных фундацыі «Вікімэдыя»</a>: Галасаваньне адчынена да 22 чэрвеня',
+	'boardvote_notstarted'   => 'Галасаваньне яшчэ не пачалося',
+	'boardvote_closed'       => 'Галасаваньне скончана, гл. [http://meta.wikimedia.org/wiki/Board_elections/2008/Results старонку вынікаў].',
+	'boardvote_edits_many'   => 'шмат',
+	'group-boardvote'        => 'Чальцы выбаркаму',
+	'grouppage-boardvote'    => '{{ns:project}}:Чалец выбаркама',
+	'boardvote_blocked'      => 'Выбачайце, але Вы былі заблякаваныя ў Вашым вікі-праекце. Заблякаваным удзельнікам і ўдзельніцам не дазволена галасаваць.',
+	'boardvote_bot'          => 'Даруйце, але ў вікі-праекце, у якім вы зарэгістраваныя, вы маеце статус робата. Уліковыя запісы ботаў не дапушчаюцца да галасаваньня.',
+	'boardvote_welcome'      => "Вітаем, '''$1'''!",
+	'go_to_board_vote'       => 'Выбары ў Апякунскую раду фундацыі Wikimedia 2008 году',
+	'boardvote_redirecting'  => 'Для павелічэньня бясьпекі і празрыстасьці мы праводзім галасаваньне на вонкавым, незалежна кіраваным сэрверы.
+
+Вы будзеце перанакіраваныя на гэты вонкавы сэрвер праз 20 сэкунд. [$1 Націсьніце сюды], каб перайсьці туды зараз.
+
+Можа зьявіцца паведамленьне аб непадпісаным сэртыфікаце',
+	'right-boardvote'        => 'Адміністраваньне выбараў',
 );
 
 /** Bulgarian (Български)
@@ -506,7 +522,7 @@ $messages['bg'] = array(
 	'boardvote'              => 'Избори за борда на Фондация Уикимедия',
 	'boardvote-desc'         => '[[meta:Board elections/2008|Избори за борда на Уикимедия]]',
 	'boardvote_entry'        => '* [[Special:Boardvote/vote|Гласуване]]
-* [[Special:Boardvote/list|Списък на гласовете до ммента]]
+* [[Special:Boardvote/list|Списък на гласовете до момента]]
 * [[Special:Boardvote/dump|Извличане на криптирана информация]]',
 	'boardvote_intro_change' => '<p>Вие вече сте гласували. Ако желаете, обаче, можете да промените вота си, като използвате формата по-долу. Отбележете кутийките срещу имената на всички кандидати, които одобрявате.</p>',
 	'boardvote_entered'      => 'Благодарим ви, гласът ви беше отчетен.
@@ -1500,8 +1516,8 @@ $messages['fa'] = array(
 /** Finnish (Suomi)
  * @author Crt
  * @author Nike
- * @author M.M.S.
  * @author Str4nd
+ * @author M.M.S.
  * @author Siebrand
  */
 $messages['fi'] = array(
@@ -1517,11 +1533,9 @@ He päättävät tavoista hankkia varoja ja niiden käytöstä.</p>
 <p>Lue ehdokkaiden lausunnot ja vastaukset kysymyksiin huolellisesti ennen äänestämistä.
 Jokainen ehdokas on tunnettu ja arvostettu käyttäjä, joka on käyttänyt huomattavasti aikaa luodakseen näistä projekteista helppopääsyisen ympäristön vapaan tiedon levittämiseen.</p>
 
-<p>Voit äänestää niin montaa ehdokasta kuin haluat.
-Ehdokkaat, joilla on eniten ääniä jossakin asemassa, julistetaan voittajaksi.
-Tasaäänten sattuessa, järjestetään uusintavaalit.</p>
+<p>Aseta ehdokkaat mieltymystesi mukaiseen järjestykseen kirjoittamalla laatikkoon numero (1 = suosikkiehdokas, 2 = kakkossuosikki, ...). Voit antaa saman lukeman useammalle kuin yhdelle ehdokkaalle tai jättää osan ehdokkaista kokonaan arvioimatta. Oletettavasti pidät kaikkia sijoittamiasi ehdokkaita arvioimattomia parempina ja arvioimattomien ehdokkaiden keskinäisellä järjestyksellä ei ole sinulle merkitystä.</p>
 
-<p>Vaalivoittaja lasketaan käyttämällä Schulzen menetelmää.</p>
+<p>Vaalivoittaja lasketaan käyttämällä Schulzen menetelmää. Lisätietoja löytyy virallisilta äänestyssivuilta.</p>
 
 <p>Lisätietoja:</p>
 <ul><li><a href="http://meta.wikimedia.org/wiki/Board_elections/2008" class="external">Johtokuntavaalit 2008</a></li>
@@ -1599,7 +1613,7 @@ $messages['fr'] = array(
 	'boardvote_entry'          => '* [[Special:Boardvote/vote|Vote]]
 * [[Special:Boardvote/list|Liste des votes enregistrés]]
 * [[Special:Boardvote/dump|Enregistrements cryptés]]',
-	'boardvote_intro'          => '<p>Bienvenue à l\'élection 2008 du conseil d\'administration de la<i><a href="http://wikimediafoundation.org/wiki/Accueil" class="extiw" title="foundation:Accueil">Wikimedia Foundation</a></i>.
+	'boardvote_intro'          => '<p>Bienvenue à l\'élection 2008 du conseil d\'administration de la <i><a href="http://wikimediafoundation.org/wiki/Accueil" class="extiw" title="foundation:Accueil">Wikimedia Foundation</a></i>.
 Nous votons pour une personne qui représentera la communauté des utilisateurs sur les différents projets Wikimedia.
 Cette personne et le conseil d\'administration contribueront à orienter la direction de ces projets et représenteront <i>vos</i> intérêts et <i>vos</i> préoccupations auprès du conseil d\'administration.
 Ils décideront des moyens de financement et de l\'affectation des fonds.</p>
@@ -3596,6 +3610,34 @@ $messages['mr'] = array(
 	'right-boardvote'          => 'निवडणूकांचे प्रबंधन करा',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Aurora
+ */
+$messages['ms'] = array(
+	'boardvote'              => 'Pemilihan Lembaga Pemegang Amanah',
+	'boardvote-desc'         => '[[meta:Board elections/2008|Pemilihan Lembaga Pemegang Amanah]]',
+	'boardvote_entry'        => '* [[Special:Boardvote/vote|Undi]]
+* [[Special:Boardvote/list|Senarai undi sehingga kini]]
+* [[Special:Boardvote/dump|Longgokkan rekod pemilihan yang disulitkan]]',
+	'boardvote_notloggedin'  => 'Anda tidak log masuk.
+Untuk mengundi, anda perlu menggunakan akaun dengan sekurang-kurangnya $1 sumbangan sebelum $2, dan telah membuat sekurang-kurangnya $3 sumbangan antara $4 dan $5.',
+	'boardvote_notqualified' => 'Anda tidak layak mengundi dalam pemilihan ini.
+Anda perlu melakukan sekurang-kurangnya $1 sumbangan sebelum $2, dan telah membuat sekurang-kurangnya $3 sumbangan antara $4 dan $5.',
+	'boardvote_novotes'      => 'Tiada siapa telah mengundi.',
+	'boardvote_time'         => 'Masa',
+	'boardvote_user'         => 'Pengguna',
+	'boardvote_edits'        => 'Suntingan',
+	'boardvote_days'         => 'Hari',
+	'boardvote_ip'           => 'IP',
+	'boardvote_ua'           => 'Ejen pengguna',
+	'boardvote_listintro'    => '<p>Berikut merupakan senarai semua undi yang telah direkodkan sehingga hari ini.
+$1 untuk data yang disulitkan.</p>',
+	'boardvote_dumplink'     => 'Klik sini',
+	'boardvote_submit'       => 'OK',
+	'boardvote_strike'       => 'Potong',
+	'boardvote_unstrike'     => 'Nyahpotong',
+);
+
 /** Erzya (эрзянь кель)
  * @author Amdf
  */
@@ -4802,8 +4844,8 @@ Du wädst in 20 Sekunden tou dissen externen Server fääre lat. [$1 klik hier],
  * @author Kandar
  */
 $messages['su'] = array(
-	'boardvote'                => 'Saémbara Anggota Déwan Pangawas Yayasan Wikimedia',
-	'boardvote-desc'           => '[[meta:Board elections/2008|Saémbara Anggota Déwan Kapercayaan Yayasan Wikimedia]]',
+	'boardvote'                => 'Saémbara Anggota Déwan Yayasan Wikimedia',
+	'boardvote-desc'           => '[[meta:Board elections/2008|Saémbara Anggota Déwan Yayasan Wikimedia]]',
 	'boardvote_entry'          => '* [[Special:Boardvote/vote|pemungutan sora]]
 * [[Special:Boardvote/list|Daptar sora nepi ayeuna]]
 * [[Special:Boardvote/dump|Data pamilihan dienkripsi]]',
@@ -4863,7 +4905,7 @@ Anjeun kudu grus boga minimal $1 éditan saméméh $2, jeung boga minimal $3 kon
 	'boardvote_strike'         => 'Coret',
 	'boardvote_unstrike'       => 'Hapus nu dicoret',
 	'boardvote_needadmin'      => 'Ngan kuncén saémbara nu bisa ngalakukeun ieu.',
-	'boardvote_sitenotice'     => '<a href="{{localurle:Special:Boardvote/vote}}">Pamilihan Dewan Wikimedia</a>: Pamilihan dibuka nepi ka 22 Juni',
+	'boardvote_sitenotice'     => '<a href="{{localurle:Special:Boardvote/vote}}">Saémbara Dewan Wikimedia</a>: Saémbara dibuka nepi ka 22 Juni',
 	'boardvote_notstarted'     => 'Saémbara can dimimitian',
 	'boardvote_closed'         => 'Saémbara geus ditutup, tempo [http://meta.wikimedia.org/wiki/Board_elections/2008/Results kaca saémbara keur hasilna] teu lila.',
 	'boardvote_edits_many'     => 'loba',
@@ -4874,7 +4916,7 @@ Anjeun kudu grus boga minimal $1 éditan saméméh $2, jeung boga minimal $3 kon
 	'boardvote_bot'            => 'Anjeun kadaptar minangka bot dina wiki tempat Anjeun kadaptar.
 Rekening bot henteu diidinan pikeun mikeun sora.',
 	'boardvote_welcome'        => "Bagéa, '''$1'''!",
-	'go_to_board_vote'         => 'Saémbara Anggota Déwan Kapercayaan Yayasan Wikimedia 2008',
+	'go_to_board_vote'         => 'Saémbara Anggota Déwan Yayasan Wikimedia 2008',
 	'boardvote_redirecting'    => 'Pikeun kaamanan sarta transparansi anu leuwih alus, kami ngalakonan pemungutan sora kalawan ngagunakeun server eksternal anu dikontrol sacara independen.
 
 Anjeun baris dipindahkeun ka server eksternal kasebut dina waktu 20 detik. [$1 Klik di dieu] pikeun langsung nuju ka ditu.

@@ -233,6 +233,13 @@ $messages['mr'] = array(
 	'findspam-notextfound' => 'योगदान सापडले नाही',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Aurora
+ */
+$messages['ms'] = array(
+	'findspam-ok' => 'OK',
+);
+
 /** Low German (Plattdüütsch)
  * @author Slomox
  */

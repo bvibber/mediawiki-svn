@@ -33,6 +33,13 @@ $messages['krl'] = array(
 	'editmsg-search' => 'Ečindy',
 );
 
+/** Eastern Mari (Олык Марий йылме)
+ * @author Сай
+ */
+$messages['mhr'] = array(
+	'editmsg-search' => 'Кычал',
+);
+
 /** Afrikaans (Afrikaans)
  * @author Arnobarnard
  */
@@ -276,7 +283,7 @@ $messages['ksh'] = array(
 /** Kurdish (Kurdî / كوردی)
  * @author Bangin
  */
-$messages['ku'] = array(
+$messages['ku-latn'] = array(
 	'editmsg-search' => 'Lêbigere',
 );
 

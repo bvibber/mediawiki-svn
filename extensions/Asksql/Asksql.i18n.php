@@ -158,6 +158,23 @@ používejte s rozmyslem.",
 	'querysuccessful' => 'Dotaz byl úspěšně dokončen',
 );
 
+/** Danish (Dansk)
+ * @author Jan Friberg
+ */
+$messages['da'] = array(
+	'asksql'          => 'SQL-forespørgsel',
+	'asksql-desc'     => 'Fortag SQL-forespørgsel gennem en [[Special:Asksql|specialside]]',
+	'asksqltext'      => "Brug nedenstående formular til at lave en direkte forespørgsel i databasen.
+Brug apostrof ('Som her') til at afgrænse søgestrenge.
+Brug af SQL-forespørgsler kan give store belastninger på serveren, så brug denne funktion sparsommeligt.",
+	'sqlislogged'     => 'Benmærk at alle forespørgsler bliver logget.',
+	'sqlquery'        => 'Indskriv forespørgsel',
+	'querybtn'        => 'Udfør forespørgsel',
+	'selectonly'      => 'Kun læseforespørgelser er tilladt.',
+	'querysuccessful' => 'Forespørgsel gennemført',
+	'right-asksql'    => 'Fortag SQL-forespørgseler',
+);
+
 /** German (Deutsch)
  * @author Raimond Spekking
  */

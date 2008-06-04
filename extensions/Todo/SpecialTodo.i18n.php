@@ -373,6 +373,21 @@ $messages['mr'] = array(
 	'todo-form-submit'      => 'पृच्छा पाठवा',
 );
 
+/** Low German (Plattdüütsch)
+ * @author Slomox
+ */
+$messages['nds'] = array(
+	'todo'              => 'Opgavenlist',
+	'todo-tab'          => 'Opgaven',
+	'todo-new-queue'    => 'nee',
+	'todo-no-item'      => 'Nix op de Opgavenlist.',
+	'todo-list-for'     => 'Opgavenlist för',
+	'todo-list-change'  => 'Ännern',
+	'todo-list-cancel'  => 'Afbreken',
+	'todo-new-item'     => 'Ne’e Opgaav',
+	'todo-form-details' => 'Details:',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  * @author SPQRobin

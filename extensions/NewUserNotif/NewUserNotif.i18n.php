@@ -349,6 +349,17 @@ $messages['vec'] = array(
 Un novo account utente, $2, el xe stà creà su $2 in data $4.',
 );
 
+/** Vietnamese (Tiếng Việt)
+ * @author Vinhtantran
+ */
+$messages['vi'] = array(
+	'newusernotifsubj'  => 'Thông báo thành viên mới cho $1',
+	'newusernotif-desc' => 'Gửi thông báo bằng e-mail khi có tài khoản thành viên được tạo',
+	'newusernotifbody'  => 'Xin chào $1,
+
+Một tài khoản thành viên mới, $2, đã được tạo ra trên $3 lúc $4.',
+);
+
 $messages['yue'] = array(
 	'newusernotifsubj' => '$1嘅新用戶通知',
 	'newusernotifbody' => "你好 $1，

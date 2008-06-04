@@ -176,10 +176,12 @@ $messages['frp'] = array(
 );
 
 /** Friulian (Furlan)
+ * @author Klenje
  * @author MF-Warburg
  */
 $messages['fur'] = array(
 	'sitenotice_close' => 'plate',
+	'sitenotice-desc'  => 'Permet ai utents di sierâ il messaç gjenerâl dal sît',
 );
 
 /** Irish (Gaeilge)

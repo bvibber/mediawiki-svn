@@ -373,3 +373,20 @@ $messages['tr'] = array(
 	'minipreview-no_category_gallery' => 'Hiçbir kategori veya galeri yok !',
 );
 
+/** Vietnamese (Tiếng Việt)
+ * @author Vinhtantran
+ */
+$messages['vi'] = array(
+	'minipreview-desc'                => 'MiniPreview hiển thị, kế bên một hình, những ảnh xem trước thu nhỏ của phương tiện khác trong cùng thể loại hoặc được hiển thị trên cùng trang',
+	'minipreview-files_in_category'   => 'Tổng cộng $1 tập tin trong thể loại này.',
+	'minipreview-files_in_gallery'    => 'Tổng cộng $1 tập tin trong trang trưng bày này.',
+	'minipreview-no_more_files_here'  => 'Không còn tập tin nào trong hướng này.',
+	'minipreview-no_category_gallery' => 'Không có thể loại hoặc trang trưng bày!',
+	'minipreview-ignore_categories'   => 'Dưới đây là danh sách tên thể loại hoặc tên bắt đầu. Những thể loại này sẽ không được MiniPreview hiển thị. Ví dụ, "* PD-" sẽ không hiển thị tất cả các thể loại bắt đầu bằng "PD-", như "PD-old".
+* GFDL-
+* GFDL
+* CC-
+* PD-
+* Self',
+);
+

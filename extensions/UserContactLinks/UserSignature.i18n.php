@@ -110,6 +110,13 @@ $messages['mr'] = array(
 	'usercontactlink-baduser' => 'चुकीचे सदस्यनाव',
 );
 
+/** Low German (Plattdüütsch)
+ * @author Slomox
+ */
+$messages['nds'] = array(
+	'usercontactlink-baduser' => 'verkehrt Brukernaam',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  * @author SPQRobin

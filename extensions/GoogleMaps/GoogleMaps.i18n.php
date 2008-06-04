@@ -88,6 +88,13 @@ $wgGoogleMapsMessages['krl'] = array(
 	'gm-search'       => 'Ečindy',
 );
 
+/** Eastern Mari (Олык Марий йылме)
+ * @author Сай
+ */
+$wgGoogleMapsMessages['mhr'] = array(
+	'gm-search' => 'Кычал',
+);
+
 /** Afrikaans (Afrikaans)
  * @author Arnobarnard
  */
@@ -1403,7 +1410,7 @@ $wgGoogleMapsMessages['ksh'] = array(
 /** Kurdish (Kurdî / كوردی)
  * @author Bangin
  */
-$wgGoogleMapsMessages['ku'] = array(
+$wgGoogleMapsMessages['ku-latn'] = array(
 	'gm-search' => 'Lêbigere',
 );
 

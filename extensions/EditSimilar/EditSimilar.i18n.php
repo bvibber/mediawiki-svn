@@ -43,6 +43,23 @@ Tämä sivu voisi myös kaivata apuasi: $1.',
 	'tog-edit-similar'                           => 'Ota käyttöön samanlaisten sivujen ehdotukset',
 );
 
+/** Dutch (Nederlands)
+ * @author Siebrand
+ */
+$messages['nl'] = array(
+	'editsimilar-thanks'                         => "Dank u wel voor uw bijdrage.
+Deze pagina's kunnen uw hulp ook gebruiken: $1.",
+	'editsimilar-thanks-singleresult'            => 'Dank u wel voor uw bijdrage.
+De pagina $1 kan uw hulp ook gebruiken.',
+	'editsimilar-thanks-notsimilar'              => "Dank u wel voor uw bijdrage.
+Deze pagina's kunnen uw hulp ook gebruiken: $1.",
+	'editsimilar-thanks-notsimilar-singleresult' => 'Dank u wel voor uw bijdrage.
+De pagina $1 kan uw hulp ook gebruiken.',
+	'editsimilar-thankyou'                       => 'Dank u wel voor uw bijdrage, $1!',
+	'editsimilar-link-disable'                   => 'voorkeuren instellen',
+	'tog-edit-similar'                           => 'Gelijksoortige paginasuggesties inschakelen',
+);
+
 /** Polish (Polski)
  * @author Bartek Łapiński
  * @author Łukasz 'TOR' Garczewski
@@ -60,3 +77,4 @@ Ten artykuł również może potrzebować twojej pomocy: $1.',
 	'editsimilar-link-disable'                   => 'zmień ustawienia',
 	'tog-edit-similar'                           => 'Włącz sugestie edycji podobnych artykułów',
 );
+

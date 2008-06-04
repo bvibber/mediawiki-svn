@@ -298,6 +298,13 @@ $messages['mr'] = array(
 	'inspectcache-list'    => 'यादी',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Aurora
+ */
+$messages['ms'] = array(
+	'inspectcache-ok' => 'OK',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  * @author SPQRobin

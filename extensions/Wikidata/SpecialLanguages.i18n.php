@@ -1675,18 +1675,23 @@ $wdMessages['lb'] = array(
 	'ow_dm_not_present'                => 'net aginn',
 	'ow_AlternativeDefinition'         => 'Alternativ Definitioun',
 	'ow_AlternativeDefinitions'        => 'Alternativ Definitiounen',
+	'ow_Annotation'                    => 'Notiz',
+	'ow_ApproximateMeanings'           => 'Ongeféier Bedeitungen',
 	'ow_ClassAttributeLevel'           => 'Niveau',
 	'ow_ClassAttributeType'            => 'Typ',
 	'ow_Collection'                    => 'Sammlung',
 	'ow_Definition'                    => 'Definitioun',
+	'ow_DefinedMeaningAttributes'      => 'Notiz',
 	'ow_ExactMeanings'                 => 'Genee Bedeitungen',
 	'ow_Expression'                    => 'Ausdrock',
 	'ow_Expressions'                   => 'Ausdréck',
 	'ow_IdenticalMeaning'              => 'Déi selwescht Bedeitung?',
 	'ow_Language'                      => 'Sprooch',
+	'ow_LevelAnnotation'               => 'Notiz',
 	'ow_OptionAttribute'               => 'Eegeschaft',
 	'ow_OptionAttributeOption'         => 'Optioun',
 	'ow_OptionAttributeOptions'        => 'Optiounen',
+	'ow_PopupAnnotation'               => 'Notiz',
 	'ow_Spelling'                      => 'Schreifweis',
 	'ow_Synonyms'                      => 'Synonymen',
 	'ow_SynonymsAndTranslations'       => 'Synonymer an Iwwersetzungen',
@@ -1895,11 +1900,51 @@ $wdMessages['mr'] = array(
 	'ow_db_consistency_not_found'           => '<h2>त्रूटी</h2>विदेच्या सुरळीतपणाचा प्रश्न आहे ,विकिविदा या व्यक्त ID शी संबधीत सुयोग्य विदा शोधूशकत नाही.ती हरवली असण्याची शक्यता आहे.कृपया प्रचालक अथवा प्रबंधकांशी संपर्क करा.',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Aurora
+ */
+$wdMessages['ms'] = array(
+	'ow_dm_OK' => 'OK',
+);
+
 /** Mirandese (Mirandés)
  * @author Malafaya
  */
 $wdMessages['mwl'] = array(
 	'ow_Language' => 'Lhéngua',
+);
+
+/** Low German (Plattdüütsch)
+ * @author Slomox
+ */
+$wdMessages['nds'] = array(
+	'ow_save'                          => 'Spiekern',
+	'ow_history'                       => 'Historie',
+	'ow_uiprefs'                       => 'Wikidata',
+	'ow_dm_OK'                         => 'OK',
+	'ow_dm_not_present'                => 'nich ingeven',
+	'ow_dm_not_found'                  => 'nich funnen in de Datenbank oder fehlerhaft',
+	'ow_ClassAttributeType'            => 'Typ',
+	'ow_DefinedMeaning'                => 'Defineert Bedüden',
+	'ow_DefinedMeaningReference'       => 'Defineert Bedüden',
+	'ow_ExactMeanings'                 => 'Exakt Bedüden',
+	'ow_Expression'                    => 'Utdruck',
+	'ow_ExpressionMeanings'            => 'Utdrucksbedüden',
+	'ow_Expressions'                   => 'Utdrück',
+	'ow_GotoSource'                    => 'Na’n Born gahn',
+	'ow_Language'                      => 'Spraak',
+	'ow_OptionAttribute'               => 'Egenschop',
+	'ow_Synonyms'                      => 'Synonymen',
+	'ow_Source'                        => 'Born',
+	'ow_TextAttribute'                 => 'Egenschop',
+	'ow_Text'                          => 'Text',
+	'ow_TranslatedTextAttribute'       => 'Egenschop',
+	'ow_TranslatedText'                => 'Översett Text',
+	'ow_TranslatedTextAttributeValue'  => 'Text',
+	'ow_TranslatedTextAttributeValues' => 'Översettbor Text',
+	'ow_LinkAttribute'                 => 'Egenschop',
+	'ow_Property'                      => 'Egenschop',
+	'ow_meaningsoftitle'               => 'Bedüden vun „$1“',
 );
 
 /** Dutch (Nederlands)

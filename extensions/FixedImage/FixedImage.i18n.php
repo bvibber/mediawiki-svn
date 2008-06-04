@@ -116,6 +116,13 @@ $messages['oc'] = array(
 	'fixedimage-desc' => 'Apondís la balisa <tt><nowiki><fundraising></nowiki></tt> coma un imatge',
 );
 
+/** Polish (Polski)
+ * @author Sp5uhe
+ */
+$messages['pl'] = array(
+	'fixedimage-desc' => 'Dodaje znacznik zbiórki funduszy <tt><nowiki><fundraising></nowiki></tt> jako obrazek',
+);
+
 /** Portuguese (Português)
  * @author Malafaya
  */

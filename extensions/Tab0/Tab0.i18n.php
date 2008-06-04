@@ -13,9 +13,10 @@ $messages['en'] = array(
 
 /** Czech (Česky)
  * @author Matěj Grabovský
+ * @author Mormegil
  */
 $messages['cs'] = array(
-	'tab0-desc' => 'Přidává záložku „0“, pro editaci první části stránky',
+	'tab0-desc' => 'Přidává záložku „0“ pro editaci první části stránky',
 );
 
 /** French (Français)

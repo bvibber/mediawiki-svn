@@ -580,6 +580,18 @@ $allMessages['mr'] = array(
 	'whitelistnummatches'      => ' - $1 जुळण्या',
 );
 
+/** Low German (Plattdüütsch)
+ * @author Slomox
+ */
+$allMessages['nds'] = array(
+	'whitelisttablemodify'     => 'Ännern',
+	'whitelisttablemodifyall'  => 'All',
+	'whitelisttablemodifynone' => 'Keen',
+	'whitelisttablepage'       => 'Wikisied',
+	'whitelisttableedit'       => 'Ännern',
+	'whitelistnever'           => 'nie',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

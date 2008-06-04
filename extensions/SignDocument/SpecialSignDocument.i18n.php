@@ -1026,6 +1026,13 @@ $1',
 	'sign-uniquequery-1signed2'       => '[{{SERVER}}{{localurl: Special:SignDocument|doc=$4&viewsigs&detail=$3}} $1] ने [{{SERVER}}{{localurl: Special:SignDocument|doc=$4&viewsigs}} $2] वर सही केली.',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Aurora
+ */
+$messages['ms'] = array(
+	'sign-viewfield-agent' => 'Ejen pengguna',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

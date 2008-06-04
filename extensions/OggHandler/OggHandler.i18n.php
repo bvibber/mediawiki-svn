@@ -571,6 +571,31 @@ $messages['frp'] = array(
 	'ogg-desc-link'           => 'A propôs de ceti fichiér',
 );
 
+/** Friulian (Furlan)
+ * @author Klenje
+ */
+$messages['fur'] = array(
+	'ogg-short-audio'       => 'File audio Ogg $1, $2',
+	'ogg-short-video'       => 'File video Ogg $1, $2',
+	'ogg-long-audio'        => '(File audio Ogg $1, durade $2, $3)',
+	'ogg-long-video'        => '(File video Ogg $1, durade $2, dimensions $4×$5 pixels, $3)',
+	'ogg-long-general'      => '(File multimediâl Ogg, durade $2, $3)',
+	'ogg-play'              => 'Riprodûs',
+	'ogg-pause'             => 'Pause',
+	'ogg-stop'              => 'Ferme',
+	'ogg-play-video'        => 'Riprodûs il video',
+	'ogg-play-sound'        => 'Riprodûs il file audio',
+	'ogg-no-player'         => 'Nus displâs ma il to sisteme nol à riprodutôrs software supuartâts.
+Par plasê <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">discjame un riprodutôr</a>.',
+	'ogg-player-thumbnail'  => 'Dome figure fisse',
+	'ogg-player-soundthumb' => 'Nissun riprodutôr',
+	'ogg-use-player'        => 'Dopre il riprodutôr:',
+	'ogg-more'              => 'Altri...',
+	'ogg-dismiss'           => 'Siere',
+	'ogg-download'          => 'Discjame il file',
+	'ogg-desc-link'         => 'Informazions su chest file',
+);
+
 /** Irish (Gaeilge)
  * @author Spacebirdy
  */
