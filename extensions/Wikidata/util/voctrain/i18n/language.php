@@ -30,7 +30,10 @@ class Language {
 
 		include("language.i18n.php");	
 		if (array_key_exists($code, $messages)) {
-			$this->messages=$messages[$code]; #messages is from the included file
+			foreach ($messages[$code] as $key=>$message) {
+				$newkey=str_replace("voctrain- ","",$key);
+				$this->messages[$newkey]=$message; #messages is from the included file
+			}
 		} else {
 			throw new LocalisationException("messages problem, there's no messages for $code");
 		}
