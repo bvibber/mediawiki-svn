@@ -145,20 +145,20 @@ class PasswordReset extends SpecialPage {
 	}
 
 	private function resetPassword( $userID, $newpass, $disableuser ) {
+		global $wgMemc;
 		$dbw =& wfGetDB( DB_MASTER );
 
+
+		$user = User::newFromId( $userID );
+
 		if ( $disableuser ) {
-			$passHash = 'DISABLED';
+			$user->setPassword( null );
 			$message = wfMsg( 'passwordreset-disablesuccess', $userID );
 		} else {
-			$passHash = wfEncryptPassword( $userID, $newpass );
+			$user->setPassword( $newpass );
 			$message = wfMsg( 'passwordreset-success', $userID );
 		}
-
-		$dbw->update( 'user',
-			array( 'user_password' => $passHash ),
-			array( 'user_id' => $userID )
-		);
+		$user->saveSettings();
 		return $message;
 	}
 
