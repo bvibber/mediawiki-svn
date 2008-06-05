@@ -187,7 +187,7 @@ class TreeAndMenu {
 				# Append node script for this row
 				if ($depth > $last) $parents[$depth] = $node-1;
 				$parent = $parents[$depth];
-				if ($type == 'tree') $nodes .= "{$this->uniqname}$id.add($node, $parent, '$item ($start)');\n";
+				if ($type == 'tree') $nodes .= "{$this->uniqname}$id.add($node, $parent, '$item');\n";
 				else {
 					if (!$start) {
 						if ($depth < $last) $nodes .= str_repeat('</ul></li>', $last-$depth);
