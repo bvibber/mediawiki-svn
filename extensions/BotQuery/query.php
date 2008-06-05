@@ -22,7 +22,10 @@
 */
 
 $startTime = microtime(true);
-$IP = dirname( realpath( __FILE__ ) ) . '/../..';
+$IP = getenv( 'MW_INSTALL_PATH' );
+if ( $IP === false ) {
+	$IP = dirname( realpath( __FILE__ ) ) . '/../..';
+}
 chdir( $IP );
 
 // Allow requests to go to an alternative site (proxying)
