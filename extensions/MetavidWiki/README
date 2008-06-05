@@ -22,7 +22,7 @@ MV_NS_SEQUENCE : The namespace for view/editing sequences/playlists.
 
 The Search functionality is extended to do basic metadata queries and
 return media results. (ie a category query can return all mvd chunks
-in a given category range).
+in a given category range). Search results export to rss video feeds.
 
 Categories are extended to include streams, video segments and sequences.
 Categories are also extended to support rss video feed export.
@@ -38,6 +38,7 @@ More info at  http://metavid.ucsc.edu/wiki/index.php/Mv_Embed
 * MediaWiki: MetaVid is an extension to MediaWiki (we run off the svn but should work with anything > 1.10 or so.)
 * SemanticMediaWiki: you can get semantic wiki from http://semantic-mediawiki.org/ we use 1.0.1 release
 * mod_annodex: you will need a server side ogg segment server we use mod_annodex you can get that at annodex.net
+alternatively you could use oggz-chop instead of mod_annodex
 
 
 ==Install:==

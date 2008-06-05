@@ -17,9 +17,8 @@ function add_adjust_hooks(mvd_id, track_dur){
 	}});		
 	//add onchange js hooks: 
 	$j('.mv_adj_hr').change(function(){
-		//preserve track duration for nav and seq:
-		
-		//ie seems to crash so don't no interface updates for IE for the time being
+		//preserve track duration for nav and seq:		
+		//ie seems to crash so no interface updates for IE for the time being
 		if(!$j.browser.msie){
 			if(mvd_id=='nav'||mvd_id=='seq'){
 				add_adjust_hooks(mvd_id, track_dur);

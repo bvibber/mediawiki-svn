@@ -28,8 +28,6 @@ include_once($IP . '/includes/SpecialPage.php');
  */
 
 
-
-
 class MVAdmin extends SpecialPage {
 
 	/**
@@ -42,7 +40,7 @@ class MVAdmin extends SpecialPage {
 	}
 
 	public function execute($par = null) {
-		global $IP;
+		global $IP, $mvgIP;
 		require_once($IP . '/includes/SpecialPage.php' );
 		require_once($IP . '/includes/Title.php' );
 	

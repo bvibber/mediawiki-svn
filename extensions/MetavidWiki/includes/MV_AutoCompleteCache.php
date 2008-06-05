@@ -11,5 +11,5 @@
  */
  //@@todo populate this stub (use to store auto-complete stuff for a bit) 
  class MV_AutoCompleteCache{
- }
+ } 
 ?>

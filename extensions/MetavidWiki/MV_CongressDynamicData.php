@@ -9,9 +9,9 @@
  * @email dale@ucsc.edu
  * @url http://metavid.ucsc.edu
  * 
- * This extention has a few hooks for embeding dynamic congress related widges and content 
+ * This extension has a few hooks for embedding dynamic congress related widges and content 
  * its a normal stand alone extension
- * its envoked with #cdd:type:key:
+ * its invoked with #cdd:type:key:
  * for example {{#cdd:bill_status:govtrack_bill_id}} //will pull up the status for bill_id from govtrack
  */
 if ( !defined( 'MEDIAWIKI' ) )  die( 1 );

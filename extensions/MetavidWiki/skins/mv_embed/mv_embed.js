@@ -14,7 +14,7 @@
  * http://stevenlevithan.com/demo/parseuri/js/
  *
  * config values you can manually set the location of the mv_embed folder here
- * (in cases where media will be in a different place than the javascript)
+ * (in cases where media will be hosted in a different place than the embbeding page)
  *
  */
 var mv_embed_path = null;
@@ -1956,13 +1956,13 @@ if (typeof DOMParser == "undefined") {
 	      * IE and non-firebug debug:
 	      */	     
 	     var log_elm = document.getElementById('mv_js_log');
-	     if(!log_elm){
+	     /*if(!log_elm){
 	     	document.write('<div style="position:absolute;z-index:50;top:0px;left:0px;right:0px;height:150px;"><textarea id="mv_js_log" cols="80" rows="6"></textarea></div>');
 	     	var log_elm = document.getElementById('mv_js_log');
 	     }
 	     if(log_elm){
 	     	log_elm.value+=string+"\n";
-	     }
+	     }*/
 	   }
 	}
 //}
