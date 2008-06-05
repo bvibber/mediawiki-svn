@@ -57,6 +57,12 @@ class Language {
 			$string="voctrain_".$string;
 		}
 		$string=preg_replace("|[^A-Za-z0-9_]|","_",$string);
+		$compare="";
+		while($compare!=$string) {
+			$compare=$string;
+			$string=str_replace("__","_",$string);
+		}
+
 		return $string;
 	}
 
