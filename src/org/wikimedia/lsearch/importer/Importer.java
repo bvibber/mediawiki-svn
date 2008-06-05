@@ -186,7 +186,8 @@ public class Importer {
 				reader.readDump();
 				end = System.currentTimeMillis();
 				log.info("Closing/optimizing index...");
-				dp.closeIndex();				
+				dp.closeIndex();
+				links.close();
 			} catch (IOException e) {
 				if(!e.getMessage().equals("stopped")){
 					log.fatal("I/O error processing dump for "+dbname+" from "+inputfile+" : "+e.getMessage());

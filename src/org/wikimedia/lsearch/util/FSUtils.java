@@ -14,15 +14,18 @@ import java.io.IOException;
 public class FSUtils {
 	public static final String PATH_SEP = System.getProperty("file.separator");
 	
-	enum OSType { OS_TYPE_UNIX, OS_TYPE_WINXP };
+	enum OSType { OS_TYPE_UNIX, OS_TYPE_WINXP, OS_TYPE_LINUX };
 
 	protected static String[] hardLinkCommand;
+	protected static String[] hardLinkRecursive = null;
 	
 	static {
 		switch(getOSType()) {
 		case OS_TYPE_WINXP:
 			hardLinkCommand = new String[] {"fsutil","hardlink","create", null, null};
 			break;
+		case OS_TYPE_LINUX:
+			hardLinkRecursive = new String[] {"cp", "-lr", null, null};
 		case OS_TYPE_UNIX:
 		default:
 			hardLinkCommand = new String[] {"ln", "-f", null, null};
@@ -34,6 +37,8 @@ public class FSUtils {
 		if (osName.indexOf("Windows") >= 0 && 
 				(osName.indexOf("XP") >= 0 || osName.indexOf("2003") >= 0))
 			return OSType.OS_TYPE_WINXP;
+		else if(osName.indexOf("Linux")>=0)
+			return OSType.OS_TYPE_LINUX;
 		else
 			return OSType.OS_TYPE_UNIX;
 	}
@@ -49,11 +54,20 @@ public class FSUtils {
 	 * @param to
 	 * @throws IOException
 	 */
-	public static synchronized void createHardLink(File from, File to) throws IOException {
-		int len = hardLinkCommand.length;
-		hardLinkCommand[len-2] = from.getCanonicalPath();
-		hardLinkCommand[len-1] = to.getCanonicalPath();
-		Command.exec(hardLinkCommand);
+	public static void createHardLink(File from, File to) throws IOException {
+		String[] command = hardLinkCommand.clone();
+		int len = command.length;
+		command[len-2] = from.getCanonicalPath();
+		command[len-1] = to.getCanonicalPath();
+		Command.exec(command);
+	}
+	
+	protected static void createHardLinkRecursive(File from, File to) throws IOException {
+		String[] command = hardLinkRecursive.clone();
+		int len = command.length;
+		command[len-2] = from.getCanonicalPath();
+		command[len-1] = to.getCanonicalPath();
+		Command.exec(command);
 	}
 
 	/**
@@ -64,18 +78,36 @@ public class FSUtils {
 	 * @throws IOException
 	 */
 	public static void createHardLinkRecursive(String from, String to) throws IOException {
+		createHardLinkRecursive(from,to,false);
+	}
+	
+	/**
+	 * Creates hard link, with additional option if to use cp -lr since it's default
+	 * behavior differs from that of ln -f when the destination is a directory.
+	 * 
+	 * In most non-critical application, the you might want to slowish but predicatable version
+	 * 
+	 * @param fast
+	 * @throws IOException
+	 */
+	public static void createHardLinkRecursive(String from, String to, boolean fast) throws IOException {
 		//System.out.println("Hard-linking "+from+" -> "+to);		
 		File file = new File(from);
 		if(!file.exists())
 			throw new IOException("Trying to hardlink nonexisting file "+from);
 		// snsure we can make the target
 		new File(to).getParentFile().mkdirs();
-		if(file.isDirectory()){
-			File[] files = file.listFiles();
-			for(File f: files)
-				createHardLinkRecursive(format(new String[]{from,f.getName()}),format(new String[] {to,f.getName()}));
-		} else
-			createHardLink(new File(from),new File(to));
+		if(fast && hardLinkRecursive != null){
+			// do a quick cp -lr if it's supported
+			createHardLinkRecursive(new File(from),new File(to));
+		} else{
+			if(file.isDirectory()){
+				File[] files = file.listFiles();
+				for(File f: files)
+					createHardLinkRecursive(format(new String[]{from,f.getName()}),format(new String[] {to,f.getName()}));
+			} else
+				createHardLink(new File(from),new File(to));
+		}
 	}
 
 	

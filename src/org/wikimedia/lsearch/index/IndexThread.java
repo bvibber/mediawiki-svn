@@ -15,6 +15,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.Date;
 import java.util.Enumeration;
 import java.util.HashSet;
@@ -22,6 +23,7 @@ import java.util.Hashtable;
 import java.util.List;
 import java.util.Set;
 import java.util.Map.Entry;
+import java.util.concurrent.locks.Lock;
 
 import org.apache.log4j.Logger;
 import org.apache.lucene.analysis.SimpleAnalyzer;
@@ -41,6 +43,7 @@ import org.wikimedia.lsearch.interoperability.RMIMessengerClient;
 import org.wikimedia.lsearch.ranks.Links;
 import org.wikimedia.lsearch.util.Command;
 import org.wikimedia.lsearch.util.FSUtils;
+import org.wikimedia.lsearch.util.ProgressReport;
 import org.wikimedia.lsearch.util.StringUtils;
 
 /**
@@ -160,7 +163,7 @@ public class IndexThread extends Thread {
 	 *
 	 */
 	protected void makeSnapshots() {
-		HashSet<IndexId> indexes = WikiIndexModifier.getModifiedIndexes();
+		ArrayList<IndexId> indexes = new ArrayList<IndexId>();
 		IndexRegistry registry = IndexRegistry.getInstance();
 		
 		ArrayList<Pattern> pat = new ArrayList<Pattern>();
@@ -181,19 +184,35 @@ public class IndexThread extends Thread {
 			if(indexdir.exists())
 				indexes.add(iid);
 		}
+		// nicely alphabetically sort
+		Collections.sort(indexes, new Comparator<IndexId>() {
+			public int compare(IndexId o1, IndexId o2) {
+				return o1.toString().compareTo(o2.toString());
+			}
+		});
 		HashSet<IndexId> badOptimization = new HashSet<IndexId>();
 		// optimize all
 		for( IndexId iid : indexes ){
+			Lock lock = null;
 			try{
 				if(iid.isLogical())
 					continue;
-				if(matchesPattern(pat,iid))
+				if(matchesPattern(pat,iid)){
+					// enforce outer transaction lock to connect optimization & snapshot
+					lock = iid.getTransactionLock(IndexId.Transaction.INDEX);
+					lock.lock();
 					optimizeIndex(iid);
-				
+					makeIndexSnapshot(iid,iid.getIndexPath());
+					lock.unlock();
+					lock = null;
+				}
 			} catch(IOException e){
 				e.printStackTrace();
 				log.error("Error optimizing index "+iid);
 				badOptimization.add(iid);
+			} finally {
+				if(lock != null)
+					lock.unlock();
 			}
 		}
 		// snapshot all
@@ -201,11 +220,10 @@ public class IndexThread extends Thread {
 			if(iid.isLogical() || badOptimization.contains(iid))
 				continue;
 			if(matchesPattern(pat,iid)){
-				makeIndexSnapshot(iid,iid.getIndexPath());
+
 				registry.refreshSnapshots(iid);				
 			}
 		}
-		
 	}
 	
 	private boolean matchesPattern(ArrayList<Pattern> pat, IndexId iid) {
@@ -226,7 +244,7 @@ public class IndexThread extends Thread {
 		String timestamp = df.format(new Date(System.currentTimeMillis()));
 		if(iid.isLogical())
 			return;
-
+		boolean delSnapshots = Configuration.open().getBoolean("Index","delsnapshots") && !iid.isRelated();
 		log.info("Making snapshot for "+iid);
 		String snapshotdir = iid.getSnapshotPath();
 		String snapshot = snapshotdir+sep+timestamp;
@@ -236,17 +254,22 @@ public class IndexThread extends Thread {
 		if(spd.exists() && spd.isDirectory()){
 			File[] files = spd.listFiles();
 			for(File f: files){
-				if(!f.getAbsolutePath().equals(li.path)) // leave the last snapshot
-					FSUtils.deleteRecursive(f);
+				if(f.getAbsolutePath().equals(li.path) && !delSnapshots)
+					continue; // leave last snapshot
+				FSUtils.deleteRecursive(f);
 			}
 		}
 		new File(snapshot).mkdirs();
-		try {
-			FSUtils.createHardLinkRecursive(indexPath,snapshot);
-		} catch (IOException e) {
-			e.printStackTrace();
-			log.error("Error making snapshot "+snapshot+": "+e.getMessage());
-			return;
+		File ind =new File(indexPath);
+		for(File f: ind.listFiles()){
+			// use a cp -lr command for each file in the index
+			try {
+				FSUtils.createHardLinkRecursive(indexPath+sep+f.getName(),snapshot+sep+f.getName(),true);
+			} catch (IOException e) {
+				e.printStackTrace();
+				log.error("Error making snapshot "+snapshot+": "+e.getMessage());
+				return;
+			}
 		}
 		IndexRegistry.getInstance().refreshSnapshots(iid);
 		log.info("Made snapshot "+snapshot);		
@@ -263,21 +286,21 @@ public class IndexThread extends Thread {
 			return;
 		if(iid.getBooleanParam("optimize",true)){
 			try {
+				Transaction trans = new Transaction(iid,transType);
+				trans.begin();
 				IndexReader reader = IndexReader.open(path);
 				if(!reader.isOptimized()){
 					reader.close();
 					log.info("Optimizing "+iid);
 					long start = System.currentTimeMillis();
-					Transaction trans = new Transaction(iid,transType);
-					trans.begin();
 					IndexWriter writer = new IndexWriter(path,new SimpleAnalyzer(),false);
 					writer.optimize();
-					writer.close();
-					trans.commit();
+					writer.close();					
 					long delta = System.currentTimeMillis() - start;
-					log.info("Optimized "+iid+" in "+delta+" ms");
+					log.info("Optimized "+iid+" in "+ProgressReport.formatTime(delta));
 				} else
 					reader.close();
+				trans.commit();
 			} catch (IOException e) {
 				log.error("Could not optimize index at "+path+" : "+e.getMessage());
 				throw e;
@@ -299,17 +322,26 @@ public class IndexThread extends Thread {
 		HashSet<String> add = new HashSet<String>();
 		if(records.length > 0){
 			IndexId iid = records[0].getIndexId(); // we asume all are on same iid
-			Links links = Links.openForBatchModifiation(iid);
-			// update links
-			links.batchUpdate(records);
-			WikiIndexModifier.fetchLinksInfo(iid,records,links);
-			// get additional
-			add.addAll(WikiIndexModifier.fetchAdditional(iid,records,links));			
-			links.close();
-						
-			for(IndexUpdateRecord r : records){
-				enqueue(r);
-			}			
+			// get exclusive lock to make sure nothing funny is going on with the index
+			Lock lock = iid.getLinks().getTransactionLock(IndexId.Transaction.INDEX);
+			lock.lock();
+			try{
+				// FIXME: there should be some kind of failed previous transaction check here
+				// works for now because we first do updates, but could easily break in future
+				Links links = Links.openForBatchModifiation(iid);
+				// update links
+				links.batchUpdate(records);
+				WikiIndexModifier.fetchLinksInfo(iid,records,links);
+				// get additional
+				add.addAll(WikiIndexModifier.fetchAdditional(iid,records,links));			
+				links.close();
+
+				for(IndexUpdateRecord r : records){
+					enqueue(r);
+				}	
+			} finally{
+				lock.unlock();
+			}
 		}
 
 		return add;

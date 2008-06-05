@@ -85,10 +85,16 @@ public class IncrementalUpdater {
 	 * @param args
 	 */
 	public static void main(String[] args){
+		// config
+		Configuration config = Configuration.open();
+		GlobalConfiguration global = GlobalConfiguration.getInstance();
+
 		ArrayList<String> dbnames = new ArrayList<String>();
 		boolean daemon = false;
 		long sleepTime = 30000; // 30s
 		String timestamp = null;
+		String excludeFile = null;
+		boolean useLocal = false;
 		
 		String dblist = null;
 		boolean notification = true;
@@ -108,8 +114,12 @@ public class IncrementalUpdater {
 				defaultTimestamp = args[++i];
 			else if(args[i].equals("-f"))
 				dblist = args[++i];
+			else if(args[i].equals("-l"))
+				useLocal = true;
 			else if(args[i].equals("-e"))
 				excludeList.add(args[++i]);
+			else if(args[i].equals("-ef"))
+				excludeFile = args[++i];
 			else if(args[i].equals("-n"))
 				notification = true;
 			else if(args[i].equals("--help"))
@@ -120,21 +130,10 @@ public class IncrementalUpdater {
 			} else
 				dbnames.add(args[i]);
 		}		
-		if(dblist != null){
-			try {
-				BufferedReader file = new BufferedReader(new FileReader(dblist));
-				String line;
-				while((line = file.readLine()) != null)
-					dbnames.add(line.trim());
-				file.close();
-			} catch (FileNotFoundException e) {
-				System.out.println("Error: File "+dblist+" does not exist");
-				return;
-			} catch (IOException e) {
-				System.out.println("Error: I/O error reading dblist file "+dblist);
-				return;
-			}
-		}
+		if(useLocal)
+			dbnames.addAll(global.getMyIndexDBnames());
+		dbnames.addAll(readDBList(dblist));
+		excludeList.addAll(readDBList(excludeFile));
 		if(dbnames.size() == 0){
 			System.out.println("Syntax: java IncrementalUpdater [-d] [-s sleep] [-t timestamp] [-e dbname] [-f dblist] [-n] [--no-ranks] dbname1 dbname2 ...");
 			System.out.println("Options:");
@@ -143,13 +142,13 @@ public class IncrementalUpdater {
 			System.out.println("  -t   - timestamp to start from");
 			System.out.println("  -dt  - default timestamp (default: "+defaultTimestamp+")");
 			System.out.println("  -f   - dblist file, one dbname per line");
+			System.out.println("  -l   - use all local dbnames");
 			System.out.println("  -n   - wait for notification of flush after done updating one db (default: "+notification+")");
 			System.out.println("  -e   - exclude dbname from incremental updates (overrides -f)");
+			System.out.println("  -ef  - exclude db names listed in dblist file");
+			
 			return;
 		}
-		// config
-		Configuration config = Configuration.open();
-		GlobalConfiguration global = GlobalConfiguration.getInstance();
 		// preload
 		UnicodeDecomposer.getInstance();
 		for(String dbname: dbnames){
@@ -279,6 +278,26 @@ public class IncrementalUpdater {
 		} while(daemon);
 	}
 	
+	private static Collection<String> readDBList(String dblist) {
+		ArrayList<String> dbnames = new ArrayList<String>();
+		if(dblist != null){			
+			try {
+				BufferedReader file = new BufferedReader(new FileReader(dblist));
+				String line;
+				while((line = file.readLine()) != null)
+					dbnames.add(line.trim());
+				file.close();
+			} catch (FileNotFoundException e) {
+				System.out.println("Error: File "+dblist+" does not exist");
+				System.exit(1);
+			} catch (IOException e) {
+				System.out.println("Error: I/O error reading dblist file "+dblist);
+				System.exit(1);
+			}
+		}
+		return dbnames;
+	}
+
 	private static void printRecords(ArrayList<IndexUpdateRecord> records) {
 		for(IndexUpdateRecord rec : records){
 			Article ar = rec.getArticle();

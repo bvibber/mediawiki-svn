@@ -7,10 +7,10 @@
 	<property name="dist" location="dist"/>
 	<property name="pack.name" value="lucene-search-2.1"/>
 	<property name="src.name" value="lucene-search-src-2.1"/>
-	<property name="binary.name" value="ls2-bin"/>
+	<property name="binary.name" value="ls2.1-bin"/>
 	<property name="jar.name" value="LuceneSearch.jar"/>
-	<property name="include" value="src/** lib/** sql/** test-data/** webinterface/** *-example *.txt lsearch* build.xml scripts/*"/>
-	<property name="include.src" value="src/** sql/** build.xml scripts/* webinterface/*"/>
+	<property name="include" value="src/** lib/** sql/** test-data/** webinterface/** *-example *.txt lsearch* build.xml scripts/* VERSION"/>
+	<property name="include.src" value="src/** sql/** build.xml scripts/* webinterface/* VERSION"/>
 	
 	<property file="${basedir}/hostname"/>
 	

@@ -16,6 +16,7 @@ import org.apache.log4j.Logger;
 import org.apache.lucene.search.IndexSearcher;
 import org.apache.lucene.search.Searchable;
 import org.apache.lucene.search.SearchableMul;
+import org.apache.lucene.store.RAMDirectory;
 import org.wikimedia.lsearch.beans.SearchHost;
 import org.wikimedia.lsearch.config.Configuration;
 import org.wikimedia.lsearch.config.GlobalConfiguration;
@@ -60,16 +61,22 @@ public class SearcherCache {
 		IndexSearcherMul searchers[];
 		IndexId iid;
 		int index = 0;
+		static Configuration config = null;
 		
 		SearcherPool(IndexId iid, String path, int poolsize) throws IOException {
 			this.iid = iid;
 			searchers = new IndexSearcherMul[poolsize];
+			if(config == null)
+				config = Configuration.open();
+			RAMDirectory dir = null;
+			if(config.getBoolean("Search","ramdirectory"))
+				dir = new RAMDirectory(path);
 			for(int i=0;i<poolsize;i++){
-				searchers[i] = open(iid, path);
+				searchers[i] = open(iid, path, dir);
 			}
 		}
 		
-		private IndexSearcherMul open(IndexId iid, String path) throws IOException {
+		private IndexSearcherMul open(IndexId iid, String path, RAMDirectory directory) throws IOException {
 			IndexSearcherMul searcher = null;
 			log.debug("Opening local index for "+iid);
 			if(!iid.isMySearch())
@@ -77,7 +84,10 @@ public class SearcherCache {
 			if(iid.isLogical())
 				throw new IOException(iid+": will not open logical index.");
 			try {
-				searcher = new IndexSearcherMul(path);
+				if(directory != null)
+					searcher = new IndexSearcherMul(directory);
+				else
+					searcher = new IndexSearcherMul(path);
 				searcher.setSimilarity(new WikiSimilarity());
 			} catch (IOException e) {
 				e.printStackTrace();
@@ -174,7 +184,7 @@ public class SearcherCache {
 	 * @return
 	 */
 	public String getRandomHost(IndexId iid){
-		if(iid.isMySearch() && !UpdateThread.isBeingDeployed(iid))
+		if(iid.isMySearch() && !UpdateThread.isBeingDeployed(iid) && hasLocalSearcher(iid))
 			return "localhost";
 		if(!initialized.contains(iid.toString()))
 			initializeRemote(iid);
@@ -296,19 +306,25 @@ public class SearcherCache {
 	/**
 	 * Initialize all local searcher pools 
 	 */
-	protected void initializeLocal(){
-		IndexRegistry registry = IndexRegistry.getInstance();
-		HashSet<IndexId> mys =  GlobalConfiguration.getInstance().getMySearch();
-		for(IndexId iid : mys){
-			try {
-				// when searcher is linked into "search" path it's good, initialize it
-				if(!iid.isLogical() && registry.getCurrentSearch(iid) != null){
-					log.debug("Initializing local for "+iid);
-					IndexSearcherMul[] pool = getLocalSearcherPool(iid);
-					RMIServer.bind(iid,pool);
+	protected class InitialDeploymentThread extends Thread {
+		public void run(){
+			IndexRegistry registry = IndexRegistry.getInstance();
+			HashSet<IndexId> mys =  GlobalConfiguration.getInstance().getMySearch();
+			for(IndexId iid : mys){
+				try {
+					// when searcher is linked into "search" path it's good, initialize it
+					if(!iid.isLogical() && registry.getCurrentSearch(iid) != null){
+						log.debug("Initializing local for "+iid);
+						SearcherPool pool = initLocalPool(iid);
+						Warmup.warmupPool(pool.searchers,iid,false,1);
+						Warmup.waitForAggregate(pool.searchers);
+						localCache.put(iid.toString(),pool);
+						
+						RMIServer.bind(iid,pool.searchers);
+					}
+				} catch (IOException e) {
+					log.warn("I/O error warming index for "+iid+" : "+e.getMessage());				
 				}
-			} catch (IOException e) {
-				log.warn("I/O error warming index for "+iid+" : "+e.getMessage());				
 			}
 		}
 	}
@@ -332,8 +348,8 @@ public class SearcherCache {
 		SearcherPool pool = localCache.get(iid.toString());
 		if(pool == null){
 			// try to init
-			initLocalPool(iid);
-			pool = localCache.get(iid.toString());
+			pool = initLocalPool(iid);
+			localCache.put(iid.toString(),pool);
 		}
 		
 		if(pool == null)
@@ -343,7 +359,7 @@ public class SearcherCache {
 	}
 	
 	/** Make local searcher pool */
-	protected void initLocalPool(IndexId iid) throws IOException{
+	protected SearcherPool initLocalPool(IndexId iid) throws IOException{
 		synchronized(iid.getSearcherCacheLock()){
 			// make sure some other thread has not opened the searcher
 			if(localCache.get(iid.toString()) == null){
@@ -351,9 +367,9 @@ public class SearcherCache {
 					throw new IOException(iid+" is not searched by this host.");
 				if(iid.isLogical())
 					throw new IOException(iid+": will not open logical index.");
-				SearcherPool pool = new SearcherPool(iid,iid.getCanonicalSearchPath(),searchPoolSize);
-				localCache.put(iid.toString(),pool);
-			}
+				return new SearcherPool(iid,iid.getCanonicalSearchPath(),searchPoolSize);
+			} else
+				return localCache.get(iid.toString());
 		}
 	}
 	
@@ -389,7 +405,7 @@ public class SearcherCache {
 	protected SearcherCache(boolean initialize){
 		searchPoolSize = Configuration.open().getInt("SearcherPool","size",1);
 		if(initialize)
-			initializeLocal();
+			new InitialDeploymentThread().start();
 	}
 	
 	public int getSearchPoolSize() {

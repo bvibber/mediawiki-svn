@@ -5,6 +5,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Hashtable;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
 
 import org.apache.log4j.Logger;
 import org.wikimedia.lsearch.analyzers.FilterFactory;
@@ -149,6 +151,9 @@ public class IndexId {
 	
 	/** lock used in {@link SearcherCache} class */
 	protected Object searcherCacheLock  = new Object();
+
+	/** locks used to serialize transactions on different transaction paths */
+	protected Hashtable<Transaction,Lock> transactionLocks = new Hashtable<Transaction,Lock>();
 
 	/**
 	 * Get index Id object given it's string representation, the actual object
@@ -344,6 +349,9 @@ public class IndexId {
 		transactionPath.put(Transaction.INDEX,transRoot+"index");
 		transactionPath.put(Transaction.IMPORT,transRoot+"import");
 		transactionPath.put(Transaction.TEMP,transRoot+"temp");
+		transactionLocks.put(Transaction.INDEX,new ReentrantLock());
+		transactionLocks.put(Transaction.IMPORT,new ReentrantLock());
+		transactionLocks.put(Transaction.TEMP,new ReentrantLock());
 		tempPath = localIndexPath + "temp" + sep + this.dbrole;
 
 		//if(mySearch){
@@ -924,5 +932,10 @@ public class IndexId {
 	public Object getSearcherCacheLock() {
 		return searcherCacheLock;
 	}
-		
+	
+	/** Get transaction lock for a transaction type */
+	public Lock getTransactionLock(Transaction trans) {
+		return transactionLocks.get(trans);
+	}
+
 }

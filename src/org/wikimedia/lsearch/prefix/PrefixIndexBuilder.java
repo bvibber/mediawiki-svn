@@ -371,6 +371,8 @@ public class PrefixIndexBuilder {
 	public void close() throws IOException {
 		if(writer != null)
 			writer.close();
+		if(links != null)
+			links.close();
 	}
 
 }

@@ -18,6 +18,7 @@ import java.net.UnknownHostException;
 import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -1294,6 +1295,19 @@ public class GlobalConfiguration {
 		
 		return ret;
 	}
+	/** Get all dbnames that are locally indexed */
+	public ArrayList<String> getMyIndexDBnames(){
+		HashSet<String> dbnames = new HashSet<String>();
+		ArrayList<String> dbnamesSorted = new ArrayList<String>();
+		
+		for(IndexId iid : indexIdPool.values()){
+			if(iid.isMyIndex() && !iid.isTitlesBySuffix() && !iid.isSpell())
+				dbnames.add(iid.getDBname().toString());
+		}
+		dbnamesSorted.addAll(dbnames);
+		Collections.sort(dbnamesSorted);
+		return dbnamesSorted;
+	}
 	
 	/** Get the name of the localhost as it appears in global configuration */
 	public String getLocalhost(){
@@ -1431,7 +1445,7 @@ public class GlobalConfiguration {
 		
 		// process $lang
 		String lang = getLanguage(dbname);
-		repo = repo.replace("$lang",lang);
+		repo = repo.replace("$lang",lang.replace('_','-'));
 		repo = repo += "?title=Special:OAIRepository";
 		
 		return repo;

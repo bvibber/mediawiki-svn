@@ -46,33 +46,40 @@ public class RelatedBuilder {
 	static Logger log = Logger.getLogger(RelatedBuilder.class);
 	
 	public static void main(String[] args) {
-		String dbname = null;
+		ArrayList<String> dbnames = new ArrayList<String>();
 		System.out.println("MediaWiki lucene-search indexer - build a map of related articles.\n");
 		
 		Configuration.open();
-		GlobalConfiguration.getInstance();
+		GlobalConfiguration global = GlobalConfiguration.getInstance();
 		if(args.length != 1){
-			System.out.println("Syntax: java RelatedBuilder <dbname>");
-			return;
-		}		
-		dbname = args[0];
-		IndexId iid = IndexId.get(dbname);
-		if(iid == null){
-			System.out.println("Invalid dbname "+iid);
-			return;
-		}
-		long start = System.currentTimeMillis();
-		try {
-			rebuildFromLinks(iid);
-		} catch (IOException e) {
-			log.fatal("Rebuild I/O error: "+e.getMessage());
-			e.printStackTrace();
+			System.out.println("Syntax: java RelatedBuilder [-l] <dbname>");
+			System.out.println("Options:");
+			System.out.println("  -l    - rebuild all local wikis");
 			return;
 		}		
 		
-		long end = System.currentTimeMillis();
+		for(int i=0;i<args.length;i++){
+			if(args[i].equals("-l"))
+				dbnames.addAll(global.getMyIndexDBnames());
+			else dbnames.add(args[i]);
+		}
+		Collections.sort(dbnames);
+		for(String dbname : dbnames){
+			IndexId iid = IndexId.get(dbname);
 
-		System.out.println("Finished generating related in "+formatTime(end-start));
+			long start = System.currentTimeMillis();
+			try {
+				rebuildFromLinks(iid);
+			} catch (IOException e) {
+				log.fatal("Rebuild I/O error: "+e.getMessage());
+				e.printStackTrace();
+				continue;
+			}		
+
+			long end = System.currentTimeMillis();
+
+			System.out.println("Finished generating related in "+formatTime(end-start));
+		}
 	}
 	
 	/** Calculate from links index */
@@ -116,6 +123,7 @@ public class RelatedBuilder {
 			store.addRelated(key,related);
 		}
 		store.snapshot();
+		links.close();
 	}
 
 	

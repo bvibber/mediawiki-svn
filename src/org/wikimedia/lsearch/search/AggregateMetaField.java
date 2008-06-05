@@ -91,6 +91,8 @@ public class AggregateMetaField {
 						set = new HashSet<String>();
 						cachingInProgress.put(reader.directory(),set);
 					}
+					if(set.contains(field))
+						return;
 					set.add(field);
 				}
 				try{
@@ -150,13 +152,13 @@ public class AggregateMetaField {
 				} catch(Exception e){
 					e.printStackTrace();
 					log.error("Whole caching failed on field="+field+", reader="+reader.directory());
-				} finally{
-					synchronized(cachingInProgress){
-						Set<String> set = cachingInProgress.get(reader.directory());
-						set.remove(field);
-						if(set.size() == 0)
-							cachingInProgress.remove(reader.directory());
-					}
+				}
+				
+				synchronized(cachingInProgress){
+					Set<String> set = cachingInProgress.get(reader.directory());
+					set.remove(field);
+					if(set.size() == 0)
+						cachingInProgress.remove(reader.directory());
 				}
 			}
 			protected byte[] extendBytes(byte[] array){

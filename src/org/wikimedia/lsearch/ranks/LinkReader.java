@@ -58,7 +58,8 @@ public class LinkReader implements DumpWriter {
 	public void writeEndPage() throws IOException {
 		Title t = new Title(page.Title.Namespace,page.Title.Text);
 		try{
-			links.addArticleInfo(revision.Text,t,exactCase,Integer.toString(page.Id));
+			if( page.Title.Namespace >= 0)
+				links.addArticleInfo(revision.Text,t,exactCase,Integer.toString(page.Id));
 		} catch(Exception e){
 			log.error("Error adding article "+t+" : "+e.getMessage());
 			e.printStackTrace();

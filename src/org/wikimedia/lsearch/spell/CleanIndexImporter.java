@@ -105,6 +105,7 @@ public class CleanIndexImporter implements DumpWriter {
 	
 	public void closeIndex() throws IOException {
 		writer.closeAndOptimize();
+		links.close();
 	}
 	
 

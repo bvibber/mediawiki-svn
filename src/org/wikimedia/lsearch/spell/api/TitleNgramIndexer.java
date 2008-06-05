@@ -143,5 +143,6 @@ public class TitleNgramIndexer {
 		log.info("Optimizing...");
 		indexer.closeAndOptimize();
 		indexer.snapshot();
+		links.close();
 	}
 }

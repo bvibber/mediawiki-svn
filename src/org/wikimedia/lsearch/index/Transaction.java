@@ -5,6 +5,7 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.Properties;
+import java.util.concurrent.locks.Lock;
 
 import org.apache.log4j.Logger;
 import org.wikimedia.lsearch.config.Configuration;
@@ -28,10 +29,12 @@ public class Transaction {
 	protected IndexId iid;
 	protected boolean inTransaction;
 	protected IndexId.Transaction type;
+	protected Lock lock;
 	
 	public Transaction(IndexId iid, IndexId.Transaction type){
 		this.iid = iid;
 		this.type = type;
+		this.lock = iid.getTransactionLock(type); 
 		inTransaction = false;
 	}
 	
@@ -40,6 +43,8 @@ public class Transaction {
 	 * if not, will return index to consistent state. 
 	 */
 	public void begin(){
+		// acquire lock, this will serialize transactions on indexes
+		lock.lock();
 		File backup = new File(getBackupDir());
 		File info = new File(getInfoFile());
 		if(backup.exists() && info.exists()){
@@ -62,7 +67,7 @@ public class Transaction {
 		backup.getParentFile().mkdirs();
 		try{
 			// make a copy
-			FSUtils.createHardLinkRecursive(iid.getPath(type),backup.getAbsolutePath());
+			FSUtils.createHardLinkRecursive(iid.getPath(type),backup.getAbsolutePath(),true);
 			Properties prop = new Properties();
 			// write out the status file
 			prop.setProperty("status","started at "+System.currentTimeMillis());			
@@ -74,6 +79,7 @@ public class Transaction {
 			log.info("Transaction on index "+iid+" started");
 		} catch(Exception e){
 			log.error("Error while intializing transaction: "+e.getMessage());
+			lock.unlock();
 		}
 	}
 	
@@ -141,19 +147,27 @@ public class Transaction {
 	 * Commit changes to index. 
 	 */
 	public void commit(){
-		cleanup();
-		inTransaction = false;
-		log.info("Successfully commited changes on "+iid);
+		try{
+			cleanup();
+			inTransaction = false;
+			log.info("Successfully commited changes on "+iid);
+		} finally{
+			lock.unlock();
+		}
 	}
 	
 	/**
 	 * Rollback changes to index. Returns to previous consistent state.
 	 */
 	public void rollback(){
-		if(inTransaction){
-			recover();
-			inTransaction = false;
-			log.info("Succesfully rollbacked changes on "+iid);
+		try{
+			if(inTransaction){
+				recover();
+				inTransaction = false;
+				log.info("Succesfully rollbacked changes on "+iid);
+			}
+		} finally{
+			lock.unlock();
 		}
 	}
 

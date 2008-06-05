@@ -1134,7 +1134,7 @@ public class WikiQueryParser {
 		hterms.removeAll(forbiddenTerms);
 		highlightTerms = hterms.toArray(new Term[] {});
 		
-		if(options.coreQueryOnly || words == null)
+		if(options.coreQueryOnly || words == null || (expandedWordsContents.size()==0 && expandedWordsTitle.size()==0))
 			return bq;
 		
 		// filter out stop words to SHOULD (this enables queries in form of question)
@@ -1338,7 +1338,7 @@ public class WikiQueryParser {
 		defaultAliasBoost = ALIAS_BOOST;
 
 		
-		if(qt == qs) // either null, or category query
+		if(qt==qs || qt.equals(qs)) // either null, or category query
 			return qt;
 		if(qt == null)
 			return qs;
@@ -1797,29 +1797,15 @@ public class WikiQueryParser {
 		
 		BooleanQuery full = new BooleanQuery(true);
 		full.add(q,Occur.MUST);
-		
-		/*if(words != null || words.size() > 0){
-			// main relevance
-			Query redirects = makeAlttitleForRedirects(words,20,1);
-			if(redirects != null)
-				full.add(redirects,Occur.SHOULD);
 
-			// singular words
-			ArrayList<String> singularWords = makeSingularWords(words);
-			if(singularWords != null){
-				Query redirectsSing = makeAlttitleForRedirects(singularWords,20,0.8f);
-				if(redirectsSing != null)
-					full.add(redirectsSing,Occur.SHOULD);
-			}		
-		} */
+		if(expandedWordsTitle.size() == 0)
+			return full;
 		
 		// fuzzy & wildcards
 		// NOTE: for these to work parseForTitles needs to called after parse()
-		//if(hasWildcards() || hasFuzzy()){
 		Query redirectsMulti = makeAlttitleForRedirectsMulti(expandedWordsTitle,expandedBoostTitle,expandedTypes,20,1f);
 		if(redirectsMulti != null)
 			full.add(redirectsMulti,Occur.SHOULD);
-		//}		
 
 		// add another for complete matches
 		BooleanQuery wrap = new BooleanQuery(true);

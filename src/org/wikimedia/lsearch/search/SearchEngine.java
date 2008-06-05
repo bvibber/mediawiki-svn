@@ -111,12 +111,8 @@ public class SearchEngine {
 				searchOnly = true;
 			NamespaceFilter namespaces = new NamespaceFilter((String)query.get("namespaces"));
 			SearchResults res = search(iid, searchterm, offset, limit, iwoffset, iwlimit, namespaces, what.equals("explain"), exactCase, false, searchOnly);
-			if(res!=null && res.isRetry()){
-				int retries = 0;
-				if(iid.isSplit() || iid.isNssplit()){
-					retries = iid.getSplitFactor()-2;
-				} else if(iid.isMainsplit())
-					retries = 1;
+			/*if(res!=null && res.isRetry()){
+				int retries = 1;
 				
 				while(retries > 0 && res.isRetry()){
 					res = search(iid, searchterm, offset, limit, iwoffset, iwlimit, namespaces, what.equals("explain"), exactCase, false, searchOnly);
@@ -124,7 +120,7 @@ public class SearchEngine {
 				}
 				if(res.isRetry())
 					res.setErrorMsg("Internal error, too many internal retries.");
-			}			
+			} */			
 			return res;
 		} else if (what.equals("raw") || what.equals("rawexplain")) {
 			int offset = 0, limit = 100; boolean exactCase = false;
@@ -427,8 +423,6 @@ public class SearchEngine {
 							TermDocs td1 = reader.termDocs(new Term("key",r));
 							if(td1.next()){
 								PrefixMatch m = new PrefixMatch(reader.document(td1.doc()).get("article"));
-								if(r.equals(key))
-									m.score *= PrefixIndexBuilder.EXACT_BOOST; // exact boost
 								results.add(m);
 
 							}
@@ -912,6 +906,8 @@ public class SearchEngine {
 	
 	/** Highlight search results, and set the property in ResultSet */
 	protected void highlight(IndexId iid, Query q, ArrayList<String> words, WikiSearcher searcher, Term[] terms, SearchResults res, boolean exactCase, boolean sortByPhrases, boolean alwaysIncludeFirst) throws IOException{
+		if(terms == null)
+			return;
 		int[] df = searcher.docFreqs(terms); 
 		int maxDoc = searcher.maxDoc();
 		highlight(iid,q,words,terms,df,maxDoc,res,exactCase,null,sortByPhrases,alwaysIncludeFirst);
@@ -920,6 +916,8 @@ public class SearchEngine {
 	/** Highlight search results, and set the property in ResultSet */
 	protected void highlight(IndexId iid, Query q, ArrayList<String> words, IndexSearcherMul searcher, SearchResults res, boolean sortByPhrases, boolean alwaysIncludeFirst) throws IOException{
 		Term[] terms = getTerms(q,"contents");
+		if(terms == null)
+			return;
 		int[] df = searcher.docFreqs(terms); 
 		int maxDoc = searcher.maxDoc();
 		highlight(iid,q,words,terms,df,maxDoc,res,false,null,sortByPhrases,alwaysIncludeFirst);
@@ -928,6 +926,8 @@ public class SearchEngine {
 	/** Highlight search results from titles index */
 	protected void highlightTitles(IndexId iid, Query q, ArrayList<String> words, IndexSearcherMul searcher, SearchResults res, boolean sortByPhrases, boolean alwaysIncludeFirst) throws IOException{
 		Term[] terms = getTerms(q,"alttitle");
+		if(terms == null)
+			return;
 		int[] df = searcher.docFreqs(terms); 
 		int maxDoc = searcher.maxDoc();
 		highlight(iid,q,words,terms,df,maxDoc,res,false,searcher.getIndexReader(),sortByPhrases,alwaysIncludeFirst);
@@ -937,6 +937,8 @@ public class SearchEngine {
 	/** Highlight search results from titles index using a wikisearcher */
 	protected void highlightTitles(IndexId iid, Query q, ArrayList<String> words, WikiSearcher searcher, SearchResults res, boolean sortByPhrases, boolean alwaysIncludeFirst) throws IOException{
 		Term[] terms = getTerms(q,"alttitle");
+		if(terms == null)
+			return;
 		int[] df = searcher.docFreqs(terms); 
 		int maxDoc = searcher.maxDoc();
 		highlight(iid,q,words,terms,df,maxDoc,res,false,null,sortByPhrases,alwaysIncludeFirst);

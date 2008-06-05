@@ -319,7 +319,7 @@ public class UpdateThread extends Thread {
 					beingDeployed.add(iid.toString());
 					try{
 						RMIServer.unbind(iid,cache.getLocalSearcherPool(iid));
-					} catch(IOException e) {
+					} catch(Exception e) {
 						// we gave it a shot...
 					}
 					cache.updateLocalSearcherPool(iid,null);
@@ -330,13 +330,17 @@ public class UpdateThread extends Thread {
 			// do some typical queries to preload some lucene caches, pages into memory, etc..
 			for(IndexSearcherMul is : pool.searchers){
 				try{
-					Warmup.warmupIndexSearcher(is,li.iid,true);
+					// do one to trigger caching
+					Warmup.warmupIndexSearcher(is,li.iid,true,1);
+					Warmup.waitForAggregate(pool.searchers);
+					// do proper warmup
+					Warmup.warmupIndexSearcher(is,li.iid,true,null);
 				} catch(IOException e){
 					e.printStackTrace();
 					log.warn("Error warmup up "+li+" : "+e.getMessage());
 				}
 			}
-			Warmup.waitForAggregate(pool.searchers);
+			
 			
 			// add to cache
 			cache.updateLocalSearcherPool(li.iid,pool);

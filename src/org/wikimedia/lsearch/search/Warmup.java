@@ -74,9 +74,9 @@ public class Warmup {
 	/** If set in local config file waits for aggregate fields to finish caching */
 	public static void waitForAggregate(IndexSearcherMul[] pool){
 		try{
-			boolean waitForAggregate = Configuration.open().getString("Search","warmupaggregate","false").equalsIgnoreCase("true");
+			boolean waitForAggregate = true; //Configuration.open().getString("Search","warmupaggregate","false").equalsIgnoreCase("true");
 			if(waitForAggregate){ // wait for aggregate fields to be cached
-				log.info("Wait for aggregate caches...");
+				log.info("Waiting for aggregate caches on "+pool[0].getIndexReader().directory());
 				boolean wait;
 				do{
 					wait = false;
@@ -95,8 +95,13 @@ public class Warmup {
 		}
 	}
 	
+	public static void warmupPool(IndexSearcherMul[] pool, IndexId iid, boolean useDelay, Integer useCount) throws IOException {
+		for(IndexSearcherMul is : pool)
+			warmupIndexSearcher(is,iid,useDelay,useCount);
+	}
+	
 	/** Runs some typical queries on a local index searcher to preload caches, pages into memory, etc .. */
-	public static void warmupIndexSearcher(IndexSearcherMul is, IndexId iid, boolean useDelay) throws IOException {
+	public static void warmupIndexSearcher(IndexSearcherMul is, IndexId iid, boolean useDelay, Integer useCount) throws IOException {
 		if(iid.isLinks() || iid.isPrecursor())
 			return; // no warmaup for these
 		try{
@@ -108,7 +113,7 @@ public class Warmup {
 			if(global == null)
 				global = GlobalConfiguration.getInstance();		
 
-			int count = getWarmupCount(iid);
+			int count = useCount == null? getWarmupCount(iid) : useCount;
 
 			if(iid.isSpell()){
 				if(count > 0){
@@ -199,9 +204,12 @@ public class Warmup {
 	/** Get database of example search terms for language */
 	protected static Terms getTermsForLang(String lang) {
 		String lib = Configuration.open().getLibraryPath();
-		if("en".equals(lang) || "de".equals(lang) || "es".equals(lang) || "fr".equals(lang) || "it".equals(lang) || "pt".equals(lang))
-			return new WordTerms(lib+Configuration.PATH_SEP+"dict"+Configuration.PATH_SEP+"terms-"+lang+".txt.gz");		
-		else
+		if("en".equals(lang) || "de".equals(lang) || "es".equals(lang) || "fr".equals(lang) || "it".equals(lang) || "pt".equals(lang)){
+			if( !langTerms.contains(lang) )
+				langTerms.put(lang,new WordTerms(lib+Configuration.PATH_SEP+"dict"+Configuration.PATH_SEP+"terms-"+lang+".txt.gz"));
+			
+			return langTerms.get(lang);
+		} else
 			return new SampleTerms();		
 	}
 
