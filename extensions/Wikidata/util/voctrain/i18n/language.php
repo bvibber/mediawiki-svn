@@ -31,8 +31,7 @@ class Language {
 		include("language.i18n.php");	
 		if (array_key_exists($code, $messages)) {
 			foreach ($messages[$code] as $key=>$message) {
-				$newkey=str_replace("voctrain- ","",$key);
-				$this->messages[$newkey]=$message; #messages is from the included file
+				$this->messages[$key]=$message; #messages is from the included file
 			}
 		} else {
 			throw new LocalisationException("messages problem, there's no messages for $code");
@@ -48,6 +47,28 @@ class Language {
 		$this->code=$code;
 	}
 
+
+	/** safe takes a string and makes it safe for use as a key on betawiki.
+	 * betawiki (http://translatewiki.net/) will translate my i18n for me
+	 * if I do this. So it's a fair trade.
+	 */
+	public static function safe($string) {
+		if (substr_count($string,"voctrain_")==0) {
+			$string="voctrain_".$string;
+		}
+		$string=preg_replace("|[^A-Za-z0-9_]|","_",$string);
+		return $string;
+	}
+
+	
+	/** safeMatch two strings, after safe()-ing them.
+	 * @return true if safe($one)==safe($two)
+	*/
+	public static function safeMatch($one, $two) {
+		return Language::safe($one)==Language::safe($two);
+	}
+
+	
 	/**
 	 * Get language names available for i18n, indexed by code.
 	 */
@@ -67,7 +88,7 @@ class Language {
 
 	public function translation_exists($phrase) {
 		if ($this->messages) {
-			return array_key_exists($phrase, $this->messages);
+			return array_key_exists(Language::safe($phrase), $this->messages);
 		} else {
 			throw new Exception("not initialized, code ".$this->code);
 		}
@@ -77,7 +98,7 @@ class Language {
 	 * Use printf,sprintf, or vsprintf etc...  for subsitutions */
 	public function translate($phrase) {
 		if ($this->translation_exists($phrase)) {
-			return $this->messages[$phrase];
+			return $this->messages[Language::safe($phrase)];
 		} elseif ($this->fallback && $this->fallback->translation_exists($phrase)) {
 			return $this->fallback->translate($phrase);
 		} else {
