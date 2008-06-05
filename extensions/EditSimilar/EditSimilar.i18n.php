@@ -12,7 +12,7 @@ $messages = array();
  * @author Łukasz 'TOR' Garczewski
  */
 $messages['en'] = array(
-	'editsimilar-desc'                           => 'Encourages users to edit a  similar page after saving a page',
+	'editsimilar-desc'                           => 'Encourages users to edit a similar page after saving a page',
 	'editsimilar-thanks'                         => 'Thank you for your contribution.
 Check out these related pages: $1.',
 	'editsimilar-thanks-singleresult'            => 'Thank you for your contribution.
