@@ -574,6 +574,8 @@ $settings = array(
 	),
 	'users' => array(
 		'users' => array(
+			'wgActiveUserDays' => 'int',
+			'wgActiveUserEditCount' => 'int',
 			'wgAutoConfirmAge' => 'int',
 			'wgAutoConfirmCount' => 'int',
 			'wgAllowRealName' => 'bool',
@@ -1106,6 +1108,8 @@ $settingsVersion = array(
 	'wgRCLinkDays' => array( array( '1.13alpha', '>=' ) ),
 	'wgMaximumMovedPages' => array( array( '1.13alpha', '>=' ) ),
 	'wgSpecialVersionShowHooks' => array( array( '1.13alpha', '>=' ) ),
+	'wgActiveUserDays' => array( array( '1.13alpha', '>=' ) ),
+	'wgActiveUserEditCount' => array( array( '1.13alpha', '>=' ) ),
 ## Obsolete
 	'wgProfileSampleRate' => array( array( '1.8alpha', '<' ) ),
 	'wgProfilerType' => array( array( '1.8alpha', '<' ) ),
