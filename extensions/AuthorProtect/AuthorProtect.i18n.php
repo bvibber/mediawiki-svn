@@ -1,4 +1,4 @@
- <?php
+<?php
 /**
  * Internationalisation file for the AuthorProtect extension
  * @addtogroup Extensions
