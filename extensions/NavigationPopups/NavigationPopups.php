@@ -10,7 +10,7 @@ $wgExtensionCredits['other'][] = array(
 );
 
 $dir = dirname(__FILE__) . '/';
-$wgExtensionMessagesFiles['NavigationPopups'] = $dir . 'NavigationPopups.18n.php';
+$wgExtensionMessagesFiles['NavigationPopups'] = $dir . 'NavigationPopups.i18n.php';
 
 $wgHooks['OutputPageParserOutput'][] = 'efInstallPopups';
 
