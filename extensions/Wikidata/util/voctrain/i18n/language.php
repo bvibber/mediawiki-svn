@@ -24,53 +24,41 @@ class Language {
 	}
 
 	public function loadMessages($code="Default") {
-		$messages_filename="Messages_$code.php";
-		$path=dirname(__FILE__)."/messages/$messages_filename";
-		if (file_exists($path)) {
-			include($path);	
-			if (isset($messages)) {
-				$this->messages=$messages; #messages is from the included file
-			} else {
-				throw new LocalisationException("messages file format problem, there's no messages in $path");
-			}
-			
-			if (isset($fallback)) {
-				if ($fallback===false) {
-					$this->fallback=false;
-				} else {
-					$this->fallback=new Language($fallback);
-				}
-			}
+		if ($code==="Default") {
+			$code="en";
+		}
 
-		} elseif ($code!=="Default") { #last dutch fallbacsk
-			$code="Default";
-			$this->loadMessages("Default");
+		include("language.i18n.php");	
+		if (array_key_exists($code, $messages)) {
+			$this->messages=$messages[$code]; #messages is from the included file
 		} else {
-			throw new NoSuchMessageFileException("Could not find message file for language code '$code'; file '$path' does not exist");
+			throw new LocalisationException("messages problem, there's no messages for $code");
+		}
+			
+		if (array_key_exists($code,$fallback)) {
+			if ($fallback[$code]===false) {
+				$this->fallback=false;
+			} else {
+				$this->fallback=new Language($fallback[$code]);
+			}
 		}
 		$this->code=$code;
 	}
 
 	/**
 	 * Get language names available for i18n, indexed by code.
-	 * If $customisedOnly is true, only returns codes with a messages file
-	 * modified from mediawiki (GPL applies)
 	 */
 	public static function getI18NLanguageNames() {
-
-		$languageNames=Language::getAllLanguageNames();
-
-		$messageFiles = glob( dirname(__FILE__)."/messages/Messages_*.php" );
-		$names = array();
-		foreach ( $messageFiles as $file ) {
-			$m = array();
-			if( preg_match( '/Messages_([a-z_]+)\.php$/', $file, $m ) ) {
-				$code = str_replace( '_', '-', strtolower( $m[1] ) );
-				if ( isset( $languageNames[$code] ) ) {
-					$names[$code] = $languageNames[$code];
-				}
+		include("language.i18n.php");	
+		include("Names.php");
+		$keys= array_keys($messages);
+		$names=array();
+		foreach ($keys as $key) {
+			if (array_key_exists($key,$languageNames)) {
+				$names[$key]=$languageNames[$key];
 			}
 		}
+
 		return $names;
 	}
 
