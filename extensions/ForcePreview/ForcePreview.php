@@ -42,7 +42,7 @@ function efForcePreview( &$editpage, &$buttons ) {
 	return true;
 }
 
-function efForcePreviewLivePreview( &$out, $sk ) {
+function efForcePreviewLivePreview( &$out, $sk = null ) {
 	global $wgUser, $wgRequest, $wgLivePreview, $wgTitle;
 	if(!$wgLivePreview || !$wgTitle->userCan('edit', true) )
 		return true;
