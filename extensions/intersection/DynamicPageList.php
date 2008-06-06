@@ -42,7 +42,12 @@ $wgDLPMaxResultCount = 50;              // Maximum number of results to allow
 $wgDLPAllowUnlimitedResults = true;     // Allow unlimited results
 $wgDLPAllowUnlimitedCategories = false; // Allow unlimited categories
 
-$wgExtensionFunctions[] = "wfDynamicPageList";
+if ( defined( 'MW_SUPPORTS_PARSERFIRSTCALLINIT' ) ) {
+	$wgHooks['ParserFirstCallInit'][] = 'wfDynamicPageList';
+} else {
+	$wgExtensionFunctions[] = 'wfDynamicPageList';
+}
+
 $wgExtensionCredits['parserhook'][] = array(
 	'name'           => 'DynamicPageList',
 	'description'    => 'outputs a bulleted list of the most recent items residing in a category, or a union of several categories',
@@ -58,6 +63,7 @@ function wfDynamicPageList() {
 	global $wgParser;
 	wfLoadExtensionMessages( 'DynamicPageList' );
 	$wgParser->setHook( "DynamicPageList", "DynamicPageList" );
+	return true;
 }
 
 // The callback function for converting the input text to HTML output

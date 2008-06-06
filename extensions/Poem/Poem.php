@@ -18,7 +18,11 @@
 # For more information see its page at
 # http://meta.wikimedia.org/wiki/Poem_Extension
 
-$wgExtensionFunctions[]="wfPoemExtension";
+if ( defined( 'MW_SUPPORTS_PARSERFIRSTCALLINIT' ) ) {
+	$wgHooks['ParserFirstCallInit'][] = 'wfPoemExtension';
+} else {
+	$wgExtensionFunctions[] = 'wfPoemExtension';
+}
 $wgExtensionCredits['parserhook'][] = array(
 	'name'           => 'Poem',
 	'author'         => array( 'Nikola Smolenski', 'Brion Vibber', 'Steve Sanbeg' ),
@@ -33,6 +37,7 @@ $wgExtensionMessagesFiles['Poem'] =  dirname(__FILE__) . '/Poem.i18n.php';
 
 function wfPoemExtension() {
 	$GLOBALS['wgParser']->setHook("poem","PoemExtension");
+	return true;
 }
 
 function PoemExtension( $in, $param=array(), $parser=null ) {

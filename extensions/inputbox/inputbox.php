@@ -19,7 +19,11 @@
 /**
  * Register the Inputbox extension with MediaWiki
  */ 
-$wgExtensionFunctions[] = 'efInputBoxSetup';
+if ( defined( 'MW_SUPPORTS_PARSERFIRSTCALLINIT' ) ) {
+	$wgHooks['ParserFirstCallInit'][] = 'efInputBoxSetup';
+} else {
+	$wgExtensionFunctions[] = 'efInputBoxSetup';
+}
 $wgExtensionCredits['parserhook'][] = array(
 	'name'           => 'Inputbox',
 	'author'         => array( 'Erik Moeller', 'Leonardo Pimenta', 'Rob Church' ),
@@ -37,6 +41,7 @@ $wgExtensionMessagesFiles['Inputbox'] = $dir . 'InputBox.i18n.php';
 function efInputBoxSetup() {
 	global $wgParser;
 	$wgParser->setHook( 'inputbox', 'efInputBoxRender' );
+	return true;
 }
 
 function efInputBoxRender( $input, $params, $parser ) {

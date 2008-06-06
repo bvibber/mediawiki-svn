@@ -44,7 +44,11 @@ $wgExtensionCredits['parserhook'][] = array(
 );
 $wgExtensionMessagesFiles['FixedImage'] =  dirname(__FILE__) . '/FixedImage.i18n.php';
 
-$wgExtensionFunctions[] = 'fixedImageSetup';
+if ( defined( 'MW_SUPPORTS_PARSERFIRSTCALLINIT' ) ) {
+	$wgHooks['ParserFirstCallInit'][] = 'fixedImageSetup';
+} else {
+	$wgExtensionFunctions[] = 'fixedImageSetup';
+}
 
 function fixedImageSetup() {
 	global $wgParser, $wgFixedImageHooks;
@@ -53,6 +57,7 @@ function fixedImageSetup() {
 			"return fixedImageHandler('$key', \$text, \$params);" );
 		$wgParser->setHook( $key, $wrapper );
 	}
+	return true;
 }
 
 /**
