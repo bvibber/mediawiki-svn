@@ -22,7 +22,7 @@ class WhoIsWatching extends SpecialPage
     }
 
     function execute($par) {
-        global $wgRequest, $wgOut, $wgCanonicalNamespaceNames, $whoiswatching_nametype;
+        global $wgRequest, $wgOut, $wgCanonicalNamespaceNames, $whoiswatching_nametype, $whoiswatching_allowaddingpeople;
 
         $this->setHeaders();
         $wgOut->setPagetitle(wfMsg('whoiswatching'));
@@ -77,27 +77,30 @@ class WhoIsWatching extends SpecialPage
         asort($watchingusers);
         foreach ($watchingusers as $id => $link)
             $wgOut->addWikiText($link);
-        
-        $wgOut->addWikiText("== ".wfMsg('specialwhoiswatchingaddusers')." ==");
-        
-        $wgOut->addHTML("<form method=\"post\">");
-        $wgOut->addHTML("<input type=\"hidden\" value=\"".sha1("whoiswatching")."\" name=\"whoiswatching\" />");
-        $wgOut->addHTML("<div style=\"border: thin solid #000000\"><table cellpadding=\"15\" cellspacing=\"0\" border=\"0\">");
-        $wgOut->addHTML("<tr><td>");
-        $wgOut->addHTML('<select name="idArray[]" size="12" multiple="multiple">');
-        $users = array();
-        $res = $dbr->select( 'user', 'user_name', '', __METHOD__);
-        for ( $row = $dbr->fetchObject($res); $row; $row = $dbr->fetchObject($res)) {
-            $u = User::newFromName($row->user_name);
-            if (!array_key_exists($u->getID(), $watchingusers))
-                if ($u->isAllowed('read') && ($u->getEmail() != ''))
-                    $users[strtolower($u->getRealName())] = $u->getID();
+
+        if ($whoiswatching_allowaddingpeople)
+        {
+                $wgOut->addWikiText("== ".wfMsg('specialwhoiswatchingaddusers')." ==");
+                
+                $wgOut->addHTML("<form method=\"post\">");
+                $wgOut->addHTML("<input type=\"hidden\" value=\"".sha1("whoiswatching")."\" name=\"whoiswatching\" />");
+                $wgOut->addHTML("<div style=\"border: thin solid #000000\"><table cellpadding=\"15\" cellspacing=\"0\" border=\"0\">");
+                $wgOut->addHTML("<tr><td>");
+                $wgOut->addHTML('<select name="idArray[]" size="12" multiple="multiple">');
+                $users = array();
+                $res = $dbr->select( 'user', 'user_name', '', __METHOD__);
+                for ( $row = $dbr->fetchObject($res); $row; $row = $dbr->fetchObject($res)) {
+                $u = User::newFromName($row->user_name);
+                if (!array_key_exists($u->getID(), $watchingusers))
+                        if ($u->isAllowed('read') && ($u->getEmail() != ''))
+                        $users[strtolower($u->getRealName())] = $u->getID();
+                }
+                ksort($users);
+                foreach ($users as $name => $id)
+                $wgOut->addHTML("<option value=\"".$id."\">".$name."</option>");
+                $wgOut->addHTML('</select></td><td>');
+                $wgOut->addHTML("<input type=\"submit\" value=\"".wfMsg('specialwhoiswatchingaddbtn')."\" />");
+                $wgOut->addHTML("</td></tr></table></div></form>");
         }
-        ksort($users);
-        foreach ($users as $name => $id)
-            $wgOut->addHTML("<option value=\"".$id."\">".$name."</option>");
-        $wgOut->addHTML('</select></td><td>');
-        $wgOut->addHTML("<input type=\"submit\" value=\"".wfMsg('specialwhoiswatchingaddbtn')."\" />");
-        $wgOut->addHTML("</td></tr></table></div></form>");
     }
 }
