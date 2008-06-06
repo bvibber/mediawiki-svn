@@ -84,3 +84,23 @@ $messages['vi'] = array(
 	'antibot-desc' => 'Bộ khung đơn giản để kiểm tra spambot và tải trang tự động',
 );
 
+/** Cantonese
+ * @author Shinjiman
+ */
+$messages['yue'] = array(
+	'antibot-desc' => '防垃圾機械人檢查同觸發嘅簡單框架',
+);
+
+/** Simplified Chinese
+ * @author Shinjiman
+ */
+$messages['zh-hans'] = array(
+	'antibot-desc' => '防垃圾机械人检查和触发的简单框架',
+);
+
+/** Traditoinal Chinese
+ * @author Shinjiman
+ */
+$messages['zh-hant'] = array(
+	'antibot-desc' => '防垃圾機械人檢查和觸發的簡單框架',
+);
