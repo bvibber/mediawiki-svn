@@ -564,7 +564,7 @@ class HAW_deck
   var $hdmlcardset;
 
   // browser dependent properties
-  var $pureHTML = true;	        	// Big-screen-HTML-code (default)
+  var $pureHTML = false;	        	// Big-screen-HTML-code ("simulator", causes trouble with unrecognized devices)
   var $PDAstyle = false;		// PDA browsers needs special HTML code
   var $iModestyle = false;		// cHTML too
   var $upbrowser = false;               // UP browser

@@ -197,7 +197,9 @@ function HAWIKI_parser(&$input, $isFirstColumn)
 						"name" => $imagename,
 						"language" => $_SESSION["language"],
 						"width" => $width );
-					$po["src"] = "image.php?" . http_build_query($imageInfo, "", "&");
+					// Warning: need to use &amp; here proves existence of horrible
+					// bad awful code upstream which doesn't produce output correctly.
+					$po["src"] = "image.php?" . http_build_query($imageInfo, "", "&amp;");
 							
 					$po["token"] = HAWIKI_TOKEN_IMAGE;
 					return($po);

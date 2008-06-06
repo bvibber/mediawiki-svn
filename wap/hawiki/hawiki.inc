@@ -140,8 +140,8 @@ class HAWIKI_page
 		$this->deck->set_height(HAWIKI_DISP_HEIGHT);
 		$this->deck->set_disp_bgcolor(HAWIKI_DISP_BGCOLOR);
 
-		if (defined('HAWIKI_SKIN'))
-			$this->deck->use_simulator(HAWIKI_SKIN);
+		//if (defined('HAWIKI_SKIN'))
+		//	$this->deck->use_simulator(HAWIKI_SKIN);
 
 		if (isset($lang) && (strlen($lang) == 2))
 		{
