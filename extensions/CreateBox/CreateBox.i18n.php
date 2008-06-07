@@ -12,7 +12,8 @@ $messages = array();
  * @author Ross McClure
  */
 $messages['en'] = array(
-	'create' => 'Create',
+	'createbox-desc'   => 'Specialised inputbox for page creation',
+	'createbox-create' => 'Create',
 	'createbox-exists' => "Sorry, \"'''{{FULLPAGENAME}}'''\" already " .
 			"exists.\n\nYou cannot create this page, but you can " .
 			"[{{fullurl:{{FULLPAGENAME}}|action=edit}} edit it], " .
@@ -25,7 +26,7 @@ $messages['en'] = array(
  * @author Jack Phoenix
  */
 $messages['fi'] = array (
-	'create' => 'Luo',
+	'createbox-create' => 'Luo',
 	'createbox-exists' => "Pahoittelut, \"'''{{FULLPAGENAME}}'''\" on jo " .
 			"olemassa.\n\nEt voi luoda tätä sivua, mutta voit " .
 			"[{{fullurl:{{FULLPAGENAME}}|action=edit}} muokata sitä], " .

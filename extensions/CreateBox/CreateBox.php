@@ -36,11 +36,12 @@ if ( defined( 'MW_SUPPORTS_PARSERFIRSTCALLINIT' ) ) {
 
 $wgHooks['UnknownAction'][] = 'actionCreate';
 $wgExtensionCredits['parserhook'][] = array(
-	'name' => 'CreateBox',
-	'url' => 'http://www.mediawiki.org/wiki/Extension:CreateBox',
-	'description' => 'Specialized Inputbox for page creation',
-	'author' => 'Ross McClure',
-	'version' => '1.6'
+	'name'           => 'CreateBox',
+	'url'            => 'http://www.mediawiki.org/wiki/Extension:CreateBox',
+	'description'    => 'Specialized inputbox for page creation',
+	'author'         => 'Ross McClure',
+	'version'        => '1.6',
+	'descriptionmsg' => 'createbox-desc',
 );
 
 $dir = dirname(__FILE__) . '/';
@@ -75,7 +76,7 @@ function actionCreate($action, $article) {
         global $wgOut;
         $text = $article->getTitle()->getPrefixedText();
         $wgOut->setPageTitle($text);
-        $wgOut->setHTMLTitle(wfMsg('pagetitle', $text.' - '.wfMsg('create')));
+        $wgOut->setHTMLTitle(wfMsg('pagetitle', $text.' - '.wfMsg('createbox-create')));
         $wgOut->addWikiText(wfMsg('createbox-exists'));
     }
     return false;
@@ -109,7 +110,7 @@ function acMakeBox($input, $argv, &$parser) {
     $width = acGetOption($input, 'width', 0);
     $align = acGetOption($input, 'align', 'center');
     $br = ((acGetOption($input, 'break', 'no')=='no') ? '' : '<br />');
-    $label = acGetOption($input, 'buttonlabel', wfMsgHtml('create'));
+    $label = acGetOption($input, 'buttonlabel', wfMsgHtml('createbox-create'));
     $output=<<<ENDFORM
 <div class="createbox" align="{$align}">
 <form name="createbox" action="{$submit}" method="get" class="createboxForm">
