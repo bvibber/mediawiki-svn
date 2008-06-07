@@ -6,8 +6,6 @@
 # Words starting with '%' (ie %action, or %questions_total) are
 # "variable names", for use by the program. Don't translate those!
 
-
-
 $fallback=array(
 	"en"=>false,
 	"nl"=>"en"
@@ -16,7 +14,6 @@ $fallback=array(
 $messages=array();
 
 /** English */
-
 $messages["en"] =array(
 	"voctrain_Hello_World"=>"HELLO WIKI!",
 	"voctrain_Permission_Denied"=>"Permission Denied",
@@ -139,61 +136,59 @@ $messages["qqq"] = array(
 /** Dutch */
 $messages["nl"]=array(
 	"voctrain_Hello_World"=>"HALLO WIKI!",
-	"voctrain_Permission_Denied"=>"Toestemming Geweigerd",
-	"voctrain_try_again_"=>"probeer opnieuw?",
-	"voctrain_Action_unknown"=>"Aktie (action) onbekend",
+	"voctrain_Permission_Denied"=>"Toestemming geweigerd",
+	"voctrain_try_again_"=>"opnieuw proberen?",
+	"voctrain_Action_unknown"=>"Actie onbekend",
 	"voctrain_I_don_t_know_what_to_do_with_action_" =>
-		"Ik weet niet wat ik doen moet met '%action'.",
+		"Het is niet duidelijk wat te doen met '%action'.",
 	"voctrain_User_added" => "Gebruiker toegevoegd",
 	"voctrain_Hello_username_welcome_to_the_omega_language_trainer" => 
-		"Hallo, %username, welkom bij de omega taaltrainer",
+		"Hallo, %username. Welkom bij de omega taaltrainer",
 	"voctrain_continue"=>"doorgaan",
 	"voctrain_hello_place"=>"hallo daar %place",
 	"voctrain_bye"=>"tot ziens",
-	"voctrain_Set_up_your_exercise"=>"Stel uw oefening op",
+	"voctrain_Set_up_your_exercise"=>"Uw oefening opstellen",
 	"voctrain_Number_of_questions"=>"Aantal vragen",
 	"voctrain_Languages"=>"Talen",
-	"voctrain_Please_specify_the_languages_you_want_to_test_in"=>"Geef aub de talen op waarin u wilt oefenen in",
-	"voctrain_eg_eng_for_English_deu_for_Deutch_German_"=>"(bijv, eng voor English (Engels), deu voor Deutch (Duits)).",
+	"voctrain_Please_specify_the_languages_you_want_to_test_in"=>"Geef alstublieft de talen op waarin u wilt oefenen",
+	"voctrain_eg_eng_for_English_deu_for_Deutch_German_"=>"(bijvoorbeeld eng voor English (Engels), deu voor Duits).",
 	"voctrain_Depending_on_your_test_set_some_combinations_might_work_better_than_others_"=>"Afhankelijk van uw testset, werken sommige combinaties beter dan anderen.",
 	"voctrain_Questions"=>"Vragen",
 	"voctrain_Answers"=>"Antwoorden",
-	"voctrain_start_exercise"=>"start oefening",
+	"voctrain_start_exercise"=>"oefening starten",
 	"voctrain_collection"=>"collectie",
 	"voctrain_ISO_639_3_format"=>"ISO-639-3 formaat",
 	"voctrain_There_are_questions_remaining_questions_remaining_out_of_a_total_of_questions_total_"=>
 		"Er zijn nog %questions_remaining vragen over, uit een totaal van %questions_total.",
 	"voctrain_Definition"=>"Definitie",
-	"voctrain_Dictionary_definition_to_help_you"=>"Woordenboek definitie om u te helpen",
+	"voctrain_Dictionary_definition_to_help_you"=>"Woordenboekdefinitie om u te helpen",
 	"voctrain_Word"=>"Woord",
-	"voctrain_Please_type_your_answer_here"=>"Typ alstublieft hier uw antwoord.",
-	"voctrain_submit_answer"=>"antwoord submitten",
-	"voctrain_peek"=>"spiek",
-	"voctrain_skip"=>"sla over",
+	"voctrain_Please_type_your_answer_here"=>"Geef hier uw antwoord in.",
+	"voctrain_submit_answer"=>"antwoord opslaan",
+	"voctrain_peek"=>"spieken",
+	"voctrain_skip"=>"overslaan",
 	"voctrain_I_know_it_do_not_ask_again"=>"Ik weet dit antwoord/vraag niet nogmaals",
 	"voctrain_abort_exercise"=>"Oefening afbreken",
 	"voctrain_list_answers"=>"antwoordlijst",
 	"voctrain_Question"=>"Vraag",
-	"voctrain_The_word_to_translate"=>"Het te-vertalen woord",
+	"voctrain_The_word_to_translate"=>"Het te vertalen woord",
 	"voctrain_Answer"=>"Antwoord",
 	"voctrain_one_of"=>"een van",
-	"voctrain_list_of_questions_and_answers"=>"list van vragen en antwoorden",
+	"voctrain_list_of_questions_and_answers"=>"lijst van vragen en antwoorden",
 	"voctrain_Answer_s_"=>"Antwoord(en)",
-	"voctrain_logout"=>"uitloggen",
+	"voctrain_logout"=>"afbeleden",
 	"voctrain_Powered_by"=>"Aangedreven door",
 	"voctrain_Omegawiki"=>"Omegawiki",
 	"voctrain_Exercise_complete"=>"Oefening voltooid",
 	"voctrain_Exercise_terminated"=>"Oefening afgebroken",
-	"voctrain_Start_a_new_exercise"=>"Start een nieuwe oefening",
+	"voctrain_Start_a_new_exercise"=>"Nieuwe oefening starten",
 	"voctrain_User_name"=>"Gebruikersnaam",
 	"voctrain_Password"=>"Wachtwoord",
-	"voctrain_Login"=>"Inloggen",
+	"voctrain_Login"=>"Aanmelden",
 	"voctrain_Create_new_user"=>"Nieuwe gebruiker aanmaken",
-	"voctrain_Switch_language"=>"Wijzig taal",
+	"voctrain_Switch_language"=>"Taal wijzigen",
 	"voctrain_Language"=>"Taal",
 	"voctrain_Definitions"=>"Definities",
 	"voctrain_Could_not_create_new_user"=>"Kon geen nieuwe gebruiker aanmaken",
 	"voctrain_Type_a_username_and_optional_password_or_try_a_different_username_"=>"Typ een gebruikersnaam en (facultatief) paswoord, (of probeer een andere gebruikersnaam)"
 );
-
-?>
