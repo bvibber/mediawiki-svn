@@ -240,7 +240,10 @@ class Controller {
 			$this->view->footer();
 			exit;
 		} else {
+			$this->view->header(false);
 			$this->view->failed_new_user();
+			$this->view->footer();
+			exit;
 		}
 	}
 

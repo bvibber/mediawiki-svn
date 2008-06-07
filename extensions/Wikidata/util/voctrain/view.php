@@ -318,7 +318,7 @@ class View {
 
 	public function failed_new_user() {
 		$this->language->i18nprint("<h1> <|Could not create new user|> </h1>\n");
-		$this->language->i18nprint("<|Type a username and optional password, (or try a different username)|>\n");
+		$this->language->i18nprint("<|Type a username and optional password, (or try a different username)|><br/>\n");
 		$this->language->i18nprint("<a href='?'><|try again?|></a>\n");
 	}
 
