@@ -1,7 +1,7 @@
 <?php
 /*
 
- CreateBox v1.5 -- Specialized Inputbox for page creation
+ CreateBox v1.6 -- Specialized Inputbox for page creation
 
  Author: Ross McClure
  http://www.mediawiki.org/wiki/User:Algorithm
@@ -24,37 +24,36 @@
  http://www.gnu.org/copyleft/gpl.html
 
  To install, add following to LocalSettings.php
-   include("extensions/create.php");
-
+   require_once("extensions/create.php");
 */
 
-$wgExtensionFunctions[] = "wfCreateBox";
+//Avoid unstubbing $wgParser too early on modern (1.12+) MW versions, as per r35980
+if ( defined( 'MW_SUPPORTS_PARSERFIRSTCALLINIT' ) ) {
+	$wgHooks['ParserFirstCallInit'][] = 'wfCreateBox';
+} else {
+	$wgExtensionFunctions[] = 'wfCreateBox';
+}
+
 $wgHooks['UnknownAction'][] = 'actionCreate';
 $wgExtensionCredits['parserhook'][] = array(
 	'name' => 'CreateBox',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:CreateBox',
 	'description' => 'Specialized Inputbox for page creation',
 	'author' => 'Ross McClure',
-	'version' => '1.5'
+	'version' => '1.6'
 );
 
+$dir = dirname(__FILE__) . '/';
+$wgExtensionMessagesFiles['CreateBox'] = $dir . 'CreateBox.i18n.php';
+
 function wfCreateBox() {
-    global $wgParser, $wgMessageCache;
-
-    $wgMessageCache->addMessages( array(
-        'create' => "Create",
-        'create_exists' => "Sorry, \"'''{{FULLPAGENAME}}'''\" already " .
-               "exists.\n\nYou cannot create this page, but you can " .
-               "[{{fullurl:{{FULLPAGENAME}}|action=edit}} edit it], " .
-               "[{{fullurl:{{FULLPAGENAME}}}} read it], or choose to " .
-               "create a different page using the box below.\n\n" .
-               "<createbox>break=no</createbox>"
-    ));
-
-    $wgParser->setHook( "createbox", "acMakeBox" );
+    global $wgParser;
+    $wgParser->setHook( 'createbox', 'acMakeBox' );
+	return true;
 }
 
 function actionCreate($action, $article) {
+	wfLoadExtensionMessages('CreateBox');
     if($action != 'create') return true;
 
     global $wgRequest;
@@ -77,7 +76,7 @@ function actionCreate($action, $article) {
         $text = $article->getTitle()->getPrefixedText();
         $wgOut->setPageTitle($text);
         $wgOut->setHTMLTitle(wfMsg('pagetitle', $text.' - '.wfMsg('create')));
-        $wgOut->addWikiText(wfMsg('create_exists'));
+        $wgOut->addWikiText(wfMsg('createbox-exists'));
     }
     return false;
 }
@@ -91,6 +90,7 @@ function acGetOption(&$input,$name,$value=NULL) {
 }
 
 function acMakeBox($input, $argv, &$parser) {
+	wfLoadExtensionMessages('CreateBox');
     global $wgRequest, $wgScript;
     if($wgRequest->getVal('action')=='create') {
         $prefix = $wgRequest->getVal('prefix');
@@ -106,10 +106,10 @@ function acMakeBox($input, $argv, &$parser) {
         $text = acGetOption($input,'default');
     }
     $submit = htmlspecialchars($wgScript);
-    $width = acGetOption($input,'width',0);
-    $align = acGetOption($input,'align','center');
-    $br = ((acGetOption($input,'break','no')=='no') ? '' : '<br />');
-    $label = acGetOption($input,'buttonlabel',wfMsgHtml("createarticle"));
+    $width = acGetOption($input, 'width', 0);
+    $align = acGetOption($input, 'align', 'center');
+    $br = ((acGetOption($input, 'break', 'no')=='no') ? '' : '<br />');
+    $label = acGetOption($input, 'buttonlabel', wfMsgHtml('create'));
     $output=<<<ENDFORM
 <div class="createbox" align="{$align}">
 <form name="createbox" action="{$submit}" method="get" class="createboxForm">
