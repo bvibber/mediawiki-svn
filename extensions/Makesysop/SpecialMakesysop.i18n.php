@@ -1577,6 +1577,7 @@ $messages['yue'] = array(
 	'group-steward'        => '執行員',
 	'group-steward-member' => '執行員',
 	'grouppage-steward'    => '{{ns:project}}:執行員',
+	'right-makesysop'      => '整用戶做操作員或事務員',
 );
 
 $messages['zh-classical'] = array(
@@ -1609,6 +1610,7 @@ $messages['zh-hans'] = array(
 	'group-steward'        => '监管员',
 	'group-steward-member' => '监管员',
 	'grouppage-steward'    => '{{ns:project}}:监管员',
+	'right-makesysop'      => '将用户设置为操作员或行政员',
 );
 
 $messages['zh-hant'] = array(
@@ -1630,4 +1632,5 @@ $messages['zh-hant'] = array(
 	'group-steward'        => '監管員',
 	'group-steward-member' => '監管員',
 	'grouppage-steward'    => '{{ns:project}}:監管員',
+	'right-makesysop'      => '將用戶設置為操作員或行政員',
 );

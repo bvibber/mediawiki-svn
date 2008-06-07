@@ -1233,6 +1233,7 @@ $messages['yue'] = array(
 	'makebot-logpagetext'     => '哩頁紀錄各用户啲 [[{{MediaWiki:Grouppage-bot}}|機械人]]身份記錄。',
 	'makebot-logentrygrant'   => '畀咗[[$1]]嘅機械人身份',
 	'makebot-logentryrevoke'  => ' 收番[[$1]]嘅機械人身份',
+	'right-makebot'           => '畀同收機械人旗',
 );
 
 /* Chinese (Simplified) (下一次登录) */
@@ -1255,6 +1256,7 @@ $messages['zh-hans'] = array(
 	'makebot-logpagetext'     => '这是用户[[{{MediaWiki:Grouppage-bot}}|机器人]]更改的日志。',
 	'makebot-logentrygrant'   => '授予[[$1]]机器人身份',
 	'makebot-logentryrevoke'  => ' 中止[[$1]]的机器人身份',
+	'right-makebot'           => '授予和终止机器人身份',
 );
 
 /* Chinese (Traditional) (KilluaZaoldyeck, Shinjiman) */
@@ -1277,6 +1279,7 @@ $messages['zh-hant'] = array(
 	'makebot-logpagetext'     => '這是用戶[[{{MediaWiki:Grouppage-bot}}|機器人]]更改的記錄。',
 	'makebot-logentrygrant'   => '授予[[$1]]機器人身分',
 	'makebot-logentryrevoke'  => ' 終止[[$1]]機器人身分',
+	'right-makebot'           => '授予和終止機器人身分',
 );
 
 /* Chinese (Hong Kong) (KilluaZaoldyeck, Shinjiman) */
@@ -1293,4 +1296,5 @@ $messages['zh-hk'] = array(
 	'makebot-logpagetext'     => '這是用戶[[{{MediaWiki:Grouppage-bot}}|機械人]]更改的記錄。',
 	'makebot-logentrygrant'   => '授予[[$1]]機械人身份',
 	'makebot-logentryrevoke'  => ' 終止[[$1]]機械人身份',
+	'right-makebot'           => '授予和終止機械人身份',
 );
