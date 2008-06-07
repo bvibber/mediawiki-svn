@@ -71,7 +71,10 @@ $messages["en"] =array(
 	"voctrain_Switch_language"=>"Switch language",
 	"voctrain_Language"=>"Language",
 	"voctrain_Log_in"=>"Log in",
-	"voctrain_Omegawiki_vocabulary_trainer"=>"Omegawiki vocabulary trainer"
+	"voctrain_Omegawiki_vocabulary_trainer"=>"Omegawiki vocabulary trainer",
+	"voctrain_Definitions"=>"Definitions",
+	"voctrain_Could_not_create_new_user"=>"Could not create new user",
+	"voctrain_Type_a_username_and_optional_password_or_try_a_different_username_"=>"Type a username and optional password, (or try a different username)"
 );
 
 /** Message documentation */
@@ -187,7 +190,10 @@ $messages["nl"]=array(
 	"voctrain_Login"=>"Inloggen",
 	"voctrain_Create_new_user"=>"Nieuwe gebruiker aanmaken",
 	"voctrain_Switch_language"=>"Wijzig taal",
-	"voctrain_Language"=>"Taal"
+	"voctrain_Language"=>"Taal",
+	"voctrain_Definitions"=>"Definities",
+	"voctrain_Could_not_create_new_user"=>"Kon geen nieuwe gebruiker aanmaken",
+	"voctrain_Type_a_username_and_optional_password_or_try_a_different_username_"=>"Typ een gebruikersnaam en (facultatief) paswoord, (of probeer een andere gebruikersnaam)"
 );
 
 ?>

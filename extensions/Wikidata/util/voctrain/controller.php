@@ -240,7 +240,7 @@ class Controller {
 			$this->view->footer();
 			exit;
 		} else {
-			var_dump($success);
+			$this->view->failed_new_user();
 		}
 	}
 
