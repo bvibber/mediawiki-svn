@@ -46,6 +46,13 @@ $messages['eo'] = array(
 	'fixedimage-desc' => 'Aldonas etikedon <tt><nowiki><fundraising></nowiki></tt> kiel bildon',
 );
 
+/** Persian (فارسی)
+ * @author Huji
+ */
+$messages['fa'] = array(
+	'fixedimage-desc' => 'برچسب <tt><nowiki><fundraising></nowiki></tt> را به عنوان تصویر اضافه می‌کند',
+);
+
 /** French (Français)
  * @author Grondin
  */

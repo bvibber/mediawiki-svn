@@ -65,6 +65,16 @@ NE ENIGU ion ajn!',
 	'simpleantispam-desc'  => 'Aldonas simplan kontraŭspamilon/kontraŭrobotilon al paĝoj',
 );
 
+/** Persian (فارسی)
+ * @author Huji
+ */
+$messages['fa'] = array(
+	'simpleantispam'       => 'ویرایش شما مکانیسم ضدهرزنگاری را فعال کرد',
+	'simpleantispam-label' => "بررسی ضدهرزنگاری.
+این قسمت را پر '''نکنید'''!",
+	'simpleantispam-desc'  => 'یک بررسی ساده برای هرزنگاری/ربات به فرم‌ها اضافه می‌کند',
+);
+
 /** Finnish (Suomi)
  * @author Jack Phoenix
  * @author Nike

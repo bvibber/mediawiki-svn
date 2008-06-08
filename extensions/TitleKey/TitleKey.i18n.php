@@ -42,6 +42,13 @@ $messages['eo'] = array(
 	'titlekey-desc' => 'Etendilo por serĉosugestoj laŭ titola prefikso',
 );
 
+/** Persian (فارسی)
+ * @author Huji
+ */
+$messages['fa'] = array(
+	'titlekey-desc' => 'پشتوانه پیشنهاد جستجو بر اساس پیشوند عنوان',
+);
+
 /** French (Français)
  * @author Grondin
  */
