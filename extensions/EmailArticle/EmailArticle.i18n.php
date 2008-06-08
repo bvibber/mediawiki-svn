@@ -312,7 +312,9 @@ $messages['sk'] = array(
 	'ea-selectcss'        => 'Vyberte CSS štýl',
 );
 
-/** Sundanese (Basa Sunda) */
+/** Sundanese (Basa Sunda)
+ * @author Irwangatot
+ */
 $messages['su'] = array(
 	'ea-send' => 'Kintun!',
 );

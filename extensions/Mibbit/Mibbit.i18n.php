@@ -137,7 +137,9 @@ $messages['hi'] = array(
 	'mibbit-desc' => 'अन्य विकि सदस्योंसे इसी समय चैट करने के लिये उपयुक्त एक [[Special:Mibbit|विशेष पृष्ठ]]',
 );
 
-/** Italian (Italiano) */
+/** Italian (Italiano)
+ * @author Darth Kule
+ */
 $messages['it'] = array(
 	'right-mibbit' => 'Autorizzato a usare la chat di Mibbit',
 );

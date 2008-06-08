@@ -338,7 +338,9 @@ $messages['os'] = array(
 	'showprocesslist-time' => 'Рæстæг',
 );
 
-/** Polish (Polski) */
+/** Polish (Polski)
+ * @author Sp5uhe
+ */
 $messages['pl'] = array(
 	'showprocesslist' => 'Pokaż listę procesów',
 );

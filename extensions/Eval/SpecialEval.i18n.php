@@ -211,7 +211,9 @@ $messages['oc'] = array(
 	'eval_code'   => 'Còde',
 );
 
-/** Polish (Polski) */
+/** Polish (Polski)
+ * @author Airwolf
+ */
 $messages['pl'] = array(
 	'eval_code' => 'Kod',
 );

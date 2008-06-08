@@ -891,7 +891,9 @@ $messages['pms'] = array(
 	'usernameblacklist-invalid-lines' => '{{PLURAL:$1|La riga|Le righe}} ant la lista nèira dë stranòm ambelessì sota a {{PLURAL:$1|l\'é nen bon-a|son nen bon-a}}; për piasì, ch\'a-j daga deuit anans che salvé:',
 );
 
-/** Pashto (پښتو) */
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
 $messages['ps'] = array(
 	'blacklistedusername' => 'د تورلړليک کارن-نوم',
 );

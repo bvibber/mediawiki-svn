@@ -558,6 +558,7 @@ $messages['os'] = array(
  * @author McMonster
  * @author Dodek
  * @author Sp5uhe
+ * @author Airwolf
  */
 $messages['pl'] = array(
 	'importusers-uploadfile'              => 'Prześlij plik',

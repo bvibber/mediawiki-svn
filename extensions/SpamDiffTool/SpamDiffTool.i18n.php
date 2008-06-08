@@ -410,6 +410,8 @@ Asseguratz-vos de blocar pas de domenis entièrs que detenon cèrts comptadors d
 
 /** Polish (Polski)
  * @author Sp5uhe
+ * @author Sp5uhe
+ * @author Wpedzich
  */
 $messages['pl'] = array(
 	'spamdifftool_summary'        => 'Dodawanie do czarnej listy spamu',

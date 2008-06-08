@@ -153,6 +153,7 @@ $messages['af'] = array(
  * @author OsamaK
  * @author Alnokta
  * @author ترجمان05
+ * @author ترجمان05
  */
 $messages['ar'] = array(
 	'viewapc'                       => 'معلومات إيه بي سي',

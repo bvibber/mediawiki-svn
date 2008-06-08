@@ -393,6 +393,8 @@ Lo gestionari del sit es pas responsable de lor contengut.',
 
 /** Polish (Polski)
  * @author Derbeth
+ * @author Sp5uhe
+ * @author Siebrand
  */
 $messages['pl'] = array(
 	'talkhere-foottext'    => 'Powyższe komentarze mogły zostać zostawione przez gości.
@@ -421,7 +423,9 @@ J'operator d'ës sit-sì a peulo nen pijesse la responsabilità dël contnù dë
 	'talkhere-collapse'    => "stërma l'editor",
 );
 
-/** Pashto (پښتو) */
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
 $messages['ps'] = array(
 	'talkhere-talkpage' => 'د خبرواترو مخ',
 );

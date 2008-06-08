@@ -237,7 +237,9 @@ $messages['fr'] = array(
 	'createsigndoc-error-alreadycreated' => 'Le document d’authentification pour « $1 » a déjà été créé.',
 );
 
-/** Irish (Gaeilge) */
+/** Irish (Gaeilge)
+ * @author Moilleadóir
+ */
 $messages['ga'] = array(
 	'createsigndoc-create' => 'Cruthaigh',
 );

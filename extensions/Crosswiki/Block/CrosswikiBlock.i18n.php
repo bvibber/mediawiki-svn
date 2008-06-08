@@ -655,7 +655,9 @@ Zréck op:
 	'crosswikiunblock-local'        => 'Op dëser Säit kënne lokal Spären net opgehuewe ginn. Benotzt w.e.g. [[Special:Ipblocklist]]',
 );
 
-/** Moksha (Мокшень) */
+/** Moksha (Мокшень)
+ * @author Khazar II
+ */
 $messages['mdf'] = array(
 	'crosswikiblock-alreadyblocked' => '"$1" сёлкфоль ни',
 );

@@ -69,7 +69,9 @@ $messages['bg'] = array(
 	'disabledusers-summary'         => 'Това е списък с потребителски сметки, които са били деактивирани чрез PasswordReset.',
 );
 
-/** Church Slavic (Словѣньскъ) */
+/** Church Slavic (Словѣньскъ)
+ * @author ОйЛ
+ */
 $messages['cu'] = array(
 	'passwordreset-username' => 'по́льꙃєватєлꙗ и́мѧ',
 );

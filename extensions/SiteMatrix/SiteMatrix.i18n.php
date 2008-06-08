@@ -698,7 +698,10 @@ $messages['ksh'] = array(
 	'sitematrix-fishbowl'  => '(et Ändere is beschrängk)',
 );
 
-/** Latin (Latina) */
+/** Latin (Latina)
+ * @author UV
+ * @author SPQRobin
+ */
 $messages['la'] = array(
 	'sitematrix'           => 'Vicimediorum vici omnia',
 	'sitematrix-summary'   => 'Haec pagina specialis monstrat indicem omnium Vicimediorum vici.',

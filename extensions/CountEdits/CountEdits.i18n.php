@@ -116,7 +116,9 @@ $messages['cs'] = array(
 	'countedits-mostactive'   => 'Nejaktivnější přispěvatelé',
 );
 
-/** Church Slavic (Словѣньскъ) */
+/** Church Slavic (Словѣньскъ)
+ * @author ОйЛ
+ */
 $messages['cu'] = array(
 	'countedits-username' => 'по́льꙃєватєлꙗ и́мѧ :',
 );

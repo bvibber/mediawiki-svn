@@ -642,7 +642,9 @@ $messages['lb'] = array(
 	'regexblock-view-time'           => 'den $1',
 );
 
-/** Moksha (Мокшень) */
+/** Moksha (Мокшень)
+ * @author Khazar II
+ */
 $messages['mdf'] = array(
 	'regexblock-already-blocked' => '"$1" сёлкфоль ни',
 );

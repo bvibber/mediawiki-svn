@@ -21,7 +21,9 @@ $messages['ar'] = array(
 	'titlekey-desc' => 'نهاية اقتراح بحث عنوان البادئة',
 );
 
-/** Czech (Česky) */
+/** Czech (Česky)
+ * @author Mormegil
+ */
 $messages['cs'] = array(
 	'titlekey-desc' => 'Implementace našeptávače hledajícího podle počátku názvu',
 );

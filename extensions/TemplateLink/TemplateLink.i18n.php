@@ -168,6 +168,7 @@ $messages['oc'] = array(
 /** Polish (Polski)
  * @author Sp5uhe
  * @author Derbeth
+ * @author Wpedzich
  */
 $messages['pl'] = array(
 	'templatelink'          => 'Link do szablonu',

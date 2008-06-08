@@ -128,7 +128,9 @@ $messages['af'] = array(
 	'configure-section-search'       => 'Soek',
 );
 
-/** Aragonese (Aragonés) */
+/** Aragonese (Aragonés)
+ * @author Juanpabl
+ */
 $messages['an'] = array(
 	'configure-desc-ns'            => 'Espazios de nombres',
 	'configure-section-namespaces' => 'Espazios de nombres',
@@ -428,7 +430,9 @@ $messages['de'] = array(
 	'right-configure-all'             => 'Alle Einstellungen im Wiki vornehmen',
 );
 
-/** Greek (Ελληνικά) */
+/** Greek (Ελληνικά)
+ * @author Consta
+ */
 $messages['el'] = array(
 	'configure-desc-group'      => 'Ομάδες',
 	'configure-js-prompt-group' => 'Εισάγετε το όνομα της νέας ομάδας:',
@@ -1687,7 +1691,9 @@ $messages['sr-ec'] = array(
 	'configure-section-misc'          => 'Разно',
 );
 
-/** Sundanese (Basa Sunda) */
+/** Sundanese (Basa Sunda)
+ * @author Irwangatot
+ */
 $messages['su'] = array(
 	'configure-js-remove'            => 'Hapus',
 	'configure-section-skin'         => 'Kulit',

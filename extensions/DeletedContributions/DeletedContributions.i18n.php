@@ -368,7 +368,9 @@ $messages['lt'] = array(
 	'deletedcontributions-desc' => 'Suteikia administratoriams galimybę [[Special:DeletedContributions|parinkti ištrintus naudotojo keitimus]]',
 );
 
-/** Latvian (Latviešu) */
+/** Latvian (Latviešu)
+ * @author Yyy
+ */
 $messages['lv'] = array(
 	'deletedcontributions'      => 'Izdzēstais lietotāju devums',
 	'deletedcontributions-desc' => 'Dod adminiem iespēju [[Special:DeletedContributions|apskatīties izdzēstās lietotāju izmaiņas]]. (Tās ir visas, visu lietotāju izdarītās izmaiņas lapās, kuras ir tikušas izdzēstas)',

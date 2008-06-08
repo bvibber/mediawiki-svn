@@ -43,7 +43,10 @@ Tämä sivu voisi myös kaivata apuasi: $1.',
 	'tog-edit-similar'                           => 'Ota käyttöön samanlaisten sivujen ehdotukset',
 );
 
-/** French (Français) */
+/** French (Français)
+ * @author Grondin
+ * @author IAlex
+ */
 $messages['fr'] = array(
 	'editsimilar-desc'                           => 'Encourage les utilisateurs à modifier les pages similaires après avoir sauvegarder une page',
 	'editsimilar-thanks'                         => 'Merci pour votre contribution.
@@ -59,7 +62,9 @@ Cette page devrait avoir, aussi, besoin de votre aide : $1.',
 	'tog-edit-similar'                           => 'Activer les suggestions similaires des pages',
 );
 
-/** Luxembourgish (Lëtzebuergesch) */
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
 $messages['lb'] = array(
 	'editsimilar-desc'         => "Ermontert Benotzer fir ähnlech Säiten z'änneren nodeem se eng Säit gespäichert hunn.",
 	'editsimilar-thankyou'     => 'Merci fir är Kontributioun, $1!',
@@ -85,7 +90,9 @@ De pagina $1 kan uw hulp ook gebruiken.',
 	'tog-edit-similar'                           => 'Gelijksoortige paginasuggesties inschakelen',
 );
 
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ */
 $messages['no'] = array(
 	'editsimilar-desc'                           => 'Oppfordrer brukere til å redigere lignende sider etter å ha lagret en side',
 	'editsimilar-thanks'                         => 'Takk for bidraget ditt.
@@ -101,7 +108,9 @@ Denne siden kunne også trenge din hjelp: $1.',
 	'tog-edit-similar'                           => 'Slå på forslag for lignende sider',
 );
 
-/** Occitan (Occitan) */
+/** Occitan (Occitan)
+ * @author Cedric31
+ */
 $messages['oc'] = array(
 	'editsimilar-desc'                           => 'Encoraja los utilizaires a modificar las paginas similaras aprèp aver salvada una pagina',
 	'editsimilar-thanks'                         => 'Mercés per vòstra contribucion.
@@ -135,7 +144,9 @@ Ten artykuł również może potrzebować twojej pomocy: $1.',
 	'tog-edit-similar'                           => 'Włącz sugestie edycji podobnych artykułów',
 );
 
-/** Slovak (Slovenčina) */
+/** Slovak (Slovenčina)
+ * @author Helix84
+ */
 $messages['sk'] = array(
 	'editsimilar-desc'                           => 'Posmeľuje používateľov upravovať podobné stránky po uložení.',
 	'editsimilar-thanks'                         => 'Ďakujeme za váš príspevok.

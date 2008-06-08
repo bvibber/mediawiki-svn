@@ -205,7 +205,9 @@ $messages['vi'] = array(
 	'newusermessage-desc' => 'Thêm một [[MediaWiki:NewUserMessage|thông điệp]] gửi vào trang thảo luận của thành viên vừa mở tài khoản',
 );
 
-/** Traditional Chinese (‪中文(繁體)‬) */
+/** Traditional Chinese (‪中文(繁體)‬)
+ * @author Alexsh
+ */
 $messages['zh-hant'] = array(
 	'newusermessage-desc' => '增加一個[[MediaWiki:NewUserMessage|訊息]]給新創建帳戶的使用者的討論頁。',
 );

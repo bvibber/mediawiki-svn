@@ -583,6 +583,7 @@ $messages['pt'] = array(
 
 /** Russian (Русский)
  * @author Александр Сигачёв
+ * @author Александр Сигачёв
  */
 $messages['ru'] = array(
 	'vote-view-results'  => 'Посмотреть результаты',

@@ -493,7 +493,9 @@ $messages['sr-ec'] = array(
 	'edituser-dosearch' => 'Претрага',
 );
 
-/** Sundanese (Basa Sunda) */
+/** Sundanese (Basa Sunda)
+ * @author Irwangatot
+ */
 $messages['su'] = array(
 	'edituser-username' => 'Ngaran',
 	'edituser-dosearch' => 'Sungsi',

@@ -45,7 +45,9 @@ $messages['af'] = array(
 	'spamregex-summary-log' => '(Opsomming)',
 );
 
-/** Aragonese (Aragonés) */
+/** Aragonese (Aragonés)
+ * @author Juanpabl
+ */
 $messages['an'] = array(
 	'spamregex-already-blocked' => '"$1" ya yera bloqueyato',
 );
@@ -272,7 +274,9 @@ $messages['lb'] = array(
 	'spamregex-summary-log'          => '(Resumé)',
 );
 
-/** Moksha (Мокшень) */
+/** Moksha (Мокшень)
+ * @author Khazar II
+ */
 $messages['mdf'] = array(
 	'spamregex-already-blocked' => '"$1" сёлкфоль ни',
 );

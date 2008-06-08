@@ -159,7 +159,9 @@ $messages['oc'] = array(
 	'right-forcepreviewexempt' => "Pòt èsser salvat sens l'utilizacion de la previsualizacion",
 );
 
-/** Polish (Polski) */
+/** Polish (Polski)
+ * @author Sp5uhe
+ */
 $messages['pl'] = array(
 	'forcepreview'      => 'Zapisz (najpierw sprawdź Podgląd)',
 	'forcepreview-desc' => 'Wymusza na nieuprawnionych użytkownikach użycie podglądu przed zapisaniem strony',

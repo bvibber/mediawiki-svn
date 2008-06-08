@@ -452,7 +452,9 @@ $messages['ro'] = array(
 	'filelist-image-desc' => 'desc',
 );
 
-/** Russian (Русский) */
+/** Russian (Русский)
+ * @author Innv
+ */
 $messages['ru'] = array(
 	'filelist' => 'Список файлов',
 );

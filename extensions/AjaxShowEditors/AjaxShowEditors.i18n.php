@@ -40,7 +40,9 @@ $messages['ar'] = array(
 	'ajax-se-usernotfound'     => 'خطأ: المستخدم غير موجود',
 );
 
-/** Egyptian Spoken Arabic (مصرى) */
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Ramsis1978
+ */
 $messages['arz'] = array(
 	'ajax-se-desc'  => 'بيبين اليوزرز اللي بيعدلو الصفحة نفسيها',
 	'ajax-se-title' => 'بيعدل دلوقتي:',

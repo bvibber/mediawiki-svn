@@ -485,7 +485,9 @@ $messages['pt'] = array(
 	'formsaveerrortext'            => "Houve um erro desconhecido ao salvar a página '$1'.",
 );
 
-/** Russian (Русский) */
+/** Russian (Русский)
+ * @author Innv
+ */
 $messages['ru'] = array(
 	'formsave' => 'Сохранить',
 );

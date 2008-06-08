@@ -159,7 +159,9 @@ $messages['oc'] = array(
 	'spl3_nosubpages' => "$1 a pas de sospaginas d'enumerar.",
 );
 
-/** Polish (Polski) */
+/** Polish (Polski)
+ * @author Wpedzich
+ */
 $messages['pl'] = array(
 	'spl3-desc'       => 'Automatycznie tworzy listę podstron za pomocą znacznika <code><nowiki><splist /></nowiki></code>',
 	'spl3_debug'      => 'Nieznana wartość opcji $1.',

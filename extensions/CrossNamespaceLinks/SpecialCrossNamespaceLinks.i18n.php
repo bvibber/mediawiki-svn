@@ -646,7 +646,9 @@ $messages['stq'] = array(
 	'crossnamespacelinkstext'     => '$1: $2 {{PLURAL:$2|Ferbiendenge wiest|Ferbiendengen wiese}} in dän $3-Noomensruum',
 );
 
-/** Sundanese (Basa Sunda) */
+/** Sundanese (Basa Sunda)
+ * @author Irwangatot
+ */
 $messages['su'] = array(
 	'crossnamespacelinks'         => 'Tumbu antara-ngaranspasi',
 	'crossnamespacelinks-desc'    => '[[Special:Crossnamespacelinks|Daptar tumbu lintas ruangngaran]] anu sakuduna teu kaci aya di {{SITENAME}}',

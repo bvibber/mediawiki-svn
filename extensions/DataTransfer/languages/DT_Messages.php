@@ -37,7 +37,9 @@ $messages['af'] = array(
 	'dt_xml_title'          => 'Titel',
 );
 
-/** Aragonese (Aragonés) */
+/** Aragonese (Aragonés)
+ * @author Juanpabl
+ */
 $messages['an'] = array(
 	'dt_viewxml_namespaces' => 'Espazios de nombres',
 );

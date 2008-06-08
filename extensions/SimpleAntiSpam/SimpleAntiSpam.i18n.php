@@ -144,7 +144,9 @@ $messages['mr'] = array(
 	'simpleantispam-desc'  => 'अर्जांमध्ये एक साधी स्पॅम/सांगकाम्या तपासणी वाढवितो',
 );
 
-/** Low German (Plattdüütsch) */
+/** Low German (Plattdüütsch)
+ * @author Slomox
+ */
 $messages['nds'] = array(
 	'simpleantispam-label' => "Antispam-Kuntrull. Hier '''nix''' indragen!",
 );

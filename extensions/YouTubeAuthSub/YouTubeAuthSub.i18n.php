@@ -801,6 +801,7 @@ Este vídeo pode ser visualizado [http://www.youtube.com/watch?v=$1 aqui]',
 
 /** Russian (Русский)
  * @author Александр Сигачёв
+ * @author Innv
  */
 $messages['ru'] = array(
 	'youtubeauthsub'                    => 'Загрузка видео YouTube',

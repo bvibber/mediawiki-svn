@@ -151,7 +151,9 @@ $messages['mr'] = array(
 	'mwsearch-desc' => 'एमडब्ल्यूशोध प्लगीन',
 );
 
-/** Low German (Plattdüütsch) */
+/** Low German (Plattdüütsch)
+ * @author Slomox
+ */
 $messages['nds'] = array(
 	'mwsearch-desc' => 'MWSearch-Plugin',
 );

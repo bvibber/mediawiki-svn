@@ -35,12 +35,16 @@ $messages['fi'] = array (
 			"<createbox>break=no</createbox>",
 );
 
-/** Luxembourgish (Lëtzebuergesch) */
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
 $messages['lb'] = array(
 	'createbox-create' => 'Maachen',
 );
 
-/** Dutch (Nederlands) */
+/** Dutch (Nederlands)
+ * @author Siebrand
+ */
 $messages['nl'] = array(
 	'createbox-desc'   => "Aangepast invoerveld voor het aanmaken van nieuwe pagina's",
 	'createbox-create' => 'Aanmaken',
@@ -51,7 +55,9 @@ U kunt deze pagina niet aanmaken, maar u kunt deze [{{fullurl:{{FULLPAGENAME}}|a
 <createbox>break=no</createbox>",
 );
 
-/** Swedish (Svenska) */
+/** Swedish (Svenska)
+ * @author M.M.S.
+ */
 $messages['sv'] = array(
 	'createbox-desc'   => 'Specialiserad formulärbox för sidskapning',
 	'createbox-create' => 'Skapa',

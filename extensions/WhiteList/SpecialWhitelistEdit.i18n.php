@@ -850,6 +850,7 @@ $allMessages['pt'] = array(
 
 /** Russian (Русский)
  * @author Александр Сигачёв
+ * @author Александр Сигачёв
  */
 $allMessages['ru'] = array(
 	'whitelisttableedit'       => 'Править',

@@ -1257,6 +1257,7 @@ $messages['el'] = array(
 /** Esperanto (Esperanto)
  * @author Yekrats
  * @author ArnoLagrange
+ * @author Marcoscramer
  */
 $messages['eo'] = array(
 	'boardvote'                => 'Baloto por la "Administra Konsilantaro de Vikimedia Fondaĵo"',
@@ -2628,6 +2629,7 @@ Non è permesso votare alle utenze con lo status di bot.',
  * @author Broad-Sky
  * @author Siebrand
  * @author Iwai.masaharu
+ * @author Siebrand
  */
 $messages['ja'] = array(
 	'boardvote'              => 'ウィキメディア財団 理事選挙',
