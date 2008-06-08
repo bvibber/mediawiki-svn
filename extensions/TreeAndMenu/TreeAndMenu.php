@@ -14,7 +14,7 @@
 
 if (!defined('MEDIAWIKI')) die('Not an entry point.');
 
-define('TREEANDMENU_VERSION','1.0.3, 2008-06-05');
+define('TREEANDMENU_VERSION','1.0.4, 2008-06-08');
 
 # Set any unset images to default titles
 if (!isset($wgTreeViewImages) || !is_array($wgTreeViewImages)) $wgTreeViewImages = array();
@@ -214,7 +214,7 @@ class TreeAndMenu {
 						if ($top) $top = "<p>&nbsp;$top</p>";				
 						if ($bottom) $bottom = "<p>&nbsp;$bottom</p>";
 						$html = "$top<div class='$class' id='$id'>
-								<script type=\"$wgJsMimeType\">
+								<script type=\"$wgJsMimeType\">/*<![CDATA[*/
 									// TreeAndMenu{$this->version}
 									tree = new dTree('{$this->uniqname}$id');
 									for (i in tree.icon) tree.icon[i] = '{$this->baseUrl}/'+tree.icon[i];{$this->images}
@@ -223,7 +223,7 @@ class TreeAndMenu {
 									{$this->uniqname}$id = tree;
 									$nodes
 									document.getElementById('$id').innerHTML = {$this->uniqname}$id.toString();
-								</script>
+								/*]]>*/</script>
 							</div>$bottom";
 					}
 					else {
@@ -233,7 +233,7 @@ class TreeAndMenu {
 						$nodes = preg_replace("/<(a.*? )title=\".+?\".*?>/", "<$1>", $nodes); # IE has problems with title attribute in suckerfish menus
 						$html = "
 							<ul class='$class' id='$id'>\n$nodes</ul>
-							<script type=\"$wgJsMimeType\">
+							<script type=\"$wgJsMimeType\">/*<![CDATA[*/
 								if (window.attachEvent) {
 									var sfEls = document.getElementById('$id').getElementsByTagName('li');
 									for (var i=0; i<sfEls.length; i++) {
@@ -241,7 +241,7 @@ class TreeAndMenu {
 										sfEls[i].onmouseout=function()  { this.className=this.className.replace(new RegExp(' sfhover *'),''); }
 									}
 								}
-							</script>
+							/*]]>*/</script>
 							";
 					}
 
