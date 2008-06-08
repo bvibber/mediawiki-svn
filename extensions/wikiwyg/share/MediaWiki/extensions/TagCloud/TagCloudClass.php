@@ -1,9 +1,9 @@
 <?php
 
-/*
-* @copyright Copyright © 2007, Wikia Inc.
-* @license http://www.gnu.org/copyleft/gpl.html GNU General Public License 2.0 or later
-*/
+/**
+ * @copyright Copyright © 2007, Wikia Inc.
+ * @license http://www.gnu.org/copyleft/gpl.html GNU General Public License 2.0 or later
+ */
 
 class TagCloud {
 	var $tags_min_pts = 8;
@@ -17,7 +17,7 @@ class TagCloud {
 	}
 
 	public function initialize(){
-		$dbr =& wfGetDB( DB_MASTER );
+		$dbr = wfGetDB( DB_MASTER );
 		$sql = "SELECT replace(replace(cl_to,'_News',''),'_Opinions','') as cl_to, count(*) as count FROM {$dbr->tableName( 'categorylinks' )} cl1 
 			GROUP BY cl_to
 			ORDER BY
@@ -34,17 +34,15 @@ class TagCloud {
 		}
 
 		//sort tag array by key (tag name)
-		if ($this->tags_highest_count == 0) return ;
+		if ($this->tags_highest_count == 0) return;
 		ksort($this->tags);
 		if ($this->tags_highest_count == 1) {
-			$coef = $this->tags_max_pts - $this->tags_min_pts ;	
+			$coef = $this->tags_max_pts - $this->tags_min_pts;
 		} else {
-			$coef = ($this->tags_max_pts - $this->tags_min_pts)/(($this->tags_highest_count-1) * 2) ;
+			$coef = ($this->tags_max_pts - $this->tags_min_pts)/(($this->tags_highest_count-1) * 2);
 		}
 		foreach ($this->tags as $tag => $att) {
-			$this->tags[$tag]["size"] = $this->tags_min_pts + ($this->tags[$tag]["count"] - 1) * $coef ;
+			$this->tags[$tag]["size"] = $this->tags_min_pts + ($this->tags[$tag]["count"] - 1) * $coef;
 		}
 	 }
 }
-
-?>

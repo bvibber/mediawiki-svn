@@ -1,6 +1,5 @@
 <?php
 
-
 # Not a valid entry point, skip unless MEDIAWIKI is defined
 if (defined('MEDIAWIKI')) {
 $wgExtensionFunctions[] = 'wfEZParser';
@@ -14,11 +13,11 @@ global $IP;
 require_once( $IP.'/includes/SpecialPage.php' );
 
 #class EZParser extends UnlistedSpecialPage
-class EZParser extends SpecialPage
-{
+class EZParser extends SpecialPage {
 	function EZParser() {
 #		UnlistedSpecialPage::UnlistedSpecialPage('EZParser');
 		SpecialPage::SpecialPage('EZParser');
+		wfLoadExtensionMessages('Wikiwyg');
 	}
 
 	function execute( $par ) {
@@ -44,13 +43,13 @@ class EZParser extends SpecialPage
 	}
 
 	function parseText($text){
-	  #still need to make it actually parse the input.
-	  global $wgOut, $wgUser, $wgTitle, $wgParser, $wgAllowDiffPreview, $wgEnableDiffPreviewPreference;
-$parserOptions = ParserOptions::newFromUser( $wgUser );
-	  $parserOptions->setEditSection( false );
-	  $output = $wgParser->parse( $text, $wgTitle, $parserOptions );
-	  $wgOut->setArticleBodyOnly( true );
-	  $wgOut->addHTML($output->mText);
+		#still need to make it actually parse the input.
+		global $wgOut, $wgUser, $wgTitle, $wgParser, $wgAllowDiffPreview, $wgEnableDiffPreviewPreference;
+		$parserOptions = ParserOptions::newFromUser( $wgUser );
+		$parserOptions->setEditSection( false );
+		$output = $wgParser->parse( $text, $wgTitle, $parserOptions );
+		$wgOut->setArticleBodyOnly( true );
+		$wgOut->addHTML($output->mText);
 	}
 
 	function addForm(){
@@ -70,10 +69,6 @@ EOF
 	}
 }
 
-global $wgMessageCache;
 SpecialPage::addPage( new EZParser );
-$wgMessageCache->addMessage( 'ezparser', 'Simple parser test' );
-
 }
 } # End if(defined MEDIAWIKI)
-

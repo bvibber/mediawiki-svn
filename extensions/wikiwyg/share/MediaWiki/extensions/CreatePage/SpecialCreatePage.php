@@ -1,54 +1,35 @@
 <?php
 
-/*
-* A special page to create a new article, attempting to use wikiwyg, a wysiwig wikitext editor
-* @author Bartek Łapiński
-* @copyright Copyright © 2007, Wikia Inc.
-* @license http://www.gnu.org/copyleft/gpl.html GNU General Public License 2.0 or later
-*/
+/**
+ * A special page to create a new article, attempting to use Wikiwyg, a wysiwyg wikitext editor
+ * @author Bartek Łapiński
+ * @copyright Copyright © 2007, Wikia Inc.
+ * @license http://www.gnu.org/copyleft/gpl.html GNU General Public License 2.0 or later
+ */
 if(!defined('MEDIAWIKI'))
    die();
 
 $wgExtensionFunctions[] = 'wfCreatePageSetup';
 $wgExtensionCredits['specialpage'][] = array(
-   'name' => 'Create Page',
-   'author' => 'Bartek Lapinski',
-   'url' => 'http://www.wikia.com' ,
-   'description' => 'allows to create a new page - with the wysiwyg editor '
+	'name' => 'Create Page',
+	'author' => 'Bartek Łapiński',
+	'url' => 'http://www.mediawiki.org/wiki/Extension:Wikiwyg',
+	'description' => 'Allows to create a new page - with the WYSIWYG editor'
 );
 
 /* special page init */
 function wfCreatePageSetup() {
-	global $IP, $wgMessageCache, $wgOut ;
+	global $IP, $wgOut;
 	require_once($IP. '/includes/SpecialPage.php');
 
-        /* add messages to all the translator people out there to play with */
-        $wgMessageCache->addMessages(
-        array(
-			'createpage' => 'Create a new article' ,
-                        'createpage_button' => 'Create a new article' ,
-			'createpage_help' => '' ,
-			'createpage_caption' => 'title' ,
-			'createpage_button_caption' => 'Create!' ,
-			'createpage_title' => 'Create a new article' ,
-			'createpage_categories' => 'Categories:' ,
-			'createpage_title_caption' => 'Title:' ,
-			'createpage_loading_mesg' => 'Loading... please wait...' ,
-			'createpage_enter_text' => 'Text:' ,
-			'createpage_here' => 'here' ,
-			'createpage_show_cloud' => '[show category cloud]' ,
-			'createpage_hide_cloud' => '[hide category cloud]' ,
-			'createpage_alternate_creation' => 'or click $1 to use original editor' ,
-			'createpage_categories_help' => 'Categories help organize information in this wiki. Please choose from the list below or type a new one.' 
-                )
-        );
 	SpecialPage::addPage(new SpecialPage('Createpage', '', true, 'wfCreatePageSpecial', false));
 }
 
 /* the core */
 function wfCreatePageSpecial( $par ) {
-	global $wgOut, $wgUser, $wgRequest, $wgServer, $wgScriptPath, $wgEnableAjaxLogin, $wgContLang ;
-	require_once($IP. 'extensions/wikiwyg/share/MediaWiki/extensions/TagCloud/TagCloudClass.php') ;
+	global $IP, $wgOut, $wgUser, $wgRequest, $wgServer, $wgScriptPath, $wgEnableAjaxLogin, $wgContLang;
+	wfLoadExtensionMessages('Wikiwyg');
+	require_once("$IP/extensions/wikiwyg/share/MediaWiki/extensions/TagCloud/TagCloudClass.php");
 
 	if (! isset($wgWikiwygPath)) {
 		$wgWikiwygPath = "{$wgServer}/{$wgScriptPath}/extensions/wikiwyg";
@@ -67,13 +48,13 @@ function wfCreatePageSpecial( $par ) {
         /* load main js file when not loaded yet */
 	if (wfGetDependingOnSkin () == 0) {
 		if (isset($wgWysiwygEnabled) && ($wgWysiwygEnabled == true)) {
-			$useWysiwygTrue = 1 ;
+			$useWysiwygTrue = 1;
 		} else {
-			$useWysiwygTrue = 0 ;
+			$useWysiwygTrue = 0;
 		}
 
 		if (! isset($wgEnableAjaxLogin) || ($wgEnableAjaxLogin == false)) {
-			$wgEnableAjaxLogin = 0 ;
+			$wgEnableAjaxLogin = 0;
 		}
 		$wgOut->addScript("
 				<script type=\"text/javascript\">
@@ -109,43 +90,44 @@ function wfCreatePageSpecial( $par ) {
 	$wgOut->addScript("<script type=\"text/javascript\" src=\"$wgWikiwygJsPath/extensions/CreatePage/js/createpage.js\"></script>\n");
 
 	if (! isset($wgEnableAjaxLogin) || ($wgEnableAjaxLogin == false)) {
-		$wgEnableAjaxLogin = 0 ;
+		$wgEnableAjaxLogin = 0;
 	}
         $wgOut->addHTML ("
 		<script type=\"text/javascript\">
-			var wgEnableAjaxLogin = $wgEnableAjaxLogin ;
+			var wgEnableAjaxLogin = $wgEnableAjaxLogin;
 		</script>"
 	) ;
-   	$wgOut->setPageTitle (wfMsg('createpage_title'));
-	$cSF = new CreatePageForm ($par) ;
+   	$wgOut->setPageTitle(wfMsg('createpage-title'));
+	$cSF = new CreatePageForm($par);
 
-	$action = $wgRequest->getVal ('action') ;
+	$action = $wgRequest->getVal('action');
 	if ('success' == $action) {
 		/* do something */
 	} else if ( $wgRequest->wasPosted() && 'submit' == $action &&
-	        $wgUser->matchEditToken( $wgRequest->getVal ('wpEditToken') ) ) {
-	        $cSF->doSubmit () ;
+	        $wgUser->matchEditToken( $wgRequest->getVal('wpEditToken') ) ) {
+	        $cSF->doSubmit();
 	} else if ('failure' == $action) {
-		$cSF->showForm ('Please specify title') ;
+		$cSF->showForm('Please specify title');
 	} else if ('check' == $action) {
-		$cSF->checkArticleExists ($wgRequest->getVal ('to_check')) ;
+		$cSF->checkArticleExists ($wgRequest->getVal('to_check'));
 	} else {
-		$cSF->showForm ('') ;
+		$cSF->showForm('');
 	}
 }
 
 /* the form for blocking names and addresses */
 class CreatePageForm {
-	var $mMode, $mLink, $mDo, $mFile ;
+	var $mMode, $mLink, $mDo, $mFile;
 
 	/* constructor */
 	function CreatePageForm ( $par ) {
-		global $wgRequest ;
+		global $wgRequest;
 	}
 
 	/* output */
 	function showForm ( $err ) {
-		global $wgOut, $wgUser, $wgRequest ;
+		global $wgOut, $wgUser, $wgRequest;
+		wfLoadExtensionMessages('Wikiwyg');
 
 		if ($wgUser->isLoggedIn()) {
 			$token = htmlspecialchars( $wgUser->editToken() );
@@ -159,22 +141,22 @@ class CreatePageForm {
 			$wgOut->setSubtitle( wfMsgHtml( 'formerror' ) );
 			$wgOut->addHTML( "<p class='error'>{$err}</p>\n" );
 		}
-		$alternate_link = "<a href=\"#\" onclick=\"CreatePageNormalEdit(); return false;\" >".wfMsg ('createpage_here')."</a>" ;
-		$wgOut->addHTML ("<div id=\"createpage_subtitle\" style=\"display:none\">".wfMsg ('createpage_alternate_creation', $alternate_link)."</div>") ;
+		$alternate_link = "<a href=\"#\" onclick=\"CreatePageNormalEdit(); return false;\" >".wfMsg('createpage-here')."</a>";
+		$wgOut->addHTML ("<div id=\"createpage_subtitle\" style=\"display:none\">".wfMsg('createpage-alternate-creation', $alternate_link)."</div>");
 
-		$edittime =  wfTimestamp(TS_MW, $this->mTimestamp) ;
+		$edittime =  wfTimestamp(TS_MW, $this->mTimestamp);
 		/* make a TagCloud html */
-		$cloud_html = "" ;
-		$MyCloud = new TagCloud ;
-		$num = 0 ;
+		$cloud_html = "";
+		$MyCloud = new TagCloud;
+		$num = 0;
 
 		if (is_array ($MyCloud->tags)) {
 			foreach ($MyCloud->tags as $name => $tag) {
 				$cloud_html .= ("<span id=\"tag-$num\" style=\"font-size:". $tag["size"]."pt\">
-					<a href=\"#\" id=\"cloud_$num\" onclick=\"CreatePageAddCategory ('$name', $num) ; return false ;\">$name</a>
+					<a href=\"#\" id=\"cloud_$num\" onclick=\"CreatePageAddCategory ('$name', $num); return false;\">$name</a>
 					</span>
 				") ;
-				$num++ ;
+				$num++;
 
 			}
 		}
@@ -182,24 +164,24 @@ class CreatePageForm {
 	       	$html = "
 <form name=\"editform\" method=\"post\" action=\"{$action}\">
 	<div id=\"createpage_messenger\" style=\"display:none; color:red \" ></div>
-        <b>".wfMsg ('createpage_title_caption')."</b>
+        <b>".wfMsg('createpage-title-caption')."</b>
 	<br />
 	<input name=\"title\" id=\"title\" value=\"\" size=\"100\" /><br /><br />
-             	<b>".wfMsg ('createpage_enter_text')."</b>
+             	<b>".wfMsg('createpage-enter-text')."</b>
 		<br /><div id=\"wikiwyg\"></div>
-		<div id=\"loading_mesg\"><b>".wfMsg('createpage_loading_mesg')."</b></div>
+		<div id=\"loading_mesg\"><b>".wfMsg('createpage-loading-mesg')."</b></div>
 
 		<noscript>
 		<style type=\"text/css\">
 			#loading_mesg, #image_upload {
-				display: none ;
+				display: none;
 			}
 		</style>
 		<textarea tabindex=\"1\" accesskey=\",\" name=\"wpTextbox1\" id=\"wpTextbox1\" rows=\"25\" cols=\"80\" ></textarea>
 		</noscript>
 		<div id=\"backup_textarea_placeholder\"></div>
 		<iframe id=\"wikiwyg-iframe\" height=\"0\" width=\"0\" frameborder=\"0\"></iframe>
-		<input type=\"submit\" name=\"wpSave\" id=\"wpSaveBottom\"  value=\"".wfMsg ('createpage_button_caption') ."\" />
+		<input type=\"submit\" name=\"wpSave\" id=\"wpSaveBottom\"  value=\"".wfMsg('createpage-button-caption')."\" />
 		<input type='hidden' name='wpEditToken' value=\"{$token}\" />
 		<input type=\"hidden\" name=\"wpCreatePage\" value=\"true\" />
 
@@ -209,10 +191,10 @@ class CreatePageForm {
 		<table id=\"editpage_table\">
 			<tr style=\"padding: 6px 0px 6px 0px\">
 				<td class=\"editpage_header\">&nbsp;</td>
-				<td>".wfMsg ('createpage_categories_help')."</td>
+				<td>".wfMsg('createpage-categories-help')."</td>
 			</tr>
 			<tr>
-				<td class=\"editpage_header\">".wfMsg ('createpage_categories')."</td>
+				<td class=\"editpage_header\">".wfMsg('createpage-categories')."</td>
 				<td>
 					<textarea name=\"category\" id=\"category\" rows=\"1\" cols=\"80\" /></textarea>		
 					<div id=\"category_cloud_wrapper\" class=\editpage_inside\">
@@ -220,55 +202,51 @@ class CreatePageForm {
 					</div>
 				</td>
 			</tr>
-		</table>" ;
+		</table>";
 
-		$wgOut->addHtml( $html );
-		$wgOut->addHTML ("
-			</div><br />
-</form>"
-		);
+		$wgOut->addHTML( $html );
+		$wgOut->addHTML("</div><br /></form>");
 
 	}
 
         /* draws select and selects it properly */
         function makeSelect ($name, $options_array, $current, $tabindex) {
-                global $wgOut ;
-                $wgOut->addHTML ("<select tabindex=\"$tabindex\" name=\"$name\" id=\"$name\">") ;
+                global $wgOut;
+                $wgOut->addHTML ("<select tabindex=\"$tabindex\" name=\"$name\" id=\"$name\">");
                 foreach ($options_array as $key => $value) {
                         if ($value == $current )
-                                $wgOut->addHTML ("<option value=\"$value\" selected=\"selected\">$key</option>") ;
+                                $wgOut->addHTML("<option value=\"$value\" selected=\"selected\">$key</option>");
                         else
-                                $wgOut->addHTML ("<option value=\"$value\">$key</option>") ;
+                                $wgOut->addHTML("<option value=\"$value\">$key</option>");
                 }
-                $wgOut->addHTML ("</select>") ;
+                $wgOut->addHTML("</select>");
         }
 
 	/* check if article exists */
 	function checkArticleExists ($given) {
-		global $wgOut ;
+		global $wgOut;
 		$wgOut->setArticleBodyOnly( true );
 		$title = Title::newFromText( $given );
-		$page = $title->getText () ;
-		$page = str_replace( ' ', '_', $page ) ;
-		$dbr =& wfGetDB (DB_SLAVE);
-		$exists = $dbr->selectField ('page', 'page_title', array ('page_title' => $page)) ;
+		$page = $title->getText();
+		$page = str_replace( ' ', '_', $page );
+		$dbr = wfGetDB (DB_SLAVE);
+		$exists = $dbr->selectField ('page', 'page_title', array ('page_title' => $page));
 		if ($exists != '')
 			$wgOut->addHTML('pagetitleexists');
 	}
 
 	/* on success */
 	function showSuccess () {
-		global $wgOut, $wgRequest ;
-		$wgOut->setPageTitle (wfMsg('createpage_success_title') ) ;
-		$wgOut->setSubTitle(wfMsg('createpage_success_subtitle')) ;
+		global $wgOut, $wgRequest;
+		wfLoadExtensionMessages('Wikiwyg');
+		$wgOut->setPageTitle (wfMsg('createpage-success-title') );
+		$wgOut->setSubTitle(wfMsg('createpage-success-subtitle'));
 	}
-
 
 	/* on submit */
 	function doSubmit () {
-		global $wgOut, $wgUser, $wgRequest ;
-		$wgOut->setSubTitle ( wfMsg ('createpage_success_subtitle', wfMsg('createpage_'.$this->mMode) ) ) ;
+		global $wgOut, $wgUser, $wgRequest;
+		wfLoadExtensionMessages('Wikiwyg');
+		$wgOut->setSubTitle ( wfMsg ('createpage-success-subtitle', wfMsg('createpage-'.$this->mMode) ) );
 	}
 }
-
-?>

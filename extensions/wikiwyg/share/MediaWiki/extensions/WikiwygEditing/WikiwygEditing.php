@@ -1,52 +1,44 @@
-<?PHP
+<?php
 
 global $wgHooks;
-$wgHooks['EditPage::showEditForm:initial'][] = 'WikiwygAlternateEdit' ;
-$wgHooks['EditForm:BeforeDisplayingTextbox'][] = 'WikiwygHideTextarea' ;
-$wgHooks['EditForm::AfterEdit:Form'][] = 'WikiwygEditTagCloud' ;
+$wgHooks['EditPage::showEditForm:initial'][] = 'WikiwygAlternateEdit';
+$wgHooks['EditForm:BeforeDisplayingTextbox'][] = 'WikiwygHideTextarea';
+$wgHooks['EditForm::AfterEdit:Form'][] = 'WikiwygEditTagCloud';
 
 $wgExtensionFunctions[] = 'registerWikiwygEditing';
 $wgExtensionCredits['other'][] = array(
-    'name' => 'WikiwygEditing' ,
-    'author' => 'Bartek Lapinski' ,
-    'version' => 1.0 ,
-    'url' => 'http://www.wikia.com' ,
-    'description' => 'Mediawiki integration of the Wikiwyg WYSIWYG wiki editor - for full page editing '
+    'name' => 'WikiwygEditing',
+    'author' => 'Bartek Łapiński',
+    'version' => '1.0',
+    'url' => 'http://www.mediawiki.org/wiki/Extension:Wikiwyg',
+    'description' => 'MediaWiki integration of the Wikiwyg WYSIWYG wiki editor - for full page editing'
 );
 
 function registerWikiwygEditing () {
 }
 
-
 function wfIsCategoryCloudAllowed ($epage) {
-	global $wgRequest ;
+	global $wgRequest;
 	if (($epage->mArticle->mTitle->getNamespace() != NS_MAIN) || ($wgRequest->getVal ('categoryCloud') == 'off' ) ) {
 		/* allow parameter override */
 		if ($wgRequest->getVal ('categoryCloud') != 'on' ) {
-			return false ;
+			return false;
 		}
 	}
-	return true ;
+	return true;
 }
 
 function WikiwygAlternateEdit ($epage) {
-    global $wgOut,$wgSkin,$jsdir,$cssdir;
+    global $wgOut, $wgSkin, $jsdir, $cssdir;
     global $wgWikiwygPath;
-    global $wgServer,$wgWikiwygJsPath,$wgWikiwygCssPath,$wgWikiwygImagePath,$wgStyleVersion;
-    global $wgUser, $wgMessageCache, $wgServer, $wgArticlePath, $wgEnableAjaxLogin ;
+    global $wgServer, $wgWikiwygJsPath, $wgWikiwygCssPath, $wgWikiwygImagePath, $wgStyleVersion;
+    global $wgUser, $wgMessageCache, $wgServer, $wgArticlePath, $wgEnableAjaxLogin;
 
-    $wgMessageCache->addMessages(
-		    array(
-			    'wikiwyg_editing_option' => 'you can switch to old editor in preferences $1' ,
-			    'wikiwyg_use_cloud' => ', for editing with CategoryCloud, use $1 link' ,
-			    'wikiwyg_editing_here' => 'here' ,
-			    'wikiwyg_editing_this' => 'this'
-			 )
-		    ); 
+	wfLoadExtensionMessages('Wikiwyg');
 
     /* in-page disabled automatically disables this loading */
     if ( wfGetDependingOnSkin () == 0 ) {
-	return true ;
+	return true;
     }
     if (! isset($wgWikiwygPath)) {
 	$wgWikiwygPath = $wgScriptPath . "/extensions/wikiwyg";	
@@ -65,7 +57,7 @@ function WikiwygAlternateEdit ($epage) {
     $wgOut->addScript("<script type=\"text/javascript\" src=\"$wgWikiwygJsPath/extensions/WikiwygEditing/js/editpage.js?$wgStyleVersion\"></script>\n");
 
     if (! isset($wgEnableAjaxLogin) || ($wgEnableAjaxLogin == false)) {
-	    $wgEnableAjaxLogin = 0 ;
+	    $wgEnableAjaxLogin = 0;
     }
 
     $wgOut->addScript("
@@ -77,77 +69,78 @@ function WikiwygAlternateEdit ($epage) {
 ");
 
     $wgOut->addScript("<script type=\"text/javascript\" src=\"$wgWikiwygJsPath/MediaWikiWyg.js\"></script>\n");
-    $fixed_art_path = preg_replace ('/\$1/', "", $wgArticlePath) ;
+    $fixed_art_path = preg_replace('/\$1/', "", $wgArticlePath);
 
-    $alternate_link = "<a href=\"".$fixed_art_path."Special:Preferences#prefsection-4\" >".wfMsg ('wikiwyg_editing_here')."</a>" ;
-    $has_cloud = wfIsCategoryCloudAllowed ($epage) ;
+    $alternate_link = "<a href=\"".$fixed_art_path."Special:Preferences#prefsection-4\" >".wfMsg('wikiwyg-editing-here')."</a>";
+    $has_cloud = wfIsCategoryCloudAllowed($epage);
 
-    $subtitle_text = wfMsg ('wikiwyg_editing_option', $alternate_link) ;
+    $subtitle_text = wfMsg('wikiwyg-editing-option', $alternate_link);
     if ($has_cloud) {
-	$nocloud_link = "<a href=\"".$fixed_art_path.$epage->mArticle->mTitle->getPrefixedUrl()."?action=edit&categoryCloud=off\" >".wfMsg ('wikiwyg_editing_this')."</a>" ;
+		$nocloud_link = "<a href=\"".$fixed_art_path.$epage->mArticle->mTitle->getPrefixedUrl()."?action=edit&categoryCloud=off\" >".wfMsg('wikiwyg-editing-this')."</a>";
     } else {
-	$nocloud_link = "<a href=\"".$fixed_art_path.$epage->mArticle->mTitle->getPrefixedUrl()."?action=edit&categoryCloud=on\" >".wfMsg ('wikiwyg_editing_this')."</a>" ;
-	$subtitle_text .=  wfMsg('wikiwyg_use_cloud', $nocloud_link) ; 
+		$nocloud_link = "<a href=\"".$fixed_art_path.$epage->mArticle->mTitle->getPrefixedUrl()."?action=edit&categoryCloud=on\" >".wfMsg('wikiwyg-editing-this')."</a>";
+		$subtitle_text .=  wfMsg('wikiwyg-use-cloud', $nocloud_link);
     }
 
     $wgOut->addHTML ("<div id=\"wikiwyg_cancel_form\" style=\"display:none;\">
     	<form id=\"wikiwyg_toggle_editor\" action=\"\" >
-			".$subtitle_text) ;
+			".$subtitle_text);
 
-    $wgOut->addHTML ("</form>
-    </div>") ;
-    $wgOut->addHTML ("<div id=\"backup_textarea_placeholder\"></div>") ;
-    return true ;
+    $wgOut->addHTML ("</form></div>");
+    $wgOut->addHTML ("<div id=\"backup_textarea_placeholder\"></div>");
+    return true;
 }
 
 function WikiwygHideTextarea ($epage, $hidden) {
-	global $wgOut ;
+	global $wgOut;
+	wfLoadExtensionMessages('Wikiwyg');
 	if (wfGetDependingOnSkin () == 1) {
-		$hidden = 'style="display:none;"' ;
-		$wgOut->addHTML ("<div id=\"WikiwygEditingLoadingMesg\" style=\"font-weight:bold\">Loading...</div>") ;
+		$hidden = 'style="display:none;"';
+		$wgOut->addHTML ("<div id=\"WikiwygEditingLoadingMesg\" style=\"font-weight:bold\">".wfMsg('createpage-loading-mesg')."</div>");
 		$wgOut->addHTML ("<div id=\"WikiwygEditingUpperToolbar\" style=\"display:none; float: clear;\">
-					<div style=\"float: right\"><a href=\"#article\">Return to editing</a></div>
+					<div style=\"float: right\"><a href=\"#article\">".wfMsg('wikiwyg-return')."</a></div>
 					<div><a href=\"#article\">Return to editing</a></div>
-				  </div>") ;
-		$wgOut->addHTML ("<div id=\"WikiwygEditingPreviewArea\" style=\"display:none\"></div>") ;
+				  </div>");
+		$wgOut->addHTML ("<div id=\"WikiwygEditingPreviewArea\" style=\"display:none\"></div>");
 		/* allow for users not having js enabled to edit too */
                 $wgOut->addHTML ("
 			<noscript>
 				<style type=\"text/css\">
 					#wpTextbox1 {						
-						display: block !important ;
+						display: block !important;
 					}
 					#WikiwygEditingLoadingMesg, #wikiwyg_lower_wrapper {
-						display: none ;
+						display: none;
 					}
 				</style>
 			</noscript>
 		") ;
 	}
-	return true ;
+	return true;
 }
 
 function WikiwygEditTagCloud ($epage) {
-    global $wgOut, $wgRequest ;
+    global $IP, $wgOut, $wgRequest;
+	wfLoadExtensionMessages('Wikiwyg');
     if (wfGetDependingOnSkin () == 1) {
     	/* only for NS_MAIN, except on override */
 	if ( !wfIsCategoryCloudAllowed ($epage) ) {
-		return true ;
+		return true;
 	}
-	require_once($IP. 'extensions/wikiwyg/share/MediaWiki/extensions/TagCloud/TagCloudClass.php') ;
+	require_once($IP. 'extensions/wikiwyg/share/MediaWiki/extensions/TagCloud/TagCloudClass.php');
 
-	    $MyCloud = new TagCloud ;
-	    $num = 0 ;
-	    $cloud_html = '' ;
+	    $MyCloud = new TagCloud;
+	    $num = 0;
+	    $cloud_html = '';
 
             if (is_array ($MyCloud->tags)) {
                     foreach ($MyCloud->tags as $name => $tag) {
                             /* take care of the sorting parameter */
-                            $core_name = str_replace('/|.*/','',$name) ;
+                            $core_name = str_replace('/|.*/','',$name);
                             $cloud_html .= "<span id=\"tag-$num\" style=\"font-size:". $tag["size"]."pt\">
                                             <a href=\"#\" id=\"cloud_$num\" onclick=\"EditPageAddCategory ('$name', $num) ; return false ;\">$core_name</a>
-                                            </span>" ;
-                            $num++ ;
+                                            </span>";
+                            $num++;
                     }
             }
 
@@ -156,15 +149,15 @@ function WikiwygEditTagCloud ($epage) {
                 <div id=\"wikiwyg_lower_wrapper\">
 		<table id=\"editpage_table\">
 		<tr>
-			<td class=\"editpage_header\">".wfMsg ('edit-summary').":</td>
+			<td class=\"editpage_header\">".wfMsg('edit-summary').":</td>
 			<td id=\"editpage_summary_td\"></td>
 		</tr>
 		<tr style=\"padding: 6px 0px 6px 0px\">
 			<td class=\"editpage_header\">&nbsp;</td>
-			<td>".wfMsg ('createpage_categories_help')."</td>
+			<td>".wfMsg('createpage-categories-help')."</td>
 		</tr>
 		<tr>
-			<td class=\"editpage_header\">".wfMsg ('createpage_categories')."</td>
+			<td class=\"editpage_header\">".wfMsg('createpage-categories')."</td>
 			<td>
 				<span id=\"category_textarea_placeholder\"></span>
 				<div id=\"category_cloud_wrapper\" style=\"display: none\" class=\editpage_inside\">
@@ -178,7 +171,5 @@ function WikiwygEditTagCloud ($epage) {
 		<input type=\"hidden\" name=\"wpCategoryTagCount\", id=\"category_tag_count\" value=\"$num\" />
 	    ") ;	    
     }
-    return true ;
+    return true;
 }
-
-?>
