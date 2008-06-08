@@ -14,7 +14,7 @@ $fallback=array(
 $messages=array();
 
 /** English */
-$messages["en"] =array(
+$messages['en'] = array(
 	"voctrain_Hello_World"=>"HELLO WIKI!",
 	"voctrain_Permission_Denied"=>"Permission Denied",
 	"voctrain_try_again_"=>"try again?",
@@ -76,7 +76,7 @@ $messages["en"] =array(
 
 /** Message documentation */
 
-$messages["qqq"] = array(
+$messages['qqq'] = array(
 	"voctrain_Hello_World"=>"Test message",
 	"voctrain_Permission_Denied"=>"login: access is denied",
 	"voctrain_try_again_"=>"An operation failed, link back to normal voctrainer (used in multiple locations)",
@@ -134,7 +134,7 @@ $messages["qqq"] = array(
 );
 
 /** Dutch */
-$messages["nl"]=array(
+$messages['nl'] = array(
 	"voctrain_Hello_World"=>"HALLO WIKI!",
 	"voctrain_Permission_Denied"=>"Toestemming geweigerd",
 	"voctrain_try_again_"=>"opnieuw proberen?",
