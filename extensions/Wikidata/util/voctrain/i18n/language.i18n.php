@@ -8,7 +8,9 @@
 
 $fallback=array(
 	"en"=>false,
-	"nl"=>"en"
+	"nl"=>"en",
+	"fi"=>"en",
+	"nap"=>"en"
 );
 
 $messages=array();
@@ -237,7 +239,7 @@ $messages['nl'] = array(
 	'voctrain_one_of'                                                                               => 'een van',
 	'voctrain_list_of_questions_and_answers'                                                        => 'lijst van vragen en antwoorden',
 	'voctrain_Answer_s_'                                                                            => 'Antwoord(en)',
-	'voctrain_logout'                                                                               => 'afbeleden',
+	'voctrain_logout'                                                                               => 'uitloggen',
 	'voctrain_Powered_by'                                                                           => 'Aangedreven door',
 	'voctrain_Exercise_complete'                                                                    => 'Oefening voltooid',
 	'voctrain_Exercise_terminated'                                                                  => 'Oefening afgebroken',
