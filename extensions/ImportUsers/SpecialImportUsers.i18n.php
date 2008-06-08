@@ -568,6 +568,7 @@ $messages['pl'] = array(
 	'importusers-log'                     => 'Rejestr importu',
 	'importusers-log-summary'             => 'Podsumowanie',
 	'importusers-password'                => 'hasło',
+	'importusers-email'                   => 'e-mail',
 	'importusers-realname'                => 'imię i nazwisko',
 );
 
@@ -579,7 +580,7 @@ $messages['ps'] = array(
 	'importusers-log-summary'         => 'لنډيز',
 	'importusers-log-summary-all'     => 'ټول',
 	'importusers-log-summary-updated' => 'تازه',
-	'importusers-login-name'          => 'غونډال ته د ننوتنې نوم',
+	'importusers-login-name'          => 'د ننوتلو کارن-نوم',
 	'importusers-password'            => 'پټنوم',
 	'importusers-email'               => 'برېښليک',
 	'importusers-realname'            => 'اصلي نوم',

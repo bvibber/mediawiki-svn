@@ -469,6 +469,7 @@ $messages['lb'] = array(
 	'patrol-reverting'       => 'Zrécksetzen: $1',
 	'patrol-reverted-ok'     => "D'Ännerung gouf zréckgesat.",
 	'patrol-reverted-failed' => "D'Ännerung konnt net zréck gesat ginn.",
+	'patrol-skipped-ok'      => 'Ännerung ignoréieren',
 	'patrol-reasons'         => "* Einfache Vandalismus
 * Test vun engem neie Benotzer
 * Kuckt d'Diskussiounssäit",

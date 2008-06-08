@@ -448,6 +448,9 @@ Forigitaĵoj ne estos videbla al iu ajn per la retejo, sed la forigoj estas skri
 Malfaru ĉi tiun ŝanĝon antaŭe.',
 	'hiderevision-error-delete'   => 'Ne povas aldoni al arkivo. Ĉu ĝi estis antaŭe forigita?',
 	'hiderevision-archive-status' => 'Forigis revizion de $1: $2',
+	'oversight-nodiff'            => 'Ne eblas sekvi ŝanĝojn ĉar estas nun neniu antaŭa revizio por la paĝo. Aŭ:
+* La paĝo estis forigita
+* Ĉi tiu kaŝita revizio estis la unua revizio',
 	'oversight-log-hiderev'       => 'forigis redakton de $1',
 	'oversight'                   => 'Kontrolado',
 	'oversight-view'              => 'detaloj',
@@ -1018,7 +1021,7 @@ $messages['is'] = array(
 $messages['it'] = array(
 	'hiderevision'                => 'Oscuramento permanente di una revisione',
 	'hiderevision-desc'           => 'Rende invisibili a tutti gli utenti singole revisioni delle pagine (per motivi legali, ecc.)',
-	'right-hiderevision'          => 'Rivedi e recupera versioni nascoste',
+	'right-hiderevision'          => 'Rivede e recupera versioni nascoste',
 	'hiderevision-prompt'         => 'Numero della revisione da oscurare:',
 	'hiderevision-continue'       => 'Continua',
 	'hiderevision-text'           => "Questa funzione deve essere usata '''unicamente''' nei seguenti casi:
@@ -1713,9 +1716,9 @@ Revisjoner som fjernes vil ikke være tilgjengelige for noen via nettsiden, men 
 $messages['oc'] = array(
 	'hiderevision'                => 'Amagar definitivament las revisions',
 	'hiderevision-desc'           => 'Amaga las modificacions individualas de totes los utilizaires per de motius legals, etc.',
-	'group-oversight'             => 'Supervisaires',
-	'group-oversight-member'      => 'Supervisaire',
-	'grouppage-oversight'         => '{{ns:project}}:Supervisaire',
+	'group-oversight'             => 'Supervisors',
+	'group-oversight-member'      => 'Supervisor',
+	'grouppage-oversight'         => '{{ns:project}}:Supervisor',
 	'right-oversight'             => 'Veire las revisions precedentament amagadas',
 	'right-hiderevision'          => 'Examinar e restablir las revisions amagadas als administrators',
 	'hiderevision-prompt'         => 'Numèro d’edicion de suprimir :',
@@ -1793,8 +1796,8 @@ Usunięte elementy nie będą widoczne dla nikogo na stronach serwisu. Wszystkie
 Najpierw wycofaj ostatnią edycję.',
 	'hiderevision-error-delete'   => 'Nie można zarchiwizować. Czy wcześniej została usunięta?',
 	'hiderevision-archive-status' => 'Usunięto wersję z $1: $2',
-	'oversight-nodiff'            => 'Nie można śledzić zmian, ponieważ nie ma wcześniejszych wersji tej strony. Możliwości: 
-*Strona została usunięta 
+	'oversight-nodiff'            => 'Nie można śledzić zmian, ponieważ brak wcześniejszych wersji tej strony. Prawdopodobnie:
+*Strona została usunięta
 *Ta ukryta wersja była pierwszą wersją',
 	'oversight-log-hiderev'       => 'usunął edycję z $1',
 	'oversight'                   => 'Rejestr ukrywania',

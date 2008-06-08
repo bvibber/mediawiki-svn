@@ -185,6 +185,19 @@ Per apondre una pagina, marcatz la casa aprèp ela, e clicatz « Apondre de pagi
 Per marcar o desmarcar mai d'una pagina, lo fach de téner quichada la tòca « Majuscula » permet de seleccionar tota una seria de casa en clicant de part e d’autra de la rengada de seleccionar.",
 );
 
+/** Polish (Polski) */
+$messages['pl'] = array(
+	'watchsubpages'                      => 'Obserwuj podstrony',
+	'watchsubpages-addedtowatchlist'     => 'Następujące strony zostały dodane do Twojej listy obserwowanych.',
+	'watchsubpages-addtitles'            => 'Dodaj strony',
+	'watchsubpages-addtitlestowatchlist' => 'Dodaj strony do listy obserwowanych',
+	'watchsubpages-desc'                 => 'Pozwala na szybkie dodawanie [[Special:WatchSubpages|wszystkich podstron]] jakiejś strony, do swojej listy obserwowanych',
+	'watchsubpages-form'                 => 'Wybierz z listy strony, które chcesz dodać do swojej listy obserwowanych.
+By dodać stronę, zaznacz pole obok jej tytułu, po czym kliknij polecenie „Dodaj strony”.
+
+Jeśli chcesz wybrać więcej niż jedną stronę, możesz posłużyć się klawiszem Shift; trzymając go kliknij pierwszą i ostatnią pozycję ciągłej listy stron, które chcesz obserwować.',
+);
+
 /** Pashto (پښتو)
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */

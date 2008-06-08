@@ -260,11 +260,12 @@ $messages['el'] = array(
  * @author Yekrats
  */
 $messages['eo'] = array(
-	'usernameblacklist-desc'  => 'Aldonas [[MediaWiki:Usernameblacklist|Forbarlisto de uzantonomoj]] por malpermesi la kreadon de uzantokontoj laŭ unu aŭ pluraj regulesprimoj.',
-	'blacklistedusername'     => 'Malpermesita uzantnomo',
-	'blacklistedusernametext' => 'La salutnomo kiun vi elektis kongruas listeron en [[MediaWiki:Usernameblacklist|listo de nigralistaj salutnomoj]].
+	'usernameblacklist-desc'          => 'Aldonas [[MediaWiki:Usernameblacklist|Forbarlisto de uzantonomoj]] por malpermesi la kreadon de uzantokontoj laŭ unu aŭ pluraj regulesprimoj.',
+	'blacklistedusername'             => 'Malpermesita uzantnomo',
+	'blacklistedusernametext'         => 'La salutnomo kiun vi elektis kongruas listeron en [[MediaWiki:Usernameblacklist|listo de nigralistaj salutnomoj]].
 Bonvolu elekti alian nomon.',
-	'right-uboverride'        => 'Astataŭigi la salutnoman nigraliston',
+	'usernameblacklist-invalid-lines' => 'La {{PLURAL:$1|jena linio|jenaj linioj}} en la salutnoma nigralisto estas {{PLURAL:$1|nevalida|nevalidaj}}; bonvolu korekti {{PLURAL:$1|gxi|ilin}} antaŭ konservado.',
+	'right-uboverride'                => 'Astataŭigi la salutnoman nigraliston',
 );
 
 /** Spanish (Español)
@@ -888,6 +889,11 @@ $messages['pms'] = array(
 	'blacklistedusernametext' => 'Lë stranòm ch\'a l\'ha sërnusse a l\'é ant la [[MediaWiki:Usernameblacklist|lista djë stranòm vietà]]. Për piasì, ch\'as në sërna n\'àotr.',
 	'usernameblacklist' => '<pre> # Le vos dë sta lista a saran dovrà coma part ëd n\'espression regolar quand # as buto an lista nèira djë stranòm për la registrassion. Minca vos a la dovrìa fé part ëd na # lista a balin, pr\'es. # # * Ciào # * [Nn]ineta </pre>',
 	'usernameblacklist-invalid-lines' => '{{PLURAL:$1|La riga|Le righe}} ant la lista nèira dë stranòm ambelessì sota a {{PLURAL:$1|l\'é nen bon-a|son nen bon-a}}; për piasì, ch\'a-j daga deuit anans che salvé:',
+);
+
+/** Pashto (پښتو) */
+$messages['ps'] = array(
+	'blacklistedusername' => 'د تورلړليک کارن-نوم',
 );
 
 /** Portuguese (Português)

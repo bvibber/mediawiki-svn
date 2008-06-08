@@ -691,6 +691,7 @@ $messages['ps'] = array(
 	'specialuserstats'             => 'د کارونې شمار',
 	'usagestatistics'              => 'د کارونې شمار',
 	'usagestatisticsallusers'      => 'ټول کارونکي',
+	'usagestatisticstype'          => 'ډول',
 	'usagestatisticsstart'         => 'د پيل نېټه',
 	'usagestatisticsend'           => 'د پای نېټه',
 	'usagestatisticsintervalday'   => 'ورځ',
@@ -723,6 +724,8 @@ $messages['pt'] = array(
  * @author Александр Сигачёв
  */
 $messages['ru'] = array(
+	'usagestatisticsintervalday'   => 'День',
+	'usagestatisticsintervalweek'  => 'Неделя',
 	'usagestatisticsintervalmonth' => 'Месяц',
 );
 

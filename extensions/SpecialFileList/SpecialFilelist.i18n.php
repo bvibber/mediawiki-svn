@@ -452,6 +452,11 @@ $messages['ro'] = array(
 	'filelist-image-desc' => 'desc',
 );
 
+/** Russian (Русский) */
+$messages['ru'] = array(
+	'filelist' => 'Список файлов',
+);
+
 /** Yakut (Саха тыла)
  * @author Siebrand
  */

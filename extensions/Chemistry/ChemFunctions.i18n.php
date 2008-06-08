@@ -534,6 +534,9 @@ $messages['ps'] = array(
 	'chemicalsources'        => 'کيميايي سرچينې',
 	'chemicalsource-desc'    => 'د کيميايي فورمولونو لپاره د <nowiki><کيمفورمول></nowiki>، لنډنوم ورګډول',
 	'chemFunctions_ListPage' => 'کيميايي سرچينې',
+	'chemFunctions_DataList' => 'دلته لاندې د هغه وېبځايونو د تړنو لړليک ورکړ شوی چې کيدای شي د هغه کيميايي توکي په اړه مالومات پکې وي د کوم يوه لپاره چې تاسو ورپسې ګرځی.<br /><br />
+* <a href="http://webbook.nist.gov/cgi/cbook.cgi?ID=$MIXCASNameFormula&amp;Units=SI">مرکبات $MIXCASNameFormula په NIST کې</a><br />
+* <a href="http://ptcl.chem.ox.ac.uk/MSDS/">MSDS په آکسفورډ پوهنتون کې (برطانيه) (د پلټنې وړ نه دی)</a><br />',
 	'chemFunctions_CAS'      => 'CAS ګڼ',
 	'chemFunctions_Formula'  => 'فورمول',
 	'chemFunctions_Name'     => 'IUPAC نوم',

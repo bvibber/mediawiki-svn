@@ -109,8 +109,9 @@ $messages['ksh'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
-	'forcepreview'      => "Säit späicheren (kuckt d'éischt ouni ofzespäicheren)",
-	'forcepreview-desc' => 'Kucken ouni ofzespäicheren obligatesche maachen fir Benotzer ouni Privilegien',
+	'forcepreview'             => "Säit späicheren (kuckt d'éischt ouni ofzespäicheren)",
+	'forcepreview-desc'        => 'Kucken ouni ofzespäicheren obligatesche maachen fir Benotzer ouni Privilegien',
+	'right-forcepreviewexempt' => "Späicheren ouni ''Kucken oni ze späicheren'' ze weisen erlaben",
 );
 
 /** Malayalam (മലയാളം)
@@ -156,6 +157,12 @@ $messages['oc'] = array(
 	'forcepreview'             => 'Salva la pagina (amòda en primièr la previsualizacion)',
 	'forcepreview-desc'        => 'Força la previsualizacion pels utilizaires que dispausan pas de cap privilègi',
 	'right-forcepreviewexempt' => "Pòt èsser salvat sens l'utilizacion de la previsualizacion",
+);
+
+/** Polish (Polski) */
+$messages['pl'] = array(
+	'forcepreview'      => 'Zapisz (najpierw sprawdź Podgląd)',
+	'forcepreview-desc' => 'Wymusza na nieuprawnionych użytkownikach użycie podglądu przed zapisaniem strony',
 );
 
 /** Portuguese (Português)

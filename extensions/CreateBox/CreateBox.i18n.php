@@ -34,3 +34,31 @@ $messages['fi'] = array (
 			"erilaisen sivun allaolevaa laatikkoa käyttäen.\n\n" .
 			"<createbox>break=no</createbox>",
 );
+
+/** Luxembourgish (Lëtzebuergesch) */
+$messages['lb'] = array(
+	'createbox-create' => 'Maachen',
+);
+
+/** Dutch (Nederlands) */
+$messages['nl'] = array(
+	'createbox-desc'   => "Aangepast invoerveld voor het aanmaken van nieuwe pagina's",
+	'createbox-create' => 'Aanmaken',
+	'createbox-exists' => "\"'''{{FULLPAGENAME}}'''\" bestaat al.
+
+U kunt deze pagina niet aanmaken, maar u kunt deze [{{fullurl:{{FULLPAGENAME}}|action=edit}} bewerken], [{{fullurl:{{FULLPAGENAME}}}} bekijken], of een andere pagina aanmaken via het onderstaande formulier.
+
+<createbox>break=no</createbox>",
+);
+
+/** Swedish (Svenska) */
+$messages['sv'] = array(
+	'createbox-desc'   => 'Specialiserad formulärbox för sidskapning',
+	'createbox-create' => 'Skapa',
+	'createbox-exists' => "Beklagar, \"'''{{FULLPAGENAME}}'''\" existerar redan.
+
+Du kan inte skapa den här sidan, men du kan [{{fullurl:{{FULLPAGENAME}}|action=edit}} redigera den], [{{fullurl:{{FULLPAGENAME}}}} läsa den], eller välja att skapa en annan sida genom att använda boxen nedan.
+
+<createbox>break=no</createbox>",
+);
+

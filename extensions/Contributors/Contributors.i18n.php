@@ -718,7 +718,7 @@ $messages['pms'] = array(
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */
 $messages['ps'] = array(
-	'contributors'        => 'ونډه لرونکي',
+	'contributors'        => 'ونډه وال',
 	'contributors-target' => 'سرليک:',
 	'contributors-submit' => 'ښکاره کول',
 );

@@ -778,7 +778,7 @@ $messages['pl'] = array(
 	'inputbox-desc'           => 'Umożliwia włączenie w treść strony wcześniej zdefiniowanych formularzy HTML',
 	'inputbox-error-no-type'  => 'Typ pola wejściowego nie został określony',
 	'inputbox-error-bad-type' => 'Typ „$1” pola wejściowego nie został rozpoznany.
-Proszę wybrać „create”, „comment”, „search” lub „search2”.',
+Należy wybrać „create”, „comment”, „search” lub „search2”.',
 	'tryexact'                => 'Użyj dokładnego wyrażenia',
 	'searchfulltext'          => 'Szukaj w całych tekstach',
 	'createarticle'           => 'Utwórz artykuł',

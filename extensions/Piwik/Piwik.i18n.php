@@ -18,6 +18,13 @@ $messages['en'] = array(
 	'piwik-browsers'   => 'Browsers',
 );
 
+/** Bulgarian (Български) */
+$messages['bg'] = array(
+	'piwik-lastvisits' => 'Последни посещения',
+	'piwik-countries'  => 'Държави',
+	'piwik-browsers'   => 'Браузъри',
+);
+
 /** Catalan (Català)
  * @author Isb1009
  */
@@ -128,6 +135,29 @@ $messages['oc'] = array(
 	'piwik-lastvisits' => 'Darrièras visitas',
 	'piwik-countries'  => 'Païses',
 	'piwik-browsers'   => 'Navigadors',
+);
+
+/** Polish (Polski) */
+$messages['pl'] = array(
+	'piwik-desc'       => 'Wstawia monitorujący wykorzystanie serwisu skrypt Piwiki do stron MediaWiki oraz dodaje [[Special:Piwik|statystyki]]',
+	'piwik-lastvisits' => 'Ostatnie wizyty',
+	'piwik-countries'  => 'Kraje',
+	'piwik-browsers'   => 'Przeglądarki',
+);
+
+/** Pashto (پښتو) */
+$messages['ps'] = array(
+	'piwik-lastvisits' => 'وروستۍ کتنې',
+	'piwik-countries'  => 'هيوادونه',
+	'piwik-browsers'   => 'کتنملونه',
+);
+
+/** Slovak (Slovenčina) */
+$messages['sk'] = array(
+	'piwik-desc'       => 'Vloží na stránky MediaWiki Piwik skript na sledovanie a pridá [[Special:Piwik|niektoré štatistiky]]',
+	'piwik-lastvisits' => 'Posledné návštevy',
+	'piwik-countries'  => 'Krajiny',
+	'piwik-browsers'   => 'Prehliadače',
 );
 
 /** Sundanese (Basa Sunda)

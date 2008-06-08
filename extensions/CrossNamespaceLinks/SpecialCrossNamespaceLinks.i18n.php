@@ -646,8 +646,10 @@ $messages['stq'] = array(
 	'crossnamespacelinkstext'     => '$1: $2 {{PLURAL:$2|Ferbiendenge wiest|Ferbiendengen wiese}} in dän $3-Noomensruum',
 );
 
+/** Sundanese (Basa Sunda) */
 $messages['su'] = array(
 	'crossnamespacelinks'         => 'Tumbu antara-ngaranspasi',
+	'crossnamespacelinks-desc'    => '[[Special:Crossnamespacelinks|Daptar tumbu lintas ruangngaran]] anu sakuduna teu kaci aya di {{SITENAME}}',
 	'crossnamespacelinks-summary' => 'Kaca ieu mikeun daptar tumbu ti hiji kaca di ngaran spasi utama ka kaca séjén di ngaran spasi séjén (kajaba {{ns:special}}, {{ns:talk}}, {{ns:project}} sarta ngaran spasi {{ns:template}}), anu henteu dianjurkeun pikeun dipaké.',
 	'crossnamespacelinkstext'     => '$1: $2 {{PLURAL:$2|numbu|numbu}} ka $3',
 );

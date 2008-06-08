@@ -43,10 +43,35 @@ Tämä sivu voisi myös kaivata apuasi: $1.',
 	'tog-edit-similar'                           => 'Ota käyttöön samanlaisten sivujen ehdotukset',
 );
 
+/** French (Français) */
+$messages['fr'] = array(
+	'editsimilar-desc'                           => 'Encourage les utilisateurs à modifier les pages similaires après avoir sauvegarder une page',
+	'editsimilar-thanks'                         => 'Merci pour votre contribution.
+Vérifiez ces pages apparentées : $1.',
+	'editsimilar-thanks-singleresult'            => 'Merci pour votre contribution.
+Vérifiez cette page apparentée : $1.',
+	'editsimilar-thanks-notsimilar'              => 'Merci pour votre contribution.
+Ces pages devraient avoir, aussi, besoin de votre aide : $1.',
+	'editsimilar-thanks-notsimilar-singleresult' => 'Merci pour votre contribution.
+Cette page devrait avoir, aussi, besoin de votre aide : $1.',
+	'editsimilar-thankyou'                       => 'Merci pour votre contribution, $1 !',
+	'editsimilar-link-disable'                   => 'paramétrer les préférences',
+	'tog-edit-similar'                           => 'Activer les suggestions similaires des pages',
+);
+
+/** Luxembourgish (Lëtzebuergesch) */
+$messages['lb'] = array(
+	'editsimilar-desc'         => "Ermontert Benotzer fir ähnlech Säiten z'änneren nodeem se eng Säit gespäichert hunn.",
+	'editsimilar-thankyou'     => 'Merci fir är Kontributioun, $1!',
+	'editsimilar-link-disable' => "D'Astellungen aginn",
+	'tog-edit-similar'         => 'Virschloe vun ähnleche Säiten aschalten',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */
 $messages['nl'] = array(
+	'editsimilar-desc'                           => "Moedigt gebruikers aan om gelijksoortige pagina's te bewerken na het opslaan van een pagina",
 	'editsimilar-thanks'                         => "Dank u wel voor uw bijdrage.
 Deze pagina's kunnen uw hulp ook gebruiken: $1.",
 	'editsimilar-thanks-singleresult'            => 'Dank u wel voor uw bijdrage.
@@ -58,6 +83,38 @@ De pagina $1 kan uw hulp ook gebruiken.',
 	'editsimilar-thankyou'                       => 'Dank u wel voor uw bijdrage, $1!',
 	'editsimilar-link-disable'                   => 'voorkeuren instellen',
 	'tog-edit-similar'                           => 'Gelijksoortige paginasuggesties inschakelen',
+);
+
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
+$messages['no'] = array(
+	'editsimilar-desc'                           => 'Oppfordrer brukere til å redigere lignende sider etter å ha lagret en side',
+	'editsimilar-thanks'                         => 'Takk for bidraget ditt.
+Sjekk disse relaterte sidene: $1.',
+	'editsimilar-thanks-singleresult'            => 'Takk for bidraget ditt.
+Sjekk denne relaterte siden: $1.',
+	'editsimilar-thanks-notsimilar'              => 'Takk for bidraget ditt.
+Disse sidene kan også trenge din hjelp: $1.',
+	'editsimilar-thanks-notsimilar-singleresult' => 'Takk for bidraget ditt.
+Denne siden kunne også trenge din hjelp: $1.',
+	'editsimilar-thankyou'                       => 'Takk for bidraget ditt, $1!',
+	'editsimilar-link-disable'                   => 'endre innstillinger',
+	'tog-edit-similar'                           => 'Slå på forslag for lignende sider',
+);
+
+/** Occitan (Occitan) */
+$messages['oc'] = array(
+	'editsimilar-desc'                           => 'Encoraja los utilizaires a modificar las paginas similaras aprèp aver salvada una pagina',
+	'editsimilar-thanks'                         => 'Mercés per vòstra contribucion.
+Verificatz aquestas paginas aparentadas : $1.',
+	'editsimilar-thanks-singleresult'            => 'Mercés per vòstra contribucion.
+Verificatz aquesta pagina aparentada : $1.',
+	'editsimilar-thanks-notsimilar'              => 'Mercés per vòstra contribucion.
+Aquestas paginas deurián aver, elas tanben, besonh de vòstra ajuda : $1.',
+	'editsimilar-thanks-notsimilar-singleresult' => 'Mercés per vòstra contribucion.
+Aquesta pagina deuriá aver, ela tanben, besonh de vòstra ajuda : $1.',
+	'editsimilar-thankyou'                       => 'Mercés per vòstra contribucion, $1 !',
+	'editsimilar-link-disable'                   => 'parametrar las preferéncias',
+	'tog-edit-similar'                           => 'Activar las suggestions similaras de las paginas',
 );
 
 /** Polish (Polski)
@@ -76,5 +133,21 @@ Ten artykuł również może potrzebować twojej pomocy: $1.',
 	'editsimilar-thankyou'                       => 'Dzięki za Twoją edycję, $1!',
 	'editsimilar-link-disable'                   => 'zmień ustawienia',
 	'tog-edit-similar'                           => 'Włącz sugestie edycji podobnych artykułów',
+);
+
+/** Slovak (Slovenčina) */
+$messages['sk'] = array(
+	'editsimilar-desc'                           => 'Posmeľuje používateľov upravovať podobné stránky po uložení.',
+	'editsimilar-thanks'                         => 'Ďakujeme za váš príspevok.
+Pozrite sa na tieto súvisiace stránky: $1.',
+	'editsimilar-thanks-singleresult'            => 'Ďakujeme za váš príspevok.
+Pozrite sa na túto súvisiacu stránku: $1.',
+	'editsimilar-thanks-notsimilar'              => 'Ďakujeme za váš príspevok.
+Týmto stránkam by sa tiež hodilo, keby ste sa na ne pozreli: $1.',
+	'editsimilar-thanks-notsimilar-singleresult' => 'Ďakujeme za váš príspevok.
+Tejto stránke by sa tiež hodilo, keby ste sa na ňu pozreli: $1.',
+	'editsimilar-thankyou'                       => 'Ďakujeme za váš príspevok, $1!',
+	'editsimilar-link-disable'                   => 'nastaviť voľby',
+	'tog-edit-similar'                           => 'Zapnúť návrhy podobných stránok',
 );
 

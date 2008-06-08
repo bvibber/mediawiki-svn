@@ -63,6 +63,16 @@ $messages['oc'] = array(
 	'antibot-desc' => 'Quadre simple per las verificacions del bòt antispam e de las cargas utilas del trigger.',
 );
 
+/** Polish (Polski) */
+$messages['pl'] = array(
+	'antibot-desc' => 'Proste mechanizmy ochrony przed spamującymi i wywołującymi przeciążenie serwera robotami',
+);
+
+/** Slovak (Slovenčina) */
+$messages['sk'] = array(
+	'antibot-desc' => 'Jednoduchý framework na kontrolu spambotov a zachytávanie špecifických úprav',
+);
+
 /** Sundanese (Basa Sunda)
  * @author Irwangatot
  */
@@ -98,9 +108,10 @@ $messages['zh-hans'] = array(
 	'antibot-desc' => '防垃圾机械人检查和触发的简单框架',
 );
 
-/** Traditoinal Chinese
+/** Traditional Chinese (‪中文(繁體)‬)
  * @author Shinjiman
  */
 $messages['zh-hant'] = array(
-	'antibot-desc' => '防垃圾機械人檢查和觸發的簡單框架',
+	'antibot-desc' => '為破壞檢查機器人與觸發負載提供簡易架構',
 );
+

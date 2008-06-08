@@ -302,6 +302,7 @@ $messages['lb'] = array(
 	'editmsg-warning-parse3'   => '* Ënn vun der Zeechekette gouf net fonnt: $1',
 	'editmsg-warning-mismatch' => '* Den Originaltext hat net den erwaartene Wert fir dës Sproochen: $1',
 	'editmsg-apply-patch'      => 'Patch uwenden',
+	'editmsg-no-patch'         => 'De "Patch" Kommanda konnt net ausgeféiert ginn',
 	'editmsg-patch-failed'     => 'Patch huet net fonctionnéiert mat dem Feelermessage $1',
 	'editmsg-patch-success'    => 'gepatched!',
 );

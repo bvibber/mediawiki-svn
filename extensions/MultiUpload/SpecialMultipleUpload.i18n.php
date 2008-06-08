@@ -482,6 +482,11 @@ $messages['ru'] = array(
 	'multiupload-toolbox'              => 'Загрузка нескольких файлов',
 );
 
+/** Sassaresu (Sassaresu) */
+$messages['sdc'] = array(
+	'multipleupload' => 'Carrigga file mùrthimediari',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

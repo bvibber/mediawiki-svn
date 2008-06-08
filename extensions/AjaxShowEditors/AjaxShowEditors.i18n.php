@@ -40,6 +40,12 @@ $messages['ar'] = array(
 	'ajax-se-usernotfound'     => 'خطأ: المستخدم غير موجود',
 );
 
+/** Egyptian Spoken Arabic (مصرى) */
+$messages['arz'] = array(
+	'ajax-se-desc'  => 'بيبين اليوزرز اللي بيعدلو الصفحة نفسيها',
+	'ajax-se-title' => 'بيعدل دلوقتي:',
+);
+
 /** Asturian (Asturianu)
  * @author Esbardu
  */

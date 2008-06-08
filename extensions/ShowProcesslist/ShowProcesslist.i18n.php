@@ -338,6 +338,11 @@ $messages['os'] = array(
 	'showprocesslist-time' => 'Рæстæг',
 );
 
+/** Polish (Polski) */
+$messages['pl'] = array(
+	'showprocesslist' => 'Pokaż listę procesów',
+);
+
 /** Pashto (پښتو)
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */

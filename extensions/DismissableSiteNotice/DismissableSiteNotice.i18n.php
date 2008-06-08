@@ -324,6 +324,11 @@ $messages['ko'] = array(
 	'sitenotice-desc'  => '사용자가 알림말을 숨길 수 있습니다.',
 );
 
+/** Latin (Latina) */
+$messages['la'] = array(
+	'sitenotice_close' => 'celare',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  * @author SPQRobin

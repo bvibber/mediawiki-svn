@@ -211,6 +211,11 @@ $messages['oc'] = array(
 	'eval_code'   => 'Còde',
 );
 
+/** Polish (Polski) */
+$messages['pl'] = array(
+	'eval_code' => 'Kod',
+);
+
 /** Portuguese (Português)
  * @author Malafaya
  */

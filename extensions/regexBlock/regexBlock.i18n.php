@@ -89,7 +89,8 @@ $messages['af'] = array(
  * @author Juanpabl
  */
 $messages['an'] = array(
-	'regexblock-form-reason' => 'Razón:',
+	'regexblock-form-reason'     => 'Razón:',
+	'regexblock-already-blocked' => '$1 ya yera bloqueyato.',
 );
 
 /** Arabic (العربية)
@@ -336,7 +337,7 @@ Isto debería facerse só para previr vandalismo, e segundo a política e normas
 	'regexblock-form-submit-empty'    => 'Dar un nome de usuario ou un enderezo IP para bloquear.',
 	'regexblock-form-submit-regex'    => 'Expresión regular non válida.',
 	'regexblock-form-submit-expiry'   => 'Especifique un período de expiración.',
-	'regexblock-already-blocked'      => '$1 está aínda bloqueado.',
+	'regexblock-already-blocked'      => '$1 xa está bloqueado.',
 	'regexblock-stats-username'       => 'Para $1',
 	'regexblock-stats-times'          => 'foi bloqueado en',
 	'regexblock-stats-logging'        => 'rexistrarse desde o enderezo',
@@ -629,6 +630,7 @@ $messages['lb'] = array(
 	'regexblock-stats-username'      => 'Fir $1',
 	'regexblock-stats-times'         => 'gespaart den',
 	'regexblock-currently-blocked'   => 'Aktuell gespaarten Adressen:',
+	'regexblock-view-blocked'        => "Weis d'Späre vum:",
 	'regexblock-view-all'            => 'Alleguer',
 	'regexblock-view-go'             => 'Lass',
 	'regexblock-view-reason'         => 'Grond: $1',
@@ -638,6 +640,11 @@ $messages['lb'] = array(
 	'regexblock-view-stats'          => '(Statistik)',
 	'regexblock-view-empty'          => "D'Lëscht vun de gespaarte Benotzer an IP-Adressen ass eidel.",
 	'regexblock-view-time'           => 'den $1',
+);
+
+/** Moksha (Мокшень) */
+$messages['mdf'] = array(
+	'regexblock-already-blocked' => '"$1" сёлкфоль ни',
 );
 
 /** Malayalam (മലയാളം)
@@ -935,7 +942,7 @@ $messages['pl'] = array(
 	'regexblock'                   => 'BlokadaRegEx',
 	'regexblock-desc'              => 'Rozszerzenie umożliwiające blokowanie nazw użytkowników oraz adresów IP opisanych wyrażeniami regularnymi. Zawiera mechanizm blokujący oraz [[Special:Regexblock|stronę specjalną]] dla dodawania i zarządzania blokadami',
 	'regexblock-unblock-error'     => 'Błąd przy odblokowaniu $1.
-Prawdopodobnie nie ma takiego użytkownika.',
+Prawdopodobnie brak takiego użytkownika.',
 	'regexblock-form-username'     => 'Adres IP lub nazwa użytkownika:',
 	'regexblock-form-reason'       => 'Powód:',
 	'regexblock-form-expiry'       => 'Czas blokady:&#160;',

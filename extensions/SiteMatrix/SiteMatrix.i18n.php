@@ -262,6 +262,7 @@ $messages['el'] = array(
 $messages['eo'] = array(
 	'sitematrix'           => 'Listo de vikioj de Wikimedia',
 	'sitematrix-summary'   => 'Ĉi tiu speciala paĝo montras ĉiujn vikiojn de Wikimedia.',
+	'sitematrix-desc'      => 'Montras [[Special:SiteMatrix|liston de vikioj de Wikimedia]]',
 	'sitematrix-language'  => 'Lingvo',
 	'sitematrix-project'   => 'Nomo de projekto, interprojekta ligilo kaj intervikia ligilo',
 	'sitematrix-others'    => 'Aliaj projektoj de Wikimedia',
@@ -697,11 +698,16 @@ $messages['ksh'] = array(
 	'sitematrix-fishbowl'  => '(et Ändere is beschrängk)',
 );
 
+/** Latin (Latina) */
 $messages['la'] = array(
-	'sitematrix' => 'Wikimediae wiki omnia',
-	'sitematrix-language' => 'Lingua',
-	'sitematrix-project' => 'Inceptum, nexus ad inceptum, et nexus ad linguam',
-	'sitematrix-others' => 'Alii incepta Vicimediorum',
+	'sitematrix'           => 'Vicimediorum vici omnia',
+	'sitematrix-summary'   => 'Haec pagina specialis monstrat indicem omnium Vicimediorum vici.',
+	'sitematrix-desc'      => 'Monstrat [[Special:SiteMatrix|indicem Vicimediorum vici]]',
+	'sitematrix-language'  => 'Lingua',
+	'sitematrix-project'   => 'Inceptum, nexus ad inceptum, et nexus ad vici',
+	'sitematrix-others'    => 'Alia incepta Vicimediorum',
+	'sitematrix-total'     => "'''Numerus: $1'''",
+	'sitematrix-sitetotal' => 'Numerus',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

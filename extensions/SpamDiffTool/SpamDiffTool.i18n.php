@@ -412,7 +412,10 @@ Asseguratz-vos de blocar pas de domenis entièrs que detenon cèrts comptadors d
  * @author Sp5uhe
  */
 $messages['pl'] = array(
-	'spamdifftool_submit_buttom' => 'Wyślij',
+	'spamdifftool_summary'        => 'Dodawanie do czarnej listy spamu',
+	'spamdifftool_spam_link_text' => 'dodaj do spamu',
+	'spamdifftool_option_none'    => 'nic',
+	'spamdifftool_submit_buttom'  => 'Wyślij',
 );
 
 /** Pashto (پښتو)

@@ -151,6 +151,11 @@ $messages['mr'] = array(
 	'mwsearch-desc' => 'एमडब्ल्यूशोध प्लगीन',
 );
 
+/** Low German (Plattdüütsch) */
+$messages['nds'] = array(
+	'mwsearch-desc' => 'MWSearch-Plugin',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

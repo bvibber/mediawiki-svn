@@ -30,6 +30,7 @@ $messages['bg'] = array(
 За свързване е необходимо да се натисне бутонът „Свързване“.
 Ако сте влезли в системата, ще бъде използвано потребителското име.
 Анонимните потребители ще получат случайно име, но то може да бъде променено.',
+	'right-mibbit'  => 'може да използва чата Mibbit',
 );
 
 /** Breton (Brezhoneg)
@@ -134,6 +135,11 @@ Aos usuarios anónimos concederáselles un nome automático, que pode ser cambia
 $messages['hi'] = array(
 	'mibbit'      => 'मीब्बीट चैट',
 	'mibbit-desc' => 'अन्य विकि सदस्योंसे इसी समय चैट करने के लिये उपयुक्त एक [[Special:Mibbit|विशेष पृष्ठ]]',
+);
+
+/** Italian (Italiano) */
+$messages['it'] = array(
+	'right-mibbit' => 'Autorizzato a usare la chat di Mibbit',
 );
 
 /** Javanese (Basa Jawa)

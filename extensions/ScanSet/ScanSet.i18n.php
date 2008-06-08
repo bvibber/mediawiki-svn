@@ -173,7 +173,16 @@ $messages['de'] = array(
  * @author Yekrats
  */
 $messages['eo'] = array(
+	'scanset-desc'                      => 'Rigardi bildojn de skanitaj paĝoj de la CD/DVD-kolekto de Andreas Grosz',
+	'scanset_no_name'                   => 'ScanSet: Vi devas specifigi nomon de skanitajxaro, ekz-e &lt;scanset name="EB1911" /&gt;.',
+	'scanset_invalid_name'              => 'ScanSet: Nevalida aŭ mankanta skanita bildaro.',
 	'scanset_unrecognised_index_format' => 'ScanSet: Nekonata formato de indekso',
+	'scanset_opendir_error'             => 'ScanSet: Eraro, ne povas malfermi dosierujon $1',
+	'scanset_no_files'                  => 'ScanSet: Neniuj dosieroj estas en tiu dosierujo.',
+	'scanset_no_volumes'                => 'ScanSet: Neniuj dosierujoj de datumportilo estis trovitaj',
+	'scanset_missing_index_file'        => 'ScanSet: Indeksa dosiero $1 ne estis trovita',
+	'scanset_index_file_error'          => 'ScanSet: Eraro en formato de indeksa dosiero ĉe linio $1',
+	'scanset_invalid_volume'            => 'ScanSet: Nevalida datumportilo',
 	'scanset_next'                      => 'Sekva &gt;',
 	'scanset_prev'                      => '&lt; Antaŭa',
 );

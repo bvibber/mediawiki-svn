@@ -21,6 +21,12 @@ $messages['ar'] = array(
 	'absenteelandlord-desc'   => 'قفل قاعدة بيانات الويكي تلقائيا إذا كان كل الإداريين غير نشطين لبعض الوقت',
 );
 
+/** Egyptian Spoken Arabic (مصرى) */
+$messages['arz'] = array(
+	'absenteelandlord-reason' => 'قاعدة البيانات اتقفلت  أوتوماتيكي علشان الاداريين مش  بيشتغلو',
+	'absenteelandlord-desc'   => 'قاعدة بيانات الويكي بتتقفل اوتوماتيكي لو كل الاداريين ما اشتغلو ش لفترة معينة',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  */

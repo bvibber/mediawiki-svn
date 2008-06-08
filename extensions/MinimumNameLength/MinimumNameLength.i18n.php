@@ -209,7 +209,7 @@ $messages['oc'] = array(
  */
 $messages['pl'] = array(
 	'minnamelength-error' => 'Twoja nazwa użytkownika jest za krótka. Minimalna długość to $1.',
-	'minnamelength-desc'  => 'Narzuca minimalną długość nazwy użytkownika',
+	'minnamelength-desc'  => 'Wymusza minimalną długość nazwy użytkownika',
 );
 
 /* Piedmontese (Bèrto 'd Sèra) */

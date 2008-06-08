@@ -69,6 +69,11 @@ $messages['bg'] = array(
 	'disabledusers-summary'         => 'Това е списък с потребителски сметки, които са били деактивирани чрез PasswordReset.',
 );
 
+/** Church Slavic (Словѣньскъ) */
+$messages['cu'] = array(
+	'passwordreset-username' => 'по́льꙃєватєлꙗ и́мѧ',
+);
+
 /** Danish (Dansk)
  * @author Jon Harald Søby
  */
@@ -327,6 +332,7 @@ $messages['lb'] = array(
 	'passwordreset-newpass'         => 'Neit Passwuert',
 	'passwordreset-confirmpass'     => 'Passwuert confirméieren',
 	'passwordreset-submit'          => 'Passwuert zrécksetzen',
+	'passwordreset-success'         => "Passwuert fir d'Benotzernummer (User_id) $1 gouf zréckgesat",
 	'passwordreset-disableuser'     => 'Benotzerkont deaktivéieren?',
 	'passwordreset-disablesuccess'  => 'De benotzerkont gouf desaktivéiert (Benotzernummer/user ID:$1)',
 	'passwordreset-accountdisabled' => 'De Benotzerkont gouf desaktivéiert',
@@ -500,7 +506,7 @@ $messages['pms'] = array(
 $messages['ps'] = array(
 	'passwordreset-invalidusername' => 'ناسم کارن-نوم',
 	'passwordreset-emptyusername'   => 'تش کارن-نوم',
-	'passwordreset-nopassmatch'     => 'پټنومونه مو کټ مټ د يو بل سره سمون نه خوري',
+	'passwordreset-nopassmatch'     => 'پټنوم مو کټ مټ د يو بل سره سمون نه خوري',
 	'passwordreset-username'        => 'کارن-نوم',
 	'passwordreset-newpass'         => 'نوی پټنوم',
 	'passwordreset-disableuser'     => 'آيا په رښتيا دا کارن-حساب ناچارنول غواړۍ؟',

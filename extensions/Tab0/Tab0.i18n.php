@@ -11,6 +11,11 @@ $messages['en'] = array(
 	'tab0-desc' => 'Adds "0" tab, linking to the edit page of the first section of the page',
 );
 
+/** Bulgarian (Български) */
+$messages['bg'] = array(
+	'tab0-desc' => 'Добавя етикет „0“, който позволява редактирането на първия раздел на страницата',
+);
+
 /** Czech (Česky)
  * @author Matěj Grabovský
  * @author Mormegil
@@ -56,6 +61,16 @@ $messages['no'] = array(
  */
 $messages['oc'] = array(
 	'tab0-desc' => 'Ajusta la tabulacion « 0 », ligason vèrs la pagina d’edicion de la primièra seccion.',
+);
+
+/** Polish (Polski) */
+$messages['pl'] = array(
+	'tab0-desc' => 'Dodaje zakładkę „0”, linkującą do edycji pierwszej sekcji na stronie',
+);
+
+/** Slovak (Slovenčina) */
+$messages['sk'] = array(
+	'tab0-desc' => 'Pridá záložku „0” vedúcu na úpravu prvej sekcie stránky',
 );
 
 /** Sundanese (Basa Sunda)

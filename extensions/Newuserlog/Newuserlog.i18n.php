@@ -909,7 +909,7 @@ $messages['pms'] = array(
 $messages['ps'] = array(
 	'newuserlogpage'           => 'د کارن-نوم د جوړېدو يادښت',
 	'newuserlogpagetext'       => 'دا د کارن-نوم د جوړېدو يادښت دی',
-	'newuserlog-byemail'       => 'پټنوم مو برېښناليک ته درولېږه',
+	'newuserlog-byemail'       => 'پټنوم مو برېښليک ته درولېږه',
 	'newuserlog-create-entry'  => 'نوی کارونکی',
 	'newuserlog-create2-entry' => 'د $1 لپاره کارن-حساب جوړ شو',
 );

@@ -434,7 +434,7 @@ $messages['pl'] = array(
 	'formnoname'                   => 'Brak nazwy formularza',
 	'formnonametext'               => 'Musisz podać nazwę formularza, np. „{{ns:special}}:Formularz/Nazwaformularza”.',
 	'formbadname'                  => 'Zła nazwa formularza',
-	'formbadnametext'              => 'Nie ma formularza o takiej nazwie.',
+	'formbadnametext'              => 'Brak formularza o takiej nazwie.',
 	'formtitlepattern'             => 'Dodaj nowy $1',
 	'formsave'                     => 'Zapisz',
 	'formarticleexists'            => 'Strona istnieje',
@@ -483,6 +483,11 @@ $messages['pt'] = array(
 	'formsavesummary'              => 'Nova página usando [[Special:Form/$1]]',
 	'formsaveerror'                => 'Erro ao salvar formulário',
 	'formsaveerrortext'            => "Houve um erro desconhecido ao salvar a página '$1'.",
+);
+
+/** Russian (Русский) */
+$messages['ru'] = array(
+	'formsave' => 'Сохранить',
 );
 
 /** Slovak (Slovenčina)

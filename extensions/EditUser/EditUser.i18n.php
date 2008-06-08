@@ -493,6 +493,12 @@ $messages['sr-ec'] = array(
 	'edituser-dosearch' => 'Претрага',
 );
 
+/** Sundanese (Basa Sunda) */
+$messages['su'] = array(
+	'edituser-username' => 'Ngaran',
+	'edituser-dosearch' => 'Sungsi',
+);
+
 /** Swedish (Svenska)
  * @author M.M.S.
  * @author Lejonel

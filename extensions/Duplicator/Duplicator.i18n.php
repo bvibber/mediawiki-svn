@@ -522,6 +522,7 @@ $messages['lb'] = array(
 	'duplicator-success-talkcopied'    => "D'Diskussiounssäit gouf och kopéiert.",
 	'duplicator-success-talknotcopied' => "D'Diskussiounssäit konnt net kopéiert ginn.",
 	'duplicator-failed'                => 'Wéint engem onbekannte Feeler konnt keen Doublon vun der Säit gemaach ginn.',
+	'duplicator-source-invalid'        => 'Gitt w.e.g. e gëltege Quell-Titel un.',
 	'duplicator-source-notexist'       => '[[$1]] gëtt et net. Gitt w.e.g. den Titel vun enger Säit un déi et gëtt.',
 	'duplicator-toomanyrevisions'      => '[[$1]] huet zevill ($2) Versiounen an et ka keen Doublon dovu gemaach ginn. Déi aktuell Limit vun der Zuel vun de Versiounen ass $3.',
 );

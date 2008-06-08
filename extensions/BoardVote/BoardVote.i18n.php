@@ -476,40 +476,82 @@ $messages['bcl'] = array(
  * @author Siebrand
  */
 $messages['be-tarask'] = array(
-	'boardvote'              => 'Выбары ў Апякунскую раду фундацыі Wikimedia',
-	'boardvote-desc'         => '[[meta:Board elections/2008|Выбары ў Апякунскую раду фундацыі Wikimedia]]',
-	'boardvote_notloggedin'  => 'Вы не ўвайшлі ў сыстэму.
-Каб прагаласаваць, вы павінны быць зарэгістраваным удзельнікам і зрабіць не меней $1 правак да $2, і не меней $3 правак з $4 да $5.',
-	'boardvote_notqualified' => 'Нажаль, вы ня можаце прыняць удзел у гэтых выбарах.
-Каб прагаласаваць, вы павінны быць зарэгістраваным удзельнікам і зрабіць не меней $1 правак да $2, і не меней $3 правак з $4 да $5.',
-	'boardvote_novotes'      => 'Яшчэ ніхто не прагаласаваў.',
-	'boardvote_time'         => 'Час',
-	'boardvote_user'         => 'Удзельнік',
-	'boardvote_edits'        => 'Колькасьць правак',
-	'boardvote_days'         => 'Дні',
-	'boardvote_ip'           => 'IP-адрасы',
-	'boardvote_ua'           => 'Браўзэр',
-	'boardvote_listintro'    => '<p>Гэта сьпіс усіх запісаных галасоў на цяперашні момант. $1 дзеля зашыфраваных зьвестак.</p>',
-	'boardvote_dumplink'     => 'Націсьніце тут',
-	'boardvote_strike'       => 'Закрэсьліць',
-	'boardvote_unstrike'     => 'Адкрэсьліць',
-	'boardvote_needadmin'    => 'Толькі адміністратары выбараў могуць выконваць гэтае дзеяньне.',
-	'boardvote_sitenotice'   => '<a href="{{localurle:Special:Boardvote/vote}}">Выбары ў Раду павераных фундацыі «Вікімэдыя»</a>: Галасаваньне адчынена да 22 чэрвеня',
-	'boardvote_notstarted'   => 'Галасаваньне яшчэ не пачалося',
-	'boardvote_closed'       => 'Галасаваньне скончана, гл. [http://meta.wikimedia.org/wiki/Board_elections/2008/Results старонку вынікаў].',
-	'boardvote_edits_many'   => 'шмат',
-	'group-boardvote'        => 'Чальцы выбаркаму',
-	'grouppage-boardvote'    => '{{ns:project}}:Чалец выбаркама',
-	'boardvote_blocked'      => 'Выбачайце, але Вы былі заблякаваныя ў Вашым вікі-праекце. Заблякаваным удзельнікам і ўдзельніцам не дазволена галасаваць.',
-	'boardvote_bot'          => 'Даруйце, але ў вікі-праекце, у якім вы зарэгістраваныя, вы маеце статус робата. Уліковыя запісы ботаў не дапушчаюцца да галасаваньня.',
-	'boardvote_welcome'      => "Вітаем, '''$1'''!",
-	'go_to_board_vote'       => 'Выбары ў Апякунскую раду фундацыі Wikimedia 2008 году',
-	'boardvote_redirecting'  => 'Для павелічэньня бясьпекі і празрыстасьці мы праводзім галасаваньне на вонкавым, незалежна кіраваным сэрверы.
+	'boardvote'                => 'Выбары ў Раду павераных фундацыі «Вікімэдыя»',
+	'boardvote-desc'           => '[[meta:Board elections/2008|Выбары ў Раду павераных фундацыі Вікімэдыя]]',
+	'boardvote_entry'          => '* [[Special:Boardvote/vote|Прагаласаваць]]
+* [[Special:Boardvote/list|Паглядзець сьпіс тых, хто ўжо прагаласаваў]]
+* [[Special:Boardvote/dump|Паглядзець зашыфраваны запіс галасоў]]',
+	'boardvote_intro'          => '<p>Сардэчна запрашаем на выбары ў Раду павераных фундацыі «Вікімэдыя».
+Мы галасуем з мэтай абраць прадстаўніка супольнасьцяў удзельнікаў розных праектаў Вікімэдыя. Ён павінен будзе дапамагаць нам вызначыць вэктар будучага разьвіцьця праектаў Вікімэдыя і прадстаўляць <em>вашыя</em> інтарэсы ў Радзе павераных.
+Ён закліканы вырашаць праблемы прыцягненьня фінансаваньня і разьмяшчэньня прыцягнутых рэсурсаў.</p>
 
-Вы будзеце перанакіраваныя на гэты вонкавы сэрвер праз 20 сэкунд. [$1 Націсьніце сюды], каб перайсьці туды зараз.
+<p>Калі ласка, уважліва прачытайце заявы кандыдатаў і адказы на пытаньні перш чым галасаваць.
+Усе кандыдаты — паважаныя ўдзельнікі, якія ахвяравалі істотным часам і высілкамі, каб палепшыць нашыя праекты і зрабіць іх прывабным асяродзьдзем, мэтай якога зьяўляецца пошук і вольнае распаўсюджваньне ведаў чалавецтва.</p>
+
+<p>Калі ласка, разьмясьціце кандыдатаў у парадку, які адлюстроўвае Вашыя перавагі праз запаўненьне палёў лікамі (1 — найболей пераважны, 2 — наступны ў парадку перавагі кандыдат і г. д.)
+Вы можаце прызначыць некалькім кандыдатам аднолькавы лік, а таксама наогул не адзначаць некаторых кандыдатаў лікам. Гэта будзе азначаць, што сярод вашых абранцаў вы нікому не аддаеце перавагу, але вылучаеце іх сярод іншых кандыдатаў.</p>
+
+<p>Пераможца галасаваньня будзе вызначаны з дапамогай мэтаду Шульца. Падрабязнасьці можна даведацца на афіцыйных старонках галасаваньня.</p>
+
+<p>Дадатковая інфармацыя:</p>
+<ul><li><a href="http://meta.wikimedia.org/wiki/Board_elections/2008/be-x-old" class="external">Выбары ў Раду павераных 2008</a></li>
+<li><a href="http://meta.wikimedia.org/wiki/Board_elections/2008/Candidates/be-x-old" class="external">Кандыдаты</a></li>
+<li><a href="http://be-x-old.wikipedia.org/wiki/Мэтад_Шульца" class="external">Мэтад Шульца</a>
+</li></ul>',
+	'boardvote_intro_change'   => '<p>Вы ўжо прагаласавалі. Тым ня менш, з дапамогай прыведзенай ніжэй формы Вы можаце зьмяніць сваё рашэньне. Калі ласка, разьмясьціце кандыдатаў у парадку, які адлюстроўвае Вашыя перавагі і запоўніце палі лікамі так, каб найменшы нумар паказваў на Вашую найвышэйшую перавагу пэўнага кандыдата. Вы можаце прызначыць некалькім кандыдатам аднолькавы лік, а таксама наогул не адзначаць некаторых кандыдатаў лікам.</p>',
+	'boardvote_entered'        => 'Дзякуй, Ваш голас улічаны.
+
+Пры жаданьні, Вы можаце запісаць наступную інфармацыю. Нумар вашага бюлетэня:
+
+<pre>$1</pre>
+
+Ён зашыфраваны з адкрытым ключом адміністрацыі выбараў:
+
+<pre>$2</pre>
+
+Зашыфраваны тэкст прыведзены ніжэй. Кожны жадаючы зможа знайсьці яго на старонцы [[Special:Boardvote/dump]].  
+
+<pre>$3</pre>
+
+[[Special:Boardvote/entry|Назад]]',
+	'boardvote_invalidentered' => '<p><strong>Памылка</strong>: перавага кандыдата павінная быць выяўленая станоўчым цэлым лікам (1, 2, 3, …) або пакінутая пустой.</p>',
+	'boardvote_nosession'      => 'Немагчыма вызначыць Ваш ідэнтыфікатар удзельніка праектаў Вікімэдыі.
+Калі ласка, увайдзіце ў сыстэму ў тым праекце, дзе ваш рахунак задавальняе патрабаваньням, і перайдзіце на старонку <nowiki>[[Special:Boardvote]]</nowiki>.
+Вы павінныя быць зарэгістраваным удзельнікам і зрабіць ня меней $1 {{PLURAL:$1|праўкі|правак|правак}} да $2, і ня меней $3 {{PLURAL:$3|праўкі|правак|правак}} з $4 да $5.',
+	'boardvote_notloggedin'    => 'Вы не ўвайшлі ў сыстэму.
+Каб прагаласаваць, Вы павінны быць зарэгістраваным удзельнікам і зрабіць ня меней $1 {{PLURAL:$1|праўкі|правак|правак}} да $2, і ня меней $3 {{PLURAL:$3|праўкі|правак|правак}} з $4 да $5.',
+	'boardvote_notqualified'   => 'Вы ня можаце прыняць удзел у гэтых выбарах.
+Каб прагаласаваць, Вам трэба быць зарэгістраваным удзельнікам і зрабіць ня меней $1 {{PLURAL:$1|праўкі|правак|правак}} да $2, і ня меней $3 {{PLURAL:$3|праўкі|правак|правак}} з $4 да $5.',
+	'boardvote_novotes'        => 'Яшчэ ніхто не прагаласаваў.',
+	'boardvote_time'           => 'Час',
+	'boardvote_user'           => 'Удзельнік',
+	'boardvote_edits'          => 'Колькасьць правак',
+	'boardvote_days'           => 'Дні',
+	'boardvote_ip'             => 'IP-адрасы',
+	'boardvote_ua'             => 'Браўзэр',
+	'boardvote_listintro'      => '<p>Гэта сьпіс усіх запісаных галасоў на цяперашні момант. $1 дзеля зашыфраваных зьвестак.</p>',
+	'boardvote_dumplink'       => 'Націсьніце тут',
+	'boardvote_strike'         => 'Закрэсьліць',
+	'boardvote_unstrike'       => 'Адкрэсьліць',
+	'boardvote_needadmin'      => 'Толькі адміністратары выбараў могуць выконваць гэтае дзеяньне.',
+	'boardvote_sitenotice'     => '<a href="{{localurle:Special:Boardvote/vote}}">Выбары ў Раду павераных фундацыі «Вікімэдыя»</a>: Галасаваньне адкрытае да 22 чэрвеня',
+	'boardvote_notstarted'     => 'Галасаваньне яшчэ не пачалося',
+	'boardvote_closed'         => 'Галасаваньне скончанае, глядзіце [http://meta.wikimedia.org/wiki/Board_elections/2008/Results старонку вынікаў].',
+	'boardvote_edits_many'     => 'шмат',
+	'group-boardvote'          => 'Чальцы выбаркаму',
+	'group-boardvote-member'   => 'Чалец выбаркаму',
+	'grouppage-boardvote'      => '{{ns:project}}:Чалец выбаркама',
+	'boardvote_blocked'        => 'Выбачайце, але Вы былі заблякаваныя ў Вашым вікі-праекце. Заблякаваным удзельнікам і ўдзельніцам не дазволена галасаваць.',
+	'boardvote_bot'            => 'Вы маеце статус робата ў вікі-праекце, у якім вы зарэгістраваныя.
+Рахункі робатаў не дапускаюцца да галасаваньня.',
+	'boardvote_welcome'        => "Вітаем, '''$1'''!",
+	'go_to_board_vote'         => 'Выбары ў Раду павераных фундацыі Вікімэдыя 2008 году',
+	'boardvote_redirecting'    => 'Для павелічэньня бясьпекі і празрыстасьці мы праводзім галасаваньне на вонкавым, незалежна кіраваным сэрвэры.
+
+Вы будзеце перанакіраваныя на гэты вонкавы сэрвэр праз 20 сэкундаў. [$1 Націсьніце сюды], каб перайсьці туды зараз.
 
 Можа зьявіцца паведамленьне аб непадпісаным сэртыфікаце',
-	'right-boardvote'        => 'Адміністраваньне выбараў',
+	'right-boardvote'          => 'Адміністраваньне выбараў',
 );
 
 /** Bulgarian (Български)
@@ -865,7 +907,7 @@ Výsledná šifrovaná podoba následuje. Bude veřejně dostupná na stránce [
 	'go_to_board_vote'         => 'Volby do správní rady Wikimedia Foundation 2008',
 	'boardvote_redirecting'    => 'Pro lepší bezpečnost a transparentnost provozujeme volby na externím, nezávisle řízeném serveru.
 
-Na tento externí server budete přesměrování za 20 sekund. Okamžitě tam můžete přejít [$1 kliknutím sem].
+Na tento externí server budete přesměrováni za 20 sekund. Okamžitě tam můžete přejít [$1 kliknutím sem].
 
 Může se zobrazit bezpečnostní varování o nepodepsaném certifikátu.',
 	'right-boardvote'          => 'Administrace voleb',
@@ -1219,9 +1261,9 @@ $messages['el'] = array(
 $messages['eo'] = array(
 	'boardvote'                => 'Baloto por la "Administra Konsilantaro de Vikimedia Fondaĵo"',
 	'boardvote-desc'           => '[[meta:Board elections/2008|Baloto de "Administra Konsilantaro de Vikimedia Fondaĵo"]]',
-	'boardvote_entry'          => '* [[Speciala:Boardvote/vote|Baloto]]
-* [[Speciala:Boardvote/list|Ĝisdata balotlisto]]
-* [[Speciala:Boardvote/dump|Ĉifrita elsxutaĵo de la esprimitaj voĉoj]]',
+	'boardvote_entry'          => '* [[Special:Boardvote/vote|Baloto]]
+* [[Special:Boardvote/list|Ĝisdata balotlisto]]
+* [[Special:Boardvote/dump|Ĉifrita elsxutaĵo de la esprimitaj voĉoj]]',
 	'boardvote_intro'          => '<p>Bonvenon al la 2008-jara baloto por la Administra Konsilantaro de \'\'Vikimedio\'\'. 
 Ni voĉdonas por unu persono kiu reprezentos la uzantarojn de la diversaj projektoj de \'\'Vikimedio\'\'. Tiu persono helpos determini la estontajn direktojn de la Vikimedio-projektoj, sole kaj grupe, kaj reprezentos <em>viajn</em> interesojn kaj zorgojn al la Administrantaro. Tiu decidos fojojn generi enspezon kaj la elspezo de tiu mono.</p>
 
@@ -1246,11 +1288,11 @@ Se vi deziras, vi povas registri la sekvantajn detalojn. La registraĵo de via b
 
 <pre>$2</pre>
 
-La rezultanta ĉifrita versio sekvas. Ĝi estos publike montrita sur [[Speciala:Boardvote/dump]]. 
+La rezultanta ĉifrita versio sekvas. Ĝi estos publike montrita sur [[Special:Boardvote/dump]]. 
 
 <pre>$3</pre>
 
-[[Speciala:Boardvote/entry|Reen]]',
+[[Special:Boardvote/entry|Reen]]',
 	'boardvote_invalidentered' => '<p><strong>Eraro</strong>: Prefero de kandidato devas esti esprimita nur per pozitiva entjero (1, 2, 3, ....), aŭ lasite malplena.</p>',
 	'boardvote_nosession'      => 'Via uzanto-identigo de WikiMedia ne estas determinebla.
 Bonvolu ensaluti la Vikion kie vi estas registrita kaj iri al <nowiki>[[Special:Boardvote]]</nowiki>.
@@ -2593,12 +2635,19 @@ $messages['ja'] = array(
 	'boardvote_entry'        => '* [[Special:Boardvote/vote|投票]]
 * [[Special:Boardvote/list|現在までの投票]]
 * [[Special:Boardvote/dump|暗号化された投票データのダンプ]]',
-	'boardvote_intro'        => '2008年度の選挙は終了しました。
+	'boardvote_intro'        => '<p>2008年度ウィキメディア財団理事会理事選挙へご参加いただきありがとうございます。このたびの選挙では、さまざまなウィキメディアのプロジェクトのコミュニティのなかから、1名の代表を選出します。これらの立候補者はウィキメディアのプロジェクトが、それぞれ、あるいはまとまりとして、どのような未来へ進んでいくか定めていくことを支援し、また、<em>あなたの</em>関心や懸念を理事会に伝える役割を担おうとする方々です。彼らは収入を得ていく手段を決め、受けとった資金の使途を定めることとなるでしょう。</p>
 
-<p>より詳細な情報はこちらをご覧ください:</p>
-<ul><li><a href="http://meta.wikimedia.org/wiki/Board_elections/2008" class="external">FAQ</a></li>
-<li><a href="http://meta.wikimedia.org/wiki/Board_elections/2008/Candidates" class="external">候補者一覧</a></li></ul>',
-	'boardvote_intro_change' => '<p>あなたは既に投票済みです。投票する候補者の変更は、以下のフォームから行うことができます。支持する候補者の投票欄をチェックしてください。</p>',
+<p>投票のまえに、立候補者の主張や質問への回答をよくお読みになってください。どの立候補者も、ウィキメディアのプロジェクトに長い間、深く関わってきて、そしてウィキメディアのプロジェクトを人間の智の追求および自由な配分に関与し、かつだれもが歓迎される環境にしようとしてきた、尊敬すべきユーザなのです。</p>
+
+<p>投票にあたっては、立候補者のなかから理事になってほしい立候補者に順位を与え、立候補者の名前の脇にあるテキストボックスにその数字を入れてください（つまり、1をもっとも望ましい立候補者に、2を次点に入れるということです）。複数の立候補者に同じ順位を与えることもできますし、順位を決めないこともできます。この投票方式では、あなたが順位を与えた立候補者は、順位を与えられなかった立候補者よりも、理事に選びたいものであり、また、順位を与えられなかった立候補者については中立を選んだというように解釈されます。</p>
+
+<p>投票結果はシュルツェ方式によって算出され、第一位が決定されます。投票結果については公式選挙ページをご参照あわせください。</p>
+
+<p>選挙についての詳細は、</p>
+<ul><li><a href="http://meta.wikimedia.org/wiki/Board_elections/2008/ja" class="external">2008年度理事選挙</a></li>
+<li><a href="http://meta.wikimedia.org/wiki/Board_elections/2008/Candidates/ja" class="external">立候補者</a></li>
+<li><a href="http://en.wikipedia.org/wiki/Schulze_method" class="external">Schulze method (英文)</a></li></ul>',
+	'boardvote_intro_change' => '<p>あなたは既に投票済みです。投票内容を変更する場合は、以下のフォームをお書きかえください。立候補者を、適格であると考える順番に順位付けをしてください（もっとも好ましい立候補者により小さい数を付けてください）。同じ数を複数の立候補者に与えることもできますし、順位を付けないままにすることもできます。</p>',
 	'boardvote_entered'      => 'ありがとうございます、あなたの投票は正常に記録されました。
 
 あなたが望むなら、以下の詳細を記録しておくとよいでしょう。あなたの投票記録は:
@@ -2614,9 +2663,10 @@ $messages['ja'] = array(
 <pre>$3</pre>
 
 [[Special:Boardvote/entry|戻る]]',
-	'boardvote_nosession'    => 'ウィキメデイア利用者IDを確認できません。投票資格のあるウィキにログインし、<nowiki>[[Special:Boardvote]]</nowiki>へ進んでください。投票に使うアカウントは、$2以前に$1回を超える編集を行い、かつ最初の編集が$3以前のものである必要があります。',
-	'boardvote_notloggedin'  => 'あなたはログインしていません。投票に使うアカウントは、$2以前に$1回を超える編集を行い、かつ最初の編集が$3以前のものである必要があります。',
-	'boardvote_notqualified' => 'あなたには、この選挙の投票資格がありません。投票に使うアカウントは、$2以前に$1回を超える編集を行い、かつ最初の編集が$3以前のものである必要があります。',
+	'boardvote_nosession'    => 'ウィキメデイア利用者IDを確認できません。投票資格のあるウィキにログインし、<nowiki>[[Special:Boardvote]]</nowiki>へ進んでください。投票に使うアカウントは、$2以前に$1回を超える編集を行い、かつ$4から$5の期間にかけて$3以上の編集を行ったものである必要があります。',
+	'boardvote_notloggedin'  => 'あなたはログインしていません。投票に使うアカウントは、$2以前に$1回を超える編集を行い、かつ$4から$5の期間にかけて$3以上の編集を行ったものである必要があります。',
+	'boardvote_notqualified' => 'あなたには、この選挙の投票資格がありません。
+投票に使うアカウントは、$2以前に$1回を超える編集を行い、かつ$4から$5の期間にかけて$3以上の編集を行ったものである必要があります。',
 	'boardvote_novotes'      => 'まだ誰も投票していません。',
 	'boardvote_time'         => '時刻',
 	'boardvote_user'         => '利用者',
@@ -2632,7 +2682,7 @@ $messages['ja'] = array(
 	'boardvote_needadmin'    => 'この処理は選挙管理委員のみ行うことができます。',
 	'boardvote_sitenotice'   => '<a href="{{localurle:Special:Boardvote/vote}}">ウィキメディア財団総選挙</a>:  22 June日まで投票実施中',
 	'boardvote_notstarted'   => 'まだ投票は始まっていません',
-	'boardvote_closed'       => '投票は終了しました。後日[http://meta.wikimedia.org/wiki/Elections_for_the_Board_of_Trustees_of_the_Wikimedia_Foundation%2C_2008/En 選挙結果のページ]をご覧ください。',
+	'boardvote_closed'       => '投票は終了しました。後日[http://meta.wikimedia.org/wiki/Board_elections/2008/Results/ja 選挙結果のページ]をご覧ください。',
 	'boardvote_edits_many'   => '多数',
 	'group-boardvote'        => '選挙管理委員会',
 	'group-boardvote-member' => '選挙管理委員',
@@ -3381,7 +3431,7 @@ $messages['loz'] = array(
  * @author Hugo.arg
  */
 $messages['lt'] = array(
-	'boardvote'              => 'Vikimedijos išlaikymo tarybos rinkimai',
+	'boardvote'              => 'Vikimedijos tarybos rinkimai',
 	'boardvote-desc'         => '[[meta:Board elections/2008|Vikimedijos Valdytojų tarybos rinkimai]]',
 	'boardvote_entry'        => '* [[Special:Boardvote/vote|Balsuoti]]
 * [[Special:Boardvote/list|Balsavimų sąrašas]]
@@ -4167,6 +4217,24 @@ Ch'a ten-a da ment che ën bogiandse a peul arsèive n'avis dla sigurëssa ëd s
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */
 $messages['ps'] = array(
+	'boardvote_intro'      => '<p>د ۲۰۰۸ کال لپاره د ويکيمېډيا-بنسټ د پلاويو ټولټاکنې ته مو هر کلی کوو.
+دلته موږ يوه وګړي ته رايه ورکوو چې هغه د ويکيمېډيا د بېلابېلو پروژو د کارکونکو د ټولنې د پلاوي په توګه راڅرګند شي.
+They will help to determine the future direction that the Wikimedia projects will take, individually and as a group, and represent <em>your</em> interests and concerns to the Board of Trustees.
+They will decide on ways to generate income and the allocation of moneys raised.</p>
+
+<p>Please read the candidates\' statements and responses to queries carefully before voting.
+Each of the candidates is a respected user, who has contributed considerable time and effort to making these projects a welcoming environment committed to the pursuit and free distribution of human knowledge.</p>
+
+<p>مهرباني وکړۍ کانديدان خپل د غوره توبونو له مخې په رتبو وګومارۍ دا تاسو داسې کولای شی چې په څنګ کې ورکړ شوي چوکاټ کې مو ټاکلې شمېره وليکۍ (1 = ستاسو د خوښې کاندي، 2 = ستاسو د خوښې دوهم کانديد، ...).
+You may give the same preference to more than one candidate and may keep candidates unranked.
+It is presumed that you prefer all ranked candidates to all not ranked candidates and that you are indifferent between all not ranked candidates.</p>
+
+<p>The winner of the election will be calculated using the Schulze method. For more information, see the official election pages.</p>
+
+<p>د لا نورو مالوماتو لپاره، لاندې ورکړل شوي مالومات وګورۍ:</p>
+<ul><li><a href="http://meta.wikimedia.org/wiki/Board_elections/2008" class="external">د ۲۰۰۸ کال د رياست ټولټاکنه</a></li>
+<li><a href="http://meta.wikimedia.org/wiki/Board_elections/2008/Candidates" class="external">کانديد وګړي</a></li>
+<li><a href="http://en.wikipedia.org/wiki/Schulze_method" class="external">د شولز چلندلار</a></li></ul>',
 	'boardvote_novotes'    => 'تر اوسه هېچا رايه نه ده ورکړې.',
 	'boardvote_time'       => 'وخت',
 	'boardvote_user'       => 'کارونکی',
@@ -5318,7 +5386,7 @@ $messages['uk'] = array(
 Облікові записи ботів не допускаються до голосування.',
 	'boardvote_welcome'        => "Ласкаво просимо, '''$1'''!",
 	'go_to_board_vote'         => 'Вибори до Ради повірених Вікімедіа 2008',
-	'boardvote_redirecting'    => "Для збільшення безпеки і прозорості, ми проводимо голосування на зовнішньому, незалежно керованому сервері.
+	'boardvote_redirecting'    => "Для підвищення безпеки і прозорості ми проводимо голосування на зовнішньому, незалежно керованому сервері.
 
 Ви будете переадресовані на цей зовнішній сервер через 20 секунд. [$1 Клацніть сюди], щоб перейти туди прямо зараз.
 

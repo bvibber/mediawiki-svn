@@ -144,6 +144,11 @@ $messages['mr'] = array(
 	'simpleantispam-desc'  => 'अर्जांमध्ये एक साधी स्पॅम/सांगकाम्या तपासणी वाढवितो',
 );
 
+/** Low German (Plattdüütsch) */
+$messages['nds'] = array(
+	'simpleantispam-label' => "Antispam-Kuntrull. Hier '''nix''' indragen!",
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */
@@ -178,7 +183,10 @@ Inscrigatz '''PAS RES''' dedins !",
  * @author Sp5uhe
  */
 $messages['pl'] = array(
-	'simpleantispam' => 'Twoja edycja zostanie sprawdzona mechanizmem antyspamowym',
+	'simpleantispam'       => 'Twoja edycja zostanie sprawdzona mechanizmem antyspamowym',
+	'simpleantispam-label' => "Filtr antyspamowy.
+'''NIE''' wpisuj tu nic!",
+	'simpleantispam-desc'  => 'Dodaje do formularzy proste zabezpieczenie przed spamem i automatami',
 );
 
 /** Portuguese (Português)

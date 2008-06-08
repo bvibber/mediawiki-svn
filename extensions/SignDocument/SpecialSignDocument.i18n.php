@@ -830,6 +830,7 @@ $messages['la'] = array(
  */
 $messages['lb'] = array(
 	'signdocument'                  => 'Dokument ënnerschreiwen',
+	'sign-nodocselected'            => 'Wielt w.e.g dat Dokument aus dat Dir ënenrschreiwe wëllt.',
 	'sign-selectdoc'                => 'Dokument:',
 	'sign-error-nosuchdoc'          => 'Dat Dokument, dat Dir ugefrot hutt, gëtt et net.',
 	'sign-realname'                 => 'Numm:',

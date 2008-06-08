@@ -156,6 +156,12 @@ $messages['oc'] = array(
 	'stalepages-summary' => 'Aquò es una lista de paginas que son pas estadas modificadas dempuèi {{plural:$1|$1 jorn|$1 jorns}}.',
 );
 
+/** Polish (Polski) */
+$messages['pl'] = array(
+	'stalepages'         => 'Nieaktualne strony',
+	'stalepages-summary' => 'Poniżej znajduje się lista stron, które nie były edytowane od co najmniej $1 dni.',
+);
+
 /** Portuguese (Português)
  * @author Malafaya
  */

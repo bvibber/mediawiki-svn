@@ -66,9 +66,10 @@ $messages['af'] = array(
  * @author Juanpabl
  */
 $messages['an'] = array(
-	'crosswikiblock-reason'   => 'Razón:',
-	'crosswikiblock-anononly' => 'Bloqueyar nomás os usuarios anonimos',
-	'crosswikiunblock-reason' => 'Razón:',
+	'crosswikiblock-reason'         => 'Razón:',
+	'crosswikiblock-anononly'       => 'Bloqueyar nomás os usuarios anonimos',
+	'crosswikiunblock-reason'       => 'Razón:',
+	'crosswikiblock-alreadyblocked' => "L'usuario $3 ya yera bloqueyato.",
 );
 
 /** Arabic (العربية)
@@ -654,6 +655,11 @@ Zréck op:
 	'crosswikiunblock-local'        => 'Op dëser Säit kënne lokal Spären net opgehuewe ginn. Benotzt w.e.g. [[Special:Ipblocklist]]',
 );
 
+/** Moksha (Мокшень) */
+$messages['mdf'] = array(
+	'crosswikiblock-alreadyblocked' => '"$1" сёлкфоль ни',
+);
+
 /** Malayalam (മലയാളം)
  * @author Shijualex
  */
@@ -1148,7 +1154,9 @@ Tourääch tou:
  * @author Irwangatot
  */
 $messages['su'] = array(
-	'crosswikiblock-noemail' => 'Henteu kaci pamaké ngirimkeun surélék',
+	'crosswikiblock-reason'   => 'Alesan:',
+	'crosswikiblock-noemail'  => 'Henteu kaci pamaké ngirimkeun surélék',
+	'crosswikiunblock-reason' => 'Alesan :',
 );
 
 /** Swedish (Svenska)

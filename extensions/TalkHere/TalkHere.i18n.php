@@ -399,7 +399,7 @@ $messages['pl'] = array(
 
 Administratorzy tej strony nie mogą brać odpowiedzialności za zawartość takich komentarzy.',
 	'talkhere-talkpage'    => 'strona dyskusji',
-	'talkhere-notalk'      => "''(nie ma jeszcze komentarzy)''",
+	'talkhere-notalk'      => "''(brak komentarzy)''",
 	'talkhere-addcomment'  => 'dodaj komentarz',
 	'talkhere-beforeinput' => 'Możesz wpisać komentarz poniżej',
 	'talkhere-loading'     => 'wczytywanie edytora...',
@@ -419,6 +419,11 @@ J'operator d'ës sit-sì a peulo nen pijesse la responsabilità dël contnù dë
 	'talkhere-beforeinput' => 'A peul gionté un coment ambelessì sota',
 	'talkhere-loading'     => "antramentr ch'i carioma l'editor...",
 	'talkhere-collapse'    => "stërma l'editor",
+);
+
+/** Pashto (پښتو) */
+$messages['ps'] = array(
+	'talkhere-talkpage' => 'د خبرواترو مخ',
 );
 
 /** Portuguese (Português)

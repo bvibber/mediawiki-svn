@@ -757,11 +757,14 @@ Czekaj.',
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */
 $messages['ps'] = array(
+	'youtubeauthsub-desc'            => 'کارونکي په دې توانوي چې يوټيوب ته راساً [[Special:YouTubeAuthSub|ويډيوګانې پورته کړي]]',
 	'youtubeauthsub_title'           => 'سرليک',
-	'youtubeauthsub_password'        => 'د YouTube پټنوم',
-	'youtubeauthsub_username'        => 'د YouTube کارن-نوم',
+	'youtubeauthsub_description'     => 'څرګندونه',
+	'youtubeauthsub_password'        => 'د يوټيوب پټنوم',
+	'youtubeauthsub_username'        => 'د يوټيوب کارن-نوم',
 	'youtubeauthsub_category'        => 'وېشنيزه',
 	'youtubeauthsub_clickhere'       => 'يوټيوب کې د ننوتلو لپاره دلته وټوکۍ',
+	'youtubeauthsub_uploadhere'      => 'خپله ويډيو له دې ځاي نه پورته کړی:',
 	'youtubeauthsub_code'            => '{{#ev:youtube|$1}}.
 
 همدا ويډيو کولای شی چې [http://www.youtube.com/watch?v=$1 دلته] وګورۍ',
@@ -805,6 +808,7 @@ $messages['ru'] = array(
 	'youtubeauthsub_info'               => 'Чтобы загрузить видео на YouTube и вставить его на страницу, заполните следующие поля:',
 	'youtubeauthsub_title'              => 'Заголовок',
 	'youtubeauthsub_description'        => 'Описание',
+	'youtubeauthsub_category'           => 'Категория',
 	'youtubeauthsub_jserror_nokeywords' => 'Пожалуйста, введите одно или несколько ключевых слов.',
 	'youtubeauthsub_jserror_notitle'    => 'Пожалуйста, введите заголовок видео.',
 	'youtubeauthsub_jserror_nodesc'     => 'Пожалуйста, введите описание видео.',

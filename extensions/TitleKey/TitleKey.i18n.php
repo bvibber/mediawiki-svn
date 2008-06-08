@@ -21,6 +21,11 @@ $messages['ar'] = array(
 	'titlekey-desc' => 'نهاية اقتراح بحث عنوان البادئة',
 );
 
+/** Czech (Česky) */
+$messages['cs'] = array(
+	'titlekey-desc' => 'Implementace našeptávače hledajícího podle počátku názvu',
+);
+
 /** German (Deutsch)
  * @author Raimond Spekking
  */

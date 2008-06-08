@@ -103,6 +103,7 @@ $messages['de'] = array(
  * @author Yekrats
  */
 $messages['eo'] = array(
+	'intersection-desc'          => 'Eligas bulpunktitan liston de la plej lastaj kategorianoj, aŭ unuigo de pluraj kategorioj',
 	'intersection_toomanycats'   => 'DynamicPageList: Tro da kategorioj!',
 	'intersection_toofewcats'    => 'DynamicPageList: Tro malmultaj da kategorioj!',
 	'intersection_noresults'     => 'DynamicPageList: Neniom da rezultoj!',

@@ -37,6 +37,11 @@ $messages['af'] = array(
 	'dt_xml_title'          => 'Titel',
 );
 
+/** Aragonese (Aragonés) */
+$messages['an'] = array(
+	'dt_viewxml_namespaces' => 'Espazios de nombres',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */
@@ -615,7 +620,7 @@ $messages['ta'] = array(
 $messages['te'] = array(
 	'viewxml'               => 'XMLని చూడండి',
 	'dt_viewxml_categories' => 'వర్గాలు',
-	'dt_viewxml_namespaces' => 'పేరుబర్లు',
+	'dt_viewxml_namespaces' => 'పేరుబరులు',
 	'dt_xml_namespace'      => 'పేరుబరి',
 	'dt_xml_page'           => 'పేజీ',
 	'dt_xml_name'           => 'పేరు',

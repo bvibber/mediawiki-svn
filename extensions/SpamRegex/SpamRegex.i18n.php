@@ -45,6 +45,11 @@ $messages['af'] = array(
 	'spamregex-summary-log' => '(Opsomming)',
 );
 
+/** Aragonese (Aragonés) */
+$messages['an'] = array(
+	'spamregex-already-blocked' => '"$1" ya yera bloqueyato',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */
@@ -174,7 +179,7 @@ $messages['gl'] = array(
 	'spamregex-block-message'        => "A frase '''$1''' foi bloqueada.",
 	'spamregex-warning-1'            => 'Dar unha frase para bloquear.',
 	'spamregex-error-1'              => 'Expresión regular non válida.',
-	'spamregex-already-blocked'      => '"$1" está aínda bloqueado',
+	'spamregex-already-blocked'      => '"$1" xa está bloqueado',
 	'spamregex-phrase-block'         => 'Frase para bloquear:',
 	'spamregex-phrase-block-text'    => 'bloquear unha frase no texto da páxina',
 	'spamregex-phrase-block-summary' => 'bloquear frase no resumo',
@@ -265,6 +270,11 @@ $messages['lb'] = array(
 	'spamregex-phrase-block-summary' => 'Saatz am Resumé spären',
 	'spamregex-text'                 => '(Text)',
 	'spamregex-summary-log'          => '(Resumé)',
+);
+
+/** Moksha (Мокшень) */
+$messages['mdf'] = array(
+	'spamregex-already-blocked' => '"$1" сёлкфоль ни',
 );
 
 /** Malayalam (മലയാളം)

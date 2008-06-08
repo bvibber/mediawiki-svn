@@ -170,6 +170,7 @@ $messages['oc'] = array(
  * @author Derbeth
  */
 $messages['pl'] = array(
+	'templatelink'          => 'Link do szablonu',
 	'templatelink_empty'    => 'Musisz podać parametr',
 	'templatelink_newtitle' => '$1 (po transkluzji)',
 );

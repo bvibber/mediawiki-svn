@@ -116,6 +116,11 @@ $messages['cs'] = array(
 	'countedits-mostactive'   => 'Nejaktivnější přispěvatelé',
 );
 
+/** Church Slavic (Словѣньскъ) */
+$messages['cu'] = array(
+	'countedits-username' => 'по́льꙃєватєлꙗ и́мѧ :',
+);
+
 /** Danish (Dansk)
  * @author Jon Harald Søby
  */

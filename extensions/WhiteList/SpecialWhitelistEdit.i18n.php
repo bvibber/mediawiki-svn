@@ -852,6 +852,8 @@ $allMessages['pt'] = array(
  * @author Александр Сигачёв
  */
 $allMessages['ru'] = array(
+	'whitelisttableedit'       => 'Править',
+	'whitelisttableview'       => 'Просмотр',
 	'whitelistnewtableprocess' => 'Процесс',
 );
 
