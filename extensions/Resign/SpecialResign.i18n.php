@@ -21,9 +21,12 @@ Remember: '''You cannot get your permissions back this way!''' You will have to 
 	'resign-logentry'  => 'removed permissions $2 from himself',
 );
 
-/* Arabic (Meno25) */
+/* Arabic (العربية) 
+* @author Meno25
+*/
 $messages['ar'] = array(
 	'resign' => 'استقالة',
+	'resign-desc'      => 'يمنح المستخدمين القدرة على [[Special:Resign|إزالة سماحاتهم]].',
 	'resign-text' => 'يمكنك \'\'\'إزالة صلاحياتك\'\'\' (مثال الصلاحيات الإدارية) في هذه الصفحة. من فضلك علم على الصلاحيات التي تود إزالتها.
 
 تذكر: \'\'\'لا يمكنك استرجاع صلاحياتك بهذه الطريقة!\'\'\' سيتوجب عليك إقناع بيروقرط أو ستيوارد لكي يعيد لك الصلاحيات. من فضلك استخدم هذه الصفحة بحرص شديد.',
