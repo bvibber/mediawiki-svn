@@ -43,7 +43,7 @@ function _displayLogin($username = null, $status = null, &$auth = null) {
 
 function _langSelect($default="eng") {
 	$names=Language::getI18NLanguageNames();
-
+	asort($names);
 	$select="<select name='userLanguage'>\n";
 	foreach ($names as $iso639_3=>$name){
 		$select .= "	
