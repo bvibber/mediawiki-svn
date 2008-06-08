@@ -66,8 +66,8 @@ class WebConfiguration extends SiteConfiguration {
 
 	/**
 	 * Save a new configuration
-	 * @param Array $settings array of settings
-	 * @param String $wiki wiki name or false to use the current one
+	 * @param $settings array of settings
+	 * @param $wiki String: wiki name or false to use the current one
 	 * @return bool true on success
 	 */
 	public function saveNewSettings( $settings, $wiki = false ){
@@ -105,8 +105,8 @@ class WebConfiguration extends SiteConfiguration {
 
 	/**
 	 * Get the an archive file
-	 * @param String $ts 14 char timestamp (YYYYMMDDHHMMSS) or null to use the
-	 *                   current timestamp
+	 * @param $ts String: 14 char timestamp (YYYYMMDDHHMMSS) or null to use the
+	 *            current timestamp
 	 * @return String full path to the file
 	 */
 	protected function getArchiveFileName( $ts = null ){

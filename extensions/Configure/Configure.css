@@ -71,3 +71,20 @@ td.button {
 input.button-add {
 	float: right;
 }
+
+/**
+ * diffs
+ */
+h3.config-diff-section {
+	margin-top: .5em;
+	background-color: #aaa;
+}
+
+h4.config-diff-group {
+	margin-top: .3em;
+	text-decoration: underline;
+}
+
+td.configure-setting {
+	font-weight: normal;
+}

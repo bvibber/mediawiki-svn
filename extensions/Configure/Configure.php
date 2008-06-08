@@ -17,7 +17,7 @@ $wgExtensionCredits['specialpage'][] = array(
 	'url' => 'http://www.mediawiki.org/wiki/Extension:Configure',
 	'description' => 'Allow authorised users to configure the wiki by a web-based interface',
 	'descriptionmsg' => 'configure-desc',
-	'version' => '0.3.11',
+	'version' => '0.4.0',
 );
 
 ## Adding new rights...
@@ -54,6 +54,8 @@ $wgSpecialPages['Configure'] = 'SpecialConfigure';
 $wgAutoloadClasses['SpecialViewConfig'] = $dir . 'SpecialViewConfig.php';
 $wgSpecialPages['ViewConfig'] = 'SpecialViewConfig';
 
+$wgAutoloadClasses['ConfigurationDiff'] = $dir . 'Configure.diff.php';
+
 ## Adding the ajax function
 $wgAjaxExportList[] = 'efConfigureAjax';
 
@@ -61,4 +63,4 @@ $wgAjaxExportList[] = 'efConfigureAjax';
 $wgConfigureFilesPath = "$IP/serialized";
 
 ## Styles versions
-$wgConfigureStyleVersion = '3';
+$wgConfigureStyleVersion = '4';

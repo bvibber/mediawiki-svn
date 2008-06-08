@@ -66,8 +66,5 @@ LocalSettings.php. It's why it's important to keep that file.
 
 * Some settings are still uneditable because of their array usage, this will
   need to develop some specific method to change them.
-* It is already possible to rollback to an earlier version of the configuration
-  by editing it and saving, but i think an diff possibility would be nice to see
-  which changes were made between versions. 
 * Support extensions
 * Many other things, if i have time :)

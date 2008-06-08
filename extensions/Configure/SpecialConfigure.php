@@ -53,6 +53,16 @@ class SpecialConfigure extends SpecialPage {
 	}
 
 	/**
+	 * Get settings, grouped by section
+	 *
+	 * @return array
+	 */
+	public static function getSettings(){
+		self::loadSettingsDefs();
+		return self::$settings;
+	}
+
+	/**
 	 * Get a simple array with all config settings
 	 *
 	 * @return array
@@ -105,6 +115,18 @@ class SpecialConfigure extends SpecialPage {
 			return $settings[$setting];
 		else
 			return false;
+	}
+
+	/**
+	 * Get the array type of a setting
+	 * 
+	 * @param $setting String: setting name
+	 */
+	public static function getArrayType( $setting ){
+		self::loadSettingsDefs();
+		return isset( self::$arrayDefs[$setting] ) ?
+			self::$arrayDefs[$setting] :
+			null;
 	}
 
 	/**
@@ -208,7 +230,7 @@ class SpecialConfigure extends SpecialPage {
 	 * Return true if the current user is allowed to configure $setting.
 	 * @return bool
 	 */
-	protected function userCanEdit( $setting ){
+	public function userCanEdit( $setting ){
 		return ( ( !in_array( $setting, self::$viewRestricted )
 			&& !in_array( $setting, self::$editRestricted ) )
 			|| $this->isUserAllowedAll() );
@@ -218,7 +240,7 @@ class SpecialConfigure extends SpecialPage {
 	 * Return true if the current user is allowed to see $setting.
 	 * @return bool
 	 */
-	protected function userCanRead( $setting ){
+	public function userCanRead( $setting ){
 		return ( !in_array( $setting, self::$viewRestricted ) || $this->isUserAllowedAll() );
 	}
 
@@ -243,7 +265,7 @@ class SpecialConfigure extends SpecialPage {
 			}
 			switch( $type ){
 			case 'array':
-				$arrType = self::$arrayDefs[$name];
+				$arrType = self::getArrayType( $name );
 				switch( $arrType ){
 				case 'simple':
 					$text = $wgRequest->getText( 'wp' . $name );
@@ -606,9 +628,9 @@ class SpecialConfigure extends SpecialPage {
 	 * @param $allowed Boolean
 	 */
 	protected function buildArrayInput( $conf, $default, $allowed ){
-		if( !isset( self::$arrayDefs[$conf] ) || self::$arrayDefs[$conf] == 'array' )
+		$type = self::getArrayType( $conf );
+		if( $type === null || $type == 'array' )
 			return $allowed ? '<span class="array">(array)</span>' : '<span class="array-disabled">(array)</span>';
-		$type = self::$arrayDefs[$conf];
 		if( $type == 'simple' ){
 			if( !$allowed ){
 				return "<pre>" . htmlspecialchars( ( is_array( $default ) ? implode( "\n", $default ) : $default ) ) . "\n</pre>";
