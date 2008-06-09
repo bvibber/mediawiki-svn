@@ -3,7 +3,7 @@
 # released under GPL v2 
 
 	
-/** provide a namespace for copying tools (so we don't clutter up the main namespace with
+/** provide a namespace for database tools (so we don't clutter up the main namespace with
  * all our utility and tool functions) All functions here are public+static.
  */
 class DBTools {
@@ -21,7 +21,10 @@ class DBTools {
 		return DBTools::doMultirowQuery($query);
 	}
 
-	function connect($mysql_info) {
+	/** connect to database using $mysql_info array
+	 * possibly should be replaced with PEAR equivalent 
+	 */
+	public static function connect($mysql_info) {
 		$server=$mysql_info["server"];
 		$user=$mysql_info["user"];
 		$password=$mysql_info["password"];
@@ -59,6 +62,7 @@ class DBTools {
 		$data= mysql_fetch_assoc($result);
 		return $data;
 	}
+
 	/** Perform an arbitrary SQL query
 	 * 
 	 * @param $query	a valid SQL query
@@ -126,6 +130,9 @@ class DBTools {
 
 	}
 
+	/** similar to above, except *nothing* is escaped.
+	 * beware of all kinds of evil injection.
+	 */
 	public static function unsafe_insert_assoc($table, $keyfield, $key, $array) {
 		
 		$exists=array();
@@ -140,14 +147,11 @@ class DBTools {
 
 	}
 
-
-
-
 	/**
 	 * inverse of mysql_fetch_assoc
 	 * takes an associative array as parameter, and inserts data
 	 * into table as a single row (keys=column names, values = data to be inserted)
-	/* see: http://www.php.net/mysql_fetch_assoc (Comment by R. Bradly, 14-Sep-2006)
+	 * see: http://www.php.net/mysql_fetch_assoc (Comment by R. Bradly, 14-Sep-2006)
 	 */
 	public static function mysql_insert_assoc ($my_table, $my_array) {
 		
@@ -219,27 +223,6 @@ class DBTools {
 			return true;
 		else
 			return false;
-	}
-
-
-	/**convenience wrapper around mysql_insert_assoc
-	 * like mysql_insert_assoc, but allows you to specify dc prefix+table name separately
-	 * Also transparently handles the internal transaction (WHICH MUST ALREADY BE OPEN!)
-	 */
-	public static function dc_insert_assoc($dc, $table_name, $array) {
-		$target_table=mysql_real_escape_string("${dc}_${table_name}");
-		if (DBTools::sane_key_exists("add_transaction_id", $array)) {
-			$array["add_transaction_id"]=getUpdateTransactionId();
-		}
-		return DBTools::mysql_insert_assoc($target_table, $array);
-	}
-	
-	public static function dc_update_assoc($dc, $table_name, $array, $where) {
-		$target_table=mysql_real_escape_string("${dc}_${table_name}");
-		if (DBTools::sane_key_exists("add_transaction_id", $array)) {
-			$array["add_transaction_id"]=getUpdateTransactionId();
-		}
-		return DBTools::mysql_update_assoc($target_table, $array, $where);
 	}
 
 }

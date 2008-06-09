@@ -13,7 +13,7 @@ class NoMoreQuestionsException extends Exception {}
  * An exercise that is too large to ask in one go can
  * be split into sub-exercises.
  *
- * pseudocode:
+ * pseudocode for usage:
  * 
  * - Obtain a full list of questions from the Omegawiki server
  * - Generate a subExercise which has a more human-manageable size.
@@ -22,11 +22,13 @@ class NoMoreQuestionsException extends Exception {}
  *   answerIncorrect()
  * -} continue until no more Question-s left.
  *
- * Note that question content is only retrieved when actually needed
+ * Note that question content is only retrieved when actually needed,
  * question content is then cached.
  *
  * Iterator interface provided for when you want to see all the questions
- * at once. (as a side effect, iterating through would precache all data)
+ * at once. (as a side effect, iterating through can cache all data,
+ * but will destroy the contents of currentSubset. )
+ *
  * when asking questions, use the pseudocode above.
  */
 class Exercise implements Iterator{
@@ -59,6 +61,7 @@ class Exercise implements Iterator{
 
 	# == Iterator implementation 
 	# (see documentation for php Iterator)
+	# used in eg. View->allQuestionsTable
 
 	public function rewind() {
 		$this->setCurrentSubset($this->getSet());
@@ -162,6 +165,8 @@ class Exercise implements Iterator{
 		return $this->_getQuestionNode($dmid,$this->fullSet,0);
 	}
 
+	# ==  All other methods 
+
 	/**
 	 * Initially, we start out with a question set (DOMDocument) with empty
 	 * defined-meaning nodes for each question.
@@ -214,10 +219,9 @@ class Exercise implements Iterator{
 		$dom=new DOMDocument();
 		$dom->loadXML($xmlString);
 
-		#echo $dom->saveXML();	XXX TEST
-
-		# we lazily recursively call  _getQuestionNode,
-		# hence we set $_depth=1
+		# we recursively call  _getQuestionNode, because we're
+		# lazy coders.
+		# Hence we set $_depth=1
 
 		$newNode=$this->_getQuestionNode($dmid, $dom, 1);
 
@@ -270,7 +274,7 @@ class Exercise implements Iterator{
 		return $set;
 	}
 
-	/** attempt to make a basic (unweighted) subexercise, 
+	/** Make a basic (unweighted) subexercise, 
 	  *  with up to $size questions. 
 	  */
 	public function randSubExercise($size) {

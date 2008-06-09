@@ -90,3 +90,28 @@ or shown, this doesn't count towards the current exercise)
 - functions.php contains a lot of legacy code, should clean that
 up sometime.
 
+== Terminology ==
+
+Variable names and comments might refer to things
+specific to omegawiki.
+
+dm: Defined Meaning: The basic concept around which Omegawiki is built.
+	A defined meaning is a concept that is understood by some
+	human being somewhere. A defined meaning is expressed using
+	an expression (of one or more words) in at least one language.
+	A defined meaning could be specific to a particular language
+	, but so far, all defined meanings I've
+	seen have been expressible in multiple (in fact all) languages.
+	I'm just coding this thing, don't bother me with linguistic
+	theory today! :-P
+dmid: Defined Meaning ID: Each defined meaning in omegawiki 1 is assigned
+	a unique number. (in omegawiki II this will be a Unique Universal ID
+	string, but that's future). 
+
+	For instance, the word "duty" in english, in the meaning of 
+	"That which one is morally or legally obligated to do." , has a
+	defined meaning id of 7534. We can use this to look up translations
+	in Afrikaans, Castillian, Catalan, Danish, Dutch, etc ...
+	( http://www.omegawiki.org/index.php?title=DefinedMeaning:duty%20(7534)&dataset=uw )
+
+
