@@ -113,7 +113,8 @@ class SiteMatrix {
 		list( $major, $minor ) = $wgConf->siteFromDB( $dbname );
 		if( $wgConf->get( 'wgReadOnly', $dbname, $major, array( 'site' => $major, 'lang' => $minor ) ) )
 			return true;
-		if( $wgConf->get( 'wgReadOnlyFile', $dbname, $major, array( 'site' => $major, 'lang' => $minor ) ) )
+		$readOnlyFile = $wgConf->get( 'wgReadOnlyFile', $dbname, $major, array( 'site' => $major, 'lang' => $minor ) );
+		if( $readOnlyFile && file_exists( $readOnlyFile ) )
 			return true;
 		return false;
 	}
