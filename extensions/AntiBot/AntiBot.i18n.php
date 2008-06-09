@@ -28,6 +28,13 @@ $messages['da'] = array(
 	'antibot-desc' => 'Simpel struktur for kontrol af spamrobotter',
 );
 
+/** German (Deutsch)
+ * @author Raimond Spekking
+ */
+$messages['de'] = array(
+	'antibot-desc' => 'Einfaches Framework für Spambot-Prüfungen',
+);
+
 /** French (Français)
  * @author Grondin
  */
