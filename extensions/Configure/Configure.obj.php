@@ -96,6 +96,18 @@ class WebConfiguration extends SiteConfiguration {
 	}
 
 	/**
+	 * Get the array representing the current configuration
+	 *
+	 * @param $wiki String: wiki name
+	 * @return array
+	 */
+	public function getCurrent( $wiki ){
+		list( $site, $lang ) = $this->siteFromDB( $wiki );
+		$rewrites = array( 'wiki' => $wiki, 'site' => $site, 'lang' => $lang );
+		return $this->getAll( $wiki, $site, $rewrites );
+	}
+
+	/**
 	 * Get the current file name
 	 * @return String full path to the file
 	 */

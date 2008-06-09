@@ -175,6 +175,16 @@ class SpecialConfigure extends SpecialPage {
 			return;
 		}
 
+		$wikiParam = $wgRequest->wasPosted() ? 'wpWiki' : 'wiki';
+		if( $wiki = $wgRequest->getVal( $wikiParam, false ) ){
+			if( !$this->isUserAllowedAll() ){
+				$msg = wfMsgNoTrans( 'configure-no-transwiki' );
+				$wgOut->addWikiText( "<div class='errorbox'><strong>$msg</strong></div>" );
+				return;
+			}
+		}
+		$this->mWiki = $wiki;
+
 		$this->outputHeader();
 
 		if( $version = $wgRequest->getVal( 'version' ) ){
@@ -191,12 +201,31 @@ class SpecialConfigure extends SpecialPage {
 		}
 
 		if( $wgRequest->wasPosted() ){
-			if( $wgUser->matchEditToken( $wgRequest->getVal( 'wpEditToken' ) ) )
-				$this->doSubmit();
-			else
+			if( $wgUser->matchEditToken( $wgRequest->getVal( 'wpEditToken' ) ) ){
+				if( $wgRequest->getCheck( 'wpSave' ) ){
+					$type = 'submit';
+				} else {
+					$type = 'diff';
+				}
+			} else {
 				$wgOut->addWikiText( wfMsgNoTrans( 'sessionfailure' ) );
+				$type = 'diff';
+			}
 		} else {
+			$type = 'initial';
+		}
+		
+		switch( $type ){
+		case 'submit':
+			$this->doSubmit();
+			break;
+		case 'diff':
+			$this->conf = $this->importFromRequest();
+			$this->showDiff();
+		case 'initial':
+		default:
 			$this->showForm();
+			break;
 		}
 	}
 
@@ -248,15 +277,28 @@ class SpecialConfigure extends SpecialPage {
 	 * Submit the posted request
 	 */
 	protected function doSubmit(){
-		global $wgConf, $wgOut, $wgRequest;
+		global $wgConf, $wgOut;
 
-		if( $wiki = $wgRequest->getVal( 'wpWiki', false ) ){
-			if( !$this->isUserAllowedAll() ){
-				$msg = wfMsgNoTrans( 'configure-no-transwiki' );
-				$wgOut->addWikiText( "<div class='errorbox'><strong>$msg</strong></div>" );
-				return;
-			}
-		}
+		$settings = $this->importFromRequest();
+		$settings['wgCacheEpoch'] = max( $settings['wgCacheEpoch'], wfTimestampNow() ); 
+		$ok = $wgConf->saveNewSettings( $settings, $this->mWiki );
+		$msg = wfMsgNoTrans( $ok ? 'configure-saved' : 'configure-error' );
+		$class = $ok ? 'successbox' : 'errorbox';
+
+		$wgOut->addWikiText( "<div class=\"$class\"><strong>$msg</strong></div>" );
+	}
+
+	/**
+	 * Import settings from posted datas
+	 *
+	 * @return array
+	 */
+	protected function importFromRequest(){
+		global $wgRequest;
+
+		if( !$wgRequest->wasPosted() )
+			return array();
+
 		$settings = array();
 		foreach( self::getEditableSettings() as $name => $type ){
 			if( !$this->userCanEdit( $name ) ){
@@ -404,6 +446,7 @@ class SpecialConfigure extends SpecialPage {
 						$perm = implode( ', ', $type );
 						throw new MWException( "Value for \$$name setting is not in permitted (given: $val, permitted: $perm)" );
 					}
+					$settings[$name] = $val;
 				} else {
 					throw new MWException( "Unknown setting type $type (setting name: \$$name)" );
 				}
@@ -415,13 +458,7 @@ class SpecialConfigure extends SpecialPage {
 					unset( $settings[$name] );
 			}
 		}
-
-		$settings['wgCacheEpoch'] = max( $settings['wgCacheEpoch'], wfTimestampNow() ); 
-		$ok = $wgConf->saveNewSettings( $settings, $wiki );
-		$msg = wfMsgNoTrans( $ok ? 'configure-saved' : 'configure-error' );
-		$class = $ok ? 'successbox' : 'errorbox';
-
-		$wgOut->addWikiText( "<div class=\"$class\"><strong>$msg</strong></div>" );
+		return $settings;
 	}
 
 	/**
@@ -448,15 +485,7 @@ class SpecialConfigure extends SpecialPage {
 	 * Show the main form
 	 */
 	protected function showForm(){
-		global $wgOut, $wgUser, $wgRequest;
-
-		if( $wiki = $wgRequest->getVal( 'wiki', false ) ){
-			if( !$this->isUserAllowedAll() ){
-				$msg = wfMsgNoTrans( 'configure-no-transwiki' );
-				$wgOut->addWikiText( "<div class='errorbox'><strong>$msg</strong></div>" );
-				return;
-			}
-		}
+		global $wgOut, $wgUser;
 
 		$action = $this->getTitle()->escapeLocalURL();
 		# We use <div id="preferences"> to have the tabs like in Special:Preferences
@@ -471,14 +500,39 @@ class SpecialConfigure extends SpecialPage {
 			Xml::openElement( 'div', array( 'id' => 'prefsubmit' ) ) . "\n" .
 			Xml::openElement( 'div', array() ) . "\n" .
 			Xml::element( 'input', array( 'type' => 'submit', 'name' => 'wpSave', 'class' => 'btnSavePrefs', 'value' => wfMsgHtml( 'configure-btn-save' ) ) ) . "\n" .
+			Xml::element( 'input', array( 'type' => 'submit', 'name' => 'wpPreview', 'value' => wfMsgHtml( 'showdiff' ) ) ) . "\n" .
 			Xml::closeElement( 'div' ) . "\n" .
 			Xml::closeElement( 'div' ) . "\n" .
 			Xml::element( 'input', array( 'type' => 'hidden', 'name' => 'wpEditToken', 'value' => $wgUser->editToken() ) ) . "\n" .
-			( $wiki ? Xml::element( 'input', array( 'type' => 'hidden', 'name' => 'wpWiki', 'value' => $wiki ) ) . "\n" : '' ) .
+			( $this->mWiki ? Xml::element( 'input', array( 'type' => 'hidden', 'name' => 'wpWiki', 'value' => $this->mWiki ) ) . "\n" : '' ) .
 			Xml::closeElement( 'div' ) . "\n" .
 			Xml::closeElement( 'form' )
 		);
 		$this->injectScriptsAndStyles();
+	}
+
+	/**
+	 * Helper function for the diff engine
+	 * @param $setting setting name
+	 */
+	public function isSettingEditable( $setting ){
+		return ( self::isSettingAvailable( $setting )
+			&& $this->userCanEdit( $setting )
+			&& ( self::getSettingType( $setting ) != 'array'
+				|| !in_array( self::getArrayType( $setting ), array( 'array', null ) ) ) );
+	}
+
+	/**
+	 * Show the diff between the current version and the posted version
+	 */
+	protected function showDiff(){
+		global $wgConf, $wgOut;
+		$wiki = $this->mWiki ? $this->mWiki : $wgConf->getWiki();
+		$old = array( $wiki => $wgConf->getCurrent( $wiki ) );
+		$new = array( $wiki => $this->conf );
+		$diff = new PreviewConfigurationDiff( $old, $new, array( $wiki ) );
+		$diff->setViewCallback( array( $this, 'isSettingEditable' ) );
+		$wgOut->addHtml( $diff->getHtml() );
 	}
 
 	/**

@@ -249,3 +249,20 @@ class ConfigurationDiff {
 		return $val;
 	}
 }
+
+class PreviewConfigurationDiff extends ConfigurationDiff {
+
+	public function __construct( $old, $new, $wikis ){
+		$this->old = $old;
+		$this->new = $new;
+		$this->wikis = $wikis;
+	}
+
+	protected function getOldVersion(){
+		return $this->old;
+	}
+
+	protected function getNewVersion(){
+		return $this->new;
+	}
+}
