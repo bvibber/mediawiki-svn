@@ -9,6 +9,7 @@ var vlcEmbed = {
 	//init vars: 
 	monitorTimerId : 0,
 	prevState : 0,
+	currentTime:0,
     userSlide:false,
     getEmbedHTML : function(){   
 		//setup the interface controls if requested		
@@ -178,7 +179,8 @@ var vlcEmbed = {
     onPlaying : function(){ 
         this.mediaLen = this.vlc.input.length;        
        	//js_log('on playing:'+ this.mediaLen +' time:'+ this.vlc.input.time + ' p:'+this.vlc.input.position);
-       	
+       	//update the currentTime attribute 
+       	this.currentTime =this.vlc.input.time/1000;
         if( this.mediaLen > 0 || this.vlc.input.time > 0){                     
         	///set mediaLen via request Url 
 			if(this.mediaLen==0)      
@@ -266,7 +268,9 @@ var vlcEmbed = {
     fullscreen : function(){
 		this.vlc.video.toggleFullscreen();
     },
-    /* returns current time in float seconds */ 
+    /* returns current time in float seconds 
+     * as per html5 we should just have an attribute by name of CurrentTime
+     * http://www.whatwg.org/specs/web-apps/current-work/#currenttime
     currentTime : function(){
 		if(typeof this.vlc != 'undefined' ){
 			if(typeof this.vlc.input != 'undefined' ){
@@ -275,6 +279,7 @@ var vlcEmbed = {
 		}
 		return '0';
     },
+    */
     // get the embed vlc object 
     getVLC : function getVLC(){
     	this.vlc = this.getPluginEmbed();   		

@@ -99,6 +99,13 @@ var video_attributes = {
     "roe":null,
     //if roe includes metadata tracks we can expose a link to metadata
     "show_meta_link":true,
+
+	//default state attributes per html5 spec: 
+	//http://www.whatwg.org/specs/web-apps/current-work/#video)
+	"paused":true,
+	"readyState":0,  //http://www.whatwg.org/specs/web-apps/current-work/#readystate
+	"currentTime":0, //current playback position (should be updated by plugin) 
+	"duration":NaN,   //media duration (read from file or anx temporal url)
             
     //custom attributes for mv_embed: 
     "play_button":true,
@@ -673,22 +680,26 @@ function swapEmbedVideoElement(video_element, videoInterface){
 		}
 	}
 	///js_log('did vI style');
-  	//now swap out the video element for the embed_video obj:
-    var parent_elm = video_element.parentNode;
+  	//now swap out the video element for the embed_video obj:  	  	
+  	$j(video_element).after(embed_video).remove();
+  	//update HTML 
+  	$j('#'+embed_video.id).get(0).getHTML();
+  	
+    /*var parent_elm = video_element.parentNode;
     parent_elm.removeChild(video_element);
     
     //append the object into the dom: 
     parent_elm.appendChild(embed_video);  
        
     //now run the getHTML on the new embedVideo Obj:
-    embed_video.getHTML(); 
-   	//js_log('html set:' + document.getElementById(embed_video.id).innerHTML);
-    
+    embed_video.getHTML();    	
+    */
+    js_log('html set:' + document.getElementById(embed_video.id).innerHTML);
     //store a reference to the id 
     //(for single instance plugins that need to keep track of other instances on the page)
     global_ogg_list.push(embed_video.id);
         
-    js_log('append child: ' + embed_video.id + ' len:'+global_ogg_list.length);
+    js_log('done with child: ' + embed_video.id + ' len:'+global_ogg_list.length);
  	return true;
 }
 /* 
@@ -723,7 +734,7 @@ textInterface.prototype = {
 		//parse roe if not already done: 
 		
 		//if not "live" or under 5 min load all transcript in one request	
-		if(!this.pe.roe_data){
+		if(!this.pe.roe_xml){
 			js_log("MISSING ROE DATA for text interface");
 			var _this = this;
 			this.pe.getParseROE( function(){				
@@ -744,7 +755,7 @@ textInterface.prototype = {
 		
 		//@@todo use user-language as key to select transcript layer.
 		_this = this;
-		$j.each(this.pe.roe_data.getElementsByTagName('mediaSource'), function(inx, n){
+		$j.each(this.pe.roe_xml.getElementsByTagName('mediaSource'), function(inx, n){
 			if(n.getAttribute('content-type')=='text/cmml'){
 				_this.availableTracks[n.getAttribute('id')] = {
 					src:n.getAttribute('src'),
@@ -842,14 +853,15 @@ textInterface.prototype = {
 	},
 	show:function(){
 		//js_log("show text interface");
-		/*fade out cc*/
-		$j('#metaText_'+this.pe.id).fadeOut('fast');		
+		/*fade out cc button*/
+		$j('#metaButton_'+this.pe.id).fadeOut('fast');		
 		/*slide in intefrace container*/
 		if($j('#metaBox_'+this.pe.id).length==0){
+			
 			//append it to body relative to offset of this.pe
 			var loc = $j(this.pe).position();
 			js_log('top ' +loc.top + ' left:'+loc.left );
-			var mvboxHTML ='<div style="position:absolute;z-index: 5001;' +
+			var mvboxHTML ='<div style="position:absolute;z-index: '+ getNextHighestZindex() +';'+
 						'top:'+(loc.top)+'px;' +
 						'left:'+(parseInt(loc.left)+parseInt(this.pe.width)+10)+'px;' +
 						'height:'+this.pe.height+'px;width:400px;' +
@@ -870,7 +882,7 @@ textInterface.prototype = {
 		//the meta box: 
 		$j('#metaBox_'+this.pe.id).fadeOut('fast');
 		//the icon link: 
-		$j('#metaText_'+this.pe.id).fadeIn('fast');	
+		$j('#metaButton_'+this.pe.id).fadeIn('fast');	
 	},
 	getBody:function(){		
 		return '<div id="mmbody_'+this.pe.id+'" style="position:absolute;top:20px;left:0px;right:0px;bottom:0px;height:'+(this.pe.height-20)+'px;overflow:auto;"/>';
@@ -918,7 +930,7 @@ textInterface.prototype = {
 	},
 	monitor:function(){
 		//grab the time from the video object 
-		var cur_time = parseInt( this.pe.currentTime() );			
+		var cur_time = parseInt( this.pe.currentTime );			
 		if(cur_time!=0 && this.prevTimeScroll!=cur_time){
 			//search for current time:  flash red border trascript 
 			_this = this;
@@ -938,7 +950,7 @@ textInterface.prototype = {
 				this.scrollTimerId = setInterval('document.getElementById(\''+this.pe.id+'\').textInterface.monitor()', 500);
 			}
 			//jump to the current position: 
-			var cur_time = parseInt (this.pe.currentTime());
+			var cur_time = parseInt (this.pe.currentTime );
 			js_log('cur time: '+ cur_time);
 						
 			_this = this;
@@ -959,7 +971,7 @@ textInterface.prototype = {
 		//add in loading icon: 
 		/*
 		out+= '<div class="mv_loading_icon" style="background:url(\''+mv_embed_path+'images/indicator.gif\');display:';
-		out+= (this.roe_data)? 'none':'inline';
+		out+= (this.roe_xml)? 'none':'inline';
 		out+='"/>';		
 		*/
 		var as_checked = (this.autoscroll)?'checked':'';
@@ -986,15 +998,8 @@ var embedVideo = function(element) {
 //base embedVideo object
 embedVideo.prototype = {
 	slider:null,
-	roe_data:null,
-	load_external_data:false,
-	//state attributes (per html5 spec http://www.whatwg.org/specs/web-apps/current-work/#video)
-	video_states:{
-	    "paused":true,
-	    "readyState":0,  //http://www.whatwg.org/specs/web-apps/current-work/#readystate
-	    "currentTime":0, //current playback position (should be overwritten by local functions) 
-	    "duration":NaN   //media duration (read from file or anx temporal url)
-	},
+	roe_xml:null,
+	load_external_data:false,	
 	//utility functions for property values: 
 	hx : function ( s ) {
 		if ( typeof s != 'String' ) {
@@ -1026,10 +1031,6 @@ embedVideo.prototype = {
 		if(this.roe==null){
 			this['show_meta_link']=false;				
 		}
-		//init the default states: 
-	    for(var state in this.video_states){
-	    	 this[state]=this.video_states[state];
-	    }	  
 	    js_log('continue_thumb:'+ this['thumbnail']);
    	    js_log('continue_src:'+ this['src']);
 	    //if the thumbnail is null replace with default thumb:
@@ -1088,17 +1089,15 @@ embedVideo.prototype = {
 	getParseROE: function(callback){
 		var _this = this;
 		do_request(this.roe, function(data){	
-			js_log('got DATA!!!!!!!');
-			//$j.each(data.getElementsByTagName('mediaSource'), function(inx, n){
+			js_log('got DATA!!!!!!!' + typeof data);	
 			//	alert('found mediaSource');
 			//});
-			elm = data.getElementById('html_linkback');			
-			js_log("on: "+_this.id + " got data "+ data.length + ' test elm:' + elm.getAttribute('rel'));
-			if(typeof data == 'object' ){
-				js_log('type of data is object, data:'+ data.toString());
-				_this.roe_data = data;
+			//elm = xml.getElementById('html_linkback');			
+			//js_log("on: "+_this.id + " got xml "+ xml.length + ' test elm:' + elm.getAttribute('rel'));
+			if(typeof data == 'object' ){				
+				_this.roe_xml = data;
 				var cmml_available=false;
-				$j.each(_this.roe_data.getElementsByTagName('mediaSource'), function(inx, n){
+				$j.each(_this.roe_xml.getElementsByTagName('mediaSource'), function(inx, n){
 					js_log(' on element: ' + n.getAttribute('content-type'));
 					if(n.getAttribute('content-type')=='video/ogg' && n.getAttribute("default")=="true"){
 						js_log('set src to '+n.getAttribute("src"));						
@@ -1115,9 +1114,9 @@ embedVideo.prototype = {
 				}
 				/*
 				//set the src to video tag with "default" attribute:
-				//var rVids = _this.roe_data.getElementsByTagName('video');
+				//var rVids = _this.roe_xml.getElementsByTagName('video');
 				js_log('found '+ rVids.length + ' video tags');
-				$j.each(_this.roe_data.getElementsByTagName('video'), function(inx,n){	
+				$j.each(_this.roe_xml.getElementsByTagName('video'), function(inx,n){	
 					if(n.getAttribute("default")=="true"){
 						js_log('set src to '+n.getAttribute("src"));						
 						_this['src'] = n.getAttribute("src");
@@ -1125,14 +1124,14 @@ embedVideo.prototype = {
 				});
 				*/												
 				//set the thumbnail: 
-				$j.each(_this.roe_data.getElementsByTagName('img'), function(inx, n){
+				$j.each(_this.roe_xml.getElementsByTagName('img'), function(inx, n){
 					if(n.getAttribute("id")=="stream_thumb"){
 						js_log('set thumb to '+n.getAttribute("src"));
 						_this['thumbnail'] = n.getAttribute("src");	
 					}
 				}); 
 				//set the linkback:
-				$j.each(_this.roe_data.getElementsByTagName('link'), function(inx, n){
+				$j.each(_this.roe_xml.getElementsByTagName('link'), function(inx, n){
 					if(n.getAttribute('id')=='html_linkback'){
 						js_log('set linkback to '+n.getAttribute("href"));
 						_this['linkback'] = n.getAttribute('href');
@@ -1143,7 +1142,7 @@ embedVideo.prototype = {
 				//could not find default video src for playback
 				$j(_this).html(getMsg('missing_video_stream'));				
 			}else{
-				//js_log("do callback roe data:"+_this['roe_data']+' '+ _this['src'] +' '+ _this['thumbnail'] + 'cb: '+ callback);
+				//js_log("do callback roe data:"+_this['roe_xml']+' '+ _this['src'] +' '+ _this['thumbnail'] + 'cb: '+ callback);
 				callback(_this.id);
 			}
 		});
@@ -1316,7 +1315,7 @@ embedVideo.prototype = {
 	  	if(this.show_meta_link){
 	  		thumb_html+='<div style="border:none;position:absolute;top:2px;right:2px;z-index:1">'+
 		     '<a title="'+getMsg('select_transcript_set')+'" href="javascript:document.getElementById(\''+this.id+'\').showTextInterface();">';
-		    thumb_html+=getTransparentPng({id:'metaText_'+this.id, width:"40", height:"27", border:"0", 
+		    thumb_html+=getTransparentPng({id:'metaButton_'+this.id, width:"40", height:"27", border:"0", 
 						src:mv_embed_path + 'images/cc_meta_sm.png' });
 			thumb_html+='</div>';    	
 	  	}
@@ -1361,11 +1360,13 @@ embedVideo.prototype = {
 						'src=&quot;'+mv_embed_path+'mv_embed.js&quot;&gt;&lt;/script&gt' +
 						'&lt;video ';
 			if(this.roe){
-				embed_code_html+='roe=&quot;'+this.roe+'&quot; /&gt;';				
+				embed_code_html+='roe=&quot;'+this.roe+'&quot; &gt;';				
 			}else{
 				embed_code_html+='src=&quot;'+this.src+'&quot; ' + 
-					'thumbnail=&quot;'+embed_thumb_html+'&quot;/&gt;';
+					'thumbnail=&quot;'+embed_thumb_html+'&quot;&gt;';
 			}
+			//close the video tag
+			embed_code_html+='&lt;/video&gt;';
 			//add the hidden embed code:
 			thumb_html+='<div id="embed_code_'+this.id+'" style="border:solid;border-color:black;overflow:hidden;display:none;position:absolute;bottom:2px;right:'+(right_offset+30)+'px;width:'+(this.width-100)+'px;z-index:1">'+
 				'<input onClick="this.select();" type="text" size="40" length="1024" value="'+embed_code_html+'">'
@@ -1445,7 +1446,7 @@ embedVideo.prototype = {
 			 '<span id="con_vl_'+this.id+'" style="position:absolute;top:20px;left:20px;color:white;">';			 	
 		var dl_list='';		
 		//set to loading if we don't have the roe data yet: 
-		if(!this.roe_data && this.roe){		
+		if(!this.roe_xml && this.roe){		
 			select_code+=getMsg('loading_txt');			
 			var _this = this;
 			this.getParseROE(function(){
@@ -1465,7 +1466,7 @@ embedVideo.prototype = {
 		var out='<b style="color:white;">'+getMsg('download_from')+' '+parseUri(this.src).queryKey['t']+'</b><br>';
 		out+='<span style="color:white"><blockquote>';
 		var dl_list=dl_txt_list='';
-		$j.each(this.roe_data.getElementsByTagName('mediaSource'), function(inx,n){	
+		$j.each(this.roe_xml.getElementsByTagName('mediaSource'), function(inx,n){	
 			var dl_line = '<li><a style="color:white" href="' + n.getAttribute("src") +'"> '+
 						n.getAttribute("title")+'</a></li>'+"\n";						
 			if(n.getAttribute("content-type")=="video/ogg"){
@@ -1812,21 +1813,22 @@ function mv_addLoadEvent(func) {
 		}else{
 			//check if MV_embed path matches document.URL then we can use the local proxy: 
 			if(parseUri(document.URL).host == parseUri(mv_embed_path).host ){
-				js_log('use mv_embed_proxy : ' + parseUri(document.URL).host + ' != '+ parseUri(req_url).host);	
+				js_log('use mv_embed_proxy : ' + parseUri(document.URL).host + ' == '+ parseUri(mv_embed_path).host);	
 				//alert("do ajax req:" +req_url);
 				$j.ajax({
 					type: "POST",
-					url:mv_embed_path + 'mv_data_proxy.php',
+					url:mv_embed_path + 'mv_data_proxy.php',									
 					data:{url:req_url},
-					success:function(data){											
-						js_log("did ajax req:"+ typeof data);
+					success:function(data){																	
 						callback(data);
 					}
 				});
 			}else{
-				//need to get data via DOM proxy injection with callback
+				//get data via DOM injection of proxy request with callback
 				global_req_cb.push(callback);
-				if(!mv_json_response){									
+				if(!mv_json_response){
+					//@@todo should remove this functionality from mv_data_proxy 
+					//and require sites serve up data as javascript with a callback 									
 					req_url  =req_url.replace(/&/g,'__amp__');
 					loadExternalJs(mv_embed_path+'mv_data_proxy.php?url='+req_url+
 						'&cb=mv_jsdata_cb&cb_inx='+(global_req_cb.length-1) );
@@ -1838,6 +1840,7 @@ function mv_addLoadEvent(func) {
 		}
 }
 function mv_jsdata_cb(response){	
+	js_log('mv_jsdata_cb');
 	//run the callback from the global req cb object:
 	if(!global_req_cb[response['cb_inx']]){
 		js_log('missing req cb index');
@@ -1853,7 +1856,7 @@ function mv_jsdata_cb(response){
 		break;
 		case 'text/xml':
 			if(typeof response['pay_load'] == 'string'){
-				js_log(response['pay_load']);				
+				js_log('load string:'+ response['pay_load']);				
 				//attempt to parse as xml for IE 
 				if(embedTypes.msie){
 					var xmldata=new ActiveXObject("Microsoft.XMLDOM");
@@ -1926,7 +1929,6 @@ function getMvEmbedPath(){
 }
 if (typeof DOMParser == "undefined") {
    DOMParser = function () {}
-
    DOMParser.prototype.parseFromString = function (str, contentType) {
       if (typeof ActiveXObject != "undefined") {
          var d = new ActiveXObject("MSXML.DomDocument");
@@ -1947,26 +1949,46 @@ if (typeof DOMParser == "undefined") {
 /*
 * utility functions:
 */
-//if(typeof js_log == 'undefined'){
-	function js_log(string){
-	  if( window.console ){
-	        console.log(string); 
-	  }else{   	 
-	     /*
-	      * IE and non-firebug debug:
-	      */	     
-	     var log_elm = document.getElementById('mv_js_log');
-	     /*if(!log_elm){
-	     	document.write('<div style="position:absolute;z-index:50;top:0px;left:0px;right:0px;height:150px;"><textarea id="mv_js_log" cols="80" rows="6"></textarea></div>');
-	     	var log_elm = document.getElementById('mv_js_log');
-	     }
-	     if(log_elm){
-	     	log_elm.value+=string+"\n";
-	     }*/
-	   }
-	}
-//}
-//report errors as alerts: 
+function js_log(string){
+  if( window.console ){
+        console.log(string); 
+  }else{   	 
+     /*
+      * IE and non-firebug debug:
+      */	     
+     /*var log_elm = document.getElementById('mv_js_log');
+     if(!log_elm){     	
+     	document.write('<div style="position:absolute;z-index:500;top:0px;left:0px;right:0px;height:150px;"><textarea id="mv_js_log" cols="80" rows="6"></textarea></div>');
+     	var log_elm = document.getElementById('mv_js_log');
+     }
+     if(log_elm){
+     	log_elm.value+=string+"\n";
+     }*/
+   }
+}
+function getNextHighestZindex(obj){  
+	var highestIndex = 0;  
+	var currentIndex = 0;  
+	var elArray = Array();  
+	if(obj){ elArray = obj.getElementsByTagName('*'); }else{ elArray = document.getElementsByTagName('*'); }  
+	for(var i=0; i < elArray.length; i++){  
+		if (elArray[i].currentStyle){  
+			currentIndex = parseFloat(elArray[i].currentStyle['zIndex']);  
+		}else if(window.getComputedStyle){  
+			currentIndex = parseFloat(document.defaultView.getComputedStyle(elArray[i],null).getPropertyValue('z-index'));  
+		}  
+       	if(!isNaN(currentIndex) && currentIndex > highestIndex){ highestIndex = currentIndex; }  
+    }  
+    return(highestIndex+1);  
+} 
+function var_dump(obj) {
+   if(typeof obj == "object") {
+      return "Type: "+typeof(obj)+((obj.constructor) ? "\nConstructor: "+obj.constructor : "")+"\nValue: " + obj;
+   } else {
+      return "Type: "+typeof(obj)+"\nValue: "+obj;
+   }
+}
+
 function js_error(string){
 	alert(string);
 }
