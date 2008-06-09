@@ -90,16 +90,3 @@ or shown, this doesn't count towards the current exercise)
 - functions.php contains a lot of legacy code, should clean that
 up sometime.
 
-
-==Small notes ==
-
-Hmmm, oops, got my view and  controller tangled...
-I should have made the view an observer of the model instead... <sigh>
-
-And then I now realize I'd have a clear state to work with.
-
-Well, live and learn. Will try and fix that when going for feature completion
-there's stuff that'd give me headaches otherwise.
-
-
-
