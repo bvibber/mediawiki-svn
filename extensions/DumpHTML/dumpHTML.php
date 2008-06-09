@@ -31,6 +31,8 @@ php dumpHTML.php [options...]
 
 ENDS;
 
+define( 'MW_HTML_FOR_DUMP', 1 );
+
 $optionsWithArgs = array( 's', 'd', 'e', 'k', 'checkpoint', 'slice', 'udp-profile' );
 $options = array( 'help' );
 $profiling = false;
