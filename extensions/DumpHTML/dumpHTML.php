@@ -28,12 +28,14 @@ php dumpHTML.php [options...]
 	--image-snapshot     copy all images used to the destination directory
 	--compress           generate compressed version of the html pages
 	--udp-profile <N>    profile 1/N rendering operations using ProfilerSimpleUDP
+	--oom-adj <N>        set /proc/<pid>/oom_adj
+	--show-titles        write each article title to stdout
 
 ENDS;
 
 define( 'MW_HTML_FOR_DUMP', 1 );
 
-$optionsWithArgs = array( 's', 'd', 'e', 'k', 'checkpoint', 'slice', 'udp-profile' );
+$optionsWithArgs = array( 's', 'd', 'e', 'k', 'checkpoint', 'slice', 'udp-profile', 'oom-adj' );
 $options = array( 'help' );
 $profiling = false;
 
@@ -66,6 +68,12 @@ error_reporting( E_ALL & (~E_NOTICE) );
 if( isset( $options['help'] ) ) {
 	echo $usage;
 	exit;
+}
+
+if ( !wfIsWindows() && isset( $options['oom-adj'] ) ) {
+	$adj = intval( $options['oom-adj'] );
+	$pid = getmypid();
+	file_put_contents( "/proc/$pid/oom_adj", $adj );
 }
 
 if ( !empty( $options['s'] ) ) {
@@ -117,6 +125,7 @@ $wgHTMLDump = new DumpHTML( array(
 	'compress' => $options['compress'],
 	'noSharedDesc' => $options['no-shared-desc'],
 	'udpProfile' => $options['udp-profile'],
+	'showTitles' => $options['show-titles'],
 ));
 
 $wgHTMLDump->setupDestDir();
