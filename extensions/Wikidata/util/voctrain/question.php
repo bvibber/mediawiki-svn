@@ -88,7 +88,8 @@ class Question {
 	}
 
 
-	/** try some stuff, throws exceptions if it fails.
+	/** Self-test.
+	 * Try some stuff, throws exceptions if it fails.
 	 * currently throws MissingWordsException if something goes wrong with question or answer */
 	public function selfCheck() {
 		$this->getQuestionWords();
@@ -110,6 +111,7 @@ class Question {
 		if ($language===null) throw new Exception("No language specified");
 
 		$answers=$this->getAnswers($language);
+		$answer=trim($answer); // Hoomons make errors. Need to trim today. Will be made redundant by the robot conquest.
 		return in_array($answer, $answers);
 	
 	}

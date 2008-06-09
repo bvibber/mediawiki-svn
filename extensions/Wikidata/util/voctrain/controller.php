@@ -37,6 +37,13 @@ class Controller {
 
 		$this->login();
 		$logged_in=$this->auth->checkAuth();
+		
+		if ($logged_in) {
+			$username=$this->auth->getUsername();
+			if ($_REQUEST["userLanguage"]) {
+				$this->model->setUserLanguage($username,$_REQUEST["userLanguage"]);
+			}
+		}
 		$this->setLanguage();
 		if ($_REQUEST["action"]=="logout")
 			$logged_in=false;
@@ -73,7 +80,10 @@ class Controller {
 		$this->run_exercise(true);
 	}
 
-	/** sets the ui language */
+	/** sets the ui language 
+	 * Future: tidy a little bit, allow login to startup with
+	 * any language.
+	 */
 	public function setLanguage() {
 		$username=$this->auth->getUsername();
 		$userLanguage=$this->model->getUserLanguage($username);

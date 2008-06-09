@@ -191,18 +191,19 @@ class View {
 			<|There are %questions_remaining questions remaining, out of a total of %questions_total.|>
 			<h1><|Question|></h1>
 			<hr>
-			<h2><|Definition|></h2>
-			<p class='result'>
-			<i><|Dictionary definition to help you|>:</i><br/>
-			$definitions 
-			</p>
-			<hr>
 			<h2><|Word|></h2>
 			<p class='result'>
 			<i><|The word to translate|>:</i><br/>
 			$words
 			</p>
 			<hr>
+			<h2><|Definition|></h2>
+			<p class='result'>
+			<i><|Dictionary definition to help you|>:</i><br/>
+			$definitions 
+			</p>
+			<hr>
+
 			<input type='hidden' name='questionDmid' value='$questionDmid'/>
 			<h2><|Answer|></h2>
 			<fieldset class='settings'>", array(
