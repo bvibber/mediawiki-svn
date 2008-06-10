@@ -2,16 +2,16 @@
 
 global $wgHooks;
 $wgHooks['EditPage::showEditForm:initial'][] = 'WikiwygAlternateEdit';
-$wgHooks['EditForm:BeforeDisplayingTextbox'][] = 'WikiwygHideTextarea';
-$wgHooks['EditForm::AfterEdit:Form'][] = 'WikiwygEditTagCloud';
+$wgHooks['EditPage:BeforeDisplayingTextbox'][] = 'WikiwygHideTextarea';
+$wgHooks['EditPage::AfterEdit:Form'][] = 'WikiwygEditTagCloud';
 
 $wgExtensionFunctions[] = 'registerWikiwygEditing';
 $wgExtensionCredits['other'][] = array(
-    'name' => 'WikiwygEditing',
-    'author' => 'Bartek Łapiński',
-    'version' => '1.0',
-    'url' => 'http://www.mediawiki.org/wiki/Extension:Wikiwyg',
-    'description' => 'MediaWiki integration of the Wikiwyg WYSIWYG wiki editor - for full page editing'
+	'name' => 'WikiwygEditing',
+	'author' => 'Bartek Łapiński',
+	'version' => '1.0',
+	'url' => 'http://www.mediawiki.org/wiki/Extension:Wikiwyg',
+	'description' => 'MediaWiki integration of the Wikiwyg WYSIWYG wiki editor - for full page editing'
 );
 
 function registerWikiwygEditing () {
@@ -32,7 +32,7 @@ function WikiwygAlternateEdit ($epage) {
     global $wgOut, $wgSkin, $jsdir, $cssdir;
     global $wgWikiwygPath;
     global $wgServer, $wgWikiwygJsPath, $wgWikiwygCssPath, $wgWikiwygImagePath, $wgStyleVersion;
-    global $wgUser, $wgMessageCache, $wgServer, $wgArticlePath, $wgEnableAjaxLogin;
+    global $wgUser, $wgServer, $wgArticlePath, $wgEnableAjaxLogin;
 
 	wfLoadExtensionMessages('Wikiwyg');
 
@@ -99,7 +99,7 @@ function WikiwygHideTextarea ($epage, $hidden) {
 		$wgOut->addHTML ("<div id=\"WikiwygEditingLoadingMesg\" style=\"font-weight:bold\">".wfMsg('createpage-loading-mesg')."</div>");
 		$wgOut->addHTML ("<div id=\"WikiwygEditingUpperToolbar\" style=\"display:none; float: clear;\">
 					<div style=\"float: right\"><a href=\"#article\">".wfMsg('wikiwyg-return')."</a></div>
-					<div><a href=\"#article\">Return to editing</a></div>
+					<div><a href=\"#article\">".wfMsg('wikiwyg-return')."</a></div>
 				  </div>");
 		$wgOut->addHTML ("<div id=\"WikiwygEditingPreviewArea\" style=\"display:none\"></div>");
 		/* allow for users not having js enabled to edit too */
@@ -114,7 +114,7 @@ function WikiwygHideTextarea ($epage, $hidden) {
 					}
 				</style>
 			</noscript>
-		") ;
+		");
 	}
 	return true;
 }
@@ -127,7 +127,7 @@ function WikiwygEditTagCloud ($epage) {
 	if ( !wfIsCategoryCloudAllowed ($epage) ) {
 		return true;
 	}
-	require_once($IP. 'extensions/wikiwyg/share/MediaWiki/extensions/TagCloud/TagCloudClass.php');
+	require_once($IP. '/extensions/wikiwyg/share/MediaWiki/extensions/TagCloud/TagCloudClass.php');
 
 	    $MyCloud = new TagCloud;
 	    $num = 0;
@@ -169,7 +169,7 @@ function WikiwygEditTagCloud ($epage) {
                 </table>
 		</div>
 		<input type=\"hidden\" name=\"wpCategoryTagCount\", id=\"category_tag_count\" value=\"$num\" />
-	    ") ;	    
+	    ");
     }
     return true;
 }
