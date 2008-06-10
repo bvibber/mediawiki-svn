@@ -568,6 +568,7 @@ $settings = array(
 			'wgShowUpdatedMarker' => 'bool',
 			'wgUseRCPatrol' => 'bool',
 			'wgRC2UDPAddress' => 'text',
+			'wgRC2UDPOmitBots' => 'bool',
 			'wgRC2UDPPort' => 'int',
 			'wgRC2UDPPrefix' => 'text',
 		),
@@ -1110,6 +1111,7 @@ $settingsVersion = array(
 	'wgSpecialVersionShowHooks' => array( array( '1.13alpha', '>=' ) ),
 	'wgActiveUserDays' => array( array( '1.13alpha', '>=' ) ),
 	'wgActiveUserEditCount' => array( array( '1.13alpha', '>=' ) ),
+	'wgRC2UDPOmitBots' => array( array( '1.13alpha', '>=' ) ),
 ## Obsolete
 	'wgProfileSampleRate' => array( array( '1.8alpha', '<' ) ),
 	'wgProfilerType' => array( array( '1.8alpha', '<' ) ),
