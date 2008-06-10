@@ -49,13 +49,13 @@
  		}
  	}
  	function hasMVDType(){ return $this->hasMVDType;}
- 	/*
+ 	/* 
  	 * checks if the given request is valid:
  	 * valid request include:
  	 * type:existing_stream/##:##:##(/##:##:##)?
  	 */
  	function validRequestTitle(){
- 		//@@todo should throw the errors as exceptions
+ 		//@@todo should throw use exceptions
  		//first check if stream exists
  		if(!$this->doesStreamExist()) {
  			//print "stream does not exist"; 

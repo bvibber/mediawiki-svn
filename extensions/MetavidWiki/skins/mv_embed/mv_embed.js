@@ -125,7 +125,7 @@ var mvEmbed = {
   loading:false, 
   libs_loaded:false,
   //plugin libs var names and paths:
-  lib_jquery:{'window.jQuery':'jquery/jquery-1.2.1.js'},
+  lib_jquery:{'window.jQuery':'jquery/jquery-1.2.6.min.js'},
   lib_plugins:{		
 	'$j.fn.offsetParent':'jquery/plugins/jquery.dimensions.js',
 	'$j.ui.mouseInteraction':'jquery/plugins/ui.mouse.js',
@@ -860,8 +860,8 @@ textInterface.prototype = {
 			
 			//append it to body relative to offset of this.pe
 			var loc = $j(this.pe).position();
-			js_log('top ' +loc.top + ' left:'+loc.left );
-			var mvboxHTML ='<div style="position:absolute;z-index: '+ getNextHighestZindex() +';'+
+			//js_log('top ' +loc.top + ' left:'+loc.left );
+			$j(this.pe).after('<div style="position:absolute;z-index:'+($j(this.pe).css("zindex")+1) + ';'+
 						'top:'+(loc.top)+'px;' +
 						'left:'+(parseInt(loc.left)+parseInt(this.pe.width)+10)+'px;' +
 						'height:'+this.pe.height+'px;width:400px;' +
@@ -869,8 +869,7 @@ textInterface.prototype = {
 						'id="metaBox_'+this.pe.id+'">' +
 					this.getMenu() +
 					this.getBody() + 
-						'</div>';
-			$j(this.pe).after(mvboxHTML);			
+						'</div>');			
 			//$j('body').append();
 		}else{
 			//if($j('#metaBox_'+this.pe.id).css('display')!='none'){
@@ -1578,12 +1577,7 @@ embedVideo.prototype = {
 		}else{
 			return true;
 		}
-	},
-	//http://www.whatwg.org/specs/web-apps/current-work/#current0
-	//should return the current play time in seconds (default to zero)
-	currentTime:function(){
-		return 0;
-	},
+	},	
 	//loads in the css and js for the extended interface (controls = true) 
 	get_interface_lib : function(doLoad){				
 		//var doLoad = (doLoad==null)? true:doLoad;
