@@ -389,7 +389,8 @@ var embedTypes = {
 					continue;
 				}
    				if(type=='application/x-shockwave-flash'){
-					this.clientSupports['flowplayer']= true;
+   					//@@temporary disabled flash player (not fully functional yet)    		
+					//this.clientSupports['flowplayer']= true;
 					continue;
 				}
 			}
