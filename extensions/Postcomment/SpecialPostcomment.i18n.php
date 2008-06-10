@@ -362,3 +362,20 @@ $messages['tr'] = array(
 	'postcomment_post' => 'Posta',
 );
 
+/** Vietnamese (Tiếng Việt)
+ * @author Vinhtantran
+ */
+$messages['vi'] = array(
+	'postcomment_discussionprotected'      => 'Trang thảo luận này đã được khóa không cho đăng nữa.',
+	'postcomment_notloggedin'              => 'Bạn chưa đăng nhập.',
+	'postcomment_youareloggedinas'         => 'Bạn đã đăng nhập với tên $1',
+	'postcomment_addcommentdiscussionpage' => 'Thêm bình luận của bạn vào trang thảo luận này',
+	'postcomment_leavemessagefor'          => 'Để lại lời nhắn cho $1',
+	'postcomment_post'                     => 'Đăng',
+	'postcomment_on'                       => 'Vào',
+	'postcomment_said'                     => 'đã nói',
+	'postcomment_invalidrequest'           => 'Yêu cầu không hợp lệ.',
+	'postcomment_replyto'                  => 'Trả lời $1',
+	'postcomment_nopostingtoadd'           => 'Không có bài nào để đăng.',
+);
+

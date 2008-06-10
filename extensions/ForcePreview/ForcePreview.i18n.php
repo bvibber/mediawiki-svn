@@ -50,11 +50,12 @@ $messages['fi'] = array(
 
 /** French (Français)
  * @author Grondin
+ * @author Verdy p
  */
 $messages['fr'] = array(
 	'forcepreview'             => 'Sauvegarde la page (lance en premier la prévisualisation)',
 	'forcepreview-desc'        => "Force la prévisualisation pour les utilisateurs ne disposant d'aucun privilège",
-	'right-forcepreviewexempt' => "Peut être sauvegardé sans l'utilisation de la prévisualisation",
+	'right-forcepreviewexempt' => 'Peut publier sans utiliser la prévisualisation',
 );
 
 /** Galician (Galego)
@@ -62,8 +63,9 @@ $messages['fr'] = array(
  * @author Alma
  */
 $messages['gl'] = array(
-	'forcepreview'      => 'Gardar páxina (usar vista previa)',
-	'forcepreview-desc' => 'Forzar a vista previa aos usuarios sen privilexios',
+	'forcepreview'             => 'Gardar páxina (usar vista previa)',
+	'forcepreview-desc'        => 'Forzar a vista previa aos usuarios sen privilexios',
+	'right-forcepreviewexempt' => 'Poder gardar sen usar a vista previa',
 );
 
 /** Hindi (हिन्दी)

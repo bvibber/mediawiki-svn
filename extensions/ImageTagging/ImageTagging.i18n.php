@@ -178,16 +178,15 @@ $messages['fr'] = array(
 	'imagetagging-removingtag'              => 'Balise en cours de retrait…',
 	'imagetagging-addtagsuccess'            => 'Balise ajoutée.',
 	'imagetagging-removetagsuccess'         => 'Balise retirée.',
-	'imagetagging-oneactionatatimemessage'  => 'Une action de balisage est permise à la fois.
+	'imagetagging-oneactionatatimemessage'  => 'Une seule action de balisage est permise à la fois.
 Veuillez attendre la fin de l’action en cours.',
-	'imagetagging-canteditneedloginmessage' => 'Vous ne pouvez pas modifier cette pages.
-Ceci pourrait être parce que vous avez besoin de nous connecter pour baliser les images.
+	'imagetagging-canteditneedloginmessage' => 'Vous ne pouvez pas modifier cette page.
+Il se peut que vous deviez d’abord vous connecter pour baliser les images.
 Voulez-vous vous connecter maintenant ?',
 	'imagetagging-oneuniquetagmessage'      => 'Cette image a déjà une balise avec ce nom.',
 	'imagetagging-imagetag-seemoreimages'   => 'Voir plus d’images de « $1 » ($2)',
 	'imagetagging-taggedimages-title'       => 'Images de « $1 »',
-	'imagetagging-taggedimages-displaying'  => 'Affichage de $1 - $2 sur $3 images de « $4 »',
-	'imagetagging-taggedimages-total'       => '« $1 » : total des images',
+	'imagetagging-taggedimages-displaying'  => 'Affichage des images $1 – $2 sur $3 de « $4 »',
 );
 
 /** Galician (Galego)
@@ -464,6 +463,14 @@ Chcete sa teraz prihlásiť?',
 	'imagetagging-taggedimages-title'       => 'Obrázky „$1”',
 	'imagetagging-taggedimages-displaying'  => 'Zobrazujú sa $1 - $2 z $3 obrázkov „$4”',
 	'imagetagging-taggedimages-total'       => '„$1”; celkom obrázkov',
+);
+
+/** Sundanese (Basa Sunda)
+ * @author Irwangatot
+ */
+$messages['su'] = array(
+	'imagetagging-images'           => 'gambar',
+	'imagetagging-tagcancel-button' => 'Bolay',
 );
 
 /** Swedish (Svenska)

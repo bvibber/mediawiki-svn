@@ -102,3 +102,10 @@ $messages['sv'] = array(
 	'psinotocnum-desc' => 'Lägger till det magiska ordet "<nowiki>__</nowiki>NOTOCNUM<nowiki>__</nowiki>"',
 );
 
+/** Vietnamese (Tiếng Việt)
+ * @author Vinhtantran
+ */
+$messages['vi'] = array(
+	'psinotocnum-desc' => 'Từ ma thuật “<nowiki>__</nowiki>NOTOCNUM<nowiki>__</nowiki>” mới',
+);
+

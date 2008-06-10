@@ -157,6 +157,7 @@ $messages['ca'] = array(
 	'sitematrix-total'     => "'''Recompte total: $1'''",
 	'sitematrix-sitetotal' => 'Total',
 	'sitematrix-private'   => 'privat',
+	'sitematrix-fishbowl'  => 'edició restringida',
 );
 
 $messages['cdo'] = array(
@@ -1134,6 +1135,7 @@ $messages['te'] = array(
 	'sitematrix-total'     => "'''మొత్తం సంఖ్య: $1'''",
 	'sitematrix-sitetotal' => 'మొత్తం',
 	'sitematrix-private'   => 'అంతరంగిక',
+	'sitematrix-fishbowl'  => 'మార్చడం నియంత్రించాం',
 );
 
 $messages['tet'] = array(

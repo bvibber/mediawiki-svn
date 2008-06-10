@@ -604,8 +604,13 @@ $messages['sv'] = array(
  * @author వైజాసత్య
  */
 $messages['te'] = array(
-	'authorprotect-expiry' => 'గడువు ముగిసే సమయం',
-	'authorprotect-reason' => 'కారణము',
+	'authorprotect-notauthor' => 'ఈ పేజీకి రచయిత మీరు కాదు',
+	'authorprotect-edit'      => 'రచయితలను మాత్రమే మార్పులు చేయనివ్వు',
+	'authorprotect-move'      => 'తరలింపుని రచయితలు మాత్రమే చేయనివ్వు',
+	'authorprotect-expiry'    => 'గడువు ముగిసే సమయం',
+	'authorprotect-reason'    => 'కారణము',
+	'authorprotect-success'   => 'సంరక్షణ విజయవంతం!',
+	'authorprotect-failure'   => 'సంరక్షణ విఫలమైంది',
 );
 
 /** Ukrainian (Українська)

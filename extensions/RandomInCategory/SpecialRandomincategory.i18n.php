@@ -414,6 +414,7 @@ $messages['sv'] = array(
  */
 $messages['te'] = array(
 	'randomincategory'            => 'వర్గంలోని యాదృచ్చిక పేజీ',
+	'randomincategory-desc'       => 'ఓ వర్గంలోని యాదృచ్ఛిక పేజీని పొందడానికై [[Special:Randomincategory|ప్రత్యేక పేజీ]]',
 	'randomincategory-toolbox'    => 'యాదృచ్ఛిక పేజీ',
 	'randomincategory-nocategory' => '$1 అనే వర్గం లేదు లేదా ఖాళీగా ఉంది',
 	'randomincategory-label'      => 'వర్గం:',
@@ -444,8 +445,12 @@ $messages['tg-cyrl'] = array(
  * @author Minh Nguyen
  */
 $messages['vi'] = array(
-	'randomincategory-label'  => 'Thể loại:',
-	'randomincategory-submit' => 'Xem',
+	'randomincategory'            => 'Trang ngẫu nhiên trong thể loại',
+	'randomincategory-desc'       => '[[Special:Randomincategory|Trang đặc biệt]] để xem một trang ngẫu nhiên trong thể loại',
+	'randomincategory-toolbox'    => 'Trang ngẫu nhiên',
+	'randomincategory-nocategory' => 'Thể loại $1 không tồn tại hoặc đang trống',
+	'randomincategory-label'      => 'Thể loại:',
+	'randomincategory-submit'     => 'Xem',
 );
 
 /** Volapük (Volapük)

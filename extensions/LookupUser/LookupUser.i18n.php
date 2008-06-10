@@ -483,6 +483,7 @@ $messages['te'] = array(
 	'lookupuser_nonexistent'  => 'పొరపాటు: వాడుకరి ఉనికిలో లేరు',
 	'lookupuser_id'           => 'వాడుకరి ID: <tt>#$1</tt>',
 	'lookupuser_email'        => 'ఈ-మెయిల్: [[Special:Emailuser/$2|$1]]',
+	'lookupuser_no_email'     => 'ఇవ్వలేదు',
 	'lookupuser_realname'     => 'నిజమైన పేరు: $1',
 	'lookupuser_registration' => 'నమోదైన తేదీ: $1',
 	'lookupuser_useroptions'  => 'వాడుకరి ఎంపికలు:',

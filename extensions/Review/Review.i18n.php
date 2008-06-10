@@ -1051,7 +1051,45 @@ $messages['tg-cyrl'] = array(
  * @author Minh Nguyen
  */
 $messages['vi'] = array(
-	'review_total_statistics' => 'Tổng cộng',
+	'review_sidebar_title'                                   => 'Duyệt',
+	'review-desc'                                            => 'Tính năng [[Special:Review|phê chuẩn]] được phục hồi.',
+	'review_topics'                                          => "# Dưới đây là danh sách các chủ đề và tầm vực của gói mở rộng duyệt bài.
+# Mỗi chủ đề được định nghĩa bằng một dòng năm giá trị, cách nhau bởi      Normal   0               false   false   false      EN-US   JA   X-NONE                                                         MicrosoftInternetExplorer4                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     ‘:’  (tất cả những dòng khác được bỏ qua).
+# Thứ tự là: khóa số (>0), tên, tầm lớn nhất (>1; 2=có/không), ý nghĩa của giá trị nhỏ nhất (ví dụ, 'tồi'), ý nghĩa của giá trị cao nhất (ví dụ, 'tốt').
+1:Chất lượng:5:tồi:tốt
+2:Sẵn sàng cho 1.0:2:không:có",
+	'review_topic_page'                                      => 'Duyệt chủ đề',
+	'review_sidebar_explanation'                             => 'Hộp kiểm ngoài cùng bên trái luôn có nghĩa là      Normal   0               false   false   false      EN-US   JA   X-NONE                                                         MicrosoftInternetExplorer4                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     ‘không có ý kiến’.',
+	'review_save'                                            => 'Lưu trữ duyệt bài',
+	'review_your_review'                                     => 'Lần duyệt trang/phiên bản này của bạn:',
+	'review_sidebar_you_have_other_reviews_for_this_article' => 'Bạn đã duyệt những phiên bản khác của trang này. Những xếp hạng khác của bạn sẽ được trộn vào cái này nếu bạn chọn ‘không có ý kiến’.',
+	'review_page_link'                                       => 'thống kê duyệt bài',
+	'review_sidebar_final'                                   => 'Đối với dữ liệu duyệt của trang này, xem $1 của nó',
+	'review_for_page'                                        => 'Duyệt trang "$1"',
+	'review_for_user'                                        => 'Duyệt thành viên "$1"',
+	'review_error'                                           => 'Có gì đó bị sai!',
+	'review_no_reviews_for_page'                             => 'Hiện không có lần duyệt nào cho "$1".',
+	'review_total_statistics'                                => 'Tổng cộng',
+	'review_statistics_left_corner'                          => 'Phiên bản',
+	'review_version_link'                                    => 'Phiên bản #$1',
+	'review_statistic_cell'                                  => 'Trung bình: $1 của $2<br />($4 thành viên, $5 vô danh)',
+	'review_version_statistic_cell'                          => '$1 trong $2',
+	'review_version_reviews_link'                            => '<small>(duyệt phiên bản)</small>',
+	'review_concerns_page'                                   => 'Lần duyệt này là về trang "$1".',
+	'review_concerns_user'                                   => 'Đây là về lần duyệt của thành viên "$1".',
+	'review_user_reviews'                                    => '<small>(duyệt bởi thành viên này)</small>',
+	'review_user_page_list'                                  => 'Thành viên đã duyệt những trang sau:',
+	'review_user_details_link'                               => '(chi tiết)',
+	'review_do_merge'                                        => 'Trộn những lần duyệt các phiên bản của trang này của tôi vào cái này',
+	'review_has_been_stored'                                 => "<span id='review_has_been_stored'>Lần duyệt của bạn đã được lưu!</span>",
+	'revision_review_this_page_version_link'                 => 'Duyệt phiên bản này của trang.',
+	'review_page_review'                                     => 'Duyệt trang "$1"',
+	'review_blocked'                                         => 'Bạn đã bị cấm, hãy rời khỏi đây.',
+	'review_wrong_namespace'                                 => 'Những trang trong không gian tên này không thể duyệt được!',
+	'review_topic'                                           => 'Chủ đề',
+	'review_no_opinion'                                      => 'Không có ý kiến',
+	'review_rating'                                          => 'Xếp hạng',
+	'review_comment'                                         => 'Bình luận',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)

@@ -939,7 +939,9 @@ Var tålmodig.',
 $messages['te'] = array(
 	'youtubeauthsub_title'       => 'శీర్షిక',
 	'youtubeauthsub_description' => 'వివరణ',
+	'youtubeauthsub_keywords'    => 'కీలకపదాలు',
 	'youtubeauthsub_category'    => 'వర్గం',
+	'youtubeauthsub_submit'      => 'దాఖలుచెయ్యి',
 );
 
 /** Tajik (Cyrillic) (Тоҷикӣ/tojikī (Cyrillic))

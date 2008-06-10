@@ -236,6 +236,13 @@ Diese Seite gilt nur für beschränkte Bentzer.",
     'whitelistnummatches'         => " - $1 Übereinstimmungen",
 );
 
+/** Zazaki (Zazaki)
+ * @author Belekvor
+ */
+$allMessages['diq'] = array(
+	'whitelisttablemodifynone' => 'çino',
+);
+
 /** Greek (Ελληνικά)
  * @author Consta
  */
@@ -993,9 +1000,12 @@ $allMessages['te'] = array(
 	'mywhitelistpages'        => 'నా పేజీలు',
 	'whitelisttablemodifyall' => 'అన్నీ',
 	'whitelisttablepage'      => 'వికీ పేజీ',
+	'whitelisttableview'      => 'చూడండి',
 	'whitelisttablenewdate'   => 'కొత్త తేదీ:',
 	'whitelisttableremove'    => 'తొలగించు',
+	'whitelistnewtabledate'   => 'కాల పరిమితి:',
 	'whitelistnewtablereview' => 'సమీక్షించు',
+	'whitelistpagelist'       => '$1 కై {{SITENAME}} పేజీలు',
 	'whitelistnummatches'     => '  - $1 పోలికలు',
 );
 

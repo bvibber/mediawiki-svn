@@ -60,6 +60,13 @@ $messages['fr'] = array(
 	'fixedimage-desc' => 'Ajoute la balise <tt><nowiki><fundraising></nowiki></tt> comme une image',
 );
 
+/** Galician (Galego)
+ * @author Toliño
+ */
+$messages['gl'] = array(
+	'fixedimage-desc' => 'Engade a etiqueta <tt><nowiki><fundraising></nowiki></tt> como unha imaxe',
+);
+
 /** Hindi (हिन्दी)
  * @author Kaustubh
  */

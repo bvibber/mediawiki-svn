@@ -184,7 +184,8 @@ $messages['bg'] = array(
  * @author SMP
  */
 $messages['ca'] = array(
-	'regexblock-view-go' => 'Vés-hi',
+	'regexblock-already-blocked' => '$1 ja està blocat.',
+	'regexblock-view-go'         => 'Vés-hi',
 );
 
 /** Chamorro (Chamoru)
@@ -1301,10 +1302,62 @@ $messages['tr'] = array(
  * @author Vinhtantran
  */
 $messages['vi'] = array(
-	'regexblock-form-reason'     => 'Lý do:',
-	'regexblock-already-blocked' => '“$1” đã bị cấm rồi.',
-	'regexblock-view-all'        => 'Tất cả',
-	'regexblock-view-go'         => 'Xem',
+	'regexblock'                      => 'Cấm bằng biểu thức chính quy',
+	'regexblock-desc'                 => 'Gói mở rộng dùng để cấm những tên người dùng và địa chỉ IP bằng biểu thức chính quy. Có cả cơ chế cấm và một [[Special:Regexblock|trang đặc biệt]] để thêm/quản lý việc cấm',
+	'regexblock-special-desc'         => 'thay thế cấm thành viên (theo tên cho trước, sử dụng biểu thức chính quy)',
+	'regexblock-stat-desc'            => 'Hiển thị [[Special:Regexblockstats|thống kê cấm]] đối với gói mở rộng regexblock',
+	'regexblock-page-title'           => 'Cấm tên theo Biểu thức chính quy',
+	'regexblockstats'                 => 'Thống kê cấm Regex',
+	'regexblock-reason-ip'            => 'Địa chỉ IP này bị chặn không được sửa đổi do phá hoại hoặc vi phạm của bạn hoặc bởi ai đó dùng chung địa chỉ IP với bạn.
+Nếu bạn tin rằng đây là nhầm lẫn, xin hãy $1',
+	'regexblock-reason-name'          => 'Tên người dùng này bị chặn không được sửa đổi do phá hoại hoặc hành vi vi phạm khác.
+Nếu bạn tin rằng đây là nhầm lẫn, xin hãy $1',
+	'regexblock-reason-regex'         => 'Tên người dùng này bị chặn không được sửa đổi do phá hoại hoặc hành vi vi phạm khác của một thành viên có tên tương tự như thế này.
+Xin hãy tạo một tên người dùng thay thế hoặc $1 về vấn đề này',
+	'regexblock-help'                 => "Hãy dùng mẫu dưới đây để cấm quyền viết bài của một địa chỉ IP hoặc tên người dùng cụ thể.
+Điều này chỉ nên thực hiện để ngăn chặn phá hoại, và theo đúng với quy định.
+''Trang này sẽ cho phép bạn thậm chí cấm cả những thành viên không tồn tại, và cũng sẽ cấm những thành viên có tên tương tự với tên đưa ra, nghĩa là « Test » sẽ bị cấm cùng với « Test 2 » v.v.
+Bạn cũng có thể cấm các dải địa chỉ IP đầy đủ, nghĩa là không ai đăng nhập từ các IP đó có thể thực hiện sửa đổi trang.
+Chú ý: các địa chỉ IP bán phần sẽ được đối xử như tên người dùng trong việc xác định cấm.
+Nếu không đưa ra lý do gì, một lý do chung chung mặc định sẽ được sử dụng.''",
+	'regexblock-page-title-1'         => 'Cấm địa chỉ sử dụng biểu thức chính quy',
+	'regexblock-unblock-success'      => 'Bỏ cấm thành công',
+	'regexblock-unblock-log'          => "Tên người dùng hoặc địa chỉ IP '''$1''' đã được bỏ cấm.",
+	'regexblock-unblock-error'        => 'Lỗi khi bỏ cấm $1.
+Có thể không có thành viên nào như vậy.',
+	'regexblock-form-username'        => 'Địa chỉ IP hoặc tên người dùng:',
+	'regexblock-form-reason'          => 'Lý do:',
+	'regexblock-form-expiry'          => 'Thời hạn:&#160;',
+	'regexblock-form-match'           => 'Khớp chính xác',
+	'regexblock-form-account-block'   => 'Cấm mở tài khoản mới',
+	'regexblock-form-submit'          => 'Cấm&nbsp;người&nbsp;dùng&nbsp;này',
+	'regexblock-block-log'            => "Tên người dùng hoặc địa chỉ IP '''$1''' đã bị cấm.",
+	'regexblock-block-success'        => 'Cấm thành công',
+	'regexblock-form-submit-empty'    => 'Cung cấp một tên người dùng hoặc một địa chỉ IP để cấm.',
+	'regexblock-form-submit-regex'    => 'Biểu thức chính quy không hợp lệ.',
+	'regexblock-form-submit-expiry'   => 'Xin xác định thời hạn cấm.',
+	'regexblock-already-blocked'      => '“$1” đã bị cấm rồi.',
+	'regexblock-stats-title'          => 'Thống kê cấm regex',
+	'regexblock-stats-username'       => 'Đối với $1',
+	'regexblock-stats-times'          => 'bị cấm vào',
+	'regexblock-stats-logging'        => 'đăng nhập từ địa chỉ',
+	'regexblock-currently-blocked'    => 'Các địa chỉ hiện đang bị cấm:',
+	'regexblock-view-blocked'         => 'Xem những lần cấm do:',
+	'regexblock-view-all'             => 'Tất cả',
+	'regexblock-view-go'              => 'Xem',
+	'regexblock-view-match'           => '(khớp chính xác)',
+	'regexblock-view-regex'           => '(khớp chính xác)',
+	'regexblock-view-account'         => '(cấm mở tài khoản)',
+	'regexblock-view-reason'          => 'lý do: $1',
+	'regexblock-view-reason-default'  => 'lý do chung chung',
+	'regexblock-view-block-infinite'  => 'cấm vĩnh viễn',
+	'regexblock-view-block-temporary' => 'hết hạn vào',
+	'regexblock-view-block-expired'   => 'HẾT HẠN vào',
+	'regexblock-view-block-by'        => 'bị cấm bởi',
+	'regexblock-view-block-unblock'   => 'bỏ cấm',
+	'regexblock-view-stats'           => '(thống kê)',
+	'regexblock-view-empty'           => 'Danh sách các tên và địa chỉ bị cấm đang trống.',
+	'regexblock-view-time'            => 'vào $1',
 );
 
 /** Volapük (Volapük)

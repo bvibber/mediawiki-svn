@@ -39,7 +39,7 @@ $messages['de'] = array(
  * @author Grondin
  */
 $messages['fr'] = array(
-	'antibot-desc' => 'Simple cadre pour les vérifications du bot anti spam et des charges utiles du trigger.',
+	'antibot-desc' => 'Environnement simple de vérification contre les robots spammeurs et les soumissions de contenus à déclenchement conditionnel automatisé.',
 );
 
 /** Ripoarisch (Ripoarisch)

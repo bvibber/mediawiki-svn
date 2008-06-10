@@ -469,10 +469,11 @@ $messages['stq'] = array(
 
 /** Sundanese (Basa Sunda)
  * @author Kandar
+ * @author Irwangatot
  */
 $messages['su'] = array(
 	'importfreeimages'                       => 'Impor Gambar Bébas',
-	'importfreeimages-desc'                  => 'Muka jalan pikeun ngimpor poto-poto ti flickr anu lisénsina loyog.',
+	'importfreeimages-desc'                  => 'Muka jalan pikeun [[Special:ImportFreeImages|ngimpor poto-poto]] ti  [http://www.flickr.com flickr] anu lisénsina loyog.',
 	'importfreeimages_description'           => 'Ieu kaca méré jalan ka anjeun pikeun nyiar poto-poto ti flickr anu lisénsina loyog sarta langsung diimpor ka wiki anjeun.',
 	'importfreeimages_noapikey'              => 'Anjeun can nyetél konfigurasi Flickr API Key. Mangga nyungkeun heula konci API ti [http://www.flickr.com/services/api/misc.api_keys.html dieu], lajeng sét wgFlickrAPIKey dina ImportFreeImages.php.',
 	'importfreeimages_nophotosfound'         => "Euweuh poto nu loyog jeung kriteria '$1', mangga cobian deui.",

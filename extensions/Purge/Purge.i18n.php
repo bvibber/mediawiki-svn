@@ -225,6 +225,7 @@ $messages['tr'] = array(
  * @author Minh Nguyen
  */
 $messages['vi'] = array(
-	'purge' => 'làm tươi',
+	'purge'      => 'làm tươi',
+	'purge-desc' => 'Thêm một tab tẩy bộ đệm tại những trang bình thường, và bỏ qua kiểm tra tẩy đệm cho những thành viên vô danh cho phép tẩy nhanh bộ đệm',
 );
 

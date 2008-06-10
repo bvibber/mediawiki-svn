@@ -503,6 +503,7 @@ $messages['eo'] = array(
 
 /** French (Français)
  * @author Grondin
+ * @author Verdy p
  */
 $messages['fr'] = array(
 	'configure'                           => 'Configurer le wiki',
@@ -534,7 +535,7 @@ Veuillez le rendre modifiable par PHP pour que cette extension fonctionne.',
 	'configure-section-paths'             => 'Chemins',
 	'configure-section-db'                => 'Base de données',
 	'configure-section-db-notallowed'     => "Vous n'êtes pas autorisé à changer les réglages de la base de données.",
-	'configure-section-load-balancing'    => 'Charger l’ajustement',
+	'configure-section-load-balancing'    => 'Équilibrage de charge',
 	'configure-section-mysql'             => 'Spécifique à MySQL',
 	'configure-section-postgres'          => 'Spécifique à PostgreSQL',
 	'configure-section-sqlite'            => 'Spécifique à SQLite',
@@ -662,6 +663,7 @@ Por favor, créeo ou tróqueo para usar esta extensión.',
 	'configure-section-copyright'         => 'Dereitos de autor (Copyright)',
 	'configure-section-misc'              => 'Varios',
 	'configure-setting-not-available'     => 'A configuración non está dispoñible nesta versión de MediaWiki',
+	'configure-view'                      => 'Ver',
 	'configure-view-not-allowed'          => 'Non ten permiso para ver este parámetro',
 	'right-configure'                     => 'Configurar o wiki',
 	'right-configure-all'                 => 'Configurar todos os parámetros do wiki',
@@ -863,6 +865,7 @@ Leet e w.e.g un oder ännert en esou datt dës Erweiderung funktionéiert.",
 	'configure-section-search'            => 'Sich',
 	'configure-section-misc'              => 'Verschiddenes',
 	'configure-setting-not-available'     => 'Dës Astellung kann an dëser Versioun vu MediaWiki net geännert ginn',
+	'configure-view'                      => 'Kuckt',
 	'configure-view-not-allowed'          => 'Dir sidd net autoriséiert fir dës Astellung ze gesinn',
 	'right-configure'                     => "D'Wiki configuréieren",
 	'right-viewconfig'                    => 'Konfiguratioun vun der Wiki weisen',
@@ -1306,6 +1309,7 @@ $messages['os'] = array(
 /** Polish (Polski)
  * @author Sp5uhe
  * @author McMonster
+ * @author Wpedzich
  */
 $messages['pl'] = array(
 	'configure'                           => 'Konfiguracja wiki',
@@ -1325,6 +1329,7 @@ Ustaw uprawnienia do zapisu dla PHP, jeśli chcesz korzystać z tego rozszerzeni
 	'configure-js-prompt-group'           => 'Wprowadź nazwę dla nowej grupy',
 	'configure-js-remove'                 => 'Usuń',
 	'configure-js-remove-row'             => 'Usuń ten wpis',
+	'configure-no-diff'                   => 'Pomiędzy wybranymi wersjami nie nastąpiły żadne zmiany.',
 	'configure-no-directory'              => 'Katalog <tt>$1</tt> wykorzystywany do przetrzymywania konfiguracji nie istnieje.
 Utwórz katalog lub wybierz inny, jeśli chcesz korzystać z tego rozszerzenia.',
 	'configure-no-old'                    => 'Brak dostępnych starych wersji konfiguracji',
@@ -1382,6 +1387,7 @@ Utwórz katalog lub wybierz inny, jeśli chcesz korzystać z tego rozszerzenia.'
 	'configure-section-htcp'              => 'Multicast HTCP',
 	'configure-section-misc'              => 'Różne',
 	'configure-setting-not-available'     => 'Opcja nie jest dostępna w tej wersji MediaWiki',
+	'configure-view'                      => 'Zobacz',
 	'configure-view-not-allowed'          => 'Nie masz uprawnień do przeglądania tych ustawień',
 	'right-configure'                     => 'Konfiguracja wiki',
 	'right-configure-all'                 => 'Konfiguracja wszystkich ustawień wiki',
@@ -1581,6 +1587,7 @@ $messages['sk'] = array(
 	'configure-js-prompt-group'           => 'Zadajte názov novej skupiny:',
 	'configure-js-remove'                 => 'Zmazať',
 	'configure-js-remove-row'             => 'Zmazať tento záznam',
+	'configure-no-diff'                   => 'Medzi zvolenými revíziami nenastali zmeny.',
 	'configure-no-directory'              => 'Adresár na uloženie nastavení, <tt>$1</tt>, neexistuje.
 Aby ste mohli používať toto rozšírenie, vytvorte ho alebo ho zmeňte.',
 	'configure-no-old'                    => 'Nie je dostupná žiadna stará verzia konfigurácie',
@@ -1638,6 +1645,7 @@ Aby ste mohli používať toto rozšírenie, vytvorte ho alebo ho zmeňte.',
 	'configure-section-htcp'              => 'HTCP multicast',
 	'configure-section-misc'              => 'Rôzne',
 	'configure-setting-not-available'     => 'Toto nastavenie nie je v tejto verzii MediaWiki dostupné',
+	'configure-view'                      => 'Pozri',
 	'configure-view-not-allowed'          => 'Nemáte oprávnenie zobraziť toto nastavenie',
 	'right-configure'                     => 'Nastavenie wiki',
 	'right-configure-all'                 => 'Nastavenie všetkých wiki',
@@ -1706,6 +1714,7 @@ $messages['su'] = array(
 	'configure-section-images'       => 'Gambar',
 	'configure-section-users'        => 'Pamaké',
 	'configure-section-search'       => 'Sungsi',
+	'configure-view'                 => 'Tempo',
 );
 
 /** Swedish (Svenska)
@@ -1730,6 +1739,7 @@ Var god gör den skrivbar av PHP för att använda det här tillägget.',
 	'configure-js-prompt-group'           => 'Skriv in namnet på den nya gruppen:',
 	'configure-js-remove'                 => 'Radera',
 	'configure-js-remove-row'             => 'Radera detta element',
+	'configure-no-diff'                   => 'Det finns inga ändringar mellan de valda versionerna.',
 	'configure-no-directory'              => 'Katalogen där inställningar lagras, <tt>$1</tt>, finns inte.
 För att använda det här programtillägget måste du skapa den eller byta den.',
 	'configure-no-old'                    => 'Ingen gammal version av konfigurationen finns tillgänglig.',
@@ -1788,6 +1798,7 @@ För att använda det här programtillägget måste du skapa den eller byta den.
 	'configure-section-htcp'              => 'HTCP-multicast',
 	'configure-section-misc'              => 'Diverse',
 	'configure-setting-not-available'     => 'Inställningen är inte tillgänglig i den här versionen av MediaWiki',
+	'configure-view'                      => 'Se',
 	'configure-view-not-allowed'          => 'Du är inte tillåten att se den här inställningen',
 	'right-configure'                     => 'Konfigurera wikin',
 	'right-configure-all'                 => 'Konfigurera alla inställningar på wikin',
@@ -1803,8 +1814,11 @@ För att använda det här programtillägget måste du skapa den eller byta den.
 $messages['te'] = array(
 	'configure-desc-group'            => 'గుంపులు',
 	'configure-desc-ns'               => 'పేరుబరులు',
+	'configure-desc-val'              => 'విలువ',
+	'configure-btn-save'              => 'అమరికలు భద్రపరచు',
 	'configure-js-remove'             => 'తొలగించు',
 	'configure-section-general'       => 'సాధారణ అమరికలు',
+	'configure-section-db'            => 'డాటాబేసు',
 	'configure-section-email'         => 'ఈ-మెయిల్',
 	'configure-section-localization'  => 'స్థానికీకరణ',
 	'configure-section-timezone'      => 'కాలమండలం',
@@ -1812,11 +1826,15 @@ $messages['te'] = array(
 	'configure-section-stats'         => 'సైటు గణాంకాలు',
 	'configure-section-category'      => 'వర్గాలు',
 	'configure-section-groups'        => 'గుంపులు',
+	'configure-section-cookie'        => 'కుకీలు',
 	'configure-section-images'        => 'బొమ్మలు',
 	'configure-section-specialpages'  => 'ప్రత్యేక పేజీలు',
 	'configure-section-recentchanges' => 'ఇటీవలి మార్పులు',
+	'configure-section-users'         => 'వాడుకరులు',
+	'configure-section-feed'          => 'ఫీడు',
 	'configure-section-search'        => 'అన్వేషణ',
 	'configure-section-copyright'     => 'కాపీహక్కులు',
+	'configure-view'                  => 'చూడండి',
 );
 
 /** Ukrainian (Українська)

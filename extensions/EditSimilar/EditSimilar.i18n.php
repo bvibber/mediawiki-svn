@@ -48,7 +48,7 @@ Tämä sivu voisi myös kaivata apuasi: $1.',
  * @author IAlex
  */
 $messages['fr'] = array(
-	'editsimilar-desc'                           => 'Encourage les utilisateurs à modifier les pages similaires après avoir sauvegarder une page',
+	'editsimilar-desc'                           => 'Encourage les utilisateurs à modifier les pages similaires après avoir publié une page',
 	'editsimilar-thanks'                         => 'Merci pour votre contribution.
 Vérifiez ces pages apparentées : $1.',
 	'editsimilar-thanks-singleresult'            => 'Merci pour votre contribution.
@@ -60,6 +60,22 @@ Cette page devrait avoir, aussi, besoin de votre aide : $1.',
 	'editsimilar-thankyou'                       => 'Merci pour votre contribution, $1 !',
 	'editsimilar-link-disable'                   => 'paramétrer les préférences',
 	'tog-edit-similar'                           => 'Activer les suggestions similaires des pages',
+);
+
+/** Galician (Galego)
+ * @author Toliño
+ */
+$messages['gl'] = array(
+	'editsimilar-thanks'                         => 'Grazas pola súa contribución.
+Comprobe estas páxinas relacionadas: $1.',
+	'editsimilar-thanks-singleresult'            => 'Grazas pola súa contribución.
+Comprobe esta páxina relacionada: $1.',
+	'editsimilar-thanks-notsimilar'              => 'Grazas pola súa contribución.
+Estas páxinas poden precisar tamén da súa axuda: $1.',
+	'editsimilar-thanks-notsimilar-singleresult' => 'Grazas pola súa contribución.
+Esta páxina pode tamén precisar da súa axuda: $1.',
+	'editsimilar-thankyou'                       => 'Grazas pola súa contribución, $1!',
+	'tog-edit-similar'                           => 'Permitir suxestións de páxinas similares',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -160,5 +176,16 @@ Tejto stránke by sa tiež hodilo, keby ste sa na ňu pozreli: $1.',
 	'editsimilar-thankyou'                       => 'Ďakujeme za váš príspevok, $1!',
 	'editsimilar-link-disable'                   => 'nastaviť voľby',
 	'tog-edit-similar'                           => 'Zapnúť návrhy podobných stránok',
+);
+
+/** Swedish (Svenska)
+ * @author M.M.S.
+ */
+$messages['sv'] = array(
+	'editsimilar-desc'                => 'Uppmuntrar användare att redigera liknande sidor efter att ha sparat en sida',
+	'editsimilar-thanks'              => 'Tack för ditt bidrag.
+Kolla dessa relaterade sidor: $1.',
+	'editsimilar-thanks-singleresult' => 'Tack för ditt bidrag.
+Kolla denna relaterade sida: $1.',
 );
 

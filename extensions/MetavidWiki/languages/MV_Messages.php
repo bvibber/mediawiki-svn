@@ -1396,6 +1396,7 @@ $messages['lb'] = array(
 	'mv_search_not'                 => 'net',
 	'mv_spoken_by'                  => 'Geschwat vum',
 	'mv_category'                   => 'Kategorie',
+	'mv_remove_filter'              => 'Filter ewechhuelen',
 	'mv_view_wiki_page'             => 'Wiki-Säit gesinn',
 	'mv_save_sequence'              => 'Sequenz späicheren',
 );
@@ -2989,6 +2990,7 @@ $messages['te'] = array(
 	'mv_match_text'                 => '~  $1 పోలికలు',
 	'mv_match_text_one'             => '~ 1 పోలిక',
 	'mv_sequence_add_manual'        => 'పేరు ద్వారా చేర్చండి',
+	'mv_sequence_add_search'        => 'వెతికి చేర్చండి',
 	'mv_embed_options'              => 'ఎంబెడ్ ఎంపికలు',
 );
 

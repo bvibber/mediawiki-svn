@@ -654,8 +654,19 @@ $messages['vec'] = array(
  * @author Minh Nguyen
  */
 $messages['vi'] = array(
-	'player-goto-page' => 'Trang',
-	'player-goto-file' => 'tập tin',
+	'player'               => 'Trình chơi',
+	'player-desc'          => 'Trình chơi tập tin phương tiện tích hợp dùng những bộ gắn thêm phổ biến cho trình duyệt, và một [[Special:Player|trang đặc biệt]]',
+	'player-title'         => 'Trình chơi',
+	'player-playertitle'   => 'Trình chơi: $1',
+	'player-file'          => 'Tên tập tin',
+	'player-play'          => 'Chơi',
+	'player-not-allowed'   => 'định dạng không được phép',
+	'player-not-found'     => 'không tìm thấy tập tin',
+	'player-invalid-title' => 'tựa đề không hợp lệ',
+	'player-clicktoplay'   => 'Chơi $1',
+	'player-goto-player'   => 'trình chơi',
+	'player-goto-page'     => 'Trang',
+	'player-goto-file'     => 'tập tin',
 );
 
 /** Volapük (Volapük)

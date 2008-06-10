@@ -30,6 +30,13 @@ $messages['bn'] = array(
 	'charinsert-desc' => 'আদর্শ নয় এমন ক্যারেক্টার অনুপ্রবেশ করানোর জন্য জাভাস্ক্রিপ্ট বাক্স সৃষ্টি অনুমোদন করে',
 );
 
+/** Catalan (Català)
+ * @author Jordi Roqué
+ */
+$messages['ca'] = array(
+	'charinsert-desc' => "Permet la creació d'una caixa de JavaScript per a [[MediaWiki:Edittools|inserir caràcters no-estàndard]]",
+);
+
 /** Czech (Česky)
  * @author Li-sung
  */

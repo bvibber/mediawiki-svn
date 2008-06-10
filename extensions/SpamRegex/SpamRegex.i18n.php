@@ -107,6 +107,13 @@ $messages['bg'] = array(
 	'spamregex-summary-log'          => '(Резюме)',
 );
 
+/** Catalan (Català)
+ * @author SMP
+ */
+$messages['ca'] = array(
+	'spamregex-already-blocked' => '«$1» ja està blocat',
+);
+
 /** Danish (Dansk)
  * @author Jon Harald Søby
  */
@@ -129,6 +136,7 @@ $messages['eo'] = array(
 	'spamregex-log-2'           => 'je $1',
 	'spamregex-unblock-success' => 'Malforbaro sukcesis',
 	'spamregex-block-success'   => 'Forbaro sukcesis',
+	'spamregex-already-blocked' => '"$1" jam estas forbarita.',
 	'spamregex-text'            => '(Teksto)',
 );
 
@@ -545,6 +553,7 @@ $messages['ta'] = array(
  */
 $messages['te'] = array(
 	'spamregex_summary'              => 'పేజీ యొక్క సంగ్రహంలో ఆ పాఠ్యం కనబడింది.',
+	'spamregex-currently-blocked'    => "'''ప్రస్తుతం నిరోధంలో ఉన్న పదబంధాలు:'''",
 	'spamregex-block-success'        => 'నిరోధం విజయవంతమయ్యింది',
 	'spamregex-error-1'              => 'తప్పుడు రెగ్యులర్ ఎక్స్&zwnj;ప్రెషన్.',
 	'spamregex-already-blocked'      => '"$1"ని ఈసరికే నిరోధించాం',

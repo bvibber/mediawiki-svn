@@ -189,6 +189,15 @@ $messages['sv'] = array(
 	'piwik-browsers'   => 'Webbläsare',
 );
 
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'piwik-lastvisits' => 'చివరి సందర్శనలు',
+	'piwik-countries'  => 'దేశాలు',
+	'piwik-browsers'   => 'విహారిణులు',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Vinhtantran
  */

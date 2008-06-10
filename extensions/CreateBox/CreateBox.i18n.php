@@ -35,6 +35,31 @@ $messages['fi'] = array (
 			"<createbox>break=no</createbox>",
 );
 
+/** French (Français)
+ * @author Verdy p
+ */
+$messages['fr'] = array(
+	'createbox-desc'   => 'Boîte de saisie spécialisée pour la création de page',
+	'createbox-create' => 'Créer',
+	'createbox-exists' => "Désolé, \"'''{{FULLPAGENAME}}'''\" existe déjà.
+
+Vous ne pouvez pas créer cette page, mais vous pouvez [{{fullurl:{{FULLPAGENAME}}|action=edit}} la modifier], [{{fullurl:{{FULLPAGENAME}}}} la lire] ou choisir de créer une page différente à l’aide de la boîte ci-dessous.
+
+<createbox>break=no</createbox>",
+);
+
+/** Galician (Galego)
+ * @author Toliño
+ */
+$messages['gl'] = array(
+	'createbox-create' => 'Crear',
+	'createbox-exists' => "Sentímolo, \"'''{{FULLPAGENAME}}'''\" xa existe.
+
+Non pode crear esta páxina, pero pode [{{fullurl:{{FULLPAGENAME}}|action=edit}} editala], [{{fullurl:{{FULLPAGENAME}}}} lela], ou elixir crear unha páxina diferente usando a caixa de embaixo.
+
+<createbox>break=no</createbox>",
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
@@ -53,6 +78,26 @@ $messages['nl'] = array(
 U kunt deze pagina niet aanmaken, maar u kunt deze [{{fullurl:{{FULLPAGENAME}}|action=edit}} bewerken], [{{fullurl:{{FULLPAGENAME}}}} bekijken], of een andere pagina aanmaken via het onderstaande formulier.
 
 <createbox>break=no</createbox>",
+);
+
+/** Slovak (Slovenčina)
+ * @author Helix84
+ */
+$messages['sk'] = array(
+	'createbox-desc'   => 'Špecializované vstupné pole na vytváranie stránok',
+	'createbox-create' => 'Vytvoriť',
+	'createbox-exists' => "Prepáčte, „'''{{FULLPAGENAME}}'''” už existuje.
+
+Túto stránku nemôžete vytvoriť, ale môžete ju [{{fullurl:{{FULLPAGENAME}}|action=edit}} upravovať], [{{fullurl:{{FULLPAGENAME}}}} čítať] alebo vytvoriť inú stránku pomocou tohto vstupného poľa.
+
+<createbox>break=no</createbox>",
+);
+
+/** Sundanese (Basa Sunda)
+ * @author Irwangatot
+ */
+$messages['su'] = array(
+	'createbox-create' => 'Jieun',
 );
 
 /** Swedish (Svenska)

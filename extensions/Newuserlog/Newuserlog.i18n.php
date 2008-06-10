@@ -160,14 +160,16 @@ $messages['br'] = array(
 /** Catalan (Català)
  * @author Toniher
  * @author SMP
+ * @author Jordi Roqué
  */
 $messages['ca'] = array(
-	'newuserlogpage'           => "Registre de creació de l'usuari",
-	'newuserlogpagetext'       => 'Aquest és un registre de creació de nous usuaris',
-	'newuserlog-desc'          => 'Afegeix un [[Special:Log/newusers|registre de creació de comptes]] a [[Special:Log]]',
-	'newuserlog-byemail'       => 'contrasenya enviada per correu electrònic',
-	'newuserlog-create-entry'  => 'Nou usuari',
-	'newuserlog-create2-entry' => "s'ha creat un compte per a $1",
+	'newuserlogpage'              => "Registre de creació de l'usuari",
+	'newuserlogpagetext'          => 'Aquest és un registre de creació de nous usuaris',
+	'newuserlog-desc'             => 'Afegeix un [[Special:Log/newusers|registre de creació de comptes]] a [[Special:Log]]',
+	'newuserlog-byemail'          => 'contrasenya enviada per correu electrònic',
+	'newuserlog-create-entry'     => 'Nou usuari',
+	'newuserlog-create2-entry'    => "s'ha creat un compte per a $1",
+	'newuserlog-autocreate-entry' => 'Compte creat automàticament',
 );
 
 $messages['cdo'] = array(

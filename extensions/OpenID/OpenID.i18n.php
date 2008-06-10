@@ -1224,6 +1224,7 @@ $messages['te'] = array(
 	'openidemail'          => 'ఈ-మెయిల్ చిరునామా',
 	'openidlanguage'       => 'భాష',
 	'openidchoosefull'     => 'మీ పూర్తి పేరు ($1)',
+	'openidchoosemanual'   => 'మీరు ఎన్నుకున్న పేరు:',
 	'openidchoosepassword' => 'సంకేతపదం:',
 );
 
@@ -1258,6 +1259,7 @@ $messages['tg-cyrl'] = array(
 
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
+ * @author Vinhtantran
  */
 $messages['vi'] = array(
 	'openid-desc'                   => 'Đăng nhập vào wiki dùng [http://openid.net/ OpenID] và đăng nhập vào các website nhận OpenID dùng tài khoản wiki',
@@ -1265,6 +1267,7 @@ $messages['vi'] = array(
 	'openidfinish'                  => 'Đăng nhập dùng OpenID xong',
 	'openidserver'                  => 'Dịch vụ OpenID',
 	'openidxrds'                    => 'Tập tin Yadis',
+	'openidconvert'                 => 'Chuyển đổi ID Mở',
 	'openiderror'                   => 'Lỗi thẩm tra',
 	'openiderrortext'               => 'Có lỗi khi thẩm tra địa chỉ OpenID.',
 	'openidconfigerror'             => 'Lỗi thiết lập OpenID',
@@ -1277,6 +1280,7 @@ $messages['vi'] = array(
 	'openidfailuretext'             => 'Không thể thẩm tra địa chỉ OpenID. Lỗi: “$1”',
 	'openidsuccess'                 => 'Đã thẩm tra thành công',
 	'openidsuccesstext'             => 'Đã thẩm tra địa chỉ OpenID thành công.',
+	'openidusernameprefix'          => 'Thành viên ID Mở',
 	'openidserverlogininstructions' => 'Hãy cho vào mật khẩu ở dưới để đăng nhập vào $3 dùng tài khoản $2 (trang thảo luận $1).',
 	'openidtrustinstructions'       => 'Hãy kiểm tra hộp này nếu bạn muốn cho $1 biết thông tin cá nhân của bạn.',
 	'openidallowtrust'              => 'Để $1 tin cậy vào tài khoản này.',
@@ -1295,7 +1299,36 @@ $messages['vi'] = array(
 	'openidchooseurl'               => 'Tên bắt nguồn từ OpenID của bạn ($1)',
 	'openidchooseauto'              => 'Tên tự động ($1)',
 	'openidchoosemanual'            => 'Tên khác:',
+	'openidchooseexisting'          => 'Một tài khoản hiện có trên wiki này:',
+	'openidchoosepassword'          => 'mật khẩu:',
+	'openidconvertinstructions'     => 'Mẫu này cho phép bạn thay đổi tài khoản người dùng của bạn để sử dụng một địa chỉ URL ID Mở.',
+	'openidconvertsuccess'          => 'Đã chuyển đổi sang ID Mở thành công',
+	'openidconvertsuccesstext'      => 'Bạn đã chuyển đổi ID Mở của bạn sang $1 thành công.',
+	'openidconvertyourstext'        => 'Đó đã là ID Mở của bạn.',
+	'openidconvertothertext'        => 'Đó là ID Mở của một người nào khác.',
+	'openidalreadyloggedin'         => "'''Bạn đã đăng nhập rồi, $1!'''
+
+Nếu bạn muốn sử dụng ID Mở để đăng nhập vào lần sau, bạn có thể [[Special:OpenIDConvert|chuyển đổi tài khoản của bạn để dùng ID Mở]].",
+	'tog-hideopenid'                => 'Ẩn <a href="http://openid.net/">ID Mở</a> của bạn khỏi trang thành viên, nếu bạn đăng nhập bằng ID Mở.',
+	'openidnousername'              => 'Chưa chỉ định tên người dùng.',
+	'openidbadusername'             => 'Tên người dùng không hợp lệ.',
+	'openidautosubmit'              => 'Trang này có một mẫu sẽ tự động đăng lên nếu bạn kích hoạt JavaScript.
+Nếu không, hãy thử nút \\"Tiếp tục\\".',
+	'openidclientonlytext'          => 'Bạn không thể sử dụng tài khoản tại wiki này như ID Mở tại trang khác.',
 	'openidloginlabel'              => 'Địa chỉ OpenID',
+	'openidlogininstructions'       => "{{SITENAME}} hỗ trợ chuẩn [http://openid.net/ OpenID] (ID Mở) để đăng nhập một lần giữa các trang web.
+ID Mở cho phép bạn đăng nhập vào nhiều trang web khác nhau mà không phải sử dụng mật khẩu khác nhau tại mỗi trang.
+(Xem [http://en.wikipedia.org/wiki/OpenID bài viết về ID Mở của Wikipedia] để biết thêm chi tiết.)
+
+Nếu bạn đã có một tài khoản tại {{SITENAME}}, bạn có thể [[Special:Userlogin|đăng nhập]] bằng tên người dùng và mật khẩu của bạn như thông thường.
+Để dùng ID Mở vào lần sau, bạn có thể [[Special:OpenIDConvert|chuyển đổi tài khoản của bạn sang ID Mở]] sau khi đã đăng nhập bình thường.
+
+Có nhiều [http://wiki.openid.net/Public_OpenID_providers nhà cung cấp ID Mở Công cộng], và có thể bạn đã có một tài khoản kích hoạt ID Mở tại dịch vụ khác.
+
+; Các wiki khác : Nếu bạn có tài khoản tại một wiki có sử dụng ID Mở, như [http://wikitravel.org/ Wikitravel], [http://www.wikihow.com/ wikiHow], [http://vinismo.com/ Vinismo], [http://aboutus.org/ AboutUs] hay [http://kei.ki/ Keiki], bạn có thể đặp nhập vào {{SITENAME}} bằng cách gõ vào '''URL đầy đủ''' của trang người dùng của bạn tại wiki đó trong hộp ở phía trên. Ví dụ, ''<nowiki>http://kei.ki/en/User:Evan</nowiki>''.
+; [http://openid.yahoo.com/ Yahoo!] : Nếu bạn có tài khoản Yahoo!, bạn có thể đăng nhập vào trang này bằng cách gõ vào ID Mở do Yahoo! cung cấp vào hộp phía trên. Địa chỉ URL của Yahoo! OpenID có dạng ''<nowiki>https://me.yahoo.com/yourusername</nowiki>''.
+; [http://dev.aol.com/aol-and-63-million-openids AOL] : Nếu bạn có tài khoản [http://www.aol.com/ AOL], như một tài khoản [http://www.aim.com/ AIM], bạn có thể đăng nhập vào {{SITENAME}} bằng cách gõ ID Mở do AOL cung cấp cho bạn vào hộp phía trên. Địa chỉ URL của Open ID AOL có dạng ''<nowiki>http://openid.aol.com/yourusername</nowiki>''. Tên người dùng của bạn nên tất cả là chữ thường, không có khoảng cách.
+; [http://bloggerindraft.blogspot.com/2008/01/new-feature-blogger-as-openid-provider.html Blogger], [http://faq.wordpress.com/2007/03/06/what-is-openid/ Wordpress.com], [http://www.livejournal.com/openid/about.bml LiveJournal], [http://bradfitz.vox.com/library/post/openid-for-vox.html Vox] : Nếu bạn có blog tại bất kỳ một dịch nào bên trên, gõ vào địa chỉ URL blog của bạn vào hộp phía trên. Ví dụ, ''<nowiki>http://yourusername.blogspot.com/</nowiki>'', ''<nowiki>http://yourusername.wordpress.com/</nowiki>'', ''<nowiki>http://yourusername.livejournal.com/</nowiki>'', hay ''<nowiki>http://yourusername.vox.com/</nowiki>''.",
 );
 
 /** Volapük (Volapük)

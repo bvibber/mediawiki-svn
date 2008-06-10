@@ -172,12 +172,14 @@ $4",
 
 /** Galician (Galego)
  * @author Alma
+ * @author Toliño
  */
 $messages['gl'] = array(
 	'todo-new-queue'        => 'novo',
 	'todo-invalid-item'     => 'Artigo perdido ou non válido',
 	'todo-unrecognize-type' => 'Tipo non recoñecido',
 	'todo-item-list'        => 'Os seus artigos',
+	'todo-move-queue'       => 'Mover á cola…',
 	'todo-list-change'      => 'Cambiar',
 	'todo-list-cancel'      => 'Cancelar',
 	'todo-new-item'         => 'Novo artigo',

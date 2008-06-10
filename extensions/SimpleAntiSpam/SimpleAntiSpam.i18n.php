@@ -36,6 +36,13 @@ $messages['bg'] = array(
 	'simpleantispam-desc'  => 'Добавя прост формуляр за проерка за спам/роботи',
 );
 
+/** Catalan (Català)
+ * @author Jordi Roqué
+ */
+$messages['ca'] = array(
+	'simpleantispam' => 'La vostra edició ha activat un mecanisme anti-spam',
+);
+
 /** Czech (Česky)
  * @author Danny B.
  */
@@ -87,11 +94,12 @@ $messages['fi'] = array(
 
 /** French (Français)
  * @author Grondin
+ * @author Verdy p
  */
 $messages['fr'] = array(
 	'simpleantispam'       => 'Votre modification a déclenché le mécanisme anti-spam',
 	'simpleantispam-label' => "Vérification anti-spam.
-Ne '''RIEN''' inscrire dedans !",
+Ne '''RIEN''' inscrire ici !",
 	'simpleantispam-desc'  => 'Ajoute au formulaire la vérification d’un bot spammeur',
 );
 

@@ -105,6 +105,14 @@ $messages['oc'] = array(
 	'untidy' => 'Desclassar',
 );
 
+/** Polish (Polski)
+ * @author Wpedzich
+ */
+$messages['pl'] = array(
+	'tidy'   => 'Uporządkuj',
+	'untidy' => 'Anuluj uporządkowanie',
+);
+
 /** Russian (Русский)
  * @author Kaganer
  */

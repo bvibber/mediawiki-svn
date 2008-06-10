@@ -71,12 +71,12 @@ $messages['eo'] = array(
  * @author Grondin
  */
 $messages['fr'] = array(
-	'dplforum-desc'    => 'DPL basée sur l’extension forum',
+	'dplforum-desc'    => 'Extension forum basée sur DPL',
 	'dplforum-by'      => 'par',
 	'dplforum-edited'  => '  - Dernière modification',
 	'dplforum-never'   => 'Jamais',
-	'dplforum-toofew'  => 'DPL Forum : Pas assez de catégories !',
-	'dplforum-toomany' => 'DPL Forum : Trop de catégories !',
+	'dplforum-toofew'  => 'DPL Forum : pas assez de catégories !',
+	'dplforum-toomany' => 'DPL Forum : trop de catégories !',
 );
 
 /** Galician (Galego)

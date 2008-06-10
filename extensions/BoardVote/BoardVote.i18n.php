@@ -264,8 +264,18 @@ Será endrezato enta este serbidor esterno en 20 segundos. [$1 Punche aquí] ta 
 Puestar que s'amuestre una albertenzia de seguranza sobre un zertificato no siñato..",
 );
 
+/** Old English (Anglo-Saxon)
+ * @author JJohnson
+ * @author SPQRobin
+ */
 $messages['ang'] = array(
-	'boardvote_user'          => 'Brūcend',
+	'boardvote_time'       => 'Tīd',
+	'boardvote_user'       => 'Brūcend',
+	'boardvote_edits'      => 'Ādihtunga',
+	'boardvote_days'       => 'Dagas',
+	'boardvote_notstarted' => 'Cēosung næfþ gīet ongunnen',
+	'boardvote_edits_many' => 'manig',
+	'boardvote_welcome'    => "Wilcume '''$1'''!",
 );
 
 /** Arabic (العربية)
@@ -1652,23 +1662,23 @@ $messages['fo'] = array(
  */
 $messages['fr'] = array(
 	'boardvote'                => 'Élection au conseil d’administration de la Wikimedia Foundation',
-	'boardvote-desc'           => "[http://meta.wikimedia.org/wiki/Board_elections/2008/fr Élection au conseil d'administration de la Wikimedia Foundation]",
+	'boardvote-desc'           => '[http://meta.wikimedia.org/wiki/Board_elections/2008/fr Élection au conseil d’administration de la Wikimedia Foundation]',
 	'boardvote_entry'          => '* [[Special:Boardvote/vote|Vote]]
-* [[Special:Boardvote/list|Liste des votes enregistrés]]
-* [[Special:Boardvote/dump|Enregistrements cryptés]]',
-	'boardvote_intro'          => '<p>Bienvenue à l\'élection 2008 du conseil d\'administration de la <i><a href="http://wikimediafoundation.org/wiki/Accueil" class="extiw" title="foundation:Accueil">Wikimedia Foundation</a></i>.
+* [[Special:Boardvote/list|Liste des votes enregistrés jusqu’ici]]
+* [[Special:Boardvote/dump|État des enregistrements de votes cryptés]]',
+	'boardvote_intro'          => '<p>Bienvenue à l’élection 2008 du conseil d’administration de la <em><a href="http://wikimediafoundation.org/wiki/Accueil" class="extiw" title="foundation:Accueil">Wikimedia Foundation</a></em>.
 Nous votons pour une personne qui représentera la communauté des utilisateurs sur les différents projets Wikimedia.
-Cette personne et le conseil d\'administration contribueront à orienter la direction de ces projets et représenteront <i>vos</i> intérêts et <i>vos</i> préoccupations auprès du conseil d\'administration.
-Ils décideront des moyens de financement et de l\'affectation des fonds.</p>
+Cette personne et le conseil d’administration contribueront à orienter la direction de ces projets et représenteront <em>vos</em> intérêts et <em>vos</em> préoccupations auprès du conseil d’administration.
+Ils décideront des moyens de financement et de l’affectation des fonds.</p>
 
 <p>Lisez attentivement les déclarations des candidats et leurs réponses aux questions avant de voter.
-Tous les candidats sont des utilisateurs respectés, qui ont donné beaucoup de temps et d\'effort pour faire de ces projets un endroit accueillant dédié au développement et à la libre diffusion du savoir humain.</p>
+Tous les candidats sont des utilisateurs respectés, qui ont donné beaucoup de temps et d’effort pour faire de ces projets un endroit accueillant dédié au développement et à la libre diffusion du savoir humain.</p>
 
-<p>Veuillez classer les candidats par ordre de préférence en mettant un nombre à côté de la boîte (1 = candidat favori, 2 = deuxième candidat favori…). Vous pouvez donner la même préférence à plusieurs candidats ou bien n’en ranger aucun. Il sera présumé que vous préférerez tous les candidats classés à ceux qui ne le sont pas ainsi que vous êtes indifférent entre tous les candidats non classés.</>
+<p>Veuillez classer les candidats par ordre de préférence en mettant un nombre à côté de la boîte (1 = candidat favori, 2 = deuxième candidat favori, etc.). Vous pouvez donner la même préférence à plusieurs candidats ou bien ne pas en classer certains. Il sera présumé que vous préférez tous les candidats classés à ceux qui ne le sont pas, et que vous êtes indifférent entre tous les candidats non classés.</p>
 
-<p>Le vainqueur de l’élection sera désigné selon le calcul utilisant la méthode Schulze.
+<p>Le vainqueur de l’élection sera désigné selon le calcul utilisant la méthode Schulze.</p>
 
-<p>Pour plus d\'information, veuillez consulter les pages suivantes :</p>
+<p> Pour plus d’informations, veuillez consulter les pages suivantes :</p>
 <ul><li><a href="http://meta.wikimedia.org/wiki/Board_elections/2008/fr" class="external">Élection 2008 au Conseil d’administration</a></li>
 <li><a href="http://meta.wikimedia.org/wiki/Board_elections/2008/Candidates/fr" class="external">Candidats</a></li>
 <li><a href="http://fr.wikipedia.org/wiki/M%C3%A9thode_Schulze" class="external">Méthode Schulze</a></li></ul>',
@@ -1688,12 +1698,13 @@ Suit la version cryptée ci-dessous, qui sera affichée publiquement sur [[Speci
 <pre>$3</pre>
 
 [[Special:Boardvote/entry|Retour]]',
-	'boardvote_invalidentered' => '<p><strong>Erreur</strong> : la préférence pour un candidat doit être exprimée uniquement par des nombres entiers positifs (1, 2, 3…) ou bien être laissée vide.</p>',
+	'boardvote_invalidentered' => '<p><strong>Erreur :</strong> la préférence pour un candidat doit être exprimée uniquement par un nombre entier positif (1, 2, 3, etc.) ou bien être laissée vide.</p>',
 	'boardvote_nosession'      => 'Impossible de déterminer votre identifiant Wikimedia.<br />
-Veuillez vous rendre sur votre wiki d’origine, vous enregistrer, et vous rendre sur la page <nowiki>[[Special:Boardvote]]</nowiki>.<br />
-Vous devez posséder un compte avec au moins $1 contributions effectuées avant le $2, et avoir effectué au moins $3 contributions entre le $4 et le $5.',
-	'boardvote_notloggedin'    => 'Vous n’êtes actuellement pas authentifié. Pour voter, vous devez utiliser un compte comportant au moins $1 contributions avant le $2, et avoir effectuer au moins $3 contributions entre le $4 et le $5.',
-	'boardvote_notqualified'   => "Désolé, mais vous ne répondez pas actuellement aux conditions requises pour voter lors de ce scrutin. Il vous est nécessaire d’avoir au moins $1 contributions avant le $2, et d'avoir au moins $3 contributions entre le $4 et le $5.",
+Veuillez vous rendre sur votre wiki d’origine, vous enregistrer, puis vous rendre sur la page <nowiki>[[Special:Boardvote]]</nowiki>.<br />
+Vous devez posséder un compte avec au moins $1 contributions effectuées avant le $2 et avoir effectué au moins $3 contributions entre le $4 et le $5.',
+	'boardvote_notloggedin'    => 'Vous n’êtes actuellement pas authentifié.
+Pour voter, vous devez utiliser un compte avec au moins $1 contributions effectuées avant le $2 et au moins $3 contributions entre le $4 et le $5.',
+	'boardvote_notqualified'   => 'Désolé, mais vous ne répondez pas actuellement aux conditions requises pour voter lors de ce scrutin. Il vous est nécessaire d’avoir au moins $1 contributions effectuées avant le $2 et au moins $3 contributions entre le $4 et le $5.',
 	'boardvote_novotes'        => 'Personne n’a encore voté.',
 	'boardvote_time'           => 'Heure ',
 	'boardvote_user'           => 'Utilisateur',
@@ -1707,7 +1718,7 @@ $1 pour les données cryptées.</p>',
 	'boardvote_submit'         => 'Valider',
 	'boardvote_strike'         => 'Biffer',
 	'boardvote_unstrike'       => 'Débiffer',
-	'boardvote_needadmin'      => "Seuls les administrateurs de l'élection peuvent effectuer cette opération.",
+	'boardvote_needadmin'      => 'Seuls les administrateurs de l’élection peuvent effectuer cette opération.',
 	'boardvote_sitenotice'     => '<a href="{{localurle:Special:Boardvote/vote}}">Élection au conseil d’administration de la Wikimedia Foundation</a> : le vote est ouvert jusqu’au 22 juin.',
 	'boardvote_notstarted'     => 'Le vote n’est pas encore commencé.',
 	'boardvote_closed'         => 'L’élection est désormais terminée. Le résultat est ou sera proclamé sur [http://meta.wikimedia.org/wiki/Board_elections/2008/Results/fr la page dédiée] (fr).',
@@ -1716,14 +1727,15 @@ $1 pour les données cryptées.</p>',
 	'group-boardvote-member'   => 'Membre votant du conseil d’administration',
 	'grouppage-boardvote'      => '{{ns:project}} : membre votant du conseil d’administration',
 	'boardvote_blocked'        => 'Désolé, mais vous avez été bloqué sur votre wiki d’origine. Les utilisateurs bloqués ne peuvent pas voter.',
-	'boardvote_bot'            => 'Désolé, vous avez le statut de bot sur le wiki où vous êtes enregistré.<br />Les comptes de bot ne sont pas autorisés à voter.',
+	'boardvote_bot'            => "Désolé, vous avez le statut de ''Bot'' sur le wiki où vous êtes enregistré.
+Les comptes de ''Bot'' ne sont pas autorisés à voter.",
 	'boardvote_welcome'        => "Bienvenue '''$1'''!",
 	'go_to_board_vote'         => 'Élection 2008 au conseil d’administration de la Wikimedia Foundation',
-	'boardvote_redirecting'    => "Pour plus de transparence et de sécurité, le vote se déroule sur un serveur externe et indépendant.
+	'boardvote_redirecting'    => 'Pour plus de transparence et de sécurité, le vote se déroule sur un serveur externe et indépendant.
 
 Vous serez redirigé vers ce serveur externe sous 20 secondes. [$1 Cliquez ici] pour un accès immédiat.
 
-Un avertissement de sécurité concernant un certificat non signé peut éventuellement s'afficher au préalable.",
+Un avertissement de sécurité concernant un certificat non signé peut éventuellement s’afficher au préalable.',
 	'right-boardvote'          => 'Administrer les élections',
 );
 
@@ -2629,7 +2641,6 @@ Non è permesso votare alle utenze con lo status di bot.',
  * @author Broad-Sky
  * @author Siebrand
  * @author Iwai.masaharu
- * @author Siebrand
  */
 $messages['ja'] = array(
 	'boardvote'              => 'ウィキメディア財団 理事選挙',
@@ -2637,19 +2648,19 @@ $messages['ja'] = array(
 	'boardvote_entry'        => '* [[Special:Boardvote/vote|投票]]
 * [[Special:Boardvote/list|現在までの投票]]
 * [[Special:Boardvote/dump|暗号化された投票データのダンプ]]',
-	'boardvote_intro'        => '<p>2008年度ウィキメディア財団理事会理事選挙へご参加いただきありがとうございます。このたびの選挙では、さまざまなウィキメディアのプロジェクトのコミュニティのなかから、1名の代表を選出します。これらの立候補者はウィキメディアのプロジェクトが、それぞれ、あるいはまとまりとして、どのような未来へ進んでいくか定めていくことを支援し、また、<em>あなたの</em>関心や懸念を理事会に伝える役割を担おうとする方々です。彼らは収入を得ていく手段を決め、受けとった資金の使途を定めることとなるでしょう。</p>
+	'boardvote_intro'        => '<p>2008年度ウィキメディア財団理事会理事選挙へご参加いただきありがとうございます。このたびの選挙では、さまざまなウィキメディアのプロジェクトのコミュニティのなかから、1名の代表を選出します。これらの候補者はウィキメディアのプロジェクトが、それぞれ、あるいはまとまりとして、どのような未来へ進んでいくか定めていくことを支援し、また、<em>あなたの</em>関心や懸念を理事会に伝える役割を担おうとする方々です。彼らは収入を得ていく手段を決め、受けとった資金の使途を定めることとなるでしょう。</p>
 
-<p>投票のまえに、立候補者の主張や質問への回答をよくお読みになってください。どの立候補者も、ウィキメディアのプロジェクトに長い間、深く関わってきて、そしてウィキメディアのプロジェクトを人間の智の追求および自由な配分に関与し、かつだれもが歓迎される環境にしようとしてきた、尊敬すべきユーザなのです。</p>
+<p>投票のまえに、候補者の主張や質問への回答をよくお読みになってください。どの候補者も、ウィキメディアのプロジェクトに長い間、深く関わってきて、そしてウィキメディアのプロジェクトを人間の智の追求および自由な配分に関与し、かつだれもが歓迎される環境にしようとしてきた、尊敬すべきユーザなのです。</p>
 
-<p>投票にあたっては、立候補者のなかから理事になってほしい立候補者に順位を与え、立候補者の名前の脇にあるテキストボックスにその数字を入れてください（つまり、1をもっとも望ましい立候補者に、2を次点に入れるということです）。複数の立候補者に同じ順位を与えることもできますし、順位を決めないこともできます。この投票方式では、あなたが順位を与えた立候補者は、順位を与えられなかった立候補者よりも、理事に選びたいものであり、また、順位を与えられなかった立候補者については中立を選んだというように解釈されます。</p>
+<p>投票にあたっては、候補者に順位を決め、候補者の名前の脇にあるテキストボックスにその数字を入れてください（つまり、1をもっとも望ましい候補者に、2を次点に入れるということです）。複数の候補者を同順にすることもできますし、順位を決めないこともできます。この投票方式では、投票者が、順位を定めた立候補者は順位を決めなかった候補者よりも、好ましく見ており、また、順位を決めなかった候補者間は一様に好ましくないと見ているものと解釈されます。</p>
 
-<p>投票結果はシュルツェ方式によって算出され、第一位が決定されます。投票結果については公式選挙ページをご参照あわせください。</p>
+<p>投票結果はシュルツェ方式によって、第一位を決定します。投票結果については公式選挙ページもご参照ください。</p>
 
 <p>選挙についての詳細は、</p>
 <ul><li><a href="http://meta.wikimedia.org/wiki/Board_elections/2008/ja" class="external">2008年度理事選挙</a></li>
-<li><a href="http://meta.wikimedia.org/wiki/Board_elections/2008/Candidates/ja" class="external">立候補者</a></li>
+<li><a href="http://meta.wikimedia.org/wiki/Board_elections/2008/Candidates/ja" class="external">候補者</a></li>
 <li><a href="http://en.wikipedia.org/wiki/Schulze_method" class="external">Schulze method (英文)</a></li></ul>',
-	'boardvote_intro_change' => '<p>あなたは既に投票済みです。投票内容を変更する場合は、以下のフォームをお書きかえください。立候補者を、適格であると考える順番に順位付けをしてください（もっとも好ましい立候補者により小さい数を付けてください）。同じ数を複数の立候補者に与えることもできますし、順位を付けないままにすることもできます。</p>',
+	'boardvote_intro_change' => '<p>あなたは既に投票済みです。投票内容を変更する場合は、以下のフォームをお書きかえください。候補者を、適格であると考える順番に順位付けをしてください（もっとも好ましい候補者により小さい数を付けてください）。同じ数を複数の候補者に与えることもできますし、順位を付けないままにすることもできます。</p>',
 	'boardvote_entered'      => 'ありがとうございます、あなたの投票は正常に記録されました。
 
 あなたが望むなら、以下の詳細を記録しておくとよいでしょう。あなたの投票記録は:
@@ -2682,7 +2693,7 @@ $messages['ja'] = array(
 	'boardvote_strike'       => '抹消',
 	'boardvote_unstrike'     => '抹消取り消し',
 	'boardvote_needadmin'    => 'この処理は選挙管理委員のみ行うことができます。',
-	'boardvote_sitenotice'   => '<a href="{{localurle:Special:Boardvote/vote}}">ウィキメディア財団総選挙</a>:  22 June日まで投票実施中',
+	'boardvote_sitenotice'   => '<a href="{{localurle:Special:Boardvote/vote}}">ウィキメディア財団総選挙</a>:  6月22日まで投票実施中',
 	'boardvote_notstarted'   => 'まだ投票は始まっていません',
 	'boardvote_closed'       => '投票は終了しました。後日[http://meta.wikimedia.org/wiki/Board_elections/2008/Results/ja 選挙結果のページ]をご覧ください。',
 	'boardvote_edits_many'   => '多数',

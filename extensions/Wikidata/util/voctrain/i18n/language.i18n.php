@@ -135,6 +135,25 @@ $messages['qqq'] = array(
 	"voctrain_Omegawiki_vocabulary_trainer"=>"login: header"
 );
 
+/** Bulgarian (Български)
+ * @author DCLXVI
+ */
+$messages['bg'] = array(
+	'voctrain_Number_of_questions' => 'Брой въпроси',
+	'voctrain_Questions'           => 'Въпроси',
+	'voctrain_Answers'             => 'Отговори',
+	'voctrain_Question'            => 'Въпрос',
+	'voctrain_Answer'              => 'Отговор',
+	'voctrain_Answer_s_'           => 'Отговор(и)',
+	'voctrain_logout'              => 'излизане',
+	'voctrain_User_name'           => 'Потребителско име',
+	'voctrain_Password'            => 'Парола',
+	'voctrain_Login'               => 'Влизане',
+	'voctrain_Create_new_user'     => 'Създаване на нов потребител',
+	'voctrain_Language'            => 'Език',
+	'voctrain_Log_in'              => 'Влизане',
+);
+
 /** Finnish (Suomi) */
 $messages['fi'] = array(
 	'voctrain_Languages' => 'Kielet',
@@ -199,7 +218,10 @@ $messages['nap'] = array(
 	'voctrain_Type_a_username_and_optional_password_or_try_a_different_username_'                   => "Nzerisci nu nomme pe utente e na pparola cchiave (o ppruva 'e trasere cu nu nomme utente deverzo)",
 );
 
-/** Dutch (Nederlands) */
+/** Dutch (Nederlands)
+ * @author Siebrand
+ * @author GerardM
+ */
 $messages['nl'] = array(
 	'voctrain_Hello_World'                                                                          => 'HALLO WIKI!',
 	'voctrain_Permission_Denied'                                                                    => 'Toestemming geweigerd',
@@ -230,7 +252,7 @@ $messages['nl'] = array(
 	'voctrain_submit_answer'                                                                        => 'antwoord controleren',
 	'voctrain_peek'                                                                                 => 'spieken',
 	'voctrain_skip'                                                                                 => 'overslaan',
-	'voctrain_I_know_it_do_not_ask_again'                                                           => 'Ik weet dit antwoord/vraag niet nogmaals',
+	'voctrain_I_know_it_do_not_ask_again'                                                           => 'Ik weet dit antwoord/niet nogmaals vragen',
 	'voctrain_abort_exercise'                                                                       => 'Oefening afbreken',
 	'voctrain_list_answers'                                                                         => 'antwoordlijst',
 	'voctrain_Question'                                                                             => 'Vraag',
@@ -239,8 +261,9 @@ $messages['nl'] = array(
 	'voctrain_one_of'                                                                               => 'een van',
 	'voctrain_list_of_questions_and_answers'                                                        => 'lijst van vragen en antwoorden',
 	'voctrain_Answer_s_'                                                                            => 'Antwoord(en)',
-	'voctrain_logout'                                                                               => 'uitloggen',
+	'voctrain_logout'                                                                               => 'afmelden',
 	'voctrain_Powered_by'                                                                           => 'Aangedreven door',
+	'voctrain_Omegawiki'                                                                            => 'OmegaWiki',
 	'voctrain_Exercise_complete'                                                                    => 'Oefening voltooid',
 	'voctrain_Exercise_terminated'                                                                  => 'Oefening afgebroken',
 	'voctrain_Start_a_new_exercise'                                                                 => 'Nieuwe oefening starten',
@@ -251,9 +274,27 @@ $messages['nl'] = array(
 	'voctrain_Switch_language'                                                                      => 'Taal wijzigen',
 	'voctrain_Language'                                                                             => 'Taal',
 	'voctrain_Log_in'                                                                               => 'Aanmelden',
-	'voctrain_Omegawiki_vocabulary_trainer'                                                         => 'OmegaWiki woordenschat trainer',
+	'voctrain_Omegawiki_vocabulary_trainer'                                                         => 'OmegaWiki woordenschattrainer',
 	'voctrain_Definitions'                                                                          => 'Definities',
-	'voctrain_Could_not_create_new_user'                                                            => 'Kon geen nieuwe gebruiker aanmaken',
-	'voctrain_Type_a_username_and_optional_password_or_try_a_different_username_'                   => 'Typ een gebruikersnaam en (facultatief) paswoord, (of probeer een andere gebruikersnaam)',
+	'voctrain_Could_not_create_new_user'                                                            => 'Het was niet mogelijk een nieuwe gebruiker aan te maken',
+	'voctrain_Type_a_username_and_optional_password_or_try_a_different_username_'                   => 'Geef een gebruikersnaam en wachtwoord in (optineel), of probeer een andere gebruikersnaam',
+);
+
+/** Swedish (Svenska)
+ * @author M.M.S.
+ */
+$messages['sv'] = array(
+	'voctrain_Hello_World'       => 'HEJ WIKI!',
+	'voctrain_Permission_Denied' => 'Åtkomst nekas',
+	'voctrain_try_again_'        => 'pröva igen?',
+	'voctrain_User_added'        => 'Användare tillagd',
+	'voctrain_continue'          => 'fortsätt',
+	'voctrain_bye'               => 'hej då',
+	'voctrain_Languages'         => 'Språk',
+	'voctrain_Word'              => 'Ord',
+	'voctrain_one_of'            => 'en av',
+	'voctrain_Password'          => 'Lösenord',
+	'voctrain_Language'          => 'Språk',
+	'voctrain_Log_in'            => 'Logga in',
 );
 

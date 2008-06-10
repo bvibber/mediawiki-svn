@@ -504,6 +504,13 @@ $wgGoogleMapsMessages['de-formal'] = array(
 	'gm-editing-path'         => 'Klicken Sie auf die Karte, um diesen Pfad zu verlängern.',
 );
 
+/** Zazaki (Zazaki)
+ * @author Belekvor
+ */
+$wgGoogleMapsMessages['diq'] = array(
+	'gm-no-zoom-control' => 'çino',
+);
+
 /** Greek (Ελληνικά)
  * @author Consta
  */
@@ -939,6 +946,8 @@ Probe coa última versión do <a href="http://www.microsoft.com/ie">Internet Exp
 	'gm-balloon-link-article'      => 'Ligazón a este artigo (opcional):',
 	'gm-remove'                    => 'borrar',
 	'gm-caption'                   => 'Pé de foto',
+	'gm-tab-title'                 => 'Título da lapela',
+	'gm-tab'                       => 'Lapela',
 	'gm-start-path'                => 'comezar un camiño',
 	'gm-trace-area'                => 'trazar unha área',
 	'gm-save-point'                => 'gardar e fechar',

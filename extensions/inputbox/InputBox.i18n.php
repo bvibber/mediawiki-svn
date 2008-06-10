@@ -676,6 +676,13 @@ $messages['mr'] = array(
 	'createarticle'           => 'लेख बनवा',
 );
 
+/** Maltese (Malti)
+ * @author Giangian15
+ */
+$messages['mt'] = array(
+	'inputbox-desc' => "Tħalli formuli ta' HTML predefiniti",
+);
+
 $messages['nan'] = array(
 	'searchfulltext'          => 'Chhiau choan-bûn',
 );

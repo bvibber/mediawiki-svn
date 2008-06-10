@@ -3222,6 +3222,7 @@ $wdMessages['te'] = array(
 	'ow_OtherDefinedMeaning'                => 'ఇతర నిర్వచిత అర్థం',
 	'ow_Relations'                          => 'సంబంధాలు',
 	'ow_RelationType'                       => 'సంబంధ రకం',
+	'ow_Spelling'                           => 'వర్ణక్రమం',
 	'ow_Synonyms'                           => 'సమానార్థాలు',
 	'ow_SynonymsAndTranslations'            => 'సమానార్థాలు మరియు అనువాదాలు',
 	'ow_Source'                             => 'మూలం',

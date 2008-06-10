@@ -161,6 +161,13 @@ $messages['bg'] = array(
 	'crosswikiunblock-local'        => 'Локалните отблокирания не се поддържат от този интерфейс. Използва се [[Special:Ipblocklist]]',
 );
 
+/** Catalan (Català)
+ * @author SMP
+ */
+$messages['ca'] = array(
+	'crosswikiblock-alreadyblocked' => "L'usuari $3 ja està blocat.",
+);
+
 /** Czech (Česky)
  * @author Matěj Grabovský
  */
@@ -1334,7 +1341,7 @@ Quay trở lại:
 	'crosswikiblock-noexpiry'       => 'Thời hạn cấm không hợp lệ: $1.',
 	'crosswikiblock-noreason'       => 'Chưa đưa ra lý do.',
 	'crosswikiblock-notoken'        => 'Bằng chứng sửa đổi không hợp lệ.',
-	'crosswikiblock-alreadyblocked' => '“$3” đã bị cấm rồi.',
+	'crosswikiblock-alreadyblocked' => 'Thành viên “$3” đã bị cấm rồi.',
 	'crosswikiblock-noblock'        => 'Thành viên này không bị cấm.',
 	'crosswikiblock-success'        => "Thành viên '''$3''' đã bị cấm.
 

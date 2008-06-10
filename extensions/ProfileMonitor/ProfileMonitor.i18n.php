@@ -428,6 +428,22 @@ $messages['uk'] = array(
 	'profiling-ok' => 'Гаразд',
 );
 
+/** Vietnamese (Tiếng Việt)
+ * @author Vinhtantran
+ */
+$messages['vi'] = array(
+	'profiling'              => 'Dữ liệu hồ sơ',
+	'profiling-process'      => 'Chuỗi xử lý:',
+	'profiling-wildcard'     => 'Dùng ký tự đại diện',
+	'profiling-ok'           => 'OK',
+	'profiling-data'         => 'Dữ liệu hồ sơ cho `$1`',
+	'profiling-data-process' => 'Xử lý',
+	'profiling-data-count'   => 'Đếm',
+	'profiling-data-time'    => 'Thời gian (tất cả)',
+	'profiling-data-average' => 'Thời gian (trung bình)',
+	'profiling-no-data'      => 'Không có dữ liệu trùng khớp.',
+);
+
 /* Cantonese (Shinjiman) */
 $messages['yue'] = array(
 	'profiling' => '檢核資料',

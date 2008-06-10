@@ -250,3 +250,12 @@ $messages['vec'] = array(
 	'protectsection_forbidden'  => 'Proibìo',
 );
 
+/** Vietnamese (Tiếng Việt)
+ * @author Vinhtantran
+ */
+$messages['vi'] = array(
+	'protectsection_add_remove' => 'Bạn đng cố thêm hoặc xóa một đề mục bị khóa',
+	'protectsection_modify'     => 'Bạn đang cố sửa đổi đoạn văn bản bị khóa',
+	'protectsection_forbidden'  => 'Bị cấm',
+);
+

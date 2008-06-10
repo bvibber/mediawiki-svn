@@ -513,6 +513,13 @@ $messages['sr-ec'] = array(
 	'editmsg-search' => 'Претрага',
 );
 
+/** Sundanese (Basa Sunda)
+ * @author Irwangatot
+ */
+$messages['su'] = array(
+	'editmsg-search' => 'Sungsi',
+);
+
 /** Swedish (Svenska)
  * @author M.M.S.
  * @author Micke

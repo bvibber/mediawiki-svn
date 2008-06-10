@@ -348,9 +348,11 @@ $messages['sv'] = array(
 
 /** Telugu (తెలుగు)
  * @author వైజాసత్య
+ * @author Veeven
  */
 $messages['te'] = array(
-	'ea-send' => 'పంపించు!',
+	'ea-denied' => 'అనుమతిని నిరాకరించాం',
+	'ea-send'   => 'పంపించు!',
 );
 
 /** Vietnamese (Tiếng Việt)

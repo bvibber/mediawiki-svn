@@ -849,6 +849,7 @@ $messages['lb'] = array(
 	'sign-viewfield-realname'       => 'Numm',
 	'sign-viewfield-address'        => 'Adress',
 	'sign-viewfield-city'           => 'Stad/Gemeng',
+	'sign-viewfield-state'          => 'Staat (Departement oder Provënz)',
 	'sign-viewfield-country'        => 'Land',
 	'sign-viewfield-zip'            => 'Postcode',
 	'sign-viewfield-ip'             => 'IP-Adress',

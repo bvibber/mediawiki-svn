@@ -47,6 +47,13 @@ $messages['fr'] = array(
 	'randomrootpage-desc' => '[[Special:Randomrootpage|Page spéciale]] qui va chercher une page racine au hasard',
 );
 
+/** Galician (Galego)
+ * @author Toliño
+ */
+$messages['gl'] = array(
+	'randomrootpage' => 'Páxina raíz ao chou',
+);
+
 /** Hindi (हिन्दी)
  * @author Kaustubh
  */

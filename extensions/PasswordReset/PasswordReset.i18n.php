@@ -667,7 +667,23 @@ $messages['tg-cyrl'] = array(
  * @author Vinhtantran
  */
 $messages['vi'] = array(
-	'passwordreset-username' => 'Tên người dùng',
+	'passwordreset'                    => 'Tái tạo mật khẩu',
+	'passwordreset-desc'               => "Tái tạo mật khẩu của người dùng wiki - cần quyền 'passwordreset'",
+	'passwordreset-invalidusername'    => 'Tên người dùng không hợp lệ',
+	'passwordreset-emptyusername'      => 'Tên thành viên trống',
+	'passwordreset-nopassmatch'        => 'Mật khẩu không khớp',
+	'passwordreset-badtoken'           => 'Khóa sửa đổi không hợp lệ',
+	'passwordreset-username'           => 'Tên người dùng',
+	'passwordreset-newpass'            => 'Mật khẩu mới',
+	'passwordreset-confirmpass'        => 'Xác nhận mật khẩu',
+	'passwordreset-submit'             => 'Tái tạo mật khẩu',
+	'passwordreset-success'            => 'Mật khẩu đã được tái tạo cho thành viên có id: $1',
+	'passwordreset-disableuser'        => 'Tắt tài khoản thành viên?',
+	'passwordreset-disableuserexplain' => '(thiết lập một bảng băm mật khẩu sai - thành viên sẽ không thể đăng nhập)',
+	'passwordreset-disablesuccess'     => 'Tài khoản thành viên đã được tắt (mã số thành viên: $1)',
+	'passwordreset-accountdisabled'    => 'Tài khoản đã bị tắt',
+	'disabledusers'                    => 'Thành viên bị tắt',
+	'disabledusers-summary'            => 'Đây là danh sách các thành viên đã bị tắt sử dụng bằng PasswordReset.',
 );
 
 /** Volapük (Volapük)

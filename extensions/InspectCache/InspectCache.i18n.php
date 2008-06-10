@@ -461,6 +461,14 @@ $messages['stq'] = array(
 	'inspectcache-list'    => 'Lieste',
 );
 
+/** Sundanese (Basa Sunda)
+ * @author Irwangatot
+ */
+$messages['su'] = array(
+	'inspectcache-delete'  => 'Hapus',
+	'inspectcache-deleted' => 'Hapus Sindangan',
+);
+
 /** Swedish (Svenska)
  * @author M.M.S.
  * @author Jon Harald Søby
@@ -492,6 +500,7 @@ $messages['te'] = array(
 	'inspectcache-ok'      => 'సరే',
 	'inspectcache-general' => 'సాధారణ కోశం',
 	'inspectcache-message' => 'సందేశపు కోశం',
+	'inspectcache-get'     => 'పొందండి',
 	'inspectcache-delete'  => 'తొలగించు',
 	'inspectcache-deleted' => 'తొలగింపు కోశం',
 	'inspectcache-list'    => 'జాబితా',

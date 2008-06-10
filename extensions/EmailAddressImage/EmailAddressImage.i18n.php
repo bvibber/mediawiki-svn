@@ -35,6 +35,13 @@ $messages['fr'] = array(
 	'emailaddressimage-desc' => 'Ajoute <tt>&lt;email&gt;</tt> pour afficher une adresse courriel comme image',
 );
 
+/** Galician (Galego)
+ * @author Toliño
+ */
+$messages['gl'] = array(
+	'emailaddressimage-desc' => 'Engade <tt>&lt;email&gt;</tt> para amosar un enderezo de correo electrónico como unha imaxe',
+);
+
 /** Hindi (हिन्दी)
  * @author Kaustubh
  */

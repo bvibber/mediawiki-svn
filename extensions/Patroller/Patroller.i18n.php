@@ -906,7 +906,28 @@ $messages['uk'] = array(
  * @author Vinhtantran
  */
 $messages['vi'] = array(
-	'patrol-revert-reason' => 'Lý do:',
+	'patrol'                 => 'Tuần tra sửa đổi',
+	'patrol-desc'            => 'Giao diện tuần tra cải tiến với chia sẻ khối lượng công việc',
+	'patrol-endorse'         => 'Chứng nhận',
+	'patrol-revert'          => 'Lùi sửa',
+	'patrol-revert-reason'   => 'Lý do:',
+	'patrol-skip'            => 'Bỏ qua',
+	'patrol-reverting'       => 'Đang lùi: $1',
+	'patrol-nonefound'       => 'Không có sửa đổi thích hợp nào tìm thấy để tuần tra.',
+	'patrol-endorsed-ok'     => 'Sửa đổi đã được đánh dấu đã tuần tra.',
+	'patrol-endorsed-failed' => 'Sửa đổi không thể đánh dấu đã tuần tra.',
+	'patrol-reverted-ok'     => 'Sửa đổi đã được lùi lại.',
+	'patrol-reverted-failed' => 'Không thể lùi sửa đổi.',
+	'patrol-skipped-ok'      => 'Bỏ qua sửa đổi.',
+	'patrol-reasons'         => '* Phá hoại đơn giản
+* Thử nghiệm của người mới
+* Xem trang thảo luận',
+	'patrol-another'         => 'Hiển thị sửa đổi khác, nếu có.',
+	'patrol-stopped'         => 'Bạn đã chọn không tuần tra sửa đổi khác. $1',
+	'patrol-resume'          => 'Nhấn vào đây để tiếp tục.',
+	'group-patroller'        => 'Tuần tra viên',
+	'group-patroller-member' => 'Tuần tra viên',
+	'grouppage-patroller'    => '{{ns:project}}:Tuần tra viên',
 );
 
 /** Volapük (Volapük)

@@ -226,6 +226,7 @@ $messages['gl'] = array(
 	'povwatch_already_subscribed'      => 'Vostede está aínda subscrito a PovWatch',
 	'povwatch_subscribed'              => 'Vostede está agora subscrito a PovWatch',
 	'povwatch_invalid_title'           => 'O título especificado foi non válido',
+	'povwatch_pushed'                  => '"[[$1]]" foi engadida con éxito á(s) páxinas(s) de vixilancia de $2',
 	'povwatch_subscriber_list'         => 'Unha [[Special:PovWatch/subscribers|listaxe de subscritores]] está dispoñíbel.',
 	'povwatch_subscriber_list_intro'   => '<strong>Listaxe dos subscritores</strong>',
 	'povwatch_not_allowed_subscribers' => 'Non ten permiso para ver a listaxe de subscrición de PovWatch.',
@@ -771,10 +772,39 @@ $messages['tg-cyrl'] = array(
  * @author Minh Nguyen
  */
 $messages['vi'] = array(
-	'povwatch_title'       => 'Tên trang:',
-	'povwatch_unsubscribe' => 'Ngừng theo dõi',
-	'povwatch_subscribe'   => 'Theo dõi',
-	'povwatch_added'       => 'được thêm vào',
+	'povwatch'                         => 'Theo dõi trung lập',
+	'povwatch_desc'                    => 'Gói mở rộng để [[Special:PovWatch|đẩy trang vào danh sách theo dõi]] của thành viên khác',
+	'povwatch_no_session'              => 'Lỗi: Không thể đăng mẫu do mất dữ liệu phiên làm việc.',
+	'povwatch_not_allowed_push'        => 'Bạn không phải là một quản lý PovWatch, bạn không thể đẩy trang vào danh sách theo dõi.',
+	'povwatch_already_subscribed'      => 'Bạn đã đăng ký vào PovWatch',
+	'povwatch_subscribed'              => 'Hiện bạn đã đăng ký vào PovWatch',
+	'povwatch_not_subscribed'          => 'Bạn chưa đăng ký vào PovWatch, do đó bạn không thể bỏ đăng ký.',
+	'povwatch_unsubscribed'            => 'Hiện bạn đã bỏ đăng ký khỏi PovWatch',
+	'povwatch_invalid_title'           => 'Tựa đề chỉ định không hợp lệ',
+	'povwatch_pushed'                  => '[[$1]] đã được đẩy thành công vào $2 danh sách theo dõi thành viên',
+	'povwatch_intro'                   => 'PovWatch là dịch vụ cho phép các trang có tranh cãi được đẩy vào danh sách theo dõi của những bảo quản viên đã đăng ký.
+
+Một nhật trình các lần đẩy vào danh sách theo dõi gần đây có tại [[Special:PovWatch/log]].',
+	'povwatch_subscriber_list'         => 'Cũng có một [[Special:PovWatch/subscribers|danh sách các người đã đăng ký]].',
+	'povwatch_subscriber_list_intro'   => '<strong>Danh sách người đăng ký</strong>',
+	'povwatch_not_allowed_subscribers' => 'Bạn không được phép xem danh sách người đăng ký PovWatch.',
+	'povwatch_unknown_subpage'         => 'Không rõ trang con.',
+	'povwatch_push'                    => 'Đẩy',
+	'povwatch_push_intro'              => 'Dùng mẫu ở dưới để đẩy trang vào danh sách theo dõi của thành viên đã đăng ký.
+Xin hãy gõ cẩn thận tựa đề: thậm chí những tựa đề không tồn tại cũng có thể được thêm vào, và không có cách nào bỏ một tựa đề khi nó đã được đẩy đi.',
+	'povwatch_title'                   => 'Tên trang:',
+	'povwatch_comment'                 => 'Ghi chú nhật trình:',
+	'povwatch_no_log'                  => 'Không có mục nhật trình nào.',
+	'povwatch_no_subscribers'          => 'Không có thành viên nào đăng ký.',
+	'povwatch_unsubscribe_intro'       => 'Bạn đã đăng ký vào PovWatch.
+Nhấn vào nút phía dưới để bỏ đăng ký.',
+	'povwatch_unsubscribe'             => 'Ngừng theo dõi',
+	'povwatch_subscribe_intro'         => 'Bạn không đăng ký vào PovWatch.
+Nhấn vào nút phía dưới để đăng ký.',
+	'povwatch_subscribe'               => 'Theo dõi',
+	'povwatch_added'                   => 'được thêm vào',
+	'right-povwatch_admin'             => 'Quản lý quyền thành viên để đưa trang vào danh sách thành viên của người khác',
+	'right-povwatch_user'              => 'Thêm trang vào danh sách theo dõi của thành viên khác',
 );
 
 /** Volapük (Volapük)

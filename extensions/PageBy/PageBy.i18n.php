@@ -372,8 +372,10 @@ $messages['vec'] = array(
 
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
+ * @author Vinhtantran
  */
 $messages['vi'] = array(
+	'pageby-desc'         => 'Hiển thị những người đóng góp vào một trang wiki bằng cách sử dụng thẻ <code><nowiki><pageby></nowiki></code>',
 	'pageby-first'        => 'Trang được tạo ra bởi $1, $2',
 	'pageby-last'         => '<a href="$3">Sửa đổi</a> lần cuối bởi $1, $2',
 	'pageby-contributors' => 'Những người đóng góp:',

@@ -428,6 +428,7 @@ $messages['oc'] = array(
 /** Polish (Polski)
  * @author Derbeth
  * @author Sp5uhe
+ * @author Wpedzich
  */
 $messages['pl'] = array(
 	'form'                         => 'Formularz',
@@ -435,8 +436,10 @@ $messages['pl'] = array(
 	'formnonametext'               => 'Musisz podać nazwę formularza, np. „{{ns:special}}:Formularz/Nazwaformularza”.',
 	'formbadname'                  => 'Zła nazwa formularza',
 	'formbadnametext'              => 'Brak formularza o takiej nazwie.',
+	'formpattern'                  => 'formularz $1',
 	'formtitlepattern'             => 'Dodaj nowy $1',
 	'formsave'                     => 'Zapisz',
+	'formindexmismatch'            => 'W tym formularzu znajdują się niepasujące wzorce nazw i szablony, rozpoczynając od indeksu $1.',
 	'formarticleexists'            => 'Strona istnieje',
 	'formarticleexiststext'        => 'Strona [[$1]] już istnieje.',
 	'formbadpagename'              => 'Zła nazwa strony',

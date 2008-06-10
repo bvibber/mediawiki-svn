@@ -30,7 +30,7 @@ $messages['cs'] = array(
  * @author Grondin
  */
 $messages['fr'] = array(
-	'tab0-desc' => 'Ajoute la tabulation « 0 », liaison vers la page d’édition de la première section.',
+	'tab0-desc' => 'Ajoute l’onglet « 0 » qui donne accès à la page de modification de la première section de la page',
 );
 
 $messages['he'] = array(

@@ -41,7 +41,7 @@ $messages['de'] = array(
  * @author Urhixidur
  */
 $messages['fr'] = array(
-	'crowdauthentication-desc' => 'Module d’authentication pour l’affluence de Atlassian Crowd',
+	'crowdauthentication-desc' => 'Module d’authentication de l’outil de mesure d’affluence Atlassian Crowd',
 );
 
 /** Hindi (हिन्दी)

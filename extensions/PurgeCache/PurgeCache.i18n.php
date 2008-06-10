@@ -306,10 +306,13 @@ $messages['uk'] = array(
 
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
+ * @author Vinhtantran
  */
 $messages['vi'] = array(
-	'purgecache'        => 'Tẩy sạch vùng nhớ đệm',
-	'purgecache-purged' => 'Đã tẩy sạch vùng nhớ đệm.',
-	'purgecache-button' => 'Làm tươi',
+	'purgecache'         => 'Tẩy sạch vùng nhớ đệm',
+	'purgecache-desc'    => '[[Special:PurgeCache|Trang đăc biệt]] được dùng để quét bảng OBJECTCACHE',
+	'purgecache-warning' => 'Cái này sẽ tẩy các bảng bộ đệm.',
+	'purgecache-purged'  => 'Đã tẩy sạch vùng nhớ đệm.',
+	'purgecache-button'  => 'Làm tươi',
 );
 
