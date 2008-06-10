@@ -529,7 +529,6 @@ function rewrite_by_id(vid_id){
 		}
 	}
 }
-
 //SET DOM Ready state:
 // for Mozilla browsers
 if (document.addEventListener) {
