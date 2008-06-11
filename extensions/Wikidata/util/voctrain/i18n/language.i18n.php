@@ -3,19 +3,23 @@
 # messages for voctrain
 # now mediawiki style -ish
 
-# Words starting with '%' (ie %action, or %questions_total) are
-# "variable names", for use by the program. Don't translate those!
 
+# fallback array. English is default!
+# (although it's always nice to specify)
+# if set to false, there is no fallback
 $fallback=array(
 	"en"=>false,
 	"ar"=>"en",
 	"bg"=>"en",
 	"eo"=>"en",
 	"fi"=>"en",
-	"nap"=>"en"
+	"nap"=>"en",
 	"nl"=>"en",
-	"ru"=>"en",
+	"ru"=>"en"
 );
+
+# Words starting with '%' (ie %action, or %questions_total) are
+# "variable names", for use by the program. Don't translate those!
 
 $messages=array();
 
