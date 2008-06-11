@@ -10,10 +10,11 @@ if(!defined('MEDIAWIKI')) {
 
 $wgAbsenteeLandlordMaxDays = 90; //how many days do the sysops have to be inactive for?
 
+
 $wgExtensionCredits['other'][] = array(
 	'name' => 'Absentee Landlord',
 	'author' => array( 'Ryan Schmidt', 'Tim Laqua' ),
-	'version' => '1.0',
+	'version' => '1.1',
 	'description' => 'Auto-locks the wiki database if the sysops are all inactive for some time',
 	'descriptionmsg' => 'absenteelandlord-desc',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:AbsenteeLandlord',
@@ -22,11 +23,16 @@ $wgExtensionCredits['other'][] = array(
 $wgExtensionFunctions[] = 'efAbsenteeLandlord_Setup';
 $wgHooks['BeforePageDisplay'][] = 'efAbsenteeLandlord_MaybeDoTouch';
 
+$dir = dirname(__FILE__) . '/';
+$wgExtensionMessagesFiles['AbsenteeLandlord'] = $dir . 'AbsenteeLandlord.i18n.php';
+
+$wgAbsenteeLandlordTouchFile = $dir . 'lasttouched.txt';
+
 function efAbsenteeLandlord_Setup() {
-	global $wgAbsenteeLandlordMaxDays;
+	global $wgAbsenteeLandlordMaxDays, $wgAbsenteeLandlordTouchFile;
 
 	$timeout = $wgAbsenteeLandlordMaxDays * 24 * 60 * 60; // # days * 24 hours * 60 minutes * 60 seconds
-	$lasttouched = filemtime( dirname(__FILE__) . '/lasttouched.txt' );
+	$lasttouched = filemtime($wgAbsenteeLandlordTouchFile);
 	$check = time() - $lasttouched;
 
 	if( $check >= $timeout ) {
@@ -37,12 +43,8 @@ function efAbsenteeLandlord_Setup() {
 			global $wgReadOnly, $wgMessageCache;
 
 			#Add Messages (don't need them unless we get here)
-			require( dirname( __FILE__ ) . '/AbsenteeLandlord.i18n.php' );
-			foreach( $messages as $key => $value ) {
-				  $wgMessageCache->addMessages( $messages[$key], $key );
-			}
-
-			$wgReadOnly = ( wfMsg( 'absenteelandlord-reason' ) );
+			wfLoadExtensionMessages( 'AbsenteeLandlord' );
+			$wgReadOnly = wfMsg( 'absenteelandlord-reason' );
 		}
 	}
 
@@ -50,10 +52,10 @@ function efAbsenteeLandlord_Setup() {
 }
 
 function efAbsenteeLandlord_MaybeDoTouch(&$out, &$sk = null) {
-	global $wgUser;
+	global $wgUser, $wgAbsenteeLandlordTouchFile;
 	$groups = $wgUser->getGroups();
 	if( in_array( 'sysop', $groups ) ) {
-		touch( dirname(__FILE__) . '/lasttouched.txt' );
+		touch($wgAbsenteeLandlordTouchFile);
 	}
 	return true;
 }
