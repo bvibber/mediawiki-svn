@@ -238,7 +238,7 @@ $messages['hak'] = array(
 $messages['he'] = array(
 	'crossnamespacelinks'         => 'קישורים מדפי תוכן למרחבי שם אחרים',
 	'crossnamespacelinks-summary' => 'דף זה מספק רשימה של קישורים מדפים במרחב השם הראשי לדפים במרחבי שם אחרים (למעט מרחבי השם {{ns:special}}, {{ns:talk}}, {{ns:project}} ו{{ns:template}}), שאינם רצויים לשימוש.',
-	'crossnamespacelinkstext'     => '$1: {{plural:$2|קישור אחד|$2 קישורים}} למרחב $3'
+	'crossnamespacelinkstext'     => '$1: {{PLURAL:$2|קישור אחד|$2 קישורים}} למרחב $3'
 );
 
 /** Hindi (हिन्दी)

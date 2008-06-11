@@ -269,7 +269,7 @@ $wgDPL2Messages['he'] = array(
 	/**
 	 * $1: number of articles
 	*/
-	'dpl2_articlecount' => '{{plural:$1|ישנם $1 דפים|ישנו דף אחד}} תחת כותרת זו.'
+	'dpl2_articlecount' => '{{PLURAL:$1|ישנם $1 דפים|ישנו דף אחד}} תחת כותרת זו.'
 );
 $wgDPL2Messages['id'] = array(
 	'dpl2_debug_' . DPL2_ERR_WRONGNS => "KESALAHAN: Parameter '$0' salah: '$1'! Bantuan: <code>$0= <i>string kosong</i> (Utama)$3</code>. (Ekivalen kata kunci juga diizinkan.)",
