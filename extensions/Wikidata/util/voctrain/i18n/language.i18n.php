@@ -8,9 +8,13 @@
 
 $fallback=array(
 	"en"=>false,
-	"nl"=>"en",
+	"ar"=>"en",
+	"bg"=>"en",
+	"eo"=>"en",
 	"fi"=>"en",
 	"nap"=>"en"
+	"nl"=>"en",
+	"ru"=>"en",
 );
 
 $messages=array();
