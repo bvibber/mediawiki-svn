@@ -201,6 +201,7 @@ Només cal que canvieu el nom de l'usuari, afegiu un comentari (opcional) i pitg
 Si us plau, intenteu-ho de nou. 
 Si l'error persisteix, és probable que la base de dades estigui avariada.",
 	'changeauthor-success'              => 'La vostra petició ha estat processada satisfactòriament.',
+	'changeauthor-logentry'             => "S'ha canviat l'autor, de $3 a $4, per a $2 de $1",
 	'changeauthor-logpagename'          => "Registre de canvis d'autor",
 );
 
@@ -228,7 +229,7 @@ $messages['cs'] = array(
 	'changeauthor-explanation-single'   => 'Pomocí tohoto formuláře můžete změnit autora revize stránky. Jednoduše změňte jméno uživatele v seznamu níže, přidejte komentář (nepovinné) a klikněte na tlačítko „Změnit autora“.',
 	'changeauthor-invalid-username'     => 'Neplatné uživatelské jméno: „$1“.',
 	'changeauthor-nosuchuser'           => 'Uživatel „$1“ neexistuje.',
-	'changeauthor-revview'              => 'Revize #$1 {{plural:$2|z|ze|z}} $2',
+	'changeauthor-revview'              => 'Revize #$1 {{PLURAL:$2|z|ze|z}} $2',
 	'changeauthor-nosuchtitle'          => 'Stránka s názvem „$1“ neexistuje.',
 	'changeauthor-weirderror'           => 'Vyskytla se velmi zvláštní chyba. Prosím, opakujte váš požadavek. Pokud se tato chyba bude vyskytovat i nadále, databáze je poškozená.',
 	'changeauthor-invalidform'          => 'Prosím, použijte formulář Special:ChangeAuthor raději než vlastní formulář.',

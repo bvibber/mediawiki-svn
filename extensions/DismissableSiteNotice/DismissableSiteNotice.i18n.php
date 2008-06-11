@@ -496,6 +496,7 @@ $messages['su'] = array(
 
 /** Swedish (Svenska)
  * @author Lejonel
+ * @author Boivie
  */
 $messages['sv'] = array(
 	'sitenotice_close' => 'dölj',

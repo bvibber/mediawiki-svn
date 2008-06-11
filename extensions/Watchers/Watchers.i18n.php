@@ -331,13 +331,14 @@ $messages['sk'] = array(
 
 /** Swedish (Svenska)
  * @author Lejonel
+ * @author Boivie
  */
 $messages['sv'] = array(
-	'watchers'               => 'Övervakare',
+	'watchers'               => 'Bevakare',
 	'watchers_link_title'    => 'Användare som bevakar sidan',
 	'watchers_error_article' => '<b>Fel:</b> Sidan finns inte.',
 	'watchers_header'        => 'Personer som bevakar "$1"',
-	'watchers_noone_watches' => 'Ingen användare övervakar sidan.',
+	'watchers_noone_watches' => 'Ingen bevakar denna sida.',
 	'watchers_x_or_more'     => '$1 eller fler användare bevakar sidan.',
 	'watchers_less_than_x'   => 'Färre än $1 användare bevakar sidan.',
 );

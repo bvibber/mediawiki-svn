@@ -296,9 +296,23 @@ Il existe plusieurs [http://wiki.openid.net/Public_OpenID_providers fournisseur 
  * @author Toliño
  */
 $messages['gl'] = array(
+	'openidlogin'                   => 'Acceder ao sistema co OpenID',
+	'openidfinish'                  => 'Saír do sistema OpenID',
+	'openidserver'                  => 'Servidor do OpenID',
+	'openidxrds'                    => 'Ficheiro Yadis',
+	'openiderror'                   => 'Erro de verificación',
 	'openiderrortext'               => 'Ocorreu un erro durante a verificación do URL do OpenID.',
 	'openidconfigerror'             => 'Erro na configuración do OpenID',
+	'openidpermission'              => 'Erro de permisos OpenID',
+	'openidcancel'                  => 'A verificación foi cancelada',
+	'openidcanceltext'              => 'A verificación da dirección URL do OpenID foi cancelada.',
+	'openidfailure'                 => 'Fallou a verificación',
+	'openidfailuretext'             => 'Fallou a verificación da dirección URL do OpenID. Mensaxe de erro: "$1"',
+	'openidsuccess'                 => 'A verificación foi un éxito',
+	'openidsuccesstext'             => 'A verificación da dirección URL do OpenID foi un éxito.',
+	'openidusernameprefix'          => 'Usuario do OpenID',
 	'openidserverlogininstructions' => 'Insira o seu contrasinal embaixo para acceder a $3 como o usuario $2 (páxina de usuario $1).',
+	'openidtrustinstructions'       => 'Comprobe se quere compartir datos con $1.',
 	'openidnopolicy'                => 'O sitio non especificou unha política de privacidade.',
 	'openidpolicy'                  => 'Comprobe a <a target="_new" href="$1">política de privacidade</a> para máis información.',
 	'openidoptional'                => 'Opcional',
@@ -319,6 +333,7 @@ $messages['gl'] = array(
 Se quere usar OpenID para acceder ao sistema no futuro, pode [[Special:OpenIDConvert|converter a súa conta para usar OpenID]].",
 	'openidnousername'              => 'Non foi especificado ningún nome de usuario.',
 	'openidbadusername'             => 'O nome de usuario especificado é incorrecto.',
+	'openidloginlabel'              => 'Dirección URL do OpenID',
 );
 
 /** Manx (Gaelg)
@@ -1139,6 +1154,15 @@ Existuje množstvo [http://wiki.openid.net/Public_OpenID_providers Verejných po
 $messages['sr-ec'] = array(
 	'openidemail'    => 'Е-пошта',
 	'openidlanguage' => 'Језик',
+);
+
+/** Sundanese (Basa Sunda)
+ * @author Irwangatot
+ */
+$messages['su'] = array(
+	'openidnickname'       => 'Landihan',
+	'openidlanguage'       => 'Basa',
+	'openidchoosepassword' => 'sandi:',
 );
 
 /** Swedish (Svenska)

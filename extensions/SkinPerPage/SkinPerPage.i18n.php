@@ -64,6 +64,13 @@ $messages['fr'] = array(
 	'skinperpage-desc' => 'ajoute la balise <tt>&lt;skin&gt;</tt> pour utiliser différentes interfaces par page',
 );
 
+/** Galician (Galego)
+ * @author Toliño
+ */
+$messages['gl'] = array(
+	'skinperpage-desc' => 'Engade a etiqueta <tt>&lt;skin&gt;</tt> para usar diferentes apariencias por páxina',
+);
+
 /** Hindi (हिन्दी)
  * @author Kaustubh
  */

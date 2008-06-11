@@ -129,9 +129,11 @@ $messages['ga'] = array(
 
 /** Galician (Galego)
  * @author Alma
+ * @author Toliño
  */
 $messages['gl'] = array(
 	'randomincategory'            => 'Páxina aleatoria na categoría',
+	'randomincategory-desc'       => '[[Special:Randomincategory|Páxina especial]] para obter unha páxina aleatoria dentro dunha categoría',
 	'randomincategory-toolbox'    => 'Páxina aleatoria',
 	'randomincategory-nocategory' => 'A categoría $1 non existe ou está baleira',
 	'randomincategory-label'      => 'Categoría:',
@@ -394,6 +396,13 @@ $messages['stq'] = array(
 	'randomincategory-nocategory' => 'Kategorie $1 bestoant nit of ju is loos',
 	'randomincategory-label'      => 'Kategorie:',
 	'randomincategory-submit'     => 'OK',
+);
+
+/** Sundanese (Basa Sunda)
+ * @author Irwangatot
+ */
+$messages['su'] = array(
+	'randomincategory-label' => 'Kategori:',
 );
 
 /** Swedish (Svenska)

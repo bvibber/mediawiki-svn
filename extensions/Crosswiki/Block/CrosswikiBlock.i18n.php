@@ -1163,9 +1163,10 @@ Tourääch tou:
  * @author Irwangatot
  */
 $messages['su'] = array(
-	'crosswikiblock-reason'   => 'Alesan:',
-	'crosswikiblock-noemail'  => 'Henteu kaci pamaké ngirimkeun surélék',
-	'crosswikiunblock-reason' => 'Alesan :',
+	'crosswikiblock-reason'         => 'Alesan:',
+	'crosswikiblock-noemail'        => 'Henteu kaci pamaké ngirimkeun surélék',
+	'crosswikiunblock-reason'       => 'Alesan:',
+	'crosswikiblock-alreadyblocked' => 'Pamaké $3 geus dipeungpeuk.',
 );
 
 /** Swedish (Svenska)

@@ -173,10 +173,11 @@ $messages['fr'] = array(
 
 /** Galician (Galego)
  * @author Alma
- * @author Xosé
  * @author Toliño
+ * @author Xosé
  */
 $messages['gl'] = array(
+	'spamregex'                      => 'SpamRegex',
 	'spamregex_summary'              => 'O texto foi atopado no resumo da páxina.',
 	'spamregex-currently-blocked'    => "'''Frases actualmente bloqueadas:'''",
 	'spamregex-no-currently-blocked' => "'''Non hai frases bloqueadas.'''",
@@ -505,6 +506,13 @@ $messages['sk'] = array(
  */
 $messages['sma'] = array(
 	'spamregex-text' => '(Tjaalege)',
+);
+
+/** Sundanese (Basa Sunda)
+ * @author Irwangatot
+ */
+$messages['su'] = array(
+	'spamregex-already-blocked' => '"$1" geus dipeungpeuk',
 );
 
 /** Swedish (Svenska)

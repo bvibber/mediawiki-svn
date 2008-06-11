@@ -2639,6 +2639,8 @@ Non è permesso votare alle utenze con lo status di bot.',
 /** Japanese (日本語)
  * @author JtFuruhata
  * @author Broad-Sky
+ * @author Kzhr
+ * @author Marine-Blue
  * @author Siebrand
  * @author Iwai.masaharu
  */
@@ -3854,13 +3856,39 @@ Het is mogelijk dat u een waarschuwing krijgt vanwege een niet ondertekend certi
 );
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
- * @author Jon Harald Søby
  * @author Eirik
+ * @author Jon Harald Søby
  */
 $messages['nn'] = array(
-	'boardvote_user'    => 'Brukar',
-	'boardvote_submit'  => 'OK',
-	'boardvote_welcome' => "Velkomen, '''$1'''!",
+	'boardvote'              => 'Val til styret i Wikimedia',
+	'boardvote-desc'         => '[[meta:Board elections/2008|Styreval i Wikimedia Foundation]]',
+	'boardvote_entry'        => '* [[Special:Boardvote/vote|Røyst]]
+* [[Special:Boardvote/list|Liste over røyster]]
+* [[Special:Boardvote/dump|Dump med kryptert stemmehistorikk]]',
+	'boardvote_novotes'      => 'Ingen har røysta endå.',
+	'boardvote_time'         => 'Tid',
+	'boardvote_user'         => 'Brukar',
+	'boardvote_edits'        => 'Endringar',
+	'boardvote_days'         => 'Dagar',
+	'boardvote_ip'           => 'IP-adresse',
+	'boardvote_ua'           => 'Brukaragent',
+	'boardvote_listintro'    => '<p>Dette er ei liste over alle røystene som er registrerte til no. $1 for krypterte data.</p>',
+	'boardvote_dumplink'     => 'Trykk her',
+	'boardvote_submit'       => 'OK',
+	'boardvote_strike'       => 'Stryk',
+	'boardvote_unstrike'     => 'Fjern stryking',
+	'boardvote_needadmin'    => 'Berre valadministratorar kan gjere dette.',
+	'boardvote_sitenotice'   => '<a href="{{localurle:Special:Boardvote/vote}}">Styreval i Wikimedia</a>:
+Røystinga er open til 22. juni kl. 00.00 (UTC)',
+	'boardvote_notstarted'   => 'Røystinga har ikkje byrja endå',
+	'boardvote_closed'       => 'Røystinga er ferdig, sjå [http://meta.wikimedia.org/w/index.php?title=Board_elections/2008/nn&uselang=nn resultatsida] snart.',
+	'boardvote_edits_many'   => 'mange',
+	'group-boardvote'        => 'Styrevaladministratorar',
+	'group-boardvote-member' => 'Styrevaladministrator',
+	'grouppage-boardvote'    => '{{ns:project}}:Styrevaladministrator',
+	'boardvote_welcome'      => "Velkomen, '''$1'''!",
+	'go_to_board_vote'       => 'Styreval i Wikimedia 2008',
+	'right-boardvote'        => 'Administrere styreval',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)

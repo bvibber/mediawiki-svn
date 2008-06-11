@@ -369,11 +369,11 @@ $messages['fr'] = array(
 
 /** Galician (Galego)
  * @author Alma
- * @author Siebrand
  * @author Toliño
+ * @author Siebrand
  */
 $messages['gl'] = array(
-	'review_sidebar_title'                   => 'Revisado',
+	'review_sidebar_title'                   => 'Revisar',
 	'review_topic_page'                      => 'Revisados os temas',
 	'review_sidebar_explanation'             => "O extremo esquerdo da caixiña sempre significa 'sen opinión'.",
 	'review_your_review'                     => 'O seu exame desta páxina/revisión:',

@@ -126,11 +126,13 @@ $messages['fr'] = array(
 
 /** Galician (Galego)
  * @author Alma
+ * @author Toliño
  */
 $messages['gl'] = array(
 	'showprocesslist'         => 'Amosar a Listaxe do Proceso',
 	'showprocesslist-id'      => 'Id',
 	'showprocesslist-user'    => 'Usuario',
+	'showprocesslist-db'      => 'base de datos',
 	'showprocesslist-command' => 'Comando',
 	'showprocesslist-time'    => 'Tempo',
 	'showprocesslist-state'   => 'Estado',

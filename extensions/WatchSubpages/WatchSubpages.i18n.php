@@ -249,14 +249,15 @@ Keur milih loba kaca, tahan konci shift keur anjeun bisa milih kotak lainna',
 );
 
 /** Swedish (Svenska)
+ * @author Boivie
  * @author M.M.S.
  */
 $messages['sv'] = array(
-	'watchsubpages'                      => 'Övervaka undersidor',
-	'watchsubpages-addedtowatchlist'     => 'De följande har lagts till till din övervakningslista.',
+	'watchsubpages'                      => 'Bevaka undersidor',
+	'watchsubpages-addedtowatchlist'     => 'Följande har lagts till i din bevakningslista.',
 	'watchsubpages-addtitles'            => 'Lägg till sidor',
-	'watchsubpages-addtitlestowatchlist' => 'Lägg till sidor till övervakningslista',
-	'watchsubpages-desc'                 => '[[Special:WatchSubpages|Lägg till alla undersidor]] av en sida till övervakningslistan',
+	'watchsubpages-addtitlestowatchlist' => 'Lägg till sidor till bevakningslista',
+	'watchsubpages-desc'                 => '[[Special:WatchSubpages|Lägg till alla undersidor]] för en sida till bevakningslistan',
 );
 
 /** Vèneto (Vèneto)

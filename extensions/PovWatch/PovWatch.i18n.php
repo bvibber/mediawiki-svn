@@ -243,6 +243,7 @@ Faga clic no botón de embaixo para cancelar a subscrición.',
 Faga clic no botón de embaixo para subscribirse.',
 	'povwatch_subscribe'               => 'Subscribir',
 	'povwatch_added'                   => 'engadido',
+	'right-povwatch_user'              => 'Engadir páxinas á listaxe de vixilancia doutros usuarios',
 );
 
 /** Manx (Gaelg)
@@ -709,43 +710,44 @@ $messages['sr-ec'] = array(
 );
 
 /** Swedish (Svenska)
+ * @author Boivie
  * @author M.M.S.
  * @author Jon Harald Søby
  */
 $messages['sv'] = array(
-	'povwatch'                         => 'PovÖvervakning',
-	'povwatch_desc'                    => 'Programtillägg för att [[Special:PovWatch|placera sidor på andra användares övervakningslistor]]',
+	'povwatch'                         => 'PovBevakning',
+	'povwatch_desc'                    => 'Programtillägg för att [[Special:PovWatch|placera sidor på andra användares bevakningslistor]]',
 	'povwatch_no_session'              => 'Fel: Kunde inte leverera formulär på grund av tapp av sessionsdata.',
-	'povwatch_not_allowed_push'        => 'Du är inte en PovÖvervaknings-administratör, du kan inte placera sidor på övervakningslistor.',
-	'povwatch_already_subscribed'      => 'Du abonnerar redan på PovÖvervakning',
-	'povwatch_subscribed'              => 'Du abonnerar nu på PovÖvervakning',
-	'povwatch_not_subscribed'          => 'Du abonnerar inte på PovÖvervakning, så du kan inte sluta abonnera.',
-	'povwatch_unsubscribed'            => 'Du har nu slutat abonnera på PovÖvervakning',
+	'povwatch_not_allowed_push'        => 'Du är inte en PovBevaknings-administratör, du kan inte placera sidor på bevakningslistor.',
+	'povwatch_already_subscribed'      => 'Du abonnerar redan på PovBevakning',
+	'povwatch_subscribed'              => 'Du abonnerar nu på PovBevakning',
+	'povwatch_not_subscribed'          => 'Du abonnerar inte på PovBevakning, så du kan inte sluta abonnera.',
+	'povwatch_unsubscribed'            => 'Du har nu slutat abonnera på PovBevakning',
 	'povwatch_invalid_title'           => 'Den angivna titeln var ogiltig',
-	'povwatch_pushed'                  => '[[$1]] har placerats på $2 {{PLURAL:$2|övervakningslista|övervakningslistor}}.',
-	'povwatch_intro'                   => 'PovÖvervakning är en tjänst som låter kontroversiella sidor bli placerade på abonnerande administratörers övervakningslistor.
+	'povwatch_pushed'                  => '[[$1]] har placerats på $2 {{PLURAL:$2|bevakningslista|bevakningslistor}}',
+	'povwatch_intro'                   => 'PovBevakning är en tjänst som låter kontroversiella sidor bli placerade på abonnerande administratörers bevakningslistor.
 
 En logg över dom senaste placeringarna är tillgänglig på [[Special:PovWatch/log]].',
 	'povwatch_subscriber_list'         => 'En [[Special:PovWatch/subscribers|lista över abonnenter]] är tillgänglig.',
 	'povwatch_subscriber_list_intro'   => '<strong>Lista över abonnenter</strong>',
-	'povwatch_not_allowed_subscribers' => 'Du är inte tillåten att se listan över PovÖvervakning-abonnenter.',
+	'povwatch_not_allowed_subscribers' => 'Du är inte tillåten att se listan över PovBevakning-abonnenter.',
 	'povwatch_unknown_subpage'         => 'Okänd undersida.',
 	'povwatch_push'                    => 'Tryck',
-	'povwatch_push_intro'              => 'Använd formuläret nedan för att placera sidor på abonnenters övervakninglistor.
+	'povwatch_push_intro'              => 'Använd formuläret nedan för att placera sidor på abonnenters bevakninglistor.
 Var försiktig när du skriver in titeln; ej existerande sidor kan också läggas till, och det finns inget sätt att ta bort en titel när den har placerats ut.',
 	'povwatch_title'                   => 'Titel:',
 	'povwatch_comment'                 => 'Kommentar:',
 	'povwatch_no_log'                  => 'Det finns inga element i loggen.',
 	'povwatch_no_subscribers'          => 'Det finns inga abonnenter.',
-	'povwatch_unsubscribe_intro'       => 'Du abonnerar på PovÖvervakning.
-Kilcka på knappen nedan för att avsluta abonnemanget.',
+	'povwatch_unsubscribe_intro'       => 'Du abonnerar på PovBevakning.
+Klicka på knappen nedan för att avsluta abonnemanget.',
 	'povwatch_unsubscribe'             => 'Avsluta abonnemang',
-	'povwatch_subscribe_intro'         => 'Du abonnerar inte på PovÖvervakning.
+	'povwatch_subscribe_intro'         => 'Du abonnerar inte på PovBevakning.
 Klicka på knappen nedan för att abonnera.',
 	'povwatch_subscribe'               => 'Abonnera',
 	'povwatch_added'                   => 'tillaggd',
-	'right-povwatch_admin'             => 'Administrera användarrättigheter för vem som kan lägga till sidor i andra användares övervakningslistor',
-	'right-povwatch_user'              => 'Lägga till sidor i andras övervakningslistor',
+	'right-povwatch_admin'             => 'Administrera användarrättigheter för tilläggande av sidor i andra användares bevakningslistor',
+	'right-povwatch_user'              => 'Lägga till sidor i andra användares bevakningslistor',
 );
 
 /** Telugu (తెలుగు)

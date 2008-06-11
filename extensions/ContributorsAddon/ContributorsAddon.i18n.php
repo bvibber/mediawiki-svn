@@ -88,6 +88,13 @@ $messages['oc'] = array(
 	'contributorsaddon-desc' => 'Apondís lo popup JS onMouseOver als ligams dels « Contributors principals »',
 );
 
+/** Polish (Polski)
+ * @author Sp5uhe
+ */
+$messages['pl'] = array(
+	'contributorsaddon-desc' => 'Dodaje dymki do łącz „główni edytorzy”',
+);
+
 /** Portuguese (Português)
  * @author Malafaya
  */

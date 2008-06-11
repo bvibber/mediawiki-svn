@@ -58,22 +58,25 @@ $messages['eo'] = array(
 	'newsextension-desc' => 'Montras proprajn lastatempajn ŝanĝojn en vikiaj paĝoj aŭ kiel RSS aŭ Atom-fonto',
 );
 
+/** French (Français)
+ * @author Verdy p
+ */
 $messages['fr'] = array(
 	'newsextension-desc'          => 'Visionne les modifications récentes spécifiques sur une page wiki ou comme un flux RSS ou Atom.',
 	'newsextension-unknownformat' => '$1 : format de flux inconnu : $2<br />',
 	'newsextension-feednotfound'  => '$1 : page de flux introuvable : $2<br />',
-	'newsextension-feedrequest'   => '$1 : Prise ne charge de la requête pour $2<br />',
-	'newsextension-checkok'       => '$1 : cache HTTP correct, en-tête 304 header envoyé</br >',
-	'newsextension-checkok1'      => '$1 : vérification du cache correcte :  IMS $2 c/ $3 modifié<br />',
-	'newsextension-gotcached'     => '$1 : ($2 ? « obtenu caché » : « non caché »)<br />',
+	'newsextension-feedrequest'   => '$1 : prise en charge de la requête pour $2<br />',
+	'newsextension-checkok'       => '$1 : cache HTTP correct, en-tête 304 envoyé<br />',
+	'newsextension-checkok1'      => '$1 : vérification du cache correcte : IMS $2 c/ $3 modifié<br />',
+	'newsextension-gotcached'     => '$1 : ($2? "obtenu caché" : "non caché")<br />',
 	'newsextension-purge'         => '$1 : purge, cache ignoré<br />',
 	'newsextension-loggin'        => '$1 : en session, cache ignoré<br />',
-	'newsextension-outputting'    => '$1 : sortie de la copie en cache ($2): $3 < {$4}',
-	'newsextension-stale'         => '$1 : trouvé une ancienne copie en cache ($2): $3 >= {$4}<br />',
-	'newsextension-nofoundonpage' => '$1 : aucune alimentation de trouvée sur la page : $2<br / >',
+	'newsextension-outputting'    => '$1 : sortie de la copie en cache ($2) : $3 &lt; {$4}<br />',
+	'newsextension-stale'         => '$1 : copie périmée trouvée en cache ($2) : $3 &gt;= {$4}<br />',
+	'newsextension-nofoundonpage' => '$1 : aucune alimentation trouvée sur la page : $2<br / >',
 	'newsextension-renderedfeed'  => '$1 : alimentation rendue<br />',
 	'newsextension-cachingfeed'   => '$1 : cache l’alimentation ($2)<br / >',
-	'newsextension-freshfeed'     => '$1 : sortie alimentation récente<br />',
+	'newsextension-freshfeed'     => '$1 : sortie de l’alimentation récente<br />',
 );
 
 /** Hindi (हिन्दी)

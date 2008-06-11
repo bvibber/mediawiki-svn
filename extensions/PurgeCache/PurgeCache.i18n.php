@@ -276,6 +276,14 @@ $messages['sr-ec'] = array(
 	'purgecache-button'  => 'Освежи',
 );
 
+/** Sundanese (Basa Sunda)
+ * @author Irwangatot
+ */
+$messages['su'] = array(
+	'purgecache'        => 'Hapus sindangan',
+	'purgecache-button' => 'Hapus',
+);
+
 /** Swedish (Svenska)
  * @author M.M.S.
  */

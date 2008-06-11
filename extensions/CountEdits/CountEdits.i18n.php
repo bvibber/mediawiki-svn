@@ -112,7 +112,7 @@ $messages['cs'] = array(
 	'countedits-username'     => 'Uživatelské jméno:',
 	'countedits-ok'           => 'OK',
 	'countedits-resultheader' => 'Výsledky pro $1',
-	'countedits-resulttext'   => '$1 má $2 editac{{plural:$2|i|e|í}}',
+	'countedits-resulttext'   => '$1 má $2 editac{{PLURAL:$2|i|e|í}}',
 	'countedits-mostactive'   => 'Nejaktivnější přispěvatelé',
 );
 

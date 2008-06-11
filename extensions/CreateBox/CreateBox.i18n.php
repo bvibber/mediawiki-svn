@@ -22,6 +22,13 @@ $messages['en'] = array(
 			"<createbox>break=no</createbox>",
 );
 
+/** Arabic (العربية)
+ * @author Meno25
+ */
+$messages['ar'] = array(
+	'createbox-create' => 'إنشاء',
+);
+
 /** Finnish (Suomi)
  * @author Jack Phoenix
  */
@@ -76,6 +83,20 @@ $messages['nl'] = array(
 	'createbox-exists' => "\"'''{{FULLPAGENAME}}'''\" bestaat al.
 
 U kunt deze pagina niet aanmaken, maar u kunt deze [{{fullurl:{{FULLPAGENAME}}|action=edit}} bewerken], [{{fullurl:{{FULLPAGENAME}}}} bekijken], of een andere pagina aanmaken via het onderstaande formulier.
+
+<createbox>break=no</createbox>",
+);
+
+/** Polish (Polski)
+ * @author Wpedzich
+ * @author Sp5uhe
+ */
+$messages['pl'] = array(
+	'createbox-desc'   => 'Specjalizowane pole tekstowe do tworzenia nowych stron',
+	'createbox-create' => 'Utwórz',
+	'createbox-exists' => "Strona „'''{{FULLPAGENAME}}'''” już istnieje.
+
+Nie możesz utworzyć tej strony, lecz możesz ją [{{fullurl:{{FULLPAGENAME}}|action=edit}} edytować], [{{fullurl:{{FULLPAGENAME}}}} przeczytać], lub stworzyć inną stronę za pomocą poniższego pola wyboru.
 
 <createbox>break=no</createbox>",
 );

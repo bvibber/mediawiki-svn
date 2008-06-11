@@ -60,8 +60,10 @@ $messages['af'] = array(
 
 /** Arabic (العربية)
  * @author OsamaK
+ * @author Meno25
  */
 $messages['ar'] = array(
+	'taggedimages'                    => 'صور موسومة',
 	'imagetagging-addimagetag'        => 'وسم هذه الصورة',
 	'imagetagging-article'            => 'صفحة:',
 	'imagetagging-articletotag'       => 'صفحة للوسم',
@@ -469,6 +471,7 @@ Chcete sa teraz prihlásiť?',
  * @author Irwangatot
  */
 $messages['su'] = array(
+	'imagetagging-imghistory'       => 'Jujutan',
 	'imagetagging-images'           => 'gambar',
 	'imagetagging-tagcancel-button' => 'Bolay',
 );

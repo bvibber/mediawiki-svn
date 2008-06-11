@@ -56,7 +56,7 @@ $messages['eo'] = array(
  */
 $messages['fr'] = array(
 	'stalepages'         => 'Pages vieillies',
-	'stalepages-summary' => "Ceci est une liste de pages qui n'ont pas été modifiées depuis {{plural:$1|$1 jour|$1 jours}}.",
+	'stalepages-summary' => "Ceci est une liste de pages qui n'ont pas été modifiées depuis {{PLURAL:$1|$1 jour|$1 jours}}.",
 );
 
 /** Galician (Galego)
@@ -153,7 +153,7 @@ $messages['no'] = array(
  */
 $messages['oc'] = array(
 	'stalepages'         => 'Paginas depassadas',
-	'stalepages-summary' => 'Aquò es una lista de paginas que son pas estadas modificadas dempuèi {{plural:$1|$1 jorn|$1 jorns}}.',
+	'stalepages-summary' => 'Aquò es una lista de paginas que son pas estadas modificadas dempuèi {{PLURAL:$1|$1 jorn|$1 jorns}}.',
 );
 
 /** Polish (Polski)

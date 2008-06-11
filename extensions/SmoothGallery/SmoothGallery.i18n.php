@@ -98,18 +98,20 @@ $messages['fr'] = array(
 
 /** Galician (Galego)
  * @author Xosé
- * @author Alma
  * @author Toliño
+ * @author Alma
  */
 $messages['gl'] = array(
-	'smoothgallery'                    => 'Galería con transicións',
-	'smoothgallery-title'              => 'Galería con transicións',
-	'smoothgallery-smoothgallerytitle' => 'Galería con transicións: $1',
-	'smoothgallery-error'              => '<b>Erro na Galería de transicións:</b>',
-	'smoothgallery-gallery-not-found'  => 'A galería que solicitou non existe.',
-	'smoothgallery-not-found'          => 'Non se engadiron imaxes á galería. Engada polo menos unha imaxe.',
-	'smoothgallery-no-images'          => 'Non se atoparon imaxes nesta galería. Asegúrese de que existen todas as imaxes solicitadas. Non se atoparon as imaxes seguintes: $1',
-	'smoothgallery-unexpected-error'   => 'Produciuse un erro inesperado. Informe deste erro, por favor.',
+	'smoothgallery'                     => 'Galería con transicións',
+	'smoothgallery-title'               => 'Galería con transicións',
+	'smoothgallery-smoothgallerytitle'  => 'Galería con transicións: $1',
+	'smoothgallery-error'               => '<b>Erro na Galería de transicións:</b>',
+	'smoothgallery-gallery-not-found'   => 'A galería que solicitou non existe.',
+	'smoothgallery-not-found'           => 'Non se engadiron imaxes á galería. Engada polo menos unha imaxe.',
+	'smoothgallery-no-images'           => 'Non se atoparon imaxes nesta galería. Asegúrese de que existen todas as imaxes solicitadas. Non se atoparon as imaxes seguintes: $1',
+	'smoothgallery-invalid-images'      => 'As seguintes imaxes solicitadas tiñan un tipo inválido: $1',
+	'smoothgallery-unexpected-error'    => 'Produciuse un erro inesperado. Informe deste erro, por favor.',
+	'smoothgallery-javascript-disabled' => 'Requírese o Javascript para ver correctamente esta galería.',
 );
 
 /** Upper Sorbian (Hornjoserbsce)

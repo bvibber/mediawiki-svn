@@ -154,7 +154,7 @@ $messages['cs'] = array(
 	'contributors-target'   => 'Název:',
 	'contributors-submit'   => 'Zobrazit',
 	'contributors-subtitle' => 'Hlavní přispěvatelé článku $1',
-	'contributors-others'   => 'a $1 {{plural:$1|další|další|dalších}}',
+	'contributors-others'   => 'a $1 {{PLURAL:$1|další|další|dalších}}',
 	'contributors-badtitle' => 'Neplatný název.',
 );
 

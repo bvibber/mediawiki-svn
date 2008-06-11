@@ -179,6 +179,7 @@ $messages['gl'] = array(
 	'todo-invalid-item'     => 'Artigo perdido ou non válido',
 	'todo-unrecognize-type' => 'Tipo non recoñecido',
 	'todo-item-list'        => 'Os seus artigos',
+	'todo-add-queue'        => 'Engadir cola…',
 	'todo-move-queue'       => 'Mover á cola…',
 	'todo-list-change'      => 'Cambiar',
 	'todo-list-cancel'      => 'Cancelar',

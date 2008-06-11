@@ -576,6 +576,7 @@ $messages['es'] = array(
 /** French (Français)
  * @author Grondin
  * @author Urhixidur
+ * @author Verdy p
  * @author Siebrand
  */
 $messages['fr'] = array(
@@ -584,9 +585,11 @@ $messages['fr'] = array(
 	'mv_ogg_low_quality'             => 'Flux ogg utilisable en ligne, hébergé sur metavid',
 	'mv_ogg_high_quality'            => 'Flux ogg de haute qualité, hébergé sur metavid.',
 	'mv_archive_org_link'            => 'Liens vers les originaux mpeg2 dans Archive.org',
-	'ao_file_64Kb_MPEG4'             => 'Archive.org - mpeg4 64 kb/s',
-	'ao_file_256Kb_MPEG4'            => 'Archive.org - mpeg4 256 kb/s',
-	'ao_file_flash_flv'              => 'Archive.org - flash vidéo',
+	'ao_file_64Kb_MPEG4'             => 'Archive.org - MPEG4 64 kb/s',
+	'ao_file_256Kb_MPEG4'            => 'Archive.org - MPEG4 256 kb/s',
+	'ao_file_MPEG1'                  => 'Archive.org - MPEG1',
+	'ao_file_MPEG2'                  => 'Archive.org - MPEG2 original',
+	'ao_file_flash_flv'              => 'Archive.org - vidéo Flash',
 	'mv_error_stream_missing'        => '<span class="error">Erreur : il n\'existe aucun fichier vidéo associé avec ce flux.</span><br /> Vous êtes prié de reporter ceci sur le site d\'administration.',
 	'mv_stream_meta'                 => 'Page de flux',
 	'mv_add_stream'                  => "Ajout d'un flux metavid",
@@ -760,10 +763,11 @@ $messages['ga'] = array(
 );
 
 /** Galician (Galego)
- * @author Alma
  * @author Toliño
+ * @author Alma
  */
 $messages['gl'] = array(
+	'mv_path_type_label'            => 'tipo de camiño',
 	'mv_duration_label'             => 'duración',
 	'mv_save_changes'               => 'Gardar Cambios',
 	'mv_user_cant_edit'             => 'Precisará $1 para editar, $2',
@@ -779,7 +783,13 @@ $messages['gl'] = array(
 	'mv_results_found_for'          => 'Procurar resultados <b>$1</b> a <b>$2</b> de <b>$3</b> para:',
 	'mv_watch_clip'                 => 'Ver o fragmento',
 	'mv_close_clip'                 => 'Pechar o fragmento',
+	'mv_improve_transcript'         => 'Mellorar a transcrición',
+	'ht_en'                         => 'Transcrición',
 	'anno_en'                       => 'Anotacións e Categorías',
+	'thomas_en'                     => 'Transcrición oficial',
+	'mvd_default_mismatch'          => 'Erro nos parámetros do ficheiro',
+	'mvd_default_mismatch_text'     => 'Hai un erro nos parámetros do seu ficheiro.
+$mvMVDTypeDefaultDisp deber ser un subgrupo de $mvMVDTypeAllAvailable',
 	'mv_data_page_title'            => '$1 para $2 de $3',
 	'mv_time_separator'             => '$1 a $2',
 	'mv_play'                       => 'Reproducir',
@@ -801,10 +811,15 @@ $messages['gl'] = array(
 	'mv_run_search'                 => 'Busca rápida',
 	'mv_add_filter'                 => 'Engadir Filtro',
 	'mv_search_match'               => 'Procurar Texto',
+	'mv_search_spoken_by'           => 'Falado por',
 	'mv_search_category'            => 'Categoría',
 	'mv_search_smw_property'        => 'Propiedades Semánticas',
 	'mv_search_and'                 => 'e',
 	'mv_search_or'                  => 'ou',
+	'mv_search_not'                 => 'non',
+	'mv_search_date_range'          => 'Rexistro de data',
+	'mv_date_range'                 => 'rexistro de data',
+	'mv_spoken_by'                  => 'falado por',
 	'mv_category'                   => 'categoría',
 	'mv_search_no_results'          => 'Ningunha coincidencia multimedia',
 	'mv_media_matches'              => 'Coincidencias multimedia',
@@ -819,13 +834,17 @@ $messages['gl'] = array(
 	'mv_sequence_page_desc'         => 'Gardar a secuencia actual',
 	'mv_sequence_add'               => 'Engadir clips',
 	'mv_sequence_add_manual'        => 'Engadir polo Nome',
+	'mv_sequence_add_search'        => 'Engadir por procura',
+	'mv_seq_add_end'                => 'Engadir ao final da secuencia',
 	'mv_sequence_timeline'          => 'Liña de tempo da secuencia:',
 	'mv_edit_sequence_desc_help'    => 'Descrición da secuencia',
 	'mv_edithelpsequence'           => 'Help:Editando_a_secuencia',
 	'mv_seq_summary'                => 'Resumo de edición da secuencia',
 	'mv_add_clip_by_name'           => 'Engadir Clip polo Nome',
 	'mv_tool_missing'               => 'a ferramenta solicitada ($1) non existe',
+	'mv_new_ht_en'                  => 'Nova transcrición',
 	'mv_new_anno_en'                => 'Nova Etiqueta ou Anotación',
+	'mv_protect_source_material'    => 'A fonte orixinal do material está protexida fronte ás edicións',
 );
 
 /** Manx (Gaelg)
@@ -2741,6 +2760,24 @@ $messages['sr-ec'] = array(
 	'mv_edit'        => 'Уреди',
 	'mv_history'     => 'Историја',
 	'mv_remove'      => 'уклони',
+);
+
+/** Sundanese (Basa Sunda)
+ * @author Irwangatot
+ */
+$messages['su'] = array(
+	'mv_data_page_title' => '$1 keur $2 ti $3',
+	'mv_time_separator'  => '$1 ka $2',
+	'mv_edit'            => 'Édit',
+	'mv_history'         => 'Jujutan',
+	'mv_search_category' => 'Kategori',
+	'mv_search_and'      => 'jeung',
+	'mv_search_or'       => 'atawa',
+	'mv_search_not'      => 'lain',
+	'mv_match'           => 'sarua',
+	'mv_category'        => 'kategori',
+	'mv_match_text'      => '~  $1 sarua',
+	'mv_match_text_one'  => '~ 1 sarua',
 );
 
 /** Swedish (Svenska)

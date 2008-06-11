@@ -1048,6 +1048,7 @@ $wdMessages['gl'] = array(
 	'ow_save'                          => 'Gardar',
 	'ow_history'                       => 'Historial',
 	'ow_noedit_title'                  => 'Non ten permisos para editar',
+	'ow_uipref_datasets'               => 'Vista por defecto',
 	'ow_uiprefs'                       => 'Wikidatos',
 	'ow_none_selected'                 => '<Ningún seleccionado>',
 	'ow_dm_OK'                         => 'De acordo',
@@ -1056,6 +1057,7 @@ $wdMessages['gl'] = array(
 	'ow_contents_of_mapping'           => 'Contidos do trazado dun mapa',
 	'ow_available_contexts'            => 'Contextos dispoñíbeis',
 	'ow_add_concept_link'              => 'Engadir ligazón a outros conceptos',
+	'ow_concept_panel'                 => 'Panel de conceptos',
 	'ow_AlternativeDefinition'         => 'Definición alternativa',
 	'ow_AlternativeDefinitions'        => 'Definicións alternativas',
 	'ow_Annotation'                    => 'Anotación',
@@ -3051,7 +3053,9 @@ Kontaktier dän Serveradminstrator.',
  * @author Irwangatot
  */
 $wdMessages['su'] = array(
-	'ow_save' => 'Simpen',
+	'ow_save'     => 'Simpen',
+	'ow_history'  => 'Jujutan',
+	'ow_Language' => 'Basa',
 );
 
 /** Swedish (Svenska)

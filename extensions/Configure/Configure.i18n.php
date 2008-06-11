@@ -103,9 +103,6 @@ Please create it or change it to use this extension.',
 	'viewconfig'                          => 'View wiki configuration',
 );
 
-/** Eastern Mari (Олык Марий йылме) */
-$messages['mhr'] = array();
-
 /** Afrikaans (Afrikaans)
  * @author Arnobarnard
  * @author Naudefj
@@ -127,7 +124,6 @@ $messages['af'] = array(
 	'configure-section-users'        => 'Gebruikers',
 	'configure-section-search'       => 'Soek',
 );
-
 /** Aragonese (Aragonés)
  * @author Juanpabl
  */
@@ -544,7 +540,6 @@ Veuillez le rendre modifiable par PHP pour que cette extension fonctionne.',
 	'configure-section-localization'      => 'Localisation',
 	'configure-section-timezone'          => 'Zone horaire',
 	'configure-section-zh-conversion'     => 'Conversion du Chinois',
-	'configure-section-html'              => 'Html',
 	'configure-section-debug'             => 'Débogage',
 	'configure-section-profiling'         => 'Profilage',
 	'configure-section-site'              => 'Personnalisation du site',
@@ -730,6 +725,22 @@ $messages['hi'] = array(
 $messages['hil'] = array(
 	'configure-section-email'        => 'E-mail',
 	'configure-section-specialpages' => 'Pinasahi nga mga panid',
+);
+
+/** Icelandic (Íslenska)
+ * @author S.Örvarr.S
+ */
+$messages['is'] = array(
+	'configure-desc-ns'            => 'Nafnrými',
+	'configure-section-namespaces' => 'Nafnrými',
+);
+
+/** Japanese (日本語)
+ * @author Broad-Sky
+ */
+$messages['ja'] = array(
+	'configure-desc-ns'            => '名前空間',
+	'configure-section-namespaces' => '名前空間',
 );
 
 /** Javanese (Basa Jawa)
@@ -1703,7 +1714,9 @@ $messages['sr-ec'] = array(
  * @author Irwangatot
  */
 $messages['su'] = array(
+	'configure-desc-ns'              => 'Ngaranspasi',
 	'configure-js-remove'            => 'Hapus',
+	'configure-section-namespaces'   => 'Ngaranspasi',
 	'configure-section-skin'         => 'Kulit',
 	'configure-section-category'     => 'Kategori',
 	'configure-section-cache'        => 'Sindangan',

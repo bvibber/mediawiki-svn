@@ -220,20 +220,23 @@ $messages['fr'] = array(
  * @author Toliño
  */
 $messages['gl'] = array(
-	'importusers'                      => 'Importar Usuarios',
-	'importusers-uploadfile'           => 'Cargar ficheiro',
-	'importusers-form-replace-present' => 'Reemprazar os usuarios existentes',
-	'importusers-form-button'          => 'Importar',
-	'importusers-user-added'           => 'Usuario <b>%s</b> foi engadido.',
-	'importusers-log'                  => 'Importar rexistro',
-	'importusers-log-summary'          => 'Resumo',
-	'importusers-log-summary-all'      => 'Todo',
-	'importusers-log-summary-added'    => 'Engadido',
-	'importusers-log-summary-updated'  => 'Actualizado',
-	'importusers-login-name'           => 'Rexistrar nome',
-	'importusers-password'             => 'contrasinal',
-	'importusers-email'                => 'correo electrónico',
-	'importusers-realname'             => 'nome real',
+	'importusers'                         => 'Importar Usuarios',
+	'importusers-uploadfile'              => 'Cargar ficheiro',
+	'importusers-form-file'               => 'Formato do ficheiro do usuario (csv):',
+	'importusers-form-replace-present'    => 'Reemprazar os usuarios existentes',
+	'importusers-form-button'             => 'Importar',
+	'importusers-user-added'              => 'Usuario <b>%s</b> foi engadido.',
+	'importusers-user-present-update'     => 'O usuario <b>%s</b> xa existe. Actualizado.',
+	'importusers-user-present-not-update' => 'O usuario %s xa existe. Non actualizado.',
+	'importusers-log'                     => 'Importar rexistro',
+	'importusers-log-summary'             => 'Resumo',
+	'importusers-log-summary-all'         => 'Todo',
+	'importusers-log-summary-added'       => 'Engadido',
+	'importusers-log-summary-updated'     => 'Actualizado',
+	'importusers-login-name'              => 'Rexistrar nome',
+	'importusers-password'                => 'contrasinal',
+	'importusers-email'                   => 'correo electrónico',
+	'importusers-realname'                => 'nome real',
 );
 
 /** Manx (Gaelg)
@@ -698,6 +701,13 @@ $messages['stq'] = array(
 	'importusers-password'                => 'Paaswoud',
 	'importusers-email'                   => 'E-Mail',
 	'importusers-realname'                => 'Ächten Noome',
+);
+
+/** Sundanese (Basa Sunda)
+ * @author Irwangatot
+ */
+$messages['su'] = array(
+	'importusers-password' => 'sandi',
 );
 
 /** Swedish (Svenska)

@@ -49,7 +49,7 @@ $messages['ca'] = array(
  * @author Matěj Grabovský
  */
 $messages['cs'] = array(
-	'contributionseditcount'      => 'Tento uživatel má {{plural:$1|editaci|editace|editací}}.',
+	'contributionseditcount'      => 'Tento uživatel má {{PLURAL:$1|editaci|editace|editací}}.',
 	'contributionseditcount-desc' => 'Zobrazuje počet editací na stránce [[Special:Contributions|Příspěvky uživatele]]',
 );
 
@@ -225,8 +225,13 @@ $messages['oc'] = array(
 	'contributionseditcount-desc' => 'Aficha un comptador d’edicions sus la pagina [[Special:Contributions]]',
 );
 
+/** Polish (Polski)
+ * @author Wpedzich
+ * @author Derbeth
+ */
 $messages['pl'] = array(
-	'contributionseditcount' => 'Ten użytkownik ma $1 edycji.',
+	'contributionseditcount'      => 'Ten użytkownik ma $1 edycji.',
+	'contributionseditcount-desc' => 'Wyświetla liczbę edycji na stronie [[Specjalna:Wkład]]',
 );
 
 $messages['pms'] = array(

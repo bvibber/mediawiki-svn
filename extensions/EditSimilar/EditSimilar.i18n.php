@@ -182,10 +182,17 @@ Tejto stránke by sa tiež hodilo, keby ste sa na ňu pozreli: $1.',
  * @author M.M.S.
  */
 $messages['sv'] = array(
-	'editsimilar-desc'                => 'Uppmuntrar användare att redigera liknande sidor efter att ha sparat en sida',
-	'editsimilar-thanks'              => 'Tack för ditt bidrag.
+	'editsimilar-desc'                           => 'Uppmuntrar användare att redigera liknande sidor efter att ha sparat en sida',
+	'editsimilar-thanks'                         => 'Tack för ditt bidrag.
 Kolla dessa relaterade sidor: $1.',
-	'editsimilar-thanks-singleresult' => 'Tack för ditt bidrag.
+	'editsimilar-thanks-singleresult'            => 'Tack för ditt bidrag.
 Kolla denna relaterade sida: $1.',
+	'editsimilar-thanks-notsimilar'              => 'Tack för ditt bidrag.
+Dessa sidor kan också behöva din hjälp: $1.',
+	'editsimilar-thanks-notsimilar-singleresult' => 'Tack för ditt bidrag.
+Den här sidan kan också behöva din hjälp: $1.',
+	'editsimilar-thankyou'                       => 'Tack för ditt bidrag, $1!',
+	'editsimilar-link-disable'                   => 'ändra inställningar',
+	'tog-edit-similar'                           => 'Slå på förslag för liknande sidor',
 );
 

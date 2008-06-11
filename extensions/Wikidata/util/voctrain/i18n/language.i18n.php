@@ -135,6 +135,53 @@ $messages['qqq'] = array(
 	"voctrain_Omegawiki_vocabulary_trainer"=>"login: header"
 );
 
+/** Arabic (العربية)
+ * @author Meno25
+ */
+$messages['ar'] = array(
+	'voctrain_Hello_World'                       => 'أهلا ويكي!',
+	'voctrain_Permission_Denied'                 => 'السماح مرفوض',
+	'voctrain_try_again_'                        => 'حاول ثانية؟',
+	'voctrain_Action_unknown'                    => 'الفعل غير معروف',
+	'voctrain_User_added'                        => 'المستخدم تمت إضافته',
+	'voctrain_continue'                          => 'استمر',
+	'voctrain_bye'                               => 'وداعا',
+	'voctrain_Number_of_questions'               => 'عدد الأسئلة',
+	'voctrain_Languages'                         => 'لغات',
+	'voctrain_Questions'                         => 'أسئلة',
+	'voctrain_Answers'                           => 'إجابات',
+	'voctrain_start_exercise'                    => 'ابدأ التدريب',
+	'voctrain_collection'                        => 'مجموعة',
+	'voctrain_Definition'                        => 'تعريف',
+	'voctrain_Dictionary_definition_to_help_you' => 'تعريف القاموس لمساعدتك',
+	'voctrain_Word'                              => 'كلمة',
+	'voctrain_Please_type_your_answer_here'      => 'من فضلك اكتب إجابتك هنا',
+	'voctrain_submit_answer'                     => 'إرسال الإجابة',
+	'voctrain_skip'                              => 'تجاوز',
+	'voctrain_abort_exercise'                    => 'إنهاء التدريب',
+	'voctrain_list_answers'                      => 'عرض الإجابات',
+	'voctrain_Question'                          => 'سؤال',
+	'voctrain_The_word_to_translate'             => 'الكلمة للترجمة',
+	'voctrain_Answer'                            => 'إجابة',
+	'voctrain_one_of'                            => 'واحد من',
+	'voctrain_list_of_questions_and_answers'     => 'قائمة الأسئلة والأجوبة',
+	'voctrain_logout'                            => 'خروج',
+	'voctrain_Omegawiki'                         => 'أوميجاويكي',
+	'voctrain_Exercise_complete'                 => 'التدريب اكتمل',
+	'voctrain_Exercise_terminated'               => 'التدريب تم إنهاؤه',
+	'voctrain_Start_a_new_exercise'              => 'ابدأ تدريبا جديدا',
+	'voctrain_User_name'                         => 'اسم المستخدم',
+	'voctrain_Password'                          => 'كلمة السر',
+	'voctrain_Login'                             => 'دخول',
+	'voctrain_Create_new_user'                   => 'إنشاء مستخدم جديد',
+	'voctrain_Switch_language'                   => 'تغيير اللغة',
+	'voctrain_Language'                          => 'اللغة',
+	'voctrain_Log_in'                            => 'دخول',
+	'voctrain_Omegawiki_vocabulary_trainer'      => 'مدرب مفردات أوميجاويكي',
+	'voctrain_Definitions'                       => 'التعريفات',
+	'voctrain_Could_not_create_new_user'         => 'لم يمكن إنشاء مستخدم جديد',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  */
@@ -152,6 +199,45 @@ $messages['bg'] = array(
 	'voctrain_Create_new_user'     => 'Създаване на нов потребител',
 	'voctrain_Language'            => 'Език',
 	'voctrain_Log_in'              => 'Влизане',
+);
+
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
+$messages['eo'] = array(
+	'voctrain_Hello_World'                                      => 'SALUTON, VIKIO!',
+	'voctrain_Permission_Denied'                                => 'Malpermesita',
+	'voctrain_try_again_'                                       => 'ĉu reprovu?',
+	'voctrain_Action_unknown'                                   => 'Ago nekonata',
+	'voctrain_User_added'                                       => 'Uzanto aldonita',
+	'voctrain_continue'                                         => 'kontinui',
+	'voctrain_hello_place'                                      => 'saluton %place',
+	'voctrain_bye'                                              => 'ĝis',
+	'voctrain_Set_up_your_exercise'                             => 'Starigi vian ekzercon',
+	'voctrain_Number_of_questions'                              => 'Nombro de demandoj',
+	'voctrain_Languages'                                        => 'Lingvoj',
+	'voctrain_Please_specify_the_languages_you_want_to_test_in' => 'Bonvolu specifigi la lingvojn kiun vi volas testi',
+	'voctrain_eg_eng_for_English_deu_for_Deutch_German_'        => '(ekz-e: eng por angla lingvo, deu por germana lingvo).',
+	'voctrain_Questions'                                        => 'Demandoj',
+	'voctrain_Answers'                                          => 'Respondoj',
+	'voctrain_start_exercise'                                   => 'starti ekzercon',
+	'voctrain_collection'                                       => 'kolekto',
+	'voctrain_ISO_639_3_format'                                 => 'ISO-639-3 formato',
+	'voctrain_Word'                                             => 'Vorto',
+	'voctrain_I_know_it_do_not_ask_again'                       => 'Mi scias ĝin/ne redemandu',
+	'voctrain_abort_exercise'                                   => 'nuligi ekzercon',
+	'voctrain_Question'                                         => 'Demando',
+	'voctrain_The_word_to_translate'                            => 'La vorto traduki',
+	'voctrain_Answer'                                           => 'Respondo',
+	'voctrain_logout'                                           => 'Elsaluti',
+	'voctrain_Exercise_complete'                                => 'Ezkerco kompleta',
+	'voctrain_Exercise_terminated'                              => 'Ekzerco estis haltita',
+	'voctrain_User_name'                                        => 'Salutnomo',
+	'voctrain_Password'                                         => 'Pasvorto',
+	'voctrain_Login'                                            => 'Ensaluti',
+	'voctrain_Create_new_user'                                  => 'Krei novan uzanton',
+	'voctrain_Language'                                         => 'Lingvo',
+	'voctrain_Log_in'                                           => 'Ensaluti',
 );
 
 /** Finnish (Suomi) */
@@ -221,6 +307,7 @@ $messages['nap'] = array(
 /** Dutch (Nederlands)
  * @author Siebrand
  * @author GerardM
+ * @author SPQRobin
  */
 $messages['nl'] = array(
 	'voctrain_Hello_World'                                                                          => 'HALLO WIKI!',
@@ -229,7 +316,7 @@ $messages['nl'] = array(
 	'voctrain_Action_unknown'                                                                       => 'Actie onbekend',
 	'voctrain_I_don_t_know_what_to_do_with_action_'                                                 => "Het is niet duidelijk wat te doen met '%action'.",
 	'voctrain_User_added'                                                                           => 'Gebruiker toegevoegd',
-	'voctrain_Hello_username_welcome_to_the_omega_language_trainer'                                 => 'Hallo, %username. Welkom bij de omega taaltrainer',
+	'voctrain_Hello_username_welcome_to_the_omega_language_trainer'                                 => 'Hallo, %username. Welkom bij de Omega-taaltrainer',
 	'voctrain_continue'                                                                             => 'doorgaan',
 	'voctrain_hello_place'                                                                          => 'hallo daar %place',
 	'voctrain_bye'                                                                                  => 'tot ziens',
@@ -238,7 +325,7 @@ $messages['nl'] = array(
 	'voctrain_Languages'                                                                            => 'Talen',
 	'voctrain_Please_specify_the_languages_you_want_to_test_in'                                     => 'Geef alstublieft de talen op waarin u wilt oefenen',
 	'voctrain_eg_eng_for_English_deu_for_Deutch_German_'                                            => '(bijvoorbeeld eng voor het Engels en deu voor Duits).',
-	'voctrain_Depending_on_your_test_set_some_combinations_might_work_better_than_others_'          => 'Afhankelijk van uw testset, werken sommige combinaties beter dan anderen.',
+	'voctrain_Depending_on_your_test_set_some_combinations_might_work_better_than_others_'          => 'Afhankelijk van uw testset werken sommige combinaties beter dan anderen.',
 	'voctrain_Questions'                                                                            => 'Vragen',
 	'voctrain_Answers'                                                                              => 'Antwoorden',
 	'voctrain_start_exercise'                                                                       => 'oefening starten',
@@ -280,21 +367,48 @@ $messages['nl'] = array(
 	'voctrain_Type_a_username_and_optional_password_or_try_a_different_username_'                   => 'Geef een gebruikersnaam en wachtwoord in (optineel), of probeer een andere gebruikersnaam',
 );
 
+/** Russian (Русский)
+ * @author Александр Сигачёв
+ */
+$messages['ru'] = array(
+	'voctrain_Hello_World'                                          => 'ПРИВЕТ, ВИКИ!',
+	'voctrain_Permission_Denied'                                    => 'Доступ запрещён',
+	'voctrain_try_again_'                                           => 'попробовать ещё раз?',
+	'voctrain_Action_unknown'                                       => 'Неизвестное действие',
+	'voctrain_I_don_t_know_what_to_do_with_action_'                 => 'Я не знаю, что делать с «%action».',
+	'voctrain_User_added'                                           => 'Участник добавлен',
+	'voctrain_Hello_username_welcome_to_the_omega_language_trainer' => 'Привет, %username, добро пожаловать в программу обучения языкам Omega',
+);
+
 /** Swedish (Svenska)
  * @author M.M.S.
  */
 $messages['sv'] = array(
-	'voctrain_Hello_World'       => 'HEJ WIKI!',
-	'voctrain_Permission_Denied' => 'Åtkomst nekas',
-	'voctrain_try_again_'        => 'pröva igen?',
-	'voctrain_User_added'        => 'Användare tillagd',
-	'voctrain_continue'          => 'fortsätt',
-	'voctrain_bye'               => 'hej då',
-	'voctrain_Languages'         => 'Språk',
-	'voctrain_Word'              => 'Ord',
-	'voctrain_one_of'            => 'en av',
-	'voctrain_Password'          => 'Lösenord',
-	'voctrain_Language'          => 'Språk',
-	'voctrain_Log_in'            => 'Logga in',
+	'voctrain_Hello_World'                               => 'HEJ WIKI!',
+	'voctrain_Permission_Denied'                         => 'Åtkomst nekas',
+	'voctrain_try_again_'                                => 'pröva igen?',
+	'voctrain_User_added'                                => 'Användare tillagd',
+	'voctrain_continue'                                  => 'fortsätt',
+	'voctrain_bye'                                       => 'hej då',
+	'voctrain_Number_of_questions'                       => 'Antal frågor',
+	'voctrain_Languages'                                 => 'Språk',
+	'voctrain_eg_eng_for_English_deu_for_Deutch_German_' => '(t.ex., eng för engelska, deu för tyska).',
+	'voctrain_Questions'                                 => 'Frågor',
+	'voctrain_Answers'                                   => 'Svar',
+	'voctrain_Word'                                      => 'Ord',
+	'voctrain_skip'                                      => 'hoppa över',
+	'voctrain_Question'                                  => 'Fråga',
+	'voctrain_Answer'                                    => 'Svar',
+	'voctrain_one_of'                                    => 'en av',
+	'voctrain_Answer_s_'                                 => 'Svar',
+	'voctrain_logout'                                    => 'logga ut',
+	'voctrain_User_name'                                 => 'Användarnamn',
+	'voctrain_Password'                                  => 'Lösenord',
+	'voctrain_Login'                                     => 'Logga in',
+	'voctrain_Create_new_user'                           => 'Skapa ny användare',
+	'voctrain_Switch_language'                           => 'Ändra språk',
+	'voctrain_Language'                                  => 'Språk',
+	'voctrain_Log_in'                                    => 'Logga in',
+	'voctrain_Could_not_create_new_user'                 => 'Kunde inte skapa ny användare',
 );
 

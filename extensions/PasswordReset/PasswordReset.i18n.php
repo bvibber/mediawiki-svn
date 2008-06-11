@@ -607,6 +607,14 @@ $messages['stq'] = array(
 	'passwordreset-accountdisabled'    => 'Benutserkonto is deaktivierd',
 );
 
+/** Sundanese (Basa Sunda)
+ * @author Irwangatot
+ */
+$messages['su'] = array(
+	'passwordreset-username' => 'Landihan',
+	'passwordreset-newpass'  => 'Sandi anyar',
+);
+
 /** Swedish (Svenska)
  * @author M.M.S.
  */

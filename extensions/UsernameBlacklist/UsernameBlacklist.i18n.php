@@ -198,7 +198,7 @@ $messages['cs'] = array(
 # * Foo
 # * [Bb]ar
 </pre>',
-	'usernameblacklist-invalid-lines' => 'Následující {{plural:$1|řádka|řádky|řádky}} v&nbsp;seznamu nepovolených uživatelských jmen {{plural:$1|je neplatná|jsou neplatné|jsou neplatné}}; prosíme, opravte {{plural:$1|ji|je|je}} před uložením:',
+	'usernameblacklist-invalid-lines' => 'Následující {{PLURAL:$1|řádka|řádky|řádky}} v&nbsp;seznamu nepovolených uživatelských jmen {{PLURAL:$1|je neplatná|jsou neplatné|jsou neplatné}}; prosíme, opravte {{PLURAL:$1|ji|je|je}} před uložením:',
 	'right-uboverride'                => 'Potlačení nepovolených uživatelských jmen',
 );
 

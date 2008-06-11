@@ -894,6 +894,13 @@ $messages['sr-ec'] = array(
 	'youtubeauthsub_submit' => 'Прихвати',
 );
 
+/** Sundanese (Basa Sunda)
+ * @author Irwangatot
+ */
+$messages['su'] = array(
+	'youtubeauthsub_category' => 'Kategori',
+);
+
 /** Swedish (Svenska)
  * @author M.M.S.
  * @author Sannab

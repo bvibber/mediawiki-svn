@@ -78,9 +78,14 @@ $messages['fr'] = array(
 Un nouveau compte utilisateur, $2, a été créé sur $3 le $4.',
 );
 
+/** Galician (Galego)
+ * @author Alma
+ * @author Toliño
+ */
 $messages['gl'] = array(
-	'newusernotifsubj' => 'Notificación de novo usuario para $1',
-	'newusernotifbody' => 'Ola $1,
+	'newusernotifsubj'  => 'Notificación de novo usuario para $1',
+	'newusernotif-desc' => 'Envía unha notificación por correo electrónico cando se crean contas de usuario',
+	'newusernotifbody'  => 'Ola $1,
 
 Unha nova conta de usuario, $2, foi creada sobre $3 en $4.',
 );

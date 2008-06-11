@@ -350,20 +350,34 @@ $allMessages['gl'] = array(
 	'whitelisttablemodifyall'  => 'Todo',
 	'whitelisttablemodifynone' => 'Ningún',
 	'whitelisttablepage'       => 'Páxina do wiki',
+	'whitelisttabletype'       => 'Tipo de acceso',
 	'whitelisttableexpires'    => 'Expira o',
+	'whitelisttablemodby'      => 'Modificado por última vez por',
+	'whitelisttablemodon'      => 'Modificado por última o',
 	'whitelisttableedit'       => 'Editar',
 	'whitelisttableview'       => 'Ver',
 	'whitelisttablenewdate'    => 'Nova data:',
+	'whitelisttablechangedate' => 'Cambiar a data de remate',
+	'whitelisttablesetedit'    => 'Preparar para editar',
+	'whitelisttablesetview'    => 'Preparar para ver',
 	'whitelisttableremove'     => 'Eliminar',
 	'whitelistnewpagesfor'     => 'Engada novas páxinas á listaxe branca de <b>$1</b><br />
 Pode usar * ou %, como tamén o carácter "comodín"',
 	'whitelistnewtabledate'    => 'Data de expiración:',
+	'whitelistnewtableedit'    => 'Preparar para editar',
+	'whitelistnewtableview'    => 'Preparar para ver',
 	'whitelistnewtableprocess' => 'Proceso',
+	'whitelistnewtablereview'  => 'Revisar',
 	'whitelistpagelist'        => 'Páxinas de {{SITENAME}} para $1',
 	'whitelistbadtitle'        => 'Título incorrecto -',
+	'whitelistoverviewrm'      => '* Eliminando o acceso a [[:$1|$1]]',
+	'whitelistrequest'         => 'Solicitar acceso a máis páxinas',
 	'whitelistrequestmsg'      => '$1 solicitou ter acceso ás seguintes páxinas:
 
 $2',
+	'whitelistrequestconf'     => 'A solicitude para páxinas novas foi enviada a $1',
+	'whitelistnonrestricted'   => "O usuario '''$1''' non é un usuario limitado.
+Esta páxina só é aplicable aos usuarios limitados",
 	'whitelistnever'           => 'nunca',
 	'whitelistnummatches'      => '  - $1 coincidencias',
 );
@@ -923,6 +937,13 @@ $allMessages['sr-ec'] = array(
 	'whitelisttablemodifynone' => 'Нема',
 	'whitelisttableedit'       => 'Уреди',
 	'whitelisttableremove'     => 'Уклони',
+);
+
+/** Sundanese (Basa Sunda)
+ * @author Irwangatot
+ */
+$allMessages['su'] = array(
+	'whitelisttableedit' => 'Édit',
 );
 
 /** Swedish (Svenska)

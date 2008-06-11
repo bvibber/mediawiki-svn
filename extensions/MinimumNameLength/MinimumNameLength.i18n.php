@@ -75,8 +75,13 @@ $messages['fr'] = array(
 	'minnamelength-desc'  => 'Exige une longueur minimale pour un nom d’utilisateur.',
 );
 
+/** Galician (Galego)
+ * @author Toliño
+ * @author Xosé
+ */
 $messages['gl'] = array(
 	'minnamelength-error' => 'O seu nome de usuario é curto de máis. O tamaño mínimo é $1.',
+	'minnamelength-desc'  => 'Forzar unha lonxitude mínima para os nomes de usuario',
 );
 
 /** Hindi (हिन्दी)

@@ -258,7 +258,8 @@ $messages['hu'] = array(
  * @author S.Örvarr.S
  */
 $messages['is'] = array(
-	'dt_xml_page' => 'Síða',
+	'dt_viewxml_namespaces' => 'Nafnrými',
+	'dt_xml_page'           => 'Síða',
 );
 
 /** Japanese (日本語)
@@ -579,6 +580,13 @@ $messages['stq'] = array(
 	'dt_xml_field'                => 'Fäild',
 	'dt_xml_name'                 => 'Noome',
 	'dt_xml_title'                => 'Tittel',
+);
+
+/** Sundanese (Basa Sunda)
+ * @author Irwangatot
+ */
+$messages['su'] = array(
+	'dt_viewxml_namespaces' => 'Ngaranspasi',
 );
 
 /** Swedish (Svenska)

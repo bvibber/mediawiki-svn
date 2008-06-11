@@ -29,6 +29,13 @@ $messages['arz'] = array(
 	'absenteelandlord-desc'   => 'قاعدة بيانات الويكي بتتقفل اوتوماتيكي لو كل الاداريين ما اشتغلو ش لفترة معينة',
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author Jim-by
+ */
+$messages['be-tarask'] = array(
+	'absenteelandlord-reason' => 'База зьвестак была аўтаматычна заблякавана з прычыны неактыўнасьці адміністратараў.',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  */

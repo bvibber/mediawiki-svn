@@ -1130,6 +1130,14 @@ $messages['sr-ec'] = array(
 	'regexblock-form-reason' => 'Разлог:',
 );
 
+/** Sundanese (Basa Sunda)
+ * @author Irwangatot
+ */
+$messages['su'] = array(
+	'regexblock-form-reason'     => 'Alesan:',
+	'regexblock-already-blocked' => '$1 geus dipeungpeuk.',
+);
+
 /** Swedish (Svenska)
  * @author M.M.S.
  */
