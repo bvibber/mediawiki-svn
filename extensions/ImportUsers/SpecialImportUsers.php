@@ -1,24 +1,19 @@
 <?php
 /**
  *
- * @package MediaWiki
  * @subpackage Extensions
  *
- * @author RouslanZenetl
- * @author YuriyIlkiv
+ * @author Rouslan Zenetl
+ * @author Yuriy Ilkiv
  * @license You are free to use this extension for any reason and mutilate it to your heart's liking.
  */
 
 if (!defined('MEDIAWIKI')) die();
 require_once "$IP/includes/SpecialPage.php";
 
-if ( !function_exists( 'extAddSpecialPage' ) ) {
-	require( dirname(__FILE__) . '/../ExtensionFunctions.php' );
-}
-
 $wgExtensionCredits['specialpage'][] = array(
 	'name' => 'Import Users',
-	'author' => 'Yuriy Ilkiv, Rouslan Zenetl',
+	'author' => array('Yuriy Ilkiv', 'Rouslan Zenetl'),
 	'svn-date' => '$LastChangedDate$',
 	'svn-revision' => '$LastChangedRevision$',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:ImportUsers',
@@ -29,5 +24,6 @@ $wgExtensionCredits['specialpage'][] = array(
 $wgAvailableRights[] = 'import_users';
 $wgGroupPermissions['bureaucrat']['import_users'] = true;
 $dir = dirname(__FILE__) . '/';
-extAddSpecialPage( $dir . 'SpecialImportUsers_body.php', 'ImportUsers', 'SpecialImportUsers' );
+$wgSpecialPages['ImportUsers'] = 'SpecialImportUsers'; 
+$wgAutoloadClasses['SpecialImportUsers'] = $dir . 'SpecialImportUsers_body.php';
 $wgExtensionMessagesFiles['ImportUsers'] = $dir . 'SpecialImportUsers.i18n.php';
