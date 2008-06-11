@@ -18,11 +18,14 @@
  *  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
  * @author Evan Prodromou <evan@vinismo.com>
- * @addtogroup Extensions
+ * @ingroup Extensions
  */
 
 $messages = array();
 
+/** English
+ * @author Evan Prodromou <evan@vinismo.com>
+ */
 $messages['en'] = array(
 	'form'                         => 'Form',
 	'formnoname'                   => 'No form name',
@@ -151,6 +154,31 @@ $messages['eo'] = array(
 	'formarticleexists'     => 'Paĝo ekzistas',
 	'formarticleexiststext' => 'La paĝo [[$1]] jam ekzistas.',
 	'formbadpagename'       => 'Fuŝa paĝnomo',
+);
+
+/** Finnish (Suomi)
+ * @author Jack Phoenix
+ */
+$messages['fi'] = array(
+	'form'                         => 'Lomake',
+	'formnoname'                   => 'Ei lomakkeen nimeä',
+	'formnonametext'               => 'Sinun tulee antaa lomakkeen nimi, kuten "Special:Form/Lomakkeennimi".',
+	'formbadname'                  => 'Huono lomakkeen nimi',
+	'formbadnametext'              => 'Haluamallasi nimellä ei ole lomaketta.',
+	'formpattern'                  => '$1-lomake',
+	'formtemplatepattern'          => '$1', # Do not translate this message
+	'formtitlepattern'             => 'Lisää uusi $1',
+	'formsave'                     => 'Tallenna',
+	'formindexmismatch'            => 'Tällä lomakkeella on yhteensopimattomat nimi- ja mallinekaavat alkaen riviltä $1.',
+	'formarticleexists'            => 'Sivu on jo olemassa',
+	'formarticleexiststext'        => 'Sivu [[$1]] on jo olemassa.',
+	'formbadpagename'              => 'Huono sivun nimi',
+	'formbadpagenametext'          => 'Antamasi lomakkeen tiedot tekevät huonon sivun nimen, "$1".',
+	'formrequiredfieldpluralerror' => 'Kentät $1 ovat pakollisia tälle lomakkeelle. Ole hyvä ja täytä ne.',
+	'formrequiredfielderror'       => 'Kenttä $1 on pakollinen tälle lomakkeelle. Ole hyvä ja täytä se.',
+	'formsavesummary'              => 'Uusi sivu käyttäen [[Special:Form/$1]]',
+	'formsaveerror'                => 'Virhe lomaketta tallennettaessa',
+	'formsaveerrortext'            => 'Tuntematon virhe tapahtui sivua \'$1\' tallennettaessa.',
 );
 
 $messages['fr'] = array(

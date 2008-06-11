@@ -18,7 +18,7 @@
  *  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
  * @author Evan Prodromou <evan@vinismo.com>
- * @addtogroup Extensions
+ * @ingroup Extensions
  */
 
 if (!defined('MEDIAWIKI')) {
@@ -36,11 +36,13 @@ $wgHooks['LanguageGetSpecialPageAliases'][] = 'formLocalizedPageName'; # Add any
 # Typo in versions of MW earlier than 1.11.x (?)
 $wgHooks['LangugeGetSpecialPageAliases'][] = 'formLocalizedPageName'; # Add any aliases for the special page.
 
-$wgExtensionCredits['specialpage'][] = array('name' => 'Form',
-											 'version' => SPECIALFORM_VERSION,
-											 'author' => 'Evan Prodromou',
-											 'url' => 'http://www.mediawiki.org/wiki/Extension:Form',
-											 'description' => 'A form interface to start new articles');
+$wgExtensionCredits['specialpage'][] = array(
+	'name' => 'Form',
+	'version' => SPECIALFORM_VERSION,
+	'author' => 'Evan Prodromou',
+	'url' => 'http://www.mediawiki.org/wiki/Extension:Form',
+	'description' => 'A form interface to start new articles'
+);
 
 function formLocalizedPageName(&$specialPageArray, $code) {
 	# The localized title of the special page is among the messages of the extension:
@@ -53,5 +55,3 @@ function formLocalizedPageName(&$specialPageArray, $code) {
 
 	return true;
 }
-
-?>

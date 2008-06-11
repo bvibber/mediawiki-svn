@@ -18,7 +18,7 @@
  *  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
  * @author Evan Prodromou <evan@vinismo.com>
- * @addtogroup Extensions
+ * @ingroup Extensions
  */
 
 if (!defined('MEDIAWIKI')) {
@@ -27,8 +27,7 @@ if (!defined('MEDIAWIKI')) {
 
 require_once('XmlFunctions.php');
 
-class SpecialForm extends SpecialPage
-{
+class SpecialForm extends SpecialPage {
 	function SpecialForm() {
 		SpecialPage::SpecialPage("Form");
 		self::loadMessages();
@@ -493,5 +492,3 @@ class FormField {
 		}
 	}
 }
-
-?>
