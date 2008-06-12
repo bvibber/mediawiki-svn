@@ -40,6 +40,7 @@ $wgExtensionCredits['other'][] = array(
 	'description' => 'Simple framework for spambot checks and trigger payloads',
 	'descriptionmsg' => 'antibot-desc',
 );
+$wgExtensionMessagesFiles['AntiBot'] =  dirname(__FILE__) . '/AntiBot.i18n.php';
 
 /**
  * A map of payload types to callbacks
