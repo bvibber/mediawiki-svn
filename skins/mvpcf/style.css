@@ -1,4 +1,6 @@
 /* 
+	main style for mediaWiki version of the mvpcf theme
+	
 	Color sets
 	
 	Blue: #75a5e4
@@ -9,8 +11,7 @@
 	Dark grey: #474747
 	Darker grey: #242424
 	Red: #dd1313
-	Orange: #df5c01
-	
+	Orange: #df5c01	
 */
 
 html {margin: 0; padding: 0;}
@@ -49,67 +50,53 @@ h6 {font-size: 13px; color: #6c6c6c; padding: 10px 20px 0px 20px; text-transform
 /*
 ** the personal toolbar
 */
-#p-personal {
-	position: absolute;
-	left: 0;
-	top: 0;
-	z-index: 0;
-}
-#p-personal {
-	width: 100%;
-	white-space: nowrap;
-	padding: 0;
-	margin: 0;
-	border: none;
-	background: none;
+#p-personal {position: absolute;left: 0;top: 0;	z-index: 0;}
+#p-personal {width: 100%;white-space: nowrap;padding: 0;margin: 0;border: none;background: none;
 	overflow: visible;
 	line-height: 1.2em;
 }
-#p-personal h5 {
-	display: none;
-}
+#p-personal h5 {	display: none;}
 #p-personal .portlet,
-#p-personal .pBody {
-	z-index: 0;
-	padding: 0;
-	margin: 0;
-	border: none;
-	overflow: visible;
-	background: none;
-}
+#p-personal .pBody {	z-index: 0;padding: 0;margin: 0;border: none;overflow: visible;background: none;}
 /* this is the ul contained in the portlet */
-#p-personal ul {
-	border: none;
-	line-height: 1.4em;
-	color: #2f6fab;
-	padding: 0 2em 0 3em;
-	margin: 0;
-	text-align: right;
-	list-style: none;
-	z-index: 0;
-	background: none;
-	cursor: default;
+#p-personal ul { border: none;line-height: 1.4em;color: #2f6fab;padding: 0 2em 0 3em;margin: 0;
+	text-align: right;	list-style: none;	z-index: 0;	background: none;	cursor: default;
 }
-#p-personal li {
-	z-index: 0;
-	border: none;
-	padding: 0;
-	display: inline;	
-	margin-left: 1em;
+#p-personal li {z-index: 0;border: none;padding: 0;display: inline;	margin-left: 1em;
+	line-height: 1.2em;	background: none;
+}
+#p-personal li a {	padding-bottom: .2em;background: none;
+}
+#p-personal li a:hover {background-color: white;padding-bottom: .2em;
+}
+#p-personal li.active a:hover {	background-color: transparent;}
+
+/*
+** the "action" links located below the searchHeader
+*/
+#p-cactions {position:relative;top: 15px;}
+#p-cactions {width: 100%;white-space: nowrap;padding: 0;margin: 0;border: none;background: none;
+	overflow: visible;
 	line-height: 1.2em;
-	background: none;
 }
-#p-personal li a {		
-	padding-bottom: .2em;
-	background: none;
+#p-cactions h5 {	display: none;}
+#p-cactions .portlet,
+#p-cactions .pBody {z-index: 0;padding: 0;margin: 0;border: none;overflow: visible;background: none;}
+/* this is the ul contained in the portlet */
+#p-cactions ul { border: none;line-height: 1.4em;color: #2f6fab;padding: 0 2em 0 3em;margin: 0;
+	text-align: right;	list-style: none;	z-index: 0;	background: none;	cursor: default;
 }
-#p-personal li a:hover {
-	background-color: white;
-	padding-bottom: .2em;
+#p-cactions li {z-index: 0;border: none;padding: 0;display: inline;	margin-left: 1em;
+	line-height: 1.2em;	background: none;
 }
-#p-personal li.active a:hover {
-	background-color: transparent;
+#p-cactions li a {	padding-bottom: .2em;background: none;
 }
+#p-cactions li a:hover {background-color: white;padding-bottom: .2em;
+}
+#p-cactions li.active a:hover {	background-color: transparent;}
+.selected a {color: #474747; text-decoration:none;}
+
+
 /* the icon in front of the user name, single quotes
 in bg url to hide it from iemac */
 li#pt-userpage,
@@ -220,9 +207,8 @@ a.advanced_search_tag {font-size: 12px; text-decoration: none; margin: 8px; posi
 	z-index: 3;
 	background: url(images/search_suggest_bottom.png) 0 0 no-repeat;
 }
-
 .suggestionsBox div.block {
-	border-top: 1px solid #dadada;
+	border-top: 1px solid #dadada;	
 }
 .suggestionsBox div.wide_block {
 	padding: 15px 0;
@@ -266,7 +252,7 @@ a.advanced_search_tag {font-size: 12px; text-decoration: none; margin: 8px; posi
 
 .suggestionsBox div.block p.last_match {border-bottom: 0;}
 
-.suggestionsBox div.block ul {
+.suggestionsBox ul {
 	list-style: none;
 	margin: 10px 0;
 	padding: 0 20px;
@@ -276,8 +262,59 @@ a.advanced_search_tag {font-size: 12px; text-decoration: none; margin: 8px; posi
 .suggestionsBox div.block ul li ul {margin: 0;}
 .suggestionsBox div.block ul li ul li a {color: #df5c01;}
 .suggestionsBox div.block ul li ul li a:hover {color: #ffa02f;}
-
 .suggestionsBox div.block ul li span.clips {display: block; text-align: right; margin: 6px 0 18px 0;}
+
+
+/*auto complete css:*/
+.ac_results {
+	padding: 0px;
+	border: 1px solid WindowFrame;
+	background-color: Window;
+	overflow: hidden;
+}
+.ac_results ul {
+	list-style-position: outside;
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+.ac_results h6 {margin-left:0px;}
+.ac_results li {
+	margin: 0px;
+	padding: 2px 5px;
+	cursor: pointer;
+	display: block;	
+	font-size:1em;
+	overflow: hidden;
+	border-bottom: 1px solid #dadada;
+	color: #2060c1;
+}
+.ac_results li img{
+	float: left; display: inline;
+}
+.ac_results li .ac_img_txt{
+	float: left; display: inline; vertical-align: top; line-height: 54px; padding-left: 15px; width: 196px;
+}
+.ac_loading {
+	background : Window url('images/indicator.gif') right center no-repeat;
+}
+.ac_over {
+	background: #0b68c9 url(images/selector.png) 0 0 repeat-x;
+	color: white;
+}
+
+.ac_results iframe {
+	display:none;/*sorry for IE5*/
+	display/**/:block;/*sorry for IE5*/
+	position:absolute;
+	top:0;
+	left:0;
+	z-index:-1;
+	filter:mask();
+	width:3000px;
+	height:3000px;
+}
+
 
 
 
@@ -309,6 +346,7 @@ a.advanced_search_tag {font-size: 12px; text-decoration: none; margin: 8px; posi
 #searchSideBarInner h6 {color: #242424; text-transform: none; padding: 5px 20px 5px 20px; margin: 0;}
 #searchSideBarInner h6.profile {background: #dfebfe; margin: 0px 1px;}
 
+/* results */
 #resultsArea {
 	width: 630px;
 	float: left;

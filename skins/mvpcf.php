@@ -69,7 +69,7 @@ class MvpcfTemplate extends QuickTemplate {
 		<?php $this->html('headlinks') ?>
 		<title><?php $this->text('pagetitle') ?></title>		
 		<style type="text/css" media="screen, projection">/*<![CDATA[*/			
-			@import "<?php $this->text('stylepath') ?>/<?php $this->text('stylename') ?>/main.css";
+			@import "<?php $this->text('stylepath') ?>/<?php $this->text('stylename') ?>/style.css";
 		/*]]>*/</style>			
 						
 		<!--[if lt IE 7]>
@@ -105,23 +105,102 @@ class MvpcfTemplate extends QuickTemplate {
 <?php if($this->data['body_onload'    ]) { ?>onload="<?php     $this->text('body_onload')     ?>"<?php } ?>
  class="mediawiki <?php $this->text('nsclass') ?> <?php $this->text('dir') ?> <?php $this->text('pageclass') ?>">
 	<div id="globalWrapper">
-	<div id="searchHeader">
-<div class="logo2">
-<a href="#">
-<img alt="Metavid" src="<?php $this->text('stylepath') ?>/<?php $this->text('stylename') ?>/images/logo2.png"/>
-</a>
-<p class="tagline2">Video archive of the US Congress</p>
-</div>
-<div class="form_search_row">
-<input id="search_field" class="searchField" type="text" name="search[field]"/>
-<button class="grey_button" type="submit">
-<span>   Search   </span>
-</button>
-<a class="advanced_search_tag" href="#">advanced search</a>
-</div>
-</div>
+		<div id="searchHeader">
+			<div class="logo2">
+				<a href="<?global $wgScript; echo $wgScript ?>">
+				<img alt="Metavid" src="<?php $this->text('stylepath') ?>/<?php $this->text('stylename') ?>/images/logo2.png"/>
+				</a>
+				<p class="tagline2">Video archive of the US Congress</p>
+			</div>
+			<div class="form_search_row">
+					<input id="search_field" class="searchField" type="text" name="search[field]"/>
+					<button class="grey_button" type="submit">
+					<span>   Search   </span>
+					</button>
+					<a class="advanced_search_tag" href="#">advanced search</a>
+				<div id="p-cactions" class="portlet">
+					<h5><?php $this->msg('views') ?></h5>
+					<div class="pBody">
+						<ul>
+				<?php			foreach($this->data['content_actions'] as $key => $tab) { ?>
+							 <li id="ca-<?php echo Sanitizer::escapeId($key) ?>"<?php
+								 	if($tab['class']) { ?> class="<?php echo htmlspecialchars($tab['class']) ?>"<?php }
+								 ?>><a href="<?php echo htmlspecialchars($tab['href']) ?>"<?php echo $skin->tooltipAndAccesskey('ca-'.$key) ?>><?php
+								 echo htmlspecialchars($tab['text']) ?></a></li>
+				<?php			 } ?>
+						</ul>
+					</div>
+				</div>
+			</div>		
+		</div>
+		
+		<div id="suggestions">
+				<div id="suggestionsTop"></div>
+
+				<div id="suggestionsInner" class="suggestionsBox ac_results">
+					<div class="block">
+						<p><a href="javascript:;" onclick="hideSuggestions('suggestions');">Search videos for "<strong>ta</strong>" (hide this box)</a></p>
+					</div>
+					
+					<div class="block">
+						<h6>Category Matches</h6>
+					</div>
+
+					
+					<div class="block">
+						<p class="short_match"><a href="#"><span><strong>Ta</strong>xes</span></a></p>
+						<p class="short_match"><a href="#" class="last_match"><span><strong>Ta</strong>ttoos</span></a></p>
+					</div>
+					
+					<div class="block">
+						<h6>People Matches</h6>
+
+					</div>
+					
+					<div class="block">
+						<p class="people_match">
+							<img src="images/thumb1.jpg" alt="" />
+							<a href="#">Chaka Fat<strong>ta</strong>h</a>
+						</p>
+						<p class="people_match">
+
+							<img src="images/thumb2.jpg" alt="" />
+							<a href="#">Charles <strong>Ta</strong>ylor</a>
+						</p>
+						<p class="people_match last_match">
+							<img src="images/thumb3.jpg" alt="" />
+							<a href="#">Charles W. Jr. Bous<strong>ta</strong>ny</a>
+
+						</p>
+					</div>
+					
+					<div class="block">
+						<h6>Bill Matches</h6>
+					</div>
+					
+					<div class="block">
+						<p class="short_match"><a href="#"><span>H.R. 3238: United-S<strong>ta</strong>tes-Israel Energy Cooperation Act</span></a></p>
+
+						<p class="short_match"><a href="#" class="last_match"><span>H.R. 3238: United-S<strong>ta</strong>tes-Israel Energy Cooperation Act</span></a></p>
+					</div>
+					
+					<div class="block">
+						<h6>Interest Group Matches</h6>
+					</div>
+					
+					<div class="block">
+						<p class="short_match"><a href="#"><span>Hospi<strong>ta</strong>ls</span></a></p>
+
+						<p class="short_match"><a href="#"><span>Real Es<strong>ta</strong>te</span></a></p>
+					</div>
+					
+				</div><!--suggestionsInner-->
+				<div id="suggestionsBot"></div>
+			</div><!--suggestions-->
+		
+		
 	
-		<div id="column-content">
+	<div id="column-content">
 	<div id="content">
 		<a name="top" id="top"></a>
 		<?php if($this->data['sitenotice']) { ?><div id="siteNotice"><?php $this->html('sitenotice') ?></div><?php } ?>
@@ -141,19 +220,7 @@ class MvpcfTemplate extends QuickTemplate {
 	</div>
 		</div>
 		<!--  <div id="column-one">-->
-	<div id="p-cactions" class="portlet">
-		<h5><?php $this->msg('views') ?></h5>
-		<div class="pBody">
-			<ul>
-	<?php			foreach($this->data['content_actions'] as $key => $tab) { ?>
-				 <li id="ca-<?php echo Sanitizer::escapeId($key) ?>"<?php
-					 	if($tab['class']) { ?> class="<?php echo htmlspecialchars($tab['class']) ?>"<?php }
-					 ?>><a href="<?php echo htmlspecialchars($tab['href']) ?>"<?php echo $skin->tooltipAndAccesskey('ca-'.$key) ?>><?php
-					 echo htmlspecialchars($tab['text']) ?></a></li>
-	<?php			 } ?>
-			</ul>
-		</div>
-	</div>
+	
 	<div class="portlet" id="p-personal">
 		<h5><?php $this->msg('personaltools') ?></h5>
 		<div class="pBody">

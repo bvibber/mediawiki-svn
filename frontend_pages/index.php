@@ -16,7 +16,7 @@ $mvextension_path = $wgScriptPath.'/extensions/MetavidWiki';
 	<meta name="keywords" content="" />
 	<meta name="description" content="" />
 	<meta name="robots" content="all" />
-	<link rel="stylesheet" href="<?=$skin_path?>/styles.css" type="text/css" media="screen" />
+	<link rel="stylesheet" href="<?=$skin_path?>/style.css" type="text/css" media="screen" />
 	<!--[if lt IE 7]>
 	<link rel="stylesheet" href="<?=$skin_path?>/ie_styles.css" type="text/css" media="screen" />
 	<![endif]-->	
