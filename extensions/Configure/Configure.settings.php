@@ -1025,7 +1025,6 @@ $settingsVersion = array(
 	'wgCommandLineDarkBg' => array( array( '1.10alpha', '>=' ) ),
 	'wgDBTableOptions' => array( array( '1.10alpha', '>=' ) ),
 	'wgDisableOutputCompression' => array( array( '1.10alpha', '>=' ) ),
-	'wgEnableCascadingProtection' => array( array( '1.10alpha', '>=' ) ),
 	'wgMediaHandlers' => array( array( '1.10alpha', '>=' ) ),
 	'wgNamespaceAliases' => array( array( '1.10alpha', '>=' ) ),
 	'wgNamespaceProtection' => array( array( '1.10alpha', '>=' ) ),
@@ -1126,6 +1125,10 @@ $settingsVersion = array(
 	'wgLinkCacheMemcached' => array( array( '1.13alpha', '<' ) ),
 ## Both
 	'wgAlternateMaster' => array(
+		array( '1.10alpha', '>=' ),
+		array( '1.13alpha', '<' ),
+	),
+	'wgEnableCascadingProtection' => array(
 		array( '1.10alpha', '>=' ),
 		array( '1.13alpha', '<' ),
 	),
