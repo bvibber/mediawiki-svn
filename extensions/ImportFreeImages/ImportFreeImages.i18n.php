@@ -1,8 +1,8 @@
 <?php
 /**
- * Internationalisation file for extension ImportFreeImages.
+ * Internationalisation file for the ImportFreeImages extension.
  *
- * @addtogroup Extensions
+ * @ingroup Extensions
 */
 
 $messages = array();
@@ -121,6 +121,24 @@ $messages['eo'] = array(
 	'importfreeimages_filefromflickr'        => '$1 de uzanto <b>[$2]</b> de Flickr. Originala URL-o',
 	'importfreeimages_promptuserforfilename' => 'Bonvolu enigi celan dosiernomon:',
 	'importfreeimages_returntoform'          => "Aŭ, klaku <a href='$1'>ĉi tien</a> reveni al viaj serĉrezultoj.",
+);
+
+/** Finnish (Suomi)
+ * @author Jack Phoenix
+ */
+$messages['fi'] = array(
+	'importfreeimages'                => 'Tuo vapaita kuvia',
+	'importfreeimages_description'    => 'Tämän sivun kautta pystyt etsimään asianomaisesti lisensoituja kuvia flickr:sta ja tuomaan niitä wikiisi.',
+	'importfreeimages_noapikey'       => 'Et ole asettanut Flickr API-avaintasi.
+Tehdäksesi niin, hanki API-avain [http://www.flickr.com/services/api/misc.api_keys.html täältä] ja aseta wgFlickrAPIKey ImportFreeImages.php-tiedostossa.',
+	'importfreeimages_nophotosfound'  => 'Mitkään valokuvat eivät täsmänneet hakukriteeriisi \'$1\', ole hyvä ja koita uudestaan.',
+	'importfreeimages_invalidurl'     => 'URL "$1" ei ole kelvollinen Flickr-kuva.',
+	'importfreeimages_owner'          => 'Tekijä',
+	'importfreeimages_importthis'     => 'tuo tämä',
+	'importfreeimages_next'           => 'Seuraavat $1',
+	'importfreeimages_filefromflickr' => '$1 käyttäjän <b>[$2]</b> toimesta flickr:sta. Alkuperäinen URL',
+	'importfreeimages_promptuserforfilename' => 'Ole hyvä ja anna kohdenimi:',
+	'importfreeimages_returntoform'   => 'Tai napsauta <a href=\'$1\'>tästä</a> palataksesi hakusi tuloksiin',
 );
 
 /** French (Français)
