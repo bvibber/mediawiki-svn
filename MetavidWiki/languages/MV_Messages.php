@@ -84,7 +84,7 @@ Or you many want to <a href="$3">Add the stream</a>.',
 	#tools
 	'mv_tool_search'            => 'Search',
 	'mv_tool_search_title'      => 'Search within this Stream',
-	'mv_search_transcripts_for' => 'Search transcripts for',
+	'mv_search_transcripts_for' => 'Search videos for $1 (hide this box)',
 	'mv_tool_navigate'          => 'Navigate',
 	'mv_tool_navigate_title'    => 'Navigate the full stream',
 	'mv_tool_export'            => 'Export',
@@ -99,6 +99,10 @@ Or you many want to <a href="$3">Add the stream</a>.',
 	'mv_watch_clip'				=> 'Watch Clip',
 	'mv_close_clip'				=> 'Close Clip',
 	'mv_improve_transcript'		=> 'Improve Transcript',
+	'mv_people_matches'		=> 'People Matches',
+	'mv_bill_matches'			=> 'Bill Matches',
+	'mv_interest_group_matches' => 'Interest Group Matches',	
+
 
 	#mvd types:
 	'ht_en'          => 'Transcript',

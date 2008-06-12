@@ -15,7 +15,7 @@ function mv_setup_allpage(){
  		mvJsLoader.doLoad(
  			reqLibs, function(){
 	 				//js_log('allpage_ auto and hover check'+mv_setup_allpage_flag);
-					if(!mv_setup_allpage_flag){//have no idea why this gets called twice					   		
+					if(!mv_setup_allpage_flag){					   		
 						mv_setup_search_ac();
 						mv_do_mvd_link_rewrite();						
 						mv_setup_allpage_flag=true; 
@@ -154,7 +154,7 @@ function mv_cxt(inx){
 function mv_setup_search_ac(){
 	var uri = wgScript;
 	//add the person choices div to searchInput
-	var obj = $j('#searchInput').get(0);
+	/*var obj = $j('#searchInput').get(0);
 	//base offset: 
 	var curleft=55;
 	var curtop=20;
@@ -168,39 +168,41 @@ function mv_setup_search_ac(){
 	//get the search pos: 
 	$j('body').append('<div class="ac_results" id="mv_ac_choices" ' +
 			'style="border:solid black;background:#FFF;position:absolute;left:'+curleft+'px;top:'+curtop+'px;z-index:99;width:300px;display: none;"/>');
+	*/
 	//turn off browser baseed autocomplete: 
-	$j('#searchInput').attr('autocomplete',"off");
+	$j('#search_field').attr('autocomplete',"off");
 	//add hook:
-	$j('#searchInput').autocomplete(
+	$j('#search_field').autocomplete(
 		uri,
 		{
 			autoFill:false,
 			onItemSelect:function(v){		
 				//alert('selected:' + v.innerHTML + ' page:'+$j('#searchInput').val());	
 				//jump to page: 			
-				if($j('#searchInput').val()=='do_search'){
+				if($j('#search_field').val()=='do_search'){
 					qs = v.innerHTML.toLowerCase().indexOf('<b>')+3;
 					qe = v.innerHTML.toLowerCase().indexOf('</b>');
 					//update the search input (incase redirect fails)
-					$j('#searchInput').val(v.innerHTML.substring(qs,qe));
+					$j('#search_field').val(v.innerHTML.substring(qs,qe));
 					window.location=uri+'/'+'Special:Search?search='+v.innerHTML.substring(qs,qe);
 				}else{
-					window.location =uri+'/'+$j('#searchInput').val();
+					window.location =uri+'/'+$j('#search_field').val();
 				}
 			},
 			formatItem:function(row){
 				if(row[0]=='do_search'){
-					return row[1].replace('$1',$j('#searchInput').val());
+					return row[1].replace('$1',$j('#search_field').val());
 				}else if(row[2]=='no_image'){
 					return row[1];
 				}else{
-					return '<img width="44" src="'+ row[2] + '">'+row[1];
+					return '<img width="44" src="'+ row[2] + '"><span class="ac_img_txt">'+row[1]+'</span>';
 				}
 			},
 			matchSubset:0,
 			extraParams:{action:'ajax',rs:'mv_auto_complete_all'},
 			paramName:'rsargs[]',
-			resultElem:'#mv_ac_choices'
+			resultElem:'#suggestionsInner',
+			resultContainer:'#suggestions'							
 		});
 	//var offset = $j('#mv_person_input_'+inx).offset();
 	//$j('#mv_person_choices_'+inx).css('left', offset.left-205);

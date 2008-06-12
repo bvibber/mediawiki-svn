@@ -646,23 +646,23 @@ class MV_SpecialMediaSearch extends SpecialPage {
 		$val = str_replace(' ','_',$val);				
 		
 		//make sure people know they can "search" too (formated by  
-		$out='do_search|'.wfMsg('mv_search_transcripts_for').' <B>$1</B>|no_image'."\n";
+		$out='do_search|'.wfMsg('mv_search_transcripts_for','<B>$1</B>').'|no_image'."\n";
 		//get people
 		$person_out = MV_SpecialMediaSearch::auto_complete_person($val, 3);
 		if($person_out!=''){
-			$out.='Category:Person|<h2>People:</h2> |no_image'."\n";
+			$out.='Category:Person|<h6>'.wfMsg('mv_people_matches').'</h6>|no_image'."\n";
 			$out.=$person_out;
 		}
 		//get bills		
 		$bill_out = MV_SpecialMediaSearch::auto_complete_category('Bill', $val, 3);
 		if($bill_out!=''){
-			$out.='Category:Bill|<h2>Bills:</h2>|no_image'."\n";
+			$out.='Category:Bill|<h6>'.wfMsg('mv_bill_matches').'</h6>|no_image'."\n";
 			$out.=$bill_out;
 		}
 		//get intrests
 		$intrest_out = MV_SpecialMediaSearch::auto_complete_category('Interest_Group', $val, 3);
 		if($intrest_out!=''){
-			$out.='Category:Interest Group|<h2>Interest Group:</h2>|no_image'."\n";
+			$out.='Category:Interest Group|<h6>'.wfMsg('mv_interest_group_matches').'</h6>|no_image'."\n";
 			$out.=$intrest_out;
 		}
 		return $out;
