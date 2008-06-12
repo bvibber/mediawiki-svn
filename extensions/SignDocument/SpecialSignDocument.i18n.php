@@ -691,10 +691,14 @@ $messages['hu'] = array(
 );
 
 /** Indonesian (Bahasa Indonesia)
+ * @author Irwangatot
  * @author Rex
  */
 $messages['id'] = array(
-	'sign-viewfield-agent' => 'Aplikasi pengguna',
+	'sign-realname'           => 'Nama:',
+	'sign-viewfield-realname' => 'Nama',
+	'sign-viewfield-agent'    => 'Aplikasi pengguna',
+	'sign-viewfield-options'  => 'Pilihan',
 );
 
 /** Icelandic (Íslenska)
@@ -1940,13 +1944,58 @@ $messages['tg-cyrl'] = array(
 );
 
 /** Vietnamese (Tiếng Việt)
- * @author Minh Nguyen
  * @author Vinhtantran
+ * @author Minh Nguyen
  */
 $messages['vi'] = array(
-	'sign-city'              => 'Thành phố:',
-	'sign-viewfield-city'    => 'Thành phố',
-	'sign-viewfield-options' => 'Tùy chọn',
+	'signdocument'             => 'Ký tài liệu',
+	'sign-nodocselected'       => 'Xin hãy chọn tài liệu bạn muốn ký.',
+	'sign-selectdoc'           => 'Tài liệu:',
+	'sign-docheader'           => '<div class="noarticletext">Xin hãy dùng mẫu này để ký tài liệu "[[$1]]," ghi ở dưới.
+Xin hãy đọc qua toàn bộ tài liệu, và nếu bạn muốn chỉ rõ sự hỗ trợ của bạn cho nó, xin hãy điền các ô cần thiết để ký tên.</div>',
+	'sign-error-nosuchdoc'     => 'Tài liệu bạn yêu cầu ($1) không tồn tại.',
+	'sign-realname'            => 'Tên:',
+	'sign-address'             => 'Địa chỉ nhà:',
+	'sign-city'                => 'Thành phố:',
+	'sign-state'               => 'Bang:',
+	'sign-zip'                 => 'Mã zip:',
+	'sign-country'             => 'Quốc gia:',
+	'sign-phone'               => 'Số điện thoại:',
+	'sign-bday'                => 'Tuổi:',
+	'sign-email'               => 'Địa chỉ email:',
+	'sign-indicates-req'       => '<small><i><font color="red">*</font> chỉ các ô bắt buộc.</i></small>',
+	'sign-hide-note'           => '<small><i><font color="red">**</font> Chú ý: Thông tin không liệt kê sẽ hiển thị cho người quản trị.</i></small>',
+	'sign-list-anonymous'      => 'Liệt kê ẩn danh',
+	'sign-list-hideaddress'    => 'Đừng liệt kê địa chỉ',
+	'sign-list-hideextaddress' => 'Đừng liệt kê thành phố, bang, zip, hay quốc gia',
+	'sign-list-hidephone'      => 'Đừng liệt kê số điện thoại',
+	'sign-list-hidebday'       => 'Đừng liệt kê tuổi',
+	'sign-list-hideemail'      => 'Đừng liệt kê email',
+	'sign-submit'              => 'Ký tài liệu',
+	'sign-information'         => '<div class="noarticletext">Cảm ơn bạn đã bỏ chút thời gian đọc hết tài liệu này.
+Nếu bạn đồng ý với nó, xin hãy biểu thị sự ủng hộ của bạn bằng cách điền vào các khung bắt buộc phía dưới và nhấn "Ký tài liệu."
+Xin hãy đảm bảo rằng thông tin cá nhân của bạn là đúng và rằng chúng ra có cách nào đó để liên lạc với bạn để xác nhận danh tính.
+Chú ý rằng địa chỉ IP của bạn và những thông tin định danh khác sẽ được lưu giữ bởi mẫu này và được người quản trị xử dụng để xóa các chữ ký trùng lặp và xác nhận tính đúng đắn của thông tin cá nhân.
+Vì việc sử dụng proxy mở và nặc danh ngăn trở khả năng thực hiện nhiệm vụ này của chúng tôi, chữ ký từ proxy như vậy sẽ không được tính.
+Nếu hiện nay bạn đang kết nối thông qua máy chủ proxy, xin hãy tắt kết nối đến nó và sử dụng một kết nối tiêu chuẩn khi ký.</div>
+
+$1',
+	'sig-success'              => 'Bạn đã ký tài liệu thành công.',
+	'sign-view-selectfields'   => '<b>Các vùng sẽ hiển thị:</b>',
+	'sign-viewfield-entryid'   => 'Mã số nhập',
+	'sign-viewfield-timestamp' => 'Thời gian',
+	'sign-viewfield-realname'  => 'Tên',
+	'sign-viewfield-address'   => 'Địa chỉ',
+	'sign-viewfield-city'      => 'Thành phố',
+	'sign-viewfield-state'     => 'Bang',
+	'sign-viewfield-country'   => 'Quốc gia',
+	'sign-viewfield-zip'       => 'Zip',
+	'sign-viewfield-ip'        => 'Địa chỉ IP',
+	'sign-viewfield-agent'     => 'Trình duyệt người dùng',
+	'sign-viewfield-phone'     => 'Điện thoại',
+	'sign-viewfield-email'     => 'E-mail',
+	'sign-viewfield-age'       => 'Tuổi',
+	'sign-viewfield-options'   => 'Tùy chọn',
 );
 
 /** Volapük (Volapük)

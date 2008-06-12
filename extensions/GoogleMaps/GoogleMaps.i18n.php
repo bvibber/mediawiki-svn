@@ -1283,11 +1283,19 @@ $wgGoogleMapsMessages['hu'] = array(
 );
 
 /** Indonesian (Bahasa Indonesia)
+ * @author Irwangatot
  * @author Rex
  */
 $wgGoogleMapsMessages['id'] = array(
+	'gm-width'           => 'Lebar',
+	'gm-height'          => 'Tinggi',
+	'gm-large'           => 'Besar',
+	'gm-medium'          => 'Sedang',
+	'gm-small'           => 'Kecil',
 	'gm-no-zoom-control' => 'Tidak ada',
 	'gm-no'              => 'Tidak',
+	'gm-save-path'       => 'Simpan',
+	'gm-line-width'      => 'Lebar',
 );
 
 /** Icelandic (Íslenska)

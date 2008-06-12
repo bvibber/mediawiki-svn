@@ -675,7 +675,10 @@ $messages['hu'] = array(
 	'badimages-page'           => '{{ns:help}}:Hibás képek listája',
 );
 
-/* Indonesian (Ivan Lanin) */
+/** Indonesian (Bahasa Indonesia)
+ * @author Ivan Lanin
+ * @author Irwangatot
+ */
 $messages['id'] = array(
 	'badimages'                => 'Daftar berkas tidak sah',
 	'badimages-add-btn'        => 'Tambahkan',

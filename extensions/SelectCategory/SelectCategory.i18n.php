@@ -289,6 +289,15 @@ $messages['vec'] = array(
 	'selectcategory-subtitle' => 'Struca el boton del mouse tegnendo macà MAIUSC par selessionar più voçi adiacenti o CTRL par selessionar più voçi non adiacenti.',
 );
 
+/** Vietnamese (Tiếng Việt)
+ * @author Vinhtantran
+ */
+$messages['vi'] = array(
+	'selectcategory-title'    => 'Chọn thể loại',
+	'selectcategory-desc'     => 'Cho phép thành viên chọn từ các thể loại đang có khi sửa trang',
+	'selectcategory-subtitle' => 'Shift-nhấn chuột để chọn nhiều mục kề nhau liên tục, Ctrl-nhấn chuột để chọn các mục không liên tục.',
+);
+
 /** Yue (粵語)
  * @author Shinjiman
  */

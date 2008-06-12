@@ -255,6 +255,13 @@ $messages['hu'] = array(
 	'formsave' => 'Mentés',
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author Irwangatot
+ */
+$messages['id'] = array(
+	'formsave' => 'Simpan',
+);
+
 /** Icelandic (Íslenska)
  * @author S.Örvarr.S
  */

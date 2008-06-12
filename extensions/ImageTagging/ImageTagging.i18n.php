@@ -272,6 +272,13 @@ $messages['haw'] = array(
 	'imagetagging-imghistory' => 'He aha i ho‘ololi ‘ia ai',
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author Irwangatot
+ */
+$messages['id'] = array(
+	'imagetagging-tagcancel-button' => 'Batalkan',
+);
+
 /** Ripoarisch (Ripoarisch)
  * @author Purodha
  */
@@ -362,6 +369,7 @@ $messages['nl'] = array(
 	'imagetagging-addimagetag'              => 'Deze afbeelding annoteren',
 	'imagetagging-article'                  => 'Pagina:',
 	'imagetagging-articletotag'             => 'Te annoteren pagina',
+	'imagetagging-canteditothermessage'     => 'U kunt deze pagina niet bewerken, omdat u geen rechten hebt om dat te doen, of omdat de pagina om een andere reden niet bewerkt kan worden.',
 	'imagetagging-imghistory'               => 'Geschiedenis',
 	'imagetagging-images'                   => 'afbeeldingen',
 	'imagetagging-inthisimage'              => 'In deze afbeelding: $1',
@@ -377,16 +385,17 @@ $messages['nl'] = array(
 	'imagetagging-removingtag'              => 'Annotatie aan het verwijderen…',
 	'imagetagging-addtagsuccess'            => 'Annotatie toegevoegd.',
 	'imagetagging-removetagsuccess'         => 'Annotatie verwijderd.',
-	'imagetagging-oneactionatatimemessage'  => 'Er kan maar een handeling tegelijkertijd plaatsvinden.
-Wacht alstublieft totdat de huidige handeling is voltooid.',
 	'imagetagging-canteditneedloginmessage' => 'U kunt deze pagina niet bewerken.
 Dat kan zijn omdat u aangemeld moet zijn om afbeeldingen te annoteren.
 Wilt u nu aanmelden?',
+	'imagetagging-oneactionatatimemessage'  => 'Er kan maar een handeling tegelijkertijd plaatsvinden.
+Wacht alstublieft totdat de huidige handeling is voltooid.',
 	'imagetagging-oneuniquetagmessage'      => 'Deze afbeelding heeft al een annotatie met deze naam.',
 	'imagetagging-imagetag-seemoreimages'   => 'Meer afbeeldingen bekijken van "$1" ($2)',
 	'imagetagging-taggedimages-title'       => 'Afbeeldingen van "$1"',
 	'imagetagging-taggedimages-displaying'  => 'De resultaten $1 tot $2 van $3 van afbeeldingen van "$4" worden weergegeven',
-	'imagetagging-taggedimages-total'       => '"$1"; afbeelding(en) in totaal',
+	'tag-logpagename'                       => 'Annotatielogboek',
+	'tag-logpagetext'                       => 'In dit logboek worden toegevoegde en verwijderde annotaties bij afbeeldingen weergegeven.',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)

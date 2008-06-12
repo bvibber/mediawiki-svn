@@ -204,6 +204,16 @@ $messages['te'] = array(
 	'signaturelogentry'    => '$1 అనే పత్రంపై సంతకం చేసారు',
 );
 
+/** Vietnamese (Tiếng Việt)
+ * @author Vinhtantran
+ */
+$messages['vi'] = array(
+	'signaturelogpage'     => 'Nhật trình chữ ký',
+	'signature-desc'       => 'Cho phép tài liệu [[Special:SignDocument|được ký]]',
+	'signaturelogpagetext' => 'Đây là nhật trình tất cả các chữ ký được thêm vào văn bản thông qua [[Special:SignDocument]].',
+	'signaturelogentry'    => 'đã ký tài liệu $1',
+);
+
 /** Volapük (Volapük)
  * @author Malafaya
  */

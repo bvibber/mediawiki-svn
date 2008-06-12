@@ -454,6 +454,22 @@ $messages['tg-cyrl'] = array(
 	'showprocesslist-time' => 'Вақт',
 );
 
+/** Vietnamese (Tiếng Việt)
+ * @author Vinhtantran
+ */
+$messages['vi'] = array(
+	'showprocesslist'         => 'Hiển thị danh sách quá trình',
+	'showprocesslist-desc'    => 'Hiển thị ngõ xuất của [[Special:ShowProcesslist|HIỂN THỊ DANH SÁCH QUÁ TRÌNH ĐẦY ĐỦ]]',
+	'showprocesslist-id'      => 'Mã số',
+	'showprocesslist-user'    => 'Thành viên',
+	'showprocesslist-host'    => 'Chủ',
+	'showprocesslist-db'      => 'csdl',
+	'showprocesslist-command' => 'Lệnh',
+	'showprocesslist-time'    => 'Thời gian',
+	'showprocesslist-state'   => 'Trạng thái',
+	'showprocesslist-info'    => 'Thông tin',
+);
+
 /** Volapük (Volapük)
  * @author Malafaya
  */

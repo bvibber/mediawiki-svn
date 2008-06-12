@@ -297,10 +297,12 @@ $messages['vec'] = array(
 );
 
 /** Vietnamese (Tiếng Việt)
+ * @author Vinhtantran
  * @author Minh Nguyen
  */
 $messages['vi'] = array(
-	'seealso' => 'Xem thêm',
+	'seealso'      => 'Xem thêm',
+	'seealso-desc' => "Địa phương hóa tựa đề 'Xem thêm' sử dụng thẻ <code><nowiki><seealso></nowiki></code>",
 );
 
 /** Volapük (Volapük)

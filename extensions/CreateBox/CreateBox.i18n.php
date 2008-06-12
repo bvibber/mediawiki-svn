@@ -87,6 +87,19 @@ U kunt deze pagina niet aanmaken, maar u kunt deze [{{fullurl:{{FULLPAGENAME}}|a
 <createbox>break=no</createbox>",
 );
 
+/** Occitan (Occitan)
+ * @author Cedric31
+ */
+$messages['oc'] = array(
+	'createbox-desc'   => 'Bóstia de picada especializada per la creacion de pagina',
+	'createbox-create' => 'Crear',
+	'createbox-exists' => "O planhèm, \"'''{{FULLPAGENAME}}'''\" existís ja.
+
+Podètz pas crear aquesta pagina, mas la podètz [{{fullurl:{{FULLPAGENAME}}|action=edit}} modificar], [{{fullurl:{{FULLPAGENAME}}}} legir] o causir de crear una pagina diferenta amb l’ajuda de la boita çaijós.
+
+<createbox>break=no</createbox>",
+);
+
 /** Polish (Polski)
  * @author Wpedzich
  * @author Sp5uhe

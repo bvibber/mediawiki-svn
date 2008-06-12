@@ -352,11 +352,14 @@ $messages['vec'] = array(
 );
 
 /** Vietnamese (Tiếng Việt)
+ * @author Vinhtantran
  * @author Minh Nguyen
  */
 $messages['vi'] = array(
 	'sc_previousmonth' => 'Tháng trước',
 	'sc_nextmonth'     => 'Tháng sau',
+	'sc_today'         => 'Hôm nay',
+	'sc_gotomonth'     => 'Đến tháng',
 );
 
 /** Volapük (Volapük)

@@ -1246,6 +1246,13 @@ $messages['hu'] = array(
 	'mv_search_not'           => 'nem',
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author Irwangatot
+ */
+$messages['id'] = array(
+	'mv_search_and' => 'dan',
+);
+
 /** Icelandic (Íslenska)
  * @author S.Örvarr.S
  */

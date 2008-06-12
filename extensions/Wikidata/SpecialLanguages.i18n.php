@@ -1316,10 +1316,15 @@ $wdMessages['ia'] = array(
 	'ow_LinkAttributeValues' => 'Ligamines',
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author Irwangatot
+ */
 $wdMessages['id'] = array(
-	'datasearch' => 'Wikidata: Pencarian data',
-	'langman_title' => 'Pengelola bahasa',
-	'languages'=>'Wikidata: Pengelola bahasa',
+	'datasearch'                => 'Wikidata: Pencarian data',
+	'langman_title'             => 'Pengelola bahasa',
+	'languages'                 => 'Wikidata: Pengelola bahasa',
+	'ow_save'                   => 'Simpan',
+	'ow_OptionAttributeOptions' => 'Pilihan',
 );
 
 /** Ido (Ido)

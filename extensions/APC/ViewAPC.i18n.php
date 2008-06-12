@@ -821,10 +821,15 @@ $messages['hil'] = array(
 );
 
 /** Indonesian (Bahasa Indonesia)
+ * @author Irwangatot
  * @author Rex
  */
 $messages['id'] = array(
-	'viewapc-ls-limit-none' => 'Semua',
+	'viewapc-display-info'      => 'Nama',
+	'viewapc-ls-options-legend' => 'Pilihan',
+	'viewapc-ls-header-name'    => 'Nama',
+	'viewapc-ls-sort-name'      => 'Nama',
+	'viewapc-ls-limit-none'     => 'Semua',
 );
 
 /** Ido (Ido)
@@ -971,6 +976,7 @@ $messages['km'] = array(
  * @author Purodha
  */
 $messages['ksh'] = array(
+	'right-apc'                => 'all de Möschleschkeite fum [[{{#special:ViewAPC}}]] notze',
 	'viewapc-display-info'     => 'Name',
 	'viewapc-display-num_hits' => 'Treffer',
 	'viewapc-ls-submit'        => 'Loß Jonn!',

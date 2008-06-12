@@ -385,6 +385,7 @@ $messages['krj'] = array(
  */
 $messages['ksh'] = array(
 	'importusers-log-summary-all' => 'All',
+	'importusers-realname'        => 'Dinge richtije Name',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

@@ -1655,10 +1655,11 @@ $messages['fo'] = array(
 );
 
 /** French (Français)
+ * @author Verdy p
  * @author Guérin Nicolas
  * @author Grondin
- * @author Lejonel
  * @author Sherbrooke
+ * @author Lejonel
  */
 $messages['fr'] = array(
 	'boardvote'                => 'Élection au conseil d’administration de la Wikimedia Foundation',
@@ -1701,10 +1702,11 @@ Suit la version cryptée ci-dessous, qui sera affichée publiquement sur [[Speci
 	'boardvote_invalidentered' => '<p><strong>Erreur :</strong> la préférence pour un candidat doit être exprimée uniquement par un nombre entier positif (1, 2, 3, etc.) ou bien être laissée vide.</p>',
 	'boardvote_nosession'      => 'Impossible de déterminer votre identifiant Wikimedia.<br />
 Veuillez vous rendre sur votre wiki d’origine, vous enregistrer, puis vous rendre sur la page <nowiki>[[Special:Boardvote]]</nowiki>.<br />
-Vous devez posséder un compte avec au moins $1 contributions effectuées avant le $2 et avoir effectué au moins $3 contributions entre le $4 et le $5.',
+Vous devez posséder un compte avec au moins $1 {{PLURAL:$1|contribution effectuée|contributions effectuées}} avant le $2 et au moins $3 {{PLURAL:$3|contribution effectuée|contributions effectuées}} entre le $4 et le $5.',
 	'boardvote_notloggedin'    => 'Vous n’êtes actuellement pas authentifié.
-Pour voter, vous devez utiliser un compte avec au moins $1 contributions effectuées avant le $2 et au moins $3 contributions entre le $4 et le $5.',
-	'boardvote_notqualified'   => 'Désolé, mais vous ne répondez pas actuellement aux conditions requises pour voter lors de ce scrutin. Il vous est nécessaire d’avoir au moins $1 contributions effectuées avant le $2 et au moins $3 contributions entre le $4 et le $5.',
+Pour voter, vous devez utiliser un compte avec au moins $1 {{PLURAL:$1|contribution effectuée|contributions effectuées}} avant le $2 et au moins $3 contribution{{PLURAL:$3||s}} entre le $4 et le $5.',
+	'boardvote_notqualified'   => 'Désolé, mais vous ne répondez pas actuellement aux conditions requises pour voter lors de ce scrutin.
+Il vous est nécessaire d’avoir au moins $1 {{PLURAL:$1|contribution effectuée|contributions effectuées}} avant le $2 et au moins $3 {{PLURAL:$3|contribution effectuée|contributions effectuées}} entre le $4 et le $5.',
 	'boardvote_novotes'        => 'Personne n’a encore voté.',
 	'boardvote_time'           => 'Heure ',
 	'boardvote_user'           => 'Utilisateur',

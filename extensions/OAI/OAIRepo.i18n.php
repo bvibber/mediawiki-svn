@@ -32,6 +32,13 @@ $messages['de'] = array(
 	'oai-desc' => 'Stellt eine [http://www.openarchives.org/OAI/openarchivesprotocol.html OAI-PMH]-Repositorium-Schnittstelle bereit',
 );
 
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
+$messages['eo'] = array(
+	'oai-desc' => 'Provizas dosierujan interfacon [http://www.openarchives.org/OAI/openarchivesprotocol.html OAI-PMH]',
+);
+
 /** French (Français)
  * @author Grondin
  */

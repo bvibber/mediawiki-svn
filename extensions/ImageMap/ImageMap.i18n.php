@@ -201,10 +201,17 @@ $messages['el'] = array(
  * @author Yekrats
  */
 $messages['eo'] = array(
-	'imagemap_desc'          => 'Permesas klientflankajn klakeblajn bildmapojn uzante etikedon <tt><nowiki><imagemap></nowiki></tt>',
-	'imagemap_invalid_image' => '&lt;imagemap&gt;: bildo estas aŭ nevalida aŭ neekzista',
-	'imagemap_invalid_title' => '&lt;imagemap&gt;: nevalida titolo en ligilo ĉe linio $1',
-	'imagemap_description'   => 'Pri ĉi tiu bildo',
+	'imagemap_desc'               => 'Permesas klientflankajn klakeblajn bildmapojn uzante etikedon <tt><nowiki><imagemap></nowiki></tt>',
+	'imagemap_no_image'           => '&lt;imagemap&gt;: devas deklari bildon en la unua linio',
+	'imagemap_invalid_image'      => '&lt;imagemap&gt;: bildo estas aŭ nevalida aŭ neekzista',
+	'imagemap_no_link'            => '&lt;imagemap&gt;: neniu valida ligilo estis trovita ĉe fino de linio $1',
+	'imagemap_invalid_title'      => '&lt;imagemap&gt;: nevalida titolo en ligilo ĉe linio $1',
+	'imagemap_missing_coord'      => '&lt;imagemap&gt;: mankas sufiĉaj koordinatoj por formo ĉe linio $1',
+	'imagemap_unrecognised_shape' => '&lt;imagemap&gt;: nekonata formo ĉe linio $1; ĉiu linio devas komenci kun unu el: default, rect, circle aŭ poly',
+	'imagemap_no_areas'           => '&lt;imagemap&gt;: almenaŭ unu specifigado de areo devas esti donata',
+	'imagemap_invalid_coord'      => '&lt;imagemap&gt;: Nevalida koordinato ĉe linio $1; ĝi nepre estu nombro',
+	'imagemap_invalid_desc'       => '&lt;imagemap&gt;: nevalida desc deklarado, devas esti unu el: <tt>$1</tt>',
+	'imagemap_description'        => 'Pri ĉi tiu bildo',
 );
 
 /** Basque (Euskara)

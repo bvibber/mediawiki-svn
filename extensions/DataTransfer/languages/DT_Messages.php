@@ -254,6 +254,13 @@ $messages['hu'] = array(
 	'dt_xml_title' => 'Cím',
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author Irwangatot
+ */
+$messages['id'] = array(
+	'dt_xml_name' => 'Nama',
+);
+
 /** Icelandic (Íslenska)
  * @author S.Örvarr.S
  */

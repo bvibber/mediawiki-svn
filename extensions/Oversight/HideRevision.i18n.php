@@ -952,6 +952,7 @@ Ezen információk kiadása az adatvédelmi biztosi jogosultség végleges elves
  * @author Rex
  * @author Meursault2004
  * @author Borgx
+ * @author Irwangatot
  */
 $messages['id'] = array(
 	'hiderevision'                => 'Sembunyikan revisi',
@@ -988,7 +989,7 @@ administrator basis data jika Anda membuat kesalahan.",
 *Revisi yang disembunyikan merupakan revisi pertama',
 	'oversight-log-hiderev'       => 'menghapus sebuah suntingan dari $1',
 	'oversight'                   => 'Pengawas suntingan',
-	'oversight-view'              => 'detil',
+	'oversight-view'              => 'rincian',
 	'oversight-difference'        => '(Perbedaan dari revisi terdahulu yang ada)',
 	'oversight-prev'              => 'revisi terdahulu terakhir',
 	'oversight-hidden'            => 'Revisi disembunyikan',

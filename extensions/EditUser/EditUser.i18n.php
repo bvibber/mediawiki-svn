@@ -257,6 +257,13 @@ $messages['hu'] = array(
 	'edituser-dosearch' => 'Keresés',
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author Irwangatot
+ */
+$messages['id'] = array(
+	'edituser-username' => 'Nama',
+);
+
 /** Icelandic (Íslenska)
  * @author SPQRobin
  */

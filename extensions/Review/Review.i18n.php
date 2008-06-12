@@ -496,10 +496,12 @@ $messages['hsb'] = array(
 );
 
 /** Indonesian (Bahasa Indonesia)
+ * @author Irwangatot
  * @author Rex
  */
 $messages['id'] = array(
-	'review_total_statistics' => 'Total',
+	'review_total_statistics'  => 'Total',
+	'review_user_details_link' => '(rincian)',
 );
 
 /** Javanese (Basa Jawa)

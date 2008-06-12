@@ -246,6 +246,15 @@ $messages['hu'] = array(
 	'player-goto-file'        => 'fájl',
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author Irwangatot
+ */
+$messages['id'] = array(
+	'player'             => 'Pemain',
+	'player-title'       => 'Pemain',
+	'player-goto-player' => 'Pemain',
+);
+
 $messages['io'] = array(
 	'player-goto-page' => 'Pagino',
 );

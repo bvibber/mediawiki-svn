@@ -69,6 +69,13 @@ $messages['bg'] = array(
 	'importfreeimages_returntoform'          => "Или щракнете <a href='$1'>тук</a> за да се върнете към резултати от търсенето си",
 );
 
+/** Church Slavic (Словѣньскъ)
+ * @author ОйЛ
+ */
+$messages['cu'] = array(
+	'importfreeimages_owner' => 'творь́ць',
+);
+
 /** Danish (Dansk)
  * @author Jon Harald Søby
  */

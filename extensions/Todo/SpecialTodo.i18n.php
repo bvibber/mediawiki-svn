@@ -240,6 +240,14 @@ $4',
 	'todo-form-submit'      => 'Naprašowanje wotesłać',
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author Irwangatot
+ */
+$messages['id'] = array(
+	'todo-list-cancel'  => 'Batalkan',
+	'todo-form-details' => 'Rincian:',
+);
+
 /** Javanese (Basa Jawa)
  * @author Meursault2004
  */

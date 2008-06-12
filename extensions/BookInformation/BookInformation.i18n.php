@@ -207,6 +207,13 @@ $messages['cs'] = array(
 	'bookinfo-provider'          => 'Poskytovatel dat: $1',
 );
 
+/** Church Slavic (Словѣньскъ)
+ * @author ОйЛ
+ */
+$messages['cu'] = array(
+	'bookinfo-result-author' => 'творь́ць :',
+);
+
 /** Danish (Dansk)
  * @author Morten
  */
