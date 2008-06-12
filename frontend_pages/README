@@ -1,0 +1,3 @@
+Front end pages are relatively static pages that link into the wiki. For example the default home page. 
+
+Again these pages should be symbolically linked or checked out to the proper location
