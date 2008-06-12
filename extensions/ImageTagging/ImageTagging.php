@@ -15,7 +15,7 @@ $wgHooks['UnknownAction'][] = 'tagSearch';
 $wgExtensionFunctions[] = 'wfImageTagPageSetup';
 $wgExtensionCredits['other'][] = array(
 	'name'           => 'Image Tagging',
-	'author'         => 'Wikia, Inc. (Tristan Harris, and Tomasz Klim)',
+	'author'         => 'Wikia, Inc. (Tristan Harris, Tomasz Klim)',
 	'version'        => '1.0',
 	'url'            => 'http://www.mediawiki.org/wiki/Extension:ImageTagging',
 	'description'    => 'Lets a user select regions of an embedded image and associate a page with that region',
@@ -317,9 +317,7 @@ function wfPurgeTitle($title) {
 }
 
 function wfGetImageTags($img, $imgName) {
-	global $wgDBname;
-	global $wgUser;
-	global $wgOut;
+	global $wgDBname, $wgUser, $wgOut;
 
 	wfProfileIn( __METHOD__ );
 
@@ -379,9 +377,13 @@ function wfArticleFromTitle( &$title, &$article ) {
 }
 
 function wfImageTagPageSetup() {
-	global $wgLogTypes;
-
+	global $wgLogTypes, $wgLogNames, $wgLogHeaders, $wgLogActions;
+	//Set up logging
 	$wgLogTypes[] = 'tag';
+	$wgLogNames['tag'] = 'tag-logpagename';
+	$wgLogHeaders['tag'] = 'tag-logpagetext';
+	$wgLogActions['tag'] = 'imagetagging-log-tagged';
+
 	wfLoadExtensionMessages('ImageTagging');
 
 	class ImageTagPage extends ImagePage {

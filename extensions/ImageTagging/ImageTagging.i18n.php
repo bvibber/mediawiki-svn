@@ -1,8 +1,8 @@
 <?php
 /**
- * Internationalisation file for extension ImageTagging.
+ * Internationalisation file for ImageTagging extension.
  *
- * @addtogroup Extensions
+ * @ingroup Extensions
  */
 
 $messages = array();
@@ -17,6 +17,7 @@ $messages['en'] = array(
 	'imagetagging-addimagetag'              => 'Tag this image',
 	'imagetagging-article'                  => 'Page:',
 	'imagetagging-articletotag'             => 'Page to tag',
+	'imagetagging-canteditothermessage'		=> 'You cannot edit this page, either because you don\'t have the rights to do so or because the page is locked down for other reasons.',
 	'imagetagging-imghistory'               => 'History',
 	'imagetagging-images'                   => 'images',
 	'imagetagging-inthisimage'              => 'In this image: $1',
@@ -32,7 +33,6 @@ $messages['en'] = array(
 	'imagetagging-removingtag'              => 'Removing tag…',
 	'imagetagging-addtagsuccess'            => 'Added tag.',
 	'imagetagging-removetagsuccess'         => 'Removed tag.',
-	'imagetagging-oneactionatatimemessage'  => 'Removed tag.',
 	'imagetagging-canteditneedloginmessage' => 'You cannot edit this page.
 It may be because you need to login to tag images.
 Do you want to login now?',
@@ -42,6 +42,8 @@ Please wait for the existing action to complete.',
 	'imagetagging-imagetag-seemoreimages'   => 'See more images of "$1" ($2)',
 	'imagetagging-taggedimages-title'       => 'Images of "$1"',
 	'imagetagging-taggedimages-displaying'  => 'Displaying $1 - $2 of $3 images of "$4"',
+	'tag-logpagename'						=> 'Tagging log',
+	'tag-logpagetext'						=> 'This is a log of all image tag additions and removals.',
 );
 
 /** Eastern Mari (Олык Марий йылме)
@@ -153,6 +155,42 @@ $messages['eo'] = array(
 	'imagetagging-removetag'          => 'forigi etikedon',
 	'imagetagging-tagcancel-button'   => 'Nuligi',
 	'imagetagging-taggedimages-title' => 'Bildoj de "$1"',
+);
+
+/** Finnish (Suomi)
+ * @author Jack Phoenix
+ */
+$messages['fi'] = array(
+	'taggedimages'                          => 'Merkityt kuvat',
+	'imagetagging-addimagetag'              => 'Merkitse tämä kuva',
+	'imagetagging-article'                  => 'Sivu:',
+	'imagetagging-canteditothermessage'		=> 'Et voi muokata tätä sivua, joko koska sinulla ei ole oikeuksia tai koska sivu on lukittu muista syistä.',
+	'imagetagging-imghistory'               => 'Historia',
+	'imagetagging-images'                   => 'kuvat',
+	'imagetagging-inthisimage'              => 'Tässä kuvassa: $1',
+	'imagetagging-logentry'                 => 'Poistettiin merkintä sivulle [[$1]] käyttäjän $2 toimesta',
+	'imagetagging-log-tagged'               => 'Kuva [[$1|$2]] merkittiin sivulle [[$3]] käyttäjän $4 toimesta',
+	'imagetagging-new'                      => '<sup><span style="color:red">Uusi!</span></sup>',
+	'imagetagging-removetag'                => 'poista merkintä',
+	'imagetagging-done-button'              => 'Valmis',
+	'imagetagging-tag-button'               => 'Jatka',
+	'imagetagging-tagcancel-button'         => 'Peruuta',
+	'imagetagging-tagging-instructions'     => 'Napsauta ihmisiä tai asioita kuvassa merkitäksesi ne.',
+	'imagetagging-addingtag'                => 'Lisätään merkintää…',
+	'imagetagging-removingtag'              => 'Poistetaan merkintää…',
+	'imagetagging-addtagsuccess'            => 'Merkintä lisätty.',
+	'imagetagging-removetagsuccess'         => 'Merkintä poistettu.',
+	'imagetagging-canteditneedloginmessage' => 'Et voi muokata tätä sivua.
+Se saattaa johtua siitä, että sinun tulee kirjautua sisään merkitäksesi kuvia.
+Haluatko kirjautua sisään nyt?',
+	'imagetagging-oneactionatatimemessage'  => 'Vain yksi merkitsemistapahtuma kerrallaan on sallittu.
+Ole hyvä ja odota olemassaolevan tapahtuman päättymistä.',
+	'imagetagging-oneuniquetagmessage'      => 'Tällä kuvalla on jo samanniminen merkintä.',
+	'imagetagging-imagetag-seemoreimages'   => 'Katso lisää kuvia aiheesta "$1" ($2)',
+	'imagetagging-taggedimages-title'       => 'Kuvia aiheesta "$1"',
+	'imagetagging-taggedimages-displaying'  => 'Näytetään $1 - $2 kuvaa aiheesta "$4"; yhteensä $3 kuvaa',
+	'tag-logpagename'						=> 'Merkintäloki',
+	'tag-logpagetext'						=> 'Tämä on loki kaikista kuvien merkinnöistä ja merkintöjen poistoista.',
 );
 
 /** French (Français)
