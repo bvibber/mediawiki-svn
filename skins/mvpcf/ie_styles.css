@@ -1,0 +1,23 @@
+#suggestionsTop {
+	background: none;
+	filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled=true, src=images/search_suggest_top.png, sizingMethod=image);
+}
+#suggestionsInner {
+	background: none;
+	filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled=true, src=images/search_suggest_bg.png, sizingMethod=scale);
+}
+#suggestionsBot {
+	background: none;
+	filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled=true, src=images/search_suggest_bottom.png, sizingMethod=image);
+}
+
+
+
+
+button {width: auto; overflow: visible;}
+button span {margin-top: 1px;}
+#suggestions {
+	margin-top: -20px;
+}
+
+#footer ul.footerLinks, #footer2 ul.footerLinks {width: 220px;}
