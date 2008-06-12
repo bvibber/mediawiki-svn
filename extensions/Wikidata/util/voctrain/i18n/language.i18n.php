@@ -18,6 +18,11 @@ $fallback=array(
 	"ru"=>"en"
 );
 
+# is this language rtl or ltr? assumes ltr as default
+$direction=array(
+	"ar"=>"rtl"
+);
+
 # Words starting with '%' (ie %action, or %questions_total) are
 # "variable names", for use by the program. Don't translate those!
 

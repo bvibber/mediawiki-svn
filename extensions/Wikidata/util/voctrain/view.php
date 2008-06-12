@@ -325,12 +325,19 @@ class View {
 
 	/** fugly function to print HTML header */
 	public function header($showlogout=true) {
-print'<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" dir="ltr">
+		$lang=$this->language->getCode();
+		if ($lang="Default") {
+			$lang="en";
+		}
+		$direction=$this->language->getDirection();
+
+		print'<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">';
+		print"<html xmlns='http://www.w3.org/1999/xhtml' xml:lang='$lang' lang='$lang' dir='$direction'> ";
+		# << de-indent so our layout matches html layout
+print'
         <head>
                 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-
-
+	
                 <link rel="stylesheet" type="text/css" media="screen, projection" href="../ow/styles.css" />
                 <link rel="stylesheet" type="text/css" media="screen, projection" href="http://www.omegawiki.org/extensions/Wikidata/OmegaWiki/tables.css" />
                 <link rel="shortcut icon" href="http://www.omegawiki.org/favicon.ico" />
@@ -353,6 +360,7 @@ print'<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www
 
 	/** fugly function to print HTML footer */
 	public function footer() {
+	# << de-indent so our layout matches html layout
 	$this->language->i18nprint('
 <p class="footer"><|Powered by|> <a href="http://www.omegawiki.org/"><|Omegawiki|></a></p>
 </div>

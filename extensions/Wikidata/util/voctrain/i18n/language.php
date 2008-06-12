@@ -13,6 +13,7 @@ class Language {
 	private $messages; # assoc array of translations
 	private $fallback=false; #a different Language object to fall back to
 				 # if we can't find a particular entry in $messages
+	private $direction="ltr";
 
 	public function __construct($code="Default") {
 		if (!$code) 
@@ -21,6 +22,11 @@ class Language {
 		$this->loadMessages($code);
 
 
+	}
+
+	/** getter, returns writing direction of this language ("rtl" or "ltr"); */
+	public function getDirection() {
+		return $this->direction;
 	}
 
 	public function loadMessages($code="Default") {
@@ -44,6 +50,12 @@ class Language {
 				$this->fallback=new Language($fallback[$code]);
 			}
 		}
+
+		if (array_key_exists($code,$direction)) {
+			$this->direction=$direction[$code];
+		}
+
+
 		$this->code=$code;
 	}
 
