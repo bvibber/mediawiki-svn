@@ -325,6 +325,7 @@ $messages['gv'] = array(
  */
 $messages['he'] = array(
 	'parserdifftest'      => 'בדיקת השינויים במפענח',
+	'pdtest-desc'         => '[[Special:ParserDiffTest|דף מיוחד]] להשוואת הפלט של שני מפענחים שונים',
 	'pdtest_no_target'    => 'לא נבחר יעד.',
 	'pdtest_page_missing' => 'הדף המבוקש לא נמצא במסד הנתונים.',
 	'pdtest_no_changes'   => 'לא נמצאו הבדלים.',

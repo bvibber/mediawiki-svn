@@ -370,12 +370,16 @@ $messages['gv'] = array(
 	'linksearch-ok' => 'Ronsaghey',
 );
 
+/** Hebrew (עברית)
+ * @author Rotem Liss
+ */
 $messages['he'] = array(
 	'linksearch'       => 'חיפוש קישורים חיצוניים',
+	'linksearch-desc'  => '[[Special:Linksearch|מציאת דפים עם קישורים חיצוניים]] התואמים לתבניות מסוימות',
 	'linksearch-pat'   => 'קישור לחיפוש:',
 	'linksearch-ns'    => 'מרחב שם:',
 	'linksearch-ok'    => 'חיפוש',
-	'linksearch-text'  => 'ניתן להשתמש בתווים כללים, לדוגמה "‎*.wikipedia.org".<br />פרוטוקולים נתמכים: <tt>$1</tt>',
+	'linksearch-text'  => 'ניתן להשתמש בתווים כללים, לדוגמה "*.wikipedia.org".<br />פרוטוקולים נתמכים: <tt>$1</tt>',
 	'linksearch-line'  => '$1 מקושר מהדף $2',
 	'linksearch-error' => 'תווים כלליים יכולים להופיע רק בתחילת שם השרת.',
 );

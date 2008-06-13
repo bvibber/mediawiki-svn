@@ -199,8 +199,12 @@ $messages['gl'] = array(
 	'sitenotice-desc'  => 'Permite que os usuarios fechen o aviso do sitio',
 );
 
+/** Hebrew (עברית)
+ * @author Rotem Liss
+ */
 $messages['he'] = array(
 	'sitenotice_close' => 'הסתרה',
+	'sitenotice-desc'  => 'הוספת אפשרות למשתמשים לסגור את ההודעה בראש הדף',
 );
 
 /** Hindi (हिन्दी)

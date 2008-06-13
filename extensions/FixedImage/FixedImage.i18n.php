@@ -67,6 +67,13 @@ $messages['gl'] = array(
 	'fixedimage-desc' => 'Engade a etiqueta <tt><nowiki><fundraising></nowiki></tt> como unha imaxe',
 );
 
+/** Hebrew (עברית)
+ * @author Rotem Liss
+ */
+$messages['he'] = array(
+	'fixedimage-desc' => 'הוספת תגית <tt><nowiki><fundraising></nowiki></tt> כתמונה',
+);
+
 /** Hindi (हिन्दी)
  * @author Kaustubh
  */

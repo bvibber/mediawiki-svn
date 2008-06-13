@@ -235,8 +235,12 @@ $messages['hak'] = array(
 	'crossnamespacelinkstext'     => '$1: $2-ke lièn-kiet to $3',
 );
 
+/** Hebrew (עברית)
+ * @author Rotem Liss
+ */
 $messages['he'] = array(
 	'crossnamespacelinks'         => 'קישורים מדפי תוכן למרחבי שם אחרים',
+	'crossnamespacelinks-desc'    => '[[Special:CrossNamespaceLinks|רשימת קישורים בין מרחבי שם]] שאינם אמורים להיות קיימים באתר',
 	'crossnamespacelinks-summary' => 'דף זה מספק רשימה של קישורים מדפים במרחב השם הראשי לדפים במרחבי שם אחרים (למעט מרחבי השם {{ns:special}}, {{ns:talk}}, {{ns:project}} ו{{ns:template}}), שאינם רצויים לשימוש.',
 	'crossnamespacelinkstext'     => '$1: {{PLURAL:$2|קישור אחד|$2 קישורים}} למרחב $3'
 );

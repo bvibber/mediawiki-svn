@@ -63,6 +63,13 @@ $messages['fr'] = array(
 	'titlekey-desc' => "Retour vers la fin de la suggestion de recherche d'un préfixe de titre",
 );
 
+/** Hebrew (עברית)
+ * @author Rotem Liss
+ */
+$messages['he'] = array(
+	'titlekey-desc' => 'מערכת לעיבוד הצעות החיפוש לפי התחלה של כותרת',
+);
+
 /** Hindi (हिन्दी)
  * @author Kaustubh
  */

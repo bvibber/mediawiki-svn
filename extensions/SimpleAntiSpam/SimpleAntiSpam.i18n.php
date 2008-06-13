@@ -103,6 +103,16 @@ Ne '''RIEN''' inscrire ici !",
 	'simpleantispam-desc'  => 'Ajoute au formulaire la vérification d’un bot spammeur',
 );
 
+/** Hebrew (עברית)
+ * @author Rotem Liss
+ */
+$messages['he'] = array(
+	'simpleantispam'       => 'עריכתכם הפעילה את מנוע האנטי־ספאם',
+	'simpleantispam-label' => "בדיקת אנטי־ספאם.
+'''אל''' תמלאו שדה זה!",
+	'simpleantispam-desc'  => 'הוספת בדיקה פשוטה של ספאם/בוט לטפסים',
+);
+
 /** Hindi (हिन्दी)
  * @author Kaustubh
  */

@@ -357,10 +357,17 @@ $messages['hak'] = array(
 	'createarticle'  => 'Kien-li̍p vùn-chông',
 );
 
+/** Hebrew (עברית)
+ * @author Rotem Liss
+ */
 $messages['he'] = array(
-	'tryexact'       => 'לדף בשם זה',
-	'searchfulltext' => 'חיפוש בתוכן הדפים',
-	'createarticle'  => 'יצירת הדף',
+	'inputbox-desc'           => 'אפשרות להכללת טופסי HTML שהוגדרו מראש',
+	'inputbox-error-no-type'  => 'לא ציינתם את סוג תיבת הקלט ליצירה.',
+	'inputbox-error-bad-type' => 'סוג תיבת הקלט "$1" אינו ידוע.
+אנא ציינו "create", "comment", "search" או "search2".',
+	'tryexact'                => 'לדף בשם זה',
+	'searchfulltext'          => 'חיפוש בתוכן הדפים',
+	'createarticle'           => 'יצירת הדף',
 );
 
 /** Hindi (हिन्दी)

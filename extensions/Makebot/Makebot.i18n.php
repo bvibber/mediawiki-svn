@@ -447,21 +447,24 @@ $messages['haw'] = array(
 	'makebot-username' => "Inoa mea ho'ohana:",
 );
 
-/* Hebrew (Rotem Liss) */
+/** Hebrew (עברית)
+ * @author Rotem Liss
+ */
 $messages['he'] = array(
-	'makebot'          => 'הענקת או ביטול הרשאת בוט',
-	'makebot-header'   => "'''ניתן להשתמש בדף זה כדי להעניק או לבטל [[Project:בוט|הרשאות בוט]] למשתמשים אחרים.'''<br />הרשאת בוט מסתירה את עריכותיו של המשתמש מ[[Special:Recentchanges|השינויים האחרונים]] ורשימות דומות, ושימושית למשתמשים המבצעים עריכות אוטומטיות. יש להעניק הרשאת בוט אך ורק לפי הנהלים המתאימים.",
-	'makebot-username' => 'שם משתמש:',
-	'makebot-search'   => 'הצגה',
-	'makebot-isbot'      => 'למשתמש [[User:$1|$1]] יש הרשאת בוט.',
-	'makebot-notbot'     => 'למשתמש [[User:$1|$1]] אין הרשאת בוט.',
-	'makebot-privileged' => 'למשתמש [[User:$1|$1]] יש כבר [[Special:Listusers/sysop|הרשאות מפעיל מערכת או ביורוקרט]], ולפיכך אי אפשר להעניק לו דגל בוט.',
-	'makebot-change'     => 'מה לבצע:',
-	'makebot-grant'      => 'הענקת הרשאה',
-	'makebot-revoke'     => 'ביטול הרשאה',
-	'makebot-comment'    => 'סיבה:',
-	'makebot-granted'    => 'המשתמש [[{{ns:user}}:$1|$1]] קיבל הרשאת בוט.',
-	'makebot-revoked'    => 'הרשאת הבוט של המשתמש [[{{ns:user}}:$1|$1]] הוסרה בהצלחה.',
+	'makebot'                => 'הענקת או ביטול הרשאת בוט',
+	'makebot-desc'           => 'דף מיוחד המאפשר לביורוקרטים מקומיים להעניק ולבטל הרשאות בוט',
+	'makebot-header'         => "'''ניתן להשתמש בדף זה כדי להעניק או לבטל [[Project:בוט|הרשאות בוט]] למשתמשים אחרים.'''<br />הרשאת בוט מסתירה את עריכותיו של המשתמש מ[[Special:Recentchanges|השינויים האחרונים]] ורשימות דומות, ושימושית למשתמשים המבצעים עריכות אוטומטיות. יש להעניק הרשאת בוט אך ורק לפי הנהלים המתאימים.",
+	'makebot-username'       => 'שם משתמש:',
+	'makebot-search'         => 'הצגה',
+	'makebot-isbot'          => 'למשתמש [[User:$1|$1]] יש הרשאת בוט.',
+	'makebot-notbot'         => 'למשתמש [[User:$1|$1]] אין הרשאת בוט.',
+	'makebot-privileged'     => 'למשתמש [[User:$1|$1]] יש כבר [[Special:Listusers/sysop|הרשאות מפעיל מערכת או ביורוקרט]], ולפיכך אי אפשר להעניק לו דגל בוט.',
+	'makebot-change'         => 'מה לבצע:',
+	'makebot-grant'          => 'הענקת הרשאה',
+	'makebot-revoke'         => 'ביטול הרשאה',
+	'makebot-comment'        => 'סיבה:',
+	'makebot-granted'        => 'המשתמש [[{{ns:user}}:$1|$1]] קיבל הרשאת בוט.',
+	'makebot-revoked'        => 'הרשאת הבוט של המשתמש [[{{ns:user}}:$1|$1]] הוסרה בהצלחה.',
 	'makebot-logpage'        => 'יומן הרשאות בוט',
 	'makebot-logpagetext'    => 'זהו יומן השינויים בהרשאות ה[[{{ns:help}}:בוט|בוט]] של המשתמשים.',
 	'makebot-logentrygrant'  => 'העניק הרשאת בוט למשתמש [[$1]]',

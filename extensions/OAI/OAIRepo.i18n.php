@@ -53,6 +53,13 @@ $messages['gl'] = array(
 	'oai-desc' => 'Proporciona a interface [http://www.openarchives.org/OAI/openarchivesprotocol.html OAI-PMH] no repositorio',
 );
 
+/** Hebrew (עברית)
+ * @author Rotem Liss
+ */
+$messages['he'] = array(
+	'oai-desc' => 'מתן ממשק למאגר [http://www.openarchives.org/OAI/openarchivesprotocol.html OAI-PMH]',
+);
+
 /** Hindi (हिन्दी)
  * @author Kaustubh
  */

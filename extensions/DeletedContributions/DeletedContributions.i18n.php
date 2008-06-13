@@ -205,8 +205,12 @@ $messages['gl'] = array(
 	'deletedcontributions-desc' => 'Dálles aos administradores a posibilidade de [[Special:DeletedContributions|examinar as edicións eliminadas dun usuario]]',
 );
 
+/** Hebrew (עברית)
+ * @author Rotem Liss
+ */
 $messages['he'] = array(
-	'deletedcontributions' => 'תרומות משתמש מחוקות',
+	'deletedcontributions'      => 'תרומות משתמש מחוקות',
+	'deletedcontributions-desc' => 'מתן אפשרות למפעילי מערכת [[Special:DeletedContributions|לצפות בעריכות מחוקות]] של משתמש',
 );
 
 /** Hindi (हिन्दी)

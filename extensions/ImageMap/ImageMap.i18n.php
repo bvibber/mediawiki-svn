@@ -314,6 +314,7 @@ $messages['gu'] = array(
 
 /* Hebrew (Rotem Liss) */
 $messages['he'] = array(
+	'imagemap_desc'                 => 'אפשרות למפות תמונה עם קישורים בצד הלקוח באמצעות התגית <tt><nowiki><imagemap></nowiki></tt> tag',
 	'imagemap_no_image'             => '&lt;imagemap&gt;: יש לציין תמונה בשורה הראשונה',
 	'imagemap_invalid_image'        => '&lt;imagemap&gt;: התמונה שגויה או שאינה קיימת',
 	'imagemap_no_link'              => '&lt;imagemap&gt;: לא נמצא קישור תקף בסוף שורה $1',

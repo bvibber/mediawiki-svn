@@ -642,7 +642,11 @@ $messages['gv'] = array(
 	'ogg-desc-link' => 'Mychione y choadan shoh',
 );
 
+/** Hebrew (עברית)
+ * @author Rotem Liss
+ */
 $messages['he'] = array(
+	'ogg-desc'                => 'מציג מדיה לקובצי Ogg Theora ו־Vorbis, עם נגן JavaScript',
 	'ogg-short-audio'         => 'קובץ שמע $1 של Ogg, $2',
 	'ogg-short-video'         => 'קובץ וידאו $1 של Ogg, $2',
 	'ogg-short-general'       => 'קובץ מדיה $1 של Ogg, $2',
@@ -664,8 +668,8 @@ $messages['he'] = array(
 	'ogg-player-thumbnail'    => 'עדיין תמונה בלבד',
 	'ogg-player-soundthumb'   => 'אין נגן',
 	'ogg-player-selected'     => '(נבחר)',
-	'ogg-use-player'          => 'השתמש בנגן: ',
-	'ogg-more'                => 'עוד...',
+	'ogg-use-player'          => 'שימוש בנגן:',
+	'ogg-more'                => 'עוד…',
 	'ogg-dismiss'             => 'סגירה',
 	'ogg-download'            => 'הורדת הקובץ',
 	'ogg-desc-link'           => 'אודות הקובץ',

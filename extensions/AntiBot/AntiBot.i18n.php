@@ -42,6 +42,13 @@ $messages['fr'] = array(
 	'antibot-desc' => 'Environnement simple de vérification contre les robots spammeurs et les soumissions de contenus à déclenchement conditionnel automatisé.',
 );
 
+/** Hebrew (עברית)
+ * @author Rotem Liss
+ */
+$messages['he'] = array(
+	'antibot-desc' => 'מערכת פשוטה לבדיקת בוטים של ספאם',
+);
+
 /** Ripoarisch (Ripoarisch)
  * @author Purodha
  */

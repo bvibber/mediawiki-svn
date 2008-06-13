@@ -404,8 +404,12 @@ $messages['gv'] = array(
 	'expand_templates_preview' => 'Roie-haishbynys',
 );
 
+/** Hebrew (עברית)
+ * @author Rotem Liss
+ */
 $messages['he'] = array(
 	'expandtemplates'                  => 'פריסת תבניות',
+	'expandtemplates-desc'             => '[[Special:ExpandTemplates|פריסת תבניות, הוראות תנאי ומשתנים]] כדי להציג את טקסט הוויקי הפרוס ולבצע תצוגה מקדימה של דף מפוענח',
 	'expand_templates_intro'           => 'דף זה מקבל כמות מסוימת של טקסט ופורס ומפרש את כל התבניות שבתוכו באופן רקורסיבי. בנוסף, הוא פורס הוראות פירוש כגון <nowiki>{{</nowiki>#תנאי:...}}, ומשתנים כגון <nowiki>{{</nowiki>יום נוכחי}}, ולמעשה פחות או יותר כל דבר בסוגריים מסולסלות כפולות. הוא עושה זאת באמצעות קריאה לפונקציות הפענוח המתאימות מתוך תוכנת מדיה־ויקי עצמה.',
 	'expand_templates_title'           => 'כותרת ההקשר לפענוח, בשביל משתנים כגון {{שם הדף}} וכדומה:',
 	'expand_templates_input'           => 'טקסט:',

@@ -88,6 +88,13 @@ $messages['gl'] = array(
 	'mwsearch-desc' => 'Complemento de procura MediaWiki',
 );
 
+/** Hebrew (עברית)
+ * @author Rotem Liss
+ */
+$messages['he'] = array(
+	'mwsearch-desc' => 'תוסף MWSearch',
+);
+
 /** Hindi (हिन्दी)
  * @author Kaustubh
  */
