@@ -1,7 +1,7 @@
 <?php
 /**
  * MwRdf.php -- RDF framework for MediaWiki
- * Copyright 2005,2006 Evan Prodromou <evan@wikitravel.org>
+ * Copyright 2005, 2006 Evan Prodromou <evan@wikitravel.org>
  *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -18,7 +18,7 @@
  *  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
  * @author Evan Prodromou <evan@wikitravel.org>
- * @addtogroup Extensions
+ * @ingroup Extensions
  */
 if (defined('MEDIAWIKI')) {
 
@@ -77,6 +77,14 @@ if (defined('MEDIAWIKI')) {
 	$wgRdfCacheExpiry = 86400;
 
 	/* Config end */
+	
+	$wgExtensionCredits['other'][] = array(
+		'name' => 'RDF',
+		'version' => MWRDF_VERSION,
+		'description' => 'RDF framework for MediaWiki',
+		'author' => 'Evan Prodromou',
+		'url' => 'http://www.mediawiki.org/wiki/Extension:RDF',
+	);
 
 	$wgExtensionFunctions[] = 'setupMwRdf';
 
