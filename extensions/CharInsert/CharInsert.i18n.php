@@ -80,6 +80,13 @@ $messages['gl'] = array(
 	'charinsert-desc' => 'Permite a creación dunha caixa de JavaScript para [[MediaWiki:Edittools|inserir caracteres que non son estándar]]',
 );
 
+/** Hebrew (עברית)
+ * @author Rotem Liss
+ */
+$messages['he'] = array(
+	'charinsert-desc' => 'הוספת אפשרות ליצירת תיבת JavaScript עבור [[MediaWiki:Edittools|הוספת תווים בלתי סטנדרטיים]]',
+);
+
 /** Hindi (हिन्दी)
  * @author Kaustubh
  */

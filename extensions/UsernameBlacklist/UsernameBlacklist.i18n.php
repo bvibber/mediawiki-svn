@@ -409,6 +409,26 @@ $messages['hak'] = array(
 	'blacklistedusernametext' => 'Ngì só sién-chet ke yung-fu-miàng he lâu [[MediaWiki:Usernameblacklist|Yung-fu-miàng het-miàng-tân lie̍t-péu]] fù-ha̍p. Chhiáng sién-chet nang-ngoi yit-ke miàng-chhṳ̂n.',
 );
 
+/** Hebrew (עברית)
+ * @author Rotem Liss
+ */
+$messages['he'] = array(
+	'usernameblacklist-desc'          => 'הוספת [[MediaWiki:Usernameblacklist|רשימת שמות משתמש אסורים]] כדי להגביל את יצירת חשבונות המשתמש שמתאימים לביטוי רגולרי אחד או יותר',
+	'blacklistedusername'             => 'שם משתמש אסור',
+	'blacklistedusernametext'         => 'שם המשתמש שבחרתם מופיע ב[[MediaWiki:Usernameblacklist|רשימת שמות המשתמש האסורים]].
+אנא בחרו שם אחר.',
+	'usernameblacklist'               => '<pre>
+# ערכים ברשימה זו ישמשו כחלק מביטוי רגולרי
+# המגביל הרשמה של שמות משתמש מסוימים. כל פריט ברשימה צריך להיות חלק
+# מרשימה עם תבליטים, לדוגמה:
+#
+# * Foo
+# * [Bb]ar
+</pre>',
+	'usernameblacklist-invalid-lines' => '{{PLURAL:$1|השורה הבאה|השורות הבאות}} ברשימת שמות המשתמש האסורים {{PLURAL:$1|אינה תקינה|אינם תקינים}}; אנא תקנו {{PLURAL:$1|אותה|אותן}} לפני השמירה:',
+	'right-uboverride'                => 'עקיפת רשימת שמות המשתמש האסורים',
+);
+
 /** Hindi (हिन्दी)
  * @author Shyam
  * @author Kaustubh

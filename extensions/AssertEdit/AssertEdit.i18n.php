@@ -174,6 +174,15 @@ $messages['gl'] = array(
 	'assert_edit_message' => 'A afirmación especificada ($1) fracasou.',
 );
 
+/** Hebrew (עברית)
+ * @author Rotem Liss
+ */
+$messages['he'] = array(
+	'assert_edit_title'   => 'הבדיקה נכשלה',
+	'assert_edit_desc'    => 'הוספת בדיקות בעת העריכה, לשימוש הבוטים',
+	'assert_edit_message' => 'הבדיקה שצוינה ($1) נכשלה.',
+);
+
 /** Hindi (हिन्दी)
  * @author Kaustubh
  */
