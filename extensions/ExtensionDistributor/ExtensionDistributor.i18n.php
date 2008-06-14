@@ -3,6 +3,7 @@
 $messages = array(
 	'en' => array(
 		'extensiondistributor' => 'Download MediaWiki extension',
+		'extdist-desc' => 'Extension for distributing snapshot archives of extensions',
 		'extdist-not-configured' => 'Please configure $wgExtDistTarDir and $wgExtDistWorkingCopy',
 		'extdist-wc-missing' => 'The configured working copy directory does not exist!',
 		'extdist-no-such-extension' => 'No such extension "$1"',

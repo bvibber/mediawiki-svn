@@ -10,6 +10,15 @@
  * Configuration
  */
 
+$wgExtensionCredits['specialpage'][] = array(
+	'name'           => 'Extension Distributor',
+	'author'         => 'Tim Starling',
+	'svn-revision' => '$LastChangedRevision: 35631 $',
+	'url'            => 'http://www.mediawiki.org/wiki/Extension:ExtensionDistributor',
+	'description'    => 'This is an extension for distributing snapshot archives of extensions',
+	'descriptionmsg' => 'extdist-desc',
+);
+
 /** Directory to put tar files in */
 $wgExtDistTarDir = false;
 
