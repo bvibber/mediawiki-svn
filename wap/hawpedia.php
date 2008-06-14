@@ -31,7 +31,7 @@ function set_deck_properties(&$deck)
   $deck->set_width(HAWIKI_DISP_WIDTH);
   $deck->set_height(HAWIKI_DISP_HEIGHT);
   $deck->set_disp_bgcolor(HAWIKI_DISP_BGCOLOR);
-//  $deck->use_simulator(HAWIKI_SKIN);
+  $deck->use_simulator(HAWIKI_SKIN);
 }
 
 function hawpedia_error($error_msg)

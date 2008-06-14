@@ -55,6 +55,7 @@ $wikitext = remove_section($wikitext, "<!--", "-->");
 $wikitext = remove_controls($wikitext);
 
 // replace html entities
+$wikitext = str_replace("&nbsp;", " ", $wikitext); // shows '?' on Safari/iPhone
 // throws warning PHP4: http://bugs.php.net/bug.php?id=25670
 $wikitext = @html_entity_decode($wikitext, ENT_QUOTES, 'UTF-8');
 

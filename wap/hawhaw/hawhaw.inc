@@ -3,7 +3,7 @@
 // HAWHAW: HTML and WML hybrid adapted webserver
 // PHP class library
 // Copyright (C) 2008 Norbert Huffschmid
-// Last modified: 14. May 2008
+// Last modified: 14. June 2008
 //
 // This library is free software; you can redistribute it and/or modify it under the
 // terms of the GNU Library General Public License as published by the Free Software
@@ -21,13 +21,10 @@
 // For further information about this library and its license terms please visit:
 // http://www.hawhaw.de/
 //
-// changes against V5.18:
-// improved browser detection for:
-// - PalmOS
-// - Minimo
-// - PIE
-// - Blackberry
-// - Nintendo DS
+// changes against V5.19:
+// - added support of Amazon Kindle device
+// - disabling of simulator supported
+// - improved detection of desktop browsers
 
 ###################################
 #   BEGIN OF CONFIGURATION PART   #
@@ -48,7 +45,7 @@
 ###################################
 
 // miscellaneous constants
-define("HAW_HAW_VERSION", "HAWHAW V5.19B");
+define("HAW_HAW_VERSION", "HAWHAW V5.20B");
 define("HAW_COPYRIGHT", "(C) Norbert Huffschmid");
 if (defined("HAW_TERA_WURFL_PATH"))
   define("HAW_VERSION", HAW_HAW_VERSION . "/Tera-WURFL");
@@ -97,7 +94,8 @@ define("HAW_SUBMIT", 15);
 define("HAW_RAW", 16);
 define("HAW_RULE", 17);
 define("HAW_VOICERECORDER", 18);
-define("HAW_USERDEFINED", 19);
+define("HAW_USERDEFINED", 19);   // synonym for HAW_PLUGIN (deprecated)
+define("HAW_PLUGIN", 19);
 
 // constants for page setup
 define("HAW_ALIGN_LEFT", 1);
@@ -161,6 +159,12 @@ define("HAW_DISP_BGCOLOR",    "#00BB77"); // green HAWHAW display
 define("HAW_DISP_LINKCOLOR",  "#004411"); // dark green
 define("HAW_DISP_VLINKCOLOR", "#006633"); // lighter green
 define("HAW_DISP_FACE",       "Arial,Times");
+
+// constants for simulator handling
+define("HAW_SIM_NONE",    0); // no simulator at all
+define("HAW_SIM_CLASSIC", 1); // classic hawhaw simulator style
+define("HAW_SIM_SKIN",    2); // skin-based (phone-) simulator
+
 
 function HAW_specchar($input, $deck)
 {
@@ -559,18 +563,21 @@ class HAW_deck
   var $number_of_top_banners = 0;
   var $bottom_banners;
   var $number_of_bottom_banners = 0;
-  var $display_banners = true;
+  var $display_banners = false;
+  var $link_brackets = true;
   var $waphome;
   var $hdmlcardset;
 
   // browser dependent properties
-  var $pureHTML = false;	        	// Big-screen-HTML-code ("simulator", causes trouble with unrecognized devices)
+  var $desktopBrowser = false;  // non-mobile browser
+  var $pureHTML;                // deprecated synonym for $desktopBrowser (keep for compatibilty reasons)
   var $PDAstyle = false;		// PDA browsers needs special HTML code
   var $iModestyle = false;		// cHTML too
   var $upbrowser = false;               // UP browser
   var $owgui_1_3 = false;               // Openwave GUI Extensions for WML 1.3
   var $MMLstyle = false;		// Mobile Markup Language
   var $lynx = false;			// Lynx text browser
+  var $iPhoneAlike = false;		// iPhone, iPod Touch etc.
   var $xhtml = false;			// XHTML MP (mobile profile)
   var $gif_enabled = false;             // browser can not deal with GIF images
   var $submitViaLink = false;           // use link instead of <do>
@@ -582,8 +589,8 @@ class HAW_deck
   var $hawoutput = "";                  // no forced output
 
   // device simulator properies
-  var $use_simulator = false;      // decide whether default simulator device is to be used
-  var $skin = "";                  // contains css url, where skinning is defined
+  var $use_simulator = HAW_SIM_CLASSIC; // decide whether default simulator device is to be used
+  var $skin = "";                       // contains css url, where skinning is defined
 
   // character set properties
   var $charset = "iso-8859-1";     // default charset
@@ -786,6 +793,16 @@ class HAW_deck
       }
     }
 
+    $this->pureHTML = &$this->desktopBrowser; // synonyms for non-mobile browsers
+    
+    if (strstr(strtolower($HTTP_USER_AGENT), "lynx"))
+      $this->lynx = true;
+        
+    if (strstr($HTTP_USER_AGENT, "(iPhone") ||
+        strstr($HTTP_USER_AGENT, "(iPod") ||
+        strstr($HTTP_USER_AGENT, "(Aspen Simulator"))
+      $this->iPhoneAlike = true;    
+    
     if (defined("HAW_TERA_WURFL_PATH") && !$forced_output)
     {
       $this->determine_capabilities_terawurfl();
@@ -936,17 +953,17 @@ class HAW_deck
 
 
   /**
-    Adds some user-defined HAWHAW object to HAW_deck.<br>
-    @param udef Some user-defined object.
+    Adds some HAWHAW plugin to HAW_deck.<br>
+    @param plugin Some user-defined plugin object.
 
     <pre>
-    A user-defined HAWHAW class definition should look like this:
+    A HAWHAW plugin class definition should look like this:
 
-      class HAW_foo // some class name of your choice
+      class HAW_plugin_foo // some class name of your choice
       {
         var $bar;   // some class variable declarations of your choice
       
-        function HAW_foo(...)
+        function HAW_plugin_foo(...)
         {
           # some constructor code (if required)
         }
@@ -959,7 +976,7 @@ class HAW_deck
         # this member function is called by HAWHAW and MUST NOT be changed!
         function get_elementtype()
         {
-          return HAW_USERDEFINED;
+          return HAW_PLUGIN;
         }
       
         function create($deck)
@@ -972,24 +989,33 @@ class HAW_deck
 
       Usage: ...
              require_once("hawhaw.inc);
-             require_once("HAW_foo.php");
+             require_once("HAW_plugin_foo.php");
              ...       
-             $myText = new HAW_text("Classic text");
-             $myDeck->add_text($myText);
-             $myClass = new HAW_foo("Cool output");
+             $myClass = new HAW_plugin_foo("Cool output");
              $myClass->set_coolstuff($ringtone, $sms, $userlocation);
-             $myDeck->add_userdefined($myClass);
+             $myDeck->add_plugin($myClass);
              ...
     </pre>
   */
-  function add_userdefined($udef)
+  function add_plugin($plugin)
   {
-    if (!is_object($udef))
-      die("invalid argument in add_userdefined()");
+    if (!is_object($plugin))
+      die("invalid argument in add_plugin()");
 
-    $this->element[$this->number_of_elements] = $udef;
+    $this->element[$this->number_of_elements] = $plugin;
 
     $this->number_of_elements++;
+  }
+
+
+  /**
+    Adds some user-defined HAWHAW object to HAW_deck.<br>
+    @param udef Some user-defined object.
+    @deprecated use HAW_deck::add_plugin() instead
+  */
+  function add_userdefined($udef)
+  {
+    $this->add_plugin($udef);
   }
 
 
@@ -1403,17 +1429,36 @@ class HAW_deck
 
 
   /**
-    Activates the device simulator on bigscreen browsers. <br>
-    Note: If no skin is specified, the HAWHAW default skin is used.
+    Activates or deactivated the device simulator on bigscreen browsers. <br>
+    Note: If no sim parameter is provided, the HAWHAW default skin is used.
     HAWHAW output can be displayed in any kind of user-defined skin.
     See <a href="http://skin.hawhaw.de/skin.css" target="_blank">
     CSS file</a> of the HAWHAW default skin for more info.
-    @param skin URL of CSS file, where skin is defined (optional)
+    @param sim HAW_SIM_NONE | HAW_SIM_CLASSIC | URL of CSS file, where skin is defined (optional)
   */
-  function use_simulator($skin="http://skin.hawhaw.de/skin.css")
+  function use_simulator($sim="http://skin.hawhaw.de/skin.css")
   {
-    $this->use_simulator = true;
-    $this->skin = $skin;
+    if ($sim === HAW_SIM_NONE)
+      $this->use_simulator = HAW_SIM_NONE;
+    else if ($sim === HAW_SIM_CLASSIC)
+      $this->use_simulator = HAW_SIM_CLASSIC;
+    else if (is_string($sim))
+    {
+      $this->use_simulator = HAW_SIM_SKIN;
+      $this->skin = $sim;
+    }
+    else
+      die("invalid argument in use_simulator()");
+  }
+  
+
+  /**
+    Defines whether links are shown within square brackets or not.
+    @param flag true (default) | false
+  */
+  function use_link_brackets($flag)
+  {
+    $this->link_brackets = $flag;
   }
 
 
@@ -1757,9 +1802,9 @@ class HAW_deck
       $bodystyle = "text-align: center; ";
       $css_style = "";
 
-      if ($this->pureHTML || $this->PDAstyle || $this->xhtml)
+      if ($this->desktopBrowser || $this->PDAstyle || $this->xhtml)
       {
-        if ($this->pureHTML)
+        if ($this->desktopBrowser)
         {
           // big-screen browser
  
@@ -1849,7 +1894,7 @@ class HAW_deck
 
       printf("<title>%s</title>\n", HAW_specchar($this->title, $this));
 
-      if ($this->pureHTML && $this->use_simulator && $this->css_enabled)
+      if ($this->desktopBrowser && ($this->use_simulator == HAW_SIM_SKIN) && $this->css_enabled)
         // use HAWHAW default- or user-defined skin
         printf("<link rel=\"stylesheet\" type=\"text/css\" href=\"%s\" $endtag\n", $this->skin);
 
@@ -1880,18 +1925,18 @@ class HAW_deck
         }
       }
 
-      if ($this->pureHTML)
+      if ($this->desktopBrowser)
       {
-        if ($this->css_enabled && $this->use_simulator)
+        if ($this->css_enabled && ($this->use_simulator == HAW_SIM_SKIN))
         {
-          // use simulator design
+          // use skin design
           echo "<div id=\"skin\">\n";
           echo "<div id=\"display\">\n";
         }
-        else
+        else if ($this->use_simulator == HAW_SIM_CLASSIC)
         {
           // use classic HAWHAW design
-          printf("<div style=\"background-color: %s; background-image: url(%s); border: %dpx solid #aaa; padding: 8px; width: %s; height: %s; margin: 0px auto; overflow: auto;\">\n",
+          printf("<div id=\"classic\" style=\"background-color: %s; background-image: url(%s); border: %dpx solid #aaa; padding: 8px; width: %s; height: %s; margin: 0px auto; overflow: auto;\">\n",
                  $this->disp_bgcolor, $this->disp_background, $this->border, $this->width, $this->height);
         }
       }
@@ -2134,9 +2179,9 @@ class HAW_deck
     if ($this->ml == HAW_HTML)
     {
       if ($this->css_enabled)
-        printf("<div style=\"%s\">\n", $divstyle);
+        printf("<div id=\"canvas\" style=\"%s\">\n", $divstyle);
       else
-        printf("<div align=\"%s\">\n", $this->alignment);
+        printf("<div id=\"canvas\" align=\"%s\">\n", $this->alignment);
     }
     elseif ($this->ml == HAW_WML)
       printf("<p align=\"%s\">\n", $this->alignment);
@@ -2155,7 +2200,7 @@ class HAW_deck
         case HAW_PHONE:
         case HAW_LINKSET:
         case HAW_RAW:
-        case HAW_USERDEFINED:
+        case HAW_PLUGIN:
         case HAW_RULE:
         case HAW_VOICERECORDER:
         {
@@ -2189,17 +2234,22 @@ class HAW_deck
       if (!$this->css_enabled && $this->fontstyle_attrbs)
         echo "</font>\n";
 
-      if ($this->pureHTML)
+      if ($this->desktopBrowser)
       {
-        if ($this->css_enabled && $this->use_simulator)
-          // terminate display div
+        if ($this->css_enabled && ($this->use_simulator == HAW_SIM_SKIN))
+        {
+          // terminate display divs
           echo "</div>\n";
-
-        echo "</div>\n"; // terminate skin/classic div
+          echo "</div>\n";
+        }
+        
+        if ($this->use_simulator == HAW_SIM_CLASSIC)
+          echo "</div>\n"; // terminate classic div
 
         if (!$this->lynx)
         {
-        	$default_text = "Powered by HAWHAW (C)";
+          $signature = "";
+          $default_text = "Powered by HAWHAW (C)";
           if ($haw_license_holder && $haw_signature)
           {
             if ($haw_signature == 1)
@@ -2215,7 +2265,13 @@ class HAW_deck
             $signature = sprintf("<a href=\"http://info.hawhaw.de/index.htm?host=%s\" target=\"_blank\"><small>%s</small></a>\n",
                                  $this->waphome, $default_text);
 
-          echo $signature;
+          if ($signature && ($this->use_simulator == HAW_SIM_NONE))
+          {
+            echo "<hr width=\"150px\"/>\n"; // seperate content from signature
+            printf("<span style=\"font-size:8pt;\">%s</span>\n", $signature);
+          }
+          else
+            echo $signature;
         }
       }
 
@@ -2369,8 +2425,6 @@ class HAW_deck
           // let's be dotmobi compliant ...
           $this->ml = HAW_HTML;
           $this->xhtml = true;
-          $this->pureHTML = false;
-          $this->display_banners = false;
           $this->gif_enabled = true;
           $this->css_enabled = true;
       	}
@@ -2379,22 +2433,32 @@ class HAW_deck
       }
     }
 
+    // guess some non-mobile browsers
+    if (strstr($HTTP_USER_AGENT, "MSIE") ||      // can be WIN CE!
+        strstr($HTTP_USER_AGENT, "Firefox") ||
+        strstr($HTTP_USER_AGENT, "Macintosh") || // Safari desktop browser
+        strstr($HTTP_USER_AGENT, "Iceweasel") ||
+        strstr($HTTP_USER_AGENT, "Konqueror") ||
+        strstr($HTTP_USER_AGENT, "Opera"))       // can be Opera Mini!
+    {
+      $this->desktopBrowser = true;
+      $this->display_banners = true;
+    }
+    
     if (strstr($acc_low, "vnd.wap.xhtml") ||
         strstr($ua_low, "opera mini") ||
         strstr($ua_low, "google wireless transcoder") ||
         (strstr($ua_low, "symbianos") && strstr($acc_low, "xhtml+xml")) ||
-        strstr($HTTP_USER_AGENT, "(iPhone") ||
-        strstr($HTTP_USER_AGENT, "(iPod") ||
-        strstr($HTTP_USER_AGENT, "(Aspen Simulator") ||
+        ($this->iPhoneAlike == true) ||
         strstr($HTTP_USER_AGENT, "(Linux; U; Android") ||
         strstr($HTTP_USER_AGENT, "Kindle/"))
     {
       // XHTML device detected
       $this->xhtml = true;
-      $this->pureHTML = false;
-      $this->display_banners = false;
       $this->gif_enabled = true;
       $this->css_enabled = true;
+      $this->desktopBrowser = false;
+      $this->display_banners = false;
     }
     elseif ( strstr($ua_low, "avantgo") ||
              strstr($ua_low, "reqwirelessweb") ||
@@ -2413,7 +2477,7 @@ class HAW_deck
     {
       // PDA browser detected  (or poor old Netscape 4.7x which messes with CSS)
       $this->PDAstyle = true;
-      $this->pureHTML = false;
+      $this->desktopBrowser = false;
       $this->display_banners = false;
     }
     elseif (strstr($ua_low, "docomo") ||
@@ -2422,23 +2486,21 @@ class HAW_deck
     {
       // i-mode browser detected
       $this->iModestyle = true;
-      $this->pureHTML = false;
+      $this->desktopBrowser = false;
       $this->display_banners = false;
     }
     elseif (strstr($ua_low, "j-"))
     {
       // MML browser detected
       $this->MMLstyle = true;
-      $this->pureHTML = false;
+      $this->desktopBrowser = false;
       $this->display_banners = false;
     }
-    elseif (strstr($ua_low, "lynx"))
+    elseif ($this->lynx == true)
     {
-      // text browser detected
-      $this->lynx = true;
+      // lynx text browser
       $this->css_enabled = true; // enabled in the meaning of silently discarding it ...
-      $this->pureHTML = true;
-      $this->display_banners = false;
+      $this->desktopBrowser = true;
       $this->xhtmlmp_preferred_mime_type = "text/html";
     }
 
@@ -2461,9 +2523,7 @@ class HAW_deck
       $this->submitViaLink = true; // with some WAP devices it's quite difficult to submit WML forms
 
     // set alternative mime-type for some XHTML Mobile Profile devices 
-    if (strstr($HTTP_USER_AGENT, "(iPhone") ||
-        strstr($HTTP_USER_AGENT, "(iPod") ||
-        strstr($HTTP_USER_AGENT, "(Aspen Simulator"))
+    if ($this->iPhoneAlike == true)
       $this->xhtmlmp_preferred_mime_type = "text/html";
   }
   
@@ -2486,7 +2546,7 @@ class HAW_deck
       {
         // wireless device    	
 
-        $this->pureHTML = false;
+        $this->desktopBrowser = false;
         $this->display_banners = false;
       
         if ($cap['markup']['xhtml_support_level'] >= 1)
@@ -2549,7 +2609,7 @@ class HAW_deck
     else
     {
       // Tera-WURFL was not able to identify device
-      $this->pureHTML = false;
+      $this->desktopBrowser = false;
       $this->display_banners = false;
       $this->ml = HAW_HTML;
       $this->xhtml = true;
@@ -2802,18 +2862,29 @@ class HAW_form
 
 
   /**
+    Adds some HAWHAW plugin object to HAW_form
+    @param plugin Some user-defined plugin object.
+    @see HAW_deck::add_plugin()
+  */
+  function add_plugin($plugin)
+  {
+    if (!is_object($plugin))
+      die("invalid argument in add_plugin()");
+
+    $this->element[$this->number_of_elements] = $plugin;
+
+    $this->number_of_elements++;
+  }
+
+
+  /**
     Adds some user-defined HAWHAW object to HAW_form
     @param udef Some user-defined object.
-    @see HAW_deck::add_userdefined()
+    @deprecated use HAW_form::add_plugin() instead
   */
   function add_userdefined($udef)
   {
-    if (!is_object($udef))
-      die("invalid argument in add_userdefined()");
-
-    $this->element[$this->number_of_elements] = $udef;
-
-    $this->number_of_elements++;
+    $this->add_plugin($udef);
   }
 
 
@@ -2940,7 +3011,7 @@ class HAW_form
       printf("<form action=\"%s\"%s>\n", $this->url, $method);
 
       if ($deck->xhtml)
-        echo "<div>\n"; // needed for validation
+        echo "<div id=\"hawform\">\n"; // needed for validation
     }
       // not necessary in WML, HDML and VoiceXML!
 
@@ -2976,7 +3047,7 @@ class HAW_form
         case HAW_HIDDEN:
         case HAW_RAW:
         case HAW_RULE:
-        case HAW_USERDEFINED:
+        case HAW_PLUGIN:
         {
           $form_element->create($deck);
           break;
@@ -3148,7 +3219,8 @@ class HAW_text
     {
       // HDML
 
-      $deck->hdmlcardset->add_display_content("<" . $deck->alignment . ">\n");
+      if ($deck->alignment != "left")
+        $deck->hdmlcardset->add_display_content("<" . $deck->alignment . ">\n");
 
       // print text
       if ($this->text)
@@ -3183,14 +3255,15 @@ class HAW_text
           $this->boxcolor = "#000000"; // default: on black background
 
         if ($deck->css_enabled)
-          printf("<div style=\"background-color:%s; margin:0px;\">\n", $this->boxcolor);
+          printf("<div id=\"hawtextbox\" style=\"background-color:%s; margin:0px;\">\n",
+                 $this->boxcolor);
         else
         {
           printf("<table border=\"0\" bgcolor=\"%s\" width=\"100%%\"><tr><td><font%s>\n",
                  $this->boxcolor, $deck->fontstyle_attrbs);
   
           // align text in (table-)box
-          printf("<div align=\"%s\">\n", $deck->alignment);
+          printf("<div id=\"hawtextbox\" align=\"%s\">\n", $deck->alignment);
         }
 
         // decrement line breaks because div/table already causes 1 br
@@ -3480,7 +3553,8 @@ class HAW_image
     {
       // HDML
 
-      $deck->hdmlcardset->add_display_content("<" . $deck->alignment . ">\n");
+      if ($deck->alignment != "left")
+        $deck->hdmlcardset->add_display_content("<" . $deck->alignment . ">\n");
 
       if ($this->localsrc)
         $icon = sprintf(" icon=\"%s\"", $this->localsrc);
@@ -3527,9 +3601,14 @@ class HAW_image
         else
         {
           // use HTML bitmap
+          
+          if ($deck->css_enabled)
+            $style = " style=\"vertical-align:middle; border-style:none\"";
+          else
+            $style = " align=\"middle\" border=\"0\"";
 
-          printf("<img src=\"%s\" alt=\"%s\"%s />\n",
-                 $this->src_html, HAW_specchar($this->alt, $deck), $size);
+          printf("<img src=\"%s\" alt=\"%s\"%s%s />",
+                 $this->src_html, HAW_specchar($this->alt, $deck), $size, $style);
         }
 
         // evaluate HTML break instruction
@@ -4175,7 +4254,7 @@ class HAW_input
       }
 
       // create HTML input
-      if ($deck->xhtml || $deck->pureHTML)
+      if ($deck->xhtml || $deck->desktopBrowser)
       {
         printf("<label for=\"%s\">%s</label>\n",
                 $this->name, HAW_specchar($this->label, $deck));
@@ -4208,7 +4287,8 @@ class HAW_input
       if ($this->type == HAW_INPUT_PASSWORD)
         $options .= " NOECHO=\"true\"";
 
-      $display_content = "<" . $deck->alignment . ">\n";
+      if ($deck->alignment != "left")
+        $display_content = "<" . $deck->alignment . ">\n";
 
       $display_content .= HAW_specchar($this->label, $deck);
       $display_content .= "\n";
@@ -4410,7 +4490,8 @@ class HAW_textarea
 
       $options = " key=\"$this->name\"";
 
-      $display_content = "<" . $deck->alignment . ">\n";
+      if ($deck->alignment != "left")
+        $display_content = "<" . $deck->alignment . ">\n";
 
       $display_content .= HAW_specchar($this->label, $deck);
       $display_content .= "\n";
@@ -4470,7 +4551,7 @@ class HAW_select
   {
     $this->name = $name;
     $this->type = $type;
-    $this->value = false;
+    $this->value = "";
     $this->number_of_options = 0;
     $this->voice_text = HAW_VOICE_ENUMERATE;
     $this->voice_audio_src = "";
@@ -4494,7 +4575,8 @@ class HAW_select
 
     $this->options[$this->number_of_options]["label"] = $label;
     $this->options[$this->number_of_options]["value"] = $value;
-
+    $this->options[$this->number_of_options]["is_selected"] = $is_selected;
+    
     if ((strlen($this->value) == 0) || ($is_selected == HAW_SELECTED))
       $this->value = $value;
 
@@ -4590,7 +4672,7 @@ class HAW_select
     {
       // create HTML select
 
-      if ($deck->xhtml || $deck->pureHTML)
+      if ($deck->xhtml || $deck->desktopBrowser)
       {
         // dummy label for select element (needed for Bobby approval)
         // object to be enhanced in future versions ...
@@ -4602,7 +4684,7 @@ class HAW_select
 
       for ($i=0; $i < $this->number_of_options; $i++)
       {
-        if ($this->options[$i]["value"] == $this->value)
+        if ($this->options[$i]["is_selected"] == HAW_SELECTED)
           $state = " selected=\"selected\"";
         else
           $state = "";
@@ -4765,7 +4847,8 @@ class HAW_radio
 
     $this->buttons[$this->number_of_buttons]["label"] = $label;
     $this->buttons[$this->number_of_buttons]["value"] = $value;
-
+    $this->buttons[$this->number_of_buttons]["is_checked"] = $is_checked;
+    
     if ((strlen($this->value) == 0) || ($is_checked == HAW_CHECKED))
       $this->value = $value;
 
@@ -4863,12 +4946,12 @@ class HAW_radio
 
       while (list($key, $val) = each($this->buttons))
       {
-        if ($val["value"] == $this->value)
+        if ($val["is_checked"] == HAW_CHECKED)
           $state = "checked=\"checked\"";
         else
           $state = "";
 
-        if ($deck->xhtml || $deck->pureHTML)
+        if ($deck->xhtml || $deck->desktopBrowser)
         {
           printf("<input type=\"radio\" name=\"%s\" id=\"%s\" %s value=\"%s\" />",
                   $this->name, $this->name . $key, $state, $val["value"]);
@@ -5120,7 +5203,7 @@ class HAW_checkbox
 
       $state = ($this->is_checked() ? "checked=\"checked\"" : "");
 
-      if ($deck->xhtml || $deck->pureHTML)
+      if ($deck->xhtml || $deck->desktopBrowser)
       {
         printf("<input type=\"checkbox\" name=\"%s\" id=\"%s\" %s value=\"%s\" />",
                 $this->name, $this->name, $state, $this->value);
@@ -5467,6 +5550,7 @@ class HAW_link
   var $title;
   var $accesskey; // "1", "2", ... "0", "*", "#"
   var $css_class;
+  var $image;
   var $br;
   var $voice_text;
   var $voice_audio_src;
@@ -5490,11 +5574,22 @@ class HAW_link
     $this->accesskey = HAW_NO_ACCESSKEY; // no accesskey assigned
                                          // can be assigned later e.g. from HAW_linkset object if required
     $this->css_class = "";
+    $this->image = false;
     $this->br = 1; // default: 1 line break after text
     $this->voice_text = $label;
     $this->voice_audio_src = "";
     $this->voice_timeout = 10; // voice decks with text and links only terminate after 10 sec
     $this->voice_input = $label;
+  }
+
+  /**
+    Adds an image that is to be displayed on the left side of the link.
+    @param image HAW_image object that contains the image/icon
+    @see HAW_image
+  */
+  function add_image($image)
+  {
+    $this->image = $image;
   }
 
   /**
@@ -5619,7 +5714,7 @@ class HAW_link
 
         $title_option = "";
 
-        if ($this->title && ($deck->xhtml || $deck->lynx  || $deck->pureHTML))
+        if ($this->title && ($deck->xhtml || $deck->lynx  || $deck->desktopBrowser))
           $title_option = sprintf(" title=\"%s\"", HAW_specchar($this->title, $deck));
 
         $accesskey_option = "";
@@ -5641,10 +5736,23 @@ class HAW_link
           printf("<span class=\"%s\">\n", $this->css_class);
         }
 
-        printf("[<a href=\"%s\"%s%s>%s</a>]%s\n",
-               HAW_specchar($this->url, $deck), $title_option, $accesskey_option,
-               HAW_specchar($this->label, $deck), $br);
+        if ($deck->link_brackets == true)
+          echo "[";
+          
+        printf("<a href=\"%s\"%s%s>",
+               HAW_specchar($this->url, $deck), $title_option, $accesskey_option);
 
+        if (is_object($this->image))
+          // image available for this link, let it create itself
+          $this->image->create($deck);
+
+        printf("%s</a>", HAW_specchar($this->label, $deck));
+        
+        if ($deck->link_brackets == true)
+          echo "]";
+        
+        printf("%s\n", $br);
+        
         if ($deck->css_enabled && $this->css_class)
         {
           echo "</span>\n";
@@ -5666,9 +5774,13 @@ class HAW_link
         for ($i=0; $i < $this->br; $i++)
           $br .= "<br/>";
 
-        printf("<a%s href=\"%s\">%s</a>%s\n",
-               $title_option, HAW_specchar($this->url, $deck),
-               HAW_specchar($this->label, $deck), $br);
+        printf("<a%s href=\"%s\">", $title_option, HAW_specchar($this->url, $deck));
+
+        if (is_object($this->image))
+          // image available for this link, let it create itself
+          $this->image->create($deck);
+
+        printf("%s</a>%s\n", HAW_specchar($this->label, $deck), $br);
       }
 
       elseif ($deck->ml == HAW_HDML)
@@ -5690,6 +5802,10 @@ class HAW_link
         $br = "";
         for ($i=0; $i < $this->br; $i++)
           $br .= "<br>";
+          
+        if (is_object($this->image) && (strlen($this->label) == 0))
+          // workaround for (non-displayable) images and non-existing labels
+          $this->label = $this->image->alt;
 
         $content = sprintf("<a task=\"go\" dest=\"%s\"%s%s>%s</a>%s\n",
                             HAW_specchar($this->url, $deck),
@@ -5782,6 +5898,7 @@ class HAW_phone
   var $isPOTS; // Plain Old Telephony System
   var $title;
   var $accesskey; // "1", "2", ... "0", "*", "#"
+  var $image;
   var $br;
   var $voice_text;
   var $voice_audio_src;
@@ -5812,11 +5929,22 @@ class HAW_phone
     
     $this->title = $title;
     $this->accesskey = HAW_NO_ACCESSKEY;
+    $this->image = false;
     $this->br = 1; // default: 1 line break
     $this->voice_text = $destination;
     $this->voice_audio_src = "";
     $this->voice_timeout = 10;
     $this->voice_input = "";
+  }
+
+  /**
+    Adds an image that is to be displayed on the left side of the phone link.
+    @param image HAW_image object that contains the image/icon
+    @see HAW_image
+  */
+  function add_image($image)
+  {
+    $this->image = $image;
   }
 
   /**
@@ -5908,13 +6036,13 @@ class HAW_phone
         else
           $dest = $this->destination;
       }
-      elseif ($deck->MMLstyle) {
+      elseif ($deck->MMLstyle || $deck->iPhoneAlike) {
         if ($this->isPOTS)
           $dest = "tel:" . $this->destination;
         else
           $dest = $this->destination;
       }
-      elseif ($deck->pureHTML) {
+      elseif ($deck->desktopBrowser) {
         if ($this->isPOTS)
           $dest = "callto:" . $this->destination;
         else
@@ -5929,8 +6057,22 @@ class HAW_phone
           $dest = $this->destination;
       }
 
-      printf("[<a href=\"%s\"%s>%s</a>]%s\n",
-              $dest, $title_option, HAW_specchar($this->label, $deck), $br);
+      if ($deck->link_brackets == true)
+        echo "[";
+          
+      printf("<a href=\"%s\"%s>", $dest, $title_option);
+
+      if (is_object($this->image))
+        // image available for this link, let it create itself
+        $this->image->create($deck);
+
+      printf("%s</a>", HAW_specchar($this->label, $deck));
+
+      if ($deck->link_brackets == true)
+        echo "]";
+        
+      printf("%s\n", $br);
+
     }
     elseif ($deck->ml == HAW_WML)
     {
@@ -5951,8 +6093,13 @@ class HAW_phone
       else
         $dest = $this->destination;
 
-      printf("<a href=\"%s\"%s>%s</a>%s\n", $dest, $title_option,
-              HAW_specchar($this->label, $deck), $br);
+      printf("<a href=\"%s\"%s>", $dest, $title_option);
+
+      if (is_object($this->image))
+        // image available for this link, let it create itself
+        $this->image->create($deck);
+
+      printf("%s</a>%s\n", HAW_specchar($this->label, $deck), $br);
     }
     elseif ($deck->ml == HAW_HDML)
     {
@@ -6179,7 +6326,7 @@ class HAW_linkset
         {
           // create links inside a frame
 
-          echo "<div style=\"padding: 5px;\">\n";
+          echo "<div id=\"hawlinkset\" style=\"padding: 5px;\">\n";
 
           if ($deck->lynx)
           {
@@ -6282,7 +6429,7 @@ class HAW_linkset
   $pageContent = new HAW_text("Here comes some content ...");
   $myPage->add_text($pageContent);
   $myHtmlCode = "<p>Here comes an adblock for html devices ...</p>";
-  $myAdBlock = new HAW_raw(HAW_HTML, $myHtmlCode);
+  $myAdblock = new HAW_raw(HAW_HTML, $myHtmlCode);
   $myPage->add_raw($myAdblock);
   $myPage->create_page();
   </pre>
@@ -6478,7 +6625,8 @@ class HAW_rule
       // HDML devices doesn't understand <hr>
       // ==> draw some number of hyphens to create a rule
 
-      $deck->hdmlcardset->add_display_content("<" . $deck->alignment . ">\n");
+      if ($deck->alignment != "left")
+        $deck->hdmlcardset->add_display_content("<" . $deck->alignment . ">\n");
 
       $deck->hdmlcardset->add_display_content("----------\n<br>\n");
     }
