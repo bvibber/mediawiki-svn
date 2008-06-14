@@ -110,6 +110,13 @@ $messages['gl'] = array(
 	'doublewiki-desc' => 'Amosa unha páxina e a súa tradución doutro wiki en dúas columnas na mesma páxina',
 );
 
+/** Hebrew (עברית)
+ * @author Rotem Liss
+ */
+$messages['he'] = array(
+	'doublewiki-desc' => 'הצגת דף ותרגום שלו מאתר אחר בשתי עמודות באותו הדף',
+);
+
 /** Hindi (हिन्दी)
  * @author Kaustubh
  */

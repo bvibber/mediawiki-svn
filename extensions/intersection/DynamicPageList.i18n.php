@@ -163,6 +163,17 @@ $messages['gl'] = array(
 	'intersection_noincludecats' => 'DynamicPageList: Ten que incluír unha categoría polo menos ou especificar un espazo de nomes!',
 );
 
+/** Hebrew (עברית)
+ * @author Rotem Liss
+ */
+$messages['he'] = array(
+	'intersection-desc'          => 'רשימה עם תבליטים של הפריטים האחרונים המצויים בקטגוריה, או באיחוד של מספר קטגוריות',
+	'intersection_toomanycats'   => 'DynamicPageList: קטגוריות רבות מדי!',
+	'intersection_toofewcats'    => 'DynamicPageList: קטגוריות מעטות מדי!',
+	'intersection_noresults'     => 'DynamicPageList: אין תוצאות!',
+	'intersection_noincludecats' => 'DynamicPageList: עליכם לכלול לפחות קטגוריה אחת, או לציין מרחב שם!',
+);
+
 /** Hindi (हिन्दी)
  * @author Kaustubh
  */

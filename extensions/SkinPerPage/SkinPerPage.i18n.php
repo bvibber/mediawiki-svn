@@ -71,6 +71,13 @@ $messages['gl'] = array(
 	'skinperpage-desc' => 'Engade a etiqueta <tt>&lt;skin&gt;</tt> para usar diferentes apariencias por páxina',
 );
 
+/** Hebrew (עברית)
+ * @author Rotem Liss
+ */
+$messages['he'] = array(
+	'skinperpage-desc' => 'הוספת תגית <tt>&lt;skin&gt;</tt> לשימוש ברקעים שונים בדפים שונים',
+);
+
 /** Hindi (हिन्दी)
  * @author Kaustubh
  */

@@ -263,6 +263,24 @@ $messages['gl'] = array(
 	'scanset_prev'           => '&lt; Anterior',
 );
 
+/** Hebrew (עברית)
+ * @author Rotem Liss
+ */
+$messages['he'] = array(
+	'scanset-desc'                      => 'צפייה בתמונות של דפים שנסרקו מתוך אוספי ה־CD/DVD של אנדריאס גרוס',
+	'scanset_no_name'                   => 'ScanSet: יש לציין שם של אוסף סרוק, לדוגמה &lt;scanset name="EB1911" /&gt;.',
+	'scanset_invalid_name'              => 'ScanSet: אוסף סרוק חסר או לא קיים.',
+	'scanset_unrecognised_index_format' => 'ScanSet: פורמט אינדקס בלתי ידוע',
+	'scanset_opendir_error'             => 'ScanSet: שגיאה, לא ניתן לפתוח את התיקייה $1',
+	'scanset_no_files'                  => 'ScanSet: לא קיימים קבצים בתיקייה שצוינה.',
+	'scanset_no_volumes'                => 'ScanSet: לא נמצאו תיקיות של כרכים',
+	'scanset_missing_index_file'        => 'ScanSet: קובץ האינדקס $1 לא נמצא',
+	'scanset_index_file_error'          => 'ScanSet: שגיאה בפורמט קובץ האינדקס בשורה $1',
+	'scanset_invalid_volume'            => 'ScanSet: כרך שאינו קיים',
+	'scanset_next'                      => 'הבא &gt;',
+	'scanset_prev'                      => '&lt; הקודם',
+);
+
 /** Hindi (हिन्दी)
  * @author Kaustubh
  */
