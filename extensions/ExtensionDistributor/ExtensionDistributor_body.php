@@ -5,13 +5,12 @@ class ExtensionDistributorPage extends SpecialPage {
 
 	function __construct() {
 		parent::__construct( 'ExtensionDistributor' );
+		wfLoadExtensionMessages( 'ExtensionDistributor' );
+		$this->setHeaders();
 	}
 
 	function execute( $subpage ) {
 		global $wgExtDistTarDir, $wgExtDistWorkingCopy, $wgOut, $wgRequest;
-
-		wfLoadExtensionMessages( 'ExtensionDistributor' );
-		$this->setHeaders();
 
 		if ( !$wgExtDistTarDir || !$wgExtDistWorkingCopy ) {
 			$wgOut->addWikiMsg( 'extdist-not-configured' );

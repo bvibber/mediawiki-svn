@@ -1,7 +1,8 @@
 <?php
 
-$messages = array(
-	'en' => array(
+$messages = array();
+
+$messages['en'] = array(
 		'extensiondistributor' => 'Download MediaWiki extension',
 		'extdist-desc' => 'Extension for distributing snapshot archives of extensions',
 		'extdist-not-configured' => 'Please configure $wgExtDistTarDir and $wgExtDistWorkingCopy',
@@ -35,5 +36,4 @@ It may be used for immediate download to a server, but please do not bookmark it
 The tar archive should be extracted into your extensions directory, then follow the extension's documentation to enable it in MediaWiki.
 ",
 		'extdist-want-more' => 'Get another extension',
-	),
 );
