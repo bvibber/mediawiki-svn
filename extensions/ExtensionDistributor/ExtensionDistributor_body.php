@@ -173,37 +173,18 @@ class ExtensionDistributorPage extends SpecialPage {
 			"</form>\n"
 	   	);
 	}
-	
+
 	function doDownload( $extension, $version ) {
 		global $wgExtDistWorkingCopy, $wgExtDistTarDir, $wgExtDistBranches, 
-			$wgOut, $wgExtDistTarUrl;
-		
-		// svn up
-		$dir = "$wgExtDistWorkingCopy/$version/extensions/$extension";
-		$cmd = "svn up --non-interactive " . wfEscapeShellArg( $dir ) . " 2>&1";
-		$retval = -1;
-		$result = wfShellExec( $cmd, $retval );
-		if ( $retval ) {
-			$wgOut->addWikiMsg( 'extdist-svn-error', $retval );
-			$wgOut->addHTML( '<pre>' . htmlspecialchars( $result ) . '</pre>' );
-			return;
-		}
+			$wgOut, $wgExtDistTarUrl, $wgExtDistRemoteClient;
 
-		// Determine last changed revision
-		$cmd = "svn info --non-interactive --xml " . wfEscapeShellArg( $dir );
-		$retval = -1;
-		$result = wfShellExec( $cmd, $retval );
-		if ( $retval ) {
-			$wgOut->addWikiMsg( 'extdist-svn-error', $retval );
-			$wgOut->addHTML( '<pre>' . htmlspecialchars( $result ) . '</pre>' );
-			return;
+		if ( $wgExtDistRemoteClient ) {
+			$rev = $this->updateAndGetRevisionRemote( $extension, $version );
+		} else {
+			$rev = $this->updateAndGetRevisionLocal( $extension, $version );
 		}
-
-		$sx = new SimpleXMLElement( $result );
-		$rev = $sx->entry->commit['revision'];
-		if ( !$rev || strpos( $rev, '/' ) !== false || strpos( $rev, "\000" ) !== false ) {
-			$wgOut->addWikiMsg( 'extdist-svn-parse-error' );
-			$wgOut->addHTML( '<pre>' . htmlspecialchars( $result ) . '</pre>' );
+		if ( $rev === false ) {
+			// Error already displayed
 			return;
 		}
 
@@ -216,6 +197,7 @@ class ExtensionDistributorPage extends SpecialPage {
 		// Create it if it doesn't exist
 		if ( !file_exists( $tarFile ) ) {
 			// Does the tar file need ExtensionFunctions.php?
+			$dir = "$wgExtDistWorkingCopy/$version/extensions/$extension";
 			$retval = -1;
 			$files = call_user_func_array( 'wfEscapeShellArg', glob( "$dir/*.php" ) );
 			wfShellExec( "grep -q ExtensionFunctions " . $files, $retval );
@@ -248,5 +230,67 @@ class ExtensionDistributorPage extends SpecialPage {
 
 		// Redirect to the file
 		header( 'Refresh: 5;' . $url );
+	}
+
+	function updateAndGetRevisionLocal( $extension, $version ) {
+		global $wgExtDistWorkingCopy, $wgOut;
+		// svn up
+		$dir = "$wgExtDistWorkingCopy/$version/extensions/$extension";
+		$cmd = "svn up --non-interactive " . wfEscapeShellArg( $dir ) . " 2>&1";
+		$retval = -1;
+		$result = wfShellExec( $cmd, $retval );
+		if ( $retval ) {
+			$wgOut->addWikiMsg( 'extdist-svn-error', $result );
+			return false;
+		}
+
+		// Determine last changed revision
+		$cmd = "svn info --non-interactive --xml " . wfEscapeShellArg( $dir );
+		$retval = -1;
+		$result = wfShellExec( $cmd, $retval );
+		if ( $retval ) {
+			$wgOut->addWikiMsg( 'extdist-svn-error', $result );
+			return false;
+		}
+
+		$sx = new SimpleXMLElement( $result );
+		$rev = $sx->entry->commit['revision'];
+		if ( !$rev || strpos( $rev, '/' ) !== false || strpos( $rev, "\000" ) !== false ) {
+			$wgOut->addWikiMsg( 'extdist-svn-parse-error', $result );
+			return false;
+		}
+
+		return $rev;
+	}
+
+	function updateAndGetRevisionRemote( $extension, $version ) {
+		global $wgExtDistRemoteClient, $wgOut;
+		$cmd = json_encode( array( 'extension' => $extension, 'version' => $version ) );
+		$cmd = str_replace( "\000", '', $cmd );
+		list( $host, $port ) = explode( ':', $wgExtDistRemoteClient, 2 );
+		$sock = fsockopen( $host, $port );
+		if ( !$sock ) {
+			$wgOut->addWikiMsg( 'extdist-no-remote' );
+			return false;
+		}
+
+		fwrite( $sock, $cmd . "\000\000\000" );
+		$encReponse = '';
+		while ( $sock && !feof( $sock ) ) {
+			$encResponse .= fread( $sock, 8192 );
+		}
+		fclose( $sock );
+		
+		$response = json_decode( $encResponse );
+		if ( isset( $response->error ) ) {
+			$info = isset( $response->errorInfo ) ? $response->errorInfo : '';
+			$wgOut->addWikiMsg( $response->error, $info );
+			return false;
+		}
+		if ( !isset( $response->revision ) ) {
+			$wgOut->addWikiMsg( 'extdist-remote-invalid-response' );
+			return false;
+		}
+		return $response->revision;
 	}
 }

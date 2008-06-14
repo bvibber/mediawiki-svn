@@ -19,8 +19,11 @@ Select your MediaWiki version.
 Most extensions work across multiple versions of MediaWiki, so if your MediaWiki version is not here, or if you have a need for the latest extension features, try using the current version.',
 		'extdist-no-versions' => 'The selected extension ($1) is not available in any version!',
 		'extdist-submit-version' => 'Continue',
-		'extdist-svn-error' => 'Subversion returned exit code $1:',
-		'extdist-svn-parse-error' => 'Unable to process the XML from "svn info"',
+		'extdist-no-remote' => 'Unable to contact remote subversion client.',
+		'extdist-remote-error' => 'Error from remote subversion client: <pre>$1</pre>',
+		'extdist-remote-invalid-response' => 'Invalid response from remote subversion client.',
+		'extdist-svn-error' => 'Subversion encountered an error: <pre>$1</pre>',
+		'extdist-svn-parse-error' => 'Unable to process the XML from "svn info": <pre>$1</pre>',
 		'extdist-tar-error' => 'Tar returned exit code $1:',
 		'extdist-created' => "A snapshot of version <b>$2</b> of the <b>$1</b> extension for MediaWiki <b>$3</b> has been created. Your download should start automatically in 5 seconds. 
 

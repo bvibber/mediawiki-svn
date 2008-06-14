@@ -39,6 +39,9 @@ $wgExtDistBranches = array(
 	),
 );
 
+/** Remote socket for svn-invoker.php (optional) */
+$wgExtDistRemoteClient = false;
+
 /********************
  * Registration
  */
