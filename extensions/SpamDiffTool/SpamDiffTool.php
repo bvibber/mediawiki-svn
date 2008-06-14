@@ -202,7 +202,7 @@ function wfSpecialSpamDiffTool() {
 			$ntext = $de->mNewtext;
         	$ota = explode( "\n", $wgContLang->segmentForDiff( $otext ) );
         	$nta = explode( "\n", $wgContLang->segmentForDiff( $ntext ) );
-        	$diffs =& new Diff( $ota, $nta );
+        	$diffs = new Diff( $ota, $nta );
 
 			// iterate over the edits and get all of the changed text
        	    foreach ($diffs->edits as $edit) {

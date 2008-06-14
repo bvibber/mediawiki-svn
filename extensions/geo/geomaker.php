@@ -12,7 +12,6 @@ $image = get_any_value ( "image" ) ;
 if ( $image == "" )
 	{
 	print "<html><head></head><body><form method=post>" ;
-	print $_POST["image"] ;
 	print "Image location (URL) <input type=text name='image'></input>" ;
 	print "<input type=submit value='OK'/></form></html>" ;
 	exit ( 0 ) ;
@@ -71,12 +70,11 @@ $c2 = implode ( ";" , $c2 ) ;
 
 $coords = implode ( ";" , $coords ) ;
 
-print "
-<a href='" . make_link ( $coords ) . "&'><image src='{$image}' ismap/></a>
-" ;
+print "\n<a href=\"" . htmlspecialchars( make_link ( $coords ) ) . "&\">" . 
+	"<img src=\"" . htmlspecialchars( $image ) . "\" ismap/></a>\n";
 
-print "<br/><a href='" .make_link ( $c2 ) . "'>Remove last coordinates</a>" ;
-print " | <a href='" . make_link ( array() ) . "'>Reset</a>" ;
+print "<br /><a href=\"" .htmlspecialchars( make_link ( $c2 ) ) . "\">Remove last coordinates</a>" ;
+print " | <a href=\"" . htmlspecialchars( make_link ( array() ) ) . "\">Reset</a>" ;
 
 # Conversion form
 
@@ -108,19 +106,19 @@ if ( isset ( $_POST['convert'] ) )
 	$coords = implode ( " " , $coords ) ;
 
 	# For output
-	$p1 = $_POST['p1'] ;
-	$p2 = $_POST['p2'] ;
-	$np1 = $_POST['np1'] ;
-	$np2 = $_POST['np2'] ;
+ 	$p1 = htmlspecialchars( $_POST['p1'] );
+ 	$p2 = htmlspecialchars( $_POST['p2'] );
+ 	$np1 = htmlspecialchars( $_POST['np1'] );
+ 	$np2 = htmlspecialchars( $_POST['np2'] );
 	}
 else $p1 = $p2 = $np1 = $np2 = "" ;
 
 print "<br/>Coordinates so far:<br/>\n" ;
 print "<form method=post><textarea style='width:100%' rows=5 cols=40 name='ctext'>\n" ;
-print str_replace ( ";" , " " , $coords ) ;
+print htmlspecialchars( str_replace ( ";" , " " , $coords ) );
 print "</textarea>\n" ;
-print "Conversion : Point <input type='text' name='p1'/ value='{$p1}'> matches coordinates <input type='text' name='np1' value='{$np1}'/><br/>" ;
-print "and point <input type='text' name='p2' value='{$p2}'/> matches coordinates <input type='text' name='np2' value='{$np2}'/>" ;
+print "Conversion : Point <input type='text' name='p1'/ value=\"{$p1}\"> matches coordinates <input type='text' name='np1' value=\"{$np1}\"/><br />" ;
+print "and point <input type='text' name='p2' value=\"{$p2}\"/> matches coordinates <input type='text' name='np2' value=\"{$np2}\"/>" ;
 print " <input type='submit' name='convert' value='Convert'/>" ;
 print "</form>" ;
 

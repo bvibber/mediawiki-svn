@@ -1,6 +1,12 @@
 <?php
 
 /**
+ * Protect against register_globals vulnerabilities.
+ * This line must be present before any global variable is referenced.
+ */
+if (!defined('MEDIAWIKI')) die();
+
+/**
  * The SMWDataValue in this file implements the handling of n-ary relations.
  * @author Jörg Heizmann
  * @author Markus Krötzsch

@@ -10,6 +10,12 @@
 * @license http://www.gnu.org/copyleft/gpl.html GNU General Public License 2.0 or later
 */
 
+/**
+ * Protect against register_globals vulnerabilities.
+ * This line must be present before any global variable is referenced.
+ */
+if (!defined('MEDIAWIKI')) die();
+
 
 /* generic reasons */
 

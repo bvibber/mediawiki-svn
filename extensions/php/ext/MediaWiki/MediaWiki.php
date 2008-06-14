@@ -1,4 +1,10 @@
 <?
+
+if ( php_sapi_name() != 'cli' ) {
+	echo "This script must be run from the command line\n";
+	exit( 1 );
+}
+
 if(!extension_loaded('MediaWiki')) {
 	dl('MediaWiki.' . PHP_SHLIB_SUFFIX);
 }

@@ -31,7 +31,7 @@ function wfTidy() {
 			);
 			
 			$wgHooks['SkinTemplateContentActions'][] = array( &$this, 'tidyHook' );
-			$wgHooks['UnknownAction'][] = array( &$this, 'tidyAction' );
+			$wgHooks['UnknownAction'][] = array( &$this, 'action' );
 		}
 
 		public function tidyHook( array &$content_actions ) {
@@ -67,7 +67,7 @@ function wfTidy() {
 				);
 		}
 
-		public static function tidyAction( $action, Article &$article ) {
+		public static function action( $action, Article &$article ) {
 			global $wgUseTidy;
 			
 			if ( $action === 'tidy' || $action === 'untidy' )
