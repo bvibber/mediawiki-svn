@@ -1,0 +1,12 @@
+<?php
+
+# Copy this file to conf.php and change the following variables
+
+# Set this to the base URL where all the scripts to be tested are kept. It 
+# should be configured with register_globals, display_errors and open_basedir 
+# enabled.
+$jailUrl = 'http://localhost/jail';
+
+# Set this to the local directory corresponding to the URL
+$jailDir = '/var/www/mediawiki';
+

@@ -1,0 +1,23 @@
+This is a tool to check for the classic register_globals/url_fopen vulnerability
+in any PHP script. Such a vulnerability looks like this:
+
+<?php
+require_once( "$IP/includes/SpecialPage.php" );
+?>
+
+When register_globals is enabled, an attacker can pass any value they like for
+$IP, and when url_fopen is enabled, or if the server is Windows with SMB client
+capabilities, the script can be fetched from a remote source, making this an
+arbitrary script execution vulnerability.
+
+This test script uses the parsekit extension to analyse a file and extract its 
+referenced global variables. Then it invokes the file via a specially configured 
+webserver, which has register_globals enabled. The script is invoked with a 
+value for each global in turn, and the output is analysed for evidence of XSS 
+and inclusion vulnerabilities.
+
+The configuration of the webserver should be appropriate for your level of trust
+in the code you are testing. It might be open_basedir/safemode, chroot CGI or
+a firewalled virtual server. The configuration variables register_globals and 
+display_errors must be enabled for the tester to work, and open_basedir is 
+recommended.
