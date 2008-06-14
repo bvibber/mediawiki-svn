@@ -220,7 +220,7 @@ EOT
 		$dbr =& wfGetDB( DB_SLAVE );
 		$res = $dbr->select(
 			array( 'povwatch_log', 'user' ),
-			array( 'pwl_user', 'user_name' ),
+			array( 'pwl_user', 'user_name', 'pwl_namespace', 'pwl_title', 'pwl_timestamp', 'pwl_comment' ),
 			array( 'pwl_user=user_id' ),
 			__METHOD__
 		);
