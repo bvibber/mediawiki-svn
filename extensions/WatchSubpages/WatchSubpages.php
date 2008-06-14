@@ -10,7 +10,7 @@
 if (!defined('MEDIAWIKI')) {
         echo <<<EOT
 To install my extension, put the following line in LocalSettings.php:
-require_once( "$IP/extensions/WatchSubpages/WatchSubpages.php" );
+require_once( "\$IP/extensions/WatchSubpages/WatchSubpages.php" );
 EOT;
         exit( 1 );
 }

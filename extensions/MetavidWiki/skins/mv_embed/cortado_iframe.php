@@ -6,13 +6,16 @@ this page serves as a wrapper for the cortado java applet
 */
 //load the http GETS:
 
+// set the parent domain if provided
+// needed before error_out can be called
+$parent_domain = isset( $_GET['parent_domain'] ) ? wfEscapeJsString( $_GET['parent_domain'] ) : false;
 
 $error='';
 if(!function_exists('filter_input')){
 	error_out('you version of php lacks <b>filter_input()</b> function</br>');
 }
 //default to null media in not provided:
-$media_url = filter_input(INPUT_GET, 'media_url', FILTER_SANITIZE_URL);
+$media_url = isset( $_GET['media_url'] ) ? htmlspecialchars( $_GET['media_url'] ) : false;
 if( is_null($media_url) || $media_url===false || $media_url==''){
 	error_out('not valid or missing media url');
 }
@@ -25,7 +28,7 @@ if( is_null($duration) || $duration===false){
 
 //id (set to random if none provided)
 //$id = (isset($_GET['id']))?$_GET['id']:'vid_'.rand('10000000');
-$id= filter_input(INPUT_GET, 'id', FILTER_SANITIZE_STRING);
+$id = isset($_GET['id']) ? htmlspecialchars( $_GET['id'] ) : false;
 if( is_null($id) || $id===false){
 	$id = 'vid_'.rand(0,10000000);
 }
@@ -48,18 +51,45 @@ if($stream_type=='audio'){
 	if(is_null($height) || $height===false)
 		$height = 20;	
 }
-//set the parent domain if provided:
-$parent_domain =  filter_input(INPUT_GET, 'parent_domain', FILTER_SANITIZE_STRING);
 
 //everything good output page: 
 output_page();
+
+/**
+ * JS escape function copied from MediaWiki's Xml::escapeJsString()
+ */
+function wfEscapeJsString( $string ) {
+	// See ECMA 262 section 7.8.4 for string literal format
+	$pairs = array(
+		"\\" => "\\\\",
+		"\"" => "\\\"",
+		'\'' => '\\\'',
+		"\n" => "\\n",
+		"\r" => "\\r",
+
+		# To avoid closing the element or CDATA section
+		"<" => "\\x3c",
+		">" => "\\x3e",
+
+		# To avoid any complaints about bad entity refs
+		"&" => "\\x26",
+
+		# Work around https://bugzilla.mozilla.org/show_bug.cgi?id=274152
+		# Encode certain Unicode formatting chars so affected
+		# versions of Gecko don't misinterpret our strings;
+		# this is a common problem with Farsi text.
+		"\xe2\x80\x8c" => "\\u200c", // ZERO WIDTH NON-JOINER
+		"\xe2\x80\x8d" => "\\u200d", // ZERO WIDTH JOINER
+	);
+	return strtr( $string, $pairs );
+}
 
 function error_out($error=''){
 	output_page($error);
 	exit();
 }
 function output_page($error=''){
-	global $id, $media_url, $audio, $video, $duration, $width, $height,$parent_domain;
+	global $id, $media_url, $audio, $video, $duration, $width, $height, $parent_domain;
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 	<html xmlns="http://www.w3.org/1999/xhtml">
@@ -68,7 +98,7 @@ function output_page($error=''){
 	<title>cortado_embed</title>
 	<?if($parent_domain){?>
 	<script type="text/javascript">
-		window.DOMAIN = '<?=$parent_domain?>';
+		window.DOMAIN = '<?=$parent_domain; ?>';
 	</script>
 	<?}?>
 	<style type="text/css">

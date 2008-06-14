@@ -44,8 +44,6 @@ function wfMsgWhiteList($key) {
 	return wfMsg($key);
 }
 
-require_once("$IP/includes/SpecialPage.php");
-
 class WhitelistEdit extends SpecialPage
 {
     function WhitelistEdit() {

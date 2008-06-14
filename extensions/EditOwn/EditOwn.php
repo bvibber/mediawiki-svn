@@ -18,7 +18,7 @@
 if (!defined('MEDIAWIKI')) {
 		echo <<<EOT
 To install the EditOwn extension, put the following line in LocalSettings.php:
-require_once( "$IP/extensions/EditOwn/EditOwn.php" );
+require_once( "\$IP/extensions/EditOwn/EditOwn.php" );
 EOT;
 		exit(1);
 }

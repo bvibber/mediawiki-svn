@@ -18,7 +18,7 @@
 if (!defined('MEDIAWIKI')) {
 		echo <<<EOT
 To install the ChangeAuthor extension, put the following line in LocalSettings.php:
-require_once( "$IP/extensions/ChangeAuthor/ChangeAuthor.setup.php" );
+require_once( "\$IP/extensions/ChangeAuthor/ChangeAuthor.setup.php" );
 EOT;
 		exit(1);
 }

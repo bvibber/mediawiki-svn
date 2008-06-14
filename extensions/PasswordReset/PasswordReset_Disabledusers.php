@@ -12,9 +12,6 @@
  * @author Tim Laqua <t.laqua@gmail.com>
  */
 
-global $wgHooks, $IP;
-require_once "$IP/includes/QueryPage.php";
-
 class Disabledusers extends SpecialPage {
 	///StalePages Class Constructor
 	public function __construct() {

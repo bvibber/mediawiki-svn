@@ -4,6 +4,12 @@
 # CONFIGURATION VARIABLES TO LocalApp.php AND EDIT THEM
 # THERE.
 
+/**
+ * Protect against register_globals vulnerabilities.
+ * This line must be present before any global variable is referenced.
+ */
+if (!defined('MEDIAWIKI')) die();
+
 $wgDefaultGoPrefix='Expression:';
 $wgHooks['BeforePageDisplay'][]='addWikidataHeader';
 $wgHooks['GetEditLinkTrail'][]='addWikidataEditLinkTrail'; #TODO merge with modifyTabs

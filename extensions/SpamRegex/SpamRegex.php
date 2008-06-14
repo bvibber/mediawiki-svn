@@ -20,6 +20,12 @@ function wfSpamRegexGetTable() {
 	}
 }
 
+/**
+ * Protect against register_globals vulnerabilities.
+ * This line must be present before any global variable is referenced.
+ */
+if (!defined('MEDIAWIKI')) die();
+
 $dir = dirname(__FILE__) . '/';
 $wgExtensionMessagesFiles['Spamregex'] = $dir . 'SpamRegex.i18n.php';
 
