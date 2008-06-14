@@ -87,7 +87,7 @@ function svnExecute() {
 
 	try {
 		$sx = new SimpleXMLElement( $result );
-		$rev = $sx->entry->commit['revision'];
+		$rev = strval( $sx->entry->commit['revision'] );
 	} catch ( Exception $e ) {
 		$rev = false;
 	}
