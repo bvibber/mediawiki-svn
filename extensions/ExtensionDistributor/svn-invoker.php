@@ -25,6 +25,7 @@ function svnShellExec( $cmd, &$retval ) {
 	passthru( $cmd, $retval );
 	$output = ob_get_contents();
 	ob_end_clean();
+	return $output;
 }
 
 function svnError( $msg, $info = false ) {
@@ -84,8 +85,12 @@ function svnExecute() {
 		return;
 	}
 
-	$sx = new SimpleXMLElement( $result );
-	$rev = $sx->entry->commit['revision'];
+	try {
+		$sx = new SimpleXMLElement( $result );
+		$rev = $sx->entry->commit['revision'];
+	} catch ( Exception $e ) {
+		$rev = false;
+	}
 	if ( !$rev || strpos( $rev, '/' ) !== false || strpos( $rev, "\000" ) !== false ) {
 		svnError( 'extdist-svn-parse-error', $result );
 		return;
