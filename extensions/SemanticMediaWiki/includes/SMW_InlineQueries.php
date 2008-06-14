@@ -35,8 +35,14 @@
  * TODO: allow parentheses and disjunctions between query parts
  */
 
-require_once( "$IP/includes/Title.php" );
-require_once( "$IP/includes/Linker.php" );
+/**
+ * Protect against register_globals vulnerabilities.
+ * This line must be present before any global variable is referenced.
+ */
+if (!defined('MEDIAWIKI')) die();
+
+
+
 require_once('SMW_QueryPrinters.php');
 
 /* The variables below define the default settings. Changes can be made by

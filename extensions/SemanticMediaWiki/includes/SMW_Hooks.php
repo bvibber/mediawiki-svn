@@ -5,6 +5,13 @@
  * @author Kai Hüner
  */
 
+/**
+ * Protect against register_globals vulnerabilities.
+ * This line must be present before any global variable is referenced.
+ */
+if (!defined('MEDIAWIKI')) die();
+
+
 global $smwgIP;
 require_once($smwgIP . '/includes/SMW_Factbox.php');
 
