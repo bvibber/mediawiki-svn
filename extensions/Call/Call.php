@@ -8,7 +8,7 @@
 if (!defined('MEDIAWIKI')) {
 	echo <<<EOT
 To install Call as a special page, put the following line in LocalSettings.php:
-require_once( "$IP/extensions/Call/Call.php" );
+require_once( "\$IP/extensions/Call/Call.php" );
 EOT;
 	exit( 1 );
 }

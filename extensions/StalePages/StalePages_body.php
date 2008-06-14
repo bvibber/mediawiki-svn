@@ -12,9 +12,6 @@
  * @author Tim Laqua <t.laqua@gmail.com>
  */
 
-global $wgHooks, $IP;
-require_once "$IP/includes/QueryPage.php";
-
 class Stalepages extends SpecialPage
 {
 	///StalePages Class Constructor

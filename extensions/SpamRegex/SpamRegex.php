@@ -1,5 +1,11 @@
 <?php
 
+/**
+ * Protect against register_globals vulnerabilities.
+ * This line must be present before any global variable is referenced.
+ */
+if (!defined('MEDIAWIKI')) die();
+
 /* help displayed on the special page  */
 define ('SPAMREGEX_PATH', '/') ;
 

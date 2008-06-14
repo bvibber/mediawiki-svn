@@ -25,6 +25,10 @@ if($stream_type=='audio'){
 	$height = (isset($_GET['height']))?$_GET['height']:20;
 }
 $width = (isset($_GET['width']))?$_GET['width']:320;
+
+$enc = array_map( 'htmlspecialchars', 
+	compact( 'id', 'width', 'height', 'media_url', 'audio', 'video', 'duration' ) );
+
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -42,16 +46,16 @@ body {
 -->
 </style></head>
 <body>
-	<applet id="<?=$id?>" code="com.fluendo.player.Cortado.class" archive="cortado-ovt-stripped-0.2.2.1.jar" width="<?=$width?>" height="<?=$height?>">
-		<param name="url" value="<?=$media_url?>" />
+	<applet id="<?=$enc['id']?>" code="com.fluendo.player.Cortado.class" archive="cortado-ovt-stripped-0.2.2.1.jar" width="<?=$enc['width']?>" height="<?=$enc['height']?>">
+		<param name="url" value="<?=$enc['media_url']?>" />
 		<param name="local" value="false"/>
 		<param name="keepaspect" value="true" />
-		<param name="video" value="<?=$audio?>" />
-		<param name="audio" value="<?=$video?>" />
+		<param name="video" value="<?=$enc['audio']?>" />
+		<param name="audio" value="<?=$enc['video']?>" />
 		<param name="seekable" value="true" />
 		<? if($duration!=0){
 			?>
-			<param name="duration" value="<?=$duration?>" />
+			<param name="duration" value="<?=$enc['duration']?>" />
 			<?
 		 } ?>
 		<param name="bufferSize" value="200" />

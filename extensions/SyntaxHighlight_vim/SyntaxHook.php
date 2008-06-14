@@ -28,10 +28,10 @@ function wfSyntaxHook() {
 		private function setHook() {
 			global $wgParser;
 
-			$wgParser->setHook( 'syntax', array( $this, 'syntaxHook' ) );
+			$wgParser->setHook( 'syntax', array( $this, 'hook' ) );
 		}
 
-		public function syntaxHook( $in, array $argv ) {
+		public function hook( $in, array $argv ) {
 			$in = ltrim( $in, "\n" );
 			$syntax = new Syntax( $in );
 

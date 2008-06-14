@@ -21,6 +21,12 @@
  * http://www.gnu.org/copyleft/gpl.html
  */
 
+/**
+ * Protect against register_globals vulnerabilities.
+ * This line must be present before any global variable is referenced.
+ */
+if (!defined('MEDIAWIKI')) die();
+
 require_once( "$IP/extensions/Collection/Version.php" );
 
 # ==============================================================================

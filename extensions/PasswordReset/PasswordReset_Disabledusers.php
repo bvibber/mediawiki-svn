@@ -12,6 +12,12 @@
  * @author Tim Laqua <t.laqua@gmail.com>
  */
 
+/**
+ * Protect against register_globals vulnerabilities.
+ * This line must be present before any global variable is referenced.
+ */
+if (!defined('MEDIAWIKI')) die();
+
 global $wgHooks, $IP;
 require_once "$IP/includes/QueryPage.php";
 
