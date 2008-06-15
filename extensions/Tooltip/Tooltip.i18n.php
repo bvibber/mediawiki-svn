@@ -30,6 +30,13 @@ $messages['fr'] = array(
 	'tooltip-desc' => 'Ajoute une balise <nowiki><tooltip></nowiki> et un parseur <nowiki>{{#tooltip:}}</nowiki>',
 );
 
+/** Galician (Galego)
+ * @author Toliño
+ */
+$messages['gl'] = array(
+	'tooltip-desc' => 'Engade a etiqueta <tt><nowiki><tooltip></nowiki></tt> e <tt><nowiki>{{#tooltip:}}</nowiki></tt>',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

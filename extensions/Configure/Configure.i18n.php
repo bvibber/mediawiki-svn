@@ -149,12 +149,16 @@ $messages['ar'] = array(
 	'configure-js-prompt-group'       => 'أدخل اسم المجموعة الجديدة:',
 	'configure-js-remove'             => 'احذف',
 	'configure-js-remove-row'         => 'احذف هذه المدخلة',
+	'configure-no-diff'               => 'لا توجد تغييرات بين النسخ المختارة.',
+	'configure-no-transwiki'          => 'أنت غير مسموح لك بتغيير الإعدادات في الويكيات الأخرى',
 	'configure-section-general'       => 'اعدادات عامة',
 	'configure-section-paths'         => 'المسارات',
 	'configure-section-db'            => 'قاعدة البيانات',
+	'configure-section-db-notallowed' => 'أنت غير مسموح لك بتغيير إعدادات قاعدة البيانات.',
 	'configure-section-email'         => 'البريد',
 	'configure-section-enotif'        => 'اخطار بالبريد',
 	'configure-section-localization'  => 'موقع',
+	'configure-section-zh-conversion' => 'تحويل صيني',
 	'configure-section-debug'         => 'تنقيح',
 	'configure-section-namespaces'    => 'نطاقات',
 	'configure-section-stats'         => 'إحصاءات الموقع',
@@ -166,7 +170,9 @@ $messages['ar'] = array(
 	'configure-section-access'        => 'وصول',
 	'configure-section-groups'        => 'المجموعات',
 	'configure-section-block'         => 'منوعات',
+	'configure-section-rates'         => 'حدود المعدل',
 	'configure-section-proxy'         => 'الوسطاء',
+	'configure-section-cookie'        => 'كوكيز',
 	'configure-section-upload'        => 'الرفع',
 	'configure-section-sharedupload'  => 'الرفع المشترك',
 	'configure-section-images'        => 'الصور',
@@ -175,10 +181,12 @@ $messages['ar'] = array(
 	'configure-section-specialpages'  => 'الصفحات الخاصة',
 	'configure-section-recentchanges' => 'أحدث التغييرات',
 	'configure-section-users'         => 'المستخدمون',
+	'configure-section-feed'          => 'تلقيم',
 	'configure-section-extension'     => 'الامتدادات',
 	'configure-section-search'        => 'بحث',
 	'configure-section-copyright'     => 'حقوق نشر',
 	'configure-setting-not-available' => 'هذا الاعداد غير متاح في هذه النسخة من ميدياويكي',
+	'configure-view'                  => 'انظر',
 	'right-configure'                 => 'اضبط الويكي',
 	'right-configure-all'             => 'اضبط كل اعدادات الويكي',
 );
@@ -190,7 +198,9 @@ $messages['bg'] = array(
 	'configure'                        => 'Конфигуриране на уикито',
 	'configure-desc'                   => 'Позволява на потребители с подходящи права да конфигурират уикито през уеб-базиран интерфейс',
 	'configure-desc-group'             => 'Групи',
+	'configure-desc-key'               => 'Ключ',
 	'configure-desc-ns'                => 'Именни пространства',
+	'configure-desc-val'               => 'Стойност',
 	'configure-summary'                => 'Тази специална страница позволява на потребителите да конфигурират уикито; за повече информация, вижте [http://www.mediawiki.org/wiki/Manual:Configuration_settings настройките за конфигуриране].',
 	'configure-btn-save'               => 'Съхраняване на настройките',
 	'configure-directory-not-writable' => 'Директорията <tt>$1</tt>, използвана за съхранение на настройките, няма права за запис.
@@ -214,7 +224,9 @@ $messages['bg'] = array(
 	'configure-section-email'          => 'Е-поща',
 	'configure-section-enotif'         => 'Оповестяване по е-поща',
 	'configure-section-localization'   => 'Локализация',
+	'configure-section-timezone'       => 'Часова зона',
 	'configure-section-namespaces'     => 'Именни пространства',
+	'configure-section-stats'          => 'Статистики за сайта',
 	'configure-section-skin'           => 'Облик',
 	'configure-section-category'       => 'Категории',
 	'configure-section-interwiki'      => 'Междууики',
@@ -667,6 +679,13 @@ Por favor, créeo ou tróqueo para usar esta extensión.',
 	'viewconfig'                          => 'Ver a configuración do wiki',
 );
 
+/** Hawaiian (Hawai`i)
+ * @author Singularity
+ */
+$messages['haw'] = array(
+	'configure-section-specialpages' => 'Nā ‘ao‘ao kūikawā',
+);
+
 /** Hindi (हिन्दी)
  * @author Kaustubh
  */
@@ -840,6 +859,7 @@ $messages['lb'] = array(
 	'configure-js-prompt-group'           => 'Gitt de Numm vum Grupp an:',
 	'configure-js-remove'                 => 'Läschen',
 	'configure-js-remove-row'             => 'Dës Donnée läschen',
+	'configure-no-diff'                   => 'Et gëtt keen Ënnerscheed tëschent denen ausgewielte Versiounen.',
 	'configure-no-directory'              => "De Repertoire dee benotzt gëtt fir d'Configuratioun ze späicheren, <tt>$1</tt>, gëtt et net.
 
 Leet e w.e.g un oder ännert en esou datt dës Erweiderung funktionéiert.",
@@ -851,6 +871,7 @@ Leet e w.e.g un oder ännert en esou datt dës Erweiderung funktionéiert.",
 	'configure-section-general'           => 'Allgemeng Astellungen',
 	'configure-section-db'                => 'Datebank',
 	'configure-section-db-notallowed'     => "Dir hutt net déi néideg Rechter fir d'Astellunge vun der Datebank z'änneren.",
+	'configure-section-mysql'             => 'Spezifesch fir MySQL',
 	'configure-section-email'             => 'E-Mail',
 	'configure-section-enotif'            => 'Informatioun per E-Mail',
 	'configure-section-localization'      => 'Lokalisatioun',
@@ -868,6 +889,7 @@ Leet e w.e.g un oder ännert en esou datt dës Erweiderung funktionéiert.",
 	'configure-section-upload'            => 'Eroplueden',
 	'configure-section-images'            => 'Biller',
 	'configure-section-antivirus'         => 'Antivirus',
+	'configure-section-parser'            => 'Parser',
 	'configure-section-specialpages'      => 'Spezialsäiten',
 	'configure-section-recentchanges'     => 'Rezent Ännerungen',
 	'configure-section-users'             => 'Benotzer',
@@ -1158,6 +1180,7 @@ $messages['no'] = array(
 	'configure-js-prompt-group'           => 'Skriv inn navnet på den nye gruppen:',
 	'configure-js-remove'                 => 'Slett',
 	'configure-js-remove-row'             => 'Slett dette elementet',
+	'configure-no-diff'                   => 'Det er ingen forskjeller mellom de valgte versjonene.',
 	'configure-no-directory'              => 'Mappen som brukes til lagring av innstillingene, <tt>$1</tt>, finnes ikke.
 Opprett den eller endre den for å bruke denne utvidelsen.',
 	'configure-no-old'                    => 'Ingen gammel versjon av konfigurasjonen er tilgjengelig.',
@@ -1216,6 +1239,7 @@ Opprett den eller endre den for å bruke denne utvidelsen.',
 	'configure-section-htcp'              => 'HTCP-multicast',
 	'configure-section-misc'              => 'Diverse',
 	'configure-setting-not-available'     => 'Denne innstillingen er ikke tilgjengelig i denne versjonen av MediaWiki',
+	'configure-view'                      => 'Se',
 	'configure-view-not-allowed'          => 'Du har ikke tillatelse til å se denne innstillingen',
 	'right-configure'                     => 'Konfigurere wikien',
 	'right-configure-all'                 => 'Konfigurere innstillinger på alle wikier',
@@ -1848,6 +1872,16 @@ $messages['te'] = array(
 	'configure-section-search'        => 'అన్వేషణ',
 	'configure-section-copyright'     => 'కాపీహక్కులు',
 	'configure-view'                  => 'చూడండి',
+);
+
+/** Turkish (Türkçe)
+ * @author Karduelis
+ */
+$messages['tr'] = array(
+	'configure-desc-group'         => 'Gruplar',
+	'configure-desc-ns'            => 'İsim alanları',
+	'configure-js-remove'          => 'Sil',
+	'configure-section-namespaces' => 'İsim alanları',
 );
 
 /** Ukrainian (Українська)

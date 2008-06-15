@@ -67,6 +67,13 @@ $messages['gl'] = array(
 	'stalepages-summary' => 'Esta é unha listaxe das páxinas que non foron editadas nos últimos $1 días.',
 );
 
+/** Hawaiian (Hawai`i)
+ * @author Singularity
+ */
+$messages['haw'] = array(
+	'stalepages' => 'Nā ‘ao‘ao malo‘o',
+);
+
 /** Croatian (Hrvatski)
  * @author Dnik
  */

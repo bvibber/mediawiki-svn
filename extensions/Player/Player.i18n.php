@@ -165,6 +165,13 @@ $messages['fr'] = array(
 	'player-goto-file'     => 'fichier',
 );
 
+/** Western Frisian (Frysk)
+ * @author Snakesteuben
+ */
+$messages['fy'] = array(
+	'player-goto-page' => 'Side',
+);
+
 $messages['gl'] = array(
 	'player' => 'Reprodutor',
 	'player-title' => 'Reprodutor',
@@ -188,6 +195,13 @@ $messages['gv'] = array(
 	'player-file'      => 'Ennym y choadan',
 	'player-goto-page' => 'Duillag',
 	'player-goto-file' => 'coadan',
+);
+
+/** Hawaiian (Hawai`i)
+ * @author Singularity
+ */
+$messages['haw'] = array(
+	'player-goto-page' => '‘Ao‘ao',
 );
 
 /** Hindi (हिन्दी)
@@ -320,6 +334,7 @@ $messages['lb'] = array(
 	'player-title'       => 'Spiller',
 	'player-playertitle' => 'Spiller: $1',
 	'player-file'        => 'Numm vum Fichier',
+	'player-not-allowed' => 'Format den net erlaabt ass',
 	'player-not-found'   => 'Fichier net fonnt',
 	'player-goto-page'   => 'Säit',
 	'player-goto-file'   => 'Fichier',
@@ -634,10 +649,12 @@ $messages['tg-cyrl'] = array(
 );
 
 /** Turkish (Türkçe)
+ * @author Karduelis
  * @author Suelnur
  */
 $messages['tr'] = array(
-	'player-file' => 'Dosya adı',
+	'player-file'      => 'Dosya adı',
+	'player-goto-page' => 'Sayfa',
 );
 
 /** Vèneto (Vèneto)

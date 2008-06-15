@@ -217,6 +217,13 @@ $messages['gv'] = array(
 	'edituser-dosearch' => 'Ronsaghey',
 );
 
+/** Hawaiian (Hawai`i)
+ * @author Singularity
+ */
+$messages['haw'] = array(
+	'edituser-username' => 'Inoa',
+);
+
 /** Hindi (हिन्दी)
  * @author Kaustubh
  */

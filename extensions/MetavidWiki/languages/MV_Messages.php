@@ -754,6 +754,14 @@ $messages['fr'] = array(
 	'mv_protect_source_material'     => 'Original protégé en écriture',
 );
 
+/** Western Frisian (Frysk)
+ * @author Snakesteuben
+ */
+$messages['fy'] = array(
+	'mv_search_category' => 'Kategory',
+	'mv_category'        => 'kategory',
+);
+
 /** Irish (Gaeilge)
  * @author Moilleadóir
  */
@@ -861,11 +869,14 @@ $messages['gv'] = array(
 );
 
 /** Hawaiian (Hawai`i)
+ * @author Singularity
  * @author Kalani
  */
 $messages['haw'] = array(
-	'mv_edit'    => 'E ho‘opololei',
-	'mv_history' => 'He aha i ho‘ololi ‘ia ai',
+	'mv_edit'            => 'E ho‘opololei',
+	'mv_history'         => 'He aha i ho‘ololi ‘ia ai',
+	'mv_search_category' => 'Mahele',
+	'mv_category'        => 'mahele',
 );
 
 /** Hindi (हिन्दी)
@@ -3118,6 +3129,14 @@ $messages['tg-cyrl'] = array(
 	'mv_search_stream'            => 'Ҷустуҷӯи ҷараён',
 	'mv_stream_tool_heading'      => 'Абзорҳои ҷараён',
 	'mv_new_ht_en'                => 'Рӯнавишти ҷадид',
+);
+
+/** Turkish (Türkçe)
+ * @author Karduelis
+ */
+$messages['tr'] = array(
+	'mv_edit'   => 'Değiştir',
+	'mv_remove' => 'kaldır',
 );
 
 /** Vietnamese (Tiếng Việt)

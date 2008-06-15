@@ -404,6 +404,13 @@ $messages['gv'] = array(
 	'expand_templates_preview' => 'Roie-haishbynys',
 );
 
+/** Hawaiian (Hawai`i)
+ * @author Singularity
+ */
+$messages['haw'] = array(
+	'expand_templates_preview' => 'Nāmua',
+);
+
 /** Hebrew (עברית)
  * @author Rotem Liss
  */
@@ -819,6 +826,13 @@ $messages['mr'] = array(
  */
 $messages['ms'] = array(
 	'expandtemplates'     => 'Kembangkan templat',
+	'expand_templates_ok' => 'OK',
+);
+
+/** Maltese (Malti)
+ * @author Giangian15
+ */
+$messages['mt'] = array(
 	'expand_templates_ok' => 'OK',
 );
 

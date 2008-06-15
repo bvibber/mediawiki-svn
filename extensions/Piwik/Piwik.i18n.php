@@ -18,6 +18,14 @@ $messages['en'] = array(
 	'piwik-browsers'   => 'Browsers',
 );
 
+/** Arabic (العربية)
+ * @author Meno25
+ */
+$messages['ar'] = array(
+	'piwik-countries' => 'دول',
+	'piwik-browsers'  => 'متصفحات',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  */

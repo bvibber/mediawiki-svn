@@ -492,6 +492,7 @@ $messages['km'] = array(
  */
 $messages['lb'] = array(
 	'inplace_scaler_not_enough_params' => 'Net genuch Parameteren.',
+	'webstore_access'                  => 'Dëse Service ass pro IP-Adress limitéiert.',
 	'webstore_path_invalid'            => 'De Numm vum Fichier war ongëlteg.',
 	'webstore_no_file'                 => 'Et gouf kee Fichier eropgelueden.',
 	'webstore_404'                     => 'De Fichier gouf net fonnt.',

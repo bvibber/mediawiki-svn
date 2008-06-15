@@ -770,6 +770,13 @@ $messages['tg-cyrl'] = array(
 	'povwatch_title'           => 'Унвон:',
 );
 
+/** Turkish (Türkçe)
+ * @author Karduelis
+ */
+$messages['tr'] = array(
+	'povwatch_title' => 'Başlık:',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
  */

@@ -176,6 +176,14 @@ $messages['fr'] = array(
 	'dt_xml_freetext'             => 'Texte Libre',
 );
 
+/** Western Frisian (Frysk)
+ * @author Snakesteuben
+ */
+$messages['fy'] = array(
+	'dt_xml_page' => 'Side',
+	'dt_xml_name' => 'Namme',
+);
+
 /** Galician (Galego)
  * @author Alma
  * @author Siebrand
@@ -206,6 +214,14 @@ $messages['gv'] = array(
 	'dt_xml_name'           => 'Ennym',
 	'dt_xml_title'          => 'Ard-ennym',
 	'dt_xml_freetext'       => 'Teks seyr',
+);
+
+/** Hawaiian (Hawai`i)
+ * @author Singularity
+ */
+$messages['haw'] = array(
+	'dt_xml_page' => '‘Ao‘ao',
+	'dt_xml_name' => 'Inoa',
 );
 
 /** Hindi (हिन्दी)
@@ -666,6 +682,15 @@ $messages['tg-cyrl'] = array(
 	'dt_xml_name'           => 'Ном',
 	'dt_xml_title'          => 'Унвон',
 	'dt_xml_freetext'       => 'Матни дилхоҳ',
+);
+
+/** Turkish (Türkçe)
+ * @author Karduelis
+ */
+$messages['tr'] = array(
+	'dt_viewxml_namespaces' => 'İsim alanları',
+	'dt_xml_page'           => 'Sayfa',
+	'dt_xml_title'          => 'Başlık',
 );
 
 /** Vietnamese (Tiếng Việt)

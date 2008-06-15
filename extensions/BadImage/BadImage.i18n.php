@@ -520,6 +520,13 @@ $messages['frp'] = array(
 	'badimages-page'           => '{{ns:help}}:Lista de les émâges endèsirâbles',
 );
 
+/** Western Frisian (Frysk)
+ * @author Snakesteuben
+ */
+$messages['fy'] = array(
+	'badimages-name' => 'Namme:',
+);
+
 /** Gagauz (Gagauz)
  * @author Cuman
  */
@@ -562,6 +569,14 @@ $messages['gl'] = array(
 $messages['gv'] = array(
 	'badimages-name'   => 'Ennym:',
 	'badimages-reason' => 'Fa:',
+);
+
+/** Hawaiian (Hawai`i)
+ * @author Singularity
+ */
+$messages['haw'] = array(
+	'badimages-add-btn' => 'Ho‘ohui',
+	'badimages-name'    => 'Inoa:',
 );
 
 /** Hindi (हिन्दी)
@@ -1585,6 +1600,7 @@ $messages['th'] = array(
 );
 
 /** Turkish (Türkçe)
+ * @author Karduelis
  * @author Srhat
  * @author Suelnur
  * @author Karduelis
@@ -1594,7 +1610,8 @@ $messages['tr'] = array(
 	'badimages-count'      => "Kötü resim listesinde '''$1''' resim bulunmaktadır.",
 	'badimages-name'       => 'İsim:',
 	'badimages-reason'     => 'Neden:',
-	'badimages-remove-btn' => 'Sil',
+	'badimages-remove'     => '(kaldır)',
+	'badimages-remove-btn' => 'Kaldır',
 	'badimages-removed'    => 'Listeden $1 silindi.',
 );
 

@@ -230,6 +230,13 @@ $messages['sv'] = array(
 	'dplforum-toomany' => 'DPL-forum: För många kategorier!',
 );
 
+/** Turkish (Türkçe)
+ * @author Karduelis
+ */
+$messages['tr'] = array(
+	'dplforum-never' => 'Asla',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Vinhtantran
  */

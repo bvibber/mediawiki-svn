@@ -518,6 +518,7 @@ $allMessages['lb'] = array(
 	'whitelist-desc'           => "Ännert d'Rechter vu Benotzer mat limitéierte Rechter",
 	'whitelist'                => "''Whiteliste''-Säiten",
 	'mywhitelistpages'         => 'Meng Säiten',
+	'whitelistfor'             => '<center>Aktuell Informatioun fir <b>$1</b></center>',
 	'whitelisttablemodify'     => 'Änneren',
 	'whitelisttablemodifyall'  => 'All',
 	'whitelisttablemodifynone' => 'Näischt',
@@ -538,6 +539,9 @@ $allMessages['lb'] = array(
 	'whitelistoverviewsa'      => "* Autorisatioun vum '''$1''' op [[:$2|$2]] astellen",
 	'whitelistoverviewrm'      => '* Autorisatioun fir [[:$1|$1]] gët ewechgeholl',
 	'whitelistrequest'         => 'Zougang zu méi Säite froen',
+	'whitelistrequestmsg'      => '$1 huet Accès op dës Säite gfrot:
+
+$2',
 	'whitelistrequestconf'     => "D'Ufro fir nei Säite gouf geschéckt un $1",
 	'whitelistnever'           => 'nie',
 	'whitelistnummatches'      => '- $1 {{PLURAL:$1|Resultat|Resultater}}',
@@ -1071,6 +1075,19 @@ $2',
 	'whitelistrequestconf'     => 'Дархост барои саҳифаҳои ҷадид ба $1 фиристода шуд',
 	'whitelistnever'           => 'ҳеҷгоҳ',
 	'whitelistnummatches'      => ' - $1 мутобиқат мекунад',
+);
+
+/** Turkish (Türkçe)
+ * @author Karduelis
+ */
+$allMessages['tr'] = array(
+	'mywhitelistpages'         => 'Sayfalarım',
+	'whitelisttablemodifyall'  => 'Hepsi',
+	'whitelisttablemodifynone' => 'Hiçbiri',
+	'whitelisttableedit'       => 'Değiştir',
+	'whitelisttableremove'     => 'Kaldır',
+	'whitelistbadtitle'        => 'Geçersiz başlık -',
+	'whitelistnever'           => 'asla',
 );
 
 /** Vietnamese (Tiếng Việt)

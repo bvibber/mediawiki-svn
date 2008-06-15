@@ -159,9 +159,14 @@ $messages['ar'] = array(
 	'viewapc'                       => 'معلومات إيه بي سي',
 	'viewapc-desc'                  => '[[Special:ViewAPC|عرض والتحكم بكاش الإيه بي سي]] مع ميدياويكي',
 	'right-apc'                     => 'استخدام كل الخواص في Special:ViewAPC',
+	'viewapc-apc-not-available'     => 'لا معلومات كاش متوفرة.
+APC لا يبدو أنه يعمل.',
 	'viewapc-clear-confirm'         => 'هل تريد إفراغ الذّاكرة الوسيطة ؟',
 	'viewapc-clear-user-cache'      => 'إفرغ كاش المستخدم',
+	'viewapc-clear-code-cache'      => 'إفراغ كاش opcode',
+	'viewapc-mode-stats'            => 'عرض إحصاءات المضيف',
 	'viewapc-mode-system-cache'     => 'مدخلات كاش النظام',
+	'viewapc-mode-system-cache-dir' => 'المدخلات لكل مجلد',
 	'viewapc-mode-user-cache'       => 'مدخلات كاش المستخدم',
 	'viewapc-mode-version-check'    => 'افحص النسخة',
 	'viewapc-info-general'          => 'معلومات عامة',
@@ -169,8 +174,11 @@ $messages['ar'] = array(
 	'viewapc-php-version'           => 'نسخة بي إتش بي',
 	'viewapc-shared-memory'         => 'ذاكرة مشتركة',
 	'viewapc-start-time'            => 'زمن البداية',
+	'viewapc-upload-support'        => 'دعم رفع الملفات',
 	'viewapc-filecache-info'        => 'معلومات كاش الملف',
 	'viewapc-usercache-info'        => 'معلومات كاش المستخدم',
+	'viewapc-cached-files'          => 'ملفات مخبأة',
+	'viewapc-cached-files-d'        => '$1 {{PLURAL:$1|ملف|ملف}} ($2)',
 	'viewapc-requests'              => 'معدل الطلب',
 	'viewapc-memory-usage'          => 'استعمال الذاكرة',
 	'viewapc-memory-free'           => 'حرّة: $1 ($2)',
@@ -182,12 +190,15 @@ $messages['ar'] = array(
 	'viewapc-display-info'          => 'اسم',
 	'viewapc-display-ttl'           => 'زمن الانتهاء',
 	'viewapc-display-type'          => 'نوع',
+	'viewapc-display-type-file'     => 'ملف مخبأ',
 	'viewapc-display-mtime'         => 'معدل',
 	'viewapc-display-creation_time' => 'مُنشأة',
 	'viewapc-display-deletion_time' => 'محذوف',
 	'viewapc-display-no-delete'     => 'غير محذوف',
+	'viewapc-display-ref_count'     => 'عداد المرجع',
 	'viewapc-display-mem_size'      => 'حجم',
 	'viewapc-display-stored-value'  => 'قيمة مخزنة',
+	'viewapc-display-too-big'       => "''المحتوى كبير جدا للعرض.''",
 	'viewapc-ls-options-legend'     => 'خيارات',
 	'viewapc-ls-submit'             => 'اذهب!',
 	'viewapc-ls-header-name'        => 'اسم',
@@ -202,8 +213,16 @@ $messages['ar'] = array(
 	'viewapc-ls-sort-created'       => 'مُنشأة',
 	'viewapc-ls-sort-deleted'       => 'محذوفة',
 	'viewapc-ls-limit-none'         => 'الكل',
+	'viewapc-ls-nodata'             => "''لا بيانات مطابقة''",
+	'viewapc-delete-ok'             => 'مدخلة الكاش <nowiki>$1</nowiki> تم حذفها.',
+	'viewapc-delete-failed'         => 'فشل في حذف مدخلة الكاش <nowiki>$1</nowiki>.',
 	'viewapc-version-info'          => 'معلومات الإصدار',
 	'viewapc-version-changelog'     => 'سجل التغيير',
+	'viewapc-version-failed'        => 'غير قادر على جلب معلومات النسخة.',
+	'viewapc-version-old'           => 'أنت تستخدم نسخة قديمة من APC ($1).
+نسخة جديدة $2 متوفرة في http://pecl.php.net/package/APC/$2',
+	'viewapc-filecache-cleared'     => "'''''تم مسح كاش الملف.'''''",
+	'viewapc-usercache-cleared'     => "'''''تم مسح كاش التطبيق.'''''",
 );
 
 /** Bulgarian (Български)
@@ -350,6 +369,14 @@ Zdá se, že APC neběží.',
 Novější verze $2 je dostupná na http://pecl.php.net/package/APC/$2.',
 	'viewapc-filecache-cleared'     => "'''''Vyrovnávací paměť souborů byla vyčištěna.'''''",
 	'viewapc-usercache-cleared'     => "'''''Vyrovnávací paměť aplikace byla vyčištěna.'''''",
+);
+
+/** German (Deutsch)
+ * @author Purodha
+ */
+$messages['de'] = array(
+	'viewapc'             => 'APC-Informationen',
+	'viewapc-apc-version' => 'APC Version',
 );
 
 /** Esperanto (Esperanto)
@@ -705,6 +732,15 @@ A nova versión $2 está dispoñible en http://pecl.php.net/package/APC/$2',
 	'viewapc-filecache-cleared'     => "'''''A memoria caché do ficheiro foi borrada.'''''",
 );
 
+/** Hawaiian (Hawai`i)
+ * @author Singularity
+ */
+$messages['haw'] = array(
+	'viewapc-display-info'   => 'Inoa',
+	'viewapc-ls-header-name' => 'Inoa',
+	'viewapc-ls-sort-name'   => 'Inoa',
+);
+
 /** Hindi (हिन्दी)
  * @author Kaustubh
  */
@@ -976,15 +1012,19 @@ $messages['km'] = array(
  * @author Purodha
  */
 $messages['ksh'] = array(
-	'right-apc'                => 'all de Möschleschkeite fum [[{{#special:ViewAPC}}]] notze',
-	'viewapc-display-info'     => 'Name',
-	'viewapc-display-num_hits' => 'Treffer',
-	'viewapc-ls-submit'        => 'Loß Jonn!',
-	'viewapc-ls-header-name'   => 'Name',
-	'viewapc-ls-header-hits'   => 'Treffer',
-	'viewapc-ls-sort-hits'     => 'Treffer',
-	'viewapc-ls-sort-name'     => 'Name',
-	'viewapc-ls-limit-none'    => 'All',
+	'viewapc'                   => 'Enfomazjohne vum APC',
+	'right-apc'                 => 'all de Möschleschkeite fum [[{{#special:ViewAPC}}]] notze',
+	'viewapc-apc-not-available' => 'Kein Cache-Daate ze fenge.
+Der APC es wall nit am Loufe.',
+	'viewapc-apc-version'       => 'APC Version',
+	'viewapc-display-info'      => 'Name',
+	'viewapc-display-num_hits'  => 'Treffer',
+	'viewapc-ls-submit'         => 'Loß Jonn!',
+	'viewapc-ls-header-name'    => 'Name',
+	'viewapc-ls-header-hits'    => 'Treffer',
+	'viewapc-ls-sort-hits'      => 'Treffer',
+	'viewapc-ls-sort-name'      => 'Name',
+	'viewapc-ls-limit-none'     => 'All',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -1005,6 +1045,7 @@ $messages['lb'] = array(
 	'viewapc-cached-files-d'        => '$1 {{PLURAL:$1|Fichier|Fichieren}} ($2)',
 	'viewapc-hits'                  => 'Treffer',
 	'viewapc-rps'                   => '$1 Ufroe pro Sekonn',
+	'viewapc-info-memory'           => 'Diagramme vum Status vum Server',
 	'viewapc-memory-usage'          => 'Benotzung vun der Memoire',
 	'viewapc-memory-free'           => 'Fräi: $1 ($2)',
 	'viewapc-memory-used'           => 'Benotzt: $1 ($2)',

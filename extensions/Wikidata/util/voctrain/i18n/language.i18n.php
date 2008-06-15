@@ -201,19 +201,26 @@ $messages['ar'] = array(
  * @author DCLXVI
  */
 $messages['bg'] = array(
-	'voctrain_Number_of_questions' => 'Брой въпроси',
-	'voctrain_Questions'           => 'Въпроси',
-	'voctrain_Answers'             => 'Отговори',
-	'voctrain_Question'            => 'Въпрос',
-	'voctrain_Answer'              => 'Отговор',
-	'voctrain_Answer_s_'           => 'Отговор(и)',
-	'voctrain_logout'              => 'излизане',
-	'voctrain_User_name'           => 'Потребителско име',
-	'voctrain_Password'            => 'Парола',
-	'voctrain_Login'               => 'Влизане',
-	'voctrain_Create_new_user'     => 'Създаване на нов потребител',
-	'voctrain_Language'            => 'Език',
-	'voctrain_Log_in'              => 'Влизане',
+	'voctrain_try_again_'                                => 'нов опит?',
+	'voctrain_Number_of_questions'                       => 'Брой въпроси',
+	'voctrain_Languages'                                 => 'Езици',
+	'voctrain_eg_eng_for_English_deu_for_Deutch_German_' => '(напр. eng за английски, deu за немски).',
+	'voctrain_Questions'                                 => 'Въпроси',
+	'voctrain_Answers'                                   => 'Отговори',
+	'voctrain_Question'                                  => 'Въпрос',
+	'voctrain_Answer'                                    => 'Отговор',
+	'voctrain_Answer_s_'                                 => 'Отговор(и)',
+	'voctrain_logout'                                    => 'излизане',
+	'voctrain_Powered_by'                                => 'С подкрепата на',
+	'voctrain_Omegawiki'                                 => 'Омегауики',
+	'voctrain_Start_a_new_exercise'                      => 'Започване на ново упражнение',
+	'voctrain_User_name'                                 => 'Потребителско име',
+	'voctrain_Password'                                  => 'Парола',
+	'voctrain_Login'                                     => 'Влизане',
+	'voctrain_Create_new_user'                           => 'Създаване на нов потребител',
+	'voctrain_Switch_language'                           => 'Промяна на езика',
+	'voctrain_Language'                                  => 'Език',
+	'voctrain_Log_in'                                    => 'Влизане',
 );
 
 /** Esperanto (Esperanto)
@@ -319,6 +326,32 @@ $messages['fr'] = array(
 	'voctrain_Definitions'                                                                          => 'Définitions',
 	'voctrain_Could_not_create_new_user'                                                            => "N'a pas pu créer un nouvel utilisateur",
 	'voctrain_Type_a_username_and_optional_password_or_try_a_different_username_'                   => 'Inscrivez un nom d’utilisateur et un mot de passe facultatif, (ou encore essayez un autre nom d’utilisateur)',
+);
+
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$messages['lb'] = array(
+	'voctrain_Hello_World'         => 'SALUT!',
+	'voctrain_Permission_Denied'   => 'Erlaabness refuséiert',
+	'voctrain_try_again_'          => 'nach eng Kéier probéieren?',
+	'voctrain_continue'            => 'viru fueren',
+	'voctrain_bye'                 => 'Äddi',
+	'voctrain_Number_of_questions' => 'Zuel vun de Froen',
+	'voctrain_Languages'           => 'Sproochen',
+	'voctrain_Questions'           => 'Froen',
+	'voctrain_Answers'             => 'Äntwerten',
+	'voctrain_ISO_639_3_format'    => 'ISO-639-3 Format',
+	'voctrain_Definition'          => 'Definitioun',
+	'voctrain_Word'                => 'Wuert',
+	'voctrain_skip'                => 'iwwersprangen',
+	'voctrain_Question'            => 'Fro',
+	'voctrain_Answer'              => 'Äntwert',
+	'voctrain_Omegawiki'           => 'Omegawiki',
+	'voctrain_Password'            => 'Passwuert',
+	'voctrain_Switch_language'     => 'Sprooch wiesselen',
+	'voctrain_Language'            => 'Sprooch',
+	'voctrain_Definitions'         => 'Definitiounen',
 );
 
 /** Neapolitan (Nnapulitano) */
@@ -547,5 +580,36 @@ $messages['sv'] = array(
 	'voctrain_Language'                                  => 'Språk',
 	'voctrain_Log_in'                                    => 'Logga in',
 	'voctrain_Could_not_create_new_user'                 => 'Kunde inte skapa ny användare',
+);
+
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'voctrain_Hello_World'                                      => 'హలో వికీ!',
+	'voctrain_Permission_Denied'                                => 'అనుమతి నిరాకరించాం',
+	'voctrain_try_again_'                                       => 'మళ్ళీ ప్రయత్నిస్తారా?',
+	'voctrain_continue'                                         => 'కొనసాగించు',
+	'voctrain_bye'                                              => 'వీడ్కోలు',
+	'voctrain_Number_of_questions'                              => 'ప్రశ్నల సంఖ్య',
+	'voctrain_Languages'                                        => 'భాషలు',
+	'voctrain_Please_specify_the_languages_you_want_to_test_in' => 'మీరు ఏయే భాషల్లో పరీక్షించుకోవాలనుకుంటున్నారో తెలపండి',
+	'voctrain_Questions'                                        => 'ప్రశ్నలు',
+	'voctrain_Answers'                                          => 'జవాబులు',
+	'voctrain_collection'                                       => 'సేకరణ',
+	'voctrain_Definition'                                       => 'నిర్వచనం',
+	'voctrain_Word'                                             => 'పదం',
+	'voctrain_Please_type_your_answer_here'                     => 'మీ జవాబుని ఇక్కడ టైపు చెయ్యండి',
+	'voctrain_I_know_it_do_not_ask_again'                       => 'ఇది నాకు తెలుసు/మళ్ళీ అడుగకు',
+	'voctrain_list_answers'                                     => 'జవాబులను చూపించు',
+	'voctrain_Question'                                         => 'ప్రశ్న',
+	'voctrain_Answer'                                           => 'జవాబు',
+	'voctrain_Answer_s_'                                        => 'జవాబు(లు)',
+	'voctrain_logout'                                           => 'నిష్క్రమించండి',
+	'voctrain_User_name'                                        => 'వాడుకరి పేరు',
+	'voctrain_Password'                                         => 'సంకేతపదం',
+	'voctrain_Switch_language'                                  => 'భాషని మార్చండి',
+	'voctrain_Language'                                         => 'భాష',
+	'voctrain_Definitions'                                      => 'నిర్వచనాలు',
 );
 

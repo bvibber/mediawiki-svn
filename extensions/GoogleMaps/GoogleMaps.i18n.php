@@ -925,6 +925,14 @@ $wgGoogleMapsMessages['fr'] = array(
 	'gm-mars'                      => 'Mars',
 );
 
+/** Western Frisian (Frysk)
+ * @author Snakesteuben
+ */
+$wgGoogleMapsMessages['fy'] = array(
+	'gm-yes'         => 'Ja',
+	'gm-kml-loading' => 'ynlade...',
+);
+
 /** Irish (Gaeilge)
  * @author Moilleadóir
  */
@@ -1019,6 +1027,13 @@ $wgGoogleMapsMessages['gv'] = array(
 	'gm-no'              => 'Cha',
 	'gm-search'          => 'Ronsaghey',
 	'gm-save-path'       => 'Sauail',
+);
+
+/** Hawaiian (Hawai`i)
+ * @author Singularity
+ */
+$wgGoogleMapsMessages['haw'] = array(
+	'gm-kml-loading' => 'ke ho‘ouka nei…',
 );
 
 /** Hebrew (עברית)
@@ -2758,11 +2773,15 @@ $wgGoogleMapsMessages['th'] = array(
 );
 
 /** Turkish (Türkçe)
+ * @author Karduelis
  * @author Suelnur
  */
 $wgGoogleMapsMessages['tr'] = array(
-	'gm-yes' => 'Evet',
-	'gm-no'  => 'Hayır',
+	'gm-balloon-title'   => 'Başlık:',
+	'gm-remove'          => 'kaldır',
+	'gm-no-zoom-control' => 'Hiçbiri',
+	'gm-yes'             => 'Evet',
+	'gm-no'              => 'Hayır',
 );
 
 /** Tatar (Cyrillic) (Tatarça/Татарча (Cyrillic))

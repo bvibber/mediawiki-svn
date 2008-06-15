@@ -110,6 +110,7 @@ $messages['bg'] = array(
 За включване на видеото в страница от уикито е необходимо да се вмъкне следният код в страницата:
 <code>{{&#35;ev:youtube|$1}}</code>",
 	'youtubeauthsub_authsubinstructions' => 'За качване на видео е необходимо влизане в YouTube.',
+	'youtubeauthsub_uploadhere'          => 'Качване на видео оттук:',
 	'youtubeauthsub_uploadbutton'        => 'Качване',
 	'youtubeauthsub_code'                => '{{#ev:youtube|$1}}.
 
@@ -254,6 +255,13 @@ Soyez patient.',
 	'youtubeauthsub_jserror_nodesc'      => 'Veuiller entrer une description pour la vidéo.',
 );
 
+/** Western Frisian (Frysk)
+ * @author Snakesteuben
+ */
+$messages['fy'] = array(
+	'youtubeauthsub_category' => 'Kategory',
+);
+
 /** Irish (Gaeilge)
  * @author Moilleadóir
  */
@@ -297,6 +305,13 @@ Por favor, sexa paciente.',
 	'youtubeauthsub_jserror_nokeywords'  => 'Por favor, insira 1 ou máis palabras clave.',
 	'youtubeauthsub_jserror_notitle'     => 'Por favor, insira un título para o vídeo.',
 	'youtubeauthsub_jserror_nodesc'      => 'Por favor, insira unha descrición para o vídeo.',
+);
+
+/** Hawaiian (Hawai`i)
+ * @author Singularity
+ */
+$messages['haw'] = array(
+	'youtubeauthsub_category' => 'Mahele',
 );
 
 /** Hindi (हिन्दी)
@@ -1025,6 +1040,13 @@ $messages['th'] = array(
 	'youtubeauthsub_jserror_nokeywords'  => 'กรุณาใส่คำสำคัญอย่างน้อย 1 คำ หรือ มากกว่า',
 	'youtubeauthsub_jserror_notitle'     => 'กรุณาใส่ชื่อสำหรับคลิปวิดีโอด้วย',
 	'youtubeauthsub_jserror_nodesc'      => 'กรุณาใส่คำอธิบายสำหรับคลิปวิดีโอนี้ด้วย',
+);
+
+/** Turkish (Türkçe)
+ * @author Karduelis
+ */
+$messages['tr'] = array(
+	'youtubeauthsub_title' => 'Başlık',
 );
 
 /** Vèneto (Vèneto)

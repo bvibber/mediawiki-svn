@@ -931,8 +931,10 @@ $messages['th'] = array(
 
 /** Turkish (Türkçe)
  * @author Suelnur
+ * @author Karduelis
  */
 $messages['tr'] = array(
+	'contributors-target' => 'Başlık:',
 	'contributors-submit' => 'Göster',
 );
 

@@ -218,6 +218,13 @@ $messages['fur'] = array(
 	'crossnamespacelinkstext' => '$1: $2 {{PLURAL:$2|leam|leams}} al non dai spazis $3',
 );
 
+/** Western Frisian (Frysk)
+ * @author Snakesteuben
+ */
+$messages['fy'] = array(
+	'crossnamespacelinks' => 'Keppelings fan de iene nei de oare nammeromte',
+);
+
 /** Galician (Galego)
  * @author Xosé
  * @author Toliño

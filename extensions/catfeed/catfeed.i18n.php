@@ -63,6 +63,14 @@ $messages['ja'] = array(
 	'catfeed-desc' => '最近の更新をフィードします。ページ内バージョンで作成されているため、特にウィキニュースでは便利です。',
 );
 
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$messages['lb'] = array(
+	'catfeed-desc' => 'Benotzt Biten vun de Rezenten Ännerungen.
+Leet eng nei Versioun an der Säit unn, besonnesch nëtzlech fir Wikinews',
+);
+
 /** Marathi (मराठी)
  * @author Kaustubh
  */

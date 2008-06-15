@@ -1203,6 +1203,8 @@ $messages['uk'] = array(
 	'sitematrix-others'    => 'Інші проекти Фонду «Вікімедіа»',
 	'sitematrix-total'     => "'''Загальна кількість: $1'''",
 	'sitematrix-sitetotal' => 'Усього',
+	'sitematrix-private'   => 'приватний',
+	'sitematrix-fishbowl'  => 'редагування обмежене',
 );
 
 $messages['ur'] = array(

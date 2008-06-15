@@ -1016,12 +1016,14 @@ $messages['is'] = array(
 );
 
 /** Italian (Italiano)
+ * @author Darth Kule
  * @author BrokenArrow
  * @author Cruccone
  */
 $messages['it'] = array(
 	'hiderevision'                => 'Oscuramento permanente di una revisione',
 	'hiderevision-desc'           => 'Rende invisibili a tutti gli utenti singole revisioni delle pagine (per motivi legali, ecc.)',
+	'right-oversight'             => 'Visualizza una revisione precedentemente nascosta',
 	'right-hiderevision'          => 'Rivede e recupera versioni nascoste',
 	'hiderevision-prompt'         => 'Numero della revisione da oscurare:',
 	'hiderevision-continue'       => 'Continua',

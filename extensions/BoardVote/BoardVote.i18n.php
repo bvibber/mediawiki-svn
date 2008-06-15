@@ -4096,6 +4096,7 @@ $messages['pam'] = array(
 
 /** Polish (Polski)
  * @author Sp5uhe
+ * @author Saper
  * @author Derbeth
  * @author Leinad
  * @author Siebrand
@@ -4115,16 +4116,16 @@ Będzie również decydować o tym, w jaki sposób zbierać pieniądze i na co j
 Każdy z kandydatów jest szanowanym użytkownikiem, który poświęcił swój czas i wysiłki dla rozwijania projektów, tak by dobrze służyły wolnemu rozpowszechnianiu ludzkiej wiedzy.</p>
 
 <p>Zagłosuj na kandydatów zgodnie ze swoimi przekonaniami, poprzez wpisanie liczby (1 = faworyt, 2 = drugi kandydat, ...)
-Możesz dać tą samą notę więcej niż jednemu kandydatowi lub możesz pozostawić kandydata bez oceny.
-Interpretacja głosu będzie taka, że preferujesz każdego z tych, na których oddałeś głos, bardziej niż tych, którym oceny nie wystawiłeś oraz, że wszystkich kandydatów bez oceny traktujesz na równi.</p>
+Możesz dać tą samą notę więcej niż jednemu kandydatowi, możesz również pozostawić kandydata bez oceny.
+Interpretacja głosu będzie taka, że preferujesz każdego z tych, na których oddałeś głos, bardziej niż tych, którym oceny nie wystawiłeś oraz że wszyscy kandydaci bez oceny są dla Ciebie obojętni.</p>
 
-<p>Zwycięzca wyborów zostanie ogłoszony na podstawie obliczeń wykonanych metodą Schulze. Więcej informacji odnajdziesz na oficjalnej stronie wyborów.</p>
+<p>Zwycięzca wyborów zostanie ogłoszony na podstawie obliczeń wykonanych metodą Schulze\'a. Więcej informacji odnajdziesz na oficjalnej stronie wyborów.</p>
 
 <p>Więcej informacji:</p>
 <ul><li><a href="http://meta.wikimedia.org/wiki/Board_elections/2008" class="external">Wybory 2008</a></li>
 <li><a href="http://meta.wikimedia.org/wiki/Board_elections/2008/Candidates" class="external">Kandydaci</a></li>
-<li><a href="http://en.wikipedia.org/wiki/Schulze_method" class="external">Metoda Schulze (opis w języku angielskim)</a></li></ul>',
-	'boardvote_intro_change'   => '<p>W tych wyborach już głosowałeś. Możesz jednak zmienić głos za pomocą poniższego formularza. Określ swoje preferencje. Liczbą o wyższej wartości oznacz kandydata, którego bardziej popierasz, a niższą tego który mniej Ci odpowiada.</p>',
+<li><a href="http://en.wikipedia.org/wiki/Schulze_method" class="external">Metoda Schulze\'a (opis w języku angielskim)</a></li></ul>',
+	'boardvote_intro_change'   => '<p>W tych wyborach już głosowałeś. Możesz jednak zmienić głos za pomocą poniższego formularza. Określ swoje preferencje. Liczbą o wyższej wartości oznacz kandydata, którego bardziej popierasz, a niższą tego który mniej Ci odpowiada. Możesz dać tą samą notę więcej niż jednemu kandydatowi, możesz również pozostawić kandydata bez oceny.</p>',
 	'boardvote_entered'        => 'Twój głos został zapisany.
 
 Jeśli chcesz, możesz zapisać poniższe informacje. Oto zapis Twojego głosu:
@@ -4180,7 +4181,7 @@ Konta botów nie są uprawnione do głosowania.',
 Zostaniesz przekierowany na ten serwer za 20 sekund. [$1 Kliknij tu] aby przejść tam już teraz.
 
 Może pojawić się ostrzeżenie o niepodpisanym certyfikacie.',
-	'right-boardvote'          => 'Wybory koordynatorów',
+	'right-boardvote'          => 'Zarządzanie przebiegiem wyborów',
 );
 
 /** Piemontèis (Piemontèis)

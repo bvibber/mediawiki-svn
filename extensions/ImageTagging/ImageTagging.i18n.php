@@ -65,22 +65,25 @@ $messages['af'] = array(
  * @author Meno25
  */
 $messages['ar'] = array(
-	'taggedimages'                    => 'صور موسومة',
-	'imagetagging-addimagetag'        => 'وسم هذه الصورة',
-	'imagetagging-article'            => 'صفحة:',
-	'imagetagging-articletotag'       => 'صفحة للوسم',
-	'imagetagging-imghistory'         => 'تاريخ',
-	'imagetagging-images'             => 'صور',
-	'imagetagging-new'                => '<sup><span style="color:red">جديد!</span></sup>',
-	'imagetagging-removetag'          => 'إزالة وسم',
-	'imagetagging-done-button'        => 'إنتهى الوسم',
-	'imagetagging-tag-button'         => 'وسم',
-	'imagetagging-tagcancel-button'   => 'إلغاء',
-	'imagetagging-addingtag'          => 'إضافة وسم...',
-	'imagetagging-removingtag'        => 'إزالة وسم...',
-	'imagetagging-addtagsuccess'      => 'أُضيف الوسم.',
-	'imagetagging-removetagsuccess'   => 'أُزيل الوسم.',
-	'imagetagging-taggedimages-title' => 'صور "$1"',
+	'taggedimages'                      => 'صور موسومة',
+	'imagetagging-addimagetag'          => 'وسم هذه الصورة',
+	'imagetagging-article'              => 'صفحة:',
+	'imagetagging-articletotag'         => 'صفحة للوسم',
+	'imagetagging-imghistory'           => 'تاريخ',
+	'imagetagging-images'               => 'صور',
+	'imagetagging-inthisimage'          => 'في هذه الصورة: $1',
+	'imagetagging-new'                  => '<sup><span style="color:red">جديد!</span></sup>',
+	'imagetagging-removetag'            => 'إزالة وسم',
+	'imagetagging-done-button'          => 'إنتهى الوسم',
+	'imagetagging-tag-button'           => 'وسم',
+	'imagetagging-tagcancel-button'     => 'إلغاء',
+	'imagetagging-tagging-instructions' => 'اضغط على الأشخاص أو الأشياء في الصورة لوسمهم.',
+	'imagetagging-addingtag'            => 'إضافة وسم...',
+	'imagetagging-removingtag'          => 'إزالة وسم...',
+	'imagetagging-addtagsuccess'        => 'أُضيف الوسم.',
+	'imagetagging-removetagsuccess'     => 'أُزيل الوسم.',
+	'imagetagging-taggedimages-title'   => 'صور "$1"',
+	'tag-logpagename'                   => 'سجل الوسم',
 );
 
 /** Bulgarian (Български)
@@ -195,6 +198,7 @@ Ole hyvä ja odota olemassaolevan tapahtuman päättymistä.',
 
 /** French (Français)
  * @author Grondin
+ * @author Verdy p
  * @author Cedric31
  */
 $messages['fr'] = array(
@@ -203,6 +207,7 @@ $messages['fr'] = array(
 	'imagetagging-addimagetag'              => 'Baliser cette image',
 	'imagetagging-article'                  => 'Page :',
 	'imagetagging-articletotag'             => 'Page à baliser',
+	'imagetagging-canteditothermessage'     => 'Vous ne pouvez pas modifier cette page, soit parce que vous n’en disposez pas des droits nécessaire soit parce que la page est verrouillée pour diverses raisons.',
 	'imagetagging-imghistory'               => 'Historique',
 	'imagetagging-images'                   => 'images',
 	'imagetagging-inthisimage'              => 'Dans cette image : $1',
@@ -218,15 +223,24 @@ $messages['fr'] = array(
 	'imagetagging-removingtag'              => 'Balise en cours de retrait…',
 	'imagetagging-addtagsuccess'            => 'Balise ajoutée.',
 	'imagetagging-removetagsuccess'         => 'Balise retirée.',
-	'imagetagging-oneactionatatimemessage'  => 'Une seule action de balisage est permise à la fois.
-Veuillez attendre la fin de l’action en cours.',
 	'imagetagging-canteditneedloginmessage' => 'Vous ne pouvez pas modifier cette page.
 Il se peut que vous deviez d’abord vous connecter pour baliser les images.
 Voulez-vous vous connecter maintenant ?',
+	'imagetagging-oneactionatatimemessage'  => 'Une seule action de balisage est permise à la fois.
+Veuillez attendre la fin de l’action en cours.',
 	'imagetagging-oneuniquetagmessage'      => 'Cette image a déjà une balise avec ce nom.',
 	'imagetagging-imagetag-seemoreimages'   => 'Voir plus d’images de « $1 » ($2)',
 	'imagetagging-taggedimages-title'       => 'Images de « $1 »',
 	'imagetagging-taggedimages-displaying'  => 'Affichage des images $1 – $2 sur $3 de « $4 »',
+	'tag-logpagename'                       => 'Balisage du journal',
+	'tag-logpagetext'                       => 'Ceci est le journal de tous les ajouts et de toutes les suppressions des balises d’image.',
+);
+
+/** Western Frisian (Frysk)
+ * @author Snakesteuben
+ */
+$messages['fy'] = array(
+	'imagetagging-article' => 'Side:',
 );
 
 /** Galician (Galego)
@@ -267,8 +281,10 @@ Desexa acceder ao sistema agora?',
 
 /** Hawaiian (Hawai`i)
  * @author Kalani
+ * @author Singularity
  */
 $messages['haw'] = array(
+	'imagetagging-article'    => '‘Ao‘ao:',
 	'imagetagging-imghistory' => 'He aha i ho‘ololi ‘ia ai',
 );
 
@@ -407,6 +423,7 @@ $messages['no'] = array(
 	'imagetagging-addimagetag'              => 'Merk dette bildet',
 	'imagetagging-article'                  => 'Side:',
 	'imagetagging-articletotag'             => 'Side som skal merkes',
+	'imagetagging-canteditothermessage'     => 'Du kan ikke redigere denne siden, enten fordi du ikke har de nødvendige rettighetene eller fordi siden er låst av andre grunner.',
 	'imagetagging-imghistory'               => 'Historikk',
 	'imagetagging-images'                   => 'bilder',
 	'imagetagging-inthisimage'              => 'På dette bildet: $1',
@@ -422,16 +439,17 @@ $messages['no'] = array(
 	'imagetagging-removingtag'              => 'Fjerner merking …',
 	'imagetagging-addtagsuccess'            => 'La til merking.',
 	'imagetagging-removetagsuccess'         => 'Fjernet merking.',
-	'imagetagging-oneactionatatimemessage'  => 'Kun én merkingshandling av gangen er tillatt.
-Vent til den forrige handlingen er ferdig.',
 	'imagetagging-canteditneedloginmessage' => 'Du kan ikke redigere denne siden.
 Det er muligens fordi man må logge inn for å merke bilder.
 Vil du logge inn nå?',
+	'imagetagging-oneactionatatimemessage'  => 'Kun én merkingshandling av gangen er tillatt.
+Vent til den forrige handlingen er ferdig.',
 	'imagetagging-oneuniquetagmessage'      => 'Dette bildet har allerede et merke med dette navnet.',
 	'imagetagging-imagetag-seemoreimages'   => 'Se flere bilder av «$1» ($2)',
 	'imagetagging-taggedimages-title'       => 'Bilder av «$1»',
 	'imagetagging-taggedimages-displaying'  => 'Viser $1&ndash;$2 av $3 bilder av «$4»',
-	'imagetagging-taggedimages-total'       => '«$1»; bilde(r) totalt',
+	'tag-logpagename'                       => 'Merkingslogg',
+	'tag-logpagetext'                       => 'Dette er en logg over alle nye og fjernede bildemerkinger.',
 );
 
 /** Occitan (Occitan)
@@ -443,6 +461,7 @@ $messages['oc'] = array(
 	'imagetagging-addimagetag'              => 'Balisar aqueste imatge',
 	'imagetagging-article'                  => 'Pagina :',
 	'imagetagging-articletotag'             => 'Pagina de balisar',
+	'imagetagging-canteditothermessage'     => 'Podètz pas modificar aquesta pagina, siá perque avètz pas los dreches necessaris siá perque la pagina es varrolhada per divèrsas rasons.',
 	'imagetagging-imghistory'               => 'Istoric',
 	'imagetagging-images'                   => 'imatges',
 	'imagetagging-inthisimage'              => 'Dins aqueste imatge : $1',
@@ -458,16 +477,17 @@ $messages['oc'] = array(
 	'imagetagging-removingtag'              => 'Balisa en cors de levament…',
 	'imagetagging-addtagsuccess'            => 'Balisa ajustada.',
 	'imagetagging-removetagsuccess'         => 'Balisa levada.',
-	'imagetagging-oneactionatatimemessage'  => "Una accion de balisatge es permesa a l'encòp.
-Esperatz la fin de l’accion en cors.",
 	'imagetagging-canteditneedloginmessage' => 'Podètz pas modificar aquesta pagina.
 Aquò poiriá èsser perque avètz besonh de vos connectar per balisar los imatges.
 Vos volètz connectar ara ?',
+	'imagetagging-oneactionatatimemessage'  => "Una accion de balisatge es permesa a l'encòp.
+Esperatz la fin de l’accion en cors.",
 	'imagetagging-oneuniquetagmessage'      => 'Aqueste imatge ja a una balisa amb aqueste nom.',
 	'imagetagging-imagetag-seemoreimages'   => 'Vejatz mai d’imatges de « $1 » ($2)',
 	'imagetagging-taggedimages-title'       => 'Imatges de « $1 »',
 	'imagetagging-taggedimages-displaying'  => 'Afichatge de $1 - $2 sus $3 imatges de « $4 »',
-	'imagetagging-taggedimages-total'       => '« $1 » : soma dels imatges',
+	'tag-logpagename'                       => 'Balisatge del jornal',
+	'tag-logpagetext'                       => 'Aquò es lo jornal de totes los ajustons e de totas las supressions de las balisas d’imatge.',
 );
 
 /** Polish (Polski)
@@ -487,6 +507,7 @@ $messages['sk'] = array(
 	'imagetagging-addimagetag'              => 'Označiť tento obrázok',
 	'imagetagging-article'                  => 'Stránka:',
 	'imagetagging-articletotag'             => 'Označiť stránku:',
+	'imagetagging-canteditothermessage'     => 'Túto stránku nemôžete upravovať, buď preto, že na to nemáte potrebné oprávnenie alebo preto, že stránka je zamknutá z iných dôvodov.',
 	'imagetagging-imghistory'               => 'História',
 	'imagetagging-images'                   => 'obrázky',
 	'imagetagging-inthisimage'              => 'V tomto obrázku: $1',
@@ -502,16 +523,17 @@ $messages['sk'] = array(
 	'imagetagging-removingtag'              => 'Odstraňuje sa značka…',
 	'imagetagging-addtagsuccess'            => 'Pridaná značka.',
 	'imagetagging-removetagsuccess'         => 'Odstránená značka.',
-	'imagetagging-oneactionatatimemessage'  => 'Je možné naraz označovať iba jeden obrázok.
-Počkajte prosím, kým sa dokončí prebiehajúca operácia.',
 	'imagetagging-canteditneedloginmessage' => 'Túto stránku nemôžete upravovať.
 Možno je to preto, že sa musíte prihlásiť, aby ste mohli označovať obrázky.
 Chcete sa teraz prihlásiť?',
+	'imagetagging-oneactionatatimemessage'  => 'Je možné naraz označovať iba jeden obrázok.
+Počkajte prosím, kým sa dokončí prebiehajúca operácia.',
 	'imagetagging-oneuniquetagmessage'      => 'Tento obrázok už má značku s takýmto názvom.',
 	'imagetagging-imagetag-seemoreimages'   => 'Zobraziť viac obrázkov „$1” ($2)',
 	'imagetagging-taggedimages-title'       => 'Obrázky „$1”',
 	'imagetagging-taggedimages-displaying'  => 'Zobrazujú sa $1 - $2 z $3 obrázkov „$4”',
-	'imagetagging-taggedimages-total'       => '„$1”; celkom obrázkov',
+	'tag-logpagename'                       => 'Záznam značenia',
+	'tag-logpagetext'                       => 'Toto je záznam všetkých pridaní a odstránení značiek obrázkov.',
 );
 
 /** Sundanese (Basa Sunda)
@@ -525,6 +547,7 @@ $messages['su'] = array(
 
 /** Swedish (Svenska)
  * @author M.M.S.
+ * @author Boivie
  */
 $messages['sv'] = array(
 	'taggedimages'                          => 'Märkta bilder',
@@ -532,6 +555,7 @@ $messages['sv'] = array(
 	'imagetagging-addimagetag'              => 'Märk den här bilden',
 	'imagetagging-article'                  => 'Sida:',
 	'imagetagging-articletotag'             => 'Sida som ska märkas',
+	'imagetagging-canteditothermessage'     => 'Du kan inte redigera den här sidan, antingen för att du inte har behörighet att göra det eller för att sidan är låst av andra anledningar.',
 	'imagetagging-imghistory'               => 'Historik',
 	'imagetagging-images'                   => 'bilder',
 	'imagetagging-inthisimage'              => 'På den här bilden: $1',
@@ -547,16 +571,17 @@ $messages['sv'] = array(
 	'imagetagging-removingtag'              => 'Tar bort märkning...',
 	'imagetagging-addtagsuccess'            => 'Lade till märkning.',
 	'imagetagging-removetagsuccess'         => 'Tog bort märkning.',
-	'imagetagging-oneactionatatimemessage'  => 'Endast en märkningshandling är den här gången tillåten.
-Var god vänta tills den föregående handlingen är färdig.',
 	'imagetagging-canteditneedloginmessage' => 'Du kan inte redigera den här sidan.
 Det kan bero på att man måste logga in för att märka bilder.
 Vill du logga in nu?',
+	'imagetagging-oneactionatatimemessage'  => 'Endast en märkningshandling är den här gången tillåten.
+Var god vänta tills den föregående handlingen är färdig.',
 	'imagetagging-oneuniquetagmessage'      => 'Den här bilden har redan en märkning med det här namnet.',
 	'imagetagging-imagetag-seemoreimages'   => 'Se mer bilder av "$1" ($2)',
 	'imagetagging-taggedimages-title'       => 'Bilder av "$1"',
 	'imagetagging-taggedimages-displaying'  => 'Visar $1 - $2 av $3 bilder av "$4"',
-	'imagetagging-taggedimages-total'       => '"$2"; bild(er) totalt',
+	'tag-logpagename'                       => 'Märkningslogg',
+	'tag-logpagetext'                       => 'Det här är en logg över alla tillägg och borttagningar av bildmärkningar.',
 );
 
 /** Telugu (తెలుగు)

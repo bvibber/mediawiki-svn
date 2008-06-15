@@ -56,6 +56,13 @@ $messages['ksh'] = array(
 	'antibot-desc' => 'En ëijfach Jundlaach för SPAM un SPAMbots ze fenge',
 );
 
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$messages['lb'] = array(
+	'antibot-desc' => 'Einfach Méiglechkeet fir Spambot-Kontrollen an aner Spamaktivitéiten',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

@@ -20,12 +20,14 @@ $messages['en'] = array(
 );
 
 /** Arabic (العربية)
+ * @author Meno25
  * @author Alnokta
  * @author ترجمان05
  */
 $messages['ar'] = array(
-	'categoryintersection'      => 'تقاطع تصنيف',
-	'categoryintersection-doit' => 'اعرض الصفحات في هذه التصنيفات',
+	'categoryintersection'         => 'تقاطع تصنيف',
+	'categoryintersection-doit'    => 'اعرض الصفحات في هذه التصنيفات',
+	'categoryintersection-results' => 'البحث أرجع $1 {{PLURAL:$1|نتيجة|نتيجة}}.',
 );
 
 /** Bulgarian (Български)

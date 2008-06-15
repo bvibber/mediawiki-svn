@@ -569,6 +569,14 @@ $messages['gu'] = array(
 	'sign-email'    => 'ઇ મેલ:',
 );
 
+/** Hawaiian (Hawai`i)
+ * @author Singularity
+ */
+$messages['haw'] = array(
+	'sign-realname'           => 'Inoa:',
+	'sign-viewfield-realname' => 'Inoa',
+);
+
 /** Hindi (हिन्दी)
  * @author Kaustubh
  */

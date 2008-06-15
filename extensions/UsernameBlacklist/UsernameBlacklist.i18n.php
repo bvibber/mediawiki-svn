@@ -549,6 +549,7 @@ Vinsamlegast veldu annað nafn.',
 
 /** Italian (Italiano)
  * @author BrokenArrow
+ * @author Darth Kule
  */
 $messages['it'] = array(
 	'usernameblacklist-desc'          => 'Aggiunge una [[MediaWiki:Usernameblacklist|blacklist dei nomi utente]] per impedire la creazione di account corrispondenti a una o più espressioni regolari',
@@ -563,6 +564,7 @@ $messages['it'] = array(
 # * [Bb]ar
 </pre>',
 	'usernameblacklist-invalid-lines' => "{{PLURAL:$1|La seguente riga|Le seguenti righe}} dell'elenco dei nomi utente non consentiti {{PLURAL:$1|non è valida|non sono valide}}; si prega di correggere {{PLURAL:$1|l'errore|gli errori}} prima di salvare la pagina.",
+	'right-uboverride'                => 'Ignora la blacklist dei nomi utente',
 );
 
 /** Japanese (日本語)

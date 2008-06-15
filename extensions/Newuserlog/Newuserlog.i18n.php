@@ -226,6 +226,7 @@ $messages['cs'] = array(
  * @author ОйЛ
  */
 $messages['cu'] = array(
+	'newuserlogpage'          => 'но́въ мѣ́стъ сътворѥ́ниꙗ їсторі́ꙗ',
 	'newuserlog-create-entry' => 'но́въ по́льꙃєватєл҄ь',
 );
 
@@ -642,15 +643,16 @@ $messages['km'] = array(
 );
 
 /** Korean (한국어)
- * @author Klutzy
  * @author ToePeu
+ * @author Klutzy
  */
 $messages['ko'] = array(
-	'newuserlogpage'          => '사용자 등록 기록',
-	'newuserlogpagetext'      => '사용자 등록 기록입니다.',
-	'newuserlog-desc'         => '[[Special:Log/newusers|사용자 등록 기록]]을 [[Special:Log]]에 더함',
-	'newuserlog-byemail'      => '이메일로 보낸 암호',
-	'newuserlog-create-entry' => '새 사용자',
+	'newuserlogpage'              => '사용자 등록 기록',
+	'newuserlogpagetext'          => '사용자 등록 기록입니다.',
+	'newuserlog-desc'             => '[[Special:Log/newusers|사용자 등록 기록]]을 [[Special:Log]]에 더함',
+	'newuserlog-byemail'          => '이메일로 보낸 암호',
+	'newuserlog-create-entry'     => '새 사용자',
+	'newuserlog-autocreate-entry' => '계정이 자동으로 만들어졌습니다.',
 );
 
 /** Ripoarisch (Ripoarisch)
@@ -781,6 +783,13 @@ $messages['ms'] = array(
 	'newuserlogpage'           => 'Log akaun baru',
 	'newuserlog-create-entry'  => 'Pengguna baru',
 	'newuserlog-create2-entry' => 'membuka akaun $1',
+);
+
+/** Maltese (Malti)
+ * @author Giangian15
+ */
+$messages['mt'] = array(
+	'newuserlog-create-entry' => 'Utent ġdid',
 );
 
 /** Erzya (эрзянь кель)

@@ -1491,7 +1491,7 @@ $messages['os'] = array(
  * @author Sp5uhe
  */
 $messages['pl'] = array(
-	'ogg-desc'                => 'Obsługa dla Ogg z kodekami obrazu Theora oraz dźwięku Vobis z odtwarzaczem w JavaScript',
+	'ogg-desc'                => 'Obsługa dla Ogg z kodekami obrazu Theora oraz dźwięku Vobis z odtwarzaczem w JavaScripcie',
 	'ogg-short-audio'         => 'Plik dźwiękowy Ogg $1, $2',
 	'ogg-short-video'         => 'Plik wideo Ogg $1, $2',
 	'ogg-short-general'       => 'Plik multimedialny Ogg $1, $2',
@@ -1505,7 +1505,7 @@ $messages['pl'] = array(
 	'ogg-stop'                => 'Stop',
 	'ogg-play-video'          => 'Odtwórz wideo',
 	'ogg-play-sound'          => 'Odtwórz dźwięk',
-	'ogg-no-player'           => 'W Twoim systemie brak wspieranego programu do obsługi odtwarzania. <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download/pl">Pobierz i zainstaluj odtwarzacz</a>.',
+	'ogg-no-player'           => 'W Twoim systemie brak obsługiwanego programu do obsługi odtwarzania. <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download/pl">Pobierz i zainstaluj odtwarzacz</a>.',
 	'ogg-no-xiphqt'           => 'Brak komponentu XiphQT dla programu QuickTime. QuickTime nie może odtwarzać plików Ogg bez tego komponentu. <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download/pl">Pobierz XiphQT</a> lub użyj innego odtwarzacza.',
 	'ogg-player-videoElement' => 'element <video>',
 	'ogg-player-oggPlugin'    => 'wtyczka Ogg',

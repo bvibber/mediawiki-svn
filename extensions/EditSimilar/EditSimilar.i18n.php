@@ -26,6 +26,14 @@ This page could also use your help: $1.',
 	'tog-edit-similar'                           => 'Enable similar pages suggestions',
 );
 
+/** Arabic (العربية)
+ * @author Meno25
+ */
+$messages['ar'] = array(
+	'editsimilar-link-disable' => 'ضبط الخيارات',
+	'tog-edit-similar'         => 'تفعيل اقتراحات الصفحات المشابهة',
+);
+
 /** Finnish (Suomi)
  * @author Jack Phoenix
  */

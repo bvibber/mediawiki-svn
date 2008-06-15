@@ -41,10 +41,12 @@ To manage invitations for an individual feature, click on its name.',
  */
 $messages['ar'] = array(
 	'invite-logpage'                  => 'سجل الدعوات',
+	'invitations-invitedlist-item'    => '<b>$1</b> ($2 دعوة متوفرة)',
 	'invitations-feature-pagetitle'   => 'إدارة الدعوات - $1',
 	'invitations-inviteform-title'    => 'ادعي مستخدم ليستخدم $1',
 	'invitations-inviteform-username' => 'المستخدم لتتم دعوته',
 	'invitations-inviteform-submit'   => 'ادعي',
+	'invitations-error-baduser'       => 'المستخدم الذي حددته لا يبدو أنه موجود.',
 );
 
 /** Bulgarian (Български)

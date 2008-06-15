@@ -59,11 +59,25 @@ $messages['fr'] = array(
 	'multiboilerplate-submit' => 'Charger',
 );
 
+/** Western Frisian (Frysk)
+ * @author Snakesteuben
+ */
+$messages['fy'] = array(
+	'multiboilerplate-submit' => 'Ynlade',
+);
+
 /** Galician (Galego)
  * @author Toliño
  */
 $messages['gl'] = array(
 	'multiboilerplate-submit' => 'Cargar',
+);
+
+/** Hawaiian (Hawai`i)
+ * @author Singularity
+ */
+$messages['haw'] = array(
+	'multiboilerplate-submit' => 'Ho‘ouka',
 );
 
 /** Hindi (हिन्दी)

@@ -237,6 +237,14 @@ $messages['fr'] = array(
 	'createsigndoc-error-alreadycreated' => 'Le document d’authentification pour « $1 » a déjà été créé.',
 );
 
+/** Western Frisian (Frysk)
+ * @author Snakesteuben
+ */
+$messages['fy'] = array(
+	'createsigndoc-pagename' => 'Side:',
+	'createsigndoc-create'   => 'Oanmeitsje',
+);
+
 /** Irish (Gaeilge)
  * @author Moilleadóir
  */
@@ -274,6 +282,13 @@ sinaturas será o texto ''actual'' da páxina, independentemente das modificaci�
 	'createsigndoc-error-pagenoexist'    => 'Erro: A páxina [[$1]] non existe.',
 	'createsigndoc-success'              => 'O documento asinado foi habilitado con éxito en [[$1]]. Para comprobalo, visite [{{SERVER}}{{localurl: Special: SignDocument|doc=$2}} esta páxina].',
 	'createsigndoc-error-alreadycreated' => 'O documento asinado "$1" xa existe.',
+);
+
+/** Hawaiian (Hawai`i)
+ * @author Singularity
+ */
+$messages['haw'] = array(
+	'createsigndoc-pagename' => '‘Ao‘ao:',
 );
 
 /** Hindi (हिन्दी)
@@ -781,6 +796,13 @@ $messages['tg-cyrl'] = array(
 	'createsigndoc-create'            => 'Эҷод',
 	'createsigndoc-error-generic'     => 'Хато: $1',
 	'createsigndoc-error-pagenoexist' => 'Хато: Саҳифаи [[$1]] вуҷуд надорад.',
+);
+
+/** Turkish (Türkçe)
+ * @author Karduelis
+ */
+$messages['tr'] = array(
+	'createsigndoc-pagename' => 'Sayfa:',
 );
 
 /** Vietnamese (Tiếng Việt)

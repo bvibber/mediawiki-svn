@@ -120,6 +120,13 @@ $messages['fr'] = array(
 	'randomincategory-submit'     => 'Lancer',
 );
 
+/** Western Frisian (Frysk)
+ * @author Snakesteuben
+ */
+$messages['fy'] = array(
+	'randomincategory-label' => 'Kategory:',
+);
+
 /** Irish (Gaeilge)
  * @author Moilleadóir
  */
@@ -147,6 +154,13 @@ $messages['gv'] = array(
 	'randomincategory-toolbox' => 'Duillag gyn tort',
 	'randomincategory-label'   => 'Ronney:',
 	'randomincategory-submit'  => 'Gow',
+);
+
+/** Hawaiian (Hawai`i)
+ * @author Singularity
+ */
+$messages['haw'] = array(
+	'randomincategory-label' => 'Mahele:',
 );
 
 /** Hindi (हिन्दी)

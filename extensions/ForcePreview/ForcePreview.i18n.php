@@ -19,8 +19,9 @@ $messages['en'] = array(
  * @author Meno25
  */
 $messages['ar'] = array(
-	'forcepreview'      => 'حفظ الصفحة (استخدم عرض مسبق أولا)',
-	'forcepreview-desc' => 'إجبار على العرض المسبق للمستخدمين الذين لا يمتلكون الصلاحيات اللازمة',
+	'forcepreview'             => 'حفظ الصفحة (استخدم عرض مسبق أولا)',
+	'forcepreview-desc'        => 'إجبار على العرض المسبق للمستخدمين الذين لا يمتلكون الصلاحيات اللازمة',
+	'right-forcepreviewexempt' => 'يمكنه الحفظ بدون استخدام العرض المسبق',
 );
 
 /** German (Deutsch)

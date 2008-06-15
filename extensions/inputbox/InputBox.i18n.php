@@ -311,6 +311,13 @@ $messages['fur'] = array(
 	'createarticle' => 'Cree vôs',
 );
 
+/** Western Frisian (Frysk)
+ * @author Snakesteuben
+ */
+$messages['fy'] = array(
+	'createarticle' => 'Side oanmeitsje',
+);
+
 $messages['ga'] = array(
 	'tryexact'       => 'Déan iarracht ar meaitseáil cruinn',
 	'searchfulltext' => 'Cuardaigh sa téacs iomlán',
@@ -688,6 +695,7 @@ $messages['mr'] = array(
  */
 $messages['mt'] = array(
 	'inputbox-desc' => "Tħalli formuli ta' HTML predefiniti",
+	'createarticle' => 'Oħloq paġna',
 );
 
 $messages['nan'] = array(
@@ -1082,9 +1090,11 @@ $messages['xh'] = array(
 
 /** Yiddish (ייִדיש)
  * @author Yidel
+ * @author פוילישער
  */
 $messages['yi'] = array(
-	'createarticle' => 'באשאפט ארטיקל',
+	'searchfulltext' => 'זוך אין אלע בלעטער',
+	'createarticle'  => 'באשאפט ארטיקל',
 );
 
 $messages['yue'] = array(

@@ -29,6 +29,13 @@ $messages['ar'] = array(
 	'createbox-create' => 'إنشاء',
 );
 
+/** Bulgarian (Български)
+ * @author DCLXVI
+ */
+$messages['bg'] = array(
+	'createbox-create' => 'Създаване',
+);
+
 /** Finnish (Suomi)
  * @author Jack Phoenix
  */
@@ -83,6 +90,19 @@ $messages['nl'] = array(
 	'createbox-exists' => "\"'''{{FULLPAGENAME}}'''\" bestaat al.
 
 U kunt deze pagina niet aanmaken, maar u kunt deze [{{fullurl:{{FULLPAGENAME}}|action=edit}} bewerken], [{{fullurl:{{FULLPAGENAME}}}} bekijken], of een andere pagina aanmaken via het onderstaande formulier.
+
+<createbox>break=no</createbox>",
+);
+
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ */
+$messages['no'] = array(
+	'createbox-desc'   => 'Spesialisert tekstboks for sideoppretting',
+	'createbox-create' => 'Opprett',
+	'createbox-exists' => "Beklager, «'''{{FULLPAGENAME}}'''» finnes fra før.
+
+Du kan ikke opprette denne siden, men du kan [{{fullurl:{{FULLPAGENAME}}|action=edit}} redigere den], [{{fullurl:{{FULLPAGENAME}}}} lese den] eller opprette en annen siden med hjelp av boksen nedenfor.
 
 <createbox>break=no</createbox>",
 );

@@ -11,6 +11,13 @@ $messages['en'] = array(
 	'didyoumean-desc' => 'Adds links to pages with "similar" titles',
 );
 
+/** Arabic (العربية)
+ * @author Meno25
+ */
+$messages['ar'] = array(
+	'didyoumean-desc' => 'يضيف وصلات إلى صفحات بعناوين "مشابهة"',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  */

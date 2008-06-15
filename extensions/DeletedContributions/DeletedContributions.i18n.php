@@ -100,6 +100,13 @@ $messages['cs'] = array(
 	'deletedcontributions-desc' => 'Umožňuje správcům [[Special:DeletedContributions|prohlížet smazané editace zadaného uživatele]]',
 );
 
+/** Church Slavic (Словѣньскъ)
+ * @author ОйЛ
+ */
+$messages['cu'] = array(
+	'deletedcontributions' => 'пони́чьжєнꙑ добродѣꙗ́ниꙗ',
+);
+
 $messages['cy'] = array(
 	'deletedcontributions'         => 'Cyfraniadau\'r defnyddiwr a ddilëwyd',
 );

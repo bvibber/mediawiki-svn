@@ -14,6 +14,13 @@ $messages['en'] = array(
 	'emailaddressimage-desc' => 'Adds <tt>&lt;email&gt;</tt> to display an e-mail address as image',
 );
 
+/** Arabic (العربية)
+ * @author Meno25
+ */
+$messages['ar'] = array(
+	'emailaddressimage-desc' => 'يضيف <tt>&lt;email&gt;</tt> لعرض عنوان بريد إلكتروني كصورة',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  */
