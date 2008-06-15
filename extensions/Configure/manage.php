@@ -10,7 +10,7 @@
  */
 
 $optionsWithArgs = array( 'revert', 'delete' );
-//define( 'EXT_CONFIGURE_NO_EXTRACT', true );
+define( 'EXT_CONFIGURE_NO_EXTRACT', true );
 
 $dir = dirname( __FILE__ );
 $IP = "$dir/../..";
