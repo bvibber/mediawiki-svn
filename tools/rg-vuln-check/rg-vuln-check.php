@@ -6,39 +6,41 @@ if ( php_sapi_name() != 'cli' ) {
 	exit( 1 );
 }
 
-$options = array();
+if ( !defined( 'RGVULN_INC' ) ) {
+	$options = array();
 
-if ( in_array( '-v', $argv ) ) {
-	$options['verbose'] = true;
-	$argv = array_diff( $argv, array( '-v' ) );
+	if ( in_array( '-v', $argv ) ) {
+		$options['verbose'] = true;
+		$argv = array_diff( $argv, array( '-v' ) );
+	}
+	if ( in_array( '--opcodes', $argv ) ) {
+		$options['opcodes'] = true;
+		$argv = array_diff( $argv, array( '--opcodes' ) );
+	}
+
+	if ( count( $argv ) <= 1 ) {
+		echo "Usage: php {$argv[0]} [-v] [--opcodes] <filename> [<filename> ...]\n";
+		exit( 1 );
+	}
+
+	$confFile = dirname( __FILE__ ) . '/conf.php';
+	if ( !file_exists( $confFile ) ) {
+		echo "Configuration file not found\n";
+		echo "Copy conf.php.sample to conf.php, and change the settings to suit your installation.\n";
+		exit( 1 );
+	}
+
+	$cvc = new ClassicVulnerabilityCheck( $options );
+	$cvc->readConf( $confFile );
+
+	array_shift( $argv );
+	$good = true;
+	foreach ( $argv as $file ) {
+		$good = $good && $cvc->check( $file );
+	}
+
+	exit( $good ? 0 : 1 );
 }
-if ( in_array( '--opcodes', $argv ) ) {
-	$options['opcodes'] = true;
-	$argv = array_diff( $argv, array( '--opcodes' ) );
-}
-
-if ( count( $argv ) <= 1 ) {
-	echo "Usage: php {$argv[0]} [-v] [--opcodes] <filename> [<filename> ...]\n";
-	exit( 1 );
-}
-
-$confFile = dirname( __FILE__ ) . '/conf.php';
-if ( !file_exists( $confFile ) ) {
-	echo "Configuration file not found\n";
-	echo "Copy conf.php.sample to conf.php, and change the settings to suit your installation.\n";
-	exit( 1 );
-}
-
-$cvc = new ClassicVulnerabilityCheck( $options );
-$cvc->readConf( $confFile );
-
-array_shift( $argv );
-$good = true;
-foreach ( $argv as $file ) {
-	$good = $good && $cvc->check( $file );
-}
-
-exit( $good ? 0 : 1 );
 
 class ClassicVulnerabilityCheck {
 	/**
@@ -63,7 +65,7 @@ class ClassicVulnerabilityCheck {
 	 */
 	var $opcodes = false;
 
-	function __construct( $options ) {
+	function __construct( $options = array() ) {
 		foreach ( $options as $name => $value ) {
 			$this->$name = $value;
 		}
@@ -158,12 +160,28 @@ class ClassicVulnerabilityCheck {
 
 	function getGlobalsFromFunction( $opArray ) {
 		$globals = array();
-		foreach ( $opArray as $opLine ) {
+		foreach ( $opArray as $i => $opLine ) {
+			// Plain ZEND_FETCH_W
 			if ( $opLine['opcode_name'] == 'ZEND_FETCH_W' 
 				&& $opLine['op1']['type_name'] == 'IS_CONST' ) 
 			{
 				$globals[$opLine['op1']['constant']] = true;
 			}
+
+			// $GLOBALS[...]
+			if ( $opLine['opcode_name'] == 'ZEND_FETCH_R' 
+				&& $opLine['op1']['type_name'] == 'IS_CONST'
+				&& $opLine['op1']['constant'] == 'GLOBALS'
+				&& $opLine['result']['type_name'] == 'IS_VAR'
+				&& isset( $opArray[$i+1] )
+				&& $opArray[$i+1]['opcode_name'] == 'ZEND_FETCH_DIM_R'
+				&& $opArray[$i+1]['op1']['type_name'] == 'IS_VAR'
+				&& $opLine['result']['var'] == $opArray[$i+1]['op1']['var']
+				&& $opArray[$i+1]['op2']['type_name'] == 'IS_CONST' )
+			{
+				$globals[$opArray[$i+1]['op2']['constant']] = true;
+			}
+
 		}
 		return $globals;
 	}
