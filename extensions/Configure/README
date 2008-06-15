@@ -58,9 +58,12 @@ want to load, pass an argument to efConfigureSetup(). A user with
 == Troubleshooting ==
 
 If an admin changed the settings in a way that the wiki can't work anymore,
-you can simply drop the conf-now.ser file you'll find in $wgConfigureFilesPath
-directory. Then it will fall back to the default configuration that is in
-LocalSettings.php. It's why it's important to keep that file.
+you can do either:
+* use the manage.php command line script to revert the configuration to an
+  older version
+* drop the conf-now.ser file you'll find in $wgConfigureFilesPath
+  directory. Then it will fall back to the default configuration that is in
+  LocalSettings.php. It's why it's important to keep that file.
 
 == To do ==
 

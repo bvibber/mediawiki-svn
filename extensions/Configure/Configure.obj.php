@@ -74,10 +74,14 @@ class WebConfiguration extends SiteConfiguration {
 		if( !is_array( $settings ) || $settings === array() )
 			# hmmm
 			return false;
-		if( !$wiki )
-			$wiki = $this->mWiki;
 
-		$this->mConf[$wiki] = $settings;
+		if( $wiki === null ){
+			$this->mConf = $settings;
+		} else {
+			if( $wiki === false )
+				$wiki = $this->mWiki;
+			$this->mConf[$wiki] = $settings;
+		}
 
 		$arch = $this->getArchiveFileName();
 		$cur = $this->getFileName();
@@ -90,6 +94,11 @@ class WebConfiguration extends SiteConfiguration {
 	 * extract settings for this wiki in $GLOBALS
 	 */
 	public function extract(){
+		// Special case for manage.php maintenance script so that it can work
+		// even the current configuration is broken
+		if( defined( 'EXT_CONFIGURE_NO_EXTRACT' ) )
+			return;
+
 		list( $site, $lang ) = $this->siteFromDB( $this->mWiki );
 		$rewrites = array( 'wiki' => $this->mWiki, 'site' => $site, 'lang' => $lang );
 		$this->extractAllGlobals( $this->mWiki, $site, $rewrites );
@@ -102,6 +111,9 @@ class WebConfiguration extends SiteConfiguration {
 	 * @return array
 	 */
 	public function getCurrent( $wiki ){
+		if( !empty( $this->conf[$wiki] ) )
+			return $this->conf[$wiki];
+
 		list( $site, $lang ) = $this->siteFromDB( $wiki );
 		$rewrites = array( 'wiki' => $wiki, 'site' => $site, 'lang' => $lang );
 		return $this->getAll( $wiki, $site, $rewrites );
@@ -121,7 +133,7 @@ class WebConfiguration extends SiteConfiguration {
 	 *            current timestamp
 	 * @return String full path to the file
 	 */
-	protected function getArchiveFileName( $ts = null ){
+	public function getArchiveFileName( $ts = null ){
 		global $IP;
 
 		if( $ts === null )

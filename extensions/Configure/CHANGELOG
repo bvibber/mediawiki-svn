@@ -1,6 +1,10 @@
 This file lists changes on this extension.
 Localisation updates are done on betawiki and aren't listed here.
 
+0.4.4 - 15 June 2008
+  Added manage.php maintenance script to do maintenance with configuration
+  files.
+
 0.4.3 - 12 June 2008
   $wgEnableCascadingProtection is obsolete in 1.13 +
 

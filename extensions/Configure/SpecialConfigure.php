@@ -182,8 +182,10 @@ class SpecialConfigure extends SpecialPage {
 				$wgOut->addWikiText( "<div class='errorbox'><strong>$msg</strong></div>" );
 				return;
 			}
+			$this->mWiki = $wiki;
+		} else {
+			$this->mWiki = $wgConf->getWiki();
 		}
-		$this->mWiki = $wiki;
 
 		$this->outputHeader();
 
