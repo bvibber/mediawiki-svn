@@ -18,8 +18,8 @@ function loadExercise($exercise_id) {
 	$exercise=new Exercise();
 	$exercise->setId($exercise_id);
 	$exercise->loadXML($row["exercise"]);
-	$exercise->setQuestionLanguage($row["questionLanguage"]);
-	$exercise->setAnswerLanguage($row["answerLanguage"]);
+	$exercise->setQuestionLanguages(explode(",",$row["questionLanguages"]));
+	$exercise->setAnswerLanguages(explode(",",$row["answerLanguages"]));
 	return $exercise;
 }
 
@@ -32,8 +32,8 @@ function saveExercise($exercise, $userName=null) {
 	$row["id"]=$id;
 	$row["username"]=$userName;
 	$row["exercise"]=$exercise->saveXML();
-	$row["questionLanguage"]=mysql_real_escape_string($exercise->getQuestionLanguage());
-	$row["answerLanguage"]=mysql_real_escape_string($exercise->getAnswerLanguage());
+	$row["questionLanguages"]=mysql_real_escape_string(implode(",",$exercise->getQuestionLanguages()));
+	$row["answerLanguages"]=mysql_real_escape_string(implode(",",$exercise->getAnswerLanguages()));
 
 	DBTools::unsafe_insert_assoc("exercises","id", $id, $row);
 	$exercise->setId(mysql_insert_id()); #might be useful to prevent repeats

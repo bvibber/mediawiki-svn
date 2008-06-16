@@ -26,8 +26,8 @@ function main() {
 	#var_dump($fullSet->saveXML());
 	$exercise=new Exercise($fetcher,$fullSet,$maxSubSet); # pwease, not the max!
 	#$exercise->setLanguages(array("eng","fra","deu"));
-	$exercise->setQuestionLanguage("deu");
-	$exercise->setAnswerLanguage("eng");
+	$exercise->setQuestionLanguages(array("deu"));
+	$exercise->setAnswerLanguages(array("eng"));
 
 	#$question_dmid=$maxSubSet[array_rand($maxSubSet)];
 	echo "question...\n";

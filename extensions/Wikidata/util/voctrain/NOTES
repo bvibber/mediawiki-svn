@@ -69,6 +69,21 @@ Remember to make that a proper URL :-P . For instance, to try this out on the om
 	http://www.omegawiki.org/extensions/Wikidata/util/voctrain/trainer.php?defaultCollection=1452638
 
 
+Vocabulary viewer: 
+
+trainer.php?action=vocview&dmid=3834&questionLanguages=eng,nld&answerLangauges=deu,jpn&language_code=nl
+
+action=vocview		select vocabulary viewer mode
+dmid			view word under this defined meaning id. (see omegawiki I documentation for more details)
+questionLanguages	comma separated list of languages to translate from (iso 639-3)
+answerLanguages		comma separated list of languages to translate to (iso 639-3)
+language_code		ui language, (modded iso 639-1 !!!)
+
+Note that the ui language uses mediawiki language codes, rather than iso 639-3! This
+is because the translation project that translates our UI uses those, and they're
+not set up to support the newer standard yet. :-(
+
+
 == Code reading ==
 
 
@@ -114,4 +129,7 @@ dmid: Defined Meaning ID: Each defined meaning in omegawiki 1 is assigned
 	in Afrikaans, Castillian, Catalan, Danish, Dutch, etc ...
 	( http://www.omegawiki.org/index.php?title=DefinedMeaning:duty%20(7534)&dataset=uw )
 
+== quick notes: ==
 
+At next major db change, also take along changing questionlanguage and answerlanguage to
+questionlanguge_s_ and answerlanguage_s_ (or just add this info into the exercise xml instead)

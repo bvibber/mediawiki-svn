@@ -7,39 +7,8 @@ require_once "persist.php";
 main();
 
 function main() {
-	#$collection_id=376317; #olpc dictionary.... WAY too big
-	#
 	$fetcher=new OWFetcher();
-	#echo "fullset...\n";
-	#$fullSetXML=$fetcher->getFullSetXML_asString($collection_id);
-	
-	#$fullSet=new DOMDocument();
-	#$success=$fullSet->loadXML($fullSetXML);
-	#if (!$success) {
-#		throw new Exception("Failed to load category XML from server");
-#	}
-#
-#	$maxSubSet=dom2set($fullSet);
-#	#sort($maxSubSet); foreach ($maxSubSet as $dmid) {print "$dmid,";}
-#
-#
-#	#var_dump($fullSet->saveXML());
-#	$exercise=new Exercise($fetcher,$fullSet,$maxSubSet); # pwease, not the max!
-	#$exercise->setLanguages(array("eng","fra","deu"));
-#	$exercise->setQuestionLanguage("deu");
-#	$exercise->setAnswerLanguage("eng");
-
-	#$question_dmid=$maxSubSet[array_rand($maxSubSet)];
-#	echo "question...\n";
-	#$questionNode=$exercise->getQuestionNode($question_dmid);
-
-	#dumpNode($questionNode);
-##	$runex=$exercise->randSubExercise(10);
-#	dumpExercise($runex,5);
-
 	echo "\n\n=== presistence test ===\n\n";
-#	saveExercise($runex);
-#	$exid=mysql_insert_id();
 	$loadex=loadExercise(4);
 	$loadex->setFetcher($fetcher);
 	dumpExercise($loadex,10);

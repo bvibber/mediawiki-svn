@@ -132,9 +132,9 @@ class View {
 		<h2><|Languages|></h2>
 		<fieldset class='settings'>
 		<!-- should be a dropdown, perhaps -->
-		<|Please specify the languages you want to test in|> <a href='http://www.sil.org/ISO639-3/codes.asp'><|ISO-639-3 format|></a>. <|(eg, eng for English, deu for Deutch (German)).|> <|Depending on your test set, some combinations might work better than others.|>
-		<div class='datarow'><label><|Questions|>:</label> <input type='text' value='eng' name='questionLanguage'/></div><br/>
-		<div class='datarow'><label><|Answers|>: </label><input type='text' value='deu' name='answerLanguage'/></li></div><br/>
+		<|Please specify the languages you want to test in|> <a href='http://www.sil.org/ISO639-3/codes.asp'><|ISO-639-3 format|></a>. <|(eg, eng for English, deu for Deutch (German)).|> <|Depending on your test set, some combinations might work better than others.|> <|Separate values by commas to use multiple languages.|>
+		<div class='datarow'><label><|Questions|>:</label> <input type='text' value='eng' name='questionLanguages'/></div><br/>
+		<div class='datarow'><label><|Answers|>: </label><input type='text' value='deu' name='answerLanguages'/></li></div><br/>
 		<hr/>
 		</p>
 		<input type='submit' value='<|start exercise|>'/> 
@@ -213,6 +213,10 @@ class View {
 			if ($peek) {
 				$this->language->i18nprint("
 					<i><|peek|>:</i>$answers<br/>");
+			} else {
+				$this->language->i18nprint("
+					<input type='submit' value='(<|peek|>)' name='peek' /><br/>
+					");
 			}
 			$this->language->i18nprint("
 			<i><|Please type your answer here|></i><br/>
@@ -221,7 +225,6 @@ class View {
 			<input type='submit' value='<|submit answer|>' name='submitAnswer' />
 			</fieldset>
 			<fieldset class='settings'>
-			<input type='submit' value='<|peek|>' name='peek' />
 			<input type='submit' value='<|skip|> ->' name='skip' />
 			<input type='submit' value='<|I know it/do not ask again|>' name='hide' />
 			".
@@ -246,8 +249,6 @@ class View {
 			$result="<span style='color:#00DD00'>CORRECT</span>";
 		} elseif ($correct===false) {
 			$result="<span style='color:#DD0000'>WRONG</span>";
-		} elseif ($correct===null) {
-			$result="<|peek|>";
 		} else {
 			throw new Exception("unexpected outcome from question");
 		}
@@ -263,6 +264,38 @@ class View {
 			<input type='hidden' name='questionDmid' value='$questionDmid'/>
 			<input type='submit' value='continue ->' name='continue' />
 			</form>
+		");
+	}
+
+
+	public function vocview($question) {
+		#we only use questions and questionlanguages, we haven't set answerlanguages.
+		$definitions=implode(",<br/>",$question->getQuestionDefinitions());
+		$words=implode(", ",$question->getQuestionWords());
+		$questionDmid=$question->getDmid();
+		$answers=implode(", ",$question->getAnswers());
+
+		$this->language->i18nprint(
+			"
+			<h1><|Vocview|></h1>
+			<hr>
+			<h2><|Word|></h2>
+			<p class='result'>
+			<i><|word|>:</i><br/>
+			$words
+			</p>
+			<hr>
+			<h2><|Definition|></h2>
+			<p class='result'>
+			<i><|Dictionary definitions|>:</i><br/>
+			$definitions 
+			</p>
+			<hr>
+			<h2><|Translation|></h2>
+			<p class='result'>
+			$answers
+			</p>
+			<hr>
 		");
 	}
 

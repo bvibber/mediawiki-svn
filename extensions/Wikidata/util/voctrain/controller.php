@@ -2,6 +2,7 @@
 require_once("model.php");
 require_once("view.php");
 require_once("settings.php");
+require_once("util.php");
 
 require_once("Auth.php");
 
@@ -29,13 +30,19 @@ class Controller {
 	 * Urk, bit confuzzeled on the $_REQUEST, should tidy!
 	 */
 	public function execute() {
-		# require login for all but new users.
+		$logged_out_actions=array("hello","vocview");
+
+		$action=$_REQUEST["action"];
+
+		# do not require login for things that don't require it
 		if (isset($_REQUEST['new_user'])) {
 			$this->new_user();
 			exit;
 		}
 
-		$this->login();
+		if (!in_array($action, $logged_out_actions)) {
+			$this->login();
+		}
 		$logged_in=$this->auth->checkAuth();
 		
 		if ($logged_in) {
@@ -45,19 +52,23 @@ class Controller {
 			}
 		}
 		$this->setLanguage();
-		if ($_REQUEST["action"]=="logout")
+		if ($action=="logout")
 			$logged_in=false;
 		
 		$this->view->header($logged_in);
+
+		/* all users */
+		
 		$logged_in=$this->auth->checkAuth();
 		if ($logged_in) {
-			$action=$_REQUEST["action"];
+			/* actions available to logged in users */
 			if (in_array($action,array(
 				"hello",
 				"logout",
 				"create_exercise",
 				"run_exercise",
-				"complete_exercise"
+				"complete_exercise",
+				"vocview"
 				))){
 
 				$this->$action();
@@ -66,7 +77,17 @@ class Controller {
 			}else {
 				$this->view->actionUnknown($action);
 			}
+		} else {
+			/* actions available to all users */
+			if (in_array($action, $logged_out_actions)){
+				$this->$action();
+			}elseif ($action===null) {
+				$this->default_loggedout_action();
+			}else {
+				$this->view->actionUnknown($action);
+			}
 		}
+
 		$this->view->footer();
 	}
 
@@ -78,6 +99,40 @@ class Controller {
 	/** What to do when we don't know what to do */
 	public function default_action() {
 		$this->run_exercise(true);
+	}
+
+	/** What to do when we don't know what to do when we're logged out*/
+	public function default_loggedout_action() {
+		/* do nothing */
+	}
+
+	/** vocabulary viewer mode (when invoked extrenally) */
+	public function vocview() {
+		$questionLanguages=null;
+		$answerLanguages=null;
+
+		if (!isset($_REQUEST['dmid'])) 
+			throw new Exception("vocview requested, but no dmid provided");
+
+		if (isset($_REQUEST['questionLanguages'])) {
+			$questionLanguages=Util::array_trim(explode(",",$_REQUEST['questionLanguages']));
+		}
+
+		if (isset($_REQUEST['answerLanguages'])) {
+			$answerLanguages=Util::array_trim(explode(",",$_REQUEST['answerLanguages']));
+		}
+
+		$dmid=(int) $_REQUEST['dmid'];
+		
+		#TODO This may be subvertible. Language class should provide a validation
+		# service for untrusted language codes.
+		if (isset($_REQUEST['language_code'])) {
+			$language_code=$_REQUEST['language_code']; 
+			$this->view->setLanguage_byCode($language_code);
+		}
+
+		$question=$this->model->vocview_getQuestion($dmid, $questionLanguages, $answerLanguages);
+		$this->view->vocview($question);
 	}
 
 	/** sets the ui language 
@@ -93,18 +148,18 @@ class Controller {
 	/**create a new exercise using $this->view->exercise_setup();
 	 * This function sort of grew over time. TODO Cleanup. */
 	public function create_exercise() {
-		$questionLanguage=null;
-		$answerLanguage=null;
+		$questionLanguages=null;
+		$answerLanguages=null;
 		$defaultCollection=null;
 
 		$user=$this->auth->getUsername();
 
-		if (isset($_REQUEST['questionLanguage'])) {
-			$questionLanguage=$_REQUEST['questionLanguage'];
+		if (isset($_REQUEST['questionLanguages'])) {
+			$questionLanguages=Util::array_trim(explode(",",$_REQUEST['questionLanguages']));
 		}
 
-		if (isset($_REQUEST['answerLanguage'])) {
-			$answerLanguage=$_REQUEST['answerLanguage'];
+		if (isset($_REQUEST['answerLanguages'])) {
+			$answerLanguages=Util::array_trim(explode(",",$_REQUEST['answerLanguages']));
 		}
 
 		if (isset($_REQUEST["defaultCollection"]))
@@ -115,8 +170,8 @@ class Controller {
 					$this->auth->getUsername(),
 					(int) $_REQUEST['exercise_size'],
 					(int) $_REQUEST['collection'],
-					$questionLanguage,
-					$answerLanguage,
+					$questionLanguages,
+					$answerLanguages,
 					$user
 				);
 		} elseif (isset($_REQUEST['exercise_size_other']) && is_int($_REQUEST['exercise_size_other']) ) {
@@ -124,8 +179,8 @@ class Controller {
 					$this->auth->getUsername(),
 					(int) $_REQUEST['exercise_size_other'],
 					(int) $_REQUEST['collection'],
-					$questionLanguage,
-					$answerLanguage,
+					$questionLanguages,
+					$answerLanguages,
 					$user
 				);
 		} else {

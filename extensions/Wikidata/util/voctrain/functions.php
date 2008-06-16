@@ -12,88 +12,81 @@ require_once 'HTML/QuickForm.php';
 
 function display_form(){
 
-//////////////////////////////////////////
-// Instantiate the HTML_QuickForm object
-$form = new HTML_QuickForm('firstForm', 'get');
+	//////////////////////////////////////////
+	// Instantiate the HTML_QuickForm object
+	$form = new HTML_QuickForm('firstForm', 'get');
 
 
 
       $languages_suggs = array("eng"=>"eng",
-                           "deu"=>"deu", 
-                           "fra"=>"fra",                           
-                           "ita"=>"ita",
-                           "nld"=>"nld"
-                           );
+			   "deu"=>"deu", 
+			   "fra"=>"fra",                           
+			   "ita"=>"ita",
+			   "nld"=>"nld"
+			   );
 
-        $collections = array(
-                '376317' => 'One laptop per child basic vocabulary',
-                '376322' => 'Destinazione Italia');    
+	$collections = array(
+		'376317' => 'One laptop per child basic vocabulary',
+		'376322' => 'Destinazione Italia');    
 
-// Set defaults for the form elements
-$form->setDefaults(array(
-    'name' => 'From'
-));
+	// Set defaults for the form elements
+	$form->setDefaults(array(
+	    'name' => 'From'
+	));
 
-// Add some elements to the form
-$form->addElement('header', null, '');
-$form->addElement('hidden', 'ow', '1');
-$form->addElement('select', 'mode', 'voc browser mode:', array('browser' => 'lookup dictionary', 'trainer' => 'vocabulary training'));
-if($_REQUEST['mode'] == 'trainer'){
+	// Add some elements to the form
+	$form->addElement('header', null, '');
+	$form->addElement('hidden', 'ow', '1');
+	$form->addElement('select', 'mode', 'voc browser mode:', array('browser' => 'lookup dictionary', 'trainer' => 'vocabulary training'));
+	if($_REQUEST['mode'] == 'trainer'){
 
-        $form->addElement('select', 'wdcollection', 'Collection to choose vocabulary from:', $collections);
-        $form->addElement('select', 'wdlanguages_1', 'target language you want to train:', $languages_suggs);
-}else{
-        $form->addElement('select', 'wdlanguages_1', 'first output language:', $languages_suggs);
-}
-if($_REQUEST['settings'] == 1){
-        $form->addElement('text', 'wdlanguages_2', 'second output language:', array('value' => '','size' => 6, 'maxlength' => 6));
-        $form->addElement('text', 'wdlanguages_3', 'third output language:', array('size' => 6, 'maxlength' => 6));
-        $form->addElement('text', 'wdlanguages_4', 'fourth output language:', array('size' => 6, 'maxlength' => 6));
-        $link = build_get_uri_2('settings', '0', '');
-        echo '<a href="'.$link.'">hide settings and languages</a>';
-}elseif($_REQUEST['mode'] == 'trainer' && ($_REQUEST['trainer_step'] == 0)){
-        $form->addElement('text', 'wdlanguages_2', 'first language you can understand:', array('size' => 6, 'maxlength' => 6));
-        $form->addElement('text', 'wdlanguages_3', 'second language you can understand:', array('size' => 6, 'maxlength' => 6));
-        $form->addElement('text', 'wdlanguages_4', 'third language you can understand:', array('size' => 6, 'maxlength' => 6));
+		$form->addElement('select', 'wdcollection', 'Collection to choose vocabulary from:', $collections);
+		$form->addElement('select', 'wdlanguages_1', 'target language you want to train:', $languages_suggs);
+	}else{
+		$form->addElement('select', 'wdlanguages_1', 'first output language:', $languages_suggs);
+	}
+	if($_REQUEST['settings'] == 1){
+		$form->addElement('text', 'wdlanguages_2', 'second output language:', array('value' => '','size' => 6, 'maxlength' => 6));
+		$form->addElement('text', 'wdlanguages_3', 'third output language:', array('size' => 6, 'maxlength' => 6));
+		$form->addElement('text', 'wdlanguages_4', 'fourth output language:', array('size' => 6, 'maxlength' => 6));
+		$link = build_get_uri_2('settings', '0', '');
+		echo '<a href="'.$link.'">hide settings and languages</a>';
+	}elseif($_REQUEST['mode'] == 'trainer' && ($_REQUEST['trainer_step'] == 0)){
+		$form->addElement('text', 'wdlanguages_2', 'first language you can understand:', array('size' => 6, 'maxlength' => 6));
+		$form->addElement('text', 'wdlanguages_3', 'second language you can understand:', array('size' => 6, 'maxlength' => 6));
+		$form->addElement('text', 'wdlanguages_4', 'third language you can understand:', array('size' => 6, 'maxlength' => 6));
 
-}else{
-        $form->addElement('hidden', 'wdlanguages_2', '', array('size' => 6, 'maxlength' => 6));
-        $form->addElement('hidden', 'wdlanguages_3', '', array('size' => 6, 'maxlength' => 6));
-        $form->addElement('hidden', 'wdlanguages_4', '', array('size' => 6, 'maxlength' => 6));
-        $link = build_get_uri_2('settings', '1', '');
-        echo '<a href="'.$link.'">edit settings and languages</a>';
-}
-
-
-if($_REQUEST['definedmeaning']){
-        $expression_group[] = &HTML_QuickForm::createElement('text', 'expression', 'search expression:', array('value' => '' ,'size' => 20, 'maxlength' => 256));
-        $form->updateElementAttr('expression',array('value' => ''));
-        $expression_group[] = &HTML_QuickForm::createElement('text', 'wdexplanguage', 'source language of an expression <br/>(leave blank to search all languages)', array('size' => 20, 'maxlength' => 256));
-}else{
-        $expression_group[] = &HTML_QuickForm::createElement('text', 'expression', 'search expression:', array('size' => 20, 'maxlength' => 256));
-        $expression_group[] = &HTML_QuickForm::createElement('text', 'wdexplanguage', 'source language of an expression <br/>(leave blank to search all languages)', array('size' => 4, 'maxlength' => 256));
-}
+	}else{
+		$form->addElement('hidden', 'wdlanguages_2', '', array('size' => 6, 'maxlength' => 6));
+		$form->addElement('hidden', 'wdlanguages_3', '', array('size' => 6, 'maxlength' => 6));
+		$form->addElement('hidden', 'wdlanguages_4', '', array('size' => 6, 'maxlength' => 6));
+		$link = build_get_uri_2('settings', '1', '');
+		echo '<a href="'.$link.'">edit settings and languages</a>';
+	}
 
 
-$form->addGroup($expression_group, 'Expression', 'Search Expression:', '&nbsp; only in this language:', 0);
+	if($_REQUEST['definedmeaning']){
+		$expression_group[] = &HTML_QuickForm::createElement('text', 'expression', 'search expression:', array('value' => '' ,'size' => 20, 'maxlength' => 256));
+		$form->updateElementAttr('expression',array('value' => ''));
+		$expression_group[] = &HTML_QuickForm::createElement('text', 'wdexplanguage', 'source language of an expression <br/>(leave blank to search all languages)', array('size' => 20, 'maxlength' => 256));
+	}else{
+		$expression_group[] = &HTML_QuickForm::createElement('text', 'expression', 'search expression:', array('size' => 20, 'maxlength' => 256));
+		$expression_group[] = &HTML_QuickForm::createElement('text', 'wdexplanguage', 'source language of an expression <br/>(leave blank to search all languages)', array('size' => 4, 'maxlength' => 256));
+	}
 
-        if($_REQUEST['settings'] == 1){
-                $form->addElement('text', 'definedmeaning', 'definedmeaning (word-id):', array('value' => '', 'size' => 15));
-        }else{
-        }
 
+	$form->addGroup($expression_group, 'Expression', 'Search Expression:', '&nbsp; only in this language:', 0);
 
+	if($_REQUEST['settings'] == 1){
+		$form->addElement('text', 'definedmeaning', 'definedmeaning (word-id):', array('value' => '', 'size' => 15));
+	}
 
-$form->addElement('submit', null, 'set / update');
+	$form->addElement('submit', null, 'set / update');
 
-// Define filters and validation rules
-
-// Try to validate a form 
-
-// Output the form
-$form->display();
-//
-//////////////////////////////////////////
+	// Output the form
+	$form->display();
+	//
+	//////////////////////////////////////////
 }
 
 
@@ -156,52 +149,44 @@ function get_empty_collection_xml($collection_id) {
 	$content = get_ow_content_1($ow_api_url);
 	$xml = new SimpleXMLElement($content);
 }
-function display_account_seetings($params){
-
-if($GLOBALS['userdata_type'] == 'wau'){
-
-if ($GLOBALS['a']->checkAuth()) {    
-        echo '<div id="login">logged in as '.$GLOBALS['a']->getUsername().' | '; 
-        $link = build_get_uri_2('logout', '1');
-        echo '<a href="'.$link.'">logout<a> | '; 
-
-
-}else{
-        $link = build_get_uri_2('','', '../tn/login_1.php');
-        $link = build_get_uri_2('goto', $params['goto'], $link);
-        $link = build_get_uri_2('modulname_neu', $params['modulname_neu'],$link);
-        //$link = build_get_uri_2('do_auth', '1',$link);
 
 
 
+function display_account_settings($params){
 
-        echo '<a href="'.$link.'">login / create account<a> | '; 
-}
+	if($GLOBALS['userdata_type'] == 'wau'){
+
+		if ($GLOBALS['a']->checkAuth()) {    
+			echo '<div id="login">logged in as '.$GLOBALS['a']->getUsername().' | '; 
+			$link = build_get_uri_2('logout', '1');
+			echo '<a href="'.$link.'">logout<a> | '; 
 
 
+		}else{
+			$link = build_get_uri_2('','', '../tn/login_1.php');
+			$link = build_get_uri_2('goto', $params['goto'], $link);
+			$link = build_get_uri_2('modulname_neu', $params['modulname_neu'],$link);
+			//$link = build_get_uri_2('do_auth', '1',$link);
+			echo '<a href="'.$link.'">login / create account<a> | '; 
+		}
 
+		if($_REQUEST['get_ow_trainer_overview']){
+			$arr = get_ow_trainer_overview($params);
+			echo "<h2>training  overview</h2>";
+			echo "<ul>";
+			foreach($params['status_values'] as $value){
+				echo "<li>";
+				echo $params['status_messages'][$value].": ".current($arr);
+				next($arr);
+				echo "</li>";
+			}
+			echo "</ul>";
+		}else{
+			$link = build_get_uri_2('get_ow_trainer_overview', '1', '');
+			echo '<a href="'.$link.'">training  overview<a> | '; 
+		}
 
-
-
-
-
-        if($_REQUEST['get_ow_trainer_overview']){
-                $arr = get_ow_trainer_overview($params);
-                        echo "<h2>training  overview</h2>";
-                        echo "<ul>";
-                foreach($params['status_values'] as $value){
-                        echo "<li>";
-                        echo $params['status_messages'][$value].": ".current($arr);
-                        next($arr);
-                        echo "</li>";
-                }
-                        echo "</ul>";
-        }else{
-                $link = build_get_uri_2('get_ow_trainer_overview', '1', '');
-                echo '<a href="'.$link.'">training  overview<a> | '; 
-        }
-
-}
+	}
 }
 
 
@@ -266,31 +251,31 @@ function sub_dm($sections, $xml, $defined_meaning, $wdlanguages){
 
 
 
-if(!($_REQUEST['trainer_step'] == '0')){
-        echo display_wrap(current($sections), $xml, $defined_meaning, $languages);
-        next($sections);
+	if(!($_REQUEST['trainer_step'] == '0')){
+		echo display_wrap(current($sections), $xml, $defined_meaning, $languages);
+		next($sections);
 
-}
+	}
 
 
-if($_REQUEST['trainer_step'] == '1'){
-                echo build_trainer_link(2, $defined_meaning['defined-meaning-id']);
-        }
+	if($_REQUEST['trainer_step'] == '1'){
+			echo build_trainer_link(2, $defined_meaning['defined-meaning-id']);
+		}
 
-if($_REQUEST['trainer_step'] == '2'){
-                echo build_trainer_link(0, $defined_meaning['defined-meaning-id']);
-        }
+	if($_REQUEST['trainer_step'] == '2'){
+			echo build_trainer_link(0, $defined_meaning['defined-meaning-id']);
+		}
 
-/*
-                echo '<ul>';
-                foreach($xml->xpath('//defined-meaning[@defined-meaning-id="'.$defined_meaning['defined-meaning-id'].'"]//synonyms-translations[@indentical-meaning="1"]/expression[@language="'.$wdlanguage.'"]') as $expression){
-                        echo '<li class="ow_voc_expression">'.$expression.'</li>';
-                }
-                foreach($xml->xpath('//defined-meaning[@defined-meaning-id="'.$defined_meaning['defined-meaning-id'].'"]//synonyms-translations[@indentical-meaning="0"]/expression[@language="'.$wdlanguage.'"]') as $expression){
-                        echo '<li class="ow_voc_expression_not_identical">'.$expression.' (not identical)</li>';
-                }
-*/
-echo "</li>";
+	/*
+			echo '<ul>';
+			foreach($xml->xpath('//defined-meaning[@defined-meaning-id="'.$defined_meaning['defined-meaning-id'].'"]//synonyms-translations[@indentical-meaning="1"]/expression[@language="'.$wdlanguage.'"]') as $expression){
+				echo '<li class="ow_voc_expression">'.$expression.'</li>';
+			}
+			foreach($xml->xpath('//defined-meaning[@defined-meaning-id="'.$defined_meaning['defined-meaning-id'].'"]//synonyms-translations[@indentical-meaning="0"]/expression[@language="'.$wdlanguage.'"]') as $expression){
+				echo '<li class="ow_voc_expression_not_identical">'.$expression.' (not identical)</li>';
+			}
+	*/
+	echo "</li>";
 
 }
 
@@ -308,42 +293,44 @@ function section_reverse_link(){
         $sections = array_reverse($GLOBALS['sections']);
         $string = implode('|', $sections);
         $link = build_get_uri_2('sections', $string);
-if(!$GLOBALS['section_reverse_link']){
-        $label = 'change order definition / expression';
-}else{
-        $label = 'change order definition / expression';
-}
-        $link = '<a href="'.$link.'">'.$label.'</a>';
-        $GLOBALS['section_reverse_link'] = '1';
-return $link;
+
+	if(!$GLOBALS['section_reverse_link']){
+		$label = 'change order definition / expression';
+	}else{
+		$label = 'change order definition / expression';
+	}
+
+	$link = '<a href="'.$link.'">'.$label.'</a>';
+	$GLOBALS['section_reverse_link'] = '1';
+	return $link;
 }
 
 function display_definition($xml, $defined_meaning, $languages){
-$string = '';
+	$string = '';
 
-$wdlanguages = get_wdlanguages();
-if($_REQUEST['trainer_step'] == '0' || $_REQUEST['trainer_step'] == '1'){
-        $languages = array();
-        $languages[] = $wdlanguages[0];
-}else{
-        $languages = $wdlanguages;
-}
+	$wdlanguages = get_wdlanguages();
+	if($_REQUEST['trainer_step'] == '0' || $_REQUEST['trainer_step'] == '1'){
+		$languages = array();
+		$languages[] = $wdlanguages[0];
+	}else{
+		$languages = $wdlanguages;
+	}
 
-        $string .= "<h3>definitions</h3>";
-        $string .= section_reverse_link();
-        $string .= '<ul>';
+	$string .= "<h3>definitions</h3>";
+	$string .= section_reverse_link();
+	$string .= '<ul>';
 
 
-$definitions = get_definition($xml, $defined_meaning, $languages);
-        foreach ($definitions['wdlanguage'] as $wdlanguage){
-                $string .= '<li class="ow_voc_definition">';
-                $string .= $wdlanguage.': ';
-                $string .= current($definitions['translated_text']);
-                $string .= '</li>';
-                next($definitions['translated_text']);
-        }
-        $string .= '</ul>';
-return $string;
+	$definitions = get_definition($xml, $defined_meaning, $languages);
+	foreach ($definitions['wdlanguage'] as $wdlanguage){
+		$string .= '<li class="ow_voc_definition">';
+		$string .= $wdlanguage.': ';
+		$string .= current($definitions['translated_text']);
+		$string .= '</li>';
+		next($definitions['translated_text']);
+	}
+	$string .= '</ul>';
+	return $string;
 }
 
 
@@ -394,17 +381,15 @@ function get_definition($xml, $defined_meaning, $wdlanguages){
                 $lang_rows['translated_text'] = array();
 
         foreach($wdlanguages as $wdlanguage){
-                $lang_row = get_definition_sub_1($xml, $defined_meaning, $wdlanguage);
-                $lang_rows['wdlanguage'] = array_merge($lang_rows['wdlanguage'], (array)$lang_row['wdlanguage']);
-                $lang_rows['translated_text'] = array_merge($lang_rows['translated_text'], (array)$lang_row['translated_text']);
+		$lang_row = get_definition_sub_1($xml, $defined_meaning, $wdlanguage);
+		$lang_rows['wdlanguage'] = array_merge($lang_rows['wdlanguage'], (array)$lang_row['wdlanguage']);
+		$lang_rows['translated_text'] = array_merge($lang_rows['translated_text'], (array)$lang_row['translated_text']);
         }
         if($lang_rows['wdlanguage'][0] == ''){
-                echo "leer";
-                $lang_row = get_definition_sub_1($xml, $defined_meaning, 'eng');
-                $lang_rows['wdlanguage'] = array_merge($lang_rows['wdlanguage'], (array)$lang_row['wdlanguage']);
-                $lang_rows['translated_text'] = array_merge($lang_rows['translated_text'], (array)$lang_row['translated_text']);
-
-
+		echo "leer";
+		$lang_row = get_definition_sub_1($xml, $defined_meaning, 'eng');
+		$lang_rows['wdlanguage'] = array_merge($lang_rows['wdlanguage'], (array)$lang_row['wdlanguage']);
+		$lang_rows['translated_text'] = array_merge($lang_rows['translated_text'], (array)$lang_row['translated_text']);
         }
 //print_r($arr);
 return $lang_rows;
@@ -412,13 +397,13 @@ return $lang_rows;
 
 function get_definition_sub_1($xml, $defined_meaning, $wdlanguage){
 
-if($xml->xpath('//defined-meaning[@defined-meaning-id="'.$defined_meaning['defined-meaning-id'].'"]/definition/translated-text-list/translated-text[@language="'.$wdlanguage.'"]')){
-        foreach($xml->xpath('//defined-meaning[@defined-meaning-id="'.$defined_meaning['defined-meaning-id'].'"]/definition/translated-text-list/translated-text[@language="'.$wdlanguage.'"]') as $translated_text){
+	if($xml->xpath('//defined-meaning[@defined-meaning-id="'.$defined_meaning['defined-meaning-id'].'"]/definition/translated-text-list/translated-text[@language="'.$wdlanguage.'"]')){
+		foreach($xml->xpath('//defined-meaning[@defined-meaning-id="'.$defined_meaning['defined-meaning-id'].'"]/definition/translated-text-list/translated-text[@language="'.$wdlanguage.'"]') as $translated_text){
 
-                $arr['wdlanguage'][] = $wdlanguage;
-                $arr['translated_text'][] = (string) $translated_text;
-        }
-}
+			$arr['wdlanguage'][] = $wdlanguage;
+			$arr['translated_text'][] = (string) $translated_text;
+		}
+	}
 return $arr;
 
 }
@@ -442,8 +427,8 @@ function get_expression($xml, $defined_meaning, $wdlanguages){
                 $lang_rows['indentical_meaning']        = array_merge($lang_rows['indentical_meaning'], (array)$lang_row['indentical_meaning']);
 
         }
-//print_r($arr);
-return $lang_rows;
+	//print_r($arr);
+	return $lang_rows;
 }
 
 function get_expression_sub_1($xml, $defined_meaning, $wdlanguage){

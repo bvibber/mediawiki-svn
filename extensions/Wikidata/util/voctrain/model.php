@@ -5,6 +5,7 @@ require_once ("DBTools.php");
 require_once ("settings.php");
 require_once ("functions.php");
 require_once ("collectionlist.php");
+require_once ("vocview.php");
 
 /** provide access to the actual back-end persistent classes. 
  * also does some minor database-wonkery*/
@@ -90,16 +91,13 @@ public $view;
 	}
 
 	/** create a new Exercise from scratch.
-	# only exercises from OLPC dict for now...
-	# (other options need lookup or setup... a. noy. ing.
-	# problem for later)
 	# */
-	public function createExercise($userName, $size, $collection_id, $questionLanguage=null, $answerLanguage=null) {
+	public function createExercise($userName, $size, $collection_id, $questionLanguages, $answerLanguages) {
 
 		#this can be simplified for now...
 		# first get a master exercise...
 		$fetcher=new OWFetcher();
-		$fullSetXML=$fetcher->getFullSetXML_asString($collection_id, array($questionLanguage, $answerLanguage));
+		$fullSetXML=$fetcher->getFullSetXML_asString($collection_id, array_merge($questionLanguages, $answerLanguages));
 		$fullSet=new DOMDocument();
 		$success=$fullSet->loadXML($fullSetXML);
 		if (!$success) {
@@ -107,11 +105,12 @@ public $view;
 		}
 
 		$exercise=new Exercise($fetcher,$fullSet);
-		$exercise->setQuestionLanguage($questionLanguage);
-		$exercise->setAnswerLanguage($answerLanguage);
+		$exercise->setQuestionLanguages($questionLanguages);
+		$exercise->setAnswerLanguages($answerLanguages);
 	
 		# This is the master exercise... which we should now store and 
-		# worship. But today we toss it in the trash and just snarf a
+		# worship. That's for mark II though. 
+		# Today we toss it in the trash and just snarf a
 		# subset instead. Mean huh?
 		
 		$subExercise=$exercise->randSubExercise($size);
@@ -119,10 +118,17 @@ public $view;
 		return $subExercise;
 	}
 
+	/** return a new list of collections */
 	public function collectionList() {
 		$fetcher=new OWFetcher();
 		$lister=new CollectionList($fetcher); #meh, almost doesn't need a class
 		return $lister->getList();
+	}
+
+	/** another call to single function class... I need to think of ways to tidy up*/
+	public function vocview_getQuestion($dmid, $questionLanguages, $answerLanguages) {
+		$v=new VocView();
+		return $v->getQuestion($dmid, $questionLanguages, $answerLanguages);
 	}
 
 }

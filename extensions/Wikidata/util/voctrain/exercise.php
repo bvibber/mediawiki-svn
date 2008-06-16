@@ -2,6 +2,7 @@
 
 require_once("functions.php");  //testing only.
 require_once("question.php");
+require_once("util.php");
 
 class NotInitializedException extends Exception {}
 class NoMoreQuestionsException extends Exception {}
@@ -38,8 +39,8 @@ class Exercise implements Iterator{
 	private $fullSet;
 	private $fetcher;
 	private $languages;
-	private $questionLanguage;
-	private $answerLanguage;
+	private $questionLanguages;
+	private $answerLanguages;
 	private $id;	#exercise id in database
 
 	/**
@@ -117,22 +118,22 @@ class Exercise implements Iterator{
 		$this->id= $id;
 	}
 
-	public function setQuestionLanguage($questionLanguage) {
-		$this->questionLanguage=$questionLanguage;
+	public function setQuestionLanguages($questionLanguages) {
+		$this->questionLanguages=Util::array_trim($questionLanguages);
 	}
 
-	public function getQuestionLanguage(){
-		return $this->questionLanguage;
+	public function getQuestionLanguages(){
+		return $this->questionLanguages;
 	}
 
-	public function setAnswerLanguage($answerLanguage){
-		$this->answerLanguage=$answerLanguage;
+	public function setAnswerLanguages($answerLanguages){
+		$this->answerLanguages=Util::array_trim($answerLanguages);
 	}
 
 	
 
-	public function getAnswerLanguage(){
-		return $this->answerLanguage;
+	public function getAnswerLanguages(){
+		return $this->answerLanguages;
 	}
 
 	public function getFetcher() {
@@ -145,13 +146,14 @@ class Exercise implements Iterator{
 
 	public function getLanguages() {
 		if ($this->languages===null) {
-			$q=$this->getQuestionLanguage();
-			$a=$this->getAnswerLanguage();
+			$q=$this->getQuestionLanguages();
+			$a=$this->getAnswerLanguages();
 			if (@is_string($q) && @is_string($a)) {
-				return array($q, $a);
+				return array_merge($q, $a);
 			}
+		} else {
+			return $this->languages;
 		}
-		return $this->languages;
 	}
 	
 	public function setLanguages($languages) {
@@ -250,8 +252,8 @@ class Exercise implements Iterator{
 			$collection->appendChild($questionNode);
 		}
 		$newExercise=new Exercise($this->fetcher, $dom, $subset);
-		$newExercise->setQuestionLanguage($this->getQuestionLanguage());
-		$newExercise->setAnswerLanguage($this->getAnswerLanguage());
+		$newExercise->setQuestionLanguages($this->getQuestionLanguages());
+		$newExercise->setAnswerLanguages($this->getAnswerLanguages());
 
 		return $newExercise;
 	}
@@ -292,16 +294,20 @@ class Exercise implements Iterator{
 	/** return question associated with the dmid,
 	 * or throws MissingWordsException if words are missing.
 	 * (I wish I had compile-time checks like in java )
+	 * (you can suppress question consistency checking by setting $selfCheck to false)
 	 */
-	public function getQuestion($dmid) {
+	public function getQuestion($dmid, $selfCheck=true) {
 		if (!is_int($dmid)) 
 			throw new Exception ("Invalid dmid, must be a valid integer");
 
 		$questionNode=$this->getQuestionNode($dmid);
 		$question=new Question($this, $questionNode);
-		$question->setQuestionLanguage($this->getQuestionLanguage());
-		$question->setAnswerLanguage($this->getAnswerLanguage());
-		$question->selfCheck();
+		$question->setQuestionLanguages($this->getQuestionLanguages());
+		$question->setAnswerLanguages($this->getAnswerLanguages());
+
+		if ($selfCheck) 
+			$question->selfCheck();
+
 		return $question;
 	}
 
