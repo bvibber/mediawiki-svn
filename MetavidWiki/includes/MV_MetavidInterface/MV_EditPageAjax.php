@@ -360,7 +360,7 @@
 				unset($wgHooks['EditFilter'][$k]);
 			}
 		}
-		parent::internalAttemptSave( &$result, $bot = false );
+		parent::internalAttemptSave( $result, $bot = false );
 	}	
 	function showEditForm( $formCallback=null ) {
 		global $wgOut, $wgUser, $wgLang, $wgContLang, $wgMaxArticleSize;

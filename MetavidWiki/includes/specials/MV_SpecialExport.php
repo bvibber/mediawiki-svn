@@ -175,15 +175,14 @@ class MV_SpecialExport {
 	    elementFormDefault="qualified"
 	    attributeFormDefault="unqualified">
 
-
 </xs:schema>
 		 */
 		?>			
 <ROE>
 	<head>
-		<link id="html_linkback" rel="alternate" type="text/html" href="<?=htmlentities($this->streamPageTitle->getFullURL() )?>" />
-		<img id="stream_thumb" src="<?=htmlentities($this->mvTitle->getFullStreamImageURL())?>"/>
-		<title><?=htmlentities($this->mvTitle->getTitleDesc())?></title>
+		<link id="html_linkback" rel="alternate" type="text/html" href="<?php echo htmlentities($this->streamPageTitle->getFullURL() )?>" />
+		<img id="stream_thumb" src="<?php echo htmlentities($this->mvTitle->getFullStreamImageURL())?>"/>
+		<title><?php echo htmlentities($this->mvTitle->getTitleDesc())?></title>
 	</head>
 	<body>
 		<track id="v" provides="video">
@@ -197,7 +196,7 @@ class MV_SpecialExport {
 					'start="ntp:'.htmlentities($this->mvTitle->getStartTime()).'"'. 
 					' end="ntp:'.htmlentities($this->mvTitle->getEndTime()).'"':'';				
 			?>
-				<mediaSource id="<?=htmlentities($file->getNameKey())?>"<?=$dAttr?> src="<?=$dSrc?>" title="<?=htmlentities($file->get_desc())?>" content-type="<?=htmlentities($file->getContentType())?>" <?=$startendattr?>/>	
+				<mediaSource id="<?php echo htmlentities($file->getNameKey())?>"<?php echo $dAttr?> src="<?php echo $dSrc?>" title="<?php echo htmlentities($file->get_desc())?>" content-type="<?php echo htmlentities($file->getContentType())?>" <?php echo $startendattr?>/>	
 		<?}?>
 	</switch>
 		</track>
@@ -213,7 +212,7 @@ class MV_SpecialExport {
 					//for now make ht_en the default layer		
 					$default_attr = (strtolower($row->mvd_type)=='ht_en')?'default="true"':'';												
 ?>
-				<mediaSource id="<?=$row->mvd_type?>" title="<?=wfMsg($row->mvd_type)?>" <?=$default_attr?> inline="<?=$inline?>" lang="en" content-type="text/cmml" src="<?=htmlentities($clink)?>">
+				<mediaSource id="<?php echo $row->mvd_type?>" title="<?php echo wfMsg($row->mvd_type)?>" <?php echo $default_attr?> inline="<?php echo $inline?>" lang="en" content-type="text/cmml" src="<?php echo htmlentities($clink)?>">
 <?					//output inline cmml (if requested): 
 					if($inline=='true'){
 						$this->get_stream_cmml(true, $row->mvd_type);
@@ -281,12 +280,12 @@ class MV_SpecialExport {
 		if($encap)print '<cmml_set>';
  	    //based on: http://trac.annodex.net/wiki/CmmlChanges
 		foreach($tracks as $role=>$body_string){ ?>
-					<cmml lang="en" id="<?=$role?>" role="<?=wfMsg($role)?>" xmlns="http://svn.annodex.net/standards/cmml_2_0.dtd">		
-						<<?=$ns?>head>
-							<<?=$ns?>title><?=wfMsg($role)?></<?=$ns?>title>	
-							<<?=$ns?>description><?=htmlentities(wfMsg($role.'_desc'))?></<?=$ns?>description>				
-						</<?=$ns?>head>
-						<?=$body_string?>												
+					<cmml lang="en" id="<?php echo $role?>" role="<?php echo wfMsg($role)?>" xmlns="http://svn.annodex.net/standards/cmml_2_0.dtd">		
+						<<?php echo $ns?>head>
+							<<?php echo $ns?>title><?php echo wfMsg($role)?></<?php echo $ns?>title>	
+							<<?php echo $ns?>description><?php echo htmlentities(wfMsg($role.'_desc'))?></<?php echo $ns?>description>				
+						</<?php echo $ns?>head>
+						<?php echo $body_string?>												
 					</cmml>
 <?
 		}
@@ -446,9 +445,9 @@ class mvRSSFeed extends ChannelFeed{
 	xmlns:dcterms="http://purl.org/dc/terms"
 	xmlns:gm="http://www.google.com/schemas/gm/1.1">
 	<channel>
-	<title><?=$this->getTitle()?></title>
-	<link><?=$this->getUrl()?></link>
-	<description><?=$this->getDescription()?></description>	
+	<title><?php echo $this->getTitle()?></title>
+	<link><?php echo $this->getUrl()?></link>
+	<description><?php echo $this->getDescription()?></description>	
 	<?
 	}
 	function outPutItem($wikiTitle, $desc_html=''){
@@ -483,13 +482,13 @@ class mvRSSFeed extends ChannelFeed{
 		$time_desc = ($mvTitle->getTimeDesc())?$mvTitle->getTimeDesc():'';					
 		?>	
 		<item>
-		<link><?=mvRSSFeed::xmlEncode($mStreamTitle->getFullUrl())?></link>
-		<title><?=mvRSSFeed::xmlEncode(
+		<link><?php echo mvRSSFeed::xmlEncode($mStreamTitle->getFullUrl())?></link>
+		<title><?php echo mvRSSFeed::xmlEncode(
 			$mvTitle->getStreamNameText() . ' ' .  $time_desc)?></title>
-		<description><?=$desc_xml?></description>
-		<enclosure type="video/ogg" url="<?=mvRSSFeed::xmlEncode($stream_url)?>"/>
-		<comments><?=mvRSSFeed::xmlEncode($talkpage->getFullUrl())?></comments>
-		<media:thumbnail url="<?=mvRSSFeed::xmlEncode($thumb_ref)?>"/>
+		<description><?php echo $desc_xml?></description>
+		<enclosure type="video/ogg" url="<?php echo mvRSSFeed::xmlEncode($stream_url)?>"/>
+		<comments><?php echo mvRSSFeed::xmlEncode($talkpage->getFullUrl())?></comments>
+		<media:thumbnail url="<?php echo mvRSSFeed::xmlEncode($thumb_ref)?>"/>
 		<? /*todo add in alternate streams HQ, lowQ archive.org etc: 
 		<media:group>
     		<media:content blip:role="Source" expression="full" fileSize="2702848" height="240" isDefault="true" type="video/msvideo" url="http://blip.tv/file/get/Conceptdude-EroticDanceOfANiceBabe266.avi" width="360"></media:content>

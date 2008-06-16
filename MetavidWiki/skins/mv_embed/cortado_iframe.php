@@ -68,7 +68,7 @@ function output_page($error=''){
 	<title>cortado_embed</title>
 	<?if($parent_domain){?>
 	<script type="text/javascript">
-		window.DOMAIN = '<?=$parent_domain?>';
+		window.DOMAIN = '<?php echo $parent_domain?>';
 	</script>
 	<?}?>
 	<style type="text/css">
@@ -83,22 +83,22 @@ function output_page($error=''){
 	</style></head>
 	<body>
 	<?if ($error==''){ ?>
-		<applet id="<?=$id?>" code="com.fluendo.player.Cortado.class" archive="cortado-ovt-stripped_r34336.jar" width="<?=$width?>" height="<?=$height?>">
-			<param name="url" value="<?=$media_url?>" />
+		<applet id="<?php echo $id?>" code="com.fluendo.player.Cortado.class" archive="cortado-ovt-stripped_r34336.jar" width="<?php echo $width?>" height="<?php echo $height?>">
+			<param name="url" value="<?php echo $media_url?>" />
 			<param name="local" value="false"/>
 			<param name="keepaspect" value="true" />
-			<param name="video" value="<?=$audio?>" />
-			<param name="audio" value="<?=$video?>" />
+			<param name="video" value="<?php echo $audio?>" />
+			<param name="audio" value="<?php echo $video?>" />
 			<param name="seekable" value="true" />
 			<? if($duration!=0){
 				?>
-				<param name="duration" value="<?=$duration?>" />
+				<param name="duration" value="<?php echo $duration?>" />
 				<?
 			 } ?>
 			<param name="bufferSize" value="200" />
 		</applet>
 	<? }else{ ?>
-		<b>Error:</b> <?=$error?>	
+		<b>Error:</b> <?php echo $error?>	
 	<?
 	}
 	?>

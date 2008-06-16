@@ -16,27 +16,27 @@ $mvextension_path = $wgScriptPath.'/extensions/MetavidWiki';
 	<meta name="keywords" content="" />
 	<meta name="description" content="" />
 	<meta name="robots" content="all" />
-	<link rel="stylesheet" href="<?=$skin_path?>/style.css" type="text/css" media="screen" />
+	<link rel="stylesheet" href="<?php echo $skin_path?>/style.css" type="text/css" media="screen" />
 	<!--[if lt IE 7]>
-	<link rel="stylesheet" href="<?=$skin_path?>/ie_styles.css" type="text/css" media="screen" />
+	<link rel="stylesheet" href="<?php echo $skin_path?>/ie_styles.css" type="text/css" media="screen" />
 	<![endif]-->	
 	<script type= "text/javascript">/*<![CDATA[*/
-var wgScriptPath = "<?=$wgScriptPath?>";
-var wgScript = "<?=$wgScript ?>";
-var wgServer = "<?=$wgServer ?>";
+var wgScriptPath = "<?php echo $wgScriptPath?>";
+var wgScript = "<?php echo $wgScript ?>";
+var wgServer = "<?php echo $wgServer ?>";
 /*]]>*/</script>
-<script type="text/javascript" src="<?=$mvextension_path?>/skins/mv_embed/mv_embed.js"></script>	
-<script type="text/javascript" src="<?=$mvextension_path?>/skins/mv_embed/jquery/jquery-1.2.1.js"></script>
-<script type="text/javascript" src="<?=$mvextension_path?>/skins/mv_embed/jquery/plugins/jquery.autocomplete.js"></script>
-<script type="text/javascript" src="<?=$mvextension_path?>/skins/mv_embed/jquery/plugins/jquery.hoverIntent.js"></script>
+<script type="text/javascript" src="<?php echo $mvextension_path?>/skins/mv_embed/mv_embed.js"></script>	
+<script type="text/javascript" src="<?php echo $mvextension_path?>/skins/mv_embed/jquery/jquery-1.2.1.js"></script>
+<script type="text/javascript" src="<?php echo $mvextension_path?>/skins/mv_embed/jquery/plugins/jquery.autocomplete.js"></script>
+<script type="text/javascript" src="<?php echo $mvextension_path?>/skins/mv_embed/jquery/plugins/jquery.hoverIntent.js"></script>
 
-<script type="text/javascript" src="<?=$mvextension_path?>/skins/mv_allpages.js"></script>
+<script type="text/javascript" src="<?php echo $mvextension_path?>/skins/mv_allpages.js"></script>
 </head>
 <body id="frontPage">
 	<div id="metaLogin"><a href="#">login / create account</a></div>
 	<div id="frontPageTop">
 		<div id="searchSplash">
-			<div class="logo"><a href="#"><img src="<?=$skin_path?>/images/logo.png" alt="Metavid" /></a></div>
+			<div class="logo"><a href="#"><img src="<?php echo $skin_path?>/images/logo.png" alt="Metavid" /></a></div>
 			<p class="tagline">The Open Video archive of the US Congress</p>
 			
 			<div class="form_search_row">
@@ -74,7 +74,7 @@ var wgServer = "<?=$wgServer ?>";
 		<ul class="popularClips">
 			<li>
 
-				<img src="<?=$skin_path ?>/images/img1.jpg" alt="Clip Image" />
+				<img src="<?php echo $skin_path ?>/images/img1.jpg" alt="Clip Image" />
 				<span class="title"><a href="#">Sen. Barack Obama (D-IL)</a></span>
 				<span class="description">Senate Floor - June 3, 2008</span>
 				<span class="keywords">keywords: <a href="#">war</a>, <a href="#">iraq</a>, <a href="#">budget</a></span>
@@ -82,7 +82,7 @@ var wgServer = "<?=$wgServer ?>";
 
 			
 			<li>
-				<img src="<?=$skin_path ?>/images/img1.jpg" alt="Clip Image" />
+				<img src="<?php echo $skin_path ?>/images/img1.jpg" alt="Clip Image" />
 				<span class="title"><a href="#">Sen. Barack Obama (D-IL)</a></span>
 				<span class="description">Senate Floor - June 3, 2008</span>
 				<span class="keywords">keywords: <a href="#">war</a>, <a href="#">iraq</a>, <a href="#">budget</a></span>
@@ -90,7 +90,7 @@ var wgServer = "<?=$wgServer ?>";
 			</li>
 			
 			<li>
-				<img src="<?=$skin_path ?>/images/img1.jpg" alt="Clip Image" />
+				<img src="<?php echo $skin_path ?>/images/img1.jpg" alt="Clip Image" />
 				<span class="title"><a href="#">Sen. Barack Obama (D-IL)</a></span>
 				<span class="description">Senate Floor - June 3, 2008</span>
 				<span class="keywords">keywords: <a href="#">war</a>, <a href="#">iraq</a>, <a href="#">budget</a></span>
@@ -98,7 +98,7 @@ var wgServer = "<?=$wgServer ?>";
 			</li>
 			
 			<li class="last_li">
-				<img src="<?=$skin_path ?>/images/img1.jpg" alt="Clip Image" />
+				<img src="<?php echo $skin_path ?>/images/img1.jpg" alt="Clip Image" />
 				<span class="title"><a href="#">Sen. Barack Obama (D-IL)</a></span>
 				<span class="description">Senate Floor - June 3, 2008</span>
 				<span class="keywords">keywords: <a href="#">war</a>, <a href="#">iraq</a>, <a href="#">budget</a></span>

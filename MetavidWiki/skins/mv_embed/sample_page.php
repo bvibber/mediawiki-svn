@@ -100,11 +100,11 @@ $sample_embed[6]['desc'] = '<b>Inline Playlist:</b> for more info see <a href="h
   		if($key>=3)continue;	
   	 ?>
 	    <tr>    	
-	      <td><?=$aval['tag']?></td>
-	      <td valign="top"><b>Sample Embed <?=$key?></b><br />
-	      <?=$aval['desc']?><br />
+	      <td><?php echo $aval['tag']?></td>
+	      <td valign="top"><b>Sample Embed <?php echo $key?></b><br />
+	      <?php echo $aval['desc']?><br />
 	      &lt;-- code used: <br />
-	     <pre> <?= htmlentities($aval['tag'])?></pre>
+	     <pre> <?php echo  htmlentities($aval['tag'])?></pre>
 	      </td>
 	    </tr>
 	    <? //oput a seperator between video and playlist
