@@ -42,7 +42,7 @@ class MediaWikiConverter {
 		}
 		$xml = '<article' ;
 		if ( $title != "" ) {
-			$xml .= " title='{$title}'" ;
+			$xml .= ' title="' . htmlspecialchars( $title ) '"' ;
 			$content_provider->add_article ( urldecode ( $ot ) ) ;
 		}
 		$xml .= '>' ;
