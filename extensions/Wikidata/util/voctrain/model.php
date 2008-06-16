@@ -92,7 +92,7 @@ public $view;
 
 	/** create a new Exercise from scratch.
 	# */
-	public function createExercise($userName, $size, $collection_id, $questionLanguages, $answerLanguages) {
+	public function createExercise($userName, $size, $collection_id, $questionLanguages, $answerLanguages, $hide) {
 
 		#this can be simplified for now...
 		# first get a master exercise...
@@ -107,7 +107,8 @@ public $view;
 		$exercise=new Exercise($fetcher,$fullSet);
 		$exercise->setQuestionLanguages($questionLanguages);
 		$exercise->setAnswerLanguages($answerLanguages);
-	
+		$exercise->setHide($hide);
+
 		# This is the master exercise... which we should now store and 
 		# worship. That's for mark II though. 
 		# Today we toss it in the trash and just snarf a

@@ -4,6 +4,7 @@ require_once("settings.php");
 require_once("i18n/language.php");
 
 $header_printed=false;
+
 /** This shouldn't be here at all but PEAR:Auth hates me.
  * see also: Controller::__construct() , Controller::login() , Controller::logout()
  */
@@ -128,6 +129,12 @@ class View {
 		<div class='datarow'><input type='text' size='4' value='' name='exercise_size_other'>other</div><br/>
 		</fieldset>
 		</p>
+		<h2><|hiding|></h2>
+		<fieldset class='settings'>
+		<div class='datarow'><input type='checkbox' value='hide_definition' name='hide_definition' /><label><|hide definitions in question language|></label></div><br/>
+		<div class='datarow'><input type='checkbox' value='hide_words' name='hide_words' /><label><|hide words in question language|></label></div><br/>
+		</fieldset>
+		</p>
 		</fieldset>
 		<h2><|Languages|></h2>
 		<fieldset class='settings'>
@@ -170,12 +177,8 @@ class View {
 		return $select;
 	}
 
-	public function peek_at($exercise, $question) {
-		$this->ask($exercise, true, $question);	
-	}
-
 	/** ask a question  (or peek at it)*/
-	public function ask($exercise, $peek=false, $question=null) { #throws NoMoreQuestionsException
+	public function ask($exercise, $peek=false, $question=null, $unhides=array()) { #throws NoMoreQuestionsException
 		if ($question===null) {
 			$question=$exercise->nextQuestion();
 		}
@@ -185,40 +188,67 @@ class View {
 		$questions_remaining=$exercise->countQuestionsRemaining();
 		$questions_total=$exercise->countQuestionsTotal();
 		$answers=implode(", ",$question->getAnswers());
+		$hides=$exercise->getHide();
 
 		$this->language->i18nprint(
 			"<form method='post' action='?action=run_exercise'>
 			<|There are %questions_remaining questions remaining, out of a total of %questions_total.|>
 			<h1><|Question|></h1>
-			<hr>
-			<h2><|Word|></h2>
-			<p class='result'>
-			<i><|The word to translate|>:</i><br/>
-			$words
-			</p>
-			<hr>
-			<h2><|Definition|></h2>
-			<p class='result'>
-			<i><|Dictionary definition to help you|>:</i><br/>
-			$definitions 
-			</p>
-			<hr>
-
-			<input type='hidden' name='questionDmid' value='$questionDmid'/>
-			<h2><|Answer|></h2>
-			<fieldset class='settings'>", array(
+			<hr>", 
+			array(
 				"questions_remaining"=>$questions_remaining,
 				"questions_total"=>$questions_total
-			));
-			if ($peek) {
-				$this->language->i18nprint("
-					<i><|peek|>:</i>$answers<br/>");
-			} else {
-				$this->language->i18nprint("
-					<input type='submit' value='(<|peek|>)' name='peek' /><br/>
-					");
-			}
+			)
+		);
+
+		if (in_array("words",$hides) 
+			&& !(array_key_exists("words",$unhides) 
+			&& $unhides["words"]==$questionDmid)) {
 			$this->language->i18nprint("
+				<input type='submit' value='<|unhide words|>' name='unhide_words_button' />
+			");
+		} else {
+			$this->language->i18nprint("
+				<input type='hidden' name='unhide_words' value='$questionDmid'/>
+				<h2><|Word|></h2>
+				<p class='result'>
+				<i><|The word to translate|>:</i><br/>
+				$words
+				</p>
+			");
+		}
+		if (in_array("definition",$hides) 
+			&& !(array_key_exists("definition",$unhides) 
+			&& $unhides["definition"]==$questionDmid)) {
+			$this->language->i18nprint("
+				<input type='submit' value='<|unhide definition|>' name='unhide_definition_button' />
+			");
+		} else {
+			$this->language->i18nprint("
+				
+				<input type='hidden' name='unhide_definition' value='$questionDmid'/>
+				<h2><|Definition|></h2>
+				<p class='result'>
+				<i><|Dictionary definition to help you|>:</i><br/>
+				$definitions 
+				</p>
+			");
+		}
+		$this->language->i18nprint("
+			<input type='hidden' name='questionDmid' value='$questionDmid'/>
+			<h2><|Answer|></h2>
+			<fieldset class='settings'>");
+
+		if ($peek) {
+			$this->language->i18nprint("
+				<i><|peek|>:</i>$answers<br/>");
+		} else {
+			$this->language->i18nprint("
+				<input type='submit' value='(<|peek|>)' name='peek' /><br/>
+			");
+		}
+
+		$this->language->i18nprint("
 			<i><|Please type your answer here|></i><br/>
 
 			<input type='text' value='' name='userAnswer' />

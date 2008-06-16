@@ -61,6 +61,7 @@ class Controller {
 		
 		$logged_in=$this->auth->checkAuth();
 		if ($logged_in) {
+			#var_dump($_REQUEST);
 			/* actions available to logged in users */
 			if (in_array($action,array(
 				"hello",
@@ -161,27 +162,34 @@ class Controller {
 		if (isset($_REQUEST['answerLanguages'])) {
 			$answerLanguages=Util::array_trim(explode(",",$_REQUEST['answerLanguages']));
 		}
+		
+		$hide=array();
+		if (isset($_REQUEST['hide_definition']))
+			$hide[]="definition";
+
+		if (isset($_REQUEST['hide_words']))
+			$hide[]="words";
 
 		if (isset($_REQUEST["defaultCollection"]))
 			$defaultCollection=(int) $_REQUEST["defaultCollection"];
 		
 		if (isset($_REQUEST['exercise_size']) ) {
 			return $this->model->createExercise(
-					$this->auth->getUsername(),
+					$user,
 					(int) $_REQUEST['exercise_size'],
 					(int) $_REQUEST['collection'],
 					$questionLanguages,
 					$answerLanguages,
-					$user
+					$hide
 				);
 		} elseif (isset($_REQUEST['exercise_size_other']) && is_int($_REQUEST['exercise_size_other']) ) {
 			return $this->model->createExercise(
-					$this->auth->getUsername(),
+					$user,
 					(int) $_REQUEST['exercise_size_other'],
 					(int) $_REQUEST['collection'],
 					$questionLanguages,
 					$answerLanguages,
-					$user
+					$hide
 				);
 		} else {
 			$collectionList=$this->model->collectionList();
@@ -194,6 +202,9 @@ class Controller {
 	/** Most used part of the program. Performs the actual excercise
 	 * question and answer session, until exercise is complete()-d . */
 	public function run_exercise($continue=false) {
+		$peek=false;
+		$question=null;
+
 		# obtain an exercise
 		$userName=$this->auth->getUsername();
 		$exercise=$this->model->getExercise($userName);
@@ -201,7 +212,26 @@ class Controller {
 			$exercise=$this->create_exercise();
 			#$continue=true;
 		}
-		
+
+		# deal with unhides
+		$unhides=array();
+		if (isset($_REQUEST['unhide_words'])) {
+			if (!isset($_REQUEST['questionDmid']))
+				throw new Exception("Answer submitted, but no dmid integer supplied");
+			if ($_REQUEST['questionDmid']==$_REQUEST['unhide_words'])
+				$unhides["words"]=(int) $_REQUEST['questionDmid'];
+		}
+
+		if (isset($_REQUEST['unhide_definition'])) {
+			if (!isset($_REQUEST['questionDmid']))
+				throw new Exception("Answer submitted, but no dmid integer supplied");
+
+			if ($_REQUEST['questionDmid']==$_REQUEST['unhide_definition'])
+				$unhides["definition"]=(int) $_REQUEST['questionDmid'];
+		}
+
+		# deal with buttons.
+
 		if (isset($_REQUEST['submitAnswer'])) { #User submitted answer
 			if (!isset($_REQUEST['questionDmid']))
 				throw new Exception("Answer submitted, but no dmid integer supplied");
@@ -222,8 +252,21 @@ class Controller {
 			#$question=$exercise->getQuestion((int) $_REQUEST['questionDmid']);
 			#$this->view->answer($question, null);
 			#$this->model->saveExercise($exercise,$userName);
-			
-			$this->view->peek_at($exercise, $question);
+			$peek=true;
+			$continue=true;
+		} elseif (isset($_REQUEST['unhide_words_button'])) { # unhide words
+			if (!isset($_REQUEST['questionDmid']))
+				throw new Exception("Answer submitted, but no dmid integer supplied");
+			$question=$exercise->getQuestion((int) $_REQUEST['questionDmid']);
+			$unhides["words"]=(int) $_REQUEST['questionDmid'];
+			$continue=true;
+
+		} elseif (isset($_REQUEST['unhide_definition_button'])) { # unhide definitions
+			if (!isset($_REQUEST['questionDmid']))
+				throw new Exception("Answer submitted, but no dmid integer supplied");
+			$question=$exercise->getQuestion((int) $_REQUEST['questionDmid']);
+			$unhides["definition"]=(int) $_REQUEST['questionDmid'];
+			$continue=true;
 
 		} elseif (isset($_REQUEST['skip'])) {# Skip this question for now
 			$continue=true;
@@ -236,8 +279,8 @@ class Controller {
 
 		} elseif (isset($_REQUEST['list_answers'])) { # list all answers. can be slow.
 
-			# Exercise objects implement caching and lazy lookup. Since we're basically
-			# looking everything up ANYWAY,  we might as well cache iti too. :-P
+			# Exercise objects implement caching and lazy lookup.  When we list _everything_, we need
+			# to look up everything ANYWAY,  so we might as well cache it all too. :-P
 
 			#iterating is currently a destructive operation (oops), so save and restore exercise state...
 			$state=$exercise->getCurrentSubset();
@@ -261,7 +304,7 @@ class Controller {
 
 		if ($continue) { # Let's go ahead and ask the next question
 			try {
-				$this->view->ask($exercise, $peek);
+				$this->view->ask($exercise, $peek, $question, $unhides);
 			} catch (NoMoreQuestionsException $We_Are_Done) {
 				$this->complete($exercise);
 			}

@@ -92,7 +92,13 @@ $messages['en'] = array(
 	"voctrain_Vocview"=>"Vocabulary viewer",
 	"voctrain_word"=>"word",
 	"voctrain_Dictionary_definitions"=> "dictionary_definitions",
-	"voctrain_Translation"=> "Translation"
+	"voctrain_Translation"=> "Translation",
+	"voctrain_unhide_definition"=>"unhide definition",
+	"voctrain_unhide_words"=>"unhide words",
+	"voctrain_hiding"=>"Hiding",
+	"voctrain_hide_definitions_in_question_language"=>"Hide definitions in question language",
+	"voctrain_hide_words_in_question_language"=>"Hide words in question language",
+	"voctrain_Separate_values_by_commas_to_use_multiple_languages_"=>"Separate values by commas to use multiple languages."
 );
 
 /** Message documentation */

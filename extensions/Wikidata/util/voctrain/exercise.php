@@ -42,6 +42,7 @@ class Exercise implements Iterator{
 	private $questionLanguages;
 	private $answerLanguages;
 	private $id;	#exercise id in database
+	private $hide=array();
 
 	/**
 	 * @param $fetcher class for retrieving xml for questions from some source
@@ -167,6 +168,15 @@ class Exercise implements Iterator{
 		return $this->_getQuestionNode($dmid,$this->fullSet,0);
 	}
 
+	public function getHide() {
+		return $this->hide;
+	}
+
+	public function setHide($hide) {
+		$this->hide=$hide;
+	}
+
+
 	# ==  All other methods 
 
 	/**
@@ -254,6 +264,7 @@ class Exercise implements Iterator{
 		$newExercise=new Exercise($this->fetcher, $dom, $subset);
 		$newExercise->setQuestionLanguages($this->getQuestionLanguages());
 		$newExercise->setAnswerLanguages($this->getAnswerLanguages());
+		$newExercise->setHide($this->getHide());
 
 		return $newExercise;
 	}
@@ -426,9 +437,53 @@ class Exercise implements Iterator{
 		$this->currentSubset=$subset;
 	}
 
+	/** store hides data in current dom tree */
+	private function put_hides_in_dom() {
+		if ($this->fullSet===null)
+			throw new NotInitializedException("no fullSet available");
+
+		$dom=$this->fullSet;
+		$hides=$dom->createElement('hides');
+		foreach ($this->getHide() as $hide) {
+			$hide_element=$dom->createElement('hide',"$hide");
+			$hides->appendChild($hide_element);
+		}
+
+		$xpath=new domxpath($dom);
+		$hides2=$xpath->query("/collection/hides");
+		if ($hides2->length>0) {
+			$oldHides=$hides2->item(0);
+			$oldHides->parentNode->replaceChild($hides, $oldHides);
+		} else {
+			$collection_s=$dom->getElementsByTagName("collection");
+			$collection=$collection_s->item(0);
+			$collection->appendChild($hides);
+		}
+	}
+
+	/** retrieve previously stored hides data from dom tree */
+	private function retrieve_hides_from_dom() {
+		$dom=$this->fullSet;
+		$xpath=new domxpath($dom);
+		$nodes=$xpath->query("/collection/hides/hide");
+		if ($nodes->length>0) {
+			$hides=array();
+			foreach ($nodes as $node) {
+				$hides[]=$node->nodeValue;
+			}
+		} else {
+			$hides=array(); 
+		}
+
+		$this->setHide($hides);
+	}
+
+
+
 	/** provide an xml dump (this is not sufficient data to fully persist this Exercise) */
 	public function saveXML() {
 		$this->put_subset_in_dom();
+		$this->put_hides_in_dom();
 		$this->fullSet->normalizeDocument();
 		return $this->fullSet->saveXML();
 	}
@@ -443,6 +498,7 @@ class Exercise implements Iterator{
 		$this->fullSet=new DOMDOcument();
 		$this->fullSet->loadXML($xmlString);
 		$this->retrieve_subset_from_dom();
+		$this->retrieve_hides_from_dom();
 	}
 
 }
