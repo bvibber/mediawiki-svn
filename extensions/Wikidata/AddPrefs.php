@@ -38,8 +38,6 @@ function wfOverridePreferences(&$list)
  
 function wfSpecialPreferencesExtension()
 {
-    require_once('SpecialPreferences.php');
- 
     // override the default preferences form
     class SpecialPreferencesExtension extends PreferencesForm
     {

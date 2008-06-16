@@ -44,10 +44,6 @@ function wfMultipleUpload() {
 }
 
 /**
- *
- */
-require_once 'SpecialUpload.php';
-/**
  * Entry point
  */
 function wfSpecialMultipleUpload() {
