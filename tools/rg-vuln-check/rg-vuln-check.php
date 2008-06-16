@@ -127,8 +127,11 @@ class ClassicVulnerabilityCheck {
 			return false;
 		}
 
-		// Need to do each global separately because some globals will 
-		// generate a fatal when set to a string, masking the vulnerability
+		// Try with all globals together
+		$this->invoke( $filename, $globals );
+
+		// Try with each global separately. 
+		// Some globals generate a fatal when set to a string, masking the vulnerability
 		$ret = true;
 		for ( $level = 1; $level <= $this->combinations; $level++ ) {
 			if ( !$this->invokeCombinations( $filename, $globals, $level ) ) {
@@ -194,12 +197,12 @@ class ClassicVulnerabilityCheck {
 		$globalString = implode( '+', $globals );
 		foreach ( $globals as $i => $global ) {
 			if ( strpos( $html, "TEST_GLOBAL_$i<>" ) ) {
-				echo "$filename XSS VULNERABILITY $globalString\n";
+				echo "$filename XSS VULNERABILITY $global\n";
 				$ret = false;
 			}
 			foreach ( $lines as $line ) {
 				if ( preg_match( "/TEST_GLOBAL_$i.*failed to open stream/", $line ) ) {
-					echo "$filename INCLUSION VULNERABILITY $globalString\n";
+					echo "$filename INCLUSION VULNERABILITY $global\n";
 					$ret = false;
 				}
 			}
