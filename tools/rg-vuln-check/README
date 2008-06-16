@@ -21,3 +21,11 @@ in the code you are testing. It might be open_basedir/safemode, chroot CGI or
 a firewalled virtual server. The configuration variables register_globals and 
 display_errors must be enabled for the tester to work, and open_basedir is 
 recommended.
+
+To compile parsekit for a recent version of PHP, use the CVS HEAD version, plus 
+this patch (assuming it's not committed yet):
+
+http://pecl.php.net/bugs/bug.php?id=14136
+
+The CVSROOT is :pserver:cvsread@cvs.php.net:/repository, password phpfi, module 
+pecl/parsekit.

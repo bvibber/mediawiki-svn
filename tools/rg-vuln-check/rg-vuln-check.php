@@ -17,9 +17,14 @@ if ( !defined( 'RGVULN_INC' ) ) {
 		$options['opcodes'] = true;
 		$argv = array_diff( $argv, array( '--opcodes' ) );
 	}
+	if ( in_array( '--pairs', $argv ) ) {
+		$options['combinations'] = 2;
+		$argv = array_diff( $argv, array( '--pairs' ) );
+	}
+
 
 	if ( count( $argv ) <= 1 ) {
-		echo "Usage: php {$argv[0]} [-v] [--opcodes] <filename> [<filename> ...]\n";
+		echo "Usage: php {$argv[0]} [-v] [--opcodes] [--pairs] <filename> [<filename> ...]\n";
 		exit( 1 );
 	}
 
@@ -64,6 +69,11 @@ class ClassicVulnerabilityCheck {
 	 * Dump parsekit output
 	 */
 	var $opcodes = false;
+
+	/**
+	 * Try all combinations of this many globals
+	 */
+	var $combinations = 1;
 
 	function __construct( $options = array() ) {
 		foreach ( $options as $name => $value ) {
@@ -117,42 +127,81 @@ class ClassicVulnerabilityCheck {
 			return false;
 		}
 
-		$ret = true;
-
 		// Need to do each global separately because some globals will 
 		// generate a fatal when set to a string, masking the vulnerability
-		foreach ( $globals as $i => $global ) {
-			$url = $this->jailUrl . substr( $filename, strlen( $this->jailDir ) ) . '?';
-			$url .= urlencode( $global ) . '=' . urlencode( "/TEST_GLOBAL_$i<>" );
-			if ( $this->verbose ) {
-				echo "Fetching $url\n";
-			}
-
-			$curl = curl_init( $url );
-			curl_setopt( $curl, CURLOPT_RETURNTRANSFER, true );
-			$html = curl_exec( $curl );
-			$lines = explode( "\n", $html );
-
-			if ( $this->verbose ) {
-				echo str_repeat( '-', 76 );
-				echo "\n$html\n";
-				echo str_repeat( '-', 76 ) . "\n";
-			}
-			
-			if ( strpos( $html, "TEST_GLOBAL_$i<>" ) ) {
-				echo "$filename XSS VULNERABILITY \$$global\n";
+		$ret = true;
+		for ( $level = 1; $level <= $this->combinations; $level++ ) {
+			if ( !$this->invokeCombinations( $filename, $globals, $level ) ) {
 				$ret = false;
-			}
-			foreach ( $lines as $line ) {
-				if ( preg_match( "/TEST_GLOBAL_$i.*failed to open stream/", $line ) ) {
-					echo "$filename INCLUSION VULNERABILITY \$$global\n";
-					$ret = false;
-				}
 			}
 		}
 		if ( $ret ) {
 			if ( $this->verbose ) {
 				echo "$filename SECURE\n";
+			}
+		}
+		return $ret;
+	}
+
+	function invokeCombinations( $filename, $globals, $level, $fixedGlobals = array() ) {
+		$ret = true;
+		if ( $level <= 1 ) {
+			foreach ( $globals as $global ) {
+				if ( !$this->invoke( $filename, array_merge( $fixedGlobals, array( $global ) ) ) ) {
+					$ret = false;
+				}
+			}
+		} else {
+			foreach ( $globals as $global ) {
+				$newFixedGlobals = array_merge( $fixedGlobals, array( $global ) );
+				$newGlobals = array_diff( $globals, array( $global ) );
+				if ( !$this->invokeCombinations( $filename, $newGlobals, $level - 1, $newFixedGlobals ) ) {
+					$ret = false;
+				}
+			}
+		}
+		return $ret;
+	}
+
+	function invoke( $filename, $globals ) {
+		$url = $this->jailUrl . substr( $filename, strlen( $this->jailDir ) );
+		$first = true;
+		foreach ( $globals as $i => $global ) {
+			if ( $first ) {
+				$first = false;
+				$url .= '?';
+			} else {
+				$url .= '&';
+			}
+			$url .= urlencode( $global ) . '=' . urlencode( "/TEST_GLOBAL_$i<>" );
+		}
+		if ( $this->verbose ) {
+			echo "Fetching $url\n";
+		}
+
+		$curl = curl_init( $url );
+		curl_setopt( $curl, CURLOPT_RETURNTRANSFER, true );
+		$html = curl_exec( $curl );
+		$lines = explode( "\n", $html );
+
+		if ( $this->verbose ) {
+			echo str_repeat( '-', 76 );
+			echo "\n$html\n";
+			echo str_repeat( '-', 76 ) . "\n";
+		}
+
+		$ret = true;
+		$globalString = implode( '+', $globals );
+		foreach ( $globals as $i => $global ) {
+			if ( strpos( $html, "TEST_GLOBAL_$i<>" ) ) {
+				echo "$filename XSS VULNERABILITY $globalString\n";
+				$ret = false;
+			}
+			foreach ( $lines as $line ) {
+				if ( preg_match( "/TEST_GLOBAL_$i.*failed to open stream/", $line ) ) {
+					echo "$filename INCLUSION VULNERABILITY $globalString\n";
+					$ret = false;
+				}
 			}
 		}
 		return $ret;
