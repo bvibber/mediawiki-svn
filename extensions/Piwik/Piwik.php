@@ -14,7 +14,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 
 $wgExtensionCredits['specialpage'][] = array(
 	'name'           => 'Piwik Integration',
-	'version'        => '0.2.2rev0.5 Beta',
+	'version'        => '0.2.3rev0.6 Beta',
 	'svn-date'       => '$LastChangedDate$',
 	'svn-revision'   => '$LastChangedRevision$',
 	'author'         => 'isb1009',
@@ -40,7 +40,7 @@ function efAddPiwik() {
 	global $wgPiwikIDSite, $wgPiwikURL, $wgPiwikIgnoreSysops, $wgPiwikIgnoreBots, $wgUser, $wgScriptPath, $wgPiwikCustomJS;
 	if (!$wgUser->isAllowed('bot') || !$wgPiwikIgnoreBots) {
 		if (!$wgUser->isAllowed('protect') || !$wgPiwikIgnoreSysops) {
-			if ( !empty($wgPiwikIDSite) AND !empty($wgPiwikURLpiwikjs) AND !empty($wgPiwikURLpiwikphp)) {
+			if ( !empty($wgPiwikIDSite) AND !empty($wgPiwikURL)) {
 				$funcOutput = <<<PIWIK
 <!-- Piwik -->
 <a href="http://piwik.org" title="Web analytics" onclick="window.open(this.href);return(false);">
