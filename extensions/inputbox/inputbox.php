@@ -27,6 +27,8 @@ if ( defined( 'MW_SUPPORTS_PARSERFIRSTCALLINIT' ) ) {
 $wgExtensionCredits['parserhook'][] = array(
 	'name'           => 'Inputbox',
 	'author'         => array( 'Erik Moeller', 'Leonardo Pimenta', 'Rob Church' ),
+	'svn-date'       => '$LastChangedDate$',
+	'svn-revision'   => '$LastChangedRevision$',
 	'url'            => 'http://www.mediawiki.org/wiki/Extension:Inputbox',
 	'description'    => 'Allow inclusion of predefined HTML forms.',
 	'descriptionmsg' => 'inputbox-desc',
