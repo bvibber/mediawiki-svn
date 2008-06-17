@@ -13,8 +13,9 @@
  
 if (!defined('MEDIAWIKI')) die();
  
-global $IP;
-require_once( "$IP/includes/SpecialPage.php" );
+//not need should autoload
+//global $IP;
+//require_once( "$IP/includes/SpecialPage.php" );
 
 function doSpecialAddStream() {
 	$MV_SpecialAddStream = new MV_SpecialCRUDStream('add');

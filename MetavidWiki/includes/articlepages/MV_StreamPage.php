@@ -11,9 +11,6 @@
  */
  //make sure we have the mvStream class (which extends article):
 if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
- 
-global $mvgIP;
-require_once($mvgIP . '/includes/MV_Stream.php');
 
 /*
  * process the Metavid page request and creates objects

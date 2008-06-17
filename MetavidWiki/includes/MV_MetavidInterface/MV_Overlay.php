@@ -88,8 +88,8 @@ $smwgShowFactbox=SMW_FACTBOX_HIDDEN;
 		return $out;
 	}
 	function load_transcripts(){
-		global $mvgIP;
-		require_once($mvgIP . '/includes/MV_Index.php');
+		//global $mvgIP;
+		//require_once($mvgIP . '/includes/MV_Index.php');
 		$dbr =& wfGetDB(DB_SLAVE);	
 		$result = & MV_Index::getMVDInRange($this->mv_interface->article->mvTitle->getStreamId(), 
 							$this->mv_interface->article->mvTitle->getStartTimeSeconds(), 

@@ -41,8 +41,8 @@ class MVAdmin extends SpecialPage {
 
 	public function execute($par = null) {
 		global $IP, $mvgIP;
-		require_once($IP . '/includes/SpecialPage.php' );
-		require_once($IP . '/includes/Title.php' );
+		//require_once($IP . '/includes/SpecialPage.php' );
+		//require_once($IP . '/includes/Title.php' );
 	
 		global $wgOut, $wgRequest;
 		global $wgServer; // "http://www.yourserver.org"
