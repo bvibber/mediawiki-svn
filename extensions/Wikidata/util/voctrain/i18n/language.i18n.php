@@ -90,7 +90,6 @@ $messages['en'] = array(
 	"voctrain_Could_not_create_new_user"=>"Could not create new user",
 	"voctrain_Type_a_username_and_optional_password_or_try_a_different_username_"=>"Type a username and optional password, (or try a different username)",
 	"voctrain_Vocview"=>"Vocabulary viewer",
-	"voctrain_word"=>"word",
 	"voctrain_Dictionary_definitions"=> "dictionary_definitions",
 	"voctrain_Translation"=> "Translation",
 	"voctrain_unhide_definition"=>"unhide definition",
