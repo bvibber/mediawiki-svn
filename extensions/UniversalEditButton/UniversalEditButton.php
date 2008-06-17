@@ -23,7 +23,7 @@ function efUniversalEditLink( $output ) {
 		$output->addLink(
 			array(
 				'rel' => 'alternate',
-				'type' => 'application/wiki',
+				'type' => 'application/x-wiki',
 				'title' => wfMsg( 'edit' ),
 				'href' => $wgTitle->getFullURL( 'action=edit' ) ) );
 	}
