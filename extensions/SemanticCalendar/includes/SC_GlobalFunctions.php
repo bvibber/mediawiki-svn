@@ -7,7 +7,7 @@
 
 if (!defined('MEDIAWIKI')) die();
 
-define('SC_VERSION','0.2.4');
+define('SC_VERSION','0.2.5');
 
 // constants for special properties
 
@@ -143,8 +143,9 @@ function scfGetEvents_1_0($date_property, $filter_query) {
 	include_once($smwgIP . "/includes/SMW_QueryProcessor.php");
 	$events = array();
 	$query_string = "[[$date_property::*]][[$date_property::+]]$filter_query";
-	$params = array();
-	$inline = true;
+	// set a limit sufficiently close to infinity
+	$params = array('limit' => 100000);
+	$inline = false;
 	$format = 'auto';
 	$printlabel = "";
 	$printouts[] = new SMWPrintRequest(SMW_PRINT_THIS, $printlabel);
