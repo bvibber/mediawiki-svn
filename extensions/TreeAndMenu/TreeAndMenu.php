@@ -14,7 +14,7 @@
 
 if (!defined('MEDIAWIKI')) die('Not an entry point.');
 
-define('TREEANDMENU_VERSION','1.0.4, 2008-06-08');
+define('TREEANDMENU_VERSION','1.0.5, 2008-06-15');
 
 # Set any unset images to default titles
 if (!isset($wgTreeViewImages) || !is_array($wgTreeViewImages)) $wgTreeViewImages = array();
@@ -107,7 +107,9 @@ class TreeAndMenu {
 		# If root, parse as wikitext
 		if (isset($args['root'])) {
 			$p = clone $parser;
-			$html = $p->parse($args['root'], $parser->mTitle, $parser->mOptions, false, true)->getText();
+			$o = clone $parser->mOptions;
+			$o->mTidy = $o->mEnableLimitReport = false;
+			$html = $p->parse($args['root'], $parser->mTitle, $o, false, true)->getText();
 			$args['root'] = addslashes($html);
 		}
 
