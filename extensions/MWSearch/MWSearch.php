@@ -77,7 +77,7 @@ if($wgLuceneSearchVersion >= 2.1 && $wgEnableLucenePrefixSearch)
 
 function wfLuceneSearch() {
 
-require_once( 'SearchEngine.php' );
+require_once( 'search/Engine.php' );
 
 class LuceneSearch extends SearchEngine {
 	/**
