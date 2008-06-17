@@ -271,7 +271,7 @@ function wfSetupTreeAndMenu() {
 
  
 /**
- * Needed in MediaWiki >1.8.0 for magic word hooks to work properly
+ * Reserve magic words
  */
 function wfTreeAndMenuLanguageGetMagic(&$magicWords, $langCode = 0) {
 	global $wgTreeMagic, $wgMenuMagic;
