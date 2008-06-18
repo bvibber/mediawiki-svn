@@ -1,0 +1,24 @@
+<?php
+$address = <<<EOT
+ADDRESS 1
+ADDRESS 2
+EOT;
+$phone = '1-234-5678';
+$currency = 'USD';
+$soldTo = <<<EOT
+Wikimedia Foundation
+P.O. Box 78350
+San Francisco, CA 94107-8350
+EOT;
+$epochStart = '2001-01-15';
+$items = array( array(
+	'quantity' => 1,
+	'description' => 'Salary for period $periodStart to $periodEnd',
+	'priceEach' => 1e5,
+	'amount' => 1e5,
+));
+$dateFormat = 'Y-m-d';
+$emailSubject = 'Invoice for period $periodStart to $periodEnd';
+$emailTo = 'example@example';
+$bccTo = 'example2@example';
+$emailFrom = 'example2@example';
