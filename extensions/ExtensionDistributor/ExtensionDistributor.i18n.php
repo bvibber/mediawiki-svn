@@ -52,6 +52,58 @@ If you have any questions about this extension distribution system, please go to
 		'extdist-want-more' => 'Get another extension',
 );
 
+/** German (Deutsch)
+ * @author Raimond Spekking
+ */
+$messages['de'] = array(
+		'extensiondistributor'            => 'Herunterladen von MediaWiki-Erweiterung',
+		'extdist-desc'                    => 'Erweiterung für die Verteilung von Schnappschuss-Archiven von Erweiterungen',
+		'extdist-not-configured'          => 'Bitte konfiguriere $wgExtDistTarDir und $wgExtDistWorkingCopy',
+		'extdist-wc-missing'              => 'Das konfigurierte Kopien-Arbeitsverzeichnis ist nicht vorhanden!',
+		'extdist-no-such-extension'       => 'Erweiterung „$1“ ist nicht vorhanden',
+		'extdist-no-such-version'         => 'Die Erweiterung „$1“ gibt es nicht in der Version „$2“.',
+		'extdist-choose-extension'        => 'Bitte wähle eine Erweiterung zum Herunterladen aus:',
+		'extdist-wc-empty'                => 'Das konfigurierte Kopien-Arbeitsverzeichnis enthält keine zu verteilenden Erweiterungen!',
+		'extdist-submit-extension'        => 'Weiter',
+		'extdist-current-version'         => 'Aktuelle Version (trunk)',
+		'extdist-choose-version'          => '
+<big>Du lädst du <b>$1</b>-Erweiterung herunter.</big>
+
+Bitte wähle deine MediaWiki-Version.
+
+Die meisten Erweiterungen arbeiten mit vielen MediaWiki-Versionen zusammen. Wenn deine MediaWiki-Version hier nicht aufgeführt ist oder du die neuesten Fähigkeiten der Erweiterung nutzen möchtest, versuche es mit der aktuellen Version.',
+		'extdist-no-versions'             => 'Die gewählte Erweiterung ($1) ist nicht in der allen Versionen verfügbar!',
+		'extdist-submit-version'          => 'Weiter',
+		'extdist-no-remote'               => 'Der ferngesteuerte Subversion-Client ist nicht erreichbar.',
+		'extdist-remote-error'            => 'Fehlermeldung des ferngesteuerten Subversion-Client: <pre>$1</pre>',
+		'extdist-remote-invalid-response' => 'Ungültige Antwort vom ferngesteuerten Subversion-Client.',
+		'extdist-svn-error'               => 'Subversion hat einen Fehler gemeldet: <pre>$1</pre>',
+		'extdist-svn-parse-error'         => 'XML-Daten von „svn info“ können nicht verarbeitet werden: <pre>$1</pre>',
+		'extdist-tar-error'               => 'Das Tar-Programm lieferte den Beendigungscode $1:',
+		'extdist-created'                 => "Ein Schnappschuss der Version <b>$2</b> der MediaWiki-Erweiterung <b>$1</b> wurde erstellt. Der Download startet automatisch in 5 Sekunden.
+
+Die URL für den Schnappschuss lautet:
+:$4
+Die URL ist nur zum sofortigen Download gedacht, bitte speichere sie nicht als Lesezeichen ab, da der Dateiinhalt nicht aktualisiert wird und zu einem späteren Zeitpunkt gelöscht werden kann.
+
+Das Tar-Archiv sollte in das Erweiterungs-Verzeichnis entpackt werden. Auf einem Unix-ähnlichen Betriebssystem mit:
+
+<pre>
+tar -xzf $5 -C /var/www/mediawiki/extensions
+</pre>
+
+Unter Windows kannst du das Programm [http://www.7-zip.org/ 7-zip] zum Entpacken der Dateien verwenden.
+
+Wenn dein Wiki auf einem entfernten Server läuft, entpacke die Dateien in ein temporäres Verzeichnis auf deinem lokalen Computer und lade dann '''alle''' entpackten Dateien auf den entfernten Server hoch.
+
+Bitte beachte, dass einige Erweiterungen die Datei <tt>ExtensionFunctions.php</tt> benötigen. Sie liegt unter  <tt>extensions/ExtensionFunctions.php</tt>, dem Heimatverzeichnis der Erweiterungen. Der Schnappschuss dieser Erweiterung enthält diese Datei als tarbomb, entpackt nach <tt>./ExtensionFunctions.php</tt>. Vergiss nicht, auch diese Datei auf deinen entfernten Server hochzuladen.
+
+Nachdem du die Dateien entpackt hast, musst du die Erweiterung in der <tt>LocalSettings.php</tt> registrieren. Die Dokumenation zur Erweiterung sollte eine Anleitung dazu enthalten.
+
+Wenn du Fragen zu diesem Erweiterungs-Verteil-System hast, gehe bitte zur Seite [[Extension talk:ExtensionDistributor]].",
+		'extdist-want-more'               => 'Eine weitere Erweiterung holen.',
+);
+
 /** French (Français)
  * @author Grondin
  */
