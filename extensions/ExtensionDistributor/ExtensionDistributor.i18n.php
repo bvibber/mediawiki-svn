@@ -33,7 +33,21 @@ The URL for this snapshot is:
 :$4
 It may be used for immediate download to a server, but please do not bookmark it, since the contents will not be updated, and it may be deleted at a later date.
 
-The tar archive should be extracted into your extensions directory, then follow the extension's documentation to enable it in MediaWiki.
+The tar archive should be extracted into your extensions directory. For example, on a unix-like OS:
+
+<pre>
+tar -xzf $5 -C /var/www/mediawiki/extensions
+</pre>
+
+On Windows, you can use [http://www.7-zip.org/ 7-zip] to extract the files.
+
+If your wiki is on a remote server, extract the files to a temporary directory on your local computer, and then upload '''all''' of the extracted files to the extensions directory on the server.
+
+Note that some extensions need a file called ExtensionFunctions.php, located at <tt>extensions/ExtensionFunctions.php</tt>, that is, in the ''parent'' directory of this particular extension's directory. The snapshot for these extensions contains this file as a tarbomb, extracted to ./ExtensionFunctions.php. Do not neglect to upload this file to your remote server.
+
+After you have extracted the files, you will need to register the extension in LocalSettings.php. The extension documentation should have instructions on how to do this.
+
+If you have any questions about this extension distribution system, please go to [[Extension talk:ExtensionDistributor]].
 ",
 		'extdist-want-more' => 'Get another extension',
 );

@@ -223,7 +223,7 @@ class ExtensionDistributorPage extends SpecialPage {
 
 		// Show a message
 		$wgOut->addWikiMsg( 'extdist-created', $extension, "r$rev", 
-			$this->getBranchName( $version ), $url );
+			$this->getBranchName( $version ), $url, $tarName );
 		$wgOut->addHTML( '<p><br/><big>' .
 			'<a href="' . $this->getTitle()->escapeLocalUrl() . '">' . 
 			htmlspecialchars( wfMsg( 'extdist-want-more' ) ) . '</a></big></p>' );
