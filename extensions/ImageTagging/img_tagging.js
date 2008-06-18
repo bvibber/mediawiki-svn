@@ -10,14 +10,14 @@ var tagBoxInnerDiv = null;
 var imageElem = null;
 var taggingBusy = false;
 
-var kMessageAddingTag = "imagetagging-addingtag";
-var kMessageRemovingTag = "imagetagging-removingtag";
-var kMessageAddTagSuccess = "imagetagging-addtagsuccess";
-var kMessageRemoveTagSuccess = "imagetagging-removetagsuccess";
-var kMessageOneActionAtATime = "imagetagging-oneactionatatimemessage";
-var kMessageCantEditNeedLogin = "imagetagging-canteditneedloginmessage";
-var kMessageCantEditOther = "imagetagging-canteditothermessage";
-var kMessageOneUniqueTag = "imagetagging-oneuniquetagmessage";
+var kMessageAddingTag = "addingtagmessage";
+var kMessageRemovingTag = "removingtagmessage";
+var kMessageAddTagSuccess = "addtagsuccessmessage";
+var kMessageRemoveTagSuccess = "removetagsuccessmessage";
+var kMessageOneActionAtATime = "oneactionatatimemessage";
+var kMessageCantEditNeedLogin = "canteditneedloginmessage";
+var kMessageCantEditOther = "canteditothermessage";
+var kMessageOneUniqueTag = "oneuniquetagmessage";
 
 function gid(id) {
     return document.getElementById(id);
