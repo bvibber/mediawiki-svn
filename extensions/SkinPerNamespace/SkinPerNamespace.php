@@ -10,10 +10,6 @@
  * @license GPLv2
  */
 
-// For ns >= 0
-$wgHooks['MediaWikiPerformAction'][] = 'efSkinPerPagePerformActionHook';
-
-// For ns == -1
 $wgHooks['BeforePageDisplay'][] = 'efSkinPerPageBeforePageDisplayHook';
 
 // Add credits :)
@@ -45,21 +41,6 @@ $wgSkinPerNamespaceOverrideLoggedIn = true;
 // Implementation
 
 /**
- * Hook function for MediaWikiPerformAction
- */
-function efSkinPerPagePerformActionHook( &$output, &$article, &$title, &$user, &$request ){
-	global $wgSkinPerNamespace, $wgSkinPerNamespaceOverrideLoggedIn;
-	if( !$wgSkinPerNamespaceOverrideLoggedIn && $user->isLoggedIn() )
-		return true;
-
-	$ns = $title->getNamespace();
-	if( isset( $wgSkinPerNamespace[$ns] ) )
-		$user->mSkin = Skin::newFromKey( $wgSkinPerNamespace[$ns] );
-
-	return true;
-}
-
-/**
  * Hook function for BeforePageDisplay
  */
 function efSkinPerPageBeforePageDisplayHook( &$out, &$skin ){
@@ -68,9 +49,6 @@ function efSkinPerPageBeforePageDisplayHook( &$out, &$skin ){
 		return true;
 
 	$ns = $wgTitle->getNamespace();
-	if( $ns >= 0 )
-		return true;
-
 	if( isset( $wgSkinPerNamespace[$ns] ) )
 		$skin = Skin::newFromKey( $wgSkinPerNamespace[$ns] );
 
