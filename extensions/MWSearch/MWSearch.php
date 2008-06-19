@@ -24,12 +24,12 @@
  */
 
 # To use this, add something like the following to LocalSettings:
+#
+#  require_once("extensions/MWSearch/MWSearch.php");
 # 
 #  $wgSearchType = 'LuceneSearch';
 #  $wgLuceneHost = '192.168.0.1';
 #  $wgLucenePort = 8123;
-#
-#  require_once("extensions/MWSearch/MWSearch.php");
 #
 # To load-balance with from multiple servers:
 #
@@ -41,25 +41,18 @@
 
 
 # Back-end version (override before including MWSearch.php)
-if( !isset($wgLuceneSearchVersion) )
-	$wgLuceneSearchVersion = 2;
+$wgLuceneSearchVersion = 2;
 	
 # If to show related links (if available) below search results
-if( !isset($wgLuceneUseRelated) )
-	$wgLuceneUseRelated = false;
+$wgLuceneUseRelated = false;
 
 # If to use lucene as a prefix search backend
-if( !isset($wgEnableLucenePrefixSearch) )
-	$wgEnableLucenePrefixSearch = false;
+$wgEnableLucenePrefixSearch = false;
 	
 # For how long (in seconds) to cache lucene results, off by default (0)
 # NOTE: caching is typically inefficient for queries, with cache 
 # hit rates way below 1% even for very long expiry times
-if( !isset($wgLuceneSearchCacheExpiry) )
-	$wgLuceneSearchCacheExpiry = 0;
-
-# Not a valid entry point, skip unless MEDIAWIKI is defined
-if( defined('MEDIAWIKI') ){
+$wgLuceneSearchCacheExpiry = 0;
 
 $wgExtensionCredits['other'][] = array(
 	'name'           => 'MWSearch',
@@ -73,13 +66,14 @@ $wgExtensionCredits['other'][] = array(
 $dir = dirname(__FILE__) . '/';
 
 $wgExtensionMessagesFiles['MWSearch'] = $dir . 'MWSearch.i18n.php';
-
-if($wgLuceneSearchVersion >= 2.1 && $wgEnableLucenePrefixSearch)
-	$wgHooks['PrefixSearchBackend'][] = 'LuceneSearch::prefixSearch';
+$wgExtensionFunctions[] = 'efLucenePrefixSetup';
 
 $wgAutoloadClasses['LuceneSearch'] = $dir . 'MWSearch_body.php';
 $wgAutoloadClasses['LuceneResult'] = $dir . 'MWSearch_body.php';
 $wgAutoloadClasses['LuceneSearchSet'] = $dir . 'MWSearch_body.php';
 
-} # End of invocation guard
-
+function efLucenePrefixSetup() {
+	global $wgHooks, $wgLuceneSearchVersion, $wgEnableLucenePrefixSearch;
+	if($wgLuceneSearchVersion >= 2.1 && $wgEnableLucenePrefixSearch)
+		$wgHooks['PrefixSearchBackend'][] = 'LuceneSearch::prefixSearch';
+}
