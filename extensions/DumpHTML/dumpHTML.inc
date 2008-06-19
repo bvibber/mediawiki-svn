@@ -349,6 +349,10 @@ class DumpHTML {
 					}
 
 					$title = Title::makeTitleSafe( NS_IMAGE, $file );
+					if ( !$title ) {
+						wfDebug( __METHOD__.": invalid title: $file\n" );
+						continue;
+					}
 					$this->doArticle( $title );
 				}
 				if ( $handle ) {
