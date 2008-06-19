@@ -1,0 +1,3 @@
+specdirs: include
+sourcedirs:	${MYDIR}/ext-sources:${MYDIR}/copyright
+patchdirs: ${MYDIR}/patches

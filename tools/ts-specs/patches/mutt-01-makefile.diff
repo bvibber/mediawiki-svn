@@ -1,0 +1,11 @@
+--- Makefile.in.old	Sat May 17 22:03:43 2008
++++ Makefile.in	Sat May 17 22:04:14 2008
+@@ -1030,7 +1030,7 @@
+ 	$(srcdir)/mkinstalldirs $(DESTDIR)$(sysconfdir)
+ 	$(INSTALL) -m 644 $(srcdir)/mime.types $(DESTDIR)$(sysconfdir)/mime.types.dist
+ 	-if [ ! -f $(DESTDIR)$(sysconfdir)/mime.types ]; then \
+-		$(INSTALL) -m 644 $(srcdir)/mime.types $(DESTDIR)$(sysconfdir); \
++		$(INSTALL) -m 644 $(srcdir)/mime.types $(DESTDIR)$(sysconfdir)/mime.types.mutt; \
+ 	fi
+ 
+ uninstall-local:

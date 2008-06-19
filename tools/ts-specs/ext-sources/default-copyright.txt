@@ -1,0 +1,3 @@
+This is an open source package.
+Use and redistribution subject to license terms as described in the
+documents included in the sources.

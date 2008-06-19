@@ -1,0 +1,9 @@
+( echo 'test -x /usr/bin/gconftool-2 || {';
+  echo '  echo "ERROR: gconftool-2 not found"';
+  echo '  exit 1';
+  echo '}';
+  echo 'umask 0022';
+  echo 'GCONF_CONFIG_SOURCE=xml:merged:/etc/gconf/gconf.xml.defaults';
+  echo 'export GCONF_CONFIG_SOURCE';
+  echo '/usr/bin/gconftool-2 --makefile-install-rule %{_sysconfdir}/gconf/schemas/*.schemas > /dev/null'
+) | $BASEDIR/var/lib/postrun/postrun -u -c JDS_wait

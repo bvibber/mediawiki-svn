@@ -1,0 +1,27 @@
+#/bin/bash
+# Some builds link with CXX and use CFLAGS
+# This wrapper script simply removes or changes arguments that
+# are different between Sun Pro C and C++
+
+REALCXX=/opt/SUNWspro/bin/CC
+
+[ -z "${BASH_ARGC}" ] && {
+	exec $REALCXX
+}
+
+declare -a args
+cnt=0
+i=$(( ${#BASH_ARGV[@]} - 1 ))
+while (( i >= 0 ))
+do
+	if [ "${BASH_ARGV[$i]}" = "-xpentium" ]; then
+		args[$(( cnt++ ))]="-pentium"
+	elif [ "${BASH_ARGV[$i]}" = "-xstrconst" ]; then
+		:
+	else
+		args[$(( cnt++ ))]="${BASH_ARGV[$i]}"
+	fi
+	: $(( i-- ))
+done
+
+exec $REALCXX ${args[@]}
