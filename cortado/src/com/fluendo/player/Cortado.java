@@ -648,6 +648,10 @@ public class Cortado extends Applet implements Runnable, MouseMotionListener,
       }
     }
 
+    public double getPlayPosition() {
+      return (double) pipeline.getPosition() / Clock.SECOND;
+    }
+
     public void newState(int aState) {
         int ret;
         switch (aState) {

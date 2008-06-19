@@ -258,5 +258,5 @@ The applet can be controlled with the following javascript methods:
   doPause(): Pause playback
   doStop(): Stop playback
   doSeek(double pos); seek to a new position, must be between 0.0 and 1.0.
-
+  getPlayPosition(): returns current position in seconds
 
