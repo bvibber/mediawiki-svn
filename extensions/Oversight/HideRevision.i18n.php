@@ -373,7 +373,7 @@ $messages['de'] = array(
 Entfernte Versionen sind durch Niemanden mehr über die Website einzusehen.
 Sie werden aber protokolliert und können bei einem Fehler durch einen Datenbankadministrator wiederhergestellt werden",
 	'hiderevision-reason'         => 'Grund (wird unsichtbar protokolliert):',
-	'hiderevision-submit'         => 'Entferne diese Daten dauerhaft',
+	'hiderevision-submit'         => 'Entferne diese Version dauerhaft',
 	'hiderevision-tab'            => 'Entferne Versionen',
 	'hiderevision-norevisions'    => 'Es wurde keine Version zum Entfernen angegeben.',
 	'hiderevision-noreason'       => 'Du musst einen Grund für die Entfernung angeben.',
@@ -386,10 +386,10 @@ Sie werden aber protokolliert und können bei einem Fehler durch einen Datenbank
 	'oversight-nodiff'            => 'Es ist kein Versionsvergleich möglich, da es gegenwärtig keine frühere Version dieser Seite gibt. Mögliche Gründe:
 *Die Seite wurde gelöscht
 *Die entfernte Version war die erste Version',
-	'oversight-log-hiderev'       => 'Entfernte eine Bearbeitung von $1',
+	'oversight-log-hiderev'       => 'entfernte eine Version von „$1“',
 	'oversight'                   => 'Oversight',
 	'oversight-view'              => 'Details',
-	'oversight-difference'        => '(Unterschied zur vorhergehenden verbleibenden Version)',
+	'oversight-difference'        => '(Unterschied zur vorhergehenden, verbleibenden Version)',
 	'oversight-prev'              => 'Letzte vorhergehenden Version',
 	'oversight-hidden'            => 'Entfernte Version',
 	'oversight-header'            => 'Es folgt die Liste der dauerhaft für die öffentliche Einsicht entfernten Versionen. Die Veröffentlichung dieser Informationen kann den dauerhaften Entzug der Oversight-Rechte bedeuten.',
