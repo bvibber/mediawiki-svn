@@ -31,27 +31,26 @@ def dumpHTML(outputFile, *params):
 	elif os.WIFSIGNALED(status[1]):
 		msg("Process exited on signal %d" % os.WTERMSIG(status[1]))
 
-def finishWiki(outputFile, lang):
+def finishWiki(outputFile, lang, checkpoint):
 	global edition, siteDir, baseDir
-	if (not os.path.isdir(siteDir+"/"+lang+"-new")):
-		msg("Already compressed "+lang)
-		return
 	msg("Finishing language "+lang)
-	os.system("%(baseDir)s/scripts/finish-lang %(lang)s %(edition)s 2>&1 >> %(outputFile)s" % {
-		'baseDir' : baseDir, 'lang' : lang, 'edition' : edition, 'outputFile': outputFile })
-	msg("Done")
+	cmd = "%(baseDir)s/scripts/finish-lang %(lang)s %(edition)s %(checkpoint)s 2>&1 >> %(outputFile)s" % {
+		'baseDir' : baseDir, 'lang' : lang, 'edition' : edition, 'outputFile': outputFile, 
+		'checkpoint': checkpoint }
+	msg(cmd)
+	os.system(cmd)
 
 def writeStatus(jobID, status):
-	global baseDir
-	f = open(baseDir+"/jobs/"+jobID, "w")
+	global jobDir
+	f = open(jobDir+"/"+jobID, "w")
 	print >> f, socket.gethostname(), os.getpid()
 	print >> f, status
 	f.close()
 
 def isStatusMine(jobID):
-	global baseDir
+	global jobDir
 	try: 
-		f = open(baseDir+"/jobs/"+jobID, "r")
+		f = open(jobDir+"/"+jobID, "r")
 	except: 
 		msg("Status file is missing")
 		return False
@@ -80,6 +79,7 @@ def isDone(checkpoint, jobType):
 		f.close()
 	return False
 
+
 def writeStatusIfMine(jobID, status):
 	if isStatusMine(jobID):
 		writeStatus(jobID, status)
@@ -105,6 +105,7 @@ siteDir = baseDir+"/new/wikipedia"
 logDir = baseDir+"/var/logs"
 jobDir = baseDir+"/var/jobs"
 checkpointDir = baseDir+"/var/checkpoints"
+downloadsDir = baseDir + "/downloads/" + edition;
 
 try: os.makedirs(logDir)
 except: pass
@@ -146,6 +147,8 @@ while (os.getppid() > 1):
 			dumpHTML(outputFile, wiki,"--no-shared-desc", "--image-snapshot",
 				"--interlang","-d",dest,"--slice",slice,
 				"--udp-profile","50",
+				"--oom-adj", "6",
+				#"--show-titles",
 				"--checkpoint",checkpoint,"--no-overwrite")
 			
 			if isDone(checkpoint, 'everything'):
@@ -161,6 +164,7 @@ while (os.getppid() > 1):
 			dumpHTML(outputFile, wiki,"--shared-desc", "--image-snapshot",
 				"--interlang","-d",dest,"--slice",slice,
 				"--udp-profile", "50",
+				"--oom-adj", "4",
 				"--checkpoint",checkpoint,"--no-overwrite")
 			if isDone(checkpoint, 'shared image'):
 				msg("Done")
@@ -171,12 +175,17 @@ while (os.getppid() > 1):
 
 		elif type == "finish":
 			writeStatus(jobID, 'running')
-			finishWiki(outputFile, lang)
-			writeStatusIfMine(jobID, 'done')
+			finishWiki(outputFile, lang, checkpoint)
+			if isDone(checkpoint, 'everything'):
+				msg("Done")
+				writeStatusIfMine(jobID, 'done')
+			else:
+				msg("Terminated, unfinished")
+				writeStatusIfMine(jobID, 'terminated')
 	else:
 		if not waiting:
 			msg("Waiting...")
 			waiting = True
-		time.sleep(5)
+		time.sleep(1)
 
 

@@ -85,6 +85,9 @@ class DumpHTML {
 	# UDP profiling
 	var $udpProfile, $udpProfileCounter = 0, $udpProfileInit = false;
 
+	# Debugging options
+	var $showTitles = false;
+
 	# Extension version
 	const VERSION = '2.0';
 
@@ -472,6 +475,10 @@ class DumpHTML {
 			}
 		}
 
+		if ( $this->showTitles ) {
+			print $title->getPrefixedDBkey() . "\n";
+		}
+
 		$this->profile();
 
 		$this->rawPages = array();
@@ -712,7 +719,7 @@ class DumpHTML {
 			$wgRightsUrl = "$wgScriptPath/COPYING.html";
 		}
 
-		$wgUser = new User;
+		$wgUser = User::newFromName( '__dumpHTML', false );
 		$wgUser->setOption( 'skin', $this->skin );
 		$wgUser->setOption( 'editsection', 0 );
 
@@ -972,6 +979,9 @@ ENDTEXT;
 	}
 
 	function getHashedFilename( &$title ) {
+		if ( !$title ) {
+			throw new MWException( 'Invalid $title parameter to '.__METHOD__ );
+		}
 		if ( '' != $title->mInterwiki ) {
 			$dbkey = $title->getDBkey();
 		} else {
@@ -1143,13 +1153,13 @@ ENDTEXT;
 	}
 	
 	function mkdir( $dir ) {
-		if ( wfIsWindows() ) {
+		//if ( wfIsWindows() ) {
 			return wfMkdirParents( $dir, 0755 );
-		} else {
+		/*} else {
 			$dir = escapeshellarg( $dir );
 			`mkdir -p -- $dir`;
 			return true;
-		}
+		}*/
 	}
 }
 
@@ -1294,6 +1304,10 @@ class DumpHTML_ProxyFile {
 	}
 
 	function __call( $name, $args ) {
+		$callback = array( $this->backend, $name );
+		if ( !is_callable( $callback ) ) {
+			throw new MWException( "Attempt to call invalid function LocalFile::$name\n" );
+		}
 		$result = call_user_func_array( array( $this->backend, $name ), $args );
 		if ( is_string( $result ) ) {
 			$result = $this->fixURL( $result );

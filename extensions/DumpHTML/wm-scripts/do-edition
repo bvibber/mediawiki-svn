@@ -3,6 +3,8 @@ import sys, os, socket, signal, time, stat
 
 base = "/a/static"
 scripts = base + "/scripts"
+#host = socket.gethostbyname();
+host = "localhost"
 
 if len(sys.argv) < 2:
 	print "Usage: do-edition <edition>"
@@ -11,13 +13,7 @@ if len(sys.argv) < 2:
 edition = sys.argv[1]
 
 threads = {
-	"localhost": 1,
-	"srv131": 2,
-	"srv132": 2,
-	"srv133": 2,
-	"srv134": 2,
-	"srv135": 2,
-	"srv136": 2
+	"localhost": 24,
 }
 
 # Create some directories
@@ -36,7 +32,12 @@ print "Starting queue server"
 queueServer = os.fork()
 if 0 == queueServer:
 	# Run it in a new group so that its precious finishlang children don't get hurt
+	os.close(1)
+	os.close(2)
 	os.setsid()
+	fd = os.open(base+"/var/logs/netqueue.out", os.O_WRONLY|os.O_CREAT|os.O_APPEND, 0666)
+	os.dup2(fd, 1)
+	os.dup2(fd, 2)
 	os.execlp("python", "python", scripts+"/netqueue.py")
 	sys.exit(1)
 
@@ -64,27 +65,32 @@ for host, number in threads.iteritems():
 			os.dup2(fd, 2)
 			
 			if host == "localhost":
-				os.execlp("python", "python", scripts+"/queueSlave", socket.gethostname(), "8200", base, edition)
+				os.execlp("python", "python", scripts+"/queueSlave", host, "8200", base, edition)
 				sys.exit(1)
 			else:
-				os.execlp("ssh", "ssh", host, "python", scripts+"/queueSlave", socket.gethostname(), "8200", base, edition)
+				os.execlp("ssh", "ssh", host, "python", scripts+"/queueSlave", host, "8200", base, edition)
 				sys.exit(1)
 		slaves.append(pid)
 
 # Start controller, wait for it to exit
 print "Starting controller"
 try:
-	os.spawnlp(os.P_WAIT, "php", "php", "-n", "queueController.php")
-	print "Controller has exited, all done\n"
+	status = os.spawnlp(os.P_WAIT, "php", "php", "-n", "queueController.php")
 except KeyboardInterrupt:
-	pass
+	status = "interrupted"
 
-
-# All done, kill queue server
+# Kill queue server
 os.kill(queueServer, signal.SIGKILL)
 
-# Set up current symlink
-os.unlink(base+'/downloads/in_progress')
-os.unlink(base+'/downloads/current')
-os.symlink(base+'/downloads/'+edition, base+'/downloads/current')
+if status == 0:
+	print "Controller has exited, all done\n"
+
+	# Set up current symlink
+	try: os.unlink(base+'/downloads/in_progress')
+	except: pass
+	try: os.unlink(base+'/downloads/current')
+	except: pass
+	os.symlink(base+'/downloads/'+edition, base+'/downloads/current')
+else:
+	print "Exited with status: " + str(status)
 
