@@ -21,6 +21,7 @@ var mv_embed_path = null;
 //whether or not to load java from an iframe.
 //note: this is necessary for remote embedding because of java security model)
 var mv_java_iframe = true;
+var ogg_chop_links = true;
 //media_server mv_embed_path (the path on media servers to mv_embed for java iframe with leading and trailing slashes)
 var mv_media_iframe_path = '/mv_embed/';
 
@@ -1733,10 +1734,11 @@ embedVideo.prototype = {
 		var out='<b style="color:white;">'+getMsg('download_from')+' '+parseUri(this.src).queryKey['t']+'</b><br>';
 		out+='<span style="color:white"><blockquote>';
 		var dl_list=dl_txt_list='';
-		$j.each(this.media_element.getSources(), function(index, source)
-        {	
-			var dl_line = '<li>' + transform_function(index, source) + '</li>'+"\n";						
-			if(this.getMIMEType()=="video/ogg"){
+		$j.each(this.roe_xml.getElementsByTagName('mediaSource'), function(inx,n){
+			var dl_line = '<li><a style="color:white" href="'
+			dl_line+=(ogg_chop_links)?n.getAttribute("src").replace(".anx", ''):n.getAttribute("src");
+			dl_line+='"> '+n.getAttribute("title")+'</a></li>'+"\n";								
+			if(n.getAttribute("content-type")=="video/ogg"){
 				out+=dl_line;
 			}else if(this.getMIMEType()=="text/cmml"){
 				dl_txt_list+=dl_line;
