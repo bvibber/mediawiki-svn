@@ -2,6 +2,11 @@
 
 // Class definition for Extension:InterwikiList
 
+// Suppress fatal error about SpecialPage class not found if called as entry point
+if ( !defined('MEDIAWIKI') ) {
+        die( '' );
+}
+ 
 class InterwikiList extends SpecialPage {
 	
 	/**
@@ -37,12 +42,12 @@ class InterwikiList extends SpecialPage {
 		
 		while ( $row = $dbr->fetchObject( $results ) ) {                      
 				$text .= "						<tr>
-							<td>" . $row->iw_prefix . "</td>
-							<td>" . $row->iw_url . "</td>
+							<td>" . htmlspecialchars( $row->iw_prefix ) . "</td>
+							<td>" . htmlspecialchars( $row->iw_url ) . "</td>
 						</tr>\n";
 		}
-		$text .= Xml::closeElement( 'table' );
-		$dbr->freeResult ( $results );
+		$text .= "</table>\n";
+		$dbr->freeResult( $results );
 		
 		return $text;
 	}
