@@ -133,7 +133,6 @@ $mvUrlCacheTable 	= 'mv_url_cache';
 //whether to count found results (can take lots of time on big result sets)
 $mvDo_SQL_CALC_FOUND_ROWS = true;
 
-
 #########
 # Stream Types & User Rights
 # @@todo should really integrate "streams" with "media"

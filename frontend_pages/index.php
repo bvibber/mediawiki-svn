@@ -6,6 +6,9 @@ $wgScript = '/mvw-exp/index.php';
 $wgServer = '';
 $skin_path=$wgScriptPath.'/skins/mvpcf';
 $mvextension_path = $wgScriptPath.'/extensions/MetavidWiki';
+
+//just redirect people to the main wiki page (we don't need front_end pages anymore) 
+header('Location: '.$wgScript);
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -37,8 +40,7 @@ var wgServer = "<?php echo $wgServer ?>";
 	<div id="frontPageTop">
 		<div id="searchSplash">
 			<div class="logo"><a href="#"><img src="<?php echo $skin_path?>/images/logo.png" alt="Metavid" /></a></div>
-			<p class="tagline">The Open Video archive of the US Congress</p>
-			
+			<p class="tagline">The Open Video archive of the US Congress</p>			
 			<div class="form_search_row">
 				<input type="text" class="searchField" name="search[field]" id="search_field" />
 				<button class="grey_button" type="submit"><span>&nbsp;&nbsp; Video Search &nbsp;&nbsp;</span></button>

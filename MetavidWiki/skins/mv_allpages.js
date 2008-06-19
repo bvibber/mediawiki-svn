@@ -17,9 +17,10 @@ function mv_setup_allpage(){
 	 				//js_log('allpage_ auto and hover check'+mv_setup_allpage_flag);
 					if(!mv_setup_allpage_flag){					   		
 						mv_setup_search_ac();
-						mv_do_mvd_link_rewrite();						
-						mv_setup_allpage_flag=true; 
-						mv_page_specific_rewrites();					
+						mv_do_mvd_link_rewrite();												
+						mv_page_specific_rewrites();
+						//set the flag:					
+						mv_setup_allpage_flag=true; 				
 					}
 				});
 	});		
@@ -52,6 +53,10 @@ function mv_page_specific_rewrites(){
 					msg_video_rss+'" href="'+podLink+'">'+ rssImg + '</a></span>');
 		}
 	}
+	//move the search filter if #msms_form_search_row
+	if($j('#msms_form_search_row').get(0)!=null){
+		$j('#msms_form_search_row').appendTo("#searchHeader");
+	} 
 	//if we have an inline query add a search link
 	$j('.smwtable').each(function(){
 		if($j('#'+this.id+' .smwfooter a').length!=0){

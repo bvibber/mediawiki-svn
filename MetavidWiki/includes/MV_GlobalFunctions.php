@@ -8,7 +8,9 @@
  */
 define('MV_VERSION','0.1 (pre alpha)');
 
+
 if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
+
 /**
  * Switch on Metavid MediaWiki. This function must be called in LocalSettings.php
  *  its separated out to allow for overwriting semantic wiki hooks and functions

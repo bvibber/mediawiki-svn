@@ -33,6 +33,7 @@ class SkinMvpcf extends SkinTemplate {
 	}
 }
 
+
 /**
  * @todo document
  * @addtogroup Skins
@@ -47,77 +48,115 @@ class MvpcfTemplate extends QuickTemplate {
 	 * @access private
 	 */
 	function execute() {
-		global $wgUser;
-		$skin = $wgUser->getSkin();
+		global $wgUser, $wgTitle;
+		$this->user_skin = $wgUser->getSkin();
 
 		// Suppress warnings to prevent notices about missing indexes in $this->data
 		wfSuppressWarnings();
-
-		
 		//set up template variables: 
 		$this->data['showjumplinks']=false;
-		$this->data['tagline']=false;
-		
-		
-?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="<?php $this->text('xhtmldefaultnamespace') ?>" <?php 
-	foreach($this->data['xhtmlnamespaces'] as $tag => $ns) {
-		?>xmlns:<?php echo "{$tag}=\"{$ns}\" ";
-	} ?>xml:lang="<?php $this->text('lang') ?>" lang="<?php $this->text('lang') ?>" dir="<?php $this->text('dir') ?>">
-	<head>
-		<meta http-equiv="Content-Type" content="<?php $this->text('mimetype') ?>; charset=<?php $this->text('charset') ?>" />
-		<?php $this->html('headlinks') ?>
-		<title><?php $this->text('pagetitle') ?></title>		
-		<style type="text/css" media="screen, projection">/*<![CDATA[*/			
-			@import "<?php $this->text('stylepath') ?>/<?php $this->text('stylename') ?>/style.css";
-		/*]]>*/</style>			
-						
-		<!--[if lt IE 7]>
-			<link rel="stylesheet" href="<?php $this->text('stylepath') ?>/<?php $this->text('stylename') ?>/ie_styles.css" type="text/css" media="screen" />
-		<![endif]-->
-
-		<!--[if lt IE 7]><script type="<?php $this->text('jsmimetype') ?>" src="<?php $this->text('stylepath') ?>/common/IEFixes.js?<?php echo $GLOBALS['wgStyleVersion'] ?>"></script>
-		<meta http-equiv="imagetoolbar" content="no" /><![endif]-->
-		
-		<?php print Skin::makeGlobalVariablesScript( $this->data ); ?>
-                
-		<script type="<?php $this->text('jsmimetype') ?>" src="<?php $this->text('stylepath' ) ?>/common/wikibits.js?<?php echo $GLOBALS['wgStyleVersion'] ?>"><!-- wikibits js --></script>
-<?php	if($this->data['jsvarurl'  ]) { ?>
-		<script type="<?php $this->text('jsmimetype') ?>" src="<?php $this->text('jsvarurl'  ) ?>"><!-- site js --></script>
-<?php	} ?>
-<?php	if($this->data['pagecss'   ]) { ?>
-		<style type="text/css"><?php $this->html('pagecss'   ) ?></style>
-<?php	}
-		if($this->data['usercss'   ]) { ?>
-		<style type="text/css"><?php $this->html('usercss'   ) ?></style>
-<?php	}
-		if($this->data['userjs'    ]) { ?>
-		<script type="<?php $this->text('jsmimetype') ?>" src="<?php $this->text('userjs' ) ?>"></script>
-<?php	}
-		if($this->data['userjsprev']) { ?>
-		<script type="<?php $this->text('jsmimetype') ?>"><?php $this->html('userjsprev') ?></script>
-<?php	}
-		if($this->data['trackbackhtml']) print $this->data['trackbackhtml']; ?>
-		<!-- Head Scripts -->
-<?php $this->html('headscripts') ?>
-	</head>	
-<body <?php if($this->data['body_ondblclick']) { ?>ondblclick="<?php $this->text('body_ondblclick') ?>"<?php } ?>
-<?php if($this->data['body_onload'    ]) { ?>onload="<?php     $this->text('body_onload')     ?>"<?php } ?>
- class="mediawiki <?php $this->text('nsclass') ?> <?php $this->text('dir') ?> <?php $this->text('pageclass') ?>">
-	<div id="globalWrapper">
-		<div id="searchHeader">
-			<div class="logo2">
-				<a href="<?global $wgScript; echo $wgScript ?>">
-				<img alt="Metavid" src="<?php $this->text('stylepath') ?>/<?php $this->text('stylename') ?>/images/logo2.png"/>
-				</a>
-				<p class="tagline2">Video archive of the US Congress</p>
+		$this->data['tagline']=false;		
+		$this->get_head_html();
+		switch($wgTitle->getDBkey()){
+			case 'Main_Page':
+				$this->get_splash_page_html();
+			break;
+			default:
+				$this->get_base_body_html();
+			break;
+		}		
+		$this->get_footer_html();
+	}
+	function get_personal_portlet(){
+		?>
+		<div class="portlet" id="p-personal">
+			<h5><?php $this->msg('personaltools') ?></h5>
+			<div class="pBody">
+				<ul>
+			<?php foreach($this->data['personal_urls'] as $key => $item) { ?>
+					<li id="pt-<?php echo Sanitizer::escapeId($key) ?>"<?php
+						if ($item['active']) { ?> class="active"<?php } ?>><a href="<?php
+					echo htmlspecialchars($item['href']) ?>"<?php echo $this->user_skin->tooltipAndAccesskey('pt-'.$key) ?><?php
+					if(!empty($item['class'])) { ?> class="<?php
+					echo htmlspecialchars($item['class']) ?>"<?php } ?>><?php
+					echo htmlspecialchars($item['text']) ?></a></li>
+			<?php } ?>
+				</ul>
 			</div>
-			<div class="form_search_row">
-					<input id="search_field" class="searchField" type="text" name="search[field]"/>
-					<button class="grey_button" type="submit">
-					<span>   Search   </span>
-					</button>
-					<a class="advanced_search_tag" href="#">advanced search</a>
+		</div>
+		<?php
+	}
+	function get_splash_page_html(){
+		global $wgScript; 
+		?>	
+	<body id="frontPage">
+	<div id="frontPageTop">
+		<?php $this->get_personal_portlet()?>
+		<div id="searchSplash">
+			<div class="logo"><a href="#"><img src="<?php $this->text('stylepath') ?>/<?php $this->text('stylename') ?>/images/logo.png" alt="Metavid" /></a></div>
+			<p class="tagline">The Open Video archive of the US Congress</p>
+			<?php $this->get_search_html(); ?>			
+		</div><!--searchSplash-->
+	</div><!--frontPageTop-->	
+	<div id="frontPageContent">
+		<h2>Today's Popular Searches</h2>
+		<ul class="popularSearches">
+			<li><a href="#">Barack Obama</a></li>
+			<li><a href="#">Health Care</a></li>
+			<li><a href="#">Gas Tax</a></li>
+			<li><a href="#">Hillary Clinton</a></li>
+
+			<li><a href="#">John McCain</a></li>
+			<li><a href="#">Iraq War</a></li>
+			<li class="last_li"><a href="#">Appropriations</a></li>
+		</ul>
+		
+		<h2>Today's Popular Clips</h2>
+		<ul class="popularClips">
+			<li>
+				<img src="<?php $this->text('stylepath') ?>/<?php $this->text('stylename') ?>/images/img1.jpg" alt="Clip Image" />
+				<span class="title"><a href="#">Sen. Barack Obama (D-IL)</a></span>
+				<span class="description">Senate Floor - June 3, 2008</span>
+				<span class="keywords">keywords: <a href="#">war</a>, <a href="#">iraq</a>, <a href="#">budget</a></span>
+			</li>		
+			<li>
+				<img src="<?php $this->text('stylepath') ?>/<?php $this->text('stylename') ?>/images/img1.jpg" alt="Clip Image" />
+				<span class="title"><a href="#">Sen. Barack Obama (D-IL)</a></span>
+				<span class="description">Senate Floor - June 3, 2008</span>
+				<span class="keywords">keywords: <a href="#">war</a>, <a href="#">iraq</a>, <a href="#">budget</a></span>
+
+			</li>			
+			<li>
+				<img src="<?php $this->text('stylepath') ?>/<?php $this->text('stylename') ?>/images/img1.jpg" alt="Clip Image" />
+				<span class="title"><a href="#">Sen. Barack Obama (D-IL)</a></span>
+				<span class="description">Senate Floor - June 3, 2008</span>
+				<span class="keywords">keywords: <a href="#">war</a>, <a href="#">iraq</a>, <a href="#">budget</a></span>
+
+			</li>			
+			<li class="last_li">
+				<img src="<?php $this->text('stylepath') ?>/<?php $this->text('stylename') ?>/images/img1.jpg" alt="Clip Image" />
+				<span class="title"><a href="#">Sen. Barack Obama (D-IL)</a></span>
+				<span class="description">Senate Floor - June 3, 2008</span>
+				<span class="keywords">keywords: <a href="#">war</a>, <a href="#">iraq</a>, <a href="#">budget</a></span>
+
+			</li>
+		</ul>
+	</div>	 
+	</body>
+	<?php
+	}
+	function get_search_html(){		
+		global $wgScript, $wgPageName, $wgTitle;
+		//set approporiate javascript to flag advanced search 
+		?>		
+		<div class="form_search_row">
+				<form id="mv_media_search" method="get" action="<?php echo $wgScript ?>/Special:MediaSearch">
+					<input type="hidden" id="mvsel_t_0" name="f[0][t]" value="match">
+								
+					<input type="text" class="searchField" name="f[0][v]" id="search_field" />
+					<button class="grey_button" type="submit"><span>&nbsp;&nbsp; Video Search &nbsp;&nbsp;</span></button>
+					<a href="#" class="advanced_search_tag">advanced search</a>
+				</form>				
 				<div id="p-cactions" class="portlet">
 					<h5><?php $this->msg('views') ?></h5>
 					<div class="pBody">
@@ -125,81 +164,39 @@ class MvpcfTemplate extends QuickTemplate {
 				<?php			foreach($this->data['content_actions'] as $key => $tab) { ?>
 							 <li id="ca-<?php echo Sanitizer::escapeId($key) ?>"<?php
 								 	if($tab['class']) { ?> class="<?php echo htmlspecialchars($tab['class']) ?>"<?php }
-								 ?>><a href="<?php echo htmlspecialchars($tab['href']) ?>"<?php echo $skin->tooltipAndAccesskey('ca-'.$key) ?>><?php
+								 ?>><a href="<?php echo htmlspecialchars($tab['href']) ?>"<?php echo $this->user_skin->tooltipAndAccesskey('ca-'.$key) ?>><?php
 								 echo htmlspecialchars($tab['text']) ?></a></li>
 				<?php			 } ?>
 						</ul>
 					</div>
 				</div>
-			</div>		
-		</div>
-		
-		<div id="suggestions">
+			</div>
+			
+			<div id="suggestions" style="display:none">
 				<div id="suggestionsTop"></div>
-
-				<div id="suggestionsInner" class="suggestionsBox ac_results">
-					<div class="block">
-						<p><a href="javascript:;" onclick="hideSuggestions('suggestions');">Search videos for "<strong>ta</strong>" (hide this box)</a></p>
-					</div>
-					
-					<div class="block">
-						<h6>Category Matches</h6>
-					</div>
-
-					
-					<div class="block">
-						<p class="short_match"><a href="#"><span><strong>Ta</strong>xes</span></a></p>
-						<p class="short_match"><a href="#" class="last_match"><span><strong>Ta</strong>ttoos</span></a></p>
-					</div>
-					
-					<div class="block">
-						<h6>People Matches</h6>
-
-					</div>
-					
-					<div class="block">
-						<p class="people_match">
-							<img src="images/thumb1.jpg" alt="" />
-							<a href="#">Chaka Fat<strong>ta</strong>h</a>
-						</p>
-						<p class="people_match">
-
-							<img src="images/thumb2.jpg" alt="" />
-							<a href="#">Charles <strong>Ta</strong>ylor</a>
-						</p>
-						<p class="people_match last_match">
-							<img src="images/thumb3.jpg" alt="" />
-							<a href="#">Charles W. Jr. Bous<strong>ta</strong>ny</a>
-
-						</p>
-					</div>
-					
-					<div class="block">
-						<h6>Bill Matches</h6>
-					</div>
-					
-					<div class="block">
-						<p class="short_match"><a href="#"><span>H.R. 3238: United-S<strong>ta</strong>tes-Israel Energy Cooperation Act</span></a></p>
-
-						<p class="short_match"><a href="#" class="last_match"><span>H.R. 3238: United-S<strong>ta</strong>tes-Israel Energy Cooperation Act</span></a></p>
-					</div>
-					
-					<div class="block">
-						<h6>Interest Group Matches</h6>
-					</div>
-					
-					<div class="block">
-						<p class="short_match"><a href="#"><span>Hospi<strong>ta</strong>ls</span></a></p>
-
-						<p class="short_match"><a href="#"><span>Real Es<strong>ta</strong>te</span></a></p>
-					</div>
-					
+				<div id="suggestionsInner" class="suggestionsBox">										
 				</div><!--suggestionsInner-->
 				<div id="suggestionsBot"></div>
 			</div><!--suggestions-->
-		
-		
-	
+		</div>		
+		<?php
+	}
+	function get_base_body_html(){	
+		global $wgScript;
+?>
+<body <?php if($this->data['body_ondblclick']) { ?>ondblclick="<?php $this->text('body_ondblclick') ?>"<?php } ?>
+<?php if($this->data['body_onload']) { ?>onload="<?php     $this->text('body_onload')     ?>"<?php } ?>
+ class="mediawiki <?php $this->text('nsclass') ?> <?php $this->text('dir') ?> <?php $this->text('pageclass') ?>">
+	<div id="globalWrapper">
+	<div id="searchHeader">
+			<div class="logo2">
+				<a href="<?php echo $wgScript ?>">
+				<img alt="Metavid" src="<?php $this->text('stylepath') ?>/<?php $this->text('stylename') ?>/images/logo2.png"/>
+				</a>
+				<p class="tagline2">Video archive of the US Congress</p>
+			</div>		
+	<?php $this->get_search_html(); ?>
+	</div>	
 	<div id="column-content">
 	<div id="content">
 		<a name="top" id="top"></a>
@@ -221,36 +218,22 @@ class MvpcfTemplate extends QuickTemplate {
 		</div>
 		<!--  <div id="column-one">-->
 	
-	<div class="portlet" id="p-personal">
-		<h5><?php $this->msg('personaltools') ?></h5>
-		<div class="pBody">
-			<ul>
-<?php 			foreach($this->data['personal_urls'] as $key => $item) { ?>
-				<li id="pt-<?php echo Sanitizer::escapeId($key) ?>"<?php
-					if ($item['active']) { ?> class="active"<?php } ?>><a href="<?php
-				echo htmlspecialchars($item['href']) ?>"<?php echo $skin->tooltipAndAccesskey('pt-'.$key) ?><?php
-				if(!empty($item['class'])) { ?> class="<?php
-				echo htmlspecialchars($item['class']) ?>"<?php } ?>><?php
-				echo htmlspecialchars($item['text']) ?></a></li>
-<?php			} ?>
-			</ul>
-		</div>
-	</div>
+	<?php $this->get_personal_portlet() ?>
 	<div class="portlet" id="p-logo">
 		<a style="background-image: url(<?php $this->text('logopath') ?>);" <?php
 			?>href="<?php echo htmlspecialchars($this->data['nav_urls']['mainpage']['href'])?>"<?php
-			echo $skin->tooltipAndAccesskey('n-mainpage') ?>></a>
+			echo $this->user_skin->tooltipAndAccesskey('n-mainpage') ?>></a>
 	</div>
 	<script type="<?php $this->text('jsmimetype') ?>"> if (window.isMSIE55) fixalpha(); </script>
 	<?php foreach ($this->data['sidebar'] as $bar => $cont) { ?>
-	<div class='portlet' id='p-<?php echo Sanitizer::escapeId($bar) ?>'<?php echo $skin->tooltip('p-'.$bar) ?>>
+	<div class='portlet' id='p-<?php echo Sanitizer::escapeId($bar) ?>'<?php echo $this->user_skin->tooltip('p-'.$bar) ?>>
 		<h5><?php $out = wfMsg( $bar ); if (wfEmptyMsg($bar, $out)) echo $bar; else echo $out; ?></h5>
 		<div class='pBody'>
 			<ul>
 <?php 			foreach($cont as $key => $val) { ?>
 				<li id="<?php echo Sanitizer::escapeId($val['id']) ?>"<?php
 					if ( $val['active'] ) { ?> class="active" <?php }
-				?>><a href="<?php echo htmlspecialchars($val['href']) ?>"<?php echo $skin->tooltipAndAccesskey($val['id']) ?>><?php echo htmlspecialchars($val['text']) ?></a></li>
+				?>><a href="<?php echo htmlspecialchars($val['href']) ?>"<?php echo $this->user_skin->tooltipAndAccesskey($val['id']) ?>><?php echo htmlspecialchars($val['text']) ?></a></li>
 <?php			} ?>
 			</ul>
 		</div>
@@ -265,23 +248,23 @@ class MvpcfTemplate extends QuickTemplate {
 		if($this->data['notspecialpage']) { ?>
 				<li id="t-whatlinkshere"><a href="<?php
 				echo htmlspecialchars($this->data['nav_urls']['whatlinkshere']['href'])
-				?>"<?php echo $skin->tooltipAndAccesskey('t-whatlinkshere') ?>><?php $this->msg('whatlinkshere') ?></a></li>
+				?>"<?php echo $this->user_skin->tooltipAndAccesskey('t-whatlinkshere') ?>><?php $this->msg('whatlinkshere') ?></a></li>
 <?php
 			if( $this->data['nav_urls']['recentchangeslinked'] ) { ?>
 				<li id="t-recentchangeslinked"><a href="<?php
 				echo htmlspecialchars($this->data['nav_urls']['recentchangeslinked']['href'])
-				?>"<?php echo $skin->tooltipAndAccesskey('t-recentchangeslinked') ?>><?php $this->msg('recentchangeslinked') ?></a></li>
+				?>"<?php echo $this->user_skin->tooltipAndAccesskey('t-recentchangeslinked') ?>><?php $this->msg('recentchangeslinked') ?></a></li>
 <?php 		}
 		}
 		if(isset($this->data['nav_urls']['trackbacklink'])) { ?>
 			<li id="t-trackbacklink"><a href="<?php
 				echo htmlspecialchars($this->data['nav_urls']['trackbacklink']['href'])
-				?>"<?php echo $skin->tooltipAndAccesskey('t-trackbacklink') ?>><?php $this->msg('trackbacklink') ?></a></li>
+				?>"<?php echo $this->user_skin->tooltipAndAccesskey('t-trackbacklink') ?>><?php $this->msg('trackbacklink') ?></a></li>
 <?php 	}
 		if($this->data['feeds']) { ?>
 			<li id="feedlinks"><?php foreach($this->data['feeds'] as $key => $feed) {
 					?><span id="feed-<?php echo Sanitizer::escapeId($key) ?>"><a href="<?php
-					echo htmlspecialchars($feed['href']) ?>"<?php echo $skin->tooltipAndAccesskey('feed-'.$key) ?>><?php echo htmlspecialchars($feed['text'])?></a>&nbsp;</span>
+					echo htmlspecialchars($feed['href']) ?>"<?php echo $this->user_skin->tooltipAndAccesskey('feed-'.$key) ?>><?php echo htmlspecialchars($feed['text'])?></a>&nbsp;</span>
 					<?php } ?></li><?php
 		}
 
@@ -289,20 +272,20 @@ class MvpcfTemplate extends QuickTemplate {
 
 			if($this->data['nav_urls'][$special]) {
 				?><li id="t-<?php echo $special ?>"><a href="<?php echo htmlspecialchars($this->data['nav_urls'][$special]['href'])
-				?>"<?php echo $skin->tooltipAndAccesskey('t-'.$special) ?>><?php $this->msg($special) ?></a></li>
+				?>"<?php echo $this->user_skin->tooltipAndAccesskey('t-'.$special) ?>><?php $this->msg($special) ?></a></li>
 <?php		}
 		}
 
 		if(!empty($this->data['nav_urls']['print']['href'])) { ?>
 				<li id="t-print"><a href="<?php echo htmlspecialchars($this->data['nav_urls']['print']['href'])
-				?>"<?php echo $skin->tooltipAndAccesskey('t-print') ?>><?php $this->msg('printableversion') ?></a></li><?php
+				?>"<?php echo $this->user_skin->tooltipAndAccesskey('t-print') ?>><?php $this->msg('printableversion') ?></a></li><?php
 		}
 
 		if(!empty($this->data['nav_urls']['permalink']['href'])) { ?>
 				<li id="t-permalink"><a href="<?php echo htmlspecialchars($this->data['nav_urls']['permalink']['href'])
-				?>"<?php echo $skin->tooltipAndAccesskey('t-permalink') ?>><?php $this->msg('permalink') ?></a></li><?php
+				?>"<?php echo $this->user_skin->tooltipAndAccesskey('t-permalink') ?>><?php $this->msg('permalink') ?></a></li><?php
 		} elseif ($this->data['nav_urls']['permalink']['href'] === '') { ?>
-				<li id="t-ispermalink"<?php echo $skin->tooltip('t-ispermalink') ?>><?php $this->msg('permalink') ?></li><?php
+				<li id="t-ispermalink"<?php echo $this->user_skin->tooltip('t-ispermalink') ?>><?php $this->msg('permalink') ?></li><?php
 		}
 
 		wfRunHooks( 'MonoBookTemplateToolboxEnd', array( &$this ) );
@@ -361,9 +344,60 @@ class MvpcfTemplate extends QuickTemplate {
 
 -->
 <?php endif; ?>
-</body></html>
-<?php
+</body><?php
 	wfRestoreWarnings();
 	} // end of execute() method
+
+	function get_head_html(){		
+		?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="<?php $this->text('xhtmldefaultnamespace') ?>" <?php 
+	foreach($this->data['xhtmlnamespaces'] as $tag => $ns) {
+		?>xmlns:<?php echo "{$tag}=\"{$ns}\" ";
+	} ?>xml:lang="<?php $this->text('lang') ?>" lang="<?php $this->text('lang') ?>" dir="<?php $this->text('dir') ?>">
+	<head>
+		<meta http-equiv="Content-Type" content="<?php $this->text('mimetype') ?>; charset=<?php $this->text('charset') ?>" />
+		<?php $this->html('headlinks') ?>
+		<title><?php $this->text('pagetitle') ?></title>		
+		<style type="text/css" media="screen, projection">/*<![CDATA[*/			
+			@import "<?php $this->text('stylepath') ?>/<?php $this->text('stylename') ?>/style.css";
+		/*]]>*/</style>			
+						
+		<!--[if lt IE 7]>
+			<link rel="stylesheet" href="<?php $this->text('stylepath') ?>/<?php $this->text('stylename') ?>/ie_styles.css" type="text/css" media="screen" />
+		<![endif]-->
+
+		<!--[if lt IE 7]><script type="<?php $this->text('jsmimetype') ?>" src="<?php $this->text('stylepath') ?>/common/IEFixes.js?<?php echo $GLOBALS['wgStyleVersion'] ?>"></script>
+		<meta http-equiv="imagetoolbar" content="no" /><![endif]-->
+		
+		<?php print Skin::makeGlobalVariablesScript( $this->data ); ?>
+                
+		<script type="<?php $this->text('jsmimetype') ?>" src="<?php $this->text('stylepath' ) ?>/common/wikibits.js?<?php echo $GLOBALS['wgStyleVersion'] ?>"><!-- wikibits js --></script>
+<?php	if($this->data['jsvarurl'  ]) { ?>
+		<script type="<?php $this->text('jsmimetype') ?>" src="<?php $this->text('jsvarurl'  ) ?>"><!-- site js --></script>
+<?php	} ?>
+<?php	if($this->data['pagecss'   ]) { ?>
+		<style type="text/css"><?php $this->html('pagecss'   ) ?></style>
+<?php	}
+		if($this->data['usercss'   ]) { ?>
+		<style type="text/css"><?php $this->html('usercss'   ) ?></style>
+<?php	}
+		if($this->data['userjs'    ]) { ?>
+		<script type="<?php $this->text('jsmimetype') ?>" src="<?php $this->text('userjs' ) ?>"></script>
+<?php	}
+		if($this->data['userjsprev']) { ?>
+		<script type="<?php $this->text('jsmimetype') ?>"><?php $this->html('userjsprev') ?></script>
+<?php	}
+		if($this->data['trackbackhtml']) print $this->data['trackbackhtml']; ?>
+		<!-- Head Scripts -->
+<?php $this->html('headscripts') ?>
+	</head>	
+	<?php
+	}
+	function get_footer_html(){
+		?>
+		</html>
+		<?php
+	}
+	
 } // end of class
 ?>

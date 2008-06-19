@@ -2,9 +2,6 @@
 
 if (!defined('MEDIAWIKI')) die();
 
-global $IP;
-include_once($IP . '/includes/SpecialPage.php');
-
 /*
  * MV_SpecialMVAdmin.php Created on Apr 24, 2007
  *

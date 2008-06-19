@@ -89,12 +89,14 @@ class MV_SpecialMediaSearch extends SpecialPage {
 			$wgOut->addHTML($this->getResultsHTML());			
 		}
 	}
-	function dynamicSearchControl() {
+	function dynamicSearchControl() {					
 		$title = SpecialPage :: getTitleFor('MediaSearch');
 		$action = $title->escapeLocalURL();
-
-		return "\n<form id=\"mv_media_search\" method=\"get\" " .
-		"action=\"$action\">\n{$this->list_active_filters()}\n</form>\n";
+		return "<div id=\"msms_form_search_row\" class=\"form_search_row\">
+					<form id=\"mv_media_search\" method=\"get\" " .
+					 "action=\"$action\">\n{$this->list_active_filters()}
+					</form>
+				</div>";
 	}
 	function setupFilters($defaultType='empty', $opt=null){
 		global $wgRequest;
