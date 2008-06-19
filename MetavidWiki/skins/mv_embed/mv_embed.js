@@ -1,4 +1,4 @@
-/*
+/** @fileoverview
  * ~mv_embed~
  * for details see: http://metavid.ucsc.edu/wiki/index.php/Mv_embed
  *
@@ -75,8 +75,7 @@ function getMsg( key ) {
 	 }
 }
 
-/*
-* the base video control JSON object with default attributes
+/**  the base video control JSON object with default attributes
 *    for supported attribute details see README
 */
 var video_attributes = {
@@ -98,7 +97,7 @@ var video_attributes = {
     //roe url (for xml based metadata)
     "roe":null,
     //if roe includes metadata tracks we can expose a link to metadata
-    "show_meta_link":true,
+//    "show_meta_link":true,
 
 	//default state attributes per html5 spec: 
 	//http://www.whatwg.org/specs/web-apps/current-work/#video)
@@ -149,7 +148,7 @@ var mvEmbed = {
 			mvEmbed.libs_loaded=true;
 			mvEmbed.init();
 		});	
-  	});	    		
+  	});
   },
   userSetPlayerType:function(player){
   	//callback to the embedType obj to set the cookie/pref: 
@@ -160,7 +159,7 @@ var mvEmbed = {
   	});  	
   	//@@todo temporarily disable playback or set all to loading...
 	//request the new player library: 
-	var plugins={};
+/*	var plugins={};
 	plugins[embedTypes.getPlayerLib()+'Embed']='mv_'+embedTypes.getPlayerLib()+'Embed.js';
   	mvJsLoader.doLoad(plugins, function(){
   		js_log("done loading: " + embedTypes.getPlayerLib());
@@ -169,7 +168,7 @@ var mvEmbed = {
 	  		js_log('selector: '+'#'+global_ogg_list[i]);
 	  		$j('#'+global_ogg_list[i]).get(0).inheritEmbedObj();
 	  	}  	
-  	})  	
+  	})*/
   },
   addLoadEvent:function(fn){  	
   	this.flist.push(fn);  	
@@ -185,6 +184,146 @@ var mvEmbed = {
 		}
   }
 }
+
+function mediaPlayer(id, supported_types, library)
+{
+    this.id=id;
+    this.supported_types = supported_types;
+    this.library = library;
+    return this;
+}
+
+mediaPlayer.prototype =
+{
+    id:null,
+    supported_types:null,
+    library:null,
+    
+    supportsMIMEType : function(type)
+    {
+        for (var i in this.supported_types)
+            if(this.supported_types[i] == type)
+                return true;
+        return false;
+    },
+    getName : function()
+    {
+        return getMsg('ogg-player-' + this.id);
+    },
+    getLibraryFile : function()
+    {
+        return 'mv_'+this.library+'Embed.js';
+    },
+    getLibraryObject : function()
+    {
+        return this.library+'Embed';
+    }
+}
+
+var flowPlayer = new mediaPlayer(
+    'flowplayer',
+    ['video/x-flv'],
+    'flash'
+);
+
+var cortadoPlayer = new mediaPlayer(
+    'cortado',
+    ['video/ogg'],
+    'java'
+);
+
+var videoElementPlayer = new mediaPlayer(
+    'videoElement',
+    ['video/ogg'],
+    'native'
+);
+
+var vlcMozillaPlayer = new mediaPlayer(
+    'vlc-mozilla',
+    ['video/ogg'],
+    'vlc'
+);
+
+var vlcActiveXPlayer = new mediaPlayer(
+    'vlc-activex',
+    ['video/ogg'],
+    'vlc'
+);
+
+var oggPlayPlayer = new mediaPlayer(
+    'oggPlay',
+    ['video/ogg'],
+    'oggplay'
+);
+
+var oggPluginPlayer = new mediaPlayer(
+    'oggPlugin',
+    ['video/ogg'],
+    'generic'
+);
+
+var quicktimeMozillaPlayer = new mediaPlayer(
+    'quicktime-mozilla',
+    ['video/ogg'],
+    'quicktime'
+);
+
+var quicktimeActiveXPlayer = new mediaPlayer(
+    'quicktime-activex',
+    ['video/ogg'],
+    'quicktime'
+);
+
+function mediaPlayers()
+{
+    this.players = new Array();
+}
+
+mediaPlayers.prototype =
+{
+    players : null,
+    selected_player : null,
+    
+    addPlayer : function(player)
+    {
+        for (var i in this.players)
+            if (this.players[i].id==player.id)
+                return;
+        js_log('Adding ' + player.id);
+        this.players.push(player);
+    },
+    getMIMETypePlayers : function(mime_type)
+    {
+        var mime_players = new Array();
+
+        for (var i in this.players)
+            if (this.players[i].supportsMIMEType(mime_type))
+                mime_players.push(this.players[i]);
+                
+        return mime_players;               
+    },
+    autoSelectPlayer : function(mime_type)
+    {
+        js_log('autoselecting player for ' + mime_type);
+        var mime_players = this.getMIMETypePlayers(mime_type);
+        if(mime_players.length)
+        {
+            this.selected_player = mime_players[0];
+            js_log('selected ' + this.selected_player.getName());
+        }
+        else
+            js_log('no player found');
+    },
+    selectPlayer : function(player_id)
+    {
+        for(var i in this.players)
+            if(this.players[i].id == player_id)
+            {
+                this.selected_player = this.players[i];
+                break;
+            }
+    }
+};
 
 /*parseUri class:*/
 var parseUri=function(d){var o=parseUri.options,value=o.parser[o.strictMode?"strict":"loose"].exec(d);for(var i=0,uri={};i<14;i++){uri[o.key[i]]=value[i]||""}uri[o.q.name]={};uri[o.key[12]].replace(o.q.parser,function(a,b,c){if(b)uri[o.q.name][b]=c});return uri};parseUri.options={strictMode:false,key:["source","protocol","authority","userInfo","user","password","host","port","relative","path","directory","file","query","anchor"],q:{name:"queryKey",parser:/(?:^|&)([^&=]*)=?([^&]*)/g},parser:{strict:/^(?:([^:\/?#]+):)?(?:\/\/((?:(([^:@]*):?([^:@]*))?@)?([^:\/?#]*)(?::(\d*))?))?((((?:[^?#\/]*\/)*)([^?#]*))(?:\?([^#]*))?(?:#(.*))?)/,loose:/^(?:(?![^:@]+:[^:@\/]*@)([^:\/?#.]+):)?(?:\/\/)?((?:(([^:@]*):?([^:@]*))?@)?([^:\/?#]*)(?::(\d*))?)(((\/(?:[^?#](?![^?#\/]*\.[^?#\/.]+(?:[?#]|$)))*\/?)?([^?#\/]*))(?:\?([^#]*))?(?:#(.*))?)/}};
@@ -202,15 +341,13 @@ var mv_default_thumb_url = mv_embed_path + 'images/vid_default_thumb.jpg';
  * http://svn.wikimedia.org/viewvc/mediawiki/trunk/extensions/OggHandler/OggPlayer.js
  */
 var embedTypes = {
-	 // List of players in order of preference
-	 playerType:false,
-	 // List of players in order of preference (vlc is pretty good on linux (but should not be installed in OSX) 
-	 players: ['videoElement','vlc-mozilla', 'vlc-activex', 'oggPlay', 'cortado', 'oggPlugin', 'quicktime-mozilla', 'quicktime-activex', 'flowplayer'],
+	 // List of players
+	 players: null,
 	 init: function(){
 		//detect supported types
 		this.detect();
 		//see if we have a cookie set to a clientSupported type: 
-		var cookieVal = this.getCookie( 'ogg_player' ); 
+/*		var cookieVal = this.getCookie( 'ogg_player' ); 
 		if ( cookieVal && cookieVal != 'thumbnail' ) {
 			if(this.clientSupports[cookieVal]){
 				this.playerType = cookieVal;
@@ -223,8 +360,8 @@ var embedTypes = {
 					break;
 				}
 			}
-		}
-		js_log('selected:' + this.playerType);
+		}*/
+/*		js_log('selected:' + this.playerType);
 		js_log( this.clientSupports);
 		
 		//add the detected plugin playback type to the plugins :
@@ -234,57 +371,31 @@ var embedTypes = {
 				mvEmbed.lib_plugins[this.getPlayerLib()+'Embed']='mv_'+this.getPlayerLib()+'Embed.js';
 			}
 			js_log('set lib: '  +mvEmbed.lib_plugins[this.getPlayerLib()+'Embed']);
-		}	
+		}*/
+        // set to load all the supported libraries
+        for (var i in this.players.players)
+            mvEmbed.lib_plugins[this.players.players[i].getLibraryObject()]=this.players.players[i].getLibraryFile();
 	},
-	getPlayerType:function(){
-		if(!this.playerType)return false;
-		return this.playerType;
-	},
-	//provide the name of the javscript library supporting the given request: (group activeX and plugin Controls) 
-	getPlayerLib:function(){
-	 	switch(this.playerType){
-	 		case 'videoElement':
-	 			return 'native';break;
-	 		case 'vlc-mozilla': 
-	 		case 'vlc-activex':
-	 			return 'vlc';break;
-	 		case 'quicktime-mozilla':
-	 		case 'quicktime-activex':
-	 			return 'quicktime';	break;
-	 		case 'oggPlay':
-	 			return 'oggplay'; break;
-	 		case 'cortado':
-	 			return 'java';break;
-            case 'flowplayer':
-                return 'flash';
-	 		case 'oggPlugin':
-	 			return 'generic'; break;
-	 		default:
-	 			return null;
-	 	}
-	},
-	getPlayerSelectList:function(){		
+	getPlayerSelectList:function(mime_type, file_select_code){
+        var supporting_players = this.players.getMIMETypePlayers(mime_type);
+        
 		 var select_html='<ul style="color:white">';
-		 for(i in this.players){
-			//don't list unsuported players
-			if(!this.clientSupports[this.players[i]]){
-				continue;
-			}
-			//list if its the current put a colored plugin icon than name
+		 for(i in supporting_players){
+/*			//list if its the current put a colored plugin icon than name
 			if(this.playerType==this.players[i]){
 				select_html+='<li>'+
 								'<img width="16" height="16" src="'+mv_embed_path+'images/plugin.png">'+
 									getMsg('ogg-player-'+this.players[i])+getMsg('ogg-player-selected')+
 							'</li>';
-			}else{
+			}else{*/
 				//else gray plugin and the plugin with link to select
 				select_html+='<li>'+
-								'<a style="color:white" href="#" onClick="mvEmbed.userSetPlayerType(\''+this.players[i]+'\');return false;">'+
+								'<a style="color:white" href="#" onClick="'+ file_select_code + 'mvEmbed.userSetPlayerType(\''+supporting_players[i].id+'\');return false;">'+
 									'<img border="0" width="16" height="16" src="'+mv_embed_path+'images/plugin_disabled.png">'+								
-									getMsg('ogg-player-'+this.players[i]) + 
+									supporting_players[i].getName() + 
 								'</a>'+
 							'</li>';
-			}
+//			}
 		 }
 		 select_html+='</ul>';
 		 return select_html;
@@ -294,11 +405,13 @@ var embedTypes = {
 			var week = 7*86400*1000;
 			this.setCookie( 'ogg_player', player, week, false, false, false, false );
 		}
-		this.playerType=player;
+		this.players.selectPlayer(player);
 		js_log('embedTypes: player set to: '+ player);
 	},
 	clientSupports: { 'thumbnail' : true },
  	detect: function() {
+        this.players = new mediaPlayers();
+        
 		 // First some browser detection
 		 this.msie = ( navigator.appName == "Microsoft Internet Explorer" );
 		 this.msie6 = ( navigator.userAgent.indexOf("MSIE 6")===false);
@@ -314,34 +427,27 @@ var embedTypes = {
 		 var uniqueMimesOnly = this.opera || this.safari;
 		 // Opera will switch off javaEnabled in preferences if java can't be found.
 		 // And it doesn't register an application/x-java-applet mime type like Mozilla does.
-		 if ( invisibleJava && javaEnabled ) {
-		 	this.clientSupports['cortado'] = true;
-		 }
+		 if ( invisibleJava && javaEnabled )
+		 	this.players.addPlayer(cortadoPlayer);
+
 		 // ActiveX plugins
 		 if(this.msie){
 			 // VLC
-			 if ( this.testActiveX( 'VideoLAN.VLCPlugin.2' ) ) {
-			 	this.clientSupports['vlc-activex'] = true;
-			 }
+			 if ( this.testActiveX( 'VideoLAN.VLCPlugin.2' ) )
+			 	this.players.addPlayer(vlcActiveXPlayer);
 			 // Java
-			 if ( javaEnabled && this.testActiveX( 'JavaWebStart.isInstalled' ) ) {
-			 	this.clientSupports['cortado'] = true;
-			 }
+			 if ( javaEnabled && this.testActiveX( 'JavaWebStart.isInstalled' ) )
+			 	this.players.addPlayer(cortadoPlayer);
 			 //temporary disable QuickTime check
-			 if ( this.testActiveX( 'QuickTimeCheckObject.QuickTimeCheck.1' ) ) {
-			 	this.clientSupports['quicktime-activex'] = true;
-			 }	
+			 if ( this.testActiveX( 'QuickTimeCheckObject.QuickTimeCheck.1' ) )
+			 	this.players.addPlayer(quicktimeActiveXPlayer);
 		 }
+
 		 // <video> element (should not need to be attached to the dom to test)(
 		 var v = document.createElement("video");
-		 if(v.play){
-		 	this.clientSupports['videoElement'] = true;
-		 }
-		 /*elt.innerHTML = '<video id="testvideo"></video>\n';
-		 var testvideo = document.getElementById('testvideo');
-		 if (testvideo && testvideo.play) {
-		 this.clientSupports['videoElement'] = true;
-		 }*/
+		 if(v.play)
+		 	this.players.addPlayer(videoElementPlayer);
+
 		 // Mozilla plugins
 		if(navigator.mimeTypes && navigator.mimeTypes.length > 0) {
 			for ( var i = 0; i < navigator.mimeTypes.length; i++) {
@@ -357,35 +463,38 @@ var embedTypes = {
 					pluginName = '';
 				}
 				if ( javaEnabled && type == 'application/x-java-applet' ) {
-					this.clientSupports['cortado'] = true;
+					this.players.addPlayer(cortadoPlayer);
 					continue;
 				}
 				if(type=='application/liboggplay'){
-					this.clientSupports['oggPlay']= true;
+					this.players.addPlayer(oggPlayPlayer);
 					continue;
 				}
 				
 				if ( type == 'application/ogg' ) {
-					if ( pluginName.toLowerCase() == 'vlc multimedia plugin' ) {
-						this.clientSupports['vlc-mozilla'] = true;
-					} else if ( pluginName.indexOf( 'QuickTime' ) > -1 ) {
-						this.clientSupports['quicktime-mozilla'] = true;
-					} else {
-						this.clientSupports['oggPlugin'] = true;
-					}
+					if ( pluginName.toLowerCase() == 'vlc multimedia plugin' )
+						this.players.addPlayer(vlcMozillaPlayer);
+					else if ( pluginName.indexOf( 'QuickTime' ) > -1 )
+						this.players.addPlayer(quicktimeMozillaPlayer);
+					else
+						this.players.addPlayer(oggPluginPlayer);
 					continue;
 				} else if ( uniqueMimesOnly ) {
 					if ( type == 'application/x-vlc-player' ) {
-						this.clientSupports['vlc-mozilla'] = true;
+						this.players.addPlayer(vlcMozillaPlayer);
 						continue;
 					} else if ( type == 'video/quicktime' ) {
-						this.clientSupports['quicktime-mozilla'] = true;
+						this.players.addPlayer(quicktimeMozillaPlayer);
 						continue;
 					}
 				}
 			
 				if ( type == 'video/quicktime' ) {
-					this.clientSupports['quicktime-mozilla'] = true;
+					this.players.addPlayer(vlcMozillaPlayer);
+					continue;
+				}
+   				if(type=='application/x-shockwave-flash'){
+					this.players.addPlayer(flowPlayer);
 					continue;
 				}
    				if(type=='application/x-shockwave-flash'){
@@ -396,8 +505,8 @@ var embedTypes = {
 			}
 		}
 		//@@The xiph quicktime component does not work well with annodex streams (temporarly disable)
-		this.clientSupports['quicktime-mozilla'] = false;
-		this.clientSupports['quicktime-activex'] = false;
+		//this.clientSupports['quicktime-mozilla'] = false;
+		//this.clientSupports['quicktime-activex'] = false;
 		//js_log(this.clientSupports);
 	 },
 	 setCookie : function ( name, value, expiry, path, domain, secure ) {
@@ -576,7 +685,7 @@ function mv_embed(){
 	//get mv_embed location if it has not been set
 	js_log('mv_embed ' + mvEmbed.Version);
     //send a request to load the given type
-    js_log('detected: '+ embedTypes.getPlayerType() );
+    //js_log('detected: '+ embedTypes.getPlayerType() );
     video_elements = document.getElementsByTagName("video");
     //js_log('found video '+ video_elements.length);
     if( video_elements.length > 0) {     	
@@ -991,11 +1100,277 @@ textInterface.prototype = {
 }
 
 
+/**
+  * mediaSource class represents a source for a media element.
+  * @param {String} type MIME type of the source.
+  * @param {String} uri URI of the source.
+  * @constructor
+  */
+function mediaSource(mime_type, uri, title, marked_default)
+{
+    js_log('Adding mediaSource of type ' + mime_type + ' and uri ' + uri + ' and title ' + title);
+    this.mime_type = mime_type;
+    this.uri = uri;
+    this.title = title;
+    this.marked_default = marked_default;
+    this.parseURLDuration();
+    return this;
+}
+
+mediaSource.prototype =
+{
+    /** MIME type of the source. */
+    mime_type:null,
+    /** URI of the source. */
+    uri:null,
+    /** Title of the source. */
+    title:null,
+    /** True if the source has been marked as the default. */
+    marked_default:null,
+    /** Start offset of the requested segment */
+    start_offset:null,
+    /** Duration of the requested segment (null if not known) */
+    duration:null,
+    
+    start_ntp:null,
+    end_ntp:null,
+    
+    
+    /** MIME type accessor function.
+        @return the MIME type of the source.
+        @type String
+    */
+    getMIMEType : function()
+    {
+        return this.mime_type;
+    },
+    /** URI accessor function.
+        @return the URI of the source.
+        @type String
+    */
+    getURI : function()
+    {
+        return this.uri;
+    },
+    /** Title accessor function.
+        @return the title of the source.
+        @type String
+    */
+    getTitle : function()
+    {
+        return this.title;
+    },
+    /** Index accessor function.
+        @return the source's index within the enclosing mediaElement container.
+        @type Integer
+    */
+    getIndex : function()
+    {
+        return this.index;
+    },
+    /*
+	 * function getDuration in milliseconds 
+     * special case derive duration from request url (in float seconds) @@todo should be float seconds
+	 * (for media_url?t=ntp_start/ntp_end url request format
+     */  
+    parseURLDuration : function(){	 	
+        //js_log('get duration for:' + this.src);	 		 	 
+        var index_time_val = false;		 		 
+        if(this.uri.indexOf('?t=')!=-1)index_time_val='?t=';
+        if(this.uri.indexOf('&t=')!=-1)index_time_val='&t=';
+        if(index_time_val){
+            var end_index = (this.uri.indexOf('&', this.uri.indexOf(index_time_val))==-1)?
+	     					this.uri.length:
+			    			this.uri.indexOf('&', this.uri.indexOf(index_time_val));
+			this.start_ntp = this.uri.substring( 
+	   				this.uri.indexOf(index_time_val)+index_time_val.length,
+		    		this.uri.indexOf('/', this.uri.indexOf(index_time_val) ));
+		    this.end_ntp = this.uri.substring(
+		    		this.uri.indexOf('/', this.uri.indexOf(index_time_val))+1, end_index);
+		    this.start_offset = ntp2seconds(this.start_ntp);
+	   		this.duration = ntp2seconds( this.end_ntp ) - this.start_offset;
+		    //put values into ms:
+		    this.start_offset =  this.start_offset*1000
+		    this.duration = this.duration*1000;		    		    
+        }else{
+	     	//else normal media request (can't predict the duration without the plugin reading it)
+	     	this.duration=null;
+	   	 	this.start_offset=0;
+        }
+	},
+  	/* get the duration in ntp format */
+	getDurationNTP:function(){
+		return seconds2ntp(this.getDuration()/1000);
+	},
+
+};
+
+/** A media element corresponding to a <video> element.
+    It is implemented as a collection of mediaSource objects.  The media sources
+    will be initialized from the <video> element, its child <source> elements,
+    and/or the ROE file referenced by the <video> element.
+    @param {element} video_element <video> element used for initialization.
+    @constructor
+*/
+function mediaElement(video_element)
+{
+    this.init(video_element);
+};
+
+mediaElement.prototype = 
+{
+    /** The array of mediaSource elements. */
+    sources:null,
+    /** Selected mediaSource element. */
+    selected_source:null,
+    
+    /** @private */
+    init:function(video_element)
+    {
+        var _this = this;
+        
+        js_log('Initializing mediaElement...');
+        this.sources = new Array();
+        // Process the <video> element
+        this.tryAddSource(video_element);
+        // Process all inner <source> elements
+        inner_source_elements = video_element.getElementsByTagName('source');
+        $j.each(inner_source_elements, function(inx, inner_source)
+        {
+            _this.tryAddSource(inner_source);
+        });
+        // Process the provided ROE file if any
+        if(video_element.hasAttribute('roe'))
+            do_request(video_element.getAttribute('roe'), function(data)
+            {
+                _this.addROE(data);
+            });
+        // Select the default source
+        for (var source in this.sources)
+            if(this.sources[source].marked_default)
+                this.selected_source = this.sources[source];
+        // or the first source
+        if (!this.selected_source)
+            this.selected_source = this.sources[0];
+    },
+    /** Returns the array of mediaSources of this element.
+        \returns {Array} Array of mediaSource elements.
+    */
+    getSources:function()
+    {
+        return this.sources;
+    },
+    /** Selects a particular source for playback.
+    */
+    selectSource:function(index)
+    {
+        js_log("selected source " + this.sources[index].getTitle());
+        this.selected_source = this.sources[index];
+    },
+    /** Returns the thumbnail URL for the media element.
+        \returns {String} thumbnail URL
+    */
+    getThumbnailURL:function()
+    {
+        return mv_default_thumb_url;
+/*        				//set the thumbnail: 
+				$j.each(_this.roe_data.getElementsByTagName('img'), function(inx, n){
+					if(n.getAttribute("id")=="stream_thumb"){
+						js_log('set thumb to '+n.getAttribute("src"));
+						_this['thumbnail'] = n.getAttribute("src");	
+					}*/
+    },
+/*        				//set the linkback:
+				$j.each(_this.roe_data.getElementsByTagName('link'), function(inx, n){
+					if(n.getAttribute('id')=='html_linkback'){
+						js_log('set linkback to '+n.getAttribute("href"));
+						_this['linkback'] = n.getAttribute('href');
+					}*/
+    /** Checks whether there is a stream of a specified MIME type.
+        @param {String} mime_type MIME type to check.
+        @type {BooleanPrimitive}.
+    */
+    hasStreamOfMIMEType:function(mime_type)
+    {
+        for(source in this.sources)
+        {
+            if(this.sources[source].getMIMEType() == mime_type)
+                return true;
+        }
+        return false;
+    },
+    /** Adds a single mediaSource using the provided element if
+        the element has a 'src' attribute.
+        @param element {element} <video>, <source> or <mediaSource> element.
+    */
+    tryAddSource:function(element)
+    {
+        if (!element.hasAttribute('src'))
+            return;
+
+        var src = element.getAttribute('src');
+        var title = null;
+        var type = null;
+        var marked_default = false;
+
+        var tag = element.tagName.toLowerCase();
+        
+        if (tag == 'src')
+            marked_default = true;
+
+        if (element.hasAttribute("title"))
+            title = element.getAttribute("title");
+        else
+            title = src;
+
+        if (element.hasAttribute('type'))
+            type = element.getAttribute('type');
+        else if (element.hasAttribute('content-type'))
+            type = element.getAttribute('content-type');
+        else
+            type = this.detectType(src);
+
+        this.sources.push(new mediaSource(type, src, title, this.sources.length));
+    },
+    /** Imports media sources from ROE data.
+        @param roe_data ROE data.
+    */
+    addROE:function(roe_data)
+    {
+        var _this = this;
+        $j.each(roe_data.getElementsByTagName('mediaSource'), function(inx, source)
+        {
+			_this.tryAddSource(source);
+        });
+    },
+    /** Attempts to detect the type of a media file based on the URI.
+        @param {String} uri URI of the media file.
+        @returns The guessed MIME type of the file.
+        @type String
+    */
+    detectType:function(uri)
+    {
+        if(endsWith(uri, '.flv'))
+            return 'video/x-flv';
+    }
+};
+
+function endsWith(str, suffix)
+{
+    return str.substr(str.length-suffix.length, suffix.length)==suffix;
+}
+
+/** base embedVideo object
+    @param element <video> tag used for initialization.
+    @constructor
+*/
 var embedVideo = function(element) {	
 	return this.init(element);
 };
-//base embedVideo object
+
 embedVideo.prototype = {
+    /** The mediaElement object containing all mediaSource objects */
+    media_element:null,
 	slider:null,
 	roe_xml:null,
 	load_external_data:false,	
@@ -1022,20 +1397,12 @@ embedVideo.prototype = {
 	            this[attr]=video_attributes[attr];
 	            //js_log('attr:' + attr + ' val: ' + video_attributes[attr] +" "+ 'elm_val:' + element.getAttribute(attr) + "\n (set by attr)");  
 	        }
-	    }	   	    
-		//if roe set & (src is not) ... load settings from xml (where not already set) 
-		if(this.roe!=null && this.src==null){
-			this.loading_external_data=true;
-		}
-		if(this.roe==null){
-			this['show_meta_link']=false;				
-		}
+	    }
+        // load all of the specified sources
+        this.media_element = new mediaElement(element);
 	    js_log('continue_thumb:'+ this['thumbnail']);
    	    js_log('continue_src:'+ this['src']);
-	    //if the thumbnail is null replace with default thumb:
-	    if(!this['thumbnail']){
-			this['thumbnail'] = mv_default_thumb_url;
-	    }
+
 	    //if style is set override width and height
 	    if(element.style.width)this.width = element.style.width.replace('px','');
 	    if(element.style.height)this.height = element.style.height.replace('px','');
@@ -1044,20 +1411,31 @@ embedVideo.prototype = {
 	         
 	    //grab any innerHTML and set it to missing_plugin_html
 	    if(element.innerHTML!=''){
+            js_log('innerHTML: ' + element.innerHTML);
 	        this.user_missing_plugin_html=element.innerHTML;
 	    } 
 	    /*
 	    * override all relevant exported functions with the {embed_type} Object 
 	    * place the base functions in parent.{function name}
 	    */
-	    js_log("PLAYBACK TYPE: "+embedTypes.getPlayerLib());
-	    if(embedTypes.getPlayerType()){    
-	       this.inheritEmbedObj();
-	    }  
+        embedTypes.players.autoSelectPlayer(this.media_element.selected_source.mime_type);
+
+	    if(embedTypes.players.selected_player){
+            js_log("PLAYBACK TYPE: "+embedTypes.players.selected_player.library);
+	    }
 	   //js_log('HTML FROM IN OBJECT' + this.getHTML());
 	   //return this object:	   
 	   return this;
-	},	  	
+	},
+    doEmbedHTML:function()
+    {
+        this.inheritEmbedObj();
+        var embed_code = this.getEmbedHTML();
+        js_log(embed_code);
+        this.innerHTML = embed_code;
+		this.paused = false;
+		this.thumbnail_disp=false;
+    },
 	inheritEmbedObj:function(){
 		js_log("inheritEmbedObj");
 		//@@note: tricky cuz direct overwrite is not so ideal.. since the extended object is already tied to the dom
@@ -1073,7 +1451,7 @@ embedVideo.prototype = {
 			}
 		}
 		//set up the new embedObj
-		eval('embedObj = ' +embedTypes.getPlayerLib() +'Embed;');
+		eval('embedObj = ' +embedTypes.players.selected_player.library +'Embed;');
         for(method in embedObj){
         	//parent method preservation for local overwritten methods
         	if(this[method])this['parent_' + method] = this[method];
@@ -1084,134 +1462,17 @@ embedVideo.prototype = {
         	this.inheritEmbedOverride();
         }
 	},
-	//parse roe file and store data in this object
-	getParseROE: function(callback){
-		var _this = this;
-		do_request(this.roe, function(data){	
-			js_log('got DATA!!!!!!!' + typeof data);	
-			//	alert('found mediaSource');
-			//});
-			//elm = xml.getElementById('html_linkback');			
-			//js_log("on: "+_this.id + " got xml "+ xml.length + ' test elm:' + elm.getAttribute('rel'));
-			if(typeof data == 'object' ){				
-				_this.roe_xml = data;
-				var cmml_available=false;
-				$j.each(_this.roe_xml.getElementsByTagName('mediaSource'), function(inx, n){
-					js_log(' on element: ' + n.getAttribute('content-type'));
-					if(n.getAttribute('content-type')=='video/ogg' && n.getAttribute("default")=="true"){
-						js_log('set src to '+n.getAttribute("src"));						
-						_this['src'] = n.getAttribute("src");
-					}
-					if(n.getAttribute('content-type')=='text/cmml'){
-						js_log('cmml available');						
-						cmml_available=true;
-					}
-				});				
-				//overide show_meta_link if cmml is not available 
-				if(!cmml_available){
-					_this['show_meta_link']=false;				
-				}
-				/*
-				//set the src to video tag with "default" attribute:
-				//var rVids = _this.roe_xml.getElementsByTagName('video');
-				js_log('found '+ rVids.length + ' video tags');
-				$j.each(_this.roe_xml.getElementsByTagName('video'), function(inx,n){	
-					if(n.getAttribute("default")=="true"){
-						js_log('set src to '+n.getAttribute("src"));						
-						_this['src'] = n.getAttribute("src");
-					}
-				});
-				*/												
-				//set the thumbnail: 
-				$j.each(_this.roe_xml.getElementsByTagName('img'), function(inx, n){
-					if(n.getAttribute("id")=="stream_thumb"){
-						js_log('set thumb to '+n.getAttribute("src"));
-						_this['thumbnail'] = n.getAttribute("src");	
-					}
-				}); 
-				//set the linkback:
-				$j.each(_this.roe_xml.getElementsByTagName('link'), function(inx, n){
-					if(n.getAttribute('id')=='html_linkback'){
-						js_log('set linkback to '+n.getAttribute("href"));
-						_this['linkback'] = n.getAttribute('href');
-					}
-				});
-			}			
-			if(!_this['src']){
-				//could not find default video src for playback
-				$j(_this).html(getMsg('missing_video_stream'));				
-			}else{
-				//js_log("do callback roe data:"+_this['roe_xml']+' '+ _this['src'] +' '+ _this['thumbnail'] + 'cb: '+ callback);
-				callback(_this.id);
-			}
-		});
-	},		
-	 /*
-	  * function getDuration in milliseconds 
-	  * special case derive duration from request url (in float seconds) @@todo should be float seconds
-	  * (for media_url?t=ntp_start/ntp_end url request format
-	  */  
-	 getDuration : function(){	 	
-	 	 //js_log('get duration for:' + this.src);	 		 	 
-		 var index_time_val = false;		 		 
-	     if(this.src.indexOf('?t=')!=-1)index_time_val='?t=';
-	     if(this.src.indexOf('&t=')!=-1)index_time_val='&t=';
-	     if(index_time_val){
-	     	var end_index = (this.src.indexOf('&', this.src.indexOf(index_time_val))==-1)?
-	     					this.src.length:
-			    			this.src.indexOf('&', this.src.indexOf(index_time_val));
-			this.start_ntp = this.src.substring( 
-	   				this.src.indexOf(index_time_val)+index_time_val.length,
-		    		this.src.indexOf('/', this.src.indexOf(index_time_val) ));
-		    this.end_ntp = this.src.substring(
-		    		this.src.indexOf('/', this.src.indexOf(index_time_val))+1, end_index);
-		    this.start_offset = ntp2seconds(this.start_ntp);
-	   		this.duration = ntp2seconds( this.end_ntp ) - this.start_offset;
-		    //put values into ms:
-		    this.start_offset =  this.start_offset*1000
-		    this.duration = this.duration*1000;		    		    
-	     }else{
-	     	//else normal media request (can't predict the duration without the plugin reading it)
-	     	this.duration=null;
-	   	 	this.start_offset=0;
-	     }
-		 //return duration in ms: 
-	     return this.duration;
-	},
-	/* get the duration in ntp format */
-	getDurationNTP:function(){
-		return seconds2ntp(this.getDuration()/1000);
-	},
 	getHTML : function (){
-		if(this.loading_external_data){	
-			this.innerHTML = getMsg('loading_txt');
-			/*this.getThumbnailHTML();	
-			$j('#big_play_link_'+this.id).replaceWith('<span style="background:#fff;color:#000;' +
-				'filter:alpha(opacity=65);-moz-opacity:.65;opacity:.65;">'+getMsg('loading_txt')+'</span>');*/
-			var _this= this;
-			//js_log('before req id: '+ _this.id)
-			this.getParseROE( function(_this_id){	
-				//set cur obj by callback id if present:
-				if(_this_id)
-					_this = $j('#'+_this_id).get(0);
-				_this.loading_external_data=false;
-				_this.getHTML();
-			});
-		}else{
-			//make sure we have duration info: 
-			this.getDuration();
-			//js_log('get html: ' + $j('#'+this.id).html() );
-		    //returns the innerHTML based on auto play option and global_embed_type
-		    //if auto play==true directly embed the plugin
-		    if(this.autoplay){ 	   
-				this.thumbnail_disp = false;			
-				this.innerHTML = this.getEmbedHTML();
-		    }else{
-		        //if autoplay=false or render out a thumbnail with link to embed html      
-		       this.thumbnail_disp = true;
-		       this.innerHTML = this.getThumbnailHTML();	    
-		    }	
-		}
+        //returns the innerHTML based on auto play option and global_embed_type
+        //if auto play==true directly embed the plugin
+        if(this.autoplay){ 	   
+            this.thumbnail_disp = false;			
+            this.innerHTML = this.getEmbedHTML();
+        }else{
+            //if autoplay=false or render out a thumbnail with link to embed html      
+           this.thumbnail_disp = true;
+           this.innerHTML = this.getThumbnailHTML();	    
+        }
 	},
 	/*
 	* get missing plugin html (check for user included code)
@@ -1250,39 +1511,11 @@ embedVideo.prototype = {
 			}
 		}
 	},
-	selectPlaybackMethod:function(){
-		 //put select list on-top
-		 //make sure the parent is relatively positioned:
-		 $j('#'+this.id).css('position', 'relative');
-		 //set height width (check for playlist container) 
-	 	 var width = (this.pc)?this.pc.pp.width:this.width;
-	 	 var height = (this.pc)?this.pc.pp.height:this.height;
-	 	 if(width<320)width=320;
-	 	 if(height<240)height=240;
-	 	 
-  		 var sel_id = (this.pc!=null)?this.pc.pp.id:this.id;
-		 //fade in a black bg div ontop of everything
-		 var select_code = '<div class="set_ogg_player_pref" id="blackbg_'+sel_id+'" ' +
-			 'style="position:absolute;display:none;z-index:2;background:black;top:0px;left:0px;' +
-				 'height:'+parseInt(height)+'px;width:'+parseInt(width)+'px;">' +
-			 '<span style="position:relative;top:20px;left:20px">' +
-				 '<b style="color:white;">'+getMsg('select_playback')+':</b><br>'+
-					 embedTypes.getPlayerSelectList()+
-			 	'<a href="#" style="color:white" onClick="document.getElementById(\''+this.id+'\').closeSelectPlayback();return false;">close</a>'+
-			 '</span>'+
-		 '</div>';
-		 //js_log('appending to: ' + sel_id +' sc: '+ select_code );
-		 $j('#'+sel_id).append(select_code);
-		 $j('#blackbg_'+sel_id).fadeIn("slow");
-		 return false; //onclick action return false
-	 },
-	 closeSelectPlayback:function(){
-	 	 var sel_id = (this.pc!=null)?this.pc.pp.id:this.id;
-		 $j('#blackbg_'+sel_id).fadeOut("slow", function(){
-			 $j('#blackbg_'+sel_id).remove();
-		 });
- 		return false;//onclick action return false
-	},
+    /** Returns the HTML code for the video when it is in thumbnail mode.
+        This includes the specified thumbnail as well as buttons for
+        playing, configuring the player, inline cmml display, HTML linkback,
+        download, and embed code.
+    */
 	getThumbnailHTML : function (){
 	    var thumb_html = '';
 	    var class_atr='';
@@ -1295,7 +1528,7 @@ embedVideo.prototype = {
 	    thumb_html+= '<div id="dc_'+this.id+'" style="position:relative;'+
 	    	' overflow:hidden; top:0px; left:0px; width:'+this.width+'px; height:'+this.height+'px; z-index:0;">'+
 	        '<img width="'+this.width+'" height="'+this.height+'" style="position:relative;width:'+this.width+';height:'+this.height+'"' +
-	        ' id="img_thumb_'+this.id+'" src="' + this.thumbnail + '">';
+	        ' id="img_thumb_'+this.id+'" src="' + this.media_element.getThumbnailURL() + '">';
 
 		js_log("PLAY BUTTON: " + this.play_button);
 	    if(this.play_button==true)
@@ -1309,9 +1542,10 @@ embedVideo.prototype = {
 				 '</a>'+
 			 '</div>';
 	  	 }
+
 	  	//add in cmml inline dispaly if roe descption avaliable
-	  	//not to be displayed in stream interface. 
-	  	if(this.show_meta_link){
+	  	//not to be displayed in stream interface.
+	  	if(this.media_element.hasStreamOfMIMEType('text/cmml')){
 	  		thumb_html+='<div style="border:none;position:absolute;top:2px;right:2px;z-index:1">'+
 		     '<a title="'+getMsg('select_transcript_set')+'" href="javascript:document.getElementById(\''+this.id+'\').showTextInterface();">';
 		    thumb_html+=getTransparentPng({id:'metaButton_'+this.id, width:"40", height:"27", border:"0", 
@@ -1347,13 +1581,13 @@ embedVideo.prototype = {
 						src:mv_embed_path + 'images/vid_embed_sm.png' }));
 			thumb_html+='</a></div>';
 			//make link absolute (if it was not already)
-			js_log('looking at thumb:'+ this.thumbnail);
-			if(this.thumbnail.substring(0,1)=='/'){
+			var thumbnail = this.media_element.getThumbnailURL();
+			if(thumbnail.substring(0,1)=='/'){
 				eURL = parseUri(mv_embed_path);
-				embed_thumb_html = eURL.protocol + '://' + eURL.host + this.thumbnail;			
+				embed_thumb_html = eURL.protocol + '://' + eURL.host + thumbnail;			
 				//js_log('set from mv_embed_path:'+embed_thumb_html);
 			}else{
-				embed_thumb_html = (this.thumbnail.indexOf('http://')!=-1)?this.thumbnail:mv_embed_path + this.thumbnail;
+				embed_thumb_html = (thumbnail.indexOf('http://')!=-1)?thumbnail:mv_embed_path + thumbnail;
 			}
 			var embed_code_html = '&lt;script type=&quot;text/javascript&quot; ' +
 						'src=&quot;'+mv_embed_path+'mv_embed.js&quot;&gt;&lt;/script&gt' +
@@ -1411,8 +1645,8 @@ embedVideo.prototype = {
 			$j(this).fadeOut("slow");
 		} );
 		* 
-		*/		
-	},		
+		*/
+	},	
 	showTextInterface:function(){
 		//check if textObj present:
 		if(typeof this.textInterface == 'undefined' ){
@@ -1427,65 +1661,92 @@ embedVideo.prototype = {
 			this.textInterface.close();			
 		}
 	},
-	//@@todo we should group/abstract hide show video and set playback preference	
-	showVideoDownload:function(){		
-		 $j('#'+this.id).css('position', 'relative');
-		 //set height width (check for playlist container) 
-	 	 var width = (this.pc)?this.pc.pp.width:this.width;
-	 	 var height = (this.pc)?this.pc.pp.height:this.height;
-	 	 if(width<320)width=320;
-	 	 if(height<240)height=240;
-	 	 var sel_id = (this.pc!=null)?this.pc.pp.id:this.id;
-	 	 var close_link ='<a href="#" style="color:white" onClick="document.getElementById(\''+this.id+'\').closeSelectPlayback();return false;">close</a>';
-		 //fade in a black bg div ontop of everything
-		 var select_code = '<div id="blackbg_'+sel_id+'" ' +
+    /** Generic function to display custom HTML inside the mv_embed element.
+        The code should call the closeDisplayedHTML function to close the
+        display of the custom HTML and restore the regular mv_embed display.
+        @param {String} HTML code for the selection list.
+    */
+    displayHTML:function(html_code)
+    {
+        //put select list on-top
+        //make sure the parent is relatively positioned:
+        $j('#'+this.id).css('position', 'relative');
+        //set height width (check for playlist container) 
+        var width = (this.pc)?this.pc.pp.width:this.width;
+        var height = (this.pc)?this.pc.pp.height:this.height;
+        if(width<320)width=320;
+        if(height<240)height=240;
+
+        var sel_id = (this.pc!=null)?this.pc.pp.id:this.id;
+        //fade in a black bg div ontop of everything
+         var div_code = '<div id="blackbg_'+sel_id+'" ' +
 			 'style="overflow:auto;position:absolute;display:none;z-index:2;background:black;top:0px;left:0px;' +
-				 'height:'+parseInt(height)+'px;width:'+parseInt(width)+'px;">'+	
-			 '<span id="close_vl'+this.id+'" style="position:absolute:top:2px;left:2px;color:white;">'+close_link+'</span>'+
-			 '<span id="con_vl_'+this.id+'" style="position:absolute;top:20px;left:20px;color:white;">';			 	
-		var dl_list='';		
-		//set to loading if we don't have the roe data yet: 
-		if(!this.roe_xml && this.roe){		
-			select_code+=getMsg('loading_txt');			
-			var _this = this;
-			this.getParseROE(function(){
-				$j('#con_vl_'+_this.id).html(_this.getDLlist());				
-			});
-		}else{
-			js_log('get dl list');			
-			select_code+=this.getDLlist();
-		}		
-		select_code+=close_link+'</span>'+			
-		 '</div>';
-		 //js_log('appending to: ' + sel_id +' sc: '+ select_code );
-		 $j('#'+sel_id).append(select_code);
-		 $j('#blackbg_'+sel_id).fadeIn("slow");
-	},
-	getDLlist:function(){		
-		var out='<b style="color:white;">'+getMsg('download_from')+' '+parseUri(this.src).queryKey['t']+'</b><br>';
-		out+='<span style="color:white"><blockquote>';
-		var dl_list=dl_txt_list='';
-		$j.each(this.roe_xml.getElementsByTagName('mediaSource'), function(inx,n){	
-			var dl_line = '<li><a style="color:white" href="' + n.getAttribute("src") +'"> '+
-						n.getAttribute("title")+'</a></li>'+"\n";						
-			if(n.getAttribute("content-type")=="video/ogg"){
-				out+=dl_line;
-			}if(n.getAttribute("content-type")=="text/cmml"){
-				dl_txt_list+=dl_line;
-			}else{
-				dl_list+=dl_line;
-			}
-		});		
-		out+='</blockquote>'+getMsg('download_full')+"<blockquote>"+dl_list+'</blockquote>';
-		out+='</blockquote>'+getMsg('download_text')+"<blockquote>"+dl_txt_list+'</blockquote></span>';		
-		return out;
-	},
-	closeVideoDownload:function(){
+				 'height:'+parseInt(height)+'px;width:'+parseInt(width)+'px;">'+
+             html_code +
+      		 '</div>';
+
+        $j('#'+sel_id).append(div_code);
+        $j('#blackbg_'+sel_id).fadeIn("slow");
+        return false; //onclick action return false
+    },
+    /** Close the custom HTML displayed using displayHTML and restores the
+        regular mv_embed display.
+    */
+    closeDisplayedHTML:function(){
 	 	 var sel_id = (this.pc!=null)?this.pc.pp.id:this.id;
 		 $j('#blackbg_'+sel_id).fadeOut("slow", function(){
 			 $j('#blackbg_'+sel_id).remove();
 		 });
  		return false;//onclick action return false
+	},
+    selectPlaybackMethod:function(){
+        var close_link ='<a href="#" style="color:white" onClick="document.getElementById(\''+this.id+'\').closeDisplayedHTML();return false;">close</a>';
+        var select_code =
+         	 '<span id="close_vl'+this.id+'" style="position:absolute:top:2px;left:2px;color:white;">'+close_link+'</span>'+
+			 '<span id="con_vl_'+this.id+'" style="position:absolute;top:20px;left:20px;color:white;">';			 	
+		var dl_list='';
+        var _this=this;
+        select_code+=this.getDLlist(function(index, source)
+        {
+            var player_code = embedTypes.getPlayerSelectList(source.getMIMEType(), 'document.getElementById(\''+_this.id+'\').closeDisplayedHTML(); document.getElementById(\''+_this.id+'\').media_element.selectSource(\''+index+'\');');
+            return '<a href="#" style="color:white" onClick="document.getElementById(\''+_this.id+'\').closeDisplayedHTML(); document.getElementById(\''+_this.id+'\').media_element.selectSource(\''+index+'\'); return false;">'
+                + source.getTitle()+'</a>' + player_code;
+        });
+        select_code+=close_link+'</span>';
+        this.displayHTML(select_code);
+    },
+	showVideoDownload:function(){
+	 	 var close_link ='<a href="#" style="color:white" onClick="document.getElementById(\''+this.id+'\').closeDisplayedHTML();return false;">close</a>';
+         var select_code =
+         	 '<span id="close_vl'+this.id+'" style="position:absolute:top:2px;left:2px;color:white;">'+close_link+'</span>'+
+			 '<span id="con_vl_'+this.id+'" style="position:absolute;top:20px;left:20px;color:white;">';			 	
+		var dl_list='';	
+        select_code+=this.getDLlist(function(index, source)
+        {
+            return '<a style="color:white" href="' + source.getURI() +'"> '
+                + source.getTitle()+'</a>';
+        });
+		select_code+=close_link+'</span>';
+        this.displayHTML(select_code);
+	},
+	getDLlist:function(transform_function){
+		var out='<b style="color:white;">'+getMsg('download_from')+' '+parseUri(this.src).queryKey['t']+'</b><br>';
+		out+='<span style="color:white"><blockquote>';
+		var dl_list=dl_txt_list='';
+		$j.each(this.media_element.getSources(), function(index, source)
+        {	
+			var dl_line = '<li>' + transform_function(index, source) + '</li>'+"\n";						
+			if(this.getMIMEType()=="video/ogg"){
+				out+=dl_line;
+			}else if(this.getMIMEType()=="text/cmml"){
+				dl_txt_list+=dl_line;
+			}else{
+				dl_list+=dl_line;
+			}
+		});
+		out+='</blockquote>'+getMsg('download_full')+"<blockquote>"+dl_list+'</blockquote>';
+		out+='</blockquote>'+getMsg('download_text')+"<blockquote>"+dl_txt_list+'</blockquote></span>';		
+		return out;
 	},
 	/*
 	*  base embed controls 
@@ -1496,16 +1757,12 @@ embedVideo.prototype = {
 		//check if thumbnail is being displayed and embed html
 		if(this.thumbnail_disp){
 			//js_log('rewrite embed');
-			if(!embedTypes.getPlayerType()){
+			if(!embedTypes.players.selected_player){
 				//this.innerHTML = this.getPluginMissingHTML(); 
 				//$j('#'+this.id).html(this.getPluginMissingHTML());
 				this.innerHTML = this.getPluginMissingHTML();
-			}else{						
-				//$j('#'+this.id).html(this.getEmbedHTML());
-				this.innerHTML = this.getEmbedHTML();
-			}
-			this.paused = false;
-			this.thumbnail_disp=false;	
+			}else
+                this.doEmbedHTML();
 		}else{
 			//the plugin is already being displayed
 		}
@@ -1800,6 +2057,7 @@ function mv_addLoadEvent(func) {
 			$j.ajax({
 				type: "GET",
 				url:req_url,
+                async: false,
 				success:function(data){
 					callback(data);
 				}
@@ -1813,7 +2071,9 @@ function mv_addLoadEvent(func) {
 					type: "POST",
 					url:mv_embed_path + 'mv_data_proxy.php',									
 					data:{url:req_url},
-					success:function(data){																	
+                    async: false,
+					success:function(data){											
+						js_log("did ajax req:"+ typeof data);
 						callback(data);
 					}
 				});

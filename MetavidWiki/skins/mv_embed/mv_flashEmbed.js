@@ -24,12 +24,9 @@ var flashEmbed = {
     },
     doFlashEmbed : function()
     {
-        var video_file = this.src;
-        video_file = video_file.substring(0, video_file.search(".anx"));
-        
         new flashembed("FlowPlayerAnnotationHolder",
         { src: mv_embed_path + 'FlowPlayerDark.swf', width: this.width, height: this.height, id: this.pid },
-        { config: { autoPlay: false, showStopButton: false, showPlayButton: false,
-           videoFile: video_file } });
+        { config: { autoPlay: true, showStopButton: false, showPlayButton: false,
+           videoFile: this.media_element.selected_source.uri } });
     }
 }

@@ -36,11 +36,19 @@ $sample_embed[0]['desc']='basic usage with manual controls:<br />'.
 //$sample_embed[1]['desc'] = '<b>RSS</b> a podcast like dynamic feed for "peace"<br />'.
 //		'<iframe width="500" height="200" src="'.$plurl.'">rss feed here</iframe>';
 
+$sample_embed[1]['tag']='<video id="vflash" src="http://www.archive.org/download/mv_senate_proceeding_12-23-07/senate_proceeding_12-23-07.flv"></video>';
+$sample_embed[1]['desc']='flash video usage with manual controls:<br />'. 
+					'<a href="javascript:document.getElementById(\'vflash\').play();">Play</a> | '.
+					'<a href="javascript:document.getElementById(\'vflash\').stop();">Stop</a> <br />';
+
+$sample_embed[2]['tag']='<video><source type="video/ogg" src="http://128.114.20.64/media/senate_proceeding_05-15-08.ogg.anx?t=0:00:00/0:20:00" title="annodex ogg"/><source src="http://www.archive.org/download/mv_senate_proceeding_05-15-08/senate_proceeding_05-15-08.flv" title="flash"/></video>';
+$sample_embed[2]['desc']='';
+
 //$sample_embed[1]['tag'] = '<video roe="http://192.168.0.104/mvWiki/index.php?title=Special:MvExportStream&feed_format=roe&stream_name=Senate_proceeding_08-01-07&t=0:00:00/0:05:00">';
 //$sample_embed[1]['desc'] = 'Demo of json ROE attribute';
 
-$sample_embed[2]['tag'] = '<video roe="http://metavid.ucsc.edu/wiki/index.php?title=Special:MvExportStream&feed_format=roe&stream_name=Senate_proceeding_08-01-07&t=0:06:00/0:07:00">';
-$sample_embed[2]['desc'] = 'Demo2  of json ROE attribute';
+$sample_embed[3]['tag'] = '<video roe="http://metavid.ucsc.edu/wiki/index.php?title=Special:MvExportStream&feed_format=roe&stream_name=Senate_proceeding_08-01-07&t=0:06:00/0:07:00">';
+$sample_embed[3]['desc'] = 'Demo2  of json ROE attribute';
 
 
 //$sample_embed[2]['tag'] = '<video id="v2" controls="true" roe="http://mammoth.dnip.net/mvWiki/index.php?title=Special:MvExportStream&feed_format=roe&stream_name=senate_11-14-05&t=0:42:14/0:42:56"/>';		
@@ -48,22 +56,22 @@ $sample_embed[2]['desc'] = 'Demo2  of json ROE attribute';
  
 
 //playlist tags:  
-$sample_embed[3]['tag'] = '<playlist id="playlist1" width="400" height="300"
+$sample_embed[4]['tag'] = '<playlist id="playlist1" width="400" height="300"
 src="sample_xspf.xml" controls="true" embed_link="true"/>';
-$sample_embed[3]['desc'] = '<b>xspf</b> static xiph playlist <a href="http://metavid.ucsc.edu/wiki/index.php/Dorganisms">Dorganisms</a> <br /> <iframe width="500" height="200" 
+$sample_embed[4]['desc'] = '<b>xspf</b> static xiph playlist <a href="http://metavid.ucsc.edu/wiki/index.php/Dorganisms">Dorganisms</a> <br /> <iframe width="500" height="200" 
 		src="sample_xspf.xml">xiph playlist disp here</iframe>';
 
 $plurl = 'http://metavid.ucsc.edu/overlay/archive_browser/rss_filter_view?filters[0][type]=match&filters[0][val]=peace&start=0&rpp=10';
-$sample_embed[4]['tag'] = '<playlist id="playlist2"
+$sample_embed[5]['tag'] = '<playlist id="playlist2"
 src="'.$plurl.'"/>';
-$sample_embed[4]['desc'] = '<b>RSS</b> a podcast like dynamic feed for "peace"<br />'.
+$sample_embed[5]['desc'] = '<b>RSS</b> a podcast like dynamic feed for "peace"<br />'.
 		'<iframe width="500" height="200" src="'.$plurl.'">rss feed here</iframe>';
 
 $plurl ='http://metavid.ucsc.edu/m3u/filters/filter_seq?filters[0][type]=match&filters[0][val]=war&start=0&rpp=10'; 
-$sample_embed[5]['tag'] = '<playlist id="warplaylist" src="'.$plurl.'"/>';
-//$sample_embed[5]['desc'] = '<b>m3u</b> dynamic playlist search for "war"<br /> <textarea cols="70" rows="9">'.file_get_contents($plurl).'</textarea>';
+$sample_embed[6]['tag'] = '<playlist id="warplaylist" src="'.$plurl.'"/>';
+//$sample_embed[6]['desc'] = '<b>m3u</b> dynamic playlist search for "war"<br /> <textarea cols="70" rows="9">'.file_get_contents($plurl).'</textarea>';
 
-$sample_embed[6]['tag'] ='<playlist id="inline_pl">
+$sample_embed[7]['tag'] ='<playlist id="inline_pl">
 <!-- (hide from html rendering)
 #playlist attr:
 |title=Inline Playlist
@@ -87,7 +95,7 @@ but smells like limburger
 
 -->
 </playlist>';
-$sample_embed[6]['desc'] = '<b>Inline Playlist:</b> for more info see <a href="http://metavid.ucsc.edu/wiki/index.php/Mv_embed">mv_embed wiki</a> page';
+$sample_embed[7]['desc'] = '<b>Inline Playlist:</b> for more info see <a href="http://metavid.ucsc.edu/wiki/index.php/Mv_embed">mv_embed wiki</a> page';
 
 //empty sample embed (to only do one:)
 //$sample_embed = array();
@@ -97,14 +105,14 @@ $sample_embed[6]['desc'] = '<b>Inline Playlist:</b> for more info see <a href="h
 ?>
   <table border="1" cellpadding="6" width="600">
   	<? foreach($sample_embed as $key=>$aval){
-  		if($key>=3)continue;	
+  		if($key!=2)continue;	
   	 ?>
 	    <tr>    	
-	      <td><?php echo $aval['tag']?></td>
-	      <td valign="top"><b>Sample Embed <?php echo $key?></b><br />
-	      <?php echo $aval['desc']?><br />
+	      <td><?=$aval['tag']?></td>
+	      <td valign="top"><b>Sample Embed <?=$key?></b><br />
+	      <?=$aval['desc']?><br />
 	      &lt;-- code used: <br />
-	     <pre> <?php echo  htmlentities($aval['tag'])?></pre>
+	     <pre> <?= htmlentities($aval['tag'])?></pre>
 	      </td>
 	    </tr>
 	    <? //oput a seperator between video and playlist
