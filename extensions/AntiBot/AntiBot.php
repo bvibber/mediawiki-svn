@@ -87,8 +87,25 @@ class AntiBot {
 	}
 
 	static function log( $pluginName ) {
+		global $wgRequest;
 		$ip = wfGetIP();
-		wfDebugLog( 'AntiBot', "AntiBot trigger hit: $pluginName $ip\n" );
+		$action = $wgRequest->getVal( 'action', '<no action>' );
+		$title = $wgRequest->getVal( 'title', '<no title>' );
+		$text = $wgRequest->getVal( 'wpTextbox1' );
+		if ( is_null( $text ) ) {
+			$text = '<no text>';
+		} else {
+			if ( strlen( $text ) > 60 ) {
+				$text = '"' . substr( $text, 0, 60 ) . '..."';
+			} else {
+				$text = "\"$text\"";
+			}
+		}
+		$action = str_replace( "\n", '', $action );
+		$title = str_replace( "\n", '', $title );
+		$text = str_replace( "\n", '', $text );
+
+		wfDebugLog( 'AntiBot', "$ip AntiBot plugin $pluginName hit: $action [[$title]] $text\n" );
 	}
 
 	static function quiet() {
