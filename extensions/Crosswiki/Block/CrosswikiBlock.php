@@ -7,7 +7,7 @@ $wgExtensionCredits['specialpage'][] = array(
 	'name' => 'Crosswiki Blocking',
 	'author' => 'VasilievVV',
 	'version' => '1.0alpha',
-//	'url' => 'http://www.mediawiki.org/wiki/Extension:Crosswiki_Blocking',
+	'url' => 'http://www.mediawiki.org/wiki/Extension:Crosswiki_Blocking',
 	'description' => 'Allows to (un)block users on other wikis',
 	'descriptionmsg' => 'crosswikiblock-desc',
 );
