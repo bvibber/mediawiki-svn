@@ -1574,7 +1574,7 @@ class BotQueryProcessor {
 	*/
 	function genPageBackLinksHelper(&$prop, &$genInfo)
 	{
-		global $wgContLang;
+		global $wgContLang, $wgMiserMode;
 		$this->startProfiling();
 		$prefix = $linktbl = $code = null;
 		extract( $this->genPageBackLinksSettings[$prop] );
@@ -1593,8 +1593,9 @@ class BotQueryProcessor {
 		//
 		// Parse contFrom - will be in the format    ns|db_key|page_id - determine how to continue
 		//
+		// Builds a table scan query -- domas
 		$contFrom = $parameters["{$code}contfrom"];
-		if( $contFrom ) {
+		if( $contFrom && !$wgMiserMode ) {
 			$contFromList = explode( '|', $contFrom );
 			$contFromValid = count($contFromList) === 3;
 			if( $contFromValid ) {
