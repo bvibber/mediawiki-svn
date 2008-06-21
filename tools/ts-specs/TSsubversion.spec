@@ -65,7 +65,8 @@ export CC="cc"
 export CXX="CC"
 export CFLAGS="%optflags -D_LARGEFILE64_SOURCE -D_FILE_OFFSET_BITS=64"
 export LD=/usr/ccs/bin/ld
-export LDFLAGS="%_ldflags -L%{_libdir} -R%{_libdir} -R/usr/sfw/lib -L$RPM_BUILD_ROOT%{_libdir}"
+export LDFLAGS="%_ldflags -L%{_libdir} -L$RPM_BUILD_ROOT%{_libdir}"
+export LIBS="-R/usr/sfw/lib:/opt/ts/lib"
 export PATH=$PATH:/usr/apache2/bin
 ./configure \
     --prefix=%{_prefix} \
