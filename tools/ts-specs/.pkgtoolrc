@@ -1,3 +1,3 @@
-specdirs: include
+specdirs: include:base-specs
 sourcedirs:	${MYDIR}/ext-sources:${MYDIR}/copyright
 patchdirs: ${MYDIR}/patches
