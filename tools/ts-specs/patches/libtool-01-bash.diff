@@ -1,0 +1,8 @@
+--- libtool-2.2.4-orig/libtoolize.in	2008-05-02 19:28:08.000000000 +0000
++++ libtool-2.2.4/libtoolize.in	2008-05-24 02:43:38.942264847 +0000
+@@ -1,4 +1,4 @@
+-#! /bin/sh
++#! /bin/bash
+ # @configure_input@
+ 
+ # libtoolize (GNU @PACKAGE@@TIMESTAMP@) @VERSION@
