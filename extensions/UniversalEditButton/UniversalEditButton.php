@@ -34,11 +34,13 @@ $wgExtensionCredits['other'][] = array(
 	'url'            => 'http://www.mediawiki.org/wiki/Extension:UniversalEditButton',
 	'svn-date'       => '$LastChangedDate$',
 	'svn-revision'   => '$LastChangedRevision$',
-	'description'    => 'Adds HTML header link to support Universal Edit Button browser extension.',
-	'author'         => 'Brion Vibber',
+	'description'    => 'Adds HTML header <code>&lt;link&gt;</code> to support Universal Edit Button browser extension.',
+	'descriptionmsg' => 'univesaleditbutton-desc',
+	'author'         => array( 'Brion Vibber', 'Danny B.' ),
 );
 
 $wgHooks['BeforePageDisplay'][] = 'efUniversalEditLink';
+$wgExtensionMessagesFiles['UniversalEditButton'] = dirname(__FILE__) . '/UniversalEditButton.i18n.php';
 
 function efUniversalEditLink( $output ) {
 	global $wgArticle, $wgTitle, $wgUser;
