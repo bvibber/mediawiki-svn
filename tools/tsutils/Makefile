@@ -1,4 +1,4 @@
-SUBDIRS		= libtsutils watcherd acctexp listlogins lsexp whodo whinequota pwtool
+SUBDIRS		= libtsutils watcherd acctexp listlogins lsexp whodo whinequota pwtool days2date date2days
 MAKEFLAGS	= --no-print-directory
 
 all clean depend install lint:
