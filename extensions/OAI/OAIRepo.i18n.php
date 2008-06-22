@@ -39,6 +39,13 @@ $messages['eo'] = array(
 	'oai-desc' => 'Provizas dosierujan interfacon [http://www.openarchives.org/OAI/openarchivesprotocol.html OAI-PMH]',
 );
 
+/** Persian (فارسی)
+ * @author Huji
+ */
+$messages['fa'] = array(
+	'oai-desc' => 'رابط مخزن [http://www.openarchives.org/OAI/openarchivesprotocol.html OAI-PMH] را فراهم می‌کند',
+);
+
 /** French (Français)
  * @author Grondin
  */
