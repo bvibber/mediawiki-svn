@@ -277,14 +277,20 @@ var quicktimeActiveXPlayer = new mediaPlayer(
 
 function mediaPlayers()
 {
-    this.players = new Array();
+    this.init();
 }
 
 mediaPlayers.prototype =
 {
     players : null,
     selected_player : null,
+    preference : null,
     
+    init : function()
+    {
+        this.players = new Array();
+        this.loadPreferences();
+    },
     addPlayer : function(player)
     {
         for (var i in this.players)
@@ -310,21 +316,71 @@ mediaPlayers.prototype =
         if(mime_players.length)
         {
             this.selected_player = mime_players[0];
+            for(var i in mime_players)
+                if(mime_players[i].id==this.preference[mime_type])
+                    this.selected_player = mime_players[i];
             js_log('selected ' + this.selected_player.getName());
         }
         else
             js_log('no player found');
     },
-    selectPlayer : function(player_id)
+    selectPlayer : function(player_id, mime_type)
     {
         for(var i in this.players)
             if(this.players[i].id == player_id)
             {
                 this.selected_player = this.players[i];
+                js_log('choosing ' + player_id + ' for ' + mime_type);
+                this.preference[mime_type]=player_id;
+                this.savePreferences();
                 break;
             }
+    },
+    loadPreferences : function()
+    {
+        this.preference = new Object();
+    	// see if we have a cookie set to a clientSupported type: 
+		var cookieVal = getCookie( 'ogg_player_exp' );
+		if (cookieVal)
+        {
+            var pairs = cookieVal.split('&');
+            for(var i in pairs)
+            {
+                var name_value = pairs[i].split('=');
+                this.preference[name_value[0]]=name_value[1];
+                js_log('setting preference for ' + name_value[0] + ' to ' + name_value[1]);
+            }
+        }
+    },
+    savePreferences : function()
+    {
+        var cookieVal = '';
+        for(var i in this.preference)
+            cookieVal = cookieVal + i + '='+ this.preference[i] + '&';
+        cookieVal=cookieVal.substr(0, cookieVal.length-1);
+        js_log('setting preference cookie to ' + cookieVal);
+		var week = 7*86400*1000;
+		setCookie( 'ogg_player_exp', cookieVal, week, false, false, false, false );
     }
 };
+
+var getCookie = function ( cookieName ) {
+		 var m = document.cookie.match( cookieName + '=(.*?)(;|$)' );
+		 return m ? unescape( m[1] ) : false;
+	 }
+     
+var setCookie = function ( name, value, expiry, path, domain, secure ) {
+     var expiryDate = false;
+     if ( expiry ) {
+         expiryDate = new Date();
+         expiryDate.setTime( expiryDate.getTime() + expiry );
+     }
+     document.cookie = name + "=" + escape(value) +
+     (expiryDate ? ("; expires=" + expiryDate.toGMTString()) : "") +
+     (path ? ("; path=" + path) : "") +
+     (domain ? ("; domain=" + domain) : "") +
+     (secure ? "; secure" : "");
+}
 
 /*parseUri class:*/
 var parseUri=function(d){var o=parseUri.options,value=o.parser[o.strictMode?"strict":"loose"].exec(d);for(var i=0,uri={};i<14;i++){uri[o.key[i]]=value[i]||""}uri[o.q.name]={};uri[o.key[12]].replace(o.q.parser,function(a,b,c){if(b)uri[o.q.name][b]=c});return uri};parseUri.options={strictMode:false,key:["source","protocol","authority","userInfo","user","password","host","port","relative","path","directory","file","query","anchor"],q:{name:"queryKey",parser:/(?:^|&)([^&=]*)=?([^&]*)/g},parser:{strict:/^(?:([^:\/?#]+):)?(?:\/\/((?:(([^:@]*):?([^:@]*))?@)?([^:\/?#]*)(?::(\d*))?))?((((?:[^?#\/]*\/)*)([^?#]*))(?:\?([^#]*))?(?:#(.*))?)/,loose:/^(?:(?![^:@]+:[^:@\/]*@)([^:\/?#.]+):)?(?:\/\/)?((?:(([^:@]*):?([^:@]*))?@)?([^:\/?#]*)(?::(\d*))?)(((\/(?:[^?#](?![^?#\/]*\.[^?#\/.]+(?:[?#]|$)))*\/?)?([^?#\/]*))(?:\?([^#]*))?(?:#(.*))?)/}};
@@ -347,14 +403,7 @@ var embedTypes = {
 	 init: function(){
 		//detect supported types
 		this.detect();
-		//see if we have a cookie set to a clientSupported type: 
-/*		var cookieVal = this.getCookie( 'ogg_player' ); 
-		if ( cookieVal && cookieVal != 'thumbnail' ) {
-			if(this.clientSupports[cookieVal]){
-				this.playerType = cookieVal;
-			}
-		}
-		if(!this.playerType){
+/*		if(!this.playerType){
 			for ( var i = 0; i < this.players.length; i++ ) {
 				if ( this.clientSupports[this.players[i]] ) {
 					this.playerType = this.players[i];
@@ -391,7 +440,7 @@ var embedTypes = {
 			}else{*/
 				//else gray plugin and the plugin with link to select
 				select_html+='<li>'+
-								'<a style="color:white" href="#" onClick="'+ file_select_code + 'mvEmbed.userSetPlayerType(\''+supporting_players[i].id+'\');return false;">'+
+								'<a style="color:white" href="#" onClick="'+ file_select_code + 'embedTypes.players.selectPlayer(\''+supporting_players[i].id+'\',\''+mime_type+'\');return false;">'+
 									'<img border="0" width="16" height="16" src="'+mv_embed_path+'images/plugin_disabled.png">'+								
 									supporting_players[i].getName() + 
 								'</a>'+
@@ -399,15 +448,8 @@ var embedTypes = {
 //			}
 		 }
 		 select_html+='</ul>';
+         js_log(select_html);
 		 return select_html;
-	},
-	userSetPlayerType : function ( player) {
-		if ( player != 'thumbnail' ) {
-			var week = 7*86400*1000;
-			this.setCookie( 'ogg_player', player, week, false, false, false, false );
-		}
-		this.players.selectPlayer(player);
-		js_log('embedTypes: player set to: '+ player);
 	},
 	clientSupports: { 'thumbnail' : true },
  	detect: function() {
@@ -510,19 +552,7 @@ var embedTypes = {
 		//this.clientSupports['quicktime-activex'] = false;
 		//js_log(this.clientSupports);
 	 },
-	 setCookie : function ( name, value, expiry, path, domain, secure ) {
-		 var expiryDate = false;
-		 if ( expiry ) {
-			 expiryDate = new Date();
-			 expiryDate.setTime( expiryDate.getTime() + expiry );
-		 }
-		 document.cookie = name + "=" + escape(value) +
-		 (expiryDate ? ("; expires=" + expiryDate.toGMTString()) : "") +
-		 (path ? ("; path=" + path) : "") +
-		 (domain ? ("; domain=" + domain) : "") +
-		 (secure ? "; secure" : "");
-		 },
-		 testActiveX : function ( name ) {
+	testActiveX : function ( name ) {
 		 var hasObj = true;
 		 try {
 			 // No IE, not a class called "name", it's a variable
@@ -532,10 +562,6 @@ var embedTypes = {
 		 }
 		 return hasObj;
 	 },
-	 getCookie : function ( cookieName ) {
-		 var m = document.cookie.match( cookieName + '=(.*?)(;|$)' );
-		 return m ? unescape( m[1] ) : false;
-	 }
 }
 //setup the embed type (cookie preference or javascript detected embed type)
 embedTypes.init();
@@ -1252,7 +1278,10 @@ mediaElement.prototype =
                 this.selected_source = this.sources[source];
         // or the first source
         if (!this.selected_source)
+        {
+            js_log('autoselecting first source');
             this.selected_source = this.sources[0];
+        }
     },
     /** Returns the array of mediaSources of this element.
         \returns {Array} Array of mediaSource elements.
@@ -1331,7 +1360,7 @@ mediaElement.prototype =
         else
             type = this.detectType(src);
 
-        this.sources.push(new mediaSource(type, src, title, this.sources.length));
+        this.sources.push(new mediaSource(type, src, title, marked_default));
     },
     /** Imports media sources from ROE data.
         @param roe_data ROE data.
