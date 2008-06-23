@@ -9,8 +9,8 @@ Place PasswordStrength.php in "$IP/extensions/PasswordStrength/". Open LocalSett
 require_once("$IP/extensions/PasswordStrength/PasswordStrength.php");
 
 3. SETTING UP CHECKS
-The global array $wgPSRegexChecks is a series of regular expressions to be applied to the password. The default (and example) is 
-$wgPSRegexChecks[] = '/^\d+$/'; This would cause any password consisting of only numbers to be denied.
+The global array $wgPasswordStrengthCheck is a series of regular expressions to be applied to the password. The default (and example) is 
+$wgPasswordStrengthCheck[] = '/^\d+$/'; This would cause any password consisting of only numbers to be denied.
 
 4. WARNINGS
 a) If a user has a password that does not pass the check, then they are locked out of their account.

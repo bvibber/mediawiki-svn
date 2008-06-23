@@ -29,18 +29,18 @@ $wgExtensionCredits['other'][] = array(
 	'author'         	=> 'Chad Horohoe',
 	'url'				=> 'http://www.mediawiki.org/wiki/Extension:PasswordStrength',
 	'description'		=> 'Perform additional security checks on passwords.',
-	'version'			=> '0.2',
+	'version'			=> '0.3',
 );
 
-$wgPSRegexChecks = array ();
-$wgPSRegexChecks[] = '/^\d+$/';
+$wgPasswordStrengthCheck = array ();
+$wgPasswordStrengthCheck[] = '/^\d+$/';
 
 $wgHooks['isValidPassword'][] = 'psCheckRegex';
 
 function psCheckRegex( $password, &$result, $userObj ) {
-	global $wgPSRegexChecks;
-	if ( is_array( $wgPSRegexChecks ) ) {
-		foreach ( $wgPSRegexChecks as $regex ) {
+	global $wgPasswordStrengthCheck;
+	if ( is_array( $wgPasswordStrengthCheck ) ) {
+		foreach ( $wgPasswordStrengthCheck as $regex ) {
 			if ( preg_match( $regex, $password ) ) {
 				$result = false;
 				return false;
