@@ -60,8 +60,8 @@ var vlcEmbed = {
 	    	this.vlc.style.width=this.width;
 	    	this.vlc.style.height=this.height;       
 	    	this.vlc.playlist.items.clear();
-	    	js_log('play:' + this.src);   
-	    	var itemId = this.vlc.playlist.add(this.src);
+	    	js_log('vlc play:' + this.media_element.selected_source.uri);   
+	    	var itemId = this.vlc.playlist.add(this.media_element.selected_source.uri);
 	    	if( itemId != -1 ){
 	    		//play
 	    		this.vlc.playlist.playItem(itemId);
@@ -184,7 +184,7 @@ var vlcEmbed = {
         if( this.mediaLen > 0 || this.vlc.input.time > 0){                     
         	///set mediaLen via request Url 
 			if(this.mediaLen==0)      
-				this.mediaLen=this.getDuration();
+				this.mediaLen=this.media_element.selected_source.duration;
 			//if we have media lenghth procceed
 			if(this.mediaLen){
 				//as long as the user is not interacting with the playhead update:
