@@ -18,6 +18,13 @@ $messages['cs'] = array(
 	'universaleditbutton-desc' => 'Přidává do hlavičky <code>&lt;link&gt;</code> pro podporu rozšíření Universal Edit Button v prohlížečích.',
 );
 
+/** German (Deutsch)
+ * @author Raimond Spekking
+ */
+$messages['de'] = array(
+	'universaleditbutton-desc' => "Ergänzt den HTML-Header zur Unterstützung des ''UniversalEditButton'' um den <code>&lt;link&gt;</code>-Tag",
+);
+
 /** Hebrew (עברית)
  * @author Rotem Liss
  */
