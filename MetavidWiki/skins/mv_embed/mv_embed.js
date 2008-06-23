@@ -1133,15 +1133,9 @@ textInterface.prototype = {
   * @param {String} uri URI of the source.
   * @constructor
   */
-function mediaSource(mime_type, uri, title, marked_default)
+function mediaSource(element)
 {
-    js_log('Adding mediaSource of type ' + mime_type + ' and uri ' + uri + ' and title ' + title);
-    this.mime_type = mime_type;
-    this.uri = uri;
-    this.title = title;
-    this.marked_default = marked_default;
-    this.parseURLDuration();
-    return this;
+    this.init(element);
 }
 
 mediaSource.prototype =
@@ -1162,7 +1156,32 @@ mediaSource.prototype =
     start_ntp:null,
     end_ntp:null,
     
-    
+    init : function(element)
+    {
+        this.uri = element.getAttribute('src');
+        if(ogg_chop_links)
+            this.uri = this.uri.replace(".anx", '');
+        this.marked_default = false;
+
+        var tag = element.tagName.toLowerCase();
+        
+        if (tag == 'video')
+            this.marked_default = true;
+
+        if (element.hasAttribute("title"))
+            this.title = element.getAttribute("title");
+        else
+            this.title = this.uri;
+
+        if (element.hasAttribute('type'))
+            this.mime_type = element.getAttribute('type');
+        else if (element.hasAttribute('content-type'))
+            this.mime_type = element.getAttribute('content-type');
+        else
+            this.mime_type = this.detectType(this.uri);
+        js_log('Adding mediaSource of type ' + this.mime_type + ' and uri ' + this.uri + ' and title ' + this.title);
+        this.parseURLDuration();
+    },
     /** MIME type accessor function.
         @return the MIME type of the source.
         @type String
@@ -1229,7 +1248,16 @@ mediaSource.prototype =
 	getDurationNTP:function(){
 		return seconds2ntp(this.getDuration()/1000);
 	},
-
+    /** Attempts to detect the type of a media file based on the URI.
+        @param {String} uri URI of the media file.
+        @returns The guessed MIME type of the file.
+        @type String
+    */
+    detectType:function(uri)
+    {
+        if(endsWith(uri, '.flv'))
+            return 'video/x-flv';
+    }
 };
 
 /** A media element corresponding to a <video> element.
@@ -1338,29 +1366,7 @@ mediaElement.prototype =
         if (!element.hasAttribute('src'))
             return;
 
-        var src = element.getAttribute('src');
-        var title = null;
-        var type = null;
-        var marked_default = false;
-
-        var tag = element.tagName.toLowerCase();
-        
-        if (tag == 'src')
-            marked_default = true;
-
-        if (element.hasAttribute("title"))
-            title = element.getAttribute("title");
-        else
-            title = src;
-
-        if (element.hasAttribute('type'))
-            type = element.getAttribute('type');
-        else if (element.hasAttribute('content-type'))
-            type = element.getAttribute('content-type');
-        else
-            type = this.detectType(src);
-
-        this.sources.push(new mediaSource(type, src, title, marked_default));
+        this.sources.push(new mediaSource(element));
     },
     /** Imports media sources from ROE data.
         @param roe_data ROE data.
@@ -1373,16 +1379,6 @@ mediaElement.prototype =
 			_this.tryAddSource(source);
         });
     },
-    /** Attempts to detect the type of a media file based on the URI.
-        @param {String} uri URI of the media file.
-        @returns The guessed MIME type of the file.
-        @type String
-    */
-    detectType:function(uri)
-    {
-        if(endsWith(uri, '.flv'))
-            return 'video/x-flv';
-    }
 };
 
 function endsWith(str, suffix)
@@ -1763,12 +1759,11 @@ embedVideo.prototype = {
 		var out='<b style="color:white;">'+getMsg('download_from')+' '+parseUri(this.src).queryKey['t']+'</b><br>';
 		out+='<span style="color:white"><blockquote>';
 		var dl_list=dl_txt_list='';
-		$j.each(this.roe_xml.getElementsByTagName('mediaSource'), function(inx,n){
-			var dl_line = '<li><a style="color:white" href="'
-			dl_line+=(ogg_chop_links)?n.getAttribute("src").replace(".anx", ''):n.getAttribute("src");
-			dl_line+='"> '+n.getAttribute("title")+'</a></li>'+"\n";								
-			if(n.getAttribute("content-type")=="video/ogg"){
-				out+=dl_line;
+		$j.each(this.media_element.getSources(), function(index, source)
+        {	
+			var dl_line = '<li>' + transform_function(index, source) + '</li>'+"\n";						
+			if(this.getMIMEType()=="video/ogg"){
+                out+=dl_line;
 			}else if(this.getMIMEType()=="text/cmml"){
 				dl_txt_list+=dl_line;
 			}else{
