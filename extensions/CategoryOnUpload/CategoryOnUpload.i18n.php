@@ -1,8 +1,7 @@
 <?php
-
 /**
  * Internationalisation file for CategoryOnUpload extension.
- * 
+ *
  * @ingroup Extensions
  */
 

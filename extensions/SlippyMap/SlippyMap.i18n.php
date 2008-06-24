@@ -1,8 +1,13 @@
 <?php
+/**
+ * Internationalisation file for SlippyMap extension.
+ *
+ * @ingroup Extensions
+ */
 
 $messages = array();
 
-$messages['en'] = array( 
+$messages['en'] = array(
 	'slippymap_desc' => "Allows the use of the <tt><nowiki>&lt;slippymap&gt;</nowiki></tt> tag to display an OpenLayers slippy map. Maps are from [http://openstreetmap.org openstreetmap.org]",
 	'slippymap_latmissing' => "Missing lat value (for the latitude).",
 	'slippymap_lonmissing' => "Missing lon value (for the longitude).",
@@ -34,7 +39,7 @@ $messages['en'] = array(
 /** German (Deutsch)
  * @author Raimond Spekking
  */
-$messages['de'] = array( 
+$messages['de'] = array(
 	'slippymap_desc'            => "Ermöglicht die Nutzung des <tt><nowiki>&lt;slippymap&gt;</nowiki></tt>-Tags zur Anzeige einer OpenLayer-SlippyMap. Die Karten stammen von [http://openstreetmap.org openstreetmap.org]",
 	'slippymap_latmissing'      => "Es wurde kein Wert für die geografische Breite (lat) angegeben.",
 	'slippymap_lonmissing'      => "Es wurde kein Wert für die geografische Länge (lon) angegeben.",

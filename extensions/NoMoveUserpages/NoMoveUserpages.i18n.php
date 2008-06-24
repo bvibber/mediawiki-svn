@@ -1,6 +1,9 @@
 <?php
-
-// Internationalization file for Extension:NoMoveUserpages
+/**
+ * Internationalisation file for NoMoveUserpages extension.
+ * 
+ * @ingroup Extensions
+ */
 
 $messages = array();
 
