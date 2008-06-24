@@ -25,6 +25,7 @@ define("SEGLENGTH_VXML", 10000000);
 //define("HAWPEDIA_VXML_TMP_FILE", "/tmp/hawpedia_vxml_dispatcher.tmp"); 
 
 $supportedLanguages = Array(
+"ar" => 1,
 "bar" => 1,
 "cs" => 1,
 "de" => 1,

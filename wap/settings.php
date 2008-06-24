@@ -55,6 +55,7 @@ else if ($_GET['mode'] == 'lang') {
 	global $supportedLanguages;
 	
   $lang_code = Array(
+    "ar" => "العربية",
     "bar" => "Boarisch",
     "cs" => "Česky",
     "de" => "Deutsch",
