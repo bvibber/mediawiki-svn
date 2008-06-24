@@ -145,7 +145,7 @@ class SlippyMap {
 	
 			$output .= '<script type="text/javascript"> ';
 	
-			$output .= "var lon= $lon; var lat= $lat; var zoom= $zoom;";
+			$output .= "var lon= $lon; var lat= $lat; var zoom= $zoom; var lonLat;";
 	
 			$output .= 'var map; ';
 	
@@ -156,6 +156,15 @@ class SlippyMap {
 	
 			$output .= '	return new OpenLayers.LonLat(lon, lat); ';
 			$output .= '} ';
+
+			$output .= 'function MercatorToLonLat(ll) { ';
+        		$output .= '   var lon = ll.lon / 20037508.34 * 180; ';
+        		$output .= '   var lat = ll.lat / 20037508.34 * 180 * ( Math.PI / 180 ); ';
+        		$output .= '   lat = ( Math.pow(Math.E, lat) - Math.pow(Math.E, -lat) ) / 2; ';
+        		$output .= '   lat = Math.atan( lat ); ';
+        		$output .= '   lat = lat * 180 / Math.PI;';
+        		$output .= '   return new OpenLayers.LonLat(lon, lat); ';
+			$output .= '   } ';
 	
 			$output .= 'addOnloadHook( slippymap_init ); ';
 	
@@ -181,7 +190,7 @@ class SlippyMap {
 	
 			$output .= "	map.addLayer(layer); ";
 	
-			$output .= "	var lonLat = lonLatToMercator(new OpenLayers.LonLat(lon, lat)); ";
+			$output .= "	lonLat = lonLatToMercator(new OpenLayers.LonLat(lon, lat)); ";
 
 			if ( $marker ) {
 				$output .= 'var markers = new OpenLayers.Layer.Markers( "Markers" ); ' .
@@ -193,7 +202,15 @@ class SlippyMap {
 			}
 	
 			$output .= "	map.setCenter (lonLat, zoom); ";
+			$output .= "    postmap = document.getElementById('postmap'); ";
+			$output .= "    postmap.innerHTML = '<input type=\"button\" value=\"Reset view\" onclick=\"map.setCenter(lonLat, zoom);\" /><input type=\"button\" value=\"Get wikicode\" onclick=\"slippymap_getWikicode();\" \>'; ";
 			$output .= "} ";
+
+			$output .= 'function slippymap_getWikicode() {';
+			$output .= '    LL = MercatorToLonLat(map.getCenter()); Z = map.getZoom();';
+			$output .= '    size = map.getSize();';
+			$output .= '    alert( "<slippymap>h="+size.h+"|w="+size.w+"|z="+Z+"|lat="+LL.lat+"|lon="+LL.lon+"|layer=mapnik|marker=1</slippymap>\n\nThis needs to become a popup that can be used for cut and paste\nCoordinates have to be converted into degrees." ); ';
+			$output .= '}';
 	
 			$output .= "</script> ";
 	
@@ -203,7 +220,7 @@ class SlippyMap {
 			$output .= "<noscript><a href=\"http://www.openstreetmap.org/?lat=$lat&lon=$lon&zoom=$zoom\" title=\"See this map on OpenStreetMap.org\" style=\"text-decoration:none\">";
 			$output .= "<img src=\"".$wgMapOfServiceUrl."lat=$lat&long=$lon&z=$zoom&w=$width&h=$height&format=jpeg\" width=\"$width\" height=\"$height\" border=\"0\"><br/>";
 			$output .= '<span style="font-size:60%; background-color:white; position:relative; top:-15px; ">OpenStreetMap - CC-BY-SA-2.0</span>';
-			$output .= '</a></noscript></div></div>';
+			$output .= '</a></noscript></div><div id="postmap"></div></div>';
 
 	
 		}
