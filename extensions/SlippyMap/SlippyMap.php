@@ -21,10 +21,13 @@ if( defined( 'MEDIAWIKI' ) ) {
 	$wgExtensionFunctions[] = 'wfslippymap';
 
 	$wgExtensionCredits['parserhook'][] = array(
-		'name' => 'OpenStreetMap Slippy Map',
-		'author' =>'[http://harrywood.co.uk Harry Wood]',
-		'url' => 'http://wiki.openstreetmap.org/index.php/Slippy_Map_MediaWiki_Extension',
-		'description' => 'Allows the use of the &lt;slippymap&gt; tag to display an OpenLayers slippy map. Maps are from [http://openstreetmap.org openstreetmap.org]'
+		'name'           => 'OpenStreetMap Slippy Map',
+		'author'         => '[http://harrywood.co.uk Harry Wood]',
+		'svn-date'       => '$LastChangedDate$',
+		'svn-revision'   => '$LastChangedRevision$',
+		'url'            => 'http://wiki.openstreetmap.org/index.php/Slippy_Map_MediaWiki_Extension',
+		'description'    => 'Allows the use of the &lt;slippymap&gt; tag to display an OpenLayers slippy map. Maps are from [http://openstreetmap.org openstreetmap.org]',
+		'descriptionmsg' => 'slippymap_desc',
 	);
 
 	$wgAutoloadClasses['SlippyMap'] = dirname( __FILE__ ) . '/SlippyMap.class.php';
