@@ -26,7 +26,7 @@ time_t		 when;
 char		 res[256];
 struct tm	 *whentm;
 	if (argc > 1) {
-		if (getgid() != getegid()) {
+		if (getuid() > 0) {
 			(void) fprintf(stderr, "only the super-user may view"
 				" the account expiry data of another user\n");
 			return 1;
