@@ -13,7 +13,6 @@ $aliases = array();
  */
 $aliases['en'] = array(
 	'Configure' => array( 'Configure' ),
-	'Extensions' => array( 'Extensions' ),
 	'ViewConfig' => array( 'ViewConfig' ),
 );
 
@@ -22,6 +21,5 @@ $aliases['en'] = array(
  */
 $aliases['fr'] = array(
 	'Configure' => array( 'Configurer' ),
-	'Extensions' => array( 'Extensions' ),
 	'ViewConfig' => array( 'Voir la configuration' ),
 );
