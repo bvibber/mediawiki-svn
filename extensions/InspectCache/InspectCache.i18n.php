@@ -20,6 +20,13 @@ $messages['en'] = array(
 	'inspectcache-list'    => 'List',
 );
 
+/** Eastern Mari (Олык Марий йылме)
+ * @author Сай
+ */
+$messages['mhr'] = array(
+	'inspectcache-delete' => 'Шӧраш',
+);
+
 /** Afrikaans (Afrikaans)
  * @author Arnobarnard
  */
@@ -135,12 +142,13 @@ $messages['fr'] = array(
 );
 
 /** Galician (Galego)
- * @author Xosé
  * @author Toliño
+ * @author Xosé
  * @author Alma
  */
 $messages['gl'] = array(
 	'inspectcache'         => 'Inspeccionar a caché',
+	'inspectcache-desc'    => 'Unha ferramanta de depuración sinxela para inspeccionar os contidos da caché compartida',
 	'inspectcache-ok'      => 'De acordo',
 	'inspectcache-general' => 'Caché xeral',
 	'inspectcache-parser'  => 'Analizador da memoria caché',

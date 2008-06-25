@@ -313,10 +313,14 @@ $messages['fr'] = array(
 
 /** Galician (Galego)
  * @author Alma
- * @author Xosé
  * @author Toliño
+ * @author Xosé
  */
 $messages['gl'] = array(
+	'regexblock'                      => 'Bloqueo Regex',
+	'regexblock-special-desc'         => 'bloqueo alternativo a usuario (dando o seu nome, usando exprecións regulares)',
+	'regexblock-stat-desc'            => 'Amosa as [[Special:Regexblockstats|estatísticas de bloqueo]] para a extensión Regex Block',
+	'regexblockstats'                 => 'Estatísticas do bloqueo Regex',
 	'regexblock-reason-ip'            => 'A este enderezo IP estalle prohibido editar debido a vandalismo ou outras actividades negativas realizadas por vostede ou por alguén que comparte o seu enderezo IP. Se pensa que se trata dun erro, $1',
 	'regexblock-reason-name'          => 'A este nome de usuario estalle prohibido editar debido a vandalismo ou outras actividades negativas. Se pensa que se trata dun erro, $1',
 	'regexblock-reason-regex'         => 'A este nome de usuario prohíbeselle editar debido a vandalismo ou outras actividades negativas por parte dun usuario cun nome semellante. Cree un nome de usuario diferente ou $1 sobre o problema',
@@ -339,6 +343,7 @@ Isto debería facerse só para previr vandalismo, e segundo a política e normas
 	'regexblock-form-submit-regex'    => 'Expresión regular non válida.',
 	'regexblock-form-submit-expiry'   => 'Especifique un período de expiración.',
 	'regexblock-already-blocked'      => '$1 xa está bloqueado.',
+	'regexblock-stats-title'          => 'Estatíticas do bloqueo Regex',
 	'regexblock-stats-username'       => 'Para $1',
 	'regexblock-stats-times'          => 'foi bloqueado en',
 	'regexblock-stats-logging'        => 'rexistrarse desde o enderezo',
@@ -347,6 +352,7 @@ Isto debería facerse só para previr vandalismo, e segundo a política e normas
 	'regexblock-view-all'             => 'Todo',
 	'regexblock-view-go'              => 'Adiante',
 	'regexblock-view-match'           => '(procura exacta)',
+	'regexblock-view-regex'           => '(coincidencia regex)',
 	'regexblock-view-account'         => '(bloqueo de creación de contas)',
 	'regexblock-view-reason'          => 'razón: $1',
 	'regexblock-view-reason-default'  => 'razón xenérica',
@@ -368,6 +374,13 @@ $messages['gv'] = array(
 	'regexblock-form-reason'   => 'Fa:',
 	'regexblock-view-go'       => 'Gow',
 	'regexblock-view-reason'   => 'fa: $1',
+);
+
+/** Hawaiian (Hawai`i)
+ * @author Singularity
+ */
+$messages['haw'] = array(
+	'regexblock-form-reason' => 'Kumu:',
 );
 
 /** Hindi (हिन्दी)
@@ -1068,6 +1081,13 @@ $messages['ru'] = array(
 	'regexblock-view-stats'           => '(статистика)',
 	'regexblock-view-empty'           => 'Список заблокированных имён и адресов пуст.',
 	'regexblock-view-time'            => '$1',
+);
+
+/** Sassaresu (Sassaresu)
+ * @author Felis
+ */
+$messages['sdc'] = array(
+	'regexblock-already-blocked' => '$1 è già broccaddu.',
 );
 
 /** Slovak (Slovenčina)

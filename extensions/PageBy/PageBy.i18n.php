@@ -94,8 +94,10 @@ $messages['fr'] = array(
 /** Galician (Galego)
  * @author Xosé
  * @author Alma
+ * @author Toliño
  */
 $messages['gl'] = array(
+	'pageby-desc'         => 'Amosa as contribucións feitas nunha páxina do wiki usando a etiqueta <code><nowiki><pageby></nowiki></code>',
 	'pageby-first'        => 'Páxina creada por $1, $2',
 	'pageby-last'         => 'Última  <a href="$3">modificación</a> por $1, $2',
 	'pageby-contributors' => 'Colaboradores:',

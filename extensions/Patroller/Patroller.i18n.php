@@ -103,6 +103,7 @@ $messages['bg'] = array(
 	'patrol-endorsed-failed' => 'Редакцията не може да бъде отбелязана като проверена.',
 	'patrol-reverted-ok'     => 'Редакцията е възвърната',
 	'patrol-reverted-failed' => 'Редакцията не може да бъде възвърната.',
+	'patrol-skipped-ok'      => 'Пренебрегване на редакцията.',
 	'patrol-reasons'         => '* Обикновен вандализъм
 * Упражнения извън пясъчника
 * Виж беседата',
@@ -267,6 +268,13 @@ $messages['gv'] = array(
 	'patrol-revert-reason' => 'Fa:',
 );
 
+/** Hawaiian (Hawai`i)
+ * @author Singularity
+ */
+$messages['haw'] = array(
+	'patrol-revert-reason' => 'Kumu:',
+);
+
 /** Hindi (हिन्दी)
  * @author Kaustubh
  */
@@ -397,26 +405,33 @@ $messages['is'] = array(
 	'patrol-resume'        => 'Smelltu hér til að halda áfram.',
 );
 
-/* Italian (BrokenArrow) */
+/** Italian (Italiano)
+ * @author BrokenArrow
+ * @author Pietrodn
+ */
 $messages['it'] = array(
-	'patrol' => 'Verifica delle modifiche',
-	'patrol-endorse' => 'Approva',
-	'patrol-revert' => 'Ripristina',
-	'patrol-revert-reason' => 'Motivo:',
-	'patrol-skip' => 'Salta',
-	'patrol-reverting' => 'Ripristino: $1',
-	'patrol-nonefound' => 'Non vi sono modifiche da verificare.',
-	'patrol-endorsed-ok' => 'La modifica è stata segnata come verificata.',
+	'patrol'                 => 'Verifica delle modifiche',
+	'patrol-desc'            => 'Interfaccia di patrolling migliorata con suddivisione del carico di lavoro',
+	'patrol-endorse'         => 'Approva',
+	'patrol-revert'          => 'Ripristina',
+	'patrol-revert-reason'   => 'Motivo:',
+	'patrol-skip'            => 'Salta',
+	'patrol-reverting'       => 'Ripristino: $1',
+	'patrol-nonefound'       => 'Non vi sono modifiche da verificare.',
+	'patrol-endorsed-ok'     => 'La modifica è stata segnata come verificata.',
 	'patrol-endorsed-failed' => 'Impossibile segnare la modifica come verificata.',
-	'patrol-reverted-ok' => 'La modifica è stata annullata.',
+	'patrol-reverted-ok'     => 'La modifica è stata annullata.',
 	'patrol-reverted-failed' => 'Impossibile annullare la modifica.',
-	'patrol-skipped-ok' => 'Modifica ignorata.',
-	'patrol-reasons' => "* Vandalismo semplice
+	'patrol-skipped-ok'      => 'Modifica ignorata.',
+	'patrol-reasons'         => '* Vandalismo semplice
 * Prova di nuovo utente
-* Vedi pagina di discussione",
-	'patrol-another' => 'Mostra un\'altra modifica, se disponibile.',
-	'patrol-stopped' => 'Si è scelto di non verificare altre modifiche. $1',
-	'patrol-resume' => 'Fare clic qui per riprendere.',
+* Vedi pagina di discussione',
+	'patrol-another'         => "Mostra un'altra modifica, se disponibile.",
+	'patrol-stopped'         => 'Si è scelto di non verificare altre modifiche. $1',
+	'patrol-resume'          => 'Fare clic qui per riprendere.',
+	'group-patroller'        => 'Patrollatori',
+	'group-patroller-member' => 'Patrollatore',
+	'grouppage-patroller'    => '{{ns:project}}:Patrollatore',
 );
 
 /** Javanese (Basa Jawa)

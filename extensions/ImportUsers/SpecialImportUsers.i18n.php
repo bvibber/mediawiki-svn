@@ -30,6 +30,15 @@ $messages['en'] = array(
 	'importusers-realname'                => 'real name',
 );
 
+/** Eastern Mari (Олык Марий йылме)
+ * @author Сай
+ */
+$messages['mhr'] = array(
+	'importusers-log-summary' => 'Чылаже',
+	'importusers-password'    => 'шолыпмут',
+	'importusers-email'       => 'электрон почто',
+);
+
 /** Afrikaans (Afrikaans)
  * @author Arnobarnard
  */
@@ -70,18 +79,20 @@ $messages['ar'] = array(
  * @author DCLXVI
  */
 $messages['bg'] = array(
-	'importusers'                     => 'Внасяне на потребители',
-	'importusers-uploadfile'          => 'Качване на файл',
-	'importusers-form-button'         => 'Внасяне',
-	'importusers-user-added'          => 'Потребителят <b>%s</b> беше добавен.',
-	'importusers-log'                 => 'Дневник на внасянията',
-	'importusers-log-summary'         => 'Резюме',
-	'importusers-log-summary-all'     => 'Всички',
-	'importusers-log-summary-added'   => 'Добавен',
-	'importusers-log-summary-updated' => 'Обновен',
-	'importusers-password'            => 'парола',
-	'importusers-email'               => 'е-поща',
-	'importusers-realname'            => 'истинско име',
+	'importusers'                      => 'Внасяне на потребители',
+	'importusers-desc'                 => 'Внасяне на потребители от CSV-файл; кодиране: UTF-8',
+	'importusers-uploadfile'           => 'Качване на файл',
+	'importusers-form-replace-present' => 'Заменяне на съществуващите потребители',
+	'importusers-form-button'          => 'Внасяне',
+	'importusers-user-added'           => 'Потребителят <b>%s</b> беше добавен.',
+	'importusers-log'                  => 'Дневник на внасянията',
+	'importusers-log-summary'          => 'Резюме',
+	'importusers-log-summary-all'      => 'Всички',
+	'importusers-log-summary-added'    => 'Добавен',
+	'importusers-log-summary-updated'  => 'Обновен',
+	'importusers-password'             => 'парола',
+	'importusers-email'                => 'е-поща',
+	'importusers-realname'             => 'истинско име',
 );
 
 /** Chamorro (Chamoru)
@@ -222,12 +233,14 @@ $messages['fr'] = array(
 $messages['gl'] = array(
 	'importusers'                         => 'Importar Usuarios',
 	'importusers-uploadfile'              => 'Cargar ficheiro',
+	'importusers-form-caption'            => 'Ficheiro de entrada CSV (UTF-8)',
 	'importusers-form-file'               => 'Formato do ficheiro do usuario (csv):',
 	'importusers-form-replace-present'    => 'Reemprazar os usuarios existentes',
 	'importusers-form-button'             => 'Importar',
 	'importusers-user-added'              => 'Usuario <b>%s</b> foi engadido.',
 	'importusers-user-present-update'     => 'O usuario <b>%s</b> xa existe. Actualizado.',
 	'importusers-user-present-not-update' => 'O usuario %s xa existe. Non actualizado.',
+	'importusers-user-invalid-format'     => 'Os datos de usuario na liña #%s teñen un formato inválido ou a liña está en branco. Esta foi saltada.',
 	'importusers-log'                     => 'Importar rexistro',
 	'importusers-log-summary'             => 'Resumo',
 	'importusers-log-summary-all'         => 'Todo',

@@ -166,6 +166,7 @@ $messages['km'] = array(
  */
 $messages['lb'] = array(
 	'minnamelength-error' => "Äre Benotzernumm ass ze kuerz. D'Mindestlängt ass $1.",
+	'minnamelength-desc'  => 'Eng Mindestlängt vum Benotzrnumm verlaangen',
 );
 
 /** Malayalam (മലയാളം)

@@ -11,6 +11,13 @@ $messages['en'] = array(
 	'oai-desc' => 'Provides [http://www.openarchives.org/OAI/openarchivesprotocol.html OAI-PMH] repository interface',
 );
 
+/** Aragonese (Aragonés)
+ * @author Juanpabl
+ */
+$messages['an'] = array(
+	'oai-desc' => 'Furne una interfaz de reposte [http://www.openarchives.org/OAI/openarchivesprotocol.html OAI-PMH]',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */
@@ -81,6 +88,13 @@ $messages['id'] = array(
 	'oai-desc' => 'Menyediakan antarmuka tempat penyimpanan [http://www.openarchives.org/OAI/openarchivesprotocol.html OAI-PMH]',
 );
 
+/** Italian (Italiano)
+ * @author Pietrodn
+ */
+$messages['it'] = array(
+	'oai-desc' => "Fornisce un'interfaccia per depositi [http://www.openarchives.org/OAI/openarchivesprotocol.html OAI-PMH]",
+);
+
 /** Ripoarisch (Ripoarisch)
  * @author Purodha
  */
@@ -102,6 +116,13 @@ $messages['mr'] = array(
 	'oai-desc' => '[http://www.openarchives.org/OAI/openarchivesprotocol.html OAI-PMH] रिपॉजिटरी इंटरफेस पुरविते',
 );
 
+/** Low German (Plattdüütsch)
+ * @author Slomox
+ */
+$messages['nds'] = array(
+	'oai-desc' => 'Stellt en [http://www.openarchives.org/OAI/openarchivesprotocol.html OAI-PMH]-Repositorium-Sniddstell bereit',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */
@@ -121,6 +142,13 @@ $messages['no'] = array(
  */
 $messages['oc'] = array(
 	'oai-desc' => 'Provesís una interfàcia de depaus [http://www.openarchives.org/OAI/openarchivesprotocol.html OAI-PMH]',
+);
+
+/** Portuguese (Português)
+ * @author Malafaya
+ */
+$messages['pt'] = array(
+	'oai-desc' => 'Providencia interface de repositório [http://www.openarchives.org/OAI/openarchivesprotocol.html OAI-PMH]',
 );
 
 /** Russian (Русский)

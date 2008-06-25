@@ -14,6 +14,13 @@ $messages['en'] = array(
 	'antibot-desc' => 'Simple framework for spambot checks and trigger payloads',
 );
 
+/** Arabic (العربية)
+ * @author Meno25
+ */
+$messages['ar'] = array(
+	'antibot-desc' => 'إطار بسيط للتحقق من بوت السبام والأحمال',
+);
+
 /** Czech (Česky)
  * @author Mormegil
  */
@@ -42,11 +49,25 @@ $messages['fr'] = array(
 	'antibot-desc' => 'Environnement simple de vérification contre les robots spammeurs et les soumissions de contenus à déclenchement conditionnel automatisé.',
 );
 
+/** Galician (Galego)
+ * @author Toliño
+ */
+$messages['gl'] = array(
+	'antibot-desc' => 'Estrutura sinxela para as comprobacións de spanm por parte dos bots e mais activación de cargas útiles',
+);
+
 /** Hebrew (עברית)
  * @author Rotem Liss
  */
 $messages['he'] = array(
 	'antibot-desc' => 'מערכת פשוטה לבדיקת בוטים של ספאם',
+);
+
+/** Indonesian (Bahasa Indonesia)
+ * @author Rex
+ */
+$messages['id'] = array(
+	'antibot-desc' => 'Kerangka kerja sederhana untuk memeriksa spambot dan alat pemicu',
 );
 
 /** Ripoarisch (Ripoarisch)

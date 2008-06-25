@@ -42,12 +42,13 @@ $messages['am'] = array(
  * @author SPQRobin
  */
 $messages['an'] = array(
-	'newuserlogpage'           => 'Rechistro de nuebos usuarios',
-	'newuserlogpagetext'       => "Isto ye un rechistro de creyazión d'usuarios",
-	'newuserlog-desc'          => 'Adibe un [[Special:Log/newusers|rechistro de creyazión de cuentas]] ta [[Special:Log]]',
-	'newuserlog-byemail'       => 'Palabra de paso nimbiata por correu electronico',
-	'newuserlog-create-entry'  => 'Nuebo usuario',
-	'newuserlog-create2-entry' => "S'ha creyato una cuenta ta $1",
+	'newuserlogpage'              => 'Rechistro de nuebos usuarios',
+	'newuserlogpagetext'          => "Isto ye un rechistro de creyazión d'usuarios",
+	'newuserlog-desc'             => 'Adibe un [[Special:Log/newusers|rechistro de creyazión de cuentas]] ta [[Special:Log]]',
+	'newuserlog-byemail'          => 'Palabra de paso nimbiata por correu electronico',
+	'newuserlog-create-entry'     => 'Nuebo usuario',
+	'newuserlog-create2-entry'    => "S'ha creyato una cuenta ta $1",
+	'newuserlog-autocreate-entry' => 'Cuenta creyata automaticament',
 );
 
 /** Old English (Anglo Saxon)
@@ -70,6 +71,16 @@ $messages['ar'] = array(
 	'newuserlog-create-entry'     => 'مستخدم جديد',
 	'newuserlog-create2-entry'    => 'أنشأ الحساب الخاص باسم $1',
 	'newuserlog-autocreate-entry' => 'الحساب تم إنشاؤه تلقائيا',
+);
+
+/** Assamese (অসমীয়া)
+ * @author Rajuonline
+ */
+$messages['as'] = array(
+	'newuserlog-byemail'          => 'গুপ্তশব্দ ই-মেইল কৰি পঠোৱা হৈছে',
+	'newuserlog-create-entry'     => 'নতুন সদস্য',
+	'newuserlog-create2-entry'    => '$1 ক নতুন সদস্যভুক্তি কৰা হল',
+	'newuserlog-autocreate-entry' => 'স্বয়ংক্রীয়ভাবে নতুন সদস্যভুক্তি কৰা হল',
 );
 
 /** Asturian (Asturianu)
@@ -490,16 +501,17 @@ $messages['hsb'] = array(
 );
 
 /** Hungarian (Magyar)
+ * @author Samat
  * @author Dani
  * @author Dorgan
  */
 $messages['hu'] = array(
-	'newuserlogpage'              => 'Új felhasználók naplója',
-	'newuserlogpagetext'          => 'Ez a napló az újonnan beregisztrált felhasználók listája.',
+	'newuserlogpage'              => 'Új szerkesztők naplója',
+	'newuserlogpagetext'          => 'Ez a napló az újonnan regisztrált szerkesztők listáját tartalmazza.',
 	'newuserlog-desc'             => 'A [[Special:Log|rendszernaplókat]] kiegészíti az [[Special:Log/newusers|új felhasználói fiókok készítésének naplójával]]',
 	'newuserlog-byemail'          => 'a jelszót kiküldtük a megadott e-mail címre',
-	'newuserlog-create-entry'     => 'új felhasználóként regisztrált',
-	'newuserlog-create2-entry'    => 'új felhasználót hozott létre $1 néven',
+	'newuserlog-create-entry'     => 'új szerkesztőként regisztrált',
+	'newuserlog-create2-entry'    => 'új felhasználói fiókot hozott létre $1 néven',
 	'newuserlog-autocreate-entry' => 'Felhasználói fiók automatikusan létrehozva',
 );
 
@@ -776,13 +788,17 @@ $messages['mr'] = array(
 );
 
 /** Malay (Bahasa Melayu)
- * @author Aurora
  * @author Aviator
+ * @author Aurora
  */
 $messages['ms'] = array(
-	'newuserlogpage'           => 'Log akaun baru',
-	'newuserlog-create-entry'  => 'Pengguna baru',
-	'newuserlog-create2-entry' => 'membuka akaun $1',
+	'newuserlogpage'              => 'Log akaun baru',
+	'newuserlogpagetext'          => 'Berikut ialah log penciptaan pengguna',
+	'newuserlog-desc'             => 'Menambahkan [[Special:Log/newusers|log pembukaan akaun]] ke dalam [[Khas:Log]]',
+	'newuserlog-byemail'          => 'kata laluan dihantar melalui e-mel',
+	'newuserlog-create-entry'     => 'Pengguna baru',
+	'newuserlog-create2-entry'    => 'membuka akaun $1',
+	'newuserlog-autocreate-entry' => 'Akaun dibuka secara automatik',
 );
 
 /** Maltese (Malti)
@@ -803,11 +819,12 @@ $messages['myv'] = array(
  * @author Slomox
  */
 $messages['nds'] = array(
-	'newuserlogpage'           => 'Ne’e-Bruker-Logbook',
-	'newuserlogpagetext'       => 'Dit is dat Logbook för nee opstellte Brukerkonten.',
-	'newuserlog-byemail'       => 'Passwoord per E-Mail toschickt',
-	'newuserlog-create-entry'  => 'Nee Bruker',
-	'newuserlog-create2-entry' => 'hett Brukerkonto opstellt för $1',
+	'newuserlogpage'              => 'Ne’e-Bruker-Logbook',
+	'newuserlogpagetext'          => 'Dit is dat Logbook för nee opstellte Brukerkonten.',
+	'newuserlog-byemail'          => 'Passwoord per E-Mail toschickt',
+	'newuserlog-create-entry'     => 'Nee Bruker',
+	'newuserlog-create2-entry'    => 'hett Brukerkonto opstellt för $1',
+	'newuserlog-autocreate-entry' => 'Brukerkonto automaatsch opstellt',
 );
 
 /** Nedersaksisch (Nedersaksisch)

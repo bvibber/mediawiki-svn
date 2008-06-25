@@ -25,9 +25,11 @@ $messages['en'] = array(
  * @author ترجمان05
  */
 $messages['ar'] = array(
-	'categoryintersection'         => 'تقاطع تصنيف',
-	'categoryintersection-doit'    => 'اعرض الصفحات في هذه التصنيفات',
-	'categoryintersection-results' => 'البحث أرجع $1 {{PLURAL:$1|نتيجة|نتيجة}}.',
+	'categoryintersection'               => 'تقاطع تصنيف',
+	'categoryintersection-desc'          => 'يصون جدول بقيم الهاش ل[[Special:CategoryIntersection|تقاطعات التصنيف]] في صفحة',
+	'categoryintersection-doit'          => 'اعرض الصفحات في هذه التصنيفات',
+	'categoryintersection-maxcategories' => 'أقصى عدد مسموح به للتصنيفات المتقاطعة هو $1.',
+	'categoryintersection-results'       => 'البحث أرجع $1 {{PLURAL:$1|نتيجة|نتيجة}}.',
 );
 
 /** Bulgarian (Български)
@@ -109,6 +111,7 @@ $messages['fr'] = array(
  */
 $messages['gl'] = array(
 	'categoryintersection'               => 'Intersección de categorías',
+	'categoryintersection-desc'          => 'Mantén unha táboa cos valores hash para as [[Special:CategoryIntersection|interseccións das categorías]] dentro dunha páxina',
 	'categoryintersection-doit'          => 'Poñer as páxinas en todas estas categorías',
 	'categoryintersection-maxcategories' => 'O número máximo de interseccións de categorías é de $1.',
 	'categoryintersection-results'       => 'A procura deu $1 {{PLURAL:$1|resultado|resultados}}.',

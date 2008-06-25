@@ -580,6 +580,7 @@ $messages['frp'] = array(
  */
 $messages['gl'] = array(
 	'math_noblahtex'                        => 'Non se pode executar blahtex, que debe estar en $1',
+	'math-desc'                             => 'Saída MathML para as etiquetas &lt;math&gt;',
 	'math_AmbiguousInfix'                   => 'Colocación ambigua de "$1" (tente usar chaves adicionais "{ ... }" para que fique claro)',
 	'math_CannotChangeDirectory'            => 'Non se pode mudar o directorio de traballo',
 	'math_CannotCreateTexFile'              => 'Non se pode crear unha fila de texto',

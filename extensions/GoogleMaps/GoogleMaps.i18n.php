@@ -92,7 +92,8 @@ $wgGoogleMapsMessages['krl'] = array(
  * @author Сай
  */
 $wgGoogleMapsMessages['mhr'] = array(
-	'gm-search' => 'Кычал',
+	'gm-search'    => 'Кычал',
+	'gm-save-path' => 'Аралаш',
 );
 
 /** Afrikaans (Afrikaans)
@@ -666,10 +667,15 @@ $wgGoogleMapsMessages['es'] = array(
 );
 
 /** Basque (Euskara)
+ * @author Theklan
  * @author Bengoa
  */
 $wgGoogleMapsMessages['eu'] = array(
-	'gm-no-results' => 'Barkatu, ez dago emaitzarik',
+	'gm-no-results'  => 'Barkatu, ez dago emaitzarik',
+	'gm-kml-loading' => 'kargatzen...',
+	'gm-earth'       => 'Lurra',
+	'gm-moon'        => 'Ilargia',
+	'gm-mars'        => 'Martitz',
 );
 
 /** Extremaduran (Estremeñu)
@@ -952,6 +958,7 @@ $wgGoogleMapsMessages['gl'] = array(
 Probe coa última versión do <a href="http://www.microsoft.com/ie">Internet Explorer</a> (Windows) ou o <a href="http://www.mozilla.org/products/firefox">Firefox</a> (Windows, Mac e Linux).',
 	'gm-balloon-title'             => 'Título:',
 	'gm-balloon-link-article'      => 'Ligazón a este artigo (opcional):',
+	'gm-make-marker'               => 'Pé de foto (notación wiki OK):',
 	'gm-remove'                    => 'borrar',
 	'gm-caption'                   => 'Pé de foto',
 	'gm-tab-title'                 => 'Título da lapela',
@@ -968,6 +975,7 @@ Probe coa última versión do <a href="http://www.microsoft.com/ie">Internet Exp
 	'gm-searching'                 => 'buscando...',
 	'gm-map'                       => 'Mapa',
 	'gm-note'                      => 'Nota: estea seguro de copiar o que queira gardar na páxina (de embaixo) antes de premer en "Cargar mapa", "Gardar" ou "Vista previa"!',
+	'gm-instructions'              => 'Embaixo está a notación wiki para crear o mapa de enriba.',
 	'gm-are-you-sure'              => 'Está seguro?',
 	'gm-clear-all-points'          => 'Eliminar todos os puntos',
 	'gm-refresh-points'            => 'Refrescar todos os puntos',
@@ -1005,6 +1013,7 @@ Probe coa última versión do <a href="http://www.microsoft.com/ie">Internet Exp
 	'gm-make-map'                  => 'facer un mapa',
 	'gm-hide-map'                  => 'agochar mapa',
 	'gm-back'                      => 'voltar',
+	'gm-kml-include'               => 'KML/GeoRSS externo:',
 	'gm-kml-include-link'          => 'engadir ao mapa',
 	'gm-kml-loading'               => 'cargando…',
 	'gm-kml-export'                => 'Exportar este mapa a KML',
@@ -1033,6 +1042,7 @@ $wgGoogleMapsMessages['gv'] = array(
  * @author Singularity
  */
 $wgGoogleMapsMessages['haw'] = array(
+	'gm-remove'      => 'kāpae',
 	'gm-kml-loading' => 'ke ho‘ouka nei…',
 );
 
@@ -1297,6 +1307,16 @@ $wgGoogleMapsMessages['hu'] = array(
 	'gm-mars'             => 'Mars',
 );
 
+/** Armenian (Հայերեն)
+ * @author Togaed
+ */
+$wgGoogleMapsMessages['hy'] = array(
+	'gm-width'      => 'Լայնք',
+	'gm-height'     => 'Բարձրություն',
+	'gm-search'     => 'Որոնում',
+	'gm-line-width' => 'Լայնք',
+);
+
 /** Indonesian (Bahasa Indonesia)
  * @author Irwangatot
  * @author Rex
@@ -1321,6 +1341,13 @@ $wgGoogleMapsMessages['is'] = array(
 	'gm-yes'       => 'Já',
 	'gm-no'        => 'Nei',
 	'gm-save-path' => 'Vista',
+);
+
+/** Italian (Italiano)
+ * @author Pietrodn
+ */
+$wgGoogleMapsMessages['it'] = array(
+	'gm-zoom-control' => 'Navigazione',
 );
 
 /** Javanese (Basa Jawa)

@@ -84,6 +84,14 @@ $messages['is'] = array(
 	'purge' => 'hreinsa',
 );
 
+/** Italian (Italiano)
+ * @author Pietrodn
+ */
+$messages['it'] = array(
+	'purge'      => 'purga',
+	'purge-desc' => 'Aggiunge un tab "purga" su tutte le pagine normali, e bypassa il controllo di purga per gli utenti anonimi permettendo uno svuotamento rapido della cache',
+);
+
 /** Japanese (日本語)
  * @author Kahusi
  */

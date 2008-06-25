@@ -160,7 +160,8 @@ $messages['gv'] = array(
  * @author Singularity
  */
 $messages['haw'] = array(
-	'randomincategory-label' => 'Mahele:',
+	'randomincategory-toolbox' => 'Akikala kaulele',
+	'randomincategory-label'   => 'Mahele:',
 );
 
 /** Hindi (हिन्दी)

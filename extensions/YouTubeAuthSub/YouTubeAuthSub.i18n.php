@@ -66,6 +66,7 @@ $messages['an'] = array(
  */
 $messages['ar'] = array(
 	'youtubeauthsub'                    => 'رفع فيديو يوتيوب',
+	'youtubeauthsub-desc'               => 'السماح للمستخدمين [[Special:YouTubeAuthSub|بتحميل الفيديو]] مباشرة إلى يوتيوب',
 	'youtubeauthsub_title'              => 'عنوان',
 	'youtubeauthsub_description'        => 'وصف',
 	'youtubeauthsub_password'           => 'كلمة سر يوتيوب',
@@ -74,10 +75,25 @@ $messages['ar'] = array(
 	'youtubeauthsub_category'           => 'تصنيف',
 	'youtubeauthsub_submit'             => 'تنفيذ',
 	'youtubeauthsub_clickhere'          => 'أنقر هنا لتسجيل الدخول لليوتيوب',
+	'youtubeauthsub_uploadhere'         => 'رفع مقاطع الفيديو الخاصة بك من هنا:',
 	'youtubeauthsub_uploadbutton'       => 'رفع',
+	'youtubeauthsub_summary'            => 'رفع فيديو يوتيوب',
 	'youtubeauthsub_jserror_nokeywords' => 'رجاءً أدخل كلمة مفتاحية أو أكثر.',
 	'youtubeauthsub_jserror_notitle'    => 'رجاءً أدخل عنوانا للفيديو.',
 	'youtubeauthsub_jserror_nodesc'     => 'رجاءً أدخل وصفا للفيديو.',
+);
+
+/** بلوچی مکرانی (بلوچی مکرانی)
+ * @author Mostafadaneshvar
+ */
+$messages['bcc'] = array(
+	'youtubeauthsub'              => 'آپلود کن ویدیو یوتیوبء',
+	'youtubeauthsub_title'        => 'عنوان',
+	'youtubeauthsub_description'  => 'توضیح',
+	'youtubeauthsub_keywords'     => 'کلیدی کلمات',
+	'youtubeauthsub_category'     => 'دسته',
+	'youtubeauthsub_submit'       => 'دیم دی',
+	'youtubeauthsub_uploadbutton' => 'آپلود',
 );
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))

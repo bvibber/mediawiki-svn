@@ -38,6 +38,13 @@ $messages['ar'] = array(
 	'sitenotice-desc'  => 'يسمح للمستخدمين بإغلاق إعلان الموقع',
 );
 
+/** Assamese (অসমীয়া)
+ * @author Rajuonline
+ */
+$messages['as'] = array(
+	'sitenotice_close' => 'বাতিল',
+);
+
 /** Asturian (Asturianu)
  * @author SPQRobin
  */
@@ -372,6 +379,14 @@ $messages['ml'] = array(
 $messages['mr'] = array(
 	'sitenotice_close' => 'पुसा',
 	'sitenotice-desc'  => 'सदस्यांना साईटनोटिस बंद करण्याची परवानगी देते.',
+);
+
+/** Malay (Bahasa Melayu)
+ * @author Aviator
+ */
+$messages['ms'] = array(
+	'sitenotice_close' => 'singkir',
+	'sitenotice-desc'  => 'Membolehkan pengguna menutup notis',
 );
 
 $messages['nan'] = array(

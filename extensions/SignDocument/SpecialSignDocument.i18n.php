@@ -96,6 +96,13 @@ $1',
 	'sign-uniquequery-1signed2'    => '[{{SERVER}}{{localurl: Special:SignDocument|doc=$4&viewsigs&detail=$3}} $1] signed [{{SERVER}}{{localurl: Special:SignDocument|doc=$4&viewsigs}} $2].',
 );
 
+/** Eastern Mari (Олык Марий йылме)
+ * @author Сай
+ */
+$messages['mhr'] = array(
+	'sign-viewfield-email' => 'Электрон почто',
+);
+
 /** Afrikaans (Afrikaans)
  * @author SPQRobin
  * @author Arnobarnard
@@ -698,6 +705,13 @@ $messages['hu'] = array(
 	'sign-email'    => 'E-mail cím:',
 );
 
+/** Armenian (Հայերեն)
+ * @author Togaed
+ */
+$messages['hy'] = array(
+	'sign-realname' => 'Անուն`',
+);
+
 /** Indonesian (Bahasa Indonesia)
  * @author Irwangatot
  * @author Rex
@@ -854,6 +868,7 @@ $messages['lb'] = array(
 	'sign-bday'                     => 'Alter:',
 	'sign-email'                    => 'E-Mail-Adress:',
 	'sign-list-anonymous'           => 'Als anonym weisen',
+	'sign-list-hideaddress'         => 'Adress net weisen',
 	'sign-list-hidephone'           => "D'Telefeonsnummer net weisen",
 	'sign-list-hidebday'            => 'Den Alter net weisen',
 	'sign-list-hideemail'           => "D'E-Mailadress net weisen",
@@ -1956,31 +1971,31 @@ $messages['tg-cyrl'] = array(
  * @author Minh Nguyen
  */
 $messages['vi'] = array(
-	'signdocument'             => 'Ký tài liệu',
-	'sign-nodocselected'       => 'Xin hãy chọn tài liệu bạn muốn ký.',
-	'sign-selectdoc'           => 'Tài liệu:',
-	'sign-docheader'           => '<div class="noarticletext">Xin hãy dùng mẫu này để ký tài liệu "[[$1]]," ghi ở dưới.
+	'signdocument'                    => 'Ký tài liệu',
+	'sign-nodocselected'              => 'Xin hãy chọn tài liệu bạn muốn ký.',
+	'sign-selectdoc'                  => 'Tài liệu:',
+	'sign-docheader'                  => '<div class="noarticletext">Xin hãy dùng mẫu này để ký tài liệu "[[$1]]," ghi ở dưới.
 Xin hãy đọc qua toàn bộ tài liệu, và nếu bạn muốn chỉ rõ sự hỗ trợ của bạn cho nó, xin hãy điền các ô cần thiết để ký tên.</div>',
-	'sign-error-nosuchdoc'     => 'Tài liệu bạn yêu cầu ($1) không tồn tại.',
-	'sign-realname'            => 'Tên:',
-	'sign-address'             => 'Địa chỉ nhà:',
-	'sign-city'                => 'Thành phố:',
-	'sign-state'               => 'Bang:',
-	'sign-zip'                 => 'Mã zip:',
-	'sign-country'             => 'Quốc gia:',
-	'sign-phone'               => 'Số điện thoại:',
-	'sign-bday'                => 'Tuổi:',
-	'sign-email'               => 'Địa chỉ email:',
-	'sign-indicates-req'       => '<small><i><font color="red">*</font> chỉ các ô bắt buộc.</i></small>',
-	'sign-hide-note'           => '<small><i><font color="red">**</font> Chú ý: Thông tin không liệt kê sẽ hiển thị cho người quản trị.</i></small>',
-	'sign-list-anonymous'      => 'Liệt kê ẩn danh',
-	'sign-list-hideaddress'    => 'Đừng liệt kê địa chỉ',
-	'sign-list-hideextaddress' => 'Đừng liệt kê thành phố, bang, zip, hay quốc gia',
-	'sign-list-hidephone'      => 'Đừng liệt kê số điện thoại',
-	'sign-list-hidebday'       => 'Đừng liệt kê tuổi',
-	'sign-list-hideemail'      => 'Đừng liệt kê email',
-	'sign-submit'              => 'Ký tài liệu',
-	'sign-information'         => '<div class="noarticletext">Cảm ơn bạn đã bỏ chút thời gian đọc hết tài liệu này.
+	'sign-error-nosuchdoc'            => 'Tài liệu bạn yêu cầu ($1) không tồn tại.',
+	'sign-realname'                   => 'Tên:',
+	'sign-address'                    => 'Địa chỉ nhà:',
+	'sign-city'                       => 'Thành phố:',
+	'sign-state'                      => 'Bang:',
+	'sign-zip'                        => 'Mã zip:',
+	'sign-country'                    => 'Quốc gia:',
+	'sign-phone'                      => 'Số điện thoại:',
+	'sign-bday'                       => 'Tuổi:',
+	'sign-email'                      => 'Địa chỉ email:',
+	'sign-indicates-req'              => '<small><i><font color="red">*</font> chỉ các ô bắt buộc.</i></small>',
+	'sign-hide-note'                  => '<small><i><font color="red">**</font> Chú ý: Thông tin không liệt kê sẽ hiển thị cho người quản trị.</i></small>',
+	'sign-list-anonymous'             => 'Liệt kê ẩn danh',
+	'sign-list-hideaddress'           => 'Đừng liệt kê địa chỉ',
+	'sign-list-hideextaddress'        => 'Đừng liệt kê thành phố, bang, zip, hay quốc gia',
+	'sign-list-hidephone'             => 'Đừng liệt kê số điện thoại',
+	'sign-list-hidebday'              => 'Đừng liệt kê tuổi',
+	'sign-list-hideemail'             => 'Đừng liệt kê email',
+	'sign-submit'                     => 'Ký tài liệu',
+	'sign-information'                => '<div class="noarticletext">Cảm ơn bạn đã bỏ chút thời gian đọc hết tài liệu này.
 Nếu bạn đồng ý với nó, xin hãy biểu thị sự ủng hộ của bạn bằng cách điền vào các khung bắt buộc phía dưới và nhấn "Ký tài liệu."
 Xin hãy đảm bảo rằng thông tin cá nhân của bạn là đúng và rằng chúng ra có cách nào đó để liên lạc với bạn để xác nhận danh tính.
 Chú ý rằng địa chỉ IP của bạn và những thông tin định danh khác sẽ được lưu giữ bởi mẫu này và được người quản trị xử dụng để xóa các chữ ký trùng lặp và xác nhận tính đúng đắn của thông tin cá nhân.
@@ -1988,22 +2003,61 @@ Vì việc sử dụng proxy mở và nặc danh ngăn trở khả năng thực 
 Nếu hiện nay bạn đang kết nối thông qua máy chủ proxy, xin hãy tắt kết nối đến nó và sử dụng một kết nối tiêu chuẩn khi ký.</div>
 
 $1',
-	'sig-success'              => 'Bạn đã ký tài liệu thành công.',
-	'sign-view-selectfields'   => '<b>Các vùng sẽ hiển thị:</b>',
-	'sign-viewfield-entryid'   => 'Mã số nhập',
-	'sign-viewfield-timestamp' => 'Thời gian',
-	'sign-viewfield-realname'  => 'Tên',
-	'sign-viewfield-address'   => 'Địa chỉ',
-	'sign-viewfield-city'      => 'Thành phố',
-	'sign-viewfield-state'     => 'Bang',
-	'sign-viewfield-country'   => 'Quốc gia',
-	'sign-viewfield-zip'       => 'Zip',
-	'sign-viewfield-ip'        => 'Địa chỉ IP',
-	'sign-viewfield-agent'     => 'Trình duyệt người dùng',
-	'sign-viewfield-phone'     => 'Điện thoại',
-	'sign-viewfield-email'     => 'E-mail',
-	'sign-viewfield-age'       => 'Tuổi',
-	'sign-viewfield-options'   => 'Tùy chọn',
+	'sig-success'                     => 'Bạn đã ký tài liệu thành công.',
+	'sign-view-selectfields'          => '<b>Các vùng sẽ hiển thị:</b>',
+	'sign-viewfield-entryid'          => 'Mã số nhập',
+	'sign-viewfield-timestamp'        => 'Thời gian',
+	'sign-viewfield-realname'         => 'Tên',
+	'sign-viewfield-address'          => 'Địa chỉ',
+	'sign-viewfield-city'             => 'Thành phố',
+	'sign-viewfield-state'            => 'Bang',
+	'sign-viewfield-country'          => 'Quốc gia',
+	'sign-viewfield-zip'              => 'Zip',
+	'sign-viewfield-ip'               => 'Địa chỉ IP',
+	'sign-viewfield-agent'            => 'Trình duyệt người dùng',
+	'sign-viewfield-phone'            => 'Điện thoại',
+	'sign-viewfield-email'            => 'E-mail',
+	'sign-viewfield-age'              => 'Tuổi',
+	'sign-viewfield-options'          => 'Tùy chọn',
+	'sign-viewsigs-intro'             => 'Dưới đây là những chữ ký được lưu dữ lại cho <span class="plainlinks">[{{SERVER}}{{localurl: Special:SignDocument|doc=$2}} $1]</span>.',
+	'sign-sigadmin-currentlyopen'     => 'Tài liệu này hiện đang cho phép ký tên.',
+	'sign-sigadmin-close'             => 'Tắt ký tên',
+	'sign-sigadmin-currentlyclosed'   => 'Tài liệu này hiện không kích hoạt ký tên.',
+	'sign-sigadmin-open'              => 'Cho phép ký tên',
+	'sign-signatures'                 => 'Chữ ký',
+	'sign-sigadmin-closesuccess'      => 'Đã tắt ký tên thành công.',
+	'sign-sigadmin-opensuccess'       => 'Đã bật ký tên thành công.',
+	'sign-viewsignatures'             => 'xem chữ ký',
+	'sign-closed'                     => 'đã đóng',
+	'sign-error-closed'               => 'Hiện không phép ký tên cho tài liệu này.',
+	'sig-anonymous'                   => '<i>Vô danh</i>',
+	'sig-private'                     => '<i>Riêng tư</i>',
+	'sign-sigdetails'                 => 'Chi tiết chữ ký',
+	'sign-emailto'                    => '<a href="mailto:$1">$1</a>',
+	'sign-iptools'                    => '<span class="plainlinksneverexpand"><!--
+-->[[User:$1|$1]] ([[User talk:$1|thảo luận]] • <!--
+-->[[Special:Contributions/$1|đóng góp]] • <!--
+-->[http://www.dnsstuff.com/tools/whois.ch?domain={{urlencode:$1}}&cache=off&email=on WHOIS] • <!--
+-->[http://www.dnsstuff.com/tools/ptr.ch?ip={{urlencode:$1}}&cache=off&email=on RDNS] • <!--
+-->[http://www.robtex.com/rbls/$1.html RBLs] • <!--
+-->[[Special:Blockip/$1|cấm thành viên]] • <!--
+-->[{{fullurl:Special:Log/block|page=User:{{urlencode:$1}}}} nhật trình cấm] • <!--
+-->[{{fullurl:Special:CheckUser|ip={{urlencode:$1}}}} kiểm ip])<!--
+--></span>',
+	'sign-viewfield-stricken'         => 'Gạch bỏ',
+	'sign-viewfield-reviewedby'       => 'Người duyệt',
+	'sign-viewfield-reviewcomment'    => 'Bình luận',
+	'sign-detail-uniquequery'         => 'Thực thể tương tự',
+	'sign-detail-uniquequery-run'     => 'Chạy truy vấn',
+	'sign-detail-strike'              => 'Gạch bỏ chữ ký',
+	'sign-reviewsig'                  => 'Duyệt chữ ký',
+	'sign-review-comment'             => 'Bình luận',
+	'sign-submitreview'               => 'Đăng bản duyệt',
+	'sign-uniquequery-similarname'    => 'Tên tương tự',
+	'sign-uniquequery-similaraddress' => 'Địa chỉ tương tự',
+	'sign-uniquequery-similarphone'   => 'Số điện thoại tương tự',
+	'sign-uniquequery-similaremail'   => 'Email tương tự',
+	'sign-uniquequery-1signed2'       => '[{{SERVER}}{{localurl: Special:SignDocument|doc=$4&viewsigs&detail=$3}} $1] đã ký [{{SERVER}}{{localurl: Special:SignDocument|doc=$4&viewsigs}} $2].',
 );
 
 /** Volapük (Volapük)

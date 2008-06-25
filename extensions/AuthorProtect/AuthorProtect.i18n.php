@@ -601,10 +601,12 @@ $messages['sv'] = array(
 );
 
 /** Telugu (తెలుగు)
+ * @author Veeven
  * @author వైజాసత్య
  */
 $messages['te'] = array(
 	'authorprotect-notauthor' => 'ఈ పేజీకి రచయిత మీరు కాదు',
+	'authorprotect-confirm'   => 'సంరక్షణా స్థాయిలను మార్చు',
 	'authorprotect-edit'      => 'రచయితలను మాత్రమే మార్పులు చేయనివ్వు',
 	'authorprotect-move'      => 'తరలింపుని రచయితలు మాత్రమే చేయనివ్వు',
 	'authorprotect-expiry'    => 'గడువు ముగిసే సమయం',

@@ -292,6 +292,13 @@ $messages['gv'] = array(
 	'contributors-submit' => 'Taishbyney',
 );
 
+/** Hawaiian (Hawai`i)
+ * @author Singularity
+ */
+$messages['haw'] = array(
+	'contributors-submit' => 'Hō‘ike',
+);
+
 /** Hindi (हिन्दी)
  * @author Kaustubh
  */
@@ -479,7 +486,7 @@ $messages['km'] = array(
 	'contributors-desc'        => 'ដកស្រង់​តែ​ឈ្មោះអ្នករួមចំនែក​ចំបង​ៗទៅកាន់ទំព័រ​មួយ',
 	'contributors-toolbox'     => 'អ្នករួមចំនែក​ចំបងៗ',
 	'contributors-legend'      => 'បង្កើត​បញ្ជី​ឈ្មោះ​អ្នករួមចំនែក​ចំបងៗទៅកាន់ទំព័រមួយ',
-	'contributors-target'      => 'ចំណងជើង៖',
+	'contributors-target'      => 'ចំនងជើង៖',
 	'contributors-submit'      => 'បង្ហាញ',
 	'contributors-subtitle'    => 'អ្នករួមចំនែកចំបងរបស់ $1',
 	'contributors-others-long' => 'មានអ្នករួមចំនែក​ដទៃ $1 នាក់ទៀត​ចំពោះ​ទំព័រនេះ។',

@@ -158,10 +158,26 @@ L’extension <i>Appel</i> appellera la page indiquée en lui passant les param�
 
 /** Galician (Galego)
  * @author Xosé
+ * @author Toliño
  * @author Alma
  */
 $messages['gl'] = array(
 	'call'              => 'Chamada',
+	'call-desc'         => 'Crear unha ligazón cara a un modelo (ou cara a unha páxina normal dun wiki) con pasaxe de parámetros.
+Pode ser usado na liña de comandos do navegador ou dentro do texto dun wiki.',
+	'call-text'         => "A extensión Call agarda unha páxina dun wiki e parámetros opcionais para esa páxina como argumentos.
+
+Exemplo 1: &nbsp; <tt>[[Special:Call/My Template,parm1=value1]]</tt><br />
+Exemplo 2: &nbsp; <tt>[[Special:Call/Talk:My Discussion,parm1=value1]]</tt><br />
+Exemplo 3: &nbsp; <tt>[[Special:Call/:My Page,parm1=value1,parm2=value2]]</tt><br />
+Exemplo 4 (URL do navegador): &nbsp; <tt>http://mydomain/mywiki/index.php?Special:Call/:My Page,parm1=value1</tt>
+
+A <i>extensión Call</i> chamará á páxina dada e pasaralle os parámetros.<br />
+Poderá ver os contidos da páxina chamada e o seu título, pero o seu 'tipo' será o dunha páxina especial, isto é, a devandita páxina non poderá ser editada.<br />Os contidos que ve poden variar dependendo do valor dos parámetros que pasou.
+
+A <i>extensión Call</i> é útil para construír aplicacións interactivas con MediaWiki.<br />
+Para ver un exemplo, visite <a href='http://semeb.com/dpldemo/Template:Catlist'>o DPL GUI</a>...<br />
+En caso de que haxa algún problema pode probar con <b>Special:Call/DebuG</b>",
 	'call-save'         => "A saída desta chamada gardaríase nunha páxina chamada ''$1''.",
 	'call-save-success' => 'O texto seguinte gardouse na páxina <big>[[$1]]</big>.',
 	'call-save-failed'  => 'O texto seguinte NON se gardou na páxina <big>[[$1]]</big> porque xa existe esa páxina.',

@@ -41,6 +41,14 @@ $messages['fr'] = array(
 	'catfeed-desc' => 'Utilise des bits pour alimenter les modifications récentes. Crée une version de page, très pratique pour Wikinews.',
 );
 
+/** Galician (Galego)
+ * @author Toliño
+ */
+$messages['gl'] = array(
+	'catfeed-desc' => 'Usa anacos de accións dos cambios recentes.
+Crear versións dentro dunha páxina, útil especialmente nas Galinovas.',
+);
+
 /** Hindi (हिन्दी)
  * @author Kaustubh
  */

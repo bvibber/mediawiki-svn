@@ -33,8 +33,22 @@ $messages['fr'] = array(
 	'tab0-desc' => 'Ajoute l’onglet « 0 » qui donne accès à la page de modification de la première section de la page',
 );
 
+/** Galician (Galego)
+ * @author Toliño
+ */
+$messages['gl'] = array(
+	'tab0-desc' => 'Engade a lapela "0", ligando á páxina de edición da primeira sección da páxina',
+);
+
 $messages['he'] = array(
 	'tab0-desc' => 'הוספת לשונית "0" המקשרת לעריכת הפסקה הראשונה בדף',
+);
+
+/** Indonesian (Bahasa Indonesia)
+ * @author Rex
+ */
+$messages['id'] = array(
+	'tab0-desc' => 'Menambahkan tab "0" sebagai tombol cepat untuk menyunting bagian atas halaman',
 );
 
 /** Ripoarisch (Ripoarisch)
@@ -42,6 +56,13 @@ $messages['he'] = array(
  */
 $messages['ksh'] = array(
 	'tab0-desc' => 'Brengk ene „0“-Reuter op de Sigge, womet mer de eetzte Afschnet, dä oohne Övverschreff, för et Ändere opmaache kann',
+);
+
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$messages['lb'] = array(
+	'tab0-desc' => "Setzt den ''Onglet'' ''0'' derbäi, den et erlaabt déi éischt Sectioun vun enger Säit z'änneren",
 );
 
 /** Dutch (Nederlands)

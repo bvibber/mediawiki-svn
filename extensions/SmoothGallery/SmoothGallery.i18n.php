@@ -331,9 +331,25 @@ Var god lämna en felrapport.',
 );
 
 /** Vietnamese (Tiếng Việt)
+ * @author Vinhtantran
  * @author Minh Nguyen
  */
 $messages['vi'] = array(
-	'smoothgallery-error' => '<b>Lỗi SmoothGallery:</b>',
+	'smoothgallery'                     => 'Trang ảnh mượt mà',
+	'smoothgallery-desc'                => 'Cho phép thành viên tạo trang ảnh với những ảnh đã được tải lên.
+Cho phép phần lớn tùy chọn của SmoothGallery',
+	'smoothgallery-title'               => 'Trang ảnh mượt mà',
+	'smoothgallery-smoothgallerytitle'  => 'Trang ảnh mượt mà: $1',
+	'smoothgallery-error'               => '<b>Lỗi SmoothGallery:</b>',
+	'smoothgallery-gallery-not-found'   => 'Trang ảnh yêu cầu không tồn tại.',
+	'smoothgallery-not-found'           => 'Không có hình nào được thêm vào trang ảnh.
+Xin hãy thêm ít nhất một hình.',
+	'smoothgallery-no-images'           => 'Không tìm thấy hình nào trong trang ảnh.
+Hãy chắc chắn rằng tất cả các hình được yêu cầu có tồn tại.
+Những hình sau không tìm thấy: $1',
+	'smoothgallery-invalid-images'      => 'Những hình được yêu cầu sau có kiểu không phù hợp: $1',
+	'smoothgallery-unexpected-error'    => 'Xảy ra lỗi không lường được.
+Xin hãy đăng một báo cáo lỗi.',
+	'smoothgallery-javascript-disabled' => 'Cần phải kích hoạt Javascript để trang ảnh hiển thị đúng.',
 );
 

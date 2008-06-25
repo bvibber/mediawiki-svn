@@ -49,6 +49,13 @@ $messages['ar'] = array(
 	'invitations-error-baduser'       => 'المستخدم الذي حددته لا يبدو أنه موجود.',
 );
 
+/** بلوچی مکرانی (بلوچی مکرانی)
+ * @author Mostafadaneshvar
+ */
+$messages['bcc'] = array(
+	'invitations-invitedlist-item' => '<b>$1</b> ($2 موجودین دعوت)',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  */
@@ -192,6 +199,7 @@ $messages['es'] = array(
 
 /** French (Français)
  * @author Grondin
+ * @author Verdy p
  */
 $messages['fr'] = array(
 	'invite-logpage'                        => 'Journal des invitations',
@@ -201,7 +209,7 @@ $messages['fr'] = array(
 	'invitations-desc'                      => 'Permet [[Special:Invitations|la gestion des nouvelles fonctionnalités]] en les restreignant par une système basé sur l’invitation.',
 	'invitations-invitedlist-description'   => "Vous avez l'accès aux caractéristiques suivantes du logiciel d’invite seule. Pour gérer les invitations pour une catactéristique individuelle, cliquez sur son nom.",
 	'invitations-invitedlist-none'          => 'Vous n’avez pas été invité pour utiliser les fonctionnalités du logiciel d’invite seule.',
-	'invitations-invitedlist-item'          => '<b>$1</b> ($2 invitations disponibles)',
+	'invitations-invitedlist-item'          => '<b>$1</b> ($2 {{plural:$2|invitation disponible|invitations disponibles}})',
 	'invitations-pagetitle'                 => 'Fonctionnalités du logiciel d’invite seule',
 	'invitations-uninvitedlist-description' => 'Vous n’avez pas l’accès à ces autres caractéristiques du programme d’invite seule.',
 	'invitations-uninvitedlist-none'        => 'À cet instant, aucune fonctionnalité logicielle n’a été désignée par l’invite seule.',
@@ -226,7 +234,9 @@ $messages['gl'] = array(
 	'invite-logpage'                   => 'Rexistro de invitacións',
 	'invite-logpagetext'               => 'Este é un rexistro dos usuarios que invitaron a outros a usar varias características do software.',
 	'invite-logentry'                  => 'invitou a $1 a usar a característica <i>$2</i>.',
+	'invitations'                      => 'Xestionar as caractarísticas do software das invitacións',
 	'invitations-invitedlist-item'     => '<b>$1</b> ($2 invitacións dispoñibles)',
+	'invitations-feature-pagetitle'    => 'Xestión da invitación - $1',
 	'invitations-feature-access'       => 'Actualmente ten acceso para usar <i>$1</i>.',
 	'invitations-feature-numleft'      => 'Aínda ten <b>$1</b> á parte das $2 invitaciones restantes.',
 	'invitations-feature-notallowed'   => 'Non ten acceso para usar <i>$1</i>.',
@@ -296,7 +306,11 @@ $messages['km'] = array(
  */
 $messages['lb'] = array(
 	'invite-logpage'                   => 'Lëscht vun den Invitatiounen',
+	'invite-logentry'                  => "huet $1 invitéiert fir d'Functionalitéit <i>$2</i> ze benotzen.",
+	'invitations'                      => 'Gestioun vun den Invitatioune fir Software-Functionalitéiten',
+	'invitations-desc'                 => "Erméiglecht d'[[Special:Invitations|Gestioun vun neie Fonctionnalitéiten]] déi op déi Benotzer limitéiert sinn, déi dofir invitéiert ginn",
 	'invitations-invitedlist-item'     => '<b>$1</b> ($2 Invitatiounen disponibel)',
+	'invitations-pagetitle'            => 'Fonctionnalitéiten op Invitatiouns-Basis',
 	'invitations-feature-pagetitle'    => 'Gestioun vun der Invitatioun - $1',
 	'invitations-feature-numleft'      => 'Dir hutt nach <b>$1</b> vun ären $2 Invitatiounen iwwreg.',
 	'invitations-feature-noneleft'     => 'Dir hutt all är Invitatiounen fir dës Fonctioun benotzt.',

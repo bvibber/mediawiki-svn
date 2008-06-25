@@ -20,16 +20,19 @@ $messages['en'] = array(
 
 /** Arabic (العربية)
  * @author Meno25
+ * @author OsamaK
  */
 $messages['ar'] = array(
-	'piwik-countries' => 'دول',
-	'piwik-browsers'  => 'متصفحات',
+	'piwik-lastvisits' => 'آخر زيارات',
+	'piwik-countries'  => 'دول',
+	'piwik-browsers'   => 'متصفحات',
 );
 
 /** Bulgarian (Български)
  * @author DCLXVI
  */
 $messages['bg'] = array(
+	'piwik-desc'       => 'Вмъква скрипта Piwik в страниците на МедияУики за отчитане на [[Special:Piwik|статистики]]',
 	'piwik-lastvisits' => 'Последни посещения',
 	'piwik-countries'  => 'Държави',
 	'piwik-browsers'   => 'Браузъри',
@@ -91,6 +94,7 @@ $messages['fr'] = array(
  * @author Toliño
  */
 $messages['gl'] = array(
+	'piwik-desc'       => 'Insire a escritura Piwik nas páxinas MediaWiki para facer un seguimento e engade [[Special:Piwik|algunhas estatísticas]]',
 	'piwik-lastvisits' => 'Últimas visitas',
 	'piwik-countries'  => 'Países',
 	'piwik-browsers'   => 'Navegadores',
@@ -164,6 +168,16 @@ $messages['ps'] = array(
 	'piwik-lastvisits' => 'وروستۍ کتنې',
 	'piwik-countries'  => 'هيوادونه',
 	'piwik-browsers'   => 'کتنملونه',
+);
+
+/** Portuguese (Português)
+ * @author Malafaya
+ */
+$messages['pt'] = array(
+	'piwik-desc'       => 'Insere script Piwik em páginas MediaWiki para rastreio e adiciona [[Special:Piwik|algumas estatísticas]]',
+	'piwik-lastvisits' => 'Últimas visitas',
+	'piwik-countries'  => 'Países',
+	'piwik-browsers'   => 'Browsers',
 );
 
 /** Slovak (Slovenčina)

@@ -214,6 +214,24 @@ Postrowy,
 $2',
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author Rex
+ */
+$messages['id'] = array(
+	'userrightsnotifysubject' => 'Perubahan kelompok pengguna pada $1',
+	'userrightsnotifybody'    => 'Halo $1.
+
+Kelompok pengguna Anda di $2 telah diubah oleh $3 pada $4.
+
+Penambahan: $5
+Pengurangan: $6
+
+Terima kasih,
+
+$2',
+	'userrightsnotif-desc'    => 'Kirim notifikasi via e-mail ke para pengguna saat ada perubahan hak pengguna',
+);
+
 /** Javanese (Basa Jawa)
  * @author Meursault2004
  */

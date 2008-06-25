@@ -11,6 +11,13 @@ $messages['en'] = array(
 	'fixedimage-desc' => 'Adds <tt><nowiki><fundraising></nowiki></tt> tag as an image',
 );
 
+/** Aragonese (Aragonés)
+ * @author Juanpabl
+ */
+$messages['an'] = array(
+	'fixedimage-desc' => 'Adibe a etiqueta <tt><nowiki><fundraising></nowiki></tt> como una imachen',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */
@@ -114,6 +121,13 @@ $messages['lb'] = array(
  */
 $messages['mr'] = array(
 	'fixedimage-desc' => '<tt><nowiki><fundraising></nowiki></tt> खूण एक चित्र म्हणून वाढविते',
+);
+
+/** Malay (Bahasa Melayu)
+ * @author Aviator
+ */
+$messages['ms'] = array(
+	'fixedimage-desc' => 'Menambah tag <tt><nowiki><fundraising></nowiki></tt> sebagai imej',
 );
 
 /** Dutch (Nederlands)

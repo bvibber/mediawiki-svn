@@ -50,6 +50,14 @@ $messages['fr'] = array(
 	'rightfunctions-restcasc' => '$1 (à partir des sources en cascade)',
 );
 
+/** Galician (Galego)
+ * @author Toliño
+ */
+$messages['gl'] = array(
+	'rightfunctions-restboth' => '$1 (a partir da páxina local), $2 (a partir das fontes en serie)',
+	'rightfunctions-restcasc' => '$1 (a partir das fontes en serie)',
+);
+
 /** Hindi (हिन्दी)
  * @author Kaustubh
  */

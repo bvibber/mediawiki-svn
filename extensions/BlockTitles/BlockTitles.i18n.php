@@ -231,10 +231,12 @@ $messages['is'] = array(
 
 /** Italian (Italiano)
  * @author BrokenArrow
+ * @author Melos
  * @author Gianfranco
  */
 $messages['it'] = array(
 	'block_title_error_page_title' => 'Titolo bloccato',
+	'block_title_error-desc'       => 'Fornisce un semplice modo per impedire che pagine che contengono determinati titoli vengano salvate o create',
 	'block_title_error'            => 'Siamo spiacenti, non è consentito salvare una pagina con questo titolo.',
 );
 

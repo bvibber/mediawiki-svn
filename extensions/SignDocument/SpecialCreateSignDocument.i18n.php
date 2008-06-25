@@ -33,6 +33,13 @@ To test it, please visit [{{SERVER}}{{localurl: Special:SignDocument|doc=$2}} th
 	'createsigndoc-error-alreadycreated' => 'Document signing "$1" already exist.'
 );
 
+/** Eastern Mari (Олык Марий йылме)
+ * @author Сай
+ */
+$messages['mhr'] = array(
+	'createsigndoc-pagename' => 'Лаштык:',
+);
+
 /** Afrikaans (Afrikaans)
  * @author Arnobarnard
  * @author SPQRobin
@@ -810,8 +817,31 @@ $messages['tr'] = array(
  * @author Minh Nguyen
  */
 $messages['vi'] = array(
-	'createsigndoc-pagename' => 'Trang:',
-	'createsigndoc-hidden'   => 'Bị ẩn',
+	'createsigndocument'                 => 'Cho phép ký tài liệu',
+	'createsigndoc-head'                 => "Hãy dùng mẫu này để tạo trang 'Ký tài liệu' cho trang chỉ định, sao cho người dùng sẽ có thể ký tên vào nó thông qua [[Special:SignDocument]].
+Xin hãy ghi rõ tên trang bạn muốn cho phép ký tên điện tử, thành viên của nhóm thành viên nào được cho phép ký tên, vùng nào bạn muốn người dùng nhìn thấy và cái nào là tùy chọn, tuổi tối thiểu được được ký tài liệu (không có giới hạn nếu bỏ trống);
+và một đoạn giới thiệu ngắn gọn mô tả tài liệu và cung cấp hướng dẫn cho người dùng.
+
+<b>Hiện không có cách nào để xóa hay sửa tài liệu chữ ký sau khi chúng được tạo</b> mà không truy cập trực tiếp vào cơ sở dữ liệu.
+Ngoài ra, nội dung của trang được hiển thị tại trang ký tên sẽ là văn bản ''hiện thời'' của trang, bất kể có sự thay đổi nào sau hôm nay.
+Xin hãy cực kỳ chắc chắn rằng tài liệu đã đạt tới mức ổn định để có thể ký tên, và xin hãy chắc chắn rằng bạn chỉ định tất cả các vùng một cách chính xác như mong muốn, ''trước khi đăng mẫu này lên''.",
+	'createsigndoc-pagename'             => 'Trang:',
+	'createsigndoc-allowedgroup'         => 'Nhóm được phép:',
+	'createsigndoc-email'                => 'Địa chỉ email:',
+	'createsigndoc-address'              => 'Địa chỉ nhà:',
+	'createsigndoc-extaddress'           => 'Thành phố, Bang, Quốc gia:',
+	'createsigndoc-phone'                => 'Số điện thoại:',
+	'createsigndoc-bday'                 => 'Ngày sinh:',
+	'createsigndoc-minage'               => 'Tuổi tối thiểu:',
+	'createsigndoc-introtext'            => 'Giới thiệu:',
+	'createsigndoc-hidden'               => 'Bị ẩn',
+	'createsigndoc-optional'             => 'Tùy chọn',
+	'createsigndoc-create'               => 'Khởi tạo',
+	'createsigndoc-error-generic'        => 'Lỗi: $1',
+	'createsigndoc-error-pagenoexist'    => 'Lỗi: Trang [[$1]] không tồn tại.',
+	'createsigndoc-success'              => 'Khả năng ký tên đã được kích hoạt tại trang [[$1]].
+Để thử nghiệm, xin hãy thăm [{{SERVER}}{{localurl: Special:SignDocument|doc=$2}} trang này].',
+	'createsigndoc-error-alreadycreated' => 'Văn bản ký tên "$1" đã tồn tại.',
 );
 
 /** Volapük (Volapük)

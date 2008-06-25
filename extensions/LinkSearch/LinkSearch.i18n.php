@@ -449,6 +449,13 @@ $messages['hu'] = array(
 	'linksearch-error' => 'Helyettesítő karakterek csak a cím elején szerepelhetnek.',
 );
 
+/** Armenian (Հայերեն)
+ * @author Togaed
+ */
+$messages['hy'] = array(
+	'linksearch-ok' => 'Որոնել',
+);
+
 /** Interlingua (Interlingua)
  * @author Malafaya
  */
@@ -708,6 +715,20 @@ $messages['mr'] = array(
 	'linksearch-text'  => '"*.wikipedia.org" सारखी वाईल्डकार्ड्स वापरायला परवानगी आहे.<br />पुढील प्रोटोकॉल्समध्ये चालेल: <tt>$1</tt>',
 	'linksearch-line'  => '$2 मधून $1 जोडलेले आहे',
 	'linksearch-error' => 'वाईल्डकार्ड्स होस्ट नावाच्या फक्त सुरवातीलाच येऊ शकतात.',
+);
+
+/** Malay (Bahasa Melayu)
+ * @author Aviator
+ */
+$messages['ms'] = array(
+	'linksearch'       => 'Cari pautan web',
+	'linksearch-desc'  => '[[Special:Linksearch|Cari laman mengandungi pautan luar]] yang sepadan dengan corak tertentu',
+	'linksearch-pat'   => 'Corak carian:',
+	'linksearch-ns'    => 'Ruang nama:',
+	'linksearch-ok'    => 'Cari',
+	'linksearch-text'  => 'Kad bebas seperti "*.wikipedia.org" dibenarkan.<br />
+Protokol yang disokong: <tt>$1</tt>',
+	'linksearch-error' => 'Kad bebas hanya boleh digunakan pada permulaan nama hos.',
 );
 
 $messages['nan'] = array(

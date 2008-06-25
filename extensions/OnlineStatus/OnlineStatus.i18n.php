@@ -24,7 +24,11 @@ $messages['en'] = array(
  * @author OsamaK
  */
 $messages['ar'] = array(
-	'onlinestatus-toggles-desc' => 'حالتك:',
+	'onlinestatus-subtitle-offline' => 'هذا المستخدم غير متصل حاليا',
+	'onlinestatus-subtitle-online'  => 'هذا المستخدم متصل حاليا',
+	'onlinestatus-toggles-desc'     => 'حالتك:',
+	'onlinestatus-toggle-offline'   => 'غير متصل',
+	'onlinestatus-toggle-online'    => 'متصل',
 );
 
 /** Bulgarian (Български)

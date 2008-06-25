@@ -55,6 +55,15 @@ $messages['ar'] = array(
 	'createarticle'           => 'إنشاء صفحة',
 );
 
+/** Assamese (অসমীয়া)
+ * @author Rajuonline
+ */
+$messages['as'] = array(
+	'tryexact'       => 'কেবল দিয়া শব্দহে বিচাৰিব',
+	'searchfulltext' => 'সম্পূর্ণ পাঠ্য বিচাৰিব',
+	'createarticle'  => 'পৃষ্ঠা বনাওক',
+);
+
 /** Asturian (Asturianu)
  * @author Esbardu
  */
@@ -690,6 +699,18 @@ $messages['mr'] = array(
 	'createarticle'           => 'लेख बनवा',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Aviator
+ */
+$messages['ms'] = array(
+	'inputbox-desc'           => 'Membenarkan penyertaan borang HTML yang sudah ditetapkan.',
+	'inputbox-error-no-type'  => 'Anda tidak menyatakan jenis kotak input untuk diciptakan.',
+	'inputbox-error-bad-type' => 'Jenis kotak input "$1" tidak dikenali. Sila nyatakan "create", "comment", "search" atau "search2".',
+	'tryexact'                => 'Cuba padanan tepat',
+	'searchfulltext'          => 'Cari dalam teks penuh',
+	'createarticle'           => 'Cipta laman',
+);
+
 /** Maltese (Malti)
  * @author Giangian15
  */
@@ -714,9 +735,12 @@ $messages['nap'] = array(
  * @author Slomox
  */
 $messages['nds'] = array(
-	'tryexact'       => 'exakte Söök versöken',
-	'searchfulltext' => 'in’n Vulltext söken',
-	'createarticle'  => 'Siet anleggen',
+	'inputbox-desc'           => 'Verlöövt dat Inbinnen vun vördefineerte HTML-Formularen',
+	'inputbox-error-no-type'  => 'Du hest keen Typ för dat Ingaav-Feld angeven.',
+	'inputbox-error-bad-type' => 'De Typ „$1“ för dat Ingaav-Feld is nich bekannt. Geev een vun disse Typen an: „create“, „comment“, „search“ oder „search2“.',
+	'tryexact'                => 'exakte Söök versöken',
+	'searchfulltext'          => 'in’n Vulltext söken',
+	'createarticle'           => 'Siet anleggen',
 );
 
 /** Nepali (नेपाली)

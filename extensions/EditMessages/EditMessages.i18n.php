@@ -177,14 +177,21 @@ $messages['fr'] = array(
  * @author Toliño
  */
 $messages['gl'] = array(
-	'editmessages'          => 'Editar mensaxes',
-	'editmsg-target'        => 'Obxectivo da mensaxe:',
-	'editmsg-search'        => 'Procurar',
-	'editmsg-get-patch'     => 'Xerar parche',
-	'editmsg-new-search'    => 'Nova busca',
-	'editmsg-apply-patch'   => 'Aplicar o parche',
-	'editmsg-no-patch'      => 'Non pode executar o comando "parche"',
-	'editmsg-patch-success' => 'Parcheado exitoso.',
+	'editmessages'             => 'Editar mensaxes',
+	'editmsg-target'           => 'Obxectivo da mensaxe:',
+	'editmsg-search'           => 'Procurar',
+	'editmsg-show-list'        => 'Amosando os valores da mensaxe chamada "$1"',
+	'editmsg-get-patch'        => 'Xerar parche',
+	'editmsg-new-search'       => 'Nova busca',
+	'editmsg-warning-parse1'   => '* O nome da mensaxe regex non coincide: $1',
+	'editmsg-warning-parse2'   => '* Agárdase un carácter de cita (") despois da frecha: $1',
+	'editmsg-warning-parse3'   => '* Non se atopou a corda de valor final: $1',
+	'editmsg-warning-file'     => '* Foron atopados erros de lectura de ficheiros para as seguintes linguas: $1',
+	'editmsg-warning-mismatch' => '* O texto orixinal non ten o valor agardado para as seguintes linguas: $1',
+	'editmsg-apply-patch'      => 'Aplicar o parche',
+	'editmsg-no-patch'         => 'Non pode executar o comando "parche"',
+	'editmsg-patch-failed'     => 'O parche fallou co status de saída $1',
+	'editmsg-patch-success'    => 'Parcheado exitoso.',
 );
 
 /** Manx (Gaelg)
@@ -239,6 +246,13 @@ $messages['hu'] = array(
 	'editmsg-no-patch'      => 'A „patch” parancs nem hajtható végre',
 	'editmsg-patch-failed'  => 'A javítás sikertelen, visszatérési értéke: $1',
 	'editmsg-patch-success' => 'A javítás sikeresen befejeződött.',
+);
+
+/** Armenian (Հայերեն)
+ * @author Togaed
+ */
+$messages['hy'] = array(
+	'editmsg-search' => 'Որոնում',
 );
 
 /** Javanese (Basa Jawa)
@@ -555,6 +569,13 @@ $messages['szl'] = array(
  */
 $messages['ta'] = array(
 	'editmsg-search' => 'தேடுக',
+);
+
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'editmsg-search' => 'అన్వేషణ',
 );
 
 /** Tetum (Tetun)

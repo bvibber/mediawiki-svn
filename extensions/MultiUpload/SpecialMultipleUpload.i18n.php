@@ -204,6 +204,13 @@ Os ficheiros inapropiados eliminaranse inmediatamente: vexa a [[{{MediaWiki:Mult
 	'multiupload-toolbox'              => 'Cargar múltiples arquivos',
 );
 
+/** Hawaiian (Hawai`i)
+ * @author Singularity
+ */
+$messages['haw'] = array(
+	'multipleupload' => 'Ho‘ouka i nā waihona',
+);
+
 /** Hindi (हिन्दी)
  * @author Kaustubh
  */

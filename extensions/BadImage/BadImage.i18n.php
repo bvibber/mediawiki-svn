@@ -575,8 +575,26 @@ $messages['gv'] = array(
  * @author Singularity
  */
 $messages['haw'] = array(
-	'badimages-add-btn' => 'Ho‘ohui',
-	'badimages-name'    => 'Inoa:',
+	'badimages'                => 'Papa o nā ki‘i ‘ino',
+	'badimages-desc'           => 'Holomua i ka mākaukau o ka papa o nā ki‘i ‘ino o MediaWiki',
+	'badimages-add-btn'        => 'Ho‘ohui',
+	'badimages-added'          => 'Hō‘ulu‘ulu ‘ia ‘o $1 i ka papa.',
+	'badimages-count'          => "Aia {{PLURAL:$1||}} {{PLURAL:$1|ke ki‘i|nā ki‘i}} '''$1'''  ma ka papa o nā ki‘i ‘ino.",
+	'badimages-name'           => 'Inoa:',
+	'badimages-not-added'      => '‘A‘ole hiki ke hō‘ulu‘ulu i ke ki‘i i ka papa.',
+	'badimages-not-removed'    => '‘A‘ole hiki ke kāpae i ke ki‘i mai ka papa.',
+	'badimages-reason'         => 'Kumu:',
+	'badimages-remove'         => '(kāpae)',
+	'badimages-remove-btn'     => 'Kāpae',
+	'badimages-remove-confirm' => 'Hō‘oia e makemake ai ‘oe e kāpae iā $1 mai ka papa, ke ‘olu‘olu:',
+	'badimages-removed'        => 'Kāpae ‘ia ‘o $1 mai ka papa.',
+	'badimages-subheading'     => 'Nā ‘ikamu hou',
+	'badimages-unprivileged'   => '(‘A‘ohe ‘ae kāu e ho‘ololi i ka papa)',
+	'badimages-log-name'       => 'Papa o nā ki‘i ‘ino',
+	'badimages-log-header'     => '‘O keia ka mo‘olelo o ka [[{{MediaWiki:Badimages-page}}|papa o nā ki‘i ‘ino]].',
+	'badimages-log-add'        => 'hō‘ulu‘ulu ‘ia ‘o [[$1]] i ka papa o nā ki‘i ‘ino',
+	'badimages-log-remove'     => 'kāpae ‘ia ‘o [[$1]] mai ka papa o nā ki‘i ‘ino',
+	'badimages-page'           => '{{ns:help}}:Papa o nā ki‘i ‘ino',
 );
 
 /** Hindi (हिन्दी)

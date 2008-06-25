@@ -51,7 +51,8 @@ $messages['fr'] = array(
  * @author Toliño
  */
 $messages['gl'] = array(
-	'randomrootpage' => 'Páxina raíz ao chou',
+	'randomrootpage'      => 'Páxina raíz ao chou',
+	'randomrootpage-desc' => '[[Special:Randomrootpage|Páxina especial]] que procura unha páxina raíz ao chou',
 );
 
 /** Hindi (हिन्दी)

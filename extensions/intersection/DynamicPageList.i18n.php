@@ -156,10 +156,15 @@ $messages['frp'] = array(
 	'intersection_noincludecats' => 'DynamicPageList : vos avéd fôta d’encllure u muens yona catègorie, ou ben de spècefiar un èspâço de nom !',
 );
 
+/** Galician (Galego)
+ * @author Xosé
+ * @author Toliño
+ */
 $messages['gl'] = array(
-	'intersection_toomanycats' => 'DynamicPageList: Demasiadas categorías!',
-	'intersection_toofewcats' => 'DynamicPageList: Demasiado poucas categorías!',
-	'intersection_noresults' => 'DynamicPageList: Ningún resultado!',
+	'intersection-desc'          => 'Devolve unha lista punteada dos ítems máis recentes que están nunha categoría ou nunha unión de varias categorías',
+	'intersection_toomanycats'   => 'DynamicPageList: Demasiadas categorías!',
+	'intersection_toofewcats'    => 'DynamicPageList: Demasiado poucas categorías!',
+	'intersection_noresults'     => 'DynamicPageList: Ningún resultado!',
 	'intersection_noincludecats' => 'DynamicPageList: Ten que incluír unha categoría polo menos ou especificar un espazo de nomes!',
 );
 

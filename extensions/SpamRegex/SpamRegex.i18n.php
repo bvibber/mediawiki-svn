@@ -37,6 +37,13 @@ Caution advised, expressions should not be too short or too common.',
 	'spamregex-summary-log'          => '(Summary)',
 );
 
+/** Eastern Mari (Олык Марий йылме)
+ * @author Сай
+ */
+$messages['mhr'] = array(
+	'spamregex-summary-log' => '(Чылаже)',
+);
+
 /** Afrikaans (Afrikaans)
  * @author SPQRobin
  */
@@ -468,6 +475,13 @@ $messages['pt'] = array(
 	'spamregex-phrase-block'    => 'Frase a bloquear:',
 	'spamregex-text'            => '(Texto)',
 	'spamregex-summary-log'     => '(Sumário)',
+);
+
+/** Sassaresu (Sassaresu)
+ * @author Felis
+ */
+$messages['sdc'] = array(
+	'spamregex-already-blocked' => '"$1" è già broccaddu',
 );
 
 /** Slovak (Slovenčina)

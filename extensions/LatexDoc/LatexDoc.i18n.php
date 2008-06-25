@@ -97,8 +97,9 @@ $3',
 );
 
 /** Galician (Galego)
- * @author Xosé
  * @author Alma
+ * @author Xosé
+ * @author Toliño
  */
 $messages['gl'] = array(
 	'latexdoc_no_text'         => 'A páxina non contén texto, non pode xenerar DVI',
@@ -113,6 +114,7 @@ Saída: $2
 $3',
 	'latexdoc_get_dvi'         => 'Obter DVI',
 	'latexdoc_get_pdf'         => 'Obter PDF',
+	'latexdoc-desc'            => 'Edición colaborativa de documentos LaTeX',
 );
 
 /** Hindi (हिन्दी)

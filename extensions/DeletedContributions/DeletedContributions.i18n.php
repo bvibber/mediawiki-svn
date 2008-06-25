@@ -212,6 +212,14 @@ $messages['gl'] = array(
 	'deletedcontributions-desc' => 'Dálles aos administradores a posibilidade de [[Special:DeletedContributions|examinar as edicións eliminadas dun usuario]]',
 );
 
+/** Hawaiian (Hawai`i)
+ * @author Singularity
+ */
+$messages['haw'] = array(
+	'deletedcontributions'      => 'Nā ha‘awina o ka inoa mea ho‘ohana i kāpae ‘ia ai',
+	'deletedcontributions-desc' => 'Hā‘awi keia i nā kahu i ka hiki e nānā i nā ho‘ololi i kāpae ‘ia ai o ka inoa mea ho‘ohana',
+);
+
 /** Hebrew (עברית)
  * @author Rotem Liss
  */
@@ -326,6 +334,14 @@ $messages['km'] = array(
 $messages['ko'] = array(
 	'deletedcontributions'      => '삭제된 기여',
 	'deletedcontributions-desc' => '관리자에게 사용자의 [[특수기능:DeletedContributions|지워진 기여 보기]] 기능 추가',
+);
+
+/** Ripoarisch (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'deletedcontributions'      => 'Fottjeschmesse Versione',
+	'deletedcontributions-desc' => 'Hee könne Wiki-Köbesse de [[Special:DeletedContributions|fottjeschmesse Versione]] beluure.',
 );
 
 /** Kurdish (Latin) (Kurdî / كوردی (Latin))

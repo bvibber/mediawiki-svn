@@ -264,6 +264,14 @@ $messages['hu'] = array(
 	'edituser-dosearch' => 'Keresés',
 );
 
+/** Armenian (Հայերեն)
+ * @author Togaed
+ */
+$messages['hy'] = array(
+	'edituser-username' => 'Անուն',
+	'edituser-dosearch' => 'Որոնել',
+);
+
 /** Indonesian (Bahasa Indonesia)
  * @author Irwangatot
  */

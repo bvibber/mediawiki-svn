@@ -252,15 +252,23 @@ $messages['frp'] = array(
 );
 
 /** Galician (Galego)
+ * @author Toliño
  * @author Alma
  * @author Xosé
  */
 $messages['gl'] = array(
-	'scanset_opendir_error'  => 'ScanSet: Erro, non se pode abrir o directorio $1',
-	'scanset_no_files'       => 'ScanSet: Non existen ficheiros no directorio indicado.',
-	'scanset_invalid_volume' => 'ScanSet: Volume non válido',
-	'scanset_next'           => 'Seguinte &gt;',
-	'scanset_prev'           => '&lt; Anterior',
+	'scanset-desc'                      => "Ver páxinas de imaxes dixitalizadas do grupo Andreas Grosz's CD/DVD",
+	'scanset_no_name'                   => 'ScanSet: debe especificar o nome do activador do dixitalizador, por exemplo, &lt;scanset name="EB1911" /&gt;.',
+	'scanset_invalid_name'              => 'ScanSet: a activación do dixitalizador falta ou é inválida.',
+	'scanset_unrecognised_index_format' => 'ScanSet: formato de índice descoñecido',
+	'scanset_opendir_error'             => 'ScanSet: Erro, non se pode abrir o directorio $1',
+	'scanset_no_files'                  => 'ScanSet: Non existen ficheiros no directorio indicado.',
+	'scanset_no_volumes'                => 'ScanSet: o volume de directorios non foi atopado',
+	'scanset_missing_index_file'        => 'ScanSet: o ficheiro de índice $1 non foi atopado',
+	'scanset_index_file_error'          => 'ScanSet: produciuse un erro no formato do ficheiro de índice na liña $1',
+	'scanset_invalid_volume'            => 'ScanSet: Volume non válido',
+	'scanset_next'                      => 'Seguinte &gt;',
+	'scanset_prev'                      => '&lt; Anterior',
 );
 
 /** Hebrew (עברית)

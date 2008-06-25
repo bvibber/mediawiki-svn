@@ -29,6 +29,13 @@ $messages['en'] = array(
 	'player-goto-file'        => 'file',
 );
 
+/** Eastern Mari (Олык Марий йылме)
+ * @author Сай
+ */
+$messages['mhr'] = array(
+	'player-goto-page' => 'Лаштык',
+);
+
 /** Afrikaans (Afrikaans)
  * @author SPQRobin
  * @author Arnobarnard

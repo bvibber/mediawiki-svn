@@ -511,6 +511,7 @@ $messages['hu'] = array(
 	'sitematrix-others'    => 'Más Wikimedia projektek',
 	'sitematrix-total'     => "'''Összes: $1'''",
 	'sitematrix-sitetotal' => 'Összesen',
+	'sitematrix-private'   => 'zártkörű',
 );
 
 $messages['hy'] = array(
@@ -564,9 +565,10 @@ $messages['is'] = array(
 
 /** Italian (Italiano)
  * @author BrokenArrow
+ * @author Pietrodn
  * @author .anaconda
- * @author Ramac
  * @author לערי ריינהארט
+ * @author Ramac
  */
 $messages['it'] = array(
 	'sitematrix'           => 'Elenco di tutti i progetti Wikimedia nelle varie lingue',
@@ -577,6 +579,8 @@ $messages['it'] = array(
 	'sitematrix-others'    => 'Altri progetti Wikimedia',
 	'sitematrix-total'     => "'''Conteggio totale: $1'''",
 	'sitematrix-sitetotal' => 'Totale',
+	'sitematrix-private'   => 'privata',
+	'sitematrix-fishbowl'  => 'modifica ristretta',
 );
 
 /** Japanese (日本語)
@@ -820,6 +824,19 @@ $messages['mr'] = array(
 	'sitematrix-fishbowl'  => 'संपादनांवर बंदी',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Aviator
+ */
+$messages['ms'] = array(
+	'sitematrix'           => 'Senarai wiki Wikimedia',
+	'sitematrix-summary'   => 'Berikut ialah senarai wiki yang dikelolakan oleh Wikimedia.',
+	'sitematrix-desc'      => 'Memaparkan [[Special:SiteMatrix|senarai wiki Wikimedia]]',
+	'sitematrix-language'  => 'Bahasa',
+	'sitematrix-project'   => 'Nama projek, pautan antara projek dan pautan antara wiki',
+	'sitematrix-others'    => 'Projek-projek Wikimedia lain',
+	'sitematrix-sitetotal' => 'Jumlah',
+);
+
 /** Erzya (эрзянь кель)
  * @author Amdf
  */
@@ -846,6 +863,7 @@ $messages['nds'] = array(
 	'sitematrix-total'     => "'''Alltohoop: $1'''",
 	'sitematrix-sitetotal' => 'Alltohoop',
 	'sitematrix-private'   => 'privat',
+	'sitematrix-fishbowl'  => 'Ännern is inschränkt',
 );
 
 /** Dutch (Nederlands)

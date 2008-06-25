@@ -32,6 +32,13 @@ $messages['fr'] = array(
 	'contributorsaddon-desc' => 'Ajoute le popup JS onMouseOver aux liens des « Contributeurs principaux »',
 );
 
+/** Galician (Galego)
+ * @author Toliño
+ */
+$messages['gl'] = array(
+	'contributorsaddon-desc' => 'Engade emerxentes JS onMouseOver ás ligazóns das "Colaboradores principais"',
+);
+
 /** Hindi (हिन्दी)
  * @author Kaustubh
  */

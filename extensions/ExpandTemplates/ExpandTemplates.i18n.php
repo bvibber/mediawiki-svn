@@ -25,6 +25,13 @@ It does this by calling the relevant parser stage from MediaWiki itself.',
 	'expand_templates_preview'         => 'Preview',
 );
 
+/** Eastern Mari (Олык Марий йылме)
+ * @author Сай
+ */
+$messages['mhr'] = array(
+	'expand_templates_preview' => 'Ончылгоч ончымаш',
+);
+
 /** Afrikaans (Afrikaans)
  * @author Arnobarnard
  * @author SPQRobin
@@ -68,6 +75,18 @@ $messages['ar'] = array(
 	'expand_templates_remove_comments' => 'إزالة التعليقات',
 	'expand_templates_generate_xml'    => 'اعرض شجرة XML parse',
 	'expand_templates_preview'         => 'عرض',
+);
+
+/** Assamese (অসমীয়া)
+ * @author Rajuonline
+ */
+$messages['as'] = array(
+	'expandtemplates'                  => 'সাঁচবোৰ বহলাওক',
+	'expand_templates_input'           => 'পাঠ্য ভৰাওক',
+	'expand_templates_output'          => 'ফলাফল',
+	'expand_templates_ok'              => 'ওকে',
+	'expand_templates_remove_comments' => 'মন্তব্য গু়চাওক',
+	'expand_templates_preview'         => 'খচৰা',
 );
 
 /** Asturian (Asturianu)
@@ -245,6 +264,11 @@ $messages['el'] = array(
 $messages['eo'] = array(
 	'expandtemplates'                  => 'Ampleksigu ŝablonojn',
 	'expandtemplates-desc'             => '[[Special:ExpandTemplates|Etendas ŝablonojn, sintaksaj funkciojn, kaj variablojn]] montri etenditan vikitekston kaj antaŭvidi faritan paĝon',
+	'expand_templates_intro'           => 'Ĉi tiu speciala paĝo traktas tekston kaj ampleksigas ĉiujn ŝablonojn en ĝi rekursie.
+Ĝi ankaŭ ampleksigas sintaksajn funkciojn kiel 
+<nowiki>{{</nowiki>#if:…}}, variablojn kiel
+<nowiki>{{</nowiki>CURRENTDAY}}&mdash;fakte preskaŭ iujn ajn en duoblaj krampoj.
+Ĝi faras tion per vokado de la koncerna sintaksa kodpeco de MediaWiki mem.',
 	'expand_templates_title'           => 'Kunteksta titolo, por {{PAGENAME}}, ktp.:',
 	'expand_templates_input'           => 'Enigu tekston:',
 	'expand_templates_output'          => 'Rezulto',
@@ -822,11 +846,21 @@ $messages['mr'] = array(
 );
 
 /** Malay (Bahasa Melayu)
+ * @author Aviator
  * @author Aurora
  */
 $messages['ms'] = array(
-	'expandtemplates'     => 'Kembangkan templat',
-	'expand_templates_ok' => 'OK',
+	'expandtemplates'                  => 'Kembangkan templat',
+	'expandtemplates-desc'             => '[[Special:ExpandTemplates|Mengembangkan templat, fungsi penghurai dan pemboleh ubah]] untuk memaparkan teks wiki yang dikembangkan dan pralihat laman yang terhasil',
+	'expand_templates_intro'           => 'Laman khas ini menerima sebarang teks dan mengembangkan semua templat di dalamnya secara rekursif. Laman ini juga mengembangkan fungsi penghurai seperti <nowiki>{{</nowiki>#if:…}} dan pemboleh ubah seperti <nowiki>{{</nowiki>CURRENTDAY}}&mdash;tentunya setiap benda dalam kurungan berganda. Proses ini dilakukan dengan memanggil tahap penghurai yang berkenaan dalam MediaWiki sendiri.',
+	'expand_templates_title'           => 'Tajuk konteks, untuk {{PAGENAME}} dan sebagainya:',
+	'expand_templates_input'           => 'Teks input:',
+	'expand_templates_output'          => 'Hasil',
+	'expand_templates_xml_output'      => 'Output XML',
+	'expand_templates_ok'              => 'OK',
+	'expand_templates_remove_comments' => 'Buang ulasan',
+	'expand_templates_generate_xml'    => 'Papar pepohon hurai XML',
+	'expand_templates_preview'         => 'Pralihat',
 );
 
 /** Maltese (Malti)
@@ -848,6 +882,7 @@ $messages['nan'] = array(
  */
 $messages['nds'] = array(
 	'expandtemplates'                  => 'Vörlagen oplösen',
+	'expand_templates_title'           => 'Kontexttitel, för {{PAGENAME}} etc.:',
 	'expand_templates_input'           => 'Inputtext:',
 	'expand_templates_output'          => 'Resultat',
 	'expand_templates_xml_output'      => 'XML-Utgaav',
@@ -1225,8 +1260,10 @@ $messages['to'] = array(
 /** Turkish (Türkçe)
  * @author Erkan Yilmaz
  * @author Karduelis
+ * @author Runningfridgesrule
  */
 $messages['tr'] = array(
+	'expandtemplates'                  => 'Şablonları geliştir',
 	'expand_templates_input'           => 'Giriş metni:',
 	'expand_templates_output'          => 'Sonuç',
 	'expand_templates_xml_output'      => 'XML üretim',

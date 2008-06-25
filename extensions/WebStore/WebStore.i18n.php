@@ -848,6 +848,9 @@ $messages['ps'] = array(
 	'webstore_php_warning'        => 'د PHP ګواښنه: $1',
 	'webstore_metadata_not_found' => 'دوتنه و نه موندل شوه: $1',
 	'webstore_no_response'        => 'د پالنګر نه هېڅ کوم ځواب نشته',
+	'webstore_backend_error'      => 'د زېرمتون د پالنګر لخوا تېروتنه:
+
+$1',
 );
 
 /** Portuguese (Português)

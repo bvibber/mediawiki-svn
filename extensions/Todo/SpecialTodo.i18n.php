@@ -47,6 +47,13 @@ $messages['krl'] = array(
 	'todo-list-cancel' => 'Keskevytä',
 );
 
+/** Eastern Mari (Олык Марий йылме)
+ * @author Сай
+ */
+$messages['mhr'] = array(
+	'todo-list-cancel' => 'Чараш',
+);
+
 /** Afrikaans (Afrikaans)
  * @author Arnobarnard
  */
@@ -102,6 +109,7 @@ $messages['bg'] = array(
 	'todo-list-cancel'      => 'Отмяна',
 	'todo-issue-summary'    => 'Резюме:',
 	'todo-form-details'     => 'Детайли:',
+	'todo-form-email'       => 'За получаване на оповестително писмо при приключване на задачата е необходимо да въведете своя адрес за е-поща:',
 	'todo-form-submit'      => 'Изпращане на заявка',
 );
 
@@ -175,12 +183,16 @@ $4",
  * @author Toliño
  */
 $messages['gl'] = array(
+	'todo'                  => 'Lista de tarefas pendentes',
+	'todo-tab'              => 'tarefas pendentes',
 	'todo-new-queue'        => 'novo',
 	'todo-invalid-item'     => 'Artigo perdido ou non válido',
 	'todo-unrecognize-type' => 'Tipo non recoñecido',
 	'todo-item-list'        => 'Os seus artigos',
+	'todo-no-item'          => 'Non hai tarefas pendentes.',
 	'todo-add-queue'        => 'Engadir cola…',
 	'todo-move-queue'       => 'Mover á cola…',
+	'todo-list-for'         => 'Lista de tarefas pendentes para',
 	'todo-list-change'      => 'Cambiar',
 	'todo-list-cancel'      => 'Cancelar',
 	'todo-new-item'         => 'Novo artigo',

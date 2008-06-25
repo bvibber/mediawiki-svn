@@ -264,6 +264,14 @@ $messages['eo'] = array(
 	'blacklistedusername'             => 'Malpermesita uzantnomo',
 	'blacklistedusernametext'         => 'La salutnomo kiun vi elektis kongruas listeron en [[MediaWiki:Usernameblacklist|listo de nigralistaj salutnomoj]].
 Bonvolu elekti alian nomon.',
+	'usernameblacklist'               => '<pre>
+# Listanoj en ĉi tiu listo estos uzata kiel parto de regulesprimo 
+# nigralistigante salutnomojn de registrado. Ĉiu ano estu parto de
+# bolpunktita listo, ekz-e:
+#
+# * Foo
+# * [Bb]ar
+</pre>',
 	'usernameblacklist-invalid-lines' => 'La {{PLURAL:$1|jena linio|jenaj linioj}} en la salutnoma nigralisto estas {{PLURAL:$1|nevalida|nevalidaj}}; bonvolu korekti {{PLURAL:$1|gxi|ilin}} antaŭ konservado.',
 	'right-uboverride'                => 'Astataŭigi la salutnoman nigraliston',
 );
@@ -402,6 +410,7 @@ $messages['gl'] = array(
 # * [Bb]ar
 </pre>',
 	'usernameblacklist-invalid-lines' => '{{PLURAL:$1|A liña seguinte|As liñas seguintes}} na listaxe negra de nomes de usuario {{PLURAL:$1|non é válida|non son válidas}}; corríxa{{PLURAL:$1|a|as}} antes de gardar:',
+	'right-uboverride'                => 'Ignorar os nomes de usuario da listaxe negra (blacklist)',
 );
 
 $messages['hak'] = array(
@@ -787,6 +796,18 @@ $messages['mr'] = array(
 </pre>',
 	'usernameblacklist-invalid-lines' => 'सदस्यनम ब्लॉक यादीतील खालील {{PLURAL:$1|ओळ चुकीची आहे|ओळी चुकीच्या आहेत}}; कृपया जतन करण्यापूर्वी {{PLURAL:$1|ती|त्या}} दुरुस्त करा:',
 	'right-uboverride'                => 'सदस्य नाव ब्लॅक यादी कडे दुर्लक्ष करा',
+);
+
+/** Malay (Bahasa Melayu)
+ * @author Aviator
+ */
+$messages['ms'] = array(
+	'usernameblacklist-desc'          => 'Menambah [[MediaWiki:Usernameblacklist|senarai hitam nama pengguna]] untuk mengehadkan pembukaan akaun pengguna yang sepadan dengan ungkapan nalar yang disediakan',
+	'blacklistedusername'             => 'Nama pengguna yang disenaraihitamkan',
+	'blacklistedusernametext'         => 'Nama pengguna yang anda pilih telah [[MediaWiki:Usernameblacklist|disenaraihitamkan]].
+Sila pilih nama lain.',
+	'usernameblacklist-invalid-lines' => '{{PLURAL:$1|Baris|Baris-baris}} berikut dalam senarai hitam nama pengguna adalah tidak sah; sila betulkannya sebelum menyimpan:',
+	'right-uboverride'                => 'Atasi senarai hitam nama pengguna',
 );
 
 /** Low German (Plattdüütsch)

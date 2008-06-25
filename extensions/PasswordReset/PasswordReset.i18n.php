@@ -170,6 +170,7 @@ $messages['fr'] = array(
  */
 $messages['gl'] = array(
 	'passwordreset'                 => 'Eliminar o contrasinal',
+	'passwordreset-desc'            => 'Restablecer o contrasinal do usuario dun wiki (require privilexios "passwordreset")',
 	'passwordreset-invalidusername' => 'Nome de usuario non válido',
 	'passwordreset-emptyusername'   => 'Nome de usuario baleiro',
 	'passwordreset-nopassmatch'     => 'Os contrasinais non coinciden',

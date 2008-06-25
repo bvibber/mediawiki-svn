@@ -50,6 +50,13 @@ Please fill it in.',
 	'formsaveerrortext'            => 'There was an unknown error saving page \'$1\'.',
 );
 
+/** Eastern Mari (Олык Марий йылме)
+ * @author Сай
+ */
+$messages['mhr'] = array(
+	'formsave' => 'Аралаш',
+);
+
 /** Afrikaans (Afrikaans)
  * @author SPQRobin
  */

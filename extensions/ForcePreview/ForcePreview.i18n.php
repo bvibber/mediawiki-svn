@@ -69,6 +69,15 @@ $messages['gl'] = array(
 	'right-forcepreviewexempt' => 'Poder gardar sen usar a vista previa',
 );
 
+/** Hawaiian (Hawai`i)
+ * @author Singularity
+ */
+$messages['haw'] = array(
+	'forcepreview'             => 'Mālama i ka ‘ao‘ao (mamua, nānā i ka nāmua)',
+	'forcepreview-desc'        => 'No nā inoa mea ho‘ohana i ‘a‘ole kuleana ‘ia, ha‘akoi i ka nāmua',
+	'right-forcepreviewexempt' => 'Mālama paha me ka nānā ‘ana ‘ole o "Nānā i ka nāmua"',
+);
+
 /** Hindi (हिन्दी)
  * @author Kaustubh
  */

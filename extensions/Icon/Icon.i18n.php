@@ -77,9 +77,14 @@ $messages['fr'] = array(
 	'icon-desc'     => 'Vous autorise l’utilisation des images comme icônes ou de liens sous forme d’icônes',
 );
 
+/** Galician (Galego)
+ * @author Xosé
+ * @author Toliño
+ */
 $messages['gl'] = array(
 	'icon-badimage' => 'Imaxe mala',
 	'icon-badwidth' => 'Anchura mala',
+	'icon-desc'     => 'Permítelle usar as imaxes como iconas e ligazóns a iconas',
 );
 
 /** Hindi (हिन्दी)

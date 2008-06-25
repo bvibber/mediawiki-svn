@@ -608,6 +608,7 @@ $messages['ga'] = array(
  * @author Toliño
  */
 $messages['gl'] = array(
+	'ogg-desc'                => 'Manipulador dos ficheiros Ogg Theora e Vorbis files co reprodutor JavaScript',
 	'ogg-short-audio'         => 'Ficheiro de son Ogg $1, $2',
 	'ogg-short-video'         => 'Ficheiro de vídeo Ogg $1, $2',
 	'ogg-short-general'       => 'Ficheiro multimedia Ogg $1, $2',
@@ -1319,6 +1320,38 @@ $messages['mr'] = array(
 	'ogg-desc-link'           => 'या संचिकेबद्दलची माहिती',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Aviator
+ */
+$messages['ms'] = array(
+	'ogg-desc'                => 'Pengelola fail Ogg Theora dan Vorbis, dengan pemain JavaScript',
+	'ogg-short-audio'         => 'fail bunyi Ogg $1, $2',
+	'ogg-short-video'         => 'fail video Ogg $1, $2',
+	'ogg-short-general'       => 'fail media Ogg $1, $2',
+	'ogg-long-audio'          => '(fail bunyi Ogg $1, tempoh $2, $3)',
+	'ogg-long-video'          => '(fail video Ogg $1, tempoh $2, $4×$5 piksel, $3)',
+	'ogg-long-multiplexed'    => '(fail audio/video multipleks Ogg, $1, tempoh $2, $4×$5 piksel, keseluruhan $3)',
+	'ogg-long-general'        => '(fail media Ogg, tempoh $2, $3)',
+	'ogg-long-error'          => '(Fail Ogg tidak sah: $1)',
+	'ogg-play'                => 'Main',
+	'ogg-pause'               => 'Jeda',
+	'ogg-stop'                => 'Henti',
+	'ogg-play-video'          => 'Main video',
+	'ogg-play-sound'          => 'Main bunyi',
+	'ogg-no-player'           => 'Maaf, sistem anda tidak mempunyai perisian pemain yang disokong. Sila <a href=\\"http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download\\">muat turun sebuah pemain</a>.',
+	'ogg-no-xiphqt'           => 'Anda tidak mempunyai komponen XiphQT untuk QuickTime. QuickTime tidak boleh memainkan fail Ogg tanpa komponen ini. Sila <a href=\\"http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download\\">muat turun XiphQT</a> atau pilih pemain lain.',
+	'ogg-player-videoElement' => 'unsur <video>',
+	'ogg-player-oggPlugin'    => 'Pemalam Ogg',
+	'ogg-player-thumbnail'    => 'Imej pegun sahaja',
+	'ogg-player-soundthumb'   => 'Tiada pemain',
+	'ogg-player-selected'     => '(dipilih)',
+	'ogg-use-player'          => 'Gunakan pemain:',
+	'ogg-more'                => 'Lagi…',
+	'ogg-dismiss'             => 'Tutup',
+	'ogg-download'            => 'Muat turun fail',
+	'ogg-desc-link'           => 'Perihal fail ini',
+);
+
 /** Low German (Plattdüütsch)
  * @author Slomox
  */
@@ -1505,7 +1538,7 @@ $messages['pl'] = array(
 	'ogg-stop'                => 'Stop',
 	'ogg-play-video'          => 'Odtwórz wideo',
 	'ogg-play-sound'          => 'Odtwórz dźwięk',
-	'ogg-no-player'           => 'W Twoim systemie brak obsługiwanego programu do obsługi odtwarzania. <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download/pl">Pobierz i zainstaluj odtwarzacz</a>.',
+	'ogg-no-player'           => 'W Twoim systemie brak obsługiwanego programu odtwarzacza. <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download/pl">Pobierz i zainstaluj odtwarzacz</a>.',
 	'ogg-no-xiphqt'           => 'Brak komponentu XiphQT dla programu QuickTime. QuickTime nie może odtwarzać plików Ogg bez tego komponentu. <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download/pl">Pobierz XiphQT</a> lub użyj innego odtwarzacza.',
 	'ogg-player-videoElement' => 'element <video>',
 	'ogg-player-oggPlugin'    => 'wtyczka Ogg',

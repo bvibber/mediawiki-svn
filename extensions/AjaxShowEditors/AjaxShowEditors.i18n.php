@@ -344,6 +344,7 @@ $messages['is'] = array(
 );
 
 /** Italian (Italiano)
+ * @author FiloSottile
  * @author Cruccone
  */
 $messages['it'] = array(
@@ -351,6 +352,7 @@ $messages['it'] = array(
 	'ajax-se-pending'          => 'in attesa di aggiornamento ... (fare clic su questa casella o iniziare la modifica)',
 	'ajax-se-idling'           => '(da $1 s)',
 	'ajax-se-pagedoesnotexist' => 'La pagina non esiste',
+	'ajax-se-usernotfound'     => 'Errore: utente non trovato',
 );
 
 /** Japanese (日本語)

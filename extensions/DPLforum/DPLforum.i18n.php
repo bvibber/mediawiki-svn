@@ -19,6 +19,13 @@ $messages['en'] = array(
 	'dplforum-toomany' => 'DPL Forum: Too many categories!'
 );
 
+/** Eastern Mari (Олык Марий йылме)
+ * @author Сай
+ */
+$messages['mhr'] = array(
+	'dplforum-never' => 'Нигунам',
+);
+
 /** Arabic (العربية)
  * @author OsamaK
  * @author Alnokta

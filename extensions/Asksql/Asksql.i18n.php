@@ -296,6 +296,7 @@ cela fonccion avouéc parcimonie.",
 /** Galician (Galego)
  * @author Alma
  * @author Xosé
+ * @author Toliño
  */
 $messages['gl'] = array(
 	'asksql'          => 'Consulta SQL',
@@ -308,6 +309,7 @@ Isto con frecuencia pode engadir unha carga considerábel ao servidor, así que 
 	'querybtn'        => 'Enviar consulta',
 	'selectonly'      => 'Só se permiten consultas de só lectura',
 	'querysuccessful' => 'Consulta con éxito',
+	'right-asksql'    => 'Facer procuras SQL',
 );
 
 /** Hindi (हिन्दी)
@@ -482,6 +484,7 @@ Esou Ufroen kënnen zu enger grousser Belaaschtung vun de Servere féieren, dofi
 	'querybtn'        => 'Ufro schécken',
 	'selectonly'      => 'Et sinn nëmmen Offroen zougelooss fir ze liesen.',
 	'querysuccessful' => "D'Offro gouf mat Erfolleg ausgefouert",
+	'right-asksql'    => 'SQL-Offroe maachen',
 );
 
 /** Lithuanian (Lietuvių)

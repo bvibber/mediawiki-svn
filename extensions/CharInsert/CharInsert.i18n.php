@@ -143,6 +143,13 @@ $messages['mr'] = array(
 	'charinsert-desc' => '[[MediaWiki:Edittools|ठराविक नसलेली चिन्हे]] वापरण्यासाठी एक जावास्क्रीप्ट कळफलक बनवितो',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Aviator
+ */
+$messages['ms'] = array(
+	'charinsert-desc' => 'Membolehkan penciptaan kotak JavaScript untuk [[MediaWiki:Edittools|menyisipkan aksara bukan piawai]]',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

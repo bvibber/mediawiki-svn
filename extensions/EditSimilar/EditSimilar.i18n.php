@@ -26,6 +26,13 @@ This page could also use your help: $1.',
 	'tog-edit-similar'                           => 'Enable similar pages suggestions',
 );
 
+/** Afrikaans (Afrikaans)
+ * @author Naudefj
+ */
+$messages['af'] = array(
+	'editsimilar-link-disable' => 'stel voorkeure',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */
@@ -74,6 +81,7 @@ Cette page devrait avoir, aussi, besoin de votre aide : $1.',
  * @author Toliño
  */
 $messages['gl'] = array(
+	'editsimilar-desc'                           => 'Anima aos usuarios a editar páxinas similares despois de gardar unha páxina',
 	'editsimilar-thanks'                         => 'Grazas pola súa contribución.
 Comprobe estas páxinas relacionadas: $1.',
 	'editsimilar-thanks-singleresult'            => 'Grazas pola súa contribución.
@@ -83,6 +91,7 @@ Estas páxinas poden precisar tamén da súa axuda: $1.',
 	'editsimilar-thanks-notsimilar-singleresult' => 'Grazas pola súa contribución.
 Esta páxina pode tamén precisar da súa axuda: $1.',
 	'editsimilar-thankyou'                       => 'Grazas pola súa contribución, $1!',
+	'editsimilar-link-disable'                   => 'fixar as preferencias',
 	'tog-edit-similar'                           => 'Permitir suxestións de páxinas similares',
 );
 

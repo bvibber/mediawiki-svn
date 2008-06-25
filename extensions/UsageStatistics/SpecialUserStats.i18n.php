@@ -330,26 +330,31 @@ $messages['fr'] = array(
  * @author Alma
  * @author Xosé
  * @author Toliño
+ * @author Siebrand
  */
 $messages['gl'] = array(
-	'specialuserstats'               => 'Estatísticas do Uso',
-	'usagestatistics'                => 'Estatísticas do Uso',
-	'usagestatisticsfor'             => '<h2>Estatísticas de uso para [[User:$1|$1]]</h2>',
-	'usagestatisticsallusers'        => 'Todos os Usuarios',
-	'usagestatisticsinterval'        => 'Intervalo',
-	'usagestatisticstype'            => 'Clase',
-	'usagestatisticsstart'           => 'Data de comezo',
-	'usagestatisticsend'             => 'Data de fin',
-	'usagestatisticssubmit'          => 'Xerar Estatísticas',
-	'usagestatisticsnostart'         => '* <font color=red>Especifique unha data de comezo</font>',
-	'usagestatisticsnoend'           => '* <font color=red>Especifique unha data de fin</font>',
-	'usagestatisticsbadstartend'     => '<b>Malo <i>Comezo</i> e/ou <i>Fin</i> da data!</b>',
-	'usagestatisticsintervalday'     => 'Día',
-	'usagestatisticsintervalweek'    => 'Semana',
-	'usagestatisticsintervalmonth'   => 'Mes',
-	'usagestatisticscalselect'       => 'Seleccionar',
-	'usagestatistics-editindividual' => 'Estatísticas das edicións do usuario individual $1',
-	'usagestatistics-editpages'      => 'Páxinas de estatísticas $1 do usuario individual',
+	'specialuserstats'                => 'Estatísticas do Uso',
+	'usagestatistics'                 => 'Estatísticas do Uso',
+	'usagestatisticsfor'              => '<h2>Estatísticas de uso para [[User:$1|$1]]</h2>',
+	'usagestatisticsallusers'         => 'Todos os Usuarios',
+	'usagestatisticsinterval'         => 'Intervalo',
+	'usagestatisticstype'             => 'Clase',
+	'usagestatisticsstart'            => 'Data de comezo',
+	'usagestatisticsend'              => 'Data de fin',
+	'usagestatisticssubmit'           => 'Xerar Estatísticas',
+	'usagestatisticsnostart'          => '* <font color=red>Especifique unha data de comezo</font>',
+	'usagestatisticsnoend'            => '* <font color=red>Especifique unha data de fin</font>',
+	'usagestatisticsbadstartend'      => '<b>Malo <i>Comezo</i> e/ou <i>Fin</i> da data!</b>',
+	'usagestatisticsintervalday'      => 'Día',
+	'usagestatisticsintervalweek'     => 'Semana',
+	'usagestatisticsintervalmonth'    => 'Mes',
+	'usagestatisticsincremental'      => 'Incremental',
+	'usagestatisticsincremental-text' => 'incrementais',
+	'usagestatisticscumulative'       => 'Acumulativo',
+	'usagestatisticscumulative-text'  => 'acumulativas',
+	'usagestatisticscalselect'        => 'Seleccionar',
+	'usagestatistics-editindividual'  => 'Estatísticas das edicións $1 do usuario',
+	'usagestatistics-editpages'       => 'Páxinas das estatísticas $1 do usuario',
 );
 
 /** Hindi (हिन्दी)

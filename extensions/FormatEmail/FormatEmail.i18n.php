@@ -76,6 +76,7 @@ $2',
  * @author Toliño
  */
 $messages['gl'] = array(
+	'email-desc'   => 'Permítelle ao usuario engadir cabezallos/pés de páxina nos seus correos electrónicos.',
 	'email_footer' => '---------------------------------------------------------------------------------------------
 Esta mensaxe foille enviada a través do sistema de correo electrónico de {{SITENAME}} por $1.
 

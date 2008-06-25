@@ -676,11 +676,12 @@ Los articllos èfaciês sont pas més visiblos dens ceti sistèmo, mas celes sup
 
 /** Galician (Galego)
  * @author Xosé
- * @author Alma
  * @author Toliño
+ * @author Alma
  */
 $messages['gl'] = array(
 	'hiderevision'                => 'Agochar revisións permanentemente',
+	'hiderevision-desc'           => 'Agocha as revisións individuais da vista dos demais usuarios por motivos legais, etc.',
 	'group-oversight'             => 'Supervisores',
 	'group-oversight-member'      => 'Supervisor',
 	'grouppage-oversight'         => '{{ns:project}}:Supervisor',
@@ -2339,6 +2340,7 @@ $messages['tg-cyrl'] = array(
  */
 $messages['tr'] = array(
 	'hiderevision-continue'      => 'Devam',
+	'hiderevision-submit'        => 'Bilgiyi süresizce gizle',
 	'hiderevision-error-missing' => 'Veritabanında bulunamadı',
 	'hiderevision-error-delete'  => 'Arşivlenilemedi; daha önce silindi mi?',
 	'oversight-view'             => 'detaylar',

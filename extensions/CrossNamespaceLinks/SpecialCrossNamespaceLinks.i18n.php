@@ -142,9 +142,10 @@ $messages['dsb'] = array(
  * @author Yekrats
  */
 $messages['eo'] = array(
-	'crossnamespacelinks'      => 'Trans-nomspacaj ligiloj',
-	'crossnamespacelinks-desc' => '[[Special:CrossNamespaceLinks|Montras ligilojn trans nomspacoj]] evitindajn en {{SITENAME}}',
-	'crossnamespacelinkstext'  => '$1: $2 {{PLURAL:$2|ligilo|ligiloj}} al $3',
+	'crossnamespacelinks'         => 'Trans-nomspacaj ligiloj',
+	'crossnamespacelinks-desc'    => '[[Special:CrossNamespaceLinks|Montras ligilojn trans nomspacoj]] evitindajn en {{SITENAME}}',
+	'crossnamespacelinks-summary' => 'Ĉi tiu paĝo provizas liston de ligiloj de paĝo en la ĉefa nomspaco al paĝo en aliaj nomspacoj (ekscepte de {{ns:special}}, {{ns:talk}}, {{ns:project}}, kaj {{ns:template}} nomspacoj), kiu estas ne konsileble uzi.',
+	'crossnamespacelinkstext'     => '$1: $2 {{PLURAL:$2|ligilo|ligiloj}} al $3',
 );
 
 $messages['es'] = array(
@@ -497,6 +498,16 @@ $messages['mr'] = array(
 	'crossnamespacelinkstext'     => '$1: $3 ला {{PLURAL:$2|असणारा|असणारे}}  $2 {{PLURAL:$2|दुवा|दुवे}}',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Aviator
+ */
+$messages['ms'] = array(
+	'crossnamespacelinks'         => 'Pautan silang ruang nama',
+	'crossnamespacelinks-desc'    => '[[Special:CrossNamespaceLinks|Menyenaraikan pautan silang ruang nama]] yang tidak sepatutnya wujud di {{SITENAME}}',
+	'crossnamespacelinks-summary' => 'Laman ini menyediakan senarai pautan dari laman di ruang nama utama ke laman di ruang nama lain (kecuali ruang nama {{ns:special}}, {{ns:talk}}, {{ns:project}} dan {{ns:template}}), yang tidak digalakkan.',
+	'crossnamespacelinkstext'     => '$1: $2 pautan ke $3',
+);
+
 $messages['nan'] = array(
 	'crossnamespacelinks'         => 'Ha̍ⁿh kòe miâ-khong-kan ê liân-kiat',
 	'crossnamespacelinkstext'     => '$1: $2 ê liân-kiat kàu $3',
@@ -506,8 +517,9 @@ $messages['nan'] = array(
  * @author Slomox
  */
 $messages['nds'] = array(
-	'crossnamespacelinks'     => 'Sieden mit Lenken na annere Naamrüüm',
-	'crossnamespacelinkstext' => '$1: $2 {{PLURAL:$2|Lenk|Lenken}} na $3',
+	'crossnamespacelinks'      => 'Sieden mit Lenken na annere Naamrüüm',
+	'crossnamespacelinks-desc' => '[[Special:CrossNamespaceLinks|Wiest Lenken op Sieden in annere Naamrüüm]], de in {{SITENAME}} nich vörhannen weesen schöölt',
+	'crossnamespacelinkstext'  => '$1: $2 {{PLURAL:$2|Lenk|Lenken}} na $3',
 );
 
 /** Dutch (Nederlands)

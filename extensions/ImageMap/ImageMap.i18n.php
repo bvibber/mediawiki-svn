@@ -55,10 +55,10 @@ $messages['an'] = array(
  */
 $messages['ar'] = array(
 	'imagemap_desc'               => 'يسمح بخرائط قابلة للضغط عليها من طرف العميل باستخدام وسم <tt><nowiki><imagemap></nowiki></tt>',
-	'imagemap_no_image'           => '&lt;imagemap&gt;: يجب تحديد صورة في الخط الأول',
+	'imagemap_no_image'           => '&lt;imagemap&gt;: يجب تحديد صورة في السطر الأول',
 	'imagemap_invalid_image'      => '&lt;imagemap&gt;: الصورة غير صحيحة أو غير موجودة',
 	'imagemap_no_link'            => '&lt;imagemap&gt;: لم يتم العثور على وصلة صحيحة في نهاية السطر $1',
-	'imagemap_invalid_title'      => '&lt;imagemap&gt;: عنوان غير صحيح في الوصلة في السطر $1',
+	'imagemap_invalid_title'      => '&lt;imagemap&gt;: عنوان غير صحيح في الوصلة عند الخط $1',
 	'imagemap_missing_coord'      => '&lt;imagemap&gt;: إحداثيات غير كافية للشكل عند الخط $1',
 	'imagemap_unrecognised_shape' => '&lt;imagemap&gt;: شكل غير معروف عند الخط $1, كل خط يجب أن يبدأ بواحد من: default, rect, circle or poly',
 	'imagemap_no_areas'           => '&lt;imagemap&gt;: على الأقل محدد مساحة واحد يجب إعطاؤه',
@@ -293,8 +293,10 @@ $messages['frp'] = array(
 /** Galician (Galego)
  * @author Alma
  * @author Xosé
+ * @author Toliño
  */
 $messages['gl'] = array(
+	'imagemap_desc'               => 'Permite mapas de imaxe nos que se poden facer clic usando a etiqueta <tt><nowiki><imagemap></nowiki></tt>',
 	'imagemap_no_image'           => '&lt;imagemap&gt;: debe especificar unha imaxe na primeira liña',
 	'imagemap_invalid_image'      => '&lt;imagemap&gt;: a imaxe non é válida ou non existe',
 	'imagemap_no_link'            => '&lt;imagemap&gt;: foi atopada unha ligazón non válida ao final da liña $1',
@@ -617,6 +619,23 @@ $messages['mr'] = array(
 	'imagemap_invalid_coord'      => '&lt;imagemap&gt;:  $1 ओळीवर चुकीचे कोऑर्डिनेट्स, संख्या हवी',
 	'imagemap_invalid_desc'       => '&lt;imagemap&gt;: चुकीची माहिती, यापैकी एक असायला हवी: <tt>$1</tt>',
 	'imagemap_description'        => 'या चित्राबद्दल माहिती',
+);
+
+/** Malay (Bahasa Melayu)
+ * @author Aviator
+ */
+$messages['ms'] = array(
+	'imagemap_desc'               => 'Membenarkan peta imej boleh klik menggunakan tag <tt><nowiki><imagemap></nowiki></tt>',
+	'imagemap_no_image'           => '&lt;imagemap&gt;: sila nyatakan imej dalam baris pertama',
+	'imagemap_invalid_image'      => '&lt;imagemap&gt;: imej tidak sah atau tidak wujud',
+	'imagemap_no_link'            => '&lt;imagemap&gt;: tiada pautan sah dijumpai pada akhir baris $1',
+	'imagemap_invalid_title'      => '&lt;imagemap&gt;: tajuk tidak sah dalam pautan pada baris $1',
+	'imagemap_missing_coord'      => '&lt;imagemap&gt;: koordinat bagi bentuk tidak cukup pada baris $1',
+	'imagemap_unrecognised_shape' => '&lt;imagemap&gt;: bentuk tidak dikenali pada baris $1, setiap baris hendaklah dimulakan dengan salah satu daripada: default, rect, circle atau poly',
+	'imagemap_no_areas'           => '&lt;imagemap&gt;: hendaklah sekurang-kurangnya satu spesifikasi kawasan dinyatakan',
+	'imagemap_invalid_coord'      => '&lt;imagemap&gt;: koordinat tidak sah pada baris $1, nombor diperlukan',
+	'imagemap_invalid_desc'       => '&lt;imagemap&gt;: spesifikasi keterangan tidak sah, hendaklah salah satu daripada: <tt>$1</tt>',
+	'imagemap_description'        => 'Perihal imej ini',
 );
 
 $messages['nds'] = array(

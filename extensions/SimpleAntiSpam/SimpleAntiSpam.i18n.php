@@ -103,6 +103,16 @@ Ne '''RIEN''' inscrire ici !",
 	'simpleantispam-desc'  => 'Ajoute au formulaire la vérification d’un bot spammeur',
 );
 
+/** Galician (Galego)
+ * @author Toliño
+ */
+$messages['gl'] = array(
+	'simpleantispam'       => 'A súa edición activou o mecanismo antispam',
+	'simpleantispam-label' => "Comprobación antispam.
+'''NON''' encha isto!",
+	'simpleantispam-desc'  => 'Engade unha verificación simple de spam/bot nos formularios',
+);
+
 /** Hebrew (עברית)
  * @author Rotem Liss
  */

@@ -44,10 +44,15 @@ $messages['fr'] = array(
 	'signaturelogentry' => 'a signé le document $1.',
 );
 
+/** Galician (Galego)
+ * @author Xosé
+ * @author Toliño
+ */
 $messages['gl'] = array(
-	'signaturelogpage' => 'Rexistro de Sinaturas',
+	'signaturelogpage'     => 'Rexistro de Sinaturas',
+	'signature-desc'       => 'Permite [[Special:SignDocument|a fichaxe]] dun documento',
 	'signaturelogpagetext' => 'Este é un rexistro de todas as sinaturas engadidas aos documentos mediante [[Special:SignDocument]].',
-	'signaturelogentry' => 'asinou o documento $1',
+	'signaturelogentry'    => 'asinou o documento $1',
 );
 
 /** Upper Sorbian (Hornjoserbsce)

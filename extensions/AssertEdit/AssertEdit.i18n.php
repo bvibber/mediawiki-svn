@@ -326,6 +326,15 @@ $messages['mr'] = array(
 	'assert_edit_message' => 'सांगितलेले ऍसर्शन ($1) झालेले नाही.',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Aviator
+ */
+$messages['ms'] = array(
+	'assert_edit_title'   => 'Penegasan gagal',
+	'assert_edit_desc'    => 'Menambahkan penegasan suntingan untuk digunakan oleh bot',
+	'assert_edit_message' => 'Penegasan yang dinyatakan ($1) gagal.',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

@@ -66,6 +66,7 @@ Vous ne pouvez pas créer cette page, mais vous pouvez [{{fullurl:{{FULLPAGENAME
  * @author Toliño
  */
 $messages['gl'] = array(
+	'createbox-desc'   => 'Caixa de entrada especializada para a creación de páxinas',
 	'createbox-create' => 'Crear',
 	'createbox-exists' => "Sentímolo, \"'''{{FULLPAGENAME}}'''\" xa existe.
 
@@ -79,6 +80,13 @@ Non pode crear esta páxina, pero pode [{{fullurl:{{FULLPAGENAME}}|action=edit}}
  */
 $messages['lb'] = array(
 	'createbox-create' => 'Maachen',
+);
+
+/** Marathi (मराठी)
+ * @author Mahitgar
+ */
+$messages['mr'] = array(
+	'createbox-create' => 'तयार करा',
 );
 
 /** Dutch (Nederlands)
@@ -132,6 +140,13 @@ $messages['pl'] = array(
 Nie możesz utworzyć tej strony, lecz możesz ją [{{fullurl:{{FULLPAGENAME}}|action=edit}} edytować], [{{fullurl:{{FULLPAGENAME}}}} przeczytać], lub stworzyć inną stronę za pomocą poniższego pola wyboru.
 
 <createbox>break=no</createbox>",
+);
+
+/** Russian (Русский)
+ * @author Innv
+ */
+$messages['ru'] = array(
+	'createbox-create' => 'Создать',
 );
 
 /** Slovak (Slovenčina)

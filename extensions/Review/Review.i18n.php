@@ -310,9 +310,10 @@ $messages['fi'] = array(
 
 /** French (Français)
  * @author Sherbrooke
- * @author Dereckson
  * @author Urhixidur
+ * @author Dereckson
  * @author Grondin
+ * @author IAlex
  */
 $messages['fr'] = array(
 	'review_sidebar_title'                                   => 'Révision',
@@ -347,7 +348,7 @@ $messages['fr'] = array(
 	'review_total_statistics'                                => 'Total',
 	'review_statistics_left_corner'                          => 'Révision',
 	'review_version_link'                                    => 'Révision #$1',
-	'review_statistic_cell'                                  => 'Moyenne : $1 de $2<br/>($4 utilisateurs inscrits, $5 anonymes)',
+	'review_statistic_cell'                                  => 'Moyenne : $1 de $2<br />($4 utilisateurs inscrits, $5 anonymes)',
 	'review_version_statistic_cell'                          => '$1 de $2',
 	'review_version_reviews_link'                            => '<small>(révisions de version)</small>',
 	'review_concerns_page'                                   => 'Cete révision est à propos de la page « $1 ».',
@@ -376,6 +377,7 @@ $messages['gl'] = array(
 	'review_sidebar_title'                   => 'Revisar',
 	'review_topic_page'                      => 'Revisados os temas',
 	'review_sidebar_explanation'             => "O extremo esquerdo da caixiña sempre significa 'sen opinión'.",
+	'review_save'                            => 'Gardar a revisión',
 	'review_your_review'                     => 'O seu exame desta páxina/revisión:',
 	'review_page_link'                       => 'revisar estatísticas',
 	'review_sidebar_final'                   => 'Para revisar os datos desta páxina, véxase $1',
@@ -544,6 +546,7 @@ $messages['ksh'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
+	'review_save'                   => 'Versioun späicheren',
 	'review_page_link'              => 'Statistike vum Nokucken',
 	'review_error'                  => 'Et ass eppes falsch!',
 	'review_total_statistics'       => 'Total',

@@ -106,10 +106,12 @@ $messages['fr'] = array(
 
 /** Galician (Galego)
  * @author Alma
+ * @author Toliño
  */
 $messages['gl'] = array(
-	'categorystepper-start' => '(Comezo da categoría)',
+	'categorystepper-desc'  => 'Amosa unha caixa de pasos de categorías permitindo que un poida navegar adiante e atrás de maineira alfabética a través dunha o máis categorías ás que unha páxina pertence',
 	'categorystepper-end'   => '(Final da categoría)',
+	'categorystepper-start' => '(Comezo da categoría)',
 );
 
 /** Manx (Gaelg)

@@ -132,6 +132,7 @@ $messages['gl'] = array(
 	'showprocesslist'         => 'Amosar a Listaxe do Proceso',
 	'showprocesslist-id'      => 'Id',
 	'showprocesslist-user'    => 'Usuario',
+	'showprocesslist-host'    => 'Host',
 	'showprocesslist-db'      => 'base de datos',
 	'showprocesslist-command' => 'Comando',
 	'showprocesslist-time'    => 'Tempo',
@@ -154,6 +155,13 @@ $messages['gu'] = array(
 $messages['gv'] = array(
 	'showprocesslist-user' => 'Ymmydeyr',
 	'showprocesslist-time' => 'Am',
+);
+
+/** Hawaiian (Hawai`i)
+ * @author Singularity
+ */
+$messages['haw'] = array(
+	'showprocesslist-time' => 'Manawa',
 );
 
 /** Hindi (हिन्दी)

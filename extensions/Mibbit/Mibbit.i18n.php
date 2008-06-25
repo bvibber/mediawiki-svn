@@ -138,10 +138,17 @@ $messages['hi'] = array(
 );
 
 /** Italian (Italiano)
+ * @author Pietrodn
  * @author Darth Kule
  */
 $messages['it'] = array(
-	'right-mibbit' => 'Autorizzato a usare la chat di Mibbit',
+	'mibbit'        => 'Chat Mibbit',
+	'mibbit-desc'   => 'Aggiunge una [[Special:Mibbit|pagina speciale]] usata per chattare in tempo reale con altri utenti wiki',
+	'mibbit-header' => 'Questa pagina speciale ti permette di collaborare in tempo reale con altri utenti della wiki.
+Per connetterti premi semplicemente il pulsante "Connect".
+Se sei già loggato il tuo nickname sarà preinserito.
+Agli utenti anonimi ne è dato uno generato automaticamente, ma si può cambiare.',
+	'right-mibbit'  => 'Autorizzato a usare la chat di Mibbit',
 );
 
 /** Javanese (Basa Jawa)

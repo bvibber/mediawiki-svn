@@ -133,18 +133,26 @@ $messages['fr'] = array(
 	'lookupuser_useroptions'       => "Options de l'utilisateur :",
 );
 
+/** Galician (Galego)
+ * @author Xosé
+ * @author Toliño
+ * @author Alma
+ */
 $messages['gl'] = array(
-	'lookupuser' => 'Consultar a información do usuario',
-	'lookupuser_intro' => 'Introduza un nome de usuario para ver as preferencias dese usuario.',
-	'lookupuser_nonexistent' => 'Erro: Non existe ese usuario',
-	'lookupuser_authenticated' => 'Autenticación por correo electrónico: $1',
+	'lookupuser'                   => 'Consultar a información do usuario',
+	'lookupuser-desc'              => '[[Special:LookupUser|Recuperar información]] sobre un usuario como o enderezo de correo electrónico e o ID',
+	'lookupuser_intro'             => 'Introduza un nome de usuario para ver as preferencias dese usuario.',
+	'lookupuser_nonexistent'       => 'Erro: Non existe ese usuario',
+	'lookupuser_authenticated'     => 'Autenticación por correo electrónico: $1',
 	'lookupuser_not_authenticated' => 'sen autenticar',
-	'lookupuser_id' => 'ID do usuario: <tt>nº$1</tt>',
-	'lookupuser_email' => 'Correo electrónico: [[Especial:Emailuser/$2|$1]]',
-	'lookupuser_realname' => 'Nome real: $1',
-	'lookupuser_registration' => 'Data de rexistro: $1',
-	'lookupuser_touched' => 'Rexistro do usuario tocado por última vez: $1',
-	'lookupuser_useroptions' => 'Opcións do usuario:',
+	'lookupuser_id'                => 'ID do usuario: <tt>nº$1</tt>',
+	'lookupuser_email'             => 'Correo electrónico: [[Especial:Emailuser/$2|$1]]',
+	'lookupuser_no_email'          => 'non proporcionado',
+	'lookupuser_realname'          => 'Nome real: $1',
+	'lookupuser_registration'      => 'Data de rexistro: $1',
+	'lookupuser_no_registration'   => 'non rexistrado',
+	'lookupuser_touched'           => 'Rexistro do usuario tocado por última vez: $1',
+	'lookupuser_useroptions'       => 'Opcións do usuario:',
 );
 
 /** Manx (Gaelg)
@@ -253,6 +261,7 @@ $messages['lb'] = array(
 	'lookupuser'                   => 'Benotzerinformatiounen nokucken',
 	'lookupuser_intro'             => "Gitt e Benotzernumm an fir d'Astellungen vun dem Benotzer ze kucken.",
 	'lookupuser_nonexistent'       => 'Feeler: De Benotzer gëtt et net',
+	'lookupuser_authenticated'     => 'E-Mail-Confirmatioun: $1',
 	'lookupuser_not_authenticated' => 'net identifizéiert',
 	'lookupuser_id'                => 'Benotzer-Nummer: <tt>#$1</tt>',
 	'lookupuser_email'             => 'E-mail: [[Special:Emailuser/$2|$1]]',

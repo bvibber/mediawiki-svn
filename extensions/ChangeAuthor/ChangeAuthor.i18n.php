@@ -394,9 +394,11 @@ $messages['frp'] = array(
 /** Galician (Galego)
  * @author Alma
  * @author Xosé
+ * @author Toliño
  */
 $messages['gl'] = array(
 	'changeauthor'                      => 'Mudar a revisión do autor',
+	'changeauthor-desc'                 => 'Permite cambiar o autor dunha revisión',
 	'changeauthor-title'                => 'Cambiar ao autor da revisión',
 	'changeauthor-search-box'           => 'Procurar revisións',
 	'changeauthor-pagename-or-revid'    => 'Nome da páxina ou ID da revisión:',
@@ -415,7 +417,6 @@ $messages['gl'] = array(
 	'changeauthor-success'              => 'A súa petición foi procesada con éxito.',
 	'changeauthor-logentry'             => 'Cambie autor de $2 de $1 a $3 de $4',
 	'changeauthor-logpagename'          => 'Rexistro dos cambios do autor',
-	'changeauthor-rev'                  => 'r$1',
 );
 
 /** Manx (Gaelg)
@@ -646,6 +647,8 @@ $messages['lb'] = array(
 	'changeauthor-comment'              => 'Bemierkung:',
 	'changeauthor-changeauthors-multi'  => 'Auteur(en) änneren',
 	'changeauthor-changeauthors-single' => 'Auteur änneren',
+	'changeauthor-explanation-single'   => "Mat dësem Formulaire kënnt Dir den Auteur vun enger Versioun änneren.
+Ännert de Benotzernumm hei ënnendrënner einfach, setzt eng Bemierkung derbäi (fakultativ) a klickt op de Knäppchen 'Auteur änneren'.",
 	'changeauthor-invalid-username'     => 'Benotzernumm „$1“ ass net gëlteg!',
 	'changeauthor-nosuchuser'           => 'Et gëtt kee Benotzer "$1".',
 	'changeauthor-revview'              => 'Versioun #$1 vun $2',
@@ -653,6 +656,7 @@ $messages['lb'] = array(
 	'changeauthor-weirderror'           => "E seelene Feeler ass geschitt.
 Probéiert w.e.g. nach eng Kéier.
 Wann dëse Feeler sech widderhëlt dann ass d'Datebank waarscheinlech futti.",
+	'changeauthor-invalidform'          => 'Benotzt w.e.g. de Formulaire op der Säit Special:ChangeAuthor (éischter wéi een anere Formulaire)',
 	'changeauthor-success'              => 'Är Ufro gouf duerchgefouert.',
 	'changeauthor-logentry'             => 'Den Auteur gouf vun $2 op $1 vum $3 op den $4 geännert',
 	'changeauthor-logpagename'          => 'Lëscht vun den Ännerunge vun dësem Auteur',

@@ -249,28 +249,29 @@ $messages['fi'] = array(
 	'duplicator-toomanyrevisions' => 'Sivu [[$1]] koostuu liian monesta muutoksesta ($2), minkä takia sitä ei voi monistaa. Nykyinen raja on $3.',
 );
 
-/* French */
+/** French (Français)
+ * @author IAlex
+ */
 $messages['fr'] = array(
-	'duplicator' => 'Dupliquer un article',
-	'duplicator-desc' => 'Créer des copies distinctes d’articles avec l’historique complet des modifications.',
-	'duplicator-toolbox' => 'Dupliquer cet article',
-	'duplicator-header' => 'Cette page permet la duplication complète d’un article, en créant deux versions indépendantes de l’historique complet. Il sert par exemple à séparer un article en deux.',
-	'duplicator-options' => 'Options',
-	'duplicator-source' => 'Source :',
-	'duplicator-dest' => 'Destination :',
-	'duplicator-dotalk' => 'Dupliquer la page de discussion (si elle existe)',
-	'duplicator-submit' => 'Dupliquer',
-	'duplicator-summary' => 'Copié depuis [[$1]]',
-	'duplicator-success' => "<big>'''[[$1]] a été copié vers [[$2]].'''</big>",
-	'duplicator-success-revisions' => '$1 révisions ont été copiées.',
-	'duplicator-success-talkcopied' => 'La page de discussion a également été copiée.',
+	'duplicator'                       => 'Dupliquer un article',
+	'duplicator-desc'                  => 'Créer des copies distinctes d’articles avec l’historique complet des modifications.',
+	'duplicator-toolbox'               => 'Dupliquer cet article',
+	'duplicator-header'                => 'Cette page permet la duplication complète d’un article, en créant deux versions indépendantes de l’historique complet. Il sert par exemple à séparer un article en deux.',
+	'duplicator-source'                => 'Source :',
+	'duplicator-dest'                  => 'Destination :',
+	'duplicator-dotalk'                => 'Dupliquer la page de discussion (si elle existe)',
+	'duplicator-submit'                => 'Dupliquer',
+	'duplicator-summary'               => 'Copié depuis [[$1]]',
+	'duplicator-success'               => "<big>'''[[$1]] a été copié vers [[$2]].'''</big>",
+	'duplicator-success-revisions'     => '$1 {{PLURAL:$1|révision a été copiée|révisions ont été copiées}}.',
+	'duplicator-success-talkcopied'    => 'La page de discussion a également été copiée.',
 	'duplicator-success-talknotcopied' => 'La page de discussion n’a pas pu être copiée.',
-	'duplicator-failed' => 'La page n’a pas pu être dupliquée. Une erreur inconnue s’est produite.',
-	'duplicator-source-invalid' => 'Veuillez donner un nom valide pour l’article.',
-	'duplicator-source-notexist' => '[[$1]] n’existe pas. Veuillez donner le nom d’un article existant.',
-	'duplicator-dest-invalid' => 'Veuillez donner un nom valide pour la destination.',
-	'duplicator-dest-exists' => '[[$1]] existe déjà. Veuillez donner le nom d’un article qui n’existe pas encore.',
-	'duplicator-toomanyrevisions' => '[[$1]] a trop ($2) de révisions et ne peut pas être copié. La limite actuelle est de $3.',
+	'duplicator-failed'                => 'La page n’a pas pu être dupliquée. Une erreur inconnue s’est produite.',
+	'duplicator-source-invalid'        => 'Veuillez donner un nom valide pour l’article.',
+	'duplicator-source-notexist'       => '[[$1]] n’existe pas. Veuillez donner le nom d’un article existant.',
+	'duplicator-dest-invalid'          => 'Veuillez donner un nom valide pour la destination.',
+	'duplicator-dest-exists'           => '[[$1]] existe déjà. Veuillez donner le nom d’un article qui n’existe pas encore.',
+	'duplicator-toomanyrevisions'      => '[[$1]] a trop ($2) de révisions et ne peut pas être copié. La limite actuelle est de $3.',
 );
 
 /** Galician (Galego)

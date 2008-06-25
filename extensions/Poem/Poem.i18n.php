@@ -206,6 +206,20 @@ $messages['mr'] = array(
 	'poem-desc' => 'कवितेच्या सादरीकरणासाठी आवश्यक असणारा <tt>&lt;poem&gt;</tt> टॅग देतो.',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Aviator
+ */
+$messages['ms'] = array(
+	'poem-desc' => 'Menambah tag <tt>&lt;poem&gt;</tt> untuk pemformatan puisi',
+);
+
+/** Low German (Plattdüütsch)
+ * @author Slomox
+ */
+$messages['nds'] = array(
+	'poem-desc' => 'Föögt dat <tt>&lt;poem&gt;</tt>-Tag för dat Formateren vun Gedichten to',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

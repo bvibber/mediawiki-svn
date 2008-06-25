@@ -63,6 +63,13 @@ $messages['fr'] = array(
 	'titlekey-desc' => "Retour vers la fin de la suggestion de recherche d'un préfixe de titre",
 );
 
+/** Galician (Galego)
+ * @author Toliño
+ */
+$messages['gl'] = array(
+	'titlekey-desc' => 'Procura de suxestión por prefixos de títulos',
+);
+
 /** Hebrew (עברית)
  * @author Rotem Liss
  */
@@ -110,6 +117,13 @@ $messages['ja'] = array(
  */
 $messages['jv'] = array(
 	'titlekey-desc' => 'Backend prosès panggolèkan irah-irahan préfiks',
+);
+
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$messages['lb'] = array(
+	'titlekey-desc' => 'Hannergrondprozess fir no Titelen ze sichen',
 );
 
 /** Marathi (मराठी)

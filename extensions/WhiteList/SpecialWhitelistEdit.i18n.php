@@ -82,6 +82,14 @@ This page is only applicable to restricted users",
 	'whitelistnummatches'         => " - $1 matches",
 );
 
+/** Eastern Mari (Олык Марий йылме)
+ * @author Сай
+ */
+$allMessages['mhr'] = array(
+	'mywhitelistpages' => 'Мыйын лаштык-влак',
+	'whitelistnever'   => 'нигунам',
+);
+
 /** Afrikaans (Afrikaans)
  * @author Arnobarnard
  */
@@ -343,52 +351,58 @@ Cette page ne s’applique qu’aux utilisateurs disposant de droits restreints.
  * @author Toliño
  */
 $allMessages['gl'] = array(
-	'whitelist'                => 'Páxinas da listaxe branca',
-	'mywhitelistpages'         => 'As miñas páxinas',
-	'whitelistfor'             => '<center>Información actual para <b>$1</b></center>',
-	'whitelisttablemodify'     => 'Modificar',
-	'whitelisttablemodifyall'  => 'Todo',
-	'whitelisttablemodifynone' => 'Ningún',
-	'whitelisttablepage'       => 'Páxina do wiki',
-	'whitelisttabletype'       => 'Tipo de acceso',
-	'whitelisttableexpires'    => 'Expira o',
-	'whitelisttablemodby'      => 'Modificado por última vez por',
-	'whitelisttablemodon'      => 'Modificado por última o',
-	'whitelisttableedit'       => 'Editar',
-	'whitelisttableview'       => 'Ver',
-	'whitelisttablenewdate'    => 'Nova data:',
-	'whitelisttablechangedate' => 'Cambiar a data de remate',
-	'whitelisttablesetedit'    => 'Preparar para editar',
-	'whitelisttablesetview'    => 'Preparar para ver',
-	'whitelisttableremove'     => 'Eliminar',
-	'whitelistnewpagesfor'     => 'Engada novas páxinas á listaxe branca de <b>$1</b><br />
+	'whitelist'                 => 'Páxinas da listaxe branca',
+	'mywhitelistpages'          => 'As miñas páxinas',
+	'whitelistfor'              => '<center>Información actual para <b>$1</b></center>',
+	'whitelisttablemodify'      => 'Modificar',
+	'whitelisttablemodifyall'   => 'Todo',
+	'whitelisttablemodifynone'  => 'Ningún',
+	'whitelisttablepage'        => 'Páxina do wiki',
+	'whitelisttabletype'        => 'Tipo de acceso',
+	'whitelisttableexpires'     => 'Expira o',
+	'whitelisttablemodby'       => 'Modificado por última vez por',
+	'whitelisttablemodon'       => 'Modificado por última o',
+	'whitelisttableedit'        => 'Editar',
+	'whitelisttableview'        => 'Ver',
+	'whitelisttablenewdate'     => 'Nova data:',
+	'whitelisttablechangedate'  => 'Cambiar a data de remate',
+	'whitelisttablesetedit'     => 'Preparar para editar',
+	'whitelisttablesetview'     => 'Preparar para ver',
+	'whitelisttableremove'      => 'Eliminar',
+	'whitelistnewpagesfor'      => 'Engada novas páxinas á listaxe branca de <b>$1</b><br />
 Pode usar * ou %, como tamén o carácter "comodín"',
-	'whitelistnewtabledate'    => 'Data de expiración:',
-	'whitelistnewtableedit'    => 'Preparar para editar',
-	'whitelistnewtableview'    => 'Preparar para ver',
-	'whitelistnewtableprocess' => 'Proceso',
-	'whitelistnewtablereview'  => 'Revisar',
-	'whitelistpagelist'        => 'Páxinas de {{SITENAME}} para $1',
-	'whitelistbadtitle'        => 'Título incorrecto -',
-	'whitelistoverviewrm'      => '* Eliminando o acceso a [[:$1|$1]]',
-	'whitelistrequest'         => 'Solicitar acceso a máis páxinas',
-	'whitelistrequestmsg'      => '$1 solicitou ter acceso ás seguintes páxinas:
+	'whitelistnewtabledate'     => 'Data de expiración:',
+	'whitelistnewtableedit'     => 'Preparar para editar',
+	'whitelistnewtableview'     => 'Preparar para ver',
+	'whitelistnewtableprocess'  => 'Proceso',
+	'whitelistnewtablereview'   => 'Revisar',
+	'whitelistselectrestricted' => '== Seleccionar un nome de usuario restrinxido ==',
+	'whitelistpagelist'         => 'Páxinas de {{SITENAME}} para $1',
+	'whitelistbadtitle'         => 'Título incorrecto -',
+	'whitelistoverview'         => '== Visión xeral dos cambios para $1 ==',
+	'whitelistoverviewcd'       => "* Cambiando a data a '''$1''' para [[:$2|$2]]",
+	'whitelistoverviewsa'       => "* Configurando o acceso a '''$1''' para [[:$2|$2]]",
+	'whitelistoverviewrm'       => '* Eliminando o acceso a [[:$1|$1]]',
+	'whitelistoverviewna'       => "* Engadindo [[:$1|$1]] á listaxe branca (whitelist) con acceso a '''$2''' e data de remate '''$3'''",
+	'whitelistrequest'          => 'Solicitar acceso a máis páxinas',
+	'whitelistrequestmsg'       => '$1 solicitou ter acceso ás seguintes páxinas:
 
 $2',
-	'whitelistrequestconf'     => 'A solicitude para páxinas novas foi enviada a $1',
-	'whitelistnonrestricted'   => "O usuario '''$1''' non é un usuario limitado.
+	'whitelistrequestconf'      => 'A solicitude para páxinas novas foi enviada a $1',
+	'whitelistnonrestricted'    => "O usuario '''$1''' non é un usuario limitado.
 Esta páxina só é aplicable aos usuarios limitados",
-	'whitelistnever'           => 'nunca',
-	'whitelistnummatches'      => '  - $1 coincidencias',
+	'whitelistnever'            => 'nunca',
+	'whitelistnummatches'       => '  - $1 coincidencias',
 );
 
 /** Hawaiian (Hawai`i)
- * @author Kalani
  * @author Singularity
+ * @author Kalani
  */
 $allMessages['haw'] = array(
-	'mywhitelistpages'   => 'Ka‘u mau ‘ao‘ao',
-	'whitelisttableedit' => 'E ho‘opololei',
+	'mywhitelistpages'     => 'Ka‘u mau ‘ao‘ao',
+	'whitelisttableedit'   => 'E ho‘opololei',
+	'whitelisttableremove' => 'Kāpae',
 );
 
 /** Hindi (हिन्दी)
@@ -579,6 +593,7 @@ $allMessages['ml'] = array(
 
 /** Marathi (मराठी)
  * @author Kaustubh
+ * @author Mahitgar
  */
 $allMessages['mr'] = array(
 	'mywhitelistpages'         => 'माझी पाने',
@@ -596,8 +611,13 @@ $allMessages['mr'] = array(
 	'whitelisttableremove'     => 'काढा',
 	'whitelistnewtabledate'    => 'समाप्तीची तारीख:',
 	'whitelistnewtableprocess' => 'कार्य',
+	'whitelistnewtablereview'  => 'समीक्षण',
 	'whitelistpagelist'        => '{{SITENAME}} पाने $1 साठीची',
 	'whitelistbadtitle'        => 'चुकीचे शीर्षक -',
+	'whitelistrequest'         => 'अधिक पानांकरिता उपलब्धता सुसाध्य करून मागा',
+	'whitelistrequestmsg'      => '$1ने निम्ननिर्देशित पानांकरिता सुलभमार्ग सुसाध्य करून मागितला आहे:
+
+$2',
 	'whitelistrequestconf'     => 'नवीन पानांची मागणी $1 ला पाठविलेली आहे',
 	'whitelistnonrestricted'   => "सदस्य '''$1''' हा प्रतिबंधित सदस्य नाही.
 हे पान फक्त प्रतिबंधित सदस्यांसाठीच आहे",

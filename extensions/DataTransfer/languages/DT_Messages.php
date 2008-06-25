@@ -26,6 +26,13 @@ $messages['en'] = array(
 	'dt_xml_freetext'             => 'Free Text',
 );
 
+/** Eastern Mari (Олык Марий йылме)
+ * @author Сай
+ */
+$messages['mhr'] = array(
+	'dt_xml_page' => 'Лаштык',
+);
+
 /** Afrikaans (Afrikaans)
  * @author Arnobarnard
  * @author Naudefj

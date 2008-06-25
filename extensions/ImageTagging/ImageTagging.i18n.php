@@ -50,7 +50,8 @@ Please wait for the existing action to complete.',
  * @author Сай
  */
 $messages['mhr'] = array(
-	'imagetagging-tagcancel-button' => 'Чарташ',
+	'imagetagging-article'          => 'Лаштык:',
+	'imagetagging-tagcancel-button' => 'Чараш',
 );
 
 /** Afrikaans (Afrikaans)
@@ -65,25 +66,26 @@ $messages['af'] = array(
  * @author Meno25
  */
 $messages['ar'] = array(
-	'taggedimages'                      => 'صور موسومة',
-	'imagetagging-addimagetag'          => 'وسم هذه الصورة',
-	'imagetagging-article'              => 'صفحة:',
-	'imagetagging-articletotag'         => 'صفحة للوسم',
-	'imagetagging-imghistory'           => 'تاريخ',
-	'imagetagging-images'               => 'صور',
-	'imagetagging-inthisimage'          => 'في هذه الصورة: $1',
-	'imagetagging-new'                  => '<sup><span style="color:red">جديد!</span></sup>',
-	'imagetagging-removetag'            => 'إزالة وسم',
-	'imagetagging-done-button'          => 'إنتهى الوسم',
-	'imagetagging-tag-button'           => 'وسم',
-	'imagetagging-tagcancel-button'     => 'إلغاء',
-	'imagetagging-tagging-instructions' => 'اضغط على الأشخاص أو الأشياء في الصورة لوسمهم.',
-	'imagetagging-addingtag'            => 'إضافة وسم...',
-	'imagetagging-removingtag'          => 'إزالة وسم...',
-	'imagetagging-addtagsuccess'        => 'أُضيف الوسم.',
-	'imagetagging-removetagsuccess'     => 'أُزيل الوسم.',
-	'imagetagging-taggedimages-title'   => 'صور "$1"',
-	'tag-logpagename'                   => 'سجل الوسم',
+	'taggedimages'                        => 'صور موسومة',
+	'imagetagging-addimagetag'            => 'وسم هذه الصورة',
+	'imagetagging-article'                => 'صفحة:',
+	'imagetagging-articletotag'           => 'صفحة للوسم',
+	'imagetagging-imghistory'             => 'تاريخ',
+	'imagetagging-images'                 => 'صور',
+	'imagetagging-inthisimage'            => 'في هذه الصورة: $1',
+	'imagetagging-new'                    => '<sup><span style="color:red">جديد!</span></sup>',
+	'imagetagging-removetag'              => 'إزالة وسم',
+	'imagetagging-done-button'            => 'إنتهى الوسم',
+	'imagetagging-tag-button'             => 'وسم',
+	'imagetagging-tagcancel-button'       => 'إلغاء',
+	'imagetagging-tagging-instructions'   => 'اضغط على الأشخاص أو الأشياء في الصورة لوسمهم.',
+	'imagetagging-addingtag'              => 'إضافة وسم...',
+	'imagetagging-removingtag'            => 'إزالة وسم...',
+	'imagetagging-addtagsuccess'          => 'أُضيف الوسم.',
+	'imagetagging-removetagsuccess'       => 'أُزيل الوسم.',
+	'imagetagging-imagetag-seemoreimages' => 'راجع المزيد من صور "$1" ($2)',
+	'imagetagging-taggedimages-title'     => 'صور "$1"',
+	'tag-logpagename'                     => 'سجل الوسم',
 );
 
 /** Bulgarian (Български)
@@ -252,6 +254,7 @@ $messages['gl'] = array(
 	'imagetagging-addimagetag'              => 'Pór unha etiqueta a esta imaxe',
 	'imagetagging-article'                  => 'Páxina:',
 	'imagetagging-articletotag'             => 'Páxinar para pór a etiqueta',
+	'imagetagging-canteditothermessage'     => 'Non pode editar esta páxina. Se ben pode ser porque non ten os permisos para facelo ou porque a páxina está protexida por outras razóns.',
 	'imagetagging-imghistory'               => 'Historial',
 	'imagetagging-images'                   => 'imaxes',
 	'imagetagging-inthisimage'              => 'Nesta imaxe: $1',
@@ -267,16 +270,17 @@ $messages['gl'] = array(
 	'imagetagging-removingtag'              => 'Eliminando a etiqueta…',
 	'imagetagging-addtagsuccess'            => 'A etiqueta foi engadida.',
 	'imagetagging-removetagsuccess'         => 'A etiqueta foi eliminada.',
-	'imagetagging-oneactionatatimemessage'  => 'Só se lle está permitido realizar unha acción á vez.
-Por favor, agarde a que a acción actual remate.',
 	'imagetagging-canteditneedloginmessage' => 'Non pode editar esta páxina.
 Pode ser porque precise acceder ao sistema para pór etiquetas ás imaxes.
 Desexa acceder ao sistema agora?',
+	'imagetagging-oneactionatatimemessage'  => 'Só se lle está permitido realizar unha acción á vez.
+Por favor, agarde a que a acción actual remate.',
 	'imagetagging-oneuniquetagmessage'      => 'Esta imaxe xa ten unha etiqueta con ese nome.',
 	'imagetagging-imagetag-seemoreimages'   => 'Ver máis imaxes de "$1" ($2)',
 	'imagetagging-taggedimages-title'       => 'Imaxes de "$1"',
 	'imagetagging-taggedimages-displaying'  => 'Amosando da $1 á $2, dun total de $3 imaxes de "$4"',
-	'imagetagging-taggedimages-total'       => '"$1"; imaxe(s) en total',
+	'tag-logpagename'                       => 'Rexistro de etiquetas',
+	'tag-logpagetext'                       => 'Este é un rexitro de todas as incorporacións e eliminacións de etiquetas de imaxe.',
 );
 
 /** Hawaiian (Hawai`i)
@@ -285,7 +289,7 @@ Desexa acceder ao sistema agora?',
  */
 $messages['haw'] = array(
 	'imagetagging-article'    => '‘Ao‘ao:',
-	'imagetagging-imghistory' => 'He aha i ho‘ololi ‘ia ai',
+	'imagetagging-imghistory' => 'Mo‘olelo',
 );
 
 /** Indonesian (Bahasa Indonesia)
