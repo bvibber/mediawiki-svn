@@ -38,7 +38,7 @@ $wgHooks['AuthPluginAutoCreate'][] = 'wfNewuserlogAutoCreate';
 $wgHooks['LogLine'][] = 'wfNewuserlogLogLine';
 
 function wfNewuserlogHook( $user = null, $byEmail = false ) {
-	global $wgUser, $wgContLang, $wgVersion;
+	global $wgUser, $wgContLang;
 
 	if( is_null( $user ) ) {
 		// Compatibility with old versions which didn't pass the parameter
@@ -49,14 +49,9 @@ function wfNewuserlogHook( $user = null, $byEmail = false ) {
 	$talk = $wgContLang->getFormattedNsText( NS_TALK );
 
 	if( $user->getName() == $wgUser->getName() ) {
-		$message = '';
 		$action = 'create';
+		$message = '';
 	} else {
-		// Links not necessary for self-creations, they will appear already in
-		// recentchanges and special:log view for the creating user.
-
-		$contribs = wfMsgForContent( 'contribslink' );
-		$block = wfMsgForContent( 'blocklink' );
 		$action = 'create2';
 		$message = $byEmail ? wfMsgForContent( 'newuserlog-byemail' ) : '';
 	}
