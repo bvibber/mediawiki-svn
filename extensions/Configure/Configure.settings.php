@@ -631,6 +631,7 @@ $settings = array(
 			'wgAvailableRights' => 'array',
 			'wgDisableInternalSearch' => 'bool',
 			'wgExceptionHooks' => 'array',
+			'wgExtensionAliasesFiles' => 'array',
 			'wgExtensionCredits' => 'array',
 			'wgExtensionFunctions' => 'array',
 			'wgExtensionMessagesFiles' => 'array',
@@ -797,6 +798,7 @@ $arrayDefs = array(
 	'wgAPIPropModules' => 'assoc',
 	'wgAvailableRights' => 'simple',
 	'wgExceptionHooks' => 'array',
+	'wgExtensionAliasesFiles' => 'array',
 	'wgExtensionCredits' => 'array',
 	'wgExtensionFunctions' => 'simple',
 	'wgExtensionMessagesFiles' => 'assoc',
@@ -959,6 +961,7 @@ $notEditableSettings = array(
 	'wgDBmysql4', // Too old
 	'wgEditEncoding', // Too old
 	'wgExceptionHooks',
+	'wgExtensionAliasesFiles',
 	'wgExtensionCredits',
 	'wgExtensionFunctions',
 	'wgExtensionMessagesFiles',
@@ -1111,6 +1114,7 @@ $settingsVersion = array(
 	'wgActiveUserDays' => array( array( '1.13alpha', '>=' ) ),
 	'wgActiveUserEditCount' => array( array( '1.13alpha', '>=' ) ),
 	'wgRC2UDPOmitBots' => array( array( '1.13alpha', '>=' ) ),
+	'wgExtensionAliasesFiles' => array( array( '1.13alpha', '>=' ) ),
 ## Obsolete
 	'wgProfileSampleRate' => array( array( '1.8alpha', '<' ) ),
 	'wgProfilerType' => array( array( '1.8alpha', '<' ) ),

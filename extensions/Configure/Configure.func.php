@@ -92,3 +92,19 @@ function efConfigureLoadMessages(){
 		}
 	}
 }
+
+/**
+ * Loads special pages aliases, for backward compatibility with < 1.13
+ */
+function efConfigureLoadAliases( &$spAliases, $code ){
+	require( dirname( __FILE__ ) . '/Configure.alias.php' );
+	do {
+		if( isset( $aliases[$code] ) ){
+			foreach( $aliases[$code] as $can => $aliasArr ){
+				foreach( $aliasArr as $alias )
+					$spAliases[$can][] = str_replace( ' ', '_', $alias );
+			}
+		}
+	} while( $code = Language::getFallbackFor( $code ) );
+	return true;
+}

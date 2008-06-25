@@ -17,7 +17,7 @@ $wgExtensionCredits['specialpage'][] = array(
 	'url' => 'http://www.mediawiki.org/wiki/Extension:Configure',
 	'description' => 'Allow authorised users to configure the wiki by a web-based interface',
 	'descriptionmsg' => 'configure-desc',
-	'version' => '0.4.4',
+	'version' => '0.4.5',
 );
 
 ## Adding new rights...
@@ -44,6 +44,16 @@ if( isset( $wgExtensionMessagesFiles ) && is_array( $wgExtensionMessagesFiles ) 
 	$wgExtensionMessagesFiles['Configure'] = $dir . 'Configure.i18n.php';
 } else {
 	$wgHooks['LoadAllMessages'][] = 'efConfigureLoadMessages';
+}
+
+## And special pages aliases...
+if( isset( $wgExtensionAliasesFiles ) && is_array( $wgExtensionAliasesFiles ) ){
+	$wgExtensionAliasesFiles['Configure'] = $dir . 'Configure.alias.php';
+} else {
+	# For 1.12 and 1.11
+	$wgHooks['LanguageGetSpecialPageAliases'][] = 'efConfigureLoadAliases';
+	# And for 1.10 and 1.9 :)
+	$wgHooks['LangugeGetSpecialPageAliases'][] = 'efConfigureLoadAliases';
 }
 
 ## Adding the new special pages...
