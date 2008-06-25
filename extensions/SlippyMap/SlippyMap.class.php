@@ -134,16 +134,24 @@ class SlippyMap {
 			//There are other ways of fixing this, but not for MediaWiki v4
 			//(See http://www.mediawiki.org/wiki/Manual:Tag_extensions#How_can_I_avoid_modification_of_my_extension.27s_HTML_output.3F)
 	
-			$output  = '';
-			// bring in the OpenLayers javascript library 
-			$output .= '<script src="http://openlayers.org/api/OpenLayers.js"></script> ';
+			$output = '<script type="text/javascript"> var osm_fully_loaded=false;';
+
+			// defer loading of the javascript. Since the script is quite bit, it would delay
+			// page loading and rendering dramatically
+			$output .= 'addOnloadHook( function() { ' .
+			 	'	var sc = document.createElement("script");' .
+				'	sc.src = "http://openlayers.org/api/OpenLayers.js";' .
+			 	'	document.body.appendChild( sc );' .
+			 	'	var sc = document.createElement("script");' .
+			 	'	sc.src = "http://openstreetmap.org/openlayers/OpenStreetMap.js";'.
+			 	'	document.body.appendChild( sc );' .
+			 	'	var sc = document.createElement("script");' .
+			 	'	sc.innerHTML = "osm_fully_loaded=true;";' .
+			 	'	document.body.appendChild( sc );' .
+			 	'} );';
+
+
 	
-			// bring in the OpenStreetMap OpenLayers layers.
-			// Using this hosted file will make sure we are kept up 
-			// to date with any necessary changes
-			$output .= '<script src="http://openstreetmap.org/openlayers/OpenStreetMap.js"></script> ';
-	
-			$output .= '<script type="text/javascript"> ';
 	
 			$output .= "var lon= $lon; var lat= $lat; var zoom= $zoom; var lonLat;";
 	
@@ -169,6 +177,7 @@ class SlippyMap {
 			$output .= 'addOnloadHook( slippymap_init ); ';
 	
 			$output .= 'function slippymap_init() { ';
+			$output .= '	if (!osm_fully_loaded) { window.setTimeout("slippymap_init()",500); return 0; } ' ;
 	
 			$output .= '	map = new OpenLayers.Map("map", { ';
 			$output .= '		controls:[ ';
@@ -203,13 +212,14 @@ class SlippyMap {
 	
 			$output .= "	map.setCenter (lonLat, zoom); ";
 			$output .= "    postmap = document.getElementById('postmap'); ";
-			$output .= "    postmap.innerHTML = '<input type=\"button\" value=\"Reset view\" onclick=\"map.setCenter(lonLat, zoom);\" /><input type=\"button\" value=\"Get wikicode\" onclick=\"slippymap_getWikicode();\" \>'; ";
+			$output .= "    postmap.innerHTML = '<input type=\"button\" value=\"Reset view\" onmousedown=\"map.setCenter(lonLat, zoom);\" /><input type=\"button\" value=\"Get wikicode\" onmousedown=\"slippymap_getWikicode();\" \>'; ";
 			$output .= "} ";
 
 			$output .= 'function slippymap_getWikicode() {';
 			$output .= '    LL = MercatorToLonLat(map.getCenter()); Z = map.getZoom();';
 			$output .= '    size = map.getSize();';
-			$output .= '    alert( "<slippymap>h="+size.h+"|w="+size.w+"|z="+Z+"|lat="+LL.lat+"|lon="+LL.lon+"|layer=mapnik|marker=1</slippymap>\n\nThis needs to become a popup that can be used for cut and paste\nCoordinates have to be converted into degrees." ); ';
+
+			$output .= '    prompt( "Wikicode for this map", "<slippymap>h="+size.h+"|w="+size.w+"|z="+Z+"|lat="+LL.lat+"|lon="+LL.lon+"|layer=mapnik|marker=1</slippymap>" ); ';
 			$output .= '}';
 	
 			$output .= "</script> ";
