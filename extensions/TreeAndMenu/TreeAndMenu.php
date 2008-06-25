@@ -14,7 +14,7 @@
 
 if (!defined('MEDIAWIKI')) die('Not an entry point.');
 
-define('TREEANDMENU_VERSION','1.0.5, 2008-06-15');
+define('TREEANDMENU_VERSION','1.0.6, 2008-06-25');
 
 # Set any unset images to default titles
 if (!isset($wgTreeViewImages) || !is_array($wgTreeViewImages)) $wgTreeViewImages = array();
@@ -102,6 +102,7 @@ class TreeAndMenu {
 		$parser = array_shift($args);
 		
 		# Store args for this tree for later use
+		$text = '';
 		foreach ($args as $arg) if (preg_match('/^(\\w+?)\\s*=\\s*(.+)$/s', $arg, $m)) $args[$m[1]] = $m[2]; else $text = $arg;
 
 		# If root, parse as wikitext
@@ -180,6 +181,7 @@ class TreeAndMenu {
 			foreach ($rows as $i => $info) {
 				$node++;
 				list($id, $depth, $icon, $item, $start) = $info;
+				$objid = $this->uniqname . preg_replace('/\W/', '', $id);
 				$args  = $this->args[$id];
 				$type  = $args['type'];
 				$end   = $i == count($rows)-1 || $rows[$i+1][4];
@@ -189,7 +191,7 @@ class TreeAndMenu {
 				# Append node script for this row
 				if ($depth > $last) $parents[$depth] = $node-1;
 				$parent = $parents[$depth];
-				if ($type == 'tree') $nodes .= "{$this->uniqname}$id.add($node, $parent, '$item');\n";
+				if ($type == 'tree') $nodes .= "$objid.add($node, $parent, '$item');\n";
 				else {
 					if (!$start) {
 						if ($depth < $last) $nodes .= str_repeat('</ul></li>', $last-$depth);
@@ -212,19 +214,19 @@ class TreeAndMenu {
 						$top = $bottom = $root = '';
 						foreach ($args as $arg => $pos)
 							if (($pos == 'top' || $pos == 'bottom' || $pos == 'root') && ($arg == 'open' || $arg == 'close'))
-								$$pos .= "<a href=\"javascript: {$this->uniqname}$id.{$arg}All();\">&nbsp;{$arg} all</a>&nbsp;";
+								$$pos .= "<a href=\"javascript: $objid.{$arg}All();\">&nbsp;{$arg} all</a>&nbsp;";
 						if ($top) $top = "<p>&nbsp;$top</p>";				
 						if ($bottom) $bottom = "<p>&nbsp;$bottom</p>";
 						$html = "$top<div class='$class' id='$id'>
 								<script type=\"$wgJsMimeType\">/*<![CDATA[*/
 									// TreeAndMenu{$this->version}
-									tree = new dTree('{$this->uniqname}$id');
+									tree = new dTree('$objid');
 									for (i in tree.icon) tree.icon[i] = '{$this->baseUrl}/'+tree.icon[i];{$this->images}
 									tree.config.useLines = {$this->useLines};
 									$add
-									{$this->uniqname}$id = tree;
+									$objid = tree;
 									$nodes
-									document.getElementById('$id').innerHTML = {$this->uniqname}$id.toString();
+									document.getElementById('$id').innerHTML = $objid.toString();
 								/*]]>*/</script>
 							</div>$bottom";
 					}
