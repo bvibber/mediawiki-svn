@@ -33,6 +33,7 @@ $messages['en'] = array(
 	'slippymap_maperror' => "Map error:",
 	'slippymap_osmlink' => 'http://www.openstreetmap.org/?lat=%1&lon=%2&zoom=%3', # do not translate or duplicate this message to other languages
 	'slippymap_osmtext' => 'See this map on OpenStreetMap.org',
+	'slippymap_code'    => 'Wikicode for this map view:',
 	'slippymap_license' => 'OpenStreetMap - CC-BY-SA-2.0', # do not translate or duplicate this message to other languages
 );
 
@@ -62,6 +63,7 @@ $messages['de'] = array(
 	'slippymap_zoom18'          => "Der Zoomwert (z) kann nicht größer als 17 sein. Beachten, dass diese MediaWiki-Erweiterung die OpenStreetMap 'Osmarender'-Karte einbindet, sie nicht höher als Zoom 17 geht. Die Mapnik-Karte ist auf openstreetmap.org verfügbar und geht bis Zoom 18.",
 	'slippymap_zoombig'         => "Der Zoomwert (z) kann nicht größer als 17 sein.",
 	'slippymap_invalidlayer'    => "Ungültiger 'layer'-Wert „%1“",
+    'slippymap_code'		=> 'Wikitext für diese Kartenansicht:',
 	'slippymap_maperror'        => "Kartenfehler:",
 	'slippymap_osmtext'         => 'Siehe diese Karte auf OpenStreetMap.org',
 );

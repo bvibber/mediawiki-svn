@@ -219,7 +219,7 @@ class SlippyMap {
 			$output .= '    LL = MercatorToLonLat(map.getCenter()); Z = map.getZoom();';
 			$output .= '    size = map.getSize();';
 
-			$output .= '    prompt( "Wikicode for this map", "<slippymap>h="+size.h+"|w="+size.w+"|z="+Z+"|lat="+LL.lat+"|lon="+LL.lon+"|layer=mapnik|marker=1</slippymap>" ); ';
+			$output .= '    prompt( "' . wfMsg('slippymap_code') .'", "<slippymap>h="+size.h+"|w="+size.w+"|z="+Z+"|lat="+LL.lat+"|lon="+LL.lon+"|layer=mapnik|marker=1</slippymap>" ); ';
 			$output .= '}';
 	
 			$output .= "</script> ";
