@@ -10,8 +10,42 @@
 Name:         TSvim
 Summary:      Vim - vi improved
 Version:      7.1
-Source:       ftp://ftp.vim.org/pub/vim/unix/vim-%{version}.tar.bz2
-Source1:      ftp://ftp.vim.org/pub/vim/extra/vim-%{version}-lang.tar.gz
+Source1:      ftp://ftp.vim.org/pub/vim/unix/vim-%{version}.tar.bz2
+Source2:      ftp://ftp.vim.org/pub/vim/extra/vim-%{version}-lang.tar.gz
+Source3:      ftp://ftp.vim.org/pub/vim/extra/vim-%{version}-extra.tar.gz
+Patch1:       7.1.001-100
+Patch2:       7.1.101-200
+Patch3:       7.1.201-300
+Patch4:       7.1.301
+Patch5:       7.1.302
+Patch6:       7.1.303
+Patch7:       7.1.304
+Patch8:       7.1.305
+Patch9:       7.1.306
+Patch10:       7.1.307
+Patch11:       7.1.308
+Patch12:       7.1.309
+Patch13:       7.1.310
+Patch14:       7.1.311
+Patch15:       7.1.312
+Patch16:       7.1.313
+Patch17:       7.1.314
+Patch18:       7.1.315
+Patch19:       7.1.316
+Patch20:       7.1.317
+Patch21:       7.1.318
+Patch22:       7.1.319
+Patch23:       7.1.320
+Patch24:       7.1.321
+Patch25:       7.1.322
+Patch26:       7.1.323
+Patch27:       7.1.324
+Patch28:       7.1.325
+Patch29:       7.1.326
+Patch30:       7.1.327
+Patch31:       7.1.328
+Patch32:       7.1.329
+Patch33:       7.1.330
 URL:          http://www.vim.org
 SUNW_BaseDir: %{_basedir}
 BuildRoot:    %{_tmppath}/%{name}-%{version}-build
@@ -29,8 +63,23 @@ Requires:                %{name}
 %endif
 
 %prep
-%setup -q -c -n %name-%version
-%setup -q -D -T -b 1 -c -n %name-%version
+#%setup -q -n vim71
+%setup -q -T -b 1 -c -n %name-%version
+#bzip2 -dc %{SOURCE0} | gtar xf -
+gzip -dc %{SOURCE2} | gtar xf -
+gzip -dc %{SOURCE3} | gtar xf -
+#%patch33 -p0
+
+cd vim%{vim_version}
+
+for p in %{PATCH1}  %{PATCH2} %{PATCH3} %{PATCH4} %{PATCH5} %{PATCH6} %{PATCH7} \
+	%{PATCH8} %{PATCH9} %{PATCH10} %{PATCH11} %{PATCH12} %{PATCH13} %{PATCH14} \
+	%{PATCH15} %{PATCH16} %{PATCH17} %{PATCH18} %{PATCH19} %{PATCH20} %{PATCH21} \
+	%{PATCH22} %{PATCH23} %{PATCH24} %{PATCH25} %{PATCH26} %{PATCH27} %{PATCH28} \
+	%{PATCH29} %{PATCH30} %{PATCH31} %{PATCH32} %{PATCH33} ; do
+	echo $p
+	gpatch -p0 <$p;
+done
 
 %build
 CPUS=`/usr/sbin/psrinfo | grep on-line | wc -l | tr -d ' '`
