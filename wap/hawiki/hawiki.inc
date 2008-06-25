@@ -438,6 +438,8 @@ class HAWIKI_page
 					{
 						$el_image = new HAW_image(HAWIKI_EXTLINK_ICON . ".wbmp",
 							HAWIKI_EXTLINK_ICON . ".gif", $po["extlink_text"]);
+						$el_image->set_html_width(HAWIKI_EXTLINK_ICON_WIDTH);
+						$el_image->set_html_height(HAWIKI_EXTLINK_ICON_HEIGHT);
 						$el_image->set_voice_text($po["extlink_text"]);
 						$this->deck->add_image($el_image);
 					}

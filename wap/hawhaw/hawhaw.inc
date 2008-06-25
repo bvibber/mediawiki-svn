@@ -3,7 +3,7 @@
 // HAWHAW: HTML and WML hybrid adapted webserver
 // PHP class library
 // Copyright (C) 2008 Norbert Huffschmid
-// Last modified: 14. June 2008
+// Last modified: 24. June 2008
 //
 // This library is free software; you can redistribute it and/or modify it under the
 // terms of the GNU Library General Public License as published by the Free Software
@@ -25,6 +25,7 @@
 // - added support of Amazon Kindle device
 // - disabling of simulator supported
 // - improved detection of desktop browsers
+// - improved W3C mobileOK compliance
 
 ###################################
 #   BEGIN OF CONFIGURATION PART   #
@@ -1739,7 +1740,13 @@ class HAW_deck
       else
         $language = "";
 
-      printf("<html%s>\n", $language);
+      if ($this->xhtml)
+        // W3C mobileOK requires namespace attribute
+        $namespace = " xmlns=\"http://www.w3.org/1999/xhtml\"";
+      else
+        $namespace = "";
+        
+      printf("<html%s%s>\n", $language, $namespace);
       echo "<head>\n";
 
       // validation issue: HTML does not allow XHTML-stylish "/>" within <head> part
