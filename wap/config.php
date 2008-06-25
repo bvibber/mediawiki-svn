@@ -6,6 +6,8 @@
 
 define("HAWIKI_TITLE",		"Wikipedia");    // browser window title
 define("HAWPEDIA_ICON", "images/81px-Wikipedia-logo"); // must exist as .gif and .wbmp version
+define("HAWPEDIA_ICON_WIDTH", 81);
+define("HAWPEDIA_ICON_HEIGHT", 81);
 define("DEFAULT_LANGUAGE",	"en");
 define('FORCE_DEFAULT_LANGUAGE', 'subdomain');
 						// not defined or FALSE - use browsers accept-language setting,

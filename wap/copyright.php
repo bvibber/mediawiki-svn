@@ -18,6 +18,8 @@ set_deck_properties($deck);
 $emptyLine = new HAW_text("");
 $wp_image = new HAW_image(HAWPEDIA_ICON . ".wbmp",
                 HAWPEDIA_ICON . ".gif", "");
+$wp_image->set_html_width(HAWPEDIA_ICON_WIDTH);
+$wp_image->set_html_height(HAWPEDIA_ICON_HEIGHT);
 $deck->add_image($wp_image);
 
 $deck->add_text($emptyLine);
