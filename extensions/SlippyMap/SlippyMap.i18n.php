@@ -48,7 +48,7 @@ $messages['de'] = array(
 	'slippymap_longdepreciated' => "Bitte benutze 'lon' an Stelle von 'long' (Parameter wurde umbenannt). ",
 	'slippymap_widthnan'        => "Der Wert für die Breite (w) '%1' ist keine gültige Zahl",
 	'slippymap_heightnan'       => "Der Wert für die Höhe (h) '%1' ist keine gültige Zahl",
-	'slippymap_zoomnan'         => "Der Wert für den Zoom (t) '%1' ist keine gültige Zahl",
+	'slippymap_zoomnan'         => "Der Wert für den Zoom (z) '%1' ist keine gültige Zahl",
 	'slippymap_latnan'          => "Der Wert für die geografische Breite (lat) '%1' ist keine gültige Zahl",
 	'slippymap_lonnan'          => "Der Wert für die geografische Länge (lon) '%1' ist keine gültige Zahl",
 	'slippymap_widthbig'        => "Die Breite (w) darf 1000 nicht überschreiten",
@@ -60,12 +60,12 @@ $messages['de'] = array(
 	'slippymap_lonbig'          => "Die geografische Länge darf nicht größer als 180 sein",
 	'slippymap_lonsmall'        => "Die geografische Länge darf nicht kleiner als -180 sein",
 	'slippymap_zoomsmall'       => "Der Zoomwert darf nicht negativ sein",
-	'slippymap_zoom18'          => "Der Zoomwert (z) kann nicht größer als 17 sein. Beachten, dass diese MediaWiki-Erweiterung die OpenStreetMap 'Osmarender'-Karte einbindet, sie nicht höher als Zoom 17 geht. Die Mapnik-Karte ist auf openstreetmap.org verfügbar und geht bis Zoom 18.",
+	'slippymap_zoom18'          => "Der Zoomwert (z) kann nicht größer als 17 sein. Beachte, dass diese MediaWiki-Erweiterung die OpenStreetMap 'Osmarender'-Karte einbindet, die nicht höher als Zoom 17 geht. Die Mapnik-Karte ist auf openstreetmap.org verfügbar und geht bis Zoom 18.",
 	'slippymap_zoombig'         => "Der Zoomwert (z) kann nicht größer als 17 sein.",
 	'slippymap_invalidlayer'    => "Ungültiger 'layer'-Wert „%1“",
-    'slippymap_code'		=> 'Wikitext für diese Kartenansicht:',
+	'slippymap_code'            => 'Wikitext für diese Kartenansicht:',
 	'slippymap_maperror'        => "Kartenfehler:",
-	'slippymap_osmtext'         => 'Siehe diese Karte auf OpenStreetMap.org',
+	'slippymap_osmtext'         => 'Diese Karte auf OpenStreetMap.org ansehen',
 );
 
 /** Galician (Galego)

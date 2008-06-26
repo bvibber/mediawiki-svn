@@ -88,7 +88,7 @@ $messages['de'] = array(
 		'extdist-submit-extension'        => 'Weiter',
 		'extdist-current-version'         => 'Aktuelle Version (trunk)',
 		'extdist-choose-version'          => '
-<big>Du lädst du <b>$1</b>-Erweiterung herunter.</big>
+<big>Du lädst die <b>$1</b>-Erweiterung herunter.</big>
 
 Bitte wähle deine MediaWiki-Version.
 
