@@ -444,7 +444,7 @@ class NewsRenderer {
 
 		$title = Title::makeTitle( $row->rc_namespace, $row->rc_title ); //XXX: this is redundant, we already have a title object in renderRow. But no good way to pass it :(
 
-		if ($this->publication) {
+		if ( $this->publication || $row->rc_new ) {
 			$name = $title->getPrefixedText();
 		}
 		else {
@@ -541,16 +541,36 @@ class NewsRenderer {
 				//      and extension tags from templates are stripped properly
 				//      this doesn't work though: $t = $this->templateparser->preprocess( $t, $this->title, new ParserOptions() );
 				//TODO: avoid magic categories, interwiki-links, etc
-				$params['content'] = NewsRenderer::sanitizeWikiText( $t );
+				$params['content'] = NewsRenderer::sanitizeWikiText( $t, $this->templateparser );
 
 				if ( stripos($templatetext, '{{{head}}}')!==false ) {
 					$params['head'] = NewsRenderer::extractHead( $params['content'], $title );
 				}
 			}
 
-			$text = $this->templateparser->replaceVariables( $templatetext, $params );
+			$text = NewsRenderer::replaceVariables( $this->templateparser, $templatetext, $params, $this->title );
 			return $text;
 		}
+	}
+
+	static function replaceVariables($parser, $text, $params = NULL, $title = NULL) {
+		global $wgVersion;
+
+		if ( $params === NULL ) $params = array();
+		$text = $parser->replaceVariables( $text, $params );
+
+		/*
+		if ( version_compare( $wgVersion, "1.12", '<' ) ) {
+		}
+		else {
+			$parser = $GLOBALS['wgParser'];
+
+			$frame = $parser->getPreprocessor()->newCustomFrame($params);
+			$text = $parser->replaceVariables( $text, $frame );
+		}
+		*/
+
+		return $text;
 	}
 
 	/*
@@ -594,7 +614,7 @@ class NewsRenderer {
 
 	static function renderFeedLink( $text, $argv, &$parser ) {
 		$t = @$argv['feed'];
-		if ($t) $t = $parser->replaceVariables($t, array());
+		if ($t) $t = NewsRenderer::replaceVariables( $parser, $t );
 
 		$title = $t === NULL ? NULL : Title::newFromText($t);
 		if (!$title) $title = $GLOBALS['wgTitle'];
@@ -628,7 +648,7 @@ class NewsRenderer {
 		$url = NewsRenderer::getFeedURL($title, $format); 
 
 		$ttl = @$argv['title'];
-		if ($ttl) $ttl = $parser->replaceVariables($ttl, array());
+		if ($ttl) $ttl = NewsRenderer::replaceVariables( $parser, $ttl );
 
 		$s = '';
 		if ($text) {
@@ -664,14 +684,14 @@ class NewsRenderer {
 		return $row[0];
 	}
 
-	static function sanitizeWikiText( $text ) {
-		global $wgParser;
+	static function sanitizeWikiText( $text, $parser = NULL ) {
+		if ( !$parser ) $parser = $GLOBALS['wgParser'];
 
-		$elements = array_keys( $wgParser->mTagHooks );
+		$elements = array_keys( $parser->mTagHooks );
 		$uniq_prefix = "\x07NR-UNIQ";
 
 		$matches = array();
-		$text = Parser::extractTagsAndParams( $elements, $text, $matches, $uniq_prefix );
+		$text = $parser->extractTagsAndParams( $elements, $text, $matches, $uniq_prefix );
 
 		foreach( $matches as $marker => $data ) {
 			list( $element, $content, $params, $tag ) = $data;
