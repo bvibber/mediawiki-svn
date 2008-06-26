@@ -41,6 +41,7 @@ export CPPFLAGS='-I/opt/ts/include -I/opt/mysql/include -I/usr/sfw/include'
 	--with-pgsql=/usr/postgres/8.2 \
 	--enable-mbstring \
 	--enable-fastcgi \
+	--enable-pcntl \
 	--with-openssl \
 	--with-curl=/opt/ts \
 	--sysconfdir=/etc/opt/php \
