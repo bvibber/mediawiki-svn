@@ -48,7 +48,7 @@ class MvpcfTemplate extends QuickTemplate {
 	 * @access private
 	 */
 	function execute() {
-		global $wgUser, $wgTitle;
+		global $wgUser, $wgTitle, $wgRequest;
 		$this->user_skin = $wgUser->getSkin();
 
 		// Suppress warnings to prevent notices about missing indexes in $this->data
@@ -57,13 +57,12 @@ class MvpcfTemplate extends QuickTemplate {
 		$this->data['showjumplinks']=false;
 		$this->data['tagline']=false;		
 		$this->get_head_html();
-		switch($wgTitle->getDBkey()){
-			case 'Main_Page':
-				$this->get_splash_page_html();
-			break;
-			default:
-				$this->get_base_body_html();
-			break;
+		if($wgTitle->getNamespace()== NS_MAIN &&
+		   $wgTitle->getDBkey()=='Main_Page' &&
+		   $wgRequest->getText( 'action', 'view' )=='view'){
+			$this->get_splash_page_html();
+		}else{
+			$this->get_base_body_html();
 		}		
 		$this->get_footer_html();
 	}
