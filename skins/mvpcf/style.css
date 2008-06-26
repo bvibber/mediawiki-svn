@@ -42,7 +42,7 @@ h3 {font-size: 16px;}
 h4 {font-size: 14px;}
 h5 {font-size: 13px; text-align: center;}
 h5.search_results_header {margin: 8px 0;}
-h6 {font-size: 13px; color: #6c6c6c; padding: 10px 20px 0px 20px; text-transform: uppercase;}
+h6 {font-size: 13px; color: #6c6c6c; padding: 5px 5px 0px 0px; text-transform: uppercase;}
 
 #metaLogin {background: white; text-align: right; padding: 10px 10px 0px 10px;}
 #metaLogin a {position: relative; z-index: 3;}
@@ -204,6 +204,7 @@ a.advanced_search_tag {font-size: 12px; text-decoration: none; margin: 8px; posi
 	width: 295px;
 	height: 18px;
 	position: relative;
+
 	z-index: 3;
 	background: url(images/search_suggest_bottom.png) 0 0 no-repeat;
 }
@@ -254,8 +255,14 @@ a.advanced_search_tag {font-size: 12px; text-decoration: none; margin: 8px; posi
 
 .suggestionsBox ul {
 	list-style: none;
-	margin: 10px 0;
-	padding: 0 20px;
+	margin: 10px 0;	
+	display:block;
+	padding:3px 0px;
+border-bottom:1px solid #DADADA;
+}
+.suggestionsBox ul li{
+border-top:1px solid #DADADA;
+padding:5px 0px 5px 20px;
 }
 .suggestionsBox div.block ul a {text-decoration: none;}
 .suggestionsBox div.block ul li {margin: 7px 0;}
@@ -292,8 +299,16 @@ a.advanced_search_tag {font-size: 12px; text-decoration: none; margin: 8px; posi
 .ac_results li img{
 	float: left; display: inline;
 }
-.ac_results li .ac_img_txt{
-	float: left; display: inline; vertical-align: top; line-height: 54px; padding-left: 15px; width: 196px;
+ul .ac_img_txt{
+	display:inline;
+line-height:54px;
+padding-left:15px;
+vertical-align:top;
+width:196px;
+color:#2060c1;
+}
+ul .ac_txt{
+color:#2060c1;
 }
 .ac_loading {
 	background : Window url('images/indicator.gif') right center no-repeat;
