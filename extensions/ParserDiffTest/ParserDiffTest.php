@@ -11,6 +11,7 @@ EOT;
 $wgAutoloadClasses['ParserDiffTest'] = dirname(__FILE__) . '/ParserDiffTest_body.php';
 $wgExtensionMessagesFiles['ParserDiffTest'] = dirname(__FILE__).'/ParserDiffTest.i18n.php';
 $wgSpecialPages['ParserDiffTest'] = 'ParserDiffTest';
+$wgSpecialPageGroups['ParserDiffTest'] = 'wiki';
 
 $wgExtensionCredits['specialpage'][] = array(
 	'name' => 'Parser Diff Test',
