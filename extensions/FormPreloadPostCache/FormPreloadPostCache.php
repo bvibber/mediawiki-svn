@@ -16,7 +16,7 @@ if ( $wgUseFileCache ) {
 $wgHooks['OutputPageBeforeHTML'][] = 'FormPreloadPostCache::htmlHook';
 
 class FormPreloadPostCache {
-	function htmlHook( &$outputPage, &$text ) {
+	static function htmlHook( &$outputPage, &$text ) {
 		global $wgRequest;
 
 		$dom = new DOMDocument;
@@ -95,6 +95,7 @@ EOT
 
 		$dom->encoding = 'utf-8';
 		$result = $dom->saveHTML();
+		var_dump( $result ); die;
 		if ( preg_match( '!<body>(.*)</body>!s', $result, $m ) ) {
 			$text = $m[1];
 		} else {
@@ -103,4 +104,3 @@ EOT
 		return true;
 	}
 }
-?>
