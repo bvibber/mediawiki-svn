@@ -644,28 +644,55 @@ class MV_SpecialMediaSearch extends SpecialPage {
 	}
 	/*again here is some possibly metavid congress archive specific stuff:*/
 	function auto_complete_all($val){
+		global $wgContLang;
 		//everything is db key based so swap space for underscore:
 		$val = str_replace(' ','_',$val);				
 		
+		$catNStxt = $wgContLang->getNsText(NS_CATEGORY);
+		
 		//make sure people know they can "search" too (formated by  
 		$out='do_search|'.wfMsg('mv_search_transcripts_for','<B>$1</B>').'|no_image'."\n";
+		//get keywords
+		$category_out = MV_SpecialMediaSearch::auto_complete_search_categories($val, 3);
+		if($category_out!=''){
+			$out.=$catNStxt.':Categories|<h6>'.wfMsg('mv_category_matches').'</h6>|no_image'."\n";
+			$out.=$category_out;
+		}
 		//get people
 		$person_out = MV_SpecialMediaSearch::auto_complete_person($val, 3);
 		if($person_out!=''){
-			$out.='Category:Person|<h6>'.wfMsg('mv_people_matches').'</h6>|no_image'."\n";
+			$out.=$catNStxt.':Person|<h6>'.wfMsg('mv_people_matches').'</h6>|no_image'."\n";
 			$out.=$person_out;
 		}
 		//get bills		
 		$bill_out = MV_SpecialMediaSearch::auto_complete_category('Bill', $val, 3);
 		if($bill_out!=''){
-			$out.='Category:Bill|<h6>'.wfMsg('mv_bill_matches').'</h6>|no_image'."\n";
+			$out.=$catNStxt.':Bill|<h6>'.wfMsg('mv_bill_matches').'</h6>|no_image'."\n";
 			$out.=$bill_out;
 		}
-		//get intrests
+		//get interests
 		$intrest_out = MV_SpecialMediaSearch::auto_complete_category('Interest_Group', $val, 3);
 		if($intrest_out!=''){
-			$out.='Category:Interest Group|<h6>'.wfMsg('mv_interest_group_matches').'</h6>|no_image'."\n";
+			$out.=$catNStxt.':Interest Group|<h6>'.wfMsg('mv_interest_group_matches').'</h6>|no_image'."\n";
 			$out.=$intrest_out;
+		}
+		return $out;
+	}
+	function auto_complete_search_categories($val, $result_limit='5'){
+		global $wgContLang;
+		$dbr =& wfGetDB(DB_SLAVE);	
+		$result = $dbr->select( 'page', 'page_title',
+			array('page_namespace'=>NS_CATEGORY,
+				  '`page_title` LIKE \'%'.mysql_escape_string($val).'%\' COLLATE latin1_general_ci'),
+			__METHOD__,
+			array('LIMIT'=>$result_limit));	  
+		print $dbr->lastQuery();
+		
+		if($dbr->numRows($result) == 0)return '';
+		$out='';
+		$catNStxt = $wgContLang->getNsText(NS_CATEGORY);	
+		while($row = $dbr->fetchObject($result)){
+			$out.=MV_SpecialMediaSearch::format_ac_line($row->page_title, $val, $catNStxt.':');
 		}
 		return $out;
 	}
@@ -681,18 +708,7 @@ class MV_SpecialMediaSearch extends SpecialPage {
 		if($dbr->numRows($result) == 0)return '';
 		$out='';
 		while($row = $dbr->fetchObject($result)){
-			$page_title = $row->cl_sortkey;
-			//bold matching part of title: 
-			$bs = stripos($page_title, $val);								
-			if($bs!==false){	
-					$page_title_bold = substr($page_title, 0, $bs) .
-					 '<b>'.substr($page_title, $bs, strlen($val)) .
-					 '</b>' . substr($page_title, $bs+strlen($val)); 
-			}else{
-					$page_title_bold = $page_title;
-			} 
-			//$page_title_bold = str_ireplace($val, '<b>'.$val.'</b>',$page_title);
-			$out.=$page_title.'|'.$page_title_bold.'|no_image'."\n";
+			$out.=MV_SpecialMediaSearch::format_ac_line($row->cl_sortkey, $val);
 		}
 		return $out;
 	}
@@ -736,25 +752,28 @@ class MV_SpecialMediaSearch extends SpecialPage {
 					$img= wfFindFile($imgTitle);	
 				}
 				//$imgHTML="<img src=\"{$img->getURL()}\" width=\"44\">";
-				//bold the part of the selected title 
-				$sval = str_replace('_', ' ', $val); 
-				//$person_name_bold = str_ireplace($val, '<b>'.$val.'</b>', $person_full_name);
-				$bs = stripos($person_full_name, $sval);		 
-				//print $person_full_name . ' serch for: ' . $val . "<br>";
-				if($bs!==false){	
-					$person_name_bold = substr($person_full_name, 0, $bs) .
-					 '<b>'.substr($person_full_name, $bs, strlen($val)) .
-					 '</b>' . substr($person_full_name, $bs+strlen($val)); 
-				}else{
-					$person_name_bold = $person_full_name;
-				} 
-				$out.=  $person_name.'|'.$person_name_bold .'|'.$img->getURL() . "\n";
+				//bold the part of the selected title 				
+				$out.=MV_SpecialMediaSearch::format_ac_line($person_full_name, $val, '', $img->getURL());
+				//$out.=  $person_name.'|'.$person_name_bold .'|'.$img->getURL() . "\n";
 				//$out.="<li name=\"{$person_name}\"> $imgHTML $person_full_name</il>\n";
 			} 			
 		}
 		//$out.='</ul>';
 		//return people people in the Person Category
 		return $out;
+	}
+	function format_ac_line(&$page_title, &$val, $prefix='', $img_link='no_image'){
+		//bold matching part of title: 
+		$bs = stripos($page_title, str_replace('_',' ',$val) );								
+		if($bs!==false){	
+				$page_title_bold = substr($page_title, 0, $bs) .
+				 '<b>'.substr($page_title, $bs, strlen($val)) .
+				 '</b>' . substr($page_title, $bs+strlen($val)); 
+		}else{
+				$page_title_bold = $page_title;
+		} 
+		//$page_title_bold = str_ireplace($val, '<b>'.$val.'</b>',$page_title);
+		return $prefix.$page_title.'|'.$page_title_bold.'|'.$img_link."\n";
 	}
 	//return a json date obj 
 	//@@todo fix for big sites...(will start to be no fun if number of streams > 2000 )
