@@ -17,20 +17,13 @@
  * @addtogroup Extensions
  */
 
-if ( !defined( 'MEDIAWIKI' ) ) {
-	echo "Invitations extension\n";
-	exit( 1 );
-}
-
-
-class SpecialInvitations extends SpecialPage
-{
-	function SpecialInvitations() {
-		SpecialPage::SpecialPage('Invitations');
-		wfLoadExtensionMessages('Invitations');
+class SpecialInvitations extends SpecialPage {
+	function __construct() {
+		parent::__construct('Invitations');
 	}
 
 	function execute( $subpage ) {
+		wfLoadExtensionMessages('Invitations');
 		global $wgRequest;
 
 		if ($subpage != '' && $wgRequest->getBool('invite_submit')) {
@@ -43,7 +36,7 @@ class SpecialInvitations extends SpecialPage
 	}
 
 	function buildMainView() {
-		global $wgOut,$wgUser,$wgInvitationTypes;
+		global $wgOut,$wgUser,$wgInvitationTypes, $wgLang;
 		$sk = $wgUser->getSkin();
 
 		$wgOut->setPageTitle( wfMsg( 'invitations-pagetitle' ) );
@@ -54,37 +47,37 @@ class SpecialInvitations extends SpecialPage
 		$invitedfeatures = Invitations::getAllowedFeatures();
 
 		if (count($invitedfeatures)) {
-			$wgOut->addWikitext( wfMsg( 'invitations-invitedlist-description' ) );
+			$wgOut->addWikiMsg( 'invitations-invitedlist-description' );
 			$wgOut->addHTML( '<ul>' );
 
 			foreach ($invitedfeatures as $feature) {
-				$link = $sk->makeKnownLinkObj( SpecialPage::getTitleFor( 'Invitations', $feature ), wfMsg("invitation-type-$feature") );
-				$num = Invitations::getRemainingInvites( $feature );
+				$link = $sk->makeKnownLinkObj( SpecialPage::getTitleFor( 'Invitations', $feature ), wfMsgHtml("invitation-type-$feature") );
+				$num = $wgLang->formatNum( Invitations::getRemainingInvites( $feature ) );
 
-				$text = wfMsgExt( 'invitations-invitedlist-item', array( 'parseinline', 'replaceafter' ), $link, $num );
+				$text = "<b>$link</b>";
+				$text = ' '. wfMsgExt( 'invitations-invitedlist-item-count', 'parseinline', $num );
 
 				$wgOut->addHTML( "<li> $text </li>" );
 			}
 		} else {
-			$wgOut->addWikitext( wfMsg( 'invitations-invitedlist-none' ) );
+			$wgOut->addWikiMsg( 'invitations-invitedlist-none' );
 		}
 
 		$uninvitedfeatures = array_diff( array_keys($wgInvitationTypes), $invitedfeatures );
 
 		if (count($uninvitedfeatures)) {
-			$wgOut->addWikitext( wfMsg( 'invitations-uninvitedlist-description' ) );
+			$wgOut->addWikiMsg( 'invitations-uninvitedlist-description' );
 			$wgOut->addHTML( '<ul>' );
 
 			foreach ($uninvitedfeatures as $feature) {
-				$link = $sk->makeKnownLinkObj( SpecialPage::getTitleFor( 'Invitations', $feature ), wfMsg("invitation-type-$feature") );
-				$num = Invitations::getRemainingInvites( $feature );
+				$link = $sk->makeKnownLinkObj( SpecialPage::getTitleFor( 'Invitations', $feature ), wfMsgHtml("invitation-type-$feature") );
 
-				$text = wfMsgExt( 'invitations-uninvitedlist-item', array( 'parseinline', 'replaceafter' ), $link, $num );
+				$text = "<b>$link</b>";
 
 				$wgOut->addHTML( "<li> $text </li>" );
 			}
 		} else {
-			$wgOut->addWikitext( wfMsg( 'invitations-uninvitedlist-none' ) );
+			$wgOut->addWikiMsg( 'invitations-uninvitedlist-none' );
 		}
 	}
 
@@ -95,26 +88,24 @@ class SpecialInvitations extends SpecialPage
 		$invitee = User::newFromName($username);
 
 		if ($invitee->getId() == 0) {
-			$this->buildFeatureView( $feature, wfMsg( 'invitation-error-baduser' ) );
+			$this->buildFeatureView( $feature, 'invitation-error-baduser' );
 			return;
 		}
 
 		if ( ($res = Invitations::inviteUser( $feature, $invitee )) == INVITE_RESULT_OK  ) {
-			$this->buildFeatureView( $feature, false, wfMsg( 'invitations-invite-success', $username ) );
+			$this->buildFeatureView( $feature, false, array( 'invitations-invite-success', $username ) );
 		} else {
 			$results = array( INVITE_RESULT_ALREADY_INVITED => array( 'invitations-error-alreadyinvited', $username ),
 					INVITE_RESULT_NOT_ALLOWED => array( 'invitations-feature-notallowed', wfMsg("invitations-type-$feature") ),
 					INVITE_RESULT_NONE_LEFT => array( 'invitations-feature-noneleft' ),
 					INVITE_RESULT_NONE_YET => array( 'invitations-feature-noneyet' ) );
 
-			$message = call_user_func_array( 'wfMsg', $results[$res] );
-
-			$this->buildFeatureView( $feature, $message );
+			$this->buildFeatureView( $feature, $results[$res] );
 		}
 	}
 
 	function buildFeatureView( $feature, $error = false, $success = false ) {
-		global $wgUser, $wgOut, $wgInvitationTypes;
+		global $wgUser, $wgOut, $wgInvitationTypes, $wgLang;
 
 		$friendlyname = wfMsg("invitation-type-$feature");
 
@@ -124,41 +115,42 @@ class SpecialInvitations extends SpecialPage
 		$wgOut->enableClientCache( false );
 
 		if (Invitations::hasInvite($feature)) {
-			$wgOut->addWikitext( wfMsg( 'invitations-feature-access', $friendlyname ) );
+			$wgOut->addWikiMsg( 'invitations-feature-access', $friendlyname );
 			$numleft = Invitations::getRemainingInvites($feature);
+			$numLeftFmt = $wgLang->formatNum( $numleft );
 
 			if ($numleft > 0) {
-				$allocation = $wgInvitationTypes[$feature][reserve];
+				$allocation = $wgLang->formatNum( $wgInvitationTypes[$feature]['reserve'] );
 
-				$wgOut->addWikitext( wfMsg( 'invitations-feature-numleft', $numleft, $allocation ) );
+				$wgOut->addWikiMsg( 'invitations-feature-numleft', $numleftFmt, $allocation );
 			} else if ($numleft == -1) {
 				# Do nothing.
 			} else if (!Invitations::checkDelay( $feature ) ) {
-				$wgOut->addWikitext( wfMsg( 'invitations-feature-noneyet' ) );
+				$wgOut->addWikiMsg( 'invitations-feature-noneyet' );
 			} else {
-				$wgOut->addWikitext( wfMsg( 'invitations-feature-noneleft' ) );
+				$wgOut->addWikiMsg( 'invitations-feature-noneleft' );
 			}
 
 			// Successes and errors
 
 			if ($error) {
-				$wgOut->addWikitext( '<div class="error">'.$error.'</div>' );
+				$wgOut->wrapWikiMsg( '<div class="error">$1</div>', $error );
 			} else if ($success) {
-				$wgOut->addWikitext( '<big>'.$success.'</big>' );
+				$wgOut->wrapWikiMsg( '<big>$1</big>', $success );
 			}
 
 			// Invitation form
 			if ($numleft != 0)
 				$wgOut->addHTML( $this->buildInvitationForm($feature, $error) );
 		} else {
-			$wgOut->addWikitext( wfMsg( 'invitations-feature-notallowed', $friendlyname ) );
+			$wgOut->addWikiMsg( 'invitations-feature-notallowed', $friendlyname );
 		}
 	}
 
 	function buildInvitationForm( $feature, $error = false ) {
-		$friendlyname = wfMsg("invitation-type-$feature");
+		$friendlyname = wfMsgHtml("invitation-type-$feature");
 
-#		$form = '<h2>'.wfMsgExt('invitations-inviteform-title', 'parseinline', $friendlyname).'</h2>';
+		$form = '<h2>'.wfMsgExt('invitations-inviteform-title', 'parseinline', $friendlyname).'</h2>';
 		$form  = Xml::openElement( 'form', array( 'method' => 'post', 'action' => $wgScript, 'name' => 'uluser' ) );
 		$form .= Xml::hidden( 'title',  SpecialPage::getTitleFor('Invitations', $feature)->getPrefixedText() ); 
 		$form .= Xml::hidden( 'invite_submit', 1 ); 

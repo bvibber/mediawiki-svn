@@ -26,7 +26,7 @@ define('INVITE_RESULT_NONE_YET', 5); // The inviter has no invites yet.
 
 class Invitations {
 
-	/*
+	/**
 	 * Does this user have a valid invite to this feature?
 	 * @param string $feature The feature to check.
 	 * @param object $user The user to check, or null for the current user ($wgUser)
@@ -34,7 +34,7 @@ class Invitations {
 	 */
 	public static function hasInvite( $feature, $user = null, &$invite_age = false ) {
 		global $wgUser, $wgInvitationTypes, $wgDBtype;
-		if ($user == null)
+		if ($user === null)
 			$user = $wgUser;
 
 		// No such invitation type.
@@ -66,7 +66,7 @@ class Invitations {
 	 */
 	public static function getAllowedFeatures( $user = null ) {
 		global $wgUser;
-		if ($user == null)
+		if ($user === null)
 			$user = $wgUser;
 
 		$dbr = wfGetDb( DB_SLAVE );
@@ -82,7 +82,7 @@ class Invitations {
 		return $features;
 	}
 
-	/*
+	/**
 	 * Can the given inviter invite the given invitee to the given feature?
 	 * @param string $feature The feature to check.
 	 * @param object $invitee The user to be invited.
@@ -110,7 +110,7 @@ class Invitations {
 		if (!Invitations::checkDelay($feature, $user, $accountAge))
 			return INVITE_RESULT_NONE_YET;
 
-		if ($wgInvitationTypes[$feature][limitedinvites]) {
+		if ($wgInvitationTypes[$feature]['limitedinvites']) {
 			if (Invitations::getRemainingInvites( $feature, $inviter ) == 0) {
 				return INVITE_RESULT_NONE_LEFT;
 			}
@@ -120,7 +120,7 @@ class Invitations {
 		return INVITE_RESULT_OK;
 	}
 
-	/*
+	/**
 	 * How many invites does the given inviter have?
 	 * @param string $feature The feature to check.
 	 * @param object $user The user to check, or null for $wgUser.
@@ -128,7 +128,7 @@ class Invitations {
 	 */
 	public static function getRemainingInvites( $feature, $user = null ) {
 		global $wgUser, $wgInvitationTypes;
-		if ($user == null)
+		if ($user === null)
 			$user = $wgUser;
 
 		$accountAge = 1;
@@ -143,7 +143,7 @@ class Invitations {
 
 		$accountAge = time() - $accountAge;
 
-		if (!$wgInvitationTypes[$feature][limitedinvites])
+		if (!$wgInvitationTypes[$feature]['limitedinvites'])
 			return -1;
 
 		if (!Invitations::checkDelay( $feature, $user, $accountAge ))
@@ -151,18 +151,21 @@ class Invitations {
 
 		$dbr = wfGetDb( DB_SLAVE );
 
-		$res = $dbr->select( 'invite_count', array( 'ic_count' ), array( ic_user => $user->getId(), ic_type => $feature ), __METHOD__ );
+		$res = $dbr->select( 'invite_count',
+			array( 'ic_count' ),
+			array( 'ic_user' => $user->getId(), 'ic_type' => $feature ),
+			__METHOD__ );
 
 		if ($dbr->numRows($res) > 0) {
 			$num = $dbr->fetchObject($res)->ic_count;
 			return $num;
 		} else {
-			Invitations::insertCountRow( $feature, $user, $wgInvitationTypes[$feature][reserve]);
-			return $wgInvitationTypes[$feature][reserve];
+			Invitations::insertCountRow( $feature, $user, $wgInvitationTypes[$feature]['reserve']);
+			return $wgInvitationTypes[$feature]['reserve'];
 		}
 	}
 
-	/*
+	/**
 	 * Check if the given user has had the given feature for long enough to invite.
 	 * @param string $feature The feature to check
 	 * @param object $user The user to check
@@ -170,24 +173,24 @@ class Invitations {
 	 */
 	public static function checkDelay( $feature, $user = null, $time = null ) {
 		global $wgUser, $wgInvitationTypes;
-		if ($user == null)
+		if ($user === null)
 			$user = $wgUser;
 
-		if ($time != null) {
+		if ($time !== null) {
 			// Do nothing
-		} else if ($time == null && !Invitations::hasInvite( $feature, $user, $time )) {
+		} else if ($time === null && !Invitations::hasInvite( $feature, $user, $time )) {
 			return false;
 		} else {
 			// The user has an invite, and we retrieved its creation point. Find its age
 			$time = time() - $time;
 		}
 
-		if ($time < $wgInvitationTypes[$feature][invitedelay]) {
+		if ($time < $wgInvitationTypes[$feature]['invitedelay']) {
 			return false;
 		} else return true;
 	}
 
-	/*
+	/**
 	 * Insert a row into the invite_count table for the given user and feature.
 	 * @param string $feature The feature to check.
 	 * @param object $user The user to check, or null for $wgUser.
@@ -196,7 +199,7 @@ class Invitations {
 	 */
 	private static function insertCountRow( $feature, $user = null, $count = null ) {
 		global $wgUser, $wgInvitationTypes;
-		if ($user == null)
+		if ($user === null)
 			$user = $wgUser;
 
 		// No such invitation type.
@@ -215,7 +218,7 @@ class Invitations {
 		}
 	}
 
-	/*
+	/**
 	 * Add an invitation for the given invitee, from the given inviter.
 	 * @param string $feature The feature to invite to.
 	 * @param object $invitee The user to be invited.
@@ -224,7 +227,7 @@ class Invitations {
 	 */
 	public static function inviteUser( $feature, $invitee, $inviter = null ) {
 		global $wgUser, $wgInvitationTypes;
-		if ($inviter == null)
+		if ($inviter === null)
 			$inviter = $wgUser;
 
 		if ( ($res = Invitations::checkInviteOperation($feature, $invitee, $inviter)) != INVITE_RESULT_OK) {
@@ -235,11 +238,16 @@ class Invitations {
 		$dbw = wfGetDB( DB_MASTER );
 
 		$dbw->update( 'invite_count', array( 'ic_count=ic_count-1' ),
-				array( ic_user => $inviter->getId(), ic_type => $feature ), __METHOD__ );
+				array( 'ic_user' => $inviter->getId(), 'ic_type' => $feature ),
+				__METHOD__ );
 
 		$dbw->insert( 'invitation',
-		array( 'inv_invitee' => $invitee->getId(), 'inv_inviter' => $inviter->getId(),
-			'inv_type' => $feature ), __METHOD__ );
+			array(
+				'inv_invitee' => $invitee->getId(),
+				'inv_inviter' => $inviter->getId(),
+				'inv_type' => $feature
+			),
+			__METHOD__ );
 
 		// Log it.
 		$log = new LogPage( 'invite' );

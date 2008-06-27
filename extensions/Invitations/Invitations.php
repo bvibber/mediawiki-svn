@@ -36,15 +36,23 @@ $dir = dirname(__FILE__) . '/';
 
 $wgSpecialPages['Invitations'] = 'SpecialInvitations';
 $wgAutoloadClasses['SpecialInvitations'] = $dir . 'Invitations_page.php';
-
 $wgAutoloadClasses['Invitations'] = $dir . 'Invitations_obj.php';
 
 $wgExtensionMessagesFiles['Invitations'] = $dir . 'Invitations.i18n.php';
+$wgExtensionAliasesFiles['Invitations'] = $dir . 'Invitations.i18n.alias.php';
 
 $wgInvitationTypes = array();
 
-// Example: $wgInvitationTypes['centralauth'] = array( reserve => 5, limitedinvites => true, invitedelay => 24 * 3600 * 4 );
-// Limits invites to 'centralauth' to 5 invites per inviter, which can be used 4 days after the user is invited.
+/*
+Example:
+$wgInvitationTypes['centralauth'] = array(
+	'reserve' => 5,
+	'limitedinvites' => true,
+	'invitedelay' => 24 * 3600 * 4
+);
+
+Limits invites to 'centralauth' to 5 invites per inviter, which can be used
+4 days after the user is invited. */
 
 # Add invite log
 $wgLogTypes[] = 'invite';
