@@ -95,7 +95,6 @@ EOT
 
 		$dom->encoding = 'utf-8';
 		$result = $dom->saveHTML();
-		var_dump( $result ); die;
 		if ( preg_match( '!<body>(.*)</body>!s', $result, $m ) ) {
 			$text = $m[1];
 		} else {
