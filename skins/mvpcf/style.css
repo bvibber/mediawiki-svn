@@ -75,10 +75,12 @@ h6 {font-size: 13px; color: #6c6c6c; padding: 5px 5px 0px 0px; text-transform: u
 ** the "action" links located below the searchHeader
 */
 #p-cactions {position:relative;top: 15px;}
-#p-cactions {width: 100%;white-space: nowrap;padding: 0;margin: 0;border: none;background: none;
+#p-cactions {
+	width: 100%;white-space: nowrap;padding: 0;margin: 0;border: none;background: none;
 	overflow: visible;
 	line-height: 1.2em;
 }
+
 #p-cactions h5 {	display: none;}
 #p-cactions .portlet,
 #p-cactions .pBody {z-index: 0;padding: 0;margin: 0;border: none;overflow: visible;background: none;}
@@ -89,13 +91,33 @@ h6 {font-size: 13px; color: #6c6c6c; padding: 5px 5px 0px 0px; text-transform: u
 #p-cactions li {z-index: 0;border: none;padding: 0;display: inline;	margin-left: 1em;
 	line-height: 1.2em;	background: none;
 }
-#p-cactions li a {	padding-bottom: .2em;background: none;
+#p-cactions li a {padding-bottom: .2em;background: none;
 }
 #p-cactions li a:hover {background-color: white;padding-bottom: .2em;
 }
 #p-cactions li.active a:hover {	background-color: transparent;}
 .selected a {color: #474747; text-decoration:none;}
 
+/*if in footer set things up slightly differently ;) */
+#footer .portlet h5 { display:inline;}
+#footer #p-cactions, #footer #p-navigation, #footer #p-tb, #footer #p-footer{
+	width:14em;
+	position:static;
+	top: 20px;
+	float:left;	
+}
+#footer #p-cactions ul, #footer #p-navigation ul, #footer #p-tb ul, #footer #p-footer ul{
+	text-align: left;
+	line-height: 1.4em;
+	padding: 0 2em 0 3em;
+	margin: 0;
+}
+#footer #p-cactions li, #footer #p-navigation li, #footer #p-tb li, #footer #p-footer li{
+	display: block;
+	margin-top:5px;
+	line-height: 1.2em;
+	padding-bottom: .2em;
+}
 
 /* the icon in front of the user name, single quotes
 in bg url to hide it from iemac */
@@ -143,6 +165,11 @@ a.advanced_search_tag {font-size: 12px; text-decoration: none; margin: 8px; posi
 	margin: 20px auto;
 	overflow: hidden;
 }
+/* don't display edit links for sections on main page */
+#frontPageContent .editsection{
+	display:none;
+}
+
 #frontPageContent ul.popularSearches {
 	list-style: none;
 	margin: 10px 0 30px 0;
@@ -258,11 +285,11 @@ a.advanced_search_tag {font-size: 12px; text-decoration: none; margin: 8px; posi
 	margin: 10px 0;	
 	display:block;
 	padding:3px 0px;
-border-bottom:1px solid #DADADA;
+	border-bottom:1px solid #DADADA;
 }
 .suggestionsBox ul li{
 border-top:1px solid #DADADA;
-padding:5px 0px 5px 20px;
+padding:3px 0px 3px 20px;
 }
 .suggestionsBox div.block ul a {text-decoration: none;}
 .suggestionsBox div.block ul li {margin: 7px 0;}
@@ -307,6 +334,7 @@ vertical-align:top;
 width:196px;
 color:#2060c1;
 }
+
 ul .ac_txt{
 color:#2060c1;
 }
@@ -317,6 +345,11 @@ color:#2060c1;
 	background: #0b68c9 url(images/selector.png) 0 0 repeat-x;
 	color: white;
 }
+.ac_over .ac_img_txt, .ac_over .ac_txt, .ac_over h6{
+	color: white;
+	cursor:pointer;
+}
+
 
 .ac_results iframe {
 	display:none;/*sorry for IE5*/
@@ -705,25 +738,40 @@ button.grey_button span {
 	display:none;
 }
 
-#footer, #footer2 {
-	width: 885px;
-	background: white;
+.footer, .footer2 {
+	width: 730px;
 	padding: 15px;
 	overflow: hidden;
-	height: 100%;
-	margin: 15px auto 0 auto;
+	height: 100%;	
+	vertical-align: top;
+	margin: 10px auto;
 }
-#footer2 {background: #e9f2ff;}
-#footer ul.footerLinks, #footer2 ul.footerLinks {
+.footer{
+	background: white;
+}
+.footer2 {
+	background: #e9f2ff;
+} 
+
+.footer ul.footerLinks{
 	float: left;
 	display: inline;
 	width: 180px;
 	list-style: none;
 	margin: 0;
 }
-*:first-child+html #footer ul.footerLinks, *:first-child+html #footer2 ul.footerLinks {width: 220px;}
-#footer ul.footerLinks li, #footer2 ul.footerLinks li {margin: 10px 0;}
-#footer ul.footerLinks li a, #footer2 ul.footerLinks li a {text-decoration: none;}
+#column-one .portlet{
+	border:medium none;
+	float:none;
+	margin:0pt 0pt 0.5em;
+	overflow:hidden;
+	padding:0pt;
+	width:11.6em;
+}
+
+*:first-child+html .footer ul.footerLinks, *:first-child+html .footer2 ul.footerLinks {width: 220px;}
+.footer ul.footerLinks li, .footer2 ul.footerLinks li {margin: 10px 0;}
+.footer ul.footerLinks li a, .footer2 ul.footerLinks li a {text-decoration: none;}
 
 p#copyInfo {text-align: center; padding: 15px 0; margin: 0;}
 p#copyInfo a {color: #474747;}
