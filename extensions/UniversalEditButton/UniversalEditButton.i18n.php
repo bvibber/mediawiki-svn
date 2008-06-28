@@ -46,6 +46,13 @@ $messages['eo'] = array(
 	'universaleditbutton-desc' => 'Aldonas HTML-an titolan etikedon <code>&lt;link&gt;</code> por subteni la retumilan etendilon Universala Redakto-Butono.',
 );
 
+/** Persian (فارسی)
+ * @author Huji
+ */
+$messages['fa'] = array(
+	'universaleditbutton-desc' => 'عنوان HTML <code>&lt;link&gt;</code> را اضافه می‌کند تا از افزونهٔ مرورگر Universal Edit Button پشتیبانی شود',
+);
+
 /** French (Français)
  * @author Grondin
  */
