@@ -188,7 +188,7 @@ ENDFORM;
 
 		$action = htmlspecialchars( $wgScript );
 		if($this->type=="comment") {
-			$comment='<input type="hidden" name="section" value="new" />';
+			$comment="<input type=\"hidden\" name=\"section\" value=\"new\" />\n\t";
 			if(!$this->buttonlabel) {
 				$this->buttonlabel = wfMsgHtml( "postcomment" );
 			}
@@ -214,8 +214,7 @@ ENDFORM;
 	<input type='hidden' name="action" value="edit" />
 	<input type="hidden" name="preload" value="{$preload}" />
 	<input type="hidden" name="editintro" value="{$editintro}" />
-	{$comment}
-	<input class="createboxInput" name="title" type="{$type}"
+	{$comment}<input class="createboxInput" name="title" type="{$type}"
 	value="{$defaulttext}" size="{$this->width}" />{$this->br}
 	<input type='submit' name="create" class="createboxButton"
 	value="{$buttonlabel}" />
