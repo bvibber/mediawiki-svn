@@ -7,7 +7,8 @@ require_once( '/home/wikipedia/common/php/maintenance/commandLine.inc' );
 
 $wikiList = array_map( 'trim', file( '/home/wikipedia/common/wikipedia.dblist' ) );
 $private = array_map( 'trim', file( '/home/wikipedia/common/private.dblist' ) );
-$wikiList = array_diff( $wikiList, $private );
+$closed = array_map( 'trim', file( '/home/wikipedia/common/closed.dblist' ) );
+$wikiList = array_diff( $wikiList, $private, $closed );
 
 $targetQueueSize = 20;
 $maxArticlesPerJob = 10000;
@@ -38,10 +39,11 @@ if ( $wikiSizes ) {
 	file_put_contents( "$baseDir/var/checkpoints/wikiSizes", serialize( $wikiSizes ) );
 }
 
-# Temporary special case hack
-unset($wikiSizes['wikimania2007wiki']);
-foreach ( $private as $wiki ) {
-	unset( $wikiSizes[$wiki] );
+# Update the cached wikiSizes as per the current dblists
+foreach ( $wikiSizes as $wiki => $size ) {
+	if ( !in_array( $wiki, $wikiList ) ) {
+		unset( $wikiSizes[$wiki] );
+	}
 }
 
 # Compute job array
