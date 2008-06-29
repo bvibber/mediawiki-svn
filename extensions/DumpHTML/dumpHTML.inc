@@ -5,14 +5,6 @@
 
 define( 'REPORTING_INTERVAL', 10 );
 
-require_once( 'includes/ImagePage.php' );
-require_once( 'includes/CategoryPage.php' );
-require_once( 'includes/RawPage.php' );
-
-# Explicitly disable article view counter (bug 6823)
-global $wgDisableCounters;
-$wgDisableCounters = true;
-
 class DumpHTML {
 	# Destination directory
 	var $dest;
@@ -651,6 +643,7 @@ class DumpHTML {
 		global $wgEnableParserCache, $wgHooks, $wgServer;
 		global $wgRightsUrl, $wgRightsText, $wgCopyrightIcon, $wgEnableSidebarCache;
 		global $wgGenerateThumbnailOnParse, $wgValidSkinNames, $wgFavicon;
+		global $wgDisableCounters;
 
 		if ( !$this->setupDone ) {
 			$wgHooks['GetLocalURL'][] =& $this;
@@ -714,6 +707,7 @@ class DumpHTML {
 		$wgMathPath = "$wgScriptPath/math";
 		$wgEnableSidebarCache = false;
 		$wgGenerateThumbnailOnParse = true;
+		$wgDisableCounters = true;
 
 		if ( !empty( $wgRightsText ) ) {
 			$wgRightsUrl = "$wgScriptPath/COPYING.html";
