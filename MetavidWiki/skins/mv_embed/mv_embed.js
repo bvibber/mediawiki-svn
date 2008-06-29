@@ -241,13 +241,13 @@ var videoElementPlayer = new mediaPlayer(
 
 var vlcMozillaPlayer = new mediaPlayer(
     'vlc-mozilla',
-    ['video/ogg'],
+    ['video/ogg', 'video/x-flv'],
     'vlc'
 );
 
 var vlcActiveXPlayer = new mediaPlayer(
     'vlc-activex',
-    ['video/ogg'],
+    ['video/ogg', 'video/x-flv'],
     'vlc'
 );
 
@@ -309,16 +309,26 @@ mediaPlayers.prototype =
                 
         return mime_players;               
     },
+    defaultPlayer : function(mime_type)
+    {
+        var mime_players = this.getMIMETypePlayers(mime_type);
+        var to_return = null;
+        if(mime_players.length)
+        {
+            to_return = mime_players[0];
+            for(var i in mime_players)
+                if(mime_players[i].id==this.preference[mime_type])
+                    to_return = mime_players[i];
+        }
+        return to_return;
+    },
     autoSelectPlayer : function(mime_type)
     {
         js_log('autoselecting player for ' + mime_type);
-        var mime_players = this.getMIMETypePlayers(mime_type);
-        if(mime_players.length)
+        var player = this.defaultPlayer(mime_type);
+        if(player)
         {
-            this.selected_player = mime_players[0];
-            for(var i in mime_players)
-                if(mime_players[i].id==this.preference[mime_type])
-                    this.selected_player = mime_players[i];
+            this.selected_player = player;
             js_log('selected ' + this.selected_player.getName());
         }
         else
@@ -426,10 +436,10 @@ var embedTypes = {
         for (var i in this.players.players)
             mvEmbed.lib_plugins[this.players.players[i].getLibraryObject()]=this.players.players[i].getLibraryFile();
 	},
-	getPlayerSelectList:function(mime_type, file_select_code){
+	getPlayerSelectList:function(mime_type, index, file_select_code){
         var supporting_players = this.players.getMIMETypePlayers(mime_type);
         
-		 var select_html='<ul style="color:white">';
+		 var select_html='<div id="player_select_list_' + index + '" class="player_select_list"><ul>';
 		 for(i in supporting_players){
 /*			//list if its the current put a colored plugin icon than name
 			if(this.playerType==this.players[i]){
@@ -440,14 +450,14 @@ var embedTypes = {
 			}else{*/
 				//else gray plugin and the plugin with link to select
 				select_html+='<li>'+
-								'<a style="color:white" href="#" onClick="'+ file_select_code + 'embedTypes.players.selectPlayer(\''+supporting_players[i].id+'\',\''+mime_type+'\');return false;">'+
+								'<a href="#" onClick="'+ file_select_code + 'embedTypes.players.selectPlayer(\''+supporting_players[i].id+'\',\''+mime_type+'\');return false;">'+
 									'<img border="0" width="16" height="16" src="'+mv_embed_path+'images/plugin_disabled.png">'+								
 									supporting_players[i].getName() + 
 								'</a>'+
 							'</li>';
 //			}
 		 }
-		 select_html+='</ul>';
+		 select_html+='</ul></div>';
          js_log(select_html);
 		 return select_html;
 	},
@@ -1704,13 +1714,17 @@ embedVideo.prototype = {
         if(height<240)height=240;
 
         var sel_id = (this.pc!=null)?this.pc.pp.id:this.id;
+        var close_link ='<a href="#" style="color:white" onClick="document.getElementById(\''+this.id+'\').closeDisplayedHTML();return false;">close</a>';
+
         //fade in a black bg div ontop of everything
          var div_code = '<div id="blackbg_'+sel_id+'" ' +
 			 'style="overflow:auto;position:absolute;display:none;z-index:2;background:black;top:0px;left:0px;' +
 				 'height:'+parseInt(height)+'px;width:'+parseInt(width)+'px;">'+
+                 '<span id="close_vl'+this.id+'" style="position:absolute:top:2px;left:2px;color:white;">'+close_link+'</span>'+
+       			 '<span class="displayHTML" id="con_vl_'+this.id+'" style="position:absolute;top:20px;left:20px;color:white;">' +
              html_code +
+                close_link+'</span>'
       		 '</div>';
-
         $j('#'+sel_id).append(div_code);
         $j('#blackbg_'+sel_id).fadeIn("slow");
         return false; //onclick action return false
@@ -1726,33 +1740,24 @@ embedVideo.prototype = {
  		return false;//onclick action return false
 	},
     selectPlaybackMethod:function(){
-        var close_link ='<a href="#" style="color:white" onClick="document.getElementById(\''+this.id+'\').closeDisplayedHTML();return false;">close</a>';
-        var select_code =
-         	 '<span id="close_vl'+this.id+'" style="position:absolute:top:2px;left:2px;color:white;">'+close_link+'</span>'+
-			 '<span id="con_vl_'+this.id+'" style="position:absolute;top:20px;left:20px;color:white;">';			 	
-		var dl_list='';
         var _this=this;
-        select_code+=this.getDLlist(function(index, source)
+        var select_code=this.getDLlist(function(index, source)
         {
-            var player_code = embedTypes.getPlayerSelectList(source.getMIMEType(), 'document.getElementById(\''+_this.id+'\').closeDisplayedHTML(); document.getElementById(\''+_this.id+'\').media_element.selectSource(\''+index+'\');');
-            return '<a href="#" style="color:white" onClick="document.getElementById(\''+_this.id+'\').closeDisplayedHTML(); document.getElementById(\''+_this.id+'\').media_element.selectSource(\''+index+'\'); return false;">'
-                + source.getTitle()+'</a>' + player_code;
+            var default_player = embedTypes.players.defaultPlayer(source.getMIMEType());
+            var source_select_code = 'document.getElementById(\''+_this.id+'\').closeDisplayedHTML(); document.getElementById(\''+_this.id+'\').media_element.selectSource(\''+index+'\');';
+            var player_code = embedTypes.getPlayerSelectList(source.getMIMEType(), index, source_select_code);
+            return '<a href="#" onClick="' + source_select_code + 'embedTypes.players.selectPlayer(\''+default_player.id+'\',\''+source.getMIMEType()+'\'); return false;">'
+                + source.getTitle()+' - ' + default_player.getName() + '</a> '
+                + '(<a href="#" onClick=\'$j("#player_select_list_'+index+'").fadeIn("slow");\'>choose player</a>)' + player_code;
         });
-        select_code+=close_link+'</span>';
         this.displayHTML(select_code);
     },
 	showVideoDownload:function(){
-	 	 var close_link ='<a href="#" style="color:white" onClick="document.getElementById(\''+this.id+'\').closeDisplayedHTML();return false;">close</a>';
-         var select_code =
-         	 '<span id="close_vl'+this.id+'" style="position:absolute:top:2px;left:2px;color:white;">'+close_link+'</span>'+
-			 '<span id="con_vl_'+this.id+'" style="position:absolute;top:20px;left:20px;color:white;">';			 	
-		var dl_list='';	
-        select_code+=this.getDLlist(function(index, source)
+        var select_code=this.getDLlist(function(index, source)
         {
             return '<a style="color:white" href="' + source.getURI() +'"> '
                 + source.getTitle()+'</a>';
         });
-		select_code+=close_link+'</span>';
         this.displayHTML(select_code);
 	},
 	getDLlist:function(transform_function){
