@@ -25,8 +25,7 @@ body {
 }
 body#frontPage {background: #eef6ff;}
 
-#bodyContent{
-	font-size:120%;
+#bodyContent{	
 }
 
 a:link {color: #2060c1; text-decoration: underline;}
@@ -74,7 +73,7 @@ h6 {font-size: 13px; color: #6c6c6c; padding: 5px 5px 0px 0px; text-transform: u
 /*
 ** the "action" links located below the searchHeader
 */
-#p-cactions {position:relative;top: 15px;}
+#p-cactions {}
 #p-cactions {
 	width: 100%;white-space: nowrap;padding: 0;margin: 0;border: none;background: none;
 	overflow: visible;
@@ -272,6 +271,7 @@ a.advanced_search_tag {font-size: 12px; text-decoration: none; margin: 8px; posi
 .suggestionsBox div.block p.people_match img, .suggestionsBox div.block p.people2_match img {float: left; display: inline;}
 .suggestionsBox div.block p.people_match a, .suggestionsBox div.block p.people2_match a {float: left; display: inline; vertical-align: top; line-height: 54px; padding-left: 15px; width: 196px;}
 .suggestionsBox div.block p.people2_match a {width: 173px;}
+.suggestionsBox div.block p.people2_match img {width: 44px;}
 .suggestionsBox div.block p.people_match a:hover, .suggestionsBox div.block p.people2_match a:hover {background: #0b68c9 url(images/selector.png) 0 0 repeat-x; color: white;}
 
 .suggestionsBox div.block p.people_match a:hover {background: #0b68c9 url(images/selector.png) 0 0 repeat-x; color: white;}
@@ -416,17 +416,17 @@ ul#metaResults li a, ul#metaProfile li a {
 	text-decoration: none;
 }
 
-ul#metaResults li.results {font-weight: bold; margin-right: 40px;}
+ul#metaResults li.results {font-weight: bold; margin-right: 10px; margin-left:3px;}
 ul#metaResults li.relevant {}
 ul#metaResults li.recent {}
-ul#metaResults li.viewed {margin-right: 70px;}
-ul#metaResults li.rss a {background: url(images/ico_rss.png) top right no-repeat; padding: 0 18px 0 0; color: #df5c01;}
+ul#metaResults li.viewed {margin-right: 10px;}
+ul#metaResults li.rss a {background: url(images/ico_rss.png) top right no-repeat; padding: 0 18px 0 0; color: #df5c01; margin-left:40px}
 ul#metaResults li.subscribe img {vertical-align: bottom; margin-left: 10px;}
 
 ul#metaProfile li.recent_activity {font-weight: bold; font-size: 15px; float: left; display: inline;}
 ul#metaProfile li.rss a {float: right; display: inline; background: url(images/ico_rss.png) top right no-repeat; padding: 0 18px 0 0; color: #df5c01;}
 ul#metaProfile li.subscribe img {vertical-align: bottom; float: right; display: inline; margin-left: 10px;}
-
+ul#metaResults li.prevnext {margin-left:3px; margin-right:10px;}
 
 #resultsArea ul#results {
 	list-style: none;
@@ -443,7 +443,7 @@ ul#metaProfile li.subscribe img {vertical-align: bottom; float: right; display: 
 }
 #resultsArea ul#results li.moreBy a {text-decoration: none; font-weight: bold; font-size: 14px;}
 
-#resultsArea ul#results li.result img {float: left; display: inline; width: 157px;}
+#resultsArea ul#results li.result .vid_img {float: left; display: inline; width:160px;}
 #resultsArea ul#results li.result div.result_description {
 	width: 353px;
 	float: left;
@@ -744,7 +744,7 @@ button.grey_button span {
 	overflow: hidden;
 	height: 100%;	
 	vertical-align: top;
-	margin: 10px auto;
+	margin: 50px auto 10px auto;
 }
 .footer{
 	background: white;
@@ -782,3 +782,16 @@ p#copyInfo a:hover {color: #999;}
 .logo {text-align: center; padding-top: 42px;}
 .logo2 {padding-top: 0px; overflow: hidden; height: 100%;}
 .logo2 img {float: left; display: inline;}
+
+.searchmatch{
+	color:red;
+}
+#mv_interface_container{
+	height:600px;
+	position:relative;
+}
+/*per page hacks */ 
+.page-Special_MediaSearch .firstHeading{
+	display:none;
+}
+
