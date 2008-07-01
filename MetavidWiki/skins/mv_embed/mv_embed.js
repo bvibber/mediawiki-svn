@@ -400,9 +400,7 @@ var setCookie = function ( name, value, expiry, path, domain, secure ) {
 /*parseUri class:*/
 var parseUri=function(d){var o=parseUri.options,value=o.parser[o.strictMode?"strict":"loose"].exec(d);for(var i=0,uri={};i<14;i++){uri[o.key[i]]=value[i]||""}uri[o.q.name]={};uri[o.key[12]].replace(o.q.parser,function(a,b,c){if(b)uri[o.q.name][b]=c});return uri};parseUri.options={strictMode:false,key:["source","protocol","authority","userInfo","user","password","host","port","relative","path","directory","file","query","anchor"],q:{name:"queryKey",parser:/(?:^|&)([^&=]*)=?([^&]*)/g},parser:{strict:/^(?:([^:\/?#]+):)?(?:\/\/((?:(([^:@]*):?([^:@]*))?@)?([^:\/?#]*)(?::(\d*))?))?((((?:[^?#\/]*\/)*)([^?#]*))(?:\?([^#]*))?(?:#(.*))?)/,loose:/^(?:(?![^:@]+:[^:@\/]*@)([^:\/?#.]+):)?(?:\/\/)?((?:(([^:@]*):?([^:@]*))?@)?([^:\/?#]*)(?::(\d*))?)(((\/(?:[^?#](?![^?#\/]*\.[^?#\/.]+(?:[?#]|$)))*\/?)?([^?#\/]*))(?:\?([^#]*))?(?:#(.*))?)/}};
 
-
 js_log("mv embed path:"+ mv_embed_path);
-
 /*
  * embedTypes object handles setting and getting of supported embed types:
  * closely mirrors OggHandler so that its easier to share efforts in this area:
@@ -434,6 +432,7 @@ var embedTypes = {
 			js_log('set lib: '  +mvEmbed.lib_plugins[this.getPlayerLib()+'Embed']);
 		}*/
         // set to load all the supported libraries
+        //@@todo... should only load the player type for the current selected plugin...
         for (var i in this.players.players)
             mvEmbed.lib_plugins[this.players.players[i].getLibraryObject()]=this.players.players[i].getLibraryFile();
 	},
@@ -442,13 +441,13 @@ var embedTypes = {
         
 		 var select_html='<div id="player_select_list_' + index + '" class="player_select_list"><ul>';
 		 for(i in supporting_players){
-/*			//list if its the current put a colored plugin icon than name
-			if(this.playerType==this.players[i]){
-				select_html+='<li>'+
-								'<img width="16" height="16" src="'+mv_embed_path+'images/plugin.png">'+
-									getMsg('ogg-player-'+this.players[i])+getMsg('ogg-player-selected')+
+			//put colored plugin icon and no link for supported player: 
+			if(embedTypes.players.selected_player.library==supporting_players[i].library ){
+				select_html+='<li>'+								
+									'<img border="0" width="16" height="16" src="'+mv_embed_path+'images/plugin.png">'+								
+									supporting_players[i].getName() + 
 							'</li>';
-			}else{*/
+			}else{
 				//else gray plugin and the plugin with link to select
 				select_html+='<li>'+
 								'<a href="#" onClick="'+ file_select_code + 'embedTypes.players.selectPlayer(\''+supporting_players[i].id+'\',\''+mime_type+'\');return false;">'+
@@ -456,7 +455,7 @@ var embedTypes = {
 									supporting_players[i].getName() + 
 								'</a>'+
 							'</li>';
-//			}
+			}
 		 }
 		 select_html+='</ul></div>';
          js_log(select_html);
@@ -639,7 +638,7 @@ function init_mv_embed(force){
 	//check if this page does have video or playlist
 	if(document.getElementsByTagName("video").length!=0 ||
 	   document.getElementsByTagName("playlist").length!=0){
-		js_log('we have vids to proccess');
+		js_log('we have vids to process');
 		//if safari we have already foce loadded the libs
 		if(embedTypes.safari){
 			js_log('run init for safari');
@@ -1231,7 +1230,7 @@ mediaSource.prototype =
 	 * (for media_url?t=ntp_start/ntp_end url request format
      */  
     parseURLDuration : function(){	 	
-        //js_log('get duration for:' + this.src);	 		 	 
+        js_log('get duration for:' + this.uri);	 		 	 
         var index_time_val = false;		 		 
         if(this.uri.indexOf('?t=')!=-1)index_time_val='?t=';
         if(this.uri.indexOf('&t=')!=-1)index_time_val='&t=';
@@ -1246,9 +1245,9 @@ mediaSource.prototype =
 		    		this.uri.indexOf('/', this.uri.indexOf(index_time_val))+1, end_index);
 		    this.start_offset = ntp2seconds(this.start_ntp);
 	   		this.duration = ntp2seconds( this.end_ntp ) - this.start_offset;
-		    //put values into ms:
-		    this.start_offset =  this.start_offset*1000
-		    this.duration = this.duration*1000;		    		    
+		    //keep values in float seconds 
+		    this.start_offset =  this.start_offset
+		    this.duration = this.duration;		    		    
         }else{
 	     	//else normal media request (can't predict the duration without the plugin reading it)
 	     	this.duration=null;
@@ -1266,8 +1265,14 @@ mediaSource.prototype =
     */
     detectType:function(uri)
     {
-        if(endsWith(uri, '.flv'))
-            return 'video/x-flv';
+    	//@@todo if media is on the same server as the javascript we can issue a HEAD request and read the mime type of the media... 
+    	// (this will detect media mime type independently of the url name) 
+    	//http://www.jibbering.com/2002/4/httprequest.html (this should be done by extending jquery's ajax objects) 
+        switch(uri.substr(uri.lastIndexOf('.'))){
+        	case '.flv':return 'video/x-flv';break;
+        	case '.ogg':return 'video/ogg';break;     
+        	case '.anx':return 'video/annodex';break;
+	    }
     }
 };
 
@@ -1392,11 +1397,6 @@ mediaElement.prototype =
     },
 };
 
-function endsWith(str, suffix)
-{
-    return str.substr(str.length-suffix.length, suffix.length)==suffix;
-}
-
 /** base embedVideo object
     @param element <video> tag used for initialization.
     @constructor
@@ -1516,13 +1516,13 @@ embedVideo.prototype = {
 	*/ 
 	getPluginMissingHTML : function(){	
 		//keep the box width hight:
-		var out = '<span style="width:'+this.width+'px;height:'+this.height+'px">';
+		var out = '<div style="width:'+this.width+'px;height:'+this.height+'px">';
 	    if(this.user_missing_plugin_html){
 	      out+= this.user_missing_plugin_html;
 	    }else{
 		  out+= getMsg('generic_missing_plugin') + ' or <a title="'+getMsg('download_clip')+'" href="'+this.src +'">'+getMsg('download_clip')+'</a>';
 		}
-		return out + '</span>';
+		return out + '</div>';
 	},
 	//updates the video src
 	updateVideoSrc : function(src){
@@ -1560,12 +1560,12 @@ embedVideo.prototype = {
 	    //if(this.class)class_atr = ' class="'+this.class+'"';
 	    //if(this.style)style_atr = ' style="'+this.style+'"';
 	    //    else style_atr = 'overflow:hidden;height:'+this.height+'px;width:'+this.width+'px;';   
-	
+		if(!this.thumbnail)this.thumbnail = mv_default_thumb_url;
 	    //put it all in the div container dc_id
 	    thumb_html+= '<div id="dc_'+this.id+'" style="position:relative;'+
 	    	' overflow:hidden; top:0px; left:0px; width:'+this.width+'px; height:'+this.height+'px; z-index:0;">'+
 	        '<img width="'+this.width+'" height="'+this.height+'" style="position:relative;width:'+this.width+';height:'+this.height+'"' +
-	        ' id="img_thumb_'+this.id+'" src="' + this.media_element.getThumbnailURL() + '">';
+	        ' id="img_thumb_'+this.id+'" src="' + this.thumbnail + '">';
 
 		js_log("PLAY BUTTON: " + this.play_button);
 	    if(this.play_button==true)
@@ -1749,7 +1749,7 @@ embedVideo.prototype = {
             var player_code = embedTypes.getPlayerSelectList(source.getMIMEType(), index, source_select_code);
             return '<a href="#" onClick="' + source_select_code + 'embedTypes.players.selectPlayer(\''+default_player.id+'\',\''+source.getMIMEType()+'\'); return false;">'
                 + source.getTitle()+' - ' + default_player.getName() + '</a> '
-                + '(<a href="#" onClick=\'$j("#player_select_list_'+index+'").fadeIn("slow");\'>choose player</a>)' + player_code;
+                + '(<a href="#" onClick=\'$j("#player_select_list_'+index+'").fadeIn("slow");return false;\'>choose player</a>)' + player_code;
         });
         this.displayHTML(select_code);
     },

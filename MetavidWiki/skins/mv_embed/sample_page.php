@@ -20,7 +20,7 @@ Here are some sample embeds:<br />
 <? 
 $sample_embed = array(); 
 
-$sample_embed[0]['tag']='<video id="v0" src="sample.ogg"></video>';
+$sample_embed[0]['tag']='<video id="v0" src="sample.ogg" thumbnail="sample.jpg"></video>';
 $sample_embed[0]['desc']='basic usage with manual controls:<br />'. 
 					'<a href="javascript:document.getElementById(\'v1\').play();">Play</a> | '.
 					'<a href="javascript:document.getElementById(\'v1\').stop();">Stop</a> <br />';
@@ -105,7 +105,7 @@ $sample_embed[7]['desc'] = '<b>Inline Playlist:</b> for more info see <a href="h
 ?>
   <table border="1" cellpadding="6" width="600">
   	<? foreach($sample_embed as $key=>$aval){
-  		if($key!=2)continue;	
+  		if($key>2)continue;	
   	 ?>
 	    <tr>    	
 	      <td><?=$aval['tag']?></td>
