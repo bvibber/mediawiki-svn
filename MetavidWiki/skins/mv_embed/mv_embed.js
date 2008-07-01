@@ -30,6 +30,12 @@ var global_req_cb = new Array();//the global request callback array
 var _global = this;
 var mv_init_done=false;
 
+//get mv_embed location if it has not been set
+if(!mv_embed_path){
+	getMvEmbedPath();
+}
+//the default thumbnail for missing images:
+var mv_default_thumb_url = mv_embed_path + 'images/vid_default_thumb.jpg';
 
 if(!gMsg){var gMsg={};}
 //all default msg in [english] should be overwritten by the CMS language msg system.
@@ -302,7 +308,6 @@ mediaPlayers.prototype =
     getMIMETypePlayers : function(mime_type)
     {
         var mime_players = new Array();
-
         for (var i in this.players)
             if (this.players[i].supportsMIMEType(mime_type))
                 mime_players.push(this.players[i]);
@@ -395,13 +400,9 @@ var setCookie = function ( name, value, expiry, path, domain, secure ) {
 /*parseUri class:*/
 var parseUri=function(d){var o=parseUri.options,value=o.parser[o.strictMode?"strict":"loose"].exec(d);for(var i=0,uri={};i<14;i++){uri[o.key[i]]=value[i]||""}uri[o.q.name]={};uri[o.key[12]].replace(o.q.parser,function(a,b,c){if(b)uri[o.q.name][b]=c});return uri};parseUri.options={strictMode:false,key:["source","protocol","authority","userInfo","user","password","host","port","relative","path","directory","file","query","anchor"],q:{name:"queryKey",parser:/(?:^|&)([^&=]*)=?([^&]*)/g},parser:{strict:/^(?:([^:\/?#]+):)?(?:\/\/((?:(([^:@]*):?([^:@]*))?@)?([^:\/?#]*)(?::(\d*))?))?((((?:[^?#\/]*\/)*)([^?#]*))(?:\?([^#]*))?(?:#(.*))?)/,loose:/^(?:(?![^:@]+:[^:@\/]*@)([^:\/?#.]+):)?(?:\/\/)?((?:(([^:@]*):?([^:@]*))?@)?([^:\/?#]*)(?::(\d*))?)(((\/(?:[^?#](?![^?#\/]*\.[^?#\/.]+(?:[?#]|$)))*\/?)?([^?#\/]*))(?:\?([^#]*))?(?:#(.*))?)/}};
 
-//get mv_embed location if it has not been set
-if(!mv_embed_path){
-	getMvEmbedPath();
-}
+
 js_log("mv embed path:"+ mv_embed_path);
-//the default thumb nail for missing images:
-var mv_default_thumb_url = mv_embed_path + 'images/vid_default_thumb.jpg';
+
 /*
  * embedTypes object handles setting and getting of supported embed types:
  * closely mirrors OggHandler so that its easier to share efforts in this area:
@@ -662,7 +663,7 @@ function rewrite_by_id(vid_id){
 	//confirm the nessesary libs are loaded. 
 	if(!mvEmbed.libs_loaded){
 		mvEmbed.load_libs(function(){
-			rewrite_by_id(vid_id);
+			return rewrite_by_id(vid_id);
 		});
 	}else{
 		var vidElm = document.getElementById(vid_id);
