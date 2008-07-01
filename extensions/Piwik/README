@@ -1,6 +1,6 @@
 MediaWiki Piwik Integration extension
 
-version 0.2.2rev0.5 Beta
+version 0.2.4rev0.7 Beta
 01 June 2008
 
 This is the README file for the Piwik Integration extension for MediaWiki
@@ -65,3 +65,5 @@ but ALL steps are necessary:
 
             $wgPiwikCustomJS = "piwik_hosts_alias = ["hostname1.com", "hostname2.com"]; // the current tracked website is added to this array anyway
             piwik_install_tracker = 0;"
+
+* If you want to change piwik_action_name, you can set $wgPiwikActionName inside your LocalSettings.php file.
