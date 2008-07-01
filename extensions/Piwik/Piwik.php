@@ -3,8 +3,8 @@
  * Parser hook extension to add a <randomimage> tag
  *
  * @addtogroup Extensions
- * @author Isb1009 <isb1009 at gmail dot com>
- * @copyright © 2008 Isb1009
+ * @author isb1009 <isb1009 at gmail dot com>
+ * @copyright © 2008 isb1009
  * @licence GNU General Public Licence 2.0
  */
 
@@ -14,11 +14,11 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 
 $wgExtensionCredits['specialpage'][] = array(
 	'name'           => 'Piwik Integration',
-	'version'        => '0.2.4rev0.7 Beta',
+	'version'        => '0.2.3rev0.6 Beta',
 	'svn-date'       => '$LastChangedDate$',
 	'svn-revision'   => '$LastChangedRevision$',
-	'author'         => 'Isb1009',
-	'description'    => 'Inserts Piwik script into MediaWiki pages for tracking and adds [[Special:Piwik|some stats]]. Based on Google Analytics Integration by Tim Laqua.',
+	'author'         => 'isb1009',
+	'description'    => 'Inserts Piwik script into MediaWiki pages for tracking and adds a [[Special:Piwik|special page]] with some stats. Based on Google Analytics Integration by Tim Laqua.',
 	'descriptionurl' => 'piwik-desc',
 	'url'            => 'http://www.mediawiki.org/wiki/Extension:Piwik_Integration',
 );
@@ -30,7 +30,6 @@ $wgPiwikURL = "";
 $wgPiwikIgnoreSysops = true;
 $wgPiwikIgnoreBots = true;
 $wgPiwikCustomJS = "";
-$wgPiwikActionName = "";
 
 function efPiwikHookText(&$skin, &$text='') {
 	$text .= efAddPiwik();
@@ -38,7 +37,7 @@ function efPiwikHookText(&$skin, &$text='') {
 }
 
 function efAddPiwik() {
-	global $wgPiwikIDSite, $wgPiwikURL, $wgPiwikIgnoreSysops, $wgPiwikIgnoreBots, $wgUser, $wgScriptPath, $wgPiwikCustomJS, $wgPiwikActionName;
+	global $wgPiwikIDSite, $wgPiwikURL, $wgPiwikIgnoreSysops, $wgPiwikIgnoreBots, $wgUser, $wgScriptPath, $wgPiwikCustomJS;
 	if (!$wgUser->isAllowed('bot') || !$wgPiwikIgnoreBots) {
 		if (!$wgUser->isAllowed('protect') || !$wgPiwikIgnoreSysops) {
 			if ( !empty($wgPiwikIDSite) AND !empty($wgPiwikURL)) {
@@ -48,7 +47,7 @@ function efAddPiwik() {
 <script language="javascript" src="{$wgScriptPath}/extensions/piwik/piwik-mw.js" type="text/javascript"></script>
 <script type="text/javascript">
 <!--
-piwik_action_name = '{$wgPiwikActionName}';
+piwik_action_name = '';
 piwik_idsite = {$wgPiwikIDSite};
 piwik_url = '{$wgPiwikURL}piwik.php';
 piwik_log(piwik_action_name, piwik_idsite, piwik_url);

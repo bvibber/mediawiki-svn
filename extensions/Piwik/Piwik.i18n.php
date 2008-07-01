@@ -11,7 +11,7 @@ $messages = array();
  * @author Isb1009
  */
 $messages['en'] = array(
-	'piwik-desc'       => 'Inserts Piwik script into MediaWiki pages for tracking and adds [[Special:Piwik|some stats]]. Based on Google Analytics Integration by Tim Laqua.',
+	'piwik-desc'       => 'Inserts Piwik script into MediaWiki pages for tracking and adds [[Special:Piwik|some stats]]',
 	'piwik'            => 'Piwik',
 	'piwik-lastvisits' => 'Last visits',
 	'piwik-countries'  => 'Countries',
@@ -42,7 +42,7 @@ $messages['bg'] = array(
  * @author Isb1009
  */
 $messages['ca'] = array(
-	'piwik-desc'       => 'Insereix el codi de Piwik dins les pàgines del MediaWiki per al seguiment i hi afegeix [[Special:Piwik|algunes estadístiques]]',
+	'piwik-desc'       => 'Insereix el codi de Piwik dins les pÃ gines del MediaWiki per a fer les estadÃ­stiques',
 	'piwik'            => 'Piwik',
 	'piwik-lastvisits' => 'Darreres visites',
 	'piwik-countries'  => 'PaÃ¯sos',
@@ -73,7 +73,7 @@ $messages['de'] = array(
  * @author Isb1009
  */
 $messages['es'] = array(
-	'piwik-desc'       => 'Inseta el código de Piwik en las páginas de la wiki MediaWiki para el seguimiento y añade [[Special:Piwik|algunas estadísticas]]',
+	'piwik-desc'       => 'Inseta el cÃ³digo de Piwik en las pÃ¡ginas de la wiki MediaWiki para hacer las estadÃ­sticas',
 	'piwik'            => 'Piwik',
 	'piwik-lastvisits' => 'Ãšltimas visitas',
 	'piwik-countries'  => 'PaÃ­ses',

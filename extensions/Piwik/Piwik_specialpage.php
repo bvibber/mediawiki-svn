@@ -26,9 +26,9 @@ class Piwik extends SpecialPage {
 		<h2>{$lastvisits}</h2>
 		<iframe src="{$wgPiwikURL}/index.php?module=Widgetize&amp;action=iframe&amp;moduleToWidgetize=VisitsSummary&amp;actionToWidgetize=getLastVisitsGraph&amp;idSite={$wgPiwikIDSite}&amp;period=day&amp;date=previous30" marginheight="0" marginwidth="0" frameborder="0" height="150" scrolling="no" width="100%"></iframe>
 		<h2>{$countries}</h2>
-		<iframe src="{$wgPiwikURL}/index.php?module=Widgetize&amp;action=iframe&amp;moduleToWidgetize=UserCountry&amp;actionToWidgetize=getCountry&amp;idSite={$wgPiwikIDSite}&amp;period=day&amp;date=yesterday" marginheight="0" marginwidth="0" frameborder="0" scrolling="no" height="400" width="100%"></iframe>
+		<iframe src="{$wgPiwikURL}/index.php?module=Widgetize&amp;action=iframe&amp;moduleToWidgetize=UserCountry&amp;actionToWidgetize=getCountry&amp;idSite={$wgPiwikIDSite}&amp;period=day&amp;date=yesterday" marginheight="0" marginwidth="0" frameborder="0" scrolling="no" height="320" width="100%"></iframe>
 		<h2>{$browsers}</h2>
-		<iframe src="{$wgPiwikURL}/index.php?module=Widgetize&amp;action=iframe&amp;moduleToWidgetize=UserSettings&amp;actionToWidgetize=getBrowser&amp;idSite={$wgPiwikIDSite}&amp;period=day&amp;date=yesterday" marginheight="0" marginwidth="0" frameborder="0" scrolling="no" height="400" width="100%"></iframe>
+		<iframe src="{$wgPiwikURL}/index.php?module=Widgetize&amp;action=iframe&amp;moduleToWidgetize=UserSettings&amp;actionToWidgetize=getBrowser&amp;idSite={$wgPiwikIDSite}&amp;period=day&amp;date=yesterday" marginheight="0" marginwidth="0" frameborder="0" scrolling="no" height="320" width="100%"></iframe>
 
 PIWIK;
 
