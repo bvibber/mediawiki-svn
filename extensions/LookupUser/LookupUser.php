@@ -28,6 +28,8 @@ $wgExtensionMessagesFiles['LookupUser'] = $dir . 'LookupUser.i18n.php';
 
 $wgSpecialPages['LookupUser'] = 'LookupUserPage';
 $wgAvailableRights[] = 'lookupuser';
+$wgSpecialPageGroups['LookupUser'] = 'users';
+
 
 function wfSetupLookupUser() {
 	global $IP;
