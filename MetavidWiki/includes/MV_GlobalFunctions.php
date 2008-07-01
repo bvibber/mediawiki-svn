@@ -41,8 +41,7 @@ $wgAutoloadClasses['MV_EditPageAjax'] = dirname(__FILE__)  .'/MV_MetavidInterfac
 $wgAutoloadClasses['MV_CategoryPage']= dirname(__FILE__)  .'/articlepages/MV_CategoryPage.php';
 $wgAutoloadClasses['MV_SequencePage'] =  dirname(__FILE__)  .'/articlepages/MV_SequencePage.php';
 $wgAutoloadClasses['MV_StreamPage'] = dirname(__FILE__)  .'/articlepages/MV_StreamPage.php';
-$wgAutoloadClasses['MV_EditDataPage'] = $wgAutoloadClasses['MV_DataPage'] = 
-	dirname(__FILE__) . '/articlepages/MV_DataPage.php';
+$wgAutoloadClasses['MV_EditDataPage'] = $wgAutoloadClasses['MV_DataPage'] =  dirname(__FILE__) . '/articlepages/MV_DataPage.php';
 $wgAutoloadClasses['MV_EditStreamPage']=dirname(__FILE__)  .'/MV_EditStreamPage.php';
 
 
@@ -57,7 +56,7 @@ $wgAutoloadClasses['MV_ParserCache'] = dirname(__FILE__) . '/MV_ParserCache.php'
 		
 $markerList = array(); 
 
-//override special search page: (requires ExtensionFunctions.php)
+//don't override special search page: (requires ExtensionFunctions.php)
 extAddSpecialPage( dirname(__FILE__) . '/specials/MV_SpecialMediaSearch.php', 'Search', 'MV_SpecialSearch' );
 
 function enableMetavid() {	
@@ -364,6 +363,7 @@ $wgAjaxExportList[] = 'mv_adjust_submit';
 
 //search interface exported functions: 
 $wgAjaxExportList[] = 'mv_expand_wt';
+$wgAjaxExportList[] = 'mv_pl_wt';
 $wgAjaxExportList[] = 'mv_submit_remove';
 $wgAjaxExportList[] = 'mv_tool_disp';
 $wgAjaxExportList[] = 'mv_date_obj';
@@ -456,10 +456,14 @@ function ntp2seconds($str_time){
 /*
  * takes seconds duration and return hh:mm:ss time
  */
-function seconds2ntp($seconds){
+function seconds2ntp($seconds, $short=false){
 	$dur = time_duration_2array($seconds);
-	//be sure to output leading zeros (for min,sec):  
-	return sprintf("%d:%02d:%02d", $dur['hours'], $dur['minutes'], $dur['seconds']);
+	//be sure to output leading zeros (for min,sec):
+	if($dur['hours']==0 && $short==true){
+		return sprintf("%2d:%02d", $dur['minutes'], $dur['seconds']);
+	}else{  
+		return sprintf("%d:%02d:%02d", $dur['hours'], $dur['minutes'], $dur['seconds']);
+	}
 }
 /*
  * converts seconds to time unit array

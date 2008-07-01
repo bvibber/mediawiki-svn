@@ -166,6 +166,9 @@
 		$stream = & mvGetMVStream($this->stream_name);
 		return $stream->getDuration();
 	}
+	function getSegmentDurationNTP($short_time=false){
+		return seconds2ntp($this->getEndTimeSeconds() - $this->getStartTimeSeconds(), $short_time);
+	}
 	/*
 	 * returns a near by stream range:
 	 */
@@ -277,9 +280,10 @@
 		if($size==''){
 			global $mvDefaultVideoPlaybackRes;
 			$size=$mvDefaultVideoPlaybackRes;
+		}else{
+			list($vWidth, $vHeight, $na) = MV_StreamImage::getSizeType($size);
 		}
-		$vid_id=($vid_id=='')?'':'id="'.$vid_id.'"';
-		list($vWidth, $vHeight) = explode('x', $size);		
+		$vid_id=($vid_id=='')?'':'id="'.$vid_id.'"';			
 		$stream_web_url = $this->getWebStreamURL();
 		$roe_url = 	$this->getROEURL();	
 		if($stream_web_url){

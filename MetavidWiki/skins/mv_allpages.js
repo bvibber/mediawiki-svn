@@ -156,26 +156,53 @@ function mv_cxt(inx){
 		mv_ext(inx);
 	});
 }
+/* toggles advanced search */ 
+function mv_toggle_advs(){		
+	if($j('#advs').val()=='0'){
+		$j('#advs').val('1');
+		//sync values from basic -> avanced		
+		$j("input[@name$='f[0][v]']").val( $j('#search_field').val() );
+		
+		$j('.advs_basic').fadeOut('fast',function(){
+			$j('.advanced_search_tag').before('<span id="tmp_loading_txt">'+getMsg('loading_txt')+'</span>');
+			//check for adv search lib and load: @@todo ../ path is not very graceful
+			mvJsLoader.doLoad({'mv_setup_search':'../mv_search.js'}, function(){
+				$j('#tmp_loading_txt').remove();
+				$j('.advs_adv').fadeIn('fast');	
+				//give some extra room for advanced search: 
+				$j('#frontPageTop').animate({'height':'300px'},'fast');
+			});						
+		});				
+	}else{
+		$j('#advs').val('0');
+		//sync values from advanced -> basic
+		$j('#search_field').val( $j("input[@name$='f[0][v]']").val() );
+		//do style display swap
+		$j('.advs_adv').fadeOut('fast',function(){
+			$j('.advs_basic').fadeIn('fast');
+			$j('#frontPageTop').animate({'height':'233px'},'fast');
+		});		
+	}
+}
 function mv_setup_search_ac(){
 	var uri = wgScript;
 	//add the person choices div to searchInput
-	/*var obj = $j('#searchInput').get(0);
-	//base offset: 
-	var curleft=55;
-	var curtop=20;
-	//get pos of searchInput:
-	if (obj.offsetParent) {
-		do {
-			curleft += obj.offsetLeft;
-			curtop += obj.offsetTop;
-		}while (obj = obj.offsetParent);		
-	}
-	//get the search pos: 
-	$j('body').append('<div class="ac_results" id="mv_ac_choices" ' +
-			'style="border:solid black;background:#FFF;position:absolute;left:'+curleft+'px;top:'+curtop+'px;z-index:99;width:300px;display: none;"/>');
-	*/
 	//turn off browser baseed autocomplete: 
 	$j('#search_field').attr('autocomplete',"off");
+	
+	//add the sugestions div (abolute positioned so it can be ontop of everything) 	
+	$j('body').prepend('<div id="suggestions" style="position:absolute;display:none;z-index:50;">'+
+							'<div id="suggestionsTop"></div>'+
+								'<div id="suggestionsInner" class="suggestionsBox">'+
+								'</div>'+
+							'<div id="suggestionsBot"></div>'+						
+						'</div>');
+	//position the sugestions below the search field:
+	sf_pos = $j('#search_field').offset();
+	sf_pos['top']=sf_pos['top']+40;
+	sf_pos['left']=sf_pos['left']-220;
+	$j('#suggestions').css(sf_pos);
+	
 	//add hook:
 	$j('#search_field').autocomplete(
 		uri,
@@ -189,16 +216,16 @@ function mv_setup_search_ac(){
 					qe = v.innerHTML.toLowerCase().indexOf('</b>');
 					//update the search input (incase redirect fails)
 					$j('#search_field').val(v.innerHTML.substring(qs,qe));
-					window.location=uri+'/'+'Special:Search?search='+v.innerHTML.substring(qs,qe);
+					window.location=uri+'/'+'Special:MediaSearch?mv_search='+v.innerHTML.substring(qs,qe);
 				}else{
 					window.location =uri+'/'+$j('#search_field').val();
 				}
 			},
 			formatItem:function(row){
 				if(row[0]=='do_search'){
-					return row[1].replace('$1',$j('#search_field').val());
+					return '<span class="ac_txt">'+row[1].replace('$1',$j('#search_field').val())+'</span>';
 				}else if(row[2]=='no_image'){
-					return row[1];
+					return '<span class="ac_txt">'+row[1]+'</span>';
 				}else{
 					return '<img width="44" src="'+ row[2] + '"><span class="ac_img_txt">'+row[1]+'</span>';
 				}
@@ -209,6 +236,4 @@ function mv_setup_search_ac(){
 			resultElem:'#suggestionsInner',
 			resultContainer:'#suggestions'							
 		});
-	//var offset = $j('#mv_person_input_'+inx).offset();
-	//$j('#mv_person_choices_'+inx).css('left', offset.left-205);
 }

@@ -277,6 +277,12 @@
 		$mvSearch = new MV_SpecialMediaSearch();		
 		return $mvSearch->expand_wt($mvd_id, $search_terms);
 	}
+	function mv_pl_wt($mvd_id){
+		global $wgRequest;
+		$mvd = MV_Index::getMVDbyId($mvd_id);
+		$mvTitle = new MV_Title($mvd->wiki_title);
+		return $mvTitle->getEmbedVideoHtml('vid_'.$mvd_id, $wgRequest->getVal('size'), '', true);
+	}
 	function mv_date_obj(){
 		//returns the date object for existing stream set
 		//@@todo this is very cacheable since it only changes when a streams change date or a new stream is added. 

@@ -137,7 +137,7 @@
  		$wgOut->addHTML($this->page_header); 		 		
  		
  		//@@todo dynamic re-size page_spacer:
- 		$wgOut->addHTML('<div id="mv_page_spacer">');	 
+ 		$wgOut->addHTML('<div id="mv_interface_container">');	 
  		foreach($this->components as $cpKey => &$component){ 			
  			$component->render_full(); 			
  		} 		 	

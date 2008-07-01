@@ -1230,7 +1230,7 @@ mediaSource.prototype =
 	 * (for media_url?t=ntp_start/ntp_end url request format
      */  
     parseURLDuration : function(){	 	
-        js_log('get duration for:' + this.uri);	 		 	 
+        //js_log('get duration for:' + this.uri);	 		 	 
         var index_time_val = false;		 		 
         if(this.uri.indexOf('?t=')!=-1)index_time_val='?t=';
         if(this.uri.indexOf('&t=')!=-1)index_time_val='&t=';
@@ -1268,7 +1268,7 @@ mediaSource.prototype =
     	//@@todo if media is on the same server as the javascript we can issue a HEAD request and read the mime type of the media... 
     	// (this will detect media mime type independently of the url name) 
     	//http://www.jibbering.com/2002/4/httprequest.html (this should be done by extending jquery's ajax objects) 
-        switch(uri.substr(uri.lastIndexOf('.'))){
+        switch(uri.substr(uri.lastIndexOf('.'),4)){
         	case '.flv':return 'video/x-flv';break;
         	case '.ogg':return 'video/ogg';break;     
         	case '.anx':return 'video/annodex';break;
@@ -1451,12 +1451,16 @@ embedVideo.prototype = {
             js_log('innerHTML: ' + element.innerHTML);
 	        this.user_missing_plugin_html=element.innerHTML;
 	    } 
+
+		//auto select player based on prefrence or default order	    
+        embedTypes.players.autoSelectPlayer(this.media_element.selected_source.mime_type);
 	    /*
+	    * @@TODO lazy load plugin types
 	    * override all relevant exported functions with the {embed_type} Object 
 	    * place the base functions in parent.{function name}
 	    */
-        embedTypes.players.autoSelectPlayer(this.media_element.selected_source.mime_type);
-
+		this.inheritEmbedObj();
+		
 	    if(embedTypes.players.selected_player){
             js_log("PLAYBACK TYPE: "+embedTypes.players.selected_player.library);
 	    }
@@ -1465,8 +1469,8 @@ embedVideo.prototype = {
 	   return this;
 	},
     doEmbedHTML:function()
-    {
-        this.inheritEmbedObj();
+    {     
+    	this.inheritEmbedObj();   
         var embed_code = this.getEmbedHTML();
         js_log(embed_code);
         this.innerHTML = embed_code;
@@ -1745,7 +1749,7 @@ embedVideo.prototype = {
         var select_code=this.getDLlist(function(index, source)
         {
             var default_player = embedTypes.players.defaultPlayer(source.getMIMEType());
-            var source_select_code = 'document.getElementById(\''+_this.id+'\').closeDisplayedHTML(); document.getElementById(\''+_this.id+'\').media_element.selectSource(\''+index+'\');';
+            var source_select_code = 'ocment.getElementById(\''+_this.id+'\').closeDisplayedHTML(); document.getElementById(\''+_this.id+'\').media_element.selectSource(\''+index+'\');';
             var player_code = embedTypes.getPlayerSelectList(source.getMIMEType(), index, source_select_code);
             return '<a href="#" onClick="' + source_select_code + 'embedTypes.players.selectPlayer(\''+default_player.id+'\',\''+source.getMIMEType()+'\'); return false;">'
                 + source.getTitle()+' - ' + default_player.getName() + '</a> '
@@ -1761,6 +1765,9 @@ embedVideo.prototype = {
         });
         this.displayHTML(select_code);
 	},
+	/*
+	 * Its pretty confusing to merge getDLlist with selectPlaybackMethod
+	 */
 	getDLlist:function(transform_function){
 		var out='<b style="color:white;">'+getMsg('download_from')+' '+parseUri(this.src).queryKey['t']+'</b><br>';
 		out+='<span style="color:white"><blockquote>';
@@ -1977,12 +1984,17 @@ embedVideo.prototype = {
 				'</div>';
 	},
 	getEmbedHTML:function(){
-    	var controls_html ='';
-		if(this.controls){
-			//all that is supported when we don't know the js hooks is "stop"
-			controls_html = this.getControlsHtml('stop');
+		//double check we have a player and associated getEmbedObj html
+		if(!embedTypes.players.selected_player){
+			return this.getPluginMissingHTML();		
+		}else{
+	    	var controls_html ='';
+			if(this.controls){
+				//all that is supported when we don't know the js hooks is "stop"
+				controls_html = this.getControlsHtml('stop');
+			}
+	        return this.wrapEmebedContainer( this.getEmbedObj() ) + controls_html;
 		}
-        return this.wrapEmebedContainer( this.getEmbedObj() ) + controls_html;
     },    
 	getControlsHtml : function(type){
 		var id = (this.pc)?this.pc.pp.id:this.id;
