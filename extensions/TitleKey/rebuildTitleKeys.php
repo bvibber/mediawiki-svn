@@ -1,6 +1,6 @@
 <?php
 
-require_once "../../maintenance/commandLine.inc";
+require_once dirname( dirname( dirname( __FILE__ ) ) ) . "/maintenance/commandLine.inc";
 
 // In case we want to do offline initialization...
 if( !class_exists( 'TitleKey' ) ) {
