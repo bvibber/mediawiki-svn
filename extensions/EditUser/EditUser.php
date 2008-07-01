@@ -23,3 +23,5 @@ $wgAutoloadClasses['EditUser'] = $dir . 'EditUser_body.php';
 $wgSpecialPages['EditUser'] = 'EditUser';
 $wgAvailableRights[] = 'edituser';
 $wgAvaliableRights[] = 'edituser-exempt';
+$wgSpecialPageGroups['EditUser'] = 'users';
+

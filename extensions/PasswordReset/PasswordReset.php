@@ -23,6 +23,8 @@ $wgAutoloadClasses['Disabledusers'] = dirname(__FILE__) . '/PasswordReset_Disabl
 $wgSpecialPages['PasswordReset'] = 'PasswordReset';
 $wgSpecialPages['Disabledusers'] = 'Disabledusers';
 $wgExtensionMessagesFiles['PasswordReset'] = dirname( __FILE__ ) . '/PasswordReset.i18n.php';
+$wgSpecialPageGroups['PasswordReset'] = 'users';
+$wgSpecialPageGroups['Disabledusers'] = 'users';
 
 $wgExtensionFunctions[] = 'efPasswordReset';
 function efPasswordReset() {
