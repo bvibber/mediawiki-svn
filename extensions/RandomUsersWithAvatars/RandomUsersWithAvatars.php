@@ -18,7 +18,8 @@ $wgExtensionCredits['parserhook'][] = array(
 	'version' => '1.0',
 	'author' => 'Wikia New York Team',
 	'description' => 'Adds <tt>&lt;randomuserswithavatars&gt;</tt> tag to display the avatars of randomly chosen users',
-	'url' => 'http://www.mediawiki.org/wiki/Extension:RandomUsersWithAvatars'
+	'url' => 'http://www.mediawiki.org/wiki/Extension:RandomUsersWithAvatars',
+	'descriptionmsg' => 'random-users-avatars-desc',
 );
 
 $dir = dirname(__FILE__) . '/';

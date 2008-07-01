@@ -12,6 +12,7 @@ $messages = array();
  */
 $messages['en'] = array(
 	'random-users-avatars-title' => 'Meet the Community',
+	'random-users-avatars-desc'  => 'Adds <tt>&lt;randomuserswithavatars&gt;</tt> tag to display the avatars of randomly chosen users',
 );
 
 /** Finnish (Suomi)
