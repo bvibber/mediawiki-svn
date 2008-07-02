@@ -291,11 +291,16 @@ mediaPlayers.prototype =
     players : null,
     selected_player : null,
     preference : null,
+
+    default_players : null,
     
     init : function()
     {
         this.players = new Array();
         this.loadPreferences();
+        this.default_players = new Object();
+        this.default_players['video/x-flv']= ['flowplayer','vlc'];
+        this.default_players['video/annodex']=['cortado','vlc'];        
     },
     addPlayer : function(player)
     {
@@ -317,15 +322,21 @@ mediaPlayers.prototype =
     defaultPlayer : function(mime_type)
     {
         var mime_players = this.getMIMETypePlayers(mime_type);
-        var to_return = null;
         if(mime_players.length)
         {
-            to_return = mime_players[0];
+            // check for prior preference for this mime type
             for(var i in mime_players)
                 if(mime_players[i].id==this.preference[mime_type])
-                    to_return = mime_players[i];
+                    return mime_players[i];
+            // otherwise use the hard-coded preference list
+            for(var d in this.default_players)
+                for(var i in mime_players)
+                    if(mime_players[i].id==this.default_players[d])
+                        return mime_players[i];
+            // otherwise just return the first compatible player
+            return mime_players[0];
         }
-        return to_return;
+        return null;
     },
     autoSelectPlayer : function(mime_type)
     {
@@ -1160,8 +1171,8 @@ mediaSource.prototype =
     marked_default:null,
     /** Start offset of the requested segment */
     start_offset:null,
-    /** Duration of the requested segment (null if not known) */
-    duration:null,
+    /** Duration of the requested segment (NaN if not known) */
+    duration:NaN,
     
     start_ntp:null,
     end_ntp:null,
@@ -1254,10 +1265,6 @@ mediaSource.prototype =
 	   	 	this.start_offset=0;
         }
 	},
-  	/* get the duration in ntp format */
-	getDurationNTP:function(){
-		return seconds2ntp(this.getDuration()/1000);
-	},
     /** Attempts to detect the type of a media file based on the URI.
         @param {String} uri URI of the media file.
         @returns The guessed MIME type of the file.
@@ -1294,6 +1301,8 @@ mediaElement.prototype =
     sources:null,
     /** Selected mediaSource element. */
     selected_source:null,
+    thumbnail:null,
+    linkback:null,
     
     /** @private */
     init:function(video_element)
@@ -1302,8 +1311,13 @@ mediaElement.prototype =
         
         js_log('Initializing mediaElement...');
         this.sources = new Array();
+        this.thumbnail = mv_default_thumb_url;
         // Process the <video> element
         this.tryAddSource(video_element);
+        if(video_element.hasAttribute('thumbnail'))
+            this.thumbnail=video_element.getAttribute('thumbnail');
+        if(video_element.hasAttribute('poster'))
+            this.thumbnail=video_element.getAttribute('poster');
         // Process all inner <source> elements
         inner_source_elements = video_element.getElementsByTagName('source');
         $j.each(inner_source_elements, function(inx, inner_source)
@@ -1346,20 +1360,8 @@ mediaElement.prototype =
     */
     getThumbnailURL:function()
     {
-        return mv_default_thumb_url;
-/*        				//set the thumbnail: 
-				$j.each(_this.roe_data.getElementsByTagName('img'), function(inx, n){
-					if(n.getAttribute("id")=="stream_thumb"){
-						js_log('set thumb to '+n.getAttribute("src"));
-						_this['thumbnail'] = n.getAttribute("src");	
-					}*/
+        return this.thumbnail;
     },
-/*        				//set the linkback:
-				$j.each(_this.roe_data.getElementsByTagName('link'), function(inx, n){
-					if(n.getAttribute('id')=='html_linkback'){
-						js_log('set linkback to '+n.getAttribute("href"));
-						_this['linkback'] = n.getAttribute('href');
-					}*/
     /** Checks whether there is a stream of a specified MIME type.
         @param {String} mime_type MIME type to check.
         @type {BooleanPrimitive}.
@@ -1394,7 +1396,21 @@ mediaElement.prototype =
         {
 			_this.tryAddSource(source);
         });
-    },
+        //set the thumbnail:
+		$j.each(roe_data.getElementsByTagName('img'), function(inx, n){
+            if(n.getAttribute("id")=="stream_thumb"){
+                js_log('set thumb to '+n.getAttribute("src"));
+                _this['thumbnail'] = n.getAttribute("src");	
+            }
+        })
+        //set the linkback:
+		$j.each(_this.roe_data.getElementsByTagName('link'), function(inx, n){
+            if(n.getAttribute('id')=='html_linkback'){
+                js_log('set linkback to '+n.getAttribute("href"));
+                _this['linkback'] = n.getAttribute('href');
+            }
+        })
+    }
 };
 
 /** base embedVideo object
@@ -1468,6 +1484,14 @@ embedVideo.prototype = {
 	   //return this object:	   
 	   return this;
 	},
+    getDuration:function(){
+        return this.media_element.selected_source.duration;
+    },
+  	/* get the duration in ntp format */
+	getDurationNTP:function(){
+		return seconds2ntp(this.getDuration()/1000);
+	},
+
     doEmbedHTML:function()
     {     
     	this.inheritEmbedObj();   
@@ -1563,13 +1587,14 @@ embedVideo.prototype = {
 	    var style_atr='';
 	    //if(this.class)class_atr = ' class="'+this.class+'"';
 	    //if(this.style)style_atr = ' style="'+this.style+'"';
-	    //    else style_atr = 'overflow:hidden;height:'+this.height+'px;width:'+this.width+'px;';   
-		if(!this.thumbnail)this.thumbnail = mv_default_thumb_url;
+	    //    else style_atr = 'overflow:hidden;height:'+this.height+'px;width:'+this.width+'px;';
+        var thumbnail = this.media_element.getThumbnailURL();
+
 	    //put it all in the div container dc_id
 	    thumb_html+= '<div id="dc_'+this.id+'" style="position:relative;'+
 	    	' overflow:hidden; top:0px; left:0px; width:'+this.width+'px; height:'+this.height+'px; z-index:0;">'+
 	        '<img width="'+this.width+'" height="'+this.height+'" style="position:relative;width:'+this.width+';height:'+this.height+'"' +
-	        ' id="img_thumb_'+this.id+'" src="' + this.thumbnail + '">';
+	        ' id="img_thumb_'+this.id+'" src="' + thumbnail + '">';
 
 		js_log("PLAY BUTTON: " + this.play_button);
 	    if(this.play_button==true)
@@ -1622,7 +1647,6 @@ embedVideo.prototype = {
 						src:mv_embed_path + 'images/vid_embed_sm.png' }));
 			thumb_html+='</a></div>';
 			//make link absolute (if it was not already)
-			var thumbnail = this.media_element.getThumbnailURL();
 			if(thumbnail.substring(0,1)=='/'){
 				eURL = parseUri(mv_embed_path);
 				embed_thumb_html = eURL.protocol + '://' + eURL.host + thumbnail;			
@@ -1749,7 +1773,7 @@ embedVideo.prototype = {
         var select_code=this.getDLlist(function(index, source)
         {
             var default_player = embedTypes.players.defaultPlayer(source.getMIMEType());
-            var source_select_code = 'ocment.getElementById(\''+_this.id+'\').closeDisplayedHTML(); document.getElementById(\''+_this.id+'\').media_element.selectSource(\''+index+'\');';
+            var source_select_code = 'document.getElementById(\''+_this.id+'\').closeDisplayedHTML(); document.getElementById(\''+_this.id+'\').media_element.selectSource(\''+index+'\');';
             var player_code = embedTypes.getPlayerSelectList(source.getMIMEType(), index, source_select_code);
             return '<a href="#" onClick="' + source_select_code + 'embedTypes.players.selectPlayer(\''+default_player.id+'\',\''+source.getMIMEType()+'\'); return false;">'
                 + source.getTitle()+' - ' + default_player.getName() + '</a> '
