@@ -8,17 +8,19 @@ if (!defined('MEDIAWIKI')) {
 class WhatIsMyIP extends SpecialPage {
 	function  __construct() {
 		parent::__construct('WhatIsMyIP' /*class*/);
-	} 
+	}
 
 	function WhatIsMyIP(){
 		SpecialPage::SpecialPage( 'WhatIsMyIP', 'whatismyip' );
-		wfLoadExtensionMessages('WhatIsMyIP');
 	}
 
 	function execute(){
 		global $wgOut;
+
+		wfLoadExtensionMessages('WhatIsMyIP');
+
 		$wgOut->setPageTitle(wfMsg('whatismyip'));
-		// $wgOut->addWikiText( wfMsg('whatismyip-username'). " $user" );	 
+		// $wgOut->addWikiText( wfMsg('whatismyip-username'). " $user" );
 		$ip = wfGetIP();
 		$wgOut->addWikiText( wfMsg('whatismyip-out'). " $ip" );
 	}
