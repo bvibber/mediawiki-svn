@@ -6,12 +6,14 @@
 */
 
 $messages = array();
-
+	
 /** English
  * @author Ryan Schmidt
  */
 $messages['en'] = array(
 	'grouppermissions' => 'Manage Group Permissions',
+	'sortpermissions' => 'Sort Permissions',
+	'removeunusedgroups' => 'Remove Unused Groups',
 	'grouppermissions-desc' => 'Manage group permissions via a special page',
 	'grouppermissions-desc2' => 'Extended permissions system',
 	'grouppermissions-header' => 'You may use this page to change the underlying permissions of the various usergroups',
@@ -46,7 +48,14 @@ $messages['en'] = array(
 	'grouppermissions-log-header' => 'This page tracks changes to the underlying permissions of user groups',
 	'grouppermissions-needjs' => 'Warning: JavaScript is disabled on your browser. Some features may not work!',
 	'grouppermissions-sp-header' => 'You may use this page to manage how permissions are sorted and add new permissions',
-
+	'grouppermissions-sp-sort' => 'Sort Permissions',
+	'grouppermissions-sp-save' => 'Save',
+	'grouppermissions-sp-success' => 'Permissions have been successfully sorted',
+	'grouppermissions-sp-addtype' => 'Add Sort Type',
+	'grouppermissions-sp-addperm' => 'Add Permission',
+	'grouppermissions-rug-header' => 'You may use this page to remove users from unused (deleted) groups.',
+	'grouppermissions-rug-success' => 'Successfully removed users from unused groups!',
+	'grouppermissions-rug-confirm' => 'Remove users from unused groups',
 	'right-viewsource' => 'View wiki source of protected pages',
 	'right-raw' => 'View raw pages',
 	'right-render' => 'View rendered pages without navigation',
@@ -416,4 +425,3 @@ $messages['te'] = array(
 	'grouppermissions-comment'  => 'వ్యాఖ్య:',
 	'right-edit'                => 'పేజీలను మార్చడం',
 );
-

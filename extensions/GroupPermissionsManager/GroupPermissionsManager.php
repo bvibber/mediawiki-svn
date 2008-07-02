@@ -14,16 +14,16 @@ $wgExtensionCredits['specialpage'][] = array(
 	'name'           => 'GroupPermissions Manager',
 	'author'         => 'Ryan Schmidt',
 	'url'            => 'http://www.mediawiki.org/wiki/Extension:GroupPermissions_Manager',
-	'version'        => '3.0',
+	'version'        => '3.1',
 	'description'    => 'Manage group permissions via a special page',
 	'descriptionmsg' => 'grouppermissions-desc',
 );
 $wgAutoloadClasses['GroupPermissions'] = dirname(__FILE__) . '/GroupPermissionsManager_body.php';
-#$wgAutoloadClasses['RemoveUnusedGroups'] = dirname(__FILE__) . '/RemoveUnusedGroups.php';
-#$wgAutoloadClasses['SortPermissions'] = dirname(__FILE__) . '/SortPermissions.php';
+$wgAutoloadClasses['RemoveUnusedGroups'] = dirname(__FILE__) . '/RemoveUnusedGroups.php';
+$wgAutoloadClasses['SortPermissions'] = dirname(__FILE__) . '/SortPermissions.php';
 $wgSpecialPages['GroupPermissions'] = 'GroupPermissions';
-#$wgSpecialPages['RemoveUnusedGroups'] = 'RemoveUnusedGroups';
-#$wgSpecialPages['SortPermissions'] = 'SortPermissions';
+$wgSpecialPages['RemoveUnusedGroups'] = 'RemoveUnusedGroups';
+$wgSpecialPages['SortPermissions'] = 'SortPermissions';
 $wgExtensionMessagesFiles['GroupPermissions'] = dirname(__FILE__) . '/GroupPermissionsManager.i18n.php';
 
 $wgLogTypes[] = 'gpmanager';
@@ -34,8 +34,8 @@ $wgLogActions['gpmanager/gpmanager'] = 'grouppermissions-log-entry';
 $wgLogHeaders['gpmanager'] = 'grouppermissions-log-header';
 $wgLogNames['gpmanager'] = 'grouppermissions-log-name';
 $wgSpecialPageGroups['GroupPermissions'] = 'wiki';
-#$wgSpecialPageGroups['RemoveUnusedGroups'] = 'user';
-#$wgSpecialPageGroups['SortPermissions'] = 'wiki';
+$wgSpecialPageGroups['RemoveUnusedGroups'] = 'users';
+$wgSpecialPageGroups['SortPermissions'] = 'wiki';
 
 ##Permission required to use the 'GroupPermissions' and 'SortPermissions' special page
 ##By default all bureaucrats can
@@ -50,12 +50,12 @@ $wgGroupPermissions['bureaucrat']['grouppermissions'] = true;
 */
 
 $wgExtensionCredits['other'][] = array(
-'name' => 'Permissions++',
-'author' => 'Ryan Schmidt',
-'url' => 'http://www.mediawiki.org/wiki/Extension:GroupPermissions_Manager',
-'version' => '1.0',
-'description' => 'Extended permissions system',
-'descriptionmsg' => 'grouppermissions-desc2',
+	'name'           => 'Permissions++',
+	'author'         => 'Ryan Schmidt',
+	'url'            => 'http://www.mediawiki.org/wiki/Extension:GroupPermissions_Manager',
+	'version'        => '1.0',
+	'description'    => 'Extended permissions system',
+	'descriptionmsg' => 'grouppermissions-desc2',
 );
 
 $wgHooks['UserGetRights'][] = 'efGPManagerRevokeRights';
@@ -98,9 +98,12 @@ $wgGPManagerSort['tech'] = array( 'bot', 'purge', 'minoredit', 'nominornewtalk',
 'emailconfirmed', 'noratelimit' );
 $wgGPManagerSort['misc'] = array(); //all rights added by extensions that don't have a sort clause get put here
 
-##Load the config file, if it exists. This must be the last thing to run in the startup part
+##Load the config files, if they exist. This must be the last thing to run in the startup part
 if(file_exists(dirname(__FILE__) . "/config/GroupPermissions.php") ) {
 	require_once(dirname(__FILE__) . "/config/GroupPermissions.php");
+}
+if(file_exists(dirname(__FILE__) . "/config/SortPermissions.php")) {
+	require_once(dirname(__FILE__) . "/config/SortPermissions.php");
 }
 
 //Revoke the rights that are set to "never"
@@ -170,7 +173,7 @@ function efGPManagerExtendedPermissionsGrant($title, $user, $action, &$result) {
 		}
 	}
 	//hack for the UserCanRead method
-	$res = efGPManagerExtendedPermissionsRevoke($title, $user, $action, &$result);
+	$res = efGPManagerExtendedPermissionsRevoke($title, $user, $action, $result);
 	if(!$res) {
 		$result = false;
 		//yay epic hacking! If I can't choose to make it return badaccess-group0... I'll simply force it to

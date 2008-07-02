@@ -20,10 +20,11 @@ class GroupPermissions extends SpecialPage {
 
 	/**
 	* Main execution function
+	* @param $par the target group to act upon
 	*/
 	function execute( $par ) {
 		global $wgRequest, $wgOut, $wgUser;
-
+		
 		if( !$wgUser->isAllowed( 'grouppermissions' ) ) {
 			$wgOut->permissionRequired( 'grouppermissions' );
 			return;
@@ -35,7 +36,7 @@ class GroupPermissions extends SpecialPage {
 		//display the search form and define an array of the usergroups and an array of all current permissions
 		global $wgGroupPermissions;
 		$this->target = $par ? $par : $wgRequest->getText( 'groupsearch', '');
-
+		
 		foreach($wgGroupPermissions as $group => $permissions) {
 			$this->groupslist[] = $group;
 			foreach($permissions as $right => $value) {
@@ -48,7 +49,7 @@ class GroupPermissions extends SpecialPage {
 		sort($this->permissionslist);
 
 		$wgOut->addHtml( $this->makeSearchForm() );
-
+				
 		//test if we have a valid target to act upon
 		if( $this->target != '') {
 			//ok, we do. Now, what action was just being performed?
@@ -100,6 +101,7 @@ class GroupPermissions extends SpecialPage {
 
 	/**
 	* Produce a form to search for a group
+	* @return $form the HTML of the form
 	*/
 	function makeSearchForm() {
 		$thisTitle = Title::makeTitle( NS_SPECIAL, $this->getName() );
@@ -114,6 +116,7 @@ class GroupPermissions extends SpecialPage {
 
 	/**
 	* Produce a form for changing group permissions
+	* @return $form the HTML of the form
 	*/
 	function makeChangeForm() {
 		//Returns the checkbox toggles for the given group.
@@ -121,7 +124,7 @@ class GroupPermissions extends SpecialPage {
 		$form = "<br /><div>\n";
 		$form .= "<form method=\"post\" action=\"".$thisTitle->getLocalUrl()."\" id=\"preferences\">\n";
 		//get the rows of checkboxes, specify that we should get values for them as well
-		$form .= $this->createCheckboxes( $form, true );
+		$this->createCheckboxes( $form, true );
 		$form .= "<br />\n";
 		$form .= "<label for=\"comment\">".wfMsg('grouppermissions-comment')."</label> ";
 		$form .= "<input type=\"text\" name=\"comment\" id=\"comment\" size=\"45\" />\n";
@@ -131,9 +134,10 @@ class GroupPermissions extends SpecialPage {
 		$form .= "</form>\n</div>\n";
 		return $form;
 	}
-
+	
 	/**
 	* Produce a form to delete a group
+	* @return $form the HTML of the form
 	*/
 	function makeDeleteForm() {
 		//sanity check, make sure that we aren't showing this for the automatic groups
@@ -152,17 +156,18 @@ class GroupPermissions extends SpecialPage {
 		$form .= "</form>\n</fieldset>\n";
 		return $form;
 	}
-
+	
 	/**
 	* Produce a form to add a group
+	* @return $form the HTML of the form
 	*/
 	function makeAddForm() {
 		//make a new group and return all toggles
 		$thisTitle = Title::makeTitle( NS_SPECIAL, $this->getName() );
 		$form = "<br /><div>\n";
 		$form .= "<form method=\"post\" action=\"".$thisTitle->getLocalUrl()."\" id=\"preferences\">\n";
-		//get the rows of checkboxes, specify that we should not get values for them
-		$form .= $this->createCheckboxes( $form, false );
+		//get the rows of checkboxes, specify that we should not get values for them 
+		$this->createCheckboxes( $form, false );
 		$form .= "<br />\n";
 		$form .= "<label for=\"addcomment\">".wfMsg('grouppermissions-comment')."</label> ";
 		$form .= "<input type=\"text\" name=\"addcomment\" id=\"addcomment\" size=\"45\" />\n";
@@ -174,7 +179,10 @@ class GroupPermissions extends SpecialPage {
 	}
 
 	/**
-	* Add logging entries for the specified action if logging is enabled
+	* Add logging entries for the specified action
+	* @param $type 'add', 'change', or 'delete',
+	* @param $comment the log comment
+	* @return bool $s the success of the operation
 	*/
 	function addLogItem( $type, $comment = '' ) {
 		$target = $this->target;
@@ -189,8 +197,9 @@ class GroupPermissions extends SpecialPage {
 
 	/**
 	* Make the sorted tables of radio buttons and permissions
-	* @param form the form that it is adding the radio buttons to.
-	* @param getcurrentvalues is used for determining if it should set the radio buttons at the current permissions
+	* @param $form the form that it is adding the radio buttons to.
+	* @param $getcurrentvalues is used for determining if it should set the radio buttons at the current permissions
+	* @return bool the success of the operation
 	*/
 	function createCheckboxes( &$form, $getcurrentvalues ) {
 		global $wgGroupPermissions, $wgGPManagerSortTypes, $wgGPManagerSort, $wgGPManagerNeverGrant;
@@ -207,7 +216,7 @@ class GroupPermissions extends SpecialPage {
 		foreach($wgGPManagerSortTypes as $type) {
 			$sort[$type] = array();
 		}
-
+		
 		foreach($this->permissionslist as $right) {
 			$s = false;
 			foreach($wgGPManagerSortTypes as $type) {
@@ -254,22 +263,25 @@ class GroupPermissions extends SpecialPage {
 				}
 				$form .= "</td></tr>\n";
 			}
-			$form .= "\n</table></fieldset>\n";
+			$form .= "</table></fieldset>\n";
 		}
+		return true;
 	}
-
+	
 	/**
 	* Write the php file
+	* @param $type add, delete, or change - the type of the post
+	* @return bool success of the write
+	* @private
 	*/
-	function writeFile( $type ) {
+	private function writeFile( $type ) {
 		//can we write the file?
 		if(!is_writable( dirname(__FILE__) . "/config" )) {
 			echo( "<h2>Cannot write config file, aborting</h2>
-
+			
 			<p>In order to use this extension, you need to make the /config subdirectory of this extension
-			writable by the webserver (eg, if you have this extension installed in /extensions/GPManager,
-			you need to make /extensions/GPManager/config writable by the webserver.</p>
-
+			writable by the webserver.</p>
+			
 			<p>Make the necessary changes, then refresh this page to try again</p>" );
 			die( 1 );
 		}
@@ -282,7 +294,7 @@ class GroupPermissions extends SpecialPage {
 			}
 		}
 		$grouppermissions = '<?php
-##### This file was automatically generated by Special:Grouppermissions. When changing group
+##### This file was automatically generated by Special:GroupPermissions. When changing group
 ##### permissions, please do so HERE instead of LocalSettings.php or anywhere else. If you
 ##### set permissions elsewhere, changing them here may not produce the desired results.
 $wgGroupPermissions = array();
@@ -307,7 +319,7 @@ $wgGPManagerNeverGrant = array();';
 				}
 			}
 		}
-
+		
 		if($type == 'add') {
 			//add the new group and its permissions
 			foreach($_POST as $key => $value) {
@@ -318,7 +330,7 @@ $wgGPManagerNeverGrant = array();';
 					}
 				}
 		}
-
+		
 		//let's iterate through the never grants now
 		if($wgGPManagerNeverGrant === array()) {
 			foreach($wgGroupPermissions as $group => $permissions) {
@@ -376,7 +388,7 @@ $wgGPManagerNeverGrant = array();';
 				$grouppermissions .= "\n\$wgGPManagerNeverGrant['".$group."'] = ".$str.";";
 			}
 		}
-
+		
 		$grouppermissions = str_replace( "\r\n", "\n", $grouppermissions );
 		chdir( dirname(__FILE__) . "/config" );
 		$f = fopen( "GroupPermissions.php", 'wt' );
@@ -390,7 +402,14 @@ $wgGPManagerNeverGrant = array();';
 			return false;
 		}
 	}
-
+	
+	/**
+	* Make a radio button with label
+	* @param $right the permission to make the radio for
+	* @param $value can be 'true', 'false' or 'never'
+	* @param $checked whether to check this radio by default
+	* @return $input the HTML of the input and label tags
+	*/
 	function makeRadio( $right = '', $value = '', $checked = false ) {
 		if($checked) {
 			$input = "<input type=\"radio\" name=\"right-{$right}\" id=\"{$right}-{$value}\" class=\"{$value}\" value=\"{$value}\" checked=\"checked\" />";
