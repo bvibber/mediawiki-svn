@@ -77,6 +77,25 @@ $messages['bg'] = array(
 	'right-edit'               => 'редактиране на страници',
 );
 
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
+$messages['eo'] = array(
+	'grouppermissions-search'        => 'Grupo:',
+	'grouppermissions-dologin'       => 'Salutnomo',
+	'grouppermissions-dosearch'      => 'Ek',
+	'grouppermissions-searchlabel'   => 'Serĉi Grupon',
+	'grouppermissions-deletelabel'   => 'Forigi Grupon',
+	'grouppermissions-add'           => 'Aldoni grupon',
+	'grouppermissions-addsuccess'    => '$1 estis sukcese aldonita',
+	'grouppermissions-deletesuccess' => '$1 estis sukcese forigita',
+	'grouppermissions-true'          => 'Vera',
+	'grouppermissions-false'         => 'Falsa',
+	'grouppermissions-never'         => 'Neniam',
+	'grouppermissions-log-delete'    => 'forigis grupon "$2"',
+	'right-edit'                     => 'Redaktu paĝojn',
+);
+
 /** French (Français)
  * @author Grondin
  */
@@ -316,6 +335,23 @@ $messages['no'] = array(
 	'right-recentchanges'            => 'Vise siste endringer',
 	'right-edittalk'                 => 'Redigere diskusjonssider',
 	'right-edit'                     => 'Redigere sider',
+);
+
+/** Slovak (Slovenčina)
+ * @author Helix84
+ */
+$messages['sk'] = array(
+	'right-viewsource'    => 'Zobraziť zdrojový text chránených stránok',
+	'right-raw'           => 'Zobraziť nespracované stránky',
+	'right-render'        => 'Zobraziť vykreslené stránky bez navigácie',
+	'right-info'          => 'Zobraziť informácie o stránke',
+	'right-credits'       => 'Zobraziť autorov stránky',
+	'right-history'       => 'Zobraziť histórie stránok',
+	'right-search'        => 'Hľadať na wiki',
+	'right-contributions' => 'Zobraziť stránky príspevkov',
+	'right-recentchanges' => 'Zobraziť posledné zmeny',
+	'right-edittalk'      => 'Upraviť diskusné stránky',
+	'right-edit'          => 'Upravovať stránky (ktoré nie sú diskusné stránky)',
 );
 
 /** Swedish (Svenska)

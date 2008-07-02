@@ -35,6 +35,13 @@ $messages['nl'] = array(
 	'wikitextloggedinout-desc' => 'Twee parserhooks: <tt>&lt;loggedin&gt;</tt> en <tt>&lt;loggedout&gt;</tt> om andere tekst weer te geven afhankelijk van de aanmeldstatus van een gebruiker',
 );
 
+/** Slovak (Slovenčina)
+ * @author Helix84
+ */
+$messages['sk'] = array(
+	'wikitextloggedinout-desc' => 'Dva prípojné body syntaktického analyzátora, <tt>&lt;loggedin&gt;</tt> a <tt>&lt;loggedout&gt;</tt> na zobrazenie odlišného textu v závslosti na stave prihlásenia používateľa',
+);
+
 /** Swedish (Svenska)
  * @author Boivie
  */

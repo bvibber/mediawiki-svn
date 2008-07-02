@@ -40,6 +40,20 @@ Uploaded file should contain page name and optional reason separated by a "|" ch
 	'deletebatch-no-page' => 'Please specify at least one page to delete OR choose a file containing page list.',
 );
 
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
+$messages['eo'] = array(
+	'deletebatch-button'           => 'FORIGI',
+	'deletebatch-here'             => '<b>ĉi tie</b>',
+	'deletebatch-caption'          => 'Paĝlisto',
+	'deletebatch-or'               => '<b>AŬ</b>',
+	'deletebatch-from-file'        => 'de dosierlisto',
+	'deletebatch-from-form'        => 'de paĝo',
+	'deletebatch-success-subtitle' => 'por $1',
+	'deletebatch-select-yourself'  => 'vi',
+);
+
 /** Finnish (Suomi)
  * @author Jack Phoenix
  */
@@ -101,6 +115,38 @@ Un fichier importé pourra contenir un nom de la page et un motif facultatif sé
 	'deletebatch-no-page'              => 'Veuillez indiquer au moins une page à supprimer OU un fichier donné contenant une liste de pages.',
 );
 
+/** Galician (Galego)
+ * @author Toliño
+ */
+$messages['gl'] = array(
+	'deletebatch'                      => 'Borrar un conxunto de páxinas',
+	'deletebatch-desc'                 => '[[Special:DeleteBatch|Borrar un conxunto de páxinas]]',
+	'deletebatch-button'               => 'BORRAR',
+	'deletebatch-here'                 => '<b>aquí</b>',
+	'deletebatch-help'                 => 'Borrar un conxunto de páxinas. Pode levar a cabo un borrado único ou borrar as páxinas listadas nun ficheiro.
+Escolla o usuario que será amosado nos rexistros de borrado.
+O ficheiro cargado debería conter o nome da páxina e unha razón opcional separados por un carácter de barra vertical ("|") en cada liña.',
+	'deletebatch-caption'              => 'Lista da páxina',
+	'deletebatch-title'                => 'Borrar un conxunto',
+	'deletebatch-link-back'            => 'Pode voltar á extensión',
+	'deletebatch-as'                   => 'Executar o guión como',
+	'deletebatch-both-modes'           => 'Por favor, escolla unha páxina específica ou unha lista de páxinas dadas.',
+	'deletebatch-or'                   => '<b>OU</b>',
+	'deletebatch-page'                 => 'Páxinas para ser borradas',
+	'deletebatch-reason'               => 'Razón para o borrado',
+	'deletebatch-processing'           => 'borrando a páxina',
+	'deletebatch-from-file'            => 'da lista de ficheiros',
+	'deletebatch-from-form'            => 'do formulario',
+	'deletebatch-success-subtitle'     => 'de $1',
+	'deletebatch-omitting-nonexistant' => 'Omitindo a páxina $1, que non existe.',
+	'deletebatch-omitting-invalid'     => 'Omitindo a páxina inválida $1.',
+	'deletebatch-file-bad-format'      => 'O ficheiro debería ser un texto sinxelo',
+	'deletebatch-file-missing'         => 'Non se pode ler o ficheiro dado',
+	'deletebatch-select-script'        => 'borrar o guión dunha páxina',
+	'deletebatch-select-yourself'      => 'vostede',
+	'deletebatch-no-page'              => 'Por favor, especifique, polo menos, unha páxina para borrar OU escolla un ficheiro que conteña unha lista de páxinas.',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */
@@ -132,5 +178,15 @@ Het bestand dat u uploadt moet op iedere regel een paginanaam en een reden bevat
 	'deletebatch-select-script'        => "script pagina's verwijderen",
 	'deletebatch-select-yourself'      => 'u',
 	'deletebatch-no-page'              => "Geef tenminste één te verwijderen pagina op of kies een bestand dat de lijst met pagina's bevat.",
+);
+
+/** Swedish (Svenska)
+ * @author M.M.S.
+ */
+$messages['sv'] = array(
+	'deletebatch'        => 'Radera serier av sidor',
+	'deletebatch-desc'   => '[[Special:DeleteBatch|Radera en serie av sidor]]',
+	'deletebatch-button' => 'RADERA',
+	'deletebatch-here'   => '<b>här</b>',
 );
 

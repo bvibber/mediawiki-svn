@@ -517,6 +517,7 @@ $messages['eo'] = array(
 	'configure-section-block'         => 'Forbaroj',
 	'configure-section-proxy'         => 'Prokuriloj',
 	'configure-section-cookie'        => 'Kuketoj',
+	'configure-section-reduction'     => 'Redukto',
 	'configure-section-upload'        => 'Alŝuto',
 	'configure-section-sharedupload'  => 'Kolektiva alŝuto',
 	'configure-section-mime'          => 'MIME-tipoj',

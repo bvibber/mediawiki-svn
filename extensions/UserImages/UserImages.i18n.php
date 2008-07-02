@@ -84,6 +84,15 @@ $messages['gl'] = array(
 	'userimages-noimages' => '$1 non enviou ningunha imaxe.',
 );
 
+/** Hebrew (עברית)
+ * @author Agbad
+ */
+$messages['he'] = array(
+	'userimages-caption'  => 'תמונות שהועלו על ידי $1',
+	'userimages-noname'   => 'לא קיים שם משתמש כזה או שהוא לא סופק.',
+	'userimages-noimages' => 'אין תמונות שהועלו על ידי $1.',
+);
+
 $messages['hsb'] = array(
 	'userimages-caption' => 'Wobrazy wot $1 nahrate',
 	'userimages-noname' => 'Njepłaćiwe wužiwarske mjeno abo njepodate.',

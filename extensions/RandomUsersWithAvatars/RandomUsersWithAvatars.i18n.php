@@ -54,6 +54,14 @@ $messages['nl'] = array(
 	'random-users-avatars-desc'  => 'Voegt de tag <tt>&lt;randomuserswithavatars&gt;</tt> toe om de avatars van willekeurige gebruikers weer te geven',
 );
 
+/** Slovak (Slovenčina)
+ * @author Helix84
+ */
+$messages['sk'] = array(
+	'random-users-avatars-title' => 'Zoznámte sa s komunitou',
+	'random-users-avatars-desc'  => 'Pridáva značku <tt>&lt;randomuserswithavatars&gt;</tt> na zobrazenie fotografií náhodne zvolených používateľov',
+);
+
 /** Swedish (Svenska)
  * @author Boivie
  */

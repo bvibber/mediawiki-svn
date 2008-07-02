@@ -132,6 +132,8 @@ Wenn du Fragen zu diesem Erweiterungs-Verteil-System hast, gehe bitte zur Seite 
  */
 $messages['eo'] = array(
 	'extdist-no-such-extension' => 'Etendilo "$1" ne ekzistas',
+	'extdist-submit-extension'  => 'Kontinui',
+	'extdist-current-version'   => 'Nuna versio (bazo)',
 );
 
 /** French (Français)

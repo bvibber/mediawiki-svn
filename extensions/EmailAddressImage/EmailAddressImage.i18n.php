@@ -49,6 +49,13 @@ $messages['gl'] = array(
 	'emailaddressimage-desc' => 'Engade <tt>&lt;email&gt;</tt> para amosar un enderezo de correo electrónico como unha imaxe',
 );
 
+/** Hebrew (עברית)
+ * @author Agbad
+ */
+$messages['he'] = array(
+	'emailaddressimage-desc' => 'מוסיף תגית <tt>&lt;email&gt;</tt> כדי להציג כתובת אימייל בתמונה',
+);
+
 /** Hindi (हिन्दी)
  * @author Kaustubh
  */

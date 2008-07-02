@@ -69,7 +69,9 @@ $messages['cs'] = array(
  * @author Yekrats
  */
 $messages['eo'] = array(
-	'dplforum-never' => 'Neniam',
+	'dplforum-by'     => 'de',
+	'dplforum-edited' => '  - Laste redaktita',
+	'dplforum-never'  => 'Neniam',
 );
 
 /** French (Français)
