@@ -48,6 +48,7 @@ ZEND_GET_MODULE(wmerrors)
 #endif
 
 PHP_INI_BEGIN()
+	STD_PHP_INI_BOOLEAN("wmerrors.enabled", "0", PHP_INI_ALL, OnUpdateBool, enabled, zend_wmerrors_globals, wmerrors_globals )
 	STD_PHP_INI_ENTRY("wmerrors.message_file", "", PHP_INI_ALL, OnUpdateString, message_file, zend_wmerrors_globals, wmerrors_globals)
 PHP_INI_END()
 
@@ -93,7 +94,7 @@ PHP_MINFO_FUNCTION(wmerrors)
 	php_info_print_table_start();
 	php_info_print_table_row(2, "Custom fatal error pages", "enabled");
 	php_info_print_table_end();
-
+	DISPLAY_INI_ENTRIES();
 }
 
 
@@ -104,7 +105,8 @@ void wmerrors_cb(int type, const char *error_filename, const uint error_lineno, 
 {
 	TSRMLS_FETCH();
 	
-	if ((type != E_ERROR && type != E_CORE_ERROR && type != E_COMPILE_ERROR && type != E_USER_ERROR)
+	if ( !WMERRORS_G(enabled)
+			|| (type != E_ERROR && type != E_CORE_ERROR && type != E_COMPILE_ERROR && type != E_USER_ERROR)
 			|| strncmp(sapi_module.name, "apache", 6)
 			|| WMERRORS_G(recursion_guard))
 	{
@@ -143,14 +145,15 @@ static void wmerrors_show_message(int type, const char *error_filename, const ui
 	}
 
 	/* Open it */
-	stream = php_stream_open_wrapper_ex(WMERRORS_G(message_file), "rb", 
-			ENFORCE_SAFE_MODE | REPORT_ERRORS, NULL, NULL);
+	stream = php_stream_open_wrapper(WMERRORS_G(message_file), "rb", 
+			ENFORCE_SAFE_MODE | REPORT_ERRORS, NULL);
 	if (!stream) {
 		return;
 	}
 	
 	/* Read the contents */
 	message_len = php_stream_copy_to_mem(stream, &message, maxlen, 0);
+	php_stream_close(stream);
 
 	/* Replace some tokens */
 	for (p = message; p < message + message_len; p++) { 

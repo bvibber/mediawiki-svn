@@ -7,7 +7,7 @@ http://pear.php.net/dtd/tasks-1.0.xsd
 http://pear.php.net/dtd/package-2.0
 http://pear.php.net/dtd/package-2.0.xsd">
 <name>wmerrors</name>
-<uri>.</uri>
+<channel>pecl.php.net</channel>
 <summary>Custom fatal error messages</summary>
 <description>Custom fatal error messages</description>
 <lead>
@@ -16,16 +16,16 @@ http://pear.php.net/dtd/package-2.0.xsd">
 	<email>tstarling@wikimedia.org</email>
 	<active>yes</active>
 </lead>
-<date>2008-06-30</date>
+<date>2008-07-02</date>
 <version>
-	<release>1.0</release>
-	<api>0.0.0</api>
+	<release>1.0.0</release>
+	<api>1.0.0</api>
 </version>
 <stability>
 	<release>beta</release>
-	<api>stable</api>
+	<api>beta</api>
 </stability>
-<license>.</license>
+<license>Whatever</license>
 <notes>.</notes>
 <contents>
 	<dir name="/">
@@ -40,8 +40,8 @@ http://pear.php.net/dtd/package-2.0.xsd">
 </contents>
 <dependencies>
 	<required>
-		<php><min>0.0.0</min></php>
-		<pearinstaller><min>0.0.0</min></pearinstaller>
+		<php><min>5.0.0</min></php>
+		<pearinstaller><min>1.4.0</min></pearinstaller>
 	</required>
 </dependencies>
 <providesextension>wmerrors</providesextension>

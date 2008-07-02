@@ -25,6 +25,7 @@ ZEND_BEGIN_MODULE_GLOBALS(wmerrors)
 	void (*old_error_cb)(int type, const char *error_filename, const uint error_lineno, const char *format, va_list args);
 	char * message_file;
 	int recursion_guard;
+	int enabled;
 ZEND_END_MODULE_GLOBALS(wmerrors)
 
 
