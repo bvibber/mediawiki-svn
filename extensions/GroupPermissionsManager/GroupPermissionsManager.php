@@ -19,13 +19,13 @@ $wgExtensionCredits['specialpage'][] = array(
 'description' => 'Manage group permissions via a special page',
 'descriptionmsg' => 'grouppermissions-desc',
 );
-$wgAutoloadClasses['GroupPermissions'] = dirname(__FILE__) . '/GPManager_body.php';
+$wgAutoloadClasses['GroupPermissions'] = dirname(__FILE__) . '/GroupPermissionsManager_body.php';
 #$wgAutoloadClasses['RemoveUnusedGroups'] = dirname(__FILE__) . '/RemoveUnusedGroups.php';
 #$wgAutoloadClasses['SortPermissions'] = dirname(__FILE__) . '/SortPermissions.php';
 $wgSpecialPages['GroupPermissions'] = 'GroupPermissions';
 #$wgSpecialPages['RemoveUnusedGroups'] = 'RemoveUnusedGroups';
 #$wgSpecialPages['SortPermissions'] = 'SortPermissions';
-$wgExtensionMessagesFiles['GroupPermissions'] = dirname(__FILE__) . '/GPManager.i18n.php';
+$wgExtensionMessagesFiles['GroupPermissions'] = dirname(__FILE__) . '/GroupPermissionsManager.i18n.php';
 
 $wgLogTypes[] = 'gpmanager';
 $wgLogActions['gpmanager/add'] = 'grouppermissions-log-add';
@@ -272,4 +272,4 @@ function addScriptFile( $file ) {
 		}
 		$encPath = htmlspecialchars( $path );
 		$this->addScript( "<script type=\"{$wgJsMimeType}\" src=\"$path?$wgStyleVersion\"></script>\n" );
-	}
+}

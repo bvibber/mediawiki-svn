@@ -6,7 +6,7 @@
 */
 
 $messages = array();
-	
+
 /** English
  * @author Ryan Schmidt
  */
@@ -46,7 +46,7 @@ $messages['en'] = array(
 	'grouppermissions-log-header' => 'This page tracks changes to the underlying permissions of user groups',
 	'grouppermissions-needjs' => 'Warning: JavaScript is disabled on your browser. Some features may not work!',
 	'grouppermissions-sp-header' => 'You may use this page to manage how permissions are sorted and add new permissions',
-	
+
 	'right-viewsource' => 'View wiki source of protected pages',
 	'right-raw' => 'View raw pages',
 	'right-render' => 'View rendered pages without navigation',

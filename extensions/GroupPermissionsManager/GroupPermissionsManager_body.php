@@ -23,7 +23,7 @@ class GroupPermissions extends SpecialPage {
 	*/
 	function execute( $par ) {
 		global $wgRequest, $wgOut, $wgUser;
-		
+
 		if( !$wgUser->isAllowed( 'grouppermissions' ) ) {
 			$wgOut->permissionRequired( 'grouppermissions' );
 			return;
@@ -35,7 +35,7 @@ class GroupPermissions extends SpecialPage {
 		//display the search form and define an array of the usergroups and an array of all current permissions
 		global $wgGroupPermissions;
 		$this->target = $par ? $par : $wgRequest->getText( 'groupsearch', '');
-		
+
 		foreach($wgGroupPermissions as $group => $permissions) {
 			$this->groupslist[] = $group;
 			foreach($permissions as $right => $value) {
@@ -48,7 +48,7 @@ class GroupPermissions extends SpecialPage {
 		sort($this->permissionslist);
 
 		$wgOut->addHtml( $this->makeSearchForm() );
-				
+
 		//test if we have a valid target to act upon
 		if( $this->target != '') {
 			//ok, we do. Now, what action was just being performed?
@@ -131,7 +131,7 @@ class GroupPermissions extends SpecialPage {
 		$form .= "</form>\n</div>\n";
 		return $form;
 	}
-	
+
 	/**
 	* Produce a form to delete a group
 	*/
@@ -152,7 +152,7 @@ class GroupPermissions extends SpecialPage {
 		$form .= "</form>\n</fieldset>\n";
 		return $form;
 	}
-	
+
 	/**
 	* Produce a form to add a group
 	*/
@@ -161,7 +161,7 @@ class GroupPermissions extends SpecialPage {
 		$thisTitle = Title::makeTitle( NS_SPECIAL, $this->getName() );
 		$form = "<br /><div>\n";
 		$form .= "<form method=\"post\" action=\"".$thisTitle->getLocalUrl()."\" id=\"preferences\">\n";
-		//get the rows of checkboxes, specify that we should not get values for them 
+		//get the rows of checkboxes, specify that we should not get values for them
 		$form .= $this->createCheckboxes( $form, false );
 		$form .= "<br />\n";
 		$form .= "<label for=\"addcomment\">".wfMsg('grouppermissions-comment')."</label> ";
@@ -207,7 +207,7 @@ class GroupPermissions extends SpecialPage {
 		foreach($wgGPManagerSortTypes as $type) {
 			$sort[$type] = array();
 		}
-		
+
 		foreach($this->permissionslist as $right) {
 			$s = false;
 			foreach($wgGPManagerSortTypes as $type) {
@@ -257,7 +257,7 @@ class GroupPermissions extends SpecialPage {
 			$form .= "\n</table></fieldset>\n";
 		}
 	}
-	
+
 	/**
 	* Write the php file
 	*/
@@ -265,11 +265,11 @@ class GroupPermissions extends SpecialPage {
 		//can we write the file?
 		if(!is_writable( dirname(__FILE__) . "/config" )) {
 			echo( "<h2>Cannot write config file, aborting</h2>
-			
+
 			<p>In order to use this extension, you need to make the /config subdirectory of this extension
 			writable by the webserver (eg, if you have this extension installed in /extensions/GPManager,
 			you need to make /extensions/GPManager/config writable by the webserver.</p>
-			
+
 			<p>Make the necessary changes, then refresh this page to try again</p>" );
 			die( 1 );
 		}
@@ -307,7 +307,7 @@ $wgGPManagerNeverGrant = array();';
 				}
 			}
 		}
-		
+
 		if($type == 'add') {
 			//add the new group and its permissions
 			foreach($_POST as $key => $value) {
@@ -318,7 +318,7 @@ $wgGPManagerNeverGrant = array();';
 					}
 				}
 		}
-		
+
 		//let's iterate through the never grants now
 		if($wgGPManagerNeverGrant === array()) {
 			foreach($wgGroupPermissions as $group => $permissions) {
@@ -376,7 +376,7 @@ $wgGPManagerNeverGrant = array();';
 				$grouppermissions .= "\n\$wgGPManagerNeverGrant['".$group."'] = ".$str.";";
 			}
 		}
-		
+
 		$grouppermissions = str_replace( "\r\n", "\n", $grouppermissions );
 		chdir( dirname(__FILE__) . "/config" );
 		$f = fopen( "GroupPermissions.php", 'wt' );
@@ -390,7 +390,7 @@ $wgGPManagerNeverGrant = array();';
 			return false;
 		}
 	}
-	
+
 	function makeRadio( $right = '', $value = '', $checked = false ) {
 		if($checked) {
 			$input = "<input type=\"radio\" name=\"right-{$right}\" id=\"{$right}-{$value}\" class=\"{$value}\" value=\"{$value}\" checked=\"checked\" />";
