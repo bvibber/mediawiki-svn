@@ -136,6 +136,13 @@ $messages['hsb'] = array(
 	'profiling-no-data' => 'Žane wotpowědne daty namakane.',
 );
 
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'profiling-ok' => 'OK',
+);
+
 /* Indonesian (IvanLanin) */
 $messages['id'] = array(
 	'profiling' => 'Profilisasi data',
@@ -206,6 +213,13 @@ $messages['lb'] = array(
  */
 $messages['lfn'] = array(
 	'profiling-ok' => 'Oce',
+);
+
+/** Lithuanian (Lietuvių)
+ * @author Tomasdd
+ */
+$messages['lt'] = array(
+	'profiling-data-count' => 'Rezultatas',
 );
 
 /** Malayalam (മലയാളം)

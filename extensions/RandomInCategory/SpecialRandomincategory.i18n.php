@@ -16,6 +16,21 @@ $messages['en'] = array(
 	'randomincategory-submit'         => 'Go',
 );
 
+/** Tarifit (Tarifit)
+ * @author Jose77
+ */
+$messages['rif'] = array(
+	'randomincategory-submit' => 'Raḥ ɣa',
+);
+
+/** Niuean (native name missing)
+ * @author Jose77
+ */
+$messages['niu'] = array(
+	'randomincategory-toolbox' => 'Lau fifili',
+	'randomincategory-submit'  => 'Fano',
+);
+
 /** Afrikaans (Afrikaans)
  * @author Arnobarnard
  */
@@ -203,6 +218,20 @@ $messages['hu'] = array(
 	'randomincategory-nocategory' => '$1 névvel nem létezik kategória vagy üres.',
 	'randomincategory-label'      => 'Kategória:',
 	'randomincategory-submit'     => 'Menj',
+);
+
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'randomincategory-toolbox' => 'Pagina aleatori',
+);
+
+/** Indonesian (Bahasa Indonesia)
+ * @author Rex
+ */
+$messages['id'] = array(
+	'randomincategory-label' => 'Kategori:',
 );
 
 /** Icelandic (Íslenska)

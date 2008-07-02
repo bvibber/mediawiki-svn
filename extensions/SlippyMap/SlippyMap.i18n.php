@@ -68,10 +68,43 @@ $messages['de'] = array(
 	'slippymap_osmtext'         => 'Diese Karte auf OpenStreetMap.org ansehen',
 );
 
+/** French (Français)
+ * @author Grondin
+ * @author Cedric31
+ */
+$messages['fr'] = array(
+	'slippymap_desc'            => 'Autorise l’utilisation de la balise <tt><nowiki>&lt;slippymap&gt;</nowiki></tt> pour afficher une carte glissante d’OpenLayers. Les cartes proviennent de [http://openstreetmap.org openstreetmap.org]',
+	'slippymap_latmissing'      => 'Valeur lat manquante (pour la latitude).',
+	'slippymap_lonmissing'      => 'Valeur lon manquante (pour la longitude).',
+	'slippymap_zoommissing'     => 'Valeur z manquante (pour le niveau du zoom).',
+	'slippymap_longdepreciated' => 'Veuillez utiliser « lon » au lieu de « long » (le paramètre a été renommé).',
+	'slippymap_widthnan'        => 'La largeur (w) ayant pour valeur « $1 » n’est pas un nombre entier correct.',
+	'slippymap_heightnan'       => 'La hauteur (h) ayant pour valeur « $1 » n’est pas un nombre entier correct.',
+	'slippymap_zoomnan'         => 'Le zoom (z) ayant pour valeur « $1 » n’est pas un nombre entier correct.',
+	'slippymap_latnan'          => 'La latitude (lat) ayant pour valeur « $1 » n’est pas un nombre correct.',
+	'slippymap_lonnan'          => 'La longitude (lon) ayant pour valeur « $1 » n’est pas un nombre correct.',
+	'slippymap_widthbig'        => 'La valeur de la largeur (w) ne peut excéder 1000',
+	'slippymap_widthsmall'      => 'La valeur de la largeur (w) ne peut être inférieure à 100',
+	'slippymap_heightbig'       => 'La valeur de la hauteur (h) ne peut excéder 1000',
+	'slippymap_heightsmall'     => 'La valeur de la hauteur (h) ne peut être inférieure à 100',
+	'slippymap_latbig'          => 'La valeur de la latitude (lat) ne peut excéder 90',
+	'slippymap_latsmall'        => 'La valeur de la latitude (lat) ne peut être inférieure à -90',
+	'slippymap_lonbig'          => 'La valeur de la longitude (lon) ne peut excéder 180',
+	'slippymap_lonsmall'        => 'La valeur de la longitude (lon) ne peut être inférieure à -180',
+	'slippymap_zoomsmall'       => 'La valeur du zoom (z) ne peut être négative',
+	'slippymap_zoom18'          => 'La valeur du zoom (z) ne peut excéder 17. Notez que ce crochet d’extension mediawiki dans la couche « osmarender » de OpenStreetMap ne peut aller au-delà du niveau 17 du zoop. La couche Mapnik disponible sur openstreetmap.org, ne peut aller au-delà du niveau 18.',
+	'slippymap_zoombig'         => 'La valeur du zoom (z) ne peut excéder 17.',
+	'slippymap_invalidlayer'    => 'Valeur de « $1 » de la « couche » incorrecte',
+	'slippymap_maperror'        => 'Erreur de carte :',
+	'slippymap_osmtext'         => 'Voyez cette carte sur OpenStreetMap.org',
+	'slippymap_code'            => 'Code Wiki pour le visionnement de cette cate :',
+);
+
 /** Galician (Galego)
  * @author Toliño
  */
 $messages['gl'] = array(
+	'slippymap_desc'            => 'Permite o uso da etiqueta <tt><nowiki>&lt;slippymap&gt;</nowiki></tt> para amosar un mapa slippy. Os mapas son de [http://openstreetmap.org openstreetmap.org]',
 	'slippymap_latmissing'      => 'Falta o valor lat (para a latitude).',
 	'slippymap_lonmissing'      => 'Falta o valor lan (para a lonxitude).',
 	'slippymap_zoommissing'     => 'Falta o valor z (para o nivel do zoom).',
@@ -87,8 +120,22 @@ $messages['gl'] = array(
 	'slippymap_heightsmall'     => 'o valor da altura (h) non pode ser menos de 100',
 	'slippymap_latbig'          => 'o valor da latitude (lat) non pode ser máis de 90',
 	'slippymap_latsmall'        => 'o valor da latitude (lat) non pode ser menos de -90',
+	'slippymap_lonbig'          => 'o valor da lonxitude (lon) non pode ser máis de 180',
+	'slippymap_lonsmall'        => 'o valor da lonxitude (lon) non pode ser menos de -180',
+	'slippymap_zoomsmall'       => 'o valor do zoom (z) non pode ser menos de cero',
+	'slippymap_zoom18'          => 'o valor do zoom (z) non pode ser máis de 17. Déase conta de que esta extensión MediaWiki asocia no OpenStreetMap a capa "osmarender", que non vai máis alá do nivel 17 do zoom. A capa Mapnik dispoñible en openstreetmap.org, vai máis aló do nivel 18',
+	'slippymap_zoombig'         => 'o valor do zoom (z) non pode ser máis de 17.',
+	'slippymap_invalidlayer'    => 'Valor \'%1\' da "capa" inválido',
 	'slippymap_maperror'        => 'Erro no mapa:',
+	'slippymap_osmtext'         => 'Vexa este mapa en OpenStreetMap.org',
 	'slippymap_code'            => 'Código wiki para o visionado deste mapa:',
+);
+
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$messages['lb'] = array(
+	'slippymap_code' => 'Wikicode fir dës Kaart ze kucken:',
 );
 
 /** Dutch (Nederlands)
@@ -154,6 +201,37 @@ $messages['no'] = array(
 	'slippymap_code'            => 'Wikikode for denne kartvisningen:',
 );
 
+/** Occitan (Occitan)
+ * @author Cedric31
+ */
+$messages['oc'] = array(
+	'slippymap_desc'            => 'Autoriza l’utilizacion de la balisa <tt><nowiki>&lt;slippymap&gt;</nowiki></tt> per afichar una mapa lisanta d’OpenLayers. Las mapas provenon de [http://openstreetmap.org openstreetmap.org]',
+	'slippymap_latmissing'      => 'Valor lat mancanta (per la latitud).',
+	'slippymap_lonmissing'      => 'Valor lon mancanta (per la longitud).',
+	'slippymap_zoommissing'     => 'Valor z mancanta (pel nivèl del zoom).',
+	'slippymap_longdepreciated' => 'Utilizatz « lon » al luòc de « long » (lo paramètre es estat renomenat).',
+	'slippymap_widthnan'        => "La largor (w) qu'a per valor « $1 » es pas un nombre entièr corrèct.",
+	'slippymap_heightnan'       => "La nautor (h) qu'a per valor « $1 » es pas un nombre entièr corrèct.",
+	'slippymap_zoomnan'         => "Lo zoom (z) qu'a per valor « $1 » es pas un nombre entièr corrèct.",
+	'slippymap_latnan'          => "La latitud (lat) qu'a per valor « $1 » es pas un nombre corrèct.",
+	'slippymap_lonnan'          => "La longitud (lon) qu'a per valor « $1 » es pas un nombre corrèct.",
+	'slippymap_widthbig'        => 'La valor de la largor (w) pòt pas excedir 1000',
+	'slippymap_widthsmall'      => 'La valor de la largor (w) pòt pas èsser inferiora a 100',
+	'slippymap_heightbig'       => 'La valor de la nautor (h) pòt pas excedir 1000',
+	'slippymap_heightsmall'     => 'La valor de la nautor (h) pòt pas èsser inferiora a 100',
+	'slippymap_latbig'          => 'La valor de la latitud (lat) pòt pas excedir 90',
+	'slippymap_latsmall'        => 'La valor de la latitud (lat) pòt pas èsser inferiora a -90',
+	'slippymap_lonbig'          => 'La valor de la longitud (lon) pòt pas excedir 180',
+	'slippymap_lonsmall'        => 'La valor de la longitud (lon) pòt pas èsser inferiora a -180',
+	'slippymap_zoomsmall'       => 'La valor del zoom (z) pòt pas èsser negativa',
+	'slippymap_zoom18'          => "La valor del zoom (z) pòt excedir 17. Notatz qu'aqueste croquet d’extension mediawiki dins lo jaç « osmarender » de OpenStreetMap pòt pas anar de delà del nivèl 17 del zoom. Lo jaç Mapnik disponible sus openstreetmap.org, pòt pas anar de delà del nivèl 18.",
+	'slippymap_zoombig'         => 'La valor del zoom (z) pòt pas excedir 17.',
+	'slippymap_invalidlayer'    => 'Valor de « $1 » del « jaç » incorrècta',
+	'slippymap_maperror'        => 'Error de mapa :',
+	'slippymap_osmtext'         => 'Vejatz aquesta mapa sus OpenStreetMap.org',
+	'slippymap_code'            => "Còde Wiki pel visionament d'aquesta mapa :",
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */
@@ -183,5 +261,19 @@ $messages['sk'] = array(
 	'slippymap_maperror'        => 'Chyba mapy:',
 	'slippymap_osmtext'         => 'Pozrite si túto mapu na OpenStreetMap.org',
 	'slippymap_code'            => 'Wikikód tohto pohľadu na mapu:',
+);
+
+/** Swedish (Svenska)
+ * @author M.M.S.
+ */
+$messages['sv'] = array(
+	'slippymap_desc' => 'Tillåter användning av taggen <tt>&lt;slippymap&gt;</tt> för att visa "slippy map" från OpenLayers. Kartorna kommer från [http://openstreetmap.org openstreetmap.org]',
+);
+
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'slippymap_maperror' => 'పటపు పొరపాటు:',
 );
 

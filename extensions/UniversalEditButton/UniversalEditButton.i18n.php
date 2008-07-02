@@ -81,6 +81,13 @@ $messages['id'] = array(
 	'universaleditbutton-desc' => 'Menambahkan <code>&lt;pranala&gt;</code> header HTML untuk mendukung ekstensi penjelajah Universal Edit Button',
 );
 
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$messages['lb'] = array(
+	'universaleditbutton-desc' => "Setzt dwn HTML Header <code>&lt;link&gt;</code> derbäi, fir den universellen Ännere-Knäppchen vun der Browser-Erweiderung z'ënnerstetzen",
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */
@@ -102,6 +109,13 @@ $messages['oc'] = array(
 	'universaleditbutton-desc' => 'Ajusta l’entèsta HTML  <code>&lt;link&gt;</code> per suportar lo boton d’edicion universal de l’extension del navigador',
 );
 
+/** Polish (Polski)
+ * @author Derbeth
+ */
+$messages['pl'] = array(
+	'universaleditbutton-desc' => 'Dodaje nagłówek HTML <code>&lt;link&gt;</code> umożliwiający działanie rozszerzenia przeglądarki „Universal Edit Button”',
+);
+
 /** Russian (Русский)
  * @author Александр Сигачёв
  */
@@ -114,5 +128,19 @@ $messages['ru'] = array(
  */
 $messages['sk'] = array(
 	'universaleditbutton-desc' => 'Pridává do hlavičky <code>&lt;link&gt;</code> pre podporu rozšírenia Universal Edit Button v prehliadačach',
+);
+
+/** Swedish (Svenska)
+ * @author M.M.S.
+ */
+$messages['sv'] = array(
+	'universaleditbutton-desc' => 'Lägger till HTML-huvudet <code>&lt;link&gt;</code> för att stödja webbläsartillägget "Universal Edit Button"',
+);
+
+/** Vèneto (Vèneto)
+ * @author Candalua
+ */
+$messages['vec'] = array(
+	'universaleditbutton-desc' => "Zonta l'intestassion HTML <code>&lt;link&gt;</code> par suportar l'estension del browser Universal Edit Button",
 );
 

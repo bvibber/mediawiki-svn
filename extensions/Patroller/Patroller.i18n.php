@@ -38,6 +38,13 @@ $messages['en'] = array(
 	'grouppage-patroller'    => '{{ns:project}}:Patroller',
 );
 
+/** Niuean (native name missing)
+ * @author Jose77
+ */
+$messages['niu'] = array(
+	'patrol-revert-reason' => 'Kakano:',
+);
+
 /** Afrikaans (Afrikaans)
  * @author Arnobarnard
  * @author Naudefj
@@ -239,6 +246,7 @@ $messages['fr'] = array(
  */
 $messages['gl'] = array(
 	'patrol'                 => 'Patrullar edicións',
+	'patrol-desc'            => 'Realzado da interface de patrulla coa parte que toca da cantidade de traballo',
 	'patrol-endorse'         => 'Apoiar',
 	'patrol-revert'          => 'Desfacer',
 	'patrol-revert-reason'   => 'Motivo:',
@@ -363,6 +371,14 @@ $messages['hu'] = array(
 	'group-patroller'        => 'járőrök',
 	'group-patroller-member' => 'Járőr',
 	'grouppage-patroller'    => '{{ns:project}}:Járőr',
+);
+
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'patrol-revert'        => 'Reverter',
+	'patrol-revert-reason' => 'Motivo:',
 );
 
 /* Indonesian (Ivan Lanin) */

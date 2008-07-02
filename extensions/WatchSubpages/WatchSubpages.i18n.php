@@ -99,9 +99,13 @@ Pour cocher ou décocher plusieurs pages, vous pouvez maintenir enfoncée la tou
 $messages['gl'] = array(
 	'watchsubpages'                      => 'Vixiar as subpáxinas',
 	'watchsubpages-addedtowatchlist'     => 'O seguinte foi engadido á súa listaxe de vixilancia.',
-	'watchsubpages-addtitles'            => 'Engadir páxinas',
+	'watchsubpages-addtitles'            => 'Engadir as páxinas',
 	'watchsubpages-addtitlestowatchlist' => 'Engadir páxinas á listaxe de vixilancia',
 	'watchsubpages-desc'                 => '[[Special:WatchSubpages|Engadir rapidamente todas as subpáxinas]] dunha páxina á listaxe de vixilancia',
+	'watchsubpages-form'                 => 'Seleccione embaixo as páxinas que queira engadir á súa listaxe de vixilancia.
+Para engadir unha páxina, marque o casilla que está ao seu carón e prema en "Engadir as páxinas".
+
+Para marcar ou deixar de marcar diversas páxinas, só ten que premer na tecla "Maiúsculas", e isto permitiralle seleccionar casillas consecutivas con só facer clic en cada final do rexistro.',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -109,6 +113,7 @@ $messages['gl'] = array(
  */
 $messages['lb'] = array(
 	'watchsubpages'                      => 'Ënner-Säiten iwwerwaachen',
+	'watchsubpages-addedtowatchlist'     => 'Dës Säite goufen op är Iwwerwaachungslëscht derbäigesat.',
 	'watchsubpages-addtitles'            => 'Säiten derbäisetzen',
 	'watchsubpages-addtitlestowatchlist' => "Säiten op d'Iwwerwaachungslëscht derbäisetzen",
 	'watchsubpages-desc'                 => "Séier [[Special:WatchSubpages|all Ënner-Säiten]] vun enger Säit op d'Iwwerwwachungslëscht derbäisetzen",
@@ -258,6 +263,10 @@ $messages['sv'] = array(
 	'watchsubpages-addtitles'            => 'Lägg till sidor',
 	'watchsubpages-addtitlestowatchlist' => 'Lägg till sidor till bevakningslista',
 	'watchsubpages-desc'                 => '[[Special:WatchSubpages|Lägg till alla undersidor]] för en sida till bevakningslistan',
+	'watchsubpages-form'                 => 'Välj sidorna du önskar lägga till i din bevakningslista.
+För att lägga till en sida, markera rutan intill den, och klicka på "Lägg till sidor".
+
+När du markerar eller avmarkerar flera sidor, så kan du markera intilliggande rutor genom att hålla ner shift-tangenten och klicka på den första och sista rutan du vill markera.',
 );
 
 /** Vèneto (Vèneto)

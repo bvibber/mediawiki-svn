@@ -234,13 +234,16 @@ $messages['ar'] = array(
  */
 $messages['bg'] = array(
 	'voctrain_try_again_'                                => 'нов опит?',
+	'voctrain_continue'                                  => 'продължаване',
 	'voctrain_Number_of_questions'                       => 'Брой въпроси',
 	'voctrain_Languages'                                 => 'Езици',
 	'voctrain_eg_eng_for_English_deu_for_Deutch_German_' => '(напр. eng за английски, deu за немски).',
 	'voctrain_Questions'                                 => 'Въпроси',
 	'voctrain_Answers'                                   => 'Отговори',
+	'voctrain_skip'                                      => 'пропускане',
 	'voctrain_Question'                                  => 'Въпрос',
 	'voctrain_Answer'                                    => 'Отговор',
+	'voctrain_list_of_questions_and_answers'             => 'списък с въпроси и отговори',
 	'voctrain_Answer_s_'                                 => 'Отговор(и)',
 	'voctrain_logout'                                    => 'излизане',
 	'voctrain_Powered_by'                                => 'С подкрепата на',
@@ -253,6 +256,7 @@ $messages['bg'] = array(
 	'voctrain_Switch_language'                           => 'Промяна на езика',
 	'voctrain_Language'                                  => 'Език',
 	'voctrain_Log_in'                                    => 'Влизане',
+	'voctrain_hiding'                                    => 'Скриване',
 );
 
 /** Esperanto (Esperanto)
@@ -430,6 +434,13 @@ $messages['gl'] = array(
 	'voctrain_Separate_values_by_commas_to_use_multiple_languages_'                                 => 'Separe os valores por comas para usar varias linguas.',
 );
 
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'voctrain_User_name' => 'Nomine de usator',
+);
+
 /** Khmer (ភាសាខ្មែរ)
  * @author គីមស៊្រុន
  */
@@ -442,26 +453,33 @@ $messages['km'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
-	'voctrain_Hello_World'         => 'SALUT!',
-	'voctrain_Permission_Denied'   => 'Erlaabness refuséiert',
-	'voctrain_try_again_'          => 'nach eng Kéier probéieren?',
-	'voctrain_continue'            => 'viru fueren',
-	'voctrain_bye'                 => 'Äddi',
-	'voctrain_Number_of_questions' => 'Zuel vun de Froen',
-	'voctrain_Languages'           => 'Sproochen',
-	'voctrain_Questions'           => 'Froen',
-	'voctrain_Answers'             => 'Äntwerten',
-	'voctrain_ISO_639_3_format'    => 'ISO-639-3 Format',
-	'voctrain_Definition'          => 'Definitioun',
-	'voctrain_Word'                => 'Wuert',
-	'voctrain_skip'                => 'iwwersprangen',
-	'voctrain_Question'            => 'Fro',
-	'voctrain_Answer'              => 'Äntwert',
-	'voctrain_Omegawiki'           => 'Omegawiki',
-	'voctrain_Password'            => 'Passwuert',
-	'voctrain_Switch_language'     => 'Sprooch wiesselen',
-	'voctrain_Language'            => 'Sprooch',
-	'voctrain_Definitions'         => 'Definitiounen',
+	'voctrain_Hello_World'           => 'SALUT!',
+	'voctrain_Permission_Denied'     => 'Erlaabness refuséiert',
+	'voctrain_try_again_'            => 'nach eng Kéier probéieren?',
+	'voctrain_Action_unknown'        => 'Onbekannten Aktioun',
+	'voctrain_User_added'            => 'Benotzer derbäigesat',
+	'voctrain_continue'              => 'viru fueren',
+	'voctrain_bye'                   => 'Äddi',
+	'voctrain_Number_of_questions'   => 'Zuel vun de Froen',
+	'voctrain_Languages'             => 'Sproochen',
+	'voctrain_Questions'             => 'Froen',
+	'voctrain_Answers'               => 'Äntwerten',
+	'voctrain_ISO_639_3_format'      => 'ISO-639-3 Format',
+	'voctrain_Definition'            => 'Definitioun',
+	'voctrain_Word'                  => 'Wuert',
+	'voctrain_skip'                  => 'iwwersprangen',
+	'voctrain_Question'              => 'Fro',
+	'voctrain_The_word_to_translate' => "D'Wuert dat iwwersat soll ginn",
+	'voctrain_Answer'                => 'Äntwert',
+	'voctrain_one_of'                => 'ee vun',
+	'voctrain_Answer_s_'             => 'Äntwert(en)',
+	'voctrain_Omegawiki'             => 'Omegawiki',
+	'voctrain_User_name'             => 'Benotzernumm',
+	'voctrain_Password'              => 'Passwuert',
+	'voctrain_Switch_language'       => 'Sprooch wiesselen',
+	'voctrain_Language'              => 'Sprooch',
+	'voctrain_Definitions'           => 'Definitiounen',
+	'voctrain_Translation'           => 'Iwwersetzung',
 );
 
 /** Neapolitan (Nnapulitano) */
@@ -593,6 +611,76 @@ $messages['nl'] = array(
 	'voctrain_hide_definitions_in_question_language'                                                => 'Definities in brontaal verbergen',
 	'voctrain_hide_words_in_question_language'                                                      => 'Woorden in brontaal verbergen',
 	'voctrain_Separate_values_by_commas_to_use_multiple_languages_'                                 => 'Gebruik een komma als scheidingsteken om meerdere talen te gebruiken.',
+);
+
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ */
+$messages['no'] = array(
+	'voctrain_Hello_World'                                                                          => 'HALLO, WIKI!',
+	'voctrain_Permission_Denied'                                                                    => 'Adgang nektet',
+	'voctrain_try_again_'                                                                           => 'prøve igjen?',
+	'voctrain_Action_unknown'                                                                       => 'Ukjent handling',
+	'voctrain_I_don_t_know_what_to_do_with_action_'                                                 => 'Forstår ikke hva som skal gjøres «%action».',
+	'voctrain_User_added'                                                                           => 'Brukere lagt til',
+	'voctrain_Hello_username_welcome_to_the_omega_language_trainer'                                 => 'Hei, %username, velkommen til Omega språklæring',
+	'voctrain_continue'                                                                             => 'fortsett',
+	'voctrain_hello_place'                                                                          => 'hallo, %place',
+	'voctrain_bye'                                                                                  => 'farvel',
+	'voctrain_Set_up_your_exercise'                                                                 => 'Sett opp øvelsen',
+	'voctrain_Number_of_questions'                                                                  => 'Antall spørsmål',
+	'voctrain_Languages'                                                                            => 'Språk',
+	'voctrain_Please_specify_the_languages_you_want_to_test_in'                                     => 'Oppgi hvilke språk du vil bli prøvd i',
+	'voctrain_eg_eng_for_English_deu_for_Deutch_German_'                                            => '(f.eks. eng for engelsk, deu for tysk, nor for norsk)',
+	'voctrain_Depending_on_your_test_set_some_combinations_might_work_better_than_others_'          => 'Avhengig av testsettet ditt vil noen kombinasjoner fungere bedre enn andre.',
+	'voctrain_Questions'                                                                            => 'Spørsmål',
+	'voctrain_Answers'                                                                              => 'Svar',
+	'voctrain_start_exercise'                                                                       => 'start øvelse',
+	'voctrain_collection'                                                                           => 'samling',
+	'voctrain_ISO_639_3_format'                                                                     => 'ISO 639-3-format',
+	'voctrain_There_are_questions_remaining_questions_remaining_out_of_a_total_of_questions_total_' => 'Det er %questions_remaining spørsmål igjen, av totalt %questions_total.',
+	'voctrain_Definition'                                                                           => 'Definisjon',
+	'voctrain_Dictionary_definition_to_help_you'                                                    => 'Hjelpende ordboksdefinisjon',
+	'voctrain_Word'                                                                                 => 'Ord',
+	'voctrain_Please_type_your_answer_here'                                                         => 'Skriv inn svaret her',
+	'voctrain_submit_answer'                                                                        => 'svar',
+	'voctrain_peek'                                                                                 => 'titt',
+	'voctrain_skip'                                                                                 => 'hopp over',
+	'voctrain_I_know_it_do_not_ask_again'                                                           => 'Jeg vet ikke/ikke spør igjen',
+	'voctrain_abort_exercise'                                                                       => 'avbryt øvelse',
+	'voctrain_list_answers'                                                                         => 'list opp svar',
+	'voctrain_Question'                                                                             => 'Spørsmål',
+	'voctrain_The_word_to_translate'                                                                => 'Ord som skal oversettes',
+	'voctrain_Answer'                                                                               => 'Svar',
+	'voctrain_one_of'                                                                               => 'en av',
+	'voctrain_list_of_questions_and_answers'                                                        => 'liste over spørsmål og svar',
+	'voctrain_Answer_s_'                                                                            => 'Svar',
+	'voctrain_logout'                                                                               => 'logg ut',
+	'voctrain_Powered_by'                                                                           => 'Drevet av',
+	'voctrain_Omegawiki'                                                                            => 'Omegawiki',
+	'voctrain_Exercise_complete'                                                                    => 'Øvelse ferdig',
+	'voctrain_Exercise_terminated'                                                                  => 'Øvelse avbrutt',
+	'voctrain_Start_a_new_exercise'                                                                 => 'Start en ny øvelse',
+	'voctrain_User_name'                                                                            => 'Brukernavn',
+	'voctrain_Password'                                                                             => 'Passord',
+	'voctrain_Login'                                                                                => 'Logg inn',
+	'voctrain_Create_new_user'                                                                      => 'Opprett konto',
+	'voctrain_Switch_language'                                                                      => 'Endre språk',
+	'voctrain_Language'                                                                             => 'Språk',
+	'voctrain_Log_in'                                                                               => 'Logg inn',
+	'voctrain_Omegawiki_vocabulary_trainer'                                                         => 'Omegawiki ordforrådlæring',
+	'voctrain_Definitions'                                                                          => 'Definisjoner',
+	'voctrain_Could_not_create_new_user'                                                            => 'Kunne ikke opprette konto',
+	'voctrain_Type_a_username_and_optional_password_or_try_a_different_username_'                   => 'Skriv inn brukernavn og valgfritt passord (eller prøv et annet brukernavn)',
+	'voctrain_Vocview'                                                                              => 'Ordforrådsviser',
+	'voctrain_Dictionary_definitions'                                                               => 'dictionary_definitions',
+	'voctrain_Translation'                                                                          => 'Oversettelse',
+	'voctrain_unhide_definition'                                                                    => 'vis definisjon',
+	'voctrain_unhide_words'                                                                         => 'vis ord',
+	'voctrain_hiding'                                                                               => 'Skjuler',
+	'voctrain_hide_definitions_in_question_language'                                                => 'Skjul definisjoner i spørsmålsspråk',
+	'voctrain_hide_words_in_question_language'                                                      => 'Skjul ord i spørsmålsspråk',
+	'voctrain_Separate_values_by_commas_to_use_multiple_languages_'                                 => 'Skill verdier fra hverandre med komma ved bruk av flere språk.',
 );
 
 /** Occitan (Occitan)
@@ -746,5 +834,6 @@ $messages['te'] = array(
 	'voctrain_Switch_language'                                  => 'భాషని మార్చండి',
 	'voctrain_Language'                                         => 'భాష',
 	'voctrain_Definitions'                                      => 'నిర్వచనాలు',
+	'voctrain_Translation'                                      => 'అనువాదం',
 );
 

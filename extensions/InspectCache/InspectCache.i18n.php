@@ -20,11 +20,25 @@ $messages['en'] = array(
 	'inspectcache-list'    => 'List',
 );
 
+/** Tarifit (Tarifit)
+ * @author Jose77
+ */
+$messages['rif'] = array(
+	'inspectcache-delete' => 'Sfaḍ',
+);
+
 /** Eastern Mari (Олык Марий йылме)
  * @author Сай
  */
 $messages['mhr'] = array(
 	'inspectcache-delete' => 'Шӧраш',
+);
+
+/** Niuean (native name missing)
+ * @author Jose77
+ */
+$messages['niu'] = array(
+	'inspectcache-delete' => 'Tamate',
 );
 
 /** Afrikaans (Afrikaans)
@@ -168,6 +182,13 @@ $messages['gv'] = array(
 	'inspectcache-list'   => 'Rolley',
 );
 
+/** Hakka (Hak-kâ-fa)
+ * @author Hakka
+ */
+$messages['hak'] = array(
+	'inspectcache-delete' => 'Chhù-thet',
+);
+
 /** Hindi (हिन्दी)
  * @author Kaustubh
  */
@@ -221,6 +242,13 @@ $messages['hu'] = array(
 	'inspectcache-delete'  => 'Törlés',
 	'inspectcache-deleted' => 'Törlési gyorsítótár',
 	'inspectcache-list'    => 'Listázás',
+);
+
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'inspectcache-ok' => 'OK',
 );
 
 /** Javanese (Basa Jawa)
@@ -279,6 +307,13 @@ $messages['lb'] = array(
  */
 $messages['lfn'] = array(
 	'inspectcache-ok' => 'Oce',
+);
+
+/** Lithuanian (Lietuvių)
+ * @author Tomasdd
+ */
+$messages['lt'] = array(
+	'inspectcache-delete' => 'Ištrinti',
 );
 
 /** Malayalam (മലയാളം)

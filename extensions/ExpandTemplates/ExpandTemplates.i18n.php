@@ -541,6 +541,14 @@ $messages['hy'] = array(
 	'expandtemplates'                  => 'Կաղապարների ընդարձակում',
 );
 
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'expand_templates_ok'      => 'OK',
+	'expand_templates_preview' => 'Previsualisation',
+);
+
 /** Indonesian (Bahasa Indonesia)
  * @author IvanLanin
  */

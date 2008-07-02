@@ -170,10 +170,14 @@ $messages['fr'] = array(
 /** Galician (Galego)
  * @author Alma
  * @author Xosé
+ * @author Toliño
  */
 $messages['gl'] = array(
-	'importfreeimages'                       => 'Importar Imaxes Libres',
+	'importfreeimages'                       => 'Importar imaxes libres',
+	'importfreeimages-desc'                  => 'Proporciona un camiño para [[Special:ImportFreeImages|importar adecuadamente fotografías con licenza]] dende o [http://www.flickr.com Flickr]',
 	'importfreeimages_description'           => 'Esta páxina permítelle procurar fotos de flickr con licenza correcta e importalos ao seu wiki.',
+	'importfreeimages_noapikey'              => 'Non configurou a súa clave Flickr API.
+Para facelo, por favor, obteña a clave API [http://www.flickr.com/services/api/misc.api_keys.html aquí] e fixe wgFlickrAPIKey en ImportFreeImages.php.',
 	'importfreeimages_nophotosfound'         => "Ningunhas fotos foron atopadas cos criterios '$1' de procura, ténteo de novo.",
 	'importfreeimages_invalidurl'            => 'A URL "$1" non é unha imaxe válida de Flickr',
 	'importfreeimages_owner'                 => 'Autor',

@@ -34,6 +34,13 @@ $messages['mhr'] = array(
 	'linksearch-ok' => 'Кучал',
 );
 
+/** Niuean (native name missing)
+ * @author Jose77
+ */
+$messages['niu'] = array(
+	'linksearch-ok' => 'Kumi',
+);
+
 /** Afrikaans (Afrikaans)
  * @author Arnobarnard
  * @author SPQRobin
@@ -178,6 +185,13 @@ $messages['cs'] = array(
 	'linksearch-text'  => 'Lze používat zástupné znaky, např. „*.wikipedia.org“.',
 	'linksearch-line'  => '$2 odkazuje na $1',
 	'linksearch-error' => 'Zástupné znaky lze použít jen na začátku doménového jména.',
+);
+
+/** Church Slavic (Словѣ́ньскъ / ⰔⰎⰑⰂⰡⰐⰠⰔⰍⰟ)
+ * @author ОйЛ
+ */
+$messages['cu'] = array(
+	'linksearch-ok' => 'ищи́',
 );
 
 /** Danish (Dansk)
@@ -368,6 +382,13 @@ $messages['gu'] = array(
  */
 $messages['gv'] = array(
 	'linksearch-ok' => 'Ronsaghey',
+);
+
+/** Hakka (Hak-kâ-fa)
+ * @author Hakka
+ */
+$messages['hak'] = array(
+	'linksearch-ok' => 'Chhìm-cháu',
 );
 
 /** Hebrew (עברית)
@@ -1003,6 +1024,7 @@ $messages['su'] = array(
 
 /** Swedish (Svenska)
  * @author Lejonel
+ * @author Boivie
  */
 $messages['sv'] = array(
 	'linksearch'       => 'Sök webblänkar',
@@ -1010,7 +1032,8 @@ $messages['sv'] = array(
 	'linksearch-pat'   => 'Sökmönster:',
 	'linksearch-ns'    => 'Namnrymd:',
 	'linksearch-ok'    => 'Sök',
-	'linksearch-text'  => 'Jokertecken (wildcards) kan användas i början av domännamn, t.ex.  "*.wikipedia.org".<br />Stödda protokoll: <tt>$1</tt>',
+	'linksearch-text'  => 'Jokertecken (wildcards) som t ex "*.wikipedia.org" kan användas.<br />
+Stödda protokoll: <tt>$1</tt>',
 	'linksearch-line'  => '$1 länkas från $2',
 	'linksearch-error' => 'Jokertecken kan bara användas i början av domännamnet.',
 );

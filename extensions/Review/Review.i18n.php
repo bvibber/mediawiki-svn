@@ -61,6 +61,7 @@ $messages['af'] = array(
  */
 $messages['an'] = array(
 	'review_user_details_link' => '(detalles)',
+	'review_comment'           => 'Comentario',
 );
 
 /** Arabic (العربية)
@@ -374,38 +375,45 @@ $messages['fr'] = array(
  * @author Siebrand
  */
 $messages['gl'] = array(
-	'review_sidebar_title'                   => 'Revisar',
-	'review_topic_page'                      => 'Revisados os temas',
-	'review_sidebar_explanation'             => "O extremo esquerdo da caixiña sempre significa 'sen opinión'.",
-	'review_save'                            => 'Gardar a revisión',
-	'review_your_review'                     => 'O seu exame desta páxina/revisión:',
-	'review_page_link'                       => 'revisar estatísticas',
-	'review_sidebar_final'                   => 'Para revisar os datos desta páxina, véxase $1',
-	'review_for_page'                        => 'Revisión para a páxina "$1"',
-	'review_for_user'                        => 'Revisión para o usuario "$1"',
-	'review_error'                           => 'Algo está fallando!',
-	'review_no_reviews_for_page'             => 'Actualmente non hai revisións para "$1".',
-	'review_total_statistics'                => 'Total',
-	'review_statistics_left_corner'          => 'Revisión',
-	'review_version_link'                    => 'Revisión #$1',
-	'review_statistic_cell'                  => 'Promedio: $1 de $2<br />($4 usuarios, $5 anónimos)',
-	'review_version_statistic_cell'          => '$1 de $2',
-	'review_version_reviews_link'            => '<small>(versión revisada)</small>',
-	'review_concerns_page'                   => 'Esta revisión é acerca da páxina "$1".',
-	'review_concerns_user'                   => 'Isto é acerca das revisións polo usuario "$1".',
-	'review_user_reviews'                    => '<small>(revisións por este usuario)</small>',
-	'review_user_page_list'                  => 'O usuario revisou as seguintes páxinas:',
-	'review_user_details_link'               => '(detalles)',
-	'review_do_merge'                        => 'Fusionar as miñas revisións coas outras revisións desta páxina dentro desta',
-	'review_has_been_stored'                 => "<span id='review_has_been_stored'>A súa revisión foi almacenada!</span>",
-	'revision_review_this_page_version_link' => 'Examinar esta versión desta páxina.',
-	'review_page_review'                     => 'Revisión da páxina "$1"',
-	'review_blocked'                         => 'Vostede está bloqueado, desaparecerá.',
-	'review_wrong_namespace'                 => 'As páxinas no espazo de nomes non poden ser revisadas!',
-	'review_topic'                           => 'Tema',
-	'review_no_opinion'                      => 'Sen opinión',
-	'review_rating'                          => 'Avaliación',
-	'review_comment'                         => 'Comentario',
+	'review_sidebar_title'                                   => 'Revisar',
+	'review-desc'                                            => 'A característica de [[Special:Review|validación]] resucitada.',
+	'review_topics'                                          => '# O que segue é unha lista de temas e rangos para a extensión de revisión.
+# Cada tema é definido por unha liña de cinco valores, separados por ":" (todas as outras liñas son ignoradas).
+# A orde é: tecla numérica (>0), nome, rango máximo (>1; 2=si/non), significado do valor máis baixo (por exemplo, "malo"), significado do valor máis alto (por exemplo, "bo").
+1:Calidade:5:malo:bo
+2:Preparado para 1.0:2:non:si',
+	'review_topic_page'                                      => 'Revisados os temas',
+	'review_sidebar_explanation'                             => "O extremo esquerdo da caixiña sempre significa 'sen opinión'.",
+	'review_save'                                            => 'Gardar a revisión',
+	'review_your_review'                                     => 'O seu exame desta páxina/revisión:',
+	'review_sidebar_you_have_other_reviews_for_this_article' => "Xa ten revisado outras versións desta páxina. As súas outras calificación serán fusionadas con esta na que seleccionou 'sen opinión'.",
+	'review_page_link'                                       => 'revisar estatísticas',
+	'review_sidebar_final'                                   => 'Para revisar os datos desta páxina, véxase $1',
+	'review_for_page'                                        => 'Revisión para a páxina "$1"',
+	'review_for_user'                                        => 'Revisión para o usuario "$1"',
+	'review_error'                                           => 'Algo está fallando!',
+	'review_no_reviews_for_page'                             => 'Actualmente non hai revisións para "$1".',
+	'review_total_statistics'                                => 'Total',
+	'review_statistics_left_corner'                          => 'Revisión',
+	'review_version_link'                                    => 'Revisión #$1',
+	'review_statistic_cell'                                  => 'Promedio: $1 de $2<br />($4 usuarios, $5 anónimos)',
+	'review_version_statistic_cell'                          => '$1 de $2',
+	'review_version_reviews_link'                            => '<small>(versión revisada)</small>',
+	'review_concerns_page'                                   => 'Esta revisión é acerca da páxina "$1".',
+	'review_concerns_user'                                   => 'Isto é acerca das revisións polo usuario "$1".',
+	'review_user_reviews'                                    => '<small>(revisións por este usuario)</small>',
+	'review_user_page_list'                                  => 'O usuario revisou as seguintes páxinas:',
+	'review_user_details_link'                               => '(detalles)',
+	'review_do_merge'                                        => 'Fusionar as miñas revisións coas outras revisións desta páxina dentro desta',
+	'review_has_been_stored'                                 => "<span id='review_has_been_stored'>A súa revisión foi almacenada!</span>",
+	'revision_review_this_page_version_link'                 => 'Examinar esta versión desta páxina.',
+	'review_page_review'                                     => 'Revisión da páxina "$1"',
+	'review_blocked'                                         => 'Vostede está bloqueado, desaparecerá.',
+	'review_wrong_namespace'                                 => 'As páxinas no espazo de nomes non poden ser revisadas!',
+	'review_topic'                                           => 'Tema',
+	'review_no_opinion'                                      => 'Sen opinión',
+	'review_rating'                                          => 'Avaliación',
+	'review_comment'                                         => 'Comentario',
 );
 
 /** Manx (Gaelg)
@@ -495,6 +503,13 @@ $messages['hsb'] = array(
 	'review_no_opinion'                                      => 'Žane měnjenje',
 	'review_rating'                                          => 'Pohódnoćenje',
 	'review_comment'                                         => 'Komentar',
+);
+
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'review_comment' => 'Commento',
 );
 
 /** Indonesian (Bahasa Indonesia)

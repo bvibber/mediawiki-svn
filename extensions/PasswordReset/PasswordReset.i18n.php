@@ -26,6 +26,13 @@ $messages['en'] = array(
 	'disabledusers-summary'            => 'This is a list of users that have been disabled via PasswordReset.',
 );
 
+/** Niuean (native name missing)
+ * @author Jose77
+ */
+$messages['niu'] = array(
+	'passwordreset-username' => 'Matahigoa he tagata',
+);
+
 $messages['af'] = array(
 	'passwordreset-username' => 'Gebruikersnaam',
 );
@@ -169,22 +176,23 @@ $messages['fr'] = array(
  * @author Alma
  */
 $messages['gl'] = array(
-	'passwordreset'                 => 'Eliminar o contrasinal',
-	'passwordreset-desc'            => 'Restablecer o contrasinal do usuario dun wiki (require privilexios "passwordreset")',
-	'passwordreset-invalidusername' => 'Nome de usuario non válido',
-	'passwordreset-emptyusername'   => 'Nome de usuario baleiro',
-	'passwordreset-nopassmatch'     => 'Os contrasinais non coinciden',
-	'passwordreset-badtoken'        => 'Sinal de edición non válido',
-	'passwordreset-username'        => 'Nome de usuario',
-	'passwordreset-newpass'         => 'Contrasinal Novo',
-	'passwordreset-confirmpass'     => 'Confirme o Contrasinal',
-	'passwordreset-submit'          => 'Limpar o Contrasinal',
-	'passwordreset-success'         => 'Limpouse o contrasinal para o id de usuario: $1',
-	'passwordreset-disableuser'     => 'Desactivar a Conta de Usuario?',
-	'passwordreset-disablesuccess'  => 'Desactivouse a conta do usuario (user_id: $1)',
-	'passwordreset-accountdisabled' => 'A conta foi desabilitada',
-	'disabledusers'                 => 'Usuarios desabilitados',
-	'disabledusers-summary'         => 'Esta é unha listaxe dos usuarios que foron deshabilitados por medio de PasswordReset.',
+	'passwordreset'                    => 'Eliminar o contrasinal',
+	'passwordreset-desc'               => 'Restablecer o contrasinal do usuario dun wiki (require privilexios "passwordreset")',
+	'passwordreset-invalidusername'    => 'Nome de usuario non válido',
+	'passwordreset-emptyusername'      => 'Nome de usuario baleiro',
+	'passwordreset-nopassmatch'        => 'Os contrasinais non coinciden',
+	'passwordreset-badtoken'           => 'Sinal de edición non válido',
+	'passwordreset-username'           => 'Nome de usuario',
+	'passwordreset-newpass'            => 'Contrasinal Novo',
+	'passwordreset-confirmpass'        => 'Confirme o Contrasinal',
+	'passwordreset-submit'             => 'Limpar o Contrasinal',
+	'passwordreset-success'            => 'Limpouse o contrasinal para o id de usuario: $1',
+	'passwordreset-disableuser'        => 'Desactivar a Conta de Usuario?',
+	'passwordreset-disableuserexplain' => '(fixa un contrasinal hash inválido - o usuario non pode acceder ao sistema)',
+	'passwordreset-disablesuccess'     => 'Desactivouse a conta do usuario (user_id: $1)',
+	'passwordreset-accountdisabled'    => 'A conta foi desabilitada',
+	'disabledusers'                    => 'Usuarios desabilitados',
+	'disabledusers-summary'            => 'Esta é unha listaxe dos usuarios que foron deshabilitados por medio de PasswordReset.',
 );
 
 /** Manx (Gaelg)
@@ -267,10 +275,19 @@ $messages['hu'] = array(
 	'passwordreset-accountdisabled'    => 'A felhasználói fiók le lett tiltva',
 );
 
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'passwordreset-username' => 'Nomine de usator',
+	'passwordreset-newpass'  => 'Nove contrasigno',
+);
+
 /** Indonesian (Bahasa Indonesia)
  * @author Rex
  */
 $messages['id'] = array(
+	'passwordreset-badtoken' => 'Token penyuntingan tidak sah',
 	'passwordreset-username' => 'Nama pengguna',
 );
 

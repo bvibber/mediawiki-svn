@@ -129,7 +129,8 @@ $messages['fr'] = array(
  * @author Toliño
  */
 $messages['gl'] = array(
-	'showprocesslist'         => 'Amosar a Listaxe do Proceso',
+	'showprocesslist'         => 'Amosar a lista do proceso',
+	'showprocesslist-desc'    => 'Amosa o texto de saída [[Special:ShowProcesslist|AMOSAR A LISTA COMPLETA DE PROCESOS]]',
 	'showprocesslist-id'      => 'Id',
 	'showprocesslist-user'    => 'Usuario',
 	'showprocesslist-host'    => 'Host',
@@ -137,7 +138,7 @@ $messages['gl'] = array(
 	'showprocesslist-command' => 'Comando',
 	'showprocesslist-time'    => 'Tempo',
 	'showprocesslist-state'   => 'Estado',
-	'showprocesslist-info'    => 'Info',
+	'showprocesslist-info'    => 'Información',
 );
 
 /** Gujarati (ગુજરાતી)

@@ -31,9 +31,10 @@ $messages['arz'] = array(
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author Jim-by
+ * @author Red Winged Duck
  */
 $messages['be-tarask'] = array(
-	'absenteelandlord-reason' => 'База зьвестак была аўтаматычна заблякавана з прычыны неактыўнасьці адміністратараў.',
+	'absenteelandlord-reason' => 'База зьвестак была аўтаматычна заблякаваная з прычыны неактыўнасьці адміністратараў.',
 );
 
 /** Bulgarian (Български)

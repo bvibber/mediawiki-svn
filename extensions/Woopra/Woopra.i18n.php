@@ -34,6 +34,13 @@ $messages['fr'] = array (
 	'woopra-desc' => 'Autorise pour [http://www.woopra.com/ le suivi en direct du logiciel Woopra] de travailler pour votre installation Mediawiki',
 );
 
+/** Galician (Galego)
+ * @author Toliño
+ */
+$messages['gl'] = array(
+	'woopra-desc' => 'Permite ao [http://www.woopra.com/ software de adestramento en vivo Woopra] traballar coa súa instalación MediaWiki',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */
@@ -94,7 +101,7 @@ $messages['oc'] = array(
  * @author Sp5uhe
  */
 $messages['pl'] = array(
-	'woopra-desc' => 'Pozwala oprogramowaniu do śledzenia [http://www.woopra.com/ „Woopra”] na współpracą z MediaWiki',
+	'woopra-desc' => 'Pozwala współpracować z MediaWiki oprogramowaniu śledzącemu [http://www.woopra.com/ „Woopra”]',
 );
 
 /** Portuguese (Português)

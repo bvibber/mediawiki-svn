@@ -40,6 +40,13 @@ $messages['mhr'] = array(
 	'editmsg-search' => 'Кычал',
 );
 
+/** Niuean (native name missing)
+ * @author Jose77
+ */
+$messages['niu'] = array(
+	'editmsg-search' => 'Kumi',
+);
+
 /** Afrikaans (Afrikaans)
  * @author Arnobarnard
  */
@@ -90,6 +97,13 @@ $messages['ca'] = array(
  */
 $messages['ch'] = array(
 	'editmsg-search' => 'Aligao',
+);
+
+/** Church Slavic (Словѣ́ньскъ / ⰔⰎⰑⰂⰡⰐⰠⰔⰍⰟ)
+ * @author ОйЛ
+ */
+$messages['cu'] = array(
+	'editmsg-search' => 'ищи́',
 );
 
 /** Danish (Dansk)
@@ -177,6 +191,7 @@ $messages['fr'] = array(
  * @author Toliño
  */
 $messages['gl'] = array(
+	'editmessages-desc'        => '[[Special:EditMessages|Edición beseada na web]] dun gran númeor de ficheiros Messages*.php',
 	'editmessages'             => 'Editar mensaxes',
 	'editmsg-target'           => 'Obxectivo da mensaxe:',
 	'editmsg-search'           => 'Procurar',
@@ -200,6 +215,13 @@ $messages['gl'] = array(
 $messages['gv'] = array(
 	'editmsg-search'     => 'Ronsaghey',
 	'editmsg-new-search' => 'Ronsaght noa',
+);
+
+/** Hakka (Hak-kâ-fa)
+ * @author Hakka
+ */
+$messages['hak'] = array(
+	'editmsg-search' => 'Chhìm-cháu',
 );
 
 /** Hindi (हिन्दी)
@@ -319,6 +341,13 @@ $messages['lb'] = array(
 	'editmsg-no-patch'         => 'De "Patch" Kommanda konnt net ausgeféiert ginn',
 	'editmsg-patch-failed'     => 'Patch huet net fonctionnéiert mat dem Feelermessage $1',
 	'editmsg-patch-success'    => 'gepatched!',
+);
+
+/** Lithuanian (Lietuvių)
+ * @author Tomasdd
+ */
+$messages['lt'] = array(
+	'editmsg-search' => 'Ieškoti',
 );
 
 /** Malayalam (മലയാളം)
@@ -442,15 +471,21 @@ $messages['oc'] = array(
 /** Polish (Polski)
  * @author Sp5uhe
  * @author McMonster
+ * @author Wpedzich
  */
 $messages['pl'] = array(
-	'editmessages'          => 'Edytuj wiadomości',
-	'editmsg-search'        => 'Szukaj',
-	'editmsg-new-search'    => 'Nowe wyszukiwanie',
-	'editmsg-apply-patch'   => 'Zastosuj poprawkę',
-	'editmsg-no-patch'      => 'Nie można uruchomić polecenia „patch”',
-	'editmsg-patch-failed'  => 'Wprowadzanie poprawki zakończyło się błędem $1',
-	'editmsg-patch-success' => 'Poprawka została wprowadzona.',
+	'editmessages-desc'      => '[[Special:EditMessages|Obsługa edycji]] z użyciem przeglądarki wielu plików „Messages*.php”',
+	'editmessages'           => 'Edytuj wiadomości',
+	'editmsg-target'         => 'Wiadomość docelowa:',
+	'editmsg-search'         => 'Szukaj',
+	'editmsg-show-list'      => 'Wartości dla komunikatu „$1”',
+	'editmsg-get-patch'      => 'Wygeneruj poprawkę',
+	'editmsg-new-search'     => 'Nowe wyszukiwanie',
+	'editmsg-warning-parse1' => '* Nazwa komunikatu nie pasuje do wyrażenia regularnego: $1',
+	'editmsg-apply-patch'    => 'Zastosuj poprawkę',
+	'editmsg-no-patch'       => 'Nie można uruchomić polecenia „patch”',
+	'editmsg-patch-failed'   => 'Wprowadzanie poprawki zakończyło się błędem $1',
+	'editmsg-patch-success'  => 'Poprawka została wprowadzona.',
 );
 
 /** Pashto (پښتو)

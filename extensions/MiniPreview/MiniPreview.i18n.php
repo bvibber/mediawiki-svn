@@ -91,17 +91,23 @@ $messages['fr'] = array(
 * Self",
 );
 
+/** Galician (Galego)
+ * @author Xosé
+ * @author Alma
+ * @author Toliño
+ */
 $messages['gl'] = array(
-	'minipreview-files_in_category' => '$1 ficheiros en total nesta categoría.',
-	'minipreview-files_in_gallery' => '$1 ficheiros en total nesta galería.',
-	'minipreview-no_more_files_here' => 'Non hai máis ficheiros nesta dirección.',
-	'minipreview-ignore_categories' => 'A seguinte é unha listaxe dos nomes das categorías ou comezos dos nomes. Estas categorías non se amosarán por MiniPreview. Por exemplo, "* PD-" non se amosarán todas as categorías que comecen por "PD-", como "PD-old".
+	'minipreview-desc'                => 'Amosa unha pequena vista previa, ao lado dunha imaxe, doutros ficheiros multimedia na mesma categoría ou amosados na mesma páxina',
+	'minipreview-files_in_category'   => '$1 ficheiros en total nesta categoría.',
+	'minipreview-files_in_gallery'    => '$1 ficheiros en total nesta galería.',
+	'minipreview-no_more_files_here'  => 'Non hai máis ficheiros nesta dirección.',
+	'minipreview-no_category_gallery' => 'Non hai categorías ou galerías!',
+	'minipreview-ignore_categories'   => 'A seguinte é unha listaxe dos nomes das categorías ou comezos dos nomes. Estas categorías non se amosarán por MiniPreview. Por exemplo, "* PD-" non se amosarán todas as categorías que comecen por "PD-", como "PD-old".
 * GFDL-
 * GFDL
 * CC-
 * PD-
 * Self',
-	'minipreview-no_category_gallery' => 'Non hai categorías ou galerías!',
 );
 
 /** Hindi (हिन्दी)

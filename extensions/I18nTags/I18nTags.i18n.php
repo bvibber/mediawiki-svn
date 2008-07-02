@@ -44,6 +44,13 @@ $messages['fr'] = array(
 	'i18ntags-desc' => 'Permet l’accès des fonctions i18n pour le format des nombres, la grammaire et le pluriel dans chaque langue disponible.',
 );
 
+/** Galician (Galego)
+ * @author Toliño
+ */
+$messages['gl'] = array(
+	'i18ntags-desc' => 'Accede ás funcións i18n para darlles formato aos números, á gramática e ao plural nas linguas dispoñibles',
+);
+
 /** Hindi (हिन्दी)
  * @author Kaustubh
  */

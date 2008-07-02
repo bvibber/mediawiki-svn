@@ -161,6 +161,13 @@ $messages['ca'] = array(
 	'createsigndoc-hidden'   => 'Amagat',
 );
 
+/** Church Slavic (Словѣ́ньскъ / ⰔⰎⰑⰂⰡⰐⰠⰔⰍⰟ)
+ * @author ОйЛ
+ */
+$messages['cu'] = array(
+	'createsigndoc-pagename' => 'страни́ца :',
+);
+
 /** Danish (Dansk)
  * @author Jon Harald Søby
  */
@@ -330,6 +337,13 @@ $messages['hsb'] = array(
 	'createsigndoc-error-pagenoexist'    => 'Zmylk: Strona [[$1]] njeeksistuje.',
 	'createsigndoc-success'              => 'Podpisanje dokumentow bu wuspěšnje na [[$1]]aktiwizowane. Zo by je testował, wopytaj prošu [{{SERVER}}{{localurl: Special:SignDocument|doc=$2}} tutu stronu:].',
 	'createsigndoc-error-alreadycreated' => 'Podpis dokumenta "$1" hižo eksistuje.',
+);
+
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'createsigndoc-create' => 'Crear',
 );
 
 /** Icelandic (Íslenska)
@@ -625,6 +639,7 @@ $messages['ps'] = array(
 	'createsigndoc-extaddress' => 'ښار، ايالت، هېواد:',
 	'createsigndoc-phone'      => 'د ټيليفون شمېره:',
 	'createsigndoc-bday'       => 'د زېږون نېټه:',
+	'createsigndoc-hidden'     => 'پټ',
 	'createsigndoc-create'     => 'جوړول',
 );
 

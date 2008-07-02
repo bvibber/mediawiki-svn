@@ -415,6 +415,13 @@ $messages['hu'] = array(
 	'pdt_comparing_page'  => '[[$1]] kimeneteinek összehasonlítása',
 );
 
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'pdtest_ok' => 'OK',
+);
+
 /** Indonesian (Bahasa Indonesia)
  * @author IvanLanin
  */

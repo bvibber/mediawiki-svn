@@ -128,6 +128,21 @@ Newer version $2 is available at http://pecl.php.net/package/APC/$2',
 
 );
 
+/** Tarifit (Tarifit)
+ * @author Jose77
+ */
+$messages['rif'] = array(
+	'viewapc-ls-submit'     => 'Raḥ ɣa!',
+	'viewapc-ls-limit-none' => 'Maṛṛa',
+);
+
+/** Niuean (native name missing)
+ * @author Jose77
+ */
+$messages['niu'] = array(
+	'viewapc-ls-submit' => 'Fano!',
+);
+
 /** Afrikaans (Afrikaans)
  * @author Arnobarnard
  */
@@ -1179,6 +1194,15 @@ $messages['li'] = array(
 	'viewapc-memory-miss' => 'Gemis: $1 ($2)',
 );
 
+/** Lithuanian (Lietuvių)
+ * @author Tomasdd
+ */
+$messages['lt'] = array(
+	'viewapc-mode-version-check' => 'Tikrinti versiją',
+	'viewapc-apc-version'        => 'APC versija',
+	'viewapc-php-version'        => 'PHP versija',
+);
+
 /** Malayalam (മലയാളം)
  * @author Shijualex
  */
@@ -1405,11 +1429,12 @@ $messages['nds'] = array(
 
 /** Dutch (Nederlands)
  * @author Siebrand
+ * @author SPQRobin
  */
 $messages['nl'] = array(
 	'viewapc'                       => 'APC-informatie',
 	'viewapc-desc'                  => '[[Special:ViewAPC|De APC-cache bekijken en beheren]] vanuit MediaWiki',
-	'right-apc'                     => 'All mogelijkheden van Special:ViewAPC gebruiken',
+	'right-apc'                     => 'Alle mogelijkheden van Special:ViewAPC gebruiken',
 	'viewapc-apc-not-available'     => 'Er is geen informatie over de cache beschikbaar.
 APC lijkt niet gestart te zijn.',
 	'viewapc-clear-confirm'         => 'Wilt u de cache leegmaken?',
@@ -2407,5 +2432,12 @@ Dường như APC đang tắt.',
 Phiên bản $2 mới hơn có tại http://pecl.php.net/package/APC/$2',
 	'viewapc-filecache-cleared'     => "'''''Đã tẩy bộ đệm tập tin.'''''",
 	'viewapc-usercache-cleared'     => "'''''Đã tẩy bộ đệm ứng dụng.'''''",
+);
+
+/** Simplified Chinese (‪中文(简体)‬)
+ * @author Chenzw
+ */
+$messages['zh-hans'] = array(
+	'viewapc-php-version' => 'PHP 版本',
 );
 

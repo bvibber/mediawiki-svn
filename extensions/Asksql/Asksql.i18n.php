@@ -582,7 +582,7 @@ $messages['oc'] = array(
  */
 $messages['pl'] = array(
 	'asksql'          => 'zapytanie SQL',
-	'asksql-desc'     => 'Wykonaj zapytania SQL poprzez [[Special:Asksql|stronę specjalną]]',
+	'asksql-desc'     => 'Wykonuje zapytanie SQL poprzez [[Special:Asksql|stronę specjalną]]',
 	'asksqltext'      => "Użyj formularza poniżej by wykonać bezpośrednie zapytanie do bazy danych. Napisy otocz pojedynczymi apostrofami ('w ten sposób'). Często takie zapytania mocno obciążają serwer, więc używaj tej funkcji rozważnie.",
 	'sqlislogged'     => 'Przypomnienie: wszystkie zapytania są rejestrowane.',
 	'sqlquery'        => 'Wpisz zapytanie',

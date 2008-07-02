@@ -36,6 +36,13 @@ $messages['bg'] = array(
 	'createbox-create' => 'Създаване',
 );
 
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
+$messages['eo'] = array(
+	'createbox-create' => 'Krei',
+);
+
 /** Finnish (Suomi)
  * @author Jack Phoenix
  */
@@ -75,10 +82,18 @@ Non pode crear esta páxina, pero pode [{{fullurl:{{FULLPAGENAME}}|action=edit}}
 <createbox>break=no</createbox>",
 );
 
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'createbox-create' => 'Crear',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
 $messages['lb'] = array(
+	'createbox-desc'   => 'Spezialiséiert Këscht fir Säiten unzeleeën',
 	'createbox-create' => 'Maachen',
 );
 
@@ -140,6 +155,13 @@ $messages['pl'] = array(
 Nie możesz utworzyć tej strony, lecz możesz ją [{{fullurl:{{FULLPAGENAME}}|action=edit}} edytować], [{{fullurl:{{FULLPAGENAME}}}} przeczytać], lub stworzyć inną stronę za pomocą poniższego pola wyboru.
 
 <createbox>break=no</createbox>",
+);
+
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'createbox-create' => 'جوړول',
 );
 
 /** Russian (Русский)

@@ -44,6 +44,13 @@ $messages['fr'] = array(
 	'crowdauthentication-desc' => 'Module d’authentication de l’outil de mesure d’affluence Atlassian Crowd',
 );
 
+/** Galician (Galego)
+ * @author Toliño
+ */
+$messages['gl'] = array(
+	'crowdauthentication-desc' => 'Complemento de autentificación para Atlassian Crowd',
+);
+
 /** Hindi (हिन्दी)
  * @author Kaustubh
  */

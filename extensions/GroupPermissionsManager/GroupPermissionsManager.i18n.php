@@ -60,6 +60,13 @@ $messages['en'] = array(
 	'right-edit' => 'Edit pages (which are not discussion pages)',
 );
 
+/** Tarifit (Tarifit)
+ * @author Jose77
+ */
+$messages['rif'] = array(
+	'grouppermissions-dosearch' => 'Raḥ ɣa',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  */
@@ -101,9 +108,9 @@ $messages['fr'] = array(
 	'grouppermissions-sort-admin'    => 'Administration',
 	'grouppermissions-sort-tech'     => 'Technique',
 	'grouppermissions-sort-misc'     => 'Divers',
-	'grouppermissions-log-add'       => 'a ajouté le groupe « $2 »',
-	'grouppermissions-log-change'    => 'a modifié les permissions du groupe « $2 »',
-	'grouppermissions-log-delete'    => 'a supprimé le groupe « $2 »',
+	'grouppermissions-log-add'       => 'a ajouté le groupe « $2 »',
+	'grouppermissions-log-change'    => 'a modifié les permissions du groupe « $2 »',
+	'grouppermissions-log-delete'    => 'a supprimé le groupe « $2 »',
 	'grouppermissions-log-name'      => 'Journal des permissions des groupes',
 	'grouppermissions-log-header'    => 'Cette page piste les changements des permissions soulignées des groupes utilisateurs.',
 	'grouppermissions-needjs'        => 'Aversissement : JavaScript est désactivé sur votre navigateur. Plusieurs fonctionnalités peuvent ne pas fonctionner !',
@@ -247,6 +254,8 @@ $messages['nl'] = array(
 	'grouppermissions-log-delete'    => 'heeft groep "$2" verwijderd',
 	'grouppermissions-log-name'      => 'Groepsrechtenlogboek',
 	'grouppermissions-log-header'    => 'Op deze pagina worden wijzigingen in de rechten van gebruikersgroepen weergegeven',
+	'grouppermissions-needjs'        => 'Waarschuwing: JavaScript is uitgeschakeld in uw browser. Een aantal mogelijkheden werkt wellicht niet!',
+	'grouppermissions-sp-header'     => 'U kunt deze pagina gebruiker voor het sorteren van rechten en het toevoegen van nieuwe rechten',
 	'right-viewsource'               => "Brontekst van beveiligde pagina's bekijken",
 	'right-raw'                      => "Ruwe pagina's bekijken",
 	'right-render'                   => "Gerenderde pagina's zonder navigatie bekijken",
@@ -307,13 +316,6 @@ $messages['no'] = array(
 	'right-recentchanges'            => 'Vise siste endringer',
 	'right-edittalk'                 => 'Redigere diskusjonssider',
 	'right-edit'                     => 'Redigere sider',
-);
-
-/** Tarifit (Tarifit)
- * @author Jose77
- */
-$messages['rif'] = array(
-	'grouppermissions-dosearch' => 'Raḥ ɣa',
 );
 
 /** Swedish (Svenska)
@@ -378,3 +380,4 @@ $messages['te'] = array(
 	'grouppermissions-comment'  => 'వ్యాఖ్య:',
 	'right-edit'                => 'పేజీలను మార్చడం',
 );
+

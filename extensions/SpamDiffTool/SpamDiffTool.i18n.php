@@ -191,11 +191,16 @@ Assurez-vous de ne pas bloquer des domaines entiers qui hébergent certains comp
  */
 $messages['gl'] = array(
 	'spamdifftool'                  => 'Administrar a Listaxe Negra de Spam',
+	'spamdifftool-desc'             => 'Proporciona un camiño básico para engadir novas entradas á listaxe negra de spam (spam blacklist) das diferenzas das páxinas',
 	'spamdifftool_cantedit'         => 'Sentímolo - vostede non ten permisos para editar na Listaxe Negra de Spam.',
 	'spamdifftool_notext'           => "Non hai texto para engadir a Listaxe negra de Spam. Prema <a href='$1'>aquí</a> para continuar.",
 	'spamdifftool_confirm'          => "Confirme que quere engadir estas entradas á listaxe negra de <i>spam</i>.
 (Faga clic <a href='$1' target='new'>aquí</a> para informar de calquera problema.)",
 	'spamdifftool_summary'          => 'Engadindo a Listaxe Negra de Spam',
+	'spamdifftool_urls_detected'    => 'As seguintes direccións URL foron detectadas na(s) edición(s), cales quere engadir á listaxe negra de spam (spam blacklist)?
+Estas opcións van das máis restritivas ás menos, bloqueando o dominio enteiro bloquearanse todas as ligazóns que veñan dese dominio.
+
+Asegúrese de non bloquear dominios enteiros que bloqueen contas de usuario; como blogpost.com, geocities.com, etc.',
 	'spamdifftool_no_urls_detected' => "Ningunhas urls foron detectadas. Prema <a href='$1'>aquí</a> para voltar.",
 	'spamdifftool_spam_link_text'   => 'engadir a spam',
 	'spamdifftool_option_domain'    => 'todo desde este dominio',

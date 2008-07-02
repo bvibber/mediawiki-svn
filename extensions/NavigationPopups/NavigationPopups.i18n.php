@@ -20,6 +20,13 @@ $messages['fr'] = array(
 	'navigationpopups-desc' => 'Charge, dans médiawiki, les scripts des fenêtres de navigation de Lupin',
 );
 
+/** Galician (Galego)
+ * @author Toliño
+ */
+$messages['gl'] = array(
+	'navigationpopups-desc' => 'Carga emerxentes de escritura de navegación Lupin en MediaWiki',
+);
+
 /** Hindi (हिन्दी)
  * @author Kaustubh
  */

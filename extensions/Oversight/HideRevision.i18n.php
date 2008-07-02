@@ -1401,6 +1401,9 @@ $messages['lb'] = array(
 Annulléiert dës Ännerung d'éischt.",
 	'hiderevision-error-delete'   => "Kann net archivéiert ginn. Gouf d'Säit virdru geläscht?",
 	'hiderevision-archive-status' => 'Geläschte Versioune vun $1: $2',
+	'oversight-nodiff'            => "Et as onméiglech d'Ännernungen ze vergläichen well et keng vireg Versioun fir dës Sàit gëtt. Entweder:
+*D'Säit gouf geläscht
+*Dës verstoppte Versioun war déi éischt Versioun",
 	'oversight-log-hiderev'       => 'En Ännerung vum $1 geläscht.',
 	'oversight'                   => 'Iwwersiicht',
 	'oversight-view'              => 'Detailer',
@@ -1543,6 +1546,50 @@ $messages['mr'] = array(
 	'oversight-hidden'            => 'लपविलेली आवृत्ती',
 	'oversight-header'            => 'खाली अलिकडील काळात कायमस्वरूपी लपविलेल्या आवृत्त्यांची यादी आहे.
 ही माहिती उघड केल्यास झापडबंद अधिकार कायमस्वरूपी काढून घेतले जातील.',
+);
+
+/** Malay (Bahasa Melayu)
+ * @author Aviator
+ */
+$messages['ms'] = array(
+	'hiderevision'                => 'Menyembunyikan semakan tertentu selama-lamanya',
+	'hiderevision-desc'           => 'Menyembunyikan semakan-semakan tertentu daripada semua pengguna atas sebab undang-undang dan sebagainya.',
+	'group-oversight'             => 'Pengawal',
+	'group-oversight-member'      => 'Pengawal',
+	'grouppage-oversight'         => 'Pengawal',
+	'right-oversight'             => 'Melihat semakan yang telah disembunyikan',
+	'right-hiderevision'          => 'Memeriksa dan memulihkan semakan yang terselindung daripada pandangan Penyelia',
+	'hiderevision-prompt'         => 'Nombor semakan yang ingin dibuang:',
+	'hiderevision-continue'       => 'Sambung',
+	'hiderevision-text'           => "Sila gunakan alat ini untuk kes-kes berikut '''sahaja''':
+* Pendedahan maklumat peribadi
+*: ''alamat kediaman, nombor telefon, dan sebagainya''
+
+'''Penyalahgunaan alat ini boleh menyebabkan jawatan anda ditarik balik.'''
+
+Item-item yang telah dibuang tidak boleh dilihat oleh sesiapa melalui tapak web ini. Walau bagaimanapun, semua tindakan akan disimpan dalam log dan boleh dipulihkan secara manual oleh seorang pentadbir pangkalan data sekiranya anda melakukan kesilapan.",
+	'hiderevision-reason'         => 'Sebab (dimasukkan dalam log rahsia):',
+	'hiderevision-submit'         => 'Sembunyikan data ini selama-lamanya',
+	'hiderevision-tab'            => 'Sembunyi semakan',
+	'hiderevision-norevisions'    => 'Tiada semakan dinyatakan.',
+	'hiderevision-noreason'       => 'Anda hendaklah menyatakan sebab.',
+	'hiderevision-status'         => 'Semakan $1: $2',
+	'hiderevision-success'        => 'Semakan tersebut berjaya diarkibkan dan dihapuskan.',
+	'hiderevision-error-missing'  => 'Tiada dalam pangkalan data.',
+	'hiderevision-error-current'  => 'Suntingan terakhir tidak boleh dihapuskan. Sila batalkan suntingan itu terlebih dahulu.',
+	'hiderevision-error-delete'   => 'Semakan tersebut tidak dapat diarkibkan. Adakah ia sudah dihapuskan?',
+	'hiderevision-archive-status' => 'membuang sebuah suntingan daripada $1: $2',
+	'oversight-nodiff'            => 'Tidak dapat menjejak perubahan kerana tiada semakan sebelumnya. Sama ada:
+* Laman tersebut telah dihapuskan
+* Semakan tersembunyi ini adalah semakan pertama',
+	'oversight-log-hiderev'       => 'membuang sebuah suntingan daripada $1',
+	'oversight'                   => 'Sembunyi semakan',
+	'oversight-view'              => 'butiran',
+	'oversight-difference'        => '(Perbezaan dengan semakan sebelumnya)',
+	'oversight-prev'              => 'Semakan sebelumnya',
+	'oversight-hidden'            => 'Semakan rahsia',
+	'oversight-header'            => 'Berikut ialah senarai terkini bagi semakan yang dirahsiakan daripada pandangan orang ramai.
+Pendedahan maklumat ini boleh mengakibatkan jawatan pengawal ditarik balik.',
 );
 
 /** Low German (Plattdüütsch)
@@ -1852,7 +1899,8 @@ $messages['pms'] = array(
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */
 $messages['ps'] = array(
-	'oversight-view' => 'تفصيل',
+	'hiderevision-submit' => 'د تل لپاره همدا مالومات پټول',
+	'oversight-view'      => 'تفصيل',
 );
 
 /** Portuguese (Português)

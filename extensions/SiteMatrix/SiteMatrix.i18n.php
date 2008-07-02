@@ -183,6 +183,14 @@ $messages['cs'] = array(
 	'sitematrix-fishbowl'  => 'editování omezeno',
 );
 
+/** Church Slavic (Словѣ́ньскъ / ⰔⰎⰑⰂⰡⰐⰠⰔⰍⰟ)
+ * @author ОйЛ
+ */
+$messages['cu'] = array(
+	'sitematrix'          => 'Викимє́дїѩ опꙑтьствова́нии катало́гъ',
+	'sitematrix-language' => 'ѩꙁꙑ́къ',
+);
+
 /** Welsh (Cymraeg)
  * @author Lloffiwr
  */
@@ -975,6 +983,7 @@ $messages['ps'] = array(
 	'sitematrix-others'    => 'د ويکي-رسنۍ نورې پروژې',
 	'sitematrix-total'     => "'''ټولټال شمېر: $1'''",
 	'sitematrix-sitetotal' => 'ټولټال',
+	'sitematrix-private'   => 'ځاني',
 );
 
 /** Portuguese (Português)

@@ -32,6 +32,13 @@ $messages['fr'] = array(
 	'randomimage-desc' => 'Fournit un média au hasard en utilisant <tt>&lt;randomimage /&gt;</tt>',
 );
 
+/** Galician (Galego)
+ * @author Toliño
+ */
+$messages['gl'] = array(
+	'randomimage-desc' => 'Proporciona un seleccionador multimedia ao chou usando <tt>&lt;randomimage /&gt;</tt>',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

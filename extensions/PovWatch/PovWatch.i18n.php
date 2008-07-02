@@ -233,11 +233,16 @@ $messages['gl'] = array(
 	'povwatch_unsubscribed'            => 'Cancelouse a súa subscrición a PovWatch',
 	'povwatch_invalid_title'           => 'O título especificado foi non válido',
 	'povwatch_pushed'                  => '"[[$1]]" foi engadida con éxito á(s) páxinas(s) de vixilancia de $2',
+	'povwatch_intro'                   => 'PovWatch é un servizo que permite que páxinas polémicas sexan "empurradas" discretamente ás listaxes de vixilancia dos adminitradores subscritos.
+
+un rexistro dos "empurróns" ás listaxes de vixilancia recentes está dispoñible en [[Special:PovWatch/log]].',
 	'povwatch_subscriber_list'         => 'Unha [[Special:PovWatch/subscribers|listaxe de subscritores]] está dispoñíbel.',
 	'povwatch_subscriber_list_intro'   => '<strong>Listaxe dos subscritores</strong>',
 	'povwatch_not_allowed_subscribers' => 'Non ten permiso para ver a listaxe de subscrición de PovWatch.',
 	'povwatch_unknown_subpage'         => 'Subpáxina descoñecida.',
 	'povwatch_push'                    => 'Empurrar',
+	'povwatch_push_intro'              => 'Use o formulario de embaixo para "empurrar" páxinas ás listaxes de vixilancia dos usuarios subscritos.
+Por favor, sexa coidadoso ao teclear o título: incluso os títulos non existentes poden ser engadidos e non hai forma de eliminar un título unha vez que este foi "empurrado".',
 	'povwatch_title'                   => 'Título:',
 	'povwatch_comment'                 => 'Rexistro de comentarios:',
 	'povwatch_no_log'                  => 'Non hai entradas no rexistro.',
@@ -249,6 +254,7 @@ Faga clic no botón de embaixo para cancelar a subscrición.',
 Faga clic no botón de embaixo para subscribirse.',
 	'povwatch_subscribe'               => 'Subscribir',
 	'povwatch_added'                   => 'engadido',
+	'right-povwatch_admin'             => 'Administrar os dereitos de usuario para engadir páxinas ás listaxes de vixilancia doutros usuarios',
 	'right-povwatch_user'              => 'Engadir páxinas á listaxe de vixilancia doutros usuarios',
 );
 

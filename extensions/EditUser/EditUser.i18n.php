@@ -34,6 +34,13 @@ $messages['mhr'] = array(
 	'edituser-dosearch' => 'Кычал',
 );
 
+/** Niuean (native name missing)
+ * @author Jose77
+ */
+$messages['niu'] = array(
+	'edituser-dosearch' => 'Fano',
+);
+
 /** Afrikaans (Afrikaans)
  * @author Arnobarnard
  */
@@ -105,6 +112,13 @@ $messages['ca'] = array(
  */
 $messages['ch'] = array(
 	'edituser-dosearch' => 'Aligao',
+);
+
+/** Church Slavic (Словѣ́ньскъ / ⰔⰎⰑⰂⰡⰐⰠⰔⰍⰟ)
+ * @author ОйЛ
+ */
+$messages['cu'] = array(
+	'edituser-dosearch' => 'ищи́',
 );
 
 /** Danish (Dansk)
@@ -215,6 +229,13 @@ $messages['gv'] = array(
 	'edituser'          => 'Ymmydeyr y reaghey',
 	'edituser-username' => 'Ennym',
 	'edituser-dosearch' => 'Ronsaghey',
+);
+
+/** Hakka (Hak-kâ-fa)
+ * @author Hakka
+ */
+$messages['hak'] = array(
+	'edituser-dosearch' => 'Chhìm-cháu',
 );
 
 /** Hawaiian (Hawai`i)
@@ -360,6 +381,19 @@ $messages['lb'] = array(
 	'edituser-dosearch' => 'Sichen',
 	'edituser-nouser'   => 'Dee Benotzer gëtt et net',
 	'edituser-exempt'   => 'Dee Benotzer kann net geännert ginn',
+);
+
+/** Lithuanian (Lietuvių)
+ * @author Tomasdd
+ */
+$messages['lt'] = array(
+	'edituser-desc'     => 'Privilegijuotiems naudotojams leidžiama redaguoti kitų naudotojų nustatymus',
+	'edituser'          => 'Redaguoti Naudotoją',
+	'edituser-logout'   => 'Naudotojo išregistravimas',
+	'edituser-username' => 'Vardas',
+	'edituser-dosearch' => 'Ieškoti',
+	'edituser-nouser'   => 'Tokio Naudotojo nėra',
+	'edituser-exempt'   => 'Šio Naudotojo redaguoti negalima',
 );
 
 /** Malayalam (മലയാളം)

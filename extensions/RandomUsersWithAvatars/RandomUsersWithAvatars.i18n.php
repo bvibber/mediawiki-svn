@@ -38,6 +38,14 @@ $messages['gl'] = array(
 	'random-users-avatars-desc'  => 'Engade a etiqueta <tt>&lt;randomuserswithavatars&gt;</tt> para amosar os avatares dos usuarios elixidos ao chou',
 );
 
+/** Dutch (Nederlands)
+ * @author Siebrand
+ */
+$messages['nl'] = array(
+	'random-users-avatars-title' => 'De gemeenschap ontmoeten',
+	'random-users-avatars-desc'  => 'Voegt de tag <tt>&lt;randomuserswithavatars&gt;</tt> toe om de avatars van willekeurige gebruikers weer te geven',
+);
+
 /** Swedish (Svenska)
  * @author Boivie
  */
@@ -45,3 +53,4 @@ $messages['sv'] = array(
 	'random-users-avatars-title' => 'Träffa gemenskapen',
 	'random-users-avatars-desc'  => 'Lägger till taggen <tt>&lt;randomuserswithavatars&gt;</tt> för att visa avatarerna för slumpvis utvalda användare',
 );
+

@@ -816,6 +816,13 @@ $messages['hu'] = array(
 	'ogg-desc-link'           => 'Fájlinformációk',
 );
 
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'ogg-more' => 'Plus…',
+);
+
 /** Indonesian (Bahasa Indonesia)
  * @author IvanLanin
  */

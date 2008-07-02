@@ -100,3 +100,37 @@ Un fichier importé pourra contenir un nom de la page et un motif facultatif sé
 	'deletebatch-select-yourself'      => 'vous',
 	'deletebatch-no-page'              => 'Veuillez indiquer au moins une page à supprimer OU un fichier donné contenant une liste de pages.',
 );
+
+/** Dutch (Nederlands)
+ * @author Siebrand
+ */
+$messages['nl'] = array(
+	'deletebatch'                      => 'Paginareeks verwijderen',
+	'deletebatch-desc'                 => '[[Special:DeleteBatch|Paginareeks verwijderen]]',
+	'deletebatch-button'               => 'VERWIJDEREN',
+	'deletebatch-here'                 => '<b>hier</b>',
+	'deletebatch-help'                 => 'Een lijst pagina\'s verwijderen.
+U kunt een enkele pagina verwijderen of een lijst van pagina\'s in een bestand.
+Kies een gebruiker die in het verwijderlogboek wordt genoemd.
+Het bestand dat u uploadt moet op iedere regel een paginanaam en een reden bevatten (optioneel), gescheiden door het karakter "|".',
+	'deletebatch-caption'              => 'Paginalijst',
+	'deletebatch-title'                => 'Reeks verwijderen',
+	'deletebatch-link-back'            => 'Teruggaan naar de uitbreiding',
+	'deletebatch-as'                   => 'Script uitvoeren als',
+	'deletebatch-both-modes'           => "Kies een bepaalde pagina of geef een list met pagina's op.",
+	'deletebatch-or'                   => '<b>OF</b>',
+	'deletebatch-page'                 => "Te verwijderen pagina's",
+	'deletebatch-reason'               => 'Reden voor verwijderen',
+	'deletebatch-processing'           => "bezig met het verwijderen van pagina's",
+	'deletebatch-from-file'            => 'van een lijst uit een bestand',
+	'deletebatch-from-form'            => 'uit het formulier',
+	'deletebatch-success-subtitle'     => 'voor $1',
+	'deletebatch-omitting-nonexistant' => 'Niet-bestaande pagina $1 is overgeslagen.',
+	'deletebatch-omitting-invalid'     => 'Ongeldige paginanaam $1 is overgeslagen.',
+	'deletebatch-file-bad-format'      => 'Het bestand moet platte tekst bevatten',
+	'deletebatch-file-missing'         => 'Het bestnad kan niet gelezen worden',
+	'deletebatch-select-script'        => "script pagina's verwijderen",
+	'deletebatch-select-yourself'      => 'u',
+	'deletebatch-no-page'              => "Geef tenminste één te verwijderen pagina op of kies een bestand dat de lijst met pagina's bevat.",
+);
+

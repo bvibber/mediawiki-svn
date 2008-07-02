@@ -103,6 +103,13 @@ $messages['mhr'] = array(
 	'sign-viewfield-email' => 'Электрон почто',
 );
 
+/** Niuean (native name missing)
+ * @author Jose77
+ */
+$messages['niu'] = array(
+	'sign-viewfield-email' => 'Meli hila',
+);
+
 /** Afrikaans (Afrikaans)
  * @author SPQRobin
  * @author Arnobarnard
@@ -115,6 +122,16 @@ $messages['af'] = array(
 	'sign-viewfield-city'     => 'Stad',
 	'sign-viewfield-email'    => 'E-pos',
 	'sign-viewfield-options'  => 'Opsies',
+);
+
+/** Aragonese (Aragonés)
+ * @author Juanpabl
+ */
+$messages['an'] = array(
+	'sign-viewfield-reviewedby'    => 'Rebisador',
+	'sign-viewfield-reviewcomment' => 'Comentario',
+	'sign-review-comment'          => 'Comentario',
+	'sign-submitreview'            => 'Nimbiar rebisión',
 );
 
 $messages['ang'] = array(
@@ -712,6 +729,14 @@ $messages['hy'] = array(
 	'sign-realname' => 'Անուն`',
 );
 
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'sign-viewfield-reviewcomment' => 'Commento',
+	'sign-review-comment'          => 'Commento',
+);
+
 /** Indonesian (Bahasa Indonesia)
  * @author Irwangatot
  * @author Rex
@@ -896,6 +921,13 @@ $messages['lb'] = array(
 	'sign-uniquequery-similarname'  => 'Ähnleche Numm',
 	'sign-uniquequery-similarphone' => 'Ähnlech Telefonsnummer',
 	'sign-uniquequery-similaremail' => 'Ähnlech E-Mailadress',
+);
+
+/** Lithuanian (Lietuvių)
+ * @author Tomasdd
+ */
+$messages['lt'] = array(
+	'sign-realname' => 'Vardas:',
 );
 
 /** Malayalam (മലയാളം)

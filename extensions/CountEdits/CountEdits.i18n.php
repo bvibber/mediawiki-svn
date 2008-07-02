@@ -25,6 +25,13 @@ Do not judge contributors by their edit count.",
 	'countedits-nocontribs'   => 'There have been no contributions to this wiki.',
 );
 
+/** Niuean (native name missing)
+ * @author Jose77
+ */
+$messages['niu'] = array(
+	'countedits-username' => 'Matahigoa he tagata:',
+);
+
 /** Afrikaans (Afrikaans)
  * @author Arnobarnard
  * @author SPQRobin
@@ -304,6 +311,14 @@ $messages['hy'] = array(
 	'countedits-resulttext' => '$1 մասնակիցը կատարել է $2 խմբագրում',
 	'countedits-mostactive' => 'Ամենաակտիվ մասնակիցները',
 	'countedits-nocontribs' => 'Այս վիքիում ոչ մի խմբագրում չի եղել։',
+);
+
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'countedits-username' => 'Nomine de usator:',
+	'countedits-ok'       => 'OK',
 );
 
 /* Indonesian (Ivan Lanin) */

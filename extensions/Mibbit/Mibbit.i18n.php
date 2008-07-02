@@ -20,6 +20,13 @@ Anonymous users are given an automatically generated one, but it can be changed.
         'right-mibbit'  => 'Allowed to use Mibbit chat',
 );
 
+/** بلوچی مکرانی (بلوچی مکرانی)
+ * @author Mostafadaneshvar
+ */
+$messages['bcc'] = array(
+	'mibbit' => 'می بیت گپ(Mibbit Chat)',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  */
@@ -121,7 +128,7 @@ Les utilisateurs anonymes se verront attribuer un pseudo créé automatiquement,
  */
 $messages['gl'] = array(
 	'mibbit'        => 'Conversa Mibbit',
-	'mibbit-desc'   => 'Engade unha [[Special:Mibbit|páxina especial]] usada para chatear en tempo real con outros usuarios do wiki',
+	'mibbit-desc'   => 'Engade unha [[Special:Mibbit|páxina especial]] usada para conversar en tempo real con outros usuarios do wiki',
 	'mibbit-header' => 'Esta páxina especial permítelle colaborar en tempo real con outros usuarios do wiki.
 Para conectarse simplemente prema no botón "Conectar".
 Se está rexistrado o seu nome de usuario será fixado por defecto.
@@ -135,6 +142,19 @@ Aos usuarios anónimos concederáselles un nome automático, que pode ser cambia
 $messages['hi'] = array(
 	'mibbit'      => 'मीब्बीट चैट',
 	'mibbit-desc' => 'अन्य विकि सदस्योंसे इसी समय चैट करने के लिये उपयुक्त एक [[Special:Mibbit|विशेष पृष्ठ]]',
+);
+
+/** Indonesian (Bahasa Indonesia)
+ * @author Rex
+ */
+$messages['id'] = array(
+	'mibbit'        => 'Mibbit Chat',
+	'mibbit-desc'   => 'Menambahkan sebuah [[Special:Mibbit|halaman istimewa]] yang digunakan untuk chat secara langsung dengan pengguna wiki lainnya',
+	'mibbit-header' => 'Halaman istimewa ini memberikan fasilitas untuk berkolaborasi secara langsung dengan pengguna wiki lainnya.
+Tekan tombol "Connect" untuk memulai koneksi.
+Jika Anda telah masuk log, nama pengguna Anda akan dipergunakan.
+Pengguna anonim diberikan nama pengguna otomatis, yang dapat diubah sendiri.',
+	'right-mibbit'  => 'Diizinkan menggunakan fasilitas chat Mibbit',
 );
 
 /** Italian (Italiano)

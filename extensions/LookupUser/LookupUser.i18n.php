@@ -259,6 +259,7 @@ $messages['km'] = array(
  */
 $messages['lb'] = array(
 	'lookupuser'                   => 'Benotzerinformatiounen nokucken',
+	'lookupuser-desc'              => '[[Special:LookupUser|Informatioune vun engem Benotzer kréien]] wéi seng E-Mailadress a seng Idendifikatiounsnummer (ID)',
 	'lookupuser_intro'             => "Gitt e Benotzernumm an fir d'Astellungen vun dem Benotzer ze kucken.",
 	'lookupuser_nonexistent'       => 'Feeler: De Benotzer gëtt et net',
 	'lookupuser_authenticated'     => 'E-Mail-Confirmatioun: $1',
@@ -267,6 +268,7 @@ $messages['lb'] = array(
 	'lookupuser_email'             => 'E-mail: [[Special:Emailuser/$2|$1]]',
 	'lookupuser_realname'          => 'Richtege Numm: $1',
 	'lookupuser_registration'      => 'Datum vun der Umeldung: $1',
+	'lookupuser_touched'           => "Benotzerkont de fir d'lescht beréiert gouf: $1",
 	'lookupuser_useroptions'       => 'Astellunge vum Benotzer:',
 );
 

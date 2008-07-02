@@ -98,6 +98,13 @@ $messages['gl'] = array(
 	'dplforum-toomany' => 'Foro DPL: demasiadas categorías!',
 );
 
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'dplforum-never' => 'Nunquam',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
@@ -142,9 +149,10 @@ $messages['nds'] = array(
 
 /** Dutch (Nederlands)
  * @author Siebrand
+ * @author SPQRobin
  */
 $messages['nl'] = array(
-	'dplforum-desc'    => 'Forumextensie gebaseerd op DPL',
+	'dplforum-desc'    => 'Forumuitbreiding gebaseerd op DPL',
 	'dplforum-by'      => 'door',
 	'dplforum-edited'  => ' - Laatste bewerking',
 	'dplforum-never'   => 'Nooit',
@@ -178,9 +186,16 @@ $messages['oc'] = array(
 
 /** Polish (Polski)
  * @author McMonster
+ * @author Sp5uhe
+ * @author Wpedzich
  */
 $messages['pl'] = array(
-	'dplforum-never' => 'Nigdy',
+	'dplforum-desc'    => 'Forum oparte na DPL',
+	'dplforum-by'      => 'przez',
+	'dplforum-edited'  => '  - ostatnia edycja',
+	'dplforum-never'   => 'Nigdy',
+	'dplforum-toofew'  => 'Forum DPL: Zbyt mało kategorii!',
+	'dplforum-toomany' => 'Forum DPL: Zbyt wiele kategorii!',
 );
 
 /** Pashto (پښتو)

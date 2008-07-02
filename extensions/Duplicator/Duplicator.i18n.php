@@ -251,12 +251,14 @@ $messages['fi'] = array(
 
 /** French (Français)
  * @author IAlex
+ * @author Grondin
  */
 $messages['fr'] = array(
 	'duplicator'                       => 'Dupliquer un article',
 	'duplicator-desc'                  => 'Créer des copies distinctes d’articles avec l’historique complet des modifications.',
 	'duplicator-toolbox'               => 'Dupliquer cet article',
 	'duplicator-header'                => 'Cette page permet la duplication complète d’un article, en créant deux versions indépendantes de l’historique complet. Il sert par exemple à séparer un article en deux.',
+	'duplicator-options'               => 'Options',
 	'duplicator-source'                => 'Source :',
 	'duplicator-dest'                  => 'Destination :',
 	'duplicator-dotalk'                => 'Dupliquer la page de discussion (si elle existe)',

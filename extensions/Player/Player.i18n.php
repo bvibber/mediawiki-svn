@@ -179,20 +179,24 @@ $messages['fy'] = array(
 	'player-goto-page' => 'Side',
 );
 
+/** Galician (Galego)
+ * @author Xosé
+ * @author Toliño
+ */
 $messages['gl'] = array(
-	'player' => 'Reprodutor',
-	'player-title' => 'Reprodutor',
-	'player-playertitle' => 'Reprodutor: $1',
-	'player-file' => 'Nome do ficheiro',
-	'player-play' => 'Reproducir',
-	'player-imagepage-header' => '<h1>$1</h1>',#identical but defined
-	'player-not-allowed' => 'formato non permitido',
-	'player-not-found' => 'ficheiro non atopado',
+	'player'               => 'Reprodutor',
+	'player-desc'          => 'Lector multimedia incorporado usando os complementos comúns do navegador e mais unha [[Special:Player|páxina especial]]',
+	'player-title'         => 'Reprodutor',
+	'player-playertitle'   => 'Reprodutor: $1',
+	'player-file'          => 'Nome do ficheiro',
+	'player-play'          => 'Reproducir',
+	'player-not-allowed'   => 'formato non permitido',
+	'player-not-found'     => 'ficheiro non atopado',
 	'player-invalid-title' => 'título non válido',
-	'player-clicktoplay' => 'Reproducir $1',
-	'player-goto-player' => 'reprodutor',
-	'player-goto-page' => 'Páxina',
-	'player-goto-file' => 'ficheiro',
+	'player-clicktoplay'   => 'Reproducir $1',
+	'player-goto-player'   => 'reprodutor',
+	'player-goto-page'     => 'Páxina',
+	'player-goto-file'     => 'ficheiro',
 );
 
 /** Manx (Gaelg)

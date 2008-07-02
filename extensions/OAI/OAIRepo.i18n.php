@@ -144,6 +144,13 @@ $messages['oc'] = array(
 	'oai-desc' => 'Provesís una interfàcia de depaus [http://www.openarchives.org/OAI/openarchivesprotocol.html OAI-PMH]',
 );
 
+/** Polish (Polski)
+ * @author Sp5uhe
+ */
+$messages['pl'] = array(
+	'oai-desc' => 'Dostarcza interfejs do repozytoriów [http://www.openarchives.org/OAI/openarchivesprotocol.html OAI-PMH]',
+);
+
 /** Portuguese (Português)
  * @author Malafaya
  */

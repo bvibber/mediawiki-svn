@@ -40,6 +40,13 @@ $4",
 	'todo-form-submit'      => 'Submit query',
 );
 
+/** Tarifit (Tarifit)
+ * @author Jose77
+ */
+$messages['rif'] = array(
+	'todo-new-queue' => 'amaynu',
+);
+
 /** Karelian (Karjala)
  * @author Flrn
  */
@@ -52,6 +59,13 @@ $messages['krl'] = array(
  */
 $messages['mhr'] = array(
 	'todo-list-cancel' => 'Чараш',
+);
+
+/** Niuean (native name missing)
+ * @author Jose77
+ */
+$messages['niu'] = array(
+	'todo-list-cancel' => 'Tiaki',
 );
 
 /** Afrikaans (Afrikaans)
@@ -184,12 +198,24 @@ $4",
  */
 $messages['gl'] = array(
 	'todo'                  => 'Lista de tarefas pendentes',
+	'todo-desc'             => 'Extensión experimental da [[Special:Todo|lista persoal de tarefas pendentes]]',
 	'todo-tab'              => 'tarefas pendentes',
 	'todo-new-queue'        => 'novo',
+	'todo-mail-subject'     => 'Completado o ítem da lista de tarefas pendentes de $1',
+	'todo-mail-body'        => 'Solicitou unha confirmación por correo electrónico acerca do remate dun ítem que enviou á lista en liña de tarefas pendentes.
+
+Ítem: $2
+Enviado: $3
+
+Este ítem foi marcado como completado, con este comentario:
+$4',
 	'todo-invalid-item'     => 'Artigo perdido ou non válido',
+	'todo-update-else-item' => 'Intentando actualizar os ítems de alguén',
 	'todo-unrecognize-type' => 'Tipo non recoñecido',
+	'todo-user-invalide'    => 'As tarefas pendentas dadas son inválidas, faltan, ou son dun usuario que non ten dereito para telas.',
 	'todo-item-list'        => 'Os seus artigos',
 	'todo-no-item'          => 'Non hai tarefas pendentes.',
+	'todo-invalid-owner'    => 'Propietario inválido deste ítem',
 	'todo-add-queue'        => 'Engadir cola…',
 	'todo-move-queue'       => 'Mover á cola…',
 	'todo-list-for'         => 'Lista de tarefas pendentes para',

@@ -23,6 +23,13 @@ Please specify "create", "comment", "search" or "search2".',
 	'createarticle'           => 'Create page',
 );
 
+/** Niuean (native name missing)
+ * @author Jose77
+ */
+$messages['niu'] = array(
+	'createarticle' => 'Talaga tohi tala',
+);
+
 /** Amharic (አማርኛ)
  * @author Codex Sinaiticus
  */

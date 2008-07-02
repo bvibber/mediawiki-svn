@@ -272,6 +272,7 @@ $messages['sv'] = array(
 $messages['te'] = array(
 	'icon-badimage' => 'చెడు బొమ్మ',
 	'icon-badwidth' => 'తప్పుడు వెడల్పు',
+	'icon-desc'     => 'బొమ్మలను ప్రతీకాలుగానూ మరియు ప్రతీకపు లింకులుగాను వాడుకునే వీలుకల్పిస్తుంది',
 );
 
 /** Tajik (Cyrillic) (Тоҷикӣ/tojikī (Cyrillic))
@@ -280,6 +281,13 @@ $messages['te'] = array(
 $messages['tg-cyrl'] = array(
 	'icon-badimage' => 'Акси номуносиб',
 	'icon-badwidth' => 'Васеъии номуносиб',
+);
+
+/** Thai (ไทย)
+ * @author Passawuth
+ */
+$messages['th'] = array(
+	'icon-badimage' => 'ภาพเสีย',
 );
 
 /** Turkish (Türkçe)

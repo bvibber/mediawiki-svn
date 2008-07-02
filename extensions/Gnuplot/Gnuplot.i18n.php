@@ -97,9 +97,10 @@ $messages['oc'] = array(
 
 /** Polish (Polski)
  * @author Dodek
+ * @author Sp5uhe
  */
 $messages['pl'] = array(
-	'gnuplot-desc' => 'Dodaj tag <code><nowiki><gnuplot></nowiki></code> by użyć Gnuplota',
+	'gnuplot-desc' => 'Dodaje tag <code><nowiki><gnuplot></nowiki></code> do użycia przez Gnuplot',
 );
 
 /** Portuguese (Português)

@@ -84,6 +84,7 @@ $messages['fr'] = array(
  */
 $messages['gl'] = array(
 	'purgecache'         => 'Purgar a memoria caché',
+	'purgecache-desc'    => '[[Special:PurgeCache|Páxina especial]] usada para limpar a táboa OBJECTCACHE',
 	'purgecache-warning' => 'Isto purgará a memoria caché das táboas.',
 	'purgecache-purged'  => 'A memoria caché foi purgada.',
 	'purgecache-button'  => 'Depurar',
@@ -165,6 +166,7 @@ $messages['km'] = array(
  */
 $messages['lb'] = array(
 	'purgecache'         => 'Cache eidel maachen',
+	'purgecache-desc'    => "[[Special:PurgeCache|Spezialsäit]] fir d'Tabell-OBJECTCACHE eidel ze maachen",
 	'purgecache-warning' => "Hei ginn d'Tafele vum Cache eidelgemaach.",
 	'purgecache-purged'  => 'De Cache gouf eidel gemaach.',
 	'purgecache-button'  => 'Eidel maachen',

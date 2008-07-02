@@ -65,9 +65,11 @@ $messages['fr'] = array(
 
 /** Galician (Galego)
  * @author Alma
+ * @author Toliño
  */
 $messages['gl'] = array(
 	'usercontactlink-baduser' => 'nome de usuario non correcto',
+	'usercontactlink-desc'    => 'Proporciona a capacidade de engadir sinxela e consistentemente outros nomes de usuario usando a sintaxe ^^^user^^^',
 );
 
 $messages['hsb'] = array(
@@ -155,6 +157,7 @@ $messages['pl'] = array(
  */
 $messages['ps'] = array(
 	'usercontactlink-baduser' => 'ناسم کارن-نوم',
+	'usercontactlink-desc'    => 'د ^^^کارونکی^^^ ژبرغښت په کارولو سره به په ساده او پرله پسې توګه د کارونکو د نومونو د ورګډولو توان پېدا شي',
 );
 
 /** Portuguese (Português)

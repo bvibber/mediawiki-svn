@@ -106,6 +106,13 @@ $messages['mhr'] = array(
 	'openidchoosepassword' => 'шолыпмут:',
 );
 
+/** Niuean (native name missing)
+ * @author Jose77
+ */
+$messages['niu'] = array(
+	'openidchoosepassword' => 'kupu fufu:',
+);
+
 /** Afrikaans (Afrikaans)
  * @author Arnobarnard
  */
@@ -194,6 +201,13 @@ $messages['bg'] = array(
 Ако не е, можете да използвате бутона \\"Продължаване\\".',
 	'openidclientonlytext'          => 'Не можете да използвате сметки от това уики като OpenID за друг сайт.',
 	'openidloginlabel'              => 'OpenID Адрес',
+);
+
+/** Church Slavic (Словѣ́ньскъ / ⰔⰎⰑⰂⰡⰐⰠⰔⰍⰟ)
+ * @author ОйЛ
+ */
+$messages['cu'] = array(
+	'openidlanguage' => 'ѩꙁꙑ́къ',
 );
 
 /** Danish (Dansk)
@@ -311,6 +325,7 @@ Il existe plusieurs [http://wiki.openid.net/Public_OpenID_providers fournisseur 
  * @author Toliño
  */
 $messages['gl'] = array(
+	'openid-desc'                   => 'Acceder ao sistema do wiki cun [http://openid.net/ OpenID] e acceder a outras páxinas web OpenID cunha conta de usuario dun wiki',
 	'openidlogin'                   => 'Acceder ao sistema co OpenID',
 	'openidfinish'                  => 'Saír do sistema OpenID',
 	'openidserver'                  => 'Servidor do OpenID',
@@ -332,6 +347,7 @@ Por favor, consúlteo co administrador do sitio.',
 	'openidusernameprefix'          => 'Usuario do OpenID',
 	'openidserverlogininstructions' => 'Insira o seu contrasinal embaixo para acceder a $3 como o usuario $2 (páxina de usuario $1).',
 	'openidtrustinstructions'       => 'Comprobe se quere compartir datos con $1.',
+	'openidallowtrust'              => 'Permitir que $1 revise esta conta de usuario.',
 	'openidnopolicy'                => 'O sitio non especificou unha política de privacidade.',
 	'openidpolicy'                  => 'Comprobe a <a target="_new" href="$1">política de privacidade</a> para máis información.',
 	'openidoptional'                => 'Opcional',
@@ -341,6 +357,7 @@ Por favor, consúlteo co administrador do sitio.',
 	'openidemail'                   => 'Enderezo de correo electrónico',
 	'openidlanguage'                => 'Lingua',
 	'openidnotavailable'            => 'O seu alcume preferido ($1) xa está sendo usado por outro usuario.',
+	'openidnotprovided'             => 'O servidor do seu OpenID non proporcionou un alcume (porque non pode ou porque vostede lle dixo que non o fixera).',
 	'openidchooseinstructions'      => 'Todos os usuarios precisan un alcume; pode escoller un de entre as opcións de embaixo.',
 	'openidchoosefull'              => 'O seu nome completo ($1)',
 	'openidchooseurl'               => 'Un nome tomado do seu OpenID ($1)',
@@ -359,8 +376,23 @@ Se quere usar OpenID para acceder ao sistema no futuro, pode [[Special:OpenIDCon
 	'tog-hideopenid'                => 'Agoche o seu <a href="http://openid.net/">OpenID</a> na súa páxina de usuario, se accede ao sistema con OpenID.',
 	'openidnousername'              => 'Non foi especificado ningún nome de usuario.',
 	'openidbadusername'             => 'O nome de usuario especificado é incorrecto.',
+	'openidautosubmit'              => 'Esta páxina inclúe un formulario que debería ser enviado automaticamente se ten o JavaScript permitido.
+Se non é así, probe a premer no botón \\"Continuar\\".',
 	'openidclientonlytext'          => 'Non pode usar contas deste wiki como OpenIDs noutro sitio.',
 	'openidloginlabel'              => 'Dirección URL do OpenID',
+	'openidlogininstructions'       => "{{SITENAME}} soporta o [http://openid.net/ OpenID] estándar para unha soa sinatura entre os sitios web.
+OpenID permítelle rexistrarse en diferentes sitios web sen usar un contrasinal diferente para cada un.
+(Consulte o [http://en.wikipedia.org/wiki/OpenID artigo sobre o OpenID na Wikipedia en inglés] para máis información.)
+
+Se xa ten unha conta en {{SITENAME}}, pode [[Special:Userlogin|acceder ao sistema]] co seu nome de usuario e contrasinal como o fai habitualmente.
+Para usar o OpenID no futuro, pode [[Special:OpenIDConvert|converter a súa conta en OpenID]] tras ter accedido ao sistema como fai normalmente.
+
+Hai moitos [http://wiki.openid.net/Public_OpenID_providers proveedores públicos de OpenID] e xa pode ter unha conta co OpenID permitido noutro servizo.
+
+; Outros wikis : Se ten unha conta nun wiki co OpenID permitido, como [http://wikitravel.org/ Wikitravel], [http://www.wikihow.com/ wikiHow], [http://vinismo.com/ Vinismo], [http://aboutus.org/ AboutUs] ou [http://kei.ki/ Keiki], pode acceder ao sistema de {{SITENAME}}  tecleando o '''URL completo''' da súa páxina de usuario nesoutro wiki na caixa de enriba. Por exemplo, ''<nowiki>http://kei.ki/en/User:Evan</nowiki>''.
+; [http://openid.yahoo.com/ Yahoo!] : Se ten unha conta no Yahoo!, pode acceder ao sistema deste sitio tecleando o seu OpenID de Yahoo! proporcionado na caixa de enriba. Os URLs do Yahoo! para os OpenID son da seguinte maneira: ''<nowiki>https://me.yahoo.com/yourusername</nowiki>''.
+; [http://dev.aol.com/aol-and-63-million-openids AOL] : Se ten unha conta con [http://www.aol.com/ AOL], como unha conta [http://www.aim.com/ AIM], pode acceder ao sistema de {{SITENAME}} tecleando o seu OpenID proporcionado polo AOL na caixa de enriba. Os URLs do AOL para os OpenID son da seguinte maneira: ''<nowiki>http://openid.aol.com/yourusername</nowiki>''. O seu nome de usuario debe estar en letras minúsculas e escrito sen espazos.
+; [http://bloggerindraft.blogspot.com/2008/01/new-feature-blogger-as-openid-provicoder.html Blogger], [http://faq.wordpress.com/2007/03/06/what-is-openid/ Wordpress.com], [http://www.livejournal.com/openid/about.bml LiveJournal], [http://bradfitz.vox.com/library/post/openid-for-vox.html Vox] : Se ten un blogue nalgún destes servizos, teclee o URL do seu blogue na caixa de enriba. Por exemplo, ''<nowiki>http://yourusername.blogspot.com/</nowiki>'', ''<nowiki>http://yourusername.wordpress.com/</nowiki>'', ''<nowiki>http://yourusername.livejournal.com/</nowiki>'', ou ''<nowiki>http://yourusername.vox.com/</nowiki>''.",
 );
 
 /** Manx (Gaelg)
@@ -536,6 +568,13 @@ Számos [http://wiki.openid.net/Public_OpenID_providers nyilvános OpenID szolg�
 ; [http://openid.yahoo.com/ Yahoo!] :  ha van Yahoo! azonosítód, bejelentkezhetsz a Yahoo! OpenID-d megadásával. A Yahoo! OpenID-k ''<nowiki>https://me.yahoo.com/felhasználónév</nowiki>'' alakúak.
 ; [http://dev.aol.com/aol-and-63-million-openids AOL] : Ha van valamilyen [http://www.aol.com/ AOL] azonosítód, például egy [http://www.aim.com/ AIM] felhasználónév, bejelentkezhetsz az AOL OpenID-del. Az AOL OpenID-k ''<nowiki>http://openid.aol.com/felhasználónév</nowiki>'' alakúak (a felhasználónév csupa kisbetűvel, szóköz nélkül).
 ; [http://bloggerindraft.blogspot.com/2008/01/new-feature-blogger-as-openid-provider.html Blogger], [http://faq.wordpress.com/2007/03/06/what-is-openid/ Wordpress.com], [http://www.livejournal.com/openid/about.bml LiveJournal], [http://bradfitz.vox.com/library/post/openid-for-vox.html Vox] : ezek a blogszolgáltatók mind biztosítanak OpenID-t, a következő formákban: ''<nowiki>http://felhasználónév.blogspot.com/</nowiki>'', ''<nowiki>http://felhasználónév.wordpress.com/</nowiki>'', ''<nowiki>http://felhasználónév.livejournal.com/</nowiki>'', or ''<nowiki>http://felhasználónév.vox.com/</nowiki>''.",
+);
+
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'openidchoosepassword' => 'contrasigno:',
 );
 
 /** Icelandic (Íslenska)

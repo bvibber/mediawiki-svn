@@ -30,6 +30,13 @@ $messages['en'] = array(
 	'importusers-realname'                => 'real name',
 );
 
+/** Tarifit (Tarifit)
+ * @author Jose77
+ */
+$messages['rif'] = array(
+	'importusers-log-summary-all' => 'Maṛṛa',
+);
+
 /** Eastern Mari (Олык Марий йылме)
  * @author Сай
  */
@@ -37,6 +44,16 @@ $messages['mhr'] = array(
 	'importusers-log-summary' => 'Чылаже',
 	'importusers-password'    => 'шолыпмут',
 	'importusers-email'       => 'электрон почто',
+);
+
+/** Niuean (native name missing)
+ * @author Jose77
+ */
+$messages['niu'] = array(
+	'importusers-uploadfile'  => 'Fakafano e faila',
+	'importusers-log-summary' => 'Fakakatoakatoa',
+	'importusers-password'    => 'kupu fufu',
+	'importusers-email'       => 'meli hila',
 );
 
 /** Afrikaans (Afrikaans)
@@ -232,6 +249,7 @@ $messages['fr'] = array(
  */
 $messages['gl'] = array(
 	'importusers'                         => 'Importar Usuarios',
+	'importusers-desc'                    => 'Importa usuarios en bloque dende ficheiros CSV; codificación: UTF-8',
 	'importusers-uploadfile'              => 'Cargar ficheiro',
 	'importusers-form-caption'            => 'Ficheiro de entrada CSV (UTF-8)',
 	'importusers-form-file'               => 'Formato do ficheiro do usuario (csv):',
@@ -260,6 +278,13 @@ $messages['gv'] = array(
 	'importusers-password'   => "dt'ockle arrey",
 	'importusers-email'      => 'post-L',
 	'importusers-realname'   => 'feer-ennym',
+);
+
+/** Hakka (Hak-kâ-fa)
+ * @author Hakka
+ */
+$messages['hak'] = array(
+	'importusers-uploadfile' => 'Sông-chhòn tóng-on',
 );
 
 /** Hindi (हिन्दी)
@@ -322,6 +347,13 @@ $messages['hsb'] = array(
 	'importusers-password'                => 'hesło',
 	'importusers-email'                   => 'e-mejl',
 	'importusers-realname'                => 'woprawdźite mjeno',
+);
+
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'importusers-password' => 'contrasigno',
 );
 
 /** Indonesian (Bahasa Indonesia)

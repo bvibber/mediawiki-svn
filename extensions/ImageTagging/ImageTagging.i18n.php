@@ -54,6 +54,14 @@ $messages['mhr'] = array(
 	'imagetagging-tagcancel-button' => 'Чараш',
 );
 
+/** Niuean (native name missing)
+ * @author Jose77
+ */
+$messages['niu'] = array(
+	'imagetagging-imghistory'       => 'Liu onoono atu ki tua',
+	'imagetagging-tagcancel-button' => 'Tiaki',
+);
+
 /** Afrikaans (Afrikaans)
  * @author Arnobarnard
  */
@@ -153,12 +161,15 @@ $messages['de'] = array(
  * @author Yekrats
  */
 $messages['eo'] = array(
+	'imagetagging-addimagetag'        => 'Marki ĉi tiun bildon',
 	'imagetagging-article'            => 'Paĝo',
+	'imagetagging-articletotag'       => 'Paĝo por marki',
 	'imagetagging-imghistory'         => 'Historio',
 	'imagetagging-images'             => 'bildoj',
 	'imagetagging-inthisimage'        => 'En ĉi tiu bildo: $1',
 	'imagetagging-removetag'          => 'forigi etikedon',
 	'imagetagging-tagcancel-button'   => 'Nuligi',
+	'imagetagging-removingtag'        => 'Forigante markon...',
 	'imagetagging-taggedimages-title' => 'Bildoj de "$1"',
 );
 

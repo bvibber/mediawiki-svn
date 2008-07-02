@@ -35,6 +35,13 @@ $messages['en'] = array(
 	'badimages-page'           => '{{ns:help}}:Bad image list',
 );
 
+/** Niuean (native name missing)
+ * @author Jose77
+ */
+$messages['niu'] = array(
+	'badimages-reason' => 'Kakano:',
+);
+
 /** Afrikaans (Afrikaans)
  * @author SPQRobin
  * @author Arnobarnard
@@ -706,6 +713,13 @@ $messages['hu'] = array(
 	'badimages-log-add'        => '[[$1]] hozzáadva a hibás képek listájához',
 	'badimages-log-remove'     => '[[$1]] eltávolítva a hibás képek listájáról',
 	'badimages-page'           => '{{ns:help}}:Hibás képek listája',
+);
+
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'badimages-reason' => 'Motivo:',
 );
 
 /** Indonesian (Bahasa Indonesia)

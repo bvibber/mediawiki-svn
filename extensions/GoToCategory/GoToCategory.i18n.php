@@ -29,6 +29,13 @@ $messages['fr'] = array(
 	'gotocategory-desc' => "Cocher les termes des recherches à l’encontre de la catégorie : nom d'espace pour « Aller » à partir de la fonctionnalité « aller à la page »",
 );
 
+/** Galician (Galego)
+ * @author Toliño
+ */
+$messages['gl'] = array(
+	'gotocategory-desc' => 'Comproba os termos da procura contra o espazo de nomes Categoría: para "Ir" a partir da funcionalidade "saltar a unha páxina"',
+);
+
 /** Marathi (मराठी)
  * @author Kaustubh
  */

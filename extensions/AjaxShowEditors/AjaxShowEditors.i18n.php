@@ -305,7 +305,7 @@ $messages['hsb'] = array(
  * @author Dani
  */
 $messages['hu'] = array(
-	'ajax-se-desc'             => 'Mutasd azokat a szerkesztőket, akik ugyanazon lapokat szerkesztik',
+	'ajax-se-desc'             => 'Megmutatja azokat a szerkesztőket, akik ugyanazon lapokat szerkesztik',
 	'ajax-se-title'            => 'Jelenlegi szerkesztők:',
 	'ajax-se-pending'          => 'várakozás a frissítésre ... (kattints ide vagy kezdj el szerkeszteni)',
 	'ajax-se-idling'           => '($1 másodperce)',

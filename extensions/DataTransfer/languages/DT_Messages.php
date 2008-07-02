@@ -197,6 +197,7 @@ $messages['fy'] = array(
  * @author Toliño
  */
 $messages['gl'] = array(
+	'dt-desc'                     => 'Permite importar e exportar datos estruturados contidos en chamadas de modelos',
 	'viewxml'                     => 'Ver XML',
 	'dt_viewxml_docu'             => 'Por favor seleccione entre as seguintes categorías e espazos de nomes para ver en formato XML.',
 	'dt_viewxml_categories'       => 'Categorías',
@@ -378,6 +379,13 @@ $messages['lb'] = array(
 	'dt_xml_freetext'             => 'Fräien Text',
 );
 
+/** Lithuanian (Lietuvių)
+ * @author Tomasdd
+ */
+$messages['lt'] = array(
+	'dt_viewxml_categories' => 'Kategorijos',
+);
+
 /** Malayalam (മലയാളം)
  * @author Shijualex
  */
@@ -499,6 +507,7 @@ $messages['os'] = array(
 /** Polish (Polski)
  * @author McMonster
  * @author Sp5uhe
+ * @author Wpedzich
  */
 $messages['pl'] = array(
 	'dt-desc'                     => 'Pozwala na importowanie i eksportowanie struktur danych zawartych w wywołaniach szablonu',
@@ -513,6 +522,7 @@ $messages['pl'] = array(
 	'dt_xml_name'                 => 'Nazwa',
 	'dt_xml_title'                => 'Tytuł',
 	'dt_xml_id'                   => 'ID',
+	'dt_xml_freetext'             => 'Dowolny tekst',
 );
 
 /** Pashto (پښتو)

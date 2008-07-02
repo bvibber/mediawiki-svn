@@ -82,12 +82,26 @@ This page is only applicable to restricted users",
 	'whitelistnummatches'         => " - $1 matches",
 );
 
+/** Tarifit (Tarifit)
+ * @author Jose77
+ */
+$allMessages['rif'] = array(
+	'whitelisttablemodifyall' => 'Maṛṛa',
+);
+
 /** Eastern Mari (Олык Марий йылме)
  * @author Сай
  */
 $allMessages['mhr'] = array(
 	'mywhitelistpages' => 'Мыйын лаштык-влак',
 	'whitelistnever'   => 'нигунам',
+);
+
+/** Niuean (native name missing)
+ * @author Jose77
+ */
+$allMessages['niu'] = array(
+	'whitelisttableedit' => 'Fakahakohako',
 );
 
 /** Afrikaans (Afrikaans)
@@ -351,6 +365,8 @@ Cette page ne s’applique qu’aux utilisateurs disposant de droits restreints.
  * @author Toliño
  */
 $allMessages['gl'] = array(
+	'whitelist-desc'            => 'Editar os permisos de acceso dos usuarios restrinxidos',
+	'whitelistedit'             => 'Editor de acceso da listaxe branca (whitelist)',
 	'whitelist'                 => 'Páxinas da listaxe branca',
 	'mywhitelistpages'          => 'As miñas páxinas',
 	'whitelistfor'              => '<center>Información actual para <b>$1</b></center>',
@@ -378,6 +394,7 @@ Pode usar * ou %, como tamén o carácter "comodín"',
 	'whitelistnewtablereview'   => 'Revisar',
 	'whitelistselectrestricted' => '== Seleccionar un nome de usuario restrinxido ==',
 	'whitelistpagelist'         => 'Páxinas de {{SITENAME}} para $1',
+	'whitelistnocalendar'       => "<font color='red' size=3>Parece que [http://www.mediawiki.org/wiki/Extension:Usage_Statistics Extension:UsageStatistics], un requirimento previo para esta extensión, non foi instalada adecuadamente!</font>",
 	'whitelistbadtitle'         => 'Título incorrecto -',
 	'whitelistoverview'         => '== Visión xeral dos cambios para $1 ==',
 	'whitelistoverviewcd'       => "* Cambiando a data a '''$1''' para [[:$2|$2]]",
@@ -393,6 +410,13 @@ $2',
 Esta páxina só é aplicable aos usuarios limitados",
 	'whitelistnever'            => 'nunca',
 	'whitelistnummatches'       => '  - $1 coincidencias',
+);
+
+/** Hakka (Hak-kâ-fa)
+ * @author Hakka
+ */
+$allMessages['hak'] = array(
+	'whitelisttableedit' => 'Phiên-chho',
 );
 
 /** Hawaiian (Hawai`i)
@@ -430,6 +454,14 @@ $allMessages['hil'] = array(
  */
 $allMessages['hu'] = array(
 	'whitelisttablemodifynone' => 'Nincs',
+);
+
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$allMessages['ia'] = array(
+	'whitelisttableedit' => 'Modificar',
+	'whitelistnever'     => 'nunquam',
 );
 
 /** Indonesian (Bahasa Indonesia)
@@ -637,6 +669,13 @@ $allMessages['nds'] = array(
 	'whitelistnever'           => 'nie',
 );
 
+/** Nedersaksisch (Nedersaksisch)
+ * @author Servien
+ */
+$allMessages['nds-nl'] = array(
+	'whitelisttableedit' => 'Bewark',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */
@@ -814,7 +853,7 @@ $allMessages['os'] = array(
  * @author Sp5uhe
  */
 $allMessages['pl'] = array(
-	'whitelist-desc'            => 'Edytuj możliwość dostępu dla użytkowników z ograniczeniami',
+	'whitelist-desc'            => 'Umożliwianie dostępu użytkownikom z ograniczeniami',
 	'whitelistedit'             => 'Edytor listy stron ogólnie dostępnych',
 	'whitelist'                 => 'Strony z listy ogólnie dostępnych',
 	'mywhitelistpages'          => 'Strony użytkownika',

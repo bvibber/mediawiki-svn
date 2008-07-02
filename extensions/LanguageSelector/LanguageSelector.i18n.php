@@ -67,6 +67,13 @@ $messages['cs'] = array(
 	'languageselector-setlang' => 'nastavit',
 );
 
+/** Church Slavic (Словѣ́ньскъ / ⰔⰎⰑⰂⰡⰐⰠⰔⰍⰟ)
+ * @author ОйЛ
+ */
+$messages['cu'] = array(
+	'languageselector' => 'ѩꙁꙑ́къ',
+);
+
 /** Danish (Dansk)
  * @author Jon Harald Søby
  */

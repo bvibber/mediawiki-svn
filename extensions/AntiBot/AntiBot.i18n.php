@@ -93,9 +93,10 @@ $messages['nl'] = array(
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
+ * @author EivindJ
  */
 $messages['no'] = array(
-	'antibot-desc' => 'Enkel struktur for kontroll av spambotter',
+	'antibot-desc' => 'Enkel struktur for kontroll av spamroboter',
 );
 
 /** Occitan (Occitan)

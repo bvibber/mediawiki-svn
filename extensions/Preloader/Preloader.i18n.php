@@ -35,6 +35,13 @@ $messages['fr'] = array(
 	'preloader-desc' => 'Fournis, pour les nouvelles pages, des fenêtres de texte personnalisables par nom d’espace',
 );
 
+/** Galician (Galego)
+ * @author Toliño
+ */
+$messages['gl'] = array(
+	'preloader-desc' => 'Proporciona, para as páxinas novas, ventás de texto personalizable para os nomes dos espazos',
+);
+
 /** Hungarian (Magyar)
  * @author Tgr
  */

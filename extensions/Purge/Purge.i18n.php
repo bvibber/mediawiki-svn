@@ -51,8 +51,13 @@ $messages['fr'] = array(
 	'purge-desc' => 'Ajoute un onglet « Purger » sur toutes les pages normales et active sa sélection pour les utilisateurs anonymes pour une purge rapide du cache.',
 );
 
+/** Galician (Galego)
+ * @author Toliño
+ * @author Xosé
+ */
 $messages['gl'] = array(
-	'purge' => 'limpar',
+	'purge'      => 'limpar',
+	'purge-desc' => 'Engade unha lapela "Purgar" en todas as páxinas normais e salta a comprobación de purgar para os usuarios anónimos, permitindo unha purga rápida da caché',
 );
 
 /** Hindi (हिन्दी)

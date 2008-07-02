@@ -96,6 +96,14 @@ $wgGoogleMapsMessages['mhr'] = array(
 	'gm-save-path' => 'Аралаш',
 );
 
+/** Niuean (native name missing)
+ * @author Jose77
+ */
+$wgGoogleMapsMessages['niu'] = array(
+	'gm-zoom-control' => 'Navikati',
+	'gm-search'       => 'Kumi',
+);
+
 /** Afrikaans (Afrikaans)
  * @author Arnobarnard
  */
@@ -413,6 +421,13 @@ $wgGoogleMapsMessages['ch'] = array(
 $wgGoogleMapsMessages['cs'] = array(
 	'gm-incompatible-browser-link' => 'Kliknutím sem zobrazíte seznam kompatibilních prohlížečů.',
 	'gm-balloon-title'             => 'Nadpis:',
+);
+
+/** Church Slavic (Словѣ́ньскъ / ⰔⰎⰑⰂⰡⰐⰠⰔⰍⰟ)
+ * @author ОйЛ
+ */
+$wgGoogleMapsMessages['cu'] = array(
+	'gm-search' => 'ищи́',
 );
 
 /** Danish (Dansk)
@@ -1038,6 +1053,13 @@ $wgGoogleMapsMessages['gv'] = array(
 	'gm-save-path'       => 'Sauail',
 );
 
+/** Hakka (Hak-kâ-fa)
+ * @author Hakka
+ */
+$wgGoogleMapsMessages['hak'] = array(
+	'gm-search' => 'Chhìm-cháu',
+);
+
 /** Hawaiian (Hawai`i)
  * @author Singularity
  */
@@ -1315,6 +1337,13 @@ $wgGoogleMapsMessages['hy'] = array(
 	'gm-height'     => 'Բարձրություն',
 	'gm-search'     => 'Որոնում',
 	'gm-line-width' => 'Լայնք',
+);
+
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$wgGoogleMapsMessages['ia'] = array(
+	'gm-zoom-control' => 'Navigation',
 );
 
 /** Indonesian (Bahasa Indonesia)
@@ -2134,6 +2163,7 @@ $wgGoogleMapsMessages['ps'] = array(
 	'gm-save-path'        => 'خوندي کول',
 	'gm-color-path'       => 'رنګ بدلول',
 	'gm-make-map'         => 'يوه نخشه جوړول',
+	'gm-kml-loading'      => 'د برسېرېدلو په حال کې...',
 	'gm-earth'            => 'زمکه',
 	'gm-moon'             => 'سپوږمۍ',
 	'gm-mars'             => 'مريخ',

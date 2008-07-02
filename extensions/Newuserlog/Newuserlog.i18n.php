@@ -614,8 +614,9 @@ $messages['jv'] = array(
  * @author Malafaya
  */
 $messages['ka'] = array(
-	'newuserlog-byemail'      => 'პაროლი ელ-ფოსტითაა გამოგზავნილი',
-	'newuserlog-create-entry' => 'ახალი მომხმარებელი',
+	'newuserlog-byemail'          => 'პაროლი ელ-ფოსტითაა გამოგზავნილი',
+	'newuserlog-create-entry'     => 'ახალი მომხმარებელი',
+	'newuserlog-autocreate-entry' => 'ავტომატურად შექმნილი ანგარიში',
 );
 
 $messages['kk-arab'] = array(
@@ -935,11 +936,12 @@ $messages['pms'] = array(
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */
 $messages['ps'] = array(
-	'newuserlogpage'           => 'د کارن-نوم د جوړېدو يادښت',
-	'newuserlogpagetext'       => 'دا د کارن-نوم د جوړېدو يادښت دی',
-	'newuserlog-byemail'       => 'پټنوم مو برېښليک ته درولېږه',
-	'newuserlog-create-entry'  => 'نوی کارونکی',
-	'newuserlog-create2-entry' => 'د $1 لپاره کارن-حساب جوړ شو',
+	'newuserlogpage'              => 'د کارن-نوم د جوړېدو يادښت',
+	'newuserlogpagetext'          => 'دا د کارن-نوم د جوړېدو يادښت دی',
+	'newuserlog-byemail'          => 'پټنوم مو برېښليک ته درولېږه',
+	'newuserlog-create-entry'     => 'نوی کارونکی',
+	'newuserlog-create2-entry'    => 'د $1 لپاره کارن-حساب جوړ شو',
+	'newuserlog-autocreate-entry' => 'کارن-حساب په اتوماتيک ډول جوړ شو',
 );
 
 /** Portuguese (Português)

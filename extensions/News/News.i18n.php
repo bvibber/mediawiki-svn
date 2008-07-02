@@ -79,6 +79,13 @@ $messages['fr'] = array(
 	'newsextension-freshfeed'     => '$1 : sortie de l’alimentation récente<br />',
 );
 
+/** Galician (Galego)
+ * @author Toliño
+ */
+$messages['gl'] = array(
+	'newsextension-desc' => 'Amosa uns cambios recentes personalizados nas páxinas dun wiki ou como unha fonte de noticias RSS ou Atom',
+);
+
 /** Hindi (हिन्दी)
  * @author Kaustubh
  */

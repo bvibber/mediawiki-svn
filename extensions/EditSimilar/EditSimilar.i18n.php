@@ -41,6 +41,13 @@ $messages['ar'] = array(
 	'tog-edit-similar'         => 'تفعيل اقتراحات الصفحات المشابهة',
 );
 
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
+$messages['eo'] = array(
+	'editsimilar-link-disable' => 'fari preferojn',
+);
+
 /** Finnish (Suomi)
  * @author Jack Phoenix
  */

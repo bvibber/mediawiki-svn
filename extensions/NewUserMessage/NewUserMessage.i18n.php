@@ -85,6 +85,13 @@ $messages['hsb'] = array(
 	'newusermessage-desc' => '[[MediaWiki:NewUserMessage|Powěsć]] nowo wutworjenym wužiwarskim diskusijnym stronam přidać',
 );
 
+/** Italian (Italiano)
+ * @author Darth Kule
+ */
+$messages['it'] = array(
+	'newusermessage-desc' => 'Aggiunge un [[MediaWiki:NewUserMessage|messaggio]] nella pagina di discussione di un utente appena registrato',
+);
+
 /** Japanese (日本語)
  * @author JtFuruhata
  */

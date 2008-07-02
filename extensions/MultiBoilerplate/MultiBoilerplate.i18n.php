@@ -70,6 +70,8 @@ $messages['fy'] = array(
  * @author Toliño
  */
 $messages['gl'] = array(
+	'multiboilerplate-desc'   => 'Permite que unha páxina a engadir sexa seleccionada dunha caixa despregable localizada enriba do formulario de edición ao editar páxinas',
+	'multiboilerplate-legend' => 'Seleccionar a páxina a engadir',
 	'multiboilerplate-submit' => 'Cargar',
 );
 
@@ -161,6 +163,13 @@ $messages['oc'] = array(
 	'multiboilerplate-desc'   => "Permet de seleccionar una pagina o un modèl d'incorporar a partir d'una bóstia en naut del formulari d'edicion d'una pagina.",
 	'multiboilerplate-legend' => "Seleccionar la pagina d'incorporar",
 	'multiboilerplate-submit' => 'Cargar',
+);
+
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'multiboilerplate-submit' => 'برسېرول',
 );
 
 /** Portuguese (Português)

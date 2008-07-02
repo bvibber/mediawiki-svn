@@ -44,6 +44,13 @@ $messages['mhr'] = array(
 	'spamregex-summary-log' => '(Чылаже)',
 );
 
+/** Niuean (native name missing)
+ * @author Jose77
+ */
+$messages['niu'] = array(
+	'spamregex-summary-log' => '(Fakakatoakatoa)',
+);
+
 /** Afrikaans (Afrikaans)
  * @author SPQRobin
  */
@@ -185,7 +192,12 @@ $messages['fr'] = array(
  */
 $messages['gl'] = array(
 	'spamregex'                      => 'SpamRegex',
+	'spamregex-desc'                 => '[[Special:Spamregex|Filtro]] de frases non desexadas nas páxinas editadas, baseado en expresións regulares',
 	'spamregex_summary'              => 'O texto foi atopado no resumo da páxina.',
+	'spamregex-intro'                => 'Use este formulario para bloquear de maneira efectiva expresións para que non se poidan gardar no texto dunha páxina.
+Se o texto contén a expresión dada, o cambio non poderá ser gardado e unha explicación será amosada ao usuario que intentou gardar a páxina.
+Teña en conta que as expresións non deberían ser moi curtas ou moi comúns.',
+	'spamregex-page-title'           => 'Bloqueo spam regex de expresións non desexadas',
 	'spamregex-currently-blocked'    => "'''Frases actualmente bloqueadas:'''",
 	'spamregex-no-currently-blocked' => "'''Non hai frases bloqueadas.'''",
 	'spamregex-log-1'                => "* '''$1''' $2 ([{{SERVER}}$3&text=$4 eliminar]) engadido por",
@@ -193,10 +205,12 @@ $messages['gl'] = array(
 	'spamregex-page-title-1'         => 'Bloquear frase usando expresións regulares',
 	'spamregex-unblock-success'      => 'Desbloqueo con éxito',
 	'spamregex-unblock-message'      => "A frase '''$1''' foi desbloqueada para a edición.",
+	'spamregex-page-title-2'         => 'Bloquear frases usando expresións regulares para que non poidan ser guardadas',
 	'spamregex-block-success'        => 'Bloqueo con éxito',
 	'spamregex-block-message'        => "A frase '''$1''' foi bloqueada.",
 	'spamregex-warning-1'            => 'Dar unha frase para bloquear.',
 	'spamregex-error-1'              => 'Expresión regular non válida.',
+	'spamregex-warning-2'            => 'Por favor, comprobe, polo menos, un modo de bloqueo.',
 	'spamregex-already-blocked'      => '"$1" xa está bloqueado',
 	'spamregex-phrase-block'         => 'Frase para bloquear:',
 	'spamregex-phrase-block-text'    => 'bloquear unha frase no texto da páxina',

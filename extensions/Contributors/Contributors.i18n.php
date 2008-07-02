@@ -349,6 +349,13 @@ $messages['hu'] = array(
 	'contributors-nosuchpage'  => 'A(z) $1 lap nem létezik.',
 );
 
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'contributors-submit' => 'Revelar',
+);
+
 /* Indonesian (Ivan Lanin) */
 $messages['id'] = array(
 	'contributors' => 'Kontributor utama',

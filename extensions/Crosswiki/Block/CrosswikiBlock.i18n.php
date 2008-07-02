@@ -54,6 +54,13 @@ Return to:
 	'crosswikiunblock-local'          => 'Local unblocks are not supported via this interface. Use [[Special:Ipblocklist]]',
 );
 
+/** Niuean (native name missing)
+ * @author Jose77
+ */
+$messages['niu'] = array(
+	'crosswikiunblock-reason' => 'Kakano:',
+);
+
 /** Afrikaans (Afrikaans)
  * @author Arnobarnard
  */
@@ -525,12 +532,21 @@ Wróćo k:
 	'crosswikiunblock-local'        => 'Lokalne blokowanja so přez tutón interfejs njepodpěruja. Wužij [[Special:Ipblocklist]]',
 );
 
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'crosswikiblock-reason'   => 'Motivo:',
+	'crosswikiunblock-reason' => 'Motivo:',
+);
+
 /** Indonesian (Bahasa Indonesia)
  * @author Rex
  */
 $messages['id'] = array(
 	'crosswikiblock-reason'   => 'Alasan:',
 	'crosswikiunblock-reason' => 'Alasan:',
+	'crosswikiblock-notoken'  => 'Token penyuntingan tidak sah.',
 );
 
 /** Icelandic (Íslenska)

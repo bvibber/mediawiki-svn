@@ -25,6 +25,13 @@ $messages['fr'] = array(
 	'htmlets-desc' => 'Vous laisse le lien HTML abrégé en ligne depuis les fichiers utilisant la balise <tt><nowiki><htmlet></nowiki></tt>',
 );
 
+/** Galician (Galego)
+ * @author Toliño
+ */
+$messages['gl'] = array(
+	'htmlets-desc' => 'Déixalle introducir liñas de conversa HTML dende ficheiros usando a etiqueta <tt><nowiki><htmlet></nowiki></tt>',
+);
+
 /** Hindi (हिन्दी)
  * @author Kaustubh
  */

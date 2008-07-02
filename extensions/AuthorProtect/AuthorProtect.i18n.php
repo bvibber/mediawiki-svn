@@ -465,7 +465,7 @@ $messages['oc'] = array(
  */
 $messages['pl'] = array(
 	'authorprotect'            => 'Zabezpiecz stronę przed wszystkimi poza autorami',
-	'authorprotect-desc'       => 'Autor strony może ją zabezpieczyć przed innymi użytkownikami',
+	'authorprotect-desc'       => 'Umożliwia autorowi strony zabezpieczenie jej przed innymi użytkownikami',
 	'authorprotect-notauthor'  => 'Nie jesteś autorem tej strony',
 	'authorprotect-confirm'    => 'Zmień poziomy zabezpieczenia',
 	'authorprotect-edit'       => 'Ogranicz możliwość edycji do autorów',

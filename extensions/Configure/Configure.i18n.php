@@ -103,12 +103,29 @@ Please create it or change it to use this extension.',
 	'viewconfig'                          => 'View wiki configuration',
 );
 
+/** Tarifit (Tarifit)
+ * @author Jose77
+ */
+$messages['rif'] = array(
+	'configure-js-remove' => 'Sfaḍ',
+);
+
 /** Eastern Mari (Олык Марий йылме)
  * @author Сай
  */
 $messages['mhr'] = array(
 	'configure-js-remove'     => 'Шӧраш',
 	'configure-section-email' => 'Электрон почто',
+);
+
+/** Niuean (native name missing)
+ * @author Jose77
+ */
+$messages['niu'] = array(
+	'configure-js-remove'            => 'Tamate',
+	'configure-section-email'        => 'Meli hila',
+	'configure-section-specialpages' => 'Tau Lau Mahuiga',
+	'configure-section-search'       => 'Kumi',
 );
 
 /** Afrikaans (Afrikaans)
@@ -490,6 +507,7 @@ $messages['eo'] = array(
 	'configure-section-debug'         => 'Sencimigo',
 	'configure-section-site'          => 'Agordado de retejo',
 	'configure-section-namespaces'    => 'Nomspacoj',
+	'configure-section-stats'         => 'Lokaj statistikoj',
 	'configure-section-skin'          => 'Etoso',
 	'configure-section-category'      => 'Kategorioj',
 	'configure-section-cache'         => 'Kaŝejo',
@@ -511,8 +529,10 @@ $messages['eo'] = array(
 	'configure-section-feed'          => 'Fonto',
 	'configure-section-job'           => 'Taskoj',
 	'configure-section-extension'     => 'Etendiloj',
+	'configure-section-search'        => 'Serĉi',
 	'configure-section-copyright'     => 'Kopirajto',
 	'configure-section-misc'          => 'Diversaĵoj',
+	'configure-view'                  => 'Montri',
 	'right-configure'                 => 'Konfiguri la vikion',
 	'right-configure-all'             => 'Konfiguri la preferojn de la vikio',
 	'viewconfig'                      => 'Rigardi vikiajn preferojn',
@@ -696,6 +716,14 @@ Por favor, créeo ou tróqueo para usar esta extensión.',
 	'viewconfig'                          => 'Ver a configuración do wiki',
 );
 
+/** Hakka (Hak-kâ-fa)
+ * @author Hakka
+ */
+$messages['hak'] = array(
+	'configure-js-remove'      => 'Chhù-thet',
+	'configure-section-search' => 'Chhìm-cháu',
+);
+
 /** Hawaiian (Hawai`i)
  * @author Singularity
  */
@@ -761,6 +789,20 @@ $messages['hi'] = array(
 $messages['hil'] = array(
 	'configure-section-email'        => 'E-mail',
 	'configure-section-specialpages' => 'Pinasahi nga mga panid',
+);
+
+/** Armenian (Հայերեն)
+
+ */
+$messages['hy'] = array(
+	'configure-section-search' => 'Որոնել',
+);
+
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'configure-section-specialpages' => 'Paginas special',
 );
 
 /** Icelandic (Íslenska)
@@ -923,6 +965,31 @@ Leet e w.e.g un oder ännert en esou datt dës Erweiderung funktionéiert.",
 	'right-viewconfig'                    => 'Konfiguratioun vun der Wiki weisen',
 	'right-viewconfig-all'                => 'Déi ganz Konfiguratioun vun der Wiki weisen',
 	'viewconfig'                          => 'Konfiguratioun vun der Wiki weisen',
+);
+
+/** Lithuanian (Lietuvių)
+ * @author Tomasdd
+ */
+$messages['lt'] = array(
+	'configure-desc-group'        => 'Grupės',
+	'configure-error'             => 'Konfigūracijos išsaugojimas negalimas',
+	'configure-js-group-exists'   => 'Klaida: tokia grupė jau yra.',
+	'configure-js-prompt-group'   => 'Įrašyti naujos grupės pavadinimą:',
+	'configure-js-remove'         => 'Ištrinti',
+	'configure-js-remove-row'     => 'Trinti šį įrašą',
+	'configure-saved'             => 'Konfigūracija išsaugota',
+	'configure-section-css-js'    => 'CSS ir JavaScript',
+	'configure-section-stats'     => 'Puslapio statistika',
+	'configure-section-category'  => 'Kategorijos',
+	'configure-section-interwiki' => 'InterViki',
+	'configure-section-groups'    => 'Grupės',
+	'configure-section-upload'    => 'Įkelti',
+	'configure-section-images'    => 'Vaizdai',
+	'configure-section-users'     => 'Naudotojai',
+	'configure-section-search'    => 'Ieškoti',
+	'configure-section-copyright' => 'Autorinės teisės',
+	'configure-section-htcp'      => 'HTCP protokolo perdavimas',
+	'configure-section-misc'      => 'Įvairūs nustatymai',
 );
 
 /** Malayalam (മലയാളം)

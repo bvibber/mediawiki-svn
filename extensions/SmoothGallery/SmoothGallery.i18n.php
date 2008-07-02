@@ -103,6 +103,8 @@ $messages['fr'] = array(
  */
 $messages['gl'] = array(
 	'smoothgallery'                     => 'Galería con transicións',
+	'smoothgallery-desc'                => 'Permítelle aos usuarios que creen galerías con imaxes que teñan cargado.
+Permite a maioría das opcións da SmoothGallery',
 	'smoothgallery-title'               => 'Galería con transicións',
 	'smoothgallery-smoothgallerytitle'  => 'Galería con transicións: $1',
 	'smoothgallery-error'               => '<b>Erro na Galería de transicións:</b>',

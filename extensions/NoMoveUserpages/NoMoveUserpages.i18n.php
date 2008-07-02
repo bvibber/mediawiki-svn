@@ -34,6 +34,7 @@ $messages['fr'] = array(
  * @author Toliño
  */
 $messages['gl'] = array(
+	'nomoveuserpages-desc'  => 'Bloquea os usuarios para que non poidan mover páxinas de usuario a menos que teñan o dereito de "mover páxinas de usuario"',
 	'nomoveuserpages-error' => 'Foron deshabilitados os traslados de páxinas de usuario',
 	'right-move-userpages'  => 'Mover páxinas de usuario',
 );
@@ -42,7 +43,8 @@ $messages['gl'] = array(
  * @author UV
  */
 $messages['la'] = array(
-	'nomoveuserpages-error' => 'Tibi non licet paginas usoris movere',
+	'nomoveuserpages-error' => 'Tibi non licet paginas usorum movere',
+	'right-move-userpages'  => 'Paginas usorum movere',
 );
 
 /** Dutch (Nederlands)
@@ -68,8 +70,9 @@ $messages['no'] = array(
  * @author Cedric31
  */
 $messages['oc'] = array(
-	'nomoveuserpages-desc' => 'Interditz al utilizaires de tornar nomenar de paginas d\'utilizaires levat s\'an lo drech "move-userpages"',
-	'right-move-userpages' => "Tornar nomenar las paginas d'utilizaire",
+	'nomoveuserpages-desc'  => 'Interditz al utilizaires de tornar nomenar de paginas d\'utilizaires levat s\'an lo drech "move-userpages"',
+	'nomoveuserpages-error' => "Lo cambiament de nom de las paginas d'utilizaire es desactivat",
+	'right-move-userpages'  => "Tornar nomenar las paginas d'utilizaire",
 );
 
 /** Slovak (Slovenčina)

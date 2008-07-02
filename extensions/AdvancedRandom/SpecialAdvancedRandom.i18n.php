@@ -239,12 +239,13 @@ $messages['nn'] = array(
 	'advancedrandom-desc' => 'Finn ei tilfeldig side der det på sjølve sida eller diskusjonssida vert lenka til ei oppgjeve side, kan brukast til dømes med [[Special:AdvancedRandom/Mal:Utvald side/Diskusjon]] for å få ei tilfeldig utvald side eller med [[Special:AdvancedRandom/Mal:GFDL/Fil]] for å få ei tilfeldig GFDL-fil.',
 );
 
-/** Norwegian (‪Norsk (bokmål)‬)
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
+ * @author EivindJ
  */
 $messages['no'] = array(
 	'advancedrandom'      => 'Avansert tilfeldig side',
-	'advancedrandom-desc' => 'Finn en tilfeldig side der det på selve siden eller diskusjonssiden blir lenket til en angitt side, kan brukes for eksempel med [[Special:AdvancedRandom/Mal:Utmerket artikkel/Diskusjon]] for å få en tilfeldig utmerket artikkel, eller som [[Special:AdvancedRandom/Mal:GFDL/Bilde]] for å få en tilfeldig GFDL-fil.',
+	'advancedrandom-desc' => 'Finn en tilfeldig side der det på selve siden eller diskusjonssiden blir lenket til en angitt side, kan for eksempel brukes med [[Special:AdvancedRandom/Mal:Utmerket artikkel/Diskusjon]] for å få en tilfeldig utmerket artikkel, eller som [[Special:AdvancedRandom/Mal:GFDL/Bilde]] for å få en tilfeldig GFDL-fil.',
 );
 
 /** Occitan (Occitan)

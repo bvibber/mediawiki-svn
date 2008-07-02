@@ -362,6 +362,24 @@ $2',
 	'userrightsnotif-desc'    => 'Wyślij informację do użytkowników o zmianach uprawnień',
 );
 
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'userrightsnotifysubject' => 'په $1 باندې د يوې ډلې د غړيتوب بدلون',
+	'userrightsnotifybody'    => '$1 ګرانه/ګرانې سلامونه.
+
+تاسو ته خبر درکول کېږي چې په $2 باندې ستاسو د ډلې غړيتوب، د $3 لخوا په $4 بدلون موندلی.
+
+ورګډ شوي: $5
+بېل شوي: $6
+
+په ډېر درنښت،
+
+$2',
+	'userrightsnotif-desc'    => 'د کارونکو په رښتو کې د بدلون سره سم کارونکو ته خبرونکی برېښليک ورلېږل کېږي',
+);
+
 /** Portuguese (Português)
  * @author Lijealso
  */

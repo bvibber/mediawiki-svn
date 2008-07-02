@@ -63,8 +63,10 @@ $messages['ar'] = array(
  * @author DCLXVI
  */
 $messages['bg'] = array(
+	'extensiondistributor'            => 'Сваляне на разширения за MediaWiki',
 	'extdist-not-configured'          => 'Необходимо е да се настроят $wgExtDistTarDir и $wgExtDistWorkingCopy',
 	'extdist-no-such-extension'       => 'Няма такова разширение „$1“',
+	'extdist-no-such-version'         => 'Разширението „$1“ не съществува във версия „$2“.',
 	'extdist-choose-extension'        => 'Изберете разширение, което желаете да свалите:',
 	'extdist-submit-extension'        => 'Продължаване',
 	'extdist-current-version'         => 'Текуща версия (trunk)',
@@ -125,6 +127,13 @@ Wenn du Fragen zu diesem Erweiterungs-Verteil-System hast, gehe bitte zur Seite 
 		'extdist-want-more'               => 'Eine weitere Erweiterung holen.',
 );
 
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
+$messages['eo'] = array(
+	'extdist-no-such-extension' => 'Etendilo "$1" ne ekzistas',
+);
+
 /** French (Français)
  * @author Grondin
  * @author IAlex
@@ -181,27 +190,30 @@ Si vous avez des questions concernant ce système de distribution des extensions
  * @author Toliño
  */
 $messages['gl'] = array(
-	'extensiondistributor'      => 'Descargar a extensión MediaWiki',
-	'extdist-desc'              => 'Extensión para distribuír arquivos fotográficos de extensións',
-	'extdist-not-configured'    => 'Por favor, configure $wgExtDistTarDir e $wgExtDistWorkingCopy',
-	'extdist-wc-missing'        => 'O directorio da copia en funcionamento configurada non existe!',
-	'extdist-no-such-extension' => 'Non existe a extensión "$1"',
-	'extdist-no-such-version'   => 'A extensión "$1" non existe na versión "$2".',
-	'extdist-choose-extension'  => 'Seleccione a extensión que queira descargar:',
-	'extdist-wc-empty'          => 'A copia configurada do directorio que funciona non ten extensións que se poidan distribuír!',
-	'extdist-submit-extension'  => 'Continuar',
-	'extdist-current-version'   => 'Versión actual (trunk)',
-	'extdist-choose-version'    => '<big>Está descargando a extensión <b>$1</b>.</big>
+	'extensiondistributor'            => 'Descargar a extensión MediaWiki',
+	'extdist-desc'                    => 'Extensión para distribuír arquivos fotográficos de extensións',
+	'extdist-not-configured'          => 'Por favor, configure $wgExtDistTarDir e $wgExtDistWorkingCopy',
+	'extdist-wc-missing'              => 'O directorio da copia en funcionamento configurada non existe!',
+	'extdist-no-such-extension'       => 'Non existe a extensión "$1"',
+	'extdist-no-such-version'         => 'A extensión "$1" non existe na versión "$2".',
+	'extdist-choose-extension'        => 'Seleccione a extensión que queira descargar:',
+	'extdist-wc-empty'                => 'A copia configurada do directorio que funciona non ten extensións que se poidan distribuír!',
+	'extdist-submit-extension'        => 'Continuar',
+	'extdist-current-version'         => 'Versión actual (trunk)',
+	'extdist-choose-version'          => '<big>Está descargando a extensión <b>$1</b>.</big>
 
 Seleccione a súa versión MediaWiki.  
 
 A maioría das extensións traballan con múltiples versións de MediaWiki, polo que se a súa versión de MediaWiki non está aquí, ou se precisa características da última extensión, probe a usar a versión actual.',
-	'extdist-no-versions'       => 'A extensión seleccionada ($1) non está dispoñible en ningunha versión!',
-	'extdist-submit-version'    => 'Continuar',
-	'extdist-svn-error'         => 'A subversión atopou un erro: <pre>$1</pre>',
-	'extdist-svn-parse-error'   => 'Non se pode procesar o XML de "svn info": <pre>$1</pre>',
-	'extdist-tar-error'         => 'Tar devolveu o código de saída $1:',
-	'extdist-created'           => "Unha fotografía da versión <b>$2</b> da extensión <b>$1</b> de MediaWiki <b>$3</b> foi creada. A súa descarga debería comezar automaticamente en 5 segundos.  
+	'extdist-no-versions'             => 'A extensión seleccionada ($1) non está dispoñible en ningunha versión!',
+	'extdist-submit-version'          => 'Continuar',
+	'extdist-no-remote'               => 'Non se pode contactar co cliente da subversión remota.',
+	'extdist-remote-error'            => 'Erro do cliente da subversión remota: <pre>$1</pre>',
+	'extdist-remote-invalid-response' => 'Resposta inválida do cliente da subversión remota.',
+	'extdist-svn-error'               => 'A subversión atopou un erro: <pre>$1</pre>',
+	'extdist-svn-parse-error'         => 'Non se pode procesar o XML de "svn info": <pre>$1</pre>',
+	'extdist-tar-error'               => 'Tar devolveu o código de saída $1:',
+	'extdist-created'                 => "Unha fotografía da versión <b>$2</b> da extensión <b>$1</b> de MediaWiki <b>$3</b> foi creada. A súa descarga debería comezar automaticamente en 5 segundos.  
 
 A dirección URL desta fotografía é:
 :$4
@@ -222,7 +234,7 @@ Déase de conta de que algunhas extensións precisan dun ficheiro chamado Extens
 Despois de extraer os ficheiros, necesitará rexistrar a extensión en LocalSettings.php. A documentación da extensión deberá ter instrucións de como facer isto.
 
 Se ten algunha dúbida ou pregunta acerca do sistema de distribución das extensións, por favor, vaia a [[Extension talk:ExtensionDistributor]].",
-	'extdist-want-more'         => 'Obter outra extensión',
+	'extdist-want-more'               => 'Obter outra extensión',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -230,9 +242,12 @@ Se ten algunha dúbida ou pregunta acerca do sistema de distribución das extens
  */
 $messages['lb'] = array(
 	'extensiondistributor'      => 'MediaWiki Erweiderung eroflueden',
+	'extdist-desc'              => "Erweiderung fir d'Verdeele vu Schnappschoss-Archive vun Erweiderungen",
 	'extdist-no-such-extension' => 'Et gëtt keng Erweiderung "$1"',
 	'extdist-no-such-version'   => 'D\'Erweiderung "$1" gëtt et net an der Versioun "$2".',
+	'extdist-choose-extension'  => 'Wielt wat fir eng Erweiderung Dir wëllt eroflueden:',
 	'extdist-submit-extension'  => 'Viru fueren',
+	'extdist-current-version'   => 'Aktuell Versioun (trunk)',
 	'extdist-no-versions'       => 'Déi gewielten Erweiderung ($1) ass a kenger Versioun disponibel!',
 	'extdist-submit-version'    => 'Viru fueren',
 	'extdist-want-more'         => 'Eng aner Erweiderung benotzen',
@@ -240,24 +255,25 @@ $messages['lb'] = array(
 
 /** Dutch (Nederlands)
  * @author Siebrand
+ * @author SPQRobin
  */
 $messages['nl'] = array(
-	'extensiondistributor'            => 'MediaWiki-extensie downloaden',
-	'extdist-desc'                    => 'Extensie voor het distribueren van extensies',
+	'extensiondistributor'            => 'MediaWiki-uitbreiding downloaden',
+	'extdist-desc'                    => 'Uitbreiding voor het distribueren van uitbreidingen',
 	'extdist-not-configured'          => 'Maak alstublieft de instellingen voor $wgExtDistTarDir en $wgExtDistWorkingCopy',
 	'extdist-wc-missing'              => 'De instelde werkmap bestaat niet!',
-	'extdist-no-such-extension'       => 'De extensie "$1" bestaat niet',
-	'extdist-no-such-version'         => 'De extensie "$1" bestaat niet in de versie "$2".',
-	'extdist-choose-extension'        => 'Selecteer de extensie die u wilt downloaden:',
-	'extdist-wc-empty'                => 'De ingestelde werkmap bevat geen te distribueren extensies!',
+	'extdist-no-such-extension'       => 'De uitbreiding "$1" bestaat niet',
+	'extdist-no-such-version'         => 'De uitbreiding "$1" bestaat niet in de versie "$2".',
+	'extdist-choose-extension'        => 'Selecteer de uitbreiding die u wilt downloaden:',
+	'extdist-wc-empty'                => 'De ingestelde werkmap bevat geen te distribueren uitbreidingen!',
 	'extdist-submit-extension'        => 'Doorgaan',
 	'extdist-current-version'         => 'Huidige versie (trunk)',
-	'extdist-choose-version'          => '<big>U bent de extensie <b>$1</b> aan het downloaden.</big>
+	'extdist-choose-version'          => '<big>U bent de uitbreiding <b>$1</b> aan het downloaden.</big>
 
 Selecteer uw versie van MediaWiki.
 
-De meeste extensies werken met meerdere versies van MediaWiki, dus als uw versie niet in de lijst staat, of als u behoefte hebt aan de nieuwste mogelijkheden van de extensie, gebruik dan de huidige versie.',
-	'extdist-no-versions'             => 'De geselecteerde extensie ($1) is in geen enkele versie beschikbaar!',
+De meeste uitbreidingen werken met meerdere versies van MediaWiki, dus als uw versie niet in de lijst staat, of als u behoefte hebt aan de nieuwste mogelijkheden van de uitbreidingen, gebruik dan de huidige versie.',
+	'extdist-no-versions'             => 'De geselecteerde uitbreiding ($1) is in geen enkele versie beschikbaar!',
 	'extdist-submit-version'          => 'Doorgaan',
 	'extdist-no-remote'               => 'Het was niet mogelijk de externe subversionclient te benaderen.',
 	'extdist-remote-error'            => 'Fout van de externe subversionclient: <pre>$1</pre>',
@@ -265,7 +281,7 @@ De meeste extensies werken met meerdere versies van MediaWiki, dus als uw versie
 	'extdist-svn-error'               => 'Subversion geeft de volgende foutmelding: <pre>$1</pre>',
 	'extdist-svn-parse-error'         => 'Het was niet mogelijk de XML van "svn info" te verwerken: <pre>$1</pre>',
 	'extdist-tar-error'               => 'Tat gaf de volgende exitcode $1:',
-	'extdist-created'                 => 'De snapshot voor versie <b>$2</b> voor de extensie <b>$1</b> voor MediaWiki <b>$3</b> is aangemaakt. Uw download start automatisch over 5 seconden.
+	'extdist-created'                 => 'De snapshot voor versie <b>$2</b> voor de uitbreiding <b>$1</b> voor MediaWiki <b>$3</b> is aangemaakt. Uw download start automatisch over 5 seconden.
 
 De URL voor de snapshot is:
 :$4
@@ -281,16 +297,17 @@ Op Windows kunt u [http://www.7-zip.org/ 7-zip] gebruiken om de bestanden uit te
 
 Als uw wiki op een op afstand beheerde server staat, pak de bestanden dan uit in een tijdelijke map op uw computer. Upload daarna \'\'\'alle\'\'\' uitgepakte bestanden naar de map "extensions/" op de server.
 
-Een aantal extensies hebben het bestand ExtensionFunctions.php nodig, <tt>extensions/ExtensionFunctions.php</tt>, dat in de map direct boven de map met de naam van de extensie hoort te staan. De snapshots voor deze extensies bevatten dit bestand als tarbomb. Het wordt uitgepakt als ./ExtensionFunctions.php. Vergeet dit bestand niet te uploaden naar uw server.
+Een aantal uitbreidingen hebben het bestand ExtensionFunctions.php nodig, <tt>extensions/ExtensionFunctions.php</tt>, dat in de map direct boven de map met de naam van de uitbreiding hoort te staan. De snapshots voor deze uitbreidingen bevatten dit bestand als tarbomb. Het wordt uitgepakt als ./ExtensionFunctions.php. Vergeet dit bestand niet te uploaden naar uw server.
 
-Nadat u de bestanden hebt uitgepkt en op de juiste plaatst hebt neergezet, moet u de extensie registreren in LocalSettings.php. In de documentatie van de extensie treft u de instructies aan.
+Nadat u de bestanden hebt uitgepakt en op de juiste plaatst hebt neergezet, moet u de uitbreiding registreren in LocalSettings.php. In de documentatie van de uitbreiding treft u de instructies aan.
 
-Als u vragen hebt over dit distributiesysteem voor extensies, ga dan naar [[Extension talk:ExtensionDistributor]].',
-	'extdist-want-more'               => 'Nog een extensie downloaden',
+Als u vragen hebt over dit distributiesysteem voor uitbreidingen, ga dan naar [[Extension talk:ExtensionDistributor]].',
+	'extdist-want-more'               => 'Nog een uitbreiding downloaden',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
+ * @author EivindJ
  */
 $messages['no'] = array(
 	'extensiondistributor'            => 'Last ned utvidelser til MediaWiki',
@@ -316,13 +333,27 @@ De fleste utvidelser fungerer på flere versjoner av MediaWiki, så om versjonen
 	'extdist-svn-error'               => 'SVN fant en feil: <pre>$1</pre>',
 	'extdist-svn-parse-error'         => 'Kunne ikke prosessere XML fra «svn info»: <pre>$1</pre>',
 	'extdist-tar-error'               => 'Tar ga utgangsfeilen $1:',
-	'extdist-created'                 => 'Et øyeblikksbilde av versjon <b>$2</b> av utvidelsen <b>$1</b> for MediaWiki <b>$3</b> har blitt opprettet. Nedlastingen vil begynne automatisk om 5&nbsp;sekunder.
+	'extdist-created'                 => "Et øyeblikksbilde av versjon <b>$2</b> av utvidelsen <b>$1</b> for MediaWiki <b>$3</b> har blitt opprettet. Nedlastingen vil begynne automatisk om fem&nbsp;sekunder.
 
 Adressen til dette øyeblikksbildet er:
 :$4
 Adressen kan brukes for nedlasting til tjeneren, men ikke legg den til som bokmerke, for innholdet vil ikke bli oppdatert, og den kan slettes senere.
 
-Tar-arkivet burde pakkes ut i din utvidelsesmappe; følg deretter utvidelsens egen dokumentasjon for å slå den på i MediaWiki.',
+Tar-arkivet burde pakkes ut i din utvidelsesmappe; for eksempel, på et Unix-lignende operativsystem:
+
+<pre>
+tar -xzf $5 -C /var/www/mediawiki/extensions
+</pre>
+
+På Windows kan du bruke [http://www.7-zip.org/ 7-zip] for å pakke ut filene.
+
+Om wikien din er på en ekstern tjener, pakk ut filene i en midlertidig mappe på datamaskinen din, og last opp '''alle''' utpakkede filer i utvidelsesmappa på tjeneren.
+
+Merk at noen utvidelser trenger en fil ved navn ExtensionFunctions.php, i mappa <tt>extensions/ExtensionFunctions.php</tt>, altså i ''foreldremappa'' til den enkelte utvidelsen sin mappe. Øyeblikksbildet for disse utvidelsene inneholder denne filen som en ''tarbomb'' som pakkes ut til ./ExtensionFunctions.php. Ikke glem å laste opp denne filen til den eksterne tjeneren.
+
+Etter å ha pakket ut filene må du registrere utvidelsen i LocalSettings.php. Dokumentasjonen til utvidelsen burde ha instruksjoner på hvordan man gjør dette.
+
+Om du har spørsmål om dette distribusjonssytemet for utvidelser, gå til [http://www.mediawiki.org/wiki/Extension_talk:ExtensionDistributor Extension talk:ExtensionDistributor].",
 	'extdist-want-more'               => 'Hent flere utvidelser',
 );
 
@@ -460,6 +491,7 @@ Ak máte otázky týkajúce sa tohto systému distribúcie rozšírení, navšt�
 
 /** Swedish (Svenska)
  * @author M.M.S.
+ * @author Boivie
  */
 $messages['sv'] = array(
 	'extensiondistributor'            => 'Ladda ner tillägg till MediaWiki',
@@ -486,6 +518,27 @@ De flesta tilläggen fungerar på flera versioner av MediaWiki, så om versionen
 	'extdist-svn-error'               => 'SVN hittade ett fel: <pre>$1</pre>',
 	'extdist-svn-parse-error'         => 'Kunde inte processera XML från "svn info": <pre>$1</pre>',
 	'extdist-tar-error'               => 'Tar returnerade utgångskod $1:',
+	'extdist-created'                 => "En ögonblicksbild av version <b>$2</b> av tillägget <b>$1</b> för MediaWiki <b>$3</b> har skapats. Din nerladdning ska starta automatiskt om 5 sekunder.
+
+URLet för ögonblicksbilden är:
+:$4
+Den kan användas för direkt nedladdning till en server, men bokmärk den inte, för innehållet kommer inte uppdateras, och den kan bli raderad vid ett senare tillfälle.
+
+Tar-arkivet ska packas upp i din extensions-katalog. Till exempel, på ett unix-likt OS:
+
+<pre>
+tar -xzf $5 -C /var/www/mediawiki/extensions
+</pre>
+
+På Windows kan du använda [http://www.7-zip.org/ 7-zip] för att packa upp filerna.
+
+Om din wiki är på en fjärrserver, packa upp filerna till en tillfällig katalog på din lokala dator, och ladda sedan upp '''alla''' uppackade filer till extensions-katalogen på servern.
+
+Observera att några programtillägg behöver filen ExtensionFunctions.php, som finns i <tt>extensions/ExtensionFunctions.php</tt>, det är i ''föräldra''katalogen till just det här filtilläggets katalog. Ögonblicksbilden för dessa programtillägg innehåller den här filen som en tarbomb, uppackad till ./ExtensionFunctions.php. Glöm inte att ladda upp den filen till din fjärrserver.
+
+Efter att du packat upp filerna, behöver du registrera programtillägget i LocalSettings.php. Programtilläggets dokumentation ska ha instruktioner om hur man gör det.
+
+Om du har några frågor om programtilläggets distributionssystem, gå till [[Extension talk:ExtensionDistributor]].",
 	'extdist-want-more'               => 'Hämta andra tillägg',
 );
 

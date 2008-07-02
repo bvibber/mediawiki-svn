@@ -66,10 +66,11 @@ $messages['fr'] = array(
  * @author Toliño
  */
 $messages['gl'] = array(
-	'acct_creation_global_soft_throttle_hit' => 'A creación de contas foi suspendida automaticamente por uns minutos debido ao gran número inusual de intentos de rexistro.
+	'acct_creation_global_soft_throttle_hit'      => 'A creación de contas foi suspendida automaticamente por uns minutos debido ao gran número inusual de intentos de rexistro.
 Por favor, agarde uns minutos e ténteo de novo.',
-	'acct_creation_global_hard_throttle_hit' => 'A creación de contas foi suspendida automaticamente por uns segundos para reducir os ataques masivos de rexistro.
+	'acct_creation_global_hard_throttle_hit'      => 'A creación de contas foi suspendida automaticamente por uns segundos para reducir os ataques masivos de rexistro.
 Por favor, agarde uns minutos e prema "recargar" no seu navegador para volver intentalo.',
+	'acct_creation_global_soft_throttle_hit-desc' => 'Acelerador de creación de usuarios',
 );
 
 /** Upper Sorbian (Hornjoserbsce)

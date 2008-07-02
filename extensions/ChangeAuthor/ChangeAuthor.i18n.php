@@ -55,6 +55,20 @@ If this error keeps showing up, the database is probably broken.',
 	'changeauthor-rev'                  => 'r$1',
 );
 
+/** Tarifit (Tarifit)
+ * @author Jose77
+ */
+$messages['rif'] = array(
+	'changeauthor-pagenameform-go' => 'Raḥ ɣa',
+);
+
+/** Niuean (native name missing)
+ * @author Jose77
+ */
+$messages['niu'] = array(
+	'changeauthor-pagenameform-go' => 'Fano',
+);
+
 /** Afrikaans (Afrikaans)
  * @author Arnobarnard
  */
@@ -542,6 +556,13 @@ $messages['hu'] = array(
 	'changeauthor-logpagename'          => 'Szerző-változtatási napló',
 );
 
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'changeauthor-comment' => 'Commento:',
+);
+
 /** Icelandic (Íslenska)
  * @author S.Örvarr.S
  */
@@ -763,6 +784,7 @@ $messages['nn'] = array(
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
+ * @author EivindJ
  */
 $messages['no'] = array(
 	'changeauthor'                      => 'Endre revisjonens opphavsperson',
@@ -780,7 +802,7 @@ $messages['no'] = array(
 	'changeauthor-nosuchuser'           => 'Ingen bruker ved navnet «$1».',
 	'changeauthor-revview'              => 'Revisjon #$1 av $2',
 	'changeauthor-nosuchtitle'          => 'Det er ingen side ved navn «$1».',
-	'changeauthor-weirderror'           => 'En merkelig feil oppsto. Vennligst prøv igjen. Om denne feilen fortsetter, er det trolig noe gærent med databasen.',
+	'changeauthor-weirderror'           => 'En merkelig feil oppsto. Vennligst prøv igjen. Om denne feilen vedvarer er det trolig noe galt med databasen.',
 	'changeauthor-invalidform'          => 'Bruk skjemaet på Special:ChangeAuthor i stedet for å bruke et egendefinert skjema.',
 	'changeauthor-success'              => 'Forespørselen har blitt utført.',
 	'changeauthor-logentry'             => 'Endret opphavsperson til $2 av $1 fra $3 til $4',

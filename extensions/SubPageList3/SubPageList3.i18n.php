@@ -94,6 +94,7 @@ $messages['fr'] = array(
  * @author Toliño
  */
 $messages['gl'] = array(
+	'spl3-desc'       => 'Crea automaticamente unha lista das subpáxinas dunha páxina usando a etiqueta <code><nowiki><splist /></nowiki></code>',
 	'spl3_debug'      => 'Valor descoñecido para a opción $1.',
 	'spl3_nosubpages' => '$1 non ten subpáxinas para poñer nunha listaxe.',
 );

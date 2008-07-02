@@ -165,6 +165,13 @@ $messages['hu'] = array(
 	'findspam-ip' => 'IP-cím:',
 );
 
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'findspam-ok' => 'OK',
+);
+
 /** Javanese (Basa Jawa)
  * @author Meursault2004
  */

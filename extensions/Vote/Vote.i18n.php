@@ -33,6 +33,13 @@ riddler|Riddler",
 	'vote-invalid-choice' => 'You must select one of the available options.',
 );
 
+/** Niuean (native name missing)
+ * @author Jose77
+ */
+$messages['niu'] = array(
+	'vote-login-link' => 'hu ki loto',
+);
+
 /** Afrikaans (Afrikaans)
  * @author Arnobarnard
  */
@@ -60,6 +67,30 @@ $messages['ar'] = array(
 	'vote-login' => 'يجب عليك $1 لكي تصوت.',
 	'vote-login-link' => 'دخول',
 	'vote-invalid-choice' => 'يجب عليك اختيار واحد من الخيارات المتاحة.',
+);
+
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Ramsis1978
+ */
+$messages['arz'] = array(
+	'vote'                => 'تصويت',
+	'vote-header'         => "أنت ممكن هنا تدي صوتك لانتخاب '''أعظم ريس في الدنيا دي كلها'''",
+	'vote-current'        => ".'''$1'''انت بتدي صوتك لـ",
+	'vote-legend'         => 'ادي صوتك أو عدل فيه',
+	'vote-caption'        => 'انت اخترت:',
+	'vote-choices'        => 'جوكر|الجوكر
+بطريق|البطريق
+ريدلر|ريدلر',
+	'vote-submit'         => 'صوت',
+	'vote-registered'     => 'التصويت بتاعك اتسجل',
+	'vote-view-results'   => 'عرض النتايج',
+	'vote-results'        => 'نتايج التصويت',
+	'vote-results-choice' => 'الاختيار',
+	'vote-results-count'  => 'العدد',
+	'vote-results-none'   => 'ماحدش ادى صوته في الوقت دا',
+	'vote-login'          => 'لازم تكون $1 علشان تصوت.',
+	'vote-login-link'     => 'دخول',
+	'vote-invalid-choice' => 'لازم تختار واحد من الاختيارات  الموجودة',
 );
 
 $messages['bcl'] = array(
@@ -374,6 +405,7 @@ $messages['lb'] = array(
 
 /** Lithuanian (Lietuvių)
  * @author Hugo.arg
+ * @author Tomasdd
  */
 $messages['lt'] = array(
 	'vote'              => 'Balsuoti',
@@ -382,6 +414,7 @@ $messages['lt'] = array(
 	'vote-submit'       => 'Balsuoti',
 	'vote-registered'   => 'Jūsų balsas buvo užregistruotas.',
 	'vote-view-results' => 'Žiūrėti rezultatus',
+	'vote-results'      => 'Balsavimo rezultatai',
 	'vote-login-link'   => 'registruotis',
 );
 

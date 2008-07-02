@@ -144,6 +144,8 @@ Votre bien aimable système de notification de %s',
  */
 $messages['gl'] = array(
 	'tasklist'               => 'Listaxe de Tarefas',
+	'tasklist-parser-desc'   => 'engade a función de análise <nowiki>{{#todo:}}</nowiki> para asignar tarefas',
+	'tasklist-special-desc'  => 'Engade unha páxina especial para revisar [[Special:TaskList|as tarefas asignadas]]',
 	'tasklistbyproject'      => 'Listaxe de Tarefas por Proxecto',
 	'tasklistunknownproject' => 'Proxecto descoñecido',
 	'tasklistunspecuser'     => 'Usuario sen especificar',
@@ -157,6 +159,14 @@ $messages['gl'] = array(
 	'tasklistchooseproj'     => 'Seleccionar Proxecto:',
 	'tasklistprojdisp'       => 'Pantalla',
 	'tasklistbyname'         => '== Lista de tarefas pendentes para %s ==',
+	'tasklistnoprojects'     => "ERRO: parece que permitiu '''\$wgUseProjects''', pero non creou [[MediaWiki:TodoTasksValidProjects]]. Vexa [http://www.mediawiki.org/wiki/Extension:Todo_Tasks#Step_8 as instrucións da instalación] para máis detalles.",
+	'tasklistemailbody'      => ',
+
+Alguén asignoulle unha nova tarefa en %s.
+
+Para ver a súa lista completa de tarefas vaia a %s.
+
+O seu sistema agradable de notificacións %s',
 );
 
 $messages['he'] = array(
@@ -343,7 +353,7 @@ $messages['nl'] = array(
 	'tasklistchooseproj'     => 'Project selecteren:',
 	'tasklistprojdisp'       => 'Bekijken',
 	'tasklistbyname'         => '== Takenlijst voor %s ==',
-	'tasklistnoprojects'     => "FOUT: het lijkt alsof u '''\$wgUseProjects''' hebt ingeschakeld, maar [[MediaWiki:TodoTasksValidProjects]] niet heeft aangemaakt. Zie de  [http://www.mediawiki.org/wiki/Extension:Todo_Tasks#Step_8 installatie-instructies] voor meer details.",
+	'tasklistnoprojects'     => "FOUT: het lijkt alsof u '''\$wgUseProjects''' hebt ingeschakeld, maar [[MediaWiki:TodoTasksValidProjects]] niet hebt aangemaakt. Zie de  [http://www.mediawiki.org/wiki/Extension:Todo_Tasks#Step_8 installatie-instructies] voor meer details.",
 	'tasklistemailbody'      => ',
 
 Iemand heeft een nieuwe taak aan u toegewezen op %s.

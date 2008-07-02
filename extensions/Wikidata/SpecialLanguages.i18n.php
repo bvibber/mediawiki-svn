@@ -125,11 +125,19 @@ $wdMessages['krl'] = array(
 	'ow_LinkAttributeValues' => 'Viippaukset',
 );
 
-/** Eastern Mari (Олык Марий йылме)
+/** Eastern Mari (Олык Марий)
  * @author Сай
  */
 $wdMessages['mhr'] = array(
-	'ow_save' => 'Аралаш',
+	'ow_save'                => 'Аралаш',
+	'ow_LinkAttributeValues' => 'Ссылке-влак',
+);
+
+/** Niuean (native name missing)
+ * @author Jose77
+ */
+$wdMessages['niu'] = array(
+	'ow_history' => 'Liu onoono atu ki tua',
 );
 
 /** Afrikaans (Afrikaans)
@@ -591,10 +599,11 @@ Možná jste se snažili na tuto stránku přistupovat přímo. Běžně se sem 
 Nastal problém s konzistencí databáze. Wikidata nemůže najít platné údaje spojené s tímto ID definovaného významu. Je možné, že jsou ztracené. Prosím kontaktujte správce serveru.',
 );
 
-/** Church Slavic (Словѣньскъ)
+/** Church Slavic (Словѣ́ньскъ / ⰔⰎⰑⰂⰡⰐⰠⰔⰍⰟ)
  * @author ОйЛ
  */
 $wdMessages['cu'] = array(
+	'ow_Language'            => 'ѩꙁꙑ́къ',
 	'ow_LinkAttributeValues' => 'съвѧ́ꙁи',
 );
 
@@ -1056,19 +1065,33 @@ $wdMessages['gl'] = array(
 	'ow_history'                            => 'Historial',
 	'ow_datasets'                           => 'Selección de datos fixados',
 	'ow_noedit_title'                       => 'Non ten permisos para editar',
+	'ow_noedit'                             => 'Non ten permiso para editar páxinas de datos fixados "$1".
+Por favor, vexa [[{{MediaWiki:Ow editing policy url}}|a nosa política de edición]].',
 	'ow_uipref_datasets'                    => 'Vista por defecto',
 	'ow_uiprefs'                            => 'Wikidatos',
 	'ow_none_selected'                      => '<Ningún seleccionado>',
+	'ow_conceptmapping_help'                => '<p>accións posibles: <ul>
+<li>&action=insert&<data_context_prefix>=<defined_id>&...  inserir un mapa</li>
+<li>&action=get&concept=<concept_id>  ler un mapa</li>
+<li>&action=list_sets  devolver unha lista cos prefixos de contexto posibles e a que se refiren.</li>
+<li>&action=get_associated&dm=<defined_meaning_id>&dc=<dataset_context_prefix> para unha definición dun concepto, devolver todo o demais</li>
+<li>&action=help  Amosar a axuda útil.</li>
+</ul></p>',
 	'ow_conceptmapping_no_action_specified' => 'Síntoo, non sei como "$1".',
 	'ow_dm_OK'                              => 'De acordo',
 	'ow_dm_not_present'                     => 'non introducido',
 	'ow_dm_not_found'                       => 'non atopado na base de datos ou malformado',
 	'ow_mapping_successful'                 => 'Mapeados todos os campos marcados con [OK]<br />',
+	'ow_mapping_unsuccessful'               => 'Precísase ter, polo menos, dúas definición antes de que poida ligalas.',
 	'ow_will_insert'                        => 'Insertará o seguinte:',
 	'ow_contents_of_mapping'                => 'Contidos do trazado dun mapa',
 	'ow_available_contexts'                 => 'Contextos dispoñíbeis',
 	'ow_add_concept_link'                   => 'Engadir ligazón a outros conceptos',
 	'ow_concept_panel'                      => 'Panel de conceptos',
+	'ow_dm_badtitle'                        => 'Esta páxina non sinala cara a ningunha definición (concepto).
+Por favor, comprobe a dirección da páxina web.',
+	'ow_dm_missing'                         => 'Esta páxina parece que sinala cara a ningunha definición (concepto) que non existe.
+Por favor, comprobe a dirección da páxina web.',
 	'ow_AlternativeDefinition'              => 'Definición alternativa',
 	'ow_AlternativeDefinitions'             => 'Definicións alternativas',
 	'ow_Annotation'                         => 'Anotación',
@@ -1122,8 +1145,21 @@ $wdMessages['gl'] = array(
 	'ow_Permission_denied'                  => '<h2>PERMISO DENEGADO</h2>',
 	'ow_copy_no_action_specified'           => 'Precisar unha acción',
 	'ow_copy_help'                          => 'Algún día, nós poderemos axudalo.',
+	'ow_please_proved_dmid'                 => 'Parace que na súa contribución falta "?dmid=<ID>" (dmid=Definición ID)<br />
+Por favor, póñase en contacto cun administrador do servidor.',
+	'ow_please_proved_dc1'                  => 'Parace que na súa contribución falta "?dc1=<algo>" (dc1=contexto do conxunto de datos 1, conxunto de datos DO cual copiar)<br />
+Por favor, póñase en contacto cun administrador do servidor.',
+	'ow_please_proved_dc2'                  => 'Parace que na súa contribución falta "?dc2=<algo>" (dc2=contexto do conxunto de datos 2, conxunto de datos AO cual copiar)<br />
+Por favor, póñase en contacto cun administrador do servidor.',
+	'ow_copy_successful'                    => '<h2>Copia exitosa</h2>
+Parece que os seus datos foron copiados con éxito.
+Non esqueza volvelos comprobar para asegurarse!',
 	'ow_copy_unsuccessful'                  => '<h3>Copia sen éxito</h3> Ningunha operación de copiado tivo lugar.',
 	'ow_no_action_specified'                => '<h3>Non foi especificada ningunha acción</h3> Quizais veu a esta páxina directamente? Normalmente non precisa estar aquí.',
+	'ow_db_consistency_not_found'           => '<h2>Erro</h2>
+Hai un erro coa constancia da base de datos e os datos wiki non poden atopar datos válidos conectados con esta definición ID.
+Pode que se perderan.
+Por favor, póñase en contacto cun operador ou administrador do servidor.',
 );
 
 /** Manx (Gaelg)
@@ -1324,8 +1360,10 @@ $wdMessages['hu'] = array(
 
 /** Interlingua (Interlingua)
  * @author Malafaya
+ * @author McDutchie
  */
 $wdMessages['ia'] = array(
+	'ow_dm_OK'               => 'OK',
 	'ow_Language'            => 'Lingua',
 	'ow_LinkAttributeValues' => 'Ligamines',
 );
@@ -1729,6 +1767,7 @@ $wdMessages['lb'] = array(
 	'ow_meaningsoftitle'               => 'Bedeitung vun "$1"',
 	'ow_meaningsofsubtitle'            => '<em>Wiki-Link:</em> [[$1]]',
 	'ow_Permission_denied'             => '<h2>ERLAABNIS REFUSÉIERT</h2>',
+	'ow_copy_no_action_specified'      => 'Gitt w.e.g. eng Aktioun un',
 	'ow_copy_help'                     => 'Fréier oder spéider kënne mir iech hëllefen.',
 );
 

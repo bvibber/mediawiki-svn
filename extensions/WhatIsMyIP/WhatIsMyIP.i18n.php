@@ -41,3 +41,4 @@ $messages['nl'] = array(
 	'whatismyip-desc' => 'Geeft het IP-adres van de huidige gebruiker weer op een [[Special:WhatIsMyIP|speciale pagina]]',
 	'whatismyip-out'  => 'Uw IP-adres:',
 );
+
