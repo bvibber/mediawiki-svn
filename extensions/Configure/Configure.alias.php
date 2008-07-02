@@ -23,3 +23,8 @@ $aliases['fr'] = array(
 	'Configure' => array( 'Configurer' ),
 	'ViewConfig' => array( 'Voir la configuration' ),
 );
+
+$aliases['nl'] = array(
+	'Configure'  => array( 'Instellingen' ),
+	'ViewConfig' => array( 'InstellingenBekijken' ),
+);
