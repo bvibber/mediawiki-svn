@@ -23,3 +23,12 @@ $messages['fi'] = array(
 	'whatismyip' => 'Mikä IP-osoitteeni on',
 	'whatismyip-out' => 'IP-osoitteesi:',
 );
+
+/** French (Français)
+ * @author Grondin
+ */
+$messages['fr'] = array(
+	'whatismyip'      => 'Quel est mon IP',
+	'whatismyip-desc' => 'Afficher l’adresse IP courante de l’utilisateur dans [[Special:WhatIsMyIP]]',
+	'whatismyip-out'  => 'Votre IP :',
+);

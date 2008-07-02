@@ -68,3 +68,35 @@ $messages['fi'] = array(
 	'deletebatch-select-yourself' => 'sinä',
 	'deletebatch-no-page' => 'Määrittele ainakin yksi poistettava sivu TAI valitse tiedosto, joka sisältää sivulistan.',
 );
+
+/** French (Français)
+ * @author Grondin
+ */
+$messages['fr'] = array(
+	'deletebatch'                      => 'Lot de suppression des pages',
+	'deletebatch-desc'                 => '[[Special:DeleteBatch|Supprime un lot de pages]]',
+	'deletebatch-button'               => 'SUPPRIMER',
+	'deletebatch-here'                 => '<b>ici</b>',
+	'deletebatch-help'                 => 'Supprime un lot de pages. Vous pouvez soit lancer une simple suppression, soit supprimer des pages listées dans un fichier.
+Choisissez un utilisateur qui sera affiché dans le journal des suppressions.
+Un fichier importé pourra contenir un nom de la page et un motif facultatif séparé par un « | » dans chaque ligne.',
+	'deletebatch-caption'              => 'Liste de la page',
+	'deletebatch-title'                => 'Supprimer en lot',
+	'deletebatch-link-back'            => 'Vous pouvez revenir à l’extension',
+	'deletebatch-as'                   => 'Lancer le script comme',
+	'deletebatch-both-modes'           => 'Veuillez choisir, soit une des pages indiquées, soit une liste donnée de pages.',
+	'deletebatch-or'                   => '<b>OU</b>',
+	'deletebatch-page'                 => 'Pages à supprimer',
+	'deletebatch-reason'               => 'Motif de la suppression',
+	'deletebatch-processing'           => 'suppression des pages',
+	'deletebatch-from-file'            => 'depuis la liste d’un fichier',
+	'deletebatch-from-form'            => 'à partir du formulaire',
+	'deletebatch-success-subtitle'     => 'pour « $1 »',
+	'deletebatch-omitting-nonexistant' => 'Omission de la page « $1 » inexistante.',
+	'deletebatch-omitting-invalid'     => 'Omission de la page « $1 » incorrecte.',
+	'deletebatch-file-bad-format'      => 'Le fichier doit être en texte simple',
+	'deletebatch-file-missing'         => 'Impossible de lire le fichier donné',
+	'deletebatch-select-script'        => 'supprimer le script de la page',
+	'deletebatch-select-yourself'      => 'vous',
+	'deletebatch-no-page'              => 'Veuillez indiquer au moins une page à supprimer OU un fichier donné contenant une liste de pages.',
+);

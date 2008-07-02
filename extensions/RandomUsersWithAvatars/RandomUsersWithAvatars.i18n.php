@@ -21,3 +21,27 @@ $messages['en'] = array(
 $messages['fi'] = array(
 	'random-users-avatars-title' => 'Tapaa yhteisö',
 );
+
+/** French (Français)
+ * @author Grondin
+ */
+$messages['fr'] = array(
+	'random-users-avatars-title' => 'Faites connaissance de la communauté',
+	'random-users-avatars-desc'  => 'Ajoute la balise <tt>&lt;randomuserswithavatars&gt;</tt> pour afficher les avatars d’utilisateurs choisis aléatoirement',
+);
+
+/** Galician (Galego)
+ * @author Toliño
+ */
+$messages['gl'] = array(
+	'random-users-avatars-title' => 'Coñeza a comunidade',
+	'random-users-avatars-desc'  => 'Engade a etiqueta <tt>&lt;randomuserswithavatars&gt;</tt> para amosar os avatares dos usuarios elixidos ao chou',
+);
+
+/** Swedish (Svenska)
+ * @author Boivie
+ */
+$messages['sv'] = array(
+	'random-users-avatars-title' => 'Träffa gemenskapen',
+	'random-users-avatars-desc'  => 'Lägger till taggen <tt>&lt;randomuserswithavatars&gt;</tt> för att visa avatarerna för slumpvis utvalda användare',
+);
