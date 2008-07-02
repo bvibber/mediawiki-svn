@@ -143,10 +143,7 @@ class SlippyMap {
 				'	sc.src = "http://openlayers.org/api/OpenLayers.js";' .
 			 	'	document.body.appendChild( sc );' .
 			 	'	var sc = document.createElement("script");' .
-			 	'	sc.src = "http://openstreetmap.org/openlayers/OpenStreetMap.js";'.
-			 	'	document.body.appendChild( sc );' .
-			 	'	var sc = document.createElement("script");' .
-			 	'	sc.innerHTML = "osm_fully_loaded=true;";' .
+			 	'	sc.src = "http://svn.wikimedia.org/viewvc/mediawiki/trunk/extensions/SlippyMap/OpenStreetMap.js?view=co";'.
 			 	'	document.body.appendChild( sc );' .
 			 	'} );';
 
