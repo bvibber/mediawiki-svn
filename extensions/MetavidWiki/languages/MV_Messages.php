@@ -28,18 +28,18 @@ $messages['en'] = array(
 
 	#add/edit stream text:
 	'mv_stream_meta'                => 'Stream page',
-	'mv_add_stream'                 => 'Metavid Add Stream',
-	'mv_edit_stream'                => 'Metavid Edit Stream',
-	'mvexportsearch'                => 'Metavid Export',
-	'mvexportsequence'              => 'Metavid Export Sequence',
-	'mvexportstream'                => 'Metavid Export Stream',
+	'mv_add_stream'                 => 'Metavid add Stream',
+	'mv_edit_stream'                => 'Metavid edit Stream',
+	'mvexportsearch'                => 'Metavid export',
+	'mvexportsequence'              => 'Metavid export sequence',
+	'mvexportstream'                => 'Metavid export stream',
 	
-	'mv_add_stream_page'            => 'Mv Add Stream',
+	'mv_add_stream_page'            => 'Mv add stream',
 	'mv_edit_strea_docu'            => '<p>Edit stream <b>admin</b><br />for normal user view/edit see $1 page',
 	'mv_add_stream_docu'            => '<p>Add a new Stream with the field below.</p>
 <p>More information is given on the <a href="$1">help page for add stream</a>.</p>',
 	'mv_add_stream_submit'          => 'Add stream',
-	'mv_no_stream_files'            => 'No Existing Stream files',
+	'mv_no_stream_files'            => 'No existing stream files',
 	'mv_edit_stream_files'          => 'Edit stream files',
 	'mv_path_type_url_anx'          => 'full media url',
 	'mv_path_type_wiki_title'       => 'wiki media title',
@@ -50,8 +50,8 @@ $messages['en'] = array(
 	'mv_delete_stream_file'         => 'delete stream file reference',
 	'mv_save_changes'               => 'Save changes',
 	'mv_file_with_same_desc'        => 'Error: stream file with same description key <i>$1</i> already present',
-	'mv_updated_stream_files'       => 'Updated Stream Files Record',
-	'mv_removed_file_stream'        => 'Removed Stream file: $1',
+	'mv_updated_stream_files'       => 'Updated stream files record',
+	'mv_removed_file_stream'        => 'Removed stream file: $1',
 	'mv_missing_stream_text'        => 'The stream you requested <b>$1</b> is not available.<br />
 You may want to check the <a href="$2">Stream list</a><br />
 Or you many want to <a href="$3">Add the stream</a>.',
@@ -83,7 +83,7 @@ Or you many want to <a href="$3">Add the stream</a>.',
 
 	#tools
 	'mv_tool_search'            => 'Search',
-	'mv_tool_search_title'      => 'Search within this Stream',
+	'mv_tool_search_title'      => 'Search within this stream',
 	'mv_search_transcripts_for' => 'Search transcripts for',
 	'mv_tool_navigate'          => 'Navigate',
 	'mv_tool_navigate_title'    => 'Navigate the full stream',
@@ -92,18 +92,19 @@ Or you many want to <a href="$3">Add the stream</a>.',
 	'mv_tool_embed'             => 'Embed',
 	'mv_tool_embed_title'       => 'Embed options for the current requested segment',
 	'mv_tool_overlay'           => 'Template overlays',
-	'mv_tool_overlay_title'     => 'Template based metadata Overlays',
+	'mv_tool_overlay_title'     => 'Template based metadata overlays',
 	'mv_results_found_for'      => 'Search results <b>$1</b> to <b>$2</b> of <b>$3</b> for:',
 	'mv_tool_mang_layers'       => 'Manage layers',
 	'mv_update_layers'          => 'Update layers',
-	'mv_watch_clip'				=> 'Watch Clip',
-	'mv_close_clip'				=> 'Close Clip',
-	'mv_improve_transcript'		=> 'Improve Transcript',
+	'mv_watch_clip'				=> 'Watch clip',
+	'mv_close_clip'				=> 'Close clip',
+	'mv_improve_transcript'		=> 'Improve transcript',
 
 	#mvd types:
 	'ht_en'          => 'Transcript',
-	'ht_en_desc'     => 'English transcripts. This overlay type is for spoken text',
-	'anno_en'        => 'Annotations and Categories',
+	'ht_en_desc'     => 'English transcripts.
+This overlay type is for spoken text',
+	'anno_en'        => 'Annotations and categories',
 	'anno_en_desc'   => 'English categorizations and annotations.
 This overlay can be used to categorize sections of video or to add annotative information that is not spoken text',
 	'thomas_en'      => 'Official transcript',
@@ -126,7 +127,7 @@ $mvMVDTypeDefaultDisp should be a subset of $mvMVDTypeAllAvailable',
 
 	#messages for metavid export feed:
 	'mvvideofeed'        => 'Metavid video feed export',	
-	'mvexportask'		 => 'Semantic Video Feed Export',
+	'mvexportask'		 => 'Semantic video feed export',
 	'video_feed_cat'     => 'Video feed for category:',
 	'mv_cat_search_note' => 'Note: Categories only lists top level categories.
 For all metadata in category ranges search for $1',
@@ -198,7 +199,7 @@ Jump to stream view: $2',
 	'mv_edit_sequence'            => 'Editing sequence:$1',
 	'mv_sequence_player_title'    => 'sequence player',
 
-	'mv_save_sequence'            => 'Save Sequence',
+	'mv_save_sequence'            => 'Save sequence',
 	'mv_sequence_page_desc'       => 'Save the current sequence',
 	'mv_sequence_add'             => 'Add clips',
 	'mv_sequence_add_manual'      => 'Add by Name',
