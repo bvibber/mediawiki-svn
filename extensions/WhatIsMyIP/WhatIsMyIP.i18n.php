@@ -12,6 +12,7 @@ $messages = array();
  */
 $messages['en'] = array(
 	'whatismyip' => 'What is my IP',
+	'whatismyip-desc' => 'Shows current user\'s IP address on [[Special:WhatIsMyIP]]',
 	'whatismyip-out' => 'Your IP:',
 );
 

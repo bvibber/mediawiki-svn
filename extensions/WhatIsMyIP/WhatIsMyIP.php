@@ -25,7 +25,8 @@ $wgExtensionCredits['specialpage'][] = array(
 	'version' => '1.0',
 	'description' => 'Shows current user\'s IP address on [[Special:WhatIsMyIP]]',
 	'author' => 'Łukasz Galezewski',
-	'url' => 'http://www.mediawiki.org/wiki/Extension:WhatIsMyIP'
+	'url' => 'http://www.mediawiki.org/wiki/Extension:WhatIsMyIP',
+	'descriptionmsg' => 'whatismyip-desc'
 );
 
 global $wgAvailableRights, $wgGroupPermissions
