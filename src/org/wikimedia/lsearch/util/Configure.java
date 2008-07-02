@@ -36,6 +36,9 @@ public class Configure {
 			return;
 		}
 		String mediawiki = args[0];
+		if(mediawiki.endsWith(System.getProperty("file.separator")))
+			mediawiki = mediawiki.substring(0,mediawiki.length()-1);
+		
 		String dbname = getVariable(mediawiki,"wgDBname");
 		String scriptPath = getVariable(mediawiki,"wgScriptPath");
 		String server = getVariable(mediawiki,"wgServer");
