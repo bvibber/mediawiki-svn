@@ -81,23 +81,23 @@ function GetRandomUsersWithAvatars( $input, $args, &$parser ){
 			//load user
 			$user = User::newFromId( $user_id );
 			$user->loadFromDatabase();
-			$user_name = $user->getName();	
-			
+			$user_name = $user->getName();
+
 			$avatar = new wAvatar($user_id, "ml");
 			$user_link = Title::makeTitle(NS_USER, $user_name);
-			
+
 			$output .= "<a href=\"".$user_link->escapeFullURL()."\" rel=\"nofollow\">{$avatar->getAvatarURL()}</a>";
-			
+
 			if($x==$count || $x!=1 && $x%$per_row ==0)$output .= "<div class=\"cleared\"></div>";
 			$x++;
-			
+
 		}
 	}
-	
+
 	$output .= "<div class=\"cleared\"></div>
 	</div>";
-	
+
 	wfProfileIn(__METHOD__);
-	
+
 	return $output;
 }
