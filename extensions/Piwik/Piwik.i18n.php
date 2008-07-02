@@ -42,7 +42,7 @@ $messages['bg'] = array(
  * @author Isb1009
  */
 $messages['ca'] = array(
-	'piwik-desc'       => 'Insereix el codi de Piwik dins les pàgines del MediaWiki per a fer les estadístiques',
+	'piwik-desc'       => 'Insereix el codi de Piwik dins les pàgines del MediaWiki per al seguiment i hi afegeix [[Special:Piwik|algunes estadístiques]]',
 	'piwik'            => 'Piwik',
 	'piwik-lastvisits' => 'Darreres visites',
 	'piwik-countries'  => 'Països',
@@ -73,7 +73,7 @@ $messages['de'] = array(
  * @author Isb1009
  */
 $messages['es'] = array(
-	'piwik-desc'       => 'Inseta el código de Piwik en las páginas de la wiki MediaWiki para hacer las estadísticas',
+	'piwik-desc'       => 'Inseta el código de Piwik en las páginas de la wiki MediaWiki para el seguimiento y añade [[Special:Piwik|algunas estadísticas]]',
 	'piwik'            => 'Piwik',
 	'piwik-lastvisits' => 'Últimas visitas',
 	'piwik-countries'  => 'Países',
@@ -229,4 +229,5 @@ $messages['vi'] = array(
 	'piwik-countries'  => 'Quốc gia',
 	'piwik-browsers'   => 'Trình duyệt',
 );
+
 
