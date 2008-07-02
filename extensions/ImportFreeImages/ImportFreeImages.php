@@ -272,8 +272,10 @@ function wfSpecialImportFreeImages( $par )
 
 	$q = $wgRequest->getText( 'q' );
 
+	global $wgScript;
 	$wgOut->addHTML(wfMsg ('importfreeimages_description') . "<br /><br />
-		<form method=GET action='" . $importPage->escapeFullURL() . "'>".wfMsg('search').
+		<form method=GET action=\"$wgScript\">".wfMsg('search').
+		Xml::hidden( 'title', $importPage->getPrefixedDbKey() ) .
 		": <input type=text name=q value='" . htmlspecialchars($q) . "'><input type=submit value=".wfMsg('search')."></form>");
 
 	if ($q != '') {
