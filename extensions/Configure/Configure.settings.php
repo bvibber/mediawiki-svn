@@ -144,6 +144,7 @@ $settings = array(
 			'wgZhdaemonPort' => 'int',
 		),
 		'html' => array(
+			'wgAdditionalXMLTypes' => 'array',
 			'wgDocType' => 'text',
 			'wgDTD' => 'text',
 			'wgMimeType' => 'text',
@@ -710,6 +711,7 @@ $arrayDefs = array(
 	'wgUsersNotifiedOnAllChanges' => 'simple',
 # Localization
 	'wgForceUIMsgAsContentMsg' => 'simple',
+	'wgAdditionalXMLTypes' => 'assoc',
 	'wgXhtmlNamespaces' => 'assoc',
 	'wgDebugLogGroups' => 'assoc',
 # Site custom
@@ -1115,6 +1117,7 @@ $settingsVersion = array(
 	'wgActiveUserEditCount' => array( array( '1.13alpha', '>=' ) ),
 	'wgRC2UDPOmitBots' => array( array( '1.13alpha', '>=' ) ),
 	'wgExtensionAliasesFiles' => array( array( '1.13alpha', '>=' ) ),
+	'wgAdditionalXMLTypes' => array( array( '1.13alpha', '>=' ) ),
 ## Obsolete
 	'wgProfileSampleRate' => array( array( '1.8alpha', '<' ) ),
 	'wgProfilerType' => array( array( '1.8alpha', '<' ) ),
