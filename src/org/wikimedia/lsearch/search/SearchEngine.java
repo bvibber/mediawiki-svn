@@ -92,7 +92,7 @@ public class SearchEngine {
 	public SearchResults search(String dbname, String what, String searchterm, HashMap query, double version) {
 		IndexId iid = IndexId.get(dbname);
 		if (what.equals("search") || what.equals("explain")) {
-			int offset = 0, limit = 100; boolean exactCase = false;
+			int offset = 0, limit = 20; boolean exactCase = false;
 			int iwlimit = 10; int iwoffset = 0;
 			boolean searchOnly = false;
 			if (query.containsKey("offset"))
@@ -123,7 +123,7 @@ public class SearchEngine {
 			} */			
 			return res;
 		} else if (what.equals("raw") || what.equals("rawexplain")) {
-			int offset = 0, limit = 100; boolean exactCase = false;
+			int offset = 0, limit = 20; boolean exactCase = false;
 			int iwlimit = 10; int iwoffset = 0;
 			if (query.containsKey("offset"))
 				offset = Math.max(Integer.parseInt((String)query.get("offset")), 0);
@@ -156,7 +156,7 @@ public class SearchEngine {
 			}
 			return res;
 		} else if (what.equals("related")){
-			int offset = 0, limit = 100; 
+			int offset = 0, limit = 20; 
 			if (query.containsKey("offset"))
 				offset = Math.max(Integer.parseInt((String)query.get("offset")), 0);
 			if (query.containsKey("limit"))
@@ -649,7 +649,7 @@ public class SearchEngine {
 				e.printStackTrace();
 				res = new SearchResults();
 				res.retry();
-				log.warn("Retry, temportal error for query: ["+q+"] on "+iid);
+				log.warn("Retry, temportal error for query: ["+q+"] on "+iid+" : "+e.getMessage());
 				return res;
 			}			
 		} catch(ParseException e){

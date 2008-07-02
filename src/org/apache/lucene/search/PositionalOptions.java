@@ -39,6 +39,10 @@ public class PositionalOptions implements Serializable {
 	protected boolean useCompleteOnly = false;
 	/** act exactly as a phrase query without any positional or such optimizations */
 	protected boolean phraseQueryFallback = false;
+	/** if single words can be whole matches */
+	protected boolean allowSingleWordWholeMatch = false;
+	/** extra boost if whole alttitle (and not anchor) is matched */
+	protected float alttileWholeExtraBoost = 1;
 
 	
 	/** Options specific for phrases in contents */
@@ -46,21 +50,20 @@ public class PositionalOptions implements Serializable {
 		public Sloppy(){
 			rankMeta = new RankInfo();
 			useBeginBoost = true;
-			exactBoost = 1;
-			useNoStopWordLen = true;
+			exactBoost = 4;
 			beginExactBoost = 8;
 		}
 	}
 	
 	/** Options specific for phrases that match exactly in contents */
-	public static class Exact extends PositionalOptions {
+	/* public static class Exact extends PositionalOptions {
 		public Exact(){
 			rankMeta = new RankInfo();
 			useBeginBoost = true;
 			exactBoost = 4;
 			//beginTable = new float[] { 256, 64, 4, 2 }; 
 		}
-	}
+	} */
 	
 	/** Options for alttitle field */
 	public static class Alttitle extends PositionalOptions {
@@ -76,7 +79,8 @@ public class PositionalOptions implements Serializable {
 		public AlttitleWhole(){
 			aggregateMeta = new AggregateInfoImpl();
 			takeMaxScore = true;
-			wholeBoost = 10000;
+			wholeBoost = 1000;
+			alttileWholeExtraBoost = 100;
 			//wholeNoStopWordsBoost = 1000;
 			//onlyWholeMatch = true;
 		}
@@ -86,7 +90,10 @@ public class PositionalOptions implements Serializable {
 		public AlttitleWholeSloppy(){
 			aggregateMeta = new AggregateInfoImpl();
 			takeMaxScore = true;
-			wholeBoost = 1000;
+			wholeBoost = 100;
+			alttileWholeExtraBoost = 10;
+			//exactBoost = 10;
+			allowSingleWordWholeMatch = true;
 			//wholeNoStopWordsBoost = 1000;
 			//onlyWholeMatch = true;
 		}
@@ -98,6 +105,15 @@ public class PositionalOptions implements Serializable {
 			aggregateMeta = new AggregateInfoImpl();
 			takeMaxScore = true;
 			//exactBoost = 2;
+		}
+	}
+	
+	public static class RelatedWhole extends PositionalOptions {
+		public RelatedWhole(){
+			aggregateMeta = new AggregateInfoImpl();
+			takeMaxScore = true;
+			// exactBoost = 4;
+			allowSingleWordWholeMatch = true;
 		}
 	}
 	
@@ -125,10 +141,13 @@ public class PositionalOptions implements Serializable {
 		public RedirectMatch(){
 			aggregateMeta = new AggregateInfoImpl();
 			takeMaxScore = true;
-			wholeNoStopWordsBoost = 1000000;
-			wholeBoost = 5000000;
+			wholeNoStopWordsBoost = 10000;
+			wholeBoost = 50000;
 			useRankForWholeMatch = true;
 			nsWholeBoost = new NamespaceBoost.DefaultBoost();
+			allowSingleWordWholeMatch = true;
+			exactBoost = 100;
+			alttileWholeExtraBoost = 100;
 		}
 	}
 	
@@ -150,6 +169,16 @@ public class PositionalOptions implements Serializable {
 			aggregateMeta = new AggregateInfoImpl();
 			takeMaxScore = true;
 			//wholeBoost = 8;
+		}
+	}
+	
+	/** Options for sections field */
+	public static class SectionsWhole extends PositionalOptions {
+		public SectionsWhole(){
+			aggregateMeta = new AggregateInfoImpl();
+			takeMaxScore = true;
+			// wholeBoost = 8;
+			allowSingleWordWholeMatch = true;
 		}
 	}
 	/** Fallback to phasequery-type behaviour, no positional info */

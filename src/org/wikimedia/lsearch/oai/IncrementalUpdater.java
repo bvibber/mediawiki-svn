@@ -101,6 +101,7 @@ public class IncrementalUpdater {
 		HashSet<String> excludeList = new HashSet<String>();
 		HashSet<String> firstPass = new HashSet<String>(); // if dbname is here, then it's our update pass
 		String defaultTimestamp = "2001-01-01";
+		boolean errors = false;
 		
 		// args
 		for(int i=0; i<args.length; i++){
@@ -267,6 +268,7 @@ public class IncrementalUpdater {
 				} catch(Exception e){
 					e.printStackTrace();
 					log.warn("Retry later: error while processing update for "+dbname+" : "+e.getMessage());
+					errors = true;
 				}
 			}
 			if(daemon){
@@ -276,6 +278,9 @@ public class IncrementalUpdater {
 				} catch (InterruptedException e) { }
 			}
 		} while(daemon);
+		
+		if(errors)
+			System.exit(1);	
 	}
 	
 	private static Collection<String> readDBList(String dblist) {

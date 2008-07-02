@@ -1,0 +1,7 @@
+#!/bin/bash
+
+java -cp LuceneSearch.jar org.wikimedia.lsearch.oai.IncrementalUpdater -l $@ \
+  && java -cp LuceneSearch.jar org.wikimedia.lsearch.util.Snapshot \
+  && java -cp LuceneSearch.jar org.wikimedia.lsearch.related.RelatedBuilder -l \
+  && java -cp LuceneSearch.jar org.wikimedia.lsearch.util.Snapshot -pre \
+  && java -cp LuceneSearch.jar org.wikimedia.lsearch.spell.SuggestBuilder -l \

@@ -372,4 +372,27 @@ public class RMIMessengerClient {
 			return new SearcherPoolStatus(false);
 		}
 	}
+	
+	public void requestSnapshotAndNotify(String host, boolean optimize, String pattern, boolean forPrecursor) throws RemoteException {
+		RMIMessenger r;
+		try {
+			r = messengerFromCache(host);
+			r.requestSnapshotAndNotify(optimize,pattern,forPrecursor);
+		} catch(NotBoundException e){
+			e.printStackTrace();
+			log.error("Messenger not bound: "+e.getMessage());
+		}			
+	}
+	
+	public boolean snapshotFinished(String host, boolean optimize, String pattern, boolean forPrecursor) throws RemoteException {
+		RMIMessenger r;
+		try {
+			r = messengerFromCache(host);
+			return r.snapshotFinished(optimize,pattern,forPrecursor);
+		} catch(NotBoundException e){
+			e.printStackTrace();
+			log.error("Messenger not bound: "+e.getMessage());
+		}			
+		return false;
+	}
 }

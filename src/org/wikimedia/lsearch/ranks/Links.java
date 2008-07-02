@@ -10,8 +10,11 @@ import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Map;
 import java.util.Map.Entry;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -300,39 +303,19 @@ public class Links {
 		boolean escaped;
 
 		ArrayList<String> pagelinks = new ArrayList<String>();
-		
-		// use context only for namespace in default search
-		boolean useContext = nsf.contains(t.getNamespace());
-		
-		ContextParser cp = new ContextParser(text,imageLocalized,categoryLocalized,interwiki);
+		ArrayList<String> anchors = new ArrayList<String>();
 		
 		Title redirect = Localization.getRedirectTitle(text,iid.getDB());
 		String redirectsTo = null;
 		if(redirect != null){
 			redirectsTo = findTargetLink(redirect.getNamespace(),redirect.getTitle(),exactCase);
 		} else { 
-			ContextParser.Context curContext = null;
-			while(true){
-				boolean hasNext = matcher.find();
-				String link = null;
-				ContextParser.Context context = null;
-				if(hasNext){
-					link = matcher.group(1);
-					context = useContext? cp.getNext(matcher.start(1)) : null;
-				}
-				// get links in context if there is this one is last, or new contex has been found
-				if(!hasNext || context != null){ 
-					if(curContext == null)
-						curContext = context;
-					else if(curContext!=context){
-						pagelinks.add("");
-						curContext = context;
-					}					
-				}
+			while(matcher.find()){
+				String link = matcher.group(1);
+				String anchor = matcher.group(3);		
+				if(anchor!=null && !exactCase)
+					anchor = anchor.toLowerCase();
 				
-				if(!hasNext)
-					break;
-
 				int fragment = link.lastIndexOf('#');
 				if(fragment != -1)
 					link = link.substring(0,fragment);
@@ -362,18 +345,24 @@ public class Links {
 				}
 				if(ns == 0 && namespace!=0)
 					continue; // skip links from other namespaces into the main namespace
-				String target = findTargetLink(ns,title,exactCase);				
+				String target = findTargetLink(ns,title,exactCase);
+				
+				if(anchor != null && anchor.length()>1 && anchor.equalsIgnoreCase(title))
+					anchor = null; // anchor same as link text
 				if(target != null){
 					ArrayList<String> variants = filters.getVariants(target);
 					pagelinks.add(target); 
 					if(variants != null)
 						pagelinks.addAll(variants);
+					if(anchor != null)
+						anchors.add(target+"|"+anchor);
 				}
 			}
 		}
 		// index article
 		StringList lk = new StringList(pagelinks);
-		Analyzer an = new SplitAnalyzer(1,true);
+		StringList ak = new StringList(anchors);
+		Analyzer an = new SplitAnalyzer(1,false);
 		Document doc = new Document();
 		doc.add(new Field("article_pageid",pageId,Field.Store.YES,Field.Index.UN_TOKENIZED));
 		// ns:title
@@ -382,8 +371,9 @@ public class Links {
 			// redirect_ns:title|target_ns:title
 			doc.add(new Field("redirect",redirectsTo+"|"+t.getKey(),Field.Store.YES,Field.Index.UN_TOKENIZED));
 		else{
-			// a list of all links
+			// a list of all links/anchors
 			doc.add(new Field("links",lk.toString(),Field.Store.NO,Field.Index.TOKENIZED));
+			doc.add(new Field("anchors",ak.toString(),Field.Store.NO,Field.Index.TOKENIZED));
 		}
 		
 		writer.addDocument(doc,an);
@@ -476,6 +466,85 @@ public class Links {
 				break;
 		}
 		return ret;
+	}
+	
+	/** Get anchor texts that differs from the page title, with rank counts
+	 * @return anchor text -> occurance count
+	 */
+	public HashMap<String,Integer> getAnchors(String key) throws IOException{
+		ensureRead();
+		HashMap<String,Integer> ret = new HashMap<String,Integer>();
+		String prefix = key+"|";
+		TermEnum te = reader.terms(new Term("anchors",prefix));
+		for(;te.term()!=null;te.next()){
+			String t = te.term().text();
+			if(t.startsWith(prefix)){
+				String anchor = t.substring(t.indexOf('|')+1);
+				if(optimized)
+					ret.put(anchor,reader.docFreq(new Term("anchors",t)));
+				else{
+					TermDocs td = reader.termDocs(new Term("anchors",t));
+					int count = 0;
+					while(td.next()) // this will skip deleted docs, while docFreq won't
+						count++;
+					if( count > 0 )
+						ret.put(anchor,count);
+				}
+			} else
+				break;
+		}
+		return ret;
+	}
+	
+	/** Get mapping text -> occurance count (including actual article title) */  
+	public HashMap<String,Integer> getAnchorMap(String key, Integer numInLinks) throws IOException {
+		ensureRead();
+		HashMap<String,Integer> map = getAnchors(key);
+		if(numInLinks == null)
+			numInLinks = getNumInLinks(key);
+		int sum = 0;
+		for(Integer r : map.values())
+			sum += r;
+		// FIXME: numInLinks is document count, while anchors are counted in combined occurance/doc count form
+		map.put(Title.titleFromKey(key),numInLinks);
+		return map;
+	}
+	
+	/** Merge the second anchor map into the first */
+	public static void mergeAnchorMaps(Map<String,Integer> dest, Map<String,Integer> src){
+		for(Entry<String,Integer> e : src.entrySet()){
+			String key = e.getKey();
+			if(dest.containsKey(key))
+				dest.put(key,dest.get(key)+e.getValue());
+			else
+				dest.put(key,e.getValue());
+		}
+	}
+	
+	/** Lowercase all anchor keys & merge */
+	public static HashMap<String,Integer> lowercaseAnchorMap(Map<String,Integer> src){
+		HashMap<String,Integer> dest = new HashMap<String,Integer>();
+		for(Entry<String,Integer> e : src.entrySet()){
+			String key = e.getKey().toLowerCase();
+			if(dest.containsKey(key))
+				dest.put(key,dest.get(key)+e.getValue());
+			else
+				dest.put(key,e.getValue());
+		}
+		return dest;
+	}
+	
+	/** Sort anchors desc according to rank */
+	public static ArrayList<Entry<String,Integer>> sortAnchors(Map<String,Integer> anchors){
+		// sort by rank
+		ArrayList<Entry<String,Integer>> sorted = new ArrayList<Entry<String,Integer>>();
+		sorted.addAll(anchors.entrySet());
+		Collections.sort(sorted,new Comparator<Entry<String,Integer>>() {
+			public int compare(Entry<String, Integer> o1, Entry<String, Integer> o2) {
+				return o2.getValue() - o1.getValue();
+			}			
+		});
+		return sorted;
 	}
 	
 	/** If an article is a redirect 

@@ -41,6 +41,8 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import org.apache.log4j.BasicConfigurator;
+import org.apache.log4j.Level;
+import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
 import org.apache.log4j.helpers.LogLog;
 
@@ -98,7 +100,8 @@ public class Configuration {
 			// debug!
 			if(verbose)
 				System.out.println("Errors will be logged to console...");
-			BasicConfigurator.configure();			
+			BasicConfigurator.configure();
+			Logger.getRootLogger().setLevel(Level.INFO);
 		} else {
 			PropertyConfigurator.configure(logconfig);
 		}

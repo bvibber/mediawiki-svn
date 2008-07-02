@@ -6,13 +6,18 @@ import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashSet;
 import java.util.Hashtable;
 import java.util.Set;
 import java.util.Map.Entry;
 
 import org.apache.log4j.Logger;
+import org.apache.lucene.index.IndexReader;
+import org.apache.lucene.index.IndexReader.FieldOption;
 import org.apache.lucene.search.IndexSearcher;
 import org.apache.lucene.search.Searchable;
 import org.apache.lucene.search.SearchableMul;
@@ -89,6 +94,39 @@ public class SearcherCache {
 				else
 					searcher = new IndexSearcherMul(path);
 				searcher.setSimilarity(new WikiSimilarity());
+				
+				// preload meta caches
+				if(iid.isArticleIndex()){
+					IndexReader reader = searcher.getIndexReader();
+					ArrayList<CacheBuilder> builders = new ArrayList<CacheBuilder>();
+					Collection fields = reader.getFieldNames(FieldOption.ALL);
+					for(Object fieldObj : fields){
+						String field = (String)fieldObj;
+						if(field.endsWith("_meta")){
+							String metaname = field.substring(0,field.lastIndexOf('_'));
+							builders.add( AggregateMetaField.getCacherBuilder(reader,metaname) );
+						}
+					}
+					builders.add( ArticleMeta.getCacherBuilder(reader,iid.getNamespacesWithSubpages()) );
+					while(builders.remove(null)); // remove null builders
+					if(builders.size() > 0){
+						long start = System.currentTimeMillis();
+						log.info("Caching meta fields for "+iid+" ... ");
+						// if cache builders exist, send documents to them
+						for(CacheBuilder b : builders){
+							b.init();
+						}
+						for(int i=0;i<reader.maxDoc();i++){
+							for(CacheBuilder b : builders){
+								b.cache(i,reader.document(i));
+							}
+						}
+						for(CacheBuilder b : builders){
+							b.end();
+						}
+						log.info("Finished caching "+iid+" in "+(System.currentTimeMillis()-start)+" ms");
+					}
+				}
 			} catch (IOException e) {
 				e.printStackTrace();
 				// tell registry this is not a good index
@@ -309,15 +347,22 @@ public class SearcherCache {
 	protected class InitialDeploymentThread extends Thread {
 		public void run(){
 			IndexRegistry registry = IndexRegistry.getInstance();
-			HashSet<IndexId> mys =  GlobalConfiguration.getInstance().getMySearch();
+			// get local search indexes, deploy sorted by name
+			ArrayList<IndexId> mys = new ArrayList<IndexId>();
+			mys.addAll(GlobalConfiguration.getInstance().getMySearch());
+			Collections.sort(mys,new Comparator<IndexId>(){
+				public int compare(IndexId o1, IndexId o2) {
+					return o1.toString().compareTo(o2.toString());
+				}
+			});
 			for(IndexId iid : mys){
 				try {
 					// when searcher is linked into "search" path it's good, initialize it
 					if(!iid.isLogical() && registry.getCurrentSearch(iid) != null){
 						log.debug("Initializing local for "+iid);
 						SearcherPool pool = initLocalPool(iid);
-						Warmup.warmupPool(pool.searchers,iid,false,1);
-						Warmup.waitForAggregate(pool.searchers);
+						//Warmup.warmupPool(pool.searchers,iid,false,1);
+						//Warmup.waitForAggregate(pool.searchers);
 						localCache.put(iid.toString(),pool);
 						
 						RMIServer.bind(iid,pool.searchers);

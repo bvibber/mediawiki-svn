@@ -27,6 +27,16 @@ public class Title implements java.io.Serializable {
     public String getKey(){
    	 return namespace+":"+title;
     }
+    
+    /** Get title from ns:title */
+    public static String titleFromKey(String key){
+   	 return key.substring(key.indexOf(':')+1);
+    }
+    /** Get [ns, title] from ns:title */ 
+    public static String[] partsFromKey(String key){
+   	 int in = key.indexOf(':');
+   	 return new String[] { key.substring(0,in), key.substring(in+1) };
+    }
 
     @Override
 	public String toString() {

@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.Hashtable;
 import java.util.Iterator;
 import java.util.Map.Entry;
 import java.util.concurrent.ThreadPoolExecutor.AbortPolicy;
@@ -85,7 +86,7 @@ public class DumpImporter implements DumpWriter {
 		boolean isRedirect = false;
 		int redirectTargetNamespace = -1;
 		ArrayList<Redirect> redirects = new ArrayList<Redirect>();
-		ArrayList<String> anchors = new ArrayList<String>();
+		Hashtable<String,Integer> anchors = new Hashtable<String,Integer>();
 		ArrayList<RelatedTitle> rel = new ArrayList<RelatedTitle>();
 		Date date = new Date(revision.Timestamp.getTimeInMillis());
 		
@@ -93,14 +94,15 @@ public class DumpImporter implements DumpWriter {
 		String redirectTo = links.getRedirectTarget(key);
 		isRedirect = redirectTo != null;
 		redirectTargetNamespace = isRedirect? links.getRedirectTargetNamespace(key) : -1;
-		//int redirectRank = isRedirect? links.getRank(redirectTo) : 0;
+		anchors.putAll(links.getAnchorMap(key,references));
 		
 		// make list of redirects
 		redirects = new ArrayList<Redirect>();
 		for(String rk : links.getRedirectsTo(key)){
-			String[] parts = rk.toString().split(":",2);
+			String[] parts = Title.partsFromKey(rk);
 			int redirectRef = links.getNumInLinks(rk);
 			redirects.add(new Redirect(Integer.parseInt(parts[0]),parts[1],redirectRef));
+			Links.mergeAnchorMaps(anchors,links.getAnchorMap(rk,redirectRef));
 		}
 		// related
 		if(makeIndex && related != null)

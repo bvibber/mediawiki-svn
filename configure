@@ -1,0 +1,2 @@
+#!/bin/bash
+java -cp LuceneSearch.jar org.wikimedia.lsearch.util.Configure $@

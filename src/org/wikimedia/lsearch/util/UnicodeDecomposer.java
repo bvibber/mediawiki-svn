@@ -48,7 +48,7 @@ public class UnicodeDecomposer {
 	
 	protected UnicodeDecomposer(String path){
 		initFromFile(path);
-		log.info("Loaded unicode decomposer");
+		log.debug("Loaded unicode decomposer");
 	}
 	
 	public boolean isCombiningChar(char ch){

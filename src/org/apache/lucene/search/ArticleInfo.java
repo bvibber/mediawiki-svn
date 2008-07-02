@@ -8,7 +8,7 @@ import org.wikimedia.lsearch.search.NamespaceFilter;
 /** Meta information about the whole article */
 public interface ArticleInfo {
 	/** Initialize for retrieval */
-	public void init(IndexReader reader, NamespaceFilter subpages) throws IOException;
+	public void init(IndexReader reader) throws IOException;
 	
 	/** Check if docid is subpage (valid after init()) */
 	public boolean isSubpage(int docid) throws IOException;

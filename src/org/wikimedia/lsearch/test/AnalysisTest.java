@@ -24,6 +24,7 @@ import org.wikimedia.lsearch.analyzers.LanguageAnalyzer;
 import org.wikimedia.lsearch.analyzers.ReusableLanguageAnalyzer;
 import org.wikimedia.lsearch.analyzers.RelatedAnalyzer;
 import org.wikimedia.lsearch.analyzers.SplitAnalyzer;
+import org.wikimedia.lsearch.analyzers.Aggregate.Flags;
 import org.wikimedia.lsearch.beans.Title;
 import org.wikimedia.lsearch.config.Configuration;
 import org.wikimedia.lsearch.config.IndexId;
@@ -59,7 +60,7 @@ public class AnalysisTest {
 			if(token instanceof ExtToken)
 				System.out.print(" "+token);
 			else
-				System.out.print(" "+token.getPositionIncrement()+" [" + token.termText() + "]");
+				System.out.print(" "+token.getPositionIncrement()+" [" + token.termText() + ",type=" + token.type() + "]");
 			if(j > 50){
 				System.out.println();
 				j=0;
@@ -97,6 +98,9 @@ public class AnalysisTest {
 		
 		//serializeTest(Analyzers.getHighlightAnalyzer(IndexId.get("enwiki")));
 		//testAnalyzer(Analyzers.getHighlightAnalyzer(IndexId.get("enwiki")),"Aaliyah");
+		
+		Analyzer aa = Analyzers.getSearcherAnalyzer(IndexId.get("wikilucene"));
+		displayTokens(aa,"boxes france");
 		
 		HashSet<String> stopWords = new HashSet<String>();
 		stopWords.add("the"); stopWords.add("of"); stopWords.add("is"); stopWords.add("in"); stopWords.add("and"); stopWords.add("he") ;
@@ -161,10 +165,10 @@ public class AnalysisTest {
 		
 		ArrayList<Aggregate> items = new ArrayList<Aggregate>();
 		analyzer = Analyzers.getSearcherAnalyzer(IndexId.get("enwiki"));
-		items.add(new Aggregate("douglas adams",10,IndexId.get("enwiki"),analyzer,"related",stopWords));
-		items.add(new Aggregate("{{something|alpha|beta}} the selected works...",2.1f,IndexId.get("enwiki"),analyzer,"related",stopWords));
-		items.add(new Aggregate("hurricane",3.22f,IndexId.get("enwiki"),analyzer,"related",stopWords));
-		items.add(new Aggregate("and some other stuff",3.2f,IndexId.get("enwiki"),analyzer,"related",stopWords));
+		items.add(new Aggregate("douglas adams",10,IndexId.get("enwiki"),analyzer,"related",stopWords,Flags.ALTTITLE));
+		items.add(new Aggregate("{{something|alpha|beta}} the selected works...",2.1f,IndexId.get("enwiki"),analyzer,"related",stopWords,Flags.NONE));
+		items.add(new Aggregate("hurricane",3.22f,IndexId.get("enwiki"),analyzer,"related",stopWords,Flags.ANCHOR));
+		items.add(new Aggregate("and some other stuff",3.2f,IndexId.get("enwiki"),analyzer,"related",stopWords,Flags.NONE));
 		displayTokens(new AggregateAnalyzer(items),"AGGREGATE TEST");
 		
 		// redirects?
@@ -202,8 +206,8 @@ public class AnalysisTest {
 		
 		IndexId wl = IndexId.get("wikilucene");
 		Analyzer an = Analyzers.getSearcherAnalyzer(wl);
-		Aggregate a1 = new Aggregate("Redheugh Bridges",1,wl,an,"alttitle");
-		Aggregate a2 = new Aggregate("Redheugh Bridge First Crossing",1,wl,an,"alttitle");
+		Aggregate a1 = new Aggregate("Redheugh Bridges",1,wl,an,"alttitle",Flags.ALTTITLE);
+		Aggregate a2 = new Aggregate("Redheugh Bridge First Crossing",1,wl,an,"alttitle",Flags.ALTTITLE);
 		ArrayList<Aggregate> al = new ArrayList<Aggregate>();
 		al.add(a1); al.add(a2);
 		displayTokens(new AggregateAnalyzer(al),"AGGREGATE TEST");

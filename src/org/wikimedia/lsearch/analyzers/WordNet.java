@@ -21,7 +21,9 @@ public class WordNet {
 	protected static State state = State.NOT_INITIALIZED;
 	
 	/** search tree, at each node there is a string and hashmap of next strings that would match some collocation */
-	protected static final Node searchTree = new Node(); 	 
+	protected static final Node searchTree = new Node();
+	
+	protected static Boolean disabled = null;
 	
 	/** 
 	 * Take an array of words and return variants of the array when exactly
@@ -30,6 +32,10 @@ public class WordNet {
 	 * @return
 	 */
 	public static ArrayList<ArrayList<String>> replaceOne(ArrayList<String> words, String langCode){
+		if(disabled == null)
+			disabled = Configuration.open().getBoolean("Search","disablewordnet");
+		if(disabled)
+			return null;
 		if(!langCode.equals("en"))
 			return null;
 		ensureLoaded();

@@ -331,8 +331,8 @@ public class UpdateThread extends Thread {
 			for(IndexSearcherMul is : pool.searchers){
 				try{
 					// do one to trigger caching
-					Warmup.warmupIndexSearcher(is,li.iid,true,1);
-					Warmup.waitForAggregate(pool.searchers);
+					//Warmup.warmupIndexSearcher(is,li.iid,true,1);
+					//Warmup.waitForAggregate(pool.searchers);
 					// do proper warmup
 					Warmup.warmupIndexSearcher(is,li.iid,true,null);
 				} catch(IOException e){

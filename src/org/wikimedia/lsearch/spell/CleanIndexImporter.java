@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.Hashtable;
 import java.util.Iterator;
 import java.util.Map.Entry;
 import java.util.concurrent.ThreadPoolExecutor.AbortPolicy;
@@ -75,13 +76,16 @@ public class CleanIndexImporter implements DumpWriter {
 				redirectTo = null; // redirect to different namespace
 		}			
 		Date date = new Date(revision.Timestamp.getTimeInMillis());
-
+		Hashtable<String,Integer> anchors = new Hashtable<String,Integer>();
+		anchors.putAll(links.getAnchorMap(key,references));
+		
 		// make list of redirects
 		ArrayList<Redirect> redirects = new ArrayList<Redirect>();
-		ArrayList<String> anchors = new ArrayList<String>();
 		for(String rk : links.getRedirectsTo(key)){
-			String[] parts = rk.toString().split(":",2);
-			redirects.add(new Redirect(Integer.parseInt(parts[0]),parts[1],links.getNumInLinks(rk)));
+			String[] parts = Title.partsFromKey(rk);
+			int redirectRef = links.getNumInLinks(rk);
+			redirects.add(new Redirect(Integer.parseInt(parts[0]),parts[1],redirectRef));
+			Links.mergeAnchorMaps(anchors,links.getAnchorMap(rk,redirectRef));
 		}
 		// make article
 		Article article = new Article(page.Id,page.Title.Namespace,page.Title.Text,revision.Text,redirectTo,

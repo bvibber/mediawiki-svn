@@ -49,7 +49,7 @@ public class HTTPIndexServer extends Thread {
 		
 		ExecutorService pool = Executors.newFixedThreadPool(maxThreads);
 		
-		log.info("Started server at port "+port);
+		log.info("Indexer started on port "+port);
 		
 		for (;;) {
 			Socket client = null; 

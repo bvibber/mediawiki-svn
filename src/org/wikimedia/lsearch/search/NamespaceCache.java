@@ -101,7 +101,7 @@ public class NamespaceCache {
 						if(cache.containsKey(nsf))
 							filters.add(cache.get(nsf));
 						else{ // didn't find the apropriate filter, make it
-							log.info("Making filter for "+nsf);
+							log.debug("Making filter for "+nsf);
 							CachedFilter cwf = makeFilter(nsf);
 							cache.put(nsf,cwf);
 							filters.add(cwf);
@@ -114,7 +114,7 @@ public class NamespaceCache {
 				} else if(key.isAll()){
 					CachedFilter cwf = new CachedFilter(new AllFilter());
 					cache.put(key,cwf); // always cache
-					log.info("Made \"all\" filter");
+					log.debug("Made \"all\" filter");
 					return cwf.bits(reader);
 				}
 				// build new filter from query

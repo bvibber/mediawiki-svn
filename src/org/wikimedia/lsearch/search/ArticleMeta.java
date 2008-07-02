@@ -16,6 +16,13 @@ import org.apache.lucene.index.CorruptIndexException;
 import org.apache.lucene.index.IndexReader;
 import org.apache.lucene.store.Directory;
 
+/**
+ * Article meta information fetched from multiple fields, like
+ * how old the page is, if it's a subpage, etc.. 
+ * 
+ * @author rainman
+ *
+ */
 public class ArticleMeta {
 	static Logger log = Logger.getLogger(AggregateMetaField.class);
 	/** directory -> cache */
@@ -36,19 +43,24 @@ public class ArticleMeta {
 			cache.remove(reader.directory());
 		}
 	}
-	
-	public static ArticleMetaSource getCachedSource(IndexReader reader, NamespaceFilter subpages) throws IOException{
+	public static CacheBuilder getCacherBuilder(IndexReader reader, NamespaceFilter subpages) throws IOException {
 		synchronized (lock) {
 			ArticleMetaSource src = cache.get(reader.directory());
 			if(src != null)
-				return src;
+				return null; // already cached 
 			src = new ArticleMetaSource(reader,subpages);
 			cache.put(reader.directory(),src);
 			return src;			
 		}
 	}
+	
+	public static ArticleMetaSource getCachedSource(IndexReader reader) throws IOException{
+		synchronized(lock) {
+			return cache.get(reader.directory());
+		}
+	}
 
-	public static class ArticleMetaSource {
+	public static class ArticleMetaSource implements CacheBuilder {
 		protected boolean[] subpage = null;
 		protected float[] daysOld = null;
 		protected IndexReader reader = null;
@@ -58,40 +70,41 @@ public class ArticleMeta {
 		protected NamespaceFilter subpages;
 		protected boolean isOptimized;
 		
-		protected class CachingThread extends Thread {
-			public void run(){
-				synchronized(cachingInProgress){
-					cachingInProgress.put(reader.directory(),true);
-				}
-				log.info("Caching article info for "+reader.directory());
-				try{
-					subpage = new boolean[reader.maxDoc()];
-					daysOld = new float[reader.maxDoc()];
-					for(int i=0;i<reader.maxDoc();i++){
-						if(!isOptimized && reader.isDeleted(i))
-							continue;
-						try{
-							Document d = reader.document(i);
-							subpage[i] = resolveSubpage(d);	
-							daysOld[i] = resolveDaysOld(d);
-						} catch(Exception e2){
-							e2.printStackTrace();
-							log.error("Error reading article meta for docid="+i+" : "+e2.getMessage());
-							throw e2;
-						}
-					}
-					log.info("Finished caching article info for "+reader.directory());
-					finishedCaching = true;
-				} catch(Exception e){
-					e.printStackTrace();
-					log.error("Error caching article meta info: "+e.getMessage());
-				} finally{
-					synchronized (cachingInProgress) {
-						cachingInProgress.remove(reader.directory());
-					}
-				}
+		public void init() {
+			subpage = new boolean[reader.maxDoc()];
+			daysOld = new float[reader.maxDoc()];
+			
+			synchronized (cachingInProgress) {
+				cachingInProgress.put(reader.directory(),true);
 			}
+			
 		}
+		
+		public void cache(int i, Document doc) throws IOException {
+			try{
+				if(!isOptimized && reader.isDeleted(i))
+					return;
+					Document d = reader.document(i);
+					subpage[i] = resolveSubpage(d);	
+					daysOld[i] = resolveDaysOld(d);
+			} catch(Exception e){
+				String ext = "";
+				if(doc != null)
+					ext = ", ns="+doc.get("namespace")+", title="+doc.get("title");
+				log.error("Exception during caching of article info for docid="+i+ext);
+				e.printStackTrace();
+				throw new IOException(e);
+			}
+			
+		}
+		public void end() {
+			synchronized (cachingInProgress) {
+				cachingInProgress.remove(reader.directory());
+			}
+			finishedCaching = true;
+			
+		}
+		
 		/** See if article is a subpage 
 		 * @throws IOException 
 		 * @throws CorruptIndexException */
@@ -142,8 +155,6 @@ public class ArticleMeta {
 			isoDate.setTimeZone(TimeZone.getTimeZone("GMT"));
 			this.isOptimized = reader.isOptimized();
 			
-			// run background caching
-			new CachingThread().start();
 		}
 
 		public final boolean isSubpage(int docid) throws IOException {
@@ -159,6 +170,7 @@ public class ArticleMeta {
 			
 			return daysOld[docid];
 		}
+
 		
 	}
 }

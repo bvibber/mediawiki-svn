@@ -54,6 +54,9 @@ import org.wikimedia.lsearch.util.StringUtils;
  */
 public class IndexThread extends Thread {
 	static org.apache.log4j.Logger log = Logger.getLogger(IndexThread.class);
+	
+	protected static IndexThread instance = null;
+	
 	// these determin the state after current operation is finished 
 	protected boolean quit;
 	protected boolean suspended;
@@ -87,11 +90,14 @@ public class IndexThread extends Thread {
 	/** dbs that have been flushed in last flush cycle, dbrole -> flushed_succ */
 	protected static Hashtable<String,Boolean> flushedDBs = new Hashtable<String,Boolean>(); 
 	protected Set<String> workFlushes;
-
+	
 	/** Thread that enqueues updates to distributed indexers in a batch */
 	protected static MessengerThread messenger = null;
 	
 	protected ArrayList<Pattern> snapshotPatterns = new ArrayList<Pattern>();
+	
+	/** snapshot pattern recerntly processed */
+	protected static HashSet<Pattern> processedPatterns = new HashSet<Pattern>();
 	
 	static class Pattern {
 		String pattern; // pattern to be mached
@@ -108,13 +114,46 @@ public class IndexThread extends Thread {
 			this.forPrecursors = forPrecursors;
 			this.not = not;
 		}
+		@Override
+		public int hashCode() {
+			final int PRIME = 31;
+			int result = 1;
+			result = PRIME * result + (forPrecursors ? 1231 : 1237);
+			result = PRIME * result + (not ? 1231 : 1237);
+			result = PRIME * result + (optimize ? 1231 : 1237);
+			result = PRIME * result + ((pattern == null) ? 0 : pattern.hashCode());
+			return result;
+		}
+		@Override
+		public boolean equals(Object obj) {
+			if (this == obj)
+				return true;
+			if (obj == null)
+				return false;
+			if (getClass() != obj.getClass())
+				return false;
+			final Pattern other = (Pattern) obj;
+			if (forPrecursors != other.forPrecursors)
+				return false;
+			if (not != other.not)
+				return false;
+			if (optimize != other.optimize)
+				return false;
+			if (pattern == null) {
+				if (other.pattern != null)
+					return false;
+			} else if (!pattern.equals(other.pattern))
+				return false;
+			return true;
+		}
+		
 	}
 	
 	/**
 	 * Default constructor
 	 * 
 	 */
-	public IndexThread(){
+	private IndexThread(){
 		quit = false;
 		suspended = false;
 		flushNow = false;
@@ -129,6 +168,15 @@ public class IndexThread extends Thread {
 		global = GlobalConfiguration.getInstance();
 		indexModifier = new WikiIndexModifier();
 		messenger = MessengerThread.getInstance();
+	}
+	
+	synchronized public static IndexThread getInstance(){
+		if(instance == null){
+			instance = new IndexThread();
+			instance.start();
+		}
+		
+		return instance;
 	}
 	
 	/**
@@ -167,9 +215,11 @@ public class IndexThread extends Thread {
 		IndexRegistry registry = IndexRegistry.getInstance();
 		
 		ArrayList<Pattern> pat = new ArrayList<Pattern>();
+		ArrayList<Pattern> rawPatterns = new ArrayList<Pattern>();
 		synchronized (snapshotPatterns) {
 			for(Pattern p : snapshotPatterns){ // convert wildcards into regexp				 
 				pat.add(new Pattern(StringUtils.wildcardToRegexp(p.pattern),p.forPrecursors,p.pattern.startsWith("^")));
+				rawPatterns.add(p);
 			}
 			snapshotPatterns.clear();
 			makeSnapshotNow = false;
@@ -223,6 +273,11 @@ public class IndexThread extends Thread {
 
 				registry.refreshSnapshots(iid);				
 			}
+		}
+		// register that we done doing snapshots
+		synchronized (processedPatterns) {
+			for(Pattern p : rawPatterns)
+				processedPatterns.add(p);			
 		}
 	}
 	
@@ -642,8 +697,17 @@ public class IndexThread extends Thread {
 	
 	public void makeSnapshotsNow(boolean optimize, String pattern, boolean forPrecursors){
 		synchronized(snapshotPatterns){
-			snapshotPatterns.add(new Pattern(optimize,pattern,forPrecursors));
+			Pattern p = new Pattern(optimize,pattern,forPrecursors);
+			processedPatterns.remove(p);
+			snapshotPatterns.add(p);
 			makeSnapshotNow = true;
+		}
+	}
+	
+	public boolean snapshotFinished(boolean optimize, String pattern, boolean forPrecursor){
+		Pattern p = new Pattern(optimize,pattern,forPrecursor);
+		synchronized(processedPatterns){
+			return processedPatterns.contains(p);
 		}
 	}
 

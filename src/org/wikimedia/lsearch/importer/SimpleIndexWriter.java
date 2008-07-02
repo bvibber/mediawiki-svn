@@ -95,8 +95,8 @@ public class SimpleIndexWriter {
 			}				
 		}
 		writer.setSimilarity(new WikiSimilarity());
-		int glMergeFactor = iid.getIntParam("mergeFactor",10);
-		int glMaxBufDocs = iid.getIntParam("maxBufDocs",10);
+		int glMergeFactor = iid.getIntParam("mergeFactor",20);
+		int glMaxBufDocs = iid.getIntParam("maxBufDocs",500);
 		if(mergeFactor!=null)
 			writer.setMergeFactor(mergeFactor);
 		else

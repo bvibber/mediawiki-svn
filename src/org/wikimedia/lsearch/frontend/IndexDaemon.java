@@ -19,8 +19,7 @@ public class IndexDaemon {
 
 	public IndexDaemon() {
 		if(indexer == null){
-			indexer = new IndexThread();
-			indexer.start();
+			indexer = IndexThread.getInstance();
 		}
 	}
 	public String getStatus() {

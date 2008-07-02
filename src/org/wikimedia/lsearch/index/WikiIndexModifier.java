@@ -16,8 +16,10 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Hashtable;
+import java.util.Map;
 import java.util.Set;
 import java.util.TimeZone;
+import java.util.Map.Entry;
 
 import org.apache.log4j.Logger;
 import org.apache.lucene.analysis.Analyzer;
@@ -52,6 +54,7 @@ import org.wikimedia.lsearch.analyzers.ReusableLanguageAnalyzer;
 import org.wikimedia.lsearch.analyzers.StopWords;
 import org.wikimedia.lsearch.analyzers.TokenizerOptions;
 import org.wikimedia.lsearch.analyzers.WikiTokenizer;
+import org.wikimedia.lsearch.analyzers.Aggregate.Flags;
 import org.wikimedia.lsearch.beans.Article;
 import org.wikimedia.lsearch.beans.IndexReportCard;
 import org.wikimedia.lsearch.beans.Redirect;
@@ -97,6 +100,9 @@ public class WikiIndexModifier {
 	
 	/** Index-time boost for headings, multiplied with article rank */
 	static public final float HEADINGS_BOOST = 0.05f;
+	
+	/** By how much should be anchor text score by scaled (in alttitle) */
+	static public final float ANCHOR_SCALE = 0.1f;
 
 	/** Simple implementation of batch addition and deletion */
 	class SimpleIndexModifier {
@@ -168,8 +174,8 @@ public class WikiIndexModifier {
 			}
 			
 			writer.setSimilarity(new WikiSimilarity());
-			int mergeFactor = iid.getIntParam("mergeFactor",10);
-			int maxBufDocs = iid.getIntParam("maxBufDocs",100);
+			int mergeFactor = iid.getIntParam("mergeFactor",20);
+			int maxBufDocs = iid.getIntParam("maxBufDocs",500);
 			writer.setMergeFactor(mergeFactor);
 			writer.setMaxBufferedDocs(maxBufDocs);
 			writer.setUseCompoundFile(true);
@@ -473,23 +479,27 @@ public class WikiIndexModifier {
 				if(rec.doAdd()){
 					String key = rec.getNsTitleKey();
 					Article article = rec.getArticle();
-					// references, redirect status
+					Hashtable<String,Integer> anchors = new Hashtable<String,Integer>();
+					// references, redirect status, anchors
 					article.setReferences(links.getNumInLinks(key));
 					article.setRedirectTo(links.getRedirectTarget(key));
+					anchors.putAll(links.getAnchorMap(key,article.getReferences()));
 					if(article.isRedirect()){
 						article.setRedirectTargetNamespace(links.getRedirectTargetNamespace(key));
 						article.setRedirectRank(links.getRank(article.getRedirectTarget()));
 					} else
 						article.setRedirectTargetNamespace(-1);
-
+					
 					// redirects				
 					ArrayList<Redirect> redirects = new ArrayList<Redirect>();
 					for(String rk : links.getRedirectsTo(key)){
 						String[] parts = rk.toString().split(":",2);
 						int redirectRef = links.getNumInLinks(rk);
 						redirects.add(new Redirect(Integer.parseInt(parts[0]),parts[1],redirectRef));
+						Links.mergeAnchorMaps(anchors,links.getAnchorMap(rk,redirectRef));
 					}
 					article.setRedirects(redirects);
+					article.setAnchors(anchors);
 					// related
 					if(related != null)
 						article.setRelated(related.getRelated(key));
@@ -707,18 +717,20 @@ public class WikiIndexModifier {
 
 		// add both title and redirects to content, so queries that match part of title and content won't fail
 		String contents = article.getContents();
-		contents = article.getTitle()+". "+contents+". "+serializeRedirects(article.getRedirectKeywords());
+		contents = article.getTitle()+". "+contents;
 		
 		/** Following fields can be optionally case-dependent */  
 		for(FieldBuilder.BuilderSet bs : builder.getBuilders()){
 			FieldNameFactory fields = bs.getFields();
 			FilterFactory filters = bs.getFilters();
 			
+			String anchoredContents = contents +"\n\n"+serializeAnchors(article.getAnchorRank(),bs.isExactCase());
+			
 			// tokenize the article to fill in pre-analyzed fields
 			TokenizerOptions options = new TokenizerOptions(bs.isExactCase());
 			if(filters.isSpellCheck())
 				options = new TokenizerOptions.SpellCheck();
-			WikiTokenizer tokenizer = new WikiTokenizer(contents,iid,options);
+			WikiTokenizer tokenizer = new WikiTokenizer(anchoredContents,iid,options);
 			tokenizer.tokenize();
 			
 			// title
@@ -738,7 +750,7 @@ public class WikiIndexModifier {
 			}
 
 			// altititle
-			makeAlttitle(doc,fields.alttitle(),article,iid,stopWords,tokenizer,analyzer);
+			makeAlttitle(doc,fields.alttitle(),article,iid,stopWords,tokenizer,analyzer,fields.isExactCase());
 			
 			// sections
 			makeSections(doc,fields.sections(),article,iid,stopWords,tokenizer,analyzer,transformRankLog(article.getRank()));
@@ -773,6 +785,21 @@ public class WikiIndexModifier {
 		for(String s : redirectKeywords){
 			sb.append(s);
 			sb.append(". ");
+		}
+		return sb.toString();
+	}
+	
+	/** Serialize anchors (which includes titles and redirects) to be added to end of contents */
+	public static String serializeAnchors(Map<String,Integer> anchors, boolean exactCase){
+		if(!exactCase){
+			anchors = Links.lowercaseAnchorMap(anchors);
+		}
+		// sort & add
+		ArrayList<Entry<String,Integer>> sorted = Links.sortAnchors(anchors); 
+		StringBuilder sb = new StringBuilder();
+		for(Entry<String,Integer> e : sorted){
+			sb.append(e.getKey());
+			sb.append("\n\n"); // paragraph gap
 		}
 		return sb.toString();
 	}
@@ -824,7 +851,7 @@ public class WikiIndexModifier {
 		title.setBoost(rankBoost);
 		doc.add(title);
 		// add titles + redirects in aggregate field
-		makeAlttitle(doc,"alttitle",article,titles,stopWords,null,analyzer);		
+		makeAlttitle(doc,"alttitle",article,titles,stopWords,null,analyzer,false);		
 		// store highlight data
 		doc.add(new Field("alttitle",Alttitles.serializeAltTitle(article,titles,new ArrayList<String>(),highlightAnalyzer,"alttitle"),Store.COMPRESS));
 		
@@ -861,26 +888,39 @@ public class WikiIndexModifier {
 	protected static void makeRelated(Document doc, String prefix, Article article, IndexId iid, HashSet<String> stopWords, Analyzer analyzer) throws IOException{
 		ArrayList<Aggregate> items = new ArrayList<Aggregate>();
 		for(RelatedTitle rt : article.getRelated()){
-			addToItems(items,new Aggregate(rt.getRelated().getTitle(),transformRelated(rt.getScore()),iid,analyzer,prefix,stopWords),stopWords);
+			addToItems(items,new Aggregate(rt.getRelated().getTitle(),transformRelated(rt.getScore()),iid,analyzer,prefix,stopWords,Flags.RELATED),stopWords);
 		}
 		makeAggregate(doc,prefix,items);
 	}
 	
 	/** add alttitle aggregate field */
 	protected static void makeAlttitle(Document doc, String prefix, Article article, IndexId iid, HashSet<String> stopWords, 
-			WikiTokenizer tokenizer, Analyzer analyzer) throws IOException {
+			WikiTokenizer tokenizer, Analyzer analyzer, boolean exactCase) throws IOException {
 		ArrayList<Aggregate> items = new ArrayList<Aggregate>();
-		// add title
-		String title = article.getTitle();		
-		addToItems(items, new Aggregate(title,transformRankLog(article.getRank()),iid,analyzer,prefix,stopWords),stopWords);
-		// add all redirects
-		ArrayList<String> redirects = article.getRedirectKeywords();
-		ArrayList<Integer> ranks = article.getRedirectKeywordRanks();
-		for(int i=0;i<redirects.size();i++){
-			addToItems(items, new Aggregate(redirects.get(i),transformRankLog(ranks.get(i)),iid,analyzer,prefix,stopWords),stopWords);
+		HashSet<String> titles = new HashSet<String>();
+		titles.add(article.getTitle());
+		titles.addAll(article.getRedirectKeywords());
+		// get anchors
+		Map<String,Integer> anchors = article.getAnchorRank();
+		if(!exactCase){
+			titles = lowercaseSet(titles);
+			anchors = Links.lowercaseAnchorMap(anchors);
+		}
+		// sort & add
+		ArrayList<Entry<String,Integer>> sorted = Links.sortAnchors(anchors); 
+		for(Entry<String,Integer> e : sorted){
+			Flags flag = titles.contains(e.getKey())? Flags.ALTTITLE :  Flags.ANCHOR;  
+			addToItems(items, new Aggregate(e.getKey(),transformRankLog(e.getValue()),iid,analyzer,prefix,stopWords,flag),stopWords);
 		}
 		makeAggregate(doc,prefix,items);
 	}	
+	
+	private static HashSet<String> lowercaseSet(HashSet<String> set){
+		HashSet<String> ret = new HashSet<String>();
+		for(String s : set)
+			ret.add(s.toLowerCase());
+		return ret;
+	}
 	
 	/** Section heading aggregate field */
 	protected static void makeSections(Document doc, String prefix, Article article, IndexId iid, HashSet<String> stopWords, 
@@ -889,7 +929,7 @@ public class WikiIndexModifier {
 			ArrayList<Aggregate> items = new ArrayList<Aggregate>();
 			// add section headings!
 			for(String h : tokenizer.getHeadingText()){			
-				addToItems(items, new Aggregate(h,boost,iid,analyzer,prefix,stopWords),stopWords);
+				addToItems(items, new Aggregate(h,boost,iid,analyzer,prefix,stopWords,Flags.SECTION),stopWords);
 			}
 			makeAggregate(doc,prefix,items);
 		}

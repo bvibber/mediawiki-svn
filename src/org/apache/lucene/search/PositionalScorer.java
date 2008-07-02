@@ -7,6 +7,7 @@ import java.util.Comparator;
 import java.util.HashMap;
 
 import org.apache.lucene.index.TermPositions;
+import org.wikimedia.lsearch.analyzers.Aggregate.Flags;
 
 /**
  * Scorer for positional queries
@@ -278,19 +279,32 @@ abstract public class PositionalScorer extends Scorer {
 			float wholeBoostNoStopWords = 1;
 			float completeBoost = 1;
 			float wholeOnly = 1;
+			float alttitleWhole = 1;
+			boolean matchedWholeOrComplete = false;
+			// use only the complete boost, not whole/wholeNoStopWords
 			if(options.useCompleteOnly){
-				if(phraseLen == lenComplete)
+				if(phraseLen == lenComplete){
 					completeBoost = options.completeBoost;
+					matchedWholeOrComplete = true;
+				}
 			} else{
-				if(phraseLen == len)
+				// use whole/wholeNoStopWords/wholeMatch
+				boolean matchedWhole = false;
+				if(phraseLen == len && (options.allowSingleWordWholeMatch || len > 1)){ 
+					// whole boost only makes sense when we have more than 1 word
 					wholeBoost = options.wholeBoost;
-				// no stop boost - only if matched words >= stop words
-				else if(phraseLenNoStopWords == lenNoStopWords && lenNoStopWords>=(len-lenNoStopWords) && lenNoStopWords>1)
+					matchedWhole = true;				  
+				} else if(phraseLenNoStopWords == lenNoStopWords && lenNoStopWords>=(len-lenNoStopWords) && lenNoStopWords>1){
+					// no stop boost - only if matched words >= stop words
 					wholeBoostNoStopWords = options.wholeNoStopWordsBoost;
-				if(options.onlyWholeMatch && wholeBoost==1 && wholeBoostNoStopWords==1)
-					wholeOnly = 0; // we didn't match the whole thing
+					matchedWhole = true;
+				}
+				if(options.onlyWholeMatch && !matchedWhole)
+					wholeOnly = 0; // zero out the score since we require whole match only
+				matchedWholeOrComplete = matchedWhole;
+				if( options.aggregateMeta.flags(doc(),pos) == Flags.ALTTITLE )
+					alttitleWhole = options.alttileWholeExtraBoost;
 			}
-			boolean matchedWholeOrComplete = wholeBoost>1 || wholeBoostNoStopWords>1 || completeBoost>1;
 
 			float boost = 1;
 			if(options.useRankForWholeMatch && matchedWholeOrComplete)
@@ -302,7 +316,6 @@ abstract public class PositionalScorer extends Scorer {
 			if(options.nsWholeBoost!=null && matchedWholeOrComplete)
 				namespaceBoost = options.nsWholeBoost.getBoost(options.aggregateMeta.namespace(doc()));
 
-
 			int propPhrase, propTotal;
 			if(options.useNoStopWordLen){
 				propPhrase = phraseLenNoStopWords;
@@ -311,7 +324,7 @@ abstract public class PositionalScorer extends Scorer {
 				propPhrase = phraseLen;
 				propTotal = len;
 			}
-			float score = namespaceBoost * boost * baseScore * (propPhrase / (float)propTotal) * completeBoost * wholeBoost * wholeBoostNoStopWords * wholeOnly; 
+			float score = namespaceBoost * boost * baseScore * (propPhrase / (float)propTotal) * completeBoost * wholeBoost * wholeBoostNoStopWords * wholeOnly * alttitleWhole; 
 			if(DEBUG){
 				Explanation e = explanations.get(doc()).get(explanations.get(doc()).size()-1);
 				e.setDescription(e.getDescription()+" (pos="+pos+")");
@@ -341,6 +354,10 @@ abstract public class PositionalScorer extends Scorer {
 				eC.setValue(completeBoost);
 				eC.setDescription("Complete boost (matched="+phraseLen+", total="+lenComplete+")");
 				e.addDetail(eC);
+				Explanation eAW = new Explanation();
+				eAW.setValue(alttitleWhole);
+				eAW.setDescription("Alttitle whole extra");
+				e.addDetail(eAW);
 			}
 			return score;
 		} else

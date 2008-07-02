@@ -17,6 +17,7 @@ import org.apache.lucene.index.CorruptIndexException;
 import org.apache.lucene.index.IndexReader;
 import org.apache.lucene.index.IndexReader.FieldOption;
 import org.apache.lucene.store.Directory;
+import org.wikimedia.lsearch.analyzers.Aggregate.Flags;
 
 /**
  * Local cache of aggregate field meta informations
@@ -45,9 +46,8 @@ public class AggregateMetaField {
 		}
 	}
 	
-	/** Get a cached field source 
-	 * @throws IOException */
-	public static AggregateMetaFieldSource getCachedSource(IndexReader reader, String field) throws IOException{
+	/** Get a meta cacher, return null if field is already cached or being cached */
+	public static CacheBuilder getCacherBuilder(IndexReader reader, String field) throws IOException {
 		synchronized(lock){
 			HashMap<String,AggregateMetaFieldSource> fields = cache.get(reader.directory());
 			if(fields == null){
@@ -55,8 +55,8 @@ public class AggregateMetaField {
 				cache.put(reader.directory(),fields);
 			}
 			AggregateMetaFieldSource s = fields.get(field);
-			if(s != null)
-				return s;
+			if(s != null) // already cached
+				return null;
 			else{
 				s = new AggregateMetaFieldSource(reader,field);
 				fields.put(field,s);
@@ -65,132 +65,133 @@ public class AggregateMetaField {
 		}
 	}
 	
+	/** Get a cached meta source to use in queries */
+	public static AggregateMetaFieldSource getCachedSource(IndexReader reader, String field) {
+		synchronized(lock){
+			// this will produce exception if stuff is not properly cached at index deployment
+			return cache.get(reader.directory()).get(field);
+		}
+	}
+
+	
 	/**
 	 * Cached meta aggregate info 
 	 * 
 	 * @author rainman
 	 *
 	 */
-	static public class AggregateMetaFieldSource {
+	static public class AggregateMetaFieldSource implements CacheBuilder {
 		protected int[] index = null;
 		protected byte[] length  = null;
 		protected byte[] lengthNoStopWords = null;
 		protected byte[] lengthComplete = null;
 		protected float[] boost  = null;
+		protected byte[] flags = null;
 		protected byte[] namespaces = null;
 		protected IndexReader reader = null;
 		protected String field;
 		protected boolean cachingFinished = false;
 		protected boolean isOptimized;
+		// temporary: 
+		protected int count = 0;
+		protected int maxdoc = 0;
 		
-		protected class CachingThread extends Thread {
-			public void run(){
-				synchronized(cachingInProgress){
-					Set<String> set = cachingInProgress.get(reader.directory());
-					if(set == null){
-						set = new HashSet<String>();
-						cachingInProgress.put(reader.directory(),set);
-					}
-					if(set.contains(field))
-						return;
-					set.add(field);
+		public void init() {
+			synchronized(cachingInProgress){
+				Set<String> set = cachingInProgress.get(reader.directory());
+				if(set == null){
+					set = new HashSet<String>();
+					cachingInProgress.put(reader.directory(),set);
 				}
-				try{
-					log.info("Caching aggregate field "+field+" for "+reader.directory());
-					int maxdoc = reader.maxDoc();
-					index = new int[maxdoc];
-					int count = 0;
-					length = new byte[maxdoc]; // estimate maxdoc values
-					lengthNoStopWords = new byte[maxdoc];
-					lengthComplete = new byte[maxdoc];
-					boost = new float[maxdoc];
-					namespaces = new byte[maxdoc];
-					for(int i=0;i<maxdoc;i++){
-						byte[] stored = null;
-						try{
-							if(!isOptimized && reader.isDeleted(i))
-								continue;
-							Document doc = reader.document(i); 
-							stored = doc.getBinaryValue(field);
-							namespaces[i] = (byte)Integer.parseInt(doc.get("namespace"));
-							index[i] = count;
-							if(stored == null)
-								continue;
-							for(int j=0;j<stored.length/7;j++){
-								if(count >= length.length){
-									length = extendBytes(length);
-									lengthNoStopWords = extendBytes(lengthNoStopWords);
-									lengthComplete = extendBytes(lengthComplete);
-									boost = extendFloats(boost);
-								}						
-								length[count] = stored[j*7];
-								if(length[count] == 0){
-									log.debug("Broken length=0 for docid="+i+", at position "+j);
-								}
-								lengthNoStopWords[count] = stored[j*7+1];
-								int boostInt = (((stored[j*7+2]&0xff) << 24) + ((stored[j*7+3]&0xff) << 16) + ((stored[j*7+4]&0xff) << 8) + ((stored[j*7+5]&0xff) << 0));
-								boost[count] = Float.intBitsToFloat(boostInt);
-								lengthComplete[count] = stored[j*7+6];
+				if(set.contains(field))
+					return;
+				set.add(field);
+			}
+			maxdoc = reader.maxDoc();
+			index = new int[maxdoc];
+			length = new byte[maxdoc]; // estimate maxdoc values
+			lengthNoStopWords = new byte[maxdoc];
+			lengthComplete = new byte[maxdoc];			
+			boost = new float[maxdoc];
+			flags = new byte[maxdoc];
+			namespaces = new byte[maxdoc];
+		}
 
-								count++;
-							}										
-						} catch(Exception e){
-							log.error("Exception during processing stored_field="+field+" on docid="+i+", with stored="+stored+" : "+e.getMessage());
-							e.printStackTrace();
-							throw e;
-						}
+		public void cache(int i, Document doc) throws IOException {
+			byte[] stored = null;
+			try{
+				if(!isOptimized && reader.isDeleted(i))
+					return;
+				stored = doc.getBinaryValue(field);
+				namespaces[i] = (byte)Integer.parseInt(doc.get("namespace"));
+				index[i] = count;
+				if(stored == null)
+					return;
+				for(int j=0;j<stored.length/8;j++){
+					if(count >= length.length){
+						length = extendBytes(length);
+						lengthNoStopWords = extendBytes(lengthNoStopWords);
+						lengthComplete = extendBytes(lengthComplete);						
+						boost = extendFloats(boost);
+						flags = extendBytes(flags);
+					}						
+					length[count] = stored[j*8];
+					if(length[count] == 0){
+						log.debug("Broken length=0 for docid="+i+", at position "+j);
 					}
-					// compact arrays
-					if(count < length.length - 1){
-						length = resizeBytes(length,count);
-						lengthNoStopWords = resizeBytes(lengthNoStopWords,count);
-						boost = resizeFloats(boost,count);
-						lengthComplete = resizeBytes(lengthComplete,count);
-					}
-					log.info("Finished caching aggregate "+field+" for "+reader.directory());
-					cachingFinished = true;
-				} catch(Exception e){
-					e.printStackTrace();
-					log.error("Whole caching failed on field="+field+", reader="+reader.directory());
-				}
-				
-				synchronized(cachingInProgress){
-					Set<String> set = cachingInProgress.get(reader.directory());
-					set.remove(field);
-					if(set.size() == 0)
-						cachingInProgress.remove(reader.directory());
-				}
+					lengthNoStopWords[count] = stored[j*8+1];
+					int boostInt = (((stored[j*8+2]&0xff) << 24) + ((stored[j*8+3]&0xff) << 16) + ((stored[j*8+4]&0xff) << 8) + ((stored[j*8+5]&0xff) << 0));
+					boost[count] = Float.intBitsToFloat(boostInt);
+					lengthComplete[count] = stored[j*8+6];
+					flags[count] = stored[j*8+7];
+					count++;
+				}										
+			} catch(Exception e){
+				log.error("Exception during processing stored_field="+field+" on docid="+i+", with stored="+stored+" : "+e.getMessage());
+				e.printStackTrace();
+				throw new IOException(e);
 			}
-			protected byte[] extendBytes(byte[] array){
-				return resizeBytes(array,array.length*2);
+		}
+		
+		public void end(){
+			if(count < length.length - 1){
+				length = resizeBytes(length,count);
+				lengthNoStopWords = resizeBytes(lengthNoStopWords,count);
+				boost = resizeFloats(boost,count);
+				lengthComplete = resizeBytes(lengthComplete,count);
+				flags = resizeBytes(flags,count);
 			}
-			protected byte[] resizeBytes(byte[] array, int size){
-				byte[] t = new byte[size];
-				System.arraycopy(array,0,t,0,Math.min(array.length,size));
-				return t;
+			cachingFinished = true;
+			
+			synchronized(cachingInProgress){
+				Set<String> set = cachingInProgress.get(reader.directory());
+				set.remove(field);
+				if(set.size() == 0)
+					cachingInProgress.remove(reader.directory());
 			}
-			protected float[] extendFloats(float[] array){
-				return resizeFloats(array,array.length*2);
-			}		
-			protected float[] resizeFloats(float[] array, int size){
-				float[] t = new float[size];
-				System.arraycopy(array,0,t,0,Math.min(array.length,size));
-				return t;
-			}
+		}
+		
+		protected byte[] extendBytes(byte[] array){
+			return resizeBytes(array,array.length*2);
+		}
+		protected byte[] resizeBytes(byte[] array, int size){
+			byte[] t = new byte[size];
+			System.arraycopy(array,0,t,0,Math.min(array.length,size));
+			return t;
+		}
+		protected float[] extendFloats(float[] array){
+			return resizeFloats(array,array.length*2);
+		}		
+		protected float[] resizeFloats(float[] array, int size){
+			float[] t = new float[size];
+			System.arraycopy(array,0,t,0,Math.min(array.length,size));
+			return t;
 		}
 		
 		protected AggregateMetaFieldSource(IndexReader reader, String fieldBase) throws IOException{
 			this.reader = reader;
 			this.field = fieldBase+"_meta";
 			this.isOptimized = reader.isOptimized();
-			Collection fields = reader.getFieldNames(FieldOption.ALL);
-			if(!fields.contains(field)){
-				cachingFinished = true;
-				return; // index doesn't have ranking info
-			}
-			
-			// run background caching
-			new CachingThread().start();
 		}
 		protected int getValueIndex(int docid, int position){
 			return getValueIndex(docid,position,false);
@@ -224,19 +225,19 @@ public class AggregateMetaField {
 		/** Get length of nonalias tokens */ 
 		public int getLength(int docid, int position) throws CorruptIndexException, IOException{
 			if(!cachingFinished) // still caching in background
-				return getStored(docid)[position*7];
+				return getStored(docid)[position*8];
 			return length[getValueIndex(docid,position)];
 		}		
 		/** Get length without stop words */ 
 		public int getLengthNoStopWords(int docid, int position) throws CorruptIndexException, IOException{
 			if(!cachingFinished) 
-				return getStored(docid)[position*7+1];
+				return getStored(docid)[position*8+1];
 			return lengthNoStopWords[getValueIndex(docid,position)];
 		}
 		/** Get length with all the aliases */
 		public int getLengthComplete(int docid, int position) throws CorruptIndexException, IOException{
 			if(!cachingFinished)
-				return getStored(docid)[position*7+6];
+				return getStored(docid)[position*8+6];
 			return lengthComplete[getValueIndex(docid,position)];
 		}
 		
@@ -244,13 +245,13 @@ public class AggregateMetaField {
 		private float getBoost(int docid, int position, boolean checkExists) throws CorruptIndexException, IOException{
 			if(!cachingFinished){
 				byte[] stored = getStored(docid);
-				if(stored == null || (position*7+5)>=stored.length){
+				if(stored == null || (position*8+5)>=stored.length){
 					if(checkExists)
 						return 1;
 					else
-						throwException(docid,position,(stored==null)? 0 : (stored.length/7));
+						throwException(docid,position,(stored==null)? 0 : (stored.length/8));
 				}
-				int boostInt = (((stored[position*7+2]&0xff) << 24) + ((stored[position*7+3]&0xff) << 16) + ((stored[position*7+4]&0xff) << 8) + ((stored[position*7+5]&0xff) << 0));
+				int boostInt = (((stored[position*8+2]&0xff) << 24) + ((stored[position*8+3]&0xff) << 16) + ((stored[position*8+4]&0xff) << 8) + ((stored[position*8+5]&0xff) << 0));
 				return Float.intBitsToFloat(boostInt);
 			}
 			int inx = getValueIndex(docid,position,checkExists);
@@ -277,6 +278,18 @@ public class AggregateMetaField {
 			return namespaces[docid];
 		}
 		
+		/** Get flag values for docid at position */
+		public Flags getFlags(int docid, int position) throws CorruptIndexException, IOException{
+			int ord = 0;
+			if(!cachingFinished)
+				ord = getStored(docid)[position*8+7];
+			else
+				ord = flags[getValueIndex(docid,position)];
+
+			return Flags.values()[ord];
+		}
+		
 		
 	}
+
 }

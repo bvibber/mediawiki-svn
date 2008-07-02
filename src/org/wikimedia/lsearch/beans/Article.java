@@ -28,6 +28,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
+import java.util.Hashtable;
 
 import org.wikimedia.lsearch.related.RelatedTitle;
 
@@ -57,7 +58,7 @@ public class Article implements Serializable  {
 	/** names of articles that relate to this article  */
 	private ArrayList<RelatedTitle> related;
 	/** names of articles that relate to this article  */
-	private ArrayList<String> anchorText;
+	private Hashtable<String,Integer> anchors;
 	/** If this is redirect, the redirect target namespace */
 	private int redirectTargetNamespace = 0;
 	/** Target if this is redirect, null otherwise */
@@ -73,7 +74,7 @@ public class Article implements Serializable  {
 		references = 0;
 		redirects=new ArrayList<Redirect>();
 		related = new ArrayList<RelatedTitle>();
-		anchorText = new ArrayList<String>();
+		anchors = new Hashtable<String,Integer>();
 	}
 	
 	public Article(long pageId, Title title, String text, String redirectTo, int references, int redirectTargetNamespace, int redirectRank) {
@@ -81,11 +82,11 @@ public class Article implements Serializable  {
 	}
 	
 	public Article(long pageId, int namespace, String titleText, String text, String redirectTo, int references, int redirectTargetNamespace, int redirectRank) {
-		this(pageId,namespace,titleText,text,redirectTo,references,redirectTargetNamespace,redirectRank,new ArrayList<Redirect>(),new ArrayList<RelatedTitle>(),new ArrayList<String>(),null);		
+		this(pageId,namespace,titleText,text,redirectTo,references,redirectTargetNamespace,redirectRank,new ArrayList<Redirect>(),new ArrayList<RelatedTitle>(),new Hashtable<String,Integer>(),null);		
 	}
 	
 	public Article(long pageId, int namespace, String titleText, String text, String redirectTo, int references, int redirectTargetNamespace, int redirectRank,
-			ArrayList<Redirect> redirects, ArrayList<RelatedTitle> related, ArrayList<String> anchorText, Date date) {
+			ArrayList<Redirect> redirects, ArrayList<RelatedTitle> related, Hashtable<String,Integer> anchorRank, Date date) {
 		this.namespace = Integer.toString(namespace);
 		this.title = titleText;
 		this.contents = text;
@@ -94,7 +95,7 @@ public class Article implements Serializable  {
 		this.references = references;
 		this.redirects = redirects;
 		this.related = related;
-		this.anchorText = anchorText;
+		this.anchors = anchorRank;
 		this.redirectTargetNamespace = redirectTargetNamespace;
 		this.date = date;
 		this.redirectRank = redirectRank;
@@ -233,12 +234,12 @@ public class Article implements Serializable  {
 		this.related = related;
 	}
 
-	public ArrayList<String> getAnchorText() {
-		return anchorText;
+	public Hashtable<String, Integer> getAnchorRank() {
+		return anchors;
 	}
 
-	public void setAnchorText(ArrayList<String> anchorText) {
-		this.anchorText = anchorText;
+	public void setAnchors(Hashtable<String, Integer> anchorRank) {
+		this.anchors = anchorRank;
 	}
 
 	public int getRedirectTargetNamespace() {
@@ -268,6 +269,10 @@ public class Article implements Serializable  {
 	public void setRedirectTo(String redirectTo) {
 		this.redirectTo = redirectTo;
 	}	
+	
+	public String getNsTitleKey(){
+		return namespace+":"+title;
+	}
 	
 	public void setNsTitleKey(String key){
 		int col = key.indexOf(':');

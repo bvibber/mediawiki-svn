@@ -226,4 +226,23 @@ public interface RMIMessenger extends Remote {
 	 * @throws RemoteException
 	 */
 	public SearchResults searchPrefix(String dbrole, String searchterm, int limit, NamespaceFilter nsf) throws RemoteException;
+	
+	/** 
+	 * Request some indexes to be snapshoted
+	 * 
+	 * @param optimize
+	 * @param pattern
+	 * @param forPrecursor
+	 */
+	public void requestSnapshotAndNotify(boolean optimize, String pattern, boolean forPrecursor) throws RemoteException;
+	
+	/** 
+	 * Check if snapshot with following params have been finished 
+	 * 
+	 * @param optimize
+	 * @param pattern
+	 * @param forPrecursor
+	 * @return
+	 */
+	public boolean snapshotFinished(boolean optimize, String pattern, boolean forPrecursor) throws RemoteException;
 }

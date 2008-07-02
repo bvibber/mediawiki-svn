@@ -26,57 +26,21 @@ public class PositionalMultiQuery extends MultiPhraseQuery {
 		this.options = options;
 	}
 
-	/** Add to end of phrase */
-	public void add(Term term, boolean isStopWord) {
-		if(isStopWord)
-			stopWordCount++;
-		add(term);
-	}
-	/** Add to position in phrase */
-	public void add(Term term, int position, boolean isStopWord) {
-		if(isStopWord)
-			stopWordCount++;
-		add(new Term[]{term},position);
-	}
 	/** Add to pos with custom boost */
-	public void add(Term[] terms, int pos, ArrayList<Float> boost) {
+	public void addWithBoost(Term[] terms, int pos, ArrayList<Float> boost) {
 		if(terms.length != boost.size())
 			throw new RuntimeException("Mismached boost values for positional multi query");
 		super.add(terms,pos);
 		boosts.add(boost);
 	}
 	/** Add with custom boost */
-	public void add(Term[] terms, ArrayList<Float> boost){
+	public void addWithBoost(Term[] terms, ArrayList<Float> boost){
 		if(terms.length != boost.size())
 			throw new RuntimeException("Mismached boost values for positional multi query");
 		super.add(terms);
 		boosts.add(boost);
 	}
-
-	private ArrayList<Float> blankBoost(int size){
-		ArrayList<Float> f = new ArrayList<Float>();
-		for(int i=0;i<size;i++) f.add(1f);
-		return f;
-	}
 	
-	@Override
-	public void add(Term term) {
-		super.add(term);
-		boosts.add(blankBoost(1));
-	}
-
-	@Override
-	public void add(Term[] terms, int position) {
-		super.add(terms, position);
-		boosts.add(blankBoost(terms.length));
-	}
-
-	@Override
-	public void add(Term[] terms) {
-		super.add(terms);
-		boosts.add(blankBoost(terms.length));
-	}
-
 	public String toString(String f) {
 		String s = super.toString(f);
 		return "(P "+s+")";
@@ -130,6 +94,8 @@ public class PositionalMultiQuery extends MultiPhraseQuery {
 			for (int i=0; i<tps.length; i++) {
 				Term[] terms = (Term[])termArrays.get(i);
 				float[] boost = new float[terms.length];
+				if(terms.length != boosts.get(i).size())
+					throw new RuntimeException("Inconsistent term/boost data: terms="+Arrays.toString(terms)+", boosts="+boosts.get(i)+", in query="+PositionalMultiQuery.this);
 				int j=0;
 				for(Float f : boosts.get(i))
 					boost[j++] = f;

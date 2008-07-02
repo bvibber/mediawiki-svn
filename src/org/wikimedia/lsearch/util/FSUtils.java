@@ -139,7 +139,11 @@ public class FSUtils {
 			if(first)
 				first = false;			
 		}		
-		return sb.toString();
+		String path = sb.toString();
+		if(path.endsWith(PATH_SEP))
+			return path.substring(0,path.length()-PATH_SEP.length());
+		else
+			return path;
 	}
 	
 	/**

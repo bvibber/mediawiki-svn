@@ -45,6 +45,7 @@ public class RMIMessengerImpl implements RMIMessenger {
 	protected IndexRegistry indexRegistry = null;
 	protected IndexDaemon indexer = null;
 	protected SearcherCache cache = null;
+	protected IndexThread indexThread = null;
 	
 	static protected RMIMessengerImpl instance = null;
 	
@@ -218,6 +219,18 @@ public class RMIMessengerImpl implements RMIMessenger {
 			throw new RemoteException("IO error in getSearcherPoolStatus()",e);
 		}
 	}
+	
+	public void requestSnapshotAndNotify(boolean optimize, String pattern, boolean forPrecursor) {
+		if(indexThread == null)
+			indexThread = IndexThread.getInstance();
+		indexThread.makeSnapshotsNow(optimize,pattern,forPrecursor);
+	}
+	
+	public boolean snapshotFinished(boolean optimize, String pattern, boolean forPrecursor) {
+		if(indexThread == null)
+			indexThread = IndexThread.getInstance();
+		return indexThread.snapshotFinished(optimize,pattern,forPrecursor);
+	}
 
 	protected RMIMessengerImpl(){
 		networkStatus = null;
@@ -231,8 +244,5 @@ public class RMIMessengerImpl implements RMIMessenger {
 		
 		return instance;
 	}
-
-	
-
 
 }

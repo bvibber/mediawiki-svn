@@ -7,6 +7,7 @@ import java.util.HashMap;
 import java.util.Set;
 
 import org.apache.lucene.analysis.Analyzer;
+import org.wikimedia.lsearch.analyzers.Aggregate.Flags;
 import org.wikimedia.lsearch.analyzers.ExtToken.Position;
 import org.wikimedia.lsearch.beans.Article;
 import org.wikimedia.lsearch.beans.Redirect;
@@ -75,20 +76,20 @@ public class Alttitles {
 		String title = article.getTitle();
 		String titleKey = article.getTitleObject().getKey();
 		// type 0 : title
-		b.writeAlttitleInfo(titleKey,new Aggregate(title,article.getRank(),iid,analyzer,field),0);
+		b.writeAlttitleInfo(titleKey,new Aggregate(title,article.getRank(),iid,analyzer,field,Flags.ALTTITLE),0);
 		// add all redirects
 		ArrayList<Redirect> redirects = article.getRedirectsSorted();
 		ArrayList<Integer> ranks = article.getRedirectKeywordRanks();
 		for(int i=0;i<redirects.size();i++){
 			// type 1: redirect
-			b.writeAlttitleInfo(redirects.get(i).getKey(),new Aggregate(redirects.get(i).getTitle(),ranks.get(i),iid,analyzer,field),1);
+			b.writeAlttitleInfo(redirects.get(i).getKey(),new Aggregate(redirects.get(i).getTitle(),ranks.get(i),iid,analyzer,field,Flags.ALTTITLE),1);
 		}
 		
 		// type 2: sections
 		for(String s : sections){
 			String cs = canonizeHeadline(s);
 			if(cs != null)
-				b.writeAlttitleInfo(cs,new Aggregate(cs,1,iid,analyzer,field),2);
+				b.writeAlttitleInfo(cs,new Aggregate(cs,1,iid,analyzer,field,Flags.SECTION),2);
 		}
 
 		return b.getBytes();

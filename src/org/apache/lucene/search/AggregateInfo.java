@@ -4,6 +4,7 @@ import java.io.IOException;
 
 import org.apache.lucene.index.CorruptIndexException;
 import org.apache.lucene.index.IndexReader;
+import org.wikimedia.lsearch.analyzers.Aggregate.Flags;
 
 /** 
  * Meta information for a field in the index.
@@ -36,4 +37,7 @@ public interface AggregateInfo {
 	
 	/** if this meta provides ranking data */
 	public boolean hasRankingData();
+	
+	/** get flags */
+	public Flags flags(int docid, int pos) throws IOException;
 }

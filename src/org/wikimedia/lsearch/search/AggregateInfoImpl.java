@@ -7,6 +7,7 @@ import org.apache.lucene.index.CorruptIndexException;
 import org.apache.lucene.index.IndexReader;
 import org.apache.lucene.search.AggregateInfo;
 import org.wikimedia.lsearch.analyzers.AggregateAnalyzer;
+import org.wikimedia.lsearch.analyzers.Aggregate.Flags;
 import org.wikimedia.lsearch.search.AggregateMetaField.AggregateMetaFieldSource;
 
 /** 
@@ -63,6 +64,10 @@ public class AggregateInfoImpl implements AggregateInfo, Serializable  {
 
 	public boolean hasRankingData() {
 		return hasRankingData;
+	}
+	
+	public Flags flags(int docid, int pos) throws IOException {
+		return src.getFlags(docid,getSlot(pos));
 	}
 	
 	/** Provides ranking information */

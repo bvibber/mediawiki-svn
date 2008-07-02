@@ -58,7 +58,7 @@ public class SearchServer extends Thread {
 		/** Logger */
 		org.apache.log4j.Logger log = Logger.getLogger(SearchServer.class);
 		
-		log.info("Binding server to port " + port);
+		log.info("Searcher started on port " + port);
 		
 		try {
 			sock = new ServerSocket(port);

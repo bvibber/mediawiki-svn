@@ -11,8 +11,8 @@ public class ArticleInfoImpl implements ArticleInfo, Serializable {
 	protected transient ArticleMetaSource src = null;
 	
 
-	public final void init(IndexReader reader, NamespaceFilter subpages) throws IOException {
-		src = ArticleMeta.getCachedSource(reader,subpages);
+	public final void init(IndexReader reader) throws IOException {
+		src = ArticleMeta.getCachedSource(reader);
 	}
 	
 	public final boolean isSubpage(int docid) throws IOException {

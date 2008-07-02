@@ -18,16 +18,14 @@ import org.wikimedia.lsearch.search.RankField;
 public class ArticleQueryWrap extends CustomBoostQuery {
 	ArticleInfo article;
 	ArticleScaling scale;	
-	NamespaceFilter subpages;
 	AggregateInfo rank;
 	/** scale coeff for subpages */
 	final float SUBPAGE = 0.5f;
 	
-	public ArticleQueryWrap(Query subQuery, ArticleInfo article, ArticleScaling scale, NamespaceFilter subpages, AggregateInfo rank) {
+	public ArticleQueryWrap(Query subQuery, ArticleInfo article, ArticleScaling scale, AggregateInfo rank) {
 		super(subQuery);
 		this.article = article;
 		this.scale = scale;
-		this.subpages = subpages;
 		this.rank = rank;
 	}
 	
@@ -68,7 +66,7 @@ public class ArticleQueryWrap extends CustomBoostQuery {
 		}
 		public Scorer scorer(IndexReader reader) throws IOException {
 			if(article != null)
-				article.init(reader,subpages);
+				article.init(reader);
 			if(rank != null)
 				rank.init(reader,"alttitle");
 			return super.scorer(reader);

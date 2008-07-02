@@ -416,6 +416,12 @@ public class IndexId {
 	public boolean isPrecursor(){
 		return type == IndexType.PRECURSOR;
 	}
+	/** Is one of main article indexes, e.g. *not* spell, related, links etc.. */
+	public boolean isArticleIndex(){
+		return (isSingle() || isMainsplit() || isSplit() || isNssplit() || isSubdivided()) 
+		&& !isHighlight() && !isTitlesBySuffix() && !isSpell() && !isPrefix() && !isPrecursor() && !isTitleNgram()
+		&& !isLinks() && !isRelated();
+	}
 	
 	/** If this is a split index, returns the current part number, e.g. for entest.part4 will return 4 */
 	public int getPartNum() {

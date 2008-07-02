@@ -2,6 +2,7 @@ package org.wikimedia.lsearch.util;
 
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.Arrays;
 
@@ -24,13 +25,15 @@ public class Command {
 		}
 	}
 	
-	public static void exec(String command) throws IOException {
-		exec(new String[] {command});
+	/** Execute command, @return stdout of process */
+	public static String exec(String command) throws IOException {
+		return exec(new String[] {command});
 	}
 	
-	public static void exec(String[] command) throws IOException {
+	/** Execute command, @return stdout of process */
+	public static String exec(String[] command) throws IOException {
 		Process p = null;
-		log.debug("Executing shell command "+command);		
+		log.debug("Executing shell command "+Arrays.toString(command));		
 		try {
 			if(command.length == 1)
 				p = Runtime.getRuntime().exec(command[0]);
@@ -39,13 +42,9 @@ public class Command {
 			p.waitFor();		
 			if(p.exitValue()!=0){
 				log.warn("Got exit value "+p.exitValue()+" while executing "+Arrays.toString(command));
-				String line;
-				StringBuilder sb = new StringBuilder();
-				BufferedReader r = new BufferedReader(new InputStreamReader(p.getErrorStream()));
-				while((line = r.readLine()) != null)
-					sb.append(line);
-				throw new IOException("Error executing command: "+sb);
+				throw new IOException("Error executing command: "+readStream(p.getErrorStream()));
 			}
+			return readStream(p.getInputStream());
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 			throw new IOException("Interrupted");
@@ -54,6 +53,14 @@ public class Command {
 			if(p != null)
 				p.destroy();
 		}
+	}	
+		
+	protected static String readStream(InputStream in) throws IOException {
+		String line;
+		StringBuilder sb = new StringBuilder();
+		BufferedReader r = new BufferedReader(new InputStreamReader(in));
+		while((line = r.readLine()) != null)
+			sb.append(line);
+		return sb.toString();
 	}
-
 }

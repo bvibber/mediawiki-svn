@@ -204,6 +204,11 @@ public class RankingTest {
 		assertHits("bethlehem jesus", new String[]{
 				"0:Bethlehem"	
 		});
+		
+		assertHits("san francisco ferry building", new String[]{
+				"0:Ferry Building"	
+		});
+
 
 	
 		
