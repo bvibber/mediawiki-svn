@@ -15,6 +15,14 @@ $messages['en'] = array(
 	'random-users-avatars-desc'  => 'Adds <tt>&lt;randomuserswithavatars&gt;</tt> tag to display the avatars of randomly chosen users',
 );
 
+/** German (Deutsch)
+ * @author Raimond Spekking
+ */
+$messages['de'] = array(
+	'random-users-avatars-title' => 'Triff die Community',
+	'random-users-avatars-desc'  => 'Ergänzt das <tt>&lt;randomuserswithavatars&gt;</tt>-Tag zur Anzeige des Avatars eines zufällig ausgewählten Benutzers',
+);
+
 /** Finnish (Suomi)
  * @author Jack Phoenix
  */
