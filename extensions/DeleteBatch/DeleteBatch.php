@@ -12,11 +12,12 @@ $wgAvailableRights[] = 'deletebatch';
 $wgGroupPermissions['staff']['deletebatch'] = true;
 
 $wgExtensionCredits['specialpage'][] = array(
-   'name' => 'Delete Batch',
-   'version' => '1.0',
-   'author' => 'Bartek Łapiński',
-   'url' => 'http://www.mediawiki.org/wiki/Extension:DeleteBatch',
-   'description' => 'Deletes a batch of pages'
+   'name'           => 'Delete Batch',
+   'version'        => '1.0',
+   'author'         => 'Bartek Łapiński',
+   'url'            => 'http://www.mediawiki.org/wiki/Extension:DeleteBatch',
+   'description'    => 'Deletes a batch of pages',
+   'descriptionmsg' => 'deletebatch-msg',
 );
 
 $dir = dirname(__FILE__) . '/';

@@ -12,11 +12,14 @@ $messages = array();
  */
 $messages['en'] = array(
 	'deletebatch' => 'Delete batch of pages',
+	'deletebatch-desc' => '[[Special:DeleteBatch|Delete a batch of pages]]',
 	'deletebatch-button' => 'DELETE', /* make it an irritably big button, on purpose, of course... */
 	'deletebatch-here' => '<b>here</b>',
-	'deletebatch-help' => 'Delete a batch of pages. You can either perform a single delete, or delete pages listed in a file.  Choose a user that will be shown in deletion logs. Uploaded file should contain page name and optional reason separated by | character in each line.',
+	'deletebatch-help' => 'Delete a batch of pages. You can either perform a single delete, or delete pages listed in a file.
+Choose a user that will be shown in deletion logs.
+Uploaded file should contain page name and optional reason separated by a "|" character in each line.',
 	'deletebatch-caption' => 'Page list',
-	'deletebatch-title' => 'Delete Batch',
+	'deletebatch-title' => 'Delete batch',
 	'deletebatch-link-back' => 'Go back to the special page ',
 	'deletebatch-as' => 'Run the script as',
 	'deletebatch-both-modes' => 'Please choose either one specified page or a given list of pages.',

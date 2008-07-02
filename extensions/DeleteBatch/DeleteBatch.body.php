@@ -13,7 +13,6 @@ class DeleteBatch extends SpecialPage {
 	*/
 	function DeleteBatch() {
 		SpecialPage::SpecialPage( 'DeleteBatch', 'deletebatch', true, 'execute', false );
-		wfLoadExtensionMessages('DeleteBatch');
 	}
 
 	/**
@@ -24,18 +23,20 @@ class DeleteBatch extends SpecialPage {
 	function execute( $par ) {
 		global $wgOut, $wgUser, $wgRequest;
 
-	    if ( $wgUser->isBlocked() ) {
+		if ( $wgUser->isBlocked() ) {
 			$wgOut->blockedPage();
 			return;
-		}        
+		}
 		if ( wfReadOnly() ) {
-			$wgOut->readOnlyPage();     
+			$wgOut->readOnlyPage();
 			return;
 		}
 		if ( !$wgUser->isAllowed( 'deletebatch' ) ) {
 			$this->displayRestrictionError();
 			return;
 		}
+
+		wfLoadExtensionMessages('DeleteBatch');
 
 		$wgOut->setPageTitle(wfMsg('deletebatch-title'));
 		$cSF = new DeleteBatchForm($par);
@@ -60,8 +61,8 @@ class DeleteBatchForm {
 	function deletebatchForm( $par ) {
 		global $wgRequest;
 		$this->mMode = $wgRequest->getVal( 'wpMode' );
-		$this->mPage = $wgRequest->getVal( 'wpPage' );	
-		$this->mReason = $wgRequest->getVal( 'wpReason' );	
+		$this->mPage = $wgRequest->getVal( 'wpPage' );
+		$this->mReason = $wgRequest->getVal( 'wpReason' );
 		$this->mFile = $wgRequest->getFileName( 'wpFile' );
 		$this->mFileTemp = $wgRequest->getFileTempName( 'wpFile' );
 	}
@@ -202,7 +203,7 @@ class DeleteBatchForm {
 //			$this->showForm('');
 		} else {
 			/* run through text and do all like it should be */
-			$lines = explode( "\n", $line );			
+			$lines = explode( "\n", $line );
 			foreach ($lines as $single_page) {
 				/* explode and give me a reason */
 				$page_data = explode("|", trim ($single_page) );
@@ -230,9 +231,9 @@ class DeleteBatchForm {
 	*/
 	function deletePage($line, $reason = '', &$db, $multi = false, $linenum = 0, $user = null) {
 		global $wgOut, $wgUser;
-		$page = Title::newFromText ($line);		
+		$page = Title::newFromText ($line);
 			if (is_null($page)) { /* invalid title? */
-			   	$wgOut->addWikiText( wfMsg('deletebatch-omitting-invalid', $line) ); 
+			   	$wgOut->addWikiText( wfMsg('deletebatch-omitting-invalid', $line) );
 			if (!$multi) {
 				if (!is_null($user)) {
 					$wgUser = $user;
@@ -265,7 +266,7 @@ class DeleteBatchForm {
 				$art = new Article($page);
 			}
 
-		/* 	what is the generic reason for page deletion? 
+		/* 	what is the generic reason for page deletion?
 			something about the content, I guess...
 		*/
 			$art->doDelete($reason);
