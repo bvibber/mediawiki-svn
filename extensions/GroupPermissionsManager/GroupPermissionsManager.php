@@ -11,13 +11,12 @@ if(!defined('MEDIAWIKI')) {
 }
 
 $wgExtensionCredits['specialpage'][] = array(
-'name' => 'GroupPermissions Manager',
-'author' => 'Ryan Schmidt',
-'url' => 'http://www.mediawiki.org/wiki/Extension:GroupPermissions_Manager',
-#'version' => '3.1',
-'version' => '3.0',
-'description' => 'Manage group permissions via a special page',
-'descriptionmsg' => 'grouppermissions-desc',
+	'name'           => 'GroupPermissions Manager',
+	'author'         => 'Ryan Schmidt',
+	'url'            => 'http://www.mediawiki.org/wiki/Extension:GroupPermissions_Manager',
+	'version'        => '3.0',
+	'description'    => 'Manage group permissions via a special page',
+	'descriptionmsg' => 'grouppermissions-desc',
 );
 $wgAutoloadClasses['GroupPermissions'] = dirname(__FILE__) . '/GroupPermissionsManager_body.php';
 #$wgAutoloadClasses['RemoveUnusedGroups'] = dirname(__FILE__) . '/RemoveUnusedGroups.php';
@@ -264,12 +263,12 @@ function getTitleProtection($title) {
 
 //was added in 1.13, so supporting for downwards compatibility with 1.12
 function addScriptFile( $file ) {
-		global $wgStylePath, $wgStyleVersion, $wgJsMimeType;
+		global $wgStylePath, $wgStyleVersion, $wgJsMimeType, $wgOut;
 		if( substr( $file, 0, 1 ) == '/' ) {
 			$path = $file;
 		} else {
 			$path =  "{$wgStylePath}/common/{$file}";
 		}
 		$encPath = htmlspecialchars( $path );
-		$this->addScript( "<script type=\"{$wgJsMimeType}\" src=\"$path?$wgStyleVersion\"></script>\n" );
+		$wgOut->addScript( "<script type=\"{$wgJsMimeType}\" src=\"$path?$wgStyleVersion\"></script>\n" );
 }
