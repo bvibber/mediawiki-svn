@@ -14,13 +14,17 @@ $wgExtensionCredits['specialpage'][] = array(
 'name' => 'GroupPermissions Manager',
 'author' => 'Ryan Schmidt',
 'url' => 'http://www.mediawiki.org/wiki/Extension:GroupPermissions_Manager',
+#'version' => '3.1',
 'version' => '3.0',
 'description' => 'Manage group permissions via a special page',
 'descriptionmsg' => 'grouppermissions-desc',
 );
 $wgAutoloadClasses['GroupPermissions'] = dirname(__FILE__) . '/GPManager_body.php';
+#$wgAutoloadClasses['RemoveUnusedGroups'] = dirname(__FILE__) . '/RemoveUnusedGroups.php';
+#$wgAutoloadClasses['SortPermissions'] = dirname(__FILE__) . '/SortPermissions.php';
 $wgSpecialPages['GroupPermissions'] = 'GroupPermissions';
-$wgAvailableRights[] = 'grouppermissions';
+#$wgSpecialPages['RemoveUnusedGroups'] = 'RemoveUnusedGroups';
+#$wgSpecialPages['SortPermissions'] = 'SortPermissions';
 $wgExtensionMessagesFiles['GroupPermissions'] = dirname(__FILE__) . '/GPManager.i18n.php';
 
 $wgLogTypes[] = 'gpmanager';
@@ -31,12 +35,15 @@ $wgLogActions['gpmanager/gpmanager'] = 'grouppermissions-log-entry';
 $wgLogHeaders['gpmanager'] = 'grouppermissions-log-header';
 $wgLogNames['gpmanager'] = 'grouppermissions-log-name';
 $wgSpecialPageGroups['GroupPermissions'] = 'wiki';
+#$wgSpecialPageGroups['RemoveUnusedGroups'] = 'user';
+#$wgSpecialPageGroups['SortPermissions'] = 'wiki';
 
-##Permission required to use the special page
+##Permission required to use the 'GroupPermissions' and 'SortPermissions' special page
 ##By default all bureaucrats can
 $wgGroupPermissions['bureaucrat']['grouppermissions'] = true;
 ##Uncomment this if you want to make a separate group that can access the page as well
 #$wgGroupPermissions['grouppermissions']['grouppermissions'] = true;
+##'RemoveUnusedGroups' requires the 'userrights' permission, also given to bureaucrats by default
 
 /**
 * Permissions++ sub-extension
@@ -84,7 +91,7 @@ $wgGPManagerSort['edit'] = array( 'edit', 'createpage', 'createtalk', 'move', 'm
 $wgGPManagerSort['manage'] = array( 'delete', 'bigdelete', 'deletedhistory', 'undelete', 'mergehistory',
 'protect', 'block', 'blockemail', 'hideuser', 'userrights', 'userrights-interwiki', 'rollback', 'markbotedits',
 'patrol', 'editinterface', 'editusercssjs', 'hiderevision', 'deleterevision', 'browsearchive', 'suppressrevision',
-'suppressionlog' );
+'suppressionlog', 'suppress' );
 $wgGPManagerSort['admin'] = array( 'siteadmin', 'import', 'importupload', 'trackback', 'unwatchedpages',
 'grouppermissions' );
 $wgGPManagerSort['tech'] = array( 'bot', 'purge', 'minoredit', 'nominornewtalk', 'ipblock-exempt',
@@ -254,3 +261,15 @@ function getTitleProtection($title) {
 		return false;
 	}
 }
+
+//was added in 1.13, so supporting for downwards compatibility with 1.12
+function addScriptFile( $file ) {
+		global $wgStylePath, $wgStyleVersion, $wgJsMimeType;
+		if( substr( $file, 0, 1 ) == '/' ) {
+			$path = $file;
+		} else {
+			$path =  "{$wgStylePath}/common/{$file}";
+		}
+		$encPath = htmlspecialchars( $path );
+		$this->addScript( "<script type=\"{$wgJsMimeType}\" src=\"$path?$wgStyleVersion\"></script>\n" );
+	}

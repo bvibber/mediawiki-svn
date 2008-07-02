@@ -53,7 +53,7 @@ class GroupPermissions extends SpecialPage {
 		if( $this->target != '') {
 			//ok, we do. Now, what action was just being performed?
 			if( $wgRequest->getCheck( 'dosearch' ) || !$wgRequest->wasPosted() ) {
-				$wgOut->addScriptFile('prefs.js');
+				addScriptFile('prefs.js');
 				//it was a search, check the group
 				if(in_array($this->target, $this->groupslist)) {
 					global $wgImplicitGroups;
