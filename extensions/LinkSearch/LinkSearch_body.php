@@ -6,7 +6,6 @@ class LinkSearchSpecialPage extends SpecialPage {
 	}
 
 	function execute( $par ) {
-
 		wfLoadExtensionMessages( 'LinkSearch' );
 
 		$this->setHeaders();
