@@ -544,3 +544,161 @@ Om du har några frågor om programtilläggets distributionssystem, gå till [[E
 	'extdist-want-more'               => 'Hämta andra tillägg',
 );
 
+/** Cantonese
+ * @author Shinjiman
+ */
+$messages['yue'] = array(
+		'extensiondistributor'      => '下載MediaWiki擴展',
+		'extdist-desc'              => '發佈擴展歸檔映像嘅擴展',
+		'extdist-not-configured'    => '請設定 $wgExtDistTarDir 同 $wgExtDistWorkingCopy',
+		'extdist-wc-missing'        => '已經設定咗嘅工作複本目錄唔存在！',
+		'extdist-no-such-extension' => '無呢個擴展 "$1"',
+		'extdist-no-such-version'   => '個擴展 "$1" 唔存在於呢個版本 "$2" 度。',
+		'extdist-choose-extension'  => '揀你要去下載嘅擴展:',
+		'extdist-wc-empty'          => '設定咗嘅工作複本目錄無可發佈嘅擴展！',
+		'extdist-submit-extension'  => '繼續',
+		'extdist-current-version'   => '現時版本 (trunk)',
+		'extdist-choose-version'    => '
+<big>你而家下載緊 <b>$1</b> 擴展。</big>
+
+揀你要嘅 MediaWiki 版本。 
+
+多數嘅擴展都可以響多個 MediaWiki 嘅版本度行到，噉如果你嘅 Mediawiki 版本唔響度，又或者你需要最新嘅擴展功能嘅話，試吓用最新嘅版本。',
+		'extdist-no-versions'             => '所揀嘅擴展 ($1) 不適用於任何嘅版本！',
+		'extdist-submit-version'          => '繼續',
+		'extdist-no-remote'               => '唔能夠聯絡遠端 subversion 客戶端。',
+		'extdist-remote-error'            => '自遠端 subversion 客戶端嘅錯誤: <pre>$1</pre>',
+		'extdist-remote-invalid-response' => '自遠端 subversion 客戶端嘅無效回應。',
+		'extdist-svn-error'               => 'Subversion 遇到一個錯誤: <pre>$1</pre>',
+		'extdist-svn-parse-error'         => '唔能夠處理 "svn info" 嘅 XML: <pre>$1</pre>',
+		'extdist-tar-error'               => 'Tar 回應結束碼 $1:',
+		'extdist-created'                 => "一個可供 MediaWiki <b>$3</b> 用嘅 <b>$1</b> 擴展之 <b>$2</b> 版本嘅映像已經整好咗。你嘅下載將會響5秒鐘之後自動開始。 
+
+呢個映像嘅 URL 係:
+:$4
+佢可能會用響即時下載到伺服器度，但係請唔好記底響書籤度，因為裏面啲嘢可能唔會更新，亦可能會響之後嘅時間刪除。
+
+個 tar 壓縮檔應該要解壓到你嘅擴展目錄。例如，響 unix 類 OS:
+
+<pre>
+tar -xzf $5 -C /var/www/mediawiki/extensions
+</pre>
+
+響 Windows，你可以用 [http://www.7-zip.org/ 7-zip] 去解壓嗰啲檔案。
+
+如果你嘅 wiki 係響一個遠端伺服器嘅話，就響電腦度解壓檔案到一個臨時目錄，然後再上載'''全部'''已經解壓咗嘅檔案到伺服器嘅擴展目錄。
+
+要留意嘅有啲擴展係需要一個叫做 ExtensionFunctions.php 嘅檔案，響 <tt>extensions/ExtensionFunctions.php</tt>，即係，響呢個擴展目錄嘅''父''目錄。嗰啲擴展嘅映像都會含有以呢個檔案嘅 tarbomb 檔案，解壓到 ./ExtensionFunctions.php。唔好唔記得上載埋呢個檔案到你嘅遠端伺服器。
+
+響你解壓咗啲檔案之後，你需要響 LocalSettings.php 度註冊番個擴展。個擴展說明講咗點樣可以做到呢樣嘢。
+
+如果你有任何對於呢個擴展發佈系統有問題嘅話，請去[[Extension talk:ExtensionDistributor]]。
+",
+		'extdist-want-more' => '攞另一個擴展',
+);
+
+/** Chinese (Simplified)
+ * @author Shinjiman
+ */
+$messages['zh-hans'] = array(
+		'extensiondistributor'      => '下载MediaWiki扩展',
+		'extdist-desc'              => '发布扩展存档映像的扩展',
+		'extdist-not-configured'    => '请设置 $wgExtDistTarDir 和 $wgExtDistWorkingCopy',
+		'extdist-wc-missing'        => '已经设置的工作复本目录不存在！',
+		'extdist-no-such-extension' => '没有这个扩展 "$1"',
+		'extdist-no-such-version'   => '该扩展 "$1" 不存在于这个版本 "$2" 中。',
+		'extdist-choose-extension'  => '选择您要去下载的扩展:',
+		'extdist-wc-empty'          => '设置的工作复本目录无可发布之扩展！',
+		'extdist-submit-extension'  => '继续',
+		'extdist-current-version'   => '现时版本 (trunk)',
+		'extdist-choose-version'    => '
+<big>您现正下载 <b>$1</b> 扩展。</big>
+
+选择您要的 MediaWiki 版本。 
+
+多数的扩展都可以在多个 MediaWiki 版本上运行，如果您的 Mediawiki 版本不存在，又或者您需要最新的扩展功能的话，可尝试用最新的版本。',
+		'extdist-no-versions'             => '所选择扩展 ($1) 不适用于任何的版本！',
+		'extdist-submit-version'          => '继续',
+		'extdist-no-remote'               => '不能够联络远端 subversion 客户端。',
+		'extdist-remote-error'            => '自远端 subversion 客户端的错误: <pre>$1</pre>',
+		'extdist-remote-invalid-response' => '自远端 subversion 客户端的无效反应。',
+		'extdist-svn-error'               => 'Subversion 遇到一个错误: <pre>$1</pre>',
+		'extdist-svn-parse-error'         => '不能够处理 "svn info" 之 XML: <pre>$1</pre>',
+		'extdist-tar-error'               => 'Tar 反应结束码 $1:',
+		'extdist-created'                 => "一个可供 MediaWiki <b>$3</b> 使用的 <b>$1</b> 扩展之 <b>$2</b> 版本的映像已经建立。您的下载将会在5秒钟之后自动开始。 
+
+这个映像的 URL 是:
+:$4
+它可能会用于即时下载到服务器中，但是请不要记录在书签中，因为里面?内容可能不会更新，亦可能会在之后的时间删除。
+
+该 tar 压缩档应该要解压缩到您的扩展目录。例如，在 unix 类 OS:
+
+<pre>
+tar -xzf $5 -C /var/www/mediawiki/extensions
+</pre>
+
+在 Windows，您可以用 [http://www.7-zip.org/ 7-zip] 去解压缩这些文件。
+
+如果您的 wiki 是在一个远端服务器的话，就在电脑中解压缩文件到一个临时目录，然后再上载'''全部'''已经解压缩的文件到服务器的扩展目录上。
+
+要留意的是有的扩展是需要一个名叫 ExtensionFunctions.php 的文件，在 <tt>extensions/ExtensionFunctions.php</tt>，即是，在这个扩展目录的''父''目录。那些扩展的映像都会含有以这个文件的 tarbomb 文件，解压缩到 ./ExtensionFunctions.php。不要忘记上载这个文件到您的远端服务器。
+
+响您解压缩文件之后，您需要在 LocalSettings.php 中注册该等扩展。该扩展之说明会有指示如何做到它。
+
+如果您有任何对于这个扩展发布系统有问题的话，请去[[Extension talk:ExtensionDistributor]]。
+",
+		'extdist-want-more' => '取另一个扩展',
+);
+
+/** Chinese (Traditional)
+ * @author Shinjiman
+ */
+$messages['zh-hant'] = array(
+		'extensiondistributor'      => '下載MediaWiki擴展',
+		'extdist-desc'              => '發佈擴展存檔映像的擴展',
+		'extdist-not-configured'    => '請設定 $wgExtDistTarDir 和 $wgExtDistWorkingCopy',
+		'extdist-wc-missing'        => '已經設定的工作複本目錄不存在！',
+		'extdist-no-such-extension' => '沒有這個擴展 "$1"',
+		'extdist-no-such-version'   => '該擴展 "$1" 不存在於這個版本 "$2" 中。',
+		'extdist-choose-extension'  => '選擇您要去下載的擴展:',
+		'extdist-wc-empty'          => '設定的工作複本目錄無可發佈之擴展！',
+		'extdist-submit-extension'  => '繼續',
+		'extdist-current-version'   => '現時版本 (trunk)',
+		'extdist-choose-version'    => '
+<big>您現正下載 <b>$1</b> 擴展。</big>
+
+選擇您要的 MediaWiki 版本。 
+
+多數的擴展都可以在多個 MediaWiki 版本上運行，如果您的 Mediawiki 版本不存在，又或者您需要最新的擴展功能的話，可嘗試用最新的版本。',
+		'extdist-no-versions'             => '所選擇擴展 ($1) 不適用於任何的版本！',
+		'extdist-submit-version'          => '繼續',
+		'extdist-no-remote'               => '不能夠聯絡遠端 subversion 客戶端。',
+		'extdist-remote-error'            => '自遠端 subversion 客戶端的錯誤: <pre>$1</pre>',
+		'extdist-remote-invalid-response' => '自遠端 subversion 客戶端的無效回應。',
+		'extdist-svn-error'               => 'Subversion 遇到一個錯誤: <pre>$1</pre>',
+		'extdist-svn-parse-error'         => '不能夠處理 "svn info" 之 XML: <pre>$1</pre>',
+		'extdist-tar-error'               => 'Tar 回應結束碼 $1:',
+		'extdist-created'                 => "一個可供 MediaWiki <b>$3</b> 使用的 <b>$1</b> 擴展之 <b>$2</b> 版本的映像已經建立。您的下載將會在5秒鐘之後自動開始。 
+
+這個映像的 URL 是:
+:$4
+它可能會用於即時下載到伺服器中，但是請不要記錄在書籤中，因為裏面啲內容可能不會更新，亦可能會在之後的時間刪除。
+
+該 tar 壓縮檔應該要解壓縮到您的擴展目錄。例如，在 unix 類 OS:
+
+<pre>
+tar -xzf $5 -C /var/www/mediawiki/extensions
+</pre>
+
+在 Windows，您可以用 [http://www.7-zip.org/ 7-zip] 去解壓縮這些檔案。
+
+如果您的 wiki 是在一個遠端伺服器的話，就在電腦中解壓縮檔案到一個臨時目錄，然後再上載'''全部'''已經解壓縮的檔案到伺服器的擴展目錄上。
+
+要留意的是有的擴展是需要一個名叫 ExtensionFunctions.php 的檔案，在 <tt>extensions/ExtensionFunctions.php</tt>，即是，在這個擴展目錄的''父''目錄。那些擴展的映像都會含有以這個檔案的 tarbomb 檔案，解壓縮到 ./ExtensionFunctions.php。不要忘記上載這個檔案到您的遠端伺服器。
+
+響您解壓縮檔案之後，您需要在 LocalSettings.php 中註冊該等擴展。該擴展之說明會有指示如何做到它。
+
+如果您有任何對於這個擴展發佈系統有問題的話，請去[[Extension talk:ExtensionDistributor]]。
+",
+		'extdist-want-more' => '取另一個擴展',
+);
