@@ -29,13 +29,14 @@ if( !defined( 'MEDIAWIKI' ) )
  * @todo document
  * @addtogroup Skins
  */
-class SkinMvpcf extends SkinTemplate {
+class SkinMvpcf extends SkinTemplate {	
 	/** Using monobook. */
 	function initPage( &$out ) {
 		SkinTemplate::initPage( $out );
 		$this->skinname  = 'mvpcf';
 		$this->stylename = 'mvpcf';
 		$this->template  = 'MvpcfTemplate';
+		$this->skinProvidesMvSearch=true;
 	}
 }
 
@@ -83,7 +84,7 @@ class MvpcfTemplate extends QuickTemplate {
 	<div id="frontPageTop">
 		<?php $this->get_portlet('p-personal')?>
 		<div id="searchSplash">
-			<div class="logo"><a href="#"><img src="<?php $this->text('stylepath') ?>/<?php $this->text('stylename') ?>/images/logo.png" alt="Metavid" /></a></div>
+			<div class="logo"><img src="<?php $this->text('stylepath') ?>/<?php $this->text('stylename') ?>/images/logo.png" alt="Metavid" /></div>
 			<p class="tagline">The Open Video archive of the US Congress</p>
 			<?php $this->get_search_html(); ?>			
 		</div><!--searchSplash-->
@@ -291,29 +292,25 @@ class MvpcfTemplate extends QuickTemplate {
 	}
 	function get_search_html(){		
 		global $wgScript, $wgPageName, $wgTitle, $wgUser;
-		//set approporiate javascript to flag advanced search 
-		?>		
-		<div class="form_search_row">
-				<form id="mv_media_search" method="get" action="<?php echo $wgScript ?>/Special:MediaSearch">
-					<input type="hidden" id="mvsel_t_0" name="f[0][t]" value="match">
-								
-					<input type="text" class="searchField" name="f[0][v]" id="search_field" />
-					<button class="grey_button" type="submit"><span>&nbsp;&nbsp; Video Search &nbsp;&nbsp;</span></button>
-					<a href="#" class="advanced_search_tag">advanced search</a>
-				</form>	
-				<?php
-					//display page actions if user is logged in and not on main page. 
-					if(!$wgUser->isAnon() && !$this->is_main_page_view  ){
-						$this->get_portlet('p-cactions');
-					}
-				?>							
-			</div>
-<div id="suggestions" style="display:none;z-index:50;">
+		//set up a tmp media search object (@@todo make static functions for mediasearch filter form display) 
+		$tmp_MediaSearch = new MV_SpecialMediaSearch();
+		$tmp_MediaSearch->setUpFilters();
+		
+		//set approporiate javascript to flag advanced search 	
+		echo $tmp_MediaSearch->dynamicSearchControl();
+			//display page actions if user is logged in and not on main page. 
+			if(!$wgUser->isAnon() && !$this->is_main_page_view  ){
+				$this->get_portlet('p-cactions');
+			}
+		//output sugestions div... (moved to mv_allpages.js): 
+/*<div id="suggestions" style="display:none;z-index:50;">
 				<div id="suggestionsTop"></div>
 				<div id="suggestionsInner" class="suggestionsBox">										
 				</div><!--suggestionsInner-->
 				<div id="suggestionsBot"></div>
-			</div><!--suggestions-->							
+			</div><!--suggestions-->*/
+		?>										
+							
 		<?php
 	}
 	function get_base_body_html(){	
@@ -372,8 +369,8 @@ class MvpcfTemplate extends QuickTemplate {
 	wfRestoreWarnings();
 	} // end of execute() method
 
-	function get_head_html(){			
-		?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+	function get_head_html(){
+	?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="<?php $this->text('xhtmldefaultnamespace') ?>" <?php 
 	foreach($this->data['xhtmlnamespaces'] as $tag => $ns) {
 		?>xmlns:<?php echo "{$tag}=\"{$ns}\" ";
