@@ -33,6 +33,8 @@ if( defined( 'MEDIAWIKI' ) ) {
 	$wgAutoloadClasses['SlippyMap'] = dirname( __FILE__ ) . '/SlippyMap.class.php';
 	$wgExtensionMessagesFiles['SlippyMap'] = dirname( __FILE__ ) . "/SlippyMap.i18n.php";
 
+	# Bump this when updating OpenStreetMap.js to help update caches
+	$wgSlippyMapVersion = 1;
 
 	function wfslippymap() {
 		global $wgParser, $wgMapOfServiceUrl;
