@@ -33,6 +33,7 @@ class SortPermissions extends SpecialPage {
 		$wgOut->addWikiText( wfMsg( 'grouppermissions-sp-header' ) );
 		//if we posted, try to write the file
 		if($wgRequest->wasPosted()) {
+			$this->permlist = array();
 			$success = $this->writeFile();
 			if($success) {
 				$wgOut->addWikiText(wfMsg('grouppermissions-sp-success'));
@@ -164,6 +165,12 @@ class SortPermissions extends SpecialPage {
 			$st = " '" . implode("', '", $rights) . "' ";
 			if($st === " '' ") {
 				$st = '';
+			}
+			foreach($rights as $right) {
+				if(!in_array($right, $this->permlist)) {
+					//define a new permission since we added it via the javascript
+					$sortpermissions .= "\n\$wgGroupPermissions['*']['$right'] = false;";
+				}
 			}
 			$sortpermissions .= "\n\$wgGPManagerSort['$key'] = array($st);";
 		}
