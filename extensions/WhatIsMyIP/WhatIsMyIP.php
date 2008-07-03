@@ -29,7 +29,7 @@ $wgExtensionCredits['specialpage'][] = array(
 	'descriptionmsg' => 'whatismyip-desc'
 );
 
-global $wgAvailableRights, $wgGroupPermissions
+global $wgAvailableRights, $wgGroupPermissions;
 $wgAvailableRights[] = 'whatismyip';
 $wgGroupPermissions['*']['whatismyip'] = true;
 
