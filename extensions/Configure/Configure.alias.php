@@ -16,6 +16,11 @@ $aliases['en'] = array(
 	'ViewConfig' => array( 'ViewConfig' ),
 );
 
+$aliases['bcc'] = array(
+	'Configure'  => array( 'تنظیم' ),
+	'ViewConfig' => array( 'چارگ تنظیم' ),
+);
+
 /** French (Français)
  * @author IAlex
  */
