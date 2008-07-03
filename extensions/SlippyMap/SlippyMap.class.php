@@ -64,9 +64,9 @@ class SlippyMap {
 		if (substr($height,-2)=='px')	$height = substr($height,0,-2);
 
 		//Check required parameters values are provided
-		if ($lat=='') $error .= wfMsg( 'slippymap_latmissing' );
-		if ($lon=='') $error .= wfMsg( 'slippymap_lonmissing' );
-		if ($zoom=='') $error .= wfMsg( 'slippymap_zoommissing' );
+		if ( $lat==''  ) $error .= wfMsg( 'slippymap_latmissing' );
+		if ( $lon==''  ) $error .= wfMsg( 'slippymap_lonmissing' );
+		if ( $zoom=='' ) $error .= wfMsg( 'slippymap_zoommissing' );
 		if ( isset( $params['long'] ) ) $error .= wfMsg( 'slippymap_longdepreciated' );
 
 		if ($error=='') {
@@ -203,8 +203,6 @@ class SlippyMap {
 			}
 
 			$output .= "	map.setCenter (lonLat, zoom); ";
-			$output .= "    postmap = document.getElementById('postmap'); ";
-			$output .= "    postmap.innerHTML = '<input type=\"button\" value=\"" . wfMsg( 'slippymap_resetview' ) . "\" onmousedown=\"map.setCenter(lonLat, zoom);\" /><input type=\"button\" value=\"" . wfMsg( 'slippymap_button_code' ) . "\" onmousedown=\"slippymap_getWikicode();\" \>'; ";
 			$output .= "} ";
 
 			$output .= 'function slippymap_getWikicode() {';
@@ -221,7 +219,7 @@ class SlippyMap {
 			$output .= "<noscript><a href=\"http://www.openstreetmap.org/?lat=$lat&lon=$lon&zoom=$zoom\" title=\"See this map on OpenStreetMap.org\" style=\"text-decoration:none\">";
 			$output .= "<img src=\"".$wgMapOfServiceUrl."lat=$lat&long=$lon&z=$zoom&w=$width&h=$height&format=jpeg\" width=\"$width\" height=\"$height\" border=\"0\"><br/>";
 			$output .= '<span style="font-size:60%; background-color:white; position:relative; top:-15px; ">OpenStreetMap - CC-BY-SA-2.0</span>';
-			$output .= '</a></noscript></div><div id="postmap"></div></div>';
+			$output .= '</a></noscript></div><div id="postmap"><input type="button" value="' . wfMsg('slippymap_resetview') . '" onmousedown="map.setCenter(lonLat, zoom);" /><input type="button" value="' . wfMsg('slippymap_button_code') . '" onmousedown="slippymap_getWikicode();" /></div></div>';
 		}
 		return $output;
 	}
