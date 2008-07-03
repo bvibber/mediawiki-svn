@@ -17,7 +17,7 @@ ini_set( 'include_path',
 	ini_get( 'include_path' ) );
 
 // Bump this when updating OggPlayer.js to help update caches
-$wgOggScriptVersion = '6';
+$wgOggScriptVersion = '7';
 
 $wgExtensionMessagesFiles['OggHandler'] = "$oggDir/OggHandler.i18n.php";
 $wgParserOutputHooks['OggHandler'] = array( 'OggHandler', 'outputHook' );
@@ -49,4 +49,4 @@ $wgFFmpegLocation = 'ffmpeg';
 // as the uploaded media files or Java security rules will
 // prevent the applet from loading them.
 //
-$wgCortadoJarFile = "cortado-ovt-stripped-wm_r31776.jar";
+$wgCortadoJarFile = "cortado-ovt-stripped-wm_r36976.jar";

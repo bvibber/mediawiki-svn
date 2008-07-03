@@ -505,9 +505,7 @@ var wgOggPlayer = {
 
 	'embedCortado' : function ( elt, params ) {
 		var statusHeight = 18;
-		// Given extra vertical space, cortado centres the video and then overlays the status 
-		// line, leaving an ugly black bar at the top. So we don't give it any.
-		var playerHeight = params.height < (statusHeight+1) ? (statusHeight+1) : params.height;
+		var playerHeight = params.height + statusHeight;
 
 		// Create the applet all at once
 		// In Opera, document.createElement('applet') immediately creates
@@ -523,7 +521,7 @@ var wgOggPlayer = {
 		    '  <param name="seekable"  value="true"/>' +
 		    '  <param name="autoPlay" value="true"/>' +
 		    '  <param name="showStatus"  value="show"/>' +
-			'  <param name="showSpeaker" value="false"/>' +
+		    '  <param name="showSpeaker" value="false"/>' +
 		    '  <param name="statusHeight"  value="' + statusHeight + '"/>' +
 		    '</applet>';
 
