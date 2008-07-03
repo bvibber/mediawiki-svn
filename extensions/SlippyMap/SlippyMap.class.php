@@ -7,7 +7,7 @@
 # the OpenLayers javascript, to show a slippy map.  
 #
 # Usage example:
-# <slippymap>lat=51.485|lon=-0.15|z=11|w=300|h=200|layer=osmarender|marker=0</slippymap> 
+# <slippymap lat=51.485 lon=-0.15 z=11 w=300 h=200 layer=osmarender marker=0></slippymap> 
 #
 # Tile images are not cached local to the wiki.
 # To acheive this (remove the OSM dependency) you might set up a squid proxy,
@@ -15,7 +15,6 @@
 # 
 # This file should be placed in the mediawiki 'extensions' directory
 # ...and then it needs to be 'included' within LocalSettings.php
-# OpenLayers.js and get_osm_url.js must also be placed in the extensions directory
 
 class SlippyMap {
 
@@ -23,30 +22,18 @@ class SlippyMap {
 	}
 
 	# The callback function for converting the input text to HTML output
-	function parse( $input ) {
+	function parse( $input, $argv ) {
 		global $wgMapOfServiceUrl, $wgSlippyMapVersion;
 
 		wfLoadExtensionMessages( 'SlippyMap' );
 
-		//Parse pipe separated name value pairs (e.g. 'aaa=bbb|ccc=ddd')
-		$paramStrings=explode('|',$input);
-		foreach ($paramStrings as $paramString) {
-			$paramString = trim($paramString);
-			$eqPos = strpos($paramString,"=");
-			if ($eqPos===false) {
-				$params[$paramString] = "true";
-			} else {
-				$params[substr($paramString,0,$eqPos)] = trim(htmlspecialchars(substr($paramString,$eqPos+1)));
-			}
-		}
-
-		$lat		= $params['lat'];
-		$lon		= $params['lon'];
-		$zoom		= $params['z'];
-		$width		= $params['w'];
-		$height		= $params['h'];
-		$layer		= $params['layer'];
-		$marker		= $params['marker'];
+		$lat		= $argv['lat'];
+		$lon		= $argv['lon'];
+		$zoom		= $argv['z'];
+		$width		= $argv['w'];
+		$height		= $argv['h'];
+		$layer		= $argv['layer'];
+		$marker		= $argv['marker'];
 
 		$error="";
 
@@ -55,7 +42,7 @@ class SlippyMap {
 		if ($height=='')	$height='320'; 
 		if ($layer=='')		$layer='mapnik'; 
 
-		if ($zoom=='')		$zoom = $params['zoom']; //see if they used 'zoom' rather than 'z' (and allow it)
+		if ($zoom=='')		$zoom = $argv['zoom']; //see if they used 'zoom' rather than 'z' (and allow it)
 
 		$marker = ( $marker != '' && $marker != '0' );
 
@@ -67,7 +54,7 @@ class SlippyMap {
 		if ( $lat==''  ) $error .= wfMsg( 'slippymap_latmissing' );
 		if ( $lon==''  ) $error .= wfMsg( 'slippymap_lonmissing' );
 		if ( $zoom=='' ) $error .= wfMsg( 'slippymap_zoommissing' );
-		if ( isset( $params['long'] ) ) $error .= wfMsg( 'slippymap_longdepreciated' );
+		if ( isset( $argv['long'] ) ) $error .= wfMsg( 'slippymap_longdepreciated' );
 
 		if ($error=='') {
 			//no errors so far. Now check the values	
@@ -209,7 +196,7 @@ class SlippyMap {
 			$output .= '    LL = MercatorToLonLat(map.getCenter()); Z = map.getZoom();';
 			$output .= '    size = map.getSize();';
 
-			$output .= '    prompt( "' . wfMsg('slippymap_code') .'", "<slippymap>h="+size.h+"|w="+size.w+"|z="+Z+"|lat="+LL.lat+"|lon="+LL.lon+"|layer=mapnik|marker=1</slippymap>" ); ';
+			$output .= '    prompt( "' . wfMsg('slippymap_code') .'", "<slippymap h="+size.h+" w="+size.w+" z="+Z+" lat="+LL.lat+" lon="+LL.lon+" layer=mapnik marker=1></slippymap>" ); ';
 			$output .= '}';
 
 			$output .= "</script> ";
