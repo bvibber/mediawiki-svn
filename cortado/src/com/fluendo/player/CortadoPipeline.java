@@ -36,6 +36,7 @@ public class CortadoPipeline extends Pipeline implements PadListener, CapsListen
   private int bufferLow = -1;
   private int bufferHigh = -1;
   private URL documentBase = null;
+  private Cortado application;
 	
   private Element httpsrc;
   private Element buffer;
@@ -192,11 +193,12 @@ public class CortadoPipeline extends Pipeline implements PadListener, CapsListen
       scheduleReCalcState();
   }
 
-  public CortadoPipeline ()
+  public CortadoPipeline (Cortado cortado)
   {
     super("pipeline");
     enableAudio = true;
     enableVideo = true;
+    application = cortado;
   }
 
   public void setUrl(String anUrl) {
@@ -259,6 +261,20 @@ public class CortadoPipeline extends Pipeline implements PadListener, CapsListen
   }
   public int getBufferHigh() {
     return bufferHigh;
+  }
+
+  public void resize(Dimension d) {
+    if (videosink == null || d == null) {
+      return;
+    }
+    Rectangle bounds = new Rectangle(d);
+    if (application.getShowStatus() == Cortado.STATUS_SHOW) {
+      bounds.height -= application.getStatusHeight();
+    }
+    if (bounds.height < 0) {
+      bounds.height = 0;
+    }
+    videosink.setProperty("bounds", bounds);
   }
 
   public boolean buildOgg()
@@ -391,6 +407,8 @@ public class CortadoPipeline extends Pipeline implements PadListener, CapsListen
         return false;
       }
       videosink.setProperty ("component", component);
+      resize(component.getSize());
+
       videosink.setProperty ("max-lateness", Long.toString(Clock.MSECOND * 20));
       vsinkpad = videosink.getPad("sink");
       add(videosink);

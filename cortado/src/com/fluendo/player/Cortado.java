@@ -54,6 +54,7 @@ public class Cortado extends Applet implements Runnable, MouseMotionListener,
     private boolean inStatus;
     private boolean isBuffering;
     private int desiredState;
+    private boolean started = false;
 
     private boolean isEOS;
     private boolean isError;
@@ -67,9 +68,9 @@ public class Cortado extends Applet implements Runnable, MouseMotionListener,
 
     private int showStatus;
     private static final String[] showStatusVals = { "auto", "show", "hide" };
-    private static final int STATUS_AUTO = 0;
-    private static final int STATUS_SHOW = 1;
-    private static final int STATUS_HIDE = 2;
+    public static final int STATUS_AUTO = 0;
+    public static final int STATUS_SHOW = 1;
+    public static final int STATUS_HIDE = 2;
     private int hideTimeout;
     private int hideCounter;
     private boolean mayHide;
@@ -208,7 +209,7 @@ public class Cortado extends Applet implements Runnable, MouseMotionListener,
 	if (pipeline != null)
           stop();
 
-        pipeline = new CortadoPipeline();
+        pipeline = new CortadoPipeline(this);
         configure = new Configure();
 
         urlString = getStringParam("url", null);
@@ -325,9 +326,18 @@ public class Cortado extends Applet implements Runnable, MouseMotionListener,
     }
     public void componentResized(ComponentEvent e) {
       /* reset cached dimension */
-      appletDimension = null;
+      appletDimension = super.getSize();
+      if (pipeline != null) {
+	pipeline.resize(appletDimension);
+      }
     }
     public void componentShown(ComponentEvent e) {
+      // reset cached dimension
+      appletDimension = super.getSize();
+      Debug.debug("Component shown, size = " + appletDimension);
+      if (pipeline != null) {
+	pipeline.resize(appletDimension);
+      }
     }
 
     public Dimension getSize() {
@@ -733,6 +743,14 @@ public class Cortado extends Applet implements Runnable, MouseMotionListener,
 	}
 	Debug.info("Application stopped");
     }
+
+    public int getStatusHeight() {
+      return statusHeight;
+    }
+
+    public int getShowStatus() {
+      return showStatus;
+    }
 }
 
 /* dialog box */
@@ -799,6 +817,7 @@ class AboutFrame extends AppFrame {
       BorderLayout.SOUTH); 
 
     Dimension dim = d.getPreferredSize();
+    dim.height += 30;
     d.setSize(dim);
     dbtn.addActionListener(new ActionListener() { 
       public void actionPerformed(ActionEvent e) { 
@@ -810,5 +829,5 @@ class AboutFrame extends AppFrame {
         d.setVisible(false); 
       } 
     }); 
-  } 
+  }
 }
