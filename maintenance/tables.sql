@@ -463,10 +463,16 @@ CREATE TABLE /*$wgDBprefix*/categorylinks (
   -- Key to page_id of the page defined as a category member.
   cl_from int unsigned NOT NULL default '0',
   
-  -- Name of the category.
-  -- This is also the page_title of the category's description page;
-  -- all such pages are in namespace 14 (NS_CATEGORY).
-  cl_to varchar(255) binary NOT NULL default '',
+  -- cat_id of the category linked inline from the page.
+  -- cl_inline may point to a redirect
+  cl_inline int unsigned NOT NULL default '0',
+
+  -- The cat_id of the category where the page is
+  -- effectively a category member
+  --
+  -- If the category is a redirect, cl_redir is the cat_id
+  -- of the target category. Else, cl_redir = cl_inline
+  cl_target int unsigned NOT NULL default '0',
   
   -- The title of the linking page, or an optional override
   -- to determine sort order. Sorting is by binary order, which
@@ -482,13 +488,17 @@ CREATE TABLE /*$wgDBprefix*/categorylinks (
   -- sorting method by approximate addition time.
   cl_timestamp timestamp NOT NULL,
   
-  UNIQUE KEY cl_from (cl_from,cl_to),
+  UNIQUE KEY cl_from (cl_from,cl_inline),
   
-  -- We always sort within a given category...
-  KEY cl_sortkey (cl_to,cl_sortkey,cl_from),
-  
+  -- We always sort within a given category... :
+  -- When showing the inline inclusions :
+  KEY cl_sortkey_inline (cl_inline,cl_sortkey,cl_from),
+
+  -- When showing the effective inclusions :
+  KEY cl_sortkey_target (cl_target,cl_sortkey,cl_from),  
+
   -- Not really used?
-  KEY cl_timestamp (cl_to,cl_timestamp)
+  KEY cl_timestamp (cl_inline,cl_timestamp)
 
 ) /*$wgDBTableOptions*/;
 
@@ -500,6 +510,11 @@ CREATE TABLE /*$wgDBprefix*/categorylinks (
 CREATE TABLE /*$wgDBprefix*/category (
   -- Primary key
   cat_id int unsigned NOT NULL auto_increment,
+
+  -- Used for category redirects. 
+  -- If not null, this category is a redirect,
+  -- and cat_redir points to the target category
+  cat_redir int unsigned default NULL,
 
   -- Name of the category, in the same form as page_title (with underscores).
   -- If there is a category page corresponding to this category, by definition,
