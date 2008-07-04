@@ -86,11 +86,12 @@ $messages['gl'] = array(
 
 /** Hebrew (עברית)
  * @author Agbad
+ * @author Rotemliss
  */
 $messages['he'] = array(
 	'userimages-caption'  => 'תמונות שהועלו על ידי $1',
-	'userimages-noname'   => 'לא קיים שם משתמש כזה או שהוא לא סופק.',
-	'userimages-noimages' => 'אין תמונות שהועלו על ידי $1.',
+	'userimages-noname'   => 'לא ציינתם את שם המשתמש או שהוא אינו תקין.',
+	'userimages-noimages' => 'לא הועלו תמונות על ידי $1.',
 );
 
 $messages['hsb'] = array(

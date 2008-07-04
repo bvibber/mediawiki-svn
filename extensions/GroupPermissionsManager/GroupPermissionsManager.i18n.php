@@ -69,6 +69,13 @@ $messages['en'] = array(
 	'right-edit' => 'Edit pages (which are not discussion pages)',
 );
 
+/** Faeag Rotuma (Faeag Rotuma)
+ * @author Jose77
+ */
+$messages['rtm'] = array(
+	'grouppermissions-dologin' => 'Surum',
+);
+
 /** Tarifit (Tarifit)
  * @author Jose77
  */
@@ -80,9 +87,12 @@ $messages['rif'] = array(
  * @author DCLXVI
  */
 $messages['bg'] = array(
+	'grouppermissions'         => 'Управление на груповите права',
+	'sortpermissions'          => 'Сортиране на правата',
 	'grouppermissions-search'  => 'Група:',
 	'grouppermissions-dologin' => 'Влизане',
 	'grouppermissions-comment' => 'Коментар:',
+	'grouppermissions-never'   => 'Никога',
 	'right-edit'               => 'редактиране на страници',
 );
 
@@ -161,6 +171,8 @@ $messages['fr'] = array(
  */
 $messages['gl'] = array(
 	'grouppermissions'               => 'Xestionar os permisos dun grupo',
+	'sortpermissions'                => 'Tipo de permisos',
+	'removeunusedgroups'             => 'Eliminar os grupos non usados',
 	'grouppermissions-desc'          => 'Xestionar os permisos dun grupo mediante unha páxina especial',
 	'grouppermissions-desc2'         => 'Sistema de permisos estendido',
 	'grouppermissions-header'        => 'Pode usar esta páxina para cambiar os permisos subxacentes de varios grupos de usuario',
@@ -194,6 +206,14 @@ $messages['gl'] = array(
 	'grouppermissions-log-header'    => 'Nesta páxina pode seguir os cambios dos permisos subxacentes dos grupos de usuario',
 	'grouppermissions-needjs'        => 'Aviso: o JavaScript non está permitido no seu navegador. Pode que algunhas características non funcionen ben!',
 	'grouppermissions-sp-header'     => 'Pode usar esta páxina para xestionar como están ordenados e engadir novos permisos',
+	'grouppermissions-sp-sort'       => 'Ordenar os permisos',
+	'grouppermissions-sp-save'       => 'Gardar',
+	'grouppermissions-sp-success'    => 'Os permisos foron ordenados con éxito',
+	'grouppermissions-sp-addtype'    => 'Engadir un tipo de clasificación',
+	'grouppermissions-sp-addperm'    => 'Engadir permisos',
+	'grouppermissions-rug-header'    => 'Pode usar esta páxina para eliminar usuarios dos grupos sen uso (borrados).',
+	'grouppermissions-rug-success'   => 'Foron eliminados con éxito os usuarios dos grupos sen uso!',
+	'grouppermissions-rug-confirm'   => 'Eliminar os usuarios dos grupos sen uso',
 	'right-viewsource'               => 'Ver o código fonte das páxinas protexidas',
 	'right-raw'                      => 'Ver as páxinas "brutas"',
 	'right-render'                   => 'Ver as páxinas renderizadas sen navegación',
@@ -251,6 +271,8 @@ $messages['lb'] = array(
  */
 $messages['nl'] = array(
 	'grouppermissions'               => 'Groepsrechten beheren',
+	'sortpermissions'                => 'Rechten sorteren',
+	'removeunusedgroups'             => 'Ongebruikte groepen verwijderen',
 	'grouppermissions-desc'          => 'Groepsrechten beheren via een speciale pagina',
 	'grouppermissions-desc2'         => 'Uitgebreid rechtensysteem',
 	'grouppermissions-header'        => 'U kunt via deze pagina de groepsrechten van gebruikersgroepen aanpassen',
@@ -284,6 +306,14 @@ $messages['nl'] = array(
 	'grouppermissions-log-header'    => 'Op deze pagina worden wijzigingen in de rechten van gebruikersgroepen weergegeven',
 	'grouppermissions-needjs'        => 'Waarschuwing: JavaScript is uitgeschakeld in uw browser. Een aantal mogelijkheden werkt wellicht niet!',
 	'grouppermissions-sp-header'     => 'U kunt deze pagina gebruiker voor het sorteren van rechten en het toevoegen van nieuwe rechten',
+	'grouppermissions-sp-sort'       => 'Rechten sorteren',
+	'grouppermissions-sp-save'       => 'Opslaan',
+	'grouppermissions-sp-success'    => 'De rechten zijn gesorteerd',
+	'grouppermissions-sp-addtype'    => 'Sorteertype toevoegen',
+	'grouppermissions-sp-addperm'    => 'Recht toevoegen',
+	'grouppermissions-rug-header'    => 'U kunt deze pagina gebruiken om gebruikers uit ongebruikte (verwijderde) groepen te verwijderen.',
+	'grouppermissions-rug-success'   => 'De gebruikers zijn uit de ongebruikte groepen verwijderd!',
+	'grouppermissions-rug-confirm'   => 'Gebruikers uit ongebruikte groepen verwijderen',
 	'right-viewsource'               => "Brontekst van beveiligde pagina's bekijken",
 	'right-raw'                      => "Ruwe pagina's bekijken",
 	'right-render'                   => "Gerenderde pagina's zonder navigatie bekijken",
@@ -346,21 +376,76 @@ $messages['no'] = array(
 	'right-edit'                     => 'Redigere sider',
 );
 
+/** Polish (Polski)
+ * @author Airwolf
+ * @author Sp5uhe
+ */
+$messages['pl'] = array(
+	'grouppermissions-true'  => 'Prawda',
+	'grouppermissions-false' => 'Fałsz',
+	'grouppermissions-never' => 'Nigdy',
+	'right-edit'             => 'Edycja stron',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */
 $messages['sk'] = array(
-	'right-viewsource'    => 'Zobraziť zdrojový text chránených stránok',
-	'right-raw'           => 'Zobraziť nespracované stránky',
-	'right-render'        => 'Zobraziť vykreslené stránky bez navigácie',
-	'right-info'          => 'Zobraziť informácie o stránke',
-	'right-credits'       => 'Zobraziť autorov stránky',
-	'right-history'       => 'Zobraziť histórie stránok',
-	'right-search'        => 'Hľadať na wiki',
-	'right-contributions' => 'Zobraziť stránky príspevkov',
-	'right-recentchanges' => 'Zobraziť posledné zmeny',
-	'right-edittalk'      => 'Upraviť diskusné stránky',
-	'right-edit'          => 'Upravovať stránky (ktoré nie sú diskusné stránky)',
+	'grouppermissions'               => 'Spravovať skupinové oprávnenia',
+	'sortpermissions'                => 'Radiť oprávnenia',
+	'removeunusedgroups'             => 'Odstrániť nepoužité skupiny',
+	'grouppermissions-desc'          => 'Správa oprávnení skupín prostredníctvom špeciálnej stránky',
+	'grouppermissions-desc2'         => 'Rozšírený systém oprávnení',
+	'grouppermissions-header'        => 'Pomocou tejto stránky môžete zmeniť oprávnenia rozličných skupín používateľov',
+	'grouppermissions-search'        => 'Skupina:',
+	'grouppermissions-dologin'       => 'Prihlasovacie meno',
+	'grouppermissions-dosearch'      => 'Vykonať',
+	'grouppermissions-searchlabel'   => 'Hľadať skupinu',
+	'grouppermissions-deletelabel'   => 'Zmazať skupinu',
+	'grouppermissions-error'         => 'Vyskytla sa neznáma chyba, prosím stlačte tlačidlo späť vo vašom prehliadači a skúste to znova',
+	'grouppermissions-change'        => 'Zmeniť oprávnenia skupiny',
+	'grouppermissions-add'           => 'Pridať skupinu',
+	'grouppermissions-delete'        => 'Zmazať skupinu',
+	'grouppermissions-comment'       => 'Komentár:',
+	'grouppermissions-addsuccess'    => '$1 bola úspešne pridaná',
+	'grouppermissions-deletesuccess' => '$1 bola úspešne zmazaná',
+	'grouppermissions-changesuccess' => 'Oprávnenia skupiny $1 boli úspešne zmenené',
+	'grouppermissions-true'          => 'Áno',
+	'grouppermissions-false'         => 'Nie',
+	'grouppermissions-never'         => 'Nikdy',
+	'grouppermissions-nooldrev'      => 'Pri pokuse o archiváciu aktuálneho konfiguračného súboru sa vyskytla chyba. Archovácia sa neuskutoční.',
+	'grouppermissions-sort-read'     => 'Čítanie',
+	'grouppermissions-sort-edit'     => 'Úpravy',
+	'grouppermissions-sort-manage'   => 'Manažment',
+	'grouppermissions-sort-admin'    => 'Správa',
+	'grouppermissions-sort-tech'     => 'Technické',
+	'grouppermissions-sort-misc'     => 'Rôzne',
+	'grouppermissions-log-add'       => 'pridal skupinu „$2”',
+	'grouppermissions-log-change'    => 'zmenil oprávnenia skupiny „$2”',
+	'grouppermissions-log-delete'    => 'zmazal skupinu „$2”',
+	'grouppermissions-log-name'      => 'Záznam skupinových oprávnení',
+	'grouppermissions-log-header'    => 'Táto stránka obsahuje zoznam zmien oprávnení skupín používateľov',
+	'grouppermissions-needjs'        => 'Upozornenie: Váš prehlidač má vypnutý JavaScript. Niektoré možnosti nebudú fungovať!',
+	'grouppermissions-sp-header'     => 'Táto stránka slúži na správu oprávnení a pridávanie nových oprávnení',
+	'grouppermissions-sp-sort'       => 'Radiť oprávnenia',
+	'grouppermissions-sp-save'       => 'Uložiť',
+	'grouppermissions-sp-success'    => 'Oprávnenia boli úspešne zoradené',
+	'grouppermissions-sp-addtype'    => 'Pridať typ radenia',
+	'grouppermissions-sp-addperm'    => 'Pridať oprávnenie',
+	'grouppermissions-rug-header'    => 'Túto stránku môžete použiť na odstránenie používateľov z nepoužívaných (zmazaných) skupín.',
+	'grouppermissions-rug-success'   => 'Používatelia boli úspešne odstránení z nepoužívaných skupín.',
+	'grouppermissions-rug-confirm'   => 'Odstrániť používateľov z nepoužívaných skupín',
+	'right-viewsource'               => 'Zobraziť zdrojový text chránených stránok',
+	'right-raw'                      => 'Zobraziť nespracované stránky',
+	'right-render'                   => 'Zobraziť vykreslené stránky bez navigácie',
+	'right-info'                     => 'Zobraziť informácie o stránke',
+	'right-credits'                  => 'Zobraziť autorov stránky',
+	'right-history'                  => 'Zobraziť histórie stránok',
+	'right-search'                   => 'Hľadať na wiki',
+	'right-contributions'            => 'Zobraziť stránky príspevkov',
+	'right-recentchanges'            => 'Zobraziť posledné zmeny',
+	'right-edittalk'                 => 'Upraviť diskusné stránky',
+	'right-edit'                     => 'Upravovať stránky (ktoré nie sú diskusné stránky)',
 );
 
 /** Swedish (Svenska)
@@ -369,6 +454,8 @@ $messages['sk'] = array(
  */
 $messages['sv'] = array(
 	'grouppermissions'               => 'Hantera behörigheter för användargrupper',
+	'sortpermissions'                => 'Sortera behörigheter',
+	'removeunusedgroups'             => 'Ta bort oanvända användargrupper',
 	'grouppermissions-desc'          => 'Hantera behörigheter för användargrupper via en specialsida',
 	'grouppermissions-desc2'         => 'Utökat system för behörigheter',
 	'grouppermissions-header'        => 'Du kan använda denna sida för att ändra de underliggande behörigheterna av de olika användargrupperna',
@@ -402,6 +489,14 @@ $messages['sv'] = array(
 	'grouppermissions-log-header'    => 'Denna sida visar ändringar i användargruppernas underliggande rättigheter',
 	'grouppermissions-needjs'        => 'Warning: JavaScript är avstängt i din webbläsare. Det kan få vissa funktioner att inte fungera.',
 	'grouppermissions-sp-header'     => 'Du kan använda denna sida för att hantera hur rättigheter sorteras och lägga till nya rättigheter',
+	'grouppermissions-sp-sort'       => 'Sortera behörigheter',
+	'grouppermissions-sp-save'       => 'Spara',
+	'grouppermissions-sp-success'    => 'Behörigheterna har blivit sorterade',
+	'grouppermissions-sp-addtype'    => 'Lägg till sorteringstyp',
+	'grouppermissions-sp-addperm'    => 'Lägg till behörighet',
+	'grouppermissions-rug-header'    => 'Du kan använda denna sida för att ta bort användare från oanvända (raderade) användargrupper.',
+	'grouppermissions-rug-success'   => 'Användarna har tagits bort från oanvända användargrupper!',
+	'grouppermissions-rug-confirm'   => 'Ta bort användare från oanvända användargrupper',
 	'right-viewsource'               => 'Se skyddade sidors wiki-kod',
 	'right-raw'                      => 'Se sidor i råformat',
 	'right-render'                   => 'Se renderade sidor utan navigation',
@@ -419,9 +514,22 @@ $messages['sv'] = array(
  * @author Veeven
  */
 $messages['te'] = array(
-	'grouppermissions-search'   => 'సమూహం:',
-	'grouppermissions-dologin'  => 'ప్రవేశించు',
-	'grouppermissions-dosearch' => 'వెళ్ళు',
-	'grouppermissions-comment'  => 'వ్యాఖ్య:',
-	'right-edit'                => 'పేజీలను మార్చడం',
+	'grouppermissions-search'      => 'సమూహం:',
+	'grouppermissions-dologin'     => 'ప్రవేశించు',
+	'grouppermissions-dosearch'    => 'వెళ్ళు',
+	'grouppermissions-deletelabel' => 'సమూహాన్ని తొలగించు',
+	'grouppermissions-change'      => 'సమూహపు అనుమతులు మార్చండి',
+	'grouppermissions-add'         => 'సమూహాన్ని చేర్చు',
+	'grouppermissions-comment'     => 'వ్యాఖ్య:',
+	'grouppermissions-true'        => 'సత్యం',
+	'grouppermissions-false'       => 'అసత్యం',
+	'grouppermissions-sort-tech'   => 'సాంకేతికం',
+	'grouppermissions-sp-save'     => 'భద్రపరచు',
+	'right-info'                   => 'పేజీ సమాచారం చూడవచ్చు',
+	'right-history'                => 'పేజీల చరిత్రలను చూడవచ్చు',
+	'right-search'                 => 'వికిలో అన్వేషించవచ్చు',
+	'right-recentchanges'          => 'ఇటీవలి మార్పులను చూడవచ్చు',
+	'right-edittalk'               => 'చర్చా పేజీలను మార్చవచ్చు',
+	'right-edit'                   => 'పేజీలను మార్చడం',
 );
+

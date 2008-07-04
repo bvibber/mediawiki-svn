@@ -14,6 +14,13 @@ $messages['en'] = array(
 	'titlekey-desc' => 'Title prefix search suggestion backend',
 );
 
+/** Aragonese (Aragonés)
+ * @author Juanpabl
+ */
+$messages['an'] = array(
+	'titlekey-desc' => 'Socherenzias con prefixos en a busca por títols',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */

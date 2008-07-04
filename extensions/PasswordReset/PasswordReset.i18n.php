@@ -26,6 +26,13 @@ $messages['en'] = array(
 	'disabledusers-summary'            => 'This is a list of users that have been disabled via PasswordReset.',
 );
 
+/** Faeag Rotuma (Faeag Rotuma)
+ * @author Jose77
+ */
+$messages['rtm'] = array(
+	'passwordreset-username' => 'Asa',
+);
+
 /** Niuean (native name missing)
  * @author Jose77
  */

@@ -33,6 +33,13 @@ $messages['krl'] = array(
 	'multipleupload' => 'Panna fajlit',
 );
 
+/** Eastern Mari (Олык Марий)
+ * @author Сай
+ */
+$messages['mhr'] = array(
+	'multipleupload' => 'Файлым пурташ',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  * @author SPQRobin

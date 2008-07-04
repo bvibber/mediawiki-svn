@@ -51,9 +51,10 @@ $messages['gl'] = array(
 
 /** Hebrew (עברית)
  * @author Agbad
+ * @author Rotemliss
  */
 $messages['he'] = array(
-	'emailaddressimage-desc' => 'מוסיף תגית <tt>&lt;email&gt;</tt> כדי להציג כתובת אימייל בתמונה',
+	'emailaddressimage-desc' => 'הוספת תגית <tt>&lt;email&gt;</tt> כדי להציג כתובת דואר אלקטרוני בתמונה',
 );
 
 /** Hindi (हिन्दी)

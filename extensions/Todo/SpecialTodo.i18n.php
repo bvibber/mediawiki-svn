@@ -40,6 +40,13 @@ $4",
 	'todo-form-submit'      => 'Submit query',
 );
 
+/** Faeag Rotuma (Faeag Rotuma)
+ * @author Jose77
+ */
+$messages['rtm'] = array(
+	'todo-list-cancel' => "Mao'ạki",
+);
+
 /** Tarifit (Tarifit)
  * @author Jose77
  */

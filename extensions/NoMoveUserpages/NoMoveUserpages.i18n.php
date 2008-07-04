@@ -13,6 +13,15 @@ $messages['en'] = array (
 		'right-move-userpages'  => 'Move user pages',
 );
 
+/** Bulgarian (Български)
+ * @author DCLXVI
+ */
+$messages['bg'] = array(
+	'nomoveuserpages-desc'  => 'Не позволява преместването на потребителски страници ак не са налични права за „move-userpages“',
+	'nomoveuserpages-error' => 'Преместването на потребителските страници е изключено',
+	'right-move-userpages'  => 'Преместване на потребителски страници',
+);
+
 /** German (Deutsch)
  * @author Raimond Spekking
  */

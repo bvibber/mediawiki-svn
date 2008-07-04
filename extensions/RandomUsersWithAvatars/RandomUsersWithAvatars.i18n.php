@@ -15,6 +15,14 @@ $messages['en'] = array(
 	'random-users-avatars-desc'  => 'Adds <tt>&lt;randomuserswithavatars&gt;</tt> tag to display the avatars of randomly chosen users',
 );
 
+/** Bulgarian (Български)
+ * @author DCLXVI
+ */
+$messages['bg'] = array(
+	'random-users-avatars-title' => 'Срещнете общността',
+	'random-users-avatars-desc'  => 'Добавя етикета <tt>&lt;randomuserswithavatars&gt;</tt> за показване на аватарите на случани потребители',
+);
+
 /** German (Deutsch)
  * @author Raimond Spekking
  */

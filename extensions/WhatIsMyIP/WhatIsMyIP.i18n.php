@@ -16,6 +16,15 @@ $messages['en'] = array(
 	'whatismyip-out' => 'Your IP:',
 );
 
+/** Bulgarian (Български)
+ * @author DCLXVI
+ */
+$messages['bg'] = array(
+	'whatismyip'      => 'Какво ми е IP',
+	'whatismyip-desc' => 'Показва IP адреса на потребителя на [[Special:WhatIsMyIP]]',
+	'whatismyip-out'  => 'Вашето IP:',
+);
+
 /** Finnish (Suomi)
  * @author Jack Phoenix
  */
@@ -44,11 +53,30 @@ $messages['gl'] = array(
 
 /** Hebrew (עברית)
  * @author Agbad
+ * @author Rotemliss
  */
 $messages['he'] = array(
-	'whatismyip'      => 'מהי כתובת ה-IP שלי',
-	'whatismyip-desc' => 'מציג את כתובת ה-IP הנוכחית של המשתמש ב[[Special:WhatIsMyIP]]',
-	'whatismyip-out'  => 'כתובת ה-IP שלך:',
+	'whatismyip'      => 'כתובת ה־IP שלי',
+	'whatismyip-desc' => 'הצגת כתובת ה־IP הנוכחית של המשתמש בדף [[Special:WhatIsMyIP]]',
+	'whatismyip-out'  => 'כתובת ה־IP שלך:',
+);
+
+/** Italian (Italiano)
+ * @author Darth Kule
+ */
+$messages['it'] = array(
+	'whatismyip'      => 'Qual è il mio IP',
+	'whatismyip-desc' => "Mostra l'indirizzo IP corrente dell'utente in [[Special:WhatIsMyIP]]",
+	'whatismyip-out'  => 'Il tuo IP è:',
+);
+
+/** Latin (Latina)
+ * @author UV
+ */
+$messages['la'] = array(
+	'whatismyip'      => 'Qui est locus IP meus',
+	'whatismyip-desc' => 'Monstrat locum IP usoris in pagina [[{{ns:special}}:WhatIsMyIP]]',
+	'whatismyip-out'  => 'Locus IP tuus:',
 );
 
 /** Dutch (Nederlands)
@@ -58,6 +86,13 @@ $messages['nl'] = array(
 	'whatismyip'      => 'Wat is mijn IP-adres',
 	'whatismyip-desc' => 'Geeft het IP-adres van de huidige gebruiker weer op een [[Special:WhatIsMyIP|speciale pagina]]',
 	'whatismyip-out'  => 'Uw IP-adres:',
+);
+
+/** Polish (Polski)
+ * @author Airwolf
+ */
+$messages['pl'] = array(
+	'whatismyip-out' => 'Twój IP:',
 );
 
 /** Slovak (Slovenčina)

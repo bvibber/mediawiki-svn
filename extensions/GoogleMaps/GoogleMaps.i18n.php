@@ -80,6 +80,13 @@ $wgGoogleMapsMessages['en'] = array(
 	'gm-mars'                      => 'Mars',
 );
 
+/** Tarifit (Tarifit)
+ * @author Jose77
+ */
+$wgGoogleMapsMessages['rif'] = array(
+	'gm-search' => 'Tarzzut',
+);
+
 /** Karelian (Karjala)
  * @author Flrn
  */

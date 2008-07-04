@@ -500,6 +500,19 @@ $messages['hsb'] = array(
 	'newuserlog-autocreate-entry' => 'Wužiwarske konto bu awtomatisce wutworjene.',
 );
 
+/** Haitian (Kreyòl ayisyen)
+ * @author Masterches
+ */
+$messages['ht'] = array(
+	'newuserlogpage'              => 'Istorik pou kreyasyon kont itilizatè yo',
+	'newuserlogpagetext'          => 'Jounal, istorik kreyasyon kont itilizatè yo.',
+	'newuserlog-desc'             => 'Ajoute yon [[Special:Log/newusers|jounal pou kreyasyon kont yo]] nan [[Special:Log|log sistèm an]]',
+	'newuserlog-byemail'          => 'mopas an voye pa imèl',
+	'newuserlog-create-entry'     => 'Nouvo itilizatè',
+	'newuserlog-create2-entry'    => 'kont kreye pou $1',
+	'newuserlog-autocreate-entry' => 'Kont sa kreye otomatikman',
+);
+
 /** Hungarian (Magyar)
  * @author Samat
  * @author Dani

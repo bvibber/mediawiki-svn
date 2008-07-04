@@ -133,6 +133,8 @@ $messages['gl'] = array(
 	'slippymap_maperror'        => 'Erro no mapa:',
 	'slippymap_osmtext'         => 'Vexa este mapa en OpenStreetMap.org',
 	'slippymap_code'            => 'Código wiki para o visionado deste mapa:',
+	'slippymap_button_code'     => 'Obter o código wiki',
+	'slippymap_resetview'       => 'Axustar a vista',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -172,6 +174,8 @@ $messages['nl'] = array(
 	'slippymap_maperror'        => 'Kaartfout:',
 	'slippymap_osmtext'         => 'Deze kaart op OpenStreetMap.org bekijken',
 	'slippymap_code'            => 'Wikicode voor deze kaart:',
+	'slippymap_button_code'     => 'Wikicode weergeven',
+	'slippymap_resetview'       => 'Overzicht opnieuw instellen',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
@@ -265,13 +269,42 @@ $messages['sk'] = array(
 	'slippymap_maperror'        => 'Chyba mapy:',
 	'slippymap_osmtext'         => 'Pozrite si túto mapu na OpenStreetMap.org',
 	'slippymap_code'            => 'Wikikód tohto pohľadu na mapu:',
+	'slippymap_button_code'     => 'Zobraziť zdrojový kód',
+	'slippymap_resetview'       => 'Obnoviť zobrazenie',
 );
 
 /** Swedish (Svenska)
  * @author M.M.S.
+ * @author Boivie
  */
 $messages['sv'] = array(
-	'slippymap_desc' => 'Tillåter användning av taggen <tt>&lt;slippymap&gt;</tt> för att visa "slippy map" från OpenLayers. Kartorna kommer från [http://openstreetmap.org openstreetmap.org]',
+	'slippymap_desc'            => 'Tillåter användning av taggen <tt>&lt;slippymap&gt;</tt> för att visa "slippy map" från OpenLayers. Kartorna kommer från [http://openstreetmap.org openstreetmap.org]',
+	'slippymap_latmissing'      => 'Saknat "lat"-värde (för breddgraden).',
+	'slippymap_lonmissing'      => 'Saknat "lon"-värde (för längdgraden).',
+	'slippymap_zoommissing'     => 'Saknat z-värde (för zoom-nivån).',
+	'slippymap_longdepreciated' => 'Var god använd "lon"  istället för "long" (parametern fick ett nytt namn).',
+	'slippymap_widthnan'        => 'breddvärdet (w) "%1" är inte ett giltigt heltal',
+	'slippymap_heightnan'       => 'höjdvärdet (h) "%1" är inte ett giltigt heltal',
+	'slippymap_zoomnan'         => 'zoomvärdet (z) "%1" är inte ett giltigt heltal',
+	'slippymap_latnan'          => 'breddgradsvärdet (lat) "%1" är inte ett giltigt nummer',
+	'slippymap_lonnan'          => 'längdgradsvärdet (lon) "%1" är inte ett giltigt nummer',
+	'slippymap_widthbig'        => 'breddvärdet (w) kan inte vara större än 1000',
+	'slippymap_widthsmall'      => 'breddvärdet (w) kan inte vara mindre än 100',
+	'slippymap_heightbig'       => 'höjdvärdet (h) kan inte vara större än 1000',
+	'slippymap_heightsmall'     => 'höjdvärdet (h) kan inte vara mindre än 100',
+	'slippymap_latbig'          => 'breddgradsvärdet (lat) kan inte vara större än 90',
+	'slippymap_latsmall'        => 'breddgradsvärdet (lat) kan inte vara mindre än -90',
+	'slippymap_lonbig'          => 'längdgradsvärdet (lon) kan inte vara större än 180',
+	'slippymap_lonsmall'        => 'längdgradsvärdet (lon) kan inte vara mindre än -180',
+	'slippymap_zoomsmall'       => 'zoomvärdet (z) kan inte vara mindre än noll',
+	'slippymap_zoom18'          => "zoomvärdet (z) kan inte vara högre än 17. Observera att detta programtillägg använder OpenStreetMap-lagret 'osmarender', som inte kan zoomas mer än till nivå 17. Mapnik-lagret på openstreetmap.org zoomar till nivå 18",
+	'slippymap_zoombig'         => 'zoomvärdet (z) kan inte vara högre än 17.',
+	'slippymap_invalidlayer'    => "Ogiltigt 'layer'-värde '%1'",
+	'slippymap_maperror'        => 'Kartfel:',
+	'slippymap_osmtext'         => 'Se den här kartan på OpenStreetMap.org',
+	'slippymap_code'            => 'Wikikod för denna kartvisning:',
+	'slippymap_button_code'     => 'Hämta wikikod',
+	'slippymap_resetview'       => 'Återställ visning',
 );
 
 /** Telugu (తెలుగు)

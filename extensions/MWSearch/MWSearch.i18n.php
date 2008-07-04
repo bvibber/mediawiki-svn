@@ -109,6 +109,13 @@ $messages['hsb'] = array(
 	'mwsearch-desc' => 'Tykač MWSearch',
 );
 
+/** Haitian (Kreyòl ayisyen)
+ * @author Masterches
+ */
+$messages['ht'] = array(
+	'mwsearch-desc' => 'Yon ekstansyon, plug-in pou MWSearch',
+);
+
 /** Hungarian (Magyar)
  * @author Dani
  */

@@ -544,6 +544,14 @@ Om du har några frågor om programtilläggets distributionssystem, gå till [[E
 	'extdist-want-more'               => 'Hämta andra tillägg',
 );
 
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'extdist-submit-extension' => 'కొనసాగించు',
+	'extdist-submit-version'   => 'కొనసాగించు',
+);
+
 /** Cantonese
  * @author Shinjiman
  */
@@ -702,3 +710,4 @@ tar -xzf $5 -C /var/www/mediawiki/extensions
 ",
 		'extdist-want-more' => '取另一個擴展',
 );
+

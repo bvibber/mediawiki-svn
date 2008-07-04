@@ -23,6 +23,13 @@ $messages['rif'] = array(
 	'randomincategory-submit' => 'Raḥ ɣa',
 );
 
+/** Eastern Mari (Олык Марий)
+ * @author Сай
+ */
+$messages['mhr'] = array(
+	'randomincategory-toolbox' => 'Вучыдымо (случайный) статья',
+);
+
 /** Niuean (native name missing)
  * @author Jose77
  */

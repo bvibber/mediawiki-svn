@@ -25,6 +25,13 @@ Do not judge contributors by their edit count.",
 	'countedits-nocontribs'   => 'There have been no contributions to this wiki.',
 );
 
+/** Faeag Rotuma (Faeag Rotuma)
+ * @author Jose77
+ */
+$messages['rtm'] = array(
+	'countedits-username' => 'Asa:',
+);
+
 /** Niuean (native name missing)
  * @author Jose77
  */

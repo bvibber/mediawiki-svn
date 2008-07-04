@@ -20,6 +20,13 @@ Supported protocols: <tt>$1</tt>',
 	'linksearch-error' => 'Wildcards may appear only at the start of the hostname.',
 );
 
+/** Tarifit (Tarifit)
+ * @author Jose77
+ */
+$messages['rif'] = array(
+	'linksearch-ok' => 'Tarzzut',
+);
+
 /** Karelian (Karjala)
  * @author Flrn
  */

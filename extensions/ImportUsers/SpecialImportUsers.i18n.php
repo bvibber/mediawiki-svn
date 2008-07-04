@@ -30,11 +30,21 @@ $messages['en'] = array(
 	'importusers-realname'                => 'real name',
 );
 
+/** Faeag Rotuma (Faeag Rotuma)
+ * @author Jose77
+ */
+$messages['rtm'] = array(
+	'importusers-uploadfile' => 'Upload ou file',
+	'importusers-password'   => 'Ou password',
+);
+
 /** Tarifit (Tarifit)
  * @author Jose77
  */
 $messages['rif'] = array(
+	'importusers-log-summary'     => 'Asgbr',
 	'importusers-log-summary-all' => 'Maṛṛa',
+	'importusers-realname'        => 'ism n dṣṣaḥ',
 );
 
 /** Eastern Mari (Олык Марий йылме)

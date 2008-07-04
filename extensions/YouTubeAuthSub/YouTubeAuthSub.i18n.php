@@ -982,11 +982,15 @@ Var tålmodig.',
  * @author Veeven
  */
 $messages['te'] = array(
-	'youtubeauthsub_title'       => 'శీర్షిక',
-	'youtubeauthsub_description' => 'వివరణ',
-	'youtubeauthsub_keywords'    => 'కీలకపదాలు',
-	'youtubeauthsub_category'    => 'వర్గం',
-	'youtubeauthsub_submit'      => 'దాఖలుచెయ్యి',
+	'youtubeauthsub_title'           => 'శీర్షిక',
+	'youtubeauthsub_description'     => 'వివరణ',
+	'youtubeauthsub_password'        => 'యూట్యూబ్ సంకేతపదం',
+	'youtubeauthsub_username'        => 'యూట్యూబ్ వాడుకరిపేరు',
+	'youtubeauthsub_keywords'        => 'కీలకపదాలు',
+	'youtubeauthsub_category'        => 'వర్గం',
+	'youtubeauthsub_submit'          => 'దాఖలుచెయ్యి',
+	'youtubeauthsub_jserror_notitle' => 'ఈ వీడియోకి ఓ పేరు ఇవ్వండి.',
+	'youtubeauthsub_jserror_nodesc'  => 'ఈ వీడియో గురించి వివరణ ఇవ్వండి.',
 );
 
 /** Tajik (Cyrillic) (Тоҷикӣ/tojikī (Cyrillic))

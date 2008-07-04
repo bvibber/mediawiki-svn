@@ -25,6 +25,20 @@ $messages['en'] = array(
 	'contributors-nosuchpage'  => 'The page $1 does not exist.',
 );
 
+/** Faeag Rotuma (Faeag Rotuma)
+ * @author Jose77
+ */
+$messages['rtm'] = array(
+	'contributors-submit' => "Kel'äk",
+);
+
+/** Tarifit (Tarifit)
+ * @author Jose77
+ */
+$messages['rif'] = array(
+	'contributors-submit' => 'Smmrad',
+);
+
 /** Afrikaans (Afrikaans)
  * @author Arnobarnard
  */

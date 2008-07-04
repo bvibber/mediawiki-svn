@@ -226,24 +226,30 @@ $messages['fr'] = array(
  * @author Toliño
  */
 $messages['gl'] = array(
-	'invite-logpage'                     => 'Rexistro de invitacións',
-	'invite-logpagetext'                 => 'Este é un rexistro dos usuarios que invitaron a outros a usar varias características do software.',
-	'invite-logentry'                    => 'invitou a $1 a usar a característica <i>$2</i>.',
-	'invitations'                        => 'Xestionar as caractarísticas do software das invitacións',
-	'invitations-desc'                   => 'Permite [[Special:Invitations|a xestión de características novas]] a través da restrición nun sistema de invitación base',
-	'invitations-invitedlist-item-count' => '({{PLURAL:$1|Unha invitación dispoñible|$1 invitacións dispoñibles}})',
-	'invitations-feature-pagetitle'      => 'Xestión da invitación - $1',
-	'invitations-feature-access'         => 'Actualmente ten acceso para usar <i>$1</i>.',
-	'invitations-feature-numleft'        => 'Aínda ten {{PLURAL:$2|unha invitación restante|<b>$1</b>, dun total de $2 invitaciones restantes}}.',
-	'invitations-feature-noneleft'       => 'Usou todas as súas invitacións asignadas a esta característica',
-	'invitations-feature-noneyet'        => 'Aínda no recibiu a súa asignación de invitacións para esta característica.',
-	'invitations-feature-notallowed'     => 'Non ten acceso para usar <i>$1</i>.',
-	'invitations-inviteform-title'       => 'Invitar a un usuario a usar $1',
-	'invitations-inviteform-username'    => 'Usuario para invitar',
-	'invitations-inviteform-submit'      => 'Invitar',
-	'invitations-error-baduser'          => 'Parece que o usuario que especificou non existe.',
-	'invitations-error-alreadyinvited'   => 'O usuario que especificou xa ten acceso a esta característica!',
-	'invitations-invite-success'         => 'Invitou con éxito a $1 para usar esta característica!',
+	'invite-logpage'                        => 'Rexistro de invitacións',
+	'invite-logpagetext'                    => 'Este é un rexistro dos usuarios que invitaron a outros a usar varias características do software.',
+	'invite-logentry'                       => 'invitou a $1 a usar a característica <i>$2</i>.',
+	'invitations'                           => 'Xestionar as caractarísticas do software das invitacións',
+	'invitations-desc'                      => 'Permite [[Special:Invitations|a xestión de características novas]] a través da restrición nun sistema de invitación base',
+	'invitations-invitedlist-description'   => 'Ten acceso ás seguintes características do software só por invitación.
+Para xestionar as invitacións para unha característica individual, faga clic no seu nome.',
+	'invitations-invitedlist-none'          => 'Non foi convidado a usar nunha das características do software só por invitación.',
+	'invitations-invitedlist-item-count'    => '({{PLURAL:$1|Unha invitación dispoñible|$1 invitacións dispoñibles}})',
+	'invitations-pagetitle'                 => 'Características do software só por invitación',
+	'invitations-uninvitedlist-description' => 'Non ten acceso a estoutras características do software só por invitación.',
+	'invitations-uninvitedlist-none'        => 'Arestora, ningunha outra característica do software é designada só por invitación.',
+	'invitations-feature-pagetitle'         => 'Xestión da invitación - $1',
+	'invitations-feature-access'            => 'Actualmente ten acceso para usar <i>$1</i>.',
+	'invitations-feature-numleft'           => 'Aínda ten {{PLURAL:$2|unha invitación restante|<b>$1</b>, dun total de $2 invitaciones restantes}}.',
+	'invitations-feature-noneleft'          => 'Usou todas as súas invitacións asignadas a esta característica',
+	'invitations-feature-noneyet'           => 'Aínda no recibiu a súa asignación de invitacións para esta característica.',
+	'invitations-feature-notallowed'        => 'Non ten acceso para usar <i>$1</i>.',
+	'invitations-inviteform-title'          => 'Invitar a un usuario a usar $1',
+	'invitations-inviteform-username'       => 'Usuario para invitar',
+	'invitations-inviteform-submit'         => 'Invitar',
+	'invitations-error-baduser'             => 'Parece que o usuario que especificou non existe.',
+	'invitations-error-alreadyinvited'      => 'O usuario que especificou xa ten acceso a esta característica!',
+	'invitations-invite-success'            => 'Invitou con éxito a $1 para usar esta característica!',
 );
 
 /** Hindi (हिन्दी)
@@ -628,17 +634,18 @@ $messages['sv'] = array(
  * @author Veeven
  */
 $messages['te'] = array(
-	'invite-logpage'                   => 'ఆహ్వానాల దినచర్య',
-	'invite-logentry'                  => '<i>$2</i> అనే విశేషాన్ని వాడడానికి $1ని ఆహ్వానించారు.',
-	'invitations-feature-pagetitle'    => 'ఆహ్వాన నిర్వహణ - $1',
-	'invitations-feature-access'       => '<i>$1</i>ని వాడడానికి ప్రస్తుతం మీకు అనుమతి ఉంది.',
-	'invitations-feature-numleft'      => 'మీ $2 ఆహ్వనాలలో మీ దగ్గర ఇంకా <b>$1</b> మిగిలివున్నాయి.',
-	'invitations-inviteform-title'     => '$1ని వాడడానికి ఓ వాడుకరిని ఆహ్వానించండి',
-	'invitations-inviteform-username'  => 'ఆహ్వానించాల్సిన వాడుకరి',
-	'invitations-inviteform-submit'    => 'ఆహ్వానించు',
-	'invitations-error-baduser'        => 'మీరు చెప్పిన ఆ వాడుకరి లేనేలేరు.',
-	'invitations-error-alreadyinvited' => 'మీరు చెప్పిన ఆ వాడుకరికి ఈ విశేషాన్ని వాడుకునే అనుమతి ఈపాటికే ఉంది!',
-	'invitations-invite-success'       => 'ఈ విశేషాన్ని వాడుకోమని $1ని మీరు విజయవంతంగా ఆహ్వానించారు!',
+	'invite-logpage'                     => 'ఆహ్వానాల దినచర్య',
+	'invite-logentry'                    => '<i>$2</i> అనే విశేషాన్ని వాడడానికి $1ని ఆహ్వానించారు.',
+	'invitations-invitedlist-item-count' => '({{PLURAL:$1|ఒక ఆహ్వానం|$1 ఆహ్వానాలు}} ఉన్నాయి)',
+	'invitations-feature-pagetitle'      => 'ఆహ్వాన నిర్వహణ - $1',
+	'invitations-feature-access'         => '<i>$1</i>ని వాడడానికి ప్రస్తుతం మీకు అనుమతి ఉంది.',
+	'invitations-feature-numleft'        => 'మీ $2 ఆహ్వనాలలో మీ దగ్గర ఇంకా <b>$1</b> మిగిలివున్నాయి.',
+	'invitations-inviteform-title'       => '$1ని వాడడానికి ఓ వాడుకరిని ఆహ్వానించండి',
+	'invitations-inviteform-username'    => 'ఆహ్వానించాల్సిన వాడుకరి',
+	'invitations-inviteform-submit'      => 'ఆహ్వానించు',
+	'invitations-error-baduser'          => 'మీరు చెప్పిన ఆ వాడుకరి లేనేలేరు.',
+	'invitations-error-alreadyinvited'   => 'మీరు చెప్పిన ఆ వాడుకరికి ఈ విశేషాన్ని వాడుకునే అనుమతి ఈపాటికే ఉంది!',
+	'invitations-invite-success'         => 'ఈ విశేషాన్ని వాడుకోమని $1ని మీరు విజయవంతంగా ఆహ్వానించారు!',
 );
 
 /** Tajik (Cyrillic) (Тоҷикӣ/tojikī (Cyrillic))

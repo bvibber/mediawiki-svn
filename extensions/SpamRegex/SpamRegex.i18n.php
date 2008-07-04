@@ -37,6 +37,13 @@ Caution advised, expressions should not be too short or too common.',
 	'spamregex-summary-log'          => '(Summary)',
 );
 
+/** Tarifit (Tarifit)
+ * @author Jose77
+ */
+$messages['rif'] = array(
+	'spamregex-summary-log' => '(Asgbr)',
+);
+
 /** Eastern Mari (Олык Марий йылме)
  * @author Сай
  */

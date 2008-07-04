@@ -103,6 +103,13 @@ Please create it or change it to use this extension.',
 	'viewconfig'                          => 'View wiki configuration',
 );
 
+/** Faeag Rotuma (Faeag Rotuma)
+ * @author Jose77
+ */
+$messages['rtm'] = array(
+	'configure-section-category' => 'Katekori',
+);
+
 /** Tarifit (Tarifit)
  * @author Jose77
  */
@@ -110,12 +117,13 @@ $messages['rif'] = array(
 	'configure-js-remove' => 'Sfaḍ',
 );
 
-/** Eastern Mari (Олык Марий йылме)
+/** Eastern Mari (Олык Марий)
  * @author Сай
  */
 $messages['mhr'] = array(
-	'configure-js-remove'     => 'Шӧраш',
-	'configure-section-email' => 'Электрон почто',
+	'configure-js-remove'            => 'Шӧраш',
+	'configure-section-email'        => 'Электрон почто',
+	'configure-section-specialpages' => 'Лӱмын ыштыме лаштык-влак',
 );
 
 /** Niuean (native name missing)
@@ -1940,32 +1948,35 @@ För att använda det här programtillägget måste du skapa den eller byta den.
  * @author వైజాసత్య
  */
 $messages['te'] = array(
-	'configure-desc-group'            => 'గుంపులు',
-	'configure-desc-ns'               => 'పేరుబరులు',
-	'configure-desc-val'              => 'విలువ',
-	'configure-btn-save'              => 'అమరికలు భద్రపరచు',
-	'configure-js-group-exists'       => 'పొరపాటు: ఆ గుంపు ఇప్పటికే ఉంది.',
-	'configure-js-prompt-group'       => 'కొత్త గుంపు యొక్క పేరు ఇవ్వండి:',
-	'configure-js-remove'             => 'తొలగించు',
-	'configure-section-general'       => 'సాధారణ అమరికలు',
-	'configure-section-db'            => 'డాటాబేసు',
-	'configure-section-email'         => 'ఈ-మెయిల్',
-	'configure-section-enotif'        => 'ఈ-మెయిల్ గమనింపు',
-	'configure-section-localization'  => 'స్థానికీకరణ',
-	'configure-section-timezone'      => 'కాలమండలం',
-	'configure-section-namespaces'    => 'పేరుబరులు',
-	'configure-section-stats'         => 'సైటు గణాంకాలు',
-	'configure-section-category'      => 'వర్గాలు',
-	'configure-section-groups'        => 'గుంపులు',
-	'configure-section-cookie'        => 'కుకీలు',
-	'configure-section-images'        => 'బొమ్మలు',
-	'configure-section-specialpages'  => 'ప్రత్యేక పేజీలు',
-	'configure-section-recentchanges' => 'ఇటీవలి మార్పులు',
-	'configure-section-users'         => 'వాడుకరులు',
-	'configure-section-feed'          => 'ఫీడు',
-	'configure-section-search'        => 'అన్వేషణ',
-	'configure-section-copyright'     => 'కాపీహక్కులు',
-	'configure-view'                  => 'చూడండి',
+	'configure-desc-group'                => 'గుంపులు',
+	'configure-desc-ns'                   => 'పేరుబరులు',
+	'configure-desc-val'                  => 'విలువ',
+	'configure-btn-save'                  => 'అమరికలు భద్రపరచు',
+	'configure-js-group-exists'           => 'పొరపాటు: ఆ గుంపు ఇప్పటికే ఉంది.',
+	'configure-js-prompt-group'           => 'కొత్త గుంపు యొక్క పేరు ఇవ్వండి:',
+	'configure-js-remove'                 => 'తొలగించు',
+	'configure-section-general'           => 'సాధారణ అమరికలు',
+	'configure-section-db'                => 'డాటాబేసు',
+	'configure-section-db-notallowed'     => 'డాటాబేసు అమరికలు మార్చడానికి మీరు అనుమతి లేదు.',
+	'configure-section-email'             => 'ఈ-మెయిల్',
+	'configure-section-enotif'            => 'ఈ-మెయిల్ గమనింపు',
+	'configure-section-localization'      => 'స్థానికీకరణ',
+	'configure-section-timezone'          => 'కాలమండలం',
+	'configure-section-namespaces'        => 'పేరుబరులు',
+	'configure-section-stats'             => 'సైటు గణాంకాలు',
+	'configure-section-category'          => 'వర్గాలు',
+	'configure-section-groups'            => 'గుంపులు',
+	'configure-section-groups-notallowed' => 'సమూహపు అమరికలు మార్చడానికి మీరు అనుమతి లేదు.',
+	'configure-section-cookie'            => 'కుకీలు',
+	'configure-section-images'            => 'బొమ్మలు',
+	'configure-section-specialpages'      => 'ప్రత్యేక పేజీలు',
+	'configure-section-recentchanges'     => 'ఇటీవలి మార్పులు',
+	'configure-section-users'             => 'వాడుకరులు',
+	'configure-section-feed'              => 'ఫీడు',
+	'configure-section-extension'         => 'పొడగింతలు',
+	'configure-section-search'            => 'అన్వేషణ',
+	'configure-section-copyright'         => 'కాపీహక్కులు',
+	'configure-view'                      => 'చూడండి',
 );
 
 /** Turkish (Türkçe)

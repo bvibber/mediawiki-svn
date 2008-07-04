@@ -17,6 +17,16 @@ Do '''NOT''' fill this in!",
 	'simpleantispam-desc'  => 'Adds a simple spam/bot check to forms',
 );
 
+/** Aragonese (Aragonés)
+ * @author Juanpabl
+ */
+$messages['an'] = array(
+	'simpleantispam'       => 'Ista edizión suya ha autibato o mecanismo anti-spam',
+	'simpleantispam-label' => "Preba anti-spam.
+'''NO''' replene esto!",
+	'simpleantispam-desc'  => 'Adibe una preba de spam/bot ta os formularios',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */

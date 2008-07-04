@@ -237,6 +237,23 @@ Jump to stream view: $2',
 	'mv_protect_source_material'=> 'Original source material protected from edits'
 );
 
+/** Faeag Rotuma (Faeag Rotuma)
+ * @author Jose77
+ */
+$messages['rtm'] = array(
+	'mv_upload_file' => 'Upload ou file',
+	'mv_edit'        => "A'tū'ạki",
+);
+
+/** Tarifit (Tarifit)
+ * @author Jose77
+ */
+$messages['rif'] = array(
+	'mv_tool_search' => 'Tarzzut',
+	'mv_edit'        => 'Arri',
+	'mv_history'     => 'Amzruy',
+);
+
 /** Karelian (Karjala)
  * @author Flrn
  */
@@ -871,7 +888,11 @@ Ou quizais queira <a href="$3">engadir a secuencia</a>.',
 	'ht_en'                          => 'Transcrición',
 	'ht_en_desc'                     => 'Transcrición en inglés. Este tipo de presentación é para texto falado',
 	'anno_en'                        => 'Anotacións e Categorías',
+	'anno_en_desc'                   => 'Clasificacións e anotacións en inglés.
+Esta presentación pode ser usada para categorizar as seccións dun vídeo ou para engadir información que non é texto falado',
 	'thomas_en'                      => 'Transcrición oficial',
+	'thomas_en_desc'                 => 'Transcrición oficial de Thomas do servizo THOMAS de rexistro do goberno.
+Fonte da sincronización da hora por c-spanarchives.org de C-SPAN',
 	'mvd_default_mismatch'           => 'Erro nos parámetros do ficheiro',
 	'mvd_default_mismatch_text'      => 'Hai un erro nos parámetros do seu ficheiro.
 $mvMVDTypeDefaultDisp deber ser un subgrupo de $mvMVDTypeAllAvailable',
@@ -881,6 +902,9 @@ $mvMVDTypeDefaultDisp deber ser un subgrupo de $mvMVDTypeAllAvailable',
 	'mv_list_streams_page'           => 'Lista de fluxos Metavid',
 	'mv_list_streams_docu'           => 'Existen as seguintes secuencias:',
 	'mv_list_streams_none'           => 'Non existe ningunha secuencia',
+	'mvvideofeed'                    => 'Alimentación da exportación do vídeo metavid',
+	'mvexportask'                    => 'Alimentación da exportación do vídeo semántico',
+	'video_feed_cat'                 => 'Alimentación do vídeo para a catagoría:',
 	'mv_cat_search_note'             => 'Nota: as categorías só listan as categorías dos niveis superiores.
 Para todos os datos meta nos rexistros de categoría busque por $1',
 	'mv_mvd_linkback'                => 'Parte do fluxo $1 <br />

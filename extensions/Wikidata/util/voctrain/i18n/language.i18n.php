@@ -159,6 +159,23 @@ $messages['qqq'] = array(
 	"voctrain_Omegawiki_vocabulary_trainer"=>"login: header"
 );
 
+/** Faeag Rotuma (Faeag Rotuma)
+ * @author Jose77
+ */
+$messages['rtm'] = array(
+	'voctrain_logout'    => 'hotof',
+	'voctrain_User_name' => 'Asa',
+	'voctrain_Login'     => 'Surum',
+	'voctrain_Log_in'    => 'Surum',
+);
+
+/** Tarifit (Tarifit)
+ * @author Jose77
+ */
+$messages['rif'] = array(
+	'voctrain_logout' => 'ffaɣ',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */
@@ -482,11 +499,13 @@ $messages['lb'] = array(
 	'voctrain_Translation'           => 'Iwwersetzung',
 );
 
-/** Neapolitan (Nnapulitano) */
+/** Neapolitan (Nnapulitano)
+ * @author SabineCretella
+ */
 $messages['nap'] = array(
 	'voctrain_Hello_World'                                                                          => 'SALUTAMMO!',
 	'voctrain_Permission_Denied'                                                                    => "Nun tieni 'e diritte",
-	'voctrain_try_again_'                                                                           => "vuò pruvà n'ata vota?",
+	'voctrain_try_again_'                                                                           => "Vuò pruvà n'ata vota?",
 	'voctrain_Action_unknown'                                                                       => 'Azzione nun è canasciuta',
 	'voctrain_I_don_t_know_what_to_do_with_action_'                                                 => "Nun saccio c'aggio fà cu '%action'.",
 	'voctrain_User_added'                                                                           => 'Utente aggiunto',
@@ -539,6 +558,15 @@ $messages['nap'] = array(
 	'voctrain_Definitions'                                                                          => 'Definizzione',
 	'voctrain_Could_not_create_new_user'                                                            => "Nun putevo crià n'utente nuovo",
 	'voctrain_Type_a_username_and_optional_password_or_try_a_different_username_'                   => "Nzerisci nu nomme pe utente e na pparola cchiave (o ppruva 'e trasere cu nu nomme utente deverzo)",
+	'voctrain_Vocview'                                                                              => "Visualizzatòre 'e pparole",
+	'voctrain_Dictionary_definitions'                                                               => 'Definizzione d&#39;&#39;o dizzionario.',
+	'voctrain_Translation'                                                                          => 'Traduzziòne',
+	'voctrain_unhide_definition'                                                                    => "fa vedè 'a defenezziòne.",
+	'voctrain_unhide_words'                                                                         => "fa vedè 'e pparòle",
+	'voctrain_hiding'                                                                               => 'Annascùnne',
+	'voctrain_hide_definitions_in_question_language'                                                => "Anascùnne 'e defenezziòne 'int'â lengua 'e origgene",
+	'voctrain_hide_words_in_question_language'                                                      => "Annascùnne 'e pparole 'int'â llengua 'e origgene",
+	'voctrain_Separate_values_by_commas_to_use_multiple_languages_'                                 => "Separa 'e valore cu comma pe ausà cciù llengue.",
 );
 
 /** Dutch (Nederlands)

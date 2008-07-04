@@ -40,6 +40,17 @@ Uploaded file should contain page name and optional reason separated by a "|" ch
 	'deletebatch-no-page' => 'Please specify at least one page to delete OR choose a file containing page list.',
 );
 
+/** Bulgarian (Български)
+ * @author DCLXVI
+ */
+$messages['bg'] = array(
+	'deletebatch-button'           => 'ИЗТРИВАНЕ',
+	'deletebatch-here'             => '<b>тук</b>',
+	'deletebatch-as'               => 'Стартиране на скрипта като',
+	'deletebatch-or'               => '<b>ИЛИ</b>',
+	'deletebatch-success-subtitle' => 'за $1',
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */
@@ -147,6 +158,30 @@ O ficheiro cargado debería conter o nome da páxina e unha razón opcional sepa
 	'deletebatch-no-page'              => 'Por favor, especifique, polo menos, unha páxina para borrar OU escolla un ficheiro que conteña unha lista de páxinas.',
 );
 
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$messages['lb'] = array(
+	'deletebatch'                      => 'Rei vu Säite läschen',
+	'deletebatch-desc'                 => '[[Special:DeleteBatch|Läscht eng Rei Säiten]]',
+	'deletebatch-button'               => 'LÄSCHEN',
+	'deletebatch-here'                 => '<b>hei</b>',
+	'deletebatch-caption'              => 'Lëscht vun der Säit',
+	'deletebatch-title'                => 'Zesumme läschen',
+	'deletebatch-link-back'            => "Dir kënnt op d'Erweiderung zréckgoen",
+	'deletebatch-or'                   => '<b>ODER</b>',
+	'deletebatch-page'                 => 'Säite fir ze läschen',
+	'deletebatch-reason'               => 'Grond fir ze läschen',
+	'deletebatch-processing'           => "d'Säite gi geläscht",
+	'deletebatch-from-file'            => 'vun der Lëscht vun engem Fichier',
+	'deletebatch-from-form'            => 'vum Formulaire',
+	'deletebatch-success-subtitle'     => 'fir $1',
+	'deletebatch-omitting-nonexistant' => "D'Säit $1 déi et net gëtt iwwersprangen.",
+	'deletebatch-omitting-invalid'     => 'Déi ongëlteg Säit $1 iwwersprangen.',
+	'deletebatch-select-script'        => 'de Script vun der Säit läschen',
+	'deletebatch-select-yourself'      => 'Dir',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */
@@ -180,13 +215,85 @@ Het bestand dat u uploadt moet op iedere regel een paginanaam en een reden bevat
 	'deletebatch-no-page'              => "Geef tenminste één te verwijderen pagina op of kies een bestand dat de lijst met pagina's bevat.",
 );
 
+/** Polish (Polski)
+ * @author Airwolf
+ */
+$messages['pl'] = array(
+	'deletebatch-here'            => '<b>tutaj</b>',
+	'deletebatch-select-yourself' => 'ty',
+);
+
+/** Slovak (Slovenčina)
+ * @author Helix84
+ */
+$messages['sk'] = array(
+	'deletebatch'                      => 'Zmazanie viacerých stránok',
+	'deletebatch-desc'                 => '[[Special:DeleteBatch|Zmazanie viacerých stránok]]',
+	'deletebatch-button'               => 'ZMAZAŤ',
+	'deletebatch-here'                 => '<b>tu</b>',
+	'deletebatch-help'                 => 'Zmazanie viacerých stránok. Môžete buď vykonať jedno zmazanie alebo zmazať stránky uvedené v súbore.
+Vyberte, ktorý používateľ sa zobrazí v záznamoch zmazania.
+Nahraný súbor by mal na každom riadku obsahovať názov stránky a nepovinne aj dôvod zmazania oddelený znakom „|”.',
+	'deletebatch-caption'              => 'Zoznam stránok',
+	'deletebatch-title'                => 'Zmazať dávku',
+	'deletebatch-link-back'            => 'Môžete sa vrátiť späť na rozšírenie',
+	'deletebatch-as'                   => 'Spustiť skript ako',
+	'deletebatch-both-modes'           => 'Prosím, vyberte buď zadanú stránku alebo zadaý zoznam stránok.',
+	'deletebatch-or'                   => '<b>ALEBO</b>',
+	'deletebatch-page'                 => 'Stránky, ktoré budú zmazané',
+	'deletebatch-reason'               => 'Dôvod zmazania',
+	'deletebatch-processing'           => 'mažú sa stránky',
+	'deletebatch-from-file'            => 'zo zoznamu v súbore',
+	'deletebatch-from-form'            => 'z formulára',
+	'deletebatch-success-subtitle'     => 'z $1',
+	'deletebatch-omitting-nonexistant' => 'Vynecháva sa neexistujúca stránka $1.',
+	'deletebatch-omitting-invalid'     => 'Vynecháva sa neplatná stránka $1.',
+	'deletebatch-file-bad-format'      => 'Súbor by mal byť textovom formáte',
+	'deletebatch-file-missing'         => 'Nebolo možné prečítať zadaný súbor',
+	'deletebatch-select-script'        => 'skript na zmazanie stránok',
+	'deletebatch-select-yourself'      => 'vy',
+	'deletebatch-no-page'              => 'Prosím, zadajte aspoň jednu stránku, ktorá sa má zmazať ALEBO súbor obsahujúci zoznam stránok.',
+);
+
 /** Swedish (Svenska)
  * @author M.M.S.
  */
 $messages['sv'] = array(
-	'deletebatch'        => 'Radera serier av sidor',
-	'deletebatch-desc'   => '[[Special:DeleteBatch|Radera en serie av sidor]]',
-	'deletebatch-button' => 'RADERA',
-	'deletebatch-here'   => '<b>här</b>',
+	'deletebatch'                      => 'Radera serier av sidor',
+	'deletebatch-desc'                 => '[[Special:DeleteBatch|Radera en serie av sidor]]',
+	'deletebatch-button'               => 'RADERA',
+	'deletebatch-here'                 => '<b>här</b>',
+	'deletebatch-help'                 => 'Radera en serie av sidor. Du kan också utföra en ensam radering, eller radera sidor listade i en fil.
+Välj en användare som kommer att visas i raderingsloggen.
+En uppladdad fil ska innehålla sidnamn och en valfri anledning separerade med ett "|"-tecken på varje rad.',
+	'deletebatch-caption'              => 'Sidlista',
+	'deletebatch-title'                => 'Radera serie',
+	'deletebatch-link-back'            => 'Du kan gå tillbaka till tillägget',
+	'deletebatch-as'                   => 'Kör skriptet som',
+	'deletebatch-both-modes'           => 'Var god välj antingen en specifierad sida eller en lista över sidor.',
+	'deletebatch-or'                   => '<b>ELLER</b>',
+	'deletebatch-page'                 => 'Sidor som ska raderas',
+	'deletebatch-reason'               => 'Anledning för radering',
+	'deletebatch-processing'           => 'raderar sidor',
+	'deletebatch-from-file'            => 'från fillistan',
+	'deletebatch-from-form'            => 'från formulär',
+	'deletebatch-success-subtitle'     => 'för $1',
+	'deletebatch-omitting-nonexistant' => 'Utelämna ej existerande sida $1.',
+	'deletebatch-omitting-invalid'     => 'Utelämna ogiltig sida $1.',
+	'deletebatch-file-bad-format'      => 'Filen ska innehålla ren text',
+	'deletebatch-file-missing'         => 'Kan inte läsa filen',
+	'deletebatch-select-script'        => 'radera sidskript',
+	'deletebatch-select-yourself'      => 'du',
+	'deletebatch-no-page'              => 'Var god specifiera minst en sida för att radera ELLER välj en fil innehållande en sidlista.',
+);
+
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'deletebatch-caption' => 'పేజీల జాబితా',
+	'deletebatch-or'      => '<b>లేదా</b>',
+	'deletebatch-page'    => 'తొలగించాల్సిన పేజీలు',
+	'deletebatch-reason'  => 'తొలగింపునకు కారణం',
 );
 

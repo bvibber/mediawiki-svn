@@ -113,6 +113,14 @@ $messages['hu'] = array(
 	'contributionseditcount' => 'A felhasználónak $1 szerkesztése van.',
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author Rex
+ */
+$messages['id'] = array(
+	'contributionseditcount'      => 'Pengguna ini memiliki $1 suntingan.',
+	'contributionseditcount-desc' => 'Menampilkan jumlah suntingan di [[Istimewa:Kontribusi]]',
+);
+
 /** Icelandic (Íslenska)
  * @author S.Örvarr.S
  */

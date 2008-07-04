@@ -99,6 +99,13 @@ There are many [http://wiki.openid.net/Public_OpenID_providers Public OpenID pro
 ; [http://bloggerindraft.blogspot.com/2008/01/new-feature-blogger-as-openid-provider.html Blogger], [http://faq.wordpress.com/2007/03/06/what-is-openid/ Wordpress.com], [http://www.livejournal.com/openid/about.bml LiveJournal], [http://bradfitz.vox.com/library/post/openid-for-vox.html Vox] : If you have a blog on any of these services, enter your blog URL in the box above. For example, \'\'<nowiki>http://yourusername.blogspot.com/</nowiki>\'\', \'\'<nowiki>http://yourusername.wordpress.com/</nowiki>\'\', \'\'<nowiki>http://yourusername.livejournal.com/</nowiki>\'\', or \'\'<nowiki>http://yourusername.vox.com/</nowiki>\'\'.',
 );
 
+/** Faeag Rotuma (Faeag Rotuma)
+ * @author Jose77
+ */
+$messages['rtm'] = array(
+	'openidchoosepassword' => 'ou password:',
+);
+
 /** Eastern Mari (Олык Марий йылме)
  * @author Сай
  */
@@ -1317,6 +1324,7 @@ $messages['te'] = array(
 	'openidchoosefull'     => 'మీ పూర్తి పేరు ($1)',
 	'openidchoosemanual'   => 'మీరు ఎన్నుకున్న పేరు:',
 	'openidchoosepassword' => 'సంకేతపదం:',
+	'openidnousername'     => 'వాడుకరిపేరు ఇవ్వలేదు.',
 );
 
 /** Tetum (Tetun)

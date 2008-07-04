@@ -131,6 +131,13 @@ $messages['sv'] = array(
 	'categoryonupload-label' => 'Kategori:',
 );
 
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'categoryonupload-label' => 'వర్గం:',
+);
+
 /** Ukrainian (Українська)
  * @author AS
  */

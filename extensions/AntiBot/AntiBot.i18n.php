@@ -113,6 +113,13 @@ $messages['pl'] = array(
 	'antibot-desc' => 'Proste mechanizmy ochrony przed spamującymi i wywołującymi przeciążenie serwera robotami',
 );
 
+/** Russian (Русский)
+ * @author Александр Сигачёв
+ */
+$messages['ru'] = array(
+	'antibot-desc' => 'Простая среда для проверки спамботов и включения полезной нагрузки',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

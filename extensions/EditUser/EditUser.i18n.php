@@ -20,6 +20,13 @@ $messages['en'] = array(
 	'edituser-exempt' => 'The specified user cannot be edited',
 );
 
+/** Tarifit (Tarifit)
+ * @author Jose77
+ */
+$messages['rif'] = array(
+	'edituser-dosearch' => 'Tarzzut',
+);
+
 /** Karelian (Karjala)
  * @author Flrn
  */

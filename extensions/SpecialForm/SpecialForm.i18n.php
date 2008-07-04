@@ -223,6 +223,7 @@ $messages['gl'] = array(
 	'formpattern'                  => 'formulario-$1',
 	'formtitlepattern'             => 'Engadir Novo $1',
 	'formsave'                     => 'Gardar',
+	'formindexmismatch'            => 'Este formulario ten nomes de patróns e modelos que non coinciden, comezando por $1.',
 	'formarticleexists'            => 'A páxina Existe',
 	'formarticleexiststext'        => 'A páxina [[$1]] xa existe.',
 	'formbadpagename'              => 'Nome de Páxina incorrecto',

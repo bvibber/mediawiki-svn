@@ -118,6 +118,13 @@ It might be lost.
 Please contact the server operator or administrator.",
 );
 
+/** Tarifit (Tarifit)
+ * @author Jose77
+ */
+$wdMessages['rif'] = array(
+	'ow_history' => 'Amzruy',
+);
+
 /** Karelian (Karjala)
  * @author Flrn
  */
@@ -1077,6 +1084,7 @@ Por favor, vexa [[{{MediaWiki:Ow editing policy url}}|a nosa política de edici�
 <li>&action=get_associated&dm=<defined_meaning_id>&dc=<dataset_context_prefix> para unha definición dun concepto, devolver todo o demais</li>
 <li>&action=help  Amosar a axuda útil.</li>
 </ul></p>',
+	'ow_conceptmapping_uitext'              => '<p>O mapa de conceptos permítelle identificar cal é a definición nun conxunto de datos que é idéntico ás definicións noutros conxuntos.</p>',
 	'ow_conceptmapping_no_action_specified' => 'Síntoo, non sei como "$1".',
 	'ow_dm_OK'                              => 'De acordo',
 	'ow_dm_not_present'                     => 'non introducido',

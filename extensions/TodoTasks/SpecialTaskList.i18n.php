@@ -30,6 +30,13 @@ To see your complete Task List go to %s.
 Your friendly %s notification system",
 );
 
+/** Faeag Rotuma (Faeag Rotuma)
+ * @author Jose77
+ */
+$messages['rtm'] = array(
+	'tasklistincorrectuser' => 'Seseva',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */

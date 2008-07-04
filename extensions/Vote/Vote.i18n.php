@@ -33,6 +33,13 @@ riddler|Riddler",
 	'vote-invalid-choice' => 'You must select one of the available options.',
 );
 
+/** Faeag Rotuma (Faeag Rotuma)
+ * @author Jose77
+ */
+$messages['rtm'] = array(
+	'vote-login-link' => 'surum',
+);
+
 /** Niuean (native name missing)
  * @author Jose77
  */

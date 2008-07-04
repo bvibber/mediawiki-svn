@@ -11,6 +11,13 @@ $messages['en'] = array(
 	'skinperpage-desc' => 'Adds <tt>&lt;skin&gt;</tt> tag to use different skins per page',
 );
 
+/** Aragonese (Aragonés)
+ * @author Juanpabl
+ */
+$messages['an'] = array(
+	'skinperpage-desc' => 'Adibe a etiqueta <tt>&lt;skin&gt;</tt> ta emplegar diferents aparenzias por pachina',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */

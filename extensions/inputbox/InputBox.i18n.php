@@ -439,6 +439,18 @@ $messages['hsb'] = array(
 	'createarticle'           => 'Nastawk wutworić',
 );
 
+/** Haitian (Kreyòl ayisyen)
+ * @author Masterches
+ */
+$messages['ht'] = array(
+	'inputbox-desc'           => 'Ap pèmèt ou mete fòmilè HTML yo ki ja defini.',
+	'inputbox-error-no-type'  => 'Atansyon, ou pa bay detay sou tip, kalite bwat antre pou ou kreye',
+	'inputbox-error-bad-type' => "Kalite bwat antre $1 pa bon, sistèm an pa konnen l. Mete opsyon sa ''create (kreye)'', ''comment (komante)'', ''search (chache, fouye)'' ou ''searche2''.",
+	'tryexact'                => 'Eseye yon korespondans egzakt, toutbon.',
+	'searchfulltext'          => 'Chache, fouye ak opsyon tèks entegral; wap pran an konsiderasyon tout mo ki nan demann ou an',
+	'createarticle'           => 'Kreye atik sa',
+);
+
 /** Hungarian (Magyar)
  * @author Dani
  * @author KossuthRad

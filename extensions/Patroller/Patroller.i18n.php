@@ -903,6 +903,7 @@ $messages['szl'] = array(
  */
 $messages['te'] = array(
 	'patrol-revert-reason' => 'కారణం:',
+	'patrol-skip'          => 'వదిలివేయి',
 	'patrol-resume'        => 'కొనసాగించడానికి ఇక్కడ నొక్కండి.',
 );
 

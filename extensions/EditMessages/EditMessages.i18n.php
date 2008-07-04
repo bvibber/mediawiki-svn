@@ -26,6 +26,13 @@ $messages['en'] = array(
 	'editmsg-patch-success'    => 'Successfully patched.',
 );
 
+/** Tarifit (Tarifit)
+ * @author Jose77
+ */
+$messages['rif'] = array(
+	'editmsg-search' => 'Tarzzut',
+);
+
 /** Karelian (Karjala)
  * @author Flrn
  */

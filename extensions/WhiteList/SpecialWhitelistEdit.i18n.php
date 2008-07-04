@@ -82,11 +82,19 @@ This page is only applicable to restricted users",
 	'whitelistnummatches'         => " - $1 matches",
 );
 
+/** Faeag Rotuma (Faeag Rotuma)
+ * @author Jose77
+ */
+$allMessages['rtm'] = array(
+	'whitelisttableedit' => "A'tū'ạki",
+);
+
 /** Tarifit (Tarifit)
  * @author Jose77
  */
 $allMessages['rif'] = array(
 	'whitelisttablemodifyall' => 'Maṛṛa',
+	'whitelisttableedit'      => 'Arri',
 );
 
 /** Eastern Mari (Олык Марий йылме)

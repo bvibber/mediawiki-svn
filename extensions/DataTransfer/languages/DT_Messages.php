@@ -26,6 +26,13 @@ $messages['en'] = array(
 	'dt_xml_freetext'             => 'Free Text',
 );
 
+/** Faeag Rotuma (Faeag Rotuma)
+ * @author Jose77
+ */
+$messages['rtm'] = array(
+	'dt_viewxml_categories' => 'Katekori',
+);
+
 /** Eastern Mari (Олык Марий йылме)
  * @author Сай
  */
