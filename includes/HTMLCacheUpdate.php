@@ -110,11 +110,11 @@ class HTMLCacheUpdate
 	}
 
 	function getToCondition() {
-		$prefix = $this->getPrefix();
 		switch ( $this->mTable ) {
 			case 'pagelinks':
 			case 'templatelinks':
 			case 'redirect':
+				$prefix = $this->getPrefix();
 				return array(
 					"{$prefix}_namespace" => $this->mTitle->getNamespace(),
 					"{$prefix}_title" => $this->mTitle->getDBkey()
@@ -122,11 +122,18 @@ class HTMLCacheUpdate
 			case 'imagelinks':
 				return array( 'il_to' => $this->mTitle->getDBkey() );
 			case 'categorylinks':
-				return array( 'cl_to' => $this->mTitle->getDBkey() );
+				return array( 'cat_title' => $this->mTitle->getDBkey(), 'cat_id=cl_inline' );
 		}
 		throw new MWException( 'Invalid table type in ' . __CLASS__ );
 	}
 
+	function getTables() {
+		if ( $this->mTable == 'categorylinks' ) 
+			return array( 'categorylinks', 'category');
+		else
+			return $this->mTable;
+	}
+	
 	/**
 	 * Invalidate a set of IDs, right now
 	 */
@@ -208,6 +215,7 @@ class HTMLCacheUpdateJob extends Job {
 	function run() {
 		$update = new HTMLCacheUpdate( $this->title, $this->table );
 
+		$tables = $update->getTables();
 		$fromField = $update->getFromField();
 		$conds = $update->getToCondition();
 		if ( $this->start ) {
@@ -218,7 +226,7 @@ class HTMLCacheUpdateJob extends Job {
 		}
 
 		$dbr = wfGetDB( DB_SLAVE );
-		$res = $dbr->select( $this->table, $fromField, $conds, __METHOD__ );
+		$res = $dbr->select( $tables, $fromField, $conds, __METHOD__ );
 		$update->invalidateIDs( new ResultWrapper( $dbr, $res ) );
 
 		return true;

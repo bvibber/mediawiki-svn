@@ -57,7 +57,7 @@ class ApiQueryCategories extends ApiQueryGeneratorBase {
 
 		$this->addFields(array (
 			'cl_from',
-			'cl_to'
+			'cat_title'
 		));
 
 		$fld_sortkey = $fld_timestamp = false;
@@ -78,9 +78,12 @@ class ApiQueryCategories extends ApiQueryGeneratorBase {
 			}
 		}
 
-		$this->addTables('categorylinks');
-		$this->addWhereFld('cl_from', array_keys($this->getPageSet()->getGoodTitles()));
-		$this->addOption('ORDER BY', "cl_from, cl_to");
+		$this->addTables(array('categorylinks', 'category'));
+		$this->addWhere(array(
+			'cl_from' => array_keys($this->getPageSet()->getGoodTitles()),
+			'cl_inline=cat_id'
+		));
+		$this->addOption('ORDER BY', "cl_from, cl_inline");
 
 		$db = $this->getDB();
 		$res = $this->select(__METHOD__);
@@ -98,7 +101,7 @@ class ApiQueryCategories extends ApiQueryGeneratorBase {
 					$lastId = $row->cl_from;
 				}
 
-				$title = Title :: makeTitle(NS_CATEGORY, $row->cl_to);
+				$title = Title :: makeTitle(NS_CATEGORY, $row->cat_title);
 
 				$vals = array();
 				ApiQueryBase :: addTitleInfo($vals, $title);
@@ -118,7 +121,7 @@ class ApiQueryCategories extends ApiQueryGeneratorBase {
 
 			$titles = array();
 			while ($row = $db->fetchObject($res)) {
-				$titles[] = Title :: makeTitle(NS_CATEGORY, $row->cl_to);
+				$titles[] = Title :: makeTitle(NS_CATEGORY, $row->cl_title);
 			}
 			$resultPageSet->populateFromTitles($titles);
 		}

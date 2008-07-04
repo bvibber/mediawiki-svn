@@ -235,7 +235,7 @@ class Category {
 				   "COUNT($cond1) AS subcats",
 				   "COUNT($cond2) AS files"
 			),
-			array( 'cl_to' => $this->mName, 'page_id = cl_from' ),
+			array( 'cl_inline' => $this->mID, 'page_id = cl_from' ),
 			__METHOD__,
 			'LOCK IN SHARE MODE'
 		);

@@ -29,17 +29,18 @@ class WantedCategoriesPage extends QueryPage {
 
 	function getSQL() {
 		$dbr = wfGetDB( DB_SLAVE );
-		list( $categorylinks, $page ) = $dbr->tableNamesN( 'categorylinks', 'page' );
+		list( $categorylinks, $page, $category ) = $dbr->tableNamesN( 'categorylinks', 'page', 'category' );
 		$name = $dbr->addQuotes( $this->getName() );
 		return
 			"
 			SELECT
 				$name as type,
 				" . NS_CATEGORY . " as namespace,
-				cl_to as title,
+				cat_title as title,
 				COUNT(*) as value
 			FROM $categorylinks
-			LEFT JOIN $page ON cl_to = page_title AND page_namespace = ". NS_CATEGORY ."
+			LEFT JOIN $page ON cat_title = page_title AND page_namespace = ". NS_CATEGORY ."
+			INNER JOIN $category ON cat_id = cl_inline
 			WHERE page_title IS NULL
 			GROUP BY 1,2,3
 			";

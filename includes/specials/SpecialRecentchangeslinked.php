@@ -66,8 +66,10 @@ class SpecialRecentchangeslinked extends SpecialRecentchanges {
 
 		if( $title->getNamespace() == NS_CATEGORY ) {
 			$tables[] = 'categorylinks';
-			$conds['cl_to'] = $title->getDBkey();
+			$tables[] = 'category';
+			$conds['cat_title'] = $title->getDBkey();
 			$join_conds['categorylinks'] = array( 'LEFT JOIN', 'cl_from=rc_cur_id' );
+			$join_conds['category'] = array( 'INNER JOIN', 'cat_id=cl_inline');
 		} else {
 			if( $showlinkedto ) {
 				if( $title->getNamespace() == NS_TEMPLATE ){

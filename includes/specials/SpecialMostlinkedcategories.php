@@ -21,16 +21,17 @@ class MostlinkedCategoriesPage extends QueryPage {
 
 	function getSQL() {
 		$dbr = wfGetDB( DB_SLAVE );
-		$categorylinks = $dbr->tableName( 'categorylinks' );
+		list( $categorylinks, $category ) = $dbr->tableNamesN( 'categorylinks', 'category' );
 		$name = $dbr->addQuotes( $this->getName() );
 		return
 			"
 			SELECT
 				$name as type,
 				" . NS_CATEGORY . " as namespace,
-				cl_to as title,
+				cat_title as title,
 				COUNT(*) as value
-			FROM $categorylinks
+			FROM $categorylinks, $category
+			WHERE cat_id=cat_inline
 			GROUP BY 1,2,3
 			";
 	}

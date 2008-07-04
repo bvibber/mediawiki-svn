@@ -73,24 +73,25 @@ class ApiQueryCategoryMembers extends ApiQueryGeneratorBase {
 		}
 
 		$this->addFieldsIf('cl_timestamp', $fld_timestamp || $params['sort'] == 'timestamp');
-		$this->addTables(array('page','categorylinks'));	// must be in this order for 'USE INDEX'
+		$this->addTables(array('page','categorylinks', 'category'));	// must be in this order for 'USE INDEX'
 									// Not needed after bug 10280 is applied to servers
 		if($params['sort'] == 'timestamp')
 		{
 			$this->addOption('USE INDEX', 'cl_timestamp');
 			// cl_timestamp will be added by addWhereRange() later
-			$this->addOption('ORDER BY', 'cl_to');
+			$this->addOption('ORDER BY', 'cl_inline');
 		}
 		else
 		{
 			$dir = ($params['dir'] == 'desc' ? ' DESC' : '');
 			$this->addOption('USE INDEX', 'cl_sortkey');
-			$this->addOption('ORDER BY', 'cl_to, cl_sortkey' . $dir . ', cl_from' . $dir);
+			$this->addOption('ORDER BY', 'cl_inline, cl_sortkey' . $dir . ', cl_from' . $dir);
 		}
 
 		$this->addWhere('cl_from=page_id');
+		$this->addWhere('cat_id=cl_inline');
 		$this->setContinuation($params['continue'], $params['dir']);
-		$this->addWhereFld('cl_to', $categoryTitle->getDBkey());
+		$this->addWhereFld('cat_title', $categoryTitle->getDBkey());
 		$this->addWhereFld('page_namespace', $params['namespace']);
 		if($params['sort'] == 'timestamp')
 			$this->addWhereRange('cl_timestamp', ($params['dir'] == 'asc' ? 'newer' : 'older'), $params['start'], $params['end']);

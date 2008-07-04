@@ -2884,19 +2884,21 @@ class Title {
 		$titlekey = $this->getArticleId();
 		$dbr = wfGetDB( DB_SLAVE );
 		$categorylinks = $dbr->tableName( 'categorylinks' );
+		$category = $dbr->tableName( 'category' );
 
 		# NEW SQL
-		$sql = "SELECT * FROM $categorylinks"
+		$sql = "SELECT cat_title FROM $categorylinks, $category"
 		     ." WHERE cl_from='$titlekey'"
 			 ." AND cl_from <> '0'"
+			 ." AND cl_target = cat_id"
 			 ." ORDER BY cl_sortkey";
 
 		$res = $dbr->query( $sql );
 
 		if( $dbr->numRows( $res ) > 0 ) {
 			while( $x = $dbr->fetchObject( $res ) )
-				//$data[] = Title::newFromText($wgContLang->getNSText ( NS_CATEGORY ).':'.$x->cl_to);
-				$data[$wgContLang->getNSText( NS_CATEGORY ).':'.$x->cl_to] = $this->getFullText();
+				//$data[] = Title::newFromText($wgContLang->getNSText ( NS_CATEGORY ).':'.$x->cat_title);
+				$data[$wgContLang->getNSText( NS_CATEGORY ).':'.$x->cat_title] = $this->getFullText();
 			$dbr->freeResult( $res );
 		} else {
 			$data = array();

@@ -22,11 +22,12 @@ class UnusedCategoriesPage extends QueryPage {
 	function getSQL() {
 		$NScat = NS_CATEGORY;
 		$dbr = wfGetDB( DB_SLAVE );
-		list( $categorylinks, $page ) = $dbr->tableNamesN( 'categorylinks', 'page' );
+		list( $categorylinks, $page, $category ) = $dbr->tableNamesN( 'categorylinks', 'page', 'category' );
 		return "SELECT 'Unusedcategories' as type,
 				{$NScat} as namespace, page_title as title, page_title as value
 				FROM $page
-				LEFT JOIN $categorylinks ON page_title=cl_to
+				INNER JOIN $category ON cl_inline=cat_id
+				LEFT JOIN $categorylinks ON page_title=cat_title
 				WHERE cl_from IS NULL
 				AND page_namespace = {$NScat}
 				AND page_is_redirect = 0";

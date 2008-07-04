@@ -96,7 +96,7 @@ class Categoryfinder {
 
 		# iterate through the parents
 		foreach ( $this->parents[$id] AS $p ) {
-			$pname = $p->cl_to ;
+			$pname = $p->cat_title ;
 
 			# Is this a condition?
 			if ( isset ( $conds[$pname] ) ) {
@@ -138,13 +138,13 @@ class Categoryfinder {
 		# Find all parents of the article currently in $this->next
 		$layer = array () ;
 		$res = $this->dbr->select(
-				/* FROM   */ 'categorylinks',
-				/* SELECT */ '*',
-				/* WHERE  */ array( 'cl_from' => $this->next ),
+				/* FROM   */ array( 'categorylinks', 'category' ),
+				/* SELECT */ array( 'cl_from', 'cat_title' ),
+				/* WHERE  */ array( 'cl_from' => $this->next, 'cl_inline=cat_id' ),
 				$fname."-1"
 		);
 		while ( $o = $this->dbr->fetchObject( $res ) ) {
-			$k = $o->cl_to ;
+			$k = $o->cat_title ;
 
 			# Update parent tree
 			if ( !isset ( $this->parents[$o->cl_from] ) ) {

@@ -2346,10 +2346,12 @@ class Article {
 
 		# Fix category table counts
 		$cats = array();
-		$res = $dbw->select( 'categorylinks', 'cl_to',
-			array( 'cl_from' => $id ), __METHOD__ );
+		$res = $dbw->select( array( 'categorylinks', 'category' ),
+			'cat_title',
+			array( 'cl_from' => $id, 'cl_inline=cat_id' ), 
+			__METHOD__ );
 		foreach( $res as $row ) {
-			$cats []= $row->cl_to;
+			$cats []= $row->cat_title;
 		}
 		$this->updateCategoryCounts( array(), $cats );
 
@@ -3297,15 +3299,15 @@ class Article {
 		}
 
 		$dbr = wfGetDB( DB_SLAVE );
-		$res = $dbr->select( array( 'categorylinks', 'page_props', 'page' ),
-			array( 'cl_to' ),
+		$res = $dbr->select( array( 'categorylinks', 'category', 'page_props', 'page' ),
+			array( 'cat_title' ),
 			array( 'cl_from' => $id, 'pp_page=page_id', 'pp_propname' => 'hiddencat',
-				'page_namespace' => NS_CATEGORY, 'page_title=cl_to'),
+				'page_namespace' => NS_CATEGORY, 'page_title=cat_title', 'cat_id=cl_inline'),
 			'Article:getHiddenCategories' );
 		if ( false !== $res ) {
 			if ( $dbr->numRows( $res ) ) {
 				while ( $row = $dbr->fetchObject( $res ) ) {
-					$result[] = Title::makeTitle( NS_CATEGORY, $row->cl_to );
+					$result[] = Title::makeTitle( NS_CATEGORY, $row->cat_title );
 				}
 			}
 		}

@@ -97,11 +97,12 @@ class LinksUpdate {
 
 		# Image links
 		$existing = $this->getExistingImages();
-		$this->incrTableUpdate( 'imagelinks', 'il', $this->getImageDeletions( $existing ),
-			$this->getImageInsertions( $existing ) );
+
+		$imageDeletes = $this->getImageDeletions( $existing );
+		$this->incrTableUpdate( 'imagelinks', 'il', $imageDeletes, $this->getImageInsertions( $existing ) );
 
 		# Invalidate all image description pages which had links added or removed
-		$imageUpdates = array_diff_key( $existing, $this->mImages ) + array_diff_key( $this->mImages, $existing );
+		$imageUpdates = $imageDeletes + array_diff_key( $this->mImages, $existing );
 		$this->invalidateImageDescriptions( $imageUpdates );
 
 		# External links
@@ -120,24 +121,35 @@ class LinksUpdate {
 			$this->getTemplateInsertions( $existing ) );
 
 		# Category links
-		$existing = $this->getExistingCategories();
-		$this->incrTableUpdate( 'categorylinks', 'cl', $this->getCategoryDeletions( $existing ),
-			$this->getCategoryInsertions( $existing ) );
+		$titles2ids = array();
+		$existing = $this->getExistingCategories( $titles2ids );
+		
+		$categoryDeletes = $this->getCategoryDeletions( $existing );
+		
+		$deletionsById = array();
+		
+		foreach ($categoryDeletes as $title => $sort) {
+			$deletionsById[ $titles2ids[ $title ][0] ] = $sort;
+		}
+		
+		$this->incrTableUpdate( 'categorylinks', 'cl', $deletionsById, $this->getCategoryInsertions( $existing, $titles2ids ) );
+
 
 		# Invalidate all categories which were added, deleted or changed (set symmetric difference)
 		$categoryInserts = array_diff_assoc( $this->mCategories, $existing );
-		$categoryDeletes = array_diff_assoc( $existing, $this->mCategories );
 		$categoryUpdates = $categoryInserts + $categoryDeletes;
 		$this->invalidateCategories( $categoryUpdates );
 		$this->updateCategoryCounts( $categoryInserts, $categoryDeletes );
 
 		# Page properties
 		$existing = $this->getExistingProperties();
-		$this->incrTableUpdate( 'page_props', 'pp', $this->getPropertyDeletions( $existing ),
-			$this->getPropertyInsertions( $existing ) );
+
+		$propertiesDeletes = $this->getPropertyDeletions( $existing );
+
+		$this->incrTableUpdate( 'page_props', 'pp', $propertiesDeletes, $this->getPropertyInsertions( $existing ) );
 
 		# Invalidate the necessary pages
-		$changed = array_diff_assoc( $existing, $this->mProperties ) + array_diff_assoc( $this->mProperties, $existing );
+		$changed = $propertiesDeletes + array_diff_assoc( $this->mProperties, $existing );
 		$this->invalidateProperties( $changed );
 
 		# Refresh links of all pages including this page
@@ -158,16 +170,17 @@ class LinksUpdate {
 		wfProfileIn( __METHOD__ );
 
 		# Refresh category pages and image description pages
-		$existing = $this->getExistingCategories();
+		$cat_titles2ids = array();
+		$existing = $this->getExistingCategories( $cat_titles2ids );
 		$categoryInserts = array_diff_assoc( $this->mCategories, $existing );
-		$categoryDeletes = array_diff_assoc( $existing, $this->mCategoties );
+		$categoryDeletes = array_diff_assoc( $existing, $this->mCategories );
 		$categoryUpdates = $categoryInserts + $categoryDeletes;
 		$existing = $this->getExistingImages();
 		$imageUpdates = array_diff_key( $existing, $this->mImages ) + array_diff_key( $this->mImages, $existing );
 
 		$this->dumbTableUpdate( 'pagelinks',     $this->getLinkInsertions(),     'pl_from' );
 		$this->dumbTableUpdate( 'imagelinks',    $this->getImageInsertions(),    'il_from' );
-		$this->dumbTableUpdate( 'categorylinks', $this->getCategoryInsertions(), 'cl_from' );
+		$this->dumbTableUpdate( 'categorylinks', $this->getCategoryInsertions(array(), $cat_titles2ids), 'cl_from' );
 		$this->dumbTableUpdate( 'templatelinks', $this->getTemplateInsertions(), 'tl_from' );
 		$this->dumbTableUpdate( 'externallinks', $this->getExternalInsertions(), 'el_from' );
 		$this->dumbTableUpdate( 'langlinks',     $this->getInterlangInsertions(),'ll_from' );
@@ -330,6 +343,8 @@ class LinksUpdate {
 				$toField = 'll_lang';
 			} elseif ( $table == 'page_props' ) {
 				$toField = 'pp_propname';
+			} elseif ( $table == 'categorylinks') {
+				$toField = 'cl_inline';
 			} else {
 				$toField = $prefix . '_to';
 			}
@@ -429,13 +444,19 @@ class LinksUpdate {
 	 * match a link in $this, the link will be omitted from the output
 	 * @private
 	 */
-	function getCategoryInsertions( $existing = array() ) {
+	function getCategoryInsertions( $existing, $titles2ids ) {
 		$diffs = array_diff_assoc( $this->mCategories, $existing );
 		$arr = array();
 		foreach ( $diffs as $name => $sortkey ) {
+			$ids = $titles2ids[$name];
+			$target = $ids[1];
+			if ( $target == null ) {
+				$target = $ids[1];
+			}
 			$arr[] = array(
 				'cl_from'    => $this->mId,
-				'cl_to'      => $name,
+				'cl_inline'  => $ids[0],
+				'cl_target'  => $target,
 				'cl_sortkey' => $sortkey,
 				'cl_timestamp' => $this->mDb->timestamp()
 			);
@@ -624,14 +645,19 @@ class LinksUpdate {
 
 	/**
 	 * Get an array of existing categories, with the name in the key and sort key in the value.
+	 * Appends to titles2id (cat_title => (cat_id, cat_redir) ) for existing categories
+	 * 
 	 * @private
 	 */
-	function getExistingCategories() {
-		$res = $this->mDb->select( 'categorylinks', array( 'cl_to', 'cl_sortkey' ),
-			array( 'cl_from' => $this->mId ), __METHOD__, $this->mOptions );
+	function getExistingCategories( &$titles2ids ) {
+		$res = $this->mDb->select( array( 'categorylinks', 'category' ), 
+			array( 'cat_title', 'cat_id', 'cat_redir', 'cl_sortkey' ),
+			array( 'cl_from' => $this->mId, 'cl_inline=cat_id' ), 
+			__METHOD__, $this->mOptions );
 		$arr = array();
 		while ( $row = $this->mDb->fetchObject( $res ) ) {
-			$arr[$row->cl_to] = $row->cl_sortkey;
+			$arr[$row->cat_title] = $row->cl_sortkey;
+			$titles2ids[$row->cat_title] = array( $row->cat_id, $row->cat_redir);
 		}
 		$this->mDb->freeResult( $res );
 		return $arr;
