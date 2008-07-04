@@ -13,7 +13,7 @@ $messages = array();
  */
 $messages['en'] = array(
 	'profiling'              => 'Profiling data',
-	'profiling-desc'         => 'Special page to search and inspect profiling data',
+	'profiling-desc'         => '[[Special:Profiling|Special page]] to search and inspect profiling data',
 	'profiling-process'      => 'Process string:',
 	'profiling-wildcard'     => 'Use wildcard',
 	'profiling-ok'           => 'OK',

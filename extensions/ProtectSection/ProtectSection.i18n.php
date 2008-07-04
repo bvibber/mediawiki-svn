@@ -8,7 +8,7 @@
 $messages = array();
 
 $messages['en'] = array(
-	'protectsection_desc' => 'Allows authorised users to protect parts of a text',
+	'protectsection_desc'       => 'Allows authorised users to protect parts of a page using the tag <tt>&lt;protect&gt;</tt>',
 	'protectsection_add_remove' => 'You tried to add or remove a protected section',
 	'protectsection_modify'     => 'You tried to modify protected text',
 	'protectsection_forbidden'  => 'Forbidden',
