@@ -798,7 +798,7 @@ class LuceneSearchSet {
 			wfDebug( "Fetching search data from $searchUrl\n" );
 			wfSuppressWarnings();
 			wfProfileIn( $fname.'-contact-'.$host );
-			$data = wfGetHTTP( $searchUrl );
+			$data = Http::get( $searchUrl );
 			wfProfileOut( $fname.'-contact-'.$host );
 			wfRestoreWarnings();
 

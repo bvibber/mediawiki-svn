@@ -54,7 +54,7 @@ function addMatchedText ( &$parserOutput , &$text ) {
 			$myLanguage = $wgLang->getLanguageName( $wgContLanguageCode );
 
 			$sep = ( in_string( '?', $url ) ) ? '&' : '?'; 
-			$translation = wfGetHttp( $url.$sep.'action=render' );
+			$translation = Http::get( $url.$sep.'action=render' );
 			if ( $translation !== null ) {
 				#first find all links that have no 'class' parameter.
 				#these links are local so we add '?match=xx' to their url, 
