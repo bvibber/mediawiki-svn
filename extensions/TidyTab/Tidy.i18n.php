@@ -9,8 +9,9 @@
 $messages = array();
 
 $messages['en'] = array(
-	'tidy'   => 'Tidy',
-	'untidy' => 'Untidy',
+	'tidy-desc' => 'Adds a tidy or untidy tab (depending on $wgUseTidy) on normal pages allowing for overriding the global HTML tidy setting for a single view',
+	'tidy'      => 'Tidy',
+	'untidy'    => 'Untidy',
 );
 
 /** Arabic (العربية)

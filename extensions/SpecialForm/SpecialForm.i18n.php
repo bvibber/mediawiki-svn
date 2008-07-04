@@ -27,6 +27,7 @@ $messages = array();
  * @author Evan Prodromou <evan@vinismo.com>
  */
 $messages['en'] = array(
+	'form-desc'                    => 'A form interface to start new articles',
 	'form'                         => 'Form',
 	'formnoname'                   => 'No form name',
 	'formnonametext'               => 'You must provide a form name, like "Special:Form/Nameofform".',

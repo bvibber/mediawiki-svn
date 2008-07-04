@@ -21,21 +21,21 @@ if (!defined('MEDIAWIKI')) die();
 $wgTodoTasksExtensionVersion = '0.9.6';
 
 $wgExtensionCredits['parserhook'][]    = array(
-        'version'     => $wgTodoTasksExtensionVersion,
-        'name'        => 'Todo Tasks',
-        'author'      => 'Paul Grinberg',
-        'email'       => 'gri6507 at yahoo dot com',
-        'url'         => 'http://www.mediawiki.org/wiki/Extension:Todo_Tasks',
-        'description' => 'adds <nowiki>{{#todo:}}</nowiki> parser function for assigning tasks',
+	'version'        => $wgTodoTasksExtensionVersion,
+	'name'           => 'Todo Tasks',
+	'author'         => 'Paul Grinberg',
+	'email'          => 'gri6507 at yahoo dot com',
+	'url'            => 'http://www.mediawiki.org/wiki/Extension:Todo_Tasks',
+	'description'    => 'adds <nowiki>{{#todo:}}</nowiki> parser function for assigning tasks',
 	'descriptionmsg' => 'tasklist-parser-desc',
 );
 $wgExtensionCredits['specialpage'][] = array(
-        'name'        => 'Todo Tasks',
-        'version'     => $wgTodoTasksExtensionVersion,
-        'author'      => 'Paul Grinberg',
-        'email'       => 'gri6507 at yahoo dot com',
-        'url'         => 'http://www.mediawiki.org/wiki/Extension:Todo_Tasks',
-        'description' => 'Adds a special page for reviewing tasks assignments',
+	'name'        => 'Todo Tasks',
+	'version'     => $wgTodoTasksExtensionVersion,
+	'author'      => 'Paul Grinberg',
+	'email'       => 'gri6507 at yahoo dot com',
+	'url'         => 'http://www.mediawiki.org/wiki/Extension:Todo_Tasks',
+	'description' => 'Adds a special page for reviewing tasks assignments',
 	'descriptionmsg' => 'tasklist-special-desc',
 );
 

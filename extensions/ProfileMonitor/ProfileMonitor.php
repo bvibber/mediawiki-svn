@@ -15,6 +15,7 @@ $wgExtensionCredits['specialpage'][] = array(
 	'svn-revision' => '$LastChangedRevision$',
 	'author' => 'Rob Church',
 	'description' => 'Special page to search and inspect profiling data',
+	'descriptionmsg' => 'profiling-desc',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:ProfileMonitor',
 );
 

@@ -22,6 +22,7 @@ $wgExtensionCredits['other'][] = array(
 	'author' => 'Daniel Kinzler',
 	'url' => 'http://mediawiki.org/wiki/Extension:TalkHere',
 	'description' => 'Puts the talk page into the article page',
+	'descriptionmsg' => 'talkhere-desc',
 );
 
 $wgTalkHereNamespaces = NULL; //namespaces to apply TalkHere to.

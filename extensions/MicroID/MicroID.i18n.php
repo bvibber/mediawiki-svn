@@ -8,6 +8,7 @@
 $messages = array();
 
 $messages['en'] = array(
+	'microid-desc' => 'Adds a [http://www.microid.org/ MicroID] to user pages to confirm account with external services',
 	'tog-microid' => 'Publish a <a href="http://microid.org/">MicroID</a> to confirm account with external services',
 );
 

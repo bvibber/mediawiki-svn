@@ -21,6 +21,7 @@ $wgExtensionCredits['other'][] = array(
     'name' => 'PostComment',
     'author' => 'Travis Derouin, Siebrand Mazeland',
     'description' => 'Allows users to post comments directly to discussion pages.',
+    'descriptionmsg' => 'postcomment_desc',
     'url' => 'http://www.mediawiki.org/wiki/Extension:PostComment',
 );
 

@@ -41,7 +41,8 @@ $wgExtensionCredits['specialpage'][] = array(
 	'version' => SPECIALFORM_VERSION,
 	'author' => 'Evan Prodromou',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:Form',
-	'description' => 'A form interface to start new articles'
+	'description' => 'A form interface to start new articles',
+	'descriptionmsg' => 'form-desc',
 );
 
 function formLocalizedPageName(&$specialPageArray, $code) {

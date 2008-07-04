@@ -13,6 +13,7 @@ $messages = array();
  * @author Rob Church
  */
 $messages['en'] = array(
+	'mediafunctions-desc'          => 'Parser functions for obtaining information about media files',
 	'mediafunctions-invalid-title' => '"$1" is not a valid title',
 	'mediafunctions-not-exist'     => '"$1" does not exist',
 );

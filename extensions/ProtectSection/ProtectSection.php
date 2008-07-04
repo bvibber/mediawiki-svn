@@ -38,6 +38,7 @@ $wgExtensionCredits['other'][] = array(
 	'name' => 'ProtectSection',
 	'author' => 'ThomasV',
 	'description' => 'Allows authorised users to protect parts of a text',
+	'descriptionmsg' => 'protectsection_desc',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:ProtectSection'
 );
 

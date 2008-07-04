@@ -10,11 +10,12 @@ if (!defined('MEDIAWIKI')) {
 }
 
 $wgExtensionCredits['specialpage'][] = array(
-	'name'=>'Stale pages',
-	'url'=>'http://www.mediawiki.org/wiki/Extension:Stale_Pages',
-	'author'=>'Tim Laqua',
-	'description'=>'Generates a list of pages that have not been edited recently',
-	'version'=>'0.7'
+	'name'           => 'Stale pages',
+	'url'            => 'http://www.mediawiki.org/wiki/Extension:Stale_Pages',
+	'author'         => 'Tim Laqua',
+	'description'    => 'Generates a list of pages that have not been edited recently',
+	'descriptionmsg' => 'stalepages-desc'
+	'version'        => '0.7'
 );
 
 if( version_compare( $wgVersion, '1.11', '>=' ) ) {    

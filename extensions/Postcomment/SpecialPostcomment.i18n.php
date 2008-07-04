@@ -8,6 +8,7 @@
 $messages = array();
 
 $messages['en'] = array(
+	'postcomment_desc'                     => 'Allows users to post comments directly to discussion pages.',
 	'postcomment_discussionprotected'      => 'This discussion page has been protected from further postings.',
 	'postcomment_notloggedin'              => 'You are not logged in.',
 	'postcomment_youareloggedinas'         => 'You are logged in as $1',

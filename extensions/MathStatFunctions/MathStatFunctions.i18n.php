@@ -8,6 +8,7 @@
 $messages = array();
 
 $messages['en'] = array(
+        'msfunc_desc'     => 'A collection of mathematical and statistical functions',
         'msfunc_nan'      => 'Resulting value is not a number',
         'msfunc_inf'      => 'Resulting value is infinity',
         'msfunc_div_zero' => 'Division by zero',
@@ -70,6 +71,16 @@ $messages['de'] = array(
  */
 $messages['eo'] = array(
 	'msfunc_div_zero' => 'Divido per nulo',
+);
+
+/** Persian (فارسی)
+ * @author Huji
+ */
+$messages['fa'] = array(
+        'msfunc_desc'     => 'مجموعه‌ای از عملکردهای ریاضی و آماری',
+        'msfunc_nan'      => 'مقدار نتیجه یک عدد نیست',
+        'msfunc_inf'      => 'مقدار نتیجه بی‌نهایت است',
+        'msfunc_div_zero' => 'تقسیم بر صفر',
 );
 
 $messages['fr'] = array(

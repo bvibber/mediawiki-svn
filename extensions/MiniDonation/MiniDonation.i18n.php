@@ -8,6 +8,7 @@
 $messages = array();
 
 $messages['en'] = array(
+	'donationform-desc' => 'Adds a tag <tt>&lt;donateform&gt;</tt> to support donations via PayPal',
 	'donationform-submit' => 'Donate via PayPal',
 );
 

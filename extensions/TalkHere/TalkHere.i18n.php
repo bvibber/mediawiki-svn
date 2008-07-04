@@ -15,6 +15,7 @@ $messages = array();
  * @author Daniel Kinzler, brightbyte.de
  */
 $messages['en'] = array(
+	'talkhere-desc'        => 'Puts the talk page into the article page',
 	'talkhere-title'       => '$1',
 	'talkhere-headtext'    => '',
 	'talkhere-foottext'    => "The above comments may have been left by visitors.

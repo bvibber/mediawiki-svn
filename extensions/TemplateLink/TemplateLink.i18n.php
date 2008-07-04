@@ -14,15 +14,16 @@ $messages = array();
  * @author Magnus Manske
  */
 $messages['en'] = array(
-                'templatelink'          => 'Template Link',
-                'templatelink_empty'    => 'You have to supply a parameter.',
-                'templatelink_newtitle' => '$1 (transcluded)',
+	'templatelink'          => 'Template Link',
+	'templatelink_desc'     => 'This extension can show a template as a new page',
+	'templatelink_empty'    => 'You have to supply a parameter.',
+	'templatelink_newtitle' => '$1 (transcluded)',
 );
 
 $messages['ar'] = array(
-		'templatelink' => 'وصلة قالب',
-		'templatelink_empty' => 'يجب عليك توفير محدد.',
-		'templatelink_newtitle' => '$1 (مضمنة)',
+	'templatelink' => 'وصلة قالب',
+	'templatelink_empty' => 'يجب عليك توفير محدد.',
+	'templatelink_newtitle' => '$1 (مضمنة)',
 );
 
 /** Kotava (Kotava)
@@ -35,8 +36,8 @@ $messages['avk'] = array(
 );
 
 $messages['bcl'] = array(
-		'templatelink' => 'Takod kan Templato',
-		'templatelink_empty' => 'Kaipuhan mong suplayan an parametro.',
+	'templatelink' => 'Takod kan Templato',
+	'templatelink_empty' => 'Kaipuhan mong suplayan an parametro.',
 );
 
 /** Bulgarian (Български)
@@ -47,9 +48,9 @@ $messages['bg'] = array(
 );
 
 $messages['de'] = array(
-                'templatelink' => 'Vorlagen-Link',
-                'templatelink_empty' => 'Ein Parameter muss angegeben werden.',
-                'templatelink_newtitle' => '$1 (ersetzt)',
+	'templatelink' => 'Vorlagen-Link',
+	'templatelink_empty' => 'Ein Parameter muss angegeben werden.',
+	'templatelink_newtitle' => '$1 (ersetzt)',
 );
 
 /** Lower Sorbian (Dolnoserbski)
@@ -78,21 +79,21 @@ $messages['eo'] = array(
 );
 
 $messages['fr'] = array(
-		'templatelink' => 'Lien vers modèle',
-		'templatelink_empty' => 'Vous devez saisir un paramètre.',
-		'templatelink_newtitle' => '$1 (tranclus)',
+	'templatelink' => 'Lien vers modèle',
+	'templatelink_empty' => 'Vous devez saisir un paramètre.',
+	'templatelink_newtitle' => '$1 (tranclus)',
 );
 
 $messages['gl'] = array(
-		'templatelink' => 'Ligazón do modelo',
-		'templatelink_empty' => 'Vostede ten que proporcionar un parámetro.',
-		'templatelink_newtitle' => '$1 (transcluído)',
+	'templatelink' => 'Ligazón do modelo',
+	'templatelink_empty' => 'Vostede ten que proporcionar un parámetro.',
+	'templatelink_newtitle' => '$1 (transcluído)',
 );
 
 $messages['hsb'] = array(
-		'templatelink' => 'Předłohowy wotkaz',
-		'templatelink_empty' => 'Dyrbiš parameter podać.',
-		'templatelink_newtitle' => '$1 (narunany)',
+	'templatelink' => 'Předłohowy wotkaz',
+	'templatelink_empty' => 'Dyrbiš parameter podać.',
+	'templatelink_newtitle' => '$1 (narunany)',
 );
 
 /** Haitian (Kreyòl ayisyen)
@@ -126,9 +127,9 @@ $messages['km'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
-		'templatelink'          => 'Schabloune-Link',
-		'templatelink_empty'    => 'Dir musst e Parameter uginn.',
-		'templatelink_newtitle' => '$1 (ersat)',
+	'templatelink'          => 'Schabloune-Link',
+	'templatelink_empty'    => 'Dir musst e Parameter uginn.',
+	'templatelink_newtitle' => '$1 (ersat)',
 );
 
 /** Marathi (मराठी)
@@ -142,9 +143,9 @@ $messages['mr'] = array(
 );
 
 $messages['nl'] = array(
-                'templatelink' => 'Sjabloonverwijzing',
-                'templatelink_empty' => 'Geef een parameter op.',
-                'templatelink_newtitle' => '$1 (getranscludeerd)',
+	'templatelink' => 'Sjabloonverwijzing',
+	'templatelink_empty' => 'Geef een parameter op.',
+	'templatelink_newtitle' => '$1 (getranscludeerd)',
 );
 
 /** Norwegian (‪Norsk (bokmål)‬)
@@ -177,9 +178,9 @@ $messages['pl'] = array(
 );
 
 $messages['pms'] = array(
-		'templatelink' => 'Anliura dlë stamp',
-		'templatelink_empty' => 'A venta ch\'a buta un paràmetr.',
-		'templatelink_newtitle' => '$1 (an transclusion)',
+	'templatelink' => 'Anliura dlë stamp',
+	'templatelink_empty' => 'A venta ch\'a buta un paràmetr.',
+	'templatelink_newtitle' => '$1 (an transclusion)',
 );
 
 /** Pashto (پښتو)
@@ -209,9 +210,9 @@ $messages['sk'] = array(
  * @author Pyt
  */
 $messages['stq'] = array(
-		'templatelink'          => 'Foarloagen-Ferbiendenge',
-		'templatelink_empty'    => 'Aan Parameter mout anroat wäide.',
-		'templatelink_newtitle' => '$1 (ärsät)',
+	'templatelink'          => 'Foarloagen-Ferbiendenge',
+	'templatelink_empty'    => 'Aan Parameter mout anroat wäide.',
+	'templatelink_newtitle' => '$1 (ärsät)',
 );
 
 /** Swedish (Svenska)

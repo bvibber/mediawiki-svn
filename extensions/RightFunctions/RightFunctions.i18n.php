@@ -10,7 +10,7 @@ $messages = array();
  * @author Ryan Schmidt
  */
 $messages['en'] = array(
-	'rightfunctions'          => 'Permission-based parser functions',
+	'rightfunctions-desc'          => 'Permission-based parser functions',
 	'rightfunctions-restboth' => '$1 (from local page), $2 (from cascading sources)',
 	'rightfunctions-restcasc' => '$1 (from cascading sources)',
 );
@@ -19,7 +19,7 @@ $messages['en'] = array(
  * @author Meno25
  */
 $messages['ar'] = array(
-	'rightfunctions'          => 'دوال بارسر تعتمد على السماحات',
+	'rightfunctions-desc'          => 'دوال بارسر تعتمد على السماحات',
 	'rightfunctions-restboth' => '$1 (من الصفحة المحلية)، $2 (من المصادر المضمنة)',
 	'rightfunctions-restcasc' => '$1 (من المصادر المضمنة)',
 );
@@ -36,7 +36,7 @@ $messages['bg'] = array(
  * @author Yekrats
  */
 $messages['eo'] = array(
-	'rightfunctions'          => 'Rajtecaj funkcioj de sintaksaj analiziloj',
+	'rightfunctions-desc'          => 'Rajtecaj funkcioj de sintaksaj analiziloj',
 	'rightfunctions-restboth' => '$1 (de loka paĝo), $2 (de rilataj fontoj)',
 	'rightfunctions-restcasc' => '$1 (de rilataj fontoj)',
 );
@@ -45,7 +45,7 @@ $messages['eo'] = array(
  * @author Grondin
  */
 $messages['fr'] = array(
-	'rightfunctions'          => 'Permissions de base des fonctions parseurs',
+	'rightfunctions-desc'          => 'Permissions de base des fonctions parseurs',
 	'rightfunctions-restboth' => '$1 (à partir de la page locale), $2 (à partir des sources en cascade)',
 	'rightfunctions-restcasc' => '$1 (à partir des sources en cascade)',
 );
@@ -54,7 +54,7 @@ $messages['fr'] = array(
  * @author Toliño
  */
 $messages['gl'] = array(
-	'rightfunctions'          => 'Permisos baseados nas funcións analíticas',
+	'rightfunctions-desc'          => 'Permisos baseados nas funcións analíticas',
 	'rightfunctions-restboth' => '$1 (a partir da páxina local), $2 (a partir das fontes en serie)',
 	'rightfunctions-restcasc' => '$1 (a partir das fontes en serie)',
 );
@@ -63,7 +63,7 @@ $messages['gl'] = array(
  * @author Kaustubh
  */
 $messages['hi'] = array(
-	'rightfunctions'          => 'अनुमति-आधारित पार्सर कार्य',
+	'rightfunctions-desc'          => 'अनुमति-आधारित पार्सर कार्य',
 	'rightfunctions-restcasc' => '$1 (अन्य स्रोतोंसे)',
 );
 
@@ -71,7 +71,7 @@ $messages['hi'] = array(
  * @author Michawiki
  */
 $messages['hsb'] = array(
-	'rightfunctions'          => 'Parserowe funkcije na zakładźe prawow',
+	'rightfunctions-desc'          => 'Parserowe funkcije na zakładźe prawow',
 	'rightfunctions-restboth' => '$1 (z lokalneje strony), $2 (z překrywacych žórłow)',
 	'rightfunctions-restcasc' => '$1 (z překrywacych žórłow)',
 );
@@ -80,14 +80,14 @@ $messages['hsb'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
-	'rightfunctions' => 'Parser Funktiounen déi vun de Benotzerrechter ofhänken',
+	'rightfunctions-desc' => 'Parser Funktiounen déi vun de Benotzerrechter ofhänken',
 );
 
 /** Marathi (मराठी)
  * @author Kaustubh
  */
 $messages['mr'] = array(
-	'rightfunctions'          => 'परवानगी आधारित पार्सर कार्ये',
+	'rightfunctions-desc'          => 'परवानगी आधारित पार्सर कार्ये',
 	'rightfunctions-restboth' => '$1 (स्थानिक स्रोतांकडून), $2 (इतर स्रोतांकडून)',
 	'rightfunctions-restcasc' => '$1 (इतर स्रोतांकडून)',
 );
@@ -97,7 +97,7 @@ $messages['mr'] = array(
  * @author SPQRobin
  */
 $messages['nl'] = array(
-	'rightfunctions'          => 'Rechtengebaseerde parserfuncties',
+	'rightfunctions-desc'          => 'Rechtengebaseerde parserfuncties',
 	'rightfunctions-restboth' => '$1 (van plaatselijke pagina), $2 (van bovengelegen bronnen)',
 	'rightfunctions-restcasc' => '$1 (van bovengelegen bronnen)',
 );
@@ -106,7 +106,7 @@ $messages['nl'] = array(
  * @author Jon Harald Søby
  */
 $messages['no'] = array(
-	'rightfunctions'          => 'Rettighetsbaserte parserfunksjoner',
+	'rightfunctions-desc'          => 'Rettighetsbaserte parserfunksjoner',
 	'rightfunctions-restboth' => '$1 (fra lokal side), $2 (fra arvende kilder)',
 	'rightfunctions-restcasc' => '$1 (fra arvende kilder)',
 );
@@ -115,7 +115,7 @@ $messages['no'] = array(
  * @author Cedric31
  */
 $messages['oc'] = array(
-	'rightfunctions'          => 'Permissions de basa de las foncions parsaires',
+	'rightfunctions-desc'          => 'Permissions de basa de las foncions parsaires',
 	'rightfunctions-restboth' => '$1 (a partir de la pagina locala), $2 (a partir de las fonts en cascada)',
 	'rightfunctions-restcasc' => '$1 (a partir de las fonts en cascada)',
 );
@@ -124,7 +124,7 @@ $messages['oc'] = array(
  * @author Sp5uhe
  */
 $messages['pl'] = array(
-	'rightfunctions'          => 'Funkcje parsera pracujące na uprawnieniach',
+	'rightfunctions-desc'          => 'Funkcje parsera pracujące na uprawnieniach',
 	'rightfunctions-restboth' => '$1 (z lokalnej strony), $2 (ze źródeł kaskadowych)',
 	'rightfunctions-restcasc' => '$1 (ze źródeł kaskadowych)',
 );
@@ -133,7 +133,7 @@ $messages['pl'] = array(
  * @author Александр Сигачёв
  */
 $messages['ru'] = array(
-	'rightfunctions'          => 'Функции парсера на основе разрешений',
+	'rightfunctions-desc'          => 'Функции парсера на основе разрешений',
 	'rightfunctions-restboth' => '$1 (с локальной страницы), $2 (из каскадных источников)',
 	'rightfunctions-restcasc' => '$1 (из каскадных источников)',
 );
@@ -142,7 +142,7 @@ $messages['ru'] = array(
  * @author Helix84
  */
 $messages['sk'] = array(
-	'rightfunctions'          => 'Funkcie syntaktického analyzátora podľa oprávnení',
+	'rightfunctions-desc'          => 'Funkcie syntaktického analyzátora podľa oprávnení',
 	'rightfunctions-restboth' => '$1 (z lokálnej stránky), $2 (kaskádovito zo zdroja)',
 	'rightfunctions-restcasc' => '$1 (kaskádovito zo zdroja)',
 );
@@ -152,7 +152,7 @@ $messages['sk'] = array(
  * @author Lejonel
  */
 $messages['sv'] = array(
-	'rightfunctions'          => 'Parserfunktioner som är baserade på användarrättigheter',
+	'rightfunctions-desc'          => 'Parserfunktioner som är baserade på användarrättigheter',
 	'rightfunctions-restboth' => '$1 (från lokal sida), $2 (från kaskaderade källor)',
 	'rightfunctions-restcasc' => '$1 (från kaskaderade källor)',
 );
@@ -161,7 +161,7 @@ $messages['sv'] = array(
  * @author Vinhtantran
  */
 $messages['vi'] = array(
-	'rightfunctions'          => 'Hàm cú pháp dựa trên sự cấp phép',
+	'rightfunctions-desc'          => 'Hàm cú pháp dựa trên sự cấp phép',
 	'rightfunctions-restboth' => '$1 (từ trang cục bộ), $2 (từ các nguồn theo tầng)',
 	'rightfunctions-restcasc' => '$1 (từ các nguồn theo tầng)',
 );
