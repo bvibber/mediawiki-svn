@@ -14,7 +14,7 @@ $wgExtensionCredits['specialpage'][] = array(
 	'url'            => 'http://www.mediawiki.org/wiki/Extension:Stale_Pages',
 	'author'         => 'Tim Laqua',
 	'description'    => 'Generates a list of pages that have not been edited recently',
-	'descriptionmsg' => 'stalepages-desc'
+	'descriptionmsg' => 'stalepages-desc',
 	'version'        => '0.7'
 );
 
