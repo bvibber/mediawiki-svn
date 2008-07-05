@@ -311,20 +311,31 @@ class MV_SpecialMediaSearch extends SpecialPage {
 						$mvd_cnt_links.='<br>';			
 						assoc_array_increment($sideBarLinkBucket,'person', $mvd->spoken_by);											
 					}
-					$mvd_cat_links='';
+					$mvd_cat_links=$mvd_bill_links='';
 					$coma='';
 					if(isset($mvd->categories)){						
 						foreach($mvd->categories as $cat_id=>$na){							
 							$cTitle= Title::MakeTitle(NS_CATEGORY, $cat_id);
 							if($mvd_cat_links=='')
 								$mvd_cat_links.=wfMsg('mv_search_categories').': ';								
-							$mvd_cat_links.=$sk->makeKnownLinkObj($cTitle, $cTitle->getText() );														
+							$mvd_cat_links.=$coma. $sk->makeKnownLinkObj($cTitle, $cTitle->getText() );														
 							$coma=', ';
 							assoc_array_increment($sideBarLinkBucket,'category', $cat_id);	
 						}
 					}
-					
-					$mvStreamTitle = Title :: MakeTitle(MV_NS_STREAM, $mvTitle->getNearStreamName());
+					$coma='';
+					if(isset($mvd->bills)){						
+						foreach($mvd->bills as $bill_id=>$na){							
+							$bTitle= Title::newFromText($bill_id);
+							if($mvd_bill_links=='')
+								$mvd_bill_links.=wfMsg('mv_search_bills').': ';								
+							$mvd_bill_links.=$coma. $sk->makeKnownLinkObj($bTitle, $bTitle->getText() );														
+							$coma=', ';
+							assoc_array_increment($sideBarLinkBucket,'bill', $bill_id);	
+						}
+					}
+					//link directly to the current range: 					
+					$mvStreamTitle = Title :: MakeTitle(MV_NS_STREAM, $mvTitle->getNearStreamName($extra_range='0'));
 					//$mvTitle->getStreamName() .'/'.$mvTitle->getStartTime() .'/'. $mvTitle->getEndTime() );
 					$head_link = $sk->makeKnownLinkObj($mvStreamTitle, $mvTitle->getStreamNameText().' :: '.$mvTitle->getTimeDesc());
 					$img_link = $sk->makeKnownLinkObj($mvStreamTitle, '<img alt="image for '.$mvTitle->getStreamNameText().' '. $mvTitle->getTimeDesc().'" src="'.$mvTitle->getStreamImageURL('small').'"/>');												
@@ -339,6 +350,7 @@ class MV_SpecialMediaSearch extends SpecialPage {
 								<p>Matching Phrase:' .$this->termHighlight($mvd->text, implode('|', $this->getTerms()), 2, 150).' </p>
 								<span class="by">'.$mvd_cnt_links.'</span>
 								<span class="by">'.$mvd_cat_links.'</span>
+								<span class="by">'.$mvd_bill_links.'</span>
 							</div>
 							<div class="result_meta">
 								<span class="views">Views: NYA</span>
@@ -363,74 +375,81 @@ class MV_SpecialMediaSearch extends SpecialPage {
 				<div class="suggestionsBox" id="searchSideBarInner">';
 								
 		//look for people matches max of 3
-		$fist_block=' fist_block';		
+		$first_block=' first_block';		
 		$matches=0;
 		$person_out = MV_SpecialMediaSearch::auto_complete_person($this->unified_term_search, 3, 'person_html', $matches);		
 		if($person_out!='' || count($sideBarLinkBucket['person'])!=0 ){
 			//for now don't include({$matches})
-			$o.="<div class=\"block{$fist_block}\">
-					<h6>People Results </h6>
+			$o.="<div class=\"block{$first_block}\">
+					<h6>".wfMsg('mv_people_results')."</h6>
 				</div>";		
 			$o.='<div class="block wide_block">'.
 					$person_out;
-			$pAry = & $sideBarLinkBucket['person'];
-			arsort($pAry);			
-			$i=0;
-			foreach($pAry as $person_name=>$count){				
-				if($i==$perSectionCount)break;
-				$o.=MV_SpecialMediaSearch::format_ac_line($person_name, '', '', MV_SpecialMediaSearch::getPersonImageURL($person_name), $format='person_html');				
-				$i++;
-			}			
+			if(isset($sideBarLinkBucket['person'])){
+				$pAry = & $sideBarLinkBucket['person'];
+				arsort($pAry);			
+				$i=0;
+				foreach($pAry as $person_name=>$count){				
+					if($i==$perSectionCount)break;
+					$o.=MV_SpecialMediaSearch::format_ac_line($person_name, '', '', MV_SpecialMediaSearch::getPersonImageURL($person_name), $format='person_html');				
+					$i++;
+				}		
+			}	
 			$o.='</div>';
-			$fist_block='';
+			$first_block='';
 		}		
 		//get categories	
 		$category_out = MV_SpecialMediaSearch::auto_complete_search_categories($this->unified_term_search, 3, 'block_html',$matches);
 		if($category_out!='' || count($sideBarLinkBucket['category'])!=0 ){
-			$o.="<div class=\"block{$fist_block}\">
-					<h6>Category Results (3)</h6>
+			$o.="<div class=\"block{$first_block}\">
+					<h6>".wfMsg('mv_category_results')."</h6>
 				</div>";
 			$o.='<div class="block wide_block">'.$category_out;
-			$cAry = & $sideBarLinkBucket['category'];
-			arsort($cAry);
-			$i=0;
-			foreach($cAry as $cat_name=>$count){
-				if($i==$perSectionCount)break;
-				$o.=MV_SpecialMediaSearch::format_ac_line($cat_name, '', '','no_image', $format='block_html');				
-				$i++;
-			}				
+			if(isset($sideBarLinkBucket['category'])){
+				$cAry = & $sideBarLinkBucket['category'];
+				arsort($cAry);
+				$i=0;			
+				foreach($cAry as $cat_name=>$count){
+					if($i==$perSectionCount)break;
+					$o.=MV_SpecialMediaSearch::format_ac_line($cat_name, '', '','no_image', $format='block_html');				
+					$i++;				
+				}				
+			}
 			$o.='</div>';				
-			$fist_block='';
-		}		
-
-		
-			
-		/*$bill_out = MV_SpecialMediaSearch::auto_complete_category('Bill', $this->unified_term_search, 3, 'block_html', $matches);
-		if($bill_out!=''){
-			$out.=$catNStxt.':Bill|<h6>'.wfMsg('mv_bill_matches').'</h6>|no_image'."\n";
-			$out.=$bill_out;
-		}*/			
-	
-		$o.='													
-					<div class="block">
-						<h6>Bill Results (2)</h6>
-					</div>
-					
-					<div class="block wide_block">
-						<p class="normal_match"><a href="#"><span>H.R. 3238: United-S<strong>ta</strong>tes-Israel Energy Cooperation Act</span></a></p>
-						<p class="normal_match"><a class="last_match" href="#"><span>H.R. 3238: United-S<strong>ta</strong>tes-Israel Energy Cooperation Act</span></a></p>
-					</div>
-					
-					<div class="block">
-						<h6>Interest Groups (2)</h6>
-					</div>
-					
-					<div class="block wide_block">
-						<p class="normal_match"><a href="#"><span>Pillow Makers</span></a></p>
-						<p class="normal_match"><a href="#"><span>Pill Companies</span></a></p>
-					</div>
-			</div><!--searchSideBarInner-->
-		</div>';
+			$first_block='';
+		}							
+		//get bills:
+		$bill_out = MV_SpecialMediaSearch::auto_complete_category('Bill', $this->unified_term_search, 3, 'block_html', $matches);
+		if($bill_out!='' || count($sideBarLinkBucket['bill'])!=0 ){
+			global $wgContLang;
+			$o.="<div class=\"block{$first_block}\">
+					<h6>".wfMsg('mv_bill_results')."</h6>
+				</div>";
+			$o.='<div class="block wide_block">'.$bill_out;
+			if($sideBarLinkBucket['bill']){
+				$bAry = & $sideBarLinkBucket['bill'];
+				arsort($bAry);
+				$i=0;			
+				foreach($bAry as $bill_name=>$count){
+					if($i==$perSectionCount)break;
+					$o.=MV_SpecialMediaSearch::format_ac_line($bill_name, '', '','no_image', $format='block_html');				
+					$i++;
+				}				
+			}
+			$o.='</div>';				
+			$first_block='';
+		}
+		//intrest out is just simple title matching (for now) 
+		$intrest_out = MV_SpecialMediaSearch::auto_complete_category('Interest_Group', $this->unified_term_search, 3, 'block_html', $matches);
+		if($intrest_out!=''){
+			$o.="<div class=\"block{$first_block}\">
+					<h6>".wfMsg('mv_intrest_group_results')."</h6>
+				</div>";
+			$o.='<div class="block wide_block">'.$intrest_out.'</div>';			
+			$first_block='';		
+		}
+		$o.='</div><!--searchSideBarInner-->
+		</div>';			
 		return $o;
 	}
 	function getResultsHTML() {
@@ -517,8 +536,7 @@ class MV_SpecialMediaSearch extends SpecialPage {
 							'</a>' .
 						'&nbsp;&nbsp;';
 					//output control links:
-					//make stream title link:						
-					 
+					//make stream title link:											
 					$mvStreamTitle = Title :: MakeTitle(MV_NS_STREAM, $mvTitle->getNearStreamName());
 					//$mvTitle->getStreamName() .'/'.$mvTitle->getStartTime() .'/'. $mvTitle->getEndTime() );
 					$mvd_cnt_links .= $sk->makeKnownLinkObj($mvStreamTitle, '<img border="1" src="' . $mvgScriptPath . '/skins/images/run_mv_stream.png"> '.wfMsg('mv_improve_transcript'), '', '', '', '', ' title="' . wfMsg('mv_view_in_stream_interface') . '" ');
@@ -948,7 +966,7 @@ class MV_SpecialMediaSearch extends SpecialPage {
 		}
 		return $out;
 	}
-	function auto_complete_category($category, $val,  $result_limit='5'){
+	function auto_complete_category($category, $val,  $result_limit='5', $format='ac_line', &$match_count=''){
 		$dbr =& wfGetDB(DB_SLAVE);		
 		$result = $dbr->select( 'categorylinks', 'cl_sortkey', 
 			array('cl_to'=>$category, 
@@ -957,10 +975,11 @@ class MV_SpecialMediaSearch extends SpecialPage {
 			array('LIMIT'=>$result_limit));
 		//print 'ran: ' .  $dbr->lastQuery();
 		//mention_bill catebory Bill
+		$match_count = $dbr->numRows($result);
 		if($dbr->numRows($result) == 0)return '';
 		$out='';
 		while($row = $dbr->fetchObject($result)){
-			$out.=MV_SpecialMediaSearch::format_ac_line($row->cl_sortkey, $val);
+			$out.=MV_SpecialMediaSearch::format_ac_line($row->cl_sortkey, $val, '', 'no_image', $format);
 		}
 		return $out;
 	}

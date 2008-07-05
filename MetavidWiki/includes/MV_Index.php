@@ -184,7 +184,7 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
  		global $mvIndexTableName,$mvStreamFilesTable, $mvDefaultClipLength,
  		 $wgRequest, $mvDo_SQL_CALC_FOUND_ROWS, $mvMediaSearchResultsLimit;
  		 
- 		global $mvSpokenByInSearchResult, $mvCategoryInSearchResult;
+ 		global $mvSpokenByInSearchResult, $mvCategoryInSearchResult, $mvBillInSearchResult;
  		 		  		 		  
  		$dbr =& wfGetDB(DB_SLAVE);
  		//organize the queries (group full-text searches and category/attributes)
@@ -345,7 +345,11 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
  				$sql.="LEFT JOIN `smw_relations` ON (`mv_mvd_index`.`mv_page_id`=`smw_relations`.`subject_id` " .
  					"AND `smw_relations`.`relation_title`='Spoken_By') ";
  			}
-	 		$sql.="WHERE $snq ";
+ 			$sql.="WHERE ";
+ 			$sql.=" ( `{$mvIndexTableName}`.`mvd_type`='ht_en' OR  `{$mvIndexTableName}`.`mvd_type`='anno_en') AND" ;
+	 		$sql.=" $snq ";
+	 		//limit to ht_en & anno_en (for now) 
+	 		
 	 		$two_part_anor='';
 	 		if($group_spoken){
 	 			$ftq.=$ftq_match;		 				 		
@@ -417,34 +421,40 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
  		} 			 	
  		
  		
- 		
- 		//do category lookup for all search result ranges
- 		if($mvCategoryInSearchResult){
- 			$sql='SELECT `categorylinks`.`cl_to`, `mv_mvd_index`.`stream_id`,
-						  `mv_mvd_index`.`start_time`, 
-						  `mv_mvd_index`.`end_time`';
-			$sql.='FROM `mv_mvd_index`
-				   JOIN `categorylinks` ON (`mv_mvd_index`.`mv_page_id` = `categorylinks`.`cl_from`)';					
+ 		//do category & bill lookup for search result ranges
+ 		if($mvCategoryInSearchResult || $mvBillInSearchResult){
+ 			$sql="SELECT {$dbr->tableName('categorylinks')}.`cl_to`, `mv_mvd_index`.`stream_id`,
+						  `$mvIndexTableName`.`start_time`, 
+						  `$mvIndexTableName`.`end_time`,
+						  {$dbr->tableName('smw_relations')}.`object_title` as bill_to";
+			$sql.=" FROM `$mvIndexTableName`
+				   LEFT JOIN {$dbr->tableName('categorylinks')} ON (`$mvIndexTableName`.`mv_page_id` = {$dbr->tableName('categorylinks')}.`cl_from`) 
+				   LEFT JOIN {$dbr->tableName('smw_relations')} ON (
+						`$mvIndexTableName`.`mv_page_id` = {$dbr->tableName('smw_relations')}.`subject_id` AND
+						{$dbr->tableName('smw_relations')}.`relation_title`='bill' ) ";					
 			//generate stream_id, range sets
-			$sql.=' WHERE `mv_mvd_index`.`mvd_type`=\'Anno_en\' AND (';
+			$sql.=" WHERE `$mvIndexTableName`.`mvd_type`='Anno_en' AND (";
 			$or='';
 			foreach($ret_ary as $stream_id=>$rangeSet){
 				foreach($rangeSet as $range){
-					$sql.=$or . '( `mv_mvd_index`.`stream_id`='.$stream_id; 
-					$sql.=" AND `start_time` <= " . $range['s'];
-					$sql.=" AND `end_time` >= " . $range['e'] . ' ) ';
+					$sql.=$or . "( `$mvIndexTableName`.`stream_id`='$stream_id'"; 
+					$sql.=" AND `start_time` <= '" . $range['s']."'";
+					$sql.=" AND `end_time` >= '" . $range['e'] . '\' ) ';
 					$or = ' OR '; 	
 				}
 			}	
-			$sql.=') LIMIT 0, 200';			
+			$sql.=') LIMIT 0, 200';						
 			//merge category info back into base results:	
-			$result = $dbr->query($sql,  'MV_Index:doCategoryInSearchResult');
+			$result = $dbr->query($sql,  'MV_Index:doCategorySearchResult');
 			while($cl_row = $dbr->fetchObject( $result )){		
 				foreach($ret_ary[$cl_row->stream_id] as &$range){					
 					foreach($range['rows'] as &$result_row){
 						if($result_row->start_time <= $cl_row->end_time && 
 						  $result_row->end_time >= $cl_row->start_time){
-							$result_row->categories[$cl_row->cl_to]=true;							
+						  	if($cl_row->cl_to)
+								$result_row->categories[$cl_row->cl_to]=true;
+							if($cl_row->bill_to)
+								$result_row->bills[$cl_row->bill_to]=true;						
 						} 
 					}
 				}

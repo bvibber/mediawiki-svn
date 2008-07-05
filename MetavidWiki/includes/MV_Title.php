@@ -172,13 +172,14 @@
 	/*
 	 * returns a near by stream range:
 	 */
-	function getNearStreamName($range='', $length=''){
+	function getNearStreamName($range=null, $length=null){
 		global $mvDefaultClipLength, $mvDefaultClipRange;
 		
 		$stream = & mvGetMVStream($this->stream_name);
-				
-		if($range=='')$range = $mvDefaultClipRange;
-		if($length=='')$length=$mvDefaultClipLength;
+	
+		if($range==null)$range = $mvDefaultClipRange;
+		if($length==null)$length=$mvDefaultClipLength;
+		
 		//subtract $range seconds from the start time:
 		$start_t = $this->getStartTimeSeconds()  - $range;
 		if($start_t<0)$start_t=0;

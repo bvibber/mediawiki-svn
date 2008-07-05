@@ -1392,24 +1392,26 @@ mediaElement.prototype =
     addROE:function(roe_data)
     {
         var _this = this;
-        $j.each(roe_data.getElementsByTagName('mediaSource'), function(inx, source)
-        {
-			_this.tryAddSource(source);
-        });
-        //set the thumbnail:
-		$j.each(roe_data.getElementsByTagName('img'), function(inx, n){
-            if(n.getAttribute("id")=="stream_thumb"){
-                js_log('set thumb to '+n.getAttribute("src"));
-                _this['thumbnail'] = n.getAttribute("src");	
-            }
-        })
-        //set the linkback:
-		$j.each(_this.roe_data.getElementsByTagName('link'), function(inx, n){
-            if(n.getAttribute('id')=='html_linkback'){
-                js_log('set linkback to '+n.getAttribute("href"));
-                _this['linkback'] = n.getAttribute('href');
-            }
-        })
+        if(this.roe_data){
+	        $j.each(roe_data.getElementsByTagName('mediaSource'), function(inx, source)
+	        {
+				_this.tryAddSource(source);
+	        });
+	        //set the thumbnail:
+			$j.each(roe_data.getElementsByTagName('img'), function(inx, n){
+	            if(n.getAttribute("id")=="stream_thumb"){
+	                js_log('set thumb to '+n.getAttribute("src"));
+	                _this['thumbnail'] = n.getAttribute("src");	
+	            }
+	        })
+	        //set the linkback:
+			$j.each(_this.roe_data.getElementsByTagName('link'), function(inx, n){
+	            if(n.getAttribute('id')=='html_linkback'){
+	                js_log('set linkback to '+n.getAttribute("href"));
+	                _this['linkback'] = n.getAttribute('href');
+	            }
+	        })
+        }
     }
 };
 

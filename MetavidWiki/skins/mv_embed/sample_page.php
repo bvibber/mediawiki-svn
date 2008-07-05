@@ -25,11 +25,14 @@ thumbnail="http://metavid.ucsc.edu/wiki/index.php?action=ajax&rs=mv_frame_server
 src="http://128.114.20.64/media/senate_proceeding_08-01-07.ogg.anx?t=0:27:16/0:27:32" 
 roe="http://localhost/mvw-exp/index.php?title=Special:MvExportStream&feed_format=roe&stream_name=senate_proceeding_08-01-07&t=0:27:16/0:27:32"
 show_meta_link="false"  autoplay="true" style="width:160px;height:120px" controls="true" embed_link="true" />';
-$sample_embed[0]['desc']=' auto play test';
+$sample_embed[0]['desc']=' auto play test (similar embed syntax to the metavidWiki site)';
+
 /*$sample_embed[0]['tag']='<video id="v0" src="sample.ogg" thumbnail="sample.jpg"></video>';
 $sample_embed[0]['desc']='basic usage with manual controls:<br />'. 
 					'<a href="javascript:document.getElementById(\'v1\').play();">Play</a> | '.
 					'<a href="javascript:document.getElementById(\'v1\').stop();">Stop</a> <br />';*/
+
+
 					//'<b>Exported functions:</b><br />'.
 					//'<a href="javascript:document.getElementById(\'v1\').mute();">Get Time</a> | ';
 //'thumbnail="http://metavid.ucsc.edu/image_media/senate_proceeding_06-20-07_09?t=3:50:27&size=320x240" ' .
