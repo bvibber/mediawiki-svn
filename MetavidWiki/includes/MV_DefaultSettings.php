@@ -33,8 +33,15 @@ $mvEnableJSMVDrewrite=true;
 ##########################
 # semanticWiki integration options
 ##########################
+
+//@@todo we should clean this up!... into a semantic maping array or object
 //if you want to include spoken by relation in search results:  
 $mvSpokenByInSearchResult = true;
+//if you want to include category lookup in search results:
+$mvCategoryInSearchResult = true;
+//if you want to include bill lookup in search results:
+$mvBillInSearchResult = true;
+
 
 #########################
 # metavid paths 

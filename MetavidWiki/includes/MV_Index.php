@@ -152,7 +152,7 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
  		$result =& $dbr->query( $sql, 'MV_Index:time_index_query'); 	 	
  		return $result;
  	} 	
-	/*@@todo figure another way this is not a very fast query: */
+	/*@@todo figure another way to get at this data...this is not a very fast query: */
  	function getMVDTypeInRange($stream_id, $start_time=null, $end_time=null){
  		global $mvIndexTableName;
  		$dbr =& wfGetDB(DB_SLAVE);	 		 		
@@ -180,9 +180,12 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
  		//print "ran sql:" . $dbw->lastQuery() . "\n";
  		return true;
  	}
- 	function doFiltersQuery(&$filters){
+ 	function doFiltersQuery(&$filters, $metaDataIncludes=null){ 		
  		global $mvIndexTableName,$mvStreamFilesTable, $mvDefaultClipLength,
- 		 $wgRequest, $mvDo_SQL_CALC_FOUND_ROWS, $mvSpokenByInSearchResult, $mvMediaSearchResultsLimit; 		
+ 		 $wgRequest, $mvDo_SQL_CALC_FOUND_ROWS, $mvMediaSearchResultsLimit;
+ 		 
+ 		global $mvSpokenByInSearchResult, $mvCategoryInSearchResult;
+ 		 		  		 		  
  		$dbr =& wfGetDB(DB_SLAVE);
  		//organize the queries (group full-text searches and category/attributes)
  		//if the attribute is not a numerical just add it to the fulltext query 
@@ -376,7 +379,9 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
  			$this->numResultsFound = $found->count;
  		}else{
  			$this->numResultsFound =null;
- 		}
+ 		} 		 	
+ 		
+ 		
  		//@@TODO hide empty categories (if limit > rows found )
  		
  		//group by time range in a given stream
@@ -385,7 +390,9 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
  		//	$ret_ary[]=$row;
  		//}
  		//return $ret_ary;
- 		//group by stream_name & time range: 
+ 		//group by stream_name & time range:
+ 		
+ 		//@@todo we should deprecate stream grouping 
  		while($row = $dbr->fetchObject( $result )){
  			if(!isset($ret_ary[$row->stream_id])){
  				$ret_ary[$row->stream_id]=array();
@@ -408,6 +415,41 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
  				}
  			}
  		} 			 	
+ 		
+ 		
+ 		
+ 		//do category lookup for all search result ranges
+ 		if($mvCategoryInSearchResult){
+ 			$sql='SELECT `categorylinks`.`cl_to`, `mv_mvd_index`.`stream_id`,
+						  `mv_mvd_index`.`start_time`, 
+						  `mv_mvd_index`.`end_time`';
+			$sql.='FROM `mv_mvd_index`
+				   JOIN `categorylinks` ON (`mv_mvd_index`.`mv_page_id` = `categorylinks`.`cl_from`)';					
+			//generate stream_id, range sets
+			$sql.=' WHERE `mv_mvd_index`.`mvd_type`=\'Anno_en\' AND (';
+			$or='';
+			foreach($ret_ary as $stream_id=>$rangeSet){
+				foreach($rangeSet as $range){
+					$sql.=$or . '( `mv_mvd_index`.`stream_id`='.$stream_id; 
+					$sql.=" AND `start_time` <= " . $range['s'];
+					$sql.=" AND `end_time` >= " . $range['e'] . ' ) ';
+					$or = ' OR '; 	
+				}
+			}	
+			$sql.=') LIMIT 0, 200';			
+			//merge category info back into base results:	
+			$result = $dbr->query($sql,  'MV_Index:doCategoryInSearchResult');
+			while($cl_row = $dbr->fetchObject( $result )){		
+				foreach($ret_ary[$cl_row->stream_id] as &$range){					
+					foreach($range['rows'] as &$result_row){
+						if($result_row->start_time <= $cl_row->end_time && 
+						  $result_row->end_time >= $cl_row->start_time){
+							$result_row->categories[$cl_row->cl_to]=true;							
+						} 
+					}
+				}
+			} 
+ 		} 		 	
  		return $ret_ary;
  	}
  	function numResultsFound(){

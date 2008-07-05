@@ -435,6 +435,33 @@ function mvIsNtpTime($time){
 	return false;
 }
 /*
+ * simple array increment (supports up two 2 dim deep) 
+ * should be a cleaner way to write this... hmm...
+ */
+ function assoc_array_increment(&$ary){
+ 	$numargs = func_num_args();
+ 	switch($numargs){
+ 		case '2':
+ 			if(!isset($ary[func_get_arg(1)])){
+ 				$ary[func_get_arg(1)]=1;
+ 			}else{
+ 				$ary[func_get_arg(1)]++;
+ 			}
+ 		break;
+ 		case '3':
+ 			if(!isset($ary[func_get_arg(1)])){
+ 				$ary[func_get_arg(1)]=array();
+ 			}
+ 			if(!isset($ary[func_get_arg(1)][func_get_arg(2)])){
+ 				$ary[func_get_arg(1)][func_get_arg(2)]=1;
+ 			}else{
+ 				$ary[func_get_arg(1)][func_get_arg(2)]++;
+ 			}
+ 		break;
+ 	}
+ }
+ 
+/*
  * takes ntp time of format hh:mm:ss and converts to seconds 
  */
 function ntp2seconds($str_time){
