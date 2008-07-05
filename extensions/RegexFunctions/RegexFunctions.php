@@ -11,14 +11,17 @@ if( !defined( 'MEDIAWIKI' ) ) {
 
 //credits and hooks
 $wgExtensionFunctions[] = 'wfRegexFunctions';
+
 $wgExtensionCredits['parserhook'][] = array(
-	'name' => 'RegexFunctions',
-	'author' => 'Ryan Schmidt',
-	'url' => 'http://www.mediawiki.org/wiki/Extension:RegexFunctions',
-	'version' => '1.0',
-	'description' => 'Regular Expression parser functions',
+	'name'           => 'RegexFunctions',
+	'author'         => 'Ryan Schmidt',
+	'url'            => 'http://www.mediawiki.org/wiki/Extension:RegexFunctions',
+	'version'        => '1.1',
+	'description'    => 'Regular Expression parser functions',
+	'descriptionmsg' => 'regexfunctions-desc',
 );
 
+$wgExtensionMessagesFiles['RegexFunctions'] = dirname(__FILE__) . '/RegexFunctions.i18n.php';
 $wgHooks['LanguageGetMagic'][] = 'wfRegexFunctionsLanguageGetMagic';
 
 //default globals
@@ -54,8 +57,9 @@ function wfRegexFunctionsLanguageGetMagic( &$magicWords, $langCode ) {
 	return true;
 }
 
-Class ExtRegexFunctions {
+class ExtRegexFunctions {
 	var $num = 0;
+
 	function rmatch ( &$parser, $string = '', &$pattern = '', &$return = '', $notfound = '', $offset = 0 ) {
 		global $wgRegexFunctionsPerPage, $wgRegexFunctionsAllowModifiers, $wgRegexFunctionsDisable;
 		if(in_array('rmatch', $wgRegexFunctionsDisable))
@@ -80,6 +84,7 @@ Class ExtRegexFunctions {
 		}
 		return $return;
 	}
+
 	function rsplit ( &$parser, $string = '', &$pattern = '', $piece = 0 ) {
 		global $wgRegexFunctionsPerPage, $wgRegexFunctionsAllowModifiers, $wgRegexFunctionsLimit, $wgRegexFunctionsDisable;
 		if(in_array('rmatch', $wgRegexFunctionsDisable))
@@ -92,6 +97,7 @@ Class ExtRegexFunctions {
 		$res = preg_split( $pattern, $string, $wgRegexFunctionsLimit );
 		return $res[$piece];
 	}
+
 	function rreplace ( &$parser, $string = '', &$pattern = '', &$replace = '' ) {
 		global $wgRegexFunctionsPerPage, $wgRegexFunctionsAllowModifiers, $wgRegexFunctionsAllowE, $wgRegexFunctionsLimit, $wgRegexFunctionsDisable;
 		if(in_array('rmatch', $wgRegexFunctionsDisable))
