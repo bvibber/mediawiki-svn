@@ -1691,6 +1691,7 @@ $wgMessageStructure = array(
 		'selfmove',
 		'immobile_namespace',
 		'imagenocrossnamespace',
+		'categorynocrossnamespace',
 		'imagetypemismatch',
 	),
 	'export' => array(

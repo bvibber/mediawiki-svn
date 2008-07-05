@@ -2447,6 +2447,8 @@ class Title {
 					$errors[] = array('imagetypemismatch');
 				}
 			}
+		} elseif ( $this->getNamespace() == NS_CATEGORY && $nt->getNamespace() != NS_CATEGORY ) {
+			$errors[] = array('categorynocrossnamespace');
 		}
 
 		if ( $auth ) {

@@ -1984,6 +1984,7 @@ L’article de destination « [[$1]] » existe déjà. Voulez-vous le supprimer 
 'selfmove'                => 'Les titres d’origine et de destination sont les mêmes : impossible de renommer une page sur elle-même.',
 'immobile_namespace'      => 'Le titre de destination est d’un type spécial ; il est impossible de renommer des pages vers cet espace de noms.',
 'imagenocrossnamespace'   => 'Ne peut déplacer une image vers un espace de nommage qui ne soit pas une image.',
+'categorynocrossnamespace'=> 'Ne peut déplacer une catégorie vers un espace de nommage qui ne soit pas une catégorie.',
 'imagetypemismatch'       => 'La nouvelle extension de ce fichier ne reconnaît pas ce format.',
 
 # Export
