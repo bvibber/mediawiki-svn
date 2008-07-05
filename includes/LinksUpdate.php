@@ -128,7 +128,7 @@ class LinksUpdate {
 		$deletionsById = array();
 		
 		foreach ($categoryDeletes as $title => $sort) {
-			$deletionsById[ $titles2ids[ $title ] ] = $sort;
+			$deletionsById[ $titles2ids[ $title ][0] ] = $sort;
 		}
 		
 		$categoryInserts = array_diff_assoc( $this->mCategories, $existing );
@@ -303,7 +303,7 @@ class LinksUpdate {
 	 * adding the new cat_id(s)
 	 *
 	 * @param Array $new titles to insert
-	 * @param Array $titles2ids map cat_title => cat_id
+	 * @param Array $titles2ids map cat_title => ( cat_id, cat_redir )
 	 */
 	function insertNewCategories( $new, &$titles2ids ) {
 		if ( !$new )
@@ -316,11 +316,11 @@ class LinksUpdate {
 		$this->mDb->insert( 'category', $insertRows, __METHOD__, 'IGNORE' );
 		
 		$res = $this->mDb->select('category', 
-							array( 'cat_title', 'cat_id' ), 
+							array( 'cat_title', 'cat_id', 'cat_redir' ), 
 							array( 'cat_title' => $new ),
 							__METHOD__, $this->mOptions);
 		while ( $row = $this->mDb->fetchObject( $res ) ) {
-			$titles2ids[$row->cat_title] = $row->cat_id;
+			$titles2ids[$row->cat_title] = array( $row->cat_id, $row->cat_redir ) ;
 		}
 		$this->mDb->freeResult( $res );
 	}
@@ -482,12 +482,13 @@ class LinksUpdate {
 		$diffs = array_diff_assoc( $this->mCategories, $existing );
 		$arr = array();
 		foreach ( $diffs as $name => $sortkey ) {
-			$id = $titles2ids[$name];
-
+			list( $inline, $target ) = $titles2ids[$name];
+			if ( $target == null )
+				$target = $inline;
 			$arr[] = array(
 				'cl_from'    => $this->mId,
-				'cl_inline'  => $id,
-				'cl_target'  => $id,
+				'cl_inline'  => $inline,
+				'cl_target'  => $target,
 				'cl_sortkey' => $sortkey,
 				'cl_timestamp' => $this->mDb->timestamp()
 			);
@@ -676,7 +677,7 @@ class LinksUpdate {
 
 	/**
 	 * Get an array of existing categories, with the name in the key and sort key in the value, and
-	 * an array (cat_title => cat_id) for existing categories.
+	 * an array (cat_title => (cat_id, cat_redir)) for existing categories.
 	 * 
 	 * @returns array($existing, $titles2ids) 
 	 * 
@@ -685,13 +686,13 @@ class LinksUpdate {
 	function getExistingCategories() {
 		$titles2ids = array();
 		$res = $this->mDb->select( array( 'categorylinks', 'category' ), 
-			array( 'cat_title', 'cat_id', 'cl_sortkey' ),
+			array( 'cat_title', 'cat_id', 'cat_redir', 'cl_sortkey' ),
 			array( 'cl_from' => $this->mId, 'cl_inline=cat_id' ), 
 			__METHOD__, $this->mOptions );
 		$arr = array();
 		while ( $row = $this->mDb->fetchObject( $res ) ) {
 			$arr[$row->cat_title] = $row->cl_sortkey;
-			$titles2ids[$row->cat_title] = $row->cat_id;
+			$titles2ids[$row->cat_title] = array( $row->cat_id, $row->cat_redir );
 		}
 		$this->mDb->freeResult( $res );
 		return array( $arr, $titles2ids );
