@@ -1369,10 +1369,9 @@ mediaElement.prototype =
         var _this = this;
         if(typeof roe_data == 'string')
         {
-//            data = new Element;
-//            data.innerHTML = roe_data;
-//            roe_data = data;
-            roe_data = null;
+            var parser=new DOMParser();
+            js_log(roe_data)
+            roe_data=parser.parseFromString(roe_data,"text/xml");
         }
         if(roe_data){
 	        $j.each(roe_data.getElementsByTagName('mediaSource'), function(inx, source)
