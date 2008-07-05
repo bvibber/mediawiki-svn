@@ -29,6 +29,14 @@ $aliases['fr'] = array(
 	'ViewConfig' => array( 'Voir la configuration' ),
 );
 
+/** Hebrew (עברית)
+ * @author Rotem Liss
+ */
+$aliases['he'] = array(
+	'Configure'  => array( 'הגדרות' ),
+	'ViewConfig' => array( 'הצגת_הגדרות' ),
+);
+
 $aliases['nl'] = array(
 	'Configure'  => array( 'Instellingen' ),
 	'ViewConfig' => array( 'InstellingenBekijken' ),
