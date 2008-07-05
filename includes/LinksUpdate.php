@@ -121,22 +121,24 @@ class LinksUpdate {
 			$this->getTemplateInsertions( $existing ) );
 
 		# Category links
-		$titles2ids = array();
-		$existing = $this->getExistingCategories( $titles2ids );
+		list( $existing, $titles2ids ) = $this->getExistingCategories( );
 		
 		$categoryDeletes = $this->getCategoryDeletions( $existing );
 		
 		$deletionsById = array();
 		
 		foreach ($categoryDeletes as $title => $sort) {
-			$deletionsById[ $titles2ids[ $title ][0] ] = $sort;
+			$deletionsById[ $titles2ids[ $title ] ] = $sort;
 		}
+		
+		$categoryInserts = array_diff_assoc( $this->mCategories, $existing );
+				
+		$this->insertNewCategories( array_keys($categoryInserts), $titles2ids );
 		
 		$this->incrTableUpdate( 'categorylinks', 'cl', $deletionsById, $this->getCategoryInsertions( $existing, $titles2ids ) );
 
 
 		# Invalidate all categories which were added, deleted or changed (set symmetric difference)
-		$categoryInserts = array_diff_assoc( $this->mCategories, $existing );
 		$categoryUpdates = $categoryInserts + $categoryDeletes;
 		$this->invalidateCategories( $categoryUpdates );
 		$this->updateCategoryCounts( $categoryInserts, $categoryDeletes );
@@ -169,12 +171,14 @@ class LinksUpdate {
 	function doDumbUpdate() {
 		wfProfileIn( __METHOD__ );
 
-		# Refresh category pages and image description pages
-		$cat_titles2ids = array();
-		$existing = $this->getExistingCategories( $cat_titles2ids );
+		# Refresh category pages 
+		list ($existing, $cat_titles2ids) = $this->getExistingCategories();
 		$categoryInserts = array_diff_assoc( $this->mCategories, $existing );
 		$categoryDeletes = array_diff_assoc( $existing, $this->mCategories );
 		$categoryUpdates = $categoryInserts + $categoryDeletes;
+		$this->insertNewCategories( array_keys( $categoryInserts ), $cat_titles2ids );
+				
+		# Refresh image description pages
 		$existing = $this->getExistingImages();
 		$imageUpdates = array_diff_key( $existing, $this->mImages ) + array_diff_key( $this->mImages, $existing );
 
@@ -292,6 +296,33 @@ class LinksUpdate {
 		$a->updateCategoryCounts(
 			array_keys( $added ), array_keys( $deleted )
 		);
+	}
+	
+	/**
+	 * Insert new categories into the category table, and updates the titles2ids,
+	 * adding the new cat_id(s)
+	 *
+	 * @param Array $new titles to insert
+	 * @param Array $titles2ids map cat_title => cat_id
+	 */
+	function insertNewCategories( $new, &$titles2ids ) {
+		if ( !$new )
+			return;
+			
+		$insertRows = array();
+		foreach( $new as $cat ) {
+			$insertRows[] = array( 'cat_title' => $cat );
+		}
+		$this->mDb->insert( 'category', $insertRows, __METHOD__, 'IGNORE' );
+		
+		$res = $this->mDb->select('category', 
+							array( 'cat_title', 'cat_id' ), 
+							array( 'cat_title' => $new ),
+							__METHOD__, $this->mOptions);
+		while ( $row = $this->mDb->fetchObject( $res ) ) {
+			$titles2ids[$row->cat_title] = $row->cat_id;
+		}
+		$this->mDb->freeResult( $res );
 	}
 
 	function invalidateImageDescriptions( $images ) {
@@ -440,23 +471,23 @@ class LinksUpdate {
 
 	/**
 	 * Get an array of category insertions
+	 * 
 	 * @param array $existing Array mapping existing category names to sort keys. If both
 	 * match a link in $this, the link will be omitted from the output
+	 * @param array $titles2ids Array mapping between existing category names to array(cat_id, cat_redir)
+	 * 
 	 * @private
 	 */
 	function getCategoryInsertions( $existing, $titles2ids ) {
 		$diffs = array_diff_assoc( $this->mCategories, $existing );
 		$arr = array();
 		foreach ( $diffs as $name => $sortkey ) {
-			$ids = $titles2ids[$name];
-			$target = $ids[1];
-			if ( $target == null ) {
-				$target = $ids[1];
-			}
+			$id = $titles2ids[$name];
+
 			$arr[] = array(
 				'cl_from'    => $this->mId,
-				'cl_inline'  => $ids[0],
-				'cl_target'  => $target,
+				'cl_inline'  => $id,
+				'cl_target'  => $id,
 				'cl_sortkey' => $sortkey,
 				'cl_timestamp' => $this->mDb->timestamp()
 			);
@@ -644,23 +675,26 @@ class LinksUpdate {
 	}
 
 	/**
-	 * Get an array of existing categories, with the name in the key and sort key in the value.
-	 * Appends to titles2id (cat_title => (cat_id, cat_redir) ) for existing categories
+	 * Get an array of existing categories, with the name in the key and sort key in the value, and
+	 * an array (cat_title => cat_id) for existing categories.
+	 * 
+	 * @returns array($existing, $titles2ids) 
 	 * 
 	 * @private
 	 */
-	function getExistingCategories( &$titles2ids ) {
+	function getExistingCategories() {
+		$titles2ids = array();
 		$res = $this->mDb->select( array( 'categorylinks', 'category' ), 
-			array( 'cat_title', 'cat_id', 'cat_redir', 'cl_sortkey' ),
+			array( 'cat_title', 'cat_id', 'cl_sortkey' ),
 			array( 'cl_from' => $this->mId, 'cl_inline=cat_id' ), 
 			__METHOD__, $this->mOptions );
 		$arr = array();
 		while ( $row = $this->mDb->fetchObject( $res ) ) {
 			$arr[$row->cat_title] = $row->cl_sortkey;
-			$titles2ids[$row->cat_title] = array( $row->cat_id, $row->cat_redir);
+			$titles2ids[$row->cat_title] = $row->cat_id;
 		}
 		$this->mDb->freeResult( $res );
-		return $arr;
+		return array( $arr, $titles2ids );
 	}
 
 	/**

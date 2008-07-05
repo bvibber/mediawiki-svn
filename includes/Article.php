@@ -3443,6 +3443,8 @@ class Article {
 	/**
 	 * Update all the appropriate counts in the category table, given that
 	 * we've added the categories $added and deleted the categories $deleted.
+	 * 
+	 * It is assumed that all categories have already an entry in the category table.
 	 *
 	 * @param $added array   The names of categories that were added
 	 * @param $deleted array The names of categories that were deleted
@@ -3452,22 +3454,8 @@ class Article {
 		$ns = $this->mTitle->getNamespace();
 		$dbw = wfGetDB( DB_MASTER );
 
-		# First make sure the rows exist.  If one of the "deleted" ones didn't
-		# exist, we might legitimately not create it, but it's simpler to just
-		# create it and then give it a negative value, since the value is bogus
-		# anyway.
-		#
-		# Sometimes I wish we had INSERT ... ON DUPLICATE KEY UPDATE.
-		$insertCats = array_merge( $added, $deleted );
-		if( !$insertCats ) {
-			# Okay, nothing to do
-			return;
-		}
-		$insertRows = array();
-		foreach( $insertCats as $cat ) {
-			$insertRows[] = array( 'cat_title' => $cat );
-		}
-		$dbw->insert( 'category', $insertRows, __METHOD__, 'IGNORE' );
+		# Making sure that Category exists is not necessary anymore :
+		# new categories are inserted before in LinksUpdate.
 
 		$addFields    = array( 'cat_pages = cat_pages + 1' );
 		$removeFields = array( 'cat_pages = cat_pages - 1' );
