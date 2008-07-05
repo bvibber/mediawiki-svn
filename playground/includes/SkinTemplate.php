@@ -432,8 +432,7 @@ class SkinTemplate extends Skin {
 
 		# Personal toolbar
 		$tpl->set('personal_urls', $this->buildPersonalUrls());
-		$content_actions = $this->buildContentActionUrls();
-		$tpl->setRef('content_actions', $content_actions);
+		$tpl->setRef('content_actions', $this->buildContentActionUrls());
 
 		// XXX: attach this from javascript, same with section editing
 		if($this->iseditable &&	$wgUser->getOption("editondblclick") )
@@ -446,6 +445,7 @@ class SkinTemplate extends Skin {
 		$tpl->set( 'body_onload', false );
 		$tpl->set( 'sidebar', $this->buildSidebar() );
 		$tpl->set( 'nav_urls', $this->buildNavUrls() );
+		$tpl->setRef('toolbox_urls', $this->buildToolboxUrls( $tpl->data ));
 
 		// original version by hansm
 		if( !wfRunHooks( 'SkinTemplateOutputPageBeforeExec', array( &$this, &$tpl ) ) ) {
@@ -582,6 +582,85 @@ class SkinTemplate extends Skin {
 		wfRunHooks( 'PersonalUrls', array( &$personal_urls, &$wgTitle ) );
 		wfProfileOut( __METHOD__ );
 		return $personal_urls;
+	}
+
+	/**
+	 * build array of urls for local toolbox
+	 * @return array
+	 * @private
+	 */
+	function buildToolboxUrls( &$data ) {
+		global $wgTitle, $wgRequest;
+
+		$pageurl = $wgTitle->getLocalURL();
+		wfProfileIn( __METHOD__ );
+
+		/* set up the default links for the personal toolbar */
+		$toolbox_urls = array();
+
+		if($data['notspecialpage']) {
+			$toolbox_urls['whatlinkshere'] = array(
+				'href' => $data['nav_urls']['whatlinkshere']['href'],
+				'msg' => 'whatlinkshere',
+			);
+
+			if( $data['nav_urls']['recentchangeslinked'] ) { 
+				$toolbox_urls['recentchangeslinked'] = array(
+					'href' => $data['nav_urls']['recentchangeslinked']['href'],
+					'msg' => 'recentchangeslinked',
+				);
+			}
+		}
+
+		if(isset($data['nav_urls']['trackbacklink'])) { 
+			$toolbox_urls['trackbacklink'] = array(
+				'href' => $data['nav_urls']['trackbacklink']['href'],
+				'msg' => 'trackbacklink',
+			);
+		}
+
+		if($data['feeds']) { 
+			$feeds = '';
+			foreach($data['feeds'] as $key => $feed) {
+				$feeds .= '<span id="feed-' . Sanitizer::escapeId($key) . '"><a href="' .
+					htmlspecialchars($feed['href']) . '" ' . $skin->tooltipAndAccesskey('feed-'.$key) . '>' . 
+					htmlspecialchars($feed['text']) . '</a>&nbsp;</span>';
+			}
+
+			$toolbox_urls['feedlinks'] = $feeds;
+		}
+
+		foreach( array('contributions', 'log', 'blockip', 'emailuser', 'upload', 'specialpages') as $special ) {
+
+			if($data['nav_urls'][$special]) {
+				$toolbox_urls[$special] = array(
+					'href' => $data['nav_urls'][$special]['href'],
+					'msg' => $special,
+				);
+			}
+		}
+
+		if(!empty($data['nav_urls']['print']['href'])) { 
+			$toolbox_urls['print'] = array(
+				'href' => $data['nav_urls']['print']['href'],
+				'msg' => 'printableversion',
+			);
+		}
+
+		if(!empty($data['nav_urls']['permalink']['href'])) { 
+			$toolbox_urls['permalink'] = array(
+				'href' => $data['nav_urls']['permalink']['href'],
+				'msg' => 'permalink',
+			);
+		} elseif ($data['nav_urls']['permalink']['href'] === '') { 
+			$toolbox_urls['ispermalink'] = array(
+				'msg' => 'permalink',
+			);
+		}
+
+		wfRunHooks( 'ToolboxUrls', array( &$toolbox_urls, &$wgTitle ) );
+		wfProfileOut( __METHOD__ );
+		return $toolbox_urls;
 	}
 
 	function tabAction( $title, $message, $selected, $query='', $checkEdit=false ) {
@@ -1208,5 +1287,121 @@ class QuickTemplate {
 	function haveMsg( $str ) {
 		$msg = $this->translator->translate( $str );
 		return ($msg != '-') && ($msg != ''); # ????
+	}
+
+	function executeFixalpha() {
+		?>
+		<script type="<?php $this->text('jsmimetype') ?>"> if (window.isMSIE55) fixalpha(); </script>
+		<?php
+	}
+
+	function executeSearchForm( $skin ) {
+		?>
+		<h5><label for="searchInput"><?php $this->msg('search') ?></label></h5>
+		<div id="searchBody" class="pBody">
+			<form action="<?php $this->text('searchaction') ?>" id="searchform"><div>
+				<input id="searchInput" name="search" type="text"<?php echo $skin->tooltipAndAccesskey('search');
+					if( isset( $this->data['search'] ) ) {
+						?> value="<?php $this->text('search') ?>"<?php } ?> />
+				<input type='submit' name="go" class="searchButton" id="searchGoButton"	value="<?php $this->msg('searcharticle') ?>"<?php echo $skin->tooltipAndAccesskey( 'search-go' ); ?> />&nbsp;
+				<input type='submit' name="fulltext" class="searchButton" id="mw-searchButton" value="<?php $this->msg('searchbutton') ?>"<?php echo $skin->tooltipAndAccesskey( 'search-fulltext' ); ?> />
+			</div></form>
+		</div>
+		<?php
+	}
+
+	function executePortlet( $bar, &$cont, $hints = NULL ) {
+		if ( wfRunHooks( 'QuickTemplatePortlet', array( &$this, $bar, &$cont, &$hints ) ) ) {
+			$this->printPortlet( $bar, $cont, $hints );
+		}
+	}
+
+	function printPortlet( $bar, &$cont, $hints ) {
+		global $wgUser;
+		$skin = $wgUser->getSkin();
+
+		if ( $cont === false || $cont === NULL ) return;
+		if ( is_array($cont) && !$cont ) return;
+
+		$portletClass = isset( $hints['portletClass'] ) ? $hints['portletClass'] : 'portlet'; 
+		$idPrefix = isset( $hints['idPrefix'] ) ? $hints['idPrefix'] : '';
+		$useClassForLinks = isset( $hints['useClassForLinks'] ) ? $hints['useClassForLinks'] : false;
+	?>
+		<div class="<?php echo $portletClass?>" id='p-<?php echo Sanitizer::escapeId($bar) ?>'<?php echo $skin->tooltip('p-'.$bar) ?>>
+		<?php
+			if ( !isset( $hints['noTitle'] ) || !$hints['noTitle'] ) {
+				$title = isset( $hints['titleMessage'] ) ? wfMsg( $hints['titleMessage'] ) : wfMsg( $bar );
+				if (wfEmptyMsg($bar, $title)) $title = $bar;
+				echo "\t\t\t<h5>$title</h5>\n";
+			}
+
+			if ( !isset( $hints['noBody'] ) || !$hints['noBody'] ) {
+				$attr = '';
+				if ( isset( $hints['bodyId'] ) ) $attr = 'id="' . Sanitizer::escapeId($hints['bodyId']) . '"';
+				echo "\t\t\t<div $attr class=\"pBody\">\n";
+			}
+		?>
+	<?php   if ( isset( $hints['contentGenerator'] ) ) {
+			echo call_user_func( $hints['contentGenerator'], $cont, $hints );
+		} else if ( is_array( $cont ) ) { ?>
+				<ul>
+	<?php 			foreach($cont as $key => $val) {
+					if ( isset( $hints['itemGenerator'] ) ) {
+						echo call_user_func( $hints['itemGenerator'], $key, $val, $hints );
+					} else if ( is_array($val) ) { 
+						$cls = '';
+						if ( !$useClassForLinks && isset( $val['class'] ) ) $cls .= $val['class'];
+						if ( isset( $val['active'] ) ) $cls .= 'active';
+						
+						$linkcls = ( $useClassForLinks && isset( $val['class'] ) ) ? $val['class'] : '';
+
+						$id = isset( $val['id'] ) ? $val['id'] : $key;
+						
+						echo "\t\t\t<li ";
+						if ( $id !== false ) echo ' id="' . $idPrefix . Sanitizer::escapeId( $id ) . '"';
+						if ( $cls ) echo ' class="' . htmlspecialchars($cls) . '"';
+						echo ">";
+
+						if ( isset( $val['href'] ) && $val['href'] ) {
+							echo '<a ';
+							echo ' href="' . htmlspecialchars($val['href']) . '"';
+							echo $skin->tooltipAndAccesskey($idPrefix . $id);
+							if( $linkcls ) echo ' class="' . htmlspecialchars($linkcls) . '"';
+							echo '>';
+						}
+
+						if ( isset( $val['text'] ) ) echo htmlspecialchars( $val['text'] );
+						else if ( isset( $val['msg'] ) ) $this->msg( $val['msg'] );
+						else $this->msg( $id ); #XXX: with or without $idPrefix?
+
+						if ( isset( $val['href'] ) && $val['href'] ) {
+							echo '</a>';
+						}
+						echo "</li>\n";
+					} else {
+						if ( is_int($id) ) echo "<li>$val</li>";
+						else echo "<li id=\"" . Sanitizer::escapeId( $key ) . "\">$val</li>";
+					}
+				} 
+				
+				if ( isset( $hints['endOfListHooks'] ) ) {
+					foreach( $hints['endOfListHooks'] as $hook ) {
+						wfRunHooks( $hook, array( &$this ) );
+					}
+				}
+				?>
+				</ul>
+	<?php   } else {
+				# allow raw HTML block to be defined by extensions
+				print $cont;
+		} 
+	?>
+	<?php   
+		if ( !isset( $hints['noBody'] ) || !$hints['noBody'] ) {
+			echo "\t\t\t</div><!-- pBody -->\n";
+		}
+	?>
+		</div><!-- portlet -->
+	<?php
 	}
 }
