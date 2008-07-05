@@ -1367,6 +1367,13 @@ mediaElement.prototype =
     addROE:function(roe_data)
     {
         var _this = this;
+        if(typeof roe_data == 'string')
+        {
+//            data = new Element;
+//            data.innerHTML = roe_data;
+//            roe_data = data;
+            roe_data = null;
+        }
         if(roe_data){
 	        $j.each(roe_data.getElementsByTagName('mediaSource'), function(inx, source)
 	        {
