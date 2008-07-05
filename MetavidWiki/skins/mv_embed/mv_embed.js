@@ -247,13 +247,13 @@ var videoElementPlayer = new mediaPlayer(
 
 var vlcMozillaPlayer = new mediaPlayer(
     'vlc-mozilla',
-    ['video/ogg', 'video/x-flv'],
+    ['video/ogg', 'video/x-flv', 'video/mp4'],
     'vlc'
 );
 
 var vlcActiveXPlayer = new mediaPlayer(
     'vlc-activex',
-    ['video/ogg', 'video/x-flv'],
+    ['video/ogg', 'video/x-flv', 'video/mp4'],
     'vlc'
 );
 
@@ -289,7 +289,6 @@ function mediaPlayers()
 mediaPlayers.prototype =
 {
     players : null,
-    selected_player : null,
     preference : null,
 
     default_players : null,
@@ -300,7 +299,7 @@ mediaPlayers.prototype =
         this.loadPreferences();
         this.default_players = new Object();
         this.default_players['video/x-flv']= ['flowplayer','vlc'];
-        this.default_players['video/annodex']=['cortado','vlc'];        
+        this.default_players['video/annodex']=['cortado','vlc'];
     },
     addPlayer : function(player)
     {
@@ -338,29 +337,30 @@ mediaPlayers.prototype =
         }
         return null;
     },
-    autoSelectPlayer : function(mime_type)
+    userSelectPlayer : function(player_id, mime_type)
     {
-        js_log('autoselecting player for ' + mime_type);
-        var player = this.defaultPlayer(mime_type);
-        if(player)
-        {
-            this.selected_player = player;
-            js_log('selected ' + this.selected_player.getName());
-        }
-        else
-            js_log('no player found');
-    },
-    selectPlayer : function(player_id, mime_type)
-    {
+        var selected_player=null;
         for(var i in this.players)
             if(this.players[i].id == player_id)
             {
-                this.selected_player = this.players[i];
+                selected_player = this.players[i];
                 js_log('choosing ' + player_id + ' for ' + mime_type);
                 this.preference[mime_type]=player_id;
                 this.savePreferences();
                 break;
             }
+        if(selected_player)
+        {
+            for(var i in global_ogg_list)
+            {
+                var embed = document.getElementById(global_ogg_list[i]);
+                if(embed.media_element.selected_source.mime_type == mime_type)
+                {
+                    embed.selected_player = selected_player;
+                    js_log('using ' + embed.selected_player.getName() + ' for ' + embed.media_element.selected_source.getTitle());
+                }
+            }
+        }
     },
     loadPreferences : function()
     {
@@ -446,31 +446,6 @@ var embedTypes = {
         //@@todo... should only load the player type for the current selected plugin...
         for (var i in this.players.players)
             mvEmbed.lib_plugins[this.players.players[i].getLibraryObject()]=this.players.players[i].getLibraryFile();
-	},
-	getPlayerSelectList:function(mime_type, index, file_select_code){
-        var supporting_players = this.players.getMIMETypePlayers(mime_type);
-        
-		 var select_html='<div id="player_select_list_' + index + '" class="player_select_list"><ul>';
-		 for(i in supporting_players){
-			//put colored plugin icon and no link for supported player: 
-			if(embedTypes.players.selected_player.library==supporting_players[i].library ){
-				select_html+='<li>'+								
-									'<img border="0" width="16" height="16" src="'+mv_embed_path+'images/plugin.png">'+								
-									supporting_players[i].getName() + 
-							'</li>';
-			}else{
-				//else gray plugin and the plugin with link to select
-				select_html+='<li>'+
-								'<a href="#" onClick="'+ file_select_code + 'embedTypes.players.selectPlayer(\''+supporting_players[i].id+'\',\''+mime_type+'\');return false;">'+
-									'<img border="0" width="16" height="16" src="'+mv_embed_path+'images/plugin_disabled.png">'+								
-									supporting_players[i].getName() + 
-								'</a>'+
-							'</li>';
-			}
-		 }
-		 select_html+='</ul></div>';
-         js_log(select_html);
-		 return select_html;
 	},
 	clientSupports: { 'thumbnail' : true },
  	detect: function() {
@@ -1392,7 +1367,7 @@ mediaElement.prototype =
     addROE:function(roe_data)
     {
         var _this = this;
-        if(this.roe_data){
+        if(roe_data){
 	        $j.each(roe_data.getElementsByTagName('mediaSource'), function(inx, source)
 	        {
 				_this.tryAddSource(source);
@@ -1405,7 +1380,7 @@ mediaElement.prototype =
 	            }
 	        })
 	        //set the linkback:
-			$j.each(_this.roe_data.getElementsByTagName('link'), function(inx, n){
+			$j.each(roe_data.getElementsByTagName('link'), function(inx, n){
 	            if(n.getAttribute('id')=='html_linkback'){
 	                js_log('set linkback to '+n.getAttribute("href"));
 	                _this['linkback'] = n.getAttribute('href');
@@ -1441,7 +1416,7 @@ embedVideo.prototype = {
 	hq : function ( s ) {
 		return '"' + this.hx( s ) + '"';
 	},
-	init: function(element){	
+	init: function(element){
 		this.element_pointer = element;
 		//inherit all the default video_attributes
 	    for(var attr in video_attributes){       
@@ -1470,8 +1445,16 @@ embedVideo.prototype = {
 	        this.user_missing_plugin_html=element.innerHTML;
 	    } 
 
-		//auto select player based on prefrence or default order	    
-        embedTypes.players.autoSelectPlayer(this.media_element.selected_source.mime_type);
+		//auto select player based on prefrence or default order
+        this.selected_player = embedTypes.players.defaultPlayer(this.media_element.selected_source.mime_type);
+        if(this.selected_player)
+        {
+            js_log('selected ' + this.selected_player.getName());
+            js_log("PLAYBACK TYPE: "+this.selected_player.library);
+        }
+        else
+            js_log('no player found for mime type ' + this.media_element.selected_source.mime_type);
+	    
 	    /*
 	    * @@TODO lazy load plugin types
 	    * override all relevant exported functions with the {embed_type} Object 
@@ -1479,9 +1462,6 @@ embedVideo.prototype = {
 	    */
 		this.inheritEmbedObj();
 		
-	    if(embedTypes.players.selected_player){
-            js_log("PLAYBACK TYPE: "+embedTypes.players.selected_player.library);
-	    }
 	   //js_log('HTML FROM IN OBJECT' + this.getHTML());
 	   //return this object:	   
 	   return this;
@@ -1518,7 +1498,8 @@ embedVideo.prototype = {
 			}
 		}
 		//set up the new embedObj
-		eval('embedObj = ' +embedTypes.players.selected_player.library +'Embed;');
+        js_log('embedding with ' + this.selected_player.library);
+		eval('embedObj = ' +this.selected_player.library +'Embed;');
         for(method in embedObj){
         	//parent method preservation for local overwritten methods
         	if(this[method])this['parent_' + method] = this[method];
@@ -1770,14 +1751,39 @@ embedVideo.prototype = {
 		 });
  		return false;//onclick action return false
 	},
+    getPlayerSelectList:function(mime_type, index, file_select_code){
+        var supporting_players = embedTypes.players.getMIMETypePlayers(mime_type);
+        
+		var select_html='<div id="player_select_list_' + index + '" class="player_select_list"><ul>';
+		for(i in supporting_players){
+			//put colored plugin icon and no link for supported player: 
+			if(this.selected_player.library==supporting_players[i].library ){
+				select_html+='<li>'+						
+									'<img border="0" width="16" height="16" src="'+mv_embed_path+'images/plugin.png">'+								
+									supporting_players[i].getName() + 
+							'</li>';
+			}else{
+				//else gray plugin and the plugin with link to select
+				select_html+='<li>'+
+								'<a href="#" onClick="'+ file_select_code + 'embedTypes.players.userSelectPlayer(\''+supporting_players[i].id+'\',\''+mime_type+'\');return false;">'+
+									'<img border="0" width="16" height="16" src="'+mv_embed_path+'images/plugin_disabled.png">'+								
+									supporting_players[i].getName() + 
+								'</a>'+
+							'</li>';
+			}
+		 }
+		 select_html+='</ul></div>';
+         js_log(select_html);
+		 return select_html;
+	},
     selectPlaybackMethod:function(){
         var _this=this;
         var select_code=this.getDLlist(function(index, source)
         {
             var default_player = embedTypes.players.defaultPlayer(source.getMIMEType());
             var source_select_code = 'document.getElementById(\''+_this.id+'\').closeDisplayedHTML(); document.getElementById(\''+_this.id+'\').media_element.selectSource(\''+index+'\');';
-            var player_code = embedTypes.getPlayerSelectList(source.getMIMEType(), index, source_select_code);
-            return '<a href="#" onClick="' + source_select_code + 'embedTypes.players.selectPlayer(\''+default_player.id+'\',\''+source.getMIMEType()+'\'); return false;">'
+            var player_code = _this.getPlayerSelectList(source.getMIMEType(), index, source_select_code);
+            return '<a href="#" onClick="' + source_select_code + 'embedTypes.players.userSelectPlayer(\''+default_player.id+'\',\''+source.getMIMEType()+'\'); return false;">'
                 + source.getTitle()+' - ' + default_player.getName() + '</a> '
                 + '(<a href="#" onClick=\'$j("#player_select_list_'+index+'").fadeIn("slow");return false;\'>choose player</a>)' + player_code;
         });
@@ -1822,7 +1828,7 @@ embedVideo.prototype = {
 		//check if thumbnail is being displayed and embed html
 		if(this.thumbnail_disp){
 			//js_log('rewrite embed');
-			if(!embedTypes.players.selected_player){
+			if(!this.selected_player){
 				//this.innerHTML = this.getPluginMissingHTML(); 
 				//$j('#'+this.id).html(this.getPluginMissingHTML());
 				this.innerHTML = this.getPluginMissingHTML();
@@ -2011,7 +2017,7 @@ embedVideo.prototype = {
 	},
 	getEmbedHTML:function(){
 		//double check we have a player and associated getEmbedObj html
-		if(!embedTypes.players.selected_player){
+		if(!this.selected_player){
 			return this.getPluginMissingHTML();		
 		}else{
 	    	var controls_html ='';

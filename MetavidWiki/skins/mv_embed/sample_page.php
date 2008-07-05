@@ -114,7 +114,7 @@ $sample_embed[7]['desc'] = '<b>Inline Playlist:</b> for more info see <a href="h
 ?>
   <table border="1" cellpadding="6" width="600">
   	<? foreach($sample_embed as $key=>$aval){
-  		if($key>0)continue;	
+  		if($key>3)continue;	
   	 ?>
 	    <tr>    	
 	      <td><?=$aval['tag']?></td>
