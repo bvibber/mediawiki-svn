@@ -222,12 +222,16 @@ class CategoryViewer {
 			$pageCondition = '1 = 1';
 			$this->flip = false;
 		}
+		
+		# When displaying a category redirect, show only inline inclusions
+		$linkedFrom = $this->cat->getRedir() ? 'cl_inline' : 'cl_target' ;
+		
 		$res = $dbr->select(
 			array( 'page', 'categorylinks', 'category' ),
 			array( 'page_title', 'page_namespace', 'page_len', 'page_is_redirect', 'cl_sortkey',
 				'cat_id', 'cat_redir', 'cat_title', 'cat_subcats', 'cat_pages', 'cat_files' ),
 			array( $pageCondition,
-			       'cl_target' => $this->cat->getID() ),
+			       $linkedFrom => $this->cat->getID() ),
 			__METHOD__,
 			array( 'ORDER BY' => $this->flip ? 'cl_sortkey DESC' : 'cl_sortkey',
 			       'USE INDEX' => array( 'categorylinks' => 'cl_sortkey_target' ),
