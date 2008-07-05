@@ -32,9 +32,13 @@ $messages['de'] = array(
 
 );
 
+/** French (Français)
+ * @author Grondin
+ */
 $messages['fr'] = array(
-	'tidy' => 'Classer',
-	'untidy' => 'Déclasser',
+	'tidy-desc' => 'Ajoute une tabulation rangée ou non rangée (en fonction de $wgUseTidy) sur des pages normalles qui permets de passer outre les paramètres globaux HTML rangés, pour une vue simple',
+	'tidy'      => 'Classer',
+	'untidy'    => 'Déclasser',
 );
 
 /** Galician (Galego)
@@ -86,8 +90,9 @@ $messages['mr'] = array(
  * @author Siebrand
  */
 $messages['nl'] = array(
-	'tidy'   => 'Opschonen',
-	'untidy' => 'Opschonen ongedaan maken',
+	'tidy-desc' => 'Voegt een tab "tidy" of "untidy" toe (afhankelijk van $wgUseTidy) op normale pagina\'s om de globale instelling voor HTML tidy een ander gedrag te laten vertonen',
+	'tidy'      => 'Opschonen',
+	'untidy'    => 'Opschonen ongedaan maken',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
@@ -140,10 +145,12 @@ $messages['stq'] = array(
 
 /** Swedish (Svenska)
  * @author M.M.S.
+ * @author Boivie
  */
 $messages['sv'] = array(
-	'tidy'   => 'Städa',
-	'untidy' => 'Avsystematisera kod',
+	'tidy-desc' => 'Lägger på normala sidor till en tabb med systematisera eller avsystematisera (beroende på $wgUseTidy) som tillåter att vid ett enskilt tillfälle övertrumfa den globala inställningen för HTML-systematisering',
+	'tidy'      => 'Systematisera',
+	'untidy'    => 'Avsystematisera',
 );
 
 /** Tajik (Cyrillic) (Тоҷикӣ/tojikī (Cyrillic))

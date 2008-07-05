@@ -58,7 +58,11 @@ $messages['fi'] = array(
 	'donationform-submit' => 'Lahjoita PayPalin kautta',
 );
 
+/** French (Français)
+ * @author Grondin
+ */
 $messages['fr'] = array(
+	'donationform-desc'   => 'Ajoute la balise <tt>&lt;donateform&gt;</tt> pour permettre les dons au moyen de PayPal',
 	'donationform-submit' => 'Faire un don avec PayPal',
 );
 
@@ -156,6 +160,7 @@ $messages['mr'] = array(
  * @author Siebrand
  */
 $messages['nl'] = array(
+	'donationform-desc'   => 'Voegt de tag <tt>&lt;donateform&gt;</tt> voor ondersteuning van donaties via PayPal',
 	'donationform-submit' => 'Via PayPal doneren',
 );
 
@@ -222,8 +227,10 @@ $messages['stq'] = array(
 
 /** Swedish (Svenska)
  * @author M.M.S.
+ * @author Boivie
  */
 $messages['sv'] = array(
+	'donationform-desc'   => 'Lägger till en tagg <tt>&lt;donateform&gt;</tt> för donationer via PayPal',
 	'donationform-submit' => 'Donera via PayPal',
 );
 

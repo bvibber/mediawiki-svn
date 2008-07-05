@@ -234,6 +234,21 @@ $messages['gv'] = array(
 	'authorprotect-reason'  => 'Fa',
 );
 
+/** Hebrew (עברית)
+ * @author StuB
+ */
+$messages['he'] = array(
+	'authorprotect'           => 'הגנה על הדף מפני לא-יוצרים',
+	'authorprotect-desc'      => 'מאפשר ליוצר הדף להגן עליו מפני משתמשים אחרים',
+	'authorprotect-notauthor' => 'אינך יוצר הדף',
+	'authorprotect-confirm'   => 'שינוי רמות ההגנה',
+	'authorprotect-edit'      => 'אפשר עריכה ליוצרים בלבד',
+	'authorprotect-move'      => 'אפשר העברה ליוצרים בלבד',
+	'authorprotect-expiry'    => 'זמן התפוגה',
+	'authorprotect-reason'    => 'סיבה',
+	'protect-level-author'    => 'הגנו מפני לא-יוצרים',
+);
+
 /** Hindi (हिन्दी)
  * @author Kaustubh
  */

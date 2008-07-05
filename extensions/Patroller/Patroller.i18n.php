@@ -318,6 +318,14 @@ $messages['hil'] = array(
 	'patrol-revert-reason' => 'Rason:',
 );
 
+/** Croatian (Hrvatski)
+ * @author Suradnik13
+ */
+$messages['hr'] = array(
+	'group-patroller'        => 'Patroleri',
+	'group-patroller-member' => 'Patroler',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

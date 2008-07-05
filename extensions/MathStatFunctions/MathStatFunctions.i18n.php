@@ -83,9 +83,14 @@ $messages['fa'] = array(
         'msfunc_div_zero' => 'تقسیم بر صفر',
 );
 
+/** French (Français)
+ * @author Sherbrooke
+ * @author Grondin
+ */
 $messages['fr'] = array(
-	'msfunc_nan' => 'Le résultat n’est pas un nombre.',
-	'msfunc_inf' => 'Le résultat est l’infini.',
+	'msfunc_desc'     => 'Collection de fonctions mathématiques et statistiques',
+	'msfunc_nan'      => 'Le résultat n’est pas un nombre.',
+	'msfunc_inf'      => 'Le résultat est l’infini.',
 	'msfunc_div_zero' => 'Division par zéro',
 );
 
@@ -197,10 +202,14 @@ $messages['mr'] = array(
 	'msfunc_div_zero' => 'शून्याने भागाकार',
 );
 
+/** Dutch (Nederlands)
+ * @author Siebrand
+ */
 $messages['nl'] = array(
-        'msfunc_nan' => "Resulterende waarde is geen getal" ,
-        'msfunc_inf' => "Resulterende waarde is oneindig" ,
-        'msfunc_div_zero' => "Deling door nul",
+	'msfunc_desc'     => 'Een verzameling wiskundige en statistische functies',
+	'msfunc_nan'      => 'Resulterende waarde is geen getal',
+	'msfunc_inf'      => 'Resulterende waarde is oneindig',
+	'msfunc_div_zero' => 'Deling door nul',
 );
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
@@ -286,8 +295,10 @@ $messages['stq'] = array(
 /** Swedish (Svenska)
  * @author M.M.S.
  * @author Jon Harald Søby
+ * @author Boivie
  */
 $messages['sv'] = array(
+	'msfunc_desc'     => 'En samling matematiska och statistiska funktioner',
 	'msfunc_nan'      => 'Resultatsvärdena är inte ett tal',
 	'msfunc_inf'      => 'Resultatsvärdena är oändliga',
 	'msfunc_div_zero' => 'Division med noll',

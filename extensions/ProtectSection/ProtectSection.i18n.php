@@ -52,8 +52,13 @@ $messages['eo'] = array(
 	'protectsection_forbidden'  => 'Malpermesita',
 );
 
+/** French (Français)
+ * @author Sherbrooke
+ * @author Grondin
+ */
 $messages['fr'] = array(
-	'protectsection_add_remove' => 'Vous avez tenté d\'ajouter ou d\'effacer une section protégée.',
+	'protectsection_desc'       => 'Permet aux utilisateurs autorisés de protéger des parties d’une page au moyen de la balise <tt>&lt;protect&gt;</tt>',
+	'protectsection_add_remove' => "Vous avez tenté d'ajouter ou d'effacer une section protégée.",
 	'protectsection_modify'     => 'Vous avez tenté de modifier du texte protégé.',
 	'protectsection_forbidden'  => 'Interdit',
 );
@@ -144,6 +149,7 @@ $messages['mr'] = array(
  * @author Siebrand
  */
 $messages['nl'] = array(
+	'protectsection_desc'       => 'Stelt gebruikers met de juiste rechten in staat delen van pagina te beveiligen met de tag <tt>&lt;protect&gt;</tt>',
 	'protectsection_add_remove' => 'U probeerde een beveiligde sectie toe te voegen of te verwijderen',
 	'protectsection_modify'     => 'U probeerde beveiligde tekst te bewerken',
 	'protectsection_forbidden'  => 'Niet toegestaan',
@@ -214,8 +220,10 @@ $messages['stq'] = array(
 
 /** Swedish (Svenska)
  * @author M.M.S.
+ * @author Boivie
  */
 $messages['sv'] = array(
+	'protectsection_desc'       => 'Tillåter godkända användare att skydda delar av en sida genom att använda taggen <tt>&lt;protect&gt;</tt>',
 	'protectsection_add_remove' => 'Du prövade att lägga till eller ta bort en beskyddad sektion',
 	'protectsection_modify'     => 'Du prövade att ändra en beskyddad text',
 	'protectsection_forbidden'  => 'Förbjudet',

@@ -27,8 +27,13 @@ $messages['de'] = array(
 	'tog-microid' => 'Veröffentliche eine <a href="http://microid.org/">MicroID</a>, um das Benutzerkonto durch einen externen Servive zu bestätigen.',
 );
 
+/** French (Français)
+ * @author Dereckson
+ * @author Grondin
+ */
 $messages['fr'] = array(
-	'tog-microid' => 'Publier un <a href="http://microid.org/">MicroID</a> en vue de confirmer votre identité auprès de services externes',
+	'microid-desc' => 'Ajoute un [http://www.microid.org/ MicroID] pour les pages utilisateur pour confirmer le compte avec des services externes',
+	'tog-microid'  => 'Publier un <a href="http://microid.org/">MicroID</a> en vue de confirmer votre identité auprès de services externes',
 );
 
 $messages['gl'] = array(
@@ -67,8 +72,12 @@ $messages['mr'] = array(
 	'tog-microid' => 'बाह्य सेवांचे खाते प्रमाणित करण्यासाठी एक <a href="http://microid.org/">MicroID</a> प्रकाशित करा',
 );
 
+/** Dutch (Nederlands)
+ * @author Siebrand
+ */
 $messages['nl'] = array(
-	'tog-microid' => 'Publiceer een <a href="http://microid.org/">MicroID</a> om een gebruiker te bevestigen bij externe diensten',
+	'microid-desc' => "Voegt een [http://www.microid.org/ MicroID] toe aan gebruikerspagina's om de gebruiker te bevestigen bij externe diensten",
+	'tog-microid'  => 'Publiceer een <a href="http://microid.org/">MicroID</a> om een gebruiker te bevestigen bij externe diensten',
 );
 
 $messages['no'] = array(
@@ -112,9 +121,11 @@ $messages['stq'] = array(
 
 /** Swedish (Svenska)
  * @author M.M.S.
+ * @author Boivie
  */
 $messages['sv'] = array(
-	'tog-microid' => 'Publicerer en <a href="http://microid.org/">MicroID</a> för att bekräfta konton för externa tjänster',
+	'microid-desc' => 'Lägger ett [http://www.microid.org/ MicroID] till sidor för att bekräfta konto med externa tjänster',
+	'tog-microid'  => 'Publicerer en <a href="http://microid.org/">MicroID</a> för att bekräfta konton för externa tjänster',
 );
 
 /** Vietnamese (Tiếng Việt)

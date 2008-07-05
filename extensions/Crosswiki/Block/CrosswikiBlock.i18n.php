@@ -557,6 +557,50 @@ $messages['is'] = array(
 	'crosswikiunblock-reason' => 'Ástæða:',
 );
 
+/** Italian (Italiano)
+ * @author Darth Kule
+ */
+$messages['it'] = array(
+	'crosswikiblock-desc'           => 'Permette di bloccare utenti su altre wiki usando una [[Special:Crosswikiblock|pagina speciale]]',
+	'crosswikiblock'                => "Blocca utente su un'altra wiki",
+	'crosswikiblock-header'         => "Questa pagina permette di bloccare un utente su un'altra wiki.
+Per favore, controlla che tu sia autorizzato a farlo su questa wiki e che l'azione sia conforme a tutte le policy.",
+	'crosswikiblock-target'         => 'Indirizzo IP o nome utente e wiki di destinazione:',
+	'crosswikiblock-expiry'         => 'Scadenza del blocco:',
+	'crosswikiblock-reason'         => 'Motivo del blocco:',
+	'crosswikiblock-submit'         => "Blocca l'utente",
+	'crosswikiblock-anononly'       => 'Blocca solo utenti anonimi',
+	'crosswikiblock-nocreate'       => 'Impedisci la creazione di altri account',
+	'crosswikiblock-autoblock'      => "Blocca automaticamente l'ultimo indirizzo IP usato dall'utente e i successivi con cui vengono  tentate modifiche",
+	'crosswikiblock-noemail'        => "Impedisci all'utente l'invio di e-mail",
+	'crosswikiunblock'              => "Sblocca utente su un'altra wiki",
+	'crosswikiunblock-header'       => "Questa pagina permette di sbloccare un utente su un'altra wiki.
+Per favore, controlla che tu sia autorizzato a farlo su questa wiki e che l'azione sia conforme a tutte le policy.",
+	'crosswikiunblock-user'         => 'Nome utente, indirizzo IP o ID di blocco e wiki di destinazione',
+	'crosswikiunblock-reason'       => 'Motivo dello sblocco:',
+	'crosswikiunblock-submit'       => "Sblocca l'utente",
+	'crosswikiunblock-success'      => "L'utente '''$1''' è stato sbloccato con successo.
+
+Torna a:
+* [[Special:CrosswikiBlock|Modulo di blocco]]
+* [[$2]]",
+	'crosswikiblock-nousername'     => 'Non è stato inserito nessun nome utente',
+	'crosswikiblock-local'          => 'I blocchi locali non sono supportati da questa interfaccia. Usare [[Special:Blockip]]',
+	'crosswikiblock-dbnotfound'     => 'Il database $1 non esiste',
+	'crosswikiblock-noname'         => '"$1" non è un nome utente valido.',
+	'crosswikiblock-nouser'         => 'L\'utente "$3" non è stato trovato.',
+	'crosswikiblock-noexpiry'       => 'Scadenza del blocco errata: $1.',
+	'crosswikiblock-noreason'       => 'Nessun motivo specificato.',
+	'crosswikiblock-alreadyblocked' => 'L\'utente "$3" è stato già bloccato.',
+	'crosswikiblock-noblock'        => 'Questo utente non è bloccato.',
+	'crosswikiblock-success'        => "L'utente '''$3''' è stato sbloccato con successo.
+
+Torna a:
+* [[Special:CrosswikiBlock|Modulo di blocco]]
+* [[$4]]",
+	'crosswikiunblock-local'        => 'Gli sblocchi locali non sono supportati da questa interfaccia. Usare [[Special:Ipblocklist]]',
+);
+
 /** Japanese (日本語)
  * @author JtFuruhata
  */

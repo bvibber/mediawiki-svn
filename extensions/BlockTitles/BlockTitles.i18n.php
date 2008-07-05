@@ -176,6 +176,15 @@ $messages['gv'] = array(
 	'block_title_error_page_title' => 'Ennym fo ghlass',
 );
 
+/** Hebrew (עברית)
+ * @author StuB
+ */
+$messages['he'] = array(
+	'block_title_error_page_title' => 'כותרת חסומה',
+	'block_title_error-desc'       => 'מספק דרך בסיסית למניעת שמירה או יצירה של דפים עם כותרות מסוימות',
+	'block_title_error'            => 'אנו מצטערים, אך הכותרת של דף זה אינה חוקית',
+);
+
 /** Hindi (हिन्दी)
  * @author Kaustubh
  */

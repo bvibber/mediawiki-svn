@@ -189,25 +189,30 @@ $messages['fi'] = array(
 	'formsaveerrortext'            => 'Tuntematon virhe tapahtui sivua \'$1\' tallennettaessa.',
 );
 
+/** French (Français)
+ * @author Sherbrooke
+ * @author Grondin
+ */
 $messages['fr'] = array(
-	'form' => 'Formulaire',
-	'formnoname' => 'Aucun nom',
-	'formnonametext' => 'Veuillez spécifier le nom du formulaire, sous la forme "Special:Formulaire/NomDuFormulaire".',
-	'formbadname' => 'Nom incorrect',
-	'formbadnametext' => 'Le nom choisi pour le formulaire est incorrect. Aucun formulaire n\'existe sous ce nom.',
-	'formpattern' => 'formulaire-$1',
-	'formtitlepattern' => 'Ajouter un(e) $1',
-	'formsave' => 'Sauvegarder',
-	'formindexmismatch' => 'Ce formulaire a des patrons et des modèles qui ne correspondent pas à partir de $1.',
-	'formarticleexists' => 'L\'article existe déjà.',
-	'formarticleexiststext' => 'L\'article nommé [[$1]] existe déjà.',
-	'formbadpagename' => 'Mauvais nom de page',
-	'formbadpagenametext' => 'Les données saisies forment un mauvais nom de page, « $1 ».',
+	'form-desc'                    => 'Un [[Special:Form|formulaire d’interface]] pour commencer des nouvelles pages',
+	'form'                         => 'Formulaire',
+	'formnoname'                   => 'Aucun nom',
+	'formnonametext'               => 'Veuillez spécifier le nom du formulaire, sous la forme "Special:Formulaire/NomDuFormulaire".',
+	'formbadname'                  => 'Nom incorrect',
+	'formbadnametext'              => "Le nom choisi pour le formulaire est incorrect. Aucun formulaire n'existe sous ce nom.",
+	'formpattern'                  => 'formulaire-$1',
+	'formtitlepattern'             => 'Ajouter un(e) $1',
+	'formsave'                     => 'Sauvegarder',
+	'formindexmismatch'            => 'Ce formulaire a des patrons et des modèles qui ne correspondent pas à partir de $1.',
+	'formarticleexists'            => "L'article existe déjà.",
+	'formarticleexiststext'        => "L'article nommé [[$1]] existe déjà.",
+	'formbadpagename'              => 'Mauvais nom de page',
+	'formbadpagenametext'          => 'Les données saisies forment un mauvais nom de page, « $1 ».',
 	'formrequiredfieldpluralerror' => 'Les champs $1 sont requis dans ce formulaire.',
-	'formrequiredfielderror' => 'Le champ $1 est requis dans ce formulaire.',
-	'formsavesummary' => 'Créer un nouvel article à l\'aide de [[Special:Formulaire/$1]]',
-	'formsaveerror' => 'Une erreur s\'est produite pendant la sauvegarde.',
-	'formsaveerrortext' => 'Une erreur inconnue s\'est produite pendant la sauvegarde de \'\'$1\'\'.',
+	'formrequiredfielderror'       => 'Le champ $1 est requis dans ce formulaire.',
+	'formsavesummary'              => "Créer un nouvel article à l'aide de [[Special:Formulaire/$1]]",
+	'formsaveerror'                => "Une erreur s'est produite pendant la sauvegarde.",
+	'formsaveerrortext'            => "Une erreur inconnue s'est produite pendant la sauvegarde de ''$1''.",
 );
 
 /** Galician (Galego)
@@ -393,25 +398,29 @@ $messages['nds'] = array(
 	'formarticleexists' => 'Sied gifft dat al',
 );
 
+/** Dutch (Nederlands)
+ * @author Siebrand
+ */
 $messages['nl'] = array(
-	'form' => 'Formulier',
-	'formnoname' => 'Geen formuliernaam',
-	'formnonametext' => 'Geef een formuliernaam op, bijvoorbeeld "Special:Form/Formuliernaam".',
-	'formbadname' => 'Ongeldige formuliernaam',
-	'formbadnametext' => 'Er bestaat geen formulier met die naam.',
-	'formpattern' => '$1-form',#identical but defined
-	'formtitlepattern' => 'Voeg nieuw $1 toe',
-	'formsave' => 'Opslaan',
-	'formindexmismatch' => 'Dit formulier heeft ongekoppelde naampatronen en sjablonen vanaf index $1.',
-	'formarticleexists' => 'Pagina bestaat al',
-	'formarticleexiststext' => 'De pagina [[$1]] bestaat al.',
-	'formbadpagename' => 'Onjuiste paginanaam',
-	'formbadpagenametext' => 'De formuliergegevens die u hebt opgegeven zorgen voor een onjuiste pagina, "$1".',
+	'form-desc'                    => "Een [[Special:Form|formulierinterface]] om nieuwe pagina's te starten",
+	'form'                         => 'Formulier',
+	'formnoname'                   => 'Geen formuliernaam',
+	'formnonametext'               => 'Geef een formuliernaam op, bijvoorbeeld "Special:Form/Formuliernaam".',
+	'formbadname'                  => 'Ongeldige formuliernaam',
+	'formbadnametext'              => 'Er bestaat geen formulier met die naam.',
+	'formpattern'                  => '$1-form',
+	'formtitlepattern'             => 'Voeg nieuw $1 toe',
+	'formsave'                     => 'Opslaan',
+	'formindexmismatch'            => 'Dit formulier heeft ongekoppelde naampatronen en sjablonen vanaf index $1.',
+	'formarticleexists'            => 'Pagina bestaat al',
+	'formarticleexiststext'        => 'De pagina [[$1]] bestaat al.',
+	'formbadpagename'              => 'Onjuiste paginanaam',
+	'formbadpagenametext'          => 'De formuliergegevens die u hebt opgegeven zorgen voor een onjuiste pagina, "$1".',
 	'formrequiredfieldpluralerror' => 'De velden $1 zijn verplicht voor dit formulier. Vul ze alstublieft in.',
-	'formrequiredfielderror' => 'Het veld $1 is verplicht voor dit formulier. Vul het alstublieft in.',
-	'formsavesummary' => 'Nieuwe pagina via [[Special:Form/$1]]',
-	'formsaveerror' => 'Fout bij opslaan formulier',
-	'formsaveerrortext' => 'Er is een onbekende fout opgetreden bij het opslaan van pagina \'$1\'.',
+	'formrequiredfielderror'       => 'Het veld $1 is verplicht voor dit formulier. Vul het alstublieft in.',
+	'formsavesummary'              => 'Nieuwe pagina via [[Special:Form/$1]]',
+	'formsaveerror'                => 'Fout bij opslaan formulier',
+	'formsaveerrortext'            => "Er is een onbekende fout opgetreden bij het opslaan van pagina '$1'.",
 );
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
@@ -627,8 +636,10 @@ $messages['su'] = array(
 /** Swedish (Svenska)
  * @author M.M.S.
  * @author Lejonel
+ * @author Boivie
  */
 $messages['sv'] = array(
+	'form-desc'                    => 'Ett [[Special:Form|formulär]] för att börja på nya sidor',
 	'form'                         => 'Formulär',
 	'formnoname'                   => 'Formulärnamn saknas',
 	'formnonametext'               => 'Du måste ange ett formulärnamn på formen "Special:Form/Formulärnamn".',

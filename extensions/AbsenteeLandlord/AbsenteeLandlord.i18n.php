@@ -103,6 +103,14 @@ $messages['gl'] = array(
 	'absenteelandlord-desc'   => 'Fecha automaticamente a base de datos wiki se todos os administradores están inactivos durante algún tempo',
 );
 
+/** Hebrew (עברית)
+ * @author Rotemliss
+ */
+$messages['he'] = array(
+	'absenteelandlord-reason' => 'בסיס הנתונים ננעל אוטומטית עקב חוסר פעילות של מפעילי המערכת.',
+	'absenteelandlord-desc'   => 'הפעלת נעילה אוטומטית של בסיס הנתונים אם כל מפעילי המערכת אינם פעילים למשך זמן מה',
+);
+
 /** Hindi (हिन्दी)
  * @author Kaustubh
  */

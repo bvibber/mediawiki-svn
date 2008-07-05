@@ -78,9 +78,14 @@ $messages['eo'] = array(
 	'templatelink_newtitle' => '$1 (transinkluzivita)',
 );
 
+/** French (Français)
+ * @author Sherbrooke
+ * @author Grondin
+ */
 $messages['fr'] = array(
-	'templatelink' => 'Lien vers modèle',
-	'templatelink_empty' => 'Vous devez saisir un paramètre.',
+	'templatelink'          => 'Lien vers modèle',
+	'templatelink_desc'     => 'Cette extention peut afficher un modèle comme une nouvelle page',
+	'templatelink_empty'    => 'Vous devez saisir un paramètre.',
 	'templatelink_newtitle' => '$1 (tranclus)',
 );
 
@@ -142,9 +147,13 @@ $messages['mr'] = array(
 	'templatelink_newtitle' => '$1 (आंतरन्यास)',
 );
 
+/** Dutch (Nederlands)
+ * @author Siebrand
+ */
 $messages['nl'] = array(
-	'templatelink' => 'Sjabloonverwijzing',
-	'templatelink_empty' => 'Geef een parameter op.',
+	'templatelink'          => 'Sjabloonverwijzing',
+	'templatelink_desc'     => 'Deze uitbreiding kan een sjabloon weergeven als een nieuwe pagina',
+	'templatelink_empty'    => 'Geef een parameter op.',
 	'templatelink_newtitle' => '$1 (getranscludeerd)',
 );
 
@@ -218,9 +227,11 @@ $messages['stq'] = array(
 /** Swedish (Svenska)
  * @author M.M.S.
  * @author Lejonel
+ * @author Boivie
  */
 $messages['sv'] = array(
 	'templatelink'          => 'Mallänk',
+	'templatelink_desc'     => 'Detta programtillägg kan visa en mall som en ny sida',
 	'templatelink_empty'    => 'Du måste ange en parameter.',
 	'templatelink_newtitle' => '$1 (inkluderas)',
 );

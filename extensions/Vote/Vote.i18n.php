@@ -294,6 +294,29 @@ $messages['grc'] = array(
 	'vote-login-link' => 'συνδεῖσθαι',
 );
 
+/** Hebrew (עברית)
+ * @author StuB
+ */
+$messages['he'] = array(
+	'vote'                => 'הצבעה',
+	'vote-header'         => "ניתן להצביע כאן ל'''שליט העליון של העולם'''!",
+	'vote-current'        => "הצבעתך הנוכחית היא ל'''$1'''.",
+	'vote-legend'         => 'קבעו או שנו את בחירתכם <!--או הצבעתכם?--!\\<',
+	'vote-caption'        => 'בחירתך:',
+	'vote-choices'        => "ג'וקר|הג'וקר
+פנגוין|הפנגוין
+איש החידות|איש החידות
+<!--doesn't make any sense to me--\\>",
+	'vote-submit'         => 'הצבעה',
+	'vote-registered'     => 'הצבעתך נרשמה',
+	'vote-view-results'   => 'צפיה בתוצאות',
+	'vote-results'        => 'תוצאות ההצבעה',
+	'vote-results-choice' => 'בחירה',
+	'vote-results-count'  => 'ספירה',
+	'vote-login-link'     => 'התחבר\\י',
+	'vote-invalid-choice' => 'חובה לבחור באחת האפשרויות הזמינות',
+);
+
 /** Hindi (हिन्दी)
  * @author Kaustubh
  */

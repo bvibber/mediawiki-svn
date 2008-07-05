@@ -172,8 +172,10 @@ Tämän sivuston ylläpitäjät eivät voi ottaa vastuuta kyseisten kommenttien 
 /** French (Français)
  * @author Rémi Kaupp
  * @author Urhixidur
+ * @author Grondin
  */
 $messages['fr'] = array(
+	'talkhere-desc'        => 'Met la page de discussion dans la page',
 	'talkhere-foottext'    => 'Les commentaires ci-dessus ont été laissés par des visiteurs.
 
 Le gestionnaire du site n’est pas responsable de leur contenu.',
@@ -351,6 +353,7 @@ $messages['nds'] = array(
  * @author Siebrand
  */
 $messages['nl'] = array(
+	'talkhere-desc'        => 'Voegt de overlegpagina to aan de pagina',
 	'talkhere-foottext'    => 'De bovenstaande opmerkingen zijn mogelijk door bezoekers achtergelaten.
 
 De beheerders van deze site dragen geen verantwoordelijkheid voor de inhoud van de opmerkingen.',
@@ -490,8 +493,10 @@ Do Bedrieuwere fon disse Websiede konnen neen Feroantwoudenge foar dän Inhoold 
 /** Swedish (Svenska)
  * @author M.M.S.
  * @author Lejonel
+ * @author Boivie
  */
 $messages['sv'] = array(
+	'talkhere-desc'        => 'Lägger diskussionssidan i sidan',
 	'talkhere-foottext'    => 'Kommentarerna ovan kan har lagts till av besökare.
 
 Sajtens operatörer kan inte ta ansvar för innehållet i vissa kommentarer.',

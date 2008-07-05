@@ -48,6 +48,14 @@ $messages['gl'] = array(
 	'right-move-userpages'  => 'Mover páxinas de usuario',
 );
 
+/** Korean (한국어)
+ * @author Klutzy
+ */
+$messages['ko'] = array(
+	'nomoveuserpages-desc' => '‘move-userpages’ 권한이 있어야만 사용자 문서를 이동할 수 있도록 설정',
+	'right-move-userpages' => '사용자 문서 이동',
+);
+
 /** Latin (Latina)
  * @author UV
  */

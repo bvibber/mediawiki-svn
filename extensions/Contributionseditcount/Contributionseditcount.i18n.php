@@ -129,8 +129,13 @@ $messages['is'] = array(
 	'contributionseditcount-desc' => 'Sýna breytingarfjöld á [[Special:Contributions]]',
 );
 
+/** Italian (Italiano)
+ * @author Darth Kule
+ * @author Gianfranco
+ */
 $messages['it'] = array(
-	'contributionseditcount' => 'Questo utente ha $1 edit',
+	'contributionseditcount'      => 'Questo utente ha $1 edit',
+	'contributionseditcount-desc' => 'Mostra un edit count in [[Special:Contributions]]',
 );
 
 /** Japanese (日本語)

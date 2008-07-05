@@ -54,9 +54,11 @@ $messages['eo'] = array(
 /** French (Français)
  * @author Sherbrooke
  * @author Urhixidur
+ * @author Grondin
  */
 $messages['fr'] = array(
 	'stalepages'         => 'Pages vieillies',
+	'stalepages-desc'    => 'Crée une [[Special:Stalepages|liste des pages]] qui n’ont pas été éditées récemment',
 	'stalepages-summary' => "Ceci est une liste de pages qui n'ont pas été modifiées depuis {{PLURAL:$1|$1 jour|$1 jours}}.",
 );
 
@@ -143,9 +145,13 @@ $messages['nds'] = array(
 	'stalepages-summary' => 'Dat is en List van de Sieden, die siet {{PLURAL:1 Dag|$1 Dagen}} nit änndert warn.',
 );
 
+/** Dutch (Nederlands)
+ * @author Siebrand
+ */
 $messages['nl'] = array(
-	'stalepages' => 'Vergeten pagina\'s',
-	'stalepages-summary' => 'Dit is een lijst van pagina\'s die niet bewerkt zijn in de afgelopen $1 dagen.',
+	'stalepages'         => "Vergeten pagina's",
+	'stalepages-desc'    => "Geeft een [[Special:Stalepages|lijst met pagina's]] weer die recent niet zijn bewerkt",
+	'stalepages-summary' => "Dit is een lijst van pagina's die niet bewerkt zijn in de afgelopen $1 dagen.",
 );
 
 /** Norwegian (‪Norsk (bokmål)‬)
@@ -199,9 +205,11 @@ $messages['stq'] = array(
 /** Swedish (Svenska)
  * @author Sannab
  * @author M.M.S.
+ * @author Boivie
  */
 $messages['sv'] = array(
 	'stalepages'         => 'Föråldrade sidor',
+	'stalepages-desc'    => 'Skapar [[Special:Stalepages|lista med sidor]] som inte har redigerats nyligen',
 	'stalepages-summary' => 'Detta är en lista över sidor som inte har blivit redigerade under de sista $1 dagarna.',
 );
 

@@ -216,6 +216,25 @@ href="http://webbook.nist.gov/cgi/cbook.cgi?ID=$MIXCASNameFormula&amp;Units=SI">
 	'chemFunctions_ChemFormInputError' => 'Chemform: Erro na entrada!',
 );
 
+/** Hebrew (עברית)
+ * @author StuB
+ * @author Rotemliss
+ */
+$messages['he'] = array(
+	'chemicalsources'                  => 'יסודות כימיים',
+	'chemicalsource-desc'              => 'הוספת התגית <nowiki><chemform></nowiki> בשביל נוסחאות כימיות',
+	'chemFunctions_ListPage'           => 'יסודות כימיים',
+	'chemFunctions_DataList'           => 'להלן קישורים לאתרים (באנגלית) שעשויים לספק מידע על החומר הכימי שאתם מחפשים:<br /><br />
+* [http://webbook.nist.gov/cgi/cbook.cgi?ID=$MIXCASNameFormula&amp;Units=SI Compound $MIXCASNameFormula at NIST]<br />
+* [http://ptcl.chem.ox.ac.uk/MSDS/ MSDS at the Oxford University (UK) (not searchable)]<br />',
+	'chemFunctions_CAS'                => 'מספר CAS',
+	'chemFunctions_ATCCode'            => 'קוד ATC',
+	'chemFunctions_ECNumber'           => 'מספר EC',
+	'chemFunctions_Formula'            => 'נוסחה',
+	'chemFunctions_Name'               => 'שם IUPAC',
+	'chemFunctions_ChemFormInputError' => 'Chemform: שגיאת קלט!',
+);
+
 /** Hindi (हिन्दी)
  * @author Kaustubh
  */
@@ -301,27 +320,19 @@ $messages['is'] = array(
 	'chemFunctions_Formula' => 'Formúla',
 );
 
+/** Italian (Italiano)
+ * @author Darth Kule
+ */
 $messages['it'] = array(
-	'chemicalsources' => 'Informazioni sui composti chimici',
-	'chemFunctions_ListPage' => 'Informazioni sui composti chimici',
-	'chemFunctions_SearchExplanation' => '',
-	'chemFunctions_DataList' => 'Di seguito viene presentato un elenco di collegamenti a siti presso i quali si possono referire informazioni sui composti chimici cercati.<br /><br />
+	'chemicalsources'                  => 'Informazioni sui composti chimici',
+	'chemicalsource-desc'              => 'Aggiunge il tag <nowiki><chemform></nowiki> per le formule chimiche',
+	'chemFunctions_ListPage'           => 'Informazioni sui composti chimici',
+	'chemFunctions_DataList'           => 'Di seguito viene presentato un elenco di collegamenti a siti presso i quali si possono referire informazioni sui composti chimici cercati.<br /><br />
 * <a href="http://webbook.nist.gov/cgi/cbook.cgi?ID=$MIXCASNameFormula&Units=SI">Scheda del composto $MIXCASNameFormula presso il NIST</a><br />
 * <a href="http://ptcl.chem.ox.ac.uk/MSDS/">Scheda di sicurezza MSDS presso la Oxford University (UK) (ricerca non attiva)</a><br />',
-	'chemFunctions_CAS' => 'Numero CAS',
-	'chemFunctions_EINECS' => 'EINECS',
-	'chemFunctions_CHEBI' => 'CHEBI',
-	'chemFunctions_PubChem' => 'PubChem',
-	'chemFunctions_SMILES' => 'SMILES',
-	'chemFunctions_InChI' => 'InChI',
-	'chemFunctions_RTECS' => 'RTECS',
-	'chemFunctions_KEGG' => 'KEGG',
-	'chemFunctions_ATCCode' => 'ATCCode',
-	'chemFunctions_DrugBank' => 'DrugBank',
-	'chemFunctions_ECNumber' => 'ECNumber',
-	'chemFunctions_Formula' => 'Formula',
-	'chemFunctions_Name' => 'Nome IUPAC',
-	'chemFunctions_ChemFormInputError' => 'Chemform: Input non corretto.'
+	'chemFunctions_CAS'                => 'Numero CAS',
+	'chemFunctions_Name'               => 'Nome IUPAC',
+	'chemFunctions_ChemFormInputError' => 'Chemform: Input non corretto.',
 );
 
 /** Japanese (日本語)

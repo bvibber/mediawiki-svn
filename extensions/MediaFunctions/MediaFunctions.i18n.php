@@ -57,9 +57,14 @@ $messages['eo'] = array(
 	'mediafunctions-not-exist'     => '"$1" ne ekzistas',
 );
 
+/** French (Français)
+ * @author Sherbrooke
+ * @author Grondin
+ */
 $messages['fr'] = array(
-	'mediafunctions-invalid-title' => '« $1 » n\'est pas un titre valide.',
-	'mediafunctions-not-exist'     => '« $1 » n\'existe pas.',
+	'mediafunctions-desc'          => 'Fonction parseur pour l’obtention d‘informations concernant les fichiers médias',
+	'mediafunctions-invalid-title' => "« $1 » n'est pas un titre valide.",
+	'mediafunctions-not-exist'     => "« $1 » n'existe pas.",
 );
 
 $messages['gl'] = array(
@@ -142,7 +147,11 @@ $messages['nds'] = array(
 	'mediafunctions-not-exist'     => '„$1“ gifft dat nich',
 );
 
+/** Dutch (Nederlands)
+ * @author Siebrand
+ */
 $messages['nl'] = array(
+	'mediafunctions-desc'          => 'Parserfuncties voor het ophalen van informatie over mediabestanden',
 	'mediafunctions-invalid-title' => '"$1" is geen geldige titel',
 	'mediafunctions-not-exist'     => '"$1" bestaat niet',
 );
@@ -212,8 +221,10 @@ $messages['stq'] = array(
 
 /** Swedish (Svenska)
  * @author M.M.S.
+ * @author Boivie
  */
 $messages['sv'] = array(
+	'mediafunctions-desc'          => 'Parserfunktoner för att hämta information om mediafiler',
 	'mediafunctions-invalid-title' => '"$1" är inte en giltig titel',
 	'mediafunctions-not-exist'     => '"$1" existerar inte',
 );

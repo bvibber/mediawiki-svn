@@ -64,8 +64,10 @@ $messages['eo'] = array(
  * @author Sherbrooke
  * @author Dereckson
  * @author Siebrand
+ * @author Grondin
  */
 $messages['fr'] = array(
+	'postcomment_desc'                     => 'Permet aux utilisateurs d’envoyer des commentaires directement dans les pages de discussion',
 	'postcomment_discussionprotected'      => 'La page de discussion a été protégée en écriture.',
 	'postcomment_notloggedin'              => "Vous n'êtes pas identifié.",
 	'postcomment_youareloggedinas'         => "Vous n'êtes pas identifié en tant que $1.",
@@ -195,6 +197,7 @@ $messages['mr'] = array(
  * @author Siebrand
  */
 $messages['nl'] = array(
+	'postcomment_desc'                     => "Maakt het mogelijk om opmerkingen direct op overlegpagina's te plaatsen",
 	'postcomment_discussionprotected'      => 'Deze overlegpagina is beveiligd tegen verdere antwoorden en opmerkingen.',
 	'postcomment_notloggedin'              => 'U bent niet aangemeld.',
 	'postcomment_youareloggedinas'         => 'U bent aangemeld als $1',
@@ -206,7 +209,6 @@ $messages['nl'] = array(
 	'postcomment_invalidrequest'           => 'Ongeldige aanvraag.',
 	'postcomment_replyto'                  => 'Antwoorden aan $1',
 	'postcomment_nopostingtoadd'           => 'Niets toe te voegen.',
-
 );
 
 $messages['no'] = array(
@@ -312,8 +314,10 @@ $messages['sk'] = array(
 
 /** Swedish (Svenska)
  * @author M.M.S.
+ * @author Boivie
  */
 $messages['sv'] = array(
+	'postcomment_desc'                     => 'Tillåter användare att posta kommentarer direkt till diskussionssidor.',
 	'postcomment_discussionprotected'      => 'Den här diskussionssidan har skyddats från vidare postning.',
 	'postcomment_notloggedin'              => 'Du är inte inloggad.',
 	'postcomment_youareloggedinas'         => 'Du är inloggad som $1',

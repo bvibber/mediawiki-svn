@@ -69,9 +69,11 @@ $messages['eo'] = array(
 /** French (Français)
  * @author Sherbrooke
  * @author Urhixidur
+ * @author Grondin
  */
 $messages['fr'] = array(
 	'profiling'              => 'Données pour évaluer',
+	'profiling-desc'         => '[[Special:Profiling|Page spéciale]] pour rechercher et inspecter des données de profil',
 	'profiling-process'      => 'Chaîne de caractères à traiter :',
 	'profiling-wildcard'     => 'Utilisez un passe-partout',
 	'profiling-ok'           => 'Accepter',
@@ -263,6 +265,7 @@ $messages['ms'] = array(
  */
 $messages['nl'] = array(
 	'profiling'              => 'Profilinggegevens',
+	'profiling-desc'         => '[[Special:Profiling|Speciale pagina]] voor het doorzoeken en inspecteren van profilinggegevens',
 	'profiling-process'      => 'Verwerk string:',
 	'profiling-wildcard'     => 'Gebruik wildcard',
 	'profiling-ok'           => 'OK',
@@ -396,9 +399,11 @@ $messages['stq'] = array(
 /** Swedish (Svenska)
  * @author M.M.S.
  * @author Jon Harald Søby
+ * @author Boivie
  */
 $messages['sv'] = array(
 	'profiling'              => 'Profileringsdata',
+	'profiling-desc'         => '[[Special:Profiling|Specialsida]] för att söka och inspektera profildata',
 	'profiling-process'      => 'Processeringssträng:',
 	'profiling-wildcard'     => 'Använd jokertecken',
 	'profiling-ok'           => 'OK',

@@ -152,6 +152,13 @@ $messages['eo'] = array(
 	'player-goto-file'     => 'dosiero',
 );
 
+/** Basque (Euskara)
+ * @author Theklan
+ */
+$messages['eu'] = array(
+	'player-goto-file' => 'fitxategia',
+);
+
 /** French (Français)
  * @author Grondin
  * @author Urhixidur

@@ -86,6 +86,20 @@ $messages['de'] = array(
 	'onlinestatus-toggle-online'    => 'Online',
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'onlinestatus-desc'             => 'Preferencu pśidaś, aby se pokazało, jolic wužywaŕ jo tuchylu na wikiju pśibytny abo nic',
+	'onlinestatus-subtitle-offline' => 'Toś ten wužywaŕ jo tuchylu offline',
+	'onlinestatus-subtitle-online'  => 'Toś ten wužywaŕ jo tuchylu online',
+	'onlinestatus-toggles-desc'     => 'Twój status:',
+	'onlinestatus-toggles-explain'  => 'Toś to nastajenje śi dowólujo, drugim wužywarjam na twójom wužywarskim boku pokazaś, lěc sy tuchylu online abo nic.',
+	'onlinestatus-toggles-show'     => 'Status online na mójom wužywarskim boku pokazaś',
+	'onlinestatus-toggle-offline'   => 'Offline',
+	'onlinestatus-toggle-online'    => 'Online',
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */
@@ -164,6 +178,20 @@ $messages['hr'] = array(
 	'onlinestatus-toggles-show'     => 'Prikaži da sam spojen na mojoj suradničkoj stranici',
 	'onlinestatus-toggle-offline'   => 'Nije spojen',
 	'onlinestatus-toggle-online'    => 'Spojen',
+);
+
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
+$messages['hsb'] = array(
+	'onlinestatus-desc'             => 'Preferencu přidać, zo by so pokazało, hač wužiwar je tuchwilu we wikiju přitomny abo nic',
+	'onlinestatus-subtitle-offline' => 'Tutón wužiwar je tuchwilu offline',
+	'onlinestatus-subtitle-online'  => 'Tutón wužiwar je tuchwilu online',
+	'onlinestatus-toggles-desc'     => 'Twój status:',
+	'onlinestatus-toggles-explain'  => 'Tute nastajenje ći dowoluje druhim wužiwarjam na twojej wužiwarskej stronje pokazać, zo sy tuchwilu online abo nic.',
+	'onlinestatus-toggles-show'     => 'Status online na mojej wužiwarskej stronje pokazać',
+	'onlinestatus-toggle-offline'   => 'Offline',
+	'onlinestatus-toggle-online'    => 'Online',
 );
 
 /** Javanese (Basa Jawa)
