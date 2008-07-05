@@ -73,7 +73,7 @@ class ApiQueryCategoryMembers extends ApiQueryGeneratorBase {
 		}
 
 		$this->addFieldsIf('cl_timestamp', $fld_timestamp || $params['sort'] == 'timestamp');
-		$this->addTables(array('page','categorylinks', 'category'));	// must be in this order for 'USE INDEX'
+		$this->addTables(array('category','page','categorylinks'));	// must be in this order for 'USE INDEX'
 									// Not needed after bug 10280 is applied to servers
 		if($params['sort'] == 'timestamp')
 		{
@@ -84,7 +84,7 @@ class ApiQueryCategoryMembers extends ApiQueryGeneratorBase {
 		else
 		{
 			$dir = ($params['dir'] == 'desc' ? ' DESC' : '');
-			$this->addOption('USE INDEX', 'cl_sortkey');
+			$this->addOption('USE INDEX', 'cl_sortkey_inline');
 			$this->addOption('ORDER BY', 'cl_inline, cl_sortkey' . $dir . ', cl_from' . $dir);
 		}
 

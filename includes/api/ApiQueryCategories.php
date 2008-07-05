@@ -121,7 +121,7 @@ class ApiQueryCategories extends ApiQueryGeneratorBase {
 
 			$titles = array();
 			while ($row = $db->fetchObject($res)) {
-				$titles[] = Title :: makeTitle(NS_CATEGORY, $row->cl_title);
+				$titles[] = Title :: makeTitle(NS_CATEGORY, $row->cat_title);
 			}
 			$resultPageSet->populateFromTitles($titles);
 		}
