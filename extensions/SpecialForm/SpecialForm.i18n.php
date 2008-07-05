@@ -241,25 +241,29 @@ $messages['gl'] = array(
 	'formsaveerrortext'            => "Houbo un erro descoñecido ao gardar a páxina '$1'.",
 );
 
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
 $messages['hsb'] = array(
-	'form' => 'Formular',
-	'formnoname' => 'Žane formularne mjeno',
-	'formnonametext' => 'Dyrbiš formularne mjeno podać, na př. „{{ns:Special}}:Form/Formularnemjeno“.',
-	'formbadname' => 'Wopačne formularne mjeno',
-	'formbadnametext' => 'Njeje formular z tutym mjenom',
-	'formpattern' => '$1 formular',
-	'formtitlepattern' => 'Nowe $1 přidać',
-	'formsave' => 'Składować',
-	'formindexmismatch' => 'Tutón formular ma njejenake mjenowe mustry a předłohi wot indeksa $1.',
-	'formarticleexists' => 'Nastawk hižo eksistuje',
-	'formarticleexiststext' => 'Nastawk [[$1]] hižo eksistuje.',
-	'formbadpagename' => 'Njedowolene mjeno strony',
-	'formbadpagenametext' => 'Zapodate formularne daty tworja njedowolene mjeno strony: "$1".',
+	'form-desc'                    => '[[Special:Form|Formularny interfejs]] za wutworjenje nowych stronow',
+	'form'                         => 'Formular',
+	'formnoname'                   => 'Žane formularne mjeno',
+	'formnonametext'               => 'Dyrbiš formularne mjeno podać, na př. „{{ns:Special}}:Form/Formularnemjeno“.',
+	'formbadname'                  => 'Wopačne formularne mjeno',
+	'formbadnametext'              => 'Njeje formular z tutym mjenom',
+	'formpattern'                  => '$1 formular',
+	'formtitlepattern'             => 'Nowe $1 přidać',
+	'formsave'                     => 'Składować',
+	'formindexmismatch'            => 'Tutón formular ma njejenake mjenowe mustry a předłohi wot indeksa $1.',
+	'formarticleexists'            => 'Nastawk hižo eksistuje',
+	'formarticleexiststext'        => 'Nastawk [[$1]] hižo eksistuje.',
+	'formbadpagename'              => 'Njedowolene mjeno strony',
+	'formbadpagenametext'          => 'Zapodate formularne daty tworja njedowolene mjeno strony: "$1".',
 	'formrequiredfieldpluralerror' => 'Pola $1 su trěbne pola. Prošu wupjelń je.',
-	'formrequiredfielderror' => 'Polo $1 je trěbne polo. Prošu wupjelń je.',
-	'formsavesummary' => 'Nowy nastawk, kotryž na [{{ns:Special}}:Form/$1]] bazěruje.',
-	'formsaveerror' => 'Zmylk při składowanju formulara',
-	'formsaveerrortext' => 'Bě njeznaty zmylk při składowanju nastawka "$1".',
+	'formrequiredfielderror'       => 'Polo $1 je trěbne polo. Prošu wupjelń je.',
+	'formsavesummary'              => 'Nowy nastawk, kotryž na [{{ns:Special}}:Form/$1]] bazěruje.',
+	'formsaveerror'                => 'Zmylk při składowanju formulara',
+	'formsaveerrortext'            => 'Bě njeznaty zmylk při składowanju nastawka "$1".',
 );
 
 /** Hungarian (Magyar)

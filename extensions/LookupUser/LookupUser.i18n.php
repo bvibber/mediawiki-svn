@@ -266,8 +266,10 @@ $messages['lb'] = array(
 	'lookupuser_not_authenticated' => 'net identifizéiert',
 	'lookupuser_id'                => 'Benotzer-Nummer: <tt>#$1</tt>',
 	'lookupuser_email'             => 'E-mail: [[Special:Emailuser/$2|$1]]',
+	'lookupuser_no_email'          => 'net uginn',
 	'lookupuser_realname'          => 'Richtege Numm: $1',
 	'lookupuser_registration'      => 'Datum vun der Umeldung: $1',
+	'lookupuser_no_registration'   => 'net enregistréiert',
 	'lookupuser_touched'           => "Benotzerkont de fir d'lescht beréiert gouf: $1",
 	'lookupuser_useroptions'       => 'Astellunge vum Benotzer:',
 );

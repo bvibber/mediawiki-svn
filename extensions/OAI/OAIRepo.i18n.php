@@ -81,6 +81,13 @@ $messages['hi'] = array(
 	'oai-desc' => '[http://www.openarchives.org/OAI/openarchivesprotocol.html OAI-PMH] रिपॉजिटरी इंटरफेस देता हैं',
 );
 
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
+$messages['hsb'] = array(
+	'oai-desc' => 'Staja interfejs za repozitorij [http://www.openarchives.org/OAI/openarchivesprotocol.html OAI-PMH] k dispoziciji',
+);
+
 /** Indonesian (Bahasa Indonesia)
  * @author Rex
  */

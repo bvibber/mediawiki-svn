@@ -73,6 +73,20 @@ $messages['ar'] = array(
 	'newuserlog-autocreate-entry' => 'الحساب تم إنشاؤه تلقائيا',
 );
 
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Ramsis1978
+ */
+$messages['arz'] = array(
+	'newuserlogpage'              => 'سجل اليوزرز الجداد',
+	'newuserlogpagetext'          => 'دا سجل لليوزرز الجدا
+د',
+	'newuserlog-desc'             => 'بيزود[[Special:Log/newusers|سجل فتح الحسابات]] لـ [[Special:Log]]',
+	'newuserlog-byemail'          => 'الباسورد اتبعتت بالايميل',
+	'newuserlog-create-entry'     => 'يوزر جديد',
+	'newuserlog-create2-entry'    => 'افتح حساب لـ $1',
+	'newuserlog-autocreate-entry' => 'الحساب اتفتح اوتوماتيكي',
+);
+
 /** Assamese (অসমীয়া)
  * @author Rajuonline
  */

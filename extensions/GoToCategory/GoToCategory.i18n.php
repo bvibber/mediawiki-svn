@@ -36,6 +36,13 @@ $messages['gl'] = array(
 	'gotocategory-desc' => 'Comproba os termos da procura contra o espazo de nomes Categoría: para "Ir" a partir da funcionalidade "saltar a unha páxina"',
 );
 
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$messages['lb'] = array(
+	'gotocategory-desc' => "Iwwerpréift Sichbegreffer géint den Nummraum-Kategorien fir d'fonctioun 'Op d'Säit sprangen'",
+);
+
 /** Marathi (मराठी)
  * @author Kaustubh
  */

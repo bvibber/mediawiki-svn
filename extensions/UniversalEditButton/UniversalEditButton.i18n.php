@@ -74,6 +74,13 @@ $messages['he'] = array(
 	'universaleditbutton-desc' => 'הוספת כותרת ה־HTML <code>&lt;link&gt;</code> כדי לתמוך בהרחבת הדפדפן Universal Edit Button',
 );
 
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
+$messages['hsb'] = array(
+	'universaleditbutton-desc' => "Přidawa hłowje HTML tafličku <code>&lt;link&gt;</code> za podpěru rozšěrjenja ''Universal Edit Button''",
+);
+
 /** Indonesian (Bahasa Indonesia)
  * @author Rex
  */

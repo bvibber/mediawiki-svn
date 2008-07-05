@@ -940,6 +940,41 @@ $messages['hil'] = array(
 	'viewapc-ls-submit' => 'Sige!',
 );
 
+/** Hungarian (Magyar)
+ * @author Dani
+ */
+$messages['hu'] = array(
+	'viewapc-info-general'          => 'Általános információk',
+	'viewapc-apc-version'           => 'APC-verzió',
+	'viewapc-php-version'           => 'PHP-verzió',
+	'viewapc-shared-memory'         => 'Megosztott memória',
+	'viewapc-start-time'            => 'Futtatás kezdete',
+	'viewapc-uptime'                => 'Futási idő',
+	'viewapc-upload-support'        => 'Fájlfeltöltés támogatása',
+	'viewapc-filecache-info'        => 'Információk: fájlgyorsítótár',
+	'viewapc-usercache-info'        => 'Információk: felhasználói gyorsítótár',
+	'viewapc-cached-files'          => 'Gyorsítótárazott fájlok',
+	'viewapc-cached-files-d'        => '{{PLURAL:$1|Egy|$1}} fájl ($2)',
+	'viewapc-hits'                  => 'Találatok',
+	'viewapc-misses'                => 'Hibázások',
+	'viewapc-requests'              => 'Kérési sebesség',
+	'viewapc-hitrate'               => 'Találati sebesség',
+	'viewapc-missrate'              => 'Hibázási sebesség',
+	'viewapc-rps'                   => '$1 kérés másodpercenként',
+	'viewapc-info-runtime'          => 'Információk: futási idő',
+	'viewapc-info-memory'           => 'Állapotdiagramok: kiszolgáló',
+	'viewapc-memory-usage-detailed' => 'Memóriahasználat<br />
+(több szelet a töredezettséget jelzi)',
+	'viewapc-cache-efficiency'      => 'Találatok és hibázások',
+	'viewapc-memory-free'           => 'Szabad: $1 ($2)',
+	'viewapc-memory-used'           => 'Használt: $1 ($2)',
+	'viewapc-memory-hits'           => 'Találatok: $1 ($2)',
+	'viewapc-memory-miss'           => 'Hibázások: $1 ($2)',
+	'viewapc-memoryfragmentation'   => 'Részletes memóriahasználat és töredezettség',
+	'viewapc-fragmentation-info'    => 'Töredezettség: $1 ($2 a $3 bájtból {{PLURAL:$4|egy|$4}} darabban)',
+	'viewapc-fragmentation-none'    => 'Töredezettség: nincs töredezettség',
+);
+
 /** Armenian (Հայերեն)
  * @author Togaed
  */

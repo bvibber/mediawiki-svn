@@ -100,6 +100,18 @@ $messages['gl'] = array(
 	'dplforum-toomany' => 'Foro DPL: demasiadas categorías!',
 );
 
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
+$messages['hsb'] = array(
+	'dplforum-desc'    => 'Forumowe rozšěrjenje na zakładźe DPL',
+	'dplforum-by'      => 'wot',
+	'dplforum-edited'  => '- Posledni raz wobdźěłany',
+	'dplforum-never'   => 'Ženje',
+	'dplforum-toofew'  => 'Forum DPL: Přemało kategorijow!',
+	'dplforum-toomany' => 'Forum DPL: Přewjele kategorijow!',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */

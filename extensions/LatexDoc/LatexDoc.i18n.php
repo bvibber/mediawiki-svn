@@ -211,6 +211,15 @@ $3',
 	'latexdoc-desc'            => 'សំណុំឯកសារ LaTeX',
 );
 
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$messages['lb'] = array(
+	'latexdoc_cant_create_dir' => 'Den temporäre Repertoire $1 kann net ugeluecht ginn',
+	'latexdoc_get_dvi'         => 'DVI kréien',
+	'latexdoc_get_pdf'         => 'PDF kréien',
+);
+
 /** Malayalam (മലയാളം)
  * @author Shijualex
  */

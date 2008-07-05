@@ -49,6 +49,13 @@ $messages['ar'] = array(
 	'call-save-failed'  => 'النص التالي لم يتم حفظه لصفحة <big>[[$1]]</big> لأن هذه الصفحة موجودة بالفعل.',
 );
 
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Ramsis1978
+ */
+$messages['arz'] = array(
+	'call' => 'نادي',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  */

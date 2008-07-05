@@ -136,6 +136,14 @@ $messages['hsb'] = array(
 	'absenteelandlord-desc'   => 'Awtomatiske zawrjenja wikijoweje datoweje banki, jeli administratorojo su njeaktiwni za wěstu dobu.',
 );
 
+/** Hungarian (Magyar)
+ * @author Dani
+ */
+$messages['hu'] = array(
+	'absenteelandlord-reason' => 'Az adatbázis automatikusan le lett zárva az adminisztrátorok inaktivitása miatt.',
+	'absenteelandlord-desc'   => 'Automatikusan lezárja a wiki adatbázisát az adminisztrátorok inaktívsága esetén',
+);
+
 /** Indonesian (Bahasa Indonesia)
  * @author Rex
  */
@@ -165,7 +173,7 @@ $messages['km'] = array(
  */
 $messages['lb'] = array(
 	'absenteelandlord-reason' => "D'Datebank gouf automatesch gespaart well d'Administratueren net aktiv sinn.",
-	'absenteelandlord-desc'   => "Spärt d'Databank vn dëser Wiki automatesch wann d'Administrateuren alleguer eng zäitlaang net aktiv sinn.",
+	'absenteelandlord-desc'   => "Spärt d'Datebank vun dëser Wiki automatesch wann d'Administrateuren alleguer eng zäitlaang net aktiv sinn.",
 );
 
 /** Limburgish (Limburgs)
