@@ -140,7 +140,7 @@ class Categoryfinder {
 		$res = $this->dbr->select(
 				/* FROM   */ array( 'categorylinks', 'category' ),
 				/* SELECT */ array( 'cl_from', 'cat_title' ),
-				/* WHERE  */ array( 'cl_from' => $this->next, 'cl_inline=cat_id' ),
+				/* WHERE  */ array( 'cl_from' => $this->next, 'cl_target=cat_id' ),
 				$fname."-1"
 		);
 		while ( $o = $this->dbr->fetchObject( $res ) ) {

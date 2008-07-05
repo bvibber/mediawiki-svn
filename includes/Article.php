@@ -3302,7 +3302,7 @@ class Article {
 		$res = $dbr->select( array( 'categorylinks', 'category', 'page_props', 'page' ),
 			array( 'cat_title' ),
 			array( 'cl_from' => $id, 'pp_page=page_id', 'pp_propname' => 'hiddencat',
-				'page_namespace' => NS_CATEGORY, 'page_title=cat_title', 'cat_id=cl_inline'),
+				'page_namespace' => NS_CATEGORY, 'page_title=cat_title', 'cat_id=cl_target'),
 			'Article:getHiddenCategories' );
 		if ( false !== $res ) {
 			if ( $dbr->numRows( $res ) ) {

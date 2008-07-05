@@ -27,7 +27,7 @@ class UnusedCategoriesPage extends QueryPage {
 				{$NScat} as namespace, page_title as title, page_title as value
 				FROM $page
 				INNER JOIN $category ON cat_title=page_title
-				LEFT JOIN $categorylinks ON cl_inline=cat_id
+				LEFT JOIN $categorylinks ON cl_target=cat_id
 				WHERE cl_from IS NULL
 				AND page_namespace = {$NScat}
 				AND page_is_redirect = 0";

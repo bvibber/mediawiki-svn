@@ -11,6 +11,7 @@ class Category {
 	/** Name of the category, normalized to DB-key form */
 	private $mName = null;
 	private $mID = null;
+	private $mRedir = null;
 	/** Category page title */
 	private $mTitle = null;
 	/** Counts of membership (cat_pages, cat_subcats, cat_files) */
@@ -39,7 +40,7 @@ class Category {
 		$dbr = wfGetDB( DB_SLAVE );
 		$row = $dbr->selectRow(
 			'category',
-			array( 'cat_id', 'cat_title', 'cat_pages', 'cat_subcats',
+			array( 'cat_id', 'cat_title', 'cat_redir', 'cat_pages', 'cat_subcats',
 				'cat_files' ),
 			$where,
 			__METHOD__
@@ -49,6 +50,7 @@ class Category {
 			if ( $this->mTitle ) {
 				# If there is a title object but no record in the category table, treat this as an empty category
 				$this->mID      = false;
+				$this->mRedir   = false;
 				$this->mName    = $this->mTitle->getDBKey();
 				$this->mPages   = 0;
 				$this->mSubcats = 0;
@@ -60,6 +62,7 @@ class Category {
 			}
 		}
 		$this->mID      = $row->cat_id;
+		$this->mRedir   = $row->cat_redir;
 		$this->mName    = $row->cat_title;
 		$this->mPages   = $row->cat_pages;
 		$this->mSubcats = $row->cat_subcats;
@@ -151,13 +154,15 @@ class Category {
 				$cat->mName = $title->getDBKey(); # if we have a title object, fetch the category name from there
 			}
 
-			$cat->mID =   false;
+			$cat->mID	   = false;
+			$cat->mRedir   = false;
 			$cat->mSubcats = 0;
 			$cat->mPages   = 0;
 			$cat->mFiles   = 0;
 		} else {
 			$cat->mName    = $row->cat_title;
 			$cat->mID      = $row->cat_id;
+			$cat->mRedir   = $row->cat_redir;
 			$cat->mSubcats = $row->cat_subcats;
 			$cat->mPages   = $row->cat_pages;
 			$cat->mFiles   = $row->cat_files;
@@ -170,6 +175,8 @@ class Category {
 	public function getName() { return $this->getX( 'mName' ); }
 	/** @return mixed Category ID, or false on failure */
 	public function getID() { return $this->getX( 'mID' ); }
+	/** @return mixed Category redirect ID (may be null), or false on failure */
+	public function getRedir() { return $this->getX( 'mRedir' ); }
 	/** @return mixed Total number of member pages, or false on failure */
 	public function getPageCount() { return $this->getX( 'mPages' ); }
 	/** @return mixed Number of subcategories, or false on failure */
@@ -234,7 +241,7 @@ class Category {
 				   "COUNT($cond1) AS subcats",
 				   "COUNT($cond2) AS files"
 			),
-			array( 'cl_inline' => $this->mID, 'page_id = cl_from' ),
+			array( 'cl_target' => $this->mID, 'page_id = cl_from' ),
 			__METHOD__,
 			'LOCK IN SHARE MODE'
 		);

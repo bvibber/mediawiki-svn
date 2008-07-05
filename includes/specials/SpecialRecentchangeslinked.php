@@ -69,7 +69,7 @@ class SpecialRecentchangeslinked extends SpecialRecentchanges {
 			$tables[] = 'category';
 			$conds['cat_title'] = $title->getDBkey();
 			$join_conds['categorylinks'] = array( 'LEFT JOIN', 'cl_from=rc_cur_id' );
-			$join_conds['category'] = array( 'INNER JOIN', 'cat_id=cl_inline');
+			$join_conds['category'] = array( 'INNER JOIN', 'cat_id=cl_target');
 		} else {
 			if( $showlinkedto ) {
 				if( $title->getNamespace() == NS_TEMPLATE ){

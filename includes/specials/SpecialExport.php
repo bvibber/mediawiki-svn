@@ -31,7 +31,7 @@ function wfExportGetPagesFromCategory( $title ) {
 	list( $page, $categorylinks, $cat ) = $dbr->tableNamesN( 'page', 'categorylinks', 'category' );
 	$sql = "SELECT page_namespace, page_title FROM $page" .
 		"JOIN $categorylinks ON page_id=cl_from " .
-		"JOIN $cat ON cl_inline=cat_id " .
+		"JOIN $cat ON cl_target=cat_id " .
 		"WHERE cat_title = " . $dbr->addQuotes( $name );
 
 	$pages = array();

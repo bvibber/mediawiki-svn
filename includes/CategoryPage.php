@@ -19,6 +19,7 @@ class CategoryPage extends Article {
 
 		if ( isset( $diff ) && $diffOnly )
 			return Article::view();
+		
 
 		if(!wfRunHooks('CategoryPageView', array(&$this))) return;
 
@@ -224,12 +225,12 @@ class CategoryViewer {
 		$res = $dbr->select(
 			array( 'page', 'categorylinks', 'category' ),
 			array( 'page_title', 'page_namespace', 'page_len', 'page_is_redirect', 'cl_sortkey',
-				'cat_id', 'cat_title', 'cat_subcats', 'cat_pages', 'cat_files' ),
+				'cat_id', 'cat_redir', 'cat_title', 'cat_subcats', 'cat_pages', 'cat_files' ),
 			array( $pageCondition,
-			       'cl_inline' => $this->cat->getID() ),
+			       'cl_target' => $this->cat->getID() ),
 			__METHOD__,
 			array( 'ORDER BY' => $this->flip ? 'cl_sortkey DESC' : 'cl_sortkey',
-			       'USE INDEX' => array( 'categorylinks' => 'cl_sortkey_inline' ),
+			       'USE INDEX' => array( 'categorylinks' => 'cl_sortkey_target' ),
 			       'LIMIT'    => $this->limit + 1 ),
 			array( 'categorylinks'  => array( 'INNER JOIN', 'cl_from = page_id' ),
 		           'category' => array( 'LEFT JOIN', 'cat_title = page_title AND page_namespace = ' . NS_CATEGORY ) ) );
@@ -248,7 +249,10 @@ class CategoryViewer {
 
 			if( $title->getNamespace() == NS_CATEGORY ) {
 				$cat = Category::newFromRow( $x, $title );
-				$this->addSubcategoryObject( $cat, $x->cl_sortkey, $x->page_len );
+				if ( $cat->getRedir() == null ) {
+					# Show only non-redirects
+					$this->addSubcategoryObject( $cat, $x->cl_sortkey, $x->page_len );
+				}
 			} elseif( $this->showGallery && $title->getNamespace() == NS_IMAGE ) {
 				$this->addImage( $title, $x->cl_sortkey, $x->page_len, $x->page_is_redirect );
 			} else {

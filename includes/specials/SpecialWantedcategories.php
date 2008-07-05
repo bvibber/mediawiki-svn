@@ -41,7 +41,7 @@ class WantedCategoriesPage extends QueryPage {
 			FROM $categorylinks, $category
 			LEFT JOIN $page ON cat_title = page_title AND page_namespace = ". NS_CATEGORY ."
 			WHERE page_title IS NULL
-			AND cat_id=cl_inline
+			AND cat_id=cl_target
 			GROUP BY 1,2,3
 			";
 	}

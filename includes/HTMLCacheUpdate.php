@@ -122,7 +122,7 @@ class HTMLCacheUpdate
 			case 'imagelinks':
 				return array( 'il_to' => $this->mTitle->getDBkey() );
 			case 'categorylinks':
-				return array( 'cat_title' => $this->mTitle->getDBkey(), 'cat_id=cl_inline' );
+				return array( 'cat_title' => $this->mTitle->getDBkey(), 'cat_id=cl_target' );
 		}
 		throw new MWException( 'Invalid table type in ' . __CLASS__ );
 	}

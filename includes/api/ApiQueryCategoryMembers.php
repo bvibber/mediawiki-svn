@@ -79,17 +79,17 @@ class ApiQueryCategoryMembers extends ApiQueryGeneratorBase {
 		{
 			$this->addOption('USE INDEX', 'cl_timestamp');
 			// cl_timestamp will be added by addWhereRange() later
-			$this->addOption('ORDER BY', 'cl_inline');
+			$this->addOption('ORDER BY', 'cl_target');
 		}
 		else
 		{
 			$dir = ($params['dir'] == 'desc' ? ' DESC' : '');
-			$this->addOption('USE INDEX', 'cl_sortkey_inline');
-			$this->addOption('ORDER BY', 'cl_inline, cl_sortkey' . $dir . ', cl_from' . $dir);
+			$this->addOption('USE INDEX', 'cl_sortkey_target');
+			$this->addOption('ORDER BY', 'cl_target, cl_sortkey' . $dir . ', cl_from' . $dir);
 		}
 
 		$this->addWhere('cl_from=page_id');
-		$this->addWhere('cat_id=cl_inline');
+		$this->addWhere('cat_id=cl_target');
 		$this->setContinuation($params['continue'], $params['dir']);
 		$this->addWhereFld('cat_title', $categoryTitle->getDBkey());
 		$this->addWhereFld('page_namespace', $params['namespace']);
