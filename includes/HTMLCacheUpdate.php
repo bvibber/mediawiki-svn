@@ -42,7 +42,7 @@ class HTMLCacheUpdate
 		# Fetch the IDs
 		$cond = $this->getToCondition();
 		$dbr = wfGetDB( DB_SLAVE );
-		$res = $dbr->select( $this->mTable, $this->getFromField(), $cond, __METHOD__ );
+		$res = $dbr->select( $this->getTables(), $this->getFromField(), $cond, __METHOD__ );
 		$this->mResult = $res;
 		if ( $dbr->numRows( $res ) != 0 ) {
 			if ( $dbr->numRows( $res ) > $this->mRowsPerJob ) {

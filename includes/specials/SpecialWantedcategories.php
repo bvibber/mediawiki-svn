@@ -38,10 +38,10 @@ class WantedCategoriesPage extends QueryPage {
 				" . NS_CATEGORY . " as namespace,
 				cat_title as title,
 				COUNT(*) as value
-			FROM $categorylinks
+			FROM $categorylinks, $category
 			LEFT JOIN $page ON cat_title = page_title AND page_namespace = ". NS_CATEGORY ."
-			INNER JOIN $category ON cat_id = cl_inline
 			WHERE page_title IS NULL
+			AND cat_id=cl_inline
 			GROUP BY 1,2,3
 			";
 	}

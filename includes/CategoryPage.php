@@ -232,7 +232,7 @@ class CategoryViewer {
 			       'USE INDEX' => array( 'categorylinks' => 'cl_sortkey_inline' ),
 			       'LIMIT'    => $this->limit + 1 ),
 			array( 'categorylinks'  => array( 'INNER JOIN', 'cl_from = page_id' ),
-		               'category' => array( 'LEFT JOIN', 'cat_title = page_title AND page_namespace = ' . NS_CATEGORY ) ) );
+		           'category' => array( 'LEFT JOIN', 'cat_title = page_title AND page_namespace = ' . NS_CATEGORY ) ) );
 
 		$count = 0;
 		$this->nextPage = null;

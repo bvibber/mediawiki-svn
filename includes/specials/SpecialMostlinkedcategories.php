@@ -31,7 +31,7 @@ class MostlinkedCategoriesPage extends QueryPage {
 				cat_title as title,
 				COUNT(*) as value
 			FROM $categorylinks, $category
-			WHERE cat_id=cat_inline
+			WHERE cat_id=cl_inline
 			GROUP BY 1,2,3
 			";
 	}

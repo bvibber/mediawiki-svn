@@ -29,10 +29,10 @@ function wfExportGetPagesFromCategory( $title ) {
 	$dbr = wfGetDB( DB_SLAVE );
 
 	list( $page, $categorylinks, $cat ) = $dbr->tableNamesN( 'page', 'categorylinks', 'category' );
-	$sql = "SELECT page_namespace, page_title FROM $page $cat" .
-		"JOIN $categorylinks ON cl_from = page_id " .
-		"WHERE cat_title = " . $dbr->addQuotes( $name ) .
-		"AND cat_id=cl_inline";
+	$sql = "SELECT page_namespace, page_title FROM $page" .
+		"JOIN $categorylinks ON page_id=cl_from " .
+		"JOIN $cat ON cl_inline=cat_id " .
+		"WHERE cat_title = " . $dbr->addQuotes( $name );
 
 	$pages = array();
 	$res = $dbr->query( $sql, 'wfExportGetPagesFromCategory' );

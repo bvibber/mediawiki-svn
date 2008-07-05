@@ -134,9 +134,8 @@ class Category {
 	 * @return Category
 	 */
 	public static function newFromRow( $row, $title = null ) {
-		$cat->mTitle = $title;
-
 		$cat = new self();
+		$cat->mTitle = $title;
 
 		# NOTE: the row often results from a LEFT JOIN on categorylinks. This may result in 
 		#       all the cat_xxx fields being null, if the category page exists, but nothing
