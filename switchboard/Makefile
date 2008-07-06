@@ -78,6 +78,7 @@ install:
 	$(INSTALL) -o root -g $(SW_GROUP) -m 04710 $(SWEXEC) $(DESTDIR)$(PREFIX)/lib/switchboard
 	$(INSTALL) -o root -g $(SW_GROUP) -m 04710 $(SWKILL) $(DESTDIR)$(PREFIX)/lib/switchboard
 	$(INSTALL) -o root -g bin -m 0644 log.conf.example $(DESTDIR)$(CONFDIR)
+	$(INSTALL) -o root -g bin -m 0644 main.conf.example $(DESTDIR)$(CONFDIR)
 	$(INSTALL) -o root -g bin -m 0644 initlog.conf $(DESTDIR)$(CONFDIR)
 
 clean:

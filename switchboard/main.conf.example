@@ -1,0 +1,8 @@
+# Address to listen for FastCGI requests.  Specify an IP address
+# or a hostname, in which case all IPs the host resolves to will
+# be used.  To listen on all addresses, specify :: (IPv6) or 0.0.0.0
+# (IPv4), but this is probably a bad idea.
+listen localhost 1234
+
+# Override the default location of log.conf.
+logconf /etc/switchboard/mylog.conf
