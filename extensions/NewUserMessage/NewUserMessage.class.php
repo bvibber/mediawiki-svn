@@ -29,8 +29,7 @@ class NewUserMessage {
 			// Need to make the edit on the user talk page in another
 			// user's context. Park the current user object and create
 			// a user object for $wgNewUserMessageEditor. If that user
-			// does not exist, make the edit with as the new user
-			// anyway.
+			// does not exist, make the edit as the new user anyway.
 			$parkedWgUser = $wgUser;
 			$wgUser = User::newFromName( $wgNewUserMessageEditor );
 			if ( !$wgUser->idForName() ) {
