@@ -1574,6 +1574,7 @@ $wgJobClasses = array(
 	'html_cache_update' => 'HTMLCacheUpdateJob', // backwards-compatible
 	'sendMail' => 'EmaillingJob',
 	'enotifNotify' => 'EnotifNotifyJob',
+	'categoryMoveJob' => 'CategoryMoveJob',
 );
 
 /**
