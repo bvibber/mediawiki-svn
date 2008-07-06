@@ -1,0 +1,23 @@
+# Change INFO to DEBUG for verbose logging (not for production!)
+log4j.rootLogger=INFO, A1
+
+# Don't change this, unless you really want to.
+log4j.appender.A1.layout=org.apache.log4.PatternLayout
+log4j.appender.A1.layout.ConversionPattern=%d [%-5p] %c: %m%n
+
+# Log to syslog:
+#log4j.appender.A1=SyslogAppender
+#log4j.appender.A1.SyslogHost=localhost
+#log4j.appender.A1.Facility=DAEMON
+# When using syslog you might want to change the layout, as
+# syslogd already includes the timestamp:
+#log4j.appender.A1.layout.ConversionPattern=[%-5p] %c: %m
+# Or for Solaris, where the level is included as well:
+#log4j.appender.A1.layout.ConversionPattern=%c: %m
+
+# Log to a file, with automatic rotation:
+# NB: the file will be opened as SB_USER, not root.
+log4j.appender.A1=RollingFileAppender
+log4j.appender.A1.File=/tmp/switchboard.log
+log4j.appender.A1.MaxFileSize=1MB
+log4j.appender.A1.MaxBackupIndex=4

@@ -1,0 +1,33 @@
+# install program, /usr/ucb/install for Solaris, otherwise /usr/bin/install
+INSTALL=/usr/ucb/install
+
+# The prefix we install into
+PREFIX=/opt/switchboard
+
+# Directory where configuration files are stored
+CONFDIR=/etc/switchboard
+
+# The name of the PHP executable on this system.
+# For security reasons, this is compiled into swexec and therefore must
+# be set at compile time.  It cannot be changed in the configuration
+# file.
+PHP_BIN=/opt/php/bin/php-cgi
+
+# The lowest UID and GID that PHP scripts will be executed for.  root
+# is always excluded, no matter what this is set to.
+SB_UID_MIN=100
+SB_GID_MIN=100
+
+# The user and group that switchboard (NOT httpd) is running as.
+SB_USER=swtchbd
+
+# The group that switchboard runs as.  For security reasons, this should
+# be a dedicated group that is not shared by anything else (particularly
+# normal users).
+SB_GROUP=swtchbd
+
+# The $PATH that PHP will run with.
+SB_SAFE_PATH=/bin:/usr/bin:/usr/local/bin
+
+# Logfile
+SB_LOG_EXEC=/var/log/swexec
