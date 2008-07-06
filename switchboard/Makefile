@@ -3,11 +3,10 @@ include Makefile.config
 CC		= gcc
 CXX		= g++
 CPPFLAGS	=
-INCLUDES	= -I/opt/boost/include/boost-1_35 -I/opt/log4cxx/include
-CFLAGS		= -O0 -g
-LDFLAGS		= -L/opt/boost/lib -R/opt/boost/lib -L/opt/log4cxx/lib -R/opt/log4cxx/lib 
-BOOSTTAG	= -gcc34-mt
-LIBS		= -llog4cxx -lboost_system$(BOOSTTAG) -lsocket -lnsl
+INCLUDES	= $(EXTRA_CPPFLAGS)
+CFLAGS		= -O2 -g
+LDFLAGS		= $(EXTRA_LDFLAGS)
+LIBS		= -llog4cxx -lboost_system$(BOOSTTAG) $(EXTRA_LIBS)
 
 CONFIG_FLAGS	= \
 	-DPREFIX=\"$(PREFIX)\"		\

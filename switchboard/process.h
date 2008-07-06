@@ -11,6 +11,7 @@
 #define PROCESS_H
 
 #include	<sys/types.h>
+#include	<sys/un.h>
 
 #include	<stdexcept>
 
