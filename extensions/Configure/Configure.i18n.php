@@ -15,6 +15,16 @@ $messages['en'] = array(
 	'configure-desc-key'                  => 'Key',
 	'configure-desc-ns'                   => 'Namespaces',
 	'configure-desc-val'                  => 'Value',
+
+	'configure-edit-core'                 => 'MediaWiki',
+	'configure-edit-ext'                  => 'Extensions',
+
+	'configure-ext-doc'                   => 'See online documentation',
+	'configure-ext-schemachange'          => "'''Warning:''' this extension require a database update to work correctly!",
+	'configure-ext-settings'              => 'Settings',
+	'configure-ext-use-extension'         => 'Use this extension',
+	'configure-ext-use'                   => 'Use',
+
 	'configure-summary'                   => 'This special page allow you to configure this wiki, see [http://www.mediawiki.org/wiki/Manual:Configuration_settings Configuration settings] for more information.',
 	'configure-btn-save'                  => 'Save settings',
 	'configure-directory-not-writable'    => 'The directory used to store the settings, <tt>$1</tt>, is not writable.
@@ -93,11 +103,14 @@ Please create it or change it to use this extension.',
 	'configure-section-copyright'         => 'Copyright',
 	'configure-section-htcp'              => 'HTCP multicast',
 	'configure-section-misc'              => 'Miscellaneous',
+	'configure-section-mw-extensions'     => 'MediaWiki extensions',
 	'configure-setting-not-available'     => 'This setting is not available in this version of MediaWiki',
 	'configure-view'                      => 'See',
 	'configure-view-not-allowed'          => 'You are not allowed to see this setting',
+	'extensions'                          => 'Configure the extensions',
 	'right-configure'                     => 'Configure the wiki',
 	'right-configure-all'                 => 'Configure all wiki settings',
+	'right-extensions'                    => 'Configure the extensions',
 	'right-viewconfig'                    => 'View wiki configuration',
 	'right-viewconfig-all'                => 'View all wiki configuration',
 	'viewconfig'                          => 'View wiki configuration',
@@ -548,6 +561,7 @@ $messages['eo'] = array(
 );
 
 /** French (Français)
+ * @author IAlex
  * @author Grondin
  * @author Verdy p
  */
@@ -558,6 +572,13 @@ $messages['fr'] = array(
 	'configure-desc-key'                  => 'Clé',
 	'configure-desc-ns'                   => 'Espace de noms',
 	'configure-desc-val'                  => 'Valeur',
+	'configure-edit-core'                 => 'MediaWiki',
+	'configure-edit-ext'                  => 'Extensions',
+	'configure-ext-doc'                   => 'Voir la documentation en ligne',
+	'configure-ext-schemachange'          => "'''Attention :''' cette extension requiert une mise à jour de la base de données pour fonctionner correctement !",
+	'configure-ext-settings'              => 'Paramètres',
+	'configure-ext-use-extension'         => 'Utiliser cette extension',
+	'configure-ext-use'                   => 'Utilisation',
 	'configure-summary'                   => "Cette page spéciale vous permet de configurer ce wiki, voyez les [http://www.mediawiki.org/wiki/Manual:Configuration_settings/fr paramètres de configuration] pour plus d'informations.",
 	'configure-btn-save'                  => 'Sauvegarder les réglages',
 	'configure-directory-not-writable'    => 'Le dossier utilisé pour sauvegarder la configuration, <tt>$1</tt>, ne peut pas être modifié.
@@ -602,6 +623,7 @@ Veuillez le rendre modifiable par PHP pour que cette extension fonctionne.',
 	'configure-section-pcache'            => 'Cache du parseur',
 	'configure-section-messagecache'      => 'Cache des messages',
 	'configure-section-memcached'         => 'Mémoire cachée',
+	'configure-section-mw-extensions'     => 'Extensions de MediaWiki',
 	'configure-section-access'            => 'Accès',
 	'configure-section-groups'            => 'Groupes',
 	'configure-section-groups-notallowed' => "Vous n'êtes pas autorisé a modifier les réglages des groupes.",
@@ -630,8 +652,10 @@ Veuillez le rendre modifiable par PHP pour que cette extension fonctionne.',
 	'configure-setting-not-available'     => "Ce paramètre n'est pas disponible sur cette version de MediaWiki",
 	'configure-view'                      => 'Voir',
 	'configure-view-not-allowed'          => "Vous n'êtes pas autorisé à voir ce paramètre",
+	'extensions'                          => 'Configurer les extensions',
 	'right-configure'                     => 'Configurer le wiki',
 	'right-configure-all'                 => 'Configurer tous les paramètres du wiki',
+	'right-extensions'                    => 'Configurer les extensions',
 	'right-viewconfig'                    => 'Voir la configuration du wiki',
 	'right-viewconfig-all'                => 'Voir toute la configuration du wiki',
 	'viewconfig'                          => 'Voir la configuration du wiki',

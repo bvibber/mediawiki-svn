@@ -4,8 +4,120 @@
  * flexibility
  */
 function setupConfigure(){
+
+	// For old versions
+	if( typeof getElementsByClassName != "function" )
+		return;
+
+	// Tabs and TOC
+	// ------------
+
+	var configform = document.getElementById( 'configure' );
+	if (!configform || !document.createElement) {
+		return;
+	}
+
+	configform.className = configform.className + 'jsprefs';
+	var sections = [];
+	var children = configform.childNodes;
+	var hid = 0;
+	var toc = document.createElement('ul');
+	toc.className = 'configtoc';
+	toc.id = 'configtoc';
+	toc.subLen = {};
+	toc.confSec = 1;
+	toc.confSub = -1;
+	for( var i = 0; i < children.length; i++ ){
+		if (children[i].nodeName.toLowerCase() == 'fieldset') {
+			children[i].id = 'config-section-' + i;
+			children[i].className = 'configsection';
+			var legends = children[i].getElementsByTagName( 'legend' );
+			if (legends[0] && legends[0].firstChild.nodeValue) {
+				var legend = legends[0].firstChild.nodeValue;
+			} else {
+				var legend = '# ' + seci;
+			}
+
+			var li = document.createElement('li');
+			if (i === 0) {
+				li.className = 'selected';
+			}
+
+			var a = document.createElement('a');
+			a.onmousedown = a.onclick = configTocToggleElement;
+			a.tocId = i;
+			a.collapsed = true;
+			a.appendChild( getArrowImg( 'r' ) );
+			li.appendChild(a);
+
+			var a = document.createElement('a');
+			a.href = '#' + children[i].id;
+			a.onmousedown = a.onclick = configToggle;
+			a.confSec = i;
+			a.confSub = -1;
+			a.appendChild( document.createTextNode( legend ) );
+			li.appendChild(a);
+
+			var headers = children[i].getElementsByTagName( 'h2' );
+			var tables = getElementsByClassName( children[i], 'table', 'configure-table' );
+			if( headers.length == tables.length ){
+				var len = headers.length;
+				toc.subLen[i] = len;
+				var span = document.createElement( 'span' );
+				span.className = 'config-toc-delimiter';
+				li.appendChild( span );
+				var ul = document.createElement( 'ul' );
+				ul.style.display = "none";
+				ul.id = "config-toc-" + i;
+				for( var subsect = 0; subsect < len; subsect++ ){
+					headers[subsect].id = 'config-head-' + i + '-' + subsect;
+					tables[subsect].id = 'config-table-' + i + '-' + subsect;
+					var a = document.createElement('a');
+					a.href = '#' + headers[subsect].id;
+					a.onmousedown = a.onclick = configToggle;
+					a.confSec = i;
+					a.confSub = subsect;
+					a.appendChild( document.createTextNode( headers[subsect].firstChild.nodeValue ) );
+					var li2 = document.createElement('li');
+					li2.appendChild( a );
+					ul.appendChild( li2 );
+				}
+				li.appendChild( ul );
+			} else {
+				toc.subLen[i] = 0;
+			}
+			toc.appendChild( li );
+			if( hid == 1 ){
+				children[i].style.display = 'none';
+			}
+			hid = 1;
+		}
+	}
+
+	var toggleToc = document.createElement( 'a' );
+	toggleToc.style.align = "right";
+	toggleToc.onmousedown = toggleToc.onclick = configTocToggle;
+	toggleToc.appendChild( getArrowImg( 'l' ) );
+	
+	var par = configform.parentNode;
+	var table = document.createElement( 'table' );
+	var tr = document.createElement( 'tr' );
+	var tdToc = document.createElement( 'td' );
+	var tdForm = document.createElement( 'td' );
+	tdToc.appendChild( toggleToc );
+	tdToc.appendChild( toc );
+	tdToc.className = 'config-col-toc';
+	tdForm.appendChild( configform );
+	tdForm.className = 'config-col-form';
+	tr.appendChild( tdToc );
+	tr.appendChild( tdForm );
+	table.appendChild( tr );
+	par.appendChild( table );
+
 	// Associative tables
-	var tables = getElementsByClassName( document.getElementById( 'preferences' ), 'table', 'assoc' );
+	// ------------------
+
+	var tables = getElementsByClassName( configform, 'table', 'assoc' );
 	for( var t = 0; t < tables.length ; t++ ){
 		table = tables[t];
 		// Button "remove this row"
@@ -37,8 +149,10 @@ function setupConfigure(){
 	}
 	
 	// $wgGroupPermissions stuff, only if ajax is enabled
+	// --------------------------------------------------
+
 	if( wgConfigureUseAjax ){
-		var tables = getElementsByClassName( document.getElementById( 'preferences' ), 'table', 'group-bool' );
+		var tables = getElementsByClassName( configform, 'table', 'group-bool' );
 		for( var t = 0; t < tables.length ; t++ ){
 			table = tables[t];
 			// Button "remove this row"
@@ -70,7 +184,7 @@ function setupConfigure(){
 		}
 	
 		document.getElementById( 'configure-form' ).onsubmit = function(){
-			var tables = getElementsByClassName( document.getElementById( 'preferences' ), 'table', 'group-bool' );
+			var tables = getElementsByClassName( configform, 'table', 'group-bool' );
 			for( var t = 0; t < tables.length ; t++ ){
 				var table = tables[t];
 				var id = table.id;
@@ -283,6 +397,93 @@ function fixAssocTable( table ){
 		var inputs = tr.getElementsByTagName( 'input' );
 		inputs[inputs.length - 1].onclick = removeGroupBoolCallback( table, r );
 	}
+}
+
+// ---------
+// TOC stuff
+// ---------
+
+/**
+ * Helper for TOC
+ */
+function configToggle() {
+	var oldsecid = this.parentNode.parentNode.selectedid;
+	var confSec = this.confSec;
+	var confSub = this.confSub;
+	if( confSub == -1 ){
+		var toc = this.parentNode.parentNode;
+	} else {
+		var toc = this.parentNode.parentNode.parentNode.parentNode;
+	}
+	var oldSec = toc.confSec;
+	var oldId = 'config-section-' + oldSec;
+	document.getElementById( oldId ).style.display = "none";
+	var newId = 'config-section-' + confSec;
+	document.getElementById( newId ).style.display = "block";
+
+	for( var i = 0; i < toc.subLen[confSec]; i++ ){
+		var headId = 'config-head-' + confSec + '-' + i;
+		var tableId = 'config-table-' + confSec + '-' + i;
+		var head = document.getElementById( headId );
+		head.style.display = ( confSub == -1 || confSub == i ) ? "block" : "none";
+		var table = document.getElementById( tableId );
+		table.style.display = ( confSub == -1 || confSub == i ) ? "block" : "none";
+	}
+	toc.confSec = confSec;
+	toc.confSub = confSub;
+	return false;
+}
+
+/**
+ * Toggle the TOC
+ */
+function configTocToggleElement(){
+	var id = this.tocId;
+	var tocId = "config-toc-" + id;
+	var toc = document.getElementById( tocId );
+	if( this.collapsed ){
+		toc.style.display = "block";
+		this.removeChild( this.firstChild );
+		this.appendChild( getArrowImg( 'd' ) );
+		this.collapsed = false;
+	} else {
+		toc.style.display = "none";
+		this.removeChild( this.firstChild );
+		this.appendChild( getArrowImg( 'r' ) );
+		this.collapsed = true;
+	}
+}
+
+/**
+ * Toggle the entire TOC
+ */
+function configTocToggle(){
+	var toc = document.getElementById( 'configtoc' );
+	if( toc.style.display == "none" ){
+		toc.parentNode.className = 'config-col-toc';
+		toc.style.display = "block";
+		this.removeChild( this.firstChild );
+		this.appendChild( getArrowImg( 'l' ) );
+	} else {
+		toc.parentNode.className = 'config-col-toc-hidden';
+		toc.style.display = "none";
+		this.removeChild( this.firstChild );
+		this.appendChild( getArrowImg( 'r' ) );
+	}
+}
+
+/**
+ * Get an image object representing an arrow
+ * @param dir String: arrow direction, one of the following strings:
+ *            - u: up
+ *            - d: down
+ *            - l: left
+ *            - r: right
+ */
+function getArrowImg( dir ){
+	var img = document.createElement( 'img' );
+	img.src = stylepath + "/common/images/Arr_" + dir + ".png";
+	return img;
 }
 
 hookEvent( "load", setupConfigure );

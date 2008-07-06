@@ -6,7 +6,7 @@ if ( !defined( 'MEDIAWIKI' ) ) die();
  *
  * @ingroup Extensions
  */
-class ConfigurationDiff {
+abstract class ConfigurationDiff {
 	protected $diff;
 	protected $version;
 	protected $wikis;
@@ -29,19 +29,27 @@ class ConfigurationDiff {
 	 * Get the old configuration
 	 * @return Array
 	 */
-	protected function getOldVersion(){
-		global $wgConf;
-		return $wgConf->getOldSettings( $this->diff );
-	}
+	protected abstract function getOldVersion();
 
 	/**
 	 * Get the new configuration
 	 * @return Array
 	 */
-	protected function getNewVersion(){
-		global $wgConf;
-		return $wgConf->getOldSettings( $this->version );
-	}
+	protected abstract function getNewVersion();
+
+	/**
+	 * Get as 3D array of settings
+	 * @return array
+	 */
+	protected abstract function getSettings();
+
+	/**
+	 * Get the array type of $setting
+	 *
+	 * @param $setting setting name
+	 * @return string
+	 */
+	protected abstract function getArrayType( $setting );
 
 	/**
 	 * Set a callback function that return a bool wheter a setting can be viewed
@@ -130,7 +138,7 @@ class ConfigurationDiff {
 	 */
 	function processDiff( $old, $new ){
 		$text = '';
-		$settings = SpecialConfigure::getSettings();
+		$settings = $this->getSettings();
 		foreach( $settings as $sectionName => $sectionGroups ){
 			$sectionDiff = '';
 			foreach( $sectionGroups as $groupName => $groupSettings ){
@@ -145,6 +153,8 @@ class ConfigurationDiff {
 				}
 				if( $groupDiff != '' ){
 					$name = wfMsgExt( 'configure-section-' . $groupName, array( 'parseinline' ) );
+					if( wfEmptyMsg( 'configure-section-' . $groupName, $name ) )
+						$name = $groupName;
 					$sectionDiff .= "<tr><td colspan=\"4\"><h4 class=\"config-diff-group\">{$name}</h4></td></tr>\n";
 					$sectionDiff .= $groupDiff;
 				}
@@ -199,7 +209,7 @@ class ConfigurationDiff {
 		if( $setting === null ){
 			$val = array();
 		} else if( $type == 'array' ){
-			$arrType = SpecialConfigure::getArrayType( $name );
+			$arrType = $this->getArrayType( $name );
 			if( $arrType == 'simple' || $arrType == 'ns-simple' ){
 				$val = array_values( $setting );
 			} else if( $arrType == 'assoc' ){
@@ -220,7 +230,7 @@ class ConfigurationDiff {
 					if( $arrType == 'ns-bool' )
 						$value = $value ? 'true' : 'false';
 					if( $arrType == 'ns-array' )
-						$value = implode( ',', $value );
+						$value = is_array( $value ) ? implode( ',', $value ) : '';
 					$arrVal[] = "$key: $value";
 				}
 				$val = $arrVal;
@@ -250,19 +260,81 @@ class ConfigurationDiff {
 	}
 }
 
-class PreviewConfigurationDiff extends ConfigurationDiff {
-
-	public function __construct( $old, $new, $wikis ){
-		$this->old = $old;
-		$this->new = $new;
-		$this->wikis = $wikis;
-	}
+/**
+ * Generate diff for preview in Special:Configure
+ *
+ * @ingroup Extensions
+ */
+class CorePreviewConfigurationDiff extends ConfigurationDiff {
 
 	protected function getOldVersion(){
-		return $this->old;
+		return $this->diff;
 	}
 
 	protected function getNewVersion(){
-		return $this->new;
+		return $this->version;
+	}
+
+	protected function getSettings(){
+		return SpecialConfigure::staticGetSettings();
+	}
+
+	protected function getArrayType( $setting ){
+		return SpecialConfigure::staticGetArrayType( $setting );
+	}
+}
+
+/**
+ * Generate diff for preview in Special:Extensions
+ *
+ * @ingroup Extensions
+ */
+class ExtPreviewConfigurationDiff extends ConfigurationDiff {
+
+	protected function getOldVersion(){
+		return $this->diff;
+	}
+
+	protected function getNewVersion(){
+		return $this->version;
+	}
+
+	protected function getSettings(){
+		return SpecialExtensions::staticGetSettings();
+	}
+
+	protected function getArrayType( $setting ){
+		return SpecialConfigure::staticGetArrayType( $setting );
+	}
+}
+
+/**
+ * Generate diff for history in Special:ViewConfig
+ *
+ * @ingroup Extensions
+ */
+class HistoryConfigurationDiff extends ConfigurationDiff {
+
+	protected function getOldVersion(){
+		global $wgConf;
+		return $wgConf->getOldSettings( $this->diff );
+	}
+
+	protected function getNewVersion(){
+		global $wgConf;
+		return $wgConf->getOldSettings( $this->version );
+	}
+
+	protected function getSettings(){
+		return SpecialConfigure::staticGetSettings() +
+			SpecialExtensions::staticGetSettings();
+	}
+
+	protected function getArrayType( $setting ){
+		$type = SpecialConfigure::staticGetArrayType( $setting );
+		if( $type )
+			return $type;
+		else
+			return SpecialConfigure::staticGetArrayType( $setting );
 	}
 }

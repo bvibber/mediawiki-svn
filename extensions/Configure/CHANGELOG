@@ -1,6 +1,11 @@
 This file lists changes on this extension.
 Localisation updates are done on betawiki and aren't listed here.
 
+0.5.0 - 6 July 2008
+  * Added support for extensions
+  * Rewrote JavaScript
+
+
 0.4.7 - 3 July 2008
   Renamed $wgAdditionalXMLTypes to $wgXMLMimeTypes.
 

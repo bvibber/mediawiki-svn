@@ -69,5 +69,4 @@ you can do either:
 
 * Some settings are still uneditable because of their array usage, this will
   need to develop some specific method to change them.
-* Support extensions
 * Many other things, if i have time :)

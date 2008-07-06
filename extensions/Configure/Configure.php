@@ -10,6 +10,18 @@ if ( !defined( 'MEDIAWIKI' ) ) die();
  * @author Alexandre Emsenhuber
  */
 
+## Configuration part
+
+/**
+ * Default path for the serialized files
+ */
+$wgConfigureFilesPath = "$IP/serialized";
+
+/**
+ * Styles versions, you shouldn't change it
+ */
+$wgConfigureStyleVersion = '4';
+
 ## Adding credit :)
 $wgExtensionCredits['specialpage'][] = array(
 	'name' => 'Configure',
@@ -17,7 +29,7 @@ $wgExtensionCredits['specialpage'][] = array(
 	'url' => 'http://www.mediawiki.org/wiki/Extension:Configure',
 	'description' => 'Allow authorised users to configure the wiki by a web-based interface',
 	'descriptionmsg' => 'configure-desc',
-	'version' => '0.4.7',
+	'version' => '0.5.0',
 );
 
 ## Adding new rights...
@@ -25,6 +37,8 @@ $wgAvailableRights[] = 'configure';
 $wgAvailableRights[] = 'configure-all';
 $wgAvailableRights[] = 'viewconfig';
 $wgAvailableRights[] = 'viewconfig-all';
+$wgAvailableRights[] = 'extensions';
+$wgAvailableRights[] = 'extensions-all';
 
 ## Rights for Special:Configure
 $wgGroupPermissions['bureaucrat']['configure'] = true;
@@ -33,6 +47,10 @@ $wgGroupPermissions['bureaucrat']['configure'] = true;
 ## Rights for Special:ViewConfig
 $wgGroupPermissions['sysop']['viewconfig'] = true;
 #$wgGroupPermissions['developer']['viewconfig-all'] = true;
+
+## Rights for Special:Extensions
+$wgGroupPermissions['bureaucrat']['extensions'] = true;
+#$wgGroupPermissions['developer']['extensions-all'] = true;
 
 $dir = dirname( __FILE__ ) . '/';
 
@@ -57,21 +75,26 @@ if( isset( $wgExtensionAliasesFiles ) && is_array( $wgExtensionAliasesFiles ) ){
 }
 
 ## Adding the new special pages...
+## Common code
+$wgAutoloadClasses['ConfigurationPage'] = $dir . 'Configure.page.php';
 ## Special:Configure
 $wgAutoloadClasses['SpecialConfigure'] = $dir . 'SpecialConfigure.php';
 $wgSpecialPages['Configure'] = 'SpecialConfigure';
 ## Special:ViewConfig
 $wgAutoloadClasses['SpecialViewConfig'] = $dir . 'SpecialViewConfig.php';
 $wgSpecialPages['ViewConfig'] = 'SpecialViewConfig';
+## Special:Extensions
+$wgAutoloadClasses['SpecialExtensions'] = $dir . 'SpecialExtensions.php';
+$wgSpecialPages['Extensions'] = 'SpecialExtensions';
 
+## Helper for Special:Extension
+$wgAutoloadClasses['WebExtension'] = $dir . 'Configure.ext.php';
+
+## Diff stuff
 $wgAutoloadClasses['ConfigurationDiff'] = $dir . 'Configure.diff.php';
-$wgAutoloadClasses['PreviewConfigurationDiff'] = $dir . 'Configure.diff.php';
+$wgAutoloadClasses['CorePreviewConfigurationDiff'] = $dir . 'Configure.diff.php';
+$wgAutoloadClasses['ExtPreviewConfigurationDiff'] = $dir . 'Configure.diff.php';
+$wgAutoloadClasses['HistoryConfigurationDiff'] = $dir . 'Configure.diff.php';
 
 ## Adding the ajax function
 $wgAjaxExportList[] = 'efConfigureAjax';
-
-## Default path for the serialized files
-$wgConfigureFilesPath = "$IP/serialized";
-
-## Styles versions
-$wgConfigureStyleVersion = '4';

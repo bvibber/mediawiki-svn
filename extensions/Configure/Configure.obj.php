@@ -59,7 +59,8 @@ class WebConfiguration extends SiteConfiguration {
 			if( !is_array( $settings ) )
 				continue;
 			foreach( $settings as $name => $val ){
-				$this->settings[$name][$site] = $val;
+				if( $name != '__includes' )
+					$this->settings[$name][$site] = $val;
 			}
 		}
 	}
@@ -80,6 +81,8 @@ class WebConfiguration extends SiteConfiguration {
 		} else {
 			if( $wiki === false )
 				$wiki = $this->mWiki;
+			if( isset( $this->mConf[$wiki] ) && is_array( $this->mConf[$wiki] ) )
+				$settings += $this->mConf[$wiki];
 			$this->mConf[$wiki] = $settings;
 		}
 
@@ -99,6 +102,10 @@ class WebConfiguration extends SiteConfiguration {
 		if( defined( 'EXT_CONFIGURE_NO_EXTRACT' ) )
 			return;
 
+		// Include files before so that customized settings won't be overriden
+		// by the default ones
+		$this->includeFiles();
+
 		list( $site, $lang ) = $this->siteFromDB( $this->mWiki );
 		$rewrites = array( 'wiki' => $this->mWiki, 'site' => $site, 'lang' => $lang );
 		$this->extractAllGlobals( $this->mWiki, $site, $rewrites );
@@ -117,6 +124,32 @@ class WebConfiguration extends SiteConfiguration {
 		list( $site, $lang ) = $this->siteFromDB( $wiki );
 		$rewrites = array( 'wiki' => $wiki, 'site' => $site, 'lang' => $lang );
 		return $this->getAll( $wiki, $site, $rewrites );
+	}
+
+	public function getIncludedFiles(){
+		if( isset( $this->mConf[$this->mWiki]['__includes'] ) )
+			return $this->mConf[$this->mWiki]['__includes'];
+		else
+			return array();
+	}
+
+	/**
+	 * Include all extensions files of actived extensions
+	 */
+	public function includeFiles(){
+		// Since the files should be included from the global scope, we'll need
+		// to import that variabled in this function
+		extract( $GLOBALS, EXTR_REFS );
+
+		$includes = $this->getIncludedFiles();
+		$i = 0;
+		foreach( $includes as $file ){
+			if( file_exists( $file ) ){
+				require_once( $file );
+			} else {
+				trigger_error( __METHOD__ . ": required file $file doesn't exists", E_USER_WARNING );
+			}
+		}
 	}
 
 	/**

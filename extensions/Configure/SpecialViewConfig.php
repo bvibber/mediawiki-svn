@@ -7,8 +7,10 @@ if ( !defined( 'MEDIAWIKI' ) ) die();
  *
  * @ingroup Extensions
  */
-class SpecialViewConfig extends SpecialConfigure {
+class SpecialViewConfig extends ConfigurationPage {
 	protected $isWebConfig;
+	var $mRequireWebConf = false;
+	var $mCanEdit = false;
 
 	/**
 	 * Constructor
@@ -17,23 +19,10 @@ class SpecialViewConfig extends SpecialConfigure {
 		parent::__construct( 'ViewConfig', 'viewconfig' );
 	}
 
-	/**
-	 * Show the special page
-	 *
-	 * @param $par Mixed: parameter passed to the page or null
-	 */
-	public function execute( $par ) {
-		global $wgUser, $wgRequest, $wgOut, $wgConf;
+	protected function getVersion(){
+		global $wgOut, $wgRequest, $wgConf;
+
 		$this->isWebConfig = $wgConf instanceof WebConfiguration;
-
-		$this->setHeaders();
-
-		if ( !$this->userCanExecute( $wgUser ) ) {
-			$this->displayRestrictionError();
-			return;
-		}
-
-		$this->outputHeader();
 
 		if( $this->isWebConfig && $version = $wgRequest->getVal( 'version' ) ){
 			$versions = $wgConf->listArchiveFiles();
@@ -62,16 +51,16 @@ class SpecialViewConfig extends SpecialConfigure {
 				} else if( !isset( $this->diff ) ){
 					$msg = wfMsgNoTrans( 'configure-old-not-available', $version );
 					$wgOut->addWikiText( "<div class='errorbox'>$msg</div>" );
-					return;
+					return false;
 				}
 			} else {
 				$msg = wfMsgNoTrans( 'configure-old-not-available', $version );
 				$wgOut->addWikiText( "<div class='errorbox'>$msg</div>" );
-				return;
+				return false;
 			}
 		}
 
-		$this->showForm();
+		return true;
 	}
 
 	/**
@@ -95,27 +84,43 @@ class SpecialViewConfig extends SpecialConfigure {
 		return false;
 	}
 
+	public function userCanRead( $setting ){
+		if( $this->isUserAllowedAll() )
+			return true;
+		if( array_key_exists( $setting, SpecialConfigure::staticGetAllSettings() ) )
+			return !in_array( $setting, SpecialConfigure::staticGetViewRestricted() );
+		return true;
+	}
+
 	/**
 	 * Just in case, security
 	 */
 	protected function doSubmit(){}
 
 	/**
+	 * Show diff
+	 */
+	protected function showDiff(){
+		global $wgOut;
+		$wikis = $this->isUserAllowedAll() ? true : array( $this->wiki );
+		$diffEngine = new HistoryConfigurationDiff( $this->diff, $this->version, $wikis );
+		$diffEngine->setViewCallback( array( $this, 'userCanRead' ) );
+		$wgOut->addHtml( $diffEngine->getHTML() );
+	}
+
+	/**
 	 * Show the main form
 	 */
 	protected function showForm(){
-		global $wgOut, $wgUser, $wgRequest;
+		global $wgOut, $wgRequest;
 
 		if( !$this->isWebConfig || !empty( $this->conf ) || isset( $this->diff ) ){
 			if( isset( $this->diff ) ){
-				$wikis = $this->isUserAllowedAll() ? true : array( $this->wiki );
-				$diffEngine = new ConfigurationDiff( $this->diff, $this->version, $wikis );
-				$diffEngine->setViewCallback( array( $this, 'userCanRead' ) );
-				$wgOut->addHtml( $diffEngine->getHTML() );
+				$this->showDiff();
 			} else {
 				$wgOut->addHtml(
-					Xml::openElement( 'div' ) . "\n" .
-					Xml::openElement( 'div', array( 'id' => 'preferences' ) ) . "\n" .
+					Xml::openElement( 'div', array( 'id' => 'configure-form' ) ) . "\n" .
+					Xml::openElement( 'div', array( 'id' => 'configure' ) ) . "\n" .
 	
 					$this->buildAllSettings() . "\n" .
 	
@@ -142,16 +147,27 @@ class SpecialViewConfig extends SpecialConfigure {
 		if( empty( $versions ) ){
 			return wfMsgExt( 'configure-no-old', array( 'parse' ) );
 		}
+
 		$title = $this->getTitle();
 		$skin = $wgUser->getSkin();
 		$showDiff = count( $versions ) > 1;
+
 		$allowedConfig = $wgUser->isAllowed( 'configure' );
+		$allowedExtensions = $wgUser->isAllowed( 'extensions' );
+
 		$allowedAll = $this->isUserAllowedAll();
-		$allowedConfigAll = parent::isUserAllowedAll();
+		$allowedConfigAll = $wgUser->isAllowed( 'configure-all' );
+		$allowedExtensionsAll = $wgUser->isAllowed( 'extensions-all' );
+
 		if( $allowedConfig )
 			$configTitle = is_callable( array( 'SpecialPage', 'getTitleFor' ) ) ? # 1.9 +
 				SpecialPage::getTitleFor( 'Configure' ) :
 				Title::makeTitle( NS_SPECIAL, 'Configure' );
+
+		if( $allowedExtensions )
+			$extTitle = is_callable( array( 'SpecialPage', 'getTitleFor' ) ) ? # 1.9 +
+				SpecialPage::getTitleFor( 'Extensions' ) :
+				Title::makeTitle( NS_SPECIAL, 'Extensions' );
 
 		$text = wfMsgExt( 'configure-old-versions', array( 'parse' ) );
 		if( $showDiff )
@@ -160,6 +176,7 @@ class SpecialViewConfig extends SpecialConfigure {
 			$this->getButton() . "\n";
 		$text .= "<ul>\n";
 		
+		$editMsg = wfMsg( 'edit' ) . ': ';
 		$c = 0;
 		foreach( array_reverse( $versions ) as $ts ){
 			$c++;
@@ -178,16 +195,31 @@ class SpecialViewConfig extends SpecialConfigure {
 				$view .= ' (' . implode( ', ', $viewWikis ) . ')';
 			}
 			$actions[] = $view;
+			$editDone = false;
 			if( $allowedConfig ){
-				$edit = $skin->makeKnownLinkObj( $configTitle, wfMsg( 'edit' ), "version=$ts" );
+				$editCore = $editMsg . $skin->makeKnownLinkObj( $configTitle, wfMsg( 'configure-edit-core' ), "version=$ts" );
 				if( $allowedConfigAll ){
 					$viewWikis = array();
 					foreach( $wikis as $wiki ){
 						$viewWikis[] = $skin->makeKnownLinkObj( $configTitle, $wiki, "version={$ts}&wiki={$wiki}" );
 					}
-					$edit .= ' (' . implode( ', ', $viewWikis ) . ')';
+					$editCore .= ' (' . implode( ', ', $viewWikis ) . ')';
 				}
-				$actions[] = $edit;
+				$actions[] = $editCore;
+			}
+			if( $allowedExtensions ){
+				$editExt = '';
+				if( !$allowedConfig )
+					$editExt .= $editMsg;
+				$editExt .= $skin->makeKnownLinkObj( $extTitle, wfMsg( 'configure-edit-ext' ), "version=$ts" );
+				if( $allowedExtensionsAll ){
+					$viewWikis = array();
+					foreach( $wikis as $wiki ){
+						$viewWikis[] = $skin->makeKnownLinkObj( $extTitle, $wiki, "version={$ts}&wiki={$wiki}" );
+					}
+					$editExt .= ' (' . implode( ', ', $viewWikis ) . ')';
+				}
+				$actions[] = $editExt;
 			}
 			if( $showDiff ){
 				$diffCheck = $c == 2 ? array( 'checked' => 'checked' ) : array();
@@ -212,6 +244,23 @@ class SpecialViewConfig extends SpecialConfigure {
 		return $text;
 	}
 
+	protected function getEditableSettings(){
+		return SpecialConfigure::staticGetEditableSettings() +
+			SpecialExtensions::staticGetSettings();
+	}
+	
+	protected function getArrayType( $setting ){
+		$type = SpecialConfigure::staticGetArrayType( $setting );
+		if( !$type )
+			$type = SpecialExtensions::staticGetArrayType( $setting );
+		return $type;
+	}
+
+	protected function isSettingAvailable( $setting ){
+		return SpecialConfigure::staticIsSettingAvailable( $setting ) ||
+			array_key_exists( $setting, SpecialExtensions::staticGetEditableSettings() );
+	}
+
 	/**
 	 * Taken from PageHistory.php
 	 */
@@ -225,29 +274,29 @@ class SpecialViewConfig extends SpecialConfigure {
 				);
 	}
 
-	/**
-	 * Inject JavaScripts and Stylesheets in page output
-	 */
-	protected function injectScriptsAndStyles() {
-		global $wgOut, $wgScriptPath, $wgConfigureStyleVersion;
-		$wgOut->addLink(
-			array(
-				'rel' => 'stylesheet',
-				'type' => 'text/css',
-				'href' => "{$wgScriptPath}/extensions/Configure/Configure.css?{$wgConfigureStyleVersion}",
-			)
-		);
-		if( is_callable( array( $wgOut, 'addScriptFile' ) ) ){ # 1.13 +
-			$wgOut->addScriptFile( 'prefs.js' );
+	protected function buildAllSettings(){
+		$ret = '';
+		$settings = SpecialConfigure::staticGetSettings() + SpecialExtensions::staticGetSettings();
+		foreach( $settings as $title => $groups ){
+			$msgName = 'configure-section-' . $title;
+			$msg = wfMsg( $msgName );
+			if( wfEmptyMsg( $msgName, $msg ) )
+				$msg = $title;
+			$ret .= Xml::openElement( 'fieldset' ) . "\n" .
+				Xml::element( 'legend', null, $msg ) . "\n";
+			$first = true;
+			foreach( $groups as $group => $settings ){
+				$ret .= $this->buildTableHeading( $group, !$first );
+				$first = false;
+				foreach( $settings as $setting => $type ){
+					if( !in_array( $setting, SpecialConfigure::staticGetNotEditableSettings() ) )
+						$ret .= $this->buildTableRow( 'configure-setting-' . $setting, 
+								$setting, $type, $this->getSettingValue( $setting ), !( $title == 'mw-extensions' ) );
+				}
+			}
+			$ret .= Xml::closeElement( 'table' ) . "\n";
+			$ret .= Xml::closeElement( 'fieldset' );
 		}
-	}
-
-	/**
-	 * Return true if all settings in this section are restricted
-	 *
-	 * @param $sectArr Array: one value of self::$settings array
-	 */
-	protected function isSectionRestricted( $sectArr ){
-		return false;
+		return $ret;
 	}
 }
