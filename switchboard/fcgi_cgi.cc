@@ -41,7 +41,7 @@ fcgi_cgi::fcgi_cgi(
 			% request_id_ % this);
 	int i;
 
-    assert(app_);
+	assert(app_);
 
 	fcgi::params::const_iterator it = params.find("PATH_TRANSLATED");
 	if (it == params.end())

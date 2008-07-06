@@ -38,6 +38,7 @@ namespace {
 		boost::system::error_code &error_;
 		function<void (fcgi::recordp)> call_;
 		boost::array<asio::mutable_buffer, 2> data_bufs;
+		asio::io_service &service_;
 
 		fcgi::recordp record;
 
@@ -51,6 +52,7 @@ async_fcgi_reader::async_fcgi_reader(
 	: socket_(socket)
 	, error_(error)
 	, call_(call)
+	, service_(socket.get_io_service())
 	, record(new fcgi::record)
 	, logger(log4cxx::Logger::getLogger("switchboard.async_fcgi_reader"))
 {
@@ -87,7 +89,7 @@ async_fcgi_reader::read_header_done(
 		LOG4CXX_DEBUG(logger, format("reader@%p: header read failed: %s")
 				% this % error.message());
 		error_ = error;
-		socket_.get_io_service().post(
+		service_.post(
 			boost::bind(call_, fcgi::recordp()));
 		delete this;
 		return;
@@ -131,9 +133,9 @@ async_fcgi_reader::read_data_done(
 			% (record->content_length()+record->paddingLength)
 			% error.message());
 	if (error)
-		socket_.get_io_service().post(boost::bind(call_, fcgi::recordp()));
+		service_.post(boost::bind(call_, fcgi::recordp()));
 	else
-		socket_.get_io_service().post(boost::bind(call_, record));
+		service_.post(boost::bind(call_, record));
 	delete this;
 }
 
