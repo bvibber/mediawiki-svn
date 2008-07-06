@@ -20,7 +20,7 @@ $wgConfigureFilesPath = "$IP/serialized";
 /**
  * Styles versions, you shouldn't change it
  */
-$wgConfigureStyleVersion = '4';
+$wgConfigureStyleVersion = '5';
 
 ## Adding credit :)
 $wgExtensionCredits['specialpage'][] = array(
