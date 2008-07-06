@@ -103,6 +103,22 @@ class Article {
 				'rd_namespace' => $retval->getNamespace(),
 				'rd_title' => $retval->getDBKey()
 		), __METHOD__);
+		
+		if ( $this->mTitle->getNamespace() == NS_CATEGORY && $retval->getNamespace() == NS_CATEGORY ) {
+			$cur = Category::newFromTitle ( $this->mTitle );
+			$cur->insert();
+			
+			$to = Category::newFromTitle( $retval );
+			$cat_id = $to->insert();
+			if ( $cat_id == 0 ) {
+				throw new MWException( 'Category insert failed ?!' );
+			}
+			$dbw->update(
+				'category',
+				array( 'cat_redir' => $cat_id),
+				array( 'cat_title' => $this->mTitle->getDBKey() ),
+				__METHOD__ );
+		}
 		return $retval;
 	}
 
@@ -1175,6 +1191,22 @@ class Article {
 				);
 
 				$dbw->replace( 'redirect', array( 'rd_from' ), $set, __METHOD__ );
+					
+				if ( $this->mTitle->getNamespace() == NS_CATEGORY && $redirectTitle->getNamespace() == NS_CATEGORY ) {
+					$cur = Category::newFromTitle ( $this->mTitle );
+					$cur->insert();
+					
+					$to = Category::newFromTitle( $redirectTitle );
+					$cat_id = $to->insert();
+					if ( $cat_id == 0 ) {
+						throw new MWException( 'Category insert failed ?!' );
+					}
+					$dbw->update(
+						'category',
+						array( 'cat_redir' => $cat_id),
+						array( 'cat_title' => $this->mTitle->getDBKey() ),
+						__METHOD__ );
+				}
 			} else {
 				// This is not a redirect, remove row from redirect table
 				$where = array( 'rd_from' => $this->getId() );

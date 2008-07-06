@@ -3,8 +3,10 @@
 /**
  * Class to update the categorylinks cl_target ids when a category is moved.
  *
+ * HTMLCacheUpdate-alike, if the query affects a small numbers of rows, process it
+ * immediately; if not, split it into smaller queries, and push them to the JobQueue
  */
-class CategoryMove
+class CategoryLinksUpdateOnMove
 {
 	public $mTitle;
 	public $mRowsPerJob, $mRowsPerQuery;
@@ -161,7 +163,7 @@ class CategoryMoveJob extends Job {
 	}
 
 	function run() {
-		$update = new CategoryMove( $this->title, $this->inline, $this->target, $this->to );
+		$update = new CategoryLinksUpdateOnMove( $this->title, $this->inline, $this->target, $this->to );
 
 		$conds = array();
 		if ( $this->start ) {

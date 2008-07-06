@@ -2514,6 +2514,10 @@ class Title {
 		if( is_array( $err ) ) {
 			return $err;
 		}
+		if ($this->getNamespace() == NS_CATEGORY ) {
+			$cat = Category::newFromTitle( $this );
+			$cat->moveTo( $nt, $createRedirect );
+		}
 		$redirid = $this->getArticleID();
 
 		// Category memberships include a sort key which may be customized.

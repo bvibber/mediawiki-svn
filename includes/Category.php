@@ -264,4 +264,77 @@ class Category {
 
 		return $ret;
 	}
+	
+	/**
+	 * insert this category into the category table
+	 * 
+	 * @return int the corresponding cat_id, 0 on failure
+	 */
+	public function insert() {
+		if ( !$this->mTitle ) {
+			return 0;
+		} elseif ( $this->getID() ) {
+			return $this->mID;
+		} else {
+			$dbw = wfGetDB(DB_MASTER);
+			$dbw->insert( 'category', array( 'cat_title' => $this->mName ), __METHOD__);
+			$id = $dbw->insertID();
+			if ( $id > 0 ) {
+				$this->mID = $id;
+				$this->mRedir = 0;
+			}
+			return $id;
+		}
+	}
+	
+	public function moveTo( $nt, $createRedirect = true ) {
+		global $wgUser;
+		
+		if ( !$this->getID() ) {
+			# Category has not been created yet, nothing to do
+			return;
+		}
+		
+		$to = Category::newFromTitle( $nt );
+		
+		$dbw = wfGetDB( DB_MASTER );
+		
+		if ( !$to->getID() ) {
+			# Hooray ! Target category does not exist :)
+			$dbw->begin();
+			$dbw->update(
+				'category',
+				array( 'cat_title' => $to->getName() ),
+				array( 'cat_title' => $this->mName )
+				);
+				
+			if ( $createRedirect || !$wgUser->isAllowed('suppressredirect') ) {
+				$dbw->insert(
+					'category',
+					array( 'cat_title' => $this->mName, 'cat_redir' => $this->mID )
+				);
+			}
+			$dbw->commit();
+		} else {
+			die('Moves over existing categories are unimplemented');
+			# The target category exists !
+			$dbw->begin();/*
+			$dbw->update(
+				'category',
+				array(  'cat_title' => $to->getName(),
+						'cat'))
+			*/
+			if ( $to->getRedir() != $this->mID ) {
+				# The target category is *not* a redirect to the source category
+				
+				$cl_target = $this->getRedir();
+				if ( $cl_target === null ) {
+					$cl_target = $this->mID;
+				}
+				$update = new CategoryLinksUpdateOnMove( $this->mTitle, $this->mID, $cl_target, $to->getID());
+				$update->doUpdate();
+			}
+			$dbw->commit();
+		}
+	}
 }
