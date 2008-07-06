@@ -46,20 +46,42 @@ sigexit(int)
 	std::exit(0);
 }
 
+int dflag;
+
 int
 main(int argc, char **argv)
 {
 	sbcontext context;
+	std::string initlog(CONFDIR "/initlog.conf");
+	std::string conf(CONFDIR "/main.conf");
+	int c;
+
 	log4cxx::LoggerPtr mainlogger(log4cxx::Logger::getLogger("switchboard.main"));
 
-	if (access(CONFDIR "/initlog.conf", R_OK) == -1) {
-		std::fprintf(stderr, "switchboard: initial log configuration file \"%s\" "
-				"cannot be read: %s\n",
-				CONFDIR "/initlog.conf", std::strerror(errno));
+	while ((c = getopt(argc, argv, "df:i:")) != -1) {
+		switch(c) {
+		case 'd':
+			dflag = 1;
+			break;
+		case 'f':
+			conf = optarg;
+			break;
+		case 'i':
+			initlog = optarg;
+			break;
+		default:
+			return 1;
+		}
+	}	
+
+	if (access(initlog.c_str(), R_OK) == -1) {
+		std::cerr << format("switchboard: initial log configuration file \"%s\" "
+				"cannot be read: %s\n")
+			% initlog % std::strerror(errno);
 		return 1;
 	}
 
-	log4cxx::PropertyConfigurator::configure(CONFDIR "/initlog.conf");
+	log4cxx::PropertyConfigurator::configure(initlog);
 
 	LOG4CXX_INFO(mainlogger, "Starting up...");
 
@@ -112,7 +134,7 @@ main(int argc, char **argv)
 	}
 
 	configuration_loader loader;
-	if (!loader.load(CONFDIR "/main.conf", mainconf)) {
+	if (!loader.load(conf, mainconf)) {
 		LOG4CXX_ERROR(mainlogger, "cannot load configuration");
 		return 1;
 	}
@@ -123,7 +145,7 @@ main(int argc, char **argv)
 	}
 
 	LOG4CXX_INFO(mainlogger, format("loaded configuration from \"%s\"")
-			% CONFDIR "/main.conf");
+			% conf);
 
 	/*
 	 * Make sure our sockdir is valid, and has the right permissions.
@@ -212,27 +234,29 @@ dostat:
 		log4cxx::PropertyConfigurator::configure(logconf);
 	}
 
-	LOG4CXX_INFO(mainlogger, "detaching to background...");
-	switch (fork()) {
-	case -1:
-		LOG4CXX_INFO(mainlogger, format("cannot fork: %s")
+	if (!dflag) {
+		LOG4CXX_INFO(mainlogger, "detaching to background...");
+		switch (fork()) {
+		case -1:
+			LOG4CXX_INFO(mainlogger, format("cannot fork: %s")
 				% std::strerror(errno));
-		return 1;
-	case 0:
-		break;
-	default:
-		return 0;
-	}
+			return 1;
+		case 0:
+			break;
+		default:
+			return 0;
+		}
 
-	setsid();
-	chdir("/");
-	int fd;
-	if ((fd = open("/dev/null", O_RDWR, 0)) != -1) {
-		dup2(fd, STDIN_FILENO);
-		dup2(fd, STDOUT_FILENO);
-		dup2(fd, STDERR_FILENO);
-		if (fd > STDERR_FILENO)
-			close(fd);
+		setsid();
+		chdir("/");
+		int fd;
+		if ((fd = open("/dev/null", O_RDWR, 0)) != -1) {
+			dup2(fd, STDIN_FILENO);
+			dup2(fd, STDOUT_FILENO);
+			dup2(fd, STDERR_FILENO);
+			if (fd > STDERR_FILENO)
+				close(fd);
+		}
 	}
 
 	signal(SIGTERM, sigexit);

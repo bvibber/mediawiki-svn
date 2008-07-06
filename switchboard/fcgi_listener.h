@@ -12,6 +12,8 @@
 
 #include	<boost/asio.hpp>
 
+#include	<log4cxx/logger.h>
+
 #include	"sbcontext.h"
 
 struct fcgi_server_connection;
@@ -27,6 +29,8 @@ private:
 	boost::asio::ip::tcp::acceptor acceptor;
 
 	fcgi_listener(fcgi_listener const *);
+
+	log4cxx::LoggerPtr logger;
 };
 
 #endif
