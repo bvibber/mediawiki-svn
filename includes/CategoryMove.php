@@ -8,36 +8,52 @@ class CategoryMove
 {
 	public $mTitle;
 	public $mRowsPerJob, $mRowsPerQuery;
-	public $mFromID, $mToID;
+	public $mFromTarget, $mFromInline, $mToTargetID;
 
 	/**
-	 * Moving a category from cat_id $fromID to cat_id $toID
+	 * Moving a category from ($fromInline, $fromTarget) to cl_target $toTargetID
 	 *
 	 * @param Title $title cat_title (unused, needed for Job::factory)
-	 * @param int $fromID
+	 * @param int $fromInline
+	 * @param int $fromTarget
 	 * @param int $toID
 	 */
-	function __construct( $title, $fromID, $toID ) {
+	function __construct( $title, $fromInline, $fromTarget, $toTargetID ) {
 		global $wgUpdateRowsPerJob, $wgUpdateRowsPerQuery;
 
 		$this->mTitle = $title;
-		$this->mFromID = $fromID;
-		$this->mToID = $toID;
+		$this->mFromTarget = $fromTarget;
+		$this->mFromInline = $fromInline;
+		$this->mToTargetID = $toTargetID;
 		$this->mRowsPerJob = $wgUpdateRowsPerJob;
 		$this->mRowsPerQuery = $wgUpdateRowsPerQuery;
 	}
 
-	function doUpdate() {
-		# Fetch the IDs
+	/**
+	 * Returns the cl_from ids that need to be changed
+	 * 
+	 * @param Array $conds additional 'where' conditions 
+	 * @return ResultWrapper
+	 */
+	function fetchIDs( $conds = array() ) {
 		$dbr = wfGetDB( DB_SLAVE );
+		
+		$conds['cl_target'] = $this->mFromTarget;
+		$conds['cl_inline'] = $this->mFromInline;
+		
 		$res = $dbr->select( 'categorylinks', 
 							 'cl_from', 
-							 array( 'cl_target' => $this->mFromID ), 
+							 $conds, 
 							 __METHOD__
 							);
+		return $res;
+	}
+	
+	function doUpdate() {
+		$res = $this->fetchIDs();
 
-		if ( $dbr->numRows( $res ) != 0 ) {
-			if ( $dbr->numRows( $res ) > $this->mRowsPerJob ) {
+		if ( $res->numRows() != 0 ) {
+			if ( $res->numRows() > $this->mRowsPerJob ) {
 				$this->insertJobs( $res );
 			} else {
 				$this->updateIDs( $res );
@@ -45,6 +61,12 @@ class CategoryMove
 		}
 	}
 
+	/**
+	 * Splits the ids into smaller queries and put them
+	 * into JobQueue
+	 *
+	 * @param ResultWrapper $res
+	 */
 	function insertJobs( ResultWrapper $res ) {
 		$numRows = $res->numRows();
 		$numBatches = ceil( $numRows / $this->mRowsPerJob );
@@ -65,6 +87,9 @@ class CategoryMove
 			$params = array(
 				'start' => $start,
 				'end' => ( $id !== false ? $id - 1 : false ),
+				'inline' => $this->mFromInline,
+				'target' => $this->mFromTarget,
+				'to'	 => $this->mToTargetID
 			);
 			$jobs[] = new CategoryMoveJob( $this->mTitle, $params );
 
@@ -104,7 +129,7 @@ class CategoryMove
 			}
 
 			$dbw->update( 'categorylinks',
-				array( 'cl_target' => $this->mToID ),
+				array( 'cl_target' => $this->mToTargetID ),
 				array( 'cl_from' => $ids ),
 				__METHOD__
 			);
@@ -119,6 +144,7 @@ class CategoryMove
  */
 class CategoryMoveJob extends Job {
 	public $start, $end;
+	public $inline, $target, $to;
 
 	/**
 	 * Construct a job
@@ -128,15 +154,16 @@ class CategoryMoveJob extends Job {
 	 */
 	function __construct( $title, $params, $id = 0 ) {
 		parent::__construct( 'categoryMoveJob', $title, $params, $id );
-		$this->start = $params['start'];
-		$this->end = $params['end'];
+		
+		foreach ($params as $name => $value ) {
+			$this->{$name} = $value;
+		}
 	}
 
 	function run() {
-		$update = new HTMLCacheUpdate( $this->title, $this->table );
+		$update = new CategoryMove( $this->title, $this->inline, $this->target, $this->to );
 
-		$fromField = $update->getFromField();
-		$conds = $update->getToCondition();
+		$conds = array();
 		if ( $this->start ) {
 			$conds[] = "$fromField >= {$this->start}";
 		}
@@ -144,8 +171,7 @@ class CategoryMoveJob extends Job {
 			$conds[] = "$fromField <= {$this->end}";
 		}
 
-		$dbr = wfGetDB( DB_SLAVE );
-		$res = $dbr->select( $tables, $fromField, $conds, __METHOD__ );
+		$res = $update->fetchIDs( $conds );
 		$update->updateIDs( $res );
 
 		return true;
