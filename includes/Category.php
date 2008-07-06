@@ -331,7 +331,7 @@ class Category {
 				if ( $cl_target === null ) {
 					$cl_target = $this->mID;
 				}
-				$update = new CategoryLinksUpdateOnMove( $this->mTitle, $this->mID, $cl_target, $to->getID());
+				$update = new CategoryLinksUpdate( $this->mTitle, $this->mID, $cl_target, $to->getID());
 				$update->doUpdate();
 			}
 			$dbw->commit();

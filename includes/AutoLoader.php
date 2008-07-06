@@ -23,6 +23,8 @@ class AutoLoader {
 		'CacheDependency' => 'includes/CacheDependency.php',
 		'Category' => 'includes/Category.php',
 		'Categoryfinder' => 'includes/Categoryfinder.php',
+		'CategoryLinksUpdate' => 'includes/CategoryLinksUpdate.php',
+		'CategoryMoveJob' => 'includes/CategoryLinksUpdate.php',
 		'CategoryPage' => 'includes/CategoryPage.php',
 		'CategoryViewer' => 'includes/CategoryPage.php',
 		'ChangesList' => 'includes/ChangesList.php',

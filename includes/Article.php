@@ -106,18 +106,20 @@ class Article {
 		
 		if ( $this->mTitle->getNamespace() == NS_CATEGORY && $retval->getNamespace() == NS_CATEGORY ) {
 			$cur = Category::newFromTitle ( $this->mTitle );
-			$cur->insert();
+			$cur_id = $cur->insert();
 			
 			$to = Category::newFromTitle( $retval );
-			$cat_id = $to->insert();
-			if ( $cat_id == 0 ) {
+			$to_id = $to->insert();
+			if ( $to_id == 0 ) {
 				throw new MWException( 'Category insert failed ?!' );
 			}
 			$dbw->update(
 				'category',
-				array( 'cat_redir' => $cat_id),
+				array( 'cat_redir' => $to_id),
 				array( 'cat_title' => $this->mTitle->getDBKey() ),
 				__METHOD__ );
+			$update = new CategoryLinksUpdate( $this->mTitle, $cur_id, $cur_id, $to_id );
+			$update->doUpdate();
 		}
 		return $retval;
 	}
@@ -1194,18 +1196,24 @@ class Article {
 					
 				if ( $this->mTitle->getNamespace() == NS_CATEGORY && $redirectTitle->getNamespace() == NS_CATEGORY ) {
 					$cur = Category::newFromTitle ( $this->mTitle );
-					$cur->insert();
+					$cur_id = $cur->insert();
 					
 					$to = Category::newFromTitle( $redirectTitle );
-					$cat_id = $to->insert();
-					if ( $cat_id == 0 ) {
+					$to_id = $to->insert();
+					if ( $to_id == 0 ) {
 						throw new MWException( 'Category insert failed ?!' );
 					}
 					$dbw->update(
 						'category',
-						array( 'cat_redir' => $cat_id),
+						array( 'cat_redir' => $to_id),
 						array( 'cat_title' => $this->mTitle->getDBKey() ),
 						__METHOD__ );
+					$cur_redir = $cur->getRedir();
+					if ( !$cur_redir )
+						$cur_redir = $cur_id;
+					print_r("$cur_id $cur_redir $to_id");
+					$update = new CategoryLinksUpdate( $this->mTitle, $cur_id, $cur_redir, $to_id );
+					$update->doUpdate();
 				}
 			} else {
 				// This is not a redirect, remove row from redirect table

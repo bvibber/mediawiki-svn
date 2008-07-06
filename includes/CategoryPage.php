@@ -226,12 +226,14 @@ class CategoryViewer {
 		# When displaying a category redirect (with redirect=no) , show only inline inclusions
 		$linkedFrom = $this->cat->getRedir() ? 'inline' : 'target' ;
 		
+		$cat_id = $this->cat->getID();
+		
 		$res = $dbr->select(
 			array( 'page', 'categorylinks', 'category' ),
 			array( 'page_title', 'page_namespace', 'page_len', 'page_is_redirect', 'cl_sortkey',
 				'cat_id', 'cat_redir', 'cat_title', 'cat_subcats', 'cat_pages', 'cat_files' ),
 			array( $pageCondition,
-			       'cl_' . $linkedFrom => $this->cat->getID() ),
+			       'cl_' . $linkedFrom => $cat_id ),
 			__METHOD__,
 			array( 'ORDER BY' => $this->flip ? 'cl_sortkey DESC' : 'cl_sortkey',
 			       'USE INDEX' => array( 'categorylinks' => 'cl_sortkey_' . $linkedFrom ),
@@ -253,8 +255,9 @@ class CategoryViewer {
 
 			if( $title->getNamespace() == NS_CATEGORY ) {
 				$cat = Category::newFromRow( $x, $title );
-				if ( $cat->getRedir() == null ) {
-					# Show only non-redirects
+				if ( $cat->getRedir() != $cat_id ) {
+					# Nasty hack : since all pages, even redirects are parsed,
+					# category redirects are considered to be member of the redirect target
 					$this->addSubcategoryObject( $cat, $x->cl_sortkey, $x->page_len );
 				}
 			} elseif( $this->showGallery && $title->getNamespace() == NS_IMAGE ) {
