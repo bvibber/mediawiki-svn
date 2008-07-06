@@ -17,7 +17,7 @@ $messages['en'] = array(
 	'tasklistbyprojectbad'    => "Project '''%s''' is not a valid project.
 For a list of valid projects, see [[MediaWiki:TodoTasksValidProjects]].",
 	'tasklistbyprojname'      => "Assigned Tasks for '''%s'''",
-	'tasklistchooseproj'      => 'Select Project: ',
+	'tasklistchooseproj'      => 'Select Project:',
 	'tasklistprojdisp'        => 'Display',
 	'tasklistbyname'          => '== Todo List for %s ==',
 	'tasklistnoprojects'      => "ERROR: It looks like you enabled '''\$wgUseProjects''', but did not create [[MediaWiki:TodoTasksValidProjects]]. See [http://www.mediawiki.org/wiki/Extension:Todo_Tasks#Step_8 Installation Instructions] for more details.",
@@ -187,7 +187,7 @@ $messages['he'] = array(
 	'tasklistmytasks'         => 'המטלות שלי',
 	'tasklistbyprojectbad'    => "פרוייקט '''%s''' איננו קיים. לקבלת רשימת הפרוייקטים, צפה כאן [[MediaWiki:TodoTasksValidProjects]].",
 	'tasklistbyprojname'      => "מטלה הוגדרה ל'''%s'''",
-	'tasklistchooseproj'      => 'בחר פרוייקט: ',
+	'tasklistchooseproj'      => 'בחר פרוייקט:',
 	'tasklistprojdisp'        => 'תצוגה',
 	'tasklistbyname'          => '== רשימת מטלות עבור %s ==',
 	'tasklistnoprojects'      => "שגיאה: נראה שאפשרת את '''\$wgUseProjects''', אבל לא יצרת [[MediaWiki:TodoTasksValidProjects]]. ראה [http://www.mediawiki.org/wiki/Extension:Todo_Tasks#Step_8 Installation Instructions] for more details.",
