@@ -26,6 +26,7 @@ fcgi_listener::fcgi_listener(
 	, acceptor(context.service(), endpoint)
 {
 	acceptor.set_option(tcp::acceptor::reuse_address(true));
+	fcntl(acceptor.native(), F_SETFD, FD_CLOEXEC);
 	fcgi_server_connection *new_connection = new fcgi_server_connection(context);
 	acceptor.async_accept(new_connection->socket().next_layer(),
 			boost::bind(&fcgi_listener::handle_accept, this,

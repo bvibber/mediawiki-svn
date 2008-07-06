@@ -98,7 +98,7 @@ process::~process()
 		snprintf(gids, sizeof(gids), "%lu", (unsigned long) gid_);
 		snprintf(pids, sizeof(pids), "%lu", (unsigned long) pid_);
 
-		execl(PREFIX "/lib/switchboard/swexec", "swexec", uids, gids, pids, NULL);
+		execl(PREFIX "/lib/switchboard/swkill", "swkill", uids, gids, pids, NULL);
 		_exit(1);
     }
 }

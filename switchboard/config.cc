@@ -66,6 +66,7 @@ std::map<std::string, configuration_loader::confline_t>
 	boost::assign::map_list_of
 		("listen", boost::bind(&configuration_loader::f_listen, _1, _2, _3))
 		("logconf", boost::bind(&configuration_loader::f_logconf, _1, _2, _3))
+		("sockdir", boost::bind(&configuration_loader::f_sockdir, _1, _2, _3))
 	;
 
 bool
@@ -129,6 +130,22 @@ configuration_loader::f_logconf(
 	}
 
 	newconf.logconf = fields[1];
+	return true;
+}
+
+bool
+configuration_loader::f_sockdir(
+		std::vector<std::string> &fields,
+		config &newconf)
+{
+	if (fields.size() != 2) {
+		LOG4CXX_ERROR(logger,
+			format("\"%s\", line %d: usage: sockdir <directory>\n")
+			% file_ % lineno_);
+		return false;
+	}
+
+	newconf.sockdir = fields[1];
 	return true;
 }
 

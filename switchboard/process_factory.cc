@@ -23,6 +23,7 @@
 
 #include	"process_factory.h"
 #include	"sbcontext.h"	
+#include	"config.h"
 
 namespace asio = boost::asio;
 
@@ -61,7 +62,7 @@ process_factory::create_from_filename(std::string const &filename)
 	if (ids_.empty())
 		id = curid_++;
 	
-	bindpath << "/tmp/switchboard_" << sb.st_uid << "_" << id;
+	bindpath << (mainconf.sockdir + "/switchboard_") << sb.st_uid << "_" << id;
 	return processp(new process(context_, sb.st_uid, sb.st_gid, bindpath.str()));
 }
 

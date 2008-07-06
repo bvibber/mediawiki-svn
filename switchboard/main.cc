@@ -117,8 +117,60 @@ main(int argc, char **argv)
 		return 1;
 	}
     
+	if (mainconf.sockdir.empty()) {
+		LOG4CXX_ERROR(mainlogger, "sockdir must be specified");
+		return 1;
+	}
+
 	LOG4CXX_INFO(mainlogger, format("loaded configuration from \"%s\"")
 			% CONFDIR "/main.conf");
+
+	/*
+	 * Make sure our sockdir is valid, and has the right permissions.
+	 */
+dostat:
+	struct stat sb;
+	if (stat(mainconf.sockdir.c_str(), &sb) == -1) {
+		if (errno == ENOENT) {
+			if (mkdir(mainconf.sockdir.c_str(), 0750) == -1) {
+				LOG4CXX_ERROR(mainlogger,
+					format("cannot create sockdir \"%s\": %s")
+					% mainconf.sockdir % std::strerror(errno));
+				return 1;
+			}
+
+			LOG4CXX_INFO(mainlogger,
+				format("created sockdir \"%s\"")
+				% mainconf.sockdir);
+			goto dostat;
+		} else {
+			LOG4CXX_ERROR(mainlogger,
+				format("cannot stat sockdir \"%s"": %s")
+				% mainconf.sockdir % std::strerror(errno));
+			return 1;
+		}
+	}
+
+	if (sb.st_uid != getuid()) {
+		LOG4CXX_ERROR(mainlogger,
+			format("sockdir \"%s\" is not owned by my uid %d")
+			% mainconf.sockdir % getuid());
+		return 1;
+	}
+
+	if (sb.st_gid != getgid()) {
+		LOG4CXX_ERROR(mainlogger,
+			format("sockdir \"%s\" is not owned by my gid %d")
+			% mainconf.sockdir % getgid());
+		return 1;
+	}
+
+	if ((sb.st_mode & S_IRWXO) != 0) {
+		LOG4CXX_ERROR(mainlogger,
+			format("sockdir \"%s\" has wrong mode (access for others)")
+			% mainconf.sockdir);
+		return 1;
+	}
 
 	for (std::vector<conf_listener>::iterator
 		it = mainconf.listeners.begin(),
@@ -158,6 +210,29 @@ main(int argc, char **argv)
 		LOG4CXX_INFO(mainlogger, format("re-initialising logging from \"%s\"")
 			% logconf);
 		log4cxx::PropertyConfigurator::configure(logconf);
+	}
+
+	LOG4CXX_INFO(mainlogger, "detaching to background...");
+	switch (fork()) {
+	case -1:
+		LOG4CXX_INFO(mainlogger, format("cannot fork: %s")
+				% std::strerror(errno));
+		return 1;
+	case 0:
+		break;
+	default:
+		return 0;
+	}
+
+	setsid();
+	chdir("/");
+	int fd;
+	if ((fd = open("/dev/null", O_RDWR, 0)) != -1) {
+		dup2(fd, STDIN_FILENO);
+		dup2(fd, STDOUT_FILENO);
+		dup2(fd, STDERR_FILENO);
+		if (fd > STDERR_FILENO)
+			close(fd);
 	}
 
 	signal(SIGTERM, sigexit);
