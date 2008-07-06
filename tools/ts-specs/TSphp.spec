@@ -47,7 +47,8 @@ export CPPFLAGS='-I/opt/ts/include -I/opt/mysql/include -I/usr/sfw/include'
 	--sysconfdir=/etc/opt/php \
 	--with-config-file-path=/etc/opt/php \
 	--with-mysql=/opt/mysql \
-	--disable-path-info-check
+	--disable-path-info-check \
+	--with-pcre-regex=/opt/ts
 
 gmake -j$CPUS
 
@@ -81,5 +82,7 @@ rm -rf $RPM_BUILD_ROOT
 /etc/opt/php/pear.conf
 
 %changelog
+* Sun Jul  6 2008 - river@wikimedia.org
+- build with external pcre 
 * Sat Jun 21 2008 - river@wikimedia.org
 - initial spec
