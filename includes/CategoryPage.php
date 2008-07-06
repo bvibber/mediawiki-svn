@@ -223,18 +223,18 @@ class CategoryViewer {
 			$this->flip = false;
 		}
 		
-		# When displaying a category redirect, show only inline inclusions
-		$linkedFrom = $this->cat->getRedir() ? 'cl_inline' : 'cl_target' ;
+		# When displaying a category redirect (with redirect=no) , show only inline inclusions
+		$linkedFrom = $this->cat->getRedir() ? 'inline' : 'target' ;
 		
 		$res = $dbr->select(
 			array( 'page', 'categorylinks', 'category' ),
 			array( 'page_title', 'page_namespace', 'page_len', 'page_is_redirect', 'cl_sortkey',
 				'cat_id', 'cat_redir', 'cat_title', 'cat_subcats', 'cat_pages', 'cat_files' ),
 			array( $pageCondition,
-			       $linkedFrom => $this->cat->getID() ),
+			       'cl_' . $linkedFrom => $this->cat->getID() ),
 			__METHOD__,
 			array( 'ORDER BY' => $this->flip ? 'cl_sortkey DESC' : 'cl_sortkey',
-			       'USE INDEX' => array( 'categorylinks' => 'cl_sortkey_target' ),
+			       'USE INDEX' => array( 'categorylinks' => 'cl_sortkey_' . $linkedFrom ),
 			       'LIMIT'    => $this->limit + 1 ),
 			array( 'categorylinks'  => array( 'INNER JOIN', 'cl_from = page_id' ),
 		           'category' => array( 'LEFT JOIN', 'cat_title = page_title AND page_namespace = ' . NS_CATEGORY ) ) );
