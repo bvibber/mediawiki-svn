@@ -78,6 +78,7 @@ class GroupPermissions extends SpecialPage {
 					$this->addLogItem( 'add', trim( $wgRequest->getText( 'addcomment' ) ) );
 					$wgOut->addWikiText( wfMsg( 'grouppermissions-addsuccess', $this->target ) );
 					$this->listsmade = false;
+					require_once('/config/GroupPermissions.php');
 				}
 			} elseif( $wgRequest->wasPosted() && $wgRequest->getVal('dodelete') == '1' ) {
 				//we just deleted a user group. don't remove users from the group just in case we want to make it again
@@ -86,6 +87,7 @@ class GroupPermissions extends SpecialPage {
 					$this->addLogItem( 'delete', trim( $wgRequest->getText( 'deletecomment' ) ) );
 					$wgOut->addWikiText( wfMsg( 'grouppermissions-deletesuccess', $this->target ) );
 					$this->listsmade = false;
+					require_once('/config/GroupPermissions.php');
 				}
 			} elseif( $wgRequest->wasPosted() && $wgRequest->getVal('dochange') == '1' ) {
 				//we modified the permissions of an existing group
@@ -94,6 +96,7 @@ class GroupPermissions extends SpecialPage {
 					$this->addLogItem( 'change', trim( $wgRequest->getText( 'comment' ) ) );
 					$wgOut->addWikiText( wfMsg( 'grouppermissions-changesuccess', $this->target ) );
 					$this->listsmade = false;
+					require_once('/config/GroupPermissions.php');
 				}
 			}
 		}
@@ -125,13 +128,13 @@ class GroupPermissions extends SpecialPage {
 		$form .= "<form method=\"post\" action=\"".$thisTitle->getLocalUrl()."\" id=\"preferences\">\n";
 		//get the rows of checkboxes, specify that we should get values for them as well
 		$this->createCheckboxes( $form, true );
-		$form .= "<br />\n";
+		$form .= "<div id=\"prefsubmit\">\n";
 		$form .= "<label for=\"comment\">".wfMsg('grouppermissions-comment')."</label> ";
 		$form .= "<input type=\"text\" name=\"comment\" id=\"comment\" size=\"45\" />\n";
 		$form .= "<input type=\"submit\" name=\"change\" value=\"".wfMsg('grouppermissions-change')."\" />\n";
 		$form .= "<input type=\"hidden\" name=\"dochange\" value=\"1\" />";
 		$form .= "<input type=\"hidden\" name=\"groupsearch\" value=\"".$this->target."\" />\n";
-		$form .= "</form>\n</div>\n";
+		$form .= "</div></form>\n</div>\n";
 		return $form;
 	}
 	
@@ -168,13 +171,13 @@ class GroupPermissions extends SpecialPage {
 		$form .= "<form method=\"post\" action=\"".$thisTitle->getLocalUrl()."\" id=\"preferences\">\n";
 		//get the rows of checkboxes, specify that we should not get values for them 
 		$this->createCheckboxes( $form, false );
-		$form .= "<br />\n";
+		$form .= "<div id=\"prefsubmit\">\n";
 		$form .= "<label for=\"addcomment\">".wfMsg('grouppermissions-comment')."</label> ";
 		$form .= "<input type=\"text\" name=\"addcomment\" id=\"addcomment\" size=\"45\" />\n";
 		$form .= "<input type=\"submit\" name=\"add\" value=\"".wfMsg('grouppermissions-add')."\" />\n";
 		$form .= "<input type=\"hidden\" name=\"doadd\" value=\"1\" />";
 		$form .= "<input type=\"hidden\" name=\"groupsearch\" value=\"".$this->target."\" />\n";
-		$form .= "</form>\n</div>\n";
+		$form .= "</div></form>\n</div>\n";
 		return $form;
 	}
 
@@ -243,10 +246,10 @@ class GroupPermissions extends SpecialPage {
 			}
 		}
 		foreach($sort as $type => $list) {
-			$form .= '<fieldset><legend>'.wfMsgHtml('grouppermissions-sort-'.$type).'</legend>';
-			$form .= "\n<h2>".wfMsgHtml('grouppermissions-sort-'.$type)."</h2>\n<table>";
+			$form .= '<fieldset><legend>'.wfMsgHtml("grouppermissions-sort-$type").'</legend>';
+			$form .= "\n<h2>".wfMsgHtml("grouppermissions-sort-$type")."</h2>\n<table>";
 			foreach($list as $right => $value) {
-				$form .= "\n<tr><td>".$right."</td><td>";
+				$form .= "\n<tr><td>$right</td><td>";
 				if($value) {
 					$form .= $this->makeRadio($right, 'true', true) . $this->makeRadio($right, 'false') . $this->makeRadio($right, 'never');
 				} else {
@@ -307,14 +310,14 @@ $wgGPManagerNeverGrant = array();';
 					if(strpos($key, 'right-') === 0 && $value == 'true') {
 						$r = explode('-', $key, 2);
 						$right = $r[1];
-						$grouppermissions .= "\n\$wgGroupPermissions['".$group."']['".$right."'] = true;";
+						$grouppermissions .= "\n\$wgGroupPermissions['$group']['$right'] = true;";
 					}
 				}
 			} elseif( $group != $this->target ) {
 				foreach($permissions as $right => $value) {
 					if( $value == 'true') {
 						//group doesn't match target group and the current value is true
-						$grouppermissions .= "\n\$wgGroupPermissions['".$group."']['".$right."'] = true;";
+						$grouppermissions .= "\n\$wgGroupPermissions['$group']['$right'] = true;";
 					}
 				}
 			}
@@ -326,7 +329,7 @@ $wgGPManagerNeverGrant = array();';
 					if(strpos($key, 'right-') === 0 && $value == 'true') {
 						$r = explode('-', $key, 2);
 						$right = $r[1];
-						$grouppermissions .= "\n\$wgGroupPermissions['".$this->target."']['".$right."'] = true;";
+						$grouppermissions .= "\n\$wgGroupPermissions['".$this->target."']['$right'] = true;";
 					}
 				}
 		}
@@ -349,13 +352,13 @@ $wgGPManagerNeverGrant = array();';
 					if($right == '') {
 						continue;
 					}
-					$grouppermissions .= "\n\$wgGroupPermissions['".$group."']['".$right."'] = false;";
+					$grouppermissions .= "\n\$wgGroupPermissions['$group']['$right'] = false;";
 				}
 				$str = "array('" . implode("', '", $rights) . "')";
 				if($str == 'array(\'\')') {
 					$str = 'array()';
 				}
-				$grouppermissions .= "\n\$wgGPManagerNeverGrant['".$group."'] = ".$str.";";
+				$grouppermissions .= "\n\$wgGPManagerNeverGrant['$group'] = $str;";
 			} elseif($type != 'delete') {
 				//we changed this group, so make appropriate changes. First, cut out all the ones that were changed to something other than never
 				foreach($rights as $permission) {
@@ -379,13 +382,13 @@ $wgGPManagerNeverGrant = array();';
 					if($right == '') {
 						continue;
 					}
-					$grouppermissions .= "\n\$wgGroupPermissions['".$group."']['".$right."'] = false;";
+					$grouppermissions .= "\n\$wgGroupPermissions['$group']['$right'] = false;";
 				}
 				$str = "array('" . implode("', '", $rights) . "')";
 				if($str == 'array(\'\')') {
 					$str = 'array()';
 				}
-				$grouppermissions .= "\n\$wgGPManagerNeverGrant['".$group."'] = ".$str.";";
+				$grouppermissions .= "\n\$wgGPManagerNeverGrant['$group'] = $str;";
 			}
 		}
 		
@@ -416,7 +419,7 @@ $wgGPManagerNeverGrant = array();';
 		} else {
 			$input ="<input type=\"radio\" name=\"right-{$right}\" id=\"{$right}-{$value}\" class=\"{$value}\" value=\"{$value}\" />";
 		}
-		$input .= " <label for=\"{$right}-{$value}\">".wfMsgHtml('grouppermissions-'.$value)."</label> ";
+		$input .= " <label for=\"{$right}-{$value}\">".wfMsgHtml("grouppermissions-$value")."</label> ";
 		return $input;
 	}
 }

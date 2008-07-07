@@ -11,62 +11,64 @@ $messages = array();
  * @author Ryan Schmidt
  */
 $messages['en'] = array(
-	'grouppermissions' => 'Manage group permissions',
-	'sortpermissions' => 'Sort permissions',
-	'removeunusedgroups' => 'Remove unused groups',
-	'grouppermissions-desc' => 'Manage group permissions via a [[Special:GroupPermissions|special page]]',
-	'grouppermissions-desc2' => 'Extended permissions system',
-	'grouppermissions-header' => 'You may use this page to change the underlying permissions of the various usergroups',
-	'grouppermissions-search' => 'Group:',
-	'grouppermissions-dologin' => 'Login',
-	'grouppermissions-dosearch' => 'Go',
-	'grouppermissions-searchlabel' => 'Search for group',
-	'grouppermissions-deletelabel' => 'Delete group',
-	'grouppermissions-error' => 'An unknown error has occurred, please hit the back button on your browser and try again',
-	'grouppermissions-change' => 'Change group permissions',
-	'grouppermissions-add' => 'Add group',
-	'grouppermissions-delete' => 'Delete group',
-	'grouppermissions-comment' => 'Comment:',
-	'grouppermissions-addsuccess' => '$1 has been successfully added',
+	'grouppermissions'               => 'Manage group permissions',
+	'sortpermissions'                => 'Sort permissions',
+	'removeunusedgroups'             => 'Remove unused groups',
+	'grouppermissions-desc'          => 'Manage group permissions via a [[Special:GroupPermissions|special page]]',
+	'grouppermissions-desc2'         => 'Extended permissions system',
+	'grouppermissions-header'        => 'You may use this page to change the underlying permissions of the various usergroups',
+	'grouppermissions-search'        => 'Group:',
+	'grouppermissions-dologin'       => 'Login',
+	'grouppermissions-dosearch'      => 'Go',
+	'grouppermissions-searchlabel'   => 'Search for group',
+	'grouppermissions-deletelabel'   => 'Delete group',
+	'grouppermissions-error'         => 'An unknown error has occurred, please hit the back button on your browser and try again',
+	'grouppermissions-change'        => 'Change group permissions',
+	'grouppermissions-add'           => 'Add group',
+	'grouppermissions-delete'        => 'Delete group',
+	'grouppermissions-comment'       => 'Comment:',
+	'grouppermissions-addsuccess'    => '$1 has been successfully added',
 	'grouppermissions-deletesuccess' => '$1 has been successfully deleted',
 	'grouppermissions-changesuccess' => 'Permissions for $1 have successfully been changed',
-	'grouppermissions-true' => 'True',
-	'grouppermissions-false' => 'False',
-	'grouppermissions-never' => 'Never',
-	'grouppermissions-nooldrev' => 'Error encountered when attempting to archive the current config file. No archive will be made',
-	'grouppermissions-sort-read' => 'Reading',
-	'grouppermissions-sort-edit' => 'Editing',
-	'grouppermissions-sort-manage' => 'Management',
-	'grouppermissions-sort-admin' => 'Administration',
-	'grouppermissions-sort-tech' => 'Technical',
-	'grouppermissions-sort-misc' => 'Miscellaneous',
-	'grouppermissions-log-add' => 'added group "$2"',
-	'grouppermissions-log-change' => 'changed permissions for group "$2"',
-	'grouppermissions-log-delete' => 'deleted group "$2"',
-	'grouppermissions-log-name' => 'GroupPermissions log',
-	'grouppermissions-log-entry' => '', #do not translate this message
-	'grouppermissions-log-header' => 'This page tracks changes to the underlying permissions of user groups',
-	'grouppermissions-needjs' => 'Warning: JavaScript is disabled on your browser. Some features may not work!',
-	'grouppermissions-sp-header' => 'You may use this page to manage how permissions are sorted and add new permissions',
-	'grouppermissions-sp-sort' => 'Sort Permissions',
-	'grouppermissions-sp-save' => 'Save',
-	'grouppermissions-sp-success' => 'Permissions have been successfully sorted',
-	'grouppermissions-sp-addtype' => 'Add sort type',
-	'grouppermissions-sp-addperm' => 'Add permission',
-	'grouppermissions-rug-header' => 'You may use this page to remove users from unused (deleted) groups.',
-	'grouppermissions-rug-success' => 'Successfully removed users from unused groups!',
-	'grouppermissions-rug-confirm' => 'Remove users from unused groups',
-	'right-viewsource' => 'View wiki source of protected pages',
-	'right-raw' => 'View raw pages',
-	'right-render' => 'View rendered pages without navigation',
-	'right-info' => 'View page info',
-	'right-credits' => 'View page credits',
-	'right-history' => 'View page histories',
-	'right-search' => 'Search the wiki',
-	'right-contributions' => 'View contributions pages',
-	'right-recentchanges' => 'View recent changes',
-	'right-edittalk' => 'Edit discussion pages',
-	'right-edit' => 'Edit pages (which are not discussion pages)',
+	'grouppermissions-true'          => 'True',
+	'grouppermissions-false'         => 'False',
+	'grouppermissions-never'         => 'Never',
+	'grouppermissions-nooldrev'      => 'Error encountered when attempting to archive the current config file. No archive will be made',
+	'grouppermissions-sort-read'     => 'Reading',
+	'grouppermissions-sort-edit'     => 'Editing',
+	'grouppermissions-sort-manage'   => 'Management',
+	'grouppermissions-sort-admin'    => 'Administration',
+	'grouppermissions-sort-tech'     => 'Technical',
+	'grouppermissions-sort-misc'     => 'Miscellaneous',
+	'grouppermissions-log-add'       => 'added group "$2"',
+	'grouppermissions-log-change'    => 'changed permissions for group "$2"',
+	'grouppermissions-log-delete'    => 'deleted group "$2"',
+	'grouppermissions-log-name'      => 'GroupPermissions log',
+	'grouppermissions-log-entry'     => '', #do not translate this message
+	'grouppermissions-log-header'    => 'This page tracks changes to the underlying permissions of user groups',
+	'grouppermissions-needjs'        => 'Warning: JavaScript is disabled on your browser. Some features may not work!',
+	'grouppermissions-sp-header'     => 'You may use this page to manage how permissions are sorted and add new permissions',
+	'grouppermissions-sp-sort'       => 'Sort Permissions',
+	'grouppermissions-sp-save'       => 'Save',
+	'grouppermissions-sp-success'    => 'Permissions have been successfully sorted',
+	'grouppermissions-sp-addtype'    => 'Add sort type',
+	'grouppermissions-sp-addperm'    => 'Add permission',
+	'grouppermissions-sp-remove'     => 'remove',
+	'grouppermissions-sp-deltype'    => 'Delete sort type',
+	'grouppermissions-rug-header'    => 'You may use this page to remove users from unused (deleted) groups.',
+	'grouppermissions-rug-success'   => 'Successfully removed users from unused groups!',
+	'grouppermissions-rug-confirm'   => 'Remove users from unused groups',
+	'right-viewsource'               => 'View wiki source of protected pages',
+	'right-raw'                      => 'View raw pages',
+	'right-render'                   => 'View rendered pages without navigation',
+	'right-info'                     => 'View page info',
+	'right-credits'                  => 'View page credits',
+	'right-history'                  => 'View page histories',
+	'right-search'                   => 'Search the wiki',
+	'right-contributions'            => 'View contributions pages',
+	'right-recentchanges'            => 'View recent changes',
+	'right-edittalk'                 => 'Edit discussion pages',
+	'right-edit-new'                 => 'Edit pages (which are not discussion pages)',
 );
 
 /** Faeag Rotuma (Faeag Rotuma)
@@ -98,7 +100,7 @@ $messages['bg'] = array(
 	'right-search'                 => 'Търсене в уикито',
 	'right-recentchanges'          => 'Преглеждане на последните промени',
 	'right-edittalk'               => 'Редактиране на дискусионни страници',
-	'right-edit'                   => 'редактиране на страници',
+	'right-edit-new'               => 'редактиране на страници',
 );
 
 /** Esperanto (Esperanto)
@@ -117,7 +119,7 @@ $messages['eo'] = array(
 	'grouppermissions-false'         => 'Falsa',
 	'grouppermissions-never'         => 'Neniam',
 	'grouppermissions-log-delete'    => 'forigis grupon "$2"',
-	'right-edit'                     => 'Redaktu paĝojn',
+	'right-edit-new'                 => 'Redaktu paĝojn',
 );
 
 /** French (Français)
@@ -179,7 +181,7 @@ $messages['fr'] = array(
 	'right-contributions'            => 'Voir les pages des contributions',
 	'right-recentchanges'            => 'Voir les modifications récentes',
 	'right-edittalk'                 => 'Modifier les pages de discussion',
-	'right-edit'                     => 'Modifier les pages (qui n’ont pas de page de discussion)',
+	'right-edit-new'                 => 'Modifier les pages (qui n’ont pas de page de discussion)',
 );
 
 /** Galician (Galego)
@@ -241,7 +243,7 @@ $messages['gl'] = array(
 	'right-contributions'            => 'Ver as páxinas de contribucións',
 	'right-recentchanges'            => 'Ver os cambios recentes',
 	'right-edittalk'                 => 'Editar as páxinas de conversa',
-	'right-edit'                     => 'Editar páxinas',
+	'right-edit-new'                 => 'Editar páxinas',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -281,7 +283,7 @@ $messages['lb'] = array(
 	'right-search'                   => 'Op der Wiki sichen',
 	'right-recentchanges'            => 'Weis rezent Ännerungen',
 	'right-edittalk'                 => 'Diskussiounssäiten änneren',
-	'right-edit'                     => 'Säiten änneren',
+	'right-edit-new'                 => 'Säiten änneren',
 );
 
 /** Dutch (Nederlands)
@@ -342,7 +344,7 @@ $messages['nl'] = array(
 	'right-contributions'            => "Bijdragenpagia's bekijken",
 	'right-recentchanges'            => 'Recente wijzigingen bekijken',
 	'right-edittalk'                 => "Overlegpagina's bewerken",
-	'right-edit'                     => "Pagina's bewerken",
+	'right-edit-new'                 => "Pagina's bewerken",
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
@@ -392,7 +394,7 @@ $messages['no'] = array(
 	'right-contributions'            => 'Vise bidragssider',
 	'right-recentchanges'            => 'Vise siste endringer',
 	'right-edittalk'                 => 'Redigere diskusjonssider',
-	'right-edit'                     => 'Redigere sider',
+	'right-edit-new'                 => 'Redigere sider',
 );
 
 /** Polish (Polski)
@@ -403,7 +405,7 @@ $messages['pl'] = array(
 	'grouppermissions-true'  => 'Prawda',
 	'grouppermissions-false' => 'Fałsz',
 	'grouppermissions-never' => 'Nigdy',
-	'right-edit'             => 'Edycja stron',
+	'right-edit-new'         => 'Edycja stron',
 );
 
 /** Tarifit (Tarifit)
@@ -472,7 +474,7 @@ $messages['sk'] = array(
 	'right-contributions'            => 'Zobraziť stránky príspevkov',
 	'right-recentchanges'            => 'Zobraziť posledné zmeny',
 	'right-edittalk'                 => 'Upraviť diskusné stránky',
-	'right-edit'                     => 'Upravovať stránky (ktoré nie sú diskusné stránky)',
+	'right-edit-new'                 => 'Upravovať stránky (ktoré nie sú diskusné stránky)',
 );
 
 /** Swedish (Svenska)
@@ -535,7 +537,7 @@ $messages['sv'] = array(
 	'right-contributions'            => 'Se bidragssidor',
 	'right-recentchanges'            => 'Se senaste ändringar',
 	'right-edittalk'                 => 'Redigera diskussionssidor',
-	'right-edit'                     => 'Redigera sidor',
+	'right-edit-new'                 => 'Redigera sidor',
 );
 
 /** Telugu (తెలుగు)
@@ -558,6 +560,6 @@ $messages['te'] = array(
 	'right-search'                 => 'వికిలో అన్వేషించవచ్చు',
 	'right-recentchanges'          => 'ఇటీవలి మార్పులను చూడవచ్చు',
 	'right-edittalk'               => 'చర్చా పేజీలను మార్చవచ్చు',
-	'right-edit'                   => 'పేజీలను మార్చడం',
+	'right-edit-new'               => 'పేజీలను మార్చడం',
 );
 

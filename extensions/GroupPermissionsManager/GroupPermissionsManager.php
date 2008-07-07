@@ -14,7 +14,7 @@ $wgExtensionCredits['specialpage'][] = array(
 	'name'           => 'GroupPermissions Manager',
 	'author'         => 'Ryan Schmidt',
 	'url'            => 'http://www.mediawiki.org/wiki/Extension:GroupPermissions_Manager',
-	'version'        => '3.1',
+	'version'        => '3.2',
 	'description'    => 'Manage group permissions via a special page',
 	'descriptionmsg' => 'grouppermissions-desc',
 );
@@ -61,6 +61,7 @@ $wgExtensionCredits['other'][] = array(
 $wgHooks['UserGetRights'][] = 'efGPManagerRevokeRights';
 $wgHooks['userCan'][] = 'efGPManagerExtendedPermissionsGrant';
 $wgHooks['getUserPermissionsErrors'][] = 'efGPManagerExtendedPermissionsRevoke';
+$wgHooks['NormalizeMessageKey'][] = 'efGPManagerReplaceEditMessage';
 $wgGPManagerNeverGrant = array();
 $wgGPManagerSort = array();
 $wgGPManagerSortTypes = array( 'read', 'edit', 'manage', 'admin', 'tech', 'misc' );
@@ -244,6 +245,15 @@ function efGPManagerExtendedPermissionsRevoke($title, $user, $action, &$result) 
 		}
 	}
 	return true; //otherwise we don't care
+}
+
+//replace right-edit messages with right-edit-new wherever applicable
+function efGPManagerReplaceEditMessage(&$key, &$useDB, &$langCode, &$transform) {
+	if($key == 'right-edit') {
+		$key = 'right-edit-new';
+		return false; //so it doesn't change load times TOO much
+	}
+	return true;
 }
 
 //Since the one in Title.php is private...

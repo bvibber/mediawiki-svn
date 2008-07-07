@@ -37,6 +37,7 @@ class SortPermissions extends SpecialPage {
 			$success = $this->writeFile();
 			if($success) {
 				$wgOut->addWikiText(wfMsg('grouppermissions-sp-success'));
+				require_once('/config/SortPermissions.php');
 			}
 		}
 		$this->makeForm();
@@ -50,7 +51,7 @@ class SortPermissions extends SpecialPage {
 	* Make the form
 	*/
 	function makeForm() {
-		global $wgOut, $wgGPManagerSortTypes, $wgGroupPermissions;
+		global $wgOut, $wgGPManagerSortTypes, $wgGroupPermissions, $wgGPManagerSort;
 		$a = '["' . implode('", "', $wgGPManagerSortTypes) . '"]';
 		if($a === '[""]') {
 			$a = '[]';
@@ -62,7 +63,7 @@ class SortPermissions extends SpecialPage {
 			$script .= "  types[$c] = '$type';\n";
 			$c++;
 		}
-		$script .= "</script>";
+		$script .= "  var remove = '".wfMsg('grouppermissions-sp-remove')."'\n</script>";
 		$wgOut->addHTML($script);
 		$thisTitle = Title::makeTitle( NS_SPECIAL, $this->getName() );
 		$mainform = "\n<fieldset>\n<legend>" . wfMsg('grouppermissions-sp-sort') . "</legend>\n";
@@ -73,6 +74,12 @@ class SortPermissions extends SpecialPage {
 				$this->permlist[] = $permission;
 			}
 		}
+		//also grab permissions only defined in $wgGPManagerSort
+		foreach($wgGPManagerSort as $key => $values) {
+			foreach($values as $right) {
+				$this->permlist[] = $right;
+			}
+		}
 		$this->permlist = array_unique($this->permlist);
 		sort($this->permlist);
 		foreach($this->permlist as $permission) {
@@ -80,7 +87,7 @@ class SortPermissions extends SpecialPage {
 		}
 		$mainform .= "\n</table>\n<input type=\"submit\" name=\"wpSave\" value=\"".wfMsg('grouppermissions-sp-save')."\" />";
 		$st = implode('|', $wgGPManagerSortTypes);
-		$mainform .= "\n<input type=\"hidden\" name=\"sorttypes\" value=\"$st\" />\n</form>\n</fieldset>";
+		$mainform .= "\n<input type=\"hidden\" id=\"sorttypes\" name=\"sorttypes\" value=\"$st\" />\n</form>\n</fieldset>";
 		$wgOut->addHTML($mainform);
 		$form = "\n<fieldset>\n<legend>".wfMsg('grouppermissions-sp-addtype')."</legend>\n";
 		$form .= "<form method=\"post\" action=\"\">\n<input type=\"text\" name=\"wpNewType\" id=\"wpNewType\" /> ";
@@ -88,6 +95,9 @@ class SortPermissions extends SpecialPage {
 		$form .= "\n<fieldset>\n<legend>".wfMsg('grouppermissions-sp-addperm')."</legend>\n";
 		$form .= "<form method=\"post\" action=\"\">\n<input type=\"text\" name=\"wpNewPerm\" id=\"wpNewPerm\" /> ";
 		$form .= "<input type=\"button\" onclick=\"javascript:addRow();\" value=\"".wfMsg('grouppermissions-sp-addperm')."\"/>\n</form>\n</fieldset>";
+		$form .= "\n<fieldset>\n<legend>".wfMsg('grouppermissions-sp-deltype')."</legend>\n";
+		$form .= "<form method=\"post\" action=\"\">\n<input type=\"text\" name=\"wpDelType\" id=\"wpDelType\" /> ";
+		$form .= "<input type=\"button\" onclick=\"javascript:delType();\" value=\"".wfMsg('grouppermissions-sp-deltype')."\"/>\n</form>\n</fieldset>";
 		$wgOut->addHTML($form);
 		return true;
 	}
@@ -100,14 +110,14 @@ class SortPermissions extends SpecialPage {
 	*/
 	function makeRadios($perm, $types) {
 		global $wgGPManagerSort;
-		$ret = "\n<tr id=\"$perm\"><td>$perm</td>";
+		$ret = "\n<tr id=\"right-$perm\"><td>$perm (<a href=\"javascript:removePerm('$perm');\">".wfMsg('grouppermissions-sp-remove')."</a>)</td>";
 		foreach($types as $type) {
 			if(array_key_exists($type, $wgGPManagerSort) && in_array($perm, $wgGPManagerSort[$type])) {
-				$ret .= "\n<td><input type=\"radio\" name=\"right-$perm\" id=\"$perm-$type\" value=\"$type\" checked=\"checked\" />";
+				$ret .= "\n<td><input type=\"radio\" name=\"right-$perm\" id=\"$perm-$type\" class=\"type-$type\" value=\"$type\" checked=\"checked\" />";
 			} else {
-				$ret .= "\n<td><input type=\"radio\" name=\"right-$perm\" id=\"$perm-$type\" value=\"$type\" />";
+				$ret .= "\n<td><input type=\"radio\" name=\"right-$perm\" id=\"$perm-$type\" class=\"type-$type\" value=\"$type\" />";
 			}
-			$ret .= "<label for=\"$perm-$type\">$type</label>";
+			$ret .= "<label for=\"$perm-$type\">$type</label></td>";
 		}
 		$ret .= "\n</tr>";
 		return $ret;
@@ -153,12 +163,19 @@ class SortPermissions extends SpecialPage {
 		//do the sorting by iterating through $_POST
 		$sortpermissions .= "\n\$wgGPManagerSort = array();";
 		$sort = array();
+		$stc = array();
 		foreach($_POST as $key => $value) {
 			if(strpos($key, 'right-') === 0) {
 				$rt = explode('-', $key, 2);
 				$sort[$value][] = $rt[1];
+				$stc[] = $value;
 				$sort[$value] = array_unique($sort[$value]);
 			}
+		}
+		//check to make sure that we have every type explicitly defined
+		$stc = array_unique($stc);
+		foreach(array_diff($sts, $stc) as $value) {
+			$sort[$value] = array();
 		}
 		//now implode it and put it in the file
 		foreach($sort as $key => $rights) {
