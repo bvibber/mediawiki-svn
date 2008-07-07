@@ -82,7 +82,7 @@
 			$wgOut->addHTML( '<strong>' . wfMsg( 'historywarning' ) . ' ' . $skin->historyLink() . '</strong>' );
 		}
 		
-		return $this->confirmDelete( '', $reason );
+		return $this->confirmDelete( $reason );
 	}
 	/*
 	 * function article top 
