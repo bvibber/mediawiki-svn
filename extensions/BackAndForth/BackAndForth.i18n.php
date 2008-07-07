@@ -133,6 +133,7 @@ $messages['de'] = array(
  */
 $messages['dsb'] = array(
 	'backforth-next' => 'Pśiducy ($1)',
+	'backforth-desc' => 'Pśidawa alfabetiske nawigaciske wótkaze "Pśiducy" a "Slědk" górjejce na boku.',
 	'backforth-prev' => 'Pjerwjejšny ($1)',
 );
 

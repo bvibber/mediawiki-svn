@@ -661,9 +661,22 @@ $messages['mr'] = array(
 
 /** Malay (Bahasa Melayu)
  * @author Aurora
+ * @author Aviator
  */
 $messages['ms'] = array(
-	'pdtest_ok' => 'OK',
+	'parserdifftest'      => 'Ujian perbezaan penghurai',
+	'pdtest-desc'         => '[[Special:ParserDiffTest|Laman khas]] untuk membandingkan output dua penghurai yang berlainan',
+	'pdtest_no_target'    => 'Sasaran tidak dinyatakan.',
+	'pdtest_page_missing' => 'Laman yang dinyatakan tiada dalam pangkalan data.',
+	'pdtest_no_changes'   => 'Tiada perubahan dikesan.',
+	'pdtest_time_report'  => '<b>$1</b> mengambil masa $2 saat, manakala <b>$3</b> mengambil masa $4 saat.',
+	'pdtest_title'        => 'Tajuk konteks:',
+	'pdtest_text'         => 'Teks input:',
+	'pdtest_ok'           => 'OK',
+	'pdtest_get_text'     => 'Ambil teks daripada laman',
+	'pdtest_diff'         => 'Perbezaan',
+	'pdtest_side_by_side' => 'Pembandingan output',
+	'pdt_comparing_page'  => 'Membandingkan output penghurai daripada [[$1]]',
 );
 
 /** Low German (Plattdüütsch)

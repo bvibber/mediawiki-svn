@@ -95,6 +95,13 @@ $messages['lb'] = array(
 	'universaleditbutton-desc' => "Setzt dwn HTML Header <code>&lt;link&gt;</code> derbäi, fir den universellen Ännere-Knäppchen vun der Browser-Erweiderung z'ënnerstetzen",
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Aviator
+ */
+$messages['ms'] = array(
+	'universaleditbutton-desc' => 'Menambah pengatas HTML <code>&lt;link&gt;</code> untuk menyokong penyambung pelayar Butang Sunting Semesta',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

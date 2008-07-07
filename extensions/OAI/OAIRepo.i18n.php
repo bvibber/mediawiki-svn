@@ -123,6 +123,13 @@ $messages['mr'] = array(
 	'oai-desc' => '[http://www.openarchives.org/OAI/openarchivesprotocol.html OAI-PMH] रिपॉजिटरी इंटरफेस पुरविते',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Aviator
+ */
+$messages['ms'] = array(
+	'oai-desc' => 'Membekalkan antara muka gudang [http://www.openarchives.org/OAI/openarchivesprotocol.html OAI-PMH]',
+);
+
 /** Low German (Plattdüütsch)
  * @author Slomox
  */

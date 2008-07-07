@@ -94,9 +94,15 @@ $messages['fr'] = array(
 	'msfunc_div_zero' => 'Division par zéro',
 );
 
+/** Galician (Galego)
+ * @author Alma
+ * @author Xosé
+ * @author Toliño
+ */
 $messages['gl'] = array(
-	'msfunc_nan' => 'O valor resultante non é un número',
-	'msfunc_inf' => 'O valor resultante é infinito',
+	'msfunc_desc'     => 'Unha colección de funcións matemáticas e estatísticas',
+	'msfunc_nan'      => 'O valor resultante non é un número',
+	'msfunc_inf'      => 'O valor resultante é infinito',
 	'msfunc_div_zero' => 'División por cero',
 );
 

@@ -441,6 +441,14 @@ $messages['pms'] = array(
 	'sitenotice_close' => 'stërma',
 );
 
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'sitenotice_close' => 'تړل',
+	'sitenotice-desc'  => 'کارونکي په دې توانوي چې د وېبځي خبرتياوې وتړلای شي.',
+);
+
 /** Portuguese (Português)
  * @author Malafaya
  */

@@ -122,7 +122,8 @@ Please contact the server operator or administrator.",
  * @author Jose77
  */
 $wdMessages['rif'] = array(
-	'ow_history' => 'Amzruy',
+	'ow_history'             => 'Amzruy',
+	'ow_LinkAttributeValues' => 'Tiẓdyin',
 );
 
 /** Karelian (Karjala)
@@ -3422,7 +3423,8 @@ $wdMessages['tr'] = array(
  * @author AS
  */
 $wdMessages['uk'] = array(
-	'ow_dm_OK' => 'Гаразд',
+	'ow_dm_OK'    => 'Гаразд',
+	'ow_Language' => 'Мова',
 );
 
 /** Vietnamese (Tiếng Việt)

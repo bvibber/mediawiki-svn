@@ -46,6 +46,13 @@ $messages['de'] = array(
 	'fixedimage-desc' => 'Ergänzt das <tt><nowiki><fundraising></nowiki></tt>-Tag',
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'fixedimage-desc' => 'Pśidawa toflicku <tt><nowiki><fundraising></nowiki></tt> ako wobraz',
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */

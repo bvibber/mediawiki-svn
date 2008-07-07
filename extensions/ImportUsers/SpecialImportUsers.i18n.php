@@ -42,6 +42,7 @@ $messages['rtm'] = array(
  * @author Jose77
  */
 $messages['rif'] = array(
+	'importusers-uploadfile'      => 'Sili afaylu',
 	'importusers-log-summary'     => 'Asgbr',
 	'importusers-log-summary-all' => 'Maṛṛa',
 	'importusers-realname'        => 'ism n dṣṣaḥ',

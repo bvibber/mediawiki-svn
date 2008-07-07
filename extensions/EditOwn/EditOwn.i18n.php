@@ -119,6 +119,13 @@ $messages['pl'] = array(
 	'editown-desc' => 'Użytkownicy bez uprawnienia do edycji wszystkich stron mogą edytować tylko te strony, które sami utworzyli',
 );
 
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'editown-desc' => 'هغه کارونکي چې د ټول-سمون د رښتو نه بې برخې دي، يواځې د هغو مخونو سمون کولای شي، کوم چې دوی پخپله جوړ کړي وي',
+);
+
 /** Portuguese (Português)
  * @author Malafaya
  */

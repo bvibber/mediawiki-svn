@@ -67,7 +67,12 @@ $messages['fr'] = array(
 	'mediafunctions-not-exist'     => "« $1 » n'existe pas.",
 );
 
+/** Galician (Galego)
+ * @author Xosé
+ * @author Toliño
+ */
 $messages['gl'] = array(
+	'mediafunctions-desc'          => 'Funcións de análise para obter información sobre ficheiros multimedia',
 	'mediafunctions-invalid-title' => '"$1" non é un título válido',
 	'mediafunctions-not-exist'     => '"$1" non existe',
 );

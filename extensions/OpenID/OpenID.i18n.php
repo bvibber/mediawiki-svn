@@ -1356,6 +1356,13 @@ $messages['tg-cyrl'] = array(
 	'openidchoosepassword'  => 'гузарвожа:',
 );
 
+/** Ukrainian (Українська)
+ * @author AS
+ */
+$messages['uk'] = array(
+	'openidlanguage' => 'Мова',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
  * @author Vinhtantran

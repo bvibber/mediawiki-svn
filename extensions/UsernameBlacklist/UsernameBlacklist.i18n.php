@@ -806,6 +806,14 @@ $messages['ms'] = array(
 	'blacklistedusername'             => 'Nama pengguna yang disenaraihitamkan',
 	'blacklistedusernametext'         => 'Nama pengguna yang anda pilih telah [[MediaWiki:Usernameblacklist|disenaraihitamkan]].
 Sila pilih nama lain.',
+	'usernameblacklist'               => '<pre>
+# Setiap entri dalam senarai ini akan digunakan sebagai ungkapan nalar yang
+# akan dipadankan dengan nama pengguna. Setiap entri mestilah diletakkan dalam
+# senarai peluru, contohnya:
+#
+# * Satu
+# * [Dd]ua
+</pre>',
 	'usernameblacklist-invalid-lines' => '{{PLURAL:$1|Baris|Baris-baris}} berikut dalam senarai hitam nama pengguna adalah tidak sah; sila betulkannya sebelum menyimpan:',
 	'right-uboverride'                => 'Atasi senarai hitam nama pengguna',
 );

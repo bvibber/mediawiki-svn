@@ -296,25 +296,25 @@ $messages['grc'] = array(
 
 /** Hebrew (עברית)
  * @author StuB
+ * @author Rotemliss
  */
 $messages['he'] = array(
 	'vote'                => 'הצבעה',
 	'vote-header'         => "ניתן להצביע כאן ל'''שליט העליון של העולם'''!",
-	'vote-current'        => "הצבעתך הנוכחית היא ל'''$1'''.",
-	'vote-legend'         => 'קבעו או שנו את בחירתכם <!--או הצבעתכם?--!\\<',
-	'vote-caption'        => 'בחירתך:',
+	'vote-current'        => "הצבעתכם הנוכחית היא ל'''$1'''.",
+	'vote-legend'         => 'קבעו או שנו את הצבעתכם',
+	'vote-caption'        => 'בחירתכם:',
 	'vote-choices'        => "ג'וקר|הג'וקר
 פנגוין|הפנגוין
-איש החידות|איש החידות
-<!--doesn't make any sense to me--\\>",
+איש החידות|איש החידות",
 	'vote-submit'         => 'הצבעה',
-	'vote-registered'     => 'הצבעתך נרשמה',
-	'vote-view-results'   => 'צפיה בתוצאות',
+	'vote-registered'     => 'הצבעתכם נרשמה.',
+	'vote-view-results'   => 'צפייה בתוצאות',
 	'vote-results'        => 'תוצאות ההצבעה',
-	'vote-results-choice' => 'בחירה',
-	'vote-results-count'  => 'ספירה',
-	'vote-login-link'     => 'התחבר\\י',
-	'vote-invalid-choice' => 'חובה לבחור באחת האפשרויות הזמינות',
+	'vote-results-choice' => 'אפשרות',
+	'vote-results-count'  => 'מספר מצביעים',
+	'vote-login-link'     => 'כניסה לחשבון',
+	'vote-invalid-choice' => 'יש לבחור באחת האפשרויות הזמינות.',
 );
 
 /** Hindi (हिन्दी)

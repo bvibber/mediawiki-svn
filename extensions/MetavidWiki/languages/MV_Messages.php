@@ -249,6 +249,7 @@ $messages['rtm'] = array(
  * @author Jose77
  */
 $messages['rif'] = array(
+	'mv_upload_file' => 'Sili afaylu',
 	'mv_tool_search' => 'Tarzzut',
 	'mv_edit'        => 'Arri',
 	'mv_history'     => 'Amzruy',

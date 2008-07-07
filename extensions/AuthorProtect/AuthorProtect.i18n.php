@@ -236,17 +236,18 @@ $messages['gv'] = array(
 
 /** Hebrew (עברית)
  * @author StuB
+ * @author Rotemliss
  */
 $messages['he'] = array(
-	'authorprotect'           => 'הגנה על הדף מפני לא-יוצרים',
-	'authorprotect-desc'      => 'מאפשר ליוצר הדף להגן עליו מפני משתמשים אחרים',
-	'authorprotect-notauthor' => 'אינך יוצר הדף',
+	'authorprotect'           => 'הגנה על הדף מפני לא־יוצרים',
+	'authorprotect-desc'      => 'מתן אפשרות ליוצר של דף להגן עליו מפני משתמשים אחרים',
+	'authorprotect-notauthor' => 'לא אתם יצרתם את הדף',
 	'authorprotect-confirm'   => 'שינוי רמות ההגנה',
-	'authorprotect-edit'      => 'אפשר עריכה ליוצרים בלבד',
-	'authorprotect-move'      => 'אפשר העברה ליוצרים בלבד',
-	'authorprotect-expiry'    => 'זמן התפוגה',
+	'authorprotect-edit'      => 'הגבלת עריכה ליוצרים בלבד',
+	'authorprotect-move'      => 'הגבלת העברה ליוצרים בלבד',
+	'authorprotect-expiry'    => 'זמן הפקיעה',
 	'authorprotect-reason'    => 'סיבה',
-	'protect-level-author'    => 'הגנו מפני לא-יוצרים',
+	'protect-level-author'    => 'הגנה מפני לא-יוצרים',
 );
 
 /** Hindi (हिन्दी)

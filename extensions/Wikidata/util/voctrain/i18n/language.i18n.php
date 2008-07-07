@@ -926,3 +926,10 @@ $messages['te'] = array(
 	'voctrain_Translation'                                      => 'అనువాదం',
 );
 
+/** Ukrainian (Українська)
+ * @author AS
+ */
+$messages['uk'] = array(
+	'voctrain_Language' => 'Мова',
+);
+

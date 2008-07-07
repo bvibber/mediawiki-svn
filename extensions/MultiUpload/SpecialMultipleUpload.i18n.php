@@ -218,6 +218,15 @@ $messages['haw'] = array(
 	'multipleupload' => 'Ho‘ouka i nā waihona',
 );
 
+/** Hebrew (עברית)
+ * @author Agbad
+ */
+$messages['he'] = array(
+	'multipleupload'              => 'העלאת קבצים',
+	'multipleupload-desc'         => 'מאפשר למשתמשים [[Special:MultipleUpload|להעלות מספר קבצים בבת אחת]]',
+	'multipleupload-saveallfiles' => 'שמירת כל הקבצים',
+);
+
 /** Hindi (हिन्दी)
  * @author Kaustubh
  */

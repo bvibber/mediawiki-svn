@@ -423,8 +423,13 @@ $messages['mr'] = array(
 	'deletedcontributions-desc' => 'एखाद्या [[Special:DeletedContributions|सदस्याची वगळलेली संपादने]] पाहण्याची प्रबंधकांना परवानगी देते.',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Aviator
+ * @author SPQRobin
+ */
 $messages['ms'] = array(
-	'deletedcontributions' => 'Sumbangan pengguna yang telah dipadam',
+	'deletedcontributions'      => 'Sumbangan pengguna yang telah dipadam',
+	'deletedcontributions-desc' => 'Membolehkan penyelia melihat [[Special:DeletedContributions|suntingan pengguna yang telah dihapuskan]]',
 );
 
 $messages['nan'] = array(

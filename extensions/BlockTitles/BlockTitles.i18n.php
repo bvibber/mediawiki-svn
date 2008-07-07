@@ -178,11 +178,12 @@ $messages['gv'] = array(
 
 /** Hebrew (עברית)
  * @author StuB
+ * @author Rotemliss
  */
 $messages['he'] = array(
 	'block_title_error_page_title' => 'כותרת חסומה',
-	'block_title_error-desc'       => 'מספק דרך בסיסית למניעת שמירה או יצירה של דפים עם כותרות מסוימות',
-	'block_title_error'            => 'אנו מצטערים, אך הכותרת של דף זה אינה חוקית',
+	'block_title_error-desc'       => 'אפשרות בסיסית למניעת שמירה או יצירה של דפים עם כותרות מסוימות',
+	'block_title_error'            => 'מצטערים, הכותרת של דף זה אינה חוקית.',
 );
 
 /** Hindi (हिन्दी)

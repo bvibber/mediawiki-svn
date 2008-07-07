@@ -39,6 +39,13 @@ $messages['rif'] = array(
 	'contributors-submit' => 'Smmrad',
 );
 
+/** Eastern Mari (Олык Марий)
+ * @author Jose77
+ */
+$messages['mhr'] = array(
+	'contributors-submit' => 'ончыкташ',
+);
+
 /** Afrikaans (Afrikaans)
  * @author Arnobarnard
  */

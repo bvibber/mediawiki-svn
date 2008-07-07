@@ -141,6 +141,13 @@ $messages['mr'] = array(
 	'skinperpage-desc' => 'प्रत्येक पानावर वेगवेगळी त्वचा वापरण्यास उपयुक्त असा <tt>&lt;skin&gt;</tt> टॅग वाढवितो',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Aviator
+ */
+$messages['ms'] = array(
+	'skinperpage-desc' => 'Menambah tag <tt>&lt;skin&gt;</tt> untuk membolehkan pemakaian rupa yang berlainan pada setiap laman',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

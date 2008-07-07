@@ -22,6 +22,12 @@ $aliases['bcc'] = array(
 	'ViewConfig' => array( 'چارگ تنظیم' ),
 );
 
+$aliases['fi'] = array(
+	'Configure'  => array( 'Wikin asetukset' ),
+	'Extensions' => array( 'Laajennukset' ),
+	'ViewConfig' => array( 'Näytä asetukset' ),
+);
+
 /** French (Français)
  * @author IAlex
  */
@@ -41,5 +47,6 @@ $aliases['he'] = array(
 
 $aliases['nl'] = array(
 	'Configure'  => array( 'Instellingen' ),
+	'Extensions' => array( 'Uitbreidingen' ),
 	'ViewConfig' => array( 'InstellingenBekijken' ),
 );

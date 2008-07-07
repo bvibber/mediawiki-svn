@@ -165,6 +165,13 @@ $messages['mr'] = array(
 	'mwsearch-desc' => 'एमडब्ल्यूशोध प्लगीन',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Aviator
+ */
+$messages['ms'] = array(
+	'mwsearch-desc' => 'Pemalam MWSearch',
+);
+
 /** Low German (Plattdüütsch)
  * @author Slomox
  */
@@ -174,9 +181,10 @@ $messages['nds'] = array(
 
 /** Dutch (Nederlands)
  * @author Siebrand
+ * @author SPQRobin
  */
 $messages['nl'] = array(
-	'mwsearch-desc' => 'MWSearch plugin',
+	'mwsearch-desc' => 'MWSearch-plugin',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)

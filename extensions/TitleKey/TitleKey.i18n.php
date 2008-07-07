@@ -140,6 +140,13 @@ $messages['mr'] = array(
 	'titlekey-desc' => 'शीर्षक उपपद शोध सल्ला बॅकएन्ड',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Aviator
+ */
+$messages['ms'] = array(
+	'titlekey-desc' => 'Atur cara untuk cadangan gelintar bagi awalan tajuk',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

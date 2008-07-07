@@ -85,15 +85,27 @@ $messages['rif'] = array(
 
 /** Bulgarian (Български)
  * @author DCLXVI
+ * @author Siebrand
  */
 $messages['bg'] = array(
-	'grouppermissions'         => 'Управление на груповите права',
-	'sortpermissions'          => 'Сортиране на правата',
-	'grouppermissions-search'  => 'Група:',
-	'grouppermissions-dologin' => 'Влизане',
-	'grouppermissions-comment' => 'Коментар:',
-	'grouppermissions-never'   => 'Никога',
-	'right-edit'               => 'редактиране на страници',
+	'grouppermissions'             => 'Управление на груповите права',
+	'sortpermissions'              => 'Сортиране на правата',
+	'removeunusedgroups'           => 'Премахване на неизползваните групи',
+	'grouppermissions-desc'        => 'Управление на груповите права през специална страница',
+	'grouppermissions-search'      => 'Група:',
+	'grouppermissions-dologin'     => 'Влизане',
+	'grouppermissions-deletelabel' => 'Изтриване на група',
+	'grouppermissions-add'         => 'Добавяне на група',
+	'grouppermissions-delete'      => 'Изтриване на група',
+	'grouppermissions-comment'     => 'Коментар:',
+	'grouppermissions-never'       => 'Никога',
+	'grouppermissions-log-change'  => 'промени правата на група „$2“',
+	'grouppermissions-log-delete'  => 'изтри група „$2“',
+	'grouppermissions-sp-save'     => 'Съхраняване',
+	'right-search'                 => 'Търсене в уикито',
+	'right-recentchanges'          => 'Преглеждане на последните промени',
+	'right-edittalk'               => 'Редактиране на дискусионни страници',
+	'right-edit'                   => 'редактиране на страници',
 );
 
 /** Esperanto (Esperanto)
@@ -117,10 +129,13 @@ $messages['eo'] = array(
 
 /** French (Français)
  * @author Grondin
+ * @author Siebrand
  */
 $messages['fr'] = array(
 	'grouppermissions'               => 'Gérer les permissions des groupes',
-	'grouppermissions-desc'          => 'Gère les permissions des groupes au travers d’une page spéciale',
+	'sortpermissions'                => 'Classer les permissions',
+	'removeunusedgroups'             => 'Retirer les groupes inutilisés',
+	'grouppermissions-desc'          => 'Gère les permissions des groupes au travers d’une [[Special:GroupPermissions|page spéciale]]',
 	'grouppermissions-desc2'         => 'Système étendu des permissions',
 	'grouppermissions-header'        => 'Vous pouvez utiliser cette page pour modifier les permissions soulignées des différents groupes d’utilisateurs',
 	'grouppermissions-search'        => 'Groupe :',
@@ -153,6 +168,14 @@ $messages['fr'] = array(
 	'grouppermissions-log-header'    => 'Cette page piste les changements des permissions soulignées des groupes utilisateurs.',
 	'grouppermissions-needjs'        => 'Aversissement : JavaScript est désactivé sur votre navigateur. Plusieurs fonctionnalités peuvent ne pas fonctionner !',
 	'grouppermissions-sp-header'     => 'Vous pouvez utiliser cette page pour gérer comment les permissions sont affichées et pour ajouter de nouvelles permissions',
+	'grouppermissions-sp-sort'       => 'Trier les permissions',
+	'grouppermissions-sp-save'       => 'Sauvegarder',
+	'grouppermissions-sp-success'    => 'Les permissions ont été triées avec succès',
+	'grouppermissions-sp-addtype'    => 'Ajouter toutes sortes de classement',
+	'grouppermissions-sp-addperm'    => 'Ajouter la permission',
+	'grouppermissions-rug-header'    => 'Vous pouvez utiliser cette page pour retirer les utilisateurs des groupes inutilisés ou supprimés.',
+	'grouppermissions-rug-success'   => 'Utilisateurs retirés avec succès des groupes inutilisés !',
+	'grouppermissions-rug-confirm'   => 'Retirer les utilisateurs des groupes inutilisés',
 	'right-viewsource'               => 'Voir le code source wiki des pages protégées',
 	'right-raw'                      => 'Voir les pages brutes',
 	'right-render'                   => 'Voir le rendu des pages sans navigation',
@@ -168,12 +191,13 @@ $messages['fr'] = array(
 
 /** Galician (Galego)
  * @author Toliño
+ * @author Siebrand
  */
 $messages['gl'] = array(
 	'grouppermissions'               => 'Xestionar os permisos dun grupo',
 	'sortpermissions'                => 'Tipo de permisos',
 	'removeunusedgroups'             => 'Eliminar os grupos non usados',
-	'grouppermissions-desc'          => 'Xestionar os permisos dun grupo mediante unha páxina especial',
+	'grouppermissions-desc'          => 'Xestionar os permisos dun grupo mediante unha [[Special:GroupPermissions|páxina especial]]',
 	'grouppermissions-desc2'         => 'Sistema de permisos estendido',
 	'grouppermissions-header'        => 'Pode usar esta páxina para cambiar os permisos subxacentes de varios grupos de usuario',
 	'grouppermissions-search'        => 'Grupo:',
@@ -229,10 +253,11 @@ $messages['gl'] = array(
 
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
+ * @author Siebrand
  */
 $messages['lb'] = array(
 	'grouppermissions'               => "D'Rechter vu Gruppe geréieren",
-	'grouppermissions-desc'          => "D'Rechter vu Gruppen iwwer eng Spezialsäit geréieren",
+	'grouppermissions-desc'          => "D'Rechter vu Gruppen iwwer eng [[Special:GroupPermissions|Spezialsäit]] geréieren",
 	'grouppermissions-desc2'         => 'ERweiderte System vun de Rechter',
 	'grouppermissions-header'        => "Dir kënnt dës Säit benotzen fir déi ënnerluechte Rechter vun de verschidden Benotzergruppen z'änneren",
 	'grouppermissions-search'        => 'Grupp:',
@@ -273,7 +298,7 @@ $messages['nl'] = array(
 	'grouppermissions'               => 'Groepsrechten beheren',
 	'sortpermissions'                => 'Rechten sorteren',
 	'removeunusedgroups'             => 'Ongebruikte groepen verwijderen',
-	'grouppermissions-desc'          => 'Groepsrechten beheren via een speciale pagina',
+	'grouppermissions-desc'          => 'Groepsrechten beheren via een [[Special:GroupPermissions|speciale pagina]]',
 	'grouppermissions-desc2'         => 'Uitgebreid rechtensysteem',
 	'grouppermissions-header'        => 'U kunt via deze pagina de groepsrechten van gebruikersgroepen aanpassen',
 	'grouppermissions-search'        => 'Groep:',
@@ -329,10 +354,11 @@ $messages['nl'] = array(
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
+ * @author Siebrand
  */
 $messages['no'] = array(
 	'grouppermissions'               => 'Behandle grupperettigheter',
-	'grouppermissions-desc'          => 'Behandle grupperettigheter via en spesialside',
+	'grouppermissions-desc'          => 'Behandle grupperettigheter via en [[Special:GroupPermissions|spesialside]]',
 	'grouppermissions-desc2'         => 'Utvidet rettighetssystem',
 	'grouppermissions-header'        => 'Du kan bruke denne siden for å endre rettightene de forskjellige brukergruppene har',
 	'grouppermissions-search'        => 'Gruppe:',
@@ -451,12 +477,13 @@ $messages['sk'] = array(
 /** Swedish (Svenska)
  * @author Boivie
  * @author M.M.S.
+ * @author Siebrand
  */
 $messages['sv'] = array(
 	'grouppermissions'               => 'Hantera behörigheter för användargrupper',
 	'sortpermissions'                => 'Sortera behörigheter',
 	'removeunusedgroups'             => 'Ta bort oanvända användargrupper',
-	'grouppermissions-desc'          => 'Hantera behörigheter för användargrupper via en specialsida',
+	'grouppermissions-desc'          => 'Hantera behörigheter för användargrupper via en [[Special:GroupPermissions|specialsida]]',
 	'grouppermissions-desc2'         => 'Utökat system för behörigheter',
 	'grouppermissions-header'        => 'Du kan använda denna sida för att ändra de underliggande behörigheterna av de olika användargrupperna',
 	'grouppermissions-search'        => 'Användargrupp:',

@@ -157,11 +157,12 @@ $messages['nl'] = array(
 	'templatelink_newtitle' => '$1 (getranscludeerd)',
 );
 
-/** Norwegian (‪Norsk (bokmål)‬)
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */
 $messages['no'] = array(
 	'templatelink'          => 'Mallenke',
+	'templatelink_desc'     => 'Denne utvidelsen kan vise en mal som en ny side',
 	'templatelink_empty'    => 'Du må angi en parameter.',
 	'templatelink_newtitle' => '$1 (inkluderes)',
 );

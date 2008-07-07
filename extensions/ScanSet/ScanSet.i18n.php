@@ -537,6 +537,24 @@ $messages['mr'] = array(
 	'scanset_prev'                      => '&lt; मागील',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Aviator
+ */
+$messages['ms'] = array(
+	'scanset-desc'                      => 'Melihat imej-mej halaman yang telah diimbas dalam set CD/DVD Andreas Grosz',
+	'scanset_no_name'                   => 'ScanSet: Anda hendaklah menyatakan nama set imbas, contohnya &lt;scanset name="EB1911" /&gt;.',
+	'scanset_invalid_name'              => 'ScanSet: Set imbas tidak sah atau tiada.',
+	'scanset_unrecognised_index_format' => 'ScanSet: Format indeks tidak dikenali',
+	'scanset_opendir_error'             => 'ScanSet: Tidak dapat membuka direktori $1',
+	'scanset_no_files'                  => 'ScanSet: Tiada fail dalam direktori yang dinyatakan.',
+	'scanset_no_volumes'                => 'ScanSet: Direktori jilid tidak dijumpai',
+	'scanset_missing_index_file'        => 'ScanSet: Fail indeks $1 tiada',
+	'scanset_index_file_error'          => 'ScanSet: Ralat dalam format fail indeks pada baris $1',
+	'scanset_invalid_volume'            => 'ScanSet: Jilid tidak sah',
+	'scanset_next'                      => 'Berikutnya &gt;',
+	'scanset_prev'                      => '&lt; Sebelumnya',
+);
+
 /** Low German (Plattdüütsch)
  * @author Slomox
  */

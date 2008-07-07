@@ -82,6 +82,14 @@ Non pode crear esta páxina, pero pode [{{fullurl:{{FULLPAGENAME}}|action=edit}}
 <createbox>break=no</createbox>",
 );
 
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
+$messages['hsb'] = array(
+	'createbox-desc'   => 'Specielne zapodatny kašćik za wutworjenje stronow',
+	'createbox-create' => 'Wutworić',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */

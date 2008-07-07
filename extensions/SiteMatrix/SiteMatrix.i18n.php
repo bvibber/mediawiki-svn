@@ -673,6 +673,7 @@ $messages['kk-latn'] = array(
  */
 $messages['km'] = array(
 	'sitematrix'           => 'បញ្ជីវិគីនៃវិគីមេឌា',
+	'sitematrix-summary'   => 'ទំព័រពិសេសនេះរាយឈ្មោះរាល់វិគីរបស់វិគីមេឌា។',
 	'sitematrix-desc'      => 'បង្ហាញ[[Special:SiteMatrix|បញ្ជីវិគីនៃវិគីមេឌា]]',
 	'sitematrix-language'  => 'ភាសា',
 	'sitematrix-project'   => 'ឈ្មោះ​គំរោង, តំនភ្ជាប់​អន្តរគំរោង និង តំនភ្ជាប់អន្តរវិគី',
@@ -842,7 +843,10 @@ $messages['ms'] = array(
 	'sitematrix-language'  => 'Bahasa',
 	'sitematrix-project'   => 'Nama projek, pautan antara projek dan pautan antara wiki',
 	'sitematrix-others'    => 'Projek-projek Wikimedia lain',
+	'sitematrix-total'     => "'''Jumlah bilangan: $1'''",
 	'sitematrix-sitetotal' => 'Jumlah',
+	'sitematrix-private'   => 'tertutup',
+	'sitematrix-fishbowl'  => 'penyuntingan terhad',
 );
 
 /** Erzya (эрзянь кель)

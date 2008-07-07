@@ -201,6 +201,13 @@ $messages['mr'] = array(
 	'doublewiki-desc' => 'एक पान व त्याचे इतर विकिवरील भाषांतर त्याच पानावर दोन भागांमध्ये दाखविते.',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Aviator
+ */
+$messages['ms'] = array(
+	'doublewiki-desc' => 'Memaparkan sesebuah laman berserta terjemahannya daripada wiki lain pada dua lajur yang bersebelahan',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

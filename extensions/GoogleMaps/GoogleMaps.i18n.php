@@ -84,7 +84,8 @@ $wgGoogleMapsMessages['en'] = array(
  * @author Jose77
  */
 $wgGoogleMapsMessages['rif'] = array(
-	'gm-search' => 'Tarzzut',
+	'gm-zoom-control' => 'Asari',
+	'gm-search'       => 'Tarzzut',
 );
 
 /** Karelian (Karjala)

@@ -341,6 +341,16 @@ $messages['mr'] = array(
 	'intersection_noincludecats' => 'DynamicPageList: कमीतकमी एक वर्ग अथवा नामविश्व देणे गरजेचे आहे!',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Aviator
+ */
+$messages['ms'] = array(
+	'intersection_toomanycats'   => 'DynamicPageList: Kategori terlalu banyak!',
+	'intersection_toofewcats'    => 'DynamicPageList: Kategori terlalu sedikit!',
+	'intersection_noresults'     => 'DynamicPageList: Tiada hasil!',
+	'intersection_noincludecats' => 'DynamicPageList: Anda hendaklah memasukkan sekurang-kurangnya sebuah kategori atau menyatakan sebuah ruang nama!',
+);
+
 /** Low German (Plattdüütsch)
  * @author Slomox
  */

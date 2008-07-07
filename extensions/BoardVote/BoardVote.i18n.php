@@ -3787,6 +3787,21 @@ $1 untuk data yang disulitkan.</p>',
 	'boardvote_strike'       => 'Potong',
 	'boardvote_unstrike'     => 'Nyahpotong',
 	'boardvote_needadmin'    => 'Hanya pentadbir pilihan raya boleh melakukan tindakan ini.',
+	'boardvote_sitenotice'   => '<a href="{{localurle:Special:Boardvote/vote}}">Pilihan Raya Lembaga Wikimedia</a>:
+Pengundian dibuka sehingga 22 Jun',
+	'boardvote_notstarted'   => 'Pengundian belum bermula',
+	'boardvote_closed'       => 'Pengundian telah ditutup. Sila lihat keputusannya di [http://meta.wikimedia.org/wiki/Board_elections/2008/Results laman pilihan raya].',
+	'group-boardvote'        => 'Pentadbir pilihan raya',
+	'group-boardvote-member' => 'Pentadbir pilihan raya',
+	'grouppage-boardvote'    => '{{ns:project}}:Pentadbir pilihan raya',
+	'boardvote_welcome'      => "Selamat datang, '''$1'''!",
+	'go_to_board_vote'       => 'Pilihan Raya Lembaga Wikimedia 2008',
+	'boardvote_redirecting'  => 'Untuk keselamatan dan ketelusan yang lebih baik, kami menjalankan pengundian ini di sebuah komputer pelayan luar.
+
+Anda akan dilencongkan ke pelayan ini dalam tempoh 20 saat. Sila [$1 klik di sini] untuk ke sana sekarang juga.
+
+Sebuah amaran keselamatan mengenai sijil yang tidak ditandatangani mungkin akan ditunjukkan.',
+	'right-boardvote'        => 'Mentadbir pilihan raya',
 );
 
 /** Erzya (эрзянь кель)

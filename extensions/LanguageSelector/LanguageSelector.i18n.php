@@ -520,6 +520,13 @@ $messages['tr'] = array(
 	'languageselector' => 'Dil',
 );
 
+/** Ukrainian (Українська)
+ * @author AS
+ */
+$messages['uk'] = array(
+	'languageselector' => 'Мова',
+);
+
 /** Vèneto (Vèneto)
  * @author Candalua
  */

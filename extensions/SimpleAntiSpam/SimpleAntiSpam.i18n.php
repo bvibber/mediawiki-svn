@@ -182,6 +182,14 @@ $messages['mr'] = array(
 	'simpleantispam-desc'  => 'अर्जांमध्ये एक साधी स्पॅम/सांगकाम्या तपासणी वाढवितो',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Aviator
+ */
+$messages['ms'] = array(
+	'simpleantispam-label' => "Pemeriksaan anti-spam. '''JANGAN''' isi ruangan ini!",
+	'simpleantispam-desc'  => 'Menambah pemeriksaan spam/bot ringkas di borang sunting',
+);
+
 /** Low German (Plattdüütsch)
  * @author Slomox
  */

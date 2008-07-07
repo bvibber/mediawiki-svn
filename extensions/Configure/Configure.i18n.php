@@ -127,7 +127,8 @@ $messages['rtm'] = array(
  * @author Jose77
  */
 $messages['rif'] = array(
-	'configure-js-remove' => 'Sfaḍ',
+	'configure-js-remove'            => 'Sfaḍ',
+	'configure-section-specialpages' => 'Tudmawin Special',
 );
 
 /** Eastern Mari (Олык Марий)
@@ -671,6 +672,13 @@ $messages['gl'] = array(
 	'configure-desc-key'                  => 'Clave',
 	'configure-desc-ns'                   => 'Espazos de nomes',
 	'configure-desc-val'                  => 'Valor',
+	'configure-edit-core'                 => 'MediaWiki',
+	'configure-edit-ext'                  => 'Extensións',
+	'configure-ext-doc'                   => 'Ver a documentación en liña',
+	'configure-ext-schemachange'          => "'''Perigo:''' esta extensión require unha actualización da base de datos para que traballe correctamente!",
+	'configure-ext-settings'              => 'Parámetros',
+	'configure-ext-use-extension'         => 'Usar esta extensión',
+	'configure-ext-use'                   => 'Usar',
 	'configure-summary'                   => 'Esta páxina especial permítelle configurar este wiki, vexa a [http://www.mediawiki.org/wiki/Manual:Configuration_settings configuración] para máis información.',
 	'configure-btn-save'                  => 'Gardar as configuracións',
 	'configure-directory-not-writable'    => 'No directorio usado para almacenar os parámetros, <tt>$1</tt>, non se pode escribir.
@@ -739,11 +747,14 @@ Por favor, créeo ou tróqueo para usar esta extensión.',
 	'configure-section-copyright'         => 'Dereitos de autor (Copyright)',
 	'configure-section-htcp'              => 'HTCP multicanle',
 	'configure-section-misc'              => 'Varios',
+	'configure-section-mw-extensions'     => 'Extensións MediaWiki',
 	'configure-setting-not-available'     => 'A configuración non está dispoñible nesta versión de MediaWiki',
 	'configure-view'                      => 'Ver',
 	'configure-view-not-allowed'          => 'Non ten permiso para ver este parámetro',
+	'extensions'                          => 'Configurar as extensións',
 	'right-configure'                     => 'Configurar o wiki',
 	'right-configure-all'                 => 'Configurar todos os parámetros do wiki',
+	'right-extensions'                    => 'Configurar as extensións',
 	'right-viewconfig'                    => 'Ver a configuración do wiki',
 	'right-viewconfig-all'                => 'Ver toda a configuración do wiki',
 	'viewconfig'                          => 'Ver a configuración do wiki',
@@ -1203,6 +1214,13 @@ $messages['nl'] = array(
 	'configure-desc-key'                  => 'Sleutel',
 	'configure-desc-ns'                   => 'Naamruimten',
 	'configure-desc-val'                  => 'Waarde',
+	'configure-edit-core'                 => 'MediaWiki',
+	'configure-edit-ext'                  => 'Uitbreidingen',
+	'configure-ext-doc'                   => 'Zie online handleiding',
+	'configure-ext-schemachange'          => "'''Waarschuwing:''' om deze uitbreiding juist te laten werken dient de database bijgewerkt te worden!",
+	'configure-ext-settings'              => 'Instellingen',
+	'configure-ext-use-extension'         => 'Deze uitbreiding gebruiken',
+	'configure-ext-use'                   => 'Gebruiken',
 	'configure-summary'                   => 'Via deze special pagina kunt u instellingen maken voor deze wiki. Zie [http://www.mediawiki.org/wiki/Manual:Configuration_settings Instellingen] voor meer informatie.',
 	'configure-btn-save'                  => 'Instellingen opslaan',
 	'configure-directory-not-writable'    => 'In de map waarin de instellingen worden opgeslagen, <tt>$1</tt>, kan niet geschreven worden.
@@ -1271,11 +1289,14 @@ Maak die map alstublieft aan, of verander de instelling voordat u deze extensie 
 	'configure-section-copyright'         => 'Copyright',
 	'configure-section-htcp'              => 'HTCP multicast',
 	'configure-section-misc'              => 'Diversen',
+	'configure-section-mw-extensions'     => 'Uitbreidingen MediaWiki',
 	'configure-setting-not-available'     => 'Deze instelling is niet beschikbaar in deze versie van MediaWiki',
 	'configure-view'                      => 'Zie',
 	'configure-view-not-allowed'          => 'U hebt geen rechten om deze instellingen te wijzigen',
+	'extensions'                          => 'Uitbreidingen instellen',
 	'right-configure'                     => 'Wiki-instellingen maken',
 	'right-configure-all'                 => 'Alle wiki-instellingen maken',
+	'right-extensions'                    => 'Uitbreidingen instellen',
 	'right-viewconfig'                    => 'Wiki-instellingen bekijken',
 	'right-viewconfig-all'                => 'Alle wiki-instellingen bekijken',
 	'viewconfig'                          => 'Wiki-instellingen bekijken',
@@ -1880,6 +1901,7 @@ $messages['su'] = array(
 /** Swedish (Svenska)
  * @author Lejonel
  * @author M.M.S.
+ * @author Boivie
  */
 $messages['sv'] = array(
 	'configure'                           => 'Konfigurera wikin',
@@ -1888,6 +1910,13 @@ $messages['sv'] = array(
 	'configure-desc-key'                  => 'Nyckel',
 	'configure-desc-ns'                   => 'Namnrymder',
 	'configure-desc-val'                  => 'Värde',
+	'configure-edit-core'                 => 'MediaWiki',
+	'configure-edit-ext'                  => 'Tillägg',
+	'configure-ext-doc'                   => 'Se online-dokumentation',
+	'configure-ext-schemachange'          => "'''Varning:''' det här progamtillägget kräver en uppdatering av databasen för att fungera korrekt!",
+	'configure-ext-settings'              => 'Inställningar',
+	'configure-ext-use-extension'         => 'Använd det här programtillägget',
+	'configure-ext-use'                   => 'Använd',
 	'configure-summary'                   => 'Den här specialsidan låter dig konfigurera wikin. Se [http://www.mediawiki.org/wiki/Manual:Configuration_settings manualsidan om konfigurationsinställningar] för mer information.',
 	'configure-btn-save'                  => 'Spara inställningar',
 	'configure-directory-not-writable'    => 'Registret används till att lagra inställningarna, <tt>$1</tt>, är inte skrivbar.
@@ -1957,11 +1986,14 @@ För att använda det här programtillägget måste du skapa den eller byta den.
 	'configure-section-copyright'         => 'Upphovsrätt',
 	'configure-section-htcp'              => 'HTCP-multicast',
 	'configure-section-misc'              => 'Diverse',
+	'configure-section-mw-extensions'     => 'MediaWiki programtillägg',
 	'configure-setting-not-available'     => 'Inställningen är inte tillgänglig i den här versionen av MediaWiki',
 	'configure-view'                      => 'Se',
 	'configure-view-not-allowed'          => 'Du är inte tillåten att se den här inställningen',
+	'extensions'                          => 'Konfigurera programtilläggen',
 	'right-configure'                     => 'Konfigurera wikin',
 	'right-configure-all'                 => 'Konfigurera alla inställningar på wikin',
+	'right-extensions'                    => 'Konfigurera programtilläggen',
 	'right-viewconfig'                    => 'Visa wikiinställningar',
 	'right-viewconfig-all'                => 'Visa alla wikiinställningar',
 	'viewconfig'                          => 'Visa wikikonfigurering',

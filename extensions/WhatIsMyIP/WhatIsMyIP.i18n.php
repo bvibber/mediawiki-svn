@@ -88,6 +88,15 @@ $messages['nl'] = array(
 	'whatismyip-out'  => 'Uw IP-adres:',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ */
+$messages['no'] = array(
+	'whatismyip'      => 'Min IP-adresse',
+	'whatismyip-desc' => 'Viser nåværende brukeres IP-adresse på [[Special:WhatIsMyIP]]',
+	'whatismyip-out'  => 'Din IP-adresse:',
+);
+
 /** Polish (Polski)
  * @author Airwolf
  */

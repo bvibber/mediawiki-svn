@@ -102,7 +102,7 @@ $messages['hi'] = array(
  * @author Michawiki
  */
 $messages['hsb'] = array(
-	'contributionseditcount'      => 'Wužiwar ma $1 změnow.',
+	'contributionseditcount'      => 'Wužiwar ma $1 {{PLURAL:$1|změnu|změnje|změny|změnow}}.',
 	'contributionseditcount-desc' => 'Zwobraznja ličbu změnow na [[Special:Contributions]]',
 );
 
