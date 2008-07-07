@@ -29,7 +29,7 @@ $messages['en'] = array(
 	'player-goto-file'        => 'file',
 );
 
-/** Eastern Mari (Олык Марий йылме)
+/** Eastern Mari (Олык Марий)
  * @author Сай
  */
 $messages['mhr'] = array(
@@ -696,6 +696,7 @@ $messages['vec'] = array(
 
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
+ * @author Vinhtantran
  */
 $messages['vi'] = array(
 	'player'               => 'Trình chơi',

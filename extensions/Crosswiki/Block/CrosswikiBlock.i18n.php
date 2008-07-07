@@ -54,7 +54,7 @@ Return to:
 	'crosswikiunblock-local'          => 'Local unblocks are not supported via this interface. Use [[Special:Ipblocklist]]',
 );
 
-/** Niuean (native name missing)
+/** Niuean (ko e vagahau Niuē)
  * @author Jose77
  */
 $messages['niu'] = array(

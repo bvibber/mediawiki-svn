@@ -212,6 +212,7 @@ $messages['oc'] = array(
 /** Polish (Polski)
  * @author McMonster
  * @author Derbeth
+ * @author Sp5uhe
  */
 $messages['pl'] = array(
 	'minnamelength-error' => 'Twoja nazwa użytkownika jest za krótka. Minimalna długość to $1.',

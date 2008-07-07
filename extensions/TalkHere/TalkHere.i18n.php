@@ -193,6 +193,7 @@ Le gestionnaire du site n’est pas responsable de leur contenu.',
  * @author Siebrand
  */
 $messages['gl'] = array(
+	'talkhere-desc'        => 'Pon a páxina de conversa na páxina',
 	'talkhere-foottext'    => 'Os comentarios anteriores poderían ter sido deixados polos visitantes.
 
 Os operadores deste sitio non poden asumir a responsabilidade polo contido de ditos comentarios.',

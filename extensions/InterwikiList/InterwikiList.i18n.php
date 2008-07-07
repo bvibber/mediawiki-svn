@@ -23,12 +23,23 @@ $messages['bg'] = array(
 
 /** German (Deutsch)
  * @author Raymond Spekking
+ * @author Raymond
  */
 $messages['de'] = array(
 	'interwikilist'          => 'Interwiki-Liste',
 	'interwikilist-desc'     => 'Ergänzt eine [[Special:Interwikilist|Spezialseite]] zur Anzeige verfügbarer Interwiki-Links',
 	'interwikilist-linkname' => 'Interwiki-Link',
 	'interwikilist-target'   => 'Ziel-URL',
+);
+
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'interwikilist'          => 'Lisćina interwikijow',
+	'interwikilist-desc'     => 'Pśidawa [[Special:Interwikilist|specialny bok]] za zwobraznjenje k dispoziciji stojecych interwikijowych wótkazow',
+	'interwikilist-linkname' => 'Interwikijowy wótkaz',
+	'interwikilist-target'   => 'Celowy URL',
 );
 
 /** French (Français)
@@ -109,5 +120,12 @@ $messages['sv'] = array(
 	'interwikilist-desc'     => 'Lägger till en [[Special:Interwikilist|specialsida]] för att visa tillgängliga interwikilänkar',
 	'interwikilist-linkname' => 'Interwikilänk',
 	'interwikilist-target'   => 'Måladress',
+);
+
+/** Yiddish (ייִדיש)
+ * @author פוילישער
+ */
+$messages['yi'] = array(
+	'interwikilist' => 'אינטערוויקי ליסטע',
 );
 

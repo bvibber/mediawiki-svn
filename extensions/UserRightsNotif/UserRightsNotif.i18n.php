@@ -232,6 +232,25 @@ $2',
 	'userrightsnotif-desc'    => 'Kirim notifikasi via e-mail ke para pengguna saat ada perubahan hak pengguna',
 );
 
+/** Italian (Italiano)
+ * @author Melos
+ * @author Darth Kule
+ */
+$messages['it'] = array(
+	'userrightsnotifysubject' => 'Cambiato gruppo di appartenenza in $1',
+	'userrightsnotifybody'    => 'Ciao $1.
+
+Ti informiamo che il tuo gruppo di appartenenza su $2 è stato cambiato da $3 il $4
+
+Aggiunti: $5
+Rimossi: $6
+
+Cordiali saluti,
+
+$2',
+	'userrightsnotif-desc'    => 'Invia una e-mail di notifica quando vengono cambiati i diritti del gruppo utente di un utente',
+);
+
 /** Javanese (Basa Jawa)
  * @author Meursault2004
  */

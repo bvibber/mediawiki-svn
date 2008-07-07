@@ -37,21 +37,14 @@ Caution advised, expressions should not be too short or too common.',
 	'spamregex-summary-log'          => '(Summary)',
 );
 
-/** Tarifit (Tarifit)
- * @author Jose77
- */
-$messages['rif'] = array(
-	'spamregex-summary-log' => '(Asgbr)',
-);
-
-/** Eastern Mari (Олык Марий йылме)
+/** Eastern Mari (Олык Марий)
  * @author Сай
  */
 $messages['mhr'] = array(
 	'spamregex-summary-log' => '(Чылаже)',
 );
 
-/** Niuean (native name missing)
+/** Niuean (ko e vagahau Niuē)
  * @author Jose77
  */
 $messages['niu'] = array(
@@ -496,6 +489,13 @@ $messages['pt'] = array(
 	'spamregex-phrase-block'    => 'Frase a bloquear:',
 	'spamregex-text'            => '(Texto)',
 	'spamregex-summary-log'     => '(Sumário)',
+);
+
+/** Tarifit (Tarifit)
+ * @author Jose77
+ */
+$messages['rif'] = array(
+	'spamregex-summary-log' => '(Asgbr)',
 );
 
 /** Sassaresu (Sassaresu)

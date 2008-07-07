@@ -39,6 +39,7 @@ $messages['de'] = array(
  * @author Grondin
  * @author Meithal
  * @author Urhixidur
+ * @author Verdy p
  */
 $messages['fr'] = array(
 	'crowdauthentication-desc' => 'Module d’authentication de l’outil de mesure d’affluence Atlassian Crowd',

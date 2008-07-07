@@ -20,13 +20,6 @@ Supported protocols: <tt>$1</tt>',
 	'linksearch-error' => 'Wildcards may appear only at the start of the hostname.',
 );
 
-/** Tarifit (Tarifit)
- * @author Jose77
- */
-$messages['rif'] = array(
-	'linksearch-ok' => 'Tarzzut',
-);
-
 /** Karelian (Karjala)
  * @author Flrn
  */
@@ -34,14 +27,14 @@ $messages['krl'] = array(
 	'linksearch-ok' => 'Ečindy',
 );
 
-/** Eastern Mari (Олык Марий йылме)
+/** Eastern Mari (Олык Марий)
  * @author Сай
  */
 $messages['mhr'] = array(
 	'linksearch-ok' => 'Кучал',
 );
 
-/** Niuean (native name missing)
+/** Niuean (ko e vagahau Niuē)
  * @author Jose77
  */
 $messages['niu'] = array(
@@ -923,6 +916,13 @@ $messages['qu'] = array(
 	'linksearch-text'  => 'Ima rantipas sananchawanpas maskayta saqillasunkim, ahinataq "*.wikipedia.org".<br />Q\'imichisqa tantari qillqa: <tt>$1</tt>',
 	'linksearch-line'  => "$1-man $2-manta t'inkimusqa",
 	'linksearch-error' => 'Ima rantipas sananchaqa (* ?) tiyaypa qallariyninpim kanman chaylla.',
+);
+
+/** Tarifit (Tarifit)
+ * @author Jose77
+ */
+$messages['rif'] = array(
+	'linksearch-ok' => 'Tarzzut',
 );
 
 $messages['rm'] = array(

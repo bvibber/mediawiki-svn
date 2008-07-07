@@ -38,7 +38,7 @@ $messages['en'] = array(
 	'grouppage-patroller'    => '{{ns:project}}:Patroller',
 );
 
-/** Niuean (native name missing)
+/** Niuean (ko e vagahau Niuē)
  * @author Jose77
  */
 $messages['niu'] = array(

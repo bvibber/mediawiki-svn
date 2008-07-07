@@ -39,6 +39,13 @@ $messages['de'] = array(
 	'universaleditbutton-desc' => "Ergänzt den HTML-Header zur Unterstützung des ''UniversalEditButton'' um den <code>&lt;link&gt;</code>-Tag",
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'universaleditbutton-desc' => "Pśidawa HTML-głowje toflicku <code>&lt;link&gt;</code> za pódpěranje rozšyrjenja ''Universal Edit Button''",
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */

@@ -33,7 +33,14 @@ $messages['rtm'] = array(
 	'passwordreset-username' => 'Asa',
 );
 
-/** Niuean (native name missing)
+/** Eastern Mari (Олык Марий)
+ * @author Сай
+ */
+$messages['mhr'] = array(
+	'passwordreset-username' => 'Пайдаланышын лӱмжӧ',
+);
+
+/** Niuean (ko e vagahau Niuē)
  * @author Jose77
  */
 $messages['niu'] = array(
@@ -83,7 +90,7 @@ $messages['bg'] = array(
 	'disabledusers-summary'         => 'Това е списък с потребителски сметки, които са били деактивирани чрез PasswordReset.',
 );
 
-/** Church Slavic (Словѣньскъ)
+/** Church Slavic (Словѣ́ньскъ / ⰔⰎⰑⰂⰡⰐⰠⰔⰍⰟ)
  * @author ОйЛ
  */
 $messages['cu'] = array(

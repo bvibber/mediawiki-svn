@@ -215,6 +215,31 @@ Het bestand dat u uploadt moet op iedere regel een paginanaam en een reden bevat
 	'deletebatch-no-page'              => "Geef tenminste één te verwijderen pagina op of kies een bestand dat de lijst met pagina's bevat.",
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ */
+$messages['no'] = array(
+	'deletebatch'                  => 'Slett mange sider',
+	'deletebatch-desc'             => '[[Special:DeleteBatch|Slett mange sider]]',
+	'deletebatch-button'           => 'Slett',
+	'deletebatch-here'             => '<b>her</b>',
+	'deletebatch-help'             => 'Slett en serie av sider. Du kan også utføre en enkel sletting, eller slette sider listet opp i en fil.
+Velg en bruker som skal vises i slettingsloggen.
+En opplastet fil må inneholde navnet på siden, og kan også ha en valgfri slettingsgrunn skilt fra tittelen med «|».',
+	'deletebatch-caption'          => 'Sideliste',
+	'deletebatch-title'            => 'Slett serie',
+	'deletebatch-link-back'        => 'Du kan gå tilbake til utvidelsen',
+	'deletebatch-as'               => 'Kjør skriptet som',
+	'deletebatch-both-modes'       => 'Velg én side eller en liste over sider.',
+	'deletebatch-or'               => '<b>eller</b>',
+	'deletebatch-page'             => 'Sider som skal slettes',
+	'deletebatch-reason'           => 'Slettingsårsak',
+	'deletebatch-processing'       => 'sletter sider',
+	'deletebatch-from-file'        => 'fra filliste',
+	'deletebatch-from-form'        => 'fra skjema',
+	'deletebatch-success-subtitle' => 'for $1',
+);
+
 /** Polish (Polski)
  * @author Airwolf
  */

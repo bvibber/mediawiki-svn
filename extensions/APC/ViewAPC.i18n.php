@@ -128,15 +128,7 @@ Newer version $2 is available at http://pecl.php.net/package/APC/$2',
 
 );
 
-/** Tarifit (Tarifit)
- * @author Jose77
- */
-$messages['rif'] = array(
-	'viewapc-ls-submit'     => 'Raḥ ɣa!',
-	'viewapc-ls-limit-none' => 'Maṛṛa',
-);
-
-/** Niuean (native name missing)
+/** Niuean (ko e vagahau Niuē)
  * @author Jose77
  */
 $messages['niu'] = array(
@@ -1923,6 +1915,14 @@ $messages['ps'] = array(
 	'viewapc-ls-sort-created'       => 'جوړ شو',
 	'viewapc-ls-sort-deleted'       => 'ړنګ شو',
 	'viewapc-ls-limit-none'         => 'ټول',
+);
+
+/** Tarifit (Tarifit)
+ * @author Jose77
+ */
+$messages['rif'] = array(
+	'viewapc-ls-submit'     => 'Raḥ ɣa!',
+	'viewapc-ls-limit-none' => 'Maṛṛa',
 );
 
 /** Russian (Русский)

@@ -76,13 +76,6 @@ $messages['rtm'] = array(
 	'grouppermissions-dologin' => 'Surum',
 );
 
-/** Tarifit (Tarifit)
- * @author Jose77
- */
-$messages['rif'] = array(
-	'grouppermissions-dosearch' => 'Raḥ ɣa',
-);
-
 /** Bulgarian (Български)
  * @author DCLXVI
  * @author Siebrand
@@ -413,8 +406,16 @@ $messages['pl'] = array(
 	'right-edit'             => 'Edycja stron',
 );
 
+/** Tarifit (Tarifit)
+ * @author Jose77
+ */
+$messages['rif'] = array(
+	'grouppermissions-dosearch' => 'Raḥ ɣa',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
+ * @author Siebrand
  */
 $messages['sk'] = array(
 	'grouppermissions'               => 'Spravovať skupinové oprávnenia',

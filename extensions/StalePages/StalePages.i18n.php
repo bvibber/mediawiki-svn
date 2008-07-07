@@ -64,9 +64,11 @@ $messages['fr'] = array(
 
 /** Galician (Galego)
  * @author Alma
+ * @author Toliño
  */
 $messages['gl'] = array(
 	'stalepages'         => 'páxinas caducadas',
+	'stalepages-desc'    => 'Xera unha [[Special:Stalepages|lista de páxinas]] que non foron editadas recentemente',
 	'stalepages-summary' => 'Esta é unha listaxe das páxinas que non foron editadas nos últimos $1 días.',
 );
 

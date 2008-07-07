@@ -20,21 +20,14 @@ $messages['en'] = array(
 	'inspectcache-list'    => 'List',
 );
 
-/** Tarifit (Tarifit)
- * @author Jose77
- */
-$messages['rif'] = array(
-	'inspectcache-delete' => 'Sfaḍ',
-);
-
-/** Eastern Mari (Олык Марий йылме)
+/** Eastern Mari (Олык Марий)
  * @author Сай
  */
 $messages['mhr'] = array(
 	'inspectcache-delete' => 'Шӧраш',
 );
 
-/** Niuean (native name missing)
+/** Niuean (ko e vagahau Niuē)
  * @author Jose77
  */
 $messages['niu'] = array(
@@ -454,6 +447,13 @@ $messages['pt'] = array(
 	'inspectcache-delete'  => 'Apagar',
 	'inspectcache-deleted' => 'Cache Apagada',
 	'inspectcache-list'    => 'Listar',
+);
+
+/** Tarifit (Tarifit)
+ * @author Jose77
+ */
+$messages['rif'] = array(
+	'inspectcache-delete' => 'Sfaḍ',
 );
 
 /** Russian (Русский)

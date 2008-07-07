@@ -40,7 +40,7 @@ $messages['rtm'] = array(
 	'vote-login-link' => 'surum',
 );
 
-/** Niuean (native name missing)
+/** Niuean (ko e vagahau Niuē)
  * @author Jose77
  */
 $messages['niu'] = array(
@@ -184,6 +184,24 @@ sfinks|Sfinks',
  */
 $messages['da'] = array(
 	'vote-login-link' => 'log på',
+);
+
+/** German (Deutsch)
+ * @author MF-Warburg
+ */
+$messages['de'] = array(
+	'vote'              => 'Wählen',
+	'vote-header'       => "Du kannst hier den '''Obersten Oberherrn der Welt''' wählen!",
+	'vote-current'      => "Deine aktuelle Stimme ist für '''$1'''.",
+	'vote-legend'       => 'Abstimmen',
+	'vote-caption'      => 'Deine Stimme:',
+	'vote-choices'      => 'joker|Der Joker
+penguin|Der Pinguin
+riddler|Riddler',
+	'vote-submit'       => 'Abstimmen',
+	'vote-registered'   => 'Deine Stimme wurde registriert.',
+	'vote-view-results' => 'Ergebnisse zeigen',
+	'vote-results'      => 'Wahlergebnisse',
 );
 
 /** Greek (Ελληνικά)
@@ -646,7 +664,7 @@ $messages['pt'] = array(
 
 /** Russian (Русский)
  * @author Александр Сигачёв
- * @author Александр Сигачёв
+ * @author Innv
  */
 $messages['ru'] = array(
 	'vote-view-results'  => 'Посмотреть результаты',

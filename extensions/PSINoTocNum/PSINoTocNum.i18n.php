@@ -28,6 +28,13 @@ $messages['de'] = array(
 	'psinotocnum-desc' => 'Ergänzt das magische Wort "<nowiki>__NOTOCNUM__</nowiki>"',
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'psinotocnum-desc' => 'Nowe magiske słowo "<nowiki>__</nowiki>NOTOCNUM<nowiki>__</nowiki>"',
+);
+
 $messages['fr'] = array(
 	'psinotocnum-desc' => 'Nouveau mot magique « <nowiki>__</nowiki>NOTOCNUM<nowiki>__</nowiki> »',
 );

@@ -43,10 +43,12 @@ $messages['fr'] = array(
 
 /** Galician (Galego)
  * @author Alma
+ * @author Toliño
  */
 $messages['gl'] = array(
-	'tidy'   => 'Ordenado',
-	'untidy' => 'Desordenado',
+	'tidy-desc' => 'Engade unha lapela "ordenado" ou "desordenado" (dependendo de $wgUseTidy) en páxinas normais permitindo que se ignoren as configuracións globais de HTML ordenadas para unha vista sinxela',
+	'tidy'      => 'Ordenado',
+	'untidy'    => 'Desordenado',
 );
 
 $messages['hsb'] = array(

@@ -33,7 +33,7 @@ $messages['rtm'] = array(
 	'dt_viewxml_categories' => 'Katekori',
 );
 
-/** Eastern Mari (Олык Марий йылме)
+/** Eastern Mari (Олык Марий)
  * @author Сай
  */
 $messages['mhr'] = array(

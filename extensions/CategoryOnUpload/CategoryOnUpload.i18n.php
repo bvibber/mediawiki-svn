@@ -73,6 +73,14 @@ $messages['lb'] = array(
 	'categoryonupload-label' => 'Kategorie:',
 );
 
+/** Low German (Plattdüütsch)
+ * @author Slomox
+ */
+$messages['nds'] = array(
+	'categoryonupload-desc'  => 'Fraagt en Bruker bi’t Hoochladen vun Datein na en Kategorie för de Datei',
+	'categoryonupload-label' => 'Kategorie:',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  * @author SPQRobin

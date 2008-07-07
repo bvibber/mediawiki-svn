@@ -1069,6 +1069,7 @@ $messages['tg-cyrl'] = array(
 
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
+ * @author Vinhtantran
  */
 $messages['vi'] = array(
 	'review_sidebar_title'                                   => 'Duyệt',

@@ -169,11 +169,11 @@ $messages['rtm'] = array(
 	'voctrain_Log_in'    => 'Surum',
 );
 
-/** Tarifit (Tarifit)
- * @author Jose77
+/** Eastern Mari (Олык Марий)
+ * @author Сай
  */
-$messages['rif'] = array(
-	'voctrain_logout' => 'ffaɣ',
+$messages['mhr'] = array(
+	'voctrain_User_name' => 'Пайдаланышын лӱмжӧ',
 );
 
 /** Arabic (العربية)
@@ -315,7 +315,9 @@ $messages['eo'] = array(
 	'voctrain_Log_in'                                           => 'Ensaluti',
 );
 
-/** Finnish (Suomi) */
+/** Finnish (Suomi)
+ * @author Nike
+ */
 $messages['fi'] = array(
 	'voctrain_Languages' => 'Kielet',
 );
@@ -846,6 +848,13 @@ $messages['pt'] = array(
 	'voctrain_Answers'                      => 'Respostas',
 	'voctrain_Word'                         => 'Palavra',
 	'voctrain_Omegawiki_vocabulary_trainer' => 'Treinador de vocabulário do Omegawiki',
+);
+
+/** Tarifit (Tarifit)
+ * @author Jose77
+ */
+$messages['rif'] = array(
+	'voctrain_logout' => 'ffaɣ',
 );
 
 /** Russian (Русский)

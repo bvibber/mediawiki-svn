@@ -25,7 +25,7 @@ It does this by calling the relevant parser stage from MediaWiki itself.',
 	'expand_templates_preview'         => 'Preview',
 );
 
-/** Eastern Mari (Олык Марий йылме)
+/** Eastern Mari (Олык Марий)
  * @author Сай
  */
 $messages['mhr'] = array(
@@ -1352,6 +1352,13 @@ Dunon atosi medä vokon programadili tefik se el MediaWiki it.',
 	'expand_templates_remove_comments' => 'Moükön küpetis',
 	'expand_templates_generate_xml'    => 'Jonön bimi: XML',
 	'expand_templates_preview'         => 'Büologed',
+);
+
+/** Yiddish (ייִדיש)
+ * @author פוילישער
+ */
+$messages['yi'] = array(
+	'expand_templates_output' => 'רעזולטאט',
 );
 
 $messages['yue'] = array(

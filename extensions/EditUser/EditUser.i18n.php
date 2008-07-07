@@ -20,13 +20,6 @@ $messages['en'] = array(
 	'edituser-exempt' => 'The specified user cannot be edited',
 );
 
-/** Tarifit (Tarifit)
- * @author Jose77
- */
-$messages['rif'] = array(
-	'edituser-dosearch' => 'Tarzzut',
-);
-
 /** Karelian (Karjala)
  * @author Flrn
  */
@@ -34,14 +27,14 @@ $messages['krl'] = array(
 	'edituser-dosearch' => 'Ečindy',
 );
 
-/** Eastern Mari (Олык Марий йылме)
+/** Eastern Mari (Олык Марий)
  * @author Сай
  */
 $messages['mhr'] = array(
 	'edituser-dosearch' => 'Кычал',
 );
 
-/** Niuean (native name missing)
+/** Niuean (ko e vagahau Niuē)
  * @author Jose77
  */
 $messages['niu'] = array(
@@ -521,6 +514,13 @@ $messages['pt'] = array(
 	'edituser-dosearch' => 'Pesquisar',
 	'edituser-nouser'   => 'O usuário especificado não existe',
 	'edituser-exempt'   => 'O usuário especificado não pode ser editado',
+);
+
+/** Tarifit (Tarifit)
+ * @author Jose77
+ */
+$messages['rif'] = array(
+	'edituser-dosearch' => 'Tarzzut',
 );
 
 /** Russian (Русский)

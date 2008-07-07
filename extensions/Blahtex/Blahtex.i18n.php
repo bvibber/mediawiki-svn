@@ -611,7 +611,8 @@ $messages['gl'] = array(
 	'math_MissingOpenBraceAfter'            => 'Falta unha chave de apertura "{" a continuación de "$1"',
 	'math_MissingOpenBraceAtEnd'            => 'Falta unha chave de peche "{" no final da entrada',
 	'math_MissingOpenBraceBefore'           => 'Falta unha chave de apertura "{" antes de "$1"',
-	'math_MissingOrIllegalParameterCount'   => 'Falta ou non é válida a contaxe de parámetros na definición de "$1" (ten que ser un díxito único entre 1 e 9 inclusive)',
+	'math_MissingOrIllegalParameterCount'   => 'Falta ou non é válida a contaxe de parámetros na definición de "$1".
+Debe ser un díxito único entre 1 e 9, ambos os dous inclusive.',
 	'math_MissingOrIllegalParameterIndex'   => 'Falta ou non é válido un índice de parámetro na definición de "$1"',
 	'math_NonAsciiInMathMode'               => 'Os caracteres fóra do conxunto ASCII só se poden usar no modo texto (tente encerrar os caracteres problemáticos dentro de "\\text{...}")',
 	'math_NotEnoughArguments'               => 'Non se forneceron argumentos dabondo para "$1"',

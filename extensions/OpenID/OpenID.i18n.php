@@ -106,14 +106,14 @@ $messages['rtm'] = array(
 	'openidchoosepassword' => 'ou password:',
 );
 
-/** Eastern Mari (Олык Марий йылме)
+/** Eastern Mari (Олык Марий)
  * @author Сай
  */
 $messages['mhr'] = array(
 	'openidchoosepassword' => 'шолыпмут:',
 );
 
-/** Niuean (native name missing)
+/** Niuean (ko e vagahau Niuē)
  * @author Jose77
  */
 $messages['niu'] = array(

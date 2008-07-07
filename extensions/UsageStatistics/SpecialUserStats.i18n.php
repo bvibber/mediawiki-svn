@@ -240,6 +240,35 @@ $messages['de'] =array(
   'usagestatisticsbadstartend' => '<b>Unpassendes/fehlerhaftes <i>Start-Datum</i> oder <i>End-Datum</i> !</b>',
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'specialuserstats'                => 'Wužywańska statistika',
+	'usagestatistics'                 => 'Wužywańska statistika',
+	'usagestatistics-desc'            => 'Wužywańsku statistiku jadnotliwego wužywarja a cełego wikija pokazaś',
+	'usagestatisticsfor'              => '<h2>Wužywańska statistika za [[User:$1|$1]]</h2>',
+	'usagestatisticsallusers'         => 'Wše wužywarje',
+	'usagestatisticsinterval'         => 'Casowy interwal',
+	'usagestatisticstype'             => 'Typ',
+	'usagestatisticsstart'            => 'Zachopny datum',
+	'usagestatisticsend'              => 'Kóńcny datum',
+	'usagestatisticssubmit'           => 'Statistiku napóraś',
+	'usagestatisticsnostart'          => '* <font color=red>Pódaj pšosym zachopny datum</font>',
+	'usagestatisticsnoend'            => '* <font color=red>Pódaj pšosym kóńcny datum</font>',
+	'usagestatisticsbadstartend'      => '<b>Zmólkaty <i>zachopny</i> a/abo <i>kóńcny</i> datum!</b>',
+	'usagestatisticsintervalday'      => 'Źeń',
+	'usagestatisticsintervalweek'     => 'Tyźeń',
+	'usagestatisticsintervalmonth'    => 'Mjasec',
+	'usagestatisticsincremental'      => 'Inkrementalna',
+	'usagestatisticsincremental-text' => 'Inkrementalna',
+	'usagestatisticscumulative'       => 'Kumulatiwna',
+	'usagestatisticscumulative-text'  => 'kumulatiwna',
+	'usagestatisticscalselect'        => 'Wubraś',
+	'usagestatistics-editindividual'  => 'Statistika změnow jadnotliwego wužywarja $1',
+	'usagestatistics-editpages'       => 'Statistika bokow jadnotliwego wužywarja $1',
+);
+
 /** Greek (Ελληνικά)
  * @author Consta
  */
@@ -732,7 +761,7 @@ $messages['pt'] = array(
 
 /** Russian (Русский)
  * @author Александр Сигачёв
- * @author Александр Сигачёв
+ * @author Innv
  */
 $messages['ru'] = array(
 	'usagestatisticsintervalday'   => 'День',

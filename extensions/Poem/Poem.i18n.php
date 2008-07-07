@@ -53,6 +53,13 @@ $messages['de'] = array(
 	'poem-desc' => 'Fügt das <tt>&lt;poem&gt;</tt>-Tag zur Formatierung von Gedichten hinzu',
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'poem-desc' => 'Pśidawa toflicku <tt>&lt;poem&gt;</tt> za formatěrowanje basnjow',
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */

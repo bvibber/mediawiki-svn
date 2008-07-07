@@ -81,18 +81,24 @@ $messages['fr'] = array(
 	'postcomment_nopostingtoadd'           => 'Aucun message à ajouter',
 );
 
+/** Galician (Galego)
+ * @author Xosé
+ * @author Alma
+ * @author Toliño
+ */
 $messages['gl'] = array(
-	'postcomment_discussionprotected' => 'A páxina de conversa foi protexida de novas publicacións.',
-	'postcomment_notloggedin' => 'Non está rexistrado.',
-	'postcomment_youareloggedinas' => 'Está rexistrado como $1',
+	'postcomment_desc'                     => 'Permite aos usuarios publicar comentarios directamente nas páxinas de conversa.',
+	'postcomment_discussionprotected'      => 'A páxina de conversa foi protexida de novas publicacións.',
+	'postcomment_notloggedin'              => 'Non está rexistrado.',
+	'postcomment_youareloggedinas'         => 'Está rexistrado como $1',
 	'postcomment_addcommentdiscussionpage' => 'Engade o teu comentario na páxina de conversa',
-	'postcomment_leavemessagefor' => 'Deixar unha mensaxe para $1',
-	'postcomment_post' => 'Publicar',
-	'postcomment_on' => 'En',
-	'postcomment_said' => 'dixo',
-	'postcomment_invalidrequest' => 'Petición non válida.',
-	'postcomment_replyto' => 'Respostar a $1',
-	'postcomment_nopostingtoadd' => 'Non pongas a engadir.',
+	'postcomment_leavemessagefor'          => 'Deixar unha mensaxe para $1',
+	'postcomment_post'                     => 'Publicar',
+	'postcomment_on'                       => 'En',
+	'postcomment_said'                     => 'dixo',
+	'postcomment_invalidrequest'           => 'Petición non válida.',
+	'postcomment_replyto'                  => 'Respostar a $1',
+	'postcomment_nopostingtoadd'           => 'Non pongas a engadir.',
 );
 
 /** Hindi (हिन्दी)

@@ -245,16 +245,6 @@ $messages['rtm'] = array(
 	'mv_edit'        => "A'tū'ạki",
 );
 
-/** Tarifit (Tarifit)
- * @author Jose77
- */
-$messages['rif'] = array(
-	'mv_upload_file' => 'Sili afaylu',
-	'mv_tool_search' => 'Tarzzut',
-	'mv_edit'        => 'Arri',
-	'mv_history'     => 'Amzruy',
-);
-
 /** Karelian (Karjala)
  * @author Flrn
  */
@@ -263,14 +253,14 @@ $messages['krl'] = array(
 	'mv_edit'        => 'Muokkaus',
 );
 
-/** Eastern Mari (Олык Марий йылме)
+/** Eastern Mari (Олык Марий)
  * @author Сай
  */
 $messages['mhr'] = array(
 	'mv_tool_search' => 'Кычал',
 );
 
-/** Niuean (native name missing)
+/** Niuean (ko e vagahau Niuē)
  * @author Jose77
  */
 $messages['niu'] = array(
@@ -2596,6 +2586,16 @@ Para todos os metadados no intervalo de categorias, procure por $1",
 	'mv_mang_layers'                 => 'Gerir Camadas',
 	'mv_mang_layers_title'           => "Gerir o conjunto de visualização de camadas para a 'stream' actual",
 	'mv_protect_source_material'     => 'Material fonte original protegido contra edições',
+);
+
+/** Tarifit (Tarifit)
+ * @author Jose77
+ */
+$messages['rif'] = array(
+	'mv_upload_file' => 'Sili afaylu',
+	'mv_tool_search' => 'Tarzzut',
+	'mv_edit'        => 'Arri',
+	'mv_history'     => 'Amzruy',
 );
 
 /** Russian (Русский)

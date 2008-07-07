@@ -26,13 +26,6 @@ $messages['en'] = array(
 	'editmsg-patch-success'    => 'Successfully patched.',
 );
 
-/** Tarifit (Tarifit)
- * @author Jose77
- */
-$messages['rif'] = array(
-	'editmsg-search' => 'Tarzzut',
-);
-
 /** Karelian (Karjala)
  * @author Flrn
  */
@@ -40,14 +33,14 @@ $messages['krl'] = array(
 	'editmsg-search' => 'Ečindy',
 );
 
-/** Eastern Mari (Олык Марий йылме)
+/** Eastern Mari (Олык Марий)
  * @author Сай
  */
 $messages['mhr'] = array(
 	'editmsg-search' => 'Кычал',
 );
 
-/** Niuean (native name missing)
+/** Niuean (ko e vagahau Niuē)
  * @author Jose77
  */
 $messages['niu'] = array(
@@ -516,6 +509,13 @@ $messages['pt'] = array(
 	'editmsg-warning-parse2' => '* Caracter de aspa esperado após seta: $1',
 	'editmsg-warning-parse3' => '* Fim de cadeia de caracteres de valor não encontrado: $1',
 	'editmsg-warning-file'   => 'Erros de leitura de ficheiro foram encontrados para as seguintes línguas: $1',
+);
+
+/** Tarifit (Tarifit)
+ * @author Jose77
+ */
+$messages['rif'] = array(
+	'editmsg-search' => 'Tarzzut',
 );
 
 /** Russian (Русский)

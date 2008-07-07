@@ -495,6 +495,7 @@ $messages['mr'] = array(
  * @author Slomox
  */
 $messages['nds'] = array(
+	'ajax-se-desc'             => 'Wiest Brukers, de jüst de sülve Sied ännern doot',
 	'ajax-se-title'            => 'Warrt jüst ännert vun:',
 	'ajax-se-pending'          => 'tööv op aktuell maken… (klick op dissen Kassen oder fang dat ännern an)',
 	'ajax-se-idling'           => '(vör $1 s)',

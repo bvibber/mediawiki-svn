@@ -28,6 +28,7 @@ $messages['cs'] = array(
 
 /** French (Français)
  * @author Grondin
+ * @author Verdy p
  */
 $messages['fr'] = array(
 	'tab0-desc' => 'Ajoute l’onglet « 0 » qui donne accès à la page de modification de la première section de la page',

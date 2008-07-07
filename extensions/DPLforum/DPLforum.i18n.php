@@ -19,7 +19,7 @@ $messages['en'] = array(
 	'dplforum-toomany' => 'DPL Forum: Too many categories!'
 );
 
-/** Eastern Mari (Олык Марий йылме)
+/** Eastern Mari (Олык Марий)
  * @author Сай
  */
 $messages['mhr'] = array(
@@ -78,6 +78,7 @@ $messages['eo'] = array(
  * @author IAlex
  * @author Cedric31
  * @author Grondin
+ * @author Verdy p
  */
 $messages['fr'] = array(
 	'dplforum-desc'    => 'Extension forum basée sur DPL',

@@ -95,6 +95,7 @@ $messages['de'] = array(
  */
 $messages['dsb'] = array(
 	'languageselector'         => 'Rěc',
+	'languageselector-desc'    => 'Wuběrk rěcy na kuždem boku, teke za wobglědarjow',
 	'languageselector-setlang' => 'stajiś',
 );
 

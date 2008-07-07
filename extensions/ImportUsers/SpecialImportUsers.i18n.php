@@ -38,17 +38,7 @@ $messages['rtm'] = array(
 	'importusers-password'   => 'Ou password',
 );
 
-/** Tarifit (Tarifit)
- * @author Jose77
- */
-$messages['rif'] = array(
-	'importusers-uploadfile'      => 'Sili afaylu',
-	'importusers-log-summary'     => 'Asgbr',
-	'importusers-log-summary-all' => 'Maṛṛa',
-	'importusers-realname'        => 'ism n dṣṣaḥ',
-);
-
-/** Eastern Mari (Олык Марий йылме)
+/** Eastern Mari (Олык Марий)
  * @author Сай
  */
 $messages['mhr'] = array(
@@ -57,7 +47,7 @@ $messages['mhr'] = array(
 	'importusers-email'       => 'электрон почто',
 );
 
-/** Niuean (native name missing)
+/** Niuean (ko e vagahau Niuē)
  * @author Jose77
  */
 $messages['niu'] = array(
@@ -671,6 +661,16 @@ $messages['pt'] = array(
 	'importusers-password'                => 'palavra-chave',
 	'importusers-email'                   => 'email',
 	'importusers-realname'                => 'nome real',
+);
+
+/** Tarifit (Tarifit)
+ * @author Jose77
+ */
+$messages['rif'] = array(
+	'importusers-uploadfile'      => 'Sili afaylu',
+	'importusers-log-summary'     => 'Asgbr',
+	'importusers-log-summary-all' => 'Maṛṛa',
+	'importusers-realname'        => 'ism n dṣṣaḥ',
 );
 
 /** Russian (Русский)

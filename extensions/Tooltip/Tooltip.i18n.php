@@ -23,6 +23,13 @@ $messages['de'] = array (
 	'tooltip-desc' => 'Ergänzt die <tt><nowiki><tooltip></nowiki></tt> und <tt><nowiki>{{#tooltip:}}</nowiki></tt> Tags'
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'tooltip-desc' => 'Pśidawa toflicku <tt><nowiki><tooltip></nowiki></tt> a <tt><nowiki>{{#tooltip:}}</nowiki></tt>',
+);
+
 /** French (Français)
  * @author Grondin
  */
@@ -42,6 +49,13 @@ $messages['gl'] = array(
  */
 $messages['hsb'] = array(
 	'tooltip-desc' => 'přidawa tafličku <nowiki><tooltip></nowiki> a <nowiki>{{#tooltip:}}</nowiki>',
+);
+
+/** Italian (Italiano)
+ * @author Darth Kule
+ */
+$messages['it'] = array(
+	'tooltip-desc' => 'Aggiunge i tag <tt><nowiki><tooltip></nowiki></tt> e <tt><nowiki>{{#tooltip:}}</nowiki></tt>',
 );
 
 /** Javanese (Basa Jawa)

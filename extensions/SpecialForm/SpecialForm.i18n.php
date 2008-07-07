@@ -51,7 +51,7 @@ Please fill it in.',
 	'formsaveerrortext'            => 'There was an unknown error saving page \'$1\'.',
 );
 
-/** Eastern Mari (Олык Марий йылме)
+/** Eastern Mari (Олык Марий)
  * @author Сай
  */
 $messages['mhr'] = array(
@@ -221,6 +221,7 @@ $messages['fr'] = array(
  * @author Xosé
  */
 $messages['gl'] = array(
+	'form-desc'                    => 'Un [[Special:Form|formulario como interface]] para comezar páxinas novas',
 	'form'                         => 'Formulario',
 	'formnoname'                   => 'Formulario sen Nome',
 	'formnonametext'               => 'Tenlle que dar un nome ao formulario, como "Special:Form/Nomedoformulario".',

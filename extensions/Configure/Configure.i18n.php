@@ -123,14 +123,6 @@ $messages['rtm'] = array(
 	'configure-section-category' => 'Katekori',
 );
 
-/** Tarifit (Tarifit)
- * @author Jose77
- */
-$messages['rif'] = array(
-	'configure-js-remove'            => 'Sfaḍ',
-	'configure-section-specialpages' => 'Tudmawin Special',
-);
-
 /** Eastern Mari (Олык Марий)
  * @author Сай
  */
@@ -140,7 +132,7 @@ $messages['mhr'] = array(
 	'configure-section-specialpages' => 'Лӱмын ыштыме лаштык-влак',
 );
 
-/** Niuean (native name missing)
+/** Niuean (ko e vagahau Niuē)
  * @author Jose77
  */
 $messages['niu'] = array(
@@ -171,6 +163,14 @@ $messages['af'] = array(
 	'configure-section-users'        => 'Gebruikers',
 	'configure-section-search'       => 'Soek',
 );
+/** Aragonese (Aragonés)
+ * @author Juanpabl
+ */
+$messages['an'] = array(
+	'configure-desc-ns'            => 'Espazios de nombres',
+	'configure-section-namespaces' => 'Espazios de nombres',
+);
+
 /** Aragonese (Aragonés)
  * @author Juanpabl
  */
@@ -249,14 +249,22 @@ $messages['bg'] = array(
 	'configure-desc-key'               => 'Ключ',
 	'configure-desc-ns'                => 'Именни пространства',
 	'configure-desc-val'               => 'Стойност',
+	'configure-edit-core'              => 'МедияУики',
+	'configure-edit-ext'               => 'Разширения',
+	'configure-ext-doc'                => 'Вижте онлайн документацията',
+	'configure-ext-settings'           => 'Настройки',
+	'configure-ext-use-extension'      => 'Използване на разширението',
 	'configure-summary'                => 'Тази специална страница позволява на потребителите да конфигурират уикито; за повече информация, вижте [http://www.mediawiki.org/wiki/Manual:Configuration_settings настройките за конфигуриране].',
 	'configure-btn-save'               => 'Съхраняване на настройките',
 	'configure-directory-not-writable' => 'Директорията <tt>$1</tt>, използвана за съхранение на настройките, няма права за запис.
 За използване на това разширение е необходимо да промените правата й.',
 	'configure-edit-old'               => 'Предупреждение: редактирате <strong>стара</strong> версия на настройките.',
 	'configure-error'                  => 'Настройките не могат да бъдат съхранени',
+	'configure-js-add'                 => 'Добавяне на нов запис',
 	'configure-js-group-exists'        => 'Грешка: групата вече съществува.',
+	'configure-js-prompt-group'        => 'Въведете име на новата група:',
 	'configure-js-remove'              => 'Изтриване',
+	'configure-js-remove-row'          => 'Изтриване на записа',
 	'configure-no-directory'           => 'Използваната за съхранение на настройките директория, <tt>$1</tt>, не съществува.
 Необходимо е тя да бъде създадена или да бъде променена, за да може да се използва разширението.',
 	'configure-no-old'                 => 'Няма налична стара версия на настройките',
@@ -273,6 +281,7 @@ $messages['bg'] = array(
 	'configure-section-enotif'         => 'Оповестяване по е-поща',
 	'configure-section-localization'   => 'Локализация',
 	'configure-section-timezone'       => 'Часова зона',
+	'configure-section-css-js'         => 'CSS и Джаваскрипт',
 	'configure-section-namespaces'     => 'Именни пространства',
 	'configure-section-stats'          => 'Статистики за сайта',
 	'configure-section-skin'           => 'Облик',
@@ -283,6 +292,7 @@ $messages['bg'] = array(
 	'configure-section-block'          => 'Блокирания',
 	'configure-section-proxy'          => 'Проксита',
 	'configure-section-cookie'         => 'Бисквитки',
+	'configure-section-reduction'      => 'Пренасочване',
 	'configure-section-upload'         => 'Качване',
 	'configure-section-sharedupload'   => 'Споделено качване',
 	'configure-section-mime'           => 'MIME типове',
@@ -297,10 +307,13 @@ $messages['bg'] = array(
 	'configure-section-search'         => 'Търсене',
 	'configure-section-copyright'      => 'Авторско право',
 	'configure-section-misc'           => 'Разни',
+	'configure-section-mw-extensions'  => 'Разширения за МедияУики',
 	'configure-setting-not-available'  => 'Тази настройка не е налична в използваната версия на МедияУики',
 	'configure-view-not-allowed'       => 'Не ви е позволено да виждате тази настройка',
+	'extensions'                       => 'Конфигуриране на разширенията',
 	'right-configure'                  => 'Конфигуриране на уикито',
 	'right-configure-all'              => 'Конфигуриране на всички уикита',
+	'right-extensions'                 => 'Конфигуриране на разширенията',
 	'right-viewconfig'                 => 'Преглед на конфигурацията на уикито',
 	'viewconfig'                       => 'Преглед на конфигурацията на уикито',
 );
@@ -561,6 +574,13 @@ $messages['eo'] = array(
 	'viewconfig'                      => 'Rigardi vikiajn preferojn',
 );
 
+/** Basque (Euskara)
+ * @author Theklan
+ */
+$messages['eu'] = array(
+	'configure-section-specialpages' => 'Aparteko orrialdeak',
+);
+
 /** French (Français)
  * @author IAlex
  * @author Grondin
@@ -573,8 +593,6 @@ $messages['fr'] = array(
 	'configure-desc-key'                  => 'Clé',
 	'configure-desc-ns'                   => 'Espace de noms',
 	'configure-desc-val'                  => 'Valeur',
-	'configure-edit-core'                 => 'MediaWiki',
-	'configure-edit-ext'                  => 'Extensions',
 	'configure-ext-doc'                   => 'Voir la documentation en ligne',
 	'configure-ext-schemachange'          => "'''Attention :''' cette extension requiert une mise à jour de la base de données pour fonctionner correctement !",
 	'configure-ext-settings'              => 'Paramètres',
@@ -624,7 +642,6 @@ Veuillez le rendre modifiable par PHP pour que cette extension fonctionne.',
 	'configure-section-pcache'            => 'Cache du parseur',
 	'configure-section-messagecache'      => 'Cache des messages',
 	'configure-section-memcached'         => 'Mémoire cachée',
-	'configure-section-mw-extensions'     => 'Extensions de MediaWiki',
 	'configure-section-access'            => 'Accès',
 	'configure-section-groups'            => 'Groupes',
 	'configure-section-groups-notallowed' => "Vous n'êtes pas autorisé a modifier les réglages des groupes.",
@@ -650,6 +667,7 @@ Veuillez le rendre modifiable par PHP pour que cette extension fonctionne.',
 	'configure-section-copyright'         => 'Droits d’auteur',
 	'configure-section-htcp'              => 'HTCP multicanal',
 	'configure-section-misc'              => 'Autres',
+	'configure-section-mw-extensions'     => 'Extensions de MediaWiki',
 	'configure-setting-not-available'     => "Ce paramètre n'est pas disponible sur cette version de MediaWiki",
 	'configure-view'                      => 'Voir',
 	'configure-view-not-allowed'          => "Vous n'êtes pas autorisé à voir ce paramètre",
@@ -1312,6 +1330,13 @@ $messages['no'] = array(
 	'configure-desc-key'                  => 'Nøkkel',
 	'configure-desc-ns'                   => 'Navnerom',
 	'configure-desc-val'                  => 'Verdi',
+	'configure-edit-core'                 => 'MediaWiki',
+	'configure-edit-ext'                  => 'Utvidelser',
+	'configure-ext-doc'                   => 'Se dokumentasjon på internett',
+	'configure-ext-schemachange'          => "'''Advarsel:''' denne utvidelsen krever en oppdatering av databasen for å fungere som den skal.",
+	'configure-ext-settings'              => 'Innstillinger',
+	'configure-ext-use-extension'         => 'Bruk denne utvidelsen',
+	'configure-ext-use'                   => 'Bruk',
 	'configure-summary'                   => 'Denne spesialsiden lar deg konfigurere denne wikien, se [http://mediawiki.org/wiki/Manual:Configuration_settings Konfiguerasjonsinnstillinger] for mer informasjon.',
 	'configure-btn-save'                  => 'Lagre innstillinger',
 	'configure-directory-not-writable'    => 'Plasseringen som brukes til å lagre innstillingene, <tt>$1</tt>, er ikke skrivbar. Vennligst gjør den skrivbar med PHP for å bruke denne utvidelsen.',
@@ -1380,11 +1405,14 @@ Opprett den eller endre den for å bruke denne utvidelsen.',
 	'configure-section-copyright'         => 'Opphavsrett',
 	'configure-section-htcp'              => 'HTCP-multicast',
 	'configure-section-misc'              => 'Diverse',
+	'configure-section-mw-extensions'     => 'MediaWiki-utvidelser',
 	'configure-setting-not-available'     => 'Denne innstillingen er ikke tilgjengelig i denne versjonen av MediaWiki',
 	'configure-view'                      => 'Se',
 	'configure-view-not-allowed'          => 'Du har ikke tillatelse til å se denne innstillingen',
+	'extensions'                          => 'Konfigurer utvidelsene',
 	'right-configure'                     => 'Konfigurere wikien',
 	'right-configure-all'                 => 'Konfigurere innstillinger på alle wikier',
+	'right-extensions'                    => 'Konfigurere utvidelser',
 	'right-viewconfig'                    => 'Se wikikonfigurasjon',
 	'right-viewconfig-all'                => 'Se alle wikikonfigurasjoner',
 	'viewconfig'                          => 'Vis wikikonfigurasjon',
@@ -1658,6 +1686,14 @@ Por favor, crie-a ou altere-a para usar esta extensão.',
 	'configure-setting-not-available'  => 'Este parâmetro não está disponível nesta versão do MediaWiki',
 	'right-configure'                  => 'Configurar o wiki',
 	'right-configure-all'              => 'Configurar todos os parâmetros do wiki',
+);
+
+/** Tarifit (Tarifit)
+ * @author Jose77
+ */
+$messages['rif'] = array(
+	'configure-js-remove'            => 'Sfaḍ',
+	'configure-section-specialpages' => 'Tudmawin Special',
 );
 
 /** Russian (Русский)

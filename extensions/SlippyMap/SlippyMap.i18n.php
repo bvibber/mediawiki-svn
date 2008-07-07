@@ -102,6 +102,8 @@ $messages['fr'] = array(
 	'slippymap_maperror'        => 'Erreur de carte :',
 	'slippymap_osmtext'         => 'Voyez cette carte sur OpenStreetMap.org',
 	'slippymap_code'            => 'Code Wiki pour le visionnement de cette cate :',
+	'slippymap_button_code'     => 'Obtenir le code wiki',
+	'slippymap_resetview'       => 'Réinitialiser le visionnement',
 );
 
 /** Galician (Galego)

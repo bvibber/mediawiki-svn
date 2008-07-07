@@ -18,6 +18,13 @@ $messages['fr'] = array(
 	'regexfunctions-desc' => 'Fonctions parseurs des expressions régulières',
 );
 
+/** Galician (Galego)
+ * @author Toliño
+ */
+$messages['gl'] = array(
+	'regexfunctions-desc' => 'Funcións de análise de expresións regulares',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

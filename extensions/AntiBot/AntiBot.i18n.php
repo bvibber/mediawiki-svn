@@ -44,6 +44,7 @@ $messages['de'] = array(
 
 /** French (Français)
  * @author Grondin
+ * @author Verdy p
  */
 $messages['fr'] = array(
 	'antibot-desc' => 'Environnement simple de vérification contre les robots spammeurs et les soumissions de contenus à déclenchement conditionnel automatisé.',
@@ -164,6 +165,7 @@ $messages['zh-hans'] = array(
 
 /** Traditional Chinese (‪中文(繁體)‬)
  * @author Shinjiman
+ * @author Alexsh
  */
 $messages['zh-hant'] = array(
 	'antibot-desc' => '為破壞檢查機器人與觸發負載提供簡易架構',

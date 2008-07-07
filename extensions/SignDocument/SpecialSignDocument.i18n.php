@@ -96,14 +96,14 @@ $1',
 	'sign-uniquequery-1signed2'    => '[{{SERVER}}{{localurl: Special:SignDocument|doc=$4&viewsigs&detail=$3}} $1] signed [{{SERVER}}{{localurl: Special:SignDocument|doc=$4&viewsigs}} $2].',
 );
 
-/** Eastern Mari (Олык Марий йылме)
+/** Eastern Mari (Олык Марий)
  * @author Сай
  */
 $messages['mhr'] = array(
 	'sign-viewfield-email' => 'Электрон почто',
 );
 
-/** Niuean (native name missing)
+/** Niuean (ko e vagahau Niuē)
  * @author Jose77
  */
 $messages['niu'] = array(
@@ -463,15 +463,15 @@ $1',
 	'sign-sigdetails'                 => 'Détails de la signature',
 	'sign-emailto'                    => '<a href="mailto:$1">$1</a>',
 	'sign-iptools'                    => '<span class="plainlinksneverexpand"><!--
--->[[User:$1|$1]] ([[User talk:$1|Discussion]] • <!--
--->[[Special:Contributions/$1|Contributions]] • <!--
--->[http://www.dnsstuff.com/tools/whois.ch?domain={{urlencode:$1}}&cache=off&email=on WHOIS] • <!--
--->[http://www.dnsstuff.com/tools/ptr.ch?ip={{urlencode:$1}}&cache=off&email=on RDNS] • <!--
--->[http://www.robtex.com/rbls/$1.html RBLs] • <!--
--->[[Special:Blockip/$1|Bloquer l\'utisateur]] • <!--
--->[{{fullurl:Special:Log/block|page=User:{{urlencode:$1}}}} Journal des blocages] • <!--
--->[{{fullurl:Special:CheckUser|ip={{urlencode:$1}}}} Vérification d\'utilisateur])<!--
---></span>',
+		-->[[User:$1|$1]] ([[User talk:$1|Discussion]] • <!--
+		-->[[Special:Contributions/$1|Contributions]] • <!--
+		-->[http://www.dnsstuff.com/tools/whois.ch?domain={{urlencode:$1}}&cache=off&email=on WHOIS] • <!--
+		-->[http://www.dnsstuff.com/tools/ptr.ch?ip={{urlencode:$1}}&cache=off&email=on RDNS] • <!--
+		-->[http://www.robtex.com/rbls/$1.html RBLs] • <!--
+		-->[[Special:Blockip/$1|Bloquer l\'utisateur]] • <!--
+		-->[{{fullurl:Special:Log/block|page=User:{{urlencode:$1}}}} Journal des blocages] • <!--
+		-->[{{fullurl:Special:CheckUser|ip={{urlencode:$1}}}} Vérification d\'utilisateur])<!--
+		--></span>',
 	'sign-viewfield-stricken'         => 'Biffé',
 	'sign-viewfield-reviewedby'       => 'Réviseur',
 	'sign-viewfield-reviewcomment'    => 'Commentaire',

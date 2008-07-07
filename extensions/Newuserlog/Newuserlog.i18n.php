@@ -247,7 +247,7 @@ $messages['cs'] = array(
 	'newuserlog-autocreate-entry' => 'Účet vytvořen automaticky',
 );
 
-/** Church Slavic (Словѣньскъ)
+/** Church Slavic (Словѣ́ньскъ / ⰔⰎⰑⰂⰡⰐⰠⰔⰍⰟ)
  * @author ОйЛ
  */
 $messages['cu'] = array(
@@ -1243,6 +1243,14 @@ $messages['wa'] = array(
 	'newuserlogpagetext'       => 'Chal pa dzo c\' est ene djivêye des uzeus novelmint eredjîstrés.',
 	'newuserlog-create-entry'  => 'Novea uzeu',
 	'newuserlog-create2-entry' => 'conte ahivé po $1',
+);
+
+/** Yiddish (ייִדיש)
+ * @author פוילישער
+ */
+$messages['yi'] = array(
+	'newuserlog-create-entry'  => 'נײַער באניצער',
+	'newuserlog-create2-entry' => 'געשאפֿן קאנטע פֿאר $1',
 );
 
 $messages['yue'] = array(

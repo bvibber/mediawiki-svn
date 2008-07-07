@@ -80,14 +80,6 @@ $wgGoogleMapsMessages['en'] = array(
 	'gm-mars'                      => 'Mars',
 );
 
-/** Tarifit (Tarifit)
- * @author Jose77
- */
-$wgGoogleMapsMessages['rif'] = array(
-	'gm-zoom-control' => 'Asari',
-	'gm-search'       => 'Tarzzut',
-);
-
 /** Karelian (Karjala)
  * @author Flrn
  */
@@ -96,7 +88,7 @@ $wgGoogleMapsMessages['krl'] = array(
 	'gm-search'       => 'Ečindy',
 );
 
-/** Eastern Mari (Олык Марий йылме)
+/** Eastern Mari (Олык Марий)
  * @author Сай
  */
 $wgGoogleMapsMessages['mhr'] = array(
@@ -104,7 +96,7 @@ $wgGoogleMapsMessages['mhr'] = array(
 	'gm-save-path' => 'Аралаш',
 );
 
-/** Niuean (native name missing)
+/** Niuean (ko e vagahau Niuē)
  * @author Jose77
  */
 $wgGoogleMapsMessages['niu'] = array(
@@ -2250,6 +2242,14 @@ Experimente a última versão do <a href="http://www.microsoft.com/ie">Internet 
 	'gm-earth'                     => 'Terra',
 	'gm-moon'                      => 'Lua',
 	'gm-mars'                      => 'Marte',
+);
+
+/** Tarifit (Tarifit)
+ * @author Jose77
+ */
+$wgGoogleMapsMessages['rif'] = array(
+	'gm-zoom-control' => 'Asari',
+	'gm-search'       => 'Tarzzut',
 );
 
 /** Russian (Русский)

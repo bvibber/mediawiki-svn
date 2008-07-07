@@ -23,7 +23,7 @@ Please specify "create", "comment", "search" or "search2".',
 	'createarticle'           => 'Create page',
 );
 
-/** Niuean (native name missing)
+/** Niuean (ko e vagahau Niuē)
  * @author Jose77
  */
 $messages['niu'] = array(

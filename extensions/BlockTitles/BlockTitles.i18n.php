@@ -351,6 +351,15 @@ $messages['mr'] = array(
 	'block_title_error'            => 'माफ करा, या पानाचे शीर्षक जतन करायला परवानगी नाही.',
 );
 
+/** Low German (Plattdüütsch)
+ * @author Slomox
+ */
+$messages['nds'] = array(
+	'block_title_error_page_title' => 'Sperrt Siedennaam',
+	'block_title_error-desc'       => 'Gifft en eenfache Mööglichkeit, dat Spiekern un nee Opstellen vun Sieden mit bestimmte Naams to verhinnern.',
+	'block_title_error'            => 'Deit uns leed, en Sied mit dissen Naam dröff nich spiekert warrn.',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

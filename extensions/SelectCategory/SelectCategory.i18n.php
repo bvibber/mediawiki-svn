@@ -59,6 +59,7 @@ $messages['de'] = array(
  */
 $messages['dsb'] = array(
 	'selectcategory-title'    => 'Kategorije wubraś',
+	'selectcategory-desc'     => 'Dowólujo wužywarjeju pśi wobźěłowanju z eksistujucych kategorijow wubraś',
 	'selectcategory-subtitle' => 'Umsch-myš, aby někotare naslědujuce zapiski wubrał, Strg-myš, aby jadnotliwe zapiski wubrał.',
 );
 

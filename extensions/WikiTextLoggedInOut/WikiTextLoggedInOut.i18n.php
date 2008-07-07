@@ -14,6 +14,13 @@ $messages['de'] = array(
 	'wikitextloggedinout-desc' => 'Zwei Parser-Hooks, <tt>&lt;loggedin&gt;</tt> und <tt>&lt;loggedout&gt;</tt>, um unterschiedlichen Text für an- bzw. abgemeldete Benutzer anzuzeigen',
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'wikitextloggedinout-desc' => 'Dwě parserowej kokulce, <tt>&lt;loggedin&gt;</tt> and <tt>&lt;loggedout&gt;</tt>, aby se drugi tekst we wotwisnosći pśizjawjeńskego statusa wužywarja pokazał',
+);
+
 /** French (Français)
  * @author Grondin
  */
@@ -26,6 +33,13 @@ $messages['fr'] = array(
  */
 $messages['gl'] = array(
 	'wikitextloggedinout-desc' => 'Dous hooks de análise, <tt>&lt;loggedin&gt;</tt> e mais <tt>&lt;loggedout&gt;</tt> para amosar textos diferentes dependendo do estado do rexistro do usuario',
+);
+
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$messages['lb'] = array(
+	'wikitextloggedinout-desc' => 'Zwou Parser_Klameren <tt>&lt;loggedin&gt;</tt> a <tt>&lt;loggedout&gt;</tt> fir jeweils en aneren Text ze weisen je nodeem ob de Benotzer ageloggt ass oder net.',
 );
 
 /** Dutch (Nederlands)

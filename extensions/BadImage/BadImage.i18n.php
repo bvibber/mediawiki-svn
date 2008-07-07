@@ -35,7 +35,7 @@ $messages['en'] = array(
 	'badimages-page'           => '{{ns:help}}:Bad image list',
 );
 
-/** Niuean (native name missing)
+/** Niuean (ko e vagahau Niuē)
  * @author Jose77
  */
 $messages['niu'] = array(
@@ -1029,13 +1029,52 @@ $messages['mr'] = array(
 	'badimages-page'           => '{{ns:help}}:चुकीच्या चित्रांची यादी',
 );
 
+/** Maltese (Malti)
+ * @author Giangian15
+ */
+$messages['mt'] = array(
+	'badimages'                => "Lista ta' stampi ħżiena",
+	'badimages-desc'           => "Estendi l-kapaċitá għal lista ta' stampi hżiena ta' MedjaWiki",
+	'badimages-add-btn'        => 'Żid',
+	'badimages-added'          => '$1 ġie miżjud fil-lista',
+	'badimages-count'          => "{{PLURAL:$1|hemm|Hemm}} '''$1''' {{PLURAL:$1|stampa|stampi}} fuq il-lista ta' stampi ħżiena.",
+	'badimages-name'           => 'Isem:',
+	'badimages-not-added'      => 'L-Istampa ma tistax tiġi miżjuda.',
+	'badimages-not-removed'    => 'L-Istampa ma tistax titneħħa.',
+	'badimages-reason'         => 'Raġġuni:',
+	'badimages-remove'         => '(neħħi)',
+	'badimages-remove-btn'     => 'Neħħi',
+	'badimages-remove-confirm' => 'Jekk jogħġbok konferma jekk ma tixtiqx tneħħi $1 mil-lista:',
+	'badimages-removed'        => '$1 ġie mneħħi mil-lista.',
+	'badimages-subheading'     => 'Affarijiet kurrenti',
+	'badimages-unprivileged'   => "(M'għandhekx biżżejjed permessi sabiex tbiddel il-lista)",
+	'badimages-log-name'       => "Lista ta' stampi ħżiena",
+);
+
 /** Low German (Plattdüütsch)
  * @author Slomox
  */
 $messages['nds'] = array(
-	'badimages-add-btn' => 'Tofögen',
-	'badimages-name'    => 'Naam:',
-	'badimages-reason'  => 'Grund:',
+	'badimages'                => 'List mit lege Biller',
+	'badimages-desc'           => 'Verbetert de Fähigkeiten vun de List mit lege Biller vun MediaWiki',
+	'badimages-add-btn'        => 'Tofögen',
+	'badimages-added'          => '$1 to de List toföögt.',
+	'badimages-count'          => "Dor {{PLURAL:$1|is|sünd}} '''$1''' {{PLURAL:$1|Bild|Biller}} op de List mit lege Biller.",
+	'badimages-name'           => 'Naam:',
+	'badimages-not-added'      => 'Dat Bild kunn nich toföögt warrn.',
+	'badimages-not-removed'    => 'Dat Bild kunn nich rutnahmen warrn.',
+	'badimages-reason'         => 'Grund:',
+	'badimages-remove'         => '(rutnehmen)',
+	'badimages-remove-btn'     => 'Rutnehmen',
+	'badimages-remove-confirm' => 'Bestätige, dat du $1 ut de List mit lege Biller rutnehmen wist:',
+	'badimages-removed'        => '$1 is ut de List mit lege Biller rutnahmen worrn.',
+	'badimages-subheading'     => 'Aktuelle Indrääg',
+	'badimages-unprivileged'   => '(Du hest nich de Rechten, de List to ännern)',
+	'badimages-log-name'       => 'List mit lege Biller',
+	'badimages-log-header'     => 'Dit is dat Logbook mit de Ännern an de [[{{MediaWiki:Badimages-page}}|List mit lege Biller]].',
+	'badimages-log-add'        => 'hett [[$1]] to de List mit lege Biller toföögt',
+	'badimages-log-remove'     => 'hett [[$1]] ut de List mit lege Biller rutnahmen',
+	'badimages-page'           => '{{ns:help}}:List mit lege Biller',
 );
 
 /** Dutch (Nederlands)
@@ -1635,7 +1674,6 @@ $messages['th'] = array(
  * @author Karduelis
  * @author Srhat
  * @author Suelnur
- * @author Karduelis
  */
 $messages['tr'] = array(
 	'badimages-add-btn'    => 'Ekle',

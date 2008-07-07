@@ -33,7 +33,7 @@ To test it, please visit [{{SERVER}}{{localurl: Special:SignDocument|doc=$2}} th
 	'createsigndoc-error-alreadycreated' => 'Document signing "$1" already exist.'
 );
 
-/** Eastern Mari (Олык Марий йылме)
+/** Eastern Mari (Олык Марий)
  * @author Сай
  */
 $messages['mhr'] = array(

@@ -32,13 +32,6 @@ $messages['rtm'] = array(
 	'contributors-submit' => "Kel'äk",
 );
 
-/** Tarifit (Tarifit)
- * @author Jose77
- */
-$messages['rif'] = array(
-	'contributors-submit' => 'Smmrad',
-);
-
 /** Eastern Mari (Олык Марий)
  * @author Jose77
  */
@@ -777,6 +770,13 @@ $messages['pt'] = array(
 	'contributors-others'      => 'e $1 outros',
 	'contributors-badtitle'    => 'Título inválido.',
 	'contributors-nosuchpage'  => 'O artigo $1 não existe.',
+);
+
+/** Tarifit (Tarifit)
+ * @author Jose77
+ */
+$messages['rif'] = array(
+	'contributors-submit' => 'Smmrad',
 );
 
 $messages['rm'] = array(

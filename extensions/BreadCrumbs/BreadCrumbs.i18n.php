@@ -137,6 +137,13 @@ $messages['mr'] = array(
 	'breadcrumbs-desc' => 'विकिमधील सदस्याचा मार्ग (पाथ) दर्शविते.',
 );
 
+/** Low German (Plattdüütsch)
+ * @author Slomox
+ */
+$messages['nds'] = array(
+	'breadcrumbs-desc' => 'Wiest den Padd vun’n Bruker dör dat Wiki.',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

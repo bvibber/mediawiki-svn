@@ -360,6 +360,15 @@ $messages['mr'] = array(
 	'backforth-prev' => 'मागे($1)',
 );
 
+/** Low German (Plattdüütsch)
+ * @author Slomox
+ */
+$messages['nds'] = array(
+	'backforth-next' => 'Tokamen ($1)',
+	'backforth-desc' => 'Föögt „{{int:backforth-next}}“- un „{{int:backforth-prev}}“-Lenken na de nächste Sied in’t Alphabet baven op de Sied to.',
+	'backforth-prev' => 'Vörige ($1)',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

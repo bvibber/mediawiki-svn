@@ -47,13 +47,6 @@ $messages['rtm'] = array(
 	'todo-list-cancel' => "Mao'ạki",
 );
 
-/** Tarifit (Tarifit)
- * @author Jose77
- */
-$messages['rif'] = array(
-	'todo-new-queue' => 'amaynu',
-);
-
 /** Karelian (Karjala)
  * @author Flrn
  */
@@ -61,14 +54,14 @@ $messages['krl'] = array(
 	'todo-list-cancel' => 'Keskevytä',
 );
 
-/** Eastern Mari (Олык Марий йылме)
+/** Eastern Mari (Олык Марий)
  * @author Сай
  */
 $messages['mhr'] = array(
 	'todo-list-cancel' => 'Чараш',
 );
 
-/** Niuean (native name missing)
+/** Niuean (ko e vagahau Niuē)
  * @author Jose77
  */
 $messages['niu'] = array(
@@ -616,6 +609,13 @@ $messages['pt'] = array(
 	'todo-list-cancel'      => 'Cancelar',
 	'todo-new-item'         => 'Novo item',
 	'todo-form-details'     => 'Detalhes:',
+);
+
+/** Tarifit (Tarifit)
+ * @author Jose77
+ */
+$messages['rif'] = array(
+	'todo-new-queue' => 'amaynu',
 );
 
 /** Slovak (Slovenčina)

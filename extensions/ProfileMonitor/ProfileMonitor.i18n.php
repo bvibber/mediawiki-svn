@@ -92,6 +92,7 @@ $messages['fr'] = array(
  */
 $messages['gl'] = array(
 	'profiling'              => 'Perfís de datos',
+	'profiling-desc'         => '[[Special:Profiling|Páxina especial]] para procurar e inspecionar os datos dun perfil',
 	'profiling-process'      => 'Cadea do proceso:',
 	'profiling-wildcard'     => 'Empregar comodín',
 	'profiling-ok'           => 'De acordo',

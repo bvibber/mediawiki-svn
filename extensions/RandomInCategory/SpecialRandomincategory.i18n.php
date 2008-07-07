@@ -16,13 +16,6 @@ $messages['en'] = array(
 	'randomincategory-submit'         => 'Go',
 );
 
-/** Tarifit (Tarifit)
- * @author Jose77
- */
-$messages['rif'] = array(
-	'randomincategory-submit' => 'Raḥ ɣa',
-);
-
 /** Eastern Mari (Олык Марий)
  * @author Сай
  */
@@ -30,7 +23,7 @@ $messages['mhr'] = array(
 	'randomincategory-toolbox' => 'Вучыдымо (случайный) статья',
 );
 
-/** Niuean (native name missing)
+/** Niuean (ko e vagahau Niuē)
  * @author Jose77
  */
 $messages['niu'] = array(
@@ -413,6 +406,13 @@ $messages['pt'] = array(
 	'randomincategory-submit'     => 'Ir',
 );
 
+/** Tarifit (Tarifit)
+ * @author Jose77
+ */
+$messages['rif'] = array(
+	'randomincategory-submit' => 'Raḥ ɣa',
+);
+
 /** Russian (Русский)
  * @author Александр Сигачёв
  */
@@ -503,6 +503,7 @@ $messages['tg-cyrl'] = array(
 
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
+ * @author Vinhtantran
  */
 $messages['vi'] = array(
 	'randomincategory'            => 'Trang ngẫu nhiên trong thể loại',

@@ -68,6 +68,7 @@ Tämä sivu voisi myös kaivata apuasi: $1.',
 /** French (Français)
  * @author Grondin
  * @author IAlex
+ * @author Verdy p
  */
 $messages['fr'] = array(
 	'editsimilar-desc'                           => 'Encourage les utilisateurs à modifier les pages similaires après avoir publié une page',

@@ -55,14 +55,7 @@ If this error keeps showing up, the database is probably broken.',
 	'changeauthor-rev'                  => 'r$1',
 );
 
-/** Tarifit (Tarifit)
- * @author Jose77
- */
-$messages['rif'] = array(
-	'changeauthor-pagenameform-go' => 'Raḥ ɣa',
-);
-
-/** Niuean (native name missing)
+/** Niuean (ko e vagahau Niuē)
  * @author Jose77
  */
 $messages['niu'] = array(
@@ -744,6 +737,7 @@ $messages['nds'] = array(
 	'changeauthor-pagenameform-go' => 'Los',
 	'changeauthor-comment'         => 'Kommentar:',
 	'changeauthor-nosuchuser'      => 'Gifft keen Bruker „$1“.',
+	'changeauthor-revview'         => 'Version #$1 vun $2',
 );
 
 /** Dutch (Nederlands)
@@ -946,6 +940,13 @@ Kay pantasqa musuqmanta kanqaptinqa, willañiqintin waqllisqachá.',
 	'changeauthor-success'              => 'Mañakusqaykiqa aypalla rurapusqañam.',
 	'changeauthor-logentry'             => "$2-manta $1-pa llamk'apuqninpa sutinta $3-manta $4-man hukchasqa",
 	'changeauthor-logpagename'          => "Llamk'apuq suti hukchay hallch'asqa",
+);
+
+/** Tarifit (Tarifit)
+ * @author Jose77
+ */
+$messages['rif'] = array(
+	'changeauthor-pagenameform-go' => 'Raḥ ɣa',
 );
 
 /** Russian (Русский)

@@ -66,14 +66,6 @@ Probably there is no such user.',
 	'regexblock-view-time'            => 'on $1',
 );
 
-/** Tarifit (Tarifit)
- * @author Jose77
- */
-$messages['rif'] = array(
-	'regexblock-view-all' => 'Maṛṛa',
-	'regexblock-view-go'  => 'Raḥ ɣa',
-);
-
 /** Eastern Mari (Олык Марий йылме)
  * @author Сай
  */
@@ -81,7 +73,7 @@ $messages['mhr'] = array(
 	'regexblock-stats-username' => '$1 лан',
 );
 
-/** Niuean (native name missing)
+/** Niuean (ko e vagahau Niuē)
  * @author Jose77
  */
 $messages['niu'] = array(
@@ -396,9 +388,11 @@ $messages['gv'] = array(
 
 /** Hawaiian (Hawai`i)
  * @author Singularity
+ * @author Kalani
  */
 $messages['haw'] = array(
-	'regexblock-form-reason' => 'Kumu:',
+	'regexblock-form-reason'    => 'Kumu:',
+	'regexblock-stats-username' => 'No $1',
 );
 
 /** Hindi (हिन्दी)
@@ -1045,6 +1039,14 @@ $messages['pt'] = array(
 	'regexblock-view-stats'           => '(estatísticas)',
 	'regexblock-view-empty'           => 'Esta lista de nomes e endereços bloqueados está vazia.',
 	'regexblock-view-time'            => 'em $1',
+);
+
+/** Tarifit (Tarifit)
+ * @author Jose77
+ */
+$messages['rif'] = array(
+	'regexblock-view-all' => 'Maṛṛa',
+	'regexblock-view-go'  => 'Raḥ ɣa',
 );
 
 /** Russian (Русский)

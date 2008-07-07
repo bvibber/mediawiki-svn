@@ -66,7 +66,12 @@ $messages['fr'] = array(
 	'donationform-submit' => 'Faire un don avec PayPal',
 );
 
+/** Galician (Galego)
+ * @author Xosé
+ * @author Toliño
+ */
 $messages['gl'] = array(
+	'donationform-desc'   => 'Engade a etiqueta <tt>&lt;donateform&gt;</tt> para soportar as doazóns mediante PayPal',
 	'donationform-submit' => 'Doar mediante PayPal',
 );
 

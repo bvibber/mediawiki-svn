@@ -32,7 +32,14 @@ $messages['rtm'] = array(
 	'countedits-username' => 'Asa:',
 );
 
-/** Niuean (native name missing)
+/** Eastern Mari (Олык Марий)
+ * @author Сай
+ */
+$messages['mhr'] = array(
+	'countedits-username' => 'Пайдаланышын лӱмжӧ:',
+);
+
+/** Niuean (ko e vagahau Niuē)
  * @author Jose77
  */
 $messages['niu'] = array(
@@ -130,7 +137,7 @@ $messages['cs'] = array(
 	'countedits-mostactive'   => 'Nejaktivnější přispěvatelé',
 );
 
-/** Church Slavic (Словѣньскъ)
+/** Church Slavic (Словѣ́ньскъ / ⰔⰎⰑⰂⰡⰐⰠⰔⰍⰟ)
  * @author ОйЛ
  */
 $messages['cu'] = array(

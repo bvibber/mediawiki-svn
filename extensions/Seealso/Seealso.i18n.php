@@ -65,7 +65,8 @@ $messages['de'] = array(
  * @author Michawiki
  */
 $messages['dsb'] = array(
-	'seealso' => 'Glědaj teke',
+	'seealso'      => 'Glědaj teke',
+	'seealso-desc' => 'Pśełožone nadpisma "Glědaj teke" z pomocu toflicki <code><nowiki><seealso></nowiki></code>',
 );
 
 /** Greek (Ελληνικά)

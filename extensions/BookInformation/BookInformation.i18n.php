@@ -207,7 +207,7 @@ $messages['cs'] = array(
 	'bookinfo-provider'          => 'Poskytovatel dat: $1',
 );
 
-/** Church Slavic (Словѣньскъ)
+/** Church Slavic (Словѣ́ньскъ / ⰔⰎⰑⰂⰡⰐⰠⰔⰍⰟ)
  * @author ОйЛ
  */
 $messages['cu'] = array(

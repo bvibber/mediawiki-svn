@@ -63,7 +63,12 @@ $messages['fr'] = array(
 	'protectsection_forbidden'  => 'Interdit',
 );
 
+/** Galician (Galego)
+ * @author Xosé
+ * @author Toliño
+ */
 $messages['gl'] = array(
+	'protectsection_desc'       => 'Permítelle aos usuarios autorizados que protexan partes dunha páxina usando a etiqueta <tt>&lt;protect&gt;</tt>',
 	'protectsection_add_remove' => 'Tentou engadir ou eliminar unha sección protexida',
 	'protectsection_modify'     => 'Tentou modificar un texto protexido',
 	'protectsection_forbidden'  => 'Prohibido',

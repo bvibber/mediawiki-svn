@@ -54,7 +54,7 @@ $messages['fr'] = array(
  * @author Toliño
  */
 $messages['gl'] = array(
-	'rightfunctions-desc'          => 'Permisos baseados nas funcións analíticas',
+	'rightfunctions-desc'     => 'Permisos baseados nas funcións analíticas',
 	'rightfunctions-restboth' => '$1 (a partir da páxina local), $2 (a partir das fontes en serie)',
 	'rightfunctions-restcasc' => '$1 (a partir das fontes en serie)',
 );

@@ -146,6 +146,7 @@ $messages['br'] = array(
  * @author Paucabot
  * @author SMP
  * @author לערי ריינהארט
+ * @author Jordi Roqué
  */
 $messages['ca'] = array(
 	'sitematrix'           => 'Llista de tots els projectes en els diferents idiomes.',
@@ -520,6 +521,7 @@ $messages['hu'] = array(
 	'sitematrix-total'     => "'''Összes: $1'''",
 	'sitematrix-sitetotal' => 'Összesen',
 	'sitematrix-private'   => 'zártkörű',
+	'sitematrix-fishbowl'  => 'a szerkesztés korlátozott',
 );
 
 $messages['hy'] = array(

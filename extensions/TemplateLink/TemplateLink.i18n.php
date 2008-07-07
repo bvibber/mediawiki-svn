@@ -89,9 +89,15 @@ $messages['fr'] = array(
 	'templatelink_newtitle' => '$1 (tranclus)',
 );
 
+/** Galician (Galego)
+ * @author Alma
+ * @author Xosé
+ * @author Toliño
+ */
 $messages['gl'] = array(
-	'templatelink' => 'Ligazón do modelo',
-	'templatelink_empty' => 'Vostede ten que proporcionar un parámetro.',
+	'templatelink'          => 'Ligazón do modelo',
+	'templatelink_desc'     => 'Esta extensión pode amosar un modelo como unha páxina nova',
+	'templatelink_empty'    => 'Vostede ten que proporcionar un parámetro.',
 	'templatelink_newtitle' => '$1 (transcluído)',
 );
 

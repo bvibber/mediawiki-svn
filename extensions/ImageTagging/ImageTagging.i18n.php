@@ -53,14 +53,7 @@ $messages['rtm'] = array(
 	'imagetagging-tagcancel-button' => "Mao'ạki",
 );
 
-/** Tarifit (Tarifit)
- * @author Jose77
- */
-$messages['rif'] = array(
-	'imagetagging-imghistory' => 'Amzruy',
-);
-
-/** Eastern Mari (Олык Марий йылме)
+/** Eastern Mari (Олык Марий)
  * @author Сай
  */
 $messages['mhr'] = array(
@@ -68,7 +61,7 @@ $messages['mhr'] = array(
 	'imagetagging-tagcancel-button' => 'Чараш',
 );
 
-/** Niuean (native name missing)
+/** Niuean (ko e vagahau Niuē)
  * @author Jose77
  */
 $messages['niu'] = array(
@@ -525,6 +518,13 @@ Esperatz la fin de l’accion en cors.",
 $messages['pl'] = array(
 	'imagetagging-imghistory'       => 'Historia',
 	'imagetagging-tagcancel-button' => 'Anuluj',
+);
+
+/** Tarifit (Tarifit)
+ * @author Jose77
+ */
+$messages['rif'] = array(
+	'imagetagging-imghistory' => 'Amzruy',
 );
 
 /** Slovak (Slovenčina)

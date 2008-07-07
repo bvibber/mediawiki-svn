@@ -56,6 +56,7 @@ $messages['de'] = array(
 $messages['dsb'] = array(
 	'icon-badimage' => 'Špatny wobraz',
 	'icon-badwidth' => 'Špatna šyrokosć',
+	'icon-desc'     => 'Dowólujo wobraze ako symbole a symbolowe wótkaze wužywaś',
 );
 
 /** Esperanto (Esperanto)

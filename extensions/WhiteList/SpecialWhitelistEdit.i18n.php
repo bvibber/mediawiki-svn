@@ -89,15 +89,7 @@ $allMessages['rtm'] = array(
 	'whitelisttableedit' => "A'tū'ạki",
 );
 
-/** Tarifit (Tarifit)
- * @author Jose77
- */
-$allMessages['rif'] = array(
-	'whitelisttablemodifyall' => 'Maṛṛa',
-	'whitelisttableedit'      => 'Arri',
-);
-
-/** Eastern Mari (Олык Марий йылме)
+/** Eastern Mari (Олык Марий)
  * @author Сай
  */
 $allMessages['mhr'] = array(
@@ -105,7 +97,7 @@ $allMessages['mhr'] = array(
 	'whitelistnever'   => 'нигунам',
 );
 
-/** Niuean (native name missing)
+/** Niuean (ko e vagahau Niuē)
  * @author Jose77
  */
 $allMessages['niu'] = array(
@@ -940,9 +932,17 @@ $allMessages['pt'] = array(
 	'whitelistnummatches'   => '  - $1 resultados',
 );
 
+/** Tarifit (Tarifit)
+ * @author Jose77
+ */
+$allMessages['rif'] = array(
+	'whitelisttablemodifyall' => 'Maṛṛa',
+	'whitelisttableedit'      => 'Arri',
+);
+
 /** Russian (Русский)
  * @author Александр Сигачёв
- * @author Александр Сигачёв
+ * @author Innv
  */
 $allMessages['ru'] = array(
 	'whitelisttableedit'       => 'Править',

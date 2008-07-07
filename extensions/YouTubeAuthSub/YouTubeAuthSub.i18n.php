@@ -83,7 +83,7 @@ $messages['ar'] = array(
 	'youtubeauthsub_jserror_nodesc'     => 'رجاءً أدخل وصفا للفيديو.',
 );
 
-/** بلوچی مکرانی (بلوچی مکرانی)
+/** Southern Balochi (بلوچی مکرانی)
  * @author Mostafadaneshvar
  */
 $messages['bcc'] = array(
