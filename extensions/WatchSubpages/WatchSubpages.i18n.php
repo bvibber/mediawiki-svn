@@ -211,8 +211,8 @@ Jeśli chcesz wybrać więcej niż jedną stronę, możesz posłużyć się klaw
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */
 $messages['ps'] = array(
-	'watchsubpages-desc' => 'په چټکۍ سره دې د يو مخ [[Special:WatchSubpages|ټول وړوکي مخونه]] کتلي لړليک ته ورګډ شي',
 	'watchsubpages'      => 'وړوکي مخونه کتل',
+	'watchsubpages-desc' => 'په چټکۍ سره دې د يو مخ [[Special:WatchSubpages|ټول وړوکي مخونه]] کتلي لړليک ته ورګډ شي',
 );
 
 /** Slovak (Slovenčina)
@@ -234,8 +234,8 @@ Pri označovaní alebo odznačovaní viacerých stránok môžete držaním klá
  * @author Sasa Stefanovic
  */
 $messages['sr-ec'] = array(
-	'watchsubpages-desc' => 'Брзо [[Special:WatchSubpages|додај све подстранице]] странице на списак надгледања',
 	'watchsubpages'      => 'Надгледај подстранице',
+	'watchsubpages-desc' => 'Брзо [[Special:WatchSubpages|додај све подстранице]] странице на списак надгледања',
 );
 
 /** Sundanese (Basa Sunda)

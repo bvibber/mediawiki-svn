@@ -54,7 +54,7 @@ $messages['bg'] = array(
 	'showprocesslist-info'    => 'Информация',
 );
 
-/** Church Slavic (Словѣньскъ)
+/** Church Slavic (Словѣ́ньскъ / ⰔⰎⰑⰂⰡⰐⰠⰔⰍⰟ)
  * @author ОйЛ
  */
 $messages['cu'] = array(
@@ -235,13 +235,15 @@ $messages['ksh'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
-	'showprocesslist'       => "Weis d'Lëscht vun de Prozesser",
-	'showprocesslist-id'    => 'Nummer',
-	'showprocesslist-user'  => 'Benotzer',
-	'showprocesslist-db'    => 'Datebank',
-	'showprocesslist-time'  => 'Zäit',
-	'showprocesslist-state' => 'Zoustand',
-	'showprocesslist-info'  => 'Informatiounen',
+	'showprocesslist'         => "Weis d'Lëscht vun de Prozesser",
+	'showprocesslist-desc'    => "D'Resultat vun [[Special:ShowProcesslist|Liste des processus]] weisen",
+	'showprocesslist-id'      => 'Nummer',
+	'showprocesslist-user'    => 'Benotzer',
+	'showprocesslist-db'      => 'Datebank',
+	'showprocesslist-command' => 'Kommando',
+	'showprocesslist-time'    => 'Zäit',
+	'showprocesslist-state'   => 'Zoustand',
+	'showprocesslist-info'    => 'Informatiounen',
 );
 
 /** Malayalam (മലയാളം)

@@ -66,7 +66,7 @@ Probably there is no such user.',
 	'regexblock-view-time'            => 'on $1',
 );
 
-/** Eastern Mari (Олык Марий йылме)
+/** Eastern Mari (Олык Марий)
  * @author Сай
  */
 $messages['mhr'] = array(

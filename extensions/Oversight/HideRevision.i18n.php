@@ -199,6 +199,13 @@ manualmente por un alministrador de la base de datos.",
 Esparder esta información pue llevar a la perda permanente de privilexos de supervisión.',
 );
 
+/** Kotava (Kotava)
+ * @author Wikimistusik
+ */
+$messages['avk'] = array(
+	'right-hiderevision' => 'Tolwira va betaks palseyen gan ristusik numu dimsulara',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  * @author Borislav
@@ -349,6 +356,13 @@ administrátorům databáze v případě, že uděláte chybu.",
 	'oversight-prev'              => 'Poslední předešlá revize',
 	'oversight-hidden'            => 'Skrytá revize',
 	'oversight-header'            => 'Níže je seznam revizí, které byly nedávno trvale skryty z veřejné historie. Šíření těchto informací může mít za důsledek trvalou ztrátu práv dozorce (oversight).',
+);
+
+/** Danish (Dansk)
+ * @author Jan Friberg
+ */
+$messages['da'] = array(
+	'right-hiderevision' => 'Gense og gendan versioner skjult for administratorer',
 );
 
 /** German (Deutsch)
@@ -1370,6 +1384,13 @@ $messages['km'] = array(
 	'oversight-hidden'            => 'កំនែប្រែដែលត្រូវបានលាក់',
 );
 
+/** Korean (한국어)
+ * @author Pi.C.Noizecehx
+ */
+$messages['ko'] = array(
+	'right-hiderevision' => '관리자도 보지 못하도록 숨겨진 판의 확인 및 복구',
+);
+
 /** Ripoarisch (Ripoarisch)
  * @author Purodha
  */
@@ -1377,6 +1398,13 @@ $messages['ksh'] = array(
 	'right-hiderevision'  => 'Versione vun Sigge beloore un zeröck holle, di sujaa för de Wiki-Köbesse verstoche sin',
 	'hiderevision-submit' => 'Důnn_di Väsjohn foshtäshe',
 	'oversight-view'      => 'Einzelheite',
+);
+
+/** Latin (Latina)
+ * @author UV
+ */
+$messages['la'] = array(
+	'right-hiderevision' => 'Emendationes magistratus celatas inspicere vel restituere',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -1465,6 +1493,13 @@ $messages['lt'] = array(
 	'hiderevision-continue'      => 'Tęsti',
 	'hiderevision-error-missing' => 'Nerasta duomenų bazėje',
 	'oversight-view'             => 'detalės',
+);
+
+/** Moksha (Мокшень)
+ * @author Kranch
+ */
+$messages['mdf'] = array(
+	'right-hiderevision' => 'Ваномс ди мърдафтомс верзиетне кяшфт системонь вятикснень эзда',
 );
 
 /** Malayalam (മലയാളം)
@@ -2056,6 +2091,13 @@ $messages['sah'] = array(
 Бу сибидиэнньэлэри тарҕатыы ырытааччы быраабын быһыыга тиэрдиэн сөп.',
 );
 
+/** Sicilian (Sicilianu)
+ * @author Melos
+ */
+$messages['scn'] = array(
+	'right-hiderevision' => 'Ritalìa e riprìstina virsioni ammucciati',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */
@@ -2296,6 +2338,13 @@ Sidversioner som tagits bort kommer inte att vara synliga för någon genom webp
 	'oversight-hidden'            => 'Dold version',
 	'oversight-header'            => 'Här nedanför visas en lista över sidversioner som nyligen dolts permanent från allmän visning.
 Användare som sprider den här informationen vidare kan få sina översynsrättigheter permanent borttagna.',
+);
+
+/** Silesian (Ślůnski)
+ * @author Lajsikonik
+ */
+$messages['szl'] = array(
+	'right-hiderevision' => 'Přyglůndańy i uodtwařańy sprowjyń schrůńůnych před admińistratorami',
 );
 
 /** Telugu (తెలుగు)

@@ -853,7 +853,7 @@ $messages['ru'] = array(
 	'youtubeauthsub_jserror_nodesc'     => 'Пожалуйста, введите описание видео.',
 );
 
-/** Sinhalese (සිංහල)
+/** Sinhala (සිංහල)
  * @author Asiri wiki
  */
 $messages['si'] = array(

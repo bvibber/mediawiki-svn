@@ -965,7 +965,7 @@ Může se zobrazit bezpečnostní varování o nepodepsaném certifikátu.',
 	'right-boardvote'          => 'Administrace voleb',
 );
 
-/** Church Slavic (Словѣньскъ)
+/** Church Slavic (Словѣ́ньскъ / ⰔⰎⰑⰂⰡⰐⰠⰔⰍⰟ)
  * @author ОйЛ
  */
 $messages['cu'] = array(

@@ -282,7 +282,6 @@ $messages['hi'] = array(
  */
 $messages['jv'] = array(
 	'invite-logpage'                   => 'Log Undhangan',
-	'invitations-invitedlist-item'     => '<b>$1</b> (ana $2 undhangan)',
 	'invitations-feature-access'       => 'Panjenengan saiki ana aksès kanggo nganggo <i>$1</i>.',
 	'invitations-feature-notallowed'   => 'Panjenengan ora ana aksès nganggo <i>$1</i>.',
 	'invitations-inviteform-title'     => 'Undhang sawijining panganggo supaya nganggo $1',

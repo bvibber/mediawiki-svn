@@ -118,14 +118,6 @@ It might be lost.
 Please contact the server operator or administrator.",
 );
 
-/** Tarifit (Tarifit)
- * @author Jose77
- */
-$wdMessages['rif'] = array(
-	'ow_history'             => 'Amzruy',
-	'ow_LinkAttributeValues' => 'Tiẓdyin',
-);
-
 /** Karelian (Karjala)
  * @author Flrn
  */
@@ -141,7 +133,7 @@ $wdMessages['mhr'] = array(
 	'ow_LinkAttributeValues' => 'Ссылке-влак',
 );
 
-/** Niuean (native name missing)
+/** Niuean (ko e vagahau Niuē)
  * @author Jose77
  */
 $wdMessages['niu'] = array(
@@ -2728,6 +2720,14 @@ Os seus dados aparentam ter sido copiados com sucesso. Não se esqueça de verif
 	'ow_copy_unsuccessful'                  => '<h3>Cópia sem sucesso</h3> Não houve lugar a nenhuma operação de cópia.',
 	'ow_no_action_specified'                => '<h3>Nenhuma acção foi especificada</h3> Talvez tenha vindo a esta página directamente? Em condições normais, não precisaria de estar aqui.',
 	'ow_db_consistency_not_found'           => '<h2>Erro</h2>Há um problema com a consistência da base de dados, wikidata não consegue encontrar dados válidos relacionados com o ID deste significado definido, poderá ter-se perdido. Por favor, contacte o operador ou administrador do servidor.',
+);
+
+/** Tarifit (Tarifit)
+ * @author Jose77
+ */
+$wdMessages['rif'] = array(
+	'ow_history'             => 'Amzruy',
+	'ow_LinkAttributeValues' => 'Tiẓdyin',
 );
 
 $wdMessages['ro'] = array(

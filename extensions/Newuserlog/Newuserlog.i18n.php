@@ -1030,6 +1030,7 @@ $messages['sah'] = array(
 
 /** Slovak (Slovenčina)
  * @author Helix84
+ * @author Andre Engels
  */
 $messages['sk'] = array(
 	'newuserlogpage'              => 'Záznam vytvorených používateľov',

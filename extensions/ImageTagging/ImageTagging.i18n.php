@@ -387,11 +387,11 @@ $messages['mr'] = array(
 	'imagetagging-removingtag'              => 'खूण काढत आहे...',
 	'imagetagging-addtagsuccess'            => 'खूण वाढविली.',
 	'imagetagging-removetagsuccess'         => 'खूण काढली.',
-	'imagetagging-oneactionatatimemessage'  => 'एकावेळी एकच खूण देता येईल.
-कृपया चालू असलेली क्रिया पूर्ण होईपर्यंत वाट पहा.',
 	'imagetagging-canteditneedloginmessage' => 'तुम्ही हे पान संपादित करू शकत नाही.
 कदाचित याचे कारण म्हणजे खूणा देण्यासाठी तुम्ही प्रवेश करणे आवश्यक असेल.
 तुम्ही आता प्रवेश करू इच्छिता का?',
+	'imagetagging-oneactionatatimemessage'  => 'एकावेळी एकच खूण देता येईल.
+कृपया चालू असलेली क्रिया पूर्ण होईपर्यंत वाट पहा.',
 	'imagetagging-oneuniquetagmessage'      => 'या चित्राला याच नावाची खूण अगोदरच दिलेली आहे.',
 	'imagetagging-imagetag-seemoreimages'   => '"$1" ($2) ची अजून चित्रे पहा',
 	'imagetagging-taggedimages-title'       => '"$1" ची चित्रे',
@@ -657,15 +657,14 @@ $messages['vi'] = array(
 	'imagetagging-removingtag'              => 'Đang bỏ thẻ…',
 	'imagetagging-addtagsuccess'            => 'Đã thêm thẻ.',
 	'imagetagging-removetagsuccess'         => 'Đã bỏ thẻ.',
-	'imagetagging-oneactionatatimemessage'  => 'Chỉ cho phép một tác vụ gắn thẻ vào một thời điểm.
-Xin hãy chờ tác vụ hoàn thành.',
 	'imagetagging-canteditneedloginmessage' => 'Bạn không sửa đổi trang này.
 Có thể do bạn cần phải đăng nhập mới gắn thẻ cho hình được.
 Bạn có muốn đăng nhập ngay bây giờ?',
+	'imagetagging-oneactionatatimemessage'  => 'Chỉ cho phép một tác vụ gắn thẻ vào một thời điểm.
+Xin hãy chờ tác vụ hoàn thành.',
 	'imagetagging-oneuniquetagmessage'      => 'Hình này đã có một thẻ với tên này.',
 	'imagetagging-imagetag-seemoreimages'   => 'Xem nhiều hình của "$1" hơn ($2)',
 	'imagetagging-taggedimages-title'       => 'Hình của "$1"',
 	'imagetagging-taggedimages-displaying'  => 'Hiển thị $1 - $2 trong tổng số $3 hình của "$4"',
-	'imagetagging-taggedimages-total'       => '"$1"; hình tổng cộng',
 );
 

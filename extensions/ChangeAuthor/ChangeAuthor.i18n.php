@@ -245,7 +245,7 @@ $messages['cs'] = array(
 	'changeauthor-logpagename'          => 'Záznam změn autorů',
 );
 
-/** Church Slavic (Словѣньскъ)
+/** Church Slavic (Словѣ́ньскъ / ⰔⰎⰑⰂⰡⰐⰠⰔⰍⰟ)
  * @author ОйЛ
  */
 $messages['cu'] = array(

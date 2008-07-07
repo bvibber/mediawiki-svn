@@ -36,7 +36,7 @@ $messages['bg'] = array(
  * @author Yekrats
  */
 $messages['eo'] = array(
-	'rightfunctions-desc'          => 'Rajtecaj funkcioj de sintaksaj analiziloj',
+	'rightfunctions-desc'     => 'Rajtecaj funkcioj de sintaksaj analiziloj',
 	'rightfunctions-restboth' => '$1 (de loka paĝo), $2 (de rilataj fontoj)',
 	'rightfunctions-restcasc' => '$1 (de rilataj fontoj)',
 );
@@ -63,7 +63,7 @@ $messages['gl'] = array(
  * @author Kaustubh
  */
 $messages['hi'] = array(
-	'rightfunctions-desc'          => 'अनुमति-आधारित पार्सर कार्य',
+	'rightfunctions-desc'     => 'अनुमति-आधारित पार्सर कार्य',
 	'rightfunctions-restcasc' => '$1 (अन्य स्रोतोंसे)',
 );
 
@@ -152,7 +152,7 @@ $messages['sk'] = array(
  * @author Lejonel
  */
 $messages['sv'] = array(
-	'rightfunctions-desc'          => 'Parserfunktioner som är baserade på användarrättigheter',
+	'rightfunctions-desc'     => 'Parserfunktioner som är baserade på användarrättigheter',
 	'rightfunctions-restboth' => '$1 (från lokal sida), $2 (från kaskaderade källor)',
 	'rightfunctions-restcasc' => '$1 (från kaskaderade källor)',
 );

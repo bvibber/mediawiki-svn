@@ -318,7 +318,7 @@ $messages['lv'] = array(
 	'filelist-image-desc' => 'apraksts',
 );
 
-/** Moksha (мокшень кяль)
+/** Moksha (Мокшень)
  * @author Siebrand
  */
 $messages['mdf'] = array(
@@ -538,7 +538,7 @@ $messages['sv'] = array(
 	'filelist-image-desc'   => 'beskrivning',
 );
 
-/** Silesian (ślůnski)
+/** Silesian (Ślůnski)
  * @author Siebrand
  */
 $messages['szl'] = array(

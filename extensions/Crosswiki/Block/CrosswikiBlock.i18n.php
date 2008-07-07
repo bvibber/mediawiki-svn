@@ -976,7 +976,7 @@ Asseguratz-vos qu'avètz los dreches e respectatz las règlas en vigor sus aques
 	'crosswikiunblock-user'         => "Nom d'utilizaire, adreça IP o l'id de blocatge e lo wiki ciblat :",
 	'crosswikiunblock-reason'       => 'Motiu :',
 	'crosswikiunblock-submit'       => 'Deblocar en escritura aqueste utilizaire',
-	'crosswikiunblock-success'      => "L'utilizaire '''1$''' es estat desblocat en escritura amb succès.
+	'crosswikiunblock-success'      => "L'utilizaire '''$1''' es estat desblocat en escritura amb succès.
 
 Tornar a :
 * [[Special:CrosswikiBlock|Formulari de blocatge]]

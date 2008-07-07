@@ -163,13 +163,6 @@ $messages['af'] = array(
 	'configure-section-users'        => 'Gebruikers',
 	'configure-section-search'       => 'Soek',
 );
-/** Aragonese (Aragonés)
- * @author Juanpabl
- */
-$messages['an'] = array(
-	'configure-desc-ns'            => 'Espazios de nombres',
-	'configure-section-namespaces' => 'Espazios de nombres',
-);
 
 /** Aragonese (Aragonés)
  * @author Juanpabl
@@ -413,7 +406,7 @@ Abyste mohli používat toto rozšíření, vytvořte ho nebo změňte konfigura
 	'viewconfig'                          => 'Zobrazit nastavení wiki',
 );
 
-/** Church Slavic (Словѣньскъ)
+/** Church Slavic (Словѣ́ньскъ / ⰔⰎⰑⰂⰡⰐⰠⰔⰍⰟ)
  * @author ОйЛ
  */
 $messages['cu'] = array(

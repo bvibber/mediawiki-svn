@@ -1169,7 +1169,7 @@ $allMessages['vi'] = array(
 	'whitelistnever'           => 'không bao giờ',
 );
 
-/** ‪中文(台灣)‬ (‪中文(台灣)‬)
+/** Taiwan Chinese (‪中文(台灣)‬)
  * @author Roc michael
  */
 $allMessages['zh-tw'] = array(
