@@ -35,13 +35,7 @@ will be able to see the whole configuration, so PLEASE MAKE IT UNREADABLE BY
 WEB USERS OR CHANGE IT TO A DIRECTORY THAT ISN'T ACCESSIBLE VIA THE WEB.
 YOU HAVE BEEN WARNED.
 
-You can change the settings in Special:Configure. By default this page is only
-accessible by bureaucrat. You can change this by granting the 'configure' right
-to any group. This right allow to change only "common" settings. If you want to
-be able to change all settings, you will need to have the 'configure-all' right.
-This right allow to change some specific settings, like paths, database settings
-(all what need also "external" changes, i.e. server rewrite rules, squid
-configuration, ...) but also $wgGroupPermission.
+== Hints ==
 
 Although this extension allows you to configure all settings, it's recommended
 to keep the original LocalSettings.php file. You can simply add the extension
@@ -70,3 +64,5 @@ you can do either:
 * Some settings are still uneditable because of their array usage, this will
   need to develop some specific method to change them.
 * Many other things, if i have time :)
+
+See http://www.mediawiki.org/wiki/Extension:Configure for more information.
