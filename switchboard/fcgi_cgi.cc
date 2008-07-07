@@ -46,43 +46,92 @@ fcgi_cgi::fcgi_cgi(
 
 	assert(app_);
 
-	fcgi::params::const_iterator it = params.find("SCRIPT_NAME");
-	if (it == params.end())
-		throw creation_failure("SCRIPT_NAME not specified");
-
-	std::string script_name = it->second;
-	if (script_name.empty())
-		throw creation_failure("SCRIPT_NAME is empty");
-
 	std::string pathname;
-	if (script_name.size() >= 2 &&
-	    script_name[0] == '/' && script_name[1] == '~') {
-		/*
-		 * The format is /~user/path/to/script.php
-		 * We need to change it to /home/user/public_html/path/to/script.php.
-		 */
-		std::string username;
-		std::string script;
-		script_name.erase(script_name.begin(), script_name.begin() + 2);
-		if (script_name.empty())
-			throw creation_failure("invalid SCRIPT_NAME");
-		std::string::size_type n = script_name.find('/');
-		username.assign(script_name.begin(), script_name.begin() + n);
-		script.assign(script_name.begin() + n + 1, script_name.end());
+	std::map<std::string, std::string>::iterator it;
 
-		struct passwd *pwd;
-		if ((pwd = getpwnam(username.c_str())) == NULL)
-			throw creation_failure("user does not exist");
-		pathname = std::string(pwd->pw_dir) + '/' + mainconf.userdir
-			+ '/' + script;
-	} else {
+	/*
+	 * Trying to find the script from path the env is a mess.  Under SJS 
+	 * web server, we take the value from SCRIPT_NAME, and translate it 
+	 * into a path on disk using the 'docroot' and 'userdir' configuration 
+	 * options.  Under Apache, this doesn't work, because SCRIPT_NAME 
+	 * contains garbage.  Instead we take PATH_TRANSLATED, which is the 
+	 * on-disk path with the PATH_INFO appended, and remove path components 
+	 * from it until we end up with a path which exists.
+	 *
+	 * Other web servers might require different handling; I haven't tested 
+	 * any other than SJS and Apache.
+	 */
+	if ((it = params.find("PATH_TRANSLATED")) != params.end()) {
+		std::string s = it->second;
+		struct stat sb;
+		while (stat(s.c_str(), &sb) == -1
+			&& errno == ENOTDIR)
+		{
+			std::string::size_type n;
+			if ((n = s.rfind('/')) == std::string::npos)
+				break;
+
+			s.erase(n);
+		}
+
+		if (stat(s.c_str(), &sb) == 0) {
+			pathname = s;
+		}
+
 		/*
-		 * Script is relative to docroot.
+		 * Make sure the path is under the docroot or the user's 
+		 * userdir.
 		 */
-		pathname = mainconf.docroot + script_name;
+		std::string x = mainconf.docroot + '/';
+		if (s.substr(0, x.size()) != x) {
+			struct passwd *pwd = getpwuid(sb.st_uid);
+			if (pwd == NULL)
+				throw creation_failure("script owner doesn't exist");
+			x = std::string(pwd->pw_dir) + '/' + mainconf.userdir + '/';
+			if (s.substr(0, x.size()) != x)
+				throw creation_failure("script not under docroot or userdir");
+		}
 	}
 
-	params["SCRIPT_FILENAME"] = pathname;
+	if (pathname.empty()) {
+		if ((it = params.find("SCRIPT_NAME")) == params.end())
+			throw creation_failure("neither SCRIPT_NAME nor PATH_TRANSLATED specified");
+
+		std::string script_name = it->second;
+		if (script_name.empty())
+			throw creation_failure("SCRIPT_NAME is empty");
+
+		if (script_name.size() >= 2 &&
+		    script_name[0] == '/' && script_name[1] == '~') {
+			/*
+			 * The format is /~user/path/to/script.php
+			 * We need to change it to 
+			 * /home/user/public_html/path/to/script.php.
+			 */
+			std::string username;
+			std::string script;
+			script_name.erase(script_name.begin(), script_name.begin() + 2);
+			if (script_name.empty())
+				throw creation_failure("invalid SCRIPT_NAME");
+			std::string::size_type n = script_name.find('/');
+			username.assign(script_name.begin(), script_name.begin() + n);
+			script.assign(script_name.begin() + n + 1, script_name.end());
+
+			struct passwd *pwd;
+			if ((pwd = getpwnam(username.c_str())) == NULL)
+				throw creation_failure("user does not exist");
+			pathname = std::string(pwd->pw_dir) + '/' + mainconf.userdir
+				+ '/' + script;
+		} else {
+			/*
+			 * Script is relative to docroot.
+			 */
+			pathname = mainconf.docroot + script_name;
+		}
+		params["SCRIPT_FILENAME"] = pathname;
+	}
+
+	//params["SCRIPT_FILENAME"] = pathname;
 
 	process_ = context_.factory().create_from_filename(pathname);
 	process_->connect(child_socket_.next_layer());

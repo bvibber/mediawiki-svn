@@ -128,12 +128,16 @@ fcgi_application::record_from_server(fcgi::recordp record)
 		} else {
 			std::pair<std::string, std::string> p;
 			fcgi::decode_params(record->contentData.begin(), record->contentData.end(), &p);
-			if (p.first != "PATH_TRANSLATED") {
+#if 0
+			if (p.first != "PATH_TRANSLATEDx") {
 				params_.insert(p);
 				if (!cgi_)
 					buffer.push_back(record);
 			} 
-					//std::inserter(params_, params_.begin()));
+#else
+			if (!cgi_)
+				buffer.push_back(record);
+#endif
 		}
 		break;
 

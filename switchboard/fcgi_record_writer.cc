@@ -125,6 +125,10 @@ fcgi_record_writer::write_done(
 		return;
 	}
 
+	if (socket_.next_layer().native() == -1) {
+		return;
+	}
+
 	assert(socket_.next_layer().native() != -1);
 	if (error) {
 		LOG4CXX_DEBUG(logger, format("record_writer@%p: error: %s")

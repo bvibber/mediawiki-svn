@@ -85,6 +85,11 @@ async_fcgi_reader::read_header_done(
 		const boost::system::error_code &error,
 		std::size_t bytes)
 {
+	if (error == asio::error::operation_aborted) {
+		delete this;
+		return;
+	}
+
 	if (error) {
 		LOG4CXX_DEBUG(logger, format("reader@%p: header read failed: %s")
 				% this % error.message());
@@ -132,6 +137,11 @@ async_fcgi_reader::read_data_done(
 			% this % bytes
 			% (record->content_length()+record->paddingLength)
 			% error.message());
+	if (error == asio::error::operation_aborted) {
+		delete this;
+		return;
+	}
+
 	if (error)
 		service_.post(boost::bind(call_, fcgi::recordp()));
 	else

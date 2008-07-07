@@ -279,7 +279,8 @@ dostat:
 
 	signal(SIGTERM, sigexit);
 	signal(SIGINT, sigexit);
-	signal(SIGCHLD, sigchld);
+	//signal(SIGCHLD, sigchld);
+	signal(SIGCHLD, SIG_IGN);
 
 	//	context.service().run();
 	for (;;) {
