@@ -147,10 +147,10 @@ function makeProtectForm() {
 }
 
 function userIsAuthor() {
-	global $wgTitle, $wgUser, $wgDBPrefix;
+	global $wgTitle, $wgUser, $wgDBprefix;
 	$id = $wgTitle->getArticleId();
 	$dbr = wfGetDb(DB_SLAVE); //grab the slave for reading
-	$res = $dbr->query( "SELECT `rev_user` FROM `{$wgDBPrefix}revision` WHERE rev_page={$id} LIMIT 1", __METHOD__ );
+	$res = $dbr->query( "SELECT `rev_user` FROM `{$wgDBprefix}revision` WHERE rev_page={$id} LIMIT 1", __METHOD__ );
 	$row = $dbr->fetchRow($res);
 	return $wgUser->getID() == $row['rev_user'];
 }
