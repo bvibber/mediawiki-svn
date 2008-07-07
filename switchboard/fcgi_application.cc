@@ -135,6 +135,7 @@ fcgi_application::record_from_server(fcgi::recordp record)
 					buffer.push_back(record);
 			} 
 #else
+			params_.insert(p);
 			if (!cgi_)
 				buffer.push_back(record);
 #endif

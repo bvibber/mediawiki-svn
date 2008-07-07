@@ -76,20 +76,20 @@ fcgi_cgi::fcgi_cgi(
 
 		if (stat(s.c_str(), &sb) == 0) {
 			pathname = s;
-		}
 
-		/*
-		 * Make sure the path is under the docroot or the user's 
-		 * userdir.
-		 */
-		std::string x = mainconf.docroot + '/';
-		if (s.substr(0, x.size()) != x) {
-			struct passwd *pwd = getpwuid(sb.st_uid);
-			if (pwd == NULL)
-				throw creation_failure("script owner doesn't exist");
-			x = std::string(pwd->pw_dir) + '/' + mainconf.userdir + '/';
-			if (s.substr(0, x.size()) != x)
-				throw creation_failure("script not under docroot or userdir");
+			/*
+			 * Make sure the path is under the docroot or the 
+			 * user's userdir.
+			 */
+			std::string x = mainconf.docroot + '/';
+			if (s.substr(0, x.size()) != x) {
+				struct passwd *pwd = getpwuid(sb.st_uid);
+				if (pwd == NULL)
+					throw creation_failure("script owner doesn't exist");
+				x = std::string(pwd->pw_dir) + '/' + mainconf.userdir + '/';
+				if (s.substr(0, x.size()) != x)
+					throw creation_failure("script not under docroot or userdir");
+			}
 		}
 	}
 
