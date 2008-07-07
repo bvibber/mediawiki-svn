@@ -287,7 +287,14 @@ class Category {
 		}
 	}
 	
-	public function moveTo( $nt, $createRedirect = true ) {
+	/**
+	 * Move this category object to $nt
+	 *
+	 * @param Title $nt
+	 * @param boolean $createRedirect
+	 * @return mixed true on success, getUserPermissionsErrors()-like array on failure
+	 */
+	public function moveTo( Title $nt, $createRedirect = true ) {
 		global $wgUser;
 		
 		if ( !$this->getID() ) {
@@ -297,10 +304,9 @@ class Category {
 		
 		$to = Category::newFromTitle( $nt );
 		
-		$dbw = wfGetDB( DB_MASTER );
-		
 		if ( !$to->getID() ) {
 			# Hooray ! Target category does not exist :)
+			$dbw = wfGetDB( DB_MASTER );
 			$dbw->begin();
 			$dbw->update(
 				'category',
@@ -315,26 +321,56 @@ class Category {
 				);
 			}
 			$dbw->commit();
+			
 		} else {
-			die('Moves over existing categories are unimplemented');
 			# The target category exists !
-			$dbw->begin();/*
+			$dbr = wfGetDB( DB_SLAVE );
+			$res = $dbr->select('categorylinks', 
+								'1', 
+								array('cl_target' => $to->getID()),
+								__METHOD__,
+								array('LIMIT' => 1) );
+								
+			if ( $res->numRows() > 0 ) {
+				return array( 'cantmove-cat-notempty' );
+			}
+			# No links in categorylinks... is there a job awaiting to modify that category ?
+			$res = $dbr->select('job',
+								'1',
+								array( 'job_cmd' => 'categoryMoveJob',
+									   'job_namespace' => NS_CATEGORY,
+									   'job_title' => $to->getName()),
+										__METHOD__,
+										array('LIMIT' => 1 ) );
+									
+			if ( $res->numRows() > 0 ) {
+				return array( 'cantmove-cat-pendingjobs' );
+			}
+			# No jobs in progress either. We can safely overwrite the target category
+			$dbw = wfGetDB( DB_MASTER );
+			$dbw->begin();
 			$dbw->update(
 				'category',
-				array(  'cat_title' => $to->getName(),
-						'cat'))
-			*/
-			if ( $to->getRedir() != $this->mID ) {
-				# The target category is *not* a redirect to the source category
+				array( 'cat_title' => $to->getName() ),
+				array( 'cat_id' => $this->mID ),
+				__METHOD__ );
 				
-				$cl_target = $this->getRedir();
-				if ( $cl_target === null ) {
-					$cl_target = $this->mID;
-				}
-				$update = new CategoryLinksUpdate( $this->mTitle, $this->mID, $cl_target, $to->getID());
-				$update->doUpdate();
+			if ( $createRedirect || !$wgUser->isAllowed('suppressredirect') ) {
+				# convert $to into a redirect
+				$dbw->update(
+					'category',
+					array( 'cat_title' => $this->mName, 'cat_redir' => $this->mID ),
+					array( 'cat_id' => $to->getID() ),
+					__METHOD__ );
+			} else {
+				# delete $to
+				$dbw->delete(
+					'category',
+					array( 'cat_id' => $to->getID() ),
+					__METHOD__ );
 			}
 			$dbw->commit();
 		}
+		return true;
 	}
 }

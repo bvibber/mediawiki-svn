@@ -118,7 +118,7 @@ class Article {
 				array( 'cat_redir' => $to_id),
 				array( 'cat_title' => $this->mTitle->getDBKey() ),
 				__METHOD__ );
-			$update = new CategoryLinksUpdate( $this->mTitle, $cur_id, $cur_id, $to_id );
+			$update = new CategoryLinksUpdate( $retval, $cur_id, $cur_id, $to_id );
 			$update->doUpdate();
 		}
 		return $retval;
@@ -1211,8 +1211,7 @@ class Article {
 					$cur_redir = $cur->getRedir();
 					if ( !$cur_redir )
 						$cur_redir = $cur_id;
-					print_r("$cur_id $cur_redir $to_id");
-					$update = new CategoryLinksUpdate( $this->mTitle, $cur_id, $cur_redir, $to_id );
+					$update = new CategoryLinksUpdate( $redirectTitle, $cur_id, $cur_redir, $to_id );
 					$update->doUpdate();
 				}
 			} else {

@@ -2501,6 +2501,17 @@ class Title {
 		if( is_array( $err ) ) {
 			return $err;
 		}
+		
+		# We need to perform the category move before the page move :
+		# it might abort if the target *category* exists
+		if ($this->getNamespace() == NS_CATEGORY ) {
+			$cat = Category::newFromTitle( $this );
+			$err = $cat->moveTo( $nt, $createRedirect );
+		}
+		
+		if( is_array( $err ) ) {
+			return $err;
+		}
 
 		$pageid = $this->getArticleID();
 		if( $nt->exists() ) {
@@ -2514,10 +2525,7 @@ class Title {
 		if( is_array( $err ) ) {
 			return $err;
 		}
-		if ($this->getNamespace() == NS_CATEGORY ) {
-			$cat = Category::newFromTitle( $this );
-			$cat->moveTo( $nt, $createRedirect );
-		}
+
 		$redirid = $this->getArticleID();
 
 		// Category memberships include a sort key which may be customized.

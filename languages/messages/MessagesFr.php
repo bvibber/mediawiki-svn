@@ -1960,6 +1960,8 @@ Dans ce cas, vous devrez renommer ou fusionner la page manuellement si vous le d
 'pagemovedsub'            => 'Renommage réussi',
 'articleexists'           => 'Il existe déjà un article portant ce titre, ou le titre que vous avez choisi n’est pas valide. Veuillez en choisir un autre.',
 'cantmove-titleprotected' => 'Vous ne pouvez pas déplacer une page vers cet emplacement car le nouveau titre a été protégé à la création.',
+'cantmove-cat-notempty'   => 'Vous ne pouvez pas déplacer cette catégorie vers cet emplacement car la nouvelle catégorie contient déjà des pages',
+'cantmove-cat-pendingjobs'=> 'Vous ne pouvez pas déplacer cette catégorie vers cet emplacement parce que des travaux en attente sont susceptibles d\'ajouter des pages à la nouvelle catégorie',
 'talkexists'              => 'La page elle-même a été déplacée avec succès, mais la page de discussion n’a pas pu être déplacée car il en existait déjà une sous le nouveau nom. Veuillez les fusionner manuellement.',
 'movedto'                 => 'renommé en',
 'movetalk'                => 'Renommer aussi la page de discussion associée',

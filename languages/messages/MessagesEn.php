@@ -2437,6 +2437,8 @@ In those cases, you will have to move or merge the page manually if desired.",
 'articleexists'           => 'A page of that name already exists, or the name you have chosen is not valid.
 Please choose another name.',
 'cantmove-titleprotected' => 'You cannot move a page to this location, because the new title has been protected from creation',
+'cantmove-cat-notempty'   => 'You cannot move a category to this location, because the new category contains pages',
+'cantmove-cat-pendingjobs'=> 'You cannot move a category to this location, because pending jobs in the Job Queue are expected to add pages to this new category',
 'talkexists'              => "'''The page itself was moved successfully, but the talk page could not be moved because one already exists at the new title.
 Please merge them manually.'''",
 'movedto'                 => 'moved to',

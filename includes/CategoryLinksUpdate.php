@@ -15,7 +15,7 @@ class CategoryLinksUpdate
 	/**
 	 * Moving a category from ($fromInline, $fromTarget) to cl_target $toTargetID
 	 *
-	 * @param Title $title cat_title (unused, needed for Job::factory)
+	 * @param Title $title cat_title of the target category
 	 * @param int $fromInline
 	 * @param int $fromTarget
 	 * @param int $toID

@@ -1669,6 +1669,8 @@ $wgMessageStructure = array(
 		'movepage-moved',
 		'articleexists',
 		'cantmove-titleprotected',
+		'cantmove-cat-notempty',
+		'cantmove-cat-pendingjobs',
 		'talkexists',
 		'movedto',
 		'movetalk',
