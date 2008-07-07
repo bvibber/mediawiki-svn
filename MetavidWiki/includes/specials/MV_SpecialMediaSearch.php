@@ -214,7 +214,16 @@ class MV_SpecialMediaSearch extends SpecialPage {
 		//print "CUR un: " . $this->unified_term_search;
 	}
 	function doSearch() {	
+		global $mvEnableSearchDigest,$mvSearchDigestTable;
 		$mvIndex = new MV_Index();
+		//do search digest
+		if($mvEnableSearchDigest){
+			$dbw =& wfGetDB(DB_WRITE);
+			//@@todo non-blocking insert... is that even supported in mysql/php? 
+			$dbw->insert($mvSearchDigestTable, 
+				array('query'=>$this->unified_term_search, 'time'=>time()), 
+				'Database::searchDigestInsert' );
+		}
 		$this->results = $mvIndex->doFiltersQuery($this->filters);
 		$this->num = $mvIndex->numResults();
 		$this->numResultsFound = $mvIndex->numResultsFound();

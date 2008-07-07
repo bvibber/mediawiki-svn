@@ -33,9 +33,15 @@ $mvEnableJSMVDrewrite=true;
 ##########################
 # semanticWiki integration options
 ##########################
-
 //@@todo we should clean this up!... into a semantic maping array or object
 //if you want to include spoken by relation in search results:  
+
+//keeps tracks of search queries 
+$mvEnableSearchDigest = true;
+//keeps track of popular pages in given categories over time
+$mvDigestCategories = array('Interst_Group', 'Bill', 'Person');
+
+
 $mvSpokenByInSearchResult = true;
 //if you want to include category lookup in search results:
 $mvCategoryInSearchResult = true;
@@ -136,6 +142,8 @@ $mvStreamFilesTable	= 'mv_stream_files';
 $mvIndexTableName 	= 'mv_mvd_index';
 $mvStreamImageTable = 'mv_stream_images';
 $mvUrlCacheTable 	= 'mv_url_cache';
+$mvPageDigestTable		= 'mv_page_digest';
+$mvSearchDigestTable	= 'mv_search_digest';
 
 //whether to count found results (can take lots of time on big result sets)
 $mvDo_SQL_CALC_FOUND_ROWS = true;

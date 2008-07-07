@@ -1370,7 +1370,7 @@ mediaElement.prototype =
         if(typeof roe_data == 'string')
         {
             var parser=new DOMParser();
-            js_log(roe_data)
+            js_log(roe_data);
             roe_data=parser.parseFromString(roe_data,"text/xml");
         }
         if(roe_data){

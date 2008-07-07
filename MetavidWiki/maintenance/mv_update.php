@@ -6,6 +6,7 @@
 require_once ('../../../maintenance/commandLine.inc');
 
 $dbclass = 'Database' . ucfirst( $wgDBtype ) ;
+
 # Attempt to connect to the database as a privileged user
 # This will vomit up an error if there are permissions problems
 $wgDatabase = new $dbclass( $wgDBserver, $wgDBadminuser, $wgDBadminpassword, $wgDBname, 1 );
@@ -14,6 +15,29 @@ $wgDatabase = new $dbclass( $wgDBserver, $wgDBadminuser, $wgDBadminpassword, $wg
 //do mvd_index text removal update:
 //check if mvd_index has text field
 $page_id_added=false; 
+
+//install the new search index tables: 
+if(!$wgDatabase->tableExists('mv_search_digest')){
+	$sql ='CREATE TABLE `mv_search_digest` (
+	`id` INT( 11 ) NOT NULL AUTO_INCREMENT PRIMARY KEY ,
+	`query` VARCHAR( 64 ) NOT NULL ,
+	`time` INT( 11 ) NOT NULL ,
+	INDEX ( `query` , `time` )
+	) ENGINE = MYISAM'; 
+	$wgDatabase->query($sql);
+}
+if(!$wgDatabase->tableExists('mv_page_digest')){
+	$sql=' CREATE TABLE `mv_mvd_digest` (
+	`id` INT( 11 ) NOT NULL ,
+	`mvd_page_id` VARCHAR( 11 ) NOT NULL ,
+	`time` INT( 11 ) NOT NULL ,
+	PRIMARY KEY ( `id` ) ,
+	INDEX ( `mvd_page_id` , `time` )
+	) ENGINE = MYISAM ';
+	$wgDatabase->query($sql);
+}
+
+
 if(!$wgDatabase->fieldExists($mvIndexTableName, 'page_id')){
 	print "$mvIndexTableName missing `page_id`...adding\n ";
 	$page_id_added=true;

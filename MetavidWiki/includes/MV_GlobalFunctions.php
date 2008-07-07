@@ -59,6 +59,7 @@ $markerList = array();
 //don't override special search page: (requires ExtensionFunctions.php)
 extAddSpecialPage( dirname(__FILE__) . '/specials/MV_SpecialMediaSearch.php', 'Search', 'MV_SpecialSearch' );
 
+
 function enableMetavid() {	
 	global $wgExtensionFunctions, $smwgNamespacesWithSemanticLinks;
 	$wgExtensionFunctions[] = 'mvSetupExtension';	
@@ -111,9 +112,8 @@ function mvSetupExtension(){
 	$wgHooks['CustomEditor'][] = 'mvCustomEditor';
 	$wgParser->setHook( 'sequence', 'mvSeqTag' );
 
-	$wgHooks['BeforePageDisplay'][] = 'mvDoSpecialPage';
-	
-	
+	//$wgHooks['BeforePageDisplay'][] = 'mvDoSpecialPage';	
+	//$wgHooks['ArticleViewHeader'][] = 'mvArticleViewOpts';
 	/**********************************************/
 	/***** credits (see "Special:Version")    *****/
 	/**********************************************/
