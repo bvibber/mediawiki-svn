@@ -4,7 +4,7 @@ CC		= gcc
 CXX		= g++
 CPPFLAGS	=
 INCLUDES	= $(EXTRA_CPPFLAGS)
-CFLAGS		= -O0 -g3 -ggdb
+CFLAGS		= -O3 -g3 -ggdb
 LDFLAGS		= $(EXTRA_LDFLAGS)
 LIBS		= -llog4cxx -lboost_system$(BOOSTTAG) $(EXTRA_LIBS)
 

@@ -14,7 +14,6 @@
 
 #include	<boost/asio/ip/tcp.hpp>
 #include	<boost/asio/buffer.hpp>
-#include	<boost/asio/buffered_write_stream.hpp>
 #include	<boost/system/error_code.hpp>
 #include	<boost/function.hpp>
 #include	<boost/noncopyable.hpp>
@@ -35,7 +34,7 @@ namespace record_writer_detail {
 struct fcgi_record_writer : boost::noncopyable {
 	fcgi_record_writer(
 		sbcontext &context,
-		buffered_tcp_socket &socket,
+		boost::asio::ip::tcp::socket &socket,
 		boost::function<void (boost::system::error_code const &)> errorfunc);
 
 	void write(fcgi::recordp record);
@@ -45,7 +44,7 @@ struct fcgi_record_writer : boost::noncopyable {
 
 private:
 	sbcontext &context_;
-	buffered_tcp_socket &socket_;
+	boost::asio::ip::tcp::socket &socket_;
 	std::vector<record_writer_detail::pending_record> inflight_;
 	std::vector<record_writer_detail::pending_record> waiting_;
 	std::vector<boost::asio::mutable_buffer> buffers_;

@@ -34,7 +34,7 @@ fcgi_cgi::fcgi_cgi(
 		fcgi_application *app,
 		fcgi::params &params)
 	: context_(context)
-	, child_socket_(context_.service(), 8192, 8192)
+	, child_socket_(context_.service())
 	, app_(app)
 	, writer_(context, child_socket_, boost::bind(&fcgi_cgi::writer_error, this, _1))
 	, request_id_(request_id)
@@ -134,9 +134,9 @@ fcgi_cgi::fcgi_cgi(
 	//params["SCRIPT_FILENAME"] = pathname;
 
 	process_ = context_.factory().create_from_filename(pathname);
-	process_->connect(child_socket_.next_layer());
+	process_->connect(child_socket_);
 	tcp::socket::non_blocking_io cmd(true);
-	child_socket_.next_layer().io_control(cmd);
+	child_socket_.io_control(cmd);
 
 	LOG4CXX_DEBUG(logger, format("[req=%d] connected to child")
 			% request_id_);
@@ -178,8 +178,8 @@ fcgi_cgi::writer_error(boost::system::error_code const &error)
 {
 	LOG4CXX_DEBUG(logger, format("[req=%d] write to child completed with error: %s")
 			% request_id_ % error.message());
-    if (app_)
-        app_->destroy();
+	if (app_)
+		app_->destroy();
 }
 
 void
@@ -247,8 +247,8 @@ fcgi_cgi::destroy()
 {
 	LOG4CXX_DEBUG(logger, format("[req=%d] cgi@%p, destroy() called") 
 			% request_id_ % this);
-    if (app_)
-        app_ = NULL;
+	if (app_)
+		app_ = NULL;
 
 	/*
 	 * To destroy ourselves, we close the socket, then post a 'delete this'

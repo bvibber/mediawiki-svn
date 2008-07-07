@@ -20,7 +20,7 @@ using boost::format;
 
 fcgi_server_connection::fcgi_server_connection(
 		sbcontext &context)
-	: socket_(context.service(), 8192, 8192)
+	: socket_(context.service())
 	, context_(context)
 	, alive_(true)
 	, writer_(context, socket_,
@@ -111,12 +111,12 @@ fcgi_server_connection::start()
 {
 	LOG4CXX_DEBUG(logger, "starting server request processing");
 	tcp::socket::non_blocking_io cmd(true);
-	socket_.next_layer().io_control(cmd);
+	socket_.io_control(cmd);
 	async_read_fcgi_record(socket_, error_, 
 			boost::bind(&fcgi_server_connection::handle_record, this, _1));
 }
 
-buffered_tcp_socket &
+tcp::socket &
 fcgi_server_connection::socket()
 {
 	return socket_;

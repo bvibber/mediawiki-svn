@@ -22,7 +22,7 @@ using namespace record_writer_detail;
 
 fcgi_record_writer::fcgi_record_writer(
 		sbcontext &context,
-		buffered_tcp_socket &socket,
+		tcp::socket &socket,
 		boost::function<void (boost::system::error_code const &)> errorfunc)
 	: context_(context)
 	, socket_(socket)
@@ -36,7 +36,7 @@ fcgi_record_writer::fcgi_record_writer(
 void
 fcgi_record_writer::write_noflush(fcgi::recordp record)
 {
-	assert(socket_.next_layer().native() != -1);
+	assert(socket_.native() != -1);
 	LOG4CXX_DEBUG(logger, format("record_writer@%p: write_noflush()") % this);
 
 	pending_record pend = {
@@ -54,7 +54,7 @@ fcgi_record_writer::write_noflush(fcgi::recordp record)
 void
 fcgi_record_writer::write(fcgi::recordp record)
 {
-	assert(socket_.next_layer().native() != -1);
+	assert(socket_.native() != -1);
 	LOG4CXX_DEBUG(logger, format("record_writer@%p: write()") % this);
 
 	write_noflush(record);
@@ -64,7 +64,7 @@ fcgi_record_writer::write(fcgi::recordp record)
 void
 fcgi_record_writer::flush()
 {
-	assert(socket_.next_layer().native() != -1);
+	assert(socket_.native() != -1);
 	if (!inflight_.empty() || waiting_.empty())
 		return;
 
@@ -99,7 +99,7 @@ fcgi_record_writer::flush_done(boost::system::error_code const &error)
 	 * Somehow, the native socket can end up as -1 here, even though
 	 * there's no error.
 	 */
-	if (socket_.next_layer().native() == -1) {
+	if (socket_.native() == -1) {
 		return;
 	}
 
@@ -125,11 +125,11 @@ fcgi_record_writer::write_done(
 		return;
 	}
 
-	if (socket_.next_layer().native() == -1) {
+	if (socket_.native() == -1) {
 		return;
 	}
 
-	assert(socket_.next_layer().native() != -1);
+	assert(socket_.native() != -1);
 	if (error) {
 		LOG4CXX_DEBUG(logger, format("record_writer@%p: error: %s")
 				% this % error.message());
@@ -137,9 +137,15 @@ fcgi_record_writer::write_done(
 		return;
 	}
 
+#if 0
 	socket_.async_flush(boost::bind(
 			&fcgi_record_writer::flush_done, this,
 			asio::placeholders::error));
+#else
+	std::vector<pending_record>().swap(inflight_);
+	std::vector<asio::mutable_buffer>().swap(buffers_);
+	flush();
+#endif
 
 	LOG4CXX_DEBUG(logger, format("record_writer@%p: write_done") % this);
 }

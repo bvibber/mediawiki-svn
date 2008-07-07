@@ -13,7 +13,6 @@
 #include	<vector>
 
 #include	<boost/asio/ip/tcp.hpp>
-#include	<boost/asio/buffered_stream.hpp>
 #include	<log4cxx/logger.h>
 
 #include	"switchboard.h"
@@ -30,13 +29,13 @@ struct fcgi_server_connection {
 	void	record_to_server(fcgi::recordp record);
 	void	destroy(int id);
 
-	buffered_tcp_socket &socket();
+	boost::asio::ip::tcp::socket &socket();
 
 private:
 	void	handle_record(fcgi::recordp record);
 
 	std::vector<fcgi_application *> requests_;
-	buffered_tcp_socket socket_;
+	boost::asio::ip::tcp::socket socket_;
 	sbcontext &context_;
 	boost::system::error_code error_;
 	fcgi::recordp record_;

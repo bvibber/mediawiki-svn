@@ -10,11 +10,4 @@
 #ifndef SWITCHBOARD_H
 #define SWITCHBOARD_H
 
-#include	<boost/asio/ip/tcp.hpp>
-#include	<boost/asio/buffered_stream.hpp>
-
-typedef boost::asio::buffered_stream<
-		boost::asio::ip::tcp::socket>
-	buffered_tcp_socket;
-
 #endif

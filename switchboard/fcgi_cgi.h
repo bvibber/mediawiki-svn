@@ -51,7 +51,7 @@ private:
 	void handle_child_read(fcgi::recordp record);
 
 	sbcontext &context_;
-	buffered_tcp_socket child_socket_;
+	boost::asio::ip::tcp::socket child_socket_;
 	boost::system::error_code child_read_error_;
 	fcgi_application *app_;
 	processp process_;

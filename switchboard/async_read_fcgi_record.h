@@ -17,7 +17,7 @@
 #include	"fcgi.h"
 
 	void	async_read_fcgi_record(
-			buffered_tcp_socket &, 
+			boost::asio::ip::tcp::socket &, 
 			boost::system::error_code &,
 			boost::function<void (fcgi::recordp)>);
 

@@ -32,7 +32,7 @@ fcgi_listener::fcgi_listener(
 	acceptor.set_option(tcp::acceptor::reuse_address(true));
 	fcntl(acceptor.native(), F_SETFD, FD_CLOEXEC);
 	fcgi_server_connection *new_connection = new fcgi_server_connection(context);
-	acceptor.async_accept(new_connection->socket().next_layer(),
+	acceptor.async_accept(new_connection->socket(),
 			boost::bind(&fcgi_listener::handle_accept, this,
 				new_connection, boost::asio::placeholders::error));
 
@@ -44,7 +44,7 @@ fcgi_listener::handle_accept(
 		const boost::system::error_code &error)
 {
 	fcgi_server_connection *new_connection = new fcgi_server_connection(context);
-	acceptor.async_accept(new_connection->socket().next_layer(),
+	acceptor.async_accept(new_connection->socket(),
 			boost::bind(&fcgi_listener::handle_accept, this,
 				new_connection, boost::asio::placeholders::error));
 
@@ -56,8 +56,8 @@ fcgi_listener::handle_accept(
 		return;
 	}
 
-	fcntl(connection->socket().next_layer().native(), F_SETFD, FD_CLOEXEC);
-	connection->socket().next_layer().set_option(tcp::no_delay(true));
+	fcntl(connection->socket().native(), F_SETFD, FD_CLOEXEC);
+	connection->socket().set_option(tcp::no_delay(true));
 	connection->start();
 }
 

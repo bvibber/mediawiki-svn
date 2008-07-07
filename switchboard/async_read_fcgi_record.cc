@@ -22,7 +22,7 @@ using boost::format;
 namespace {
 	struct async_fcgi_reader {
 		async_fcgi_reader(
-				buffered_tcp_socket &socket,
+				tcp::socket &socket,
 				boost::system::error_code &error,
 				function<void (fcgi::recordp)> call);
 
@@ -34,7 +34,7 @@ namespace {
 				const boost::system::error_code &error,
 				std::size_t bytes);
 
-		buffered_tcp_socket &socket_;
+		tcp::socket &socket_;
 		boost::system::error_code &error_;
 		function<void (fcgi::recordp)> call_;
 		boost::array<asio::mutable_buffer, 2> data_bufs;
@@ -46,7 +46,7 @@ namespace {
 	};
 
 async_fcgi_reader::async_fcgi_reader(
-		buffered_tcp_socket &socket,
+		tcp::socket &socket,
 		boost::system::error_code &error,
 		function<void (fcgi::recordp)> call)
 	: socket_(socket)
@@ -57,7 +57,7 @@ async_fcgi_reader::async_fcgi_reader(
 	, logger(log4cxx::Logger::getLogger("switchboard.async_fcgi_reader"))
 {
 	LOG4CXX_DEBUG(logger, format("reader@%p: created (sock=%d)") 
-			% this % socket_.next_layer().native());
+			% this % socket_.native());
 }
 
 void
@@ -153,7 +153,7 @@ async_fcgi_reader::read_data_done(
 
 void 
 async_read_fcgi_record(
-		buffered_tcp_socket &socket, 
+		tcp::socket &socket, 
 		boost::system::error_code &error,
 		function<void (fcgi::recordp)> call)
 {
