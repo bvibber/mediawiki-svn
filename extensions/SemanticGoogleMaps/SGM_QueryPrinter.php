@@ -1,4 +1,5 @@
 <?php
+if (!defined('MEDIAWIKI')) die();
 /**
  * Print query results in a Google Map. Based on Google Maps API code
  * written by Robert Buzink and query results printing code written by
@@ -101,7 +102,7 @@ function makeMap{$wgGoogleMapsOnThisPage}() {
 	if (GBrowserIsCompatible()) {
 		var map = new GMap2(document.getElementById("map$wgGoogleMapsOnThisPage"));
 		map.addControl(new {$controls}());
-		map.addControl(new GMapTypeControl()); 
+		map.addControl(new GMapTypeControl());
 END;
 		if (count($locations) > 0) {
 			// get the extremes among these points to calculate
@@ -179,5 +180,4 @@ END;
 		}
 		return array($result, 'noparse' => 'true', 'isHTML' => 'true');
 	}
-
 }

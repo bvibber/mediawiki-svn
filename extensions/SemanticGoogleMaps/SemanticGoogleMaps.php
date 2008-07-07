@@ -1,27 +1,37 @@
 <?php
- 
+if (!defined('MEDIAWIKI')) die();
+/**
+ * An extension to that allows users to add Google Maps to wiki pages based
+ * on structured data
+ *
+ * @addtogroup Extensions
+ *
+ * @author Robert Buzink
+ * @author Yaron Koren
+ * @copyright Copyright © 2008, Robert Buzink
+ * @copyright Copyright © 2008, Yaron Koren
+ */
+
 # Define a setup function
 $wgExtensionFunctions[] = 'sgmSetup';
+
 # Add a hook to initialise the magic word
 $wgHooks['LanguageGetMagic'][] = 'sgmFunctionMagic';
 
-$sgmIP = dirname( __FILE__ );
-$wgExtensionMessagesFiles['SemanticGoogleMaps'] = "$sgmIP/SemanticGoogleMaps.i18n.php";
- 
+$wgExtensionMessagesFiles['SemanticGoogleMaps'] = dirname(__FILE__) . '/SemanticGoogleMaps.i18n.php';
+
 function sgmSetup() {
 	global $wgParser, $wgExtensionCredits;
 
-        // credits
-        $wgExtensionCredits['parserhook'][] = array(
-                'name' => 'Semantic Google Maps',
-                'version' => '0.3',
-                'author' => 'Robert Buzink and Yaron Koren',
-                'url' => 'http://www.mediawiki.org/wiki/Extension:Semantic_Google_Maps',
-                'description' => 'Allows users to add Google Maps to wiki pages based on structured data',
-                'descriptionmsg'  => '',
-        );
-
-	wfLoadExtensionMessages( 'SemanticGoogleMaps' );
+	// credits
+	$wgExtensionCredits['parserhook'][] = array(
+		'name'            => 'Semantic Google Maps',
+		'version'         => '0.3',
+		'author'          => 'author' => array( 'Robert Buzink', 'Yaron Koren' ),
+		'url'             => 'http://www.mediawiki.org/wiki/Extension:Semantic_Google_Maps',
+		'description'     => 'Allows users to add Google Maps to wiki pages based on structured data',
+		'descriptionmsg'  => 'semanticgooglemaps-desc',
+	);
 
 	// A hook to enable the '#semantic_google_map' parser function
 	$wgParser->setFunctionHook( 'semantic_google_map', 'sgmFunctionRender' );
@@ -30,12 +40,12 @@ function sgmSetup() {
 		$sfgFormPrinter->setInputTypeHook('googlemap', 'sgmInputHTML', array());
 		// for backwards compatibility
 		$sfgFormPrinter->setInputTypeHook('coordinatesmap', 'sgmInputHTML', array());
-          }
+	}
 
 	include_once('SGM_QueryPrinter.php');
 	SMWQueryProcessor::$formats['googlemap'] = 'SGMResultPrinter';
 }
- 
+
 function sgmFunctionMagic( &$magicWords, $langCode ) {
 	# Add the magic word
 	# The first array element is case sensitive, in this case it is not case sensitive
@@ -46,19 +56,19 @@ function sgmFunctionMagic( &$magicWords, $langCode ) {
 	# unless we return true, other parser functions extensions won't get loaded.
 	return true;
 }
- 
+
 function sgmFunctionRender( &$parser, $coordinates = '1,1', $zoom = '14', $type = 'G_NORMAL_MAP', $controls = 'GSmallMapControl', $class = 'pmap', $width = '200', $height = '200', $style = '' ) {
 	# The parser function itself
 	# The input parameters are wikitext with templates expanded
 	# The output is not parsed as wikitext
 	global $wgJsMimeType, $wgGoogleMapsKey, $wgGoogleMapsOnThisPage;
- 
+
 	if (!$wgGoogleMapsOnThisPage) {$wgGoogleMapsOnThisPage = 0;}
 	$wgGoogleMapsOnThisPage++;
 
 	$lat = sm_returnlatlon('lat',$coordinates);
 	$lon = sm_returnlatlon('lon',$coordinates);
- 
+
 	if ($width) {$style .= 'width: '.$width.'px; '; }
 	if ($height) {$style .= 'height: '.$height.'px; ';}
 
@@ -69,26 +79,25 @@ function sgmFunctionRender( &$parser, $coordinates = '1,1', $zoom = '14', $type 
 <script type="text/javascript"> function makeMap{$wgGoogleMapsOnThisPage}() { if (GBrowserIsCompatible()) {var map = new GMap2(document.getElementById("map{$wgGoogleMapsOnThisPage}")); map.addControl(new {$controls}()); map.addControl(new GMapTypeControl()); map.setCenter(new GLatLng({$lat}, {$lon}), {$zoom}, {$type}); var point = new GLatLng({$lat}, {$lon}); var marker = new GMarker(point); map.addOverlay(marker); } else { document.write('should show map'); } } addLoadEvent(makeMap{$wgGoogleMapsOnThisPage});</script>
 
 END;
- 
+
 	return array( $output, 'noparse' => true, 'isHTML' => true );
- 
+
 }
- 
+
 function sm_returnlatlon($param1 = '', $param2 = '' ) {
-        $coordinates = preg_split("/,/", $param2);
- 
+	$coordinates = preg_split("/,/", $param2);
+
 	if (count($coordinates) == 2) {
 		switch ($param1) {
-                        case 'lat':
-                                return sm_convert_coord($coordinates[0]);
-                        case 'lon':
-                                return sm_convert_coord($coordinates[1]);
+			case 'lat':
+			return sm_convert_coord($coordinates[0]);
+			case 'lon':
+			return sm_convert_coord($coordinates[1]);
 		}
 	}
 	return "";
 }
- 
- 
+
 function sm_degree2decimal($deg_coord="") {
 	$dpos=strpos($deg_coord,'°');
 	$mpos=strpos($deg_coord,'.');
@@ -109,51 +118,51 @@ function sm_degree2decimal($deg_coord="") {
 	}
 	return $decimal;
 }
- 
+
 function sm_decdegree2decimal($deg_coord="") {
-        $direction=substr(strrev($deg_coord),0,1);
-        $decimal=floatval($deg_coord);
-        if (($direction=="S") or ($direction=="W")) {
-                $decimal=$decimal*(-1);
-        }
-        return $decimal;
+	$direction=substr(strrev($deg_coord),0,1);
+	$decimal=floatval($deg_coord);
+	if (($direction=="S") or ($direction=="W")) {
+		$decimal=$decimal*(-1);
+	}
+	return $decimal;
 }
- 
+
 function sm_convert_coord ($deg_coord="") {
 	if (preg_match('/°/', $deg_coord)) {
 		if (preg_match('/"/', $deg_coord)) {
 			$deg_coord = sm_degree2decimal($deg_coord);
-		} else { 
+		} else {
 			$deg_coord = sm_decdegree2decimal($deg_coord);
-		} 
+		}
 	}
 	return $deg_coord;
 }
 
 function sgmLatDecimal2Degree($decimal) {
-  if ($decimal < 0) {
-    return abs($decimal) . "° S";
-  } else {
-    return $decimal . "° N";
-  }
-}
- 
+	if ($decimal < 0) {
+		return abs($decimal) . "° S";
+		} else {
+		return $decimal . "° N";
+		}
+	}
+
 function sgmLonDecimal2Degree($decimal) {
-  if ($decimal < 0) {
+	if ($decimal < 0) {
     return abs($decimal) . "° W";
-  } else {
+		} else {
     return $decimal . "° E";
-  }
-}
- 
+		}
+	}
+
 // the function that outputs the custom form html
 function sgmInputHTML($coordinates, $input_name, $is_mandatory, $is_disabled, $field_args) {
- 
+
 	global $gTabIndex, $gDisabledText, $wgJsMimeType, $wgGoogleMapsKey, $wgGoogleMapsOnThisPage;
- 
+
 	// default values
-        $flat = 0;
-        $flon = 0;        
+	$flat = 0;
+	$flon = 0;
 
 	if ($coordinates) {
 		// can show up here either as an array or a string, depending on
@@ -191,25 +200,26 @@ function sgmInputHTML($coordinates, $input_name, $is_mandatory, $is_disabled, $f
 	<span id="$info_id" class="error_message"></span>
 
 END;
- 
+
 	// map div
 	$text .= '<div id="sm_map'.$wgGoogleMapsOnThisPage.'" class="'.$class.'" ';
 	$text .= 'style="';
 	if ($width) {$text .= 'width: '.$width.'px; '; }
 	if ($height) {$text .= 'height: '.$height.'px; ';}
 	$text .= '" ></div>';
- 
+
 	//geocoder html
+	wfLoadExtensionMessages( 'SemanticGoogleMaps' );
 	$lookup_coordinates_text = wfMsg('semanticgooglemaps_lookupcoordinates');
 	$text .= <<<END
-     <p>        
-        <input size="60" id= "geocode" name="geocode" value="" type="text">
-        <a href="#" onClick="showAddress(document.forms[0].geocode.value); return false">$lookup_coordinates_text</a> 
-     </p>
-   <br />
+	<p>
+		<input size="60" id= "geocode" name="geocode" value="" type="text">
+		<a href="#" onClick="showAddress(document.forms[0].geocode.value); return false">$lookup_coordinates_text</a>
+	</p>
+	<br />
 
 END;
- 
+
 	// map javascript
 
 	$text .= <<<END
@@ -225,29 +235,31 @@ function showAddress(address) {
 				} else {
 					map.clearOverlays()
 					map.setCenter(point, 14);
-					var marker = new GMarker(point);  
+					var marker = new GMarker(point);
 					map.addOverlay(marker);
 					document.getElementById("input_$gTabIndex").value = convertLatToDMS(point.y)+', '+convertLngToDMS(point.x);
 				}
 			}
 		);
 	}
-}           
+}
+
 function convertLatToDMS (val) {
-  if (val < 0) {
-    return Math.abs(val) + "\u00B0 " + "S";
-  } else {
-    return Math.abs(val) + "\u00B0 " + "N";
-  }
+	if (val < 0) {
+		return Math.abs(val) + "° " + "S";
+	} else {
+		return Math.abs(val) + "° " + "N";
+	}
 }
- 
+
 function convertLngToDMS (val) {
-  if (val < 0) {
-    return Math.abs(val) + "\u00B0 " + "W";
-  } else {
-    return Math.abs(val) + "\u00B0 " + "E";
-  }
+	if (val < 0) {
+		return Math.abs(val) + "° " + "W";
+	} else {
+		return Math.abs(val) + "° " + "E";
+	}
 }
+
 function addLoadEvent(func) {
 	var oldonload = window.onload;
 	if (typeof oldonload == 'function') {
@@ -259,6 +271,7 @@ function addLoadEvent(func) {
 		window.onload = func;
 	}
 }
+
 window.unload = GUnload;
 </script>
 
@@ -284,7 +297,7 @@ function makeMap{$wgGoogleMapsOnThisPage}() {
 					var marker = new GMarker (point);
 					map.clearOverlays();
 					document.getElementById("input_$gTabIndex").value = convertLatToDMS(point.y)+', '+convertLngToDMS(point.x);
-				      	map.addOverlay(marker);
+					map.addOverlay(marker);
 					map.panTo(point);
 				}
 			}
@@ -299,9 +312,7 @@ END;
 	// <p> tags within the Javascript
 	$javascript_text = preg_replace('/\s+/m', ' ', $javascript_text);
 	$text .= $javascript_text;
- 
-	$output = array($text,'');    
+
+	$output = array($text,'');
 	return $output;
 }
-
-?>
