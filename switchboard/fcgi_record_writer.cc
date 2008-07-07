@@ -89,34 +89,6 @@ fcgi_record_writer::flush()
 }
 
 void
-fcgi_record_writer::flush_done(boost::system::error_code const &error)
-{
-	if (error == asio::error::operation_aborted) {
-		return;
-	}
-
-	/*
-	 * Somehow, the native socket can end up as -1 here, even though
-	 * there's no error.
-	 */
-	if (socket_.native() == -1) {
-		return;
-	}
-
-	if (error) {
-		LOG4CXX_DEBUG(logger, format("record_writer@%p: error: %s")
-				% this % error.message());
-		errorfunc_(error);
-		return;
-	}
-
-	std::vector<pending_record>().swap(inflight_);
-	std::vector<asio::mutable_buffer>().swap(buffers_);
-	LOG4CXX_DEBUG(logger, format("record_writer@%p: flush_done") % this);
-	flush();
-}
-
-void
 fcgi_record_writer::write_done(
 	boost::system::error_code const &error,
 	std::size_t bytes)
@@ -137,15 +109,9 @@ fcgi_record_writer::write_done(
 		return;
 	}
 
-#if 0
-	socket_.async_flush(boost::bind(
-			&fcgi_record_writer::flush_done, this,
-			asio::placeholders::error));
-#else
 	std::vector<pending_record>().swap(inflight_);
 	std::vector<asio::mutable_buffer>().swap(buffers_);
 	flush();
-#endif
 
 	LOG4CXX_DEBUG(logger, format("record_writer@%p: write_done") % this);
 }
