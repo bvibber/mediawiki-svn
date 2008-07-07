@@ -297,15 +297,17 @@ class Category {
 	public function moveTo( Title $nt, $createRedirect = true ) {
 		global $wgUser;
 		
-		if ( !$this->getID() ) {
-			# Category has not been created yet, nothing to do
-			return;
-		}
 		
 		$to = Category::newFromTitle( $nt );
 		
 		if ( !$to->getID() ) {
 			# Hooray ! Target category does not exist :)
+			
+			if ( !$this->getID() ) {
+				# Category has not been created yet, nothing to do
+				return true;
+			}
+			
 			$dbw = wfGetDB( DB_MASTER );
 			$dbw->begin();
 			$dbw->update(
@@ -348,25 +350,34 @@ class Category {
 			}
 			# No jobs in progress either. We can safely overwrite the target category
 			$dbw = wfGetDB( DB_MASTER );
+			
 			$dbw->begin();
-			$dbw->update(
-				'category',
-				array( 'cat_title' => $to->getName() ),
-				array( 'cat_id' => $this->mID ),
-				__METHOD__ );
-				
-			if ( $createRedirect || !$wgUser->isAllowed('suppressredirect') ) {
-				# convert $to into a redirect
-				$dbw->update(
+			
+			if ( !$this->getID() ) {
+				# Category has not been created yet
+				$dbw->insert(
 					'category',
-					array( 'cat_title' => $this->mName, 'cat_redir' => $this->mID ),
-					array( 'cat_id' => $to->getID() ),
+					array( 'cat_title' => $to->getName() ),
 					__METHOD__ );
+				$this->mID = $dbw->insertID();
+				$this->Redir = 0;
 			} else {
-				# delete $to
 				$dbw->delete(
 					'category',
 					array( 'cat_id' => $to->getID() ),
+					__METHOD__ );
+				$dbw->update(
+					'category',
+					array( 'cat_title' => $to->getName() ),
+					array( 'cat_id' => $this->mID ),
+					__METHOD__ );
+			}
+				
+			if ( $createRedirect || !$wgUser->isAllowed('suppressredirect') ) {
+				# insert again $to, as a redirect this time
+				$dbw->insert(
+					'category',
+					array( 'cat_title' => $this->mName, 'cat_redir' => $this->mID ),
 					__METHOD__ );
 			}
 			$dbw->commit();
