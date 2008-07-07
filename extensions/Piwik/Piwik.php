@@ -14,7 +14,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 
 $wgExtensionCredits['specialpage'][] = array(
 	'name'           => 'Piwik Integration',
-	'version'        => '0.2.5rev0.7.1 Beta',
+	'version'        => '0.2.5rev0.7.5 (1.0-RC1)',
 	'svn-date'       => '$LastChangedDate$',
 	'svn-revision'   => '$LastChangedRevision$',
 	'author'         => 'Isb1009',
@@ -30,6 +30,7 @@ $wgPiwikURL = "";
 $wgPiwikIgnoreSysops = true;
 $wgPiwikIgnoreBots = true;
 $wgPiwikCustomJS = "";
+$wgPiwikUsePageTitle = false;
 $wgPiwikActionName = "";
 
 function efPiwikHookText(&$skin, &$text='') {
@@ -38,17 +39,25 @@ function efPiwikHookText(&$skin, &$text='') {
 }
 
 function efAddPiwik() {
-	global $wgPiwikIDSite, $wgPiwikURL, $wgPiwikIgnoreSysops, $wgPiwikIgnoreBots, $wgUser, $wgScriptPath, $wgPiwikCustomJS, $wgPiwikActionName;
+	global $wgPiwikIDSite, $wgPiwikURL, $wgPiwikIgnoreSysops, $wgPiwikIgnoreBots, $wgUser, $wgScriptPath, $wgPiwikCustomJS, $wgPiwikActionName, $wgTitle, $wgPiwikUsePageTitle;
 	if (!$wgUser->isAllowed('bot') || !$wgPiwikIgnoreBots) {
 		if (!$wgUser->isAllowed('protect') || !$wgPiwikIgnoreSysops) {
 			if ( !empty($wgPiwikIDSite) AND !empty($wgPiwikURL)) {
+if ($wgPiwikUsePageTitle == true ) {
+$wgPiwikPageTitle = $wgTitle->getPrefixedText();
+
+$wgPiwikFinalActionName = $wgPiwikActionName;
+$wgPiwikFinalActionName .= $wgPiwikPageTitle;
+} else {
+$wgPiwikFinalActionName = $wgPiwikActionName;
+}
 				$funcOutput = <<<PIWIK
 <!-- Piwik -->
 <a href="http://piwik.org" title="Web analytics" onclick="window.open(this.href);return(false);">
 <script language="javascript" src="{$wgScriptPath}/extensions/piwik/piwik-mw.js" type="text/javascript"></script>
 <script type="text/javascript">
 <!--
-piwik_action_name = '{$wgPiwikActionName}';
+piwik_action_name = '{$wgPiwikFinalActionName}';
 piwik_idsite = {$wgPiwikIDSite};
 piwik_url = '{$wgPiwikURL}piwik.php';
 piwik_log(piwik_action_name, piwik_idsite, piwik_url);
