@@ -33,6 +33,8 @@ struct config {
 			listeners;
 	std::string logconf;
 	std::string sockdir;
+	std::string docroot;
+	std::string userdir;
 };
 
 struct configuration_loader {
@@ -55,6 +57,8 @@ private:
 	bool f_listen(std::vector<std::string> &fields, config &newconf);
 	bool f_logconf(std::vector<std::string> &fields, config &newconf);
 	bool f_sockdir(std::vector<std::string> &fields, config &newconf);
+	bool f_docroot(std::vector<std::string> &fields, config &newconf);
+	bool f_userdir(std::vector<std::string> &fields, config &newconf);
 
 	log4cxx::LoggerPtr	logger;
 };

@@ -48,6 +48,14 @@ sigexit(int)
 
 int dflag;
 
+volatile sig_atomic_t got_sigchld;
+
+void
+sigchld(int)
+{
+	got_sigchld = 1;
+}
+
 int
 main(int argc, char **argv)
 {
@@ -141,6 +149,16 @@ main(int argc, char **argv)
     
 	if (mainconf.sockdir.empty()) {
 		LOG4CXX_ERROR(mainlogger, "sockdir must be specified");
+		return 1;
+	}
+
+	if (mainconf.userdir.empty()) {
+		LOG4CXX_ERROR(mainlogger, "userdir must be specified");
+		return 1;
+	}
+
+	if (mainconf.docroot.empty()) {
+		LOG4CXX_ERROR(mainlogger, "docroot must be specified");
 		return 1;
 	}
 
@@ -261,6 +279,16 @@ dostat:
 
 	signal(SIGTERM, sigexit);
 	signal(SIGINT, sigexit);
+	signal(SIGCHLD, sigchld);
 
-	context.service().run();
+	//	context.service().run();
+	for (;;) {
+		boost::system::error_code error;
+		context.service().run_one(error);
+		if (got_sigchld) {
+			got_sigchld = 0;
+			context.factory().handle_sigchld();
+			signal(SIGCHLD, sigchld);
+		}
+	}
 }

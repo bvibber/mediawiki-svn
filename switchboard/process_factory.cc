@@ -20,6 +20,8 @@
 #include	<boost/date_time/posix_time/posix_time.hpp>
 #include	<boost/bind.hpp>
 #include	<boost/lambda/lambda.hpp>
+#include	<boost/format.hpp>
+using boost::format;
 
 #include	"process_factory.h"
 #include	"sbcontext.h"	
@@ -33,6 +35,7 @@ int process_factory::curid_;
 process_factory::process_factory(sbcontext &context)
 	: context_(context)
 	, reap_timer_(context.service(), boost::posix_time::seconds(5))
+	, logger(log4cxx::Logger::getLogger("switchboard.process_factory"))
 {
 	reap_timer_.async_wait(boost::bind(&process_factory::reap, this,
 				asio::placeholders::error));
@@ -99,4 +102,19 @@ process_factory::reap(const boost::system::error_code &error)
 	 * wait for them to prevent zombies.
 	 */
 	waitpid(-1, NULL, WNOHANG);
+}
+
+void
+process_factory::handle_sigchld()
+{
+	pid_t pid;
+	int status;
+	while ((pid = waitpid(-1, &status, WNOHANG)) != (pid_t) -1) {
+		LOG4CXX_DEBUG(logger, format("child %d died") % pid);
+		freelist_t::index<by_pid>::type &idx = freelist_.get<by_pid>();
+		freelist_t::index<by_pid>::type::iterator it;
+		if ((it = idx.find(pid)) == idx.end())
+			continue;
+		idx.erase(it);
+	}
 }

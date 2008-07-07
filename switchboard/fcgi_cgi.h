@@ -37,7 +37,7 @@ struct fcgi_cgi {
 		int request_id_,
 		sbcontext &context,
 		fcgi_application *app, 
-		fcgi::params const &params);
+		fcgi::params &params);
 	~fcgi_cgi();
 
 	void record(fcgi::recordp record);

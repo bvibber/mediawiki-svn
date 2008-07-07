@@ -12,6 +12,8 @@
 #include	<netinet/in.h>
 #include	<arpa/inet.h>
 
+#include	<pwd.h>
+
 #include	<boost/asio.hpp>
 #include	<boost/bind.hpp>
 #include	<boost/format.hpp>
@@ -20,6 +22,7 @@
 #include	"fcgi_application.h"
 #include	"async_read_fcgi_record.h"
 #include	"process.h"
+#include	"config.h"
 
 namespace asio = boost::asio;
 using asio::ip::tcp;
@@ -29,7 +32,7 @@ fcgi_cgi::fcgi_cgi(
 		int request_id,
 		sbcontext &context,
 		fcgi_application *app,
-		fcgi::params const &params)
+		fcgi::params &params)
 	: context_(context)
 	, child_socket_(context_.service(), 8192, 8192)
 	, app_(app)
@@ -43,11 +46,45 @@ fcgi_cgi::fcgi_cgi(
 
 	assert(app_);
 
-	fcgi::params::const_iterator it = params.find("PATH_TRANSLATED");
+	fcgi::params::const_iterator it = params.find("SCRIPT_NAME");
 	if (it == params.end())
-		throw creation_failure("PATH_TRANSLATED not specified");
+		throw creation_failure("SCRIPT_NAME not specified");
 
-	process_ = context_.factory().create_from_filename(it->second);
+	std::string script_name = it->second;
+	if (script_name.empty())
+		throw creation_failure("SCRIPT_NAME is empty");
+
+	std::string pathname;
+	if (script_name.size() >= 2 &&
+	    script_name[0] == '/' && script_name[1] == '~') {
+		/*
+		 * The format is /~user/path/to/script.php
+		 * We need to change it to /home/user/public_html/path/to/script.php.
+		 */
+		std::string username;
+		std::string script;
+		script_name.erase(script_name.begin(), script_name.begin() + 2);
+		if (script_name.empty())
+			throw creation_failure("invalid SCRIPT_NAME");
+		std::string::size_type n = script_name.find('/');
+		username.assign(script_name.begin(), script_name.begin() + n);
+		script.assign(script_name.begin() + n + 1, script_name.end());
+
+		struct passwd *pwd;
+		if ((pwd = getpwnam(username.c_str())) == NULL)
+			throw creation_failure("user does not exist");
+		pathname = std::string(pwd->pw_dir) + '/' + mainconf.userdir
+			+ '/' + script;
+	} else {
+		/*
+		 * Script is relative to docroot.
+		 */
+		pathname = mainconf.docroot + script_name;
+	}
+
+	params["SCRIPT_FILENAME"] = pathname;
+
+	process_ = context_.factory().create_from_filename(pathname);
 	process_->connect(child_socket_.next_layer());
 	tcp::socket::non_blocking_io cmd(true);
 	child_socket_.next_layer().io_control(cmd);

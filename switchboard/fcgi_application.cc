@@ -47,11 +47,11 @@ fcgi_application::record_from_server(fcgi::recordp record)
 {
 	LOG4CXX_DEBUG(logger, format("received record from server (request id=%d)")
 			% record->request_id());
-	if (!cgi_)
-		buffer.push_back(record);
-
 	switch (record->type) {
 	case fcgi::rectype::begin_request:
+		if (!cgi_)
+			buffer.push_back(record);
+
 		break;
 	case fcgi::rectype::params:
 		if (record->content_length() == 0) {
@@ -73,14 +73,73 @@ fcgi_application::record_from_server(fcgi::recordp record)
 			/* Send all the buffered records to the app */
 			for (int i = 0; i < buffer.size(); ++i)
 				cgi_->record_noflush(buffer[i]);
+
+			/*
+			 * Insert a fake SCRIPT_FILENAME, which we generated earlier
+			 * in fcgi_cgi's ctor.
+			 *
+			 * Yes, constructing FastCGI records is very unpleasant.
+			 */
+			std::map<std::string, std::string>::iterator it
+				= params_.find("SCRIPT_FILENAME");
+			if (it != params_.end()) {
+				fcgi::recordp rec(new fcgi::record);
+
+				std::string const &name = it->first;
+				std::string const &value = it->second;
+
+				rec->contentData.push_back(
+					(unsigned char) name.size()); /* <= 127 always */
+				if (value.size() <= 127) {
+					rec->contentData.push_back(
+						(unsigned char) value.size());
+				} else {
+					rec->contentData.push_back(
+						(unsigned char) (value.size() & 0x000000FF));
+					rec->contentData.push_back(
+						(unsigned char) ((value.size() & 0x0000FF00) >> 8));
+					rec->contentData.push_back(
+						(unsigned char) ((value.size() & 0x00FF0000) >> 16));
+					rec->contentData.push_back(
+						(unsigned char) ((value.size() & 0xFF000000) >> 24));
+				}
+
+				std::copy(name.begin(), name.end(),
+						std::back_inserter(rec->contentData));
+				std::copy(value.begin(), value.end(),
+						std::back_inserter(rec->contentData));
+
+				rec->version = 1;
+				rec->type = fcgi::rectype::params;
+				rec->requestId1 = record->requestId1;
+				rec->requestId0 = record->requestId0;
+				rec->contentLength1 = (rec->contentData.size() & 0xFF00) >> 8;
+				rec->contentLength0 = (rec->contentData.size() & 0x00FF);
+				rec->paddingLength = 0;
+				rec->reserved = 0;
+				cgi_->record_noflush(rec);
+			}
+
+			cgi_->record_noflush(record);
+
 			cgi_->flush();
 			std::vector<fcgi::recordp>().swap(buffer);
 			return;
 		} else {
-			fcgi::decode_params(record->contentData.begin(), record->contentData.end(),
-					std::inserter(params_, params_.begin()));
+			std::pair<std::string, std::string> p;
+			fcgi::decode_params(record->contentData.begin(), record->contentData.end(), &p);
+			if (p.first != "PATH_TRANSLATED") {
+				params_.insert(p);
+				if (!cgi_)
+					buffer.push_back(record);
+			} 
+					//std::inserter(params_, params_.begin()));
 		}
 		break;
+
+	default:
+		if (!cgi_)
+			buffer.push_back(record);
 	}
 
 	if (cgi_) {

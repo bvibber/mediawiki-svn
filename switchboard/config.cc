@@ -67,6 +67,8 @@ std::map<std::string, configuration_loader::confline_t>
 		("listen", boost::bind(&configuration_loader::f_listen, _1, _2, _3))
 		("logconf", boost::bind(&configuration_loader::f_logconf, _1, _2, _3))
 		("sockdir", boost::bind(&configuration_loader::f_sockdir, _1, _2, _3))
+		("docroot", boost::bind(&configuration_loader::f_docroot, _1, _2, _3))
+		("userdir", boost::bind(&configuration_loader::f_userdir, _1, _2, _3))
 	;
 
 bool
@@ -149,3 +151,34 @@ configuration_loader::f_sockdir(
 	return true;
 }
 
+bool
+configuration_loader::f_userdir(
+		std::vector<std::string> &fields,
+		config &newconf)
+{
+	if (fields.size() != 2) {
+		LOG4CXX_ERROR(logger,
+			format("\"%s\", line %d: usage: userdir <directory>\n")
+			% file_ % lineno_);
+		return false;
+	}
+
+	newconf.userdir = fields[1];
+	return true;
+}
+
+bool
+configuration_loader::f_docroot(
+		std::vector<std::string> &fields,
+		config &newconf)
+{
+	if (fields.size() != 2) {
+		LOG4CXX_ERROR(logger,
+			format("\"%s\", line %d: usage: docroot <directory>\n")
+			% file_ % lineno_);
+		return false;
+	}
+
+	newconf.docroot = fields[1];
+	return true;
+}
