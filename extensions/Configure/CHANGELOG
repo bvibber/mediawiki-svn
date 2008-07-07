@@ -1,6 +1,9 @@
 This file lists changes on this extension.
 Localisation updates are done on betawiki and aren't listed here.
 
+0.5.1 - 7 July 2008
+  * (bug 14744) Fixed default value of $wgExternalDiffEngine.
+
 0.5.0 - 6 July 2008
   * Added support for extensions
   * Rewrote JavaScript

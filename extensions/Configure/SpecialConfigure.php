@@ -225,6 +225,11 @@ class SpecialConfigure extends ConfigurationPage {
 				return null;
 			else
 				return $val;
+		case 'wgExternalDiffEngine':
+			if( empty( $val ) )
+				return false;
+			else
+				return $val;
 		default:
 			return $val;
 		}
