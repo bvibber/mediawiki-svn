@@ -103,8 +103,13 @@ fcgi_cgi::handle_child_read(fcgi::recordp record)
 		if (child_read_error_)
 			LOG4CXX_DEBUG(logger, format("[req=%d] fcgi_cgi, error reading from child: %s")
 					% request_id_ % child_read_error_.message());
-        if (app_)
-            app_->destroy();
+		if (app_)
+			app_->destroy();
+		return;
+	}
+
+	if (!app_) {
+		LOG4CXX_INFO(logger, "handle_child_read: warning: app_ is null");
 		return;
 	}
 

@@ -29,12 +29,14 @@ fcgi_record_writer::fcgi_record_writer(
 	, errorfunc_(errorfunc)
 	, logger(log4cxx::Logger::getLogger("switchboard.fcgi_record_writer"))
 {
+	assert(!errorfunc_.empty());
 	LOG4CXX_DEBUG(logger, format("record_writer@%p: created") % this);
 }
 
 void
 fcgi_record_writer::write_noflush(fcgi::recordp record)
 {
+	assert(socket_.next_layer().native() != -1);
 	LOG4CXX_DEBUG(logger, format("record_writer@%p: write_noflush()") % this);
 
 	pending_record pend = {
@@ -52,6 +54,7 @@ fcgi_record_writer::write_noflush(fcgi::recordp record)
 void
 fcgi_record_writer::write(fcgi::recordp record)
 {
+	assert(socket_.next_layer().native() != -1);
 	LOG4CXX_DEBUG(logger, format("record_writer@%p: write()") % this);
 
 	write_noflush(record);
@@ -61,6 +64,7 @@ fcgi_record_writer::write(fcgi::recordp record)
 void
 fcgi_record_writer::flush()
 {
+	assert(socket_.next_layer().native() != -1);
 	if (!inflight_.empty() || waiting_.empty())
 		return;
 
@@ -87,6 +91,18 @@ fcgi_record_writer::flush()
 void
 fcgi_record_writer::flush_done(boost::system::error_code const &error)
 {
+	if (error == asio::error::operation_aborted) {
+		return;
+	}
+
+	/*
+	 * Somehow, the native socket can end up as -1 here, even though
+	 * there's no error.
+	 */
+	if (socket_.next_layer().native() == -1) {
+		return;
+	}
+
 	if (error) {
 		LOG4CXX_DEBUG(logger, format("record_writer@%p: error: %s")
 				% this % error.message());
@@ -105,6 +121,11 @@ fcgi_record_writer::write_done(
 	boost::system::error_code const &error,
 	std::size_t bytes)
 {
+	if (error == asio::error::operation_aborted) {
+		return;
+	}
+
+	assert(socket_.next_layer().native() != -1);
 	if (error) {
 		LOG4CXX_DEBUG(logger, format("record_writer@%p: error: %s")
 				% this % error.message());
@@ -117,4 +138,9 @@ fcgi_record_writer::write_done(
 			asio::placeholders::error));
 
 	LOG4CXX_DEBUG(logger, format("record_writer@%p: write_done") % this);
+}
+
+void
+fcgi_record_writer::close() {
+	socket_.close();
 }

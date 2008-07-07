@@ -41,6 +41,7 @@ struct fcgi_record_writer : boost::noncopyable {
 	void write(fcgi::recordp record);
 	void write_noflush(fcgi::recordp record);
 	void flush();
+	void close();
 
 private:
 	sbcontext &context_;

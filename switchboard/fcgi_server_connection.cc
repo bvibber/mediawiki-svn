@@ -127,6 +127,9 @@ fcgi_server_connection::record_to_server(fcgi::recordp record)
 {
 	LOG4CXX_DEBUG(logger, format("forwarding record (request id=%d) to server")
 			% record->request_id());
+	if (!alive_)
+		return;
+
 	writer_.write(record);
 }
 
@@ -164,6 +167,7 @@ fcgi_server_connection::destroy()
 		requests_[i] = 0;
 	}
 
+	writer_.close();
 	socket_.close();
 	context_.service().post(boost::bind(&fcgi_server_connection::delete_me, this));
 }
