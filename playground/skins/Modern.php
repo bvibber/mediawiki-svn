@@ -10,6 +10,9 @@
 if( !defined( 'MEDIAWIKI' ) )
 	die( -1 );
 
+/** */
+require_once( dirname(__FILE__) . '/MonoBook.php' );
+
 /**
  * Inherit main code from SkinTemplate, set the CSS and template filter.
  * @todo document
@@ -37,7 +40,56 @@ class SkinModern extends SkinTemplate {
  * @todo document
  * @ingroup Skins
  */
-class ModernTemplate extends QuickTemplate {
+class ModernTemplate extends MonoBookTemplate {
+
+	function executeSidebarPortlets() {
+		$logo = '<a style="background-image: url(' . htmlspecialchars( $this->data['logopath'] ) . ');" ' .
+			'href="' . htmlspecialchars($this->data['nav_urls']['mainpage']['href']).'" ' .
+			$this->skin->tooltipAndAccesskey('n-mainpage') . '></a>';
+
+		$hints = array( 'portletClass' => 'generated-sidebar portlet' );
+
+		foreach ($this->data['sidebar'] as $bar => $cont) {
+			$this->executePortlet( $bar, $cont, $hints );
+		}
+
+		$this->executePortlet( 'search', $this->skin,
+					array( 'noTitle' => true, 'noBody' => true, #XXX: title and body are a bit special. This is somewhat nasty.
+						'contentGenerator' => array( &$this, 'executeSearchForm' ) ) );
+
+		$this->executePortlet( 'tb', 
+					$this->data['toolbox_urls'],
+					array( 'titleMessage' => 'toolbox',
+						'idPrefix' => 't-',
+						'endOfListHooks' => array( 'MonoBookTemplateToolboxEnd', 'SkinTemplateToolboxEnd' ) ) );
+
+		$this->executePortlet( 'lang', 
+					$this->data['language_urls'],
+					array( 'titleMessage' => 'otherlanguages' ) );
+	}
+
+
+	function executeFooter() { /////////////////////////////////////////////////////////////////////////////////////////////////////////
+		// Generate additional footer links
+		?>
+			<ul id="f-list">
+		<?php
+		$footer = wfMsg( 'footertext' );
+		if ( !wfEmptyMsg('footertext', $footer) ) {
+			echo $footer;
+		}
+		else {
+			foreach( $this->data['footer_links'] as $lnk ) {
+		?>		<li id="<?php echo $lnk['id']; ?>"><?php echo $lnk['html']; ?></li>
+		<?php		
+			}
+		}
+		?>
+			</ul>
+		<?php echo $this->html("poweredbyico"); ?>
+		<?php
+	}
+
 	/**
 	 * Template filter callback for Modern skin.
 	 * Takes an associative array of data set from a SkinTemplate-based
@@ -71,27 +123,9 @@ class ModernTemplate extends QuickTemplate {
 		<link rel="stylesheet" type="text/css" <?php if(empty($this->data['printable']) ) { ?>media="print"<?php } ?> href="<?php $this->text('stylepath') ?>/<?php $this->text('stylename') ?>/print.css?<?php echo $GLOBALS['wgStyleVersion'] ?>" />
 		<!--[if lt IE 7]><meta http-equiv="imagetoolbar" content="no" /><![endif]-->
 		
-		<?php print Skin::makeGlobalVariablesScript( $this->data ); ?>
-                
-		<script type="<?php $this->text('jsmimetype') ?>" src="<?php $this->text('stylepath' ) ?>/common/wikibits.js?<?php echo $GLOBALS['wgStyleVersion'] ?>"><!-- wikibits js --></script>
-		<!-- Head Scripts -->
-<?php $this->html('headscripts') ?>
-<?php	if($this->data['jsvarurl'  ]) { ?>
-		<script type="<?php $this->text('jsmimetype') ?>" src="<?php $this->text('jsvarurl'  ) ?>"><!-- site js --></script>
-<?php	} ?>
-<?php	if($this->data['pagecss'   ]) { ?>
-		<style type="text/css"><?php $this->html('pagecss'   ) ?></style>
-<?php	}
-		if($this->data['usercss'   ]) { ?>
-		<style type="text/css"><?php $this->html('usercss'   ) ?></style>
-<?php	}
-		if($this->data['userjs'    ]) { ?>
-		<script type="<?php $this->text('jsmimetype') ?>" src="<?php $this->text('userjs' ) ?>"></script>
-<?php	}
-		if($this->data['userjsprev']) { ?>
-		<script type="<?php $this->text('jsmimetype') ?>"><?php $this->html('userjsprev') ?></script>
-<?php	}
-		if($this->data['trackbackhtml']) print $this->data['trackbackhtml']; ?>
+	<?php
+		$this->executeHeadScripts();
+	?>
 	</head>
 <body<?php if($this->data['body_ondblclick']) { ?> ondblclick="<?php $this->text('body_ondblclick') ?>"<?php } ?>
 <?php if($this->data['body_onload'    ]) { ?> onload="<?php     $this->text('body_onload')     ?>"<?php } ?>
@@ -105,19 +139,12 @@ class ModernTemplate extends QuickTemplate {
 	<div id="mw_main">
 	<div id="mw_contentwrapper">
 	<!-- navigation portlet -->
-	<div id="p-cactions" class="portlet">
-		<h5><?php $this->msg('views') ?></h5>
-		<div class="pBody">
-			<ul>
-	<?php			foreach($this->data['content_actions'] as $key => $tab) { ?>
-				 <li id="ca-<?php echo Sanitizer::escapeId($key) ?>"<?php
-					 	if($tab['class']) { ?> class="<?php echo htmlspecialchars($tab['class']) ?>"<?php }
-					 ?>><a href="<?php echo htmlspecialchars($tab['href']) ?>"<?php echo $skin->tooltipAndAccesskey('ca-'.$key) ?>><?php
-					 echo htmlspecialchars($tab['text']) ?></a></li>
-	<?php			 } ?>
-			</ul>
-		</div>
-	</div>
+	<?php
+	$this->executePortlet( 'cactions', 
+				$this->data['content_actions'],
+				array( 'titleMessage' => 'views',
+					'idPrefix' => 'ca-') );
+	?>
 
 	<!-- content -->
 	<div id="mw_content">
@@ -148,154 +175,29 @@ class ModernTemplate extends QuickTemplate {
 	</div><!-- mw_contentwrapper -->
 
 	<div id="mw_portlets">
-
-	<!-- other portlets -->
-	<?php foreach ($this->data['sidebar'] as $bar => $cont) { ?>
-	<div class='generated-sidebar portlet' id='p-<?php echo Sanitizer::escapeId($bar) ?>'<?php echo $skin->tooltip('p-'.$bar) ?>>
-		<h5><?php $out = wfMsg( $bar ); if (wfEmptyMsg($bar, $out)) echo $bar; else echo $out; ?></h5>
-		<div class='pBody'>
-<?php   if ( is_array( $cont ) ) { ?>
-			<ul>
-<?php 			foreach($cont as $key => $val) { ?>
-				<li id="<?php echo Sanitizer::escapeId($val['id']) ?>"<?php
-					if ( $val['active'] ) { ?> class="active" <?php }
-				?>><a href="<?php echo htmlspecialchars($val['href']) ?>"<?php echo $skin->tooltipAndAccesskey($val['id']) ?>><?php echo htmlspecialchars($val['text']) ?></a></li>
-<?php			} ?>
-			</ul>
-<?php   } else {
-			# allow raw HTML block to be defined by extensions
-			print $cont;
-	} 
-?>
-		</div><!-- pBody -->
-	</div><!-- portlet -->
-	<?php } ?>
-
-	<!-- search -->
-	<div id="p-search" class="portlet">
-		<h5><label for="searchInput"><?php $this->msg('search') ?></label></h5>
-		<div id="searchBody" class="pBody">
-			<form action="<?php $this->text('searchaction') ?>" id="searchform"><div>
-				<input id="searchInput" name="search" type="text"<?php echo $skin->tooltipAndAccesskey('search');
-					if( isset( $this->data['search'] ) ) {
-						?> value="<?php $this->text('search') ?>"<?php } ?> />
-				<input type='submit' name="go" class="searchButton" id="searchGoButton"	value="<?php $this->msg('searcharticle') ?>"<?php echo $skin->tooltipAndAccesskey( 'search-go' ); ?> />&nbsp;
-				<input type='submit' name="fulltext" class="searchButton" id="mw-searchButton" value="<?php $this->msg('searchbutton') ?>"<?php echo $skin->tooltipAndAccesskey( 'search-fulltext' ); ?> />
-			</div></form>
-		</div><!-- pBody -->
-	</div><!-- portlet -->
-
-	<!-- toolbox -->
-	<div class="portlet" id="p-tb">
-		<h5><?php $this->msg('toolbox') ?></h5>
-		<div class="pBody">
-			<ul>
-<?php
-		if($this->data['notspecialpage']) { ?>
-				<li id="t-whatlinkshere"><a href="<?php
-				echo htmlspecialchars($this->data['nav_urls']['whatlinkshere']['href'])
-				?>"<?php echo $skin->tooltipAndAccesskey('t-whatlinkshere') ?>><?php $this->msg('whatlinkshere') ?></a></li>
-<?php
-			if( $this->data['nav_urls']['recentchangeslinked'] ) { ?>
-				<li id="t-recentchangeslinked"><a href="<?php
-				echo htmlspecialchars($this->data['nav_urls']['recentchangeslinked']['href'])
-				?>"<?php echo $skin->tooltipAndAccesskey('t-recentchangeslinked') ?>><?php $this->msg('recentchangeslinked') ?></a></li>
-<?php 		}
-		}
-		if(isset($this->data['nav_urls']['trackbacklink'])) { ?>
-			<li id="t-trackbacklink"><a href="<?php
-				echo htmlspecialchars($this->data['nav_urls']['trackbacklink']['href'])
-				?>"<?php echo $skin->tooltipAndAccesskey('t-trackbacklink') ?>><?php $this->msg('trackbacklink') ?></a></li>
-<?php 	}
-		if($this->data['feeds']) { ?>
-			<li id="feedlinks"><?php foreach($this->data['feeds'] as $key => $feed) {
-					?><span id="feed-<?php echo Sanitizer::escapeId($key) ?>"><a href="<?php
-					echo htmlspecialchars($feed['href']) ?>"<?php echo $skin->tooltipAndAccesskey('feed-'.$key) ?>><?php echo htmlspecialchars($feed['text'])?></a>&nbsp;</span>
-					<?php } ?></li><?php
-		}
-
-		foreach( array('contributions', 'log', 'blockip', 'emailuser', 'upload', 'specialpages') as $special ) {
-
-			if($this->data['nav_urls'][$special]) {
-				?><li id="t-<?php echo $special ?>"><a href="<?php echo htmlspecialchars($this->data['nav_urls'][$special]['href'])
-				?>"<?php echo $skin->tooltipAndAccesskey('t-'.$special) ?>><?php $this->msg($special) ?></a></li>
-<?php		}
-		}
-
-		if(!empty($this->data['nav_urls']['print']['href'])) { ?>
-				<li id="t-print"><a href="<?php echo htmlspecialchars($this->data['nav_urls']['print']['href'])
-				?>"<?php echo $skin->tooltipAndAccesskey('t-print') ?>><?php $this->msg('printableversion') ?></a></li><?php
-		}
-
-		if(!empty($this->data['nav_urls']['permalink']['href'])) { ?>
-				<li id="t-permalink"><a href="<?php echo htmlspecialchars($this->data['nav_urls']['permalink']['href'])
-				?>"<?php echo $skin->tooltipAndAccesskey('t-permalink') ?>><?php $this->msg('permalink') ?></a></li><?php
-		} elseif ($this->data['nav_urls']['permalink']['href'] === '') { ?>
-				<li id="t-ispermalink"<?php echo $skin->tooltip('t-ispermalink') ?>><?php $this->msg('permalink') ?></li><?php
-		}
-
-		wfRunHooks( 'SkinTemplateToolboxEnd', array( &$this ) );
-?>			</ul>
-		</div><!-- pBody -->
-	</div><!-- portlet -->
-
-	<!-- languages -->
-<?php
-		if( $this->data['language_urls'] ) { ?>
-	<div id="p-lang" class="portlet">
-		<h5><?php $this->msg('otherlanguages') ?></h5>
-		<div class="pBody">
-			<ul>
-<?php		foreach($this->data['language_urls'] as $langlink) { ?>
-				<li class="<?php echo htmlspecialchars($langlink['class'])?>"><?php
-				?><a href="<?php echo htmlspecialchars($langlink['href']) ?>"><?php echo $langlink['text'] ?></a></li>
-<?php		} ?>
-			</ul>
-		</div><!-- pBody -->
-	</div><!-- portlet -->
-<?php	} ?>
-
+	<?php
+		$this->executeSidebarPortlets();
+	?>
 	</div><!-- mw_portlets -->
-
 
 	</div><!-- main -->
 
 	<div class="mw_clear"></div>
 
 	<!-- personal portlet -->
-	<div class="portlet" id="p-personal">
-		<h5><?php $this->msg('personaltools') ?></h5>
-		<div class="pBody">
-			<ul>
-<?php 			foreach($this->data['personal_urls'] as $key => $item) { ?>
-				<li id="pt-<?php echo Sanitizer::escapeId($key) ?>"<?php
-					if ($item['active']) { ?> class="active"<?php } ?>><a href="<?php
-				echo htmlspecialchars($item['href']) ?>"<?php echo $skin->tooltipAndAccesskey('pt-'.$key) ?><?php
-				if(!empty($item['class'])) { ?> class="<?php
-				echo htmlspecialchars($item['class']) ?>"<?php } ?>><?php
-				echo htmlspecialchars($item['text']) ?></a></li>
-<?php			} ?>
-			</ul>
-		</div>
-	</div>
-
+	<?php
+	$this->executePortlet( 'personal',
+				$this->data['personal_urls'],
+				array( 'titleMessage' => 'personaltools',
+					'idPrefix' => 'pt-',
+					'useClassForLinks' => true ) );
+	?>
 
 	<!-- footer --> 
 	<div id="footer">
-			<ul id="f-list">
-<?php
-		$footerlinks = array(
-			'lastmod', 'viewcount', 'numberofwatchingusers', 'credits', 'copyright',
-			'privacy', 'about', 'disclaimer', 'tagline',
-		);
-		foreach( $footerlinks as $aLink ) {
-			if( isset( $this->data[$aLink] ) && $this->data[$aLink] ) {
-?>				<li id="<?php echo$aLink?>"><?php $this->html($aLink) ?></li>
-<?php 		}
-		}
-?>
-			</ul>
-		<?php echo $this->html("poweredbyico"); ?>
+	<?php 
+		$this->executeFooter();
+	?>
 	</div>
 
 	<?php $this->html('bottomscripts'); /* JS call to runBodyOnloadHook */ ?>
