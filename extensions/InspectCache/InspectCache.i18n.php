@@ -8,7 +8,7 @@
 $messages = array();
 
 $messages['en'] = array(
-	'inspectcache'         => 'Inspect Cache',
+	'inspectcache'         => 'Inspect cache',
 	'inspectcache-desc'    => 'A simple debugging tool to inspect the contents of the shared cache',
 	'inspectcache-ok'      => 'OK',
 	'inspectcache-general' => 'General cache',
@@ -16,7 +16,7 @@ $messages['en'] = array(
 	'inspectcache-message' => 'Message cache',
 	'inspectcache-get'     => 'Get',
 	'inspectcache-delete'  => 'Delete',
-	'inspectcache-deleted' => 'Deleted Cache',
+	'inspectcache-deleted' => 'Deleted cache',
 	'inspectcache-list'    => 'List',
 );
 

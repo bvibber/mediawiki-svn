@@ -10,10 +10,10 @@ $messages= array();
 
 $messages['en'] = array(
 	'intersection-desc'          => 'Outputs a bulleted list of the most recent items residing in a category, or a union of several categories',
-	'intersection_toomanycats'   => 'DynamicPageList: Too many categories!',
-	'intersection_toofewcats'    => 'DynamicPageList: Too few categories!',
-	'intersection_noresults'     => 'DynamicPageList: No results!',
-	'intersection_noincludecats' => 'DynamicPageList: You need to include at least one category, or specify a namespace!',
+	'intersection_toomanycats'   => 'Error: Too many categories!',
+	'intersection_toofewcats'    => 'Error: Too few categories!',
+	'intersection_noresults'     => 'Error: No results!',
+	'intersection_noincludecats' => 'Error: You need to include at least one category, or specify a namespace!',
 );
 
 /** Aragonese (Aragonés)

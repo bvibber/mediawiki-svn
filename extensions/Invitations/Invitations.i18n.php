@@ -8,7 +8,7 @@
 $messages = array();
 
 $messages['en'] = array(
-	'invite-logpage'                        => 'Invitation Log',
+	'invite-logpage'                        => 'Invitation log',
 	'invite-logpagetext'                    => 'This is a log of users inviting each other to use various software features.',
 	'invite-logentry'                       => 'invited $1 to use the <i>$2</i> feature.',
 	'invitations'                           => 'Manage invitations to software features',
@@ -20,7 +20,7 @@ To manage invitations for an individual feature, click on its name.',
 	'invitations-pagetitle'                 => 'Invite-only software features',
 	'invitations-uninvitedlist-description' => 'You do not have access to these other invitation-only software features.',
 	'invitations-uninvitedlist-none'        => 'At this time, no other software features are designated invitation-only.',
-	'invitations-feature-pagetitle'         => 'Invitation Management - $1',
+	'invitations-feature-pagetitle'         => 'Invitation management - $1',
 	'invitations-feature-access'            => 'You currently have access to use <i>$1</i>.',
 	'invitations-feature-numleft'           => 'You still have {{PLURAL:$2|one invitation left|<b>$1</b> out of your $2 invitations left}}.',
 	'invitations-feature-noneleft'          => 'You have used all of your allocated invitations for this feature',

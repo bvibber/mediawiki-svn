@@ -11,7 +11,7 @@ $messages = array();
  * @author MinuteElectron <minuteelectron@googlemail.com>
  */
 $messages['en'] = array(
-	'mibbit'        => 'Mibbit Chat',
+	'mibbit'        => 'Mibbit chat',
 	'mibbit-desc'   => 'Adds a [[Special:Mibbit|special page]] used to chat in real time with other wiki users',
 	'mibbit-header' => 'This special page allows you to collaborate in real time with other users of the wiki.
 To connect simply press the "Connect" button.

@@ -12,7 +12,7 @@ $messages = array();
 $messages['en'] = array(
 	'forcepreview'      => 'Save page (use preview first)',
 	'forcepreview-desc' => 'Force preview for unprivileged users',
-	'right-forcepreviewexempt' => 'May save without using Show Preview',
+	'right-forcepreviewexempt' => 'May save without using Show preview',
 );
 
 /** Arabic (العربية)

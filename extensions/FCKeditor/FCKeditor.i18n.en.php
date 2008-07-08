@@ -1,7 +1,7 @@
 <?php
 
 $messages = array(
-'textrichditor' => 'Rich Editor',
+'textrichditor' => 'Rich editor',
 'tog-riched_disable' => 'Disable rich editor',
 'tog-riched_disable_ns_main' => 'Disable rich editor within the main namespace',
 'tog-riched_disable_ns_talk' => 'Disable rich editor within the "{{ns:Talk}}" namespace',

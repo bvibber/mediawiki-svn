@@ -8,7 +8,7 @@
 $messages = array();
 
 $messages['en'] = array(
-	'importusers'                         => 'Import Users' ,
+	'importusers'                         => 'Import users' ,
 	'importusers-desc'                    => 'Imports users in bulk from CSV-file; encoding: UTF-8',
 	'importusers-uploadfile'              => 'Upload file',
 	'importusers-form-caption'            => 'Input CSV-file (UTF-8)' ,
