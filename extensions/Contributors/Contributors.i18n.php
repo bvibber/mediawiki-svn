@@ -180,7 +180,9 @@ $messages['da'] = array(
 	'contributors-submit' => 'Vis',
 );
 
-/* German (Raymond) */
+/** German (Deutsch)
+ * @author Raimond Spekking
+ */
 $messages['de'] = array(
 	'contributors' => 'Hauptautoren',
 	'contributors-toolbox' => 'Hauptautoren',
@@ -188,8 +190,8 @@ $messages['de'] = array(
 	'contributors-target' => 'Seite:',
 	'contributors-submit' => 'Zeige',
 	'contributors-subtitle' => 'Hauptautoren von $1',
-	'contributors-others-long' => 'Daneben gibt es noch $1 weitere Autoren dieser Seite.',
-	'contributors-others' => 'und $1 weitere',
+	'contributors-others-long' => 'Daneben gibt es noch {{PLURAL:$1|1 weiteren Autor|$1 weitere Autoren}} dieser Seite.',
+	'contributors-others' => 'und {{PLURAL:$1|1 weiteren|$1 weitere}}',
 	'contributors-badtitle' => 'Ungültige Seite',
 	'contributors-nosuchpage' => 'Die Seite $1 ist nicht vorhanden.',
 );
