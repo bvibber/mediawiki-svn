@@ -7,7 +7,7 @@
 $messages = array();
 
 $messages['en'] = array(
-	'signdocument'         => 'Sign Document',
+	'signdocument'         => 'Sign document',
 	'sign-nodocselected'   => 'Please select the document you wish to sign.',
 	'sign-selectdoc'       => 'Document:',
 	'sign-docheader'       => '<div class="noarticletext">Please use this form to sign the document "[[$1]]," shown below.
@@ -32,7 +32,7 @@ Please read through the entire document, and if you wish to indicate your suppor
 	'sign-list-hideemail'  => 'Do not list e-mail',
 	'sign-submit'          => 'Sign document',
 	'sign-information'     => '<div class="noarticletext">Thank you for taking the time to read through this document.
-If you agree with it, please indicate your support by filling in the required fields below and clicking "Sign Document."
+If you agree with it, please indicate your support by filling in the required fields below and clicking "Sign document".
 Please ensure that your personal information is correct and that we have some way to contact you to verify your identity.
 Note that your IP address and other identifying information will be recorded by this form and used by moderators to eliminate duplicate signatures and confirm the correctness of your personal information.
 As the use of open and anonymizing proxies inhibits our ability to perform this task, signatures from such proxies will likely not be counted.
@@ -41,7 +41,7 @@ If you are currently connected through a proxy server, please disconnect from it
 $1',
 	'sig-success'               => 'You have successfully signed the document.',
 	'sign-view-selectfields'    => '<b>Fields to display:</b>',
-	'sign-viewfield-entryid'    => 'Entry id',
+	'sign-viewfield-entryid'    => 'Entry ID',
 	'sign-viewfield-timestamp'  => 'Timestamp',
 	'sign-viewfield-realname'   => 'Name',
 	'sign-viewfield-address'    => 'Address',

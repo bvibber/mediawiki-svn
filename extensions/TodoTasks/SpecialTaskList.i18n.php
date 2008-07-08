@@ -4,23 +4,23 @@
 
 $messages = array();
 $messages['en'] = array(
-	'tasklist'                => 'Task List',
+	'tasklist'                => 'Task list',
 	'tasklist-parser-desc'    => 'adds <nowiki>{{#todo:}}</nowiki> parser function for assigning tasks',
 	'tasklist-special-desc'   => 'Adds a special page for reviewing [[Special:TaskList|tasks assignments]]',
-	'tasklistbyproject'       => 'Task List By Project',
+	'tasklistbyproject'       => 'Task list by project',
 	'tasklistunknownproject'  => 'Unknown project',
 	'tasklistunspecuser'      => 'Unspecified user',
 	'tasklistincorrectuser'   => 'Incorrect username',
 	'tasklistemail'           => 'Dear %s',
-	'tasklistemailsubject'    => '[%s] Task List Change',
+	'tasklistemailsubject'    => '[%s] Task list change',
 	'tasklistmytasks'         => 'My tasks',
 	'tasklistbyprojectbad'    => "Project '''%s''' is not a valid project.
 For a list of valid projects, see [[MediaWiki:TodoTasksValidProjects]].",
-	'tasklistbyprojname'      => "Assigned Tasks for '''%s'''",
-	'tasklistchooseproj'      => 'Select Project:',
+	'tasklistbyprojname'      => "Assigned tasks for '''%s'''",
+	'tasklistchooseproj'      => 'Select project:',
 	'tasklistprojdisp'        => 'Display',
-	'tasklistbyname'          => '== Todo List for %s ==',
-	'tasklistnoprojects'      => "ERROR: It looks like you enabled '''\$wgUseProjects''', but did not create [[MediaWiki:TodoTasksValidProjects]]. See [http://www.mediawiki.org/wiki/Extension:Todo_Tasks#Step_8 Installation Instructions] for more details.",
+	'tasklistbyname'          => '== Todo list for %s ==',
+	'tasklistnoprojects'      => "Error: It looks like you enabled '''\$wgUseProjects''', but did not create [[MediaWiki:TodoTasksValidProjects]]. See [http://www.mediawiki.org/wiki/Extension:Todo_Tasks#Step_8 Installation Instructions] for more details.",
 	'tasklistemailbody'       => ",
 
 Someone has assigned a new Task for you on %s.

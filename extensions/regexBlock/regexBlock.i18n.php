@@ -8,12 +8,12 @@
 $messages = array();
 
 $messages['en'] = array(
-	'regexblock'                      => 'RegexBlock',
+	'regexblock'                      => 'Regex block',
 	'regexblock-desc'                 => 'Extension used for blocking users names and IP addresses with regular expressions. Contains both the blocking mechanism and a [[Special:Regexblock|special page]] to add/manage blocks',
 	'regexblock-special-desc'         => 'alternate user block (by given name, using regular expressions)',
 	'regexblock-stat-desc'            => 'Displays [[Special:Regexblockstats|block statistics]] for the regexblock extension',
-	'regexblock-page-title'           => 'Regular Expression Name Block',
-	'regexblockstats'                 => 'Regex Block Statistics',
+	'regexblock-page-title'           => 'Regular expression name block',
+	'regexblockstats'                 => 'Regex block statistics',
 	'regexblock-reason-ip'            => 'This IP address is prevented from editing due to vandalism or other disruption by you or by someone who shares your IP address.
 If you believe this is in error, please $1' ,
 	'regexblock-reason-name'          => 'This username is prevented from editing due to vandalism or other disruption.
@@ -22,7 +22,7 @@ If you believe this is in error, please $1',
 Please create an alternate user name or $1 about the problem',
 	'regexblock-help'                 => 'Use the form below to block write access from a specific IP address or username.
 This should be done only only to prevent vandalism, and in accordance with policy.
-\'\'This page will allow you to block even non-existing users, and will also block users with names similar to given, i.e. « Test » will be blocked along with « Test 2 » etc.
+\'\'This page will allow you to block even non-existing users, and will also block users with names similar to given, i.e. "Test" will be blocked along with "Test 2" etc.
 You can also block full IP addresses, meaning that no one logging from them will be able to edit pages.
 Note: partial IP addresses will be treated by usernames in determining blocking.
 If no reason is specified, a default generic reason will be used.\'\'',
@@ -33,17 +33,17 @@ If no reason is specified, a default generic reason will be used.\'\'',
 Probably there is no such user.',
 	'regexblock-form-username'        => 'IP address or username:',
 	'regexblock-form-reason'          => 'Reason:',
-	'regexblock-form-expiry'          => 'Expiry:&#160;',
+	'regexblock-form-expiry'          => 'Expiry:',
 	'regexblock-form-match'           => 'Exact match',
 	'regexblock-form-account-block'   => 'Block creation of new accounts',
-	'regexblock-form-submit'          => 'Block&nbsp;this&nbsp;User',
+	'regexblock-form-submit'          => 'Block this user',
 	'regexblock-block-log'            => 'User name or IP address \'\'\'$1\'\'\' has been blocked.',
 	'regexblock-block-success'        => 'Block succedeed',
 	'regexblock-form-submit-empty'    => 'Give a user name or an IP address to block.',
 	'regexblock-form-submit-regex'    => 'Invalid regular expression.',
 	'regexblock-form-submit-expiry'   => 'Please specify an expiration period.',
 	'regexblock-already-blocked'      => '$1 is already blocked.',
-	'regexblock-stats-title'          => 'Regex Block Stats',
+	'regexblock-stats-title'          => 'Regex block statistics',
 	'regexblock-stats-username'       => 'For $1',
 	'regexblock-stats-times'          => 'was blocked on',
 	'regexblock-stats-logging'        => 'logging from address',

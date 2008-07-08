@@ -8,7 +8,7 @@
 $messages = array();
 
 $messages['en'] = array(
-	'regexfunctions-desc' => 'Regular Expression parser functions',
+	'regexfunctions-desc' => 'Regular expression parser functions',
 );
 
 /** French (Français)

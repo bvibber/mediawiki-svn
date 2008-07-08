@@ -8,7 +8,7 @@
 $messages = array();
 
 $messages['en'] = array(
-	'spamregex'                      => 'SpamRegex',
+	'spamregex'                      => 'Spam regex',
 	'spamregex-desc'                 => '[[Special:Spamregex|Filter]] out unwanted phrases in edited pages, based on regular expressions',
 	'spamregex_summary'              => 'The text was found in the page\'s summary.',
 	'spamregex-intro'                => 'Use this form to effectively block expressions from saving into a page\'s text.

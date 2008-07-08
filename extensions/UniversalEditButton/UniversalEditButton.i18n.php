@@ -8,7 +8,7 @@
 $messages = array();
 
 $messages['en'] = array(
-	'universaleditbutton-desc' => 'Adds HTML header <code>&lt;link&gt;</code> to support Universal Edit Button browser extension',
+	'universaleditbutton-desc' => 'Adds HTML header <code>&lt;link&gt;</code> to support the Universal Edit Button browser extension',
 );
 
 /** Aragonese (Aragonés)

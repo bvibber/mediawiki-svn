@@ -36,7 +36,7 @@ $messages['en'] = array(
 	'openidconvert' => 'OpenID converter',
 	'openiderror' => 'Verification error',
 	'openiderrortext' => 'An error occured during verification of the OpenID URL.',
-	'openidconfigerror' => 'OpenID Configuration Error',
+	'openidconfigerror' => 'OpenID configuration error',
 	'openidconfigerrortext' => 'The OpenID storage configuration for this wiki is invalid.
 Please consult this site\'s administrator.',
 	'openidpermission' => 'OpenID permissions error',

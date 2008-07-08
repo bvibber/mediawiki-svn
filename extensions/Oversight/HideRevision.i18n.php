@@ -16,7 +16,7 @@ $messages['en'] = array(
 	'group-oversight-member' => 'Oversight',
 	'grouppage-oversight'    => '{{ns:project}}:Oversight',
 	'right-oversight'        => 'View a previously hidden revision',
-	'right-hiderevision'     => 'Review and restore revisions hidden from Sysops',
+	'right-hiderevision'     => 'Review and restore revisions hidden from sysops',
 
 	// Empty form
 	'hiderevision-prompt'   => 'Revision number to remove:',

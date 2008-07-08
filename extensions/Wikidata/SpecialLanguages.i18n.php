@@ -96,7 +96,7 @@ Please check the web address.',
 	'ow_Value'                              => 'Value',
 	'ow_meaningsoftitle'                    => 'Meanings of "$1"',
 	'ow_meaningsofsubtitle'                 => '<em>Wiki link:</em> [[$1]]',
-	'ow_Permission_denied'                  => '<h2>PERMISSION DENIED</h2>',
+	'ow_Permission_denied'                  => '<h2>Permission denied</h2>',
 	'ow_copy_no_action_specified'           => 'Please specify an action',
 	'ow_copy_help'                          => 'Someday, we might help you.',
 	'ow_please_proved_dmid'                 => 'It seems your input is missing a "?dmid=<ID>" (dmid=Defined Meaning ID)<br />
@@ -105,7 +105,7 @@ Please contact a server administrator.',
 Please contact a server administrator.',
 	'ow_please_proved_dc2'                  => 'It seems your input is missing a "?dc2=<something>" (dc2=dataset context 2, dataset to copy TO)<br />
 Please contact a server administrator.',
-	'ow_copy_successful'                    => "<h2>Copy Successful</h2>
+	'ow_copy_successful'                    => "<h2>Copy successful</h2>
 Your data appears to have been copied successfully.
 Do not forget to doublecheck to make sure!",
 	'ow_copy_unsuccessful'                  => '<h3>Copy unsuccessful</h3>

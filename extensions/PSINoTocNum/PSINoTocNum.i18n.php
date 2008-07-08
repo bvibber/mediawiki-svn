@@ -4,7 +4,7 @@
 $messages = array();
 
 $messages['en'] = array(
-	'psinotocnum-desc' => 'New MagicWord "<nowiki>__</nowiki>NOTOCNUM<nowiki>__</nowiki>"',
+	'psinotocnum-desc' => 'New magic word "<nowiki>__</nowiki>NOTOCNUM<nowiki>__</nowiki>"',
 );
 
 /** Arabic (العربية)

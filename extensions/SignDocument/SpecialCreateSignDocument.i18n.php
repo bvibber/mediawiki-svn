@@ -6,8 +6,8 @@
 $messages = array();
 
 $messages['en'] = array(
-	'createsigndocument'         => 'Enable Document Signing',
-	'createsigndoc-head'         => "Use this form to create a 'Sign Document' page for the provided page, such that users will be able to sign it via [[Special:SignDocument]].
+	'createsigndocument'         => 'Enable document signing',
+	'createsigndoc-head'         => "Use this form to create a 'Sign document' page for the provided page, such that users will be able to sign it via [[Special:SignDocument]].
 Please specify the name of the page on which you wish to enable digital signing, members of which usergroup should be allowed to sign it, which fields you wish to be visible to users and which should be optional, a minimum age to require users to be to sign the document (no minimum if omitted);
 and a brief introductory text describing the document and providing instructions to users.
 
@@ -17,8 +17,8 @@ Please be absolutely positive that the document is to a point of stability for s
 	'createsigndoc-pagename'     => 'Page:',
 	'createsigndoc-allowedgroup' => 'Allowed group:',
 	'createsigndoc-email'        => 'E-mail address:',
-	'createsigndoc-address'      => 'House Address:',
-	'createsigndoc-extaddress'   => 'City, State, Country:',
+	'createsigndoc-address'      => 'House address:',
+	'createsigndoc-extaddress'   => 'City, state, country:',
 	'createsigndoc-phone'        => 'Phone number:',
 	'createsigndoc-bday'         => 'Birthdate:',
 	'createsigndoc-minage'       => 'Minimum age:',
