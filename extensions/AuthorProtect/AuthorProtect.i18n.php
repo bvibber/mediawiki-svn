@@ -122,7 +122,7 @@ $messages['cs'] = array(
 	'restriction-level-author' => 'Jen pro autory',
 );
 
-/**  German (Deutsch)
+/** German (Deutsch)
  * @author Raimond Spekking
  */
 $messages['de'] = array(
@@ -167,7 +167,7 @@ $messages['eo'] = array(
 	'restriction-level-author' => 'Protektita per aŭtoro',
 );
 
- /** Persian (فارسی)
+/** Persian (فارسی)
  * @author Mardetanha
  * @author Huji
  */

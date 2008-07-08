@@ -144,7 +144,7 @@ $messages['da'] = array(
 
 /** German (Deutsch)
  * @author Raimond Spekking
-*/
+ */
 $messages['de'] = array(
 	'ajax-se-desc'    => 'Zeigt Benutzer, die momentan dieselbe Seite bearbeiten',
 	'ajax-se-title'   => 'Wird zur Zeit bearbeitet von:',
@@ -529,7 +529,7 @@ $messages['nn'] = array(
 	'ajax-se-pagedoesnotexist' => 'sida finst ikkje',
 );
 
-/** Norwegian (‪Norsk (bokmål)‬)
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */
 $messages['no'] = array(
@@ -812,7 +812,7 @@ $messages['vo'] = array(
 	'ajax-se-idling' => '(bü $1s)',
 );
 
-/** Cantonese (廣東話)
+/** Yue (粵語)
  * @author Shinjiman
  */
 $messages['yue'] = array(
@@ -835,7 +835,7 @@ $messages['zh-hans'] = array(
 	'ajax-se-userinvalid'      => '错误:该用户不正确',
 	'ajax-se-usernotfound'     => '错误:该用户不存在',
 );
-#Shows editing users who is editing the same page
+
 /** Traditional Chinese (‪中文(繁體)‬) */
 $messages['zh-hant'] = array(
 	'ajax-se-desc'             => '列出正在編輯同一個頁面的使用者',

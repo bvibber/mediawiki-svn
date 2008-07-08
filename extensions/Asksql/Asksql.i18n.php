@@ -25,7 +25,7 @@ This can often add considerable load to the server, so please use this function 
 	'right-asksql'    => 'Make SQL queries',
 );
 
-/** Old English (Anglo Saxon)
+/** Old English (Anglo-Saxon)
  * @author Wōdenhelm
  */
 $messages['ang'] = array(
@@ -192,14 +192,14 @@ Die Abfragen können die Server sehr stark belasten, deshalb nutze die Funktion 
 	'right-asksql'    => 'Ausführung von SQL-Abfragen',
 );
 
-/** German - formal adress (Deutsch - förmlich)
+/** German (formal address) (Deutsch (Sie-Form))
  * @author Raimond Spekking
  */
 $messages['de-formal'] = array(
-	'asksqltext'      => "Benutzen Sie das Formular, um direkte Abfragen an die Datenbank durchzuführen.
+	'asksqltext'  => "Benutzen Sie das Formular, um direkte Abfragen an die Datenbank durchzuführen.
 Benutzen Sie einfache Anführungszeichen ('wie diese'), um Zeichenketten zu trennen.
 Die Abfragen können die Server sehr stark belasten, deshalb nutzen Sie die Funktion mit Bedacht.",
-	'sqlislogged'     => 'Bitte beachten Sie, dass alle Abfragen dokumentiert werden.',
+	'sqlislogged' => 'Bitte beachten Sie, dass alle Abfragen dokumentiert werden.',
 );
 
 /** Greek (Ελληνικά)
@@ -378,7 +378,7 @@ az eszközt.",
 	'querysuccessful' => 'Lekérdezés sikeresen megtörtént',
 );
 
-/* Indonesian
+/** Indonesian (Bahasa Indonesia)
  * @author Ivan Lanin
  */
 $messages['id'] = array(
@@ -405,7 +405,7 @@ $messages['is'] = array(
 	'querysuccessful' => 'Fyrirspurn heppnaðist',
 );
 
-/* Italian
+/** Italian (Italiano)
  * @author BrokenArrow
  */
 $messages['it'] = array(
@@ -722,7 +722,7 @@ používajte túto funkciu s rozmyslom.",
 	'right-asksql'    => 'Zadávanie SQL požiadaviek',
 );
 
-/** ћирилица (ћирилица)
+/** Serbian Cyrillic ekavian (ћирилица)
  * @author Sasa Stefanovic
  */
 $messages['sr-ec'] = array(
@@ -841,7 +841,7 @@ Việc làm này thường kéo tải của máy chủ một cách đáng kể, 
 	'right-asksql'    => 'Tạo truy vấn SQL',
 );
 
-/** Cantonese
+/** Yue (粵語)
  * @author Shinjiman
  */
 $messages['yue'] = array(
@@ -857,7 +857,7 @@ $messages['yue'] = array(
 	'querysuccessful' => '查詢完成',
 );
 
-/** Chinese (Simplified)
+/** Simplified Chinese (‪中文(简体)‬)
  * @author Formulax
  * @author Shizhao
  */
@@ -874,7 +874,7 @@ $messages['zh-hans'] = array(
 	'querysuccessful' => '查询完成',
 );
 
-/** Chinese (Traditional)
+/** Traditional Chinese (‪中文(繁體)‬)
  * @author Shinjiman
  * @author Vipuser
  */

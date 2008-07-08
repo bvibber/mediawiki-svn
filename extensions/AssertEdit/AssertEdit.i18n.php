@@ -128,14 +128,13 @@ $messages['eo'] = array(
 	'assert_edit_message' => 'La specifigita aserto ($1) malsukcesis.',
 );
 
-/** فارسی (فارسی)
+/** Persian (فارسی)
  * @author Huji
  */
 $messages['fa'] = array(
 	'assert_edit_title'   => 'تایید ناموفق',
 	'assert_edit_desc'    => 'امکان تایید ویرایش‌ها را برای استفاده ربات‌ها اضافه می‌کند',
 	'assert_edit_message' => 'تایید مورد نظر ($1) ناموفق بود.',
-
 );
 
 /** Finnish (Suomi)
@@ -231,8 +230,8 @@ $messages['hu'] = array(
  * @author IvanLanin
  */
 $messages['id'] = array(
-	'assert_edit_title' => 'Penegasan gagal',
-	'assert_edit_desc'  => 'Menambahkan penegasan suntingan untuk digunakan oleh bot',
+	'assert_edit_title'   => 'Penegasan gagal',
+	'assert_edit_desc'    => 'Menambahkan penegasan suntingan untuk digunakan oleh bot',
 	'assert_edit_message' => 'Penegasan yang dimaksud ($1) gagal.',
 );
 
@@ -344,7 +343,7 @@ $messages['nl'] = array(
 	'assert_edit_message' => 'De gevraagde bevestiging ($1) faalde.',
 );
 
-/** Norwegian (‪Norsk (bokmål)‬)
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */
 $messages['no'] = array(
@@ -442,7 +441,7 @@ $messages['te'] = array(
 	'assert_edit_message' => 'ఉటంకింపు ($1) విఫలమైంది.',
 );
 
-/** Tajik (Тоҷикӣ)
+/** Tajik (Cyrillic) (Тоҷикӣ/tojikī (Cyrillic))
  * @author Ibrahim
  */
 $messages['tg-cyrl'] = array(
@@ -520,6 +519,6 @@ $messages['zh-hans'] = array(
 $messages['zh-hant'] = array(
 	'assert_edit_title'   => '維護失敗',
 	'assert_edit_desc'    => '為機器人的編輯增加聲明',
-	'assert_edit_message' => '所指定的聲明 ($1) 失敗。',
+	'assert_edit_message' => '所指定的斷言 ($1) 失敗。',
 );
 

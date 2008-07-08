@@ -356,7 +356,7 @@ $messages['vi'] = array(
  * @author Shinjiman
  */
 $messages['yue'] = array(
-	'advancedrandom' => '進階隨便',
+	'advancedrandom'      => '進階隨便',
 	'advancedrandom-desc' => '好似一啲[[Special:AdvancedRandom/Template:Featured/Talk]]嘅傾緊嘅或者主題頁連結可以隨便拎來睇做正文又或者好似用[[Special:AdvancedRandom/Template:GFDL/Image]]去拎一個隨便嘅GFDL檔案',
 );
 
@@ -364,7 +364,7 @@ $messages['yue'] = array(
  * @author Shinjiman
  */
 $messages['zh-hans'] = array(
-	'advancedrandom' => '高级随机',
+	'advancedrandom'      => '高级随机',
 	'advancedrandom-desc' => '凡是有子页面或讨论页的，都可以用此功能来随机展示。例如按下[[Special:AdvancedRandom/Template:特色条目/讨论页]]这个连结，就可以随机展示特色条目；又或按下[[Special:AdvancedRandom/Template:GFDL/Image]]这个连结，就可以随机得到一个GFDL档案。',
 );
 
@@ -372,7 +372,7 @@ $messages['zh-hans'] = array(
  * @author Shinjiman
  */
 $messages['zh-hant'] = array(
-	'advancedrandom' => '進階隨機',
+	'advancedrandom'      => '進階隨機',
 	'advancedrandom-desc' => '凡是有子頁面或討論頁的，都可以用此功能來隨機展示。例如按下[[Special:AdvancedRandom/Template:特色條目/討論頁]]這個連結，就可以隨機展示特色條目；又或按下[[Special:AdvancedRandom/Template:GFDL/Image]]這個連結，就可以隨機得到一個GFDL檔案。',
 );
 
