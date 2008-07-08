@@ -8,7 +8,7 @@
 $messages = array();
 
 $messages['en'] = array(
-	'contributorsaddon-desc' => 'Adds JS onMouseOver popups to "Main Contributors" links',
+	'contributorsaddon-desc' => 'Adds JS onMouseOver popups to "Main contributors" links',
 );
 
 /** Arabic (العربية)

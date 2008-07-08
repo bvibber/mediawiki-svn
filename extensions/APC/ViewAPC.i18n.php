@@ -5,7 +5,7 @@ $messages = array();
 $messages['en'] = array(
 	'viewapc'      => 'APC information',
 	'viewapc-desc' => '[[Special:ViewAPC|View and manage APC cache]] with MediaWiki',
-	'right-apc'    => 'Use all features in Special:ViewAPC',
+	'right-apc'    => 'Use all features in [[Special:ViewAPC]]',
 
 	'viewapc-apc-not-available' => 'No cache info available.
 APC does not appear to be running.',
@@ -45,9 +45,9 @@ APC does not appear to be running.',
 	'viewapc-info-runtime' => 'Runtime information',
 
 	'viewapc-info-memory'           => 'Host status diagrams',
-	'viewapc-memory-usage-detailed' => 'Memory Usage<br />
+	'viewapc-memory-usage-detailed' => 'Memory usage<br />
 (multiple slices indicate fragments)',
-	'viewapc-memory-usage'          => 'Memory Usage',
+	'viewapc-memory-usage'          => 'Memory usage',
 	'viewapc-cache-efficiency'      => 'Hits and misses',
 
 	'viewapc-memory-free' => 'Free: $1 ($2)',

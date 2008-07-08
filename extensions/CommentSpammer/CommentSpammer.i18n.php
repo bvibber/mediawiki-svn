@@ -18,7 +18,7 @@ $messages['en'] = array(
 	'commentspammer-log-msg-info' => 'Last spammed $1 {{PLURAL:$1|day|days}} ago, threat level is $2, and offence code is $3.
 [http://www.projecthoneypot.org/search_ip.php?ip=$4 View details], or [[Special:Blockip/$4|block]].',
 	'cspammerlogpagetext'         => 'Record of edits that have been allowed or denied based on whether the source was a known comment spammer.',
-	'cspammer-log-page'           => 'Comment Spammer log',
+	'cspammer-log-page'           => 'Comment spammer log',
 );
 
 /** Arabic (العربية)

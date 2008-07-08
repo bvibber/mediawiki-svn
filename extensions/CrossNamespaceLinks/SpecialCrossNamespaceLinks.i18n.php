@@ -9,7 +9,7 @@ $messages = array();
 
 $messages['en'] = array(
 	'crossnamespacelinks'         => 'Cross-namespace links',
-	'crossnamespacelinks-desc'    => '[[Special:CrossNamespaceLinks|Lists links across namespaces]] that shouldn\'t exist on {{SITENAME}}',
+	'crossnamespacelinks-desc'    => '[[Special:CrossNamespaceLinks|Lists links across namespaces]] that should not exist on {{SITENAME}}',
 	'crossnamespacelinks-summary' => 'This page provides a list of links from a page in the main namespace to a page in other namespaces (except for {{ns:special}}, {{ns:talk}}, {{ns:project}}, and {{ns:template}} namespaces), which are not advisable to use.',
 	'crossnamespacelinkstext'     => '$1: $2 {{PLURAL:$2|link|links}} to $3'
 );

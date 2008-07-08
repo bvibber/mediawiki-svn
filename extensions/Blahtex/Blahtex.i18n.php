@@ -8,7 +8,7 @@
 $messages = array();
 
 $messages['en'] = array(
-	'math_noblahtex'                        => 'Can\'t execute blahtex, which should be at $1',
+	'math_noblahtex'                        => 'Cannot execute blahtex, which should be at $1',
 	'math-desc'				=> 'MathML output for &lt;math&gt; tags',
 	'math_AmbiguousInfix'                   => 'Ambiguous placement of "$1".
 Try using additional braces "{ ... }" to disambiguate.',

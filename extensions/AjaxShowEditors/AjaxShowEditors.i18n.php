@@ -13,8 +13,8 @@ $messages['en'] = array(
 	'ajax-se-pending'          => 'pending refresh… (click this box or start editing)',
 	'ajax-se-idling'           => '($1s ago)',
 	'ajax-se-pagedoesnotexist' => 'page does not exist',
-	'ajax-se-userinvalid'      => 'ERR: user invalid',
-	'ajax-se-usernotfound'     => 'ERR: user not found',
+	'ajax-se-userinvalid'      => 'Error: user invalid',
+	'ajax-se-usernotfound'     => 'Error: user not found',
 );
 
 /** Afrikaans (Afrikaans)
