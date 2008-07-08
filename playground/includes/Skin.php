@@ -631,12 +631,13 @@ END;
 		return $s;
 	}
 
+	function joinCategoryLinks( &$links ) {
+		global $wgContLang;
 
-	function getCategoryLinks() {
-		global $wgOut, $wgTitle, $wgUseCategoryBrowser;
-		global $wgContLang, $wgUser;
-
-		if( count( $wgOut->mCategoryLinks ) == 0 ) return '';
+		$t = '';
+		if ( !wfRunHooks( 'SkinJoinCategoryLinks', array( &$this, &$links, &$t ) ) ) {
+			return $t;
+		}
 
 		# Separator
 		$sep = wfMsgHtml( 'catseparator' );
@@ -644,14 +645,30 @@ END;
 		// Use Unicode bidi embedding override characters,
 		// to make sure links don't smash each other up in ugly ways.
 		$dir = $wgContLang->isRTL() ? 'rtl' : 'ltr';
+
 		$embed = "<span dir='$dir'>";
 		$pop = '</span>';
+		
+		$t = $embed . implode ( "{$pop} {$sep} {$embed}" , $links ) . $pop;
+		return $t;
+	}
+
+	function getCategoryLinks() {
+		global $wgOut, $wgTitle, $wgUseCategoryBrowser;
+		global $wgUser;
+
+		if( count( $wgOut->mCategoryLinks ) == 0 ) return '';
 
 		$allCats = $wgOut->getCategoryLinks();
 		$s = '';
+
+		if ( !wfRunHooks( 'SkinGetCategoryLinks', array( &$this, &$allCats, &$s ) ) ) {
+			return $s;
+		}
+
 		$colon = wfMsgExt( 'colon-separator', 'escapenoentities' );
 		if ( !empty( $allCats['normal'] ) ) {
-			$t = $embed . implode ( "{$pop} {$sep} {$embed}" , $allCats['normal'] ) . $pop;
+			$t = $this->joinCategoryLinks( $allCats['normal'] );
 
 			$msg = wfMsgExt( 'pagecategories', array( 'parsemag', 'escapenoentities' ), count( $allCats['normal'] ) );
 			$s .= '<div id="mw-normal-catlinks">' .
@@ -670,7 +687,7 @@ END;
 			}
 			$s .= "<div id=\"mw-hidden-catlinks\" class=\"$class\">" .
 				wfMsgExt( 'hidden-categories', array( 'parsemag', 'escapenoentities' ), count( $allCats['hidden'] ) ) .
-				$colon . $embed . implode( "$pop $sep $embed", $allCats['hidden'] ) . $pop .
+				$colon . $this->joinCategoryLinks( $allCats['hidden'] ) .
 				"</div>";
 		}
 
