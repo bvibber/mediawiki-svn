@@ -81,7 +81,7 @@ process_factory::release(processp proc)
 }
 
 void
-process_factory::reap(const boost::system::error_code &error)
+process_factory::reap(boost::system::error_code error)
 {
 	std::time_t oldest = std::time(0) - 30;
 

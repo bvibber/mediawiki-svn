@@ -24,22 +24,22 @@ using boost::format;
 
 fcgi_application::fcgi_application(
 		int request_id,
-		fcgi_server_connection *server,
+		fcgi_server_connectionp server,
 		sbcontext &context)
-	: cgi_(0)
-	, server_(server)
+	: server_(server)
 	, context_(context)
 	, request_id_(request_id)
 	, logger(log4cxx::Logger::getLogger("switchboard.fcgi_application"))
 {
 	LOG4CXX_DEBUG(logger, format("creating application@%p") % this);
+	assert(server);
 }
 
 fcgi_application::~fcgi_application()
 {
 	LOG4CXX_DEBUG(logger, format("destroying application@%p") % this);
 	if (cgi_)
-		cgi_->destroy();
+		cgi_->close();
 }
 
 void
@@ -62,7 +62,9 @@ fcgi_application::record_from_server(fcgi::recordp record)
 			LOG4CXX_DEBUG(logger, "finished reading params, "
 				"fcgi_cgi will be created");
 			try {
-				cgi_ = new fcgi_cgi(request_id_, context_, this, params_);
+				cgi_.reset(new fcgi_cgi(request_id_, context_, 
+						       	shared_from_this(), params_));
+				cgi_->start();
 			} catch (std::exception &e) {
 				LOG4CXX_DEBUG(logger, format( "error creating fcgi_cgi: %s")
 						% e.what());
@@ -163,5 +165,8 @@ void
 fcgi_application::destroy()
 {
 	LOG4CXX_DEBUG(logger, format("application@%p, destroy() called") % this);
+	if (cgi_)
+		cgi_->close();
+	cgi_.reset();
 	server_->destroy(request_id_);
 }

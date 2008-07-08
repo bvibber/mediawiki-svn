@@ -93,7 +93,71 @@ main(int argc, char **argv)
 
 	LOG4CXX_INFO(mainlogger, "Starting up...");
 
-	if (!getuid() || !getgid()) {
+	configuration_loader loader;
+	if (!loader.load(conf, mainconf)) {
+		LOG4CXX_ERROR(mainlogger, "cannot load configuration");
+		return 1;
+	}
+    
+	if (mainconf.sockdir.empty()) {
+		LOG4CXX_ERROR(mainlogger, "sockdir must be specified");
+		return 1;
+	}
+
+	if (mainconf.userdir.empty()) {
+		LOG4CXX_ERROR(mainlogger, "userdir must be specified");
+		return 1;
+	}
+
+	if (mainconf.docroot.empty()) {
+		LOG4CXX_ERROR(mainlogger, "docroot must be specified");
+		return 1;
+	}
+
+	LOG4CXX_INFO(mainlogger, format("loaded configuration from \"%s\"")
+			% conf);
+
+	for (std::vector<conf_listener>::iterator
+		it = mainconf.listeners.begin(),
+		end = mainconf.listeners.end();
+		it != end; ++it)
+	{
+		tcp::resolver resolver(context.service());
+		tcp::resolver::query listenq(it->host, it->port);
+		tcp::resolver::iterator rit = resolver.resolve(listenq);
+		tcp::resolver::iterator rend;
+
+		for (; rit != rend; ++rit) {
+			LOG4CXX_INFO(mainlogger, format("Listening on %s[%s]:%d")
+					% it->host
+					% rit->endpoint().address()
+					% rit->endpoint().port());
+			try {
+				listeners.push_back(new fcgi_listener(context, rit->endpoint()));
+			} catch (std::exception &e) {
+				LOG4CXX_ERROR(mainlogger, format("could not create FCGI listener: %s")
+						% e.what());
+				return 1;
+			}
+		}
+	}
+
+	std::string logconf = CONFDIR "/log.conf";
+	if (!mainconf.logconf.empty()) 
+		logconf = mainconf.logconf;
+
+	if (access(logconf.c_str(), R_OK) == -1) {
+		LOG4CXX_WARN(mainlogger,
+			format("main log configuration \"%s\" cannot be read: %s")
+			% logconf % std::strerror(errno));
+		return 1;
+	} else {
+		LOG4CXX_INFO(mainlogger, format("re-initialising logging from \"%s\"")
+			% logconf);
+		log4cxx::PropertyConfigurator::configure(logconf);
+	}
+
+	if (!getuid()) {
 		struct passwd *pw;
 		struct group *gr;
 
@@ -140,30 +204,6 @@ main(int argc, char **argv)
 				format("now running as %s:%s")
 				% SB_USER % SB_GROUP);
 	}
-
-	configuration_loader loader;
-	if (!loader.load(conf, mainconf)) {
-		LOG4CXX_ERROR(mainlogger, "cannot load configuration");
-		return 1;
-	}
-    
-	if (mainconf.sockdir.empty()) {
-		LOG4CXX_ERROR(mainlogger, "sockdir must be specified");
-		return 1;
-	}
-
-	if (mainconf.userdir.empty()) {
-		LOG4CXX_ERROR(mainlogger, "userdir must be specified");
-		return 1;
-	}
-
-	if (mainconf.docroot.empty()) {
-		LOG4CXX_ERROR(mainlogger, "docroot must be specified");
-		return 1;
-	}
-
-	LOG4CXX_INFO(mainlogger, format("loaded configuration from \"%s\"")
-			% conf);
 
 	/*
 	 * Make sure our sockdir is valid, and has the right permissions.
@@ -212,45 +252,6 @@ dostat:
 		return 1;
 	}
 
-	for (std::vector<conf_listener>::iterator
-		it = mainconf.listeners.begin(),
-		end = mainconf.listeners.end();
-		it != end; ++it)
-	{
-		tcp::resolver resolver(context.service());
-		tcp::resolver::query listenq(it->host, it->port);
-		tcp::resolver::iterator rit = resolver.resolve(listenq);
-		tcp::resolver::iterator rend;
-
-		for (; rit != rend; ++rit) {
-			LOG4CXX_INFO(mainlogger, format("Listening on %s[%s]:%d")
-					% it->host
-					% rit->endpoint().address()
-					% rit->endpoint().port());
-			try {
-				listeners.push_back(new fcgi_listener(context, rit->endpoint()));
-			} catch (std::exception &e) {
-				LOG4CXX_ERROR(mainlogger, format("could not create FCGI listener: %s")
-						% e.what());
-				return 1;
-			}
-		}
-	}
-
-	std::string logconf = CONFDIR "/log.conf";
-	if (!mainconf.logconf.empty()) 
-		logconf = mainconf.logconf;
-
-	if (access(logconf.c_str(), R_OK) == -1) {
-		LOG4CXX_WARN(mainlogger,
-			format("main log configuration \"%s\" cannot be read: %s")
-			% logconf % std::strerror(errno));
-		return 1;
-	} else {
-		LOG4CXX_INFO(mainlogger, format("re-initialising logging from \"%s\"")
-			% logconf);
-		log4cxx::PropertyConfigurator::configure(logconf);
-	}
 
 	if (!dflag) {
 		LOG4CXX_INFO(mainlogger, "detaching to background...");

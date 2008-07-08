@@ -31,13 +31,13 @@ using boost::format;
 fcgi_cgi::fcgi_cgi(
 		int request_id,
 		sbcontext &context,
-		fcgi_application *app,
+		fcgi_applicationp app,
 		fcgi::params &params)
 	: context_(context)
 	, child_socket_(context_.service())
 	, app_(app)
-	, writer_(context, child_socket_, boost::bind(&fcgi_cgi::writer_error, this, _1))
 	, request_id_(request_id)
+	, alive_(true)
 	, logger(log4cxx::Logger::getLogger("switchboard.fcgi_cgi"))
 {
 	LOG4CXX_DEBUG(logger, format("[req=%d] fcgi_cgi@%p is created") 
@@ -131,8 +131,6 @@ fcgi_cgi::fcgi_cgi(
 		params["SCRIPT_FILENAME"] = pathname;
 	}
 
-	//params["SCRIPT_FILENAME"] = pathname;
-
 	process_ = context_.factory().create_from_filename(pathname);
 	process_->connect(child_socket_);
 	tcp::socket::non_blocking_io cmd(true);
@@ -140,15 +138,26 @@ fcgi_cgi::fcgi_cgi(
 
 	LOG4CXX_DEBUG(logger, format("[req=%d] connected to child")
 			% request_id_);
-	async_read_fcgi_record(child_socket_, child_read_error_,
-			boost::bind(&fcgi_cgi::handle_child_read, this, _1));
+}
+
+void
+fcgi_cgi::start()
+{
+	writer_.reset(new fcgi_record_writer(
+		context_, child_socket_,
+		boost::bind(&fcgi_cgi::writer_error,
+			shared_from_this(), _1)));
+	async_read_fcgi_record(child_socket_,
+			boost::bind(&fcgi_cgi::handle_child_read, 
+				shared_from_this(), _1, _2));
 }
 
 fcgi_cgi::~fcgi_cgi()
 {
 	LOG4CXX_DEBUG(logger, format("[req=%d] fcgi_cgi@%p destructed") 
 			% request_id_ % this);
-	context_.factory().release(process_);
+	if (process_)
+		context_.factory().release(process_);
 }
 
 void
@@ -156,7 +165,7 @@ fcgi_cgi::record(fcgi::recordp record)
 {
 	LOG4CXX_DEBUG(logger, format("[req=%d] received a record, fwding to child")
 			% request_id_);
-	writer_.write(record);
+	writer_->write(record);
 }
 
 void
@@ -164,38 +173,63 @@ fcgi_cgi::record_noflush(fcgi::recordp record)
 {
 	LOG4CXX_DEBUG(logger, format("[req=%d] received a record, fwding to child")
 			% request_id_);
-	writer_.write_noflush(record);
+	writer_->write_noflush(record);
 }
 
 void
 fcgi_cgi::flush()
 {
-	writer_.flush();
+	writer_->flush();
 }
 
 void
-fcgi_cgi::writer_error(boost::system::error_code const &error)
+fcgi_cgi::writer_error(boost::system::error_code error)
 {
+	if (!alive_)
+		return;
+
+	if (error == asio::error::operation_aborted) {
+		std::cerr << "fcgi_cgi::writer_error: operation aborted\n";
+		return;
+	}
+
 	LOG4CXX_DEBUG(logger, format("[req=%d] write to child completed with error: %s")
 			% request_id_ % error.message());
+
+	process_.reset();
+
 	if (app_)
 		app_->destroy();
 }
 
 void
-fcgi_cgi::handle_child_read(fcgi::recordp record)
+fcgi_cgi::handle_child_read(
+		fcgi::recordp record,
+		boost::system::error_code error)
 {
-	if (!record) {
-		if (child_read_error_)
-			LOG4CXX_DEBUG(logger, format("[req=%d] fcgi_cgi, error reading from child: %s")
-					% request_id_ % child_read_error_.message());
-		if (app_)
-			app_->destroy();
+	if (!alive_)
+		return;
+
+	if (error == asio::error::operation_aborted) {
+		std::cerr << "fcgi_cgi::handle_child_read: operation aborted\n";
 		return;
 	}
 
-	if (!app_) {
-		LOG4CXX_INFO(logger, "handle_child_read: warning: app_ is null");
+	assert(app_);
+
+	if (child_socket_.native() == -1) {
+		std::cout << "fcgi_cgi::handle_child_read: socket==-1!\n";
+		return;
+	}
+
+	if (!record) {
+		std::cout << "child read error = " << error.message() << "\n";
+		process_.reset();
+		if (error)
+			LOG4CXX_DEBUG(logger, format("[req=%d] fcgi_cgi, error reading from child: %s")
+					% request_id_ % error.message());
+		if (app_)
+			app_->destroy();
 		return;
 	}
 
@@ -235,11 +269,11 @@ fcgi_cgi::handle_child_read(fcgi::recordp record)
 		app_->record_from_child(record);
 
 	if (destroy)
-		app_->destroy();
+		this->destroy();
 	else
-		async_read_fcgi_record(child_socket_, child_read_error_,
+		async_read_fcgi_record(child_socket_,
 			boost::bind(&fcgi_cgi::handle_child_read,
-				this, _1));
+				shared_from_this(), _1, _2));
 }
 
 void
@@ -247,22 +281,18 @@ fcgi_cgi::destroy()
 {
 	LOG4CXX_DEBUG(logger, format("[req=%d] cgi@%p, destroy() called") 
 			% request_id_ % this);
-	if (app_)
-		app_ = NULL;
-
-	/*
-	 * To destroy ourselves, we close the socket, then post a 'delete this'
-	 * operation to the service.  This ensures that we still exist when
-	 * any outstanding socket operations return.
-	 */
-	child_socket_.close();
-	context_.service().post(boost::bind(&fcgi_cgi::delete_me, this));
+	alive_ = false;
+	close();
+	app_->destroy();
 }
 
 void
-fcgi_cgi::delete_me()
+fcgi_cgi::close()
 {
-	LOG4CXX_DEBUG(logger, format("[req=%d] cgi@%p, delete_me() called") 
+	LOG4CXX_DEBUG(logger, format("[req=%d] cgi@%p, close() called") 
 			% request_id_ % this);
-	delete this;
+	alive_ = false;
+	child_socket_.close();
+	writer_.reset();
 }
+

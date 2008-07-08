@@ -16,18 +16,23 @@
 
 #include	<boost/asio.hpp>
 #include	<boost/array.hpp>
+#include	<boost/enable_shared_from_this.hpp>
 #include	<log4cxx/logger.h>
 
 #include	"fcgi.h"
+#include	"fcgi_cgi.h"
 #include	"sbcontext.h"
 
 struct fcgi_cgi;
 struct fcgi_server_connection;
 
-struct fcgi_application {
+typedef boost::shared_ptr<fcgi_server_connection>
+		fcgi_server_connectionp;
+
+struct fcgi_application : boost::enable_shared_from_this<fcgi_application> {
 	fcgi_application(
 		int request_id,
-		fcgi_server_connection *server,
+		fcgi_server_connectionp server,
 		sbcontext &context);
 	~fcgi_application();
 
@@ -42,12 +47,14 @@ private:
 
 	std::map<std::string, std::string> params_;
 	std::vector<fcgi::recordp> buffer;
-	fcgi_cgi *cgi_;
-	fcgi_server_connection *server_;
+	fcgi_cgip cgi_;
+	fcgi_server_connectionp server_;
 	sbcontext &context_;
 	int request_id_;
 
 	log4cxx::LoggerPtr logger;
 };
+
+typedef boost::shared_ptr<fcgi_application> fcgi_applicationp;
 
 #endif

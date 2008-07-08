@@ -23,7 +23,7 @@ using namespace record_writer_detail;
 fcgi_record_writer::fcgi_record_writer(
 		sbcontext &context,
 		tcp::socket &socket,
-		boost::function<void (boost::system::error_code const &)> errorfunc)
+		boost::function<void (boost::system::error_code)> errorfunc)
 	: context_(context)
 	, socket_(socket)
 	, errorfunc_(errorfunc)
@@ -90,14 +90,20 @@ fcgi_record_writer::flush()
 
 void
 fcgi_record_writer::write_done(
-	boost::system::error_code const &error,
+	boost::system::error_code error,
 	std::size_t bytes)
 {
 	if (error == asio::error::operation_aborted) {
+		std::cout << "fcgi_record_writer::write_done: operation aborted\n";
 		return;
 	}
 
+	/*
+	 * Not sure how this happens, but we handled it the same way as an 
+	 * aborted connection.
+	 */
 	if (socket_.native() == -1) {
+		std::cout << "fcgi_record_writer::write_done: invalid socket\n";
 		return;
 	}
 
@@ -114,9 +120,4 @@ fcgi_record_writer::write_done(
 	flush();
 
 	LOG4CXX_DEBUG(logger, format("record_writer@%p: write_done") % this);
-}
-
-void
-fcgi_record_writer::close() {
-	socket_.close();
 }

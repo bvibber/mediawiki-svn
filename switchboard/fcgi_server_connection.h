@@ -13,6 +13,7 @@
 #include	<vector>
 
 #include	<boost/asio/ip/tcp.hpp>
+#include	<boost/enable_shared_from_this.hpp>
 #include	<log4cxx/logger.h>
 
 #include	"switchboard.h"
@@ -21,8 +22,11 @@
 #include	"sbcontext.h"
 #include	"fcgi_record_writer.h"
 
-struct fcgi_server_connection {
-	fcgi_server_connection(sbcontext &context);
+struct fcgi_listener;
+
+struct fcgi_server_connection : 
+		boost::enable_shared_from_this<fcgi_server_connection> {
+	fcgi_server_connection(sbcontext &context, fcgi_listener *lsnr);
 	~fcgi_server_connection();
 
 	void	start();
@@ -32,21 +36,26 @@ struct fcgi_server_connection {
 	boost::asio::ip::tcp::socket &socket();
 
 private:
-	void	handle_record(fcgi::recordp record);
+	void	handle_record(
+			fcgi::recordp record,
+			boost::system::error_code);
 
-	std::vector<fcgi_application *> requests_;
+	std::vector<fcgi_applicationp> requests_;
 	boost::asio::ip::tcp::socket socket_;
 	sbcontext &context_;
-	boost::system::error_code error_;
 	fcgi::recordp record_;
-	fcgi_record_writer writer_;
+	fcgi_record_writerp writer_;
+	fcgi_listener *lsnr_;
 
-	void writer_error(boost::system::error_code const &error);
+	void writer_error(boost::system::error_code error);
 	void destroy();
 	void delete_me();
 	bool alive_;
 
 	log4cxx::LoggerPtr logger;
 };
+
+typedef boost::shared_ptr<fcgi_server_connection>
+	fcgi_server_connectionp;
 
 #endif

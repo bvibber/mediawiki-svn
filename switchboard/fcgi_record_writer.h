@@ -17,6 +17,8 @@
 #include	<boost/system/error_code.hpp>
 #include	<boost/function.hpp>
 #include	<boost/noncopyable.hpp>
+#include	<boost/shared_ptr.hpp>
+#include	<boost/enable_shared_from_this.hpp>
 #include	<log4cxx/logger.h>
 
 #include	"switchboard.h"
@@ -31,16 +33,17 @@ namespace record_writer_detail {
 	};
 }
 
-struct fcgi_record_writer : boost::noncopyable {
+struct fcgi_record_writer : 
+	boost::noncopyable, boost::enable_shared_from_this<fcgi_record_writer> {
+
 	fcgi_record_writer(
 		sbcontext &context,
 		boost::asio::ip::tcp::socket &socket,
-		boost::function<void (boost::system::error_code const &)> errorfunc);
+		boost::function<void (boost::system::error_code)> errorfunc);
 
 	void write(fcgi::recordp record);
 	void write_noflush(fcgi::recordp record);
 	void flush();
-	void close();
 
 private:
 	sbcontext &context_;
@@ -48,12 +51,12 @@ private:
 	std::vector<record_writer_detail::pending_record> inflight_;
 	std::vector<record_writer_detail::pending_record> waiting_;
 	std::vector<boost::asio::mutable_buffer> buffers_;
-	boost::function<void (boost::system::error_code const &)> errorfunc_;
+	boost::function<void (boost::system::error_code)> errorfunc_;
 
 	void write_done(
-		boost::system::error_code const &error,
+		boost::system::error_code error,
 		std::size_t bytes);
-	void flush_done(boost::system::error_code const &error);
+	void flush_done(boost::system::error_code error);
 
 	template<typename InputIterator>
 	void write(InputIterator begin, InputIterator end)
@@ -64,5 +67,7 @@ private:
 
 	log4cxx::LoggerPtr logger;
 };
+
+typedef boost::shared_ptr<fcgi_record_writer> fcgi_record_writerp;
 
 #endif

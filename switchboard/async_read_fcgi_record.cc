@@ -22,21 +22,20 @@ using boost::format;
 namespace {
 	struct async_fcgi_reader {
 		async_fcgi_reader(
-				tcp::socket &socket,
-				boost::system::error_code &error,
-				function<void (fcgi::recordp)> call);
+			tcp::socket &socket,
+			function<void (fcgi::recordp, 
+				boost::system::error_code)> call);
 
 		void	start();
 		void	read_header_done(
-				const boost::system::error_code &error,
+				boost::system::error_code error,
 				std::size_t bytes);
 		void	read_data_done(
-				const boost::system::error_code &error,
+				boost::system::error_code error,
 				std::size_t bytes);
 
 		tcp::socket &socket_;
-		boost::system::error_code &error_;
-		function<void (fcgi::recordp)> call_;
+		function<void (fcgi::recordp, boost::system::error_code)> call_;
 		boost::array<asio::mutable_buffer, 2> data_bufs;
 		asio::io_service &service_;
 
@@ -47,10 +46,8 @@ namespace {
 
 async_fcgi_reader::async_fcgi_reader(
 		tcp::socket &socket,
-		boost::system::error_code &error,
-		function<void (fcgi::recordp)> call)
+		function<void (fcgi::recordp, boost::system::error_code)> call)
 	: socket_(socket)
-	, error_(error)
 	, call_(call)
 	, service_(socket.get_io_service())
 	, record(new fcgi::record)
@@ -58,6 +55,7 @@ async_fcgi_reader::async_fcgi_reader(
 {
 	LOG4CXX_DEBUG(logger, format("reader@%p: created (sock=%d)") 
 			% this % socket_.native());
+	assert(socket_.native() != -1);
 }
 
 void
@@ -71,7 +69,6 @@ async_fcgi_reader::start()
 	 * First read the header.
 	 */
 	LOG4CXX_DEBUG(logger, format("reader@%p: starting") % this);
-	error_ = boost::system::error_code();
 	asio::async_read(socket_, 
 			asio::buffer((void *) record.get(), 8),
 			asio::transfer_at_least(8),
@@ -82,10 +79,13 @@ async_fcgi_reader::start()
 
 void
 async_fcgi_reader::read_header_done(
-		const boost::system::error_code &error,
+		boost::system::error_code error,
 		std::size_t bytes)
 {
 	if (error == asio::error::operation_aborted) {
+		std::cout << "async_fcgi_reader: aborted\n";
+		service_.post(boost::bind(call_, fcgi::recordp(),
+				asio::error::operation_aborted));
 		delete this;
 		return;
 	}
@@ -93,9 +93,8 @@ async_fcgi_reader::read_header_done(
 	if (error) {
 		LOG4CXX_DEBUG(logger, format("reader@%p: header read failed: %s")
 				% this % error.message());
-		error_ = error;
 		service_.post(
-			boost::bind(call_, fcgi::recordp()));
+			boost::bind(call_, fcgi::recordp(), error));
 		delete this;
 		return;
 	}
@@ -130,22 +129,26 @@ async_fcgi_reader::read_header_done(
 
 void
 async_fcgi_reader::read_data_done(
-	const boost::system::error_code &error,
+	boost::system::error_code error,
 	std::size_t bytes)
 {
-	LOG4CXX_DEBUG(logger, format("reader@%p, read_data_done bytes=%d expected=%d error=[%s]") 
-			% this % bytes
-			% (record->content_length()+record->paddingLength)
-			% error.message());
 	if (error == asio::error::operation_aborted) {
+		std::cout << "async_fcgi_reader: aborted\n";
+		service_.post(boost::bind(call_, fcgi::recordp(),
+				asio::error::operation_aborted));
 		delete this;
 		return;
 	}
 
+	LOG4CXX_DEBUG(logger, format("reader@%p, read_data_done bytes=%d expected=%d error=[%s]") 
+			% this % bytes
+			% (record->content_length()+record->paddingLength)
+			% error.message());
+
 	if (error)
-		service_.post(boost::bind(call_, fcgi::recordp()));
+		service_.post(boost::bind(call_, fcgi::recordp(), error));
 	else
-		service_.post(boost::bind(call_, record));
+		service_.post(boost::bind(call_, record, error));
 	delete this;
 }
 
@@ -154,11 +157,10 @@ async_fcgi_reader::read_data_done(
 void 
 async_read_fcgi_record(
 		tcp::socket &socket, 
-		boost::system::error_code &error,
-		function<void (fcgi::recordp)> call)
+		function<void (fcgi::recordp, boost::system::error_code error)> call)
 {
 	async_fcgi_reader *reader = new async_fcgi_reader(
-			socket, error, call);
+			socket, call);
 	reader->start();
 }
 

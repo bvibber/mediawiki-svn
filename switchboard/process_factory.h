@@ -69,7 +69,7 @@ private:
 
 	static std::set<int> ids_;
 	static int curid_;
-	void reap(const boost::system::error_code &error);
+	void reap(boost::system::error_code error);
 
 	log4cxx::LoggerPtr logger;
 };
