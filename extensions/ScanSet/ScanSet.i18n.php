@@ -12,7 +12,7 @@ $messages['en'] = array(
 	'scanset_no_name'                   => 'Error: You must specify a scan set name, e.g. &lt;scanset name="EB1911" /&gt;.',
 	'scanset_invalid_name'              => 'Error: Invalid or missing scan set.',
 	'scanset_unrecognised_index_format' => 'Error: Unknown index format',
-	'scanset_opendir_error'             => 'Error: Error, cannot open directory $1',
+	'scanset_opendir_error'             => 'Error: Cannot open directory $1',
 	'scanset_no_files'                  => 'Error: No files present in the specified directory.',
 	'scanset_no_volumes'                => 'Error: No volume directories found',
 	'scanset_missing_index_file'        => 'Error: Index file $1 not found',
