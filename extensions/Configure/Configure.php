@@ -18,7 +18,7 @@ if ( !defined( 'MEDIAWIKI' ) ) die();
 $wgConfigureFilesPath = "$IP/serialized";
 
 /**
- * Wheter to update $wgCacheEpoch when saving changes in Special:Configure
+ * Whether to update $wgCacheEpoch when saving changes in Special:Configure
  */
 $wgConfigureUpdateCacheEpoch = false; 
 
