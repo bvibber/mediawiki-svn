@@ -77,6 +77,13 @@ $messages['ar'] = array(
 	'dt_xml_freetext'             => 'نص حر',
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
+ */
+$messages['be-tarask'] = array(
+	'dt_viewxml_categories' => 'Катэгорыі',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  */

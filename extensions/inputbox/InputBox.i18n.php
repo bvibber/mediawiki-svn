@@ -888,6 +888,7 @@ $messages['qu'] = array(
 
 /** Romanian (Română)
  * @author Emily
+ * @author Firilacroco
  */
 $messages['ro'] = array(
 	'tryexact'       => 'Încearcă varianta exactă',

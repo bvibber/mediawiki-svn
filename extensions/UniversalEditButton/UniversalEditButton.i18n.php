@@ -158,6 +158,13 @@ $messages['sv'] = array(
 	'universaleditbutton-desc' => 'Lägger till HTML-huvudet <code>&lt;link&gt;</code> för att stödja webbläsartillägget "Universal Edit Button"',
 );
 
+/** Ukrainian (Українська)
+ * @author Ahonc
+ */
+$messages['uk'] = array(
+	'universaleditbutton-desc' => 'Додає HTML-заголовок <code>&lt;link&gt;</code> для підтримки додатка браузера «Універсальна кнопка редагування»',
+);
+
 /** Vèneto (Vèneto)
  * @author Candalua
  */

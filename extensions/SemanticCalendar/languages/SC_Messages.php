@@ -121,6 +121,16 @@ $messages['gv'] = array(
 	'sc_today'         => 'Jiu',
 );
 
+/** Hebrew (עברית)
+ * @author StuB
+ */
+$messages['he'] = array(
+	'sc_previousmonth' => 'החודש הקודם',
+	'sc_nextmonth'     => 'החודש הבא',
+	'sc_today'         => 'היום',
+	'sc_gotomonth'     => 'מעבר לחודש',
+);
+
 /** Hindi (हिन्दी)
  * @author Kaustubh
  */

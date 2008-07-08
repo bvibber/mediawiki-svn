@@ -163,7 +163,8 @@ $messages['km'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
-	'seealso' => 'Kuckt och',
+	'seealso'      => 'Kuckt och',
+	'seealso-desc' => "Iwwerschrëft 'Kuckt och' a Benotzen vum Tag <code><nowiki><seealso></nowiki></code>",
 );
 
 /** Limburgish (Limburgs)

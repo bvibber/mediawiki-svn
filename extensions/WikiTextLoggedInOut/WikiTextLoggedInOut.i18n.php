@@ -35,6 +35,13 @@ $messages['gl'] = array(
 	'wikitextloggedinout-desc' => 'Dous hooks de análise, <tt>&lt;loggedin&gt;</tt> e mais <tt>&lt;loggedout&gt;</tt> para amosar textos diferentes dependendo do estado do rexistro do usuario',
 );
 
+/** Ripoarisch (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'wikitextloggedinout-desc' => 'De zosëzlesche Befääle <tt>&lt;loggedin&gt;</tt>, <tt>&lt;loggedout&gt;</tt> em Wikitëx don ongerschëijde, ov ene Medmaacher enjelogg eß, odder nit.',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
@@ -47,6 +54,13 @@ $messages['lb'] = array(
  */
 $messages['nl'] = array(
 	'wikitextloggedinout-desc' => 'Twee parserhooks: <tt>&lt;loggedin&gt;</tt> en <tt>&lt;loggedout&gt;</tt> om andere tekst weer te geven afhankelijk van de aanmeldstatus van een gebruiker',
+);
+
+/** Polish (Polski)
+ * @author Sp5uhe
+ */
+$messages['pl'] = array(
+	'wikitextloggedinout-desc' => 'Dodaje dwa haki parsera <tt>&lt;loggedin&gt;</tt> oraz <tt>&lt;loggedout&gt;</tt> pozwalające wyświetlać różne teksty w zależności od statusu zalogowania się użytkownika',
 );
 
 /** Slovak (Slovenčina)

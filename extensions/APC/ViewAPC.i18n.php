@@ -273,7 +273,7 @@ APC لا يبدو أنه يعمل.',
  */
 $messages['bg'] = array(
 	'viewapc'                       => 'Информация за APC',
-	'right-apc'                     => 'използване на всички възможности на Special:ViewAPC',
+	'right-apc'                     => 'Използване на всички възможности на Special:ViewAPC',
 	'viewapc-mode-version-check'    => 'Проверка на версията',
 	'viewapc-info-general'          => 'Обща информация',
 	'viewapc-apc-version'           => 'Версия на APC',
@@ -439,6 +439,7 @@ APC verŝajne ne funkcias.',
 	'viewapc-shared-memory-details' => '{{PLURAL:$1|1 segmento de $2|$1 segmentoj po $2}}.<br />
 ($3 memoro, $4 ŝlosita)',
 	'viewapc-start-time'            => 'Tempo de starto',
+	'viewapc-uptime'                => 'Tempdaŭro de operacio',
 	'viewapc-cached-files'          => 'Memorkaŝitaj dosieroj',
 	'viewapc-cached-files-d'        => '$1 {{PLURAL:$1|dosiero|dosieroj}} ($2)',
 	'viewapc-rps'                   => '$1 petoj po sekundo',
@@ -450,6 +451,7 @@ APC verŝajne ne funkcias.',
 	'viewapc-display-filename'      => 'Dosiernomo',
 	'viewapc-display-info'          => 'Nomo',
 	'viewapc-display-ttl'           => 'Findato',
+	'viewapc-display-inode'         => 'Indeksnodo',
 	'viewapc-display-mtime'         => 'Modifita',
 	'viewapc-display-creation_time' => 'Kreita',
 	'viewapc-display-deletion_time' => 'Forigita',
@@ -1461,7 +1463,7 @@ $messages['nds'] = array(
 $messages['nl'] = array(
 	'viewapc'                       => 'APC-informatie',
 	'viewapc-desc'                  => '[[Special:ViewAPC|De APC-cache bekijken en beheren]] vanuit MediaWiki',
-	'right-apc'                     => 'Alle mogelijkheden van Special:ViewAPC gebruiken',
+	'right-apc'                     => 'Alle mogelijkheden van [[Special:ViewAPC]] gebruiken',
 	'viewapc-apc-not-available'     => 'Er is geen informatie over de cache beschikbaar.
 APC lijkt niet gestart te zijn.',
 	'viewapc-clear-confirm'         => 'Wilt u de cache leegmaken?',
@@ -1571,7 +1573,7 @@ De nieuwere versie $2 is beschikbaar op http://pecl.php.net/package/APC/$2',
 $messages['no'] = array(
 	'viewapc'                       => 'APC-informasjon',
 	'viewapc-desc'                  => '[[Special:ViewAPC|Vis og behandle APC-mellomlageret]] med MediaWiki',
-	'right-apc'                     => 'Bruke alle funksjoner i Special:ViewAPC',
+	'right-apc'                     => 'Bruke alle funksjoner i [[Special:ViewAPC]]',
 	'viewapc-apc-not-available'     => 'Ingen infomasjon om mellomlageret er tilgjengelig.
 APC ser ikke ut til å fungere.',
 	'viewapc-clear-confirm'         => 'Vil du tømme mellomlageret?',
@@ -2298,6 +2300,7 @@ $messages['te'] = array(
 	'viewapc-cached-files-d'    => '$1 {{PLURAL:$1|ఫైలు|ఫైళ్ళు}} ($2)',
 	'viewapc-rps'               => 'క్షణానికి $1 అభ్యర్థనలు',
 	'viewapc-memory-free'       => 'ఖాళీ: $1 ($2)',
+	'viewapc-memory-used'       => 'వాడినది: $1 ($2)',
 	'viewapc-display-value'     => 'విలువ',
 	'viewapc-display-filename'  => 'ఫైలుపేరు',
 	'viewapc-display-device'    => 'పరికరం',
@@ -2313,6 +2316,8 @@ $messages['te'] = array(
 	'viewapc-ls-sort-size'      => 'పరిమాణం',
 	'viewapc-ls-sort-name'      => 'పేరు',
 	'viewapc-ls-limit-none'     => 'అన్నీ',
+	'viewapc-ls-nodata'         => "''పోలిన భోగట్టా ఏమీ లేదు''",
+	'viewapc-version-info'      => 'సంచిక సమాచారం',
 );
 
 /** Ukrainian (Українська)

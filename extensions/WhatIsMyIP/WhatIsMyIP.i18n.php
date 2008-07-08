@@ -70,6 +70,15 @@ $messages['it'] = array(
 	'whatismyip-out'  => 'Il tuo IP è:',
 );
 
+/** Ripoarisch (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'whatismyip'      => 'Ming IP_Addrëß',
+	'whatismyip-desc' => 'Zëijsch em Medmaacher sing IP_Addrëß op [[{{#special:WhatIsMyIP}}]] aan.',
+	'whatismyip-out'  => 'Ding IP_Addrëß eß',
+);
+
 /** Latin (Latina)
  * @author UV
  */
@@ -99,9 +108,12 @@ $messages['no'] = array(
 
 /** Polish (Polski)
  * @author Airwolf
+ * @author Sp5uhe
  */
 $messages['pl'] = array(
-	'whatismyip-out' => 'Twój IP:',
+	'whatismyip'      => 'Jaki jest mój adres IP',
+	'whatismyip-desc' => 'Pokazuje na [[Special:WhatIsMyIP|specjalnej stronie]] aktualny adres IP użytkownika',
+	'whatismyip-out'  => 'Twój IP:',
 );
 
 /** Slovak (Slovenčina)

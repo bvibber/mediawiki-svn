@@ -621,6 +621,7 @@ $messages['sv'] = array(
  * @author వైజాసత్య
  */
 $messages['te'] = array(
+	'authorprotect'           => 'రచయితలు కానివారి నుండి ఈ పేజీని సంరక్షించు',
 	'authorprotect-notauthor' => 'ఈ పేజీకి రచయిత మీరు కాదు',
 	'authorprotect-confirm'   => 'సంరక్షణా స్థాయిలను మార్చు',
 	'authorprotect-edit'      => 'రచయితలను మాత్రమే మార్పులు చేయనివ్వు',

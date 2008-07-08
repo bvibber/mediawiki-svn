@@ -289,10 +289,12 @@ $messages['jv'] = array(
 
 /** Khmer (ភាសាខ្មែរ)
  * @author គីមស៊្រុន
+ * @author Lovekhmer
  */
 $messages['km'] = array(
-	'editmessages'   => 'កែប្រែសារ',
-	'editmsg-search' => 'ស្វែងរក',
+	'editmessages'       => 'កែប្រែសារ',
+	'editmsg-search'     => 'ស្វែងរក',
+	'editmsg-new-search' => 'ការស្វែងរកថ្មី',
 );
 
 /** Korean (한국어)
@@ -335,7 +337,9 @@ $messages['lb'] = array(
 	'editmsg-get-patch'        => 'Patch maachen',
 	'editmsg-new-search'       => 'Nei Sich',
 	'editmsg-warning-parse1'   => '* Geleefege Numm vum Systemmessage gouf net fonnt: $1',
+	'editmsg-warning-parse2'   => '* Ziatiouns-Buchstaw no dem Feil erwaart: $1',
 	'editmsg-warning-parse3'   => '* Ënn vun der Zeechekette gouf net fonnt: $1',
+	'editmsg-warning-file'     => '* Et si Feeler beim Liese vun dëse Sproochen begéint ginn: $1',
 	'editmsg-warning-mismatch' => '* Den Originaltext hat net den erwaartene Wert fir dës Sproochen: $1',
 	'editmsg-apply-patch'      => 'Patch uwenden',
 	'editmsg-no-patch'         => 'De "Patch" Kommanda konnt net ausgeféiert ginn',
@@ -617,7 +621,8 @@ $messages['ta'] = array(
  * @author Veeven
  */
 $messages['te'] = array(
-	'editmsg-search' => 'అన్వేషణ',
+	'editmsg-search'     => 'అన్వేషణ',
+	'editmsg-new-search' => 'కొత్త అన్వేషణ',
 );
 
 /** Tetum (Tetun)

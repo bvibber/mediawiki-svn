@@ -193,6 +193,13 @@ $messages['sv'] = array(
 	'oai-desc' => 'Ger tillgång till gränssnittet till [http://www.openarchives.org/OAI/openarchivesprotocol.html OAI-PMH]',
 );
 
+/** Ukrainian (Українська)
+ * @author Ahonc
+ */
+$messages['uk'] = array(
+	'oai-desc' => 'Надає інтерфейс [http://www.openarchives.org/OAI/openarchivesprotocol.html OAI-PMH]',
+);
+
 /** Vèneto (Vèneto)
  * @author Candalua
  */

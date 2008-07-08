@@ -155,7 +155,7 @@ $messages['oc'] = array(
  * @author Sp5uhe
  */
 $messages['pl'] = array(
-	'piwik-desc'       => 'Wstawia monitorujący wykorzystanie serwisu skrypt Piwiki do stron MediaWiki oraz dodaje [[Special:Piwik|statystyki]]',
+	'piwik-desc'       => 'Wstawia do stron MediaWiki skrypt Piwiki, monitorujący wykorzystanie serwisu, oraz dodaje [[Special:Piwik|statystyki]]',
 	'piwik-lastvisits' => 'Ostatnie wizyty',
 	'piwik-countries'  => 'Kraje',
 	'piwik-browsers'   => 'Przeglądarki',

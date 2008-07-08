@@ -220,10 +220,11 @@ $messages['haw'] = array(
 
 /** Hebrew (עברית)
  * @author Agbad
+ * @author Rotemliss
  */
 $messages['he'] = array(
 	'multipleupload'              => 'העלאת קבצים',
-	'multipleupload-desc'         => 'מאפשר למשתמשים [[Special:MultipleUpload|להעלות מספר קבצים בבת אחת]]',
+	'multipleupload-desc'         => 'אפשרות של [[Special:MultipleUpload|העלאת מספר קבצים בבת אחת]]',
 	'multipleupload-saveallfiles' => 'שמירת כל הקבצים',
 );
 

@@ -441,6 +441,7 @@ $messages['lb'] = array(
 	'importusers'                         => 'Benotzer importéieren',
 	'importusers-desc'                    => 'Importéiert Benotzer aus engem CSV(Comma Separated Values)-Fichier; Codéierung: UTF-8',
 	'importusers-uploadfile'              => 'Fichier eroplueden',
+	'importusers-form-caption'            => 'CSV-Fichier (UTF-8) eraginn',
 	'importusers-form-file'               => 'Format vum fichier vun de Benotzer (csv):',
 	'importusers-form-replace-present'    => 'Benotzer déi et scho gëtt ersetzen',
 	'importusers-form-button'             => 'Importéieren',

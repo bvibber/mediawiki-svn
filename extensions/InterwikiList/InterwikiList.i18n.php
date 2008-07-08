@@ -62,6 +62,16 @@ $messages['gl'] = array(
 	'interwikilist-target'   => 'Dirección URL obxectivo',
 );
 
+/** Ripoarisch (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'interwikilist'          => 'Ėngerwikki Lėß',
+	'interwikilist-desc'     => 'Brengk en [[Special:Interwikilist|Söndersigk]] för de Ėngerwikki Lėngkß ze belooere.',
+	'interwikilist-linkname' => 'Ėngerwikki Lėngk',
+	'interwikilist-target'   => 'URL wohėn',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
@@ -100,6 +110,16 @@ $messages['oc'] = array(
 	'interwikilist-desc'     => 'Ajusta una [[Special:Interwikilist|pagina especiala]] per veire totes los ligams interwikis disponibles',
 	'interwikilist-linkname' => 'Ligam interwiki',
 	'interwikilist-target'   => 'Adreça concernida',
+);
+
+/** Polish (Polski)
+ * @author Sp5uhe
+ */
+$messages['pl'] = array(
+	'interwikilist'          => 'Spis interwiki',
+	'interwikilist-desc'     => 'Dodaje [[Special:Interwikilist|stronę specjalną]] ze spisem dostępnych interwiki',
+	'interwikilist-linkname' => 'Link interwiki',
+	'interwikilist-target'   => 'Docelowy adres URL',
 );
 
 /** Slovak (Slovenčina)

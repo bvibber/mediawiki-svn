@@ -392,6 +392,13 @@ $messages['kk-latn'] = array(
 	'crossnamespacelinkstext'     => '«$1» beti: «$3» esim ayasına $2 silteme '
 );
 
+/** Khmer (ភាសាខ្មែរ)
+ * @author Lovekhmer
+ */
+$messages['km'] = array(
+	'crossnamespacelinkstext' => '$1:$2{{PLURAL:$2|តំនភ្ជាប់|តំនភ្ជាប់}}នៃ$3',
+);
+
 $messages['kn'] = array(
 	'crossnamespacelinks'         => 'Cross-namespace ಸಂಪರ್ಕಗಳು',
 	'crossnamespacelinkstext'     => '$1: $2 {{PLURAL:$2|ಸಂಪರ್ಕ|ಸಂಪರ್ಕಗಳು}} $3 ಗೆ',

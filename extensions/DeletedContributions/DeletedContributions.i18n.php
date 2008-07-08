@@ -279,9 +279,10 @@ $messages['is'] = array(
 
 /** Italian (Italiano)
  * @author BrokenArrow
+ * @author Nemo bis
  */
 $messages['it'] = array(
-	'deletedcontributions'      => 'Contributi utente cancellati',
+	'deletedcontributions'      => 'Contributi cancellati',
 	'deletedcontributions-desc' => 'Fornisce agli amministratori la possibilità di [[Special:DeletedContributions|visualizzare i contributi cancellati di un utente]]',
 );
 
@@ -325,7 +326,7 @@ $messages['kk-arab'] = array(
  */
 $messages['km'] = array(
 	'deletedcontributions'      => 'ប្រវត្តិនៃការលុបការរួមចំនែករបស់អ្នកប្រើប្រាស់',
-	'deletedcontributions-desc' => 'ផ្តល់លទ្ធភាព អោយអ្នកថែទាំប្រព័ន្ធ [[Special:DeletedContributions|រាវរក កំណែប្រែបានលុបចេញ របស់ អ្នកប្រើប្រាស់]]',
+	'deletedcontributions-desc' => 'ផ្តល់លទ្ធភាពអោយអ្នកថែទាំប្រព័ន្ធ[[Special:DeletedContributions|រាវរកកំណែប្រែបានលុប]]របស់អ្នកប្រើប្រាស់',
 );
 
 /** Korean (한국어)

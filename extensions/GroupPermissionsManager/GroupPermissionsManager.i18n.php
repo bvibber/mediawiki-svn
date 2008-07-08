@@ -228,8 +228,10 @@ $messages['gl'] = array(
 	'grouppermissions-sp-sort'       => 'Ordenar os permisos',
 	'grouppermissions-sp-save'       => 'Gardar',
 	'grouppermissions-sp-success'    => 'Os permisos foron ordenados con éxito',
-	'grouppermissions-sp-addtype'    => 'Engadir un tipo de clasificación',
+	'grouppermissions-sp-addtype'    => 'Engadir o tipo de clasificación',
 	'grouppermissions-sp-addperm'    => 'Engadir permisos',
+	'grouppermissions-sp-remove'     => 'eliminar',
+	'grouppermissions-sp-deltype'    => 'Borrar o tipo de clasificación',
 	'grouppermissions-rug-header'    => 'Pode usar esta páxina para eliminar usuarios dos grupos sen uso (borrados).',
 	'grouppermissions-rug-success'   => 'Foron eliminados con éxito os usuarios dos grupos sen uso!',
 	'grouppermissions-rug-confirm'   => 'Eliminar os usuarios dos grupos sen uso',
@@ -243,7 +245,27 @@ $messages['gl'] = array(
 	'right-contributions'            => 'Ver as páxinas de contribucións',
 	'right-recentchanges'            => 'Ver os cambios recentes',
 	'right-edittalk'                 => 'Editar as páxinas de conversa',
-	'right-edit-new'                 => 'Editar páxinas',
+	'right-edit-new'                 => 'Editar páxinas (que non son de conversa)',
+);
+
+/** Khmer (ភាសាខ្មែរ)
+ * @author Lovekhmer
+ */
+$messages['km'] = array(
+	'removeunusedgroups'           => 'ដកហូតក្រុមដែលមិនត្រូវបានប្រើប្រាស់',
+	'grouppermissions-search'      => 'ក្រុម:',
+	'grouppermissions-dologin'     => 'ឡុកអ៊ីន',
+	'grouppermissions-dosearch'    => 'ទៅ',
+	'grouppermissions-deletelabel' => 'លុបក្រុម',
+	'grouppermissions-change'      => 'ប្តូរក្រុមសមាជិកភាព',
+	'grouppermissions-add'         => 'បន្ថែមក្រុម',
+	'grouppermissions-comment'     => 'យោបល់៖',
+	'grouppermissions-log-delete'  => 'បានលុបក្រុម"$2"',
+	'grouppermissions-sp-save'     => 'រក្សាទុក',
+	'grouppermissions-sp-remove'   => 'ដកហូត',
+	'right-history'                => 'មើលប្រវត្តិទំព័រ',
+	'right-recentchanges'          => 'មើលបំលាស់ប្តូរថ្មីៗ',
+	'right-edittalk'               => 'កែប្រែទំព័រពិភាក្សា',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -331,6 +353,8 @@ $messages['nl'] = array(
 	'grouppermissions-sp-success'    => 'De rechten zijn gesorteerd',
 	'grouppermissions-sp-addtype'    => 'Sorteertype toevoegen',
 	'grouppermissions-sp-addperm'    => 'Recht toevoegen',
+	'grouppermissions-sp-remove'     => 'verwijderen',
+	'grouppermissions-sp-deltype'    => 'Sorteertype verwijderen',
 	'grouppermissions-rug-header'    => 'U kunt deze pagina gebruiken om gebruikers uit ongebruikte (verwijderde) groepen te verwijderen.',
 	'grouppermissions-rug-success'   => 'De gebruikers zijn uit de ongebruikte groepen verwijderd!',
 	'grouppermissions-rug-confirm'   => 'Gebruikers uit ongebruikte groepen verwijderen',
@@ -524,6 +548,8 @@ $messages['sv'] = array(
 	'grouppermissions-sp-success'    => 'Behörigheterna har blivit sorterade',
 	'grouppermissions-sp-addtype'    => 'Lägg till sorteringstyp',
 	'grouppermissions-sp-addperm'    => 'Lägg till behörighet',
+	'grouppermissions-sp-remove'     => 'ta bort',
+	'grouppermissions-sp-deltype'    => 'Radera sorteringstyp',
 	'grouppermissions-rug-header'    => 'Du kan använda denna sida för att ta bort användare från oanvända (raderade) användargrupper.',
 	'grouppermissions-rug-success'   => 'Användarna har tagits bort från oanvända användargrupper!',
 	'grouppermissions-rug-confirm'   => 'Ta bort användare från oanvända användargrupper',
@@ -550,11 +576,13 @@ $messages['te'] = array(
 	'grouppermissions-deletelabel' => 'సమూహాన్ని తొలగించు',
 	'grouppermissions-change'      => 'సమూహపు అనుమతులు మార్చండి',
 	'grouppermissions-add'         => 'సమూహాన్ని చేర్చు',
+	'grouppermissions-delete'      => 'సమూహాన్ని తొలగించు',
 	'grouppermissions-comment'     => 'వ్యాఖ్య:',
 	'grouppermissions-true'        => 'సత్యం',
 	'grouppermissions-false'       => 'అసత్యం',
 	'grouppermissions-sort-tech'   => 'సాంకేతికం',
 	'grouppermissions-sp-save'     => 'భద్రపరచు',
+	'grouppermissions-sp-remove'   => 'తొలగించు',
 	'right-info'                   => 'పేజీ సమాచారం చూడవచ్చు',
 	'right-history'                => 'పేజీల చరిత్రలను చూడవచ్చు',
 	'right-search'                 => 'వికిలో అన్వేషించవచ్చు',

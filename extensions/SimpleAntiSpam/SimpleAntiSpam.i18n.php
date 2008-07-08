@@ -41,6 +41,7 @@ $messages['ar'] = array(
  * @author DCLXVI
  */
 $messages['bg'] = array(
+	'simpleantispam'       => 'Вашата редакция задейства механизма против спам',
 	'simpleantispam-label' => "Проверка за спам.
 Необходимо е да '''НЕ''' попълвате това поле!",
 	'simpleantispam-desc'  => 'Добавя прост формуляр за проерка за спам/роботи',
@@ -186,6 +187,7 @@ $messages['mr'] = array(
  * @author Aviator
  */
 $messages['ms'] = array(
+	'simpleantispam'       => 'Suntingan anda ditahan oleh pemeriksa anti-spam',
 	'simpleantispam-label' => "Pemeriksaan anti-spam. '''JANGAN''' isi ruangan ini!",
 	'simpleantispam-desc'  => 'Menambah pemeriksaan spam/bot ringkas di borang sunting',
 );

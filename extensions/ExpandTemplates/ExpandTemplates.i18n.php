@@ -115,6 +115,16 @@ $messages['bcl'] = array(
 	'expand_templates_preview'         => 'Patânaw',
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
+ */
+$messages['be-tarask'] = array(
+	'expand_templates_output'          => 'Вынік',
+	'expand_templates_ok'              => 'Добра',
+	'expand_templates_remove_comments' => 'Выдаліць камэнтары',
+	'expand_templates_preview'         => 'Папярэдні прагляд',
+);
+
 /** Bulgarian (Български)
  * @author Borislav
  * @author Spiritia

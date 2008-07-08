@@ -197,9 +197,10 @@ $messages['fi'] = array(
 /** French (Français)
  * @author Grondin
  * @author Meithal
+ * @author Louperivois
  */
 $messages['fr'] = array(
-	'edituser-desc'     => "Permet aux utilisateurs disposant de certains privilèges d'éditer les préférences des autres utilisateurs.",
+	'edituser-desc'     => 'Permet aux utilisateurs disposant de certains privilèges d’éditer les préférences des autres utilisateurs',
 	'edituser'          => "Éditer l'utilisateur",
 	'edituser-logout'   => 'Ferme la session utilisateur',
 	'edituser-username' => 'Nom',

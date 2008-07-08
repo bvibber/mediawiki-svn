@@ -3119,6 +3119,7 @@ The resulting encrypted version follows. It will be displayed publicly on [[Spec
 	'group-boardvote-member' => 'ក្រុមប្រឹក្សា​បោះឆ្នោត​អភិបាល',
 	'grouppage-boardvote'    => '{{ns:project}}:ក្រុមប្រឹក្សា​បោះឆ្នោត​អភិបាល',
 	'boardvote_blocked'      => 'សូមអភ័យទោស! អ្នកត្រូវបានហាមឃាត់នៅលើវិគីដែលអ្នកបានចុះឈ្មោះ។ អ្នកប្រើប្រាស់ដែលត្រូវបានហាមឃាត់ មិនត្រូវបានអនុញ្ញាតឱ្យបោះឆ្នោតទេ។',
+	'boardvote_bot'          => 'អ្នកត្រូវបានផ្តល់សិទ្ធិជារូបយន្តនៅលើវិគីដែលអ្នកបានចុះឈ្មោះ។ គណនីជារូបយន្តមិនត្រូវបានអនុញ្ញាតអោយបោះឆ្នោតទេ។',
 	'boardvote_welcome'      => "សូមស្វាគមន៍'''$1'''!",
 	'go_to_board_vote'       => 'ការបោះឆ្នោតក្រុមប្រឹក្សាវិគីមេឌាឆ្នាំ២០០៨',
 	'right-boardvote'        => 'ការបោះឆ្នោតអ្នកអភិបាល',
@@ -3725,12 +3726,12 @@ $messages['mr'] = array(
  * @author Aviator
  */
 $messages['ms'] = array(
-	'boardvote'              => 'Pilihan raya Lembaga Pemegang Amanah Wikimedia',
-	'boardvote-desc'         => '[[meta:Board elections/2008|Pilihan raya Lembaga Pemegang Amanah Wikimedia]]',
-	'boardvote_entry'        => '* [[Special:Boardvote/vote|Undi]]
+	'boardvote'                => 'Pilihan raya Lembaga Pemegang Amanah Wikimedia',
+	'boardvote-desc'           => '[[meta:Board elections/2008|Pilihan raya Lembaga Pemegang Amanah Wikimedia]]',
+	'boardvote_entry'          => '* [[Special:Boardvote/vote|Undi]]
 * [[Special:Boardvote/list|Senarai undi sehingga kini]]
 * [[Special:Boardvote/dump|Longgokkan rekod pemilihan yang disulitkan]]',
-	'boardvote_intro'        => '<p>Selamat datang ke pilihan raya bagi Lembaga Pemegang Amanah Wikimedia untuk tahun 2008.
+	'boardvote_intro'          => '<p>Selamat datang ke pilihan raya bagi Lembaga Pemegang Amanah Wikimedia untuk tahun 2008.
 Kami sedang memilih dua orang sebagai wakil masyarakat pengguna dalam pelbagai
 projek Wikimedia. Mereka akan membantu menentukan masa depan projek-projek
 Wikimedia, secara individu dan berkumpulan, dan menyuarakan minat dan
@@ -3753,9 +3754,9 @@ Anda dianggap mengutamakan calon yang diberi taraf daripada calon yang dibiarkan
 <ul><li><a href="http://meta.wikimedia.org/wiki/Board_elections/2008" class="external">Pilihan raya Lembaga 2008</a></li>
 <li><a href="http://meta.wikimedia.org/wiki/Board_elections/2008/Candidates" class="external">Senarai calon</a></li>
 <li><a href="http://en.wikipedia.org/wiki/Schulze_method" class="external">Kaedah Schulze</a></li></ul>',
-	'boardvote_intro_change' => '<p>Anda telah pun mengundi sebelum ini. Walau bagimanapun, anda boleh menukar
+	'boardvote_intro_change'   => '<p>Anda telah pun mengundi sebelum ini. Walau bagimanapun, anda boleh menukar
 undi anda dengan menggunakan borang di bawah. Sila beri taraf calon mengikut tertib keutamaan anda, yang mana nombor yang lebih kecil menandakan keutamaan lebih tinggi bagi calon itu. Anda boleh memberi keutamaan yang sama kepada lebih daripada seorang calon dan juga boleh membiarkan mana-mana calon yang tidak diutamakan.</p>',
-	'boardvote_entered'      => 'Terima kasih, undi anda telah disimpan.
+	'boardvote_entered'        => 'Terima kasih, undi anda telah disimpan.
 
 Anda boleh menyalin butiran berikut. Rekod undi anda ialah:
 
@@ -3770,38 +3771,44 @@ Berikut ialah data yang telah disulitkan. Ia akan ditunjukkan kepada orang ramai
 <pre>$3</pre>
 
 [[Special:Boardvote/entry|Back]]',
-	'boardvote_nosession'    => 'ID pengguna Wikimedia anda tidak dapat ditentukan. Sila log masuk di wiki di mana anda layak mengundi, kemudian pergi ke <nowiki>[[Special:Boardvote]]</nowiki>. Anda hendaklah menggunakan akaun yang mempunyai sekurang-kurangnya $1 sumbangan sebelum $2, dan telah membuat sekurang-kurangnya $3 sumbangan dari $4 sehingga $5.',
-	'boardvote_notloggedin'  => 'Anda tidak log masuk. Untuk mengundi, anda hendaklah menggunakan akaun dengan sekurang-kurangnya $1 sumbangan sebelum $2, dan telah membuat sekurang-kurangnya $3 sumbangan dari $4 sehingga $5.',
-	'boardvote_notqualified' => 'Anda tidak layak mengundi dalam pilihan raya ini. Anda hendaklah melakukan sekurang-kurangnya $1 sumbangan sebelum $2, dan telah membuat sekurang-kurangnya $3 sumbangan dari $4 sehingga $5.',
-	'boardvote_novotes'      => 'Tiada siapa telah mengundi.',
-	'boardvote_time'         => 'Waktu',
-	'boardvote_user'         => 'Pengguna',
-	'boardvote_edits'        => 'Suntingan',
-	'boardvote_days'         => 'Hari',
-	'boardvote_ip'           => 'IP',
-	'boardvote_ua'           => 'Ejen pengguna',
-	'boardvote_listintro'    => '<p>Berikut merupakan senarai semua undi yang telah direkodkan sehingga hari ini.
+	'boardvote_invalidentered' => '<p><strong>Ralat</strong>: keutamaan calon mestilah dinyatakan menggunakan nombor bulat yang positif sahaja (1, 2, 3, ....) atau dibiarkan kosong.</p>',
+	'boardvote_nosession'      => 'ID pengguna Wikimedia anda tidak dapat ditentukan. Sila log masuk di wiki di mana anda layak mengundi, kemudian pergi ke <nowiki>[[Special:Boardvote]]</nowiki>. Anda hendaklah menggunakan akaun yang mempunyai sekurang-kurangnya $1 sumbangan sebelum $2, dan telah membuat sekurang-kurangnya $3 sumbangan dari $4 sehingga $5.',
+	'boardvote_notloggedin'    => 'Anda tidak log masuk. Untuk mengundi, anda hendaklah menggunakan akaun dengan sekurang-kurangnya $1 sumbangan sebelum $2, dan telah membuat sekurang-kurangnya $3 sumbangan dari $4 sehingga $5.',
+	'boardvote_notqualified'   => 'Anda tidak layak mengundi dalam pilihan raya ini. Anda hendaklah melakukan sekurang-kurangnya $1 sumbangan sebelum $2, dan telah membuat sekurang-kurangnya $3 sumbangan dari $4 sehingga $5.',
+	'boardvote_novotes'        => 'Tiada siapa telah mengundi.',
+	'boardvote_time'           => 'Waktu',
+	'boardvote_user'           => 'Pengguna',
+	'boardvote_edits'          => 'Suntingan',
+	'boardvote_days'           => 'Hari',
+	'boardvote_ip'             => 'IP',
+	'boardvote_ua'             => 'Ejen pengguna',
+	'boardvote_listintro'      => '<p>Berikut merupakan senarai semua undi yang telah direkodkan sehingga hari ini.
 $1 untuk data yang disulitkan.</p>',
-	'boardvote_dumplink'     => 'Klik di sini',
-	'boardvote_submit'       => 'OK',
-	'boardvote_strike'       => 'Potong',
-	'boardvote_unstrike'     => 'Nyahpotong',
-	'boardvote_needadmin'    => 'Hanya pentadbir pilihan raya boleh melakukan tindakan ini.',
-	'boardvote_sitenotice'   => '<a href="{{localurle:Special:Boardvote/vote}}">Pilihan Raya Lembaga Wikimedia</a>:
+	'boardvote_dumplink'       => 'Klik di sini',
+	'boardvote_submit'         => 'OK',
+	'boardvote_strike'         => 'Potong',
+	'boardvote_unstrike'       => 'Nyahpotong',
+	'boardvote_needadmin'      => 'Hanya pentadbir pilihan raya boleh melakukan tindakan ini.',
+	'boardvote_sitenotice'     => '<a href="{{localurle:Special:Boardvote/vote}}">Pilihan Raya Lembaga Wikimedia</a>:
 Pengundian dibuka sehingga 22 Jun',
-	'boardvote_notstarted'   => 'Pengundian belum bermula',
-	'boardvote_closed'       => 'Pengundian telah ditutup. Sila lihat keputusannya di [http://meta.wikimedia.org/wiki/Board_elections/2008/Results laman pilihan raya].',
-	'group-boardvote'        => 'Pentadbir pilihan raya',
-	'group-boardvote-member' => 'Pentadbir pilihan raya',
-	'grouppage-boardvote'    => '{{ns:project}}:Pentadbir pilihan raya',
-	'boardvote_welcome'      => "Selamat datang, '''$1'''!",
-	'go_to_board_vote'       => 'Pilihan Raya Lembaga Wikimedia 2008',
-	'boardvote_redirecting'  => 'Untuk keselamatan dan ketelusan yang lebih baik, kami menjalankan pengundian ini di sebuah komputer pelayan luar.
+	'boardvote_notstarted'     => 'Pengundian belum bermula',
+	'boardvote_closed'         => 'Pengundian telah ditutup. Sila lihat keputusannya di [http://meta.wikimedia.org/wiki/Board_elections/2008/Results laman pilihan raya].',
+	'boardvote_edits_many'     => 'banyak',
+	'group-boardvote'          => 'Pentadbir pilihan raya',
+	'group-boardvote-member'   => 'Pentadbir pilihan raya',
+	'grouppage-boardvote'      => '{{ns:project}}:Pentadbir pilihan raya',
+	'boardvote_blocked'        => 'Anda telah disekat di wiki yang anda daftar.
+Pengguna yang disekat tidak dibenarkan mengundi.',
+	'boardvote_bot'            => 'Anda telah ditanda sebagai bot di wiki yang anda daftar.
+Bot tidak dibenarkan mengundi.',
+	'boardvote_welcome'        => "Selamat datang, '''$1'''!",
+	'go_to_board_vote'         => 'Pilihan Raya Lembaga Wikimedia 2008',
+	'boardvote_redirecting'    => 'Untuk keselamatan dan ketelusan yang lebih baik, kami menjalankan pengundian ini di sebuah komputer pelayan luar.
 
 Anda akan dilencongkan ke pelayan ini dalam tempoh 20 saat. Sila [$1 klik di sini] untuk ke sana sekarang juga.
 
 Sebuah amaran keselamatan mengenai sijil yang tidak ditandatangani mungkin akan ditunjukkan.',
-	'right-boardvote'        => 'Mentadbir pilihan raya',
+	'right-boardvote'          => 'Mentadbir pilihan raya',
 );
 
 /** Erzya (эрзянь кель)

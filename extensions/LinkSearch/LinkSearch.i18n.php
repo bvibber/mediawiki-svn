@@ -749,6 +749,7 @@ $messages['ms'] = array(
 	'linksearch-ok'    => 'Cari',
 	'linksearch-text'  => 'Kad bebas seperti "*.wikipedia.org" dibenarkan.<br />
 Protokol yang disokong: <tt>$1</tt>',
+	'linksearch-line'  => '$1 dipaut dari $2',
 	'linksearch-error' => 'Kad bebas hanya boleh digunakan pada permulaan nama hos.',
 );
 

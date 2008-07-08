@@ -233,6 +233,13 @@ $messages['ar'] = array(
 	'right-configure-all'                 => 'اضبط كل اعدادات الويكي',
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
+ */
+$messages['be-tarask'] = array(
+	'configure-section-category' => 'Катэгорыі',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  */
@@ -511,6 +518,8 @@ $messages['eo'] = array(
 	'configure-desc-key'              => 'Ŝlosilo',
 	'configure-desc-ns'               => 'Nomspacoj',
 	'configure-desc-val'              => 'Valuto',
+	'configure-edit-ext'              => 'Etendiloj',
+	'configure-ext-doc'               => 'Vidu interretan dokumentaron',
 	'configure-btn-save'              => 'Konservi preferojn',
 	'configure-edit-old'              => 'Averto: vi redaktas <strong>malnovan</strong> version de la agordo.',
 	'configure-error'                 => 'La konfiguro ne eblis esti konservita.',
@@ -565,6 +574,7 @@ $messages['eo'] = array(
 	'configure-view'                  => 'Montri',
 	'right-configure'                 => 'Konfiguri la vikion',
 	'right-configure-all'             => 'Konfiguri la preferojn de la vikio',
+	'right-viewconfig-all'            => 'Vidi ĉiujn vikiajn konfigurojn',
 	'viewconfig'                      => 'Rigardi vikiajn preferojn',
 );
 
@@ -587,6 +597,8 @@ $messages['fr'] = array(
 	'configure-desc-key'                  => 'Clé',
 	'configure-desc-ns'                   => 'Espace de noms',
 	'configure-desc-val'                  => 'Valeur',
+	'configure-edit-core'                 => 'MediaWiki',
+	'configure-edit-ext'                  => 'Extensions',
 	'configure-ext-doc'                   => 'Voir la documentation en ligne',
 	'configure-ext-schemachange'          => "'''Attention :''' cette extension requiert une mise à jour de la base de données pour fonctionner correctement !",
 	'configure-ext-settings'              => 'Paramètres',
@@ -967,6 +979,13 @@ $messages['lb'] = array(
 	'configure-desc-key'                  => 'Schlëssel',
 	'configure-desc-ns'                   => 'Nummraim',
 	'configure-desc-val'                  => 'Wert',
+	'configure-edit-core'                 => 'MediaWiki',
+	'configure-edit-ext'                  => 'Erweiderungen',
+	'configure-ext-doc'                   => "Kuckt d'online-Dokumentatioun",
+	'configure-ext-schemachange'          => "'''Opgepasst:''' dës Erweiderung brauch en Update vun der Datebank fir korrekt ze fonctionnéieren!",
+	'configure-ext-settings'              => 'Astellungen',
+	'configure-ext-use-extension'         => 'Dës Erweiderung benotzen',
+	'configure-ext-use'                   => 'Notzung',
 	'configure-summary'                   => "Dës Spezialsäit erlaabt et Iech fir dës Wiki ze configuréieren, kuckt [http://www.mediawiki.org/wiki/Manual:Configuration_settings Configuratioun's Astellungen] fir méi Informatiounen.",
 	'configure-btn-save'                  => 'Confuguratioun späicheren',
 	'configure-edit-old'                  => 'Passt op: Dir ännert eng <strong>al</strong> Versioun vun der Configuratioun.',
@@ -1015,10 +1034,14 @@ Leet e w.e.g un oder ännert en esou datt dës Erweiderung funktionéiert.",
 	'configure-section-extension'         => 'Erweiderungen',
 	'configure-section-search'            => 'Sich',
 	'configure-section-misc'              => 'Verschiddenes',
+	'configure-section-mw-extensions'     => 'MediaWiki-Erweiderungen',
 	'configure-setting-not-available'     => 'Dës Astellung kann an dëser Versioun vu MediaWiki net geännert ginn',
 	'configure-view'                      => 'Kuckt',
 	'configure-view-not-allowed'          => 'Dir sidd net autoriséiert fir dës Astellung ze gesinn',
+	'extensions'                          => "D'Erweiderunge configuréieren",
 	'right-configure'                     => "D'Wiki configuréieren",
+	'right-configure-all'                 => 'All wiki-Astellunge configuréieren',
+	'right-extensions'                    => 'Erweiderunge configuréieren',
 	'right-viewconfig'                    => 'Konfiguratioun vun der Wiki weisen',
 	'right-viewconfig-all'                => 'Déi ganz Konfiguratioun vun der Wiki weisen',
 	'viewconfig'                          => 'Konfiguratioun vun der Wiki weisen',
@@ -1310,6 +1333,7 @@ Maak die map alstublieft aan, of verander de instelling voordat u deze extensie 
 	'right-configure'                     => 'Wiki-instellingen maken',
 	'right-configure-all'                 => 'Alle wiki-instellingen maken',
 	'right-extensions'                    => 'Uitbreidingen instellen',
+	'right-extensions-all'                => 'Uitgebreid instellen van alle uitbreidingen',
 	'right-viewconfig'                    => 'Wiki-instellingen bekijken',
 	'right-viewconfig-all'                => 'Alle wiki-instellingen bekijken',
 	'viewconfig'                          => 'Wiki-instellingen bekijken',
@@ -1408,6 +1432,7 @@ Opprett den eller endre den for å bruke denne utvidelsen.',
 	'right-configure'                     => 'Konfigurere wikien',
 	'right-configure-all'                 => 'Konfigurere innstillinger på alle wikier',
 	'right-extensions'                    => 'Konfigurere utvidelser',
+	'right-extensions-all'                => 'Avansert konfigurasjon av utvidelser',
 	'right-viewconfig'                    => 'Se wikikonfigurasjon',
 	'right-viewconfig-all'                => 'Se alle wikikonfigurasjoner',
 	'viewconfig'                          => 'Vis wikikonfigurasjon',
@@ -2038,6 +2063,7 @@ $messages['te'] = array(
 	'configure-desc-group'                => 'గుంపులు',
 	'configure-desc-ns'                   => 'పేరుబరులు',
 	'configure-desc-val'                  => 'విలువ',
+	'configure-ext-settings'              => 'అమరికలు',
 	'configure-btn-save'                  => 'అమరికలు భద్రపరచు',
 	'configure-js-group-exists'           => 'పొరపాటు: ఆ గుంపు ఇప్పటికే ఉంది.',
 	'configure-js-prompt-group'           => 'కొత్త గుంపు యొక్క పేరు ఇవ్వండి:',
@@ -2063,7 +2089,10 @@ $messages['te'] = array(
 	'configure-section-extension'         => 'పొడగింతలు',
 	'configure-section-search'            => 'అన్వేషణ',
 	'configure-section-copyright'         => 'కాపీహక్కులు',
+	'configure-section-mw-extensions'     => 'మీడియావికీ పొడగింతలు',
+	'configure-setting-not-available'     => 'ఈ మీడియావికీ సంచికలో ఆ అమరిక అందుబాటులో  లేదు',
 	'configure-view'                      => 'చూడండి',
+	'configure-view-not-allowed'          => 'ఈ అమరికని చూడడానికి మీకు అనుమతి లేదు',
 );
 
 /** Turkish (Türkçe)

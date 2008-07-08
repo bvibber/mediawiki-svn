@@ -660,6 +660,8 @@ $messages['lb'] = array(
 	'changeauthor-pagenameform-go'      => 'Lass',
 	'changeauthor-comment'              => 'Bemierkung:',
 	'changeauthor-changeauthors-multi'  => 'Auteur(en) änneren',
+	'changeauthor-explanation-multi'    => "mat dësem Formulaire kënnt Dir d'Auteure vun de Versiounen äneren.
+Ännert einfach een oder méi Benotzernimm an der Lëscht ënnedrënner, setzt eng Bemierkung derbäi (fkultativ) a klickt op de Knäppchen 'Auteur änneren'.",
 	'changeauthor-changeauthors-single' => 'Auteur änneren',
 	'changeauthor-explanation-single'   => "Mat dësem Formulaire kënnt Dir den Auteur vun enger Versioun änneren.
 Ännert de Benotzernumm hei ënnendrënner einfach, setzt eng Bemierkung derbäi (fakultativ) a klickt op de Knäppchen 'Auteur änneren'.",

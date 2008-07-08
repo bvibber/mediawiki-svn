@@ -242,10 +242,11 @@ En opplastet fil må inneholde navnet på siden, og kan også ha en valgfri slet
 
 /** Polish (Polski)
  * @author Airwolf
+ * @author Sp5uhe
  */
 $messages['pl'] = array(
 	'deletebatch-here'            => '<b>tutaj</b>',
-	'deletebatch-select-yourself' => 'ty',
+	'deletebatch-select-yourself' => 'Ty',
 );
 
 /** Slovak (Slovenčina)
@@ -316,6 +317,7 @@ En uppladdad fil ska innehålla sidnamn och en valfri anledning separerade med e
  * @author Veeven
  */
 $messages['te'] = array(
+	'deletebatch-here'    => '<b>ఇక్కడ</b>',
 	'deletebatch-caption' => 'పేజీల జాబితా',
 	'deletebatch-or'      => '<b>లేదా</b>',
 	'deletebatch-page'    => 'తొలగించాల్సిన పేజీలు',
