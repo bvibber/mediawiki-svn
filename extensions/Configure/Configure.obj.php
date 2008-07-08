@@ -142,12 +142,11 @@ class WebConfiguration extends SiteConfiguration {
 		extract( $GLOBALS, EXTR_REFS );
 
 		$includes = $this->getIncludedFiles();
-		$i = 0;
 		foreach( $includes as $file ){
 			if( file_exists( $file ) ){
 				require_once( $file );
 			} else {
-				trigger_error( __METHOD__ . ": required file $file doesn't exists", E_USER_WARNING );
+				trigger_error( __METHOD__ . ": required file $file doesn't exist", E_USER_WARNING );
 			}
 		}
 	}

@@ -190,12 +190,13 @@ class SpecialConfigure extends ConfigurationPage {
 	}
 
 	protected function doSubmit(){
-		global $wgConf, $wgOut;
+		global $wgConf, $wgOut, $wgConfigureUpdateCacheEpoch;
 
 		$current = $wgConf->getCurrent( $this->mWiki );
 		$settings = $this->importFromRequest();
 		$settings += $current;
-		$settings['wgCacheEpoch'] = max( $settings['wgCacheEpoch'], wfTimestampNow() ); 
+		if( $wgConfigureUpdateCacheEpoch )
+			$settings['wgCacheEpoch'] = max( $settings['wgCacheEpoch'], wfTimestampNow() ); 
 		$ok = $wgConf->saveNewSettings( $settings, $this->mWiki );
 		$msg = wfMsgNoTrans( $ok ? 'configure-saved' : 'configure-error' );
 		$class = $ok ? 'successbox' : 'errorbox';

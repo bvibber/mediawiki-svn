@@ -18,6 +18,11 @@ if ( !defined( 'MEDIAWIKI' ) ) die();
 $wgConfigureFilesPath = "$IP/serialized";
 
 /**
+ * Wheter to update $wgCacheEpoch when saving changes in Special:Configure
+ */
+$wgConfigureUpdateCacheEpoch = false; 
+
+/**
  * Styles versions, you shouldn't change it
  */
 $wgConfigureStyleVersion = '5';
@@ -29,7 +34,7 @@ $wgExtensionCredits['specialpage'][] = array(
 	'url' => 'http://www.mediawiki.org/wiki/Extension:Configure',
 	'description' => 'Allow authorised users to configure the wiki by a web-based interface',
 	'descriptionmsg' => 'configure-desc',
-	'version' => '0.5.1',
+	'version' => '0.5.2',
 );
 
 ## Adding new rights...

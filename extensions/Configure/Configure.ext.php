@@ -62,7 +62,7 @@ class WebExtension {
 	 *
 	 * @param $callback callback
 	 */
-	public function setPageObj( $obj ){
+	public function setPageObj( ConfigurationPage $obj ){
 		$this->mObj = $obj;
 	}
 
@@ -84,7 +84,7 @@ class WebExtension {
 	public function getHtml(){
 		if( !$this->isInstalled() )
 			return '';
-		$ret = '<fieldset><legend>' . $this->mName . '</legend>';
+		$ret = '<fieldset><legend>' . htmlspecialchars( $this->mName ) . '</legend>';
 		if( $this->mDbChange ){
 			$warn = wfMsgExt( 'configure-ext-schemachange', array( 'parseinline' ) );
 			$ret .= "<span class=\"errorbox\">{$warn}</span><br clear=\"left\" />\n";
