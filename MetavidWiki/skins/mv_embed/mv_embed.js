@@ -335,6 +335,7 @@ mediaPlayers.prototype =
             // otherwise just return the first compatible player
             return mime_players[0];
         }
+        js_log('No default player found for ' + mime_type);
         return null;
     },
     userSelectPlayer : function(player_id, mime_type)
@@ -865,16 +866,8 @@ textInterface.prototype = {
 		this.pe=parentEmbed;
 		//parse roe if not already done: 
 		
-		//if not "live" or under 5 min load all transcript in one request	
-		if(!this.pe.roe_xml){
-			js_log("MISSING ROE DATA for text interface");
-			var _this = this;
-			this.pe.getParseROE( function(){				
-				_this.textInterface.getParseCMML();
-			});
-		}else{
-			this.getParseCMML();
-		}
+        this.getParseCMML();
+
 		//start the autoscroll timer: 
 		this.setAutoScroll(true);		
 	},
@@ -887,20 +880,20 @@ textInterface.prototype = {
 		
 		//@@todo use user-language as key to select transcript layer.
 		_this = this;
-		$j.each(this.pe.roe_xml.getElementsByTagName('mediaSource'), function(inx, n){
-			if(n.getAttribute('content-type')=='text/cmml'){
-				_this.availableTracks[n.getAttribute('id')] = {
-					src:n.getAttribute('src'),
-					title:n.getAttribute('title'),
+		$j.each(this.pe.media_element.sources, function(inx, n){
+			if(n.mime_type=='text/cmml'){
+				_this.availableTracks[n.id] = {
+					src:n.uri,
+					title:n.title,
 					loaded:false,
 					display:false
 				}
 				//load or skip the track based on "default" attribute
-				if(n.getAttribute('default')!='true'){
+				if(n.marked_default){
 					return;
 				}else{
 					//load the track if its default track
-					_this.load_track(n.getAttribute('id'));
+					_this.load_track(n.id);
 				}			
 			}
 		});
@@ -1148,6 +1141,8 @@ mediaSource.prototype =
     start_offset:null,
     /** Duration of the requested segment (NaN if not known) */
     duration:NaN,
+
+    id:null,
     
     start_ntp:null,
     end_ntp:null,
@@ -1168,6 +1163,8 @@ mediaSource.prototype =
             this.title = element.getAttribute("title");
         else
             this.title = this.uri;
+        if (element.hasAttribute("id"))
+            this.id = element.getAttribute("id");
 
         if (element.hasAttribute('type'))
             this.mime_type = element.getAttribute('type');
@@ -1619,7 +1616,7 @@ embedVideo.prototype = {
 	    //add direct download link if option:
 	    if(this.download_link){
 	    	//check for roe attribute (extened download options)
-	    	var dlLink = (this.roe)?'javascript:document.getElementById(\''+this.id+'\').showVideoDownload();':this.src;	    	
+	    	var dlLink = (this.media_element.sources.length>1)?'javascript:document.getElementById(\''+this.id+'\').showVideoDownload();':this.media_element.sources[0].uri;	    	
 	    	thumb_html+='<div style="border:none;position:absolute;bottom:2px;left:2px;z-index:1">'+
 		     '<a title="'+getMsg('download_clip')+'" href="'+dlLink+'">';		     
 		    thumb_html+=getTransparentPng({id:'lb_'+this.id, width:"27", height:"27", border:"0", 
@@ -1763,7 +1760,7 @@ embedVideo.prototype = {
 		var select_html='<div id="player_select_list_' + index + '" class="player_select_list"><ul>';
 		for(i in supporting_players){
 			//put colored plugin icon and no link for supported player: 
-			if(this.selected_player.library==supporting_players[i].library ){
+			if(embedTypes.players.defaultPlayer(mime_type).id==supporting_players[i].id ){
 				select_html+='<li>'+						
 									'<img border="0" width="16" height="16" src="'+mv_embed_path+'images/plugin.png">'+								
 									supporting_players[i].getName() + 
@@ -1789,9 +1786,12 @@ embedVideo.prototype = {
             var default_player = embedTypes.players.defaultPlayer(source.getMIMEType());
             var source_select_code = 'document.getElementById(\''+_this.id+'\').closeDisplayedHTML(); document.getElementById(\''+_this.id+'\').media_element.selectSource(\''+index+'\');';
             var player_code = _this.getPlayerSelectList(source.getMIMEType(), index, source_select_code);
-            return '<a href="#" onClick="' + source_select_code + 'embedTypes.players.userSelectPlayer(\''+default_player.id+'\',\''+source.getMIMEType()+'\'); return false;">'
+            if (default_player)
+                return '<a href="#" onClick="' + source_select_code + 'embedTypes.players.userSelectPlayer(\''+default_player.id+'\',\''+source.getMIMEType()+'\'); return false;">'
                 + source.getTitle()+' - ' + default_player.getName() + '</a> '
                 + '(<a href="#" onClick=\'$j("#player_select_list_'+index+'").fadeIn("slow");return false;\'>choose player</a>)' + player_code;
+            else
+                return source.getTitle() + ' - no player available';
         });
         this.displayHTML(select_code);
     },
