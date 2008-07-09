@@ -18,7 +18,8 @@ $wgExtensionCredits['specialpage'][] = array(
 );
 
 $dir = dirname(__FILE__) . '/';
-$wgExtensionMessagesFiles['EditUser'] = $dir .'EditUser.i18n.php';
+$wgExtensionMessagesFiles['EditUser'] = $dir . 'EditUser.i18n.php';
+$wgExtensionAliasesFiles['EditUser'] = $dir . 'EditUser.alias.php';
 $wgAutoloadClasses['EditUser'] = $dir . 'EditUser_body.php';
 $wgSpecialPages['EditUser'] = 'EditUser';
 $wgAvailableRights[] = 'edituser';

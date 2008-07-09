@@ -29,6 +29,7 @@ if ($wgEmailArticleGroup) $wgGroupPermissions['sysop'][$wgEmailArticleGroup] = t
 $dir = dirname(__FILE__) . '/';
 $wgAutoloadClasses['SpecialEmailArticle'] = $dir . 'EmailArticle_body.php';
 $wgExtensionMessagesFiles['EmailArticle'] = $dir . 'EmailArticle.i18n.php';
+$wgExtensionAliasesFiles['EmailArticle'] = $dir . 'EmailArticle.alias.php';
 $wgSpecialPages['EmailArticle'] = 'SpecialEmailArticle';
 
 $wgExtensionCredits['specialpage'][] = array(

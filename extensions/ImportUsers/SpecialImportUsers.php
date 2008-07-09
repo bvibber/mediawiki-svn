@@ -27,4 +27,5 @@ $dir = dirname(__FILE__) . '/';
 $wgSpecialPages['ImportUsers'] = 'SpecialImportUsers'; 
 $wgAutoloadClasses['SpecialImportUsers'] = $dir . 'SpecialImportUsers_body.php';
 $wgExtensionMessagesFiles['ImportUsers'] = $dir . 'SpecialImportUsers.i18n.php';
+$wgExtensionAliasesFiles['ImportUsers'] = $dir . 'SpecialImportUsers.alias.php';
 $wgSpecialPageGroups['ImportUsers'] = 'users';

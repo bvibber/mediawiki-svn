@@ -22,6 +22,7 @@ $wgExtensionCredits['specialpage'][] = array(
 
 $dir = dirname(__FILE__) . '/';
 $wgExtensionMessagesFiles['Eval'] = $dir . 'SpecialEval.i18n.php';
+$wgExtensionAliasesFiles['Eval'] = $dir . 'SpecialEval.alias.php';
 
 function wfSpecialEval() {
 	wfUsePHP( 5.0 );
