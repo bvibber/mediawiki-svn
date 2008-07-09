@@ -74,7 +74,7 @@ $messages['eo'] = array(
 	'doublewiki-desc' => 'Montras paĝon kaj ties tradukon de aliaj vikio kun du kolumnoj en la sama paĝo',
 );
 
-/** فارسی (فارسی)
+/** Persian (فارسی)
  * @author Huji
  */
 $messages['fa'] = array(
@@ -87,7 +87,6 @@ $messages['fa'] = array(
 $messages['fi'] = array(
 	'doublewiki-desc' => 'Näyttää sivun sekä sen käännöksen toisesta wikistä vierekkäisillä palstoilla.',
 );
-
 
 /** French (Français)
  * @author Meithal
@@ -215,7 +214,7 @@ $messages['nl'] = array(
 	'doublewiki-desc' => 'Presenteert een pagina en de vertaling uit een andere wiki in twee kolommen op dezelfde pagina',
 );
 
-/** Norwegian (‪Norsk (bokmål)‬)
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */
 $messages['no'] = array(
@@ -285,7 +284,7 @@ $messages['te'] = array(
 	'doublewiki-desc' => 'పేజీని, మరో వికీలో దాని అనువాదాన్ని ఒకే పేజీలో రెండు నిలువు వరుసల్లో చూపించు',
 );
 
-/** Tajik (Тоҷикӣ)
+/** Tajik (Cyrillic) (Тоҷикӣ/tojikī (Cyrillic))
  * @author Ibrahim
  */
 $messages['tg-cyrl'] = array(
@@ -320,21 +319,21 @@ $messages['vo'] = array(
 	'doublewiki-desc' => 'Jonön padi sa tradutod onik se vük votik su padüls tel pada ot',
 );
 
-/** Cantonese
+/** Yue (粵語)
  * @author Shinjiman
  */
 $messages['yue'] = array(
 	'doublewiki-desc' => '響同一版度以兩欄同時顯示一版同埋佢響另一個wiki嘅翻譯',
 );
 
-/** Chinese (Simplified)
+/** Simplified Chinese (‪中文(简体)‬)
  * @author Shinjiman
  */
 $messages['zh-hans'] = array(
 	'doublewiki-desc' => '在同一页面中以两栏同时显示一页以及它在另一个wiki中的翻译',
 );
 
-/** Chinese (Traditional)
+/** Traditional Chinese (‪中文(繁體)‬)
  * @author Shinjiman
  */
 $messages['zh-hant'] = array(

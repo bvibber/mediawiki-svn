@@ -125,7 +125,6 @@ $messages['de'] = array(
 	'editmsg-get-patch'        => 'Erstelle Patch',
 	'editmsg-new-search'       => 'Neue Suche',
 	'editmsg-warning-parse1'   => '* Regex trifft auf keine Systemnachrichten zu: $1',
-	'editmsg-warning-parse2'   => '* Quote character expected after arrow: $1',
 	'editmsg-warning-parse3'   => '* Ende der Zeichenkette nicht gefunden: $1',
 	'editmsg-warning-file'     => '* Es ist ein Dateilesefehler für die folgenden Sprachen aufgetreten: $1',
 	'editmsg-warning-mismatch' => '* Der Originaltext hat nicht den erwarteten Wert für die folgenden Sprachen: $1',
@@ -151,6 +150,7 @@ $messages['eo'] = array(
 	'editmsg-search'         => 'Serĉi',
 	'editmsg-get-patch'      => 'Generu flikaĵon',
 	'editmsg-new-search'     => 'Nova serĉo',
+	'editmsg-warning-parse2' => '*Citmarka signo deviĝas post sago',
 	'editmsg-warning-parse3' => '* Fino de valuta ĉeno ne trovita: $1',
 	'editmsg-apply-patch'    => 'Apliku flikaĵon',
 	'editmsg-no-patch'       => 'Ne eblas starti "flikan" komandon',
@@ -318,7 +318,7 @@ $messages['ksh'] = array(
 	'editmsg-search' => 'Sööke',
 );
 
-/** Kurdish (Kurdî / كوردی)
+/** Kurdish (Latin) (Kurdî / كوردی (Latin))
  * @author Bangin
  */
 $messages['ku-latn'] = array(
@@ -603,7 +603,7 @@ $messages['sv'] = array(
 	'editmsg-patch-success'    => 'Uppdateringen lyckades.',
 );
 
-/** Silesian (ślůnski)
+/** Silesian (Ślůnski)
  * @author Herr Kriss
  */
 $messages['szl'] = array(

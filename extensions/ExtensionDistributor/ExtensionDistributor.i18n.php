@@ -79,31 +79,31 @@ $messages['bg'] = array(
  * @author Raimond Spekking
  */
 $messages['de'] = array(
-		'extensiondistributor'            => 'Herunterladen von MediaWiki-Erweiterung',
-		'extdist-desc'                    => 'Erweiterung für die Verteilung von Schnappschuss-Archiven von Erweiterungen',
-		'extdist-not-configured'          => 'Bitte konfiguriere $wgExtDistTarDir und $wgExtDistWorkingCopy',
-		'extdist-wc-missing'              => 'Das konfigurierte Kopien-Arbeitsverzeichnis ist nicht vorhanden!',
-		'extdist-no-such-extension'       => 'Erweiterung „$1“ ist nicht vorhanden',
-		'extdist-no-such-version'         => 'Die Erweiterung „$1“ gibt es nicht in der Version „$2“.',
-		'extdist-choose-extension'        => 'Bitte wähle eine Erweiterung zum Herunterladen aus:',
-		'extdist-wc-empty'                => 'Das konfigurierte Kopien-Arbeitsverzeichnis enthält keine zu verteilenden Erweiterungen!',
-		'extdist-submit-extension'        => 'Weiter',
-		'extdist-current-version'         => 'Aktuelle Version (trunk)',
-		'extdist-choose-version'          => '
+	'extensiondistributor'            => 'Herunterladen von MediaWiki-Erweiterung',
+	'extdist-desc'                    => 'Erweiterung für die Verteilung von Schnappschuss-Archiven von Erweiterungen',
+	'extdist-not-configured'          => 'Bitte konfiguriere $wgExtDistTarDir und $wgExtDistWorkingCopy',
+	'extdist-wc-missing'              => 'Das konfigurierte Kopien-Arbeitsverzeichnis ist nicht vorhanden!',
+	'extdist-no-such-extension'       => 'Erweiterung „$1“ ist nicht vorhanden',
+	'extdist-no-such-version'         => 'Die Erweiterung „$1“ gibt es nicht in der Version „$2“.',
+	'extdist-choose-extension'        => 'Bitte wähle eine Erweiterung zum Herunterladen aus:',
+	'extdist-wc-empty'                => 'Das konfigurierte Kopien-Arbeitsverzeichnis enthält keine zu verteilenden Erweiterungen!',
+	'extdist-submit-extension'        => 'Weiter',
+	'extdist-current-version'         => 'Aktuelle Version (trunk)',
+	'extdist-choose-version'          => '
 <big>Du lädst die <b>$1</b>-Erweiterung herunter.</big>
 
 Bitte wähle deine MediaWiki-Version.
 
 Die meisten Erweiterungen arbeiten mit vielen MediaWiki-Versionen zusammen. Wenn deine MediaWiki-Version hier nicht aufgeführt ist oder du die neuesten Fähigkeiten der Erweiterung nutzen möchtest, versuche es mit der aktuellen Version.',
-		'extdist-no-versions'             => 'Die gewählte Erweiterung ($1) ist nicht in der allen Versionen verfügbar!',
-		'extdist-submit-version'          => 'Weiter',
-		'extdist-no-remote'               => 'Der ferngesteuerte Subversion-Client ist nicht erreichbar.',
-		'extdist-remote-error'            => 'Fehlermeldung des ferngesteuerten Subversion-Client: <pre>$1</pre>',
-		'extdist-remote-invalid-response' => 'Ungültige Antwort vom ferngesteuerten Subversion-Client.',
-		'extdist-svn-error'               => 'Subversion hat einen Fehler gemeldet: <pre>$1</pre>',
-		'extdist-svn-parse-error'         => 'XML-Daten von „svn info“ können nicht verarbeitet werden: <pre>$1</pre>',
-		'extdist-tar-error'               => 'Das Tar-Programm lieferte den Beendigungscode $1:',
-		'extdist-created'                 => "Ein Schnappschuss der Version <b>$2</b> der MediaWiki-Erweiterung <b>$1</b> wurde erstellt. Der Download startet automatisch in 5 Sekunden.
+	'extdist-no-versions'             => 'Die gewählte Erweiterung ($1) ist nicht in der allen Versionen verfügbar!',
+	'extdist-submit-version'          => 'Weiter',
+	'extdist-no-remote'               => 'Der ferngesteuerte Subversion-Client ist nicht erreichbar.',
+	'extdist-remote-error'            => 'Fehlermeldung des ferngesteuerten Subversion-Client: <pre>$1</pre>',
+	'extdist-remote-invalid-response' => 'Ungültige Antwort vom ferngesteuerten Subversion-Client.',
+	'extdist-svn-error'               => 'Subversion hat einen Fehler gemeldet: <pre>$1</pre>',
+	'extdist-svn-parse-error'         => 'XML-Daten von „svn info“ können nicht verarbeitet werden: <pre>$1</pre>',
+	'extdist-tar-error'               => 'Das Tar-Programm lieferte den Beendigungscode $1:',
+	'extdist-created'                 => "Ein Schnappschuss der Version <b>$2</b> der MediaWiki-Erweiterung <b>$1</b> wurde erstellt. Der Download startet automatisch in 5 Sekunden.
 
 Die URL für den Schnappschuss lautet:
 :$4
@@ -124,7 +124,7 @@ Bitte beachte, dass einige Erweiterungen die Datei <tt>ExtensionFunctions.php</t
 Nachdem du die Dateien entpackt hast, musst du die Erweiterung in der <tt>LocalSettings.php</tt> registrieren. Die Dokumenation zur Erweiterung sollte eine Anleitung dazu enthalten.
 
 Wenn du Fragen zu diesem Erweiterungs-Verteil-System hast, gehe bitte zur Seite [[Extension talk:ExtensionDistributor]].",
-		'extdist-want-more'               => 'Eine weitere Erweiterung holen.',
+	'extdist-want-more'               => 'Eine weitere Erweiterung holen.',
 );
 
 /** Esperanto (Esperanto)
@@ -132,8 +132,9 @@ Wenn du Fragen zu diesem Erweiterungs-Verteil-System hast, gehe bitte zur Seite 
  */
 $messages['eo'] = array(
 	'extdist-no-such-extension' => 'Etendilo "$1" ne ekzistas',
-	'extdist-submit-extension'  => 'Kontinui',
+	'extdist-submit-extension'  => 'Daŭri',
 	'extdist-current-version'   => 'Nuna versio (bazo)',
+	'extdist-submit-version'    => 'Daŭri',
 );
 
 /** French (Français)
@@ -552,35 +553,35 @@ $messages['te'] = array(
 	'extdist-submit-version'   => 'కొనసాగించు',
 );
 
-/** Cantonese
+/** Yue (粵語)
  * @author Shinjiman
  */
 $messages['yue'] = array(
-		'extensiondistributor'      => '下載MediaWiki擴展',
-		'extdist-desc'              => '發佈擴展歸檔映像嘅擴展',
-		'extdist-not-configured'    => '請設定 $wgExtDistTarDir 同 $wgExtDistWorkingCopy',
-		'extdist-wc-missing'        => '已經設定咗嘅工作複本目錄唔存在！',
-		'extdist-no-such-extension' => '無呢個擴展 "$1"',
-		'extdist-no-such-version'   => '個擴展 "$1" 唔存在於呢個版本 "$2" 度。',
-		'extdist-choose-extension'  => '揀你要去下載嘅擴展:',
-		'extdist-wc-empty'          => '設定咗嘅工作複本目錄無可發佈嘅擴展！',
-		'extdist-submit-extension'  => '繼續',
-		'extdist-current-version'   => '現時版本 (trunk)',
-		'extdist-choose-version'    => '
+	'extensiondistributor'            => '下載MediaWiki擴展',
+	'extdist-desc'                    => '發佈擴展歸檔映像嘅擴展',
+	'extdist-not-configured'          => '請設定 $wgExtDistTarDir 同 $wgExtDistWorkingCopy',
+	'extdist-wc-missing'              => '已經設定咗嘅工作複本目錄唔存在！',
+	'extdist-no-such-extension'       => '無呢個擴展 "$1"',
+	'extdist-no-such-version'         => '個擴展 "$1" 唔存在於呢個版本 "$2" 度。',
+	'extdist-choose-extension'        => '揀你要去下載嘅擴展:',
+	'extdist-wc-empty'                => '設定咗嘅工作複本目錄無可發佈嘅擴展！',
+	'extdist-submit-extension'        => '繼續',
+	'extdist-current-version'         => '現時版本 (trunk)',
+	'extdist-choose-version'          => '
 <big>你而家下載緊 <b>$1</b> 擴展。</big>
 
 揀你要嘅 MediaWiki 版本。 
 
 多數嘅擴展都可以響多個 MediaWiki 嘅版本度行到，噉如果你嘅 Mediawiki 版本唔響度，又或者你需要最新嘅擴展功能嘅話，試吓用最新嘅版本。',
-		'extdist-no-versions'             => '所揀嘅擴展 ($1) 不適用於任何嘅版本！',
-		'extdist-submit-version'          => '繼續',
-		'extdist-no-remote'               => '唔能夠聯絡遠端 subversion 客戶端。',
-		'extdist-remote-error'            => '自遠端 subversion 客戶端嘅錯誤: <pre>$1</pre>',
-		'extdist-remote-invalid-response' => '自遠端 subversion 客戶端嘅無效回應。',
-		'extdist-svn-error'               => 'Subversion 遇到一個錯誤: <pre>$1</pre>',
-		'extdist-svn-parse-error'         => '唔能夠處理 "svn info" 嘅 XML: <pre>$1</pre>',
-		'extdist-tar-error'               => 'Tar 回應結束碼 $1:',
-		'extdist-created'                 => "一個可供 MediaWiki <b>$3</b> 用嘅 <b>$1</b> 擴展之 <b>$2</b> 版本嘅映像已經整好咗。你嘅下載將會響5秒鐘之後自動開始。 
+	'extdist-no-versions'             => '所揀嘅擴展 ($1) 不適用於任何嘅版本！',
+	'extdist-submit-version'          => '繼續',
+	'extdist-no-remote'               => '唔能夠聯絡遠端 subversion 客戶端。',
+	'extdist-remote-error'            => '自遠端 subversion 客戶端嘅錯誤: <pre>$1</pre>',
+	'extdist-remote-invalid-response' => '自遠端 subversion 客戶端嘅無效回應。',
+	'extdist-svn-error'               => 'Subversion 遇到一個錯誤: <pre>$1</pre>',
+	'extdist-svn-parse-error'         => '唔能夠處理 "svn info" 嘅 XML: <pre>$1</pre>',
+	'extdist-tar-error'               => 'Tar 回應結束碼 $1:',
+	'extdist-created'                 => "一個可供 MediaWiki <b>$3</b> 用嘅 <b>$1</b> 擴展之 <b>$2</b> 版本嘅映像已經整好咗。你嘅下載將會響5秒鐘之後自動開始。 
 
 呢個映像嘅 URL 係:
 :$4
@@ -602,38 +603,38 @@ tar -xzf $5 -C /var/www/mediawiki/extensions
 
 如果你有任何對於呢個擴展發佈系統有問題嘅話，請去[[Extension talk:ExtensionDistributor]]。
 ",
-		'extdist-want-more' => '攞另一個擴展',
+	'extdist-want-more'               => '攞另一個擴展',
 );
 
-/** Chinese (Simplified)
+/** Simplified Chinese (‪中文(简体)‬)
  * @author Shinjiman
  */
 $messages['zh-hans'] = array(
-		'extensiondistributor'      => '下载MediaWiki扩展',
-		'extdist-desc'              => '发布扩展存档映像的扩展',
-		'extdist-not-configured'    => '请设置 $wgExtDistTarDir 和 $wgExtDistWorkingCopy',
-		'extdist-wc-missing'        => '已经设置的工作复本目录不存在！',
-		'extdist-no-such-extension' => '没有这个扩展 "$1"',
-		'extdist-no-such-version'   => '该扩展 "$1" 不存在于这个版本 "$2" 中。',
-		'extdist-choose-extension'  => '选择您要去下载的扩展:',
-		'extdist-wc-empty'          => '设置的工作复本目录无可发布之扩展！',
-		'extdist-submit-extension'  => '继续',
-		'extdist-current-version'   => '现时版本 (trunk)',
-		'extdist-choose-version'    => '
+	'extensiondistributor'            => '下载MediaWiki扩展',
+	'extdist-desc'                    => '发布扩展存档映像的扩展',
+	'extdist-not-configured'          => '请设置 $wgExtDistTarDir 和 $wgExtDistWorkingCopy',
+	'extdist-wc-missing'              => '已经设置的工作复本目录不存在！',
+	'extdist-no-such-extension'       => '没有这个扩展 "$1"',
+	'extdist-no-such-version'         => '该扩展 "$1" 不存在于这个版本 "$2" 中。',
+	'extdist-choose-extension'        => '选择您要去下载的扩展:',
+	'extdist-wc-empty'                => '设置的工作复本目录无可发布之扩展！',
+	'extdist-submit-extension'        => '继续',
+	'extdist-current-version'         => '现时版本 (trunk)',
+	'extdist-choose-version'          => '
 <big>您现正下载 <b>$1</b> 扩展。</big>
 
 选择您要的 MediaWiki 版本。 
 
 多数的扩展都可以在多个 MediaWiki 版本上运行，如果您的 Mediawiki 版本不存在，又或者您需要最新的扩展功能的话，可尝试用最新的版本。',
-		'extdist-no-versions'             => '所选择扩展 ($1) 不适用于任何的版本！',
-		'extdist-submit-version'          => '继续',
-		'extdist-no-remote'               => '不能够联络远端 subversion 客户端。',
-		'extdist-remote-error'            => '自远端 subversion 客户端的错误: <pre>$1</pre>',
-		'extdist-remote-invalid-response' => '自远端 subversion 客户端的无效反应。',
-		'extdist-svn-error'               => 'Subversion 遇到一个错误: <pre>$1</pre>',
-		'extdist-svn-parse-error'         => '不能够处理 "svn info" 之 XML: <pre>$1</pre>',
-		'extdist-tar-error'               => 'Tar 反应结束码 $1:',
-		'extdist-created'                 => "一个可供 MediaWiki <b>$3</b> 使用的 <b>$1</b> 扩展之 <b>$2</b> 版本的映像已经建立。您的下载将会在5秒钟之后自动开始。 
+	'extdist-no-versions'             => '所选择扩展 ($1) 不适用于任何的版本！',
+	'extdist-submit-version'          => '继续',
+	'extdist-no-remote'               => '不能够联络远端 subversion 客户端。',
+	'extdist-remote-error'            => '自远端 subversion 客户端的错误: <pre>$1</pre>',
+	'extdist-remote-invalid-response' => '自远端 subversion 客户端的无效反应。',
+	'extdist-svn-error'               => 'Subversion 遇到一个错误: <pre>$1</pre>',
+	'extdist-svn-parse-error'         => '不能够处理 "svn info" 之 XML: <pre>$1</pre>',
+	'extdist-tar-error'               => 'Tar 反应结束码 $1:',
+	'extdist-created'                 => "一个可供 MediaWiki <b>$3</b> 使用的 <b>$1</b> 扩展之 <b>$2</b> 版本的映像已经建立。您的下载将会在5秒钟之后自动开始。 
 
 这个映像的 URL 是:
 :$4
@@ -655,38 +656,38 @@ tar -xzf $5 -C /var/www/mediawiki/extensions
 
 如果您有任何对于这个扩展发布系统有问题的话，请去[[Extension talk:ExtensionDistributor]]。
 ",
-		'extdist-want-more' => '取另一个扩展',
+	'extdist-want-more'               => '取另一个扩展',
 );
 
-/** Chinese (Traditional)
+/** Traditional Chinese (‪中文(繁體)‬)
  * @author Shinjiman
  */
 $messages['zh-hant'] = array(
-		'extensiondistributor'      => '下載MediaWiki擴展',
-		'extdist-desc'              => '發佈擴展存檔映像的擴展',
-		'extdist-not-configured'    => '請設定 $wgExtDistTarDir 和 $wgExtDistWorkingCopy',
-		'extdist-wc-missing'        => '已經設定的工作複本目錄不存在！',
-		'extdist-no-such-extension' => '沒有這個擴展 "$1"',
-		'extdist-no-such-version'   => '該擴展 "$1" 不存在於這個版本 "$2" 中。',
-		'extdist-choose-extension'  => '選擇您要去下載的擴展:',
-		'extdist-wc-empty'          => '設定的工作複本目錄無可發佈之擴展！',
-		'extdist-submit-extension'  => '繼續',
-		'extdist-current-version'   => '現時版本 (trunk)',
-		'extdist-choose-version'    => '
+	'extensiondistributor'            => '下載MediaWiki擴展',
+	'extdist-desc'                    => '發佈擴展存檔映像的擴展',
+	'extdist-not-configured'          => '請設定 $wgExtDistTarDir 和 $wgExtDistWorkingCopy',
+	'extdist-wc-missing'              => '已經設定的工作複本目錄不存在！',
+	'extdist-no-such-extension'       => '沒有這個擴展 "$1"',
+	'extdist-no-such-version'         => '該擴展 "$1" 不存在於這個版本 "$2" 中。',
+	'extdist-choose-extension'        => '選擇您要去下載的擴展:',
+	'extdist-wc-empty'                => '設定的工作複本目錄無可發佈之擴展！',
+	'extdist-submit-extension'        => '繼續',
+	'extdist-current-version'         => '現時版本 (trunk)',
+	'extdist-choose-version'          => '
 <big>您現正下載 <b>$1</b> 擴展。</big>
 
 選擇您要的 MediaWiki 版本。 
 
 多數的擴展都可以在多個 MediaWiki 版本上運行，如果您的 Mediawiki 版本不存在，又或者您需要最新的擴展功能的話，可嘗試用最新的版本。',
-		'extdist-no-versions'             => '所選擇擴展 ($1) 不適用於任何的版本！',
-		'extdist-submit-version'          => '繼續',
-		'extdist-no-remote'               => '不能夠聯絡遠端 subversion 客戶端。',
-		'extdist-remote-error'            => '自遠端 subversion 客戶端的錯誤: <pre>$1</pre>',
-		'extdist-remote-invalid-response' => '自遠端 subversion 客戶端的無效回應。',
-		'extdist-svn-error'               => 'Subversion 遇到一個錯誤: <pre>$1</pre>',
-		'extdist-svn-parse-error'         => '不能夠處理 "svn info" 之 XML: <pre>$1</pre>',
-		'extdist-tar-error'               => 'Tar 回應結束碼 $1:',
-		'extdist-created'                 => "一個可供 MediaWiki <b>$3</b> 使用的 <b>$1</b> 擴展之 <b>$2</b> 版本的映像已經建立。您的下載將會在5秒鐘之後自動開始。 
+	'extdist-no-versions'             => '所選擇擴展 ($1) 不適用於任何的版本！',
+	'extdist-submit-version'          => '繼續',
+	'extdist-no-remote'               => '不能夠聯絡遠端 subversion 客戶端。',
+	'extdist-remote-error'            => '自遠端 subversion 客戶端的錯誤: <pre>$1</pre>',
+	'extdist-remote-invalid-response' => '自遠端 subversion 客戶端的無效回應。',
+	'extdist-svn-error'               => 'Subversion 遇到一個錯誤: <pre>$1</pre>',
+	'extdist-svn-parse-error'         => '不能夠處理 "svn info" 之 XML: <pre>$1</pre>',
+	'extdist-tar-error'               => 'Tar 回應結束碼 $1:',
+	'extdist-created'                 => "一個可供 MediaWiki <b>$3</b> 使用的 <b>$1</b> 擴展之 <b>$2</b> 版本的映像已經建立。您的下載將會在5秒鐘之後自動開始。 
 
 這個映像的 URL 是:
 :$4
@@ -708,6 +709,6 @@ tar -xzf $5 -C /var/www/mediawiki/extensions
 
 如果您有任何對於這個擴展發佈系統有問題的話，請去[[Extension talk:ExtensionDistributor]]。
 ",
-		'extdist-want-more' => '取另一個擴展',
+	'extdist-want-more'               => '取另一個擴展',
 );
 

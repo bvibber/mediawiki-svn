@@ -70,6 +70,7 @@ $messages['da'] = array(
 	'findspam-ok' => 'OK',
 );
 
+/** German (Deutsch) */
 $messages['de'] = array(
 	'findspam'             => 'Spam finden',
 	'findspam-desc'        => 'Ergänzt eine [[Special:FindSpam|Spezialseite]] zum Auffinden von Spam',
@@ -78,6 +79,9 @@ $messages['de'] = array(
 	'findspam-notextfound' => 'Keine Beiträge gefunden',
 );
 
+/** Greek (Ελληνικά)
+ * @author Consta
+ */
 $messages['el'] = array(
 	'findspam-ip' => 'Διεύθυνση IP:',
 );
@@ -275,7 +279,7 @@ $messages['nn'] = array(
 	'findspam-ok' => 'OK',
 );
 
-/** Norwegian (‪Norsk (bokmål)‬)
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */
 $messages['no'] = array(
@@ -360,7 +364,7 @@ $messages['sk'] = array(
 	'findspam-notextfound' => 'Neboli nájdené žiadne príspevky',
 );
 
-/** ћирилица (ћирилица)
+/** Serbian Cyrillic ekavian (ћирилица)
  * @author Sasa Stefanovic
  */
 $messages['sr-ec'] = array(
@@ -392,7 +396,7 @@ $messages['sv'] = array(
 	'findspam-notextfound' => 'Inga bidrag hittades',
 );
 
-/** Silesian (ślůnski)
+/** Silesian (Ślůnski)
  * @author Herr Kriss
  */
 $messages['szl'] = array(

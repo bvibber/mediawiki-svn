@@ -33,7 +33,7 @@ $messages['bg'] = array(
  * @author Flominator
  */
 $messages['de'] = array(
-	'editsubpages-desc' => "Gibt den Administratoren die Möglichkeit, eine Seite und deren Unterseiten für das unangemeldete Bearbeiten über [[MediaWiki:Unlockedpages]] freizuschalten",
+	'editsubpages-desc' => 'Gibt den Administratoren die Möglichkeit, eine Seite und deren Unterseiten für das unangemeldete Bearbeiten über [[MediaWiki:Unlockedpages]] freizuschalten',
 	'unlockedpages'     => ' #<!-- Diese Zeile nicht verändern --><pre>
 # Freigegebene Seiten mittels
 # * Seitenname

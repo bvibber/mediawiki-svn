@@ -73,10 +73,13 @@ $messages['ar'] = array(
 	'duplicator-toomanyrevisions'      => '[[$1]] لديه عدد كبير ($2) من النسخ و لا يمكن نسخه. الحد الحالي هو $3.',
 );
 
+/** Bikol Central (Bikol Central)
+ * @author Filipinayzd
+ */
 $messages['bcl'] = array(
 	'duplicator-options' => 'Mga pilian',
-	'duplicator-source' => 'Ginikanan:',
-	'duplicator-dest' => 'Destinasyon:',
+	'duplicator-source'  => 'Ginikanan:',
+	'duplicator-dest'    => 'Destinasyon:',
 	'duplicator-summary' => 'Kinopya sa [[$1]]',
 );
 
@@ -159,31 +162,28 @@ $messages['da'] = array(
 	'duplicator-source' => 'Kilde:',
 );
 
-/* German (Leon Weber) */
+/** German (Deutsch)
+ * @author Leon Weber
+ */
 $messages['de'] = array(
-	'duplicator'         => 'Seite duplizieren',
-	'duplicator-header'  => 'Mit dieser Spezialseite können Seiten komplett dupliziert werden. Dabei wird die gesamte ' .
-				'Versionsgeschichte übernommen. Dies kann beispielsweise nützlich sein, um eine Seite in ' .
-				'Unterseiten aufzuteilen.',
-	'duplicator-options' => 'Optionen',
-	'duplicator-source'  => 'Quelle:',
-	'duplicator-dest'    => 'Ziel:',
-	'duplicator-dotalk'  => 'Diskussionsseite mitkopieren (wenn möglich)',
-	'duplicator-submit'  => 'Seite duplizieren',
-
-	'duplicator-summary' => '[[$1]] wurde dupliziert',
-
+	'duplicator'                       => 'Seite duplizieren',
+	'duplicator-header'                => 'Mit dieser Spezialseite können Seiten komplett dupliziert werden. Dabei wird die gesamte Versionsgeschichte übernommen. Dies kann beispielsweise nützlich sein, um eine Seite in Unterseiten aufzuteilen.',
+	'duplicator-options'               => 'Optionen',
+	'duplicator-source'                => 'Quelle:',
+	'duplicator-dest'                  => 'Ziel:',
+	'duplicator-dotalk'                => 'Diskussionsseite mitkopieren (wenn möglich)',
+	'duplicator-submit'                => 'Seite duplizieren',
+	'duplicator-summary'               => '[[$1]] wurde dupliziert',
 	'duplicator-success'               => "<big>'''[[$1]] wurde nach [[$2]] kopiert.'''</big>",
 	'duplicator-success-revisions'     => '{{PLURAL:$1|1 Version wurde|$1 Versionen wurden}} dupliziert.',
 	'duplicator-success-talkcopied'    => 'Die Diskussionsseite wurde auch dupliziert.',
 	'duplicator-success-talknotcopied' => 'Die Diskussionsseite konnte nicht dupliziert werden.',
 	'duplicator-failed'                => 'Die Seite konnte nicht dupliziert werden, da ein unbekannter Fehler auftrat.',
-
-	'duplicator-source-invalid'   => 'Bitte gebe eine gültigen Quell-Seite an.',
-	'duplicator-source-notexist'  => 'Die Seite [[$1]] existiert nicht. Bitte gebe eine existierende Seite an.',
-	'duplicator-dest-invalid'     => 'Bitte gebe eine gültige Ziel-Seite an.',
-	'duplicator-dest-exists'      => 'Die Seite [[$1]] existiert bereits. Bitte gebe eine nicht existierende Seite an.',
-	'duplicator-toomanyrevisions' => 'Die Seite [[$1]] hat $2 Versionen, um kann daher nicht dupliziert. Es können nur Seiten mit maximal $3 Versionen dupliziert werden.',
+	'duplicator-source-invalid'        => 'Bitte gebe eine gültigen Quell-Seite an.',
+	'duplicator-source-notexist'       => 'Die Seite [[$1]] existiert nicht. Bitte gebe eine existierende Seite an.',
+	'duplicator-dest-invalid'          => 'Bitte gebe eine gültige Ziel-Seite an.',
+	'duplicator-dest-exists'           => 'Die Seite [[$1]] existiert bereits. Bitte gebe eine nicht existierende Seite an.',
+	'duplicator-toomanyrevisions'      => 'Die Seite [[$1]] hat $2 Versionen, um kann daher nicht dupliziert. Es können nur Seiten mit maximal $3 Versionen dupliziert werden.',
 );
 
 /** Greek (Ελληνικά)
@@ -222,31 +222,36 @@ $messages['eo'] = array(
 	'duplicator-toomanyrevisions'      => '[[$1]] havas tro multajn ($2) reviziojn kaj ne povas esti kopiata. La aktuala limo estas $3.',
 );
 
+/** Extremaduran (Estremeñu)
+ * @author Better
+ */
 $messages['ext'] = array(
 	'duplicator-options' => 'Ocionis',
 );
 
-/* Finnish (Niklas Laxström) */
+/** Finnish (Suomi) */
+ * @author Niklas Laxström
+ */
 $messages['fi'] = array(
-	'duplicator' => 'Monista sivu',
-	'duplicator-toolbox' => 'Monista tämä sivu',
-	'duplicator-header' => 'Tällä sivulla voit luoda artikkelista täydellisen kopion historioineen.',
-	'duplicator-options' => 'Asetukset',
-	'duplicator-source' => 'Lähdesivu:',
-	'duplicator-dest' => 'Kohdesivu:',
-	'duplicator-dotalk' => 'Monista myös keskustelusivu, jos mahdollista',
-	'duplicator-submit' => 'Monista',
-	'duplicator-summary' => 'Täydellinen kopio sivusta [[$1]]',
-	'duplicator-success' => "<big>'''[[$1]] monistettiin sivulle [[$2]].'''</big>",
-	'duplicator-success-revisions' => '{{PLURAL:$1|yksi muutos|$1 muutosta}} kopioitiin.',
-	'duplicator-success-talkcopied' => 'Myös keskustelusivu monistettiin.',
+	'duplicator'                       => 'Monista sivu',
+	'duplicator-toolbox'               => 'Monista tämä sivu',
+	'duplicator-header'                => 'Tällä sivulla voit luoda artikkelista täydellisen kopion historioineen.',
+	'duplicator-options'               => 'Asetukset',
+	'duplicator-source'                => 'Lähdesivu:',
+	'duplicator-dest'                  => 'Kohdesivu:',
+	'duplicator-dotalk'                => 'Monista myös keskustelusivu, jos mahdollista',
+	'duplicator-submit'                => 'Monista',
+	'duplicator-summary'               => 'Täydellinen kopio sivusta [[$1]]',
+	'duplicator-success'               => "<big>'''[[$1]] monistettiin sivulle [[$2]].'''</big>",
+	'duplicator-success-revisions'     => '{{PLURAL:$1|yksi muutos|$1 muutosta}} kopioitiin.',
+	'duplicator-success-talkcopied'    => 'Myös keskustelusivu monistettiin.',
 	'duplicator-success-talknotcopied' => 'Keskustelusivua ei monistettu.',
-	'duplicator-failed' => 'Sivun monistaminen ei onnistunut.',
-	'duplicator-source-invalid' => 'Lähdesivun nimi ei kelpaa.',
-	'duplicator-source-notexist' => 'Sivua [[$1]] ei ole olemassa.',
-	'duplicator-dest-invalid' => 'Kohdesivun nimi ei kelpaa.',
-	'duplicator-dest-exists' => '[[$1]] on jo olemassa. Anna nimi, joka ei ole vielä käytössä.',
-	'duplicator-toomanyrevisions' => 'Sivu [[$1]] koostuu liian monesta muutoksesta ($2), minkä takia sitä ei voi monistaa. Nykyinen raja on $3.',
+	'duplicator-failed'                => 'Sivun monistaminen ei onnistunut.',
+	'duplicator-source-invalid'        => 'Lähdesivun nimi ei kelpaa.',
+	'duplicator-source-notexist'       => 'Sivua [[$1]] ei ole olemassa.',
+	'duplicator-dest-invalid'          => 'Kohdesivun nimi ei kelpaa.',
+	'duplicator-dest-exists'           => '[[$1]] on jo olemassa. Anna nimi, joka ei ole vielä käytössä.',
+	'duplicator-toomanyrevisions'      => 'Sivu [[$1]] koostuu liian monesta muutoksesta ($2), minkä takia sitä ei voi monistaa. Nykyinen raja on $3.',
 );
 
 /** French (Français)
@@ -416,28 +421,31 @@ $messages['id'] = array(
 	'duplicator-toomanyrevisions'      => '[[$1]] memiliki terlalu banyak ($2) revisi dan tidak dapat disalin. Limit saat ini adalah $3.',
 );
 
-/* Italian (BrokenArrow) */
+/** Italian (Italiano)
+ * @author Broken Arrow
+ */
 $messages['it'] = array(
-	'duplicator' => 'Duplica una pagina',
-	'duplicator-toolbox' => 'Duplica questa pagina',
-	'duplicator-header' => "Questa pagina speciale consente la duplicazione completa di una pagina, dando origine a due copie distinte della relativa cronologia. Tale operazione può essere utile per scindere due pagine (''forking''), ecc.",
-	'duplicator-options' => 'Opzioni',
-	'duplicator-source' => 'Pagina di partenza:',
-	'duplicator-dest' => 'Pagina di arrivo:',
-	'duplicator-dotalk' => 'Duplica anche la pagina di discussione, se esiste',
-	'duplicator-submit' => 'Duplica',
-	'duplicator-summary' => 'Pagina copiata da [[$1]]',
-	'duplicator-success' => "<big>La pagina '''[[$1]] è stata copiata in [[$2]].'''</big>",
-	'duplicator-success-revisions' => '$1 {{PLURAL:$1|revisione copiata|revisioni copiate}}.',
-	'duplicator-success-talkcopied' => 'Anche la pagina di discussione è stata copiata.',
+	'duplicator'                       => 'Duplica una pagina',
+	'duplicator-toolbox'               => 'Duplica questa pagina',
+	'duplicator-header'                => "Questa pagina speciale consente la duplicazione completa di una pagina, dando origine a due copie distinte della relativa cronologia. Tale operazione può essere utile per scindere due pagine (''forking''), ecc.",
+	'duplicator-options'               => 'Opzioni',
+	'duplicator-source'                => 'Pagina di partenza:',
+	'duplicator-dest'                  => 'Pagina di arrivo:',
+	'duplicator-dotalk'                => 'Duplica anche la pagina di discussione, se esiste',
+	'duplicator-submit'                => 'Duplica',
+	'duplicator-summary'               => 'Pagina copiata da [[$1]]',
+	'duplicator-success'               => "<big>La pagina '''[[$1]] è stata copiata in [[$2]].'''</big>",
+	'duplicator-success-revisions'     => '$1 {{PLURAL:$1|revisione copiata|revisioni copiate}}.',
+	'duplicator-success-talkcopied'    => 'Anche la pagina di discussione è stata copiata.',
 	'duplicator-success-talknotcopied' => 'Impossibile copiare la pagina di discussione.',
-	'duplicator-failed' => 'Impossibile duplicare la pagina. Errore sconosciuto.',
-	'duplicator-source-invalid' => 'Indicare un titolo di partenza valido.',
-	'duplicator-source-notexist' => 'La pagina [[$1]] non esiste. Indicare il titolo di una pagina esistente.',
-	'duplicator-dest-invalid' => 'Indicare un titolo di arrivo valido.',
-	'duplicator-dest-exists' => 'La pagina [[$1]] esiste già. Indicare un titolo di arrivo non ancora esistente.',
-	'duplicator-toomanyrevisions' => 'Impossibile copiare [[$1]]. La pagina ha troppe revisioni ($2). Il limite attuale è $3.',
+	'duplicator-failed'                => 'Impossibile duplicare la pagina. Errore sconosciuto.',
+	'duplicator-source-invalid'        => 'Indicare un titolo di partenza valido.',
+	'duplicator-source-notexist'       => 'La pagina [[$1]] non esiste. Indicare il titolo di una pagina esistente.',
+	'duplicator-dest-invalid'          => 'Indicare un titolo di arrivo valido.',
+	'duplicator-dest-exists'           => 'La pagina [[$1]] esiste già. Indicare un titolo di arrivo non ancora esistente.',
+	'duplicator-toomanyrevisions'      => 'Impossibile copiare [[$1]]. La pagina ha troppe revisioni ($2). Il limite attuale è $3.',
 );
+
 /* Japanese */
 $messages['ja'] = array(
 	'duplicator' => 'ページの複製',
@@ -717,7 +725,7 @@ $messages['pl'] = array(
 	'duplicator-toomanyrevisions'      => 'Artykuł [[$1]] ma zbyt dużo ($2) edycji i nie może być skopiowany. Aktualny limit edycji to $3.',
 );
 
-/** Piemontèis (Piemontèis)
+/** Piedmontese (Piemontèis)
  * @author Bèrto 'd Sèra
  */
 $messages['pms'] = array(
@@ -966,72 +974,78 @@ Có lỗi lạ xảy ra.',
 Giới hạn hiện nay là $3.',
 );
 
-/* Cantonese (Shinjiman) */
+/** Yue (粵語)
+ * @author Shinjiman
+ */
 $messages['yue'] = array(
-	'duplicator' => '複製一篇文章',
-	'duplicator-toolbox' => '複製呢篇文章',
-	'duplicator-header' => '呢一版可以完全複製一篇文章，建立一個完整嘅修訂歷史。呢個係對於文章分叉等嘅動作係好有用嘅。',
-	'duplicator-options' => '選項',
-	'duplicator-source' => '來源:',
-	'duplicator-dest' => '目標:',
-	'duplicator-dotalk' => '複製討論頁 (如可用嘅話)',
-	'duplicator-submit' => '複製',
-	'duplicator-summary' => '由[[$1]]複製過來',
-	'duplicator-success' => "<big>'''[[$1]]已經複製到[[$2]]。'''</big>",
-	'duplicator-success-revisions' => '$1個修訂已經複製。',
-	'duplicator-success-talkcopied' => '個討論頁亦都複製咗。',
+	'duplicator'                       => '複製一篇文章',
+	'duplicator-toolbox'               => '複製呢篇文章',
+	'duplicator-header'                => '呢一版可以完全複製一篇文章，建立一個完整嘅修訂歷史。呢個係對於文章分叉等嘅動作係好有用嘅。',
+	'duplicator-options'               => '選項',
+	'duplicator-source'                => '來源:',
+	'duplicator-dest'                  => '目標:',
+	'duplicator-dotalk'                => '複製討論頁 (如可用嘅話)',
+	'duplicator-submit'                => '複製',
+	'duplicator-summary'               => '由[[$1]]複製過來',
+	'duplicator-success'               => "<big>'''[[$1]]已經複製到[[$2]]。'''</big>",
+	'duplicator-success-revisions'     => '$1個修訂已經複製。',
+	'duplicator-success-talkcopied'    => '個討論頁亦都複製咗。',
 	'duplicator-success-talknotcopied' => '個討論頁唔能夠複製。',
-	'duplicator-failed' => '呢一版唔能夠複製落來。未知嘅錯誤發生咗。',
-	'duplicator-source-invalid' => '請提供一個正確嘅來源標題。',
-	'duplicator-source-notexist' => '[[$1]]並唔存在。請提供一個已經存在嘅版面標題。',
-	'duplicator-dest-invalid' => '請提供一個正確嘅目標標題。',
-	'duplicator-dest-exists' => '[[$1]]已經存在。請提供一個未存在嘅目標標題。',
-	'duplicator-toomanyrevisions' => '[[$1]]有太多 ($2次) 修訂，唔能夠複製。現時嘅上限係有$3次。',
+	'duplicator-failed'                => '呢一版唔能夠複製落來。未知嘅錯誤發生咗。',
+	'duplicator-source-invalid'        => '請提供一個正確嘅來源標題。',
+	'duplicator-source-notexist'       => '[[$1]]並唔存在。請提供一個已經存在嘅版面標題。',
+	'duplicator-dest-invalid'          => '請提供一個正確嘅目標標題。',
+	'duplicator-dest-exists'           => '[[$1]]已經存在。請提供一個未存在嘅目標標題。',
+	'duplicator-toomanyrevisions'      => '[[$1]]有太多 ($2次) 修訂，唔能夠複製。現時嘅上限係有$3次。',
 );
 
-/* Chinese (Simplified) (Shinjiman) */
+/** Simplified Chinese (‪中文(简体)‬)
+ * @author Shinjiman
+ */
 $messages['zh-hans'] = array(
-	'duplicator' => '复制一篇文章',
-	'duplicator-toolbox' => '复制这篇文章',
-	'duplicator-header' => '这一版可以完全复制一篇文章，建立一个完整的修订历史。这对于文章分叉等的动作是很有用的。',
-	'duplicator-options' => '选项',
-	'duplicator-source' => '来源:',
-	'duplicator-dest' => '目标:',
-	'duplicator-dotalk' => '复制讨论页 (如可用的话)',
-	'duplicator-submit' => '复制',
-	'duplicator-summary' => '由[[$1]]复制过来',
-	'duplicator-success' => "<big>'''[[$1]]已经复制到[[$2]]。'''</big>",
-	'duplicator-success-revisions' => '$1个修订已经复制。',
-	'duplicator-success-talkcopied' => '讨论页亦已经复制。',
+	'duplicator'                       => '复制一篇文章',
+	'duplicator-toolbox'               => '复制这篇文章',
+	'duplicator-header'                => '这一版可以完全复制一篇文章，建立一个完整的修订历史。这对于文章分叉等的动作是很有用的。',
+	'duplicator-options'               => '选项',
+	'duplicator-source'                => '来源:',
+	'duplicator-dest'                  => '目标:',
+	'duplicator-dotalk'                => '复制讨论页 (如可用的话)',
+	'duplicator-submit'                => '复制',
+	'duplicator-summary'               => '由[[$1]]复制过来',
+	'duplicator-success'               => "<big>'''[[$1]]已经复制到[[$2]]。'''</big>",
+	'duplicator-success-revisions'     => '$1个修订已经复制。',
+	'duplicator-success-talkcopied'    => '讨论页亦已经复制。',
 	'duplicator-success-talknotcopied' => '讨论页不能够复制。',
-	'duplicator-failed' => '这一页唔能够复制落来。发生了未知的错误。',
-	'duplicator-source-invalid' => '请提供一个正确的来源标题。',
-	'duplicator-source-notexist' => '[[$1]]并不存在。请提供一个已经存在的页面标题。',
-	'duplicator-dest-invalid' => '请提供一个正确的目标标题。',
-	'duplicator-dest-exists' => '[[$1]]已经存在。请提供一个未存在的目标标题。',
-	'duplicator-toomanyrevisions' => '[[$1]]有太多 ($2次) 修订，不能够复制。当前的上限有$3次。',
+	'duplicator-failed'                => '这一页唔能够复制落来。发生了未知的错误。',
+	'duplicator-source-invalid'        => '请提供一个正确的来源标题。',
+	'duplicator-source-notexist'       => '[[$1]]并不存在。请提供一个已经存在的页面标题。',
+	'duplicator-dest-invalid'          => '请提供一个正确的目标标题。',
+	'duplicator-dest-exists'           => '[[$1]]已经存在。请提供一个未存在的目标标题。',
+	'duplicator-toomanyrevisions'      => '[[$1]]有太多 ($2次) 修订，不能够复制。当前的上限有$3次。',
 );
 
-/* Chinese (Traditional) (Shinjiman) */
+/** Traditional Chinese (‪中文(繁體)‬)
+ * @author Shinjiman
+ */
 $messages['zh-hant'] = array(
-	'duplicator' => '複製一篇文章',
-	'duplicator-toolbox' => '複製這篇文章',
-	'duplicator-header' => '這一版可以完全複製一篇文章，建立一個完整的修訂歷史。這對於文章分叉等的動作是很有用的。',
-	'duplicator-options' => '選項',
-	'duplicator-source' => '來源:',
-	'duplicator-dest' => '目標:',
-	'duplicator-dotalk' => '複製討論頁 (如可用的話)',
-	'duplicator-submit' => '複製',
-	'duplicator-summary' => '由[[$1]]複製過來',
-	'duplicator-success' => "<big>'''[[$1]]已經複製到[[$2]]。'''</big>",
-	'duplicator-success-revisions' => '$1個修訂已經複製。',
-	'duplicator-success-talkcopied' => '討論頁亦已經複製。',
+	'duplicator'                       => '複製一篇文章',
+	'duplicator-toolbox'               => '複製這篇文章',
+	'duplicator-header'                => '這一版可以完全複製一篇文章，建立一個完整的修訂歷史。這對於文章分叉等的動作是很有用的。',
+	'duplicator-options'               => '選項',
+	'duplicator-source'                => '來源:',
+	'duplicator-dest'                  => '目標:',
+	'duplicator-dotalk'                => '複製討論頁 (如可用的話)',
+	'duplicator-submit'                => '複製',
+	'duplicator-summary'               => '由[[$1]]複製過來',
+	'duplicator-success'               => "<big>'''[[$1]]已經複製到[[$2]]。'''</big>",
+	'duplicator-success-revisions'     => '$1個修訂已經複製。',
+	'duplicator-success-talkcopied'    => '討論頁亦已經複製。',
 	'duplicator-success-talknotcopied' => '討論頁不能夠複製。',
-	'duplicator-failed' => '這一頁唔能夠複製落來。發生了未知的錯誤。',
-	'duplicator-source-invalid' => '請提供一個正確的來源標題。',
-	'duplicator-source-notexist' => '[[$1]]並不存在。請提供一個已經存在的頁面標題。',
-	'duplicator-dest-invalid' => '請提供一個正確的目標標題。',
-	'duplicator-dest-exists' => '[[$1]]已經存在。請提供一個未存在的目標標題。',
-	'duplicator-toomanyrevisions' => '[[$1]]有太多 ($2次) 修訂，不能夠複製。目前的上限有$3次。',
+	'duplicator-failed'                => '這一頁唔能夠複製落來。發生了未知的錯誤。',
+	'duplicator-source-invalid'        => '請提供一個正確的來源標題。',
+	'duplicator-source-notexist'       => '[[$1]]並不存在。請提供一個已經存在的頁面標題。',
+	'duplicator-dest-invalid'          => '請提供一個正確的目標標題。',
+	'duplicator-dest-exists'           => '[[$1]]已經存在。請提供一個未存在的目標標題。',
+	'duplicator-toomanyrevisions'      => '[[$1]]有太多 ($2次) 修訂，不能夠複製。目前的上限有$3次。',
 );
 

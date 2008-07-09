@@ -187,7 +187,7 @@ $messages['nl'] = array(
 	'eval_code'   => 'Code',
 );
 
-/** Norwegian (‪Norsk (bokmål)‬)
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */
 $messages['no'] = array(
@@ -262,7 +262,6 @@ $messages['stq'] = array(
 );
 
 /** Swedish (Svenska)
- * @author M.M.S.
  * @author M.M.S.
  * @author Lejonel
  */

@@ -109,6 +109,9 @@ llamando a les funciones afechisques d'análisis sintáuticu de MediaWiki.",
 	'expand_templates_preview'         => 'Previsualizar',
 );
 
+/** Bikol Central (Bikol Central)
+ * @author Filipinayzd
+ */
 $messages['bcl'] = array(
 	'expand_templates_output'          => 'Resulta',
 	'expand_templates_remove_comments' => 'Tanggalon an mga komento',
@@ -144,6 +147,7 @@ $messages['bg'] = array(
 /** Bengali (বাংলা)
  * @author Bellayet
  * @author Zaheen
+ * @author Siebrand
  */
 $messages['bn'] = array(
 	'expandtemplates'                  => 'টেম্পলেট সম্প্রসারণ',
@@ -206,8 +210,11 @@ $messages['ce'] = array(
 	'expand_templates_remove_comments' => 'Комментариш дIаяккха',
 );
 
+/** Corsican (Corsu)
+ * @author SPQRobin
+ */
 $messages['co'] = array(
-	'expand_templates_output'          => 'Risultatu',
+	'expand_templates_output' => 'Risultatu',
 );
 
 /** Czech (Česky)
@@ -289,6 +296,10 @@ $messages['eo'] = array(
 	'expand_templates_preview'         => 'Antaŭrigardo',
 );
 
+/** Spanish (Español)
+ * @author Icvav
+ * @author Spacebirdy
+ */
 $messages['es'] = array(
 	'expandtemplates'                  => 'Sustituidor de plantillas',
 	'expand_templates_input'           => 'Texto a expandir:',
@@ -311,11 +322,14 @@ $messages['eu'] = array(
 	'expand_templates_preview'         => 'Aurreikusi',
 );
 
+/** Extremaduran (Estremeñu)
+ * @author Better
+ */
 $messages['ext'] = array(
-	'expand_templates_preview'         => 'Previsoreal',
+	'expand_templates_preview' => 'Previsoreal',
 );
 
-/** فارسی (فارسی)
+/** Persian (فارسی)
  * @author Huji
  */
 $messages['fa'] = array(
@@ -330,7 +344,6 @@ $messages['fa'] = array(
 	'expand_templates_remove_comments' => 'حذف توضیحات',
 	'expand_templates_generate_xml'    => 'نمایش درخت تجزیهٔ XML',
 	'expand_templates_preview'         => 'پیش‌نمایش',
-
 );
 
 /** Finnish (Suomi)
@@ -350,10 +363,13 @@ $messages['fi'] = array(
 	'expand_templates_preview'         => 'Esikatselu',
 );
 
+/** Faroese (Føroyskt)
+ * @author Spacebirdy
+ */
 $messages['fo'] = array(
-	'expand_templates_output'          => 'Úrslit',
-	'expand_templates_ok'              => 'Í lagi',
-	'expand_templates_preview'         => 'Forskoðan',
+	'expand_templates_output'  => 'Úrslit',
+	'expand_templates_ok'      => 'Í lagi',
+	'expand_templates_preview' => 'Forskoðan',
 );
 
 /** French (Français)
@@ -424,7 +440,9 @@ Faino chamando a etapa de análise correspondente do propio MediaWiki.',
 	'expand_templates_preview'         => 'Vista previa',
 );
 
-/** Gujarati (ગુજરાતી) */
+/** Gujarati (ગુજરાતી)
+ * @author SPQRobin
+ */
 $messages['gu'] = array(
 	'expand_templates_output' => 'પરિણામ:',
 	'expand_templates_ok'     => 'મંજૂર',
@@ -547,8 +565,11 @@ Kibontja az elemző függvényeket (pl. <nowiki>{{</nowiki>#if:...}}), és a vá
 	'expand_templates_preview'         => 'Előnézet',
 );
 
+/** Armenian (Հայերեն)
+ * @author Teak
+ */
 $messages['hy'] = array(
-	'expandtemplates'                  => 'Կաղապարների ընդարձակում',
+	'expandtemplates' => 'Կաղապարների ընդարձակում',
 );
 
 /** Interlingua (Interlingua)
@@ -661,6 +682,7 @@ Perkara iki dilakokaké caranémawa nyeluk tahapan parser sing rélévan saka Me
 	'expand_templates_preview'         => 'Pratayang',
 );
 
+/** Kazakh (Arabic script) (‫قازاقشا (تٴوتە)‬) */
 $messages['kk-arab'] = array(
 	'expandtemplates'                  => 'ۇلگىلەردى ۇلعايتۋ',
 	'expand_templates_intro'           => 'وسى قۇرال ارنايى بەتى الدەبىر ٴماتىندى الادى دا,
@@ -678,6 +700,7 @@ $messages['kk-arab'] = array(
 	'expand_templates_preview'         => 'قاراپ شىعۋ',
 );
 
+/** Kazakh (Cyrillic) (Қазақша (Cyrillic)) */
 $messages['kk-cyrl'] = array(
 	'expandtemplates'                  => 'Үлгілерді ұлғайту',
 	'expand_templates_intro'           => 'Осы құрал арнайы беті әлдебір мәтінді алады да,
@@ -695,6 +718,7 @@ $messages['kk-cyrl'] = array(
 	'expand_templates_preview'         => 'Қарап шығу',
 );
 
+/** Kazakh (Latin) (Қазақша (Latin)) */
 $messages['kk-latn'] = array(
 	'expandtemplates'                  => 'Ülgilerdi ulğaýtw',
 	'expand_templates_intro'           => 'Osı qural arnaýı beti äldebir mätindi aladı da,
@@ -722,7 +746,7 @@ $messages['km'] = array(
 	'expand_templates_output'          => 'លទ្ធផល',
 	'expand_templates_ok'              => 'យល់ព្រម',
 	'expand_templates_remove_comments' => 'ដកចេញ វិចារនានា',
-	'expand_templates_preview'         => 'មើលជាមុន',
+	'expand_templates_preview'         => 'បង្ហាញការមើលជាមុន',
 );
 
 /** Korean (한국어)
@@ -768,8 +792,11 @@ $messages['ksh'] = array(
 	'expand_templates_preview'         => 'Vör-Aansich',
 );
 
+/** Latin (Latina)
+ * @author SPQRobin
+ */
 $messages['la'] = array(
-	'expandtemplates'                  => 'Formulas resolvere',
+	'expandtemplates' => 'Formulas resolvere',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -814,8 +841,9 @@ Hiej veur waere de relevante functies van de MediaWiki-parser gebroek.",
 	'expand_templates_preview'         => 'Veurvertoeaning',
 );
 
+/** Lao (ລາວ) */
 $messages['lo'] = array(
-	'expandtemplates'                  => 'ຂະຫຍາຍແມ່ແບບ',
+	'expandtemplates' => 'ຂະຫຍາຍແມ່ແບບ',
 );
 
 /** Lithuanian (Lietuvių)
@@ -888,6 +916,7 @@ $messages['mt'] = array(
 	'expand_templates_ok' => 'OK',
 );
 
+/** Min Nan Chinese (Bân-lâm-gú) */
 $messages['nan'] = array(
 	'expandtemplates'                  => 'Khok-chhiong pang-bô͘',
 	'expand_templates_input'           => 'Su-ji̍p bûn-jī:',
@@ -940,7 +969,7 @@ $messages['nn'] = array(
 	'expand_templates_preview' => 'Førehandsvising',
 );
 
-/** Norwegian (‪Norsk (bokmål)‬)
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */
 $messages['no'] = array(
@@ -1010,14 +1039,16 @@ Wykonywane jest to poprzez wywołanie odpowiedniego przebiegu (etapu) parsera z 
 	'expand_templates_preview'         => 'Podgląd',
 );
 
-/* Piedmontese (Bèrto 'd Sèra) */
+/** Piedmontese (Piemontèis)
+ * @author Bèrto 'd Sèra
+ */
 $messages['pms'] = array(
 	'expandtemplates'                  => 'Anàlisi djë stamp',
-	'expand_templates_intro'           => 'Sta pàgina special-sì a pija dël test e a-i fa n\'anàlisi arcorsiva ëd tuti jë stamp ch\'a l\'ha andrinta.
-A l\'analisa ëdcò le fonsion anterpretà coma
+	'expand_templates_intro'           => "Sta pàgina special-sì a pija dël test e a-i fa n'anàlisi arcorsiva ëd tuti jë stamp ch'a l'ha andrinta. 
+A l'analisa ëdcò le fonsion anterpretà coma
 <nowiki>{{</nowiki>#if:...}}, e le variabij coma
-<nowiki>{{</nowiki>CURRENTDAY}}&mdash;visadì bele che tut lòn ch\'a-i é antra dobie grafe.
-Sòn a lo fa ën ciamand l\'anterprete dal programa MediaWiki.',
+<nowiki>{{</nowiki>CURRENTDAY}}&mdash;visadì bele che tut lòn ch'a-i é antra dobie grafe.
+Sòn a lo fa ën ciamand l'anterprete dal programa MediaWiki.",
 	'expand_templates_title'           => 'Tìtol ëd contest për {{PAGENAME}} e via fòrt:',
 	'expand_templates_input'           => 'Test da analisé:',
 	'expand_templates_output'          => 'Arzultà',
@@ -1127,17 +1158,18 @@ samotného MediaWiki.',
 	'expand_templates_preview'         => 'Náhľad',
 );
 
+/** Albanian (Shqip) */
 $messages['sq'] = array(
-	'expand_templates_input'           => 'Teksti me stampa:',
-	'expand_templates_intro'           => 'Kjo faqe speciale merr tekstin me stampa dhe të tregon se si do të duket teksti pasi të jenë stamposur të tëra. Kjo faqe gjithashtu tregon parapamjen e funksioneve dhe fjalëve magjike si p.sh. <nowiki>{{</nowiki>#if:...}} dhe <nowiki>{{</nowiki>CURRENTDAY}}.',
-	'expand_templates_ok'              => 'Shko',
-	'expand_templates_output'          => 'Parapamja',
-	'expand_templates_remove_comments' => 'Hiq komentet',
-	'expand_templates_title'           => 'Titulli i faqes për rrethanën, si <nowiki>{{</nowiki>PAGENAME}} etj.:',
 	'expandtemplates'                  => 'Parapamje stampash',
+	'expand_templates_intro'           => 'Kjo faqe speciale merr tekstin me stampa dhe të tregon se si do të duket teksti pasi të jenë stamposur të tëra. Kjo faqe gjithashtu tregon parapamjen e funksioneve dhe fjalëve magjike si p.sh. <nowiki>{{</nowiki>#if:...}} dhe <nowiki>{{</nowiki>CURRENTDAY}}.',
+	'expand_templates_title'           => 'Titulli i faqes për rrethanën, si <nowiki>{{</nowiki>PAGENAME}} etj.:',
+	'expand_templates_input'           => 'Teksti me stampa:',
+	'expand_templates_output'          => 'Parapamja',
+	'expand_templates_ok'              => 'Shko',
+	'expand_templates_remove_comments' => 'Hiq komentet',
 );
 
-/** ћирилица (ћирилица)
+/** Serbian Cyrillic ekavian (ћирилица)
  * @author Sasa Stefanovic
  */
 $messages['sr-ec'] = array(
@@ -1154,6 +1186,7 @@ $messages['sr-ec'] = array(
 	'expand_templates_preview'         => 'Приказ',
 );
 
+/** latinica (latinica) */
 $messages['sr-el'] = array(
 	'expandtemplates'                  => 'Zamena šablona',
 	'expand_templates_intro'           => 'Ova posebna stranica uzima neki tekst i menja sve šablone u njemu rekurzivno.
@@ -1215,7 +1248,7 @@ $messages['sv'] = array(
 	'expand_templates_preview'         => 'Förhandsvisning',
 );
 
-/** Silesian (ślůnski)
+/** Silesian (Ślůnski)
  * @author Herr Kriss
  */
 $messages['szl'] = array(
@@ -1248,7 +1281,7 @@ $messages['tet'] = array(
 	'expand_templates_ok' => 'OK',
 );
 
-/** Tajik (Тоҷикӣ)
+/** Tajik (Cyrillic) (Тоҷикӣ/tojikī (Cyrillic))
  * @author Ibrahim
  */
 $messages['tg-cyrl'] = array(
@@ -1371,6 +1404,7 @@ $messages['yi'] = array(
 	'expand_templates_output' => 'רעזולטאט',
 );
 
+/** Yue (粵語) */
 $messages['yue'] = array(
 	'expandtemplates'                  => '展開模',
 	'expandtemplates-desc'             => '[[Special:ExpandTemplates|展開模、parser functions同埋變數]]去顯示展開嘅wiki文字同埋預覽處理後嘅版',
@@ -1379,12 +1413,12 @@ $messages['yue'] = array(
 	'expand_templates_input'           => '輸入文字：',
 	'expand_templates_output'          => '結果：',
 	'expand_templates_xml_output'      => 'XML輸出',
-	'expand_templates_ok'              => 'OK',
 	'expand_templates_remove_comments' => '拎走注釋',
 	'expand_templates_generate_xml'    => '顯示XML語法樹',
 	'expand_templates_preview'         => '預覽',
 );
 
+/** Simplified Chinese (‪中文(简体)‬) */
 $messages['zh-hans'] = array(
 	'expandtemplates'                  => '展开模板',
 	'expandtemplates-desc'             => '[[Special:ExpandTemplates|展开模板、模版扩展语法以及变数]]去显示展开之wiki文字和预览处理后之页面',
@@ -1399,6 +1433,7 @@ $messages['zh-hans'] = array(
 	'expand_templates_preview'         => '预览',
 );
 
+/** Traditional Chinese (‪中文(繁體)‬) */
 $messages['zh-hant'] = array(
 	'expandtemplates'                  => '展開模板',
 	'expandtemplates-desc'             => '[[Special:ExpandTemplates|展開模板、模版擴展語法以及變數]]去顯示展開之wiki文字和預覽處理後之頁面',

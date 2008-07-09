@@ -45,6 +45,7 @@ $messages['ar'] = array(
  * @author Yekrats
  */
 $messages['eo'] = array(
+	'editsimilar-thankyou'     => 'Dankon pro via kontribuo, $1!',
 	'editsimilar-link-disable' => 'fari preferojn',
 );
 

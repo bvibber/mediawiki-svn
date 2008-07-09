@@ -364,7 +364,7 @@ $messages['ksh'] = array(
 	'edituser-dosearch' => 'Sööke',
 );
 
-/** Kurdish (Kurdî / كوردی)
+/** Kurdish (Latin) (Kurdî / كوردی (Latin))
  * @author Bangin
  */
 $messages['ku-latn'] = array(
@@ -579,7 +579,7 @@ $messages['sv'] = array(
 	'edituser-exempt'   => 'Den angivna användaren kan inte redigeras',
 );
 
-/** Silesian (ślůnski)
+/** Silesian (Ślůnski)
  * @author Herr Kriss
  */
 $messages['szl'] = array(

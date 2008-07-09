@@ -83,6 +83,7 @@ $messages['eo'] = array(
 	'ea-selectrecipients' => 'Selektu ricevontojn',
 	'ea-compose'          => 'Skribu enhavon',
 	'ea-send'             => 'Sendi!',
+	'ea-selectcss'        => 'Selekti CSS-tiparŝablono',
 );
 
 /** French (Français)
