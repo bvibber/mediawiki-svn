@@ -159,6 +159,10 @@ ENDFORM2;
 			$this->buttonlabel = wfMsgHtml( 'tryexact' );
 		}
 
+		$buttonlabel = htmlspecialchars( $this->buttonlabel );
+		$searchbuttonlabel = htmlspecialchars( $this->searchbuttonlabel );
+		$id = Sanitizer::escapeId( $this->id );
+
 		$label = '';
 		$styles = '';
 
@@ -185,7 +189,7 @@ ENDFORM2;
 
 		$type = $this->hidden ? 'hidden' : 'text';
 		$searchform=<<<ENDFORM
-<form action="$search" class="bodySearch" {$styles} id="bodySearch{$id}"><div class="bodySearchWrap"  style="{$styles}">{$label}<input type="{$type}" name="search" size="{$this->width}" class="bodySearchIput" id="bodySearchIput{$id}" /><input type="submit" name="go" value="{$buttonlabel}" class="bodySearchBtnGo" />
+<form action="$search" class="bodySearch" {$styles} id="bodySearch{$id}"><div class="bodySearchWrap" {$styles}>{$label}<input type="{$type}" name="search" size="{$this->width}" class="bodySearchIput" id="bodySearchIput{$id}" /><input type="submit" name="go" value="{$buttonlabel}" class="bodySearchBtnGo" />
 ENDFORM;
 
 		if ( !empty( $this->fulltextbtn ) ) // this is wrong...
