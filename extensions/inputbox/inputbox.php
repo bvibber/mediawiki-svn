@@ -159,19 +159,33 @@ ENDFORM2;
 			$this->buttonlabel = wfMsgHtml( 'tryexact' );
 		}
 
-		$output = $this->parser->parse( $this->labeltext,
-			$this->parser->getTitle(), $this->parser->getOptions(), false, false );
-		$this->labeltext = $output->getText();
-		$this->labeltext = str_replace('<p>', '', $this->labeltext);
-		$this->labeltext = str_replace('</p>', '', $this->labeltext);
+		$label = '';
+		$styles = '';
+
+		if ( isset($this->labeltext) && strlen(trim($this->labeltext)) ) {
+			$output = $this->parser->parse( $this->labeltext,
+				$this->parser->getTitle(), $this->parser->getOptions(), false, false );
+			$this->labeltext = $output->getText();
+			$this->labeltext = str_replace('<p>', '', $this->labeltext);
+			$this->labeltext = str_replace('</p>', '', $this->labeltext);
+			$label = "<label for=\"bodySearchIput{$id}\">{$this->labeltext}</label>";
+		}
+
+		if ($this->inline) {
+			$styles .= 'display: inline;';
+		}
 
 		$buttonlabel = htmlspecialchars( $this->buttonlabel );
 		$searchbuttonlabel = htmlspecialchars( $this->searchbuttonlabel );
 		$id = Sanitizer::escapeId( $this->id );
 
+		if ($styles) {
+			$styles = 'style="'.htmlspecialchars($styles).'"';
+		}
+
 		$type = $this->hidden ? 'hidden' : 'text';
 		$searchform=<<<ENDFORM
-<form action="$search" class="bodySearch" id="bodySearch{$id}"><div class="bodySearchWrap"><label for="bodySearchIput{$id}">{$this->labeltext}</label><input type="{$type}" name="search" size="{$this->width}" class="bodySearchIput" id="bodySearchIput{$id}" /><input type="submit" name="go" value="{$buttonlabel}" class="bodySearchBtnGo" />
+<form action="$search" class="bodySearch" {$styles} id="bodySearch{$id}"><div class="bodySearchWrap"  style="{$styles}">{$label}<input type="{$type}" name="search" size="{$this->width}" class="bodySearchIput" id="bodySearchIput{$id}" /><input type="submit" name="go" value="{$buttonlabel}" class="bodySearchBtnGo" />
 ENDFORM;
 
 		if ( !empty( $this->fulltextbtn ) ) // this is wrong...
@@ -273,6 +287,7 @@ ENDFORM;
 			'labeltext' => 'labeltext',
 			'break' => 'br',
 			'hidden' => 'hidden',
+			'inline' => 'inline',
 		);
 		foreach( $options as $name => $var ) {
 			if( isset( $values[$name] ) )
