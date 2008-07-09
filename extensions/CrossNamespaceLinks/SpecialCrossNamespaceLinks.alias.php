@@ -14,6 +14,13 @@ $aliases['en'] = array(
     'CrossNamespaceLinks'            => array('CrossNamespaceLinks')
 );
 
+/** German (Deutsch)
+ * @author Raimond Spekking
+ */
+$aliases['de'] = array(
+    'CrossNamespaceLinks'            => array( 'Seiten mit Links in andere Namensräume' )
+);
+
 /** Norwegian (Norsk (bokmål))
  * @author Jon Harald Søby
  */

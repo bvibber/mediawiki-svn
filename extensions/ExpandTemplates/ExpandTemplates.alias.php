@@ -14,6 +14,12 @@ $aliases['en'] = array(
     'ExpandTemplates'            => array('ExpandTemplates')
 );
 
+/** German
+ * @author Raimond Spekking
+ */
+$aliases['de'] = array(
+	'ExpandTemplates' => array( 'Vorlagen expandieren' ),
+);
 /** Norwegian (Norsk (bokmål))
  * @author Jon Harald Søby
  */

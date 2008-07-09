@@ -14,6 +14,13 @@ $aliases['en'] = array(
     'SiteMatrix'            => array('SiteMatrix', 'WikimediaWikis')
 );
 
+/** German
+ * @author Raimond Spekking
+ */
+$aliases['de'] = array(
+	'SiteMatrix' => array( 'SiteMatrix' ),
+);
+
 /** Norwegian (Norsk (bokmål))
  * @author Jon Harald Søby
  */
