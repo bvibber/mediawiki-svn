@@ -22,5 +22,6 @@ $wgExtensionCredits['specialpage'][] = array(
 
 $dir = dirname(__FILE__) . '/';
 $wgExtensionMessagesFiles['DeleteBatch'] = $dir . 'DeleteBatch.i18n.php';
+$wgExtensionAliasesFiles['DeleteBatch'] = $dir . 'DeleteBatch.alias.php';
 $wgAutoloadClasses['DeleteBatch'] = $dir. 'DeleteBatch.body.php';
 $wgSpecialPages['DeleteBatch'] = 'DeleteBatch';
