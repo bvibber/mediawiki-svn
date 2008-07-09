@@ -229,7 +229,7 @@ $messages['ext'] = array(
 	'duplicator-options' => 'Ocionis',
 );
 
-/** Finnish (Suomi) */
+/** Finnish (Suomi)
  * @author Niklas Laxström
  */
 $messages['fi'] = array(
