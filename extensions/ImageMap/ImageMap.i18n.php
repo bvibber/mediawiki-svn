@@ -321,7 +321,7 @@ $messages['gu'] = array(
 	'imagemap_description' => 'આ ચિત્ર વિષે',
 );
 
-/** Hebrew (עברית) */
+/** Hebrew (עברית)
  * @author Rotem Liss
  */
 $messages['he'] = array(
