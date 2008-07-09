@@ -65,16 +65,17 @@ $3',
  * @author Yekrats
  */
 $messages['eo'] = array(
-	'latexdoc_no_text'    => 'Pagxo enhavas neniom da teksto; ne eblas fari DVI',
-	'latexdoc_cant_write' => 'Ne povas skribi dosieron $1',
-	'latexdoc_error'      => 'LaTeX-eraro
+	'latexdoc_no_text'         => 'Pagxo enhavas neniom da teksto; ne eblas fari DVI',
+	'latexdoc_cant_create_dir' => 'Ne eblas krei provizoran dosierujon $1',
+	'latexdoc_cant_write'      => 'Ne povas skribi dosieron $1',
+	'latexdoc_error'           => 'LaTeX-eraro
 
 Komando: $1
 
 Eligo: $2
 
 $3',
-	'latexdoc_get_pdf'    => 'Akiri PDF-on',
+	'latexdoc_get_pdf'         => 'Akiri PDF-on',
 );
 
 /** French (Français)
@@ -266,7 +267,7 @@ $3',
 	'latexdoc-desc'            => 'Collaboratief bewerken van LaTeX-documenten',
 );
 
-/** Norwegian (‪Norsk (bokmål)‬)
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */
 $messages['no'] = array(

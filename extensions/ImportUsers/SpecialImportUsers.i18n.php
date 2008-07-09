@@ -395,8 +395,8 @@ $messages['jv'] = array(
  * @author Lovekhmer
  */
 $messages['km'] = array(
-	'importusers'                         => 'នាំចូល អ្នកប្រើប្រាស់',
-	'importusers-uploadfile'              => 'ផ្ទុកឡើង ឯកសារ',
+	'importusers'                         => 'នាំចូលអ្នកប្រើប្រាស់',
+	'importusers-uploadfile'              => 'ផ្ទុកឯកសារឡើង',
 	'importusers-form-button'             => 'នាំចូល',
 	'importusers-user-added'              => 'បានបន្ថែមហើយ អ្នកប្រើប្រាស់ <b>%s</b> ។',
 	'importusers-user-present-update'     => 'អ្នកប្រើប្រាស់ <b>%s</b> មានហើយ។ បានបន្ទាន់សម័យ។',
@@ -406,7 +406,7 @@ $messages['km'] = array(
 	'importusers-log-summary-all'         => 'ទាំងអស់',
 	'importusers-log-summary-added'       => 'បានបន្ថែម',
 	'importusers-log-summary-updated'     => 'បានធ្វើឱ្យទាន់សម័យ',
-	'importusers-login-name'              => 'ឈ្មោះ ពិនិត្យចូល',
+	'importusers-login-name'              => 'ឈ្មោះឡុកអ៊ីន',
 	'importusers-password'                => 'ពាក្យសំងាត់',
 	'importusers-email'                   => 'អ៊ីមែល',
 	'importusers-realname'                => 'ឈ្មោះពិត',

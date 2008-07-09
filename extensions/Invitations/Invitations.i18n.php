@@ -47,13 +47,6 @@ $messages['ar'] = array(
 	'invitations-error-baduser'       => 'المستخدم الذي حددته لا يبدو أنه موجود.',
 );
 
-/** بلوچی مکرانی (بلوچی مکرانی)
- * @author Mostafadaneshvar
- */
-$messages['bcc'] = array(
-	'invitations-invitedlist-item' => '<b>$1</b> ($2 موجودین دعوت)',
-);
-
 /** Bulgarian (Български)
  * @author DCLXVI
  */
@@ -88,11 +81,9 @@ $messages['de'] = array(
 	'invite-logpage'                        => 'Einladungs-Logbuch',
 	'invite-logpagetext'                    => 'Dies ist das Logbuch der einladungsbasierten Softwarefunktionen.',
 	'invite-logentry'                       => 'hat $1 eingeladen, um die Softwarefunktionen <i>$2</i> zu nutzen.',
-	'invitations'                           => 'Manage invitations to software features',
 	'invitations-desc'                      => 'Ermöglicht die [[Special:Invitations|Verwaltung von Softwarefunktionen]] auf Basis von Einladungen',
 	'invitations-invitedlist-description'   => 'Du hast Zugang zu den folgenden einladungsbasierten Softwarefunktionen. Um Einladungen für eine bestimmte Softwarefunktion zu verwalten, klicke auf ihren Namen.',
 	'invitations-invitedlist-none'          => 'Du hast bisher keine Einladung zur Nutzung von einladungsbasierten Softwarefunktionen erhalten.',
-	'invitations-invitedlist-item'          => '<b>$1</b> ($2 Einladungen verfügbar)',
 	'invitations-pagetitle'                 => 'Softwarefunktionen auf Einladungs-Basis',
 	'invitations-uninvitedlist-description' => 'Du hast keinen Zugang zu anderen einladungsbasierten Softwarefunktionen.',
 	'invitations-uninvitedlist-none'        => 'Zur Zeit sind keine weiteren Softwarefunktionen einladungsbasiert.',
@@ -149,12 +140,13 @@ $messages['eo'] = array(
 	'invitations-desc'                      => 'Permesas [[Special:Invitations|administradon de novaj programeroj]] tiel limigante atingon al ili per invito-sistemo',
 	'invitations-invitedlist-description'   => 'Vi povas atingi la jenajn programerojn nur atingeblaj per invito. Administri invitojn por unuopa programero, klaku ties nomon.',
 	'invitations-invitedlist-none'          => 'Vi ne estis invitita por uzi programerojn atingeblajn nur per invito.',
+	'invitations-invitedlist-item-count'    => 'Havas vi {{PLURAL:$2|unu inviton|<b>$1</b> invitojn}}.',
 	'invitations-pagetitle'                 => 'Programeroj atingeblaj nur per invito',
 	'invitations-uninvitedlist-description' => 'Vi ne eblas atingi aliajn programerojn haveblajn nur per invito.',
 	'invitations-uninvitedlist-none'        => 'Ĉi tiame, neniuj ajn programeroj estas atingeblaj nur per invito.',
 	'invitations-feature-pagetitle'         => 'Administrado de invitoj - $1',
 	'invitations-feature-access'            => 'Vi nune estas permesita uzi programeron <i>$1</i>.',
-	'invitations-feature-numleft'           => 'Vi ankoraŭ havas <b>$1</b> el via $2 invitojn cetere.',
+	'invitations-feature-numleft'           => 'Vi ankoraŭ havas {{PLURAL:$2|unu ceteran inviton|<b>$1</b> el via $2 ceterajn invitojn}}.',
 	'invitations-feature-noneleft'          => 'Vi jam uzis ĉiujn de viaj disdonitaj invitoj por ĉi tiu programero',
 	'invitations-feature-noneyet'           => 'Vi ne jam ricevis vian disdonon de invitoj por ĉi tiu programero.',
 	'invitations-feature-notallowed'        => 'Vi ne havas atingon por uzi <i>$1</i>.',
@@ -294,9 +286,10 @@ $messages['jv'] = array(
 /** Khmer (ភាសាខ្មែរ)
  * @author គីមស៊្រុន
  * @author Chhorran
+ * @author Lovekhmer
  */
 $messages['km'] = array(
-	'invite-logpage'                  => 'កំណត់ហេតុ នៃ ការអញ្ជើញ',
+	'invite-logpage'                  => 'កំនត់ហេតុនៃការអញ្ជើញ',
 	'invitations-inviteform-title'    => 'អញ្ជើញអ្នកប្រើប្រាស់ម្នាក់អោយប្រើ $1',
 	'invitations-inviteform-username' => 'អ្នកប្រើប្រាស់​ដែលត្រូវអញ្ជើញ',
 	'invitations-inviteform-submit'   => 'អញ្ជើញ',
@@ -306,22 +299,23 @@ $messages['km'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
-	'invite-logpage'                   => 'Lëscht vun den Invitatiounen',
-	'invite-logentry'                  => "huet $1 invitéiert fir d'Functionalitéit <i>$2</i> ze benotzen.",
-	'invitations'                      => 'Gestioun vun den Invitatioune fir Software-Functionalitéiten',
-	'invitations-desc'                 => "Erméiglecht d'[[Special:Invitations|Gestioun vun neie Fonctionnalitéiten]] déi op déi Benotzer limitéiert sinn, déi dofir invitéiert ginn",
-	'invitations-pagetitle'            => 'Fonctionnalitéiten op Invitatiouns-Basis',
-	'invitations-feature-pagetitle'    => 'Gestioun vun der Invitatioun - $1',
-	'invitations-feature-numleft'      => 'Dir hutt nach <b>$1</b> vun ären $2 Invitatiounen iwwreg.',
-	'invitations-feature-noneleft'     => 'Dir hutt all är Invitatiounen fir dës Fonctioun benotzt.',
-	'invitations-feature-noneyet'      => 'Dir hutt är Invitatioune fir dës Fonctioun nach net kritt.',
-	'invitations-feature-notallowed'   => 'Dir hutt keen Zougang fir <i>$1</i> ze benotzen.',
-	'invitations-inviteform-title'     => 'Ee Benotzer alueden fir $1 ze benotzen',
-	'invitations-inviteform-username'  => 'Benotzer fir anzelueden',
-	'invitations-inviteform-submit'    => 'Alueden',
-	'invitations-error-baduser'        => 'De Benotzer deen Dir uginn huet schéngt et net ze ginn.',
-	'invitations-error-alreadyinvited' => 'Dee Benotzer deen Dir uginn huet huet schonn Accès op déi Fonctioun!',
-	'invitations-invite-success'       => 'Dir hutt de(n) $1 invitéiert fir dës Fonctioun ze benotzen!',
+	'invite-logpage'                     => 'Lëscht vun den Invitatiounen',
+	'invite-logentry'                    => "huet $1 invitéiert fir d'Functionalitéit <i>$2</i> ze benotzen.",
+	'invitations'                        => 'Gestioun vun den Invitatioune fir Software-Functionalitéiten',
+	'invitations-desc'                   => "Erméiglecht d'[[Special:Invitations|Gestioun vun neie Fonctionnalitéiten]] déi op déi Benotzer limitéiert sinn, déi dofir invitéiert ginn",
+	'invitations-invitedlist-item-count' => '({{PLURAL:$1|Eng Invitatioun|$1 Invitatioune}} disponibel)',
+	'invitations-pagetitle'              => 'Fonctionnalitéiten op Invitatiouns-Basis',
+	'invitations-feature-pagetitle'      => 'Gestioun vun der Invitatioun - $1',
+	'invitations-feature-numleft'        => 'Dir hutt nach {{PLURAL:$2|eng Invitatioun |<b>$1</b> vun ären $2 Invitatiounen}} iwwreg.',
+	'invitations-feature-noneleft'       => 'Dir hutt all är Invitatiounen fir dës Fonctioun benotzt.',
+	'invitations-feature-noneyet'        => 'Dir hutt är Invitatioune fir dës Fonctioun nach net kritt.',
+	'invitations-feature-notallowed'     => 'Dir hutt keen Zougang fir <i>$1</i> ze benotzen.',
+	'invitations-inviteform-title'       => 'Ee Benotzer alueden fir $1 ze benotzen',
+	'invitations-inviteform-username'    => 'Benotzer fir anzelueden',
+	'invitations-inviteform-submit'      => 'Alueden',
+	'invitations-error-baduser'          => 'De Benotzer deen Dir uginn huet schéngt et net ze ginn.',
+	'invitations-error-alreadyinvited'   => 'Dee Benotzer deen Dir uginn huet huet schonn Accès op déi Fonctioun!',
+	'invitations-invite-success'         => 'Dir hutt de(n) $1 invitéiert fir dës Fonctioun ze benotzen!',
 );
 
 /** Malayalam (മലയാളം)

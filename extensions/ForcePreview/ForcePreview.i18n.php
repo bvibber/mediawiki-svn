@@ -27,7 +27,7 @@ $messages['ar'] = array(
 /** German (Deutsch)
  * @author sokai
  */
-$messages['de'] = array( 
+$messages['de'] = array(
 	'forcepreview'             => 'Seite speichern (zuerst Vorschau anzeigen)',
 	'forcepreview-desc'        => 'Vorschau für unpriviligierte Benutzer erzwingen',
 	'right-forcepreviewexempt' => 'Speichern ohne Erzwingung der Vorschau',
@@ -103,9 +103,12 @@ $messages['jv'] = array(
 
 /** Khmer (ភាសាខ្មែរ)
  * @author Chhorran
+ * @author Lovekhmer
  */
 $messages['km'] = array(
-	'forcepreview' => 'រក្សាទុក ទំព័រ (ជាដំបូង ត្រូវប្រើប្រាស់ មើលមុន)',
+	'forcepreview'             => 'រក្សាទំព័រទុក(សូមប្រើប្រាស់បង្ហាញការមើលជាមុន)',
+	'forcepreview-desc'        => 'បង្ខំការបង្ហាញការមើលជាមុបសំរាប់អ្នកប្រើប្រាស់ដែលគ្មានសិទ្ធិ',
+	'right-forcepreviewexempt' => 'ប្រហែលជារក្សាទុកដោយមិនប្រើការបង្ហាញការមើលជាមុន',
 );
 
 /** Ripoarisch (Ripoarisch)

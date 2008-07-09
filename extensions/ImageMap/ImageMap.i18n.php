@@ -83,8 +83,11 @@ $messages['ast'] = array(
 	'imagemap_description'        => 'Tocante a esta imaxe',
 );
 
+/** Bikol Central (Bikol Central)
+ * @author Filipinayzd
+ */
 $messages['bcl'] = array(
-	'imagemap_description'          => 'Manónongod sa retratong ini',
+	'imagemap_description' => 'Manónongod sa retratong ini',
 );
 
 /** Bulgarian (Български)
@@ -155,20 +158,20 @@ $messages['cs'] = array(
 	'imagemap_description'        => 'O tomto obrázku',
 );
 
-/* Danish (Wegge) */
+/** Danish (Dansk)
+ * @author Wegge
+ */
 $messages['da'] = array(
-	'imagemap_no_image'             => '&lt;imagemap&gt;: Der skal angives et billednavn i første linje',
-	'imagemap_invalid_image'        => '&lt;imagemap&gt;: Billedet er ugyldigt eller findes ikke',
-	'imagemap_no_link'              => '&lt;imagemap&gt;: Fandt ikke en brugbar henvisning i slutningen af linje $1',
-	'imagemap_invalid_title'        => '&lt;imagemap&gt;: Ugyldig titel i henvisning på linje $1',
-	'imagemap_missing_coord'        => '&lt;imagemap&gt;: Utilstrækkeligt antal koordinater til omridset i linje $1',
-	'imagemap_unrecognised_shape'   => '&lt;imagemap&gt;: Ukendt omridstype i linje $1. Alle linjer skal starte med en af:'.
-								   'default, rect, circle or poly',
-	'imagemap_no_areas'             => '&lt;imagemap&gt;: Der skal angives omrids af mindst et område',
-	'imagemap_invalid_coord'        => '&lt;imagemap&gt;: Ugyldig koordinat på linje $1, koordinater skal være tal',
-	'imagemap_invalid_desc'         => '&lt;imagemap&gt;: Ugyldig specifikation af desc, skal være en af: <tt>$1</tt>',
-	'imagemap_description'          => 'Om dette billede',
-	# Note to translators: keep the same order
+	'imagemap_no_image'           => '&lt;imagemap&gt;: Der skal angives et billednavn i første linje',
+	'imagemap_invalid_image'      => '&lt;imagemap&gt;: Billedet er ugyldigt eller findes ikke',
+	'imagemap_no_link'            => '&lt;imagemap&gt;: Fandt ikke en brugbar henvisning i slutningen af linje $1',
+	'imagemap_invalid_title'      => '&lt;imagemap&gt;: Ugyldig titel i henvisning på linje $1',
+	'imagemap_missing_coord'      => '&lt;imagemap&gt;: Utilstrækkeligt antal koordinater til omridset i linje $1',
+	'imagemap_unrecognised_shape' => '&lt;imagemap&gt;: Ukendt omridstype i linje $1. Alle linjer skal starte med en af:default, rect, circle or poly',
+	'imagemap_no_areas'           => '&lt;imagemap&gt;: Der skal angives omrids af mindst et område',
+	'imagemap_invalid_coord'      => '&lt;imagemap&gt;: Ugyldig koordinat på linje $1, koordinater skal være tal',
+	'imagemap_invalid_desc'       => '&lt;imagemap&gt;: Ugyldig specifikation af desc, skal være en af: <tt>$1</tt>',
+	'imagemap_description'        => 'Om dette billede',
 	'imagemap_desc_types'           => 'top-højre, bund-højre, bund-venstre, top-venstre, ingen',
 );
 
@@ -176,24 +179,25 @@ $messages['da'] = array(
  * @author Raimond Spekking
  */
 $messages['de'] = array(
-	'imagemap_desc'                 => "Ermöglicht die Erstellung von verweissensitiven Grafiken ''(image maps)'' mit Hilfe der <tt><nowiki><imagemap></nowiki></tt>-Syntax",
-	'imagemap_no_image'             => '&lt;imagemap&gt;-Fehler: In der ersten Zeile muss ein Bild angegeben werden',
-	'imagemap_invalid_image'        => '&lt;imagemap&gt;-Fehler: Bild ist ungültig oder nicht vorhanden',
-	'imagemap_no_link'              => '&lt;imagemap&gt;-Fehler: Am Ende von Zeile $1 wurde kein gültiger Link gefunden',
-	'imagemap_invalid_title'        => '&lt;imagemap&gt;-Fehler: ungültiger Titel im Link in Zeile $1',
-	'imagemap_missing_coord'        => '&lt;imagemap&gt;-Fehler: Zu wenige Koordinaten in Zeile $1 für den Umriss',
-	'imagemap_unrecognised_shape'   => '&lt;imagemap&gt;-Fehler: Unbekannte Umrissform in Zeile $1. Jede Zeile muss mit einem dieser Parameter beginnen: '.
-								   '<tt>default, rect, circle</tt> oder <tt>poly</tt>',
-	'imagemap_no_areas'             => '&lt;imagemap&gt;-Fehler: Es muss mindestens ein Gebiet definiert werden',
-	'imagemap_invalid_coord'        => '&lt;imagemap&gt;-Fehler: Ungültige Koordinate in Zeile $1: es sind nur Zahlen erlaubt',
-	'imagemap_invalid_desc'         => '&lt;imagemap&gt;-Fehler: Ungültiger „desc“-Parameter, möglich sind: <tt>$1</tt>',
-	'imagemap_description'          => 'Über dieses Bild',
-	# Note to translators: keep the same order
-	'imagemap_desc_types'           => 'oben rechts, unten rechts, unten links, oben links, keine',
+	'imagemap_desc'               => "Ermöglicht die Erstellung von verweissensitiven Grafiken ''(image maps)'' mit Hilfe der <tt><nowiki><imagemap></nowiki></tt>-Syntax",
+	'imagemap_no_image'           => '&lt;imagemap&gt;-Fehler: In der ersten Zeile muss ein Bild angegeben werden',
+	'imagemap_invalid_image'      => '&lt;imagemap&gt;-Fehler: Bild ist ungültig oder nicht vorhanden',
+	'imagemap_no_link'            => '&lt;imagemap&gt;-Fehler: Am Ende von Zeile $1 wurde kein gültiger Link gefunden',
+	'imagemap_invalid_title'      => '&lt;imagemap&gt;-Fehler: ungültiger Titel im Link in Zeile $1',
+	'imagemap_missing_coord'      => '&lt;imagemap&gt;-Fehler: Zu wenige Koordinaten in Zeile $1 für den Umriss',
+	'imagemap_unrecognised_shape' => '&lt;imagemap&gt;-Fehler: Unbekannte Umrissform in Zeile $1. Jede Zeile muss mit einem dieser Parameter beginnen: <tt>default, rect, circle</tt> oder <tt>poly</tt>',
+	'imagemap_no_areas'           => '&lt;imagemap&gt;-Fehler: Es muss mindestens ein Gebiet definiert werden',
+	'imagemap_invalid_coord'      => '&lt;imagemap&gt;-Fehler: Ungültige Koordinate in Zeile $1: es sind nur Zahlen erlaubt',
+	'imagemap_invalid_desc'       => '&lt;imagemap&gt;-Fehler: Ungültiger „desc“-Parameter, möglich sind: <tt>$1</tt>',
+	'imagemap_description'        => 'Über dieses Bild',
+	'imagemap_desc_types'         => 'oben rechts, unten rechts, unten links, oben links, keine',
 );
 
+/** Greek (Ελληνικά)
+ * @author Consta
+ */
 $messages['el'] = array(
-	'imagemap_description'          => 'Σχετικά με αυτήν την εικόνα',
+	'imagemap_description' => 'Σχετικά με αυτήν την εικόνα',
 );
 
 /** Esperanto (Esperanto)
@@ -220,11 +224,14 @@ $messages['eu'] = array(
 	'imagemap_description' => 'Irudi honen inguruan',
 );
 
+/** Extremaduran (Estremeñu)
+ * @author Better
+ */
 $messages['ext'] = array(
-	'imagemap_description'          => 'Al tentu esta imahin',
+	'imagemap_description' => 'Al tentu esta imahin',
 );
 
-/** فارسی (فارسی)
+/** Persian (فارسی)
  * @author Huji
  */
 $messages['fa'] = array(
@@ -239,7 +246,6 @@ $messages['fa'] = array(
 	'imagemap_invalid_coord'      => '<imagemap>: مختصات غیرمجاز در سطر $1، مختصات باید عدد باشد',
 	'imagemap_invalid_desc'       => '<imagemap>: توضیحات غیرمجاز، باید یکی از این موارد باشد: <tt>$1</tt>',
 	'imagemap_description'        => 'دربارهٔ این تصویر',
-
 );
 
 /** Finnish (Suomi)
@@ -296,37 +302,40 @@ $messages['frp'] = array(
  */
 $messages['gl'] = array(
 	'imagemap_desc'               => 'Permite mapas de imaxe nos que se poden facer clic usando a etiqueta <tt><nowiki><imagemap></nowiki></tt>',
-	'imagemap_no_image'           => 'Error: debe especificar unha imaxe na primeira liña',
-	'imagemap_invalid_image'      => 'Error: a imaxe non é válida ou non existe',
-	'imagemap_no_link'            => 'Error: foi atopada unha ligazón non válida ao final da liña $1',
-	'imagemap_invalid_title'      => 'Error: título non válido na ligazón na liña $1',
-	'imagemap_missing_coord'      => 'Error: non abondan as coordenadas para crear un polígono, na liña $1',
-	'imagemap_unrecognised_shape' => 'Error: descoñecida forma na liña $1, cada liña debe comezar con un dos seguintes: por defecto, rectángulo, círculo ou polígono',
-	'imagemap_no_areas'           => 'Error: polo menos debe darse unha zona de especificación',
-	'imagemap_invalid_coord'      => 'Error: coordinada non válida na liña $1, debe ser un número',
-	'imagemap_invalid_desc'       => 'Error: especificación desc non válida, debe ser un de: <tt>$1</tt>',
+	'imagemap_no_image'           => 'Erro: debe especificar unha imaxe na primeira liña',
+	'imagemap_invalid_image'      => 'Erro: a imaxe non é válida ou non existe',
+	'imagemap_no_link'            => 'Erro: foi atopada unha ligazón non válida ao final da liña $1',
+	'imagemap_invalid_title'      => 'Erro: título non válido na ligazón na liña $1',
+	'imagemap_missing_coord'      => 'Erro: non abondan as coordenadas para crear un polígono, na liña $1',
+	'imagemap_unrecognised_shape' => 'Erro: forma descoñecida na liña $1, cada liña debe comezar con un dos seguintes: por defecto, rectángulo, círculo ou polígono',
+	'imagemap_no_areas'           => 'Erro: polo menos debe darse unha zona de especificación',
+	'imagemap_invalid_coord'      => 'Erro: coordenada non válida na liña $1, debe ser un número',
+	'imagemap_invalid_desc'       => 'Erro: especificación da descrición non válida, debe ser unha de: <tt>$1</tt>',
 	'imagemap_description'        => 'Sobre esta imaxe',
 );
 
-/** Gujarati (ગુજરાતી) */
+/** Gujarati (ગુજરાતી)
+ * @author SPQRobin
+ */
 $messages['gu'] = array(
 	'imagemap_description' => 'આ ચિત્ર વિષે',
 );
 
-/* Hebrew (Rotem Liss) */
+/** Hebrew (עברית) */
+ * @author Rotem Liss
+ */
 $messages['he'] = array(
-	'imagemap_desc'                 => 'אפשרות למפות תמונה עם קישורים בצד הלקוח באמצעות התגית <tt><nowiki><imagemap></nowiki></tt> tag',
-	'imagemap_no_image'             => '&lt;imagemap&gt;: יש לציין תמונה בשורה הראשונה',
-	'imagemap_invalid_image'        => '&lt;imagemap&gt;: התמונה שגויה או שאינה קיימת',
-	'imagemap_no_link'              => '&lt;imagemap&gt;: לא נמצא קישור תקף בסוף שורה $1',
-	'imagemap_invalid_title'        => '&lt;imagemap&gt;: כותרת שגויה בקישור בשורה $1',
-	'imagemap_missing_coord'        => '&lt;imagemap&gt;: לא מספיק קוארדינאטות לצורה בשורה $1',
-	'imagemap_unrecognised_shape'   => '&lt;imagemap&gt;: צורה בלתי מזוהה בשורה $1, כל שורה חייבת להתחיל עם אחת האפשרויות הבאות: '.
-								   'default, rect, circle or poly',
-	'imagemap_no_areas'             => '&lt;imagemap&gt;: יש לציין לפחות אזור אחד',
-	'imagemap_invalid_coord'        => '&lt;imagemap&gt;: קוארדינאטה שגויה בשורה $1, היא חייבת להיות מספר',
-	'imagemap_invalid_desc'         => '&lt;imagemap&gt;: הגדרת פרמטר desc שגויה, צריך להיות אחד מהבאים: $1',
-	'imagemap_description'          => 'אודות התמונה',
+	'imagemap_desc'               => 'אפשרות למפות תמונה עם קישורים בצד הלקוח באמצעות התגית <tt><nowiki><imagemap></nowiki></tt> tag',
+	'imagemap_no_image'           => '&lt;imagemap&gt;: יש לציין תמונה בשורה הראשונה',
+	'imagemap_invalid_image'      => '&lt;imagemap&gt;: התמונה שגויה או שאינה קיימת',
+	'imagemap_no_link'            => '&lt;imagemap&gt;: לא נמצא קישור תקף בסוף שורה $1',
+	'imagemap_invalid_title'      => '&lt;imagemap&gt;: כותרת שגויה בקישור בשורה $1',
+	'imagemap_missing_coord'      => '&lt;imagemap&gt;: לא מספיק קוארדינאטות לצורה בשורה $1',
+	'imagemap_unrecognised_shape' => '&lt;imagemap&gt;: צורה בלתי מזוהה בשורה $1, כל שורה חייבת להתחיל עם אחת האפשרויות הבאות: default, rect, circle or poly',
+	'imagemap_no_areas'           => '&lt;imagemap&gt;: יש לציין לפחות אזור אחד',
+	'imagemap_invalid_coord'      => '&lt;imagemap&gt;: קוארדינאטה שגויה בשורה $1, היא חייבת להיות מספר',
+	'imagemap_invalid_desc'       => '&lt;imagemap&gt;: הגדרת פרמטר desc שגויה, צריך להיות אחד מהבאים: $1',
+	'imagemap_description'        => 'אודות התמונה',
 );
 
 /** Hindi (हिन्दी)
@@ -401,18 +410,17 @@ $messages['hu'] = array(
  * @author IvanLanin
  */
 $messages['id'] = array(
-	'imagemap_desc'                 => 'Menyediakan peta gambar yang dapat diklik dari klien dengan menggunakan tag <tt><nowiki><imagemap></nowiki></tt>',
-	'imagemap_no_image'             => '&lt;imagemap&gt;: harus memberikan suatu gambar di baris pertama',
-	'imagemap_invalid_image'        => '&lt;imagemap&gt;: gambar tidak sah atau tidak ditemukan',
-	'imagemap_no_link'              => '&lt;imagemap&gt;: tidak ditemukan pranala yang sah di akhir baris ke $1',
-	'imagemap_invalid_title'        => '&lt;imagemap&gt;: judul tidak sah pada pranala di baris ke $1',
-	'imagemap_missing_coord'        => '&lt;imagemap&gt;: tidak cukup koordinat untuk bentuk pada baris ke $1',
-	'imagemap_unrecognised_shape'   => '&lt;imagemap&gt;: bentuk tak dikenali pada baris ke $1, tiap baris harus dimulai dengan salah satu dari: '.
-								   'default, rect, circle atau poly',
-	'imagemap_no_areas'             => '&lt;imagemap&gt;: harus diberikan paling tidak satu spesifikasi area',
-	'imagemap_invalid_coord'        => '&lt;imagemap&gt;: koordinat tidak sah pada baris ke $1, haruslah berupa angka',
-	'imagemap_invalid_desc'         => '&lt;imagemap&gt;: spesifikasi desc tidak sah, harus salah satu dari: $1',
-	'imagemap_description'          => 'Tentang gambar ini',
+	'imagemap_desc'               => 'Menyediakan peta gambar yang dapat diklik dari klien dengan menggunakan tag <tt><nowiki><imagemap></nowiki></tt>',
+	'imagemap_no_image'           => '&lt;imagemap&gt;: harus memberikan suatu gambar di baris pertama',
+	'imagemap_invalid_image'      => '&lt;imagemap&gt;: gambar tidak sah atau tidak ditemukan',
+	'imagemap_no_link'            => '&lt;imagemap&gt;: tidak ditemukan pranala yang sah di akhir baris ke $1',
+	'imagemap_invalid_title'      => '&lt;imagemap&gt;: judul tidak sah pada pranala di baris ke $1',
+	'imagemap_missing_coord'      => '&lt;imagemap&gt;: tidak cukup koordinat untuk bentuk pada baris ke $1',
+	'imagemap_unrecognised_shape' => '&lt;imagemap&gt;: bentuk tak dikenali pada baris ke $1, tiap baris harus dimulai dengan salah satu dari: default, rect, circle atau poly',
+	'imagemap_no_areas'           => '&lt;imagemap&gt;: harus diberikan paling tidak satu spesifikasi area',
+	'imagemap_invalid_coord'      => '&lt;imagemap&gt;: koordinat tidak sah pada baris ke $1, haruslah berupa angka',
+	'imagemap_invalid_desc'       => '&lt;imagemap&gt;: spesifikasi desc tidak sah, harus salah satu dari: $1',
+	'imagemap_description'        => 'Tentang gambar ini',
 );
 
 /** Ido (Ido)
@@ -482,49 +490,52 @@ $messages['jv'] = array(
 	'imagemap_description'        => 'Prekara gambar iki',
 );
 
-/* Kazakh Arabic (AlefZet) */
+/** Kazakh (Arabic script) (‫قازاقشا (تٴوتە)‬)
+ * @author AlefZet
+ */
 $messages['kk-arab'] = array(
-	'imagemap_no_image'             => '&lt;imagemap&gt;: بٸرٸنشٸ جولدا سۋرەتتٸ كٶرسەتۋ قاجەت',
-	'imagemap_invalid_image'        => '&lt;imagemap&gt;: سۋرەت جارامسىز نەمەسە جوق',
-	'imagemap_no_link'              => '&lt;imagemap&gt;: $1 جول اياعىندا جارامدى سٸلتەمە تابىلمادى',
-	'imagemap_invalid_title'        => '&lt;imagemap&gt;: $1 جول اياعىنداعى سٸلتەمەدە جارامسىز اتاۋ',
-	'imagemap_missing_coord'        => '&lt;imagemap&gt;: $1 جولداعى كەسكٸن ٷشٸن كوورديناتتار جەتٸكسٸز',
-	'imagemap_unrecognised_shape'   => '&lt;imagemap&gt;: $1 جولداعى كەسكٸن جارامسىز, ٵربٸر جول مىنانىڭ بٸرەۋٸنەن باستالۋ قاجەت: ',
-									   'default, rect, circle or poly',
-	'imagemap_no_areas'             => '&lt;imagemap&gt;: ەڭ كەمٸندە بٸر اۋماق ماماندانىمى بەرٸلۋ قاجەت',
-	'imagemap_invalid_coord'        => '&lt;imagemap&gt;: $1 جولىندا جارامسىز كوورديناتا, سان بولۋى قاجەت',
-	'imagemap_invalid_desc'         => '&lt;imagemap&gt;: جارامسىز سيپاتتاما ماماندانىمى, مىنانىڭ بٸرەۋٸ بولۋى قاجەت: $1',
-	'imagemap_description'          => 'بۇل سۋرەت تۋرالى',
+	'imagemap_no_image'           => '&lt;imagemap&gt;: بٸرٸنشٸ جولدا سۋرەتتٸ كٶرسەتۋ قاجەت',
+	'imagemap_invalid_image'      => '&lt;imagemap&gt;: سۋرەت جارامسىز نەمەسە جوق',
+	'imagemap_no_link'            => '&lt;imagemap&gt;: $1 جول اياعىندا جارامدى سٸلتەمە تابىلمادى',
+	'imagemap_invalid_title'      => '&lt;imagemap&gt;: $1 جول اياعىنداعى سٸلتەمەدە جارامسىز اتاۋ',
+	'imagemap_missing_coord'      => '&lt;imagemap&gt;: $1 جولداعى كەسكٸن ٷشٸن كوورديناتتار جەتٸكسٸز',
+	'imagemap_unrecognised_shape' => '&lt;imagemap&gt;: $1 جولداعى كەسكٸن جارامسىز, ٵربٸر جول مىنانىڭ بٸرەۋٸنەن باستالۋ قاجەت: ',
+	'imagemap_no_areas'           => '&lt;imagemap&gt;: ەڭ كەمٸندە بٸر اۋماق ماماندانىمى بەرٸلۋ قاجەت',
+	'imagemap_invalid_coord'      => '&lt;imagemap&gt;: $1 جولىندا جارامسىز كوورديناتا, سان بولۋى قاجەت',
+	'imagemap_invalid_desc'       => '&lt;imagemap&gt;: جارامسىز سيپاتتاما ماماندانىمى, مىنانىڭ بٸرەۋٸ بولۋى قاجەت: $1',
+	'imagemap_description'        => 'بۇل سۋرەت تۋرالى',
 );
 
-/* Kazakh Cyrillic (AlefZet) */
+/** Kazakh (Cyrillic) (Қазақша (Cyrillic))
+ * @author AlefZet
+ */
 $messages['kk-cyrl'] = array(
-	'imagemap_no_image'             => '&lt;imagemap&gt;: бірінші жолда суретті көрсету қажет',
-	'imagemap_invalid_image'        => '&lt;imagemap&gt;: сурет жарамсыз немесе жоқ',
-	'imagemap_no_link'              => '&lt;imagemap&gt;: $1 жол аяғында жарамды сілтеме табылмады',
-	'imagemap_invalid_title'        => '&lt;imagemap&gt;: $1 жол аяғындағы сілтемеде жарамсыз атау',
-	'imagemap_missing_coord'        => '&lt;imagemap&gt;: $1 жолдағы кескін үшін координаттар жетіксіз',
-	'imagemap_unrecognised_shape'   => '&lt;imagemap&gt;: $1 жолдағы кескін жарамсыз, әрбір жол мынаның біреуінен басталу қажет: ',
-									   'default, rect, circle or poly',
-	'imagemap_no_areas'             => '&lt;imagemap&gt;: ең кемінде бір аумақ маманданымы берілу қажет',
-	'imagemap_invalid_coord'        => '&lt;imagemap&gt;: $1 жолында жарамсыз координата, сан болуы қажет',
-	'imagemap_invalid_desc'         => '&lt;imagemap&gt;: жарамсыз сипаттама маманданымы, мынаның біреуі болуы қажет: $1',
-	'imagemap_description'          => 'Бұл сурет туралы',
+	'imagemap_no_image'           => '&lt;imagemap&gt;: бірінші жолда суретті көрсету қажет',
+	'imagemap_invalid_image'      => '&lt;imagemap&gt;: сурет жарамсыз немесе жоқ',
+	'imagemap_no_link'            => '&lt;imagemap&gt;: $1 жол аяғында жарамды сілтеме табылмады',
+	'imagemap_invalid_title'      => '&lt;imagemap&gt;: $1 жол аяғындағы сілтемеде жарамсыз атау',
+	'imagemap_missing_coord'      => '&lt;imagemap&gt;: $1 жолдағы кескін үшін координаттар жетіксіз',
+	'imagemap_unrecognised_shape' => '&lt;imagemap&gt;: $1 жолдағы кескін жарамсыз, әрбір жол мынаның біреуінен басталу қажет: ',
+	'imagemap_no_areas'           => '&lt;imagemap&gt;: ең кемінде бір аумақ маманданымы берілу қажет',
+	'imagemap_invalid_coord'      => '&lt;imagemap&gt;: $1 жолында жарамсыз координата, сан болуы қажет',
+	'imagemap_invalid_desc'       => '&lt;imagemap&gt;: жарамсыз сипаттама маманданымы, мынаның біреуі болуы қажет: $1',
+	'imagemap_description'        => 'Бұл сурет туралы',
 );
 
-/* Kazakh Latin (AlefZet) */
+/** Kazakh (Latin) (Қазақша (Latin))
+ * @author AlefZet
+ */
 $messages['kk-latn'] = array(
-	'imagemap_no_image'             => '&lt;imagemap&gt;: birinşi jolda swretti körsetw qajet',
-	'imagemap_invalid_image'        => '&lt;imagemap&gt;: swret jaramsız nemese joq',
-	'imagemap_no_link'              => '&lt;imagemap&gt;: $1 jol ayağında jaramdı silteme tabılmadı',
-	'imagemap_invalid_title'        => '&lt;imagemap&gt;: $1 jol ayağındağı siltemede jaramsız ataw',
-	'imagemap_missing_coord'        => '&lt;imagemap&gt;: $1 joldağı keskin üşin koordïnattar jetiksiz',
-	'imagemap_unrecognised_shape'   => '&lt;imagemap&gt;: $1 joldağı keskin jaramsız, ärbir jol mınanıñ birewinen bastalw qajet: ',
-									   'default, rect, circle or poly',
-	'imagemap_no_areas'             => '&lt;imagemap&gt;: eñ keminde bir awmaq mamandanımı berilw qajet',
-	'imagemap_invalid_coord'        => '&lt;imagemap&gt;: $1 jolında jaramsız koordïnata, san bolwı qajet',
-	'imagemap_invalid_desc'         => '&lt;imagemap&gt;: jaramsız sïpattama mamandanımı, mınanıñ birewi bolwı qajet: $1',
-	'imagemap_description'          => 'Bul swret twralı',
+	'imagemap_no_image'           => '&lt;imagemap&gt;: birinşi jolda swretti körsetw qajet',
+	'imagemap_invalid_image'      => '&lt;imagemap&gt;: swret jaramsız nemese joq',
+	'imagemap_no_link'            => '&lt;imagemap&gt;: $1 jol ayağında jaramdı silteme tabılmadı',
+	'imagemap_invalid_title'      => '&lt;imagemap&gt;: $1 jol ayağındağı siltemede jaramsız ataw',
+	'imagemap_missing_coord'      => '&lt;imagemap&gt;: $1 joldağı keskin üşin koordïnattar jetiksiz',
+	'imagemap_unrecognised_shape' => '&lt;imagemap&gt;: $1 joldağı keskin jaramsız, ärbir jol mınanıñ birewinen bastalw qajet: ',
+	'imagemap_no_areas'           => '&lt;imagemap&gt;: eñ keminde bir awmaq mamandanımı berilw qajet',
+	'imagemap_invalid_coord'      => '&lt;imagemap&gt;: $1 jolında jaramsız koordïnata, san bolwı qajet',
+	'imagemap_invalid_desc'       => '&lt;imagemap&gt;: jaramsız sïpattama mamandanımı, mınanıñ birewi bolwı qajet: $1',
+	'imagemap_description'        => 'Bul swret twralı',
 );
 
 /** Khmer (ភាសាខ្មែរ)
@@ -535,8 +546,11 @@ $messages['km'] = array(
 	'imagemap_description' => 'អំពីរូបភាពនេះ',
 );
 
+/** Latin (Latina)
+ * @author SPQRobin
+ */
 $messages['la'] = array(
-	'imagemap_description'          => 'De hac imagine',
+	'imagemap_description' => 'De hac imagine',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -740,7 +754,7 @@ $messages['pl'] = array(
 	'imagemap_description'        => 'Informacje o tej grafice',
 );
 
-/** Piemontèis (Piemontèis)
+/** Piedmontese (Piemontèis)
  * @author Bèrto 'd Sèra
  */
 $messages['pms'] = array(
@@ -838,7 +852,7 @@ $messages['sk'] = array(
 	'imagemap_description'        => 'O tomto obrázku',
 );
 
-/** ћирилица (ћирилица)
+/** Serbian Cyrillic ekavian (ћирилица)
  * @author Sasa Stefanovic
  */
 $messages['sr-ec'] = array(
@@ -905,8 +919,11 @@ $messages['te'] = array(
 	'imagemap_description'   => 'ఈ బొమ్మ గురించి',
 );
 
+/** Tetum (Tetun)
+ * @author MF-Warburg
+ */
 $messages['tet'] = array(
-	'imagemap_description'          => 'Kona-ba imajen ne\'e',
+	'imagemap_description' => "Kona-ba imajen ne'e",
 );
 
 /** Tajik (Cyrillic) (Тоҷикӣ/tojikī (Cyrillic))
@@ -997,60 +1014,57 @@ $messages['vo'] = array(
 	'imagemap_description'   => 'Tefü magod at',
 );
 
-/* Cantonese
+/** Yue (粵語)
  * @author Shinjiman
  */
 $messages['yue'] = array(
-	'imagemap_desc'                 => '容許客戶端可以用<tt><nowiki><imagemap></nowiki></tt>標籤整可撳圖像地圖',
-	'imagemap_no_image'             => '&lt;imagemap&gt;: 一定要響第一行指定一幅圖像',
-	'imagemap_invalid_image'        => '&lt;imagemap&gt;: 圖像唔正確或者唔存在',
-	'imagemap_no_link'              => '&lt;imagemap&gt;: 響第$1行結尾度搵唔到一個正式嘅連結',
-	'imagemap_invalid_title'        => '&lt;imagemap&gt;: 響第$1行度嘅標題連結唔正確',
-	'imagemap_missing_coord'        => '&lt;imagemap&gt;: 響第$1行度未有足夠嘅座標組成一個形狀',
-	'imagemap_unrecognised_shape'   => '&lt;imagemap&gt;: 響第$1行度有未能認出嘅形狀，每一行一定要用以下其中一樣開始: '.
-								   'default, rect, circle 或者係 poly',
-	'imagemap_no_areas'             => '&lt;imagemap&gt;: 最少要畀出一個指定嘅空間',
-	'imagemap_invalid_coord'        => '&lt;imagemap&gt;: 響第$1行度有唔正確嘅座標，佢一定係一個數字',
-	'imagemap_invalid_desc'         => '&lt;imagemap&gt;: 唔正確嘅 desc 參數，一定係要以下嘅其中之一: $1',
-	'imagemap_description'          => '關於呢幅圖像',
-	'imagemap_desc_types'           => '右上, 右下, 左下, 左上, 無',
+	'imagemap_desc'               => '容許客戶端可以用<tt><nowiki><imagemap></nowiki></tt>標籤整可撳圖像地圖',
+	'imagemap_no_image'           => '&lt;imagemap&gt;: 一定要響第一行指定一幅圖像',
+	'imagemap_invalid_image'      => '&lt;imagemap&gt;: 圖像唔正確或者唔存在',
+	'imagemap_no_link'            => '&lt;imagemap&gt;: 響第$1行結尾度搵唔到一個正式嘅連結',
+	'imagemap_invalid_title'      => '&lt;imagemap&gt;: 響第$1行度嘅標題連結唔正確',
+	'imagemap_missing_coord'      => '&lt;imagemap&gt;: 響第$1行度未有足夠嘅座標組成一個形狀',
+	'imagemap_unrecognised_shape' => '&lt;imagemap&gt;: 響第$1行度有未能認出嘅形狀，每一行一定要用以下其中一樣開始: default, rect, circle 或者係 poly',
+	'imagemap_no_areas'           => '&lt;imagemap&gt;: 最少要畀出一個指定嘅空間',
+	'imagemap_invalid_coord'      => '&lt;imagemap&gt;: 響第$1行度有唔正確嘅座標，佢一定係一個數字',
+	'imagemap_invalid_desc'       => '&lt;imagemap&gt;: 唔正確嘅 desc 參數，一定係要以下嘅其中之一: $1',
+	'imagemap_description'        => '關於呢幅圖像',
+	'imagemap_desc_types'         => '右上, 右下, 左下, 左上, 無',
 );
 
-/* Chinese (Simplified)
+/** Simplified Chinese (‪中文(简体)‬)
  * @author Shinjiman
  */
 $messages['zh-hans'] = array(
-	'imagemap_desc'                 => '容许客户端可以使用<tt><nowiki><imagemap></nowiki></tt>标签整可点击图像地图',
-	'imagemap_no_image'             => '&lt;imagemap&gt;: 必须要在第一行指定一幅图像',
-	'imagemap_invalid_image'        => '&lt;imagemap&gt;: 图像不正确或者不存在',
-	'imagemap_no_link'              => '&lt;imagemap&gt;: 在第$1行结尾中找不到一个正式的链接',
-	'imagemap_invalid_title'        => '&lt;imagemap&gt;: 在第$1行中的标题链接不正确',
-	'imagemap_missing_coord'        => '&lt;imagemap&gt;: 在第$1行中未有足够的座标组成一个形状',
-	'imagemap_unrecognised_shape'   => '&lt;imagemap&gt;: 在第$1行中有未能认出的形状，每一行必须使用以下其中一组字开始: '.
-								   'default, rect, circle 或者是 poly',
-	'imagemap_no_areas'             => '&lt;imagemap&gt;: 最少要给出一个指定的空间',
-	'imagemap_invalid_coord'        => '&lt;imagemap&gt;: 在第$1行中有不正确的座标，它必须是一个数字',
-	'imagemap_invalid_desc'         => '&lt;imagemap&gt;: 不正确的 desc 参数，必须是以下的其中之一: $1',
-	'imagemap_description'          => '关于这幅图像',
-	'imagemap_desc_types'           => '右上, 右下, 左下, 左上, 无',
+	'imagemap_desc'               => '容许客户端可以使用<tt><nowiki><imagemap></nowiki></tt>标签整可点击图像地图',
+	'imagemap_no_image'           => '&lt;imagemap&gt;: 必须要在第一行指定一幅图像',
+	'imagemap_invalid_image'      => '&lt;imagemap&gt;: 图像不正确或者不存在',
+	'imagemap_no_link'            => '&lt;imagemap&gt;: 在第$1行结尾中找不到一个正式的链接',
+	'imagemap_invalid_title'      => '&lt;imagemap&gt;: 在第$1行中的标题链接不正确',
+	'imagemap_missing_coord'      => '&lt;imagemap&gt;: 在第$1行中未有足够的座标组成一个形状',
+	'imagemap_unrecognised_shape' => '&lt;imagemap&gt;: 在第$1行中有未能认出的形状，每一行必须使用以下其中一组字开始: default, rect, circle 或者是 poly',
+	'imagemap_no_areas'           => '&lt;imagemap&gt;: 最少要给出一个指定的空间',
+	'imagemap_invalid_coord'      => '&lt;imagemap&gt;: 在第$1行中有不正确的座标，它必须是一个数字',
+	'imagemap_invalid_desc'       => '&lt;imagemap&gt;: 不正确的 desc 参数，必须是以下的其中之一: $1',
+	'imagemap_description'        => '关于这幅图像',
+	'imagemap_desc_types'         => '右上, 右下, 左下, 左上, 无',
 );
 
-/* Chinese (Traditional)
+/** Traditional Chinese (‪中文(繁體)‬)
  * @author Shinjiman
  */
 $messages['zh-hant'] = array(
-	'imagemap_desc'                 => '容許客戶端可以使用<tt><nowiki><imagemap></nowiki></tt>標籤整可點擊圖像地圖',
-	'imagemap_no_image'             => '&lt;imagemap&gt;: 必須要在第一行指定一幅圖像',
-	'imagemap_invalid_image'        => '&lt;imagemap&gt;: 圖像不正確或者不存在',
-	'imagemap_no_link'              => '&lt;imagemap&gt;: 在第$1行結尾中找不到一個正式的連結',
-	'imagemap_invalid_title'        => '&lt;imagemap&gt;: 在第$1行中的標題連結不正確',
-	'imagemap_missing_coord'        => '&lt;imagemap&gt;: 在第$1行中未有足夠的座標組成一個形狀',
-	'imagemap_unrecognised_shape'   => '&lt;imagemap&gt;: 在第$1行中有未能認出的形狀，每一行必須使用以下其中一組字開始: '.
-								   'default, rect, circle 或者是 poly',
-	'imagemap_no_areas'             => '&lt;imagemap&gt;: 最少要給出一個指定的空間',
-	'imagemap_invalid_coord'        => '&lt;imagemap&gt;: 在第$1行中有不正確的座標，它必須是一個數字',
-	'imagemap_invalid_desc'         => '&lt;imagemap&gt;: 不正確的 desc 參數，必須是以下的其中之一: $1',
-	'imagemap_description'          => '關於這幅圖像',
-	'imagemap_desc_types'           => '右上, 右下, 左下, 左上, 無',
+	'imagemap_desc'               => '容許客戶端可以使用<tt><nowiki><imagemap></nowiki></tt>標籤整可點擊圖像地圖',
+	'imagemap_no_image'           => '&lt;imagemap&gt;: 必須要在第一行指定一幅圖像',
+	'imagemap_invalid_image'      => '&lt;imagemap&gt;: 圖像不正確或者不存在',
+	'imagemap_no_link'            => '&lt;imagemap&gt;: 在第$1行結尾中找不到一個正式的連結',
+	'imagemap_invalid_title'      => '&lt;imagemap&gt;: 在第$1行中的標題連結不正確',
+	'imagemap_missing_coord'      => '&lt;imagemap&gt;: 在第$1行中未有足夠的座標組成一個形狀',
+	'imagemap_unrecognised_shape' => '&lt;imagemap&gt;: 在第$1行中有未能認出的形狀，每一行必須使用以下其中一組字開始: default, rect, circle 或者是 poly',
+	'imagemap_no_areas'           => '&lt;imagemap&gt;: 最少要給出一個指定的空間',
+	'imagemap_invalid_coord'      => '&lt;imagemap&gt;: 在第$1行中有不正確的座標，它必須是一個數字',
+	'imagemap_invalid_desc'       => '&lt;imagemap&gt;: 不正確的 desc 參數，必須是以下的其中之一: $1',
+	'imagemap_description'        => '關於這幅圖像',
+	'imagemap_desc_types'         => '右上, 右下, 左下, 左上, 無',
 );
 

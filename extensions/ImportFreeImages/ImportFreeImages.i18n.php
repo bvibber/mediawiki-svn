@@ -98,17 +98,17 @@ $messages['de'] = array(
 	'importfreeimages_next'                  => 'Nächste $1',
 	'importfreeimages_filefromflickr'        => '$1 von Benutzer <b>[$2]</b> von flickr. Original URL',
 	'importfreeimages_promptuserforfilename' => 'Bitte gebe einen Ziel-Dateinamen ein:',
-	'importfreeimages_returntoform'          => 'Oder klicke <a href=\'$1\'>hier</a>, um zu der Seite mit den Suchergebnissen zurückzukommen.',
+	'importfreeimages_returntoform'          => "Oder klicke <a href='$1'>hier</a>, um zu der Seite mit den Suchergebnissen zurückzukommen.",
 );
 
-/** German - formal address (Deutsch - förmliche Anrede)
+/** German (formal address) (Deutsch (Sie-Form))
  * @author Raimond Spekking
  */
 $messages['de-formal'] = array(
 	'importfreeimages_description'           => 'Diese Seite erlaubt Ihnen, in Flickr nach Bildern unter einer freien Lizenz zu suchen und diese in Ihr Wiki zu importieren.',
 	'importfreeimages_noapikey'              => 'Sie haben noch keinen Flickr-API-Schlüssel konfiguriert. Bitte beantragen Sie ihn [http://www.flickr.com/services/api/misc.api_keys.html hier] und setzen Sie ihn in $wgFlickrAPIKey in ImportFreeImages.php ein.',
 	'importfreeimages_promptuserforfilename' => 'Bitte geben Sie einen Ziel-Dateinamen ein:',
-	'importfreeimages_returntoform'          => 'Oder klicken Sie <a href=\'$1\'>hier</a>, um zu der Seite mit den Suchergebnissen zurückzukommen.',
+	'importfreeimages_returntoform'          => "Oder klicken Sie <a href='$1'>hier</a>, um zu der Seite mit den Suchergebnissen zurückzukommen.",
 );
 
 /** Esperanto (Esperanto)
@@ -134,18 +134,18 @@ $messages['eo'] = array(
  * @author Jack Phoenix
  */
 $messages['fi'] = array(
-	'importfreeimages'                => 'Tuo vapaita kuvia',
-	'importfreeimages_description'    => 'Tämän sivun kautta pystyt etsimään asianomaisesti lisensoituja kuvia flickr:sta ja tuomaan niitä wikiisi.',
-	'importfreeimages_noapikey'       => 'Et ole asettanut Flickr API-avaintasi.
+	'importfreeimages'                       => 'Tuo vapaita kuvia',
+	'importfreeimages_description'           => 'Tämän sivun kautta pystyt etsimään asianomaisesti lisensoituja kuvia flickr:sta ja tuomaan niitä wikiisi.',
+	'importfreeimages_noapikey'              => 'Et ole asettanut Flickr API-avaintasi.
 Tehdäksesi niin, hanki API-avain [http://www.flickr.com/services/api/misc.api_keys.html täältä] ja aseta wgFlickrAPIKey ImportFreeImages.php-tiedostossa.',
-	'importfreeimages_nophotosfound'  => 'Mitkään valokuvat eivät täsmänneet hakukriteeriisi \'$1\', ole hyvä ja koita uudestaan.',
-	'importfreeimages_invalidurl'     => 'URL "$1" ei ole kelvollinen Flickr-kuva.',
-	'importfreeimages_owner'          => 'Tekijä',
-	'importfreeimages_importthis'     => 'tuo tämä',
-	'importfreeimages_next'           => 'Seuraavat $1',
-	'importfreeimages_filefromflickr' => '$1 käyttäjän <b>[$2]</b> toimesta flickr:sta. Alkuperäinen URL',
+	'importfreeimages_nophotosfound'         => "Mitkään valokuvat eivät täsmänneet hakukriteeriisi '$1', ole hyvä ja koita uudestaan.",
+	'importfreeimages_invalidurl'            => 'URL "$1" ei ole kelvollinen Flickr-kuva.',
+	'importfreeimages_owner'                 => 'Tekijä',
+	'importfreeimages_importthis'            => 'tuo tämä',
+	'importfreeimages_next'                  => 'Seuraavat $1',
+	'importfreeimages_filefromflickr'        => '$1 käyttäjän <b>[$2]</b> toimesta flickr:sta. Alkuperäinen URL',
 	'importfreeimages_promptuserforfilename' => 'Ole hyvä ja anna kohdenimi:',
-	'importfreeimages_returntoform'   => 'Tai napsauta <a href=\'$1\'>tästä</a> palataksesi hakusi tuloksiin',
+	'importfreeimages_returntoform'          => "Tai napsauta <a href='$1'>tästä</a> palataksesi hakusi tuloksiin",
 );
 
 /** French (Français)

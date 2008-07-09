@@ -105,6 +105,9 @@ $messages['hr'] = array(
 	'icon-badwidth' => 'Loša širina',
 );
 
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
 $messages['hsb'] = array(
 	'icon-badimage' => 'Špatny wobraz',
 	'icon-badwidth' => 'Špatna šěrokosć',
@@ -128,11 +131,15 @@ $messages['jv'] = array(
 
 /** Khmer (ភាសាខ្មែរ)
  * @author Chhorran
+ * @author Lovekhmer
  */
 $messages['km'] = array(
-	'icon-badimage' => 'រូបភាព អន់',
+	'icon-badimage' => 'រូបភាពមិនល្អ',
 );
 
+/** Latin (Latina)
+ * @author UV
+ */
 $messages['la'] = array(
 	'icon-badimage' => 'Imago mala',
 	'icon-badwidth' => 'Latitudo mala',
@@ -308,6 +315,7 @@ $messages['vi'] = array(
 	'icon-desc'     => 'Cho phép bạn sử dụng hình ảnh làm biểu tượng và liên kết biểu tượng',
 );
 
+/** Traditional Chinese (‪中文(繁體)‬) */
 $messages['zh-hant'] = array(
 	'icon-badimage' => '圖像錯誤',
 	'icon-badwidth' => '寬度錯誤',

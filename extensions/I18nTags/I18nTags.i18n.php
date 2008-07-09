@@ -35,11 +35,12 @@ $messages['cs'] = array(
 
 /** German (Deutsch)
  * @author Raimond Spekking
-*/
+ */
 $messages['de'] = array(
 	'i18ntags-desc' => 'Zugriff auf die i18n-Funktionen zur Zahlenformatierung, Plural- und Grammatikbildung in jeder verfügbaren Sprache',
 );
 
+/** French (Français) */
 $messages['fr'] = array(
 	'i18ntags-desc' => 'Permet l’accès des fonctions i18n pour le format des nombres, la grammaire et le pluriel dans chaque langue disponible.',
 );
@@ -93,7 +94,7 @@ $messages['nl'] = array(
 	'i18ntags-desc' => 'Geeft toegang tot de i18n-functies voor nummeropmaak, grammatica en meervoud in alle beschikbare talen',
 );
 
-/** Norwegian (‪Norsk (bokmål)‬)
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */
 $messages['no'] = array(
@@ -157,21 +158,21 @@ $messages['vi'] = array(
 	'i18ntags-desc' => 'Truy cập các hàm quốc tế hóa về định dạng số, ngữ pháp, và biến cách trong các ngôn ngữ có sẵn',
 );
 
-/** Cantonese
+/** Yue (粵語)
  * @author Shinjiman
  */
 $messages['yue'] = array(
 	'i18ntags-desc' => '提供存取任何語言嘅數字格式、文法同複數型等i18n有關資料',
 );
 
-/** Chinese Simplified
+/** Simplified Chinese (‪中文(简体)‬)
  * @author Alex S.H. Lin
  */
 $messages['zh-hans'] = array(
 	'i18ntags-desc' => '提供存取任何语言的数字格式、文法和复数型等i18n相关信息',
 );
 
-/** Chinese Traditional
+/** Traditional Chinese (‪中文(繁體)‬)
  * @author Alex S.H. Lin
  */
 $messages['zh-hant'] = array(

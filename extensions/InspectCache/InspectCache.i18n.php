@@ -97,6 +97,7 @@ $messages['da'] = array(
 	'inspectcache-delete' => 'Slet',
 );
 
+/** German (Deutsch) */
 $messages['de'] = array(
 	'inspectcache'         => 'Cache ansehen',
 	'inspectcache-ok'      => 'OK',
@@ -366,7 +367,7 @@ $messages['nn'] = array(
 	'inspectcache-delete' => 'Slett',
 );
 
-/** Norwegian (‪Norsk (bokmål)‬)
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */
 $messages['no'] = array(
@@ -529,7 +530,7 @@ $messages['sv'] = array(
 	'inspectcache-list'    => 'Lista',
 );
 
-/** Silesian (ślůnski)
+/** Silesian (Ślůnski)
  * @author Herr Kriss
  */
 $messages['szl'] = array(

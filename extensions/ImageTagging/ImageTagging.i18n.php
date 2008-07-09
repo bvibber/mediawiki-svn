@@ -187,7 +187,7 @@ $messages['fi'] = array(
 	'taggedimages'                          => 'Merkityt kuvat',
 	'imagetagging-addimagetag'              => 'Merkitse tämä kuva',
 	'imagetagging-article'                  => 'Sivu:',
-	'imagetagging-canteditothermessage'		=> 'Et voi muokata tätä sivua, joko koska sinulla ei ole oikeuksia tai koska sivu on lukittu muista syistä.',
+	'imagetagging-canteditothermessage'     => 'Et voi muokata tätä sivua, joko koska sinulla ei ole oikeuksia tai koska sivu on lukittu muista syistä.',
 	'imagetagging-imghistory'               => 'Historia',
 	'imagetagging-images'                   => 'kuvat',
 	'imagetagging-inthisimage'              => 'Tässä kuvassa: $1',
@@ -212,8 +212,8 @@ Ole hyvä ja odota olemassaolevan tapahtuman päättymistä.',
 	'imagetagging-imagetag-seemoreimages'   => 'Katso lisää kuvia aiheesta "$1" ($2)',
 	'imagetagging-taggedimages-title'       => 'Kuvia aiheesta "$1"',
 	'imagetagging-taggedimages-displaying'  => 'Näytetään $1 - $2 kuvaa aiheesta "$4"; yhteensä $3 kuvaa',
-	'tag-logpagename'						=> 'Merkintäloki',
-	'tag-logpagetext'						=> 'Tämä on loki kaikista kuvien merkinnöistä ja merkintöjen poistoista.',
+	'tag-logpagename'                       => 'Merkintäloki',
+	'tag-logpagetext'                       => 'Tämä on loki kaikista kuvien merkinnöistä ja merkintöjen poistoista.',
 );
 
 /** French (Français)

@@ -38,6 +38,7 @@ $messages['bg'] = array(
 $2',
 );
 
+/** German (Deutsch) */
 $messages['de'] = array(
 	'email_footer' => '----------------------------------------------------------------------------
 Diese E-Mail wurde dir von $1 über das {{SITENAME}}-E-Mail-System zugesandt.
@@ -56,14 +57,16 @@ $messages['eo'] = array(
 $2',
 );
 
-$messages['fa'] = array (
+/** Persian (فارسی) */
+$messages['fa'] = array(
 	'email_footer' => '----------------------------------------------------------------------------
 این نامه از طریق سامانه پست الکترونیکی {{SITENAME}} توسط $1 برای شما ارسال شده‌است.
 
 $2',
 );
 
-$messages['fr'] = array (
+/** French (Français) */
+$messages['fr'] = array(
 	'email-desc'   => 'Permet l’ajout d’en-têtes ou de pieds de page personnalisés dans les courriels expédiés aux utilisateurs disposant d’une adresse électronique.',
 	'email_footer' => '----------------------------------------------------------------------------
 Ce courrier a vous a été envoyé grâce au systeme de messagerie de {{SITENAME}} par $1.

@@ -83,7 +83,7 @@ $messages['da'] = array(
 
 /** German (Deutsch)
  * @author Raimond Spekking
-*/
+ */
 $messages['de'] = array(
 	'languageselector'         => 'Sprache',
 	'languageselector-desc'    => 'Sprachenauswahl auf jeder Seiten, auch für Besucher',
@@ -140,7 +140,7 @@ $messages['fi'] = array(
 
 /** French (Français)
  * @author Bertrand GRONDIN
-*/
+ */
 $messages['fr'] = array(
 	'languageselector'         => 'Langue',
 	'languageselector-desc'    => 'Sélecteur de langue sur chaque page, même pour les visiteurs.',
@@ -233,21 +233,23 @@ $messages['jv'] = array(
 	'languageselector-setlang' => 'sèt',
 );
 
-/** Kazakh
+/** Kazakh (Arabic script) (‫قازاقشا (تٴوتە)‬)
  * @author AlefZet
-*/
+ */
 $messages['kk-arab'] = array(
-	'languageselector' => 'تٸل',
+	'languageselector'         => 'تٸل',
 	'languageselector-setlang' => 'انىقتاۋ',
 );
 
+/** Kazakh (Cyrillic) (Қазақша (Cyrillic)) */
 $messages['kk-cyrl'] = array(
-	'languageselector' => 'Тіл',
+	'languageselector'         => 'Тіл',
 	'languageselector-setlang' => 'анықтау',
 );
 
+/** Kazakh (Latin) (Қазақша (Latin)) */
 $messages['kk-latn'] = array(
-	'languageselector' => 'Til',
+	'languageselector'         => 'Til',
 	'languageselector-setlang' => 'anıqtaw',
 );
 
@@ -553,27 +555,27 @@ $messages['vo'] = array(
 	'languageselector' => 'Pük',
 );
 
-/** Cantonese (粵語)
+/** Yue (粵語)
  * @author Shinjiman
-*/
+ */
 $messages['yue'] = array(
-	'languageselector' => '語言',
+	'languageselector'         => '語言',
 	'languageselector-setlang' => '設',
 );
 
-/** Chinese (Simplified) (中文(简化字))
+/** Simplified Chinese (‪中文(简体)‬)
  * @author Shinjiman
-*/
+ */
 $messages['zh-hans'] = array(
-	'languageselector' => '语言',
+	'languageselector'         => '语言',
 	'languageselector-setlang' => '設置',
 );
 
-/** Chinese (Traditional) (中文(傳統字))
+/** Traditional Chinese (‪中文(繁體)‬)
  * @author Shinjiman
-*/
+ */
 $messages['zh-hant'] = array(
-	'languageselector' => '語言',
+	'languageselector'         => '語言',
 	'languageselector-setlang' => '設定',
 );
 

@@ -110,7 +110,7 @@ $messages['eo'] = array(
 	'intersection_noincludecats' => 'Error: Vi devas inkluzivi almenaŭ unu kategorion, aŭ specifigu nomspacon!',
 );
 
-/** فارسی (فارسی)
+/** Persian (فارسی)
  * @author Huji
  */
 $messages['fa'] = array(
@@ -119,7 +119,6 @@ $messages['fa'] = array(
 	'intersection_toofewcats'    => 'DynamicPageList: تعداد رده‌ها کم است!',
 	'intersection_noresults'     => 'DynamicPageList: نتیجه‌ای وجود ندارد!',
 	'intersection_noincludecats' => 'DynamicPageList: شما حداقل باید یک رده را وارد کنید، یا یک فضای نام را مشخص کنید!',
-
 );
 
 /** Finnish (Suomi)
@@ -162,10 +161,10 @@ $messages['frp'] = array(
  */
 $messages['gl'] = array(
 	'intersection-desc'          => 'Devolve unha lista punteada dos ítems máis recentes que están nunha categoría ou nunha unión de varias categorías',
-	'intersection_toomanycats'   => 'Error: Demasiadas categorías!',
-	'intersection_toofewcats'    => 'Error: Demasiado poucas categorías!',
-	'intersection_noresults'     => 'Error: Ningún resultado!',
-	'intersection_noincludecats' => 'Error: Ten que incluír unha categoría polo menos ou especificar un espazo de nomes!',
+	'intersection_toomanycats'   => 'Erro: demasiadas categorías!',
+	'intersection_toofewcats'    => 'Erro: moi poucas categorías!',
+	'intersection_noresults'     => 'Erro: ningún resultado!',
+	'intersection_noincludecats' => 'Erro: ten que incluír unha categoría polo menos ou especificar un espazo de nomes!',
 );
 
 /** Hebrew (עברית)
@@ -374,7 +373,7 @@ $messages['nl'] = array(
 	'intersection_noincludecats' => 'Error: U moet tenminste een categorie of een naamruimte opgeven!',
 );
 
-/** Norwegian (‪Norsk (bokmål)‬)
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */
 $messages['no'] = array(
@@ -468,10 +467,10 @@ $messages['stq'] = array(
  */
 $messages['sv'] = array(
 	'intersection-desc'          => 'Skapar punktlistor över de nyaste sidorna i en eller flera kategorier',
-	'intersection_toomanycats'   => 'Error: För många kategorier!',
-	'intersection_toofewcats'    => 'Error: För få kategorier!',
-	'intersection_noresults'     => 'Error: Inga resultat!',
-	'intersection_noincludecats' => 'Error: Du måste inkludera minst en kategori eller ange en namnrymd!',
+	'intersection_toomanycats'   => 'Fel: För många kategorier!',
+	'intersection_toofewcats'    => 'Fel: För få kategorier!',
+	'intersection_noresults'     => 'Fel: Inga resultat!',
+	'intersection_noincludecats' => 'Fel: Du måste inkludera minst en kategori eller ange en namnrymd!',
 );
 
 /** Telugu (తెలుగు)
@@ -538,7 +537,7 @@ $messages['vo'] = array(
 	'intersection_noincludecats' => 'Error: Nedol välön kladi pu bali, u nemaspadi!',
 );
 
-/** Cantonese
+/** Yue (粵語)
  * @author Shinjiman
  */
 $messages['yue'] = array(
@@ -549,7 +548,7 @@ $messages['yue'] = array(
 	'intersection_noincludecats' => 'DynamicPageList: 你需要去包含最少一個分類，或者指定一個空間名!',
 );
 
-/** Chinese (Simplified)
+/** Simplified Chinese (‪中文(简体)‬)
  * @author Shinjiman
  */
 $messages['zh-hans'] = array(
@@ -560,7 +559,7 @@ $messages['zh-hans'] = array(
 	'intersection_noincludecats' => 'DynamicPageList: 您需要去包含最少一个分类，或者指定一个空间名!',
 );
 
-/** Chinese (Traditional)
+/** Traditional Chinese (‪中文(繁體)‬)
  * @author Shinjiman
  */
 $messages['zh-hant'] = array(
