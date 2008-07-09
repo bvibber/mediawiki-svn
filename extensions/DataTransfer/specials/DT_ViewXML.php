@@ -7,10 +7,23 @@
 
 if (!defined('MEDIAWIKI')) die();
 
-global $IP;
-require_once( "$IP/includes/SpecialPage.php" );
+class DTViewXML extends SpecialPage {
 
-SpecialPage::addPage( new SpecialPage('ViewXML','',true,'doSpecialViewXML',false) );
+	/**
+	 * Constructor
+	 */
+	public function DTViewXML() {
+		global $wgLanguageCode;
+		SpecialPage::SpecialPage('ViewXML');
+		dtfInitContentLanguage($wgLanguageCode);
+		wfLoadExtensionMessages('DataTransfer');
+	}
+
+	function execute($query = '') {
+		$this->setHeaders();
+		doSpecialViewXML($query);
+	}
+}
 
 function getCategoriesList() {
 	global $wgContLang, $dtgContLang;
@@ -69,6 +82,10 @@ function getGroupings() {
       $grouping_prop = Title::makeTitle(SMW_NS_PROPERTY, $xml_grouping_prop);
       $grouped_props = $store->getAllPropertySubjects($grouping_prop);
       foreach ($grouped_props as $grouped_prop) {
+        // the type of $grouped_prop depends on the version of SMW
+        if ($grouped_prop instanceof SMWWikiPageValue) {
+          $grouped_prop = $grouped_prop->getTitle();
+        }
         $res = $store->getPropertyValues($grouped_prop, $grouping_prop);
         $num = count($res);
         if ($num > 0) {
@@ -82,12 +99,12 @@ function getGroupings() {
 }
 
 function getSubpagesForPageGrouping($page_name, $relation_name) {
-        $dbr = wfGetDB( DB_SLAVE );
-        $smw_relations = $dbr->tableName( 'smw_relations' );
-        $smw_attributes = $dbr->tableName( 'smw_attributes' );
-        $res = $dbr->query("SELECT subject_title FROM $smw_relations WHERE object_title = '$page_name' AND relation_title = '$relation_name'");
-        $subpages = array();
-        while ($row = $dbr->fetchRow($res)) {
+	$dbr = wfGetDB( DB_SLAVE );
+	$smw_relations = $dbr->tableName( 'smw_relations' );
+	$smw_attributes = $dbr->tableName( 'smw_attributes' );
+	$res = $dbr->query("SELECT subject_title FROM $smw_relations WHERE object_title = '$page_name' AND relation_title = '$relation_name'");
+	$subpages = array();
+	while ($row = $dbr->fetchRow($res)) {
 		$subpage_name = $row[0];
 		$query_subpage_name = str_replace("'", "\'", $subpage_name);
 		// get the display order
@@ -97,13 +114,13 @@ function getSubpagesForPageGrouping($page_name, $relation_name) {
 		} else {
 			$display_order = -1;
 		}
-        	$dbr->freeResult($res2);
+		$dbr->freeResult($res2);
 		// HACK - page name is the key, display order is the value
-                $subpages[$subpage_name] = $display_order;
-        }
-        $dbr->freeResult($res);
-        uasort($subpages, "cmp");
-        return array_keys($subpages);
+		$subpages[$subpage_name] = $display_order;
+	}
+	$dbr->freeResult($res);
+	uasort($subpages, "cmp");
+	return array_keys($subpages);
 }
 
 
@@ -129,8 +146,8 @@ function getSubpagesForPageGrouping($page_name, $relation_name) {
           array('cl_from = page_id',
           'cl_to = '. $db->addQuotes($category)),
           $fname);
-          if ($res) {
-            while ($res && $row = $db->fetchRow($res)) {
+        if ($res) {
+          while ($res && $row = $db->fetchRow($res)) {
             if (array_key_exists('page_title', $row)) {
               $page_namespace = $row['page_namespace'];
               if ($page_namespace == NS_CATEGORY) {
@@ -262,11 +279,11 @@ function getXMLForPage($title, $simplified_format, $groupings, $depth=0) {
           $free_text .= $c;
         $uncompleted_curly_brackets++;
         $free_text = trim($free_text);
-	$free_text = str_replace('&', '&amp;', $free_text);
-	$free_text = str_replace('[', '&#91;', $free_text);
-	$free_text = str_replace(']', '&#93;', $free_text);
-	$free_text = str_replace('<', '&lt;', $free_text);
-	$free_text = str_replace('>', '&gt;', $free_text);
+        $free_text = str_replace('&', '&amp;', $free_text);
+        $free_text = str_replace('[', '&#91;', $free_text);
+        $free_text = str_replace(']', '&#93;', $free_text);
+        $free_text = str_replace('<', '&lt;', $free_text);
+        $free_text = str_replace('>', '&gt;', $free_text);
         if ($free_text != "") {
           $text .= "<$free_text_str id=\"$free_text_id\">$free_text</$free_text_str>";
           $free_text = "";
@@ -285,7 +302,7 @@ function getXMLForPage($title, $simplified_format, $groupings, $depth=0) {
         $uncompleted_curly_brackets--;
         // is this needed?
         //if ($field_name != "") {
-        //	$field_name = "";
+        //  $field_name = "";
         //}
         if ($page_contents[$i - 1] == '}') {
           if ($simplified_format)
@@ -382,7 +399,11 @@ function getXMLForPage($title, $simplified_format, $groupings, $depth=0) {
       $num = count($res);
       if ($num > 0) {
         $text .= "<$grouping_label>\n";
-        foreach ($res as $title) {
+        foreach ($res as $subject) {
+          // the type of $subject depends on the version of SMW
+          if ($subject instanceof SMWWikiPageValue) {
+            $subject = $subject->getTitle();
+          }
           $text .= getXMLForPage($title, $simplified_format, $groupings, $depth + 1);
         }
         $text .= "</$grouping_label>\n";
@@ -417,52 +438,51 @@ function doSpecialViewXML() {
 	if ($form_submitted) {
 		$wgOut->disable();
 
-                // Cancel output buffering and gzipping if set
-                // This should provide safer streaming for pages with history
-                wfResetOutputBuffers();
-                header( "Content-type: application/xml; charset=utf-8" );
+		// Cancel output buffering and gzipping if set
+		// This should provide safer streaming for pages with history
+		wfResetOutputBuffers();
+		header( "Content-type: application/xml; charset=utf-8" );
 
 		$groupings = getGroupings();
 		$simplified_format = $wgRequest->getVal('simplified_format');
 		$text = "<Pages>";
 		if ($cats) {
-		    foreach ($cats as $cat => $val) {
-			if ($simplified_format)
-				$text .= '<' . str_replace(' ', '_', $cat) . ">\n";
-			else
-				$text .= "<$category_label $name_str=\"$cat\">\n";
-			$titles = getPagesForCategory($cat, 10);
-			foreach ($titles as $title) {
-				$text .= getXMLForPage($title, $simplified_format, $groupings);
+			foreach ($cats as $cat => $val) {
+				if ($simplified_format)
+					$text .= '<' . str_replace(' ', '_', $cat) . ">\n";
+				else
+					$text .= "<$category_label $name_str=\"$cat\">\n";
+				$titles = getPagesForCategory($cat, 10);
+				foreach ($titles as $title) {
+					$text .= getXMLForPage($title, $simplified_format, $groupings);
+				}
+				if ($simplified_format)
+					$text .= '</' . str_replace(' ', '_', $cat) . ">\n";
+				else
+					$text .= "</$category_label>\n";
 			}
-			if ($simplified_format)
-				$text .= '</' . str_replace(' ', '_', $cat) . ">\n";
-			else
-				$text .= "</$category_label>\n";
-
-		    }
 		}
 
 		if ($nses) {
-		    foreach ($nses as $ns => $val) {
-	 		if ($ns == 0) {
-				$ns_name = "Main";
-			} else {
-				$ns_name = $wgCanonicalNamespaceNames[$ns];
+			foreach ($nses as $ns => $val) {
+		 		if ($ns == 0) {
+					$ns_name = "Main";
+				} else {
+					$ns_name = $wgCanonicalNamespaceNames[$ns];
+				}
+				if ($simplified_format)
+					$text .= '<' . str_replace(' ', '_', $ns_name) . ">\n";
+				else
+					$text .= "<$namespace_str $name_str=\"$ns_name\">\n";
+				$titles = getPagesForNamespace($ns);
+				foreach ($titles as $title) {
+					$text .= getXMLForPage($title, $simplified_format, $groupings);
+				}
+				if ($simplified_format)
+					$text .= '</' . str_replace(' ', '_', $ns_name) . ">\n";
+				else
+					$text .= "</$namespace_str>\n";
 			}
-			if ($simplified_format)
-				$text .= '<' . str_replace(' ', '_', $ns_name) . ">\n";
-			else
-				$text .= "<$namespace_str $name_str=\"$ns_name\">\n";
-			$titles = getPagesForNamespace($ns);
-			foreach ($titles as $title) {
-				$text .= getXMLForPage($title, $simplified_format, $groupings);
-			}
-			if ($simplified_format)
-				$text .= '</' . str_replace(' ', '_', $ns_name) . ">\n";
-			else
-				$text .= "</$namespace_str>\n";
-		    }
 		}
 		$text .= "</Pages>";
 		print $text;
@@ -473,7 +493,7 @@ function doSpecialViewXML() {
 	$categories = getCategoriesList();
 	foreach ($categories as $category) {
 		$title = Title::makeTitle( NS_CATEGORY, $category );
-                $link = $skin->makeLinkObj( $title, $title->getText() );
+		$link = $skin->makeLinkObj( $title, $title->getText() );
 		$text .= "<input type=\"checkbox\" name=\"categories[$category]\" /> $link <br />\n";
 	}
 	$text .= "<h2>" . wfMsg('dt_viewxml_namespaces') . "</h2>\n";
