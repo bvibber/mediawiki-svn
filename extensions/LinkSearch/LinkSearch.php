@@ -16,6 +16,7 @@ $wgExtensionCredits['specialpage'][] = array(
 );
 
 $wgExtensionMessagesFiles['LinkSearch'] = dirname(__FILE__) . '/LinkSearch.i18n.php';
+$wgExtensionAliasesFiles['LinkSearch'] = dirname(__FILE__) . '/LinkSearch.alias.php';
 
 $wgSpecialPages['Linksearch'] = array( /*class*/ 'LinkSearchSpecialPage',
 	/*name*/ 'Linksearch', /* permission */'', /*listed*/ true,

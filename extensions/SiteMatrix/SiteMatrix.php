@@ -18,6 +18,7 @@ $wgExtensionCredits['specialpage'][] = array(
 );
 
 $wgExtensionMessagesFiles['SiteMatrix'] = dirname(__FILE__) . '/SiteMatrix.i18n.php';
+$wgExtensionAliasesFiles['SiteMatrix'] = dirname(__FILE__) . '/SiteMatrix.alias.php';
 
 $wgSiteMatrixFile = '/home/wikipedia/common/langlist';
 
