@@ -46,14 +46,13 @@ $messages['eo'] = array(
 /** Finnish (Suomi)
  * @author Jack Phoenix
  */
-$messages['fi'] = array (
+$messages['fi'] = array(
 	'createbox-create' => 'Luo',
-	'createbox-exists' => "Pahoittelut, \"'''{{FULLPAGENAME}}'''\" on jo " .
-			"olemassa.\n\nEt voi luoda tätä sivua, mutta voit " .
-			"[{{fullurl:{{FULLPAGENAME}}|action=edit}} muokata sitä], " .
-			"[{{fullurl:{{FULLPAGENAME}}}} lukea sitä], tai luoda " .
-			"erilaisen sivun allaolevaa laatikkoa käyttäen.\n\n" .
-			"<createbox>break=no</createbox>",
+	'createbox-exists' => "Pahoittelut, \"'''{{FULLPAGENAME}}'''\" on jo olemassa.
+
+Et voi luoda tätä sivua, mutta voit [{{fullurl:{{FULLPAGENAME}}|action=edit}} muokata sitä], [{{fullurl:{{FULLPAGENAME}}}} lukea sitä], tai luoda erilaisen sivun allaolevaa laatikkoa käyttäen.
+
+<createbox>break=no</createbox>",
 );
 
 /** French (Français)

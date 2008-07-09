@@ -12,6 +12,9 @@ $messages['en'] = array(
 	'deletedcontributions-desc' => 'Gives sysops the ability to [[Special:DeletedContributions|browse deleted edits]] of a user',
 );
 
+/** Afrikaans (Afrikaans)
+ * @author SPQRobin
+ */
 $messages['af'] = array(
 	'deletedcontributions' => 'Geskrapte gebruikersbydraes',
 );
@@ -41,14 +44,23 @@ $messages['ast'] = array(
 	'deletedcontributions-desc' => "Da la a los alministradores la capacidá de [[Special:Deletedcontributions|ver les ediciones borraes d'un usuariu]]",
 );
 
+/** Bashkir (Башҡорт)
+ * @author SPQRobin
+ */
 $messages['ba'] = array(
 	'deletedcontributions' => 'Ҡулланыусыларҙың юйылған өлөшө',
 );
 
+/** Bikol Central (Bikol Central)
+ * @author Filipinayzd
+ */
 $messages['bcl'] = array(
 	'deletedcontributions' => 'Parâon an mga kontribusyon kan parágamit',
 );
 
+/** Belarusian (Беларуская)
+ * @author SPQRobin
+ */
 $messages['be'] = array(
 	'deletedcontributions' => 'Выдалены ўклад удзельніка',
 );
@@ -88,6 +100,7 @@ $messages['ca'] = array(
 	'deletedcontributions-desc' => "Dóna als administradors l'habilitat de [[Special:DeletedContributions|consultar les edicions eliminades d'un usuari]]",
 );
 
+/** Min Dong Chinese (Mìng-dĕ̤ng-ngṳ̄) */
 $messages['cdo'] = array(
 	'deletedcontributions' => 'Ké̤ṳk chēng lâi gì ê̤ṳng-hô góng-hióng',
 );
@@ -107,10 +120,14 @@ $messages['cu'] = array(
 	'deletedcontributions' => 'пони́чьжєнꙑ добродѣꙗ́ниꙗ',
 );
 
+/** Welsh (Cymraeg)
+ * @author SPQRobin
+ */
 $messages['cy'] = array(
-	'deletedcontributions'         => 'Cyfraniadau\'r defnyddiwr a ddilëwyd',
+	'deletedcontributions' => "Cyfraniadau'r defnyddiwr a ddilëwyd",
 );
 
+/** Danish (Dansk) */
 $messages['da'] = array(
 	'deletedcontributions' => 'Slettede brugerbidrag',
 );
@@ -131,6 +148,9 @@ $messages['dsb'] = array(
 	'deletedcontributions-desc' => 'Dawa administratoram móžnosć, [[Special:DeletedContributions|wulašowane wužywarske pśinoski]] póglědaś',
 );
 
+/** Greek (Ελληνικά)
+ * @author SPQRobin
+ */
 $messages['el'] = array(
 	'deletedcontributions' => 'Διαγραμμένες συνεισφορές χρήστη',
 );
@@ -143,10 +163,14 @@ $messages['eo'] = array(
 	'deletedcontributions-desc' => 'Donas al administrantoj la kapablon [[Special:DeletedContributions|rigardi forigitajn redaktojn]] de uzanto',
 );
 
+/** Spanish (Español)
+ * @author Icvav
+ */
 $messages['es'] = array(
 	'deletedcontributions' => 'Contribuciones de usuario borradas',
 );
 
+/** Basque (Euskara) */
 $messages['eu'] = array(
 	'deletedcontributions' => 'Ezabatutako ekarpenak',
 );
@@ -158,13 +182,12 @@ $messages['ext'] = array(
 	'deletedcontributions' => 'Contribucionis el usuáriu esborrás',
 );
 
-/** فارسی (فارسی)
+/** Persian (فارسی)
  * @author Huji
  */
 $messages['fa'] = array(
 	'deletedcontributions'      => 'مشارکت‌های حذف شده',
 	'deletedcontributions-desc' => 'به مدیران امکان [[Special:DeletedContributions|مشاهدهٔ ویرایش‌های حذف شدهٔ یک کاربر]] را می‌دهد',
-
 );
 
 /** Finnish (Suomi)
@@ -200,6 +223,7 @@ $messages['fur'] = array(
 	'deletedcontributions' => 'Contribûts dal utent eliminâts',
 );
 
+/** Irish (Gaeilge) */
 $messages['ga'] = array(
 	'deletedcontributions' => 'Dréachtaí úsáideora scriosta',
 );
@@ -261,6 +285,9 @@ $messages['hu'] = array(
 	'deletedcontributions-desc' => 'Lehetővé teszi az adminisztrátorok számára a [[Special:DeletedContributions|törölt szerkesztések megtekintését]]',
 );
 
+/** Armenian (Հայերեն)
+ * @author Teak
+ */
 $messages['hy'] = array(
 	'deletedcontributions' => 'Մասնակցի ջնջված ներդրում',
 );
@@ -273,6 +300,9 @@ $messages['id'] = array(
 	'deletedcontributions-desc' => 'Memberikan fasilitas bagi pengurus untuk [[Special:DeletedContributions|melihat suntingan yang dihapus dari seorang pengguna]]',
 );
 
+/** Icelandic (Íslenska)
+ * @author Spacebirdy
+ */
 $messages['is'] = array(
 	'deletedcontributions' => 'Eyddar breytingar notenda',
 );
@@ -280,9 +310,10 @@ $messages['is'] = array(
 /** Italian (Italiano)
  * @author BrokenArrow
  * @author Nemo bis
+ * @author Melos
  */
 $messages['it'] = array(
-	'deletedcontributions'      => 'Contributi cancellati',
+	'deletedcontributions'      => 'Contributi utente cancellati',
 	'deletedcontributions-desc' => 'Fornisce agli amministratori la possibilità di [[Special:DeletedContributions|visualizzare i contributi cancellati di un utente]]',
 );
 
@@ -299,7 +330,7 @@ $messages['ja'] = array(
  * @author Huslåke
  */
 $messages['jut'] = array(
-	'deletedcontributions'      => 'Slettede brugerbidråg',
+	'deletedcontributions' => 'Slettede brugerbidråg',
 );
 
 /** Javanese (Basa Jawa)
@@ -310,14 +341,19 @@ $messages['jv'] = array(
 	'deletedcontributions-desc' => 'Mènèhi opsis fasilitas kanggo mriksa [[Special:DeletedContributions|suntingan sawijining panganggo sing wis dibusak]]',
 );
 
+/** Kazakh (Arabic script) (‫قازاقشا (تٴوتە)‬) */
+$messages['kk-arab'] = array(
+	'deletedcontributions' => 'قاتىسۋشىنىڭ جويىلعان ۇلەسى',
+);
+
+/** Kazakh (Cyrillic) (Қазақша (Cyrillic)) */
 $messages['kk-cyrl'] = array(
 	'deletedcontributions' => 'Қатысушының жойылған үлесі',
 );
+
+/** Kazakh (Latin) (Қазақша (Latin)) */
 $messages['kk-latn'] = array(
 	'deletedcontributions' => 'Qatıswşınıñ joýılğan ülesi',
-);
-$messages['kk-arab'] = array(
-	'deletedcontributions' => 'قاتىسۋشىنىڭ جويىلعان ۇلەسى',
 );
 
 /** Khmer (ភាសាខ្មែរ)
@@ -353,6 +389,9 @@ $messages['ku-latn'] = array(
 	'deletedcontributions-desc' => 'Qebûlbike ku koordinator (admîn) dikaribin di [[Special:DeletedContributions|nivîsarên jêbirî yên bikarhêneran]] da sekin.',
 );
 
+/** Latin (Latina)
+ * @author SPQRobin
+ */
 $messages['la'] = array(
 	'deletedcontributions' => 'Conlationes usoris deletae',
 );
@@ -404,6 +443,9 @@ $messages['lv'] = array(
 	'deletedcontributions-desc' => 'Dod adminiem iespēju [[Special:DeletedContributions|apskatīties izdzēstās lietotāju izmaiņas]]. (Tās ir visas, visu lietotāju izdarītās izmaiņas lapās, kuras ir tikušas izdzēstas)',
 );
 
+/** Macedonian (Македонски)
+ * @author SPQRobin
+ */
 $messages['mk'] = array(
 	'deletedcontributions' => 'Избришани кориснички придонеси',
 );
@@ -433,6 +475,7 @@ $messages['ms'] = array(
 	'deletedcontributions-desc' => 'Membolehkan penyelia melihat [[Special:DeletedContributions|suntingan pengguna yang telah dihapuskan]]',
 );
 
+/** Min Nan Chinese (Bân-lâm-gú) */
 $messages['nan'] = array(
 	'deletedcontributions' => 'Hō͘ lâng thâi tiāu ê kòng-hiàn',
 );
@@ -444,12 +487,15 @@ $messages['nds'] = array(
 	'deletedcontributions' => 'Wegsmetene Bidrääg vun’n Bruker',
 );
 
+/** Dutch (Nederlands)
+ * @author Siebrand
+ */
 $messages['nl'] = array(
-	'deletedcontributions' => 'Verwijderde gebruikersbijdragen',
+	'deletedcontributions'      => 'Verwijderde gebruikersbijdragen',
 	'deletedcontributions-desc' => 'Geeft beheerders de mogelijkheid om [[Special:DeletedContributions|verwijderde bijdragen van een gebruiker te bekijken]]',
 );
 
-/** Norwegian (‪Norsk (bokmål)‬)
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */
 $messages['no'] = array(
@@ -487,6 +533,9 @@ $messages['pl'] = array(
 	'deletedcontributions-desc' => 'Pozwala administratorom na [[Special:DeletedContributions|przeglądanie usuniętego wkładu użytkowników]]',
 );
 
+/** Piedmontese (Piemontèis)
+ * @author Bèrto 'd Sèra
+ */
 $messages['pms'] = array(
 	'deletedcontributions' => 'Modìfiche faite da utent scancelà',
 );
@@ -514,6 +563,9 @@ $messages['qu'] = array(
 	'deletedcontributions' => 'Qullusqa ruraqpa hukchasqankuna',
 );
 
+/** Romanian (Română)
+ * @author SPQRobin
+ */
 $messages['ro'] = array(
 	'deletedcontributions' => 'Contribuţii şterse',
 );
@@ -542,19 +594,26 @@ $messages['sk'] = array(
 	'deletedcontributions-desc' => 'Dáva správcovi možnosť [[Special:DeletedContributions|prehliadať zmazané príspevky používateľa]]',
 );
 
+/** Albanian (Shqip) */
 $messages['sq'] = array(
 	'deletedcontributions' => 'Kontribute të grisura',
 );
 
+/** Serbian Cyrillic ekavian (ћирилица)
+ * @author SPQRobin
+ */
 $messages['sr-ec'] = array(
 	'deletedcontributions' => 'Обрисане измене',
 );
 
+/** latinica (latinica)
+ * @author SPQRobin
+ */
 $messages['sr-el'] = array(
 	'deletedcontributions' => 'Obrisane izmene',
 );
 
-/** Sranan Tongo (Sranan Tongo)
+/** Sranan Tongo (Sranantongo)
  * @author Adfokati
  */
 $messages['srn'] = array(
@@ -594,7 +653,7 @@ $messages['te'] = array(
 	'deletedcontributions-desc' => 'నిర్వాహకులకు [[Special:DeletedContributions|వాడుకరుల యొక్క తొలగించిన మార్పులను]] చూసే అవకాశం కలిగిస్తుంది',
 );
 
-/** Tajik (Тоҷикӣ)
+/** Tajik (Cyrillic) (Тоҷикӣ/tojikī (Cyrillic))
  * @author Ibrahim
  */
 $messages['tg-cyrl'] = array(
@@ -616,6 +675,7 @@ $messages['to'] = array(
 	'deletedcontributions' => 'Ngaahi foaki ʻo ha ʻetita kuo tāmateʻi',
 );
 
+/** Turkish (Türkçe) */
 $messages['tr'] = array(
 	'deletedcontributions' => 'Silinen kullanıcı katkıları',
 );
@@ -655,11 +715,13 @@ $messages['vo'] = array(
 	'deletedcontributions-desc' => 'Mögükön guvanes ad logön lisedi redakamas pemoüköl gebana seimik',
 );
 
+/** Yue (粵語) */
 $messages['yue'] = array(
 	'deletedcontributions'      => '已經刪除咗嘅用戶貢獻',
 	'deletedcontributions-desc' => '畀操作員能力去瀏覽一位用戶[[Special:DeletedContributions|刪除咗嘅用戶編輯]]',
 );
 
+/** Simplified Chinese (‪中文(简体)‬) */
 $messages['zh-hans'] = array(
 	'deletedcontributions'      => '已删除的用户贡献',
 	'deletedcontributions-desc' => '让{{int:group-sysop}}可以浏览用户[[Special:DeletedContributions|被删除的编辑]]',
@@ -670,6 +732,6 @@ $messages['zh-hans'] = array(
  */
 $messages['zh-hant'] = array(
 	'deletedcontributions'      => '已刪除的用戶貢獻',
-	'deletedcontributions-desc' => '讓{{int:group-sysop}}可以瀏覽用戶[[Special:DeletedContributions|被刪除的編輯]]',
+	'deletedcontributions-desc' => '讓{{int:group-sysop}}可以瀏覽用戶[[Special:DeletedContributions|被刪除的編輯]]。',
 );
 

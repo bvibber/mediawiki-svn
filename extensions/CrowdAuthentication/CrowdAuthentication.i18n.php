@@ -94,7 +94,7 @@ $messages['nl'] = array(
 	'crowdauthentication-desc' => 'Authenticatieplugin voor Atlassian Crowd',
 );
 
-/** Norwegian (‪Norsk (bokmål)‬)
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */
 $messages['no'] = array(

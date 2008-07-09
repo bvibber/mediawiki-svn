@@ -54,7 +54,7 @@ $messages['cs'] = array(
 	'cspammer-log-page'           => 'Záznam spamerů obsahu',
 );
 
-/* German */
+/** German (Deutsch) */
 $messages['de'] = array(
 	'commentspammer-save-blocked' => 'Deine IP-Adresse stammt mutmaßlich von einem Kommentar-Spammer. Die Seite wurde nicht gespeichert. [[Special:Userlogin|Melde dich an oder erstelle ein Benutzerkonto]], um diese Warnung zu unterbinden.',
 	'commentspammer-log-msg'      => 'Bearbeitung von [[Special:Contributions/$1|$1]] für [[:$2]]. ',
@@ -86,12 +86,16 @@ $messages['fr'] = array(
 	'cspammer-log-page'           => 'Journal du créateur de pourriels',
 );
 
+/** Franco-Provençal (Arpetan)
+ * @author ChrisPtDe
+ * @author Siebrand
+ */
 $messages['frp'] = array(
 	'commentspammer-save-blocked' => 'Voutra adrèce IP est cela d’una pèrsona soupçonâ de crèar de spame, la pâge at pas étâ sôvâ. Volyéd vos [[Special:Userlogin|conèctar ou crèar un compto]] por contornar ceta dèfensa.',
-	'commentspammer-log-msg' => 'Modificacions de [[Special:Contributions/$1|$1]] a [[:$2]].',
+	'commentspammer-log-msg'      => 'Modificacions de [[Special:Contributions/$1|$1]] a [[:$2]].',
 	'commentspammer-log-msg-info' => 'Lo dèrriér spame remonte a {{PLURAL:$1|$1 jorn|$1 jorns}}, lo nivô d’alèrta est a $2 et lo code d’ataca est $3. [http://www.projecthoneypot.org/search_ip.php?ip=$4 Vêre los dètalys] ou ben [[Special:Blockip/$4|blocar]].',
-	'cspammerlogpagetext' => 'Jornal de les modificacions accèptâs ou refusâs d’aprés que la sôrsa ére un crèator de spame cognu.',
-	'cspammer-log-page' => 'Jornal du crèator de spame',
+	'cspammerlogpagetext'         => 'Jornal de les modificacions accèptâs ou refusâs d’aprés que la sôrsa ére un crèator de spame cognu.',
+	'cspammer-log-page'           => 'Jornal du crèator de spame',
 );
 
 /** Galician (Galego)
@@ -210,7 +214,7 @@ $messages['nl'] = array(
 	'cspammer-log-page'           => 'Spamlogboek',
 );
 
-/** Norwegian (‪Norsk (bokmål)‬)
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */
 $messages['no'] = array(

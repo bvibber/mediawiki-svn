@@ -81,7 +81,7 @@ $messages['nl'] = array(
 	'contributorsaddon-desc' => 'Voegt "JavaScript onMouseOver"-popups toe aan de link "Belangrijkste schrijvers"',
 );
 
-/** Norwegian (‪Norsk (bokmål)‬)
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */
 $messages['no'] = array(

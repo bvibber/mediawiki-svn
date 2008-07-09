@@ -50,8 +50,8 @@ $messages['cs'] = array(
  * @author Raimond Spekking
  */
 $messages['de'] = array(
-	'commentpages-desc'    => 'Kommentieren von Seiten im Haupt-Namensraum',
-	'nstab-comments'       => 'Kommentar',
+	'commentpages-desc' => 'Kommentieren von Seiten im Haupt-Namensraum',
+	'nstab-comments'    => 'Kommentar',
 );
 
 /** Lower Sorbian (Dolnoserbski)
@@ -170,7 +170,7 @@ $messages['nl'] = array(
 	'nstab-comments'    => 'Opmerkingen',
 );
 
-/** Norwegian (‪Norsk (bokmål)‬)
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */
 $messages['no'] = array(

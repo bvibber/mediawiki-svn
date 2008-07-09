@@ -206,21 +206,18 @@ $messages['da'] = array(
  * @author Raimond Spekking
  */
 $messages['de'] = array(
-	# Special page
-	'crosswikiblock-desc'       => 'Erlaubt die Sperre von Benutzern in anderen Wikis über eine [[Special:Crosswikiblock|Spezialseite]]',
-	'crosswikiblock'            => 'Sperre Benutzer in einem anderen Wiki',
-	'crosswikiblock-header'     => 'Diese Spezialseite erlaubt die Sperre eines Benutzers in einem anderen Wiki.
+	'crosswikiblock-desc'           => 'Erlaubt die Sperre von Benutzern in anderen Wikis über eine [[Special:Crosswikiblock|Spezialseite]]',
+	'crosswikiblock'                => 'Sperre Benutzer in einem anderen Wiki',
+	'crosswikiblock-header'         => 'Diese Spezialseite erlaubt die Sperre eines Benutzers in einem anderen Wiki.
 	Bitte prüfe, ob du die Befugnis hast, in diesem anderen Wiki zu sperren und ob deine Aktion deren Richtlinien entspricht.',
-	'crosswikiblock-target'     => 'IP-Adresse oder Benutzername und Zielwiki:',
-	'crosswikiblock-expiry'     => 'Sperrdauer:',
-	'crosswikiblock-reason'     => 'Begründung:',
-	'crosswikiblock-submit'     => 'IP-Adresse/Benutzer sperren',
-	'crosswikiblock-anononly'   => 'Sperre nur anonyme Benutzer (angemeldete Benutzer mit dieser IP-Adresse werden nicht gesperrt). In vielen Fällen empfehlenswert.',
-	'crosswikiblock-nocreate'   => 'Erstellung von Benutzerkonten verhindern',
-	'crosswikiblock-autoblock'  => 'Sperre die aktuell von diesem Benutzer genutzte IP-Adresse sowie automatisch alle folgenden, von denen aus er Bearbeitungen oder das Anlegen von Benutzeraccounts versucht.',
-	'crosswikiblock-noemail'    => 'E-Mail-Versand sperren',
-
-	# Special:Unblock
+	'crosswikiblock-target'         => 'IP-Adresse oder Benutzername und Zielwiki:',
+	'crosswikiblock-expiry'         => 'Sperrdauer:',
+	'crosswikiblock-reason'         => 'Begründung:',
+	'crosswikiblock-submit'         => 'IP-Adresse/Benutzer sperren',
+	'crosswikiblock-anononly'       => 'Sperre nur anonyme Benutzer (angemeldete Benutzer mit dieser IP-Adresse werden nicht gesperrt). In vielen Fällen empfehlenswert.',
+	'crosswikiblock-nocreate'       => 'Erstellung von Benutzerkonten verhindern',
+	'crosswikiblock-autoblock'      => 'Sperre die aktuell von diesem Benutzer genutzte IP-Adresse sowie automatisch alle folgenden, von denen aus er Bearbeitungen oder das Anlegen von Benutzeraccounts versucht.',
+	'crosswikiblock-noemail'        => 'E-Mail-Versand sperren',
 	'crosswikiunblock'              => 'Entsperre Benutzer in einem anderen Wiki',
 	'crosswikiunblock-header'       => 'Diese Spezialseite erlaubt die Aufhebung einer Benutzersperre in einem anderen Wiki.
 	Bitte prüfe, ob du die Befugnis hast, in diesem anderen Wiki zu sperren und ob deine Aktion deren Richtlinien entspricht.',
@@ -232,7 +229,6 @@ $messages['de'] = array(
 Zurück zu:
 * [[Special:CrosswikiBlock|Sperrformular]]
 * [[$2]]",
-	# Errors and success message
 	'crosswikiblock-nousername'     => 'Es wurde kein Benutzername eingegeben',
 	'crosswikiblock-local'          => 'Lokale Sperren werden durch dieses Interface nicht unterstützt. Benutze [[{{#special:Blockip}}]]',
 	'crosswikiblock-dbnotfound'     => 'Datenbank $1 ist nicht vorhanden',
@@ -248,7 +244,7 @@ Zurück zu:
 Zurück zu:
 * [[Special:CrosswikiBlock|Sperrformular]]
 * [[$4]]",
-'crosswikiunblock-local'                => 'Lokale Sperren werden über dieses Interfache nicht unterstützt. Bitte benutze [[{{#special:Ipblocklist}}]].',
+	'crosswikiunblock-local'        => 'Lokale Sperren werden über dieses Interfache nicht unterstützt. Bitte benutze [[{{#special:Ipblocklist}}]].',
 );
 
 /** Greek (Ελληνικά)
@@ -395,7 +391,7 @@ $messages['gl'] = array(
 	'crosswikiblock-header'         => 'Esta páxina permítelle bloquear un usuario noutro wiki.
 Por favor, comprobe se ten permiso para actuar neste wiki que se as súas accións coinciden coas políticas.',
 	'crosswikiblock-target'         => 'Enderezo IP ou nome de usuario e wiki de destino:',
-	'crosswikiblock-expiry'         => 'Caducidade:',
+	'crosswikiblock-expiry'         => 'Remate:',
 	'crosswikiblock-reason'         => 'Razón:',
 	'crosswikiblock-submit'         => 'Bloquear este usuario',
 	'crosswikiblock-anononly'       => 'Bloquear só usuarios anónimos',
@@ -1308,7 +1304,7 @@ Gå tillbaka till:
 	'crosswikiunblock-local'        => 'Lokala blockeringar kan inte tas bort via det här formuläret. Använd [[Special:Ipblocklist]] istället.',
 );
 
-/** Silesian (ślůnski)
+/** Silesian (Ślůnski)
  * @author Herr Kriss
  */
 $messages['szl'] = array(

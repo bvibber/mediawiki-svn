@@ -663,7 +663,7 @@ $messages['sv'] = array(
 	'dt_xml_freetext'             => 'Fritext',
 );
 
-/** Silesian (ślůnski)
+/** Silesian (Ślůnski)
  * @author Herr Kriss
  */
 $messages['szl'] = array(
@@ -752,7 +752,7 @@ $messages['vo'] = array(
 	'dt_xml_name'           => 'Nem',
 );
 
-/** ‪中文(台灣)‬ (‪中文(台灣)‬)
+/** Taiwan Chinese (‪中文(台灣)‬)
  * @author Roc michael
  */
 $messages['zh-tw'] = array(
