@@ -19,6 +19,7 @@ $page_id_added=false;
 
 //install the new search index tables: 
 if(!$wgDatabase->tableExists('mv_search_digest')){
+	echo 'CREATE TABLE mv_search_digest'."\n";
 	$wgDatabase->query('CREATE TABLE IF NOT EXISTS `mv_search_digest` (
   `id` int(11) NOT NULL auto_increment,
   `query_key` varchar(128) character set utf8 collate utf8_unicode_ci NOT NULL,
@@ -28,6 +29,7 @@ if(!$wgDatabase->tableExists('mv_search_digest')){
 ) ENGINE=MyISAM');
 }
 if(!$wgDatabase->tableExists('mv_clipview_digest')){
+	echo 'CREATE TABLE mv_clipview_digest'."\n";
 	$wgDatabase->query(" CREATE TABLE IF NOT EXISTS `mv_clipview_digest` (
   `id` int(11) NOT NULL auto_increment,
   `query_key` int(33) NOT NULL,
@@ -41,6 +43,7 @@ if(!$wgDatabase->tableExists('mv_clipview_digest')){
 ) ENGINE=MyISAM ;");
 }
 if(!$wgDatabase->tableExists('mv_query_key_lookup')){
+	echo 'CREATE TABLE mv_query_key_lookup'."\n";
 	$wgDatabase->query("CREATE TABLE IF NOT EXISTS `mv_query_key_lookup` (
   `query_key` varchar(128) NOT NULL,
   `filters` text NOT NULL,
@@ -49,28 +52,29 @@ if(!$wgDatabase->tableExists('mv_query_key_lookup')){
 }
 
 if(!$wgDatabase->fieldExists('mv_mvd_index', 'view_count')){	
+	echo '`mv_mvd_index` ADD `view_count`'."\n";
 	$wgDatabase->query("ALTER TABLE `mv_mvd_index` ADD `view_count` INT( 10 ) UNSIGNED NOT NULL DEFAULT '0' AFTER `end_time`");
 }
 //add view_count index:
-if(!$wgDatabase->indexExists('view_count')){
+if(!$wgDatabase->indexExists('mv_mvd_index','view_count')){
 	$wgDatabase->query("ALTER TABLE `mv_mvd_index` ADD INDEX ( `view_count` )");  
 }
 /*modify mvd_table index structure for more "cardinality"/faster queries*/
-if($wgDatabase->indexExists('mvd_type')){
+if($wgDatabase->indexExists('mv_mvd_index','mvd_type')){
  	$wgDatabase->query("ALTER TABLE `mv_mvd_index` DROP INDEX `mvd_type`");
 }  
-if($wgDatabase->indexExists('stream_id')){
+if($wgDatabase->indexExists('mv_mvd_index','stream_id')){
 	$wgDatabase->query("ALTER TABLE `mv_mvd_index` DROP INDEX `stream_id`");
 }
-if($wgDatabase->indexExists('stream_time_start')){
+if($wgDatabase->indexExists('mv_mvd_index','stream_time_start')){
 	$wgDatabase->query("ALTER TABLE `mv_mvd_index` DROP INDEX `stream_time_start`");
 }
 //add missing indexes:
-if(!$wgDatabase->indexExists('mvd_stream_index')){
+if(!$wgDatabase->indexExists('mv_mvd_index','mvd_stream_index')){
 	print "rebuilding mvd index ... this may take \"some time\"\n";
 	$wgDatabase->query(" ALTER TABLE `mv_mvd_index` ADD INDEX `mvd_stream_index` ( `stream_id` , `start_time` , `end_time` )");
 }
-if(!$wgDatabase->indexExists('mvd_type_index')){
+if(!$wgDatabase->indexExists('mv_mvd_index','mvd_type_index')){
 	$wgDatabase->query(" ALTER TABLE `mv_mvd_index` ADD INDEX `mvd_type_index` (`mvd_type`, `stream_id`)");
 }
 
