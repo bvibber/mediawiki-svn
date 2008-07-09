@@ -1,6 +1,6 @@
 <?php
 /**
- * Aliases for Special:Renameuser
+ * Aliases for Special:Makebot
  *
  * @addtogroup Extensions
  */
@@ -11,12 +11,12 @@ $aliases = array();
  * @author Jon Harald Søby
  */
 $aliases['en'] = array(
-    'Renameuser'            => array('RenameUser')
+    'Makebot'            => array('MakeBot')
 );
 
 /** Norwegian (Norsk (bokmål))
  * @author Jon Harald Søby
  */
 $aliases['no'] = array(
-    'Renameuser'            => array('Gi_en_bruker_nytt_navn')
+    'Makebot'            => array('Gi_eller_fjern_botstatus')
 );

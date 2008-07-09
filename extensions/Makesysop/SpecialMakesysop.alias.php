@@ -1,6 +1,6 @@
 <?php
 /**
- * Aliases for Special:Renameuser
+ * Aliases for Special:Makesysop
  *
  * @addtogroup Extensions
  */
@@ -11,12 +11,12 @@ $aliases = array();
  * @author Jon Harald Søby
  */
 $aliases['en'] = array(
-    'Renameuser'            => array('RenameUser')
+    'Makesysop'            => array('MakeSysop')
 );
 
 /** Norwegian (Norsk (bokmål))
  * @author Jon Harald Søby
  */
 $aliases['no'] = array(
-    'Renameuser'            => array('Gi_en_bruker_nytt_navn')
+    'Makesysop'            => array('Gjør_en_bruker_til_administrator')
 );

@@ -26,6 +26,7 @@ $dir = dirname( __FILE__ );
 
 # Internationalisation file
 $wgExtensionMessagesFiles['Makesysop'] = "$dir/SpecialMakesysop.i18n.php";
+$wgExtensionAliasesFiles['Makesysop'] = "$dir/SpecialMakesysop.alias.php";
 
 // Set groups to the appropriate sysop/bureaucrat structure:
 // * Steward can do 'full' work (makesysop && userrights)

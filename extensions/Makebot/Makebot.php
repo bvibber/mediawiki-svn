@@ -31,6 +31,7 @@ if( defined( 'MEDIAWIKI' ) ) {
 	 */
 	$dir = dirname(__FILE__) . '/';
 	$wgExtensionMessagesFiles['Makebot'] = $dir . 'Makebot.i18n.php';	
+	$wgExtensionAliasesFiles['Makebot'] = $dir . 'Makebot.alias.php';
 
 	/**
 	 * Determines who can use the extension; as a default, bureaucrats are permitted
