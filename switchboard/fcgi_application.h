@@ -41,6 +41,7 @@ struct fcgi_application : boost::enable_shared_from_this<fcgi_application> {
 	void	record_to_server(fcgi::recordp record);
 
 	void	destroy();
+	void	close();
 
 private:
 	bool buffering_;

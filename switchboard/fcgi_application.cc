@@ -172,3 +172,12 @@ fcgi_application::destroy()
 	if (!server_.expired())
 		server_.lock()->destroy(request_id_);
 }
+
+void
+fcgi_application::close()
+{
+	LOG4CXX_DEBUG(logger, format("application@%p, close() called") % this);
+	if (cgi_)
+		cgi_->close();
+	cgi_.reset();
+}

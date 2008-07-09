@@ -61,6 +61,7 @@ fcgi_server_connection::destroy(int r)
 	socket_->write_record(rec,
 		boost::bind(&fcgi_server_connection::write_done, 
 			shared_from_this(), _1));
+	requests_[r]->close();
 	requests_[r].reset();
 }
 
@@ -169,6 +170,10 @@ fcgi_server_connection::destroy()
 		return;	/* we're already dying */
 
 	alive_ = false;
+
+	for (int i = 0; i < requests_.size(); ++i)
+		if (requests_[i])
+			requests_[i]->close();
 
 	requests_.clear();
 	int fd = socket_->socket().native();
