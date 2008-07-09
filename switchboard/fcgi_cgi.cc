@@ -259,7 +259,6 @@ fcgi_cgi::handle_child_read(
 
 	switch (record->type) {
 	case fcgi::rectype::abort_request:
-	case fcgi::rectype::end_request:
 		destroy = true;
 	case fcgi::rectype::params:
 	case fcgi::rectype::stdin_:
@@ -268,6 +267,7 @@ fcgi_cgi::handle_child_read(
 		passup = true;
 		break;
 
+	case fcgi::rectype::end_request:
 	case fcgi::rectype::begin_request:
 	case fcgi::rectype::get_values:
 	case fcgi::rectype::get_values_result:

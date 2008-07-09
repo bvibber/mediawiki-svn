@@ -61,7 +61,6 @@ fcgi_server_connection::destroy(int r)
 	socket_->write_record(rec,
 		boost::bind(&fcgi_server_connection::write_done, 
 			shared_from_this(), _1));
-
 	requests_[r].reset();
 }
 
