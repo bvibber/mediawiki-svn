@@ -25,7 +25,7 @@ $messages['af'] = array(
 	'backforth-prev' => 'Vorige ($1)',
 );
 
-/** Old English (Anglo Saxon)
+/** Old English (Anglo-Saxon)
  * @author SPQRobin
  */
 $messages['ang'] = array(
@@ -385,7 +385,7 @@ $messages['nn'] = array(
 	'backforth-next' => 'Nest ($1)',
 );
 
-/** Norwegian (‪Norsk (bokmål)‬)
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */
 $messages['no'] = array(
@@ -480,7 +480,7 @@ $messages['sk'] = array(
 	'backforth-prev' => 'Predošlé ($1)',
 );
 
-/** ћирилица (ћирилица)
+/** Serbian Cyrillic ekavian (ћирилица)
  * @author Sasa Stefanovic
  */
 $messages['sr-ec'] = array(
@@ -590,7 +590,7 @@ $messages['vo'] = array(
 	'backforth-prev' => 'Büik ($1)',
 );
 
-/** Cantonese (廣東話) */
+/** Yue (粵語) */
 $messages['yue'] = array(
 	'backforth-next' => '下一篇 ($1)',
 	'backforth-desc' => '響頁嘅最頂度加入「上一篇」同埋「下一篇」嘅連結',

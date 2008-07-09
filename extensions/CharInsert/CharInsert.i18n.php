@@ -157,7 +157,7 @@ $messages['nl'] = array(
 	'charinsert-desc' => 'Maakt het mogelijk [[MediaWiki:Edittools|niet-standaard karakters]] in te voeren vanuit een deelvenster via JavaScript',
 );
 
-/** Norwegian (‪Norsk (bokmål)‬)
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */
 $messages['no'] = array(
@@ -248,21 +248,21 @@ $messages['vi'] = array(
 	'charinsert-desc' => 'Cho phép tạo nên một hộp dùng để [[MediaWiki:Edittools|chèn các ký tự không chuẩn hóa]] dùng JavaScript',
 );
 
-/** Cantonese
+/** Yue (粵語)
  * @author Shinjiman
  */
 $messages['yue'] = array(
 	'charinsert-desc' => '容許加入響[[MediaWiki:Edittools|插入非標準字元]]嘅JavaScript盒',
 );
 
-/** Chinese (Simplified)
+/** Simplified Chinese (‪中文(简体)‬)
  * @author Alex S.H. Lin
  */
 $messages['zh-hans'] = array(
 	'charinsert-desc' => '允许增加[[MediaWiki:Edittools|插入非标准文字]]的JavaScript控制项',
 );
 
-/** Chinese (Traditional)
+/** Traditional Chinese (‪中文(繁體)‬)
  * @author Alex S.H. Lin
  */
 $messages['zh-hant'] = array(

@@ -472,17 +472,20 @@ $messages['avk'] = array(
 	'boardvote_welcome'    => "'''$1''' til drumbaf !",
 );
 
+/** Bikol Central (Bikol Central)
+ * @author Filipinayzd
+ */
 $messages['bcl'] = array(
-	'boardvote_novotes'       => 'Mayô pang naboto.',
-	'boardvote_time'          => 'Oras',
-	'boardvote_user'          => 'Parágamit',
-	'boardvote_edits'         => 'Mga hira',
-	'boardvote_days'          => 'Aldaw',
-	'boardvote_dumplink'      => 'Lagatik digdi',
-	'boardvote_notstarted'    => 'Dai pa napoon an pirilian',
-	'boardvote_edits_many'    => 'dakol',
-	'boardvote_blocked'       => 'Despensa, pigbágat ka sa pagrehistrohan mong wiki. An mga pigbágat na parágamit dai pigtotogotan na makaboto.',
-	'boardvote_welcome'       => 'Dagos \'\'\'$1\'\'\'!',
+	'boardvote_novotes'    => 'Mayô pang naboto.',
+	'boardvote_time'       => 'Oras',
+	'boardvote_user'       => 'Parágamit',
+	'boardvote_edits'      => 'Mga hira',
+	'boardvote_days'       => 'Aldaw',
+	'boardvote_dumplink'   => 'Lagatik digdi',
+	'boardvote_notstarted' => 'Dai pa napoon an pirilian',
+	'boardvote_edits_many' => 'dakol',
+	'boardvote_blocked'    => 'Despensa, pigbágat ka sa pagrehistrohan mong wiki. An mga pigbágat na parágamit dai pigtotogotan na makaboto.',
+	'boardvote_welcome'    => "Dagos '''$1'''!",
 );
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
@@ -850,12 +853,13 @@ Tingueu en compte que us pot aparèixer un avís de certificat de seguretat.",
 	'right-boardvote'          => 'Administrar eleccions',
 );
 
+/** Min Dong Chinese (Mìng-dĕ̤ng-ngṳ̄) */
 $messages['cdo'] = array(
-	'boardvote_time'          => "Sì-găng",
-	'boardvote_user'          => "Ê̤ṳng-hô",
-	'boardvote_edits'         => "Siŭ-gāi",
-	'boardvote_dumplink'      => "Áik cŭ-uái",
-	'boardvote_submit'        => 'Hō̤',
+	'boardvote_time'     => 'Sì-găng',
+	'boardvote_user'     => 'Ê̤ṳng-hô',
+	'boardvote_edits'    => 'Siŭ-gāi',
+	'boardvote_dumplink' => 'Áik cŭ-uái',
+	'boardvote_submit'   => 'Hō̤',
 );
 
 /** Chechen (Нохчийн)
@@ -883,10 +887,13 @@ $messages['ceb'] = array(
 	'go_to_board_vote'  => 'Eleksyon sa Wikimedia Board 2008',
 );
 
+/** Corsican (Corsu)
+ * @author SPQRobin
+ */
 $messages['co'] = array(
-	'group-boardvote'         => 'Cummissione eletturale',
-	'group-boardvote-member'  => 'Cummissariu eletturale',
-	'grouppage-boardvote'     => '{{ns:project}}:Cummissarii eletturali',
+	'group-boardvote'        => 'Cummissione eletturale',
+	'group-boardvote-member' => 'Cummissariu eletturale',
+	'grouppage-boardvote'    => '{{ns:project}}:Cummissarii eletturali',
 );
 
 /** Czech (Česky)
@@ -1085,12 +1092,12 @@ $messages['da'] = array(
  * @author Raimond Spekking
  */
 $messages['de'] = array(
-	'boardvote'               => "Wahlen zum Wikimedia-Kuratorium",
-	'boardvote-desc'          => '[[meta:Board elections/2008|Wahlen zum Wikimedia-Kuratorium]]',
-	'boardvote_entry'         => "* [[{{ns:special}}:Boardvote/vote|Abstimmen]]
+	'boardvote'                => 'Wahlen zum Wikimedia-Kuratorium',
+	'boardvote-desc'           => '[[meta:Board elections/2008|Wahlen zum Wikimedia-Kuratorium]]',
+	'boardvote_entry'          => '* [[{{ns:special}}:Boardvote/vote|Abstimmen]]
 * [[{{ns:special}}:Boardvote/list|Bislang abgegebene Stimmen]]
-* [[{{ns:special}}:Boardvote/dump|Verschlüsselte Wahleinträge]]",
-	'boardvote_intro'         => "<p>Willkommen zur Wahl 2008 des Wikimedia-Kuratoriums, dem Verwaltungsorgan der Wikimedia-Foundation.
+* [[{{ns:special}}:Boardvote/dump|Verschlüsselte Wahleinträge]]',
+	'boardvote_intro'          => '<p>Willkommen zur Wahl 2008 des Wikimedia-Kuratoriums, dem Verwaltungsorgan der Wikimedia-Foundation.
 	Es wird 1 Benutzer gewählt, um die Community der Wikimedianer in den verschiedenen Wikimedia-Projekten zu repräsentieren.
 	Er wird dabei helfen, die künftige Richtung der Wikimedia-Projekte festzulegen, einzeln und als Gruppe und er repräsentiert <em>deine</em> Interessen und Belange gegenüber dem Wikimedia-Kuratoriums.
 	Er wird neben vielen anderen Dingen über die Einnahmen und Ausgaben entscheiden.</p>
@@ -1105,14 +1112,14 @@ $messages['de'] = array(
 	<p>Der Gewinner der Wahl wird nach der Schulze-Methode berechnet. Für weitere Informationen hierzu siehe die offiziellen Wahlseiten.</p>
 
 	<p>Weitere Informationen:</p>
-	<ul><li><a href=\"http://meta.wikimedia.org/wiki/Board_elections/2008\" class=\"external\">Kuratoriumwahl 2008</a></li>
-	<li><a href=\"http://meta.wikimedia.org/wiki/Board_elections/2008/Candidates\" class=\"external\">Kandidaten</a></li>
-	<li><a href=\"http://de.wikipedia.org/wiki/Schulze-Methode\" class=\"external\">Schulze-Methode</a></li></ul>",
-	'boardvote_intro_change'  => "<p>Du hast bereits abgestimmt.
+	<ul><li><a href="http://meta.wikimedia.org/wiki/Board_elections/2008" class="external">Kuratoriumwahl 2008</a></li>
+	<li><a href="http://meta.wikimedia.org/wiki/Board_elections/2008/Candidates" class="external">Kandidaten</a></li>
+	<li><a href="http://de.wikipedia.org/wiki/Schulze-Methode" class="external">Schulze-Methode</a></li></ul>',
+	'boardvote_intro_change'   => '<p>Du hast bereits abgestimmt.
 	Jedoch kannst du deine Stimme(n) mit dem folgenden Formular ändern.
 	Bitte ordne die Kandidaten in deiner Wunschreihenfolge an, wobei eine kleinere Zahl den Vorrang für diesen Kandidaten bedeutet.
-	Du kannst dieselbe Zahl mehr als einem Kandidaten geben und du kannst Kandidaten auslassen.</p>",
-	'boardvote_entered'       => "Danke, deine Stimme wurde gespeichert.
+	Du kannst dieselbe Zahl mehr als einem Kandidaten geben und du kannst Kandidaten auslassen.</p>',
+	'boardvote_entered'        => 'Danke, deine Stimme wurde gespeichert.
 
 Wenn du möchtest, kannst du folgende Details festhalten. Deine Abstimmungsaufzeichnung ist:
 
@@ -1126,44 +1133,42 @@ Die daraus folgende, verschlüsselte Version folgt unten. Sie wird öffentlich a
 
 <pre>$3</pre>
 
-[[{{ns:special}}:Boardvote/entry|Zurück]]",
-	'boardvote_invalidentered'=> "<p><strong>Fehler:</strong> Die Reihenfolge der Kandidaten muss in ganzen, positiven Zahlen ausgedrückt werden (1, 2, 3, ...) oder lasse das/die Kästchen leer.</p>",
-	'boardvote_nosession'     => "Deine Wikimedia-Benutzer-ID kann nicht ermittelt werden.
+[[{{ns:special}}:Boardvote/entry|Zurück]]',
+	'boardvote_invalidentered' => '<p><strong>Fehler:</strong> Die Reihenfolge der Kandidaten muss in ganzen, positiven Zahlen ausgedrückt werden (1, 2, 3, ...) oder lasse das/die Kästchen leer.</p>',
+	'boardvote_nosession'      => 'Deine Wikimedia-Benutzer-ID kann nicht ermittelt werden.
 	Bitte melde dich in dem Wiki an, in dem du zur Wahl zugelassen bist und gehe dort nach <nowiki>[[Special:Boardvote]]</nowiki>. 
-	Wählen darf, dessen Benutzerkonto mindestens $1 Bearbeitungen vor dem $2 aufweist, und der mindestens $3 Bearbeitungen zwischen $4 und $5 getätigt hat.",
-	'boardvote_notloggedin'   => "Du bist nicht eingeloggt. Um abstimmen zu können, musst du eingeloggt sein und ein Benutzerkonto verwenden, mit dem mindestens $1 Bearbeitungen vor dem $2 getätigt wurden, und mit dem mindestens $3 Bearbeitungen zwischen $4 und $5 getätigt wurden.",
-	'boardvote_notqualified'  => "Du bist nicht berechtigt an dieser Wahl teilzunehmen. Um abstimmen zu können, musst du eingeloggt sein und ein Benutzerkonto verwenden, mit dem mindestens $1 Bearbeitungen vor dem $2 getätigt wurden, und mit dem mindestens $3 Bearbeitungen zwischen $4 und $5 getätigt wurden.",
-	'boardvote_novotes'       => "Bislang hat noch keiner abgestimmt.",
-	'boardvote_time'          => "Zeit",
-	'boardvote_user'          => "Benutzer",
-	'boardvote_edits'         => "Bearbeitungen",
-	'boardvote_days'          => "Tage",
-	'boardvote_ip'            => "IP",
-	'boardvote_ua'            => "User-Agent",
-	'boardvote_listintro'     => "<p>Dies ist eine Liste aller Stimmen, die bisher abgegeben wurden. $1 für die verschlüsselten Daten.</p>",
-	'boardvote_dumplink'      => "Hier klicken",
-	'boardvote_submit'        => 'Abstimmen',
-	'boardvote_strike'        => "Stimme streichen",
-	'boardvote_unstrike'      => "Stimmstreichung zurücknehmen",
-	'boardvote_needadmin'     => "Nur Wahladministratoren können diese Aktion durchführen.",
-	'boardvote_sitenotice'    => "<a href=\"{{localurle:Special:Boardvote/vote}}\">Wahlen zum Wikimedia-Kuratorium</a>: Die Wahl ist bis zum 22. Juni möglich.",
-	'boardvote_notstarted'    => 'Die Wahl hat noch nicht begonnen',
-	'boardvote_closed'        => 'Die Wahl ist beendet. Das Ergebnis ist [http://meta.wikimedia.org/wiki/Board_elections/2008/Results im Meta-Wiki] einsehbar.',
-	'boardvote_edits_many'    => 'viele',
-	'group-boardvote'         => 'Wahl-Administratoren',
-	'group-boardvote-member'  => 'Wahl-Administrator',
-	'grouppage-boardvote'     => '{{ns:project}}:Wahl-Administrator',
-	'boardvote_blocked'       => 'Entschuldigung, aber du wurdest in deinem Wiki gesperrt. Gesperrten Benutzern ist es nicht erlaubt, an der Wahl teilzunehmen.',
-	'boardvote_bot'           => 'Entschuldigung, aber dein Benutzerkonto ist im registrierten Wiki als Bot gekennzeichnet. Bots dürfen nicht abstimmen.',
-	'boardvote_welcome'       => "Willkommen '''$1'''!",
-	'go_to_board_vote'        => 'Wahlen zum Wikimedia-Kuratorium 2008',
-	'boardvote_redirecting'   => 'Um eine erhöhte Sicherung und Transparenz zu gewährleisten, findet die Wahl auf einem externen, unabhängig kontrollierten Server statt.
+	Wählen darf, dessen Benutzerkonto mindestens $1 Bearbeitungen vor dem $2 aufweist, und der mindestens $3 Bearbeitungen zwischen $4 und $5 getätigt hat.',
+	'boardvote_notloggedin'    => 'Du bist nicht eingeloggt. Um abstimmen zu können, musst du eingeloggt sein und ein Benutzerkonto verwenden, mit dem mindestens $1 Bearbeitungen vor dem $2 getätigt wurden, und mit dem mindestens $3 Bearbeitungen zwischen $4 und $5 getätigt wurden.',
+	'boardvote_notqualified'   => 'Du bist nicht berechtigt an dieser Wahl teilzunehmen. Um abstimmen zu können, musst du eingeloggt sein und ein Benutzerkonto verwenden, mit dem mindestens $1 Bearbeitungen vor dem $2 getätigt wurden, und mit dem mindestens $3 Bearbeitungen zwischen $4 und $5 getätigt wurden.',
+	'boardvote_novotes'        => 'Bislang hat noch keiner abgestimmt.',
+	'boardvote_time'           => 'Zeit',
+	'boardvote_user'           => 'Benutzer',
+	'boardvote_edits'          => 'Bearbeitungen',
+	'boardvote_days'           => 'Tage',
+	'boardvote_ua'             => 'User-Agent',
+	'boardvote_listintro'      => '<p>Dies ist eine Liste aller Stimmen, die bisher abgegeben wurden. $1 für die verschlüsselten Daten.</p>',
+	'boardvote_dumplink'       => 'Hier klicken',
+	'boardvote_submit'         => 'Abstimmen',
+	'boardvote_strike'         => 'Stimme streichen',
+	'boardvote_unstrike'       => 'Stimmstreichung zurücknehmen',
+	'boardvote_needadmin'      => 'Nur Wahladministratoren können diese Aktion durchführen.',
+	'boardvote_sitenotice'     => '<a href="{{localurle:Special:Boardvote/vote}}">Wahlen zum Wikimedia-Kuratorium</a>: Die Wahl ist bis zum 22. Juni möglich.',
+	'boardvote_notstarted'     => 'Die Wahl hat noch nicht begonnen',
+	'boardvote_closed'         => 'Die Wahl ist beendet. Das Ergebnis ist [http://meta.wikimedia.org/wiki/Board_elections/2008/Results im Meta-Wiki] einsehbar.',
+	'boardvote_edits_many'     => 'viele',
+	'group-boardvote'          => 'Wahl-Administratoren',
+	'group-boardvote-member'   => 'Wahl-Administrator',
+	'grouppage-boardvote'      => '{{ns:project}}:Wahl-Administrator',
+	'boardvote_blocked'        => 'Entschuldigung, aber du wurdest in deinem Wiki gesperrt. Gesperrten Benutzern ist es nicht erlaubt, an der Wahl teilzunehmen.',
+	'boardvote_bot'            => 'Entschuldigung, aber dein Benutzerkonto ist im registrierten Wiki als Bot gekennzeichnet. Bots dürfen nicht abstimmen.',
+	'boardvote_welcome'        => "Willkommen '''$1'''!",
+	'go_to_board_vote'         => 'Wahlen zum Wikimedia-Kuratorium 2008',
+	'boardvote_redirecting'    => 'Um eine erhöhte Sicherung und Transparenz zu gewährleisten, findet die Wahl auf einem externen, unabhängig kontrollierten Server statt.
 
 	Du wirst in 20 Sekunden zu diesem externen Server weitergeleitet. [$1 klicke hier], um sofort dorthin zu gelangen.
 
 	Eine Sicherheitswarnung über ein unsigniertes Zertifikat kann angezeigt werden.',
-
-	'right-boardvote'         => 'Wahlen administrieren',
+	'right-boardvote'          => 'Wahlen administrieren',
 );
 
 /** Zazaki (Zazaki)
@@ -1171,7 +1176,6 @@ Die daraus folgende, verschlüsselte Version folgt unten. Sie wird öffentlich a
  */
 $messages['diq'] = array(
 	'boardvote_user' => 'Karber',
-
 );
 
 /** Lower Sorbian (Dolnoserbski)
@@ -1522,7 +1526,7 @@ $messages['ext'] = array(
 	'boardvote_welcome'  => "Bienviniu '''$1'''!",
 );
 
-/** فارسی (فارسی)
+/** Persian (فارسی)
  * @author Huji
  */
 $messages['fa'] = array(
@@ -1605,7 +1609,6 @@ $messages['fa'] = array(
 
 ممکن است یک پیام امنیتی در مورد گواهینامه غیر مجاز دریافت کنید.',
 	'right-boardvote'          => 'مدیریت انتخابات',
-
 );
 
 /** Finnish (Suomi)
@@ -1688,12 +1691,15 @@ Allekirjoittamattomasta sertifikaatista saattaa näkyä turvallisuusvaroitus.',
 	'right-boardvote'          => 'Hallinnoida vaaleja',
 );
 
+/** Faroese (Føroyskt)
+ * @author Spacebirdy
+ */
 $messages['fo'] = array(
-	'boardvote_user'          => 'Brúkari',
-	'boardvote_edits'         => 'Rættingar',
-	'boardvote_days'          => 'Dagar',
-	'boardvote_dumplink'      => 'Trýst her',
-	'boardvote_welcome'       => 'Vælkomin \'\'\'$1\'\'\'!',
+	'boardvote_user'     => 'Brúkari',
+	'boardvote_edits'    => 'Rættingar',
+	'boardvote_days'     => 'Dagar',
+	'boardvote_dumplink' => 'Trýst her',
+	'boardvote_welcome'  => "Vælkomin '''$1'''!",
 );
 
 /** French (Français)
@@ -1997,13 +2003,14 @@ $messages['haw'] = array(
 	'boardvote_welcome' => "E komo mai, '''$1'''!",
 );
 
+/** Hebrew (עברית) */
 $messages['he'] = array(
-	'boardvote'               => "בחירות לחבר הנאמנים של ויקימדיה",
-	'boardvote-desc'          => '[[meta:Board elections/2008|בחירות לחבר הנאמנים של ויקימדיה]]',
-	'boardvote_entry'         => "* [[{{ns:special}}:Boardvote/vote|הצבעה]]
+	'boardvote'                => 'בחירות לחבר הנאמנים של ויקימדיה',
+	'boardvote-desc'           => '[[meta:Board elections/2008|בחירות לחבר הנאמנים של ויקימדיה]]',
+	'boardvote_entry'          => '* [[{{ns:special}}:Boardvote/vote|הצבעה]]
 * [[{{ns:special}}:Boardvote/list|רשימת ההצבעות נכון לעכשיו]]
-* [[{{ns:special}}:Boardvote/dump|ההעתק המוצפן של הבחירות]]",
-	'boardvote_intro'         => "
+* [[{{ns:special}}:Boardvote/dump|ההעתק המוצפן של הבחירות]]',
+	'boardvote_intro'          => '
 <p>ברוכים הבאים לבחירות 2008 לחבר הנאמנים של קרן ויקימדיה. בהצבעה זו ייבחר נציג אחד אשר ייצג את הקהילה של משתמשי המיזמים השונים של ויקימדיה. הם יעזרו להחליט על כיוון התפתחותם העתידי של המיזמים השונים, כבודדים וכקבוצה, וייצגו את האינטרסים והדאגות <em>שלך</em> בחבר הנאמנים. הם יחליטו על הדרכים לבקשת תרומות ועל חלוקת המשאבים הכספיים.</p>
 
 <p>אנא קראו בעיון, בטרם ההצבעה, את פרטי המועמדים ואת תשובותיהם לשאלות. כל אחד מן המועמדים והמועמדות הוא משתמש מוכר, אשר השקיע זמן רב ומאמץ להפוך את המיזמים הללו לסביבה נעימה המחויבת למטרת ההפצה חופשית של הידע האנושי.</p>
@@ -2016,11 +2023,11 @@ $messages['he'] = array(
 <p>המנצח בהצבעה ייקבע באמצעות שיטת שולצה. למידע נוסף, ראו את דפי ההצבעה הרשמיים.</p>
 
 <p>למידע נוסף, ראו:</p>
-<ul><li><a href=\"http://meta.wikimedia.org/wiki/Board_elections/2008\" class=\"external\">הבחירות לחבר הנאמנים, 2008</a></li>
-<li><a href=\"http://meta.wikimedia.org/wiki/Board_elections/2008/Candidates\" class=\"external\">המועמדים</a></li>
-<li><a href=\"http://en.wikipedia.org/wiki/Schulze_method\" class=\"external\">שיטת שולצה</a></li></ul>",
-	'boardvote_intro_change'  => "<p>כבר הצבעתם בעבר. עם זאת, באפשרותכם לשנות את הצבעתכם באמצעות הטופס שלמטה. אנא דרגו את המועמדים בהתאם לרצונכם, כאשר מספר קטן יותר מבטא העדפה רבה יותר למועמד זה. באפשרותכם לדרג מועמדים שונים עם מספר זהה, וכן להשאיר מועמדים מסוימים ללא דירוג.</p>",
-	'boardvote_entered'       => "תודה לכם, הצבעתכם נרשמה.
+<ul><li><a href="http://meta.wikimedia.org/wiki/Board_elections/2008" class="external">הבחירות לחבר הנאמנים, 2008</a></li>
+<li><a href="http://meta.wikimedia.org/wiki/Board_elections/2008/Candidates" class="external">המועמדים</a></li>
+<li><a href="http://en.wikipedia.org/wiki/Schulze_method" class="external">שיטת שולצה</a></li></ul>',
+	'boardvote_intro_change'   => '<p>כבר הצבעתם בעבר. עם זאת, באפשרותכם לשנות את הצבעתכם באמצעות הטופס שלמטה. אנא דרגו את המועמדים בהתאם לרצונכם, כאשר מספר קטן יותר מבטא העדפה רבה יותר למועמד זה. באפשרותכם לדרג מועמדים שונים עם מספר זהה, וכן להשאיר מועמדים מסוימים ללא דירוג.</p>',
+	'boardvote_entered'        => 'תודה לכם, הצבעתכם נרשמה.
 
 אם ברצונכם בכך, אתם יכולים לרשום את הפרטים הבאים. ההצבעה נרשמה כ:
 
@@ -2034,46 +2041,44 @@ $messages['he'] = array(
 
 <pre>$3</pre>
 
-[[{{ns:special}}:Boardvote/entry|חזרה]]",
-	'boardvote_invalidentered' => "<p><strong>שגיאה</strong>: הדירוגים של מועמדים חייבים להיות מספרים שלמים וחיוביים בלבד (1, 2, 3 וכדומה), או להישאר ריקים.</p>",
-	'boardvote_nosession'     => "לא ניתן לוודא את מספר המשתמש שלכם בוויקימדיה.
+[[{{ns:special}}:Boardvote/entry|חזרה]]',
+	'boardvote_invalidentered' => '<p><strong>שגיאה</strong>: הדירוגים של מועמדים חייבים להיות מספרים שלמים וחיוביים בלבד (1, 2, 3 וכדומה), או להישאר ריקים.</p>',
+	'boardvote_nosession'      => 'לא ניתן לוודא את מספר המשתמש שלכם בוויקימדיה.
 אנא היכנסו לאתר ויקי שבו אתם רשאים להצביע, ואז היכנסו ל<nowiki>[[Special:Boardvote]]</nowiki>.
-עליכם להשתמש בחשבון ממנו ביצעתם לפחות $1 עריכות לפני $2, ולפחות $3 עריכות בין $4 ל־$5.",
-	'boardvote_notloggedin'   => "אינכם רשומים לחשבון.
-כדי להצביע, עליכם להשתמש בחשבון ממנו ביצעתם לפחות $1 עריכות לפני $2, ולפחות $3 עריכות בין $4 ל־$5.",
-	'boardvote_notqualified'  => "אינכם רשאים להצביע בבחירות הללו.
-היה עליכם לבצע $1 עריכות לפני $2, ולפחות $3 עריכות בין $4 ל־$5.",
-	'boardvote_novotes'       => "איש לא הצביע עדיין.",
-	'boardvote_time'          => "שעה",
-	'boardvote_user'          => "משתמש",
-	'boardvote_edits'         => "עריכות",
-	'boardvote_days'          => "ימים",
-	'boardvote_ip'            => "IP",
-	'boardvote_ua'            => "זיהוי הדפדפן",
-	'boardvote_listintro'     => "<p>זוהי רשימה של כל ההצבעות שנרשמו עד כה. $1 כדי להגיע לנתונים המוצפנים.</p>",
-	'boardvote_dumplink'      => "לחצו כאן",
-	'boardvote_submit'        => 'הצבעה',
-	'boardvote_strike'        => "גילוי",
-	'boardvote_unstrike'      => "הסתרה",
-	'boardvote_needadmin'     => "רק מנהלי הבחירות יכולים לבצע פעולה זו.",
-	'boardvote_sitenotice'    => "<a href=\"{{localurle:{{ns:special}}:Boardvote/vote}}\">בחירות לחבר הנאמנים של ויקימדיה</a>: ההצבעה פתוחה עד 22 ביוני",
-	'boardvote_notstarted'    => 'ההצבעה עדיין לא התחילה',
-	'boardvote_closed'        => 'ההצבעה סגורה כעת, ראו את ב[http://meta.wikimedia.org/wiki/Board_elections/2008/Results הדף על תוצאות הבחירות] בקרוב.',
-	'boardvote_edits_many'    => 'הרבה',
-	'group-boardvote'         => 'מנהלי הבחירות לחבר הנאמנים',
-	'group-boardvote-member'  => 'מנהל הבחירות לחבר הנאמנים',
-	'grouppage-boardvote'     => '{{ns:project}}:מנהל הבחירות לחבר הנאמנים',
-	'boardvote_blocked'       => 'אתם חסומים באתר הוויקי שאתם רשומים בו. משתמשים חסומים אינם יכולים להצביע.',
-	'boardvote_bot'           => 'אתם רשומים כבוטים באתר הוויקי שאתם רשומים בו. חשבונות בוט אינם רשאים להצביע.',
-	'boardvote_welcome'       => "ברוכים הבאים, '''$1'''!",
-	'go_to_board_vote'        => 'בחירות לחבר הנאמנים של ויקימדיה, 2008',
-	'boardvote_redirecting'   => 'הבחירות מתקיימות על שרתים חיצוניים ובלתי תלויים כדי לשפר את האבטחה ואת השקיפות בתהליך ההצבעה.
+עליכם להשתמש בחשבון ממנו ביצעתם לפחות $1 עריכות לפני $2, ולפחות $3 עריכות בין $4 ל־$5.',
+	'boardvote_notloggedin'    => 'אינכם רשומים לחשבון.
+כדי להצביע, עליכם להשתמש בחשבון ממנו ביצעתם לפחות $1 עריכות לפני $2, ולפחות $3 עריכות בין $4 ל־$5.',
+	'boardvote_notqualified'   => 'אינכם רשאים להצביע בבחירות הללו.
+היה עליכם לבצע $1 עריכות לפני $2, ולפחות $3 עריכות בין $4 ל־$5.',
+	'boardvote_novotes'        => 'איש לא הצביע עדיין.',
+	'boardvote_time'           => 'שעה',
+	'boardvote_user'           => 'משתמש',
+	'boardvote_edits'          => 'עריכות',
+	'boardvote_days'           => 'ימים',
+	'boardvote_ua'             => 'זיהוי הדפדפן',
+	'boardvote_listintro'      => '<p>זוהי רשימה של כל ההצבעות שנרשמו עד כה. $1 כדי להגיע לנתונים המוצפנים.</p>',
+	'boardvote_dumplink'       => 'לחצו כאן',
+	'boardvote_submit'         => 'הצבעה',
+	'boardvote_strike'         => 'גילוי',
+	'boardvote_unstrike'       => 'הסתרה',
+	'boardvote_needadmin'      => 'רק מנהלי הבחירות יכולים לבצע פעולה זו.',
+	'boardvote_sitenotice'     => '<a href="{{localurle:{{ns:special}}:Boardvote/vote}}">בחירות לחבר הנאמנים של ויקימדיה</a>: ההצבעה פתוחה עד 22 ביוני',
+	'boardvote_notstarted'     => 'ההצבעה עדיין לא התחילה',
+	'boardvote_closed'         => 'ההצבעה סגורה כעת, ראו את ב[http://meta.wikimedia.org/wiki/Board_elections/2008/Results הדף על תוצאות הבחירות] בקרוב.',
+	'boardvote_edits_many'     => 'הרבה',
+	'group-boardvote'          => 'מנהלי הבחירות לחבר הנאמנים',
+	'group-boardvote-member'   => 'מנהל הבחירות לחבר הנאמנים',
+	'grouppage-boardvote'      => '{{ns:project}}:מנהל הבחירות לחבר הנאמנים',
+	'boardvote_blocked'        => 'אתם חסומים באתר הוויקי שאתם רשומים בו. משתמשים חסומים אינם יכולים להצביע.',
+	'boardvote_bot'            => 'אתם רשומים כבוטים באתר הוויקי שאתם רשומים בו. חשבונות בוט אינם רשאים להצביע.',
+	'boardvote_welcome'        => "ברוכים הבאים, '''$1'''!",
+	'go_to_board_vote'         => 'בחירות לחבר הנאמנים של ויקימדיה, 2008',
+	'boardvote_redirecting'    => 'הבחירות מתקיימות על שרתים חיצוניים ובלתי תלויים כדי לשפר את האבטחה ואת השקיפות בתהליך ההצבעה.
 
 הפניה לשרתים החיצוניים תתבצע בתוך 20 שניות. [$1 לחצו כאן] כדי להגיע אליהם עכשיו.
 
 ייתכן שתוצג אזהרת אבטחה בגלל תעודת אישור שאינה חתומה.',
-
-	'right-boardvote' => 'ניהול הבחירות',
+	'right-boardvote'          => 'ניהול הבחירות',
 );
 
 /** Hindi (हिन्दी)
@@ -2900,116 +2905,7 @@ $messages['ka'] = array(
 	'boardvote_welcome'    => "მოგესალმებით '''$1'''!",
 );
 
-$messages['kk-cyrl'] = array(
-	'boardvote'              => 'Wikimedia қорының Уәкілдер кеңесінің сайлауы',
-	'boardvote_entry'        => '* [[{{ns:special}}:Boardvote/vote|Дауыс беру]]
-* [[{{ns:Special}}:Boardvote/list|Күн бойынша дауыс беру тізімі]]
-* [[{{ns:Special}}:Boardvote/dump|Мұқамдалған сайлау жазбаларының арқауы]]',
-	'boardvote_intro_change' => '<p>Даусыңызды бұрын беріп қойыпсыз.
-Дегенмен, төмендегі пішінді пайдаланып даусыңызды өзгерте аласыз.
-Өзіңіз таңдаған әрбір ұсынылған тұлғалар жанында құсбелгі қойыңыз.</p>',
-	'boardvote_entered'      => 'Рахмет, дауысыңыз жазылыпп алынды.
-
-Егер көңіліңіз болса, келесі егжей-тегжейлерін жазып толтыруыңызға болады. Дауыс беруіңіздің жазбасы:
-
-<pre>$1</pre>
-
-Бұл Сайлау Әкімшілерінің баршаға жарияланған електронды кілтімен мұқамдалған:
-
-<pre>$2</pre>
-
-Мұқамдалған нұсқасының нәтижесі келесіде көрсетіледі. Бұл [[{{ns:special}}:Boardvote/dump]] бетінде көрсетіліп баршаға жарияланады.
-
-<pre>$3</pre>
-
-[[{{ns:special}}:Boardvote/entry|Артқа]]',
-	'boardvote_nosession'    => 'Wikimedia қатысушының жеке анықтаушы нөмірі шамаланбады. Өзіңізді айқындаған уикиге кіріңіз де, <nowiki>[[Special:Boardvote]]</nowiki> деген бетке өтііңіз. Бірінші түзетуіңіз $3 кезіне дейін болып, $2 кезіне дейін ең кемінде $1 үлес берген тіркелгініз болу керек.',
-	'boardvote_notloggedin'  => 'Жобаға кірмегенсіз. Дауыс беру үшін бірінші түзетуіңіз $3 кезіне дейін болып, $2 кезіне дейін ең кемінде $1 үлес берген тіркелгініз болу керек.',
-	'boardvote_notqualified' => 'Бұл сайлаудағы дауыс беруіне айқындалмадыңыз. Бірінші түзетуіңіз $5 кезіне дейін болып, $2 кезіне дейін ең кемінде $3 түзету жасауыңыз керек.',
-	'boardvote_novotes'      => 'Әліде ешкім дауысын берген жоқ.',
-	'boardvote_time'         => 'Уақыт',
-	'boardvote_user'         => 'Қатысушы',
-	'boardvote_edits'        => 'Түзету',
-	'boardvote_days'         => 'Күн',
-	'boardvote_ip'           => 'IP жай',
-	'boardvote_ua'           => 'Пайдаланушы әрекеткіші',
-	'boardvote_listintro'    => '<p>Осында жазылып алынған барлық дауыс берушілердің күн-айы бойынша тізімі беріліп тұр.
-Мұқамдалған деректер үшін $1.</p>',
-	'boardvote_dumplink'     => 'мынаны нұқыңыз',
-	'boardvote_submit'        => 'Жарайды',
-	'boardvote_strike'       => 'Сызып тастау',
-	'boardvote_unstrike'     => 'Сызуды өшіру',
-	'boardvote_needadmin'    => 'Бұл әрекетті тек сайлау әкімшілер орындай алады.',
-	'boardvote_notstarted'    => 'Дауыс беру әлі басталмаған',
-	'boardvote_edits_many'    => 'көп',
-	'group-boardvote'         => 'Кеңес сайлау әкімшілері',
-	'group-boardvote-member' => 'кеңес сайлау әкімшісі',
-	'grouppage-boardvote'     => '{{ns:project}}:Кеңес сайлау әкімшілері',
-	'boardvote_blocked'      => 'Ғафу етіңіз, тіркелген уикиіңізде бұғатталғансыз. Бұғатталған қатысушыларға дауыс беру үшін рұқсат жоқ.',
-	'boardvote_welcome'      => "'''$1''', қөш келдіңіз!",
-	'boardvote_redirecting'  => 'Нығайтылған қауіпсіздік пен мөлдірлік үшін, біз сайлауды тәуелсіз меңгерілген
-сыртқы серверде өткіземіз.
-
-20 секунд мезгілінде осы сыртқы серверке  айдатыласыз. Соған қазір өтіп кету үшін [$1 мында нұқыңыз].
-
-Қол қойылмаған куәлік туралы қауіпсіздік аңғарту көрсетілуге мүмкін.',
-
-);
-$messages['kk-latn'] = array(
-	'boardvote'              => 'Wikimedia qorınıñ Wäkilder keñesiniñ saýlawı',
-	'boardvote_entry'        => '* [[{{ns:special}}:Boardvote/vote|Dawıs berw]]
-* [[{{ns:Special}}:Boardvote/list|Kün boýınşa dawıs berw tizimi]]
-* [[{{ns:Special}}:Boardvote/dump|Muqamdalğan saýlaw jazbalarınıñ arqawı]]',
-	'boardvote_intro_change' => '<p>Dawsıñızdı burın berip qoýıpsız.
-Degenmen, tömendegi pişindi paýdalanıp dawsıñızdı özgerte alasız.
-Öziñiz tañdağan ärbir usınılğan tulğalar janında qusbelgi qoýıñız.</p>',
-	'boardvote_entered'      => 'Raxmet, dawısıñız jazılıpp alındı.
-
-Eger köñiliñiz bolsa, kelesi egjeý-tegjeýlerin jazıp toltırwıñızğa boladı. Dawıs berwiñizdiñ jazbası:
-
-<pre>$1</pre>
-
-Bul Saýlaw Äkimşileriniñ barşağa jarïyalanğan elektrondı kiltimen muqamdalğan:
-
-<pre>$2</pre>
-
-Muqamdalğan nusqasınıñ nätïjesi keleside körsetiledi. Bul [[{{ns:special}}:Boardvote/dump]] betinde körsetilip barşağa jarïyalanadı.
-
-<pre>$3</pre>
-
-[[{{ns:special}}:Boardvote/entry|Artqa]]',
-	'boardvote_nosession'    => 'Wikimedia qatıswşınıñ jeke anıqtawşı nömiri şamalanbadı. Öziñizdi aýqındağan wïkïge kiriñiz de, <nowiki>[[Special:Boardvote]]</nowiki> degen betke ötiiñiz. Birinşi tüzetwiñiz $3 kezine deýin bolıp, $2 kezine deýin eñ keminde $1 üles bergen tirkelginiz bolw kerek.',
-	'boardvote_notloggedin'  => 'Jobağa kirmegensiz. Dawıs berw üşin birinşi tüzetwiñiz $3 kezine deýin bolıp, $2 kezine deýin eñ keminde $1 üles bergen tirkelginiz bolw kerek.',
-	'boardvote_notqualified' => 'Bul saýlawdağı dawıs berwine aýqındalmadıñız. Birinşi tüzetwiñiz $5 kezine deýin bolıp, $2 kezine deýin eñ keminde $3 tüzetw jasawıñız kerek.',
-	'boardvote_novotes'      => 'Älide eşkim dawısın bergen joq.',
-	'boardvote_time'         => 'Waqıt',
-	'boardvote_user'         => 'Qatıswşı',
-	'boardvote_edits'        => 'Tüzetw',
-	'boardvote_days'         => 'Kün',
-	'boardvote_ip'           => 'IP jaý',
-	'boardvote_ua'           => 'Paýdalanwşı äreketkişi',
-	'boardvote_listintro'    => '<p>Osında jazılıp alınğan barlıq dawıs berwşilerdiñ kün-aýı boýınşa tizimi berilip tur.
-Muqamdalğan derekter üşin $1.</p>',
-	'boardvote_dumplink'     => 'mınanı nuqıñız',
-	'boardvote_submit'        => 'Jaraýdı',
-	'boardvote_strike'       => 'Sızıp tastaw',
-	'boardvote_unstrike'     => 'Sızwdı öşirw',
-	'boardvote_needadmin'    => 'Bul äreketti tek saýlaw äkimşiler orındaý aladı.',
-	'boardvote_notstarted'    => 'Dawıs berw äli bastalmağan',
-	'boardvote_edits_many'    => 'köp',
-	'group-boardvote'         => 'Keñes saýlaw äkimşileri',
-	'group-boardvote-member' => 'keñes saýlaw äkimşisi',
-	'grouppage-boardvote'     => '{{ns:project}}:Keñes saýlaw äkimşileri',
-	'boardvote_blocked'      => 'Ğafw etiñiz, tirkelgen wïkïiñizde buğattalğansız. Buğattalğan qatıswşılarğa dawıs berw üşin ruqsat joq.',
-	'boardvote_welcome'      => "'''$1''', qöş keldiñiz!",
-	'boardvote_redirecting'  => 'Nığaýtılğan qawipsizdik pen möldirlik üşin, biz saýlawdı täwelsiz meñgerilgen
-sırtqı serverde ötkizemiz.
-
-20 sekwnd mezgilinde osı sırtqı serverke  aýdatılasız. Soğan qazir ötip ketw üşin [$1 mında nuqıñız].
-
-Qol qoýılmağan kwälik twralı qawipsizdik añğartw körsetilwge mümkin.',
-
-);
+/** Kazakh (Arabic script) (‫قازاقشا (تٴوتە)‬) */
 $messages['kk-arab'] = array(
 	'boardvote'              => 'Wikimedia قورىنىڭ ۋاكىلدەر كەڭەسىنىڭ سايلاۋى',
 	'boardvote_entry'        => '* [[{{ns:special}}:Boardvote/vote|داۋىس بەرۋ]]
@@ -3046,7 +2942,7 @@ $messages['kk-arab'] = array(
 	'boardvote_listintro'    => '<p>وسىندا جازىلىپ الىنعان بارلىق داۋىس بەرۋشىلەردىڭ كۇن-ايى بويىنشا ٴتىزىمى بەرىلىپ تۇر.
 مۇقامدالعان دەرەكتەر ٴۇشىن $1.</p>',
 	'boardvote_dumplink'     => 'مىنانى نۇقىڭىز',
-	'boardvote_submit'        => 'جارايدى',
+	'boardvote_submit'       => 'جارايدى',
 	'boardvote_strike'       => 'سىزىپ تاستاۋ',
 	'boardvote_unstrike'     => 'سىزۋدى ٴوشىرۋ',
 	'boardvote_needadmin'    => 'بۇل ارەكەتتى تەك سايلاۋ اكىمشىلەر ورىنداي الادى.',
@@ -3063,7 +2959,118 @@ $messages['kk-arab'] = array(
 20 سەكۋند مەزگىلىندە وسى سىرتقى سەرۆەركە  ايداتىلاسىز. سوعان قازىر ٴوتىپ كەتۋ ٴۇشىن [$1 مىندا نۇقىڭىز].
 
 قول قويىلماعان كۋالىك تۋرالى قاۋىپسىزدىك اڭعارتۋ كورسەتىلۋگە مۇمكىن.',
+);
 
+/** Kazakh (Cyrillic) (Қазақша (Cyrillic)) */
+$messages['kk-cyrl'] = array(
+	'boardvote'              => 'Wikimedia қорының Уәкілдер кеңесінің сайлауы',
+	'boardvote_entry'        => '* [[{{ns:special}}:Boardvote/vote|Дауыс беру]]
+* [[{{ns:Special}}:Boardvote/list|Күн бойынша дауыс беру тізімі]]
+* [[{{ns:Special}}:Boardvote/dump|Мұқамдалған сайлау жазбаларының арқауы]]',
+	'boardvote_intro_change' => '<p>Даусыңызды бұрын беріп қойыпсыз.
+Дегенмен, төмендегі пішінді пайдаланып даусыңызды өзгерте аласыз.
+Өзіңіз таңдаған әрбір ұсынылған тұлғалар жанында құсбелгі қойыңыз.</p>',
+	'boardvote_entered'      => 'Рахмет, дауысыңыз жазылыпп алынды.
+
+Егер көңіліңіз болса, келесі егжей-тегжейлерін жазып толтыруыңызға болады. Дауыс беруіңіздің жазбасы:
+
+<pre>$1</pre>
+
+Бұл Сайлау Әкімшілерінің баршаға жарияланған електронды кілтімен мұқамдалған:
+
+<pre>$2</pre>
+
+Мұқамдалған нұсқасының нәтижесі келесіде көрсетіледі. Бұл [[{{ns:special}}:Boardvote/dump]] бетінде көрсетіліп баршаға жарияланады.
+
+<pre>$3</pre>
+
+[[{{ns:special}}:Boardvote/entry|Артқа]]',
+	'boardvote_nosession'    => 'Wikimedia қатысушының жеке анықтаушы нөмірі шамаланбады. Өзіңізді айқындаған уикиге кіріңіз де, <nowiki>[[Special:Boardvote]]</nowiki> деген бетке өтііңіз. Бірінші түзетуіңіз $3 кезіне дейін болып, $2 кезіне дейін ең кемінде $1 үлес берген тіркелгініз болу керек.',
+	'boardvote_notloggedin'  => 'Жобаға кірмегенсіз. Дауыс беру үшін бірінші түзетуіңіз $3 кезіне дейін болып, $2 кезіне дейін ең кемінде $1 үлес берген тіркелгініз болу керек.',
+	'boardvote_notqualified' => 'Бұл сайлаудағы дауыс беруіне айқындалмадыңыз. Бірінші түзетуіңіз $5 кезіне дейін болып, $2 кезіне дейін ең кемінде $3 түзету жасауыңыз керек.',
+	'boardvote_novotes'      => 'Әліде ешкім дауысын берген жоқ.',
+	'boardvote_time'         => 'Уақыт',
+	'boardvote_user'         => 'Қатысушы',
+	'boardvote_edits'        => 'Түзету',
+	'boardvote_days'         => 'Күн',
+	'boardvote_ip'           => 'IP жай',
+	'boardvote_ua'           => 'Пайдаланушы әрекеткіші',
+	'boardvote_listintro'    => '<p>Осында жазылып алынған барлық дауыс берушілердің күн-айы бойынша тізімі беріліп тұр.
+Мұқамдалған деректер үшін $1.</p>',
+	'boardvote_dumplink'     => 'мынаны нұқыңыз',
+	'boardvote_submit'       => 'Жарайды',
+	'boardvote_strike'       => 'Сызып тастау',
+	'boardvote_unstrike'     => 'Сызуды өшіру',
+	'boardvote_needadmin'    => 'Бұл әрекетті тек сайлау әкімшілер орындай алады.',
+	'boardvote_notstarted'   => 'Дауыс беру әлі басталмаған',
+	'boardvote_edits_many'   => 'көп',
+	'group-boardvote'        => 'Кеңес сайлау әкімшілері',
+	'group-boardvote-member' => 'кеңес сайлау әкімшісі',
+	'grouppage-boardvote'    => '{{ns:project}}:Кеңес сайлау әкімшілері',
+	'boardvote_blocked'      => 'Ғафу етіңіз, тіркелген уикиіңізде бұғатталғансыз. Бұғатталған қатысушыларға дауыс беру үшін рұқсат жоқ.',
+	'boardvote_welcome'      => "'''$1''', қөш келдіңіз!",
+	'boardvote_redirecting'  => 'Нығайтылған қауіпсіздік пен мөлдірлік үшін, біз сайлауды тәуелсіз меңгерілген
+сыртқы серверде өткіземіз.
+
+20 секунд мезгілінде осы сыртқы серверке  айдатыласыз. Соған қазір өтіп кету үшін [$1 мында нұқыңыз].
+
+Қол қойылмаған куәлік туралы қауіпсіздік аңғарту көрсетілуге мүмкін.',
+);
+
+/** Kazakh (Latin) (Қазақша (Latin)) */
+$messages['kk-latn'] = array(
+	'boardvote'              => 'Wikimedia qorınıñ Wäkilder keñesiniñ saýlawı',
+	'boardvote_entry'        => '* [[{{ns:special}}:Boardvote/vote|Dawıs berw]]
+* [[{{ns:Special}}:Boardvote/list|Kün boýınşa dawıs berw tizimi]]
+* [[{{ns:Special}}:Boardvote/dump|Muqamdalğan saýlaw jazbalarınıñ arqawı]]',
+	'boardvote_intro_change' => '<p>Dawsıñızdı burın berip qoýıpsız.
+Degenmen, tömendegi pişindi paýdalanıp dawsıñızdı özgerte alasız.
+Öziñiz tañdağan ärbir usınılğan tulğalar janında qusbelgi qoýıñız.</p>',
+	'boardvote_entered'      => 'Raxmet, dawısıñız jazılıpp alındı.
+
+Eger köñiliñiz bolsa, kelesi egjeý-tegjeýlerin jazıp toltırwıñızğa boladı. Dawıs berwiñizdiñ jazbası:
+
+<pre>$1</pre>
+
+Bul Saýlaw Äkimşileriniñ barşağa jarïyalanğan elektrondı kiltimen muqamdalğan:
+
+<pre>$2</pre>
+
+Muqamdalğan nusqasınıñ nätïjesi keleside körsetiledi. Bul [[{{ns:special}}:Boardvote/dump]] betinde körsetilip barşağa jarïyalanadı.
+
+<pre>$3</pre>
+
+[[{{ns:special}}:Boardvote/entry|Artqa]]',
+	'boardvote_nosession'    => 'Wikimedia qatıswşınıñ jeke anıqtawşı nömiri şamalanbadı. Öziñizdi aýqındağan wïkïge kiriñiz de, <nowiki>[[Special:Boardvote]]</nowiki> degen betke ötiiñiz. Birinşi tüzetwiñiz $3 kezine deýin bolıp, $2 kezine deýin eñ keminde $1 üles bergen tirkelginiz bolw kerek.',
+	'boardvote_notloggedin'  => 'Jobağa kirmegensiz. Dawıs berw üşin birinşi tüzetwiñiz $3 kezine deýin bolıp, $2 kezine deýin eñ keminde $1 üles bergen tirkelginiz bolw kerek.',
+	'boardvote_notqualified' => 'Bul saýlawdağı dawıs berwine aýqındalmadıñız. Birinşi tüzetwiñiz $5 kezine deýin bolıp, $2 kezine deýin eñ keminde $3 tüzetw jasawıñız kerek.',
+	'boardvote_novotes'      => 'Älide eşkim dawısın bergen joq.',
+	'boardvote_time'         => 'Waqıt',
+	'boardvote_user'         => 'Qatıswşı',
+	'boardvote_edits'        => 'Tüzetw',
+	'boardvote_days'         => 'Kün',
+	'boardvote_ip'           => 'IP jaý',
+	'boardvote_ua'           => 'Paýdalanwşı äreketkişi',
+	'boardvote_listintro'    => '<p>Osında jazılıp alınğan barlıq dawıs berwşilerdiñ kün-aýı boýınşa tizimi berilip tur.
+Muqamdalğan derekter üşin $1.</p>',
+	'boardvote_dumplink'     => 'mınanı nuqıñız',
+	'boardvote_submit'       => 'Jaraýdı',
+	'boardvote_strike'       => 'Sızıp tastaw',
+	'boardvote_unstrike'     => 'Sızwdı öşirw',
+	'boardvote_needadmin'    => 'Bul äreketti tek saýlaw äkimşiler orındaý aladı.',
+	'boardvote_notstarted'   => 'Dawıs berw äli bastalmağan',
+	'boardvote_edits_many'   => 'köp',
+	'group-boardvote'        => 'Keñes saýlaw äkimşileri',
+	'group-boardvote-member' => 'keñes saýlaw äkimşisi',
+	'grouppage-boardvote'    => '{{ns:project}}:Keñes saýlaw äkimşileri',
+	'boardvote_blocked'      => 'Ğafw etiñiz, tirkelgen wïkïiñizde buğattalğansız. Buğattalğan qatıswşılarğa dawıs berw üşin ruqsat joq.',
+	'boardvote_welcome'      => "'''$1''', qöş keldiñiz!",
+	'boardvote_redirecting'  => 'Nığaýtılğan qawipsizdik pen möldirlik üşin, biz saýlawdı täwelsiz meñgerilgen
+sırtqı serverde ötkizemiz.
+
+20 sekwnd mezgilinde osı sırtqı serverke  aýdatılasız. Soğan qazir ötip ketw üşin [$1 mında nuqıñız].
+
+Qol qoýılmağan kwälik twralı qawipsizdik añğartw körsetilwge mümkin.',
 );
 
 /** Khmer (ភាសាខ្មែរ)
@@ -3272,14 +3279,17 @@ Womöschlesh kriß De och en Warnong fun wääje de Sesherhëijt fonn_ennem Zäc
 	'right-boardvote'          => 'Wahle för de Shtefftong betreue',
 );
 
+/** Latin (Latina)
+ * @author SPQRobin
+ */
 $messages['la'] = array(
-	'boardvote_time'          => 'Tempus',
-	'boardvote_user'          => 'Usor',
-	'boardvote_edits'         => 'Recensiones',
-	'boardvote_days'          => 'Dies',
-	'boardvote_dumplink'      => 'Imprime hic',
-	'boardvote_edits_many'    => 'plurimae',
-	'boardvote_welcome'       => 'Salve \'\'\'$1\'\'\'!',
+	'boardvote_time'       => 'Tempus',
+	'boardvote_user'       => 'Usor',
+	'boardvote_edits'      => 'Recensiones',
+	'boardvote_days'       => 'Dies',
+	'boardvote_dumplink'   => 'Imprime hic',
+	'boardvote_edits_many' => 'plurimae',
+	'boardvote_welcome'    => "Salve '''$1'''!",
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -3481,9 +3491,12 @@ $messages['lmo'] = array(
 	'boardvote' => 'Elezziún dal cunsili diretiif dala Wikimedia Foundation',
 );
 
+/** Lozi (Silozi)
+ * @author Ooswesthoesbes
+ */
 $messages['loz'] = array(
-	'boardvote_user'          => 'Sebelu',
-	'boardvote_submit'        => 'Afi',
+	'boardvote_user'   => 'Sebelu',
+	'boardvote_submit' => 'Afi',
 );
 
 /** Lithuanian (Lietuvių)
@@ -3811,7 +3824,7 @@ Sebuah amaran keselamatan mengenai sijil yang tidak ditandatangani mungkin akan 
 	'right-boardvote'          => 'Mentadbir pilihan raya',
 );
 
-/** Erzya (эрзянь кель)
+/** Erzya (Эрзянь)
  * @author Amdf
  */
 $messages['myv'] = array(
@@ -3823,12 +3836,13 @@ $messages['myv'] = array(
 	'boardvote_edits_many' => 'ламот',
 );
 
+/** Min Nan Chinese (Bân-lâm-gú) */
 $messages['nan'] = array(
-	'boardvote'               => "Wikimedia Táng-sū-hōe soán-kí",
-	'boardvote_entry'         => "* [[Special:Boardvote/vote|Tâu-phiò]]
+	'boardvote'          => 'Wikimedia Táng-sū-hōe soán-kí',
+	'boardvote_entry'    => '* [[Special:Boardvote/vote|Tâu-phiò]]
 * [[Special:Boardvote/list|Lia̍t kàu taⁿ ê tâu-phiò]]
-* [[Special:Boardvote/dump|Dump encrypted soán-kí kì-lo̍k]]",
-	'boardvote_dumplink'      => "Chhi̍h chia",
+* [[Special:Boardvote/dump|Dump encrypted soán-kí kì-lo̍k]]',
+	'boardvote_dumplink' => 'Chhi̍h chia',
 );
 
 /** Low German (Plattdüütsch)
@@ -3862,6 +3876,7 @@ $messages['nds'] = array(
 
 /** Nepali (नेपाली)
  * @author SPQRobin
+ * @author Siebrand
  */
 $messages['ne'] = array(
 	'boardvote_entry'      => '* [[Special:Boardvote/vote|भोट हाल्नुहोस्]]
@@ -4560,20 +4575,27 @@ Iskay chunka sikundupim chay hawa sirwiqman pusasqaykiku. [$1 Kaypi ñit'iy] cha
 Mana silq'usqa illumanta qasi yuyampay rikch'akunqachá.",
 );
 
+/** Rhaeto-Romance (Rumantsch)
+ * @author SPQRobin
+ */
 $messages['rm'] = array(
-	'boardvote_user'          => 'Utilisader',
-	'boardvote_welcome'       => 'Chau \'\'\'$1\'\'\'!',
+	'boardvote_user'    => 'Utilisader',
+	'boardvote_welcome' => "Chau '''$1'''!",
 );
+
+/** Romanian (Română)
+ * @author KlaudiuMihaila
+ */
 $messages['ro'] = array(
-	'boardvote_novotes'       => 'Nimeni nu a votat încă.',
-	'boardvote_time'          => 'Timp',
-	'boardvote_user'          => 'Utilizator',
-	'boardvote_edits'         => 'Modificări',
-	'boardvote_days'          => 'Zile',
-	'boardvote_ip'            => 'IP',#identical but defined
-	'boardvote_listintro'     => '<p>Aceasta este o listă a tuturor voturilor înregistrate până acum. $1 pentru datele criptate.</p>',
-	'boardvote_submit'        => 'OK',#identical but defined
-	'boardvote_notstarted'    => 'Votarea încă nu a început',
+	'boardvote_novotes'    => 'Nimeni nu a votat încă.',
+	'boardvote_time'       => 'Timp',
+	'boardvote_user'       => 'Utilizator',
+	'boardvote_edits'      => 'Modificări',
+	'boardvote_days'       => 'Zile',
+	'boardvote_ip'         => 'IP',
+	'boardvote_listintro'  => '<p>Aceasta este o listă a tuturor voturilor înregistrate până acum. $1 pentru datele criptate.</p>',
+	'boardvote_submit'     => 'OK',
+	'boardvote_notstarted' => 'Votarea încă nu a început',
 );
 
 /** Russian (Русский)
@@ -4913,12 +4935,13 @@ $1 за шифроване податке.</p>',
 	'right-boardvote'          => 'Администрирај изборе',
 );
 
+/** latinica (latinica) */
 $messages['sr-el'] = array(
-	'boardvote'               => "Izbor za Odbor poverenika Vikimedija Fondacije",
-	'boardvote_entry'         => "* [[Special:Boardvote/vote|Vote]]
+	'boardvote'              => 'Izbor za Odbor poverenika Vikimedija Fondacije',
+	'boardvote_entry'        => '* [[Special:Boardvote/vote|Vote]]
 * [[Special:Boardvote/list|Spisak glasova do datuma]]
-* [[Special:Boardvote/dump|Enkriptovan zapis glasanja]]",
-	'boardvote_intro'         => "
+* [[Special:Boardvote/dump|Enkriptovan zapis glasanja]]',
+	'boardvote_intro'        => '
 <p>Dobro došli na treće izbore za Vikimedijin Odbor poverenika.
 Glasamo za jednu osobu koja bi predstavljala zajednicu korisnika raznih Vikimedijinih projekata.
 Ona će pomoći da se utvrdi budući smer kojim će Vikimedijini projekti da se kreću,
@@ -4933,13 +4956,12 @@ ovi projekti budu dobrodošlo okruženje sa slobodnom distribucijom ljudskog zna
 će biti proglašeni pobednikom tog položaja. U slučaju nerešenog, novo glasanje će biti održano.</p>
 
 <p>Za više informacija, pogledajte:</p>
-<ul><li><a href=\"http://meta.wikimedia.org/wiki/Board_elections/2008\" class=\"external\">Najčešće postavljena pitanja izbora</a></li>
-<li><a href=\"http://meta.wikimedia.org/wiki/Board_elections/2008/Candidates\" class=\"external\">Kandidati</a></li></ul>
-",
-	'boardvote_intro_change'  => "<p>Glasali ste ranije. Međutim, možete promeniti vaš glas koristeći formular ispod.
-Molimo odaberite kandidate za koje glasate.</p>",
-	'boardvote_footer'        => "&nbsp;", # Do not translate this
-	'boardvote_entered'       => "Hvala vam, vaš glas je snimljen.
+<ul><li><a href="http://meta.wikimedia.org/wiki/Board_elections/2008" class="external">Najčešće postavljena pitanja izbora</a></li>
+<li><a href="http://meta.wikimedia.org/wiki/Board_elections/2008/Candidates" class="external">Kandidati</a></li></ul>
+',
+	'boardvote_intro_change' => '<p>Glasali ste ranije. Međutim, možete promeniti vaš glas koristeći formular ispod.
+Molimo odaberite kandidate za koje glasate.</p>',
+	'boardvote_entered'      => 'Hvala vam, vaš glas je snimljen.
 
 Ukoliko želite, možete sačuvati sledeće detalje. Vaše glasački snimak je:
 
@@ -4953,29 +4975,28 @@ Sledi rezultujuća šifrirana verzija. Biće javno predstavljena na [[Special:Bo
 
 <pre>$3</pre>
 
-[[Special:Boardvote/entry|Nazad]]",
-	'boardvote_notloggedin'   => "Niste prijavljeni. Da biste glasali, morate da imate nalog sa bar $1 izmena pre $2, gde je prva izmena pre $3.",
-	'boardvote_notqualified'  => "Žao nam je, niste kvalifikovani da glasate na ovom izboru. Morate da imate ovde bar $3 izmena pre $2, a vi imate $1. Takođe, vaša prva izmena na ovom vikiju je bila u $4, a treba da bude pre $5.",
-	'boardvote_novotes'       => "Još niko nije glasao.",
-	'boardvote_time'          => "Vreme",
-	'boardvote_user'          => "Korisnik",
-	'boardvote_edits'         => "Izmena",
-	'boardvote_days'          => "Dana",
-	'boardvote_ip'            => "IP",
-	'boardvote_ua'            => "Korisnički agent",
-	'boardvote_listintro'     => "<p>Ovo je spisak svih glasova koji su snimljeni do sada. $1 za šifrirane podatke.</p>",
-	'boardvote_dumplink'      => "Kliknite ovde",
-	'boardvote_submit'        => 'U redu',
-	'boardvote_strike'        => "Precrtano",
-	'boardvote_unstrike'      => "Neprecrtano",
-	'boardvote_needadmin'     => "Samo administratori glasanja mogu da izvode ovu operaciju.",
-	'boardvote_sitenotice'    => "<a href=\"{{localurle:Special:Boardvote/vote}}\">Izbori za Vikimedijin Odbor</a>:  Glasanje otvoreno do 21. septembra",
-	'boardvote_notstarted'    => 'Glasanje još nije počelo',
-	'boardvote_closed'        => 'Glasanje je završeno, pogledajte [http://meta.wikimedia.org/wiki/Elections_for_the_Board_of_Trustees_of_the_Wikimedia_Foundation%2C_2008/En stranicu za glasanje za rezultate] uskoro.',
-	'boardvote_edits_many'    => 'mnogo',
-	'group-boardvote'         => 'izborna komisija',
-	'group-boardvote-member'  => 'izborna komisija',
-	'grouppage-boardvote'     => '{{ns:project}}:Administrator glasanja za Odbor',
+[[Special:Boardvote/entry|Nazad]]',
+	'boardvote_notloggedin'  => 'Niste prijavljeni. Da biste glasali, morate da imate nalog sa bar $1 izmena pre $2, gde je prva izmena pre $3.',
+	'boardvote_notqualified' => 'Žao nam je, niste kvalifikovani da glasate na ovom izboru. Morate da imate ovde bar $3 izmena pre $2, a vi imate $1. Takođe, vaša prva izmena na ovom vikiju je bila u $4, a treba da bude pre $5.',
+	'boardvote_novotes'      => 'Još niko nije glasao.',
+	'boardvote_time'         => 'Vreme',
+	'boardvote_user'         => 'Korisnik',
+	'boardvote_edits'        => 'Izmena',
+	'boardvote_days'         => 'Dana',
+	'boardvote_ua'           => 'Korisnički agent',
+	'boardvote_listintro'    => '<p>Ovo je spisak svih glasova koji su snimljeni do sada. $1 za šifrirane podatke.</p>',
+	'boardvote_dumplink'     => 'Kliknite ovde',
+	'boardvote_submit'       => 'U redu',
+	'boardvote_strike'       => 'Precrtano',
+	'boardvote_unstrike'     => 'Neprecrtano',
+	'boardvote_needadmin'    => 'Samo administratori glasanja mogu da izvode ovu operaciju.',
+	'boardvote_sitenotice'   => '<a href="{{localurle:Special:Boardvote/vote}}">Izbori za Vikimedijin Odbor</a>:  Glasanje otvoreno do 21. septembra',
+	'boardvote_notstarted'   => 'Glasanje još nije počelo',
+	'boardvote_closed'       => 'Glasanje je završeno, pogledajte [http://meta.wikimedia.org/wiki/Elections_for_the_Board_of_Trustees_of_the_Wikimedia_Foundation%2C_2008/En stranicu za glasanje za rezultate] uskoro.',
+	'boardvote_edits_many'   => 'mnogo',
+	'group-boardvote'        => 'izborna komisija',
+	'group-boardvote-member' => 'izborna komisija',
+	'grouppage-boardvote'    => '{{ns:project}}:Administrator glasanja za Odbor',
 );
 
 /** Seeltersk (Seeltersk)
@@ -5780,51 +5801,52 @@ Olüodükol lü dünanünöm plödik at pos sekuns 20. [$1 Klikolös is] ad gol�
 Sefanüned tefü doküm no pedispenöl ba pojonon.',
 );
 
+/** Walloon (Walon) */
 $messages['wa'] = array(
-	'boardvote' => 'Vôtaedje po les manaedjeus del fondåcion Wikimedia',
-	'boardvote_entry' => '* [[Special:Boardvote/vote|Vôter]]
+	'boardvote'              => 'Vôtaedje po les manaedjeus del fondåcion Wikimedia',
+	'boardvote_entry'        => '* [[Special:Boardvote/vote|Vôter]]
 * [[Special:Boardvote/list|Djivêye des vôtaedjes dedja fwaits]]
 * [[Special:Boardvote/dump|Djiveye des bultins]] (tchaeke bultin est on blok ecripté)',
-	'boardvote_intro' => '<p>
+	'boardvote_intro'        => "<p>
 Bénvnowe å prumî vôtaedje po les manaedjeus del fondåcion Wikimedia.
-Li vôtaedje c\' est po tchoezi deus djins ki cåzront å consey des manaedjeus po les contribouweus des diferins pordjets Wikimedia k\' overnut félmint po lzès fé viker:
+Li vôtaedje c' est po tchoezi deus djins ki cåzront å consey des manaedjeus po les contribouweus des diferins pordjets Wikimedia k' overnut félmint po lzès fé viker:
 on <strong>rprezintant des mimbes ki sont des contribouweus actifs</strong>,
 eyet on <strong>rprezintant des uzeus volontaires</strong>.
-Il aidront a defini l\' voye ki prindront les pordjets Wikimedia, ossu bén tchaeke pordjet ki zels tos come groupe, dj\' ô bén k\' i rprezintèt <em>vos</em> interesses divant l\' consey des manaedjes. I decidront so des sudjets come l\' ecwårlaedje eyet l\' atribouwaedje des çanses ås diferinnès bouyes.
+Il aidront a defini l' voye ki prindront les pordjets Wikimedia, ossu bén tchaeke pordjet ki zels tos come groupe, dj' ô bén k' i rprezintèt <em>vos</em> interesses divant l' consey des manaedjes. I decidront so des sudjets come l' ecwårlaedje eyet l' atribouwaedje des çanses ås diferinnès bouyes.
 </p>
 
 <p>
-Prindoz s\' i vs plait li tins di bén lére li prezintaedje di tchaesconk des candidats dvant d\' vôter.
-Tchaeke des candidats est èn uzeu respecté del kiminaalté, k\' a contribouwé bråmint do tins eyet ds efoirts po fé di ces pordjets èn evironmint amiståve ey ahessåve, et ki croeyèt fel å franc cossemaedje del kinoxhaence amon l\' djin.
+Prindoz s' i vs plait li tins di bén lére li prezintaedje di tchaesconk des candidats dvant d' vôter.
+Tchaeke des candidats est èn uzeu respecté del kiminaalté, k' a contribouwé bråmint do tins eyet ds efoirts po fé di ces pordjets èn evironmint amiståve ey ahessåve, et ki croeyèt fel å franc cossemaedje del kinoxhaence amon l' djin.
 </p>
 
 <p>
-Vos ploz vôter po ostant d\' candidats ki vos vloz dins tchaeke plaece.
-Li candidat avou l\' pus d\' vwès po tchaeke plaece serè rclamé wangneu
-Dins l\' cas k\' i gn årè ewalisté inte deus prumîs candidats, on deujhinme vôtaedje serè fwait po les dispårti.
+Vos ploz vôter po ostant d' candidats ki vos vloz dins tchaeke plaece.
+Li candidat avou l' pus d' vwès po tchaeke plaece serè rclamé wangneu
+Dins l' cas k' i gn årè ewalisté inte deus prumîs candidats, on deujhinme vôtaedje serè fwait po les dispårti.
 </p>
 
 <p>
 Po pus di racsegnes, loukîz a:
 </p>
 <ul>
-<li><a href="http://meta.wikimedia.org/wiki/Election_FAQ" class="external">FAQ sol vôtaedje</a> (en inglès)</li>
-<li><a href="http://meta.wikimedia.org/wiki/Election_Candidates" class="external">Candidats</a></li>
-</ul>',
-	'boardvote_intro_change' => '<p>
+<li><a href=\"http://meta.wikimedia.org/wiki/Election_FAQ\" class=\"external\">FAQ sol vôtaedje</a> (en inglès)</li>
+<li><a href=\"http://meta.wikimedia.org/wiki/Election_Candidates\" class=\"external\">Candidats</a></li>
+</ul>",
+	'boardvote_intro_change' => "<p>
 Vos avoz ddja voté.
-Mins vos ploz tot l\' minme candjî vosse vôte, po çoula
+Mins vos ploz tot l' minme candjî vosse vôte, po çoula
 rifjhoz ene tchuze tot clitchant so les boesses a clitchîz des
-candidats ki vos estoz d\' acoird avou zels.
-</p>',
-	'boardvote_entered' => 'Gråces, vosse vôtaedje a stî conté.
+candidats ki vos estoz d' acoird avou zels.
+</p>",
+	'boardvote_entered'      => "Gråces, vosse vôtaedje a stî conté.
 
 Si vos vloz, vos ploz wårder les informåcions shuvantes.
 Vosse bultin a stî eredjîstré come:
 
 <pre>$1</pre>
 
-Il a stî ecripté avou l\' clé publike des manaedjeus do vôtaedje:
+Il a stî ecripté avou l' clé publike des manaedjeus do vôtaedje:
 
 <pre>$2</pre>
 
@@ -5833,23 +5855,23 @@ esse publicmint veyous so [[Special:Boardvote/dump]].
 
 <pre>$3</pre>
 
-[[Special:Boardvote/entry|En erî]]',
-	'boardvote_notloggedin' => 'Vos n\' estoz nén elodjî.
+[[Special:Boardvote/entry|En erî]]",
+	'boardvote_notloggedin'  => "Vos n' estoz nén elodjî.
 Po pleur vôter vos dvoz esse elodjî eyet vosse conté
-doet aveur stî ahivé i gn a 90 djoûs pol moens.',
+doet aveur stî ahivé i gn a 90 djoûs pol moens.",
 	'boardvote_notqualified' => 'Dji rgrete, mins vosse prumî contribouwaedje a stî fwait
 i gn a $1 djoûs seulmint.
 Po pleur vôter vos dvoz aveur contribouwé po pus long ki
 90 djoûs.',
-	'boardvote_novotes' => 'I gn a co nolu k\' a vôté.',
-	'boardvote_time' => 'Date ey eure',
-	'boardvote_user' => 'Uzeu',
-	'boardvote_edits' => 'Contribs',
-	'boardvote_days' => 'Djoûs',
-	'boardvote_listintro' => '<p>Çouchal, c\' est ene djivêye di totes les djins
-k\' ont ddja vote disk\' asteure.
-$1 po les dnêyes sourdant des bultins.</p>',
-	'boardvote_dumplink' => 'Clitchîz chal',
+	'boardvote_novotes'      => "I gn a co nolu k' a vôté.",
+	'boardvote_time'         => 'Date ey eure',
+	'boardvote_user'         => 'Uzeu',
+	'boardvote_edits'        => 'Contribs',
+	'boardvote_days'         => 'Djoûs',
+	'boardvote_listintro'    => "<p>Çouchal, c' est ene djivêye di totes les djins
+k' ont ddja vote disk' asteure.
+$1 po les dnêyes sourdant des bultins.</p>",
+	'boardvote_dumplink'     => 'Clitchîz chal',
 );
 
 /** Yiddish (ייִדיש)
@@ -5865,13 +5887,14 @@ $messages['yi'] = array(
 	'boardvote_edits_many'  => 'אסאך',
 );
 
+/** Yue (粵語) */
 $messages['yue'] = array(
-	'boardvote'               => "Wikimedia理事委員會選舉",
-	'boardvote-desc'          => '[[meta:Board elections/2008|Wikimedia理事委員會選舉]]',
-	'boardvote_entry'         => "* [[Special:Boardvote/vote|投票]]
+	'boardvote'                => 'Wikimedia理事委員會選舉',
+	'boardvote-desc'           => '[[meta:Board elections/2008|Wikimedia理事委員會選舉]]',
+	'boardvote_entry'          => '* [[Special:Boardvote/vote|投票]]
 * [[Special:Boardvote/list|列示至今已經投咗票嘅投票]]
-* [[Special:Boardvote/dump|選舉記錄傾印]]",
-	'boardvote_intro'         => "
+* [[Special:Boardvote/dump|選舉記錄傾印]]',
+	'boardvote_intro'          => '
 <p>歡迎嚟到2008年度Wikimedia理事委員會選舉。我哋而家去為我哋嘅Wikimedia計劃進行投票，選出兩位人兄。佢哋會幫手去決定Wikimedia計劃將來嘅發展方向，無論個人定係團體，係畀理事委員之中代表<em>你</em>嘅興趣同埋關懷。另外佢哋會決定點樣運用所得來嘅錢同埋點樣整收入。</p>
 
 <p>響投票之前，請小心咁去睇吓有關候選人嘅表達同埋有關嘅回應。每一個候選人係一位受到尊重嘅用戶，佢哋係用咗唔少時間同埋動力去令到呢啲計劃繼續進行到一個受歡迎嘅環境同埋自由咁發放人類嘅知識。</p>
@@ -5884,12 +5907,12 @@ $messages['yue'] = array(
 
 <p>要睇更多嘅資料，睇吓：</p>
 <p>For more information, see:</p>
-<ul><li><a href=\"http://meta.wikimedia.org/wiki/Board_elections/2008/yue\" class=\"external\">理事會選舉2008</a></li>
-<li><a href=\"http://meta.wikimedia.org/wiki/Board_elections/2008/Candidates/yue\" class=\"external\">候選人</a></li>
-<li><a href=\"http://en.wikipedia.org/wiki/Schulze_method\" class=\"external\">Schulze方法</a></li></ul>",
-	'boardvote_intro_change'  => "<p>你已經投咗票。
-但係你可以利用下面嘅表格去改你嘅投票。請響每一位心目中嘅候選人打剔。</p>",
-	'boardvote_entered'       => "多謝，你嘅投票已經被記錄落嚟。
+<ul><li><a href="http://meta.wikimedia.org/wiki/Board_elections/2008/yue" class="external">理事會選舉2008</a></li>
+<li><a href="http://meta.wikimedia.org/wiki/Board_elections/2008/Candidates/yue" class="external">候選人</a></li>
+<li><a href="http://en.wikipedia.org/wiki/Schulze_method" class="external">Schulze方法</a></li></ul>',
+	'boardvote_intro_change'   => '<p>你已經投咗票。
+但係你可以利用下面嘅表格去改你嘅投票。請響每一位心目中嘅候選人打剔。</p>',
+	'boardvote_entered'        => '多謝，你嘅投票已經被記錄落嚟。
 
 如果你想記低你嘅投票記錄，你可以記住你嘅投票記錄。你嘅投票記錄係：
 
@@ -5903,43 +5926,41 @@ $messages['yue'] = array(
 
 <pre>$3</pre>
 
-[[Special:Boardvote/entry|返去]]",
-	'boardvote_invalidentered'=> "<p><strong>錯誤</strong>: 候選者喜好一定要以正整數表示 (1, 2, 3, ....)，又或者係留低空白。</p>",
-	'boardvote_nosession'     => "我唔知你嘅維基媒體用戶ID。 唔該登入你合資格嘅維基，然後去嗰度嘅<nowiki>[[Special:Boardvote]]</nowiki>。你要喺$2之前要有至少$1次編輯，第一次編輯要早過$3。",
-	'boardvote_notloggedin'   => "你仲未登入。要投票，你一定要用一個響$2之前最少有$1次貢獻，而且響$3之前作第一次編輯嘅戶口。",
-	'boardvote_notqualified'  => "你仲未有資格響呢次選舉度投票。你需要用響$2之前最少有$1次編輯，你而家有$1次編輯。而且，你嘅第一次編輯響$4，佢係需要響$5之前。",
-	'boardvote_novotes'       => "仲未有人投票。",
-	'boardvote_time'          => "時間",
-	'boardvote_user'          => "用戶",
-	'boardvote_edits'         => "編輯數",
-	'boardvote_days'          => "日",
-	'boardvote_ip'            => "IP",
-	'boardvote_ua'            => "用戶代理",
-	'boardvote_listintro'     => "<p>嘅個係到而家所被記錄落嚟嘅全部票數嘅名單。
-$1去睇加密嘅資料。</p>",
-	'boardvote_dumplink'      => "撳呢度",
-	'boardvote_submit'        => 'OK',
-	'boardvote_strike'        => "刪除綫",
-	'boardvote_unstrike'      => "取消刪除綫",
-	'boardvote_needadmin'     => "只有選舉管理員可以執行呢一個操作。",
-	'boardvote_sitenotice'    => "<a href=\"{{localurle:Special:Boardvote/vote}}\">Wikimedia理事委員會選舉</a>：投票開放到9月20日",
-	'boardvote_notstarted'    => '投票仲未開始',
-	'boardvote_closed'        => '投票已經結束咗，請響之後睇吓[http://meta.wikimedia.org/wiki/Elections_for_the_Board_of_Trustees_of_the_Wikimedia_Foundation%2C_2008/En 選舉頁嘅結果]。',
-	'boardvote_edits_many'    => '好多',
-	'group-boardvote'         => '理事會投票管理員',
-	'group-boardvote-member'  => '理事會投票管理員',
-	'grouppage-boardvote'     => '{{ns:project}}:理事會投票管理員',
-	'boardvote_blocked'       => '對唔住，響你註冊咗嘅維基度，你被封住咗。封住咗嘅用戶係唔畀投票嘅。',
-	'boardvote_bot'           => '你響所註冊咗嘅wiki度加咗旗做機械人。
+[[Special:Boardvote/entry|返去]]',
+	'boardvote_invalidentered' => '<p><strong>錯誤</strong>: 候選者喜好一定要以正整數表示 (1, 2, 3, ....)，又或者係留低空白。</p>',
+	'boardvote_nosession'      => '我唔知你嘅維基媒體用戶ID。 唔該登入你合資格嘅維基，然後去嗰度嘅<nowiki>[[Special:Boardvote]]</nowiki>。你要喺$2之前要有至少$1次編輯，第一次編輯要早過$3。',
+	'boardvote_notloggedin'    => '你仲未登入。要投票，你一定要用一個響$2之前最少有$1次貢獻，而且響$3之前作第一次編輯嘅戶口。',
+	'boardvote_notqualified'   => '你仲未有資格響呢次選舉度投票。你需要用響$2之前最少有$1次編輯，你而家有$1次編輯。而且，你嘅第一次編輯響$4，佢係需要響$5之前。',
+	'boardvote_novotes'        => '仲未有人投票。',
+	'boardvote_time'           => '時間',
+	'boardvote_user'           => '用戶',
+	'boardvote_edits'          => '編輯數',
+	'boardvote_days'           => '日',
+	'boardvote_ua'             => '用戶代理',
+	'boardvote_listintro'      => '<p>嘅個係到而家所被記錄落嚟嘅全部票數嘅名單。
+$1去睇加密嘅資料。</p>',
+	'boardvote_dumplink'       => '撳呢度',
+	'boardvote_strike'         => '刪除綫',
+	'boardvote_unstrike'       => '取消刪除綫',
+	'boardvote_needadmin'      => '只有選舉管理員可以執行呢一個操作。',
+	'boardvote_sitenotice'     => '<a href="{{localurle:Special:Boardvote/vote}}">Wikimedia理事委員會選舉</a>：投票開放到9月20日',
+	'boardvote_notstarted'     => '投票仲未開始',
+	'boardvote_closed'         => '投票已經結束咗，請響之後睇吓[http://meta.wikimedia.org/wiki/Elections_for_the_Board_of_Trustees_of_the_Wikimedia_Foundation%2C_2008/En 選舉頁嘅結果]。',
+	'boardvote_edits_many'     => '好多',
+	'group-boardvote'          => '理事會投票管理員',
+	'group-boardvote-member'   => '理事會投票管理員',
+	'grouppage-boardvote'      => '{{ns:project}}:理事會投票管理員',
+	'boardvote_blocked'        => '對唔住，響你註冊咗嘅維基度，你被封住咗。封住咗嘅用戶係唔畀投票嘅。',
+	'boardvote_bot'            => '你響所註冊咗嘅wiki度加咗旗做機械人。
 機械人戶口係唔容許去投票。',
-	'boardvote_welcome'       => "'''$1'''，歡迎你！",
-	'go_to_board_vote'        => 'Wikimedia理事委員會選舉2008',
-	'boardvote_redirecting'   => '為咗好啲嘅保安同埋透明度，我哋用一個外置、獨立控制嘅伺服器去搞呢次嘅投票。
+	'boardvote_welcome'        => "'''$1'''，歡迎你！",
+	'go_to_board_vote'         => 'Wikimedia理事委員會選舉2008',
+	'boardvote_redirecting'    => '為咗好啲嘅保安同埋透明度，我哋用一個外置、獨立控制嘅伺服器去搞呢次嘅投票。
 
 20秒之內你會彈去呢個外置伺服器。如果你想即刻去，就[$1 撳呢度]。
 
 你有可能會收到一個安全警告，話個憑證冇簽到。',
-	'right-boardvote'         => '選舉管理者',
+	'right-boardvote'          => '選舉管理者',
 );
 
 /** Zeeuws (Zeêuws)
@@ -5989,10 +6010,11 @@ Noe volg de versleutelde versie. Dezen is openbaer en nae te ziene op [[Special:
 	'boardvote_ip'           => 'IP-adres',
 );
 
+/** Classical Chinese (文言) */
 $messages['zh-classical'] = array(
-	'boardvote_time'          => "時辰",
-	'boardvote_user'          => "編者",
-	'boardvote_submit'        => '確定',
+	'boardvote_time'   => '時辰',
+	'boardvote_user'   => '編者',
+	'boardvote_submit' => '確定',
 );
 
 /** Simplified Chinese (‪中文(简体)‬)

@@ -44,12 +44,9 @@ $messages['cs'] = array(
 	'breadcrumbs-desc' => 'Zobrazí cestu uživatele ve wiki.',
 );
 
+/** German (Deutsch) */
 $messages['de'] = array(
 	'breadcrumbs-desc' => 'Zeigt den Weg des Benutzers durch das Wiki.',
-
-);
-$messages['fr'] = array(
-	'breadcrumbs-desc' => 'Affiche le lien des dernières pages que l’utilisateur a visitées dans le wiki.',
 );
 
 /** Lower Sorbian (Dolnoserbski)
@@ -72,6 +69,11 @@ $messages['eo'] = array(
  */
 $messages['fi'] = array(
 	'breadcrumbs-desc' => 'Näyttää käyttäjän kulkeman reitin wikissä.',
+);
+
+/** French (Français) */
+$messages['fr'] = array(
+	'breadcrumbs-desc' => 'Affiche le lien des dernières pages que l’utilisateur a visitées dans le wiki.',
 );
 
 /** Galician (Galego)
@@ -151,7 +153,7 @@ $messages['nl'] = array(
 	'breadcrumbs-desc' => 'Geeft het pad weer dat gebruikers in de wiki doorlopen',
 );
 
-/** Norwegian (‪Norsk (bokmål)‬)
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */
 $messages['no'] = array(
@@ -249,21 +251,21 @@ $messages['vi'] = array(
 	'breadcrumbs-desc' => 'Hiển thị lối đến trang wiki',
 );
 
-/** Cantonese (廣東話)
+/** Yue (粵語)
  * @author Shinjiman
  */
 $messages['yue'] = array(
 	'breadcrumbs-desc' => '顯示用戶響呢個wiki嘅路徑。',
 );
 
-/** Simplified Chinese (简化中文)
+/** Simplified Chinese (‪中文(简体)‬)
  * @author Alex S.H. Lin
  */
 $messages['zh-hans'] = array(
 	'breadcrumbs-desc' => '显示用户在这尔网站的轨迹',
 );
 
-/** Traditional Chinese (正體中文)
+/** Traditional Chinese (‪中文(繁體)‬)
  * @author Alex S.H. Lin
  */
 $messages['zh-hant'] = array(

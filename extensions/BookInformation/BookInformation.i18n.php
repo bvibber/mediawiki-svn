@@ -102,9 +102,12 @@ $messages['avk'] = array(
 	'bookinfo-provider'          => 'Origdafusik : $1',
 );
 
+/** Bikol Central (Bikol Central)
+ * @author Filipinayzd
+ */
 $messages['bcl'] = array(
 	'bookinfo-result-title' => 'Titulo:',
-	'bookinfo-result-year' => 'Taon:',
+	'bookinfo-result-year'  => 'Taon:',
 );
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
@@ -175,18 +178,22 @@ $messages['br'] = array(
 	'bookinfo-provider'          => 'Pourvezer roadennoù : $1',
 );
 
+/** Catalan (Català)
+ * @author Toniher
+ * @author SMP
+ */
 $messages['ca'] = array(
-	'bookinfo-header'=> 'Informació del llibre',
-	'bookinfo-result-title'=> 'Títol:',
-	'bookinfo-result-author'=> 'Autor:',
-	'bookinfo-result-publisher'=> 'Editor:',
-	'bookinfo-result-year'=> 'Any:',
-	'bookinfo-error-invalidisbn'=> 'L\'ISBN introduït no és vàlid.',
-	'bookinfo-error-nosuchitem'=> 'L\'element no existeix o no s\'ha pogut trobar.',
-	'bookinfo-error-nodriver'=> 'No s\'ha pogut inicialitzar un connector d\'informació de llibres apropiat.',
-	'bookinfo-error-noresponse'=> 'No hi ha cap resposta o el temps de sol·licitud s\'ha esgotat.',
-	'bookinfo-purchase'=> 'Compra aquest llibre de $1',
-	'bookinfo-provider'=> 'Proveïdor de dades: $1',
+	'bookinfo-header'            => 'Informació del llibre',
+	'bookinfo-result-title'      => 'Títol:',
+	'bookinfo-result-author'     => 'Autor:',
+	'bookinfo-result-publisher'  => 'Editor:',
+	'bookinfo-result-year'       => 'Any:',
+	'bookinfo-error-invalidisbn' => "L'ISBN introduït no és vàlid.",
+	'bookinfo-error-nosuchitem'  => "L'element no existeix o no s'ha pogut trobar.",
+	'bookinfo-error-nodriver'    => "No s'ha pogut inicialitzar un connector d'informació de llibres apropiat.",
+	'bookinfo-error-noresponse'  => "No hi ha cap resposta o el temps de sol·licitud s'ha esgotat.",
+	'bookinfo-purchase'          => 'Compra aquest llibre de $1',
+	'bookinfo-provider'          => 'Proveïdor de dades: $1',
 );
 
 /** Czech (Česky)
@@ -305,17 +312,20 @@ $messages['eu'] = array(
 	'bookinfo-result-title' => 'Titulua:',
 );
 
+/** Extremaduran (Estremeñu)
+ * @author Better
+ */
 $messages['ext'] = array(
-	'bookinfo-header' => 'Enhormación el libru',
-	'bookinfo-result-title' => 'Entítulu:',
-	'bookinfo-result-author' => 'Autol:',
+	'bookinfo-header'           => 'Enhormación el libru',
+	'bookinfo-result-title'     => 'Entítulu:',
+	'bookinfo-result-author'    => 'Autol:',
 	'bookinfo-result-publisher' => 'Eitorial:',
-	'bookinfo-result-year' => 'Añu:',
+	'bookinfo-result-year'      => 'Añu:',
 	'bookinfo-error-nosuchitem' => 'El artículu nu desisti u nu puei sel alcuentrau.',
-	'bookinfo-purchase' => 'Mercal esti libru e $1',
+	'bookinfo-purchase'         => 'Mercal esti libru e $1',
 );
 
-/** فارسی (فارسی)
+/** Persian (فارسی)
  * @author Huji
  */
 $messages['fa'] = array(
@@ -331,7 +341,6 @@ $messages['fa'] = array(
 	'bookinfo-error-noresponse'  => 'پاسخی وجود نداشت یا مهلت درخواست سپری شد.',
 	'bookinfo-purchase'          => 'خرید این کتاب از $1',
 	'bookinfo-provider'          => 'مهیاکنندهٔ اطلاعات:',
-
 );
 
 /** Finnish (Suomi)
@@ -445,18 +454,21 @@ $messages['hi'] = array(
 	'bookinfo-provider'          => 'डाटा प्रोवाईडर: $1',
 );
 
+/** Croatian (Hrvatski)
+ * @author SpeedyGonsales
+ */
 $messages['hr'] = array(
-	'bookinfo-header' => 'Informacije o knjizi',
-	'bookinfo-result-title' => 'Naslov:',
-	'bookinfo-result-author' => 'Autor:',
-	'bookinfo-result-publisher' => 'Izdavač:',
-	'bookinfo-result-year' => 'Godina:',
+	'bookinfo-header'            => 'Informacije o knjizi',
+	'bookinfo-result-title'      => 'Naslov:',
+	'bookinfo-result-author'     => 'Autor:',
+	'bookinfo-result-publisher'  => 'Izdavač:',
+	'bookinfo-result-year'       => 'Godina:',
 	'bookinfo-error-invalidisbn' => 'Nevaljan ISBN broj.',
-	'bookinfo-error-nosuchitem' => 'Knjiga ne postoji/nije nađena.',
-	'bookinfo-error-nodriver' => 'Ne mogu inicijalizirati odgovarajući program za informacije o knjigama.',
-	'bookinfo-error-noresponse' => 'Nema odgovora ili istek vremena za upit (\'\'timeout\'\').',
-	'bookinfo-purchase' => 'Kupi ovu knjigu od $1',
-	'bookinfo-provider' => 'Dobavljač podataka: $1',
+	'bookinfo-error-nosuchitem'  => 'Knjiga ne postoji/nije nađena.',
+	'bookinfo-error-nodriver'    => 'Ne mogu inicijalizirati odgovarajući program za informacije o knjigama.',
+	'bookinfo-error-noresponse'  => "Nema odgovora ili istek vremena za upit (''timeout'').",
+	'bookinfo-purchase'          => 'Kupi ovu knjigu od $1',
+	'bookinfo-provider'          => 'Dobavljač podataka: $1',
 );
 
 /** Upper Sorbian (Hornjoserbsce)
@@ -648,7 +660,22 @@ $messages['ka'] = array(
 	'bookinfo-result-year'      => 'წელი:',
 );
 
-/** Kazakh (Қазақша)
+/** Kazakh (Arabic script) (‫قازاقشا (تٴوتە)‬) */
+$messages['kk-arab'] = array(
+	'bookinfo-header'            => 'كىتاپ مالىمەتى',
+	'bookinfo-result-title'      => 'اتاۋى:',
+	'bookinfo-result-author'     => 'اۋتورى:',
+	'bookinfo-result-publisher'  => 'باسپاگەرى:',
+	'bookinfo-result-year'       => 'جىلى:',
+	'bookinfo-error-invalidisbn' => 'جارامسىز ISBN ەنگىزىلگەن.',
+	'bookinfo-error-nosuchitem'  => 'ٴتىزىمنىڭ داناسى بولماعان نە تابىلماعان.',
+	'bookinfo-error-nodriver'    => 'كىتاپ مالىمەتتەرىنىڭ ٴوز درايۆەرى باستامالانبادى',
+	'bookinfo-error-noresponse'  => 'ەش جاۋاپ جوق نە سۇرانىمدىڭ مەزگىلى ٴوتىپ كەتتى.',
+	'bookinfo-purchase'          => 'بۇل كىتاپتى $1 دەگەننەن ساتىپ الۋ',
+	'bookinfo-provider'          => 'دەرەك جەتىستىرۋشىسى: $1',
+);
+
+/** Kazakh (Cyrillic) (Қазақша (Cyrillic))
  * @author AlefZet
  */
 $messages['kk-cyrl'] = array(
@@ -664,6 +691,8 @@ $messages['kk-cyrl'] = array(
 	'bookinfo-purchase'          => 'Бұл кітапты $1 дегеннен сатып алу',
 	'bookinfo-provider'          => 'Дерек жетістірушісі: $1',
 );
+
+/** Kazakh (Latin) (Қазақша (Latin)) */
 $messages['kk-latn'] = array(
 	'bookinfo-header'            => 'Kitap mälimeti',
 	'bookinfo-result-title'      => 'Atawı:',
@@ -676,19 +705,6 @@ $messages['kk-latn'] = array(
 	'bookinfo-error-noresponse'  => 'Eş jawap joq ne suranımdıñ mezgili ötip ketti.',
 	'bookinfo-purchase'          => 'Bul kitaptı $1 degennen satıp alw',
 	'bookinfo-provider'          => 'Derek jetistirwşisi: $1',
-);
-$messages['kk-arab'] = array(
-	'bookinfo-header'            => 'كىتاپ مالىمەتى',
-	'bookinfo-result-title'      => 'اتاۋى:',
-	'bookinfo-result-author'     => 'اۋتورى:',
-	'bookinfo-result-publisher'  => 'باسپاگەرى:',
-	'bookinfo-result-year'       => 'جىلى:',
-	'bookinfo-error-invalidisbn' => 'جارامسىز ISBN ەنگىزىلگەن.',
-	'bookinfo-error-nosuchitem'  => 'ٴتىزىمنىڭ داناسى بولماعان نە تابىلماعان.',
-	'bookinfo-error-nodriver'    => 'كىتاپ مالىمەتتەرىنىڭ ٴوز درايۆەرى باستامالانبادى',
-	'bookinfo-error-noresponse'  => 'ەش جاۋاپ جوق نە سۇرانىمدىڭ مەزگىلى ٴوتىپ كەتتى.',
-	'bookinfo-purchase'          => 'بۇل كىتاپتى $1 دەگەننەن ساتىپ الۋ',
-	'bookinfo-provider'          => 'دەرەك جەتىستىرۋشىسى: $1',
 );
 
 /** Khmer (ភាសាខ្មែរ)
@@ -710,10 +726,13 @@ $messages['km'] = array(
 	'bookinfo-provider'          => 'អ្នកផ្គត់ផ្គង់ទិន្នន័យ៖ $1',
 );
 
+/** Latin (Latina)
+ * @author SPQRobin
+ */
 $messages['la'] = array(
-	'bookinfo-result-title' => 'Titulus:',
+	'bookinfo-result-title'  => 'Titulus:',
 	'bookinfo-result-author' => 'Auctor:',
-	'bookinfo-result-year' => 'Annus:',
+	'bookinfo-result-year'   => 'Annus:',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -818,7 +837,7 @@ $messages['mr'] = array(
 	'bookinfo-provider'          => 'विदा दाता: $1',
 );
 
-/** Erzya (эрзянь кель)
+/** Erzya (Эрзянь)
  * @author Amdf
  */
 $messages['myv'] = array(
@@ -867,7 +886,7 @@ $messages['nn'] = array(
 	'bookinfo-result-year'  => 'År:',
 );
 
-/** Norwegian (‪Norsk (bokmål)‬)
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */
 $messages['no'] = array(
@@ -956,19 +975,21 @@ $messages['pl'] = array(
 	'bookinfo-provider'          => 'Źródło informacji: $1',
 );
 
-/* Piedmontese (Bèrto 'd Sèra) */
+/** Piedmontese (Piemontèis)
+ * @author Bèrto 'd Sèra
+ */
 $messages['pms'] = array(
-	'bookinfo-header' => 'Anformassion ant sëj lìber',
-	'bookinfo-result-title' => 'Tìtol:',
-	'bookinfo-result-author' => 'Aotor:',
-	'bookinfo-result-publisher' => 'Editor:',
-	'bookinfo-result-year' => 'Ann:',
+	'bookinfo-header'            => 'Anformassion ant sëj lìber',
+	'bookinfo-result-title'      => 'Tìtol:',
+	'bookinfo-result-author'     => 'Aotor:',
+	'bookinfo-result-publisher'  => 'Editor:',
+	'bookinfo-result-year'       => 'Ann:',
 	'bookinfo-error-invalidisbn' => 'ISBN pa giusta',
-	'bookinfo-error-nosuchitem' => 'Vos che ò ch\'a-i é nen ò ch\'a l\'é pa trovasse.',
-	'bookinfo-error-nodriver' => 'As riess nen a fé parte ël pilòta dj\'Anformassion ant sëj Lìber',
-	'bookinfo-error-noresponse' => 'Pa d\'arspòsta, ò miraco a la riva mach tròp tard',
-	'bookinfo-purchase' => 'Caté ël lìber da: $1',
-	'bookinfo-provider' => 'Sorgiss dij dat: $1',
+	'bookinfo-error-nosuchitem'  => "Vos che ò ch'a-i é nen ò ch'a l'é pa trovasse.",
+	'bookinfo-error-nodriver'    => "As riess nen a fé parte ël pilòta dj'Anformassion ant sëj Lìber",
+	'bookinfo-error-noresponse'  => "Pa d'arspòsta, ò miraco a la riva mach tròp tard",
+	'bookinfo-purchase'          => 'Caté ël lìber da: $1',
+	'bookinfo-provider'          => 'Sorgiss dij dat: $1',
 );
 
 /** Pashto (پښتو)
@@ -1017,14 +1038,17 @@ $messages['qu'] = array(
 	'bookinfo-error-nosuchitem'  => 'Chay sutiyuq liwruqa manam kanchu icha manam tarisqachu.',
 );
 
+/** Romanian (Română)
+ * @author KlaudiuMihaila
+ */
 $messages['ro'] = array(
-	'bookinfo-result-title' => 'Titlu:',
-	'bookinfo-result-author' => 'Autor:',
-	'bookinfo-result-publisher' => 'Editură:',
-	'bookinfo-result-year' => 'An:',
+	'bookinfo-result-title'      => 'Titlu:',
+	'bookinfo-result-author'     => 'Autor:',
+	'bookinfo-result-publisher'  => 'Editură:',
+	'bookinfo-result-year'       => 'An:',
 	'bookinfo-error-invalidisbn' => 'ISBN nevalid.',
-	'bookinfo-error-nosuchitem' => 'Elementul nu există sau nu a putut fi găsit.',
-	'bookinfo-purchase' => 'Cumpăraţi această carte de la $1',
+	'bookinfo-error-nosuchitem'  => 'Elementul nu există sau nu a putut fi găsit.',
+	'bookinfo-purchase'          => 'Cumpăraţi această carte de la $1',
 );
 
 /** Russian (Русский)
@@ -1195,7 +1219,7 @@ $messages['tet'] = array(
 	'bookinfo-result-year'   => 'Tinan:',
 );
 
-/** Tajik (Тоҷикӣ)
+/** Tajik (Cyrillic) (Тоҷикӣ/tojikī (Cyrillic))
  * @author Ibrahim
  */
 $messages['tg-cyrl'] = array(
@@ -1298,7 +1322,7 @@ $messages['vo'] = array(
 	'bookinfo-provider'          => 'Nüns pesedons se: $1',
 );
 
-/* Cantonese (Shinjiman) */
+/** Yue (粵語) */
 $messages['yue'] = array(
 	'bookinfo-header'            => '書籍資料',
 	'bookinfo-desc'              => '擴充[[Special:Booksources]]嘅功能由一個網站服務囉到信息',
@@ -1314,11 +1338,11 @@ $messages['yue'] = array(
 	'bookinfo-provider'          => '資料提供者: $1',
 );
 
-/* Chinese (Simplified) (Shinjiman) */
+/** Simplified Chinese (‪中文(简体)‬) */
 $messages['zh-hans'] = array(
 	'bookinfo-header'            => '书籍资料',
 	'bookinfo-desc'              => '扩展[[Special:Booksources|{{int:booksources}}]]的功能以们外部网站取得信息',
- 	'bookinfo-result-title'      => '标题:',
+	'bookinfo-result-title'      => '标题:',
 	'bookinfo-result-author'     => '作者:',
 	'bookinfo-result-publisher'  => '出版者:',
 	'bookinfo-result-year'       => '年份:',
@@ -1330,7 +1354,7 @@ $messages['zh-hans'] = array(
 	'bookinfo-provider'          => '资料提供者: $1',
 );
 
-/* Chinese (Traditional) (Shinjiman) */
+/** Traditional Chinese (‪中文(繁體)‬) */
 $messages['zh-hant'] = array(
 	'bookinfo-header'            => '書籍資料',
 	'bookinfo-desc'              => '擴充[[Special:Booksources|{{int:booksources}}]]的功能得以從外部網站取得資訊',

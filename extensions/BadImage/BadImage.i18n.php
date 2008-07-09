@@ -61,7 +61,7 @@ $messages['an'] = array(
 	'badimages-reason' => 'Razón:',
 );
 
-/** Old English (Anglo Saxon)
+/** Old English (Anglo-Saxon)
  * @author SPQRobin
  */
 $messages['ang'] = array(
@@ -305,7 +305,6 @@ $messages['de'] = array(
 	'badimages-add-btn'        => 'Füge hinzu',
 	'badimages-added'          => '$1 wurde der Liste hinzugefügt',
 	'badimages-count'          => "Die Liste unerwünschter Bilder enthält '''$1''' {{PLURAL:$1|Eintrag|Einträge}}",
-	'badimages-name'           => 'Name:',
 	'badimages-not-added'      => 'Das Bild konnte nicht hinzugefügt werden.',
 	'badimages-not-removed'    => 'Das Bild konnte nicht entfernt werden.',
 	'badimages-reason'         => 'Grund:',
@@ -322,7 +321,7 @@ $messages['de'] = array(
 	'badimages-page'           => '{{ns:help}}:Liste unerwünschter Bilder',
 );
 
-/** German formal address (Deutsch - förmliche Anrede)
+/** German (formal address) (Deutsch (Sie-Form))
  * @author Raimond Spekking
  */
 $messages['de-formal'] = array(
@@ -419,6 +418,7 @@ $messages['fa'] = array(
 	'badimages-remove'       => '(حذف)',
 	'badimages-remove-btn'   => 'حذف',
 	'badimages-unprivileged' => 'شما دسترسی کافی برای تغییر فهرست ندارید',
+	'badimages-log-name'     => 'لیست تصاویر زشت',
 );
 
 /** Finnish (Suomi)
@@ -862,16 +862,17 @@ $messages['jv'] = array(
 /** Khmer (ភាសាខ្មែរ)
  * @author Chhorran
  * @author គីមស៊្រុន
+ * @author Lovekhmer
  */
 $messages['km'] = array(
-	'badimages'                => 'បញ្ជី រូបភាពអន់',
-	'badimages-desc'           => 'បន្ថែម សមត្ថភាព នៃ បញ្ជីរូបភាពអន់ របស់ មីឌាវិគី',
+	'badimages'                => 'បញ្ជីរូបភាពមិនល្អ',
+	'badimages-desc'           => 'បន្ថែមសមត្ថភាពនៃបញ្ជីរូបភាពមិនល្អរបស់មេឌាវិគី',
 	'badimages-add-btn'        => 'បន្ថែម',
-	'badimages-added'          => '$1 ត្រូវបានបន្ថែម ទៅបញ្ជី ។',
+	'badimages-added'          => '$1ត្រូវបានបន្ថែមទៅក្នុងបញ្ជីហើយ។',
 	'badimages-count'          => "{{PLURAL:$1|មាន|មាន}} '''$1''' {{PLURAL:$1|រូបភាព|រូបភាព}} ក្នុងបញ្ជីរូបភាពមិនល្អ។",
 	'badimages-name'           => 'ឈ្មោះ៖',
-	'badimages-not-added'      => 'រូបភាព មិនអាចត្រូវបាន បន្ថែម ។',
-	'badimages-not-removed'    => 'រូបភាព មិនអាចត្រូវបាន ដកចេញ ។',
+	'badimages-not-added'      => 'រូបភាពមិនអាចត្រូវបានបន្ថែមទេ។',
+	'badimages-not-removed'    => 'មិនអាចដករូបភាពចេញបានទេ។',
 	'badimages-reason'         => 'មូលហេតុ៖',
 	'badimages-remove'         => '(ដកចេញ)',
 	'badimages-remove-btn'     => 'ដកចេញ',
@@ -879,11 +880,11 @@ $messages['km'] = array(
 	'badimages-removed'        => '$1 បានត្រូវ ដកចេញ ពី បញ្ជី ។',
 	'badimages-subheading'     => 'បញ្ជី បច្ចុប្បន្ន',
 	'badimages-unprivileged'   => '(អ្នកគ្មានសិទ្ធិ គ្រប់គ្រាន់ ដើម្បី ផ្លាស់ប្តូរ​បញ្ជី)',
-	'badimages-log-name'       => 'បញ្ជី រូបភាពអន់',
+	'badimages-log-name'       => 'បញ្ជីរូបភាពមិនល្អ',
 	'badimages-log-header'     => 'មានកំណត់ហេតុ នៃ បំលាស់ប្តូរ នៅ [[{{MediaWiki:Badimages-page}}|បញ្ជី រូបភាពអន់]]។',
 	'badimages-log-add'        => 'បានបន្ថែម [[$1]] ទៅ បញ្ជី រូបភាពអន់',
 	'badimages-log-remove'     => 'បានដកចេញ [[$1]] ពី បញ្ជី រូបភាពអន់',
-	'badimages-page'           => '{{ns:help}}:បញ្ជី រូបភាពអន់',
+	'badimages-page'           => '{{ns:help}}:បញ្ជីរូបភាពមិនល្អ',
 );
 
 /** Ripoarisch (Ripoarisch)
@@ -1419,7 +1420,7 @@ $messages['sk'] = array(
 	'badimages-page'           => '{{ns:help}}:Zoznam zlých obrázkov',
 );
 
-/* Serbian default (Sasa Stefanovic) */
+/** Serbian (Српски / Srpski) */
 $messages['sr'] = array(
 	'badimages'                => 'Списак лоших слика',
 	'badimages-add-btn'        => 'додај',
@@ -1442,7 +1443,7 @@ $messages['sr'] = array(
 	'badimages-page'           => '{{ns:help}}:Списак лоших слика',
 );
 
-/* Serbian cyrillic (Sasa Stefanovic) */
+/** Serbian Cyrillic ekavian (ћирилица) */
 $messages['sr-ec'] = array(
 	'badimages'                => 'Списак лоших слика',
 	'badimages-add-btn'        => 'додај',
@@ -1465,7 +1466,7 @@ $messages['sr-ec'] = array(
 	'badimages-page'           => '{{ns:help}}:Списак лоших слика',
 );
 
-/* Serbian latin (Sasa Stefanovic) */
+/** latinica (latinica) */
 $messages['sr-el'] = array(
 	'badimages'                => 'Spisak loših slika',
 	'badimages-add-btn'        => 'dodaj',
@@ -1571,7 +1572,7 @@ $messages['sv'] = array(
 	'badimages-page'           => '{{ns:help}}:Lista över dåliga bilder',
 );
 
-/** Silesian (ślůnski)
+/** Silesian (Ślůnski)
  * @author Herr Kriss
  */
 $messages['szl'] = array(
@@ -1750,7 +1751,7 @@ $messages['vo'] = array(
 	'badimages-page'     => '{{ns:help}}:Lised magodas badik',
 );
 
-/** Shinjiman (廣東話)
+/** Yue (粵語)
  * @author Hillgentleman
  * @author Shinjiman
  */

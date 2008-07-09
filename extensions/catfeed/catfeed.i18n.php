@@ -37,6 +37,7 @@ $messages['cs'] = array(
 	'catfeed-desc' => 'Používá kousky z kanálů posledních změn. Vytvoří verzi v rámci stránky. Obzvlášť užitečné pro Wikinews.',
 );
 
+/** French (Français) */
 $messages['fr'] = array(
 	'catfeed-desc' => 'Utilise des bits pour alimenter les modifications récentes. Crée une version de page, très pratique pour Wikinews.',
 );
@@ -95,7 +96,7 @@ Maakt een versie binnen een pagina.
 In het bijzonder handig voor Wikinews',
 );
 
-/** Norwegian (‪Norsk (bokmål)‬)
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */
 $messages['no'] = array(

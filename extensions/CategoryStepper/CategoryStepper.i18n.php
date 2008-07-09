@@ -39,8 +39,8 @@ $messages['ar'] = array(
  * @author DCLXVI
  */
 $messages['bg'] = array(
-	'categorystepper-start' => '(Начало на категорията)',
 	'categorystepper-end'   => '(Край на категорията)',
+	'categorystepper-start' => '(Начало на категорията)',
 );
 
 /** Bengali (বাংলা)
@@ -75,8 +75,8 @@ $messages['cs'] = array(
  * @author Michawiki
  */
 $messages['dsb'] = array(
-	'categorystepper-start' => '(Zachopjeńk kategorije)',
 	'categorystepper-end'   => '(Kóńc kategorije)',
+	'categorystepper-start' => '(Zachopjeńk kategorije)',
 );
 
 /** Greek (Ελληνικά)
@@ -99,9 +99,9 @@ $messages['eo'] = array(
  * @author Grondin
  */
 $messages['fr'] = array(
-	'categorystepper-start' => '(Début de catégorie)',
 	'categorystepper-desc'  => 'Affiche une boîte de catégorie sur des pages qui sont indiquées dans une catégorie.',
 	'categorystepper-end'   => '(Fin de catégorie)',
+	'categorystepper-start' => '(Début de catégorie)',
 );
 
 /** Galician (Galego)
@@ -144,16 +144,16 @@ $messages['hsb'] = array(
  * @author Dani
  */
 $messages['hu'] = array(
-	'categorystepper-start' => '(a kategória eleje)',
 	'categorystepper-end'   => '(a kategória vége)',
+	'categorystepper-start' => '(a kategória eleje)',
 );
 
 /** Icelandic (Íslenska)
  * @author S.Örvarr.S
  */
 $messages['is'] = array(
-	'categorystepper-start' => '(Upphaf flokks)',
 	'categorystepper-end'   => '(Endi flokks)',
+	'categorystepper-start' => '(Upphaf flokks)',
 );
 
 /** Japanese (日本語)
@@ -389,7 +389,7 @@ $messages['vi'] = array(
  * @author Smeira
  */
 $messages['vo'] = array(
-	'categorystepper-start' => '(Prim klada)',
 	'categorystepper-end'   => '(Fin klada)',
+	'categorystepper-start' => '(Prim klada)',
 );
 
