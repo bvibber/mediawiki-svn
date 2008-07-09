@@ -162,6 +162,10 @@ ENDFORM2;
 		$label = '';
 		$styles = '';
 
+		$buttonlabel = htmlspecialchars( $this->buttonlabel );
+		$searchbuttonlabel = htmlspecialchars( $this->searchbuttonlabel );
+		$id = Sanitizer::escapeId( $this->id );
+
 		if ( isset($this->labeltext) && strlen(trim($this->labeltext)) ) {
 			$output = $this->parser->parse( $this->labeltext,
 				$this->parser->getTitle(), $this->parser->getOptions(), false, false );
@@ -174,10 +178,6 @@ ENDFORM2;
 		if ($this->inline) {
 			$styles .= 'display: inline;';
 		}
-
-		$buttonlabel = htmlspecialchars( $this->buttonlabel );
-		$searchbuttonlabel = htmlspecialchars( $this->searchbuttonlabel );
-		$id = Sanitizer::escapeId( $this->id );
 
 		if ($styles) {
 			$styles = 'style="'.htmlspecialchars($styles).'"';
