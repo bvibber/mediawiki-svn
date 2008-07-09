@@ -179,6 +179,14 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
 * Added blank special page Special:BlankPage for benchmarking, etc.
 * Foreign repo file descriptions and thumbnails are now cached.
 * (bug 11732) Allow localisation of edit button images
+* new hooks for influencing the way category links are rendered: 
+  OutputPageMakeCategoryLinks, SkinJoinCategoryLinks, SkinGetCategoryLinks
+* SkinTemplate now provides footer_links and toolbox_urls as arrays 
+  in the template data.
+* Split MonoBookTemplate::execute into several functions, unified portlet generation
+  in MonoBookTemplate::printPortlet
+* Added SkinTemplatePortlet hook to monobook, for intercepting portlet generation.
+* The ModernTemplate used by the Modern skin is now based on the MonoBookTemplate.
  
 === Bug fixes in 1.13 ===
 

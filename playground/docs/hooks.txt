@@ -1056,6 +1056,18 @@ $skin: Skin object
 If false is returned $subpages will be used instead of the HTML subPageSubtitle() generates.
 If true is returned, $subpages will be ignored and the rest of subPageSubtitle() will run.
 
+'SkinGetCategoryLinks': At the beginning of Skin::getCategoryLinks(). Implementations should
+return false if they store the desired HTML into $s.
+$skin: Skin object
+$allCats: Array of arrays of category links, as provided by $wgOut->getCategoryLinks();
+&$s: HTML to be generated from the category links (return value)
+
+'SkinJoinCategoryLinks': At the beginning of Skin::joinCategoryLinks(). Implementations should
+return false if they store the desired HTML into $t.
+$skin: Skin object
+$allCats: Array of category links, as found as an element of the array returned by $wgOut->getCategoryLinks();
+&$t: HTML to be generated from the given links (return value)
+
 'SkinTemplateBuildContentActionUrlsAfterSpecialPage': after the single tab  when showing a special page
 $sktemplate: SkinTemplate object
 $content_actions: array of tabs
