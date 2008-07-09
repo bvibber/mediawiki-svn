@@ -89,7 +89,7 @@
 	function getStreamNameText($sn=''){
 		if($sn=='')$sn =  $this->stream_name;
 		return ucfirst(str_replace('_', ' ',$sn)); 
-	}
+	}	
 	/*
 	 * makes title like db key:
 	 */
@@ -198,6 +198,7 @@
 		}
 		return $this->stream_name . '/'.$start_ntp . $end_ntp;
 	}
+
 	function getTimeDesc(){	
 		if($this->getStartTime() && $this->getEndTime()){
 			return wfMsg('mv_time_separator', $this->getStartTime(), $this->getEndTime());

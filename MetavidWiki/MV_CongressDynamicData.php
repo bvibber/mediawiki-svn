@@ -68,12 +68,6 @@ if (version_compare($wgVersion, '1.7', '<')) {
 }
 
 
-
-
-
-
-
-
  # Define a setup function
 $wgExtensionFunctions[] = 'wfCongressVidParserFunction_Setup';
 # Add a hook to initialise the magic word

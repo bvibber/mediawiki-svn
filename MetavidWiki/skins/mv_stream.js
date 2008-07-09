@@ -719,7 +719,7 @@ function mv_disp_play_controls(disp){
 	if(disp){		
 		//based on the embed type give space for controls: 
 		//@@todo pull pix_offset from players code		
-		switch(embedTypes.getPlayerLib()){
+		/*switch(embedTypes.getPlayerLib()){
 			case 'java':
 			case 'generic':		
 				var pix_offset= 30;
@@ -729,7 +729,9 @@ function mv_disp_play_controls(disp){
 			case 'oggplay':
 				var pix_offset=55;
 			break;
-		}
+		}*/
+		//give room for all players:
+		var pix_offset=55;
 		js_log("set con space: " + org_height_vid_contain+parseInt(pix_offset));
 		$j('#MV_VideoPlayer').css({'height':(org_height_vid_contain+parseInt(pix_offset))+'px'});
 		$j('#MV_StreamMeta,#MV_Tools').css({'top':(org_top_tool_contain+parseInt(pix_offset))+'px'});

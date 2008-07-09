@@ -137,7 +137,7 @@
  	 * by processing the given title request/namespace
  	 */
  	function mvDoMvPage (&$title, &$article, $doOutput=true){
-		global $wgOut;		
+		global $wgOut;
 		if($title->getNamespace() == NS_CATEGORY){
 			$article = new MV_CategoryPage($title);		
 		} elseif ($title->getNamespace() == MV_NS_SEQUENCE){			

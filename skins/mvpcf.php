@@ -89,7 +89,7 @@ class MvpcfTemplate extends QuickTemplate {
 			<?php $this->get_search_html(); ?>			
 		</div><!--searchSplash-->
 	</div><!--frontPageTop-->	
-	<div id="frontPageContent">
+	<div id="frontPageContent" class="bodyContent">
 		<!-- start content -->
 		<?php $this->html('bodytext') ?>
 		<?php if($this->data['catlinks']) { ?><div id="catlinks"><?php       $this->html('catlinks') ?></div><?php } ?>
@@ -334,7 +334,7 @@ class MvpcfTemplate extends QuickTemplate {
 		<a name="top" id="top"></a>
 		<?php if($this->data['sitenotice']) { ?><div id="siteNotice"><?php $this->html('sitenotice') ?></div><?php } ?>
 		<h1 class="firstHeading"><?php $this->data['displaytitle']!=""?$this->html('title'):$this->text('title') ?></h1>
-		<div id="bodyContent">
+		<div id="bodyContent" class="bodyContent">
 			<?php if($this->data['tagline']){?><h3 id="siteSub"><?php $this->msg('tagline') ?></h3><? } ?>
 			<div id="contentSub"><?php $this->html('subtitle') ?></div>
 			<?php if($this->data['undelete']) { ?><div id="contentSub2"><?php     $this->html('undelete') ?></div><?php } ?>

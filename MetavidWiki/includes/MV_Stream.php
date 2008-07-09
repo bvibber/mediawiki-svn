@@ -59,6 +59,7 @@ class MV_Stream {
 	function setMvTitle(&$mvTitle){
 		$this->mvTitle=$mvTitle;
 	}
+
 	/*connivance function*/
 	function doesStreamExist(){
 		return $this->db_load_stream();

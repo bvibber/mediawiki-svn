@@ -36,11 +36,11 @@ $mvEnableJSMVDrewrite=true;
 //@@todo we should clean this up!... into a semantic maping array or object
 //if you want to include spoken by relation in search results:  
 
-//keeps tracks of search queries 
+//enable dissable varius digest data collection 
 $mvEnableSearchDigest = true;
+$mvEnableClipViewDigest= true;
 //keeps track of popular pages in given categories over time
 $mvDigestCategories = array('Interst_Group', 'Bill', 'Person');
-
 
 $mvSpokenByInSearchResult = true;
 //if you want to include category lookup in search results:
@@ -137,13 +137,15 @@ define('MV_MISSING_PERSON_IMG','Missing person.jpg');
 ######
 # the metavid table names:
 #######
+//@@todo we should just switch over to mediaWiki db helpers and write in table names 
+//(medaiWiki can then handle table name rewriting) 
 $mvStreamTable 		= 'mv_streams';
 $mvStreamFilesTable	= 'mv_stream_files';
 $mvIndexTableName 	= 'mv_mvd_index';
 $mvStreamImageTable = 'mv_stream_images';
 $mvUrlCacheTable 	= 'mv_url_cache';
-$mvPageDigestTable		= 'mv_page_digest';
-$mvSearchDigestTable	= 'mv_search_digest';
+$mvPageDigestTable	= 'mv_page_digest';
+$mvSearchDigestTable= 'mv_search_digest';
 
 //whether to count found results (can take lots of time on big result sets)
 $mvDo_SQL_CALC_FOUND_ROWS = true;

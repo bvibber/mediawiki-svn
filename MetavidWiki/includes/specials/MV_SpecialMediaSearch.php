@@ -136,7 +136,11 @@ class MV_SpecialMediaSearch extends SpecialPage {
 				</form>
 			</div>";
 		return $o;
-	}
+	}	
+	function loadFiltersFromSerialized($sval){
+		$this->filters = unserialize($sval);
+	}	
+	
 	function setupFilters($defaultType='empty', $opt=null){
 		global $wgRequest;		
 		
@@ -217,12 +221,22 @@ class MV_SpecialMediaSearch extends SpecialPage {
 		global $mvEnableSearchDigest,$mvSearchDigestTable;
 		$mvIndex = new MV_Index();
 		//do search digest
-		if($mvEnableSearchDigest){
+		global $wgRequest;
+		if($mvEnableSearchDigest && $wgRequest->getVal('tl')!='1') {
 			$dbw =& wfGetDB(DB_WRITE);
-			//@@todo non-blocking insert... is that even supported in mysql/php? 
+			$dbr =& wfGetDB(DB_READ);
+			//@@todo non-blocking insert... is that supported in mysql/php?			
 			$dbw->insert($mvSearchDigestTable, 
-				array('query'=>$this->unified_term_search, 'time'=>time()), 
-				'Database::searchDigestInsert' );
+				array('query_key'=>$this->getFilterDesc($query_key=true),'time'=>time()), 
+					'Database::searchDigestInsert' );
+			//make sure the query key exists and is updated
+			//@@todo I think we can do a INSERT IF non found here? 
+			$res = $dbr->select('mv_query_key_lookup', array('filters'),
+				array('query_key'=>$this->getFilterDesc($query_key=true)));
+			if( $dbr->numRows($res)==0){
+				$dbr->insert('mv_query_key_lookup', array('query_key'=>$this->getFilterDesc($query_key=true),
+									'filters'=>serialize($this->filters)));
+			}
 		}
 		$this->results = $mvIndex->doFiltersQuery($this->filters);
 		$this->num = $mvIndex->numResults();
@@ -356,13 +370,13 @@ class MV_SpecialMediaSearch extends SpecialPage {
 							</span>
 							<div class="result_description">
 								<h4>'.$head_link.'</h4>
-								<p>Matching Phrase:' .$this->termHighlight($mvd->text, implode('|', $this->getTerms()), 2, 150).' </p>
+								<p>Matching Phrase:' .$this->termHighlight($mvd->text, implode('|', $this->getTerms()), 1, 100).' </p>
 								<span class="by">'.$mvd_cnt_links.'</span>
 								<span class="by">'.$mvd_cat_links.'</span>
 								<span class="by">'.$mvd_bill_links.'</span>
 							</div>
 							<div class="result_meta">
-								<span class="views">Views: NYA</span>
+								<span class="views">Views: '.$mvd->view_count.'</span>
 								<span class="duration">'.wfMsg('mv_duration_label').':'.$mvTitle->getSegmentDurationNTP($short_time=true).'</span>
 								<span class="comments">Comments: NYA</span>
 								<span class="playinline"><a href="javascript:mv_pl(\'' . $mvd->id . '\')">'
@@ -853,21 +867,28 @@ class MV_SpecialMediaSearch extends SpecialPage {
 		$o.='</div>';
 		return $o;
 	}
+	function getSearchLink(){
+		return SpecialPage::getTitleFor( 'MediaSearch' ) . 
+					$this->get_httpd_filters_query();	
+	}
 	/*
 	 * returns human readable description of filters
 	 */
-	function getFilterDesc(){
+	function getFilterDesc($query_key=false){
 		$o=$a='';
+		$bo=($query_key)?'':'<b>';
+		$bc=($query_key)?'':'</b>';
 		foreach($this->filters as $inx=>$f){	
-			if($inx!=0)$a=wfMsg('mv_search_'.$f['a']).' ';	
-			if($f['t']=='date_range'){ //handle special case of date range: 
-				$o.=' '.$a.wfMsg('mv_'.$f['t']).' '.wfMsg('mv_time_separator', '<b>'.$f['vs'].'</b>','<b>'.$f['ve'].'</b>');
-			}else{
-				$o.=' '.$a.wfMsg('mv_'.$f['t']).' <b>'. str_replace('_',' ',$f['v']).'</b> ';
+			if($inx!=0)$a=' '.wfMsg('mv_search_'.$f['a']).' ';							 
+			$o.=($query_key)?$a:$a.wfMsg('mv_'.$f['t']).' ';			
+			if($f['t']=='date_range'){ //handle special case of date range:				
+				$o.=wfMsg('mv_time_separator', $bo.$f['vs'].$bc, $bo.$f['ve'].$bc);		
+			}else{				
+				$o.=$bo. str_replace('_',' ',$f['v']).$bc;
 			}
 		}
 		return $o;
-	}
+	}	
 	function get_ref_person($inx = '', $person_name = MV_MISSING_PERSON_IMG, $disp = false) {
 		if($disp) {
 			$tname = 'f[' . $inx . '][v]';

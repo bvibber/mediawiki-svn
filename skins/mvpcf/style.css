@@ -18,15 +18,15 @@ html {margin: 0; padding: 0;}
 body {
 	margin: 0;
 	padding: 0;
-	font-family: Helvetica, Arial, sans-serif;
-	font-size: .75em;
+	font-family: Helvetica, Arial, sans-serif;	
 	color: #474747;
-	background: white;
+	background: white;	
+	font-size:0.75em;
 }
 body#frontPage {background: #eef6ff;}
-
-#bodyContent{	
+.bodyContent{	
 }
+
 
 a:link {color: #2060c1; text-decoration: underline;}
 a:visited {color: #2060c1; text-decoration: underline;}
@@ -40,7 +40,7 @@ h2 {font-size: 18px;}
 h3 {font-size: 16px;}
 h4 {font-size: 14px;}
 h5 {font-size: 13px; text-align: center;}
-h5.search_results_header {margin: 8px 0;}
+h5.search_results_header {margin: 8px 0; font-weight:normal;}
 h6 {font-size: 13px; color: #6c6c6c; padding: 5px 5px 0px 0px; text-transform: uppercase;}
 
 #metaLogin {background: white; text-align: right; padding: 10px 10px 0px 10px;}
@@ -49,10 +49,11 @@ h6 {font-size: 13px; color: #6c6c6c; padding: 5px 5px 0px 0px; text-transform: u
 /*
 ** the personal toolbar
 */
-#p-personal {position: absolute;left: 0;top: 0;	z-index: 0;}
-#p-personal {width: 100%;white-space: nowrap;padding: 0;margin: 0;border: none;background: none;
+#p-personal {position: absolute;left: 0;top: 0;	z-index: 0;
+	width: 100%;white-space: nowrap;padding: 0;margin: 0;border: none;background: none;
 	overflow: visible;
 	line-height: 1.2em;
+	font-size:12px;
 }
 #p-personal h5 {	display: none;}
 #p-personal .portlet,
@@ -78,6 +79,7 @@ h6 {font-size: 13px; color: #6c6c6c; padding: 5px 5px 0px 0px; text-transform: u
 	width: 100%;white-space: nowrap;padding: 0;margin: 0;border: none;background: none;
 	overflow: visible;
 	line-height: 1.2em;
+	font-size:12px;
 }
 
 #p-cactions h5 {	display: none;}
@@ -104,6 +106,7 @@ h6 {font-size: 13px; color: #6c6c6c; padding: 5px 5px 0px 0px; text-transform: u
 	position:static;
 	top: 20px;
 	float:left;	
+	font-size:13px;
 }
 #footer #p-cactions ul, #footer #p-navigation ul, #footer #p-tb ul, #footer #p-footer ul{
 	text-align: left;
@@ -133,7 +136,6 @@ li#pt-login {
 #p-personal li.active {
 	font-weight: bold;
 }
-
 #content {
 	width: 915px;
 	margin: 0 auto;
@@ -169,37 +171,37 @@ a.advanced_search_tag {font-size: 12px; text-decoration: none; margin: 8px; posi
 	display:none;
 }
 
-#frontPageContent ul.popularSearches {
+ul.popularSearches {
 	list-style: none;
 	margin: 10px 0 30px 0;
 	padding: 0;
 	text-align: left;
 }
-#frontPageContent ul.popularSearches li {
+ul.popularSearches li {
 	display: inline;
 	font-size: 14px;
 	margin: 0 10px 0 0;
 }
-
-#frontPageContent ul.popularClips {
+ul.popularClips {
 	list-style: none;
 	margin: 10px 0;
 	padding: 0;
+	width:780px;
 }
-#frontPageContent ul.popularClips li {
+ul.popularClips li {
 	width: 161px;
 	float: left;
 	display: inline;
 	text-align: center;
 	margin: 0 28px 0 0;
 }
-#frontPageContent ul.popularClips li img {display: block;}
+ul.popularClips li img {display: block;}
 
-#frontPageContent ul.popularClips li span.title {display: block; font-weight: bold; margin: 3px 0;}
-#frontPageContent ul.popularClips li span.description {display: block; margin: 3px 0;}
-#frontPageContent ul.popularClips li span.keywords {display: block; margin: 3px 0;}
+ul.popularClips li span.title {display: block; font-weight: bold; margin: 3px 0;}
+ul.popularClips li span.description {display: block; margin: 3px 0;}
+ul.popularClips li span.keywords {display: block; margin: 3px 0;}
 
-#frontPageContent ul.popularSearches li.last_li, #frontPageContent ul.popularClips li.last_li {margin: 0;}
+ul.popularSearches li.last_li, ul.popularClips li.last_li {margin: 0;}
 
 
 /*Ajax search suggestions*/
@@ -467,7 +469,7 @@ ul#metaResults li.prevnext {margin-left:3px; margin-right:10px;}
 
 p.see_more {padding: 5px 0; margin: 0;}
 
-span.by {display: block; padding-bottom: 10px;}
+span.by {display: block; padding-bottom: 3px;}
 span.cats {padding-right: 20px;}
 
 

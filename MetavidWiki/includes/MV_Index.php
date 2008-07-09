@@ -115,10 +115,10 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
  		$sql_from=" FROM {$dbr->tableName($mvIndexTableName)} ";
  		if($smw_properties!=''){
  			$smw_properties = (is_string($smw_properties))?array($smw_properties):$smw_properties; 			
- 			foreach($smw_properties as $prop_name){
+ 			foreach($smw_properties as $prop_name){	 				
  				$sql_sel.=", `$prop_name`.`object_title` as `$prop_name`";
  				$sql_from.="LEFT JOIN `smw_relations` as `$prop_name` ON (`mv_mvd_index`.`mv_page_id`=`$prop_name`.`subject_id` " .
-	 					"AND `$prop_name`.`relation_title`='$prop_name') ";	
+	 					"AND `$prop_name`.`relation_title`='$prop_name') "; 				
  			}					
  		} 	
  		$sql = $sql_sel . $sql_from; 	
@@ -278,12 +278,12 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
  		$join_streams_with_low_ogg_sql = "JOIN `$mvStreamFilesTable` ON (`$mvIndexTableName`.`stream_id` = `$mvStreamFilesTable`.`stream_id` AND `$mvStreamFilesTable`.`file_desc_msg`='mv_ogg_low_quality') ";
  		//only run the top range query if we have no secondary query
  		if($toplq_cat!='' && $ftq==''){ 			
- 			//@@todo unify top query with ranged query ... kind of tricky 			
+ 			//@@todo unify top query with rannged query ... kind of tricky 			
  			
  			//@@todo we should only look in annotative layer for top level queries? ...
  			//@@todo paging for top level queries? ... 200 hit limit is probably ok     			
  			
- 			$sql = "SELECT `mv_page_id` as `id`, `$mvIndexTableName`.`stream_id`,`start_time`,`end_time`, `wiki_title`, $searchindexTable.`si_text` as `text`
+ 			$sql = "SELECT `mv_page_id` as `id`, `$mvIndexTableName`.`stream_id`,``start_time`,`end_time`,`view_count`, `wiki_title`, $searchindexTable.`si_text` as `text`
 	 			FROM `$mvIndexTableName` 
 	 			$date_range_join
 	 			JOIN $categoryTable ON `$mvIndexTableName`.`mv_page_id` = $categoryTable.`cl_from`
@@ -299,7 +299,7 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
  			$top_result = $dbr->query($sql, 'MV_Index:doFiltersQuery_topQ'); 			
  			if($dbr->numRows($top_result)==0)return array();
  			//set up ranges sql query
- 			$sql="SELECT $selOpt `mv_page_id` as `id`, `$mvIndexTableName`.`stream_id`,`start_time`,`end_time`, `wiki_title`, $searchindexTable.`si_text` as `text` ";
+ 			$sql="SELECT $selOpt `mv_page_id` as `id`, `$mvIndexTableName`.`stream_id`,`start_time`,`end_time`,`view_count`, `wiki_title`, $searchindexTable.`si_text` as `text` ";
  				if($mvSpokenByInSearchResult)$sql.=",`smw_relations`.`object_title` as `spoken_by` ";
  				$sql.="FROM `$mvIndexTableName` " .
  				$join_streams_with_low_ogg_sql . 
@@ -333,7 +333,7 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
  		}else{ 		
  			//add the top query to the base query: 
  			$ftq.=$toplq;
-	 		$sql = "SELECT $selOpt `mv_page_id` as `id`,`$mvIndexTableName`.`stream_id`,`start_time`,`end_time`, `wiki_title`, $searchindexTable.`si_text` AS `text` ";
+	 		$sql = "SELECT $selOpt `mv_page_id` as `id`,`$mvIndexTableName`.`stream_id`,`start_time`,`end_time`, `view_count`,`wiki_title`, $searchindexTable.`si_text` AS `text` ";
 	 		if($mvSpokenByInSearchResult)$sql.=",`smw_relations`.`object_title` as `spoken_by` ";
 	 		$sql.="FROM `$mvIndexTableName` 
 	 			JOIN $searchindexTable ON `$mvIndexTableName`.`mv_page_id` = $searchindexTable.`si_page` 
@@ -372,6 +372,7 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
 	 		$sql.="LIMIT {$this->offset}, {$this->limit} ";
  		}
 		//echo "SQL:".$sql." \n";  			
+		//die;
  		$result = $dbr->query($sql,  'MV_Index:doFiltersQuery_base');
  		
  		$this->numResults=$dbr->numRows($result);
@@ -418,9 +419,7 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
  					unset($stream_set[$k]); 					
  				}
  			}
- 		} 			 	
- 		
- 		
+ 		} 		 		 		
  		//do category & bill lookup for search result ranges
  		if($mvCategoryInSearchResult || $mvBillInSearchResult){
  			$sql="SELECT {$dbr->tableName('categorylinks')}.`cl_to`, `mv_mvd_index`.`stream_id`,
@@ -458,8 +457,11 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
 						} 
 					}
 				}
-			} 
- 		} 		 	
+			}
+ 		} 	
+ 		//print "<pre>";	 	
+ 		//print_r($ret_ary);
+ 		//die;
  		return $ret_ary;
  	}
  	function numResultsFound(){

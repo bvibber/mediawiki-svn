@@ -53,6 +53,7 @@ $wgAutoloadClasses['MV_Stream'] =  dirname(__FILE__)  .'/MV_Stream.php';
 $wgAutoloadClasses['MV_StreamFile']=dirname(__FILE__)  . '/MV_StreamFile.php';
 $wgAutoloadClasses['MV_StreamImage'] = dirname(__FILE__)  . '/MV_StreamImage.php';
 $wgAutoloadClasses['MV_ParserCache'] = dirname(__FILE__) . '/MV_ParserCache.php';
+$wgAutoloadClasses['MV_MagicWords'] = dirname(__FILE__) . '/MV_MagicWords.php';
 		
 $markerList = array(); 
 
@@ -112,6 +113,11 @@ function mvSetupExtension(){
 	$wgHooks['CustomEditor'][] = 'mvCustomEditor';
 	$wgParser->setHook( 'sequence', 'mvSeqTag' );
 
+	/*$wgHooks['LanguageGetMagic'][]       = 'mvMagicParserFunction_Magic';	
+ 	$wgParser->setFunctionHook( 'example', 'mvMagicParserFunction_Render' );	
+	*/
+	$wgParser->setFunctionHook( 'mvData', 'mvMagicParserFunction_Render' );
+	
 	//$wgHooks['BeforePageDisplay'][] = 'mvDoSpecialPage';	
 	//$wgHooks['ArticleViewHeader'][] = 'mvArticleViewOpts';
 	/**********************************************/
@@ -122,10 +128,41 @@ function mvSetupExtension(){
 	    'author' => 'Michael Dale',
 	    'version' => 'alpha 0.1',
 		'url' => 'http://metavid.org',
-		'description' => 'Video Metadata Editor, Clip Sequencer and Media Search<br />' .
+		'description' => 'Video Metadata Editor & Media Search<br />' .
 			'[http://metavid.ucsc.edu/wiki/index.php/MetaVidWiki_Software More about MetaVidWiki Software]'
 	);
 }	
+
+# Define a setup function
+# Add a hook to initialise the magic word
+$wgHooks['LanguageGetMagic'][]       = 'mvMagicParserFunction_Magic';
+ 
+function mvMagicParserFunction_Magic( &$magicWords, $langCode ) {        
+        $magicWords['mvData'] = array( 0, 'mvData' );        
+        return true;
+}
+ 
+function mvMagicParserFunction_Render( &$parser ) {
+		//gennerate arg_list array without parser param
+		$arg_list = array_slice(func_get_args(), 1);
+		$mvMagicWords = new MV_MagicWords($arg_list);
+        return array($mvMagicWords->renderMagic(), 'noparse'=>true, 'isHTML'=>true);
+}
+/*function mvMagicParserFunction_Magic( &$magicWords, $langCode ) {
+        # Add the magic word
+        # The first array element is case sensitive, in this case it is not case sensitive
+        # All remaining elements are synonyms for our parser function
+        $magicWords['example'] = array( 0, 'example' );
+        # unless we return true, other parser functions extensions won't get loaded.
+        return true;
+}
+ 
+function mvMagicParserFunction_Render( &$parser, $param1 = '', $param2 = '' ) {
+		$arg_list = func_get_args();	
+        $mvMagic = new MV_MagicWords($arg_list);
+        return $mvMagic->renderMagic();
+}*/
+
 /**********************************************/
 /***** Header modifications               *****/
 /**********************************************/
@@ -559,6 +596,27 @@ function mvDoMetavidStreamPage(&$title, &$article){
 		//(@@todo clean up skin.php to enable better tab controls)
 		//$title->mNamespace= NS_SPECIAL;
 		
+		//add a hit to the digest if enabled: 
+		//@@todo (maybe in the future use javascript to confirm they acutally "watched" the clip)
+		global $mvEnableClipViewDigest, $wgRequest;
+		//don't log views without end times (default stream view) 
+		if($mvEnableClipViewDigest && $mvTitle->end_time!=null && $wgRequest->getVal('tl')!='1'){
+			$dbw =& wfGetDB(DB_WRITE);
+			$dbw->insert('mv_clipview_digest', array(
+					'stream_id'	=>$mvTitle->getStreamId(),
+					'start_time'=>$mvTitle->getStartTimeSeconds(),
+					'end_time'	=>$mvTitle->getEndTimeSeconds(),
+					'query_key' =>$mvTitle->getStreamId().$mvTitle->getStartTimeSeconds().$mvTitle->getEndTimeSeconds(),
+					'view_date'	=>time()
+				)
+			);
+			//also increment the mvd_page if we find a match:
+			$dbw->update('mv_mvd_index', array('`view_count`=`view_count`+1'),
+							array(	'stream_id'=>$mvTitle->getStreamId(), 
+									'start_time'=>$mvTitle->getStartTimeSeconds(),
+									'end_time'	=>$mvTitle->getEndTimeSeconds()
+							));			
+		}				
 		//@@todo check if the requested title is already just the stream name:		 	
 		$streamTitle = Title::newFromText( $mvTitle->getStreamName(), MV_NS_STREAM);
 		//print " new title: " . $streamTitle . "\n";		
@@ -567,6 +625,7 @@ function mvDoMetavidStreamPage(&$title, &$article){
 		mvMissingStreamPage($mvTitle->stream_name);
 	}	
 }
+
 /*
  * global MV_Stream server
  * @@todo cache this function

@@ -186,6 +186,7 @@ Jump to stream view: $2',
 	'mv_search_date_range'           => 'Date range',
 	'mv_stream_name'                 => 'stream name',
 	'mv_date_range'                  => 'date range',
+	'mv_date_last_week'				 => 'Last Week',
 	
 	'mv_category_results'			 => 'Category Results',
 	'mv_people_results'				 => 'People Results',
