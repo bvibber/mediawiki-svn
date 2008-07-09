@@ -76,7 +76,7 @@ class DeletedContribsPager extends IndexPager {
 		$limits = implode( ' | ', $limitLinks );
 
 		$this->mNavigationBar = "({$pagingLinks['first']} | {$pagingLinks['last']}) " .
-			wfMsgHtml("viewprevnext", $pagingLinks['prev'], $pagingLinks['next'], $limits);
+			wfMsgExt( 'viewprevnext', array( 'parsemag' ), $pagingLinks['prev'], $pagingLinks['next'], $limits );
 		return $this->mNavigationBar;
 	}
 
