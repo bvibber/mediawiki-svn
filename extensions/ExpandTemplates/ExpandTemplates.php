@@ -22,6 +22,7 @@ $wgExtensionCredits['specialpage'][] = array(
 );
 
 $wgExtensionMessagesFiles['ExpandTemplates'] = dirname(__FILE__) . '/ExpandTemplates.i18n.php';
+$wgExtensionAliasesFiles['ExpandTemplates'] = dirname(__FILE__) . '/ExpandTemplates.alias.php';
 $wgSpecialPageGroups['ExpandTemplates'] = 'wiki';
 
 if ( !function_exists( 'extAddSpecialPage' ) ) {
