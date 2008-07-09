@@ -20,3 +20,10 @@ $aliases['en'] = array(
 $aliases['de'] = array(
 	'DeletedContributions' => array( 'Gelöschte Beiträge' ),
 );
+
+/** Hebrew (עברית)
+ * @author Rotem Liss
+ */
+$aliases['he'] = array(
+	'DeletedContributions' => array( 'תרומות_מחוקות' ),
+);
