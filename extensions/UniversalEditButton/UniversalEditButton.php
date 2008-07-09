@@ -35,7 +35,7 @@ $wgExtensionCredits['other'][] = array(
 	'svn-date'       => '$LastChangedDate$',
 	'svn-revision'   => '$LastChangedRevision$',
 	'description'    => 'Adds HTML header <code>&lt;link&gt;</code> to support Universal Edit Button browser extension.',
-	'descriptionmsg' => 'univesaleditbutton-desc',
+	'descriptionmsg' => 'universaleditbutton-desc',
 	'author'         => array( 'Brion Vibber', 'Danny B.' ),
 );
 
