@@ -356,10 +356,10 @@ class DeletedContributionsPage extends SpecialPage {
 
 		$f .=  Xml::openElement( 'fieldset' ) .
 			Xml::element( 'legend', array(), wfMsg( 'sp-contributions-search' ) ) .
-			Xml::tags( 'label', array( 'for' => 'target' ), wfMsgExt( 'sp-contributions-username', 'parseinline' ) ) .
+			Xml::tags( 'label', array( 'for' => 'target' ), wfMsgExt( 'sp-contributions-username', 'parseinline' ) ) . ' ' .
 			Xml::input( 'target', 20, $options['target']) . ' '.
 			Xml::label( wfMsg( 'namespace' ), 'namespace' ) . ' ' .
-			Xml::namespaceSelector( $options['namespace'], '' ) .
+			Xml::namespaceSelector( $options['namespace'], '' ) . ' ' .
 			Xml::submitButton( wfMsg( 'sp-contributions-submit' ) ) .
 			Xml::closeElement( 'fieldset' ) .
 			Xml::closeElement( 'form' );

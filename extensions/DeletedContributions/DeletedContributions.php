@@ -1,8 +1,8 @@
 <?php
 /**
- @ Extension based on SpecialContributions for archived revisions
- @ Modifications made to SpecialContributions.php
- @ copyright © 2007 Aaron Schulz
+ * Extension based on SpecialContributions for archived revisions
+ * Modifications made to SpecialContributions.php
+ * @copyright © 2007 Aaron Schulz
  */
 
 $wgExtensionCredits['specialpage'][] = array(
@@ -16,10 +16,13 @@ $wgExtensionCredits['specialpage'][] = array(
 );
 
 # Internationalisation
-$wgExtensionMessagesFiles['DeletedContributions'] = dirname(__FILE__) . '/DeletedContributions.i18n.php';
+$dir = dirname(__FILE__) . '/';
+$wgExtensionMessagesFiles['DeletedContributions'] = $dir . 'DeletedContributions.i18n.php';
+$wgExtensionAliasesFiles['DeletedContributions'] = $dir . 'DeletedContributions.i18n.alias.php';
+
 $wgAutoloadClasses['DeletedContributionsPage'] 
 	= $wgAutoloadClasses['DeletedContributionsPage']
-	= dirname(__FILE__) . '/DeletedContributions_body.php';
+	= $dir . 'DeletedContributions_body.php';
 
 $wgHooks['ContributionsToolLinks'][] = 'wfLoadContribsLink';
 $wgSpecialPages['DeletedContributions'] = 'DeletedContributionsPage';
@@ -40,4 +43,3 @@ function wfLoadContribsLink( $id, $nt, &$links ) {
 	}
 	return true;
 }
-
