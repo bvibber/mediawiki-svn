@@ -29,6 +29,7 @@ $wgExtensionCredits['specialpage'][] = array(
 
 $dir = dirname(__FILE__) . '/';
 $wgExtensionMessagesFiles['MultiUpload'] = $dir . 'SpecialMultipleUpload.i18n.php';
+$wgExtensionAliasesFiles['MultiUpload'] = $dir . 'SpecialMultipleUpload.alias.php';
 
 function wfMultipleUpload() {
 	SpecialPage::AddPage(new SpecialPage('MultipleUpload'));

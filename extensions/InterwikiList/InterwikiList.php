@@ -25,4 +25,5 @@ $dir = dirname(__FILE__) . '/';
 $wgSpecialPages['InterwikiList'] = 'InterwikiList';
 $wgAutoloadClasses['InterwikiList'] = $dir . 'InterwikiList_body.php';
 $wgExtensionMessagesFiles['InterwikiList'] = $dir . 'InterwikiList.i18n.php';
+$wgExtensionAliasesFiles['InterwikiList'] = $dir . 'InterwikiList.alias.php';
 $wgSpecialPageGroups['InterwikiList'] = 'wiki';
