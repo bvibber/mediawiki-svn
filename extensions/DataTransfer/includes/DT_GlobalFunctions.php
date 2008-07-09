@@ -13,57 +13,23 @@ define('DT_VERSION','0.1.8');
 define('DT_SP_HAS_XML_GROUPING', 1);
 define('DT_SP_IS_EXCLUDED_FROM_XML', 2);
 
-$wgExtensionFunctions[] = 'dtgSetupExtension';
+$wgExtensionCredits['specialpage'][]= array(
+	'name'           => 'Data Transfer',
+	'version'        => DT_VERSION,
+	'author'         => 'Yaron Koren',
+	'url'            => 'http://www.mediawiki.org/wiki/Extension:Data_Transfer',
+	'description'    => 'Exports wiki pages as XML, using template calls as the data structure',
+	'descriptionmsg' => 'dt-desc',
+);
 
 $dtgIP = $IP . '/extensions/DataTransfer';
+
+// register all special pages and other classes
+$wgSpecialPages['ViewXML'] = 'DTViewXML';
+$wgAutoloadClasses['DTViewXML'] = $dtgIP . '/specials/DT_ViewXML.php';
+
 require_once($dtgIP . '/languages/DT_Language.php');
-
-if (version_compare($wgVersion, '1.11', '>=' )) {
-	$wgExtensionMessagesFiles['DataTransfer'] = $dtgIP . '/languages/DT_Messages.php';
-} else {
-	$wgExtensionFunctions[] = 'dtfLoadMessagesManually';
-}
-
-/**
- *  Do the actual intialisation of the extension. This is just a delayed init that makes sure
- *  MediaWiki is set up properly before we add our stuff.
- */
-function dtgSetupExtension() {
-	global $dtgIP, $dtgVersion, $dtgNamespace;
-	global $wgVersion, $wgLanguageCode, $wgExtensionCredits;
-
-	if (version_compare($wgVersion, '1.11', '>='))
-		wfLoadExtensionMessages('DataTransfer');
-
-	dtfInitContentLanguage($wgLanguageCode);
-
-	/**********************************************/
-	/***** register specials                  *****/
-	/**********************************************/
-	require_once($dtgIP . '/specials/DT_ViewXML.php');
-
-	/**********************************************/
-	/***** register hooks                     *****/
-	/**********************************************/
-
-	/**********************************************/
-	/***** credits (see "Special:Version")    *****/
-	/**********************************************/
-	$wgExtensionCredits['specialpage'][]= array(
-		'name'           => 'Data Transfer',
-		'version'        => DT_VERSION,
-		'author'         => 'Yaron Koren',
-		'url'            => 'http://www.mediawiki.org/wiki/Extension:Data_Transfer',
-		'description'    => 'Exports wiki pages as XML, using template calls as the data structure',
-		'descriptionmsg' => 'dt-desc',
-	);
-
-	return true;
-}
-
-/**********************************************/
-/***** namespace settings                 *****/
-/**********************************************/
+$wgExtensionMessagesFiles['DataTransfer'] = $dtgIP . '/languages/DT_Messages.php';
 
 /**********************************************/
 /***** language settings                  *****/
@@ -117,20 +83,6 @@ function dtfInitUserLanguage($langcode) {
 		$dtgLang = $dtgContLang;
 	} else {
 		$dtgLang = new $dtLangClass();
-	}
-}
-
-/**
- * Setting of message cache for versions of MediaWiki that do not support
- * wgExtensionMessagesFiles
- */
-function dtfLoadMessagesManually() {
-	global $dtgIP, $wgMessageCache;
-
-	# add messages
-	require($dtgIP . '/languages/DT_Messages.php');
-	foreach($messages as $key => $value) {
-		$wgMessageCache->addMessages($messages[$key], $key);
 	}
 }
 
