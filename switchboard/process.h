@@ -15,10 +15,12 @@
 
 #include	<stdexcept>
 
-#include	<boost/asio.hpp>
+#include	<asio.hpp>
 #include	<boost/shared_ptr.hpp>
 #include	<boost/noncopyable.hpp>
 #include	<log4cxx/logger.h>
+
+#include	"fcgi_socket.h"
 
 struct sbcontext;
 
@@ -38,8 +40,9 @@ struct process : boost::noncopyable {
 	process(sbcontext &context, uid_t, gid_t, std::string const &bindpath);
 	~process();
 
-	boost::asio::ip::tcp::socket &socket();
-	void connect(boost::asio::ip::tcp::socket &);
+	void connect(
+		fcgi_socket_unixp,
+		boost::function<void (asio::error_code)>);
 
 	uid_t uid() const { return uid_; }
 	gid_t gid() const { return gid_; }
@@ -47,7 +50,7 @@ struct process : boost::noncopyable {
 
 private:
 	sbcontext &context_;
-	struct sockaddr_un addr_;
+	std::string bindpath_;
 	pid_t pid_;
 	uid_t uid_;
 	gid_t gid_;

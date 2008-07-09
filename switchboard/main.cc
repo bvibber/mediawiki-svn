@@ -19,7 +19,7 @@
 #include	<pwd.h>
 #include	<grp.h>
 
-#include	<boost/asio.hpp>
+#include	<asio.hpp>
 #include	<boost/format.hpp>
 #include	<log4cxx/logger.h>
 #include	<log4cxx/propertyconfigurator.h>
@@ -27,7 +27,6 @@
 #include	"async_read_fcgi_record.h"
 #include	"fcgi.h"
 
-namespace asio = boost::asio;
 using asio::ip::tcp;
 using boost::format;
 
@@ -283,7 +282,8 @@ dostat:
 	//signal(SIGCHLD, sigchld);
 	signal(SIGCHLD, SIG_IGN);
 
-	//	context.service().run();
+	context.service().run();
+#if 0
 	for (;;) {
 		boost::system::error_code error;
 		context.service().run_one(error);
@@ -293,4 +293,5 @@ dostat:
 			signal(SIGCHLD, sigchld);
 		}
 	}
+#endif
 }

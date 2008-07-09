@@ -14,7 +14,7 @@
 #include	<string>
 #include	<deque>
 
-#include	<boost/asio.hpp>
+#include	<asio.hpp>
 #include	<boost/array.hpp>
 #include	<boost/enable_shared_from_this.hpp>
 #include	<log4cxx/logger.h>
@@ -48,7 +48,8 @@ private:
 	std::map<std::string, std::string> params_;
 	std::vector<fcgi::recordp> buffer;
 	fcgi_cgip cgi_;
-	fcgi_server_connectionp server_;
+	//fcgi_server_connectionp server_;
+	boost::weak_ptr<fcgi_server_connection> server_;
 	sbcontext &context_;
 	int request_id_;
 

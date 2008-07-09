@@ -12,7 +12,7 @@
 
 #include	<vector>
 
-#include	<boost/asio/ip/tcp.hpp>
+#include	<asio/ip/tcp.hpp>
 #include	<boost/enable_shared_from_this.hpp>
 #include	<log4cxx/logger.h>
 
@@ -20,12 +20,14 @@
 #include	"fcgi.h"
 #include	"fcgi_application.h"
 #include	"sbcontext.h"
-#include	"fcgi_record_writer.h"
+#include	"fcgi_socket.h"
 
 struct fcgi_listener;
 
 struct fcgi_server_connection : 
-		boost::enable_shared_from_this<fcgi_server_connection> {
+	boost::noncopyable,
+	boost::enable_shared_from_this<fcgi_server_connection> {
+
 	fcgi_server_connection(sbcontext &context, fcgi_listener *lsnr);
 	~fcgi_server_connection();
 
@@ -33,21 +35,20 @@ struct fcgi_server_connection :
 	void	record_to_server(fcgi::recordp record);
 	void	destroy(int id);
 
-	boost::asio::ip::tcp::socket &socket();
+	fcgi_socket_tcpp socket();
 
 private:
 	void	handle_record(
 			fcgi::recordp record,
-			boost::system::error_code);
+			asio::error_code);
 
 	std::vector<fcgi_applicationp> requests_;
-	boost::asio::ip::tcp::socket socket_;
+	fcgi_socket_tcpp socket_;
 	sbcontext &context_;
 	fcgi::recordp record_;
-	fcgi_record_writerp writer_;
 	fcgi_listener *lsnr_;
 
-	void writer_error(boost::system::error_code error);
+	void write_done(asio::error_code error);
 	void destroy();
 	void delete_me();
 	bool alive_;

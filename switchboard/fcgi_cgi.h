@@ -13,7 +13,7 @@
 #include	<stdexcept>
 #include	<deque>
 
-#include	<boost/asio.hpp>
+#include	<asio.hpp>
 #include	<boost/array.hpp>
 #include	<boost/shared_ptr.hpp>
 #include	<boost/enable_shared_from_this.hpp>
@@ -23,7 +23,7 @@
 #include	"fcgi.h"
 #include	"sbcontext.h"
 #include	"process.h"
-#include	"fcgi_record_writer.h"
+#include	"fcgi_socket.h"
 
 struct fcgi_application;
 typedef boost::shared_ptr<fcgi_application> fcgi_applicationp;
@@ -52,15 +52,15 @@ struct fcgi_cgi : boost::enable_shared_from_this<fcgi_cgi> {
 	void destroy();
 
 private:
-	void writer_error(boost::system::error_code error);
-	void handle_child_read(fcgi::recordp record, boost::system::error_code);
+	void write_done(asio::error_code error);
+	void connect_done(asio::error_code error);
+	void handle_child_read(fcgi::recordp record, asio::error_code);
 
 	sbcontext &context_;
-	boost::asio::ip::tcp::socket child_socket_;
+	fcgi_socket_unixp child_socket_;
 	fcgi_applicationp app_;
 	processp process_;
 
-	fcgi_record_writerp writer_;
 	int request_id_;
 	bool alive_;
 

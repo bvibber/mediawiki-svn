@@ -16,7 +16,7 @@
 #include	<cassert>
 #include	<ctime>
 
-#include	<boost/asio.hpp>
+#include	<asio.hpp>
 #include	<boost/date_time/posix_time/posix_time.hpp>
 #include	<boost/bind.hpp>
 #include	<boost/lambda/lambda.hpp>
@@ -26,8 +26,6 @@ using boost::format;
 #include	"process_factory.h"
 #include	"sbcontext.h"	
 #include	"config.h"
-
-namespace asio = boost::asio;
 
 std::set<int> process_factory::ids_;
 int process_factory::curid_;
@@ -81,7 +79,7 @@ process_factory::release(processp proc)
 }
 
 void
-process_factory::reap(boost::system::error_code error)
+process_factory::reap(asio::error_code error)
 {
 	std::time_t oldest = std::time(0) - 30;
 

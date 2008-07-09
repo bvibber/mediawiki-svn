@@ -1,12 +1,10 @@
 include Makefile.config
 
-CC		= gcc
-CXX		= g++
 CPPFLAGS	=
 INCLUDES	= $(EXTRA_CPPFLAGS)
-CFLAGS		= -O3 -g3 -ggdb
+CFLAGS		= $(EXTRA_CFLAGS)
 LDFLAGS		= $(EXTRA_LDFLAGS)
-LIBS		= -llog4cxx -lboost_system$(BOOSTTAG) $(EXTRA_LIBS)
+LIBS		= -llog4cxx -lboost_system$(BOOSTTAG) -lboost_signals$(BOOSTTAG) $(EXTRA_LIBS)
 
 CONFIG_FLAGS	= \
 	-DPREFIX=\"$(PREFIX)\"		\
@@ -32,12 +30,10 @@ SWKILL_FLAGS	= \
 
 OBJS=	\
 	main.o				\
-	async_read_fcgi_record.o	\
 	config.o			\
 	fcgi_application.o		\
 	fcgi_cgi.o			\
 	fcgi_listener.o			\
-	fcgi_record_writer.o		\
 	fcgi_server_connection.o	\
 	process.o			\
 	process_factory.o		\

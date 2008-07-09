@@ -11,8 +11,10 @@
 #include	<log4cxx/logger.h>
 
 #include	"process.h"
+#include	"timed_connect.h"
 
-namespace asio = boost::asio;
+#include	"fcgi_socket.h"
+
 using asio::ip::tcp;
 using boost::shared_ptr;
 using boost::format;
@@ -22,6 +24,7 @@ process::process(
 		uid_t uid, gid_t gid,
 		std::string const &bindpath)
 	: context_(context)
+	, bindpath_(bindpath)
 	, uid_(uid)
 	, gid_(gid)
 	, logger(log4cxx::Logger::getLogger("switchboard.process"))
@@ -38,12 +41,13 @@ process::process(
 		throw creation_failure("socket failed");
 
 	unlink(bindpath.c_str());
-	memset(&addr_, 0, sizeof(addr_));
-	addr_.sun_family = AF_UNIX;
-	strcpy(addr_.sun_path, bindpath.c_str());
+	struct sockaddr_un addr;
+	memset(&addr, 0, sizeof(addr));
+	addr.sun_family = AF_UNIX;
+	strcpy(addr.sun_path, bindpath.c_str());
 
 	LOG4CXX_DEBUG(logger, "binding...");
-	if (bind(sock, (struct sockaddr *) &addr_, sizeof(addr_)) == -1)
+	if (bind(sock, (struct sockaddr *) &addr, sizeof(addr)) == -1)
 		throw creation_failure("startup failed");
 
 	LOG4CXX_DEBUG(logger, "listening...");
@@ -78,14 +82,14 @@ process::process(
 
 process::~process()
 {
-    /*
-     * Because the process is setuid, trying to kill it normally won't work.
-     * We use the swkill wrapper, which is similar to swexec, except it kills
-     * a process.
-     */
-    char uids[64];
-    char gids[64];
-    char pids[64];
+	/*
+	 * Because the process is setuid, trying to kill it normally won't work.
+	 * We use the swkill wrapper, which is similar to swexec, except it kills
+	 * a process.
+	 */
+	char uids[64];
+	char gids[64];
+	char pids[64];
 
 	LOG4CXX_DEBUG(logger, format("process@%p destroyed, killing pid %d") % this % pid_);
 
@@ -104,21 +108,13 @@ process::~process()
 }
 
 void
-process::connect(tcp::socket &socket)
+process::connect(
+	fcgi_socket_unixp socket,
+	boost::function<void (asio::error_code)> func)
 {
-	LOG4CXX_DEBUG(logger, format("connecting to process socket %s...")
-			% addr_.sun_path);
-	int sock;
-	if ((sock = ::socket(AF_UNIX, SOCK_STREAM, 0)) == -1)
-		throw connect_failure("socket failed");
-
-	if (fcntl(sock, F_SETFD, FD_CLOEXEC) == -1)
-		throw connect_failure("fcntl(FD_CLOEXEC) failed");
-
-	if (::connect(sock, (struct sockaddr *) &addr_, sizeof(addr_)) == -1)
-		throw connect_failure("connect failed");
-
-	LOG4CXX_DEBUG(logger, "connected okay");
-	boost::system::error_code err;
-	socket.assign(tcp::v4(), sock, err);
+	LOG4CXX_DEBUG(logger, format("connecting to process socket..."));
+	asio::local::stream_protocol::endpoint ep(bindpath_);
+	async_timed_connect(socket, ep, 
+			boost::posix_time::seconds(5),
+			func);
 }

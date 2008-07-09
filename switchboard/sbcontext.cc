@@ -11,6 +11,12 @@
 #include	"process_factory.h"
 
 sbcontext::sbcontext()
-	: factory_(*this)
+	: factory_(new process_factory(*this))
 {
+}
+
+process_factory&
+sbcontext::factory()
+{
+	return *factory_;
 }

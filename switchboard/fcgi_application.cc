@@ -18,7 +18,6 @@
 #include	"fcgi_server_connection.h"
 #include	"fcgi_cgi.h"
 
-namespace asio = boost::asio;
 using asio::ip::tcp;
 using boost::format;
 
@@ -68,7 +67,8 @@ fcgi_application::record_from_server(fcgi::recordp record)
 			} catch (std::exception &e) {
 				LOG4CXX_DEBUG(logger, format( "error creating fcgi_cgi: %s")
 						% e.what());
-				server_->destroy(request_id_);
+				if (!server_.expired())
+					server_.lock()->destroy(request_id_);
 				return;
 			}
 
@@ -158,7 +158,8 @@ void
 fcgi_application::record_from_child(fcgi::recordp record)
 {
 	LOG4CXX_DEBUG(logger, "received record from child, fwding to server");
-	server_->record_to_server(record);
+	if (!server_.expired())
+		server_.lock()->record_to_server(record);
 }
 
 void
@@ -168,5 +169,6 @@ fcgi_application::destroy()
 	if (cgi_)
 		cgi_->close();
 	cgi_.reset();
-	server_->destroy(request_id_);
+	if (!server_.expired())
+		server_.lock()->destroy(request_id_);
 }

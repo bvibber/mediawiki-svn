@@ -7,7 +7,7 @@
  */
 /* $Id$ */
 
-#include	<boost/asio.hpp>
+#include	<asio.hpp>
 #include	<boost/bind.hpp>
 #include	<boost/format.hpp>
 
@@ -15,14 +15,13 @@
 #include	"fcgi_listener.h"
 #include	"async_read_fcgi_record.h"
 
-namespace asio = boost::asio;
 using asio::ip::tcp;
 using boost::format;
 
 fcgi_server_connection::fcgi_server_connection(
 		sbcontext &context,
 		fcgi_listener *lsnr)
-	: socket_(context.service())
+	: socket_(new fcgi_socket<asio::ip::tcp::socket>(context))
 	, context_(context)
 	, alive_(true)
 	, lsnr_(lsnr)
@@ -40,28 +39,28 @@ fcgi_server_connection::destroy(int r)
 {
 	LOG4CXX_DEBUG(logger, format("destroying request #%d") % r);
 
-	if (writer_) {
-		fcgi::recordp rec(new fcgi::record);
-		rec->version = 1;
-		rec->type = fcgi::rectype::end_request;
-		rec->requestId1 = (r & 0xFF00) >> 8;
-		rec->requestId0 = r & 0xFF;
-		rec->contentLength1 = 0;
-		rec->contentLength0 = 8;
-		rec->paddingLength = 0;
-		rec->reserved = 0;
-		rec->contentData.resize(8);
-		rec->contentData[0] = 0; /* appStatusB3 */
-		rec->contentData[1] = 0; /* appStatusB2 */
-		rec->contentData[2] = 0; /* appStatusB1 */
-		rec->contentData[3] = 1; /* appStatusB0 */
-		rec->contentData[4] = 0; /* protocolStatus */
-		rec->contentData[5] = 0; /* reserved1 */
-		rec->contentData[6] = 0; /* reserved2 */
-		rec->contentData[7] = 0; /* reserved3 */
+	fcgi::recordp rec(new fcgi::record);
+	rec->version = 1;
+	rec->type = fcgi::rectype::end_request;
+	rec->requestId1 = (r & 0xFF00) >> 8;
+	rec->requestId0 = r & 0xFF;
+	rec->contentLength1 = 0;
+	rec->contentLength0 = 8;
+	rec->paddingLength = 0;
+	rec->reserved = 0;
+	rec->contentData.resize(8);
+	rec->contentData[0] = 0; /* appStatusB3 */
+	rec->contentData[1] = 0; /* appStatusB2 */
+	rec->contentData[2] = 0; /* appStatusB1 */
+	rec->contentData[3] = 1; /* appStatusB0 */
+	rec->contentData[4] = 0; /* protocolStatus */
+	rec->contentData[5] = 0; /* reserved1 */
+	rec->contentData[6] = 0; /* reserved2 */
+	rec->contentData[7] = 0; /* reserved3 */
 
-		writer_->write(rec);
-	}
+	socket_->write_record(rec,
+		boost::bind(&fcgi_server_connection::write_done, 
+			shared_from_this(), _1));
 
 	requests_[r].reset();
 }
@@ -69,7 +68,7 @@ fcgi_server_connection::destroy(int r)
 void
 fcgi_server_connection::handle_record(
 		fcgi::recordp record,
-		boost::system::error_code error)
+		asio::error_code error)
 {
 	if (error == asio::error::operation_aborted) {
 		std::cout << "fcgi_server_connection::handle_record: aborted\n";
@@ -85,7 +84,7 @@ fcgi_server_connection::handle_record(
 
 	LOG4CXX_DEBUG(logger, format("record (request id=%d) arrived from the server")
 			% record->request_id());
-	async_read_fcgi_record(socket_,
+	socket_->async_read_record(
 			boost::bind(&fcgi_server_connection::handle_record, 
 				shared_from_this(), _1, _2));
 
@@ -121,16 +120,13 @@ void
 fcgi_server_connection::start()
 {
 	LOG4CXX_DEBUG(logger, "starting server request processing");
-	writer_.reset(new fcgi_record_writer(context_, socket_,
-		boost::bind(&fcgi_server_connection::writer_error,
-			shared_from_this(), _1)));
 	tcp::socket::non_blocking_io cmd(true);
-	socket_.io_control(cmd);
-	async_read_fcgi_record(socket_,
-			boost::bind(&fcgi_server_connection::handle_record, shared_from_this(), _1, _2));
+	socket_->socket().io_control(cmd);
+	socket_->async_read_record(
+		boost::bind(&fcgi_server_connection::handle_record, shared_from_this(), _1, _2));
 }
 
-tcp::socket &
+fcgi_socket_tcpp
 fcgi_server_connection::socket()
 {
 	return socket_;
@@ -144,17 +140,22 @@ fcgi_server_connection::record_to_server(fcgi::recordp record)
 
 	LOG4CXX_DEBUG(logger, format("forwarding record (request id=%d) to server")
 			% record->request_id());
-	writer_->write(record);
+	socket_->write_record(record,
+		boost::bind(&fcgi_server_connection::write_done, 
+			shared_from_this(), _1));
 }
 
 void
-fcgi_server_connection::writer_error(boost::system::error_code error)
+fcgi_server_connection::write_done(asio::error_code error)
 {
+	if (!error)
+		return;
+
 	if (!alive_)
 		return;
 
 	LOG4CXX_DEBUG(logger, 
-		format("writer_error: %s; server connection will be destroyed")
+		format("write_done: %s; server connection will be destroyed")
 			% error.message());
 	destroy();
 }
@@ -162,16 +163,17 @@ fcgi_server_connection::writer_error(boost::system::error_code error)
 void
 fcgi_server_connection::destroy()
 {
-	LOG4CXX_DEBUG(logger, format("destroy called; alive_=%d") % alive_);
+	LOG4CXX_DEBUG(logger, format("destroy called; alive_=%d nrefs=%d") 
+			% alive_ % shared_from_this().use_count());
 
 	if (!alive_)
 		return;	/* we're already dying */
 
 	alive_ = false;
 
-	writer_.reset();
 	requests_.clear();
-	int fd = socket_.native();
-	socket_.close();
+	int fd = socket_->socket().native();
+	socket_->close();
+	socket_.reset();
 	lsnr_->close(fd);
 }

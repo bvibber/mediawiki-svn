@@ -1,7 +1,17 @@
+# Compiler
+CC		= cc
+CXX		= CC
+
 # Suffix for Boost library names
-BOOSTTAG        = -gcc43-mt
-#
-# Extra compiler flags, e.g. -I to find include files
+# sun:
+BOOSTTAG	= -sw
+# gcc:
+#BOOSTTAG        = -gcc43-mt
+
+# Compiler flags
+CFLAGS		= -xO3 -g
+
+# Extra preprocessor flags, e.g. -I to find include files
 EXTRA_CPPFLAGS	= -I/opt/boost/include/boost-1_35
 
 # Extra linker flags, e.g. -R or -L to find libraries

@@ -10,7 +10,7 @@
 #ifndef FCGI_LISTENER_H
 #define FCGI_LISTENER_H
 
-#include	<boost/asio.hpp>
+#include	<asio.hpp>
 #include	<boost/noncopyable.hpp>
 
 #include	<log4cxx/logger.h>
@@ -21,16 +21,16 @@
 struct fcgi_server_connection;
 
 struct fcgi_listener : boost::noncopyable {
-	fcgi_listener(sbcontext &context, boost::asio::ip::tcp::endpoint const &endpoint);
+	fcgi_listener(sbcontext &context, asio::ip::tcp::endpoint const &endpoint);
 
 	void close(int);
 
 private:
-	void handle_accept(fcgi_server_connectionp, boost::system::error_code);
+	void handle_accept(fcgi_server_connectionp, asio::error_code);
 
 	sbcontext &context_;
-	boost::asio::ip::tcp::socket socket_;
-	boost::asio::ip::tcp::acceptor acceptor_;
+	asio::ip::tcp::socket socket_;
+	asio::ip::tcp::acceptor acceptor_;
 
 	std::map<int, fcgi_server_connectionp> connections_;
 

@@ -65,11 +65,11 @@ private:
 	sbcontext &context_;
 
 	freelist_t freelist_;
-	boost::asio::deadline_timer reap_timer_;
+	asio::deadline_timer reap_timer_;
 
 	static std::set<int> ids_;
 	static int curid_;
-	void reap(boost::system::error_code error);
+	void reap(asio::error_code error);
 
 	log4cxx::LoggerPtr logger;
 };

@@ -10,24 +10,22 @@
 #ifndef SBCONTEXT_H
 #define SBCONTEXT_H
 
-#include	<boost/asio.hpp>
+#include	<asio.hpp>
 
-#include	"process_factory.h"
+struct process_factory;
 
 struct sbcontext : boost::noncopyable {
 	sbcontext();
 
-	boost::asio::io_service &service() {
+	asio::io_service &service() {
 		return service_;
 	}
 
-	process_factory &factory() {
-		return factory_;
-	}
+	process_factory &factory();
 
 private:
-	boost::asio::io_service	service_;
-	process_factory factory_;
+	asio::io_service	service_;
+	process_factory 	*factory_;
 };
 
 #endif

@@ -14,7 +14,7 @@
 
 #include	<pwd.h>
 
-#include	<boost/asio.hpp>
+#include	<asio.hpp>
 #include	<boost/bind.hpp>
 #include	<boost/format.hpp>
 
@@ -22,9 +22,9 @@
 #include	"fcgi_application.h"
 #include	"async_read_fcgi_record.h"
 #include	"process.h"
+#include	"process_factory.h"
 #include	"config.h"
 
-namespace asio = boost::asio;
 using asio::ip::tcp;
 using boost::format;
 
@@ -34,7 +34,7 @@ fcgi_cgi::fcgi_cgi(
 		fcgi_applicationp app,
 		fcgi::params &params)
 	: context_(context)
-	, child_socket_(context_.service())
+	, child_socket_(new fcgi_socket<asio::local::stream_protocol::socket>(context_))
 	, app_(app)
 	, request_id_(request_id)
 	, alive_(true)
@@ -132,22 +132,37 @@ fcgi_cgi::fcgi_cgi(
 	}
 
 	process_ = context_.factory().create_from_filename(pathname);
-	process_->connect(child_socket_);
-	tcp::socket::non_blocking_io cmd(true);
-	child_socket_.io_control(cmd);
-
-	LOG4CXX_DEBUG(logger, format("[req=%d] connected to child")
-			% request_id_);
 }
 
 void
 fcgi_cgi::start()
 {
-	writer_.reset(new fcgi_record_writer(
-		context_, child_socket_,
-		boost::bind(&fcgi_cgi::writer_error,
-			shared_from_this(), _1)));
-	async_read_fcgi_record(child_socket_,
+	process_->connect(child_socket_,
+			boost::bind(&fcgi_cgi::connect_done,
+				shared_from_this(),
+				asio::placeholders::error));
+}
+
+void
+fcgi_cgi::connect_done(asio::error_code error)
+{
+	if (error) {
+		LOG4CXX_DEBUG(logger,
+			format("[req=%d] connection failed, %s")
+			% request_id_ % error.message());
+		app_->destroy();
+		return;
+	}
+
+	tcp::socket::non_blocking_io cmd(true);
+	child_socket_->socket().io_control(cmd);
+
+	if (fcntl(child_socket_->socket().native(), F_SETFD, FD_CLOEXEC) == -1)
+		LOG4CXX_WARN(logger, "connect_done: fcntl(FD_CLOEXEC) failed");
+
+	LOG4CXX_DEBUG(logger, format("[req=%d] connected to child")
+			% request_id_);
+	child_socket_->async_read_record(
 			boost::bind(&fcgi_cgi::handle_child_read, 
 				shared_from_this(), _1, _2));
 }
@@ -163,29 +178,36 @@ fcgi_cgi::~fcgi_cgi()
 void
 fcgi_cgi::record(fcgi::recordp record)
 {
-	LOG4CXX_DEBUG(logger, format("[req=%d] received a record, fwding to child")
-			% request_id_);
-	writer_->write(record);
+	LOG4CXX_DEBUG(logger, 
+		format("[req=%d] received a record vers=%d type=%d, fwding to child")
+		% request_id_ % (int) record->version % (int) record->type);
+	child_socket_->write_record(record,
+		boost::bind(&fcgi_cgi::write_done, shared_from_this(), _1));
 }
 
 void
 fcgi_cgi::record_noflush(fcgi::recordp record)
 {
-	LOG4CXX_DEBUG(logger, format("[req=%d] received a record, fwding to child")
-			% request_id_);
-	writer_->write_noflush(record);
+	LOG4CXX_DEBUG(logger,
+		format("[req=%d] received a record vers=%d type=%d, fwding to child")
+			% request_id_ % (int) record->version % (int) record->type);
+	child_socket_->write_record_noflush(record);
 }
 
 void
 fcgi_cgi::flush()
 {
-	writer_->flush();
+	child_socket_->flush(boost::bind(&fcgi_cgi::write_done, 
+				shared_from_this(), _1));
 }
 
 void
-fcgi_cgi::writer_error(boost::system::error_code error)
+fcgi_cgi::write_done(asio::error_code error)
 {
 	if (!alive_)
+		return;
+
+	if (!error)
 		return;
 
 	if (error == asio::error::operation_aborted) {
@@ -205,7 +227,7 @@ fcgi_cgi::writer_error(boost::system::error_code error)
 void
 fcgi_cgi::handle_child_read(
 		fcgi::recordp record,
-		boost::system::error_code error)
+		asio::error_code error)
 {
 	if (!alive_)
 		return;
@@ -217,7 +239,7 @@ fcgi_cgi::handle_child_read(
 
 	assert(app_);
 
-	if (child_socket_.native() == -1) {
+	if (child_socket_->socket().native() == -1) {
 		std::cout << "fcgi_cgi::handle_child_read: socket==-1!\n";
 		return;
 	}
@@ -271,7 +293,7 @@ fcgi_cgi::handle_child_read(
 	if (destroy)
 		this->destroy();
 	else
-		async_read_fcgi_record(child_socket_,
+		child_socket_->async_read_record(
 			boost::bind(&fcgi_cgi::handle_child_read,
 				shared_from_this(), _1, _2));
 }
@@ -292,7 +314,6 @@ fcgi_cgi::close()
 	LOG4CXX_DEBUG(logger, format("[req=%d] cgi@%p, close() called") 
 			% request_id_ % this);
 	alive_ = false;
-	child_socket_.close();
-	writer_.reset();
+	child_socket_->close();
 }
 
