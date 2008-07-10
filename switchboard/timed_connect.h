@@ -20,7 +20,7 @@ struct timed_connect
 	timed_connect(Socket socket) 
 		: socket_(socket)
 		, alive_(true)
-		, timer_(socket->socket().get_io_service())
+		, timer_(socket->socket_impl().get_io_service())
 	{
 	}
 
@@ -30,7 +30,7 @@ struct timed_connect
 		Timeout timeout,
 		boost::function<void (asio::error_code)> func)
 	{
-		socket_->socket().async_connect(where,
+		socket_->socket_impl().async_connect(where,
 			boost::bind(&timed_connect::done,
 				this->shared_from_this(), func, asio::placeholders::error));
 		timer_.expires_from_now(timeout);

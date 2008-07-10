@@ -105,16 +105,22 @@ configuration_loader::f_listen(
 		std::vector<std::string> &fields,
 		config &newconf)
 {
-	if (fields.size() != 3) {
+	if (fields.size() < 2 ||
+	    (fields[1][0] == '/' && fields.size() != 2) ||
+	    (fields[1][0] != '/' && fields.size() != 3)) {
 		LOG4CXX_ERROR(logger,
 			format("\"%s\", line %d: usage: listen <address> <port>\n")
+			% file_ % lineno_);
+		LOG4CXX_ERROR(logger,
+			format("\"%s\", line %d:        listen <pathname>\n")
 			% file_ % lineno_);
 		return false;
 	}
 
 	conf_listener lsnr;
 	lsnr.host = fields[1];
-	lsnr.port = fields[2];
+	if (fields.size() == 3)
+		lsnr.port = fields[2];
 	newconf.listeners.push_back(lsnr);
 	return true;
 }

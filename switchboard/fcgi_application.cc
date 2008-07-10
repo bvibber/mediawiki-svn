@@ -26,7 +26,7 @@ using boost::format;
 
 fcgi_application::fcgi_application(
 		int request_id,
-		fcgi_server_connectionp server,
+		fcgi_server_connection_basep server,
 		sbcontext &context)
 	: server_(server)
 	, context_(context)

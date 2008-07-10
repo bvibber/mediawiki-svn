@@ -34,7 +34,6 @@ OBJS=	\
 	config.o			\
 	fcgi_application.o		\
 	fcgi_cgi.o			\
-	fcgi_listener.o			\
 	fcgi_server_connection.o	\
 	process.o			\
 	process_factory.o		\

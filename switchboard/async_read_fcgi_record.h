@@ -60,14 +60,14 @@ async_fcgi_reader<Socket>::async_fcgi_reader(
 		boost::function<void (fcgi::recordp, asio::error_code)> call)
 	: socket_(socket)
 	, call_(call)
-	, service_(socket_->socket().get_io_service())
+	, service_(socket_->socket_impl().get_io_service())
 	, record(new fcgi::record)
 	, alive_(true)
 	, logger(log4cxx::Logger::getLogger("switchboard.async_fcgi_reader"))
 {
 	LOG4CXX_DEBUG(logger, boost::format("reader@%p: created (sock=%d)") 
-			% this % socket_->socket().native());
-	assert(socket_->socket().native() != -1);
+			% this % socket_->socket_impl().native());
+	assert(socket_->socket_impl().native() != -1);
 }
 
 template<typename Socket>
@@ -94,8 +94,7 @@ async_fcgi_reader<Socket>::start()
 {
 	close_conn_ = socket_->register_close_listener(
 		boost::bind(&async_fcgi_reader::socket_dead, this->shared_from_this()));
-	//close_conn_ = socket_->register_close_listener(
-	//	boost::bind(&async_fcgi_reader::socket_dead, this));
+
 	/*
 	 * The FCGI header is 8 bytes, followed by some content and some 
 	 * padding.  We assume the compiler has laid out our record
@@ -104,7 +103,7 @@ async_fcgi_reader<Socket>::start()
 	 * First read the header.
 	 */
 	LOG4CXX_DEBUG(logger, boost::format("reader@%p: starting") % this);
-	asio::async_read(socket_->socket(), 
+	asio::async_read(socket_->socket_impl(), 
 			asio::buffer((void *) record.get(), 8),
 			asio::transfer_at_least(8),
 			boost::bind(&async_fcgi_reader::read_header_done, 
@@ -132,7 +131,7 @@ async_fcgi_reader<Socket>::read_header_done(
 		return;
 	}
 
-	assert(socket_->socket().native() != -1);
+	assert(socket_->socket_impl().native() != -1);
 
 	if (error) {
 		LOG4CXX_DEBUG(logger, boost::format("reader@%p: header read failed: %s")
@@ -166,7 +165,7 @@ async_fcgi_reader<Socket>::read_header_done(
 	data_bufs[0] = asio::buffer(record->contentData);
 	data_bufs[1] = asio::buffer(record->paddingData);
 
-	asio::async_read(socket_->socket(), data_bufs, asio::transfer_at_least(datasize),
+	asio::async_read(socket_->socket_impl(), data_bufs, asio::transfer_at_least(datasize),
 			boost::bind(&async_fcgi_reader::read_data_done, 
 				this->shared_from_this(),
 				asio::placeholders::error,
@@ -192,7 +191,7 @@ async_fcgi_reader<Socket>::read_data_done(
 		return;
 	}
 
-	assert(socket_->socket().native() != -1);
+	assert(socket_->socket_impl().native() != -1);
 
 	LOG4CXX_DEBUG(logger, boost::format("reader@%p, read_data_done bytes=%d expected=%d error=[%s]") 
 			% this % bytes

@@ -158,9 +158,9 @@ fcgi_cgi::connect_done(asio::error_code error)
 	}
 
 	tcp::socket::non_blocking_io cmd(true);
-	child_socket_->socket().io_control(cmd);
+	child_socket_->socket_impl().io_control(cmd);
 
-	if (fcntl(child_socket_->socket().native(), F_SETFD, FD_CLOEXEC) == -1)
+	if (fcntl(child_socket_->socket_impl().native(), F_SETFD, FD_CLOEXEC) == -1)
 		LOG4CXX_WARN(logger, "connect_done: fcntl(FD_CLOEXEC) failed");
 
 	LOG4CXX_DEBUG(logger, format("[req=%d] connected to child")
@@ -242,7 +242,7 @@ fcgi_cgi::handle_child_read(
 
 	assert(app_);
 
-	if (child_socket_->socket().native() == -1) {
+	if (child_socket_->socket_impl().native() == -1) {
 		LOG4CXX_DEBUG(logger, "fcgi_cgi::handle_child_read: socket==-1!");
 		return;
 	}

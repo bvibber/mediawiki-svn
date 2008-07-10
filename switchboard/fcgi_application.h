@@ -24,15 +24,15 @@
 #include	"sbcontext.h"
 
 struct fcgi_cgi;
-struct fcgi_server_connection;
+struct fcgi_server_connection_base;
 
-typedef boost::shared_ptr<fcgi_server_connection>
-		fcgi_server_connectionp;
+typedef boost::shared_ptr<fcgi_server_connection_base>
+		fcgi_server_connection_basep;
 
 struct fcgi_application : boost::enable_shared_from_this<fcgi_application> {
 	fcgi_application(
 		int request_id,
-		fcgi_server_connectionp server,
+		fcgi_server_connection_basep server,
 		sbcontext &context);
 	~fcgi_application();
 
@@ -49,8 +49,7 @@ private:
 	std::map<std::string, std::string> params_;
 	std::vector<fcgi::recordp> buffer;
 	fcgi_cgip cgi_;
-	//fcgi_server_connectionp server_;
-	boost::weak_ptr<fcgi_server_connection> server_;
+	boost::weak_ptr<fcgi_server_connection_base> server_;
 	sbcontext &context_;
 	int request_id_;
 

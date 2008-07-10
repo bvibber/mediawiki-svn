@@ -22,20 +22,22 @@
 #include	"sbcontext.h"
 #include	"fcgi_socket.h"
 
-struct fcgi_listener;
+struct fcgi_listener_base;
 
-struct fcgi_server_connection : 
+struct fcgi_server_connection_base : 
 	boost::noncopyable,
-	boost::enable_shared_from_this<fcgi_server_connection> {
+	boost::enable_shared_from_this<fcgi_server_connection_base> {
 
-	fcgi_server_connection(sbcontext &context, fcgi_listener *lsnr);
-	~fcgi_server_connection();
+	fcgi_server_connection_base(
+			sbcontext &context, 
+			fcgi_listener_base *lsnr);
+	virtual ~fcgi_server_connection_base();
 
 	void	start();
 	void	record_to_server(fcgi::recordp record);
 	void	destroy(int id);
 
-	fcgi_socket_tcpp socket();
+	virtual fcgi_socket_basep socket() = 0;
 
 private:
 	void	handle_record(
@@ -43,10 +45,9 @@ private:
 			asio::error_code);
 
 	std::vector<fcgi_applicationp> requests_;
-	fcgi_socket_tcpp socket_;
 	sbcontext &context_;
 	fcgi::recordp record_;
-	fcgi_listener *lsnr_;
+	fcgi_listener_base *lsnr_;
 
 	void write_done(asio::error_code error);
 	void destroy();
@@ -56,7 +57,30 @@ private:
 	log4cxx::LoggerPtr logger;
 };
 
-typedef boost::shared_ptr<fcgi_server_connection>
-	fcgi_server_connectionp;
+template<typename Protocol>
+struct fcgi_server_connection : fcgi_server_connection_base {
+	fcgi_server_connection(
+		sbcontext &context, 
+		fcgi_listener_base *lsnr)
+	: fcgi_server_connection_base(context, lsnr)
+	, socket_(new fcgi_socket<typename Protocol::socket>(context))
+	{
+	}
+
+	//boost::shared_ptr<fcgi_socket<typename Protocol::socket> > &socket();
+	fcgi_socket_basep socket() {
+		return boost::static_pointer_cast<fcgi_socket<typename Protocol::socket> >(socket_);
+	}
+
+	boost::shared_ptr<fcgi_socket<typename Protocol::socket> > 
+		socket_impl() {
+			return socket_;
+	}
+private:
+	boost::shared_ptr<fcgi_socket<typename Protocol::socket> > socket_;
+};
+
+typedef boost::shared_ptr<fcgi_server_connection_base>
+	fcgi_server_connection_basep;
 
 #endif

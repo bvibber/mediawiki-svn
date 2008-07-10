@@ -26,7 +26,7 @@ using std::strerror;	/* for asio */
 #include	<grp.h>
 #include	<fcntl.h>
 
-#include	<asio.hpp>
+#include	<asio/local/stream_protocol.hpp>
 #include	<boost/format.hpp>
 #include	<log4cxx/logger.h>
 #include	<log4cxx/propertyconfigurator.h>
@@ -43,7 +43,7 @@ using boost::format;
 #include    "config.h"
 
 namespace {
-	std::vector<fcgi_listener *> listeners;
+	std::vector<fcgi_listener_base *> listeners;
 }
 
 extern "C" void
@@ -128,22 +128,37 @@ main(int argc, char **argv)
 		end = mainconf.listeners.end();
 		it != end; ++it)
 	{
-		tcp::resolver resolver(context.service());
-		tcp::resolver::query listenq(it->host, it->port);
-		tcp::resolver::iterator rit = resolver.resolve(listenq);
-		tcp::resolver::iterator rend;
-
-		for (; rit != rend; ++rit) {
-			LOG4CXX_INFO(mainlogger, format("Listening on %s[%s]:%d")
-					% it->host
-					% rit->endpoint().address()
-					% rit->endpoint().port());
+		if (it->host[0] == '/') {
+			unlink(it->host.c_str());
+			asio::local::stream_protocol::endpoint ep(it->host);
+			LOG4CXX_INFO(mainlogger, format("listening on %s") % it->host);
 			try {
-				listeners.push_back(new fcgi_listener(context, rit->endpoint()));
+				listeners.push_back(new
+					fcgi_listener<asio::local::stream_protocol>(context, ep));
 			} catch (std::exception &e) {
 				LOG4CXX_ERROR(mainlogger, format("could not create FCGI listener: %s")
-						% e.what());
+					% e.what());
 				return 1;
+			}
+		} else {
+			tcp::resolver resolver(context.service());
+			tcp::resolver::query listenq(it->host, it->port);
+			tcp::resolver::iterator rit = resolver.resolve(listenq);
+			tcp::resolver::iterator rend;
+
+			for (; rit != rend; ++rit) {
+				LOG4CXX_INFO(mainlogger, format("Listening on %s[%s]:%d")
+						% it->host
+						% rit->endpoint().address()
+						% rit->endpoint().port());
+				try {
+					listeners.push_back(new 
+						fcgi_listener<asio::ip::tcp>(context, rit->endpoint()));
+				} catch (std::exception &e) {
+					LOG4CXX_ERROR(mainlogger, format("could not create FCGI listener: %s")
+							% e.what());
+					return 1;
+				}
 			}
 		}
 	}

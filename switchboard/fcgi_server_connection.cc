@@ -21,24 +21,23 @@ using std::strerror;	/* for asio */
 using asio::ip::tcp;
 using boost::format;
 
-fcgi_server_connection::fcgi_server_connection(
+fcgi_server_connection_base::fcgi_server_connection_base(
 		sbcontext &context,
-		fcgi_listener *lsnr)
-	: socket_(new fcgi_socket<asio::ip::tcp::socket>(context))
-	, context_(context)
+		fcgi_listener_base *lsnr)
+	: context_(context)
 	, alive_(true)
 	, lsnr_(lsnr)
 	, logger(log4cxx::Logger::getLogger("switchboard.fcgi_server_connection"))
 {
 }
 
-fcgi_server_connection::~fcgi_server_connection()
+fcgi_server_connection_base::~fcgi_server_connection_base()
 {
 	LOG4CXX_DEBUG(logger, format("destructing connection at %p") % this);
 }
 
 void
-fcgi_server_connection::destroy(int r)
+fcgi_server_connection_base::destroy(int r)
 {
 	LOG4CXX_DEBUG(logger, format("destroying request #%d") % r);
 
@@ -61,15 +60,15 @@ fcgi_server_connection::destroy(int r)
 	rec->contentData[6] = 0; /* reserved2 */
 	rec->contentData[7] = 0; /* reserved3 */
 
-	socket_->write_record(rec,
-		boost::bind(&fcgi_server_connection::write_done, 
+	socket()->write_record(rec,
+		boost::bind(&fcgi_server_connection_base::write_done, 
 			shared_from_this(), _1));
 	requests_[r]->close();
 	requests_[r].reset();
 }
 
 void
-fcgi_server_connection::handle_record(
+fcgi_server_connection_base::handle_record(
 		fcgi::recordp record,
 		asio::error_code error)
 {
@@ -87,8 +86,8 @@ fcgi_server_connection::handle_record(
 
 	LOG4CXX_DEBUG(logger, format("record (request id=%d) arrived from the server")
 			% record->request_id());
-	socket_->async_read_record(
-			boost::bind(&fcgi_server_connection::handle_record, 
+	socket()->async_read_record(
+			boost::bind(&fcgi_server_connection_base::handle_record, 
 				shared_from_this(), _1, _2));
 
 	/*
@@ -120,36 +119,30 @@ fcgi_server_connection::handle_record(
 }
 
 void
-fcgi_server_connection::start()
+fcgi_server_connection_base::start()
 {
 	LOG4CXX_DEBUG(logger, "starting server request processing");
-	tcp::socket::non_blocking_io cmd(true);
-	socket_->socket().io_control(cmd);
-	socket_->async_read_record(
-		boost::bind(&fcgi_server_connection::handle_record, shared_from_this(), _1, _2));
-}
-
-fcgi_socket_tcpp
-fcgi_server_connection::socket()
-{
-	return socket_;
+	//tcp::socket::non_blocking_io cmd(true);
+	//socket()->socket().io_control(cmd);
+	socket()->async_read_record(
+		boost::bind(&fcgi_server_connection_base::handle_record, shared_from_this(), _1, _2));
 }
 
 void
-fcgi_server_connection::record_to_server(fcgi::recordp record)
+fcgi_server_connection_base::record_to_server(fcgi::recordp record)
 {
 	if (!alive_)
 		return;
 
 	LOG4CXX_DEBUG(logger, format("forwarding record (request id=%d) to server")
 			% record->request_id());
-	socket_->write_record(record,
-		boost::bind(&fcgi_server_connection::write_done, 
+	socket()->write_record(record,
+		boost::bind(&fcgi_server_connection_base::write_done, 
 			shared_from_this(), _1));
 }
 
 void
-fcgi_server_connection::write_done(asio::error_code error)
+fcgi_server_connection_base::write_done(asio::error_code error)
 {
 	if (!error)
 		return;
@@ -164,7 +157,7 @@ fcgi_server_connection::write_done(asio::error_code error)
 }
 
 void
-fcgi_server_connection::destroy()
+fcgi_server_connection_base::destroy()
 {
 	LOG4CXX_DEBUG(logger, format("destroy called; alive_=%d nrefs=%d") 
 			% alive_ % shared_from_this().use_count());
@@ -179,8 +172,8 @@ fcgi_server_connection::destroy()
 			requests_[i]->close();
 
 	requests_.clear();
-	int fd = socket_->socket().native();
-	socket_->close();
-	socket_.reset();
-	lsnr_->close(fd);
+	//int fd = socket()->socket().native();
+	socket()->close();
+	socket().reset();
+	lsnr_->close(shared_from_this());
 }
