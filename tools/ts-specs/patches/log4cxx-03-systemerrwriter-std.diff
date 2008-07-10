@@ -1,0 +1,20 @@
+--- src/main/cpp/systemerrwriter.cpp.old	Thu Jul 10 00:42:50 2008
++++ src/main/cpp/systemerrwriter.cpp	Thu Jul 10 00:43:02 2008
+@@ -52,7 +52,7 @@
+ #elif LOG4CXX_FORCE_BYTE_CONSOLE || !LOG4CXX_HAS_FWIDE
+    return false;
+ #else
+-   return fwide(stderr, 0) > 0;
++   return std::fwide(stderr, 0) > 0;
+ #endif
+ }
+ 
+@@ -60,7 +60,7 @@
+ #if LOG4CXX_WCHAR_T_API
+     if (isWide()) {
+       LOG4CXX_ENCODE_WCHAR(msg, str);
+-        fputws(msg.c_str(), stderr);
++        std::fputws(msg.c_str(), stderr);
+       return;
+     }
+ #endif

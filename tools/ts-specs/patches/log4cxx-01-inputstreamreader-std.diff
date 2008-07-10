@@ -1,0 +1,11 @@
+--- ./src/main/cpp/inputstreamreader.cpp.old	Thu Jul 10 00:38:08 2008
++++ ./src/main/cpp/inputstreamreader.cpp	Thu Jul 10 00:38:10 2008
+@@ -63,7 +63,7 @@
+              throw IOException(stat);
+          }
+          if (buf.remaining() > 0) {
+-             memmove(buf.data(), buf.current(), buf.remaining());
++             std::memmove(buf.data(), buf.current(), buf.remaining());
+              buf.limit(buf.remaining());
+          } else {
+              buf.clear();

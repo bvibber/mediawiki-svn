@@ -1,0 +1,10 @@
+--- src/examples/cpp/console.cpp.old	Thu Jul 10 00:47:48 2008
++++ src/examples/cpp/console.cpp	Thu Jul 10 00:48:06 2008
+@@ -23,6 +23,7 @@
+ #include <iostream>
+ #include <locale.h>
+ 
++using namespace std;
+ using namespace log4cxx;
+ using namespace log4cxx::helpers;
+ 

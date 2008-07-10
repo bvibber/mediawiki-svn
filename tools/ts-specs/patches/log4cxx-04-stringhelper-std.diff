@@ -1,0 +1,11 @@
+--- src/main/cpp/stringhelper.cpp.old	Thu Jul 10 00:42:10 2008
++++ src/main/cpp/stringhelper.cpp	Thu Jul 10 00:42:22 2008
+@@ -94,7 +94,7 @@
+ int StringHelper::toInt(const LogString& s) {
+     std::string as;
+     Transcoder::encode(s, as);
+-    return atoi(as.c_str());
++    return std::atoi(as.c_str());
+ }
+ 
+ log4cxx_int64_t StringHelper::toInt64(const LogString& s) {

@@ -1,0 +1,20 @@
+--- src/main/cpp/systemoutwriter.cpp.old	Thu Jul 10 00:43:31 2008
++++ src/main/cpp/systemoutwriter.cpp	Thu Jul 10 00:43:43 2008
+@@ -53,7 +53,7 @@
+ #elif LOG4CXX_FORCE_BYTE_CONSOLE || !LOG4CXX_HAS_FWIDE
+    return false;
+ #else
+-   return fwide(stdout, 0) > 0;
++   return std::fwide(stdout, 0) > 0;
+ #endif
+ }
+ 
+@@ -61,7 +61,7 @@
+ #if LOG4CXX_WCHAR_T_API
+     if (isWide()) {
+       LOG4CXX_ENCODE_WCHAR(msg, str);
+-        fputws(msg.c_str(), stdout);
++        std::fputws(msg.c_str(), stdout);
+       return;
+     }
+ #endif

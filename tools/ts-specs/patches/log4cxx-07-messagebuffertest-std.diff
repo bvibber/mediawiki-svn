@@ -1,0 +1,14 @@
+--- src/test/cpp/helpers/messagebuffertest.cpp.old	Thu Jul 10 00:49:18 2008
++++ src/test/cpp/helpers/messagebuffertest.cpp	Thu Jul 10 00:49:25 2008
+@@ -140,9 +140,9 @@
+         MessageBuffer buf;
+         std::wstring greeting(L"Hello, World");
+        wchar_t* part1 = (wchar_t*) malloc(10*sizeof(wchar_t));
+-       wcscpy(part1, L"Hello");
++       std::wcscpy(part1, L"Hello");
+        wchar_t* part2 = (wchar_t*) malloc(10*sizeof(wchar_t));
+-       wcscpy(part2, L", World");
++       std::wcscpy(part2, L", World");
+         WideMessageBuffer& retval = buf << part1 << part2;
+        free(part1);
+        free(part2);
