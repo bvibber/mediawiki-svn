@@ -771,7 +771,7 @@ $messages['he'] = array(
 * הדף נמחק
 * הגרסה שהוסתרה הייתה הגרסה האחרונה',
 	'oversight-log-hiderev'       => 'הסיר עריכה מהדף $1',
-	'oversight'                   => 'אוברסייט',
+	'oversight'                   => 'צפייה בגרסאות שהוסתרו',
 	'oversight-view'              => 'פרטים',
 	'oversight-difference'        => '(שינויים מהגרסה הקודמת שנשארה)',
 	'oversight-prev'              => 'הגרסה הקודמת',

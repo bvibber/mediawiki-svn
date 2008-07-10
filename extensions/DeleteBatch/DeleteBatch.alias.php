@@ -18,7 +18,7 @@ $aliases['en'] = array(
  * @author Rotem Liss
  */
 $aliases['he'] = array(
-    'DeleteBatch' => array( 'מחיקה_מרובה' ),
+    'DeleteBatch' => array( 'מחיקת_קבוצה' ),
 );
 
 /** Norwegian (Norsk (bokmål))

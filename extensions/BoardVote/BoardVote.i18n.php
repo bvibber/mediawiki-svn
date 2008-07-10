@@ -2003,7 +2003,9 @@ $messages['haw'] = array(
 	'boardvote_welcome' => "E komo mai, '''$1'''!",
 );
 
-/** Hebrew (עברית) */
+/** Hebrew (עברית)
+ * @author Rotem Liss
+ */
 $messages['he'] = array(
 	'boardvote'                => 'בחירות לחבר הנאמנים של ויקימדיה',
 	'boardvote-desc'           => '[[meta:Board elections/2008|בחירות לחבר הנאמנים של ויקימדיה]]',

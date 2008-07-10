@@ -12,7 +12,7 @@ $aliases = array();
  */
 $aliases['en'] = array(
 	'HideRevision' => array( 'HideRevision' ),
-	'Oversight' => array( 'Oversight' ),
+	'Oversight'    => array( 'Oversight' ),
 );
 
 /** German
@@ -20,5 +20,13 @@ $aliases['en'] = array(
  */
 $aliases['de'] = array(
 	'HideRevision' => array( 'HideRevision' ),
-	'Oversight' => array( 'Oversight' ),
+	'Oversight'    => array( 'Oversight' ),
+);
+
+/** Hebrew (עברית)
+ * @author Rotem Liss
+ */
+$aliases['he'] = array(
+	'HideRevision' => array( 'הסתרת_גרסה' ),
+	'Oversight'    => array( 'צפייה_בגרסאות_שהוסתרו' ),
 );

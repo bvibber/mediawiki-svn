@@ -11,7 +11,7 @@ $aliases = array();
  * @author Brion Vibber
  */
 $aliases['en'] = array(
-    'BoardVote' => array( 'BoardVote' )
+    'BoardVote' => array( 'BoardVote' ),
 );
 
 /** German
@@ -19,4 +19,11 @@ $aliases['en'] = array(
  */
 $aliases['de'] = array(
 	'BoardVote' => array( 'Kuratoriumswahl' ),
+);
+
+/** Hebrew (עברית)
+ * @author Rotem Liss
+ */
+$aliases['he'] = array(
+    'BoardVote' => array( 'בחירות_לחבר_הנאמנים' )
 );
