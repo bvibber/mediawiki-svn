@@ -42,6 +42,7 @@
 #include <stdarg.h>
 #include <stdlib.h>
 #include <errno.h>
+#include <signal.h>
 
 #include <pwd.h>
 #include <grp.h>

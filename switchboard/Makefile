@@ -3,6 +3,7 @@ include Makefile.config
 CPPFLAGS	=
 INCLUDES	= $(EXTRA_CPPFLAGS)
 CFLAGS		= $(EXTRA_CFLAGS)
+CXXFLAGS	= $(EXTRA_CXXFLAGS)
 LDFLAGS		= $(EXTRA_LDFLAGS)
 LIBS		= -llog4cxx -lboost_system$(BOOSTTAG) -lboost_signals$(BOOSTTAG) $(EXTRA_LIBS)
 
@@ -46,7 +47,7 @@ SWKILL=	swkill
 all: $(PROG) $(SWEXEC) $(SWKILL)
 
 $(PROG): $(OBJS)
-	$(CXX) $(CFLAGS) $(LDFLAGS) $(OBJS) -o $(PROG) $(LIBS)
+	$(CXX) $(CFLAGS) $(CXXFLAGS) $(LDFLAGS) $(OBJS) -o $(PROG) $(LIBS)
 
 $(SWEXEC): swexec.o
 	$(CC) $(CFLAGS) $(LDFLAGS) swexec.o -o $(SWEXEC)
@@ -55,7 +56,7 @@ $(SWKILL): swkill.o
 	$(CC) $(CFLAGS) $(LDFLAGS) swkill.o -o $(SWKILL)
 
 .cc.o:
-	$(CXX) $(CPPFLAGS) $(CONFIG_FLAGS) $(INCLUDES) $(CFLAGS) -c $<
+	$(CXX) $(CPPFLAGS) $(CXXFLAGS) $(CONFIG_FLAGS) $(INCLUDES) $(CFLAGS) -c $<
 
 swexec.o: swexec.c
 	$(CC) $(CPPFLAGS) $(SWEXEC_FLAGS) $(INCLUDES) $(CFLAGS) -c $<

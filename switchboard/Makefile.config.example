@@ -1,29 +1,35 @@
-# Compiler
+### Compiler
+# switchboard can be compiled with gcc (tested on 3.4.3) or
+# Sun Studio.  When using Studio, -library=stlport4 is required.
+# Make sure log4cxx is compiled with the same flags.
 CC		= cc
 CXX		= CC
 
-# Suffix for Boost library names
-# sun:
-BOOSTTAG	= -sw
+### Suffix for Boost library names
+
+# Sun:
+BOOSTTAG	= -sw-mt
+
 # gcc:
 #BOOSTTAG        = -gcc43-mt
 
-# Compiler flags
-CFLAGS		= -xO3 -g
+### Compiler flags
+# See the note about -library=stlport8 above.
+EXTRA_CFLAGS	= -xO3 -g
+EXTRA_CXXFLAGS	= $(EXTRA_CFLAGS) -library=stlport4
 
 # Extra preprocessor flags, e.g. -I to find include files
 EXTRA_CPPFLAGS	= -I/opt/boost/include/boost-1_35
-# needed for Studio
-EXTRA_CPPFLAGS	+= -D_XOPEN_SOURCE=500 -D__EXTENSIONS__
 
-# also:
-EXTRA_CFLAGS	= -library=stlport4
+# Solaris needs this.
+EXTRA_CPPFLAGS	+= -D_XOPEN_SOURCE=500 -D__EXTENSIONS__
 
 # Extra linker flags, e.g. -R or -L to find libraries
 EXTRA_LDFLAGS	= -L/opt/boost/lib -R /opt/boost/lib
 
 # Extra libs.
 EXTRA_LIBS=
+
 # For Solaris:
 EXTRA_LIBS+=-lsocket -lnsl
 

@@ -53,6 +53,8 @@ process::process(
 	if (bind(sock, (struct sockaddr *) &addr, sizeof(addr)) == -1)
 		throw creation_failure("startup failed");
 
+	chmod(bindpath.c_str(), 0777);
+
 	LOG4CXX_DEBUG(logger, "listening...");
 	if (listen(sock, 1) == -1)
 		throw creation_failure("listen failed");
