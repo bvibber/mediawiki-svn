@@ -38,7 +38,9 @@ $wgBoardVoteDBServer = $wgDBserver;
 $wgGroupPermissions['boardvote']['boardvote'] = true;
 $wgAvailableRights[] = 'boardvote';
 
-$wgExtensionMessagesFiles['BoardVote'] = dirname(__FILE__) . '/BoardVote.i18n.php';
+$dir = dirname(__FILE__) . '/';
+$wgExtensionMessagesFiles['BoardVote'] = $dir . 'BoardVote.i18n.php';
+$wgExtensionAliasesFiles['BoardVote'] = $dir . 'BoardVote.alias.php';
 
 # Register special page
 if ( !function_exists( 'extAddSpecialPage' ) ) {
