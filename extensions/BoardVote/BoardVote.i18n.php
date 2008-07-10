@@ -1165,7 +1165,7 @@ Die daraus folgende, verschlüsselte Version folgt unten. Sie wird öffentlich a
 	'go_to_board_vote'         => 'Wahlen zum Wikimedia-Kuratorium 2008',
 	'boardvote_redirecting'    => 'Um eine erhöhte Sicherung und Transparenz zu gewährleisten, findet die Wahl auf einem externen, unabhängig kontrollierten Server statt.
 
-	Du wirst in 20 Sekunden zu diesem externen Server weitergeleitet. [$1 klicke hier], um sofort dorthin zu gelangen.
+	Du wirst in 20 Sekunden zu diesem externen Server weitergeleitet. [$1 Klicke hier], um sofort dorthin zu gelangen.
 
 	Eine Sicherheitswarnung über ein unsigniertes Zertifikat kann angezeigt werden.',
 	'right-boardvote'          => 'Wahlen administrieren',
