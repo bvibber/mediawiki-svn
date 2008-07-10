@@ -270,7 +270,7 @@ $messages['ro'] = array(
 	'userimages-noimages' => '$1 nu a încărcat imagini.',
 );
 
-/** Slovak (Slovenčina) */
+/** Slovak (Slovenčina)
  * @author Helix84
  */
 $messages['sk'] = array(

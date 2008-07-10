@@ -98,9 +98,11 @@ $messages['bcc'] = array(
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author Jim-by
+ * @author EugeneZelenko
  */
 $messages['be-tarask'] = array(
-	'youtubeauthsub' => 'Загрузка відэафайла YouTube',
+	'youtubeauthsub'          => 'Загрузка відэафайла YouTube',
+	'youtubeauthsub_category' => 'Катэгорыя',
 );
 
 /** Bulgarian (Български)

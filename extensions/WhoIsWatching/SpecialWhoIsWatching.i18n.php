@@ -85,11 +85,11 @@ $messages['br'] = array(
  * @author Raimond Spekking
  */
 $messages['de'] = array(
-	'whoiswatching'               => 'Wer beobachtet eine Seite',
-	'specialwhoiswatchingthepage' => 'Wer beobachtet %s',
-	'specialwhoiswatchingusage'   => 'Diese Spezialseite kann nicht auf sich selber angewendet werden. Bitte definiere über die Seite [[MediaWiki:Number of watching users pageview]] eine Einstiegsseite für diese Spezialseite.',
-	'specialwhoiswatchingaddusers'=> 'Füge Benutzer zum Beobachten der Seite hinzu',
-	'specialwhoiswatchingaddbtn'  => 'Füge Benutzer hinzu',
+	'whoiswatching'                => 'Wer beobachtet eine Seite',
+	'specialwhoiswatchingthepage'  => 'Wer beobachtet %s',
+	'specialwhoiswatchingusage'    => 'Diese Spezialseite kann nicht auf sich selber angewendet werden. Bitte definiere über die Seite [[MediaWiki:Number of watching users pageview]] eine Einstiegsseite für diese Spezialseite.',
+	'specialwhoiswatchingaddusers' => 'Füge Benutzer zum Beobachten der Seite hinzu',
+	'specialwhoiswatchingaddbtn'   => 'Füge Benutzer hinzu',
 );
 
 /** Esperanto (Esperanto)
@@ -233,7 +233,7 @@ $messages['nn'] = array(
 	'specialwhoiswatchingaddbtn'   => 'Legg til utvalde brukarar',
 );
 
-/** Norwegian (‪Norsk (bokmål)‬)
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */
 $messages['no'] = array(

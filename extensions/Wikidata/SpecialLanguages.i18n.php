@@ -364,9 +364,12 @@ $wdMessages['avk'] = array(
 	'ow_db_consistency_not_found'           => '<h2>Rokla</h2>Tir uum icde duga ke origak, Wikidata va wadaf orig skedas va bata ID tentunafa sugdala me rotrasir. Rotir batcoba tir griawiyisa. Va ristusik va zanisiko vay uzeral !',
 );
 
+/** Bikol Central (Bikol Central)
+ * @author Filipinayzd
+ */
 $wdMessages['bcl'] = array(
-	'datasearch' => 'Wikidata: Data search',#identical but defined
-	'languages' => 'Wikidata: Manager kan tataramon',
+	'datasearch' => 'Wikidata: Data search',
+	'languages'  => 'Wikidata: Manager kan tataramon',
 );
 
 /** Bulgarian (Български)
@@ -414,10 +417,13 @@ $wdMessages['bg'] = array(
 	'ow_no_action_specified'          => '<h3>Не е посочено действие</h3> Вероятно сте попаднали тук директно? Обикновено не се налага да идвате тук.',
 );
 
+/** Bengali (বাংলা)
+ * @author Bellayet
+ */
 $wdMessages['bn'] = array(
-	'datasearch' => 'Wikidata: তথ্য অনুসন্ধান',
+	'datasearch'    => 'Wikidata: তথ্য অনুসন্ধান',
 	'langman_title' => 'ভাষা ব্যবস্থাপক',
-	'languages' => 'Wikidata: ভাষা ব্যবস্থাপক',
+	'languages'     => 'Wikidata: ভাষা ব্যবস্থাপক',
 );
 
 /** Breton (Brezhoneg)
@@ -620,8 +626,7 @@ $wdMessages['da'] = array(
 	'ow_TranslatedTextAttributeValue' => 'Tekst',
 );
 
-/** Deutsch (Deutsch)
- */
+/** German (Deutsch) */
 $wdMessages['de'] = array(
 	'datasearch'                            => 'Wikidata: Datensuche',
 	'langman_title'                         => 'Sprachmanager',
@@ -631,6 +636,7 @@ $wdMessages['de'] = array(
 	'ow_datasets'                           => 'Auswahl des Datasets',
 	'ow_noedit'                             => 'Du hast nicht die Erlaubnis Seiten im Dataset "$1" zu editieren. Siehe [[{{MediaWiki:Ow editing policy url}}|unsere Richtlinien]].',
 	'ow_noedit_title'                       => 'Keine Editiererlaubnis',
+	'ow_noedit'                             => 'Du hast nicht die Erlaubnis Seiten im Dataset "$1" zu editieren. Siehe [[{{MediaWiki:Ow editing policy url}}|unsere Richtlinien]].',
 	'ow_uipref_datasets'                    => 'Standardansicht',
 	'ow_uiprefs'                            => 'Wikidata',
 	'ow_none_selected'                      => '<nichts ausgewählt>',
@@ -707,8 +713,8 @@ $wdMessages['de'] = array(
 	'ow_please_proved_dc2'                  => 'Oje, deiner Eingabe fehlt ?dc2=<something> (dc2=dataset context 2, dataset to copy TO) <br />Ups, bitte kontaktiere den Serveradminstrator.',
 	'ow_copy_successful'                    => '<h2>Kopieren erfolgreich</h2>Deine Daten scheinen erfolgreich kopiert worden zu sein. Bitte vergiss nicht nochmals zu prüfen um sicherzugehen!',
 	'ow_copy_unsuccessful'                  => '<h3>Kopieren nicht erfolgreich</h3> Es hat keine Kopieraktion stattgefunden.',
-	'ow_no_action_specified'                => "<h3>Es wurde keine Aktion angegeben</h3> Vielleicht kamst du direkt zu dieser Seite?.",
-	'ow_db_consistency_not_found'           => "<h2>Fehler</h2>Die Datenbank ist nicht mehr konsistent. Wikidate kann keine gültigen Daten zu der ID finden. Bitte kontaktiere den Server-Administrator.",
+	'ow_no_action_specified'                => '<h3>Es wurde keine Aktion angegeben</h3> Vielleicht kamst du direkt zu dieser Seite?.',
+	'ow_db_consistency_not_found'           => '<h2>Fehler</h2>Die Datenbank ist nicht mehr konsistent. Wikidate kann keine gültigen Daten zu der ID finden. Bitte kontaktiere den Server-Administrator.',
 );
 
 /** Greek (Ελληνικά)
@@ -1189,6 +1195,7 @@ $wdMessages['haw'] = array(
 	'ow_history' => 'Mo‘olelo',
 );
 
+/** Hebrew (עברית) */
 $wdMessages['he'] = array(
 	'langman_title' => 'מנהל שפות',
 );
@@ -1632,14 +1639,17 @@ $wdMessages['ka'] = array(
 	'ow_no_action_specified'                => '<h3>მოქმედება არ იყო მითითებული</h3> იქნებ ამ გვერდზე პირდაპირ შემოხვედით? ნორმალური მუშაობის პირობებში აქ არ უნდა აღმოჩენილიყავით.',
 );
 
+/** Kazakh (China) (‫قازاقشا (جۇنگو)‬) */
 $wdMessages['kk-cn'] = array(
 	'langman_title' => 'تٴىلدەردٴى مەڭگەرۋ',
 );
 
+/** Kazakh (Kazakhstan) (‪Қазақша (Қазақстан)‬) */
 $wdMessages['kk-kz'] = array(
 	'langman_title' => 'Тілдерді меңгеру',
 );
 
+/** Kazakh (Turkey) (‪Qazaqşa (Türkïya)‬) */
 $wdMessages['kk-tr'] = array(
 	'langman_title' => 'Tilderdi meñgerw',
 );
@@ -1713,7 +1723,7 @@ $wdMessages['ksh'] = array(
 	'ow_LinkAttributeValues' => 'Links',
 );
 
-/** Kurdish (Kurdî / كوردی)
+/** Kurdish (Latin) (Kurdî / كوردی (Latin))
  * @author Bangin
  */
 $wdMessages['ku-latn'] = array(
@@ -2541,10 +2551,11 @@ $wdMessages['pl'] = array(
 	'ow_db_consistency_not_found'           => '<h2>Błąd</h2>Wystąpił błąd spójności bazy danych. Dane wiki nie są w stanie odnaleźć odpowiednich danych skojarzonych z określonym identyfikatorem. Dane mogły zostać utracone. Skontaktuj sie z operatorem serwera, lub jego administratorem.',
 );
 
-/** Piemontèis (Piemontèis)
+/** Piedmontese (Piemontèis)
+ * @author Bèrto 'd Sèra
  */
 $wdMessages['pms'] = array(
-	'datasearch' => 'Wikidata: Arsërca antra ij dat',
+	'datasearch'                      => 'Wikidata: Arsërca antra ij dat',
 	'langman_title'                   => 'Gestor dle lenghe',
 	'languages'                       => 'Wikidata: Gestor dle lenghe',
 	'ow_save'                         => 'Salvé',
@@ -2732,6 +2743,9 @@ $wdMessages['rif'] = array(
 	'ow_LinkAttributeValues' => 'Tiẓdyin',
 );
 
+/** Romanian (Română)
+ * @author KlaudiuMihaila
+ */
 $wdMessages['ro'] = array(
 	'datasearch' => 'Wikidata: Căutare de date',
 );
@@ -2941,15 +2955,15 @@ $wdMessages['so'] = array(
 	'ow_history' => 'Taariikh',
 );
 
-/** ћирилица (ћирилица)
+/** Serbian Cyrillic ekavian (ћирилица)
  * @author Millosh
  */
 $wdMessages['sr-ec'] = array(
 	'ow_save'                               => 'Сачувај',
 	'ow_history'                            => 'Историја',
 	'ow_datasets'                           => 'Одабир скупа података',
-	'ow_noedit'                             => 'Није ти дозвољено да мењаш стране у скупу података "$1". Види [[{{MediaWiki:Ow editing policy url}}|нашу уређивачку политику]].',
 	'ow_noedit_title'                       => 'Без дозволе за уређивање',
+	'ow_noedit'                             => 'Није ти дозвољено да мењаш стране у скупу података "$1". Види [[{{MediaWiki:Ow editing policy url}}|нашу уређивачку политику]].',
 	'ow_uipref_datasets'                    => 'Подразумевани поглед',
 	'ow_uiprefs'                            => 'Викидата',
 	'ow_none_selected'                      => '<Ништа није означено>',
@@ -3240,7 +3254,7 @@ Datan kan vara förlorad.
 Var god kontakta systemadministratören.',
 );
 
-/** Silesian (ślůnski)
+/** Silesian (Ślůnski)
  * @author Herr Kriss
  */
 $wdMessages['szl'] = array(
@@ -3496,16 +3510,18 @@ $wdMessages['vo'] = array(
 	'ow_LinkAttributeValues'                => 'Liuds',
 );
 
+/** Simplified Chinese (‪中文(简体)‬) */
 $wdMessages['zh-hans'] = array(
-	'datasearch' => 'Wikidata: 数据搜寻',
+	'datasearch'    => 'Wikidata: 数据搜寻',
 	'langman_title' => '语言管理员',
-	'languages'=>'Wikidata: 语言管理员',
+	'languages'     => 'Wikidata: 语言管理员',
 );
 
+/** Traditional Chinese (‪中文(繁體)‬) */
 $wdMessages['zh-hant'] = array(
-	'datasearch' => 'Wikidata: 資料搜尋',
+	'datasearch'    => 'Wikidata: 資料搜尋',
 	'langman_title' => '語言管理員',
-	'languages'=>'Wikidata: 語言管理員',
+	'languages'     => 'Wikidata: 語言管理員',
 );
 
 $wdMessages['de-formal'] = $wdMessages['de'];

@@ -285,7 +285,7 @@ $messages['eo'] = array(
 	'voctrain_try_again_'                                       => 'ĉu reprovu?',
 	'voctrain_Action_unknown'                                   => 'Ago nekonata',
 	'voctrain_User_added'                                       => 'Uzanto aldonita',
-	'voctrain_continue'                                         => 'kontinui',
+	'voctrain_continue'                                         => 'daŭri',
 	'voctrain_hello_place'                                      => 'saluton %place',
 	'voctrain_bye'                                              => 'ĝis',
 	'voctrain_Set_up_your_exercise'                             => 'Starigi vian ekzercon',
@@ -467,14 +467,25 @@ $messages['gl'] = array(
  */
 $messages['ia'] = array(
 	'voctrain_User_name' => 'Nomine de usator',
+	'voctrain_Login'     => 'Aperir un session',
+	'voctrain_Log_in'    => 'Aperir un session',
 );
 
 /** Khmer (ភាសាខ្មែរ)
  * @author គីមស៊្រុន
+ * @author Lovekhmer
  */
 $messages['km'] = array(
 	'voctrain_Hello_World'       => 'សួស្ដីវីគី!',
 	'voctrain_Permission_Denied' => 'ការអនុញ្ញាតត្រូវបានច្រានចោល',
+	'voctrain_try_again_'        => 'សូមព្យាយាមម្តងទៀត?',
+	'voctrain_Languages'         => 'ភាសា',
+	'voctrain_Questions'         => 'សំនួរ',
+	'voctrain_Answers'           => 'ចំលើយ',
+	'voctrain_Password'          => 'ពាក្យសំងាត់',
+	'voctrain_Login'             => 'ឡុកអ៊ីន',
+	'voctrain_Language'          => 'ភាសា',
+	'voctrain_Definitions'       => 'និយមន័យ',
 );
 
 /** Ripoarisch (Ripoarisch)
@@ -578,6 +589,7 @@ $messages['lb'] = array(
 	'voctrain_Language'              => 'Sprooch',
 	'voctrain_Definitions'           => 'Definitiounen',
 	'voctrain_Translation'           => 'Iwwersetzung',
+	'voctrain_hiding'                => 'Verstoppen',
 );
 
 /** Neapolitan (Nnapulitano)
@@ -853,7 +865,7 @@ $messages['oc'] = array(
 	'voctrain_Type_a_username_and_optional_password_or_try_a_different_username_'                   => 'Picatz un nom d’utilizaire e un senhal facultatiu, (o alara ensajatz un autre nom d’utilizaire)',
 );
 
-/** Piemontèis (Piemontèis)
+/** Piedmontese (Piemontèis)
  * @author Valter Bergesio
  */
 $messages['pms'] = array(
