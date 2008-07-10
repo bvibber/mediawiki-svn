@@ -14,15 +14,21 @@ $messages['en'] = array(
         'msfunc_div_zero' => 'Division by zero',
 );
 
+/** Arabic (العربية)
+ * @author Meno25
+ */
 $messages['ar'] = array(
-	'msfunc_nan' => 'القيمة الناتجة ليست رقما',
-	'msfunc_inf' => 'القيمة الناتجة هي المالانهاية',
+	'msfunc_nan'      => 'القيمة الناتجة ليست رقما',
+	'msfunc_inf'      => 'القيمة الناتجة هي المالانهاية',
 	'msfunc_div_zero' => 'القسمة على صفر',
 );
 
+/** Bulgarian (Български)
+ * @author Spiritia
+ */
 $messages['bg'] = array(
-	'msfunc_nan' => 'Стойността на резултата не е число',
-	'msfunc_inf' => 'Стойността на резултата е безкрайност',
+	'msfunc_nan'      => 'Стойността на резултата не е число',
+	'msfunc_inf'      => 'Стойността на резултата е безкрайност',
 	'msfunc_div_zero' => 'Деление на нула',
 );
 
@@ -60,10 +66,11 @@ $messages['da'] = array(
 	'msfunc_div_zero' => 'Division med nul',
 );
 
+/** German (Deutsch) */
 $messages['de'] = array(
-        'msfunc_nan'      => 'Ergebniswert ist keine Zahl',
-        'msfunc_inf'      => 'Ergebniswert ist unendlich',
-        'msfunc_div_zero' => 'Division durch Null',
+	'msfunc_nan'      => 'Ergebniswert ist keine Zahl',
+	'msfunc_inf'      => 'Ergebniswert ist unendlich',
+	'msfunc_div_zero' => 'Division durch Null',
 );
 
 /** Esperanto (Esperanto)
@@ -77,10 +84,10 @@ $messages['eo'] = array(
  * @author Huji
  */
 $messages['fa'] = array(
-        'msfunc_desc'     => 'مجموعه‌ای از عملکردهای ریاضی و آماری',
-        'msfunc_nan'      => 'مقدار نتیجه یک عدد نیست',
-        'msfunc_inf'      => 'مقدار نتیجه بی‌نهایت است',
-        'msfunc_div_zero' => 'تقسیم بر صفر',
+	'msfunc_desc'     => 'مجموعه‌ای از عملکردهای ریاضی و آماری',
+	'msfunc_nan'      => 'مقدار نتیجه یک عدد نیست',
+	'msfunc_inf'      => 'مقدار نتیجه بی‌نهایت است',
+	'msfunc_div_zero' => 'تقسیم بر صفر',
 );
 
 /** French (Français)
@@ -124,15 +131,11 @@ $messages['hr'] = array(
 	'msfunc_div_zero' => 'Dijeljenje nulom',
 );
 
+/** Upper Sorbian (Hornjoserbsce) */
 $messages['hsb'] = array(
-	'msfunc_nan' => 'Wuslědk ličba njeje.',
-	'msfunc_inf' => 'Wuslědk je njekónčna hódnota.',
+	'msfunc_nan'      => 'Wuslědk ličba njeje.',
+	'msfunc_inf'      => 'Wuslědk je njekónčna hódnota.',
 	'msfunc_div_zero' => 'Diwizija přez nulu',
-);
-$messages['id'] = array(
-        'msfunc_nan' => "Nilai hasil tidak berupa angka" ,
-        'msfunc_inf' => "Nilai hasil tak hingga" ,
-        'msfunc_div_zero' => "Pembagian dengan nol",
 );
 
 /** Hungarian (Magyar)
@@ -144,6 +147,13 @@ $messages['hu'] = array(
 	'msfunc_div_zero' => 'Nullával való osztás',
 );
 
+/** Indonesian (Bahasa Indonesia) */
+$messages['id'] = array(
+	'msfunc_nan'      => 'Nilai hasil tidak berupa angka',
+	'msfunc_inf'      => 'Nilai hasil tak hingga',
+	'msfunc_div_zero' => 'Pembagian dengan nol',
+);
+
 /** Ido (Ido)
  * @author Malafaya
  */
@@ -151,16 +161,18 @@ $messages['io'] = array(
 	'msfunc_div_zero' => 'Divido per zero',
 );
 
+/** Italian (Italiano) */
 $messages['it'] = array(
-        'msfunc_nan' => "Il risultato non è un numero" ,
-        'msfunc_inf' => "Il risultato è infinito" ,
-        'msfunc_div_zero' => "Divisione per zero",
+	'msfunc_nan'      => 'Il risultato non è un numero',
+	'msfunc_inf'      => 'Il risultato è infinito',
+	'msfunc_div_zero' => 'Divisione per zero',
 );
 
+/** Japanese (日本語) */
 $messages['ja'] = array(
-        'msfunc_nan' => "返り値が数値ではありませんResulting value is not a number" ,
-        'msfunc_inf' => "返り値が無限大です" ,
-        'msfunc_div_zero' => "0で割り算しました",
+	'msfunc_nan'      => '返り値が数値ではありませんResulting value is not a number',
+	'msfunc_inf'      => '返り値が無限大です',
+	'msfunc_div_zero' => '0で割り算しました',
 );
 
 /** Javanese (Basa Jawa)
@@ -225,27 +237,39 @@ $messages['nn'] = array(
 	'msfunc_div_zero' => 'Divisjon med null',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ */
 $messages['no'] = array(
-	'msfunc_nan' => 'Resultatverdien er ikke et tall',
-	'msfunc_inf' => 'Resultatverdien er uendelig',
+	'msfunc_nan'      => 'Resultatverdien er ikke et tall',
+	'msfunc_inf'      => 'Resultatverdien er uendelig',
 	'msfunc_div_zero' => 'Deling på null',
 );
 
+/** Occitan (Occitan)
+ * @author Cedric31
+ */
 $messages['oc'] = array(
-	'msfunc_nan' => 'Lo resultat es pas un nombre.',
-	'msfunc_inf' => 'Lo resultat es l’infinit.',
+	'msfunc_nan'      => 'Lo resultat es pas un nombre.',
+	'msfunc_inf'      => 'Lo resultat es l’infinit.',
 	'msfunc_div_zero' => 'Division per zèro',
 );
 
+/** Polish (Polski)
+ * @author Derbeth
+ */
 $messages['pl'] = array(
-	'msfunc_nan' => 'Wartość wynikowa nie jest liczbą',
-	'msfunc_inf' => 'Wartość wynikowa to nieskończoność',
+	'msfunc_nan'      => 'Wartość wynikowa nie jest liczbą',
+	'msfunc_inf'      => 'Wartość wynikowa to nieskończoność',
 	'msfunc_div_zero' => 'Dzielenie przez zero',
 );
 
+/** Piedmontese (Piemontèis)
+ * @author Bèrto 'd Sèra
+ */
 $messages['pms'] = array(
-	'msfunc_nan' => 'L\'arzultà a l\'é nen un nùmer',
-	'msfunc_inf' => 'Arzultà anfinì',
+	'msfunc_nan'      => "L'arzultà a l'é nen un nùmer",
+	'msfunc_inf'      => 'Arzultà anfinì',
 	'msfunc_div_zero' => 'Division për zero',
 );
 
@@ -272,21 +296,24 @@ $messages['ru'] = array(
  * @author Helix84
  */
 $messages['sk'] = array(
+	'msfunc_desc'     => 'Zbierka matematických a štatistických funkcií',
 	'msfunc_nan'      => 'Výsledná hodnota nie je číslo',
 	'msfunc_inf'      => 'Výsledná hodnota je nekonečno',
 	'msfunc_div_zero' => 'Delenie nulou',
 );
 
+/** Serbian Cyrillic ekavian (ћирилица) */
 $messages['sr-ec'] = array(
-        'msfunc_nan' => "Резултат није број" ,
-        'msfunc_inf' => "Резултат је бесконачан" ,
-        'msfunc_div_zero' => "Дељиво са нулом",
+	'msfunc_nan'      => 'Резултат није број',
+	'msfunc_inf'      => 'Резултат је бесконачан',
+	'msfunc_div_zero' => 'Дељиво са нулом',
 );
 
+/** latinica (latinica) */
 $messages['sr-el'] = array(
-        'msfunc_nan' => "Rezultat nije broj" ,
-        'msfunc_inf' => "Rezultat je beskonačan" ,
-        'msfunc_div_zero' => "Deljivo sa nulom",
+	'msfunc_nan'      => 'Rezultat nije broj',
+	'msfunc_inf'      => 'Rezultat je beskonačan',
+	'msfunc_div_zero' => 'Deljivo sa nulom',
 );
 
 /** Seeltersk (Seeltersk)
@@ -328,21 +355,24 @@ $messages['vi'] = array(
 	'msfunc_div_zero' => 'Chia cho zero',
 );
 
+/** Yue (粵語) */
 $messages['yue'] = array(
-        'msfunc_nan' => "結果唔係個數" ,
-        'msfunc_inf' => "結果數值係無限" ,
-        'msfunc_div_zero' => "除以零",
+	'msfunc_nan'      => '結果唔係個數',
+	'msfunc_inf'      => '結果數值係無限',
+	'msfunc_div_zero' => '除以零',
 );
 
+/** Simplified Chinese (‪中文(简体)‬) */
 $messages['zh-hans'] = array(
-        'msfunc_nan' => "结果数值不是一个数字" ,
-        'msfunc_inf' => "结果数值是无限" ,
-        'msfunc_div_zero' => "除以零",
+	'msfunc_nan'      => '结果数值不是一个数字',
+	'msfunc_inf'      => '结果数值是无限',
+	'msfunc_div_zero' => '除以零',
 );
 
+/** Traditional Chinese (‪中文(繁體)‬) */
 $messages['zh-hant'] = array(
-        'msfunc_nan' => "結果數值不是一個數字" ,
-        'msfunc_inf' => "結果數值是無限" ,
-        'msfunc_div_zero' => "除以零",
+	'msfunc_nan'      => '結果數值不是一個數字',
+	'msfunc_inf'      => '結果數值是無限',
+	'msfunc_div_zero' => '除以零',
 );
 

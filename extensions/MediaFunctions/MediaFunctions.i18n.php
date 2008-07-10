@@ -18,11 +18,17 @@ $messages['en'] = array(
 	'mediafunctions-not-exist'     => '"$1" does not exist',
 );
 
+/** Arabic (العربية)
+ * @author Meno25
+ */
 $messages['ar'] = array(
 	'mediafunctions-invalid-title' => '"$1" ليس عنوانا صحيحا',
 	'mediafunctions-not-exist'     => '"$1" غير موجود',
 );
 
+/** Bulgarian (Български)
+ * @author Spiritia
+ */
 $messages['bg'] = array(
 	'mediafunctions-invalid-title' => '"$1" не е валидно заглавие',
 	'mediafunctions-not-exist'     => '"$1" не съществува',
@@ -36,6 +42,7 @@ $messages['ca'] = array(
 	'mediafunctions-not-exist'     => '«$1» no existeix',
 );
 
+/** German (Deutsch) */
 $messages['de'] = array(
 	'mediafunctions-invalid-title' => '„$1“ ist kein gültiger Name',
 	'mediafunctions-not-exist'     => '„$1“ ist nicht vorhanden',
@@ -93,6 +100,7 @@ $messages['hr'] = array(
 	'mediafunctions-not-exist'     => '"$1" ne postoji',
 );
 
+/** Upper Sorbian (Hornjoserbsce) */
 $messages['hsb'] = array(
 	'mediafunctions-invalid-title' => '"$1" płaćiwe mjeno njeje.',
 	'mediafunctions-not-exist'     => '"1" njeeksistuje',
@@ -147,6 +155,9 @@ $messages['mr'] = array(
 	'mediafunctions-not-exist'     => '"$1" अस्तीत्वात नाही',
 );
 
+/** Low German (Plattdüütsch)
+ * @author Slomox
+ */
 $messages['nds'] = array(
 	'mediafunctions-invalid-title' => '„$1“ is keen validen Titel',
 	'mediafunctions-not-exist'     => '„$1“ gifft dat nich',
@@ -161,11 +172,17 @@ $messages['nl'] = array(
 	'mediafunctions-not-exist'     => '"$1" bestaat niet',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ */
 $messages['no'] = array(
 	'mediafunctions-invalid-title' => '«$1» er en ugyldig tittel',
 	'mediafunctions-not-exist'     => '«$1» eksisterer ikke',
 );
 
+/** Occitan (Occitan)
+ * @author Cedric31
+ */
 $messages['oc'] = array(
 	'mediafunctions-invalid-title' => '« $1 » es pas un títol valid.',
 	'mediafunctions-not-exist'     => '« $1 » existís pas.',
@@ -179,6 +196,9 @@ $messages['pl'] = array(
 	'mediafunctions-not-exist'     => '„$1” nie istnieje',
 );
 
+/** Piedmontese (Piemontèis)
+ * @author Bèrto 'd Sèra
+ */
 $messages['pms'] = array(
 	'mediafunctions-invalid-title' => '"$1" a va nen bin për tìtol',
 	'mediafunctions-not-exist'     => '"$1" a-i é pa',
@@ -212,6 +232,7 @@ $messages['ru'] = array(
  * @author Helix84
  */
 $messages['sk'] = array(
+	'mediafunctions-desc'          => 'Funkcie syntaktického analyzátora na zbieranie informácií o multimediálnych súboroch',
 	'mediafunctions-invalid-title' => '„$1“ nie je platný názov',
 	'mediafunctions-not-exist'     => '„$1“ neexistuje',
 );
@@ -274,16 +295,19 @@ $messages['vo'] = array(
 	'mediafunctions-not-exist'     => '"$1" no dabinon',
 );
 
+/** Yue (粵語) */
 $messages['yue'] = array(
 	'mediafunctions-invalid-title' => '"$1" 唔係一個有效嘅標題',
 	'mediafunctions-not-exist'     => '"$1" 唔存在',
 );
 
+/** Simplified Chinese (‪中文(简体)‬) */
 $messages['zh-hans'] = array(
 	'mediafunctions-invalid-title' => '"$1" 不是一个有效的标题',
 	'mediafunctions-not-exist'     => '"$1" 不存在',
 );
 
+/** Traditional Chinese (‪中文(繁體)‬) */
 $messages['zh-hant'] = array(
 	'mediafunctions-invalid-title' => '"$1" 不是一個有效的標題',
 	'mediafunctions-not-exist'     => '"$1" 不存在',

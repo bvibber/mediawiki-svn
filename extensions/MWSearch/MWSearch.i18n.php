@@ -278,21 +278,21 @@ $messages['vi'] = array(
 	'mwsearch-desc' => 'Plugin MWSearch',
 );
 
-/** Cantonese
+/** Yue (粵語)
  * @author Shinjiman
  */
 $messages['yue'] = array(
 	'mwsearch-desc' => 'MWSearch 插件',
 );
 
-/** Chinese Simplified
+/** Simplified Chinese (‪中文(简体)‬)
  * @author Shinjiman
  */
 $messages['zh-hans'] = array(
 	'mwsearch-desc' => 'MWSearch 加载项',
 );
 
-/** Chinese Traditional
+/** Traditional Chinese (‪中文(繁體)‬)
  * @author Shinjiman
  */
 $messages['zh-hant'] = array(

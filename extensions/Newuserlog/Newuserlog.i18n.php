@@ -18,6 +18,7 @@ $messages['en'] = array(
 	'newuserlog-autocreate-entry' => 'Account created automatically',
 );
 
+/** Afrikaans (Afrikaans) */
 $messages['af'] = array(
 	'newuserlogpage'           => 'Logboek van nuwe gebruikers',
 	'newuserlogpagetext'       => "Dit is 'n logboek van gebruikers wat onlangs ingeteken het.",
@@ -51,7 +52,7 @@ $messages['an'] = array(
 	'newuserlog-autocreate-entry' => 'Cuenta creyata automaticament',
 );
 
-/** Old English (Anglo Saxon)
+/** Old English (Anglo-Saxon)
  * @author Wōdenhelm
  */
 $messages['ang'] = array(
@@ -123,8 +124,11 @@ $messages['avk'] = array(
 	'newuserlog-create-entry' => 'Warzaf favesik',
 );
 
+/** Bikol Central (Bikol Central)
+ * @author Filipinayzd
+ */
 $messages['bcl'] = array(
-	'newuserlog-create-entry'  => 'Bâgong parágamit',
+	'newuserlog-create-entry' => 'Bâgong parágamit',
 );
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
@@ -197,9 +201,10 @@ $messages['ca'] = array(
 	'newuserlog-autocreate-entry' => 'Compte creat automàticament',
 );
 
+/** Min Dong Chinese (Mìng-dĕ̤ng-ngṳ̄) */
 $messages['cdo'] = array(
-	'newuserlogpage'           => 'Kŭi dióng-hô̤ nĭk-cé',
-	'newuserlog-create-entry'  => 'Sĭng ê̤ṳng-hô',
+	'newuserlogpage'          => 'Kŭi dióng-hô̤ nĭk-cé',
+	'newuserlog-create-entry' => 'Sĭng ê̤ṳng-hô',
 );
 
 /** Chechen (Нохчийн)
@@ -294,6 +299,10 @@ $messages['dsb'] = array(
 	'newuserlog-autocreate-entry' => 'Wužywarske konto bu awtomatiski napórane',
 );
 
+/** Greek (Ελληνικά)
+ * @author MF-Warburg
+ * @author ZaDiak
+ */
 $messages['el'] = array(
 	'newuserlogpage'           => 'Αρχείο δημιουργίας χρηστών',
 	'newuserlogpagetext'       => 'Αυτό είναι το αρχείο δημιουργίας χρηστών.',
@@ -338,10 +347,13 @@ $messages['es'] = array(
 	'newuserlog-autocreate-entry' => 'Cuenta creada automáticamente',
 );
 
+/** Estonian (Eesti)
+ * @author SPQRobin
+ */
 $messages['et'] = array(
-	'newuserlogpage'           => 'Kasutaja loomise logi',
-	'newuserlogpagetext'       => 'See logi sisaldab infot äsja loodud uute kasutajate kohta',
-	'newuserlog-create-entry'  => 'Uus kasutaja',
+	'newuserlogpage'          => 'Kasutaja loomise logi',
+	'newuserlogpagetext'      => 'See logi sisaldab infot äsja loodud uute kasutajate kohta',
+	'newuserlog-create-entry' => 'Uus kasutaja',
 );
 
 /** Basque (Euskara)
@@ -355,7 +367,7 @@ $messages['eu'] = array(
 	'newuserlog-create2-entry' => '$1(r)entzako kontua sortu da',
 );
 
-/** فارسی (فارسی)
+/** Persian (فارسی)
  * @author Huji
  */
 $messages['fa'] = array(
@@ -366,7 +378,6 @@ $messages['fa'] = array(
 	'newuserlog-create-entry'     => 'کاربر جدید',
 	'newuserlog-create2-entry'    => 'برای $1 حساب کاربری ایجاد کرد',
 	'newuserlog-autocreate-entry' => 'حساب به طور خودکار ساخته شد',
-
 );
 
 /** Finnish (Suomi)
@@ -383,9 +394,12 @@ $messages['fi'] = array(
 	'newuserlog-autocreate-entry' => 'Automaattisesti luotu käyttäjätunnus',
 );
 
+/** Faroese (Føroyskt)
+ * @author Spacebirdy
+ */
 $messages['fo'] = array(
-	'newuserlogpage'           => 'Brúkara logg',
-	'newuserlog-create-entry'  => 'Nýggjur brúkari',
+	'newuserlogpage'          => 'Brúkara logg',
+	'newuserlog-create-entry' => 'Nýggjur brúkari',
 );
 
 /** French (Français)
@@ -421,6 +435,7 @@ $messages['frp'] = array(
  */
 $messages['fur'] = array(
 	'newuserlogpage'              => 'Regjistri dai gnûfs utents',
+	'newuserlog-byemail'          => 'peraule clâf mandade par pueste eletroniche',
 	'newuserlog-create-entry'     => 'al è rivât il gnûf utent',
 	'newuserlog-create2-entry'    => 'creade une identitât par $1',
 	'newuserlog-autocreate-entry' => 'Identitât creade in automatic',
@@ -455,6 +470,9 @@ $messages['gv'] = array(
 	'newuserlog-create-entry' => 'Ymmydeyr noa',
 );
 
+/** Hakka (Hak-kâ-fa)
+ * @author Hakka
+ */
 $messages['hak'] = array(
 	'newuserlogpage'           => 'Sîn-chin yung-fu miàng-chhak',
 	'newuserlogpagetext'       => 'Liá-he yit-ke chui-khiun pûn chhóng-kien yung-fu ke ngit-ki',
@@ -462,6 +480,7 @@ $messages['hak'] = array(
 	'newuserlog-create2-entry' => 'Yí-kîn chhong-kien $1 ke chong-fu',
 );
 
+/** Hebrew (עברית) */
 $messages['he'] = array(
 	'newuserlogpage'              => 'יומן רישום משתמשים',
 	'newuserlogpagetext'          => 'זהו יומן המכיל הרשמות של משתמשים.',
@@ -542,6 +561,9 @@ $messages['hu'] = array(
 	'newuserlog-autocreate-entry' => 'Felhasználói fiók automatikusan létrehozva',
 );
 
+/** Armenian (Հայերեն)
+ * @author Teak
+ */
 $messages['hy'] = array(
 	'newuserlogpage'           => 'Մասնակիցների գրանցման տեղեկամատյան',
 	'newuserlogpagetext'       => 'Սա նոր մասնակիցների գրանցման տեղեկամատյանն է',
@@ -646,6 +668,7 @@ $messages['ka'] = array(
 	'newuserlog-autocreate-entry' => 'ავტომატურად შექმნილი ანგარიში',
 );
 
+/** Kazakh (Arabic script) (‫قازاقشا (تٴوتە)‬) */
 $messages['kk-arab'] = array(
 	'newuserlogpage'           => 'تىركەلۋ جۋرنالى',
 	'newuserlogpagetext'       => 'بۇل قاتىسۋشى تىركەلگى جاساۋ جۋرنالى',
@@ -653,6 +676,7 @@ $messages['kk-arab'] = array(
 	'newuserlog-create2-entry' => 'جاڭا تىركەلگى جاسادى — $1',
 );
 
+/** Kazakh (Cyrillic) (Қазақша (Cyrillic)) */
 $messages['kk-cyrl'] = array(
 	'newuserlogpage'           => 'Тіркелу журналы',
 	'newuserlogpagetext'       => 'Бұл қатысушы тіркелгі жасау журналы',
@@ -660,6 +684,7 @@ $messages['kk-cyrl'] = array(
 	'newuserlog-create2-entry' => 'жаңа тіркелгі жасады — $1',
 );
 
+/** Kazakh (Latin) (Қазақша (Latin)) */
 $messages['kk-latn'] = array(
 	'newuserlogpage'           => 'Tirkelw jwrnalı',
 	'newuserlogpagetext'       => 'Bul qatıswşı tirkelgi jasaw jwrnalı',
@@ -705,9 +730,10 @@ $messages['ksh'] = array(
 	'newuserlog-create2-entry' => 'Nöüje Zojang enjerėshdt för „$1“',
 );
 
+/** Kurdish (Latin) (Kurdî / كوردی (Latin)) */
 $messages['ku-latn'] = array(
-	'newuserlogpage'           => 'Reşahiya çêkirina hesabên nû',
-	'newuserlog-create-entry'  => 'Bikarhênerekî nuh',
+	'newuserlogpage'          => 'Reşahiya çêkirina hesabên nû',
+	'newuserlog-create-entry' => 'Bikarhênerekî nuh',
 );
 
 /** Latin (Latina)
@@ -752,6 +778,7 @@ $messages['li'] = array(
 	'newuserlog-autocreate-entry' => 'Gebroeker automatisch aangemaak',
 );
 
+/** Lao (ລາວ) */
 $messages['lo'] = array(
 	'newuserlogpage'           => 'ບັນທຶກການສ້າງບັນຊີຜູ້ໃຊ້',
 	'newuserlogpagetext'       => 'ນີ້ແມ່ນ ບັນທຶກການສ້າງ ບັນຊີຜູ້ໃຊ້ໃໝ່',
@@ -781,6 +808,9 @@ $messages['lv'] = array(
 	'newuserlog-create-entry' => 'Reģistrēts lietotājvārds',
 );
 
+/** Macedonian (Македонски)
+ * @author Misos
+ */
 $messages['mk'] = array(
 	'newuserlogpage'           => 'Листа на нови корисници',
 	'newuserlogpagetext'       => 'Ова е листа на скоро регистрирани корисници',
@@ -836,7 +866,7 @@ $messages['mt'] = array(
 	'newuserlog-create-entry' => 'Utent ġdid',
 );
 
-/** Erzya (эрзянь кель)
+/** Erzya (Эрзянь)
  * @author Amdf
  */
 $messages['myv'] = array(
@@ -951,10 +981,12 @@ $messages['pl'] = array(
 	'newuserlog-autocreate-entry' => '– konto utworzone automatycznie',
 );
 
-/* Piedmontese (Bèrto 'd Sèra) */
+/** Piedmontese (Piemontèis)
+ * @author Bèrto 'd Sèra
+ */
 $messages['pms'] = array(
-	'newuserlogpage'           => 'Registr dla creassion dj\'utent',
-	'newuserlogpagetext'       => 'Sossì a l\'é un registr andova ch\'as marco le creassion dj\'utent',
+	'newuserlogpage'           => "Registr dla creassion dj'utent",
+	'newuserlogpagetext'       => "Sossì a l'é un registr andova ch'as marco le creassion dj'utent",
 	'newuserlog-create-entry'  => 'Neuv utent',
 	'newuserlog-create2-entry' => 'Cont doertà për $1',
 );
@@ -997,6 +1029,10 @@ $messages['qu'] = array(
 	'newuserlog-autocreate-entry' => 'Kikinmanta kamarisqa rakiquna',
 );
 
+/** Romanian (Română)
+ * @author Emily
+ * @author לערי ריינהארט
+ */
 $messages['ro'] = array(
 	'newuserlogpage'           => 'Jurnal utilizatori noi',
 	'newuserlog-create-entry'  => 'Utilizator nou',
@@ -1065,13 +1101,13 @@ $messages['sr-ec'] = array(
 	'newuserlog-autocreate-entry' => 'налог аутоматски направљен',
 );
 
+/** latinica (latinica) */
 $messages['sr-el'] = array(
 	'newuserlogpage'           => 'istorija kreiranja korisnika',
 	'newuserlogpagetext'       => 'Ovo je istorija skorašnjih kreacija korisnika',
 	'newuserlog-create-entry'  => 'Novi korisnik',
 	'newuserlog-create2-entry' => 'napravio nalog za $1',
 );
-
 
 /** Seeltersk (Seeltersk)
  * @author Pyt
@@ -1126,14 +1162,17 @@ $messages['te'] = array(
 	'newuserlog-create2-entry' => '$1 కోసం ఖాతా సృష్టించాం.',
 );
 
+/** Tetum (Tetun)
+ * @author MF-Warburg
+ */
 $messages['tet'] = array(
-	'newuserlogpage'           => 'Lista kria uza-na\'in',
-	'newuserlogpagetext'       => 'Ne\'e lista kria uza-na\'in',
-	'newuserlog-create-entry'  => 'Uza-na\'in foun',
-	'newuserlog-create2-entry' => 'registrar uza-na\'in $1',
+	'newuserlogpage'           => "Lista kria uza-na'in",
+	'newuserlogpagetext'       => "Ne'e lista kria uza-na'in",
+	'newuserlog-create-entry'  => "Uza-na'in foun",
+	'newuserlog-create2-entry' => "registrar uza-na'in $1",
 );
 
-/** Tajik (Тоҷикӣ)
+/** Tajik (Cyrillic) (Тоҷикӣ/tojikī (Cyrillic))
  * @author Ibrahim
  */
 $messages['tg-cyrl'] = array(
@@ -1189,10 +1228,11 @@ $messages['uk'] = array(
 	'newuserlog-autocreate-entry' => 'Обліковий запис створений автоматично',
 );
 
+/** Urdu (اردو) */
 $messages['ur'] = array(
-	'newuserlogpage'           => 'نوشتۂ آمد صارف',
-	'newuserlogpagetext'       => 'یہ نۓ صارفوں کی آمد کا نوشتہ ہے',
-	'newuserlog-create-entry'  => 'صارف جدید',
+	'newuserlogpage'          => 'نوشتۂ آمد صارف',
+	'newuserlogpagetext'      => 'یہ نۓ صارفوں کی آمد کا نوشتہ ہے',
+	'newuserlog-create-entry' => 'صارف جدید',
 );
 
 /** Vèneto (Vèneto)
@@ -1222,9 +1262,12 @@ $messages['vi'] = array(
 	'newuserlog-autocreate-entry' => 'Tài khoản được tạo tự động',
 );
 
+/** West-Vlams (West-Vlams)
+ * @author SPQRobin
+ */
 $messages['vls'] = array(
-	'newuserlogpage'           => 'Logboek nieuwe gebrukers',
-	'newuserlog-create-entry'  => 'Nieuwe gebruker',
+	'newuserlogpage'          => 'Logboek nieuwe gebrukers',
+	'newuserlog-create-entry' => 'Nieuwe gebruker',
 );
 
 /** Volapük (Volapük)
@@ -1239,9 +1282,12 @@ $messages['vo'] = array(
 	'newuserlog-create2-entry' => 'ejafon kali gebane: $1',
 );
 
+/** Walloon (Walon)
+ * @author Srtxg
+ */
 $messages['wa'] = array(
 	'newuserlogpage'           => 'Djournå des noveas uzeus',
-	'newuserlogpagetext'       => 'Chal pa dzo c\' est ene djivêye des uzeus novelmint eredjîstrés.',
+	'newuserlogpagetext'       => "Chal pa dzo c' est ene djivêye des uzeus novelmint eredjîstrés.",
 	'newuserlog-create-entry'  => 'Novea uzeu',
 	'newuserlog-create2-entry' => 'conte ahivé po $1',
 );
@@ -1254,6 +1300,7 @@ $messages['yi'] = array(
 	'newuserlog-create2-entry' => 'געשאפֿן קאנטע פֿאר $1',
 );
 
+/** Yue (粵語) */
 $messages['yue'] = array(
 	'newuserlogpage'              => '使用者開戶記錄',
 	'newuserlogpagetext'          => '呢個係一個使用者開戶嘅日誌',
@@ -1264,10 +1311,14 @@ $messages['yue'] = array(
 	'newuserlog-autocreate-entry' => '自動建立咗戶口',
 );
 
+/** Zeeuws (Zeêuws)
+ * @author SPQRobin
+ */
 $messages['zea'] = array(
-	'newuserlog-create-entry'  => 'Nieuwe gebruker',
+	'newuserlog-create-entry' => 'Nieuwe gebruker',
 );
 
+/** Classical Chinese (文言) */
 $messages['zh-classical'] = array(
 	'newuserlogpage'              => '誌簿',
 	'newuserlogpagetext'          => '此為誌簿之記也',
@@ -1278,16 +1329,18 @@ $messages['zh-classical'] = array(
 	'newuserlog-autocreate-entry' => '已自註之簿',
 );
 
+/** Simplified Chinese (‪中文(简体)‬) */
 $messages['zh-hans'] = array(
 	'newuserlogpage'              => '新进用户名册',
 	'newuserlogpagetext'          => '本日志是显示新注册用户的日志',
 	'newuserlog-desc'             => '加入一个[[Special:Log/newusers|新进用户名册]]到[[Special:Log]]',
-	'newuserlog-byemail'          => '密码已由电子邮件发出',	
+	'newuserlog-byemail'          => '密码已由电子邮件发出',
 	'newuserlog-create-entry'     => '新用户',
 	'newuserlog-create2-entry'    => '已创建$1的账户',
 	'newuserlog-autocreate-entry' => '已自动建立账户',
 );
 
+/** Traditional Chinese (‪中文(繁體)‬) */
 $messages['zh-hant'] = array(
 	'newuserlogpage'              => '新進用戶名冊',
 	'newuserlogpagetext'          => '這是一個最近被創建用戶的日誌',

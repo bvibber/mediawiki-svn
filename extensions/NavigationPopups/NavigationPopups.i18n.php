@@ -16,6 +16,7 @@ $messages['ca'] = array(
 	'navigationpopups-desc' => "Carrega el codi de les finestres emergents de navegació d'en Lupin al mediawiki",
 );
 
+/** French (Français) */
 $messages['fr'] = array(
 	'navigationpopups-desc' => 'Charge, dans médiawiki, les scripts des fenêtres de navigation de Lupin',
 );

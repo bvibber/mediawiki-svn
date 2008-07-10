@@ -12,26 +12,42 @@ $messages['en'] = array(
 	'donationform-submit' => 'Donate via PayPal',
 );
 
+/** Aragonese (Aragonés)
+ * @author Juanpabl
+ */
 $messages['an'] = array(
 	'donationform-submit' => 'Donar fendo serbir Paypal',
 );
 
+/** Arabic (العربية)
+ * @author Meno25
+ */
 $messages['ar'] = array(
 	'donationform-submit' => 'تبرع من خلال باي بال',
 );
 
+/** Bikol Central (Bikol Central)
+ * @author Filipinayzd
+ */
 $messages['bcl'] = array(
 	'donationform-submit' => 'Magdonar sa paagi kan PayPal',
 );
 
+/** Bulgarian (Български)
+ * @author Spiritia
+ */
 $messages['bg'] = array(
 	'donationform-submit' => 'Направете дарение чрез PayPal',
 );
 
+/** German (Deutsch) */
 $messages['de'] = array(
 	'donationform-submit' => 'Spenden über PayPal',
 );
 
+/** Greek (Ελληνικά)
+ * @author Consta
+ */
 $messages['el'] = array(
 	'donationform-submit' => 'Δωρίστε μέσω PayPal',
 );
@@ -50,10 +66,14 @@ $messages['es'] = array(
 	'donationform-submit' => 'Donar a través de PayPal.',
 );
 
+/** Extremaduran (Estremeñu)
+ * @author Better
+ */
 $messages['ext'] = array(
 	'donationform-submit' => 'Donal meyanti PayPal',
 );
 
+/** Finnish (Suomi) */
 $messages['fi'] = array(
 	'donationform-submit' => 'Lahjoita PayPalin kautta',
 );
@@ -75,6 +95,7 @@ $messages['gl'] = array(
 	'donationform-submit' => 'Doar mediante PayPal',
 );
 
+/** Hebrew (עברית) */
 $messages['he'] = array(
 	'donationform-submit' => 'תרומה באמצעות PayPal',
 );
@@ -86,6 +107,7 @@ $messages['hi'] = array(
 	'donationform-submit' => 'पे-पाल (PayPal) द्वारा दान करें',
 );
 
+/** Upper Sorbian (Hornjoserbsce) */
 $messages['hsb'] = array(
 	'donationform-submit' => 'Přez PayPal darić',
 );
@@ -97,14 +119,17 @@ $messages['hu'] = array(
 	'donationform-submit' => 'Adakozás PayPalon keresztül',
 );
 
+/** Indonesian (Bahasa Indonesia) */
 $messages['id'] = array(
 	'donationform-submit' => 'Donasi melalui PayPal',
 );
 
+/** Italian (Italiano) */
 $messages['it'] = array(
 	'donationform-submit' => 'Donazione mediante PayPal',
 );
 
+/** Japanese (日本語) */
 $messages['ja'] = array(
 	'donationform-submit' => 'PayPal を通じて寄付する',
 );
@@ -116,14 +141,17 @@ $messages['jv'] = array(
 	'donationform-submit' => 'Donasi liwat PayPal',
 );
 
+/** Kazakh (Arabic script) (‫قازاقشا (تٴوتە)‬) */
 $messages['kk-arab'] = array(
 	'donationform-submit' => 'جٵردەمدٸ PayPal جٷيەسٸمەن جٸبەرۋ',
 );
 
+/** Kazakh (Cyrillic) (Қазақша (Cyrillic)) */
 $messages['kk-cyrl'] = array(
 	'donationform-submit' => 'Жәрдемді PayPal жүйесімен жіберу',
 );
 
+/** Kazakh (Latin) (Қазақша (Latin)) */
 $messages['kk-latn'] = array(
 	'donationform-submit' => 'Järdemdi PayPal jüýesimen jiberw',
 );
@@ -143,6 +171,7 @@ $messages['lb'] = array(
 	'donationform-submit' => 'Donatiounen iwwer PayPal',
 );
 
+/** Lithuanian (Lietuvių) */
 $messages['lt'] = array(
 	'donationform-submit' => 'Aukoti per PayPal',
 );
@@ -169,19 +198,30 @@ $messages['nl'] = array(
 	'donationform-submit' => 'Via PayPal doneren',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ */
 $messages['no'] = array(
 	'donationform-submit' => 'Doner med PayPal',
 );
 
+/** Occitan (Occitan)
+ * @author Cedric31
+ */
 $messages['oc'] = array(
 	'donationform-submit' => 'Far un don amb PayPal',
 );
 
+/** Polish (Polski)
+ * @author Derbeth
+ */
 $messages['pl'] = array(
 	'donationform-submit' => 'Przekaż dar pieniężny przez PayPal',
 );
 
-/* Piedmontese (Bèrto 'd Sèra) */
+/** Piedmontese (Piemontèis)
+ * @author Bèrto 'd Sèra
+ */
 $messages['pms'] = array(
 	'donationform-submit' => 'Fé na donassion con PayPal',
 );
@@ -193,6 +233,9 @@ $messages['ps'] = array(
 	'donationform-submit' => 'د PayPal له لوري خپله بسپنه راولېږۍ',
 );
 
+/** Portuguese (Português)
+ * @author Malafaya
+ */
 $messages['pt'] = array(
 	'donationform-submit' => 'Doe pelo PayPal',
 );
@@ -204,21 +247,27 @@ $messages['ru'] = array(
 	'donationform-submit' => 'Пожертвовать через PayPal',
 );
 
-/** Sassarese (Sassarese)
+/** Sassaresu (Sassaresu)
  * @author Felis
  */
 $messages['sdc'] = array(
 	'donationform-submit' => 'Dunazioni via PayPal',
 );
 
+/** Slovak (Slovenčina)
+ * @author Helix84
+ */
 $messages['sk'] = array(
+	'donationform-desc'   => 'Pridáva značku <tt>&lt;donateform&gt;</tt> pre podporu platieb prostredníctvom PayPal',
 	'donationform-submit' => 'Darujte pomocou PayPal',
 );
 
+/** Serbian Cyrillic ekavian (ћирилица) */
 $messages['sr-ec'] = array(
 	'donationform-submit' => 'Донирајте преко PayPal',
 );
 
+/** latinica (latinica) */
 $messages['sr-el'] = array(
 	'donationform-submit' => 'Donirajte PayPal',
 );
@@ -267,14 +316,17 @@ $messages['vi'] = array(
 	'donationform-submit' => 'Quyên góp dùng PayPal',
 );
 
+/** Yue (粵語) */
 $messages['yue'] = array(
 	'donationform-submit' => '透過PayPal捐款',
 );
 
+/** Simplified Chinese (‪中文(简体)‬) */
 $messages['zh-hans'] = array(
 	'donationform-submit' => '经PayPal捐款',
 );
 
+/** Traditional Chinese (‪中文(繁體)‬) */
 $messages['zh-hant'] = array(
 	'donationform-submit' => '經PayPal捐款',
 );

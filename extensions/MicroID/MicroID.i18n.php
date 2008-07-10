@@ -12,6 +12,9 @@ $messages['en'] = array(
 	'tog-microid' => 'Publish a <a href="http://microid.org/">MicroID</a> to confirm account with external services',
 );
 
+/** Arabic (العربية)
+ * @author Meno25
+ */
 $messages['ar'] = array(
 	'tog-microid' => 'انشر <a href="http://microid.org/">هوية مصغرة</a> لتأكيد الحساب مع الخدمات الخارجية',
 );
@@ -23,6 +26,7 @@ $messages['bg'] = array(
 	'tog-microid' => 'Публикува <a href="http://microid.org/">MicroID</a> за потвърждаване на сметката с външни услуги',
 );
 
+/** German (Deutsch) */
 $messages['de'] = array(
 	'tog-microid' => 'Veröffentliche eine <a href="http://microid.org/">MicroID</a>, um das Benutzerkonto durch einen externen Servive zu bestätigen.',
 );
@@ -59,6 +63,9 @@ $messages['hr'] = array(
 	'tog-microid' => 'Objavite <a href="http://microid.org/">MicroID</a> za potvrdu računa pomoću vanjskih servisa',
 );
 
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
 $messages['hsb'] = array(
 	'tog-microid' => '<a href="http://microid.org/">MicroID</a> publikować, zo by so konto z wonkownymi słužbami potwjerdźiło',
 );
@@ -85,6 +92,9 @@ $messages['nl'] = array(
 	'tog-microid'  => 'Publiceer een <a href="http://microid.org/">MicroID</a> om een gebruiker te bevestigen bij externe diensten',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ */
 $messages['no'] = array(
 	'tog-microid' => 'Publiser en <a href="http://microid.org/">MicroID</a> for å bekrefte kontoen for eksterne tjenester',
 );
@@ -114,7 +124,8 @@ $messages['ru'] = array(
  * @author Helix84
  */
 $messages['sk'] = array(
-	'tog-microid' => 'Zverejniť <a href="http://microid.org/">MicroID</a> na potvrdenie účtu pre externé služby',
+	'microid-desc' => 'Pridáva na používateľské stránky [http://www.microid.org/ MicroID] na potvrdenie účtu u externých služieb',
+	'tog-microid'  => 'Zverejniť <a href="http://microid.org/">MicroID</a> na potvrdenie účtu pre externé služby',
 );
 
 /** Seeltersk (Seeltersk)

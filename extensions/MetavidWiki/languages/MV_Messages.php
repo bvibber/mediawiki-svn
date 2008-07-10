@@ -1517,7 +1517,7 @@ $messages['km'] = array(
 	'mv_search_or'           => 'ឬ',
 	'mv_search_not'          => 'អត់',
 	'mv_search_date_range'   => 'ដែនកំណត់ នៃ ថ្ងៃ ខែ ឆ្នាំ',
-	'mv_category'            => 'ចំណាត់ក្រុម',
+	'mv_category'            => 'ចំនាត់ថ្នាក់ក្រុម',
 	'mv_remove_filter'       => 'ដកចេញ តំរង',
 	'mv_view_wiki_page'      => 'មើលទំព័រវិគី',
 	'mv_mang_layers'         => 'គ្រប់គ្រង ស្រទាប់',
@@ -1549,8 +1549,9 @@ $messages['ksh'] = array(
 	'mv_search_and'  => ', un',
 );
 
-/** Kurdish (Kurdî / كوردی)
+/** Kurdish (Latin) (Kurdî / كوردی (Latin))
  * @author Bangin
+ * @author Siebrand
  */
 $messages['ku-latn'] = array(
 	'mv_tool_search' => 'Lêbigere',
@@ -3156,7 +3157,7 @@ Hoppa till dataflödesvisning: $2',
 	'mv_protect_source_material'     => 'Orginalt källmaterial beskyddat mot redigeringar',
 );
 
-/** Silesian (ślůnski)
+/** Silesian (Ślůnski)
  * @author Pimke
  * @author Herr Kriss
  */

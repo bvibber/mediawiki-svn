@@ -62,33 +62,34 @@ $messages['bg'] = array(
 	'lookupuser_useroptions'   => 'Потребителски настройки:',
 );
 
-/** German (Deutsch)
- */
+/** German (Deutsch) */
 $messages['de'] = array(
 	'lookupuser'                   => 'Benutzerinformationen einsehen',
 	'lookupuser_intro'             => 'Gib einen Benutzernamen ein, um dir die persönlichen Einstellungen eines Benutzers anzusehen.',
 	'lookupuser_nonexistent'       => 'Fehler: Benutzer nicht vorhanden',
-	'lookupuser_authenticated'     => 'bestätigt am $1',
+	'lookupuser_authenticated'     => 'E-Mail-Bestätigung: $1',
 	'lookupuser_not_authenticated' => 'nicht bestätigt',
 	'lookupuser_id'                => 'Benutzer-ID: <tt>#$1</tt>',
 	'lookupuser_email'             => 'E-Mail: [[Special:Emailuser/$2|$1]]',
 	'lookupuser_realname'          => 'Wirklicher Name: $1',
 	'lookupuser_registration'      => 'Datum der Registrierung: $1',
 	'lookupuser_touched'           => 'Benutzerkonto zuletzt berührt: $1',
-	'lookupuser_authenticated'     => 'E-Mail-Bestätigung: $1',
 	'lookupuser_useroptions'       => 'Einstellungen des Benutzerkontos:',
 );
 
-/** German - formal address (Deutsch - förmliche Anrede)
+/** German (formal address) (Deutsch (Sie-Form))
  * @author Raimond Spekking
  */
 $messages['de-formal'] = array(
 	'lookupuser_intro' => 'Geben Sie einen Benutzernamen ein, um die persönlichen Einstellungen eines Benutzers anzusehen.',
 );
 
+/** Greek (Ελληνικά)
+ * @author Consta
+ */
 $messages['el'] = array(
 	'lookupuser_nonexistent' => 'Σφάλμα: Ο Χρήστης δεν υπάρχει',
-	'lookupuser_realname' => 'Πραγματικό όνομα: $1',
+	'lookupuser_realname'    => 'Πραγματικό όνομα: $1',
 	'lookupuser_useroptions' => 'Επιλογές χρήστη:',
 );
 
@@ -243,12 +244,13 @@ $messages['km'] = array(
 	'lookupuser'                   => 'រកមើល​ពត៌មាន​នៃ​អ្នកប្រើប្រាស់',
 	'lookupuser-desc'              => '[[Special:LookupUser|ដកស្រង់​ពត៌មាន]] អំពី​អ្នកប្រើប្រាស់ ដូចជា អាស័យដ្ឋានអ៊ីមែល និង អត្តសញ្ញាណ',
 	'lookupuser_intro'             => 'បញ្ចូល​ឈ្មោះអ្នកប្រើប្រាស់ ដើម្បីមើលចំណូលចិត្តនានា​របស់គាត់ ។',
-	'lookupuser_nonexistent'       => 'កំហុស ៖ អ្នកប្រើប្រាស់ មិនមាន',
+	'lookupuser_nonexistent'       => 'កំហុស៖ អ្នកប្រើប្រាស់មិនមានទេ',
 	'lookupuser_authenticated'     => 'ភាពពិតប្រាកដ នៃ អ៊ីមែវល៍ ៖ $1',
-	'lookupuser_not_authenticated' => 'មិនបានស្គាល់ ភិនភាគ',
-	'lookupuser_id'                => 'អត្តសញ្ញាណ អ្នកប្រើប្រាស់ ៖ <tt>#$1</tt>',
-	'lookupuser_email'             => 'អ៊ីមែល ៖ [[Special:Emailuser/$2|$1]]',
-	'lookupuser_realname'          => 'ឈ្មោះពិត ៖ $1',
+	'lookupuser_not_authenticated' => 'មិនបានស្គាល់ភិនភាគទេ',
+	'lookupuser_id'                => 'អត្តសញ្ញាណអ្នកប្រើប្រាស់៖<tt>#$1</tt>',
+	'lookupuser_email'             => 'អ៊ីមែល៖[[Special:Emailuser/$2|$1]]',
+	'lookupuser_no_email'          => 'មិនត្រូវបានផ្តល់អោយ',
+	'lookupuser_realname'          => 'ឈ្មោះពិត៖$1',
 	'lookupuser_registration'      => 'កាលបរិច្ឆេទចុះឈ្មោះ​៖ $1',
 	'lookupuser_touched'           => 'រក្សាទុក អ្នកប្រើប្រាស់ ដែលបានប៉ះ ចុងក្រោយ ៖ $1',
 	'lookupuser_useroptions'       => 'ជំរើស នៃអ្នកប្រើប្រាស់ ៖',

@@ -98,9 +98,9 @@ $messages['de'] = array(
 	'multipleupload'                   => 'Dateien hochladen',
 	'multipleupload-desc'              => 'Erlaubt das [[Special:MultipleUpload|Hochladen mehrerer Dateien]] in einer Aktion',
 	'multipleupload-ignoreallwarnings' => "Ignoriere '''alle Warnungen''' und speichere die Dateien.",
-	'multipleupload-saveallfiles'      => "Alle Dateien speichern",
-	'multipleupload-addresswarnings'   => "Bitte jede Warnung anzeigen vor dem erneuten Hochladen von Dateien.",
-	'multipleupload-page'              => "{{ns:project}}:Löschrichtlinien",
+	'multipleupload-saveallfiles'      => 'Alle Dateien speichern',
+	'multipleupload-addresswarnings'   => 'Bitte jede Warnung anzeigen vor dem erneuten Hochladen von Dateien.',
+	'multipleupload-page'              => '{{ns:project}}:Löschrichtlinien',
 	'multipleupload-text'              => "Gleichzeitiges Hochladen mehrerer Dateien.
 
 Wähle 'Browse' und wähle jede Datei aus, die du hochladen möchtest. Du kannst gleichzeitig zwischen 1 und $1 Dateien hochladen.
@@ -112,11 +112,11 @@ Ungeeignete Dateien werden sofort gelöscht, siehe die [[{{MediaWiki:Multipleupl
 	'multiupload-toolbox'              => 'Hochladen mehrerer Dateien',
 );
 
-/** German - formal address (Deutsch - förmliche Anrede)
+/** German (formal address) (Deutsch (Sie-Form))
  * @author Raimond Spekking
  */
 $messages['de-formal'] = array(
-	'multipleupload-text'              => "Gleichzeitiges Hochladen mehrerer Dateien.
+	'multipleupload-text' => "Gleichzeitiges Hochladen mehrerer Dateien.
 
 Klicken Sie auf 'Browse' und wählen Sie jede Datei aus, die Sie hochladen möchten. Sie können gleichzeitig zwischen 1 und $1 Dateien hochladen.
 
@@ -140,6 +140,7 @@ $messages['eo'] = array(
 	'multipleupload'              => 'Alŝuti dosierojn',
 	'multipleupload-saveallfiles' => 'Konservu ĉiujn dosierojn',
 	'multiupload-fileuploaded'    => 'Dosiero alŝutita.',
+	'multiupload-toolbox'         => 'Alŝuti multe de dosierojn',
 );
 
 /** Finnish (Suomi)
@@ -302,13 +303,13 @@ $messages['km'] = array(
 	'multipleupload'                   => 'ផ្ទុកឡើងឯកសារ',
 	'multipleupload-desc'              => 'អនុញ្ញាត​អោយអ្នកប្រើប្រាស់ [[Special:MultipleUpload|ផ្ទុកឡើងម្តង​ច្រើនឯកសារ]]',
 	'multipleupload-ignoreallwarnings' => "មិនខ្វល់ '''គ្រប់ការព្រមាន''' ហើយ រក្សាទុក ឯកសារ ទាំងអស់ ។",
-	'multipleupload-saveallfiles'      => 'រក្សាទុក គ្រប់ឯកសារ',
+	'multipleupload-saveallfiles'      => 'រក្សាទុកគ្រប់ឯកសារ',
 	'multipleupload-page'              => '{{ns:project}}៖ គោលការណ៍នៃការលុបឯកសារ',
 	'multiupload-fileuploaded'         => 'ឯកសារ ត្រូវបានផ្ទុកឡើង។',
-	'multiupload-toolbox'              => 'ផ្ទុកឡើង ច្រើនឯកសារ',
+	'multiupload-toolbox'              => 'ផ្ទុកឡើងពហុឯកសារ',
 );
 
-/** Kurdish (Kurdî / كوردی)
+/** Kurdish (Latin) (Kurdî / كوردی (Latin))
  * @author Bangin
  */
 $messages['ku-latn'] = array(

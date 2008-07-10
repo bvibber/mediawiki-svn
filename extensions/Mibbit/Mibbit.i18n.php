@@ -77,7 +77,6 @@ Anonymním uživatelům se jméno vygeneruje automaticky, ale je možné ho změ
 	'right-mibbit'  => 'Používat Mibbit chat',
 );
 
-
 /** German (Deutsch)
  * @author Raimond Spekking
  */
@@ -91,7 +90,7 @@ Anonymen Benutzern wird ein Nickname zugewiesen, dieser kann jedoch geändert we
 	'right-mibbit'  => 'Benutzer des Mibbit-Chats',
 );
 
-/** German - formal address (Deutsch - förmliche Anrede)
+/** German (formal address) (Deutsch (Sie-Form))
  * @author Raimond Spekking
  */
 $messages['de-formal'] = array(

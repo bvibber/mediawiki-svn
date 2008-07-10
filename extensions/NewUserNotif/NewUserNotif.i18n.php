@@ -18,6 +18,9 @@ $messages['en'] = array(
 A new user account, $2, has been created on $3 at $4.",
 );
 
+/** Arabic (العربية)
+ * @author Meno25
+ */
 $messages['ar'] = array(
 	'newusernotifsubj' => 'إخطار مستخدم جديد ل$1',
 	'newusernotifbody' => 'مرحبا يا $1،
@@ -52,9 +55,9 @@ $messages['bg'] = array(
 $messages['de'] = array(
 	'newusernotifsubj'  => 'Benachrichtung für $1 über die Einrichtung eines neuen Benutzerskontos',
 	'newusernotif-desc' => 'Versendet E-Mail-Benachrichtigungen bei Erstellung neuer Benutzerkonten',
-	'newusernotifbody'  => "Hallo $1,
+	'newusernotifbody'  => 'Hallo $1,
 
-Ein neues Benutzerkonto, $2, wurde am $4 auf $3 angelegt.",
+Ein neues Benutzerkonto, $2, wurde am $4 auf $3 angelegt.',
 );
 
 /** Esperanto (Esperanto)
@@ -123,6 +126,9 @@ $messages['hu'] = array(
 egy új felhasználói fiókot készítettek $2 névvel a(z) $3 wikin, $4-kor.',
 );
 
+/** Armenian (Հայերեն)
+ * @author Teak
+ */
 $messages['hy'] = array(
 	'newusernotifsubj' => 'Նոր Մասնակցի Տեղեկացում $1 մասնակցի համար',
 	'newusernotifbody' => 'Ողջո՜ւյն, $1։
@@ -224,14 +230,20 @@ $messages['oc'] = array(
 	'newusernotifbody'  => "Adissiatz $1, Un compte novèl d'utilizaire, $2, es estat creat sus $3 lo $4.",
 );
 
+/** Polish (Polski)
+ * @author Derbeth
+ */
 $messages['pl'] = array(
 	'newusernotifsubj' => 'Powiadamianie użytkownika $1 o nowych użytkownikach',
 	'newusernotifbody' => 'Witaj $1, nowe konto użytkownika, $2, zostało stworzone w dniu $3 o $4.',
 );
 
+/** Piedmontese (Piemontèis)
+ * @author Bèrto 'd Sèra
+ */
 $messages['pms'] = array(
-	'newusernotifsubj' => 'Notìfica d\'utent neuv për $1',
-	'newusernotifbody' => 'Bondì $1, un neuv utent, $2, a l\'é stait creà ansima a $3 dël $4.',
+	'newusernotifsubj' => "Notìfica d'utent neuv për $1",
+	'newusernotifbody' => "Bondì $1, un neuv utent, $2, a l'é stait creà ansima a $3 dël $4.",
 );
 
 /** Pashto (پښتو)
@@ -277,7 +289,7 @@ $messages['sk'] = array(
 $3 na $4 bol vytvorený nový používateľský účet $2.',
 );
 
-/** ћирилица (ћирилица)
+/** Serbian Cyrillic ekavian (ћирилица)
  * @author Sasa Stefanovic
  */
 $messages['sr-ec'] = array(
@@ -316,11 +328,14 @@ $messages['te'] = array(
 $3లో $2 అనే కొత్త వాడుకరి ఖాతాని $4కి సృష్టించాం.',
 );
 
+/** Tetum (Tetun)
+ * @author MF-Warburg
+ */
 $messages['tet'] = array(
-	'newusernotifsubj' => 'Mensajen kona-ba uza-na\'in foun ba $1',
-	'newusernotifbody' => 'Olá $1,
+	'newusernotifsubj' => "Mensajen kona-ba uza-na'in foun ba $1",
+	'newusernotifbody' => "Olá $1,
 
-uza-na\'in foun, $2, registrar tiha iha $3 iha loron $4.',
+uza-na'in foun, $2, registrar tiha iha $3 iha loron $4.",
 );
 
 /** Tajik (Cyrillic) (Тоҷикӣ/tojikī (Cyrillic))
@@ -365,24 +380,27 @@ $messages['vi'] = array(
 Một tài khoản thành viên mới, $2, đã được tạo ra trên $3 lúc $4.',
 );
 
+/** Yue (粵語) */
 $messages['yue'] = array(
 	'newusernotifsubj' => '$1嘅新用戶通知',
-	'newusernotifbody' => "你好 $1，
+	'newusernotifbody' => '你好 $1，
 
-一個新嘅用戶戶口$2，已經響$4喺$3度開咗。",
+一個新嘅用戶戶口$2，已經響$4喺$3度開咗。',
 );
 
+/** Simplified Chinese (‪中文(简体)‬) */
 $messages['zh-hans'] = array(
 	'newusernotifsubj' => '$1的新用户通知',
-	'newusernotifbody' => "你好 $1，
+	'newusernotifbody' => '你好 $1，
 
-一个新的用户账号$2，已经在$4于$3创建。",
+一个新的用户账号$2，已经在$4于$3创建。',
 );
 
+/** Traditional Chinese (‪中文(繁體)‬) */
 $messages['zh-hant'] = array(
 	'newusernotifsubj' => '$1的新用戶通知',
-	'newusernotifbody' => "你好 $1，
+	'newusernotifbody' => '你好 $1，
 
-一個新的用戶帳號$2，已經在$4於$3創建。",
+一個新的用戶帳號$2，已經在$4於$3創建。',
 );
 

@@ -214,21 +214,21 @@ $messages['vi'] = array(
 	'oai-desc' => 'Cung cấp giao diện lưu trữ [http://www.openarchives.org/OAI/openarchivesprotocol.html OAI-PMH]',
 );
 
-/** Cantonese
+/** Yue (粵語)
  * @author Shinjiman
  */
 $messages['yue'] = array(
 	'oai-desc' => '提供[http://www.openarchives.org/OAI/openarchivesprotocol.html OAI-PMH]檔案庫界面',
 );
 
-/** Chinese Simplified
+/** Simplified Chinese (‪中文(简体)‬)
  * @author Shinjiman
  */
 $messages['zh-hans'] = array(
 	'oai-desc' => '提供[http://www.openarchives.org/OAI/openarchivesprotocol.html OAI-PMH]文件库界面',
 );
 
-/** Chinese Traditional
+/** Traditional Chinese (‪中文(繁體)‬)
  * @author Shinjiman
  */
 $messages['zh-hant'] = array(

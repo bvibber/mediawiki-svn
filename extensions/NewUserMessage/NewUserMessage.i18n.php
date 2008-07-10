@@ -134,14 +134,14 @@ $messages['nds'] = array(
 	'newusermessage-desc' => 'Föögt en [[MediaWiki:NewUserMessage|Naricht]] op de Diskuschoonssiet vun nee opstellte Brukers to',
 );
 
-/* Dutch (Nederlands)
+/** Dutch (Nederlands)
  * @author Siebrand
  */
 $messages['nl'] = array(
 	'newusermessage-desc' => 'Voegt een [[MediaWiki:NewUserMessage|bericht]] toe aan de overlegpagina van nieuwe gebruikers',
 );
 
-/** Norwegian (‪Norsk (bokmål)‬)
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */
 $messages['no'] = array(

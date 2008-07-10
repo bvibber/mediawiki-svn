@@ -26,8 +26,8 @@ $messages['bg'] = array(
  * @author Raimond Spekking
  */
 $messages['de'] = array(
-                'nomoveuserpages-desc'  => "Schränkt die Verschiebung von Benutzerseiten auf Benutzer mit dem ''move-userpages''-Recht ein",
-                'nomoveuserpages-error' => 'Das Verschieben von Benutzerseiten wurde deaktiviert',
+	'nomoveuserpages-desc'  => "Schränkt die Verschiebung von Benutzerseiten auf Benutzer mit dem ''move-userpages''-Recht ein",
+	'nomoveuserpages-error' => 'Das Verschieben von Benutzerseiten wurde deaktiviert',
 );
 
 /** French (Français)

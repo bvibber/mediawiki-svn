@@ -102,9 +102,10 @@ $messages['hsb'] = array(
 
 /** Khmer (ភាសាខ្មែរ)
  * @author Chhorran
+ * @author Lovekhmer
  */
 $messages['km'] = array(
-	'newsextension-desc' => 'បង្ហាញ បំលាស់ប្តូរបានសំដៅ ថ្មីៗ លើ ទំព័រ វិគី ឬ បំរែបំរួល RSS ឬ Atom ។',
+	'newsextension-desc' => 'បង្ហាញបំលាស់ប្តូរបានសំដៅថ្មីៗលើទំព័រវិគីឬបំរែបំរួល RSS ឬ Atom ។',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -147,7 +148,7 @@ $messages['nl'] = array(
 	'newsextension-nofoundonpage' => '$1: geen feed gevonden op pagina: $2<br />',
 );
 
-/** Norwegian (‪Norsk (bokmål)‬)
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */
 $messages['no'] = array(

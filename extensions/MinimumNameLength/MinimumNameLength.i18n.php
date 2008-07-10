@@ -23,6 +23,9 @@ $messages['ar'] = array(
 	'minnamelength-desc'  => 'يجبر على طول أدنى لاسم المستخدم',
 );
 
+/** Bikol Central (Bikol Central)
+ * @author Filipinayzd
+ */
 $messages['bcl'] = array(
 	'minnamelength-error' => 'An saimong username halîpoton. An minimum na labâ $1.',
 );
@@ -47,10 +50,13 @@ $messages['ca'] = array(
  * @author Raimond Spekking
  */
 $messages['de'] = array(
-	'minnamelength-desc'  => 'Erzwinge eine Mindestlänge des Benutzernamens',
 	'minnamelength-error' => 'Der Benutzername ist zu kurz. Die Mindestlänge beträgt $1 Zeichen.',
+	'minnamelength-desc'  => 'Erzwinge eine Mindestlänge des Benutzernamens',
 );
 
+/** Greek (Ελληνικά)
+ * @author Consta
+ */
 $messages['el'] = array(
 	'minnamelength-error' => 'Το όνομα χρήστη σας είναι πολύ μικρό. Το ελάχιστο όριο είναι $1.',
 );
@@ -62,6 +68,9 @@ $messages['eo'] = array(
 	'minnamelength-error' => 'Via salutnomo estas tro mallonga. La minimuma longo estas $1.',
 );
 
+/** Finnish (Suomi)
+ * @author Crt
+ */
 $messages['fi'] = array(
 	'minnamelength-error' => 'Käyttäjänimesi on liian lyhyt. Minimipituus on $1.',
 );
@@ -116,12 +125,14 @@ $messages['hu'] = array(
 	'minnamelength-error' => 'A felhasználói neved túl rövid, minimum $1 karakter hosszúnak kell lennie.',
 );
 
-/* Indonesian (IvanLanin) */
+/** Indonesian (Bahasa Indonesia)
+ * @author IvanLanin
+ */
 $messages['id'] = array(
 	'minnamelength-error' => 'Nama pengguna Anda terlalu pendek. Panjang minimum adalah $1.',
 );
 
-/* Japanese */
+/** Japanese (日本語) */
 $messages['ja'] = array(
 	'minnamelength-error' => 'あなたの利用者名は短すぎます。最短の長さは $1 バイトです。',
 );
@@ -133,22 +144,22 @@ $messages['jv'] = array(
 	'minnamelength-error' => 'Jeneng panganggo panjenengan kecendhaken. Dawané sacara minimal kudu $1.',
 );
 
-/* Kazakh default */
+/** Kazakh (Қазақша) */
 $messages['kk'] = array(
 	'minnamelength-error' => 'Қатысушы атыңыз тым қысқа.Ең кемінде ұзындығы $1 болуы қажет.',
 );
 
-/* Kazakh Arabic */
+/** Kazakh (China) (‫قازاقشا (جۇنگو)‬) */
 $messages['kk-cn'] = array(
 	'minnamelength-error' => 'قاتىسۋشى اتىڭىز تىم قىسقا.ەڭ كەمٴىندە ۇزىندىعى $1 بولۋى قاجەت.',
 );
 
-/* Kazakh Cyrillic */
+/** Kazakh (Kazakhstan) (‪Қазақша (Қазақстан)‬) */
 $messages['kk-kz'] = array(
 	'minnamelength-error' => 'Қатысушы атыңыз тым қысқа.Ең кемінде ұзындығы $1 болуы қажет.',
 );
 
-/* Kazakh Latin */
+/** Kazakh (Turkey) (‪Qazaqşa (Türkïya)‬) */
 $messages['kk-tr'] = array(
 	'minnamelength-error' => 'Qatıswşı atıñız tım qısqa.Eñ keminde uzındığı $1 bolwı qajet.',
 );
@@ -219,9 +230,11 @@ $messages['pl'] = array(
 	'minnamelength-desc'  => 'Wymusza minimalną długość nazwy użytkownika',
 );
 
-/* Piedmontese (Bèrto 'd Sèra) */
+/** Piedmontese (Piemontèis)
+ * @author Bèrto 'd Sèra
+ */
 $messages['pms'] = array(
-	'minnamelength-error' => 'Sò stranòm a l\'é tròp curt. A venta ch\'al sia longh almanch $1 caràter.',
+	'minnamelength-error' => "Sò stranòm a l'é tròp curt. A venta ch'al sia longh almanch $1 caràter.",
 );
 
 /** Pashto (پښتو)
@@ -262,6 +275,9 @@ $messages['stq'] = array(
 	'minnamelength-error' => 'Die Benutsernoome is tou kuut. Ju minimoale Loangte is $1 Teekene.',
 );
 
+/** Sundanese (Basa Sunda)
+ * @author Kandar
+ */
 $messages['su'] = array(
 	'minnamelength-error' => 'Landihan anjeun pondok teuing. Paling henteu kudu $1.',
 );
@@ -296,17 +312,23 @@ $messages['vi'] = array(
 	'minnamelength-desc'  => 'Bắt buộc phải có chiều dài tên người dùng tối thiểu',
 );
 
-/* Cantonese (Shinjiman) */
+/** Yue (粵語)
+ * @author Shinjiman
+ */
 $messages['yue'] = array(
 	'minnamelength-error' => '你嘅用戶名太短喇。最少嘅長度係$1個字元。',
 );
 
-/* Chinese (Simplified) (Shinjiman) */
+/** Simplified Chinese (‪中文(简体)‬)
+ * @author Shinjiman
+ */
 $messages['zh-hans'] = array(
 	'minnamelength-error' => '你的用户名太短。最少的长度是$1个字元。',
 );
 
-/* Chinese (Traditional) (Shinjiman) */
+/** Traditional Chinese (‪中文(繁體)‬)
+ * @author Shinjiman
+ */
 $messages['zh-hant'] = array(
 	'minnamelength-error' => '你的用戶名太短。最少的長度是$1個字元。',
 );
