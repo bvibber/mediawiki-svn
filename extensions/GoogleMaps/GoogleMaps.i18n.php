@@ -1429,6 +1429,7 @@ $wgGoogleMapsMessages['km'] = array(
 	'gm-balloon-title'         => 'ចំនងជើង៖',
 	'gm-balloon-link-article'  => 'តភ្ជាប់មកទំព័រនេះ (ជាជំរើសរបស់អ្នក)៖',
 	'gm-remove'                => 'ដកចេញ',
+	'gm-save-point'            => 'រក្សាទុក&amp;បិទ',
 	'gm-load-map-from-article' => 'ផ្ទុកផែនទី១ពីទំព័រ៖',
 	'gm-no-maps'               => 'គ្មានផែនទីណាមួយក្នុងទំព័រនេះសំរាប់ផ្ទុកមកទេ។',
 	'gm-load-map'              => 'ផ្ទុក​ផែនទី',

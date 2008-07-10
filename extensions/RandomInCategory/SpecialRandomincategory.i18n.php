@@ -50,6 +50,13 @@ $messages['ar'] = array(
 	'randomincategory-submit'     => 'اذهب',
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
+ */
+$messages['be-tarask'] = array(
+	'randomincategory-label' => 'Катэгорыя:',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  */

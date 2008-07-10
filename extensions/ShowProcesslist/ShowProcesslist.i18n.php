@@ -465,6 +465,13 @@ $messages['tg-cyrl'] = array(
 	'showprocesslist-time' => 'Вақт',
 );
 
+/** Ukrainian (Українська)
+ * @author AS
+ */
+$messages['uk'] = array(
+	'showprocesslist-user' => 'Користувач',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Vinhtantran
  */

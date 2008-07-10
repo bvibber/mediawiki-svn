@@ -249,6 +249,14 @@ $messages['bcl'] = array(
 	'sign-review-comment'          => 'Komento',
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
+ */
+$messages['be-tarask'] = array(
+	'sign-viewfield-reviewcomment' => 'Камэнтар',
+	'sign-review-comment'          => 'Камэнтар',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  * @author Siebrand

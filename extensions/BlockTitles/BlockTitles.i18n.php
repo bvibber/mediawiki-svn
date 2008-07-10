@@ -111,6 +111,7 @@ $messages['de'] = array(
  */
 $messages['dsb'] = array(
 	'block_title_error_page_title' => 'Titel blokěrowany',
+	'block_title_error-desc'       => 'Stajijo jadnoru móžnosć k dispoziciji, kótaraž składowanjeju abo napóranjeju wěstych titelow zajźujo',
 	'block_title_error'            => 'Wódaj, titel toś teje strony njesmějo se składowaś.',
 );
 
@@ -143,10 +144,11 @@ $messages['fi'] = array(
 
 /** French (Français)
  * @author Grondin
+ * @author Louperivois
  */
 $messages['fr'] = array(
 	'block_title_error_page_title' => 'Titre invalide',
-	'block_title_error-desc'       => 'Fournit une méthode simple pour éviter que des pages avec un certain titre puissent être sauvegardées ou créées.',
+	'block_title_error-desc'       => 'Fournit une méthode simple pour éviter que des pages avec un certain titre puissent être sauvegardées ou créées',
 	'block_title_error'            => 'Désolé, le titre de cet article n’est pas autorisé à être sauvegardé.',
 );
 

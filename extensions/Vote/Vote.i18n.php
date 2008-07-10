@@ -380,6 +380,13 @@ $messages['hsb'] = array(
 	'vote-invalid-choice' => 'Dyrbiš jednu z k dispoziciji stejacych opcijow wubrać.',
 );
 
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'vote-login-link' => 'aperir un session',
+);
+
 /** Indonesian (Bahasa Indonesia)
  * @author Ivan Lanin
  */

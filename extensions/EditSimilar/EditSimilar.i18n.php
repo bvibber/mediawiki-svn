@@ -41,6 +41,24 @@ $messages['ar'] = array(
 	'tog-edit-similar'         => 'تفعيل اقتراحات الصفحات المشابهة',
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'editsimilar-desc'                           => 'Pózbuźujo wužywarjow pó składowanju boka pódobny bok wobźěłaś',
+	'editsimilar-thanks'                         => 'Źěkujomy se za twój pśinosk.
+Woglědaj se toś te pódobne boki: $1.',
+	'editsimilar-thanks-singleresult'            => 'Źěkujomy se za twój pśinosk.
+Woglědaj se toś ten pódobny bok: $1.',
+	'editsimilar-thanks-notsimilar'              => 'Źěkujomy se za twój pśinosk.
+Toś te boki by teke twóju pomoc trjebali: $1.',
+	'editsimilar-thanks-notsimilar-singleresult' => 'Źěkujomy se za twój pśinosk.
+Toś ten bok by teke twóju pomoc trjebał: $1',
+	'editsimilar-thankyou'                       => 'Źěkujomy se za twój pśinosk, $1!',
+	'editsimilar-link-disable'                   => 'preference nastajiś',
+	'tog-edit-similar'                           => 'Naraźenja za pódobne boki zmóžniś',
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */
@@ -102,6 +120,31 @@ Esta páxina pode tamén precisar da súa axuda: $1.',
 	'editsimilar-thankyou'                       => 'Grazas pola súa contribución, $1!',
 	'editsimilar-link-disable'                   => 'fixar as preferencias',
 	'tog-edit-similar'                           => 'Permitir suxestións de páxinas similares',
+);
+
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
+$messages['hsb'] = array(
+	'editsimilar-desc'                           => 'Pozbudźuješ wužiwarjow po składowanju strony podobnu stronu wobdźěłać',
+	'editsimilar-thanks'                         => 'Dźakujemy so za twój přinošk.
+Wobhladaj sej tute přiwuzne strony: $1',
+	'editsimilar-thanks-singleresult'            => 'Dźakujemy so za twój přinošk.
+Wobhladaj sej tutu přiwuznu stronu: $1.',
+	'editsimilar-thanks-notsimilar'              => 'Dźakujemy so za twój přinošk.
+Tute strony bychu tež twoju pomoc trjebali: $1.',
+	'editsimilar-thanks-notsimilar-singleresult' => 'Dźakujemy so za twój přinošk.
+Tuta strona by tež twoju pomoc trjebała: $1.',
+	'editsimilar-thankyou'                       => 'Dźakujemy so za twój přinošk, $1!',
+	'editsimilar-link-disable'                   => 'Preferency nastajić',
+	'tog-edit-similar'                           => 'Namjety za podobne strony zmóžnić',
+);
+
+/** Khmer (ភាសាខ្មែរ)
+ * @author Lovekhmer
+ */
+$messages['km'] = array(
+	'editsimilar-link-disable' => 'កំនត់ចំនង់ចំនូលចិត្ត',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

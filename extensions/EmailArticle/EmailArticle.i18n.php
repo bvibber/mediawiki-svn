@@ -140,6 +140,16 @@ $messages['gl'] = array(
 	'ea-selectcss'        => 'Seleccionar unha folla de estilo CSS',
 );
 
+/** Khmer (ភាសាខ្មែរ)
+ * @author Lovekhmer
+ */
+$messages['km'] = array(
+	'emailarticle'   => 'ទំព័រអ៊ីមែល',
+	'ea-fromgroup'   => 'ពីក្រុម:',
+	'ea-articlesend' => 'ទំព័រ"$1"ត្រូវបានបញ្ជូនពី$2',
+	'ea-send'        => 'ផ្ញើ!',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */

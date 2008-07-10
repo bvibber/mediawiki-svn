@@ -878,6 +878,7 @@ $messages['hy'] = array(
  * @author McDutchie
  */
 $messages['ia'] = array(
+	'configure-section-email'        => 'E-mail',
 	'configure-section-specialpages' => 'Paginas special',
 );
 
@@ -1833,6 +1834,13 @@ $messages['sk'] = array(
 	'configure-desc-key'                  => 'Kľúč',
 	'configure-desc-ns'                   => 'Menné priestory',
 	'configure-desc-val'                  => 'Hodnota',
+	'configure-edit-core'                 => 'MediaWiki',
+	'configure-edit-ext'                  => 'Rozšírenia',
+	'configure-ext-doc'                   => 'Pozri dokumentáciu',
+	'configure-ext-schemachange'          => "'''Upozornenie:''' aby toto rozšírenie fungovalo správne, vyžaduje aktualizáciu databázy.",
+	'configure-ext-settings'              => 'Nastavenie',
+	'configure-ext-use-extension'         => 'Používať toto rozšírenie',
+	'configure-ext-use'                   => 'Používať',
 	'configure-summary'                   => 'Táto špeciálna stránka vám umožňuje konfiguráciu tejto wiki. Ďalšie informácie nájdete na stránke[http://www.mediawiki.org/wiki/Manual:Configuration_settings Nastavenie konfigurácie].',
 	'configure-btn-save'                  => 'Uložiť nastavenia',
 	'configure-directory-not-writable'    => 'Do tohto adresára, ktorý sa používa na ukladanie nastavení, <tt>$1</tt>, nie je možné zapisovať. Prosím, umožnite PHP zápis doňho, aby ste mohli používať toto rozšírenie.',
@@ -1900,11 +1908,15 @@ Aby ste mohli používať toto rozšírenie, vytvorte ho alebo ho zmeňte.',
 	'configure-section-copyright'         => 'Autorské práva',
 	'configure-section-htcp'              => 'HTCP multicast',
 	'configure-section-misc'              => 'Rôzne',
+	'configure-section-mw-extensions'     => 'Rozšírenia MediaWiki',
 	'configure-setting-not-available'     => 'Toto nastavenie nie je v tejto verzii MediaWiki dostupné',
 	'configure-view'                      => 'Pozri',
 	'configure-view-not-allowed'          => 'Nemáte oprávnenie zobraziť toto nastavenie',
+	'extensions'                          => 'Nastaviť rozšírenia',
 	'right-configure'                     => 'Nastavenie wiki',
 	'right-configure-all'                 => 'Nastavenie všetkých wiki',
+	'right-extensions'                    => 'Nastaviť rozšírenia',
+	'right-extensions-all'                => 'Pokročilé nastavenie rozšírení',
 	'right-viewconfig'                    => 'Zobraziť konfiguráciu wiki',
 	'right-viewconfig-all'                => 'Zobraziť konfiguráciu všetkých wiki',
 	'viewconfig'                          => 'Zobraziť konfiguráciu wiki',
@@ -2245,5 +2257,20 @@ Xin hãy khởi tạo hoặc thay đổi nó để dùng được gói mở rộ
 $messages['vo'] = array(
 	'configure-section-groups' => 'Grups',
 	'configure-section-users'  => 'Gebans',
+);
+
+/** Traditional Chinese (‪中文(繁體)‬)
+ * @author Alexsh
+ */
+$messages['zh-hant'] = array(
+	'configure'            => '站務設置',
+	'configure-desc'       => '讓使用者可以透過Web介面來[[Special:Configure|調整]]本站的內部設定資訊',
+	'configure-desc-group' => '群組',
+	'configure-desc-key'   => '鍵',
+	'configure-desc-ns'    => '頁面名稱空間',
+	'configure-desc-val'   => '值',
+	'configure-edit-core'  => 'MediaWiki',
+	'configure-edit-ext'   => '擴充套件',
+	'configure-ext-doc'    => '檢視線上文件',
 );
 

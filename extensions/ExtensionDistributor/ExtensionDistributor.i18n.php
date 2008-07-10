@@ -240,6 +240,14 @@ Se ten algunha dúbida ou pregunta acerca do sistema de distribución das extens
 	'extdist-want-more'               => 'Obter outra extensión',
 );
 
+/** Khmer (ភាសាខ្មែរ)
+ * @author Lovekhmer
+ */
+$messages['km'] = array(
+	'extdist-submit-extension' => 'បន្ត',
+	'extdist-submit-version'   => 'បន្ត',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */

@@ -21,6 +21,13 @@ $messages['ar'] = array(
 	'antibot-desc' => 'إطار بسيط للتحقق من بوت السبام والأحمال',
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
+ */
+$messages['be-tarask'] = array(
+	'antibot-desc' => 'Просты сродак абароны ад спам-робатаў і робатаў, якія выклікаюць перагрузку сэрвэра',
+);
+
 /** Czech (Česky)
  * @author Mormegil
  */

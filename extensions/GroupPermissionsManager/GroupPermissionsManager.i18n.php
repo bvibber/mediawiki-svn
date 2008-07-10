@@ -78,6 +78,13 @@ $messages['rtm'] = array(
 	'grouppermissions-dologin' => 'Surum',
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
+ */
+$messages['be-tarask'] = array(
+	'grouppermissions-comment' => 'Камэнтар:',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  * @author Siebrand
@@ -264,6 +271,13 @@ $messages['gl'] = array(
 	'right-edit-new'                 => 'Editar páxinas (que non son de conversa)',
 );
 
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'grouppermissions-dologin' => 'Aperir un session',
+);
+
 /** Khmer (ភាសាខ្មែរ)
  * @author Lovekhmer
  */
@@ -299,6 +313,8 @@ $messages['km'] = array(
  */
 $messages['lb'] = array(
 	'grouppermissions'               => "D'Rechter vu Gruppe geréieren",
+	'sortpermissions'                => 'Rechter sortéieren',
+	'removeunusedgroups'             => 'Gruppen déi net benotzt ginn ewechhuelen',
 	'grouppermissions-desc'          => "D'Rechter vu Gruppen iwwer eng [[Special:GroupPermissions|Spezialsäit]] geréieren",
 	'grouppermissions-desc2'         => 'ERweiderte System vun de Rechter',
 	'grouppermissions-header'        => "Dir kënnt dës Säit benotzen fir déi ënnerluechte Rechter vun de verschidden Benotzergruppen z'änneren",
@@ -325,6 +341,7 @@ $messages['lb'] = array(
 	'grouppermissions-log-change'    => 'huet d\'Rechter fir de Grupp "$2" geännert',
 	'grouppermissions-log-delete'    => 'huet de Grupp "$2" geläscht',
 	'grouppermissions-log-name'      => 'Lëscht vun de Rechter vu Gruppen',
+	'grouppermissions-sp-save'       => 'Späicheren',
 	'right-info'                     => "D'Informarioune vun der Säit weisen",
 	'right-history'                  => "D'Versioune vun der Säit weisen",
 	'right-search'                   => 'Op der Wiki sichen',
@@ -472,7 +489,7 @@ $messages['sk'] = array(
 	'grouppermissions'               => 'Spravovať skupinové oprávnenia',
 	'sortpermissions'                => 'Radiť oprávnenia',
 	'removeunusedgroups'             => 'Odstrániť nepoužité skupiny',
-	'grouppermissions-desc'          => 'Správa oprávnení skupín prostredníctvom špeciálnej stránky',
+	'grouppermissions-desc'          => 'Správa oprávnení skupín prostredníctvom [[Special:GroupPermissions|špeciálnej stránky]]',
 	'grouppermissions-desc2'         => 'Rozšírený systém oprávnení',
 	'grouppermissions-header'        => 'Pomocou tejto stránky môžete zmeniť oprávnenia rozličných skupín používateľov',
 	'grouppermissions-search'        => 'Skupina:',
@@ -510,6 +527,8 @@ $messages['sk'] = array(
 	'grouppermissions-sp-success'    => 'Oprávnenia boli úspešne zoradené',
 	'grouppermissions-sp-addtype'    => 'Pridať typ radenia',
 	'grouppermissions-sp-addperm'    => 'Pridať oprávnenie',
+	'grouppermissions-sp-remove'     => 'odstrániť',
+	'grouppermissions-sp-deltype'    => 'Zmazať typ radenia',
 	'grouppermissions-rug-header'    => 'Túto stránku môžete použiť na odstránenie používateľov z nepoužívaných (zmazaných) skupín.',
 	'grouppermissions-rug-success'   => 'Používatelia boli úspešne odstránení z nepoužívaných skupín.',
 	'grouppermissions-rug-confirm'   => 'Odstrániť používateľov z nepoužívaných skupín',

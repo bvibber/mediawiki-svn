@@ -212,6 +212,13 @@ $messages['sv'] = array(
 	'skinperpage-desc' => 'Lägger till <tt>&lt;skin&gt;</tt>-taggen för att använda olika utseenden per sida',
 );
 
+/** Ukrainian (Українська)
+ * @author AS
+ */
+$messages['uk'] = array(
+	'skinperpage-desc' => 'Дозволяє використовувати тег <tt>&lt;skin&gt;</tt> для вказання теми оформлення сторінки',
+);
+
 /** Vèneto (Vèneto)
  * @author Candalua
  */

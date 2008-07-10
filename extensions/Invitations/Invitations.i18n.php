@@ -306,6 +306,7 @@ $messages['lb'] = array(
 	'invitations-invitedlist-item-count' => '({{PLURAL:$1|Eng Invitatioun|$1 Invitatioune}} disponibel)',
 	'invitations-pagetitle'              => 'Fonctionnalitéiten op Invitatiouns-Basis',
 	'invitations-feature-pagetitle'      => 'Gestioun vun der Invitatioun - $1',
+	'invitations-feature-access'         => 'Dir kënnt elo <i>$1</i> benotzen.',
 	'invitations-feature-numleft'        => 'Dir hutt nach {{PLURAL:$2|eng Invitatioun |<b>$1</b> vun ären $2 Invitatiounen}} iwwreg.',
 	'invitations-feature-noneleft'       => 'Dir hutt all är Invitatiounen fir dës Fonctioun benotzt.',
 	'invitations-feature-noneyet'        => 'Dir hutt är Invitatioune fir dës Fonctioun nach net kritt.',

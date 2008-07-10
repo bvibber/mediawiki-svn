@@ -355,6 +355,7 @@ $messages['hsb'] = array(
  */
 $messages['ia'] = array(
 	'importusers-password' => 'contrasigno',
+	'importusers-email'    => 'e-mail',
 );
 
 /** Indonesian (Bahasa Indonesia)

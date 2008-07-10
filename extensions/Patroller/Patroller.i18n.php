@@ -100,6 +100,13 @@ $messages['bcl'] = array(
 	'patrol-resume'        => 'Lagatik digdi tangarig magpadagos.',
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
+ */
+$messages['be-tarask'] = array(
+	'patrol-revert-reason' => 'Прычына:',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  * @author Spiritia

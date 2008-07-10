@@ -461,6 +461,14 @@ $messages['ar'] = array(
 	'mv_protect_source_material'     => 'المادة المصدر الأصلية محمية من التعديلات',
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
+ */
+$messages['be-tarask'] = array(
+	'mv_search_category' => 'Катэгорыя',
+	'mv_category'        => 'катэгорыя',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  */

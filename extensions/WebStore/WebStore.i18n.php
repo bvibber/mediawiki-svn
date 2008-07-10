@@ -854,13 +854,6 @@ $messages['pms'] = array(
 	'webstore_no_handler'              => "A-i manca l'utiss (handler) për ardimensioné sta sòrt MIME-sì",
 );
 
-$messages['pt'] = array(
-	'inplace_access_disabled' => 'O acesso a este serviço foi desabilitado para todos os clientes.',
-	'inplace_access_denied' => 'Este serviço está restringido por IP de cliente.',
-	'inplace_scaler_no_temp' => 'Não existe directoria temporária, defina $wgLocalTmpDirectory com uma directoria onde seja possível escrever.',
-	'inplace_scaler_not_enough_params' => 'Parâmetros insuficientes.',
-);
-
 /** Pashto (پښتو)
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */

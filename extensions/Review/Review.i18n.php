@@ -155,6 +155,13 @@ $messages['ast'] = array(
 	'review_comment'                                         => 'Comentariu',
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
+ */
+$messages['be-tarask'] = array(
+	'review_comment' => 'Камэнтар',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  */

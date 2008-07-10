@@ -124,6 +124,13 @@ $messages['ar'] = array(
 	'changeauthor-rev'                  => 'ن$1',
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
+ */
+$messages['be-tarask'] = array(
+	'changeauthor-comment' => 'Камэнтар:',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  * @author Spiritia

@@ -96,6 +96,13 @@ $messages['ia'] = array(
 	'createbox-create' => 'Crear',
 );
 
+/** Khmer (ភាសាខ្មែរ)
+ * @author Lovekhmer
+ */
+$messages['km'] = array(
+	'createbox-create' => 'បង្កើត',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */

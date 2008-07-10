@@ -18,6 +18,13 @@ $messages['ar'] = array(
 	'didyoumean-desc' => 'يضيف وصلات إلى صفحات بعناوين "مشابهة"',
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
+ */
+$messages['be-tarask'] = array(
+	'didyoumean-desc' => 'Дадае спасылкі на старонкі з «падобнымі» назвамі',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  */

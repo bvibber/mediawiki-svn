@@ -62,6 +62,24 @@ $messages['gl'] = array(
 	'interwikilist-target'   => 'Dirección URL obxectivo',
 );
 
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
+$messages['hsb'] = array(
+	'interwikilist'          => 'Lisćina interwikijow',
+	'interwikilist-desc'     => 'Přidawa [[Special:Interwikilist|specialnu stronu]], zo bychu so k dispoziciji stejace interwikijowe wotkazy pokazali.',
+	'interwikilist-linkname' => 'Interwikijowy wotkaz',
+	'interwikilist-target'   => 'Cilowy URL',
+);
+
+/** Khmer (ភាសាខ្មែរ)
+ * @author Lovekhmer
+ */
+$messages['km'] = array(
+	'interwikilist'          => 'បញ្ជីអន្តរវិគី',
+	'interwikilist-linkname' => 'តំនភ្ជាប់អន្តរវិគី',
+);
+
 /** Ripoarisch (Ripoarisch)
  * @author Purodha
  */

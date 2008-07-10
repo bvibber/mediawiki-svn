@@ -325,6 +325,13 @@ $messages['hu'] = array(
 	'povwatch_title' => 'Cím:',
 );
 
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'povwatch_comment' => 'Commento pro registro:',
+);
+
 /** Javanese (Basa Jawa)
  * @author Meursault2004
  */

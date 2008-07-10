@@ -156,9 +156,13 @@ $messages['de'] = array(
  * @author Michawiki
  */
 $messages['dsb'] = array(
-	'ajax-se-title'   => 'Wobźěła se tuchylu wót:',
-	'ajax-se-pending' => 'caka se na aktualizaciju... (klikni na toś ten kašćik abo chop z wobźěłanim)',
-	'ajax-se-idling'  => '(pśed $1 s)',
+	'ajax-se-desc'             => 'Pokazujo wužiwarjow, kótarež ten samy bok wobźěłuju',
+	'ajax-se-title'            => 'Wobźěła se tuchylu wót:',
+	'ajax-se-pending'          => 'caka se na aktualizaciju... (klikni na toś ten kašćik abo chop z wobźěłanim)',
+	'ajax-se-idling'           => '(pśed $1 s)',
+	'ajax-se-pagedoesnotexist' => 'bok njeeksistujo',
+	'ajax-se-userinvalid'      => 'Zmólka: wužywaŕ njepłaśiwy',
+	'ajax-se-usernotfound'     => 'Zmólka: wužywaŕ njenamakany',
 );
 
 /** Greek (Ελληνικά)
@@ -219,9 +223,10 @@ $messages['fi'] = array(
 /** French (Français)
  * @author Grondin
  * @author Urhixidur
+ * @author Louperivois
  */
 $messages['fr'] = array(
-	'ajax-se-desc'             => 'Visualise les utilisateurs qui sont en train de modifier la même page.',
+	'ajax-se-desc'             => 'Visualise les utilisateurs qui sont en train de modifier la même page',
 	'ajax-se-title'            => 'En train d’être modifié par :',
 	'ajax-se-pending'          => 'rafraîchissement en cours ... (cliquez sur ce message ou modifiez la page)',
 	'ajax-se-idling'           => '(il y a $1 s)',
@@ -410,7 +415,7 @@ $messages['kk-latn'] = array(
 $messages['km'] = array(
 	'ajax-se-desc'             => 'បង្ហាញ​អ្នកប្រើប្រាស់​ដែលកំពុង​កែប្រែ​ទំព័រដូចគ្នា',
 	'ajax-se-title'            => 'បច្ចុប្បន្នកំពុង​កែប្រែ៖',
-	'ajax-se-idling'           => '($1 វិនាទី កន្លងមក)',
+	'ajax-se-idling'           => '($1វិនាទីកន្លងទៅ)',
 	'ajax-se-pagedoesnotexist' => 'ទំព័រមិនមាន',
 	'ajax-se-userinvalid'      => 'កំហុស៖ អ្នកប្រើប្រាស់គ្មានសុពលភាព',
 	'ajax-se-usernotfound'     => 'កំហុស៖ អ្នកប្រើប្រាស់មិនត្រូវបានរកឃើញទេ',

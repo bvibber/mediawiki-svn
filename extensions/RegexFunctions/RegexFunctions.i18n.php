@@ -32,6 +32,13 @@ $messages['nl'] = array(
 	'regexfunctions-desc' => 'Parserfuncties voor reguliere expressies',
 );
 
+/** Slovak (Slovenčina)
+ * @author Helix84
+ */
+$messages['sk'] = array(
+	'regexfunctions-desc' => 'Funkcie syntaktického analyzátora regulárnych výrazov',
+);
+
 /** Swedish (Svenska)
  * @author Boivie
  */

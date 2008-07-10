@@ -154,6 +154,13 @@ $messages['ar'] = array(
 	'regexblock-view-time'            => 'في $1',
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
+ */
+$messages['be-tarask'] = array(
+	'regexblock-form-reason' => 'Прычына:',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  */

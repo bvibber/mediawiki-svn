@@ -262,6 +262,23 @@ $messages['de'] = array(
 	'expand_templates_preview'         => 'Vorschau',
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'expandtemplates'                  => 'Pśedłogi ekspanděrowaś',
+	'expandtemplates-desc'             => '[[Special:ExpandTemplates|Ekspanděrujo pśedłogi, parserowe funkcije a wariable]], aby dopołny wikitekst pokazał a woblicony pśeglěd zwobraznił',
+	'expand_templates_intro'           => 'Na toś tom boku dajo se tekst zapódaś a wšykne pśedłogi na njom se rekursiwnje ekspanděruju. Teke parserowe funkcije kaž <nowiki>{{</nowiki>#if:…}} a wariable kaž <nowiki>{{</nowiki>CURRENTDAY}} se ekspanděruju - faktiski wšo, což stoj mjazy dwójnymi wugibnjonymi spinkami. To stawa se pśez zawołanje daneje parseroweje faze z MediaWiki.',
+	'expand_templates_title'           => 'Kontekstowy titel, za {{PAGENAME}} atd.',
+	'expand_templates_input'           => 'Zapódany tekst:',
+	'expand_templates_output'          => 'Wuslědk',
+	'expand_templates_xml_output'      => 'Wudany XML',
+	'expand_templates_ok'              => 'W pórěźe',
+	'expand_templates_remove_comments' => 'Komentary wótwónoźeś',
+	'expand_templates_generate_xml'    => 'Parsowański bom XML pokazaś',
+	'expand_templates_preview'         => 'Pśeglěd',
+);
+
 /** Greek (Ελληνικά)
  * @author ZaDiak
  * @author Consta

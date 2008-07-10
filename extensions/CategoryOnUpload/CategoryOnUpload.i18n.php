@@ -17,6 +17,13 @@ $messages['en'] = array(
 	'categoryonupload-none'  => '-', # Do not translate or duplicate this message to other languages.
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
+ */
+$messages['be-tarask'] = array(
+	'categoryonupload-label' => 'Катэгорыя:',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  */
@@ -31,6 +38,14 @@ $messages['bg'] = array(
 $messages['de'] = array(
 	'categoryonupload-desc'  => 'Fragt einen Benutzer beim Hochladen von Dateien nach einer Kategorie',
 	'categoryonupload-label' => 'Kategorie:',
+);
+
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'categoryonupload-desc'  => 'Napomina wužywarja pśi nahraśu dataje kategoriju wubraś',
+	'categoryonupload-label' => 'Kategorija:',
 );
 
 /** Esperanto (Esperanto)
@@ -63,6 +78,13 @@ $messages['gl'] = array(
 $messages['id'] = array(
 	'categoryonupload-desc'  => 'Menampilkan pilihan kategori ketika seorang pengguna akan memuatkan sebuah berkas',
 	'categoryonupload-label' => 'Kategori:',
+);
+
+/** Khmer (ភាសាខ្មែរ)
+ * @author Lovekhmer
+ */
+$messages['km'] = array(
+	'categoryonupload-label' => 'ចំនាត់ថ្នាក់ក្រុម:',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -121,6 +143,14 @@ $messages['pl'] = array(
 $messages['ps'] = array(
 	'categoryonupload-desc'  => 'د دوتنې د پورته کولو پر مهال، يو کارونکی په دې توانوي چې د دوتنې وېشنيزه وټاکي',
 	'categoryonupload-label' => 'وېشنيزه:',
+);
+
+/** Russian (Русский)
+ * @author Александр Сигачёв
+ */
+$messages['ru'] = array(
+	'categoryonupload-desc'  => 'Позволяет участнику при загрузке файла выбирать категорию',
+	'categoryonupload-label' => 'Категория:',
 );
 
 /** Slovak (Slovenčina)

@@ -106,6 +106,14 @@ $messages['be'] = array(
 	'sitematrix-others'   => 'Іншыя праекты Фонду Вікімедыя',
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
+ */
+$messages['be-tarask'] = array(
+	'sitematrix-language' => 'Мова',
+	'sitematrix-others'   => 'Іншыя праекты фундацыі «Вікімэдыя»',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  * @author Spiritia
@@ -919,6 +927,13 @@ $messages['nds'] = array(
 	'sitematrix-sitetotal' => 'Alltohoop',
 	'sitematrix-private'   => 'privat',
 	'sitematrix-fishbowl'  => 'Ännern is inschränkt',
+);
+
+/** Nedersaksisch (Nedersaksisch)
+ * @author Servien
+ */
+$messages['nds-nl'] = array(
+	'sitematrix-private' => 'beteunde toegang',
 );
 
 /** Dutch (Nederlands)

@@ -93,6 +93,21 @@ $messages['be'] = array(
 	'createarticle' => 'Пачаць артыкул',
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
+ * @author Red Winged Duck
+ * @author Jim-by
+ */
+$messages['be-tarask'] = array(
+	'inputbox-desc'           => 'Дазваляе ўключаць раней вызначаныя HTML-формы',
+	'inputbox-error-no-type'  => 'Вы не пазначылі тып ствараемага поля ўводу.',
+	'inputbox-error-bad-type' => 'Невядомы тып поля ўводу «$1».
+Калі ласка, выбірайце толькі з дазволеных тыпаў «create», «comment», «search» ці «search2».',
+	'tryexact'                => 'Паспрабаваць дакладны пошук',
+	'searchfulltext'          => 'Шукаць увесь тэкст',
+	'createarticle'           => 'Стварыць старонку',
+);
+
 /** Bulgarian (Български)
  * @author Spiritia
  * @author DCLXVI

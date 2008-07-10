@@ -186,6 +186,25 @@ $messages['de'] = array(
 	'pdt_comparing_page'  => 'Vergleiche Parser-Ausgabe für [[$1]]',
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'parserdifftest'      => 'Test rozdźělow parserowu',
+	'pdtest-desc'         => '[[Special:ParserDiffTest|Specialny bok]] za pśirownowanje wudaća dweju rozdźělneju parserowu',
+	'pdtest_no_target'    => 'Žeden cel pódany.',
+	'pdtest_page_missing' => 'Pódany bok njejo se w datowej bance namakał.',
+	'pdtest_no_changes'   => 'Žedne změny namakane.',
+	'pdtest_time_report'  => '<b>$1</b> jo $2 {{PLURAL:$2|sekundu|sekunźe|sekundy|sekundow}} pótrjebał, <b>$3</b> jo $4 {{PLURAL:$2|sekundu|sekunźe|sekundy|sekundow}} pótrjebał.',
+	'pdtest_title'        => 'Kontekstowy titel:',
+	'pdtest_text'         => 'Zapódany tekst:',
+	'pdtest_ok'           => 'W pórěźe',
+	'pdtest_get_text'     => 'Tekst z boka wótwołaś',
+	'pdtest_diff'         => 'Rozdźěle',
+	'pdtest_side_by_side' => 'Pśirownowanje wudaśa',
+	'pdt_comparing_page'  => 'Parserowe wudáse  za [[$1]] se pśirownujo',
+);
+
 /** Greek (Ελληνικά)
  * @author ZaDiak
  */

@@ -106,6 +106,7 @@ $messages['de'] = array(
  */
 $messages['dsb'] = array(
 	'assert_edit_title'   => 'Wótpšašanje wuměnjenja jo se njeraźiło.',
+	'assert_edit_desc'    => 'Pśidawa wobźěłańske twarźenja za wužywanje pśez boty',
 	'assert_edit_message' => 'Pódane twarźenje ($1) jo se njeraźiło.',
 );
 

@@ -79,6 +79,14 @@ $messages['de'] = array(
 	'absenteelandlord-desc'   => 'Automatisch Sperre der Datenbank, wenn die Administratoren für eine bestimmte Zeit inaktiv sind',
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'absenteelandlord-reason' => 'Datowa banka jo se awtomatiski zastajiła, dokulaž administratory njejsu aktiwne.',
+	'absenteelandlord-desc'   => 'Zastajijo awtomatiski datowu banku wikija, jolic administratory su za wěsty cas njeakitwne.',
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */

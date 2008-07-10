@@ -124,6 +124,14 @@ $messages['ar'] = array(
 	'crosswikiunblock-local'        => 'عمليات المنع المحلية غير مدعومة بواسطة هذه الواجهة. استخدم [[Special:Ipblocklist]]',
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
+ */
+$messages['be-tarask'] = array(
+	'crosswikiblock-reason'   => 'Прычына:',
+	'crosswikiunblock-reason' => 'Прычына:',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  */

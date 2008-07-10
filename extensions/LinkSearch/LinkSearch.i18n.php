@@ -109,6 +109,13 @@ $messages['bcl'] = array(
 	'linksearch-line' => '$1 an nakatakod sa $2',
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
+ */
+$messages['be-tarask'] = array(
+	'linksearch-ns' => 'Прастора назваў:',
+);
+
 /** Bulgarian (Български)
  * @author Spiritia
  * @author Borislav
@@ -227,6 +234,21 @@ $messages['de'] = array(
 	'linksearch-text'  => 'Diese Spezialseite ermöglicht die Suche nach Seiten, in denen bestimmte Weblinks enthalten sind. Dabei können Wildcards wie beispielsweise <tt>*.example.com</tt> benutzt werden.<br />Unterstützte Protokolle: <tt>$1</tt>',
 	'linksearch-line'  => '$1 ist verlinkt von $2',
 	'linksearch-error' => 'Wildcards können nur am Anfang der URL verwendet werden.',
+);
+
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'linksearch'       => 'Webwótkaze pytaś',
+	'linksearch-desc'  => '[[Special:Linksearch|Namakajo boki z eksternymi wótkazami]], kótarež danemu musteroju wótpowěduju',
+	'linksearch-pat'   => 'Pytański muster:',
+	'linksearch-ns'    => 'Mjenjowy rum:',
+	'linksearch-ok'    => 'Pytaś',
+	'linksearch-text'  => 'Jo móžno zastupne znamješka kaž "*.wikipedia.org" wužywaś.<br />
+Pódpěrane protokole: <tt>$1</tt>',
+	'linksearch-line'  => '$1 wótkazany z $2',
+	'linksearch-error' => 'Zasupne znamješko daju se jano na zachopjeńku URL wužywaś.',
 );
 
 /** Ewe (Eʋegbe)
@@ -353,6 +375,14 @@ $messages['frp'] = array(
 	'linksearch-text'  => 'Ceta pâge spèciâla pèrmèt de rechèrchiér les pâges dens lesquintes un lim de defôr aparêt.<br />Des caractèros « j·oquèr » pôvont étre utilisâs, per ègzemplo <code>*.wikipedia.org</code>.<br />Protocolos sotegnus : <tt>$1</tt>',
 	'linksearch-line'  => '$1 avouéc un lim dês $2',
 	'linksearch-error' => 'Los caractèros « j·oquèr » pôvont étre utilisâs ren qu’u comencement du nom de domêno.',
+);
+
+/** Friulian (Furlan)
+ * @author Klenje
+ */
+$messages['fur'] = array(
+	'linksearch-ns' => 'Spazi dai nons:',
+	'linksearch-ok' => 'Cîr',
 );
 
 /** Galician (Galego)

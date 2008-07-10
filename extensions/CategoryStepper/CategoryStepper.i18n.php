@@ -75,6 +75,7 @@ $messages['cs'] = array(
  * @author Michawiki
  */
 $messages['dsb'] = array(
+	'categorystepper-desc'  => 'Zwobraznjujo nawigaciski kašćik za kategorije, kótaryž dowólujo alfabetiski doprědka a naslědk pśez jadnu abo wěcej kategorijow, kótarež wopśimuju bok, nawigěrowaś.',
 	'categorystepper-end'   => '(Kóńc kategorije)',
 	'categorystepper-start' => '(Zachopjeńk kategorije)',
 );

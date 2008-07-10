@@ -442,10 +442,15 @@ APC verŝajne ne funkcias.',
 	'viewapc-uptime'                => 'Tempdaŭro de operacio',
 	'viewapc-cached-files'          => 'Memorkaŝitaj dosieroj',
 	'viewapc-cached-files-d'        => '$1 {{PLURAL:$1|dosiero|dosieroj}} ($2)',
+	'viewapc-hits'                  => 'Trafoj',
+	'viewapc-misses'                => 'Maltrafoj',
 	'viewapc-rps'                   => '$1 petoj po sekundo',
 	'viewapc-memory-usage'          => 'Memora uzado',
+	'viewapc-cache-efficiency'      => 'Trafoj kaj maltrafoj',
 	'viewapc-memory-free'           => 'Libera: $1 ($2)',
 	'viewapc-memory-used'           => 'Uzita: $1 ($2)',
+	'viewapc-memory-hits'           => 'Trafoj: $1 ($2)',
+	'viewapc-memory-miss'           => 'Maltrafoj: $1 ($2)',
 	'viewapc-display-attribute'     => 'Atribuo',
 	'viewapc-display-value'         => 'Valuto',
 	'viewapc-display-filename'      => 'Dosiernomo',
@@ -459,6 +464,7 @@ APC verŝajne ne funkcias.',
 	'viewapc-ls-options-legend'     => 'Opcioj',
 	'viewapc-ls-submit'             => 'Ek!',
 	'viewapc-ls-header-name'        => 'Nomo',
+	'viewapc-ls-header-hits'        => 'Trafoj',
 	'viewapc-ls-header-size'        => 'Pezo',
 	'viewapc-ls-header-modified'    => 'Laste modifita',
 	'viewapc-ls-header-created'     => 'Kreita',
@@ -467,6 +473,7 @@ APC verŝajne ne funkcias.',
 	'viewapc-ls-scope-active'       => 'Aktiva',
 	'viewapc-ls-scope-deleted'      => 'Forigita',
 	'viewapc-ls-scope-both'         => 'Ambaŭ',
+	'viewapc-ls-sort-hits'          => 'Trafoj',
 	'viewapc-ls-sort-size'          => 'Pezo',
 	'viewapc-ls-sort-name'          => 'Nomo',
 	'viewapc-ls-sort-modified'      => 'Laste modifita',
@@ -598,7 +605,7 @@ Uudempi versio ($2) on saatavilla osoitteesta http://pecl.php.net/package/APC/$2
 $messages['fr'] = array(
 	'viewapc'                       => 'Informations APC',
 	'viewapc-desc'                  => '[[Special:ViewAPC|Voir et gérer le cache APC]] avec MediaWiki',
-	'right-apc'                     => 'Utiliser toutes les fonctionnalités de Special:ViewAPC',
+	'right-apc'                     => 'Utiliser toutes les fonctionnalités de [[Special:ViewAPC]]',
 	'viewapc-apc-not-available'     => "Aucune information sur le cache n'est disponible.
 APC semble ne pas fonctionner.",
 	'viewapc-clear-confirm'         => 'Voulez-vous supprimer le cache ?',
@@ -707,7 +714,7 @@ Une nouvelle version $2 est disponible sur http://pecl.php.net/package/APC/$2',
 $messages['gl'] = array(
 	'viewapc'                       => 'Información ACP',
 	'viewapc-desc'                  => '[[Special:ViewAPC|Ver e xestionar a caché APC]] con MediaWiki',
-	'right-apc'                     => 'Usar todas as características en Special:ViewAPC',
+	'right-apc'                     => 'Usar todas as características en [[Special:ViewAPC]]',
 	'viewapc-apc-not-available'     => 'A información da memoria caché non está dispoñible.
 Parece que APC non funciona.',
 	'viewapc-clear-confirm'         => 'Desexa borrar a memoria caché?',
@@ -974,6 +981,16 @@ $messages['hu'] = array(
  */
 $messages['hy'] = array(
 	'viewapc-ls-sort-name' => 'Անուն',
+);
+
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'viewapc-display-deletion_time' => 'Delite',
+	'viewapc-ls-header-deleted'     => 'Delite',
+	'viewapc-ls-scope-deleted'      => 'Delite',
+	'viewapc-ls-sort-deleted'       => 'Delite',
 );
 
 /** Indonesian (Bahasa Indonesia)
@@ -1934,7 +1951,7 @@ $messages['rif'] = array(
 $messages['ru'] = array(
 	'viewapc'                       => 'Сведения об APC',
 	'viewapc-desc'                  => '[[Special:ViewAPC|Просмотр и управление кэшем APC]] в MediaWiki',
-	'right-apc'                     => 'использование всех возможностей Special:ViewAPC',
+	'right-apc'                     => 'использование всех возможностей [[Special:ViewAPC]]',
 	'viewapc-apc-not-available'     => 'Нет сведений о кэше.
 По видимому, APC не работает.',
 	'viewapc-clear-confirm'         => 'Вы желаете очистить кэш?',
@@ -2043,7 +2060,7 @@ $messages['ru'] = array(
 $messages['sk'] = array(
 	'viewapc'                       => 'Informácie o APC',
 	'viewapc-desc'                  => '[[Special:ViewAPC|Zobraziť a spravovať vyrovnávaciu pamäť APC]] pomocou MediaWiki',
-	'right-apc'                     => 'Použiť všetky vlastnosti na Special:ViewAPC',
+	'right-apc'                     => 'Použiť všetky vlastnosti na [[Special:ViewAPC]]',
 	'viewapc-apc-not-available'     => 'Nie sú dostupné informácie o vyrovnávacej pamäti.
 Zdá sa, že APC nebeží.',
 	'viewapc-clear-confirm'         => 'Želáte si vyčistiť vyrovnávaciu pamäť?',
@@ -2188,7 +2205,7 @@ APC hanteu katingali jalan.',
 $messages['sv'] = array(
 	'viewapc'                       => 'APC-information',
 	'viewapc-desc'                  => '[[Special:ViewAPC|Visa och hantera APC-cachen]] med MediaWiki',
-	'right-apc'                     => 'Använda alla funktioner i Special:ViewAPC',
+	'right-apc'                     => 'Använda alla funktioner i [[Special:ViewAPC]]',
 	'viewapc-apc-not-available'     => 'Ingen information för cachen är tillgänglig.
 APC verkar inte fungera.',
 	'viewapc-clear-confirm'         => 'Vill du rensa cachen?',

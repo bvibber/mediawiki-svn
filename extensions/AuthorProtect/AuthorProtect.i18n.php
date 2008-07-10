@@ -335,12 +335,13 @@ $messages['jv'] = array(
 
 /** Khmer (ភាសាខ្មែរ)
  * @author គីមស៊្រុន
+ * @author Lovekhmer
  */
 $messages['km'] = array(
 	'authorprotect'            => 'ការពារទំព័រពីអ្នកដែលមិនមែនជាអ្នកនិពន្ឋ។',
 	'authorprotect-desc'       => 'អនុញ្ញាតអោយអ្នកនិពន្ឋទំព័រមួយការពារវាពីអ្នកប្រើប្រាស់ដ៏ទៃ',
 	'authorprotect-notauthor'  => 'អ្នកមិនមែនជាអ្នកនិពន្ឋទំព័រនេះទេ',
-	'authorprotect-confirm'    => 'ការពារ',
+	'authorprotect-confirm'    => 'ផ្លាស់ប្តូរកំរិតការពារ',
 	'authorprotect-edit'       => 'មានតែអ្នកនិពន្ឋទេទើបអាចធ្វើការកែប្រែបាន',
 	'authorprotect-move'       => 'មានតែអ្នកនិពន្ឋទេទើបអាចធ្វើការប្ដូរទីតាំងបាន',
 	'authorprotect-expiry'     => 'កាលបរិច្ឆេទផុតកំនត់',

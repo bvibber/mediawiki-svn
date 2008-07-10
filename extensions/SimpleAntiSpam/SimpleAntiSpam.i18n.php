@@ -279,6 +279,16 @@ Fyll '''INTE''' i det här!",
 	'simpleantispam-desc'  => 'Lägger till en enkel spam/robot koll till formulär',
 );
 
+/** Ukrainian (Українська)
+ * @author AS
+ */
+$messages['uk'] = array(
+	'simpleantispam'       => 'Ваше редагування запустило механізм захисту перед спамом',
+	'simpleantispam-label' => "Перевірка на спам.
+'''НЕ''' заповнюйте це!",
+	'simpleantispam-desc'  => 'Додає на форму простий механізм перевірки на спам/бота',
+);
+
 /** Vèneto (Vèneto)
  * @author Candalua
  */

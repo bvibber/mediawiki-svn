@@ -317,6 +317,16 @@ $messages['id'] = array(
 	'imagetagging-tagcancel-button' => 'Batalkan',
 );
 
+/** Khmer (ភាសាខ្មែរ)
+ * @author Lovekhmer
+ */
+$messages['km'] = array(
+	'imagetagging-imghistory'       => 'ប្រវត្តិ',
+	'imagetagging-images'           => 'រូបភាព',
+	'imagetagging-inthisimage'      => 'ក្នុងរូបភាពនេះ: $1',
+	'imagetagging-tagcancel-button' => 'បោះបង់',
+);
+
 /** Ripoarisch (Ripoarisch)
  * @author Purodha
  */

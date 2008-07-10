@@ -224,6 +224,15 @@ $messages['hak'] = array(
 	'editmsg-search' => 'Chhìm-cháu',
 );
 
+/** Hebrew (עברית)
+ * @author StuB
+ */
+$messages['he'] = array(
+	'editmessages'   => 'עריכת הודעות',
+	'editmsg-target' => 'הודעת יעד:',
+	'editmsg-search' => 'חיפוש',
+);
+
 /** Hindi (हिन्दी)
  * @author Kaustubh
  */

@@ -157,6 +157,16 @@ O ficheiro cargado debería conter o nome da páxina e unha razón opcional sepa
 	'deletebatch-no-page'              => 'Por favor, especifique, polo menos, unha páxina para borrar OU escolla un ficheiro que conteña unha lista de páxinas.',
 );
 
+/** Khmer (ភាសាខ្មែរ)
+ * @author Lovekhmer
+ */
+$messages['km'] = array(
+	'deletebatch-reason'           => 'មូលហេតុនៃការលុប',
+	'deletebatch-processing'       => 'ការលុបទំព័រ',
+	'deletebatch-success-subtitle' => 'សំរាប់$1',
+	'deletebatch-select-yourself'  => 'អ្នក',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */

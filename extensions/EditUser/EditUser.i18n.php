@@ -246,6 +246,20 @@ $messages['haw'] = array(
 	'edituser-username' => 'Inoa',
 );
 
+/** Hebrew (עברית)
+ * @author Rotemliss
+ * @author StuB
+ */
+$messages['he'] = array(
+	'edituser-desc'     => 'אפשרות למשתמשים מורשים לערוך העדפות של משתמשים אחרים',
+	'edituser'          => 'עריכת משתמש',
+	'edituser-logout'   => 'הוצאת משתמש מהחשבון',
+	'edituser-username' => 'שם',
+	'edituser-dosearch' => 'חיפוש',
+	'edituser-nouser'   => 'המשתמש המבוקש אינו קיים',
+	'edituser-exempt'   => 'לא ניתן לערוך את המשתמש המבוקש',
+);
+
 /** Hindi (हिन्दी)
  * @author Kaustubh
  */
