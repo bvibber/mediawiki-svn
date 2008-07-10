@@ -1413,6 +1413,7 @@ $messages['yue'] = array(
 	'expand_templates_input'           => '輸入文字：',
 	'expand_templates_output'          => '結果：',
 	'expand_templates_xml_output'      => 'XML輸出',
+	'expand_templates_ok'              => 'OK',
 	'expand_templates_remove_comments' => '拎走注釋',
 	'expand_templates_generate_xml'    => '顯示XML語法樹',
 	'expand_templates_preview'         => '預覽',
