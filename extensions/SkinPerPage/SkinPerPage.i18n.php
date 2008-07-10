@@ -53,6 +53,7 @@ $messages['eo'] = array(
 	'skinperpage-desc' => 'Aldonas etikedon <tt>&lt;skin&gt;</tt> por uzi variajn etosojn en la paĝo',
 );
 
+/** Persian (فارسی) */
 $messages['fa'] = array(
 	'skinperpage-desc' => 'برچسب <tt>&lt;skin&gt;</tt> را اضافه می‌کند تا بتوان در هر صفحه از پوسته‌ای متفاوت استفاده کرد',
 );
@@ -225,21 +226,21 @@ $messages['vi'] = array(
 	'skinperpage-desc' => 'Thêm thẻ <tt>&lt;skin&gt;</tt> để dùng các hình dạng khác nhau cho mỗi trang',
 );
 
-/** Cantonese
+/** Yue (粵語)
  * @author Shinjiman
  */
 $messages['yue'] = array(
 	'skinperpage-desc' => '加<tt>&lt;skin&gt;</tt>標籤響每一版用唔同嘅皮',
 );
 
-/** Chinese (Simplified)
+/** Simplified Chinese (‪中文(简体)‬)
  * @author Shinjiman
  */
 $messages['zh-hans'] = array(
 	'skinperpage-desc' => '加入<tt>&lt;skin&gt;</tt>标签在每一页面中使用不同的皮肤',
 );
 
-/** Chinese (Traditional)
+/** Traditional Chinese (‪中文(繁體)‬)
  * @author Shinjiman
  */
 $messages['zh-hant'] = array(

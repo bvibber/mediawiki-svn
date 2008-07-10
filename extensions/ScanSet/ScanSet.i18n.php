@@ -187,7 +187,7 @@ $messages['eo'] = array(
 	'scanset_prev'                      => '&lt; Antaŭa',
 );
 
-/** فارسی (فارسی)
+/** Persian (فارسی)
  * @author Huji
  */
 $messages['fa'] = array(
@@ -258,15 +258,15 @@ $messages['frp'] = array(
  */
 $messages['gl'] = array(
 	'scanset-desc'                      => "Ver páxinas de imaxes dixitalizadas do grupo Andreas Grosz's CD/DVD",
-	'scanset_no_name'                   => 'Error: debe especificar o nome do activador do dixitalizador, por exemplo, &lt;scanset name="EB1911" /&gt;.',
-	'scanset_invalid_name'              => 'Error: a activación do dixitalizador falta ou é inválida.',
-	'scanset_unrecognised_index_format' => 'Error: formato de índice descoñecido',
-	'scanset_opendir_error'             => 'Error: Erro, non se pode abrir o directorio $1',
-	'scanset_no_files'                  => 'Error: Non existen ficheiros no directorio indicado.',
-	'scanset_no_volumes'                => 'Error: o volume de directorios non foi atopado',
-	'scanset_missing_index_file'        => 'Error: o ficheiro de índice $1 non foi atopado',
-	'scanset_index_file_error'          => 'Error: produciuse un erro no formato do ficheiro de índice na liña $1',
-	'scanset_invalid_volume'            => 'Error: Volume non válido',
+	'scanset_no_name'                   => 'Erro: debe especificar o nome do activador do dixitalizador, por exemplo, &lt;scanset name="EB1911" /&gt;.',
+	'scanset_invalid_name'              => 'Erro: falta a activación do dixitalizador, ou é inválida.',
+	'scanset_unrecognised_index_format' => 'Erro: formato de índice descoñecido',
+	'scanset_opendir_error'             => 'Erro: non se pode abrir o directorio $1',
+	'scanset_no_files'                  => 'Erro: non existen ficheiros no directorio indicado.',
+	'scanset_no_volumes'                => 'Erro: o volume de directorios non foi atopado',
+	'scanset_missing_index_file'        => 'Erro: o ficheiro de índice $1 non foi atopado',
+	'scanset_index_file_error'          => 'Erro: produciuse un erro no formato do ficheiro de índice na liña $1',
+	'scanset_invalid_volume'            => 'Erro: volume non válido',
 	'scanset_next'                      => 'Seguinte &gt;',
 	'scanset_prev'                      => '&lt; Anterior',
 );
@@ -397,7 +397,7 @@ $messages['it'] = array(
 	'scanset_no_name'                   => 'Errore: è necessario indicare un nome per il set di scansioni, ad es. &lt;scanset name="EB1911" /&gt;.',
 	'scanset_invalid_name'              => 'Errore: set di scansioni errato o mancante.',
 	'scanset_unrecognised_index_format' => 'Errore: formato indice sconosciuto',
-	'scanset_opendir_error'             => 'Error: errore, impossibile aprire la directory $1',
+	'scanset_opendir_error'             => 'Errore: impossibile aprire la directory $1',
 	'scanset_no_files'                  => 'Scanset: nella directory indicata non è presente alcun file.',
 	'scanset_no_volumes'                => 'Errore: directory di volume non trovate',
 	'scanset_missing_index_file'        => 'Error: file indice $1 non trovato',
@@ -726,7 +726,7 @@ $messages['sk'] = array(
 	'scanset_prev'                      => '&lt; Späť',
 );
 
-/** ћирилица (ћирилица)
+/** Serbian Cyrillic ekavian (ћирилица)
  * @author Sasa Stefanovic
  */
 $messages['sr-ec'] = array(
@@ -765,15 +765,15 @@ $messages['su'] = array(
  */
 $messages['sv'] = array(
 	'scanset-desc'                      => "Visa skannade sid bilder från Andreas Grosz's CD/DVD grupper",
-	'scanset_no_name'                   => 'Error: Du måste ange ett namn på ett scan-set, t.ex. &lt;scanset name="EB1911" /&gt;.',
-	'scanset_invalid_name'              => 'Error: Angivet scan-set är felaktigt eller finns inte.',
-	'scanset_unrecognised_index_format' => 'Error: Okänt indexformat',
-	'scanset_opendir_error'             => 'Error: Fel, kan inte öppna katalogen $1',
-	'scanset_no_files'                  => 'Error: Det finns inga filer i den angivna katalogen.',
-	'scanset_no_volumes'                => 'Error: Inga volymkataloger hittades',
-	'scanset_missing_index_file'        => 'Error: Indexfilen $1 hittades inte',
-	'scanset_index_file_error'          => 'Error: Fel i indexfilsformatet på rad $1',
-	'scanset_invalid_volume'            => 'Error: Ogiltig volym',
+	'scanset_no_name'                   => 'Fel: Du måste ange ett namn på ett scan-set, t.ex. &lt;scanset name="EB1911" /&gt;.',
+	'scanset_invalid_name'              => 'Fel: Angivet scan-set är felaktigt eller finns inte.',
+	'scanset_unrecognised_index_format' => 'Fel: Okänt indexformat',
+	'scanset_opendir_error'             => 'Fel: Kan inte öppna katalogen $1',
+	'scanset_no_files'                  => 'Fel: Det finns inga filer i den angivna katalogen.',
+	'scanset_no_volumes'                => 'Fel: Inga volymkataloger hittades',
+	'scanset_missing_index_file'        => 'Fel: Indexfilen $1 hittades inte',
+	'scanset_index_file_error'          => 'Fel: Fel i indexfilsformatet på rad $1',
+	'scanset_invalid_volume'            => 'Fel: Ogiltig volym',
 	'scanset_next'                      => 'Nästa &gt;',
 	'scanset_prev'                      => '&lt; Föregående',
 );
@@ -874,7 +874,7 @@ $messages['vo'] = array(
 	'scanset_prev' => '&lt; Büik',
 );
 
-/** Cantonese
+/** Yue (粵語)
  * @author Shinjiman
  */
 $messages['yue'] = array(
@@ -892,7 +892,7 @@ $messages['yue'] = array(
 	'scanset_prev'                      => '&lt; 前',
 );
 
-/** Chinese (Simplifiedl)
+/** Simplified Chinese (‪中文(简体)‬)
  * @author Shinjiman
  */
 $messages['zh-hans'] = array(
@@ -910,7 +910,7 @@ $messages['zh-hans'] = array(
 	'scanset_prev'                      => '&lt; 前',
 );
 
-/** Chinese (Traditional)
+/** Traditional Chinese (‪中文(繁體)‬)
  * @author Shinjiman
  */
 $messages['zh-hant'] = array(

@@ -66,9 +66,9 @@ $messages['ca'] = array(
  * @author Raimond Spekking
  */
 $messages['de'] = array(
-        'spl3-desc'       => 'Automatisches Erstellen einer Liste von Unterseiten zu eine Seite mit Hilfe des <tt><nowiki><splist /></nowiki></tt>-Tags.',
-        'spl3_debug'      => 'Unbekannter Wert für Option $1.',
-        'spl3_nosubpages' => '$1 hat keine Unterseiten.',
+	'spl3-desc'       => 'Automatisches Erstellen einer Liste von Unterseiten zu eine Seite mit Hilfe des <tt><nowiki><splist /></nowiki></tt>-Tags.',
+	'spl3_debug'      => 'Unbekannter Wert für Option $1.',
+	'spl3_nosubpages' => '$1 hat keine Unterseiten.',
 );
 
 /** Esperanto (Esperanto)
@@ -121,6 +121,7 @@ $messages['jv'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
+	'spl3-desc'       => 'Mécht automatesch eng Lëscht vun Ënnersäiten vun enger SàIt mat Hellëf vum Tag <code><nowiki><splist /></nowiki></code>',
 	'spl3_debug'      => "Onbekannte Wert fir d'Optioun $1",
 	'spl3_nosubpages' => '$1 huet keng Ënnersäite fir ze weisen',
 );

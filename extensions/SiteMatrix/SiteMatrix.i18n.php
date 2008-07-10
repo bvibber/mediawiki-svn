@@ -48,6 +48,9 @@ $messages['an'] = array(
 	'sitematrix-fishbowl'  => 'edizión restrinchita',
 );
 
+/** Old English (Anglo-Saxon)
+ * @author SPQRobin
+ */
 $messages['ang'] = array(
 	'sitematrix-language' => 'Sprǣc',
 );
@@ -82,11 +85,14 @@ $messages['ast'] = array(
 	'sitematrix-sitetotal' => 'Total',
 );
 
+/** Bikol Central (Bikol Central)
+ * @author Filipinayzd
+ */
 $messages['bcl'] = array(
-	'sitematrix' => 'Lista kan mga Wikimedia wiki',
+	'sitematrix'          => 'Lista kan mga Wikimedia wiki',
 	'sitematrix-language' => 'Tataramon',
-	'sitematrix-project' => 'Pangaran kan proyekto, interproject link asin interwiki link',
-	'sitematrix-others' => 'Ibang mga proyekto kan Wikimedia',
+	'sitematrix-project'  => 'Pangaran kan proyekto, interproject link asin interwiki link',
+	'sitematrix-others'   => 'Ibang mga proyekto kan Wikimedia',
 );
 
 /** Belarusian (Беларуская)
@@ -161,8 +167,9 @@ $messages['ca'] = array(
 	'sitematrix-fishbowl'  => 'edició restringida',
 );
 
+/** Min Dong Chinese (Mìng-dĕ̤ng-ngṳ̄) */
 $messages['cdo'] = array(
-	"sitematrix"          => "Wikimedia wiki gì dăng-dăng",
+	'sitematrix' => 'Wikimedia wiki gì dăng-dăng',
 );
 
 /** Czech (Česky)
@@ -219,6 +226,7 @@ $messages['da'] = array(
 
 /** German (Deutsch)
  * @author Raimond Spekking
+ * @author לערי ריינהארט
  */
 $messages['de'] = array(
 	'sitematrix'           => 'Liste der Wikimedia-Wikis',
@@ -282,12 +290,18 @@ $messages['eo'] = array(
 	'sitematrix-fishbowl'  => 'redaktado estas limigita',
 );
 
+/** Spanish (Español)
+ * @author לערי ריינהארט
+ */
 $messages['es'] = array(
 	'sitematrix' => 'Lista de wikis de Wikimedia',
 );
 
+/** Estonian (Eesti)
+ * @author SPQRobin
+ */
 $messages['et'] = array(
-	'sitematrix' => 'Wikimedia vikide nimekiri',
+	'sitematrix'          => 'Wikimedia vikide nimekiri',
 	'sitematrix-language' => 'Keel',
 );
 
@@ -362,6 +376,9 @@ $messages['fr'] = array(
 	'sitematrix-fishbowl'  => 'modifications limitées',
 );
 
+/** Cajun French (Français cadien)
+ * @author JeanVoisin
+ */
 $messages['frc'] = array(
 	'sitematrix' => 'Liste de wikis à Wikimedia',
 );
@@ -419,6 +436,9 @@ $messages['gl'] = array(
 	'sitematrix-fishbowl'  => 'editado restrinxido',
 );
 
+/** Ancient Greek (Ἀρχαία ἑλληνικὴ)
+ * @author SPQRobin
+ */
 $messages['grc'] = array(
 	'sitematrix-language' => 'γλωσσα',
 );
@@ -449,6 +469,9 @@ $messages['gv'] = array(
 	'sitematrix-sitetotal' => 'Yn clane',
 );
 
+/** Hebrew (עברית)
+ * @author לערי ריינהארט
+ */
 $messages['he'] = array(
 	'sitematrix'           => 'רשימת אתרי ויקי של ויקימדיה',
 	'sitematrix-summary'   => 'דף זה כולל רשימה של כל אתרי קרן ויקימדיה.',
@@ -524,11 +547,14 @@ $messages['hu'] = array(
 	'sitematrix-fishbowl'  => 'a szerkesztés korlátozott',
 );
 
+/** Armenian (Հայերեն)
+ * @author Teak
+ */
 $messages['hy'] = array(
-	'sitematrix' => 'Վիքիմեդիայի վիքիների ցանկ',
+	'sitematrix'          => 'Վիքիմեդիայի վիքիների ցանկ',
 	'sitematrix-language' => 'Լեզու',
-	'sitematrix-project' => 'Նախագծի անվանումը, միջ-նախագծային հղումը և ինտերվիքի հղումը',
-	'sitematrix-others' => 'Վիքիմեդիայի այլ նախագծեր',
+	'sitematrix-project'  => 'Նախագծի անվանումը, միջ-նախագծային հղումը և ինտերվիքի հղումը',
+	'sitematrix-others'   => 'Վիքիմեդիայի այլ նախագծեր',
 );
 
 /** Interlingua (Interlingua)
@@ -636,33 +662,42 @@ $messages['jv'] = array(
 	'sitematrix-fishbowl'  => 'suntingan diwatesi',
 );
 
+/** Georgian (ქართული)
+ * @author Malafaya
+ */
 $messages['ka'] = array(
 	'sitematrix-language' => 'ენა',
 );
 
+/** Kara-Kalpak (Qaraqalpaqsha)
+ * @author AlefZet
+ */
 $messages['kaa'] = array(
-	'sitematrix' => 'Wikimedia wikileri dizimi',
+	'sitematrix'          => 'Wikimedia wikileri dizimi',
 	'sitematrix-language' => 'Til',
-	'sitematrix-project' => 'Proyekt atı, proyekt aralıq sıltewi ha\'m til aralıq siltewi',
-	'sitematrix-others' => 'Basqa Wikimedia proektleri',
+	'sitematrix-project'  => "Proyekt atı, proyekt aralıq sıltewi ha'm til aralıq siltewi",
+	'sitematrix-others'   => 'Basqa Wikimedia proektleri',
 );
 
+/** Kazakh (Arabic script) (‫قازاقشا (تٴوتە)‬) */
 $messages['kk-arab'] = array(
-	"sitematrix"          => "بارلىق Wikimedia ۋيكي تٸزٸمٸ",
+	'sitematrix'          => 'بارلىق Wikimedia ۋيكي تٸزٸمٸ',
 	'sitematrix-language' => 'تٸلٸ',
 	'sitematrix-project'  => 'جوبا اتاۋى, جوبا ارالىق سٸلتەمەسٸ جٵنە ۋيكي ارالىق سٸلتەمەسٸ',
 	'sitematrix-others'   => 'باسقا Wikimedia جوبالارى',
 );
 
+/** Kazakh (Cyrillic) (Қазақша (Cyrillic)) */
 $messages['kk-cyrl'] = array(
-	"sitematrix"          => "Wikimedia уики тізімі",
+	'sitematrix'          => 'Wikimedia уики тізімі',
 	'sitematrix-language' => 'Тілі',
 	'sitematrix-project'  => 'Жоба атауы, жоба аралық сілтемесі және уики аралық сілтемесі',
 	'sitematrix-others'   => 'Басқа Wikimedia жобалары',
 );
 
+/** Kazakh (Latin) (Қазақша (Latin)) */
 $messages['kk-latn'] = array(
-	"sitematrix"          => "Barlıq Wikimedia wïkï tizimi",
+	'sitematrix'          => 'Barlıq Wikimedia wïkï tizimi',
 	'sitematrix-language' => 'Tili',
 	'sitematrix-project'  => 'Joba atawı, joba aralıq siltemesi jäne wïkï aralıq siltemesi',
 	'sitematrix-others'   => 'Basqa Wikimedia jobaları',
@@ -678,11 +713,12 @@ $messages['km'] = array(
 	'sitematrix-summary'   => 'ទំព័រពិសេសនេះរាយឈ្មោះរាល់វិគីរបស់វិគីមេឌា។',
 	'sitematrix-desc'      => 'បង្ហាញ[[Special:SiteMatrix|បញ្ជីវិគីនៃវិគីមេឌា]]',
 	'sitematrix-language'  => 'ភាសា',
-	'sitematrix-project'   => 'ឈ្មោះ​គំរោង, តំនភ្ជាប់​អន្តរគំរោង និង តំនភ្ជាប់អន្តរវិគី',
+	'sitematrix-project'   => 'ឈ្មោះ​គំរោង តំនភ្ជាប់​អន្តរគំរោង និងតំនភ្ជាប់អន្តរវិគី',
 	'sitematrix-others'    => 'គំរោងវិគីមេឌាផ្សេងៗទៀត',
 	'sitematrix-total'     => "'''សរុប: $1'''",
 	'sitematrix-sitetotal' => 'សរុប',
 	'sitematrix-private'   => 'ឯកជន',
+	'sitematrix-fishbowl'  => 'កំនែប្រែត្រូវបានដាក់កំហិត',
 );
 
 /** Korean (한국어)
@@ -777,8 +813,9 @@ $messages['lmo'] = array(
 	'sitematrix' => 'Lista di Wiki che fann part de Wikimedia',
 );
 
+/** Lao (ລາວ) */
 $messages['lo'] = array(
-	"sitematrix" => "ລາຍການ wiki ໃນ Wikimedia",
+	'sitematrix' => 'ລາຍການ wiki ໃນ Wikimedia',
 );
 
 /** Lozi (Silozi)
@@ -799,6 +836,9 @@ $messages['lt'] = array(
 	'sitematrix-sitetotal' => 'Viso',
 );
 
+/** Latvian (Latviešu)
+ * @author לערי ריינהארט
+ */
 $messages['lv'] = array(
 	'sitematrix' => 'Visu Wikimedia wiki projektu uzskaitījums',
 );
@@ -851,7 +891,7 @@ $messages['ms'] = array(
 	'sitematrix-fishbowl'  => 'penyuntingan terhad',
 );
 
-/** Erzya (эрзянь кель)
+/** Erzya (Эрзянь)
  * @author Amdf
  */
 $messages['myv'] = array(
@@ -860,6 +900,7 @@ $messages['myv'] = array(
 	'sitematrix-others'   => 'Лия Викимедиянь проекттнэ',
 );
 
+/** Min Nan Chinese (Bân-lâm-gú) */
 $messages['nan'] = array(
 	'sitematrix' => 'Wikimedia wiki lia̍t-toaⁿ',
 );
@@ -972,11 +1013,15 @@ $messages['pl'] = array(
 	'sitematrix-fishbowl'  => 'edycja ograniczona',
 );
 
+/** Piedmontese (Piemontèis)
+ * @author Bèrto 'd Sèra
+ * @author לערי ריינהארט
+ */
 $messages['pms'] = array(
-	'sitematrix' => 'Lista ëd le wiki gestìe da Wikimedia',
+	'sitematrix'          => 'Lista ëd le wiki gestìe da Wikimedia',
 	'sitematrix-language' => 'Lenga',
-	'sitematrix-project' => 'Nòm dël proget, anliura antra proget e anliura antrawiki',
-	'sitematrix-others' => 'Àutri proget ëd Wikimedia',
+	'sitematrix-project'  => 'Nòm dël proget, anliura antra proget e anliura antrawiki',
+	'sitematrix-others'   => 'Àutri proget ëd Wikimedia',
 );
 
 /** Pashto (پښتو)
@@ -1009,8 +1054,9 @@ $messages['pt'] = array(
 	'sitematrix-fishbowl'  => 'edição restricta',
 );
 
+/** Brazilian Portuguese (Português do Brasil) */
 $messages['pt-br'] = array(
-	"sitematrix" => "Lista de wikis da Wikimedia",
+	'sitematrix' => 'Lista de wikis da Wikimedia',
 );
 
 /** Quechua (Runa Simi)
@@ -1023,10 +1069,16 @@ $messages['qu'] = array(
 	'sitematrix-others'   => 'Wikimediap huk ruraykamayninkuna',
 );
 
+/** Rhaeto-Romance (Rumantsch)
+ * @author SPQRobin
+ */
 $messages['rm'] = array(
 	'sitematrix-language' => 'Linguatg',
 );
 
+/** Romanian (Română)
+ * @author לערי ריינהארט
+ */
 $messages['ro'] = array(
 	'sitematrix' => 'Lista proiectelor Wikimedia',
 );
@@ -1079,11 +1131,14 @@ $messages['sk'] = array(
 	'sitematrix-fishbowl'  => 'úpravy obmedzené',
 );
 
+/** Albanian (Shqip)
+ * @author לערי ריינהארט
+ */
 $messages['sq'] = array(
 	'sitematrix' => 'Lista e wiki-ve të Wikimedia-s',
 );
 
-/** ћирилица (ћирилица)
+/** Serbian Cyrillic ekavian (ћирилица)
  * @author Sasa Stefanovic
  * @author לערי ריינהארט
  */
@@ -1092,10 +1147,16 @@ $messages['sr-ec'] = array(
 	'sitematrix-language' => 'Језик',
 );
 
+/** latinica (latinica)
+ * @author לערי ריינהארט
+ */
 $messages['sr-el'] = array(
-	"sitematrix" => "Tabela svih vikija",
+	'sitematrix' => 'Tabela svih vikija',
 );
 
+/** Swati (SiSwati)
+ * @author Jatrobat
+ */
 $messages['ss'] = array(
 	'sitematrix-language' => 'Lúlwîmi',
 );
@@ -1172,11 +1233,14 @@ $messages['te'] = array(
 	'sitematrix-fishbowl'  => 'మార్చడం నియంత్రించాం',
 );
 
+/** Tetum (Tetun)
+ * @author MF-Warburg
+ */
 $messages['tet'] = array(
-	'sitematrix' => 'Lista wiki sira Wikimedia nian',
+	'sitematrix'          => 'Lista wiki sira Wikimedia nian',
 	'sitematrix-language' => 'Lian',
-	'sitematrix-project' => 'Naran projetu nian, ligasaun projetu no ligasaun interwiki',
-	'sitematrix-others' => 'Projetu seluk Wikimedia nian',
+	'sitematrix-project'  => 'Naran projetu nian, ligasaun projetu no ligasaun interwiki',
+	'sitematrix-others'   => 'Projetu seluk Wikimedia nian',
 );
 
 /** Tajik (Cyrillic) (Тоҷикӣ/tojikī (Cyrillic))
@@ -1240,8 +1304,9 @@ $messages['uk'] = array(
 	'sitematrix-fishbowl'  => 'редагування обмежене',
 );
 
+/** Urdu (اردو) */
 $messages['ur'] = array(
-	"sitematrix" => 'فہرست وکی میڈیا کے دیگر وکییوں کی',
+	'sitematrix' => 'فہرست وکی میڈیا کے دیگر وکییوں کی',
 );
 
 /** Vèneto (Vèneto)
@@ -1289,19 +1354,24 @@ $messages['vo'] = array(
 	'sitematrix-sitetotal' => 'Valod',
 );
 
+/** Walloon (Walon)
+ * @author Srtxg
+ * @author לערי ריינהארט
+ */
 $messages['wa'] = array(
-	'sitematrix' => 'Djivêye des wikis Wikimedia',
+	'sitematrix'          => 'Djivêye des wikis Wikimedia',
 	'sitematrix-language' => 'Lingaedje',
-	'sitematrix-project' => 'No do pordjet, loyén eterpordjet eyet loyén eterwiki',
-	'sitematrix-others' => 'Ôtes pordjes Wikimedia',
+	'sitematrix-project'  => 'No do pordjet, loyén eterpordjet eyet loyén eterwiki',
+	'sitematrix-others'   => 'Ôtes pordjes Wikimedia',
 );
 
+/** Wu (吴语) */
 $messages['wuu'] = array(
-	"sitematrix" => "维基媒体基金会维基列表",
+	'sitematrix'          => '维基媒体基金会维基列表',
 	'sitematrix-language' => '闲话',
 );
 
-/** Cantonese (廣東話)
+/** Yue (粵語)
  * @author Shinjiman
  */
 $messages['yue'] = array(
@@ -1349,8 +1419,9 @@ $messages['zh-hant'] = array(
 	'sitematrix-fishbowl'  => '編輯限制',
 );
 
+/** Taiwan Chinese (‪中文(台灣)‬) */
 $messages['zh-tw'] = array(
-	"sitematrix" => "維基媒體網站清單",
+	'sitematrix'          => '維基媒體網站清單',
 	'sitematrix-language' => '語言',
 	'sitematrix-project'  => '計畫名稱、跨計畫連結以及跨維基連結',
 	'sitematrix-others'   => '維基媒體的其它計畫',

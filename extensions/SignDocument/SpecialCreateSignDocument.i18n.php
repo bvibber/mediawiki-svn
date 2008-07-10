@@ -49,43 +49,12 @@ $messages['af'] = array(
 	'createsigndoc-email'    => 'E-pos adres',
 );
 
+/** Old English (Anglo-Saxon)
+ * @author Meno25
+ * @author SPQRobin
+ */
 $messages['ang'] = array(
 	'createsigndoc-pagename' => 'Tramet:',
-);
-/** Arabic (العربية)
- * @author Meno25
- */
-$messages['ar'] = array(
-	'createsigndocument'              => 'فعل توقيع الوثيقة',
-	'createsigndoc-head'              => "استخدم هذه الوثيقة لإنشاء صفحة 'Sign Document' للصفحة المعطاة، بحيث
-يمكن للمستخدمين توقيعها من خلال [[Special:SignDocument]]. من فضلك حدد اسم
-الصفحة التي تود تفعيل التوقيع الرقمي عليها، أعضاء أي
-مجموعة مستخدم مسموح لهم بتوقيعها، أي حقول تود أن تكون مرئية للمستخدمين
-وأي يجب أن تكون اختيارية، عمر أدنى لمستخدمين ليمكن لهم توقيع
-الوثيقة (لا حد أدنى لو حذفت)، ونص تقديمي مختصر يصف
-الوثيقة ويوفر التعليمات للمستخدمين.
-
-<b>لا توجد حاليا أية طريقة لحذف أو تعديل توقيعات الوثائق بعد
-إنشائها</b> بدون دخول قاعدة البيانات مباشرة. إضافة إلى ذلك، نص الصفحة
-المعروض في صفحة التوقيع سيكون النص ''الحالي'' للصفحة، بغض النظر عن
-التغييرات بها بعد اليوم. من فضلك كن متأكدا تماما من أن الوثيقة
-وصلت لنقطة ثبات للتوقيع، ومن فضلك أيضا تأكد أنك حددت
-كل الحقول تماما كما يجب أن تكون، ''قبل تنفيذ هذه الاستمارة''.",
-	'createsigndoc-pagename'          => 'صفحة:',
-	'createsigndoc-allowedgroup'      => 'المجموعة المسموحة:',
-	'createsigndoc-email'             => 'عنوان البريد الإلكتروني:',
-	'createsigndoc-address'           => 'عنوان المنزل:',
-	'createsigndoc-extaddress'        => 'المدينة، الولاية، البلد:',
-	'createsigndoc-phone'             => 'رقم الهاتف:',
-	'createsigndoc-bday'              => 'تاريخ الميلاد:',
-	'createsigndoc-minage'            => 'العمر الأدنى:',
-	'createsigndoc-introtext'         => 'مقدمة:',
-	'createsigndoc-hidden'            => 'مخفية',
-	'createsigndoc-optional'          => 'اختياري',
-	'createsigndoc-create'            => 'أنشيء',
-	'createsigndoc-error-generic'     => 'خطأ: $1',
-	'createsigndoc-error-pagenoexist' => 'خطأ: الصفحة [[$1]] غير موجودة.',
-	'createsigndoc-success'           => 'توقيع الوثيقة تم تفعيله بنجاح على [[$1]]. لاختباره، من فضلك زر [{{SERVER}}{{localurl: Special:SignDocument|doc=$2}} هذه الصفحة].',
 );
 
 /** Arabic (العربية)
@@ -103,7 +72,7 @@ $messages['ar'] = array(
 الوثيقة (لا حد أدنى لو حذفت)، ونص تقديمي مختصر يصف الوثيقة ويوفر التعليمات للمستخدمين.
 
 <b>لا توجد حاليا أية طريقة لحذف أو تعديل توقيعات الوثائق بعد
-إنشائها</b> بدون دخول قاعدة البيانات مباشرة. إضافة إلى ذلك، نص الصفحة
+إنشائها</b> بدون دخول قاعدة البيانات مباشرة. إضافة إلى ذلك، نص الصفحة 
 المعروض في صفحة التوقيع سيكون النص ''الحالي'' للصفحة، بغض النظر عن
 التغييرات بها بعد اليوم. من فضلك كن متأكدا تماما من أن الوثيقة
 وصلت لنقطة ثبات للتوقيع، ومن فضلك أيضا تأكد أنك حددت
@@ -126,10 +95,13 @@ $messages['ar'] = array(
 	'createsigndoc-error-alreadycreated' => 'توقيع الوثيقة "$1" موجود بالفعل.',
 );
 
+/** Bikol Central (Bikol Central)
+ * @author Filipinayzd
+ */
 $messages['bcl'] = array(
-	'createsigndoc-pagename' => 'Páhina:',
-	'createsigndoc-bday' => 'Kamondágan:',
-	'createsigndoc-create' => 'Maggibo',
+	'createsigndoc-pagename'      => 'Páhina:',
+	'createsigndoc-bday'          => 'Kamondágan:',
+	'createsigndoc-create'        => 'Maggibo',
 	'createsigndoc-error-generic' => 'Salâ: $1',
 );
 
@@ -215,11 +187,14 @@ Por testi ĝin, bonvolu eniri [{{SERVER}}{{localurl: Special:SignDocument|doc=$2
 	'createsigndoc-error-alreadycreated' => 'Subskribado de dokumento "$1" jam ekzistas.',
 );
 
+/** Extremaduran (Estremeñu)
+ * @author Better
+ */
 $messages['ext'] = array(
-	'createsigndoc-pagename' => 'Páhina:',
-	'createsigndoc-allowedgroup' => 'Alabán premitiu:',
-	'createsigndoc-optional' => 'Ocional',
-	'createsigndoc-create' => 'Creal',
+	'createsigndoc-pagename'          => 'Páhina:',
+	'createsigndoc-allowedgroup'      => 'Alabán premitiu:',
+	'createsigndoc-optional'          => 'Ocional',
+	'createsigndoc-create'            => 'Creal',
 	'createsigndoc-error-pagenoexist' => 'Marru: La páhina [[$1]] nu desisti.',
 );
 
@@ -410,8 +385,11 @@ $messages['ksh'] = array(
 	'createsigndoc-create' => 'Aanläje',
 );
 
+/** Latin (Latina)
+ * @author SPQRobin
+ */
 $messages['la'] = array(
-	'createsigndoc-pagename' => 'Pagina:',
+	'createsigndoc-pagename'          => 'Pagina:',
 	'createsigndoc-error-pagenoexist' => 'Error: Pagina [[$1]] non existit.',
 );
 
@@ -525,7 +503,7 @@ $messages['nn'] = array(
 	'createsigndoc-optional' => 'Valfri',
 );
 
-/** Norwegian (‪Norsk (bokmål)‬)
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */
 $messages['no'] = array(
@@ -584,32 +562,35 @@ $messages['os'] = array(
 	'createsigndoc-pagename' => 'Фарс:',
 );
 
+/** Polish (Polski)
+ * @author Derbeth
+ */
 $messages['pl'] = array(
-	'createsigndoc-pagename' => 'Strona:',
-	'createsigndoc-email' => 'Adres e-mail:',
-	'createsigndoc-phone' => 'Numer telefonu:',
-	'createsigndoc-bday' => 'Data urodzenia:',
-	'createsigndoc-error-generic' => 'Błąd: $1',
+	'createsigndoc-pagename'          => 'Strona:',
+	'createsigndoc-email'             => 'Adres e-mail:',
+	'createsigndoc-phone'             => 'Numer telefonu:',
+	'createsigndoc-bday'              => 'Data urodzenia:',
+	'createsigndoc-error-generic'     => 'Błąd: $1',
 	'createsigndoc-error-pagenoexist' => 'Błąd: Strona [[$1]] nie istnieje',
 );
 
-/** Piemontèis (Piemontèis)
+/** Piedmontese (Piemontèis)
  * @author Bèrto 'd Sèra
  */
 $messages['pms'] = array(
 	'createsigndocument'              => 'Visché la firma digital ëd na pàgina coma document',
-	'createsigndoc-head'              => "Ch'a dòvra la domanda ambelessì sota për visché l'opsion ëd 'Firma Digital' ëd n'artìcol, ch'a lassa che j'utent a peulo firmé ën dovrand la fonsion ëd [[Special:SignDocument|firma digital]].
+	'createsigndoc-head'              => "Ch'a dòvra la domanda ambelessì sota për visché l'opsion ëd 'Firma Digital' ëd n'artìcol, ch'a lassa che j'utent a peulo firmé ën dovrand la fonsion ëd [[Special:SignDocument|firma digital]]. 
 
 Për piasì, ch'an buta:
-*ël nòm dl'artìcol andova ch'a veul visché la fonsion ëd firma digital,
-*ij component ëd che partìa d'utent ch'a resto aotorisà a firmé,
-*che camp ch'a debio smon-se a j'utent e coj ch'a debio resté opsionaj,
-*n'eta mìnima përché n'utent a peula firmé (a peulo tuti s'a buta nen ël mìnim);
-*un cit ëspiegon ch'a disa lòn ch'a l'é ës document e ch'a-j disa a j'utent coma fé.
+*ël nòm dl'artìcol andova ch'a veul visché la fonsion ëd firma digital, 
+*ij component ëd che partìa d'utent ch'a resto aotorisà a firmé, 
+*che camp ch'a debio smon-se a j'utent e coj ch'a debio resté opsionaj, 
+*n'eta mìnima përché n'utent a peula firmé (a peulo tuti s'a buta nen ël mìnim), 
+*un cit ëspiegon ch'a disa lòn ch'a l'é ës document e ch'a-j disa a j'utent coma fé. 
 
 Anans che dovré sossì ch'a ten-a present che:
-#<b>Për adess a-i é gnun-a manera dë scancelé ò modifiché ij document ch'as mando an firma, na vira ch'a sio stait creà</b> sensa dovej travajé ant sla base dat da fòra.
-#Ël test smonù ant sla pàgina an firma a resta col ëd quand as anandio a cheuje le firme, donca la version ''corenta'' al moment ch'as fa sossì, e qualsëssìa modìfica ch'as fasa peuj '''an firma a la riva pì nen'''.
+#<b>Për adess a-i é gnun-a manera dë scancelé ò modifiché ij document ch'as mando an firma, na vira ch'a sio stait creà</b> sensa dovej travajé ant sla base dat da fòra. 
+#Ël test smonù ant sla pàgina an firma a resta col ëd quand as anandio a cheuje le firme, donca la version ''corenta'' al moment ch'as fa sossì, e qualsëssìa modìfica ch'as fasa peuj '''an firma a la riva pì nen'''. 
 
 Për piasì, ch'a varda d'avej controlà sò test coma ch'as dev anans che mandelo an firma, e ch'a varda che tuti ij camp a sio coma ch'a-j ven-o bin a chiel, ''anans dë mandé la domanda''.",
 	'createsigndoc-pagename'          => 'Pàgina:',
@@ -733,8 +714,11 @@ $messages['sr-ec'] = array(
 	'createsigndoc-extaddress'   => 'Град, држава:',
 );
 
+/** Swati (SiSwati)
+ * @author Jatrobat
+ */
 $messages['ss'] = array(
-	'createsigndoc-phone' => 'Inombolo yelucingo:',
+	'createsigndoc-phone'  => 'Inombolo yelucingo:',
 	'createsigndoc-create' => 'Kúdála',
 );
 
@@ -769,7 +753,7 @@ Var hundra procent säker på att dokumentet är stabilt när det signeras, och 
 	'createsigndoc-error-alreadycreated' => 'Dokumentsigneringen "$1" finns redan.',
 );
 
-/** Silesian (ślůnski)
+/** Silesian (Ślůnski)
  * @author Herr Kriss
  */
 $messages['szl'] = array(

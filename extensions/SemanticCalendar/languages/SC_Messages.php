@@ -29,19 +29,19 @@ $messages['af'] = array(
  * @author Meno25
  */
 $messages['ar'] = array(
-	'sc_previousmonth'    => 'الشهر السابق',
-	'sc_nextmonth'        => 'الشهر التالي',
-	'sc_today'            => 'اليوم',
-	'sc_gotomonth'        => 'اذهب إلى شهر',
+	'sc_previousmonth' => 'الشهر السابق',
+	'sc_nextmonth'     => 'الشهر التالي',
+	'sc_today'         => 'اليوم',
+	'sc_gotomonth'     => 'اذهب إلى شهر',
 );
 
 /** Bulgarian (Български)
  * @author DCLXVI
  */
 $messages['bg'] = array(
-	'sc_previousmonth'    => 'Предходен месец',
-	'sc_nextmonth'        => 'Следващ месец',
-	'sc_today'            => 'Днес',
+	'sc_previousmonth' => 'Предходен месец',
+	'sc_nextmonth'     => 'Следващ месец',
+	'sc_today'         => 'Днес',
 );
 
 /** Breton (Brezhoneg)
@@ -58,10 +58,10 @@ $messages['br'] = array(
  * @author Krabina
  */
 $messages['de'] = array(
-	'sc_previousmonth'    => 'Voriger Monat',
-	'sc_nextmonth'        => 'Nächster Monat',
-	'sc_today'            => 'Heute',
-	'sc_gotomonth'        => 'Gehe zu Monat',
+	'sc_previousmonth' => 'Voriger Monat',
+	'sc_nextmonth'     => 'Nächster Monat',
+	'sc_today'         => 'Heute',
+	'sc_gotomonth'     => 'Gehe zu Monat',
 );
 
 /** Greek (Ελληνικά)
@@ -85,10 +85,10 @@ $messages['eo'] = array(
  * @author Tofighi
  */
 $messages['fa'] = array(
-	'sc_previousmonth'    => 'ماه گذشته',
-	'sc_nextmonth'        => 'ماه آینده',
-	'sc_today'            => 'امروز',
-	'sc_gotomonth'        => 'برو به ماه',
+	'sc_previousmonth' => 'ماه گذشته',
+	'sc_nextmonth'     => 'ماه آینده',
+	'sc_today'         => 'امروز',
+	'sc_gotomonth'     => 'برو به ماه',
 );
 
 /** French (Français)
@@ -96,10 +96,10 @@ $messages['fa'] = array(
  * @author Urhixidur
  */
 $messages['fr'] = array(
-	'sc_previousmonth'    => 'Mois précédent',
-	'sc_nextmonth'        => 'Mois suivant',
-	'sc_today'            => "Aujourd'hui",
-	'sc_gotomonth'        => 'Aller vers le mois',
+	'sc_previousmonth' => 'Mois précédent',
+	'sc_nextmonth'     => 'Mois suivant',
+	'sc_today'         => "Aujourd'hui",
+	'sc_gotomonth'     => 'Aller vers le mois',
 );
 
 /** Galician (Galego)
@@ -155,18 +155,18 @@ $messages['hsb'] = array(
  * @author Dani
  */
 $messages['hu'] = array(
-	'sc_previousmonth'    => 'Előző hónap',
-	'sc_nextmonth'        => 'Következő hónap',
+	'sc_previousmonth' => 'Előző hónap',
+	'sc_nextmonth'     => 'Következő hónap',
 );
 
 /** Japanese (日本語)
  * @author JtFuruhata
  */
 $messages['ja'] = array(
-	'sc_previousmonth'    => '前の月',
-	'sc_nextmonth'        => '次の月',
-	'sc_today'            => '今日',
-	'sc_gotomonth'        => 'この月を表示',
+	'sc_previousmonth' => '前の月',
+	'sc_nextmonth'     => '次の月',
+	'sc_today'         => '今日',
+	'sc_gotomonth'     => 'この月を表示',
 );
 
 /** Javanese (Basa Jawa)
@@ -204,10 +204,10 @@ $messages['lb'] = array(
  * @author Hugo.arg
  */
 $messages['lt'] = array(
-	'sc_previousmonth'    => 'Praeitas mėnuo',
-	'sc_nextmonth'        => 'Ateinantis mėnuo',
-	'sc_today'            => 'Šiandien',
-	'sc_gotomonth'        => 'Eiti į mėnesį',
+	'sc_previousmonth' => 'Praeitas mėnuo',
+	'sc_nextmonth'     => 'Ateinantis mėnuo',
+	'sc_today'         => 'Šiandien',
+	'sc_gotomonth'     => 'Eiti į mėnesį',
 );
 
 /** Malayalam (മലയാളം)
@@ -235,40 +235,40 @@ $messages['mr'] = array(
  * @author GerardM
  */
 $messages['nl'] = array(
-	'sc_previousmonth'    => 'Vorige maand',
-	'sc_nextmonth'        => 'Volgende maand',
-	'sc_today'            => 'Vandaag',
-	'sc_gotomonth'        => 'Ga naar maand',
+	'sc_previousmonth' => 'Vorige maand',
+	'sc_nextmonth'     => 'Volgende maand',
+	'sc_today'         => 'Vandaag',
+	'sc_gotomonth'     => 'Ga naar maand',
 );
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
  * @author Eirik
  */
 $messages['nn'] = array(
-	'sc_previousmonth'    => 'Førre månad',
-	'sc_nextmonth'        => 'Neste månad',
-	'sc_today'            => 'I dag',
-	'sc_gotomonth'        => 'Gå til månad',
+	'sc_previousmonth' => 'Førre månad',
+	'sc_nextmonth'     => 'Neste månad',
+	'sc_today'         => 'I dag',
+	'sc_gotomonth'     => 'Gå til månad',
 );
 
-/** Norwegian (‪Norsk (bokmål)‬)
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */
 $messages['no'] = array(
-	'sc_previousmonth'    => 'Forrige måned',
-	'sc_nextmonth'        => 'Neste måned',
-	'sc_today'            => 'I dag',
-	'sc_gotomonth'        => 'Gå til måned',
+	'sc_previousmonth' => 'Forrige måned',
+	'sc_nextmonth'     => 'Neste måned',
+	'sc_today'         => 'I dag',
+	'sc_gotomonth'     => 'Gå til måned',
 );
 
 /** Occitan (Occitan)
  * @author Cedric31
  */
 $messages['oc'] = array(
-	'sc_previousmonth'    => 'Mes precedent',
-	'sc_nextmonth'        => 'Mes seguent',
-	'sc_today'            => 'Uèi',
-	'sc_gotomonth'        => 'Anar vèrs lo mes',
+	'sc_previousmonth' => 'Mes precedent',
+	'sc_nextmonth'     => 'Mes seguent',
+	'sc_today'         => 'Uèi',
+	'sc_gotomonth'     => 'Anar vèrs lo mes',
 );
 
 /** Polish (Polski)
@@ -315,20 +315,20 @@ $messages['ru'] = array(
  * @author Helix84
  */
 $messages['sk'] = array(
-	'sc_previousmonth'    => 'Predošlý mesiac',
-	'sc_nextmonth'        => 'Ďalší mesiac',
-	'sc_today'            => 'Dnes',
-	'sc_gotomonth'        => 'Prejsť na mesiac',
+	'sc_previousmonth' => 'Predošlý mesiac',
+	'sc_nextmonth'     => 'Ďalší mesiac',
+	'sc_today'         => 'Dnes',
+	'sc_gotomonth'     => 'Prejsť na mesiac',
 );
 
 /** Swedish (Svenska)
  * @author M.M.S.
  */
 $messages['sv'] = array(
-	'sc_previousmonth'    => 'Föregående månad',
-	'sc_nextmonth'        => 'Nästa månad',
-	'sc_today'            => 'Idag',
-	'sc_gotomonth'        => 'Gå till månad',
+	'sc_previousmonth' => 'Föregående månad',
+	'sc_nextmonth'     => 'Nästa månad',
+	'sc_today'         => 'Idag',
+	'sc_gotomonth'     => 'Gå till månad',
 );
 
 /** Telugu (తెలుగు)
@@ -381,13 +381,13 @@ $messages['vo'] = array(
 	'sc_today'         => 'Adelo',
 );
 
-/** ‪中文(台灣)‬ (‪中文(台灣)‬)
+/** Taiwan Chinese (‪中文(台灣)‬)
  * @author Roc michael
  */
 $messages['zh-tw'] = array(
-	'sc_previousmonth'    => '前一月',
-	'sc_nextmonth'        => '次一月',
-	'sc_today'            => '今日',
-	'sc_gotomonth'        => '前往',
+	'sc_previousmonth' => '前一月',
+	'sc_nextmonth'     => '次一月',
+	'sc_today'         => '今日',
+	'sc_gotomonth'     => '前往',
 );
 

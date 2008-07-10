@@ -259,7 +259,9 @@ $messages['eo'] = array(
 	'review_comment'                => 'Komento',
 );
 
-# فارسی (Huji - 34)
+/** Persian (فارسی)
+ * @author Huji
+ */
 $messages['fa'] = array(
 	'review_sidebar_title'                                   => 'بازبینی',
 	'review_topics'                                          => "# آن چه در ادامه می‌بینید فهرست عنوان‌ها و بازه‌های افزونهٔ بازبینی است.
@@ -299,7 +301,6 @@ $messages['fa'] = array(
 	'review_no_opinion'                                      => 'نظری ندارم',
 	'review_rating'                                          => 'رتبه',
 	'review_comment'                                         => 'توضیح',
-
 );
 
 /** Finnish (Suomi)

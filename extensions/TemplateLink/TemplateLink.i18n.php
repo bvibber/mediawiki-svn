@@ -20,9 +20,12 @@ $messages['en'] = array(
 	'templatelink_newtitle' => '$1 (transcluded)',
 );
 
+/** Arabic (العربية)
+ * @author Meno25
+ */
 $messages['ar'] = array(
-	'templatelink' => 'وصلة قالب',
-	'templatelink_empty' => 'يجب عليك توفير محدد.',
+	'templatelink'          => 'وصلة قالب',
+	'templatelink_empty'    => 'يجب عليك توفير محدد.',
 	'templatelink_newtitle' => '$1 (مضمنة)',
 );
 
@@ -35,8 +38,11 @@ $messages['avk'] = array(
 	'templatelink_newtitle' => '$1 (warzon)',
 );
 
+/** Bikol Central (Bikol Central)
+ * @author Filipinayzd
+ */
 $messages['bcl'] = array(
-	'templatelink' => 'Takod kan Templato',
+	'templatelink'       => 'Takod kan Templato',
 	'templatelink_empty' => 'Kaipuhan mong suplayan an parametro.',
 );
 
@@ -47,9 +53,10 @@ $messages['bg'] = array(
 	'templatelink_empty' => 'Необходимо е да се въведе параметър.',
 );
 
+/** German (Deutsch) */
 $messages['de'] = array(
-	'templatelink' => 'Vorlagen-Link',
-	'templatelink_empty' => 'Ein Parameter muss angegeben werden.',
+	'templatelink'          => 'Vorlagen-Link',
+	'templatelink_empty'    => 'Ein Parameter muss angegeben werden.',
 	'templatelink_newtitle' => '$1 (ersetzt)',
 );
 
@@ -101,9 +108,12 @@ $messages['gl'] = array(
 	'templatelink_newtitle' => '$1 (transcluído)',
 );
 
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
 $messages['hsb'] = array(
-	'templatelink' => 'Předłohowy wotkaz',
-	'templatelink_empty' => 'Dyrbiš parameter podać.',
+	'templatelink'          => 'Předłohowy wotkaz',
+	'templatelink_empty'    => 'Dyrbiš parameter podać.',
 	'templatelink_newtitle' => '$1 (narunany)',
 );
 
@@ -193,9 +203,12 @@ $messages['pl'] = array(
 	'templatelink_newtitle' => '$1 (po transkluzji)',
 );
 
+/** Piedmontese (Piemontèis)
+ * @author Bèrto 'd Sèra
+ */
 $messages['pms'] = array(
-	'templatelink' => 'Anliura dlë stamp',
-	'templatelink_empty' => 'A venta ch\'a buta un paràmetr.',
+	'templatelink'          => 'Anliura dlë stamp',
+	'templatelink_empty'    => "A venta ch'a buta un paràmetr.",
 	'templatelink_newtitle' => '$1 (an transclusion)',
 );
 
@@ -218,6 +231,7 @@ $messages['pt'] = array(
  */
 $messages['sk'] = array(
 	'templatelink'          => 'Odkaz šablóny',
+	'templatelink_desc'     => 'Toto rozšírenie dokáže zobraziť šablónu ako novú stránku',
 	'templatelink_empty'    => 'Musíte zadať parameter.',
 	'templatelink_newtitle' => '$1 (transkludovaná)',
 );

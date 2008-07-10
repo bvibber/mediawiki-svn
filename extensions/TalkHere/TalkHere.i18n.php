@@ -250,7 +250,7 @@ Operator situs iki ora bisa dianggep tanggung jawab kanggo isi komentar-komentar
 	'talkhere-collapse'    => 'delikna éditor',
 );
 
-/** ‫قازاقشا (جۇنگو)‬ (‫قازاقشا (جۇنگو)‬)
+/** Kazakh (Arabic script) (‫قازاقشا (تٴوتە)‬)
  * @author Alefzet
  */
 $messages['kk-arab'] = array(
@@ -265,7 +265,7 @@ $messages['kk-arab'] = array(
 	'talkhere-collapse'    => 'ٶڭدەۋٸشتٸ جاسىر',
 );
 
-/** ‪Қазақша (Қазақстан)‬ (‪Қазақша (Қазақстан)‬)
+/** Kazakh (Cyrillic) (Қазақша (Cyrillic))
  * @author Alefzet
  */
 $messages['kk-cyrl'] = array(
@@ -280,7 +280,7 @@ $messages['kk-cyrl'] = array(
 	'talkhere-collapse'    => 'өңдеуішті жасыр',
 );
 
-/** ‪Qazaqşa (Türkïya)‬ (‪Qazaqşa (Türkïya)‬)
+/** Kazakh (Latin) (Қазақша (Latin))
  * @author Alefzet
  */
 $messages['kk-latn'] = array(
@@ -366,7 +366,7 @@ De beheerders van deze site dragen geen verantwoordelijkheid voor de inhoud van 
 	'talkhere-collapse'    => 'editor verbergen',
 );
 
-/** Norwegian (‪Norsk (bokmål)‬)
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */
 $messages['no'] = array(
@@ -413,7 +413,7 @@ Administratorzy tej strony nie mogą brać odpowiedzialności za zawartość tak
 	'talkhere-collapse'    => 'ukryj edytor',
 );
 
-/** Piemontèis (Piemontèis)
+/** Piedmontese (Piemontèis)
  * @author Bèrto 'd Sèra
  */
 $messages['pms'] = array(
@@ -465,6 +465,7 @@ $messages['ru'] = array(
  * @author Helix84
  */
 $messages['sk'] = array(
+	'talkhere-desc'        => 'Dáva diskusnú stránku na stránku',
 	'talkhere-foottext'    => 'Tieto komentáre mohli zanechať návštevníci.
 
 Prevádzkovatelia tejto stránky nepreberajú zodpovednosť za obsah takýchto komentárov.',

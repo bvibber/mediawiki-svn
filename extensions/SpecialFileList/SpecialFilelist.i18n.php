@@ -492,7 +492,7 @@ $messages['sk'] = array(
 	'filelist-image-desc'   => 'popis',
 );
 
-/** ћирилица (ћирилица)
+/** Serbian Cyrillic ekavian (ћирилица)
  * @author Sasa Stefanovic
  */
 $messages['sr-ec'] = array(

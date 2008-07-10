@@ -20,7 +20,6 @@ $messages['en'] = array(
 $messages['ar'] = array(
 	'tidy'   => 'ترتيب',
 	'untidy' => 'لا ترتيب',
-
 );
 
 /** German (Deutsch)
@@ -29,7 +28,6 @@ $messages['ar'] = array(
 $messages['de'] = array(
 	'tidy'   => 'Ordnen',
 	'untidy' => 'Nicht ordnen',
-
 );
 
 /** French (Français)
@@ -51,8 +49,11 @@ $messages['gl'] = array(
 	'untidy'    => 'Desordenado',
 );
 
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
 $messages['hsb'] = array(
-	'tidy' => 'Porjadny',
+	'tidy'   => 'Porjadny',
 	'untidy' => 'Njeporjadny',
 );
 
@@ -133,8 +134,9 @@ $messages['ru'] = array(
  * @author Helix84
  */
 $messages['sk'] = array(
-	'tidy'   => 'Upratať',
-	'untidy' => 'Zrušiť upratanie',
+	'tidy-desc' => 'Pridáva záložku na formátovanie alebo zrušenie formátovania (v závislosti od premennej $wgUseTidy) na bežné stránky, ktorá má prednosť pred globálnym nastavením formátovania HTML na jediné zobrazenie',
+	'tidy'      => 'Upratať',
+	'untidy'    => 'Zrušiť upratanie',
 );
 
 /** Seeltersk (Seeltersk)

@@ -83,21 +83,22 @@ $messages['bg'] = array(
 	'tasklistbyname'         => '== Списък със задачи за %s ==',
 );
 
+/** German (Deutsch) */
 $messages['de'] = array(
-	'tasklist'                => 'Aufgabenliste',
-	'tasklistbyproject'       => 'Aufgabenliste pro Projekt',
-	'tasklistunknownproject'  => 'Unbekanntes Projekt',
-	'tasklistunspecuser'      => 'Unbestimmter Benutzername',
-	'tasklistincorrectuser'   => 'Falscher Benutzername',
-	'tasklistemail'           => 'Hallo %s',
-	'tasklistemailsubject'    => '[%s]-Aufgabenliste Änderungen',
-	'tasklistmytasks'         => 'Meine Aufgaben',
-	'tasklistbyprojectbad'    => "Projekt '''%s''' ist nicht vorhanden. Für eine Liste gültiger Projekt siehe [[MediaWiki:TodoTasksValidProjects]].",
-	'tasklistbyprojname'      => "Zugewiesene Aufgaben für '''%s'''",
-	'tasklistchooseproj'      => 'Projekt: auswählen:',
-	'tasklistprojdisp'        => 'Anzeigen',
-	'tasklistbyname'          => '== Aufgabenliste für %s ==',
-	'tasklistnoprojects'      => "Fehler: Es sieht so aus, als wenn '''\$wgUseProjects''' aktiviert wäre, aber es wurde keine Seiten [[MediaWiki:TodoTasksValidProjects]] erstellt. Siehe die [http://www.mediawiki.org/wiki/Extension:Todo_Tasks#Step_8 Installationsanweisungen] für weitere Details.",
+	'tasklist'               => 'Aufgabenliste',
+	'tasklistbyproject'      => 'Aufgabenliste pro Projekt',
+	'tasklistunknownproject' => 'Unbekanntes Projekt',
+	'tasklistunspecuser'     => 'Unbestimmter Benutzername',
+	'tasklistincorrectuser'  => 'Falscher Benutzername',
+	'tasklistemail'          => 'Hallo %s',
+	'tasklistemailsubject'   => '[%s]-Aufgabenliste Änderungen',
+	'tasklistmytasks'        => 'Meine Aufgaben',
+	'tasklistbyprojectbad'   => "Projekt '''%s''' ist nicht vorhanden. Für eine Liste gültiger Projekt siehe [[MediaWiki:TodoTasksValidProjects]].",
+	'tasklistbyprojname'     => "Zugewiesene Aufgaben für '''%s'''",
+	'tasklistchooseproj'     => 'Projekt: auswählen:',
+	'tasklistprojdisp'       => 'Anzeigen',
+	'tasklistbyname'         => '== Aufgabenliste für %s ==',
+	'tasklistnoprojects'     => "Fehler: Es sieht so aus, als wenn '''\$wgUseProjects''' aktiviert wäre, aber es wurde keine Seiten [[MediaWiki:TodoTasksValidProjects]] erstellt. Siehe die [http://www.mediawiki.org/wiki/Extension:Todo_Tasks#Step_8 Installationsanweisungen] für weitere Details.",
 );
 
 /** Esperanto (Esperanto)
@@ -176,21 +177,22 @@ Para ver a súa lista completa de tarefas vaia a %s.
 O seu sistema agradable de notificacións %s',
 );
 
+/** Hebrew (עברית) */
 $messages['he'] = array(
-	'tasklist'                => 'רשימת מטלות',
-	'tasklistbyproject'       => 'רשימת מטלות לפי פרוייקטים',
-	'tasklistunknownproject'  => 'פרוייקט לא ידוע',
-	'tasklistunspecuser'      => 'משתמש לא מוגדר',
-	'tasklistincorrectuser'   => 'משתמש לא נכון',
-	'tasklistemail'           => '%s היקר והחביב',
-	'tasklistemailsubject'    => '[%s] שיוני ברשימת המטלות',
-	'tasklistmytasks'         => 'המטלות שלי',
-	'tasklistbyprojectbad'    => "פרוייקט '''%s''' איננו קיים. לקבלת רשימת הפרוייקטים, צפה כאן [[MediaWiki:TodoTasksValidProjects]].",
-	'tasklistbyprojname'      => "מטלה הוגדרה ל'''%s'''",
-	'tasklistchooseproj'      => 'בחר פרוייקט:',
-	'tasklistprojdisp'        => 'תצוגה',
-	'tasklistbyname'          => '== רשימת מטלות עבור %s ==',
-	'tasklistnoprojects'      => "שגיאה: נראה שאפשרת את '''\$wgUseProjects''', אבל לא יצרת [[MediaWiki:TodoTasksValidProjects]]. ראה [http://www.mediawiki.org/wiki/Extension:Todo_Tasks#Step_8 Installation Instructions] for more details.",
+	'tasklist'               => 'רשימת מטלות',
+	'tasklistbyproject'      => 'רשימת מטלות לפי פרוייקטים',
+	'tasklistunknownproject' => 'פרוייקט לא ידוע',
+	'tasklistunspecuser'     => 'משתמש לא מוגדר',
+	'tasklistincorrectuser'  => 'משתמש לא נכון',
+	'tasklistemail'          => '%s היקר והחביב',
+	'tasklistemailsubject'   => '[%s] שיוני ברשימת המטלות',
+	'tasklistmytasks'        => 'המטלות שלי',
+	'tasklistbyprojectbad'   => "פרוייקט '''%s''' איננו קיים. לקבלת רשימת הפרוייקטים, צפה כאן [[MediaWiki:TodoTasksValidProjects]].",
+	'tasklistbyprojname'     => "מטלה הוגדרה ל'''%s'''",
+	'tasklistchooseproj'     => 'בחר פרוייקט:',
+	'tasklistprojdisp'       => 'תצוגה',
+	'tasklistbyname'         => '== רשימת מטלות עבור %s ==',
+	'tasklistnoprojects'     => "שגיאה: נראה שאפשרת את '''\$wgUseProjects''', אבל לא יצרת [[MediaWiki:TodoTasksValidProjects]]. ראה [http://www.mediawiki.org/wiki/Extension:Todo_Tasks#Step_8 Installation Instructions] for more details.",
 );
 
 /** Upper Sorbian (Hornjoserbsce)
@@ -253,6 +255,7 @@ Sistém notifikasi panjenengan %s',
 /** Khmer (ភាសាខ្មែរ)
  * @author គីមស៊្រុន
  * @author Chhorran
+ * @author Lovekhmer
  */
 $messages['km'] = array(
 	'tasklist'               => 'បញ្ជីពិភាក្សា',
@@ -262,6 +265,7 @@ $messages['km'] = array(
 	'tasklistemail'          => 'ជូនចំពោះ %s',
 	'tasklistmytasks'        => 'កិច្ចការ​របស់ខ្ញុំ',
 	'tasklistchooseproj'     => 'ជ្រើសយក​គំរោង ៖',
+	'tasklistprojdisp'       => 'បង្ហាញ',
 );
 
 /** Ripoarisch (Ripoarisch)
@@ -516,6 +520,7 @@ Váš priateľský upozorňovací systém %s',
 
 /** Seeltersk (Seeltersk)
  * @author Pyt
+ * @author Siebrand
  */
 $messages['stq'] = array(
 	'tasklist'               => 'Apgoawenlieste',
@@ -610,23 +615,24 @@ $messages['vo'] = array(
 	'tasklistemail' => 'O %s löfik',
 );
 
-$messages['zh-cn'] = array(         //Simple Chinese
-	'tasklist'                => '任务列表',  //Task List
-	'tasklistbyproject'       => '依专案列出任务', //Task List By Project
-	'tasklistunknownproject'  => '未知的专案', //Unknown project
-	'tasklistunspecuser'      => '未指定用户', //Unspecified user
-	'tasklistincorrectuser'   => '用户名称错误',  //Incorrect username
-	'tasklistemail'           => '%s您好',  //Dear %s
-	'tasklistemailsubject'    => '[%s] 任务列表变更', //Task List Change
-	'tasklistmytasks'         => '我的任务',  //My tasks
-	'tasklistbyprojectbad'    => "专案「'''%s'''」并非是个有效的专案项目.请参考[[MediaWiki:TodoTasksValidProjects]]页面以察看专案列表",
-	'tasklistbyprojname'      => "'''%s'''项下的任务", //Assigned Tasks for '''%s'''
-	'tasklistchooseproj'      => '选取专案：', //Select Project:
-	'tasklistprojdisp'        => '显示',  //Display
-	'tasklistbyname'          => '==  名称为「%s」的任务 ==', //== Todo List for %s ==
+/** ‪中文(中国大陆)‬ (‪中文(中国大陆)‬) */
+$messages['zh-cn'] = array(
+	'tasklist'               => '任务列表',
+	'tasklistbyproject'      => '依专案列出任务',
+	'tasklistunknownproject' => '未知的专案',
+	'tasklistunspecuser'     => '未指定用户',
+	'tasklistincorrectuser'  => '用户名称错误',
+	'tasklistemail'          => '%s您好',
+	'tasklistemailsubject'   => '[%s] 任务列表变更',
+	'tasklistmytasks'        => '我的任务',
+	'tasklistbyprojectbad'   => "专案「'''%s'''」并非是个有效的专案项目.请参考[[MediaWiki:TodoTasksValidProjects]]页面以察看专案列表",
+	'tasklistbyprojname'     => "'''%s'''项下的任务",
+	'tasklistchooseproj'     => '选取专案：',
+	'tasklistprojdisp'       => '显示',
+	'tasklistbyname'         => '==  名称为「%s」的任务 ==',
 );
 
-/** ‪中文(台灣)‬ (‪中文(台灣)‬)
+/** Taiwan Chinese (‪中文(台灣)‬)
  * @author Roc michael
  */
 $messages['zh-tw'] = array(

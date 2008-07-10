@@ -13,16 +13,23 @@ $messages['en'] = array(
 	'stalepages-summary' => 'This is a list of pages that have not been edited in the last $1 days.',
 );
 
+/** Arabic (العربية)
+ * @author Meno25
+ */
 $messages['ar'] = array(
 	'stalepages'         => 'صفحات مستقرة',
 	'stalepages-summary' => 'هذه قائمة بالصفحات التي لم يتم تعديلها في آخر $1 يوم.',
 );
 
+/** Bulgarian (Български)
+ * @author Spiritia
+ */
 $messages['bg'] = array(
 	'stalepages'         => 'Стари страници',
 	'stalepages-summary' => 'Това е списък от страници, които не са били редактирани през последните $1 дни.',
 );
 
+/** German (Deutsch) */
 $messages['de'] = array(
 	'stalepages'         => 'Alte Seiten',
 	'stalepages-summary' => 'Dies ist eine Liste von Seiten, die in den letzten $1 Tagen nicht bearbeitet wurden.',
@@ -87,6 +94,9 @@ $messages['hr'] = array(
 	'stalepages-summary' => 'Ovo je popis stranica koje nisu mijenjane {{PLURAL:$1|poslijednji $1 dan|poslijednja $1 dana|poslijednjih $1 dana}}.',
 );
 
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
 $messages['hsb'] = array(
 	'stalepages'         => 'spadnjene strony',
 	'stalepages-summary' => 'To je lisćina stronow, kotrež njebuchu za {{PLURAL:$1|posledni $1 dźeń|poslednjeju $1 dnjow|posdlednje $1 dny|poslednych $1 dnjow}} změnjene.',
@@ -156,7 +166,7 @@ $messages['nl'] = array(
 	'stalepages-summary' => "Dit is een lijst van pagina's die niet bewerkt zijn in de afgelopen $1 dagen.",
 );
 
-/** Norwegian (‪Norsk (bokmål)‬)
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */
 $messages['no'] = array(
@@ -193,6 +203,7 @@ $messages['pt'] = array(
  */
 $messages['sk'] = array(
 	'stalepages'         => 'Neaktívne stránky',
+	'stalepages-desc'    => 'Vytrvára [[Special:Stalepages|zoznam stránok]], ktoré neboli v poslednej dobe upravované',
 	'stalepages-summary' => 'Toto je zoznam stránok, ktoré neboli upravované aspoň $1 dní.',
 );
 

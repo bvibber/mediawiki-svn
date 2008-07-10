@@ -305,7 +305,7 @@ $messages['nn'] = array(
 	'showprocesslist-user' => 'Brukar',
 );
 
-/** Norwegian (‪Norsk (bokmål)‬)
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */
 $messages['no'] = array(
@@ -457,7 +457,7 @@ $messages['te'] = array(
 	'showprocesslist-state'   => 'స్థితి',
 );
 
-/** Tajik (Тоҷикӣ)
+/** Tajik (Cyrillic) (Тоҷикӣ/tojikī (Cyrillic))
  * @author Ibrahim
  */
 $messages['tg-cyrl'] = array(

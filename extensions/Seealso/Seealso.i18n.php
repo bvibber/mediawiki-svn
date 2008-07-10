@@ -95,7 +95,7 @@ $messages['fi'] = array(
  * @author Bertrand GRONDIN
  */
 $messages['fr'] = array(
-	'seealso' => 'Voir aussi',
+	'seealso'      => 'Voir aussi',
 	'seealso-desc' => 'En-tête « Voir aussi » utilisée par la balise <code><nowiki><seealso></nowiki></code>',
 );
 
@@ -205,7 +205,7 @@ $messages['nl'] = array(
 	'seealso-desc' => "Gelokaliseerde kopjes 'Zie ook' met de tag <code><nowiki><seealso></nowiki></code>",
 );
 
-/** Norwegian (‪Norsk (bokmål)‬)
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */
 $messages['no'] = array(
@@ -314,7 +314,7 @@ $messages['vo'] = array(
 	'seealso' => 'Logolös i',
 );
 
-/** ‪中文(台灣)‬ (‪中文(台灣)‬)
+/** Taiwan Chinese (‪中文(台灣)‬)
  * @author Roc michael
  */
 $messages['zh-tw'] = array(

@@ -222,22 +222,22 @@ $messages['da'] = array(
 	'usagestatisticsintervalmonth' => 'Måned',
 );
 
-/** Deutsch (German)
-* @author Katharina Wolkwitz
-*/
-$messages['de'] =array(
-  'specialuserstats'           => 'Nutzungs-Statistik',
-  'usagestatistics'            => 'Nutzungs-Statistik',
-  'usagestatisticsfor'         => '<h2>Nutzungs-Statistik für [[User:$1|$1]]</h2>',
-  'usagestatisticsallusers'    => 'Alle Nutzer',
-  'usagestatisticsinterval'    => 'Zeitraum',
-  'usagestatisticstype'        => 'Berechnungsart',
-  'usagestatisticsstart'       => 'Start-Datum',
-  'usagestatisticsend'         => 'End-Datum',
-  'usagestatisticssubmit'      => 'Statistik generieren',
-  'usagestatisticsnostart'     => '* <font color=red>Start-Datum eingeben</font>',
-  'usagestatisticsnoend'       => '* <font color=red>End-Datum eingeben</font>',
-  'usagestatisticsbadstartend' => '<b>Unpassendes/fehlerhaftes <i>Start-Datum</i> oder <i>End-Datum</i> !</b>',
+/** German (Deutsch)
+ * @author Katharina Wolkwitz
+ */
+$messages['de'] = array(
+	'specialuserstats'           => 'Nutzungs-Statistik',
+	'usagestatistics'            => 'Nutzungs-Statistik',
+	'usagestatisticsfor'         => '<h2>Nutzungs-Statistik für [[User:$1|$1]]</h2>',
+	'usagestatisticsallusers'    => 'Alle Nutzer',
+	'usagestatisticsinterval'    => 'Zeitraum',
+	'usagestatisticstype'        => 'Berechnungsart',
+	'usagestatisticsstart'       => 'Start-Datum',
+	'usagestatisticsend'         => 'End-Datum',
+	'usagestatisticssubmit'      => 'Statistik generieren',
+	'usagestatisticsnostart'     => '* <font color=red>Start-Datum eingeben</font>',
+	'usagestatisticsnoend'       => '* <font color=red>End-Datum eingeben</font>',
+	'usagestatisticsbadstartend' => '<b>Unpassendes/fehlerhaftes <i>Start-Datum</i> oder <i>End-Datum</i> !</b>',
 );
 
 /** Lower Sorbian (Dolnoserbski)
@@ -801,6 +801,7 @@ $messages['sk'] = array(
 /** Swedish (Svenska)
  * @author Lejonel
  * @author M.M.S.
+ * @author Sannab
  */
 $messages['sv'] = array(
 	'specialuserstats'                => 'Användarstatistik',

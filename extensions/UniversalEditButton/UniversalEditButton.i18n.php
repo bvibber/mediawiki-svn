@@ -172,21 +172,21 @@ $messages['vec'] = array(
 	'universaleditbutton-desc' => "Zonta l'intestassion HTML <code>&lt;link&gt;</code> par suportar l'estension del browser Universal Edit Button",
 );
 
-/** Cantonese
+/** Yue (粵語)
  * @author Shinjiman
  */
 $messages['yue'] = array(
 	'universaleditbutton-desc' => '加入HTML版頭<code>&lt;link&gt;</code>去支援萬用編輯掣瀏覽器擴展',
 );
 
-/** Chinese (Simplified)
+/** Simplified Chinese (‪中文(简体)‬)
  * @author Shinjiman
  */
 $messages['zh-hans'] = array(
 	'universaleditbutton-desc' => '加入HTML页首<code>&lt;link&gt;</code>去支持万用编辑按钮浏览器扩展',
 );
 
-/** Chinese (Traditional)
+/** Traditional Chinese (‪中文(繁體)‬)
  * @author Shinjiman
  */
 $messages['zh-hant'] = array(

@@ -19,6 +19,9 @@ $messages['rtm'] = array(
 	'usercontactlink-baduser' => 'Seseva',
 );
 
+/** Arabic (العربية)
+ * @author Meno25
+ */
 $messages['ar'] = array(
 	'usercontactlink-baduser' => 'اسم مستخدم غير صحيح',
 );
@@ -44,6 +47,7 @@ $messages['bn'] = array(
 	'usercontactlink-baduser' => 'বেঠিক ব্যবহারকারী নাম',
 );
 
+/** German (Deutsch) */
 $messages['de'] = array(
 	'usercontactlink-baduser' => 'falscher Benutzername',
 );
@@ -72,6 +76,9 @@ $messages['gl'] = array(
 	'usercontactlink-desc'    => 'Proporciona a capacidade de engadir sinxela e consistentemente outros nomes de usuario usando a sintaxe ^^^user^^^',
 );
 
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
 $messages['hsb'] = array(
 	'usercontactlink-baduser' => 'njekorektne wužiwarske mjeno',
 );
@@ -85,9 +92,10 @@ $messages['jv'] = array(
 
 /** Khmer (ភាសាខ្មែរ)
  * @author Chhorran
+ * @author Lovekhmer
  */
 $messages['km'] = array(
-	'usercontactlink-baduser' => 'ឈ្មោះអ្នកប្រើប្រាស់ មិនត្រឹមត្រូវ',
+	'usercontactlink-baduser' => 'ឈ្មោះអ្នកប្រើប្រាស់មិនត្រឹមត្រូវទេ',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

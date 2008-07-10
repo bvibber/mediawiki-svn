@@ -188,7 +188,7 @@ $messages['nl'] = array(
 	'selectcategory-subtitle' => 'Shiftklik om meerdere opeenvolgende categorieën te selecteren, Ctrlklik om niet-openvolgende categorieën te selecteren.',
 );
 
-/** Norwegian (‪Norsk (bokmål)‬)
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */
 $messages['no'] = array(
@@ -214,7 +214,7 @@ $messages['pl'] = array(
 	'selectcategory-subtitle' => 'Shift+przycisk myszy wybiera wiele sąsiednich elementów, Ctrl+przycisk myszy wybiera elementy, które nie są koło siebie',
 );
 
-/** Piemontèis (Piemontèis)
+/** Piedmontese (Piemontèis)
  * @author Bèrto 'd Sèra
  */
 $messages['pms'] = array(

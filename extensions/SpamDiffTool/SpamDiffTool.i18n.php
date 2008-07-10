@@ -119,17 +119,20 @@ $messages['cy'] = array(
 	'spamdifftool_cantedit' => "Sylwer - nid yw'r gallu gennych i olygu'r rhestr spam gwaharddedig.",
 );
 
+/** German (Deutsch)
+ * @author Consta
+ */
 $messages['de'] = array(
 	'spamdifftool'                  => 'Spam-Blacklist bearbeiten',
 	'spamdifftool_cantedit'         => 'Du hast keine Berechitung zur Bearbeitung der Spam-Blacklist.',
-	'spamdifftool_notext'           => 'Es gibt keinen Text, welcher der Spam-Blacklist hinzugefügt werden könnte. Klicke <a href=\'$1\'>hier</a> zum Forfahren.',
-	'spamdifftool_confirm'          => 'Bestätige, dass du diese Einträge der Spam-Blacklist hinzufügen möchtest. (Klicke <a href=\'http://www.mediawiki.org/w/index.php?title=Talk:SpamDiffTool_Extension&action=edit&section=new\' target=\'new\'>hier</a>, um ein Problem zu melden.)',
+	'spamdifftool_notext'           => "Es gibt keinen Text, welcher der Spam-Blacklist hinzugefügt werden könnte. Klicke <a href='$1'>hier</a> zum Forfahren.",
+	'spamdifftool_confirm'          => "Bestätige, dass du diese Einträge der Spam-Blacklist hinzufügen möchtest. (Klicke <a href='http://www.mediawiki.org/w/index.php?title=Talk:SpamDiffTool_Extension&action=edit&section=new' target='new'>hier</a>, um ein Problem zu melden.)",
 	'spamdifftool_summary'          => 'Zur Spam-Blacklist hinzufügen',
 	'spamdifftool_urls_detected'    => 'Die folgenden URLs wurden in der Bearbeitung gefunden, welche davon möchtest du der Spam-Blacklist hinzufügen?
 	Die Reihenfolge geht von sehr einschränkend bis weniger einschränkend, das Eintragen einer ganzen Domain blockiert alle Links, die von dieser Domain kommen.
 
 Stelle sicher, dass du nicht komplette Domains blockirst, die separate Benutzerinhalte bereitstellen, wie z. B. blogpost.com, geocities.com usw.',
-	'spamdifftool_no_urls_detected' => 'Es wurden keine URLs gefunden. Klicke <a href=\'$1\'>hier</a>, um zurückzugehen.',
+	'spamdifftool_no_urls_detected' => "Es wurden keine URLs gefunden. Klicke <a href='$1'>hier</a>, um zurückzugehen.",
 	'spamdifftool_spam_link_text'   => 'zu Spam hinzufügen',
 	'spamdifftool_option_domain'    => 'alle von dieser Domain',
 	'spamdifftool_option_subdomain' => 'alle von dieser Subdomain',
@@ -137,7 +140,7 @@ Stelle sicher, dass du nicht komplette Domains blockirst, die separate Benutzeri
 	'spamdifftool_option_none'      => 'nichts',
 	'spamdifftool_block'            => 'Sperre:',
 	'spamdifftool_submit_buttom'    => 'Speichern',
-	);
+);
 
 /** Greek (Ελληνικά)
  * @author Consta
@@ -284,6 +287,10 @@ $messages['ksh'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
+	'spamdifftool'                  => 'Gestioun vun der schwaarzer Lëscht vum Spam',
+	'spamdifftool_summary'          => "Op d'schwaarz Lëscht vum Spam derbäisetzen",
+	'spamdifftool_no_urls_detected' => "Et goufe keng URLe fonnt.
+Klickt w.e.g. <a href='$1'>heihi</a> fir zréck.",
 	'spamdifftool_spam_link_text'   => 'bäi de Spam derbäisetzen',
 	'spamdifftool_option_domain'    => 'all vun dësem Domain',
 	'spamdifftool_option_subdomain' => 'all vun dësem Subdomain',

@@ -15,9 +15,12 @@ Please wait a moment and hit 'reload' in your browser to resubmit.",
 	'acct_creation_global_soft_throttle_hit-desc' => 'Throttle user creation',
 );
 
+/** Arabic (العربية)
+ * @author Meno25
+ */
 $messages['ar'] = array(
 	'acct_creation_global_soft_throttle_hit' => 'إنشاء الحسابات تم تعليقه تلقائيا لعدة لحظات نتيجة لوجود عدد كبير غير معتاد من محاولات الدخول الحديثة. من فضلك انتظر عدة دقائق وحاول مرة ثانية.',
-	'acct_creation_global_hard_throttle_hit' => 'إنشاء الحسابات تم تعليقه لعدة ثواني لتقليل هجوم التسجيل. من فضلك انتظر لحظة واضغط \'reload\' في متصفحك لإعادة التنفيذ.',
+	'acct_creation_global_hard_throttle_hit' => "إنشاء الحسابات تم تعليقه لعدة ثواني لتقليل هجوم التسجيل. من فضلك انتظر لحظة واضغط 'reload' في متصفحك لإعادة التنفيذ.",
 );
 
 /** Bulgarian (Български)
@@ -36,12 +39,12 @@ $messages['de'] = array(
 	'acct_creation_global_soft_throttle_hit-desc' => 'Drosselung der Neuanmeldungen',
 );
 
-/** German - formal address (Deutsch - förmliche Anrede)
+/** German (formal address) (Deutsch (Sie-Form))
  * @author Raimond Spekking
  */
 $messages['de-formal'] = array(
-	'acct_creation_global_soft_throttle_hit'      => 'Die Möglichkeit zur Erstellung von Benutzerkonten wurde für einen Moment aufgehoben, da es eine ungewöhnlich hohe Anzahl an Anmeldeversuchen gab. Bitte wartem Sie einige Minuten und versuchen Sie es dann erneut.',
-	'acct_creation_global_hard_throttle_hit'      => 'Die Möglichkeit zur Erstellung von Benutzerkonten wurde für einige Sekunden unterbrochen, um eine Flut von Registrierungen zu reduzieren. Bitte warten Sie einen Moment und drücken Sie dann die Neuladen-Schaltfläche an Ihrem Browser.',
+	'acct_creation_global_soft_throttle_hit' => 'Die Möglichkeit zur Erstellung von Benutzerkonten wurde für einen Moment aufgehoben, da es eine ungewöhnlich hohe Anzahl an Anmeldeversuchen gab. Bitte wartem Sie einige Minuten und versuchen Sie es dann erneut.',
+	'acct_creation_global_hard_throttle_hit' => 'Die Möglichkeit zur Erstellung von Benutzerkonten wurde für einige Sekunden unterbrochen, um eine Flut von Registrierungen zu reduzieren. Bitte warten Sie einen Moment und drücken Sie dann die Neuladen-Schaltfläche an Ihrem Browser.',
 );
 
 /** Esperanto (Esperanto)
@@ -57,8 +60,8 @@ $messages['eo'] = array(
  * @author Grondin
  */
 $messages['fr'] = array(
-	'acct_creation_global_soft_throttle_hit' => 'La création du compte a été automatiquement suspendue pour un certain temps. Ceci est dû à un fort nombre de créations de comptes. Patientez pendant quelques minutes puis essayez à nouveau.',
-	'acct_creation_global_hard_throttle_hit' => 'La création a été automatiquement suspendue pendant quelques secondes afin de limiter les attaques informatiques par enregistrement en masse de nouveaux comptes. Patientez un moment et cliquez sur « recharger »  dans votre navigateur pour soumettre, une nouvelle fois, la demande.',
+	'acct_creation_global_soft_throttle_hit'      => 'La création du compte a été automatiquement suspendue pour un certain temps. Ceci est dû à un fort nombre de créations de comptes. Patientez pendant quelques minutes puis essayez à nouveau.',
+	'acct_creation_global_hard_throttle_hit'      => 'La création a été automatiquement suspendue pendant quelques secondes afin de limiter les attaques informatiques par enregistrement en masse de nouveaux comptes. Patientez un moment et cliquez sur « recharger »  dans votre navigateur pour soumettre, une nouvelle fois, la demande.',
 	'acct_creation_global_soft_throttle_hit-desc' => 'Limite la création d’utilisateurs',
 );
 

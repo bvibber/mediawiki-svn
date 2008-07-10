@@ -41,6 +41,7 @@ $messages['gl'] = array(
 	'tab0-desc' => 'Engade a lapela "0", ligando á páxina de edición da primeira sección da páxina',
 );
 
+/** Hebrew (עברית) */
 $messages['he'] = array(
 	'tab0-desc' => 'הוספת לשונית "0" המקשרת לעריכת הפסקה הראשונה בדף',
 );

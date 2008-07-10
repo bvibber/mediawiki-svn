@@ -19,8 +19,8 @@ $messages['bg'] = array(
 /** German (Deutsch)
  * @author Raimond Spekking
  */
-$messages['de'] = array (
-	'tooltip-desc' => 'Ergänzt die <tt><nowiki><tooltip></nowiki></tt> und <tt><nowiki>{{#tooltip:}}</nowiki></tt> Tags'
+$messages['de'] = array(
+	'tooltip-desc' => 'Ergänzt die <tt><nowiki><tooltip></nowiki></tt> und <tt><nowiki>{{#tooltip:}}</nowiki></tt> Tags',
 );
 
 /** Lower Sorbian (Dolnoserbski)
@@ -115,7 +115,7 @@ $messages['sv'] = array(
 	'tooltip-desc' => 'Lägger till <tt><nowiki><tooltip></nowiki></tt> och <tt><nowiki>{{#tooltip:}}</nowiki></tt>-taggarna',
 );
 
-/** ‪中文(台灣)‬ (‪中文(台灣)‬)
+/** Taiwan Chinese (‪中文(台灣)‬)
  * @author Roc michael
  */
 $messages['zh-tw'] = array(

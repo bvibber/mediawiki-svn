@@ -134,6 +134,9 @@ $messages['an'] = array(
 	'sign-submitreview'            => 'Nimbiar rebisión',
 );
 
+/** Old English (Anglo-Saxon)
+ * @author SPQRobin
+ */
 $messages['ang'] = array(
 	'sign-realname' => 'Nama:',
 );
@@ -228,19 +231,22 @@ $1',
 	'sign-uniquequery-1signed2'       => '[{{SERVER}}{{localurl: Special:SignDocument|doc=$4&viewsigs&detail=$3}} $1] وقع [{{SERVER}}{{localurl: Special:SignDocument|doc=$4&viewsigs}} $2].',
 );
 
+/** Bikol Central (Bikol Central)
+ * @author Filipinayzd
+ */
 $messages['bcl'] = array(
-	'signdocument' => 'Pirmahan an Dokumento',
-	'sign-selectdoc' => 'Dokumento:',
-	'sign-realname' => 'Pangaran:',
-	'sign-city' => 'Ciudad:',
-	'sign-country' => 'Nacion:',
-	'sign-viewfield-realname' => 'Pangaran',
-	'sign-viewfield-address' => 'Istaran',
-	'sign-viewfield-city' => 'Ciudad',
-	'sign-viewfield-country' => 'Nacion',
-	'sign-viewfield-age' => 'Edad',
+	'signdocument'                 => 'Pirmahan an Dokumento',
+	'sign-selectdoc'               => 'Dokumento:',
+	'sign-realname'                => 'Pangaran:',
+	'sign-city'                    => 'Ciudad:',
+	'sign-country'                 => 'Nacion:',
+	'sign-viewfield-realname'      => 'Pangaran',
+	'sign-viewfield-address'       => 'Istaran',
+	'sign-viewfield-city'          => 'Ciudad',
+	'sign-viewfield-country'       => 'Nacion',
+	'sign-viewfield-age'           => 'Edad',
 	'sign-viewfield-reviewcomment' => 'Komento',
-	'sign-review-comment' => 'Komento',
+	'sign-review-comment'          => 'Komento',
 );
 
 /** Bulgarian (Български)
@@ -383,20 +389,23 @@ $messages['eo'] = array(
 	'sign-submitreview'            => 'Aldoni kontrolon',
 );
 
+/** Extremaduran (Estremeñu)
+ * @author Better
+ */
 $messages['ext'] = array(
-	'sign-selectdoc' => 'Decumentu:',
-	'sign-error-nosuchdoc' => 'El decumentu que piisti ($1) nu desisti.',
-	'sign-realname' => 'Nombri:',
-	'sign-city' => 'Ciá:',
-	'sign-state' => 'Estau:',
-	'sign-country' => 'Pais:',
+	'sign-selectdoc'          => 'Decumentu:',
+	'sign-error-nosuchdoc'    => 'El decumentu que piisti ($1) nu desisti.',
+	'sign-realname'           => 'Nombri:',
+	'sign-city'               => 'Ciá:',
+	'sign-state'              => 'Estau:',
+	'sign-country'            => 'Pais:',
 	'sign-viewfield-realname' => 'Nombri',
-	'sign-viewfield-city' => 'Ciá',
-	'sign-viewfield-state' => 'Estau',
-	'sign-viewfield-country' => 'Pais',
-	'sign-viewfield-options' => 'Ocionis',
-	'sign-signatures' => 'Firmas',
-	'sign-closed' => 'afechau',
+	'sign-viewfield-city'     => 'Ciá',
+	'sign-viewfield-state'    => 'Estau',
+	'sign-viewfield-country'  => 'Pais',
+	'sign-viewfield-options'  => 'Ocionis',
+	'sign-signatures'         => 'Firmas',
+	'sign-closed'             => 'afechau',
 );
 
 /** French (Français)
@@ -733,6 +742,7 @@ $messages['hy'] = array(
  * @author McDutchie
  */
 $messages['ia'] = array(
+	'sign-viewfield-email'         => 'E-mail',
 	'sign-viewfield-reviewcomment' => 'Commento',
 	'sign-review-comment'          => 'Commento',
 );
@@ -867,13 +877,16 @@ $messages['ksh'] = array(
 	'sign-viewfield-agent'    => 'Brauser',
 );
 
+/** Latin (Latina)
+ * @author SPQRobin
+ */
 $messages['la'] = array(
-	'sign-realname' => 'Nomen:',
-	'sign-city' => 'Urbs:',
-	'sign-viewfield-realname' => 'Nomen',
-	'sign-viewfield-city' => 'Urbs',
+	'sign-realname'                => 'Nomen:',
+	'sign-city'                    => 'Urbs:',
+	'sign-viewfield-realname'      => 'Nomen',
+	'sign-viewfield-city'          => 'Urbs',
 	'sign-viewfield-reviewcomment' => 'Sententia',
-	'sign-review-comment' => 'Sententia',
+	'sign-review-comment'          => 'Sententia',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -1433,7 +1446,7 @@ $messages['pl'] = array(
 	'sign-review-comment'      => 'Komentarz',
 );
 
-/** Piemontèis (Piemontèis)
+/** Piedmontese (Piemontèis)
  * @author Bèrto 'd Sèra
  * @author Siebrand
  */
@@ -1597,6 +1610,9 @@ $messages['pt'] = array(
 	'sign-viewfield-reviewcomment' => 'Comentário',
 );
 
+/** Rhaeto-Romance (Rumantsch)
+ * @author SPQRobin
+ */
 $messages['rm'] = array(
 	'sign-viewfield-realname' => 'Num',
 );
@@ -1892,7 +1908,7 @@ $1',
 	'sign-uniquequery-1signed2'       => '[{{SERVER}}{{localurl: Special:SignDocument|doc=$4&viewsigs&detail=$3}} $1] signerade [{{SERVER}}{{localurl: Special:SignDocument|doc=$4&viewsigs}} $2].',
 );
 
-/** Silesian (ślůnski)
+/** Silesian (Ślůnski)
  * @author Herr Kriss
  */
 $messages['szl'] = array(

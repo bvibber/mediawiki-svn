@@ -67,7 +67,6 @@ $messages['de'] = array(
 	'smoothgallery-desc'                => 'Ermöglicht die Erstellung von interaktiven Bildgalerien',
 	'smoothgallery-title'               => 'SmoothGallery',
 	'smoothgallery-smoothgallerytitle'  => 'SmoothGallery: $1',
-
 	'smoothgallery-error'               => '<b>SmoothGallery-Fehler:</b>',
 	'smoothgallery-gallery-not-found'   => 'Die angeforderte Galerie ist nicht vorhanden.',
 	'smoothgallery-not-found'           => 'Die Galerie enthält keine Bilder. Bitte mindestens ein Bild hinzufügen.',
@@ -224,24 +223,30 @@ $messages['oc'] = array(
 	'smoothgallery-javascript-disabled' => "JavaScript es necessari per veire aquesta galariá d'imatges (<code><nowiki><gallery>...</gallery></nowiki></code>).",
 );
 
+/** Polish (Polski)
+ * @author Derbeth
+ */
 $messages['pl'] = array(
-	'smoothgallery' => 'Płynna galeria',
-	'smoothgallery-title' => 'Płynna galeria',
+	'smoothgallery'                    => 'Płynna galeria',
+	'smoothgallery-title'              => 'Płynna galeria',
 	'smoothgallery-smoothgallerytitle' => 'Płynna galeria: $1',
-	'smoothgallery-error' => '<b>Błąd płynnej galerii:</b>',
-	'smoothgallery-not-found' => 'Nie dodano żadnych grafik do tej galerii. Dodaj przynajmniej jedną grafikę.',
-	'smoothgallery-no-images' => 'Nie znaleziono grafik w tej galerii. Upewnij się, że wszystkie podane grafiki istnieją. Następujące grafiki nie zostały znalezione: $1',
-	'smoothgallery-unexpected-error' => 'Wystąpił niespodziewany błąd. Prosimy o wypełnienie zgłoszenia błędu.',
+	'smoothgallery-error'              => '<b>Błąd płynnej galerii:</b>',
+	'smoothgallery-not-found'          => 'Nie dodano żadnych grafik do tej galerii. Dodaj przynajmniej jedną grafikę.',
+	'smoothgallery-no-images'          => 'Nie znaleziono grafik w tej galerii. Upewnij się, że wszystkie podane grafiki istnieją. Następujące grafiki nie zostały znalezione: $1',
+	'smoothgallery-unexpected-error'   => 'Wystąpił niespodziewany błąd. Prosimy o wypełnienie zgłoszenia błędu.',
 );
 
+/** Piedmontese (Piemontèis)
+ * @author Bèrto 'd Sèra
+ */
 $messages['pms'] = array(
-	'smoothgallery' => 'SmoothGallery',#identical but defined
-	'smoothgallery-title' => 'SmoothGallery',#identical but defined
-	'smoothgallery-smoothgallerytitle' => 'SmoothGallery: $1',#identical but defined
-	'smoothgallery-error' => '<b>SmoothGallery eror:</b>',
-	'smoothgallery-not-found' => 'A l\'é pa giontasse gnun-a figura a la galerìa. Për piasì, ch\'a në gionta almanch un-a.',
-	'smoothgallery-no-images' => 'Pa gnun-a figura trovà ant sta galerìa-sì. Ch\'a contròla che le figure dont a fa da manca a-i sio da bon. A son nen trovasse ste figure-sì: $1',
-	'smoothgallery-unexpected-error' => 'A l\'é sta-ie n\'eror amprevist. Për piasì, ch\'a-j lo segnala aj programator.',
+	'smoothgallery'                    => 'SmoothGallery',
+	'smoothgallery-title'              => 'SmoothGallery',
+	'smoothgallery-smoothgallerytitle' => 'SmoothGallery: $1',
+	'smoothgallery-error'              => '<b>SmoothGallery eror:</b>',
+	'smoothgallery-not-found'          => "A l'é pa giontasse gnun-a figura a la galerìa. Për piasì, ch'a në gionta almanch un-a.",
+	'smoothgallery-no-images'          => "Pa gnun-a figura trovà ant sta galerìa-sì. Ch'a contròla che le figure dont a fa da manca a-i sio da bon. A son nen trovasse ste figure-sì: $1",
+	'smoothgallery-unexpected-error'   => "A l'é sta-ie n'eror amprevist. Për piasì, ch'a-j lo segnala aj programator.",
 );
 
 /** Pashto (پښتو)
@@ -296,7 +301,7 @@ $messages['sk'] = array(
 	'smoothgallery-javascript-disabled' => 'Správne zobrazenie tejto galérie vyžaduje JavaScript.',
 );
 
-/** ћирилица (ћирилица)
+/** Serbian Cyrillic ekavian (ћирилица)
  * @author Sasa Stefanovic
  */
 $messages['sr-ec'] = array(

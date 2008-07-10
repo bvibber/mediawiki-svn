@@ -299,7 +299,7 @@ Xin '''ĐỪNG''' điền gì vào!",
 	'simpleantispam-desc'  => 'Thêm một kiểm tra spam/bot vào mẫu',
 );
 
-/** Cantonese
+/** Yue (粵語)
  * @author Shinjiman
  */
 $messages['yue'] = array(
@@ -309,7 +309,7 @@ $messages['yue'] = array(
 	'simpleantispam-desc'  => '加一個簡單嘅垃圾／機械人檢查表格',
 );
 
-/** Chinese (Simplified)
+/** Simplified Chinese (‪中文(简体)‬)
  * @author Shinjiman
  */
 $messages['zh-hans'] = array(
@@ -319,7 +319,7 @@ $messages['zh-hans'] = array(
 	'simpleantispam-desc'  => '加一个简单的垃圾／机械人检查表格',
 );
 
-/** Chinese (Traditional)
+/** Traditional Chinese (‪中文(繁體)‬)
  * @author Shinjiman
  */
 $messages['zh-hant'] = array(

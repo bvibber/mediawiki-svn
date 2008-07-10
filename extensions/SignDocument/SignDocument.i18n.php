@@ -22,10 +22,11 @@ $messages['ar'] = array(
 	'signaturelogentry'    => 'وقع الوثيقة $1',
 );
 
+/** German (Deutsch) */
 $messages['de'] = array(
-	'signaturelogpage'      => 'Unterschrifts-Logbuch',
-	'signaturelogpagetext'  => 'Dies ist das Unterschrifts-Logbuch für Dokumente, die über die Seite [[{{ns:special}}:SignDocument]] unterschrieben werden können.',
-	'signaturelogentry'     => 'hat das Dokument $1 unterschrieben',
+	'signaturelogpage'     => 'Unterschrifts-Logbuch',
+	'signaturelogpagetext' => 'Dies ist das Unterschrifts-Logbuch für Dokumente, die über die Seite [[{{ns:special}}:SignDocument]] unterschrieben werden können.',
+	'signaturelogentry'    => 'hat das Dokument $1 unterschrieben',
 );
 
 /** Lower Sorbian (Dolnoserbski)
@@ -37,11 +38,14 @@ $messages['dsb'] = array(
 	'signaturelogentry'    => 'jo dokument $1 pódpisał.',
 );
 
+/** French (Français)
+ * @author Sherbrooke
+ */
 $messages['fr'] = array(
-	'signaturelogpage' => 'Journal des signatures',
-	'signature-desc'        => 'Active la [[Special:SignDocument|signature]] des documents',
+	'signaturelogpage'     => 'Journal des signatures',
+	'signature-desc'       => 'Active la [[Special:SignDocument|signature]] des documents',
 	'signaturelogpagetext' => 'Ceci est le journal de toutes les signatures ajoutées aux documents via [[Special:SignDocument]].',
-	'signaturelogentry' => 'a signé le document $1.',
+	'signaturelogentry'    => 'a signé le document $1.',
 );
 
 /** Galician (Galego)
@@ -120,7 +124,7 @@ $messages['nl'] = array(
 	'signaturelogentry'    => 'ondertekende het document $1',
 );
 
-/** Norwegian (‪Norsk (bokmål)‬)
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */
 $messages['no'] = array(
@@ -147,10 +151,13 @@ $messages['pl'] = array(
 	'signaturelogentry' => 'podpisał dokument $1',
 );
 
+/** Piedmontese (Piemontèis)
+ * @author Bèrto 'd Sèra
+ */
 $messages['pms'] = array(
-	'signaturelogpage' => 'Registr dle firme',
-	'signaturelogpagetext' => 'Sòn a l\'é ël registr dle firme giontà ant sëj document ën dovrand la fonsion ëd [[Special:SignDocument|firma digital]].',
-	'signaturelogentry' => 'a l\'é firmasse ël document $1',
+	'signaturelogpage'     => 'Registr dle firme',
+	'signaturelogpagetext' => "Sòn a l'é ël registr dle firme giontà ant sëj document ën dovrand la fonsion ëd [[Special:SignDocument|firma digital]].",
+	'signaturelogentry'    => "a l'é firmasse ël document $1",
 );
 
 /** Portuguese (Português)
@@ -219,30 +226,24 @@ $messages['vi'] = array(
 	'signaturelogentry'    => 'đã ký tài liệu $1',
 );
 
-/** Volapük (Volapük)
- * @author Malafaya
- */
-$messages['vo'] = array(
-	'sign-realname'                => 'Nem:',
-	'sign-viewfield-realname'      => 'Nem',
-	'sign-viewfield-reviewcomment' => 'Küpet',
-);
-
+/** Yue (粵語) */
 $messages['yue'] = array(
-	'signaturelogpage'      => '簽名日誌',
-	'signaturelogpagetext'  => '呢個係全部經過[[Special:SignDocument]]簽過名嘅文件嘅日誌。',
-	'signaturelogentry'     => '簽咗$1文件',
+	'signaturelogpage'     => '簽名日誌',
+	'signaturelogpagetext' => '呢個係全部經過[[Special:SignDocument]]簽過名嘅文件嘅日誌。',
+	'signaturelogentry'    => '簽咗$1文件',
 );
 
+/** Simplified Chinese (‪中文(简体)‬) */
 $messages['zh-hans'] = array(
-	'signaturelogpage'      => '签署日志',
-	'signaturelogpagetext'  => '这个是所有经过[[Special:SignDocument]]签署文件的日志。',
-	'signaturelogentry'     => '已经签署$1文件',
+	'signaturelogpage'     => '签署日志',
+	'signaturelogpagetext' => '这个是所有经过[[Special:SignDocument]]签署文件的日志。',
+	'signaturelogentry'    => '已经签署$1文件',
 );
 
+/** Traditional Chinese (‪中文(繁體)‬) */
 $messages['zh-hant'] = array(
-	'signaturelogpage'      => '簽署日誌',
-	'signaturelogpagetext'  => '這個是所有經過[[Special:SignDocument]]簽署文件的日誌。',
-	'signaturelogentry'     => '已經簽署$1文件',
+	'signaturelogpage'     => '簽署日誌',
+	'signaturelogpagetext' => '這個是所有經過[[Special:SignDocument]]簽署文件的日誌。',
+	'signaturelogentry'    => '已經簽署$1文件',
 );
 
