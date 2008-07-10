@@ -13,14 +13,19 @@ CFLAGS		= -xO3 -g
 
 # Extra preprocessor flags, e.g. -I to find include files
 EXTRA_CPPFLAGS	= -I/opt/boost/include/boost-1_35
+# needed for Studio
+EXTRA_CPPFLAGS	+= -D_XOPEN_SOURCE=500 -D__EXTENSIONS__
+
+# also:
+EXTRA_CFLAGS	= -library=stlport4
 
 # Extra linker flags, e.g. -R or -L to find libraries
-EXTRA_LDFLAGS	= -L/opt/boost/lib -Wl,--rpath /opt/boost/lib
+EXTRA_LDFLAGS	= -L/opt/boost/lib -R /opt/boost/lib
 
 # Extra libs.
 EXTRA_LIBS=
 # For Solaris:
-#EXTRA_LIBS=-lsocket -lnsl
+EXTRA_LIBS+=-lsocket -lnsl
 
 # install program, /usr/ucb/install for Solaris, otherwise /usr/bin/install
 INSTALL=/usr/ucb/install

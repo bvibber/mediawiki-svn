@@ -7,6 +7,9 @@
  */
 /* $Id$ */
 
+#include	<cstring>
+using std::strerror;	/* for asio */
+
 #include	<iostream>
 #include	<map>
 #include	<iterator>

@@ -12,6 +12,9 @@
 #include	<netinet/in.h>
 #include	<arpa/inet.h>
 
+#include	<cstring>
+using std::strerror;	/* for asio */
+
 #include	<pwd.h>
 
 #include	<asio.hpp>

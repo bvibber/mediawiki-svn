@@ -7,6 +7,9 @@
  */
 /* $Id$ */
 
+#include	<cstring>
+using std::strerror;	/* for asio */
+
 #include	<sys/types.h>
 #include	<sys/stat.h>
 #include	<sys/socket.h>

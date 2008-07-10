@@ -7,6 +7,9 @@
  */
 /* $Id$ */
 
+#include	<cstring>
+using std::strerror;	/* for asio */
+
 #include	"sbcontext.h"
 #include	"process_factory.h"
 

@@ -12,12 +12,19 @@
  * support.
  */
 
+#include	<cstring>
+using std::strerror;	/* for asio */
+
 #include	<iostream>
 #include	<cassert>
+
+#include	<sys/types.h>
+#include	<sys/stat.h>
 
 #include	<signal.h>
 #include	<pwd.h>
 #include	<grp.h>
+#include	<fcntl.h>
 
 #include	<asio.hpp>
 #include	<boost/format.hpp>

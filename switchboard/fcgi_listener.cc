@@ -7,6 +7,9 @@
  */
 /* $Id$ */
 
+#include	<cstring>
+using std::strerror;	/* for asio */
+
 #include	<boost/function.hpp>
 #include	<boost/bind.hpp>
 #include	<boost/format.hpp>

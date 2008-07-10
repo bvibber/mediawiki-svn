@@ -7,6 +7,9 @@
  */
 /* $Id$ */
 
+#include	<cstring>
+using std::strerror;	/* for asio */
+
 #include	<boost/format.hpp>
 #include	<log4cxx/logger.h>
 
@@ -42,9 +45,9 @@ process::process(
 
 	unlink(bindpath.c_str());
 	struct sockaddr_un addr;
-	memset(&addr, 0, sizeof(addr));
+	std::memset(&addr, 0, sizeof(addr));
 	addr.sun_family = AF_UNIX;
-	strcpy(addr.sun_path, bindpath.c_str());
+	std::strcpy(addr.sun_path, bindpath.c_str());
 
 	LOG4CXX_DEBUG(logger, "binding...");
 	if (bind(sock, (struct sockaddr *) &addr, sizeof(addr)) == -1)
