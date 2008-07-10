@@ -52,6 +52,7 @@ $wgExtensionCredits['specialpage'][] = array(
 
 $dir = dirname(__FILE__) . '/';
 $wgExtensionMessagesFiles['HideRevision'] = $dir . 'HideRevision.i18n.php';
+$wgExtensionAliasesFiles['HideRevision'] = $dir . 'HideRevision.alias.php';
 
 $wgAutoloadClasses['HideRevisionForm'] = $dir . 'HideRevision_body.php';
 $wgAutoloadClasses['SpecialOversight'] = $dir . 'HideRevision_body.php';
