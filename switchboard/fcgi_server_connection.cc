@@ -74,7 +74,7 @@ fcgi_server_connection::handle_record(
 		asio::error_code error)
 {
 	if (error == asio::error::operation_aborted) {
-		std::cout << "fcgi_server_connection::handle_record: aborted\n";
+		LOG4CXX_DEBUG(logger, "fcgi_server_connection::handle_record: aborted");
 		return;
 	}
 

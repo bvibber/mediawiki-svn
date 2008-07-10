@@ -214,7 +214,7 @@ fcgi_cgi::write_done(asio::error_code error)
 		return;
 
 	if (error == asio::error::operation_aborted) {
-		std::cerr << "fcgi_cgi::writer_error: operation aborted\n";
+		LOG4CXX_DEBUG(logger, "fcgi_cgi::writer_error: operation aborted");
 		return;
 	}
 
@@ -236,19 +236,19 @@ fcgi_cgi::handle_child_read(
 		return;
 
 	if (error == asio::error::operation_aborted) {
-		std::cerr << "fcgi_cgi::handle_child_read: operation aborted\n";
+		LOG4CXX_DEBUG(logger, "fcgi_cgi::handle_child_read: operation aborted");
 		return;
 	}
 
 	assert(app_);
 
 	if (child_socket_->socket().native() == -1) {
-		std::cout << "fcgi_cgi::handle_child_read: socket==-1!\n";
+		LOG4CXX_DEBUG(logger, "fcgi_cgi::handle_child_read: socket==-1!");
 		return;
 	}
 
 	if (!record) {
-		std::cout << "child read error = " << error.message() << "\n";
+		LOG4CXX_DEBUG(logger, format("child read error = %s") % error.message());
 		process_.reset();
 		if (error)
 			LOG4CXX_DEBUG(logger, format("[req=%d] fcgi_cgi, error reading from child: %s")
