@@ -130,7 +130,7 @@ $messages['es'] = array(
  * @author IAlex
  */
 $messages['fr'] = array(
-	'onlinestatus-desc'             => 'Ajoute une préférence pour montrer si l\'utilisateur est présent ou non',
+	'onlinestatus-desc'             => "Ajoute une préférence pour montrer si l'utilisateur est présent ou non",
 	'onlinestatus-subtitle-offline' => 'Cet utilisateur est actuellement hors ligne',
 	'onlinestatus-subtitle-online'  => 'Cet utilisateur est actuellement en ligne',
 	'onlinestatus-toggles-desc'     => 'Votre statut&nbsp;:',

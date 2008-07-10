@@ -1191,35 +1191,29 @@ Balèkna suntingan iki dhisik.',
 Nyebaraké informasi iki bisa ngakibataké hak pangawas (''oversight'') panjenengan dijabel.",
 );
 
-/* Kazakh Arabic (AlefZet) */
+/** Kazakh (Arabic script) (‫قازاقشا (تٴوتە)‬)
+ * @author AlefZet
+ */
 $messages['kk-arab'] = array(
-	'hiderevision'           => 'تۇزەتۋلەردى تۇراقتى جاسىرۋ',
-	'hiderevision-desc'      => 'زاڭدى تالاپتار جانە تاعى سولاي سەبەپتەرىمەن جەكە تۇزەتۋلەردى جاسىرۋ.',
-	'group-oversight'        => 'انىقتاۋشىلار',
-	'group-oversight-member' => 'انىقتاۋشى',
-	'grouppage-oversight'    => '{{ns:project}}:انىقتاۋشىلار',
-	'right-oversight'        => 'الدىندا جاسىرىلعان تۇزەتۋدى كورۋ',
-	'right-hiderevision'     => 'اكىمشىلەردەن جاسىرىلعان تۇزەتۋلەردى شولىپ شىعۋ جانە قالپىنا كەلتىرۋ',
-
-	// Empty form
-	'hiderevision-prompt'   => 'جويىلاتىن تۇزەتۋ ٴومىرى:',
-	'hiderevision-continue' => 'جالعاستىر',
-
-	// Confirmation form
-	'hiderevision-text'   => "بۇل ''تەك''' كەلەسى جاعدايلار بولسا قولدانىلۋ ٴجون:
+	'hiderevision'                => 'تۇزەتۋلەردى تۇراقتى جاسىرۋ',
+	'hiderevision-desc'           => 'زاڭدى تالاپتار جانە تاعى سولاي سەبەپتەرىمەن جەكە تۇزەتۋلەردى جاسىرۋ.',
+	'group-oversight'             => 'انىقتاۋشىلار',
+	'group-oversight-member'      => 'انىقتاۋشى',
+	'grouppage-oversight'         => '{{ns:project}}:انىقتاۋشىلار',
+	'right-oversight'             => 'الدىندا جاسىرىلعان تۇزەتۋدى كورۋ',
+	'right-hiderevision'          => 'اكىمشىلەردەن جاسىرىلعان تۇزەتۋلەردى شولىپ شىعۋ جانە قالپىنا كەلتىرۋ',
+	'hiderevision-prompt'         => 'جويىلاتىن تۇزەتۋ ٴومىرى:',
+	'hiderevision-continue'       => 'جالعاستىر',
+	'hiderevision-text'           => "بۇل ''تەك''' كەلەسى جاعدايلار بولسا قولدانىلۋ ٴجون:
 * لايىقسىز جەكە دەرەكتەر
 *: ''ٴۇي مەكەنجايى جانە تەلەفون نومىرلەرى, جەكە الەۋمەتتىك كودتارى, ت.ب.''
 
 '''وسى جۇيەنىڭ قىزمەتىنە قىييانات كورسەتۋى رۇقساتتار وشىرىلۋىنە كەلتىرەدى.'''
 
 الاستالعان دانالار توراپ بويىنشا اركىمگەدە كورىنبەيدى, دەگەنمەن, جويۋلار جۋرنالعا جازىلىپ الىنادى جانە قاتەلىك جاساساڭىز, دەرەكقور اكىمشىسى بۇنى قولمەن قالپىنا كەلتىرۋى مۇمكىن.",
-	'hiderevision-reason' => 'سەبەبى (جەكەشە جازىلىپ الىنادى):',
-	'hiderevision-submit' => 'بۇل دەرەكتى تۇراقتى جاسىر',
-
-	// Tab displayed to allowed users on old revision display
-	'hiderevision-tab' => 'تۇزەتۋدى جاسىر',
-
-	// Status & errors on action
+	'hiderevision-reason'         => 'سەبەبى (جەكەشە جازىلىپ الىنادى):',
+	'hiderevision-submit'         => 'بۇل دەرەكتى تۇراقتى جاسىر',
+	'hiderevision-tab'            => 'تۇزەتۋدى جاسىر',
 	'hiderevision-norevisions'    => 'ەش تۇزەتۋ جويۋعا بەلگىلەنبەگەن.',
 	'hiderevision-noreason'       => 'بۇل جويۋ سەبەبىن جازىپ بەرۋىڭىز ٴتىيىستى.',
 	'hiderevision-status'         => '$1 تۇزەتۋى: $2',
@@ -1232,49 +1226,39 @@ $messages['kk-arab'] = array(
 	'oversight-nodiff'            => 'وزگەرىستەر اڭىستالىنبايدى, ويتكەنى وسى ارادا بۇل بەتتىڭ اعىمدا ەش الدىڭعى تۇزەتۋى جوق. سەبەبى:
 * نە بەت جويىلعان
 * نە جاسىرىلعان تۇزەتۋ ەڭ العاشقىسى بولدى',
-
-	// Logging
-	'oversight-log-hiderev' => '$1 كەزىندەگى وڭدەمە جويىلدى',
-	
-	// Oversight review page
-	'oversight'            => 'انىقتاۋ',
-	'oversight-view'       => 'ەگجەي-تەگجەيلەرى',
-	'oversight-difference' => '(قالعان الدىڭعى تۇزەتۋمەن ايىرماشىلىق)',
-	'oversight-prev'       => 'سوڭعى الدىڭعى تۇزەتۋ',
-	'oversight-hidden'     => 'جاسىرىلعان تۇزەتۋ',
-	'oversight-header'     => 'تومەندە بارشا كورۋىنەن تۇراقتى جاسىرىلعان تۇزەتۋ ٴتىزىمى كەلتىرىلەدى.
+	'oversight-log-hiderev'       => '$1 كەزىندەگى وڭدەمە جويىلدى',
+	'oversight'                   => 'انىقتاۋ',
+	'oversight-view'              => 'ەگجەي-تەگجەيلەرى',
+	'oversight-difference'        => '(قالعان الدىڭعى تۇزەتۋمەن ايىرماشىلىق)',
+	'oversight-prev'              => 'سوڭعى الدىڭعى تۇزەتۋ',
+	'oversight-hidden'            => 'جاسىرىلعان تۇزەتۋ',
+	'oversight-header'            => 'تومەندە بارشا كورۋىنەن تۇراقتى جاسىرىلعان تۇزەتۋ ٴتىزىمى كەلتىرىلەدى.
 بۇل مالىمەت بارشاعا اشىلۋى انىقتاۋشى رۇقساتتارى تۇراقتى وشىرىلۋىنە كەلتىرۋ مۇمكىن.',
 );
 
-/* Kazakh Cyrillic (AlefZet) */
+/** Kazakh (Cyrillic) (Қазақша (Cyrillic))
+ * @author AlefZet
+ */
 $messages['kk-cyrl'] = array(
-	'hiderevision'           => 'Түзетулерді тұрақты жасыру',
-	'hiderevision-desc'      => 'Заңды талаптар және тағы солай себептерімен жеке түзетулерді жасыру.',
-	'group-oversight'        => 'Анықтаушылар',
-	'group-oversight-member' => 'анықтаушы',
-	'grouppage-oversight'    => '{{ns:project}}:Анықтаушылар',
-	'right-oversight'        => 'Алдында жасырылған түзетуді көру',
-	'right-hiderevision'     => 'Әкімшілерден жасырылған түзетулерді шолып шығу және қалпына келтіру',
-
-	// Empty form
-	'hiderevision-prompt'   => 'Жойылатын түзету өмірі:',
-	'hiderevision-continue' => 'Жалғастыр',
-
-	// Confirmation form
-	'hiderevision-text'   => "Бұл ''тек''' келесі жағдайлар болса қолданылу жөн:
+	'hiderevision'                => 'Түзетулерді тұрақты жасыру',
+	'hiderevision-desc'           => 'Заңды талаптар және тағы солай себептерімен жеке түзетулерді жасыру.',
+	'group-oversight'             => 'Анықтаушылар',
+	'group-oversight-member'      => 'анықтаушы',
+	'grouppage-oversight'         => '{{ns:project}}:Анықтаушылар',
+	'right-oversight'             => 'Алдында жасырылған түзетуді көру',
+	'right-hiderevision'          => 'Әкімшілерден жасырылған түзетулерді шолып шығу және қалпына келтіру',
+	'hiderevision-prompt'         => 'Жойылатын түзету өмірі:',
+	'hiderevision-continue'       => 'Жалғастыр',
+	'hiderevision-text'           => "Бұл ''тек''' келесі жағдайлар болса қолданылу жөн:
 * Лайықсыз жеке деректер
 *: ''үй мекенжайы және телефон нөмірлері, жеке әлеуметтік кодтары, т.б.''
 
 '''Осы жүйенің қызметіне қиянат көрсетуі рұқсаттар өшірілуіне келтіреді.'''
 
 Аласталған даналар торап бойынша әркімгеде көрінбейді, дегенмен, жоюлар журналға жазылып алынады және қателік жасасаңыз, дерекқор әкімшісі бұны қолмен қалпына келтіруі мүмкін.",
-	'hiderevision-reason' => 'Себебі (жекеше жазылып алынады):',
-	'hiderevision-submit' => 'Бұл деректі тұрақты жасыр',
-
-	// Tab displayed to allowed users on old revision display
-	'hiderevision-tab' => 'Түзетуді жасыр',
-
-	// Status & errors on action
+	'hiderevision-reason'         => 'Себебі (жекеше жазылып алынады):',
+	'hiderevision-submit'         => 'Бұл деректі тұрақты жасыр',
+	'hiderevision-tab'            => 'Түзетуді жасыр',
 	'hiderevision-norevisions'    => 'Еш түзету жоюға белгіленбеген.',
 	'hiderevision-noreason'       => 'Бұл жою себебін жазып беруіңіз тиісті.',
 	'hiderevision-status'         => '$1 түзетуі: $2',
@@ -1287,49 +1271,39 @@ $messages['kk-cyrl'] = array(
 	'oversight-nodiff'            => 'Өзгерістер аңысталынбайды, өйткені осы арада бұл беттің ағымда еш алдыңғы түзетуі жоқ. Себебі:
 * Не бет жойылған
 * Не жасырылған түзету ең алғашқысы болды',
-
-	// Logging
-	'oversight-log-hiderev' => '$1 кезіндегі өңдеме жойылды',
-	
-	// Oversight review page
-	'oversight'            => 'Анықтау',
-	'oversight-view'       => 'егжей-тегжейлері',
-	'oversight-difference' => '(Қалған алдыңғы түзетумен айырмашылық)',
-	'oversight-prev'       => 'Соңғы алдыңғы түзету',
-	'oversight-hidden'     => 'Жасырылған түзету',
-	'oversight-header'     => 'Төменде барша көруінен тұрақты жасырылған түзету тізімі келтіріледі.
+	'oversight-log-hiderev'       => '$1 кезіндегі өңдеме жойылды',
+	'oversight'                   => 'Анықтау',
+	'oversight-view'              => 'егжей-тегжейлері',
+	'oversight-difference'        => '(Қалған алдыңғы түзетумен айырмашылық)',
+	'oversight-prev'              => 'Соңғы алдыңғы түзету',
+	'oversight-hidden'            => 'Жасырылған түзету',
+	'oversight-header'            => 'Төменде барша көруінен тұрақты жасырылған түзету тізімі келтіріледі.
 Бұл мәлімет баршаға ашылуы Анықтаушы рұқсаттары тұрақты өшірілуіне келтіру мүмкін.',
 );
 
-/* Kazakh Latin (AlefZet) */
+/** Kazakh (Latin) (Қазақша (Latin))
+ * @author AlefZet
+ */
 $messages['kk-latn'] = array(
-	'hiderevision'           => 'Tüzetwlerdi turaqtı jasırw',
-	'hiderevision-desc'      => 'Zañdı talaptar jäne tağı solaý sebepterimen jeke tüzetwlerdi jasırw.',
-	'group-oversight'        => 'Anıqtawşılar',
-	'group-oversight-member' => 'anıqtawşı',
-	'grouppage-oversight'    => '{{ns:project}}:Anıqtawşılar',
-	'right-oversight'        => 'Aldında jasırılğan tüzetwdi körw',
-	'right-hiderevision'     => 'Äkimşilerden jasırılğan tüzetwlerdi şolıp şığw jäne qalpına keltirw',
-
-	// Empty form
-	'hiderevision-prompt'   => 'Joýılatın tüzetw ömiri:',
-	'hiderevision-continue' => 'Jalğastır',
-
-	// Confirmation form
-	'hiderevision-text'   => "Bul ''tek''' kelesi jağdaýlar bolsa qoldanılw jön:
+	'hiderevision'                => 'Tüzetwlerdi turaqtı jasırw',
+	'hiderevision-desc'           => 'Zañdı talaptar jäne tağı solaý sebepterimen jeke tüzetwlerdi jasırw.',
+	'group-oversight'             => 'Anıqtawşılar',
+	'group-oversight-member'      => 'anıqtawşı',
+	'grouppage-oversight'         => '{{ns:project}}:Anıqtawşılar',
+	'right-oversight'             => 'Aldında jasırılğan tüzetwdi körw',
+	'right-hiderevision'          => 'Äkimşilerden jasırılğan tüzetwlerdi şolıp şığw jäne qalpına keltirw',
+	'hiderevision-prompt'         => 'Joýılatın tüzetw ömiri:',
+	'hiderevision-continue'       => 'Jalğastır',
+	'hiderevision-text'           => "Bul ''tek''' kelesi jağdaýlar bolsa qoldanılw jön:
 * Laýıqsız jeke derekter
 *: ''üý mekenjaýı jäne telefon nömirleri, jeke älewmettik kodtarı, t.b.''
 
 '''Osı jüýeniñ qızmetine qïyanat körsetwi ruqsattar öşirilwine keltiredi.'''
 
 Alastalğan danalar torap boýınşa ärkimgede körinbeýdi, degenmen, joywlar jwrnalğa jazılıp alınadı jäne qatelik jasasañız, derekqor äkimşisi bunı qolmen qalpına keltirwi mümkin.",
-	'hiderevision-reason' => 'Sebebi (jekeşe jazılıp alınadı):',
-	'hiderevision-submit' => 'Bul derekti turaqtı jasır',
-
-	// Tab displayed to allowed users on old revision display
-	'hiderevision-tab' => 'Tüzetwdi jasır',
-
-	// Status & errors on action
+	'hiderevision-reason'         => 'Sebebi (jekeşe jazılıp alınadı):',
+	'hiderevision-submit'         => 'Bul derekti turaqtı jasır',
+	'hiderevision-tab'            => 'Tüzetwdi jasır',
 	'hiderevision-norevisions'    => 'Eş tüzetw joywğa belgilenbegen.',
 	'hiderevision-noreason'       => 'Bul joyw sebebin jazıp berwiñiz tïisti.',
 	'hiderevision-status'         => '$1 tüzetwi: $2',
@@ -1342,17 +1316,13 @@ Aldınan bul özgeristen qaýtarıñız.',
 	'oversight-nodiff'            => 'Özgerister añıstalınbaýdı, öýtkeni osı arada bul bettiñ ağımda eş aldıñğı tüzetwi joq. Sebebi:
 * Ne bet joýılğan
 * Ne jasırılğan tüzetw eñ alğaşqısı boldı',
-
-	// Logging
-	'oversight-log-hiderev' => '$1 kezindegi öñdeme joýıldı',
-	
-	// Oversight review page
-	'oversight'            => 'Anıqtaw',
-	'oversight-view'       => 'egjeý-tegjeýleri',
-	'oversight-difference' => '(Qalğan aldıñğı tüzetwmen aýırmaşılıq)',
-	'oversight-prev'       => 'Soñğı aldıñğı tüzetw',
-	'oversight-hidden'     => 'Jasırılğan tüzetw',
-	'oversight-header'     => 'Tömende barşa körwinen turaqtı jasırılğan tüzetw tizimi keltiriledi.
+	'oversight-log-hiderev'       => '$1 kezindegi öñdeme joýıldı',
+	'oversight'                   => 'Anıqtaw',
+	'oversight-view'              => 'egjeý-tegjeýleri',
+	'oversight-difference'        => '(Qalğan aldıñğı tüzetwmen aýırmaşılıq)',
+	'oversight-prev'              => 'Soñğı aldıñğı tüzetw',
+	'oversight-hidden'            => 'Jasırılğan tüzetw',
+	'oversight-header'            => 'Tömende barşa körwinen turaqtı jasırılğan tüzetw tizimi keltiriledi.
 Bul mälimet barşağa aşılwı Anıqtawşı ruqsattarı turaqtı öşirilwine keltirw mümkin.',
 );
 
@@ -1895,7 +1865,7 @@ Najpierw wycofaj ostatnią edycję.',
 Ujawnianie tych informacji może skutkować stałą utratą uprawnień Rewizora.',
 );
 
-/** Piemontèis (Piemontèis)
+/** Piedmontese (Piemontèis)
  * @author Bèrto 'd Sèra
  * @author Siebrand
  */
@@ -2210,7 +2180,9 @@ $messages['sr-ec'] = array(
 	'oversight-view'              => 'детаљи',
 );
 
-/* Serbian latin (Sasa Stefanovic) */
+/** latinica (latinica)
+ * @author Sasa Stefanovic
+ */
 $messages['sr-el'] = array(
 	'hiderevision'                => 'Trajno sakrij revizije',
 	'hiderevision-prompt'         => 'Broj revizije za uklanjanje:',
@@ -2602,7 +2574,9 @@ $messages['vo'] = array(
 	'oversight-hidden'            => 'Fomam peklänedöl',
 );
 
-/* Cantonese (Shinjiman) */
+/** Yue (粵語)
+ * @author Shinjiman
+ */
 $messages['yue'] = array(
 	'hiderevision'                => '永久收埋修訂',
 	'hiderevision-desc'           => '收埋所有用戶因法律原因等嘅個別修訂',
@@ -2646,7 +2620,9 @@ $messages['yue'] = array(
 發放呢啲資料可以導致永久損失監督嘅權限。',
 );
 
-/* Chinese (Simplified) (Alex S.H. Lin) */
+/** Simplified Chinese (‪中文(简体)‬)
+ * @author Alex S.H. Lin
+ */
 $messages['zh-hans'] = array(
 	'hiderevision'                => '永久隐藏修订版本',
 	'hiderevision-desc'           => '隐藏所有用户因法律原因等之个别修订',
@@ -2687,7 +2663,9 @@ $messages['zh-hans'] = array(
 	'oversight-header'            => '以下列示的是已经永久隐藏的修订版本。请注意！泄漏这些讯息将会永远丧失{{int:Oversight}}权限！',
 );
 
-/* Chinese (Traditional) (Alex S.H. Lin) */
+/** Traditional Chinese (‪中文(繁體)‬)
+ * @author Alex S.H. Lin
+ */
 $messages['zh-hant'] = array(
 	'hiderevision'                => '永久隱藏修訂版本',
 	'hiderevision-desc'           => '隱藏所有用戶因法律原因等之個別修訂',

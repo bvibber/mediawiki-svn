@@ -48,6 +48,9 @@ Please <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_downlo
 	'ogg-desc-link'        => 'About this file',
 );
 
+/** Afrikaans (Afrikaans)
+ * @author SPQRobin
+ */
 $messages['af'] = array(
 	'ogg-more' => 'Meer...',
 );
@@ -165,9 +168,11 @@ $messages['avk'] = array(
 	'ogg-desc-link' => 'Icde bat iyeltak',
 );
 
-/** Bikol Central*/
+/** Bikol Central (Bikol Central)
+ * @author Filipinayzd
+ */
 $messages['bcl'] = array(
-	'ogg-more' => 'Dakol pa..',
+	'ogg-more'    => 'Dakol pa..',
 	'ogg-dismiss' => 'Isara',
 );
 
@@ -333,13 +338,10 @@ $messages['de'] = array(
 	'ogg-long-general'        => '(Ogg-Mediadatei, Länge: $2, $3)',
 	'ogg-long-error'          => '(Ungültige Ogg-Datei: $1)',
 	'ogg-play'                => 'Start',
-	'ogg-pause'               => 'Pause',
-	'ogg-stop'                => 'Stop',
 	'ogg-play-video'          => 'Video abspielen',
 	'ogg-play-sound'          => 'Audio abspielen',
 	'ogg-no-player'           => 'Dein System scheint über keine Abspielsoftware zu verfügen. Bitte installiere <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">eine Abspielsoftware</a>.',
-	'ogg-no-xiphqt'           => 'Dein System scheint nicht über die XiphQT-Komponente für QuickTime zu verfügen. QuickTime kann ohne diese Komponente keine Ogg-Dateien abspielen.' .
-		'Bitte <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">lade XiphQT</a> oder wähle eine andere Abspielsoftware.',
+	'ogg-no-xiphqt'           => 'Dein System scheint nicht über die XiphQT-Komponente für QuickTime zu verfügen. QuickTime kann ohne diese Komponente keine Ogg-Dateien abspielen.Bitte <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">lade XiphQT</a> oder wähle eine andere Abspielsoftware.',
 	'ogg-player-videoElement' => '<video>-Element',
 	'ogg-player-oggPlugin'    => 'Ogg-Plugin',
 	'ogg-player-thumbnail'    => 'Zeige Vorschaubild',
@@ -352,13 +354,12 @@ $messages['de'] = array(
 	'ogg-desc-link'           => 'Über diese Datei',
 );
 
-/** German - formal address (Deutsch - förmliche Anrede)
+/** German (formal address) (Deutsch (Sie-Form))
  * @author Raimond Spekking
  */
 $messages['de-formal'] = array(
-	'ogg-no-player'           => 'Ihr System scheint über keine Abspielsoftware zu verfügen. Bitte installieren Sie <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">eine Abspielsoftware</a>.',
-	'ogg-no-xiphqt'           => 'Ihr System scheint nicht über die XiphQT-Komponente für QuickTime zu verfügen. QuickTime kann ohne diese Komponente keine Ogg-Dateien abspielen.' .
-		'Bitte <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">laden Sie XiphQT</a> oder wählen Sie eine andere Abspielsoftware.',
+	'ogg-no-player' => 'Ihr System scheint über keine Abspielsoftware zu verfügen. Bitte installieren Sie <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">eine Abspielsoftware</a>.',
+	'ogg-no-xiphqt' => 'Ihr System scheint nicht über die XiphQT-Komponente für QuickTime zu verfügen. QuickTime kann ohne diese Komponente keine Ogg-Dateien abspielen.Bitte <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">laden Sie XiphQT</a> oder wählen Sie eine andere Abspielsoftware.',
 );
 
 /** Greek (Ελληνικά)
@@ -418,9 +419,12 @@ Bonvolu <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_downl
 	'ogg-desc-link'           => 'Pri ĉi tiu dosiero',
 );
 
+/** Spanish (Español)
+ * @author Spacebirdy
+ */
 $messages['es'] = array(
-	'ogg-more' => 'Opciones...',
-	'ogg-dismiss' => 'Cerrar',
+	'ogg-more'     => 'Opciones...',
+	'ogg-dismiss'  => 'Cerrar',
 	'ogg-download' => 'Bajar archivo',
 );
 
@@ -434,7 +438,7 @@ $messages['eu'] = array(
 	'ogg-desc-link' => 'Fitxategi honen inguruan',
 );
 
-/** فارسی (فارسی)
+/** Persian (فارسی)
  * @author Huji
  */
 $messages['fa'] = array(
@@ -464,7 +468,6 @@ $messages['fa'] = array(
 	'ogg-dismiss'             => 'بستن',
 	'ogg-download'            => 'بارگیری پرونده',
 	'ogg-desc-link'           => 'دربارهٔ این پرونده',
-
 );
 
 /** Finnish (Suomi)
@@ -500,6 +503,9 @@ $messages['fi'] = array(
 	'ogg-desc-link'           => 'Tiedoston tiedot',
 );
 
+/** Faroese (Føroyskt)
+ * @author Spacebirdy
+ */
 $messages['fo'] = array(
 	'ogg-more' => 'Meira...',
 );
@@ -577,6 +583,7 @@ $messages['frp'] = array(
 $messages['fur'] = array(
 	'ogg-short-audio'       => 'File audio Ogg $1, $2',
 	'ogg-short-video'       => 'File video Ogg $1, $2',
+	'ogg-short-general'     => 'File multimediâl Ogg $1, $2',
 	'ogg-long-audio'        => '(File audio Ogg $1, durade $2, $3)',
 	'ogg-long-video'        => '(File video Ogg $1, durade $2, dimensions $4×$5 pixels, $3)',
 	'ogg-long-general'      => '(File multimediâl Ogg, durade $2, $3)',
@@ -662,8 +669,7 @@ $messages['he'] = array(
 	'ogg-play-video'          => 'נגן וידאו',
 	'ogg-play-sound'          => 'נגן שמע',
 	'ogg-no-player'           => 'מצטערים, נראה שהמערכת שלכם אינה כוללת תוכנת נגן נתמכת. אנא <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">הורידו נגן</a>.',
-	'ogg-no-xiphqt'          => 'נראה שלא התקנתם את רכיב XiphQT של QuickTime, אך QuickTime אינו יכול לנגן קבצי Ogg בלי רכיב זה. אנא <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">הורידו את XiphQT</a> או בחרו נגן אחר.',
-
+	'ogg-no-xiphqt'           => 'נראה שלא התקנתם את רכיב XiphQT של QuickTime, אך QuickTime אינו יכול לנגן קבצי Ogg בלי רכיב זה. אנא <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">הורידו את XiphQT</a> או בחרו נגן אחר.',
 	'ogg-player-videoElement' => 'רכיב <video>',
 	'ogg-player-oggPlugin'    => 'תוסף Ogg',
 	'ogg-player-thumbnail'    => 'עדיין תמונה בלבד',
@@ -712,33 +718,36 @@ QuickTime बिना इस घटक के Ogg files चलने में 
 	'ogg-desc-link'           => 'इस फ़ाईलके बारे में',
 );
 
+/** Croatian (Hrvatski)
+ * @author SpeedyGonsales
+ */
 $messages['hr'] = array(
-	'ogg-short-audio' => 'Ogg $1 zvučna datoteka, $2',
-	'ogg-short-video' => 'Ogg $1 video datoteka, $2',
-	'ogg-short-general' => 'Ogg $1 medijska datoteka, $2',
-	'ogg-long-audio' => '(Ogg $1 zvučna datoteka, duljine $2, $3)',
-	'ogg-long-video' => '(Ogg $1 video datoteka, duljine $2, $4x$5 piksela, $3)',
-	'ogg-long-multiplexed' => '(Ogg multipleksirana zvučna/video datoteka, $1, duljine $2, $4×$5 piksela, $3 ukupno)',
-	'ogg-long-general' => '(Ogg medijska datoteka, duljine $2, $3)',
-	'ogg-long-error' => '(nevaljana ogg datoteka: $1)',
-	'ogg-play' => 'Pokreni',
-	'ogg-pause' => 'Pauziraj',
-	'ogg-stop' => 'Zaustavi',
-	'ogg-play-video' => 'Pokreni video',
-	'ogg-play-sound' => 'Sviraj zvuk',
-	'ogg-no-player' => 'Oprostite, izgleda da Vaš operacijski sustav nema instalirane medijske preglednike. Molimo <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">instalirajte medijski preglednik (\'\'player\'\')</a>.',
-	'ogg-no-xiphqt' => 'Nemate instaliranu XiphQT komponentu za QuickTime (ili je neispravno instalirana). QuickTime ne može pokretati Ogg datoteke bez ove komponente. Molimo <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">instalirajte XiphQT</a> ili izaberite drugi preglednik (\'\'player\'\').',
+	'ogg-short-audio'         => 'Ogg $1 zvučna datoteka, $2',
+	'ogg-short-video'         => 'Ogg $1 video datoteka, $2',
+	'ogg-short-general'       => 'Ogg $1 medijska datoteka, $2',
+	'ogg-long-audio'          => '(Ogg $1 zvučna datoteka, duljine $2, $3)',
+	'ogg-long-video'          => '(Ogg $1 video datoteka, duljine $2, $4x$5 piksela, $3)',
+	'ogg-long-multiplexed'    => '(Ogg multipleksirana zvučna/video datoteka, $1, duljine $2, $4×$5 piksela, $3 ukupno)',
+	'ogg-long-general'        => '(Ogg medijska datoteka, duljine $2, $3)',
+	'ogg-long-error'          => '(nevaljana ogg datoteka: $1)',
+	'ogg-play'                => 'Pokreni',
+	'ogg-pause'               => 'Pauziraj',
+	'ogg-stop'                => 'Zaustavi',
+	'ogg-play-video'          => 'Pokreni video',
+	'ogg-play-sound'          => 'Sviraj zvuk',
+	'ogg-no-player'           => "Oprostite, izgleda da Vaš operacijski sustav nema instalirane medijske preglednike. Molimo <a href=\"http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download\">instalirajte medijski preglednik (''player'')</a>.",
+	'ogg-no-xiphqt'           => "Nemate instaliranu XiphQT komponentu za QuickTime (ili je neispravno instalirana). QuickTime ne može pokretati Ogg datoteke bez ove komponente. Molimo <a href=\"http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download\">instalirajte XiphQT</a> ili izaberite drugi preglednik (''player'').",
 	'ogg-player-videoElement' => '<slikovni> element',
-	'ogg-player-oggPlugin' => 'Ogg plugin',#identical but defined
-	'ogg-player-vlc-activex' => 'VLC (ActiveX kontrola)',#optional
-	'ogg-player-thumbnail' => 'Samo (nepokretne) slike',
-	'ogg-player-soundthumb' => 'Nema preglednika',
-	'ogg-player-selected' => '(odabran)',
-	'ogg-use-player' => 'Rabi preglednik (\'\'player\'\'):',
-	'ogg-more' => 'Više...',
-	'ogg-dismiss' => 'Zatvori',
-	'ogg-download' => 'Snimi datoteku',
-	'ogg-desc-link' => 'O ovoj datoteci',
+	'ogg-player-oggPlugin'    => 'Ogg plugin',
+	'ogg-player-vlc-activex'  => 'VLC (ActiveX kontrola)',
+	'ogg-player-thumbnail'    => 'Samo (nepokretne) slike',
+	'ogg-player-soundthumb'   => 'Nema preglednika',
+	'ogg-player-selected'     => '(odabran)',
+	'ogg-use-player'          => "Rabi preglednik (''player''):",
+	'ogg-more'                => 'Više...',
+	'ogg-dismiss'             => 'Zatvori',
+	'ogg-download'            => 'Snimi datoteku',
+	'ogg-desc-link'           => 'O ovoj datoteci',
 );
 
 /** Upper Sorbian (Hornjoserbsce)
@@ -827,36 +836,32 @@ $messages['ia'] = array(
  * @author IvanLanin
  */
 $messages['id'] = array(
-	'ogg-desc'             => 'Menangani berkas Ogg Theora dan Vorbis dengan pemutar JavaScript',
-	'ogg-short-audio'      => 'Berkas suara $1 ogg, $2',
-	'ogg-short-video'      => 'Berkas video $1 ogg, $2',
-	'ogg-short-general'    => 'Berkas media $1 ogg, $2',
-	'ogg-long-audio'       => '(Berkas suara $1 ogg, panjang $2, $3)',
-	'ogg-long-video'       => '(Berkas video $1 ogg, panjang $2, $4×$5 piksel, $3)',
-	'ogg-long-multiplexed' => '(Berkas audio/video multiplexed ogg, $1, panjang $2, $4×$5 piksel, $3 keseluruhan)',
-	'ogg-long-general'     => '(Berkas media ogg, panjang $2, $3)',
-	'ogg-long-error'       => '(Berkas ogg tak valid: $1)',
-	'ogg-play'             => 'Putar',
-	'ogg-pause'            => 'Jeda',
-	'ogg-stop'             => 'Berhenti',
-	'ogg-play-video'       => 'Putar video',
-	'ogg-play-sound'       => 'Putar suara',
-	'ogg-no-player'        => 'Maaf, sistem Anda tampaknya tak memiliki satupun perangkat lunak yang didukung. ' .
-		'Silakan <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">untuk salah satu pemutar</a>.',
-	'ogg-no-xiphqt'        => 'Tampaknya Anda tak memiliki komponen XiphQT untuk QuickTime. QuickTime tak dapat memutar ' .
-		'berkas Ogg tanpa komponen ini. Silakan ' .
-		'<a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">mengunduh XiphQT</a> atau pilih pemutar lain.',
-
+	'ogg-desc'                => 'Menangani berkas Ogg Theora dan Vorbis dengan pemutar JavaScript',
+	'ogg-short-audio'         => 'Berkas suara $1 ogg, $2',
+	'ogg-short-video'         => 'Berkas video $1 ogg, $2',
+	'ogg-short-general'       => 'Berkas media $1 ogg, $2',
+	'ogg-long-audio'          => '(Berkas suara $1 ogg, panjang $2, $3)',
+	'ogg-long-video'          => '(Berkas video $1 ogg, panjang $2, $4×$5 piksel, $3)',
+	'ogg-long-multiplexed'    => '(Berkas audio/video multiplexed ogg, $1, panjang $2, $4×$5 piksel, $3 keseluruhan)',
+	'ogg-long-general'        => '(Berkas media ogg, panjang $2, $3)',
+	'ogg-long-error'          => '(Berkas ogg tak valid: $1)',
+	'ogg-play'                => 'Putar',
+	'ogg-pause'               => 'Jeda',
+	'ogg-stop'                => 'Berhenti',
+	'ogg-play-video'          => 'Putar video',
+	'ogg-play-sound'          => 'Putar suara',
+	'ogg-no-player'           => 'Maaf, sistem Anda tampaknya tak memiliki satupun perangkat lunak yang didukung. Silakan <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">untuk salah satu pemutar</a>.',
+	'ogg-no-xiphqt'           => 'Tampaknya Anda tak memiliki komponen XiphQT untuk QuickTime. QuickTime tak dapat memutar berkas Ogg tanpa komponen ini. Silakan <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">mengunduh XiphQT</a> atau pilih pemutar lain.',
 	'ogg-player-videoElement' => 'elemen <video>',
-	'ogg-player-oggPlugin' => 'plugin Ogg',
-	'ogg-player-thumbnail' => 'Hanya gambar statis',
-	'ogg-player-soundthumb' => 'Tak ada pemutar',
-	'ogg-player-selected'  => '(terpilih)',
-	'ogg-use-player'       => 'Gunakan pemutar: ',
-	'ogg-more'             => 'Lainnya...',
-	'ogg-dismiss'          => 'Tutup',
-	'ogg-download'         => 'Unduh berkas',
-	'ogg-desc-link'        => 'Mengenai berkas ini',
+	'ogg-player-oggPlugin'    => 'plugin Ogg',
+	'ogg-player-thumbnail'    => 'Hanya gambar statis',
+	'ogg-player-soundthumb'   => 'Tak ada pemutar',
+	'ogg-player-selected'     => '(terpilih)',
+	'ogg-use-player'          => 'Gunakan pemutar: ',
+	'ogg-more'                => 'Lainnya...',
+	'ogg-dismiss'             => 'Tutup',
+	'ogg-download'            => 'Unduh berkas',
+	'ogg-desc-link'           => 'Mengenai berkas ini',
 );
 
 /** Ido (Ido)
@@ -1018,34 +1023,36 @@ Please <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_downlo
 	'ogg-desc-link'           => 'Prekara berkas iki',
 );
 
+/** Kazakh (Arabic script) (‫قازاقشا (تٴوتە)‬) */
 $messages['kk-arab'] = array(
-	'ogg-short-audio'      => 'Ogg $1 دىبىس فايلى, $2',
-	'ogg-short-video'      => 'Ogg $1 بەينە فايلى, $2',
-	'ogg-short-general'    => 'Ogg $1 تاسپا فايلى, $2',
-	'ogg-long-audio'       => '(Ogg $1 دىبىس فايلى, ۇزاقتىعى $2, $3)',
-	'ogg-long-video'       => '(Ogg $1 بەينە فايلى, ۇزاقتىعى $2, $4 × $5 پىيكسەل, $3)',
-	'ogg-long-multiplexed' => '(Ogg قۇرامدى دىبىس/بەينە فايلى, $1, ۇزاقتىعى $2, $4 × $5 پىيكسەل, $3 نە بارلىعى)',
-	'ogg-long-general'     => '(Ogg تاسپا فايلى, ۇزاقتىعى $2, $3)',
-	'ogg-long-error'       => '(جارامسىز ogg فايلى: $1)',
-	'ogg-play'             => 'ويناتۋ',
-	'ogg-pause'            => 'ايالداتۋ',
-	'ogg-stop'             => 'توقتاتۋ',
-	'ogg-play-video'       => 'بەينەنى ويناتۋ',
-	'ogg-play-sound'       => 'دىبىستى ويناتۋ',
+	'ogg-short-audio'         => 'Ogg $1 دىبىس فايلى, $2',
+	'ogg-short-video'         => 'Ogg $1 بەينە فايلى, $2',
+	'ogg-short-general'       => 'Ogg $1 تاسپا فايلى, $2',
+	'ogg-long-audio'          => '(Ogg $1 دىبىس فايلى, ۇزاقتىعى $2, $3)',
+	'ogg-long-video'          => '(Ogg $1 بەينە فايلى, ۇزاقتىعى $2, $4 × $5 پىيكسەل, $3)',
+	'ogg-long-multiplexed'    => '(Ogg قۇرامدى دىبىس/بەينە فايلى, $1, ۇزاقتىعى $2, $4 × $5 پىيكسەل, $3 نە بارلىعى)',
+	'ogg-long-general'        => '(Ogg تاسپا فايلى, ۇزاقتىعى $2, $3)',
+	'ogg-long-error'          => '(جارامسىز ogg فايلى: $1)',
+	'ogg-play'                => 'ويناتۋ',
+	'ogg-pause'               => 'ايالداتۋ',
+	'ogg-stop'                => 'توقتاتۋ',
+	'ogg-play-video'          => 'بەينەنى ويناتۋ',
+	'ogg-play-sound'          => 'دىبىستى ويناتۋ',
 	'ogg-no-player'           => 'عافۋ ەتىڭىز, جۇيەڭىزدە ەش سۇيەمەلدەگەن ويناتۋ باعدارلامالىق قامتاماسىزداندىرعىش ورناتىلماعان. <a href="http://www.java.com/en/download/manual.jsp">Java</a> بۋماسىن ورناتىپ شىعىڭىز.',
 	'ogg-no-xiphqt'           => 'QuickTime ويناتقىشىڭىزدىڭ XiphQT دەگەن قۇراشى جوق سىيياقتى. بۇل قۇراشىسىز Ogg فايلدارىن QuickTime ويناتا المايدى. <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">XiphQT قۇراشىن</a> نە باسقا ويناتقىشتى جۇكتەڭىز.',
 	'ogg-player-videoElement' => '<video> داناسى',
-	'ogg-player-oggPlugin' => 'Ogg قوسىمشا باعدارلاماسى',
-	'ogg-player-thumbnail' => 'تەك ستوپ-كادر',
-	'ogg-player-soundthumb' => 'ويناتقىشسىز',
-	'ogg-player-selected'  => '(بولەكتەلگەن)',
-	'ogg-use-player'       => 'ويناتقىش پايدالانۋى: ',
-	'ogg-more'             => 'كوبىرەك...',
-	'ogg-dismiss'          => 'جابۋ',
-	'ogg-download'         => 'فايلدى جۇكتەۋ',
-	'ogg-desc-link'        => 'بۇل فايل تۋرالى',
+	'ogg-player-oggPlugin'    => 'Ogg قوسىمشا باعدارلاماسى',
+	'ogg-player-thumbnail'    => 'تەك ستوپ-كادر',
+	'ogg-player-soundthumb'   => 'ويناتقىشسىز',
+	'ogg-player-selected'     => '(بولەكتەلگەن)',
+	'ogg-use-player'          => 'ويناتقىش پايدالانۋى: ',
+	'ogg-more'                => 'كوبىرەك...',
+	'ogg-dismiss'             => 'جابۋ',
+	'ogg-download'            => 'فايلدى جۇكتەۋ',
+	'ogg-desc-link'           => 'بۇل فايل تۋرالى',
 );
 
+/** Kazakh (Cyrillic) (Қазақша (Cyrillic)) */
 $messages['kk-cyrl'] = array(
 	'ogg-short-audio'         => 'Ogg $1 дыбыс файлы, $2',
 	'ogg-short-video'         => 'Ogg $1 бейне файлы, $2',
@@ -1074,6 +1081,7 @@ $messages['kk-cyrl'] = array(
 	'ogg-desc-link'           => 'Бұл файл туралы',
 );
 
+/** Kazakh (Latin) (Қазақша (Latin)) */
 $messages['kk-latn'] = array(
 	'ogg-short-audio'         => 'Ogg $1 dıbıs faýlı, $2',
 	'ogg-short-video'         => 'Ogg $1 beýne faýlı, $2',
@@ -1126,6 +1134,7 @@ $messages['km'] = array(
 	'ogg-no-player'           => 'សូមអភ័យទោស! ប្រព័ន្ធដំនើរការរបស់អ្នក ហាក់បីដូចជាមិនមានកម្មវិធី ណាមួយសំរាប់លេងទេ។ សូម <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">ទាញយកកម្មវិធី សំរាប់លេងនៅទីនេះ</a> ។',
 	'ogg-no-xiphqt'           => 'មិនឃើញមាន អង្គផ្សំ XiphQT សំរាប់ QuickTime។ QuickTime មិនអាចអាន ឯកសារ ដោយ គ្មាន អង្គផ្សំនេះ។ ទាញយក <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download"> និង តំលើង XiphQT</a> ឬ ជ្រើសរើស ឧបករអាន ផ្សេង ។',
 	'ogg-player-videoElement' => 'ធាតុ <វីដេអូ>',
+	'ogg-player-oggPlugin'    => 'កម្មវិធីជំនួយ Ogg',
 	'ogg-player-thumbnail'    => 'នៅតែជារូបភាព',
 	'ogg-player-soundthumb'   => 'មិនមានឧបករណ៍លេងទេ',
 	'ogg-player-selected'     => '(បានជ្រើសយក)',
@@ -1559,32 +1568,35 @@ $messages['pl'] = array(
 	'ogg-desc-link'           => 'Właściwości pliku',
 );
 
+/** Piedmontese (Piemontèis)
+ * @author Bèrto 'd Sèra
+ */
 $messages['pms'] = array(
-	'ogg-short-audio' => 'Registrassion Ogg $1, $2',
-	'ogg-short-video' => 'Film Ogg $1, $2',
-	'ogg-short-general' => 'Archivi Multimojen Ogg $1, $2',
-	'ogg-long-audio' => '(Registrassion Ogg $1, ch\'a dura $2, $3)',
-	'ogg-long-video' => '(Film Ogg $1, ch\'a dura $2, formà $4×$5 px, $3)',
-	'ogg-long-multiplexed' => '(Archivi audio/video multiplessà Ogg, $1, ch\'a dura $2, formà $4×$5 px, $3 an tut)',
-	'ogg-long-general' => '(Archivi multimojen Ogg, ch\'a dura $2, $3)',
-	'ogg-long-error' => '(Archivi ogg nen bon: $1)',
-	'ogg-play' => 'Smon',
-	'ogg-pause' => 'Pàusa',
-	'ogg-stop' => 'Fërma',
-	'ogg-play-video' => 'Smon ël film',
-	'ogg-play-sound' => 'Smon ël sonòr',
-	'ogg-no-player' => 'Darmagi, ma sò calcolator a smija ch\'a l\'abia pa gnun programa ch\'a peul smon-e dj\'archivi multi-mojen. Për piasì <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">ch\'as në dëscaria un</a>.',
-	'ogg-no-xiphqt' => 'A smija che ansima a sò calcolator a-i sia nen ël component XiphQT dël programa QuickTime. QuickTime a-i la fa pa a dovré dj\'archivi an forma Ogg files s\'a l\'ha nen ës component-lì. Për piasì <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">ch\'as dëscaria XiphQT</a> ò pura ch\'as sërna n\'àotr programa për dovré j\'archivi multi-mojen.',
+	'ogg-short-audio'         => 'Registrassion Ogg $1, $2',
+	'ogg-short-video'         => 'Film Ogg $1, $2',
+	'ogg-short-general'       => 'Archivi Multimojen Ogg $1, $2',
+	'ogg-long-audio'          => "(Registrassion Ogg $1, ch'a dura $2, $3)",
+	'ogg-long-video'          => "(Film Ogg $1, ch'a dura $2, formà $4×$5 px, $3)",
+	'ogg-long-multiplexed'    => "(Archivi audio/video multiplessà Ogg, $1, ch'a dura $2, formà $4×$5 px, $3 an tut)",
+	'ogg-long-general'        => "(Archivi multimojen Ogg, ch'a dura $2, $3)",
+	'ogg-long-error'          => '(Archivi ogg nen bon: $1)',
+	'ogg-play'                => 'Smon',
+	'ogg-pause'               => 'Pàusa',
+	'ogg-stop'                => 'Fërma',
+	'ogg-play-video'          => 'Smon ël film',
+	'ogg-play-sound'          => 'Smon ël sonòr',
+	'ogg-no-player'           => "Darmagi, ma sò calcolator a smija ch'a l'abia pa gnun programa ch'a peul smon-e dj'archivi multi-mojen. Për piasì <a href=\"http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download\">ch'as në dëscaria un</a>.",
+	'ogg-no-xiphqt'           => "A smija che ansima a sò calcolator a-i sia nen ël component XiphQT dël programa QuickTime. QuickTime a-i la fa pa a dovré dj'archivi an forma Ogg files s'a l'ha nen ës component-lì. Për piasì <a href=\"http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download\">ch'as dëscaria XiphQT</a> ò pura ch'as sërna n'àotr programa për dovré j'archivi multi-mojen.",
 	'ogg-player-videoElement' => 'element <video>',
-	'ogg-player-oggPlugin' => 'Spinòt për Ogg',
-	'ogg-player-thumbnail' => 'Mach na figurin-a fissa',
-	'ogg-player-soundthumb' => 'Gnun programa për vardé/scoté',
-	'ogg-player-selected' => '(selessionà)',
-	'ogg-use-player' => 'Dovré ël programa:',
-	'ogg-more' => 'Dë pì...',
-	'ogg-dismiss' => 'sëré',
-	'ogg-download' => 'Dëscarié l\'archivi',
-	'ogg-desc-link' => 'Rësgoard a st\'archivi',
+	'ogg-player-oggPlugin'    => 'Spinòt për Ogg',
+	'ogg-player-thumbnail'    => 'Mach na figurin-a fissa',
+	'ogg-player-soundthumb'   => 'Gnun programa për vardé/scoté',
+	'ogg-player-selected'     => '(selessionà)',
+	'ogg-use-player'          => 'Dovré ël programa:',
+	'ogg-more'                => 'Dë pì...',
+	'ogg-dismiss'             => 'sëré',
+	'ogg-download'            => "Dëscarié l'archivi",
+	'ogg-desc-link'           => "Rësgoard a st'archivi",
 );
 
 /** Pashto (پښتو)
@@ -1777,7 +1789,7 @@ $messages['sq'] = array(
 	'ogg-desc-link'     => 'Rreth kësaj skede',
 );
 
-/** ћирилица (ћирилица)
+/** Serbian Cyrillic ekavian (ћирилица)
  * @author Sasa Stefanovic
  */
 $messages['sr-ec'] = array(
@@ -1810,7 +1822,7 @@ $messages['stq'] = array(
 	'ogg-play-video'          => 'Video ouspielje',
 	'ogg-play-sound'          => 'Audio ouspielje',
 	'ogg-no-player'           => 'Dien System schient uur neen Ouspielsoftware tou ferföigjen. Installier <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">ne Ouspielsoftware</a>.',
-	'ogg-no-xiphqt'           => 'Dien System schient nit uur ju XiphQT-Komponente foar QuickTime tou ferföigjen. QuickTime kon sunner disse Komponente neen Ogg-Doatäie ouspielje.
+	'ogg-no-xiphqt'           => 'Dien System schient nit uur ju XiphQT-Komponente foar QuickTime tou ferföigjen. QuickTime kon sunner disse Komponente neen Ogg-Doatäie ouspielje. 
 Dou <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">leede XiphQT</a> of wääl ne uur Ouspielsoftware.',
 	'ogg-player-videoElement' => '<video>-Element>',
 	'ogg-player-oggPlugin'    => 'Ogg-Plugin',
@@ -1914,7 +1926,7 @@ $messages['te'] = array(
 	'ogg-desc-link'           => 'ఈ ఫైలు గురించి',
 );
 
-/** Tajik (Тоҷикӣ)
+/** Tajik (Cyrillic) (Тоҷикӣ/tojikī (Cyrillic))
  * @author Ibrahim
  */
 $messages['tg-cyrl'] = array(
@@ -2085,102 +2097,93 @@ $messages['vo'] = array(
 	'ogg-desc-link'           => 'Tefü ragiv at',
 );
 
+/** Yue (粵語) */
 $messages['yue'] = array(
-	'ogg-desc'             => 'Ogg Theora 同 Vorbis 檔案嘅處理器，加埋 JavaScript 播放器',
-	'ogg-short-audio'      => 'Ogg $1 聲檔，$2',
-	'ogg-short-video'      => 'Ogg $1 畫檔，$2',
-	'ogg-short-general'    => 'Ogg $1 媒檔，$2',
-	'ogg-long-audio'       => '(Ogg $1 聲檔，長度$2，$3)',
-	'ogg-long-video'       => '(Ogg $1 畫檔，長度$2，$4×$5像素，$3)',
-	'ogg-long-multiplexed' => '(Ogg 多工聲／畫檔，$1，長度$2，$4×$5像素，總共$3)',
-	'ogg-long-general'     => '(Ogg 媒檔，長度$2，$3)',
-	'ogg-long-error'       => '(無效嘅ogg檔: $1)',
-	'ogg-play'             => '去',
-	'ogg-pause'            => '暫停',
-	'ogg-stop'             => '停',
-	'ogg-play-video'       => '去畫',
-	'ogg-play-sound'       => '去聲',
-	'ogg-no-player'        => '對唔住，你嘅系統並無任何可以支援得到嘅播放器。' .
-		'請安裝<a href="http://www.java.com/zh_TW/download/manual.jsp">Java</a>。',
-	'ogg-no-xiphqt'        => '你似乎無畀QuickTime用嘅XiphQT組件。' .
-		'響未有呢個組件嗰陣，QuickTime係唔可以播放Ogg檔案。' .
-		'請<a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">下載XiphQT</a>或者揀過另外一個播放器。',
-
+	'ogg-desc'                => 'Ogg Theora 同 Vorbis 檔案嘅處理器，加埋 JavaScript 播放器',
+	'ogg-short-audio'         => 'Ogg $1 聲檔，$2',
+	'ogg-short-video'         => 'Ogg $1 畫檔，$2',
+	'ogg-short-general'       => 'Ogg $1 媒檔，$2',
+	'ogg-long-audio'          => '(Ogg $1 聲檔，長度$2，$3)',
+	'ogg-long-video'          => '(Ogg $1 畫檔，長度$2，$4×$5像素，$3)',
+	'ogg-long-multiplexed'    => '(Ogg 多工聲／畫檔，$1，長度$2，$4×$5像素，總共$3)',
+	'ogg-long-general'        => '(Ogg 媒檔，長度$2，$3)',
+	'ogg-long-error'          => '(無效嘅ogg檔: $1)',
+	'ogg-play'                => '去',
+	'ogg-pause'               => '暫停',
+	'ogg-stop'                => '停',
+	'ogg-play-video'          => '去畫',
+	'ogg-play-sound'          => '去聲',
+	'ogg-no-player'           => '對唔住，你嘅系統並無任何可以支援得到嘅播放器。請安裝<a href="http://www.java.com/zh_TW/download/manual.jsp">Java</a>。',
+	'ogg-no-xiphqt'           => '你似乎無畀QuickTime用嘅XiphQT組件。響未有呢個組件嗰陣，QuickTime係唔可以播放Ogg檔案。請<a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">下載XiphQT</a>或者揀過另外一個播放器。',
 	'ogg-player-videoElement' => '<video>元素',
-	'ogg-player-oggPlugin' => 'Ogg插件',
-	'ogg-player-thumbnail' => '只有靜止圖像',
-	'ogg-player-soundthumb' => '無播放器',
-	'ogg-player-selected'  => '(揀咗)',
-	'ogg-use-player'       => '使用播放器: ',
-	'ogg-more'             => '更多...',
-	'ogg-dismiss'          => '閂',
-	'ogg-download'         => '下載檔案',
-	'ogg-desc-link'        => '關於呢個檔案',
+	'ogg-player-oggPlugin'    => 'Ogg插件',
+	'ogg-player-thumbnail'    => '只有靜止圖像',
+	'ogg-player-soundthumb'   => '無播放器',
+	'ogg-player-selected'     => '(揀咗)',
+	'ogg-use-player'          => '使用播放器: ',
+	'ogg-more'                => '更多...',
+	'ogg-dismiss'             => '閂',
+	'ogg-download'            => '下載檔案',
+	'ogg-desc-link'           => '關於呢個檔案',
 );
 
+/** Simplified Chinese (‪中文(简体)‬) */
 $messages['zh-hans'] = array(
-	'ogg-desc'             => 'Ogg Theora 和 Vorbis 文件的处理器，含 JavaScript 播放器',
-	'ogg-short-audio'      => 'Ogg $1 声音文件，$2',
-	'ogg-short-video'      => 'Ogg $1 视频文件，$2',
-	'ogg-short-general'    => 'Ogg $1 媒体文件，$2',
-	'ogg-long-audio'       => '(Ogg $1 声音文件，长度$2，$3)',
-	'ogg-long-video'       => '(Ogg $1 视频文件，长度$2，$4×$5像素，$3)',
-	'ogg-long-multiplexed' => '(Ogg 多工声音／视频文件，$1，长度$2，$4×$5像素，共$3)',
-	'ogg-long-general'     => '(Ogg 媒体文件，长度$2，$3)',
-	'ogg-long-error'       => '(无效的ogg文件: $1)',
-	'ogg-play'             => '播放',
-	'ogg-pause'            => '暂停',
-	'ogg-stop'             => '停止',
-	'ogg-play-video'       => '播放视频',
-	'ogg-play-sound'       => '播放声音',
-	'ogg-no-player'        => '抱歉，您的系统并无任何可以支持播放的播放器。' .
-		'请安装<a href="http://www.java.com/zh_CN/download/manual.jsp">Java</a>。',
-	'ogg-no-xiphqt'        => '您似乎没有给QuickTime用的XiphQT组件。' .
-		'在未有这个组件的情况下，QuickTime是不能播放Ogg文件的。' .
-		'请<a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">下载XiphQT</a>或者选取另一个播放器。',
-
+	'ogg-desc'                => 'Ogg Theora 和 Vorbis 文件的处理器，含 JavaScript 播放器',
+	'ogg-short-audio'         => 'Ogg $1 声音文件，$2',
+	'ogg-short-video'         => 'Ogg $1 视频文件，$2',
+	'ogg-short-general'       => 'Ogg $1 媒体文件，$2',
+	'ogg-long-audio'          => '(Ogg $1 声音文件，长度$2，$3)',
+	'ogg-long-video'          => '(Ogg $1 视频文件，长度$2，$4×$5像素，$3)',
+	'ogg-long-multiplexed'    => '(Ogg 多工声音／视频文件，$1，长度$2，$4×$5像素，共$3)',
+	'ogg-long-general'        => '(Ogg 媒体文件，长度$2，$3)',
+	'ogg-long-error'          => '(无效的ogg文件: $1)',
+	'ogg-play'                => '播放',
+	'ogg-pause'               => '暂停',
+	'ogg-stop'                => '停止',
+	'ogg-play-video'          => '播放视频',
+	'ogg-play-sound'          => '播放声音',
+	'ogg-no-player'           => '抱歉，您的系统并无任何可以支持播放的播放器。请安装<a href="http://www.java.com/zh_CN/download/manual.jsp">Java</a>。',
+	'ogg-no-xiphqt'           => '您似乎没有给QuickTime用的XiphQT组件。在未有这个组件的情况下，QuickTime是不能播放Ogg文件的。请<a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">下载XiphQT</a>或者选取另一个播放器。',
 	'ogg-player-videoElement' => '<video>元素',
-	'ogg-player-oggPlugin' => 'Ogg插件',
-	'ogg-player-thumbnail' => '只有静止图像',
-	'ogg-player-soundthumb' => '沒有播放器',
-	'ogg-player-selected'  => '(已选取)',
-	'ogg-use-player'       => '使用播放器: ',
-	'ogg-more'             => '更多...',
-	'ogg-dismiss'          => '关闭',
-	'ogg-download'         => '下载文件',
-	'ogg-desc-link'        => '关于这个文件',
+	'ogg-player-oggPlugin'    => 'Ogg插件',
+	'ogg-player-thumbnail'    => '只有静止图像',
+	'ogg-player-soundthumb'   => '沒有播放器',
+	'ogg-player-selected'     => '(已选取)',
+	'ogg-use-player'          => '使用播放器: ',
+	'ogg-more'                => '更多...',
+	'ogg-dismiss'             => '关闭',
+	'ogg-download'            => '下载文件',
+	'ogg-desc-link'           => '关于这个文件',
 );
 
+/** Traditional Chinese (‪中文(繁體)‬) */
 $messages['zh-hant'] = array(
-	'ogg-desc'             => 'Ogg Theora 和 Vorbis 檔案的處理器，含 JavaScript 播放器',
-	'ogg-short-audio'      => 'Ogg $1 聲音檔案，$2',
-	'ogg-short-video'      => 'Ogg $1 影片檔案，$2',
-	'ogg-short-general'    => 'Ogg $1 媒體檔案，$2',
-	'ogg-long-audio'       => '(Ogg $1 聲音檔案，長度$2，$3)',
-	'ogg-long-video'       => '(Ogg $1 影片檔案，長度$2，$4×$5像素，$3)',
-	'ogg-long-multiplexed' => '(Ogg 多工聲音／影片檔案，$1，長度$2，$4×$5像素，共$3)',
-	'ogg-long-general'     => '(Ogg 媒體檔案，長度$2，$3)',
-	'ogg-long-error'       => '(無效的ogg檔案: $1)',
-	'ogg-play'             => '播放',
-	'ogg-pause'            => '暫停',
-	'ogg-stop'             => '停止',
-	'ogg-play-video'       => '播放影片',
-	'ogg-play-sound'       => '播放聲音',
-	'ogg-no-player'        => '抱歉，您的系統並無任何可以支援播放的播放器。' .
-		'請安裝<a href="http://www.java.com/zh_TW/download/manual.jsp">Java</a>。',
-	'ogg-no-xiphqt'        => '您似乎沒有給QuickTime用的XiphQT組件。' .
-		'在未有這個組件的情況下，QuickTime是不能播放Ogg檔案的。' .
-		'請<a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">下載XiphQT</a>或者選取另一個播放器。',
-
+	'ogg-desc'                => 'Ogg Theora 和 Vorbis 檔案的處理器，含 JavaScript 播放器',
+	'ogg-short-audio'         => 'Ogg $1 聲音檔案，$2',
+	'ogg-short-video'         => 'Ogg $1 影片檔案，$2',
+	'ogg-short-general'       => 'Ogg $1 媒體檔案，$2',
+	'ogg-long-audio'          => '(Ogg $1 聲音檔案，長度$2，$3)',
+	'ogg-long-video'          => '(Ogg $1 影片檔案，長度$2，$4×$5像素，$3)',
+	'ogg-long-multiplexed'    => '(Ogg 多工聲音／影片檔案，$1，長度$2，$4×$5像素，共$3)',
+	'ogg-long-general'        => '(Ogg 媒體檔案，長度$2，$3)',
+	'ogg-long-error'          => '(無效的ogg檔案: $1)',
+	'ogg-play'                => '播放',
+	'ogg-pause'               => '暫停',
+	'ogg-stop'                => '停止',
+	'ogg-play-video'          => '播放影片',
+	'ogg-play-sound'          => '播放聲音',
+	'ogg-no-player'           => '抱歉，您的系統並無任何可以支援播放的播放器。請安裝<a href="http://www.java.com/zh_TW/download/manual.jsp">Java</a>。',
+	'ogg-no-xiphqt'           => '您似乎沒有給QuickTime用的XiphQT組件。在未有這個組件的情況下，QuickTime是不能播放Ogg檔案的。請<a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">下載XiphQT</a>或者選取另一個播放器。',
 	'ogg-player-videoElement' => '<video>元素',
-	'ogg-player-oggPlugin' => 'Ogg插件',
-	'ogg-player-thumbnail' => '只有靜止圖像',
-	'ogg-player-soundthumb' => '沒有播放器',
-	'ogg-player-selected'  => '(已選取)',
-	'ogg-use-player'       => '使用播放器: ',
-	'ogg-more'             => '更多...',
-	'ogg-dismiss'          => '關閉',
-	'ogg-download'         => '下載檔案',
-	'ogg-desc-link'        => '關於這個檔案',
+	'ogg-player-oggPlugin'    => 'Ogg插件',
+	'ogg-player-thumbnail'    => '只有靜止圖像',
+	'ogg-player-soundthumb'   => '沒有播放器',
+	'ogg-player-selected'     => '(已選取)',
+	'ogg-use-player'          => '使用播放器: ',
+	'ogg-more'                => '更多...',
+	'ogg-dismiss'             => '關閉',
+	'ogg-download'            => '下載檔案',
+	'ogg-desc-link'           => '關於這個檔案',
 );
 

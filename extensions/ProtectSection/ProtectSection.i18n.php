@@ -14,6 +14,9 @@ $messages['en'] = array(
 	'protectsection_forbidden'  => 'Forbidden',
 );
 
+/** Arabic (العربية)
+ * @author Meno25
+ */
 $messages['ar'] = array(
 	'protectsection_add_remove' => 'أنت حاولت إضافة أو إزالة قسم محمي',
 	'protectsection_modify'     => 'أنت حاولت تعديل نص محمي',
@@ -37,6 +40,7 @@ $messages['bg'] = array(
 	'protectsection_modify'     => 'Опитахте се да промените защитен текст.',
 );
 
+/** German (Deutsch) */
 $messages['de'] = array(
 	'protectsection_add_remove' => 'Du hast versucht, einen geschützten Abschnitt hinzuzufügen oder zu entfernen.',
 	'protectsection_modify'     => 'Du hast versucht, einen geschützten Text zu bearbeiten.',
@@ -90,6 +94,9 @@ $messages['hr'] = array(
 	'protectsection_forbidden'  => 'Zabranjeno',
 );
 
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
 $messages['hsb'] = array(
 	'protectsection_add_remove' => 'Sy spytał škitany wotrězk přidać abo wotstronić.',
 	'protectsection_modify'     => 'Sy spytał škitany tekst změnić.',
@@ -160,7 +167,7 @@ $messages['nl'] = array(
 	'protectsection_forbidden'  => 'Niet toegestaan',
 );
 
-/** Norwegian (‪Norsk (bokmål)‬)
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */
 $messages['no'] = array(
@@ -209,6 +216,7 @@ $messages['ru'] = array(
  * @author Helix84
  */
 $messages['sk'] = array(
+	'protectsection_desc'       => 'Umožňuje oprávneným používateľom zamykať časti stránky pomocou značky <tt>&lt;protect&gt;</tt>',
 	'protectsection_add_remove' => 'Pokúsili ste sa pridať alebo odstrániť zamknutú sekciu',
 	'protectsection_modify'     => 'Pokúsili ste sa upravovať zamknutý text',
 	'protectsection_forbidden'  => 'Zakázané',

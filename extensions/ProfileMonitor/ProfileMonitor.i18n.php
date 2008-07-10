@@ -32,17 +32,20 @@ $messages['af'] = array(
 	'profiling-ok' => 'OK',
 );
 
+/** Arabic (العربية)
+ * @author Meno25
+ */
 $messages['ar'] = array(
-	'profiling' => 'معالجة البيانات',
-	'profiling-process' => 'معالجة العملية:',
-	'profiling-wildcard' => 'استخدم كارتا خاصا',
-	'profiling-ok' => 'موافق',
-	'profiling-data' => 'معالجة البيانات ل`$1`',
+	'profiling'              => 'معالجة البيانات',
+	'profiling-process'      => 'معالجة العملية:',
+	'profiling-wildcard'     => 'استخدم كارتا خاصا',
+	'profiling-ok'           => 'موافق',
+	'profiling-data'         => 'معالجة البيانات ل`$1`',
 	'profiling-data-process' => 'عملية',
-	'profiling-data-count' => 'عداد',
-	'profiling-data-time' => 'الزمن (الكل)',
+	'profiling-data-count'   => 'عداد',
+	'profiling-data-time'    => 'الزمن (الكل)',
 	'profiling-data-average' => 'الزمن (متوسط)',
-	'profiling-no-data' => 'لم يتم إيجاد بيانات مطابقة.',
+	'profiling-no-data'      => 'لم يتم إيجاد بيانات مطابقة.',
 );
 
 /** Bulgarian (Български)
@@ -127,17 +130,20 @@ $messages['hi'] = array(
 	'profiling-no-data'      => 'मिलता जुलता डाटा मिला नहीं।',
 );
 
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
 $messages['hsb'] = array(
-	'profiling' => 'Profilowanske daty',
-	'profiling-process' => 'Znamjenjowy slěd předźěłać:',
-	'profiling-wildcard' => 'Zastupowacy symbol wužiwać',
-	'profiling-ok' => 'W porjadku',
-	'profiling-data' => 'Profilowanske daty za `$1`',
+	'profiling'              => 'Profilowanske daty',
+	'profiling-process'      => 'Znamjenjowy slěd předźěłać:',
+	'profiling-wildcard'     => 'Zastupowacy symbol wužiwać',
+	'profiling-ok'           => 'W porjadku',
+	'profiling-data'         => 'Profilowanske daty za `$1`',
 	'profiling-data-process' => 'Proces',
-	'profiling-data-count' => 'Ličić',
-	'profiling-data-time' => 'Čas (dohromady)',
+	'profiling-data-count'   => 'Ličić',
+	'profiling-data-time'    => 'Čas (dohromady)',
 	'profiling-data-average' => 'Čas (přerězk)',
-	'profiling-no-data' => 'Žane wotpowědne daty namakane.',
+	'profiling-no-data'      => 'Žane wotpowědne daty namakane.',
 );
 
 /** Interlingua (Interlingua)
@@ -147,32 +153,36 @@ $messages['ia'] = array(
 	'profiling-ok' => 'OK',
 );
 
-/* Indonesian (IvanLanin) */
+/** Indonesian (Bahasa Indonesia)
+ * @author Ivan Lanin
+ */
 $messages['id'] = array(
-	'profiling' => 'Profilisasi data',
-	'profiling-process' => 'Proses data:',
-	'profiling-wildcard' => 'Gunakan wildcard',
+	'profiling'              => 'Profilisasi data',
+	'profiling-process'      => 'Proses data:',
+	'profiling-wildcard'     => 'Gunakan wildcard',
 	'profiling-ok' => 'OK',
-	'profiling-data' => 'Profilisasi data untuk `$1`',
+	'profiling-data'         => 'Profilisasi data untuk `$1`',
 	'profiling-data-process' => 'Proses',
-	'profiling-data-count' => 'Jumlah',
-	'profiling-data-time' => 'Waktu (seluruhnya)',
+	'profiling-data-count'   => 'Jumlah',
+	'profiling-data-time'    => 'Waktu (seluruhnya)',
 	'profiling-data-average' => 'Waktu (rata-rata)',
-	'profiling-no-data' => 'Tidak ditemukan data yang cocok.',
+	'profiling-no-data'      => 'Tidak ditemukan data yang cocok.',
 );
 
-/* Italian (BrokenArrow) */
+/** Italian (Italiano)
+ * @author BrokenArrow
+ */
 $messages['it'] = array(
-	'profiling' => 'Dati di profiling',
-	'profiling-process' => 'Stringa processo:',
-	'profiling-wildcard' => 'Usa metacaratteri',
+	'profiling'              => 'Dati di profiling',
+	'profiling-process'      => 'Stringa processo:',
+	'profiling-wildcard'     => 'Usa metacaratteri',
 	'profiling-ok' => 'OK',
-	'profiling-data' => 'Dati di profiling per `$1`',
+	'profiling-data'         => 'Dati di profiling per `$1`',
 	'profiling-data-process' => 'Processo',
-	'profiling-data-count' => 'Conteggio',
-	'profiling-data-time' => 'Tempo totale',
+	'profiling-data-count'   => 'Conteggio',
+	'profiling-data-time'    => 'Tempo totale',
 	'profiling-data-average' => 'Tempo medio',
-	'profiling-no-data' => 'Nessun dato corrispondente.',
+	'profiling-no-data'      => 'Nessun dato corrispondente.',
 );
 
 /** Javanese (Basa Jawa)
@@ -309,17 +319,20 @@ $messages['nso'] = array(
 	'profiling-data-average' => 'Nako (kakaretšo)',
 );
 
+/** Occitan (Occitan)
+ * @author Cedric31
+ */
 $messages['oc'] = array(
-	'profiling' => 'Donadas per evaluar',
-	'profiling-process' => 'Cadena de caractèrs de tractar :',
-	'profiling-wildcard' => 'Utilizatz de « joker »',
-	'profiling-ok' => 'Acceptar',
-	'profiling-data' => 'Donadas d\'evaluacion de « $1 »',
+	'profiling'              => 'Donadas per evaluar',
+	'profiling-process'      => 'Cadena de caractèrs de tractar :',
+	'profiling-wildcard'     => 'Utilizatz de « joker »',
+	'profiling-ok'           => 'Acceptar',
+	'profiling-data'         => "Donadas d'evaluacion de « $1 »",
 	'profiling-data-process' => 'Tractar',
-	'profiling-data-count' => 'Comptar',
-	'profiling-data-time' => 'Durada (tot)',
+	'profiling-data-count'   => 'Comptar',
+	'profiling-data-time'    => 'Durada (tot)',
 	'profiling-data-average' => 'Durada (mejana)',
-	'profiling-no-data' => 'Cap de donada correspondenta pas trobada',
+	'profiling-no-data'      => 'Cap de donada correspondenta pas trobada',
 );
 
 /** Ossetic (Иронау)
@@ -329,17 +342,20 @@ $messages['os'] = array(
 	'profiling-ok' => 'Афтæ уæд!',
 );
 
+/** Piedmontese (Piemontèis)
+ * @author Bèrto 'd Sèra
+ */
 $messages['pms'] = array(
-	'profiling' => 'Antramentr ch\'as càlcola ël profil da \'nt ij dat',
-	'profiling-process' => 'Espression processà:',
-	'profiling-wildcard' => 'Dovré ël ciapatut',
-	'profiling-ok' => 'Bin parej',
-	'profiling-data' => 'Antramentr ch\'as amzuro ij dat për `$1`',
-	'profiling-data-process' => 'Process',#identical but defined
-	'profiling-data-count' => 'Cont',
-	'profiling-data-time' => 'Temp (an total)',
+	'profiling'              => "Antramentr ch'as càlcola ël profil da 'nt ij dat",
+	'profiling-process'      => 'Espression processà:',
+	'profiling-wildcard'     => 'Dovré ël ciapatut',
+	'profiling-ok'           => 'Bin parej',
+	'profiling-data'         => "Antramentr ch'as amzuro ij dat për `$1`",
+	'profiling-data-process' => 'Process',
+	'profiling-data-count'   => 'Cont',
+	'profiling-data-time'    => 'Temp (an total)',
 	'profiling-data-average' => 'Temp (mojen)',
-	'profiling-no-data' => 'A l\'é pa trovasse gnun dat parej.',
+	'profiling-no-data'      => "A l'é pa trovasse gnun dat parej.",
 );
 
 /** Pashto (پښتو)
@@ -376,18 +392,20 @@ $messages['ru'] = array(
 	'profiling-no-data'      => 'Не найдено соответствующих данных.',
 );
 
-/* Slovak (helix84) */
+/** Slovak (Slovenčina)
+ * @author Helix84
+ */
 $messages['sk'] = array(
-	'profiling' => 'Profilovacie údaje',
-	'profiling-process' => 'Spracovať reťazec:',
-	'profiling-wildcard' => 'Použiť zástupné znaky',
-	'profiling-ok' => 'OK',
-	'profiling-data' => 'Profilovacie údaje pre `$1`',
+	'profiling'              => 'Profilovacie údaje',
+	'profiling-desc'         => '[[Special:Profiling|Špeciálna stránka]] na hľadanie a skúmanie profilovacích údajov',
+	'profiling-process'      => 'Spracovať reťazec:',
+	'profiling-wildcard'     => 'Použiť zástupné znaky',
+	'profiling-data'         => 'Profilovacie údaje pre `$1`',
 	'profiling-data-process' => 'Spracovať',
-	'profiling-data-count' => 'Počet',
-	'profiling-data-time' => 'Čas (všetky)',
+	'profiling-data-count'   => 'Počet',
+	'profiling-data-time'    => 'Čas (všetky)',
 	'profiling-data-average' => 'Čas (priemer)',
-	'profiling-no-data' => 'Neboli nájdené vyhovujúce údaje.',
+	'profiling-no-data'      => 'Neboli nájdené vyhovujúce údaje.',
 );
 
 /** Seeltersk (Seeltersk)
@@ -465,45 +483,50 @@ $messages['vi'] = array(
 	'profiling-no-data'      => 'Không có dữ liệu trùng khớp.',
 );
 
-/* Cantonese (Shinjiman) */
+/** Yue (粵語)
+ * @author Shinjiman
+ */
 $messages['yue'] = array(
-	'profiling' => '檢核資料',
-	'profiling-process' => '處理字串:',
-	'profiling-wildcard' => '用萬用符',
-	'profiling-ok' => 'OK',
-	'profiling-data' => '檢核緊`$1`嘅資料',
+	'profiling'              => '檢核資料',
+	'profiling-process'      => '處理字串:',
+	'profiling-wildcard'     => '用萬用符',
+	'profiling-data'         => '檢核緊`$1`嘅資料',
 	'profiling-data-process' => '處理',
-	'profiling-data-count' => '數量',
-	'profiling-data-time' => '時間 (全部)',
+	'profiling-data-count'   => '數量',
+	'profiling-data-time'    => '時間 (全部)',
 	'profiling-data-average' => '時間 (平均)',
-	'profiling-no-data' => '搵唔到對應嘅資料。',
+	'profiling-no-data'      => '搵唔到對應嘅資料。',
 );
 
-/* Chinese (Simplified) (Shinjiman) */
+/** Simplified Chinese (‪中文(简体)‬)
+ * @author Shinjiman
+ */
 $messages['zh-hans'] = array(
-	'profiling' => '检核数据',
-	'profiling-process' => '处理字串:',
-	'profiling-wildcard' => '使用通配符',
-	'profiling-ok' => '确定',
-	'profiling-data' => '正在检核`$1`的数据',
+	'profiling'              => '检核数据',
+	'profiling-process'      => '处理字串:',
+	'profiling-wildcard'     => '使用通配符',
+	'profiling-ok'           => '确定',
+	'profiling-data'         => '正在检核`$1`的数据',
 	'profiling-data-process' => '处理',
-	'profiling-data-count' => '数量',
-	'profiling-data-time' => '时间 (全部)',
+	'profiling-data-count'   => '数量',
+	'profiling-data-time'    => '时间 (全部)',
 	'profiling-data-average' => '时间 (平均)',
-	'profiling-no-data' => '找不到匹配的数据。',
+	'profiling-no-data'      => '找不到匹配的数据。',
 );
 
-/* Chinese (Traditional) (Shinjiman) */
+/** Traditional Chinese (‪中文(繁體)‬)
+ * @author Shinjiman
+ */
 $messages['zh-hant'] = array(
-	'profiling' => '檢核資料',
-	'profiling-process' => '處理字串:',
-	'profiling-wildcard' => '使用萬用字元',
-	'profiling-ok' => '確定',
-	'profiling-data' => '正在檢核`$1`的資料',
+	'profiling'              => '檢核資料',
+	'profiling-process'      => '處理字串:',
+	'profiling-wildcard'     => '使用萬用字元',
+	'profiling-ok'           => '確定',
+	'profiling-data'         => '正在檢核`$1`的資料',
 	'profiling-data-process' => '處理',
-	'profiling-data-count' => '數量',
-	'profiling-data-time' => '時間 (全部)',
+	'profiling-data-count'   => '數量',
+	'profiling-data-time'    => '時間 (全部)',
 	'profiling-data-average' => '時間 (平均)',
-	'profiling-no-data' => '找不到對應的資料。',
+	'profiling-no-data'      => '找不到對應的資料。',
 );
 

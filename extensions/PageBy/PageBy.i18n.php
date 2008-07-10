@@ -145,6 +145,7 @@ $messages['hu'] = array(
 
 /** Armenian (Հայերեն)
  * @author Teak
+ * @author Siebrand
  */
 $messages['hy'] = array(
 	'pageby-first'        => 'Էջը ստեղծել է՝',
@@ -229,7 +230,7 @@ $messages['nl'] = array(
 	'pageby-anon'         => '<i>anoniem</i>',
 );
 
-/** Norwegian (‪Norsk (bokmål)‬)
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */
 $messages['no'] = array(
@@ -263,7 +264,7 @@ $messages['pl'] = array(
 	'pageby-anon'         => '<i>anonimowy</i>',
 );
 
-/** Piemontèis (Piemontèis)
+/** Piedmontese (Piemontèis)
  * @author Bèrto 'd Sèra
  */
 $messages['pms'] = array(

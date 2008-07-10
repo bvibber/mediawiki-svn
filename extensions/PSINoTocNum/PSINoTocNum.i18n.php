@@ -35,6 +35,7 @@ $messages['dsb'] = array(
 	'psinotocnum-desc' => 'Nowe magiske słowo "<nowiki>__</nowiki>NOTOCNUM<nowiki>__</nowiki>"',
 );
 
+/** French (Français) */
 $messages['fr'] = array(
 	'psinotocnum-desc' => 'Nouveau mot magique « <nowiki>__</nowiki>NOTOCNUM<nowiki>__</nowiki> »',
 );

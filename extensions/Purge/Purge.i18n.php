@@ -45,9 +45,11 @@ $messages['de'] = array(
 	'purge-desc' => 'Ergänzt einen „Purge“-Reiter für alle normalen Seiten zur schnellen Cache-Löschung und umgeht die Purge-Prüfung für anonyme Benutzer',
 );
 
-/*Translation by Bertrand GRONDIN*/
+/** French (Français) */
+ * @author Grondin
+ */
 $messages['fr'] = array(
-	'purge' => 'purger',
+	'purge'      => 'purger',
 	'purge-desc' => 'Ajoute un onglet « Purger » sur toutes les pages normales et active sa sélection pour les utilisateurs anonymes pour une purge rapide du cache.',
 );
 
@@ -149,7 +151,7 @@ $messages['nl'] = array(
 	'purge-desc' => 'Voegt een tabblad "purge" toe op alle normale pagina\'s en laat de purgecontrole weg voor anonieme gebruikers zodat de cache snel gepurged kan worden',
 );
 
-/** Norwegian (‪Norsk (bokmål)‬)
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */
 $messages['no'] = array(

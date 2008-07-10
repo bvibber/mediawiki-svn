@@ -123,16 +123,15 @@ $messages['de'] = array(
  * @author Consta
  */
 $messages['el'] = array(
-	'player'                  => 'Παίκτης',
-	'player-title'            => 'Παίκτης',
-	'player-playertitle'      => 'Παίκτης: $1',
-	'player-file'             => 'Όνομα αρχείου',
-	'player-imagepage-header' => '<h1>$1</h1>',
-	'player-not-found'        => 'το αρχείο δεν βρέθηκε',
-	'player-invalid-title'    => 'άκυρος τίτλος',
-	'player-goto-player'      => 'Παίκτης',
-	'player-goto-page'        => 'Σελίδα',
-	'player-goto-file'        => 'Αρχείο',
+	'player'               => 'Παίκτης',
+	'player-title'         => 'Παίκτης',
+	'player-playertitle'   => 'Παίκτης: $1',
+	'player-file'          => 'Όνομα αρχείου',
+	'player-not-found'     => 'το αρχείο δεν βρέθηκε',
+	'player-invalid-title' => 'άκυρος τίτλος',
+	'player-goto-player'   => 'Παίκτης',
+	'player-goto-page'     => 'Σελίδα',
+	'player-goto-file'     => 'Αρχείο',
 );
 
 /** Esperanto (Esperanto)
@@ -263,19 +262,18 @@ $messages['hsb'] = array(
  * @author Dani
  */
 $messages['hu'] = array(
-	'player'                  => 'Lejátszó',
-	'player-title'            => 'Lejátszó',
-	'player-playertitle'      => 'Lejátszó: $1',
-	'player-file'             => 'Fájl neve',
-	'player-play'             => 'Lejátszás',
-	'player-imagepage-header' => '<h1>$1</h1>',
-	'player-not-allowed'      => 'nem engedélyezett formátum',
-	'player-not-found'        => 'a fájl nem található',
-	'player-invalid-title'    => 'érvénytelen cím',
-	'player-clicktoplay'      => '$1 lejátszása',
-	'player-goto-player'      => 'lejátszó',
-	'player-goto-page'        => 'Oldal',
-	'player-goto-file'        => 'fájl',
+	'player'               => 'Lejátszó',
+	'player-title'         => 'Lejátszó',
+	'player-playertitle'   => 'Lejátszó: $1',
+	'player-file'          => 'Fájl neve',
+	'player-play'          => 'Lejátszás',
+	'player-not-allowed'   => 'nem engedélyezett formátum',
+	'player-not-found'     => 'a fájl nem található',
+	'player-invalid-title' => 'érvénytelen cím',
+	'player-clicktoplay'   => '$1 lejátszása',
+	'player-goto-player'   => 'lejátszó',
+	'player-goto-page'     => 'Oldal',
+	'player-goto-file'     => 'fájl',
 );
 
 /** Indonesian (Bahasa Indonesia)
@@ -287,6 +285,9 @@ $messages['id'] = array(
 	'player-goto-player' => 'Pemain',
 );
 
+/** Ido (Ido)
+ * @author Malafaya
+ */
 $messages['io'] = array(
 	'player-goto-page' => 'Pagino',
 );
@@ -340,6 +341,9 @@ $messages['krj'] = array(
 	'player-goto-file' => 'inayap',
 );
 
+/** Latin (Latina)
+ * @author SPQRobin
+ */
 $messages['la'] = array(
 	'player-goto-page' => 'Pagina',
 	'player-goto-file' => 'Fasciculus',
@@ -424,7 +428,7 @@ $messages['nn'] = array(
 	'player-goto-file' => 'fil',
 );
 
-/** Norwegian (‪Norsk (bokmål)‬)
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */
 $messages['no'] = array(
@@ -490,20 +494,22 @@ $messages['pl'] = array(
 	'player-goto-file'     => 'plik',
 );
 
+/** Piedmontese (Piemontèis)
+ * @author Bèrto 'd Sèra
+ */
 $messages['pms'] = array(
-	'player' => 'Esecutor',
-	'player-title' => 'Esecutor',
-	'player-playertitle' => 'Esecutor: $1',
-	'player-file' => 'Nòm dl\'archivi',
-	'player-play' => 'Vardé/Scoté',
-	'player-imagepage-header' => '<h1>$1</h1>',
-	'player-not-allowed' => 'formà nen consentì',
-	'player-not-found' => 'archivi nen trovà',
+	'player'               => 'Esecutor',
+	'player-title'         => 'Esecutor',
+	'player-playertitle'   => 'Esecutor: $1',
+	'player-file'          => "Nòm dl'archivi",
+	'player-play'          => 'Vardé/Scoté',
+	'player-not-allowed'   => 'formà nen consentì',
+	'player-not-found'     => 'archivi nen trovà',
 	'player-invalid-title' => 'tìtol nen bon',
-	'player-clicktoplay' => 'Son-a/Varda $1',
-	'player-goto-player' => 'esecutor',
-	'player-goto-page' => 'Pàgina',
-	'player-goto-file' => 'archivi',
+	'player-clicktoplay'   => 'Son-a/Varda $1',
+	'player-goto-player'   => 'esecutor',
+	'player-goto-page'     => 'Pàgina',
+	'player-goto-file'     => 'archivi',
 );
 
 /** Pashto (پښتو)
@@ -591,19 +597,18 @@ $messages['sr-ec'] = array(
  * @author Pyt
  */
 $messages['stq'] = array(
-	'player'                  => 'Player',
-	'player-title'            => 'Player',
-	'player-playertitle'      => 'Player: $1',
-	'player-file'             => 'Doatäinoome',
-	'player-play'             => 'Ouspielje',
-	'player-imagepage-header' => '<h1>$1</h1>',
-	'player-not-allowed'      => 'Nit ferlööwed Formoat',
-	'player-not-found'        => 'Doatäi nit fuunen',
-	'player-invalid-title'    => 'uungultigen Noome',
-	'player-clicktoplay'      => '$1 ouspielje',
-	'player-goto-player'      => 'Player',
-	'player-goto-page'        => 'Siede',
-	'player-goto-file'        => 'Doatäi',
+	'player'               => 'Player',
+	'player-title'         => 'Player',
+	'player-playertitle'   => 'Player: $1',
+	'player-file'          => 'Doatäinoome',
+	'player-play'          => 'Ouspielje',
+	'player-not-allowed'   => 'Nit ferlööwed Formoat',
+	'player-not-found'     => 'Doatäi nit fuunen',
+	'player-invalid-title' => 'uungultigen Noome',
+	'player-clicktoplay'   => '$1 ouspielje',
+	'player-goto-player'   => 'Player',
+	'player-goto-page'     => 'Siede',
+	'player-goto-file'     => 'Doatäi',
 );
 
 /** Swedish (Svenska)
@@ -626,7 +631,7 @@ $messages['sv'] = array(
 	'player-goto-file'     => 'fil',
 );
 
-/** Silesian (ślůnski)
+/** Silesian (Ślůnski)
  * @author Herr Kriss
  */
 $messages['szl'] = array(

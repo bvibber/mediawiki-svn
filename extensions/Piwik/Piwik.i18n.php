@@ -69,8 +69,9 @@ $messages['de'] = array(
 	'piwik-browsers'   => 'Browser',
 );
 
-/** Spanish (Castellano)
+/** Spanish (Español)
  * @author Isb1009
+ * @author Castellano
  */
 $messages['es'] = array(
 	'piwik-desc'       => 'Inseta el código de Piwik en las páginas de la wiki MediaWiki para el seguimiento y añade [[Special:Piwik|algunas estadísticas]]',

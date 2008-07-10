@@ -67,7 +67,7 @@ $messages['nl'] = array(
 	'randomimage-desc' => 'Voegt de tag <tt>&lt;randomimage /&gt;</tt> toe voor het selecteren van een willekeurig mediabestand',
 );
 
-/** Norwegian (‪Norsk (bokmål)‬)
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */
 $messages['no'] = array(

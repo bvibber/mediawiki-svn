@@ -426,19 +426,19 @@ $messages['ia'] = array(
  * @author IvanLanin
  */
 $messages['id'] = array(
-	'parserdifftest' => 'Uji parser pembeda',
-	'pdtest-desc' => '[[Special:ParserDiffTest|Halaman istimewa]] untuk membandingkan keluaran dari dua parser yang berbeda',
-	'pdtest_no_target' => 'Tak ada target yang diberikan.',
+	'parserdifftest'      => 'Uji parser pembeda',
+	'pdtest-desc'         => '[[Special:ParserDiffTest|Halaman istimewa]] untuk membandingkan keluaran dari dua parser yang berbeda',
+	'pdtest_no_target'    => 'Tak ada target yang diberikan.',
 	'pdtest_page_missing' => 'Halaman yang diberikan tak ditemukan dalam basis data.',
-	'pdtest_no_changes' => 'Tak ditemukan perubahan.',
-	'pdtest_time_report' => '<b>$1</b> memerlukan $2 detik, <b>$3</b> memerlukan $4 detik.',
-	'pdtest_title' => 'Judul konteks:',
-	'pdtest_text' => 'Teks masukan:',
+	'pdtest_no_changes'   => 'Tak ditemukan perubahan.',
+	'pdtest_time_report'  => '<b>$1</b> memerlukan $2 detik, <b>$3</b> memerlukan $4 detik.',
+	'pdtest_title'        => 'Judul konteks:',
+	'pdtest_text'         => 'Teks masukan:',
 	'pdtest_ok' => 'OK',
-	'pdtest_get_text' => 'Ambil teks dari halaman',
-	'pdtest_diff' => 'Perbedaan',
+	'pdtest_get_text'     => 'Ambil teks dari halaman',
+	'pdtest_diff'         => 'Perbedaan',
 	'pdtest_side_by_side' => 'Perbandingan keluaran',
-	'pdt_comparing_page' => 'Membandingkan keluaran parser dari [[$1]]',
+	'pdt_comparing_page'  => 'Membandingkan keluaran parser dari [[$1]]',
 );
 
 /** Ido (Ido)
@@ -730,7 +730,7 @@ $messages['nn'] = array(
 	'pdt_comparing_page'  => 'Samanliknar parserresultat frå [[$1]]',
 );
 
-/** Norwegian (‪Norsk (bokmål)‬)
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */
 $messages['no'] = array(
@@ -934,7 +934,7 @@ $messages['sv'] = array(
 	'pdt_comparing_page'  => 'Jämför parsningsresultat av [[$1]]',
 );
 
-/** Silesian (ślůnski)
+/** Silesian (Ślůnski)
  * @author Herr Kriss
  */
 $messages['szl'] = array(
@@ -966,7 +966,7 @@ $messages['tet'] = array(
 	'pdtest_ok' => 'OK',
 );
 
-/** Tajik (Тоҷикӣ)
+/** Tajik (Cyrillic) (Тоҷикӣ/tojikī (Cyrillic))
  * @author Ibrahim
  */
 $messages['tg-cyrl'] = array(
@@ -1068,7 +1068,7 @@ $messages['vo'] = array(
 );
 
 /** Cantonese
- * @authorShinjiman
+ * @author Shinjiman
  */
 $messages['yue'] = array(
 	'parserdifftest'      => '處理器差異測試',
@@ -1087,7 +1087,7 @@ $messages['yue'] = array(
 );
 
 /** Chinese Simplified
- * @authorShinjiman
+ * @author Shinjiman
  */
 $messages['zh-hans'] = array(
 	'parserdifftest'      => '处理器差异测试',
@@ -1105,9 +1105,8 @@ $messages['zh-hans'] = array(
 	'pdt_comparing_page'  => '正在从[[$1]]比较处理器输出',
 );
 
-
 /** Chinese Traditional
- * @authorShinjiman
+ * @author Shinjiman
  */
 $messages['zh-hant'] = array(
 	'parserdifftest'      => '處理器差異測試',

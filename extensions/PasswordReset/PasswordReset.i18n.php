@@ -47,6 +47,9 @@ $messages['niu'] = array(
 	'passwordreset-username' => 'Matahigoa he tagata',
 );
 
+/** Afrikaans (Afrikaans)
+ * @author SPQRobin
+ */
 $messages['af'] = array(
 	'passwordreset-username' => 'Gebruikersnaam',
 );
@@ -129,16 +132,19 @@ $messages['de'] = array(
 	'disabledusers-summary'            => 'Dies ist die Liste der deaktivierten Benutzerkonten (via PasswordReset).',
 );
 
+/** Greek (Ελληνικά)
+ * @author Consta
+ */
 $messages['el'] = array(
-	'passwordreset' => 'Κωδικός επαναφοράς',
+	'passwordreset'                 => 'Κωδικός επαναφοράς',
 	'passwordreset-invalidusername' => 'Άκυρο όνομα χρήστη',
-	'passwordreset-emptyusername' => 'Κενό όνομα χρήστη',
-	'passwordreset-nopassmatch' => 'Οι Κωδικοί δεν αντιστοιχούν',
-	'passwordreset-username' => 'Όνομα χρήστη',
-	'passwordreset-newpass' => 'Νέος Κωδικός',
-	'passwordreset-confirmpass' => 'Επιβεβαιώστε τον κωδικό πρόσβασης',
-	'passwordreset-submit' => 'Επαναφορά κωδικού',
-	'passwordreset-success' => 'Ο κωδικός έχει επαναφερθεί για τον user_id: $1',
+	'passwordreset-emptyusername'   => 'Κενό όνομα χρήστη',
+	'passwordreset-nopassmatch'     => 'Οι Κωδικοί δεν αντιστοιχούν',
+	'passwordreset-username'        => 'Όνομα χρήστη',
+	'passwordreset-newpass'         => 'Νέος Κωδικός',
+	'passwordreset-confirmpass'     => 'Επιβεβαιώστε τον κωδικό πρόσβασης',
+	'passwordreset-submit'          => 'Επαναφορά κωδικού',
+	'passwordreset-success'         => 'Ο κωδικός έχει επαναφερθεί για τον user_id: $1',
 );
 
 /** Esperanto (Esperanto)
@@ -295,6 +301,7 @@ $messages['hu'] = array(
 $messages['ia'] = array(
 	'passwordreset-username' => 'Nomine de usator',
 	'passwordreset-newpass'  => 'Nove contrasigno',
+	'passwordreset-submit'   => 'Redefinir contrasigno',
 );
 
 /** Indonesian (Bahasa Indonesia)
@@ -305,14 +312,20 @@ $messages['id'] = array(
 	'passwordreset-username' => 'Nama pengguna',
 );
 
+/** Interlingue (Interlingue)
+ * @author SPQRobin
+ */
 $messages['ie'] = array(
 	'passwordreset-username' => 'Vor nómine usatori',
-	'passwordreset-newpass' => 'Nov passa-parol',
+	'passwordreset-newpass'  => 'Nov passa-parol',
 );
 
+/** Ido (Ido)
+ * @author Malafaya
+ */
 $messages['io'] = array(
 	'passwordreset-username' => 'Uzantonomo',
-	'passwordreset-newpass' => 'Nova Kontrolajo',
+	'passwordreset-newpass'  => 'Nova Kontrolajo',
 );
 
 /** Icelandic (Íslenska)
@@ -520,18 +533,20 @@ $messages['pl'] = array(
 	'disabledusers-summary'            => 'Lista użytkowników, którzy zostali zablokowaniu poprzez użycie PasswordReset.',
 );
 
-
+/** Piedmontese (Piemontèis)
+ * @author Bèrto 'd Sèra
+ */
 $messages['pms'] = array(
-	'passwordreset' => 'Cambi ëd ciav',
+	'passwordreset'                 => 'Cambi ëd ciav',
 	'passwordreset-invalidusername' => 'Stranòm nen giust',
-	'passwordreset-emptyusername' => 'Stranòm veujd',
-	'passwordreset-nopassmatch' => 'Le doe ciav a son pa mideme',
-	'passwordreset-badtoken' => 'Còdes ëd modìfica nen bon',
-	'passwordreset-username' => 'Stranòm',
-	'passwordreset-newpass' => 'Ciav neuva',
-	'passwordreset-confirmpass' => 'Confermè la ciav',
-	'passwordreset-submit' => 'Cambié la ciav',
-	'passwordreset-success' => 'La ciav ëd l\'utent $1 a l\'é staita cambià',
+	'passwordreset-emptyusername'   => 'Stranòm veujd',
+	'passwordreset-nopassmatch'     => 'Le doe ciav a son pa mideme',
+	'passwordreset-badtoken'        => 'Còdes ëd modìfica nen bon',
+	'passwordreset-username'        => 'Stranòm',
+	'passwordreset-newpass'         => 'Ciav neuva',
+	'passwordreset-confirmpass'     => 'Confermè la ciav',
+	'passwordreset-submit'          => 'Cambié la ciav',
+	'passwordreset-success'         => "La ciav ëd l'utent $1 a l'é staita cambià",
 );
 
 /** Pashto (پښتو)
@@ -568,8 +583,11 @@ $messages['pt'] = array(
 	'disabledusers'                 => 'Utilizadores desactivados',
 );
 
+/** Rhaeto-Romance (Rumantsch)
+ * @author SPQRobin
+ */
 $messages['rm'] = array(
-	'passwordreset-username' => 'Num d\'utilisader',
+	'passwordreset-username' => "Num d'utilisader",
 );
 
 /** Russian (Русский)
@@ -733,42 +751,45 @@ $messages['vo'] = array(
 	'passwordreset-username' => 'Gebananem',
 );
 
+/** Yue (粵語) */
 $messages['yue'] = array(
-	'passwordreset' => '密碼重設',
+	'passwordreset'                 => '密碼重設',
 	'passwordreset-invalidusername' => '無效嘅用戶名',
-	'passwordreset-emptyusername' => '空白嘅用戶名',
-	'passwordreset-nopassmatch' => '密碼唔對',
-	'passwordreset-badtoken' => '無效嘅編輯幣',
-	'passwordreset-username' => '用戶名',
-	'passwordreset-newpass' => '新密碼',
-	'passwordreset-confirmpass' => '確認新密碼',
-	'passwordreset-submit' => '重設密碼',
-	'passwordreset-success' => 'User_id: $1 嘅密碼已經重設咗'
+	'passwordreset-emptyusername'   => '空白嘅用戶名',
+	'passwordreset-nopassmatch'     => '密碼唔對',
+	'passwordreset-badtoken'        => '無效嘅編輯幣',
+	'passwordreset-username'        => '用戶名',
+	'passwordreset-newpass'         => '新密碼',
+	'passwordreset-confirmpass'     => '確認新密碼',
+	'passwordreset-submit'          => '重設密碼',
+	'passwordreset-success'         => 'User_id: $1 嘅密碼已經重設咗',
 );
 
+/** Simplified Chinese (‪中文(简体)‬) */
 $messages['zh-hans'] = array(
-	'passwordreset' => '密码重设',
+	'passwordreset'                 => '密码重设',
 	'passwordreset-invalidusername' => '无效的用户名',
-	'passwordreset-emptyusername' => '空白的用户名',
-	'passwordreset-nopassmatch' => '密码不匹配',
-	'passwordreset-badtoken' => '无效的编辑币',
-	'passwordreset-username' => '用户名',
-	'passwordreset-newpass' => '新密码',
-	'passwordreset-confirmpass' => '确认新密码',
-	'passwordreset-submit' => '重设密码',
-	'passwordreset-success' => 'User_id: $1 的密码已经重设'
+	'passwordreset-emptyusername'   => '空白的用户名',
+	'passwordreset-nopassmatch'     => '密码不匹配',
+	'passwordreset-badtoken'        => '无效的编辑币',
+	'passwordreset-username'        => '用户名',
+	'passwordreset-newpass'         => '新密码',
+	'passwordreset-confirmpass'     => '确认新密码',
+	'passwordreset-submit'          => '重设密码',
+	'passwordreset-success'         => 'User_id: $1 的密码已经重设',
 );
 
+/** Traditional Chinese (‪中文(繁體)‬) */
 $messages['zh-hant'] = array(
-	'passwordreset' => '密碼重設',
+	'passwordreset'                 => '密碼重設',
 	'passwordreset-invalidusername' => '無效的用戶名',
-	'passwordreset-emptyusername' => '空白的用戶名',
-	'passwordreset-nopassmatch' => '密碼不匹配',
-	'passwordreset-badtoken' => '無效的編輯幣',
-	'passwordreset-username' => '用戶名',
-	'passwordreset-newpass' => '新密碼',
-	'passwordreset-confirmpass' => '確認新密碼',
-	'passwordreset-submit' => '重設密碼',
-	'passwordreset-success' => 'User_id: $1 的密碼已經重設'
+	'passwordreset-emptyusername'   => '空白的用戶名',
+	'passwordreset-nopassmatch'     => '密碼不匹配',
+	'passwordreset-badtoken'        => '無效的編輯幣',
+	'passwordreset-username'        => '用戶名',
+	'passwordreset-newpass'         => '新密碼',
+	'passwordreset-confirmpass'     => '確認新密碼',
+	'passwordreset-submit'          => '重設密碼',
+	'passwordreset-success'         => 'User_id: $1 的密碼已經重設',
 );
 

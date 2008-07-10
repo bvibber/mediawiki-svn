@@ -67,7 +67,7 @@ $messages['eo'] = array(
 	'poem-desc' => 'Aldonas <tt>&lt;poem&gt;</tt> etikedon por formatado de poezio.',
 );
 
-/** فارسی (فارسی)
+/** Persian (فارسی)
  * @author Huji
  */
 $messages['fa'] = array(
@@ -102,8 +102,7 @@ $messages['gl'] = array(
 	'poem-desc' => 'Engada a etiqueta <tt>&lt;poem&gt;</tt> para o formato poema',
 );
 
-/** Hebrew (עברית)
- */
+/** Hebrew (עברית) */
 $messages['he'] = array(
 	'poem-desc' => 'הוספת התגית <tt>&lt;poem&gt;</tt> לעיצוב שירה',
 );
@@ -234,7 +233,7 @@ $messages['nl'] = array(
 	'poem-desc' => 'Voegt de tag <tt>&lt;poem&gt;</tt> toe voor de opmaak van poëzie',
 );
 
-/** Norwegian (‪Norsk (bokmål)‬)
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */
 $messages['no'] = array(
@@ -304,7 +303,7 @@ $messages['te'] = array(
 	'poem-desc' => 'పద్యాల ఫార్మాటింగుకై <tt>&lt;poem&gt;</tt> అనే టాగుని చేరుస్తుంది',
 );
 
-/** Tajik (Тоҷикӣ)
+/** Tajik (Cyrillic) (Тоҷикӣ/tojikī (Cyrillic))
  * @author Ibrahim
  */
 $messages['tg-cyrl'] = array(
@@ -332,21 +331,21 @@ $messages['vi'] = array(
 	'poem-desc' => 'Thêm thẻ <tt>&lt;poem&gt;</tt> để định dạng các bài thơ',
 );
 
-/** Cantonese
+/** Yue (粵語)
  * @author Shinjiman
  */
 $messages['yue'] = array(
 	'poem-desc' => '加 <tt>&lt;poem&gt;</tt> 標籤畀詩格式用',
 );
 
-/** Chinese Simplified
+/** Simplified Chinese (‪中文(简体)‬)
  * @author Shinjiman
  */
 $messages['zh-hans'] = array(
 	'poem-desc' => '加入 <tt>&lt;poem&gt;</tt> 标签给予诗歌格式使用',
 );
 
-/** Chinese Traditional
+/** Traditional Chinese (‪中文(繁體)‬)
  * @author Shinjiman
  */
 $messages['zh-hant'] = array(

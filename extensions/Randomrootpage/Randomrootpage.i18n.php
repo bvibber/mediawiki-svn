@@ -35,8 +35,8 @@ $messages['bg'] = array(
  * @author Hojjat (aka Huji)
  */
 $messages['fa'] = array(
-	'randomrootpage'          => 'صفحهٔ تصادفی سرشاخه',
-	'randomrootpage-desc'     => '[[Special:Randomrootpage|صفحهٔ ویژه‌ای]] که به طور تصادفی یکی از صفحه‌های سرشاخه را نشان می دهد',
+	'randomrootpage'      => 'صفحهٔ تصادفی سرشاخه',
+	'randomrootpage-desc' => '[[Special:Randomrootpage|صفحهٔ ویژه‌ای]] که به طور تصادفی یکی از صفحه‌های سرشاخه را نشان می دهد',
 );
 
 /** French (Français)
@@ -94,7 +94,7 @@ $messages['nl'] = array(
 	'randomrootpage-desc' => '[[Special:Randomrootpage|Speciale pagina]] die een willekeurige hoofdpagina weergeeft',
 );
 
-/** Norwegian (‪Norsk (bokmål)‬)
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */
 $messages['no'] = array(

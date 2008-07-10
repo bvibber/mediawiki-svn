@@ -70,6 +70,7 @@ $messages['eo'] = array(
 	'purgecache-button'  => 'Ĝisdatigu',
 );
 
+/** French (Français) */
 $messages['fr'] = array(
 	'purgecache'         => 'Purger le cache',
 	'purgecache-desc'    => '[[Special:PurgeCache|Page spéciale]] utilisée pour effacer la table OBJECTCACHE',
@@ -204,7 +205,7 @@ $messages['nn'] = array(
 	'purgecache-button'  => 'Slett mellomlagring',
 );
 
-/** Norwegian (‪Norsk (bokmål)‬)
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */
 $messages['no'] = array(
@@ -279,7 +280,7 @@ $messages['sk'] = array(
 	'purgecache-button'  => 'Prečistiť',
 );
 
-/** ћирилица (ћирилица)
+/** Serbian Cyrillic ekavian (ћирилица)
  * @author Sasa Stefanovic
  */
 $messages['sr-ec'] = array(

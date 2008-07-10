@@ -89,12 +89,15 @@ $messages['ar'] = array(
 	'grouppage-patroller'    => '{{ns:project}}:مراجع',
 );
 
+/** Bikol Central (Bikol Central)
+ * @author Filipinayzd
+ */
 $messages['bcl'] = array(
-	'patrol-endorse' => 'Iindorso',
+	'patrol-endorse'       => 'Iindorso',
 	'patrol-revert-reason' => 'Rason:',
-	'patrol-skip' => 'Laktawan',
-	'patrol-reverting' => 'Pigbabalik: $1',
-	'patrol-resume' => 'Lagatik digdi tangarig magpadagos.',
+	'patrol-skip'          => 'Laktawan',
+	'patrol-reverting'     => 'Pigbabalik: $1',
+	'patrol-resume'        => 'Lagatik digdi tangarig magpadagos.',
 );
 
 /** Bulgarian (Български)
@@ -145,9 +148,9 @@ $messages['de'] = array(
 	'patrol-reverted-ok'     => 'Die Bearbeitung wurde zurückgesetzt.',
 	'patrol-reverted-failed' => 'Die Bearbeitung kann nicht zurückgesetzt werden.',
 	'patrol-skipped-ok'      => 'Bearbeitung wird ignoriert.',
-	'patrol-reasons'         => "* Einfacher Vandalismus
+	'patrol-reasons'         => '* Einfacher Vandalismus
 * Test eines Neulings
-* Siehe Diskussionsseite",
+* Siehe Diskussionsseite',
 	'patrol-another'         => 'Zeige eine weitere Bearbeitung, sofern verfügbar.',
 	'patrol-stopped'         => 'Du hast entschieden, keine weitere Bearbeitung zu kontrollieren. $1',
 	'patrol-resume'          => 'Klicke hier zum fortsetzen.',
@@ -156,7 +159,7 @@ $messages['de'] = array(
 	'grouppage-patroller'    => '{{ns:project}}:Kontrolleur',
 );
 
-/** German - formal address (Deutsch - förmliche Anrede)
+/** German (formal address) (Deutsch (Sie-Form))
  * @author Raimond Spekking
  */
 $messages['de-formal'] = array(
@@ -191,52 +194,54 @@ $messages['eo'] = array(
 	'group-patroller-member' => 'Patrolanto',
 );
 
-/* Spanish (Titoxd) */
+/** Spanish (Español)
+ * @author Titoxd
+ */
 $messages['es'] = array(
-	'patrol' => 'Revisar ediciones',
-	'patrol-endorse' => 'Aprovar',
-	'patrol-revert' => 'Revertir',
-	'patrol-revert-reason' => 'Razón:',
-	'patrol-skip' => 'Omitir',
-	'patrol-reverting' => 'Revirtiendo: $1',
-	'patrol-nonefound' => 'No hay ediciones disponibles para revisar.',
-	'patrol-endorsed-ok' => 'La edición fue marcada como revisada.',
+	'patrol'                 => 'Revisar ediciones',
+	'patrol-endorse'         => 'Aprovar',
+	'patrol-revert'          => 'Revertir',
+	'patrol-revert-reason'   => 'Razón:',
+	'patrol-skip'            => 'Omitir',
+	'patrol-reverting'       => 'Revirtiendo: $1',
+	'patrol-nonefound'       => 'No hay ediciones disponibles para revisar.',
+	'patrol-endorsed-ok'     => 'La edición fue marcada como revisada.',
 	'patrol-endorsed-failed' => 'La edición no se pudo marcar como revisada.',
-	'patrol-reverted-ok' => 'The edición fue revertida.',
+	'patrol-reverted-ok'     => 'The edición fue revertida.',
 	'patrol-reverted-failed' => 'La edición no pudo ser revertida.',
-	'patrol-skipped-ok' => 'Ignorando la edición.',
-	'patrol-reasons' => "*Vandalismo simple
+	'patrol-skipped-ok'      => 'Ignorando la edición.',
+	'patrol-reasons'         => '*Vandalismo simple
 * Prueba de usuario novato
-* Ver la página de discusión",
-	'patrol-another' => 'Mostrar otra edición (si disponible).',
-	'patrol-stopped' => 'Has optado no marcar otra edición como revisada. $1',
-	'patrol-resume' => 'Haz click aquí para continuar.',
+* Ver la página de discusión',
+	'patrol-another'         => 'Mostrar otra edición (si disponible).',
+	'patrol-stopped'         => 'Has optado no marcar otra edición como revisada. $1',
+	'patrol-resume'          => 'Haz click aquí para continuar.',
 );
 
-/* French */
+/** French (Français) */
 $messages['fr'] = array(
-	'patrol' => 'Vérification des modifications',
-	'patrol-desc' => 'Interface mettant en valeur le patrouillage collaboratif.',
-	'patrol-endorse' => 'Accepter',
-	'patrol-revert' => 'Annuler',
-	'patrol-revert-reason' => 'Motif :',
-	'patrol-skip' => 'Sauter',
-	'patrol-reverting' => 'Annulation : $1',
-	'patrol-nonefound' => 'Aucune édition suivie n’a pu être trouvée pour la vérification.',
-	'patrol-endorsed-ok' => 'L’édition a été marquée comme vérifiée.',
+	'patrol'                 => 'Vérification des modifications',
+	'patrol-desc'            => 'Interface mettant en valeur le patrouillage collaboratif.',
+	'patrol-endorse'         => 'Accepter',
+	'patrol-revert'          => 'Annuler',
+	'patrol-revert-reason'   => 'Motif :',
+	'patrol-skip'            => 'Sauter',
+	'patrol-reverting'       => 'Annulation : $1',
+	'patrol-nonefound'       => 'Aucune édition suivie n’a pu être trouvée pour la vérification.',
+	'patrol-endorsed-ok'     => 'L’édition a été marquée comme vérifiée.',
 	'patrol-endorsed-failed' => 'L’édition n’a pu être vérifiée.',
-	'patrol-reverted-ok' => 'L’édition a été annulée.',
+	'patrol-reverted-ok'     => 'L’édition a été annulée.',
 	'patrol-reverted-failed' => 'L’édition n’a pu être annulée.',
-	'patrol-skipped-ok' => 'Ignorer l’édition.',
-	'patrol-reasons' => "* Simple vandalisme
+	'patrol-skipped-ok'      => 'Ignorer l’édition.',
+	'patrol-reasons'         => '* Simple vandalisme
 * Test de débutant
-* Voir page de discussion",
-	'patrol-another' => 'Voir une nouvelle édition, si elle est disponible.',
-	'patrol-stopped' => 'Vous avez choisi pour ne plus vérifier une autre édition. $1',
-	'patrol-resume' => 'Cliquer ici pour reprendre.',
-	'group-patroller' => 'Patrouilleurs',
+* Voir page de discussion',
+	'patrol-another'         => 'Voir une nouvelle édition, si elle est disponible.',
+	'patrol-stopped'         => 'Vous avez choisi pour ne plus vérifier une autre édition. $1',
+	'patrol-resume'          => 'Cliquer ici pour reprendre.',
+	'group-patroller'        => 'Patrouilleurs',
 	'group-patroller-member' => 'Patrouilleur',
-	'grouppage-patroller' => '{{ns:project}}:Patrouilleur',
+	'grouppage-patroller'    => '{{ns:project}}:Patrouilleur',
 );
 
 /** Galician (Galego)
@@ -389,7 +394,9 @@ $messages['ia'] = array(
 	'patrol-revert-reason' => 'Motivo:',
 );
 
-/* Indonesian (Ivan Lanin) */
+/** Indonesian (Bahasa Indonesia)
+ * @author Ivan Lanin
+ */
 $messages['id'] = array(
 	'patrol'                 => 'Patroli suntingan',
 	'patrol-endorse'         => 'Setujui',
@@ -403,9 +410,9 @@ $messages['id'] = array(
 	'patrol-reverted-ok'     => 'Suntingan dikembalikan.',
 	'patrol-reverted-failed' => 'Suntingan tidak dapat dikembalikan.',
 	'patrol-skipped-ok'      => 'Suntingan diabaikan.',
-	'patrol-reasons'         => "* Vandalisme sederhana
+	'patrol-reasons'         => '* Vandalisme sederhana
 * Pengujian pemula
-* Lihat halaman pembicaraan",
+* Lihat halaman pembicaraan',
 	'patrol-another'         => 'Tampilkan suntingan lain jika tersedia.',
 	'patrol-stopped'         => 'Anda telah memilih untuk tidak mengontrol suntingan lain. $1',
 	'patrol-resume'          => 'Klik di sini untuk melanjutkan.',
@@ -492,6 +499,9 @@ $messages['ksh'] = array(
 	'patrol-reverting'     => 'Zeröck nemme: $1',
 );
 
+/** Latin (Latina)
+ * @author SPQRobin
+ */
 $messages['la'] = array(
 	'patrol-revert-reason' => 'Causa:',
 );
@@ -687,29 +697,31 @@ $messages['pl'] = array(
 	'grouppage-patroller'    => '{{ns:project}}:Patrolujący',
 );
 
-/* Piedmontese (Bèrto 'd Sèra) */
+/** Piedmontese (Piemontèis)
+ * @author Bèrto 'd Sèra
+ */
 $messages['pms'] = array(
-	'patrol' => 'Patojé le modìfiche',
-	'patrol-endorse' => 'Aprové',
-	'patrol-revert' => 'Buté com a l\'era',
-	'patrol-revert-reason' => 'Rason:',
-	'patrol-skip' => 'Sàota',
-	'patrol-reverting' => 'Ën tirand andré: $1',
-	'patrol-nonefound' => 'Gnun-a modìfica da patojé.',
-	'patrol-endorsed-ok' => 'La modìfica a l\'é staita marcà "patojà".',
+	'patrol'                 => 'Patojé le modìfiche',
+	'patrol-endorse'         => 'Aprové',
+	'patrol-revert'          => "Buté com a l'era",
+	'patrol-revert-reason'   => 'Rason:',
+	'patrol-skip'            => 'Sàota',
+	'patrol-reverting'       => 'Ën tirand andré: $1',
+	'patrol-nonefound'       => 'Gnun-a modìfica da patojé.',
+	'patrol-endorsed-ok'     => 'La modìfica a l\'é staita marcà "patojà".',
 	'patrol-endorsed-failed' => 'La modìfica a l\'é nen podusse marché coma "patojà"',
-	'patrol-reverted-ok' => 'La modìfica a l\'é staita tirà andré com a l\'era.',
-	'patrol-reverted-failed' => 'Sta modìfica-sì as peul pa buté andré com a l\'era.',
-	'patrol-skipped-ok' => 'Lassa beuje la modìfica.',
-	'patrol-reasons' => '* vandalism sempi
-* preuva ëd n\'utent neuv
-* ch\'a varda la pàgina ëd discussion',
-	'patrol-another' => 'Smon n\'àotra modìfica, s\'a-i n\'a-i é un-a da smon-e.',
-	'patrol-stopped' => 'A l\'ha sërnù dë nen patojé n\'àotra modìfica. $1',
-	'patrol-resume' => 'Ch\'a bata ambelessì për andé anans da andova a l\'era.',
-	'group-patroller' => 'Gent ëd patoja',
+	'patrol-reverted-ok'     => "La modìfica a l'é staita tirà andré com a l'era.",
+	'patrol-reverted-failed' => "Sta modìfica-sì as peul pa buté andré com a l'era.",
+	'patrol-skipped-ok'      => 'Lassa beuje la modìfica.',
+	'patrol-reasons'         => "* vandalism sempi
+* preuva ëd n'utent neuv
+* ch'a varda la pàgina ëd discussion",
+	'patrol-another'         => "Smon n'àotra modìfica, s'a-i n'a-i é un-a da smon-e.",
+	'patrol-stopped'         => "A l'ha sërnù dë nen patojé n'àotra modìfica. $1",
+	'patrol-resume'          => "Ch'a bata ambelessì për andé anans da andova a l'era.",
+	'group-patroller'        => 'Gent ëd patoja',
 	'group-patroller-member' => 'ëd patoja',
-	'grouppage-patroller' => '{{ns:project}}:patoja',
+	'grouppage-patroller'    => '{{ns:project}}:patoja',
 );
 
 /** Pashto (پښتو)
@@ -750,6 +762,9 @@ $messages['pt'] = array(
 	'grouppage-patroller'    => '{{ns:project}}:Patrulhador',
 );
 
+/** Rhaeto-Romance (Rumantsch)
+ * @author SPQRobin
+ */
 $messages['rm'] = array(
 	'patrol-revert-reason' => 'Motiv:',
 );
@@ -845,29 +860,31 @@ $messages['stq'] = array(
 	'grouppage-patroller'    => '{{ns:project}}:Kontrolleur',
 );
 
-/* Sundanese (Kandar via BetaWiki) */
+/** Sundanese (Basa Sunda)
+ * @author Kandar
+ */
 $messages['su'] = array(
-	'patrol' => 'Ronda éditan',
-	'patrol-endorse' => 'Widian',
-	'patrol-revert' => 'Balikkeun',
-	'patrol-revert-reason' => 'Alesan:',
-	'patrol-skip' => 'Liwat',
-	'patrol-reverting' => 'Malikkeun: $1',
-	'patrol-nonefound' => 'Euweuh éditan nu perlu dironda.',
-	'patrol-endorsed-ok' => 'Éditan geus ditandaan geus dironda.',
+	'patrol'                 => 'Ronda éditan',
+	'patrol-endorse'         => 'Widian',
+	'patrol-revert'          => 'Balikkeun',
+	'patrol-revert-reason'   => 'Alesan:',
+	'patrol-skip'            => 'Liwat',
+	'patrol-reverting'       => 'Malikkeun: $1',
+	'patrol-nonefound'       => 'Euweuh éditan nu perlu dironda.',
+	'patrol-endorsed-ok'     => 'Éditan geus ditandaan geus dironda.',
 	'patrol-endorsed-failed' => 'Éditan teu bisa dicirian geus dironda.',
-	'patrol-reverted-ok' => 'Éditan geus dibalikkeun.',
+	'patrol-reverted-ok'     => 'Éditan geus dibalikkeun.',
 	'patrol-reverted-failed' => 'Éditanana teu bisa dibalikkeun.',
-	'patrol-skipped-ok' => 'Ngantepkeun éditan.',
-	'patrol-reasons' => '* Vandalismeu basajan
+	'patrol-skipped-ok'      => 'Ngantepkeun éditan.',
+	'patrol-reasons'         => '* Vandalismeu basajan
 * Uji coba nu anyar datang
 * Tempo kaca obrolan',
-	'patrol-another' => 'Mun bisa, témbongkeun éditan lianna.',
-	'patrol-stopped' => 'Anjeun geus milih teu ngaronda éditan séjén. $1',
-	'patrol-resume' => 'Klik di dieu pikeun neruskeun.',
-	'group-patroller' => 'Nu ngaronda',
+	'patrol-another'         => 'Mun bisa, témbongkeun éditan lianna.',
+	'patrol-stopped'         => 'Anjeun geus milih teu ngaronda éditan séjén. $1',
+	'patrol-resume'          => 'Klik di dieu pikeun neruskeun.',
+	'group-patroller'        => 'Nu ngaronda',
 	'group-patroller-member' => 'Nu ngaronda',
-	'grouppage-patroller' => '{{ns:project}}:Nu ngaronda',
+	'grouppage-patroller'    => '{{ns:project}}:Nu ngaronda',
 );
 
 /** Swedish (Svenska)
@@ -899,7 +916,7 @@ $messages['sv'] = array(
 	'grouppage-patroller'    => '{{ns:project}}:Patrullerare',
 );
 
-/** ślůnski (ślůnski)
+/** Silesian (Ślůnski)
  * @author Herr Kriss
  */
 $messages['szl'] = array(
@@ -977,78 +994,86 @@ $messages['vo'] = array(
 	'patrol-revert' => 'Sädunön',
 );
 
-/* Cantonese (Hillgentleman, Shinjiman) */
+/** Yue (粵語)
+ * @author Shinjiman
+ * @author Hillgentleman
+ */
 $messages['yue'] = array(
-	'patrol' => '巡啲編輯',
-	'patrol-endorse' => '簽署支持',
-	'patrol-revert' => '打回頭',
-	'patrol-revert-reason' => '理由:',
-	'patrol-skip' => '跳',
-	'patrol-reverting' => '打回頭：$1',
-	'patrol-nonefound' => '揾唔到好嘅版本來簽。',
-	'patrol-endorsed-ok' => '嘜咗哩版做「巡過」',
+	'patrol'                 => '巡啲編輯',
+	'patrol-endorse'         => '簽署支持',
+	'patrol-revert'          => '打回頭',
+	'patrol-revert-reason'   => '理由:',
+	'patrol-skip'            => '跳',
+	'patrol-reverting'       => '打回頭：$1',
+	'patrol-nonefound'       => '揾唔到好嘅版本來簽。',
+	'patrol-endorsed-ok'     => '嘜咗哩版做「巡過」',
 	'patrol-endorsed-failed' => '哩版唔嘜得做「巡過」。',
-	'patrol-reverted-ok' => '打咗版嘢回頭。',
+	'patrol-reverted-ok'     => '打咗版嘢回頭。',
 	'patrol-reverted-failed' => '打唔到哩版嘢回頭。',
-	'patrol-skipped-ok' => '唔理哩次編輯。',
-	'patrol-reasons' => "* 塗鴉
+	'patrol-skipped-ok'      => '唔理哩次編輯。',
+	'patrol-reasons'         => '* 塗鴉
 * 生手試玩
-* 見討論頁",
-	'patrol-another' => '試揾另一版睇吓。',
-	'patrol-stopped' => '你决定唔再巡。 $1',
-	'patrol-resume' => '撳呢度繼續。',
-	'group-patroller' => '巡邏員',
+* 見討論頁',
+	'patrol-another'         => '試揾另一版睇吓。',
+	'patrol-stopped'         => '你决定唔再巡。 $1',
+	'patrol-resume'          => '撳呢度繼續。',
+	'group-patroller'        => '巡邏員',
 	'group-patroller-member' => '巡邏員',
-	'grouppage-patroller' => '{{ns:project}}:巡邏員',
+	'grouppage-patroller'    => '{{ns:project}}:巡邏員',
 );
 
-/* Chinese (Simplified) (下一次登录) */
+/** Simplified Chinese (‪中文(简体)‬)
+ * @author Shinjiman
+ */
 $messages['zh-hans'] = array(
-	'patrol' => '编辑巡逻',
-	'patrol-endorse' => '批注',
-	'patrol-revert' => '回退',
-	'patrol-revert-reason' => '原因：',
-	'patrol-skip' => '跳过',
-	'patrol-reverting' => '正在回退：$1',
-	'patrol-nonefound' => '没有找到可巡逻编辑。',
-	'patrol-endorsed-ok' => '此修改已标记巡逻记录。',
+	'patrol'                 => '编辑巡逻',
+	'patrol-endorse'         => '批注',
+	'patrol-revert'          => '回退',
+	'patrol-revert-reason'   => '原因：',
+	'patrol-skip'            => '跳过',
+	'patrol-reverting'       => '正在回退：$1',
+	'patrol-nonefound'       => '没有找到可巡逻编辑。',
+	'patrol-endorsed-ok'     => '此修改已标记巡逻记录。',
 	'patrol-endorsed-failed' => '此修改无法标记巡逻记录。',
-	'patrol-reverted-ok' => '编辑被回退。',
+	'patrol-reverted-ok'     => '编辑被回退。',
 	'patrol-reverted-failed' => '编辑不能回退。',
-	'patrol-skipped-ok' => '忽略编辑。',
-	'patrol-reasons' => "* 纯粹破坏
+	'patrol-skipped-ok'      => '忽略编辑。',
+	'patrol-reasons'         => '* 纯粹破坏
 * 新手测试
-* 参见讨论页",
-	'patrol-another' => '显示其他存在的编辑。',
-	'patrol-stopped' => '您选择不巡逻其他编辑。$1',
-	'patrol-resume' => '点击这里继续。',
-	'group-patroller' => '巡逻员',
+* 参见讨论页',
+	'patrol-another'         => '显示其他存在的编辑。',
+	'patrol-stopped'         => '您选择不巡逻其他编辑。$1',
+	'patrol-resume'          => '点击这里继续。',
+	'group-patroller'        => '巡逻员',
 	'group-patroller-member' => '巡逻员',
-	'grouppage-patroller' => '{{ns:project}}:巡逻员',
+	'grouppage-patroller'    => '{{ns:project}}:巡逻员',
 );
 
-/* Chinese (Traditional) (KilluaZaoldyeck, Shinjiman) */
+/** Traditional Chinese (‪中文(繁體)‬)
+ * @author Shinjiman
+ * @author KilluaZaoldyeck
+ */
 $messages['zh-hant'] = array(
-	'patrol' => '覆查編輯',
-	'patrol-endorse' => '批註',
-	'patrol-revert' => '回退',
-	'patrol-revert-reason' => '原因：',
-	'patrol-skip' => '略過',
-	'patrol-reverting' => '正在回退：$1',
-	'patrol-nonefound' => '沒有覆查修改的記錄。',
-	'patrol-endorsed-ok' => '此編輯已標記覆查記錄。',
+	'patrol'                 => '覆查編輯',
+	'patrol-endorse'         => '批註',
+	'patrol-revert'          => '回退',
+	'patrol-revert-reason'   => '原因：',
+	'patrol-skip'            => '略過',
+	'patrol-reverting'       => '正在回退：$1',
+	'patrol-nonefound'       => '沒有覆查修改的記錄。',
+	'patrol-endorsed-ok'     => '此編輯已標記覆查記錄。',
 	'patrol-endorsed-failed' => '此編輯無法標記覆查記錄。',
-	'patrol-reverted-ok' => '編輯被回退。',
+	'patrol-reverted-ok'     => '編輯被回退。',
 	'patrol-reverted-failed' => '編輯無法回退。',
-	'patrol-skipped-ok' => '忽略編輯。',
-	'patrol-reasons' => "* 純粹破壞
+	'patrol-skipped-ok'      => '忽略編輯。',
+	'patrol-reasons'         => '* 純粹破壞
 * 新人測試
-* 參看討論頁",
-	'patrol-another' => '列出其他存在的編輯。',
-	'patrol-stopped' => '你選擇不覆查其他編輯。$1',
-	'patrol-resume' => '點擊這裡繼續。',
-	'group-patroller' => '巡邏員',
+* 參看討論頁',
+	'patrol-another'         => '列出其他存在的編輯。',
+	'patrol-stopped'         => '你選擇不覆查其他編輯。$1',
+	'patrol-resume'          => '點擊這裡繼續。',
+	'group-patroller'        => '巡邏員',
 	'group-patroller-member' => '巡邏員',
-	'grouppage-patroller' => '{{ns:project}}:巡邏員',
+	'grouppage-patroller'    => '{{ns:project}}:巡邏員',
 );
 

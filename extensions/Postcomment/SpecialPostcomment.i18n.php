@@ -22,30 +22,36 @@ $messages['en'] = array(
 	'postcomment_nopostingtoadd'           => 'No posting to add.',
 );
 
+/** Arabic (العربية)
+ * @author Meno25
+ */
 $messages['ar'] = array(
-	'postcomment_discussionprotected' => 'صفحة النقاش تمت حمايتها من رسائل أخرى.',
-	'postcomment_notloggedin' => 'أنت غير مسجل الدخول.',
-	'postcomment_youareloggedinas' => 'أنت مسجل الدخول باسم $1',
+	'postcomment_discussionprotected'      => 'صفحة النقاش تمت حمايتها من رسائل أخرى.',
+	'postcomment_notloggedin'              => 'أنت غير مسجل الدخول.',
+	'postcomment_youareloggedinas'         => 'أنت مسجل الدخول باسم $1',
 	'postcomment_addcommentdiscussionpage' => 'أضف تعليقك في صفحة النقاش هذه',
-	'postcomment_leavemessagefor' => 'اترك رسالة ل$1',
-	'postcomment_post' => 'إرسال',
-	'postcomment_on' => 'على',
-	'postcomment_said' => 'قال',
-	'postcomment_invalidrequest' => 'طلب غير صحيح.',
-	'postcomment_replyto' => 'رد على $1',
-	'postcomment_nopostingtoadd' => 'لا رسالة للإضافة.',
+	'postcomment_leavemessagefor'          => 'اترك رسالة ل$1',
+	'postcomment_post'                     => 'إرسال',
+	'postcomment_on'                       => 'على',
+	'postcomment_said'                     => 'قال',
+	'postcomment_invalidrequest'           => 'طلب غير صحيح.',
+	'postcomment_replyto'                  => 'رد على $1',
+	'postcomment_nopostingtoadd'           => 'لا رسالة للإضافة.',
 );
 
+/** Bulgarian (Български)
+ * @author Spiritia
+ */
 $messages['bg'] = array(
-	'postcomment_discussionprotected' => 'Тази дискусионна страница е защитена за по-нататъшно редактиране.',
-	'postcomment_notloggedin' => 'Не сте влезли в системата.',
-	'postcomment_youareloggedinas' => 'Влязохте в системата като $1',
+	'postcomment_discussionprotected'      => 'Тази дискусионна страница е защитена за по-нататъшно редактиране.',
+	'postcomment_notloggedin'              => 'Не сте влезли в системата.',
+	'postcomment_youareloggedinas'         => 'Влязохте в системата като $1',
 	'postcomment_addcommentdiscussionpage' => 'Добавете своя коментар на тази дискусионна страница',
-	'postcomment_leavemessagefor' => 'Оставете съобщение за $1',
-	'postcomment_said' => 'каза',
-	'postcomment_invalidrequest' => 'Невалидна заявка.',
-	'postcomment_replyto' => 'Отговор до $1',
-	'postcomment_nopostingtoadd' => 'Няма коментар за добавяне.',
+	'postcomment_leavemessagefor'          => 'Оставете съобщение за $1',
+	'postcomment_said'                     => 'каза',
+	'postcomment_invalidrequest'           => 'Невалидна заявка.',
+	'postcomment_replyto'                  => 'Отговор до $1',
+	'postcomment_nopostingtoadd'           => 'Няма коментар за добавяне.',
 );
 
 /** Esperanto (Esperanto)
@@ -117,18 +123,21 @@ $messages['hi'] = array(
 	'postcomment_nopostingtoadd'           => 'बढाने के लिये संदेश नहीं हैं।',
 );
 
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
 $messages['hsb'] = array(
-	'postcomment_discussionprotected' => 'Tuta diskusijna strona je přećiwo dalšim zdźělenkam škitana.',
-	'postcomment_notloggedin' => 'Njejsy so přizjewił.',
-	'postcomment_youareloggedinas' => 'Sy nětko jako $1 přizjewjeny.',
+	'postcomment_discussionprotected'      => 'Tuta diskusijna strona je přećiwo dalšim zdźělenkam škitana.',
+	'postcomment_notloggedin'              => 'Njejsy so přizjewił.',
+	'postcomment_youareloggedinas'         => 'Sy nětko jako $1 přizjewjeny.',
 	'postcomment_addcommentdiscussionpage' => 'Twój komentar k tutej diskusijnej stronje přidać',
-	'postcomment_leavemessagefor' => 'Powěsć za $1 zawostajić',
-	'postcomment_post' => 'Póst',
-	'postcomment_on' => 'Na',
-	'postcomment_said' => 'praješe',
-	'postcomment_invalidrequest' => 'Njepłaciwe požadanje.',
-	'postcomment_replyto' => 'Na $1 wotmołwić',
-	'postcomment_nopostingtoadd' => 'Njeje powěsć, kotraž hodźi so přidać.',
+	'postcomment_leavemessagefor'          => 'Powěsć za $1 zawostajić',
+	'postcomment_post'                     => 'Póst',
+	'postcomment_on'                       => 'Na',
+	'postcomment_said'                     => 'praješe',
+	'postcomment_invalidrequest'           => 'Njepłaciwe požadanje.',
+	'postcomment_replyto'                  => 'Na $1 wotmołwić',
+	'postcomment_nopostingtoadd'           => 'Njeje powěsć, kotraž hodźi so přidać.',
 );
 
 /** Javanese (Basa Jawa)
@@ -217,18 +226,21 @@ $messages['nl'] = array(
 	'postcomment_nopostingtoadd'           => 'Niets toe te voegen.',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ */
 $messages['no'] = array(
-	'postcomment_discussionprotected' => 'Denne diskusjonssiden har blitt beskyttet fra videre posting.',
-	'postcomment_notloggedin' => 'Du er ikke logget inn.',
-	'postcomment_youareloggedinas' => 'Du er logget inn som $1',
+	'postcomment_discussionprotected'      => 'Denne diskusjonssiden har blitt beskyttet fra videre posting.',
+	'postcomment_notloggedin'              => 'Du er ikke logget inn.',
+	'postcomment_youareloggedinas'         => 'Du er logget inn som $1',
 	'postcomment_addcommentdiscussionpage' => 'Legg til din kommentar på denne diskusjonssiden',
-	'postcomment_leavemessagefor' => 'Legg igjen en beskjed til $1',
-	'postcomment_post' => 'Post',#identical but defined
-	'postcomment_on' => 'På',
-	'postcomment_said' => 'sa',
-	'postcomment_invalidrequest' => 'Ugyldig forespørsel.',
-	'postcomment_replyto' => 'Svar på $1',
-	'postcomment_nopostingtoadd' => 'Ingen postinger å legge til.',
+	'postcomment_leavemessagefor'          => 'Legg igjen en beskjed til $1',
+	'postcomment_post'                     => 'Post',
+	'postcomment_on'                       => 'På',
+	'postcomment_said'                     => 'sa',
+	'postcomment_invalidrequest'           => 'Ugyldig forespørsel.',
+	'postcomment_replyto'                  => 'Svar på $1',
+	'postcomment_nopostingtoadd'           => 'Ingen postinger å legge til.',
 );
 
 /** Occitan (Occitan)
@@ -305,6 +317,7 @@ $messages['ru'] = array(
  * @author Helix84
  */
 $messages['sk'] = array(
+	'postcomment_desc'                     => 'Umožňuje používateľom posielať komentáre priamo na diskusné stránky',
 	'postcomment_discussionprotected'      => 'Táto diskusná stránka bola zamknutá proti ďalším príspevkom.',
 	'postcomment_notloggedin'              => 'Nie ste prihlásený.',
 	'postcomment_youareloggedinas'         => 'Ste prihlásený ako $1',
