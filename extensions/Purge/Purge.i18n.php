@@ -45,7 +45,7 @@ $messages['de'] = array(
 	'purge-desc' => 'Ergänzt einen „Purge“-Reiter für alle normalen Seiten zur schnellen Cache-Löschung und umgeht die Purge-Prüfung für anonyme Benutzer',
 );
 
-/** French (Français) */
+/** French (Français)
  * @author Grondin
  */
 $messages['fr'] = array(
