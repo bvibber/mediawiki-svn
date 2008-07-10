@@ -96,6 +96,7 @@ $messages['br'] = array(
 	'watchers_less_than_x'   => "Nebeutoc'h eget $1 implijer o deus lakaet ar bajenn-mañ war evezh.",
 );
 
+/** German (Deutsch) */
 $messages['de'] = array(
 	'watchers_link_title'    => 'Wer beobachtet diese Seite?',
 	'watchers_error_article' => '"<b>Fehler:</b> Seite existiert nicht.',
@@ -166,13 +167,14 @@ $messages['hsb'] = array(
 	'watchers_less_than_x'   => 'Mjenje hač $1 wužiwarjow tutu stronu wobkedźbuje.',
 );
 
+/** Italian (Italiano) */
 $messages['it'] = array(
-	'watchers_link_title' => "Chi osserva questa pagina?",
-	'watchers_error_article' => "<b>Errore:</b> la pagina richiesta non esiste.",
-	'watchers_header' => "Utenti che osservano la pagina \"$1\"",
-	'watchers_noone_watches' => "La pagina non è osservata da alcun utente.",
-	'watchers_x_or_more' => "La pagina è osservata da almeno $1 utenti.",
-	'watchers_less_than_x' => "La pagina è osservata da meno di $1 utenti.",
+	'watchers_link_title'    => 'Chi osserva questa pagina?',
+	'watchers_error_article' => '<b>Errore:</b> la pagina richiesta non esiste.',
+	'watchers_header'        => 'Utenti che osservano la pagina "$1"',
+	'watchers_noone_watches' => 'La pagina non è osservata da alcun utente.',
+	'watchers_x_or_more'     => 'La pagina è osservata da almeno $1 utenti.',
+	'watchers_less_than_x'   => 'La pagina è osservata da meno di $1 utenti.',
 );
 
 /** Javanese (Basa Jawa)
@@ -241,17 +243,18 @@ $messages['mr'] = array(
 	'watchers_less_than_x'   => '$1 पेक्षा कमी सदस्यांनी पहारा दिलेला आहे.',
 );
 
+/** Dutch (Nederlands) */
 $messages['nl'] = array(
-	'watchers' => 'Volgers',
-	'watchers_link_title' => "Wie volgen deze pagina?",
-	'watchers_error_article' => "<b>Fout:</b> pagina bestaat niet.",
-	'watchers_header' => "Gebruikers die \"$1\" volgen",
-	'watchers_noone_watches' => "Niemand volgt deze pagina.",
-	'watchers_x_or_more' => "$1 of meer gebruikers volgen deze pagina.",
-	'watchers_less_than_x' => "Minder dan $1 gebruikers volgen deze pagina.",
+	'watchers'               => 'Volgers',
+	'watchers_link_title'    => 'Wie volgen deze pagina?',
+	'watchers_error_article' => '<b>Fout:</b> pagina bestaat niet.',
+	'watchers_header'        => 'Gebruikers die "$1" volgen',
+	'watchers_noone_watches' => 'Niemand volgt deze pagina.',
+	'watchers_x_or_more'     => '$1 of meer gebruikers volgen deze pagina.',
+	'watchers_less_than_x'   => 'Minder dan $1 gebruikers volgen deze pagina.',
 );
 
-/** Norwegian (‪Norsk (bokmål)‬)
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */
 $messages['no'] = array(
@@ -298,22 +301,24 @@ $messages['ps'] = array(
 	'watchers' => 'کتونکي',
 );
 
+/** Portuguese (Português) */
 $messages['pt'] = array(
-	'watchers_link_title' => "Quem está vigiando esta página?",
-	'watchers_error_article' => "<b>Erro:</b> Página inexistente.",
-	'watchers_header' => "Pessoas que estão vigiando \"$1\"",
-	'watchers_noone_watches' => "Ninguém está vigiando esta página.",
-	'watchers_x_or_more' => "$1 ou mais pessoas estão vigiando esta página.",
-	'watchers_less_than_x' => "Menos de $1 pessoa está vigiando esta página.",
+	'watchers_link_title'    => 'Quem está vigiando esta página?',
+	'watchers_error_article' => '<b>Erro:</b> Página inexistente.',
+	'watchers_header'        => 'Pessoas que estão vigiando "$1"',
+	'watchers_noone_watches' => 'Ninguém está vigiando esta página.',
+	'watchers_x_or_more'     => '$1 ou mais pessoas estão vigiando esta página.',
+	'watchers_less_than_x'   => 'Menos de $1 pessoa está vigiando esta página.',
 );
 
+/** Russian (Русский) */
 $messages['ru'] = array(
-	'watchers_link_title' => "Кто следит за этой страницей?",
-	'watchers_error_article' => "<b>ошибка:</b> статьи не существует.",
-	'watchers_header' => "Луди надлюдающие за «$1»",
-	'watchers_noone_watches' => "Никто не следит за этой страницей.",
-	'watchers_x_or_more' => "$1 или более человек наблюдают за этой страницей.",
-	'watchers_less_than_x' => "Менее чем $1 человек наблюдают за этой страницей.",
+	'watchers_link_title'    => 'Кто следит за этой страницей?',
+	'watchers_error_article' => '<b>ошибка:</b> статьи не существует.',
+	'watchers_header'        => 'Луди надлюдающие за «$1»',
+	'watchers_noone_watches' => 'Никто не следит за этой страницей.',
+	'watchers_x_or_more'     => '$1 или более человек наблюдают за этой страницей.',
+	'watchers_less_than_x'   => 'Менее чем $1 человек наблюдают за этой страницей.',
 );
 
 /** Slovak (Slovenčina)

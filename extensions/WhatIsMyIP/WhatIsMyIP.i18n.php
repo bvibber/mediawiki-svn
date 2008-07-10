@@ -29,7 +29,7 @@ $messages['bg'] = array(
  * @author Jack Phoenix
  */
 $messages['fi'] = array(
-	'whatismyip' => 'Mikä IP-osoitteeni on',
+	'whatismyip'     => 'Mikä IP-osoitteeni on',
 	'whatismyip-out' => 'IP-osoitteesi:',
 );
 

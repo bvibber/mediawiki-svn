@@ -213,49 +213,49 @@ $allMessages['da'] = array(
  * @author Liam Rosen
  */
 $allMessages['de'] = array(
-    'whitelist-desc'              => 'Zugriffsrechte von beschränkten Benutzern bearbeiten',
-    'whitelistedit'               => 'Whitelist-Zugriff-Editor',
-    'whitelist'                   => 'Whitelist-Seiten',
-    'mywhitelistpages'            => 'Meine Seiten',
-    'whitelistfor'                => "<center>Aktuelle Information für <b>$1</b></center>",
-    'whitelisttablemodify'        => 'Modifizieren',
-    'whitelisttablemodifyall'     => 'Alles modifizieren',
-    'whitelisttablemodifynone'    => 'Nichts modifizieren',
-    'whitelisttablepage'          => 'Seite',
-    'whitelisttabletype'          => 'Zugriffstyp',
-    'whitelisttableexpires'       => 'Ablauf am',
-    'whitelisttablemodby'         => 'Zuletz modifiziert von',
-    'whitelisttablemodon'         => 'Zuletzt modifiziert am',
-    'whitelisttableedit'          => 'Bearbeiten',
-    'whitelisttableview'          => 'Anschauen',
-    'whitelisttablenewdate'       => 'Neues Datum:',
-    'whitelisttablechangedate'    => 'Ablaufsdatum ändern',
-    'whitelisttablesetedit'       => 'Bearbeiten',
-    'whitelisttablesetview'       => 'Anschauen',
-    'whitelisttableremove'        => 'Entfernen',
-    'whitelistnewpagesfor'        => "Neue Seiten zu <b>$1's</b> Whitelist hinzufügen<br />
+	'whitelist-desc'            => 'Zugriffsrechte von beschränkten Benutzern bearbeiten',
+	'whitelistedit'             => 'Whitelist-Zugriff-Editor',
+	'whitelist'                 => 'Whitelist-Seiten',
+	'mywhitelistpages'          => 'Meine Seiten',
+	'whitelistfor'              => '<center>Aktuelle Information für <b>$1</b></center>',
+	'whitelisttablemodify'      => 'Modifizieren',
+	'whitelisttablemodifyall'   => 'Alles modifizieren',
+	'whitelisttablemodifynone'  => 'Nichts modifizieren',
+	'whitelisttablepage'        => 'Seite',
+	'whitelisttabletype'        => 'Zugriffstyp',
+	'whitelisttableexpires'     => 'Ablauf am',
+	'whitelisttablemodby'       => 'Zuletz modifiziert von',
+	'whitelisttablemodon'       => 'Zuletzt modifiziert am',
+	'whitelisttableedit'        => 'Bearbeiten',
+	'whitelisttableview'        => 'Anschauen',
+	'whitelisttablenewdate'     => 'Neues Datum:',
+	'whitelisttablechangedate'  => 'Ablaufsdatum ändern',
+	'whitelisttablesetedit'     => 'Bearbeiten',
+	'whitelisttablesetview'     => 'Anschauen',
+	'whitelisttableremove'      => 'Entfernen',
+	'whitelistnewpagesfor'      => "Neue Seiten zu <b>$1's</b> Whitelist hinzufügen<br />
 Entweder * oder % als Maskenzeichen benutzen",
-    'whitelistnewtabledate'       => 'Ablaufdatum:',
-    'whitelistnewtableedit'       => 'Bearbeiten',
-    'whitelistnewtableview'       => 'Anschauen',
-    'whitelistnewtableprocess'    => 'Bearbeiten',
-    'whitelistnewtablereview'     => 'Überprüfen',
-    'whitelistselectrestricted'   => '== Beschränkter Benutzername selektieren ==',
-    'whitelistpagelist'           => "{{SITENAME}} Seiten für $1",
-    'whitelistnocalendar'         => "<font color='red' size=3>[http://www.mediawiki.org/wiki/Extension:Usage_Statistics Die Extension:UsageStatistics], eine Vorraussetzung für dieses Extension, wurde nicht installiert oder kann nicht gefunden werden!</font>",
-    'whitelistbadtitle'           => 'Titel inkompatibel - ',
-    'whitelistoverview'           => "== Änderungsübersicht für $1 ==",
-    'whitelistoverviewcd'         => "* Datum '''($1)''' für [[:$2|$2]] wird geändert",
-    'whitelistoverviewsa'         => "* Zugriff '''$1''' für [[:$2|$2]] wird angewendet",
-    'whitelistoverviewrm'         => "* Zugriff auf [[:$1|$1]] wird entfernt",
-    'whitelistrequest'            => "Weiteren Zugriff beantragen",
-    'whitelistrequestmsg'         => "$1 hat Zugriff auf die folgenden Seiten beantragt:
-$2",
-    'whitelistrequestconf'        => "Beantragung an $1 geschickt",
-    'whitelistnonrestricted'      => "'''$1''' ist kein beschränkter Benutzer.
+	'whitelistnewtabledate'     => 'Ablaufdatum:',
+	'whitelistnewtableedit'     => 'Bearbeiten',
+	'whitelistnewtableview'     => 'Anschauen',
+	'whitelistnewtableprocess'  => 'Bearbeiten',
+	'whitelistnewtablereview'   => 'Überprüfen',
+	'whitelistselectrestricted' => '== Beschränkter Benutzername selektieren ==',
+	'whitelistpagelist'         => '{{SITENAME}} Seiten für $1',
+	'whitelistnocalendar'       => "<font color='red' size=3>[http://www.mediawiki.org/wiki/Extension:Usage_Statistics Die Extension:UsageStatistics], eine Vorraussetzung für dieses Extension, wurde nicht installiert oder kann nicht gefunden werden!</font>",
+	'whitelistbadtitle'         => 'Titel inkompatibel - ',
+	'whitelistoverview'         => '== Änderungsübersicht für $1 ==',
+	'whitelistoverviewcd'       => "* Datum '''($1)''' für [[:$2|$2]] wird geändert",
+	'whitelistoverviewsa'       => "* Zugriff '''$1''' für [[:$2|$2]] wird angewendet",
+	'whitelistoverviewrm'       => '* Zugriff auf [[:$1|$1]] wird entfernt',
+	'whitelistrequest'          => 'Weiteren Zugriff beantragen',
+	'whitelistrequestmsg'       => '$1 hat Zugriff auf die folgenden Seiten beantragt:
+$2',
+	'whitelistrequestconf'      => 'Beantragung an $1 geschickt',
+	'whitelistnonrestricted'    => "'''$1''' ist kein beschränkter Benutzer.
 Diese Seite gilt nur für beschränkte Bentzer.",
-    'whitelistnever'              => 'niemals',
-    'whitelistnummatches'         => " - $1 Übereinstimmungen",
+	'whitelistnever'            => 'niemals',
+	'whitelistnummatches'       => ' - $1 Übereinstimmungen',
 );
 
 /** Zazaki (Zazaki)
@@ -1069,7 +1069,7 @@ Denna sida är endast tillämpbar på begränsade användare",
 	'whitelistnummatches'       => ' - $1 träffar',
 );
 
-/** ślůnski (ślůnski)
+/** Silesian (Ślůnski)
  * @author Herr Kriss
  * @author Pimke
  */

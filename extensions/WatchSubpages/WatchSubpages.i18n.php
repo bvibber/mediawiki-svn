@@ -280,7 +280,7 @@ $messages['vec'] = array(
  * @author Vinhtantran
  */
 $messages['vi'] = array(
-	'watchsubpages-desc' => '[[Special:WatchSubpages|Thêm tất cả các trang con]] của một trang vào danh sách theo dõi một cách nhanh chóng.',
 	'watchsubpages'      => 'Theo dõi các trang con',
+	'watchsubpages-desc' => '[[Special:WatchSubpages|Thêm tất cả các trang con]] của một trang vào danh sách theo dõi một cách nhanh chóng.',
 );
 

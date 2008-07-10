@@ -94,6 +94,9 @@ $messages['avk'] = array(
 	'usernameblacklist-invalid-lines' => 'Vlevef {{PLURAL:$1|conha|conha se}} moe favesikafa ebeltavexala {{PLURAL:$1|tir|tid}} meenafa; abdi giwara va {{PLURAL:$1|in|sin}} tuenal !',
 );
 
+/** Bikol Central (Bikol Central)
+ * @author Filipinayzd
+ */
 $messages['bcl'] = array(
 	'blacklistedusername' => 'Blacklisted na username',
 );
@@ -239,7 +242,7 @@ $messages['de'] = array(
 	'right-uboverride'                => 'Außer Kraft setzen der Liste unerwünschter Benutzernamen',
 );
 
-/** German - formal address (Deutsch - formale Anrede)
+/** German (formal address) (Deutsch (Sie-Form))
  * @author Raimond Spekking
  */
 $messages['de-formal'] = array(
@@ -283,8 +286,11 @@ $messages['es'] = array(
 	'blacklistedusernametext' => 'El nombre de usuario que has seleccionado está en la [[MediaWiki:Usernameblacklist|lista de nombres no permitidos]]. Por favor, elige otro.',
 );
 
+/** Basque (Euskara)
+ * @author SPQRobin
+ */
 $messages['eu'] = array(
-	'blacklistedusername' => 'Zerrenda beltzeko erabiltzaile izena',
+	'blacklistedusername'     => 'Zerrenda beltzeko erabiltzaile izena',
 	'blacklistedusernametext' => 'Hautatu duzun erabiltzaile izena [[MediaWiki:Usernameblacklist|zerrenda beltzean]] ageri da. Aukeratu ezazu beste bat.',
 );
 
@@ -296,7 +302,7 @@ $messages['ext'] = array(
 	'blacklistedusernametext' => "El nombri d'usuáriu qu'as lihiu s'alcuentra ena [[MediaWiki:Usernameblacklist|lista negra]]. Pol favol, descohi otru nombri.",
 );
 
-/** فارسی (فارسی)
+/** Persian (فارسی)
  * @author Huji
  */
 $messages['fa'] = array(
@@ -312,7 +318,6 @@ $messages['fa'] = array(
 </pre>',
 	'usernameblacklist-invalid-lines' => '{{PLURAL:$1|سطر|سطرهای}} زیر از فهرست سیاه نام کاربری غیر مجاز {{PLURAL:$1|است|هستند}}؛ لطفاً {{PLURAL:$1|آن|آن‌ها}} را قبل از ذخیره کردن صفحه اصلاح کنید:',
 	'right-uboverride'                => 'گذر از فهرست سیاه نام‌های کاربری',
-
 );
 
 /** Finnish (Suomi)
@@ -413,8 +418,11 @@ $messages['gl'] = array(
 	'right-uboverride'                => 'Ignorar os nomes de usuario da listaxe negra (blacklist)',
 );
 
+/** Hakka (Hak-kâ-fa)
+ * @author Hakka
+ */
 $messages['hak'] = array(
-	'blacklistedusername' => 'Lie̍t-ngi̍p het-miàng-tân ke yung-fu-miàng',
+	'blacklistedusername'     => 'Lie̍t-ngi̍p het-miàng-tân ke yung-fu-miàng',
 	'blacklistedusernametext' => 'Ngì só sién-chet ke yung-fu-miàng he lâu [[MediaWiki:Usernameblacklist|Yung-fu-miàng het-miàng-tân lie̍t-péu]] fù-ha̍p. Chhiáng sién-chet nang-ngoi yit-ke miàng-chhṳ̂n.',
 );
 
@@ -459,10 +467,13 @@ $messages['hi'] = array(
 	'right-uboverride'                => 'सदस्यनाम ब्लॅकलिस्ट को नजर अंदाज करें',
 );
 
+/** Croatian (Hrvatski)
+ * @author SpeedyGonsales
+ */
 $messages['hr'] = array(
-	'blacklistedusername' => 'Nedozvoljeno suradničko ime',
-	'blacklistedusernametext' => 'Ime koje ste izabrali je na popisu [[MediaWiki:Usernameblacklist|nedozvoljenih imena]]. Molimo izaberite drugo ime.',
-	'usernameblacklist' => '<pre>
+	'blacklistedusername'             => 'Nedozvoljeno suradničko ime',
+	'blacklistedusernametext'         => 'Ime koje ste izabrali je na popisu [[MediaWiki:Usernameblacklist|nedozvoljenih imena]]. Molimo izaberite drugo ime.',
+	'usernameblacklist'               => '<pre>
 # Zapisi u ovom popisu će biti rabljeni kao dio regularnog izraza pri
 # provjeravanju suradničkih imena pri prijavljivanju/registraciji. Svako ime treba navesti kao dio
 # popisa, npr:
@@ -510,10 +521,13 @@ $messages['hu'] = array(
 	'right-uboverride'                => 'felhasználói nevek feketelistájának figyelmen kívül hagyása',
 );
 
+/** Armenian (Հայերեն)
+ * @author Teak
+ */
 $messages['hy'] = array(
-	'blacklistedusername' => 'Արգելված մասնակցի անուն',
-	'blacklistedusernametext' => 'Ձեր ընտրած մասնակցի անունը գտնվում է [[MediaWiki:Usernameblacklist|արգելված մասնակիցների անունների ցանկում]]։ Խնդրում ենք ընտրել մեկ այլ անուն։',
-	'usernameblacklist' => '<pre>
+	'blacklistedusername'             => 'Արգելված մասնակցի անուն',
+	'blacklistedusernametext'         => 'Ձեր ընտրած մասնակցի անունը գտնվում է [[MediaWiki:Usernameblacklist|արգելված մասնակիցների անունների ցանկում]]։ Խնդրում ենք ընտրել մեկ այլ անուն։',
+	'usernameblacklist'               => '<pre>
 # Այս ցանկում ընդգրկված բառերը կօգտագործվեն որպես սովորական արտահայտության մաս
 # մասնակցային անունները գրանցման արգելման ժամանակ։ Յուրաքանչյուր բառ պետք է լինի
 # գնդիկներով ցանկի կետ, օրինակ.
@@ -631,12 +645,14 @@ $messages['jv'] = array(
 	'right-uboverride'                => "''Override'' daftar ireng jeneng panganggo",
 );
 
-/* Kazakh Arabic (kk:AlefZet) */
+/** Kazakh (Arabic script) (‫قازاقشا (تٴوتە)‬)
+ * @author AlefZet
+ */
 $messages['kk-arab'] = array(
-	'blacklistedusername' => 'قارا تىزىمدەگى قاتىسۋشى اتى',
-	'blacklistedusernametext' => 'تانداعان قاتىسۋشى اتىڭىز [[{{ns:mediawiki}}:Usernameblacklist| قاتىسۋشى اتى قارا تىزىمىنە]] كىرەدى.
+	'blacklistedusername'             => 'قارا تىزىمدەگى قاتىسۋشى اتى',
+	'blacklistedusernametext'         => 'تانداعان قاتىسۋشى اتىڭىز [[{{ns:mediawiki}}:Usernameblacklist| قاتىسۋشى اتى قارا تىزىمىنە]] كىرەدى.
 باسقا اتاۋ تالعاڭىز.',
-	'usernameblacklist' => '<pre>
+	'usernameblacklist'               => '<pre>
 # قارا تىزىمدەگى قاتىسۋشى اتىن تىركەلگى جاساۋدان ساقتاپ قالۋ ٴۇشىن بۇل تىزىمدەگى دانالار
 # جۇيەلى ايتىلىم (regular expression) بولىگى بوپ پايدالانىلادى. ارقايسى دانا بايراقشامەن
 # پىشىمدەلگەن ٴتىزىمدىڭ بولىگى بولۋى قاجەت, مىسالى:
@@ -646,12 +662,15 @@ $messages['kk-arab'] = array(
 </pre>',
 	'usernameblacklist-invalid-lines' => 'قاتىسۋشى اتى قارا تىزىمىندەگى كەلەسى {{PLURAL:$1|جول|جولدار}} جارامسىز {{PLURAL:$1|بولدى|بولدى}}; ساقتاۋدىڭ الدىندا {{PLURAL:$1|بۇنى|بۇلاردى}} دۇرىستاپ شىعىڭىز:',
 );
-/* Kazakh Cyrillic (kk:AlefZet) */
+
+/** Kazakh (Cyrillic) (Қазақша (Cyrillic))
+ * @author AlefZet
+ */
 $messages['kk-cyrl'] = array(
-	'blacklistedusername' => 'Қара тізімдегі қатысушы аты',
-	'blacklistedusernametext' => 'Тандаған қатысушы атыңыз [[{{ns:mediawiki}}:Usernameblacklist| қатысушы аты қара тізіміне]] кіреді.
+	'blacklistedusername'             => 'Қара тізімдегі қатысушы аты',
+	'blacklistedusernametext'         => 'Тандаған қатысушы атыңыз [[{{ns:mediawiki}}:Usernameblacklist| қатысушы аты қара тізіміне]] кіреді.
 Басқа атау талғаңыз.',
-	'usernameblacklist' => '<pre>
+	'usernameblacklist'               => '<pre>
 # Қара тізімдегі қатысушы атын тіркелгі жасаудан сақтап қалу үшін бұл тізімдегі даналар
 # жүйелі айтылым (regular expression) бөлігі боп пайдаланылады. Әрқайсы дана байрақшамен
 # пішімделген тізімдің бөлігі болуы қажет, мысалы:
@@ -661,12 +680,15 @@ $messages['kk-cyrl'] = array(
 </pre>',
 	'usernameblacklist-invalid-lines' => 'Қатысушы аты қара тізіміндегі келесі {{PLURAL:$1|жол|жолдар}} жарамсыз {{PLURAL:$1|болды|болды}}; сақтаудың алдында {{PLURAL:$1|бұны|бұларды}} дұрыстап шығыңыз:',
 );
-/* Kazakh Latin (kk:AlefZet) */
+
+/** Kazakh (Latin) (Қазақша (Latin))
+ * @author AlefZet
+ */
 $messages['kk-latn'] = array(
-	'blacklistedusername' => 'Qara tizimdegi qatıswşı atı',
-	'blacklistedusernametext' => 'Tandağan qatıswşı atıñız [[{{ns:mediawiki}}:Usernameblacklist| qatıswşı atı qara tizimine]] kiredi.
+	'blacklistedusername'             => 'Qara tizimdegi qatıswşı atı',
+	'blacklistedusernametext'         => 'Tandağan qatıswşı atıñız [[{{ns:mediawiki}}:Usernameblacklist| qatıswşı atı qara tizimine]] kiredi.
 Basqa ataw talğañız.',
-	'usernameblacklist' => '<pre>
+	'usernameblacklist'               => '<pre>
 # Qara tizimdegi qatıswşı atın tirkelgi jasawdan saqtap qalw üşin bul tizimdegi danalar
 # jüýeli aýtılım (regular expression) böligi bop paýdalanıladı. Ärqaýsı dana baýraqşamen
 # pişimdelgen tizimdiñ böligi bolwı qajet, mısalı:
@@ -757,7 +779,7 @@ $messages['li'] = array(
 	'right-uboverride'                => 'De zwarte lies veur gebroekersname negere',
 );
 
-/* Lao */
+/** Lao (ລາວ) */
 $messages['lo'] = array(
 	'blacklistedusername' => 'ຊື່ຜູ້ໃຊ້ ໃນ ບັນຊີດຳ',
 );
@@ -934,12 +956,14 @@ $messages['pl'] = array(
 	'right-uboverride'                => 'Wyłącza ograniczenia nakładane przez rozszerzenie Username Blacklist, które blokuje tworzenie kont o nazwach pasujących do zdefiniowanych wzorców',
 );
 
-/* Piedmontese (Bèrto 'd Sèra) */
+/** Piedmontese (Piemontèis)
+ * @author Bèrto 'd Sèra
+ */
 $messages['pms'] = array(
-	'blacklistedusername' => 'Stranòm vietà',
-	'blacklistedusernametext' => 'Lë stranòm ch\'a l\'ha sërnusse a l\'é ant la [[MediaWiki:Usernameblacklist|lista djë stranòm vietà]]. Për piasì, ch\'as në sërna n\'àotr.',
-	'usernameblacklist' => '<pre> # Le vos dë sta lista a saran dovrà coma part ëd n\'espression regolar quand # as buto an lista nèira djë stranòm për la registrassion. Minca vos a la dovrìa fé part ëd na # lista a balin, pr\'es. # # * Ciào # * [Nn]ineta </pre>',
-	'usernameblacklist-invalid-lines' => '{{PLURAL:$1|La riga|Le righe}} ant la lista nèira dë stranòm ambelessì sota a {{PLURAL:$1|l\'é nen bon-a|son nen bon-a}}; për piasì, ch\'a-j daga deuit anans che salvé:',
+	'blacklistedusername'             => 'Stranòm vietà',
+	'blacklistedusernametext'         => "Lë stranòm ch'a l'ha sërnusse a l'é ant la [[MediaWiki:Usernameblacklist|lista djë stranòm vietà]]. Për piasì, ch'as në sërna n'àotr.",
+	'usernameblacklist'               => "<pre> # Le vos dë sta lista a saran dovrà coma part ëd n'espression regolar quand # as buto an lista nèira djë stranòm për la registrassion. Minca vos a la dovrìa fé part ëd na # lista a balin, pr'es. # # * Ciào # * [Nn]ineta </pre>",
+	'usernameblacklist-invalid-lines' => "{{PLURAL:$1|La riga|Le righe}} ant la lista nèira dë stranòm ambelessì sota a {{PLURAL:$1|l'é nen bon-a|son nen bon-a}}; për piasì, ch'a-j daga deuit anans che salvé:",
 );
 
 /** Pashto (پښتو)
@@ -1120,7 +1144,7 @@ $messages['te'] = array(
 	'usernameblacklist-invalid-lines' => 'అనుమతించని పేర్లజాబితాలో ఈ కింది {{PLURAL:$1|లైను|లైన్‌లు}} అర్ధంకాకుండా {{PLURAL:$1|ఉంది|ఉన్నాయి}}; దాయచేసి {{PLURAL:$1|అందులో|వాటిలో}} ఉన్న తప్పులను సరిచేసి ఆ తరువాత భద్రపరచండి.',
 );
 
-/** Tajik (Тоҷикӣ)
+/** Tajik (Cyrillic) (Тоҷикӣ/tojikī (Cyrillic))
  * @author Ibrahim
  */
 $messages['tg-cyrl'] = array(
@@ -1201,7 +1225,7 @@ $messages['vi'] = array(
 	'right-uboverride'                => 'Bỏ qua danh sách tên người dùng bị cấm',
 );
 
-/** Cantonese
+/** Yue (粵語)
  * @author Shinjiman
  */
 $messages['yue'] = array(
@@ -1219,7 +1243,7 @@ $messages['yue'] = array(
 	'right-uboverride'                => '覆蓋用戶名黑名單',
 );
 
-/** Chinese Simplified
+/** Simplified Chinese (‪中文(简体)‬)
  * @author Shinjiman
  */
 $messages['zh-hans'] = array(
@@ -1237,7 +1261,7 @@ $messages['zh-hans'] = array(
 	'right-uboverride'                => '覆盖用户名称黑名单',
 );
 
-/** Chinese Traditional
+/** Traditional Chinese (‪中文(繁體)‬)
  * @author Shinjiman
  */
 $messages['zh-hant'] = array(
