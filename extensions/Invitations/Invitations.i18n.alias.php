@@ -11,5 +11,12 @@ $aliases = array();
  * @author Nike
  */
 $aliases['en'] = array(
-	'SpecialInvitations'          => array( 'Invitations' ),
+	'SpecialInvitations' => array( 'Invitations' ),
+);
+
+/** Hebrew (עברית)
+ * @author Rotem Liss
+ */
+$aliases['he'] = array(
+	'SpecialInvitations' => array( 'הזמנות' ),
 );

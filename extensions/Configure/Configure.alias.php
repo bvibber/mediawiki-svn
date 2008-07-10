@@ -12,7 +12,7 @@ $aliases = array();
  * @author IAlex
  */
 $aliases['en'] = array(
-	'Configure' => array( 'Configure' ),
+	'Configure'  => array( 'Configure' ),
 	'Extensions' => array( 'Extensions' ),
 	'ViewConfig' => array( 'ViewConfig' ),
 );
@@ -42,6 +42,7 @@ $aliases['fr'] = array(
  */
 $aliases['he'] = array(
 	'Configure'  => array( 'הגדרות' ),
+	'Extensions' => array( 'הרחבות' ),
 	'ViewConfig' => array( 'הצגת_הגדרות' ),
 );
 

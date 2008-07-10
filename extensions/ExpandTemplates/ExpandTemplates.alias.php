@@ -11,7 +11,7 @@ $aliases = array();
  * @author Jon Harald Søby
  */
 $aliases['en'] = array(
-    'ExpandTemplates'            => array('ExpandTemplates')
+    'ExpandTemplates' => array( 'ExpandTemplates' ),
 );
 
 /** German
@@ -20,9 +20,17 @@ $aliases['en'] = array(
 $aliases['de'] = array(
 	'ExpandTemplates' => array( 'Vorlagen expandieren' ),
 );
+
+/** Hebrew (עברית)
+ * @author Rotem Liss
+ */
+$aliases['he'] = array(
+    'ExpandTemplates' => array( 'פריסת_תבניות' ),
+);
+
 /** Norwegian (Norsk (bokmål))
  * @author Jon Harald Søby
  */
 $aliases['no'] = array(
-    'ExpandTemplates'            => array('Utvid_maler')
+    'ExpandTemplates' => array( 'Utvid_maler' ),
 );

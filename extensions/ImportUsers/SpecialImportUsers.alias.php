@@ -11,19 +11,26 @@ $aliases = array();
  * @author Jon Harald Søby
  */
 $aliases['en'] = array(
-    'ImportUsers'            => array('ImportUsers')
+    'ImportUsers' => array( 'ImportUsers' ),
+);
+
+/** Hebrew (עברית)
+ * @author Rotem Liss
+ */
+$aliases['he'] = array(
+    'ImportUsers' => array( 'ייבוא_משתמשים' ),
 );
 
 /** Norwegian Nynorsk (Norsk (nynorsk))
  * @author Jon Harald Søby
  */
 $aliases['nn'] = array(
-    'ImportUsers'            => array('Importer_brukarar')
+    'ImportUsers' => array( 'Importer_brukarar' ),
 );
 
 /** Norwegian (Norsk (bokmål))
  * @author Jon Harald Søby
  */
 $aliases['no'] = array(
-    'ImportUsers'            => array('Importer_brukere')
+    'ImportUsers' => array( 'Importer_brukere' ),
 );

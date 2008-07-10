@@ -11,5 +11,12 @@ $aliases = array();
  * @author Jon Harald Søby
  */
 $aliases['en'] = array(
-    'Eval'            => array('Eval')
+    'Eval' => array( 'Eval' ),
+);
+
+/** Hebrew (עברית)
+ * @author Rotem Liss
+ */
+$aliases['he'] = array(
+    'Eval' => array( 'פירוש' ),
 );

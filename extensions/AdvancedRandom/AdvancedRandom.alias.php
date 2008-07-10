@@ -11,12 +11,19 @@ $aliases = array();
  * @author Jon Harald Søby
  */
 $aliases['en'] = array(
-    'AdvancedRandom'            => array('AdvancedRandom')
+    'AdvancedRandom' => array( 'AdvancedRandom' ),
+);
+
+/** Hebrew (עברית)
+ * @author Rotem Liss
+ */
+$aliases['he'] = array(
+    'AdvancedRandom' => array( 'אקראי_מתקדם' ),
 );
 
 /** Norwegian (Norsk (bokmål))
  * @author Jon Harald Søby
  */
 $aliases['no'] = array(
-    'AdvancedRandom'            => array('Avansert_tilfeldig_side')
+    'AdvancedRandom' => array( 'Avansert_tilfeldig_side' ),
 );

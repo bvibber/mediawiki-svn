@@ -128,6 +128,14 @@ $messages['gl'] = array(
 	'advancedrandom-desc' => 'Obter unha páxina ao chou a partir dunha conversa ou dunha ligazón dunha páxina de asunto á páxina dada. Pode ser usado como [[Special:AdvancedRandom/Template:Featured/Talk]] para obter un artigo destacado ao chou ou como [[Special:AdvancedRandom/Template:GFDL/Image]] para obter un ficeiro GFDL ao chou',
 );
 
+/** Hebrew (עברית)
+ * @author Rotem Liss
+ */
+$messages['he'] = array(
+	'advancedrandom'      => 'אקראי מתקדם',
+	'advancedrandom-desc' => 'קבלת דף אקראי שהוא או דף השיחה שלו מקשר לדף נתון. ניתן לשימוש באופן [[Special:AdvancedRandom/Template:Featured/Talk]] לקבלת ערך מומלץ אקראי, או באופן [[Special:AdvancedRandom/Template:GFDL/Image]] לקבלת קובץ GFDL אקראי',
+);
+
 /** Hindi (हिन्दी)
  * @author Kaustubh
  */

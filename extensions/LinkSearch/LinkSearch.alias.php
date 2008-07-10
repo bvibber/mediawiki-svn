@@ -11,7 +11,7 @@ $aliases = array();
  * @author Jon Harald Søby
  */
 $aliases['en'] = array(
-    'LinkSearch'            => array('LinkSearch')
+    'LinkSearch' => array( 'LinkSearch' ),
 );
 
 /** German
@@ -21,9 +21,16 @@ $aliases['de'] = array(
 	'LinkSearch' => array( 'Weblink-Suche' ),
 );
 
+/** Hebrew (עברית)
+ * @author Rotem Liss
+ */
+$aliases['he'] = array(
+    'LinkSearch' => array( 'חיפוש_קישורים_חיצוניים' ),
+);
+
 /** Norwegian (Norsk (bokmål))
  * @author Jon Harald Søby
  */
 $aliases['no'] = array(
-    'LinkSearch'            => array('Lenkesøk')
+    'LinkSearch' => array( 'Lenkesøk' ),
 );
