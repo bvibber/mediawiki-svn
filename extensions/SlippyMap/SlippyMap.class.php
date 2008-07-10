@@ -27,13 +27,41 @@ class SlippyMap {
 
 		wfLoadExtensionMessages( 'SlippyMap' );
 
-		$lat		= $argv['lat'];
-		$lon		= $argv['lon'];
-		$zoom		= $argv['z'];
-		$width		= $argv['w'];
-		$height		= $argv['h'];
-		$layer		= $argv['layer'];
-		$marker		= $argv['marker'];
+		if ( isset( $argv['lat'] ) ) { 
+			$lat		= $argv['lat'];
+		} else {
+			$lat		= '';
+		}
+		if ( isset( $argv['lon'] ) ) { 
+			$lon		= $argv['lon'];
+		} else {
+			$lon		= '';
+		}
+		if ( isset( $argv['z'] ) ) { 
+			$zoom		= $argv['z'];
+		} else {
+			$zoom		= '';
+		}
+		if ( isset( $argv['w'] ) ) { 
+			$width		= $argv['w'];
+		} else {
+			$width		= '';
+		}
+		if ( isset( $argv['h'] ) ) { 
+			$height		= $argv['h'];
+		} else {
+			$height		= '';
+		}
+		if ( isset( $argv['layer'] ) ) { 
+			$layer		= $argv['layer'];
+		} else {
+			$layer		= '';
+		}
+		if ( isset( $argv['marker'] ) ) { 
+			$marker		= $argv['marker'];
+		} else {
+			$marker		= '';
+		}
 
 		$error="";
 
@@ -42,7 +70,9 @@ class SlippyMap {
 		if ($height=='')	$height='320'; 
 		if ($layer=='')		$layer='mapnik'; 
 
-		if ($zoom=='')		$zoom = $argv['zoom']; //see if they used 'zoom' rather than 'z' (and allow it)
+		if ($zoom=='' && isset( $argv['zoom'] ) ) {
+			$zoom = $argv['zoom']; //see if they used 'zoom' rather than 'z' (and allow it)
+		}
 
 		$marker = ( $marker != '' && $marker != '0' );
 
@@ -54,7 +84,6 @@ class SlippyMap {
 		if ( $lat==''  ) $error .= wfMsg( 'slippymap_latmissing' );
 		if ( $lon==''  ) $error .= wfMsg( 'slippymap_lonmissing' );
 		if ( $zoom=='' ) $error .= wfMsg( 'slippymap_zoommissing' );
-		if ( isset( $argv['long'] ) ) $error .= wfMsg( 'slippymap_longdepreciated' );
 
 		if ($error=='') {
 			//no errors so far. Now check the values	
