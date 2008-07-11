@@ -478,7 +478,7 @@ $messages['gv'] = array(
 );
 
 /** Hebrew (עברית)
- * @author לערי ריינהארט
+ * @author Rotem Liss
  */
 $messages['he'] = array(
 	'sitematrix'           => 'רשימת אתרי ויקי של ויקימדיה',
