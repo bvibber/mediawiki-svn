@@ -62,25 +62,25 @@ function scgLanguageGetMagic( &$magicWords, $langCode = "en" ) {
 }
 
 function intToMonth($int) {
-        if ($int == '2') {return wfMsg('february'); }
-        if ($int == '3') {return wfMsg('march'); }
-        if ($int == '4') {return wfMsg('april'); }
-        if ($int == '5') {return wfMsg('may'); }
-        if ($int == '6') {return wfMsg('june'); }
-        if ($int == '7') {return wfMsg('july'); }
-        if ($int == '8') {return wfMsg('august'); }
-        if ($int == '9') {return wfMsg('september'); }
-        if ($int == '10') {return wfMsg('october'); }
-        if ($int == '11') {return wfMsg('november'); }
-        if ($int == '12') {return wfMsg('december'); }
+	if ($int == '2') {return wfMsg('february'); }
+	if ($int == '3') {return wfMsg('march'); }
+	if ($int == '4') {return wfMsg('april'); }
+	if ($int == '5') {return wfMsg('may'); }
+	if ($int == '6') {return wfMsg('june'); }
+	if ($int == '7') {return wfMsg('july'); }
+	if ($int == '8') {return wfMsg('august'); }
+	if ($int == '9') {return wfMsg('september'); }
+	if ($int == '10') {return wfMsg('october'); }
+	if ($int == '11') {return wfMsg('november'); }
+	if ($int == '12') {return wfMsg('december'); }
 	// keep it simple - if it's '1' or anything else, return January
-        return wfMsg('january');
+	return wfMsg('january');
 }
 
 function scRenderSemanticCalendar (&$parser, $inDatePropertiesStr = '', $inQueryFiltersStr = '') {
 	global $wgOut, $scgScriptPath, $wgRequest;
-	$title = $parser->getTitle();
 
+	wfLoadExtensionMessages('SemanticCalendar');
 	$wgOut->addLink( array(
 		'rel' => 'stylesheet',
 		'type' => 'text/css',
@@ -90,7 +90,8 @@ function scRenderSemanticCalendar (&$parser, $inDatePropertiesStr = '', $inQuery
 
 	// initialize some variables
 	$text = "";
-	$skin = $parser->getOptions()->getSkin(); //$wgUser->getSkin();
+	$title = $parser->getTitle();
+	$skin = $parser->getOptions()->getSkin();
 	$events = array();
 	$smw_version = SMW_VERSION;
 	$date_properties = explode(";", $inDatePropertiesStr);
@@ -103,11 +104,7 @@ function scRenderSemanticCalendar (&$parser, $inDatePropertiesStr = '', $inQuery
 		} else {
 			$query_filter_str = "";
 		}
-		if ($smw_version{0} == '0') {
-			$events = array_merge($events, scfGetEvents_0_7($date_property));
-		} else {
-			$events = array_merge($events, scfGetEvents_1_0($date_property, $query_filter_str));
-		}
+		$events = array_merge($events, scfGetEvents($date_property, $query_filter_str));
 	}
 
 	// get all the date-based values we need - the current month and year
@@ -216,9 +213,9 @@ END;
 	$text .= "</tr>\n";
 
 	// now, create the calendar itself -
-        // loop through a set of weeks, from a Sunday (which might be
-        // before the beginning of the month) to a Saturday (which might
-        // be after the end of the month)
+	// loop through a set of weeks, from a Sunday (which might be
+	// before the beginning of the month) to a Saturday (which might
+	// be after the end of the month)
 	$day_of_the_week = 1;
 	$is_last_week = false;
 	for ($day = $start_day; (! $is_last_week || $day_of_the_week != 1); $day++) {
