@@ -78,7 +78,8 @@ function intToMonth($int) {
 }
 
 function scRenderSemanticCalendar (&$parser, $inDatePropertiesStr = '', $inQueryFiltersStr = '') {
-	global $wgOut, $scgScriptPath, $wgRequest, $wgTitle, $wgUser;
+	global $wgOut, $scgScriptPath, $wgRequest;
+	$title = $parser->getTitle();
 
 	$wgOut->addLink( array(
 		'rel' => 'stylesheet',
@@ -89,7 +90,7 @@ function scRenderSemanticCalendar (&$parser, $inDatePropertiesStr = '', $inQuery
 
 	// initialize some variables
 	$text = "";
-	$skin = $wgUser->getSkin();
+	$skin = $parser->getOptions()->getSkin(); //$wgUser->getSkin();
 	$events = array();
 	$smw_version = SMW_VERSION;
 	$date_properties = explode(";", $inDatePropertiesStr);
@@ -147,9 +148,9 @@ function scRenderSemanticCalendar (&$parser, $inDatePropertiesStr = '', $inQuery
 	if ($cur_year == "0") {$cur_year = "1"; }
 	if ($next_year == "0") {$next_year = "1"; }
 	if ($prev_year == "0") {$prev_year = "-1"; }
-	$prev_month_url = $wgTitle->getLocalURL("month=$prev_month_num&year=$prev_year");
-	$next_month_url = $wgTitle->getLocalURL("month=$next_month_num&year=$next_year");
-	$today_url = $wgTitle->getLocalURL();
+	$prev_month_url = $title->getLocalURL("month=$prev_month_num&year=$prev_year");
+	$next_month_url = $title->getLocalURL("month=$next_month_num&year=$next_year");
+	$today_url = $title->getLocalURL();
 	$today_text = wfMsg('sc_today');
 	$prev_month_text = wfMsg('sc_previousmonth');
 	$next_month_text = wfMsg('sc_nextmonth');
@@ -164,7 +165,7 @@ function scRenderSemanticCalendar (&$parser, $inDatePropertiesStr = '', $inQuery
 	$days_in_cur_month = SCHistoricalDate::daysInMonth($cur_year, $cur_month_num);
 	$today_string = date("Y n j", mktime());
 	$url_year = $wgRequest->getVal('year');
-	$title = $wgTitle->getPrefixedDbKey();
+	$title = $title->getPrefixedDbKey();
 
 	// create table for holding calendar, and the top (navigation) row
 	$text .=<<<END
