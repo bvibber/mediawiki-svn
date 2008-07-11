@@ -567,7 +567,6 @@ $settings = array(
 			'wgRCShowChangedSize' => 'bool',
 			'wgRCShowWatchingUsers' => 'bool',
 			'wgShowUpdatedMarker' => 'bool',
-			'wgTrackLinkChanges' => 'bool',
 			'wgUseRCPatrol' => 'bool',
 			'wgRC2UDPAddress' => 'text',
 			'wgRC2UDPOmitBots' => 'bool',
@@ -1119,7 +1118,6 @@ $settingsVersion = array(
 	'wgRC2UDPOmitBots' => array( array( '1.13alpha', '>=' ) ),
 	'wgExtensionAliasesFiles' => array( array( '1.13alpha', '>=' ) ),
 	'wgXMLMimeTypes' => array( array( '1.13alpha', '>=' ) ),
-	'wgTrackLinkChanges' => array( array( '1.13alpha', '>=' ) ),
 ## Obsolete
 	'wgProfileSampleRate' => array( array( '1.8alpha', '<' ) ),
 	'wgProfilerType' => array( array( '1.8alpha', '<' ) ),
