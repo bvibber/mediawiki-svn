@@ -2,17 +2,17 @@ This file lists changes on this extension.
 Localisation updates are done on betawiki and aren't listed here.
 
 0.5.4 - 11 July 2008
-	Removed $wgTrackLinkChanges.
+  Removed $wgTrackLinkChanges.
 
 0.5.3 - 9 July 2008
   Added $wgTrackLinkChanges.
 
 0.5.2 - 8 July 2008
-  * Added $wgConfigureUpdateCacheEpoch to choose if $wgCacheEpoch should be
-    updated when saving changes in Special:Configure.
+  Added $wgConfigureUpdateCacheEpoch to choose if $wgCacheEpoch should be
+  updated when saving changes in Special:Configure.
 
 0.5.1 - 7 July 2008
-  * (bug 14742) Fixed default value of $wgExternalDiffEngine.
+  (bug 14742) Fixed default value of $wgExternalDiffEngine.
 
 0.5.0 - 6 July 2008
   * Added support for extensions
