@@ -991,6 +991,7 @@ $messages['ia'] = array(
 	'viewapc-ls-header-deleted'     => 'Delite',
 	'viewapc-ls-scope-deleted'      => 'Delite',
 	'viewapc-ls-sort-deleted'       => 'Delite',
+	'viewapc-ls-limit-none'         => 'Totes',
 );
 
 /** Indonesian (Bahasa Indonesia)

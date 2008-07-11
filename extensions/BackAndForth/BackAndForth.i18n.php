@@ -434,6 +434,7 @@ $messages['pms'] = array(
  */
 $messages['ps'] = array(
 	'backforth-next' => 'راتلونکي ($1)',
+	'backforth-desc' => 'د مخونو په سر کې د "راتلونکی" او "پخوانی" ابېڅيزه مخ تړنې ورګډوي',
 	'backforth-prev' => 'پخوانی ($1)',
 );
 

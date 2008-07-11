@@ -474,6 +474,25 @@ $messages['pl'] = array(
 	'right-edit-new'         => 'Edycja stron',
 );
 
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'grouppermissions-search'        => 'ډله:',
+	'grouppermissions-dologin'       => 'ننوتل',
+	'grouppermissions-dosearch'      => 'ورځه',
+	'grouppermissions-add'           => 'ډله ورګډول',
+	'grouppermissions-delete'        => 'ډله ړنګول',
+	'grouppermissions-comment'       => 'تبصره:',
+	'grouppermissions-addsuccess'    => 'د $1 ډله په برياليتوب سره ورګډه شوه',
+	'grouppermissions-deletesuccess' => 'د $1 ډله په برياليتوب سره ړنګه شوه',
+	'grouppermissions-changesuccess' => 'د $1 ډلې لپاره د اجازې واک په برياليتوب سره بدل شو',
+	'grouppermissions-true'          => 'سم',
+	'grouppermissions-false'         => 'ناسم',
+	'grouppermissions-never'         => 'هېڅکله',
+	'grouppermissions-sp-save'       => 'خوندي کول',
+);
+
 /** Tarifit (Tarifit)
  * @author Jose77
  */

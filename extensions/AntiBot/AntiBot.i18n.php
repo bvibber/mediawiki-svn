@@ -52,9 +52,10 @@ $messages['de'] = array(
 /** French (Français)
  * @author Grondin
  * @author Verdy p
+ * @author Louperivois
  */
 $messages['fr'] = array(
-	'antibot-desc' => 'Environnement simple de vérification contre les robots spammeurs et les soumissions de contenus à déclenchement conditionnel automatisé.',
+	'antibot-desc' => 'Environnement simple de vérification contre les robots spammeurs et les soumissions de contenus à déclenchement conditionnel automatisé',
 );
 
 /** Galician (Galego)

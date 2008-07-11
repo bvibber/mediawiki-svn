@@ -354,8 +354,9 @@ $messages['hsb'] = array(
  * @author McDutchie
  */
 $messages['ia'] = array(
-	'importusers-password' => 'contrasigno',
-	'importusers-email'    => 'e-mail',
+	'importusers-log-summary-all' => 'Totes',
+	'importusers-password'        => 'contrasigno',
+	'importusers-email'           => 'e-mail',
 );
 
 /** Indonesian (Bahasa Indonesia)

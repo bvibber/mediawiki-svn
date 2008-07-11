@@ -855,7 +855,7 @@ $messages['vi'] = array(
 	'scanset-desc'                      => 'Xem hình của các trang được quét từ bộ CD/DVD của Andreas Grosz',
 	'scanset_no_name'                   => 'Error: Bạn hãy chỉ rõ một tên tập để quét, ví dụ &lt;scanset name="EB1911" /&gt;.',
 	'scanset_invalid_name'              => 'Error: Bộ trang quét không hợp lệ hay không tồn tại.',
-	'scanset_unrecognised_index_format' => 'Error: Không biết định dạng chỉ số này',
+	'scanset_unrecognised_index_format' => 'Lỗi: Không biết định dạng chỉ số này',
 	'scanset_opendir_error'             => 'Error: Lỗi, không thể mở thư mục $1',
 	'scanset_no_files'                  => 'Error: Không có tập tin nào trong thư mục chỉ định.',
 	'scanset_no_volumes'                => 'Error: Không tìm thấy gói thư mục',

@@ -568,6 +568,7 @@ $messages['hsb'] = array(
 $messages['ia'] = array(
 	'regexblock-form-reason'    => 'Motivo:',
 	'regexblock-stats-username' => 'Pro $1',
+	'regexblock-view-all'       => 'Totes',
 );
 
 /** Indonesian (Bahasa Indonesia)

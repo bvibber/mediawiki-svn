@@ -105,6 +105,13 @@ $messages['pl'] = array(
 	'woopra-desc' => 'Pozwala współpracować z MediaWiki oprogramowaniu śledzącemu [http://www.woopra.com/ „Woopra”]',
 );
 
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'woopra-desc' => 'د [http://www.woopra.com/ ووپرا ژوندی څارګره پوستکالی] آسانتياوې په دې توانوي چې ستاسو په ميډياويکي نصبولو باندې سم کار وکړي',
+);
+
 /** Portuguese (Português)
  * @author Malafaya
  */

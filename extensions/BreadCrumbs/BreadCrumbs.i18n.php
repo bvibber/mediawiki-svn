@@ -71,9 +71,11 @@ $messages['fi'] = array(
 	'breadcrumbs-desc' => 'Näyttää käyttäjän kulkeman reitin wikissä.',
 );
 
-/** French (Français) */
+/** French (Français)
+ * @author Louperivois
+ */
 $messages['fr'] = array(
-	'breadcrumbs-desc' => 'Affiche le lien des dernières pages que l’utilisateur a visitées dans le wiki.',
+	'breadcrumbs-desc' => 'Affiche le lien des dernières pages que l’utilisateur a visitées dans le wiki',
 );
 
 /** Galician (Galego)

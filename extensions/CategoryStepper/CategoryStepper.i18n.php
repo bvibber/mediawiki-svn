@@ -98,9 +98,10 @@ $messages['eo'] = array(
 
 /** French (Français)
  * @author Grondin
+ * @author Louperivois
  */
 $messages['fr'] = array(
-	'categorystepper-desc'  => 'Affiche une boîte de catégorie sur des pages qui sont indiquées dans une catégorie.',
+	'categorystepper-desc'  => 'Affiche une boîte de catégorie sur des pages qui sont indiquées dans une catégorie',
 	'categorystepper-end'   => '(Fin de catégorie)',
 	'categorystepper-start' => '(Début de catégorie)',
 );

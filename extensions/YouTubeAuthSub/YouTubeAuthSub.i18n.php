@@ -237,10 +237,11 @@ Bonvolu pacienciĝi.',
 
 /** French (Français)
  * @author Grondin
+ * @author Louperivois
  */
 $messages['fr'] = array(
 	'youtubeauthsub'                     => 'Importer une vidéo YouTube',
-	'youtubeauthsub-desc'                => "Permet aux utilisateurs de [[Special:YouTubeAuthSub|d'importer des vidéos]] directement sur YouTube",
+	'youtubeauthsub-desc'                => "Permet aux utilisateurs [[Special:YouTubeAuthSub|d'importer des vidéos]] directement sur YouTube",
 	'youtubeauthsub_info'                => "Pour importer une vidéo sur YouTube pour l'incorporer dans une page, renseignez les informations suivantes :",
 	'youtubeauthsub_title'               => 'Titre',
 	'youtubeauthsub_description'         => 'Description',
@@ -250,14 +251,14 @@ $messages['fr'] = array(
 	'youtubeauthsub_category'            => 'Catégorie',
 	'youtubeauthsub_submit'              => 'Soumettre',
 	'youtubeauthsub_clickhere'           => 'Cliquez ici pour vous connecter sur YouTube',
-	'youtubeauthsub_tokenerror'          => 'Erreur dans la prise de la création d’autorisation, essayer de raffraichir la page.',
-	'youtubeauthsub_success'             => "Félicitations :
+	'youtubeauthsub_tokenerror'          => "Erreur lors de la demande d'autorisation, essayez de rafraîchir la page.",
+	'youtubeauthsub_success'             => 'Félicitations :
 Votre vidéo est importée.
-Pour visionner votre vidéo cliquez <a href='http://www.youtube.com/watch?v=$1'>ici</a>.
-YouTube peut demander un laps de temps pour prendre en compte votre vidéo, aussi il peut ne pas être encore prêt.
+Pour visionner votre vidéo, cliquez [http://www.youtube.com/watch?v=$1 ici].
+YouTube peut demander un laps de temps pour prendre en compte votre vidéo, aussi elle peut ne pas être encore prête.
 
-Pour incorporer votre vidéo dans une page du wiki, insérer le code suivant dans celle-ci :
-<code>{{&#35;ev:youtube|$1}}</code>",
+Pour incorporer votre vidéo dans une page du wiki, insérez le code suivant dans cette dernière :
+<code>{{&#35;ev:youtube|$1}}</code>',
 	'youtubeauthsub_authsubinstructions' => 'Pour importer une vidéo, il vous sera demandé de vous connecter d’abord sur YouTube.',
 	'youtubeauthsub_uploadhere'          => 'Importer votre vidéo depuis ici :',
 	'youtubeauthsub_uploadbutton'        => 'Importer',
@@ -270,7 +271,7 @@ Soyez patient.',
 	'youtubeauthsub_viewpage'            => 'Sinon, vous pouvez visionner votre vidéo [[$1|ici]].',
 	'youtubeauthsub_jserror_nokeywords'  => 'Vous être prié d’entrer un ou plusieurs mots clefs.',
 	'youtubeauthsub_jserror_notitle'     => 'Vous être prié d’entrer un titre pour la vidéo.',
-	'youtubeauthsub_jserror_nodesc'      => 'Veuiller entrer une description pour la vidéo.',
+	'youtubeauthsub_jserror_nodesc'      => 'Veuillez entrer une description pour la vidéo.',
 );
 
 /** Western Frisian (Frysk)

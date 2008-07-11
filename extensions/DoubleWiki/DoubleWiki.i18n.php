@@ -235,6 +235,13 @@ $messages['pl'] = array(
 	'doublewiki-desc' => 'Wyświetla w dwu kolumnach treść oraz pochodzące z wiki w innym języku tłumaczenie',
 );
 
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'doublewiki-desc' => 'د يوه بل ويکي نه د هماغه ويکي مخ او د هغه مخ ژباړه په يوه مخ کې د دوه کالمونو په توګه ښکاره کوي',
+);
+
 /** Portuguese (Português)
  * @author Malafaya
  */

@@ -354,7 +354,7 @@ $messages['nds'] = array(
  * @author Siebrand
  */
 $messages['nl'] = array(
-	'talkhere-desc'        => 'Voegt de overlegpagina to aan de pagina',
+	'talkhere-desc'        => 'Voegt de overlegpagina toe aan de pagina',
 	'talkhere-foottext'    => 'De bovenstaande opmerkingen zijn mogelijk door bezoekers achtergelaten.
 
 De beheerders van deze site dragen geen verantwoordelijkheid voor de inhoud van de opmerkingen.',

@@ -460,8 +460,9 @@ $allMessages['hu'] = array(
  * @author McDutchie
  */
 $allMessages['ia'] = array(
-	'whitelisttableedit' => 'Modificar',
-	'whitelistnever'     => 'nunquam',
+	'whitelisttablemodifyall' => 'Totes',
+	'whitelisttableedit'      => 'Modificar',
+	'whitelistnever'          => 'nunquam',
 );
 
 /** Indonesian (Bahasa Indonesia)
