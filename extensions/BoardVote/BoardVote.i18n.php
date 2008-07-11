@@ -5908,7 +5908,6 @@ $messages['yue'] = array(
 <p>呢次嘅選舉將會用Schulze嘅方法去計出最多得票去選出優勝者。要睇更多嘅資料，請睇吓管方嘅選舉頁。</p>
 
 <p>要睇更多嘅資料，睇吓：</p>
-<p>For more information, see:</p>
 <ul><li><a href="http://meta.wikimedia.org/wiki/Board_elections/2008/yue" class="external">理事會選舉2008</a></li>
 <li><a href="http://meta.wikimedia.org/wiki/Board_elections/2008/Candidates/yue" class="external">候選人</a></li>
 <li><a href="http://en.wikipedia.org/wiki/Schulze_method" class="external">Schulze方法</a></li></ul>',
@@ -5942,6 +5941,7 @@ $messages['yue'] = array(
 	'boardvote_listintro'      => '<p>嘅個係到而家所被記錄落嚟嘅全部票數嘅名單。
 $1去睇加密嘅資料。</p>',
 	'boardvote_dumplink'       => '撳呢度',
+	'boardvote_submit'         => 'OK',
 	'boardvote_strike'         => '刪除綫',
 	'boardvote_unstrike'       => '取消刪除綫',
 	'boardvote_needadmin'      => '只有選舉管理員可以執行呢一個操作。',
@@ -6068,6 +6068,7 @@ $messages['zh-hans'] = array(
 	'boardvote_ua'             => '用户代理',
 	'boardvote_listintro'      => '<p>本列表列出了迄今为止所有被登记的选票。$1是加密信息。</p>',
 	'boardvote_dumplink'       => '点击这里',
+	'boardvote_submit'         => '确定',
 	'boardvote_strike'         => '删除线',
 	'boardvote_unstrike'       => '取消删除线',
 	'boardvote_needadmin'      => '只有选举管理员才能进行本项操作。',
@@ -6141,6 +6142,7 @@ $messages['zh-hant'] = array(
 	'boardvote_ua'             => '用戶代理',
 	'boardvote_listintro'      => '<p>本列表列出了迄今為止所有被登記的選票。$1是加密信息。</p>',
 	'boardvote_dumplink'       => '點擊這裏',
+	'boardvote_submit'         => '確定',
 	'boardvote_strike'         => '刪除綫',
 	'boardvote_unstrike'       => '取消刪除綫',
 	'boardvote_needadmin'      => '只有選舉管理員才能進行本項操作。',
