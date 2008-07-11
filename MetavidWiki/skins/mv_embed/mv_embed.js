@@ -104,7 +104,7 @@ var video_attributes = {
     //roe url (for xml based metadata)
     "roe":null,
     //if roe includes metadata tracks we can expose a link to metadata
-//    "show_meta_link":true,
+	"show_meta_link":true,
 
 	//default state attributes per html5 spec: 
 	//http://www.whatwg.org/specs/web-apps/current-work/#video)
@@ -1597,7 +1597,7 @@ embedVideo.prototype = {
 
 	  	//add in cmml inline dispaly if roe descption avaliable
 	  	//not to be displayed in stream interface.
-	  	if(this.media_element.hasStreamOfMIMEType('text/cmml')){
+	  	if(this.media_element.hasStreamOfMIMEType('text/cmml') && this.show_meta_link){
 	  		thumb_html+='<div style="border:none;position:absolute;top:2px;right:2px;z-index:1">'+
 		     '<a title="'+getMsg('select_transcript_set')+'" href="javascript:document.getElementById(\''+this.id+'\').showTextInterface();">';
 		    thumb_html+=getTransparentPng({id:'metaButton_'+this.id, width:"40", height:"27", border:"0", 
