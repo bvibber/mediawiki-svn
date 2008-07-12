@@ -110,7 +110,7 @@ function efErrorHandler( $errType, $errMsg, $errFile, $errLine, $errVars ){
 
 		if( function_exists( 'wfDebugBacktrace' ) )
 			$backtrace = array_slice( wfDebugBacktrace(), 1 );
-		else 
+		else
 			$backtrace = array_slice( debug_backtrace(), 1 );
 
 		foreach( $backtrace as $call ) {
@@ -139,7 +139,7 @@ function efErrorHandler( $errType, $errMsg, $errFile, $errLine, $errVars ){
 						$args[] = 'array()';
 					} else if ( is_string( $arg ) ){
 						if( strlen( $arg ) > $wgErrorHandlerMaxStringSize ){
-							$str = substr( $arg, 0, $wgErrorHandlerMaxStringSize ) . '...'; 
+							$str = substr( $arg, 0, $wgErrorHandlerMaxStringSize ) . '...';
 						} else {
 							$str = $arg;
 						}
@@ -249,7 +249,7 @@ function efErrorGetText( $arr, $forceText = false ){
 			$ret .= $html ? "</li>\n" : "\n";
 		}
 		$ret .= $html ? "</ol>\n" : '';
-		
+
 	}
 	return $ret;
 }

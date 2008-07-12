@@ -1,9 +1,15 @@
 <?php
-
-//if( !defined( 'MEDIAWIKI' ) ) die();
+/**
+ * Internationalisation file for the extension ErrorHandler.
+ *
+ * @addtogroup Extensions
+ */
 
 $messages = array();
 
+/** English
+ * @author IAlex
+ */
 $messages['en'] = array(
 	'errorhandler-desc'                  => 'Error handler for MediaWiki',
 	'errorhandler-errors'                => 'Errors:',
