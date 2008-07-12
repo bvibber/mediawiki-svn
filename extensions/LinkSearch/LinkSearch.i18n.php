@@ -586,7 +586,7 @@ $messages['it'] = array(
 	'linksearch-pat'   => 'Pattern di ricerca:',
 	'linksearch-ns'    => 'Namespace:',
 	'linksearch-ok'    => 'Cerca',
-	'linksearch-text'  => 'È possibile fare uso di metacaratteri, ad es. "*.example.org".',
+	'linksearch-text'  => 'È possibile fare uso di metacaratteri, ad es. "*.example.com".',
 	'linksearch-line'  => '$1 presente nella pagina $2',
 	'linksearch-error' => "I metacaratteri possono essere usati solo all'inizio del nome dell'host.",
 );
@@ -1220,7 +1220,7 @@ $messages['vec'] = array(
 	'linksearch-pat'   => 'Pattern de riçerca:',
 	'linksearch-ns'    => 'Namespace:',
 	'linksearch-ok'    => 'Çerca',
-	'linksearch-text'  => 'Se pol doparar dei metacaràteri, ad es. "*.example.org".',
+	'linksearch-text'  => 'Se pol doparar dei metacaràteri, ad es. "*.example.com".',
 	'linksearch-line'  => '$1 presente ne la pagina $2',
 	'linksearch-error' => "I metacaràteri i pode vegner doparài solo a l'inizio del nome de l'host.",
 );
