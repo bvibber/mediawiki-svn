@@ -116,7 +116,8 @@ fcgi_record_writer<Socket>::write(
 	LOG4CXX_DEBUG(logger, boost::format("record_writer@%p: write()") % this);
 
 	write_noflush(record);
-	flush(func);
+	if (inflight_.empty())
+		flush(func);
 }
 
 template<typename Socket>

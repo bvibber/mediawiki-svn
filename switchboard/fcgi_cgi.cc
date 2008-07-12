@@ -49,7 +49,6 @@ fcgi_cgi::fcgi_cgi(
 
 	assert(app_);
 
-	std::string pathname;
 	std::map<std::string, std::string>::iterator it;
 
 	/*
@@ -78,7 +77,7 @@ fcgi_cgi::fcgi_cgi(
 		}
 
 		if (stat(s.c_str(), &sb) == 0) {
-			pathname = s;
+			script_path_ = s;
 
 			/*
 			 * Make sure the path is under the docroot or the 
@@ -96,7 +95,7 @@ fcgi_cgi::fcgi_cgi(
 		}
 	}
 
-	if (pathname.empty()) {
+	if (script_path_.empty()) {
 		if ((it = params.find("SCRIPT_NAME")) == params.end())
 			throw creation_failure("neither SCRIPT_NAME nor PATH_TRANSLATED specified");
 
@@ -123,37 +122,49 @@ fcgi_cgi::fcgi_cgi(
 			struct passwd *pwd;
 			if ((pwd = getpwnam(username.c_str())) == NULL)
 				throw creation_failure("user does not exist");
-			pathname = std::string(pwd->pw_dir) + '/' + mainconf.userdir
+			script_path_ = std::string(pwd->pw_dir) + '/' + mainconf.userdir
 				+ '/' + script;
 		} else {
 			/*
 			 * Script is relative to docroot.
 			 */
-			pathname = mainconf.docroot + script_name;
+			script_path_ = mainconf.docroot + script_name;
 		}
-		params["SCRIPT_FILENAME"] = pathname;
+		params["SCRIPT_FILENAME"] = script_path_;
 	}
 
-	process_ = context_.factory().create_from_filename(pathname);
+	get_process();
 }
 
 void
-fcgi_cgi::start()
+fcgi_cgi::get_process()
+{
+	process_ = context_.factory().create_from_filename(script_path_);
+}
+
+void
+fcgi_cgi::start(boost::function<void (void)> func)
 {
 	process_->connect(child_socket_,
 			boost::bind(&fcgi_cgi::connect_done,
 				shared_from_this(),
-				asio::placeholders::error));
+				asio::placeholders::error,
+				func));
 }
 
 void
-fcgi_cgi::connect_done(asio::error_code error)
+fcgi_cgi::connect_done(
+	asio::error_code error,
+	boost::function<void (void)> func)
 {
 	if (error) {
 		LOG4CXX_DEBUG(logger,
-			format("[req=%d] connection failed, %s")
+			format("[req=%d] connection failed, %s; retrying")
 			% request_id_ % error.message());
-		app_->destroy();
+		process_.reset();
+		child_socket_.reset(new fcgi_socket<asio::local::stream_protocol::socket>(context_));
+		get_process();
+		start(func);
 		return;
 	}
 
@@ -168,6 +179,8 @@ fcgi_cgi::connect_done(asio::error_code error)
 	child_socket_->async_read_record(
 			boost::bind(&fcgi_cgi::handle_child_read, 
 				shared_from_this(), _1, _2));
+
+	context_.service().post(func);
 }
 
 fcgi_cgi::~fcgi_cgi()
@@ -319,4 +332,3 @@ fcgi_cgi::close()
 	alive_ = false;
 	child_socket_->close();
 }
-

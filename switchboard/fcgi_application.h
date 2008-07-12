@@ -44,7 +44,8 @@ struct fcgi_application : boost::enable_shared_from_this<fcgi_application> {
 	void	close();
 
 private:
-	bool buffering_;
+	void process_ready();
+	void push_record(fcgi::recordp);
 
 	std::map<std::string, std::string> params_;
 	std::vector<fcgi::recordp> buffer;
@@ -52,6 +53,8 @@ private:
 	boost::weak_ptr<fcgi_server_connection_base> server_;
 	sbcontext &context_;
 	int request_id_;
+
+	bool connected_;
 
 	log4cxx::LoggerPtr logger;
 };

@@ -117,7 +117,7 @@ process::connect(
 	fcgi_socket_unixp socket,
 	boost::function<void (asio::error_code)> func)
 {
-	LOG4CXX_DEBUG(logger, format("connecting to process socket..."));
+	LOG4CXX_DEBUG(logger, format("connecting to process socket... %s") % bindpath_);
 	asio::local::stream_protocol::endpoint ep(bindpath_);
 	async_timed_connect(socket, ep, 
 			boost::posix_time::seconds(5),

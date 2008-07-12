@@ -104,6 +104,9 @@ fcgi_socket<Socket>::fcgi_socket(sbcontext &context)
 template<typename Socket>
 fcgi_socket<Socket>::~fcgi_socket()
 {
+	LOG4CXX_DEBUG(logger, boost::format("socket@%p destructed") % this);
+	if (alive_)
+		socket_.close();
 }
 
 template<typename Socket>

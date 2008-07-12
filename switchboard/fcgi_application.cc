@@ -31,6 +31,7 @@ fcgi_application::fcgi_application(
 	: server_(server)
 	, context_(context)
 	, request_id_(request_id)
+	, connected_(false)
 	, logger(log4cxx::Logger::getLogger("switchboard.fcgi_application"))
 {
 	LOG4CXX_DEBUG(logger, format("creating application@%p") % this);
@@ -51,10 +52,9 @@ fcgi_application::record_from_server(fcgi::recordp record)
 			% record->request_id());
 	switch (record->type) {
 	case fcgi::rectype::begin_request:
-		if (!cgi_)
-			buffer.push_back(record);
-
+		push_record(record);
 		break;
+
 	case fcgi::rectype::params:
 		if (record->content_length() == 0) {
 			/*
@@ -66,7 +66,8 @@ fcgi_application::record_from_server(fcgi::recordp record)
 			try {
 				cgi_.reset(new fcgi_cgi(request_id_, context_, 
 						       	shared_from_this(), params_));
-				cgi_->start();
+				cgi_->start(boost::bind(&fcgi_application::process_ready,
+							shared_from_this()));
 			} catch (std::exception &e) {
 				LOG4CXX_DEBUG(logger, format( "error creating fcgi_cgi: %s")
 						% e.what());
@@ -74,10 +75,6 @@ fcgi_application::record_from_server(fcgi::recordp record)
 					server_.lock()->destroy(request_id_);
 				return;
 			}
-
-			/* Send all the buffered records to the app */
-			for (int i = 0; i < buffer.size(); ++i)
-				cgi_->record_noflush(buffer[i]);
 
 			/*
 			 * Insert a fake SCRIPT_FILENAME, which we generated earlier
@@ -122,39 +119,44 @@ fcgi_application::record_from_server(fcgi::recordp record)
 				rec->contentLength0 = (rec->contentData.size() & 0x00FF);
 				rec->paddingLength = 0;
 				rec->reserved = 0;
-				cgi_->record_noflush(rec);
+				push_record(rec);
 			}
 
-			cgi_->record_noflush(record);
-
-			cgi_->flush();
-			std::vector<fcgi::recordp>().swap(buffer);
+			push_record(record);
 			return;
 		} else {
 			std::pair<std::string, std::string> p;
 			fcgi::decode_params(record->contentData.begin(), record->contentData.end(), &p);
-#if 0
-			if (p.first != "PATH_TRANSLATEDx") {
-				params_.insert(p);
-				if (!cgi_)
-					buffer.push_back(record);
-			} 
-#else
 			params_.insert(p);
-			if (!cgi_)
-				buffer.push_back(record);
-#endif
+			push_record(record);
 		}
 		break;
 
 	default:
-		if (!cgi_)
-			buffer.push_back(record);
+		push_record(record);
 	}
+}
 
-	if (cgi_) {
-		cgi_->record(record);
-	}
+void
+fcgi_application::process_ready()
+{
+	/* Send all the buffered records to the app */
+	for (int i = 0; i < buffer.size(); ++i)
+		cgi_->record_noflush(buffer[i]);
+	cgi_->flush();
+
+	std::vector<fcgi::recordp>().swap(buffer);
+
+	connected_ = true;
+}
+
+void
+fcgi_application::push_record(fcgi::recordp rec)
+{
+	if (connected_)
+		cgi_->record(rec);
+	else
+		buffer.push_back(rec);
 }
 
 void

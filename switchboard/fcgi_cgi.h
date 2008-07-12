@@ -43,7 +43,7 @@ struct fcgi_cgi : boost::enable_shared_from_this<fcgi_cgi> {
 		fcgi::params &params);
 	~fcgi_cgi();
 
-	void start();
+	void start(boost::function<void (void)>);
 	void record(fcgi::recordp record);
 	void record_noflush(fcgi::recordp record);
 	void flush();
@@ -53,8 +53,11 @@ struct fcgi_cgi : boost::enable_shared_from_this<fcgi_cgi> {
 
 private:
 	void write_done(asio::error_code error);
-	void connect_done(asio::error_code error);
+	void connect_done(
+		asio::error_code error,
+		boost::function<void (void)>);
 	void handle_child_read(fcgi::recordp record, asio::error_code);
+	void get_process();
 
 	sbcontext &context_;
 	fcgi_socket_unixp child_socket_;
@@ -63,6 +66,7 @@ private:
 
 	int request_id_;
 	bool alive_;
+	std::string script_path_;
 
 	log4cxx::LoggerPtr logger;
 };
