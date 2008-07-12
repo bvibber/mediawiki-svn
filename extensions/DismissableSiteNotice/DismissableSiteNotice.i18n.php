@@ -533,6 +533,14 @@ $messages['sq'] = array(
 	'sitenotice_close' => 'fshihe',
 );
 
+/** Serbian Cyrillic ekavian (ћирилица)
+ * @author Millosh
+ */
+$messages['sr-ec'] = array(
+	'sitenotice_close' => 'откажи',
+	'sitenotice-desc'  => 'омогући корисницима да искључе обавештење на сајту',
+);
+
 /** Seeltersk (Seeltersk)
  * @author Pyt
  */

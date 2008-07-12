@@ -1791,17 +1791,24 @@ $messages['sq'] = array(
 
 /** Serbian Cyrillic ekavian (ћирилица)
  * @author Sasa Stefanovic
+ * @author Millosh
  */
 $messages['sr-ec'] = array(
-	'ogg-play'       => 'Пусти',
-	'ogg-pause'      => 'Пауза',
-	'ogg-stop'       => 'Стоп',
-	'ogg-play-video' => 'Пусти видео',
-	'ogg-play-sound' => 'Пусти звук',
-	'ogg-more'       => 'Више...',
-	'ogg-dismiss'    => 'Затвори',
-	'ogg-download'   => 'Преузми фајл',
-	'ogg-desc-link'  => 'О овом фајлу',
+	'ogg-play'                => 'Пусти',
+	'ogg-pause'               => 'Пауза',
+	'ogg-stop'                => 'Стоп',
+	'ogg-play-video'          => 'Пусти видео',
+	'ogg-play-sound'          => 'Пусти звук',
+	'ogg-player-videoElement' => '<video> елемент',
+	'ogg-player-oggPlugin'    => 'плагин за ogg',
+	'ogg-player-thumbnail'    => 'још увек само слика',
+	'ogg-player-soundthumb'   => 'нема плејера',
+	'ogg-player-selected'     => '(означено)',
+	'ogg-use-player'          => 'Користи плејер:',
+	'ogg-more'                => 'Више...',
+	'ogg-dismiss'             => 'Затвори',
+	'ogg-download'            => 'Преузми фајл',
+	'ogg-desc-link'           => 'О овом фајлу',
 );
 
 /** Seeltersk (Seeltersk)

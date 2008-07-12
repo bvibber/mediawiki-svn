@@ -78,6 +78,51 @@ $messages['rtm'] = array(
 	'grouppermissions-dologin' => 'Surum',
 );
 
+/** Arabic (العربية)
+ * @author Meno25
+ */
+$messages['ar'] = array(
+	'grouppermissions'               => 'التحكم بسماحات المجموعات',
+	'sortpermissions'                => 'ترتيب السماحات',
+	'removeunusedgroups'             => 'إزالة المجموعات غير المستخدمة',
+	'grouppermissions-search'        => 'المجموعة:',
+	'grouppermissions-dologin'       => 'دخول',
+	'grouppermissions-dosearch'      => 'اذهب',
+	'grouppermissions-searchlabel'   => 'بحث عن المجموعة',
+	'grouppermissions-deletelabel'   => 'حذف المجموعة',
+	'grouppermissions-change'        => 'تغيير سماحات المجموعة',
+	'grouppermissions-add'           => 'إضافة مجموعة',
+	'grouppermissions-delete'        => 'حذف مجموعة',
+	'grouppermissions-comment'       => 'تعليق:',
+	'grouppermissions-addsuccess'    => '$1 تمت إضافتها بنجاح',
+	'grouppermissions-deletesuccess' => '$1 تم حذفها بنجاح',
+	'grouppermissions-true'          => 'صواب',
+	'grouppermissions-false'         => 'خطأ',
+	'grouppermissions-never'         => 'أبدا',
+	'grouppermissions-sort-read'     => 'قراءة',
+	'grouppermissions-sort-edit'     => 'تعديل',
+	'grouppermissions-sort-manage'   => 'تحكم',
+	'grouppermissions-sort-admin'    => 'إدارة',
+	'grouppermissions-sort-tech'     => 'تقني',
+	'grouppermissions-sort-misc'     => 'أخرى',
+	'grouppermissions-log-add'       => 'أضاف المجموعة "$2"',
+	'grouppermissions-log-delete'    => 'حذف المجموعة "$2"',
+	'grouppermissions-log-name'      => 'سجل سماحات المجموعات',
+	'grouppermissions-sp-sort'       => 'ترتيب السماحات',
+	'grouppermissions-sp-save'       => 'حفظ',
+	'grouppermissions-sp-addperm'    => 'إضافة سماح',
+	'grouppermissions-sp-remove'     => 'إزالة',
+	'right-viewsource'               => 'رؤية مصدر الويكي للصفحات المحمية',
+	'right-raw'                      => 'رؤية الصفحات الخام',
+	'right-info'                     => 'رؤية معلومات الصفحة',
+	'right-history'                  => 'رؤية تواريخ الصفحات',
+	'right-search'                   => 'البحث في الويكي',
+	'right-contributions'            => 'رؤية صفحات المساهمات',
+	'right-recentchanges'            => 'رؤية أحدث التغييرات',
+	'right-edittalk'                 => 'تعديل صفحات النقاش',
+	'right-edit-new'                 => 'تعديل الصفحات (التي ليست صفحات نقاش)',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  */

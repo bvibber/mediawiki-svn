@@ -110,6 +110,7 @@ $messages['be'] = array(
  * @author EugeneZelenko
  */
 $messages['be-tarask'] = array(
+	'sitematrix'          => 'Сьпіс усіх праектаў фундацыі «Вікімэдыя»',
 	'sitematrix-language' => 'Мова',
 	'sitematrix-others'   => 'Іншыя праекты фундацыі «Вікімэдыя»',
 );

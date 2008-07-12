@@ -342,7 +342,8 @@ $messages['ar'] = array(
 	'boardvote_days'           => 'الأيام',
 	'boardvote_ip'             => 'الأيبي',
 	'boardvote_ua'             => 'مؤشر متصفح المستخدم (يوزرإيجنت)',
-	'boardvote_listintro'      => '<p>فيما يلي قائمة بكافة عمليات التصويت إلى هذه اللحظة. $1 للبيانات المشفرة.</p>',
+	'boardvote_listintro'      => '<p>فيما يلي قائمة بكافة عمليات التصويت إلى هذه اللحظة.
+$1 للبيانات المشفرة.</p>',
 	'boardvote_dumplink'       => 'اضغط هنا',
 	'boardvote_submit'         => 'موافق',
 	'boardvote_strike'         => 'شطب',

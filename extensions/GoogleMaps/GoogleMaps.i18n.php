@@ -838,6 +838,20 @@ $wgGoogleMapsMessages['fa'] = array(
 	'gm-mars'                      => 'مریخ',
 );
 
+/** Finnish (Suomi)
+ * @author Str4nd
+ */
+$wgGoogleMapsMessages['fi'] = array(
+	'gm-remove'      => 'poista',
+	'gm-yes'         => 'Kyllä',
+	'gm-no'          => 'Ei',
+	'gm-hide-map'    => 'piilota kartta',
+	'gm-kml-loading' => 'ladataan…',
+	'gm-earth'       => 'Maa',
+	'gm-moon'        => 'Kuu',
+	'gm-mars'        => 'Mars',
+);
+
 /** Faroese (Føroyskt)
  * @author Quackor
  */
@@ -1344,6 +1358,7 @@ $wgGoogleMapsMessages['hy'] = array(
  */
 $wgGoogleMapsMessages['ia'] = array(
 	'gm-zoom-control' => 'Navigation',
+	'gm-save-path'    => 'Immagazinar',
 );
 
 /** Indonesian (Bahasa Indonesia)

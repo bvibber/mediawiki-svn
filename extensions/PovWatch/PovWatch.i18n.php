@@ -796,6 +796,13 @@ $messages['tr'] = array(
 	'povwatch_title' => 'Başlık:',
 );
 
+/** Ukrainian (Українська)
+ * @author AS
+ */
+$messages['uk'] = array(
+	'povwatch_title' => 'Назва:',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
  * @author Vinhtantran

@@ -39,6 +39,14 @@ $messages['en'] = array(
 	'slippymap_license' => 'OpenStreetMap - CC-BY-SA-2.0', # do not translate or duplicate this message to other languages
 );
 
+/** Arabic (العربية)
+ * @author Meno25
+ */
+$messages['ar'] = array(
+	'slippymap_maperror'    => 'خطأ في الخريطة:',
+	'slippymap_button_code' => 'الحصول على كود ويكي',
+);
+
 /** German (Deutsch)
  * @author Raimond Spekking
  */
@@ -143,7 +151,18 @@ $messages['gl'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
-	'slippymap_code' => 'Wikicode fir dës Kaart ze kucken:',
+	'slippymap_desc'            => "Erméiglecht d'Benotzung vum Tag <tt><nowiki>&lt;slippymap&gt;</nowiki></tt> fir eng ''OpenLayers slippy map'' ze weisen. D'kaarte si vun [http://openstreetmap.org openstreetmap.org]",
+	'slippymap_longdepreciated' => "Benitzt w.e.g. 'lon' aplaz vun  'long' (de parameter gouf ëmbennnt)",
+	'slippymap_widthnan'        => "Breet (w) de Wert '%1' ass keng gëlteg ganz Zuel",
+	'slippymap_zoomnan'         => "Zoom (z) de Wert '%1' ass keng gëlteg ganz Zuel",
+	'slippymap_widthbig'        => 'Breet (w) de Wert kann net méi grouss si wéi 1000',
+	'slippymap_widthsmall'      => 'Breet (w) de Wert kann net méi kleng si wéi 100',
+	'slippymap_heightbig'       => 'Héicht (h) de Wert kann net méi grouss wéi 1000 sinn',
+	'slippymap_heightsmall'     => 'Héicht (h) de Wert kann net méi kleng wéi 100 sinn',
+	'slippymap_zoomsmall'       => 'Zoom (z) de Wert kann net méi kleng si wéi null',
+	'slippymap_zoombig'         => 'Zoom (z) de Wert kann net méi grouss si wéi 17.',
+	'slippymap_code'            => 'Wikicode fir dës Kaart ze kucken:',
+	'slippymap_button_code'     => 'Wikicode weisen',
 );
 
 /** Dutch (Nederlands)

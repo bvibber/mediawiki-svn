@@ -246,6 +246,43 @@ $messages['ar'] = array(
 	'voctrain_Separate_values_by_commas_to_use_multiple_languages_'                                 => 'افصل القيم بفواصل لاستخدام لغات متعددة.',
 );
 
+/** Southern Balochi (بلوچی مکرانی)
+ * @author Mostafadaneshvar
+ */
+$messages['bcc'] = array(
+	'voctrain_Hello_World'                          => 'سلام ویکی!',
+	'voctrain_Permission_Denied'                    => 'اجازت رد بوت',
+	'voctrain_try_again_'                           => 'دگه جهد کن؟',
+	'voctrain_Action_unknown'                       => 'ناشناسین عمل',
+	'voctrain_I_don_t_know_what_to_do_with_action_' => "من نزانان گون '%action' چون کنان",
+	'voctrain_User_added'                           => 'کاربر اضافه بوتت',
+	'voctrain_continue'                             => 'ادامه',
+	'voctrain_bye'                                  => 'خداحافظ',
+	'voctrain_Languages'                            => 'زبانان',
+	'voctrain_Questions'                            => 'سوالات',
+	'voctrain_Answers'                              => 'جوابان',
+	'voctrain_collection'                           => 'مجموعه',
+	'voctrain_Definition'                           => 'معنی',
+	'voctrain_Word'                                 => 'کلمه',
+	'voctrain_skip'                                 => 'ردکن',
+	'voctrain_Question'                             => 'سوال',
+	'voctrain_The_word_to_translate'                => 'کلمه په ترجمه',
+	'voctrain_Answer'                               => 'جواب',
+	'voctrain_one_of'                               => 'یکی چه',
+	'voctrain_logout'                               => 'دربیگ',
+	'voctrain_Powered_by'                           => 'به توان',
+	'voctrain_Omegawiki'                            => 'اومگاویکی',
+	'voctrain_User_name'                            => 'نام کاربر',
+	'voctrain_Password'                             => 'کلمه رمز',
+	'voctrain_Login'                                => 'ورود',
+	'voctrain_Create_new_user'                      => 'شرکتن نوکین کاربر',
+	'voctrain_Language'                             => 'زبان',
+	'voctrain_Log_in'                               => 'ورود',
+	'voctrain_Definitions'                          => 'معانی',
+	'voctrain_Translation'                          => 'ترجمه',
+	'voctrain_hiding'                               => 'پناه',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  */

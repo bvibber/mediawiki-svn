@@ -1079,6 +1079,13 @@ $messages['tr'] = array(
 	'youtubeauthsub_title' => 'Başlık',
 );
 
+/** Ukrainian (Українська)
+ * @author AS
+ */
+$messages['uk'] = array(
+	'youtubeauthsub_title' => 'Заголовок',
+);
+
 /** Vèneto (Vèneto)
  * @author Candalua
  */

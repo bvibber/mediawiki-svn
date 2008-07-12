@@ -276,6 +276,13 @@ $messages['hu'] = array(
 	'player-goto-file'     => 'fájl',
 );
 
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'player-goto-file' => 'file',
+);
+
 /** Indonesian (Bahasa Indonesia)
  * @author Irwangatot
  */

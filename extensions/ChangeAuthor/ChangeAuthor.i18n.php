@@ -344,6 +344,7 @@ $messages['es'] = array(
  * @author Cimon Avaro
  * @author Siebrand
  * @author Nike
+ * @author Str4nd
  */
 $messages['fi'] = array(
 	'changeauthor'                      => 'Muuta muokkausversion tekijä',
@@ -353,6 +354,8 @@ $messages['fi'] = array(
 	'changeauthor-pagenameform-go'      => 'Siirry',
 	'changeauthor-comment'              => 'Kommentti',
 	'changeauthor-changeauthors-single' => 'Muuta tekijä',
+	'changeauthor-invalid-username'     => 'Virheellinen käyttäjänimi ”$1”.',
+	'changeauthor-nosuchuser'           => 'Käyttäjää ”$1” ei ole olemassa.',
 	'changeauthor-nosuchtitle'          => 'Sivua nimeltä ”$1” ei ole.',
 	'changeauthor-success'              => 'Pyyntö on suoritettu onnistuneesti.',
 );

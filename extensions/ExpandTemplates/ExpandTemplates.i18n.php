@@ -1188,6 +1188,7 @@ $messages['sq'] = array(
 
 /** Serbian Cyrillic ekavian (ћирилица)
  * @author Sasa Stefanovic
+ * @author Millosh
  */
 $messages['sr-ec'] = array(
 	'expandtemplates'                  => 'Замена шаблона',
@@ -1198,8 +1199,10 @@ $messages['sr-ec'] = array(
 	'expand_templates_title'           => 'Назив контекста; за <nowiki>{{</nowiki>СТРАНИЦА}} итд.:',
 	'expand_templates_input'           => 'Унос:',
 	'expand_templates_output'          => 'Резултат',
+	'expand_templates_xml_output'      => 'XML излаз',
 	'expand_templates_ok'              => 'У реду',
 	'expand_templates_remove_comments' => 'Уклони коментаре',
+	'expand_templates_generate_xml'    => 'прикажи XML стабло',
 	'expand_templates_preview'         => 'Приказ',
 );
 

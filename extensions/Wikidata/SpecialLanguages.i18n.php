@@ -1372,6 +1372,8 @@ $wdMessages['hu'] = array(
  * @author McDutchie
  */
 $wdMessages['ia'] = array(
+	'ow_save'                => 'Immagazinar',
+	'ow_none_selected'       => '<Nihil seligite>',
 	'ow_dm_OK'               => 'OK',
 	'ow_Language'            => 'Lingua',
 	'ow_LinkAttributeValues' => 'Ligamines',
@@ -1765,6 +1767,7 @@ $wdMessages['lb'] = array(
 	'ow_OptionAttributeOption'         => 'Optioun',
 	'ow_OptionAttributeOptions'        => 'Optiounen',
 	'ow_PopupAnnotation'               => 'Notiz',
+	'ow_Relations'                     => 'Relatiounen',
 	'ow_Spelling'                      => 'Schreifweis',
 	'ow_Synonyms'                      => 'Synonymen',
 	'ow_SynonymsAndTranslations'       => 'Synonymer an Iwwersetzungen',

@@ -265,6 +265,13 @@ $messages['hsb'] = array(
 	'spamregex-summary-log'          => '(Zjeće)',
 );
 
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'spamregex-summary-log' => '(Summario)',
+);
+
 /** Javanese (Basa Jawa)
  * @author Meursault2004
  */

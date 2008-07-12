@@ -16,6 +16,14 @@ $messages['en'] = array(
 	'whatismyip-out' => 'Your IP:',
 );
 
+/** Arabic (العربية)
+ * @author Meno25
+ */
+$messages['ar'] = array(
+	'whatismyip'     => 'ما هو الأيبي الخاص بي',
+	'whatismyip-out' => 'الأيبي الخاص بك:',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  */
@@ -86,6 +94,15 @@ $messages['la'] = array(
 	'whatismyip'      => 'Qui est locus IP meus',
 	'whatismyip-desc' => 'Monstrat locum IP usoris in pagina [[{{ns:special}}:WhatIsMyIP]]',
 	'whatismyip-out'  => 'Locus IP tuus:',
+);
+
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$messages['lb'] = array(
+	'whatismyip'      => 'Wéi ass meng IP',
+	'whatismyip-desc' => 'Weist dem Benotzer seng aktuell IP-Adress op [[Special:WhatIsMyIP|Wéi ass meng IP]]',
+	'whatismyip-out'  => 'Är IP:',
 );
 
 /** Dutch (Nederlands)

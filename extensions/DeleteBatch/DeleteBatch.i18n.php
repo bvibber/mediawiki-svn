@@ -40,6 +40,31 @@ Uploaded file should contain page name and optional reason separated by a "|" ch
 	'deletebatch-no-page' => 'Please specify at least one page to delete OR choose a file containing page list.',
 );
 
+/** Arabic (العربية)
+ * @author Meno25
+ */
+$messages['ar'] = array(
+	'deletebatch'                  => 'حذف باتش من الصفحات',
+	'deletebatch-desc'             => '[[Special:DeleteBatch|حذف باتش من الصفحات]]',
+	'deletebatch-button'           => 'حذف',
+	'deletebatch-here'             => '<b>هنا</b>',
+	'deletebatch-caption'          => 'قائمة الصفحات',
+	'deletebatch-title'            => 'حذف الباتش',
+	'deletebatch-link-back'        => 'يمكنك العودة إلى الامتداد',
+	'deletebatch-as'               => 'تشغيل السكريبت ك',
+	'deletebatch-or'               => '<b>أو</b>',
+	'deletebatch-page'             => 'الصفحات للحذف',
+	'deletebatch-reason'           => 'سبب الحذف',
+	'deletebatch-processing'       => 'جاري حذف الصفحات',
+	'deletebatch-from-file'        => 'من قائمة ملف',
+	'deletebatch-from-form'        => 'من من',
+	'deletebatch-success-subtitle' => 'ل$1',
+	'deletebatch-file-bad-format'  => 'الملف ينبغي أن يكون نصا خالصا',
+	'deletebatch-file-missing'     => 'غير قادر على قراءة الملف المعطى',
+	'deletebatch-select-script'    => 'سكريبت حذف الصفحات',
+	'deletebatch-select-yourself'  => 'أنت',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  */
@@ -155,6 +180,14 @@ O ficheiro cargado debería conter o nome da páxina e unha razón opcional sepa
 	'deletebatch-select-script'        => 'borrar o guión dunha páxina',
 	'deletebatch-select-yourself'      => 'vostede',
 	'deletebatch-no-page'              => 'Por favor, especifique, polo menos, unha páxina para borrar OU escolla un ficheiro que conteña unha lista de páxinas.',
+);
+
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'deletebatch-button' => 'Deler',
+	'deletebatch-reason' => 'Motivo pro deletion',
 );
 
 /** Khmer (ភាសាខ្មែរ)

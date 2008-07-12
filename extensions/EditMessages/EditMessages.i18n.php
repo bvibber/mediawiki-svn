@@ -58,11 +58,12 @@ $messages['af'] = array(
  * @author Meno25
  */
 $messages['ar'] = array(
-	'editmessages'       => 'عدل الرسائل',
-	'editmsg-target'     => 'الرسالة الهدف:',
-	'editmsg-search'     => 'بحث',
-	'editmsg-get-patch'  => 'توليد باتش',
-	'editmsg-new-search' => 'بحث جديد',
+	'editmessages'        => 'عدل الرسائل',
+	'editmsg-target'      => 'الرسالة الهدف:',
+	'editmsg-search'      => 'بحث',
+	'editmsg-get-patch'   => 'توليد باتش',
+	'editmsg-new-search'  => 'بحث جديد',
+	'editmsg-apply-patch' => 'تنفيذ الباتش',
 );
 
 /** Bulgarian (Български)

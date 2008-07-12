@@ -39,16 +39,17 @@ $messages['en'] = array(
  * @author Meno25
  */
 $messages['ar'] = array(
-	'emailarticle'    => 'مراسلة الصفحة',
-	'ea-heading'      => '=== مراسلة صفحة [[$1]] ===',
-	'ea-fromgroup'    => 'من مجموعة:',
-	'ea-articlesend'  => 'الصفحة "$1" أُرسلت من $2',
-	'ea-norecipients' => 'لا عناوين بريد إلكتروني صحيحة وُجدت!',
-	'ea-error'        => "'''خطأ في إرسال [[$1]]:''' ''$2''",
-	'ea-denied'       => 'السماح مرفوض',
-	'ea-compose'      => 'كتابة المحتوى',
-	'ea-send'         => 'أرسل!',
-	'ea-subject'      => 'أدخل سطر عنوان للبريد الإلكتروني',
+	'emailarticle'        => 'مراسلة الصفحة',
+	'ea-heading'          => '=== مراسلة صفحة [[$1]] ===',
+	'ea-fromgroup'        => 'من مجموعة:',
+	'ea-articlesend'      => 'الصفحة "$1" أُرسلت من $2',
+	'ea-norecipients'     => 'لا عناوين بريد إلكتروني صحيحة وُجدت!',
+	'ea-error'            => "'''خطأ في إرسال [[$1]]:''' ''$2''",
+	'ea-denied'           => 'السماح مرفوض',
+	'ea-selectrecipients' => 'اختر المتلقين',
+	'ea-compose'          => 'كتابة المحتوى',
+	'ea-send'             => 'أرسل!',
+	'ea-subject'          => 'أدخل سطر عنوان للبريد الإلكتروني',
 );
 
 /** Bulgarian (Български)

@@ -126,6 +126,7 @@ $allMessages['ar'] = array(
 	'whitelisttablemodifyall'  => 'الكل',
 	'whitelisttablemodifynone' => 'لا شيء',
 	'whitelisttablepage'       => 'صفحة ويكي',
+	'whitelisttabletype'       => 'نوع الدخول',
 	'whitelisttablemodby'      => 'آخر تعديل بواسطة',
 	'whitelisttablemodon'      => 'آخر تعديل في',
 	'whitelisttableedit'       => 'تعديل',

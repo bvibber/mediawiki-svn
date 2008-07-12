@@ -130,6 +130,7 @@ $messages['ksh'] = array(
  */
 $messages['lb'] = array(
 	'stalepages'         => 'Al Säiten',
+	'stalepages-desc'    => 'Generéiert eng  [[Special:Stalepages|Lëscht vu Säiten]] déi rezent net geännert goufen',
 	'stalepages-summary' => 'Dëst ass eng Lëscht vu Säiten, déi an de läschte(n) $1 Deeg net verännert goufen.',
 );
 

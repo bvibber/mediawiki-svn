@@ -133,6 +133,7 @@ $messages['km'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
+	'protectsection_desc'       => 'Erlaabt et autoriséierte Benotzer fir Deeler vun enger Säit mat helëf vum Tag <tt>&lt;protect&gt;</tt> ze spären.',
 	'protectsection_add_remove' => 'Dir hutt versicht, e protegéierten Abschnitt derbäizesetzen oder ze läschen.',
 	'protectsection_modify'     => "Dir hutt versicht fir protegéierten Text z'änneren.",
 	'protectsection_forbidden'  => 'Verbueden',

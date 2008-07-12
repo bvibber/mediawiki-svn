@@ -280,6 +280,13 @@ $messages['hu'] = array(
 	'formsave' => 'Mentés',
 );
 
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'formsave' => 'Immagazinar',
+);
+
 /** Indonesian (Bahasa Indonesia)
  * @author Irwangatot
  */

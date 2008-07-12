@@ -242,7 +242,8 @@ $messages['hu'] = array(
  * @author McDutchie
  */
 $messages['ia'] = array(
-	'inspectcache-ok' => 'OK',
+	'inspectcache-ok'     => 'OK',
+	'inspectcache-delete' => 'Deler',
 );
 
 /** Javanese (Basa Jawa)

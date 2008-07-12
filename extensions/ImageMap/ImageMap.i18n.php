@@ -55,15 +55,15 @@ $messages['an'] = array(
  */
 $messages['ar'] = array(
 	'imagemap_desc'               => 'يسمح بخرائط قابلة للضغط عليها من طرف العميل باستخدام وسم <tt><nowiki><imagemap></nowiki></tt>',
-	'imagemap_no_image'           => 'Error: يجب تحديد صورة في السطر الأول',
-	'imagemap_invalid_image'      => 'Error: الصورة غير صحيحة أو غير موجودة',
-	'imagemap_no_link'            => 'Error: لم يتم العثور على وصلة صحيحة في نهاية السطر $1',
-	'imagemap_invalid_title'      => 'Error: عنوان غير صحيح في الوصلة عند الخط $1',
-	'imagemap_missing_coord'      => 'Error: إحداثيات غير كافية للشكل عند الخط $1',
-	'imagemap_unrecognised_shape' => 'Error: شكل غير معروف عند الخط $1, كل خط يجب أن يبدأ بواحد من: default, rect, circle or poly',
-	'imagemap_no_areas'           => 'Error: على الأقل محدد مساحة واحد يجب إعطاؤه',
-	'imagemap_invalid_coord'      => 'Error: إحداثي غير صحيح عند الخط $1، يجب أن يكون رقما',
-	'imagemap_invalid_desc'       => 'Error: محدد وصف غير صحيح، يجب أن يكون واحدا من: <tt>$1</tt>',
+	'imagemap_no_image'           => 'خطأ: يجب تحديد صورة في السطر الأول',
+	'imagemap_invalid_image'      => 'خطأ: الصورة غير صحيحة أو غير موجودة',
+	'imagemap_no_link'            => 'خطأ: لم يتم العثور على وصلة صحيحة في نهاية السطر $1',
+	'imagemap_invalid_title'      => 'خطأ: عنوان غير صحيح في الوصلة عند الخط $1',
+	'imagemap_missing_coord'      => 'خطأ: إحداثيات غير كافية للشكل عند الخط $1',
+	'imagemap_unrecognised_shape' => 'خطأ: شكل غير معروف عند الخط $1, كل خط يجب أن يبدأ بواحد من: default، rect، circle أو poly',
+	'imagemap_no_areas'           => 'خطأ: على الأقل محدد مساحة واحد يجب إعطاؤه',
+	'imagemap_invalid_coord'      => 'خطأ: إحداثي غير صحيح عند الخط $1، يجب أن يكون رقما',
+	'imagemap_invalid_desc'       => 'خطأ: محدد وصف غير صحيح، يجب أن يكون واحدا من: <tt>$1</tt>',
 	'imagemap_description'        => 'حول هذه الصورة',
 );
 

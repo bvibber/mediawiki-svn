@@ -13,6 +13,14 @@ $messages['en'] = array (
 		'right-move-userpages'  => 'Move user pages',
 );
 
+/** Arabic (العربية)
+ * @author Meno25
+ */
+$messages['ar'] = array(
+	'nomoveuserpages-error' => 'نقل صفحات المستخدمين تم تعطيله',
+	'right-move-userpages'  => 'نقل صفحات المستخدمين',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  */

@@ -719,10 +719,12 @@ $messages['lb'] = array(
 	'crosswikiblock-header'         => 'Dës Spezialsäit erlaabt et e Benotzer op enger anere Wiki ze spären.
 
 Vergewëssert iech w.e.g. ob dir déi néideg Rechter op däer anerer Wiki dofir hutt an ob är Aktioun de Regegelen vun däer wiki entsprecht.',
+	'crosswikiblock-target'         => 'IP-Adress oder Benotzernumm an Zil-Wiki:',
 	'crosswikiblock-reason'         => 'Grond:',
 	'crosswikiblock-submit'         => 'Dëse Benotzer spären',
 	'crosswikiblock-anononly'       => 'Nëmmen anonym Benotzer spären',
 	'crosswikiblock-nocreate'       => 'Opmaache vun engem Benotzerkont verhënneren',
+	'crosswikiblock-autoblock'      => 'Automatesch déi lescht IP-Adress spären déi vun dësem Benotzer benotzt gouf, an all IP-Adressen vun denen dëse Benotzer versicht Ännerunge virzehuelen',
 	'crosswikiblock-noemail'        => 'Verhënneren datt de Benotzer E-Maile verschéckt',
 	'crosswikiunblock'              => "D'Spär vum Benotzer op enger anerer Wiki ophiewen",
 	'crosswikiunblock-header'       => "Dës Säit erlaabt et d'spär vu Benotzer op enger anerer Wiki opzehiewen.

@@ -23,6 +23,7 @@ $messages['en'] = array(
  * @author OsamaK
  */
 $messages['ar'] = array(
+	'piwik'            => 'بيويك',
 	'piwik-lastvisits' => 'آخر زيارات',
 	'piwik-countries'  => 'دول',
 	'piwik-browsers'   => 'متصفحات',

@@ -149,6 +149,7 @@ $messages['km'] = array(
  */
 $messages['lb'] = array(
 	'templatelink'          => 'Schabloune-Link',
+	'templatelink_desc'     => 'Dës Erweiderung kann eng Schabloun als nei Säit weisen',
 	'templatelink_empty'    => 'Dir musst e Parameter uginn.',
 	'templatelink_newtitle' => '$1 (ersat)',
 );

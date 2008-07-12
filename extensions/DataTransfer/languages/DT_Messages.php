@@ -292,6 +292,13 @@ $messages['hu'] = array(
 	'dt_xml_title' => 'Cím',
 );
 
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'dt_viewxml_namespaces' => 'Spatios de nomines',
+);
+
 /** Indonesian (Bahasa Indonesia)
  * @author Irwangatot
  */
@@ -722,6 +729,13 @@ $messages['tr'] = array(
 	'dt_viewxml_namespaces' => 'İsim alanları',
 	'dt_xml_page'           => 'Sayfa',
 	'dt_xml_title'          => 'Başlık',
+);
+
+/** Ukrainian (Українська)
+ * @author AS
+ */
+$messages['uk'] = array(
+	'dt_xml_title' => 'Заголовок',
 );
 
 /** Vietnamese (Tiếng Việt)

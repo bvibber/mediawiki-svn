@@ -70,7 +70,7 @@ Protocolos suportados: <tt>$1</tt>',
  */
 $messages['ar'] = array(
 	'linksearch'       => 'بحث وصلات الويب',
-	'linksearch-desc'  => 'ابحث عن الصفحات التي تحتوي على وصلات خارجية تطابق أنماطا معينة',
+	'linksearch-desc'  => '[[Special:Linksearch|ابحث عن الصفحات التي تحتوي على وصلات خارجية]] تطابق أنماطا معينة',
 	'linksearch-pat'   => 'نمط البحث:',
 	'linksearch-ns'    => 'النطاق:',
 	'linksearch-ok'    => 'بحث',

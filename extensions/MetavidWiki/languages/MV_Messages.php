@@ -1412,7 +1412,8 @@ $messages['hy'] = array(
  * @author McDutchie
  */
 $messages['ia'] = array(
-	'mv_edit' => 'Modificar',
+	'mv_remove_reason' => 'Motivo pro deletion:',
+	'mv_edit'          => 'Modificar',
 );
 
 /** Indonesian (Bahasa Indonesia)

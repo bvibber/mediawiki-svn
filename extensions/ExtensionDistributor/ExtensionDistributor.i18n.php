@@ -54,9 +54,15 @@ If you have any questions about this extension distribution system, please go to
 
 /** Arabic (العربية)
  * @author OsamaK
+ * @author Meno25
  */
 $messages['ar'] = array(
-	'extdist-want-more' => 'الحصول على امتداد آخر',
+	'extensiondistributor'      => 'تنزيل امتداد ميدياويكي',
+	'extdist-no-such-extension' => 'لا امتداد كهذا "$1"',
+	'extdist-choose-extension'  => 'اختر أي امتدات تريد تحميله:',
+	'extdist-submit-extension'  => 'استمر',
+	'extdist-submit-version'    => 'استمرار',
+	'extdist-want-more'         => 'الحصول على امتداد آخر',
 );
 
 /** Bulgarian (Български)

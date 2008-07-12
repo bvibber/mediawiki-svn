@@ -17,6 +17,14 @@ $messages['en'] = array(
 	'categoryonupload-none'  => '-', # Do not translate or duplicate this message to other languages.
 );
 
+/** Arabic (العربية)
+ * @author Meno25
+ */
+$messages['ar'] = array(
+	'categoryonupload-desc'  => 'يقترح على المستخدم اختيار تصنيف عند رفع ملف',
+	'categoryonupload-label' => 'التصنيف:',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  */

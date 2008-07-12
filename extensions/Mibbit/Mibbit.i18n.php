@@ -20,6 +20,14 @@ Anonymous users are given an automatically generated one, but it can be changed.
         'right-mibbit'  => 'Allowed to use Mibbit chat',
 );
 
+/** Arabic (العربية)
+ * @author Meno25
+ */
+$messages['ar'] = array(
+	'mibbit'       => 'دردشة ميبيت',
+	'right-mibbit' => 'مسموح له باستخدام دردشة ميبيت',
+);
+
 /** Southern Balochi (بلوچی مکرانی)
  * @author Mostafadaneshvar
  */

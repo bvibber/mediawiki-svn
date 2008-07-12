@@ -11,6 +11,14 @@ $messages['en'] = array (
                 'interwikilist-target'   => 'Target URL',
 );
 
+/** Arabic (العربية)
+ * @author Meno25
+ */
+$messages['ar'] = array(
+	'interwikilist'          => 'قائمة الإنترويكي',
+	'interwikilist-linkname' => 'وصلة الإنترويكي',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  */

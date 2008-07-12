@@ -1091,11 +1091,13 @@ $messages['sq'] = array(
 
 /** Serbian Cyrillic ekavian (ћирилица)
  * @author Sasa Stefanovic
+ * @author Millosh
  */
 $messages['sr-ec'] = array(
 	'newuserlogpage'              => 'историја креирања корисника',
 	'newuserlogpagetext'          => 'Ово је историја скорашњих креација корисника',
 	'newuserlog-desc'             => 'Додаје [[Special:Log/newusers|историју прављења налога]] у [[Special:Log]]',
+	'newuserlog-byemail'          => 'лозинка послата имејлом',
 	'newuserlog-create-entry'     => 'Нови корисник',
 	'newuserlog-create2-entry'    => 'направио налог за $1',
 	'newuserlog-autocreate-entry' => 'налог аутоматски направљен',
