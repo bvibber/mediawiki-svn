@@ -116,7 +116,7 @@ function efErrorHandler( $errType, $errMsg, $errFile, $errLine, $errVars ){
 		foreach( $backtrace as $call ) {
 
 			if( isset( $call['file'] ) && isset( $call['line'] ) ) {
-				$safeIP = preg_quote( $IP );
+				$safeIP = preg_quote( $IP, '/' );
 				$file = preg_replace( "/^$safeIP/", '.', $call['file'] );
 				$line = $call['line'];
 				$internal = false;
