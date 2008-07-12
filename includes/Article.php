@@ -1208,10 +1208,8 @@ class Article {
 						array( 'cat_redir' => $to_id),
 						array( 'cat_title' => $this->mTitle->getDBKey() ),
 						__METHOD__ );
-					$cur_redir = $cur->getRedir();
-					if ( !$cur_redir )
-						$cur_redir = $cur_id;
-					$update = new CategoryLinksUpdate( $redirectTitle, $cur_id, $cur_redir, $to_id );
+					$target = $cur->getTarget();
+					$update = new CategoryLinksUpdate( $redirectTitle, $cur_id, $target, $to_id );
 					$update->doUpdate();
 				}
 			} else {

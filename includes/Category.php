@@ -142,7 +142,7 @@ class Category {
 
 		# NOTE: the row often results from a LEFT JOIN on categorylinks. This may result in 
 		#       all the cat_xxx fields being null, if the category page exists, but nothing
-		#       was ever added to the category. This case should be treated linke an empty
+		#       was ever added to the category. This case should be treated like an empty
 		#       category, if possible.
 
 		if ( $row->cat_title === null ) {
@@ -206,6 +206,16 @@ class Category {
 		return $this->{$key};
 	}
 
+	/** @return mixed cat_id where this category is included in, false on failure */
+	public function getTarget() {
+		$redir = $this->getRedir();
+		if ( $redir == null ) {
+			# this category is not a redirect
+			return $this->mID;
+		} else {
+			return $redir;
+		}
+	}
 	/**
 	 * Refresh the counts for this category.
 	 *
@@ -336,7 +346,7 @@ class Category {
 			if ( $res->numRows() > 0 ) {
 				return array( 'cantmove-cat-notempty' );
 			}
-			# No links in categorylinks... is there a job awaiting to modify that category ?
+			# No links in categorylinks... is there is a job awaiting to modify that category ?
 			$res = $dbr->select('job',
 								'1',
 								array( 'job_cmd' => 'categoryMoveJob',
