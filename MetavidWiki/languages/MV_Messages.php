@@ -165,7 +165,15 @@ Jump to stream view: $2',
 	'mv_start_desc'               => 'Start time',
 	'mv_end_desc'                 => 'End time',
 	'mv_of'                       => '&#32;of&#32;',
-
+	
+	'mv_edit_metadata'			  => 'Edit MetaData',
+	'mv_advanced_edit'			  => 'Advanced Edit',
+	'mv_basic_edit'				  => 'Basic Edit',
+	'mv_remove_category'		  => 'Remove Category',
+	'mv_existing_categories'	  => 'Existing Categories',
+	'mv_add_category'			  => 'Add a Categorization', 
+	
+	
 	#search
 	'mediasearch'                    => 'Media Search',
 	'mv_search_sel_t'                => 'Select search type',

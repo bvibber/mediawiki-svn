@@ -419,25 +419,88 @@ $smwgShowFactbox=SMW_FACTBOX_HIDDEN;
 	/*STATIC Functions */ 
 	function get_and_strip_semantic_tags(&$text){
 		global $mv_smw_tag_arry;
-		//taken from semantic wiki smwfParserHook function:
+		//taken from semantic wiki SMW_Hooks.php function smwfParserHook :
 		$semanticLinkPattern = '(\[\[(([^:][^]]*):[=|:])+((?:[^|\[\]]|\[\[[^]]*\]\]|\[[^]]*\])*)(\|([^]]*))?\]\])';
 		$mv_smw_tag_arry = array();
 		$text = preg_replace_callback($semanticLinkPattern, 'mvParsePropertiesCallback',$text);
 		return $mv_smw_tag_arry;
 	}		
-	function get_adjust_disp($titleKey='new', $mvd_id='new', $disp_buttons=true){
+	/*
+	* @@todo in the future dataHelpers could accommodate more.. (but lets avoid recreating the halo semantic mediaWiki extension).). 
+	 */
+	function get_dataHelpers($titleKey='new', $mvd_id='new'){
+		global $mvMetaDataHelpers, $mvMetaCategoryHelper, $wgUser, $mvgScriptPath;
+		$o='';
+		$sk = $wgUser->getSkin();
+		$mvd_type = strtolower(array_shift( split(':', $titleKey) ));
+				
+				
+		//init metadata array: 
+		$metaData=array('prop'=>array(), 'categories'=>array());
+		//just get msg and basic div layout: \
+		//css layout of forms was F*@#!!! withing me for some reason so yay table :P
+		$o.='<span class="mv_advanced_edit">'.wfMsg('mv_advanced_edit').'</span><span style="display:none" class="mv_basic_edit">'.wfMsg('mv_basic_edit').'</span>';
+		$o.='<input type="hidden" name="adv_basic" value="basic">';
+		$o.='<table class="mv_basic_edit mv_dataHelpers" id="mv_dataHelpers_'.$mvd_id.'">';		
+			if(isset($mvMetaDataHelpers[strtolower($mvd_type)])){
+				//get existing metadata
+				if($mvd_id!='new' && $mvd_id!='seq'){
+					$mvTitle = new MV_Title($titleKey);
+					if(!$mvTitle->validRequestTitle()){
+			  			$o.= "<span class=\"error\">Error:</span>". wfMsg('mvMVDFormat');
+			  			return $o;
+			  		}			  		
+			  		$metaData =  $mvTitle->getMetaData();		  		
+				}								
+				foreach($mvMetaDataHelpers[strtolower($mvd_type)] as $prop=>$ac_index){
+					//set existing "value"
+					if(isset($metaData['prop'][$prop])){
+						$val = $metaData['prop'][$prop];
+					}					
+					//make sure the property exists: 
+					$swmTitle = Title::newFromText((string)$prop, SMW_NS_PROPERTY);	
+					if($swmTitle->exists()){					
+						$help_img =$sk->makeKnownLinkObj($swmTitle, '<img src="'.$mvgScriptPath.'/skins/images/help_icon.png">');													
+						$o.= "<tr><td><label>".$swmTitle->getText().":</label></td><td><input class=\"mv_anno_ac\" size=\"14\" name=\"$prop\" type=\"text\" value=\"$val\"></td></tr>";						
+					}else{
+						print '<span class="error">Error:</span>'.$sk->makeKnownLinkObj($swmTitle, $swmTitle->getText()) . ' does not exist<br>' ;
+					}
+				}
+				
+				if($mvMetaCategoryHelper){		
+					//list each category with a little - next to it that removes its respective hidden field.
+					$i=0; 
+					$o.='<tr><td>'.wfMsg('mv_existing_categories').'</td><td>';
+					foreach($metaData['categories'] as $cat=>$page){
+						$catTitle = Title::newFromText($cat, NS_CATEGORY);
+						$o.='<span id="ext_cat_'.$i.'"><input type="hidden" style="display:none;" name="ext_cat_'.$i.'" class="mv_ext_cat">'.
+							$catTitle->getText().
+							'<a  href="#" onclick="$j(\'#ext_cat_'.$i.'\').fadeOut(\'fast\').remove();return false;">
+								<img border="0" src="'.$mvgScriptPath.'/skins/images/delete.png">
+							</a>	
+							</span><br>';
+						$i++;
+					}
+					$o.='</tr>';
+					$o.= "<tr><td><label for=\"new_cat\">".wfMsg('mv_add_category').":</label></td><td><input size=\"14\" class=\"mv_anno_ac\" name=\"new_cat\" type=\"text\"></td></tr>";
+				}
+				//output a short desc field
+				$o.='<tr><td>'.wfMsg("mv_basic_text_desc").'</td></td><textarea name="basic_wpTextbox" rows="2" cols="14"></td></tr>';
+				
+			}				
+			//foreach($mvMetaDataHelpers[
+		$o.='</table>';			
+		return $o;
+	}
+	function get_adjust_disp($titleKey='new', $mvd_id='new'){
 		global $mvgScriptPath;		//
 		$out='';
-		//some good old fashioned variable overloading: 
 		if($mvd_id=='new'||$mvd_id=='seq'){
 			global $mvDefaultClipLength;	
-			//$out.='start context: ' .$this->start_context . '<br />';
-			//$out.='end context: ' .$this->end_context . '<br />';		
 			$start_time = isset($this->start_context)?$this->start_context:seconds2ntp(0);
  			$end_time  = isset($this->end_context)?
 	 			seconds2ntp( ntp2seconds($this->start_context)+$mvDefaultClipLength):
-	 			seconds2ntp($mvDefaultClipLength);
-	  		//$mvd_type = '';	  
+	 			seconds2ntp($mvDefaultClipLength); 
 		}else{			
 	  		$mvTitle = new MV_Title($titleKey);
 	  		if(!$mvTitle->validRequestTitle()){
@@ -445,7 +508,6 @@ $smwgShowFactbox=SMW_FACTBOX_HIDDEN;
 	  		}
 	  		$start_time = $mvTitle->getStartTime();
 	  		$end_time = $mvTitle->getEndTime();
-	  		//$mvd_type = $mvTitle->getMvdTypeKey();
 		}
   		  	
 		/*
@@ -478,9 +540,6 @@ $smwgShowFactbox=SMW_FACTBOX_HIDDEN;
 <span id="track_time_end_'.$mvd_id.'" style="font-size:small">0:00:00</span>
 	</td></tr></table>
   <br />';
-  		//output a dummy form 
-		/*$out.='<form class="mv_css_form" id="mvd_adj_form_'.$mvd_id.'" method="GET" action="" ' . 
-			'onSubmit="mv_adjust_submit(\''.$mvd_id.'\');return false;">';*/
 	
 		$out.='<span style="float:left;"><label class="mv_css_form" for="mv_start_hr_'.$mvd_id.'"><i>'.wfMsg('mv_start_desc').':</i></label> ' . 
 			'<input class="mv_adj_hr" size="8" maxlength="8" value="'.$start_time.'" id="mv_start_hr_'.$mvd_id.'" name="mv_start_hr_'.$mvd_id.'">' .
@@ -502,14 +561,6 @@ $smwgShowFactbox=SMW_FACTBOX_HIDDEN;
 		*/
 		//clear any floats:
 		$out.='<div style="clear:both"></div>';
-		//not used now that adjust is integrated with edit:
-		/*if($disp_buttons){
-			$out.='<input style="font-weight:bold;" type="submit" value="'.wfMsg('mv_adjust_submit').'"> ';
-			$out.='<input id="mv_adjust_preview_'.$mvd_id.'" type="button" value="'.wfMsg('mv_adjust_preview').'" onClick="mv_adjust_preview(\''.$mvd_id.'\')"> ';
-			$out.='<input type="hidden" id="mv_adjust_preview_stop_'.$mvd_id.'" value="'.wfMsg('mv_adjust_preview_stop').'">';	
-			$out.= '<a href="javascript:mv_disp_mvd(\''.$titleKey. '\',\''.
-						 $mvd_id.'\');return false;">' . wfMsgExt('cancel', array('parseinline')).'</a>';
-		}*/
 		//$out.='</form>';
   		return $out;
 	}
@@ -531,6 +582,7 @@ $smwgShowFactbox=SMW_FACTBOX_HIDDEN;
 			$titleKey =substr($_REQUEST['title'],0,strpos($_REQUEST['title'],'/')).
 				'/'.$_REQUEST['mv_start_hr_new'].'/'.$_REQUEST['mv_end_hr_new'];
 		}
+		$wpTextbox1=$wgRequest->getVal('wpTextbox1');
 		
 		//set up the title /article
 		$wgTitle = Title::newFromText($titleKey, MV_NS_MVD);
@@ -548,8 +600,8 @@ $smwgShowFactbox=SMW_FACTBOX_HIDDEN;
 						//@@todo update for other smw types: 
 						if($key=='smw_Spoken_By'){
 							//update the request wpTextBox:
-							$wgRequest->data['wpTextbox1']="[[".$swmTitle->getText().':='.$val.']]'.
-								trim($_REQUEST['wpTextbox1']);
+							$wpTextbox1="[[".$swmTitle->getText().':='.$val.']]'.
+								trim($wpTextbox1);
 						}
 					}				
 				}
@@ -566,12 +618,13 @@ $smwgShowFactbox=SMW_FACTBOX_HIDDEN;
 			//$wgOut->addHTML($out);			
 			$mvTitle = new MV_Title($_REQUEST['title']);
 				
-			$parserOutput = $this->parse_format_text($wgRequest->data['wpTextbox1'], $mvTitle);	
+			$parserOutput = $this->parse_format_text($wpTextbox1, $mvTitle);
+		
 			$wgOut->addParserOutput($parserOutput);		
 			return $wgOut->getHTML() . '<div style="clear:both;"><hr></div>';
 		}	
 						
-		if($editPageAjax->edit($wgRequest->data['wpTextbox1'])==false){			
+		if($editPageAjax->edit($wpTextbox1)==false){			
 			if($mvd_id=='new'){
 				//get context info to position timeline element: 
 				$rt = (isset($_REQUEST['wgTitle']))?$_REQUEST['wgTitle']:null;
@@ -748,7 +801,9 @@ $smwgShowFactbox=SMW_FACTBOX_HIDDEN;
 			));		
 	}
 	function get_edit_disp($titleKey, $mvd_id='new', $ns=MV_NS_MVD){
-		global $mvgIP, $wgOut, $wgScriptPath, $wgUser, $wgTitle;
+		global $mvgIP, $wgOut, $wgScriptPath, $wgUser, $wgTitle, $mvMetaDataHelpers;
+		
+		$mvd_type = strtolower(array_shift( split(':', $titleKey) ));		
 		//print "new article title: " . 	$titleKey;
 		$wgTitle = Title::newFromText($titleKey, $ns);		
 		//make a title article with global title: 
@@ -756,11 +811,17 @@ $smwgShowFactbox=SMW_FACTBOX_HIDDEN;
 		//make the ediPageajax obj		
 		$editPageAjax = new MV_EditPageAjax( $Article);
 		
-		//add in adjust code: 
-		$editPageAjax->setAdjustHtml( $this->get_adjust_disp($titleKey, $mvd_id, false) );
 		
+		$customPreEditHtml = $this->get_adjust_disp($titleKey, $mvd_id);
+		
+		//add custom data helpers if editing annotative layer: 
+		$customPreEditHtml.=($mvd_type=='anno_en')?$this->get_dataHelpers($titleKey, $mvd_id):'';
+
+		//add in adjust code & hidden helpers
+		$editPageAjax->setAdjustHtml(  $customPreEditHtml	);					
 		//set ts id: 
-		$editPageAjax->mvd_id = $mvd_id;		
+		$editPageAjax->mvd_id = $mvd_id;				
+		
 		//fill wgOUt with edit form: 
 		$editPageAjax->edit();
 		return $wgOut->getHTML();

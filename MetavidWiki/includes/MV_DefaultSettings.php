@@ -42,6 +42,13 @@ $mvEnableClipViewDigest= true;
 //keeps track of popular pages in given categories over time
 $mvDigestCategories = array('Interst_Group', 'Bill', 'Person');
 
+//metadata helpers for annotative layer (anno_en)
+// 'property'=>category for auto_complete (ALL LOWER CASE)
+$mvMetaDataHelpers = array('anno_en'=>array('Speech_by'=>'person', 'Bill'=>'Bill'));
+//by default categories are handled differently enable or disable below: 
+$mvMetaCategoryHelper=true;
+
+
 $mvSpokenByInSearchResult = true;
 //if you want to include category lookup in search results:
 $mvCategoryInSearchResult = true;

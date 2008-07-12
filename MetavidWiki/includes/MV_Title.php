@@ -233,6 +233,25 @@
 			return $foce_server . $this->getStreamName() . '?t='.$req_time;
 		}
 	}
+	/* gets all ~direct~ metadata for the current MV_Title
+	 * (does not grab overlaping metadata) 
+	 * (semenatic properities and categories)
+	 * */
+	function getMetaData(){
+		global $wgUser, $wgParser;
+		$article = new Article($this);
+		$retAry = array();		
+		$text = $article->getContent();		
+		$retAry['prop'] = MV_Overlay::get_and_strip_semantic_tags($text);	
+	
+		
+  		$sk =& $wgUser->getSkin();
+		//run via parser to add in Category info: 
+		$parserOptions = ParserOptions::newFromUser( $wgUser );		
+		$parserOutput = $wgParser->parse( $text , $this, $parserOptions );		
+		$retAry['categories']= $parserOutput->getCategories();
+		return $retAry;
+	}
 	/*
 	 * function: getWebStreamURL
 	 * 

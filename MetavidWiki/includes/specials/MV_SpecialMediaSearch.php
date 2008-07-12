@@ -238,7 +238,7 @@ class MV_SpecialMediaSearch extends SpecialPage {
 									'filters'=>serialize($this->filters)));
 			}
 		}
-		$this->results = $mvIndex->doFiltersQuery($this->filters);
+		$this->results = $mvIndex->doUnifiedFiltersQuery($this->filters);
 		$this->num = $mvIndex->numResults();
 		$this->numResultsFound = $mvIndex->numResultsFound();
 		if(isset($mvIndex->offset))	$this->offset = $mvIndex->offset;

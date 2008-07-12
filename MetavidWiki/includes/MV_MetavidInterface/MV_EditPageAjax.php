@@ -20,6 +20,7 @@
  
  class MV_EditPageAjax extends EditPage{	
 	 var $adj_html='';
+ 	 var $display_edit='inline';
  	 
  	 function __construct( $article ) {
 		$this->mArticle =& $article;		
@@ -540,12 +541,14 @@
 		if ( $this->formtype == 'preview' ) {
 			$previewOutput = $this->getPreviewText();
 		}
-
+		
+		$wgOut->addHTML('<div style="display:'.$this->display_edit.'" class="mv_advanced_edit"><br>');
+		
 		//$rows = $wgUser->getIntOption( 'rows' );
 		//$cols = $wgUser->getIntOption( 'cols' );
 		//for ajax short edit area:
 		$rows = 3;
-		$cols= 30;
+		$cols= 40;
 
 		$ew = $wgUser->getOption( 'editwidth' );
 		if ( $ew ) $ew = " style=\"width:100%\"";
@@ -629,13 +632,13 @@
 		# Otherwise, show a summary field at the bottom
 		$summarytext = htmlspecialchars( $wgContLang->recodeForEdit( $this->summary ) ); # FIXME
 		if( $this->section == 'new' ) {
-			$commentsubject="<br /><span id='wpSummaryLabel'><label for='wpSummary'>{$subject}:</label></span>\n<div class='editOptions'>\n<input tabindex='1' type='text' value=\"$summarytext\" name='wpSummary' id='wpSummary' maxlength='200' size='60' /><br />";
+			$commentsubject="<br /><span id='wpSummaryLabel'><label for='wpSummary'>{$subject}:</label></span>\n<div class='editOptions'>\n<input tabindex='1' type='text' value=\"$summarytext\" name='wpSummary' id='wpSummary' maxlength='200' size='40' /><br />";
 			$editsummary = '';
 			$subjectpreview = $summarytext && $this->preview ? "<div class=\"mw-summary-preview\">".wfMsg('subject-preview').':'.$sk->commentBlock( $this->summary, $this->mTitle )."</div>\n" : '';
 			$summarypreview = '';
 		} else {
 			$commentsubject = '';
-			$editsummary="<br /><span id='wpSummaryLabel'><label for='wpSummary'>{$summary}:</label></span>\n<div class='editOptions'>\n<input tabindex='2' type='text' value=\"$summarytext\" name='wpSummary' id='wpSummary' maxlength='200' size='60' /><br />";
+			$editsummary="<br /><span id='wpSummaryLabel'><label for='wpSummary'>{$summary}:</label></span>\n<div class='editOptions'>\n<input tabindex='2' type='text' value=\"$summarytext\" name='wpSummary' id='wpSummary' maxlength='200' size='40' /><br />";
 			$summarypreview = $summarytext && $this->preview ? "<div class=\"mw-summary-preview\">".wfMsg('summary-preview').':'.$sk->commentBlock( $this->summary, $this->mTitle )."</div>\n" : '';
 			$subjectpreview = '';
 		}
@@ -720,6 +723,9 @@ END
 "
 </textarea>
 		" );
+		
+		//close advanced display_edit div
+		//$wgOut->addHTML("</div>");
 
 		//$wgOut->addWikiText( $copywarn );
 		$wgOut->addHTML( $this->editFormTextAfterWarn );

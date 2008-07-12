@@ -1599,7 +1599,7 @@ embedVideo.prototype = {
 	  	//not to be displayed in stream interface.
 	  	if(this.media_element.hasStreamOfMIMEType('text/cmml') && this.show_meta_link){
 	  		thumb_html+='<div style="border:none;position:absolute;top:2px;right:2px;z-index:1">'+
-		     '<a title="'+getMsg('select_transcript_set')+'" href="javascript:document.getElementById(\''+this.id+'\').showTextInterface();">';
+		     '<a title="'+getMsg('select_transcript_set')+'" href="javascript:$j(\'#'+this.id+'\').get(0).showTextInterface();">';
 		    thumb_html+=getTransparentPng({id:'metaButton_'+this.id, width:"40", height:"27", border:"0", 
 						src:mv_embed_path + 'images/cc_meta_sm.png' });
 			thumb_html+='</div>';    	
@@ -2101,7 +2101,6 @@ function getTransparentPng(image){
 * EMBED OBJECTS:
 * (dynamically included)
 */
-
 
 /*
 * utility functions: 
