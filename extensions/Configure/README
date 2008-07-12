@@ -47,7 +47,7 @@ This extension uses an extended class of SiteConfiguration, for "normal"
 installation, it isn't useful, but for some wiki farms, it will allow to
 multiple with only one copy of the software. To change the configuration you
 want to load, pass an argument to efConfigureSetup(). A user with
-'configure-all' right will also be able to change any configuration.
+'configure-interwiki' right will also be able to change any configuration.
 
 == Troubleshooting ==
 
