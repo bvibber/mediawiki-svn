@@ -20,7 +20,6 @@
  
  class MV_EditPageAjax extends EditPage{	
 	 var $adj_html='';
- 	 var $display_edit='inline';
  	 
  	 function __construct( $article ) {
 		$this->mArticle =& $article;		
@@ -542,7 +541,7 @@
 			$previewOutput = $this->getPreviewText();
 		}
 		
-		$wgOut->addHTML('<div style="display:'.$this->display_edit.'" class="mv_advanced_edit"><br>');
+		$wgOut->addHTML('<div style="display:inline" class="mv_advanced_edit"><br>');		
 		
 		//$rows = $wgUser->getIntOption( 'rows' );
 		//$cols = $wgUser->getIntOption( 'cols' );
@@ -725,7 +724,7 @@ END
 		" );
 		
 		//close advanced display_edit div
-		//$wgOut->addHTML("</div>");
+		$wgOut->addHTML("</div>");
 
 		//$wgOut->addWikiText( $copywarn );
 		$wgOut->addHTML( $this->editFormTextAfterWarn );

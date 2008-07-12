@@ -435,12 +435,14 @@ $smwgShowFactbox=SMW_FACTBOX_HIDDEN;
 		$mvd_type = strtolower(array_shift( split(':', $titleKey) ));
 				
 				
-		//init metadata array: 
+		//init metadata array: label
 		$metaData=array('prop'=>array(), 'categories'=>array());
 		//just get msg and basic div layout: \
 		//css layout of forms was F*@#!!! withing me for some reason so yay table :P
-		$o.='<span class="mv_advanced_edit">'.wfMsg('mv_advanced_edit').'</span><span style="display:none" class="mv_basic_edit">'.wfMsg('mv_basic_edit').'</span>';
-		$o.='<input type="hidden" name="adv_basic" value="basic">';
+		$o.='<span class="mv_basic_edit"><a href="#" onClick="mv_mvd_advs_toggle('.$mvd_id.')">'.wfMsg('mv_advanced_edit').'</a></span>
+			 <span style="display:none" class="mv_advanced_edit"><a href="#" onClick="mv_mvd_advs_toggle('.$mvd_id.')">'.wfMsg('mv_basic_edit').'</a></span>';
+			 
+		$o.='<input type="hidden" id="adv_basic_'.$mvd_id.'" name="adv_basic" value="basic">';
 		$o.='<table class="mv_basic_edit mv_dataHelpers" id="mv_dataHelpers_'.$mvd_id.'">';		
 			if(isset($mvMetaDataHelpers[strtolower($mvd_type)])){
 				//get existing metadata
@@ -484,8 +486,8 @@ $smwgShowFactbox=SMW_FACTBOX_HIDDEN;
 					$o.='</tr>';
 					$o.= "<tr><td><label for=\"new_cat\">".wfMsg('mv_add_category').":</label></td><td><input size=\"14\" class=\"mv_anno_ac\" name=\"new_cat\" type=\"text\"></td></tr>";
 				}
-				//output a short desc field
-				$o.='<tr><td>'.wfMsg("mv_basic_text_desc").'</td></td><textarea name="basic_wpTextbox" rows="2" cols="14"></td></tr>';
+				//output a short desc field (the text with striped semantic values)...
+				$o.='<tr><td>'.wfMsg("mv_basic_text_desc").'</td></td><textarea name="basic_wpTextbox" rows="2" cols="14"></textarea></td></tr>';
 				
 			}				
 			//foreach($mvMetaDataHelpers[
@@ -815,7 +817,11 @@ $smwgShowFactbox=SMW_FACTBOX_HIDDEN;
 		$customPreEditHtml = $this->get_adjust_disp($titleKey, $mvd_id);
 		
 		//add custom data helpers if editing annotative layer: 
-		$customPreEditHtml.=($mvd_type=='anno_en')?$this->get_dataHelpers($titleKey, $mvd_id):'';
+		if($mvd_type=='anno_en'){
+			$customPreEditHtml.=$this->get_dataHelpers($titleKey, $mvd_id);
+			//don't display "advanced" edit
+			$editPageAjax->display_advanced_edit='none';
+		}
 
 		//add in adjust code & hidden helpers
 		$editPageAjax->setAdjustHtml(  $customPreEditHtml	);					

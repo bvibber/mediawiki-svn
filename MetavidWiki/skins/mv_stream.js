@@ -511,6 +511,7 @@ function mv_remove_mvd(titleKey, mvd_id, form){
 	post_vars['mvd_id'] = mvd_id;
 	sajax_request_type='POST';
 	var setHtmlId ='#mv_fcontent_'+mvd_id;
+	//@@todo switch over to jquery ajax
 	mv_sajax_do_call('mv_remove_mvd',args, f, post_vars);	
 	js_log('did request');
 	function f( request ) {		
@@ -594,7 +595,7 @@ function mv_do_ajax_form_submit(mvd_id, edit_action){
 	}	
 
 	$j(setHtmlId).html( global_loading_txt);		
-		
+	//@@todo switch over to jquery ajax
 	mv_sajax_do_call('mv_edit_submit',args, f, post_vars);	
 	//js_log('mv_sajax_do_call ' + fajax +' ' +  args);
 	function f( request ) {
@@ -842,6 +843,7 @@ function mv_tool_disp(tool_id){
 		post_vars['tracks']=mvTracks;
 	}
 	sajax_request_type='POST';
+	//@@todo switch over to jquery ajax
 	mv_sajax_do_call('mv_tool_disp', [tool_id, wgNamespaceNumber, wgTitle], f, post_vars);
 	function f( request ) {
         result = request.responseText;		 		          
@@ -1003,8 +1005,29 @@ function mv_sajax_do_call(func_name, args, target, post_vars) {
 
 	return true;
 }
-
- 
+/*
+ * togle advanced and simply display of mvd annotation edits
+ */
+function mv_mvd_advs_toggle(mvd_id){
+	js_log('form val:#adv_basic_'+mvd_id+' '+$j('#adv_basic_'+mvd_id).val());
+	if($j('#adv_basic_'+mvd_id).val()=='basic'){
+		js_log('form is currently basic; SET to ADV');
+		//set to advanced	
+		$j('#adv_basic_'+mvd_id).val('advanced');
+		//hide all basic
+		$j('.mv_basic_edit').fadeOut('fast');
+		//show all advanced
+		$j('.mv_advanced_edit').fadeIn('fast');
+	}else{
+		js_log('form is currently advanced; SET to basic');
+		//set to basic
+		$j('#adv_basic_'+mvd_id).val('basic');
+		//hide all advanced
+		$j('.mv_advanced_edit').fadeOut('fast');
+		//show all basic
+		$j('.mv_basic_edit').fadeIn('fast');
+	}
+}
  
 /* custom effects */ 
 /*function add_custom_effects(){

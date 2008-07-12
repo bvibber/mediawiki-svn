@@ -153,9 +153,11 @@ class MV_MagicWords{
  					 				'LIMIT 0, 5'); 				
  					 if($dbr->numRows($cl_res)!=0){
  					 	$o.='<span class="keywords">Categories: ';
+ 					 	$coma='';
  					 	while($cl_row= $dbr->fetchObject($cl_res) ){
  					 		$cTitle =  Title::MakeTitle(NS_CATEGORY, $cl_row->cl_to);
- 					 		$o.=$sk->makeKnownLinkObj($cTitle, $cTitle->getText());
+ 					 		$o.=$coma.$sk->makeKnownLinkObj($cTitle, $cTitle->getText());
+ 					 		$coma=', ';
  					 	}
  					 	$o.='</span>';
  					 }

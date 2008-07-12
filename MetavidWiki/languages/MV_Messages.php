@@ -170,8 +170,9 @@ Jump to stream view: $2',
 	'mv_advanced_edit'			  => 'Advanced Edit',
 	'mv_basic_edit'				  => 'Basic Edit',
 	'mv_remove_category'		  => 'Remove Category',
-	'mv_existing_categories'	  => 'Existing Categories',
+	'mv_existing_categories'	  => 'Existing Categories:',
 	'mv_add_category'			  => 'Add a Categorization', 
+	'mv_basic_text_desc'		  => 'Text Description:',
 	
 	
 	#search
