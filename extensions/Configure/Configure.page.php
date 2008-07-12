@@ -25,7 +25,7 @@ abstract class ConfigurationPage extends SpecialPage {
 	 * @param $par Mixed: parameter passed to the page or null
 	 */
 	public function execute( $par ) {
-		global $wgUser, $wgRequest, $wgOut, $wgConf;
+		global $wgUser, $wgRequest, $wgOut, $wgConf, $wgConfigureWikis;
 
 		$this->setHeaders();
 
@@ -60,10 +60,15 @@ abstract class ConfigurationPage extends SpecialPage {
 		
 		$wikiParam = ( $this->mCanEdit && $wgRequest->wasPosted() ) ? 'wpWiki' : 'wiki';
 		if( $wiki = $wgRequest->getVal( $wikiParam, false ) ){
-			if( !$this->isUserAllowedAll() ){
+			if( !$this->isUserAllowedInterwiki() || $wgConfigureWikis === false ){
 				$msg = wfMsgNoTrans( 'configure-no-transwiki' );
 				$wgOut->addWikiText( "<div class='errorbox'><strong>$msg</strong></div>" );
 				return;
+			}
+			if( $wgConf->getWiki() != $wiki && is_array( $wgConfigureWikis ) && !in_array( $wiki, $wgConfigureWikis ) ){
+				$msg = wfMsgNoTrans( 'configure-transwiki-not-in-range', $wiki, implode( ', ', $wgConfigureWikis ) );
+				$wgOut->addWikiText( "<div class='errorbox'><strong>$msg</strong></div>" );
+				return;	
 			}
 			$this->mWiki = $wiki;
 		} else {
@@ -76,7 +81,7 @@ abstract class ConfigurationPage extends SpecialPage {
 			return;
 
 		if( $this->mCanEdit && $wgRequest->wasPosted() ){
-			if( true || $wgUser->matchEditToken( $wgRequest->getVal( 'wpEditToken' ) ) ){
+			if( $wgUser->matchEditToken( $wgRequest->getVal( 'wpEditToken' ) ) ){
 				if( $wgRequest->getCheck( 'wpSave' ) ){
 					$type = 'submit';
 				} else {
@@ -117,13 +122,33 @@ abstract class ConfigurationPage extends SpecialPage {
 		}
 	}
 
-	// View config
+	/**
+	 * Return true if the current user is allowed to configure all settings.
+	 * @return bool
+	 */
+	protected function isUserAllowedAll(){
+		static $allowed = null;
+		if( $allowed === null ){
+			global $wgUser;
+			$allowed = $wgUser->isAllowed( $this->mRestriction . '-all' );
+		}
+		return $allowed;
+	}
 
 	/**
 	 * Return true if the current user is allowed to configure all settings.
 	 * @return bool
 	 */
-	protected abstract function isUserAllowedAll();
+	protected function isUserAllowedInterwiki(){
+		static $allowed = null;
+		if( $allowed === null ){
+			global $wgUser;
+			$allowed = $wgUser->isAllowed( $this->mRestriction . '-interwiki' );
+		}
+		return $allowed;
+	}
+	
+	// View config
 
 	/**
 	 * Return true if the current user is allowed to configure $setting.
@@ -148,11 +173,6 @@ abstract class ConfigurationPage extends SpecialPage {
 	 * Show the diff between the current version and the posted version
 	 */
 	protected abstract function showDiff();
-
-	/**
-	 * Build links to old version of the configuration
-	 */
-	protected abstract function buildOldVersionSelect();
 
 	/**
 	 * Build the content of the form
@@ -199,15 +219,60 @@ abstract class ConfigurationPage extends SpecialPage {
 			$versions = $wgConf->listArchiveFiles();
 			if( in_array( $version, $versions ) ){
 				 $conf = $wgConf->getOldSettings( $version );
-				 $this->conf = $conf[$wgConf->getWiki()];
+				 $this->conf = $conf[$this->mWiki];
 				 $wgOut->addWikiText( wfMsgNoTrans( 'configure-edit-old' ) );
 			} else {
 				$msg = wfMsgNoTrans( 'configure-old-not-available', $version );
 				$wgOut->addWikiText( "<div class='errorbox'>$msg</div>" );
 				return false;
 			}
+		} else {
+			$this->conf = $wgConf->getCurrent( $this->mWiki );
 		}
 		return true;
+	}
+
+	/**
+	 * Build links to old version of the configuration
+	 */
+	protected function buildOldVersionSelect(){
+		global $wgConf, $wgLang, $wgUser;
+		$versions = $wgConf->listArchiveFiles();
+		$text = '<fieldset><legend>' . wfMsgHtml( 'configure-old' ) . '</legend>';
+		if( empty( $versions ) ){
+			$text .= wfMsgExt( 'configure-no-old', array( 'parse' ) );
+		} else {
+			$text .= wfMsgExt( 'configure-old-versions', array( 'parse' ) );
+			$text .= "<ul>\n";
+			$skin = $wgUser->getSkin();
+			$title = $this->getTitle();
+			foreach( $versions as $ts ){
+				$text .= "<li>" . $skin->makeKnownLinkObj( $title, $wgLang->timeAndDate( $ts ), "version=$ts" ) . "</li>\n";
+			}
+			$text .= '</ul>';
+		}
+		$text .= '</fieldset>';
+		return $text;
+	}
+
+	/**
+	 * Get a form to select the wiki to configure
+	 */
+	protected function getWikiSelectForm(){
+		global $wgConfigureWikis, $wgScript;
+		if( $wgConfigureWikis === false || !$this->isUserAllowedInterwiki() )
+			return '';
+		$form = '<fieldset><legend>' . wfMsgHtml( 'configure-select-wiki' ) . '</legend>';
+		$form .= wfMsgExt( 'configure-select-wiki-desc', array( 'parse' ) );
+		$form .= Xml::openElement( 'form', array( 'method' => 'get', 'action' => $wgScript ) );
+		$form .= Xml::hidden( 'title', $this->getTitle()->getPrefixedDBkey() );
+		if( is_array( $wgConfigureWikis ) ){
+			$form .= wfMsgExt( 'configure-select-wiki-available', array( 'parse' ), implode( ', ', $wgConfigureWikis ) );
+		}
+		$form .= Xml::input( 'wiki', false, $this->mWiki );
+		$form .= Xml::submitButton( wfMsg( 'configure-select-wiki-submit' ) );
+		$form .= '</form></fieldset>';
+		return $form;
 	}
 
 	/**
@@ -405,7 +470,8 @@ abstract class ConfigurationPage extends SpecialPage {
 		$wgOut->addHtml(
 			$this->buildOldVersionSelect() . "\n" .
 
-			( $this->mCanEdit ? 
+			( $this->mCanEdit ?
+				$this->getWikiSelectForm() .
 				Xml::openElement( 'form', array( 'method' => 'post', 'action' => $action, 'id' => 'configure-form' ) ) . "\n" :
 				Xml::openElement( 'div', array( 'id' => 'configure-form' ) ) ) .
 			Xml::openElement( 'div', array( 'id' => 'configure' ) ) . "\n" .

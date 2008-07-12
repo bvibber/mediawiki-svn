@@ -142,26 +142,6 @@ class SpecialExtensions extends ConfigurationPage {
 		$wgOut->addHtml( $diff->getHtml() );
 	}
 
-	/**
-	 * Build links to old version of the configuration
-	 */
-	protected function buildOldVersionSelect(){
-		global $wgConf, $wgLang, $wgUser;
-		$versions = $wgConf->listArchiveFiles();
-		if( empty( $versions ) ){
-			return wfMsgExt( 'configure-no-old', array( 'parse' ) );
-		}
-		$text = wfMsgExt( 'configure-old-versions', array( 'parse' ) );
-		$text .= "<ul>\n";
-		$skin = $wgUser->getSkin();
-		$title = $this->getTitle();
-		foreach( $versions as $ts ){
-			$text .= "<li>" . $skin->makeKnownLinkObj( $title, $wgLang->timeAndDate( $ts ), "version=$ts" ) . "</li>\n";
-		}
-		$text .= "</ul>";
-		return $text;
-	}
-
 	protected function getRequiredFiles(){
 		global $wgRequest;
 		$arr = array();
@@ -170,15 +150,6 @@ class SpecialExtensions extends ConfigurationPage {
 				$arr[] = $ext->getFile();
 		}
 		return $arr;
-	}
-
-	protected function isUserAllowedAll(){
-		static $allowed = null;
-		if( $allowed === null ){
-			global $wgUser;
-			$allowed = $wgUser->isAllowed( 'extensions-all' );
-		}
-		return $allowed;
 	}
 
 	/**

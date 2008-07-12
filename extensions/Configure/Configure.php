@@ -14,8 +14,19 @@ if ( !defined( 'MEDIAWIKI' ) ) die();
 
 /**
  * Default path for the serialized files
+ * Be sure that this directory is *not* accessible by the web
  */
 $wgConfigureFilesPath = "$IP/serialized";
+
+/**
+ * Allow foreign wiki configuration? either:
+ * - true: allow any wiki
+ * - false: don't allow any wiki
+ * - array: array of allowed wikis (e.g.$wgConfigureWikis = $wgLocalDatabases)
+ *
+ * Users will need *-interwiki right to edit foreign wiki configuration
+ */
+$wgConfigureWikis = false;
 
 /**
  * Whether to update $wgCacheEpoch when saving changes in Special:Configure
@@ -40,21 +51,27 @@ $wgExtensionCredits['specialpage'][] = array(
 ## Adding new rights...
 $wgAvailableRights[] = 'configure';
 $wgAvailableRights[] = 'configure-all';
+$wgAvailableRights[] = 'configure-interwiki';
 $wgAvailableRights[] = 'viewconfig';
 $wgAvailableRights[] = 'viewconfig-all';
+$wgAvailableRights[] = 'viewconfig-interwiki';
 $wgAvailableRights[] = 'extensions';
 $wgAvailableRights[] = 'extensions-all';
+$wgAvailableRights[] = 'extensions-interwiki';
 
 ## Rights for Special:Configure
 $wgGroupPermissions['bureaucrat']['configure'] = true;
+#$wgGroupPermissions['bureaucrat']['configure-interwiki'] = true;
 #$wgGroupPermissions['developer']['configure-all'] = true;
 
 ## Rights for Special:ViewConfig
 $wgGroupPermissions['sysop']['viewconfig'] = true;
+#$wgGroupPermissions['sysop']['viewconfig-interwiki'] = true;
 #$wgGroupPermissions['developer']['viewconfig-all'] = true;
 
 ## Rights for Special:Extensions
 $wgGroupPermissions['bureaucrat']['extensions'] = true;
+#$wgGroupPermissions['bureaucrat']['extensions-interwiki'] = true;
 #$wgGroupPermissions['developer']['extensions-all'] = true;
 
 $dir = dirname( __FILE__ ) . '/';

@@ -64,19 +64,6 @@ class SpecialViewConfig extends ConfigurationPage {
 	}
 
 	/**
-	 * Return true if the current user is allowed to configure all settings.
-	 * @return bool
-	 */
-	protected function isUserAllowedAll(){
-		static $allowed = null;
-		if( $allowed === null ){
-			global $wgUser;
-			$allowed = $wgUser->isAllowed( 'viewconfig-all' );
-		}
-		return $allowed;
-	}
-
-	/**
 	 * Return true if the current user is allowed to configure $setting.
 	 * @return bool
 	 */
@@ -155,9 +142,9 @@ class SpecialViewConfig extends ConfigurationPage {
 		$allowedConfig = $wgUser->isAllowed( 'configure' );
 		$allowedExtensions = $wgUser->isAllowed( 'extensions' );
 
-		$allowedAll = $this->isUserAllowedAll();
-		$allowedConfigAll = $wgUser->isAllowed( 'configure-all' );
-		$allowedExtensionsAll = $wgUser->isAllowed( 'extensions-all' );
+		$allowedAll = $this->isUserAllowedInterwiki();
+		$allowedConfigAll = $wgUser->isAllowed( 'configure-interwiki' );
+		$allowedExtensionsAll = $wgUser->isAllowed( 'extensions-interwiki' );
 
 		if( $allowedConfig )
 			$configTitle = is_callable( array( 'SpecialPage', 'getTitleFor' ) ) ? # 1.9 +
