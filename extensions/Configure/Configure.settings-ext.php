@@ -515,6 +515,17 @@ $extensions = array(
 		'url' => 'http://www.mediawiki.org/wiki/Extension:EditUser',
 	),
 	array(
+		'name' => 'ErrorHandler',
+		'settings' => array(
+			'wgErrorHandlerReport' => 'int',
+			'wgErrorHandlerShowBackTrace' => 'bool',
+			'wgErrorHandlerMaxStringSize' => 'int',
+			'wgErrorHandlerAlwaysReport' => 'bool',
+			'wgErrorHandlerLog' => 'text',
+		),
+		'url' => 'http://www.mediawiki.org/wiki/Extension:ErrorHandler',
+	),
+	array(
 		'name' => 'ExpandTemplates',
 		'url' => 'http://www.mediawiki.org/wiki/Extension:ExpandTemplates',
 	),
