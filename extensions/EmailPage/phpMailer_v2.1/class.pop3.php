@@ -2,7 +2,7 @@
 /*~ class.pop3.php
 .---------------------------------------------------------------------------.
 |  Software: PHPMailer - PHP email class                                    |
-|   Version: 2.0.0 rc2                                                      |
+|   Version: 2.1                                                            |
 |   Contact: via sourceforge.net support pages (also www.codeworxtech.com)  |
 |      Info: http://phpmailer.sourceforge.net                               |
 |   Support: http://sourceforge.net/projects/phpmailer/                     |
@@ -26,9 +26,10 @@
 
 /**
  * POP Before SMTP Authentication Class
- * Version 1.0
+ * Version 2.1
  *
  * Author: Richard Davey (rich@corephp.co.uk)
+ * Modifications: Andy Prevost
  * License: LGPL, see PHPMailer License
  *
  * Specifically for PHPMailer to allow POP before SMTP authentication.
@@ -109,10 +110,10 @@ class POP3 {
 
   /**
    * Constructor, sets the initial values
-   *
+   * @access public
    * @return POP3
    */
-  function __construct() {
+  public function __construct() {
     $this->pop_conn  = 0;
     $this->connected = false;
     $this->error     = null;
@@ -120,14 +121,14 @@ class POP3 {
 
   /**
    * Combination of public events - connect, login, disconnect
-   *
+   * @access public
    * @param string $host
    * @param integer $port
    * @param integer $tval
    * @param string $username
    * @param string $password
    */
-  function Authorise ($host, $port = false, $tval = false, $username, $password, $debug_level = 0) {
+  public function Authorise ($host, $port = false, $tval = false, $username, $password, $debug_level = 0) {
     $this->host = $host;
 
     //  If no port value is passed, retrieve it
@@ -173,13 +174,13 @@ class POP3 {
 
   /**
    * Connect to the POP3 server
-   *
+   * @access public
    * @param string $host
    * @param integer $port
    * @param integer $tval
    * @return boolean
    */
-  function Connect ($host, $port = false, $tval = 30) {
+  public function Connect ($host, $port = false, $tval = 30) {
     //  Are we already connected?
     if ($this->connected) {
       return true;
@@ -249,12 +250,12 @@ class POP3 {
 
   /**
    * Login to the POP3 server (does not support APOP yet)
-   *
+   * @access public
    * @param string $username
    * @param string $password
    * @return boolean
    */
-  function Login ($username = '', $password = '') {
+  public function Login ($username = '', $password = '') {
     if ($this->connected == false) {
       $this->error = 'Not connected to POP3 server';
 
@@ -295,8 +296,9 @@ class POP3 {
 
   /**
    * Disconnect from the POP3 server
+   * @access public
    */
-  function Disconnect () {
+  public function Disconnect () {
     $this->sendString('QUIT');
 
     fclose($this->pop_conn);
@@ -309,11 +311,11 @@ class POP3 {
   /**
    * Get the socket response back.
    * $size is the maximum number of bytes to retrieve
-   *
+   * @access private
    * @param integer $size
    * @return string
    */
-  function getResponse ($size = 128) {
+  private public function getResponse ($size = 128) {
     $pop3_response = fgets($this->pop_conn, $size);
 
     return $pop3_response;
@@ -321,11 +323,11 @@ class POP3 {
 
   /**
    * Send a string down the open socket connection to the POP3 server
-   *
+   * @access private
    * @param string $string
    * @return integer
    */
-  function sendString ($string) {
+  private function sendString ($string) {
     $bytes_sent = fwrite($this->pop_conn, $string, strlen($string));
 
     return $bytes_sent;
@@ -333,11 +335,11 @@ class POP3 {
 
   /**
    * Checks the POP3 server response for +OK or -ERR
-   *
+   * @access private
    * @param string $string
    * @return boolean
    */
-  function checkResponse ($string) {
+  private function checkResponse ($string) {
     if (substr($string, 0, 3) !== '+OK') {
       $this->error = array(
         'error' => "Server reported an error: $string",
@@ -358,9 +360,9 @@ class POP3 {
 
   /**
    * If debug is enabled, display the error message array
-   *
+   * @access private
    */
-  function displayErrors () {
+  private function displayErrors () {
     echo '<pre>';
 
     foreach ($this->error as $single_error) {
@@ -372,13 +374,13 @@ class POP3 {
 
   /**
    * Takes over from PHP for the socket warning handler
-   *
+   * @access private
    * @param integer $errno
    * @param string $errstr
    * @param string $errfile
    * @param integer $errline
    */
-  function catchWarning ($errno, $errstr, $errfile, $errline) {
+  private function catchWarning ($errno, $errstr, $errfile, $errline) {
     $this->error[] = array(
       'error' => "Connecting to the POP3 server raised a PHP warning: ",
       'errno' => $errno,

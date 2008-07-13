@@ -1,6 +1,6 @@
 <?php
 /**
- * Aliases for Special:EmailArticle
+ * Aliases for Special:EmailPage
  *
  * @addtogroup Extensions
  */
@@ -11,50 +11,49 @@ $aliases = array();
  * @author Jon Harald Søby
  */
 $aliases['en'] = array(
-    'EmailArticle' => array( 'EmailArticle' ),
+    'EmailPage' => array( 'EmailPage' ),
 );
 
 /** Arabic (العربية) */
 $aliases['ar'] = array(
-	'EmailArticle' => array( 'مراسلة المقالة' ),
+	'EmailPage' => array( 'مراسلة المقالة' ),
 );
 
 /** Egyptian Spoken Arabic (مصرى) */
 $aliases['arz'] = array(
-	'EmailArticle' => array( 'مراسلة المقالة' ),
+	'EmailPage' => array( 'مراسلة المقالة' ),
 );
 
 /** French (Français) */
 $aliases['fr'] = array(
-	'EmailArticle' => array( 'EnvoyerArticle', 'Envoyer Article', 'Envoyer l’article' ),
+	'EmailPage' => array( 'EnvoyerPage', 'Envoyer Page' ),
 );
 
 /** Hebrew (עברית)
  * @author Rotem Liss
  */
 $aliases['he'] = array(
-	'EmailArticle' => array( 'שליחת_דף_בדואר' ),
+	'EmailPage' => array( 'שליחת_דף_בדואר' ),
 );
 
 /** Haitian (Kreyòl ayisyen) */
 $aliases['ht'] = array(
-	'EmailArticle' => array( 'EmèlAtik' ),
+	'EmailPage' => array( 'EmèlAtik' ),
 );
 
 /** Hungarian (Magyar) */
 $aliases['hu'] = array(
-	'EmailArticle' => array( 'Szócikk elküldése e-mailben' ),
+	'EmailPage' => array( 'Szócikk elküldése e-mailben' ),
 );
 
 /** Dutch (Nederlands) */
 $aliases['nl'] = array(
-	'EmailArticle' => array( 'PaginaE-mailen', 'PaginaEmailen' ),
+	'EmailPage' => array( 'PaginaE-mailen', 'PaginaEmailen' ),
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */
 $aliases['no'] = array(
-	'EmailArticle' => array( 'Send_side_som_e-post' ),
+	'EmailPage' => array( 'Send_side_som_e-post' ),
 );
-
