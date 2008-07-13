@@ -201,6 +201,10 @@ Jump to stream view: $2',
 	'mv_people_results'				 => 'People Results',
 	'mv_bill_results'				 => 'Bill Results',
 	'mv_intrest_group_results'		 => 'Interst Groups',
+	
+	'mv_most_relevent'				 => 'Most Relevent',
+	'mv_most_recent'				 => 'Most Recent',
+	'mv_most_viewed'				 => 'Most Viewed',
 
 	'mv_match'     => 'match',
 	'mv_spoken_by' => 'spoken by',

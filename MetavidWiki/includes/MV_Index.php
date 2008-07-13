@@ -196,6 +196,10 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
  		
  		list( $this->limit, $this->offset ) = $wgRequest->getLimitOffset( 20, 'searchlimit' );
  		if($this->limit > $mvMediaSearchResultsLimit)$this->limit = $mvMediaSearchResultsLimit;
+			
+		$this->order_type = $wgRequest->getVal('order');		
+		//force order type: 
+		if($this->order_type!='relevent' || $this->order_type!='recent' || $this->order_type!='viewed') $this->order_type='relevent';
 
  		$group_spoken=true;
  		$categoryTable =  $dbr->tableName( 'categorylinks');
