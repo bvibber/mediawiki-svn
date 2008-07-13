@@ -33,7 +33,7 @@ $aliases['fr'] = array(
  * @author Rotem Liss
  */
 $aliases['he'] = array(
-    'DeleteBatch' => array( 'מחיקת_קבוצה' ),
+	'DeleteBatch' => array( 'מחיקת_קבוצה' ),
 );
 
 /** Haitian (Kreyòl ayisyen) */
@@ -46,10 +46,10 @@ $aliases['nl'] = array(
 	'DeleteBatch' => array( 'PaginareeksVerwijderen' ),
 );
 
-/** Norwegian (Norsk (bokmål))
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */
 $aliases['no'] = array(
-    'DeleteBatch' => array( 'Slett_en_serie_sider' ),
+	'DeleteBatch' => array( 'Slett_en_serie_sider' ),
 );
 

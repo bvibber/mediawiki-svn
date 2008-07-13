@@ -24,7 +24,7 @@ $aliases['arz'] = array(
 	'DeletedContributions' => array( 'مساهمات محذوفة' ),
 );
 
-/** German
+/** German (Deutsch)
  * @author Raimond Spekking
  */
 $aliases['de'] = array(
@@ -76,5 +76,10 @@ $aliases['ms'] = array(
 /** Dutch (Nederlands) */
 $aliases['nl'] = array(
 	'DeletedContributions' => array( 'VerwijderdeBijdragen' ),
+);
+
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
+$aliases['no'] = array(
+	'DeletedContributions' => array( 'Slettede bidrag' ),
 );
 

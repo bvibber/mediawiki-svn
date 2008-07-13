@@ -24,7 +24,7 @@ $aliases['arz'] = array(
 	'LinkSearch' => array( 'بحث الوصلات' ),
 );
 
-/** German
+/** German (Deutsch)
  * @author Raimond Spekking
  */
 $aliases['de'] = array(
@@ -40,7 +40,7 @@ $aliases['fi'] = array(
  * @author Rotem Liss
  */
 $aliases['he'] = array(
-    'LinkSearch' => array( 'חיפוש_קישורים_חיצוניים' ),
+	'LinkSearch' => array( 'חיפוש_קישורים_חיצוניים' ),
 );
 
 /** Croatian (Hrvatski) */
@@ -68,10 +68,10 @@ $aliases['nl'] = array(
 	'LinkSearch' => array( 'VerwijzingenZoeken' ),
 );
 
-/** Norwegian (Norsk (bokmål))
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */
 $aliases['no'] = array(
-    'LinkSearch' => array( 'Lenkesøk' ),
+	'LinkSearch' => array( 'Lenkesøk' ),
 );
 

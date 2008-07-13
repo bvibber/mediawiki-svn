@@ -33,7 +33,7 @@ $aliases['fr'] = array(
  * @author Rotem Liss
  */
 $aliases['he'] = array(
-    'Eval' => array( 'פירוש' ),
+	'Eval' => array( 'פירוש' ),
 );
 
 /** Haitian (Kreyòl ayisyen) */
@@ -43,6 +43,11 @@ $aliases['ht'] = array(
 
 /** Dutch (Nederlands) */
 $aliases['nl'] = array(
+	'Eval' => array( 'Eval' ),
+);
+
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
+$aliases['no'] = array(
 	'Eval' => array( 'Eval' ),
 );
 

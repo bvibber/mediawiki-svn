@@ -33,7 +33,7 @@ $aliases['fr'] = array(
  * @author Rotem Liss
  */
 $aliases['he'] = array(
-    'EditUser' => array( 'עריכת_משתמש' ),
+	'EditUser' => array( 'עריכת_משתמש' ),
 );
 
 /** Haitian (Kreyòl ayisyen) */
@@ -46,11 +46,11 @@ $aliases['nl'] = array(
 	'EditUser' => array( 'GebruikerBewerken' ),
 );
 
-/** Norwegian (Norsk (bokmål))
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */
 $aliases['no'] = array(
-    'EditUser' => array( 'Rediger_bruker' ),
+	'EditUser' => array( 'Rediger_bruker' ),
 );
 
 /** Swedish (Svenska) */

@@ -33,7 +33,7 @@ $aliases['fr'] = array(
  * @author Rotem Liss
  */
 $aliases['he'] = array(
-    'EmailArticle' => array( 'שליחת_דף_בדואר' ),
+	'EmailArticle' => array( 'שליחת_דף_בדואר' ),
 );
 
 /** Haitian (Kreyòl ayisyen) */
@@ -51,10 +51,10 @@ $aliases['nl'] = array(
 	'EmailArticle' => array( 'PaginaE-mailen', 'PaginaEmailen' ),
 );
 
-/** Norwegian (Norsk (bokmål))
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */
 $aliases['no'] = array(
-    'EmailArticle' => array( 'Send_side_som_e-post' ),
+	'EmailArticle' => array( 'Send_side_som_e-post' ),
 );
 

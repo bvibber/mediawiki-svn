@@ -24,7 +24,7 @@ $aliases['arz'] = array(
 	'ExpandTemplates' => array( 'فرد القوالب' ),
 );
 
-/** German
+/** German (Deutsch)
  * @author Raimond Spekking
  */
 $aliases['de'] = array(
@@ -40,7 +40,7 @@ $aliases['fi'] = array(
  * @author Rotem Liss
  */
 $aliases['he'] = array(
-    'ExpandTemplates' => array( 'פריסת_תבניות' ),
+	'ExpandTemplates' => array( 'פריסת_תבניות' ),
 );
 
 /** Haitian (Kreyòl ayisyen) */
@@ -68,10 +68,10 @@ $aliases['nl'] = array(
 	'ExpandTemplates' => array( 'SjablonenSubstitueren' ),
 );
 
-/** Norwegian (Norsk (bokmål))
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */
 $aliases['no'] = array(
-    'ExpandTemplates' => array( 'Utvid_maler' ),
+	'ExpandTemplates' => array( 'Utvid_maler' ),
 );
 

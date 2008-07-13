@@ -24,7 +24,7 @@ $aliases['arz'] = array(
 	'SiteMatrix' => array( 'مصفوفة الموقع', 'ويكيات ويكيميديا' ),
 );
 
-/** German
+/** German (Deutsch)
  * @author Raimond Spekking
  */
 $aliases['de'] = array(
@@ -40,7 +40,7 @@ $aliases['fi'] = array(
  * @author Rotem Liss
  */
 $aliases['he'] = array(
-    'SiteMatrix' => array( 'רשימת_אתרים', 'אתרי_ויקימדיה' ),
+	'SiteMatrix' => array( 'רשימת_אתרים', 'אתרי_ויקימדיה' ),
 );
 
 /** Croatian (Hrvatski) */
@@ -58,10 +58,10 @@ $aliases['nl'] = array(
 	'SiteMatrix' => array( 'WebsiteMatrix' ),
 );
 
-/** Norwegian (Norsk (bokmål))
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */
 $aliases['no'] = array(
-    'SiteMatrix' => array( 'Wikimedia-wikier' ),
+	'SiteMatrix' => array( 'Wikimedia-wikier' ),
 );
 

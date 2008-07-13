@@ -33,7 +33,7 @@ $aliases['fr'] = array(
  * @author Rotem Liss
  */
 $aliases['he'] = array(
-    'ImportUsers' => array( 'ייבוא_משתמשים' ),
+	'ImportUsers' => array( 'ייבוא_משתמשים' ),
 );
 
 /** Haitian (Kreyòl ayisyen) */
@@ -56,18 +56,18 @@ $aliases['nl'] = array(
 	'ImportUsers' => array( 'GebruikerImporteren' ),
 );
 
-/** Norwegian Nynorsk (Norsk (nynorsk))
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
  * @author Jon Harald Søby
  */
 $aliases['nn'] = array(
-    'ImportUsers' => array( 'Importer_brukarar' ),
+	'ImportUsers' => array( 'Importer_brukarar' ),
 );
 
-/** Norwegian (Norsk (bokmål))
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */
 $aliases['no'] = array(
-    'ImportUsers' => array( 'Importer_brukere' ),
+	'ImportUsers' => array( 'Importer_brukere' ),
 );
 
 /** Swedish (Svenska) */

@@ -33,7 +33,7 @@ $aliases['fi'] = array(
  * @author Rotem Liss
  */
 $aliases['he'] = array(
-    'AdvancedRandom' => array( 'אקראי_מתקדם' ),
+	'AdvancedRandom' => array( 'אקראי_מתקדם' ),
 );
 
 /** Haitian (Kreyòl ayisyen) */
@@ -46,10 +46,10 @@ $aliases['nl'] = array(
 	'AdvancedRandom' => array( 'UitgebreidWillekeurig' ),
 );
 
-/** Norwegian (Norsk (bokmål))
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */
 $aliases['no'] = array(
-    'AdvancedRandom' => array( 'Avansert_tilfeldig_side' ),
+	'AdvancedRandom' => array( 'Avansert_tilfeldig_side' ),
 );
 

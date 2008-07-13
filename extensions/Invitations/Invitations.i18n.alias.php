@@ -56,3 +56,8 @@ $aliases['nl'] = array(
 	'SpecialInvitations' => array( 'Uitnodigingen' ),
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
+$aliases['no'] = array(
+	'SpecialInvitations' => array( 'Invitasjoner' ),
+);
+

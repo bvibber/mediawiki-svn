@@ -31,9 +31,16 @@ $aliases['arz'] = array(
 	'ViewConfig' => array( 'عرض الإعدادات' ),
 );
 
+/** Southern Balochi (بلوچی مکرانی) */
 $aliases['bcc'] = array(
 	'Configure'  => array( 'تنظیم' ),
 	'ViewConfig' => array( 'چارگ تنظیم' ),
+);
+
+/** Lower Sorbian (Dolnoserbski) */
+$aliases['dsb'] = array(
+	'Configure'  => array( 'Konfigurěrowaś' ),
+	'ViewConfig' => array( 'Konfiguraciju pokazaś' ),
 );
 
 /** Finnish (Suomi) */
@@ -50,6 +57,12 @@ $aliases['fr'] = array(
 	'Configure'  => array( 'Configurer' ),
 	'Extensions' => array( 'Extensions' ),
 	'ViewConfig' => array( 'Voir la configuration', 'VoirConfiguration' ),
+);
+
+/** Galician (Galego) */
+$aliases['gl'] = array(
+	'Configure'  => array( 'Configurar' ),
+	'ViewConfig' => array( 'Ver a configuración' ),
 );
 
 /** Hebrew (עברית)
@@ -75,11 +88,44 @@ $aliases['ht'] = array(
 	'ViewConfig' => array( 'WèKonfig' ),
 );
 
+/** Indonesian (Bahasa Indonesia) */
+$aliases['id'] = array(
+	'Configure'  => array( 'Konfigurasi' ),
+	'ViewConfig' => array( 'Lihatkonfigurasi' ),
+);
+
+/** Ripoarisch (Ripoarisch) */
+$aliases['ksh'] = array(
+	'Configure'  => array( 'Enstellunge', 'Eshtällonge' ),
+	'ViewConfig' => array( 'Enstellunge Zeije', 'Eshtällonge Zeije', 'EnstellungeZeije', 'EshtällongeZeije' ),
+);
+
+/** Maltese (Malti) */
+$aliases['mt'] = array(
+	'Configure'  => array( 'Konfigurazzjoni' ),
+	'Extensions' => array( 'Estensjonijiet' ),
+	'ViewConfig' => array( 'UriKonfig' ),
+);
+
 /** Dutch (Nederlands) */
 $aliases['nl'] = array(
 	'Configure'  => array( 'Instellingen' ),
 	'Extensions' => array( 'Uitbreidingen' ),
 	'ViewConfig' => array( 'InstellingenBekijken' ),
+);
+
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
+$aliases['no'] = array(
+	'Configure'  => array( 'Konfigurer' ),
+	'Extensions' => array( 'Utvidelser' ),
+	'ViewConfig' => array( 'Vis konfigurasjon' ),
+);
+
+/** Portuguese (Português) */
+$aliases['pt'] = array(
+	'Configure'  => array( 'Configurar' ),
+	'Extensions' => array( 'Extenções' ),
+	'ViewConfig' => array( 'Ver configurações', 'Ver configuração' ),
 );
 
 /** Swedish (Svenska) */
