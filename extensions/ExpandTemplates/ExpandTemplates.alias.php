@@ -58,6 +58,11 @@ $aliases['la'] = array(
 	'ExpandTemplates' => array( 'Formulas resolvere' ),
 );
 
+/** Luxembourgish (Lëtzebuergesch) */
+$aliases['lb'] = array(
+	'ExpandTemplates' => array( 'Schablounen erweideren' ),
+);
+
 /** Malay (Bahasa Melayu) */
 $aliases['ms'] = array(
 	'ExpandTemplates' => array( 'Kembangkan_templat' ),

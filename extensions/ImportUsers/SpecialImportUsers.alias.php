@@ -46,6 +46,11 @@ $aliases['hu'] = array(
 	'ImportUsers' => array( 'Szerkesztők importálása' ),
 );
 
+/** Luxembourgish (Lëtzebuergesch) */
+$aliases['lb'] = array(
+	'ImportUsers' => array( 'Benotzer importéieren' ),
+);
+
 /** Malay (Bahasa Melayu) */
 $aliases['ms'] = array(
 	'ImportUsers' => array( 'Import_pengguna' ),

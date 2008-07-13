@@ -100,6 +100,13 @@ $aliases['ksh'] = array(
 	'ViewConfig' => array( 'Enstellunge Zeije', 'Eshtällonge Zeije', 'EnstellungeZeije', 'EshtällongeZeije' ),
 );
 
+/** Luxembourgish (Lëtzebuergesch) */
+$aliases['lb'] = array(
+	'Configure'  => array( 'Astellen' ),
+	'Extensions' => array( 'Erweiderungen' ),
+	'ViewConfig' => array( 'Astellunge weisen' ),
+);
+
 /** Maltese (Malti) */
 $aliases['mt'] = array(
 	'Configure'  => array( 'Konfigurazzjoni' ),

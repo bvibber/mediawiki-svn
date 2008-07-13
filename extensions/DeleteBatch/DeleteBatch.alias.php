@@ -41,6 +41,11 @@ $aliases['ht'] = array(
 	'DeleteBatch' => array( 'SiprimeLo' ),
 );
 
+/** Luxembourgish (Lëtzebuergesch) */
+$aliases['lb'] = array(
+	'DeleteBatch' => array( 'Läsch-Batch' ),
+);
+
 /** Dutch (Nederlands) */
 $aliases['nl'] = array(
 	'DeleteBatch' => array( 'PaginareeksVerwijderen' ),

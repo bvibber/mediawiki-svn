@@ -46,6 +46,11 @@ $aliases['hu'] = array(
 	'SpecialInvitations' => array( 'Meghívók' ),
 );
 
+/** Luxembourgish (Lëtzebuergesch) */
+$aliases['lb'] = array(
+	'SpecialInvitations' => array( 'Invitatiounen' ),
+);
+
 /** Malay (Bahasa Melayu) */
 $aliases['ms'] = array(
 	'SpecialInvitations' => array( 'Jemputan' ),

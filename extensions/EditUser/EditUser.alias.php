@@ -41,6 +41,11 @@ $aliases['ht'] = array(
 	'EditUser' => array( 'EditeItilizatè' ),
 );
 
+/** Luxembourgish (Lëtzebuergesch) */
+$aliases['lb'] = array(
+	'EditUser' => array( 'Benotzer änneren' ),
+);
+
 /** Dutch (Nederlands) */
 $aliases['nl'] = array(
 	'EditUser' => array( 'GebruikerBewerken' ),

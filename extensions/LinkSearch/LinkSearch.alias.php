@@ -58,6 +58,11 @@ $aliases['la'] = array(
 	'LinkSearch' => array( 'Quaerere nexus externos' ),
 );
 
+/** Luxembourgish (Lëtzebuergesch) */
+$aliases['lb'] = array(
+	'LinkSearch' => array( 'Weblink-Sich' ),
+);
+
 /** Malay (Bahasa Melayu) */
 $aliases['ms'] = array(
 	'LinkSearch' => array( 'Cari_pautan' ),

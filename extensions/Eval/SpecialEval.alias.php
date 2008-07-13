@@ -41,6 +41,11 @@ $aliases['ht'] = array(
 	'Eval' => array( 'Evalye' ),
 );
 
+/** Luxembourgish (Lëtzebuergesch) */
+$aliases['lb'] = array(
+	'Eval' => array( 'Bewertung' ),
+);
+
 /** Dutch (Nederlands) */
 $aliases['nl'] = array(
 	'Eval' => array( 'Eval' ),

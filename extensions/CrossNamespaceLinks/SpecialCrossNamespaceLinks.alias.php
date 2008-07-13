@@ -58,6 +58,11 @@ $aliases['la'] = array(
 	'CrossNamespaceLinks' => array( 'Nexus trans praefixa' ),
 );
 
+/** Luxembourgish (Lëtzebuergesch) */
+$aliases['lb'] = array(
+	'CrossNamespaceLinks' => array( 'Sàite mat Linken an aner Nimmraim' ),
+);
+
 /** Malay (Bahasa Melayu) */
 $aliases['ms'] = array(
 	'CrossNamespaceLinks' => array( 'Pautan_silang_ruang_nama' ),

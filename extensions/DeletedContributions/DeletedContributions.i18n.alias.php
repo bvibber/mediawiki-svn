@@ -68,6 +68,11 @@ $aliases['la'] = array(
 	'DeletedContributions' => array( 'Conlationes deletae', 'Conlationes usoris deletae' ),
 );
 
+/** Luxembourgish (Lëtzebuergesch) */
+$aliases['lb'] = array(
+	'DeletedContributions' => array( 'Geläschte Kontributiounen' ),
+);
+
 /** Malay (Bahasa Melayu) */
 $aliases['ms'] = array(
 	'DeletedContributions' => array( 'Sumbangan_dihapuskan' ),
