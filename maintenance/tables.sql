@@ -521,7 +521,8 @@ CREATE TABLE /*$wgDBprefix*/category (
   -- it has this name (in the Category namespace).
   cat_title varchar(255) binary NOT NULL,
 
-  -- The numbers of member pages (including categories and media), subcatego-
+  -- The numbers of member pages (including categories, media and pages 
+  -- belonging to a category redirecting to this category), subcatego-
   -- ries, and Image: namespace members, respectively.  These are signed to
   -- make underflow more obvious.  We make the first number include the second
   -- two for better sorting: subtracting for display is easy, adding for order-
@@ -529,6 +530,7 @@ CREATE TABLE /*$wgDBprefix*/category (
   cat_pages int signed NOT NULL default 0,
   cat_subcats int signed NOT NULL default 0,
   cat_files int signed NOT NULL default 0,
+  cat_redir_pages int signed NOT NULL default 0,
 
   -- Reserved for future use
   cat_hidden tinyint unsigned NOT NULL default 0,

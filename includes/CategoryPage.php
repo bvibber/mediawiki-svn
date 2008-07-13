@@ -231,7 +231,7 @@ class CategoryViewer {
 		$res = $dbr->select(
 			array( 'page', 'categorylinks', 'category' ),
 			array( 'page_title', 'page_namespace', 'page_len', 'page_is_redirect', 'cl_sortkey',
-				'cat_id', 'cat_redir', 'cat_title', 'cat_subcats', 'cat_pages', 'cat_files' ),
+				'cat_id', 'cat_redir', 'cat_title', 'cat_subcats', 'cat_pages', 'cat_files', 'cat_redir_pages' ),
 			array( $pageCondition,
 			       'cl_' . $linkedFrom => $cat_id ),
 			__METHOD__,

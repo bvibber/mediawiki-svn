@@ -124,7 +124,6 @@ class LinksUpdate {
 			$this->getTemplateInsertions( $existing ) );
 
 		# Category links
-		### existing doit être titres -> keys pour comparer avec this->mCategories
 		$existing = $this->getExistingCategories( );
 		
 		$categoryDeletes = $this->getCategoryDeletions( $existing );
@@ -145,9 +144,7 @@ class LinksUpdate {
 
 		# Invalidate all categories which were added, deleted or changed (set symmetric difference)
 		$categoryUpdates = $categoryInserts + $categoryDeletes;
-		### besoin des titres
 		$this->invalidateCategories( $categoryUpdates );
-		### ce serait mieux avec des IDs
 		$this->updateCategoryCounts( $categoryInserts, $categoryDeletes );
 
 		# Page properties
@@ -300,8 +297,30 @@ class LinksUpdate {
 	 */
 	function updateCategoryCounts( $added, $deleted ) {
 		$a = new Article($this->mTitle);
-		$a->updateCategoryCounts(
-			array_keys( $added ), array_keys( $deleted )
+		$added_ids = array();
+		$added_redir_ids = array();
+		foreach ( $added as $title => $sort ) {
+			$cat = $this->mCatObjects[$title];
+			$id = $cat->getID();
+			$added_ids [] = $id;
+			$redir = $cat->getRedir();
+			if ( $redir != null ) {
+				$added_redir_ids[] = $redir;
+			}
+		}
+		$deleted_ids = array();
+		$deleted_redir_ids = array();
+		foreach ( $deleted as $title => $sort ) {
+			$cat = $this->mCatObjects[$title];
+			$id = $cat->getID();
+			$deleted_ids [] = $id;
+			$redir = $cat->getRedir();
+			if ( $redir != null ) {
+				$deleted_redir_ids[] = $redir;
+			}
+		}
+		$a->updateCategoryCounts( 
+			$added_ids, $deleted_ids, $added_redir_ids, $deleted_redir_ids
 		);
 	}
 	

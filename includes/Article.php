@@ -116,8 +116,9 @@ class Article {
 			$dbw->update(
 				'category',
 				array( 'cat_redir' => $to_id),
-				array( 'cat_title' => $this->mTitle->getDBKey() ),
+				array( 'cat_id' => $cur_id ),
 				__METHOD__ );
+			$to->addRedirFrom( $cur );
 			$update = new CategoryLinksUpdate( $retval, $cur_id, $cur_id, $to_id );
 			$update->doUpdate();
 		}
@@ -1206,8 +1207,9 @@ class Article {
 					$dbw->update(
 						'category',
 						array( 'cat_redir' => $to_id),
-						array( 'cat_title' => $this->mTitle->getDBKey() ),
+						array( 'cat_id' => $cur_id ),
 						__METHOD__ );
+					$to_id->addRedirFrom( $cur );
 					$target = $cur->getTarget();
 					$update = new CategoryLinksUpdate( $redirectTitle, $cur_id, $target, $to_id );
 					$update->doUpdate();
@@ -2383,14 +2385,18 @@ class Article {
 
 		# Fix category table counts
 		$cats = array();
+		$cats_redir = array();
 		$res = $dbw->select( array( 'categorylinks', 'category' ),
-			'cat_title',
+			'cat_id', 'cat_redir',
 			array( 'cl_from' => $id, 'cl_inline=cat_id' ), 
 			__METHOD__ );
 		foreach( $res as $row ) {
-			$cats []= $row->cat_title;
+			$cats [] = $row->cat_id;
+			if ( $row->cat_redir != null ) {
+				$cats_redir [] = $row->cat_redir;
+			}
 		}
-		$this->updateCategoryCounts( array(), $cats );
+		$this->updateCategoryCounts( array(), $cats, array(), $cats_redir );
 
 		# Now that it's safely backed up, delete it
 		$dbw->delete( 'page', array( 'page_id' => $id ), __METHOD__);
@@ -3483,11 +3489,13 @@ class Article {
 	 * 
 	 * It is assumed that all categories have already an entry in the category table.
 	 *
-	 * @param $added array   The names of categories that were added
-	 * @param $deleted array The names of categories that were deleted
+	 * @param $added array   The ids of categories that were added
+	 * @param $deleted array The ids of categories that were deleted
+	 * @param $added_redir array The ids of categories that were added through a category redirect
+	 * @param $removed_redir array The ids of categories that were removed through a category redirect
 	 * @return null
 	 */
-	public function updateCategoryCounts( $added, $deleted ) {
+	public function updateCategoryCounts( $added, $deleted, $added_redir, $removed_redir ) {
 		$ns = $this->mTitle->getNamespace();
 		$dbw = wfGetDB( DB_MASTER );
 
@@ -3508,7 +3516,7 @@ class Article {
 			$dbw->update(
 				'category',
 				$addFields,
-				array( 'cat_title' => $added ),
+				array( 'cat_id' => $added ),
 				__METHOD__
 			);
 		}
@@ -3516,7 +3524,27 @@ class Article {
 			$dbw->update(
 				'category',
 				$removeFields,
-				array( 'cat_title' => $deleted ),
+				array( 'cat_id' => $deleted ),
+				__METHOD__
+			);
+		}
+
+		$addFields[] = 'cat_redir_pages = cat_redir_pages + 1';
+		$removeFields[] = 'cat_redir_pages = cat_redir_pages - 1';
+
+		if ( $added_redir ) {
+			$dbw->update(
+				'category',
+				$addFields,
+				array( 'cat_id' => $added_redir ),
+				__METHOD__
+			);
+		}
+		if ( $deleted_redir ) {
+			$dbw->update(
+				'category',
+				$removeFields,
+				array( 'cat_id' => $deleted_redir ),
 				__METHOD__
 			);
 		}
