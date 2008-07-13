@@ -113,15 +113,18 @@ $messages['niu'] = array(
 /** Afrikaans (Afrikaans)
  * @author SPQRobin
  * @author Arnobarnard
+ * @author Naudefj
  */
 $messages['af'] = array(
-	'sign-realname'           => 'Naam:',
-	'sign-city'               => 'Stad:',
-	'sign-email'              => 'E-pos adres:',
-	'sign-viewfield-realname' => 'Naam',
-	'sign-viewfield-city'     => 'Stad',
-	'sign-viewfield-email'    => 'E-pos',
-	'sign-viewfield-options'  => 'Opsies',
+	'sign-realname'                => 'Naam:',
+	'sign-city'                    => 'Stad:',
+	'sign-email'                   => 'E-pos adres:',
+	'sign-viewfield-realname'      => 'Naam',
+	'sign-viewfield-city'          => 'Stad',
+	'sign-viewfield-email'         => 'E-pos',
+	'sign-viewfield-options'       => 'Opsies',
+	'sign-viewfield-reviewcomment' => 'Opmerking',
+	'sign-review-comment'          => 'Opmerking',
 );
 
 /** Aragonese (Aragonés)
@@ -919,6 +922,8 @@ $messages['lb'] = array(
 	'sign-list-hidebday'            => 'Den Alter net weisen',
 	'sign-list-hideemail'           => "D'E-Mailadress net weisen",
 	'sign-submit'                   => 'Dokument ënnerschreiwen',
+	'sig-success'                   => "Dir hutt d'Dokument ënnerschriwwen",
+	'sign-viewfield-timestamp'      => 'Datum an Auerzäit',
 	'sign-viewfield-realname'       => 'Numm',
 	'sign-viewfield-address'        => 'Adress',
 	'sign-viewfield-city'           => 'Stad/Gemeng',
@@ -930,14 +935,23 @@ $messages['lb'] = array(
 	'sign-viewfield-email'          => 'E-Mail',
 	'sign-viewfield-age'            => 'Alter',
 	'sign-viewfield-options'        => 'Optiounen',
+	'sign-sigadmin-currentlyopen'   => 'Ënnerschreiwen ass elo fir dëst Dokument ageschalt.',
+	'sign-sigadmin-close'           => 'Ënnerschreiwen ausschalten',
+	'sign-sigadmin-currentlyclosed' => 'Ënnerschreiwen ass elo fir dëst Dokument ausgeschalt.',
+	'sign-sigadmin-open'            => 'Ënnerchreiwen aschalten',
 	'sign-signatures'               => 'Ënnerschreften',
+	'sign-sigadmin-closesuccess'    => 'ënnerschreiwen ausgeschalt',
+	'sign-sigadmin-opensuccess'     => 'Ënnerschreiwen agechalt',
 	'sign-viewsignatures'           => 'Ënnerschrëfte weisen',
 	'sign-closed'                   => 'zou',
 	'sig-anonymous'                 => '<i>Anonym</i>',
 	'sig-private'                   => "''Privat''",
 	'sign-sigdetails'               => 'Detailer vun der Ënnerschrëft',
+	'sign-emailto'                  => '<a href="mailto:$1">$1</a>',
+	'sign-viewfield-stricken'       => 'Duerchgestrach',
 	'sign-viewfield-reviewedby'     => 'Reviseur',
 	'sign-viewfield-reviewcomment'  => 'Bemierkung',
+	'sign-detail-strike'            => 'Ënnerschreft duerchsträichen',
 	'sign-review-comment'           => 'Bemierkung',
 	'sign-uniquequery-similarname'  => 'Ähnleche Numm',
 	'sign-uniquequery-similarphone' => 'Ähnlech Telefonsnummer',
@@ -1425,8 +1439,14 @@ $messages['os'] = array(
 /** Polish (Polski)
  * @author McMonster
  * @author Derbeth
+ * @author Maikking
  */
 $messages['pl'] = array(
+	'signdocument'             => 'Podpisz dokument',
+	'sign-nodocselected'       => 'Wybierz dokument do podpisu.',
+	'sign-selectdoc'           => 'Dokument:',
+	'sign-docheader'           => '<div class="noarticletext">Użyj tego formularza w celu podpisania dokumentu "[[$1]]," wyświetlonego poniżej. Przed podpisaniem, przeczytaj cały dokument dokładnie. Jeżeli chcesz go poprzeć, wypełnij wymagane pola w celu podpisania go.</div>',
+	'sign-error-nosuchdoc'     => 'Szukany dokument ($1) nie istnieje.',
 	'sign-realname'            => 'Nazwisko:',
 	'sign-address'             => 'Ulica:',
 	'sign-city'                => 'Miasto:',
@@ -1438,6 +1458,7 @@ $messages['pl'] = array(
 	'sign-email'               => 'Adres e-mail:',
 	'sign-indicates-req'       => '<small><i><font color="red">*</font> oznacza wymagane pole.</i></small>',
 	'sign-submit'              => 'Podpisz dokument',
+	'sig-success'              => 'Proces podpisywania dokumentu zakończył się powodzeniem.',
 	'sign-view-selectfields'   => '<b>Pola do wyświetlenia:</b>',
 	'sign-viewfield-timestamp' => 'Znacznik czasu',
 	'sign-viewfield-address'   => 'Adres',
@@ -1451,6 +1472,16 @@ $messages['pl'] = array(
 	'sign-viewfield-options'   => 'Opcje',
 	'sign-sigadmin-close'      => 'Wyłącz podpisywanie',
 	'sign-signatures'          => 'Podpisy',
+	'sign-iptools'             => '<span class="plainlinksneverexpand"><!--
+-->[[User:$1|$1]] ([[User talk:$1|dyskusja]] • <!--
+-->[[Special:Contributions/$1|wkład]] • <!--
+-->[http://www.dnsstuff.com/tools/whois.ch?domain={{urlencode:$1}}&cache=off&email=on WHOIS] • <!--
+-->[http://www.dnsstuff.com/tools/ptr.ch?ip={{urlencode:$1}}&cache=off&email=on RDNS] • <!--
+-->[http://www.robtex.com/rbls/$1.html RBLs] • <!--
+-->[[Special:Blockip/$1|zablokuj]] • <!--
+-->[{{fullurl:Special:Log/block|page=User:{{urlencode:$1}}}} blokady] • <!--
+-->[{{fullurl:Special:CheckUser|ip={{urlencode:$1}}}} sprawdź IP])<!--
+--></span>',
 	'sign-review-comment'      => 'Komentarz',
 );
 

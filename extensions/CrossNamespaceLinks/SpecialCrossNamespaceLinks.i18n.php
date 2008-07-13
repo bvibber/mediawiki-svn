@@ -16,9 +16,13 @@ $messages['en'] = array(
 
 /** Afrikaans (Afrikaans)
  * @author SPQRobin
+ * @author Naudefj
  */
 $messages['af'] = array(
-	'crossnamespacelinks' => 'Skakels oor naamruimtes',
+	'crossnamespacelinks'         => 'Skakels oor naamruimtes',
+	'crossnamespacelinks-desc'    => '[[Special:CrossNamespaceLinks|Lys skakels oor naamruimtes]] wat nie op {{SITENAME}} behoort te bestaan nie',
+	'crossnamespacelinks-summary' => "Hierdie bladsy wys 'n lys van skakels vanaf 'n bladsy in die hoof naamruimte na ander naamruimtes (met die uitsondering van die {ns:special}}, {{ns:talk}}, {{ns:project}}, en {{ns:template}} naamruimtes), wat nie behoort te bestaan nie.",
+	'crossnamespacelinkstext'     => '$1: $2 {{PLURAL:$2|skakel|skakels}} na $3',
 );
 
 /** Aragonese (Aragonés)
@@ -691,9 +695,12 @@ $messages['sq'] = array(
 	'crossnamespacelinkstext'     => '$1: $2 lidhje tek hapësira $3',
 );
 
-/** Serbian Cyrillic ekavian (ћирилица) */
+/** Serbian Cyrillic ekavian (ћирилица)
+ * @author Millosh
+ */
 $messages['sr-ec'] = array(
 	'crossnamespacelinks'         => 'Везе ка именским просторима',
+	'crossnamespacelinks-desc'    => '[[Special:CrossNamespaceLinks|Спиак веза преко именских простора]] које не би требало да постоје на сајту {{SITENAME}}',
 	'crossnamespacelinks-summary' => 'Ова страница пружа списак веза са странице у главном именском простору ка страници у неком другом именском простору (осим за {{ns:special}}, {{ns:talk}}, {{ns:project}} и {{ns:template}} именске просторе), чија се употреба не препоручује.',
 	'crossnamespacelinkstext'     => '$1: $2 {{PLURAL:$2|веза|везе|веза}} ка $3 именском простору',
 );

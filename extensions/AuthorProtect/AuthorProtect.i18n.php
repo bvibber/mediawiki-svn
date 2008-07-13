@@ -141,6 +141,25 @@ $messages['de'] = array(
 	'restriction-level-author' => 'Autor-geschützt',
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'authorprotect'            => 'Bok pśeśiwo njeawtoram šćitaś',
+	'authorprotect-desc'       => 'Dowólujo awtoroju boka jen pśed drugimi wužywarjami šćitaś',
+	'authorprotect-notauthor'  => 'Njejsy awtor toś togo boka',
+	'authorprotect-confirm'    => 'Šćitne stopnje změniś',
+	'authorprotect-edit'       => 'Wobźěłanje na awtorow wobgranicowaś',
+	'authorprotect-move'       => 'Pśesunjenje na awtorow wobgranicowaś',
+	'authorprotect-expiry'     => 'Cas pśepadnjenja',
+	'authorprotect-reason'     => 'Pśicyna',
+	'authorprotect-intro'      => 'Toś ten formular za zastajenje boka pśeśiwo njeawtoram wužywaś',
+	'authorprotect-success'    => 'Šćit wuspěšny!',
+	'authorprotect-failure'    => 'Šćit njewuspěšny',
+	'protect-level-author'     => 'Pśed njeawtorami šćitaś',
+	'restriction-level-author' => 'Za awtorow šćitany',
+);
+
 /** Greek (Ελληνικά)
  * @author Consta
  */

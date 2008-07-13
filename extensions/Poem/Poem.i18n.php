@@ -11,6 +11,13 @@ $messages['en'] = array(
 	'poem-desc' => 'Adds <tt>&lt;poem&gt;</tt> tag for poem formatting',
 );
 
+/** Afrikaans (Afrikaans)
+ * @author Naudefj
+ */
+$messages['af'] = array(
+	'poem-desc' => "Maak 'n <tt>&lt;poem&gt;</tt> etiket beskikbaar vir die formatering van poësie",
+);
+
 /** Aragonese (Aragonés)
  * @author Juanpabl
  */
@@ -287,6 +294,13 @@ $messages['sah'] = array(
  */
 $messages['sk'] = array(
 	'poem-desc' => 'Pridáva značku <tt>&lt;poem&gt;</tt> pre formátovanie básní',
+);
+
+/** Serbian Cyrillic ekavian (ћирилица)
+ * @author Millosh
+ */
+$messages['sr-ec'] = array(
+	'poem-desc' => 'Додаје <tt>&lt;poem&gt;</tt> ознаку за форматирање песме.',
 );
 
 /** Swedish (Svenska)

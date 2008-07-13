@@ -44,10 +44,18 @@ $messages['niu'] = array(
 /** Afrikaans (Afrikaans)
  * @author Arnobarnard
  * @author SPQRobin
+ * @author Naudefj
  */
 $messages['af'] = array(
-	'linksearch'    => 'Soek webskakels',
-	'linksearch-ok' => 'Soek',
+	'linksearch'       => 'Soek webskakels',
+	'linksearch-desc'  => "[[Special:Linksearch|Soek bladsye met eksterne skakels]] wat aan 'n bepaald patroon voldoen",
+	'linksearch-pat'   => 'Soekpatroon:',
+	'linksearch-ns'    => 'Naamruimte:',
+	'linksearch-ok'    => 'Soek',
+	'linksearch-text'  => 'Patrone soos "*.wikipedia.org" of "*.org" kan gebruik word.<br />
+Ondersteunde protokolle: <tt>$1</tt>',
+	'linksearch-line'  => '$1 geskakel vanaf $2',
+	'linksearch-error' => 'Patrone kan slegs aan die begin van die rekenaarnaam geplaas word.',
 );
 
 /** Aragonese (Aragonés)
@@ -532,9 +540,10 @@ $messages['hy'] = array(
 
 /** Interlingua (Interlingua)
  * @author Malafaya
+ * @author McDutchie
  */
 $messages['ia'] = array(
-	'linksearch-ok' => 'Recercar',
+	'linksearch-ok' => 'Cercar',
 );
 
 /** Indonesian (Bahasa Indonesia)
@@ -1065,9 +1074,16 @@ $messages['sr'] = array(
 
 /** Serbian Cyrillic ekavian (ћирилица)
  * @author Sasa Stefanovic
+ * @author Millosh
  */
 $messages['sr-ec'] = array(
-	'linksearch-ok' => 'Претрага',
+	'linksearch'       => 'претрага веб линкова',
+	'linksearch-desc'  => '[[Special:Linksearch|Пронађи стране са спољашњим везама]] које се поклапају са одређеним обрасцем.',
+	'linksearch-pat'   => 'Образац претраге:',
+	'linksearch-ns'    => 'Именски простор:',
+	'linksearch-ok'    => 'Претрага',
+	'linksearch-line'  => 'страна $1 је повезана са стране $2',
+	'linksearch-error' => 'Џокери се могу појавити само на почетку имена хоста.',
 );
 
 /** Swati (SiSwati)

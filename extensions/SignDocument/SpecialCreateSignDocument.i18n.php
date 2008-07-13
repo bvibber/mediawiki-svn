@@ -43,10 +43,12 @@ $messages['mhr'] = array(
 /** Afrikaans (Afrikaans)
  * @author Arnobarnard
  * @author SPQRobin
+ * @author Naudefj
  */
 $messages['af'] = array(
 	'createsigndoc-pagename' => 'Bladsy:',
 	'createsigndoc-email'    => 'E-pos adres',
+	'createsigndoc-create'   => 'Skep',
 );
 
 /** Old English (Anglo-Saxon)
@@ -397,18 +399,20 @@ $messages['la'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
-	'createsigndoc-pagename'          => 'Säit:',
-	'createsigndoc-allowedgroup'      => 'Erlaabte Grupp:',
-	'createsigndoc-email'             => 'E-mail Adress:',
-	'createsigndoc-extaddress'        => 'Stad, Regioun/Bundesstaat, Land:',
-	'createsigndoc-phone'             => 'Telefonsnummer:',
-	'createsigndoc-bday'              => 'Geburtsdag:',
-	'createsigndoc-minage'            => 'Mindesalter:',
-	'createsigndoc-introtext'         => 'Aféierung:',
-	'createsigndoc-hidden'            => 'Verstoppt',
-	'createsigndoc-optional'          => 'Fakultativ',
-	'createsigndoc-error-generic'     => 'Feeler: $1',
-	'createsigndoc-error-pagenoexist' => "Feeler: D'Säit [[$1]] gëtt et net.",
+	'createsigndocument'                 => 'Ënnerschreiwen vun Dokumenter erméiglechen',
+	'createsigndoc-pagename'             => 'Säit:',
+	'createsigndoc-allowedgroup'         => 'Erlaabte Grupp:',
+	'createsigndoc-email'                => 'E-mail Adress:',
+	'createsigndoc-extaddress'           => 'Stad, Regioun/Bundesstaat, Land:',
+	'createsigndoc-phone'                => 'Telefonsnummer:',
+	'createsigndoc-bday'                 => 'Geburtsdag:',
+	'createsigndoc-minage'               => 'Mindesalter:',
+	'createsigndoc-introtext'            => 'Aféierung:',
+	'createsigndoc-hidden'               => 'Verstoppt',
+	'createsigndoc-optional'             => 'Fakultativ',
+	'createsigndoc-error-generic'        => 'Feeler: $1',
+	'createsigndoc-error-pagenoexist'    => "Feeler: D'Säit [[$1]] gëtt et net.",
+	'createsigndoc-error-alreadycreated' => 'Dokument ënnerschreiwen "$1" gëtt et schonn',
 );
 
 /** Malayalam (മലയാളം)
@@ -564,12 +568,17 @@ $messages['os'] = array(
 
 /** Polish (Polski)
  * @author Derbeth
+ * @author Maikking
  */
 $messages['pl'] = array(
 	'createsigndoc-pagename'          => 'Strona:',
 	'createsigndoc-email'             => 'Adres e-mail:',
+	'createsigndoc-address'           => 'Adres:',
+	'createsigndoc-extaddress'        => 'Miejscowość, kraj:',
 	'createsigndoc-phone'             => 'Numer telefonu:',
 	'createsigndoc-bday'              => 'Data urodzenia:',
+	'createsigndoc-minage'            => 'Minimalny wiek:',
+	'createsigndoc-create'            => 'Utwórz',
 	'createsigndoc-error-generic'     => 'Błąd: $1',
 	'createsigndoc-error-pagenoexist' => 'Błąd: Strona [[$1]] nie istnieje',
 );

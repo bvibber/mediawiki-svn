@@ -207,6 +207,7 @@ $messages['ar'] = array(
 	'configure-js-remove-row'             => 'احذف هذه المدخلة',
 	'configure-no-diff'                   => 'لا توجد تغييرات بين النسخ المختارة.',
 	'configure-no-transwiki'              => 'أنت غير مسموح لك بتغيير الإعدادات في الويكيات الأخرى',
+	'configure-old'                       => 'النسخ القديمة',
 	'configure-section-general'           => 'اعدادات عامة',
 	'configure-section-paths'             => 'المسارات',
 	'configure-section-db'                => 'قاعدة البيانات',
@@ -218,7 +219,9 @@ $messages['ar'] = array(
 	'configure-section-zh-conversion'     => 'تحويل صيني',
 	'configure-section-html'              => 'إتش تي إم إل',
 	'configure-section-debug'             => 'تنقيح',
+	'configure-section-site'              => 'تخصيص الموقع',
 	'configure-section-ajax'              => 'أجاكس',
+	'configure-section-css-js'            => 'CSS وجافاسكريبت',
 	'configure-section-namespaces'        => 'نطاقات',
 	'configure-section-stats'             => 'إحصاءات الموقع',
 	'configure-section-skin'              => 'واجهات',
@@ -258,12 +261,20 @@ $messages['ar'] = array(
 	'configure-section-copyright'         => 'حقوق نشر',
 	'configure-section-misc'              => 'أخرى',
 	'configure-section-mw-extensions'     => 'امتدادت ميدياويكي',
+	'configure-select-wiki'               => 'اختيار الويكي',
+	'configure-select-wiki-submit'        => 'تأكيد',
 	'configure-setting-not-available'     => 'هذا الاعداد غير متاح في هذه النسخة من ميدياويكي',
 	'configure-view'                      => 'انظر',
+	'extensions'                          => 'ضبط الامتدادات',
 	'right-configure'                     => 'اضبط الويكي',
 	'right-configure-all'                 => 'اضبط كل اعدادات الويكي',
+	'right-extensions'                    => 'ضبد الامتدادات',
+	'right-extensions-all'                => 'ضبط متقدم للامتدادات',
+	'right-extensions-interwiki'          => 'ضبط امتدادات الويكي الأجنبي',
 	'right-viewconfig'                    => 'رؤية إعدادت الويكي',
 	'right-viewconfig-all'                => 'رؤية كل إعدادات الويكي',
+	'right-viewconfig-interwiki'          => 'رؤية إعدادات الويكي الأجنبي',
+	'viewconfig'                          => 'رؤية إعدادات الويكي',
 );
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
@@ -770,6 +781,7 @@ Por favor, créeo ou tróqueo para usar esta extensión.',
 	'configure-no-old'                    => 'Non hai dispoñible ningunha versión vella da configuración',
 	'configure-no-setup'                  => 'Ten que chamar explicitamente <code>efConfigureSetup()</code> no seu ficheiro LocalSettings.php para usar esta extensión.',
 	'configure-no-transwiki'              => 'Non ten permiso para cambiar as configuracións noutros wikis',
+	'configure-old'                       => 'Versións vellas',
 	'configure-old-versions'              => 'Listaxe de versións vellas da configuración:',
 	'configure-old-not-available'         => 'A versión vella das configuracións que solicitou, $1, non está dispoñible',
 	'configure-saved'                     => 'A configuración foi gardada',
@@ -822,16 +834,24 @@ Por favor, créeo ou tróqueo para usar esta extensión.',
 	'configure-section-htcp'              => 'HTCP multicanle',
 	'configure-section-misc'              => 'Varios',
 	'configure-section-mw-extensions'     => 'Extensións MediaWiki',
+	'configure-select-wiki'               => 'Selección do wiki',
+	'configure-select-wiki-available'     => 'Valores autorizados: $1',
+	'configure-select-wiki-desc'          => 'Seleccione o wiki que queira configurar.',
+	'configure-select-wiki-submit'        => 'Validar',
 	'configure-setting-not-available'     => 'A configuración non está dispoñible nesta versión de MediaWiki',
+	'configure-transwiki-not-in-range'    => 'O wiki solicitado, $1, non está nos valores permitidos ($2).',
 	'configure-view'                      => 'Ver',
 	'configure-view-not-allowed'          => 'Non ten permiso para ver este parámetro',
 	'extensions'                          => 'Configurar as extensións',
 	'right-configure'                     => 'Configurar o wiki',
 	'right-configure-all'                 => 'Configurar todos os parámetros do wiki',
+	'right-configure-interwiki'           => 'Configurar as características do wiki estranxeiro',
 	'right-extensions'                    => 'Configurar as extensións',
 	'right-extensions-all'                => 'Configuración avanzada das extensións',
+	'right-extensions-interwiki'          => 'Configurar as extensións do wiki estranxeiro',
 	'right-viewconfig'                    => 'Ver a configuración do wiki',
 	'right-viewconfig-all'                => 'Ver toda a configuración do wiki',
+	'right-viewconfig-interwiki'          => 'Ver a configuración do wiki estranxeiro',
 	'viewconfig'                          => 'Ver a configuración do wiki',
 );
 
@@ -908,6 +928,13 @@ $messages['hi'] = array(
 $messages['hil'] = array(
 	'configure-section-email'        => 'E-mail',
 	'configure-section-specialpages' => 'Pinasahi nga mga panid',
+);
+
+/** Croatian (Hrvatski)
+ * @author Dalibor Bosits
+ */
+$messages['hr'] = array(
+	'configure-section-category' => 'Kategorije',
 );
 
 /** Armenian (Հայերեն)
@@ -1615,6 +1642,7 @@ $messages['os'] = array(
  * @author Sp5uhe
  * @author McMonster
  * @author Wpedzich
+ * @author Maikking
  */
 $messages['pl'] = array(
 	'configure'                           => 'Konfiguracja wiki',
@@ -1623,6 +1651,13 @@ $messages['pl'] = array(
 	'configure-desc-key'                  => 'Klucz',
 	'configure-desc-ns'                   => 'Przestrzenie nazw',
 	'configure-desc-val'                  => 'Wartość',
+	'configure-edit-core'                 => 'MediaWiki',
+	'configure-edit-ext'                  => 'Rozszerzenia',
+	'configure-ext-doc'                   => 'Zobacz dokumentację techniczną online',
+	'configure-ext-schemachange'          => "'''Ostrzeżenie:''' to rozszerzenie do prawidłowego działania wymaga aktualizacji bazy danych!",
+	'configure-ext-settings'              => 'Ustawienia',
+	'configure-ext-use-extension'         => 'Użyj tego rozszerzenia',
+	'configure-ext-use'                   => 'Zastosuj',
 	'configure-summary'                   => 'Ta strona specjalna pozwala na konfigurowanie wiki. Zobacz stronę [http://www.mediawiki.org/wiki/Manual:Configuration_settings ustawienia konfiguracji], jeśli potrzebujesz więcej informacji.',
 	'configure-btn-save'                  => 'Zapisz ustawienia',
 	'configure-directory-not-writable'    => 'Brak uprawnień do zapisu w katalogu przechowywania ustawień <tt>$1</tt>.
@@ -1640,6 +1675,7 @@ Utwórz katalog lub wybierz inny, jeśli chcesz korzystać z tego rozszerzenia.'
 	'configure-no-old'                    => 'Brak dostępnych starych wersji konfiguracji',
 	'configure-no-setup'                  => 'Wstaw jawne wywołanie funkcji <code>efConfigureSetup()</code> w pliku LocalSettings.php by korzystać z tego rozszerzenia.',
 	'configure-no-transwiki'              => 'Nie masz dostępu do zmian ustawień na innych wiki',
+	'configure-old'                       => 'Stare wersje',
 	'configure-old-versions'              => 'Spis starych wersji konfiguracji',
 	'configure-old-not-available'         => 'Wybrana, stara wersja ustawień $1, nie jest dostępna',
 	'configure-saved'                     => 'Konfiguracja została zapisana',
@@ -1691,11 +1727,20 @@ Utwórz katalog lub wybierz inny, jeśli chcesz korzystać z tego rozszerzenia.'
 	'configure-section-copyright'         => 'Prawa autorskie',
 	'configure-section-htcp'              => 'Multicast HTCP',
 	'configure-section-misc'              => 'Różne',
+	'configure-section-mw-extensions'     => 'Rozszerzenia MediaWiki',
+	'configure-select-wiki'               => 'Wybór wiki',
+	'configure-select-wiki-desc'          => 'Wybierz wiki do konfiguracji.',
+	'configure-select-wiki-submit'        => 'Potwierdź',
 	'configure-setting-not-available'     => 'Opcja nie jest dostępna w tej wersji MediaWiki',
 	'configure-view'                      => 'Zobacz',
 	'configure-view-not-allowed'          => 'Nie masz uprawnień do przeglądania tych ustawień',
+	'extensions'                          => 'Konfiguruj rozszerzenia',
 	'right-configure'                     => 'Konfiguracja wiki',
 	'right-configure-all'                 => 'Konfiguracja wszystkich ustawień wiki',
+	'right-configure-interwiki'           => 'Konfiguruj ustawienia innej wiki',
+	'right-extensions'                    => 'Konfiguruj rozszerzenia',
+	'right-extensions-all'                => 'Zaawansowana konfiguracja rozszerzeń',
+	'right-extensions-interwiki'          => 'Konfiguruj rozszerzenia innych wiki',
 	'right-viewconfig'                    => 'Przegląd konfiguracji wiki',
 	'right-viewconfig-all'                => 'Przegląd pełnej konfiguracji wiki',
 	'viewconfig'                          => 'Przegląd konfiguracji wiki',
@@ -1797,6 +1842,7 @@ $messages['rif'] = array(
 /** Russian (Русский)
  * @author Александр Сигачёв
  * @author Flrn
+ * @author Innv
  */
 $messages['ru'] = array(
 	'configure'                           => 'Настройка вики',
@@ -1805,6 +1851,8 @@ $messages['ru'] = array(
 	'configure-desc-key'                  => 'Ключ',
 	'configure-desc-ns'                   => 'Пространства имён',
 	'configure-desc-val'                  => 'Значение',
+	'configure-edit-ext'                  => 'Расширения',
+	'configure-ext-settings'              => 'Настройки',
 	'configure-summary'                   => 'Эта служебная страница позволяет вам настраивать вики, подробнее см. [http://www.mediawiki.org/wiki/Manual:Configuration_settings Описание настроек].',
 	'configure-btn-save'                  => 'Сохранить настройки',
 	'configure-directory-not-writable'    => 'Директория <tt>$1</tt>, используемая для хранения настроек, не доступна для записи.
@@ -2079,6 +2127,7 @@ För att använda det här programtillägget måste du skapa den eller byta den.
 	'configure-no-old'                    => 'Ingen gammal version av konfigurationen finns tillgänglig.',
 	'configure-no-setup'                  => 'Du måste anropa funktionen <code>efConfigureSetup()</code> i LocalSettings.php för att kunna använda det här programtillägget.',
 	'configure-no-transwiki'              => 'Du har inte behörighet att ändra inställningar på andra wikier',
+	'configure-old'                       => 'Gamla versioner',
 	'configure-old-versions'              => 'Lista över gamla versioner av konfigureringen:',
 	'configure-old-not-available'         => 'Den version av inställningarna som du angav, $1, är inte tillgänglig.',
 	'configure-saved'                     => 'Konfigureringen har sparats',
@@ -2132,16 +2181,24 @@ För att använda det här programtillägget måste du skapa den eller byta den.
 	'configure-section-htcp'              => 'HTCP-multicast',
 	'configure-section-misc'              => 'Diverse',
 	'configure-section-mw-extensions'     => 'MediaWiki programtillägg',
+	'configure-select-wiki'               => 'Val av wiki',
+	'configure-select-wiki-available'     => 'Tillåtna värden: $1',
+	'configure-select-wiki-desc'          => 'Välj den wiki du vill konfigurera.',
+	'configure-select-wiki-submit'        => 'Validera',
 	'configure-setting-not-available'     => 'Inställningen är inte tillgänglig i den här versionen av MediaWiki',
+	'configure-transwiki-not-in-range'    => 'Den valda wikin, $1, finns inte bland tillåtna värden ($2).',
 	'configure-view'                      => 'Se',
 	'configure-view-not-allowed'          => 'Du är inte tillåten att se den här inställningen',
 	'extensions'                          => 'Konfigurera programtilläggen',
 	'right-configure'                     => 'Konfigurera wikin',
 	'right-configure-all'                 => 'Konfigurera alla inställningar på wikin',
+	'right-configure-interwiki'           => 'Konfigurera främmande wiki-inställningar',
 	'right-extensions'                    => 'Konfigurera programtilläggen',
 	'right-extensions-all'                => 'Avancerad inställning av programtilläggen',
+	'right-extensions-interwiki'          => 'Konfigurera främmande wiki-programtillägg',
 	'right-viewconfig'                    => 'Visa wikiinställningar',
 	'right-viewconfig-all'                => 'Visa alla wikiinställningar',
+	'right-viewconfig-interwiki'          => 'Visa främmande wiki-konfiguration',
 	'viewconfig'                          => 'Visa wikikonfigurering',
 );
 
@@ -2224,6 +2281,7 @@ $messages['vec'] = array(
 
 /** Vietnamese (Tiếng Việt)
  * @author Vinhtantran
+ * @author Minh Nguyen
  */
 $messages['vi'] = array(
 	'configure'                           => 'Cấu hình wiki',
@@ -2232,6 +2290,13 @@ $messages['vi'] = array(
 	'configure-desc-key'                  => 'Khóa',
 	'configure-desc-ns'                   => 'Không gian tên',
 	'configure-desc-val'                  => 'Giá trị',
+	'configure-edit-core'                 => 'MediaWiki',
+	'configure-edit-ext'                  => 'Phần mở rộng',
+	'configure-ext-doc'                   => 'Xem tài liệu trực tuyến',
+	'configure-ext-schemachange'          => "'''Cảnh báo:''' có thể cần cập nhật cơ sở dữ liệu để cho phần mở rộng này hoạt động tốt!",
+	'configure-ext-settings'              => 'Tùy chọn',
+	'configure-ext-use-extension'         => 'Sử dụng phần mở rộng này',
+	'configure-ext-use'                   => 'Sử dụng',
 	'configure-summary'                   => 'Trang đặc biệt này cho phép bạn cấu hình wiki, mời xem [http://www.mediawiki.org/wiki/Manual:Configuration_settings Các thiết lập cấu hình] để có thêm thông tin.',
 	'configure-btn-save'                  => 'Lưu thiết lập',
 	'configure-directory-not-writable'    => 'Thư mục được dùng để lưu trữ thiết lập, <tt>$1</tt>, không cho phép ghi.
@@ -2243,11 +2308,13 @@ Xin hãy chỉnh nó để cho phép PHP ghi vào mới dùng gói mở rộng n
 	'configure-js-prompt-group'           => 'Gõ vào tên nhóm mới:',
 	'configure-js-remove'                 => 'Xóa',
 	'configure-js-remove-row'             => 'Xóa mục này',
+	'configure-no-diff'                   => 'Các phiên bản được chọn không khác với nhau.',
 	'configure-no-directory'              => 'Thư mục dùng để lưu cấu hình, <tt>$1</tt>, không tồn tại.
 Xin hãy khởi tạo hoặc thay đổi nó để dùng được gói mở rộng này.',
 	'configure-no-old'                    => 'Không có phiên bản cấu hình cũ nào',
 	'configure-no-setup'                  => 'Bạn phải gọi tường minh <code>efConfigureSetup()</code> trong tập tin LocalSettings.php của bạn để dùng được gói mở rộng này.',
 	'configure-no-transwiki'              => 'Bạn không được phép thay đổi thiết lập ở các wiki khác',
+	'configure-old'                       => 'Phiên bản cũ',
 	'configure-old-versions'              => 'Danh sách các phiên bản cấu hình cũ:',
 	'configure-old-not-available'         => 'Phiên bản thiết lập cũ mà bạn yêu cầu, $1, không tồn tại',
 	'configure-saved'                     => 'Đã lưu cấu hình',
@@ -2300,11 +2367,26 @@ Xin hãy khởi tạo hoặc thay đổi nó để dùng được gói mở rộ
 	'configure-section-copyright'         => 'Bản quyền',
 	'configure-section-htcp'              => 'Phát HTCP',
 	'configure-section-misc'              => 'Linh tinh',
+	'configure-section-mw-extensions'     => 'Phần mở rộng MediaWiki',
+	'configure-select-wiki'               => 'Lựa chọn wiki',
+	'configure-select-wiki-available'     => 'Các giá trị cho phép: $1',
+	'configure-select-wiki-desc'          => 'Hãy chọn wiki để thiết lập.',
+	'configure-select-wiki-submit'        => 'Phê chuẩn',
 	'configure-setting-not-available'     => 'Thiết lập này không dùng được trong phiên bản MediaWiki này',
+	'configure-transwiki-not-in-range'    => 'Không được phép chọn wiki $1; phải chọn một trong số wiki này: $2.',
+	'configure-view'                      => 'Xem',
 	'configure-view-not-allowed'          => 'Bạn không được phép xem cài đặt này',
+	'extensions'                          => 'Thiết lập các phần mở rộng',
 	'right-configure'                     => 'Cấu hình wiki',
 	'right-configure-all'                 => 'Cấu hình tất cả các thiết lập của wiki',
+	'right-configure-interwiki'           => 'Thiết lập các wiki ngoài',
+	'right-extensions'                    => 'Thiết lập các phần mở rộng',
+	'right-extensions-all'                => 'Thiết lập nâng cao các phần mở rộng',
+	'right-extensions-interwiki'          => 'Thiết lập các phần mở rộng tại wiki ngoài',
 	'right-viewconfig'                    => 'Xem cấu hình wiki',
+	'right-viewconfig-all'                => 'Xem thiết lập của các wiki',
+	'right-viewconfig-interwiki'          => 'Xem thiết lập của wiki ngoài',
+	'viewconfig'                          => 'Xem thiết lập',
 );
 
 /** Volapük (Volapük)

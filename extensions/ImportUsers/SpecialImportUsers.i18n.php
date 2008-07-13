@@ -613,8 +613,10 @@ $messages['os'] = array(
  * @author Dodek
  * @author Sp5uhe
  * @author Airwolf
+ * @author Maikking
  */
 $messages['pl'] = array(
+	'importusers'                         => 'Importuj użytkowników',
 	'importusers-uploadfile'              => 'Prześlij plik',
 	'importusers-form-button'             => 'Importuj',
 	'importusers-user-added'              => 'Użytkownik <b>%s</b> został dodany.',
@@ -622,6 +624,10 @@ $messages['pl'] = array(
 	'importusers-user-present-not-update' => 'Użytkownik <b>%s</b> już istnieje. Nie zaktualizowano.',
 	'importusers-log'                     => 'Rejestr importu',
 	'importusers-log-summary'             => 'Podsumowanie',
+	'importusers-log-summary-all'         => 'Wszyscy',
+	'importusers-log-summary-added'       => 'Dodani',
+	'importusers-log-summary-updated'     => 'Zmodyfikowano',
+	'importusers-login-name'              => 'Nazwa użytkownika',
 	'importusers-password'                => 'hasło',
 	'importusers-email'                   => 'e-mail',
 	'importusers-realname'                => 'imię i nazwisko',

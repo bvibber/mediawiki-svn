@@ -250,11 +250,13 @@ $messages['fa'] = array(
 
 /** Finnish (Suomi)
  * @author Nike
+ * @author Str4nd
  */
 $messages['fi'] = array(
 	'imagemap_desc'          => 'Mahdollistaa napsautettavien kuvakarttojen tekemisen <tt><nowiki><imagemap></nowiki></tt>-elementillä.',
 	'imagemap_no_image'      => 'Error: kuva pitää määritellä ensimmäisellä rivillä.',
 	'imagemap_invalid_image' => 'Error: kuva ei kelpaa tai sitä ei ole olemassa',
+	'imagemap_invalid_title' => 'Virhe: kelvoton otsikko linkissä rivillä $1',
 	'imagemap_no_areas'      => 'Error: aluemäärittelyitä pitää olla ainakin yksi.',
 	'imagemap_invalid_coord' => 'Error: kelpaamaton koordinaatti rivillä $1. Koordinaatin täytyy olla numero.',
 	'imagemap_description'   => 'Kuvan tiedot',
@@ -854,9 +856,20 @@ $messages['sk'] = array(
 
 /** Serbian Cyrillic ekavian (ћирилица)
  * @author Sasa Stefanovic
+ * @author Millosh
  */
 $messages['sr-ec'] = array(
-	'imagemap_description' => 'О овој слици',
+	'imagemap_desc'               => 'Омогућава клијентској страни кликабилну мапу коришћњењм ознаке <tt><nowiki><imagemap></nowiki></tt>.',
+	'imagemap_no_image'           => 'Грешка: Неопходно је одредити слику у првој линији.',
+	'imagemap_invalid_image'      => 'Грешка: Слика је лоша или непостојећа.',
+	'imagemap_no_link'            => 'Грешка: Није пронађена ниједна ваљана веза на крају линије $1.',
+	'imagemap_invalid_title'      => 'Грешка: Лош наслов у вези у линији $1.',
+	'imagemap_missing_coord'      => 'Грешка: Нема довољно координата за криву у линији $1.',
+	'imagemap_unrecognised_shape' => 'Грешка: Непрепозната крива у линији $1, свака линија мора почети једном од: default, rect, circle или poly.',
+	'imagemap_no_areas'           => 'Грешка: Мора се дати бар једно просторно одређење.',
+	'imagemap_invalid_coord'      => 'Грешка: Лоше координате у линији $1; морају бити број.',
+	'imagemap_invalid_desc'       => 'Грешка: Лоше desc одређење, мора бити једно од: <tt>$1</tt>.',
+	'imagemap_description'        => 'О овој слици',
 );
 
 /** Seeltersk (Seeltersk)

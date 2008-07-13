@@ -78,6 +78,14 @@ $messages['rtm'] = array(
 	'grouppermissions-dologin' => 'Surum',
 );
 
+/** Afrikaans (Afrikaans)
+ * @author Naudefj
+ */
+$messages['af'] = array(
+	'grouppermissions-dosearch' => 'Gaan',
+	'grouppermissions-comment'  => 'Opmerking:',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */
@@ -110,8 +118,10 @@ $messages['ar'] = array(
 	'grouppermissions-log-name'      => 'سجل سماحات المجموعات',
 	'grouppermissions-sp-sort'       => 'ترتيب السماحات',
 	'grouppermissions-sp-save'       => 'حفظ',
+	'grouppermissions-sp-addtype'    => 'إضافة نوع ترتيب',
 	'grouppermissions-sp-addperm'    => 'إضافة سماح',
 	'grouppermissions-sp-remove'     => 'إزالة',
+	'grouppermissions-sp-deltype'    => 'حذف نوع ترتيب',
 	'right-viewsource'               => 'رؤية مصدر الويكي للصفحات المحمية',
 	'right-raw'                      => 'رؤية الصفحات الخام',
 	'right-info'                     => 'رؤية معلومات الصفحة',
@@ -511,12 +521,36 @@ $messages['no'] = array(
 /** Polish (Polski)
  * @author Airwolf
  * @author Sp5uhe
+ * @author Maikking
  */
 $messages['pl'] = array(
-	'grouppermissions-true'  => 'Prawda',
-	'grouppermissions-false' => 'Fałsz',
-	'grouppermissions-never' => 'Nigdy',
-	'right-edit-new'         => 'Edycja stron',
+	'removeunusedgroups'             => 'Usuń nieużywane grupy',
+	'grouppermissions-search'        => 'Grupa:',
+	'grouppermissions-dologin'       => 'Zaloguj się',
+	'grouppermissions-dosearch'      => 'Szukaj',
+	'grouppermissions-searchlabel'   => 'Szukaj grupy',
+	'grouppermissions-deletelabel'   => 'Usuń grupę',
+	'grouppermissions-error'         => 'Wystąpił nieznany błąd. Kliknij wstecz w swojej przeglądarce i spróbuj ponownie.',
+	'grouppermissions-change'        => 'Zmień uprawnienia grup',
+	'grouppermissions-add'           => 'Dodaj grupę',
+	'grouppermissions-delete'        => 'Usuń grupę',
+	'grouppermissions-comment'       => 'Komentarz:',
+	'grouppermissions-addsuccess'    => 'Grupa $1 została dodana',
+	'grouppermissions-deletesuccess' => 'Grupa $1 została usunięta',
+	'grouppermissions-changesuccess' => 'Uprawnienia dla grupy $1 zostały zmienione',
+	'grouppermissions-true'          => 'Prawda',
+	'grouppermissions-false'         => 'Fałsz',
+	'grouppermissions-never'         => 'Nigdy',
+	'grouppermissions-log-add'       => 'dodano grupę "$2"',
+	'grouppermissions-log-change'    => 'zmieniono uprawnienia dla grupy "$2"',
+	'grouppermissions-log-delete'    => 'usunięto grupę "$2"',
+	'grouppermissions-needjs'        => 'Ostrzeżenie: JavaScript w Twojej przeglądarce jest wyłączony. Niektóre opcje mogą nie działać.',
+	'grouppermissions-sp-save'       => 'Zapisz',
+	'grouppermissions-sp-remove'     => 'przenieś',
+	'grouppermissions-rug-header'    => 'Ta strona służy do usuwania użytkowników z nieużywanych lub usuniętych grup.',
+	'grouppermissions-rug-success'   => 'Przeniesiono użytkowników z nieużywanych grup.',
+	'grouppermissions-rug-confirm'   => 'Przenieś użytkowników z nieużywanych grup',
+	'right-edit-new'                 => 'Edycja stron',
 );
 
 /** Pashto (پښتو)
@@ -543,6 +577,27 @@ $messages['ps'] = array(
  */
 $messages['rif'] = array(
 	'grouppermissions-dosearch' => 'Raḥ ɣa',
+);
+
+/** Russian (Русский)
+ * @author Innv
+ */
+$messages['ru'] = array(
+	'grouppermissions'               => 'Управлять правами доступа',
+	'removeunusedgroups'             => 'Удалить неиспользуемые группы',
+	'grouppermissions-desc'          => 'Управлять правами доступа на [[Special:GroupPermissions|спецстранице]]',
+	'grouppermissions-search'        => 'Группа:',
+	'grouppermissions-dologin'       => 'Ник',
+	'grouppermissions-dosearch'      => 'Перейти',
+	'grouppermissions-deletelabel'   => 'Удалить группу',
+	'grouppermissions-change'        => 'Изменить права доступа',
+	'grouppermissions-add'           => 'Добавить группу',
+	'grouppermissions-delete'        => 'Удалить группу',
+	'grouppermissions-comment'       => 'Комментарий:',
+	'grouppermissions-addsuccess'    => '$1 были успешно добавлены',
+	'grouppermissions-deletesuccess' => '$1 были успешно удалены',
+	'grouppermissions-changesuccess' => 'Права доступа для $1 были успешно изменены',
+	'grouppermissions-log-name'      => 'Журнал прав доступа',
 );
 
 /** Slovak (Slovenčina)

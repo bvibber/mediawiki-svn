@@ -24,11 +24,15 @@ $messages['en'] = array(
  * @author Arnobarnard
  * @author SPQRobin
  * @author לערי ריינהארט
+ * @author Naudefj
  */
 $messages['af'] = array(
 	'sitematrix'           => "Lys van Wikimedia-wiki's",
 	'sitematrix-language'  => 'Taal',
+	'sitematrix-others'    => 'Ander projekte van Wikimedia',
+	'sitematrix-total'     => "'''Totale aantal: $1'''",
 	'sitematrix-sitetotal' => 'Totaal',
+	'sitematrix-private'   => 'beperkte toegang',
 );
 
 /** Aragonese (Aragonés)
@@ -515,15 +519,19 @@ $messages['hi'] = array(
  * @author SpeedyGonsales
  * @author Dnik
  * @author לערי ריינהארט
+ * @author Dalibor Bosits
  */
 $messages['hr'] = array(
 	'sitematrix'           => 'Tablica Wikimedijinih projekata',
+	'sitematrix-summary'   => 'Ova posebna stranica pokazuje popis svih Wikimedijinih wikija.',
 	'sitematrix-desc'      => 'Prikazuje [[Special:SiteMatrix|popis wikija Wikimedije]]',
 	'sitematrix-language'  => 'Jezik',
 	'sitematrix-project'   => 'Ime projekta, poveznica među projektima i međuwiki poveznica',
 	'sitematrix-others'    => 'Ostali projekti Wikimedije',
 	'sitematrix-total'     => "'''Ukupni broj: $1'''",
 	'sitematrix-sitetotal' => 'Ukupno',
+	'sitematrix-private'   => 'privatno',
+	'sitematrix-fishbowl'  => 'uređivanje ograničeno',
 );
 
 /** Upper Sorbian (Hornjoserbsce)
@@ -1157,10 +1165,19 @@ $messages['sq'] = array(
 /** Serbian Cyrillic ekavian (ћирилица)
  * @author Sasa Stefanovic
  * @author לערי ריינהארט
+ * @author Millosh
  */
 $messages['sr-ec'] = array(
-	'sitematrix'          => 'Табела свих викија',
-	'sitematrix-language' => 'Језик',
+	'sitematrix'           => 'Табела свих викија',
+	'sitematrix-summary'   => 'Ова посебна страна листа све Викимедијине викије.',
+	'sitematrix-desc'      => 'Приказује [[Special:SiteMatrix|списак Викимедијиних викија]].',
+	'sitematrix-language'  => 'Језик',
+	'sitematrix-project'   => 'Име пројекта, међупројекатска веза и међувики веза.',
+	'sitematrix-others'    => 'Остали Викимедијини пројекти.',
+	'sitematrix-total'     => "'''Укупан збир: $1.'''",
+	'sitematrix-sitetotal' => 'укупно',
+	'sitematrix-private'   => 'приватно',
+	'sitematrix-fishbowl'  => 'забрана мењања',
 );
 
 /** latinica (latinica)

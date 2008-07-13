@@ -9,6 +9,13 @@ $messages['en'] = array(
 	'charinsert-desc' => 'Allows creation of JavaScript box for [[MediaWiki:Edittools|inserting non-standard characters]]',
 );
 
+/** Afrikaans (Afrikaans)
+ * @author Naudefj
+ */
+$messages['af'] = array(
+	'charinsert-desc' => "Maak dit moontlik om 'n JavaScript-boks te skep om [[MediaWiki:Edittools|nie-standaard karakters]] mee in te voer",
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */

@@ -1781,6 +1781,7 @@ $wdMessages['lb'] = array(
 	'ow_LinkAttribute'                 => 'Eegeschaft',
 	'ow_LinkAttributeValues'           => 'Linken',
 	'ow_Property'                      => 'Eegeschaft',
+	'ow_Value'                         => 'Wert',
 	'ow_meaningsoftitle'               => 'Bedeitung vun "$1"',
 	'ow_meaningsofsubtitle'            => '<em>Wiki-Link:</em> [[$1]]',
 	'ow_Permission_denied'             => '<h2>ERLAABNIS REFUSÉIERT</h2>',

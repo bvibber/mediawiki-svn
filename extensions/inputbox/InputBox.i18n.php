@@ -30,6 +30,19 @@ $messages['niu'] = array(
 	'createarticle' => 'Talaga tohi tala',
 );
 
+/** Afrikaans (Afrikaans)
+ * @author Naudefj
+ */
+$messages['af'] = array(
+	'inputbox-desc'           => 'Laat die insluiting van vooraf gedefinieerde HTML-vorms moontlik',
+	'inputbox-error-no-type'  => 'U het nie die tipe invoerveld gespesifiseer nie.',
+	'inputbox-error-bad-type' => 'Tipe invoerveld "$1" nie herken nie.
+Gebruik "create", "comment", "search" of "search2".',
+	'tryexact'                => 'Soek presiese ooreenkoms',
+	'searchfulltext'          => 'Deursoek volledige teks',
+	'createarticle'           => 'Skep bladsy',
+);
+
 /** Amharic (አማርኛ)
  * @author Codex Sinaiticus
  */
@@ -1013,11 +1026,16 @@ $messages['sq'] = array(
 	'createarticle'  => 'Krijo artikull',
 );
 
-/** Serbian Cyrillic ekavian (ћирилица) */
+/** Serbian Cyrillic ekavian (ћирилица)
+ * @author Millosh
+ */
 $messages['sr-ec'] = array(
-	'tryexact'       => 'Покушај тачно',
-	'searchfulltext' => 'Претражи цео текст',
-	'createarticle'  => 'Направи чланак',
+	'inputbox-desc'           => 'Омогући укључивање претходно дефинисаних HTML форми.',
+	'inputbox-error-no-type'  => 'Ниси одредио тип уносне кутије да би је направио.',
+	'inputbox-error-bad-type' => 'Уносна кутија типа "$1" није препозната. Одреди "create", "comment", "search" или "search2".',
+	'tryexact'                => 'Покушај тачно',
+	'searchfulltext'          => 'Претражи цео текст',
+	'createarticle'           => 'Направи чланак',
 );
 
 /** latinica (latinica) */

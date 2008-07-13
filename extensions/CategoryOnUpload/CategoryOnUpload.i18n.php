@@ -17,6 +17,14 @@ $messages['en'] = array(
 	'categoryonupload-none'  => '-', # Do not translate or duplicate this message to other languages.
 );
 
+/** Afrikaans (Afrikaans)
+ * @author Naudefj
+ */
+$messages['af'] = array(
+	'categoryonupload-desc'  => "Vra gebruiker om 'n kategorie te kies as 'n lêer opgelaai word",
+	'categoryonupload-label' => 'Kategorie:',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */
@@ -190,5 +198,12 @@ $messages['te'] = array(
 $messages['uk'] = array(
 	'categoryonupload-desc'  => 'Дозволяє користувачеві вибрати категорію для завантажуваного файлу',
 	'categoryonupload-label' => 'Категорія:',
+);
+
+/** Vietnamese (Tiếng Việt)
+ * @author Minh Nguyen
+ */
+$messages['vi'] = array(
+	'categoryonupload-label' => 'Thể loại:',
 );
 

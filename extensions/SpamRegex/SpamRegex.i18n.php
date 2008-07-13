@@ -269,7 +269,8 @@ $messages['hsb'] = array(
  * @author McDutchie
  */
 $messages['ia'] = array(
-	'spamregex-summary-log' => '(Summario)',
+	'spamregex-already-blocked' => '"$1" es ja blocate',
+	'spamregex-summary-log'     => '(Summario)',
 );
 
 /** Javanese (Basa Jawa)
@@ -477,11 +478,15 @@ $messages['oc'] = array(
 /** Polish (Polski)
  * @author Wpedzich
  * @author Sp5uhe
+ * @author Maikking
  */
 $messages['pl'] = array(
-	'spamregex-already-blocked' => '„$1” jest już zablokowany',
-	'spamregex-text'            => '(Tekst)',
-	'spamregex-summary-log'     => '(Podsumowanie)',
+	'spamregex-currently-blocked'    => "'''Aktualnie zablokowane wyrażenia:'''",
+	'spamregex-no-currently-blocked' => "'''Nie ma zablokowanych wyrażeń.'''",
+	'spamregex-block-success'        => 'Zablokowano',
+	'spamregex-already-blocked'      => '„$1” jest już zablokowany',
+	'spamregex-text'                 => '(Tekst)',
+	'spamregex-summary-log'          => '(Podsumowanie)',
 );
 
 /** Portuguese (Português)

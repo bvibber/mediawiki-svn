@@ -22,6 +22,14 @@ $messages['en'] = array(
 			"<createbox>break=no</createbox>",
 );
 
+/** Afrikaans (Afrikaans)
+ * @author Naudefj
+ */
+$messages['af'] = array(
+	'createbox-desc'   => 'Gespesialiseerde invoerveld vir die skep van nuwe bladsye',
+	'createbox-create' => 'Skep',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */
@@ -214,6 +222,19 @@ $messages['sv'] = array(
 	'createbox-exists' => "Beklagar, \"'''{{FULLPAGENAME}}'''\" existerar redan.
 
 Du kan inte skapa den här sidan, men du kan [{{fullurl:{{FULLPAGENAME}}|action=edit}} redigera den], [{{fullurl:{{FULLPAGENAME}}}} läsa den], eller välja att skapa en annan sida genom att använda boxen nedan.
+
+<createbox>break=no</createbox>",
+);
+
+/** Ukrainian (Українська)
+ * @author AS
+ */
+$messages['uk'] = array(
+	'createbox-desc'   => 'Спеціалізоване поле вводу для створення сторінок',
+	'createbox-create' => 'Створити',
+	'createbox-exists' => "Даруйте, \"'''{{FULLPAGENAME}}'''\" вже існує.
+
+Ви не можете створити цю сторінку, але ви можете [{{fullurl:{{FULLPAGENAME}}|action=edit}} редагувати її], [{{fullurl:{{FULLPAGENAME}}}} переглянути її], або створити іншу сторінку, використовуючи поле нижче.
 
 <createbox>break=no</createbox>",
 );

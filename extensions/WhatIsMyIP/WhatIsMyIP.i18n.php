@@ -33,6 +33,15 @@ $messages['bg'] = array(
 	'whatismyip-out'  => 'Вашето IP:',
 );
 
+/** Czech (Česky)
+ * @author Matěj Grabovský
+ */
+$messages['cs'] = array(
+	'whatismyip'      => 'Jaká je moje IP',
+	'whatismyip-desc' => 'Zobrazí IP adresu aktuálního uživatele na [[Special:WhatIsMyIP|speciální stránce]]',
+	'whatismyip-out'  => 'Vaše IP:',
+);
+
 /** Finnish (Suomi)
  * @author Jack Phoenix
  */

@@ -342,6 +342,13 @@ $messages['os'] = array(
 	'profiling-ok' => 'Афтæ уæд!',
 );
 
+/** Polish (Polski)
+ * @author Maikking
+ */
+$messages['pl'] = array(
+	'profiling-ok' => 'OK',
+);
+
 /** Piedmontese (Piemontèis)
  * @author Bèrto 'd Sèra
  */

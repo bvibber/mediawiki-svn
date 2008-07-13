@@ -27,12 +27,20 @@ $messages['en'] = array(
 /** Afrikaans (Afrikaans)
  * @author Arnobarnard
  * @author SPQRobin
+ * @author Naudefj
  */
 $messages['af'] = array(
-	'bookinfo-result-title'     => 'Titel:',
-	'bookinfo-result-author'    => 'Outeur:',
-	'bookinfo-result-publisher' => 'Uitgewer:',
-	'bookinfo-result-year'      => 'Jaar:',
+	'bookinfo-header'            => 'Boek inligting',
+	'bookinfo-desc'              => "Brei [[Special:Booksources]] uit met inligting van 'n webdiens",
+	'bookinfo-result-title'      => 'Titel:',
+	'bookinfo-result-author'     => 'Outeur:',
+	'bookinfo-result-publisher'  => 'Uitgewer:',
+	'bookinfo-result-year'       => 'Jaar:',
+	'bookinfo-error-invalidisbn' => 'Ongeldige ISBN ingetik.',
+	'bookinfo-error-nosuchitem'  => 'Item bestaan nie of kon nie gevind word nie.',
+	'bookinfo-error-noresponse'  => 'Geen antwoord of versoek neem te lank.',
+	'bookinfo-purchase'          => 'Koop die boek vanaf $1',
+	'bookinfo-provider'          => 'Gegewens verskaf deur: $1',
 );
 
 /** Aragonese (Aragonés)

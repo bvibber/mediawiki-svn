@@ -151,6 +151,13 @@ $messages['sk'] = array(
 	'universaleditbutton-desc' => 'Pridává do hlavičky <code>&lt;link&gt;</code> pre podporu rozšírenia Universal Edit Button v prehliadačach',
 );
 
+/** Serbian Cyrillic ekavian (ћирилица)
+ * @author Millosh
+ */
+$messages['sr-ec'] = array(
+	'universaleditbutton-desc' => 'Додаје HTML заглавље <code>&lt;link&gt;</code> за подршку додатку на браузер "универзално дугме за уређивање".',
+);
+
 /** Swedish (Svenska)
  * @author M.M.S.
  */
@@ -170,6 +177,13 @@ $messages['uk'] = array(
  */
 $messages['vec'] = array(
 	'universaleditbutton-desc' => "Zonta l'intestassion HTML <code>&lt;link&gt;</code> par suportar l'estension del browser Universal Edit Button",
+);
+
+/** Vietnamese (Tiếng Việt)
+ * @author Minh Nguyen
+ */
+$messages['vi'] = array(
+	'universaleditbutton-desc' => 'Thêm thẻ đầu <code>&lt;link&gt;</code> vào HTML để hỗ trợ phần mở rộng trình duyệt Universal Edit Button',
 );
 
 /** Yue (粵語)

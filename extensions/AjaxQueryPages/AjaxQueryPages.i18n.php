@@ -11,6 +11,13 @@ $messages['en'] = array(
 	'ajax-qp-desc' => 'Add some AJAX to query pages such as [[Special:Shortpages]]',
 );
 
+/** Afrikaans (Afrikaans)
+ * @author Naudefj
+ */
+$messages['af'] = array(
+	'ajax-qp-desc' => 'Voeg AJAX by navraebladsye soos [[Spesiaal:ShortPages|Kort bladsye]]',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */

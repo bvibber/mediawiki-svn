@@ -129,6 +129,17 @@ $messages['gl'] = array(
 	'specialwhoiswatchingaddbtn'   => 'Engadir os usuarios seleccionados',
 );
 
+/** Croatian (Hrvatski)
+ * @author Dalibor Bosits
+ */
+$messages['hr'] = array(
+	'whoiswatching'                => 'Tko prati wiki stranicu',
+	'specialwhoiswatchingthepage'  => 'Tko prati %s',
+	'specialwhoiswatchingusage'    => 'Ova posebna stranica ne može biti korištena samostalno. Koristite [[MediaWiki:Number_of_watching_users_pageview]] za definiranje unosa za ovu posebnu stranicu.',
+	'specialwhoiswatchingaddusers' => 'Dodaj suradnike za praćenje stranice',
+	'specialwhoiswatchingaddbtn'   => 'Dodaj odabrane suradnike',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

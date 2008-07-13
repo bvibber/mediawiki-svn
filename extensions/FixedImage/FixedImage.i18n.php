@@ -11,6 +11,13 @@ $messages['en'] = array(
 	'fixedimage-desc' => 'Adds <tt><nowiki><fundraising></nowiki></tt> tag as an image',
 );
 
+/** Afrikaans (Afrikaans)
+ * @author Naudefj
+ */
+$messages['af'] = array(
+	'fixedimage-desc' => "Maak die <tt><nowiki><fundraising></nowiki></tt> etiket beskikbaar as 'n beeld",
+);
+
 /** Aragonese (Aragonés)
  * @author Juanpabl
  */
@@ -93,6 +100,13 @@ $messages['he'] = array(
  */
 $messages['hi'] = array(
 	'fixedimage-desc' => '<tt><nowiki><fundraising></nowiki></tt> टैग, एक चित्र के रुप में दर्शाता हैं',
+);
+
+/** Croatian (Hrvatski)
+ * @author Dalibor Bosits
+ */
+$messages['hr'] = array(
+	'fixedimage-desc' => 'Postavlja <tt><nowiki><fundraising></nowiki></tt> oznaku kao sliku',
 );
 
 /** Upper Sorbian (Hornjoserbsce)

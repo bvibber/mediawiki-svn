@@ -424,12 +424,19 @@ Asseguratz-vos de blocar pas de domenis entièrs que detenon cèrts comptadors d
  * @author Sp5uhe
  * @author Wpedzich
  * @author Airwolf
+ * @author Maikking
  */
 $messages['pl'] = array(
-	'spamdifftool_summary'        => 'Dodawanie do czarnej listy spamu',
-	'spamdifftool_spam_link_text' => 'dodaj do spamu',
-	'spamdifftool_option_none'    => 'nic',
-	'spamdifftool_submit_buttom'  => 'Wyślij',
+	'spamdifftool_cantedit'         => 'Nie masz uprawnień do edytowania tej strony.',
+	'spamdifftool_summary'          => 'Dodawanie do czarnej listy spamu',
+	'spamdifftool_no_urls_detected' => "Nie wykryto żadnych adresów URL.
+Kliknij <a href='$1'>tutaj</a>, żeby wrócić do poprzedniej strony.",
+	'spamdifftool_spam_link_text'   => 'dodaj do spamu',
+	'spamdifftool_option_domain'    => 'wszystkie z tej domeny',
+	'spamdifftool_option_subdomain' => 'wszystkie z tej domeny',
+	'spamdifftool_option_none'      => 'nic',
+	'spamdifftool_block'            => 'Blokuj:',
+	'spamdifftool_submit_buttom'    => 'Wyślij',
 );
 
 /** Pashto (پښتو)

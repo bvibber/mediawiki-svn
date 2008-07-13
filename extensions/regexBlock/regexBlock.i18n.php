@@ -84,11 +84,13 @@ $messages['niu'] = array(
 /** Afrikaans (Afrikaans)
  * @author SPQRobin
  * @author Arnobarnard
+ * @author Naudefj
  */
 $messages['af'] = array(
 	'regexblock-form-reason'    => 'Rede:',
 	'regexblock-stats-username' => 'Vir $1',
 	'regexblock-view-all'       => 'alle',
+	'regexblock-view-go'        => 'Gaan',
 	'regexblock-view-reason'    => 'rede: $1',
 	'regexblock-view-time'      => 'op $1',
 );
@@ -566,9 +568,11 @@ $messages['hsb'] = array(
  * @author McDutchie
  */
 $messages['ia'] = array(
-	'regexblock-form-reason'    => 'Motivo:',
-	'regexblock-stats-username' => 'Pro $1',
-	'regexblock-view-all'       => 'Totes',
+	'regexblock-form-reason'     => 'Motivo:',
+	'regexblock-form-expiry'     => 'Expiration:',
+	'regexblock-already-blocked' => '"$1" es ja blocate.',
+	'regexblock-stats-username'  => 'Pro $1',
+	'regexblock-view-all'        => 'Totes',
 );
 
 /** Indonesian (Bahasa Indonesia)
@@ -982,21 +986,38 @@ $messages['oc'] = array(
 /** Polish (Polski)
  * @author Sp5uhe
  * @author McMonster
+ * @author Maikking
  */
 $messages['pl'] = array(
-	'regexblock'                   => 'BlokadaRegEx',
-	'regexblock-desc'              => 'Rozszerzenie umożliwiające blokowanie nazw użytkowników oraz adresów IP opisanych wyrażeniami regularnymi. Zawiera mechanizm blokujący oraz [[Special:Regexblock|stronę specjalną]] dla dodawania i zarządzania blokadami',
-	'regexblock-unblock-error'     => 'Błąd przy odblokowaniu $1.
+	'regexblock'                    => 'BlokadaRegEx',
+	'regexblock-desc'               => 'Rozszerzenie umożliwiające blokowanie nazw użytkowników oraz adresów IP opisanych wyrażeniami regularnymi. Zawiera mechanizm blokujący oraz [[Special:Regexblock|stronę specjalną]] dla dodawania i zarządzania blokadami',
+	'regexblock-reason-ip'          => 'Ten numer IP został zablokowany z powodu wandalizmu lub innego naruszenia zasad przez Ciebie lub przez kogoś, z kim dzielisz to IP.
+Jeżeli uważasz, że nastąpiła pomyłka, $1',
+	'regexblock-reason-name'        => 'Nazwa użytkownika została zablokowana z powodu wandalizmu lub innego naruszenia zasad.
+Jeżeli uważasz, że nastąpiła pomyłka, $1',
+	'regexblock-reason-regex'       => 'Nazwa użytkownika została zablokowana z powodu wandalizmu lub innego naruszenia zasad.
+Utwórz nową nazwę użytkownika lub skontaktuj się z $1 w celu rozwiązania problemu.',
+	'regexblock-unblock-success'    => 'Odblokowano',
+	'regexblock-unblock-log'        => "Użytkownik '''$1''' został odblokowany.",
+	'regexblock-unblock-error'      => 'Błąd przy odblokowaniu $1.
 Prawdopodobnie brak takiego użytkownika.',
-	'regexblock-form-username'     => 'Adres IP lub nazwa użytkownika:',
-	'regexblock-form-reason'       => 'Powód:',
-	'regexblock-form-expiry'       => 'Czas blokady:',
-	'regexblock-block-log'         => "Nazwa użytkownika lub adres IP '''$1''' zostały zablokowane.",
-	'regexblock-block-success'     => 'Pomyślnie zablokowano',
-	'regexblock-form-submit-regex' => 'Nieprawidłowe wyrażenie regularne',
-	'regexblock-already-blocked'   => '$1 jest już zablokowany',
-	'regexblock-stats-username'    => 'Dla $1',
-	'regexblock-view-time'         => '$1',
+	'regexblock-form-username'      => 'Adres IP lub nazwa użytkownika:',
+	'regexblock-form-reason'        => 'Powód:',
+	'regexblock-form-expiry'        => 'Czas blokady:',
+	'regexblock-form-account-block' => 'Zablokuj możliwość tworzenia nowych kont',
+	'regexblock-form-submit'        => 'Zablokuj uzytkownika',
+	'regexblock-block-log'          => "Nazwa użytkownika lub adres IP '''$1''' zostały zablokowane.",
+	'regexblock-block-success'      => 'Pomyślnie zablokowano',
+	'regexblock-form-submit-regex'  => 'Nieprawidłowe wyrażenie regularne',
+	'regexblock-already-blocked'    => '$1 jest już zablokowany',
+	'regexblock-stats-username'     => 'Dla $1',
+	'regexblock-currently-blocked'  => 'Zablokowane adresy:',
+	'regexblock-view-blocked'       => 'Pokaż zablokowanych według:',
+	'regexblock-view-block-by'      => 'zablokował',
+	'regexblock-view-block-unblock' => 'odblokuj',
+	'regexblock-view-stats'         => '(statystyki)',
+	'regexblock-view-empty'         => 'Lista zablokowanych nazw i adresów jest pusta.',
+	'regexblock-view-time'          => '$1',
 );
 
 /** Pashto (پښتو)

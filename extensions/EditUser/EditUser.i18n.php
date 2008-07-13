@@ -308,6 +308,13 @@ $messages['hy'] = array(
 	'edituser-dosearch' => 'Որոնել',
 );
 
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'edituser-dosearch' => 'Cercar',
+);
+
 /** Indonesian (Bahasa Indonesia)
  * @author Irwangatot
  */

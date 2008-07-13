@@ -45,6 +45,7 @@ $messages['en'] = array(
 $messages['ar'] = array(
 	'slippymap_maperror'    => 'خطأ في الخريطة:',
 	'slippymap_button_code' => 'الحصول على كود ويكي',
+	'slippymap_resetview'   => 'إعادة ضبط الرؤية',
 );
 
 /** German (Deutsch)
@@ -259,6 +260,13 @@ $messages['oc'] = array(
 	'slippymap_maperror'        => 'Error de mapa :',
 	'slippymap_osmtext'         => 'Vejatz aquesta mapa sus OpenStreetMap.org',
 	'slippymap_code'            => "Còde Wiki pel visionament d'aquesta mapa :",
+);
+
+/** Polish (Polski)
+ * @author Maikking
+ */
+$messages['pl'] = array(
+	'slippymap_maperror' => 'Błąd mapy:',
 );
 
 /** Slovak (Slovenčina)

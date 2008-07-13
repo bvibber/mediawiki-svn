@@ -61,6 +61,7 @@ $messages['ar'] = array(
 	'extdist-no-such-extension' => 'لا امتداد كهذا "$1"',
 	'extdist-choose-extension'  => 'اختر أي امتدات تريد تحميله:',
 	'extdist-submit-extension'  => 'استمر',
+	'extdist-current-version'   => 'النسخة الحالية (جذع)',
 	'extdist-submit-version'    => 'استمرار',
 	'extdist-want-more'         => 'الحصول على امتداد آخر',
 );
@@ -423,6 +424,17 @@ Un còp l’extraccion facha, aurètz besonh d’enregistrar l’extension dins 
 
 S'avètz de questions a prepaus d'aqueste sistèma de distribucion de las extensions, anatz sus [[Extension talk:ExtensionDistributor]].",
 	'extdist-want-more'               => 'Obténer una autra extension',
+);
+
+/** Polish (Polski)
+ * @author Maikking
+ */
+$messages['pl'] = array(
+	'extensiondistributor'      => 'Ściągnij rozszerzenie MediaWiki',
+	'extdist-no-such-extension' => 'Brak rozszerzenia "$1"',
+	'extdist-submit-extension'  => 'Kontynuuj',
+	'extdist-no-versions'       => 'Wybrane rozszerzenie $1 nie jest dostępne w żadnej wersji oprogramowania!',
+	'extdist-submit-version'    => 'Kontynuuj',
 );
 
 /** Russian (Русский)

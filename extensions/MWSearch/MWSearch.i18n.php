@@ -102,6 +102,13 @@ $messages['hi'] = array(
 	'mwsearch-desc' => 'एमडब्ल्यूखोज प्लगीन',
 );
 
+/** Croatian (Hrvatski)
+ * @author Dalibor Bosits
+ */
+$messages['hr'] = array(
+	'mwsearch-desc' => 'Plugin za MWSearch',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */
@@ -234,6 +241,13 @@ $messages['sah'] = array(
  */
 $messages['sk'] = array(
 	'mwsearch-desc' => 'Zásuvný modul MWSearch',
+);
+
+/** Serbian Cyrillic ekavian (ћирилица)
+ * @author Millosh
+ */
+$messages['sr-ec'] = array(
+	'mwsearch-desc' => 'MWSearch додатак',
 );
 
 /** Swedish (Svenska)

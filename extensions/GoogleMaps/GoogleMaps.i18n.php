@@ -1358,6 +1358,7 @@ $wgGoogleMapsMessages['hy'] = array(
  */
 $wgGoogleMapsMessages['ia'] = array(
 	'gm-zoom-control' => 'Navigation',
+	'gm-search'       => 'Cercar',
 	'gm-save-path'    => 'Immagazinar',
 );
 

@@ -13,9 +13,12 @@ $messages['en'] = array(
 	'sitenotice-desc'  => 'Allows users to close the sitenotice',
 );
 
-/** Afrikaans (Afrikaans) */
+/** Afrikaans (Afrikaans)
+ * @author Naudefj
+ */
 $messages['af'] = array(
 	'sitenotice_close' => 'versteek',
+	'sitenotice-desc'  => 'Laat gebruikers toe om die stelselberig te sluit.',
 );
 
 /** Amharic (አማርኛ)

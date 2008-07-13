@@ -287,6 +287,13 @@ $messages['hy'] = array(
 	'editmsg-search' => 'Որոնում',
 );
 
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'editmsg-search' => 'Cercar',
+);
+
 /** Javanese (Basa Jawa)
  * @author Meursault2004
  */

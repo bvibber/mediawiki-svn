@@ -13,6 +13,15 @@ $messages['en'] = array(
 	'assert_edit_message' => 'The specified assertion ($1) failed.',
 );
 
+/** Afrikaans (Afrikaans)
+ * @author Naudefj
+ */
+$messages['af'] = array(
+	'assert_edit_title'   => 'Bevestiging gefaal',
+	'assert_edit_desc'    => 'Maak rolbevestiging moontlik vir gebruik deur robotte',
+	'assert_edit_message' => 'Die gevraagde bevestiging ($1) het gefaal.',
+);
+
 /** Aragonese (Aragonés)
  * @author Juanpabl
  */

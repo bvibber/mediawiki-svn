@@ -540,8 +540,14 @@ Wróćo k:
  * @author McDutchie
  */
 $messages['ia'] = array(
-	'crosswikiblock-reason'   => 'Motivo:',
-	'crosswikiunblock-reason' => 'Motivo:',
+	'crosswikiblock-expiry'         => 'Expiration:',
+	'crosswikiblock-reason'         => 'Motivo:',
+	'crosswikiblock-anononly'       => 'Blocar solmente usatores anonyme',
+	'crosswikiblock-nocreate'       => 'Impedir creation de contos',
+	'crosswikiblock-autoblock'      => 'Blocar automaticamente le adresse IP usate le plus recentemente per iste usator, e omne IPs successive desde le quales ille/-a prova facer modificationes',
+	'crosswikiblock-noemail'        => 'Impedir que le usator invia e-mail',
+	'crosswikiunblock-reason'       => 'Motivo:',
+	'crosswikiblock-alreadyblocked' => 'Le usator $3 es ja blocate.',
 );
 
 /** Indonesian (Bahasa Indonesia)

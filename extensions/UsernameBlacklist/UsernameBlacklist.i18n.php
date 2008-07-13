@@ -469,8 +469,10 @@ $messages['hi'] = array(
 
 /** Croatian (Hrvatski)
  * @author SpeedyGonsales
+ * @author Dalibor Bosits
  */
 $messages['hr'] = array(
+	'usernameblacklist-desc'          => 'Dodaje [[MediaWiki:Usernameblacklist|crnu listu imena]] za ograničavanje stvaranja suradničkih računa koji se poklapaju s jednim ili više regularnih izraza.',
 	'blacklistedusername'             => 'Nedozvoljeno suradničko ime',
 	'blacklistedusernametext'         => 'Ime koje ste izabrali je na popisu [[MediaWiki:Usernameblacklist|nedozvoljenih imena]]. Molimo izaberite drugo ime.',
 	'usernameblacklist'               => '<pre>

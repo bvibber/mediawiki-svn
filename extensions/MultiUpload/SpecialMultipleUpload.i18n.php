@@ -438,6 +438,7 @@ Los imatges pas pertinents poiràn èsser escafadas immediatament. Vejatz la pag
 
 /** Polish (Polski)
  * @author Sp5uhe
+ * @author Maikking
  */
 $messages['pl'] = array(
 	'multipleupload'                   => 'Prześlij wiele plików',
@@ -452,6 +453,7 @@ Możesz wysłać od 1 do $1 plików za jednym razem.
 Wprowadzić, jeśli chcesz, '''Nazwę docelową''' oraz wypełnił '''Opis''' dla wysyłanych plików.
 
 Nieprawidłowe pliki będą natychmiast usuwane, zobacz [[{{MediaWiki:Multipleupload-page}}|Zasady usuwania plików]].",
+	'multiupload-fileuploaded'         => 'Plik przesłany.',
 );
 
 /** Pashto (پښتو)

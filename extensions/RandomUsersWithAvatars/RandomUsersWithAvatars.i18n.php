@@ -15,6 +15,13 @@ $messages['en'] = array(
 	'random-users-avatars-desc'  => 'Adds <tt>&lt;randomuserswithavatars&gt;</tt> tag to display the avatars of randomly chosen users',
 );
 
+/** Arabic (العربية)
+ * @author Meno25
+ */
+$messages['ar'] = array(
+	'random-users-avatars-title' => 'مقابلة المجتمع',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  */

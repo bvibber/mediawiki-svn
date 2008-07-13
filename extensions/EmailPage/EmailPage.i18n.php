@@ -39,7 +39,7 @@ $messages['en'] = array(
  * @author Meno25
  */
 $messages['ar'] = array(
-	'emailpage'           => 'مراسلة الصفحة',
+	'emailpage'           => 'إرسال رسالة للمستخدم',
 	'ea-heading'          => '=== مراسلة صفحة [[$1]] ===',
 	'ea-fromgroup'        => 'من مجموعة:',
 	'ea-pagesend'         => 'الصفحة "$1" أُرسلت من $2',
@@ -48,6 +48,7 @@ $messages['ar'] = array(
 	'ea-denied'           => 'السماح مرفوض',
 	'ea-selectrecipients' => 'اختر المتلقين',
 	'ea-compose'          => 'كتابة المحتوى',
+	'ea-show'             => 'عرض المتلقين',
 	'ea-send'             => 'أرسل!',
 	'ea-subject'          => 'أدخل سطر عنوان للبريد الإلكتروني',
 );
@@ -302,6 +303,17 @@ $messages['oc'] = array(
 	'ea-subject'          => 'Entrar una linha « objècte » pel corrièr electronic',
 	'ea-header'           => 'Apondre lo contengut al començament amb un messatge facultatiu (tèxt wiki)',
 	'ea-selectcss'        => "Seleccionar un fuèlh d'estil CSS",
+);
+
+/** Polish (Polski)
+ * @author Maikking
+ */
+$messages['pl'] = array(
+	'ea-selectrecipients' => 'Wybierz odbiorców',
+	'ea-show'             => 'Pokaż odbiorców',
+	'ea-send'             => 'Wyślij',
+	'ea-subject'          => 'Wprowadź temat',
+	'ea-selectcss'        => 'Wybierz styl CSS',
 );
 
 /** Slovak (Slovenčina)

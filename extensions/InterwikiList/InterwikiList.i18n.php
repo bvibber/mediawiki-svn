@@ -17,6 +17,7 @@ $messages['en'] = array (
 $messages['ar'] = array(
 	'interwikilist'          => 'قائمة الإنترويكي',
 	'interwikilist-linkname' => 'وصلة الإنترويكي',
+	'interwikilist-target'   => 'المسار المستهدف',
 );
 
 /** Bulgarian (Български)
@@ -166,6 +167,16 @@ $messages['sv'] = array(
 	'interwikilist-desc'     => 'Lägger till en [[Special:Interwikilist|specialsida]] för att visa tillgängliga interwikilänkar',
 	'interwikilist-linkname' => 'Interwikilänk',
 	'interwikilist-target'   => 'Måladress',
+);
+
+/** Ukrainian (Українська)
+ * @author AS
+ */
+$messages['uk'] = array(
+	'interwikilist'          => 'Список інтервікі',
+	'interwikilist-desc'     => 'Додає [[Special:Interwikilist|спеціальну сторінку]] для перегляду доступних інтервікі-посилань',
+	'interwikilist-linkname' => 'Інтервікі-посилання',
+	'interwikilist-target'   => 'Цільова URL-адреса',
 );
 
 /** Yiddish (ייִדיש)

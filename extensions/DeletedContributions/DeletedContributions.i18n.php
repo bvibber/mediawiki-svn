@@ -14,9 +14,11 @@ $messages['en'] = array(
 
 /** Afrikaans (Afrikaans)
  * @author SPQRobin
+ * @author Naudefj
  */
 $messages['af'] = array(
-	'deletedcontributions' => 'Geskrapte gebruikersbydraes',
+	'deletedcontributions'      => 'Geskrapte gebruikersbydraes',
+	'deletedcontributions-desc' => "Laat sysop gebruikers toe om na [[Special:DeletedContributions|verwyderde bydraes]] van 'n gebruiker te kyk",
 );
 
 /** Aragonese (Aragonés)

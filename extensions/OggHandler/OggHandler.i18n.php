@@ -50,9 +50,30 @@ Please <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_downlo
 
 /** Afrikaans (Afrikaans)
  * @author SPQRobin
+ * @author Naudefj
  */
 $messages['af'] = array(
-	'ogg-more' => 'Meer...',
+	'ogg-desc'                => "Hanteer Ogg Theora- en Vorbis-lêers met 'n JavaScript-mediaspeler",
+	'ogg-short-audio'         => 'Ogg $1 klanklêer, $2',
+	'ogg-short-video'         => 'Ogg $1 video lêer, $2',
+	'ogg-short-general'       => 'Ogg $1 medialêer, $2',
+	'ogg-long-audio'          => '(Ogg $1 klanklêer, lengte $2, $3)',
+	'ogg-long-video'          => '(Ogg $1 videolêer, lengte $2, $4×$5 pixels, $3)',
+	'ogg-long-general'        => '(Ogg medialêer, lengte $2, $3)',
+	'ogg-long-error'          => '(Ongeldige ogg-lêer: $1)',
+	'ogg-play'                => 'Speel',
+	'ogg-pause'               => 'Wag',
+	'ogg-stop'                => 'Stop',
+	'ogg-play-video'          => 'Speel video',
+	'ogg-play-sound'          => 'Speel geluid',
+	'ogg-player-videoElement' => '<video>-element',
+	'ogg-player-oggPlugin'    => 'Ogg-plugin',
+	'ogg-player-soundthumb'   => 'Geen mediaspeler',
+	'ogg-player-selected'     => '(geselekteer)',
+	'ogg-use-player'          => 'Gebruik speler:',
+	'ogg-more'                => 'Meer...',
+	'ogg-dismiss'             => 'Sluit',
+	'ogg-desc-link'           => 'Aangaande die lêer',
 );
 
 /** Aragonese (Aragonés)
@@ -1794,6 +1815,15 @@ $messages['sq'] = array(
  * @author Millosh
  */
 $messages['sr-ec'] = array(
+	'ogg-desc'                => 'Руковаоц ogg Теора и Ворбис фајловима са јаваскрипт плејером',
+	'ogg-short-audio'         => 'Ogg $1 звучни фајл, $2.',
+	'ogg-short-video'         => 'Ogg $1 видео фајл, $2.',
+	'ogg-short-general'       => 'Ogg $1 медијски фајл, $2.',
+	'ogg-long-audio'          => '(Ogg $1 звучни фајл, дужина $2, $3.)',
+	'ogg-long-video'          => '(Ogg $1 видео фајл, дужина $2, $4×$5 пиксела, $3.)',
+	'ogg-long-multiplexed'    => '(Ogg мултиплексовани аудио/видео фајл, $1, дужина $2, $4×$5 пиксела, $3 укупно.)',
+	'ogg-long-general'        => '(Ogg медијски фајл, дужина $2, $3.)',
+	'ogg-long-error'          => '(Лош ogg фајл: $1.)',
 	'ogg-play'                => 'Пусти',
 	'ogg-pause'               => 'Пауза',
 	'ogg-stop'                => 'Стоп',

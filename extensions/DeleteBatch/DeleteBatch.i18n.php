@@ -59,6 +59,7 @@ $messages['ar'] = array(
 	'deletebatch-from-file'        => 'من قائمة ملف',
 	'deletebatch-from-form'        => 'من من',
 	'deletebatch-success-subtitle' => 'ل$1',
+	'deletebatch-omitting-invalid' => 'إزالة صفحة غير صحيحة $1.',
 	'deletebatch-file-bad-format'  => 'الملف ينبغي أن يكون نصا خالصا',
 	'deletebatch-file-missing'     => 'غير قادر على قراءة الملف المعطى',
 	'deletebatch-select-script'    => 'سكريبت حذف الصفحات',
@@ -285,10 +286,25 @@ En opplastet fil må inneholde navnet på siden, og kan også ha en valgfri slet
 /** Polish (Polski)
  * @author Airwolf
  * @author Sp5uhe
+ * @author Maikking
  */
 $messages['pl'] = array(
+	'deletebatch-button'          => 'Usuń',
 	'deletebatch-here'            => '<b>tutaj</b>',
+	'deletebatch-caption'         => 'Lista stron',
+	'deletebatch-page'            => 'Lista stron do usunięcia:',
+	'deletebatch-reason'          => 'Powód usunięcia',
+	'deletebatch-processing'      => 'usuwanie stron',
+	'deletebatch-file-missing'    => 'Nie można odczytać pliku',
 	'deletebatch-select-yourself' => 'Ty',
+);
+
+/** Russian (Русский)
+ * @author Innv
+ */
+$messages['ru'] = array(
+	'deletebatch-button'           => 'Удалить',
+	'deletebatch-success-subtitle' => 'для $1',
 );
 
 /** Slovak (Slovenčina)
@@ -364,5 +380,31 @@ $messages['te'] = array(
 	'deletebatch-or'      => '<b>లేదా</b>',
 	'deletebatch-page'    => 'తొలగించాల్సిన పేజీలు',
 	'deletebatch-reason'  => 'తొలగింపునకు కారణం',
+);
+
+/** Ukrainian (Українська)
+ * @author AS
+ */
+$messages['uk'] = array(
+	'deletebatch'                  => 'Вилучення сторінок групами',
+	'deletebatch-desc'             => '[[Special:DeleteBatch|Вилучення сторінок групами]]',
+	'deletebatch-button'           => 'Вилучити',
+	'deletebatch-here'             => '<b>тут</b>',
+	'deletebatch-help'             => 'Вилучення групи сторінок. Також ви можете зробити окреме вилучення, або вилучити сторінки, перераховані у файлі.
+Виберіть користувача, який згадуватиметься у журналі вилучень.
+Завантажений файл повинен містити у кожному рядку назву сторінки та необов\'язкову причину вилучення, відокремлену символом "|".',
+	'deletebatch-caption'          => 'Перелік сторінок',
+	'deletebatch-title'            => 'Вилучити групу',
+	'deletebatch-link-back'        => 'Ви можете повернутися до розширення',
+	'deletebatch-as'               => 'Запустити скрипт як',
+	'deletebatch-both-modes'       => 'Виберіть або одну вказану сторінку, або наданий список сторінок.',
+	'deletebatch-or'               => '<b>або</b>',
+	'deletebatch-page'             => 'Сторінки до вилучення',
+	'deletebatch-reason'           => 'Причина вилучення',
+	'deletebatch-processing'       => 'вилучення сторінок',
+	'deletebatch-from-file'        => 'із списку файла',
+	'deletebatch-success-subtitle' => 'для $1',
+	'deletebatch-file-missing'     => 'Не в змозі прочитати наданий файл',
+	'deletebatch-select-yourself'  => 'ви',
 );
 

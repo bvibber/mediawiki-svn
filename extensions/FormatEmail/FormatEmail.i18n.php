@@ -16,6 +16,15 @@ This e-mail has been sent to you through the {{SITENAME}} e-mail system by $1.
 $2',
 );
 
+/** Afrikaans (Afrikaans)
+ * @author Naudefj
+ */
+$messages['af'] = array(
+	'email_footer' => 'Die e-pos is deur $1 aan u gestuur via die {{SITENAME}} e-posbediener.
+
+$2',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */

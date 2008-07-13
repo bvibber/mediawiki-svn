@@ -25,9 +25,19 @@ $messages['en'] = array(
 
 /** Afrikaans (Afrikaans)
  * @author Arnobarnard
+ * @author Naudefj
  */
 $messages['af'] = array(
-	'pdtest_ok' => 'OK',
+	'parserdifftest'      => 'Ontleder verskil toets',
+	'pdtest_no_changes'   => 'Geen veranderinge bespeur.',
+	'pdtest_time_report'  => '<b>$1</b> duur $2 sekondes, <b>$3</b> duur $4 sekondes.',
+	'pdtest_title'        => 'Kontekstitel:',
+	'pdtest_text'         => 'Invoerteks:',
+	'pdtest_ok'           => 'OK',
+	'pdtest_get_text'     => 'Kry teks van bladsy',
+	'pdtest_diff'         => 'Verskille',
+	'pdtest_side_by_side' => 'Afvoer vergelyking',
+	'pdt_comparing_page'  => 'Vergelyk ontleder afvoer vanaf [[$1]]',
 );
 
 /** Aragonese (Aragonés)

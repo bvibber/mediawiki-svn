@@ -17,6 +17,16 @@ Do '''NOT''' fill this in!",
 	'simpleantispam-desc'  => 'Adds a simple spam/bot check to forms',
 );
 
+/** Afrikaans (Afrikaans)
+ * @author Naudefj
+ */
+$messages['af'] = array(
+	'simpleantispam'       => 'U wysiging het die anti-spam meganisme geaktiveer',
+	'simpleantispam-label' => "Anti-spam kontrole.
+'''Moenie''' die veld invul nie!",
+	'simpleantispam-desc'  => "Voeg 'n eenvoudige spam/robot-kontrole op vorms by",
+);
+
 /** Aragonese (Aragonés)
  * @author Juanpabl
  */

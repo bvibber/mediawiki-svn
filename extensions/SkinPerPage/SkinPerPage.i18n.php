@@ -93,6 +93,13 @@ $messages['hi'] = array(
 	'skinperpage-desc' => 'हर पन्नेपर अलग त्वचा इस्तेमाल करने के लिये उपयुक्त ऐसा <tt>&lt;skin&gt;</tt> टैग बढाता हैं',
 );
 
+/** Croatian (Hrvatski)
+ * @author Dalibor Bosits
+ */
+$messages['hr'] = array(
+	'skinperpage-desc' => 'Postavlja <tt>&lt;skin&gt;</tt> oznaku za korištenje različitih izgleda po stranici',
+);
+
 /** Hungarian (Magyar)
  * @author Dani
  */

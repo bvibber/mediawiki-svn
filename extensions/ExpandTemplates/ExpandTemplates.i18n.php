@@ -35,10 +35,24 @@ $messages['mhr'] = array(
 /** Afrikaans (Afrikaans)
  * @author Arnobarnard
  * @author SPQRobin
+ * @author Naudefj
  */
 $messages['af'] = array(
-	'expandtemplates'     => 'Brei sjablone uit',
-	'expand_templates_ok' => 'OK',
+	'expandtemplates'                  => 'Brei sjablone uit',
+	'expandtemplates-desc'             => "[[Special:ExpandTemplates|Vervang sjablone, ontlederfunksies en veranderlikes]] en gee wikiteks en 'n kontroleweergawe van die bladsy",
+	'expand_templates_intro'           => 'Hierdie spesiale bladsy lees die invoerteks en vervang al die sjablone rekursief.
+Dit vervang ook ontlederfunksies soos
+<nowiki>{{</nowiki>#if:…}}, en veranderlikes soos
+<nowiki>{{</nowiki>CURRENTDAY}}&mdash; omtrent alles tussen dubbele krulhakkies word vervang.
+Dit word gedoen deur die relevante funksies in die MediaWiki-ontleder te roep.',
+	'expand_templates_title'           => 'Kontekstitel, vir {{PAGENAME}}, ensovoorts:',
+	'expand_templates_input'           => 'Invoerteks:',
+	'expand_templates_output'          => 'Resultaat',
+	'expand_templates_xml_output'      => 'XML-afvoer',
+	'expand_templates_ok'              => 'OK',
+	'expand_templates_remove_comments' => 'Verwyder kommentaar',
+	'expand_templates_generate_xml'    => 'Wys XML-ontledingsboom',
+	'expand_templates_preview'         => 'Voorskou',
 );
 
 /** Aragonese (Aragonés)

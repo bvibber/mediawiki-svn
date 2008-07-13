@@ -64,9 +64,12 @@ $messages['niu'] = array(
 
 /** Afrikaans (Afrikaans)
  * @author Arnobarnard
+ * @author Naudefj
  */
 $messages['af'] = array(
 	'changeauthor-search-box'       => 'Soek hersienings',
+	'changeauthor-pagenameform-go'  => 'Gaan',
+	'changeauthor-comment'          => 'Opmerking:',
 	'changeauthor-invalid-username' => 'Ongeldige gebruikersnaam "$1".',
 	'changeauthor-nosuchuser'       => 'Geen gebruiker "$1".',
 	'changeauthor-revview'          => 'Hersiening #$1 van $2',
@@ -290,6 +293,36 @@ $messages['de'] = array(
 	'changeauthor-rev'                  => 'Version $1',
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'changeauthor'                      => 'Awtora wersije změniś',
+	'changeauthor-desc'                 => 'Dowólujo změnjenje awtora wersije',
+	'changeauthor-title'                => 'Awtora wersije změniś',
+	'changeauthor-search-box'           => 'Wersije pytaś',
+	'changeauthor-pagename-or-revid'    => 'Mě boka abo ID wersije:',
+	'changeauthor-pagenameform-go'      => 'Pytaś',
+	'changeauthor-comment'              => 'Komentar:',
+	'changeauthor-changeauthors-multi'  => 'Awtorow změniś',
+	'changeauthor-explanation-multi'    => 'Z toś tym formularom móžoš awtorow wersijow změniś.
+Změń jadnorje jadne wužywarske mě abo někotare wužywarske mjenja ze slědujuceje lisćiny, pśidaj komentar (opcionalny) a klikni na tłocašk  "Awtorow změniś".',
+	'changeauthor-changeauthors-single' => 'Awtora změniś',
+	'changeauthor-explanation-single'   => 'Z toś tym formularom móžoš awtora wersije změniś.
+Změń jadnorje jadne wužywarske mě ze slědujuceje lisćiny, pśidaj komentar (opcionalny) a klikni na tłocašk "Awtora změniś".',
+	'changeauthor-invalid-username'     => 'Njepłaśiwe wužywarske mě "$1".',
+	'changeauthor-nosuchuser'           => 'Njejo wužywaŕ "$1".',
+	'changeauthor-revview'              => 'Wersija #$1 z $2',
+	'changeauthor-nosuchtitle'          => 'Njejo bok z mjenim "$1".',
+	'changeauthor-weirderror'           => 'Wjelgin źiwna zmólka jo wustupiła.
+Wóspjetuj pšosym swóju změnu.
+Jolic toś ta zmólka dalej wustupujo, jo nejskerjej datowa banka wobškóźona.',
+	'changeauthor-invalidform'          => 'Wužyj pšosym formular z Special:ChangeAuthor a nic swójski formular.',
+	'changeauthor-success'              => 'Twójo změnjenje jo se wuspěšnje pśewjadło.',
+	'changeauthor-logentry'             => 'Awtora za $2 $1 wót $3 do $4 změnjony',
+	'changeauthor-logpagename'          => 'Protokol změnow awtorow',
+);
+
 /** Ewe (Eʋegbe)
  * @author M.M.S.
  */
@@ -354,7 +387,7 @@ $messages['fi'] = array(
 	'changeauthor-pagenameform-go'      => 'Siirry',
 	'changeauthor-comment'              => 'Kommentti',
 	'changeauthor-changeauthors-single' => 'Muuta tekijä',
-	'changeauthor-invalid-username'     => 'Virheellinen käyttäjänimi ”$1”.',
+	'changeauthor-invalid-username'     => 'Virheellinen käyttäjätunnus ”$1”.',
 	'changeauthor-nosuchuser'           => 'Käyttäjää ”$1” ei ole olemassa.',
 	'changeauthor-nosuchtitle'          => 'Sivua nimeltä ”$1” ei ole.',
 	'changeauthor-success'              => 'Pyyntö on suoritettu onnistuneesti.',

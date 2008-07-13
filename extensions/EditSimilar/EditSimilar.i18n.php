@@ -30,6 +30,7 @@ This page could also use your help: $1.',
  * @author Naudefj
  */
 $messages['af'] = array(
+	'editsimilar-thankyou'     => 'Dankie vir u bydrae, $1!',
 	'editsimilar-link-disable' => 'stel voorkeure',
 );
 
@@ -151,10 +152,17 @@ $messages['km'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
-	'editsimilar-desc'         => "Ermontert Benotzer fir ähnlech Säiten z'änneren nodeem se eng Säit gespäichert hunn.",
-	'editsimilar-thankyou'     => 'Merci fir är Kontributioun, $1!',
-	'editsimilar-link-disable' => "D'Astellungen aginn",
-	'tog-edit-similar'         => 'Virschloe vun ähnleche Säiten aschalten',
+	'editsimilar-desc'                           => "Ermontert Benotzer fir ähnlech Säiten z'änneren nodeem se eng Säit gespäichert hunn.",
+	'editsimilar-thanks'                         => 'Merci fir är Kontributioun. Kuckt dës Säiten (déi a Verbindung zu däer stinn un däer Dir elo grad geschafft hutt) w.e.g. och no: $1',
+	'editsimilar-thanks-singleresult'            => 'Merci fir är Kontributioun.
+Kuckt dës Säit (déi a Verbindung zu däer steet un däer Dir elo grad geschafft hutt) w.e.g. och no: $1',
+	'editsimilar-thanks-notsimilar'              => 'Merci fir är Kontributioun.
+Dës Säite kéinten och vun ärer Hellëf profitéieren: $1',
+	'editsimilar-thanks-notsimilar-singleresult' => 'Merci fir är Kontributioun.
+DËs Säit kéint och vun ärer Hellëf profitéieren: $1.',
+	'editsimilar-thankyou'                       => 'Merci fir är Kontributioun, $1!',
+	'editsimilar-link-disable'                   => "D'Astellungen aginn",
+	'tog-edit-similar'                           => 'Virschloe vun ähnleche Säiten aschalten',
 );
 
 /** Dutch (Nederlands)

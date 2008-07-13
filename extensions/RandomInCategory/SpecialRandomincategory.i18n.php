@@ -33,9 +33,11 @@ $messages['niu'] = array(
 
 /** Afrikaans (Afrikaans)
  * @author Arnobarnard
+ * @author Naudefj
  */
 $messages['af'] = array(
-	'randomincategory-label' => 'Kategorie:',
+	'randomincategory-label'  => 'Kategorie:',
+	'randomincategory-submit' => 'Gaan',
 );
 
 /** Arabic (العربية)
@@ -388,6 +390,16 @@ $messages['oc'] = array(
  */
 $messages['os'] = array(
 	'randomincategory-label' => 'Категори',
+);
+
+/** Polish (Polski)
+ * @author Maikking
+ */
+$messages['pl'] = array(
+	'randomincategory'            => 'Losowa strona w kategorii',
+	'randomincategory-toolbox'    => 'Losowa strona',
+	'randomincategory-nocategory' => 'Kategoria $1 nie istnieje lub jest pusta',
+	'randomincategory-label'      => 'Kategoria:',
 );
 
 /** Pashto (پښتو)

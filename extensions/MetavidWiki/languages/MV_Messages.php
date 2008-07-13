@@ -272,9 +272,11 @@ $messages['niu'] = array(
 
 /** Afrikaans (Afrikaans)
  * @author Arnobarnard
+ * @author Naudefj
  */
 $messages['af'] = array(
 	'mv_tool_search'     => 'Soek',
+	'mv_play'            => 'Speel',
 	'mv_edit'            => 'Wysig',
 	'mv_history'         => 'Geskiedenis',
 	'mv_remove'          => 'skrap',
@@ -1413,6 +1415,7 @@ $messages['hy'] = array(
  */
 $messages['ia'] = array(
 	'mv_remove_reason' => 'Motivo pro deletion:',
+	'mv_tool_search'   => 'Cercar',
 	'mv_edit'          => 'Modificar',
 );
 
@@ -2409,6 +2412,7 @@ $messages['os'] = array(
 /** Polish (Polski)
  * @author McMonster
  * @author Sp5uhe
+ * @author Maikking
  */
 $messages['pl'] = array(
 	'mv_add_stream_submit'   => 'Dodaj strumień',
@@ -2419,7 +2423,25 @@ $messages['pl'] = array(
 	'mv_label_stream_desc'   => 'Opis strumienia',
 	'mv_remove_reason'       => 'Powód usunięcia',
 	'mv_label_stream_type'   => 'Typ strumienia',
+	'mv_upload_file'         => 'Prześlij plik',
+	'mv_external_file'       => 'Zewnętrzny plik',
+	'mv_tool_search'         => 'Szukaj',
+	'mv_tool_export'         => 'Eksport',
+	'mv_results_found_for'   => 'Wyniki wyszukiwania <b>$1</b> do <b>$2</b> z <b>$3</b> dla:',
+	'mv_play'                => 'Odtwórz',
+	'mv_edit'                => 'Edytuj',
+	'mv_history'             => 'Historia',
+	'mv_edit_title'          => 'Edytuj opis',
 	'mv_remove'              => 'usuń',
+	'mv_start_desc'          => 'Czas rozpoczęcia',
+	'mv_end_desc'            => 'Czas zakończenia',
+	'mv_of'                  => '&#32;z&#32;',
+	'mv_search_category'     => 'Kategoria',
+	'mv_search_and'          => 'i',
+	'mv_search_or'           => 'lub',
+	'mv_category'            => 'kategoria',
+	'mv_match_text'          => '~  $1 trafień',
+	'mv_match_text_one'      => '~ 1 trafienie',
 );
 
 /** Pashto (پښتو)

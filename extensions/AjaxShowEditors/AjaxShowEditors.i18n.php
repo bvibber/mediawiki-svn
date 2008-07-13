@@ -20,10 +20,16 @@ $messages['en'] = array(
 /** Afrikaans (Afrikaans)
  * @author Arnobarnard
  * @author SPQRobin
+ * @author Naudefj
  */
 $messages['af'] = array(
+	'ajax-se-desc'             => 'Wys gebruikers wat dieselfde bladsy wysig',
 	'ajax-se-title'            => 'Op dit moment besig om te wysig:',
+	'ajax-se-pending'          => 'moet nog bygewerk word… (klik hier of begin met wysigings)',
+	'ajax-se-idling'           => '($1s gelede)',
 	'ajax-se-pagedoesnotexist' => 'bladsy bestaan nie',
+	'ajax-se-userinvalid'      => 'FOUT: ongeldige gebruiker',
+	'ajax-se-usernotfound'     => 'FOUT: gebruiker nie gevind',
 );
 
 /** Arabic (العربية)

@@ -18,12 +18,17 @@ $messages['en'] = array(
 	'newuserlog-autocreate-entry' => 'Account created automatically',
 );
 
-/** Afrikaans (Afrikaans) */
+/** Afrikaans (Afrikaans)
+ * @author Naudefj
+ */
 $messages['af'] = array(
-	'newuserlogpage'           => 'Logboek van nuwe gebruikers',
-	'newuserlogpagetext'       => "Dit is 'n logboek van gebruikers wat onlangs ingeteken het.",
-	'newuserlog-create-entry'  => 'Nuwe gebruiker',
-	'newuserlog-create2-entry' => 'rekening geskep vir $1',
+	'newuserlogpage'              => 'Logboek van nuwe gebruikers',
+	'newuserlogpagetext'          => "Dit is 'n logboek van gebruikers wat onlangs ingeteken het.",
+	'newuserlog-desc'             => "Voeg 'n [[Special:Log/newusers|logboek van nuwe gebruikers]] by [[Special:Log|logboeke]]",
+	'newuserlog-byemail'          => 'wagwoord is per e-pos versend',
+	'newuserlog-create-entry'     => 'Nuwe gebruiker',
+	'newuserlog-create2-entry'    => 'rekening geskep vir $1',
+	'newuserlog-autocreate-entry' => 'Gebruiker outomaties geskep',
 );
 
 /** Amharic (አማርኛ)

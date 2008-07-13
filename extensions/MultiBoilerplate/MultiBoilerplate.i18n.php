@@ -165,6 +165,13 @@ $messages['oc'] = array(
 	'multiboilerplate-submit' => 'Cargar',
 );
 
+/** Polish (Polski)
+ * @author Maikking
+ */
+$messages['pl'] = array(
+	'multiboilerplate-submit' => 'Prześlij',
+);
+
 /** Pashto (پښتو)
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */

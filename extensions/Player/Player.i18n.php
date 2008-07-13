@@ -39,10 +39,13 @@ $messages['mhr'] = array(
 /** Afrikaans (Afrikaans)
  * @author SPQRobin
  * @author Arnobarnard
+ * @author Naudefj
  */
 $messages['af'] = array(
-	'player-file'      => 'Lêernaam',
-	'player-goto-page' => 'Bladsy',
+	'player-file'        => 'Lêernaam',
+	'player-play'        => 'Speel',
+	'player-clicktoplay' => 'Speel $1',
+	'player-goto-page'   => 'Bladsy',
 );
 
 /** Arabic (العربية)

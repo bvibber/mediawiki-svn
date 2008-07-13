@@ -221,6 +221,13 @@ $messages['oc'] = array(
 	'seealso-desc' => 'Entèsta « Vejatz tanben » utilizada per la balisa <code><nowiki><seealso></nowiki></code>',
 );
 
+/** Polish (Polski)
+ * @author Maikking
+ */
+$messages['pl'] = array(
+	'seealso' => 'Zobacz też',
+);
+
 /** Pashto (پښتو)
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */

@@ -2177,6 +2177,7 @@ $messages['hi'] = array(
  * @author Dnik
  * @author Suradnik13
  * @author Siebrand
+ * @author Dalibor Bosits
  */
 $messages['hr'] = array(
 	'boardvote'              => 'Izbori za Odbor povjerenika Wikimedije',
@@ -2245,6 +2246,7 @@ Bot suradničkim računima nije dopušteno glasovanje.',
 Bit ćete preusmjereni na taj vanjski server za 20 sekundi. [$1 Kliknite ovdje] da odete tamo odmah.
 
 Moguće je da ćete vidjeti sigurnosno upozorenje o nepotpisanom certifikatu.',
+	'right-boardvote'        => 'Administracija izbora',
 );
 
 /** Upper Sorbian (Hornjoserbsce)

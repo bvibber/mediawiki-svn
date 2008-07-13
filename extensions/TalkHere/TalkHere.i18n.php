@@ -316,10 +316,15 @@ $messages['km'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
+	'talkhere-desc'        => "Setzt d'Diskussiounssäit an d'Säit",
+	'talkhere-foottext'    => "D'Bemierkungen hei uewendriwwer goufe vu visiteuren hannerlooss.
+
+Déi Responsabel vum Site kënne keng Verantwortung fir den Inhalt vun esou Bemierkungen iwwerhuelen.",
 	'talkhere-talkpage'    => 'Diskussiounssäit',
 	'talkhere-notalk'      => "''(Nach keng Bemierkung)''",
 	'talkhere-addcomment'  => 'Bemierkung derbäisetzen',
 	'talkhere-beforeinput' => 'Dir kënnt eng Bemierkung hei ënnendrënner derbäisetzen.',
+	'talkhere-loading'     => 'den Editeur gëtt gelueden ...',
 	'talkhere-collapse'    => 'Editeur verstoppen',
 );
 

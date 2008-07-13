@@ -51,9 +51,11 @@ $messages['en'] = array(
 
 /** Afrikaans (Afrikaans)
  * @author Arnobarnard
+ * @author Naudefj
  */
 $messages['af'] = array(
 	'review_total_statistics' => 'Totaal',
+	'review_comment'          => 'Opmerking',
 );
 
 /** Aragonese (Aragonés)

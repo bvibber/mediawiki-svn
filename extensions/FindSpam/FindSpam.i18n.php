@@ -317,10 +317,14 @@ $messages['os'] = array(
 
 /** Polish (Polski)
  * @author McMonster
+ * @author Maikking
  */
 $messages['pl'] = array(
-	'findspam'    => 'Znajdź spam',
-	'findspam-ip' => 'Adres IP:',
+	'findspam'             => 'Znajdź spam',
+	'findspam-desc'        => 'Dodaje [[Special:FindSpam|stronę specjalną]], pozwalającą odnaleźć niedawno dodany spam.',
+	'findspam-ip'          => 'Adres IP:',
+	'findspam-ok'          => 'OK',
+	'findspam-notextfound' => 'Nie znaleziono żadnych edycji',
 );
 
 /** Pashto (پښتو)

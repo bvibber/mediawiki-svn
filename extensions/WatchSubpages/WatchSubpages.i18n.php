@@ -29,6 +29,7 @@ When checking or unchecking multiple pages, holding the shift key allows you to 
  */
 $messages['ar'] = array(
 	'watchsubpages'                      => 'مراقبة الصفحات الفرعية',
+	'watchsubpages-addedtowatchlist'     => 'التالي تمت إضافته إلى قائمة مراقبتك.',
 	'watchsubpages-addtitles'            => 'إضافة صفحات',
 	'watchsubpages-addtitlestowatchlist' => 'إضافة صفحات إلى قائمة المراقبة',
 );

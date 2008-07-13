@@ -144,6 +144,24 @@ Mit freundlichen Grüßen,
 $2',
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'userrightsnotifysubject' => 'Změna kupkoweje pśisłušnosći na $1',
+	'userrightsnotifybody'    => 'Halo $1.
+
+To jo informacija, až jo se twója kupkowa pśisłušnosć na $2 wót $3 na $4 změniła.
+
+Pśidany: $5
+Wótwónoźony: $6
+
+Z pśijaśelnymi póstrowami,
+
+$2',
+	'userrightsnotif-desc'    => 'Sćele e-mailowe powěźeńki wužywarjam pśi změnjenju pšawow',
+);
+
 /** Greek (Ελληνικά)
  * @author Απεργός
  */
@@ -207,7 +225,7 @@ $messages['hsb'] = array(
 	'userrightsnotifysubject' => 'Změna skupinoweho čłonstwa na $1',
 	'userrightsnotifybody'    => 'Witaj $1
 
-To će informuje, zo twoje skupinowe čłonstwa na $2 buchu wot $3 pola $4 změnjene.
+To je informacija, zo twoje skupinowe čłonstwo na $2 bu wot $3 pola $4 změnjene.
 
 Přidaty: $5
 Wotstronjeny: $6
@@ -215,6 +233,7 @@ Wotstronjeny: $6
 Postrowy,
 
 $2',
+	'userrightsnotif-desc'    => 'Sćele wužiwarjam e-mejlowu powěsće při změnjenju prawow',
 );
 
 /** Indonesian (Bahasa Indonesia)

@@ -353,9 +353,13 @@ $messages['os'] = array(
 
 /** Polish (Polski)
  * @author Sp5uhe
+ * @author Maikking
  */
 $messages['pl'] = array(
-	'showprocesslist' => 'Pokaż listę procesów',
+	'showprocesslist'         => 'Pokaż listę procesów',
+	'showprocesslist-id'      => 'Id',
+	'showprocesslist-user'    => 'Użytkownik',
+	'showprocesslist-command' => 'Polecenie',
 );
 
 /** Pashto (پښتو)

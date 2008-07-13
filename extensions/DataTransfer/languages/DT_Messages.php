@@ -47,6 +47,7 @@ $messages['mhr'] = array(
 $messages['af'] = array(
 	'dt_viewxml_categories' => 'Ketagorieë',
 	'dt_viewxml_namespaces' => 'Naamruimtes',
+	'dt_xml_namespace'      => 'Naamruimte',
 	'dt_xml_name'           => 'Naam',
 	'dt_xml_title'          => 'Titel',
 );
@@ -263,6 +264,13 @@ $messages['hi'] = array(
 	'dt_xml_title'                => 'शीर्षक',
 	'dt_xml_id'                   => 'आईडी',
 	'dt_xml_freetext'             => 'मुक्त पाठ',
+);
+
+/** Croatian (Hrvatski)
+ * @author Dalibor Bosits
+ */
+$messages['hr'] = array(
+	'dt_viewxml_categories' => 'Kategorije',
 );
 
 /** Upper Sorbian (Hornjoserbsce)

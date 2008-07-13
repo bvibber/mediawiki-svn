@@ -466,10 +466,12 @@ $messages['oc'] = array(
 /** Polish (Polski)
  * @author McMonster
  * @author Sp5uhe
+ * @author Maikking
  */
 $messages['pl'] = array(
-	'invite-logentry'               => 'zaprosił $1 do używania dodatku <i>$2</i>',
-	'invitations-inviteform-submit' => 'Zaproś',
+	'invite-logentry'                => 'zaprosił $1 do używania dodatku <i>$2</i>',
+	'invitations-feature-notallowed' => 'Nie masz odpowiednich uprawnień do używania <i>$1</i>.',
+	'invitations-inviteform-submit'  => 'Zaproś',
 );
 
 /** Pashto (پښتو)
@@ -669,7 +671,7 @@ $messages['vi'] = array(
 	'invitations-uninvitedlist-none'        => 'Vào lúc này, không có tính năng phần mềm nào khác được chỉ định chỉ cho phép thư mời.',
 	'invitations-feature-pagetitle'         => 'Quản lý Thư mời - $1',
 	'invitations-feature-access'            => 'Bạn hiện có quyền sử dụng <i>$1</i>.',
-	'invitations-feature-numleft'           => 'Bạn vẫn còn lại <b>$1</b> trong tổng số $2 lời mời.',
+	'invitations-feature-numleft'           => 'Bạn vẫn còn lại <b>$1</b>{{PLURAL:$2|| trong tổng số $2}} lời mời.',
 	'invitations-feature-noneleft'          => 'Bạn đã dùng tất cả các lời mời cho phép dành cho tính năng này',
 	'invitations-feature-noneyet'           => 'Bạn chưa nhận được lượng thư mời cung cấp dành cho tính năng này.',
 	'invitations-feature-notallowed'        => 'Bạn không có quyền sử dụng <i>$1</i>.',

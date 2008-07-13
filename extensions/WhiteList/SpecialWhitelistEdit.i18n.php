@@ -120,6 +120,7 @@ $allMessages['af'] = array(
  * @author Meno25
  */
 $allMessages['ar'] = array(
+	'whitelist'                => 'صفحات القائمة البيضاء',
 	'mywhitelistpages'         => 'صفحاتي',
 	'whitelistfor'             => '<center>المعلومات الحالية ل<b>$1</b></center>',
 	'whitelisttablemodify'     => 'تعديل',
@@ -127,6 +128,7 @@ $allMessages['ar'] = array(
 	'whitelisttablemodifynone' => 'لا شيء',
 	'whitelisttablepage'       => 'صفحة ويكي',
 	'whitelisttabletype'       => 'نوع الدخول',
+	'whitelisttableexpires'    => 'ينتهي في',
 	'whitelisttablemodby'      => 'آخر تعديل بواسطة',
 	'whitelisttablemodon'      => 'آخر تعديل في',
 	'whitelisttableedit'       => 'تعديل',
@@ -136,11 +138,14 @@ $allMessages['ar'] = array(
 	'whitelisttablesetedit'    => 'ضبط للتعديل',
 	'whitelisttablesetview'    => 'ضبط للعرض',
 	'whitelisttableremove'     => 'إزالة',
+	'whitelistnewtabledate'    => 'تاريخ الانتهاء:',
 	'whitelistnewtableedit'    => 'ضبط للتعديل',
 	'whitelistnewtableview'    => 'ضبط للعرض',
 	'whitelistnewtableprocess' => 'عملية',
 	'whitelistnewtablereview'  => 'مراجعة',
 	'whitelistbadtitle'        => 'عنوان سيء -',
+	'whitelistoverview'        => '== مراجعة التغييرات ل$1 ==',
+	'whitelistrequest'         => 'طلب السماح لمزيد من الصفحات',
 	'whitelistnever'           => 'أبدا',
 );
 

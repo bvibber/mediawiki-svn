@@ -137,6 +137,7 @@ $messages['niu'] = array(
 
 /** Afrikaans (Afrikaans)
  * @author Arnobarnard
+ * @author Naudefj
  */
 $messages['af'] = array(
 	'viewapc-apc-version'       => 'APC weergawe',
@@ -147,6 +148,7 @@ $messages['af'] = array(
 	'viewapc-display-type'      => 'Tipe',
 	'viewapc-display-mem_size'  => 'Grootte',
 	'viewapc-ls-options-legend' => 'Opsies',
+	'viewapc-ls-submit'         => 'Gaan!',
 	'viewapc-ls-header-name'    => 'Naam',
 	'viewapc-ls-header-size'    => 'Grootte',
 	'viewapc-ls-header-created' => 'Geskep',
@@ -1105,12 +1107,14 @@ Vèrsi sing luwih anyar $2 iku wis ana ing http://pecl.php.net/package/APC/$2',
 
 /** Khmer (ភាសាខ្មែរ)
  * @author គីមស៊្រុន
+ * @author Lovekhmer
  */
 $messages['km'] = array(
 	'viewapc'                       => 'ពត៌មាន APC',
 	'viewapc-info-general'          => 'ពត៌មានទូទៅ',
 	'viewapc-shared-memory'         => 'អង្គចងចាំដែលត្រូវបានប្រើរួមគ្នា',
 	'viewapc-cached-files-d'        => '$1 {{PLURAL:$1|ឯកសារ|ឯកសារ}} ($2)',
+	'viewapc-rps'                   => '$1សំនើសុំក្នុងមួយវិនាទី',
 	'viewapc-memory-usage'          => 'បំរើបំរាស់អង្គចងចាំ',
 	'viewapc-memory-free'           => 'ទំនេរ៖ $1 ($2)',
 	'viewapc-memory-used'           => 'ត្រូវបានប្រើប្រាស់៖ $1 ($2)',
@@ -2346,7 +2350,7 @@ $messages['te'] = array(
 $messages['uk'] = array(
 	'viewapc'                       => 'Відомості про APC',
 	'viewapc-desc'                  => '[[Special:ViewAPC|Перегляд та керування кешем APC]] в MediaWiki',
-	'right-apc'                     => 'використання всіх можливостей Special:ViewAPC',
+	'right-apc'                     => 'використання всіх можливостей [[Special:ViewAPC]]',
 	'viewapc-apc-not-available'     => 'Немає відомостей про кеш.
 Очевидно, APC не працює.',
 	'viewapc-clear-confirm'         => 'Ви хочете очистити кеш?',
@@ -2391,11 +2395,12 @@ $messages['uk'] = array(
 
 /** Vietnamese (Tiếng Việt)
  * @author Vinhtantran
+ * @author Minh Nguyen
  */
 $messages['vi'] = array(
 	'viewapc'                       => 'Thông tin APC',
 	'viewapc-desc'                  => '[[Special:ViewAPC|Xem và quản lý bộ đệm APC]] bằng MediaWiki',
-	'right-apc'                     => 'Sử dụng tất cả các tính năng trong Special:ViewAPC',
+	'right-apc'                     => 'Sử dụng tất cả các tính năng trong [[{{ns:Special}}:ViewAPC]]',
 	'viewapc-apc-not-available'     => 'Không có thông tin về bộ nhớ đệm.
 Dường như APC đang tắt.',
 	'viewapc-clear-confirm'         => 'Bạn có muốn xóa bộ nhớ đệm?',

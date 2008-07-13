@@ -8,16 +8,35 @@
 # (although it's always nice to specify)
 # if set to false, there is no fallback
 $fallback=array(
-	"en"=>false,
-	"ar"=>"en",
-	"bg"=>"en",
-	"eo"=>"en",
-	"fi"=>"en",
-	"fr"=>"en",
-	"nap"=>"en",
-	"nl"=>"en",
-	"oc"=>"en",
-	"ru"=>"en",
+	'en'  => false,
+	'af'  => 'en',
+	'ar'  => 'en',
+	'bcc' => 'en',
+	'bg'  => 'en',
+	'eo'  => 'en',
+	'fi'  => 'en',
+	'fr'  => 'en',
+	'gl'  => 'en',
+	'ia'  => 'en',
+	'km'  => 'en',
+	'ksh' => 'en',
+	'lb'  => 'en',
+	'mhr' => 'en',
+	'nap' => 'en',
+	'nl'  => 'en',
+	'no'  => 'en',
+	'oc'  => 'en',
+	'pl'  => 'en',
+	'pms' => 'en',
+	'pt'  => 'en',
+	'rif' => 'en',
+	'rtm' => 'en',
+	'ru'  => 'en',
+	'sv'  => 'en',
+	'te'  => 'en',
+	'uk'  => 'en',
+	'vec' => 'en',
+	'vi'  => 'en',
 );
 
 # is this language rtl or ltr? assumes ltr as default
@@ -176,6 +195,13 @@ $messages['mhr'] = array(
 	'voctrain_User_name' => 'Пайдаланышын лӱмжӧ',
 );
 
+/** Afrikaans (Afrikaans)
+ * @author Naudefj
+ */
+$messages['af'] = array(
+	'voctrain_Language' => 'Taal',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */
@@ -310,6 +336,7 @@ $messages['bg'] = array(
 	'voctrain_Switch_language'                           => 'Промяна на езика',
 	'voctrain_Language'                                  => 'Език',
 	'voctrain_Log_in'                                    => 'Влизане',
+	'voctrain_Translation'                               => 'Превод',
 	'voctrain_hiding'                                    => 'Скриване',
 );
 
@@ -599,34 +626,42 @@ $messages['ksh'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
-	'voctrain_Hello_World'           => 'SALUT!',
-	'voctrain_Permission_Denied'     => 'Erlaabness refuséiert',
-	'voctrain_try_again_'            => 'nach eng Kéier probéieren?',
-	'voctrain_Action_unknown'        => 'Onbekannten Aktioun',
-	'voctrain_User_added'            => 'Benotzer derbäigesat',
-	'voctrain_continue'              => 'viru fueren',
-	'voctrain_bye'                   => 'Äddi',
-	'voctrain_Number_of_questions'   => 'Zuel vun de Froen',
-	'voctrain_Languages'             => 'Sproochen',
-	'voctrain_Questions'             => 'Froen',
-	'voctrain_Answers'               => 'Äntwerten',
-	'voctrain_ISO_639_3_format'      => 'ISO-639-3 Format',
-	'voctrain_Definition'            => 'Definitioun',
-	'voctrain_Word'                  => 'Wuert',
-	'voctrain_skip'                  => 'iwwersprangen',
-	'voctrain_Question'              => 'Fro',
-	'voctrain_The_word_to_translate' => "D'Wuert dat iwwersat soll ginn",
-	'voctrain_Answer'                => 'Äntwert',
-	'voctrain_one_of'                => 'ee vun',
-	'voctrain_Answer_s_'             => 'Äntwert(en)',
-	'voctrain_Omegawiki'             => 'Omegawiki',
-	'voctrain_User_name'             => 'Benotzernumm',
-	'voctrain_Password'              => 'Passwuert',
-	'voctrain_Switch_language'       => 'Sprooch wiesselen',
-	'voctrain_Language'              => 'Sprooch',
-	'voctrain_Definitions'           => 'Definitiounen',
-	'voctrain_Translation'           => 'Iwwersetzung',
-	'voctrain_hiding'                => 'Verstoppen',
+	'voctrain_Hello_World'                                          => 'SALUT!',
+	'voctrain_Permission_Denied'                                    => 'Erlaabness refuséiert',
+	'voctrain_try_again_'                                           => 'nach eng Kéier probéieren?',
+	'voctrain_Action_unknown'                                       => 'Onbekannten Aktioun',
+	'voctrain_User_added'                                           => 'Benotzer derbäigesat',
+	'voctrain_Hello_username_welcome_to_the_omega_language_trainer' => 'Moien, %username, wëllkomm beim Omega-Sproochen-Trainer',
+	'voctrain_continue'                                             => 'viru fueren',
+	'voctrain_bye'                                                  => 'Äddi',
+	'voctrain_Number_of_questions'                                  => 'Zuel vun de Froen',
+	'voctrain_Languages'                                            => 'Sproochen',
+	'voctrain_Please_specify_the_languages_you_want_to_test_in'     => 'Gitt w.e.g. déi Sprooch un an däer Dir den Test maache wëllt',
+	'voctrain_eg_eng_for_English_deu_for_Deutch_German_'            => '(z. Bsp., eng fir Englesch, deu fir Däitsch).',
+	'voctrain_Questions'                                            => 'Froen',
+	'voctrain_Answers'                                              => 'Äntwerten',
+	'voctrain_start_exercise'                                       => 'Exercice ufänken',
+	'voctrain_ISO_639_3_format'                                     => 'ISO-639-3 Format',
+	'voctrain_Definition'                                           => 'Definitioun',
+	'voctrain_Word'                                                 => 'Wuert',
+	'voctrain_Please_type_your_answer_here'                         => 'Gitt är Äntwert w.e.g. hei an',
+	'voctrain_submit_answer'                                        => 'Äntwert fortschécken',
+	'voctrain_skip'                                                 => 'iwwersprangen',
+	'voctrain_abort_exercise'                                       => 'Exercice ofbriechen',
+	'voctrain_Question'                                             => 'Fro',
+	'voctrain_The_word_to_translate'                                => "D'Wuert dat iwwersat soll ginn",
+	'voctrain_Answer'                                               => 'Äntwert',
+	'voctrain_one_of'                                               => 'ee vun',
+	'voctrain_Answer_s_'                                            => 'Äntwert(en)',
+	'voctrain_Omegawiki'                                            => 'Omegawiki',
+	'voctrain_Start_a_new_exercise'                                 => 'En neien Exercice uffänken',
+	'voctrain_User_name'                                            => 'Benotzernumm',
+	'voctrain_Password'                                             => 'Passwuert',
+	'voctrain_Switch_language'                                      => 'Sprooch wiesselen',
+	'voctrain_Language'                                             => 'Sprooch',
+	'voctrain_Definitions'                                          => 'Definitiounen',
+	'voctrain_Translation'                                          => 'Iwwersetzung',
+	'voctrain_hiding'                                               => 'Verstoppen',
 );
 
 /** Neapolitan (Nnapulitano)
@@ -902,6 +937,13 @@ $messages['oc'] = array(
 	'voctrain_Type_a_username_and_optional_password_or_try_a_different_username_'                   => 'Picatz un nom d’utilizaire e un senhal facultatiu, (o alara ensajatz un autre nom d’utilizaire)',
 );
 
+/** Polish (Polski)
+ * @author Maikking
+ */
+$messages['pl'] = array(
+	'voctrain_continue' => 'Kontynuuj',
+);
+
 /** Piedmontese (Piemontèis)
  * @author Valter Bergesio
  */
@@ -1070,3 +1112,80 @@ $messages['uk'] = array(
 	'voctrain_Language' => 'Мова',
 );
 
+/** Vèneto (Vèneto)
+ * @author Candalua
+ */
+$messages['vec'] = array(
+	'voctrain_Hello_World'                                          => 'CIAO WIKI!',
+	'voctrain_Permission_Denied'                                    => 'Parmesso negà',
+	'voctrain_try_again_'                                           => 'pròa da novo?',
+	'voctrain_Action_unknown'                                       => 'Azion sconossiùa',
+	'voctrain_I_don_t_know_what_to_do_with_action_'                 => "No so mia cossa far con '%action'.",
+	'voctrain_User_added'                                           => 'Utente zontà',
+	'voctrain_Hello_username_welcome_to_the_omega_language_trainer' => "Ciao, %username, benvegnù a l'istrutor de lengue omega",
+	'voctrain_continue'                                             => 'continua',
+	'voctrain_Number_of_questions'                                  => 'Nùmaro de domande',
+	'voctrain_Languages'                                            => 'Lengue',
+	'voctrain_Questions'                                            => 'Domande',
+	'voctrain_Answers'                                              => 'Risposte',
+	'voctrain_start_exercise'                                       => "scumissia l'esercissio",
+	'voctrain_ISO_639_3_format'                                     => 'Formato ISO-639-3',
+	'voctrain_Definition'                                           => 'Definission',
+	'voctrain_Word'                                                 => 'Parola',
+	'voctrain_Please_type_your_answer_here'                         => 'Par piaser scrivi la to risposta qua',
+	'voctrain_submit_answer'                                        => 'invia risposta',
+	'voctrain_skip'                                                 => 'salta',
+	'voctrain_I_know_it_do_not_ask_again'                           => 'Lo so zà, no sta domandarme da novo',
+	'voctrain_Question'                                             => 'Domanda',
+	'voctrain_The_word_to_translate'                                => 'La parola da tradur',
+	'voctrain_Answer'                                               => 'Risposta',
+	'voctrain_Omegawiki'                                            => 'Omegawiki',
+	'voctrain_Exercise_complete'                                    => 'Esercissio conpletà',
+	'voctrain_Exercise_terminated'                                  => 'Esercissio finìo',
+	'voctrain_User_name'                                            => 'Nome utente',
+	'voctrain_Password'                                             => 'Password',
+	'voctrain_Switch_language'                                      => 'Canbia lengua',
+	'voctrain_Language'                                             => 'Lengua',
+	'voctrain_Omegawiki_vocabulary_trainer'                         => 'Istrutor de vocabolario de Omegawiki',
+	'voctrain_Definitions'                                          => 'Definissioni',
+	'voctrain_Translation'                                          => 'Tradussion',
+);
+
+/** Vietnamese (Tiếng Việt)
+ * @author Minh Nguyen
+ */
+$messages['vi'] = array(
+	'voctrain_Hello_World'                               => 'CHÀO WIKI!',
+	'voctrain_continue'                                  => 'tiếp tục',
+	'voctrain_Number_of_questions'                       => 'Số câu hỏi',
+	'voctrain_Languages'                                 => 'Ngôn ngữ',
+	'voctrain_eg_eng_for_English_deu_for_Deutch_German_' => '(vd: eng là tiếng Anh, deu là tiếng Đức).',
+	'voctrain_Questions'                                 => 'Câu hỏi',
+	'voctrain_Answers'                                   => 'Câu trả lời',
+	'voctrain_ISO_639_3_format'                          => 'Dạng ISO 639-3',
+	'voctrain_Definition'                                => 'Định nghĩa',
+	'voctrain_Word'                                      => 'Từ',
+	'voctrain_submit_answer'                             => 'đệ trình câu trả lời',
+	'voctrain_peek'                                      => 'ngó',
+	'voctrain_skip'                                      => 'bỏ qua',
+	'voctrain_I_know_it_do_not_ask_again'                => 'Tôi biết/đừng hỏi lần sau',
+	'voctrain_list_answers'                              => 'liệt kê các câu trả lời',
+	'voctrain_Question'                                  => 'Câu hỏi',
+	'voctrain_The_word_to_translate'                     => 'Từ để dịch',
+	'voctrain_Answer'                                    => 'Câu trả lời',
+	'voctrain_one_of'                                    => 'một cái',
+	'voctrain_Answer_s_'                                 => 'Câu trả lời',
+	'voctrain_logout'                                    => 'đăng xuất',
+	'voctrain_Powered_by'                                => 'Chạy trên',
+	'voctrain_Omegawiki'                                 => 'OmegaWiki',
+	'voctrain_User_name'                                 => 'Tên người dùng',
+	'voctrain_Password'                                  => 'Mật khẩu',
+	'voctrain_Login'                                     => 'Đăng nhập',
+	'voctrain_Create_new_user'                           => 'Mở tài khoản',
+	'voctrain_Switch_language'                           => 'Đổi ngôn ngữ',
+	'voctrain_Language'                                  => 'Ngôn ngữ',
+	'voctrain_Log_in'                                    => 'Đăng nhập',
+	'voctrain_Definitions'                               => 'Định nghĩa',
+	'voctrain_Could_not_create_new_user'                 => 'Không có thể mở tài khoản',
+	'voctrain_Translation'                               => 'Lời dịch',
+);

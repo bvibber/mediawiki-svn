@@ -14,6 +14,13 @@ $messages['en'] = array(
 	'antibot-desc' => 'Simple framework for spambot checks and trigger payloads',
 );
 
+/** Afrikaans (Afrikaans)
+ * @author Naudefj
+ */
+$messages['af'] = array(
+	'antibot-desc' => 'Eenvoudige raamwerk vir die kontrole van spambots en trigger payloads',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */

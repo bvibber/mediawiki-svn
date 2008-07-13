@@ -379,9 +379,15 @@ $messages['oc'] = array(
 /** Polish (Polski)
  * @author McMonster
  * @author Sp5uhe
+ * @author Maikking
  */
 $messages['pl'] = array(
-	'lookupuser_id' => 'ID użytkownika: <tt>$1</tt>',
+	'lookupuser_id'              => 'ID użytkownika: <tt>$1</tt>',
+	'lookupuser_email'           => 'E-mail: [[Special:Emailuser/$2|$1]]',
+	'lookupuser_no_email'        => 'użytkownik nie podał adresu e-mail',
+	'lookupuser_realname'        => 'Prawdziwe imię i nazwisko: $1',
+	'lookupuser_registration'    => 'Zarejestrowano: $1',
+	'lookupuser_no_registration' => 'użytkownik o tej nazwie nie istnieje',
 );
 
 /** Pashto (پښتو)
