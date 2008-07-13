@@ -1,0 +1,76 @@
+=Release Notes=
+
+==v0.8 ==
+
+* Support heading which includes the heading (as an H1) above the report (only if there is content)
+* Support for empty noresultsmessage, if it's set to nothing then no no-results message will be displayed
+* Support for milestone search query and column name
+* Refactoring to improve supportability and future extensions
+* Support for "allow_call_time_pass_reference = Off" in php.ini without warnings
+* Clear up all warnings with "error_reporting  =  E_ALL" set in php.ini
+* Display tasks which a task is dependent on with "depends=*" and anything which blocks with "blocks=*" - assignee and status displayed on roll over (in the td title)
+* By default the real name is display for cc,to, from , etc names.  If you want the login name to be displayed set "nameformat=login"
+* Support for name format as a succinct three letter acronym, e.g. Joe Blogs would be JBL and Jane Doe would be JDO, set "nameformat=tla" to enable this
+* Provided a simple list format configured by setting "format=list" which generates a list of tasks handy for cutting and pasting into an email
+* Support for alias in column and query
+* A little faint "+" appears next to any value if there's extra info when you roll over the value, for example if an alias is set then you see a little "+" and see the alias name when you roll over
+
+==v0.7 - 4th July 2008 ==
+
+* Regression Warning : There were some inconsistencies and bugs relating to the naming fields in query field parameters, sort parameters and column parameters.  This naming has been simplified and made consistent, however it does mean that the use of functions should be adjusted inline with this release.  Naming is now as follows:
+*: status (instead of bug_status), severity (instead of bug_severity), id (instead of bug_id), summary (instead of short_desc)
+* Warnings now output to page to make troubleshooting easier
+* Implicitly add column to provide url associated with task.  Column doesn't have a header so if no rows have urls then nothing shows up.
+* Provide support for last modified with the parameter, modified=+ or sort=modified|order=desc
+* Added group feature, e.g. group=product to group the report into different products, including groupformat=radar to render headers for dates as today, tomorrow, this week etc ...
+* Added experimental bar chart feature - e.g. bar=priority groups all rows into a bar chart of different priorities.  I say experimental, since doesn't look great yet, but it's functional.
+
+==v0.6 - 1st July 2008 ==
+
+* Fix setting of implicit sorting when some query fields set
+* Fix bug relating to array_fill_keys mandating two parameters
+
+==v0.5 - 1st July 2008 ==
+
+* Optimise SQL to only do joins when needed
+* Support search on component name, component=mycomponent
+* Support for vote reporting, columns=+votes to include votes column and votes=+ to display only tickets with votes against them
+* Significant refactoring to make extension easier to maintain and to allow further DB integrations to be developed (including abstractions from mediawiki) - I expect to do be doing a vTiger MediaWiki extension in the coming months, and I've had feedback that people would like to run this functionality outside of mediawiki.
+* Implicit sort and ordering based on query parameters if no explit sort and ordering set, for example if you say you want to list all rows with deadline set, then sorting will be on deadline (unless explicitly set otherwise)
+* Support for "from","to" and "cc" meaning respectively who raised the ticket, who's it assigned to and who's cc'd
+** Renamed column and query field login_name to "to" (requires changes to any function calls which make reference to login_name)
+** Support for reporter query field and column, e.g. from=me@bemoko.com and columns=+from
+** Support for query field on cc, but note that comma separated and not operators are not supported for this field.
+* Implicity remove columns if query set for a single value, i.e. all values in the column would be the same
+* Implicity add columns if query set for not null, e.g. votes=+ or deadline=+ would implicitly add the deadline and votes column
+* Support query for flagged tasks, e.g. flag=+me@bemoko.com
+* Make sort on deadline put earliest date first and nulls at end
+
+==v0.4 - 30th June 2008==
+
+* Fix query for free text match - using '''search''' parameter
+* Changed default status to !CLOSED
+* Default maxrows changed to 100
+* Support maxrows as parameter into function call (as well as server config max) - note function call value can't be higher than server config value
+* Support spaces in comma separated query list
+* Default columns changed to "bug_id,priority,bug_status,bug_severity,version,name,short_desc" with login_name removed
+* Support adding and removing columns from the default by using "column=+deadline" or "column=-name", or "column=+deadline,-name"
+* Support sort, e.g "sort=deadline" and ordering "order=desc"
+* Support search for deadline set "deadline=+" and deadline not set "deadline=-"
+* Change "name" column to "product" to make it more obvious and consistent
+
+==v0.3 - 26th June 2008==
+
+* Improve UI rendering of lastcomment bubbles
+* Fix the css to get tables rendered better
+* Improved error handling of mysql_query
+
+==v0.2 - 26th June 2008==
+
+* Render last comment for a bug in jQuery bubble - use the '''lastcomment''' parameter
+* Support for negation of query fields
+* Installation download bundle provided
+
+==v0.1 - 25th June 2008==
+
+* Baseline reporting functionality
