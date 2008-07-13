@@ -14,11 +14,36 @@ $aliases['en'] = array(
     'AdvancedRandom' => array( 'AdvancedRandom' ),
 );
 
+/** Arabic (العربية) */
+$aliases['ar'] = array(
+	'AdvancedRandom' => array( 'عشوائي متقدم' ),
+);
+
+/** Egyptian Spoken Arabic (مصرى) */
+$aliases['arz'] = array(
+	'AdvancedRandom' => array( 'عشوائى متقدم' ),
+);
+
+/** Finnish (Suomi) */
+$aliases['fi'] = array(
+	'AdvancedRandom' => array( 'Ehdollinen satunnaissivu' ),
+);
+
 /** Hebrew (עברית)
  * @author Rotem Liss
  */
 $aliases['he'] = array(
     'AdvancedRandom' => array( 'אקראי_מתקדם' ),
+);
+
+/** Haitian (Kreyòl ayisyen) */
+$aliases['ht'] = array(
+	'AdvancedRandom' => array( 'RandonmAvanse' ),
+);
+
+/** Dutch (Nederlands) */
+$aliases['nl'] = array(
+	'AdvancedRandom' => array( 'UitgebreidWillekeurig' ),
 );
 
 /** Norwegian (Norsk (bokmål))
@@ -27,3 +52,4 @@ $aliases['he'] = array(
 $aliases['no'] = array(
     'AdvancedRandom' => array( 'Avansert_tilfeldig_side' ),
 );
+

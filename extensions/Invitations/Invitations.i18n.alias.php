@@ -14,9 +14,45 @@ $aliases['en'] = array(
 	'SpecialInvitations' => array( 'Invitations' ),
 );
 
+/** Arabic (العربية) */
+$aliases['ar'] = array(
+	'SpecialInvitations' => array( 'دعوات' ),
+);
+
+/** Egyptian Spoken Arabic (مصرى) */
+$aliases['arz'] = array(
+	'SpecialInvitations' => array( 'دعوات' ),
+);
+
+/** Finnish (Suomi) */
+$aliases['fi'] = array(
+	'SpecialInvitations' => array( 'Kutsut' ),
+);
+
 /** Hebrew (עברית)
  * @author Rotem Liss
  */
 $aliases['he'] = array(
 	'SpecialInvitations' => array( 'הזמנות' ),
 );
+
+/** Haitian (Kreyòl ayisyen) */
+$aliases['ht'] = array(
+	'SpecialInvitations' => array( 'Envitasyon' ),
+);
+
+/** Hungarian (Magyar) */
+$aliases['hu'] = array(
+	'SpecialInvitations' => array( 'Meghívók' ),
+);
+
+/** Malay (Bahasa Melayu) */
+$aliases['ms'] = array(
+	'SpecialInvitations' => array( 'Jemputan' ),
+);
+
+/** Dutch (Nederlands) */
+$aliases['nl'] = array(
+	'SpecialInvitations' => array( 'Uitnodigingen' ),
+);
+

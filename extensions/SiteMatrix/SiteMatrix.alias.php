@@ -14,11 +14,26 @@ $aliases['en'] = array(
     'SiteMatrix' => array( 'SiteMatrix', 'WikimediaWikis' ),
 );
 
+/** Arabic (العربية) */
+$aliases['ar'] = array(
+	'SiteMatrix' => array( 'مصفوفة الموقع', 'ويكيات ويكيميديا' ),
+);
+
+/** Egyptian Spoken Arabic (مصرى) */
+$aliases['arz'] = array(
+	'SiteMatrix' => array( 'مصفوفة الموقع', 'ويكيات ويكيميديا' ),
+);
+
 /** German
  * @author Raimond Spekking
  */
 $aliases['de'] = array(
 	'SiteMatrix' => array( 'SiteMatrix' ),
+);
+
+/** Finnish (Suomi) */
+$aliases['fi'] = array(
+	'SiteMatrix' => array( 'Sivumatriisi' ),
 );
 
 /** Hebrew (עברית)
@@ -28,9 +43,25 @@ $aliases['he'] = array(
     'SiteMatrix' => array( 'רשימת_אתרים', 'אתרי_ויקימדיה' ),
 );
 
+/** Croatian (Hrvatski) */
+$aliases['hr'] = array(
+	'SiteMatrix' => array( 'Wikimedijini_projekti' ),
+);
+
+/** Haitian (Kreyòl ayisyen) */
+$aliases['ht'] = array(
+	'SiteMatrix' => array( 'SitMatrix' ),
+);
+
+/** Dutch (Nederlands) */
+$aliases['nl'] = array(
+	'SiteMatrix' => array( 'WebsiteMatrix' ),
+);
+
 /** Norwegian (Norsk (bokmål))
  * @author Jon Harald Søby
  */
 $aliases['no'] = array(
     'SiteMatrix' => array( 'Wikimedia-wikier' ),
 );
+
