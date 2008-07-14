@@ -543,6 +543,7 @@ $extensions = array(
 		'settings' => array(
 			'wgSimpleFlaggedRevsUI' => 'bool',
 			'wgFlaggedRevTabs' => 'bool',
+			'wgFlaggedRevsLowProfile' => 'bool',
 			'wgFlaggedRevsNamespaces' => 'array',
 			'wgFlaggedRevsPatrolNamespaces' => 'array',
 			'wgFlaggedRevsWhitelist' => 'array',
