@@ -16,7 +16,6 @@
  *
  */
  
-$wgExtensionFunctions[] = 'redircite_setup';
 $wgExtensionCredits['other'][] = array(
 	'name' => 'redircite',
 	'author' => 'Roan Kattouw',
@@ -25,19 +24,20 @@ $wgExtensionCredits['other'][] = array(
 	'url' => 'http://www.mediawiki.org/wiki/Extension:Redircite'
 );
 
-function redircite_setup() {
-	global $wgParser, $wgHooks;
-	$wgParser->setHook('redircite', 'redircite_render');
-	$wgHooks['ParserAfterTidy'][] = 'redircite_afterTidy';
+$wgHooks['ParserAfterTidy'][] = 'redircite_afterTidy';
+$wgHooks['ParserFirstCallInit'][] = 'redircite_setup';  
+function redircite_setup($parser) {
+	$parser->setHook('redircite', 'redircite_render');
+	return true;
 }
 
-$markerList = array();
+$redirciteMarkerList = array();
 function redircite_render($input, $args, $parser) {
-	// Generate HTML code and add it to the $markerList array
+	// Generate HTML code and add it to the $redirciteMarkerList array
 	// Add "xx-redircite-marker-NUMBER-redircite-xx" to the output,
-	// which will be translated to the HTML stored in $markerList by
+	// which will be translated to the HTML stored in $redirciteMarkerList by
 	// redircite_afterTidy()
-	global $markerList;
+	global $redirciteMarkerList;
 	$lparse = clone $parser;
 	$link1 = $lparse->parse("[[$input]]", $parser->mTitle, $parser->mOptions, false, false);
 	$link1text = $link1->getText();
@@ -54,16 +54,16 @@ function redircite_render($input, $args, $parser) {
 	$link2 = $lparse->parse("[[{$title2->getPrefixedText()}|$input]]", $parser->mTitle, $parser->mOptions, false, false);
 	$link2text = $link2->getText();
 	
-	$marker = "xx-redircite-marker-" . count($markerList) . "-redircite-xx";
-	$markerList[] = "<span onmouseout='this.firstChild.innerHTML = \"$input\";' onmouseover='this.firstChild.innerHTML = \"{$title2->getPrefixedText()}\";'>$link2text</span>";
+	$marker = "xx-redircite-marker-" . count($redirciteMarkerList) . "-redircite-xx";
+	$redirciteMarkerList[] = "<span onmouseout='this.firstChild.innerHTML = \"$input\";' onmouseover='this.firstChild.innerHTML = \"{$title2->getPrefixedText()}\";'>$link2text</span>";
 	return $marker;
 }
 
 function redircite_afterTidy(&$parser, &$text) {
 	// Translate the markers added by redircite_render() to the HTML
-	// associated with them through $markerList
-	global $markerList;
-	foreach($markerList as $i => $output)
+	// associated with them through $redirciteMarkerList
+	global $redirciteMarkerList;
+	foreach($redirciteMarkerList as $i => $output)
 		$text = preg_replace("/xx-redircite-marker-$i-redircite-xx/", $output, $text);
 	return true;
 }
