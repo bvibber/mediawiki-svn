@@ -290,9 +290,7 @@ mediaPlayers.prototype =
 {
     players : null,
     preference : null,
-
-    default_players : null,
-    
+    default_players : null,    
     init : function()
     {
         this.players = new Array();
@@ -863,11 +861,10 @@ textInterface.prototype = {
 	scrollTimerId:0,
 	availableTracks:{},
 	init:function(parentEmbed){
+		//set the parent embed object:
 		this.pe=parentEmbed;
-		//parse roe if not already done: 
-		
+		//parse roe if not already done: 		
         this.getParseCMML();
-
 		//start the autoscroll timer: 
 		this.setAutoScroll(true);		
 	},
@@ -1142,8 +1139,7 @@ mediaSource.prototype =
     /** Duration of the requested segment (NaN if not known) */
     duration:NaN,
 
-    id:null,
-    
+    id:null,    
     start_ntp:null,
     end_ntp:null,
     
@@ -1174,6 +1170,28 @@ mediaSource.prototype =
             this.mime_type = this.detectType(this.uri);
         js_log('Adding mediaSource of type ' + this.mime_type + ' and uri ' + this.uri + ' and title ' + this.title);
         this.parseURLDuration();
+    },
+    /** updates the src time and start & end 
+     *  @param {String} start_time in NTP format
+     *  @param {String} end_time in NTP format
+     */
+    updateSrcTime:function(start_ntp, end_ntp){
+    	js_log("UPDATE src time: "+ start_ntp+'/'+ end_ntp);
+    	js_log("pre uri:" + this.uri);
+    	//if we have time we can use:
+    	if(this.start_ntp!=null){
+    		var index_time_val = false;		
+    		var time_req_delimitator = ''; 		 
+	        if(this.uri.indexOf('?t=')!=-1)index_time_val='?t=';
+	        if(this.uri.indexOf('&t=')!=-1)index_time_val='&t=';
+	        if(index_time_val){
+	        	var end_req_string = (this.uri.indexOf('&', this.uri.indexOf(index_time_val)+3)==-1)?
+	     					'':
+			    			this.uri.indexOf('&', this.uri.indexOf(index_time_val));
+	        	this.uri = this.uri.substring(0, this.uri.indexOf(index_time_val) ) + index_time_val + start_ntp + '/'+end_ntp + end_req_string;	        	
+	        }    		    		
+    	}
+	  	js_log("post uri:" + this.uri);
     },
     /** MIME type accessor function.
         @return the MIME type of the source.
@@ -1209,8 +1227,8 @@ mediaSource.prototype =
     },
     /*
 	 * function getDuration in milliseconds 
-     * special case derive duration from request url (in float seconds) @@todo should be float seconds
-	 * (for media_url?t=ntp_start/ntp_end url request format
+     * special case derive duration from request url
+	 * supports media_url?t=ntp_start/ntp_end url request format
      */  
     parseURLDuration : function(){	 	
         //js_log('get duration for:' + this.uri);	 		 	 
@@ -1218,7 +1236,7 @@ mediaSource.prototype =
         if(this.uri.indexOf('?t=')!=-1)index_time_val='?t=';
         if(this.uri.indexOf('&t=')!=-1)index_time_val='&t=';
         if(index_time_val){
-            var end_index = (this.uri.indexOf('&', this.uri.indexOf(index_time_val))==-1)?
+            var end_index = (this.uri.indexOf('&', this.uri.indexOf(index_time_val)+3)==-1)?
 	     					this.uri.length:
 			    			this.uri.indexOf('&', this.uri.indexOf(index_time_val));
 			this.start_ntp = this.uri.substring( 
@@ -1279,8 +1297,7 @@ mediaElement.prototype =
     /** @private */
     init:function(video_element)
     {
-        var _this = this;
-        
+        var _this = this;        
         js_log('Initializing mediaElement...');
         this.sources = new Array();
         this.thumbnail = mv_default_thumb_url;
@@ -1296,12 +1313,14 @@ mediaElement.prototype =
         {
             _this.tryAddSource(inner_source);
         });
-        // Process the provided ROE file if any
+        // Process the provided ROE file... if we don't yet have sources or a thumbnail
         if(video_element.hasAttribute('roe'))
-            do_request(video_element.getAttribute('roe'), function(data)
-            {
-                _this.addROE(data);
-            });
+        	if(this.sources.length==0 ||this.thumbnail == mv_default_thumb_url ){
+	            do_request(video_element.getAttribute('roe'), function(data)
+	            {
+	                _this.addROE(data);
+	            });
+        	}
         // Select the default source
         for (var source in this.sources)
             if(this.sources[source].marked_default)
@@ -1312,6 +1331,14 @@ mediaElement.prototype =
             js_log('autoselecting first source');
             this.selected_source = this.sources[0];
         }
+    },
+    /** Updates the time request for all sources that have a standard time request argument (ie &t=start_time/end_time)
+     */
+    updateSourceTimes:function(start_time, end_time){
+    	var _this = this;
+    	$j.each(this.sources, function(inx, mediaSource){
+    		mediaSource.updateSrcTime(start_time, end_time);
+    	});    	
     },
     /** Returns the array of mediaSources of this element.
         \returns {Array} Array of mediaSource elements.
@@ -1355,7 +1382,6 @@ mediaElement.prototype =
     {
         if (!element.hasAttribute('src'))
             return;
-
         this.sources.push(new mediaSource(element));
     },
     /** Imports media sources from ROE data.
@@ -1469,14 +1495,16 @@ embedVideo.prototype = {
 	   //return this object:	   
 	   return this;
 	},
+	getTimeReq:function(){
+		return this.media_element.selected_source.start_ntp+'/'+this.media_element.selected_source.end_ntp;
+	},
     getDuration:function(){
         return this.media_element.selected_source.duration;
     },
   	/* get the duration in ntp format */
 	getDurationNTP:function(){
 		return seconds2ntp(this.getDuration()/1000);
-	},
-
+	},	
     doEmbedHTML:function()
     {     
     	this.inheritEmbedObj();   
@@ -1538,8 +1566,17 @@ embedVideo.prototype = {
 		}
 		return out + '</div>';
 	},
+	updateVideoTimeReq:function(time_req){
+		var time_parts =time_req.split('/');
+		this.updateVideoTime(time_parts[0], time_parts[1]);
+	},
+	//update video time
+	updateVideoTime:function(start_time, end_time){
+		this.media_element.updateSourceTimes(start_time, end_time);
+	},
 	//updates the video src
 	updateVideoSrc : function(src){
+		js_log("UPDATE SRC:"+src);
 		this.src = src;
 	},
 	//updates the thumbnail if the thumbnail is being displayed

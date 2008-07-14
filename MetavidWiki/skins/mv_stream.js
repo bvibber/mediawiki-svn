@@ -19,7 +19,7 @@
  * also assumes scriptaculus is included in the mv_embed distribution
  * /skins/mv_embed/scriptaculous
  */
-var org_vid_src = null; //stores the original video src 
+var org_vid_time_req =null; //store the orginal time req:
 var org_thum_src = null; //stores the original thumbnail src
 var org_vid_title = null; //stores the original title
 //store the original range request: 
@@ -91,30 +91,30 @@ var mv_init_interface = {
 		//set up the init values for mouse over restore:
 		org_vid_title = $j('#mv_stream_time').html();
 		if(!$j('#embed_vid').get(0)){
-			//no embed video present stop init
+			//no embed video present stop init			
 			return '';
 		}
-		org_vid_src = $j('#embed_vid').get(0).src;
+		org_vid_time_req = $j('#embed_vid').get(0).getTimeReq();
 		org_thum_src = $j('#embed_vid').get(0).thumbnail;
-		//overide play button action to interface control: 		
-		$j('#big_play_link_embed_vid').attr('href', 'javascript:mv_do_play();');
+		
 		//@@TODO override stop function in player:
 		
 		//current range or search parameter	
 		stream_current_context =$j('#mv_stream_time').html();		
-		js_log('set org_vid_src: ' + org_vid_src + "\n" + $j('#embed_vid').attr('src'));						
+		js_log('set org_vid_time_req: ' + org_vid_time_req );						
 
-		ebvid = $j('#embed_vid').get(0);
-		//extend stop button on mv_embed: 
+		ebvid = $j('#embed_vid').get(0);		
 		ebvid['inheritEmbedOverride']=function(){
 			js_log('inheritEmbedOverride');
-			if(typeof ebvid['org_eb_stop']=='undefined'){
-				//js_log("pre stop: " +ebvid['stop'].toString());
+			//overide play button action to interface control: 		
+			$j('#big_play_link_embed_vid').attr('href', 'javascript:mv_do_play();');
+			//extend stop button on mv_embed: 
+			js_log("pre stop: " +ebvid['stop'].toString() );
+			if(ebvid['stop'].toString()!='function(){mv_do_stop();}'){				
 				ebvid['org_eb_stop'] = ebvid['stop'];
-				ebvid['stop'] = function(){
-					mv_do_stop();
-				}
-			}			
+				ebvid['stop'] = function(){mv_do_stop();}
+			}	
+			js_log("post stop: " +ebvid['stop'].toString());	
 		}
 		//call stop override 
 		ebvid.inheritEmbedOverride();
@@ -132,6 +132,7 @@ var mv_init_interface = {
 		//unlock the interface updates once everything is setup: 
 		mv_lock_vid_updates=false;		
 		js_log('done with mv_init_inerface');
+		$j('#embed_vid').get(0).stop();
 		this.interfaceLoaded=true;
 	},
 	addHoverHooks:function(selector){
@@ -226,7 +227,8 @@ var mv_init_interface = {
 				//only restore if the cur_mvd = 'base' and interface updates are not locked
 				if(this.cur_mvd_id=='base'){				
 					vid_elm.updateThumbnail(org_thum_src);
-					vid_elm.updateVideoSrc(org_vid_src);
+					vid_elm.updateVideoTimeReq(org_vid_time_req);
+					//vid_elm.updateVideoSrc(org_vid_src);
 					$j('#mv_videoPlayerTime').html(org_vid_title);
 				}
 			}
@@ -660,7 +662,7 @@ function mv_do_ajax_form_submit(mvd_id, edit_action){
 	//return false to prevent the form being submitted
 	return false;
 }
-function mv_do_stop(){
+function mv_do_stop(){	
 	$j('#mv_videoPlayerTime').fadeIn('fast');
 	//re-enable interface:
 	mv_lock_vid_updates=false;
@@ -671,6 +673,7 @@ function mv_do_stop(){
 		//hide the controls	thumbnail_disp
 		mv_disp_play_controls(false);
 		js_log('mv_do_stop');
+		//run the original stop:
 		$j('#embed_vid').get(0).org_eb_stop();
 		//re-rewrite the play button: 
 		$j('#big_play_link_embed_vid').attr('href', 'javascript:mv_do_play();');
@@ -788,13 +791,7 @@ function do_video_time_update(start_time, end_time, mvd_id)	{
 	if(mv_lock_vid_updates==false){		
 		//update the vid title:	
 		$j('#mv_videoPlayerTime').html( start_time + ' to ' + end_time );
-		if(org_vid_src.indexOf('?')!=-1){
-			var url = org_vid_src.split('?');
-			var new_vid_url = url[0] + '?t=' + start_time+'/'+end_time;
-			//js_log("new vid url:" +new_vid_url);
-			if(new_vid_url!=$j('#embed_vid').attr('src'))
-				$j('#embed_vid').get(0).updateVideoSrc(new_vid_url);
-		}
+		$j('#embed_vid').get(0).updateVideoTime(start_time, end_time);				
 		do_update_thumb(mvd_id, start_time);
 	}
 }
