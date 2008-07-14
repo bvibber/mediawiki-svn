@@ -16,7 +16,7 @@ $aliases['en'] = array(
 
 /** Arabic (العربية) */
 $aliases['ar'] = array(
-	'EmailPage' => array( 'مراسلة المقالة' ),
+	'EmailPage' => array( 'مراسلة الصفحة' ),
 );
 
 /** Egyptian Spoken Arabic (مصرى) */
@@ -57,3 +57,4 @@ $aliases['nl'] = array(
 $aliases['no'] = array(
 	'EmailPage' => array( 'Send_side_som_e-post' ),
 );
+

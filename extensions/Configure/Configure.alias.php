@@ -37,6 +37,13 @@ $aliases['bcc'] = array(
 	'ViewConfig' => array( 'چارگ تنظیم' ),
 );
 
+/** Czech (Česky) */
+$aliases['cs'] = array(
+	'Configure'  => array( 'Configure', 'Konfigurace', 'Nastavení' ),
+	'Extensions' => array( 'Extensions', 'Rozšíření', 'Dopňky' ),
+	'ViewConfig' => array( 'ViewConfig', 'Zobrazit konfiguraci', 'Zobrazit nastavení' ),
+);
+
 /** Lower Sorbian (Dolnoserbski) */
 $aliases['dsb'] = array(
 	'Configure'  => array( 'Konfigurěrowaś' ),

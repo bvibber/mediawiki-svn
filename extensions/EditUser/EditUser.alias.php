@@ -46,6 +46,11 @@ $aliases['lb'] = array(
 	'EditUser' => array( 'Benotzer änneren' ),
 );
 
+/** Malay (Bahasa Melayu) */
+$aliases['ms'] = array(
+	'EditUser' => array( 'Jumlah_pengguna' ),
+);
+
 /** Dutch (Nederlands) */
 $aliases['nl'] = array(
 	'EditUser' => array( 'GebruikerBewerken' ),
