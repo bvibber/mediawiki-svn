@@ -24,8 +24,17 @@ $wgExtensionCredits['other'][] = array(
 	'url' => 'http://www.mediawiki.org/wiki/Extension:Redircite'
 );
 
+$wgExtensionFunctions[] = 'efRedircite';
 $wgHooks['ParserAfterTidy'][] = 'redircite_afterTidy';
-$wgHooks['ParserFirstCallInit'][] = 'redircite_setup';  
+function efRedircite() {
+	if(defined('MW_SUPPORTS_PARSERFIRSTCALLINIT')) {
+		global $wgHooks;
+		$wgHooks['ParserFirstCallInit'][] = 'redircite_setup';
+	} else {
+		global $wgParser;
+		redircite_setup($wgParser);
+	}
+}
 function redircite_setup($parser) {
 	$parser->setHook('redircite', 'redircite_render');
 	return true;

@@ -23,7 +23,7 @@ if( defined( 'MEDIAWIKI' ) ) {
 	);
 	$wgExtensionMessagesFiles['RandomImage'] = dirname(__FILE__) . '/RandomImage.i18n.php';
 	$wgHooks['ParserAfterStrip'][] = 'RandomImage::stripHook';
-	$wgHooks['ParserFirstCallInit'][] = 'efRandomImage';
+	$wgExtensionFunctions[] = 'efRandomImageSetup';
 
 	/**
 	 * Set this to true to disable the parser cache for pages which
@@ -41,6 +41,15 @@ if( defined( 'MEDIAWIKI' ) ) {
 	/**
 	 * Extension initialisation function
 	 */
+	function efRandomImageSetup() {
+		if(defined('MW_SUPPORTS_PARSERFIRSTCALLINIT')) {
+			global $wgHooks;
+			$wgHooks['ParserFirstCallInit'][] = 'efRandomImage';
+		} else {
+			global $wgParser;
+			efRandomImage($wgParser);
+		}
+	}
 	function efRandomImage($parser) {
 		$parser->setHook( 'randomimage', 'RandomImage::renderHook' );
 		return true;
