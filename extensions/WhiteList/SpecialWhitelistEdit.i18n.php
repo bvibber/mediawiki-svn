@@ -466,6 +466,7 @@ $allMessages['hu'] = array(
  * @author McDutchie
  */
 $allMessages['ia'] = array(
+	'mywhitelistpages'        => 'Mi paginas',
 	'whitelisttablemodifyall' => 'Totes',
 	'whitelisttableedit'      => 'Modificar',
 	'whitelistnever'          => 'nunquam',

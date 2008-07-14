@@ -115,6 +115,13 @@ $messages['id'] = array(
 	'charinsert-desc' => 'Mengizinkan pembuatan kotak JavaScript untuk [[MediaWiki:Edittools|menyisipkan karakter non-standar]]',
 );
 
+/** Italian (Italiano)
+ * @author Pietrodn
+ */
+$messages['it'] = array(
+	'charinsert-desc' => 'Permette di creare un box JavaScript per [[MediaWiki:Edittools|inserire caratteri non-standard]]',
+);
+
 /** Japanese (日本語)
  * @author JtFuruhata
  */

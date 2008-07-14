@@ -197,6 +197,14 @@ $messages['bcl'] = array(
 	'ogg-dismiss' => 'Isara',
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
+ */
+$messages['be-tarask'] = array(
+	'ogg-short-video' => 'Відэа-файл у фармаце Ogg $1, $2',
+	'ogg-long-error'  => '(Няслушны файл у фармаце Ogg: $1)',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  * @author Borislav

@@ -143,6 +143,19 @@ $messages['nl'] = array(
 	'errorhandler-trace-line-internal'   => '[interne functie]: $1',
 );
 
+/** Occitan (Occitan)
+ * @author Cedric31
+ */
+$messages['oc'] = array(
+	'errorhandler-desc'             => "Gestionari d'errors per MediaWiki",
+	'errorhandler-errors'           => 'Errors :',
+	'errorhandler-error-fatal'      => 'Error fatala',
+	'errorhandler-error-warning'    => 'Avertiment',
+	'errorhandler-error-parse'      => 'Error de parser',
+	'errorhandler-error-notice'     => 'Notícia',
+	'errorhandler-error-core-error' => 'Error del còr',
+);
+
 /** Polish (Polski)
  * @author Maikking
  */

@@ -354,6 +354,7 @@ $messages['hsb'] = array(
  * @author McDutchie
  */
 $messages['ia'] = array(
+	'importusers-form-button'     => 'Importar',
 	'importusers-log-summary'     => 'Summario',
 	'importusers-log-summary-all' => 'Totes',
 	'importusers-password'        => 'contrasigno',

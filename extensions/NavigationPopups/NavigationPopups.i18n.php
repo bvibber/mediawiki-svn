@@ -42,6 +42,13 @@ $messages['hsb'] = array(
 	'navigationpopups-desc' => 'Začita Lupinowe wuskakowace wokna nawigaciskich skriptow do MediaWiki',
 );
 
+/** Italian (Italiano)
+ * @author Pietrodn
+ */
+$messages['it'] = array(
+	'navigationpopups-desc' => 'Carica gli script dei popup di navigazione di Lupin in MediaWiki',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */

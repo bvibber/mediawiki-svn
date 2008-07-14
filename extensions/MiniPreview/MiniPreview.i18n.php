@@ -169,12 +169,13 @@ $messages['jv'] = array(
 
 /** Khmer (ភាសាខ្មែរ)
  * @author Chhorran
+ * @author Lovekhmer
  */
 $messages['km'] = array(
-	'minipreview-files_in_category'   => '$1 ឯកសារសរុប ក្នុង ចំណាត់ក្រុមនេះ ។',
-	'minipreview-files_in_gallery'    => '$1 ឯកសារសរុប ក្នុង ទីតាំងពិពណ៌ នេះ ។',
-	'minipreview-no_more_files_here'  => 'គ្មានឯកសារ បន្ថែម ក្នុង ទិសនេះ ។',
-	'minipreview-no_category_gallery' => 'គ្មានចំណាត់ក្រុម ឬ ទីតាំងពិពណ៌!',
+	'minipreview-files_in_category'   => '$1ឯកសារសរុបក្នុងចំណាត់ថា្នក់ក្រុមនេះ។',
+	'minipreview-files_in_gallery'    => '$1ឯកសារសរុបក្នុងវិចិត្រសាលនេះ។',
+	'minipreview-no_more_files_here'  => 'គ្មានឯកសារបន្ថែមក្នុងទិសនេះទេ។',
+	'minipreview-no_category_gallery' => 'គ្មានចំណាត់ថ្នាក់ក្រុមឬវិចិត្រសាលទេ!',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

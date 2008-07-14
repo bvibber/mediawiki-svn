@@ -18,10 +18,12 @@ $messages['en'] = array(
 
 /** Arabic (العربية)
  * @author Meno25
+ * @author Alnokta
  */
 $messages['ar'] = array(
-	'whatismyip'     => 'ما هو الأيبي الخاص بي',
-	'whatismyip-out' => 'الأيبي الخاص بك:',
+	'whatismyip'      => 'ما هو الأيبي الخاص بي',
+	'whatismyip-desc' => 'يظهر عنوان أيبي المستخدم الحالي في [[Special:WhatIsMyIP|صفحة خاصة]]',
+	'whatismyip-out'  => 'الأيبي الخاص بك:',
 );
 
 /** Bulgarian (Български)
@@ -140,6 +142,15 @@ $messages['pl'] = array(
 	'whatismyip'      => 'Jaki jest mój adres IP',
 	'whatismyip-desc' => 'Pokazuje na [[Special:WhatIsMyIP|specjalnej stronie]] aktualny adres IP użytkownika',
 	'whatismyip-out'  => 'Twój IP:',
+);
+
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'whatismyip'      => 'زما IP څه دی',
+	'whatismyip-desc' => 'د اوسني کارونکي IP پته په [[Special:WhatIsMyIP]] ښکاره کوي',
+	'whatismyip-out'  => 'ستاسو IP:',
 );
 
 /** Slovak (Slovenčina)

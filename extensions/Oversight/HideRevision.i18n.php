@@ -1349,7 +1349,7 @@ $messages['km'] = array(
 	'hiderevision-error-delete'   => 'មិនអាចប្រមូលផ្តុំបានទេ។ តើវាត្រូវបានគេលុបពីមុនដែឬទេ?',
 	'hiderevision-archive-status' => 'បានលុបកំនែប្រែពី$1: $2',
 	'oversight-log-hiderev'       => 'បានដកចេញ កំណែប្រែ ពី $1',
-	'oversight'                   => 'ការត្រួតមើល ពីលើ',
+	'oversight'                   => 'Oversight',
 	'oversight-view'              => 'សេចក្តីលំអិត',
 	'oversight-hidden'            => 'កំនែប្រែដែលត្រូវបានលាក់',
 );

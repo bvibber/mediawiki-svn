@@ -1416,6 +1416,7 @@ $messages['hy'] = array(
 $messages['ia'] = array(
 	'mv_remove_reason' => 'Motivo pro deletion:',
 	'mv_tool_search'   => 'Cercar',
+	'mv_tool_export'   => 'Exportar',
 	'mv_edit'          => 'Modificar',
 );
 

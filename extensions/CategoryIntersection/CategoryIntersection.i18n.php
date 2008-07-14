@@ -85,6 +85,17 @@ $messages['de'] = array(
 	'categoryintersection-results'       => 'Die Suche ergab $1 Treffer.',
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'categoryintersection'               => 'Zhromadna młogosć kategorijow',
+	'categoryintersection-desc'          => 'Wótwardujo tabelu z hašowymi gódnatami za [[Special:CategoryIntersection|zgromadne młogosći kategorijow]] w boku',
+	'categoryintersection-doit'          => 'Boki w toś tych kategorijach zwobrazniś',
+	'categoryintersection-maxcategories' => 'Maksimalna dowólona licba kategorijow za zgromadne młogosći jo $1.',
+	'categoryintersection-results'       => 'Pytanje jo $1 {{PLURAL:$1|wuslědk|wuslědka|wuslědki|wuslědkow}} wróśíło.',
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */

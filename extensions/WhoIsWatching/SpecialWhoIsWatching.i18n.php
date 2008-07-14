@@ -160,6 +160,17 @@ $messages['hu'] = array(
 	'specialwhoiswatchingaddbtn'  => 'Összes kiválasztott felhasználó hozzáadása',
 );
 
+/** Italian (Italiano)
+ * @author Pietrodn
+ */
+$messages['it'] = array(
+	'whoiswatching'                => 'Chi sta osservando una pagina wiki',
+	'specialwhoiswatchingthepage'  => 'Chi sta osservando %s',
+	'specialwhoiswatchingusage'    => 'Questa pagina speciale non può essere usata da sola. Per favore usa la pagina [[MediaWiki:Number_of_watching_users_pageview]] per definire un punto di entrata per questa pagina speciale.',
+	'specialwhoiswatchingaddusers' => 'Aggiungi utenti ad osservare la pagina',
+	'specialwhoiswatchingaddbtn'   => 'Aggiungi gli utenti selezionati',
+);
+
 /** Javanese (Basa Jawa)
  * @author Meursault2004
  */

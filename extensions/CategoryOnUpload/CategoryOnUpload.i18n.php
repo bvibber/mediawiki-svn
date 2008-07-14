@@ -96,6 +96,14 @@ $messages['id'] = array(
 	'categoryonupload-label' => 'Kategori:',
 );
 
+/** Italian (Italiano)
+ * @author Darth Kule
+ */
+$messages['it'] = array(
+	'categoryonupload-desc'  => "Suggerisce all'utente di selezionare una categoria per un file durante il suo caricamento",
+	'categoryonupload-label' => 'Categoria:',
+);
+
 /** Khmer (ភាសាខ្មែរ)
  * @author Lovekhmer
  */

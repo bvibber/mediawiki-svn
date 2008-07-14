@@ -167,8 +167,11 @@ $messages['hsb'] = array(
 	'watchers_less_than_x'   => 'Mjenje hač $1 wužiwarjow tutu stronu wobkedźbuje.',
 );
 
-/** Italian (Italiano) */
+/** Italian (Italiano)
+ * @author Pietrodn
+ */
 $messages['it'] = array(
+	'watchers'               => 'Osservatori',
 	'watchers_link_title'    => 'Chi osserva questa pagina?',
 	'watchers_error_article' => '<b>Errore:</b> la pagina richiesta non esiste.',
 	'watchers_header'        => 'Utenti che osservano la pagina "$1"',

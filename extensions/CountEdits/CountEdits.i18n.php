@@ -179,6 +179,23 @@ $messages['de'] = array(
 	'countedits-nocontribs'   => 'In {{ns:project}} sind keine Bearbeitungen vorhanden.',
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'countedits'              => 'Změny licyś',
+	'countedits-desc'         => '[[Special:CountEdits|Specialny bok]], kótaryž licy wužywarske změny a dawa lisćinu nejlěpšych źaseś pśinosujucych',
+	'countedits-warning'      => "'''Warnowanje:''' Njeposuź knigły pó jich wobalce.
+Njeposuź pśinosujucych pó licbje jich změnow.",
+	'countedits-username'     => 'Wužywarske mě:',
+	'countedits-ok'           => 'W pórěźe',
+	'countedits-nosuchuser'   => 'Njejo wužywaŕ z mjenim $1.',
+	'countedits-resultheader' => 'Wuslědki za $1',
+	'countedits-resulttext'   => '$1 jo $2 {{PLURAL:$2|změnu|změnje|změny|změnow}} cynił.',
+	'countedits-mostactive'   => 'Nejaktiwnjejše pśinosujuce',
+	'countedits-nocontribs'   => 'Njejsu pśinoski za toś ten wiki.',
+);
+
 /** Greek (Ελληνικά)
  * @author Consta
  */

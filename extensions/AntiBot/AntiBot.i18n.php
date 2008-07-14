@@ -56,6 +56,13 @@ $messages['de'] = array(
 	'antibot-desc' => 'Einfaches Framework für Spambot-Prüfungen',
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'antibot-desc' => 'Jadnory framework za kontrole pśeśiwo spambotam',
+);
+
 /** French (Français)
  * @author Grondin
  * @author Verdy p

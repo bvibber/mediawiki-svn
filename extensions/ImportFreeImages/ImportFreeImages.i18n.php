@@ -245,6 +245,13 @@ $messages['hu'] = array(
 	'importfreeimages_returntoform'          => "Vagy kattints <a href='$1'>ide</a>, hogy visszatérj az eredmények listájához",
 );
 
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'importfreeimages_next' => '$1 {{PLURAL:$1|sequente|sequentes}}',
+);
+
 /** Javanese (Basa Jawa)
  * @author Meursault2004
  */

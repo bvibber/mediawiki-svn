@@ -308,6 +308,7 @@ $messages['lb'] = array(
 	'spamregex-already-blocked'      => '"$1" ass scho gespaart',
 	'spamregex-phrase-block'         => 'Saatz fir ze spären',
 	'spamregex-phrase-block-summary' => 'Saatz am Resumé spären',
+	'spamregex-block-submit'         => 'Spär&nbsp;dëse&nbsp;Saz',
 	'spamregex-text'                 => '(Text)',
 	'spamregex-summary-log'          => '(Resumé)',
 );

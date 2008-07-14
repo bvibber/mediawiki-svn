@@ -13,11 +13,13 @@ $fallback=array(
 	'ar'  => 'en',
 	'bcc' => 'en',
 	'bg'  => 'en',
+	'br'  => 'en',
 	'eo'  => 'en',
 	'fi'  => 'en',
 	'fr'  => 'en',
 	'gl'  => 'en',
 	'ia'  => 'en',
+	'it'  => 'en',
 	'km'  => 'en',
 	'ksh' => 'en',
 	'lb'  => 'en',
@@ -28,6 +30,7 @@ $fallback=array(
 	'oc'  => 'en',
 	'pl'  => 'en',
 	'pms' => 'en',
+	'ps'  => 'en',
 	'pt'  => 'en',
 	'rif' => 'en',
 	'rtm' => 'en',
@@ -340,6 +343,76 @@ $messages['bg'] = array(
 	'voctrain_hiding'                                    => 'Скриване',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'voctrain_Hello_World'                                                                          => "DEMAT DEOC'H !",
+	'voctrain_Permission_Denied'                                                                    => "Aotre nac'het",
+	'voctrain_try_again_'                                                                           => 'Klask en-dro ?',
+	'voctrain_Action_unknown'                                                                       => 'Ober dianav',
+	'voctrain_I_don_t_know_what_to_do_with_action_'                                                 => "N'ouzon ket petra ober gant '%action'.",
+	'voctrain_User_added'                                                                           => 'Ouzhpennet an implijer',
+	'voctrain_Hello_username_welcome_to_the_omega_language_trainer'                                 => 'Demat %username, degemer mat war pleustrer yezhoù Omega',
+	'voctrain_continue'                                                                             => "Kenderc'hel",
+	'voctrain_hello_place'                                                                          => 'Salud %place',
+	'voctrain_bye'                                                                                  => 'kenavo ar wezh all',
+	'voctrain_Set_up_your_exercise'                                                                 => 'Sevel ho poelladenn',
+	'voctrain_Number_of_questions'                                                                  => "Niver a c'houlennoù",
+	'voctrain_Languages'                                                                            => 'Yezhoù',
+	'voctrain_Please_specify_the_languages_you_want_to_test_in'                                     => "Merkit ar yezhoù a fell deoc'h embreger ganto",
+	'voctrain_eg_eng_for_English_deu_for_Deutch_German_'                                            => '(da sk., eng evit ar saozneg, deu evit an alamaneg).',
+	'voctrain_Depending_on_your_test_set_some_combinations_might_work_better_than_others_'          => "Diouzh ar mod m'eo bet savet ho poelladenn e c'hallfe aozadennoù zo mont en-dro gwelloc'h eget re all.",
+	'voctrain_Questions'                                                                            => 'Goulennoù',
+	'voctrain_Answers'                                                                              => 'Respontoù',
+	'voctrain_start_exercise'                                                                       => 'Kregiñ ganti',
+	'voctrain_collection'                                                                           => 'dastumad',
+	'voctrain_ISO_639_3_format'                                                                     => 'Furmad ISO-639-3',
+	'voctrain_There_are_questions_remaining_questions_remaining_out_of_a_total_of_questions_total_' => 'Chom a ra %questions_remaining goulenn war un hollad a %questions_total.',
+	'voctrain_Definition'                                                                           => 'Termenadur',
+	'voctrain_Dictionary_definition_to_help_you'                                                    => 'Termenadur ar geriadur evit ho skoazellañ',
+	'voctrain_Word'                                                                                 => 'Ger',
+	'voctrain_Please_type_your_answer_here'                                                         => 'Merkit ho respont amañ',
+	'voctrain_submit_answer'                                                                        => 'kas ar respont',
+	'voctrain_peek'                                                                                 => 'rakwelet',
+	'voctrain_skip'                                                                                 => "mont pelloc'h",
+	'voctrain_I_know_it_do_not_ask_again'                                                           => 'Me a oar se ervat/Arabat goulenn en-dro',
+	'voctrain_abort_exercise'                                                                       => 'paouez gant ar boelladenn',
+	'voctrain_list_answers'                                                                         => 'rollañ ar respontoù',
+	'voctrain_Question'                                                                             => 'Goulenn',
+	'voctrain_The_word_to_translate'                                                                => 'Ger da vezañ troet',
+	'voctrain_Answer'                                                                               => 'Respont',
+	'voctrain_one_of'                                                                               => 'unan diwar',
+	'voctrain_list_of_questions_and_answers'                                                        => 'Roll ar goulennoù hag o respontoù',
+	'voctrain_Answer_s_'                                                                            => 'Respont(où)',
+	'voctrain_logout'                                                                               => 'Dilugañ',
+	'voctrain_Powered_by'                                                                           => 'Produet gant',
+	'voctrain_Omegawiki'                                                                            => 'Omegawiki',
+	'voctrain_Exercise_complete'                                                                    => 'Poelladenn echu',
+	'voctrain_Exercise_terminated'                                                                  => 'Poelladenn echu',
+	'voctrain_Start_a_new_exercise'                                                                 => 'Kregiñ gant ur boelladenn nevez',
+	'voctrain_User_name'                                                                            => 'Anv implijer',
+	'voctrain_Password'                                                                             => 'Ger-tremen',
+	'voctrain_Login'                                                                                => 'Kevreañ',
+	'voctrain_Create_new_user'                                                                      => 'Krouiñ un implijer nevez',
+	'voctrain_Switch_language'                                                                      => 'Cheñch yezh',
+	'voctrain_Language'                                                                             => 'Yezh',
+	'voctrain_Log_in'                                                                               => 'En em lugañ',
+	'voctrain_Omegawiki_vocabulary_trainer'                                                         => 'Pleustrer gerioù Omegawiki',
+	'voctrain_Definitions'                                                                          => 'Termenadurioù',
+	'voctrain_Could_not_create_new_user'                                                            => "N'eus ket bet gallet krouiñ un implijer nevez",
+	'voctrain_Type_a_username_and_optional_password_or_try_a_different_username_'                   => 'Merkit un anv-implijer hag ur ger-tremen diret (pe klaskit gant un anv-implijer all)',
+	'voctrain_Vocview'                                                                              => "Diskweler ar c'heriaoueg",
+	'voctrain_Dictionary_definitions'                                                               => 'termenadurioù_geriadur',
+	'voctrain_Translation'                                                                          => 'Troidigezh',
+	'voctrain_unhide_definition'                                                                    => 'addiskouez an termenadur',
+	'voctrain_unhide_words'                                                                         => 'addiskouez ar gerioù',
+	'voctrain_hiding'                                                                               => 'Kuzhat',
+	'voctrain_hide_definitions_in_question_language'                                                => 'Kuzhat an termenadurioù e yezh ar goulennoù',
+	'voctrain_hide_words_in_question_language'                                                      => 'Kuzhat ar gerioù e yezh ar goulenn',
+	'voctrain_Separate_values_by_commas_to_use_multiple_languages_'                                 => 'Dispartiañ ar yezhoù dre skejoù a-benn gellout implijout meur a yezh.',
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */
@@ -533,6 +606,13 @@ $messages['ia'] = array(
 	'voctrain_User_name' => 'Nomine de usator',
 	'voctrain_Login'     => 'Aperir un session',
 	'voctrain_Log_in'    => 'Aperir un session',
+);
+
+/** Italian (Italiano)
+ * @author Pietrodn
+ */
+$messages['it'] = array(
+	'voctrain_User_name' => 'Nome utente',
 );
 
 /** Khmer (ភាសាខ្មែរ)
@@ -1005,6 +1085,52 @@ $messages['pms'] = array(
 	'voctrain_Type_a_username_and_optional_password_or_try_a_different_username_'                   => 'Scriv un nòm utent e na paròla ciav (o preuva a intré con un nòm utent diferent)',
 );
 
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'voctrain_Hello_World'                                          => 'سلامونه ويکي!',
+	'voctrain_try_again_'                                           => 'بيا آزمويل يې غواړۍ؟',
+	'voctrain_Action_unknown'                                       => 'ناڅرګنده کړنه',
+	'voctrain_I_don_t_know_what_to_do_with_action_'                 => "زه نه پوهېږم چې د '%action' سره څه وکړم.",
+	'voctrain_User_added'                                           => 'کارونکی ورګډ شو',
+	'voctrain_Hello_username_welcome_to_the_omega_language_trainer' => '%username، سلامونه! د اومېګا د ژبې تمرينګر ته ښه راغلاست',
+	'voctrain_continue'                                             => 'پر له پسې',
+	'voctrain_hello_place'                                          => '%place سلامونه',
+	'voctrain_bye'                                                  => 'د خدای پامان',
+	'voctrain_Set_up_your_exercise'                                 => 'خپل تمرين جوړ کړی',
+	'voctrain_Number_of_questions'                                  => 'د پوښتنو شمېر',
+	'voctrain_Languages'                                            => 'ژبې',
+	'voctrain_Please_specify_the_languages_you_want_to_test_in'     => 'لطفاً هغه ژبې چې تاسو په کې ځان آزمويل غواړۍ ځانګړې کړی',
+	'voctrain_eg_eng_for_English_deu_for_Deutch_German_'            => '(بېلګه، eng د English لپاره، deu د German لپاره).',
+	'voctrain_Questions'                                            => 'پوښتنې',
+	'voctrain_Answers'                                              => 'ځوابونه',
+	'voctrain_start_exercise'                                       => 'تمرين پيلول',
+	'voctrain_collection'                                           => 'غونډ',
+	'voctrain_ISO_639_3_format'                                     => 'د ISO-639-3 بڼه',
+	'voctrain_Question'                                             => 'پوښتنه',
+	'voctrain_The_word_to_translate'                                => 'د ژباړلو وييکه',
+	'voctrain_Answer'                                               => 'ځواب',
+	'voctrain_one_of'                                               => 'يو د',
+	'voctrain_list_of_questions_and_answers'                        => 'د پوښتنو او ځوابونو لړليک',
+	'voctrain_Answer_s_'                                            => 'ځواب(ونه(',
+	'voctrain_logout'                                               => 'وتل',
+	'voctrain_Omegawiki'                                            => 'اومېګاويکي',
+	'voctrain_Exercise_complete'                                    => 'تمرين بشپړ شو',
+	'voctrain_Start_a_new_exercise'                                 => 'يو نوی تمرين پيلول',
+	'voctrain_User_name'                                            => 'کارن-نوم',
+	'voctrain_Password'                                             => 'پټنوم',
+	'voctrain_Login'                                                => 'ننوتل',
+	'voctrain_Create_new_user'                                      => 'نوی کارن-حساب جوړول',
+	'voctrain_Switch_language'                                      => 'ژبه اړول',
+	'voctrain_Language'                                             => 'ژبه',
+	'voctrain_Log_in'                                               => 'ننوتل',
+	'voctrain_Omegawiki_vocabulary_trainer'                         => 'د اومېګاويکي د وييپانګې تمرينګر',
+	'voctrain_Definitions'                                          => 'پېژندونه',
+	'voctrain_Could_not_create_new_user'                            => 'نوی کارن-حساب مو جوړ نه شو کړای',
+	'voctrain_Translation'                                          => 'ژباړه',
+);
+
 /** Portuguese (Português)
  * @author Malafaya
  */
@@ -1189,3 +1315,4 @@ $messages['vi'] = array(
 	'voctrain_Could_not_create_new_user'                 => 'Không có thể mở tài khoản',
 	'voctrain_Translation'                               => 'Lời dịch',
 );
+

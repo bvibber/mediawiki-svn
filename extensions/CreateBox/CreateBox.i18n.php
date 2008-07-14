@@ -104,6 +104,19 @@ $messages['ia'] = array(
 	'createbox-create' => 'Crear',
 );
 
+/** Italian (Italiano)
+ * @author Pietrodn
+ */
+$messages['it'] = array(
+	'createbox-desc'   => 'Inputbox specializzato per la creazione di pagine',
+	'createbox-create' => 'Crea',
+	'createbox-exists' => "Scusa, \"'''{{FULLPAGENAME}}'''\" esiste già.
+
+Non puoi creare questa pagina, ma puoi [{{fullurl:{{FULLPAGENAME}}|action=edit}} modificarla], [{{fullurl:{{FULLPAGENAME}}}} leggerla] o scegliere di creare una pagina diversa usando il box sottostante.
+
+<createbox>break=no</createbox>",
+);
+
 /** Khmer (ភាសាខ្មែរ)
  * @author Lovekhmer
  */

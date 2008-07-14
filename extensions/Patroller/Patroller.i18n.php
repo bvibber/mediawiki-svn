@@ -489,10 +489,18 @@ $messages['jv'] = array(
 /** Khmer (ភាសាខ្មែរ)
  * @author Chhorran
  * @author គីមស៊្រុន
+ * @author Lovekhmer
  */
 $messages['km'] = array(
-	'patrol-revert-reason' => 'មូលហេតុ៖',
-	'patrol-skip'          => 'រំលង',
+	'patrol-revert'          => 'ត្រលប់',
+	'patrol-revert-reason'   => 'មូលហេតុ៖',
+	'patrol-skip'            => 'រំលង',
+	'patrol-reverting'       => 'កំពុងត្រលប់: $1',
+	'patrol-reverted-ok'     => 'កំនែប្រែត្រូវត្រលប់រួច។',
+	'patrol-reverted-failed' => 'កំនែប្រែមិនអាចត្រលប់បានទេ។',
+	'group-patroller'        => 'អ្នកតាមដាន',
+	'group-patroller-member' => 'អ្នកតាមដាន',
+	'grouppage-patroller'    => 'អ្នកតាមដាន',
 );
 
 /** Ripoarisch (Ripoarisch)

@@ -58,6 +58,7 @@ $messages['af'] = array(
  * @author Meno25
  */
 $messages['ar'] = array(
+	'editmessages-desc'   => '[[Special:EditMessages|تعديل معتمد على الويب]] لأعدادا كبيرة من ملفات Messages*.php',
 	'editmessages'        => 'عدل الرسائل',
 	'editmsg-target'      => 'الرسالة الهدف:',
 	'editmsg-search'      => 'بحث',

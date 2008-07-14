@@ -88,22 +88,27 @@ $messages['af'] = array(
 
 /** Arabic (العربية)
  * @author Meno25
+ * @author Alnokta
  */
 $messages['ar'] = array(
 	'grouppermissions'               => 'التحكم بسماحات المجموعات',
 	'sortpermissions'                => 'ترتيب السماحات',
 	'removeunusedgroups'             => 'إزالة المجموعات غير المستخدمة',
+	'grouppermissions-desc'          => 'أدر صلاحيات المجموعات من [[Special:GroupPermissions|صفحة خاصة]]',
+	'grouppermissions-desc2'         => 'نظام الصلاحيات الممتد',
 	'grouppermissions-search'        => 'المجموعة:',
 	'grouppermissions-dologin'       => 'دخول',
 	'grouppermissions-dosearch'      => 'اذهب',
 	'grouppermissions-searchlabel'   => 'بحث عن المجموعة',
 	'grouppermissions-deletelabel'   => 'حذف المجموعة',
+	'grouppermissions-error'         => 'لقد حدث خطأ مجهول، من فضلك اضغط على زر الرجوع في متصفحك وجرب مرة أخرى',
 	'grouppermissions-change'        => 'تغيير سماحات المجموعة',
 	'grouppermissions-add'           => 'إضافة مجموعة',
 	'grouppermissions-delete'        => 'حذف مجموعة',
 	'grouppermissions-comment'       => 'تعليق:',
 	'grouppermissions-addsuccess'    => '$1 تمت إضافتها بنجاح',
 	'grouppermissions-deletesuccess' => '$1 تم حذفها بنجاح',
+	'grouppermissions-changesuccess' => 'تغيرت صلاحيات $1 بنجاح',
 	'grouppermissions-true'          => 'صواب',
 	'grouppermissions-false'         => 'خطأ',
 	'grouppermissions-never'         => 'أبدا',
@@ -114,14 +119,18 @@ $messages['ar'] = array(
 	'grouppermissions-sort-tech'     => 'تقني',
 	'grouppermissions-sort-misc'     => 'أخرى',
 	'grouppermissions-log-add'       => 'أضاف المجموعة "$2"',
+	'grouppermissions-log-change'    => 'تغيرت الصلاحيات للمجموعة "$2"',
 	'grouppermissions-log-delete'    => 'حذف المجموعة "$2"',
 	'grouppermissions-log-name'      => 'سجل سماحات المجموعات',
+	'grouppermissions-needjs'        => 'تحذير: الجافاسكريبت في متصفحك معطبة. بعض الميزات لن تعمل!',
 	'grouppermissions-sp-sort'       => 'ترتيب السماحات',
 	'grouppermissions-sp-save'       => 'حفظ',
 	'grouppermissions-sp-addtype'    => 'إضافة نوع ترتيب',
 	'grouppermissions-sp-addperm'    => 'إضافة سماح',
 	'grouppermissions-sp-remove'     => 'إزالة',
 	'grouppermissions-sp-deltype'    => 'حذف نوع ترتيب',
+	'grouppermissions-rug-success'   => 'تمت إزالة المستخدمون من المجموعات غير المستخدمة بنجاح!',
+	'grouppermissions-rug-confirm'   => 'أزل المستخدمون من المجموعات غير المستخدمة',
 	'right-viewsource'               => 'رؤية مصدر الويكي للصفحات المحمية',
 	'right-raw'                      => 'رؤية الصفحات الخام',
 	'right-info'                     => 'رؤية معلومات الصفحة',
@@ -353,6 +362,7 @@ $messages['km'] = array(
 	'grouppermissions-never'         => 'មិនដែល',
 	'grouppermissions-sort-edit'     => 'ការកែប្រែ',
 	'grouppermissions-sort-manage'   => 'ការគ្រប់គ្រង',
+	'grouppermissions-log-add'       => 'បានបន្ថែមក្រុម"$2"',
 	'grouppermissions-log-delete'    => 'បានលុបក្រុម"$2"',
 	'grouppermissions-sp-save'       => 'រក្សាទុក',
 	'grouppermissions-sp-remove'     => 'ដកហូត',
@@ -360,6 +370,7 @@ $messages['km'] = array(
 	'right-search'                   => 'ស្វែងរកវិគី',
 	'right-recentchanges'            => 'មើលបំលាស់ប្តូរថ្មីៗ',
 	'right-edittalk'                 => 'កែប្រែទំព័រពិភាក្សា',
+	'right-edit-new'                 => 'កែប្រែទំព័រ(ដែលមិនមែនជាទំព័រពិភាក្សា)',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -518,6 +529,14 @@ $messages['no'] = array(
 	'right-edit-new'                 => 'Redigere sider',
 );
 
+/** Occitan (Occitan)
+ * @author Cedric31
+ */
+$messages['oc'] = array(
+	'grouppermissions-delete'  => 'Suprimir lo grop',
+	'grouppermissions-comment' => 'Comentari :',
+);
+
 /** Polish (Polski)
  * @author Airwolf
  * @author Sp5uhe
@@ -581,23 +600,24 @@ $messages['rif'] = array(
 
 /** Russian (Русский)
  * @author Innv
+ * @author Александр Сигачёв
  */
 $messages['ru'] = array(
-	'grouppermissions'               => 'Управлять правами доступа',
+	'grouppermissions'               => 'Управление правами доступа',
 	'removeunusedgroups'             => 'Удалить неиспользуемые группы',
 	'grouppermissions-desc'          => 'Управлять правами доступа на [[Special:GroupPermissions|спецстранице]]',
 	'grouppermissions-search'        => 'Группа:',
-	'grouppermissions-dologin'       => 'Ник',
+	'grouppermissions-dologin'       => 'Имя участника',
 	'grouppermissions-dosearch'      => 'Перейти',
 	'grouppermissions-deletelabel'   => 'Удалить группу',
-	'grouppermissions-change'        => 'Изменить права доступа',
+	'grouppermissions-change'        => 'Изменить групповые права доступа',
 	'grouppermissions-add'           => 'Добавить группу',
 	'grouppermissions-delete'        => 'Удалить группу',
-	'grouppermissions-comment'       => 'Комментарий:',
+	'grouppermissions-comment'       => 'Примечание:',
 	'grouppermissions-addsuccess'    => '$1 были успешно добавлены',
 	'grouppermissions-deletesuccess' => '$1 были успешно удалены',
 	'grouppermissions-changesuccess' => 'Права доступа для $1 были успешно изменены',
-	'grouppermissions-log-name'      => 'Журнал прав доступа',
+	'grouppermissions-log-name'      => 'Журнал групповых прав доступа',
 );
 
 /** Slovak (Slovenčina)

@@ -335,6 +335,14 @@ $messages['is'] = array(
 	'passwordreset-username' => 'Notandanafn',
 );
 
+/** Italian (Italiano)
+ * @author Pietrodn
+ */
+$messages['it'] = array(
+	'passwordreset-badtoken' => 'Edit token non valido',
+	'passwordreset-username' => 'Nome utente',
+);
+
 /** Javanese (Basa Jawa)
  * @author Meursault2004
  */
@@ -351,12 +359,13 @@ $messages['jv'] = array(
 
 /** Khmer (ភាសាខ្មែរ)
  * @author Chhorran
+ * @author Lovekhmer
  */
 $messages['km'] = array(
 	'passwordreset-invalidusername' => 'ឈ្មោះអ្នកប្រើប្រាស់ គ្មានសុពលភាព',
 	'passwordreset-emptyusername'   => 'ឈ្មោះអ្នកប្រើប្រាស់ ទទេ',
 	'passwordreset-username'        => 'ឈ្មោះអ្នកប្រើប្រាស់',
-	'passwordreset-newpass'         => 'ពាក្យសំងាត់ ថ្មី',
+	'passwordreset-newpass'         => 'ពាក្យសំងាត់ថ្មី',
 	'passwordreset-confirmpass'     => 'បញ្ជាក់ទទួលស្គាល់ ពាក្យសំងាត់',
 );
 

@@ -888,9 +888,11 @@ $messages['hu'] = array(
 
 /** Italian (Italiano)
  * @author BrokenArrow
+ * @author Pietrodn
  */
 $messages['it'] = array(
 	'math_noblahtex'                        => 'Impossibile eseguire blahtex, che dovrebbe trovarsi in $1',
+	'math-desc'                             => 'Output MathML per i tag &lt;math&gt;',
 	'math_AmbiguousInfix'                   => 'La posizione di "$1" è ambigua; aggiungere delle parentesi graffe "{ ... }" per risolvere l\'ambiguità',
 	'math_CannotChangeDirectory'            => 'Impossibile modificare la directory di lavoro',
 	'math_CannotCreateTexFile'              => 'Impossibile creare il file tex',

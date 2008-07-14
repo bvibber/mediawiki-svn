@@ -141,6 +141,24 @@ Tuta strona by tež twoju pomoc trjebała: $1.',
 	'tog-edit-similar'                           => 'Namjety za podobne strony zmóžnić',
 );
 
+/** Italian (Italiano)
+ * @author Darth Kule
+ */
+$messages['it'] = array(
+	'editsimilar-desc'                           => 'Incoraggia gli utenti a modificare pagine simili dopo aver salvato una pagina',
+	'editsimilar-thanks'                         => 'Grazie per il tuo contributo.
+Guarda anche queste pagine correlate: $1.',
+	'editsimilar-thanks-singleresult'            => 'Grazie per il tuo contributo.
+Guarda anche questa pagina correlate: $1.',
+	'editsimilar-thanks-notsimilar'              => 'Grazie per il tuo contributo.
+Anche queste pagine potrebbero usufruire del tuo aiuto: $1.',
+	'editsimilar-thanks-notsimilar-singleresult' => 'Grazie per il tuo contributo.
+Anche questa pagina potrebbe usufruire del tuo aiuto: $1.',
+	'editsimilar-thankyou'                       => 'Grazie per il tuo contributo, $1!',
+	'editsimilar-link-disable'                   => 'imposta preferenze',
+	'tog-edit-similar'                           => 'Attiva suggerimenti di pagine simili',
+);
+
 /** Khmer (ភាសាខ្មែរ)
  * @author Lovekhmer
  */

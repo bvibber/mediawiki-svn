@@ -134,10 +134,11 @@ $messages['es'] = array(
 /** French (Français)
  * @author Grondin
  * @author Cedric31
+ * @author Louperivois
  */
 $messages['fr'] = array(
 	'randomincategory'            => 'Page au hasard dans la catégorie',
-	'randomincategory-desc'       => '[[Special:Randomincategory|Page spéciale]] pour obtenir une page au hasard dans une catégorie.',
+	'randomincategory-desc'       => '[[Special:Randomincategory|Page spéciale]] pour obtenir une page au hasard dans une catégorie',
 	'randomincategory-toolbox'    => 'Page au hasard',
 	'randomincategory-nocategory' => 'La catégorie « $1 » n’existe pas ou est vide',
 	'randomincategory-label'      => 'Catégorie :',

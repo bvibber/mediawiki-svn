@@ -333,6 +333,24 @@ $messages['is'] = array(
 	'restriction-level-author' => 'Höfundavarið',
 );
 
+/** Italian (Italiano)
+ * @author Pietrodn
+ */
+$messages['it'] = array(
+	'authorprotect'           => 'Proteggi la pagina dai non-autori',
+	'authorprotect-desc'      => "Permette all'autore di una pagina di proteggerla dagli altri utenti",
+	'authorprotect-notauthor' => "Non sei l'autore di questa pagina",
+	'authorprotect-confirm'   => 'Cambia i livelli di protezione',
+	'authorprotect-edit'      => 'Limita le modifiche agli autori',
+	'authorprotect-move'      => 'Limita gli spostamenti agli autori',
+	'authorprotect-expiry'    => 'Scadenza',
+	'authorprotect-reason'    => 'Motivo',
+	'authorprotect-intro'     => 'Usa questo modulo per proteggere questa pagina dai non-autori',
+	'authorprotect-success'   => 'Protezione avvenuta con successo!',
+	'authorprotect-failure'   => 'Protezione fallita',
+	'protect-level-author'    => 'Protetta dai non-autori',
+);
+
 /** Javanese (Basa Jawa)
  * @author Meursault2004
  */

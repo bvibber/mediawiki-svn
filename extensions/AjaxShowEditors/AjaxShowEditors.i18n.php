@@ -357,12 +357,15 @@ $messages['is'] = array(
 /** Italian (Italiano)
  * @author FiloSottile
  * @author Cruccone
+ * @author Pietrodn
  */
 $messages['it'] = array(
+	'ajax-se-desc'             => 'Mostra gli utenti che stanno modificando la stessa pagina',
 	'ajax-se-title'            => 'Modifica in corso:',
 	'ajax-se-pending'          => 'in attesa di aggiornamento ... (fare clic su questa casella o iniziare la modifica)',
 	'ajax-se-idling'           => '(da $1 s)',
 	'ajax-se-pagedoesnotexist' => 'La pagina non esiste',
+	'ajax-se-userinvalid'      => 'Errore: utente non valido',
 	'ajax-se-usernotfound'     => 'Errore: utente non trovato',
 );
 

@@ -704,7 +704,7 @@ $messages['kk-latn'] = array(
  */
 $messages['km'] = array(
 	'newuserlogpage'              => 'កំណត់ហេតុនៃការបង្កើតគណនី',
-	'newuserlogpagetext'          => 'នេះជា កំណត់ហេតុ នៃការបង្កើត អ្នកប្រើប្រាស់',
+	'newuserlogpagetext'          => 'នេះជាកំនត់ហេតុនៃការបង្កើតអ្នកប្រើប្រាស់',
 	'newuserlog-desc'             => 'បន្ថែម[[Special:Log/newusers|កំនត់ហេតុនៃការបង្កើតគណនី]]ទៅ[[Special:Log|កំនត់ហេតុ]]',
 	'newuserlog-byemail'          => 'ពាក្យសំងាត់ត្រូវបានផ្ញើតាមអ៊ីមែល',
 	'newuserlog-create-entry'     => 'អ្នកប្រើប្រាស់ថ្មី',

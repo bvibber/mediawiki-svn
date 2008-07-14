@@ -334,6 +334,7 @@ $messages['de-formal'] = array(
  */
 $messages['dsb'] = array(
 	'badimages'                => 'Lisćina špatnych wobrazow',
+	'badimages-desc'           => 'Móžnosći lisćiny špatnych wobrazow w MediaWiki rozšyriś',
 	'badimages-add-btn'        => 'Pśidaś',
 	'badimages-added'          => '$1 bu lisćinje pśidany.',
 	'badimages-count'          => "{{PLURAL:$1|Jo|Stej|Su|Jo}} '''$1''' {{PLURAL:$1||wobraz|wobrazej|wobraze|wobrazow}} na lisćinje špatnych wobrazow.",
@@ -719,7 +720,8 @@ $messages['hu'] = array(
  * @author McDutchie
  */
 $messages['ia'] = array(
-	'badimages-reason' => 'Motivo:',
+	'badimages-add-btn' => 'Adder',
+	'badimages-reason'  => 'Motivo:',
 );
 
 /** Indonesian (Bahasa Indonesia)

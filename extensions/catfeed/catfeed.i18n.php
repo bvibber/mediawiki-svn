@@ -37,6 +37,14 @@ $messages['cs'] = array(
 	'catfeed-desc' => 'Používá kousky z kanálů posledních změn. Vytvoří verzi v rámci stránky. Obzvlášť užitečné pro Wikinews.',
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'catfeed-desc' => 'Wužywa bity z kanalow aktualnych změnow.
+Napóraj wersiju w boku, wósebnje   wužytnu za Wikinowosće.',
+);
+
 /** French (Français) */
 $messages['fr'] = array(
 	'catfeed-desc' => 'Utilise des bits pour alimenter les modifications récentes. Crée une version de page, très pratique pour Wikinews.',

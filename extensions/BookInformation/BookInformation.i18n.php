@@ -264,6 +264,24 @@ $messages['de'] = array(
 	'bookinfo-provider'          => 'Daten-Lieferant: $1',
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'bookinfo-header'            => 'Informacije wó knigłach',
+	'bookinfo-desc'              => 'Wudopołnjujo [[Special:Booksources]] wó informacije websłužby',
+	'bookinfo-result-title'      => 'Titel:',
+	'bookinfo-result-author'     => 'Awtor:',
+	'bookinfo-result-publisher'  => 'Wudawaŕ:',
+	'bookinfo-result-year'       => 'Lěto:',
+	'bookinfo-error-invalidisbn' => 'Njepłaśiwy ISBN zapódany.',
+	'bookinfo-error-nosuchitem'  => 'Zapisk njeeksistujo abo njejo se namakaś dał.',
+	'bookinfo-error-nodriver'    => 'Njejo móžno pśiłušny gónjak za informacije wó knigłach inicializěrowaś',
+	'bookinfo-error-noresponse'  => 'Žedne wótegrono abo cas za wótegrono wótběgnuł',
+	'bookinfo-purchase'          => 'Toś te knigły z $1 kupiś',
+	'bookinfo-provider'          => 'Librowaŕ datow: $1',
+);
+
 /** Greek (Ελληνικά)
  * @author Consta
  * @author Badseed

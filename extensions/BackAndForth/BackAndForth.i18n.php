@@ -267,9 +267,11 @@ $messages['is'] = array(
 
 /** Italian (Italiano)
  * @author Gianfranco
+ * @author Pietrodn
  */
 $messages['it'] = array(
 	'backforth-next' => 'Successivi ($1)',
+	'backforth-desc' => 'Aggiunge in cima alle pagine i collegamenti di scorrimento alfabetico "Successivi" e "Precedenti"',
 	'backforth-prev' => 'Precedenti ($1)',
 );
 

@@ -121,6 +121,7 @@ $messages['bcl'] = array(
  * @author EugeneZelenko
  */
 $messages['be-tarask'] = array(
+	'linksearch'    => 'Пошук вонкавых спасылак',
 	'linksearch-ns' => 'Прастора назваў:',
 );
 

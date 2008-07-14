@@ -461,11 +461,13 @@ $messages['km'] = array(
  */
 $messages['lb'] = array(
 	'vote'                => 'Ofstëmmen',
+	'vote-header'         => "Dir kënnt hei iwwer den '''Supreme Overlord of the World''' ofstëmmen!",
 	'vote-caption'        => 'Är Wiel:',
 	'vote-submit'         => 'Ofstëmmen',
 	'vote-registered'     => 'Är Stëmm gouf ofgespäichert.',
 	'vote-view-results'   => "Kuckt d'Resultater",
 	'vote-results'        => 'Resultater vun der Ofstëmmung',
+	'vote-results-none'   => 'Et goufe bis elo nach keng Stëmmen ofginn.',
 	'vote-login'          => 'Dir musst $1 fir ofzestëmmen.',
 	'vote-login-link'     => 'aloggen',
 	'vote-invalid-choice' => 'Dir musst eng vun de Méiglechkeeten auswielen.',

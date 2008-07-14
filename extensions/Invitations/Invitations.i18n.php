@@ -39,12 +39,21 @@ To manage invitations for an individual feature, click on its name.',
  * @author Meno25
  */
 $messages['ar'] = array(
-	'invite-logpage'                  => 'سجل الدعوات',
-	'invitations-feature-pagetitle'   => 'إدارة الدعوات - $1',
-	'invitations-inviteform-title'    => 'ادعي مستخدم ليستخدم $1',
-	'invitations-inviteform-username' => 'المستخدم لتتم دعوته',
-	'invitations-inviteform-submit'   => 'ادعي',
-	'invitations-error-baduser'       => 'المستخدم الذي حددته لا يبدو أنه موجود.',
+	'invite-logpage'                        => 'سجل الدعوات',
+	'invitations'                           => 'أدر الدعوات لميزات البرنامج',
+	'invitations-invitedlist-none'          => 'لم تتم دعوتك لاستخدام أي ميزات بالدعوة-فقط.',
+	'invitations-pagetitle'                 => 'ميزات بالدعوة-فقط',
+	'invitations-uninvitedlist-description' => 'لا توجد لديك صلاحية لهذه الميزات بالدعوة-فقط الأخرى.',
+	'invitations-feature-pagetitle'         => 'إدارة الدعوات - $1',
+	'invitations-feature-access'            => 'لديك حاليا صلاحية استخدام <i>$1</i>.',
+	'invitations-feature-noneleft'          => 'لقد استخدمت كل دعواتك المحصصة لهذه الميزة',
+	'invitations-feature-notallowed'        => 'لا يوجد لديك صلاحية استخدام <i>$1</i>.',
+	'invitations-inviteform-title'          => 'ادعي مستخدم ليستخدم $1',
+	'invitations-inviteform-username'       => 'المستخدم لتتم دعوته',
+	'invitations-inviteform-submit'         => 'ادعي',
+	'invitations-error-baduser'             => 'المستخدم الذي حددته لا يبدو أنه موجود.',
+	'invitations-error-alreadyinvited'      => 'المستخدم الذي حددته لديه صلاحية لهذه الميزة أصلا!',
+	'invitations-invite-success'            => 'لقد دعوت $1 ليستخدم هذه الميزة بنجاح!',
 );
 
 /** Bulgarian (Български)

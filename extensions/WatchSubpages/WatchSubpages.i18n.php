@@ -81,13 +81,14 @@ $messages['de'] = array(
 /** French (Français)
  * @author Grondin
  * @author Verdy p
+ * @author Louperivois
  */
 $messages['fr'] = array(
 	'watchsubpages'                      => 'Observer les sous-pages',
 	'watchsubpages-addedtowatchlist'     => 'Ce qui suit a été ajouté à votre liste de suivi.',
 	'watchsubpages-addtitles'            => 'Ajouter des pages',
 	'watchsubpages-addtitlestowatchlist' => 'Ajouter des pages à la liste de suivi',
-	'watchsubpages-desc'                 => 'Ajouter rapidement [[Special:WatchSubpages|toutes les sous-pages]] à la liste de suivi.',
+	'watchsubpages-desc'                 => 'Ajoute rapidement [[Special:WatchSubpages|toutes les sous-pages]] à la liste de suivi',
 	'watchsubpages-form'                 => 'Sélectionner les pages à ajouter à votre liste de suivi ci-dessous.
 Pour ajouter une page, cocher la case après elle, et cliquez « Ajouter des pages ».
 

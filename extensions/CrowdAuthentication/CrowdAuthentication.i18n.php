@@ -66,6 +66,13 @@ $messages['hsb'] = array(
 	'crowdauthentication-desc' => 'Awtentifikaciski tykač za Atlassian Crowd',
 );
 
+/** Italian (Italiano)
+ * @author Pietrodn
+ */
+$messages['it'] = array(
+	'crowdauthentication-desc' => 'Plugin di autenticazione per Atlassian Crowd',
+);
+
 /** Japanese (日本語)
  * @author JtFuruhata
  */

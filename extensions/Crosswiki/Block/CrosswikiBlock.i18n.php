@@ -569,6 +569,7 @@ $messages['is'] = array(
 
 /** Italian (Italiano)
  * @author Darth Kule
+ * @author Pietrodn
  */
 $messages['it'] = array(
 	'crosswikiblock-desc'           => 'Permette di bloccare utenti su altre wiki usando una [[Special:Crosswikiblock|pagina speciale]]',
@@ -601,6 +602,7 @@ Torna a:
 	'crosswikiblock-nouser'         => 'L\'utente "$3" non è stato trovato.',
 	'crosswikiblock-noexpiry'       => 'Scadenza del blocco errata: $1.',
 	'crosswikiblock-noreason'       => 'Nessun motivo specificato.',
+	'crosswikiblock-notoken'        => 'Edit token non valido.',
 	'crosswikiblock-alreadyblocked' => 'L\'utente "$3" è stato già bloccato.',
 	'crosswikiblock-noblock'        => 'Questo utente non è bloccato.',
 	'crosswikiblock-success'        => "L'utente '''$3''' è stato sbloccato con successo.

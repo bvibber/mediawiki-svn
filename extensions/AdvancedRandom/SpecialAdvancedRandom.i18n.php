@@ -168,6 +168,13 @@ $messages['hu'] = array(
 	'advancedrandom-desc' => 'Megjelenít egy véletlen lapot, amely vagy amelynek vitalapja egy megadott oldalra, például a [[Special:AdvancedRandom/Sablon:Kiemelt/Vita]] mutat egy véletlen kiemelt szócikket vagy a [[Special:AdvancedRandom/Sablon:GFDL/Kép]] mutat egy véletlen GFDL fájlt.',
 );
 
+/** Italian (Italiano)
+ * @author Pietrodn
+ */
+$messages['it'] = array(
+	'advancedrandom' => 'Random avanzato',
+);
+
 /** Japanese (日本語)
  * @author JtFuruhata
  */

@@ -407,9 +407,12 @@ $messages['is'] = array(
 
 /** Italian (Italiano)
  * @author BrokenArrow
+ * @author Darth Kule
+ * @author Pietrodn
  */
 $messages['it'] = array(
 	'asksql'          => 'Query SQL',
+	'asksql-desc'     => 'Esegui query SQL attraverso una [[Special:Asksql|pagina speciale]]',
 	'asksqltext'      => "Il modulo riportato di seguito consente di eseguire interrogazioni dirette sul database.
 Usare apici singoli ('come questi') per indicare le stringhe costanti.
 Questa funzione può essere molto onerosa nei confronti dei server, si
@@ -419,6 +422,7 @@ prega quindi di usarla con molta parsimonia.",
 	'querybtn'        => 'Invia query',
 	'selectonly'      => 'Sono consentite unicamente query di lettura.',
 	'querysuccessful' => 'Query eseguita correttamente',
+	'right-asksql'    => 'Esegue query SQL',
 );
 
 /** Japanese (日本語)

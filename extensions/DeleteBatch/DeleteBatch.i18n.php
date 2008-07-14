@@ -44,26 +44,27 @@ Uploaded file should contain page name and optional reason separated by a "|" ch
  * @author Meno25
  */
 $messages['ar'] = array(
-	'deletebatch'                  => 'حذف باتش من الصفحات',
-	'deletebatch-desc'             => '[[Special:DeleteBatch|حذف باتش من الصفحات]]',
-	'deletebatch-button'           => 'حذف',
-	'deletebatch-here'             => '<b>هنا</b>',
-	'deletebatch-caption'          => 'قائمة الصفحات',
-	'deletebatch-title'            => 'حذف الباتش',
-	'deletebatch-link-back'        => 'يمكنك العودة إلى الامتداد',
-	'deletebatch-as'               => 'تشغيل السكريبت ك',
-	'deletebatch-or'               => '<b>أو</b>',
-	'deletebatch-page'             => 'الصفحات للحذف',
-	'deletebatch-reason'           => 'سبب الحذف',
-	'deletebatch-processing'       => 'جاري حذف الصفحات',
-	'deletebatch-from-file'        => 'من قائمة ملف',
-	'deletebatch-from-form'        => 'من من',
-	'deletebatch-success-subtitle' => 'ل$1',
-	'deletebatch-omitting-invalid' => 'إزالة صفحة غير صحيحة $1.',
-	'deletebatch-file-bad-format'  => 'الملف ينبغي أن يكون نصا خالصا',
-	'deletebatch-file-missing'     => 'غير قادر على قراءة الملف المعطى',
-	'deletebatch-select-script'    => 'سكريبت حذف الصفحات',
-	'deletebatch-select-yourself'  => 'أنت',
+	'deletebatch'                      => 'حذف باتش من الصفحات',
+	'deletebatch-desc'                 => '[[Special:DeleteBatch|حذف باتش من الصفحات]]',
+	'deletebatch-button'               => 'حذف',
+	'deletebatch-here'                 => '<b>هنا</b>',
+	'deletebatch-caption'              => 'قائمة الصفحات',
+	'deletebatch-title'                => 'حذف الباتش',
+	'deletebatch-link-back'            => 'يمكنك العودة إلى الامتداد',
+	'deletebatch-as'                   => 'تشغيل السكريبت ك',
+	'deletebatch-or'                   => '<b>أو</b>',
+	'deletebatch-page'                 => 'الصفحات للحذف',
+	'deletebatch-reason'               => 'سبب الحذف',
+	'deletebatch-processing'           => 'جاري حذف الصفحات',
+	'deletebatch-from-file'            => 'من قائمة ملف',
+	'deletebatch-from-form'            => 'من من',
+	'deletebatch-success-subtitle'     => 'ل$1',
+	'deletebatch-omitting-nonexistant' => 'إزالة صفحة غير موجودة $1.',
+	'deletebatch-omitting-invalid'     => 'إزالة صفحة غير صحيحة $1.',
+	'deletebatch-file-bad-format'      => 'الملف ينبغي أن يكون نصا خالصا',
+	'deletebatch-file-missing'         => 'غير قادر على قراءة الملف المعطى',
+	'deletebatch-select-script'        => 'سكريبت حذف الصفحات',
+	'deletebatch-select-yourself'      => 'أنت',
 );
 
 /** Bulgarian (Български)
@@ -281,6 +282,38 @@ En opplastet fil må inneholde navnet på siden, og kan også ha en valgfri slet
 	'deletebatch-from-file'        => 'fra filliste',
 	'deletebatch-from-form'        => 'fra skjema',
 	'deletebatch-success-subtitle' => 'for $1',
+);
+
+/** Occitan (Occitan)
+ * @author Cedric31
+ */
+$messages['oc'] = array(
+	'deletebatch'                      => 'Lòt de supression de las paginas',
+	'deletebatch-desc'                 => '[[Special:DeleteBatch|Suprimís un lòt de paginas]]',
+	'deletebatch-button'               => 'SUPRIMIR',
+	'deletebatch-here'                 => '<b>aicí</b>',
+	'deletebatch-help'                 => 'Suprimís un lòt de paginas. Podètz siá aviar una supression simpla, siá suprimir de paginas listadas dins un fichièr.
+Causissètz un utilizaire que serà afichat dins lo jornal de las supressions.
+Un fichièr importat poirà conténer un nom de la pagina e un motiu facultatiu separat per un « | » dins cada linha.',
+	'deletebatch-caption'              => 'Tièra de la pagina',
+	'deletebatch-title'                => 'Suprimir en lòt',
+	'deletebatch-link-back'            => 'Podètz tornar a l’extension',
+	'deletebatch-as'                   => "Aviar l'escript coma",
+	'deletebatch-both-modes'           => 'Causissètz, siá una de las paginas indicadas, siá una tièra donada de paginas.',
+	'deletebatch-or'                   => '<b>o</b>',
+	'deletebatch-page'                 => 'Paginas de suprimir',
+	'deletebatch-reason'               => 'Motiu de la supression',
+	'deletebatch-processing'           => 'supression de las paginas',
+	'deletebatch-from-file'            => 'dempuèi la tièra d’un fichièr',
+	'deletebatch-from-form'            => 'a partir del formulari',
+	'deletebatch-success-subtitle'     => 'per « $1 »',
+	'deletebatch-omitting-nonexistant' => 'Omission de la pagina « $1 » inexistenta.',
+	'deletebatch-omitting-invalid'     => 'Omission de la pagina « $1 » incorrècta.',
+	'deletebatch-file-bad-format'      => 'Lo fichièr deu èsser en tèxt simple',
+	'deletebatch-file-missing'         => 'Impossible de legir lo fichièr donat',
+	'deletebatch-select-script'        => "suprimir l'escript de la pagina",
+	'deletebatch-select-yourself'      => 'vos',
+	'deletebatch-no-page'              => 'Indicatz al mens una pagina de suprimir O un fichièr donat que conten una tièra de paginas.',
 );
 
 /** Polish (Polski)
