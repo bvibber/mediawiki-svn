@@ -41,6 +41,11 @@ $aliases['ht'] = array(
 	'EditUser' => array( 'EditeItilizatè' ),
 );
 
+/** Khmer (ភាសាខ្មែរ) */
+$aliases['km'] = array(
+	'EditUser' => array( 'កែប្រែអ្នកប្រើប្រាស់' ),
+);
+
 /** Luxembourgish (Lëtzebuergesch) */
 $aliases['lb'] = array(
 	'EditUser' => array( 'Benotzer änneren' ),

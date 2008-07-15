@@ -46,6 +46,11 @@ $aliases['hu'] = array(
 	'SpecialInvitations' => array( 'Meghívók' ),
 );
 
+/** Khmer (ភាសាខ្មែរ) */
+$aliases['km'] = array(
+	'SpecialInvitations' => array( 'ការអញ្ជើញ' ),
+);
+
 /** Luxembourgish (Lëtzebuergesch) */
 $aliases['lb'] = array(
 	'SpecialInvitations' => array( 'Invitatiounen' ),
@@ -64,5 +69,10 @@ $aliases['nl'] = array(
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
 $aliases['no'] = array(
 	'SpecialInvitations' => array( 'Invitasjoner' ),
+);
+
+/** Swedish (Svenska) */
+$aliases['sv'] = array(
+	'SpecialInvitations' => array( 'Inbjudningar' ),
 );
 

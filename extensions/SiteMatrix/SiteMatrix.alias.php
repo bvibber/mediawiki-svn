@@ -65,3 +65,8 @@ $aliases['no'] = array(
 	'SiteMatrix' => array( 'Wikimedia-wikier' ),
 );
 
+/** Swedish (Svenska) */
+$aliases['sv'] = array(
+	'SiteMatrix' => array( 'Lista över Wikimedias wikier' ),
+);
+

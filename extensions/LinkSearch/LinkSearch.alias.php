@@ -53,6 +53,11 @@ $aliases['ht'] = array(
 	'LinkSearch' => array( 'BouskeLyen' ),
 );
 
+/** Khmer (ភាសាខ្មែរ) */
+$aliases['km'] = array(
+	'LinkSearch' => array( 'ស្វែងរកតំនភ្ជាប់' ),
+);
+
 /** Latin (Latina) */
 $aliases['la'] = array(
 	'LinkSearch' => array( 'Quaerere nexus externos' ),
@@ -78,5 +83,10 @@ $aliases['nl'] = array(
  */
 $aliases['no'] = array(
 	'LinkSearch' => array( 'Lenkesøk' ),
+);
+
+/** Swedish (Svenska) */
+$aliases['sv'] = array(
+	'LinkSearch' => array( 'Länksökning' ),
 );
 
