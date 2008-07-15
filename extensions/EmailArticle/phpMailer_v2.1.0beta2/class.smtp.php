@@ -2,7 +2,7 @@
 /*~ class.smtp.php
 .---------------------------------------------------------------------------.
 |  Software: PHPMailer - PHP email class                                    |
-|   Version: 2.1                                                            |
+|   Version: 2.0.0 rc1                                                      |
 |   Contact: via sourceforge.net support pages (also www.codeworxtech.com)  |
 |      Info: http://phpmailer.sourceforge.net                               |
 |   Support: http://sourceforge.net/projects/phpmailer/                     |
@@ -71,7 +71,7 @@ class SMTP {
    * @access public
    * @return void
    */
-  public function __construct() {
+  function __construct() {
     $this->smtp_conn = 0;
     $this->error = null;
     $this->helo_rply = null;
@@ -96,7 +96,7 @@ class SMTP {
    * @access public
    * @return bool
    */
-  public function Connect($host,$port=0,$tval=30) {
+  function Connect($host,$port=0,$tval=30) {
     /* set the error val to null so there is no confusion */
     $this->error = null;
 
@@ -154,57 +154,12 @@ class SMTP {
   }
 
   /**
-   * Initiate a TSL communication with the server.
-   *
-   * SMTP CODE 220 Ready to start TLS
-   * SMTP CODE 501 Syntax error (no parameters allowed)
-   * SMTP CODE 454 TLS not available due to temporary reason
-   * @access public
-   * @return bool success
-   */
-  public function StartTLS() {
-    $this->error = null; # to avoid confusion
-
-    if(!$this->connected()) {
-      $this->error = array("error" => "Called StartTLS() without being connected");
-      return false;
-    }
-
-    fputs($this->smtp_conn,"STARTTLS" . $extra . $this->CRLF);
-
-    $rply = $this->get_lines();
-    $code = substr($rply,0,3);
-
-    if($this->do_debug >= 2) {
-      echo "SMTP -> FROM SERVER:" . $this->CRLF . $rply;
-    }
-
-    if($code != 220) {
-      $this->error =
-         array("error"     => "STARTTLS not accepted from server",
-               "smtp_code" => $code,
-               "smtp_msg"  => substr($rply,4));
-      if($this->do_debug >= 1) {
-        echo "SMTP -> ERROR: " . $this->error["error"] . ": " . $rply . $this->CRLF;
-      }
-      return false;
-    }
-
-    //Begin encrypted connection
-    if(!stream_socket_enable_crypto($this->smtp_conn, true, STREAM_CRYPTO_METHOD_TLS_CLIENT)) {
-      return false;
-    }
-
-    return true;
-  }
-
-  /**
    * Performs SMTP authentication.  Must be run after running the
    * Hello() method.  Returns true if successfully authenticated.
    * @access public
    * @return bool
    */
-  public function Authenticate($username, $password) {
+  function Authenticate($username, $password) {
     // Start authentication
     fputs($this->smtp_conn,"AUTH LOGIN" . $this->CRLF);
 
@@ -264,10 +219,10 @@ class SMTP {
 
   /**
    * Returns true if connected to a server otherwise false
-   * @access public
+   * @access private
    * @return bool
    */
-  public function Connected() {
+  function Connected() {
     if(!empty($this->smtp_conn)) {
       $sock_status = socket_get_status($this->smtp_conn);
       if($sock_status["eof"]) {
@@ -292,7 +247,7 @@ class SMTP {
    * @access public
    * @return void
    */
-  public function Close() {
+  function Close() {
     $this->error = null; // so there is no confusion
     $this->helo_rply = null;
     if(!empty($this->smtp_conn)) {
@@ -325,7 +280,7 @@ class SMTP {
    * @access public
    * @return bool
    */
-  public function Data($msg_data) {
+  function Data($msg_data) {
     $this->error = null; // so no confusion is caused
 
     if(!$this->connected()) {
@@ -399,13 +354,10 @@ class SMTP {
         // Patch to fix DOS attack
         if(!$pos) {
           $pos = $max_line_length - 1;
-          $lines_out[] = substr($line,0,$pos);
-          $line = substr($line,$pos);
-        } else {
-          $lines_out[] = substr($line,0,$pos);
-          $line = substr($line,$pos + 1);
         }
 
+        $lines_out[] = substr($line,0,$pos);
+        $line = substr($line,$pos + 1);
         /* if we are processing headers we need to
          * add a LWSP-char to the front of the new line
          * rfc 822 on long msg headers
@@ -469,7 +421,7 @@ class SMTP {
    * @access public
    * @return string array
    */
-  public function Expand($name) {
+  function Expand($name) {
     $this->error = null; // so no confusion is caused
 
     if(!$this->connected()) {
@@ -520,7 +472,7 @@ class SMTP {
    * @access public
    * @return bool
    */
-  public function Hello($host="") {
+  function Hello($host="") {
     $this->error = null; // so no confusion is caused
 
     if(!$this->connected()) {
@@ -552,7 +504,7 @@ class SMTP {
    * @access private
    * @return bool
    */
-  private function SendHello($hello, $host) {
+  function SendHello($hello, $host) {
     fputs($this->smtp_conn, $hello . " " . $host . $this->CRLF);
 
     $rply = $this->get_lines();
@@ -594,7 +546,7 @@ class SMTP {
    * @access public
    * @return string
    */
-  public function Help($keyword="") {
+  function Help($keyword="") {
     $this->error = null; // to avoid confusion
 
     if(!$this->connected()) {
@@ -646,7 +598,7 @@ class SMTP {
    * @access public
    * @return bool
    */
-  public function Mail($from) {
+  function Mail($from) {
     $this->error = null; // so no confusion is caused
 
     if(!$this->connected()) {
@@ -689,7 +641,7 @@ class SMTP {
    * @access public
    * @return bool
    */
-  public function Noop() {
+  function Noop() {
     $this->error = null; // so no confusion is caused
 
     if(!$this->connected()) {
@@ -732,7 +684,7 @@ class SMTP {
    * @access public
    * @return bool
    */
-  public function Quit($close_on_error=true) {
+  function Quit($close_on_error=true) {
     $this->error = null; // so there is no confusion
 
     if(!$this->connected()) {
@@ -786,7 +738,7 @@ class SMTP {
    * @access public
    * @return bool
    */
-  public function Recipient($to) {
+  function Recipient($to) {
     $this->error = null; // so no confusion is caused
 
     if(!$this->connected()) {
@@ -830,7 +782,7 @@ class SMTP {
    * @access public
    * @return bool
    */
-  public function Reset() {
+  function Reset() {
     $this->error = null; // so no confusion is caused
 
     if(!$this->connected()) {
@@ -879,7 +831,7 @@ class SMTP {
    * @access public
    * @return bool
    */
-  public function Send($from) {
+  function Send($from) {
     $this->error = null; // so no confusion is caused
 
     if(!$this->connected()) {
@@ -927,7 +879,7 @@ class SMTP {
    * @access public
    * @return bool
    */
-  public function SendAndMail($from) {
+  function SendAndMail($from) {
     $this->error = null; // so no confusion is caused
 
     if(!$this->connected()) {
@@ -975,7 +927,7 @@ class SMTP {
    * @access public
    * @return bool
    */
-  public function SendOrMail($from) {
+  function SendOrMail($from) {
     $this->error = null; // so no confusion is caused
 
     if(!$this->connected()) {
@@ -1020,7 +972,7 @@ class SMTP {
    * @access public
    * @return bool
    */
-  public function Turn() {
+  function Turn() {
     $this->error = array("error" => "This method, TURN, of the SMTP ".
                                     "is not implemented");
     if($this->do_debug >= 1) {
@@ -1042,7 +994,7 @@ class SMTP {
    * @access public
    * @return int
    */
-  public function Verify($name) {
+  function Verify($name) {
     $this->error = null; // so no confusion is caused
 
     if(!$this->connected()) {
@@ -1087,7 +1039,7 @@ class SMTP {
    * @access private
    * @return string
    */
-  private function get_lines() {
+  function get_lines() {
     $data = "";
     while($str = @fgets($this->smtp_conn,515)) {
       if($this->do_debug >= 4) {

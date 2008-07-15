@@ -1,6 +1,6 @@
 <?php
 /**
- * Internationalisation file for extension EmailPage.
+ * Internationalisation file for extension EmailArticle.
  *
  * @addtogroup Extensions
 */
@@ -11,12 +11,12 @@ $messages = array();
  * @author Nad
  */
 $messages['en'] = array(
-	'emailpage'           => 'E-mail page',
+	'emailarticle'        => 'E-mail page',
 	'ea-desc'             => 'Send rendered HTML page to an e-mail address or list of addresses using [http://phpmailer.sourceforge.net phpmailer].',
 	'ea-heading'          => "=== E-mailing the page [[$1]] ===",
 	'ea-fromgroup'        => 'From group:',
-	'ea-pagesend'         => 'Page "$1" sent from $2',
-	'ea-nopage'           => "Please specify a page to send, for example [[Special:EmailPage/Main Page]].",
+	'ea-articlesend'      => 'Page "$1" sent from $2',
+	'ea-noarticle'        => "Please specify a page to send, for example [[Special:EmailArticle/Main Page]].",
 	'ea-norecipients'     => "No valid e-mail addresses found!",
 	'ea-listrecipients'   => "=== {{PLURAL:$1|Recipient|$1 recipients}} ===",
 	'ea-error'            => "'''Error sending [[$1]]:''' ''$2''",
@@ -39,16 +39,15 @@ $messages['en'] = array(
  * @author Meno25
  */
 $messages['ar'] = array(
-	'emailpage'           => 'إرسال رسالة للمستخدم',
+	'emailarticle'        => 'مراسلة الصفحة',
 	'ea-heading'          => '=== مراسلة صفحة [[$1]] ===',
 	'ea-fromgroup'        => 'من مجموعة:',
-	'ea-pagesend'         => 'الصفحة "$1" أُرسلت من $2',
+	'ea-articlesend'      => 'الصفحة "$1" أُرسلت من $2',
 	'ea-norecipients'     => 'لا عناوين بريد إلكتروني صحيحة وُجدت!',
 	'ea-error'            => "'''خطأ في إرسال [[$1]]:''' ''$2''",
 	'ea-denied'           => 'السماح مرفوض',
 	'ea-selectrecipients' => 'اختر المتلقين',
 	'ea-compose'          => 'كتابة المحتوى',
-	'ea-show'             => 'عرض المتلقين',
 	'ea-send'             => 'أرسل!',
 	'ea-subject'          => 'أدخل سطر عنوان للبريد الإلكتروني',
 );
@@ -58,7 +57,7 @@ $messages['ar'] = array(
  */
 $messages['bg'] = array(
 	'ea-fromgroup'        => 'От група:',
-	'ea-nopage'           => 'Необходимо е да се посочи страница, която да бъде изпратена, напр. [[Special:EmailPage/Начална страница]].',
+	'ea-noarticle'        => 'Необходимо е да се посочи страница, която да бъде изпратена, напр. [[Special:EmailArticle/Начална страница]].',
 	'ea-norecipients'     => 'Не бяха намерени валидни адреси за е-поща!',
 	'ea-listrecipients'   => '=== Списък на $1 {{PLURAL:$1|получател|получателя}} ===',
 	'ea-error'            => "'''Грешка при изпращане на [[$1]]:''' ''$2''",
@@ -72,11 +71,11 @@ $messages['bg'] = array(
  * @author Yekrats
  */
 $messages['eo'] = array(
-	'emailpage'           => 'Retpoŝtigi paĝon',
+	'emailarticle'        => 'Retpoŝtigi paĝon',
 	'ea-heading'          => '=== Retpoŝtigante paĝon [[$1]] ===',
 	'ea-fromgroup'        => 'De grupo:',
-	'ea-pagesend'         => 'Paĝo "$1" sendita de $2',
-	'ea-nopage'           => 'Bonvolu enigi paĝon por retsendi, ekz-e [[Special:EmailPage/Main Page]].',
+	'ea-articlesend'      => 'Paĝo "$1" sendita de $2',
+	'ea-noarticle'        => 'Bonvolu enigi paĝon por retsendi, ekz-e [[Special:EmailArticle/Main Page]].',
 	'ea-norecipients'     => 'Neniaj validaj retadresoj trovitaj!',
 	'ea-listrecipients'   => '=== Listo de $1 {{PLURAL:$1|ricevonto|ricevontoj}} ===',
 	'ea-error'            => "'''Eraro sendante [[$1]]:''' ''$2''",
@@ -92,12 +91,12 @@ $messages['eo'] = array(
  * @author Grondin
  */
 $messages['fr'] = array(
-	'emailpage'           => 'Envoyer l’article par courriel',
+	'emailarticle'        => 'Envoyer l’article par courriel',
 	'ea-desc'             => 'Envoie le rendu d’une page HTML à une adresse électronique où à une liste d’adresses en utilisant [http://phpmailer.sourceforge.net phpmailer]',
 	'ea-heading'          => '=== Envoi de la page [[$1]] par courrier électronique ===',
 	'ea-fromgroup'        => 'Depuis le groupe :',
-	'ea-pagesend'         => 'Page « $1 » envoyée depuis $2',
-	'ea-nopage'           => 'Veuillez spécifier une page à envoyer, par exemple [[Special:EmailPage/Accueil]]',
+	'ea-articlesend'      => 'Page « $1 » envoyée depuis $2',
+	'ea-noarticle'        => 'Veuillez spécifier une page à envoyer, par exemple [[Special:EmailArticle/Accueil]]',
 	'ea-norecipients'     => 'Aucune adresse courriel de trouvée !',
 	'ea-listrecipients'   => '=== Liste de $1 {{PLURAL:$1|destinataire|destinataires}} ===',
 	'ea-error'            => "'''Erreur de l’envoi de [[$1]] :''' ''$2''",
@@ -119,12 +118,12 @@ $messages['fr'] = array(
  * @author Toliño
  */
 $messages['gl'] = array(
-	'emailpage'           => 'Enviar a páxina por correo electrónico',
+	'emailarticle'        => 'Enviar a páxina por correo electrónico',
 	'ea-desc'             => 'Enviar páxinas HTML renderizadas a un enderezo de correo electrónico (ou a varios correos) usando [http://phpmailer.sourceforge.net phpmailer].',
 	'ea-heading'          => '=== Enviando a páxina "[[$1]]" ===',
 	'ea-fromgroup'        => 'Desde o grupo:',
-	'ea-pagesend'         => 'O artigo "$1" foi enviado desde $2',
-	'ea-nopage'           => 'Por favor, especifique a páxina que quere enviar, por exemplo: [[Special:EmailPage/Main Page]].',
+	'ea-articlesend'      => 'O artigo "$1" foi enviado desde $2',
+	'ea-noarticle'        => 'Por favor, especifique a páxina que quere enviar, por exemplo: [[Special:EmailArticle/Main Page]].',
 	'ea-norecipients'     => 'Non foi atopado ningún enderezo de correo electrónico válido!',
 	'ea-listrecipients'   => '=== {{PLURAL:$1|Nome do destinatario|Listaxe dos $1 destinatarios}} ===',
 	'ea-error'            => "'''Erro no envío de \"[[\$1]]\":''' ''\$2''",
@@ -146,9 +145,9 @@ $messages['gl'] = array(
  * @author Lovekhmer
  */
 $messages['km'] = array(
-	'emailpage'      => 'ទំព័រអ៊ីមែល',
+	'emailarticle'   => 'ទំព័រអ៊ីមែល',
 	'ea-fromgroup'   => 'ពីក្រុម:',
-	'ea-pagesend'    => 'ទំព័រ"$1"ត្រូវបានបញ្ជូនពី$2',
+	'ea-articlesend' => 'ទំព័រ"$1"ត្រូវបានបញ្ជូនពី$2',
 	'ea-send'        => 'ផ្ញើ!',
 );
 
@@ -156,10 +155,10 @@ $messages['km'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
-	'emailpage'           => 'Säit per Mail schécken',
+	'emailarticle'        => 'Säit per Mail schécken',
 	'ea-heading'          => '=== Säit [[$1]] peer E-Mail verschécken ===',
 	'ea-fromgroup'        => 'Vun der Grupp:',
-	'ea-pagesend'         => 'D\'Säit "$1" gouf verschéckt vum $2',
+	'ea-articlesend'      => 'D\'Säit "$1" gouf verschéckt vum $2',
 	'ea-norecipients'     => 'Keng gëlteg E-Mailadress fonnt',
 	'ea-denied'           => 'Rechter refuséiert',
 	'ea-selectrecipients' => 'Adressaten erauswielen',
@@ -173,11 +172,11 @@ $messages['lb'] = array(
  * @author Shijualex
  */
 $messages['ml'] = array(
-	'emailpage'           => 'ഇമെയില്‍ താള്‍',
+	'emailarticle'        => 'ഇമെയില്‍ താള്‍',
 	'ea-heading'          => '=== [[$1]] എന്ന താള്‍ ഇമെയില്‍ ചെയ്യുന്നു ===',
 	'ea-fromgroup'        => 'ഗ്രൂപ്പ്:',
-	'ea-pagesend'         => '$2 സം‌രംഭത്തില്‍ നിന്നു "$1" എന്ന താള്‍ അയച്ചു',
-	'ea-nopage'           => 'അയക്കുവാന്‍ വേണ്ടി ഒരു താള്‍ തിരഞ്ഞെടുക്കുക. ഉദാ: [[Special:EmailPage/Main Page]]',
+	'ea-articlesend'      => '$2 സം‌രംഭത്തില്‍ നിന്നു "$1" എന്ന താള്‍ അയച്ചു',
+	'ea-noarticle'        => 'അയക്കുവാന്‍ വേണ്ടി ഒരു താള്‍ തിരഞ്ഞെടുക്കുക. ഉദാ: [[Special:EmailArticle/Main Page]]',
 	'ea-norecipients'     => 'സാധുവായ ഇമെയില്‍ വിലാസങ്ങള്‍ കണ്ടില്ല!',
 	'ea-listrecipients'   => '=== $1 {{PLURAL:$1|സ്വീകര്‍ത്താവിന്റെ|സ്വീകര്‍ത്താക്കളുടെ}} പട്ടിക ===',
 	'ea-error'            => "'''[[$1]] അയക്കുന്നതില്‍ പിഴവ്:''' ''$2''",
@@ -194,12 +193,12 @@ $messages['ml'] = array(
  * @author Kaustubh
  */
 $messages['mr'] = array(
-	'emailpage'           => 'पान इ-मेल करा',
+	'emailarticle'        => 'पान इ-मेल करा',
 	'ea-desc'             => ' [http://phpmailer.sourceforge.net पीएचपी मेलर] चा वापर करून एखादे पान एखाद्या इ-मेल पत्त्यावर किंवा इ-मेल पत्त्यांच्या यादीवर पाठवा.',
 	'ea-heading'          => '=== [[$1]] पान इ-मेल करीत आहे ===',
 	'ea-fromgroup'        => 'गटाकडून:',
-	'ea-pagesend'         => '$2 ने "$1" पान पाठविले',
-	'ea-nopage'           => 'कृपया पाठविण्यासाठी एक पान निवडा, उदाहरणासाठी [[Special:EmailPage/Main Page]].',
+	'ea-articlesend'      => '$2 ने "$1" पान पाठविले',
+	'ea-noarticle'        => 'कृपया पाठविण्यासाठी एक पान निवडा, उदाहरणासाठी [[Special:EmailArticle/Main Page]].',
 	'ea-norecipients'     => 'योग्य इ-मेल पत्ता सापडला नाही!',
 	'ea-listrecipients'   => '=== $1 {{PLURAL:$1|सदस्याची|सदस्यांची}}यादी ===',
 	'ea-error'            => "'''पाठविण्यामध्ये त्रुटी [[$1]]:''' ''$2''",
@@ -228,12 +227,12 @@ $messages['nds'] = array(
  * @author Siebrand
  */
 $messages['nl'] = array(
-	'emailpage'           => 'Pagina e-mailen',
+	'emailarticle'        => 'Pagina e-mailen',
 	'ea-desc'             => 'Stuur een gerenderde pagina naar een e-mailadres of een lijst van adressen met behulp van [http://phpmailer.sourceforge.net phpmailer].',
 	'ea-heading'          => '=== Pagina [[$1]] e-mailen ===',
 	'ea-fromgroup'        => 'Van groep:',
-	'ea-pagesend'         => 'Pagina "$1" is vanuit $2 verstuurd',
-	'ea-nopage'           => 'Geef een pagina op om te versturen, bijvoorbeeld [[Special:EmailPage/Hoofdpagina]].',
+	'ea-articlesend'      => 'Pagina "$1" is vanuit $2 verstuurd',
+	'ea-noarticle'        => 'Geef een pagina op om te versturen, bijvoorbeeld [[Special:EmailArticle/Hoofdpagina]].',
 	'ea-norecipients'     => 'Er is geen geldig e-mailadres opgegeven!',
 	'ea-listrecipients'   => '=== Lijst met $1 {{PLURAL:$1|ontvanger|ontvangers}} ===',
 	'ea-error'            => "'''Fout bij het versturen van [[$1]]:''' ''$2''",
@@ -255,12 +254,12 @@ $messages['nl'] = array(
  * @author Jon Harald Søby
  */
 $messages['no'] = array(
-	'emailpage'           => 'Send side som e-post',
+	'emailarticle'        => 'Send side som e-post',
 	'ea-desc'             => 'Send HTML-side til en eller flere e-postadresser ved hjelp av [http://phpmailer.sourceforge.net/ phpmailer].',
 	'ea-heading'          => '=== Send siden [[$1]] som e-post ===',
 	'ea-fromgroup'        => 'Fra gruppe:',
-	'ea-pagesend'         => 'Siden «$1» sendt fra $2',
-	'ea-nopage'           => 'Oppgi en side du vil sende, for eksempel [[Special:EmailPage/{{MediaWiki:Mainpage}}]].',
+	'ea-articlesend'      => 'Siden «$1» sendt fra $2',
+	'ea-noarticle'        => 'Oppgi en side du vil sende, for eksempel [[Special:EmailArticle/{{MediaWiki:Mainpage}}]].',
 	'ea-norecipients'     => 'Ingen gyldige e-postadresser funnet.',
 	'ea-listrecipients'   => '=== Liste over $1 {{PLURAL:$1|mottaker|mottakere}} ===',
 	'ea-error'            => "'''Feil under sending av [[$1]]:''' ''$2''",
@@ -282,12 +281,12 @@ $messages['no'] = array(
  * @author Cedric31
  */
 $messages['oc'] = array(
-	'emailpage'           => 'Mandar l’article per corrièr electronic',
+	'emailarticle'        => 'Mandar l’article per corrièr electronic',
 	'ea-desc'             => 'Manda lo rendut d’una pagina HTML a una adreça electronica o a una tièra d’adreças en utilizant [http://phpmailer.sourceforge.net phpmailer]',
 	'ea-heading'          => '=== Mandadís de la pagina [[$1]] per corrièr electronic ===',
 	'ea-fromgroup'        => 'Dempuèi lo grop :',
-	'ea-pagesend'         => 'Pagina « $1 » mandada dempuèi $2',
-	'ea-nopage'           => 'Especificatz una pagina de mandar, per exemple [[Special:EmailPage/Acuèlh]]',
+	'ea-articlesend'      => 'Pagina « $1 » mandada dempuèi $2',
+	'ea-noarticle'        => 'Especificatz una pagina de mandar, per exemple [[Special:EmailArticle/Acuèlh]]',
 	'ea-norecipients'     => "Cap d'adreça de corrièr electronic pas trobada !",
 	'ea-listrecipients'   => '=== Tièra de $1 {{PLURAL:$1|destinatari|destinataris}} ===',
 	'ea-error'            => "'''Error del mandadís de [[$1]] :''' ''$2''",
@@ -305,27 +304,16 @@ $messages['oc'] = array(
 	'ea-selectcss'        => "Seleccionar un fuèlh d'estil CSS",
 );
 
-/** Polish (Polski)
- * @author Maikking
- */
-$messages['pl'] = array(
-	'ea-selectrecipients' => 'Wybierz odbiorców',
-	'ea-show'             => 'Pokaż odbiorców',
-	'ea-send'             => 'Wyślij',
-	'ea-subject'          => 'Wprowadź temat',
-	'ea-selectcss'        => 'Wybierz styl CSS',
-);
-
 /** Slovak (Slovenčina)
  * @author Helix84
  */
 $messages['sk'] = array(
-	'emailpage'           => 'Poslať stránku emailom',
+	'emailarticle'        => 'Poslať stránku emailom',
 	'ea-desc'             => 'Poslať stránku vo formáte HTML na emailovú adresu alebo zoznam adries pomocou [http://phpmailer.sourceforge.net phpmailer].',
 	'ea-heading'          => '=== Poslanie stránky [[$1]] emailom ===',
 	'ea-fromgroup'        => 'Zo skupiny:',
-	'ea-pagesend'         => 'Článok „$1” poslaný z $2',
-	'ea-nopage'           => 'Prosím, uveďte stránku, ktorú chcete poslať, napr. [[Special:EmailPage/Hlavná stránka]].',
+	'ea-articlesend'      => 'Článok „$1” poslaný z $2',
+	'ea-noarticle'        => 'Prosím, uveďte stránku, ktorú chcete poslať, napr. [[Special:EmailArticle/Hlavná stránka]].',
 	'ea-norecipients'     => 'Nebola nájdená platná emailová adresa!',
 	'ea-listrecipients'   => '=== Zoznam $1 {{PLURAL:$1|príjemcu|príjemcov}} ===',
 	'ea-error'            => "'''Chyba pri odosielaní [[$1]]:''' ''$2''",
@@ -354,12 +342,12 @@ $messages['su'] = array(
  * @author M.M.S.
  */
 $messages['sv'] = array(
-	'emailpage'           => 'E-posta sida',
+	'emailarticle'        => 'E-posta sida',
 	'ea-desc'             => 'Skicka en renderad HTML-sida till en e-postadress eller en lista över adresser som använder [http://phpmailer.sourceforge.net phpmailer].',
 	'ea-heading'          => '=== E-posta sidan [[$1]] ===',
 	'ea-fromgroup'        => 'Från grupp:',
-	'ea-pagesend'         => 'Artikeln "$1" skickades från $2',
-	'ea-nopage'           => 'Var god ange en sida att skicka, för exempel [[Special:EmailPage/Main Page]].',
+	'ea-articlesend'      => 'Artikeln "$1" skickades från $2',
+	'ea-noarticle'        => 'Var god ange en sida att skicka, för exempel [[Special:EmailArticle/Main Page]].',
 	'ea-norecipients'     => 'Inga giltiga e-postadresser hittades!',
 	'ea-listrecipients'   => '=== Lista över $1 {{PLURAL:$1|mottagare|mottagare}} ===',
 	'ea-error'            => "'''Fel under sändande av [[$1]]:''' ''$2''",
@@ -390,10 +378,10 @@ $messages['te'] = array(
  * @author Vinhtantran
  */
 $messages['vi'] = array(
-	'emailpage'           => 'Trang thư điện tử',
+	'emailarticle'        => 'Trang thư điện tử',
 	'ea-desc'             => 'Gửi trang HTML giản lược đến một địa chỉ hoặc danh sách các địa chỉ thư điện tử dùng [http://phpmailer.sourceforge.net phpmailer].',
 	'ea-heading'          => '=== Gửi trang [[$1]] ===',
-	'ea-nopage'           => 'Xin hãy xác định trang muốn gửi, ví dụ [[Special:EmailPage/Trang_Chính]].',
+	'ea-noarticle'        => 'Xin hãy xác định trang muốn gửi, ví dụ [[Special:EmailArticle/Trang_Chính]].',
 	'ea-norecipients'     => 'Không tìm thấy địa chỉ thư điện tử hợp lệ!',
 	'ea-listrecipients'   => '=== Danh sách $1 {{PLURAL:$1|người nhận|người nhận}} ===',
 	'ea-error'            => "'''Lỗi khi gửi [[$1]]:''' ''$2''",
