@@ -73,3 +73,8 @@ $aliases['sv'] = array(
 	'EditUser' => array( 'Redigera användare' ),
 );
 
+/** Thai (ไทย) */
+$aliases['th'] = array(
+	'EditUser' => array( 'แก้ไขผู้ใช้' ),
+);
+
