@@ -1,8 +1,8 @@
 <?php
 /**
- * EmailArticle extension - Send rendered HTML article to an email address or list of addresses using phpmailer
+ * EmailPage extension - Send rendered HTML page to an email address or list of addresses using phpmailer
  *
- * See http://www.mediawiki.org/wiki/Extension:EmailArticle for installation and usage details
+ * See http://www.mediawiki.org/wiki/Extension:EmailPage for installation and usage details
  *
  * @package MediaWiki
  * @subpackage Extensions
@@ -13,61 +13,60 @@
 
 if (!defined('MEDIAWIKI')) die('Not an entry point.');
 
-define('EMAILARTICLE_VERSION', '1.1.0, 2008-06-04');
+define('EMAILPAGE_VERSION', '1.2.0, 2008-07-13');
 
-$wgEmailArticleGroup           = 'sysop';            # Users must belong to this group to send emails (empty string means anyone can send)
-$wgEmailArticleContactsCat     = '';                 # This specifies the name of a category containing categories of contact articles
-$wgEmailArticleCss             = 'EmailArticle.css'; # A minimal CSS article to embed in the email (eg. monobook/main.css without portlets, actions etc)
-$wgEmailArticleAllowRemoteAddr = array($_SERVER['SERVER_ADDR'],'127.0.0.1'); # Allow anonymous sending from these addresses
-$wgEmailArticleAllowAllUsers   = false;              # Whether to allow sending to all users (the "user" group)
-$wgEmailArticleToolboxLink     = 'Send to email';    # Link title for toolbox link (set to "" to not have any link in toolbox)
-$wgEmailArticleActionLink      = 'email';            # Link title for action link (set to "" to not have any action link)
+$wgEmailPageGroup           = 'sysop';            # Users must belong to this group to send emails (empty string means anyone can send)
+$wgEmailPageContactsCat     = '';                 # This specifies the name of a category containing categories of contact pages
+$wgEmailPageCss             = 'EmailPage.css';    # A minimal CSS page to embed in the email (eg. monobook/main.css without portlets, actions etc)
+$wgEmailPageAllowRemoteAddr = array($_SERVER['SERVER_ADDR'],'127.0.0.1'); # Allow anonymous sending from these addresses
+$wgEmailPageAllowAllUsers   = false;              # Whether to allow sending to all users (the "user" group)
+$wgEmailPageToolboxLink     = 'Send to email';    # Link title for toolbox link (set to "" to not have any link in toolbox)
+$wgEmailPageActionLink      = 'email';            # Link title for action link (set to "" to not have any action link)
 $wgPhpMailerClass              = dirname(__FILE__).'/phpMailer_v2.1.0beta2/class.phpmailer.php'; # From http://phpmailer.sourceforge.net/
 
-if ($wgEmailArticleGroup) $wgGroupPermissions['sysop'][$wgEmailArticleGroup] = true;
+if ($wgEmailPageGroup) $wgGroupPermissions['sysop'][$wgEmailPageGroup] = true;
 
 $dir = dirname(__FILE__) . '/';
-$wgAutoloadClasses['SpecialEmailArticle'] = $dir . 'EmailArticle_body.php';
-$wgExtensionMessagesFiles['EmailArticle'] = $dir . 'EmailArticle.i18n.php';
-$wgExtensionAliasesFiles['EmailArticle'] = $dir . 'EmailArticle.alias.php';
-$wgSpecialPages['EmailArticle'] = 'SpecialEmailArticle';
+$wgAutoloadClasses['SpecialEmailPage'] = $dir . 'EmailPage_body.php';
+$wgExtensionMessagesFiles['EmailPage'] = $dir . 'EmailPage.i18n.php';
+$wgExtensionAliasesFiles['EmailPage'] = $dir . 'EmailPage.alias.php';
+$wgSpecialPages['EmailPages'] = 'SpecialEmailPage';
 
 $wgExtensionCredits['specialpage'][] = array(
-	'name'           => 'Special:EmailArticle',
+	'name'           => 'Special:EmailPages',
 	'author'         => '[http://www.organicdesign.co.nz/nad User:Nad]',
-	'description'    => 'Send rendered HTML article to an email address or list of addresses using [http://phpmailer.sourceforge.net phpmailer].',
+	'description'    => 'Send rendered HTML page to an email address or list of addresses using [http://phpmailer.sourceforge.net phpmailer].',
 	'descriptionmsg' => 'ea-desc',
-	'url'            => 'http://www.mediawiki.org/wiki/Extension:EmailArticle',
-	'version'        => EMAILARTICLE_VERSION
+	'url'            => 'http://www.mediawiki.org/wiki/Extension:EmailPage',
+	'version'        => EMAILPAGE_VERSION
 );
 
 # If form has been posted, include the phpmailer class
 if (isset($_REQUEST['ea-send'])) require_once($wgPhpMailerClass);
 
 # Add toolbox and action links
-if ($wgEmailArticleToolboxLink) {
-	$wgHooks['MonoBookTemplateToolboxEnd'][] = 'wfEmailArticleToolboxLink';
+if ($wgEmailPageToolboxLink) {
+	$wgHooks['MonoBookTemplateToolboxEnd'][] = 'wfEmailPageToolboxLink';
 }
 
-if ($wgEmailArticleActionLink) {
-	$wgHooks['SkinTemplateTabs'][] = 'wfEmailArticleActionLink';
+if ($wgEmailPageActionLink) {
+	$wgHooks['SkinTemplateTabs'][] = 'wfEmailPageActionLink';
 }
 
-function wfEmailArticleToolboxLink() {
-	global $wgEmailArticleToolboxLink,$wgTitle;
+function wfEmailPageToolboxLink() {
+	global $wgEmailPageToolboxLink,$wgTitle;
 	if (is_object($wgTitle)) {
-		$url = Title::makeTitle(NS_SPECIAL,'EmailArticle')->getLocalURL('ea-title='.$wgTitle->getPrefixedText());
-		echo("<li><a href=\"$url\">$wgEmailArticleToolboxLink</li>");
+		$url = Title::makeTitle(NS_SPECIAL,'EmailPages')->getLocalURL('ea-title='.$wgTitle->getPrefixedText());
+		echo("<li><a href=\"$url\">$wgEmailPageToolboxLink</li>");
 		}
 	return true;
 }
 
-
-function wfEmailArticleActionLink(&$skin,&$actions) {
-	global $wgEmailArticleActionLink,$wgTitle;
+function wfEmailPageActionLink(&$skin,&$actions) {
+	global $wgEmailPageActionLink,$wgTitle;
 	if (is_object($wgTitle)) {
-		$url = Title::makeTitle(NS_SPECIAL,'EmailArticle')->getLocalURL('ea-title='.$wgTitle->getPrefixedText());
-		$actions['email'] = array('text' => $wgEmailArticleActionLink, 'class' => false, 'href' => $url);
+		$url = Title::makeTitle(NS_SPECIAL,'EmailPage')->getLocalURL('ea-title='.$wgTitle->getPrefixedText());
+		$actions['email'] = array('text' => $wgEmailPageActionLink, 'class' => false, 'href' => $url);
 	}
 	return true;
 }
