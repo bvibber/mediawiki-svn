@@ -1,7 +1,5 @@
 <?php
 
-die("redircite extension disabled -- contains HTML injection vulnerabilities.");
-
 /**
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -50,11 +48,15 @@ function redircite_render($input, $args, $parser) {
 	// which will be translated to the HTML stored in $redirciteMarkerList by
 	// redircite_afterTidy()
 	global $redirciteMarkerList;
+	# Verify that $input is a valid title
+	$inputTitle = Title::newFromText($input);
+	if(!$inputTitle)
+		return $input; 
 	$lparse = clone $parser;
 	$link1 = $lparse->parse("[[$input]]", $parser->mTitle, $parser->mOptions, false, false);
 	$link1text = $link1->getText();
 	$title1 = Title::newFromText($input);
-	if(!$title1) // Page doesn't exist
+	if(!$title1->exists()) // Page doesn't exist
 		// Just output a normal (red) link
 		return $link1text;
 	$articleObj = new Article($title1);
@@ -67,7 +69,12 @@ function redircite_render($input, $args, $parser) {
 	$link2text = $link2->getText();
 	
 	$marker = "xx-redircite-marker-" . count($redirciteMarkerList) . "-redircite-xx";
-	$redirciteMarkerList[] = "<span onmouseout='this.firstChild.innerHTML = \"$input\";' onmouseover='this.firstChild.innerHTML = \"{$title2->getPrefixedText()}\";'>$link2text</span>";
+	$onmouseout = 'this.firstChild.innerHTML = "'. Xml::escapeJsString($input) . '";';
+	$onmouseover = 'this.firstChild.innerHTML = "' . Xml::escapeJsString($title2->getPrefixedText()) . '";';
+	$redirciteMarkerList[] = Xml::tags('span', array(
+					'onmouseout' => $onmouseout,
+					'onmouseover' => $onmouseover),
+					$link2text);
 	return $marker;
 }
 
