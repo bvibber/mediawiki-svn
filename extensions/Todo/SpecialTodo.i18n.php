@@ -139,6 +139,7 @@ $messages['da'] = array(
  * @author Consta
  */
 $messages['el'] = array(
+	'todo-item-list'    => 'Τα αντικείμενα σας',
 	'todo-list-change'  => 'Αλλαγή',
 	'todo-list-cancel'  => 'Έξοδος',
 	'todo-new-item'     => 'Νέο αντικείμενο',

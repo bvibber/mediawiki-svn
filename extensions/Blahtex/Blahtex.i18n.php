@@ -75,6 +75,16 @@ Try enclosing the problem characters in "\\text{...}".',
 Try using the "$3{...}" command.',
 );
 
+/** Afrikaans (Afrikaans)
+ * @author Naudefj
+ */
+$messages['af'] = array(
+	'math_IllegalCharacter'    => 'Ongeldig karakter in die invoer',
+	'math_InvalidColour'       => 'Die kleur "$1" is ongeldig',
+	'math_TooManyTokens'       => 'Die invoer is te lank',
+	'math_UnrecognisedCommand' => 'Opdrag "$1" is ongeldig',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */

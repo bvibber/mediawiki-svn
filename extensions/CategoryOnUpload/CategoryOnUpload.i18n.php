@@ -88,6 +88,14 @@ $messages['gl'] = array(
 	'categoryonupload-label' => 'Categoría:',
 );
 
+/** Hungarian (Magyar)
+ * @author Dani
+ */
+$messages['hu'] = array(
+	'categoryonupload-desc'  => 'Kötelezővé teszi a szerkesztők számára, hogy kategóriát adjanak meg egy fájl feltöltésénél',
+	'categoryonupload-label' => 'Kategória:',
+);
+
 /** Indonesian (Bahasa Indonesia)
  * @author Rex
  */

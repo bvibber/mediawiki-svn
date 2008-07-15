@@ -34,6 +34,7 @@ $messages['de'] = array(
  */
 $messages['dsb'] = array(
 	'signaturelogpage'     => 'Protokol pódpisow',
+	'signature-desc'       => 'Zmóžnja [[Special:SignDocument|pódpisanje]] dokumentow',
 	'signaturelogpagetext' => 'Toś to jo protokol pódpisow za dokumenty, kótarež buchu pśez [[Special:SignDocument]] pśidane.',
 	'signaturelogentry'    => 'jo dokument $1 pódpisał.',
 );

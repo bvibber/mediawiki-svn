@@ -451,6 +451,7 @@ $messages['km'] = array(
 	'vote-view-results'   => 'បង្ហាញ​លទ្ឋផល',
 	'vote-results'        => 'លទ្ឋផលនៃការបោះឆ្នោត',
 	'vote-results-choice' => 'ជំរើស',
+	'vote-results-count'  => 'រាប់',
 	'vote-login'          => 'អ្នកត្រូវតែ$1ដើម្បីបោះឆ្នោត។',
 	'vote-login-link'     => 'ឡុកអ៊ីន',
 	'vote-invalid-choice' => 'អ្នកត្រូវតែជ្រើសយកជំរើសមួយក្នុងចំនោមជំរើសទាំងឡាយដែលបានផ្ដល់អោយ។',

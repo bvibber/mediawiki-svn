@@ -174,6 +174,13 @@ $messages['bg'] = array(
 	'right-edit-new'               => 'редактиране на страници',
 );
 
+/** Greek (Ελληνικά)
+ * @author Consta
+ */
+$messages['el'] = array(
+	'grouppermissions-comment' => 'Σχόλιο:',
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */
@@ -533,19 +540,31 @@ $messages['no'] = array(
  * @author Cedric31
  */
 $messages['oc'] = array(
-	'grouppermissions'             => 'Gerir las permissions dels gropes',
-	'sortpermissions'              => 'Classar las permissions',
-	'removeunusedgroups'           => 'Levar los gropes inutilizats',
-	'grouppermissions-desc'        => 'Gerís las permissions dels gropes al travèrs d’una [[Special:GroupPermissions|pagina especiala]]',
-	'grouppermissions-desc2'       => 'Sistèma espandit de las permissions',
-	'grouppermissions-header'      => 'Podètz utilizar aquesta pagina per modificar las permissions soslinhadas dels diferents gropes d’utilizaires',
-	'grouppermissions-search'      => 'Grop :',
-	'grouppermissions-dologin'     => 'Connexion',
-	'grouppermissions-dosearch'    => 'Aviar',
-	'grouppermissions-searchlabel' => 'Recèrca d’un grop',
-	'grouppermissions-deletelabel' => 'Suprimir lo grop',
-	'grouppermissions-delete'      => 'Suprimir lo grop',
-	'grouppermissions-comment'     => 'Comentari :',
+	'grouppermissions'               => 'Gerir las permissions dels gropes',
+	'sortpermissions'                => 'Classar las permissions',
+	'removeunusedgroups'             => 'Levar los gropes inutilizats',
+	'grouppermissions-desc'          => 'Gerís las permissions dels gropes al travèrs d’una [[Special:GroupPermissions|pagina especiala]]',
+	'grouppermissions-desc2'         => 'Sistèma espandit de las permissions',
+	'grouppermissions-header'        => 'Podètz utilizar aquesta pagina per modificar las permissions soslinhadas dels diferents gropes d’utilizaires',
+	'grouppermissions-search'        => 'Grop :',
+	'grouppermissions-dologin'       => 'Connexion',
+	'grouppermissions-dosearch'      => 'Aviar',
+	'grouppermissions-searchlabel'   => 'Recèrca d’un grop',
+	'grouppermissions-deletelabel'   => 'Suprimir lo grop',
+	'grouppermissions-error'         => 'Una error indeterminada es intervenguda, clicatz sul boton de retorn a la pagina precedenta de vòstre navigador puèi ensajatz tornamai',
+	'grouppermissions-change'        => 'Modificar las permissions del grop',
+	'grouppermissions-add'           => 'Apondre un grop',
+	'grouppermissions-delete'        => 'Suprimir lo grop',
+	'grouppermissions-comment'       => 'Comentari :',
+	'grouppermissions-addsuccess'    => '$1 es estat apondut amb succès',
+	'grouppermissions-deletesuccess' => '$1 es estat suprimit amb succès',
+	'grouppermissions-changesuccess' => 'Las permissions per $1 son estadas modificadas amb succès',
+	'grouppermissions-true'          => 'Verai',
+	'grouppermissions-false'         => 'Fals',
+	'grouppermissions-never'         => 'Pas jamai',
+	'grouppermissions-nooldrev'      => "Una error es intervenguda al moment de la temptativa d’archivatge del fichièr de configuracion. Cap d'archiu serà pas creat.",
+	'grouppermissions-sort-read'     => 'Lectura',
+	'grouppermissions-sort-edit'     => 'Edicion',
 );
 
 /** Polish (Polski)

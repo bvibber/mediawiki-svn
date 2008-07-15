@@ -361,6 +361,8 @@ $messages['km'] = array(
 	'edituser'          => 'កែប្រែអ្នកប្រើប្រាស់',
 	'edituser-username' => 'ឈ្មោះ',
 	'edituser-dosearch' => 'ស្វែងរក',
+	'edituser-nouser'   => 'មិនមានអ្នកប្រើប្រាស់ដូចដែលបានបញ្ជាក់ទេ',
+	'edituser-exempt'   => 'អ្នកប្រើប្រាស់ដែលបានបញ្ជាក់មិនអាចកែបានទេ',
 );
 
 /** Korean (한국어)

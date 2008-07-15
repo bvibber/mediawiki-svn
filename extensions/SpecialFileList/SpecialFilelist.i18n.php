@@ -124,7 +124,7 @@ $messages['de'] = array(
  */
 $messages['dsb'] = array(
 	'filelist'              => 'Lisćina datajow',
-	'filelist-desc'         => 'Specialny bok za nalistowanje nagratych datajow',
+	'filelist-desc'         => '[[Special:Filelist|Specialny bok]] za nalistowanje nagratych datajow',
 	'filelist-show-list'    => 'Lisćinu pokazaś',
 	'filelist-show-gallery' => 'Galeriju pokazaś',
 	'filelist-image-desc'   => 'Zespominanje',
@@ -132,10 +132,11 @@ $messages['dsb'] = array(
 
 /** Esperanto (Esperanto)
  * @author Yekrats
+ * @author Siebrand
  */
 $messages['eo'] = array(
 	'filelist'              => 'Listo de Dosieroj',
-	'filelist-desc'         => 'Speciala paĝo por listigi alŝutitajn dosierojn',
+	'filelist-desc'         => '[[Special:Filelist|Speciala paĝo]] por listigi alŝutitajn dosierojn',
 	'filelist-show-list'    => 'Montru liston',
 	'filelist-show-gallery' => 'Montru galerion',
 );
@@ -187,7 +188,7 @@ $messages['gan'] = array(
  */
 $messages['gl'] = array(
 	'filelist'              => 'Listaxe de arquivos',
-	'filelist-desc'         => 'Páxina especial para listar ficheiros cargados',
+	'filelist-desc'         => '[[Special:Filelist|Páxina especial]] para listar ficheiros cargados',
 	'filelist-show-list'    => 'Amosar a listaxe',
 	'filelist-show-gallery' => 'Amosar galería',
 	'filelist-image-desc'   => 'desc',
@@ -210,10 +211,11 @@ $messages['hi'] = array(
 /** Upper Sorbian (Hornjoserbsce)
  * @author Dundak
  * @author Michawiki
+ * @author Siebrand
  */
 $messages['hsb'] = array(
 	'filelist'              => 'Lisćina datajow',
-	'filelist-desc'         => 'Specialna strona za nalistowanje nahratych datajow',
+	'filelist-desc'         => '[[Special:Filelist|Specialna strona]] za nalistowanje nahratych datajow',
 	'filelist-show-list'    => 'Lisćinu pokazać',
 	'filelist-show-gallery' => 'Galeriju pokazać',
 );
@@ -227,9 +229,14 @@ $messages['hy'] = array(
 
 /** Italian (Italiano)
  * @author Siebrand
+ * @author Darth Kule
  */
 $messages['it'] = array(
-	'filelist-image-desc' => 'disc',
+	'filelist'              => 'Elenco dei file',
+	'filelist-desc'         => '[[Special:Filelist|Pagina speciale]] per elencare i file caricati',
+	'filelist-show-list'    => 'Mostra elenco',
+	'filelist-show-gallery' => 'Mostra galleria',
+	'filelist-image-desc'   => 'disc',
 );
 
 /** Javanese (Basa Jawa)
@@ -298,7 +305,7 @@ $messages['la'] = array(
  */
 $messages['lb'] = array(
 	'filelist'              => 'Lëscht vun de Fichieren',
-	'filelist-desc'         => 'Spezialsäit vun de Fichieren déi eropgeluede goufen.',
+	'filelist-desc'         => '[[Special:Filelist|Spezialsäit]] vun de Fichieren déi eropgeluede goufen.',
 	'filelist-show-list'    => 'Lëscht weisen',
 	'filelist-show-gallery' => 'Gallerie weisen',
 	'filelist-image-desc'   => 'Beschreiwung',
@@ -380,7 +387,7 @@ $messages['nl'] = array(
  */
 $messages['no'] = array(
 	'filelist'              => 'Filliste',
-	'filelist-desc'         => 'Spesialside som viser en liste over opplastede filer',
+	'filelist-desc'         => '[[Special:Filelist|Spesialside]] som viser en liste over opplastede filer',
 	'filelist-show-list'    => 'Vis liste',
 	'filelist-show-gallery' => 'Vis gallery',
 	'filelist-image-desc'   => 'beskrivelse',
@@ -388,10 +395,11 @@ $messages['no'] = array(
 
 /** Occitan (Occitan)
  * @author Cedric31
+ * @author Siebrand
  */
 $messages['oc'] = array(
 	'filelist'              => 'Lista dels fichièrs',
-	'filelist-desc'         => 'Pagina especiala per enumerar los fichièrs telecargats.',
+	'filelist-desc'         => '[[Special:Filelist|Pagina especiala]] per enumerar los fichièrs telecargats.',
 	'filelist-show-list'    => 'Veire la lista',
 	'filelist-show-gallery' => 'Veire la galariá',
 	'filelist-image-desc'   => 'desc',
@@ -400,10 +408,11 @@ $messages['oc'] = array(
 /** Polish (Polski)
  * @author Maire
  * @author Sp5uhe
+ * @author Siebrand
  */
 $messages['pl'] = array(
 	'filelist'              => 'Lista plików',
-	'filelist-desc'         => 'Strona specjalna z listą przesłanych plików',
+	'filelist-desc'         => '[[Special:Filelist|Strona specjalna]] z listą przesłanych plików',
 	'filelist-show-list'    => 'Pokaż listę',
 	'filelist-show-gallery' => 'Pokaż galerię',
 	'filelist-image-desc'   => 'opis',
@@ -425,7 +434,7 @@ $messages['ps'] = array(
  */
 $messages['pt'] = array(
 	'filelist'              => 'Lista de arquivos',
-	'filelist-desc'         => 'Página Especial para listar arquivos carregados',
+	'filelist-desc'         => '[[Special:Filelist|Página Especial]] para listar arquivos carregados',
 	'filelist-show-list'    => 'Mostrar lista',
 	'filelist-show-gallery' => 'Mostrar galeria',
 	'filelist-image-desc'   => 'desc',
@@ -486,7 +495,7 @@ $messages['se'] = array(
  */
 $messages['sk'] = array(
 	'filelist'              => 'Zoznam súborov',
-	'filelist-desc'         => 'Špeciálna stránka zobrazujúca nahrané súbory',
+	'filelist-desc'         => '[[Special:Filelist|Špeciálna stránka]] zobrazujúca nahrané súbory',
 	'filelist-show-list'    => 'Zobraziť zoznam',
 	'filelist-show-gallery' => 'Zobraziť galériu',
 	'filelist-image-desc'   => 'popis',
@@ -529,10 +538,11 @@ $messages['su'] = array(
 /** Swedish (Svenska)
  * @author M.M.S.
  * @author Lejonel
+ * @author Siebrand
  */
 $messages['sv'] = array(
 	'filelist'              => 'Fillista',
-	'filelist-desc'         => 'Specialsida som visar en lista över uppladdade filer',
+	'filelist-desc'         => '[[Special:Filelist|Specialsida]] som visar en lista över uppladdade filer',
 	'filelist-show-list'    => 'Visa lista',
 	'filelist-show-gallery' => 'Visa galleri',
 	'filelist-image-desc'   => 'beskrivning',

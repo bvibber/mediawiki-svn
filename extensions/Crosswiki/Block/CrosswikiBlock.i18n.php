@@ -255,6 +255,51 @@ Zurück zu:
 	'crosswikiunblock-local'        => 'Lokale Sperren werden über dieses Interfache nicht unterstützt. Bitte benutze [[{{#special:Ipblocklist}}]].',
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'crosswikiblock-desc'           => 'Dowólujo wužywarjow w drugich wikijach z pomocu [[Special:Crosswikiblock|specialnego boka]] blokěrowaś',
+	'crosswikiblock'                => 'Wužywarja na drugem wikiju blokěrowaś',
+	'crosswikiblock-header'         => 'Toś ten bok dowólujo wužywarja na drugem wikiju blokěrowaś.
+Kontrolěruj pšosym, lěc smějoš na toś tom wikiju aktiwny byś a twóje akcije směrnicam wótpowěduju.',
+	'crosswikiblock-target'         => 'IP-adresa abo wužywarske mě a celowy wiki:',
+	'crosswikiblock-expiry'         => 'Pśepadnjenje:',
+	'crosswikiblock-reason'         => 'Pśicyna:',
+	'crosswikiblock-submit'         => 'Toś togo wužywarja blokěrowaś',
+	'crosswikiblock-anononly'       => 'Jano anonymnych wužywarjow blokěrowaś',
+	'crosswikiblock-nocreate'       => 'Napóranjeju kontow zajźowaś',
+	'crosswikiblock-autoblock'      => 'IP-adresu, kótaruž wužywaŕ jo ako slědnu wužył a wše slědujuce IP-adresy, z kótarychž wopytujo wobźěłaś, awtomatiski blokěrowaś',
+	'crosswikiblock-noemail'        => 'Wužiwarjeju pósłanje e-mailow zawóboraś',
+	'crosswikiunblock'              => 'Blokěrowanje wužywarja na drugem wikiju wótpóraś',
+	'crosswikiunblock-header'       => 'Toś ten bok dowólujo wótpóranje blokěrowanja wužywarja na drugem wikiju.
+Kontrolěruj pšosym, lěc smějoš na toś tom wikiju aktiwny byś a twóje akcije wšym směrnicam wótpowěduju.',
+	'crosswikiunblock-user'         => 'Wužywarske mě, IP-adresa abo ID blokěrowanja a celowy wiki:',
+	'crosswikiunblock-reason'       => 'Pśicyna:',
+	'crosswikiunblock-submit'       => 'Blokěrowanje za toś togo wužywarja wótpóraś',
+	'crosswikiunblock-success'      => "Blokěrowanje za wužywarja '''$1''' wuspěšnje wótpórane.
+
+Slědk k:
+* [[Special:CrosswikiBlock|Blokěrowański formular]]
+* [[$2]]",
+	'crosswikiblock-nousername'     => 'Žedne wužywarske mě zapódane',
+	'crosswikiblock-local'          => 'Lokalne blokěrowanja njepódpěraju se pśez toś ten interfejs. Wužyj [[Special:Blockip]]',
+	'crosswikiblock-dbnotfound'     => 'Datowa banka $1 njeeksistujo',
+	'crosswikiblock-noname'         => '"$1" njejo płaśiwe wužywarske mě.',
+	'crosswikiblock-nouser'         => 'Wužywaŕ "$3" njejo se namakał.',
+	'crosswikiblock-noexpiry'       => 'Njepłaśiwe pśepadnjenje: $1.',
+	'crosswikiblock-noreason'       => 'Žedna pśicyna pódana.',
+	'crosswikiblock-notoken'        => 'Njepłaśiwy wobźěłański token.',
+	'crosswikiblock-alreadyblocked' => 'Wužywaŕ $3 jo južo blokěrowany.',
+	'crosswikiblock-noblock'        => 'Toś ten wužywaŕ njejo blokěrowany.',
+	'crosswikiblock-success'        => "Wužywaŕ '''$3''' wuspěšnje blokěrowany.
+
+Slědk k:
+* [[Special:CrosswikiBlock|Blokěrowański formular]]
+* [[$4]]",
+	'crosswikiunblock-local'        => 'Wótpóranja lokalnych blokěrowanjow njepódpěraju se pśez toś ten interfejs. Wužyj [[Special:Ipblocklist]]',
+);
+
 /** Greek (Ελληνικά)
  * @author Consta
  */

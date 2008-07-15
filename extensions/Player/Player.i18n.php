@@ -336,9 +336,11 @@ $messages['jv'] = array(
 
 /** Khmer (ភាសាខ្មែរ)
  * @author Chhorran
+ * @author Lovekhmer
  */
 $messages['km'] = array(
 	'player-file'      => 'ឈ្មោះឯកសារ',
+	'player-not-found' => 'ឯកសារមិនត្រូវបានរកឃើញទេ',
 	'player-goto-page' => 'ទំព័រ',
 	'player-goto-file' => 'ឯកសារ',
 );

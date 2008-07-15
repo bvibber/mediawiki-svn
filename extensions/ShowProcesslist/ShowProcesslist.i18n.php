@@ -84,6 +84,22 @@ $messages['de'] = array(
 	'showprocesslist-info'    => 'Info',
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'showprocesslist'         => 'Procesowu lisćinu pokazaś',
+	'showprocesslist-desc'    => 'Wudaśe z [[Special:ShowProcesslist|DOPOŁNU LISĆINU PROCESOW POKAZAŚ]] zwobrazniś',
+	'showprocesslist-id'      => 'ID',
+	'showprocesslist-user'    => 'Wužywaŕ',
+	'showprocesslist-host'    => 'Serwer',
+	'showprocesslist-db'      => 'db',
+	'showprocesslist-command' => 'Pśikaz',
+	'showprocesslist-time'    => 'Cas',
+	'showprocesslist-state'   => 'Status',
+	'showprocesslist-info'    => 'Informacija',
+);
+
 /** Greek (Ελληνικά)
  * @author Consta
  */
@@ -178,8 +194,10 @@ $messages['hi'] = array(
 $messages['hsb'] = array(
 	'showprocesslist'         => 'Lisćinu procesow pokazać',
 	'showprocesslist-desc'    => 'Wudaće [[Special:showProcesslist|DOSPOŁNU LISĆINU PROCESOW POKAZAĆ]] zwobraznić',
+	'showprocesslist-id'      => 'ID',
 	'showprocesslist-user'    => 'Wužiwar',
 	'showprocesslist-host'    => 'Serwer',
+	'showprocesslist-db'      => 'db',
 	'showprocesslist-command' => 'Přikaz',
 	'showprocesslist-time'    => 'Čas',
 	'showprocesslist-state'   => 'Staw',

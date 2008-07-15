@@ -431,8 +431,9 @@ $messages['kk-latn'] = array(
  * @author Lovekhmer
  */
 $messages['km'] = array(
-	'crossnamespacelinks'     => 'តំនភ្ជាប់តាមរយៈលំហឈ្មោះ',
-	'crossnamespacelinkstext' => '$1:$2{{PLURAL:$2|តំនភ្ជាប់|តំនភ្ជាប់}}នៃ$3',
+	'crossnamespacelinks'      => 'តំនភ្ជាប់តាមរយៈលំហឈ្មោះ',
+	'crossnamespacelinks-desc' => '[[Special:CrossNamespaceLinks|បញ្ជីតំនភ្ជាប់តាមរយៈលំហឈ្មោះ]]ដែលមិនគួរមាននៅលើ{{SITENAME}}',
+	'crossnamespacelinkstext'  => '$1:$2{{PLURAL:$2|តំនភ្ជាប់|តំនភ្ជាប់}}នៃ$3',
 );
 
 /** Kannada (ಕನ್ನಡ)

@@ -138,6 +138,13 @@ $messages['gv'] = array(
 	'findspam-ok' => 'OK',
 );
 
+/** Hawaiian (Hawai`i)
+ * @author Kalani
+ */
+$messages['haw'] = array(
+	'findspam-ok' => 'Hiki nō',
+);
+
 /** Hindi (हिन्दी)
  * @author Kaustubh
  */

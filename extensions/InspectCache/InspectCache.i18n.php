@@ -183,6 +183,13 @@ $messages['hak'] = array(
 	'inspectcache-delete' => 'Chhù-thet',
 );
 
+/** Hawaiian (Hawai`i)
+ * @author Kalani
+ */
+$messages['haw'] = array(
+	'inspectcache-ok' => 'Hiki nō',
+);
+
 /** Hindi (हिन्दी)
  * @author Kaustubh
  */

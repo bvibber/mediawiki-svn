@@ -16,6 +16,15 @@ $messages['en'] = array(
 	'whatismyip-out' => 'Your IP:',
 );
 
+/** Afrikaans (Afrikaans)
+ * @author Naudefj
+ */
+$messages['af'] = array(
+	'whatismyip'      => 'Wat is my IP-adres',
+	'whatismyip-desc' => 'Wys huidige gebruiker se IP-adres op [[Special:WhatIsMyIP]]',
+	'whatismyip-out'  => 'Jou IP-adres',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  * @author Alnokta
@@ -42,6 +51,15 @@ $messages['cs'] = array(
 	'whatismyip'      => 'Jaká je moje IP',
 	'whatismyip-desc' => 'Zobrazí IP adresu aktuálního uživatele na [[Special:WhatIsMyIP|speciální stránce]]',
 	'whatismyip-out'  => 'Vaše IP:',
+);
+
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'whatismyip'      => 'Což jo mója IP-adresa',
+	'whatismyip-desc' => 'Pokazujo aktualnu IP-adresu wužywarja na [[Special:WhatIsMyIP]]',
+	'whatismyip-out'  => 'Twója IP:',
 );
 
 /** Finnish (Suomi)
@@ -78,6 +96,15 @@ $messages['he'] = array(
 	'whatismyip'      => 'כתובת ה־IP שלי',
 	'whatismyip-desc' => 'הצגת כתובת ה־IP הנוכחית של המשתמש בדף [[Special:WhatIsMyIP]]',
 	'whatismyip-out'  => 'כתובת ה־IP שלך:',
+);
+
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
+$messages['hsb'] = array(
+	'whatismyip'      => 'Štož je moja IP',
+	'whatismyip-desc' => 'Pokazuje aktualnu IP-adresu wužiwarja na [[Special:WhatIsMyIP]]',
+	'whatismyip-out'  => 'Twoja IP:',
 );
 
 /** Italian (Italiano)

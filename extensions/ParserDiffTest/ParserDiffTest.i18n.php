@@ -116,6 +116,13 @@ $messages['bcc'] = array(
 	'pdt_comparing_page'  => 'مقایسه خروجی j[cdi ;k,; چه  [[$1]]',
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author Cesco
+ */
+$messages['be-tarask'] = array(
+	'parserdifftest' => 'Праверка зьменаў сынтаксычнага аналізатару',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  */
@@ -366,6 +373,13 @@ $messages['gl'] = array(
  */
 $messages['gv'] = array(
 	'pdtest_ok' => 'OK',
+);
+
+/** Hawaiian (Hawai`i)
+ * @author Kalani
+ */
+$messages['haw'] = array(
+	'pdtest_ok' => 'Hiki nō',
 );
 
 /** Hebrew (עברית)

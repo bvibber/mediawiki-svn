@@ -14,6 +14,8 @@ $fallback=array(
 	'bcc' => 'en',
 	'bg'  => 'en',
 	'br'  => 'en',
+	'de'  => 'en',
+	'el'  => 'en',
 	'eo'  => 'en',
 	'fi'  => 'en',
 	'fr'  => 'en',
@@ -394,7 +396,7 @@ $messages['br'] = array(
 	'voctrain_Number_of_questions'                                                                  => "Niver a c'houlennoù",
 	'voctrain_Languages'                                                                            => 'Yezhoù',
 	'voctrain_Please_specify_the_languages_you_want_to_test_in'                                     => "Merkit ar yezhoù a fell deoc'h embreger ganto",
-	'voctrain_eg_eng_for_English_deu_for_Deutch_German_'                                            => '(da sk., eng evit ar saozneg, deu evit an alamaneg).',
+	'voctrain_eg_eng_for_English_deu_for_Deutch_German_'                                            => '(da sk., bre evit ar brezhoneg, fra evit ar galleg).',
 	'voctrain_Depending_on_your_test_set_some_combinations_might_work_better_than_others_'          => "Diouzh ar mod m'eo bet savet ho poelladenn e c'hallfe aozadennoù zo mont en-dro gwelloc'h eget re all.",
 	'voctrain_Questions'                                                                            => 'Goulennoù',
 	'voctrain_Answers'                                                                              => 'Respontoù',
@@ -405,10 +407,10 @@ $messages['br'] = array(
 	'voctrain_Definition'                                                                           => 'Termenadur',
 	'voctrain_Dictionary_definition_to_help_you'                                                    => 'Termenadur ar geriadur evit ho skoazellañ',
 	'voctrain_Word'                                                                                 => 'Ger',
-	'voctrain_Please_type_your_answer_here'                                                         => 'Merkit ho respont amañ',
+	'voctrain_Please_type_your_answer_here'                                                         => 'Merkit ho respont a-is',
 	'voctrain_submit_answer'                                                                        => 'kas ar respont',
-	'voctrain_peek'                                                                                 => 'rakwelet',
-	'voctrain_skip'                                                                                 => "mont pelloc'h",
+	'voctrain_peek'                                                                                 => 'taol sikour',
+	'voctrain_skip'                                                                                 => 'lammat',
 	'voctrain_I_know_it_do_not_ask_again'                                                           => 'Me a oar se ervat/Arabat goulenn en-dro',
 	'voctrain_abort_exercise'                                                                       => 'paouez gant ar boelladenn',
 	'voctrain_list_answers'                                                                         => 'rollañ ar respontoù',
@@ -419,7 +421,7 @@ $messages['br'] = array(
 	'voctrain_list_of_questions_and_answers'                                                        => 'Roll ar goulennoù hag o respontoù',
 	'voctrain_Answer_s_'                                                                            => 'Respont(où)',
 	'voctrain_logout'                                                                               => 'Dilugañ',
-	'voctrain_Powered_by'                                                                           => 'Produet gant',
+	'voctrain_Powered_by'                                                                           => 'Savet diwar',
 	'voctrain_Omegawiki'                                                                            => 'Omegawiki',
 	'voctrain_Exercise_complete'                                                                    => 'Poelladenn echu',
 	'voctrain_Exercise_terminated'                                                                  => 'Poelladenn echu',
@@ -444,6 +446,39 @@ $messages['br'] = array(
 	'voctrain_hide_definitions_in_question_language'                                                => 'Kuzhat an termenadurioù e yezh ar goulennoù',
 	'voctrain_hide_words_in_question_language'                                                      => 'Kuzhat ar gerioù e yezh ar goulenn',
 	'voctrain_Separate_values_by_commas_to_use_multiple_languages_'                                 => 'Dispartiañ ar yezhoù dre skejoù a-benn gellout implijout meur a yezh.',
+);
+
+/** German (Deutsch)
+ * @author SabineCretella
+ */
+$messages['de'] = array(
+	'voctrain_Hello_World'                          => 'HALLO WIKI!',
+	'voctrain_Permission_Denied'                    => 'Zugriff verweigert',
+	'voctrain_try_again_'                           => 'nochmal versuchen?',
+	'voctrain_Action_unknown'                       => 'Unbekannte Aktion',
+	'voctrain_I_don_t_know_what_to_do_with_action_' => "Ich weiss nicht, was ich mit '%action' anfangen soll.",
+	'voctrain_User_added'                           => 'Anwender hinzugefügt',
+);
+
+/** Greek (Ελληνικά)
+ * @author Consta
+ */
+$messages['el'] = array(
+	'voctrain_Number_of_questions'                       => 'Αριθμός ερωτήσεων',
+	'voctrain_Languages'                                 => 'Γλώσσες',
+	'voctrain_eg_eng_for_English_deu_for_Deutch_German_' => '(πχ, eng για Αγγλικά, deu για Γερμανικά).',
+	'voctrain_Questions'                                 => 'Ερωτήσεις',
+	'voctrain_Answers'                                   => 'Απαντήσεις',
+	'voctrain_Please_type_your_answer_here'              => 'Παρακαλώ πληκτρολογήστε την απάντησή σας εδώ',
+	'voctrain_Question'                                  => 'Ερώτηση',
+	'voctrain_Answer'                                    => 'Απάντηση',
+	'voctrain_one_of'                                    => 'ένα από',
+	'voctrain_Start_a_new_exercise'                      => 'Ξεκινήστε μια νέα άσκηση',
+	'voctrain_User_name'                                 => 'Όνομα χρήστη',
+	'voctrain_Password'                                  => 'Κωδικός',
+	'voctrain_Login'                                     => 'Σύνδεση',
+	'voctrain_Language'                                  => 'Γλώσσα',
+	'voctrain_Translation'                               => 'Μετάφραση',
 );
 
 /** Esperanto (Esperanto)

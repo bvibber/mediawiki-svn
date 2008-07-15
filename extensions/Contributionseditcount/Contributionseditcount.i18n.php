@@ -64,6 +64,14 @@ $messages['de'] = array(
 	'contributionseditcount' => 'Dieser Benutzer hat $1 Bearbeitungen.',
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'contributionseditcount'      => 'Toś ten wužywaŕ ma $1 {{PLURAL:$1|změnu|změnje|změny|změnow}}.',
+	'contributionseditcount-desc' => 'Zwobraznujo licak změnow na [[Special:Contributions]]',
+);
+
 /** Greek (Ελληνικά)
  * @author Consta
  */

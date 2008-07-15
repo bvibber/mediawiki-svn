@@ -206,6 +206,7 @@ $messages['el'] = array(
 	'youtubeauthsub_description'     => 'Περιγραφή',
 	'youtubeauthsub_keywords'        => 'Λέξεις κλειδιά',
 	'youtubeauthsub_category'        => 'Κατηγορία',
+	'youtubeauthsub_clickhere'       => 'Πατήστε εδώ για να συνδεθείτε στο YouTube',
 	'youtubeauthsub_jserror_notitle' => 'Παρακαλώ εισάγετε έναν τίτλο για το βίντεο.',
 );
 

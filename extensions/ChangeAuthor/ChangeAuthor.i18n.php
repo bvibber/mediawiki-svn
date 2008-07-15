@@ -611,6 +611,16 @@ $messages['is'] = array(
 	'changeauthor-nosuchtitle'      => 'Engin síða er nefnd „$1“.',
 );
 
+/** Italian (Italiano)
+ * @author Darth Kule
+ */
+$messages['it'] = array(
+	'changeauthor'            => 'Cambia autore revisione',
+	'changeauthor-desc'       => "Permette di modificare l'autore di una revisione",
+	'changeauthor-title'      => "Modifica l'autore di una revisione",
+	'changeauthor-search-box' => 'Ricerca revisioni',
+);
+
 /** Japanese (日本語)
  * @author JtFuruhata
  */

@@ -2048,12 +2048,14 @@ $messages['gv'] = array(
 
 /** Hawaiian (Hawai`i)
  * @author Singularity
+ * @author Kalani
  */
 $messages['haw'] = array(
 	'boardvote_time'    => 'Manawa',
 	'boardvote_user'    => 'Mea ho‘ohana',
 	'boardvote_edits'   => 'Nā ho‘opololei',
 	'boardvote_days'    => 'Nā lā',
+	'boardvote_submit'  => 'Hiki nō',
 	'boardvote_welcome' => "E komo mai, '''$1'''!",
 );
 
@@ -2672,6 +2674,7 @@ sem að þú styður.</p>',
  * @author BrokenArrow
  * @author Gianfranco
  * @author Siebrand
+ * @author Darth Kule
  */
 $messages['it'] = array(
 	'boardvote'                => 'Elezioni del Consiglio direttivo della Wikimedia Foundation',
@@ -2710,17 +2713,16 @@ Il voto espresso in forma cifrata è riportato di seguito. È inoltre visibile a
 
 [[Special:Boardvote/entry|Indietro]]",
 	'boardvote_invalidentered' => '<p><strong>Errore</strong>: la preferenza per il candidato deve essere espressa solo con un numero intero positivo (1, 2, 3, ....), oppure lascia vuoto.</p>',
-	'boardvote_nosession'      => "Non siamo in grado di determinare il tuo ID utente Wikimedia. Per favore, esegui il login nel progetto in cui hai i requisiti per votare, e vai alla pagina <nowiki>[[Speciale:Boardvote]]</nowiki>. Devi usare un account con almeno $1 contributi prima di $2 e con il primo contributo precedente a $3.
+	'boardvote_nosession'      => "Non siamo in grado di determinare il tuo ID utente Wikimedia. Per favore, esegui il login nel progetto in cui hai i requisiti per votare, e vai alla pagina <nowiki>[[Special:Boardvote]]</nowiki>. Devi usare un account con almeno $1 contributi prima di $2 e con almeno $3 contributi fra il $4 e il $5.
 
 È necessario impostare il proprio browser affinché accetti i cookie dal nostro server di voto esterno: '''wikimedia.spi-inc.org'''.",
-	'boardvote_notloggedin'    => "Accesso non effettuato. Per esprimere un voto è necessario disporre di un'utenza che abbia effettuato almeno $1 contributi prima del $2; la prima modifica registrata deve essere precedente al $3.",
-	'boardvote_notqualified'   => 'Non hai i requisiti necessari per votare in questa elezione. Devi necessariamente avere $3 contributi prima di $2, e il tuo primo contributo deve essere stato compiuto prima di $5.',
+	'boardvote_notloggedin'    => "Accesso non effettuato. Per esprimere un voto è necessario disporre di un'utenza che abbia effettuato almeno $1 contributi prima di $2 e con almeno $3 contributi fra il $4 e il $5.",
+	'boardvote_notqualified'   => 'Non hai i requisiti necessari per votare in questa elezione. Devi necessariamente avere almeno $1 contributi prima di $2 e almeno $3 contributi fra il $4 e il $5.',
 	'boardvote_novotes'        => 'Non ha ancora votato nessuno.',
 	'boardvote_time'           => 'Data e ora',
 	'boardvote_user'           => 'Utente',
 	'boardvote_edits'          => 'Modifiche',
 	'boardvote_days'           => 'Giorni',
-	'boardvote_ip'             => 'IP',
 	'boardvote_ua'             => 'User agent',
 	'boardvote_listintro'      => "<p>Di seguito viene riportato l'elenco dei voti registrati sinora. $1 per scaricare i dati in forma cifrata.</p>",
 	'boardvote_dumplink'       => 'Fare clic qui',

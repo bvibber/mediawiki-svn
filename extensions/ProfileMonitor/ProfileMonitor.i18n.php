@@ -114,6 +114,13 @@ $messages['gv'] = array(
 	'profiling-ok' => 'OK',
 );
 
+/** Hawaiian (Hawai`i)
+ * @author Kalani
+ */
+$messages['haw'] = array(
+	'profiling-ok' => 'Hiki nō',
+);
+
 /** Hindi (हिन्दी)
  * @author Kaustubh
  */

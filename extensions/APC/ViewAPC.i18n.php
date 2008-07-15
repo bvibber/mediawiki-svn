@@ -821,11 +821,13 @@ A nova versión $2 está dispoñible en http://pecl.php.net/package/APC/$2',
 
 /** Hawaiian (Hawai`i)
  * @author Singularity
+ * @author Kalani
  */
 $messages['haw'] = array(
 	'viewapc-display-info'   => 'Inoa',
 	'viewapc-ls-header-name' => 'Inoa',
 	'viewapc-ls-sort-name'   => 'Inoa',
+	'viewapc-ls-limit-none'  => 'Apau',
 );
 
 /** Hindi (हिन्दी)

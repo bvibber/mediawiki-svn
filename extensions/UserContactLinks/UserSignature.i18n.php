@@ -52,6 +52,14 @@ $messages['de'] = array(
 	'usercontactlink-baduser' => 'falscher Benutzername',
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'usercontactlink-baduser' => 'wopacne wužywarske mě',
+	'usercontactlink-desc'    => 'Dawa móžnosć jadnorje a konsistentnje druge wužywarske mjenja z pomocu syntakse ^^^wužywaŕ^^^ pśidaś',
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */
@@ -81,6 +89,7 @@ $messages['gl'] = array(
  */
 $messages['hsb'] = array(
 	'usercontactlink-baduser' => 'njekorektne wužiwarske mjeno',
+	'usercontactlink-desc'    => 'Skići móžnosć jednorje a konsistentnje druhe wužiwarske mjena z pomocu syntaksy ^^^wužiwar^^^ přidać',
 );
 
 /** Javanese (Basa Jawa)

@@ -49,9 +49,11 @@ $messages['bg'] = array(
 
 /** Breton (Brezhoneg)
  * @author SPQRobin
+ * @author Fulup
  */
 $messages['br'] = array(
-	'seealso' => 'Gwelet ivez',
+	'seealso'      => 'Gwelet ivez',
+	'seealso-desc' => "Talbenn 'Gwelet ivez' lec'helaet dre implijout ar valizenn <code><nowiki><seealso></nowiki></code>",
 );
 
 /** German (Deutsch)

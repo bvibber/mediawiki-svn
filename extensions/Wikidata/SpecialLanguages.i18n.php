@@ -724,20 +724,26 @@ $wdMessages['el'] = array(
 	'datasearch'                      => 'Βικιδεδομένα: Αναζήτηση δεδομένων',
 	'langman_title'                   => 'Διαχειριστής γλώσσας',
 	'languages'                       => 'Wikidata: Διαχειριστής γλώσσας',
+	'ow_uiprefs'                      => 'Βικιδεδομένα',
 	'ow_ClassAttributeLevel'          => 'Επίπεδο',
 	'ow_ClassAttributeType'           => 'Τύπος',
 	'ow_Collection'                   => 'Συλλογή',
 	'ow_Language'                     => 'Γλώσσα',
+	'ow_OptionAttribute'              => 'Ιδιότητα',
 	'ow_OptionAttributeOption'        => 'Επιλογή',
 	'ow_OptionAttributeOptions'       => 'Επιλογές',
 	'ow_Relations'                    => 'Σχέσεις',
 	'ow_Synonyms'                     => 'Συνώνυμα',
 	'ow_SynonymsAndTranslations'      => 'Συνώνυμα και μεταφράσεις',
 	'ow_Source'                       => 'Πηγή',
+	'ow_TextAttribute'                => 'Ιδιότητα',
 	'ow_Text'                         => 'Κείμενο',
+	'ow_TranslatedTextAttribute'      => 'Ιδιότητα',
 	'ow_TranslatedText'               => 'Μεταφρασμένο κείμενο',
 	'ow_TranslatedTextAttributeValue' => 'Κείμενο',
+	'ow_LinkAttribute'                => 'Ιδιότητα',
 	'ow_LinkAttributeValues'          => 'Σύνδεσμοι',
+	'ow_Property'                     => 'Ιδιότητα',
 );
 
 /** Esperanto (Esperanto)
@@ -1190,9 +1196,11 @@ $wdMessages['gv'] = array(
 
 /** Hawaiian (Hawai`i)
  * @author Singularity
+ * @author Kalani
  */
 $wdMessages['haw'] = array(
 	'ow_history' => 'Mo‘olelo',
+	'ow_dm_OK'   => 'Hiki nō',
 );
 
 /** Hebrew (עברית) */

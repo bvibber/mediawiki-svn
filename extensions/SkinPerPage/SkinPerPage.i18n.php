@@ -53,6 +53,13 @@ $messages['de'] = array(
 	'skinperpage-desc' => 'Ergänzt das <tt>&lt;skin&gt;</tt>-Tag, um pro Seite unterschiedliche Skins zu nutzen',
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'skinperpage-desc' => 'Pśidawa toflicku <tt>&lt;skin&gt;</tt> za wužywanje rozdźělnych skinow na bok',
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */
@@ -105,6 +112,13 @@ $messages['hi'] = array(
  */
 $messages['hr'] = array(
 	'skinperpage-desc' => 'Postavlja <tt>&lt;skin&gt;</tt> oznaku za korištenje različitih izgleda po stranici',
+);
+
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
+$messages['hsb'] = array(
+	'skinperpage-desc' => 'Přidawa tafličku <tt>&lt;skin&gt;</tt> za wužiwanje rozdźělnych šatow na stronu',
 );
 
 /** Hungarian (Magyar)

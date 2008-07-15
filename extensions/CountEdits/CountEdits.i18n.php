@@ -289,6 +289,13 @@ $messages['gv'] = array(
 	'countedits-ok'       => 'OK',
 );
 
+/** Hawaiian (Hawai`i)
+ * @author Kalani
+ */
+$messages['haw'] = array(
+	'countedits-ok' => 'Hiki nō',
+);
+
 /** Hindi (हिन्दी)
  * @author Kaustubh
  */

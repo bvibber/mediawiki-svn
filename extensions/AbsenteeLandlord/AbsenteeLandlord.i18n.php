@@ -29,6 +29,14 @@ $messages['arz'] = array(
 	'absenteelandlord-desc'   => 'قاعدة بيانات الويكي بتتقفل اوتوماتيكي لو كل الاداريين ما اشتغلو ش لفترة معينة',
 );
 
+/** Asturian (Asturianu)
+ * @author Esbardu
+ */
+$messages['ast'] = array(
+	'absenteelandlord-reason' => 'La base de datos foi bloquiada automáticamente por inactividá de los aliministradores.',
+	'absenteelandlord-desc'   => 'Autobloquea la base de datos wiki si los alministradores tán toos inactivos dalgún tiempu',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author Jim-by
  * @author Red Winged Duck

@@ -430,9 +430,11 @@ $allMessages['hak'] = array(
  * @author Kalani
  */
 $allMessages['haw'] = array(
-	'mywhitelistpages'     => 'Ka‘u mau ‘ao‘ao',
-	'whitelisttableedit'   => 'E ho‘opololei',
-	'whitelisttableremove' => 'Kāpae',
+	'mywhitelistpages'        => 'Ka‘u mau ‘ao‘ao',
+	'whitelisttablemodifyall' => 'Apau',
+	'whitelisttableedit'      => 'E ho‘opololei',
+	'whitelisttableremove'    => 'Kāpae',
+	'whitelistbadtitle'       => 'Inoa ‘ino -',
 );
 
 /** Hindi (हिन्दी)
@@ -548,6 +550,8 @@ $allMessages['km'] = array(
 	'whitelisttablechangedate' => 'ផ្លាស់ប្តូរកាលបរិច្ឆេទផុតកំណត់',
 	'whitelisttableremove'     => 'ដកចេញ',
 	'whitelistnewtabledate'    => 'កាលបរិច្ឆេទផុតកំណត់៖',
+	'whitelistbadtitle'        => 'ចំនងជើងមិនត្រឹមត្រូវ -',
+	'whitelistnever'           => 'មិនដែល',
 );
 
 /** Kinaray-a (Kinaray-a)

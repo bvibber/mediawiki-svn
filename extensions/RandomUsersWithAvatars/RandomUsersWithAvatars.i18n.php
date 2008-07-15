@@ -61,6 +61,14 @@ $messages['gl'] = array(
 	'random-users-avatars-desc'  => 'Engade a etiqueta <tt>&lt;randomuserswithavatars&gt;</tt> para amosar os avatares dos usuarios elixidos ao chou',
 );
 
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$messages['lb'] = array(
+	'random-users-avatars-title' => "D'Gemeinschaft treffen",
+	'random-users-avatars-desc'  => "Setzt den <tt>&lt;randomuserswithavatars&gt;</tt> Tag derbäi fir d'Avataren vun zoufälleg ausgesichte Benotzer ze weisen",
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

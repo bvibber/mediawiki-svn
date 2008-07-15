@@ -510,8 +510,10 @@ $messages['gv'] = array(
 
 /** Hawaiian (Hawai`i)
  * @author Singularity
+ * @author Kalani
  */
 $messages['haw'] = array(
+	'expand_templates_ok'      => 'Hiki nō',
 	'expand_templates_preview' => 'Nāmua',
 );
 

@@ -325,11 +325,13 @@ $messages['stq'] = array(
 /** Swedish (Svenska)
  * @author Lejonel
  * @author Boivie
+ * @author Siebrand
  */
 $messages['sv'] = array(
 	'whoiswatching'                => 'Användare som bevakar en sida',
 	'specialwhoiswatchingthepage'  => 'Vem bevakar %s',
-	'specialwhoiswatchingusage'    => 'Den här specialsidan kan inte användas utan parametrar. Använd [[MediaWiki:Number_of_watching_userspageview]] för att ange en ingång till denna specialsida.',
+	'specialwhoiswatchingusage'    => 'Den här specialsidan kan inte användas utan parametrar.
+Använd [[MediaWiki:Number_of_watching_users_pageview]] för att ange en ingång till denna specialsida.',
 	'specialwhoiswatchingaddusers' => 'Lägg till användare som bevakare av sidan',
 	'specialwhoiswatchingaddbtn'   => 'Lägg till valda',
 );

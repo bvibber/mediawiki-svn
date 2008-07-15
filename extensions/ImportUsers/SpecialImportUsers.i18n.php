@@ -288,6 +288,13 @@ $messages['hak'] = array(
 	'importusers-uploadfile' => 'Sông-chhòn tóng-on',
 );
 
+/** Hawaiian (Hawai`i)
+ * @author Kalani
+ */
+$messages['haw'] = array(
+	'importusers-log-summary-all' => 'Apau',
+);
+
 /** Hindi (हिन्दी)
  * @author Kaustubh
  */

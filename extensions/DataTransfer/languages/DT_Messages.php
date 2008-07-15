@@ -358,11 +358,12 @@ $messages['jv'] = array(
 
 /** Khmer (ភាសាខ្មែរ)
  * @author Chhorran
+ * @author Lovekhmer
  */
 $messages['km'] = array(
 	'viewxml'                     => 'មើល XML',
-	'dt_viewxml_docu'             => 'ជ្រើសយក ចំណោម ចំណាត់ក្រុម និង វាលឈ្មោះ ដើម្បីមើលជាទំរង់ XML ។',
-	'dt_viewxml_categories'       => 'ចំណាត់ក្រុម',
+	'dt_viewxml_docu'             => 'ជ្រើសយកក្នុងចំណោមចំនត់ថ្នាក់ក្រុមនិងលំហឈ្មោះដើម្បីមើលជាទំរង់ XML ។',
+	'dt_viewxml_categories'       => 'ចំនាត់ថ្នាក់ក្រុម',
 	'dt_viewxml_namespaces'       => 'វាលឈ្មោះ',
 	'dt_viewxml_simplifiedformat' => 'ទំរង់សាមញ្ញ',
 	'dt_xml_namespace'            => 'វាលឈ្មោះ',
