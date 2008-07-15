@@ -147,13 +147,26 @@ $messages['nl'] = array(
  * @author Cedric31
  */
 $messages['oc'] = array(
-	'errorhandler-desc'             => "Gestionari d'errors per MediaWiki",
-	'errorhandler-errors'           => 'Errors :',
-	'errorhandler-error-fatal'      => 'Error fatala',
-	'errorhandler-error-warning'    => 'Avertiment',
-	'errorhandler-error-parse'      => 'Error de parser',
-	'errorhandler-error-notice'     => 'Notícia',
-	'errorhandler-error-core-error' => 'Error del còr',
+	'errorhandler-desc'                  => "Gestionari d'errors per MediaWiki",
+	'errorhandler-errors'                => 'Errors :',
+	'errorhandler-error-fatal'           => 'Error fatala',
+	'errorhandler-error-warning'         => 'Avertiment',
+	'errorhandler-error-parse'           => 'Error de parser',
+	'errorhandler-error-notice'          => 'Notícia',
+	'errorhandler-error-core-error'      => 'Error del còr',
+	'errorhandler-error-core-warning'    => 'Avertiment del còr',
+	'errorhandler-error-compile-error'   => 'Error de compilacion',
+	'errorhandler-error-compile-warning' => 'Avertiment de compilacion',
+	'errorhandler-error-user-error'      => 'Error (utilizaire)',
+	'errorhandler-error-user-warning'    => 'Avertiment (utilizaire)',
+	'errorhandler-error-user-notice'     => 'Notícia (utilizaire)',
+	'errorhandler-error-strict'          => 'Estandards estricts',
+	'errorhandler-error-recoverable'     => 'Error fatala agantabla',
+	'errorhandler-msg-text'              => '$1 : $2 dins $3 (linha $4)',
+	'errorhandler-msg-html'              => '<b>$1</b> : <i>$2</i> dins <b>$3</b> (linha <b>$4</b>)',
+	'errorhandler-trace'                 => 'traça :',
+	'errorhandler-trace-line'            => '$1 (linha $2): $3',
+	'errorhandler-trace-line-internal'   => '[foncion intèrna] : $1',
 );
 
 /** Polish (Polski)

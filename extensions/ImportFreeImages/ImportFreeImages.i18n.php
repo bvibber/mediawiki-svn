@@ -249,7 +249,8 @@ $messages['hu'] = array(
  * @author McDutchie
  */
 $messages['ia'] = array(
-	'importfreeimages_next' => '$1 {{PLURAL:$1|sequente|sequentes}}',
+	'importfreeimages_owner' => 'Autor',
+	'importfreeimages_next'  => '$1 {{PLURAL:$1|sequente|sequentes}}',
 );
 
 /** Javanese (Basa Jawa)

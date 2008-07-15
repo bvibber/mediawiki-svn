@@ -49,6 +49,15 @@ $messages['ast'] = array(
 	'assert_edit_message' => "Falló l'afirmación especificada ($1).",
 );
 
+/** Southern Balochi (بلوچی مکرانی)
+ * @author Mostafadaneshvar
+ */
+$messages['bcc'] = array(
+	'assert_edit_title'   => 'اعلان پروشت',
+	'assert_edit_desc'    => 'هور کتن اعلانات اصلاح په استفاده په روباتان',
+	'assert_edit_message' => 'مشخص بوتگین اعلان ($1) پروش وارت',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  */

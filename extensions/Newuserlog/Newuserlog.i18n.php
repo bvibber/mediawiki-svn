@@ -129,6 +129,19 @@ $messages['avk'] = array(
 	'newuserlog-create-entry' => 'Warzaf favesik',
 );
 
+/** Southern Balochi (بلوچی مکرانی)
+ * @author Mostafadaneshvar
+ */
+$messages['bcc'] = array(
+	'newuserlogpage'              => 'ورود شرکتن کاربر',
+	'newuserlogpagetext'          => ' شی یک ورودی چه شرکتن کاربر',
+	'newuserlog-desc'             => 'هورکنت یک [[Special:Log/newusers|ورودان شرکتن حساب]] to [[Special:Log]]',
+	'newuserlog-byemail'          => 'کلمه رمز گون ایمیل دیم دهگ بوت',
+	'newuserlog-create-entry'     => 'نوکین کاربر',
+	'newuserlog-create2-entry'    => 'حساب شربوت په $1',
+	'newuserlog-autocreate-entry' => 'حساب اتوماتیکی شربوت',
+);
+
 /** Bikol Central (Bikol Central)
  * @author Filipinayzd
  */
@@ -183,12 +196,13 @@ $messages['bn'] = array(
  * @author SPQRobin
  */
 $messages['br'] = array(
-	'newuserlogpage'           => "Marilh ar c'hontoù krouet",
-	'newuserlogpagetext'       => "Marilh krouiñ ar c'hontoù implijer",
-	'newuserlog-desc'          => 'Ouzhpennañ a ra ur [[Special:Log/newusers|marilh krouiñ kontoù]] da [[Special:Log|roll an holl varilhoù]]',
-	'newuserlog-byemail'       => 'ger-tremen kaset dre bostel',
-	'newuserlog-create-entry'  => 'Implijer nevez',
-	'newuserlog-create2-entry' => 'kont krouet evit $1',
+	'newuserlogpage'              => "Marilh ar c'hontoù krouet",
+	'newuserlogpagetext'          => "Marilh krouiñ ar c'hontoù implijer",
+	'newuserlog-desc'             => 'Ouzhpennañ a ra ur [[Special:Log/newusers|marilh krouiñ kontoù]] da [[Special:Log|roll an holl varilhoù]]',
+	'newuserlog-byemail'          => 'ger-tremen kaset dre bostel',
+	'newuserlog-create-entry'     => 'Implijer nevez',
+	'newuserlog-create2-entry'    => 'kont krouet evit $1',
+	'newuserlog-autocreate-entry' => 'Kont krouet ent emgefre',
 );
 
 /** Catalan (Català)
@@ -703,7 +717,7 @@ $messages['kk-latn'] = array(
  * @author Chhorran
  */
 $messages['km'] = array(
-	'newuserlogpage'              => 'កំណត់ហេតុនៃការបង្កើតគណនី',
+	'newuserlogpage'              => 'កំនត់ហេតុនៃការបង្កើតគណនី',
 	'newuserlogpagetext'          => 'នេះជាកំនត់ហេតុនៃការបង្កើតអ្នកប្រើប្រាស់',
 	'newuserlog-desc'             => 'បន្ថែម[[Special:Log/newusers|កំនត់ហេតុនៃការបង្កើតគណនី]]ទៅ[[Special:Log|កំនត់ហេតុ]]',
 	'newuserlog-byemail'          => 'ពាក្យសំងាត់ត្រូវបានផ្ញើតាមអ៊ីមែល',

@@ -25,6 +25,13 @@ $messages['ar'] = array(
 	'oai-desc' => 'يوفر واجهة مستودع [http://www.openarchives.org/OAI/openarchivesprotocol.html OAI-PMH]',
 );
 
+/** Southern Balochi (بلوچی مکرانی)
+ * @author Mostafadaneshvar
+ */
+$messages['bcc'] = array(
+	'oai-desc' => 'پیش آریت دست رسی منبع په [http://www.openarchives.org/OAI/openarchivesprotocol.html OAI-PMH]',
+);
+
 /** Czech (Česky)
  * @author Matěj Grabovský
  */

@@ -32,6 +32,13 @@ $messages['ast'] = array(
 	'doublewiki-desc' => "Amuesa una páxina y la so traducción d'otra wiki en dos columnes na mesma páxina",
 );
 
+/** Southern Balochi (بلوچی مکرانی)
+ * @author Mostafadaneshvar
+ */
+$messages['bcc'] = array(
+	'doublewiki-desc' => 'پیشداریت یک صفحه ای و آیی ترجمه یا چه یک دگه ویکیء ته دو ستون یک صفحه ای',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  */

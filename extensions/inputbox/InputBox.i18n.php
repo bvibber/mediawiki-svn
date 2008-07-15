@@ -101,6 +101,19 @@ $messages['az'] = array(
 	'createarticle' => 'Məqalə yarat',
 );
 
+/** Southern Balochi (بلوچی مکرانی)
+ * @author Mostafadaneshvar
+ */
+$messages['bcc'] = array(
+	'inputbox-desc'           => 'اجازه داتن په هور بیگ فرم های HTML چه پیش تعریف بوتگین',
+	'inputbox-error-no-type'  => 'شما نوع جعبه ورودی په شرکتن مشخص نه کتت',
+	'inputbox-error-bad-type' => 'نوع جعبه ورودی "$1"  جاه آرگ نه بیت. 
+لطفا مشخص کنیت  "شرکتن", "نظر", "گردگ" یا "گردگ2".',
+	'tryexact'                => 'تطبیق کامل آزمایش کن',
+	'searchfulltext'          => 'متن کامل گرد',
+	'createarticle'           => 'شرکتن صفحه',
+);
+
 /** Belarusian (Беларуская) */
 $messages['be'] = array(
 	'createarticle' => 'Пачаць артыкул',
@@ -154,9 +167,13 @@ $messages['bn'] = array(
  * @author Fulup
  */
 $messages['br'] = array(
-	'tryexact'       => 'Klask ma klotfe rik',
-	'searchfulltext' => 'Klask an destenn a-bezh',
-	'createarticle'  => 'Krouiñ ar pennad',
+	'inputbox-desc'           => 'Aotren a ra degas furmskridoù HTML raktermenet.',
+	'inputbox-error-no-type'  => "N'eo ket bet spisaet ganeoc'h ar seurt boest enmont da vezañ krouet",
+	'inputbox-error-bad-type' => 'N\'eo ket anavaezet ar seurt boest enmont "$1".
+Spisait "create", "comment", "search" pe "search2".',
+	'tryexact'                => 'Klask ma klotfe rik',
+	'searchfulltext'          => 'Klask an destenn a-bezh',
+	'createarticle'           => 'Krouiñ ar pennad',
 );
 
 /** Catalan (Català)

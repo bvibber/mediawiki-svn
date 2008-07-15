@@ -84,6 +84,26 @@ $messages['de-formal'] = array(
 	'lookupuser_intro' => 'Geben Sie einen Benutzernamen ein, um die persönlichen Einstellungen eines Benutzers anzusehen.',
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'lookupuser'                   => 'Wužywarske informacije póglědaś',
+	'lookupuser-desc'              => '[[Special:LookupUser|Informacije wó wužywarju]] kaž e-mailowu adresu a ID wótwołaś',
+	'lookupuser_intro'             => 'Zapódaj wužywarske mě, aby se nastajenja togo wužywarja woglědał.',
+	'lookupuser_nonexistent'       => 'Zmólka: Wužywaŕ njeeksistujo.',
+	'lookupuser_authenticated'     => 'E-mailowa awtentifikacija: $1',
+	'lookupuser_not_authenticated' => 'njeawtentificěrowany',
+	'lookupuser_id'                => 'ID wužywarja: <tt>#$1</tt>',
+	'lookupuser_email'             => 'E-mail: [[Special:Emailuser/$2|$1]]',
+	'lookupuser_no_email'          => 'njepódany',
+	'lookupuser_realname'          => 'Napšawdne mě: $1',
+	'lookupuser_registration'      => 'Datum registrěrowanja: $1',
+	'lookupuser_no_registration'   => 'njenagrany',
+	'lookupuser_touched'           => 'Wužywarske daty slědny raz dotyknjone: $1',
+	'lookupuser_useroptions'       => 'Wužywarske nastajenja:',
+);
+
 /** Greek (Ελληνικά)
  * @author Consta
  */

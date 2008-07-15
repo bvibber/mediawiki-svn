@@ -25,6 +25,13 @@ $messages['ar'] = array(
 	'mwsearch-desc' => 'إضافة MWSearch',
 );
 
+/** Southern Balochi (بلوچی مکرانی)
+ * @author Mostafadaneshvar
+ */
+$messages['bcc'] = array(
+	'mwsearch-desc' => 'پلاگین گردگ م.و',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  */

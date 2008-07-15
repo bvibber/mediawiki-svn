@@ -83,6 +83,23 @@ $messages['ast'] = array(
 	'imagemap_description'        => 'Tocante a esta imaxe',
 );
 
+/** Southern Balochi (بلوچی مکرانی)
+ * @author Mostafadaneshvar
+ */
+$messages['bcc'] = array(
+	'imagemap_desc'               => 'اجازت دن استفاده چه برچسپ<tt><nowiki><imagemap></nowiki></tt>نقشه یان تصاویر کلیکی کاربر-جهت',
+	'imagemap_no_image'           => '&lt;imagemap&gt;: بایدن یک تصویری ته خط اول مشخص کنیت',
+	'imagemap_invalid_image'      => '&lt;imagemap&gt;: عکس نامعتبر یا موجود نهنت',
+	'imagemap_no_link'            => '&lt;imagemap&gt;: هچ معتبرین لینکی ته آهر خط$1پیداگ نه بوت',
+	'imagemap_invalid_title'      => '&lt;imagemap&gt;: نامعتبراین عنوان ته لینک ته خط $1',
+	'imagemap_missing_coord'      => '&lt;imagemap&gt;: کافی ان هماهنگی په شکل نیست ته خط $1',
+	'imagemap_unrecognised_shape' => '&lt;imagemap&gt;: ناشناسین شکل ته خط $1، هر خط بایدن گون یکی چه شان شروه بیت:پیشفرض،مربع, گردیم یا باز',
+	'imagemap_no_areas'           => '&lt;imagemap&gt;: حداقل بایدن یک ناحیه ای دهگ بیت',
+	'imagemap_invalid_coord'      => '&lt;imagemap&gt;: نامعتبراین هماهنگی ته خطا $1, بایدن یک شماره بیت',
+	'imagemap_invalid_desc'       => '&lt;imagemap&gt;: نامعتبراین مشخصه ای توضیح، بایدن یکی چه شان بیت: <tt>$1</tt>',
+	'imagemap_description'        => 'ای عکسء باره',
+);
+
 /** Bikol Central (Bikol Central)
  * @author Filipinayzd
  */
@@ -545,7 +562,8 @@ $messages['kk-latn'] = array(
  * @author Lovekhmer
  */
 $messages['km'] = array(
-	'imagemap_description' => 'អំពីរូបភាពនេះ',
+	'imagemap_invalid_title' => 'កំហុស:ចំនងជើងមិនត្រឹមត្រូវក្នុងតំនភ្ជាប់នៅបន្ទាត់ទី$1',
+	'imagemap_description'   => 'អំពីរូបភាពនេះ',
 );
 
 /** Latin (Latina)

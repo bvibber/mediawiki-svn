@@ -189,6 +189,46 @@ $messages['avk'] = array(
 	'ogg-desc-link' => 'Icde bat iyeltak',
 );
 
+/** Southern Balochi (بلوچی مکرانی)
+ * @author Mostafadaneshvar
+ */
+$messages['bcc'] = array(
+	'ogg-desc'                     => 'دسگیره په فایلان Ogg Theora و Vorbis, گون پخش کنوک جاوا اسکرسیپت',
+	'ogg-short-audio'              => 'فایل صوتی Ogg $1، $2',
+	'ogg-short-video'              => 'فایل تصویری Ogg $1، $2',
+	'ogg-short-general'            => 'فایل مدیا Ogg $1، $2',
+	'ogg-long-audio'               => '(اوجی جی  $1 فایل صوتی, طول $2, $3)',
+	'ogg-long-video'               => '(اوجی جی $1 فایل ویدیو, طول $2, $4×$5 پیکسل, $3)',
+	'ogg-long-multiplexed'         => '(اوجی جی چند دابی فایل صوت/تصویر, $1, طول $2, $4×$5 پیکسل, $3 کل)',
+	'ogg-long-general'             => '(اوجی جی فایل مدیا, طول $2, $3)',
+	'ogg-long-error'               => '(نامعتبرین فایل اوجی جی: $1)',
+	'ogg-play'                     => 'پخش',
+	'ogg-pause'                    => 'توقف',
+	'ogg-stop'                     => 'بند',
+	'ogg-play-video'               => 'پخش ویدیو',
+	'ogg-play-sound'               => 'پخش توار',
+	'ogg-no-player'                => 'شرمنده،شمی سیستم جاه کیت که هچ برنامه حمایتی پخش کنوک نیست.
+لطفا <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download"> یک پخش کنوکی ای گیزیت</a>.',
+	'ogg-no-xiphqt'                => 'چوش جاه کیت که شما را جز XiphQTپه کویک تایم نیست.
+کویک تایم بی ای جز نه تونیت فایلان اوجی جی بوانیت.
+لطف <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">ایرگیزیت XiphQT</a> یا دگه وانوکی انتخاب کنیت.',
+	'ogg-player-videoElement'      => '<video> جزء',
+	'ogg-player-oggPlugin'         => ' پلاگین اوجی جی',
+	'ogg-player-cortado'           => 'کارتادو(جاوا)',
+	'ogg-player-vlc-mozilla'       => 'وی ال سی',
+	'ogg-player-vlc-activex'       => 'VLC (ActiveX)وی ال سی',
+	'ogg-player-quicktime-mozilla' => 'کویک تایم',
+	'ogg-player-quicktime-activex' => 'QuickTime (ActiveX) کویک تایم',
+	'ogg-player-thumbnail'         => 'هنگت فقط عکس',
+	'ogg-player-soundthumb'        => 'هچ پخش کنوک',
+	'ogg-player-selected'          => '(انتخابی)',
+	'ogg-use-player'               => 'استفاده کن پخش کنوک',
+	'ogg-more'                     => 'گیشتر...',
+	'ogg-dismiss'                  => 'بندگ',
+	'ogg-download'                 => 'ایرگیزگ فایل',
+	'ogg-desc-link'                => 'ای فایل باره',
+);
+
 /** Bikol Central (Bikol Central)
  * @author Filipinayzd
  */

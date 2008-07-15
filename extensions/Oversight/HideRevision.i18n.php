@@ -206,6 +206,39 @@ $messages['avk'] = array(
 	'right-hiderevision' => 'Tolwira va betaks palseyen gan ristusik numu dimsulara',
 );
 
+/** Southern Balochi (بلوچی مکرانی)
+ * @author Mostafadaneshvar
+ */
+$messages['bcc'] = array(
+	'hiderevision'                => 'اصلاحات پنهاین دایمی',
+	'hiderevision-desc'           => 'په قانونی دلایل پناهین اصلاحات یکیء چه کلی کابران پناه کن،غیره',
+	'group-oversight'             => 'اشتباه کننده یان',
+	'group-oversight-member'      => 'اشتباه',
+	'grouppage-oversight'         => '{{ns:project}}:اشتباه',
+	'right-oversight'             => 'دیستن یک پیشگین اصلاح پناهین',
+	'right-hiderevision'          => 'بازبینی و بازسازی اصلاحات چه مدیران پناهین',
+	'hiderevision-prompt'         => 'عدد بازبینی به حذف:',
+	'hiderevision-continue'       => 'ادامه',
+	'hiderevision-reason'         => 'دلیل(خصوصی ذخیره بیت):',
+	'hiderevision-submit'         => 'دایم ای دیتا پناه کن',
+	'hiderevision-tab'            => 'بازبینی پناه کن',
+	'hiderevision-norevisions'    => 'هچ بازبینی په حذف مشخص نه بیتت.',
+	'hiderevision-noreason'       => 'شما بایدن دلیلی په ای حذف  بیان کنیت.',
+	'hiderevision-status'         => 'بازبینی $1: $2',
+	'hiderevision-success'        => 'گون موفقیت آرشیو و حذف بوت',
+	'hiderevision-error-missing'  => 'ته دیتابیس درگیزگ نه بیت.',
+	'hiderevision-error-current'  => 'نه تونیت آهری اصلاح یک صفحه ایء حذف کنت.
+ای تغییرات اول برگردینت.',
+	'hiderevision-error-delete'   => 'نه تونیت آرشیو کنت; آیا پیش تر حذف بوتت؟',
+	'hiderevision-archive-status' => 'بزور بازبینیء چه $1: $2',
+	'oversight-log-hiderev'       => 'یک اصلاحی چه $1 بزور',
+	'oversight'                   => 'اشتباه',
+	'oversight-view'              => 'جزییات',
+	'oversight-difference'        => '(تفاوت چه پیشگین نسخه منتگین)',
+	'oversight-prev'              => 'اهری پیشگین بازبینی',
+	'oversight-hidden'            => 'پناهین بازبینی',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  * @author Borislav

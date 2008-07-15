@@ -123,6 +123,27 @@ llamando a les funciones afechisques d'análisis sintáuticu de MediaWiki.",
 	'expand_templates_preview'         => 'Previsualizar',
 );
 
+/** Southern Balochi (بلوچی مکرانی)
+ * @author Mostafadaneshvar
+ */
+$messages['bcc'] = array(
+	'expandtemplates'                  => 'پچ کن تمپلیت آنء',
+	'expandtemplates-desc'             => '[[Special:ExpandTemplates|تمپلتان مزن کنت،متغییران و عملگران وانت]] په پیشدارگ متون ویکی مزنین و بازبینی شربوتگین صفحات',
+	'expand_templates_intro'           => 'ای صفحه حاص لهتی متنء گریت و کل تمپلتان ته آییء برگشتی مزنش کنت.
+آیی هنچوش عمگر تجزیه کنوکء مزن کنت په داب
+<nowiki>{{</nowiki>#if:…}}, و متغییرانی په داب
+<nowiki>{{</nowiki>CURRENTDAY}}&mdash; در حقیقت هر چیزی که ته دو براکتن.
+آیی ای کارء گون توار کنگ تجزیه کنوک مناسب چه مدیا وی کی وت انجام دنت.',
+	'expand_templates_title'           => 'عنوان متن په {{PAGENAME}} و دگه.:',
+	'expand_templates_input'           => 'ورودی متن',
+	'expand_templates_output'          => 'نتیجه',
+	'expand_templates_xml_output'      => 'خروجی XML',
+	'expand_templates_ok'              => 'هوبنت',
+	'expand_templates_remove_comments' => 'بزور نظرات',
+	'expand_templates_generate_xml'    => 'پیش دار درچک تجزیه XMLء',
+	'expand_templates_preview'         => 'بازبین',
+);
+
 /** Bikol Central (Bikol Central)
  * @author Filipinayzd
  */

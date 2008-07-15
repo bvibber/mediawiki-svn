@@ -473,6 +473,59 @@ $messages['avk'] = array(
 	'boardvote_welcome'    => "'''$1''' til drumbaf !",
 );
 
+/** Southern Balochi (بلوچی مکرانی)
+ * @author Mostafadaneshvar
+ */
+$messages['bcc'] = array(
+	'boardvote'                => 'انتخابات هییت امناء ویکی میدیا',
+	'boardvote-desc'           => '[[meta:Board elections/2008|انتخابات هییت امناء ویکی میدیا]]',
+	'boardvote_entry'          => '* [[Special:Boardvote/vote|رای]]
+* [[Special:Boardvote/list|لیست رایان دان تارح]]
+* [[Special:Boardvote/dump|ثبت انتخابات کدبوتن دامپی]]',
+	'boardvote_intro_change'   => '<p> شما پیشتر رای داتگت. بله شما بلکین عوض کنیت
+وتی رای گون ای جهلگی فرم. لطفا کاندیدا یانء هر دابی که شما وت لوٹیت ترتیبش کنیت چوش که هوردترین شماره
+مزنترین ترجیح په خاصین کاندیدایی پیش داریت. شاید شما یک دابین ترجیحی په گیش چه یک 
+کاندیدایی بدهیت یا یک کاندیدایی رای مه دهیت.</p>',
+	'boardvote_invalidentered' => '<p><strong>حطا</strong>:  ترجیحات کاندیدا بایدن گون شماره مثبت بیان بیت فقط(۱،٢،٣،...)یا
+ حالیک بلیت.</p>',
+	'boardvote_nosession'      => 'شمی شناسه کاربر ویکی میدیا پچاه آرگ نه بوت.
+لطفا وارد ویکیء بیت که شما په رای دهگ واجد شرایط بوتگیت و برو په <nowiki>[[Special:Boardvote]]</nowiki>.
+شما بایدن یک حسابی گون حداقل  $1 مشارکت پیش چه  $2، و حداقل  $3 مشارکت بین  $4 و  $5 داشته بیت.',
+	'boardvote_notloggedin'    => 'شما وارد نه بیتگیت.
+په رای دهگ شما باید یک حسابی گون حداقل $1  مشارکت پیش چه $2 داشته بیت، و حداقل $3 مشارکت بین $4 و $5 داشته بیت.',
+	'boardvote_notqualified'   => 'شما ته ای انتخابات واجد شرایط نهیت.
+شما بایدن حداقل $1  مشارکت پیش چه $2 داشته بیت، و  حداقل $3 مشارکت بین $4 و $5 داشته بیت.',
+	'boardvote_novotes'        => 'هنگت هچ کس رای نه داتت',
+	'boardvote_time'           => 'وهد',
+	'boardvote_user'           => 'کاربر',
+	'boardvote_edits'          => 'اصلاح',
+	'boardvote_days'           => 'روچان',
+	'boardvote_ip'             => 'آی پی',
+	'boardvote_ua'             => 'عامل کاربر',
+	'boardvote_listintro'      => '<p>شی یک لیستی چه کل رای آن که  ای تاریح جمع بوتگینت.
+$1 په دیتا کد بوتگین.</p>',
+	'boardvote_dumplink'       => 'ادان کلیک کن',
+	'boardvote_submit'         => 'هوبنت',
+	'boardvote_strike'         => 'ضربه',
+	'boardvote_unstrike'       => 'بی ضربه',
+	'boardvote_needadmin'      => 'فقط مدیران انتخابات توننت چوشین عملی انجام دهنت',
+	'boardvote_sitenotice'     => '<a href="{{localurle:Special:Boardvote/vote}}">انتخابات هییت مدیره ویکی مدیا</a>:
+رای گیری دان 22 جون هست',
+	'boardvote_notstarted'     => 'رای دهگ هنگت شروع نه بیتت.',
+	'boardvote_closed'         => 'رای دهگ الان بستت، بچار [http://meta.wikimedia.org/wiki/Board_elections/2008/Results the elections page for results] زوت.',
+	'boardvote_edits_many'     => 'باز',
+	'group-boardvote'          => 'مدیران رای هییت مدیره',
+	'group-boardvote-member'   => 'مدیر رای هییت مدیره',
+	'grouppage-boardvote'      => '{{ns:project}}: مدیر رای هییت مدیره',
+	'boardvote_blocked'        => 'شما ته وتی ویکی محدود بوتگیت.
+کاربران محدود مجاز په رای دهگ نهنت.',
+	'boardvote_bot'            => 'شما ته وتی حسابء په عنوان روبوت مشخص بوتگیت.
+حسابان روباتی نه توننت رای بدهنت',
+	'boardvote_welcome'        => "وش آتکیت  '''$1'''!",
+	'go_to_board_vote'         => 'انتخابات هییت مدیره ویکی مدیا 2008',
+	'right-boardvote'          => 'انتخابات مدیر',
+);
+
 /** Bikol Central (Bikol Central)
  * @author Filipinayzd
  */

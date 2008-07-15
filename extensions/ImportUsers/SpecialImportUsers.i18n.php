@@ -401,6 +401,7 @@ $messages['jv'] = array(
 $messages['km'] = array(
 	'importusers'                         => 'នាំចូលអ្នកប្រើប្រាស់',
 	'importusers-uploadfile'              => 'ផ្ទុកឯកសារឡើង',
+	'importusers-form-replace-present'    => 'ជំនួសអ្នកប្រើប្រាស់ដែលមាន',
 	'importusers-form-button'             => 'នាំចូល',
 	'importusers-user-added'              => 'បានបន្ថែមហើយ អ្នកប្រើប្រាស់ <b>%s</b> ។',
 	'importusers-user-present-update'     => 'អ្នកប្រើប្រាស់ <b>%s</b> មានហើយ។ បានបន្ទាន់សម័យ។',

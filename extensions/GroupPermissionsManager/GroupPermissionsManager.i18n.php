@@ -533,8 +533,19 @@ $messages['no'] = array(
  * @author Cedric31
  */
 $messages['oc'] = array(
-	'grouppermissions-delete'  => 'Suprimir lo grop',
-	'grouppermissions-comment' => 'Comentari :',
+	'grouppermissions'             => 'Gerir las permissions dels gropes',
+	'sortpermissions'              => 'Classar las permissions',
+	'removeunusedgroups'           => 'Levar los gropes inutilizats',
+	'grouppermissions-desc'        => 'Gerís las permissions dels gropes al travèrs d’una [[Special:GroupPermissions|pagina especiala]]',
+	'grouppermissions-desc2'       => 'Sistèma espandit de las permissions',
+	'grouppermissions-header'      => 'Podètz utilizar aquesta pagina per modificar las permissions soslinhadas dels diferents gropes d’utilizaires',
+	'grouppermissions-search'      => 'Grop :',
+	'grouppermissions-dologin'     => 'Connexion',
+	'grouppermissions-dosearch'    => 'Aviar',
+	'grouppermissions-searchlabel' => 'Recèrca d’un grop',
+	'grouppermissions-deletelabel' => 'Suprimir lo grop',
+	'grouppermissions-delete'      => 'Suprimir lo grop',
+	'grouppermissions-comment'     => 'Comentari :',
 );
 
 /** Polish (Polski)

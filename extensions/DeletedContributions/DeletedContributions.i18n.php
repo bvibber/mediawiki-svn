@@ -53,6 +53,14 @@ $messages['ba'] = array(
 	'deletedcontributions' => 'Ҡулланыусыларҙың юйылған өлөшө',
 );
 
+/** Southern Balochi (بلوچی مکرانی)
+ * @author Mostafadaneshvar
+ */
+$messages['bcc'] = array(
+	'deletedcontributions'      => 'مشارکتان کابر حذف بوتء',
+	'deletedcontributions-desc' => 'مدیران توان دنت تا [[Special:DeletedContributions|حذفی اصلاح گردیت]] چه یک کاربریء',
+);
+
 /** Bikol Central (Bikol Central)
  * @author Filipinayzd
  */

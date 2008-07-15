@@ -25,6 +25,13 @@ $messages['ar'] = array(
 	'skinperpage-desc' => 'يضيف وسم <tt>&lt;skin&gt;</tt> لاستخدام واجهات مختلفة لكل صفحة',
 );
 
+/** Southern Balochi (بلوچی مکرانی)
+ * @author Mostafadaneshvar
+ */
+$messages['bcc'] = array(
+	'skinperpage-desc' => 'هورکنت <tt>&lt;skin&gt;</tt> برچسپء په استفاده مختلف این پوست ته هر صفحه ای',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  */

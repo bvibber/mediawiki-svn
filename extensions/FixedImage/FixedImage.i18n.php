@@ -32,6 +32,13 @@ $messages['ar'] = array(
 	'fixedimage-desc' => 'يضيف وسم <tt><nowiki><fundraising></nowiki></tt> كصورة',
 );
 
+/** Southern Balochi (بلوچی مکرانی)
+ * @author Mostafadaneshvar
+ */
+$messages['bcc'] = array(
+	'fixedimage-desc' => 'اضافه کتن <tt><nowiki><fundraising></nowiki></tt> برچسپ په یک عکس',
+);
+
 /** Bulgarian (Български)
  * @author Spiritia
  */

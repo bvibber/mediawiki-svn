@@ -89,6 +89,22 @@ $messages['ast'] = array(
 	'sitematrix-sitetotal' => 'Total',
 );
 
+/** Southern Balochi (بلوچی مکرانی)
+ * @author Mostafadaneshvar
+ */
+$messages['bcc'] = array(
+	'sitematrix'           => 'لیستی چه ویکی آن ویکی مدیا',
+	'sitematrix-summary'   => 'ای حاصین صفحه لیست کن کل ویکیان ویکی مدیایی',
+	'sitematrix-desc'      => 'پیشدار یک [[Special:SiteMatrix|لیستی چه ویکیان ویکی مدیا]]',
+	'sitematrix-language'  => 'زبان',
+	'sitematrix-project'   => 'نام پروژه،لینک بین پروژه های و لینک بین ویکیء',
+	'sitematrix-others'    => 'دگ پروژه آن ویکی مدیا',
+	'sitematrix-total'     => "'''کل حساب: $1'''",
+	'sitematrix-sitetotal' => 'کل',
+	'sitematrix-private'   => 'خصوصی',
+	'sitematrix-fishbowl'  => 'اصلاح بند بوتگ',
+);
+
 /** Bikol Central (Bikol Central)
  * @author Filipinayzd
  */

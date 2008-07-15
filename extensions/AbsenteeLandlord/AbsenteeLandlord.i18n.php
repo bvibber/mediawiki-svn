@@ -161,6 +161,14 @@ $messages['id'] = array(
 	'absenteelandlord-desc'   => 'Mengunci basis data wiki secara otomatis jika seluruh opsis tidak aktif selama periode tertentu.',
 );
 
+/** Italian (Italiano)
+ * @author Darth Kule
+ */
+$messages['it'] = array(
+	'absenteelandlord-reason' => "Il database è stato automaticamente bloccato a causa dell'inattività degli amministratori.",
+	'absenteelandlord-desc'   => 'Blocca automaticamente il database di una wiki se tutti i suoi amministratori sono inattivi per qualche tempo',
+);
+
 /** Javanese (Basa Jawa)
  * @author Meursault2004
  */

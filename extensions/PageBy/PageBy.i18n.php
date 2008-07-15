@@ -58,6 +58,7 @@ $messages['de'] = array(
  * @author Michawiki
  */
 $messages['dsb'] = array(
+	'pageby-desc'         => 'Pokazujo awtorow na wikijowem boku z pomocu toflicku <code><nowiki><pageby></nowiki></code>',
 	'pageby-first'        => 'Bok napórany wót $1, $2',
 	'pageby-last'         => 'Slědny raz <a href="$3">změnjony</a> wót $1, $2',
 	'pageby-contributors' => 'Pśinosowarje:',

@@ -48,6 +48,16 @@ $messages['ast'] = array(
 	'intersection_noincludecats' => 'Error: ¡Necesites amiestar a lo menos una categoría, o especificar un espaciu de nomes!',
 );
 
+/** Southern Balochi (بلوچی مکرانی)
+ * @author Mostafadaneshvar
+ */
+$messages['bcc'] = array(
+	'intersection_toomanycats'   => 'DynamicPageList: بازگین دسته جات!',
+	'intersection_toofewcats'    => 'DynamicPageList: باز کمین دسته جات!',
+	'intersection_noresults'     => 'DynamicPageList: هچ نتیجه ای',
+	'intersection_noincludecats' => 'لیست صفحات دینامیکی: شما لازمنت حداقل یک دسته هور کنیت یا یک نام فضایی مشخص کنیت!',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  */

@@ -1357,9 +1357,12 @@ $wgGoogleMapsMessages['hy'] = array(
  * @author McDutchie
  */
 $wgGoogleMapsMessages['ia'] = array(
+	'gm-width'        => 'Latitude',
+	'gm-height'       => 'Altitude',
 	'gm-zoom-control' => 'Navigation',
 	'gm-search'       => 'Cercar',
 	'gm-save-path'    => 'Immagazinar',
+	'gm-line-width'   => 'Latitude',
 );
 
 /** Indonesian (Bahasa Indonesia)

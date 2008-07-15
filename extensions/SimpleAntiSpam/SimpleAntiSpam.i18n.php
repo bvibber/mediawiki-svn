@@ -47,6 +47,16 @@ $messages['ar'] = array(
 	'simpleantispam-desc'  => 'يضيف اختبار سبام/بوت بسيط للاستمارات',
 );
 
+/** Southern Balochi (بلوچی مکرانی)
+ * @author Mostafadaneshvar
+ */
+$messages['bcc'] = array(
+	'simpleantispam'       => 'شمی اصلاح یک ماکانیزم ضد اسپمی بنگیج کت',
+	'simpleantispam-label' => "کنترل ضد اسپم.
+ای شیء پر ''مکن''",
+	'simpleantispam-desc'  => 'اضافه کنت یم ساده اسپم/روبوت چک په کنترل فرم آن',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  */

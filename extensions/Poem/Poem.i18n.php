@@ -39,6 +39,13 @@ $messages['ast'] = array(
 	'poem-desc' => 'Añade la etiqueta <tt>&lt;poem&gt;</tt> pal formatu de poemes',
 );
 
+/** Southern Balochi (بلوچی مکرانی)
+ * @author Mostafadaneshvar
+ */
+$messages['bcc'] = array(
+	'poem-desc' => 'هورکنت <tt>&lt;poem&gt;</tt> برچسپء په فرمت شئر',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  */

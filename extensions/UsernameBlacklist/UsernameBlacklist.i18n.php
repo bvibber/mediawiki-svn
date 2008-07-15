@@ -94,6 +94,15 @@ $messages['avk'] = array(
 	'usernameblacklist-invalid-lines' => 'Vlevef {{PLURAL:$1|conha|conha se}} moe favesikafa ebeltavexala {{PLURAL:$1|tir|tid}} meenafa; abdi giwara va {{PLURAL:$1|in|sin}} tuenal !',
 );
 
+/** Southern Balochi (بلوچی مکرانی)
+ * @author Mostafadaneshvar
+ */
+$messages['bcc'] = array(
+	'usernameblacklist-desc' => 'هور کنت  [[MediaWiki:Usernameblacklist|سیاهین لیست نام کاربری]] په محدود کتن شرنگ حسابان کاربری هم دپ گون یک یا گیشترین اصلاحات منظم',
+	'blacklistedusername'    => 'نام کاربری لیست سیاهی',
+	'right-uboverride'       => 'لغو لیست سیاه نام کاربری',
+);
+
 /** Bikol Central (Bikol Central)
  * @author Filipinayzd
  */

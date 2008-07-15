@@ -59,6 +59,14 @@ $messages['ast'] = array(
 	'sitenotice_close' => 'desaniciar',
 );
 
+/** Southern Balochi (بلوچی مکرانی)
+ * @author Mostafadaneshvar
+ */
+$messages['bcc'] = array(
+	'sitenotice_close' => 'روانه',
+	'sitenotice-desc'  => 'به کابران اجازت دنت دان یادداشت سایت بندیت',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  */

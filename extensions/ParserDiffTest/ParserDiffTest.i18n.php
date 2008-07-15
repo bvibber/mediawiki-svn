@@ -97,6 +97,25 @@ $messages['ast'] = array(
 	'pdt_comparing_page'  => "Comparando l'análisis sintáuticu de salida dende [[$1]]",
 );
 
+/** Southern Balochi (بلوچی مکرانی)
+ * @author Mostafadaneshvar
+ */
+$messages['bcc'] = array(
+	'parserdifftest'      => 'آزمایش تفاوت تجزیه کنوک',
+	'pdtest-desc'         => '[[Special:ParserDiffTest|حاصینlصفحه]]په مقایسه خروجی دو نجزیه کنوک متفاوت',
+	'pdtest_no_target'    => 'هدف مشخص نه بوت',
+	'pdtest_page_missing' => 'مشخص کتگین صفحه ته دیتابیس درگیزگ نه بوت',
+	'pdtest_no_changes'   => 'هچ تغییری حذف نه بوت',
+	'pdtest_time_report'  => '<b>$1</b> وهد گریت $2 ثانیه, <b>$3</b>  $4 ثانیه وهد گریت.',
+	'pdtest_title'        => 'عنوان متن',
+	'pdtest_text'         => 'متن ورودی:',
+	'pdtest_ok'           => 'هوبنت',
+	'pdtest_get_text'     => 'متن چه صفحه بگر',
+	'pdtest_diff'         => 'تفاوتان',
+	'pdtest_side_by_side' => 'مقایسه خروجی',
+	'pdt_comparing_page'  => 'مقایسه خروجی j[cdi ;k,; چه  [[$1]]',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  */

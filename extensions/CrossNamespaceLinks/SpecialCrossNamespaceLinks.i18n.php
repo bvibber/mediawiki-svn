@@ -56,6 +56,16 @@ $messages['ast'] = array(
 	'crossnamespacelinkstext'     => '$1: $2 {{PLURAL:$2|enllaz|enllaces}} a $3',
 );
 
+/** Southern Balochi (بلوچی مکرانی)
+ * @author Mostafadaneshvar
+ */
+$messages['bcc'] = array(
+	'crossnamespacelinks'         => 'بین-نامی فضای لینکان',
+	'crossnamespacelinks-desc'    => '[[Special:CrossNamespaceLinks|لیست کنت لینکان گذر نام فضایی]] که وجودش نیست ته {{SITENAME}}',
+	'crossnamespacelinks-summary' => 'ای صفحه یک لیستی چه لینکان یک صفحه ته اصلی نام فضا په یک صفحه ته دگه نام فضایان شر کنت.(بجز په{{ns:special}}, {{ns:talk}}, {{ns:project}}, و {{ns:template}} نام فضایان)،  که توصیه انت استفاده مه بنت.',
+	'crossnamespacelinkstext'     => '$1: $2 {{PLURAL:$2|لینک|لینکان}} په $3',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  */

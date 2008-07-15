@@ -84,6 +84,24 @@ $messages['ast'] = array(
 	'scanset_prev'                      => '&lt; Ant',
 );
 
+/** Southern Balochi (بلوچی مکرانی)
+ * @author Mostafadaneshvar
+ */
+$messages['bcc'] = array(
+	'scanset-desc'                      => 'بچار تصاویر صفحه اسکن بوتگین چه مجموعه ی سی دی /دی وی دی آندریاس گروز',
+	'scanset_no_name'                   => 'ScanSet:  شما بایدن یک نام دستگاه اسکنی مشخص کنیت،مثلا &lt;نام دستگاه="EB1911" /&gt;.',
+	'scanset_invalid_name'              => 'ScanSet: نامعتبراین یا گارین دستگاه اسکن',
+	'scanset_unrecognised_index_format' => 'ScanSet: ناشناس فرمت ایندکس',
+	'scanset_opendir_error'             => 'ScanSet: حطا، نه تونیت مسیر $1 پچ کنت',
+	'scanset_no_files'                  => 'ScanSet: هچ فایلی ته مشخصین مسیر نیست.',
+	'scanset_no_volumes'                => 'ScanSet: هچ مسیر حجم در نه کپت',
+	'scanset_missing_index_file'        => 'ScanSet: ایندکس فایل $1 درگیزگ نه بوت',
+	'scanset_index_file_error'          => 'ScanSet: حطا ته فایل ایندکس فرمت ته خط $1',
+	'scanset_invalid_volume'            => 'ScanSet: نامعتبرین حجم',
+	'scanset_next'                      => 'بعد &gt;',
+	'scanset_prev'                      => '&lt; پیش',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  */

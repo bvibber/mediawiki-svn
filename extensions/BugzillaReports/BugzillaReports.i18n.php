@@ -50,6 +50,14 @@ $messages['gl'] = array(
 	'bReport_sqlerror'     => 'Erro ao executar o sql : $1',
 );
 
+/** Hungarian (Magyar)
+ * @author Dani
+ */
+$messages['hu'] = array(
+	'bReport_noconnection' => 'Nem hozható létre a kapcsolat az adatbázissal ($1@$2) : $3',
+	'bReport_nodb'         => 'Az adatbázis nem található',
+);
+
 /** Italian (Italiano)
  * @author Darth Kule
  */
@@ -58,6 +66,16 @@ $messages['it'] = array(
 	'bReport_noconnection' => 'Impossibile stabilire una connessione con il database ($1@$2) : $3',
 	'bReport_nodb'         => 'Database non trovato',
 	'bReport_sqlerror'     => 'Errore nella query sql : $1',
+);
+
+/** Ripoarisch (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'bReport-desc'         => 'Brengk Bugzilla Daate op der Schörrem üvver di Paaser-Funkßjon #bugzilla',
+	'bReport_noconnection' => 'Mer krijje kei Verbendong hoh de Datebank ($1@$2) : $3',
+	'bReport_nodb'         => 'Han de Datenbank nit jefonge',
+	'bReport_sqlerror'     => 'Ene Fäähler es opjedouch bem Beärrbede vun däm SQL-Befääl:',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

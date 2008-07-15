@@ -109,6 +109,21 @@ $messages['avk'] = array(
 	'linksearch-ok' => 'Aneyara',
 );
 
+/** Southern Balochi (بلوچی مکرانی)
+ * @author Mostafadaneshvar
+ */
+$messages['bcc'] = array(
+	'linksearch'       => 'گردگ لینکان وب',
+	'linksearch-desc'  => '[[Special:Linksearch|درگیز صفحاتی گون درایی لینک]] هم دپ گون حاصین الگو',
+	'linksearch-pat'   => 'گردگ الگو:',
+	'linksearch-ns'    => 'نام فضا:',
+	'linksearch-ok'    => 'گردگ',
+	'linksearch-text'  => 'تقریبانی په داب "*.wikipedia.org" شاید استفاده بیت.<br />
+داشتگین پروتوکل: <tt>$1</tt>',
+	'linksearch-line'  => '$1 لینک بوتت چه $2',
+	'linksearch-error' => 'تقریبیان شاید فقط ته اول نام هاست جاه کاینت.',
+);
+
 /** Bikol Central (Bikol Central)
  * @author Filipinayzd
  */

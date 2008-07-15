@@ -28,6 +28,13 @@ $messages['ar'] = array(
 	'titlekey-desc' => 'نهاية اقتراح بحث عنوان البادئة',
 );
 
+/** Southern Balochi (بلوچی مکرانی)
+ * @author Mostafadaneshvar
+ */
+$messages['bcc'] = array(
+	'titlekey-desc' => 'عنوان پیشوند گردگ پیشنهاد ترینگ',
+);
+
 /** Czech (Česky)
  * @author Mormegil
  */

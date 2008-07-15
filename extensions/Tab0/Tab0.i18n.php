@@ -26,6 +26,13 @@ $messages['cs'] = array(
 	'tab0-desc' => 'Přidává záložku „0“ pro editaci první části stránky',
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'tab0-desc' => 'Pśidawa rejtark "0", kótaryž wótkazujo na wobźěłański bok prědnego wótrězka boka',
+);
+
 /** French (Français)
  * @author Grondin
  * @author Verdy p
@@ -44,6 +51,13 @@ $messages['gl'] = array(
 /** Hebrew (עברית) */
 $messages['he'] = array(
 	'tab0-desc' => 'הוספת לשונית "0" המקשרת לעריכת הפסקה הראשונה בדף',
+);
+
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
+$messages['hsb'] = array(
+	'tab0-desc' => 'Přidawa rajtark "0", kotryž na wobdźěłansku stronu prěnjeho wotrězka strony wotkazuje',
 );
 
 /** Indonesian (Bahasa Indonesia)
