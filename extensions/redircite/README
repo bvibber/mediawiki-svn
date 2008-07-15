@@ -13,13 +13,12 @@ TABLE OF CONTENTS
 This extension implements links to redirects that expand to the redirect's target when the mouse is moved over them.
 
 2. WHERE TO GET REDIRCITE
-The current version of redircite can be downloaded from the MediaWiki SVN repository at http://svn.wikimedia.org/viewvc/mediawiki/trunk/extensions/redircite
-Simply click the redircite.php file, then click download. The latest version of this README can be downloaded in a similar way.
+You can download a tarball at http://www.mediawiki.org/wiki/Special:ExtensionDistributor/Redircite .
 
 3. INSTALLATION
-Download redircite.php (see section 2), create a directory named "redircite" (without quotes) in /path/to/your/wiki/extensions, then move redircite.php to the /path/to/your/wiki/extensions/redircite/ directory.
+Download the tarball (see section 2) and extract it in /path/to/your/wiki/extensions .
 
-Open LocalSettings.php and add the following line just before the line with ?> on it:
+Open LocalSettings.php and add the following line just before the end:
 
 require_once("$IP/extensions/redircite/redircite.php");
 

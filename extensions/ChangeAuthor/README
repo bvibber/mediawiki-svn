@@ -19,10 +19,10 @@ TABLE OF CONTENTS
 This extension allows for changing the author of a revision, e.g. an edit made by Alice can be changed to look like it was made by Bob instead. Of course, only privileged users can do this, and all changes are logged.
 
 2. WHERE TO GET CHANGEAUTHOR
-The current version of ChangeAuthor can be downloaded from the MediaWiki SVN repository at http://svn.wikimedia.org/viewvc/mediawiki/trunk/extensions/ChangeAuthor You need to download three files: ChangeAuthor.body.php, ChangeAuthor.setup.php and ChangeAuthor.i18n.php To download a file, simply click on it and click the "Download" link.
+You can download a tarball at http://www.mediawiki.org/wiki/Special:ExtensionDistributor/ChangeAuthor . 
 
 3. INSTALLATION
-Download the three files mentioned in section 2, create a directory named "ChangeAuthor" (without quotes) in /path/to/your/wiki/extensions , then move the three .php files to the /path/to/your/wiki/extensions/ChangeAuthor/ directory you just created. Open LocalSettings.php and add the following line at the end:
+Download the tarball mentioned in section 2, and extract it in /path/to/your/wiki/extensions . Open LocalSettings.php and add the following line at the end:
 
 require_once("$IP/extensions/ChangeAuthor/ChangeAuthor.setup.php");
 
@@ -69,7 +69,7 @@ Every time someone changes a revision's author, the change appears both in Speci
 ChangeAuthor is made available under the conditions of the GNU General Public License version 3. For more information, see http://www.gnu.org/copyleft/gpl.html
 
 8. TRANSLATING CHANGEAUTHOR
-If ChangeAuthor hasn't been translated to your language, feel free to do so. Simply translate all the messages in the ChangeAuthor.i18n.php file, and e-mail the translations to the maintainer (see the contact section below). They will add your translations to SVN.
+If ChangeAuthor hasn't been translated to your language, feel free to do so at http://translatewiki.net/
 
 9. CONTACT
 ChangeAuthor is currently maintained by Roan Kattouw. If you have any questions, complaints, feature requests, found a bug, or any other reason to contact the maintainer, please send your e-mails to roan.kattouw@home.nl and mention "ChangeAuthor" in the subject.
