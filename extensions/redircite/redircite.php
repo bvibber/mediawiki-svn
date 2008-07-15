@@ -1,5 +1,7 @@
 <?php
 
+die("redircite extension disabled -- contains HTML injection vulnerabilities.");
+
 /**
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -48,15 +50,11 @@ function redircite_render($input, $args, $parser) {
 	// which will be translated to the HTML stored in $redirciteMarkerList by
 	// redircite_afterTidy()
 	global $redirciteMarkerList;
-	# Verify that $input is a valid title
-	$inputTitle = Title::newFromText($input);
-	if(!$inputTitle)
-		return $input; 
 	$lparse = clone $parser;
 	$link1 = $lparse->parse("[[$input]]", $parser->mTitle, $parser->mOptions, false, false);
 	$link1text = $link1->getText();
 	$title1 = Title::newFromText($input);
-	if(!$title1->exists()) // Page doesn't exist
+	if(!$title1) // Page doesn't exist
 		// Just output a normal (red) link
 		return $link1text;
 	$articleObj = new Article($title1);
