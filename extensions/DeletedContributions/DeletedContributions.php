@@ -24,14 +24,14 @@ $wgAutoloadClasses['DeletedContributionsPage']
 	= $wgAutoloadClasses['DeletedContributionsPage']
 	= $dir . 'DeletedContributions_body.php';
 
-$wgHooks['ContributionsToolLinks'][] = 'wfLoadContribsLink';
+$wgHooks['ContributionsToolLinks'][] = 'wfLoadDeletedContribsLink';
 $wgSpecialPages['DeletedContributions'] = 'DeletedContributionsPage';
 $wgSpecialPageGroups['DeletedContributions'] = 'users';
 
 /**
  * Add a "Deleted contributions" link to Special:Contributions for sysops.
  */
-function wfLoadContribsLink( $id, $nt, &$links ) {
+function wfLoadDeletedContribsLink( $id, $nt, &$links ) {
 	global $wgUser;
 	if( $wgUser->isAllowed( 'deletedhistory' ) ) {
 		wfLoadExtensionMessages( 'DeletedContributions' );
