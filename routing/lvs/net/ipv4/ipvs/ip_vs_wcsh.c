@@ -35,6 +35,7 @@
 #include <linux/kernel.h>
 #include <linux/ip.h>
 #include <linux/jhash.h>
+#include <linux/sort.h>
 
 #include <net/ip_vs.h>
 
@@ -49,14 +50,13 @@
 #define IP_VS_WCSH_CONT_MASK			(IP_VS_WCSH_CONT_SIZE - 1)
 
 struct ip_vs_wcsh_dest_point {
-	struct list_head	n_list;		/* sorted linked list of points */
 	__u32	value;					/* point value */
 	struct ip_vs_dest	*dest;		/* destination server */
 };
 
 struct ip_vs_wcsh_data {
-	struct list_head	continuum;	/* continuum linked list */
-	struct ip_vs_wcsh_dest_point *cntcache;	/* pointer to allocated memory for continuum entries */
+	struct ip_vs_wcsh_dest_point	*continuum;	/* continuum array */
+	int 							pointcount;
 };
 
 /*
@@ -70,62 +70,42 @@ static inline unsigned ip_vs_wcsh_hashkey(const unsigned addr)
 static int ip_vs_wcsh_alloc_continuum(struct ip_vs_wcsh_data *sched_data, const struct ip_vs_service *svc)
 {
 	struct ip_vs_dest *dest;
-	int pointcount = 0;
 	
 	/* 
 	 * Determine how many points the continuum will consist off,
 	 * the sum of all destination weights
 	 */
+	sched_data->pointcount = 0;
 	list_for_each_entry(dest, &svc->destinations, n_list) {
-		pointcount += atomic_read(&dest->weight);
+		sched_data->pointcount += atomic_read(&dest->weight);
 	}
 	
 	/* Allocate memory for the continuum */
-	sched_data->cntcache = kmalloc(sizeof(struct ip_vs_wcsh_dest_point)*pointcount, GFP_ATOMIC);
-	if (sched_data->cntcache == NULL) {
+	sched_data->continuum = kmalloc(sizeof(struct ip_vs_wcsh_dest_point)*sched_data->pointcount, GFP_ATOMIC);
+	if (sched_data->continuum == NULL) {
 		IP_VS_ERR("ip_vs_wcsh_create_continuum(): no memory\n");
+		sched_data->pointcount = 0;
 		return -ENOMEM;
 	}
 	IP_VS_DBG(2, "[wcsh] Created continuum of %d points, "
-			"using %Zd bytes of memory\n", pointcount,
-			sizeof(struct ip_vs_wcsh_dest_point)*pointcount);
+			"using %Zd bytes of memory\n", sched_data->pointcount,
+			sizeof(struct ip_vs_wcsh_dest_point)*sched_data->pointcount);
 
 	return 0;
 }
 
-/*
- * Inserts a new continuum point @point at the right position such that
- * an ascending order of hash values is maintained in the linked list @continuum
- */
-static void ip_vs_wcsh_insert_sorted(struct ip_vs_wcsh_dest_point *new_point, struct list_head *head)
+static inline int ip_vs_wcsh_cmp_point(const void *va, const void *vb)
 {
-	struct ip_vs_wcsh_dest_point *point;
-	struct list_head *pos;
+	const struct ip_vs_wcsh_dest_point *a = va, *b = vb;
 	
-	/* Is there no cleaner way to do this? */
-	
-	if (list_empty(head) || new_point->value < list_first_entry(head, struct ip_vs_wcsh_dest_point, n_list)->value) {
-		list_add(&new_point->n_list, head);
-	}
-	else {
-		list_for_each(pos, head) {
-			point = list_entry(pos, struct ip_vs_wcsh_dest_point, n_list);
-			if (point->value <= new_point->value
-				&& (list_is_last(pos, head)
-					|| new_point->value < list_entry(pos->next, struct ip_vs_wcsh_dest_point, n_list)->value)) {
-				/* Insert after pos */
-				__list_add(&new_point->n_list, pos, pos->next);
-				return;
-			}
-		}
-	}
+	return (a->value < b->value) ? -1 : ((a->value > b->value) ? 1 : 0);
 }
 
 /*
  * Create the continuum by hashing each server multiple times
  * (determined by weight) onto the circle
  */
-static void ip_vs_wcsh_create_continuum(struct ip_vs_wcsh_data *sched_data, const struct ip_vs_service *svc)
+static void ip_vs_wcsh_create_continuum(const struct ip_vs_wcsh_data *sched_data, const struct ip_vs_service *svc)
 {
 	struct ip_vs_wcsh_dest_point *point;
 	struct ip_vs_dest *dest;
@@ -133,7 +113,7 @@ static void ip_vs_wcsh_create_continuum(struct ip_vs_wcsh_data *sched_data, cons
 	if (svc->num_dests == 0)
 		return;
 	
-	point = sched_data->cntcache;
+	point = sched_data->continuum;
 	
 	list_for_each_entry(dest, &svc->destinations, n_list) {
 		unsigned hashkey;
@@ -152,42 +132,48 @@ static void ip_vs_wcsh_create_continuum(struct ip_vs_wcsh_data *sched_data, cons
 			IP_VS_DBG(6, "[wcsh] Continuum point %d created for server %u.%u.%u.%u:%d [%u]\n",
 					i, NIPQUAD(dest->addr), ntohs(dest->port), point->value);
 			
-			ip_vs_wcsh_insert_sorted(point, &sched_data->continuum);
 			point++;
 		}
 	}
+	
+	/* Sort the created continuum array on ascending value */
+	sort(sched_data->continuum,
+			sched_data->pointcount,
+			sizeof(struct ip_vs_wcsh_dest_point),
+			ip_vs_wcsh_cmp_point,
+			NULL);
 }
 
-static void ip_vs_wcsh_flush_continuum(struct ip_vs_wcsh_data *sched_data, const struct ip_vs_service *svc)
+static void ip_vs_wcsh_flush_continuum(struct ip_vs_wcsh_data *sched_data)
 {
 	struct ip_vs_wcsh_dest_point *point;
-	struct list_head *p, *q;
 	
-	if (list_empty(&sched_data->continuum))
+	if (sched_data->pointcount == 0 || sched_data->continuum == NULL)
 		return;
 	
-	list_for_each_safe(p, q, &sched_data->continuum) {
-		point = list_entry(p, struct ip_vs_wcsh_dest_point, n_list);
+	for (point = sched_data->continuum; point != &sched_data->continuum[sched_data->pointcount]; point++) {
 		atomic_dec(&point->dest->refcnt);
 		point->dest = NULL;
-		list_del(p);		
 	}
 	
-	kfree(sched_data->cntcache);
-	sched_data->cntcache = NULL;
+	sched_data->pointcount = 0;
+	kfree(sched_data->continuum);
+	sched_data->continuum = NULL;
 }
 
 static int ip_vs_wcsh_init_svc(struct ip_vs_service *svc)
 {
-	struct ip_vs_wcsh_data * sched_data;
+	struct ip_vs_wcsh_data *sched_data;
 	
 	sched_data = kmalloc(sizeof(struct ip_vs_wcsh_data), GFP_ATOMIC);
 	if (sched_data == NULL) {
 		IP_VS_ERR("ip_vs_wcsh_init_svc(): no memory\n");
 		return -ENOMEM;	
 	}
-	INIT_LIST_HEAD(&sched_data->continuum);
 	svc->sched_data = sched_data;
+
+	sched_data->continuum = NULL;
+	sched_data->pointcount = 0;
 	
 	if (svc->num_dests > 0) {
 		int res = ip_vs_wcsh_alloc_continuum(sched_data, svc);
@@ -202,9 +188,7 @@ static int ip_vs_wcsh_init_svc(struct ip_vs_service *svc)
 
 static int ip_vs_wcsh_done_svc(struct ip_vs_service *svc)
 {	
-	struct ip_vs_wcsh_data *sched_data = svc->sched_data;	
-
-	ip_vs_wcsh_flush_continuum(sched_data, svc);
+	ip_vs_wcsh_flush_continuum(svc->sched_data);
 	kfree(svc->sched_data);
 	
 	IP_VS_DBG(6, "[wcsh] Scheduler cleanup done\n");
@@ -215,7 +199,7 @@ static int ip_vs_wcsh_update_svc(struct ip_vs_service *svc)
 {
 	struct ip_vs_wcsh_data *sched_data = svc->sched_data;	
 	
-	ip_vs_wcsh_flush_continuum(sched_data, svc);
+	ip_vs_wcsh_flush_continuum(sched_data);
 	if (svc->num_dests > 0) {
 		int res = ip_vs_wcsh_alloc_continuum(sched_data, svc);
 		if (res < 0)
@@ -237,13 +221,15 @@ static inline int ip_vs_wcsh_is_feasible(const struct ip_vs_dest *dest) {
 }
 
 static struct ip_vs_wcsh_dest_point *
-ip_vs_wcsh_get_nearest_point(const unsigned hashkey, const struct list_head *head)
+ip_vs_wcsh_get_nearest_point(const unsigned hashkey, const struct ip_vs_wcsh_data *sched_data)
 {
 	struct ip_vs_wcsh_dest_point *point;
-	
-	if (unlikely(list_empty(head)))
+
+	if (unlikely(sched_data->pointcount == 0))
 		return NULL;
-	else list_for_each_entry(point, head, n_list) {
+	
+	/* linear search */	
+	for(point = sched_data->continuum; point != &sched_data->continuum[sched_data->pointcount]; point++) {
 		IP_VS_DBG(6, "[wcsh] Evaluating destination %u.%u.%u.%u:%d [%u]\n",
 				NIPQUAD(point->dest->addr), ntohs(point->dest->port), point->value);
 		if (unlikely(hashkey <= point->value))
@@ -251,28 +237,30 @@ ip_vs_wcsh_get_nearest_point(const unsigned hashkey, const struct list_head *hea
 	}
 	
 	/* hashkey is bigger than all point values, so wrap around and return the lowest value */
-	return list_first_entry(head, struct ip_vs_wcsh_dest_point, n_list);
+	return sched_data->continuum;
 }
 
 static struct ip_vs_wcsh_dest_point *
-ip_vs_wcsh_get_feasible_dest(struct ip_vs_wcsh_dest_point *start, const struct list_head *head, int (*feasible)(const struct ip_vs_dest*))
+ip_vs_wcsh_get_feasible_dest(struct ip_vs_wcsh_dest_point *start, const struct ip_vs_wcsh_data *sched_data, int (*feasible)(const struct ip_vs_dest*))
 {
 	struct ip_vs_wcsh_dest_point *point = start;
 	
-	if (unlikely(list_empty(head)))
+	if (unlikely(sched_data->pointcount == 0))
 		return NULL;
-	else while (1) { 
-		list_for_each_entry_from(point, head, n_list) {
+	
+	/* linear search */
+	while (1) {
+		for ( ; point != &sched_data->continuum[sched_data->pointcount]; point++) {
 			IP_VS_DBG(6, "[wcsh] Evaluating feasibility of server %u.%u.%u.%u:%d [%u]: %d\n",
 					NIPQUAD(point->dest->addr), ntohs(point->dest->port), point->value,
 					(*feasible)(point->dest));
 			if (likely((*feasible)(point->dest)))
 				return point;
-			else if (unlikely((point->n_list.next == &start->n_list))) /* FIXME: messy */
+			else if (point+1 == start)
 				return NULL;	/* No feasible servers available */
 		}
-		/* Start over from the beginning of the list */
-		point = list_first_entry(head, struct ip_vs_wcsh_dest_point, n_list);
+		/* Start over from the beginning of the array */
+		point = sched_data->continuum;
 	}
 }
 
@@ -280,7 +268,6 @@ static struct ip_vs_dest *
 ip_vs_wcsh_schedule(struct ip_vs_service *svc, const struct sk_buff *skb)
 {
 	struct ip_vs_wcsh_dest_point *point;
-	struct ip_vs_dest *dest;
 	struct iphdr *iph = ip_hdr(skb);
 	struct ip_vs_wcsh_data *sched_data = svc->sched_data;
 	unsigned hashkey;
@@ -288,22 +275,21 @@ ip_vs_wcsh_schedule(struct ip_vs_service *svc, const struct sk_buff *skb)
 	hashkey = ip_vs_wcsh_hashkey(ntohl(iph->saddr)) & IP_VS_WCSH_CONT_MASK;
 
 	/* Find the nearest server point with a hash value bigger than or equal to hashkey */ 
-	point = ip_vs_wcsh_get_nearest_point(hashkey, &sched_data->continuum);
+	point = ip_vs_wcsh_get_nearest_point(hashkey, sched_data);
 	if (unlikely(point == NULL))
 		return NULL;
 	
 	/* Find the nearest feasible destination */
-	point = ip_vs_wcsh_get_feasible_dest(point, &sched_data->continuum, ip_vs_wcsh_is_feasible);
+	point = ip_vs_wcsh_get_feasible_dest(point, sched_data, ip_vs_wcsh_is_feasible);
 	if (unlikely(point == NULL))
 		return NULL;
 	
-	dest = point->dest;
 	IP_VS_DBG(6, "[wcsh] Source IP address %u.%u.%u.%u [%u] "
 		  "--> server %u.%u.%u.%u:%d [%u]\n",
 		  NIPQUAD(iph->saddr), hashkey,
-		  NIPQUAD(dest->addr), ntohs(dest->port), point->value);
-		
-	return dest;
+		  NIPQUAD(point->dest->addr), ntohs(point->dest->port), point->value);
+	
+	return point->dest;
 }
 
 /*
