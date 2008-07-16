@@ -153,22 +153,11 @@ abstract class ConfigurationPage extends SpecialPage {
 		return $allowed;
 	}
 
-	public function userCanEdit( $setting ){
-		$t = 0; $i = 0;
-		$t -= wfTime();
-		$ret = $this->userCanEdit2( $setting );
-		$t += wfTime();
-		$i++;
-		if( $i % 10 == 0 )
-			echo ($t/$i). ' ';
-		return $ret;
-	}
-
 	/**
 	 * Return true if the current user is allowed to configure $setting.
 	 * @return bool
 	 */
-	public function userCanEdit2( $setting ){
+	public function userCanEdit( $setting ){
 		if( !$this->mCanEdit || !$this->userCanRead( $setting ) )
 			return false;
 		if( in_array( $setting, $this->mConfSettings->getEditRestricted() ) && !$this->isUserAllowedAll() )
