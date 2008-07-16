@@ -118,7 +118,7 @@ char		*newpass, *verify;
 	if ((secret = get_ldap_secret()) == NULL)
 		return 1;
 
-	seteuid(getuid());
+	setegid(getgid());
 
 	if ((err = ldap_simple_bind_s(conn, ADMIN_DN, secret)) != 0) {
 		(void) fprintf(stderr,
