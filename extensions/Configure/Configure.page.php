@@ -8,14 +8,17 @@ if ( !defined( 'MEDIAWIKI' ) ) die();
  * @ingroup Extensions
  */
 abstract class ConfigurationPage extends SpecialPage {
-	var $mRequireWebConf = true;
-	var $mCanEdit = true;
+	protected $mRequireWebConf = true;
+	protected $mCanEdit = true;
+	protected $conf;
+	protected $mConfSettings;
 
 	/**
 	 * Constructor
 	 */
 	public function __construct( $name, $right ) {
 		efConfigureLoadMessages();
+		$this->mConfSettings = ConfigurationSettings::singleton( $this->getSettingMask() );
 		parent::__construct( $name, $right );
 	}
 
@@ -60,15 +63,17 @@ abstract class ConfigurationPage extends SpecialPage {
 		
 		$wikiParam = ( $this->mCanEdit && $wgRequest->wasPosted() ) ? 'wpWiki' : 'wiki';
 		if( $wiki = $wgRequest->getVal( $wikiParam, false ) ){
-			if( !$this->isUserAllowedInterwiki() || $wgConfigureWikis === false ){
-				$msg = wfMsgNoTrans( 'configure-no-transwiki' );
-				$wgOut->addWikiText( "<div class='errorbox'><strong>$msg</strong></div>" );
-				return;
-			}
-			if( $wgConf->getWiki() != $wiki && is_array( $wgConfigureWikis ) && !in_array( $wiki, $wgConfigureWikis ) ){
-				$msg = wfMsgNoTrans( 'configure-transwiki-not-in-range', $wiki, implode( ', ', $wgConfigureWikis ) );
-				$wgOut->addWikiText( "<div class='errorbox'><strong>$msg</strong></div>" );
-				return;	
+			if( $wgConf->getWiki() != $wiki ){
+				if( !$this->isUserAllowedInterwiki() || $wgConfigureWikis === false ){
+					$msg = wfMsgNoTrans( 'configure-no-transwiki' );
+					$wgOut->addWikiText( "<div class='errorbox'><strong>$msg</strong></div>" );
+					return;
+				}
+				if( is_array( $wgConfigureWikis ) && !in_array( $wiki, $wgConfigureWikis ) ){
+					$msg = wfMsgNoTrans( 'configure-transwiki-not-in-range', $wiki, implode( ', ', $wgConfigureWikis ) );
+					$wgOut->addWikiText( "<div class='errorbox'><strong>$msg</strong></div>" );
+					return;	
+				}
 			}
 			$this->mWiki = $wiki;
 		} else {
@@ -147,20 +152,128 @@ abstract class ConfigurationPage extends SpecialPage {
 		}
 		return $allowed;
 	}
-	
-	// View config
+
+	public function userCanEdit( $setting ){
+		$t = 0; $i = 0;
+		$t -= wfTime();
+		$ret = $this->userCanEdit2( $setting );
+		$t += wfTime();
+		$i++;
+		if( $i % 10 == 0 )
+			echo ($t/$i). ' ';
+		return $ret;
+	}
 
 	/**
 	 * Return true if the current user is allowed to configure $setting.
 	 * @return bool
 	 */
-	public abstract function userCanEdit( $setting );
+	public function userCanEdit2( $setting ){
+		if( !$this->mCanEdit || !$this->userCanRead( $setting ) )
+			return false;
+		if( in_array( $setting, $this->mConfSettings->getEditRestricted() ) && !$this->isUserAllowedAll() )
+			return false;
+		global $wgConfigureEditRestrictions;
+		if( !isset( $wgConfigureEditRestrictions[$setting] ) )
+			return true;
+		global $wgUser;
+		foreach( $wgConfigureEditRestrictions[$setting] as $right ){
+			if( !$wgUser->isAllowed( $right ) )
+				return false;
+		}
+		return true;
+	}
 
 	/**
 	 * Return true if the current user is allowed to see $setting.
 	 * @return bool
 	 */
-	public abstract function userCanRead( $setting );
+	public function userCanRead( $setting ){
+		if( in_array( $setting, $this->mConfSettings->getNotEditableSettings() )
+			|| ( in_array( $setting, $this->mConfSettings->getViewRestricted() )
+			&& !$this->isUserAllowedAll() ) )
+			return false;
+		global $wgConfigureViewRestrictions;
+		if( !isset( $wgConfigureViewRestrictions[$setting] ) )
+			return true;
+		global $wgUser;
+		foreach( $wgConfigureViewRestrictions[$setting] as $right ){
+			if( !$wgUser->isAllowed( $right ) )
+				return false;
+		}
+		return true;
+	}
+
+	/**
+	 * Get an 3D array of all settings
+	 *
+	 * @return array
+	 */
+	protected function getSettings(){
+		return $this->mConfSettings->getSettings();
+	}
+
+	/**
+	 * Get a list of editable settings
+	 *
+	 * @return array
+	 */
+	protected function getNotEditableSettings(){
+		static $notEditable;
+		if( !isset( $notEditable ) ){
+			global $wgConfigureNotEditableSettings;
+			$notEditable = array_merge( $this->mConfSettings->getNotEditableSettings(), $wgConfigureNotEditableSettings );
+		}
+		return $notEditable;
+	}
+	
+	/**
+	 * Get a list of editable settings
+	 *
+	 * @return array
+	 */
+	protected function getEditableSettings(){
+		$notEdit = $this->getNotEditableSettings();
+		$settings = $this->mConfSettings->getAllSettings();
+		foreach( $notEdit as $setting )
+			unset( $settings[$setting] );
+		return $settings;
+	}
+
+	/**
+	 * Get the type of a setting
+	 *
+	 * @patam $setting setting name
+	 * @return string
+	 */
+	protected function getSettingType( $setting ){
+		return $this->mConfSettings->getSettingType( $setting );
+	}
+
+	/**
+	 * Get the array type of a setting
+	 *
+	 * @patam $setting setting name
+	 * @return string
+	 */
+	protected function getArrayType( $setting ){
+		return $this->mConfSettings->getArrayType( $setting );
+	}
+
+	/**
+	 * Is $setting available in this MediaWiki version?
+	 *
+	 * @param $setting setting name
+	 * @return bool
+	 */
+	protected function isSettingAvailable( $setting ){
+		return $this->mConfSettings->isSettingAvailable( $setting );
+	}
+
+	/**
+	 * Get the mask to be passed to $this->mConfSettings->*
+	 */
+	protected abstract function getSettingMask();
 
 	// Page things
 
@@ -180,31 +293,6 @@ abstract class ConfigurationPage extends SpecialPage {
 	 * @return xhtml
 	 */
 	protected abstract function buildAllSettings();
-
-	// Settings config
-	
-	/**
-	 * Get a list of editable settings
-	 *
-	 * @return array
-	 */
-	protected abstract function getEditableSettings();
-
-	/**
-	 * Get the array type of a setting
-	 *
-	 * @patam $setting setting name
-	 * @return string
-	 */
-	protected abstract function getArrayType( $setting );
-
-	/**
-	 * Is $setting available in this MediaWiki version?
-	 *
-	 * @param $setting setting name
-	 * @return bool
-	 */
-	 protected abstract function isSettingAvailable( $setting );
 
 	/**
 	 * Get the versoon
@@ -553,14 +641,16 @@ abstract class ConfigurationPage extends SpecialPage {
 	 * Build an input for $conf setting with $default as default value
 	 *
 	 * @param $conf String: name of the setting
-	 * @param $type String: type of the setting
-	 * @param $default String: default value
+	 * @param $params Array
 	 * @return String xhtml fragment
 	 */
-	protected function buildInput( $conf, $type, $default ){
-		if( !$this->userCanRead( $conf ) )
+	protected function buildInput( $conf, $params = array() ){
+		$read = isset( $params['read'] ) ? $params['read'] : $this->userCanRead( $conf );
+		if( !$read )
 			return '<span class="disabled">' . wfMsgExt( 'configure-view-not-allowed', array( 'parseinline' ) ) . '</span>';
-		$allowed = $this->userCanEdit( $conf );
+		$allowed = isset( $params['edit'] ) ? $params['edit'] : $this->userCanEdit( $conf );
+		$type = isset( $params['type'] ) ? $params['type'] : $this->getSettingType( $conf );
+		$default = isset( $params['value'] ) ? $params['value'] : $this->getSettingValue( $conf );
 		if( $type == 'text' || $type == 'int' ){
 			if( !$allowed )
 				return '<code>' . htmlspecialchars( $default ) . '</code>';
@@ -828,16 +918,15 @@ abstract class ConfigurationPage extends SpecialPage {
 	/**
 	 * Build a table row for $conf setting with $default as default value
 	 *
-	 * @parm $msg String: message name to display, use $conf if the message is
-	 *            empty
 	 * @param $conf String: name of the setting
-	 * @param $type String: type of the setting
-	 * @param $default String: default value
-	 * @param $showLink Bool: whether to show link to mw.org
+	 * @param $params Array: options
 	 * @return String xhtml fragment
 	 */
-	protected function buildTableRow( $msg, $conf, $type, $default, $showLink = true ){
+	protected function buildTableRow( $conf, $params ){
 		global $wgContLang;
+
+		$msg = isset( $params['msg'] ) ? $params['msg'] : 'configure-setting-' . $conf;
+		$showLink = isset( $params['link'] ) ? $params['link'] : true;
 
 		$align = array();
 		$align['align'] = $wgContLang->isRtl() ? 'right' : 'left';
@@ -853,11 +942,88 @@ abstract class ConfigurationPage extends SpecialPage {
 		}
 		$td1 = Xml::openElement( 'td', $align ) . $link . '</td>';
 		if( $this->isSettingAvailable( $conf ) )
-			$td2 = Xml::openElement( 'td', $align ) . $this->buildInput( $conf, $type, $default ) . '</td>';
+			$td2 = Xml::openElement( 'td', $align ) . $this->buildInput( $conf, $params ) . '</td>';
 		else
 			$td2 = Xml::openElement( 'td', $align ) . 
 				wfMsgExt( 'configure-setting-not-available', array( 'parseinline' ) ) . '</td>';
 
 		return '<tr>' . $td1 . $td2 . "</tr>\n";
+	}
+	
+	/**
+	 * Really build the content of the form
+	 *
+	 * @param $settings array
+	 * @param $params array
+	 * @return xhtml
+	 */
+	protected function buildSettings( $settings, $param = array() ){
+		$ret = '';
+		$perms = array();
+		$notEditableSet = $this->getNotEditableSettings();
+		foreach( $settings as $title => $groups ){
+			$res = true;
+			if( !isset( $param['restrict'] ) ){
+				$res = true;
+			} elseif( is_array( $param['restrict'] ) ){
+				if( isset( $param['restrict'][$title] ) )
+					$res = $param['restrict'][$title];
+				elseif( isset( $param['restrict']['_default'] ) )
+					$res = $param['restrict']['_default'];
+				else 
+					$res = true;
+			} else {
+				$res = (bool)$param['restrict'];
+			}
+			foreach( $groups as $name => $sect ){
+				foreach( $sect as $setting => $unused ){
+					if( in_array( $setting, $notEditableSet ) ){
+						unset( $groups[$name][$setting] );
+						continue;
+					}
+					$read = $this->userCanRead( $setting );
+					$edit = $this->userCanEdit( $setting );
+					if( $edit )
+						$res = false;
+					$perms[$setting] = array( 'read' => $read, 'edit' => $edit );	
+				}
+				if( !count( $groups[$name] ) )
+					unset( $groups[$name] );
+			}
+			$ret .= Xml::openElement( 'fieldset' ) . "\n" .
+				Xml::element( 'legend', null, wfMsgExt( 'configure-section-' . $title, array( 'parseinline' ) ) ) . "\n";
+			if( $res ){
+				$ret .= wfMsgExt( 'configure-section-' . $title . '-notallowed', array( 'parseinline' ) );
+			} else {
+				$first = true;
+				if( !isset( $param['showlink'] ) ){
+					$showlink = true;
+				} elseif( is_array( $param['showlink'] ) ){
+					if( isset( $param['showlink'][$title] ) )
+						$showlink = $param['showlink'][$title];
+					elseif( isset( $param['showlink']['_default'] ) )
+						$showlink = $param['showlink']['_default'];
+					else 
+						$showlink = true;
+				} else {
+					$showlink = (bool)$param['showlink'];
+				}
+				foreach( $groups as $group => $settings ){
+					$ret .= $this->buildTableHeading( $group, !$first );
+					$first = false;
+					foreach( $settings as $setting => $type ){
+						$params = $perms[$setting] + array(
+							'type' => $type,
+							'value' => $this->getSettingValue( $setting ),
+							'link' => $showlink,
+						);
+						$ret .= $this->buildTableRow( $setting, $params );
+					}
+				}
+				$ret .= Xml::closeElement( 'table' ) . "\n";
+			}
+			$ret .= Xml::closeElement( 'fieldset' );
+		}
+		return $ret;
 	}
 }

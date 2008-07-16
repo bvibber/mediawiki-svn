@@ -29,6 +29,40 @@ $wgConfigureFilesPath = "$IP/serialized";
 $wgConfigureWikis = false;
 
 /**
+ * Array of custom extensions (keys have no importance, it has the same format
+ * as $extensions in Configure.settings-ext.php)
+ * Each value of this array should be an array with the following keys:
+ * - name: name of the extension (required)
+ * - dir: dir name of the extension, if different than extension's name
+ * - file: main file name, if different that name.php
+ * - settings: array of settings mapping setting's name to its type
+ * - array: array type for settings
+ * - schema: put it to true if the extension requires a database schema change
+ * - url: url to the documentation page
+ */
+$wgConfigureAdditionalExtensions = array();
+
+/**
+ * Add of supplementary view restrictions. Format is
+ * $wgConfigureViewRestrictions['wgSetting'] = array( 'right1', 'right2' );
+ * if multiple rights are given, the must have *all* of them to see the setting
+ */
+$wgConfigureViewRestrictions = array();
+
+/**
+ * Add of supplementary edit restrictions. Format is
+ * $wgConfigureViewRestrictions['wgSetting'] = array( 'right1', 'right2' );
+ * if multiple rights are given, the must have *all* of them to edit the setting
+ */
+$wgConfigureEditRestrictions = array();
+
+/**
+ * Array of not editable settings, by anyone.
+ * They won't be saved in conf-now.ser.
+ */
+$wgConfigureNotEditableSettings = array();
+
+/**
  * Whether to update $wgCacheEpoch when saving changes in Special:Configure
  */
 $wgConfigureUpdateCacheEpoch = false; 
@@ -45,7 +79,7 @@ $wgExtensionCredits['specialpage'][] = array(
 	'url' => 'http://www.mediawiki.org/wiki/Extension:Configure',
 	'description' => 'Allow authorised users to configure the wiki by a web-based interface',
 	'descriptionmsg' => 'configure-desc',
-	'version' => '0.5.7',
+	'version' => '0.6.0',
 );
 
 ## Adding new rights...
@@ -111,6 +145,18 @@ $wgSpecialPages['Extensions'] = 'SpecialExtensions';
 
 ## Helper for Special:Extension
 $wgAutoloadClasses['WebExtension'] = $dir . 'Configure.ext.php';
+
+# Core settings
+define( 'CONF_SETTINGS_CORE', 1 );
+
+# Extensions settings
+define( 'CONF_SETTINGS_EXT', 2 );
+
+# Both
+define( 'CONF_SETTINGS_BOTH', 3 );
+
+## Helper for configuration settings
+$wgAutoloadClasses['ConfigurationSettings'] = $dir . 'Configure.settings.php';
 
 ## Diff stuff
 $wgAutoloadClasses['ConfigurationDiff'] = $dir . 'Configure.diff.php';

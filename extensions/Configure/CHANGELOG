@@ -1,6 +1,14 @@
 This file lists changes on this extension.
 Localisation updates are done on betawiki and aren't listed here.
 
+0.6.0 - 16 July 2008
+  Added following settings to configure Configure itself:
+  * $wgConfigureAdditionalExtensions: custom extensions
+  * $wgConfigureViewRestrictions: read restrictions
+  * $wgConfigureEditRestrictions: edit restrictions
+  * $wgConfigureNotEditableSettings: not editable settings
+  See Configure.php for further documentation about these settings.
+
 0.5.7 - 14 July 2008
   Updated FlaggedRevs extension.
 

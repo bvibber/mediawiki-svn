@@ -9,14 +9,18 @@ if ( !defined( 'MEDIAWIKI' ) ) die();
  */
 class SpecialViewConfig extends ConfigurationPage {
 	protected $isWebConfig;
-	var $mRequireWebConf = false;
-	var $mCanEdit = false;
+	protected $mRequireWebConf = false;
+	protected $mCanEdit = false;
 
 	/**
 	 * Constructor
 	 */
 	public function __construct() {
 		parent::__construct( 'ViewConfig', 'viewconfig' );
+	}
+
+	protected function getSettingMask(){
+		return CONF_SETTINGS_BOTH;	
 	}
 
 	protected function getVersion(){
@@ -60,22 +64,6 @@ class SpecialViewConfig extends ConfigurationPage {
 			}
 		}
 
-		return true;
-	}
-
-	/**
-	 * Return true if the current user is allowed to configure $setting.
-	 * @return bool
-	 */
-	public function userCanEdit( $setting ){
-		return false;
-	}
-
-	public function userCanRead( $setting ){
-		if( $this->isUserAllowedAll() )
-			return true;
-		if( array_key_exists( $setting, SpecialConfigure::staticGetAllSettings() ) )
-			return !in_array( $setting, SpecialConfigure::staticGetViewRestricted() );
 		return true;
 	}
 
@@ -231,23 +219,6 @@ class SpecialViewConfig extends ConfigurationPage {
 		return $text;
 	}
 
-	protected function getEditableSettings(){
-		return SpecialConfigure::staticGetEditableSettings() +
-			SpecialExtensions::staticGetSettings();
-	}
-	
-	protected function getArrayType( $setting ){
-		$type = SpecialConfigure::staticGetArrayType( $setting );
-		if( !$type )
-			$type = SpecialExtensions::staticGetArrayType( $setting );
-		return $type;
-	}
-
-	protected function isSettingAvailable( $setting ){
-		return SpecialConfigure::staticIsSettingAvailable( $setting ) ||
-			array_key_exists( $setting, SpecialExtensions::staticGetEditableSettings() );
-	}
-
 	/**
 	 * Taken from PageHistory.php
 	 */
@@ -261,29 +232,16 @@ class SpecialViewConfig extends ConfigurationPage {
 				);
 	}
 
+	/**
+	 * Build the content of the form
+	 *
+	 * @return xhtml
+	 */
 	protected function buildAllSettings(){
-		$ret = '';
-		$settings = SpecialConfigure::staticGetSettings() + SpecialExtensions::staticGetSettings();
-		foreach( $settings as $title => $groups ){
-			$msgName = 'configure-section-' . $title;
-			$msg = wfMsg( $msgName );
-			if( wfEmptyMsg( $msgName, $msg ) )
-				$msg = $title;
-			$ret .= Xml::openElement( 'fieldset' ) . "\n" .
-				Xml::element( 'legend', null, $msg ) . "\n";
-			$first = true;
-			foreach( $groups as $group => $settings ){
-				$ret .= $this->buildTableHeading( $group, !$first );
-				$first = false;
-				foreach( $settings as $setting => $type ){
-					if( !in_array( $setting, SpecialConfigure::staticGetNotEditableSettings() ) )
-						$ret .= $this->buildTableRow( 'configure-setting-' . $setting, 
-								$setting, $type, $this->getSettingValue( $setting ), !( $title == 'mw-extensions' ) );
-				}
-			}
-			$ret .= Xml::closeElement( 'table' ) . "\n";
-			$ret .= Xml::closeElement( 'fieldset' );
-		}
-		return $ret;
+		$opt = array(
+			'restrict' => false,
+			'showlink' => array( '_default' => true, 'mw-extensions' => false ),
+		);
+		return $this->buildSettings( $this->getSettings(), $opt );
 	}
 }

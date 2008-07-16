@@ -276,11 +276,11 @@ class CorePreviewConfigurationDiff extends ConfigurationDiff {
 	}
 
 	protected function getSettings(){
-		return SpecialConfigure::staticGetSettings();
+		return ConfigurationSettings::singleton( CONF_SETTINGS_CORE )->getSettings();
 	}
 
 	protected function getArrayType( $setting ){
-		return SpecialConfigure::staticGetArrayType( $setting );
+		return ConfigurationSettings::singleton( CONF_SETTINGS_CORE )->getArrayType( $setting );
 	}
 }
 
@@ -300,11 +300,11 @@ class ExtPreviewConfigurationDiff extends ConfigurationDiff {
 	}
 
 	protected function getSettings(){
-		return SpecialExtensions::staticGetSettings();
+		return ConfigurationSettings::singleton( CONF_SETTINGS_EXT )->getSettings();
 	}
 
 	protected function getArrayType( $setting ){
-		return SpecialConfigure::staticGetArrayType( $setting );
+		return ConfigurationSettings::singleton( CONF_SETTINGS_EXT )->getArrayType( $setting );
 	}
 }
 
@@ -326,15 +326,10 @@ class HistoryConfigurationDiff extends ConfigurationDiff {
 	}
 
 	protected function getSettings(){
-		return SpecialConfigure::staticGetSettings() +
-			SpecialExtensions::staticGetSettings();
+		return ConfigurationSettings::singleton( CONF_SETTINGS_BOTH )->getSettings();
 	}
 
 	protected function getArrayType( $setting ){
-		$type = SpecialConfigure::staticGetArrayType( $setting );
-		if( $type )
-			return $type;
-		else
-			return SpecialConfigure::staticGetArrayType( $setting );
+		return ConfigurationSettings::singleton( CONF_SETTINGS_BOTH )->getArrayType( $setting );
 	}
 }

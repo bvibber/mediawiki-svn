@@ -58,7 +58,7 @@ if( isset( $options['from-doc'] ) ){
 	preg_match_all( '/\[\[[Mm]anual:\$(wg[A-Za-z0-9]+)\|/', $cont, $m );
 	$allSettings = array_unique( $m[1] );
 } else {
-	$allSettings = array_keys( SpecialConfigure::staticGetAllSettings() );
+	$allSettings = array_keys( ConfigurationSettings::getAllSettings( CONF_SETTINGS_CORE ) );
 }
 
 // Now we'll need to open DefaultSettings.php
@@ -71,7 +71,7 @@ $missing = array_diff( $definedSettings, $allSettings );
 $remain = array_diff( $allSettings, $definedSettings );
 $obsolete = array();
 foreach( $remain as $setting ){
-	if( SpecialConfigure::staticIsSettingAvailable( $setting ) )
+	if( ConfigurationSettings::isSettingAvailable( CONF_SETTINGS_CORE, $setting ) )
 		$obsolete[] = $setting;
 }
 

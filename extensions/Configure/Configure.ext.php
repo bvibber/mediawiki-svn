@@ -108,7 +108,7 @@ class WebExtension {
 			foreach( $this->mSettings as $name => $type ){
 				$val = $this->mObj->getSettingValue( $name );
 				$ret .= '<tr><td>$' . $name . '</td><td>' .
-					call_user_func_array( array( $this->mObj, 'buildInput' ), array( $name, $type, $val ) ) .
+					call_user_func_array( array( $this->mObj, 'buildInput' ), array( $name, array( 'value' => $val, 'type' => $type ) ) ) .
 					"</td></tr>\n";
 			}
 			$ret .= "</table>\n";
