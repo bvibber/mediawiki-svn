@@ -5,7 +5,7 @@
 # to a specific page.
 
 # @addtogroup Extensions
-# @author Leon Weber <leon.weber@leonweber.de> & Manuel Schneider <manuel.schneider@wikimedia.ch>
+# @author Leon Weber <leon@leonweber.de> & Manuel Schneider <manuel.schneider@wikimedia.ch>
 # @copyright © 2006 by Leon Weber & Manuel Schneider
 # @licence GNU General Public Licence 2.0 or later
 
@@ -19,6 +19,15 @@ function fnSelectCategoryShowHook( $m_isUpload = false, &$m_pageObj ) {
 
 	# check if we should do anything or sleep
 	if ( fnSelectCategoryCheckConditions( $m_isUpload, &$m_pageObj ) ) {
+    # Register CSS file for our select box:
+    global $wgOut, $wgScriptPath;
+    $wgOut->addLink(
+      array(
+        'rel'  => 'stylesheet',
+        'type' => 'text/css',
+        'href' => "$wgScriptPath/extensions/SelectCategory/SelectCategory.css"
+      )
+    );
 
 		# Get all categories from wiki:
 		$m_allCats = fnSelectCategoryGetAllCategories();
@@ -50,25 +59,25 @@ function fnSelectCategoryShowHook( $m_isUpload = false, &$m_pageObj ) {
 #		$m_pageObj->$m_place .= "<script type=\"text/javascript\" src=\"'/extensions/SelectCategory/SelectCategory.js\"></script>\n";
 #		# Then the "old-style" select box for those without JavaScript:
 #		$m_pageObj->$m_place .= "<noscript>\n";
-		$m_pageObj->$m_place .= "<select id=\"SelectCategoryBox\" size=\"10\" name=\"SelectCategoryList[]\" multiple=\"multiple\">\n";
-		# Populate box with categories:
-		foreach( $m_allCats as $m_cat => $m_prefix ) {
-			# Check if the category is in the list of category links on the page then select the entry:
-			if ( @$m_pageCats[ $m_cat ] ) $m_selected = 'selected="selected"';
-			else $m_selected = '';
-			# Print the entry:
-			$m_pageObj->$m_place .= "\t<option $m_selected value=\"". htmlspecialchars( $m_cat ) . "\">";
-			for ( $m_i = 0; $m_i < $m_prefix; $m_i++ ) $m_pageObj->$m_place .= '&nbsp;&nbsp;';
-			$m_pageObj->$m_place .= htmlspecialchars( $m_cat );
-			$m_pageObj->$m_place .= "</option>\n";
-		}
-		# Close select box:
-		$m_pageObj->$m_place .= "</select>\n";
 #		$m_pageObj->$m_place .= "</noscript>\n";
-		# Print localised help string:
-		$m_pageObj->$m_place .= wfMsg( 'selectcategory-subtitle' ) . "<br />\n";
-		$m_pageObj->$m_place .= "<!-- SelectCategory end -->\n";
 
+    $m_pageObj->$m_place .= '<ul id="SelectCategoryList">';
+    foreach( $m_allCats as $m_cat => $m_prefix ) {
+      $checked = ( @$m_pageCats[ $m_cat ] ) ? "checked=\"checked\"" : '';
+      $category =  htmlspecialchars( $m_cat );
+      $m_pageObj->$m_place .= "
+        <li>
+          <label>
+            <input type=\"checkbox\" name=\"SelectCategoryList[]\"
+              value=\"$category\" class=\"checkbox\" $checked />
+            $category
+          </label>
+        </li>";
+    }
+    $m_pageObj->$m_place .= '</ul>';
+
+    # Print localised help string:
+    $m_pageObj->$m_place .= "<!-- SelectCategory end -->\n";
 	}
 
 	# Return true to let the rest work:
@@ -115,23 +124,6 @@ function fnSelectCategorySaveHook( $m_isUpload, &$m_pageObj ) {
 	return true;
 }
 
-## Entry point for the hook for printing the CSS:
-function fnSelectCategoryOutputHook( &$m_pageObj, &$m_parserOutput ) {
-	global $wgScriptPath;
-
-	# Register CSS file for our select box:
-	$m_pageObj->addLink(
-		array(
-			'rel'	=> 'stylesheet',
-			'type'	=> 'text/css',
-			'href'	=> $wgScriptPath . '/extensions/SelectCategory/SelectCategory.css'
-		)
-	);
-
-	# Be nice:
-	return true;
-}
-
 ## Get all categories from the wiki - starting with a given root or otherwise detect root automagically (expensive):
 function fnSelectCategoryGetAllCategories() {
 	global $wgTitle;
@@ -139,7 +131,7 @@ function fnSelectCategoryGetAllCategories() {
 
 	# Get current namespace (save duplicate call of method):
 	$m_namespace = $wgTitle->getNamespace();
-	if( $wgSelectCategoryRoot[$m_namespace] ) {
+	if( $m_namespace >= 0 && $wgSelectCategoryRoot[$m_namespace] ) {
 		# Include root and step into the recursion:
 		$m_allCats = array_merge( array( $wgSelectCategoryRoot[$m_namespace] => 0 ), fnSelectCategoryGetChildren( $wgSelectCategoryRoot[$m_namespace] ) );
 	} else {
@@ -259,9 +251,11 @@ function fnSelectCategoryCheckConditions ($m_isUpload, &$m_pageObj ) {
 	# Run only if we are in an upload, a activated namespace or if page is
         # a subpage and subpages are enabled (unfortunately we can't use
         # implication in PHP) but not if we do a sectionedit:
-	if ( $m_isUpload || ( $wgSelectCategoryNamespaces[$wgTitle->getNamespace()] && ( !$m_isSubpage || ( $m_isSubpage && $wgSelectCategoryEnableSubpages ) ) ) && $m_pageObj->section == false ) {
-		return true;
-	} else {
-		return false;
-	}
+	return (
+    $m_isUpload
+      || ( $wgSelectCategoryNamespaces[$wgTitle->getNamespace()]
+           && ( !$m_isSubpage
+                || ( $m_isSubpage && $wgSelectCategoryEnableSubpages ) ) )
+      && $m_pageObj->section == false
+  );
 }

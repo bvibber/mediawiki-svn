@@ -4,7 +4,7 @@
  *
  * @package MediaWiki
  * @subpackage Extensions
- * @author Leon Weber <leon.weber@leonweber.de> & Manuel Schneider <manuel.schneider@wikimedia.ch>
+ * @author Leon Weber <leon@leonweber.de> & Manuel Schneider <manuel.schneider@wikimedia.ch>
  * @copyright © 2006 by Leon Weber & Manuel Schneider
  * @licence GNU General Public Licence 2.0 or later
 */
@@ -13,3 +13,15 @@
 	width: 100%;
 	padding: .1em;
 }
+
+ul#SelectCategoryList {
+  list-style-image: none;
+  list-style-type: none;
+  float: left;
+}
+
+ul#SelectCategoryList li {
+  float: left;
+  width: 150px;
+}
+
