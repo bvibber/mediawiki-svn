@@ -1,0 +1,11 @@
+--- ./SConstruct.old	Wed Jul 16 14:44:34 2008
++++ ./SConstruct	Wed Jul 16 14:44:19 2008
+@@ -160,7 +160,7 @@
+ if env['BIDI'] : C_LIBSHEADERS.append(['fribidi','fribidi/fribidi.h',True])
+ 
+ BOOST_LIBSHEADERS = [
+-    # ['system', 'boost/system/system_error.hpp', True], # uncomment this on Darwin + boost_1_35
++    ['system', 'boost/system/system_error.hpp', True], # uncomment this on Darwin + boost_1_35
+     ['filesystem', 'boost/filesystem/operations.hpp', True],
+     ['regex', 'boost/regex.hpp', True],
+     ['iostreams','boost/iostreams/device/mapped_file.hpp',True],

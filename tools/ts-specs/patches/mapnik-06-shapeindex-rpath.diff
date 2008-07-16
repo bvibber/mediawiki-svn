@@ -1,0 +1,11 @@
+--- ./utils/shapeindex/SConscript.old	Wed Jul 16 15:37:40 2008
++++ ./utils/shapeindex/SConscript	Wed Jul 16 15:37:42 2008
+@@ -48,7 +48,7 @@
+     boost_iostreams = '%s%s' % (boost_iostreams,thread_suffix)
+ libraries =  [boost_program_options,boost_iostreams]
+ 
+-shapeindex = env.Program('shapeindex', source, CPPPATH=headers, LIBS=libraries)
++shapeindex = env.Program('shapeindex', source, CPPPATH=headers, LIBS=libraries, LINKFLAGS="-R/opt/boost/lib")
+ 
+ env.Install(install_prefix + '/bin', shapeindex)
+ env.Alias('install', install_prefix + '/bin')

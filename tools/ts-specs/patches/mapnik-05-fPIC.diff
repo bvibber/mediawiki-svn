@@ -1,0 +1,10 @@
+--- ./agg/SConscript.old	Wed Jul 16 15:08:15 2008
++++ ./agg/SConscript	Wed Jul 16 15:08:17 2008
+@@ -22,6 +22,6 @@
+ Import('env')
+ 
+ if env['PLATFORM'] == 'SunOS':
+-    env.StaticLibrary('agg', glob.glob('./src/' + '*.cpp'), LIBS=[], CPPPATH='./include', CXXFLAGS='-O -KPIC -DNDEBUG')
++    env.StaticLibrary('agg', glob.glob('./src/' + '*.cpp'), LIBS=[], CPPPATH='./include', CXXFLAGS='-O -fPIC -DNDEBUG')
+ else:
+     env.StaticLibrary('agg', glob.glob('./src/' + '*.cpp'), LIBS=[], CPPPATH='./include', CXXFLAGS='-O3 -fPIC -DNDEBUG')

@@ -1,0 +1,14 @@
+--- ./include/mapnik/plugin.hpp.old	Wed Jul 16 15:27:27 2008
++++ ./include/mapnik/plugin.hpp	Wed Jul 16 15:28:00 2008
+@@ -29,7 +29,11 @@
+ // stl
+ #include <string>
+ 
++#include <ltdl.h>
++
++#if 0
+ typedef struct lt_dlhandle_struct * lt_dlhandle;
++#endif
+ namespace mapnik
+ {
+    class PluginInfo : boost::noncopyable

@@ -1,0 +1,11 @@
+--- ./include/mapnik/global.hpp.old	Wed Jul 16 15:22:31 2008
++++ ./include/mapnik/global.hpp	Wed Jul 16 15:22:56 2008
+@@ -27,7 +27,7 @@
+ 
+ #include <boost/cstdint.hpp>
+ 
+-#ifdef __SUNPRO_CC
++#ifdef __sun
+ // Foo
+ #else
+ using boost::int32_t;

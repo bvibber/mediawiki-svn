@@ -1,0 +1,13 @@
+--- ./scons/scons-local-0.97.0d20071212/SCons/Tool/__init__.py.old	Wed Jul 16 15:16:33 2008
++++ ./scons/scons-local-0.97.0d20071212/SCons/Tool/__init__.py	Wed Jul 16 15:16:38 2008
+@@ -517,8 +517,8 @@
+     elif str(platform) == 'sunos':
+         "prefer Forte tools on SunOS"
+         linkers = ['sunlink', 'gnulink']
+-        c_compilers = ['suncc', 'gcc', 'cc']
+-        cxx_compilers = ['sunc++', 'g++', 'c++']
++        c_compilers = ['gcc', 'cc']
++        cxx_compilers = ['g++', 'c++']
+         assemblers = ['as', 'gas']
+         fortran_compilers = ['f95', 'f90', 'f77', 'g77', 'fortran']
+         ars = ['sunar']
