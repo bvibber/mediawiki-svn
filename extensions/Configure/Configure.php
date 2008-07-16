@@ -43,16 +43,18 @@ $wgConfigureWikis = false;
 $wgConfigureAdditionalExtensions = array();
 
 /**
- * Add of supplementary view restrictions. Format is
+ * Array of supplementary view restrictions. Format is
  * $wgConfigureViewRestrictions['wgSetting'] = array( 'right1', 'right2' );
- * if multiple rights are given, the must have *all* of them to see the setting
+ * if multiple rights are given, the user must have *all* of them to see the
+ * setting
  */
 $wgConfigureViewRestrictions = array();
 
 /**
- * Add of supplementary edit restrictions. Format is
+ * Array of supplementary edit restrictions. Format is
  * $wgConfigureViewRestrictions['wgSetting'] = array( 'right1', 'right2' );
- * if multiple rights are given, the must have *all* of them to edit the setting
+ * if multiple rights are given, the user must have *all* of them to edit the
+ * setting
  */
 $wgConfigureEditRestrictions = array();
 

@@ -6,7 +6,7 @@ if ( !defined( 'MEDIAWIKI' ) ) die();
  * @ingroup Extensions
  */
 class ConfigurationSettings {
-	protected $initialized = false;
+	protected $types, $initialized = false;
 	
 	// Core settings
 	protected $settings, $arrayDefs, $editRestricted, $viewRestricted,
@@ -115,7 +115,7 @@ class ConfigurationSettings {
 			return $arr;
 		$this->loadSettingsDefs();
 		$arr = array();
-		foreach( $this->getSettings( $this->types ) as $section ){
+		foreach( $this->getSettings() as $section ){
 			foreach( $section as $group ){
 				$arr = array_merge( $arr, $group );
 			}
