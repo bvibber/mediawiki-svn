@@ -1138,6 +1138,7 @@ mediaSource.prototype =
     start_offset:null,
     /** Duration of the requested segment (NaN if not known) */
     duration:NaN,
+    is_playable:null,
 
     id:null,    
     start_ntp:null,
@@ -1155,19 +1156,25 @@ mediaSource.prototype =
         if (tag == 'video')
             this.marked_default = true;
 
-        if (element.hasAttribute("title"))
-            this.title = element.getAttribute("title");
-        else
-            this.title = this.uri;
-        if (element.hasAttribute("id"))
-            this.id = element.getAttribute("id");
-
         if (element.hasAttribute('type'))
             this.mime_type = element.getAttribute('type');
         else if (element.hasAttribute('content-type'))
             this.mime_type = element.getAttribute('content-type');
         else
             this.mime_type = this.detectType(this.uri);
+
+        if (element.hasAttribute("title"))
+            this.title = element.getAttribute("title");
+        else
+        {
+            var parts = this.mime_type.split("/",2);
+            parts[0]=parts[0].replace('video', 'stream');
+            parts[1]=parts[1].replace('x-flv', 'flash');
+            this.title = parts[1] + ' ' + parts[0];
+        }
+        if (element.hasAttribute("id"))
+            this.id = element.getAttribute("id");
+
         js_log('Adding mediaSource of type ' + this.mime_type + ' and uri ' + this.uri + ' and title ' + this.title);
         this.parseURLDuration();
     },
@@ -1289,6 +1296,8 @@ mediaElement.prototype =
 {
     /** The array of mediaSource elements. */
     sources:null,
+    /** Playable sources **/
+    playable_sources:null,
     /** Selected mediaSource element. */
     selected_source:null,
     thumbnail:null,
@@ -1300,6 +1309,7 @@ mediaElement.prototype =
         var _this = this;        
         js_log('Initializing mediaElement...');
         this.sources = new Array();
+        this.playable_sources = new Array();
         this.thumbnail = mv_default_thumb_url;
         // Process the <video> element
         this.tryAddSource(video_element);
@@ -1322,14 +1332,14 @@ mediaElement.prototype =
 	            });
         	}
         // Select the default source
-        for (var source in this.sources)
-            if(this.sources[source].marked_default)
-                this.selected_source = this.sources[source];
+        for (var source in this.playable_sources)
+            if(this.playable_sources[source].marked_default)
+                this.selected_source = this.playable_sources[source];
         // or the first source
         if (!this.selected_source)
         {
             js_log('autoselecting first source');
-            this.selected_source = this.sources[0];
+            this.selected_source = this.playable_sources[0];
         }
     },
     /** Updates the time request for all sources that have a standard time request argument (ie &t=start_time/end_time)
@@ -1374,6 +1384,10 @@ mediaElement.prototype =
         }
         return false;
     },
+    isPlayableType:function(mime_type)
+    {
+        return mime_type=='video/ogg' || mime_type=='video/annodex' || mime_type=='video/x-flv';
+    },
     /** Adds a single mediaSource using the provided element if
         the element has a 'src' attribute.
         @param element {element} <video>, <source> or <mediaSource> element.
@@ -1382,7 +1396,10 @@ mediaElement.prototype =
     {
         if (!element.hasAttribute('src'))
             return;
-        this.sources.push(new mediaSource(element));
+        var source = new mediaSource(element);
+        this.sources.push(source);
+        if(this.isPlayableType(source.mime_type))
+            this.playable_sources.push(source);
     },
     /** Imports media sources from ROE data.
         @param roe_data ROE data.
@@ -1818,20 +1835,36 @@ embedVideo.prototype = {
 	},
     selectPlaybackMethod:function(){
         var _this=this;
-        var select_code=this.getDLlist(function(index, source)
+        var select_code=this.getPlaybackMethodList(function(index, source)
         {
             var default_player = embedTypes.players.defaultPlayer(source.getMIMEType());
             var source_select_code = 'document.getElementById(\''+_this.id+'\').closeDisplayedHTML(); document.getElementById(\''+_this.id+'\').media_element.selectSource(\''+index+'\');';
             var player_code = _this.getPlayerSelectList(source.getMIMEType(), index, source_select_code);
+            var is_not_selected = (source != _this.media_element.selected_source);
             if (default_player)
-                return '<a href="#" onClick="' + source_select_code + 'embedTypes.players.userSelectPlayer(\''+default_player.id+'\',\''+source.getMIMEType()+'\'); return false;">'
-                + source.getTitle()+' - ' + default_player.getName() + '</a> '
-                + '(<a href="#" onClick=\'$j("#player_select_list_'+index+'").fadeIn("slow");return false;\'>choose player</a>)' + player_code;
+            {
+                var retval = '';
+                if(is_not_selected)
+                    retval+='<a href="#" onClick="' + source_select_code + 'embedTypes.players.userSelectPlayer(\''+default_player.id+'\',\''+source.getMIMEType()+'\'); return false;">';
+                retval += source.getTitle()+' - ' + default_player.getName() + (is_not_selected?'</a>':'') + ' ';
+                retval += '(<a href="#" onClick=\'$j("#player_select_list_'+index+'").fadeIn("slow");return false;\'>choose player</a>)' + player_code;
+                return retval;
+            }
             else
                 return source.getTitle() + ' - no player available';
         });
         this.displayHTML(select_code);
     },
+    getPlaybackMethodList:function(transform_function){
+		var out='<span style="color:white"><blockquote>';
+        var _this=this;
+		$j.each(this.media_element.playable_sources, function(index, source)
+        {	
+            out+='<li>' + transform_function(index, source) + '</li>'+"\n";
+		});
+		out+='</blockquote></span>';		
+		return out;
+	},
 	showVideoDownload:function(){
         var select_code=this.getDLlist(function(index, source)
         {
@@ -1840,11 +1873,8 @@ embedVideo.prototype = {
         });
         this.displayHTML(select_code);
 	},
-	/*
-	 * Its pretty confusing to merge getDLlist with selectPlaybackMethod
-	 */
 	getDLlist:function(transform_function){
-		var out='<b style="color:white;">'+getMsg('download_from')+' '+parseUri(this.src).queryKey['t']+'</b><br>';
+		var out='<b style="color:white;">'+getMsg('download_from')/*+' '+parseUri(this.src).queryKey['t']*/+'</b><br>';
 		out+='<span style="color:white"><blockquote>';
 		var dl_list=dl_txt_list='';
 		$j.each(this.media_element.getSources(), function(index, source)
