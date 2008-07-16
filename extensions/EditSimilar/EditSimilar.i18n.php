@@ -38,6 +38,7 @@ $messages['af'] = array(
  * @author Meno25
  */
 $messages['ar'] = array(
+	'editsimilar-thankyou'     => 'شكرا لمساهمتك، $1!',
 	'editsimilar-link-disable' => 'ضبط الخيارات',
 	'tog-edit-similar'         => 'تفعيل اقتراحات الصفحات المشابهة',
 );

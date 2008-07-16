@@ -379,7 +379,7 @@ $messages['nds'] = array(
  */
 $messages['nl'] = array(
 	'spamregex'                      => 'SpamRegex',
-	'spamregex-desc'                 => "Ongewilde zinnen [[Special:Spamfilter|uitfilteren]] in bewerkte pagina's, gebaseerd op reguliere expressies",
+	'spamregex-desc'                 => "Ongewilde zinnen [[Special:Spamregex|uitfilteren]] in bewerkte pagina's, gebaseerd op reguliere expressies",
 	'spamregex_summary'              => 'De tekst is gevonden in de paginasamenvatting.',
 	'spamregex-intro'                => 'Gebruik dit formulier om doeltreffend te voorkomen dat uitdrukkingen worden opgeslagen in een paginatekst.
 Als de tekst de gegeven uitdrukkingen bevat, dan wordt de wijziging niet opgeslagen en wordt een uitleg aan de gebruiker weergegeven die de pagina probeerde op te slaan.

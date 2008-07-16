@@ -615,10 +615,30 @@ $messages['is'] = array(
  * @author Darth Kule
  */
 $messages['it'] = array(
-	'changeauthor'            => 'Cambia autore revisione',
-	'changeauthor-desc'       => "Permette di modificare l'autore di una revisione",
-	'changeauthor-title'      => "Modifica l'autore di una revisione",
-	'changeauthor-search-box' => 'Ricerca revisioni',
+	'changeauthor'                      => 'Cambia autore revisione',
+	'changeauthor-desc'                 => "Permette di modificare l'autore di una revisione",
+	'changeauthor-title'                => "Modifica l'autore di una revisione",
+	'changeauthor-search-box'           => 'Ricerca revisioni',
+	'changeauthor-pagename-or-revid'    => 'Nome pagina o ID revisione:',
+	'changeauthor-pagenameform-go'      => 'Vai',
+	'changeauthor-comment'              => 'Commento:',
+	'changeauthor-changeauthors-multi'  => 'Modifica autore/i',
+	'changeauthor-explanation-multi'    => "Con questo semplice modulo puoi modificare gli autori di revisioni.
+Basta cambiare uno o più nomi utente nell'elenco seguente, aggiungere un commento (se lo ritieni opportuno) e fare clic sul pulsante 'Modifica autore/i'.",
+	'changeauthor-changeauthors-single' => 'Modifica autore',
+	'changeauthor-explanation-single'   => "Con questo semplice modulo puoi modificare l'autore di una revisione.
+Basta cambiare il nome utente seguente, aggiungere un commento (se lo ritieni opportuno) e fare clic sul pulsante 'Modifica autore'.",
+	'changeauthor-invalid-username'     => 'Nome utente non valido "$1".',
+	'changeauthor-nosuchuser'           => 'Nessun utente "$1".',
+	'changeauthor-revview'              => 'Revisione #$1 di $2',
+	'changeauthor-nosuchtitle'          => 'Non c\'è alcuna pagina chiamata "$1".',
+	'changeauthor-weirderror'           => "Si è verificato un errore molto strano.
+Prova a ripetere la richiesta.
+Se l'errore dovesse persistere, il database è probabilmente rotto.",
+	'changeauthor-invalidform'          => 'Utilizza il modulo presente nella pagina Special:ChangeAuthor piuttosto che un modulo personalizzato.',
+	'changeauthor-success'              => 'La tua richiesta è stata eseguita con successo.',
+	'changeauthor-logentry'             => "Modificato l'autore di $2 di $1 da $3 a $4",
+	'changeauthor-logpagename'          => 'Log delle modifiche autori',
 );
 
 /** Japanese (日本語)

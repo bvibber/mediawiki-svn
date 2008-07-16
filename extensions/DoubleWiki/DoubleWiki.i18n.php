@@ -277,6 +277,13 @@ $messages['sk'] = array(
 	'doublewiki-desc' => 'Zobrazí stránku a jej preklad z inej wiki v dvoch stĺpcoch na jednej stránke',
 );
 
+/** Serbian Cyrillic ekavian (ћирилица)
+ * @author Millosh
+ */
+$messages['sr-ec'] = array(
+	'doublewiki-desc' => 'Приказује страну и њен превод с другог викија у две колоне на истој страни.',
+);
+
 /** Seeltersk (Seeltersk)
  * @author Pyt
  */

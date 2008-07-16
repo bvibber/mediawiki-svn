@@ -246,11 +246,13 @@ $messages['nl'] = array(
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
  * @author Eirik
+ * @author Siebrand
  */
 $messages['nn'] = array(
 	'whoiswatching'                => 'Kven overvakar ei wikiside',
 	'specialwhoiswatchingthepage'  => 'Kven overvakar %s',
-	'specialwhoiswatchingusage'    => 'Denne spesialsida kan ikkje brukast åleine. Ver venleg og bruk sida [[MediaWiki:Number of watching users pageview]] for å legge inn tilgangspunkt til denne spesialsida.',
+	'specialwhoiswatchingusage'    => 'Denne spesialsida kan ikkje brukast åleine.
+Ver venleg og bruk sida [[MediaWiki:Number_of_watching_users_pageview]] for å legge inn tilgangspunkt til denne spesialsida.',
 	'specialwhoiswatchingaddusers' => 'Legg sida på overvakingslista til andre brukarar',
 	'specialwhoiswatchingaddbtn'   => 'Legg til utvalde brukarar',
 );

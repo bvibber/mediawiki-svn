@@ -38,7 +38,7 @@ $messages['an'] = array(
  */
 $messages['ar'] = array(
 	'filelist'              => 'قائمة الملف',
-	'filelist-desc'         => 'صفحة خاصة لعرض الملفات المرفوعة',
+	'filelist-desc'         => '[[Special:Filelist|صفحة خاصة]] لعرض الملفات المرفوعة',
 	'filelist-show-list'    => 'عرض القائمة',
 	'filelist-show-gallery' => 'عرض المعرض',
 	'filelist-image-desc'   => 'وصف',
@@ -73,7 +73,7 @@ $messages['be'] = array(
  */
 $messages['bg'] = array(
 	'filelist'              => 'Списък на файловете',
-	'filelist-desc'         => 'Специална страница със списък на качените файлове',
+	'filelist-desc'         => '[[Special:Filelist|Специална страница]] със списък на качените файлове',
 	'filelist-show-list'    => 'Показване на списъка',
 	'filelist-show-gallery' => 'Показване на галерията',
 	'filelist-image-desc'   => 'описание',

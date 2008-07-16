@@ -448,6 +448,21 @@ $messages['br'] = array(
 	'voctrain_Separate_values_by_commas_to_use_multiple_languages_'                                 => 'Dispartiañ ar yezhoù dre skejoù a-benn gellout implijout meur a yezh.',
 );
 
+/** Czech (Česky)
+ * @author Matěj Grabovský
+ */
+$messages['cs'] = array(
+	'voctrain_Permission_Denied' => 'Přístup odmítnut',
+	'voctrain_try_again_'        => 'zkusit znovu?',
+	'voctrain_Action_unknown'    => 'Neznámá akce',
+	'voctrain_User_added'        => 'Uživatel přidán',
+	'voctrain_continue'          => 'pokračovat',
+	'voctrain_Questions'         => 'Otázky',
+	'voctrain_Answers'           => 'Odpovědi',
+	'voctrain_Language'          => 'Jazyk',
+	'voctrain_Log_in'            => 'Přihlásit se',
+);
+
 /** German (Deutsch)
  * @author SabineCretella
  */

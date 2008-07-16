@@ -82,6 +82,36 @@ $messages['bg'] = array(
 	'extdist-svn-error'               => 'Възникна грешка в Subversion: <pre>$1</pre>',
 );
 
+/** Czech (Česky)
+ * @author Matěj Grabovský
+ */
+$messages['cs'] = array(
+	'extensiondistributor'            => 'Stáhnout rozšíření MediaWiki',
+	'extdist-desc'                    => 'Rozšíření pro distribuci archivů rozšíření',
+	'extdist-not-configured'          => 'Prosím, nastavte $wgExtDistTarDir a $wgExtDistWorkingCopy',
+	'extdist-wc-missing'              => 'Adresář nastavený pro pracovní kopii neexistuje!',
+	'extdist-no-such-extension'       => 'Rozšíření „$1” neexistuje',
+	'extdist-no-such-version'         => 'Rozšíření „$1” neexistuje ve verzi „$2”',
+	'extdist-choose-extension'        => 'Vyberte, které rozšíření chcete stáhnout:',
+	'extdist-wc-empty'                => 'Nastavená pracvní kopie nemá nemá rozšíření, které je možné distribuovat!',
+	'extdist-submit-extension'        => 'Pokračovat',
+	'extdist-current-version'         => 'Aktuální verze (trunk)',
+	'extdist-choose-version'          => '<big>Stahujete rozšíření <b>$1</b>.</big>
+
+Vyberte vaši verzi MediaWiki.
+
+Většina rozšíření funguje na více verzích MediaWiki, takže pokud tu není uvedená vaše verze MediaWiki nebo potřebujete novější verzi rozšíření, pokuste se použít aktuální verzi.',
+	'extdist-no-versions'             => 'Zvolené rozšíření ($1) není dostupné v žádné verzi!',
+	'extdist-submit-version'          => 'Pokračovat',
+	'extdist-no-remote'               => 'Nepodařilo se kontaktovat vzdáleného klienta Subversion.',
+	'extdist-remote-error'            => 'Chyba od vzdáleného klienta Subversion: <pre>$1</pre>',
+	'extdist-remote-invalid-response' => 'Neplatná odpověď od vzdáleného klienta Subversion.',
+	'extdist-svn-error'               => 'Subversion narazil na chybu: <pre>$1</pre>',
+	'extdist-svn-parse-error'         => 'Nebylo možné zpracovat XML z výstupu „svn info”: <pre>$1</pre>',
+	'extdist-tar-error'               => 'Tar sknočil s návratovým kódem $1:',
+	'extdist-want-more'               => 'Stáhnout jiné rozšíření',
+);
+
 /** German (Deutsch)
  * @author Raimond Spekking
  */

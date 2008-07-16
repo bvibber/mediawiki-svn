@@ -945,6 +945,32 @@ $messages['hil'] = array(
 	'viewapc-ls-submit' => 'Sige!',
 );
 
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
+$messages['hsb'] = array(
+	'viewapc'                   => 'APC informacije',
+	'viewapc-info-general'      => 'Powšitkowne informacije',
+	'viewapc-apc-version'       => 'APC wersija',
+	'viewapc-php-version'       => 'PHP wersija',
+	'viewapc-memory-free'       => 'Swobodny: $1 ($2)',
+	'viewapc-memory-used'       => 'Wužiwa so: $1 ($2)',
+	'viewapc-display-attribute' => 'Atribut',
+	'viewapc-display-value'     => 'Hódnota',
+	'viewapc-display-filename'  => 'Datajowe mjeno',
+	'viewapc-display-info'      => 'Mjeno',
+	'viewapc-display-type'      => 'Typ',
+	'viewapc-display-mem_size'  => 'Wulkosć',
+	'viewapc-ls-options-legend' => 'Opcije',
+	'viewapc-ls-header-name'    => 'Mjeno',
+	'viewapc-ls-header-size'    => 'Wulkosć',
+	'viewapc-ls-scope-active'   => 'Aktiwny',
+	'viewapc-ls-sort-size'      => 'Wulkosć',
+	'viewapc-ls-sort-name'      => 'Mjeno',
+	'viewapc-ls-limit-none'     => 'Wšě',
+	'viewapc-version-info'      => 'Wersijowe informacije',
+);
+
 /** Hungarian (Magyar)
  * @author Dani
  */
@@ -1003,6 +1029,7 @@ $messages['ia'] = array(
  * @author Rex
  */
 $messages['id'] = array(
+	'right-apc'                 => 'Menggunakan semua fitur di [[Special:ViewAPC]]',
 	'viewapc-display-info'      => 'Nama',
 	'viewapc-ls-options-legend' => 'Pilihan',
 	'viewapc-ls-header-name'    => 'Nama',

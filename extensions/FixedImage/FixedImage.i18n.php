@@ -207,6 +207,13 @@ $messages['sk'] = array(
 	'fixedimage-desc' => 'Pridáva značku <tt><nowiki><fundraising></nowiki></tt> ako obrázok',
 );
 
+/** Serbian Cyrillic ekavian (ћирилица)
+ * @author Millosh
+ */
+$messages['sr-ec'] = array(
+	'fixedimage-desc' => 'Додаје ознаку <tt><nowiki><fundraising></nowiki></tt> као слику.',
+);
+
 /** Swedish (Svenska)
  * @author M.M.S.
  * @author Lejonel

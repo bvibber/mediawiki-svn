@@ -68,7 +68,9 @@ $messages['de'] = array(
  * @author Consta
  */
 $messages['el'] = array(
-	'sc_today' => 'Σήμερα',
+	'sc_previousmonth' => 'Προηγούμενος μήνας',
+	'sc_nextmonth'     => 'Επόμενος μήνας',
+	'sc_today'         => 'Σήμερα',
 );
 
 /** Esperanto (Esperanto)

@@ -178,6 +178,9 @@ $messages['lb'] = array(
 [[Special:Userlogin|Loggt Iech an oder maacht e Benotzerkont op]] fir dëst ze verhënneren.",
 	'commentspammer-desc'         => "Refuséiert Ännerunge vu verdächtege Spammeren vun enger ''Schwaarzer DNS-Lësch''",
 	'commentspammer-log-msg'      => 'Ännerunge vun [[Special:Contributions/$1|$1]] fir [[:$2]].',
+	'commentspammer-log-msg-info' => 'De leschte Spam war viru(n) $1 {{PLURAL:$1|Dag|Deeg}}, den Niveau vum Alarm ass $2 an den "offence code" ass $3.
+[http://www.projecthoneypot.org/search_ip.php?ip=$4 Fir d\'Detailer ze kucken], oder [[Special:Blockip/$4|fir ze spären]].',
+	'cspammerlogpagetext'         => "Lëscht vun den Ännerungen déi ugeholl oder refuséiert goufen je nodeem ob d'Quell als Spammer bekannt war oder net.",
 	'cspammer-log-page'           => 'Bemierkung Spammer Logbuch',
 );
 

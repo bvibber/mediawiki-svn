@@ -118,6 +118,7 @@ $allMessages['af'] = array(
 /** Arabic (العربية)
  * @author OsamaK
  * @author Meno25
+ * @author Alnokta
  */
 $allMessages['ar'] = array(
 	'whitelist'                => 'صفحات القائمة البيضاء',
@@ -131,7 +132,7 @@ $allMessages['ar'] = array(
 	'whitelisttableexpires'    => 'ينتهي في',
 	'whitelisttablemodby'      => 'آخر تعديل بواسطة',
 	'whitelisttablemodon'      => 'آخر تعديل في',
-	'whitelisttableedit'       => 'تعديل',
+	'whitelisttableedit'       => 'عدل',
 	'whitelisttableview'       => 'عرض',
 	'whitelisttablenewdate'    => 'تاريخ جديد:',
 	'whitelisttablechangedate' => 'تغيير تاريخ إنتهاء الصلاحية',
@@ -143,6 +144,7 @@ $allMessages['ar'] = array(
 	'whitelistnewtableview'    => 'ضبط للعرض',
 	'whitelistnewtableprocess' => 'عملية',
 	'whitelistnewtablereview'  => 'مراجعة',
+	'whitelistpagelist'        => 'صفحات {{SITENAME}} ل$1',
 	'whitelistbadtitle'        => 'عنوان سيء -',
 	'whitelistoverview'        => '== مراجعة التغييرات ل$1 ==',
 	'whitelistrequest'         => 'طلب السماح لمزيد من الصفحات',

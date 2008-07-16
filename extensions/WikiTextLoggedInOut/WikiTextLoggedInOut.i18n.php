@@ -7,6 +7,13 @@ $messages['en'] = array(
 	'wikitextloggedinout-desc' => 'Two parser hooks, <tt>&lt;loggedin&gt;</tt> and <tt>&lt;loggedout&gt;</tt> to show different text depending on the users\' login state',
 );
 
+/** Bulgarian (Български)
+ * @author DCLXVI
+ */
+$messages['bg'] = array(
+	'wikitextloggedinout-desc' => 'Добавя две куки в парсета, <tt>&lt;loggedin&gt;</tt> и <tt>&lt;loggedout&gt;</tt>, чрез които се показва различен текст в зависимост дали потребителят е влязъл или не',
+);
+
 /** German (Deutsch)
  * @author Raimond Spekking
  */

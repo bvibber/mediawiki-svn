@@ -161,6 +161,13 @@ $messages['ee'] = array(
 	'edituser-dosearch' => 'Dii',
 );
 
+/** Greek (Ελληνικά)
+ * @author Consta
+ */
+$messages['el'] = array(
+	'edituser-username' => 'Όνομα',
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */

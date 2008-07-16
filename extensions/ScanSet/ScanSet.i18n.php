@@ -748,10 +748,14 @@ $messages['sk'] = array(
 
 /** Serbian Cyrillic ekavian (ћирилица)
  * @author Sasa Stefanovic
+ * @author Millosh
  */
 $messages['sr-ec'] = array(
-	'scanset_next' => 'След. &gt;',
-	'scanset_prev' => '&lt; Прет.',
+	'scanset-desc'         => 'Види скенирану страну слике ис CD/DVD скупа Андреаса Гроша (Andreas Grosz).',
+	'scanset_no_name'      => 'Грешка: Мораш одредити име скупу скенова, нпр. &lt;scanset name="EB1911" /&gt;.',
+	'scanset_invalid_name' => 'Грешка: Лош или недостајући скуп скенова.',
+	'scanset_next'         => 'След. &gt;',
+	'scanset_prev'         => '&lt; Прет.',
 );
 
 /** Seeltersk (Seeltersk)

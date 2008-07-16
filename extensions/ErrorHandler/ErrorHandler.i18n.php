@@ -48,6 +48,7 @@ $messages['ar'] = array(
 	'errorhandler-error-user-warning'  => 'تحذير مستخدم',
 	'errorhandler-error-user-notice'   => 'ملاحظة مستخدم',
 	'errorhandler-msg-text'            => '$1 : $2 في $3 (سطر $4)',
+	'errorhandler-trace'               => 'الأثر:',
 	'errorhandler-trace-line'          => '$1 (سطر $2): $3',
 	'errorhandler-trace-line-internal' => '[وظيفة داخلية]: $1',
 );
@@ -188,6 +189,32 @@ $messages['ru'] = array(
 	'errorhandler-errors'        => 'Ошибки:',
 	'errorhandler-error-fatal'   => 'Серьёзная ошибка',
 	'errorhandler-error-warning' => 'Внимание',
+);
+
+/** Slovak (Slovenčina)
+ * @author Helix84
+ */
+$messages['sk'] = array(
+	'errorhandler-desc'                  => 'Obsluha chýb MediaWiki',
+	'errorhandler-errors'                => 'Chyby:',
+	'errorhandler-error-fatal'           => 'Kritická chyba',
+	'errorhandler-error-warning'         => 'Upozornenie',
+	'errorhandler-error-parse'           => 'Chyba syntaktickej analýzy',
+	'errorhandler-error-notice'          => 'Oznam',
+	'errorhandler-error-core-error'      => 'Chyba jadra',
+	'errorhandler-error-core-warning'    => 'Upozornenie jadra',
+	'errorhandler-error-compile-error'   => 'Chyba kompilácie',
+	'errorhandler-error-compile-warning' => 'Upozornenie kompilácie',
+	'errorhandler-error-user-error'      => 'Chyba používateľa',
+	'errorhandler-error-user-warning'    => 'Upozornenie používateľa',
+	'errorhandler-error-user-notice'     => 'Oznam používateľa',
+	'errorhandler-error-strict'          => 'Prísne štandardy',
+	'errorhandler-error-recoverable'     => 'Osudová chyba, ktorú možno zachytiť',
+	'errorhandler-msg-text'              => '$1 : $2 v $3 (riadok $4)',
+	'errorhandler-msg-html'              => '<b>$1</b> : <i>$2</i> v <b>$3</b> (riadok <b>$4</b>)',
+	'errorhandler-trace'                 => 'trasovanie:',
+	'errorhandler-trace-line'            => '$1 (riadok $2): $3',
+	'errorhandler-trace-line-internal'   => '[vnútorná funkcia]: $1',
 );
 
 /** Swedish (Svenska)
