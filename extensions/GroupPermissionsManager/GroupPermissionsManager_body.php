@@ -78,7 +78,7 @@ class GroupPermissions extends SpecialPage {
 					$this->addLogItem( 'add', trim( $wgRequest->getText( 'addcomment' ) ) );
 					$wgOut->addWikiText( wfMsg( 'grouppermissions-addsuccess', $this->target ) );
 					$this->listsmade = false;
-					require_once('/config/GroupPermissions.php');
+					require_once(dirname(__FILE__).'/config/GroupPermissions.php');
 				}
 			} elseif( $wgRequest->wasPosted() && $wgRequest->getVal('dodelete') == '1' ) {
 				//we just deleted a user group. don't remove users from the group just in case we want to make it again
@@ -87,7 +87,7 @@ class GroupPermissions extends SpecialPage {
 					$this->addLogItem( 'delete', trim( $wgRequest->getText( 'deletecomment' ) ) );
 					$wgOut->addWikiText( wfMsg( 'grouppermissions-deletesuccess', $this->target ) );
 					$this->listsmade = false;
-					require_once('/config/GroupPermissions.php');
+					require_once(dirname(__FILE__).'/config/GroupPermissions.php');
 				}
 			} elseif( $wgRequest->wasPosted() && $wgRequest->getVal('dochange') == '1' ) {
 				//we modified the permissions of an existing group
@@ -96,7 +96,7 @@ class GroupPermissions extends SpecialPage {
 					$this->addLogItem( 'change', trim( $wgRequest->getText( 'comment' ) ) );
 					$wgOut->addWikiText( wfMsg( 'grouppermissions-changesuccess', $this->target ) );
 					$this->listsmade = false;
-					require_once('/config/GroupPermissions.php');
+					require_once(dirname(__FILE__).'/config/GroupPermissions.php');
 				}
 			}
 		}

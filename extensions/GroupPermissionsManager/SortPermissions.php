@@ -37,7 +37,7 @@ class SortPermissions extends SpecialPage {
 			$success = $this->writeFile();
 			if($success) {
 				$wgOut->addWikiText(wfMsg('grouppermissions-sp-success'));
-				require_once('/config/SortPermissions.php');
+				require_once(dirname(__FILE__).'/config/SortPermissions.php');
 			}
 		}
 		$this->makeForm();

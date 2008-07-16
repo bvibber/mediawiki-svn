@@ -14,7 +14,7 @@ $wgExtensionCredits['specialpage'][] = array(
 	'name'           => 'GroupPermissions Manager',
 	'author'         => 'Ryan Schmidt',
 	'url'            => 'http://www.mediawiki.org/wiki/Extension:GroupPermissions_Manager',
-	'version'        => '3.2',
+	'version'        => '3.2.1',
 	'description'    => 'Manage group permissions via a special page',
 	'descriptionmsg' => 'grouppermissions-desc',
 );
@@ -248,7 +248,7 @@ function efGPManagerExtendedPermissionsRevoke($title, $user, $action, &$result) 
 }
 
 //replace right-edit messages with right-edit-new wherever applicable
-function efGPManagerReplaceEditMessage(&$key, &$useDB, &$langCode, &$transform) {
+function efGPManagerReplaceEditMessage(&$key, &$useDB, &$langCode) {
 	if($key == 'right-edit') {
 		$key = 'right-edit-new';
 		return false; //so it doesn't change load times TOO much
