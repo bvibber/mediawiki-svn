@@ -56,7 +56,7 @@ struct ip_vs_wcsh_dest_point {
 
 struct ip_vs_wcsh_data {
 	struct ip_vs_wcsh_dest_point	*continuum;	/* continuum array */
-	int 							pointcount;
+	unsigned int 					pointcount;
 };
 
 /*
@@ -72,7 +72,7 @@ static int ip_vs_wcsh_alloc_continuum(struct ip_vs_wcsh_data *sched_data, const 
 	struct ip_vs_dest *dest;
 	
 	/* 
-	 * Determine how many points the continuum will consist off,
+	 * Determine how many points the continuum will consist of,
 	 * the sum of all destination weights
 	 */
 	sched_data->pointcount = 0;
@@ -223,21 +223,27 @@ static inline int ip_vs_wcsh_is_feasible(const struct ip_vs_dest *dest) {
 static struct ip_vs_wcsh_dest_point *
 ip_vs_wcsh_get_nearest_point(const unsigned hashkey, const struct ip_vs_wcsh_data *sched_data)
 {
-	struct ip_vs_wcsh_dest_point *point;
-
+	unsigned int left, right;
+	
 	if (unlikely(sched_data->pointcount == 0))
 		return NULL;
+	else if (unlikely(sched_data->pointcount == 1
+			|| hashkey <= sched_data->continuum[0].value
+			|| hashkey > sched_data->continuum[sched_data->pointcount - 1].value))
+		return &sched_data->continuum[0];
 	
-	/* linear search */	
-	for(point = sched_data->continuum; point != &sched_data->continuum[sched_data->pointcount]; point++) {
-		IP_VS_DBG(6, "[wcsh] Evaluating destination %u.%u.%u.%u:%d [%u]\n",
-				NIPQUAD(point->dest->addr), ntohs(point->dest->port), point->value);
-		if (unlikely(hashkey <= point->value))
-			return point;
+	/* binary search */
+	left = 0;
+	right = sched_data->pointcount;
+	while (likely(left+1 != right)) {
+		unsigned int mid = (left + right) / 2;
+		if (hashkey <= sched_data->continuum[mid].value)
+			right = mid;
+		else /* hashkey > sched_data->continuum[mid].value */
+			left = mid;
 	}
-	
-	/* hashkey is bigger than all point values, so wrap around and return the lowest value */
-	return sched_data->continuum;
+	/* continuum[right-1] < hashkey <= continuum[right] */
+	return &sched_data->continuum[right];
 }
 
 static struct ip_vs_wcsh_dest_point *
