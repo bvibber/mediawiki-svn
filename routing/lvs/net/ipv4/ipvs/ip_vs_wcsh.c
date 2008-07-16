@@ -34,6 +34,7 @@
 #include <linux/module.h>
 #include <linux/kernel.h>
 #include <linux/ip.h>
+#include <linux/jhash.h>
 
 #include <net/ip_vs.h>
 
@@ -63,7 +64,7 @@ struct ip_vs_wcsh_data {
  */
 static inline unsigned ip_vs_wcsh_hashkey(const unsigned addr)
 {
-	return addr * 2654435761UL;
+	return jhash_1word(addr, 0);
 }
 
 static int ip_vs_wcsh_alloc_continuum(struct ip_vs_wcsh_data *sched_data, const struct ip_vs_service *svc)
