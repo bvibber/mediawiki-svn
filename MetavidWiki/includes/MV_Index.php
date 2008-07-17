@@ -181,7 +181,7 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
  		return true;
  	}
  	function doUnifiedFiltersQuery(&$filters, $metaDataIncludes=null){
- 		global $mvIndexTableName,$mvStreamFilesTable, $mvDefaultClipLength,
+ 		global $mvIndexTableName,$mvStreamFilesTable, $mvDefaultClipLength,$mvStreamTable,
  		 $wgRequest, $mvDo_SQL_CALC_FOUND_ROWS, $mvMediaSearchResultsLimit;
  		 
  		global $mvSpokenByInSearchResult, $mvCategoryInSearchResult, $mvBillInSearchResult;
@@ -197,9 +197,10 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
  		list( $this->limit, $this->offset ) = $wgRequest->getLimitOffset( 20, 'searchlimit' );
  		if($this->limit > $mvMediaSearchResultsLimit)$this->limit = $mvMediaSearchResultsLimit;
 			
-		$this->order_type = $wgRequest->getVal('order');		
+		$this->order = strtolower($wgRequest->getVal('order'));		
 		//force order type: 
-		if($this->order_type!='relevent' || $this->order_type!='recent' || $this->order_type!='viewed') $this->order_type='relevent';
+		if( !($this->order=='relevent' || $this->order=='recent' || $this->order=='viewed') )$this->order='relevent';
+		
 
  		$group_spoken=true;
  		$categoryTable =  $dbr->tableName( 'categorylinks');
@@ -277,16 +278,19 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
  			} 		
  		}
  		$searchindexTable = $dbr->tableName( 'searchindex' );
- 		$ret_ary = array();
+ 		
  		//a join operation to restrict search results to streams with files
  		$join_streams_with_low_ogg_sql = "JOIN `$mvStreamFilesTable` ON (`$mvIndexTableName`.`stream_id` = `$mvStreamFilesTable`.`stream_id` AND `$mvStreamFilesTable`.`file_desc_msg`='mv_ogg_low_quality') ";
  	
 		//add the top query to the base query: 
 		$ftq.=$toplq;
- 		$sql = "SELECT $selOpt `mv_page_id` as `id`,`$mvIndexTableName`.`stream_id`,`start_time`,`end_time`, `view_count`,`wiki_title`, $searchindexTable.`si_text` AS `text` ";
+ 		$sql = "SELECT $selOpt `mv_page_id` as `id`,`$mvIndexTableName`.`stream_id`,
+			(`$mvStreamTable`.`date_start_time`+`start_time`) AS `mvd_date_start_time`, 
+			`start_time`,`end_time`, `view_count`,`wiki_title`, $searchindexTable.`si_text` AS `text` ";
  		if($mvSpokenByInSearchResult)$sql.=",`smw_relations`.`object_title` as `spoken_by` ";
  		$sql.="FROM `$mvIndexTableName` 
- 			JOIN $searchindexTable ON `$mvIndexTableName`.`mv_page_id` = $searchindexTable.`si_page` 
+ 			JOIN $searchindexTable ON `$mvIndexTableName`.`mv_page_id` = $searchindexTable.`si_page`
+			LEFT JOIN  $mvStreamTable ON `$mvIndexTableName`.`stream_id`=$mvStreamTable.`id`
 			$join_streams_with_low_ogg_sql 
  			$date_range_join ";
  			
@@ -318,9 +322,22 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
 	 	//date range stuff is SLOW when its the only filter (pulls up matches for everything)
 	 	if($snq!='' || $ftq!='' && isset($date_range_andor))
 	 		$sql.=$date_range_andor;
- 		$sql.=" $date_range_where ";	 		
- 		$sql.="LIMIT {$this->offset}, {$this->limit} ";
-	
+ 		$sql.=" $date_range_where ";	 		 				
+		
+		switch($this->order){
+			case 'relevent':
+				//@@todo need to add in some relevence metrics				
+			break;
+			case 'recent':
+				$sql.=' ORDER BY `mvd_date_start_time` DESC ';
+			break;
+			case 'viewed':
+				$sql.=' ORDER BY `view_count` DESC ';
+			break;
+		}
+		echo $this->order;		
+		$sql.="LIMIT {$this->offset}, {$this->limit} ";
+		
 		//echo "SQL:".$sql." \n";  			
 		//die;
  		$result = $dbr->query($sql,  'MV_Index:doFiltersQuery_base');
@@ -336,39 +353,39 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
  			$this->numResultsFound =null;
  		} 		 	
  		 		
- 		//@@TODO hide empty categories (if limit > rows found )
- 		
- 		//group by time range in a given stream
- 		
+ 		//@@TODO hide empty categories (if limit > rows found ) 		 		
  		//while($row = $dbr->fetchObject( $result )){
  		//	$ret_ary[]=$row;
- 		//}
+ 		//} 		
  		//return $ret_ary;
  		//group by stream_name & time range:
+
+ 		//init ret_ary & stream_group
+ 		$ret_ary = $stream_groups = array();
  		
- 		//@@todo we should deprecate stream grouping 
  		while($row = $dbr->fetchObject( $result )){
- 			if(!isset($ret_ary[$row->stream_id])){
- 				$ret_ary[$row->stream_id]=array();
+ 		  	$ret_ary[$row->id]=$row;
+ 			if(!isset($stream_groups[$row->stream_id])){
+ 				$stream_groups[$row->stream_id]=array();
  			} 		
- 			if(count($ret_ary[$row->stream_id])==0){
+ 			if(count($stream_groups[$row->stream_id])==0){
  				$new_srange = array('s'=>$row->start_time, 
 									'e'=> $row->end_time,
 									'rows'=>array($row));
- 				$ret_ary[$row->stream_id][]=$new_srange;
+ 				$stream_groups[$row->stream_id][]=$new_srange;
  			}else{
- 				MV_Index::insert_merge_range($ret_ary[$row->stream_id], $ret_ary, $row);	 			
+ 				MV_Index::insert_merge_range($stream_groups[$row->stream_id], $stream_groups, $row);	 			
  			}
- 		} 		 		
+ 		}		 		
  		//throw out empty top level ranges
- 		foreach($ret_ary as &$stream_set){
+ 		/*foreach($ret_ary as &$stream_set){
  			foreach($stream_set as $k=> &$srange){
  				if(count($srange['rows'])==0){
  					//print "throw out: ". $srange['s'] . $srange['e'];
  					unset($stream_set[$k]); 					
  				}
  			}
- 		} 		 		 		
+ 		}*/ 		 		 		
  		//do category & bill lookup for search result ranges
  		if($mvCategoryInSearchResult || $mvBillInSearchResult){
  			$sql="SELECT {$dbr->tableName('categorylinks')}.`cl_to`, `mv_mvd_index`.`stream_id`,
@@ -383,7 +400,7 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
 			//generate stream_id, range sets
 			$sql.=" WHERE `$mvIndexTableName`.`mvd_type`='Anno_en' AND (";
 			$or='';
-			foreach($ret_ary as $stream_id=>$rangeSet){
+			foreach($stream_groups as $stream_id=>$rangeSet){
 				foreach($rangeSet as $range){
 					$sql.=$or . "( `$mvIndexTableName`.`stream_id`='$stream_id'"; 
 					$sql.=" AND `start_time` <= '" . $range['s']."'";
@@ -395,14 +412,15 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
 			//merge category info back into base results:	
 			$result = $dbr->query($sql,  'MV_Index:doCategorySearchResult');
 			while($cl_row = $dbr->fetchObject( $result )){		
-				foreach($ret_ary[$cl_row->stream_id] as &$range){					
+				foreach($stream_groups[$cl_row->stream_id] as &$range){					
 					foreach($range['rows'] as &$result_row){
 						if($result_row->start_time <= $cl_row->end_time && 
 						  $result_row->end_time >= $cl_row->start_time){
+						  	
 						  	if($cl_row->cl_to)
-								$result_row->categories[$cl_row->cl_to]=true;
+								$ret_ary[$result_row->id]->categories[$cl_row->cl_to]=true;
 							if($cl_row->bill_to)
-								$result_row->bills[$cl_row->bill_to]=true;						
+								$ret_ary[$reult_row->id]->bills[$cl_row->bill_to]=true;						
 						} 
 					}
 				}

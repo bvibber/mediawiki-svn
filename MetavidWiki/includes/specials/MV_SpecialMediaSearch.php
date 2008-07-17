@@ -44,10 +44,10 @@ class MV_SpecialSearch extends SpecialPage {
 class MV_SpecialMediaSearch extends SpecialPage {
 	//initial values for selectors ( keys into language as 'mv_search_$val')
 	var $sel_filter_types = array (
-			'match', //full text search
-	'spoken_by',
+		'match', //full text search
+		'spoken_by',
 		'category',
-			'date_range', //search in a given date range
+		'date_range', //search in a given date range
 		//not yet active: 
 		//'stream_name', //search within a particular stream
 		//'layers'	 //specify a specific meta-layer set
@@ -85,7 +85,8 @@ class MV_SpecialMediaSearch extends SpecialPage {
 			$this->outputContainer = false;
 			$this->outputSeqLinks = true;
 			//@@todo add a absolute link to search results
-			print $this->getResultsHTML();
+			//print $this->getResultsHTML();
+			print $this->getUnifiedResultsHTML();
 			//@@todo cleaner exit
 			exit ();
 		} else {
@@ -289,7 +290,7 @@ class MV_SpecialMediaSearch extends SpecialPage {
 
 	}
 	function getUnifiedResultsHTML() {
-		global $wgUser, $wgStylePath, $wgRequest;
+		global $wgUser, $wgStylePath, $wgRequest, $wgContLang;
 		$sk = $wgUser->getSkin();
 
 		$o .= '<h5 class="search_results_header">' . $this->getFilterDesc() . '</h5>';
@@ -330,18 +331,20 @@ class MV_SpecialMediaSearch extends SpecialPage {
 
 		//check order prefrence:
 		$br='<br>';
+		$enddash='';
 		foreach (array ('relevent','recent','viewed') as $type) {
 			if ($this->order == $type) {
-				$o .= '<li class="relevant">'.$br . wfMsg('mv_most_' . $type) . ' - </li>' ;
+				$o .= $enddash.'<li class="relevant">'.$br . wfMsg('mv_most_' . $type) . '</li>' ;
 			} else {
 				$q_req = $this->get_httpd_filters_query();
 				if($wgRequest->getVal('limit')!='' || $wgRequest->getVal('order')!='')
 					$q_req.='&'.http_build_query(array('limit'=>$this->limit, 'offset'=>$this->offset));
 				$q_req.='&order='.$type;				 
-				$o .= '<li class="relevant">'.$br .$sk->makeKnownLinkObj(SpecialPage :: getTitleFor('MediaSearch'), 
-								wfMsg('mv_most_' . $type), $q_req) . ' - </li>';
+				$o .= $enddash.'<li class="relevant">'.$br .$sk->makeKnownLinkObj(SpecialPage :: getTitleFor('MediaSearch'), 
+								wfMsg('mv_most_' . $type), $q_req) . '</li>';
 			}
 			$br='';
+			$enddash=' - ';
 		}
 		$o .= '</ul>';
 
@@ -351,76 +354,67 @@ class MV_SpecialMediaSearch extends SpecialPage {
 		$sideBarLinkBucket = array ();
 		$o .= '			
 					<ul id="results">';
-		foreach ($this->results as $stream_id => & $stream_set) {
-			$matches = 0;
-			$stream_out = $mvTitle = '';
-			foreach ($stream_set as & $srange) {
-				$cat_html = $mvd_out = '';
-				$range_match = 0;
-				foreach ($srange['rows'] as $inx => & $mvd) {
-					$matches++;
-					$mvTitle = new MV_Title($mvd->wiki_title);
-					$mvd_cnt_links = '';
-					if (isset ($mvd->spoken_by)) {
-						$ptitle = Title :: MakeTitle(NS_MAIN, $mvd->spoken_by);
-						$mvd_cnt_links .= wfMsg('mv_search_spoken_by') . ': ' . $sk->makeKnownLinkObj($ptitle);
-						$mvd_cnt_links .= '<br>';
-						assoc_array_increment($sideBarLinkBucket, 'person', $mvd->spoken_by);
-					}
-					$mvd_cat_links = $mvd_bill_links = '';
-					$coma = '';
-					if (isset ($mvd->categories)) {
-						foreach ($mvd->categories as $cat_id => $na) {
-							$cTitle = Title :: MakeTitle(NS_CATEGORY, $cat_id);
-							if ($mvd_cat_links == '')
-								$mvd_cat_links .= wfMsg('mv_search_categories') .
-								': ';
-							$mvd_cat_links .= $coma . $sk->makeKnownLinkObj($cTitle, $cTitle->getText());
-							$coma = ', ';
-							assoc_array_increment($sideBarLinkBucket, 'category', $cat_id);
-						}
-					}
-					$coma = '';
-					if (isset ($mvd->bills)) {
-						foreach ($mvd->bills as $bill_id => $na) {
-							$bTitle = Title :: newFromText($bill_id);
-							if ($mvd_bill_links == '')
-								$mvd_bill_links .= wfMsg('mv_search_bills') .
-								': ';
-							$mvd_bill_links .= $coma . $sk->makeKnownLinkObj($bTitle, $bTitle->getText());
-							$coma = ', ';
-							assoc_array_increment($sideBarLinkBucket, 'bill', $bill_id);
-						}
-					}
-					//link directly to the current range: 					
-					$mvStreamTitle = Title :: MakeTitle(MV_NS_STREAM, $mvTitle->getNearStreamName($extra_range = '0'));
-					//$mvTitle->getStreamName() .'/'.$mvTitle->getStartTime() .'/'. $mvTitle->getEndTime() );
-					$head_link = $sk->makeKnownLinkObj($mvStreamTitle, $mvTitle->getStreamNameText() . ' :: ' . $mvTitle->getTimeDesc());
-					$img_link = $sk->makeKnownLinkObj($mvStreamTitle, '<img alt="image for ' . $mvTitle->getStreamNameText() . ' ' . $mvTitle->getTimeDesc() . '" src="' . $mvTitle->getStreamImageURL('small') . '"/>');
-					$mvd_text = $mvd->text;
-
-					$o .= '<li class="result">
-												<span class="vid_img" id="mvimg_' . $mvd->id . '">
-													' . $img_link . '		
-												</span>
-												<div class="result_description">
-													<h4>' . $head_link . '</h4>
-													<p>Matching Phrase:' . $this->termHighlight($mvd->text, implode('|', $this->getTerms()), 1, 100) . ' </p>
-													<span class="by">' . $mvd_cnt_links . '</span>
-													<span class="by">' . $mvd_cat_links . '</span>
-													<span class="by">' . $mvd_bill_links . '</span>
-												</div>
-												<div class="result_meta">
-													<span class="views">Views: ' . $mvd->view_count . '</span>
-													<span class="duration">' . wfMsg('mv_duration_label') . ':' . $mvTitle->getSegmentDurationNTP($short_time = true) . '</span>
-													<span class="comments">Comments: NYA</span>
-													<span class="playinline"><a href="javascript:mv_pl(\'' . $mvd->id . '\')">' .
-					wfMsg('mv_play_inline') . '</a></span>
-												</div>
-											</li>';
+		foreach ($this->results as $inx => & $mvd) {					
+			$mvTitle = new MV_Title($mvd->wiki_title);
+			$mvd_cnt_links = '';
+			if (isset ($mvd->spoken_by)) {
+				$ptitle = Title :: MakeTitle(NS_MAIN, $mvd->spoken_by);
+				$mvd_cnt_links .= wfMsg('mv_search_spoken_by') . ': ' . $sk->makeKnownLinkObj($ptitle);
+				$mvd_cnt_links .= '<br>';
+				assoc_array_increment($sideBarLinkBucket, 'person', $mvd->spoken_by);
+			}
+			$mvd_cat_links = $mvd_bill_links = '';
+			$coma = '';
+			if (isset ($mvd->categories)) {
+				foreach ($mvd->categories as $cat_id => $na) {
+					$cTitle = Title :: MakeTitle(NS_CATEGORY, $cat_id);
+					if ($mvd_cat_links == '')
+						$mvd_cat_links .= wfMsg('mv_search_categories') .
+						': ';
+					$mvd_cat_links .= $coma . $sk->makeKnownLinkObj($cTitle, $cTitle->getText());
+					$coma = ', ';
+					assoc_array_increment($sideBarLinkBucket, 'category', $cat_id);
 				}
 			}
-		}
+			$coma = '';
+			if (isset ($mvd->bills)) {
+				foreach ($mvd->bills as $bill_id => $na) {
+					$bTitle = Title :: newFromText($bill_id);
+					if ($mvd_bill_links == '')
+						$mvd_bill_links .= wfMsg('mv_search_bills') .
+						': ';
+					$mvd_bill_links .= $coma . $sk->makeKnownLinkObj($bTitle, $bTitle->getText());
+					$coma = ', ';
+					assoc_array_increment($sideBarLinkBucket, 'bill', $bill_id);
+				}
+			}
+			//link directly to the current range: 					
+			$mvStreamTitle = Title :: MakeTitle(MV_NS_STREAM, $mvTitle->getNearStreamName($extra_range = '0'));
+			//$mvTitle->getStreamName() .'/'.$mvTitle->getStartTime() .'/'. $mvTitle->getEndTime() );
+			$head_link = $sk->makeKnownLinkObj($mvStreamTitle, $mvTitle->getStreamNameText() . ' :: ' . $mvTitle->getTimeDesc());
+			$img_link = $sk->makeKnownLinkObj($mvStreamTitle, '<img alt="image for ' . $mvTitle->getStreamNameText() . ' ' . $mvTitle->getTimeDesc() . '" src="' . $mvTitle->getStreamImageURL('small') . '"/>');
+			$mvd_text = $mvd->text;
+
+			$o .= '<li class="result">
+										<span class="vid_img" id="mvimg_' . $mvd->id . '">
+											' . $img_link . '		
+										</span>
+										<div class="result_description">
+											<h4>' . $head_link . '</h4>
+											<p>Matching Phrase:' . $this->termHighlight($mvd->text, implode('|', $this->getTerms()), 1, 100) . ' </p>
+											<span class="by">' . $mvd_cnt_links . '</span>
+											<span class="by">' . $mvd_cat_links . '</span>
+											<span class="by">' . $mvd_bill_links . '</span>
+										</div>
+										<div class="result_meta">
+											<span class="views">Views: ' . $mvd->view_count . '</span>
+											<span class="duration">' . wfMsg('mv_duration_label') . ':' . $mvTitle->getSegmentDurationNTP($short_time = true) . '</span>
+											<span class="comments">Comments: NYA</span>
+											<span class="playinline"><a href="javascript:mv_pl(\'' . $mvd->id . '\')">' .
+			wfMsg('mv_play_inline') . '</a></span>
+										</div>
+									</li>';
+		}		
 		$o .= '</ul>';
 		$o .= '<li class="prevnext">' . $prevnext . '</li>';
 		$o .= '</div>';
@@ -468,10 +462,11 @@ class MV_SpecialMediaSearch extends SpecialPage {
 				$cAry = & $sideBarLinkBucket['category'];
 				arsort($cAry);
 				$i = 0;
+				$catNStxt = $wgContLang->getNsText(NS_CATEGORY);
 				foreach ($cAry as $cat_name => $count) {
 					if ($i == $perSectionCount)
 						break;
-					$o .= MV_SpecialMediaSearch :: format_ac_line($cat_name, '', '', 'no_image', $format = 'block_html');
+					$o .= MV_SpecialMediaSearch :: format_ac_line($cat_name, '', $catNStxt.':', 'no_image', $format = 'block_html');
 					$i++;
 				}
 			}

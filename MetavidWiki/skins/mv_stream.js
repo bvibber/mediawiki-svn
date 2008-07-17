@@ -109,12 +109,12 @@ var mv_init_interface = {
 			//overide play button action to interface control: 		
 			$j('#big_play_link_embed_vid').attr('href', 'javascript:mv_do_play();');
 			//extend stop button on mv_embed: 
-			js_log("pre stop: " +ebvid['stop'].toString() );
+			//js_log("pre stop: " +ebvid['stop'].toString() );
 			if(ebvid['stop'].toString()!='function(){mv_do_stop();}'){				
 				ebvid['org_eb_stop'] = ebvid['stop'];
 				ebvid['stop'] = function(){mv_do_stop();}
 			}	
-			js_log("post stop: " +ebvid['stop'].toString());	
+			//js_log("post stop: " +ebvid['stop'].toString());	
 		}
 		//call stop override 
 		ebvid.inheritEmbedOverride();

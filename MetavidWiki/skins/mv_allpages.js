@@ -198,10 +198,12 @@ function mv_setup_search_ac(){
 							'<div id="suggestionsBot"></div>'+						
 						'</div>');
 	//position the sugestions below the search field:
-	sf_pos = $j('#search_field').offset();
-	sf_pos['top']=sf_pos['top']+40;
-	sf_pos['left']=sf_pos['left']-220;
-	$j('#suggestions').css(sf_pos);
+	if( $j('#search_field').length!=0){
+		sf_pos = $j('#search_field').offset();
+		sf_pos['top']=sf_pos['top']+40;
+		sf_pos['left']=sf_pos['left']-220;
+		$j('#suggestions').css(sf_pos);
+	}
 	
 	//add hook:
 	$j('#search_field').autocomplete(
