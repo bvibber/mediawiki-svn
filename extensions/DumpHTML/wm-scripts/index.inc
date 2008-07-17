@@ -117,14 +117,14 @@ a:hover {
 			<h1>Wikipedia Static HTML Dumps</h1>
 <p>This is a set of static HTML dumps of Wikipedia. Note that putting one of these dumps on the web unmodified will constitute a trademark violation. They are intended for private viewing in an intranet or desktop installation.</p>
 
-<p>The current dump is the <?=$currentText?> edition. This dump has no image snapshot, it's just HTML. Due to performance problems when compressing millions of files with <a href="http://7-zip.org">7-zip</a>, the archives are now packaged as a 7-zipped tar file.</p>
+<p>The current dump is the <?php echo $currentText; ?> edition. This dump has no image snapshot, it's just HTML. Due to performance problems when compressing millions of files with <a href="http://7-zip.org">7-zip</a>, the archives are now packaged as a 7-zipped tar file.</p>
 
 <?php if ( $inProgressText ): ?>
-<p>A <?=$inProgressText?> dump is in progress.</p>
+<p>A <?php echo $inProgressText; ?> dump is in progress.</p>
 <?php endif; ?>
 
 <ul>
-	<li><strong><a href="/downloads/<?=$encCurrentBase?>">Downloads</a></strong></li>
+	<li><strong><a href="/downloads/<?php echo $encCurrentBase; ?>">Downloads</a></strong></li>
 </ul>
 <h2>Browse</h2>
 <p>Try before you download, click on a language code below.</p>
