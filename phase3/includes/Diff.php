@@ -10,7 +10,7 @@ class AbstractDiffAlgorithm {
 	/**
 	 * Slide down the snake untill reaching an inequality.
 	 */
-	protected function forward_snake( $k, $y, $maxx, $maxy, &$a, &$b, $offsetx=0, $offsety=0){
+	protected function forward_snake( $k, $y, $maxx, $maxy, $a, $b, $offsetx=0, $offsety=0){
 		$x = $y-$k;
 		while($x < $maxx && $y < $maxy && $this->equals($a[$offsetx+$x],$b[$offsety+$y])){
 			++$x;
@@ -22,7 +22,7 @@ class AbstractDiffAlgorithm {
 	/**
 	 * Slide up the snake until reaching an inequality.
 	 */
-	protected function backward_snake( $k, $y, $maxx, $maxy, &$a, &$b, $offsetx=0, $offsety=0){
+	protected function backward_snake( $k, $y, $maxx, $maxy, $a, $b, $offsetx=0, $offsety=0){
 		$x = $y-$k;
 		while($x > $maxx && $y > $maxy && $this->equals($a[$offsetx+$x],$b[$offsety+$y])){
 			--$x;
@@ -62,7 +62,9 @@ class BackwardLcs extends AbstractDiffAlgorithm {
 	 */
 	public function ses (array $from, array $to) {
 		if(sizeof($from)>sizeof($to)){
-			swap($from, $to);
+			$temp = $from;
+			$from = $to;
+			$to = $temp;
 		}
 		$m = sizeof($from);
 		$n = sizeof($to);
@@ -121,7 +123,9 @@ class ForwardLcs extends AbstractDiffAlgorithm {
 	 */
 	public function ses (array $from, array $to) {
 		if(sizeof($from)>sizeof($to)){
-			swap($from, $to);
+			$temp = $from;
+			$from = $to;
+			$to = $temp;
 		}
 		$m = sizeof($from);
 		$n = sizeof($to);
@@ -185,7 +189,9 @@ class BidirectionalLcs extends AbstractDiffAlgorithm {
 	 */
 	public function ses (array $from, array $to) {
 		if(sizeof($from)>sizeof($to)){
-			swap($from, $to);
+			$temp = $from;
+			$from = $to;
+			$to = $temp;
 		}
 		$m = sizeof($from);
 		$n = sizeof($to);
@@ -264,7 +270,7 @@ class BidirectionalLcs extends AbstractDiffAlgorithm {
  * There are border cases  for n>5 where it will be 1 (or more) off recursively.
  * This can add up to a difference from the optimal LCS of 5%-10%.
  * The common subsequence will be correct though.
- * This implementation is useful because it is very fast.
+ * This implementation is useful because it is very fast for huge input sizes.
  * !!!!!!!!!!!!!!!!!!!!!!
  *
  * This is the O(NP) variant as descibed by Wu et al. in "An O(NP) Sequence Comparison Algorithm"
@@ -273,27 +279,26 @@ class BidirectionalLcs extends AbstractDiffAlgorithm {
  */
 class FastDiffAlgorithm extends AbstractDiffAlgorithm {
 
+	private $a_inLcs;
+
+	private $b_inLcs;
+
 	/*
 	 * Diffs two arrays and returns array($from_inLcs, $to_inLcs)
 	 * where {from,to}_inLcs is FALSE if the token was {removed,added}
 	 * and TRUE if it is in the longest common subsequence.
 	 */
 	public function diff (array $from, array $to) {
+		$this->a_inLcs = sizeof($from)>0 ? array_fill(0,sizeof($from),FALSE): array();
+		$this->b_inLcs = sizeof($to)>0 ? array_fill(0,sizeof($to),FALSE): array();
 
-		$from_inLcs = sizeof($from)>0 ? array_fill(0,sizeof($from),FALSE): array();
-		$to_inLcs = sizeof($to)>0 ? array_fill(0,sizeof($to),FALSE): array();
-
+		//There is no need to remove common tokens at the beginning and end, the first snake will catch them.
+		//Hashing the tokens is not generally applicable.
 		//Removing tokens that are not in both sequences is O(N*M)>=O(N*P). There is little to gain when most edits are small.
 
-		$nbSwaps=0;
-		$from2 = $from;
-		$to2 = $to;
-		$this->diff_recursive(0,sizeof($from),0,sizeof($to), $from2, $to2, $from_inLcs, $to_inLcs, $nbSwaps);
-		if($nbSwaps==0){
-			return array($from_inLcs, $to_inLcs);
-		}else{
-			return array($to_inLcs, $from_inLcs);
-		}
+		$this->diff_recursive(0,sizeof($from),0,sizeof($to), $from, $to, FALSE);
+
+		return array($this->a_inLcs,$this->b_inLcs);
 	}
 
 	/**
@@ -301,35 +306,25 @@ class FastDiffAlgorithm extends AbstractDiffAlgorithm {
 	 *
 	 * Ends are exclusive
 	 */
-	protected function diff_recursive($x_start, $x_end, $y_start, $y_end, &$a, &$b, &$a_inLcs, &$b_inLcs, &$nbSwaps){
+	protected function diff_recursive($x_start, $x_end, $y_start, $y_end, $a, $b, $swapped){
 		//echo "<br>$x_start-$x_end , $y_start-$y_end";
 		if($x_end>$x_start && $y_end>$y_start){
 			//echo "-pass";
 
-//			//echo "<br>";
-//			for($i = $x_start;$i<$x_end;$i++){
-//				//echo " ".$a[$i];
-//			}
-//			//echo "<br>";
-//			for($i = $y_start;$i<$y_end;$i++){
-//				//echo " ".$b[$i];
-//			}
+			//echo "<br>";
 
 			if($x_end-$x_start>$y_end-$y_start){
-				swap($x_end, $y_end);
-				swap($x_start, $y_start);
-				swap($a, $b);
-				swap($a_inLcs, $b_inLcs);
-				$nbSwaps = ($nbSwaps+1)%2;
-				//echo "<br>nbswaps=$nbSwaps";
-				//echo "<br>";
-//				for($i = $x_start;$i<$x_end;$i++){
-//					//echo " ".$a[$i];
-//				}
-//				//echo "<br>";
-//				for($i = $y_start;$i<$y_end;$i++){
-//					//echo " ".$b[$i];
-//				}
+				$temp = $x_end;
+				$x_end = $y_end;
+				$y_end = $temp;
+				$temp = $x_start;
+				$x_start = $y_start;
+				$y_start = $temp;
+				$temp = $a;
+				$a = $b;
+				$b = $temp;
+				$swapped = ! $swapped;
+				//echo "<br>swapped=$swapped";
 			}
 
 			$m = $x_end-$x_start;
@@ -355,8 +350,6 @@ class FastDiffAlgorithm extends AbstractDiffAlgorithm {
 			while(1){
 				++$p;
 
-				//echo "<br>".microtime(true)." p:".$p;
-				
 				$middle_found[-$p-1] = FALSE;
 				$middle_found[$delta+$p+1] = FALSE;
 
@@ -434,7 +427,7 @@ class FastDiffAlgorithm extends AbstractDiffAlgorithm {
 				//echo "<br>p=$p, fpf_start[$delta]=$fpf_start[$delta]";
 				if($fpf_start[$delta]>$fpb_end[$delta] && $fpb_end[$delta]-$fpb_start[$delta]!=0 && !$middle_found[$delta]){
 					if($fpb_start[$delta]+1==$n){
-						return $this->foundMiddleSnake($x_start, $x_end, $y_start, $y_end, $fpb_end[$delta]+1,$fpb_start[$delta]+1, $delta, $a, $b, $a_inLcs, $b_inLcs, $nbSwaps);
+						return $this->foundMiddleSnake($x_start, $x_end, $y_start, $y_end, $fpb_end[$delta]+1,$fpb_start[$delta]+1, $delta, $a, $b, $swapped);
 					}
 					$no_middle_found = FALSE;
 					$middle_found[$delta] = TRUE;
@@ -453,13 +446,13 @@ class FastDiffAlgorithm extends AbstractDiffAlgorithm {
 					if($fpf_start[$delta]==$fpf_end[$delta]){
 						if($fpf_start[$delta]==$fpf_end[$delta-1]+1){
 							//last edge was horizontal
-							return $this->reachedEndHorizontal($x_start, $x_end, $y_start, $y_end, $a, $b, $a_inLcs, $b_inLcs, $nbSwaps);
+							return $this->reachedEndHorizontal($x_start, $x_end, $y_start, $y_end, $a, $b, $swapped);
 						}else{
 							//last edge was vertical
-							return $this->reachedEndVertical($x_start, $x_end, $y_start, $y_end, $a, $b, $a_inLcs, $b_inLcs, $nbSwaps);
+							return $this->reachedEndVertical($x_start, $x_end, $y_start, $y_end, $a, $b, $swapped);
 						}
 					}else{
-						return $this->foundMiddleSnake($x_start, $x_end, $y_start, $y_end, $fpf_start[$delta],$fpf_end[$delta], $delta, $a, $b, $a_inLcs, $b_inLcs, $nbSwaps);
+						return $this->foundMiddleSnake($x_start, $x_end, $y_start, $y_end, $fpf_start[$delta],$fpf_end[$delta], $delta, $a, $b, $swapped);
 					}
 				}
 				if($fpf_end[$delta]>$fpb_end[$delta] && !$middle_found[$delta]){
@@ -577,7 +570,7 @@ class FastDiffAlgorithm extends AbstractDiffAlgorithm {
 				if(!$no_middle_found){
 					if($endgame || $p == $m){
 						//echo "<br>endgame: $best_middle_start->$best_middle_end, k=$best_middle_k";
-						return $this->foundMiddleSnake($x_start, $x_end, $y_start, $y_end, $best_middle_start, $best_middle_end, $best_middle_k, $a, $b, $a_inLcs, $b_inLcs, $nbSwaps);
+						return $this->foundMiddleSnake($x_start, $x_end, $y_start, $y_end, $best_middle_start, $best_middle_end, $best_middle_k, $a, $b, $swapped);
 					}
 					$endgame = TRUE;
 				}
@@ -589,7 +582,7 @@ class FastDiffAlgorithm extends AbstractDiffAlgorithm {
 	 * Mark tokens as in the LCS if it is a snake.
 	 * Diff the part before and after the middle.
 	 */
-	protected function foundMiddleSnake($x_start, $x_end, $y_start, $y_end, $fp_start, $fp_end, $k, &$a, &$b, &$a_inLcs, &$b_inLcs, &$nbSwaps){
+	protected function foundMiddleSnake($x_start, $x_end, $y_start, $y_end, $fp_start, $fp_end, $k, $a, $b, $swapped){
 		//echo "<br><b>foundmiddle= $x_start, $x_end, $y_start, $y_end, $fp_start->$fp_end, $k</b>";
 
 		$x_snakestart = $x_start+$fp_start-$k;
@@ -597,41 +590,39 @@ class FastDiffAlgorithm extends AbstractDiffAlgorithm {
 		$y_snakestart = $y_start+$fp_start;
 		$y_snakeend = $y_start+$fp_end;
 
-		for($x=$x_snakestart;$x<$x_snakeend;$x++){
-			$a_inLcs[$x] = TRUE;
-		}
-		for($y=$y_snakestart;$y<$y_snakeend;$y++){
-			$b_inLcs[$y] = TRUE;
-		}
-		//echo "<br>left:";
-		$swaps = $nbSwaps;
-		$this->diff_recursive($x_start, $x_snakestart, $y_start, $y_snakestart, $a, $b, $a_inLcs, $b_inLcs, $nbSwaps);
-		//echo "<br>right:";
-		if($swaps==$nbSwaps){
-			$this->diff_recursive($x_snakeend, $x_end, $y_snakeend, $y_end, $a, $b, $a_inLcs, $b_inLcs, $nbSwaps);
+		if($swapped){
+			for($x=$x_snakestart;$x<$x_snakeend;$x++){
+				$this->b_inLcs[$x] = TRUE;
+			}
+			for($y=$y_snakestart;$y<$y_snakeend;$y++){
+				$this->a_inLcs[$y] = TRUE;
+			}
 		}else{
-			$this->diff_recursive($y_snakeend, $y_end, $x_snakeend, $x_end, $a, $b, $a_inLcs, $b_inLcs, $nbSwaps);
+			for($x=$x_snakestart;$x<$x_snakeend;$x++){
+				$this->a_inLcs[$x] = TRUE;
+			}
+			for($y=$y_snakestart;$y<$y_snakeend;$y++){
+				$this->b_inLcs[$y] = TRUE;
+			}
 		}
+
+		//echo "<br>left:";
+		$this->diff_recursive($x_start, $x_snakestart, $y_start, $y_snakestart, $a, $b, $swapped);
+		//echo "<br>right:";
+		$this->diff_recursive($x_snakeend, $x_end, $y_snakeend, $y_end, $a, $b, $swapped);
 	}
 
-	protected function reachedEndHorizontal($x_start, $x_end, $y_start, $y_end, &$a, &$b, &$a_inLcs, &$b_inLcs, &$nbSwaps){
+	protected function reachedEndHorizontal($x_start, $x_end, $y_start, $y_end, $a, $b, $swapped){
 		//echo "<br><b>reached end horizontally! $x_start, $x_end, $y_start, $y_end</b>";
 		$y_end = $y_end-1;
-		$this->diff_recursive($x_start, $x_end, $y_start, $y_end, $a, $b, $a_inLcs, $b_inLcs, $nbSwaps);
+		$this->diff_recursive($x_start, $x_end, $y_start, $y_end, $a, $b, $swapped);
 	}
 
-	protected function reachedEndVertical($x_start, $x_end, $y_start, $y_end, &$a, &$b, &$a_inLcs, &$b_inLcs, &$nbSwaps){
+	protected function reachedEndVertical($x_start, $x_end, $y_start, $y_end, $a, $b, $swapped){
 		//echo "<br><b>reached end vertically! $x_start, $x_end, $y_start, $y_end</b>";
 		$x_end = $x_end-1;
-		$this->diff_recursive($x_start, $x_end, $y_start, $y_end, $a, $b, $a_inLcs, $b_inLcs, $nbSwaps);
+		$this->diff_recursive($x_start, $x_end, $y_start, $y_end, $a, $b, $swapped);
 	}
-}
-
-function swap(&$a, &$b){
-	//echo "<br>swapping $a and $b";
-	$temp = $b;
-	$b = $a;
-	$a = $temp;
 }
 
 ?>
