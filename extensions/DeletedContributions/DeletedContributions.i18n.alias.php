@@ -41,6 +41,11 @@ $aliases['fr'] = array(
 	'DeletedContributions' => array( 'ContributionsSupprimées', 'ContributionSupprimees' ),
 );
 
+/** Galician (Galego) */
+$aliases['gl'] = array(
+	'DeletedContributions' => array( 'Contribucións borradas' ),
+);
+
 /** Hebrew (עברית)
  * @author Rotem Liss
  */

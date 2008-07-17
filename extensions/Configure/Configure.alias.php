@@ -69,6 +69,7 @@ $aliases['fr'] = array(
 /** Galician (Galego) */
 $aliases['gl'] = array(
 	'Configure'  => array( 'Configurar' ),
+	'Extensions' => array( 'Extensións' ),
 	'ViewConfig' => array( 'Ver a configuración' ),
 );
 

@@ -29,6 +29,11 @@ $aliases['fr'] = array(
 	'Eval' => array( 'Évaluer', 'Evaluer' ),
 );
 
+/** Galician (Galego) */
+$aliases['gl'] = array(
+	'Eval' => array( 'Avaliación' ),
+);
+
 /** Hebrew (עברית)
  * @author Rotem Liss
  */

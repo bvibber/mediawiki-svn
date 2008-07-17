@@ -29,6 +29,11 @@ $aliases['fr'] = array(
 	'EditUser' => array( 'EditerUtilisateur', 'ÉditerUtilisateur', 'Éditer l’utilisateur' ),
 );
 
+/** Galician (Galego) */
+$aliases['gl'] = array(
+	'EditUser' => array( 'Editar o usuario' ),
+);
+
 /** Hebrew (עברית)
  * @author Rotem Liss
  */

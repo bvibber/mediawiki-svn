@@ -29,6 +29,11 @@ $aliases['fr'] = array(
 	'EmailPages' => array( 'EnvoyerPage', 'Envoyer Page' ),
 );
 
+/** Galician (Galego) */
+$aliases['gl'] = array(
+	'EmailPages' => array( 'Enviar páxinas por correo electrónico' ),
+);
+
 /** Hebrew (עברית)
  * @author Rotem Liss
  */

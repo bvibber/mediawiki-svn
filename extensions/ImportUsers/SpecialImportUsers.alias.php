@@ -29,6 +29,11 @@ $aliases['fr'] = array(
 	'ImportUsers' => array( 'ImporterUtilisateur' ),
 );
 
+/** Galician (Galego) */
+$aliases['gl'] = array(
+	'ImportUsers' => array( 'Importar usuarios' ),
+);
+
 /** Hebrew (עברית)
  * @author Rotem Liss
  */

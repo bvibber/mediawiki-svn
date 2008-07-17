@@ -29,6 +29,11 @@ $aliases['fi'] = array(
 	'SpecialInvitations' => array( 'Kutsut' ),
 );
 
+/** Galician (Galego) */
+$aliases['gl'] = array(
+	'SpecialInvitations' => array( 'Invitacións' ),
+);
+
 /** Hebrew (עברית)
  * @author Rotem Liss
  */

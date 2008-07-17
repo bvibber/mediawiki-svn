@@ -29,6 +29,11 @@ $aliases['fr'] = array(
 	'DeleteBatch' => array( 'Supression en série', 'SuppressionEnSérie', 'SuppressionEnSerie' ),
 );
 
+/** Galician (Galego) */
+$aliases['gl'] = array(
+	'DeleteBatch' => array( 'Borrar o conxunto' ),
+);
+
 /** Hebrew (עברית)
  * @author Rotem Liss
  */

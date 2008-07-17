@@ -36,6 +36,11 @@ $aliases['fi'] = array(
 	'ExpandTemplates' => array( 'Mallineiden laajennus' ),
 );
 
+/** Galician (Galego) */
+$aliases['gl'] = array(
+	'ExpandTemplates' => array( 'Expandir os modelos' ),
+);
+
 /** Hebrew (עברית)
  * @author Rotem Liss
  */
