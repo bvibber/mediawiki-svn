@@ -54,18 +54,18 @@ if ($wgEmailPageActionLink) {
 }
 
 function wfEmailPageToolboxLink() {
-	global $wgEmailPageToolboxLink,$wgTitle;
-	if (is_object($wgTitle)) {
-		$url = Title::makeTitle(NS_SPECIAL,'EmailPages')->getLocalURL('ea-title='.$wgTitle->getPrefixedText());
+	global $wgEmailPageToolboxLink, $wgTitle, $wgUser, $wgEmailArticleGroup;
+	if (is_object($wgTitle) && (empty($wgEmailArticleGroup) || in_array($wgEmailArticleGroup, $wgUser->getEffectiveGroups()))) {
+		$url = Title::makeTitle(NS_SPECIAL, 'EmailPages')->getLocalURL('ea-title='.$wgTitle->getPrefixedText());
 		echo("<li><a href=\"$url\">$wgEmailPageToolboxLink</li>");
 		}
 	return true;
 }
 
-function wfEmailPageActionLink(&$skin,&$actions) {
-	global $wgEmailPageActionLink,$wgTitle;
-	if (is_object($wgTitle)) {
-		$url = Title::makeTitle(NS_SPECIAL,'EmailPage')->getLocalURL('ea-title='.$wgTitle->getPrefixedText());
+function wfEmailPageActionLink(&$skin, &$actions) {
+	global $wgEmailPageActionLink, $wgTitle, $wgUser, $wgEmailArticleGroup;
+	if (is_object($wgTitle) && (empty($wgEmailArticleGroup) || in_array($wgEmailArticleGroup, $wgUser->getEffectiveGroups()))) {
+		$url = Title::makeTitle(NS_SPECIAL, 'EmailPage')->getLocalURL('ea-title='.$wgTitle->getPrefixedText());
 		$actions['email'] = array('text' => $wgEmailPageActionLink, 'class' => false, 'href' => $url);
 	}
 	return true;
