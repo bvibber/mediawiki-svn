@@ -126,7 +126,7 @@ in bg url to hide it from iemac */
 li#pt-userpage,
 li#pt-anonuserpage,
 li#pt-login {
-	background: url(user.gif) top left no-repeat;
+	background: url(images/user.gif) top left no-repeat;
 	padding-left: 20px;
 	text-transform: none;
 }
