@@ -32,6 +32,7 @@
  */ 
 
 #include <linux/module.h>
+#include <linux/moduleparam.h>
 #include <linux/kernel.h>
 #include <linux/ip.h>
 #include <linux/jhash.h>
@@ -40,7 +41,7 @@
 #include <net/ip_vs.h>
 
 /*
- *     Continuum size
+ *		Continuum size
  */
 #ifndef CONFIG_IP_VS_WCSH_CONT_BITS
 #define CONFIG_IP_VS_WCSH_CONT_BITS		16
@@ -49,6 +50,16 @@
 #define IP_VS_WCSH_CONT_SIZE			(1 << IP_VS_WCSH_CONT_BITS)
 #define IP_VS_WCSH_CONT_MASK			(IP_VS_WCSH_CONT_SIZE - 1)
 
+/*
+ *		Module options
+ */
+static int sphash = 0;
+module_param(sphash, bool, 0444);
+MODULE_PARM_DESC(sphash, "include the source port in the connection hashing");
+
+/*
+ *		Data structures
+ */
 struct ip_vs_wcsh_dest_point {
 	__u32	value;					/* point value */
 	struct ip_vs_dest	*dest;		/* destination server */
@@ -65,6 +76,11 @@ struct ip_vs_wcsh_data {
 static inline unsigned ip_vs_wcsh_hashkey(const unsigned addr)
 {
 	return jhash_1word(addr, 0);
+}
+
+static inline unsigned ip_vs_wcsh_hashkey_port(const unsigned addr, const unsigned port)
+{
+	return jhash_2words(addr, port, 0);
 }
 
 /*
@@ -174,7 +190,7 @@ static void ip_vs_wcsh_flush_continuum(struct ip_vs_wcsh_data *sched_data)
 }
 
 /*
- * Service initialization, cleanup and updating
+ *		Service initialization, cleanup and updating
  */
 static int ip_vs_wcsh_init_svc(struct ip_vs_service *svc)
 {
@@ -227,7 +243,7 @@ static int ip_vs_wcsh_update_svc(struct ip_vs_service *svc)
 }
 
 /*
- * Source Hashing scheduling
+ *		Source Hashing scheduling
  */
 static inline int ip_vs_wcsh_is_feasible(const struct ip_vs_dest *dest) {
 	return dest
@@ -272,9 +288,6 @@ ip_vs_wcsh_get_feasible_dest(struct ip_vs_wcsh_dest_point *start, const struct i
 {
 	struct ip_vs_wcsh_dest_point *point = start;
 	
-	if (unlikely(sched_data->pointcount == 0))
-		return NULL;
-	
 	/* linear search */
 	while (1) {
 		for ( ; point != &sched_data->continuum[sched_data->pointcount]; point++) {
@@ -300,7 +313,20 @@ ip_vs_wcsh_schedule(struct ip_vs_service *svc, const struct sk_buff *skb)
 	struct ip_vs_wcsh_data *sched_data = svc->sched_data;
 	unsigned hashkey;
 	
-	hashkey = ip_vs_wcsh_hashkey(ntohl(iph->saddr)) & IP_VS_WCSH_CONT_MASK;
+	/* Hash the source address, with or without the transport protocol's source port */
+	if (sphash) {
+		__be16 _ports[2], *pptr;
+		
+		pptr = skb_header_pointer(skb, iph->ihl*4, sizeof(_ports), _ports);
+		if (unlikely(pptr == NULL))
+			/* Source port hashing not possible */
+			hashkey = ip_vs_wcsh_hashkey(ntohl(iph->saddr)) & IP_VS_WCSH_CONT_MASK;
+		else
+			hashkey = ip_vs_wcsh_hashkey_port(ntohl(iph->saddr), ntohs(pptr[0])) & IP_VS_WCSH_CONT_MASK;
+	}
+	else {
+		hashkey = ip_vs_wcsh_hashkey(ntohl(iph->saddr)) & IP_VS_WCSH_CONT_MASK;
+	}
 
 	/* Find the nearest server point with a hash value bigger than or equal to hashkey */ 
 	point = ip_vs_wcsh_get_nearest_point(hashkey, sched_data);
@@ -321,7 +347,7 @@ ip_vs_wcsh_schedule(struct ip_vs_service *svc, const struct sk_buff *skb)
 }
 
 /*
- *      IPVS WCSH Scheduler structure
+ *		IPVS WCSH Scheduler structure
  */
 static struct ip_vs_scheduler ip_vs_wcsh_scheduler =
 {
