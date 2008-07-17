@@ -425,6 +425,23 @@ $messages['hu'] = array(
 	'imagemap_description'        => 'Kép leírása',
 );
 
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'imagemap_desc'               => 'Permitte le mappas de imagines cliccabile al latere del cliente, usante le etiquetta <tt><nowiki><imagemap></nowiki></tt>',
+	'imagemap_no_image'           => 'Error: debe specificar un imagine in le prime linea',
+	'imagemap_invalid_image'      => 'Error: imagine es invalide o non existe',
+	'imagemap_no_link'            => 'Error: necun ligamine valide esseva trovate al fin del linea $1',
+	'imagemap_invalid_title'      => 'Error: titulo invalide in ligamine al linea $1',
+	'imagemap_missing_coord'      => 'Error: non bastante coordinatas pro le forma al linea $1',
+	'imagemap_unrecognised_shape' => 'Error: forma non recognoscite al linea $1; cata linea debe comenciar con un del sequentes: default, rect, circle, poly',
+	'imagemap_no_areas'           => 'Error: es necessari dar alminus un specification de area',
+	'imagemap_invalid_coord'      => 'Error: coordinata invalide al linea $1, debe esser un numero',
+	'imagemap_invalid_desc'       => 'Error: specification "desc" invalide, debe esser un del sequentes: <tt>$1</tt>',
+	'imagemap_description'        => 'A proposito de iste imagine',
+);
+
 /** Indonesian (Bahasa Indonesia)
  * @author IvanLanin
  */

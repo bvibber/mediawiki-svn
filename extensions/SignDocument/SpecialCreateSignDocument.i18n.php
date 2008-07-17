@@ -569,15 +569,16 @@ $messages['os'] = array(
 /** Polish (Polski)
  * @author Derbeth
  * @author Maikking
+ * @author Sp5uhe
  */
 $messages['pl'] = array(
 	'createsigndoc-pagename'          => 'Strona:',
 	'createsigndoc-email'             => 'Adres e-mail:',
-	'createsigndoc-address'           => 'Adres:',
-	'createsigndoc-extaddress'        => 'Miejscowość, kraj:',
+	'createsigndoc-address'           => 'Adres domowy',
+	'createsigndoc-extaddress'        => 'Miejscowość, kraj',
 	'createsigndoc-phone'             => 'Numer telefonu:',
 	'createsigndoc-bday'              => 'Data urodzenia:',
-	'createsigndoc-minage'            => 'Minimalny wiek:',
+	'createsigndoc-minage'            => 'Minimalny wiek',
 	'createsigndoc-create'            => 'Utwórz',
 	'createsigndoc-error-generic'     => 'Błąd: $1',
 	'createsigndoc-error-pagenoexist' => 'Błąd: Strona [[$1]] nie istnieje',

@@ -1080,6 +1080,14 @@ $messages['sk'] = array(
 	'right-uboverride'                => 'Prekonať čiernu listinu mien používateľov',
 );
 
+/** Serbian Cyrillic ekavian (ћирилица)
+ * @author Millosh
+ */
+$messages['sr-ec'] = array(
+	'blacklistedusername' => 'Онемогућено сарадничко име.',
+	'right-uboverride'    => 'Препиши сарадничко име са црног списка.',
+);
+
 /** Seeltersk (Seeltersk)
  * @author Pyt
  */

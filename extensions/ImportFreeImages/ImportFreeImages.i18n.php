@@ -421,14 +421,14 @@ $messages['os'] = array(
  * @author Maikking
  */
 $messages['pl'] = array(
-	'importfreeimages_description'           => 'Ta strona pozwala na wyszukiwanie obrazów z odpowiednią licencją na flickr i na ich import na Twoją wiki.',
-	'importfreeimages_nophotosfound'         => "Żadne zdjęcia nie zostały odnalezione na podstawie kryterium '$1', spróbuj ponownie.",
+	'importfreeimages_description'           => 'Ta strona pozwala na wyszukiwanie na flickr obrazów z odpowiednią licencją i na ich import do wiki.',
+	'importfreeimages_nophotosfound'         => 'Żadne zdjęcie nie zostało odnalezione na podstawie kryterium „$1”. Spróbuj ponownie.',
 	'importfreeimages_invalidurl'            => 'Adres URL „$1” nie jest prawidłowym odwołaniem do obrazka w serwisie Flickr.',
 	'importfreeimages_owner'                 => 'Autor',
-	'importfreeimages_importthis'            => 'zaimportuj',
+	'importfreeimages_importthis'            => 'importuj',
 	'importfreeimages_next'                  => 'Następne $1',
-	'importfreeimages_filefromflickr'        => '$1 przez użytkownika <b>[$2]</b> z flickr. Oryginalny URL to',
-	'importfreeimages_promptuserforfilename' => 'Wprowadź nazwę pliku docelowego:',
+	'importfreeimages_filefromflickr'        => '$1 przez użytkownika <b>[$2]</b> z flickr. Oryginalny adres URL to',
+	'importfreeimages_promptuserforfilename' => 'Wprowadź nazwę pliku docelowego',
 	'importfreeimages_returntoform'          => "Kliknij <a href='$1'>tutaj</a> żeby powrócić do wyników wyszukiwania",
 );
 

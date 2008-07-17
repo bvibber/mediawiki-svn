@@ -453,7 +453,7 @@ Możesz wysłać od 1 do $1 plików za jednym razem.
 Wprowadzić, jeśli chcesz, '''Nazwę docelową''' oraz wypełnił '''Opis''' dla wysyłanych plików.
 
 Nieprawidłowe pliki będą natychmiast usuwane, zobacz [[{{MediaWiki:Multipleupload-page}}|Zasady usuwania plików]].",
-	'multiupload-fileuploaded'         => 'Plik przesłany.',
+	'multiupload-fileuploaded'         => 'Plik został przesłany.',
 );
 
 /** Pashto (پښتو)

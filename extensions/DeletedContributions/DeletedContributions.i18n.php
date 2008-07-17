@@ -611,9 +611,11 @@ $messages['sq'] = array(
 
 /** Serbian Cyrillic ekavian (ћирилица)
  * @author SPQRobin
+ * @author Millosh
  */
 $messages['sr-ec'] = array(
-	'deletedcontributions' => 'Обрисане измене',
+	'deletedcontributions'      => 'Обрисане измене',
+	'deletedcontributions-desc' => 'Даје сисопима могућност да [[Special:DeletedContributions|прегледају обрисане измене]] сарадника.',
 );
 
 /** latinica (latinica)

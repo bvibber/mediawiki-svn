@@ -479,7 +479,7 @@ $messages['oc'] = array(
  */
 $messages['pl'] = array(
 	'invite-logentry'                => 'zaprosił $1 do używania dodatku <i>$2</i>',
-	'invitations-feature-notallowed' => 'Nie masz odpowiednich uprawnień do używania <i>$1</i>.',
+	'invitations-feature-notallowed' => 'Nie masz odpowiednich uprawnień do korzystania z <i>$1</i>.',
 	'invitations-inviteform-submit'  => 'Zaproś',
 );
 

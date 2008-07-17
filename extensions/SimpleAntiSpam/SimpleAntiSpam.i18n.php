@@ -289,6 +289,15 @@ $messages['sk'] = array(
 	'simpleantispam-desc'  => 'Pridáva k formulárom jednoduchú ochranu prosti botom/spamu.',
 );
 
+/** Serbian Cyrillic ekavian (ћирилица)
+ * @author Millosh
+ */
+$messages['sr-ec'] = array(
+	'simpleantispam'       => 'Твоја измена је покренула антиспам механизам.',
+	'simpleantispam-label' => "Провера спама. '''НЕ''' попуњавај ово унутра!",
+	'simpleantispam-desc'  => 'Додаје једноставну спам/бот проверу у форме.',
+);
+
 /** Swedish (Svenska)
  * @author M.M.S.
  */

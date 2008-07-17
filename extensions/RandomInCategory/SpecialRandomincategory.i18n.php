@@ -395,12 +395,13 @@ $messages['os'] = array(
 
 /** Polish (Polski)
  * @author Maikking
+ * @author Sp5uhe
  */
 $messages['pl'] = array(
 	'randomincategory'            => 'Losowa strona w kategorii',
 	'randomincategory-toolbox'    => 'Losowa strona',
 	'randomincategory-nocategory' => 'Kategoria $1 nie istnieje lub jest pusta',
-	'randomincategory-label'      => 'Kategoria:',
+	'randomincategory-label'      => 'Kategoria',
 );
 
 /** Pashto (پښتو)

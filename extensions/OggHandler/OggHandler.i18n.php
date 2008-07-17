@@ -898,7 +898,35 @@ $messages['hu'] = array(
  * @author McDutchie
  */
 $messages['ia'] = array(
-	'ogg-more' => 'Plus…',
+	'ogg-desc'                => 'Gestor pro le files Ogg Theora e Vorbis, con reproductor JavaScript',
+	'ogg-short-audio'         => 'File audio Ogg $1, $2',
+	'ogg-short-video'         => 'File video Ogg $1, $2',
+	'ogg-short-general'       => 'File media Ogg $1, $2',
+	'ogg-long-audio'          => '(File audio Ogg $1, duration $2, $3)',
+	'ogg-long-video'          => '(File video Ogg $1, duration $2, $4×$5 pixel, $3)',
+	'ogg-long-multiplexed'    => '(File multiplexate audio/video Ogg, $1, duration $2, $4×$5 pixel, $3 in total)',
+	'ogg-long-general'        => '(File media Ogg, duration $2, $3)',
+	'ogg-long-error'          => '(File Ogg invalide: $1)',
+	'ogg-play'                => 'Jocar',
+	'ogg-pause'               => 'Pausar',
+	'ogg-stop'                => 'Stoppar',
+	'ogg-play-video'          => 'Jocar video',
+	'ogg-play-sound'          => 'Sonar audio',
+	'ogg-no-player'           => 'Excusa, ma il pare que non es installate alcun lector compatibile in tu systema.
+Per favor <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">discarga un lector.</a>',
+	'ogg-no-xiphqt'           => 'Pare que tu non ha le componente XiphQT pro QuickTime.
+Sin iste componente, QuickTime non sape leger le files Ogg.
+Per favor <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">discarga XiphQT</a> o selige un altere lector.',
+	'ogg-player-videoElement' => 'elemento <video>',
+	'ogg-player-oggPlugin'    => 'Plugin Ogg',
+	'ogg-player-thumbnail'    => 'Imagine static solmente',
+	'ogg-player-soundthumb'   => 'Necun lector',
+	'ogg-player-selected'     => '(seligite)',
+	'ogg-use-player'          => 'Usar lector:',
+	'ogg-more'                => 'Plus…',
+	'ogg-dismiss'             => 'Clauder',
+	'ogg-download'            => 'Discargar file',
+	'ogg-desc-link'           => 'A proposito de iste file',
 );
 
 /** Indonesian (Bahasa Indonesia)

@@ -226,6 +226,13 @@ $messages['sk'] = array(
 	'skinperpage-desc' => 'Pridáva značku <tt>&lt;skin&gt;</tt>, ktorá umožňuje na jednotlivej stránke použiť odlišnú tému vzhľadu',
 );
 
+/** Serbian Cyrillic ekavian (ћирилица)
+ * @author Millosh
+ */
+$messages['sr-ec'] = array(
+	'skinperpage-desc' => 'Додаје ознаку <tt>&lt;skin&gt;</tt> за коришћење различитих кожа на различитим странама.',
+);
+
 /** Sundanese (Basa Sunda)
  * @author Irwangatot
  */

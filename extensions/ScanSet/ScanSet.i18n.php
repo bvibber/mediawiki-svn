@@ -751,11 +751,18 @@ $messages['sk'] = array(
  * @author Millosh
  */
 $messages['sr-ec'] = array(
-	'scanset-desc'         => 'Види скенирану страну слике ис CD/DVD скупа Андреаса Гроша (Andreas Grosz).',
-	'scanset_no_name'      => 'Грешка: Мораш одредити име скупу скенова, нпр. &lt;scanset name="EB1911" /&gt;.',
-	'scanset_invalid_name' => 'Грешка: Лош или недостајући скуп скенова.',
-	'scanset_next'         => 'След. &gt;',
-	'scanset_prev'         => '&lt; Прет.',
+	'scanset-desc'                      => 'Види скенирану страну слике ис CD/DVD скупа Андреаса Гроша (Andreas Grosz).',
+	'scanset_no_name'                   => 'Грешка: Мораш одредити име скупу скенова, нпр. &lt;scanset name="EB1911" /&gt;.',
+	'scanset_invalid_name'              => 'Грешка: Лош или недостајући скуп скенова.',
+	'scanset_unrecognised_index_format' => 'Грешка: Непознати облик индекса.',
+	'scanset_opendir_error'             => 'Грешка: Не могу отворити директоријум $1.',
+	'scanset_no_files'                  => 'Грешка: Нема фајлова у датом директоријуму.',
+	'scanset_no_volumes'                => 'Грешка: Ниједан скуп директоријума није нађен.',
+	'scanset_missing_index_file'        => 'Грешка: Фајл с индексима $1 није нађен.',
+	'scanset_index_file_error'          => 'Грешка: Грешка у облику фајла с индексима у линији $1.',
+	'scanset_invalid_volume'            => 'Грешка: Лош скуп.',
+	'scanset_next'                      => 'След. &gt;',
+	'scanset_prev'                      => '&lt; Прет.',
 );
 
 /** Seeltersk (Seeltersk)

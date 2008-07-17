@@ -72,6 +72,15 @@ $messages['la'] = array(
 	'right-move-userpages'  => 'Paginas usorum movere',
 );
 
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$messages['lb'] = array(
+	'nomoveuserpages-desc'  => 'Spärt Benotzer fir Benotzersäiten ze réckelen et sief si hun d\'Recht fir  "Benotzersäite ze réckelen"',
+	'nomoveuserpages-error' => 'Réckele vu Benotzersäite gouf ausgeschalt',
+	'right-move-userpages'  => 'Benotzersäite réckelen',
+);
+
 /** Dutch (Nederlands)
  * @author SPQRobin
  * @author Siebrand

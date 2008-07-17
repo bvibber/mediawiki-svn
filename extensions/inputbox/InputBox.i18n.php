@@ -532,6 +532,19 @@ $messages['hy'] = array(
 	'createarticle' => 'Հոդված ստեղծել',
 );
 
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'inputbox-desc'           => 'Permitter le inclusion de formularios HTML predefinite',
+	'inputbox-error-no-type'  => 'Tu non ha specificate le typo de quadro de entrata a crear.',
+	'inputbox-error-bad-type' => 'Le typo de quadro de entrata "$1" non es recognoscite.
+Per favor specifica "create", "comment", "search" o "search2".',
+	'tryexact'                => 'Provar correspondentia exacte',
+	'searchfulltext'          => 'Cercar in texto integre',
+	'createarticle'           => 'Crear pagina',
+);
+
 /** Indonesian (Bahasa Indonesia)
  * @author IvanLanin
  */
@@ -807,8 +820,13 @@ $messages['ms'] = array(
  * @author Giangian15
  */
 $messages['mt'] = array(
-	'inputbox-desc' => "Tħalli formuli ta' HTML predefiniti",
-	'createarticle' => 'Oħloq paġna',
+	'inputbox-desc'           => "Tħalli formuli ta' HTML predefiniti",
+	'inputbox-error-no-type'  => "Inti ma speċifikajtx it-tip ta' ''input box'' li trid toħloq.",
+	'inputbox-error-bad-type' => 'L-\'\'Input box\'\' ta\' tip "$1" mhux magħrufa.
+Jekk jogħġbok speċifika fost "create", "comment", "search" u "search2".',
+	'tryexact'                => 'Fittex korrispondenza eżatta',
+	'searchfulltext'          => 'Fittex fit-test',
+	'createarticle'           => 'Oħloq paġna',
 );
 
 /** Min Nan Chinese (Bân-lâm-gú) */
@@ -1214,6 +1232,17 @@ $messages['vo'] = array(
 /** Walloon (Walon) */
 $messages['wa'] = array(
 	'createarticle' => 'Ahiver årtike',
+);
+
+/** Wolof (Wolof)
+ * @author Ibou
+ */
+$messages['wo'] = array(
+	'inputbox-error-no-type'  => 'Leeraloo ban xeetu boyotu duggit nga bëgga sos.',
+	'inputbox-error-bad-type' => '"$1" du xeetu boyotu duggit bu ñu xam. Tànnal benn ci yii "create", "comment", "seach" walla "search2"',
+	'tryexact'                => 'Seet wi mu yamal',
+	'searchfulltext'          => 'Ceet ci mbind mi',
+	'createarticle'           => 'Sos jukki bi',
 );
 
 /** Wu (吴语) */

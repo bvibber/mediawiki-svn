@@ -134,6 +134,7 @@ $messages['km'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
+	'mediafunctions-desc'          => 'Parser-Fonctiounen fir Informatiounen iwwer Media-Fichieren ze kréien',
 	'mediafunctions-invalid-title' => '"$1" ass kee gültege Numm',
 	'mediafunctions-not-exist'     => '"$1" gëtt et net',
 );

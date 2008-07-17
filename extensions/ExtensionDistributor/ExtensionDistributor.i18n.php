@@ -458,12 +458,13 @@ S'avètz de questions a prepaus d'aqueste sistèma de distribucion de las extens
 
 /** Polish (Polski)
  * @author Maikking
+ * @author Sp5uhe
  */
 $messages['pl'] = array(
-	'extensiondistributor'      => 'Ściągnij rozszerzenie MediaWiki',
-	'extdist-no-such-extension' => 'Brak rozszerzenia "$1"',
+	'extensiondistributor'      => 'Pobierz rozszerzenie MediaWiki',
+	'extdist-no-such-extension' => 'Brak rozszerzenia „$1”',
 	'extdist-submit-extension'  => 'Kontynuuj',
-	'extdist-no-versions'       => 'Wybrane rozszerzenie $1 nie jest dostępne w żadnej wersji oprogramowania!',
+	'extdist-no-versions'       => 'Wybrane rozszerzenie „$1” nie jest dostępne w żadnej wersji oprogramowania!',
 	'extdist-submit-version'    => 'Kontynuuj',
 );
 

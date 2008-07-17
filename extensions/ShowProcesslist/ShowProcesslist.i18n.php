@@ -375,7 +375,7 @@ $messages['os'] = array(
  */
 $messages['pl'] = array(
 	'showprocesslist'         => 'Pokaż listę procesów',
-	'showprocesslist-id'      => 'Id',
+	'showprocesslist-id'      => 'Id.',
 	'showprocesslist-user'    => 'Użytkownik',
 	'showprocesslist-command' => 'Polecenie',
 );

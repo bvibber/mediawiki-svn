@@ -590,6 +590,19 @@ $messages['hy'] = array(
 	'newuserlog-create2-entry' => 'ստեղծեց նոր հաշիվ $1 մասնակցի համար',
 );
 
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'newuserlogpage'              => 'Registro de creation de usatores',
+	'newuserlogpagetext'          => 'Isto es un registro de creation de usatores',
+	'newuserlog-desc'             => 'Adde un [[{{ns:special}}:Log/newusers|registro de creation de contos]] a [[{{ns:special}}:Log]]',
+	'newuserlog-byemail'          => 'contrasigno inviate per e-mail',
+	'newuserlog-create-entry'     => 'Nove usator',
+	'newuserlog-create2-entry'    => 'creava conto pro $1',
+	'newuserlog-autocreate-entry' => 'Conto create automaticamente',
+);
+
 /** Indonesian (Bahasa Indonesia)
  * @author IvanLanin
  * @author Rex

@@ -166,6 +166,13 @@ $messages['de'] = array(
 	'importusers-realname'                => 'Echter Name',
 );
 
+/** Greek (Ελληνικά)
+ * @author Consta
+ */
+$messages['el'] = array(
+	'importusers-password' => 'κωδικός',
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */
@@ -625,7 +632,7 @@ $messages['os'] = array(
  * @author Maikking
  */
 $messages['pl'] = array(
-	'importusers'                         => 'Importuj użytkowników',
+	'importusers'                         => 'Importuj kont użytkowników',
 	'importusers-uploadfile'              => 'Prześlij plik',
 	'importusers-form-button'             => 'Importuj',
 	'importusers-user-added'              => 'Użytkownik <b>%s</b> został dodany.',

@@ -630,8 +630,21 @@ $messages['hy'] = array(
  * @author McDutchie
  */
 $messages['ia'] = array(
-	'expand_templates_ok'      => 'OK',
-	'expand_templates_preview' => 'Previsualisation',
+	'expandtemplates'                  => 'Expander patronos',
+	'expandtemplates-desc'             => '[[Special:ExpandTemplates|Expande le patronos, functiones del analysator syntactic e variabiles]] pro revelar le texto wiki expandite e previsualisar le aspecto del pagina',
+	'expand_templates_intro'           => 'Iste pagina special prende alcun texto e expande recursivemente tote le patronos in illo.
+Illo expande etiam le functiones del analysator syntactic como
+<nowiki>{{</nowiki>#if:…}}, e variabiles como
+<nowiki>{{</nowiki>CURRENTDAY}}; de facto, quasi toto inter accolladas duple.
+Illo functiona per appellar le stadio relevante del analysator syntactic a partir de MediaWiki mesme.',
+	'expand_templates_title'           => 'Titulo de contexto, pro {{PAGENAME}} etc.:',
+	'expand_templates_input'           => 'Texto de entrata:',
+	'expand_templates_output'          => 'Resultato',
+	'expand_templates_xml_output'      => 'Output XML',
+	'expand_templates_ok'              => 'OK',
+	'expand_templates_remove_comments' => 'Eliminar commentos',
+	'expand_templates_generate_xml'    => 'Monstrar arbore syntactic XML',
+	'expand_templates_preview'         => 'Previsualisation',
 );
 
 /** Indonesian (Bahasa Indonesia)

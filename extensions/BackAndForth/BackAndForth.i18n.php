@@ -491,6 +491,15 @@ $messages['sr-ec'] = array(
 	'backforth-prev' => 'Претходно ($1)',
 );
 
+/** Sranan Tongo (Sranantongo)
+ * @author Stretsh
+ */
+$messages['srn'] = array(
+	'backforth-next' => 'Trawan',
+	'backforth-desc' => 'Disi e poti link go na "Trawan" nanga "Pasawan" n\'a tapsey fu den papira',
+	'backforth-prev' => 'Pasawan',
+);
+
 /** Seeltersk (Seeltersk)
  * @author Pyt
  */

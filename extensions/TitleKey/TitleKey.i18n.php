@@ -203,6 +203,13 @@ $messages['sk'] = array(
 	'titlekey-desc' => 'Backend pre návrh prefixového vyhľadávania názvu stránky',
 );
 
+/** Serbian Cyrillic ekavian (ћирилица)
+ * @author Millosh
+ */
+$messages['sr-ec'] = array(
+	'titlekey-desc' => 'Позадинска машина за претрагу префикса наслова.',
+);
+
 /** Swedish (Svenska)
  * @author M.M.S.
  */

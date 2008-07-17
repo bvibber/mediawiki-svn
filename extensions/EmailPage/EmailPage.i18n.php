@@ -307,12 +307,13 @@ $messages['oc'] = array(
 
 /** Polish (Polski)
  * @author Maikking
+ * @author Sp5uhe
  */
 $messages['pl'] = array(
 	'ea-selectrecipients' => 'Wybierz odbiorców',
 	'ea-show'             => 'Pokaż odbiorców',
 	'ea-send'             => 'Wyślij',
-	'ea-subject'          => 'Wprowadź temat',
+	'ea-subject'          => 'Wprowadź temat wiadomości e-mail',
 	'ea-selectcss'        => 'Wybierz styl CSS',
 );
 

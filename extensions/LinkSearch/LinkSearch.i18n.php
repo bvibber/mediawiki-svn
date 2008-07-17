@@ -559,7 +559,15 @@ $messages['hy'] = array(
  * @author McDutchie
  */
 $messages['ia'] = array(
-	'linksearch-ok' => 'Cercar',
+	'linksearch'       => 'Cercar per ligamines web',
+	'linksearch-desc'  => '[[Special:Linksearch|Cercar paginas con ligamines externe]] correspondente a patronos specific',
+	'linksearch-pat'   => 'Patrono a cercar:',
+	'linksearch-ns'    => 'Spatio de nomines:',
+	'linksearch-ok'    => 'Cercar',
+	'linksearch-text'  => 'Es possibile usar metacharacteres como in "*.wikipedia.org".<br />
+Protocollos supportate: <tt>$1</tt>',
+	'linksearch-line'  => '$1 ligate ab $2',
+	'linksearch-error' => 'Le metacharacteres pote apparer solmente al initio del nomine del hospite.',
 );
 
 /** Indonesian (Bahasa Indonesia)

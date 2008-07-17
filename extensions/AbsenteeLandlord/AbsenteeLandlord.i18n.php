@@ -331,3 +331,11 @@ $messages['vi'] = array(
 	'absenteelandlord-desc'   => 'Tự động khóa cơ sở dữ liệu nếu tất cả người quản lý đều không hoạt động vào một thời điểm',
 );
 
+/** Wolof (Wolof)
+ * @author Ibou
+ */
+$messages['wo'] = array(
+	'absenteelandlord-reason' => 'Dàttub njoxe bi dañ koo caab ndax li yorkat yi yënguwul.',
+	'absenteelandlord-desc'   => 'Dàttub njoxe bi caabi boppam su yorkat yi yënguwul benn diir bi.',
+);
+

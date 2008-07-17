@@ -907,7 +907,7 @@ $messages['lb'] = array(
 	'signdocument'                  => 'Dokument ënnerschreiwen',
 	'sign-nodocselected'            => 'Wielt w.e.g dat Dokument aus dat Dir ënenrschreiwe wëllt.',
 	'sign-selectdoc'                => 'Dokument:',
-	'sign-error-nosuchdoc'          => 'Dat Dokument, dat Dir ugefrot hutt, gëtt et net.',
+	'sign-error-nosuchdoc'          => 'Dat Dokument, dat Dir ugefrot hutt ($1), gëtt et net.',
 	'sign-realname'                 => 'Numm:',
 	'sign-city'                     => 'Stad/Gemeng:',
 	'sign-state'                    => 'Staat:',
@@ -1440,12 +1440,14 @@ $messages['os'] = array(
  * @author McMonster
  * @author Derbeth
  * @author Maikking
+ * @author Sp5uhe
  */
 $messages['pl'] = array(
 	'signdocument'             => 'Podpisz dokument',
-	'sign-nodocselected'       => 'Wybierz dokument do podpisu.',
-	'sign-selectdoc'           => 'Dokument:',
-	'sign-docheader'           => '<div class="noarticletext">Użyj tego formularza w celu podpisania dokumentu "[[$1]]," wyświetlonego poniżej. Przed podpisaniem, przeczytaj cały dokument dokładnie. Jeżeli chcesz go poprzeć, wypełnij wymagane pola w celu podpisania go.</div>',
+	'sign-nodocselected'       => 'Wybierz dokument, który chcesz podpisać.',
+	'sign-selectdoc'           => 'Dokument',
+	'sign-docheader'           => '<div class="noarticletext">Użyj tego formularza by podpisać wyświetlony poniżej dokument „[[$1]]”.
+Przeczytaj cały dokument dokładnie i jeśli uznasz, że chcesz go poprzeć, w celu podpisania wypełnij wymagane pola.</div>',
 	'sign-error-nosuchdoc'     => 'Szukany dokument ($1) nie istnieje.',
 	'sign-realname'            => 'Nazwisko:',
 	'sign-address'             => 'Ulica:',
@@ -1458,7 +1460,7 @@ $messages['pl'] = array(
 	'sign-email'               => 'Adres e-mail:',
 	'sign-indicates-req'       => '<small><i><font color="red">*</font> oznacza wymagane pole.</i></small>',
 	'sign-submit'              => 'Podpisz dokument',
-	'sig-success'              => 'Proces podpisywania dokumentu zakończył się powodzeniem.',
+	'sig-success'              => 'Dokument został podpisany.',
 	'sign-view-selectfields'   => '<b>Pola do wyświetlenia:</b>',
 	'sign-viewfield-timestamp' => 'Znacznik czasu',
 	'sign-viewfield-address'   => 'Adres',

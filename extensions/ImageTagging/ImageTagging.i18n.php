@@ -532,6 +532,18 @@ $messages['pl'] = array(
 	'imagetagging-tagcancel-button' => 'Anuluj',
 );
 
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Enqd
+ */
+$messages['pt-br'] = array(
+	'taggedimages'                  => 'Imagens marcadas',
+	'imagetagging-addimagetag'      => 'Marcar esta imagem',
+	'imagetagging-images'           => 'imagens',
+	'imagetagging-done-button'      => 'Marcação concluída',
+	'imagetagging-tag-button'       => 'Marcar',
+	'imagetagging-tagcancel-button' => 'Cancelar',
+);
+
 /** Tarifit (Tarifit)
  * @author Jose77
  */

@@ -278,6 +278,14 @@ $messages['hy'] = array(
 	'sitenotice_close' => 'փակել',
 );
 
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'sitenotice_close' => 'dimitter',
+	'sitenotice-desc'  => 'Permitte que usatores claude le notification del sito',
+);
+
 /** Indonesian (Bahasa Indonesia)
  * @author IvanLanin
  */

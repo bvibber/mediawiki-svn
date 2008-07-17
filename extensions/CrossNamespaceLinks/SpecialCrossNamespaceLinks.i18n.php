@@ -332,6 +332,16 @@ $messages['hy'] = array(
 	'crossnamespacelinkstext'     => '$1. $2 {{PLURAL:$2|հղում|հղում}} դեպի $3',
 );
 
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'crossnamespacelinks'         => 'Ligamines trans spatios de nomines',
+	'crossnamespacelinks-desc'    => '[[Special:CrossNamespaceLinks|Lista ligamines trans spatios de nomines]] que non debe exister in {{SITENAME}}',
+	'crossnamespacelinks-summary' => 'Iste pagina presenta un lista de ligamines ab un pagina in le spatio de nomines principal verso un pagina in altere spatios de nomines (excepte le spatios de nomines {{ns:special}}, {{ns:talk}}, {{ns:project}}, and {{ns:template}}), le quales non es recommendate.',
+	'crossnamespacelinkstext'     => '$1: $2 {{PLURAL:$2|ligamine|ligamines}} verso $3',
+);
+
 /** Indonesian (Bahasa Indonesia)
  * @author IvanLanin
  */

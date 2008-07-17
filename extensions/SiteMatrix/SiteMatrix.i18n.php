@@ -592,9 +592,19 @@ $messages['hy'] = array(
 
 /** Interlingua (Interlingua)
  * @author Malafaya
+ * @author McDutchie
  */
 $messages['ia'] = array(
+	'sitematrix'           => 'Lista de wikis de Wikimedia',
+	'sitematrix-summary'   => 'Iste pagina special lista tote le wikis de Wikimedia.',
+	'sitematrix-desc'      => 'Monstra un [[Special:SiteMatrix|lista de wikis de Wikimedia]]',
+	'sitematrix-language'  => 'Lingua',
+	'sitematrix-project'   => 'Nomine del projecto, ligamine interprojecto e ligamine interwiki',
+	'sitematrix-others'    => 'Altere projectos de Wikimedia',
+	'sitematrix-total'     => "'''Total: $1'''",
 	'sitematrix-sitetotal' => 'Total',
+	'sitematrix-private'   => 'private',
+	'sitematrix-fishbowl'  => 'modification restringite',
 );
 
 /** Indonesian (Bahasa Indonesia)

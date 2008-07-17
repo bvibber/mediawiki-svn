@@ -130,6 +130,13 @@ $messages['hu'] = array(
 	'fixedimage-desc' => 'A <tt><nowiki><fundraising></nowiki></tt> taget képként jeleníti meg',
 );
 
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'fixedimage-desc' => 'Adde le etiquetta <tt><nowiki><fundraising></nowiki></tt> como un imagine',
+);
+
 /** Indonesian (Bahasa Indonesia)
  * @author Rex
  */

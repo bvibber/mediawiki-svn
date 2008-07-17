@@ -230,8 +230,9 @@ $messages['da'] = array(
  * @author Consta
  */
 $messages['el'] = array(
-	'openidlanguage'     => 'Γλώσσα',
-	'openidchoosemanual' => 'Ένα όνομα της επιλογής σας:',
+	'openidlanguage'       => 'Γλώσσα',
+	'openidchoosemanual'   => 'Ένα όνομα της επιλογής σας:',
+	'openidchoosepassword' => 'κωδικός:',
 );
 
 /** Esperanto (Esperanto)
@@ -1023,22 +1024,23 @@ $messages['os'] = array(
 
 /** Polish (Polski)
  * @author Maikking
+ * @author Sp5uhe
  */
 $messages['pl'] = array(
 	'openidoptional'           => 'Opcjonalnie',
-	'openidrequired'           => 'Obowiązkowe',
+	'openidrequired'           => 'Wymagane',
 	'openidnickname'           => 'Nazwa użytkownika',
 	'openidfullname'           => 'Imię i nazwisko',
 	'openidemail'              => 'Adres e-mail',
 	'openidlanguage'           => 'Język',
-	'openidnotavailable'       => 'Wybrana przez Ciebie nazwa użytkownika ($1) jest już zajęta.',
-	'openidchooseinstructions' => 'Wszyscy użytkownicy muszą posiadać nazwę;
-możesz wybrać spośród propozycji podanych poniżej.',
+	'openidnotavailable'       => 'Wybrana nazwa użytkownika „$1” jest już zajęta.',
+	'openidchooseinstructions' => 'Wszyscy użytkownicy muszą posiadać nazwę.
+Możesz wybrać spośród propozycji podanych poniżej.',
 	'openidchoosefull'         => 'Twoje imię i nazwisko ($1)',
 	'openidchooseauto'         => 'Automatycznie utworzono nazwę użytkownika ($1)',
-	'openidchoosemanual'       => 'Nazwa użytkownika wybrana przez Ciebie:',
-	'openidchooseexisting'     => 'Istniejące konto na tej wiki:',
-	'openidchoosepassword'     => 'hasło:',
+	'openidchoosemanual'       => 'Nazwa użytkownika wybrana przez Ciebie',
+	'openidchooseexisting'     => 'Istniejące konto na tej wiki',
+	'openidchoosepassword'     => 'hasło',
 	'openidnousername'         => 'Nie wybrano żadnej nazwy użytkownika.',
 	'openidbadusername'        => 'Wybrano nieprawidłową nazwę użytkownika.',
 );

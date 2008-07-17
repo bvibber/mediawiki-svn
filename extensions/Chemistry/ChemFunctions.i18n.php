@@ -298,6 +298,8 @@ $messages['it'] = array(
 * <a href="http://webbook.nist.gov/cgi/cbook.cgi?ID=$MIXCASNameFormula&Units=SI">Scheda del composto $MIXCASNameFormula presso il NIST</a><br />
 * <a href="http://ptcl.chem.ox.ac.uk/MSDS/">Scheda di sicurezza MSDS presso la Oxford University (UK) (ricerca non attiva)</a><br />',
 	'chemFunctions_CAS'                => 'Numero CAS',
+	'chemFunctions_ATCCode'            => 'Codice ATC',
+	'chemFunctions_ECNumber'           => 'Numero EC',
 	'chemFunctions_Name'               => 'Nome IUPAC',
 	'chemFunctions_ChemFormInputError' => 'Chemform: Input non corretto.',
 );

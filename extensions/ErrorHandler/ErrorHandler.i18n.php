@@ -172,10 +172,11 @@ $messages['oc'] = array(
 
 /** Polish (Polski)
  * @author Maikking
+ * @author Sp5uhe
  */
 $messages['pl'] = array(
 	'errorhandler-errors'        => 'Błędy:',
-	'errorhandler-error-fatal'   => 'Krytyczny błąd',
+	'errorhandler-error-fatal'   => 'Błąd krytyczny',
 	'errorhandler-error-warning' => 'Ostrzeżenie',
 	'errorhandler-error-parse'   => 'Błąd parsera',
 	'errorhandler-msg-text'      => '$1 : $2 w $3 (linia $4)',
