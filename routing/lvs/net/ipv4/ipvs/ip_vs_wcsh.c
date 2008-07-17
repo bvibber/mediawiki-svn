@@ -60,13 +60,17 @@ struct ip_vs_wcsh_data {
 };
 
 /*
- *	Returns a hash value for a host order IPv4 address
+ * Returns a hash value for a host order IPv4 address
  */
 static inline unsigned ip_vs_wcsh_hashkey(const unsigned addr)
 {
 	return jhash_1word(addr, 0);
 }
 
+/*
+ * Determines the amount of points on the continuum and allocates
+ * memory for it
+ */
 static int ip_vs_wcsh_alloc_continuum(struct ip_vs_wcsh_data *sched_data, const struct ip_vs_service *svc)
 {
 	struct ip_vs_dest *dest;
@@ -94,6 +98,9 @@ static int ip_vs_wcsh_alloc_continuum(struct ip_vs_wcsh_data *sched_data, const 
 	return 0;
 }
 
+/*
+ * Helper comparison function for sort()ing the continuum
+ */
 static inline int ip_vs_wcsh_cmp_point(const void *va, const void *vb)
 {
 	const struct ip_vs_wcsh_dest_point *a = va, *b = vb;
@@ -103,7 +110,9 @@ static inline int ip_vs_wcsh_cmp_point(const void *va, const void *vb)
 
 /*
  * Create the continuum by hashing each server multiple times
- * (determined by weight) onto the circle
+ * (determined by weight) onto the circle. Expects an allocated
+ * array sched_data->continuum of exactly the right size, the
+ * sum of all server weights
  */
 static void ip_vs_wcsh_create_continuum(const struct ip_vs_wcsh_data *sched_data, const struct ip_vs_service *svc)
 {
@@ -144,6 +153,9 @@ static void ip_vs_wcsh_create_continuum(const struct ip_vs_wcsh_data *sched_data
 			NULL);
 }
 
+/*
+ * Cleans up and deallocates the continuum
+ */
 static void ip_vs_wcsh_flush_continuum(struct ip_vs_wcsh_data *sched_data)
 {
 	struct ip_vs_wcsh_dest_point *point;
@@ -161,6 +173,9 @@ static void ip_vs_wcsh_flush_continuum(struct ip_vs_wcsh_data *sched_data)
 	sched_data->continuum = NULL;
 }
 
+/*
+ * Service initialization, cleanup and updating
+ */
 static int ip_vs_wcsh_init_svc(struct ip_vs_service *svc)
 {
 	struct ip_vs_wcsh_data *sched_data;
@@ -182,7 +197,7 @@ static int ip_vs_wcsh_init_svc(struct ip_vs_service *svc)
 		ip_vs_wcsh_create_continuum(sched_data, svc);
 	}
 	
-	IP_VS_DBG(6, "[wcsh] Scheduler initialized\n");
+	IP_VS_DBG(5, "[wcsh] Scheduler initialized\n");
 	return 0;
 }
 
@@ -191,7 +206,7 @@ static int ip_vs_wcsh_done_svc(struct ip_vs_service *svc)
 	ip_vs_wcsh_flush_continuum(svc->sched_data);
 	kfree(svc->sched_data);
 	
-	IP_VS_DBG(6, "[wcsh] Scheduler cleanup done\n");
+	IP_VS_DBG(5, "[wcsh] Scheduler cleanup done\n");
 	return 0;
 }
 
@@ -207,12 +222,12 @@ static int ip_vs_wcsh_update_svc(struct ip_vs_service *svc)
 		ip_vs_wcsh_create_continuum(sched_data, svc);
 	}
 	
-	IP_VS_DBG(6, "[wcsh] Service updated\n");
+	IP_VS_DBG(5, "[wcsh] Service updated\n");
 	return 0;
 }
 
 /*
- *      Source Hashing scheduling
+ * Source Hashing scheduling
  */
 static inline int ip_vs_wcsh_is_feasible(const struct ip_vs_dest *dest) {
 	return dest
@@ -237,6 +252,12 @@ ip_vs_wcsh_get_nearest_point(const unsigned hashkey, const struct ip_vs_wcsh_dat
 	right = sched_data->pointcount;
 	while (likely(left+1 != right)) {
 		unsigned int mid = (left + right) / 2;
+		
+		IP_VS_DBG(6, "[wcsh] Evaluating destination %u.%u.%u.%u:%d [%u] for hash value %u\n",
+				NIPQUAD(sched_data->continuum[mid].dest->addr),
+				ntohs(sched_data->continuum[mid].dest->port),
+				sched_data->continuum[mid].value, hashkey);
+		
 		if (hashkey <= sched_data->continuum[mid].value)
 			right = mid;
 		else /* hashkey > sched_data->continuum[mid].value */
@@ -260,6 +281,7 @@ ip_vs_wcsh_get_feasible_dest(struct ip_vs_wcsh_dest_point *start, const struct i
 			IP_VS_DBG(6, "[wcsh] Evaluating feasibility of server %u.%u.%u.%u:%d [%u]: %d\n",
 					NIPQUAD(point->dest->addr), ntohs(point->dest->port), point->value,
 					(*feasible)(point->dest));
+			
 			if (likely((*feasible)(point->dest)))
 				return point;
 			else if (point+1 == start)
