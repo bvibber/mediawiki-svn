@@ -335,7 +335,7 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
 				$sql.=' ORDER BY `view_count` DESC ';
 			break;
 		}
-		echo $this->order;		
+		//echo $this->order;		
 		$sql.="LIMIT {$this->offset}, {$this->limit} ";
 		
 		//echo "SQL:".$sql." \n";  			
@@ -409,22 +409,30 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
 				}
 			}	
 			$sql.=') LIMIT 0, 200';						
+			
+			//print "BEFORE merge: ";
+			//print_r($ret_ary);
+			//print_r($stream_groups);
+			
 			//merge category info back into base results:	
 			$result = $dbr->query($sql,  'MV_Index:doCategorySearchResult');
-			while($cl_row = $dbr->fetchObject( $result )){		
+			while($cl_row = $dbr->fetchObject( $result )){
+				//print_r($cl_row);					
 				foreach($stream_groups[$cl_row->stream_id] as &$range){					
 					foreach($range['rows'] as &$result_row){
 						if($result_row->start_time <= $cl_row->end_time && 
 						  $result_row->end_time >= $cl_row->start_time){
-						  	
-						  	if($cl_row->cl_to)
+						  	//print "result row:"; print_r($result_row);							  					 						  	
+						  	if(isset($cl_row->cl_to) && isset($ret_ary[$result_row->id]))
 								$ret_ary[$result_row->id]->categories[$cl_row->cl_to]=true;
-							if($cl_row->bill_to)
-								$ret_ary[$reult_row->id]->bills[$cl_row->bill_to]=true;						
-						} 
+							if(isset($cl_row->bill_to) && isset($ret_ary[$result_row->id]))
+								$ret_ary[$result_row->id]->bills[$cl_row->bill_to]=true;
+					  	}												
 					}
 				}
 			}
+			//print "AFTER MERGE: ";
+			//print_r($ret_ary);
  		} 	
  		//print "<pre>";	 	
  		//print_r($ret_ary);

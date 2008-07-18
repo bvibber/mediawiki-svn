@@ -354,7 +354,7 @@ class MV_SpecialMediaSearch extends SpecialPage {
 		$sideBarLinkBucket = array ();
 		$o .= '			
 					<ul id="results">';
-		foreach ($this->results as $inx => & $mvd) {					
+		foreach ($this->results as $inx => & $mvd) {							
 			$mvTitle = new MV_Title($mvd->wiki_title);
 			$mvd_cnt_links = '';
 			if (isset ($mvd->spoken_by)) {

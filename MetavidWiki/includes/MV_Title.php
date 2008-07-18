@@ -37,7 +37,6 @@
  			$title = parent::makeTitle($ns, $title);
  		}  		 		
  		$this->inheritTitle( $title) ;
- 		 		 	
  		//its just a plain string generate the parse info
  		$this->wiki_title = $title->getDBKey();
  		$this->parseTitle($title->getDBKey());
