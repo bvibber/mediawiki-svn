@@ -284,7 +284,7 @@ ip_vs_wcsh_get_nearest_point(const unsigned hashkey, const struct ip_vs_wcsh_dat
 }
 
 static struct ip_vs_wcsh_dest_point *
-ip_vs_wcsh_get_feasible_dest(struct ip_vs_wcsh_dest_point *start, const struct ip_vs_wcsh_data *sched_data, int (*feasible)(const struct ip_vs_dest*))
+ip_vs_wcsh_get_feasible_dest(struct ip_vs_wcsh_dest_point *start, const struct ip_vs_wcsh_data *sched_data)
 {
 	struct ip_vs_wcsh_dest_point *point = start;
 	
@@ -293,9 +293,9 @@ ip_vs_wcsh_get_feasible_dest(struct ip_vs_wcsh_dest_point *start, const struct i
 		for ( ; point != &sched_data->continuum[sched_data->pointcount]; point++) {
 			IP_VS_DBG(6, "[wcsh] Evaluating feasibility of server %u.%u.%u.%u:%d [%u]: %d\n",
 					NIPQUAD(point->dest->addr), ntohs(point->dest->port), point->value,
-					(*feasible)(point->dest));
+					ip_vs_wcsh_is_feasible(point->dest));
 			
-			if (likely((*feasible)(point->dest)))
+			if (likely(ip_vs_wcsh_is_feasible(point->dest)))
 				return point;
 			else if (point+1 == start)
 				return NULL;	/* No feasible servers available */
@@ -334,7 +334,7 @@ ip_vs_wcsh_schedule(struct ip_vs_service *svc, const struct sk_buff *skb)
 		return NULL;
 	
 	/* Find the nearest feasible destination */
-	point = ip_vs_wcsh_get_feasible_dest(point, sched_data, ip_vs_wcsh_is_feasible);
+	point = ip_vs_wcsh_get_feasible_dest(point, sched_data);
 	if (unlikely(point == NULL))
 		return NULL;
 	
