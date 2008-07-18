@@ -24,7 +24,7 @@ $sample_embed[0]['tag'] = '<video id="vid_4184"
 thumbnail="http://metavid.ucsc.edu/wiki/index.php?action=ajax&rs=mv_frame_server&stream_name=senate_proceeding_08-01-07&t=0:27:16&size=small" 
 src="http://128.114.20.64/media/senate_proceeding_08-01-07.ogg.anx?t=0:27:16/0:27:32" 
 roe="http://localhost/mvw-exp/index.php?title=Special:MvExportStream&feed_format=roe&stream_name=senate_proceeding_08-01-07&t=0:27:16/0:27:32"
-show_meta_link="false"  autoplay="false" style="width:160px;height:120px" controls="true" embed_link="true" />';
+show_meta_link="false"  autoplay="false" style="width:160px;height:120px" controls="true" embed_link="true" ></video>';
 $sample_embed[0]['desc']=' auto play test (similar embed syntax to the metavidWiki site)';
 
 /*$sample_embed[0]['tag']='<video id="v0" src="sample.ogg" thumbnail="sample.jpg"></video>';
@@ -56,11 +56,11 @@ $sample_embed[2]['desc']='';
 //$sample_embed[1]['tag'] = '<video roe="http://192.168.0.104/mvWiki/index.php?title=Special:MvExportStream&feed_format=roe&stream_name=Senate_proceeding_08-01-07&t=0:00:00/0:05:00">';
 //$sample_embed[1]['desc'] = 'Demo of json ROE attribute';
 
-$sample_embed[3]['tag'] = '<video roe="http://metavid.ucsc.edu/wiki/index.php?title=Special:MvExportStream&feed_format=roe&stream_name=Senate_proceeding_08-01-07&t=0:06:00/0:07:00">';
+$sample_embed[3]['tag'] = '<video roe="http://metavid.ucsc.edu/wiki/index.php?title=Special:MvExportStream&feed_format=roe&stream_name=Senate_proceeding_08-01-07&t=0:06:00/0:07:00"></video>';
 $sample_embed[3]['desc'] = 'Demo2  of json ROE attribute';
 
 
-//$sample_embed[2]['tag'] = '<video id="v2" controls="true" roe="http://mammoth.dnip.net/mvWiki/index.php?title=Special:MvExportStream&feed_format=roe&stream_name=senate_11-14-05&t=0:42:14/0:42:56"/>';		
+//$sample_embed[2]['tag'] = '<video id="v2" controls="true" roe="http://mammoth.dnip.net/mvWiki/index.php?title=Special:MvExportStream&feed_format=roe&stream_name=senate_11-14-05&t=0:42:14/0:42:56"></video>';		
 //$sample_embed[2]['desc'] = 'video with controls and thumbnail';		
  
 

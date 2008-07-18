@@ -696,6 +696,7 @@ if(embedTypes.safari){
 	}
 	window.onload=function(){
 		//once jQuery is loaded set up no conflict: 
+        js_log('setting up jQuery no conflict');
 		_global['$j'] = jQuery.noConflict();
 		init_mv_embed();
 	}
@@ -1841,9 +1842,13 @@ embedVideo.prototype = {
             var source_select_code = 'document.getElementById(\''+_this.id+'\').closeDisplayedHTML(); document.getElementById(\''+_this.id+'\').media_element.selectSource(\''+index+'\');';
             var player_code = _this.getPlayerSelectList(source.getMIMEType(), index, source_select_code);
             var is_not_selected = (source != _this.media_element.selected_source);
+            var image_src = mv_embed_path+'/images/stream/';
+            image_src += (source.mime_type == 'video/x-flv')?'flash_icon_':'fish_xiph_org_';
+            image_src += is_not_selected ? 'bw' : 'color';
+            image_src += '.png';
             if (default_player)
             {
-                var retval = '';
+                var retval = '<img src="'+image_src+'"/>';
                 if(is_not_selected)
                     retval+='<a href="#" onClick="' + source_select_code + 'embedTypes.players.userSelectPlayer(\''+default_player.id+'\',\''+source.getMIMEType()+'\'); return false;">';
                 retval += source.getTitle()+' - ' + default_player.getName() + (is_not_selected?'</a>':'') + ' ';
