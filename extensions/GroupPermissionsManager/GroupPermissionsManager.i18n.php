@@ -16,6 +16,7 @@ $messages['en'] = array(
 	'removeunusedgroups'             => 'Remove unused groups',
 	'grouppermissions-desc'          => 'Manage group permissions via a [[Special:GroupPermissions|special page]]',
 	'grouppermissions-desc2'         => 'Extended permissions system',
+	'grouppermissions-desc3'         => 'Allows for the content actions (tabs) to be customized',
 	'grouppermissions-header'        => 'You may use this page to change the underlying permissions of the various usergroups',
 	'grouppermissions-search'        => 'Group:',
 	'grouppermissions-dologin'       => 'Login',
@@ -69,6 +70,16 @@ $messages['en'] = array(
 	'right-recentchanges'            => 'View recent changes',
 	'right-edittalk'                 => 'Edit discussion pages',
 	'right-edit-new'                 => 'Edit pages (which are not discussion pages)',
+	'grouppermissions-ca-article'    => 'ARTICLE',
+	'grouppermissions-ca-discussion' => 'DISCUSSION',
+	'grouppermissions-ca-edit'       => 'EDIT',
+	'grouppermissions-ca-watch'      => 'WATCH',
+	'grouppermissions-ca-protect'    => 'PROTECT',
+	'grouppermissions-ca-delete'     => 'DELETE',
+	'grouppermissions-ca-history'    => 'HISTORY',
+	'grouppermissions-ca-move'       => 'MOVE',
+	'grouppermissions-ca-newsection' => 'NEWSECTION',
+	'content_actions'                => "* ARTICLE\n* DISCUSSION\n* EDIT\n* NEWSECTION\n* HISTORY\n* DELETE\n* MOVE\n* PROTECT\n* WATCH",
 );
 
 /** Faeag Rotuma (Faeag Rotuma)
