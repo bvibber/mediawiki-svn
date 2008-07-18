@@ -699,7 +699,7 @@ $messages['it'] = array(
  */
 $messages['ja'] = array(
 	'expandtemplates'                  => 'テンプレートを展開',
-	'expandtemplates-desc'             => 'ウィキ構文を展開し、ページプレビューを行う{{ns:special}}ページ [[{{ns:special}}:ExpandTemplates|テンプレート、パーサー関数、変数の展開]]',
+	'expandtemplates-desc'             => 'ウィキ構文を展開し、ページプレビューを行う{{ns:special}}ページ [[Special:ExpandTemplates|テンプレート、パーサー関数、変数の展開]]',
 	'expand_templates_intro'           => '指定したウィキ構文に含まれている全てのテンプレートを再帰的に展開します。
 <nowiki>{{</nowiki>#if:...}} のようなパーサー関数や、<nowiki>{{</nowiki>CURRENTDAY}} のような変数など、<nowiki>{{</nowiki> ～ }} で囲まれているものも展開されます。
 これは、MediaWiki 自身の適切な構文解釈段階で呼び出されます。',
@@ -1170,7 +1170,9 @@ $messages['ru'] = array(
 	'expandtemplates'                  => 'Развёртка шаблонов',
 	'expandtemplates-desc'             => 'Раскрывает шаблоны, функции парсера и переменные, чтобы показать развёрнутый вики-текст и просмотреть отрисованную страницу',
 	'expand_templates_intro'           => 'Эта служебная страница преобразует текст, рекурсивно разворачивая все шаблоны в нём.
-Также развёртке подвергаются все функции парсера (например, <nowiki>{{</nowiki>#if:...}} и переменные (<nowiki>{{</nowiki>CURRENTDAY}} и т.&nbsp;п.) — в общем, всё внутри двойных фигурных скобок.
+Также развёртке подвергаются функции парсера
+<nowiki>{{</nowiki>#if:…}} и переменные
+<nowiki>{{</nowiki>CURRENTDAY}} — в общем, всё внутри двойных фигурных скобок.
 Это производится корректным образом, с вызовом соответствующего обработчика MediaWiki.',
 	'expand_templates_title'           => 'Заголовок страницы для {{PAGENAME}} и т.&nbsp;п.:',
 	'expand_templates_input'           => 'Входной текст:',
@@ -1293,7 +1295,7 @@ $messages['stq'] = array(
  */
 $messages['su'] = array(
 	'expandtemplates'             => 'Mekarkeun citakan',
-	'expandtemplates-desc'        => '[[Special:Expandtemplates|Ngembangkeun citakan, fungsi parser sarta variabel]] pikeun némbongkeun hasil teks wiki sarta pramidang kaca hasilna',
+	'expandtemplates-desc'        => '[[Special:ExpandTemplates|Ngembangkeun citakan, fungsi parser sarta variabel]] pikeun némbongkeun hasil teks wiki sarta pramidang kaca hasilna',
 	'expand_templates_input'      => 'Téks input:',
 	'expand_templates_output'     => 'Hasil:',
 	'expand_templates_xml_output' => 'Output XML',

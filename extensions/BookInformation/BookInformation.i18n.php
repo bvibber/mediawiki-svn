@@ -251,7 +251,7 @@ $messages['da'] = array(
  */
 $messages['de'] = array(
 	'bookinfo-header'            => 'Informationen über Bücher',
-	'bookinfo-desc'              => 'Ergänzt [[{{ns:Special}}:Booksources]] mit Informationen von einem Webangebot',
+	'bookinfo-desc'              => 'Ergänzt [[Special:Booksources]] mit Informationen von einem Webangebot',
 	'bookinfo-result-title'      => 'Titel:',
 	'bookinfo-result-author'     => 'Autor:',
 	'bookinfo-result-publisher'  => 'Verlag:',
@@ -502,7 +502,7 @@ $messages['hr'] = array(
  */
 $messages['hsb'] = array(
 	'bookinfo-header'            => 'Informacije wo knihach',
-	'bookinfo-desc'              => 'Rozšěrja [[Special:booksources]] z informacijemi z websłužby',
+	'bookinfo-desc'              => 'Rozšěrja [[Special:Booksources]] z informacijemi z websłužby',
 	'bookinfo-result-title'      => 'Titul:',
 	'bookinfo-result-author'     => 'Awtor:',
 	'bookinfo-result-publisher'  => 'Nakładnistwo:',
@@ -627,7 +627,7 @@ $messages['it'] = array(
  */
 $messages['ja'] = array(
 	'bookinfo-header'            => '書籍情報',
-	'bookinfo-desc'              => '[[Special:Boolsources|{{int:booksources}}]]の機能を拡張し、ウェブサービスから情報を取得する',
+	'bookinfo-desc'              => '[[Special:Booksources|{{int:booksources}}]]の機能を拡張し、ウェブサービスから情報を取得する',
 	'bookinfo-result-title'      => 'タイトル:',
 	'bookinfo-result-author'     => '著者:',
 	'bookinfo-result-publisher'  => '出版:',
@@ -1038,7 +1038,7 @@ $messages['ps'] = array(
  */
 $messages['pt'] = array(
 	'bookinfo-header'            => 'Informação de livro',
-	'bookinfo-desc'              => 'Expande [[{{ns:special}}:Booksources]] com informação proveniente de um web service',
+	'bookinfo-desc'              => 'Expande [[Special:Booksources]] com informação proveniente de um web service',
 	'bookinfo-result-title'      => 'Título:',
 	'bookinfo-result-author'     => 'Autor:',
 	'bookinfo-result-publisher'  => 'Editora:',
@@ -1150,7 +1150,7 @@ $messages['sr-ec'] = array(
  */
 $messages['stq'] = array(
 	'bookinfo-header'            => 'Informatione uur Bouke',
-	'bookinfo-desc'              => 'Föiget [[{{ns:Special}}:Booksources]] tou mäd Informatione fon n Webangebod',
+	'bookinfo-desc'              => 'Föiget [[Special:Booksources]] tou mäd Informatione fon n Webangebod',
 	'bookinfo-result-title'      => 'Tittel:',
 	'bookinfo-result-author'     => 'Autor:',
 	'bookinfo-result-publisher'  => 'Ferlaach:',
@@ -1318,7 +1318,7 @@ $messages['vec'] = array(
  */
 $messages['vi'] = array(
 	'bookinfo-header'            => 'Thông tin về sách',
-	'bookinfo-desc'              => 'Mở rộng [[{{ns:Special}}:Booksources]] để cung cấp thông tin từ một dịch vụ Web',
+	'bookinfo-desc'              => 'Mở rộng [[Special:Booksources]] để cung cấp thông tin từ một dịch vụ Web',
 	'bookinfo-result-title'      => 'Tên:',
 	'bookinfo-result-author'     => 'Tác giả:',
 	'bookinfo-result-publisher'  => 'Nhà xuất bản:',

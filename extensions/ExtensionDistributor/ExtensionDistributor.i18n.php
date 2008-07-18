@@ -140,7 +140,7 @@ Die meisten Erweiterungen arbeiten mit vielen MediaWiki-Versionen zusammen. Wenn
 	'extdist-svn-error'               => 'Subversion hat einen Fehler gemeldet: <pre>$1</pre>',
 	'extdist-svn-parse-error'         => 'XML-Daten von „svn info“ können nicht verarbeitet werden: <pre>$1</pre>',
 	'extdist-tar-error'               => 'Das Tar-Programm lieferte den Beendigungscode $1:',
-	'extdist-created'                 => "Ein Schnappschuss der Version <b>$2</b> der MediaWiki-Erweiterung <b>$1</b> wurde erstellt. Der Download startet automatisch in 5 Sekunden.
+	'extdist-created'                 => "Ein Schnappschuss der Version <b>$2</b> der MediaWiki-Erweiterung <b>$1</b> wurde erstellt (MediaWiki Version <b>$3</b>). Der Download startet automatisch in 5 Sekunden.
 
 Die URL für den Schnappschuss lautet:
 :$4
@@ -373,7 +373,7 @@ $messages['no'] = array(
 Angi hvilken MediaWiki-versjon du bruker.
 
 De fleste utvidelser fungerer på flere versjoner av MediaWiki, så om versjonen du bruker ikke listes opp her, kan du prøve å velge den nyeste versjonen.',
-	'extdist-no-versions'             => 'Den valgte utvidelsen ($¡) er ikke tilgjengelig i noen versjon.',
+	'extdist-no-versions'             => 'Den valgte utvidelsen ($1) er ikke tilgjengelig i noen versjon.',
 	'extdist-submit-version'          => 'Fortsett',
 	'extdist-no-remote'               => 'Kunne ikke kontakte ekstern SVN-klient.',
 	'extdist-remote-error'            => 'Feil fra ekstern SVN-klient: <pre>$1</pre>',

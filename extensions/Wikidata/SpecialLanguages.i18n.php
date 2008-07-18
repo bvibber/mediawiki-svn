@@ -947,6 +947,7 @@ $wdMessages['fi'] = array(
  * @author Sherbrooke
  * @author Urhixidur
  * @author Meithal
+ * @author Siebrand
  */
 $wdMessages['fr'] = array(
 	'datasearch'                            => 'Wikidata: Recherche de données',
@@ -956,7 +957,8 @@ $wdMessages['fr'] = array(
 	'ow_history'                            => 'Historique',
 	'ow_datasets'                           => 'Sélection des données définies',
 	'ow_noedit_title'                       => "Aucune permission d'éditer.",
-	'ow_noedit'                             => "Vous n'êtes pas autorisé d'éditer les pages dans les données préétablies « $1 ». Veuillez voir [[Project:Permission policy|nos règles d'édition]].",
+	'ow_noedit'                             => "Vous n'êtes pas autorisé d'éditer les pages dans les données préétablies « $1 ».
+Veuillez voir [[{{MediaWiki:Ow editing policy url}}|nos règles d'édition]].",
 	'ow_uipref_datasets'                    => 'Vue par défaut',
 	'ow_uiprefs'                            => 'Données wiki',
 	'ow_none_selected'                      => '<Aucune sélection>',
@@ -2363,7 +2365,8 @@ $wdMessages['oc'] = array(
 	'ow_history'                            => 'Istoric',
 	'ow_datasets'                           => 'Seleccion de las donadas definidas',
 	'ow_noedit_title'                       => "Cap de permission d'editar.",
-	'ow_noedit'                             => "Sètz pas autorizat a editar las paginas dins las donadas preestablidas « $1 ». Vejatz [[Project:Permission policy|nòstras règlas d'edicion]].",
+	'ow_noedit'                             => "Sètz pas autorizat a editar las paginas dins las donadas preestablidas « $1 ».
+Vejatz [[{{MediaWiki:Ow editing policy url}}|nòstras règlas d'edicion]].",
 	'ow_uipref_datasets'                    => 'Vista per defaut',
 	'ow_uiprefs'                            => 'Donadas wiki',
 	'ow_none_selected'                      => '<Cap de seleccion>',
@@ -2444,9 +2447,9 @@ als senses definits dins las autras donadas.</p>",
 	'ow_copy_no_action_specified'           => "Mercé d'especificar una accion",
 	'ow_copy_help'                          => 'Ajuda de venir...',
 	'ow_please_proved_dmid'                 => 'Sembla que manca un "?dmid=<...>" (dmid=SensDefinit ID)<br />Contactatz l’administrator del servidor.',
-	'ow_please_proved_dc1'                  => 'Sèmbla que manca un "?dc1=<quicòm>" (dc1=contèxt de la banca 1, banca DEMPUÈI laquala òm copia)<br>
+	'ow_please_proved_dc1'                  => 'Sèmbla que manca un "?dc1=<quicòm>" (dc1=contèxt de la banca 1, banca DEMPUÈI laquala òm copia)<br />
 Contactatz l’administrator.',
-	'ow_please_proved_dc2'                  => 'Sembla que manca un "?dc2=<quicòm>" (dc2=contèxt de la banca 2, banca VÈRS laquala òm copia)<br>
+	'ow_please_proved_dc2'                  => 'Sembla que manca un "?dc2=<quicòm>" (dc2=contèxt de la banca 2, banca VÈRS laquala òm copia)<br />
 Contactatz l’administrator.',
 	'ow_copy_successful'                    => '<h2>Capitada de la còpia</h2>Vòstras donadas son estadas copiadas amb succès (verificatz çaquelà).',
 	'ow_copy_unsuccessful'                  => "<h3>Còpia infructuosa</h3> Cap d'operacion de còpia a pas pres plaça.",
@@ -2864,6 +2867,7 @@ $wdMessages['ru'] = array(
 
 /** Slovak (Slovenčina)
  * @author Helix84
+ * @author Siebrand
  */
 $wdMessages['sk'] = array(
 	'datasearch'                            => 'Wikidata: Hľadanie údajov',
@@ -2873,7 +2877,8 @@ $wdMessages['sk'] = array(
 	'ow_history'                            => 'História',
 	'ow_datasets'                           => 'Výber množiny dát',
 	'ow_noedit_title'                       => 'Nemáte povolenie upravovať',
-	'ow_noedit'                             => 'Nemáte oprávnenie upravovať stránky v množine dát „$1“. Prosím, pozrite si [[Project:Permission policy|našu politiku ohľadne upravovania]].',
+	'ow_noedit'                             => 'Nemáte oprávnenie upravovať stránky v množine dát „$1“.
+Prosím, pozrite si [[{{MediaWiki:Ow editing policy url}}|našu politiku ohľadne upravovania]].',
 	'ow_uipref_datasets'                    => 'Štandardné zobrazenie',
 	'ow_uiprefs'                            => 'Wikidata',
 	'ow_none_selected'                      => '<žiadne vybrané>',

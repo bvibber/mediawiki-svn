@@ -146,7 +146,7 @@ An dra-se a c'hall kargañ ar servijer spontus, setu n'emañ ket da vezañ impli
  */
 $messages['cs'] = array(
 	'asksql'          => 'SQL dotaz',
-	'asksql-desc'     => 'Provádí SQL dotazy pomocí [[{{ns:Special}}:Asksql|speciální stránky]]',
+	'asksql-desc'     => 'Provádí SQL dotazy pomocí [[Special:Asksql|speciální stránky]]',
 	'asksqltext'      => "Použijte tento formulář pro zadání přímého požadavku do databáze.
 Použijte jednoduché uvozovky (' a ') pro oddělení řetězcových literálů.
 Toto může znamenat závažnou dodatečnou zátěž serverů, proto prosím
@@ -617,7 +617,7 @@ Sòn soèns a men-a a carié ëd travaj la màchina serventa, donca për piasì 
  */
 $messages['pt'] = array(
 	'asksql'          => 'Consulta SQL',
-	'asksql-desc'     => 'Realize consultas SQL através da [[{{ns:special}}:Asksql|página especial]]',
+	'asksql-desc'     => 'Realize consultas SQL através da [[Special:Asksql|página especial]]',
 	'asksqltext'      => "Utilize o formulário abaixo para realizar consultas directas à base de dados.
 Use aspas simples ('como estas') para delimitar cadeias de caracteres literais.
 Esta função frequentemente adiciona uma carga considerável ao servidor, por isso utilize-a com reserva.",

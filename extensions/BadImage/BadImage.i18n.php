@@ -1404,7 +1404,7 @@ $messages['sk'] = array(
 	'badimages-desc'           => 'Rozširuje schopnosti Zoznamu zlých obrázkov MediaWiki',
 	'badimages-add-btn'        => 'Pridať',
 	'badimages-added'          => '$1 bol pridaný do zoznamu.',
-	'badimages-count'          => "V zozname zlých obrázkov je '''$1''' obrázkov.",
+	'badimages-count'          => "V zozname zlých obrázkov {{PLURAL:$1|je|sú|je}} '''$1''' {{PLURAL:$1|obrázkok|obrázky|obrázkov}}.",
 	'badimages-name'           => 'Názov:',
 	'badimages-not-added'      => 'Obrázok nebolo možné pridať.',
 	'badimages-not-removed'    => 'Obrázok nebolo možné odstrániť.',
@@ -1445,12 +1445,14 @@ $messages['sr'] = array(
 	'badimages-page'           => '{{ns:help}}:Списак лоших слика',
 );
 
-/** Serbian Cyrillic ekavian (ћирилица) */
+/** Serbian Cyrillic ekavian (ћирилица)
+ * @author Sasa Stefanovic
+ */
 $messages['sr-ec'] = array(
 	'badimages'                => 'Списак лоших слика',
 	'badimages-add-btn'        => 'додај',
 	'badimages-added'          => '$1 је додата у списак.',
-	'badimages-count'          => "Тренутно се '''$1''' слика налази на списку лоших слика.",
+	'badimages-count'          => "Тренутно {{PLURAL:$1|је|су}} '''$1''' {{PLURAL:$1|слика|слике|слика}} на списку лоших слика.",
 	'badimages-name'           => 'Име:',
 	'badimages-not-added'      => 'Ову слику је немогуће додати.',
 	'badimages-not-removed'    => 'Ову слику је немогуће уклонити.',

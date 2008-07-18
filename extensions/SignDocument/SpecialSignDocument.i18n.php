@@ -784,7 +784,7 @@ $messages['jv'] = array(
 	'signdocument'                    => 'Tapak tangani Dokumèn',
 	'sign-nodocselected'              => 'Mangga milih dokumèn sing kepéngin panjenengan tapa tangani.',
 	'sign-selectdoc'                  => 'Dokumèn:',
-	'sign-error-nosuchdoc'            => 'Dokumèn sing panjenengan suwun iku ora ana.',
+	'sign-error-nosuchdoc'            => 'Dokumèn sing panjenengan suwun iku ora ana ($1).',
 	'sign-realname'                   => 'Jeneng:',
 	'sign-address'                    => 'Dalan:',
 	'sign-city'                       => 'Kutha:',
@@ -1553,7 +1553,12 @@ Ch'a varda che sò dat a sio giust, e che i peulo contatela për verifiché soa 
 	'sig-private'                     => '<i>Privà</i>',
 	'sign-sigdetails'                 => 'Detaj dla firma',
 	'sign-emailto'                    => '<a href="mailto:$1">$1</a>',
-	'sign-iptools'                    => '<span class="plainlinksneverexpand"><!-- -->[[Utent:$1|$1]] ([[Ciaciarade:$1|talk]] • <!-- -->[[Special:Contributions/$1|contribs]] • <!-- -->[http://www.dnsstuff.com/tools/whois.ch?domain={{urlencode:$1}}&cache=off&email=on WHOIS] • <!-- -->[http://www.dnsstuff.com/tools/ptr.ch?ip={{urlencode:$1}}&cache=off&email=on RDNS] • <!-- -->[http://www.robtex.com/rbls/$1.html RBLs] • <!-- -->[[Special:Blockip/$1|block user]] • <!-- -->[{{fullurl:Special:Log/block|page=User:{{urlencode:$1}}}} block log] • <!-- -->[{{fullurl:Special:CheckUser|ip={{urlencode:$1}}}} checkip])<!-- --></span>',
+	'sign-iptools'                    => '<span class="plainlinksneverexpand"><!--
+-->[[User:$1|$1]] ([[User talk:$1|talk]] • <!--
+-->[[Special:Contributions/$1|contribs]] • <!-- -->[http://www.dnsstuff.com/tools/whois.ch?domain={{urlencode:$1}}&cache=off&email=on WHOIS] • <!-- -->[http://www.dnsstuff.com/tools/ptr.ch?ip={{urlencode:$1}}&cache=off&email=on RDNS] • <!--
+-->[http://www.robtex.com/rbls/$1.html RBLs] • <!--
+-->[[Special:Blockip/$1|block user]] • <!--
+-->[{{fullurl:Special:Log/block|page=User:{{urlencode:$1}}}} block log] • <!-- -->[{{fullurl:Special:CheckUser|ip={{urlencode:$1}}}} checkip])<!-- --></span>',
 	'sign-viewfield-stricken'         => 'Anulà',
 	'sign-viewfield-reviewedby'       => 'Controlor',
 	'sign-viewfield-reviewcomment'    => 'Coment',

@@ -100,10 +100,11 @@ $messages['hr'] = array(
 	'mediafunctions-not-exist'     => '"$1" ne postoji',
 );
 
-/** Upper Sorbian (Hornjoserbsce) */
+/** Upper Sorbian (Hornjoserbsce)
+ */
 $messages['hsb'] = array(
 	'mediafunctions-invalid-title' => '"$1" płaćiwe mjeno njeje.',
-	'mediafunctions-not-exist'     => '"1" njeeksistuje',
+	'mediafunctions-not-exist'     => '"$1" njeeksistuje',
 );
 
 /** Hungarian (Magyar)

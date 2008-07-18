@@ -333,7 +333,7 @@ $messages['it'] = array(
  */
 $messages['ja'] = array(
 	'deletedcontributions'      => '利用者の削除された投稿履歴',
-	'deletedcontributions-desc' => '{{int:group-sysop}}に[[{{ns:special}}:DeletedContributions|利用者の削除された投稿履歴]]の閲覧機能を提供する',
+	'deletedcontributions-desc' => '{{int:group-sysop}}に[[Special:DeletedContributions|利用者の削除された投稿履歴]]の閲覧機能を提供する',
 );
 
 /** Jutish (Jysk)
@@ -563,7 +563,7 @@ $messages['ps'] = array(
  */
 $messages['pt'] = array(
 	'deletedcontributions'      => 'Edições eliminadas',
-	'deletedcontributions-desc' => 'Permite aos sysops [[{{ns:special}}:DeletedContributions|visualizar as edições apagadas de um utilizador]]',
+	'deletedcontributions-desc' => 'Permite aos sysops [[Special:DeletedContributions|visualizar as edições apagadas de um utilizador]]',
 );
 
 /** Quechua (Runa Simi)

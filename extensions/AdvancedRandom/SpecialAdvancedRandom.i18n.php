@@ -79,7 +79,7 @@ $messages['da'] = array(
  */
 $messages['de'] = array(
 	'advancedrandom'      => 'Zufällige Seite (erweitert)',
-	'advancedrandom-desc' => 'Hole eine zufällige Seite, z. B. mit [[Special:AdvancedRandom/{{ns:Template}}:Featured/{{ns:Talk}}]], um eine zufällige Diskussionsseite zu einen exzellenten Artikel oder mit [[Special:AdvancedRandom/{{ns:Template}}:GFDL/{{ns:Image}}]], um eine zufällige Datei anzuzeigen, die als GFDL lizenziert ist.',
+	'advancedrandom-desc' => 'Hole eine zufällige Seite, z. B. mit [[Special:AdvancedRandom/Template:Featured/Talk]], um eine zufällige Diskussionsseite zu einen exzellenten Artikel oder mit [[Special:AdvancedRandom/Template:GFDL/Image]], um eine zufällige Datei anzuzeigen, die als GFDL lizenziert ist.',
 );
 
 /** Lower Sorbian (Dolnoserbski)
@@ -165,7 +165,7 @@ $messages['hsb'] = array(
  * @author Dani
  */
 $messages['hu'] = array(
-	'advancedrandom-desc' => 'Megjelenít egy véletlen lapot, amely vagy amelynek vitalapja egy megadott oldalra, például a [[Special:AdvancedRandom/Sablon:Kiemelt/Vita]] mutat egy véletlen kiemelt szócikket vagy a [[Special:AdvancedRandom/Sablon:GFDL/Kép]] mutat egy véletlen GFDL fájlt.',
+	'advancedrandom-desc' => 'Megjelenít egy véletlen lapot, amely vagy amelynek vitalapja egy megadott oldalra, például a [[Special:AdvancedRandom/Template:Kiemelt/Vita]] mutat egy véletlen kiemelt szócikket vagy a [[Special:AdvancedRandom/Template:GFDL/Kép]] mutat egy véletlen GFDL fájlt.',
 );
 
 /** Italian (Italiano)
@@ -261,7 +261,7 @@ $messages['nn'] = array(
  */
 $messages['no'] = array(
 	'advancedrandom'      => 'Avansert tilfeldig side',
-	'advancedrandom-desc' => 'Finn en tilfeldig side der det på selve siden eller diskusjonssiden blir lenket til en angitt side, kan for eksempel brukes med [[Special:AdvancedRandom/Mal:Utmerket artikkel/Diskusjon]] for å få en tilfeldig utmerket artikkel, eller som [[Special:AdvancedRandom/Mal:GFDL/Bilde]] for å få en tilfeldig GFDL-fil.',
+	'advancedrandom-desc' => 'Finn en tilfeldig side der det på selve siden eller diskusjonssiden blir lenket til en angitt side, kan for eksempel brukes med [[Special:AdvancedRandom/Template:Utmerket artikkel/Diskusjon]] for å få en tilfeldig utmerket artikkel, eller som [[Special:AdvancedRandom/Template:GFDL/Bilde]] for å få en tilfeldig GFDL-fil.',
 );
 
 /** Occitan (Occitan)
@@ -293,7 +293,7 @@ $messages['ps'] = array(
  */
 $messages['pt'] = array(
 	'advancedrandom'      => 'Acesso aleatório avançado',
-	'advancedrandom-desc' => 'Obtém uma página aleatória a partir de uma página de discussão ou de ligações de uma página de assunto para uma dada página. Pode ser usado como [[{{ns:special}}:AdvancedRandom/Template:Featured/Talk]] para obter um artigo em destaque aleatório ou como [[{{ns:special}}:AdvancedRandom/Template:GFDL/Image]] para obter um ficheiro GFDL aleatório',
+	'advancedrandom-desc' => 'Obtém uma página aleatória a partir de uma página de discussão ou de ligações de uma página de assunto para uma dada página. Pode ser usado como [[Special:AdvancedRandom/Template:Featured/Talk]] para obter um artigo em destaque aleatório ou como [[Special:AdvancedRandom/Template:GFDL/Image]] para obter um ficheiro GFDL aleatório',
 );
 
 /** Russian (Русский)
@@ -318,7 +318,7 @@ $messages['sk'] = array(
  */
 $messages['stq'] = array(
 	'advancedrandom'      => 'Toufällige Siede (ferruumed)',
-	'advancedrandom-desc' => 'Hoal ne toufällige Siede, t.B. mäd [[Special:AdvancedRandom/{{ns:Template}}:Featured/{{ns:Talk}}]], uum ne toufällige Diskussionssiede tou n excellenten Artikkel of mäd [[Special:AdvancedRandom/{{ns:Template}}:GFDL/{{ns:Image}}]], uum ne toufällige Doatäi antouwiesen, ju der as GFDL lizenzierd is.',
+	'advancedrandom-desc' => 'Hoal ne toufällige Siede, t.B. mäd [[Special:AdvancedRandom/Template:Featured/{{ns:Talk}}]], uum ne toufällige Diskussionssiede tou n excellenten Artikkel of mäd [[Special:AdvancedRandom/Template:GFDL/{{ns:Image}}]], uum ne toufällige Doatäi antouwiesen, ju der as GFDL lizenzierd is.',
 );
 
 /** Sundanese (Basa Sunda)

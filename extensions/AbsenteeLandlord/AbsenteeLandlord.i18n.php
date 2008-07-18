@@ -112,6 +112,14 @@ $messages['fr'] = array(
 	'absenteelandlord-desc'   => 'Verrouille automatiquement la base de données si tous les administrateurs sont inactifs depuis un certain temps',
 );
 
+/** Western Frisian (Frysk)
+ * @author Pyt
+ */
+$messages['fy'] = array(
+	'absenteelandlord-reason' => 'De database is automatysk ôfsletten fanwege ynaktiviteit fan de behearders.',
+	'absenteelandlord-desc'   => 'Slút de database automatysk as de behearders allegearre in beskate tiid ynaktyf binne',
+);
+
 /** Galician (Galego)
  * @author Toliño
  */

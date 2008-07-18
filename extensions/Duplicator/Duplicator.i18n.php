@@ -446,29 +446,6 @@ $messages['it'] = array(
 	'duplicator-toomanyrevisions'      => 'Impossibile copiare [[$1]]. La pagina ha troppe revisioni ($2). Il limite attuale è $3.',
 );
 
-/* Japanese */
-$messages['ja'] = array(
-	'duplicator' => 'ページの複製',
-	'duplicator-toolbox' => 'このページを複製',
-	'duplicator-header' => 'ここではではページを複製することができます。履歴を含む同じ内容の複製が新たに作成されます。記事の分割などに利用してください。',
-	'duplicator-options' => '設定',
-	'duplicator-source' => '複製元:',
-	'duplicator-dest' => '複製先:',
-	'duplicator-dotalk' => '可能ならノートも複製する',
-	'duplicator-submit' => '複製',
-	'duplicator-summary' => '[[$1]] を複製しました。',
-	'duplicator-success' => '<big>\'\'\'[[$1]] を [[$2]] へ複製しました\'\'\'</big>',
-	'duplicator-success-revisions' => '$1 版を複製しました。',
-	'duplicator-success-talkcopied' => 'ノートページも複製しました。',
-	'duplicator-success-talknotcopied' => 'ノートは複製できませんでした。',
-	'duplicator-failed' => '不明なエラーです。このページの複製に失敗しました。',
-	'duplicator-source-invalid' => '複製元に有効なタイトルを指定してください。',
-	'duplicator-source-notexist' => '[[$1]] は既に存在しています。複製元には存在するページを指定してください。',
-	'duplicator-dest-invalid' => '複製先に有効なタイトルを指定してください。',
-	'duplicator-dest-exists' => '[[$1]] は既に存在しています。複製先には存在しないページを指定してください。',
-	'duplicator-toomanyrevisions' => '[[$1]] は版が多すぎるため（$2 版）複製できません。現在の上限は $3 版までです。',
-);
-
 /** Japanese (日本語)
  * @author JtFuruhata
  */

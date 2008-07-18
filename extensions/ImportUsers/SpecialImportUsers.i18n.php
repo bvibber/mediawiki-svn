@@ -59,8 +59,10 @@ $messages['niu'] = array(
 
 /** Afrikaans (Afrikaans)
  * @author Arnobarnard
+ * @author Naudefj
  */
 $messages['af'] = array(
+	'importusers-form-button'     => 'importeer',
 	'importusers-log-summary-all' => 'Alle',
 	'importusers-password'        => 'wagwoord',
 	'importusers-email'           => 'e-pos',

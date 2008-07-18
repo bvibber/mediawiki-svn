@@ -366,7 +366,7 @@ $messages['vec'] = array(
 	'newusernotif-desc' => 'Manda notifica par e-mail quando xe creà un account utente',
 	'newusernotifbody'  => 'Ciao $1,
 
-Un novo account utente, $2, el xe stà creà su $2 in data $4.',
+Un novo account utente, $2, el xe stà creà su $3 in data $4.',
 );
 
 /** Vietnamese (Tiếng Việt)

@@ -238,7 +238,7 @@ Zurück zu:
 * [[Special:CrosswikiBlock|Sperrformular]]
 * [[$2]]",
 	'crosswikiblock-nousername'     => 'Es wurde kein Benutzername eingegeben',
-	'crosswikiblock-local'          => 'Lokale Sperren werden durch dieses Interface nicht unterstützt. Benutze [[{{#special:Blockip}}]]',
+	'crosswikiblock-local'          => 'Lokale Sperren werden durch dieses Interface nicht unterstützt. Benutze [[Special:Blockip]]',
 	'crosswikiblock-dbnotfound'     => 'Datenbank $1 ist nicht vorhanden',
 	'crosswikiblock-noname'         => '„$1“ ist kein gültiger Benutzername.',
 	'crosswikiblock-nouser'         => 'Benutzer „$3“ nicht gefunden.',
@@ -252,7 +252,7 @@ Zurück zu:
 Zurück zu:
 * [[Special:CrosswikiBlock|Sperrformular]]
 * [[$4]]",
-	'crosswikiunblock-local'        => 'Lokale Sperren werden über dieses Interfache nicht unterstützt. Bitte benutze [[{{#special:Ipblocklist}}]].',
+	'crosswikiunblock-local'        => 'Lokale Sperren werden über dieses Interfache nicht unterstützt. Bitte benutze [[Special:Ipblocklist]].',
 );
 
 /** Lower Sorbian (Dolnoserbski)
@@ -686,7 +686,7 @@ $messages['ja'] = array(
 * [[Special:CrosswikiBlock|他ウィキの利用者をブロック]]
 * [[$2]]",
 	'crosswikiblock-nousername'     => '利用者名が入力されていません',
-	'crosswikiblock-local'          => 'このウィキ自身における利用者ブロックを、このページでは行えません。[[{{ns:special}}:Blockip]]を利用してください。',
+	'crosswikiblock-local'          => 'このウィキ自身における利用者ブロックを、このページでは行えません。[[Special:Blockip]]を利用してください。',
 	'crosswikiblock-dbnotfound'     => 'データベース $1 が存在しません',
 	'crosswikiblock-noname'         => '"$1" は、不正な利用者名です。',
 	'crosswikiblock-nouser'         => '利用者 "$3" が見つかりません。',
@@ -700,7 +700,7 @@ $messages['ja'] = array(
 元のページへ戻る:
 * [[Special:CrosswikiBlock|他ウィキの利用者をブロック]]
 * [[$2]]",
-	'crosswikiunblock-local'        => 'このウィキ自身における利用者ブロック解除を、このページでは行えません。[[{{ns:special}}:Ipblocklist]]を利用してください。',
+	'crosswikiunblock-local'        => 'このウィキ自身における利用者ブロック解除を、このページでは行えません。[[Special:Ipblocklist]]を利用してください。',
 );
 
 /** Javanese (Basa Jawa)
@@ -1067,7 +1067,7 @@ Tornar vèrs :
  * @author Equadus
  */
 $messages['pl'] = array(
-	'crosswikiblock-desc'           => 'Umożliwia blokowanie użytkowników na innych wiki za pomocą [[{{ns:Special}}:Crosswikiblock|strony specjalnej]]',
+	'crosswikiblock-desc'           => 'Umożliwia blokowanie użytkowników na innych wiki za pomocą [[Special:Crosswikiblock|strony specjalnej]]',
 	'crosswikiblock'                => 'Zablokuj użytkownika na innych wiki',
 	'crosswikiblock-header'         => 'Ta strona pozawala zablokować użytkownika na innych wiki.
 Upewnij się czy masz prawo to zrobić i czy to co robisz jest w zgodzie z zasadami.',
@@ -1121,7 +1121,7 @@ $messages['ps'] = array(
  * @author Lijealso
  */
 $messages['pt'] = array(
-	'crosswikiblock-desc'           => 'Permite bloquear utilizadores noutros wikis usando uma [[{{ns:special}}:Crosswikiblock|página especial]]',
+	'crosswikiblock-desc'           => 'Permite bloquear utilizadores noutros wikis usando uma [[Special:Crosswikiblock|página especial]]',
 	'crosswikiblock'                => 'Bloquear utilizador noutro wiki',
 	'crosswikiblock-header'         => 'Esta página permite bloquear um utilizador noutro wiki.
 Por favor, verifique se tem permissão para agir neste wiki e as suas acções respeitam todas as políticas.',
@@ -1156,7 +1156,7 @@ Regressar a:
 	'crosswikiblock-success'        => "Utilizador '''$3''' bloqueado com sucesso.
 
 Voltar para:
-* [[{{ns:special}}:CrosswikiBlock|Formulário de bloqueio]]
+* [[Special:CrosswikiBlock|Formulário de bloqueio]]
 * [[$4]]",
 	'crosswikiunblock-local'        => 'Desbloqueios locais são podem ser efectuados a partir deste interface. Use [[Special:Ipblocklist]]',
 );

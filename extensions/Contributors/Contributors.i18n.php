@@ -296,8 +296,8 @@ $messages['gl'] = array(
 	'contributors-target'      => 'Título:',
 	'contributors-submit'      => 'Amosar',
 	'contributors-subtitle'    => 'Principais colaboradores en $1',
-	'contributors-others-long' => 'Existen outros $1 colaboradores nesta páxina.',
-	'contributors-others'      => 'e outros $1',
+	'contributors-others-long' => '{{PLURAL:$1|Existe outro colaborador|Existen outros $1 colaboradores}} nesta páxina.',
+	'contributors-others'      => 'e {{PLURAL:$1|outro|outros $1}}',
 	'contributors-badtitle'    => 'Título non válido.',
 	'contributors-nosuchpage'  => 'Non existe a páxina $1.',
 );
@@ -386,7 +386,7 @@ $messages['id'] = array(
 	'contributors-submit'      => 'Tampilkan',
 	'contributors-subtitle'    => 'Kontributor utama untuk $1',
 	'contributors-others-long' => 'Terdapat $1 kontributor lain untuk halaman ini.',
-	'contributors-others'      => 'dan $1 lainnya',
+	'contributors-others'      => 'and {{PLURAL:$1|satu|$1}} lainnya',
 	'contributors-badtitle'    => 'Judul tidak sah.',
 	'contributors-nosuchpage'  => 'Artikel $1 tidak ditemukan.',
 );
@@ -658,8 +658,8 @@ $messages['nl'] = array(
 	'contributors-target'      => 'Titel:',
 	'contributors-submit'      => 'Bekijken',
 	'contributors-subtitle'    => 'Belangrijkste bijdragers aan $1',
-	'contributors-others-long' => 'Er zijn $1 andere bijdragers aan deze pagina.',
-	'contributors-others'      => 'en $1 anderen',
+	'contributors-others-long' => 'Er {{PLURAL:$1|is 1 andere bijdrager|zijn $1 andere bijdragers}} aan deze pagina.',
+	'contributors-others'      => 'en $1 {{PLURAL:$1|andere|anderen}}',
 	'contributors-badtitle'    => 'Onjuiste titel.',
 	'contributors-nosuchpage'  => 'De pagina $1 bestaat niet.',
 );
@@ -847,8 +847,8 @@ $messages['sk'] = array(
 	'contributors-target'      => 'Názov:',
 	'contributors-submit'      => 'Zobraziť',
 	'contributors-subtitle'    => 'Hlavní prispievatelia článku $1',
-	'contributors-others-long' => 'Existuje ďalších $1 prispievateľov tohto článku.',
-	'contributors-others'      => 'a $1 ďalších',
+	'contributors-others-long' => '{{PLURAL:$1|Existuje ďalší $1 prispievateľ|Existujú ďalší $1 prispievatelia|Existuje ďalších $1 prispievateľov}} tohto článku.',
+	'contributors-others'      => 'a {{PLURAL:$1|$1 ďalší|$1 ďalší|$1 ďalších}}',
 	'contributors-badtitle'    => 'Neplatný názov.',
 	'contributors-nosuchpage'  => 'Článok $1 neexistuje.',
 );
@@ -879,8 +879,8 @@ $messages['sr-ec'] = array(
 	'contributors-target'      => 'Наслов:',
 	'contributors-submit'      => 'Прикажи',
 	'contributors-subtitle'    => 'Главни доприносиоци на $1',
-	'contributors-others-long' => 'Такође постоји још $1 других доприносиоца на овој страници.',
-	'contributors-others'      => 'и $1 других',
+	'contributors-others-long' => '{{PLURAL:$1|Постоји још један доприносиоц|постоје још $1 доприносиоца}} на овој страници.',
+	'contributors-others'      => 'и {{PLURAL:$1|једна друга|$1 друге|$1 других}}',
 	'contributors-badtitle'    => 'Грешка у наслову.',
 	'contributors-nosuchpage'  => 'Чланак $1 не постоји.',
 );

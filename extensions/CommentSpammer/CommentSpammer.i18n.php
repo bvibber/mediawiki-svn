@@ -43,9 +43,11 @@ $messages['bg'] = array(
 
 /** Czech (Česky)
  * @author Matěj Grabovský
+ * @author Siebrand
  */
 $messages['cs'] = array(
-	'commentspammer-save-blocked' => 'Existuje podezření, že vaše IP adresa je adresa podezřelého spammera obsahu, proto stránka nebyla uložena. Vyhněte se tomu tím, že [[Special:Userlogin|se přihlásíte]] nebo [[Special:Createaccount|si vytvoříte účet]].',
+	'commentspammer-save-blocked' => 'Existuje podezření, že vaše IP adresa je adresa podezřelého spammera obsahu, proto stránka nebyla uložena.
+Vyhněte se tomu tím, že [[Special:Userlogin|se přihlásíte nebo si vytvoříte účet]].',
 	'commentspammer-desc'         => 'Odmítá úpravy od podezřelých spamerů z černé listiny DNS',
 	'commentspammer-log-msg'      => 'úprava [[:$2]] od [[Special:Contributions/$1|$1]].',
 	'commentspammer-log-msg-info' => 'Naposledy spamováno {{PLURAL:$1|včera|před $2 dny}}, úroveň ohrožení je $2 a kód prohřešku je $3.
@@ -151,11 +153,12 @@ $messages['hu'] = array(
 
 /** Japanese (日本語)
  * @author JtFuruhata
+ * @author Siebrand
  */
 $messages['ja'] = array(
-	'commentspammer-save-blocked' => 'あなたのIPアドレスはスパム投稿に用いられているとの疑いがあるため、ページは保存されませんでした。[[{{ns:Special}}:Userlogin|ログインまたはアカウントの作成]]を行ってください。',
+	'commentspammer-save-blocked' => 'あなたのIPアドレスはスパム投稿に用いられているとの疑いがあるため、ページは保存されませんでした。[[Special:Userlogin|ログインまたはアカウントの作成]]を行ってください。',
 	'commentspammer-desc'         => 'DNSブラックリストに記載されたコメントスパム投稿容疑IPアドレスからの編集を拒絶する',
-	'commentspammer-log-msg'      => '利用者 [[{{ns:Special}}:Contributions/$1|$1]] による [[:$2]] の編集',
+	'commentspammer-log-msg'      => '利用者 [[Special:Contributions/$1|$1]] による [[:$2]] の編集',
 	'commentspammer-log-msg-info' => '最後のスパム行為は $1{{PLURAL:$1|日|日}}前 / 脅威レベル $2 / 防御コード $3 / [http://www.projecthoneypot.org/search_ip.php?ip=$4 詳細表示] / [[{{ns:Special}}:Blockip/$4|ブロック状況]]',
 	'cspammerlogpagetext'         => 'この編集履歴は、判明しているコメントスパマーによる投稿の許可/拒否状況を示します。',
 	'cspammer-log-page'           => 'スパム投稿ログ',
@@ -259,13 +262,14 @@ $messages['pl'] = array(
 
 /** Portuguese (Português)
  * @author Malafaya
+ * @author Siebrand
  */
 $messages['pt'] = array(
 	'commentspammer-save-blocked' => 'O seu endereço IP é um suspeito "spammer" de comentários, consequentemente a página não foi guardada.
-[[{{ns:special}}:Userlogin|Autentique-se ou crie uma conta]] para evitar isto.',
+[[Special:Userlogin|Autentique-se ou crie uma conta]] para evitar isto.',
 	'commentspammer-desc'         => 'Rejeita edições de suspeitos "spammers" de comentários numa lista negra de DNS',
-	'commentspammer-log-msg'      => 'edição de [[{{ns:special}}:Contributions/$1|$1]] a [[:$2]].',
-	'commentspammer-log-msg-info' => 'Último "spam" $1 {{PLURAL:$1|dia|dias}} atrás, nível de ameaça é $2, e código de ofensa é $3. [http://www.projecthoneypot.org/search_ip.php?ip=$4 Ver detalhes], ou [[{{ns:special}}:Blockip/$4|bloquear]].',
+	'commentspammer-log-msg'      => 'edição de [[Special:Contributions/$1|$1]] a [[:$2]].',
+	'commentspammer-log-msg-info' => 'Último "spam" $1 {{PLURAL:$1|dia|dias}} atrás, nível de ameaça é $2, e código de ofensa é $3. [http://www.projecthoneypot.org/search_ip.php?ip=$4 Ver detalhes], ou [[Special:Blockip/$4|bloquear]].',
 	'cspammerlogpagetext'         => 'Registo de edições que foram permitidas ou negadas baseado no facto de a fonte ser um "spammer" de comentários conhecido.',
 	'cspammer-log-page'           => 'Registo de "Spammers" de Comentários',
 );

@@ -92,7 +92,7 @@ $messages['ca'] = array(
  */
 $messages['cs'] = array(
 	'player'             => 'Přehrávač',
-	'player-desc'        => 'Přehrávání vložených multimédii pomocí běžných zásuvných modulů prohlížečů a [[{{ns:Special}}:Player|speciální stránky]]',
+	'player-desc'        => 'Přehrávání vložených multimédii pomocí běžných zásuvných modulů prohlížečů a [[Special:Player|speciální stránky]]',
 	'player-title'       => 'Přehrávač',
 	'player-playertitle' => 'Přehrávač: $1',
 	'player-file'        => 'Název souboru',
@@ -546,7 +546,7 @@ $messages['ps'] = array(
  */
 $messages['pt'] = array(
 	'player'               => 'Reprodutor',
-	'player-desc'          => 'Reprodução multimédia incorporada usando plugins de browser comuns, e uma [[{{ns:Special}}:Player|página especial]]',
+	'player-desc'          => 'Reprodução multimédia incorporada usando plugins de browser comuns, e uma [[Special:Player|página especial]]',
 	'player-title'         => 'Reprodutor',
 	'player-playertitle'   => 'Reprodutor: $1',
 	'player-file'          => 'Nome do ficheiro',

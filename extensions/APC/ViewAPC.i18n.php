@@ -315,7 +315,7 @@ $messages['bg'] = array(
  */
 $messages['cs'] = array(
 	'viewapc'                       => 'Informace o APC',
-	'viewapc-desc'                  => '[[{{#special:ViewAPC}}|Zobrazit a spravovat vyrovnávací paměť APC]] pomocí MediaWiki',
+	'viewapc-desc'                  => '[[Special:ViewAPC|Zobrazit a spravovat vyrovnávací paměť APC]] pomocí MediaWiki',
 	'right-apc'                     => 'Použít všechny funkce na Special:ViewAPC',
 	'viewapc-apc-not-available'     => 'Nejsou dostupné žádné informace o vyrovnávací paměti.
 Zdá se, že APC neběží.',
@@ -2485,7 +2485,7 @@ $messages['uk'] = array(
 $messages['vi'] = array(
 	'viewapc'                       => 'Thông tin APC',
 	'viewapc-desc'                  => '[[Special:ViewAPC|Xem và quản lý bộ đệm APC]] bằng MediaWiki',
-	'right-apc'                     => 'Sử dụng tất cả các tính năng trong [[{{ns:Special}}:ViewAPC]]',
+	'right-apc'                     => 'Sử dụng tất cả các tính năng trong [[Special:ViewAPC]]',
 	'viewapc-apc-not-available'     => 'Không có thông tin về bộ nhớ đệm.
 Dường như APC đang tắt.',
 	'viewapc-clear-confirm'         => 'Bạn có muốn xóa bộ nhớ đệm?',

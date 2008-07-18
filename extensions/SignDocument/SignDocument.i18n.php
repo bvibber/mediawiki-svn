@@ -22,10 +22,11 @@ $messages['ar'] = array(
 	'signaturelogentry'    => 'وقع الوثيقة $1',
 );
 
-/** German (Deutsch) */
+/** German (Deutsch)
+ */
 $messages['de'] = array(
 	'signaturelogpage'     => 'Unterschrifts-Logbuch',
-	'signaturelogpagetext' => 'Dies ist das Unterschrifts-Logbuch für Dokumente, die über die Seite [[{{ns:special}}:SignDocument]] unterschrieben werden können.',
+	'signaturelogpagetext' => 'Dies ist das Unterschrifts-Logbuch für Dokumente, die über die Seite [[Special:SignDocument]] unterschrieben werden können.',
 	'signaturelogentry'    => 'hat das Dokument $1 unterschrieben',
 );
 

@@ -349,8 +349,8 @@ $messages['nl'] = array(
 Kan gebruikt worden in de adresregel van de browser of in wikitekst.',
 	'call-text'         => "De uitbreiding Aanroepen (Call) verwacht een wikipagina en optioneel parameters voor die pagina.
 
-Voorbeeld 1: &nbsp; <tt>[[Special:Call/Mijn sjabloon,parm1=value1]]</tt><br />
-Voorbeeld 2: &nbsp; <tt>[[Special:Call/Overleg:Een overleg,parm1=value1]]</tt><br />
+Voorbeeld 1: &nbsp; <tt>[[Special:Call/My Template,parm1=value1]]</tt><br />
+Voorbeeld 2: &nbsp; <tt>[[Special:Call/Talk:My Discussion,parm1=value1]]</tt><br />
 Voorbeeld 3: &nbsp; <tt>[[Special:Call/:My Page,parm1=value1,parm2=value2]]</tt><br /><br />
 Voorbeeld 4 (Browser URL): &nbsp; <tt>http://mydomain/mywiki/index.php?Special:Call/:My Page,parm1=value1</tt>
 

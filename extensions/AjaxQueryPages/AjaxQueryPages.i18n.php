@@ -50,7 +50,7 @@ $messages['br'] = array(
  * @author Matěj Grabovský
  */
 $messages['cs'] = array(
-	'ajax-qp-desc' => 'Přidává AJAX na stránky s dotazy jako [[{{ns:Special}}:Shortpages|{{MediaWiki:shortpages}}]]',
+	'ajax-qp-desc' => 'Přidává AJAX na stránky s dotazy jako [[Special:Shortpages|{{MediaWiki:Shortpages}}]]',
 );
 
 /** Danish (Dansk)
@@ -92,7 +92,7 @@ $messages['hi'] = array(
  * @author Michawiki
  */
 $messages['hsb'] = array(
-	'ajax-qp-desc' => 'AJAX naprašowanskim stronam kaž na př. [[Special:shortpages]] přidać',
+	'ajax-qp-desc' => 'AJAX naprašowanskim stronam kaž na př. [[Special:Shortpages]] přidać',
 );
 
 /** Italian (Italiano)
@@ -176,7 +176,7 @@ $messages['pl'] = array(
  * @author Malafaya
  */
 $messages['pt'] = array(
-	'ajax-qp-desc' => 'Adiciona algum AJAX a QueryPages tal como [[{{ns:special}}:Shortpages]]',
+	'ajax-qp-desc' => 'Adiciona algum AJAX a QueryPages tal como [[Special:Shortpages]]',
 );
 
 /** Russian (Русский)

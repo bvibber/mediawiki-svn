@@ -282,7 +282,7 @@ Użytkownicy anonimowi otrzymują losowy identyfikator, ale mogą go zmienić.',
  */
 $messages['pt'] = array(
 	'mibbit'       => 'Chat Mibbit',
-	'mibbit-desc'  => 'Adiciona uma [[{{ns:Special}}:Mibbit|página especial]] usada para falar em tempo real com outros utilizadores do wiki',
+	'mibbit-desc'  => 'Adiciona uma [[Special:Mibbit|página especial]] usada para falar em tempo real com outros utilizadores do wiki',
 	'right-mibbit' => 'Autorizado a usar o chat Mibbit',
 );
 

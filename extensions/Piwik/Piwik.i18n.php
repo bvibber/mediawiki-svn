@@ -54,7 +54,7 @@ $messages['ca'] = array(
  * @author Matěj Grabovský
  */
 $messages['cs'] = array(
-	'piwik-desc'      => 'Vkládá Piwik skript do wiki stránek pro vyhledávání a přidává [[{{special:Piwik}}|nějaké statistiky]]',
+	'piwik-desc'      => 'Vkládá Piwik skript do wiki stránek pro vyhledávání a přidává [[Special:Piwik|nějaké statistiky]]',
 	'piwik-countries' => 'Země',
 	'piwik-browsers'  => 'Prohlížeče',
 );
@@ -196,7 +196,7 @@ $messages['sk'] = array(
  * @author Irwangatot
  */
 $messages['su'] = array(
-	'piwik-desc'       => 'Ngasupkeun skrip Piwiki ka kaca MediaWiki keur ngalacak jeung ngasupkeun [[Special:Piwiki|sababaraha statistik]]',
+	'piwik-desc'       => 'Ngasupkeun skrip Piwiki ka kaca MediaWiki keur ngalacak jeung ngasupkeun [[Special:Piwik|sababaraha statistik]]',
 	'piwik-lastvisits' => 'pamungkas nganjang',
 	'piwik-countries'  => 'Nagara',
 	'piwik-browsers'   => 'Panyungsi',

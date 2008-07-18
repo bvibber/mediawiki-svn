@@ -238,7 +238,7 @@ $messages['fi'] = array(
 	'countedits-username'     => 'Käyttäjä',
 	'countedits-ok'           => 'Hae',
 	'countedits-nosuchuser'   => 'Käyttäjää $1 ei ole.',
-	'countedits-resultheader' => 'Tulos',
+	'countedits-resultheader' => 'Tulos $1',
 	'countedits-resulttext'   => '$1 on tehnyt $2 muokkausta.',
 	'countedits-mostactive'   => 'Aktiivisimmat käyttäjät',
 	'countedits-nocontribs'   => 'Tätä wikiä ei ole muokattu.',
@@ -781,7 +781,7 @@ $messages['ps'] = array(
  */
 $messages['pt'] = array(
 	'countedits'              => 'Contador de edições',
-	'countedits-desc'         => '[[{{ns:Special}}:CountEdits|Página especial]] que conta as edições de utilizadores e fornece uma lista dos dez contribuidores de topo',
+	'countedits-desc'         => '[[Special:CountEdits|Página especial]] que conta as edições de utilizadores e fornece uma lista dos dez contribuidores de topo',
 	'countedits-warning'      => "'''Atenção:''' Não julgue um livro pela sua capa. Não julgue um contribuidor pela contagem de suas edições.",
 	'countedits-username'     => 'Utilizador:',
 	'countedits-ok'           => 'Ok',
@@ -1023,7 +1023,7 @@ $messages['vec'] = array(
 	'countedits-ok'           => 'OK',
 	'countedits-nosuchuser'   => 'No ghe xe nissun utente che gabia nome $1.',
 	'countedits-resultheader' => "Risultati par l'utente $1",
-	'countedits-resulttext'   => '$1 gà efetuà $1 modifiche',
+	'countedits-resulttext'   => '$1 gà efetuà $2 modifiche',
 	'countedits-mostactive'   => 'Autori col magior nùmaro de contributi',
 	'countedits-nocontribs'   => 'No ghe xe stà nissun contributo su sta wiki.',
 );

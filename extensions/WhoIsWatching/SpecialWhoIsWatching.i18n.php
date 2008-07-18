@@ -88,7 +88,8 @@ $messages['br'] = array(
 $messages['de'] = array(
 	'whoiswatching'                => 'Wer beobachtet eine Seite',
 	'specialwhoiswatchingthepage'  => 'Wer beobachtet %s',
-	'specialwhoiswatchingusage'    => 'Diese Spezialseite kann nicht auf sich selber angewendet werden. Bitte definiere über die Seite [[MediaWiki:Number of watching users pageview]] eine Einstiegsseite für diese Spezialseite.',
+	'specialwhoiswatchingusage'    => 'Diese Spezialseite kann nicht auf sich selber angewendet werden.
+Bitte definiere über die Seite [[MediaWiki:Number_of_watching_users_pageview]] eine Einstiegsseite für diese Spezialseite.',
 	'specialwhoiswatchingaddusers' => 'Füge Benutzer zum Beobachten der Seite hinzu',
 	'specialwhoiswatchingaddbtn'   => 'Füge Benutzer hinzu',
 );
@@ -264,7 +265,7 @@ Ver venleg og bruk sida [[MediaWiki:Number_of_watching_users_pageview]] for å l
 $messages['no'] = array(
 	'whoiswatching'                => 'Hvem overvåker en wikiside',
 	'specialwhoiswatchingthepage'  => 'Hvem overvåker %s',
-	'specialwhoiswatchingusage'    => 'Denne spesialsiden kan ikke brukes selvstendig. Bruk siden [[MediaWiki:Number of watching users pageview]] for å definere et inngangspunkt for denne spesialsiden.',
+	'specialwhoiswatchingusage'    => 'Denne spesialsiden kan ikke brukes selvstendig. Bruk siden [[MediaWiki:Number_of_watching_users_pageview]] for å definere et inngangspunkt for denne spesialsiden.',
 	'specialwhoiswatchingaddusers' => 'Legg til siden i brukeres overvåkningsliste',
 	'specialwhoiswatchingaddbtn'   => 'Legg til valgte brukere',
 );
@@ -320,7 +321,7 @@ $messages['sk'] = array(
 $messages['stq'] = array(
 	'whoiswatching'                => 'Wäl beooboachtet ne Siede',
 	'specialwhoiswatchingthepage'  => 'Wäl beooboachtet %s',
-	'specialwhoiswatchingusage'    => 'Disse Spezioalsiede kon nit ap sik sälwen anwoand wäide. Definier uur ju Siede [[MediaWiki:Number of watching users pageview]] ne Ienstiegssiede foar disse Spezioalsiede.',
+	'specialwhoiswatchingusage'    => 'Disse Spezioalsiede kon nit ap sik sälwen anwoand wäide. Definier uur ju Siede [[MediaWiki:Number_of_watching_users_pageview]] ne Ienstiegssiede foar disse Spezioalsiede.',
 	'specialwhoiswatchingaddusers' => 'Föich Benutser tou dät Bekiekjen fon ju Siede bietou.',
 	'specialwhoiswatchingaddbtn'   => 'Föich Benutser bietou',
 );

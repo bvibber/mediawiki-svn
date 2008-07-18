@@ -142,7 +142,7 @@ $messages['de'] = array(
 	'povwatch_pushed'                  => '[[$1]] wurde erfolgreich der Beobachtungsliste von $2 hinzugefügt.',
 	'povwatch_intro'                   => 'PovWatch ist ein Service, um umstrittene Seiten diskret den Beobachtungslisten von registrierten Administratoren hinzuzufügen.
 
-	Ein Logbuch der über mittels PovWatch hinzugefügten Seiten ist verfügbar unter [[{{ns:special}}:PovWatch/log]].',
+Ein Logbuch der über mittels PovWatch hinzugefügten Seiten ist verfügbar unter [[Special:PovWatch/log]].',
 	'povwatch_subscriber_list'         => 'Eine [[Special:PovWatch/subscribers|Liste der registrierten Benutzer]] ist verfügbar.',
 	'povwatch_subscriber_list_intro'   => '<strong>Liste der registrierten Benutzer</strong>',
 	'povwatch_not_allowed_subscribers' => 'Du hast keine Berechtigung, die PovWatch-Benutzerliste einzusehen.',

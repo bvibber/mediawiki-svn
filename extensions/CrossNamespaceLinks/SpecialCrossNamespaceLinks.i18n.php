@@ -21,7 +21,7 @@ $messages['en'] = array(
 $messages['af'] = array(
 	'crossnamespacelinks'         => 'Skakels oor naamruimtes',
 	'crossnamespacelinks-desc'    => '[[Special:CrossNamespaceLinks|Lys skakels oor naamruimtes]] wat nie op {{SITENAME}} behoort te bestaan nie',
-	'crossnamespacelinks-summary' => "Hierdie bladsy wys 'n lys van skakels vanaf 'n bladsy in die hoof naamruimte na ander naamruimtes (met die uitsondering van die {ns:special}}, {{ns:talk}}, {{ns:project}}, en {{ns:template}} naamruimtes), wat nie behoort te bestaan nie.",
+	'crossnamespacelinks-summary' => "Hierdie bladsy wys 'n lys van skakels vanaf 'n bladsy in die hoof naamruimte na ander naamruimtes (met die uitsondering van die {{ns:special}}, {{ns:talk}}, {{ns:project}}, en {{ns:template}} naamruimtes), wat nie behoort te bestaan nie.",
 	'crossnamespacelinkstext'     => '$1: $2 {{PLURAL:$2|skakel|skakels}} na $3',
 );
 
@@ -386,7 +386,7 @@ Sono esclusi i collegamenti verso i namespace {{ns:special}}, {{ns:talk}}, {{ns:
  */
 $messages['ja'] = array(
 	'crossnamespacelinks'         => '名前空間をまたぐリンク',
-	'crossnamespacelinks-desc'    => '{{SITENAME}} などを除いた、[[{{ns:special}}:CrossNamespaceLinks|名前空間をまたぐリンク]]',
+	'crossnamespacelinks-desc'    => '{{SITENAME}} などを除いた、[[Special:CrossNamespaceLinks|名前空間をまたぐリンク]]',
 	'crossnamespacelinks-summary' => '通常名前空間から他の名前空間（ {{ns:special}}, {{ns:talk}}, {{ns:project}}, {{ns:template}} を除く）のページへとリンクしているページの一覧です。',
 	'crossnamespacelinkstext'     => '$1: $2 個 の $3 へのリンク',
 );
@@ -653,7 +653,7 @@ $messages['ps'] = array(
  */
 $messages['pt'] = array(
 	'crossnamespacelinks'         => 'Saltos de Espaços Nominais',
-	'crossnamespacelinks-desc'    => '[[{{ns:special}}:CrossNamespaceLinks|Lista ligações através de espaços nominais]] que não deviam existir em {{SITENAME}}',
+	'crossnamespacelinks-desc'    => '[[Special:CrossNamespaceLinks|Lista ligações através de espaços nominais]] que não deviam existir em {{SITENAME}}',
 	'crossnamespacelinks-summary' => 'Esta página proporciona uma lista de links provenientes a partir de uma página no espaço nominal principal para outra alocada em outro espaço nominal (exceção feita para os espaços nominais {{ns:special}}, {{ns:talk}}, {{ns:project}} e {{ns:template}}), os quais costuma-se não ser aconselhável de existirem.',
 	'crossnamespacelinkstext'     => '$1: $2 {{PLURAL:$2|linca|lincam}} para $3',
 );
@@ -749,7 +749,7 @@ $messages['stq'] = array(
  */
 $messages['su'] = array(
 	'crossnamespacelinks'         => 'Tumbu antara-ngaranspasi',
-	'crossnamespacelinks-desc'    => '[[Special:Crossnamespacelinks|Daptar tumbu lintas ruangngaran]] anu sakuduna teu kaci aya di {{SITENAME}}',
+	'crossnamespacelinks-desc'    => '[[Special:CrossNamespaceLinks|Daptar tumbu lintas ruangngaran]] anu sakuduna teu kaci aya di {{SITENAME}}',
 	'crossnamespacelinks-summary' => 'Kaca ieu mikeun daptar tumbu ti hiji kaca di ngaran spasi utama ka kaca séjén di ngaran spasi séjén (kajaba {{ns:special}}, {{ns:talk}}, {{ns:project}} sarta ngaran spasi {{ns:template}}), anu henteu dianjurkeun pikeun dipaké.',
 	'crossnamespacelinkstext'     => '$1: $2 {{PLURAL:$2|numbu|numbu}} ka $3',
 );

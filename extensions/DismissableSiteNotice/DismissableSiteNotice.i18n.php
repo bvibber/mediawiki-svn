@@ -476,7 +476,7 @@ $messages['oc'] = array(
  */
 $messages['pl'] = array(
 	'sitenotice_close' => 'ukryj',
-	'sitenotice-desc'  => 'Umożliwia użytkownikom wyłączenie wyświetlania komunikatu [[MediaWiki:sitenotice|sitenotice]]',
+	'sitenotice-desc'  => 'Umożliwia użytkownikom wyłączenie wyświetlania komunikatu sitenotice',
 );
 
 /** Piedmontese (Piemontèis)

@@ -658,10 +658,11 @@ $messages['jv'] = array(
 
 /** Kazakh (Arabic script) (‫قازاقشا (تٴوتە)‬)
  * @author AlefZet
+ * @author Siebrand
  */
 $messages['kk-arab'] = array(
 	'blacklistedusername'             => 'قارا تىزىمدەگى قاتىسۋشى اتى',
-	'blacklistedusernametext'         => 'تانداعان قاتىسۋشى اتىڭىز [[{{ns:mediawiki}}:Usernameblacklist| قاتىسۋشى اتى قارا تىزىمىنە]] كىرەدى.
+	'blacklistedusernametext'         => 'تانداعان قاتىسۋشى اتىڭىز [[MediaWiki:Usernameblacklist| قاتىسۋشى اتى قارا تىزىمىنە]] كىرەدى.
 باسقا اتاۋ تالعاڭىز.',
 	'usernameblacklist'               => '<pre>
 # قارا تىزىمدەگى قاتىسۋشى اتىن تىركەلگى جاساۋدان ساقتاپ قالۋ ٴۇشىن بۇل تىزىمدەگى دانالار
@@ -676,10 +677,11 @@ $messages['kk-arab'] = array(
 
 /** Kazakh (Cyrillic) (Қазақша (Cyrillic))
  * @author AlefZet
+ * @author Siebrand
  */
 $messages['kk-cyrl'] = array(
 	'blacklistedusername'             => 'Қара тізімдегі қатысушы аты',
-	'blacklistedusernametext'         => 'Тандаған қатысушы атыңыз [[{{ns:mediawiki}}:Usernameblacklist| қатысушы аты қара тізіміне]] кіреді.
+	'blacklistedusernametext'         => 'Тандаған қатысушы атыңыз [[MediaWiki:Usernameblacklist|қатысушы аты қара тізіміне]] кіреді.
 Басқа атау талғаңыз.',
 	'usernameblacklist'               => '<pre>
 # Қара тізімдегі қатысушы атын тіркелгі жасаудан сақтап қалу үшін бұл тізімдегі даналар
@@ -694,10 +696,11 @@ $messages['kk-cyrl'] = array(
 
 /** Kazakh (Latin) (Қазақша (Latin))
  * @author AlefZet
+ * @author Siebrand
  */
 $messages['kk-latn'] = array(
 	'blacklistedusername'             => 'Qara tizimdegi qatıswşı atı',
-	'blacklistedusernametext'         => 'Tandağan qatıswşı atıñız [[{{ns:mediawiki}}:Usernameblacklist| qatıswşı atı qara tizimine]] kiredi.
+	'blacklistedusernametext'         => 'Tandağan qatıswşı atıñız [[MediaWiki:Usernameblacklist|qatıswşı atı qara tizimine]] kiredi.
 Basqa ataw talğañız.',
 	'usernameblacklist'               => '<pre>
 # Qara tizimdegi qatıswşı atın tirkelgi jasawdan saqtap qalw üşin bul tizimdegi danalar
@@ -853,10 +856,11 @@ Sila pilih nama lain.',
 
 /** Low German (Plattdüütsch)
  * @author Slomox
+ * @author Siebrand
  */
 $messages['nds'] = array(
 	'blacklistedusername'             => 'Brukernaam op de swarte List',
-	'blacklistedusernametext'         => 'De Brukernaam den du utsöcht hest, liekt en Naam vun de [[{{ns:8}}:Usernameblacklist|swarte List för Brukernaams]]. Söök di en annern ut.',
+	'blacklistedusernametext'         => 'De Brukernaam den du utsöcht hest, liekt en Naam vun de [[MediaWiki:Usernameblacklist|swarte List för Brukernaams]]. Söök di en annern ut.',
 	'usernameblacklist'               => '<pre>
 # Indrääg in disse List warrt as Deel vun en regulären Utdruck bruukt,
 # bi dat Blocken vun Brukernaams bi dat Anmellen över de swarte List. Jeder Indrag schall Deel vun

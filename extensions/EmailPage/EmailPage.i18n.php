@@ -260,7 +260,7 @@ $messages['no'] = array(
 	'ea-heading'          => '=== Send siden [[$1]] som e-post ===',
 	'ea-fromgroup'        => 'Fra gruppe:',
 	'ea-pagesend'         => 'Siden «$1» sendt fra $2',
-	'ea-nopage'           => 'Oppgi en side du vil sende, for eksempel [[Special:EmailPage/{{MediaWiki:Mainpage}}]].',
+	'ea-nopage'           => 'Oppgi en side du vil sende, for eksempel [[Special:EmailPage/Main Page]].',
 	'ea-norecipients'     => 'Ingen gyldige e-postadresser funnet.',
 	'ea-listrecipients'   => '=== Liste over $1 {{PLURAL:$1|mottaker|mottakere}} ===',
 	'ea-error'            => "'''Feil under sending av [[$1]]:''' ''$2''",

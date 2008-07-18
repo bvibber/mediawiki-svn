@@ -829,7 +829,7 @@ Vot digor betek an 22 June a viz Gouere',
 	'boardvote_edits_many'   => 'kalz',
 	'group-boardvote'        => "Izili eus ar C'huzul-merañ a vot",
 	'group-boardvote-member' => "Ezel eus ar c'huzul-merañ a vot",
-	'grouppage-boardvote'    => '{{ns:project}} : ezel eus ar chuzul-merañ a vot',
+	'grouppage-boardvote'    => '{{ns:project}}:Ezel eus ar chuzul-merañ a vot',
 	'boardvote_blocked'      => "Ho tigarez, stanket oc'h bet war ar wiki m'emaoc'h enrollet. N'eo ket aotreet an izili stanket da votiñ.",
 	'boardvote_welcome'      => "Degemer mat '''$1'''!",
 	'go_to_board_vote'       => 'Dilennadeg Kuzul-merañ Wikimedia 2007',
@@ -984,7 +984,7 @@ Byl zašifrován s použitím veřejného klíče volebních úředníků:
 
 <pre>$2</pre>
 
-Výsledná šifrovaná podoba následuje. Bude veřejně dostupná na stránce [[Speciální:Boardvote/dump]].
+Výsledná šifrovaná podoba následuje. Bude veřejně dostupná na stránce [[Special:Boardvote/dump]].
 
 <pre>$3</pre>
 
@@ -1148,9 +1148,9 @@ $messages['da'] = array(
 $messages['de'] = array(
 	'boardvote'                => 'Wahlen zum Wikimedia-Kuratorium',
 	'boardvote-desc'           => '[[meta:Board elections/2008|Wahlen zum Wikimedia-Kuratorium]]',
-	'boardvote_entry'          => '* [[{{ns:special}}:Boardvote/vote|Abstimmen]]
-* [[{{ns:special}}:Boardvote/list|Bislang abgegebene Stimmen]]
-* [[{{ns:special}}:Boardvote/dump|Verschlüsselte Wahleinträge]]',
+	'boardvote_entry'          => '* [[Special:Boardvote/vote|Abstimmen]]
+* [[Special:Boardvote/list|Bislang abgegebene Stimmen]]
+* [[Special:Boardvote/dump|Verschlüsselte Wahleinträge]]',
 	'boardvote_intro'          => '<p>Willkommen zur Wahl 2008 des Wikimedia-Kuratoriums, dem Verwaltungsorgan der Wikimedia-Foundation.
 	Es wird 1 Benutzer gewählt, um die Community der Wikimedianer in den verschiedenen Wikimedia-Projekten zu repräsentieren.
 	Er wird dabei helfen, die künftige Richtung der Wikimedia-Projekte festzulegen, einzeln und als Gruppe und er repräsentiert <em>deine</em> Interessen und Belange gegenüber dem Wikimedia-Kuratoriums.
@@ -1183,11 +1183,11 @@ Diese wurde mit dem Public Key der Wahladministratoren verschlüsselt:
 
 <pre>$2</pre>
 
-Die daraus folgende, verschlüsselte Version folgt unten. Sie wird öffentlich auf [[{{ns:special}}:Boardvote/dump]] angezeigt.
+Die daraus folgende, verschlüsselte Version folgt unten. Sie wird öffentlich auf [[Special:Boardvote/dump]] angezeigt.
 
 <pre>$3</pre>
 
-[[{{ns:special}}:Boardvote/entry|Zurück]]',
+[[Special:Boardvote/entry|Zurück]]',
 	'boardvote_invalidentered' => '<p><strong>Fehler:</strong> Die Reihenfolge der Kandidaten muss in ganzen, positiven Zahlen ausgedrückt werden (1, 2, 3, ...) oder lasse das/die Kästchen leer.</p>',
 	'boardvote_nosession'      => 'Deine Wikimedia-Benutzer-ID kann nicht ermittelt werden.
 	Bitte melde dich in dem Wiki an, in dem du zur Wahl zugelassen bist und gehe dort nach <nowiki>[[Special:Boardvote]]</nowiki>. 
@@ -1238,9 +1238,9 @@ $messages['diq'] = array(
 $messages['dsb'] = array(
 	'boardvote'              => 'Wólby do rady administratorow Wikimedije',
 	'boardvote-desc'         => '[[meta:Board elections/2008|Wólby do rady administratorow Wikimedije]]',
-	'boardvote_entry'        => '* [[{{ns:special}}:Boardvote/vote|Głosowaś]]
-* [[{{ns:special}}:Boardvote/list|Lisćina doněntejšnych głosow]]
-* [[{{ns:special}}:Boardvote/dump|Skoděrowane wólbne zapiski]]',
+	'boardvote_entry'        => '* [[Special:Boardvote/vote|Głosowaś]]
+* [[Special:Boardvote/list|Lisćina doněntejšnych głosow]]
+* [[Special:Boardvote/dump|Skoděrowane wólbne zapiski]]',
 	'boardvote_novotes'      => 'Až doněnta njejo nichten wótgłosował.',
 	'boardvote_time'         => 'Cas',
 	'boardvote_user'         => 'Wužywaŕ',
@@ -1407,7 +1407,7 @@ La rezultanta ĉifrita versio sekvas. Ĝi estos publike montrita sur [[Special:B
 	'boardvote_invalidentered' => '<p><strong>Eraro</strong>: Prefero de kandidato devas esti esprimita nur per pozitiva entjero (1, 2, 3, ....), aŭ lasite malplena.</p>',
 	'boardvote_nosession'      => 'Via uzanto-identigo de WikiMedia ne estas determinebla.
 Bonvolu ensaluti la Vikion kie vi estas registrita kaj iri al <nowiki>[[Special:Boardvote]]</nowiki>.
-Vi devas uzi konton kun almenaŭ $1 kontribuoj antaŭ $2, kaj nepre esti farinta $3 kontribuojn inter $3 kaj $5.',
+Vi devas uzi konton kun almenaŭ $1 kontribuoj antaŭ $2, kaj nepre esti farinta $3 kontribuojn inter $4 kaj $5.',
 	'boardvote_notloggedin'    => 'Vi ne estas ensalutinta.
 Voĉdonu nepre el uzanto-konto kun almenaŭ $1 kontribuoj antaŭ $2, kie vi faris almenaŭ $3 kontribuojn inter $4 kaj $5.',
 	'boardvote_notqualified'   => 'Vi ne rajtas voĉdoni en ĉi tiu baloto.
@@ -1829,7 +1829,7 @@ $1 pour les données cryptées.</p>',
 	'boardvote_edits_many'     => 'plusieurs ',
 	'group-boardvote'          => 'Membres votants du conseil d’administration',
 	'group-boardvote-member'   => 'Membre votant du conseil d’administration',
-	'grouppage-boardvote'      => '{{ns:project}} : membre votant du conseil d’administration',
+	'grouppage-boardvote'      => '{{ns:project}}:Membre votant du conseil d’administration',
 	'boardvote_blocked'        => 'Désolé, mais vous avez été bloqué sur votre wiki d’origine. Les utilisateurs bloqués ne peuvent pas voter.',
 	'boardvote_bot'            => "Désolé, vous avez le statut de ''Bot'' sur le wiki où vous êtes enregistré.
 Les comptes de ''Bot'' ne sont pas autorisés à voter.",
@@ -2065,9 +2065,9 @@ $messages['haw'] = array(
 $messages['he'] = array(
 	'boardvote'                => 'בחירות לחבר הנאמנים של ויקימדיה',
 	'boardvote-desc'           => '[[meta:Board elections/2008|בחירות לחבר הנאמנים של ויקימדיה]]',
-	'boardvote_entry'          => '* [[{{ns:special}}:Boardvote/vote|הצבעה]]
-* [[{{ns:special}}:Boardvote/list|רשימת ההצבעות נכון לעכשיו]]
-* [[{{ns:special}}:Boardvote/dump|ההעתק המוצפן של הבחירות]]',
+	'boardvote_entry'          => '* [[Special:Boardvote/vote|הצבעה]]
+* [[Special:Boardvote/list|רשימת ההצבעות נכון לעכשיו]]
+* [[Special:Boardvote/dump|ההעתק המוצפן של הבחירות]]',
 	'boardvote_intro'          => '
 <p>ברוכים הבאים לבחירות 2008 לחבר הנאמנים של קרן ויקימדיה. בהצבעה זו ייבחר נציג אחד אשר ייצג את הקהילה של משתמשי המיזמים השונים של ויקימדיה. הם יעזרו להחליט על כיוון התפתחותם העתידי של המיזמים השונים, כבודדים וכקבוצה, וייצגו את האינטרסים והדאגות <em>שלך</em> בחבר הנאמנים. הם יחליטו על הדרכים לבקשת תרומות ועל חלוקת המשאבים הכספיים.</p>
 
@@ -2095,11 +2095,11 @@ $messages['he'] = array(
 
 <pre>$2</pre>
 
-תוצאות ההצפנה מופיעות בהמשך. הן גם תופענה בפומבי בקישור [[{{ns:special}}:Boardvote/entry]].
+תוצאות ההצפנה מופיעות בהמשך. הן גם תופענה בפומבי בקישור [[Special:Boardvote/entry]].
 
 <pre>$3</pre>
 
-[[{{ns:special}}:Boardvote/entry|חזרה]]',
+[[Special:Boardvote/entry|חזרה]]',
 	'boardvote_invalidentered' => '<p><strong>שגיאה</strong>: הדירוגים של מועמדים חייבים להיות מספרים שלמים וחיוביים בלבד (1, 2, 3 וכדומה), או להישאר ריקים.</p>',
 	'boardvote_nosession'      => 'לא ניתן לוודא את מספר המשתמש שלכם בוויקימדיה.
 אנא היכנסו לאתר ויקי שבו אתם רשאים להצביע, ואז היכנסו ל<nowiki>[[Special:Boardvote]]</nowiki>.
@@ -2292,7 +2292,7 @@ Glasovanje je otvoreno do 22. lipnja',
 	'group-boardvote-member' => 'Administrator izbora za Odbor',
 	'grouppage-boardvote'    => '{{ns:project}}:Administrator izbora za Odbor',
 	'boardvote_blocked'      => 'Nažalost, blokirani ste na Vašoj registriranoj wiki. Blokiranim suradnicima nije dozvoljeno glasanje.',
-	'boardvote_bot'          => 'Dodjeljena vam je bot zastavica na vašoj matičnoj wiki.<br>
+	'boardvote_bot'          => 'Dodjeljena vam je bot zastavica na vašoj matičnoj wiki.<br />
 Bot suradničkim računima nije dopušteno glasovanje.',
 	'boardvote_welcome'      => "Dobrodošli '''$1'''!",
 	'go_to_board_vote'       => 'Izbori za Odbor Wikimedije 2008.',
@@ -2311,9 +2311,9 @@ Moguće je da ćete vidjeti sigurnosno upozorenje o nepotpisanom certifikatu.',
 $messages['hsb'] = array(
 	'boardvote'                => 'Wólby za kuratorij Wikimedia',
 	'boardvote-desc'           => '[[meta:Board elections/2008|Wólby kuratorija Wikimedije]]',
-	'boardvote_entry'          => '* [[{{ns:special}}:Boardvote/vote|Wothłosować]]
-* [[{{ns:special}}:Boardvote/list|Dotal wotedate hłosy]]
-* [[{{ns:special}}:Boardvote/dump|Zaklučowane wólbne zapiski]]',
+	'boardvote_entry'          => '* [[Special:Boardvote/vote|Wothłosować]]
+* [[Special:Boardvote/list|Dotal wotedate hłosy]]
+* [[Special:Boardvote/dump|Zaklučowane wólbne zapiski]]',
 	'boardvote_intro'          => '<blockquote>
 <p>
 Witaj k štwórtej wólbje do kuratorija Wikimedija. Wola so třo wužiwarjo, zo bychu zhromadźenstwo wužiwarjow we wšelakich projektach reprezentowali. Tući třo wužiwarjo wola so za dobu dweju lět. Budu pomhać, přichodny směr projektow Wikimedije postajić, jednotliwje a jako skupina a reprezentuja <em>twoje</em> zajimy a naležnosće. Budu nimo wjele druhich wěcow wo dochodach a wudawkach rozsudźeć.
@@ -2340,11 +2340,11 @@ Bu ze zjawnym klučom wólbnych administratorow zaklučowane:
 
 <pre>$2</pre>
 
-Slěduje nastata zaklučowana wersija. Budźe so na [[{{ns:special}}:Boardvote/dump]] zjawnje zwobraznjeć.
+Slěduje nastata zaklučowana wersija. Budźe so na [[Special:Boardvote/dump]] zjawnje zwobraznjeć.
 
 <pre>$3</pre>
 
-[[{{ns:special}}:Boardvote/entry|Wróćo]]',
+[[Special:Boardvote/entry|Wróćo]]',
 	'boardvote_invalidentered' => '<p><strong>Zmylk</strong> Porjad kandidatow dyrbi so přez pozitiwnu cyłu ličbu zwuraznić (1, 2, 3, ...) abo wostaj kašćiki prózdne.</p>',
 	'boardvote_nosession'      => 'Twój wužiwarski ID za Wikimediju njehodźi so zwěsćić. Prošu přizjew so w tym wikiju, w kotrymž sy za wólbu pušćeny a dźi tam k <nowiki>[[Special:Boardvote]]</nowiki>. Zo by wolić móhł, dyrbiš wužiwarske konto měć, kotrež znajmjeńša $1 přinoškow před $2 pokazuje, přeni přinošk dyrbi před $3 być.',
 	'boardvote_notloggedin'    => 'Njejsy so přizjewił. Zo by wohthłosować móhł, dyrbiš přizjewjeny być a wužiwarske konto wužiwać, z kotrymž sy znajmjeńša $1 změnow před $2 činił a hdźež prěnja změna je před $3.',
@@ -3399,7 +3399,7 @@ Dir musst e Benotzerkont benotzen mat mindestens $1 Kontributiounen virum $2, an
 	'boardvote_notloggedin'    => 'Dir sidd net agelogged.
 Fir ze wiele musst Dir e Benotzerkont benotze matt mindestens $1 Kontributioune virum $2, an Dir musst mindestens $3 Kontributiounen tëschent dem $4 a(n) $5 gemaach hunn.',
 	'boardvote_notqualified'   => 'Dir sidd net berechtegt fir un dëser Wal deelzehuelen. 
-Dir musst mindestens $3 Kontributioune virum $2 gemaacht hunn, a mindestens $3 Kontrutiounen tëschent dem $4 a(n) $5 gemaach hun.',
+Dir musst mindestens $1 Kontributioune virum $2 gemaacht hunn, a mindestens $3 Kontrutiounen tëschent dem $4 a(n) $5 gemaach hun.',
 	'boardvote_novotes'        => 'Et huet nach keen ofgestëmmt.',
 	'boardvote_time'           => 'Zäit',
 	'boardvote_user'           => 'Benotzer',
@@ -4861,7 +4861,7 @@ Musíte použiť účet s aspoň $1 príspevkami pred $2, ktorý urobil aspoň $
 	'boardvote_notloggedin'    => 'Nie ste prihlásený.
 Aby ste mohli hlasovať, musíte použiť účet s aspoň $1 príspevkami pred $2, ktorý urobil aspoň $3 úprav medzi $4 a $5.',
 	'boardvote_notqualified'   => 'Nemáte oprávnenie hlasovať v týchto voľbách.
-Museli by ste urobiť $3 úprav pred $2 a aspoň $3 úprav medzi $4 a $5.',
+Museli by ste urobiť aspoň $1 úprav pred $2 a aspoň $3 úprav medzi $4 a $5.',
 	'boardvote_novotes'        => 'Nikto ešte nevolil.',
 	'boardvote_time'           => 'Čas',
 	'boardvote_user'           => 'Používateľ',
@@ -5067,10 +5067,9 @@ Sledi rezultujuća šifrirana verzija. Biće javno predstavljena na [[Special:Bo
 $messages['stq'] = array(
 	'boardvote'              => 'Woalen tou dät Wikimedia-Kuratorium',
 	'boardvote-desc'         => '[[meta:Board elections/2008|Woalen tou dät Wikimedia-Kuratorium]]',
-	'boardvote_entry'        => '* [[meta:Board elections/2008/Candidates/de|Kandidoatenfoarstaalengen]]
-* [[{{ns:special}}:Boardvote/vote|Oustämme]]
-* [[{{ns:special}}:Boardvote/list|Bit nu ouroate Stämmen]]
-* [[{{ns:special}}:Boardvote/dump|Ferslöätelde Woaliendraage]]',
+	'boardvote_entry'        => '* [[Special:Boardvote/vote|Oustämme]]
+* [[Special:Boardvote/list|Bit nu ouroate Stämmen]]
+* [[Special:Boardvote/dump|Ferslöätelde Woaliendraage]]',
 	'boardvote_intro'        => '<blockquote>
 <p>
 Wäilkuumen tou ju fjoode Woal tou dät Wikimedia-Kuratorium, dät Ferwaltengsorgoan fon ju Wikimedia-Foundation. Der wäide träi Benutsere wääld, uum ju Community fon do Wikimediane in do ferscheedene Wikimedia-Projekte tou repräsentierjen. Disse träi Benutsere wäide foar n Tiedruum fon two Jiere wääld. Jo wollen deerbie hälpe, ju kuumende Gjuchte fon do Wikimedia-Projekte fäästtoulääsen, eenpeld un as Gruppe un jo repräsentierje <em>dien</em> Interessen un Belange. Jo wollen ieuwenske fuul uur Dingere uur do Iennoamen un Uutgoawen äntscheede.
@@ -5097,11 +5096,11 @@ Ju wuude mäd dän Public Key fon do Woaladministratore ferslöäteld:
 
 <pre>$2</pre>
 
-Ju deeruut foulgjende, ferslöätelde Version foulget hierunner. Ju wäd eepentelk ap [[{{ns:special}}:Boardvote/dump]] anwiesd.
+Ju deeruut foulgjende, ferslöätelde Version foulget hierunner. Ju wäd eepentelk ap [[Special:Boardvote/dump]] anwiesd.
 
 <pre>$3</pre>
 
-[[{{ns:special}}:Boardvote/entry|Tourääch]]',
+[[Special:Boardvote/entry|Tourääch]]',
 	'boardvote_nosession'    => 'Dien Wikimedia-Benutser-ID kon nit fääststoald wäide. Mäld die in dän Wiki an, in dän du tou ju Woal toulät bäst un gung deer ätter <nowiki>[[Special:Boardvote]]</nowiki>. Wäälen duur wäl, dän sien Benutserkonto nit minner as $1 Beoarbaidengen foar dän $2 apwiest, ju eerste Beoarbaidenge mout foar dän $3 geböärd weese. 
 
 Din Browser mout so konfigurierd weese, dät hie Cookies fon dän externe Woalcomputer

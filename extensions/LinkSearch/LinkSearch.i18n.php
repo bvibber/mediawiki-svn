@@ -629,7 +629,7 @@ $messages['it'] = array(
  */
 $messages['ja'] = array(
 	'linksearch'       => '外部リンクの検索',
-	'linksearch-desc'  => '指定されたパターンに一致する[[{{ns:special}}:Linksearch|外部リンクを含むページを検索する]]',
+	'linksearch-desc'  => '指定されたパターンに一致する[[Special:Linksearch|外部リンクを含むページを検索する]]',
 	'linksearch-pat'   => '検索パターン:',
 	'linksearch-ns'    => '名前空間:',
 	'linksearch-ok'    => '検索',
@@ -1043,7 +1043,8 @@ $messages['ru'] = array(
 	'linksearch-pat'   => 'Шаблон для поиска:',
 	'linksearch-ns'    => 'Пространство имён:',
 	'linksearch-ok'    => 'Найти',
-	'linksearch-text'  => 'Можно использовать подстановочные символы, например, <code>*.wikipedia.org</code>.',
+	'linksearch-text'  => 'Можно использовать подстановочные символы, например, <code>*.wikipedia.org</code>.<br />
+Поддерживаемые протоколы: <tt>$1</tt>',
 	'linksearch-line'  => 'Ссылка на $1 из $2',
 	'linksearch-error' => 'Подстановочные символы могут использоваться только в начале адресов.',
 );
@@ -1260,7 +1261,7 @@ $messages['vec'] = array(
 	'linksearch-pat'   => 'Pattern de riçerca:',
 	'linksearch-ns'    => 'Namespace:',
 	'linksearch-ok'    => 'Çerca',
-	'linksearch-text'  => 'Se pol doparar dei metacaràteri, ad es. "*.example.com".',
+	'linksearch-text'  => 'Se pol doparar dei metacaràteri, ad es. "*.example.org".',
 	'linksearch-line'  => '$1 presente ne la pagina $2',
 	'linksearch-error' => "I metacaràteri i pode vegner doparài solo a l'inizio del nome de l'host.",
 );
@@ -1302,7 +1303,8 @@ $messages['yue'] = array(
 	'linksearch-error' => '萬用字元只可以響主機名嘅開頭度用。',
 );
 
-/** Simplified Chinese (‪中文(简体)‬) */
+/** Simplified Chinese (‪中文(简体)‬)
+ */
 $messages['zh-hans'] = array(
 	'linksearch'       => '搜索网页链接',
 	'linksearch-desc'  => '配合指定的字[[Special:Linksearch|搜寻含外部连结之页面]]',
@@ -1314,7 +1316,8 @@ $messages['zh-hans'] = array(
 	'linksearch-error' => '通配符仅可在主机名称的开头使用。',
 );
 
-/** Traditional Chinese (‪中文(繁體)‬) */
+/** Traditional Chinese (‪中文(繁體)‬)
+ */
 $messages['zh-hant'] = array(
 	'linksearch'       => '搜尋網頁連結',
 	'linksearch-desc'  => '配合指定的字[[Special:Linksearch|搜尋含外部連結之頁面]]',

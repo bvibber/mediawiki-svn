@@ -139,7 +139,8 @@ $messages['cs'] = array(
 	'formsaveerrortext'            => "Při ukládání formuláře se vyskytla neznámá chyba: ''$1''.",
 );
 
-/** German (Deutsch) */
+/** German (Deutsch)
+ */
 $messages['de'] = array(
 	'form'                         => 'Formular',
 	'formnoname'                   => 'Kein Formularname',
@@ -156,7 +157,7 @@ $messages['de'] = array(
 	'formbadpagenametext'          => 'Die eingegebenen Formulardaten erzeugen einen unzulässigen Seitennamen: „$1“.',
 	'formrequiredfieldpluralerror' => 'Die Felder $1 sind Pflichtfelder. Bitte fülle sie aus.',
 	'formrequiredfielderror'       => 'Das Feld $1 ist ein Pfichtfeld. Bitte fülle es aus.',
-	'formsavesummary'              => 'Neue Seite, die auf [[{{ns:Special}}:Form/$1]] basiert',
+	'formsavesummary'              => 'Neue Seite, die auf [[Special:Form/$1]] basiert',
 	'formsaveerror'                => 'Fehler beim Speichern des Formulares',
 	'formsaveerrortext'            => 'Es gab einen unbekannten Fehler beim Speichern der Seite „$1“.',
 );
@@ -216,7 +217,7 @@ $messages['fr'] = array(
 	'formbadpagenametext'          => 'Les données saisies forment un mauvais nom de page, « $1 ».',
 	'formrequiredfieldpluralerror' => 'Les champs $1 sont requis dans ce formulaire.',
 	'formrequiredfielderror'       => 'Le champ $1 est requis dans ce formulaire.',
-	'formsavesummary'              => "Créer un nouvel article à l'aide de [[Special:Formulaire/$1]]",
+	'formsavesummary'              => "Créer un nouvel article à l'aide de [[Special:Form/$1]]",
 	'formsaveerror'                => "Une erreur s'est produite pendant la sauvegarde.",
 	'formsaveerrortext'            => "Une erreur inconnue s'est produite pendant la sauvegarde de ''$1''.",
 );
@@ -268,7 +269,7 @@ $messages['hsb'] = array(
 	'formbadpagenametext'          => 'Zapodate formularne daty tworja njedowolene mjeno strony: "$1".',
 	'formrequiredfieldpluralerror' => 'Pola $1 su trěbne pola. Prošu wupjelń je.',
 	'formrequiredfielderror'       => 'Polo $1 je trěbne polo. Prošu wupjelń je.',
-	'formsavesummary'              => 'Nowy nastawk, kotryž na [{{ns:Special}}:Form/$1]] bazěruje.',
+	'formsavesummary'              => 'Nowy nastawk, kotryž na [[Special:Form/$1]] bazěruje.',
 	'formsaveerror'                => 'Zmylk při składowanju formulara',
 	'formsaveerrortext'            => 'Bě njeznaty zmylk při składowanju nastawka "$1".',
 );
@@ -497,7 +498,7 @@ $messages['oc'] = array(
 	'formbadpagenametext'          => 'Las donadas picadas fòrman un marrit nom de pagina, « $1 ».',
 	'formrequiredfieldpluralerror' => 'Los camps $1 son requeses dins aqueste formulari.',
 	'formrequiredfielderror'       => 'Lo camp $1 es requés dins aqueste formulari.',
-	'formsavesummary'              => "Crear un article novèl amb l'ajuda de [[Special:Formulari/$1]]",
+	'formsavesummary'              => "Crear un article novèl amb l'ajuda de [[Special:Form/$1]]",
 	'formsaveerror'                => "Una error s'es producha pendent lo salvament.",
 	'formsaveerrortext'            => "Una error desconeguda s'es producha pendent lo salvament de ''$1''.",
 );

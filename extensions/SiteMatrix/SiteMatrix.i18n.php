@@ -28,11 +28,15 @@ $messages['en'] = array(
  */
 $messages['af'] = array(
 	'sitematrix'           => "Lys van Wikimedia-wiki's",
+	'sitematrix-summary'   => "Die spesiale bladsy wys al die Wikimedia-wiki's.",
+	'sitematrix-desc'      => "Vertoon 'n [[Special:SiteMatrix|lys van Wikimedia-wiki's]]",
 	'sitematrix-language'  => 'Taal',
+	'sitematrix-project'   => 'Projeknaam, skakels na projekte en taalskakels',
 	'sitematrix-others'    => 'Ander projekte van Wikimedia',
 	'sitematrix-total'     => "'''Totale aantal: $1'''",
 	'sitematrix-sitetotal' => 'Totaal',
 	'sitematrix-private'   => 'beperkte toegang',
+	'sitematrix-fishbowl'  => 'wysiging beperk',
 );
 
 /** Aragonese (Aragonés)
@@ -668,7 +672,7 @@ $messages['it'] = array(
  */
 $messages['ja'] = array(
 	'sitematrix'           => 'Wikimediaウィキの一覧',
-	'sitematrix-desc'      => '[[{{ns:Special}}:SiteMatrix|Wikimediaウィキの一覧]]を表示する',
+	'sitematrix-desc'      => '[[Special:SiteMatrix|Wikimediaウィキの一覧]]を表示する',
 	'sitematrix-language'  => '言語',
 	'sitematrix-project'   => 'プロジェクト名、プロジェクト間リンク、ウィキ間リンク',
 	'sitematrix-others'    => 'Wikimedia以外のプロジェクト',
@@ -839,7 +843,7 @@ $messages['lfn'] = array(
 $messages['li'] = array(
 	'sitematrix'           => "Lies van Wikimedia wiki's",
 	'sitematrix-summary'   => "Dees speciaal pazjena belies alle Wikimedia wikji's.",
-	'sitematrix-desc'      => "Toent 'n [[special:SiteMatrix|lijst van Wikimedia-wiki's]]",
+	'sitematrix-desc'      => "Toent 'n [[Special:SiteMatrix|lijst van Wikimedia-wiki's]]",
 	'sitematrix-language'  => 'Taal',
 	'sitematrix-project'   => "Naam van 't perjèk, interperjèk link enne interwiki link",
 	'sitematrix-others'    => 'Anger perjèkter van Wikimedia',
@@ -1094,7 +1098,7 @@ $messages['ps'] = array(
 $messages['pt'] = array(
 	'sitematrix'           => 'Lista de sítios Wikimedia',
 	'sitematrix-summary'   => 'Esta página especial lista todos os wikis Wikimedia.',
-	'sitematrix-desc'      => 'Apresenta uma [[{{ns:Special}}:SiteMatrix|lista de wikis Wikimedia]]',
+	'sitematrix-desc'      => 'Apresenta uma [[Special:SiteMatrix|lista de wikis Wikimedia]]',
 	'sitematrix-language'  => 'Idioma',
 	'sitematrix-project'   => 'Nome do projecto, link interprojecto e link interwiki',
 	'sitematrix-others'    => 'Outros projectos da Wikimedia',

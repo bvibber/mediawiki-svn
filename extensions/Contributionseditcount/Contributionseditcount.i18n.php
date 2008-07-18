@@ -143,7 +143,7 @@ $messages['hu'] = array(
  */
 $messages['id'] = array(
 	'contributionseditcount'      => 'Pengguna ini memiliki $1 suntingan.',
-	'contributionseditcount-desc' => 'Menampilkan jumlah suntingan di [[Istimewa:Kontribusi]]',
+	'contributionseditcount-desc' => 'Menampilkan jumlah suntingan di [[Special:Contributions]]',
 );
 
 /** Icelandic (Íslenska)
@@ -291,7 +291,7 @@ $messages['ps'] = array(
  */
 $messages['pt'] = array(
 	'contributionseditcount'      => 'Este utilizador tem $1 edições.',
-	'contributionseditcount-desc' => 'Mostra uma contagem de edições em [[{{ns:special}}:Contributions]]',
+	'contributionseditcount-desc' => 'Mostra uma contagem de edições em [[Special:Contributions]]',
 );
 
 /** Russian (Русский)
@@ -329,7 +329,7 @@ $messages['stq'] = array(
  */
 $messages['su'] = array(
 	'contributionseditcount'      => 'Ieu pamaké geus ngédit $1 kali.',
-	'contributionseditcount-desc' => 'Témbongkeun itungan éditan dina [[Husus:Kontribusi]]',
+	'contributionseditcount-desc' => 'Témbongkeun itungan éditan dina [[Special:Contributions]]',
 );
 
 /** Swedish (Svenska)

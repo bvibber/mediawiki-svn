@@ -1236,6 +1236,7 @@ $messages['ml'] = array(
 /** Marathi (मराठी)
  * @author Kaustubh
  * @author Mahitgar
+ * @author Siebrand
  */
 $messages['mr'] = array(
 	'configure'                           => 'विकि कॉन्फिगर करा',
@@ -1244,7 +1245,7 @@ $messages['mr'] = array(
 	'configure-desc-key'                  => 'चावी',
 	'configure-desc-ns'                   => 'नामविश्वे',
 	'configure-desc-val'                  => 'किंमत',
-	'configure-summary'                   => 'हे विशेष पृष्ठ तुम्हाला हा विकि कॉन्फिगर करायची संधी देते, अधिक माहितीसाठी http://www.mediawiki.org/wiki/Manual:Configuration_settings कॉन्फिगरेशन सेटिंग] पहा.',
+	'configure-summary'                   => 'हे विशेष पृष्ठ तुम्हाला हा विकि कॉन्फिगर करायची संधी देते, अधिक माहितीसाठी [http://www.mediawiki.org/wiki/Manual:Configuration_settings कॉन्फिगरेशन सेटिंग] पहा.',
 	'configure-btn-save'                  => 'सेटिंग्स जतन करा',
 	'configure-directory-not-writable'    => 'सेटिंग साठविण्यात येणार्‍या <tt>$1</tt> धारिके मध्ये लिहू शकत नाही.
 हे एक्स्टेंशन वापर्ण्यासाठी कृपया तिला लिखाण योग्य करा.',

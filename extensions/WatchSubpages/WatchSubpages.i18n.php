@@ -59,7 +59,7 @@ $messages['cs'] = array(
 	'watchsubpages-addedtowatchlist'     => 'Následující stránky byly přidány do vaše seznamu sledovaných stránek:',
 	'watchsubpages-addtitles'            => 'Přidat stránky',
 	'watchsubpages-addtitlestowatchlist' => 'Přidat stránky do seznamu sledovaných',
-	'watchsubpages-desc'                 => 'Rychle [[{{special:WatchSubpages}}|přidat všechny podstránky]] stránky do seznamu sledovaných',
+	'watchsubpages-desc'                 => 'Rychle [[Special:WatchSubpages|přidat všechny podstránky]] stránky do seznamu sledovaných',
 	'watchsubpages-form'                 => 'Vyberte stránky, které chcete přidat do svého seznamu sledovaných stránek.
 Stránku přidáte tak, že označíte pole vedle něj a kliknete na „Pridat stránky“.
 

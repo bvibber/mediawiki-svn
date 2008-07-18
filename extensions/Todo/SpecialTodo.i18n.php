@@ -203,7 +203,7 @@ $messages['gl'] = array(
 	'todo-tab'              => 'tarefas pendentes',
 	'todo-new-queue'        => 'novo',
 	'todo-mail-subject'     => 'Completado o ítem da lista de tarefas pendentes de $1',
-	'todo-mail-body'        => 'Solicitou unha confirmación por correo electrónico acerca do remate dun ítem que enviou á lista en liña de tarefas pendentes.
+	'todo-mail-body'        => 'Solicitou unha confirmación por correo electrónico acerca do remate dun ítem que enviou á lista en liña de tarefas pendentes de $1.
 
 Ítem: $2
 Enviado: $3

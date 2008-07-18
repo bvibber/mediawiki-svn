@@ -1089,10 +1089,11 @@ $messages['uk'] = array(
 
 /** Vèneto (Vèneto)
  * @author Candalua
+ * @author Siebrand
  */
 $messages['vec'] = array(
 	'youtubeauthsub'                     => 'Carga un video de YouTube',
-	'youtubeauthsub-desc'                => 'Permeti ai utenti de [[Special:YouTubeAuthSub|cargar dei video diretamente su YouTube',
+	'youtubeauthsub-desc'                => 'Permeti ai utenti de [[Special:YouTubeAuthSub|cargar dei video]] diretamente su YouTube',
 	'youtubeauthsub_info'                => 'Par cargar un video su YouTube e inserirlo in te na pagina, inpenìssi el modulo con le seguenti informassion:',
 	'youtubeauthsub_title'               => 'Titolo',
 	'youtubeauthsub_description'         => 'Descrission',

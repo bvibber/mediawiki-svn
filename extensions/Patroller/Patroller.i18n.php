@@ -359,7 +359,7 @@ $messages['hsb'] = array(
 * Test nowačka
 * Hlej diskusijna strona',
 	'patrol-another'         => 'Dalšu změnu pokazać, jeli k dispoziciji stejaca.',
-	'patrol-stopped'         => 'Sy rozsudźił, zo njeby žane dalše změny dohladował.',
+	'patrol-stopped'         => 'Sy rozsudźił, zo njeby žane dalše změny dohladował. $1',
 	'patrol-resume'          => 'Klikń sem, zo by pokročował.',
 	'group-patroller'        => 'Dohladowarjo',
 	'group-patroller-member' => 'Dohladowar',
@@ -500,7 +500,7 @@ $messages['km'] = array(
 	'patrol-reverted-failed' => 'កំនែប្រែមិនអាចត្រលប់បានទេ។',
 	'group-patroller'        => 'អ្នកតាមដាន',
 	'group-patroller-member' => 'អ្នកតាមដាន',
-	'grouppage-patroller'    => 'អ្នកតាមដាន',
+	'grouppage-patroller'    => '{{ns:project}}:អ្នកតាមដាន',
 );
 
 /** Ripoarisch (Ripoarisch)

@@ -223,7 +223,7 @@ $messages['pl'] = array(
  */
 $messages['pt'] = array(
 	'eval'        => 'Eval',
-	'eval-desc'   => 'Adiciona [[{{ns:special}}:Eval|uma interface]] à função <code>eval()</code>',
+	'eval-desc'   => 'Adiciona [[Special:Eval|uma interface]] à função <code>eval()</code>',
 	'eval_submit' => 'Resolver',
 	'eval_escape' => 'Resultado em "escape"',
 	'eval_out'    => 'Resultado',

@@ -193,7 +193,7 @@ $messages['hi'] = array(
  */
 $messages['hsb'] = array(
 	'showprocesslist'         => 'Lisćinu procesow pokazać',
-	'showprocesslist-desc'    => 'Wudaće [[Special:showProcesslist|DOSPOŁNU LISĆINU PROCESOW POKAZAĆ]] zwobraznić',
+	'showprocesslist-desc'    => 'Wudaće [[Special:ShowProcesslist|DOSPOŁNU LISĆINU PROCESOW POKAZAĆ]] zwobraznić',
 	'showprocesslist-id'      => 'ID',
 	'showprocesslist-user'    => 'Wužiwar',
 	'showprocesslist-host'    => 'Serwer',

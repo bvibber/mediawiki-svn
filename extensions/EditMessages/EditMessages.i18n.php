@@ -152,7 +152,7 @@ $messages['eo'] = array(
 	'editmsg-search'         => 'Serĉi',
 	'editmsg-get-patch'      => 'Generu flikaĵon',
 	'editmsg-new-search'     => 'Nova serĉo',
-	'editmsg-warning-parse2' => '*Citmarka signo deviĝas post sago',
+	'editmsg-warning-parse2' => '*Citmarka signo deviĝas post sago: $1',
 	'editmsg-warning-parse3' => '* Fino de valuta ĉeno ne trovita: $1',
 	'editmsg-apply-patch'    => 'Apliku flikaĵon',
 	'editmsg-no-patch'       => 'Ne eblas starti "flikan" komandon',
@@ -522,7 +522,7 @@ $messages['ps'] = array(
  * @author Malafaya
  */
 $messages['pt'] = array(
-	'editmessages-desc'      => '[[{{ns:special}}:EditMessages|Edição baseada em web]] de um grande número de ficheiros Messages*.php',
+	'editmessages-desc'      => '[[Special:EditMessages|Edição baseada em web]] de um grande número de ficheiros Messages*.php',
 	'editmessages'           => 'Editar mensagens',
 	'editmsg-target'         => 'Mensagem alvo:',
 	'editmsg-search'         => 'Pesquisar',
