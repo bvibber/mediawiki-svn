@@ -94,11 +94,12 @@ if($plugins && is_array($plugins)) {
 }
 
 ##Load the config files, if they exist. This must be the last thing to run in the startup part
-if(file_exists(dirname(__FILE__) . '/config/GroupPermissions.php') ) {
-	require_once(dirname(__FILE__) . '/config/GroupPermissions.php');
-}
+##Sort comes before the normal group defines since sort sets stuff to false simply to declare new permissions
 if(file_exists(dirname(__FILE__) . '/config/SortPermissions.php')) {
-	require_once(dirname(__FILE__) . '/config/SortPermissions.php');
+	require(dirname(__FILE__) . '/config/SortPermissions.php');
+}
+if(file_exists(dirname(__FILE__) . '/config/GroupPermissions.php') ) {
+	require(dirname(__FILE__) . '/config/GroupPermissions.php');
 }
 
 //Since the one in Title.php is private...

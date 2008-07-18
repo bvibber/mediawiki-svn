@@ -16,7 +16,7 @@ function addColumn() {
 		var btn = document.createElement('input');
 		var rowname = rows[i].id;
 		btn.type = 'radio';
-		btn.name = 'right-' + rowname;
+		btn.name = rowname;
 		btn.id = rowname + '-' + colname;
 		btn.value = colname;
 		btn.className = 'type-' + colname;
@@ -36,7 +36,7 @@ function addRow() {
 	var table = document.getElementById('sorttable');
 	var rowname = document.getElementById('wpNewPerm').value;
 	if(!rowname || rowname == '') return;
-	var dupcheck = document.getElementById('right-'+rowname);
+	var dupcheck = document.getElementById('right-' + rowname);
 	if(dupcheck) return;
 	var tr = document.createElement('tr');
 	tr.id = 'right-'+rowname;
