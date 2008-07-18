@@ -382,6 +382,8 @@ function sffLoadMessagesManually() {
 $wgAjaxExportList[] = 'mv_auto_complete_all';
 $wgAjaxExportList[] = 'mv_auto_complete_person';
 $wgAjaxExportList[] = 'mv_auto_complete_stream_name';
+$wgAjaxExportList[] = 'mv_helpers_auto_complete';
+
 $wgAjaxExportList[] = 'mv_disp_mvd';
 
 $wgAjaxExportList[] = 'mv_add_disp';

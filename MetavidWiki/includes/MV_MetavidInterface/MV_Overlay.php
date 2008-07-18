@@ -439,8 +439,8 @@ $smwgShowFactbox=SMW_FACTBOX_HIDDEN;
 		$metaData=array('prop'=>array(), 'categories'=>array());
 		//just get msg and basic div layout: \
 		//css layout of forms was F*@#!!! withing me for some reason so yay table :P
-		$o.='<span class="mv_basic_edit"><a href="#" onClick="mv_mvd_advs_toggle('.$mvd_id.')">'.wfMsg('mv_advanced_edit').'</a></span>
-			 <span style="display:none" class="mv_advanced_edit"><a href="#" onClick="mv_mvd_advs_toggle('.$mvd_id.')">'.wfMsg('mv_basic_edit').'</a></span>';
+		$o.='<span class="mv_basic_edit"><a href="#" onClick="mv_mvd_advs_toggle('.$mvd_id.');return false;">'.wfMsg('mv_advanced_edit').'</a></span>
+			 <span style="display:none" class="mv_advanced_edit"><a href="#" onClick="mv_mvd_advs_toggle('.$mvd_id.');return false;">'.wfMsg('mv_basic_edit').'</a></span>';
 			 
 		$o.='<input type="hidden" id="adv_basic_'.$mvd_id.'" name="adv_basic" value="basic">';
 		$o.='<table class="mv_basic_edit mv_dataHelpers" id="mv_dataHelpers_'.$mvd_id.'">';		
@@ -452,9 +452,11 @@ $smwgShowFactbox=SMW_FACTBOX_HIDDEN;
 			  			$o.= "<span class=\"error\">Error:</span>". wfMsg('mvMVDFormat');
 			  			return $o;
 			  		}			  		
-			  		$metaData =  $mvTitle->getMetaData();		  		
+			  		$metaData =  $mvTitle->getMetaData();				  	
 				}								
 				foreach($mvMetaDataHelpers[strtolower($mvd_type)] as $prop=>$ac_index){
+					//normalize the 
+					$prop=str_replace(' ', '_', $prop); 
 					//set existing "value"
 					if(isset($metaData['prop'][$prop])){
 						$val = $metaData['prop'][$prop];
@@ -463,7 +465,9 @@ $smwgShowFactbox=SMW_FACTBOX_HIDDEN;
 					$swmTitle = Title::newFromText((string)$prop, SMW_NS_PROPERTY);	
 					if($swmTitle->exists()){					
 						$help_img =$sk->makeKnownLinkObj($swmTitle, '<img src="'.$mvgScriptPath.'/skins/images/help_icon.png">');													
-						$o.= "<tr><td><label>".$swmTitle->getText().":</label></td><td><input class=\"mv_anno_ac\" size=\"14\" name=\"$prop\" type=\"text\" value=\"$val\"></td></tr>";						
+						$o.= "<tr><td><label>".$swmTitle->getText().":</label></td><td><input class=\"mv_anno_ac_{$mvd_id}\" size=\"40\" name=\"{$prop}\" type=\"text\" value=\"$val\">
+								<div class=\"autocomplete\" id=\"{$prop}_choices_{$mvd_id}\" style=\"display: none;\"/>
+								</td></tr>";						
 					}else{
 						print '<span class="error">Error:</span>'.$sk->makeKnownLinkObj($swmTitle, $swmTitle->getText()) . ' does not exist<br>' ;
 					}
@@ -484,10 +488,13 @@ $smwgShowFactbox=SMW_FACTBOX_HIDDEN;
 						$i++;
 					}
 					$o.='</tr>';
-					$o.= "<tr><td><label for=\"new_cat\">".wfMsg('mv_add_category').":</label></td><td><input size=\"14\" class=\"mv_anno_ac\" name=\"new_cat\" type=\"text\"></td></tr>";
+					$o.= "<tr><td><label for=\"category\">".wfMsg('mv_add_category').":</label></td><td><input size=\"40\" class=\"mv_anno_ac_{$mvd_id}\" name=\"category\" type=\"text\">
+							<div class=\"autocomplete\" id=\"category_choices_{$mvd_id}\" style=\"display: none;\"/></td></tr>";
 				}
 				//output a short desc field (the text with striped semantic values)...
-				$o.='<tr><td>'.wfMsg("mv_basic_text_desc").'</td></td><textarea name="basic_wpTextbox" rows="2" cols="14"></textarea></td></tr>';
+				$o.='<tr><td>'.wfMsg("mv_basic_text_desc").'</td></td><textarea name="basic_wpTextbox" rows="2" cols="40">';
+				if(isset($metaData['striped_text']))$o.=$metaData['striped_text'];
+				$o.='</textarea></td></tr>';
 				
 			}				
 			//foreach($mvMetaDataHelpers[

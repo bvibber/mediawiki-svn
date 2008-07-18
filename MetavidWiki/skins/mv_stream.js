@@ -306,9 +306,13 @@ function mv_edit_disp(titleKey, mvd_id){
 		alert(gMsg['mv_open_edit']);
 		return ;
 	}
+	var title_parts = titleKey.split(':');
+	var mvd_type = title_parts[0].toLowerCase();
+	
 	mv_open_edit_mvd=mvd_id;
 	 //set sajax to do a GET request
 	 sajax_request_type='GET';
+
 	 sajax_do_call( "mv_edit_disp", [titleKey, mvd_id], f );
 	 $j('#mv_fcontent_'+mvd_id).html(global_loading_txt);
 	 //handle the response:
@@ -318,10 +322,23 @@ function mv_edit_disp(titleKey, mvd_id){
 		$j('#mv_fcontent_'+mvd_id).html( result );
 		//add javascript hooks     
 		add_autocomplete(mvd_id);     
-		add_adjust_hooks(mvd_id);            
+		add_adjust_hooks(mvd_id);  
+		
+	
+		//if mvd_type==anno_en          
 		//add buttons			
 		mwSetupToolbar();
 		mwEditButtons = []; //empty edit buttons
+		
+		if(mvd_type=='anno_en'){
+			//add mv_helpers autocompletes
+			add_mv_helpers_ac(mvd_id);
+			if($j('#adv_basic_'+mvd_id).val()=='basic'){
+				$j('.mv_advanced_edit').hide();
+			}else{
+				$j('.mv_basic_edit').hide();
+			}
+		}
 	  }
 }/* interface ajax actions */
 function mv_disp_mvd(titleKey, mvd_id){
@@ -404,20 +421,40 @@ function mv_adjust_preview(mvd_id){
 	//}
 	mv_lock_vid_updates=false;
 }
+/*
+ * adds autocomplete to semantic forms
+ * with special case for speech by
+ */
+function add_mv_helpers_ac(mvd_id){
+	$j('.mv_anno_ac_'+mvd_id).each(function(i, input_item){
+		var prop_name =$j(input_item).attr('name');
+		js_log('add ac for: '+ prop_name);
+		uri = wgServer + ((wgServer == null) ? (wgScriptPath + "/index.php") : wgScript);
+		$j(input_item).autocomplete(
+			uri,
+			{
+				autoFill:true,
+				onItemSelect:function(v){		
+					js_log('selected:' + v.innerHTML );
+					//update the image: 
+					//js_log("img src: " + $j(v).children('img').attr('src'));
+					//'mv_edit_im_'+mvd_id
+					$j('#mv_edit_im_'+mvd_id).attr('src', $j(v).children('img').attr('src'));
+				},
+				formatItem:function(row){
+					return '<img width="44" src="'+ row[2] + '">'+row[1];
+				},
+				matchSubset:0,
+				extraParams:{action:'ajax',rs:'mv_helpers_auto_complete',prop_name:prop_name},
+				paramName:'rsargs[]',
+				resultElem:'#'+prop_name+'_choices_'+mvd_id
+			});	
+	});
+}
 
-//update the slider on user input: 
-//@@TODO fix bug in scriptaculus so handles are registered and can use this function:
-/*function mv_update_slider(input, mvd_id){
-	//get seconds from input	
-	var sec = ntp2seconds(input.value);
-	var base_offset = mv_sliders[mvd_id]['base_offset'];
-	var track_dur = 	mv_sliders[mvd_id]['track_dur'];
-	var handle_id = (input.id=='mv_start_hr_'+mvd_id)?'handle1_'+mvd_id:'handle2_'+mvd_id;
-	js_log('set slider:' + handle_id +' '+ ((sec-base_offset)/track_dur));
-	var slider_start=0;
-	var slider_end =((sec-base_offset)/track_dur);
-	mv_sliders[mvd_id].setValue( ((sec-base_offset)/track_dur), handle_id );			
-}*/
+/*
+ * @@TODO add_autocomplete should be merged with generalized mv_helpers_ac
+ */
 function add_autocomplete(mvd_id){
 		//make sure the target elements exist: 
 		//if(!document.getElementById("auto_comp_"+mvd_id))return ;
@@ -511,9 +548,21 @@ function mv_remove_mvd(titleKey, mvd_id, form){
 	});
 	post_vars['title']=titleKey;
 	post_vars['mvd_id'] = mvd_id;
-	sajax_request_type='POST';
+	
 	var setHtmlId ='#mv_fcontent_'+mvd_id;
 	//@@todo switch over to jquery ajax
+	/*uri = wgServer +
+		((wgServer == null) ? (wgScriptPath + "/index.php") : wgScript) +
+		"?action=ajax&rs=mv_remove_mvd";
+	$j.ajax({
+			url:uri,
+			data:post_vars,
+			error:function(error){}, 
+			success:function(result){}
+		}
+	);	
+	}*/
+	sajax_request_type='POST';
 	mv_sajax_do_call('mv_remove_mvd',args, f, post_vars);	
 	js_log('did request');
 	function f( request ) {		

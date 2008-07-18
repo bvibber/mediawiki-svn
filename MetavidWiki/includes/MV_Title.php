@@ -237,13 +237,22 @@
 	 * (does not grab overlaping metadata) 
 	 * (semenatic properities and categories)
 	 * */
-	function getMetaData(){
+	function getMetaData($normalized_prop_name=true){
 		global $wgUser, $wgParser;
 		$article = new Article($this);
 		$retAry = array();		
 		$text = $article->getContent();		
-		$retAry['prop'] = MV_Overlay::get_and_strip_semantic_tags($text);	
-	
+		//@@todo should use semanticMediaWiki api here
+		$tmpProp = MV_Overlay::get_and_strip_semantic_tags($text);
+		//strip categories	
+		$retAry['striped_text']=preg_replace('/\[\[[^:]+:[^\]]+\]\]/','',$text);
+		if($normalized_prop_name){
+			foreach($tmpProp as $pkey=>$pval){
+				$retAry['prop'][str_replace(' ','_',$pkey)]=$pval;
+			}
+		}else{
+			$retAry['prop']=$tmpProp;
+		}
 		
   		$sk =& $wgUser->getSkin();
 		//run via parser to add in Category info: 

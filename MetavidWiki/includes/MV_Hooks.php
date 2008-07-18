@@ -205,6 +205,22 @@
 		$MV_Overlay = new MV_Overlay();
 		return $MV_Overlay->get_edit_disp($titleKey, $mvd_id);
 	}
+	/* genneral autocomplete */
+	function mv_helpers_auto_complete($val=null){
+		global $mvMetaDataHelpers,$wgRequest;
+		$property = $wgRequest->getVal('prop_name');
+		switch($property){
+			case 'Speech_by':
+				return MV_SpecialMediaSearch::auto_complete_person($val);
+			break;
+			case 'Bill':
+				return MV_SpecialMediaSearch::auto_complete_category('Bill', $val);
+			break;
+			case 'category':
+				return MV_SpecialMediaSearch::auto_complete_search_categories($val);
+			break;
+		}
+	}
 	function mv_auto_complete_person($val=null){		
 		return MV_SpecialMediaSearch::auto_complete_person($val);
 	}
