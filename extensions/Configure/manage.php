@@ -12,9 +12,10 @@
 $optionsWithArgs = array( 'revert', 'delete' );
 define( 'EXT_CONFIGURE_NO_EXTRACT', true );
 
-$dir = dirname( __FILE__ );
-$IP = "$dir/../..";
-@include( "$dir/../CorePath.php" ); // Allow override
+$IP = getenv( 'MW_INSTALL_PATH' );
+if( $IP === false )
+	$IP = dirname( __FILE__ ). '/../..';
+
 require_once( "$IP/maintenance/commandLine.inc" );
 
 require_once( dirname( __FILE__ ) . "/manage.inc" );

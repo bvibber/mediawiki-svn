@@ -10,6 +10,16 @@ if ( !defined( 'MEDIAWIKI' ) ) die();
  * @author Alexandre Emsenhuber
  */
 
+## Adding credit :)
+$wgExtensionCredits['specialpage'][] = array(
+	'name' => 'Configure',
+	'author' => 'Alexandre Emsenhuber',
+	'url' => 'http://www.mediawiki.org/wiki/Extension:Configure',
+	'description' => 'Allow authorised users to configure the wiki by a web-based interface',
+	'descriptionmsg' => 'configure-desc',
+	'version' => '0.6.2',
+);
+
 ## Configuration part
 
 /**
@@ -74,16 +84,6 @@ $wgConfigureUpdateCacheEpoch = false;
  */
 $wgConfigureStyleVersion = '5';
 
-## Adding credit :)
-$wgExtensionCredits['specialpage'][] = array(
-	'name' => 'Configure',
-	'author' => 'Alexandre Emsenhuber',
-	'url' => 'http://www.mediawiki.org/wiki/Extension:Configure',
-	'description' => 'Allow authorised users to configure the wiki by a web-based interface',
-	'descriptionmsg' => 'configure-desc',
-	'version' => '0.6.1',
-);
-
 ## Adding new rights...
 $wgAvailableRights[] = 'configure';
 $wgAvailableRights[] = 'configure-all';
@@ -100,15 +100,15 @@ $wgGroupPermissions['bureaucrat']['configure'] = true;
 #$wgGroupPermissions['bureaucrat']['configure-interwiki'] = true;
 #$wgGroupPermissions['developer']['configure-all'] = true;
 
-## Rights for Special:ViewConfig
-$wgGroupPermissions['sysop']['viewconfig'] = true;
-#$wgGroupPermissions['sysop']['viewconfig-interwiki'] = true;
-#$wgGroupPermissions['developer']['viewconfig-all'] = true;
-
 ## Rights for Special:Extensions
 $wgGroupPermissions['bureaucrat']['extensions'] = true;
 #$wgGroupPermissions['bureaucrat']['extensions-interwiki'] = true;
 #$wgGroupPermissions['developer']['extensions-all'] = true;
+
+## Rights for Special:ViewConfig
+$wgGroupPermissions['sysop']['viewconfig'] = true;
+#$wgGroupPermissions['sysop']['viewconfig-interwiki'] = true;
+#$wgGroupPermissions['developer']['viewconfig-all'] = true;
 
 $dir = dirname( __FILE__ ) . '/';
 

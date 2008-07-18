@@ -11,9 +11,10 @@
  * @license GPLv2 or higher
  */
 
-$dir = dirname( __FILE__ );
-$IP = "$dir/../..";
-@include( "$dir/../CorePath.php" ); // Allow override
+$IP = getenv( 'MW_INSTALL_PATH' );
+if( $IP === false )
+	$IP = dirname( __FILE__ ). '/../..';
+
 require_once( "$IP/maintenance/commandLine.inc" );
 
 # Functions
@@ -58,7 +59,7 @@ if( isset( $options['from-doc'] ) ){
 	preg_match_all( '/\[\[[Mm]anual:\$(wg[A-Za-z0-9]+)\|/', $cont, $m );
 	$allSettings = array_unique( $m[1] );
 } else {
-	$allSettings = array_keys( ConfigurationSettings::getAllSettings( CONF_SETTINGS_CORE ) );
+	$allSettings = array_keys( ConfigurationSettings::singleton( CONF_SETTINGS_CORE )->getAllSettings() );
 }
 
 // Now we'll need to open DefaultSettings.php
@@ -71,7 +72,7 @@ $missing = array_diff( $definedSettings, $allSettings );
 $remain = array_diff( $allSettings, $definedSettings );
 $obsolete = array();
 foreach( $remain as $setting ){
-	if( ConfigurationSettings::isSettingAvailable( CONF_SETTINGS_CORE, $setting ) )
+	if( ConfigurationSettings::singleton( CONF_SETTINGS_CORE )->isSettingAvailable( $setting ) )
 		$obsolete[] = $setting;
 }
 

@@ -1,9 +1,14 @@
 This file lists changes on this extension.
 Localisation updates are done on betawiki and aren't listed here.
 
+0.6.2 - 18 July 2008
+  * maintenance scripts now use MW_INSTALL_PATH env variable to locate the wiki.
+  * findSettings.php was broken since 0.6.0, now fixed.
+  * Renamed $wgDefaultDirectoryChmod to $wgDirectoryMode.
+
 0.6.1 - 17 July 2008
- * Added $wgDefaultDirectoryChmod and $wgDiff
- * Fixed array type of $wgContentNamespaces
+  * Added $wgDefaultDirectoryChmod and $wgDiff
+  * Fixed array type of $wgContentNamespaces
 
 0.6.0 - 16 July 2008
   Added following settings to configure Configure itself:
