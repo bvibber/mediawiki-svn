@@ -40,6 +40,14 @@ $messages['nl'] = array(
 	'semanticgooglemaps-desc'              => "Staat gebruikers toe Google Maps toe te voegen aan wikipagina's gebaseerd op basis van gestructureerde gegevens",
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ */
+$messages['no'] = array(
+	'semanticgooglemaps_lookupcoordinates' => 'Sjekk koordinater',
+	'semanticgooglemaps-desc'              => 'Lar brukere legge til Google Maps på wikisider, basert på strukturert data',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

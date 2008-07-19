@@ -155,7 +155,7 @@ $messages['af'] = array(
 	'viewapc-ls-sort-size'      => 'Grootte',
 	'viewapc-ls-sort-name'      => 'Naam',
 	'viewapc-ls-sort-created'   => 'Geskep',
-	'viewapc-ls-limit-none'     => 'Alle',
+	'viewapc-ls-limit-none'     => 'Alles',
 );
 
 /** Arabic (العربية)
@@ -1085,12 +1085,51 @@ $messages['ia'] = array(
  * @author Rex
  */
 $messages['id'] = array(
-	'right-apc'                 => 'Menggunakan semua fitur di [[Special:ViewAPC]]',
-	'viewapc-display-info'      => 'Nama',
-	'viewapc-ls-options-legend' => 'Pilihan',
-	'viewapc-ls-header-name'    => 'Nama',
-	'viewapc-ls-sort-name'      => 'Nama',
-	'viewapc-ls-limit-none'     => 'Semua',
+	'viewapc'                       => 'Informasi APC',
+	'viewapc-desc'                  => '[[Special:ViewAPC|Menampilkan dan mengelola tembolok APC]] dengan MediaWiki',
+	'right-apc'                     => 'Menggunakan semua fitur di [[Special:ViewAPC]]',
+	'viewapc-apc-not-available'     => 'Informasi tembolok tidak tersedia.
+APC kemungkinan tidak berjalan saat ini.',
+	'viewapc-clear-confirm'         => 'Apakah Anda yakin untuk menghapus tembolok?',
+	'viewapc-clear-user-cache'      => 'Hapus tembolok pengguna',
+	'viewapc-clear-code-cache'      => 'Hapus tembolok opcode',
+	'viewapc-mode-stats'            => 'Tampilkan hos statistik',
+	'viewapc-mode-system-cache'     => 'Entri tembolok sistem',
+	'viewapc-mode-system-cache-dir' => 'Entri per-direktori',
+	'viewapc-mode-user-cache'       => 'Entri tembolok pengguna',
+	'viewapc-mode-version-check'    => 'Periksa versi',
+	'viewapc-info-general'          => 'Informasi umum',
+	'viewapc-apc-version'           => 'Versi APC',
+	'viewapc-php-version'           => 'Versi PHP',
+	'viewapc-shared-memory'         => 'Memori berkongsi',
+	'viewapc-shared-memory-details' => '{{PLURAL:$1|1 segmen sebesar $2|$1 segmen masing-masing $2}}.<br />
+($3 memori, $4 penguncian)',
+	'viewapc-start-time'            => 'Waktu mulai',
+	'viewapc-uptime'                => 'Waktu aktif',
+	'viewapc-upload-support'        => 'Dukungan pemuatan berkas',
+	'viewapc-filecache-info'        => 'Informasi tembolok berkas',
+	'viewapc-usercache-info'        => 'Informasi tembolok pengguna',
+	'viewapc-cached-files'          => 'Berkas-berkas dalam tembolok',
+	'viewapc-cached-files-d'        => '$1 {{PLURAL:$1|berkas|berkas}} ($2)',
+	'viewapc-hits'                  => 'Akses',
+	'viewapc-misses'                => 'Kehilangan',
+	'viewapc-requests'              => 'Tingkat permintaan',
+	'viewapc-hitrate'               => 'Tingkat akses',
+	'viewapc-insertrate'            => 'Tingkat penyisipan',
+	'viewapc-cachefull'             => 'Jumlah total tembolok',
+	'viewapc-rps'                   => '$1 permintaan per detik',
+	'viewapc-info-runtime'          => 'Informasi waktu aktif',
+	'viewapc-info-memory'           => 'Diagram status hos',
+	'viewapc-memory-usage-detailed' => 'Memori yang digunakan<br />
+(irisan ganda menunjukkan fragmentasi)',
+	'viewapc-memory-usage'          => 'Penggunaan memori',
+	'viewapc-cache-efficiency'      => 'Jumlah pengaksesan dan kegagalan akses',
+	'viewapc-memory-free'           => 'Bebas: $1 ($2)',
+	'viewapc-display-info'          => 'Nama',
+	'viewapc-ls-options-legend'     => 'Pilihan',
+	'viewapc-ls-header-name'        => 'Nama',
+	'viewapc-ls-sort-name'          => 'Nama',
+	'viewapc-ls-limit-none'         => 'Semua',
 );
 
 /** Ido (Ido)
@@ -1527,6 +1566,16 @@ $messages['mt'] = array(
 	'viewapc-display-filename' => 'L-Isem tal-Fajl',
 	'viewapc-display-info'     => 'Isem',
 	'viewapc-display-type'     => 'Mudell',
+);
+
+/** Nahuatl (Nahuatl)
+ * @author Fluence
+ */
+$messages['nah'] = array(
+	'viewapc-display-info'   => 'Tōcāitl',
+	'viewapc-ls-submit'      => '¡Yāuh!',
+	'viewapc-ls-header-name' => 'Tōcāitl',
+	'viewapc-ls-sort-name'   => 'Tōcāitl',
 );
 
 /** Low German (Plattdüütsch)
@@ -2034,6 +2083,13 @@ $messages['ps'] = array(
 $messages['rif'] = array(
 	'viewapc-ls-submit'     => 'Raḥ ɣa!',
 	'viewapc-ls-limit-none' => 'Maṛṛa',
+);
+
+/** Romanian (Română)
+ * @author KlaudiuMihaila
+ */
+$messages['ro'] = array(
+	'viewapc-display-filename' => 'Nume fişier',
 );
 
 /** Russian (Русский)

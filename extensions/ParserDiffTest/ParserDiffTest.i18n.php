@@ -29,6 +29,7 @@ $messages['en'] = array(
  */
 $messages['af'] = array(
 	'parserdifftest'      => 'Ontleder verskil toets',
+	'pdtest_page_missing' => 'Die gespesifiseerde bladsy is nie in die databasis nie.',
 	'pdtest_no_changes'   => 'Geen veranderinge bespeur.',
 	'pdtest_time_report'  => '<b>$1</b> duur $2 sekondes, <b>$3</b> duur $4 sekondes.',
 	'pdtest_title'        => 'Kontekstitel:',

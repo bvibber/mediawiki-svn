@@ -2273,6 +2273,13 @@ $wgGoogleMapsMessages['rif'] = array(
 	'gm-search'       => 'Tarzzut',
 );
 
+/** Romanian (Română)
+ * @author KlaudiuMihaila
+ */
+$wgGoogleMapsMessages['ro'] = array(
+	'gm-search' => 'Caută',
+);
+
 /** Russian (Русский)
  * @author Александр Сигачёв
  */

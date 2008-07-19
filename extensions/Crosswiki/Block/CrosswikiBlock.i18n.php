@@ -63,10 +63,12 @@ $messages['niu'] = array(
 
 /** Afrikaans (Afrikaans)
  * @author Arnobarnard
+ * @author Naudefj
  */
 $messages['af'] = array(
-	'crosswikiblock-reason'   => 'Rede:',
-	'crosswikiunblock-reason' => 'Rede:',
+	'crosswikiblock-reason'         => 'Rede:',
+	'crosswikiunblock-reason'       => 'Rede:',
+	'crosswikiblock-alreadyblocked' => 'Gebruiker $3 is reeds geblok.',
 );
 
 /** Aragonese (Aragonés)

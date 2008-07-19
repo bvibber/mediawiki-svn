@@ -281,6 +281,13 @@ $messages['te'] = array(
 	'selectcategory-title' => 'వర్గాలను ఎంచుకోండి',
 );
 
+/** Thai (ไทย)
+ * @author Passawuth
+ */
+$messages['th'] = array(
+	'selectcategory-title' => 'เลือกหมวดหมู่',
+);
+
 /** Vèneto (Vèneto)
  * @author Candalua
  */

@@ -122,8 +122,11 @@ $messages['niu'] = array(
 
 /** Afrikaans (Afrikaans)
  * @author Arnobarnard
+ * @author Naudefj
  */
 $messages['af'] = array(
+	'openidoptional'       => 'Opsioneel',
+	'openidrequired'       => 'Verpligtend',
 	'openidemail'          => 'E-pos adres',
 	'openidlanguage'       => 'Taal',
 	'openidchoosepassword' => 'wagwoord:',
@@ -583,6 +586,13 @@ Számos [http://wiki.openid.net/Public_OpenID_providers nyilvános OpenID szolg�
  */
 $messages['ia'] = array(
 	'openidchoosepassword' => 'contrasigno:',
+);
+
+/** Indonesian (Bahasa Indonesia)
+ * @author Rex
+ */
+$messages['id'] = array(
+	'openidlanguage' => 'Bahasa',
 );
 
 /** Icelandic (Íslenska)

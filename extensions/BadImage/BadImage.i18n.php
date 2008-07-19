@@ -727,12 +727,13 @@ $messages['ia'] = array(
 /** Indonesian (Bahasa Indonesia)
  * @author Ivan Lanin
  * @author Irwangatot
+ * @author Rex
  */
 $messages['id'] = array(
 	'badimages'                => 'Daftar berkas tidak sah',
 	'badimages-add-btn'        => 'Tambahkan',
 	'badimages-added'          => '$1 ditambahkan dalam daftar.',
-	'badimages-count'          => "Ada '''$1''' berkas dalam daftar berkas tidak sah.",
+	'badimages-count'          => "{{PLURAL:$1|Terdapat|Terdapat}} '''$1''' {{PLURAL:$1|berkas|berkas}} dalam daftar berkas tidak sah.",
 	'badimages-name'           => 'Nama:',
 	'badimages-not-added'      => 'Berkas tidak dapat ditambahkan.',
 	'badimages-not-removed'    => 'Berkas tidak dapat dihapus.',
@@ -786,12 +787,13 @@ $messages['is'] = array(
 
 /** Italian (Italiano)
  * @author BrokenArrow
+ * @author Melos
  */
 $messages['it'] = array(
 	'badimages'                => 'Elenco dei file discutibili',
 	'badimages-add-btn'        => 'Aggiungi',
 	'badimages-added'          => "Il file $1 è stato aggiunto all'elenco.",
-	'badimages-count'          => "L'elenco dei file discutibili contiene '''$1''' file.",
+	'badimages-count'          => "{{PLURAL:$1|C'è|Ci sono}} '''$1''' {{PLURAL:$1|immagine|immagini}} nella lista delle immagini discutibili.",
 	'badimages-name'           => 'Nome:',
 	'badimages-not-added'      => 'Impossibile aggiungere il file.',
 	'badimages-not-removed'    => 'Impossibile rimuovere il file.',
@@ -1052,6 +1054,13 @@ $messages['mt'] = array(
 	'badimages-subheading'     => 'Affarijiet kurrenti',
 	'badimages-unprivileged'   => "(M'għandhekx biżżejjed permessi sabiex tbiddel il-lista)",
 	'badimages-log-name'       => "Lista ta' stampi ħżiena",
+);
+
+/** Nahuatl (Nahuatl)
+ * @author Fluence
+ */
+$messages['nah'] = array(
+	'badimages-name' => 'Tōcāitl',
 );
 
 /** Low German (Plattdüütsch)

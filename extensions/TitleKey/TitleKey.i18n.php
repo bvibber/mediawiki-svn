@@ -114,9 +114,10 @@ $messages['hu'] = array(
 
 /** Indonesian (Bahasa Indonesia)
  * @author IvanLanin
+ * @author Rex
  */
 $messages['id'] = array(
-	'titlekey-desc' => 'Backend proses pencarian prefiks judul',
+	'titlekey-desc' => 'Alat pemrosesan di belakang layar untuk pencarian awalan judul',
 );
 
 /** Japanese (日本語)

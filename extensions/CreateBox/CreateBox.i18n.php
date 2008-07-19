@@ -142,6 +142,19 @@ $messages['mr'] = array(
 	'createbox-create' => 'तयार करा',
 );
 
+/** Maltese (Malti)
+ * @author Chrisportelli
+ */
+$messages['mt'] = array(
+	'createbox-desc'   => "''Inputbox'' speċjalizzata għall-ħolqien ta' paġni",
+	'createbox-create' => 'Oħloq',
+	'createbox-exists' => "Skużana, \"'''{{FULLPAGENAME}}'''\" teżisti diġà.
+
+Ma tistax toħloq din il-paġna, imma tista' [{{fullurl:{{FULLPAGENAME}}|action=edit}} timmodifikaha], [{{fullurl:{{FULLPAGENAME}}}} taqraha] jew tagħżel li tikkrea paġna differenti bl-użu tal-kaxxa t'hawn taħt.
+
+<createbox>break=no</createbox>",
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */
@@ -200,6 +213,13 @@ Nie możesz utworzyć tej strony, lecz możesz ją [{{fullurl:{{FULLPAGENAME}}|a
  */
 $messages['ps'] = array(
 	'createbox-create' => 'جوړول',
+);
+
+/** Romanian (Română)
+ * @author KlaudiuMihaila
+ */
+$messages['ro'] = array(
+	'createbox-create' => 'Creează',
 );
 
 /** Russian (Русский)

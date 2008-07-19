@@ -22,6 +22,16 @@ $messages['en'] = array(
 	'pageby-anon'         => '<i>anonymous</i>',
 );
 
+/** Afrikaans (Afrikaans)
+ * @author Naudefj
+ */
+$messages['af'] = array(
+	'pageby-first'        => 'Bladsy geskep deur $1, $2',
+	'pageby-last'         => 'Laaste <a href="$3">gewysig</a> deur $1, $2',
+	'pageby-contributors' => 'Bydraers:',
+	'pageby-anon'         => '<i>anoniem</i>',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */

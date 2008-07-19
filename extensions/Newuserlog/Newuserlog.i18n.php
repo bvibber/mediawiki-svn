@@ -183,12 +183,13 @@ $messages['bg'] = array(
  * @author Bellayet
  */
 $messages['bn'] = array(
-	'newuserlogpage'           => 'ব্যবহারকারী সৃষ্টি লগ',
-	'newuserlogpagetext'       => 'এটি নতুন ব্যবহারকারী সৃষ্টির লগ',
-	'newuserlog-desc'          => '[[Special:Log]]-এ একটি [[Special:Log/newusers|অ্যাকাউন্ট সৃষ্টির লগ]] যোগ করে',
-	'newuserlog-byemail'       => 'শব্দচাবি ইমেইলের মাধ্যমে পাঠানো হয়েছে',
-	'newuserlog-create-entry'  => 'নতুন ব্যবহারকারী',
-	'newuserlog-create2-entry' => '$1-এর জন্য অ্যাকাউন্ট সৃষ্টি করা হয়েছে',
+	'newuserlogpage'              => 'ব্যবহারকারী সৃষ্টি লগ',
+	'newuserlogpagetext'          => 'এটি নতুন ব্যবহারকারী সৃষ্টির লগ',
+	'newuserlog-desc'             => '[[Special:Log]]-এ একটি [[Special:Log/newusers|অ্যাকাউন্ট সৃষ্টির লগ]] যোগ করে',
+	'newuserlog-byemail'          => 'শব্দচাবি ইমেইলের মাধ্যমে পাঠানো হয়েছে',
+	'newuserlog-create-entry'     => 'নতুন ব্যবহারকারী',
+	'newuserlog-create2-entry'    => '$1-এর জন্য অ্যাকাউন্ট সৃষ্টি করা হয়েছে',
+	'newuserlog-autocreate-entry' => 'সয়ংক্রিয় ভাবে অ্যাকাউন্ট তৈরি হয়েছে',
 );
 
 /** Breton (Brezhoneg)

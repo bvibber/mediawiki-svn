@@ -241,6 +241,7 @@ $messages['nn'] = array(
  * @author Jon Harald Søby
  */
 $messages['no'] = array(
+	'msfunc_desc'     => 'En samling av matematiske og statistiske funksjoner',
 	'msfunc_nan'      => 'Resultatverdien er ikke et tall',
 	'msfunc_inf'      => 'Resultatverdien er uendelig',
 	'msfunc_div_zero' => 'Deling på null',

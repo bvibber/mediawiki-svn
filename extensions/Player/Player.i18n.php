@@ -44,8 +44,10 @@ $messages['mhr'] = array(
 $messages['af'] = array(
 	'player-file'        => 'Lêernaam',
 	'player-play'        => 'Speel',
+	'player-not-allowed' => 'ontoelaatbare formaat',
 	'player-clicktoplay' => 'Speel $1',
 	'player-goto-page'   => 'Bladsy',
+	'player-goto-file'   => 'lêer',
 );
 
 /** Arabic (العربية)
@@ -558,6 +560,14 @@ $messages['pt'] = array(
 	'player-goto-player'   => 'reprodutor',
 	'player-goto-page'     => 'Página',
 	'player-goto-file'     => 'ficheiro',
+);
+
+/** Romanian (Română)
+ * @author KlaudiuMihaila
+ */
+$messages['ro'] = array(
+	'player-file'      => 'Nume fişier',
+	'player-goto-file' => 'fişier',
 );
 
 /** Russian (Русский)

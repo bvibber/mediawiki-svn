@@ -653,6 +653,13 @@ $messages['pt'] = array(
 	'createsigndoc-error-pagenoexist' => 'Erro: A página [[$1]] não existe.',
 );
 
+/** Romanian (Română)
+ * @author KlaudiuMihaila
+ */
+$messages['ro'] = array(
+	'createsigndoc-create' => 'Creează',
+);
+
 /** Russian (Русский)
  * @author Александр Сигачёв
  */

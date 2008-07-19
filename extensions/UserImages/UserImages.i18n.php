@@ -200,6 +200,15 @@ $messages['mr'] = array(
 	'userimages-noimages' => '$1 ने एकही चित्र चढविलेले नाही',
 );
 
+/** Maltese (Malti)
+ * @author Chrisportelli
+ */
+$messages['mt'] = array(
+	'userimages-caption'  => 'Immaġini mtellgħin mill-utent $1',
+	'userimages-noname'   => "Isem ta' l-utent invalidu jew nieqes.",
+	'userimages-noimages' => "L-utent $1 ma tella' l-ebda immaġini.",
+);
+
 /** Dutch (Nederlands) */
 $messages['nl'] = array(
 	'userimages-caption'  => 'Afbeeldingen toegevoegd door $1',

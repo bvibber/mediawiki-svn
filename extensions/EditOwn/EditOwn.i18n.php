@@ -63,6 +63,13 @@ $messages['hsb'] = array(
 	'editown-desc' => 'Wužiwarjo, kotřiž nimaja prawo wšo wobdźěłować, móža jenož strony wobdźěłać, kotrež su sami wutworili.',
 );
 
+/** Italian (Italiano)
+ * @author Darth Kule
+ */
+$messages['it'] = array(
+	'editown-desc' => 'Gli utenti che non hanno il diritto di modificare tutte le pagine possono solo modificare le pagine che hanno creato loro stessi',
+);
+
 /** Japanese (日本語)
  * @author JtFuruhata
  */

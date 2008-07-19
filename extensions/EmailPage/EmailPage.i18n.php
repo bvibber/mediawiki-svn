@@ -310,10 +310,25 @@ $messages['oc'] = array(
  * @author Sp5uhe
  */
 $messages['pl'] = array(
+	'ea-desc'             => 'Wyślij stronę HTML na adres e-mail lub grupę adresów za pomocą [http://phpmailer.sourceforge.net phpmailer].',
+	'ea-heading'          => '=== Wysłanie na e-mail strony [[$1]] ===',
+	'ea-fromgroup'        => 'Z grupy:',
+	'ea-pagesend'         => 'Strona "$1" wysłana z $2',
+	'ea-nopage'           => 'Wybierz stronę do wysłania, przykładowo [[Special:EmailPage/Strona Główna]].',
+	'ea-norecipients'     => 'Nie znaleziono prawidłowego adresu e-mail.',
+	'ea-listrecipients'   => '=== {{PLURAL:$1|Odbiorca|$1 odbiorców}} ===',
+	'ea-error'            => "'''Błąd podczas wysyłania [[$1]]:''' ''$2''",
+	'ea-denied'           => 'Odmowa dostępu',
+	'ea-sent'             => "Strona [[$1]] została wysłana do '''$2''' {{PLURAL:$2|odbiorcy|odbiorców}} przez [[User:$3|$3]].",
 	'ea-selectrecipients' => 'Wybierz odbiorców',
+	'ea-compose'          => 'Tworzenie zawartości',
+	'ea-selectlist'       => "Dodatkowi odbiorcy:
+*''oddziel obiekty za pomocą , ; * \\n''
+*''lista może zawierać szablony i funkcje parsera''",
 	'ea-show'             => 'Pokaż odbiorców',
 	'ea-send'             => 'Wyślij',
 	'ea-subject'          => 'Wprowadź temat wiadomości e-mail',
+	'ea-header'           => 'Dołączanie zawartości z dodatkową informacją.',
 	'ea-selectcss'        => 'Wybierz styl CSS',
 );
 
@@ -389,12 +404,13 @@ $messages['te'] = array(
 
 /** Vietnamese (Tiếng Việt)
  * @author Vinhtantran
+ * @author Minh Nguyen
  */
 $messages['vi'] = array(
 	'emailpages'          => 'Trang thư điện tử',
 	'ea-desc'             => 'Gửi trang HTML giản lược đến một địa chỉ hoặc danh sách các địa chỉ thư điện tử dùng [http://phpmailer.sourceforge.net phpmailer].',
 	'ea-heading'          => '=== Gửi trang [[$1]] ===',
-	'ea-nopage'           => 'Xin hãy xác định trang muốn gửi, ví dụ [[Special:EmailPage/Trang_Chính]].',
+	'ea-nopage'           => 'Xin hãy xác định trang muốn gửi, ví dụ [[Special:EmailPage/Trang Chính]].',
 	'ea-norecipients'     => 'Không tìm thấy địa chỉ thư điện tử hợp lệ!',
 	'ea-listrecipients'   => '=== Danh sách $1 {{PLURAL:$1|người nhận|người nhận}} ===',
 	'ea-error'            => "'''Lỗi khi gửi [[$1]]:''' ''$2''",

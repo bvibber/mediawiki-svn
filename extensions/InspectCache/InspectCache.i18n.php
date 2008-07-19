@@ -465,6 +465,13 @@ $messages['rif'] = array(
 	'inspectcache-delete' => 'Sfaḍ',
 );
 
+/** Romanian (Română)
+ * @author KlaudiuMihaila
+ */
+$messages['ro'] = array(
+	'inspectcache-delete' => 'Şterge',
+);
+
 /** Russian (Русский)
  * @author VasilievVV
  * @author Александр Сигачёв

@@ -106,6 +106,7 @@ $messages['bg'] = array(
 
 /** Breton (Brezhoneg)
  * @author Fulup
+ * @author Siebrand
  */
 $messages['br'] = array(
 	'duplicator'                       => 'Eilañ ur pennad',
@@ -398,6 +399,7 @@ $messages['hu'] = array(
 /** Indonesian (Bahasa Indonesia)
  * @author Ivan Lanin
  * @author Irwangatot
+ * @author Rex
  */
 $messages['id'] = array(
 	'duplicator'                       => 'Duplikasikan suatu artikel',
@@ -410,7 +412,7 @@ $messages['id'] = array(
 	'duplicator-submit'                => 'Duplikasi',
 	'duplicator-summary'               => 'Disalin dari [[$1]]',
 	'duplicator-success'               => "<big>'''[[$1]] telah disalin ke [[$2]].'''</big>",
-	'duplicator-success-revisions'     => '$1 revisi telah disalin.',
+	'duplicator-success-revisions'     => '$1 {{PLURAL:$1|revisi|revisi}} telah disalin.',
 	'duplicator-success-talkcopied'    => 'Halaman pembicaraan juga telah disalin.',
 	'duplicator-success-talknotcopied' => 'Halaman pembicaraan tidak dapat disalin.',
 	'duplicator-failed'                => 'Halaman tidak dapat diduplikasi. Telah terjadi suatu kesalahan yang tak dikenal.',
@@ -423,9 +425,11 @@ $messages['id'] = array(
 
 /** Italian (Italiano)
  * @author Broken Arrow
+ * @author Darth Kule
  */
 $messages['it'] = array(
 	'duplicator'                       => 'Duplica una pagina',
+	'duplicator-desc'                  => 'Crea copie indipendenti di pagine con le cronologie complete delle modifiche',
 	'duplicator-toolbox'               => 'Duplica questa pagina',
 	'duplicator-header'                => "Questa pagina speciale consente la duplicazione completa di una pagina, dando origine a due copie distinte della relativa cronologia. Tale operazione può essere utile per scindere due pagine (''forking''), ecc.",
 	'duplicator-options'               => 'Opzioni',

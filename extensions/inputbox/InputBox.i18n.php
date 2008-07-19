@@ -818,12 +818,12 @@ $messages['ms'] = array(
 
 /** Maltese (Malti)
  * @author Giangian15
+ * @author Chrisportelli
  */
 $messages['mt'] = array(
 	'inputbox-desc'           => "Tħalli formuli ta' HTML predefiniti",
 	'inputbox-error-no-type'  => "Inti ma speċifikajtx it-tip ta' ''input box'' li trid toħloq.",
-	'inputbox-error-bad-type' => 'L-\'\'Input box\'\' ta\' tip "$1" mhux magħrufa.
-Jekk jogħġbok speċifika fost "create", "comment", "search" u "search2".',
+	'inputbox-error-bad-type' => '"$1" mhuwiex tip magħruf ta\' \'\'inputbox\'\'. Jekk jogħġbok speċifika fost "create", "comment", "search" u "search2".',
 	'tryexact'                => 'Fittex korrispondenza eżatta',
 	'searchfulltext'          => 'Fittex fit-test',
 	'createarticle'           => 'Oħloq paġna',

@@ -54,8 +54,9 @@ $messages['en'] = array(
  * @author Naudefj
  */
 $messages['af'] = array(
-	'review_total_statistics' => 'Totaal',
-	'review_comment'          => 'Opmerking',
+	'review_total_statistics'  => 'Totaal',
+	'review_user_details_link' => '(details)',
+	'review_comment'           => 'Opmerking',
 );
 
 /** Aragonese (Aragonés)

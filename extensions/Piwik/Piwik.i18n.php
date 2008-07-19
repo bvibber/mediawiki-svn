@@ -18,6 +18,15 @@ $messages['en'] = array(
 	'piwik-browsers'   => 'Browsers',
 );
 
+/** Afrikaans (Afrikaans)
+ * @author Naudefj
+ */
+$messages['af'] = array(
+	'piwik-lastvisits' => 'Laaste besoek',
+	'piwik-countries'  => 'Lande',
+	'piwik-browsers'   => 'Webblaaiers',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  * @author OsamaK

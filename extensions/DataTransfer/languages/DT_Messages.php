@@ -451,6 +451,13 @@ $messages['mr'] = array(
 	'dt_xml_freetext'             => 'मुक्त मजकूर',
 );
 
+/** Nahuatl (Nahuatl)
+ * @author Fluence
+ */
+$messages['nah'] = array(
+	'dt_xml_name' => 'Tōcāitl',
+);
+
 /** Low German (Plattdüütsch)
  * @author Slomox
  */

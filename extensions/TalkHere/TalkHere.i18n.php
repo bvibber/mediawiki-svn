@@ -235,6 +235,22 @@ Wothladowarjo tutoho websydła njemóža zamołwitosć za wobsah tajkich komenta
 	'talkhere-collapse'    => 'Editor schować',
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author Rex
+ */
+$messages['id'] = array(
+	'talkhere-desc'        => 'Meletakkan halaman pembicaraan ke dalam halaman',
+	'talkhere-foottext'    => 'Komentar di atas ini mungkin telah diberikan oleh para pengunjung.
+
+Operator situs ini tidak bertanggung jawab atas isi komentar-komentar tersebut.',
+	'talkhere-talkpage'    => 'halaman pembicaraan',
+	'talkhere-notalk'      => "''(belum ada komentar)''",
+	'talkhere-addcomment'  => 'tambahkan komentar',
+	'talkhere-beforeinput' => 'Anda dapat menambahkan komentar di bawah ini',
+	'talkhere-loading'     => 'memuat editor…',
+	'talkhere-collapse'    => 'sembunyikan editor',
+);
+
 /** Javanese (Basa Jawa)
  * @author Meursault2004
  */

@@ -1129,6 +1129,14 @@ $messages['ms'] = array(
 	'sign-viewfield-agent' => 'Ejen pengguna',
 );
 
+/** Nahuatl (Nahuatl)
+ * @author Fluence
+ */
+$messages['nah'] = array(
+	'sign-realname'           => 'Tōcāitl:',
+	'sign-viewfield-realname' => 'Tōcāitl',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */
@@ -1446,7 +1454,7 @@ $messages['pl'] = array(
 	'signdocument'             => 'Podpisz dokument',
 	'sign-nodocselected'       => 'Wybierz dokument, który chcesz podpisać.',
 	'sign-selectdoc'           => 'Dokument',
-	'sign-docheader'           => '<div class="noarticletext">Użyj tego formularza by podpisać wyświetlony poniżej dokument „[[$1]]”.
+	'sign-docheader'           => '<div class="noarticletext">Użyj tego formularza, by podpisać wyświetlony poniżej dokument „[[$1]]”.
 Przeczytaj cały dokument dokładnie i jeśli uznasz, że chcesz go poprzeć, w celu podpisania wypełnij wymagane pola.</div>',
 	'sign-error-nosuchdoc'     => 'Szukany dokument ($1) nie istnieje.',
 	'sign-realname'            => 'Nazwisko:',
@@ -1459,13 +1467,22 @@ Przeczytaj cały dokument dokładnie i jeśli uznasz, że chcesz go poprzeć, w 
 	'sign-bday'                => 'Wiek:',
 	'sign-email'               => 'Adres e-mail:',
 	'sign-indicates-req'       => '<small><i><font color="red">*</font> oznacza wymagane pole.</i></small>',
+	'sign-hide-note'           => '<small><i><font color="red">**</font> Uwaga: Ukryte przez Ciebie informacje nadal będą widoczne dla moderatorów/administratorów.</i></small>',
+	'sign-list-hideaddress'    => 'Nie pokazuj adresu',
+	'sign-list-hideextaddress' => 'Nie pokazuj miejscowości, kodu pocztowego ani kraju.',
+	'sign-list-hidephone'      => 'Nie pokazuj numeru telefonu',
+	'sign-list-hidebday'       => 'Nie pokazuj wieku',
+	'sign-list-hideemail'      => 'Nie pokazuj adresu e-mail',
 	'sign-submit'              => 'Podpisz dokument',
 	'sig-success'              => 'Dokument został podpisany.',
 	'sign-view-selectfields'   => '<b>Pola do wyświetlenia:</b>',
 	'sign-viewfield-timestamp' => 'Znacznik czasu',
+	'sign-viewfield-realname'  => 'Nazwa',
 	'sign-viewfield-address'   => 'Adres',
 	'sign-viewfield-city'      => 'Miasto',
+	'sign-viewfield-state'     => 'Województwo',
 	'sign-viewfield-country'   => 'Państwo',
+	'sign-viewfield-zip'       => 'Kod pocztowy',
 	'sign-viewfield-ip'        => 'Adres IP',
 	'sign-viewfield-agent'     => 'User agent',
 	'sign-viewfield-phone'     => 'Telefon',
@@ -1474,6 +1491,7 @@ Przeczytaj cały dokument dokładnie i jeśli uznasz, że chcesz go poprzeć, w 
 	'sign-viewfield-options'   => 'Opcje',
 	'sign-sigadmin-close'      => 'Wyłącz podpisywanie',
 	'sign-signatures'          => 'Podpisy',
+	'sign-emailto'             => '<a href="mailto:$1">$1</a>',
 	'sign-iptools'             => '<span class="plainlinksneverexpand"><!--
 -->[[User:$1|$1]] ([[User talk:$1|dyskusja]] • <!--
 -->[[Special:Contributions/$1|wkład]] • <!--

@@ -9,6 +9,13 @@ $messages['en'] = array (
 	'tooltip-desc' => 'Adds <tt><nowiki><tooltip></nowiki></tt> and <tt><nowiki>{{#tooltip:}}</nowiki></tt> tag'
 );
 
+/** Afrikaans (Afrikaans)
+ * @author Naudefj
+ */
+$messages['af'] = array(
+	'tooltip-desc' => 'Maak die <nowiki><tooltip></nowiki> en <nowiki>{{#tooltip:}}</nowiki> etikette beskikbaar',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  */

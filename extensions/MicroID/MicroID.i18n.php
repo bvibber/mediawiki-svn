@@ -96,7 +96,8 @@ $messages['nl'] = array(
  * @author Jon Harald Søby
  */
 $messages['no'] = array(
-	'tog-microid' => 'Publiser en <a href="http://microid.org/">MicroID</a> for å bekrefte kontoen for eksterne tjenester',
+	'microid-desc' => 'Legger til [http://www.microid.org/ MicroID] på brukersider for å bekrefte kontoer med eksterne tjenester',
+	'tog-microid'  => 'Publiser en <a href="http://microid.org/">MicroID</a> for å bekrefte kontoen for eksterne tjenester',
 );
 
 /** Occitan (Occitan)

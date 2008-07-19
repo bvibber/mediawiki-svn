@@ -49,9 +49,27 @@ $messages['niu'] = array(
 
 /** Afrikaans (Afrikaans)
  * @author Arnobarnard
+ * @author Naudefj
  */
 $messages['af'] = array(
-	'vote-login-link' => 'teken in',
+	'vote'                => 'Stem',
+	'vote-header'         => "U kan hier stem vir '''Alleenheerser oor die Wêreld'''!",
+	'vote-current'        => "U stem is tans vir '''$1'''.",
+	'vote-legend'         => 'Stem of wysig stem',
+	'vote-caption'        => 'U keuse:',
+	'vote-choices'        => 'joker|The Joker
+penguin|The Penguin
+riddler|Riddler',
+	'vote-submit'         => 'Stem',
+	'vote-registered'     => 'U stem is geregistreer.',
+	'vote-view-results'   => 'Wys resultate',
+	'vote-results'        => 'Resultate van stemming',
+	'vote-results-choice' => 'Keuse',
+	'vote-results-count'  => 'Aantal',
+	'vote-results-none'   => 'Daar is nog geen stemme uitgebring nie.',
+	'vote-login'          => 'U moet $1 om te kan stem.',
+	'vote-login-link'     => 'teken in',
+	'vote-invalid-choice' => 'U moet een van die beskikbare opsies kies.',
 );
 
 /** Arabic (العربية)

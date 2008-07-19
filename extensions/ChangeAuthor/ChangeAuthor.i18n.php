@@ -73,6 +73,7 @@ $messages['af'] = array(
 	'changeauthor-invalid-username' => 'Ongeldige gebruikersnaam "$1".',
 	'changeauthor-nosuchuser'       => 'Geen gebruiker "$1".',
 	'changeauthor-revview'          => 'Hersiening #$1 van $2',
+	'changeauthor-nosuchtitle'      => 'Daar is geen bladsy genaamd "$1" nie.',
 );
 
 /** Aragonese (Aragonés)
@@ -804,6 +805,13 @@ $messages['mr'] = array(
 	'changeauthor-success'              => 'तुमची मागणी व्यवस्थितरीत्या पूर्ण झालेली आहे.',
 	'changeauthor-logentry'             => '$1 च्या $2 आवृत्तीचा लेखक $3 पासून $4 ला बदललेला आहे',
 	'changeauthor-logpagename'          => 'लेखक बदल सूची',
+);
+
+/** Nahuatl (Nahuatl)
+ * @author Fluence
+ */
+$messages['nah'] = array(
+	'changeauthor-pagenameform-go' => 'Yāuh',
 );
 
 /** Low German (Plattdüütsch)

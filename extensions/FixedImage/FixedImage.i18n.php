@@ -141,7 +141,7 @@ $messages['ia'] = array(
  * @author Rex
  */
 $messages['id'] = array(
-	'fixedimage-desc' => 'Adds tag <tt><nowiki><fundraising></nowiki></tt> sebagai sebuah gambar',
+	'fixedimage-desc' => 'Menambahkan tag <tt><nowiki><fundraising></nowiki></tt> sebagai sebuah gambar',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

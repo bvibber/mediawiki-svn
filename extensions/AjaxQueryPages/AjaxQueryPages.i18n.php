@@ -15,7 +15,7 @@ $messages['en'] = array(
  * @author Naudefj
  */
 $messages['af'] = array(
-	'ajax-qp-desc' => 'Voeg AJAX by navraebladsye soos [[Spesiaal:ShortPages|Kort bladsye]]',
+	'ajax-qp-desc' => 'Voeg AJAX by navraebladsye soos [[Special:Shortpages|Kort bladsye]]',
 );
 
 /** Arabic (العربية)

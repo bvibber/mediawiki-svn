@@ -419,15 +419,18 @@ $messages['os'] = array(
  * @author McMonster
  * @author Sp5uhe
  * @author Maikking
+ * @author Derbeth
  */
 $messages['pl'] = array(
-	'importfreeimages_description'           => 'Ta strona pozwala na wyszukiwanie na flickr obrazów z odpowiednią licencją i na ich import do wiki.',
+	'importfreeimages'                       => 'Import grafik z odpowiednią licencją.',
+	'importfreeimages-desc'                  => 'Umożliwia [[Special:ImportFreeImages|import grafik z odpowiednią licencją]] z [http://www.flickr.com flickr]',
+	'importfreeimages_description'           => 'Ta strona pozwala na wyszukiwanie na serwisie flickr zdjęć z odpowiednią licencją i na ich import do wiki.',
 	'importfreeimages_nophotosfound'         => 'Żadne zdjęcie nie zostało odnalezione na podstawie kryterium „$1”. Spróbuj ponownie.',
 	'importfreeimages_invalidurl'            => 'Adres URL „$1” nie jest prawidłowym odwołaniem do obrazka w serwisie Flickr.',
 	'importfreeimages_owner'                 => 'Autor',
 	'importfreeimages_importthis'            => 'importuj',
 	'importfreeimages_next'                  => 'Następne $1',
-	'importfreeimages_filefromflickr'        => '$1 przez użytkownika <b>[$2]</b> z flickr. Oryginalny adres URL to',
+	'importfreeimages_filefromflickr'        => '$1 przez użytkownika <b>[$2]</b> z serwisu flickr. Oryginalny adres URL to',
 	'importfreeimages_promptuserforfilename' => 'Wprowadź nazwę pliku docelowego',
 	'importfreeimages_returntoform'          => "Kliknij <a href='$1'>tutaj</a> żeby powrócić do wyników wyszukiwania",
 );

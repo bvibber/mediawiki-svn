@@ -187,8 +187,10 @@ $messages['bg'] = array(
 $messages['bn'] = array(
 	'expandtemplates'                  => 'টেম্পলেট সম্প্রসারণ',
 	'expandtemplates-desc'             => '[[Special:ExpandTemplates|টেম্পলেট, পার্সার ফাংশন এবং ভ্যারিয়েবল সপ্রসারণ করে]] সম্প্রসারিত উইকিটেক্সট দেখুন এবং উপস্থাপিত পাতাটি প্রাকদর্শন করুন',
-	'expand_templates_intro'           => 'এই বিশেষ পাতাটি কিছু টেক্সট গ্রহণ করে এবং এর ভেতরের সব টেম্পলেট পুনরাবৃত্ত উপায়ে সপ্রসারিত করে। এছাড়াও এটি It also expands parser functions like
-<nowiki>{{</nowiki>#if:...}}-এর মত পার্সার ফাংশন, <nowiki>{{</nowiki>CURRENTDAY}-এর মত ভ্যারিয়েবল &mdash;মোটকথা দ্বিতীয় বন্ধনীর মধ্যে অবস্থিত সবকিছুকেই সম্প্রসারিত করতে পারে।
+	'expand_templates_intro'           => 'এই বিশেষ পাতাটি কিছু টেক্সট গ্রহণ করে এবং এর ভেতরের সব টেম্পলেট বারংবার সম্প্রসারিত করে।
+এছাড়াও এটি 
+<nowiki>{{</nowiki>#if:...}}-এর মত পার্সার ফাংশন,
+<nowiki>{{</nowiki>CURRENTDAY}-এর মত ভ্যারিয়েবল &mdash; মোটকথা দ্বিতীয় বন্ধনীর মধ্যে অবস্থিত সবকিছুকেই সম্প্রসারিত করতে পারে।
 এটি সংশ্লিষ্ট পার্সার পর্যায় থেকে স্বয়ং মিডিয়াউইকিকে কল করে এই কাজটি করে থাকে।',
 	'expand_templates_title'           => 'প্রাতিবেশিক শিরোনাম, {{PAGENAME}}, ইত্যাদির জন্য:',
 	'expand_templates_input'           => 'ইনপুটকৃত লেখা:',
@@ -1292,6 +1294,7 @@ $messages['stq'] = array(
 /** Sundanese (Basa Sunda)
  * @author Kandar
  * @author Irwangatot
+ * @author Siebrand
  */
 $messages['su'] = array(
 	'expandtemplates'             => 'Mekarkeun citakan',

@@ -326,10 +326,11 @@ $messages['os'] = array(
  * @author McMonster
  * @author Maikking
  * @author Sp5uhe
+ * @author Derbeth
  */
 $messages['pl'] = array(
 	'findspam'             => 'Znajdź spam',
-	'findspam-desc'        => 'Dodaje [[Special:FindSpam|stronę specjalną]], pozwalającą odnaleźć ostatnio dodawany spam.',
+	'findspam-desc'        => 'Dodaje [[Special:FindSpam|stronę specjalną]] pozwalającą odnaleźć ostatnio dodawany spam.',
 	'findspam-ip'          => 'Adres IP:',
 	'findspam-ok'          => 'OK',
 	'findspam-notextfound' => 'Nie odnaleziono żadnych edycji',

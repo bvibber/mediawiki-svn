@@ -2632,6 +2632,13 @@ $messages['rif'] = array(
 	'mv_history'     => 'Amzruy',
 );
 
+/** Romanian (Română)
+ * @author KlaudiuMihaila
+ */
+$messages['ro'] = array(
+	'mv_tool_search' => 'Caută',
+);
+
 /** Russian (Русский)
  * @author Александр Сигачёв
  * @author Siebrand
@@ -3515,7 +3522,7 @@ Nhảy đến cảnh luồng: $2',
 	'mv_seq_add_end'                 => 'Thêm vào cuối chuỗi',
 	'mv_sequence_timeline'           => 'Thời gian chuỗi:',
 	'mv_edit_sequence_desc_help'     => 'Mô tả chuỗi',
-	'mv_edithelpsequence'            => 'Trợ giúp:Sửa đổi chuỗi',
+	'mv_edithelpsequence'            => 'Help:Sửa đổi chuỗi',
 	'mv_seq_summary'                 => 'Tóm tắt sửa đổi chuỗi',
 	'mv_add_clip_by_name'            => 'Thêm clip theo tên',
 	'mv_export_cmml'                 => 'xuất cmml',

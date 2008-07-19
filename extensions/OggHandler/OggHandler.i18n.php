@@ -73,6 +73,7 @@ $messages['af'] = array(
 	'ogg-use-player'          => 'Gebruik speler:',
 	'ogg-more'                => 'Meer...',
 	'ogg-dismiss'             => 'Sluit',
+	'ogg-download'            => 'Laai lêer af',
 	'ogg-desc-link'           => 'Aangaande die lêer',
 );
 

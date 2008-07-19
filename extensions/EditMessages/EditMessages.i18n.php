@@ -540,6 +540,13 @@ $messages['rif'] = array(
 	'editmsg-search' => 'Tarzzut',
 );
 
+/** Romanian (Română)
+ * @author KlaudiuMihaila
+ */
+$messages['ro'] = array(
+	'editmsg-search' => 'Caută',
+);
+
 /** Russian (Русский)
  * @author Александр Сигачёв
  */

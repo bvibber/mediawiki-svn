@@ -70,9 +70,12 @@ $messages['niu'] = array(
 
 /** Afrikaans (Afrikaans)
  * @author Arnobarnard
+ * @author Naudefj
  */
 $messages['af'] = array(
-	'todo-list-cancel' => 'Kanselleer',
+	'todo-new-queue'    => 'nuut',
+	'todo-list-cancel'  => 'Kanselleer',
+	'todo-form-details' => 'Details:',
 );
 
 /** Arabic (العربية)

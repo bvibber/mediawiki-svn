@@ -37,6 +37,13 @@ $messages['rtm'] = array(
 	'tasklistincorrectuser' => 'Seseva',
 );
 
+/** Afrikaans (Afrikaans)
+ * @author Naudefj
+ */
+$messages['af'] = array(
+	'tasklistincorrectuser' => 'Foutiewe gebruikersnaam',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */

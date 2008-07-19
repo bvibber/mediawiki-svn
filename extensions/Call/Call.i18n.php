@@ -29,6 +29,13 @@ In case of problems you can try <b>Special:Call/DebuG</b>',
 	'call-save-failed' => 'The following text has NOT been saved to page <big>[[$1]]</big> because that page already exists.',
 );
 
+/** Afrikaans (Afrikaans)
+ * @author Naudefj
+ */
+$messages['af'] = array(
+	'call' => 'Roep',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */
@@ -147,15 +154,16 @@ $messages['fi'] = array(
 
 /** French (Français)
  * @author Urhixidur
+ * @author Grondin
  */
 $messages['fr'] = array(
 	'call'              => 'Appel',
 	'call-desc'         => 'Crée un lien hypertexte vers un modèle ou un article wiki normal tout en passant des paramètres. Elle peut être utilisée en ligne de commande depuis un navigateur ou à travers un texte wiki.',
-	'call-text'         => "L’extension Appel a besoin d’une page wiki et des paramètres facultatifs pour cette dernière.<br /><br />
-Example 1: &nbsp; <tt>[[Special:Call/Mon modèle,parm1=value1]]</tt><br />
-Example 2: &nbsp; <tt>[[Special:Call/Discussion:Ma discussion,parm1=value1]]</tt><br />
-Example 3: &nbsp; <tt>[[Special:Call/:Ma page,parm1=value1,parm2=value2]]</tt><br /><br />
-Example 4 (Adresse pour navigateur) : &nbsp; <tt>http://mondomaine/monwiki/index.php?Special:Call/:Ma_Page,parm1=value1</tt><br /><br />
+	'call-text'         => "L’extension Appel a besoin d’une page wiki et des paramètres facultatifs pour cette dernière comme argument.<br /><br />
+Exemple 1: &nbsp; <tt>[[Special:Call/Mon modèle,parm1=value1]]</tt><br />
+Exemple 2: &nbsp; <tt>[[Special:Call/Discussion:Ma discussion,parm1=value1]]</tt><br />
+Exemple 3: &nbsp; <tt>[[Special:Call/:Ma page,parm1=value1,parm2=value2]]</tt><br /><br />
+Exemple 4 (Adresse pour navigateur) : &nbsp; <tt>http://mondomaine/monwiki/index.php?Special:Call/:Ma_Page,parm1=value1</tt><br /><br />
 
 L’extension <i>Appel</i> appellera la page indiquée en lui passant les paramètres.<br />Vous verrez les informations de cette page, son titre, mais son « type » sera celui d’une page spéciale qui ne pourra pas être éditée.<br />Les informations que vous verrez varieront en fonction des paramètres que vous aurez indiqués.<br />Cette extension est très pratique pour créer des applications interactives avec MediaWiki.<br />À titre d’exemple, voyez <a href='http://semeb.com/dpldemo/Template:Catlist'>the DPL GUI</a> ..<br />En cas de problèmes, vous pouvez essayer <b>Special:Call/DebuG</b>",
 	'call-save'         => "Ce qui est indiqué par cet appel pourrait être sauvé vers une page intitulée ''$1''.",
@@ -338,6 +346,14 @@ $messages['mr'] = array(
 	'call-save'         => "या कॉल क्रियेचा निकाल ''$1'' या नावाच्या पानावर नोंदला जाईल.",
 	'call-save-success' => 'खालील मजकूर <big>[[$1]]</big> या पानावर जतन केलेला आहे.',
 	'call-save-failed'  => 'खालील मजकूर <big>[[$1]]</big> या पानावर जतन केलेला नाही, कारण ते पान अगोदरच अस्तित्वात आहे.',
+);
+
+/** Maltese (Malti)
+ * @author Chrisportelli
+ */
+$messages['mt'] = array(
+	'call-save-success' => 'Dan it-test segwenti kien salvat fuq il-paġna <big>[[$1]]</big>.',
+	'call-save-failed'  => 'Dan it-test segwenti ma ġiex salvat fuq il-paġna <big>[[$1]]</big> minħabba li din il-paġna diġà teżisti.',
 );
 
 /** Dutch (Nederlands)

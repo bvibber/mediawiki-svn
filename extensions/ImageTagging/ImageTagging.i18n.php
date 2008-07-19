@@ -314,8 +314,10 @@ $messages['haw'] = array(
 
 /** Indonesian (Bahasa Indonesia)
  * @author Irwangatot
+ * @author Rex
  */
 $messages['id'] = array(
+	'imagetagging-imghistory'       => 'Versi',
 	'imagetagging-tagcancel-button' => 'Batalkan',
 );
 
@@ -526,8 +528,10 @@ Esperatz la fin de l’accion en cors.",
 
 /** Polish (Polski)
  * @author Sp5uhe
+ * @author Maikking
  */
 $messages['pl'] = array(
+	'imagetagging-article'          => 'Artykuł:',
 	'imagetagging-imghistory'       => 'Historia',
 	'imagetagging-tagcancel-button' => 'Anuluj',
 );

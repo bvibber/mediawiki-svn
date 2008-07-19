@@ -235,6 +235,7 @@ $messages['fr'] = array(
 	'removeunusedgroups'             => 'Retirer les groupes inutilisés',
 	'grouppermissions-desc'          => 'Gère les permissions des groupes au travers d’une [[Special:GroupPermissions|page spéciale]]',
 	'grouppermissions-desc2'         => 'Système étendu des permissions',
+	'grouppermissions-desc3'         => 'Permet au contenu des actions (tabulations) d’être personalisé',
 	'grouppermissions-header'        => 'Vous pouvez utiliser cette page pour modifier les permissions soulignées des différents groupes d’utilisateurs',
 	'grouppermissions-search'        => 'Groupe :',
 	'grouppermissions-dologin'       => 'Connexion',
@@ -435,6 +436,13 @@ $messages['lb'] = array(
 	'right-edit-new'                 => 'Säiten änneren',
 );
 
+/** Nahuatl (Nahuatl)
+ * @author Fluence
+ */
+$messages['nah'] = array(
+	'grouppermissions-dosearch' => 'Yāuh',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */
@@ -505,8 +513,11 @@ $messages['nl'] = array(
  */
 $messages['no'] = array(
 	'grouppermissions'               => 'Behandle grupperettigheter',
+	'sortpermissions'                => 'Sorter rettigheter',
+	'removeunusedgroups'             => 'Fjern ubrukte grupper',
 	'grouppermissions-desc'          => 'Behandle grupperettigheter via en [[Special:GroupPermissions|spesialside]]',
 	'grouppermissions-desc2'         => 'Utvidet rettighetssystem',
+	'grouppermissions-desc3'         => 'Tillater egendefinering av innholdsfanene',
 	'grouppermissions-header'        => 'Du kan bruke denne siden for å endre rettightene de forskjellige brukergruppene har',
 	'grouppermissions-search'        => 'Gruppe:',
 	'grouppermissions-dologin'       => 'Logg inn',
@@ -536,6 +547,18 @@ $messages['no'] = array(
 	'grouppermissions-log-delete'    => 'slettet gruppen «$2»',
 	'grouppermissions-log-name'      => 'Logg for endringer i grupperettigheter',
 	'grouppermissions-log-header'    => 'Denne siden viser endringer i rettighetene brukergrupper innehar.',
+	'grouppermissions-needjs'        => 'Advarsel: JavaScript er slått av i nettleseren din. Noen funksjoner vil ikke fungere.',
+	'grouppermissions-sp-header'     => 'Du kan bruke denne siden for å styre hvordan rettigheter sorteres, og legge til nye rettigheter',
+	'grouppermissions-sp-sort'       => 'Sorter rettigheter',
+	'grouppermissions-sp-save'       => 'Lagre',
+	'grouppermissions-sp-success'    => 'Rettighetene ble sortert',
+	'grouppermissions-sp-addtype'    => 'Legg til sorteringstype',
+	'grouppermissions-sp-addperm'    => 'Legg til rettighet',
+	'grouppermissions-sp-remove'     => 'fjern',
+	'grouppermissions-sp-deltype'    => 'Slett sorteringstype',
+	'grouppermissions-rug-header'    => 'Du kan bruke denne siden for å fjerne brukere fra ubrukte (slettede) grupper.',
+	'grouppermissions-rug-success'   => 'Fjernet brukere fra ubrukte grupper.',
+	'grouppermissions-rug-confirm'   => 'Fjern brukere fra ubrukte grupper',
 	'right-viewsource'               => 'Se kilden til beskyttede sider',
 	'right-raw'                      => 'Se sider i råformat',
 	'right-render'                   => 'Se sider uten navigasjon',

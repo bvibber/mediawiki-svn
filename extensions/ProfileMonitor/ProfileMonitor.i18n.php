@@ -27,9 +27,11 @@ $messages['en'] = array(
 
 /** Afrikaans (Afrikaans)
  * @author Arnobarnard
+ * @author Naudefj
  */
 $messages['af'] = array(
-	'profiling-ok' => 'OK',
+	'profiling-ok'         => 'OK',
+	'profiling-data-count' => 'Aantal',
 );
 
 /** Arabic (العربية)
@@ -307,6 +309,7 @@ $messages['nn'] = array(
  */
 $messages['no'] = array(
 	'profiling'              => 'Profileringsdata',
+	'profiling-desc'         => '[[Special:Profiling|Spesialside]] for søk og inspeksjon av profileringsdata',
 	'profiling-process'      => 'Prosesseringsstreng:',
 	'profiling-wildcard'     => 'Bruk vilkårlig tegn',
 	'profiling-ok'           => 'OK',

@@ -334,6 +334,13 @@ $messages['mr'] = array(
 	'randomincategory-submit'     => 'चला',
 );
 
+/** Nahuatl (Nahuatl)
+ * @author Fluence
+ */
+$messages['nah'] = array(
+	'randomincategory-submit' => 'Yāuh',
+);
+
 /** Dutch (Nederlands)
  * @author SPQRobin
  * @author Siebrand

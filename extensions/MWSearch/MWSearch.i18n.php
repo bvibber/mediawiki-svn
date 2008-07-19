@@ -39,6 +39,13 @@ $messages['bg'] = array(
 	'mwsearch-desc' => 'Разширение за търсене в МедияУики',
 );
 
+/** Bengali (বাংলা)
+ * @author Bellayet
+ */
+$messages['bn'] = array(
+	'mwsearch-desc' => 'MWSearch প্লাগইন',
+);
+
 /** Catalan (Català)
  * @author Paucabot
  */

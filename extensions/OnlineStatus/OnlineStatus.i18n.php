@@ -20,6 +20,17 @@ $messages['en'] = array(
 	'onlinestatus-toggle-online'    => 'Online',
 );
 
+/** Afrikaans (Afrikaans)
+ * @author Naudefj
+ */
+$messages['af'] = array(
+	'onlinestatus-subtitle-offline' => 'Hierdie gebruiker is aflyn',
+	'onlinestatus-subtitle-online'  => 'Hierdie gebruiker is aanlyn',
+	'onlinestatus-toggles-desc'     => 'U status:',
+	'onlinestatus-toggle-offline'   => 'Aflyn',
+	'onlinestatus-toggle-online'    => 'Aanlyn',
+);
+
 /** Arabic (العربية)
  * @author OsamaK
  */

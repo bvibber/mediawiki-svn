@@ -677,7 +677,8 @@ $messages['tg-cyrl'] = array(
  * @author Passawuth
  */
 $messages['th'] = array(
-	'deletedcontributions' => 'ลบเรื่องที่เขียน',
+	'deletedcontributions'      => 'การแก้ไขที่ถูกลบ',
+	'deletedcontributions-desc' => 'เฉพาะผู้ดูแลระบบสามารถ[[Special:DeletedContributions|ดูการแก้ไขที่ถูกลบ]]ของผู้ใช้นั้น ๆ',
 );
 
 /** Tonga (faka-Tonga)

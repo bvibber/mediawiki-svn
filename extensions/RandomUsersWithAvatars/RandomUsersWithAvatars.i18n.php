@@ -77,6 +77,14 @@ $messages['nl'] = array(
 	'random-users-avatars-desc'  => 'Voegt de tag <tt>&lt;randomuserswithavatars&gt;</tt> toe om de avatars van willekeurige gebruikers weer te geven',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ */
+$messages['no'] = array(
+	'random-users-avatars-title' => 'Møt brukerne',
+	'random-users-avatars-desc'  => 'Legger til taggen <tt>&lt;randomuserswithavatar&gt;</tt> for å vise avatarene for tilfeldig valgte brukere',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

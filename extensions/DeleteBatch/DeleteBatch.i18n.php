@@ -263,25 +263,32 @@ Het bestand dat u uploadt moet op iedere regel een paginanaam en een reden bevat
  * @author Jon Harald Søby
  */
 $messages['no'] = array(
-	'deletebatch'                  => 'Slett mange sider',
-	'deletebatch-desc'             => '[[Special:DeleteBatch|Slett mange sider]]',
-	'deletebatch-button'           => 'Slett',
-	'deletebatch-here'             => '<b>her</b>',
-	'deletebatch-help'             => 'Slett en serie av sider. Du kan også utføre en enkel sletting, eller slette sider listet opp i en fil.
+	'deletebatch'                      => 'Slett mange sider',
+	'deletebatch-desc'                 => '[[Special:DeleteBatch|Slett mange sider]]',
+	'deletebatch-button'               => 'Slett',
+	'deletebatch-here'                 => '<b>her</b>',
+	'deletebatch-help'                 => 'Slett en serie av sider. Du kan også utføre en enkel sletting, eller slette sider listet opp i en fil.
 Velg en bruker som skal vises i slettingsloggen.
 En opplastet fil må inneholde navnet på siden, og kan også ha en valgfri slettingsgrunn skilt fra tittelen med «|».',
-	'deletebatch-caption'          => 'Sideliste',
-	'deletebatch-title'            => 'Slett serie',
-	'deletebatch-link-back'        => 'Du kan gå tilbake til utvidelsen',
-	'deletebatch-as'               => 'Kjør skriptet som',
-	'deletebatch-both-modes'       => 'Velg én side eller en liste over sider.',
-	'deletebatch-or'               => '<b>eller</b>',
-	'deletebatch-page'             => 'Sider som skal slettes',
-	'deletebatch-reason'           => 'Slettingsårsak',
-	'deletebatch-processing'       => 'sletter sider',
-	'deletebatch-from-file'        => 'fra filliste',
-	'deletebatch-from-form'        => 'fra skjema',
-	'deletebatch-success-subtitle' => 'for $1',
+	'deletebatch-caption'              => 'Sideliste',
+	'deletebatch-title'                => 'Slett serie',
+	'deletebatch-link-back'            => 'Du kan gå tilbake til utvidelsen',
+	'deletebatch-as'                   => 'Kjør skriptet som',
+	'deletebatch-both-modes'           => 'Velg én side eller en liste over sider.',
+	'deletebatch-or'                   => '<b>eller</b>',
+	'deletebatch-page'                 => 'Sider som skal slettes',
+	'deletebatch-reason'               => 'Slettingsårsak',
+	'deletebatch-processing'           => 'sletter sider',
+	'deletebatch-from-file'            => 'fra filliste',
+	'deletebatch-from-form'            => 'fra skjema',
+	'deletebatch-success-subtitle'     => 'for $1',
+	'deletebatch-omitting-nonexistant' => 'Utelater den ikke-eksisterende siden $1.',
+	'deletebatch-omitting-invalid'     => 'Utelater den ugyldige siden $1.',
+	'deletebatch-file-bad-format'      => 'Filen bør inneholde ren tekst',
+	'deletebatch-file-missing'         => 'Kunne ikke lese filen',
+	'deletebatch-select-script'        => 'slett sideskript',
+	'deletebatch-select-yourself'      => 'du',
+	'deletebatch-no-page'              => 'Vennligst oppgi minst én side å slette eller velg en fil med en liste av sider.',
 );
 
 /** Occitan (Occitan)
@@ -322,14 +329,39 @@ Un fichièr importat poirà conténer un nom de la pagina e un motiu facultatiu 
  * @author Maikking
  */
 $messages['pl'] = array(
-	'deletebatch-button'          => 'Usuń',
-	'deletebatch-here'            => '<b>tutaj</b>',
-	'deletebatch-caption'         => 'Lista stron',
-	'deletebatch-page'            => 'Lista stron do usunięcia',
-	'deletebatch-reason'          => 'Powód usunięcia',
-	'deletebatch-processing'      => 'usuwanie stron',
-	'deletebatch-file-missing'    => 'Nie można odczytać pliku',
-	'deletebatch-select-yourself' => 'Ty',
+	'deletebatch'                      => 'Usuń grupę stron',
+	'deletebatch-desc'                 => '[[Special:DeleteBatch|Usuń grupę stron]]',
+	'deletebatch-button'               => 'Usuń',
+	'deletebatch-here'                 => '<b>tutaj</b>',
+	'deletebatch-help'                 => 'Usuwanie grupy stron. Strony możesz usuwać pojedynczo lub poprzez usunięcie grupy stron, wymienionych w pliku.
+Wybierz użytkownika, który będzie widoczny w logu stron usuniętych.
+Przesyłany plik powinien zawierać nazwę strony i powód usunięcia w jednej linii tekstu, przedzielone symbolem "|".',
+	'deletebatch-caption'              => 'Lista stron',
+	'deletebatch-title'                => 'Usuń grupę stron',
+	'deletebatch-link-back'            => 'Cofnij do usuwania grup stron',
+	'deletebatch-as'                   => 'Uruchom skrypt jako',
+	'deletebatch-both-modes'           => 'Wybierz jedną stronę albo grupę stron.',
+	'deletebatch-or'                   => '<b>lub</b>',
+	'deletebatch-page'                 => 'Lista stron do usunięcia',
+	'deletebatch-reason'               => 'Powód usunięcia',
+	'deletebatch-processing'           => 'usuwanie stron',
+	'deletebatch-from-file'            => 'z listy zawartej w pliku',
+	'deletebatch-from-form'            => 'z',
+	'deletebatch-success-subtitle'     => 'dla $1',
+	'deletebatch-omitting-nonexistant' => 'Pominięto nieistniejącą stronę $1.',
+	'deletebatch-omitting-invalid'     => 'Pominięto niewłaściwą stronę $1.',
+	'deletebatch-file-bad-format'      => 'Plik powinien zawierać wyłącznie tekst',
+	'deletebatch-file-missing'         => 'Nie można odczytać pliku',
+	'deletebatch-select-script'        => 'usuwanie stron',
+	'deletebatch-select-yourself'      => 'Ty',
+	'deletebatch-no-page'              => 'Wybierz pojedynczą stronę do usunięcia ALBO wybierz plik zawierający listę stron.',
+);
+
+/** Romanian (Română)
+ * @author KlaudiuMihaila
+ */
+$messages['ro'] = array(
+	'deletebatch-button' => 'Şterge',
 );
 
 /** Russian (Русский)

@@ -53,10 +53,12 @@ $messages['niu'] = array(
 
 /** Afrikaans (Afrikaans)
  * @author SPQRobin
+ * @author Naudefj
  */
 $messages['af'] = array(
-	'spamregex-text'        => '(Teks)',
-	'spamregex-summary-log' => '(Opsomming)',
+	'spamregex-already-blocked' => '"$1" is reeds geblok',
+	'spamregex-text'            => '(Teks)',
+	'spamregex-summary-log'     => '(Opsomming)',
 );
 
 /** Aragonese (Aragonés)
@@ -485,7 +487,11 @@ $messages['pl'] = array(
 	'spamregex-currently-blocked'    => "'''Aktualnie zablokowane wyrażenia:'''",
 	'spamregex-no-currently-blocked' => "'''Nie ma zablokowanych wyrażeń.'''",
 	'spamregex-block-success'        => 'Zablokowano',
+	'spamregex-block-message'        => "Wyrażenie '''$1''' zostało zablokowane.",
+	'spamregex-warning-1'            => 'Podaj wyrażenie do zablokowania.',
 	'spamregex-already-blocked'      => '„$1” jest już zablokowany',
+	'spamregex-phrase-block'         => 'Wyrażenie do zablokowania:',
+	'spamregex-block-submit'         => 'Blokuj&nbsp;to&nbsp;wyrażenie',
 	'spamregex-text'                 => '(Tekst)',
 	'spamregex-summary-log'          => '(Podsumowanie)',
 );

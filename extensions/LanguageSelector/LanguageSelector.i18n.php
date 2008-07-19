@@ -18,9 +18,12 @@ $messages['en'] = array(
 
 /** Afrikaans (Afrikaans)
  * @author SPQRobin
+ * @author Naudefj
  */
 $messages['af'] = array(
-	'languageselector' => 'Taal',
+	'languageselector'         => 'Taal',
+	'languageselector-desc'    => 'Taalkeuse op elke bladsy, ook vir besoekers',
+	'languageselector-setlang' => 'stel',
 );
 
 /** Arabic (العربية)
@@ -199,6 +202,15 @@ $messages['hu'] = array(
  */
 $messages['ia'] = array(
 	'languageselector' => 'Lingua',
+);
+
+/** Indonesian (Bahasa Indonesia)
+ * @author Rex
+ */
+$messages['id'] = array(
+	'languageselector'         => 'Bahasa',
+	'languageselector-desc'    => 'Menambahkan pemilih bahasa di setiap halaman, juga untuk pengunjung',
+	'languageselector-setlang' => 'set',
 );
 
 /** Ido (Ido)

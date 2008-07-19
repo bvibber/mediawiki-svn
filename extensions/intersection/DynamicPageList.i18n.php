@@ -16,6 +16,15 @@ $messages['en'] = array(
 	'intersection_noincludecats' => 'Error: You need to include at least one category, or specify a namespace!',
 );
 
+/** Afrikaans (Afrikaans)
+ * @author Naudefj
+ */
+$messages['af'] = array(
+	'intersection_toomanycats' => 'Fout: Te veel kategorieë!',
+	'intersection_toofewcats'  => 'Fout: Te min kategorieë!',
+	'intersection_noresults'   => 'Fout: Geen resultate!',
+);
+
 /** Aragonese (Aragonés)
  * @author Juanpabl
  */

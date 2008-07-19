@@ -81,6 +81,13 @@ $messages['hsb'] = array(
 	'didyoumean-desc' => 'Přidawa wotkazy stronam z "podobnymi" titulemi',
 );
 
+/** Italian (Italiano)
+ * @author Darth Kule
+ */
+$messages['it'] = array(
+	'didyoumean-desc' => 'Aggiunge collegamenti a pagine che hanno titoli "simili"',
+);
+
 /** Khmer (ភាសាខ្មែរ)
  * @author គីមស៊្រុន
  */

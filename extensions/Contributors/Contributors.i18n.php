@@ -41,8 +41,10 @@ $messages['mhr'] = array(
 
 /** Afrikaans (Afrikaans)
  * @author Arnobarnard
+ * @author Naudefj
  */
 $messages['af'] = array(
+	'contributors'        => 'Bydraers',
 	'contributors-target' => 'Titel:',
 	'contributors-submit' => 'Wys',
 );
@@ -127,6 +129,7 @@ $messages['bn'] = array(
 
 /** Breton (Brezhoneg)
  * @author Fulup
+ * @author Siebrand
  */
 $messages['br'] = array(
 	'contributors'             => 'Aozerien',
@@ -377,6 +380,7 @@ $messages['ia'] = array(
 
 /** Indonesian (Bahasa Indonesia)
  * @author Ivan Lanin
+ * @author Rex
  */
 $messages['id'] = array(
 	'contributors'             => 'Kontributor utama',
@@ -385,7 +389,7 @@ $messages['id'] = array(
 	'contributors-target'      => 'Judul:',
 	'contributors-submit'      => 'Tampilkan',
 	'contributors-subtitle'    => 'Kontributor utama untuk $1',
-	'contributors-others-long' => 'Terdapat $1 kontributor lain untuk halaman ini.',
+	'contributors-others-long' => 'Terdapat {{PLURAL:$1|satu|$1}} kontributor lain untuk halaman ini.',
 	'contributors-others'      => 'and {{PLURAL:$1|satu|$1}} lainnya',
 	'contributors-badtitle'    => 'Judul tidak sah.',
 	'contributors-nosuchpage'  => 'Artikel $1 tidak ditemukan.',
@@ -420,8 +424,8 @@ $messages['it'] = array(
 	'contributors-target'      => 'Titolo:',
 	'contributors-submit'      => 'Mostra',
 	'contributors-subtitle'    => 'Autori principali di $1',
-	'contributors-others-long' => 'La pagina è stata modificata anche da altri $1 autori.',
-	'contributors-others'      => 'e $1 altri',
+	'contributors-others-long' => 'La pagina è stata modificata anche da {{PLURAL:$1|un altro autore|$1 altri autori}}.',
+	'contributors-others'      => 'e {{PLURAL:$1|un altro|$1 altri}}',
 	'contributors-badtitle'    => 'Titolo non corretto.',
 	'contributors-nosuchpage'  => 'La pagina $1 non esiste.',
 );
@@ -590,8 +594,8 @@ $messages['lb'] = array(
 	'contributors-target'      => 'Titel:',
 	'contributors-submit'      => 'Weisen',
 	'contributors-subtitle'    => 'Haaptauteure vun $1',
-	'contributors-others-long' => 'Daniewt gëtt et nach $1 aner Auteuren déi un dëser Säit matgeschafft hunn.',
-	'contributors-others'      => 'a(n) $1 anerer',
+	'contributors-others-long' => 'Doniewt gëtt et nach $1 {{PLURAL:$1|aneren Auteur den|aner Auteuren déi}} un dëser Säit matgeschafft {{PLURAL:$1|huet|hunn}}',
+	'contributors-others'      => 'a(n) $1 {{PLURAL:$1|aneren|anerer}}',
 	'contributors-badtitle'    => 'Dës Säit gëtt et net.',
 	'contributors-nosuchpage'  => "D'Säit $1 gëtt et net.",
 );

@@ -32,6 +32,13 @@ $messages['nl'] = array(
 	'regexfunctions-desc' => 'Parserfuncties voor reguliere expressies',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ */
+$messages['no'] = array(
+	'regexfunctions-desc' => 'Parserfunksjon for regulære uttrykk',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

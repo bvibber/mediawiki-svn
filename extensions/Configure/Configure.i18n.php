@@ -1489,6 +1489,7 @@ Opprett den eller endre den for å bruke denne utvidelsen.',
 	'configure-no-old'                    => 'Ingen gammel versjon av konfigurasjonen er tilgjengelig.',
 	'configure-no-setup'                  => 'Du må kalle opp <code>efConfigureSetup()</code> i LocalSettings.php for å bruke denne utvidelsen.',
 	'configure-no-transwiki'              => 'Du har ikke tillatelse til å endre innstillinger på andre wikier',
+	'configure-old'                       => 'Gamle versjoner',
 	'configure-old-versions'              => 'Liste over gamle versjoner av konfigurasjonen:',
 	'configure-old-not-available'         => 'Den gamle versjonen av innstillingene du etterspurte, $1, er ikke tilgjengelig',
 	'configure-saved'                     => 'Konfigurasjonen har blitt lagret',
@@ -1542,16 +1543,24 @@ Opprett den eller endre den for å bruke denne utvidelsen.',
 	'configure-section-htcp'              => 'HTCP-multicast',
 	'configure-section-misc'              => 'Diverse',
 	'configure-section-mw-extensions'     => 'MediaWiki-utvidelser',
+	'configure-select-wiki'               => 'Valg av wiki',
+	'configure-select-wiki-available'     => 'Tillatte verdier: $1',
+	'configure-select-wiki-desc'          => 'Velg hvilken wiki du vil konfigurere',
+	'configure-select-wiki-submit'        => 'Valider',
 	'configure-setting-not-available'     => 'Denne innstillingen er ikke tilgjengelig i denne versjonen av MediaWiki',
+	'configure-transwiki-not-in-range'    => 'Den valgte wikien, $1, finnes ikke blant de tillatte verdiene ($2).',
 	'configure-view'                      => 'Se',
 	'configure-view-not-allowed'          => 'Du har ikke tillatelse til å se denne innstillingen',
 	'extensions'                          => 'Konfigurer utvidelsene',
 	'right-configure'                     => 'Konfigurere wikien',
 	'right-configure-all'                 => 'Konfigurere innstillinger på alle wikier',
+	'right-configure-interwiki'           => 'Konfigurere innstillingene til fremmede wikier',
 	'right-extensions'                    => 'Konfigurere utvidelser',
 	'right-extensions-all'                => 'Avansert konfigurasjon av utvidelser',
+	'right-extensions-interwiki'          => 'Konfigurere utvidelser til fremmede wikier',
 	'right-viewconfig'                    => 'Se wikikonfigurasjon',
 	'right-viewconfig-all'                => 'Se alle wikikonfigurasjoner',
+	'right-viewconfig-interwiki'          => 'Vise konfigurasjonen til fremmede wikier',
 	'viewconfig'                          => 'Vis wikikonfigurasjon',
 );
 
@@ -1775,6 +1784,7 @@ Utwórz katalog lub wybierz inny, jeśli chcesz korzystać z tego rozszerzenia.'
 	'right-extensions-interwiki'          => 'Konfiguruj rozszerzenia innych wiki',
 	'right-viewconfig'                    => 'Przegląd konfiguracji wiki',
 	'right-viewconfig-all'                => 'Przegląd pełnej konfiguracji wiki',
+	'right-viewconfig-interwiki'          => 'Pokaż ustawienia innej wiki',
 	'viewconfig'                          => 'Przegląd konfiguracji wiki',
 );
 
@@ -1869,6 +1879,14 @@ Por favor, crie-a ou altere-a para usar esta extensão.',
 $messages['rif'] = array(
 	'configure-js-remove'            => 'Sfaḍ',
 	'configure-section-specialpages' => 'Tudmawin Special',
+);
+
+/** Romanian (Română)
+ * @author KlaudiuMihaila
+ */
+$messages['ro'] = array(
+	'configure-js-remove'            => 'Şterge',
+	'configure-section-specialpages' => 'Pagini speciale',
 );
 
 /** Russian (Русский)

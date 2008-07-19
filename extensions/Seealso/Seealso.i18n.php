@@ -299,6 +299,13 @@ $messages['tg-cyrl'] = array(
 	'seealso' => 'Нигаред низ',
 );
 
+/** Thai (ไทย)
+ * @author Passawuth
+ */
+$messages['th'] = array(
+	'seealso' => 'ดูเพิ่ม',
+);
+
 /** Vèneto (Vèneto)
  * @author Candalua
  */

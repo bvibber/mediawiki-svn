@@ -1385,7 +1385,7 @@ $messages['oc'] = array(
  * @author Wpedzich
  */
 $messages['pl'] = array(
-	'math_noblahtex'                        => 'Nie udało sie uruchomić rozszerzenia blahtex, które powinno znajdować się w',
+	'math_noblahtex'                        => 'Nie udało sie uruchomić rozszerzenia blahtex, które powinno znajdować się w $1',
 	'math-desc'                             => 'Informacje wyjściowe znaczników &lt;math&gt; w MathML',
 	'math_AmbiguousInfix'                   => 'Niejednoznaczne ustawienie "$1" (spróbuj użyć dodatkowych nawiasów "{ ... }" by ujednoznacznić)',
 	'math_CannotChangeDirectory'            => 'Nie można zmienić katalogu roboczego',
@@ -2024,9 +2024,9 @@ $messages['vi'] = array(
 	'math_MisplacedLimits'                  => 'Lệnh "$1" chỉ có thể xuất hiện sau toán tử (xem xét việc sử dụng "\\mathop")',
 	'math_MissingCommandAfterNewcommand'    => 'Tên lệnh mới sau "\\newcommand" thiếu hoặc không hợp lệ (phải có chính xác một lệnh được định nghĩa; nó phải bắt đầu bằng dấu "\\" và chỉ chứa ký tự)',
 	'math_MissingDelimiter'                 => 'Thiếu dấu giới hạn sau "$1"',
-	'math_MissingOpenBraceAfter'            => 'Thiếu mở ngoặc "{" sau "$1"',
-	'math_MissingOpenBraceAtEnd'            => 'Thiếu mở ngoặc "{" ở phía cuối dòng nhập',
-	'math_MissingOpenBraceBefore'           => 'Thiếu mở ngoặc "{" trước "$1"',
+	'math_MissingOpenBraceAfter'            => 'Thiếu mở ngoặc “{” sau “$1”',
+	'math_MissingOpenBraceAtEnd'            => 'Thiếu mở ngoặc “{” ở phía cuối dòng nhập',
+	'math_MissingOpenBraceBefore'           => 'Thiếu mở ngoặc “{” trước “$1”',
 	'math_MissingOrIllegalParameterCount'   => 'Số tham số bị thiếu hoặc không hợp lệ trong định nghĩa "$1" (phải là một con số từ 1 đến 9)',
 	'math_MissingOrIllegalParameterIndex'   => 'Chỉ số tham số bị thiếu hoặc không hợp lệ trong định nghĩa "$1"',
 	'math_NonAsciiInMathMode'               => 'Ký tự không phải ASCII chỉ được dùng trong chế độ văn bản (hãy thử đóng ký tự có vấn đề trong \\text{...}")',

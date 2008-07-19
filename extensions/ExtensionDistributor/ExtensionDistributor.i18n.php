@@ -277,6 +277,58 @@ Se ten algunha dúbida ou pregunta acerca do sistema de distribución das extens
 	'extdist-want-more'               => 'Obter outra extensión',
 );
 
+/** Italian (Italiano)
+ * @author Darth Kule
+ * @author Melos
+ */
+$messages['it'] = array(
+	'extensiondistributor'            => 'Scarica estensione MediaWiki',
+	'extdist-desc'                    => 'Estensione per distribuire archivi snapshot delle estensioni',
+	'extdist-not-configured'          => 'Configura $wgExtDistTarDir e $wgExtDistWorkingCopy',
+	'extdist-wc-missing'              => 'La directory di lavoro della copia configurata non esiste!',
+	'extdist-no-such-extension'       => 'Nessuna estensione "$1"',
+	'extdist-no-such-version'         => 'L\'estensione "$1" non esiste nella versione "$2".',
+	'extdist-choose-extension'        => 'Seleziona quale estensione intendi scaricare:',
+	'extdist-wc-empty'                => 'La directory di lavoro della copia configurata non contiene estensioni distribuibili!',
+	'extdist-submit-extension'        => 'Continua',
+	'extdist-current-version'         => 'Versione corrente (trunk)',
+	'extdist-choose-version'          => "<big>Stai scaricando l'estensione <b>$1</b>.</big>
+
+Seleziona la tua versione di MediaWiki.
+
+Molte estensioni funzionano su più versioni di MediaWiki, quindi se la tua versione di MediaWiki non è qui o hai bisogno delle ultime funzioni dell'estensione, prova a usare la versione corrente.",
+	'extdist-no-versions'             => "L'estensione selezionata ($1) non è disponibile in alcuna versione!",
+	'extdist-submit-version'          => 'Continua',
+	'extdist-no-remote'               => 'Impossibile contattare il client subversion remoto.',
+	'extdist-remote-error'            => 'Errore dal client subversion remoto: <pre>$1</pre>',
+	'extdist-remote-invalid-response' => 'Risposta non valida dal client subversion remoto.',
+	'extdist-svn-error'               => 'Subversion ha incontrato un errore: <pre>$1</pre>',
+	'extdist-svn-parse-error'         => 'Impossibile elaborare l\'XML da "svn info": <pre>$1</pre>',
+	'extdist-tar-error'               => 'Tar ha restituito il seguente exitcode $1:',
+	'extdist-created'                 => "Un'istantanea della versione <b>$2</b> dell'estensione per MediaWiki <b>$3</b> è stata creata. Il tuo download dovrebbe partire automaticamente fra 5 secondi.
+
+L'URL per questa istantanea è: 
+:$4
+Può essere usato per scaricare immediatamente dal server, ma non aggiungerlo ai Preferiti poiché il contenuto non sarà aggiornato e il collegamento potrebbe essere rimosso successivamente.
+
+L'archivio tar dovrebbe essere estratto nella tua directory delle estensioni. Per esempio, su un sistema operativo di tipo unix: 
+
+<pre>
+tar -xzf $5 -C /var/www/mediawiki/extensions
+</pre>
+
+Su Windows puoi usare [http://www.7-zip.org/ 7-zip] per estrarre i file.
+
+Se la tua wiki si trova su un server remoto, estrai i file in una cartella temporanea sul tuo computer locale e in seguito carica '''tutti''' i file estratti nella directory delle estensioni sul server.
+
+Fai attenzione che alcune estensioni hanno bisogno di un file chiamato ExtensionFunctions.php, situato in <tt>extensions/ExtensionFunctions.php</tt>, che è la cartella ''superiore'' di questa particolare directory della estensione. L'istantanea per queste estensioni contiene questo file come una tarbom, estratta in ./ExtensionFunctions.php. Non dimenticare di caricare questo file sul tuo server locale.
+
+Dopo che hai estratto i file, avrai bisogno di registrare l'estensione in LocalSettings.php. Il manuale dell'estensione dovrebbe contenere le istruzioni su come farlo.
+
+Se hai qualche domanda riguardo al sistema di distribuzione di questa estensione vedi [[Extension talk:ExtensionDistributor]].",
+	'extdist-want-more'               => "Prendi un'altra estensione",
+);
+
 /** Khmer (ភាសាខ្មែរ)
  * @author Lovekhmer
  */

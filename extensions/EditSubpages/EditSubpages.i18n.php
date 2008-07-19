@@ -95,6 +95,22 @@ $messages['gl'] = array(
   #</pre><!-- deixe esta liña como está -->',
 );
 
+/** Italian (Italiano)
+ * @author Darth Kule
+ */
+$messages['it'] = array(
+	'editsubpages-desc' => 'Permette agli amministratori di sbloccare una pagine e tutte le relative sottopagine per permettere le modifiche agli utenti anonimi attraverso [[MediaWiki:Unlockedpages]]',
+	'unlockedpages'     => "  #<!-- lascia questa linea così com'è --><pre>
+# Inserisci le pagine che vuoi sbloccare di seguito scrivendo
+# * Nome pagina
+# Le pagine da sbloccare devono essere precedute dal segno * per essere contate,
+# tutto il resto è considerato un commento
+# I nomi delle pagine possono essere [[collegamenti]] e sono case-sensitive
+# Inoltre, le pagine di discussione verranno automaticamente sbloccate insieme alla pagina
+# Visita http://www.mediawiki.org/wiki/Extension:EditSubpages per maggiori informazioni
+  #</pre><!-- lascia questa linea così com'è -->",
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */

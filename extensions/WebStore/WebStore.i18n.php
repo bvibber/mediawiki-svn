@@ -493,13 +493,16 @@ $1',
 
 /** Khmer (ភាសាខ្មែរ)
  * @author Chhorran
+ * @author Lovekhmer
  */
 $messages['km'] = array(
-	'webstore_archive_mkdir'      => 'មិនអាច បង្កើត បញ្ជី បណ្ណសារ "$1" ។',
-	'webstore_no_file'            => 'គ្មានឯកសារ ​បានត្រូវផ្ទុកឡើង ។',
-	'webstore_404'                => 'រកមិនឃើញ ឯកសារ ។',
-	'webstore_metadata_not_found' => 'រកមិនឃើញ ឯកសារ ៖ $1',
-	'webstore_no_response'        => 'គ្មានចំលើយតប ពី ម៉ាស៊ីនបំរើសេវា',
+	'inplace_scaler_not_enough_params' => 'ប៉ារ៉ាម៉ែត្រមិនគ្រប់គ្រាន់។',
+	'webstore_path_invalid'            => 'ឈ្មោះឯកសារមិនត្រឹមត្រូវ។',
+	'webstore_archive_mkdir'           => 'មិនអាច បង្កើត បញ្ជី បណ្ណសារ "$1" ។',
+	'webstore_no_file'                 => 'គ្មានឯកសារ ​បានត្រូវផ្ទុកឡើង ។',
+	'webstore_404'                     => 'រកមិនឃើញ ឯកសារ ។',
+	'webstore_metadata_not_found'      => 'រកមិនឃើញ ឯកសារ ៖ $1',
+	'webstore_no_response'             => 'គ្មានចំលើយតប ពី ម៉ាស៊ីនបំរើសេវា',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

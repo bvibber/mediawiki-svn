@@ -14,6 +14,13 @@ $messages['en'] = array(
 	'newusermessage-desc' => "Adds a [[MediaWiki:NewUserMessage|message]] to newly created user's talk pages",
 );
 
+/** Afrikaans (Afrikaans)
+ * @author Naudefj
+ */
+$messages['af'] = array(
+	'newusermessage-desc' => "Plaas 'n [[MediaWiki:NewUserMessage|boodskap]] op alle nuwe gebruikers se besprekingsbladsye",
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */
@@ -83,6 +90,13 @@ $messages['hi'] = array(
  */
 $messages['hsb'] = array(
 	'newusermessage-desc' => '[[MediaWiki:NewUserMessage|Powěsć]] nowo wutworjenym wužiwarskim diskusijnym stronam přidać',
+);
+
+/** Indonesian (Bahasa Indonesia)
+ * @author Rex
+ */
+$messages['id'] = array(
+	'newusermessage-desc' => 'Menambahkan sebuah [[MediaWiki:NewUserMessage|pesan]] di halaman pembicaraan pengguna baru',
 );
 
 /** Italian (Italiano)

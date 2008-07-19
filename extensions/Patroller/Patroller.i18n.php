@@ -50,8 +50,10 @@ $messages['niu'] = array(
  * @author Naudefj
  */
 $messages['af'] = array(
+	'patrol-endorse'       => 'Keur goed',
 	'patrol-revert'        => 'Rol terug',
 	'patrol-revert-reason' => 'Rede:',
+	'patrol-skip'          => 'Slaan oor',
 );
 
 /** Aragonese (Aragonés)

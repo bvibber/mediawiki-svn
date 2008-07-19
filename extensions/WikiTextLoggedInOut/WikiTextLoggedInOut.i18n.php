@@ -7,6 +7,13 @@ $messages['en'] = array(
 	'wikitextloggedinout-desc' => 'Two parser hooks, <tt>&lt;loggedin&gt;</tt> and <tt>&lt;loggedout&gt;</tt> to show different text depending on the users\' login state',
 );
 
+/** Afrikaans (Afrikaans)
+ * @author Naudefj
+ */
+$messages['af'] = array(
+	'wikitextloggedinout-desc' => "Twee ontlederhoeke <tt>&lt;loggedin&gt;</tt> en <tt>&lt;loggedout&gt;</tt> om te wys of 'n gebruiker aangeteken is al dan nie",
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  */
@@ -40,6 +47,13 @@ $messages['fr'] = array(
  */
 $messages['gl'] = array(
 	'wikitextloggedinout-desc' => 'Dous hooks de análise, <tt>&lt;loggedin&gt;</tt> e mais <tt>&lt;loggedout&gt;</tt> para amosar textos diferentes dependendo do estado do rexistro do usuario',
+);
+
+/** Indonesian (Bahasa Indonesia)
+ * @author Rex
+ */
+$messages['id'] = array(
+	'wikitextloggedinout-desc' => 'Dua kait parser, <tt>&lt;loggedin&gt;</tt> dan <tt>&lt;loggedout&gt;</tt> yang menampilkan teks yang berbeda berdasarkan status log masuk pengguna',
 );
 
 /** Ripoarisch (Ripoarisch)

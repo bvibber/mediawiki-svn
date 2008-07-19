@@ -202,6 +202,7 @@ $messages['nl'] = array(
  * @author Jon Harald Søby
  */
 $messages['no'] = array(
+	'donationform-desc'   => 'Legger til taggen <tt>&lt;donateform&gt;</tt> for donasjoner via PayPal',
 	'donationform-submit' => 'Doner med PayPal',
 );
 

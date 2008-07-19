@@ -66,6 +66,13 @@ $messages['hsb'] = array(
 	'i18ntags-desc' => 'Přistup k funkcijam i18n za formatowanje ličbow, gramatiku a plural w kóždej k dispoziciji stejacej rěči',
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author Rex
+ */
+$messages['id'] = array(
+	'i18ntags-desc' => 'Mengakses fungsi-fungsi i18n untuk pemformatan nomor, tatabahasa, dan bentuk jamak di berbagai bahasa yang tersedia',
+);
+
 /** Japanese (日本語)
  * @author JtFuruhata
  */

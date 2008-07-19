@@ -160,6 +160,7 @@ $messages['bg'] = array(
  */
 $messages['bn'] = array(
 	'linksearch'      => 'ওয়েব লিঙ্কসমূহ অনুসন্ধান করো',
+	'linksearch-pat'  => 'অনুসন্ধান প্যাটার্ণ:',
 	'linksearch-ns'   => 'নামস্থান:',
 	'linksearch-ok'   => 'অনুসন্ধান',
 	'linksearch-line' => '$2 থেকে $1 তে লিঙ্ক করা হয়েছে',
@@ -542,7 +543,8 @@ $messages['hu'] = array(
 	'linksearch-pat'   => 'Keresett minta:',
 	'linksearch-ns'    => 'Névtér:',
 	'linksearch-ok'    => 'keresés',
-	'linksearch-text'  => 'A helyettesítő karaktereket is lehet használni, például "*.wikipedia.org".',
+	'linksearch-text'  => 'Helyettesítő karaktereket is lehet használni, például "*.wikipedia.org".<br />
+Támogatott protokollok: <tt>$1</tt>',
 	'linksearch-line'  => '$1 hivatkozva innen: $2',
 	'linksearch-error' => 'Helyettesítő karakterek csak a cím elején szerepelhetnek.',
 );
@@ -612,6 +614,7 @@ $messages['is'] = array(
 /** Italian (Italiano)
  * @author .anaconda
  * @author BrokenArrow
+ * @author Darth Kule
  */
 $messages['it'] = array(
 	'linksearch'       => 'Ricerca collegamenti esterni',
@@ -619,7 +622,8 @@ $messages['it'] = array(
 	'linksearch-pat'   => 'Pattern di ricerca:',
 	'linksearch-ns'    => 'Namespace:',
 	'linksearch-ok'    => 'Cerca',
-	'linksearch-text'  => 'È possibile fare uso di metacaratteri, ad es. "*.example.com".',
+	'linksearch-text'  => 'È possibile fare uso di metacaratteri, ad es. "*.wikipedia.org".<br />
+Protocolli supportati: <tt>$1</tt>',
 	'linksearch-line'  => '$1 presente nella pagina $2',
 	'linksearch-error' => "I metacaratteri possono essere usati solo all'inizio del nome dell'host.",
 );
@@ -1032,6 +1036,13 @@ $messages['rif'] = array(
  */
 $messages['rm'] = array(
 	'linksearch-ok' => 'Tschertgar',
+);
+
+/** Romanian (Română)
+ * @author KlaudiuMihaila
+ */
+$messages['ro'] = array(
+	'linksearch-ok' => 'Caută',
 );
 
 /** Russian (Русский)

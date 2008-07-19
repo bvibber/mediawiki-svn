@@ -178,6 +178,7 @@ $messages['nl'] = array(
  * @author Jon Harald Søby
  */
 $messages['no'] = array(
+	'mediafunctions-desc'          => 'Parserfunksjoner for å hente informasjon om mediefiler',
 	'mediafunctions-invalid-title' => '«$1» er en ugyldig tittel',
 	'mediafunctions-not-exist'     => '«$1» eksisterer ikke',
 );

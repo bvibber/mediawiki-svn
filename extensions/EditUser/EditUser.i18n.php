@@ -453,6 +453,13 @@ $messages['mr'] = array(
 	'edituser-exempt'   => 'दिलेला सदस्य संपादित करू शकत नाही',
 );
 
+/** Nahuatl (Nahuatl)
+ * @author Fluence
+ */
+$messages['nah'] = array(
+	'edituser-username' => 'Tōcāitl',
+);
+
 /** Low German (Plattdüütsch)
  * @author Slomox
  */
@@ -552,6 +559,13 @@ $messages['pt'] = array(
  */
 $messages['rif'] = array(
 	'edituser-dosearch' => 'Tarzzut',
+);
+
+/** Romanian (Română)
+ * @author KlaudiuMihaila
+ */
+$messages['ro'] = array(
+	'edituser-dosearch' => 'Caută',
 );
 
 /** Russian (Русский)

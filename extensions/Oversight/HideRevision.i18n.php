@@ -63,6 +63,13 @@ Revert this change first.',
 Releasing this information can result in permanent loss of Oversight privileges.',
 );
 
+/** Afrikaans (Afrikaans)
+ * @author Naudefj
+ */
+$messages['af'] = array(
+	'oversight-view' => 'details',
+);
+
 /** Aragonese (Aragonés)
  * @author Juanpabl
  */
@@ -1004,7 +1011,7 @@ Ezen információk kiadása az adatvédelmi biztosi jogosultség végleges elves
  */
 $messages['id'] = array(
 	'hiderevision'                => 'Sembunyikan revisi',
-	'hiderevision-desc'           => 'Menyembunyikan revisi-revisi individu dari semua pengguna untuk alasan legal, dll.',
+	'hiderevision-desc'           => 'Menyembunyikan revisi-revisi tertentu dari semua pengguna (termasuk Opsis) atas dasar alasan hukum, dan lain-lain.',
 	'group-oversight'             => 'Pengawas suntingan',
 	'group-oversight-member'      => 'Pengawas suntingan',
 	'grouppage-oversight'         => '{{ns:project}}:Pengawas suntingan',

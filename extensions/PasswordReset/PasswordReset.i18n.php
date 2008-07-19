@@ -49,9 +49,11 @@ $messages['niu'] = array(
 
 /** Afrikaans (Afrikaans)
  * @author SPQRobin
+ * @author Naudefj
  */
 $messages['af'] = array(
 	'passwordreset-username' => 'Gebruikersnaam',
+	'passwordreset-newpass'  => 'Nuwe wagwoord',
 );
 
 /** Arabic (العربية)
@@ -728,6 +730,28 @@ $messages['tg-cyrl'] = array(
 	'passwordreset-username'        => 'Номи корбарӣ',
 	'passwordreset-newpass'         => 'Гузарвожаи ҷадид',
 	'passwordreset-confirmpass'     => 'Тасдиқи гузарвожа',
+);
+
+/** Thai (ไทย)
+ * @author Octahedron80
+ * @author Passawuth
+ */
+$messages['th'] = array(
+	'passwordreset'                 => 'ล้างรหัสผ่าน',
+	'passwordreset-desc'            => 'ล้างรหัสผ่านของผู้ใช้วิกิ - ต้องการสิทธิ "ล้างรหัสผ่าน"',
+	'passwordreset-invalidusername' => 'ชื่อผู้ใช้ไม่ถูกต้อง',
+	'passwordreset-emptyusername'   => 'ชื่อผู้ใช้ว่างเปล่า',
+	'passwordreset-nopassmatch'     => 'รหัสผ่านไม่ตรงกัน',
+	'passwordreset-username'        => 'ชื่อผู้ใช้',
+	'passwordreset-newpass'         => 'รหัสผ่านใหม่',
+	'passwordreset-confirmpass'     => 'ยืนยันรหัสผ่าน',
+	'passwordreset-submit'          => 'เปลี่ยนรหัสผ่าน',
+	'passwordreset-success'         => 'รหัสผ่านถูกเปลี่ยนใหม่เรียบร้อยแล้วสำหรับชื่อผู้ใช้: $1',
+	'passwordreset-disableuser'     => 'ระงับการใช้งานบัญชีผู้ใช้?',
+	'passwordreset-disablesuccess'  => 'บัญชีผู้ใช้ได้ถูกระงับแล้ว (ไอดีผู้ใช้: $1)',
+	'passwordreset-accountdisabled' => 'บัญชีถูกระงับแล้ว',
+	'disabledusers'                 => 'ผู้ใช้ที่ถูกระงับ',
+	'disabledusers-summary'         => 'นี่คือรายชื่อของผู้ใช้ที่ถูกระงับโดยการล้างรหัสผ่าน',
 );
 
 /** Vietnamese (Tiếng Việt)

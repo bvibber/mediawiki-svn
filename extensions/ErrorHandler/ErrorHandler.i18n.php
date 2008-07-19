@@ -144,6 +144,32 @@ $messages['nl'] = array(
 	'errorhandler-trace-line-internal'   => '[interne functie]: $1',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ */
+$messages['no'] = array(
+	'errorhandler-desc'                  => 'Feilhåndtering for MediaWiki',
+	'errorhandler-errors'                => 'Feil:',
+	'errorhandler-error-fatal'           => 'Alvorlig feil',
+	'errorhandler-error-warning'         => 'Advarsel',
+	'errorhandler-error-parse'           => 'Parserfeil',
+	'errorhandler-error-notice'          => 'Melding',
+	'errorhandler-error-core-error'      => 'Feil i kjernen',
+	'errorhandler-error-core-warning'    => 'Kjerne-advarsel',
+	'errorhandler-error-compile-error'   => 'Kompileringsfeil',
+	'errorhandler-error-compile-warning' => 'Kompileringsadvarsel',
+	'errorhandler-error-user-error'      => 'Brukerfeil',
+	'errorhandler-error-user-warning'    => 'Brukeradvarsel',
+	'errorhandler-error-user-notice'     => 'Brukermelding',
+	'errorhandler-error-strict'          => 'Strenge standarder',
+	'errorhandler-error-recoverable'     => 'Håndterbar alvorlig feil',
+	'errorhandler-msg-text'              => '$1: $2 i $3 (rad $4)',
+	'errorhandler-msg-html'              => '<b>$1</b>: <i>$2</i> i <b>$3</b> (rad <b>$4</b>)',
+	'errorhandler-trace'                 => 'spor:',
+	'errorhandler-trace-line'            => '$1 (rad $2): $3',
+	'errorhandler-trace-line-internal'   => '[intern funksjon]: $1',
+);
+
 /** Occitan (Occitan)
  * @author Cedric31
  */
@@ -175,12 +201,14 @@ $messages['oc'] = array(
  * @author Sp5uhe
  */
 $messages['pl'] = array(
-	'errorhandler-errors'        => 'Błędy:',
-	'errorhandler-error-fatal'   => 'Błąd krytyczny',
-	'errorhandler-error-warning' => 'Ostrzeżenie',
-	'errorhandler-error-parse'   => 'Błąd parsera',
-	'errorhandler-msg-text'      => '$1 : $2 w $3 (linia $4)',
-	'errorhandler-trace-line'    => '$1 (linia $2): $3',
+	'errorhandler-desc'             => 'Błąd operatora MediaWiki',
+	'errorhandler-errors'           => 'Błędy:',
+	'errorhandler-error-fatal'      => 'Błąd krytyczny',
+	'errorhandler-error-warning'    => 'Ostrzeżenie',
+	'errorhandler-error-parse'      => 'Błąd parsera',
+	'errorhandler-error-user-error' => 'Błąd użytkownika',
+	'errorhandler-msg-text'         => '$1 : $2 w $3 (linia $4)',
+	'errorhandler-trace-line'       => '$1 (linia $2): $3',
 );
 
 /** Russian (Русский)

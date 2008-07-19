@@ -143,21 +143,39 @@ $wdMessages['niu'] = array(
 /** Afrikaans (Afrikaans)
  * @author SPQRobin
  * @author Arnobarnard
+ * @author Naudefj
  */
 $wdMessages['af'] = array(
-	'ow_save'                         => 'Stoor',
-	'ow_history'                      => 'Geskiedenis',
-	'ow_dm_OK'                        => 'OK',
-	'ow_ClassAttributeType'           => 'Tipe',
-	'ow_Collection'                   => 'Versameling',
-	'ow_Expression'                   => 'Uitdrukking',
-	'ow_Expressions'                  => 'Uitdrukkings',
-	'ow_GotoSource'                   => 'Gaan na bron',
-	'ow_Language'                     => 'Taal',
-	'ow_OptionAttributeOptions'       => 'Opsies',
-	'ow_Source'                       => 'Bron',
-	'ow_TranslatedTextAttributeValue' => 'Teks',
-	'ow_LinkAttributeValues'          => 'Skakels',
+	'langman_title'                    => 'Taalbestuurder',
+	'ow_save'                          => 'Stoor',
+	'ow_history'                       => 'Geskiedenis',
+	'ow_noedit_title'                  => 'Geen regte om te wysig',
+	'ow_dm_OK'                         => 'OK',
+	'ow_dm_not_present'                => 'nie ingevoer',
+	'ow_AlternativeDefinition'         => 'Alternatiewe definisie',
+	'ow_AlternativeDefinitions'        => 'Alternatiewe definisies',
+	'ow_Annotation'                    => 'Annotasie',
+	'ow_ClassAttributeType'            => 'Tipe',
+	'ow_Collection'                    => 'Versameling',
+	'ow_Definition'                    => 'Definisie',
+	'ow_DefinedMeaningAttributes'      => 'Annotasie',
+	'ow_Expression'                    => 'Uitdrukking',
+	'ow_Expressions'                   => 'Uitdrukkings',
+	'ow_GotoSource'                    => 'Gaan na bron',
+	'ow_Language'                      => 'Taal',
+	'ow_LevelAnnotation'               => 'Annotasie',
+	'ow_OptionAttributeOption'         => 'Opsie',
+	'ow_OptionAttributeOptions'        => 'Opsies',
+	'ow_PopupAnnotation'               => 'Annotasie',
+	'ow_Spelling'                      => 'Spelling',
+	'ow_Synonyms'                      => 'Sinonieme',
+	'ow_Source'                        => 'Bron',
+	'ow_Text'                          => 'Teks',
+	'ow_TranslatedText'                => 'Vertaalde teks',
+	'ow_TranslatedTextAttributeValue'  => 'Teks',
+	'ow_TranslatedTextAttributeValues' => 'Vertaalbare teks',
+	'ow_LinkAttributeValues'           => 'Skakels',
+	'ow_Value'                         => 'Waarde',
 );
 
 /** Aragonese (Aragonés)
@@ -1391,13 +1409,26 @@ $wdMessages['ia'] = array(
 
 /** Indonesian (Bahasa Indonesia)
  * @author Irwangatot
+ * @author Rex
  */
 $wdMessages['id'] = array(
-	'datasearch'                => 'Wikidata: Pencarian data',
-	'langman_title'             => 'Pengelola bahasa',
-	'languages'                 => 'Wikidata: Pengelola bahasa',
-	'ow_save'                   => 'Simpan',
-	'ow_OptionAttributeOptions' => 'Pilihan',
+	'datasearch'                            => 'Wikidata: Pencarian data',
+	'langman_title'                         => 'Pengelola bahasa',
+	'languages'                             => 'Wikidata: Pengelola bahasa',
+	'ow_save'                               => 'Simpan',
+	'ow_history'                            => 'Versi',
+	'ow_datasets'                           => 'Pemilihan set-data',
+	'ow_noedit_title'                       => 'Tidak memiliki hak untuk menyunting',
+	'ow_noedit'                             => 'Anda tidak diizinkan menyunting halaman-halaman di set data "$1".
+Lihat: [[{{MediaWiki:Ow editing policy url}}|Kebijakan penyuntingan kami]].',
+	'ow_uipref_datasets'                    => 'Tampilan baku',
+	'ow_uiprefs'                            => 'Wikidata',
+	'ow_none_selected'                      => '<Belum dipilih>',
+	'ow_conceptmapping_no_action_specified' => 'Maaf, sistem tidak mengerti untuk "$1".',
+	'ow_dm_OK'                              => 'OK',
+	'ow_dm_not_present'                     => 'tidak dimasukkan',
+	'ow_Language'                           => 'Bahasa',
+	'ow_OptionAttributeOptions'             => 'Pilihan',
 );
 
 /** Ido (Ido)

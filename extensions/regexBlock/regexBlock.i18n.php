@@ -87,12 +87,13 @@ $messages['niu'] = array(
  * @author Naudefj
  */
 $messages['af'] = array(
-	'regexblock-form-reason'    => 'Rede:',
-	'regexblock-stats-username' => 'Vir $1',
-	'regexblock-view-all'       => 'alle',
-	'regexblock-view-go'        => 'Gaan',
-	'regexblock-view-reason'    => 'rede: $1',
-	'regexblock-view-time'      => 'op $1',
+	'regexblock-form-reason'     => 'Rede:',
+	'regexblock-already-blocked' => '$1 is reeds geblok.',
+	'regexblock-stats-username'  => 'Vir $1',
+	'regexblock-view-all'        => 'Alles',
+	'regexblock-view-go'         => 'Gaan',
+	'regexblock-view-reason'     => 'rede: $1',
+	'regexblock-view-time'       => 'op $1',
 );
 
 /** Aragonese (Aragonés)
@@ -804,6 +805,13 @@ $messages['mr'] = array(
 	'regexblock-view-stats'           => '(सांख्यिकी)',
 	'regexblock-view-empty'           => 'ब्लॉक केलेल्या सदस्यनाव तसेच आयपी अंकपत्त्यांची यादी रिकामी आहे.',
 	'regexblock-view-time'            => '$1 वर',
+);
+
+/** Nahuatl (Nahuatl)
+ * @author Fluence
+ */
+$messages['nah'] = array(
+	'regexblock-view-go' => 'Yāuh',
 );
 
 /** Dutch (Nederlands)

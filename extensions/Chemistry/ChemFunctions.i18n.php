@@ -35,6 +35,21 @@ $messages['en'] = array(
 	'chemFunctions_SearchExplanation'  => '',
 );
 
+/** Afrikaans (Afrikaans)
+ * @author Naudefj
+ */
+$messages['af'] = array(
+	'chemicalsources'                  => 'Chemiese bronne',
+	'chemicalsource-desc'              => "Maak 'n <nowiki><chemform></nowiki>-etiket beskikbaar vir chemiese formules",
+	'chemFunctions_ListPage'           => 'Chemiese bronne',
+	'chemFunctions_CAS'                => 'CAS-nommer',
+	'chemFunctions_ATCCode'            => 'ATC-kode',
+	'chemFunctions_ECNumber'           => 'EC-nommer',
+	'chemFunctions_Formula'            => 'Formule',
+	'chemFunctions_Name'               => 'IUPAC-naam',
+	'chemFunctions_ChemFormInputError' => 'Chemform: Invoerfout!',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */

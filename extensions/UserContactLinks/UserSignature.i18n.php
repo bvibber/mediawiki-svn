@@ -19,6 +19,13 @@ $messages['rtm'] = array(
 	'usercontactlink-baduser' => 'Seseva',
 );
 
+/** Afrikaans (Afrikaans)
+ * @author Naudefj
+ */
+$messages['af'] = array(
+	'usercontactlink-baduser' => 'foutiewe gebruikersnaam',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */
@@ -127,6 +134,14 @@ $messages['ml'] = array(
  */
 $messages['mr'] = array(
 	'usercontactlink-baduser' => 'चुकीचे सदस्यनाव',
+);
+
+/** Maltese (Malti)
+ * @author Chrisportelli
+ */
+$messages['mt'] = array(
+	'usercontactlink-baduser' => "Isem ta' l-utent ħażin",
+	'usercontactlink-desc'    => "Jipprovdi l-abilità li jżid sempliċement u konstantament ismijiet ta' l-utent ġodda bl-użu tas-sintassi ^^^user^^^",
 );
 
 /** Low German (Plattdüütsch)

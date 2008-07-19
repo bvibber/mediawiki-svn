@@ -17,6 +17,19 @@ $messages['en'] = array(
 	'watchers_less_than_x'   => 'Less than $1 people watch this page.',
 );
 
+/** Afrikaans (Afrikaans)
+ * @author Naudefj
+ */
+$messages['af'] = array(
+	'watchers'               => 'Dophouers',
+	'watchers_link_title'    => 'Wie hou die bladsy dop?',
+	'watchers_error_article' => '<b>Fout:</b> bladsy bestaan nie.',
+	'watchers_header'        => 'Gebruikers wat "$1" dophou',
+	'watchers_noone_watches' => 'Niemand hou die bladsy dop nie.',
+	'watchers_x_or_more'     => '$1 of meer gebruikers hou die bladsy dop.',
+	'watchers_less_than_x'   => 'Minder as $1 gebruikers hou die bladsy dop.',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */

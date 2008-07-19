@@ -157,15 +157,19 @@ $messages['bg'] = array(
 
 /** Bengali (বাংলা)
  * @author Zaheen
+ * @author Bellayet
  */
 $messages['bn'] = array(
 	'sitematrix'           => 'উইকিমিডিয়া উইকিগুলির তালিকা',
+	'sitematrix-summary'   => 'এই বিশেষ পাতায় সমস্ত উইকিমিডিয়া উইকিসমূহের তালিকা রয়েছে।',
 	'sitematrix-desc'      => '[[Special:SiteMatrix|মিডিয়াউইকির উইকিগুলির একটি তালিকা]] প্রদর্শন করে',
 	'sitematrix-language'  => 'ভাষা',
 	'sitematrix-project'   => 'প্রকল্পের নাম, আন্তঃপ্রকল্প সংযোগ এবং আন্তঃউইকি সংযোগ',
 	'sitematrix-others'    => 'উইকিমিডিয়ার অন্যান্য প্রকল্প',
 	'sitematrix-total'     => "'''সর্বমোট: $1'''",
 	'sitematrix-sitetotal' => 'মোট',
+	'sitematrix-private'   => 'প্রাইভেট',
+	'sitematrix-fishbowl'  => 'সম্পাদনায় নিষেধাজ্ঞা রয়েছে',
 );
 
 /** Breton (Brezhoneg)
@@ -619,7 +623,7 @@ $messages['ia'] = array(
 $messages['id'] = array(
 	'sitematrix'           => 'Daftar wiki Wikimedia',
 	'sitematrix-summary'   => 'Halaman istimewa ini memuat daftar dari seluruh wiki Wikimedia.',
-	'sitematrix-desc'      => 'Menampilkan suatu [[Special:SiteMatrix|daftar wiki Wikimedia]]',
+	'sitematrix-desc'      => 'Menampilkan [[Special:SiteMatrix|daftar proyek-proyek wiki Wikimedia]]',
 	'sitematrix-language'  => 'Bahasa',
 	'sitematrix-project'   => 'Nama proyek, pranala interproyek dan pranala interwiki',
 	'sitematrix-others'    => 'Proyek lain Wikimedia',
@@ -945,6 +949,13 @@ $messages['myv'] = array(
 	'sitematrix'          => 'Валпаргонь коряс Викимедиянь пелькстнэ',
 	'sitematrix-language' => 'Кель',
 	'sitematrix-others'   => 'Лия Викимедиянь проекттнэ',
+);
+
+/** Nahuatl (Nahuatl)
+ * @author Fluence
+ */
+$messages['nah'] = array(
+	'sitematrix-language' => 'Tlahtōlli',
 );
 
 /** Min Nan Chinese (Bân-lâm-gú) */

@@ -233,6 +233,14 @@ $messages['mr'] = array(
 	'absenteelandlord-desc'   => 'प्रबंधकांकडून काही काळासाठी कुठलीही क्रिया न झाल्यान विदागाराला आपोआप कुलुप घालतो',
 );
 
+/** Maltese (Malti)
+ * @author Giangian15
+ */
+$messages['mt'] = array(
+	'absenteelandlord-reason' => 'Id-Database ġie awtomatikament disattivat minħabba l-inattivata tal-amministraturi.',
+	'absenteelandlord-desc'   => 'Blokkar awtomatiku tad-database tal-wiki jekk l-amministraturi huma kollha inattivi għal ċertu żmien',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */
