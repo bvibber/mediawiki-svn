@@ -30,7 +30,7 @@ $wgExtensionCredits[ 'specialpage' ][] = array(
 // Register special page.
 $dir = dirname(__FILE__) . '/';
 $wgSpecialPages[ 'Mibbit' ]    = 'Mibbit';
-$wgSpecialPageGroups['ViewAPC'] = 'wiki';
+$wgSpecialPageGroups['Mibbit'] = 'wiki';
 $wgAutoloadClasses[ 'Mibbit' ] = $dir . 'Mibbit_body.php';
 
 // Extension messages.
