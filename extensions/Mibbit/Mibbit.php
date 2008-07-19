@@ -24,15 +24,17 @@ $wgExtensionCredits[ 'specialpage' ][] = array(
 	'descriptionmsg' => 'mibbit-desc',
 	'author'         => 'MinuteElectron',
 	'url'            => 'http://www.mediawiki.org/wiki/Extension:Mibbit',
-	'version'        => '1.1',
+	'version'        => '1.2',
 );
 
 // Register special page.
+$dir = dirname(__FILE__) . '/';
 $wgSpecialPages[ 'Mibbit' ]    = 'Mibbit';
-$wgAutoloadClasses[ 'Mibbit' ] = dirname( __FILE__ ) . '/Mibbit_body.php';
+$wgSpecialPageGroups['ViewAPC'] = 'wiki';
+$wgAutoloadClasses[ 'Mibbit' ] = $dir . 'Mibbit_body.php';
 
 // Extension messages.
-$wgExtensionMessagesFiles[ 'Mibbit' ] =  dirname( __FILE__ ) . '/Mibbit.i18n.php';
+$wgExtensionMessagesFiles[ 'Mibbit' ] =  $dir . 'Mibbit.i18n.php';
 
 // Default configuration.
 $wgMibbitServer          = '';
