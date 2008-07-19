@@ -85,6 +85,11 @@ $aliases['no'] = array(
 	'ImportUsers' => array( 'Importer_brukere' ),
 );
 
+/** Pashto (پښتو) */
+$aliases['ps'] = array(
+	'ImportUsers' => array( 'کارونکي واردول' ),
+);
+
 /** Swedish (Svenska) */
 $aliases['sv'] = array(
 	'ImportUsers' => array( 'Importera användare' ),

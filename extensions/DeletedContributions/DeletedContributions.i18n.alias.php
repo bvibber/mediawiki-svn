@@ -93,3 +93,8 @@ $aliases['no'] = array(
 	'DeletedContributions' => array( 'Slettede bidrag' ),
 );
 
+/** Pashto (پښتو) */
+$aliases['ps'] = array(
+	'DeletedContributions' => array( 'ړنګې شوي ونډې' ),
+);
+

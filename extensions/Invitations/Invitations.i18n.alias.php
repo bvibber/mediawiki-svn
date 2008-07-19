@@ -76,6 +76,11 @@ $aliases['no'] = array(
 	'SpecialInvitations' => array( 'Invitasjoner' ),
 );
 
+/** Pashto (پښتو) */
+$aliases['ps'] = array(
+	'SpecialInvitations' => array( 'بلنې' ),
+);
+
 /** Swedish (Svenska) */
 $aliases['sv'] = array(
 	'SpecialInvitations' => array( 'Inbjudningar' ),

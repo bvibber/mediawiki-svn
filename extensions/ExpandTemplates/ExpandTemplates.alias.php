@@ -85,3 +85,8 @@ $aliases['no'] = array(
 	'ExpandTemplates' => array( 'Utvid_maler' ),
 );
 
+/** Pashto (پښتو) */
+$aliases['ps'] = array(
+	'ExpandTemplates' => array( 'کينډۍ غځول' ),
+);
+

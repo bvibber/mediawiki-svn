@@ -85,6 +85,11 @@ $aliases['no'] = array(
 	'LinkSearch' => array( 'Lenkesøk' ),
 );
 
+/** Pashto (پښتو) */
+$aliases['ps'] = array(
+	'LinkSearch' => array( 'د تړنې پلټنه' ),
+);
+
 /** Swedish (Svenska) */
 $aliases['sv'] = array(
 	'LinkSearch' => array( 'Länksökning' ),

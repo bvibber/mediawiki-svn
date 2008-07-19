@@ -63,3 +63,8 @@ $aliases['no'] = array(
 	'EmailPages' => array( 'Send_side_som_e-post' ),
 );
 
+/** Pashto (پښتو) */
+$aliases['ps'] = array(
+	'EmailPages' => array( 'د برېښليک مخونه' ),
+);
+
