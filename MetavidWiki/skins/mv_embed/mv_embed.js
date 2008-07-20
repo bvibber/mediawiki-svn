@@ -662,7 +662,7 @@ function rewrite_by_id(vid_id){
 }
 //SET DOM Ready state:
 // for Mozilla browsers
-if (document.addEventListener) {
+if (document.addEventListener && !embedTypes.safari) {
     document.addEventListener("DOMContentLoaded", function(){init_mv_embed()}, false);
 }else{
 	//backup "onload" method in case on DOMContentLoaded does not exist
@@ -698,6 +698,7 @@ if(embedTypes.safari){
 		//once jQuery is loaded set up no conflict: 
         js_log('setting up jQuery no conflict');
 		_global['$j'] = jQuery.noConflict();
+        mvEmbed.libs_loaded=true;
 		init_mv_embed();
 	}
 }
