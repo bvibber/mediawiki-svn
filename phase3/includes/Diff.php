@@ -646,7 +646,7 @@ class CorrectDiff{
 	public function diff(array $from, array $to){
 		$flcs = new ForwardLcs();
 		$lcs = $flcs->lcs($from, $to);
-		
+
 		$fromSequence = new LcsSequence($from);
 		$toSequence = new LcsSequence($to);
 
@@ -941,9 +941,15 @@ class OverlapAccount{
 
 					// aligned snakes bite (\   )
 					//                     ( \ \)
-					$this->bottomSnakeStart = max($snakeEndBack[$k]+1,$this->topSnakeEnd+max(0,$snakekBack[$k]-$snakekForw[$k]));
-					$this->bottomSnakeEnd = $snakeBeginBack[$k]+1;
+					$this->bottomSnakeStart = max($snakeEndBack[$k]+1, $this->topSnakeEnd+max(0,$snakekBack[$k]-$snakekForw[$k]));
+					$this->bottomSnakeEnd = max($snakeBeginBack[$k]+1, $this->bottomSnakeStart);
 					$this->bottomSnakek = $snakekBack[$k];
+						
+					if($this->bottomSnakeEnd<$fpForw[$k]){
+						$this->bottomSnakeStart = $fpForw[$k];
+						$this->bottomSnakeEnd = $fpForw[$k];
+						$this->bottomSnakek = $k;
+					}
 
 					$this->bestLcsLengthTop = $lcsSizeForw[$k]-($snakeEndForw[$k]-$snakeBeginForw[$k]);
 					$this->bestLcsLengthBottom = $lcsSizeBack[$k]-($snakeBeginBack[$k]-$snakeEndBack[$k]);
