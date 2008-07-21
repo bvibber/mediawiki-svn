@@ -333,7 +333,6 @@ class ApiQuerySiteMatrix extends ApiQueryBase {
 
 			$wiki = array();
 			$wiki['url'] = $url;
-			$wiki['site'] = $site;
 			$wiki['code'] = str_replace( '_', '-', $lang );
 			$specials[] = $wiki;
 		}
