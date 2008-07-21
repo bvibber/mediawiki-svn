@@ -7,7 +7,7 @@ Standards-Version: 3.6.2
 
 Package: wikimedia-nis-client
 Architecture: all
-Depends: nis, nscd
+Depends: nis, nscd, nfs-common
 Description: Provides a Wikimedia NIS client
  This package provides a machine configured as a NIS client in the
  Wikimedia network.
