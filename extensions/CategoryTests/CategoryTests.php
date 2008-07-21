@@ -55,48 +55,48 @@ Class ExtCategoryTests {
 		if($pagename === '') {
 			$title = $parser->getTitle();
 			$page = $title->getDBkey();
-			$id = $title->getArticleID();
+			$ns = $title->getNamespace();
 		} else {
 			$title = Title::newFromText($pagename);
 			if(!$title->exists())
-				return $then;
+				return $else;
 			$page = $title->getDBkey();
-			$id = $title->getArticleID();
+			$ns = $title->getNamespace();
 		}
-		$params = new FauxRequest(array ('action' => 'query', 'titles' => $page, 'prop' => 'categories') );
-		$api = new ApiMain($params);
-		$api->execute();
-		$data =& $api->getResultData();
-		if(!array_key_exists('categories', $data['query']['pages'][$id])) {
+		$cattitle = Title::makeTitleSafe(NS_CATEGORY, $category);
+		$catkey = $cattitle->getDBkey();
+		$db = wfGetDb(DB_SLAVE);
+		$res = $db->select(array('page', 'categorylinks'), 'cl_from', array(
+					'page_id=cl_from',
+					'page_namespace' => $ns,
+					'page_title' => $page,
+					'cl_to' => $catkey), __METHOD__,
+					array('LIMIT' => 1));
+		if($db->numRows($res) == 0)
 			return $else;
-		}
-		foreach( $data['query']['pages'][$id]['categories'] as $key => $value ) {
-			if("Category:{$category}" == $data['query']['pages'][$id]['categories'][$key]['title']) {
-				return $then;
-			}
-		}
-		return $else;
+		return $then;
 	}
 
 	function ifnocategories( &$parser, $then = '', $else = '', $pagename = '' ) {
 		if($pagename === '') {
 			$title = $parser->getTitle();
 			$page = $title->getDBkey();
-			$id = $title->getArticleID();
+			$ns = $title->getNamespace();
 		} else {
 			$title = Title::newFromText($pagename);
 			if(!$title->exists())
 				return $then;
 			$page = $title->getDBkey();
-			$id = $title->getArticleID();
+			$ns = $title->getNamespace();
 		}
-		$params = new FauxRequest(array ('action' => 'query', 'titles' => $page, 'prop' => 'categories') );
-		$api = new ApiMain($params);
-		$api->execute();
-		$data =& $api->getResultData();
-		if(!array_key_exists('categories', $data['query']['pages'][$id])) {
+		$db = wfGetDb(DB_SLAVE);
+		$res = $db->select(array('page', 'categorylinks'), 'cl_from', array(
+					'page_id=cl_from',
+					'page_namespace' => $ns,
+					'page_title' => $page), __METHOD__,
+					array('LIMIT' => 1));
+		if($db->numRows($res) == 0)
 			return $then;
-		}
 		return $else;
 	}
 	
