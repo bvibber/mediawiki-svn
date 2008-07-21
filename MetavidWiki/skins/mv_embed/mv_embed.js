@@ -1651,7 +1651,7 @@ embedVideo.prototype = {
 			 '</div>';
 	  	 }
 
-	  	//add in cmml inline dispaly if roe descption avaliable
+	  	//add in cmml inline dispaly if roe description avaliable
 	  	//not to be displayed in stream interface.
 	  	if(this.media_element.hasStreamOfMIMEType('text/cmml') && this.show_meta_link){
 	  		thumb_html+='<div style="border:none;position:absolute;top:2px;right:2px;z-index:1">'+

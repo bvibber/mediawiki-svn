@@ -660,6 +660,25 @@ function mvGetMVStream($stream_init){
 function mvGetMVTitle(){
 	
 }
+function mv_get_person_img($person_name){
+	$imgTitle = Title::makeTitle(NS_IMAGE, $person_name . '.jpg');
+	if($imgTitle->exists()){
+		$img= wfFindFile($imgTitle);
+		if ( !$img ) {
+			$img = wfLocalFile( $imgTitle );					
+		}																			
+	}else{
+		//assume 'Missing person.jpg' exist 
+		//@@todo put this into the install scripts 
+		
+		$imgTitle =  Title::makeTitle(NS_IMAGE, MV_MISSING_PERSON_IMG);
+		$img= wfFindFile($imgTitle);	
+		if ( !$img ) {
+			$img = wfLocalFile( $imgTitle );					
+		}
+	}
+	return $img;
+}
 function mvViewPrevNext( $offset, $limit, $link, $query = '', $atend = false ) {
 	global $wgLang;
 	$fmtLimit = $wgLang->formatNum( $limit );

@@ -302,7 +302,7 @@ function mv_disp_add_mvd(mvdType){
 	}
 }
 function mv_edit_disp(titleKey, mvd_id){	 
-	if(mv_open_edit_mvd){
+	if(mv_open_edit_mvd && mv_open_edit_mvd!=mvd_id){
 		alert(gMsg['mv_open_edit']);
 		return ;
 	}
@@ -424,6 +424,7 @@ function mv_adjust_preview(mvd_id){
 /*
  * adds autocomplete to semantic forms
  * with special case for speech by
+ * @@todo generalize for all autocompletes
  */
 function add_mv_helpers_ac(mvd_id){
 	$j('.mv_anno_ac_'+mvd_id).each(function(i, input_item){
@@ -436,10 +437,12 @@ function add_mv_helpers_ac(mvd_id){
 				autoFill:true,
 				onItemSelect:function(v){		
 					js_log('selected:' + v.innerHTML );
-					//update the image: 
+					//@@todo better way to determin type
 					//js_log("img src: " + $j(v).children('img').attr('src'));
 					//'mv_edit_im_'+mvd_id
-					$j('#mv_edit_im_'+mvd_id).attr('src', $j(v).children('img').attr('src'));
+					if($j(v).children('img').length!=0){
+						$j('#smw_Speech_by_img').attr('src', $j(v).children('img').attr('src'));
+					}
 				},
 				formatItem:function(row){
 					return '<img width="44" src="'+ row[2] + '">'+row[1];

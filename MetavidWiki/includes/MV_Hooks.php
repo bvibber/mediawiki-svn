@@ -210,10 +210,10 @@
 		global $mvMetaDataHelpers,$wgRequest;
 		$property = $wgRequest->getVal('prop_name');
 		switch($property){
-			case 'Speech_by':
+			case 'smw_Speech_by':
 				return MV_SpecialMediaSearch::auto_complete_person($val);
 			break;
-			case 'Bill':
+			case 'smw_Bill':
 				return MV_SpecialMediaSearch::auto_complete_category('Bill', $val);
 			break;
 			case 'category':
@@ -235,21 +235,22 @@
 		return $MV_SequenceTools->do_edit_submit();	
 	}
 	function mv_edit_submit(){
-		global $wgOut;		
-		if(!isset($_POST['title']) || !isset($_POST['mvd_id']))
-			return 'error missing title or id';		
+		global $wgOut, $wgRequest;		
+		//@@todo more input scrubbing value checks
+		$title = $wgRequest->getVal('title');
+		$mvd_id = $wgRequest->getVal('mvd_id');
+		if($title=='' || $mvd_id=='')
+			return 'error missing title or id';
+					
 		$MV_Overlay = new MV_Overlay();	
-		/*if($_POST['mvd_id']=='new'){
-			return $MV_Overlay->do_add_mvd();			
-		}*/
-		if(!isset($_POST['do_adjust']))$_POST['do_adjust']=false;		
-		if($_POST['do_adjust']=='true'){
+		$do_adjust = $wgRequest->getVal('do_adjust');		
+		if($do_adjust=='true'){
 			//first edit then move
-			$outputMVD = $MV_Overlay->do_edit_submit($_POST['title'], $_POST['mvd_id']);
+			$outputMVD = $MV_Overlay->do_edit_submit($title, $mvd_id);
 			//clear the wgOut var: 
-			$wgOut->clearHTML();
+			$wgOut->clearHTML();			
 			//do move and display output page 			
-			return $MV_Overlay->do_adjust_submit($_POST['titleKey'], $_POST['mvd_id'], $_POST['newTitle'], $_POST['wgTitle'], $outputMVD);
+			return $MV_Overlay->do_adjust_submit($wgRequest->getVal('titleKey'), $mvd_id, $wgRequest->getVal('newTitle'), $wgRequest->getVal('wgTitle'), $outputMVD);
 		}else{
 			return $MV_Overlay->do_edit_submit($_POST['title'], $_POST['mvd_id']);
 		}

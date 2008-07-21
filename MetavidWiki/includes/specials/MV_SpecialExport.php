@@ -193,8 +193,8 @@ class MV_SpecialExport {
 				//if not ogg include start and end times in the attribute: 
 				//@@todo in the future support client side ogg seeking (and don't automaticly put .anx at the end)  
 				$startendattr= (htmlentities($file->getContentType())!='video/ogg')?
-					'start="ntp:'.htmlentities($this->mvTitle->getStartTime()).'"'. 
-					' end="ntp:'.htmlentities($this->mvTitle->getEndTime()).'"':'';				
+					'start="npt:'.htmlentities($this->mvTitle->getStartTime()).'"'. 
+					' end="npt:'.htmlentities($this->mvTitle->getEndTime()).'"':'';				
 			?>
 				<mediaSource id="<?php echo htmlentities($file->getNameKey())?>"<?php echo $dAttr?> src="<?php echo $dSrc?>" title="<?php echo htmlentities($file->get_desc())?>" content-type="<?php echo htmlentities($file->getContentType())?>" <?php echo $startendattr?>/>	
 		<?}?>
@@ -268,7 +268,7 @@ class MV_SpecialExport {
 			
 				if(!isset($tracks[$mvd->mvd_type]))$tracks[$mvd->mvd_type]='';			
 				$tracks[$mvd->mvd_type].='						
-						<'.$ns.'clip id="mvd_'.$mvd->id.'" start="ntp:'.seconds2ntp($mvd->start_time).'" end="ntp:'.seconds2ntp($mvd->end_time).'">
+						<'.$ns.'clip id="mvd_'.$mvd->id.'" start="npt:'.seconds2ntp($mvd->start_time).'" end="npt:'.seconds2ntp($mvd->end_time).'">
 							<'.$ns.'img src="'.htmlentities($streamTitle->getFullStreamImageURL(null, seconds2ntp($mvd->start_time))).'"/>
 							<'.$ns.'body><![CDATA[
 									'.	$MV_Overlay->getMVDhtml($mvd, $absolute_links=true).'
@@ -283,7 +283,7 @@ class MV_SpecialExport {
 					<cmml lang="en" id="<?php echo $role?>" role="<?php echo wfMsg($role)?>" xmlns="http://svn.annodex.net/standards/cmml_2_0.dtd">		
 						<<?php echo $ns?>head>
 							<<?php echo $ns?>title><?php echo wfMsg($role)?></<?php echo $ns?>title>	
-							<<?php echo $ns?>description><?php echo htmlentities(wfMsg($role.'_desc'))?></<?php echo $ns?>description>				
+							<<?php echo $ns?>meta name="description" content="<?php echo htmlentities(wfMsg($role.'_desc'))?>"></<?php echo $ns?>meta>				
 						</<?php echo $ns?>head>
 						<?php echo $body_string?>												
 					</cmml>

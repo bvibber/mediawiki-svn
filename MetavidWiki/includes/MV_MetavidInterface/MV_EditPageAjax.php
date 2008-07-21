@@ -77,23 +77,8 @@
 		//structure layout via tables (@@todo switch to class based css layout)		
 		$wgOut->addHTML('<table style="background: transparent;" width="100%"><tr><td valign="top" width="90">');
 			//output the person selector:
-			if(!isset($semantic_data['Spoken By']))$semantic_data['Spoken By']='';
-			$imgTitle = Title::makeTitle(NS_IMAGE, $semantic_data['Spoken By'] . '.jpg');
-			if($imgTitle->exists()){
-				$img= wfFindFile($imgTitle);
-				if ( !$img ) {
-					$img = wfLocalFile( $imgTitle );					
-				}																			
-			}else{
-				//assume 'Missing person.jpg' exist 
-				//@@todo put this into the install scripts 
-				
-				$imgTitle =  Title::makeTitle(NS_IMAGE, MV_MISSING_PERSON_IMG);
-				$img= wfFindFile($imgTitle);	
-				if ( !$img ) {
-					$img = wfLocalFile( $imgTitle );					
-				}
-			}
+			if (!isset ($semantic_data['Spoken By']))$semantic_data['Spoken By'] = ''; 		
+			$img = mv_get_person_img($semantic_data['Spoken By']); 
 			$wgOut->addHTML("<img id=\"mv_edit_im_{$this->mvd_id}\" style=\"display: block;margin-left: auto;margin-right: auto;\" src=\"{$img->getURL()}\" width=\"44\">");				
 				$wgOut->addHTML('<input style="font-size:x-small" 
 						value="'.$semantic_data['Spoken By'].'" 

@@ -463,10 +463,17 @@ $smwgShowFactbox=SMW_FACTBOX_HIDDEN;
 					}					
 					//make sure the property exists: 
 					$swmTitle = Title::newFromText((string)$prop, SMW_NS_PROPERTY);	
+					$smwImageHTML='';
 					if($swmTitle->exists()){					
-						$help_img =$sk->makeKnownLinkObj($swmTitle, '<img src="'.$mvgScriptPath.'/skins/images/help_icon.png">');													
-						$o.= "<tr><td><label>".$swmTitle->getText().":</label></td><td><input class=\"mv_anno_ac_{$mvd_id}\" size=\"40\" name=\"{$prop}\" type=\"text\" value=\"$val\">
-								<div class=\"autocomplete\" id=\"{$prop}_choices_{$mvd_id}\" style=\"display: none;\"/>
+						$help_img =$sk->makeKnownLinkObj($swmTitle, '<img src="'.$mvgScriptPath.'/skins/images/help_icon.png">');
+						//special case for person image: (would be good to generalize but kind of complicated) 
+						if($swmTitle->getText()=='Speech_by'){							
+							$img = mv_get_person_img($val);
+							$smwImageHTML="<img id=\"smw_{$prop}_img\" style=\"display: block;margin-left: auto;margin-right: auto;\" src=\"{$img->getURL()}\" width=\"44\">";
+						}
+																		
+						$o.= "<tr><td><label>".$swmTitle->getText().$help_img.":</label></td><td>{$smwImageHTML}<input class=\"mv_anno_ac_{$mvd_id}\" size=\"40\" name=\"smw_{$prop}\" type=\"text\" value=\"$val\">
+								<div class=\"autocomplete\" id=\"smw_{$prop}_choices_{$mvd_id}\" style=\"display: none;\"/>
 								</td></tr>";						
 					}else{
 						print '<span class="error">Error:</span>'.$sk->makeKnownLinkObj($swmTitle, $swmTitle->getText()) . ' does not exist<br>' ;
@@ -591,31 +598,37 @@ $smwgShowFactbox=SMW_FACTBOX_HIDDEN;
 			$titleKey =substr($_REQUEST['title'],0,strpos($_REQUEST['title'],'/')).
 				'/'.$_REQUEST['mv_start_hr_new'].'/'.$_REQUEST['mv_end_hr_new'];
 		}
-		$wpTextbox1=$wgRequest->getVal('wpTextbox1');
+		//if doing basic editing use basic wpTextBox:
+		if($wgRequest->getVal('adv_basic')=='basic'){
+			$wpTextbox1= $wgRequest->getVal('basic_wpTextbox');
+		}else{
+			$wpTextbox1=$wgRequest->getVal('wpTextbox1');
+		}
 		
 		//set up the title /article
 		$wgTitle = Title::newFromText($titleKey, MV_NS_MVD);
 		$Article = new Article($wgTitle);
 		
 		//add all semantic form based attributes/relations to the posted body text
+		$formSemanticText ='';
 		foreach($_POST as $key=>$val){
 			$do_swm_include=true;
 			if(substr($key, 0, 4)=='smw_'){
 				//try attribute		
 				$swmTitle = Title::newFromText(substr($key, 4), SMW_NS_PROPERTY);
 				if($swmTitle->exists()){																	
-					//make sure the person is not empty: 
+					//make sure the semantic is not empty: 
 					if(trim($val)!=''){
 						//@@todo update for other smw types: 
-						if($key=='smw_Spoken_By'){
-							//update the request wpTextBox:
-							$wpTextbox1="[[".$swmTitle->getText().':='.$val.']]'.
-								trim($wpTextbox1);
-						}
+						//if($key=='smw_Spoken_By'){
+							$formSemanticText.="[[".$swmTitle->getText().'::'.$val.']]'."\n\n";
+						//}								
 					}				
 				}
-			}
+			}			
 		}			
+		//add the text to the end after a line break to not confuse mannual editors
+		$wpTextbox1 = trim($wpTextbox1) ."\n\n". $formSemanticText;
 		$editPageAjax = new MV_EditPageAjax( $Article);
 		$editPageAjax->mvd_id = $mvd_id;			
 		
@@ -625,7 +638,7 @@ $smwgShowFactbox=SMW_FACTBOX_HIDDEN;
 		if(isset($_POST['wpPreview'])){
 			//$out = $editPageAjax->getPreviewText();
 			//$wgOut->addHTML($out);			
-			$mvTitle = new MV_Title($_REQUEST['title']);
+			$mvTitle = new MV_Title($wgRequest->getVal('title'));
 				
 			$parserOutput = $this->parse_format_text($wpTextbox1, $mvTitle);
 		
@@ -818,8 +831,9 @@ $smwgShowFactbox=SMW_FACTBOX_HIDDEN;
 		//make a title article with global title: 
 		$Article = new Article($wgTitle);
 		//make the ediPageajax obj		
-		$editPageAjax = new MV_EditPageAjax( $Article);
 		
+		$editPageAjax = new MV_EditPageAjax( $Article);		
+
 		
 		$customPreEditHtml = $this->get_adjust_disp($titleKey, $mvd_id);
 		
