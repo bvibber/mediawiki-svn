@@ -29,12 +29,16 @@ struct conf_listener {
 };
 
 struct config {
+	config();
+
 	std::vector<conf_listener>
 			listeners;
 	std::string logconf;
 	std::string sockdir;
 	std::string docroot;
 	std::string userdir;
+	int max_procs;
+	int max_procs_per_user;
 };
 
 struct configuration_loader {
@@ -59,6 +63,8 @@ private:
 	bool f_sockdir(std::vector<std::string> &fields, config &newconf);
 	bool f_docroot(std::vector<std::string> &fields, config &newconf);
 	bool f_userdir(std::vector<std::string> &fields, config &newconf);
+	bool f_max_procs(std::vector<std::string> &fields, config &newconf);
+	bool f_max_procs_per_user(std::vector<std::string> &fields, config &newconf);
 
 	log4cxx::LoggerPtr	logger;
 };

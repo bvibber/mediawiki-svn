@@ -15,6 +15,7 @@
 #include	<boost/tokenizer.hpp>
 #include	<boost/assign/list_of.hpp>
 #include	<boost/bind.hpp>
+#include	<boost/lexical_cast.hpp>
 using boost::format;
 
 #include	<log4cxx/logger.h>
@@ -22,6 +23,12 @@ using boost::format;
 #include	"config.h"
 
 config mainconf;
+
+config::config()
+	: max_procs(0)
+	, max_procs_per_user(0)
+{
+}
 
 configuration_loader::configuration_loader()
 	: logger(log4cxx::Logger::getLogger("switchboard.config"))
@@ -69,6 +76,8 @@ std::map<std::string, configuration_loader::confline_t>
 		("sockdir", boost::bind(&configuration_loader::f_sockdir, _1, _2, _3))
 		("docroot", boost::bind(&configuration_loader::f_docroot, _1, _2, _3))
 		("userdir", boost::bind(&configuration_loader::f_userdir, _1, _2, _3))
+		("max-procs", boost::bind(&configuration_loader::f_max_procs, _1, _2, _3))
+		("max-procs-per-user", boost::bind(&configuration_loader::f_max_procs_per_user, _1, _2, _3))
 	;
 
 bool
@@ -187,4 +196,50 @@ configuration_loader::f_docroot(
 
 	newconf.docroot = fields[1];
 	return true;
+}
+
+bool
+configuration_loader::f_max_procs(
+		std::vector<std::string> &fields,
+		config &newconf)
+{
+	if (fields.size() != 2) {
+		LOG4CXX_ERROR(logger,
+			format("\"%s\", line %d: usage: max-procs <number>\n")
+			% file_ % lineno_);
+		return false;
+	}
+
+	try {
+		newconf.max_procs = boost::lexical_cast<int>(fields[1]);
+		return true;
+	} catch (boost::bad_lexical_cast &e) {
+		LOG4CXX_ERROR(logger,
+			format("\"%s\", line %d: usage: max-procs <number>\n")
+			% file_ % lineno_);
+		return false;
+	}
+}
+
+bool
+configuration_loader::f_max_procs_per_user(
+		std::vector<std::string> &fields,
+		config &newconf)
+{
+	if (fields.size() != 2) {
+		LOG4CXX_ERROR(logger,
+			format("\"%s\", line %d: usage: max-procs-per-user <number>\n")
+			% file_ % lineno_);
+		return false;
+	}
+
+	try {
+		newconf.max_procs_per_user = boost::lexical_cast<int>(fields[1]);
+		return true;
+	} catch (boost::bad_lexical_cast &e) {
+		LOG4CXX_ERROR(logger,
+			format("\"%s\", line %d: usage: max-procs-per-user <number>\n")
+			% file_ % lineno_);
+		return false;
+	}
 }

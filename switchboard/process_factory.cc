@@ -30,8 +30,26 @@ using boost::format;
 #include	"sbcontext.h"	
 #include	"config.h"
 
-std::set<int> process_factory::ids_;
 int process_factory::curid_;
+int process_factory::nactive_;
+
+process_ref::process_ref(sbcontext &context)
+	: context_(context)
+	, uid_(0)
+	, gid_(0)
+{
+}
+
+void
+process_ref::lock()
+{
+	context_.factory().nactive_++;
+}
+
+process_ref::~process_ref()
+{
+	context_.factory().process_released(*this);
+}
 
 process_factory::process_factory(sbcontext &context)
 	: context_(context)
@@ -42,32 +60,99 @@ process_factory::process_factory(sbcontext &context)
 				asio::placeholders::error));
 }
 
-processp
-process_factory::create_from_filename(std::string const &filename)
+void
+process_factory::process_released(process_ref const &ref)
+{
+	LOG4CXX_DEBUG(logger,
+		format("process_released, nactive=%d uid=%d") % nactive_ % ref.uid());
+
+	nactive_--;
+
+	uid_t uid = ref.uid();
+	gid_t gid = ref.gid();
+	if (uid == 0)
+		return;
+
+	if (peruser_[uid] > 0)
+		peruser_[uid]--;
+
+	waiterlist_t::index<by_uid>::type &idx = waiters_.get<by_uid>();
+	waiterlist_t::index<by_uid>::type::iterator
+		it = idx.find(uid);
+
+	if (it != idx.end()) {
+		waiter n = *it;
+		idx.erase(it);
+		_do_create_from_filename(n.filename, n.func, uid, gid);
+		return;
+	}
+
+	if (!waiters_.empty()) {
+		waiter n = waiters_.front();
+		waiters_.pop_front();
+		_do_create_from_filename(n.filename, n.func, uid, gid);
+	}
+}
+
+void
+process_factory::create_from_filename(
+	std::string const &filename,
+	boost::function<void (processp)> func)
 {
 	struct stat sb;
 
 	if (stat(filename.c_str(), &sb) == -1)
 		throw creation_failure("cannot access pathname");
 
+	if (mainconf.max_procs > 0 && nactive_ > mainconf.max_procs) {
+		waiter n;
+		n.filename = filename;
+		n.func = func;
+		n.uid = sb.st_uid;
+		waiters_.push_back(n);
+		return;
+	}
+
+	freelist_t::index<by_uid>::type &idx = freelist_.get<by_uid>();
+	if (mainconf.max_procs_per_user > 0 &&
+	    peruser_[sb.st_uid] >= mainconf.max_procs_per_user) {
+		waiter n;
+		n.filename = filename;
+		n.func = func;
+		n.uid = sb.st_uid;
+		waiters_.push_back(n);
+		return;
+	}
+
+	_do_create_from_filename(filename, func, sb.st_uid, sb.st_gid);
+}
+
+void
+process_factory::_do_create_from_filename(
+	std::string const &filename,
+	boost::function<void (processp)> func,
+	uid_t uid, gid_t gid)
+{
 	freelist_t::index<by_uid>::type &idx = freelist_.get<by_uid>();
 	freelist_t::index<by_uid>::type::iterator
-		it = idx.find(sb.st_uid);
+		it = idx.find(uid);
+
+	peruser_[uid]++;
 
 	if (it != idx.end()) {
-		assert(it->uid == sb.st_uid);
+		assert(it->uid == uid);
 		processp proc(it->proc);
 		idx.erase(it);
-		return proc;
+		context_.service().post(boost::bind(func, proc));
+		return;
 	}
 
 	std::stringstream bindpath;
-	int id;
-	if (ids_.empty())
-		id = curid_++;
+	int id = curid_++;
 	
-	bindpath << (mainconf.sockdir + "/switchboard_") << sb.st_uid << "_" << id;
-	return processp(new process(context_, sb.st_uid, sb.st_gid, bindpath.str()));
+	bindpath << (mainconf.sockdir + "/switchboard_") << uid << "_" << id;
+	processp newproc(new process(context_, uid, gid, bindpath.str()));
+	context_.service().post(boost::bind(func, newproc));
 }
 
 void

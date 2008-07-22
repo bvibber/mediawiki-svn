@@ -39,6 +39,7 @@ fcgi_cgi::fcgi_cgi(
 	: context_(context)
 	, child_socket_(new fcgi_socket<asio::local::stream_protocol::socket>(context_))
 	, app_(app)
+	, ref_(context)
 	, request_id_(request_id)
 	, alive_(true)
 	, logger(log4cxx::Logger::getLogger("switchboard.fcgi_cgi"))
@@ -132,19 +133,32 @@ fcgi_cgi::fcgi_cgi(
 		}
 		params["SCRIPT_FILENAME"] = script_path_;
 	}
-
-	get_process();
-}
-
-void
-fcgi_cgi::get_process()
-{
-	process_ = context_.factory().create_from_filename(script_path_);
 }
 
 void
 fcgi_cgi::start(boost::function<void (void)> func)
 {
+	LOG4CXX_DEBUG(logger, "requesting process from factory");
+	ref_.lock();
+	context_.factory().create_from_filename(
+		script_path_,
+		boost::bind(&fcgi_cgi::process_ready, 
+			shared_from_this(), func, _1));
+}
+
+void
+fcgi_cgi::process_ready(
+	boost::function<void (void)> func,
+	processp proc)
+{
+	ref_.uid(proc->uid());
+	ref_.gid(proc->gid());
+
+	if (!alive_)
+		return;
+
+	LOG4CXX_DEBUG(logger, "process is ready, connecting");
+	process_ = proc;
 	process_->connect(child_socket_,
 			boost::bind(&fcgi_cgi::connect_done,
 				shared_from_this(),
@@ -157,13 +171,15 @@ fcgi_cgi::connect_done(
 	asio::error_code error,
 	boost::function<void (void)> func)
 {
+	if (!alive_)
+		return;
+
 	if (error) {
 		LOG4CXX_DEBUG(logger,
 			format("[req=%d] connection failed, %s; retrying")
 			% request_id_ % error.message());
 		process_.reset();
 		child_socket_.reset(new fcgi_socket<asio::local::stream_protocol::socket>(context_));
-		get_process();
 		start(func);
 		return;
 	}

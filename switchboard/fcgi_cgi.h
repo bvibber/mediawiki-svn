@@ -24,6 +24,7 @@
 #include	"sbcontext.h"
 #include	"process.h"
 #include	"fcgi_socket.h"
+#include	"process_factory.h"
 
 struct fcgi_application;
 typedef boost::shared_ptr<fcgi_application> fcgi_applicationp;
@@ -58,11 +59,15 @@ private:
 		boost::function<void (void)>);
 	void handle_child_read(fcgi::recordp record, asio::error_code);
 	void get_process();
+	void process_ready(
+		boost::function<void (void)>,
+		processp);
 
 	sbcontext &context_;
 	fcgi_socket_unixp child_socket_;
 	fcgi_applicationp app_;
 	processp process_;
+	process_ref ref_;
 
 	int request_id_;
 	bool alive_;
