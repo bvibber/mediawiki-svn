@@ -570,6 +570,9 @@ $extensions = array(
 			'wgFlaggedRevsBacklog' => 'int',
 			'wgFlaggedRevsVisible' => 'array',
 			'wgFlaggedRevsTalkVisible' => 'bool',
+			'wgFlaggedRevsFeedbackTags' => 'array',
+			'wgFlaggedRevsFeedbackAge' => 'int',
+			'wgPHPlotDir' => 'text',
 		),
 		'array' => array(
 			'wgFlaggedRevsNamespaces' => 'ns-simple',
@@ -583,6 +586,7 @@ $extensions = array(
 			'wgFlaggedRevsExternalStore' => 'simple',
 			'wgFlaggedRevsLongPending' => 'simple',
 			'wgFlaggedRevsVisible' => 'simple',
+			'wgFlaggedRevsFeedbackTags' => 'assoc',
 		),
 		'schema' => true,
 		'url' => 'http://www.mediawiki.org/wiki/Extension:FlaggedRevs',

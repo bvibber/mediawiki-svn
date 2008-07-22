@@ -397,6 +397,7 @@ $settings = array(
 			'wgCookieExpiration' => 'int',
 			'wgCookieHttpOnly' => 'bool',
 			'wgCookiePath' => 'text',
+			'wgCookiePrefix' => 'text',
 			'wgCookieSecure' => 'bool',
 			'wgDisableCookieCheck' => 'bool',
 			'wgHttpOnlyBlacklist' => 'array',
