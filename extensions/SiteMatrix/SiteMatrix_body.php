@@ -62,7 +62,7 @@ class SiteMatrix {
 				if ( preg_match( "/(.*)$site\$/", $db, $m ) ) {
 					$lang = $m[1];
 					$langhost = str_replace( '_', '-', $lang);
-					if( isset( $xLanglist[$lang] ) ) {
+					if( isset( $xLanglist[$langhost] ) ) {
 						$this->matrix[$site][$langhost] = 1;
 						$this->countPerSite[$site]++;
 					} else {
