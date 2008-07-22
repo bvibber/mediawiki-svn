@@ -203,6 +203,7 @@ class SiteMatrixPage extends SpecialPage {
 			foreach ( $matrix->getSpecials() as $special ) {
 				list( $lang, $site ) = $special;
 				$langhost = str_replace( '_', '-', $lang );
+				if( $site != 'wiki' ) $langhost .= $site;
 				$url = $matrix->getUrl( $lang, $site );
 
 				echo "\t\t<special code=\"{$langhost}\" url=\"{$url}\" />\n";
@@ -273,7 +274,7 @@ class SiteMatrixPage extends SpecialPage {
 			if( $matrix->isFishbowl( $lang . $site ) )
 				$flags[] = wfMsgHtml( 'sitematrix-fishbowl' );
 			$flagsStr = implode( ', ', $flags );
-			if( $langhost == 'beta' ) $langhost = 'betawikiversity';	//ugly hack for betawikiversity
+			if( $site != 'wiki' ) $langhost .= $site;
 			$s .= '<li>' . wfSpecialList( '<a href="' . $url . '/">' . $langhost . "</a>", $flagsStr ) . "</li>\n";
 		}
 		$s .= '</ul>';
@@ -333,7 +334,7 @@ class ApiQuerySiteMatrix extends ApiQueryBase {
 
 			$wiki = array();
 			$wiki['url'] = $url;
-			$wiki['code'] = str_replace( '_', '-', $lang );
+			$wiki['code'] = str_replace( '_', '-', $lang ) . ( $site != 'wiki' ? $site : '' );
 			$specials[] = $wiki;
 		}
 
