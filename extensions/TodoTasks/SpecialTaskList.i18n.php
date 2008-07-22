@@ -475,7 +475,13 @@ By zobaczyć kompletną listę zadań, przejdź do strony %s.
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */
 $messages['ps'] = array(
-	'tasklistchooseproj' => 'پروژه ټاکل:',
+	'tasklist'              => 'د دندو لړليک',
+	'tasklistbyproject'     => 'د پروژې له مخې د دندو لړليک',
+	'tasklistunspecuser'    => 'ناځانګړی کارونکی',
+	'tasklistincorrectuser' => 'ناسم کارن-نوم',
+	'tasklistmytasks'       => 'زما دندې',
+	'tasklistchooseproj'    => 'پروژه ټاکل:',
+	'tasklistprojdisp'      => 'ښکاره کول',
 );
 
 /** Portuguese (Português)

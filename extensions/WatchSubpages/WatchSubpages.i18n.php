@@ -213,8 +213,11 @@ Jeśli chcesz wybrać więcej niż jedną stronę, możesz posłużyć się klaw
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */
 $messages['ps'] = array(
-	'watchsubpages'      => 'وړوکي مخونه کتل',
-	'watchsubpages-desc' => 'په چټکۍ سره دې د يو مخ [[Special:WatchSubpages|ټول وړوکي مخونه]] کتلي لړليک ته ورګډ شي',
+	'watchsubpages'                      => 'وړوکي مخونه کتل',
+	'watchsubpages-addedtowatchlist'     => 'دا لانديني مخونه ستاسو په کتلي لړليک کې ورګډ شوي.',
+	'watchsubpages-addtitles'            => 'مخونه ورګډول',
+	'watchsubpages-addtitlestowatchlist' => 'کتلي لړليک کې مخونه ورګډول',
+	'watchsubpages-desc'                 => 'په چټکۍ سره دې د يو مخ [[Special:WatchSubpages|ټول وړوکي مخونه]] کتلي لړليک ته ورګډ شي',
 );
 
 /** Slovak (Slovenčina)

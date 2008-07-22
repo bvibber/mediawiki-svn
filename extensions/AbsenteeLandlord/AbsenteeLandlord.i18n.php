@@ -169,6 +169,14 @@ $messages['hu'] = array(
 	'absenteelandlord-desc'   => 'Automatikusan lezárja a wiki adatbázisát az adminisztrátorok inaktívsága esetén',
 );
 
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'absenteelandlord-reason' => 'Le base de datos ha essite automaticamente blocate a causa de inactivitate del administratores.',
+	'absenteelandlord-desc'   => 'Automaticamente bloca le base de datos del wiki si tote le administratores es inactive durante alcun tempore',
+);
+
 /** Indonesian (Bahasa Indonesia)
  * @author Rex
  */
@@ -280,6 +288,14 @@ $messages['pl'] = array(
 $messages['pt'] = array(
 	'absenteelandlord-reason' => 'A base de dados foi automaticamente bloqueada devido a inactividade dos sysops.',
 	'absenteelandlord-desc'   => 'Bloqueia a base dados do wiki automaticamente se todos os sysops estiverem inactivos por algum tempo',
+);
+
+/** Romanian (Română)
+ * @author KlaudiuMihaila
+ */
+$messages['ro'] = array(
+	'absenteelandlord-reason' => 'Baza de date a fost blocată automat din cauza inactivităţii administratorilor.',
+	'absenteelandlord-desc'   => 'Blochează automat baza de date wiki dacă administratorii sunt inactivi o perioadă de timp',
 );
 
 /** Russian (Русский)

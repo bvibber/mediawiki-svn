@@ -517,6 +517,13 @@ $messages['rif'] = array(
 	'spamregex-summary-log' => '(Asgbr)',
 );
 
+/** Romanian (Română)
+ * @author KlaudiuMihaila
+ */
+$messages['ro'] = array(
+	'spamregex-already-blocked' => '"$1" este deja blocat',
+);
+
 /** Sassaresu (Sassaresu)
  * @author Felis
  */

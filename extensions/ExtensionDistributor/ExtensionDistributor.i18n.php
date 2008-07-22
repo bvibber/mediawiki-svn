@@ -57,13 +57,24 @@ If you have any questions about this extension distribution system, please go to
  * @author Meno25
  */
 $messages['ar'] = array(
-	'extensiondistributor'      => 'تنزيل امتداد ميدياويكي',
-	'extdist-no-such-extension' => 'لا امتداد كهذا "$1"',
-	'extdist-choose-extension'  => 'اختر أي امتدات تريد تحميله:',
-	'extdist-submit-extension'  => 'استمر',
-	'extdist-current-version'   => 'النسخة الحالية (جذع)',
-	'extdist-submit-version'    => 'استمرار',
-	'extdist-want-more'         => 'الحصول على امتداد آخر',
+	'extensiondistributor'            => 'تنزيل امتداد ميدياويكي',
+	'extdist-desc'                    => 'امتداد لتوزيع أرشيفات ملتقطة للامتدادات',
+	'extdist-not-configured'          => 'من فضلك اضبط $wgExtDistTarDir و $wgExtDistWorkingCopy',
+	'extdist-wc-missing'              => 'مجلد نسخة العمل المحدد غير موجود!',
+	'extdist-no-such-extension'       => 'لا امتداد كهذا "$1"',
+	'extdist-no-such-version'         => 'الامتداد "$1" لا يوجد في النسخة "$2".',
+	'extdist-choose-extension'        => 'اختر أي امتدات تريد تحميله:',
+	'extdist-submit-extension'        => 'استمر',
+	'extdist-current-version'         => 'النسخة الحالية (جذع)',
+	'extdist-no-versions'             => 'الامتداد المختار ($1) غير متوفر في أي نسخة!',
+	'extdist-submit-version'          => 'استمرار',
+	'extdist-no-remote'               => 'غير قادر على الاتصال بعميل سب فيرجن البعيد.',
+	'extdist-remote-error'            => 'خطأ من عميل سب فيرجن البعيد: <pre>$1</pre>',
+	'extdist-remote-invalid-response' => 'رد غير صحيح من عميل سب فيرجن البعيد.',
+	'extdist-svn-error'               => 'سب فيرجن صادف خطأ: <pre>$1</pre>',
+	'extdist-svn-parse-error'         => 'غير قادر على معالجة XML من "svn info": <pre>$1</pre>',
+	'extdist-tar-error'               => 'تار أرجع كود خروج $1:',
+	'extdist-want-more'               => 'الحصول على امتداد آخر',
 );
 
 /** Bulgarian (Български)
@@ -518,6 +529,15 @@ $messages['pl'] = array(
 	'extdist-submit-extension'  => 'Kontynuuj',
 	'extdist-no-versions'       => 'Wybrane rozszerzenie „$1” nie jest dostępne w żadnej wersji oprogramowania!',
 	'extdist-submit-version'    => 'Kontynuuj',
+);
+
+/** Romanian (Română)
+ * @author KlaudiuMihaila
+ */
+$messages['ro'] = array(
+	'extensiondistributor'     => 'Descarcă extensia MediaWiki',
+	'extdist-submit-extension' => 'Continuă',
+	'extdist-submit-version'   => 'Continuă',
 );
 
 /** Russian (Русский)

@@ -382,6 +382,24 @@ $messages['hu'] = array(
 	'scanset_prev'                      => '← Előző',
 );
 
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'scanset-desc'                      => 'Vide imagines de paginas scandite del collectiones CD/DVD de Andreas Grosz',
+	'scanset_no_name'                   => 'Error: Tu debe specificar le nomine de un collection de scansiones, p.ex. &lt;scanset name="EB1911" /&gt;.',
+	'scanset_invalid_name'              => 'Error: Collection de scansiones invalide o mancante.',
+	'scanset_unrecognised_index_format' => 'Error: Formato de indice incognite',
+	'scanset_opendir_error'             => 'Error: Non pote aperir directorio $1',
+	'scanset_no_files'                  => 'Error: Nulle files presente in le directorio specificate.',
+	'scanset_no_volumes'                => 'Error: Nulle directorios de volumine trovate',
+	'scanset_missing_index_file'        => 'Error: File de indice $1 non trovate',
+	'scanset_index_file_error'          => 'Error: Error in le formato del file de indice al linea $1',
+	'scanset_invalid_volume'            => 'Error: Volumine invalide',
+	'scanset_next'                      => 'Sequente &gt;',
+	'scanset_prev'                      => '&lt; Precedente',
+);
+
 /** Indonesian (Bahasa Indonesia)
  * @author IvanLanin
  */
@@ -857,7 +875,10 @@ $messages['uk'] = array(
 	'scanset_no_files'                  => 'Error: не знайдено файлів у зазначеній директорії.',
 	'scanset_no_volumes'                => 'Error: не знайдено директорій для томів',
 	'scanset_missing_index_file'        => 'Error: індексний файл $1 не знайдений',
+	'scanset_index_file_error'          => 'Error: помилка в рядку $1 індексного файлу',
+	'scanset_invalid_volume'            => 'Error: неправильний том',
 	'scanset_next'                      => 'Наступна &gt;',
+	'scanset_prev'                      => '&lt; Попередня',
 );
 
 /** Vèneto (Vèneto)

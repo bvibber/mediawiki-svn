@@ -144,6 +144,13 @@ $messages['hu'] = array(
 	'doublewiki-desc' => 'Az adott lap mellett megjeleníti annak fordítását egy másik wikiből, két oszlopban, ugyanazon az oldalon',
 );
 
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'doublewiki-desc' => 'Monstra un pagina e su traduction de un altere wiki in duo columnas in le mesme pagina',
+);
+
 /** Indonesian (Bahasa Indonesia)
  * @author IvanLanin
  */

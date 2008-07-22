@@ -898,6 +898,15 @@ $messages['lb'] = array(
 	'voctrain_hiding'                                               => 'Verstoppen',
 );
 
+/** Nahuatl (Nahuatl)
+ * @author Fluence
+ */
+$messages['nah'] = array(
+	'voctrain_logout'    => 'tiquīzāz',
+	'voctrain_User_name' => 'Tlatēquitiltilīltōcāitl',
+	'voctrain_Language'  => 'Tlahtōlli',
+);
+
 /** Neapolitan (Nnapulitano)
  * @author SabineCretella
  */
@@ -1317,6 +1326,17 @@ $messages['pt'] = array(
  */
 $messages['rif'] = array(
 	'voctrain_logout' => 'ffaɣ',
+);
+
+/** Romanian (Română)
+ * @author KlaudiuMihaila
+ */
+$messages['ro'] = array(
+	'voctrain_continue'  => 'continuă',
+	'voctrain_User_name' => 'Nume de utilizator',
+	'voctrain_Login'     => 'Autentificare',
+	'voctrain_Language'  => 'Limbă',
+	'voctrain_Log_in'    => 'Autentificare',
 );
 
 /** Russian (Русский)

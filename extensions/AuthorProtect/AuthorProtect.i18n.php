@@ -570,6 +570,13 @@ $messages['pt'] = array(
 	'restriction-level-author' => 'Protegida pelo autor',
 );
 
+/** Romanian (Română)
+ * @author KlaudiuMihaila
+ */
+$messages['ro'] = array(
+	'authorprotect-reason' => 'Motiv',
+);
+
 /** Russian (Русский)
  * @author Александр Сигачёв
  */

@@ -164,6 +164,13 @@ $messages['sv'] = array(
 	'antibot-desc' => 'Enkel struktur för spambotskontroller och nyttolastsutlösare.',
 );
 
+/** Ukrainian (Українська)
+ * @author AS
+ */
+$messages['uk'] = array(
+	'antibot-desc' => 'Просте середовище для виявлення спамботів та роботів, що викликають зайве навантаження сервера',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Vinhtantran
  */

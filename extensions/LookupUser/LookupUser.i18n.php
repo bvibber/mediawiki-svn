@@ -239,6 +239,26 @@ $messages['hu'] = array(
 	'lookupuser_useroptions'       => 'Beállításai:',
 );
 
+/** Italian (Italiano)
+ * @author Darth Kule
+ */
+$messages['it'] = array(
+	'lookupuser'                   => 'Guarda informazioni utente',
+	'lookupuser-desc'              => '[[Special:LookupUser|Recupera informazioni]] su un utente come indirizzo e-mail e ID',
+	'lookupuser_intro'             => 'Inserisci un nome utente per visualizzarne le preferenze.',
+	'lookupuser_nonexistent'       => "Errore: l'utente non esiste",
+	'lookupuser_authenticated'     => 'Conferma indirizzo e-mail: $1',
+	'lookupuser_not_authenticated' => 'non confermato',
+	'lookupuser_id'                => 'ID utente: <tt>#$1</tt>',
+	'lookupuser_email'             => 'E-mail: [[Special:Emailuser/$2|$1]]',
+	'lookupuser_no_email'          => 'non fornito',
+	'lookupuser_realname'          => 'Nome vero: $1',
+	'lookupuser_registration'      => 'Data di registrazione: $1',
+	'lookupuser_no_registration'   => 'non disponibile',
+	'lookupuser_touched'           => "Ultima visita registrata dell'utente: $1",
+	'lookupuser_useroptions'       => 'Opzioni utente:',
+);
+
 /** Javanese (Basa Jawa)
  * @author Meursault2004
  */
@@ -272,6 +292,7 @@ $messages['km'] = array(
 	'lookupuser_no_email'          => 'មិនត្រូវបានផ្តល់អោយ',
 	'lookupuser_realname'          => 'ឈ្មោះពិត៖$1',
 	'lookupuser_registration'      => 'កាលបរិច្ឆេទចុះឈ្មោះ​៖ $1',
+	'lookupuser_no_registration'   => 'មិនបានកត់ត្រាទុកទេ',
 	'lookupuser_touched'           => 'រក្សាទុក អ្នកប្រើប្រាស់ ដែលបានប៉ះ ចុងក្រោយ ៖ $1',
 	'lookupuser_useroptions'       => 'ជំរើស នៃអ្នកប្រើប្រាស់ ៖',
 );

@@ -421,6 +421,14 @@ $messages['mr'] = array(
 	'chemFunctions_ChemFormInputError' => 'Chemform: इनपुट त्रुटी!',
 );
 
+/** Nahuatl (Nahuatl)
+ * @author Fluence
+ */
+$messages['nah'] = array(
+	'chemicalsources'        => 'Payelizyōtl tlahtōlcaquiliztilōni',
+	'chemFunctions_ListPage' => 'Payelizyōtl tlahtōlcaquiliztilōni',
+);
+
 /** Low German (Plattdüütsch)
  * @author Slomox
  */
@@ -558,7 +566,18 @@ $messages['pt'] = array(
  * @author KlaudiuMihaila
  */
 $messages['ro'] = array(
-	'chemFunctions_Formula' => 'Formulă',
+	'chemicalsources'                  => 'Surse pentru chimie',
+	'chemicalsource-desc'              => 'Adaugă eticheta <nowiki><chemform></nowiki>, pentru formule chimice',
+	'chemFunctions_ListPage'           => 'Surse pentru chimie',
+	'chemFunctions_DataList'           => 'Mai ajos este inclusă o listă de situri care pot oferi informaţii despre substanţa chimică pe care o căutaţi.<br /><br />
+* <a href="http://webbook.nist.gov/cgi/cbook.cgi?ID=$MIXCASNameFormula&amp;Units=SI">Compusul $MIXCASNameFormula la NIST</a><br />
+* <a href="http://ptcl.chem.ox.ac.uk/MSDS/">MSDS la Universitatea Oxford (nu permite căutare)</a><br />',
+	'chemFunctions_CAS'                => 'Număr CAS',
+	'chemFunctions_ATCCode'            => 'Cod ATC',
+	'chemFunctions_ECNumber'           => 'Număr EC',
+	'chemFunctions_Formula'            => 'Formulă',
+	'chemFunctions_Name'               => 'Nume IUPAC',
+	'chemFunctions_ChemFormInputError' => 'Chemform: intrare eronată!',
 );
 
 /** Russian (Русский)

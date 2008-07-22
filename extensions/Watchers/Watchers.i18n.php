@@ -180,6 +180,19 @@ $messages['hsb'] = array(
 	'watchers_less_than_x'   => 'Mjenje hač $1 wužiwarjow tutu stronu wobkedźbuje.',
 );
 
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'watchers'               => 'Observatores',
+	'watchers_link_title'    => 'Qui observa iste pagina?',
+	'watchers_error_article' => '<b>Error:</b> Pagina non existe.',
+	'watchers_header'        => 'Personas qui observa "$1"',
+	'watchers_noone_watches' => 'Necuno observa iste pagina.',
+	'watchers_x_or_more'     => '$1 o plus personas observa iste pagina.',
+	'watchers_less_than_x'   => 'Minus de $1 personas observa iste pagina.',
+);
+
 /** Italian (Italiano)
  * @author Pietrodn
  */
@@ -314,7 +327,13 @@ $messages['pl'] = array(
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */
 $messages['ps'] = array(
-	'watchers' => 'کتونکي',
+	'watchers'               => 'کتونکي',
+	'watchers_link_title'    => 'څوک همدا مخ ګوري؟',
+	'watchers_error_article' => '<b>ستونزه:</b> همدا مخ شتون نه لري.',
+	'watchers_header'        => 'هغه خلک جې همدا اوس "$1" ګوري',
+	'watchers_noone_watches' => 'همدا مخ اوس هېڅوک نه ګوري.',
+	'watchers_x_or_more'     => '$1 او يا هم تر دې ډېر خلک همدا مخ ګوري.',
+	'watchers_less_than_x'   => 'همدا مخ له $1 لږ خلک ګوري.',
 );
 
 /** Portuguese (Português) */

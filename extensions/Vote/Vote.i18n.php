@@ -402,7 +402,24 @@ $messages['hsb'] = array(
  * @author McDutchie
  */
 $messages['ia'] = array(
-	'vote-login-link' => 'aperir un session',
+	'vote'                => 'Votar',
+	'vote-header'         => "Tu pote votar pro le '''Domino Supreme del Mundo''' hic!",
+	'vote-current'        => "Tu voto actual es pro '''$1.'''",
+	'vote-legend'         => 'Placiar o modificar voto',
+	'vote-caption'        => 'Tu selection:',
+	'vote-choices'        => 'joker|Le Joker
+penguin|Le Pinguin
+sphinx|Sphinx',
+	'vote-submit'         => 'Votar',
+	'vote-registered'     => 'To voto ha essite registrate.',
+	'vote-view-results'   => 'Vider resultatos',
+	'vote-results'        => 'Resultatos del votation',
+	'vote-results-choice' => 'Selection',
+	'vote-results-count'  => 'Computo',
+	'vote-results-none'   => 'Nulle votos ha essite placiate pro le momento.',
+	'vote-login'          => 'Tu debe $1 pro votar.',
+	'vote-login-link'     => 'aperir un session',
+	'vote-invalid-choice' => 'Tu debe seliger un del optiones disponibile.',
 );
 
 /** Indonesian (Bahasa Indonesia)
@@ -706,6 +723,13 @@ $messages['pt'] = array(
 	'vote-results-none'   => 'De momento ainda não foram submetidos votos.',
 	'vote-login'          => 'Terá de $1 para votar.',
 	'vote-invalid-choice' => 'Deverá seleccionar uma das opções disponíveis.',
+);
+
+/** Romanian (Română)
+ * @author KlaudiuMihaila
+ */
+$messages['ro'] = array(
+	'vote-login-link' => 'autentificare',
 );
 
 /** Russian (Русский)

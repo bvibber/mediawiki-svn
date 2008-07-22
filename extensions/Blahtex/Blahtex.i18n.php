@@ -1071,6 +1071,7 @@ $messages['km'] = array(
 
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
+ * @author Siebrand
  */
 $messages['lb'] = array(
 	'math-desc'                             => 'MathML Resultat fir &lt;math&gt; Taggen',
@@ -1079,6 +1080,7 @@ $messages['lb'] = array(
 	'math_NotEnoughArguments'               => 'Dir hutt net genuch Parameter ugi fir "$1"',
 	'math_TooManyTokens'                    => 'Dat wat Dir aginn hutt ass ze laang',
 	'math_UnavailableSymbolFontCombination' => 'D\'Symbol "$1" gëtt et an der Schrëft "$2" net.',
+	'math_UnmatchedOpenBracket'             => 'D\'Klammer "[" as net mat der Klammer "]" zougemaach',
 	'math_UnrecognisedCommand'              => 'Unbekannte Commande "$1"',
 );
 

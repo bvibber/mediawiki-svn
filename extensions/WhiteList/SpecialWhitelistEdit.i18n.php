@@ -171,6 +171,7 @@ $allMessages['bg'] = array(
 	'whitelisttableremove'     => 'Премахване',
 	'whitelistnewtabledate'    => 'Дата на изтичане:',
 	'whitelistpagelist'        => 'Страници за $1 в {{SITENAME}}',
+	'whitelistnocalendar'      => "<font color='red' size=3>Изглежда разширението [http://www.mediawiki.org/wiki/Extension:Usage_Statistics Extension:UsageStatistics], което е необходимо, не е инсталирано както трябва!</font>",
 	'whitelistbadtitle'        => 'Грешно заглавие -',
 	'whitelistoverviewcd'      => "* Промяна на датата за [[:$2|$2]] на '''$1'''",
 	'whitelistoverviewrm'      => '* Премахване на достъпа до [[:$1|$1]]',
@@ -569,6 +570,7 @@ $allMessages['krj'] = array(
  */
 $allMessages['ksh'] = array(
 	'whitelisttablemodifyall' => 'All ändere',
+	'whitelisttableedit'      => 'Ändere',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -669,6 +671,15 @@ $2',
 हे पान फक्त प्रतिबंधित सदस्यांसाठीच आहे",
 	'whitelistnever'           => 'कधीही नाही',
 	'whitelistnummatches'      => ' - $1 जुळण्या',
+);
+
+/** Nahuatl (Nahuatl)
+ * @author Fluence
+ */
+$allMessages['nah'] = array(
+	'whitelisttablemodifyall' => 'Mochīntīn',
+	'whitelistbadtitle'       => 'Ahcualli tōcāitl -',
+	'whitelistnever'          => 'aīcmah',
 );
 
 /** Low German (Plattdüütsch)
@@ -952,6 +963,15 @@ $allMessages['pt'] = array(
 $allMessages['rif'] = array(
 	'whitelisttablemodifyall' => 'Maṛṛa',
 	'whitelisttableedit'      => 'Arri',
+);
+
+/** Romanian (Română)
+ * @author KlaudiuMihaila
+ */
+$allMessages['ro'] = array(
+	'whitelisttableedit'   => 'Modifică',
+	'whitelisttableremove' => 'Elimină',
+	'whitelistnever'       => 'niciodată',
 );
 
 /** Russian (Русский)

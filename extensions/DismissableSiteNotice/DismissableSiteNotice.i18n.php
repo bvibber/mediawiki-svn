@@ -372,6 +372,14 @@ $messages['ko'] = array(
 	'sitenotice-desc'  => '사용자가 알림말을 숨길 수 있습니다.',
 );
 
+/** Ripoarisch (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'sitenotice_close' => "maach fott, ha'sch jelesse",
+	'sitenotice-desc'  => "Löht de Lesser un de Metmaachere de <span lang=\"en\">''Sitenotice''</span> ußblende",
+);
+
 /** Latin (Latina)
  * @author UV
  */
@@ -622,6 +630,13 @@ $messages['th'] = array(
  */
 $messages['tr'] = array(
 	'sitenotice_close' => 'Kapat',
+);
+
+/** Tsonga (Xitsonga)
+ * @author Thuvack
+ */
+$messages['ts'] = array(
+	'sitenotice_close' => 'Unga tekeli enhlokweni',
 );
 
 /** Ukrainian (Українська)

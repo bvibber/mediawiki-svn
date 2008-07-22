@@ -641,6 +641,16 @@ $messages['ms'] = array(
 	'countedits-ok' => 'OK',
 );
 
+/** Nahuatl (Nahuatl)
+ * @author Fluence
+ */
+$messages['nah'] = array(
+	'countedits'            => 'Tlapōhua tlapatlaliztli',
+	'countedits-username'   => 'Tlatēquitiltilīltōcāitl:',
+	'countedits-ok'         => 'Cualli',
+	'countedits-resulttext' => '$1 ōquichīuh $2 tlapatlaliztli',
+);
+
 /** Low German (Plattdüütsch)
  * @author Slomox
  */
@@ -799,6 +809,7 @@ $messages['ro'] = array(
 	'countedits'              => 'Număr de modificări',
 	'countedits-warning'      => "'''Atenţie:''' Nu judeca o carte după copertă. Nu judeca un contribuitor după numărul de modificări.",
 	'countedits-username'     => 'Nume de utilizator:',
+	'countedits-ok'           => 'OK',
 	'countedits-nosuchuser'   => 'Nu există nici un utilizator cu numele $1.',
 	'countedits-resultheader' => 'Rezultate pentru $1',
 	'countedits-resulttext'   => '$1 a efectuat {{PLURAL:$2|o modificare|$2 modificări}}',

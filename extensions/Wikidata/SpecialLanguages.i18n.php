@@ -2034,6 +2034,15 @@ $wdMessages['mwl'] = array(
 	'ow_Language' => 'Lhéngua',
 );
 
+/** Nahuatl (Nahuatl)
+ * @author Fluence
+ */
+$wdMessages['nah'] = array(
+	'ow_save'     => 'Ticpiyāz',
+	'ow_dm_OK'    => 'Cualli',
+	'ow_Language' => 'Tlahtōlli',
+);
+
 /** Low German (Plattdüütsch)
  * @author Slomox
  */
@@ -2794,7 +2803,15 @@ $wdMessages['rif'] = array(
  * @author KlaudiuMihaila
  */
 $wdMessages['ro'] = array(
-	'datasearch' => 'Wikidata: Căutare de date',
+	'datasearch'                => 'Wikidata: Căutare de date',
+	'ow_save'                   => 'Salvează',
+	'ow_history'                => 'Istoric',
+	'ow_dm_OK'                  => 'OK',
+	'ow_ClassAttributeType'     => 'Tip',
+	'ow_Language'               => 'Limbă',
+	'ow_OptionAttributeOptions' => 'Opţiuni',
+	'ow_Source'                 => 'Sursă',
+	'ow_Value'                  => 'Valoare',
 );
 
 /** Russian (Русский)

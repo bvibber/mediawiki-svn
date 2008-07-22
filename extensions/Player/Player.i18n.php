@@ -414,6 +414,13 @@ $messages['mr'] = array(
 	'player-goto-file'     => 'संचिका',
 );
 
+/** Nahuatl (Nahuatl)
+ * @author Fluence
+ */
+$messages['nah'] = array(
+	'player-goto-page' => 'Zāzanilli',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */
@@ -567,6 +574,7 @@ $messages['pt'] = array(
  */
 $messages['ro'] = array(
 	'player-file'      => 'Nume fişier',
+	'player-goto-page' => 'Pagină',
 	'player-goto-file' => 'fişier',
 );
 

@@ -128,11 +128,25 @@ $messages['hu'] = array(
 	'skinperpage-desc' => '<tt>&lt;skin&gt;</tt> tag, ami segítségével laponként más felületet lehet beállítani',
 );
 
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'skinperpage-desc' => 'Adde le etiquetta <tt>&lt;skin&gt;</tt> pro usar stilos differente per pagina',
+);
+
 /** Indonesian (Bahasa Indonesia)
  * @author Rex
  */
 $messages['id'] = array(
 	'skinperpage-desc' => 'Menambahkan tag <tt>&lt;kulit&gt;</tt> untuk menggunakan kulit yang berbeda per halaman',
+);
+
+/** Italian (Italiano)
+ * @author Melos
+ */
+$messages['it'] = array(
+	'skinperpage-desc' => 'Aggiunge il tag <tt>&lt;skin&gt;</tt> per usare differenti skin per pagina',
 );
 
 /** Javanese (Basa Jawa)

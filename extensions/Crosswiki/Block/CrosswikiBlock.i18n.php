@@ -67,6 +67,7 @@ $messages['niu'] = array(
  */
 $messages['af'] = array(
 	'crosswikiblock-reason'         => 'Rede:',
+	'crosswikiblock-noemail'        => 'Verbied gebruiker om e-pos te stuur',
 	'crosswikiunblock-reason'       => 'Rede:',
 	'crosswikiblock-alreadyblocked' => 'Gebruiker $3 is reeds geblok.',
 );
@@ -1161,6 +1162,30 @@ Voltar para:
 * [[Special:CrosswikiBlock|Formulário de bloqueio]]
 * [[$4]]",
 	'crosswikiunblock-local'        => 'Desbloqueios locais são podem ser efectuados a partir deste interface. Use [[Special:Ipblocklist]]',
+);
+
+/** Romanian (Română)
+ * @author KlaudiuMihaila
+ */
+$messages['ro'] = array(
+	'crosswikiblock'                => 'Blochează utilizator pe alt wiki',
+	'crosswikiblock-reason'         => 'Motiv:',
+	'crosswikiblock-submit'         => 'Blochează acest utilizator',
+	'crosswikiblock-anononly'       => 'Blochează doar utilizatorii anonimi',
+	'crosswikiblock-nocreate'       => 'Nu permite crearea de conturi',
+	'crosswikiblock-noemail'        => 'Nu permite utilizatorului să trimită e-mail',
+	'crosswikiunblock'              => 'Deblochează utilizator pe alt wiki',
+	'crosswikiunblock-header'       => 'Această pagină permite deblocarea utilizatorilor de pe alte wiki.
+Vă rugăm să verificaţi dacă vi se permite să acţionaţi pe acest wiki şi că respectaţi toate politicile.',
+	'crosswikiunblock-reason'       => 'Motiv:',
+	'crosswikiunblock-submit'       => 'Deblochează acest utilizator',
+	'crosswikiblock-nousername'     => 'Nu a fost introdus nici un nume de utilizator',
+	'crosswikiblock-dbnotfound'     => 'Baza de date $1 nu există',
+	'crosswikiblock-noname'         => '"$1" nu este un nume de utilizator valid.',
+	'crosswikiblock-nouser'         => 'Utilizatorul "$3" nu este găsit.',
+	'crosswikiblock-noreason'       => 'Nici un motiv specificat.',
+	'crosswikiblock-alreadyblocked' => 'Utilizatorul $3 este deja blocat.',
+	'crosswikiblock-noblock'        => 'Acest utilizator nu este blocat.',
 );
 
 /** Russian (Русский)

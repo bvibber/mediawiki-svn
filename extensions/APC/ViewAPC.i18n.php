@@ -140,6 +140,7 @@ $messages['niu'] = array(
  * @author Naudefj
  */
 $messages['af'] = array(
+	'viewapc-info-general'      => 'Algemene inligting',
 	'viewapc-apc-version'       => 'APC weergawe',
 	'viewapc-php-version'       => 'PHP weergawe',
 	'viewapc-display-value'     => 'Waarde',
@@ -1576,6 +1577,7 @@ $messages['nah'] = array(
 	'viewapc-ls-submit'      => '¡Yāuh!',
 	'viewapc-ls-header-name' => 'Tōcāitl',
 	'viewapc-ls-sort-name'   => 'Tōcāitl',
+	'viewapc-ls-limit-none'  => 'Mochīntīn',
 );
 
 /** Low German (Plattdüütsch)
@@ -2089,7 +2091,41 @@ $messages['rif'] = array(
  * @author KlaudiuMihaila
  */
 $messages['ro'] = array(
-	'viewapc-display-filename' => 'Nume fişier',
+	'viewapc'                       => 'Informaţii APC',
+	'viewapc-clear-confirm'         => 'Doriţi golirea cache-ului?',
+	'viewapc-clear-user-cache'      => 'Goleşte cache-ul utilizatorului',
+	'viewapc-mode-version-check'    => 'Verifică versiunea',
+	'viewapc-info-general'          => 'Informaţii generale',
+	'viewapc-apc-version'           => 'Versiune APC',
+	'viewapc-php-version'           => 'Versiune PHP',
+	'viewapc-cached-files-d'        => '$1 {{PLURAL:$1|fişier|fişiere}} ($2)',
+	'viewapc-rps'                   => '$1 cereri pe secundă',
+	'viewapc-memory-free'           => 'Liber: $1 ($2)',
+	'viewapc-memory-used'           => 'Utilizat: $1 ($2)',
+	'viewapc-fragmentation-none'    => 'Fragmentare: fără fragmentare',
+	'viewapc-display-attribute'     => 'Atribut',
+	'viewapc-display-value'         => 'Valoare',
+	'viewapc-display-filename'      => 'Nume fişier',
+	'viewapc-display-info'          => 'Nume',
+	'viewapc-display-type'          => 'Tip',
+	'viewapc-display-mtime'         => 'Modificat',
+	'viewapc-display-creation_time' => 'Creat',
+	'viewapc-display-deletion_time' => 'Şters',
+	'viewapc-display-access_time'   => 'accesat',
+	'viewapc-display-mem_size'      => 'Mărime',
+	'viewapc-display-stored-value'  => 'Valoare memorată',
+	'viewapc-ls-options-legend'     => 'Opţiuni',
+	'viewapc-ls-header-name'        => 'Nume',
+	'viewapc-ls-header-size'        => 'Mărime',
+	'viewapc-ls-header-created'     => 'Creat',
+	'viewapc-ls-header-deleted'     => 'Şters',
+	'viewapc-ls-scope-active'       => 'Activ',
+	'viewapc-ls-scope-deleted'      => 'Şters',
+	'viewapc-ls-sort-size'          => 'Mărime',
+	'viewapc-ls-sort-name'          => 'Nume',
+	'viewapc-ls-sort-created'       => 'Creat',
+	'viewapc-ls-sort-deleted'       => 'Şters',
+	'viewapc-version-info'          => 'Informaţii despre versiune',
 );
 
 /** Russian (Русский)

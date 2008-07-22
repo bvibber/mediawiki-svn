@@ -30,6 +30,15 @@ $messages['de'] = array(
 	'untidy' => 'Nicht ordnen',
 );
 
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
+$messages['eo'] = array(
+	'tidy-desc' => "Aldonas langeton 'ordigi' aŭ 'malordigi' (depende de \$wgUseTidy) en normaj paĝoj por anstataŭigi la ĝenerala HTML ordigado por unuopa vido",
+	'tidy'      => 'Ordigi',
+	'untidy'    => 'Malordigi',
+);
+
 /** French (Français)
  * @author Grondin
  */

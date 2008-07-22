@@ -302,6 +302,14 @@ $messages['hy'] = array(
 	'deletedcontributions' => 'Մասնակցի ջնջված ներդրում',
 );
 
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'deletedcontributions'      => 'Contributiones delite de usatores',
+	'deletedcontributions-desc' => 'Permitte que le admininistratores [[Special:DeletedContributions|visualisa le modificationes delite]] de un usator',
+);
+
 /** Indonesian (Bahasa Indonesia)
  * @author IvanLanin
  */

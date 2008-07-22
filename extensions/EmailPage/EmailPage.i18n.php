@@ -43,7 +43,9 @@ $messages['ar'] = array(
 	'ea-heading'          => '=== مراسلة صفحة [[$1]] ===',
 	'ea-fromgroup'        => 'من مجموعة:',
 	'ea-pagesend'         => 'الصفحة "$1" أُرسلت من $2',
+	'ea-nopage'           => 'من فضلك حدد صفحة للإرسال، على سبيل المثال [[Special:EmailPage/Main Page]].',
 	'ea-norecipients'     => 'لا عناوين بريد إلكتروني صحيحة وُجدت!',
+	'ea-listrecipients'   => '=== {{PLURAL:$1|متلقي|$1 متلقي}} ===',
 	'ea-error'            => "'''خطأ في إرسال [[$1]]:''' ''$2''",
 	'ea-denied'           => 'السماح مرفوض',
 	'ea-selectrecipients' => 'اختر المتلقين',
@@ -51,6 +53,7 @@ $messages['ar'] = array(
 	'ea-show'             => 'عرض المتلقين',
 	'ea-send'             => 'أرسل!',
 	'ea-subject'          => 'أدخل سطر عنوان للبريد الإلكتروني',
+	'ea-selectcss'        => 'اختر شريحة CSS',
 );
 
 /** Bulgarian (Български)
@@ -217,6 +220,14 @@ $messages['mr'] = array(
 	'ea-selectcss'        => 'सीएसएस स्टाइलशीट पाठवा',
 );
 
+/** Nahuatl (Nahuatl)
+ * @author Fluence
+ */
+$messages['nah'] = array(
+	'emailpages' => 'E-mail zāzanilli',
+	'ea-heading' => '=== E-mailhua in zāzanilli $1 ===',
+);
+
 /** Low German (Plattdüütsch)
  * @author Slomox
  */
@@ -330,6 +341,14 @@ $messages['pl'] = array(
 	'ea-subject'          => 'Wprowadź temat wiadomości e-mail',
 	'ea-header'           => 'Dołączanie zawartości z dodatkową informacją.',
 	'ea-selectcss'        => 'Wybierz styl CSS',
+);
+
+/** Romanian (Română)
+ * @author KlaudiuMihaila
+ */
+$messages['ro'] = array(
+	'ea-fromgroup' => 'Din grupul:',
+	'ea-send'      => 'Trimite!',
 );
 
 /** Slovak (Slovenčina)

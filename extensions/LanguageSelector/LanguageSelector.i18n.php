@@ -334,6 +334,13 @@ $messages['mr'] = array(
 	'languageselector-setlang' => 'सेट (set)',
 );
 
+/** Nahuatl (Nahuatl)
+ * @author Fluence
+ */
+$messages['nah'] = array(
+	'languageselector' => 'Tlahtōlli',
+);
+
 /** Low German (Plattdüütsch)
  * @author Slomox
  */
@@ -433,6 +440,13 @@ $messages['qu'] = array(
 	'languageselector'         => 'Rimay',
 	'languageselector-desc'    => "Tukuy p'anqakunapi rimay akllana, watukuqkunapaqpas",
 	'languageselector-setlang' => 'churay',
+);
+
+/** Romanian (Română)
+ * @author KlaudiuMihaila
+ */
+$messages['ro'] = array(
+	'languageselector' => 'Limbă',
 );
 
 /** Russian (Русский)

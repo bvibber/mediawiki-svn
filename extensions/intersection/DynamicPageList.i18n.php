@@ -241,6 +241,17 @@ $messages['hu'] = array(
 	'intersection_noincludecats' => 'Error: Tartalmaznod kell legalább egy kategóriát különösképpen a névtérre!',
 );
 
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'intersection-desc'          => 'Face un lista a punctos del elementos le plus recente in un categoria, o un union de plure categorias',
+	'intersection_toomanycats'   => 'Error: Troppo de categorias!',
+	'intersection_toofewcats'    => 'Error: Non bastante categorias!',
+	'intersection_noresults'     => 'Error: Nulle resultatos!',
+	'intersection_noincludecats' => 'Error: Tu debe includer al minus un categoria, o specificar un spatio de nomines!',
+);
+
 /** Indonesian (Bahasa Indonesia)
  * @author IvanLanin
  */

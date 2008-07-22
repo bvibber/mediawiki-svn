@@ -294,6 +294,13 @@ $messages['pt'] = array(
 	'contributionseditcount-desc' => 'Mostra uma contagem de edições em [[Special:Contributions]]',
 );
 
+/** Romanian (Română)
+ * @author KlaudiuMihaila
+ */
+$messages['ro'] = array(
+	'contributionseditcount' => 'Acest utilizator are $1 modificări.',
+);
+
 /** Russian (Русский)
  * @author Александр Сигачёв
  */

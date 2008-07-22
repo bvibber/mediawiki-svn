@@ -38,6 +38,7 @@ $messages['af'] = array(
  * @author Meno25
  */
 $messages['ar'] = array(
+	'editsimilar-desc'         => 'يشجع المستخدمين على تعديل صفحة مشابهة بعد حفظ صفحة',
 	'editsimilar-thankyou'     => 'شكرا لمساهمتك، $1!',
 	'editsimilar-link-disable' => 'ضبط الخيارات',
 	'tog-edit-similar'         => 'تفعيل اقتراحات الصفحات المشابهة',
@@ -254,6 +255,19 @@ Ten artykuł również może potrzebować twojej pomocy: $1.',
 	'editsimilar-thankyou'                       => 'Dzięki za Twoją edycję, $1!',
 	'editsimilar-link-disable'                   => 'zmień ustawienia',
 	'tog-edit-similar'                           => 'Włącz sugestie edycji podobnych artykułów',
+);
+
+/** Romanian (Română)
+ * @author KlaudiuMihaila
+ */
+$messages['ro'] = array(
+	'editsimilar-thanks'              => 'Vă mulţumim pentru contribuţia dumneavoastră.
+Vizitaţi şi paginile conexe: $1.',
+	'editsimilar-thanks-singleresult' => 'Vă mulţumim pentru contribuţia dumneavoastră.
+Vizitaţi şi pagina conexă: $1.',
+	'editsimilar-thanks-notsimilar'   => 'Vă mulţumim pentru contribuţia dumneavoastră.
+Şi aceste pagini ar avea nevoie de ajutorul dumneavoastră: $1.',
+	'editsimilar-thankyou'            => 'Mulţumim pentru contribuţia dumneaovastră, $1!',
 );
 
 /** Slovak (Slovenčina)

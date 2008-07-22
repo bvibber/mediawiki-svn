@@ -829,6 +829,13 @@ $messages['mt'] = array(
 	'createarticle'           => 'Oħloq paġna',
 );
 
+/** Nahuatl (Nahuatl)
+ * @author Fluence
+ */
+$messages['nah'] = array(
+	'createarticle' => 'Ticchīhuāz zāzanilli',
+);
+
 /** Min Nan Chinese (Bân-lâm-gú) */
 $messages['nan'] = array(
 	'searchfulltext' => 'Chhiau choan-bûn',
@@ -1170,6 +1177,13 @@ $messages['to'] = array(
 $messages['tr'] = array(
 	'searchfulltext' => 'Tüm metni ara',
 	'createarticle'  => 'Sayfayı oluştur',
+);
+
+/** Tsonga (Xitsonga)
+ * @author Thuvack
+ */
+$messages['ts'] = array(
+	'createarticle' => 'Tumbuluxa tluka',
 );
 
 /** Ukrainian (Українська)

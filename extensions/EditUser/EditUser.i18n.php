@@ -43,10 +43,16 @@ $messages['niu'] = array(
 
 /** Afrikaans (Afrikaans)
  * @author Arnobarnard
+ * @author Naudefj
  */
 $messages['af'] = array(
+	'edituser-desc'     => 'Laat bevoegde gebruikers toe om ander gebruikers se voorkeure te wysig',
+	'edituser'          => 'Wysig gebruiker',
+	'edituser-logout'   => 'Teken gebruiker af',
 	'edituser-username' => 'Naam',
 	'edituser-dosearch' => 'Soek',
+	'edituser-nouser'   => 'Die gebruiker bestaan nie',
+	'edituser-exempt'   => 'Die gebruiker kan nie gewysig word nie',
 );
 
 /** Arabic (العربية)
@@ -565,7 +571,9 @@ $messages['rif'] = array(
  * @author KlaudiuMihaila
  */
 $messages['ro'] = array(
+	'edituser-username' => 'Nume',
 	'edituser-dosearch' => 'Caută',
+	'edituser-nouser'   => 'Utilizatorul specificat nu există.',
 );
 
 /** Russian (Русский)

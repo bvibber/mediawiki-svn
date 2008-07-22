@@ -549,6 +549,27 @@ $messages['hy'] = array(
 	'usernameblacklist-invalid-lines' => 'Մասնակցայի անունների արգելման ցանկի հետևյալ {{PLURAL:$1|տողը|տողերը}} անթույլատրելի են; խնդրում ենք ուղղել {{PLURAL:$1|դա|դրանք}} էջը հիշելուց առաջ.',
 );
 
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'usernameblacklist-desc'          => 'Adde un [[MediaWiki:Usernameblacklist|lista nigre de nomines de usator]] pro restringer le creation de contos de usator correspondente a un o plus expressiones regular',
+	'blacklistedusername'             => 'Nomine de usator prohibite per lista nigre',
+	'blacklistedusernametext'         => 'Le nomine de usator que tu ha seligite se trova in le [[MediaWiki:Usernameblacklist|lista nigre de nomines de usator]] e pro isto es prohibite.
+Per favor selige un altere nomine.',
+	'usernameblacklist'               => '<pre>
+# Le entratas in iste lista es usate como parte de un expression regular pro
+# impedir le creation de nomines de usator prohibite. Cata entrata debe esser
+# parte de un lista a punctos, per exemplo:
+#
+# * Alco
+# * [Aa]lcuno
+</pre>',
+	'usernameblacklist-invalid-lines' => 'Le sequente {{PLURAL:$1|linea|lineas}} in le lista nigre de nomines de usator es invalide;
+per favor corrige {{PLURAL:$1|lo|los}} ante que tu lo immagazina:',
+	'right-uboverride'                => 'Ultrapassar le lista nigre de nomines de usator',
+);
+
 /** Indonesian (Bahasa Indonesia)
  * @author IvanLanin
  * @author Rex

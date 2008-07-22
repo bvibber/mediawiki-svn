@@ -280,6 +280,13 @@ $messages['ms'] = array(
 	'profiling-ok' => 'OK',
 );
 
+/** Nahuatl (Nahuatl)
+ * @author Fluence
+ */
+$messages['nah'] = array(
+	'profiling-ok' => 'Cualli',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */
@@ -391,6 +398,13 @@ $messages['pt'] = array(
 	'profiling-data-count'   => 'Contagem',
 	'profiling-data-time'    => 'Tempo (todos)',
 	'profiling-data-average' => 'Tempo (média)',
+);
+
+/** Romanian (Română)
+ * @author KlaudiuMihaila
+ */
+$messages['ro'] = array(
+	'profiling-ok' => 'OK',
 );
 
 /** Russian (Русский)

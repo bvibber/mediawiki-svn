@@ -34,6 +34,7 @@ $messages['af'] = array(
  * @author Meno25
  */
 $messages['ar'] = array(
+	'createbox-desc'   => 'صندوق إدخال متخصص لإنشاء الصفحات',
 	'createbox-create' => 'إنشاء',
 );
 
@@ -153,6 +154,13 @@ $messages['mt'] = array(
 Ma tistax toħloq din il-paġna, imma tista' [{{fullurl:{{FULLPAGENAME}}|action=edit}} timmodifikaha], [{{fullurl:{{FULLPAGENAME}}}} taqraha] jew tagħżel li tikkrea paġna differenti bl-użu tal-kaxxa t'hawn taħt.
 
 <createbox>break=no</createbox>",
+);
+
+/** Nahuatl (Nahuatl)
+ * @author Fluence
+ */
+$messages['nah'] = array(
+	'createbox-create' => 'Ticchīhuāz',
 );
 
 /** Dutch (Nederlands)

@@ -765,6 +765,21 @@ $messages['pt'] = array(
 	'duplicator-toomanyrevisions'      => '[[$1]] possui demasiadas ($2) revisões e não pode ser copiada. O limite actual é $3.',
 );
 
+/** Romanian (Română)
+ * @author KlaudiuMihaila
+ */
+$messages['ro'] = array(
+	'duplicator-options'               => 'Opţiuni',
+	'duplicator-source'                => 'Sursă:',
+	'duplicator-dest'                  => 'Destinaţie:',
+	'duplicator-summary'               => 'Copiat de la [[$1]]',
+	'duplicator-success-revisions'     => '$1 {{PLURAL:$1|versiune a fost|versiuni au fost}} copiate.',
+	'duplicator-success-talkcopied'    => 'A fost copiată şi pagina de discuţii.',
+	'duplicator-success-talknotcopied' => 'Pagina de discuţii nu a putut fi copiată.',
+	'duplicator-failed'                => 'Pagina nu a putut fi duplicată.
+A apărut o eroare necunoscută.',
+);
+
 /** Russian (Русский)
  * @author Александр Сигачёв
  */

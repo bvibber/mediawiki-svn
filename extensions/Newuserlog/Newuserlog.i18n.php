@@ -757,10 +757,13 @@ $messages['ko'] = array(
  * @author Purodha
  */
 $messages['ksh'] = array(
-	'newuserlogpage'           => 'Logbooch för nöü Metmaachere',
-	'newuserlogpagetext'       => 'He sin de Metmaacher opjelėßß, di sesh nöü aanjemäldt han.',
-	'newuserlog-create-entry'  => 'eß enne nöüje User',
-	'newuserlog-create2-entry' => 'Nöüje Zojang enjerėshdt för „$1“',
+	'newuserlogpage'              => 'Logbooch för nöü Metmaachere',
+	'newuserlogpagetext'          => 'He sin de Metmaacher opjelėßß, di sesh nöü aanjemäldt han.',
+	'newuserlog-desc'             => 'Deit dat [[Special:Log/newusers|Logbooch med de neu aanjemelldt Metmaacher]] bei de [[Special:Log|Logböcher]]',
+	'newuserlog-byemail'          => ' dat Paßwood wood med de e-mail loßjescheck',
+	'newuserlog-create-entry'     => 'eß enne nöüje User',
+	'newuserlog-create2-entry'    => 'Nöüje Zojang enjerėshdt för „$1“',
+	'newuserlog-autocreate-entry' => 'dä Metmaacher wood automattesch aanjemelldt',
 );
 
 /** Kurdish (Latin) (Kurdî / كوردی (Latin)) */
@@ -1065,11 +1068,14 @@ $messages['qu'] = array(
 /** Romanian (Română)
  * @author Emily
  * @author לערי ריינהארט
+ * @author KlaudiuMihaila
  */
 $messages['ro'] = array(
-	'newuserlogpage'           => 'Jurnal utilizatori noi',
-	'newuserlog-create-entry'  => 'Utilizator nou',
-	'newuserlog-create2-entry' => 'a deschis cont pentru $1',
+	'newuserlogpage'              => 'Jurnal utilizatori noi',
+	'newuserlog-byemail'          => 'parola trimisă prin e-mail',
+	'newuserlog-create-entry'     => 'Utilizator nou',
+	'newuserlog-create2-entry'    => 'a deschis cont pentru $1',
+	'newuserlog-autocreate-entry' => 'Cont creat automat',
 );
 
 /** Russian (Русский)
@@ -1241,6 +1247,13 @@ $messages['tr'] = array(
 	'newuserlog-create-entry'     => 'Yeni kullanıcı',
 	'newuserlog-create2-entry'    => '$1 yeni hesap oluşturdu',
 	'newuserlog-autocreate-entry' => 'Otomatik hesap oluşturuldu',
+);
+
+/** Tsonga (Xitsonga)
+ * @author Thuvack
+ */
+$messages['ts'] = array(
+	'newuserlog-create-entry' => 'Mutirhisi muntswa',
 );
 
 /** Tahitian (Reo Mā`ohi)

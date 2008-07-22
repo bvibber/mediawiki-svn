@@ -811,7 +811,8 @@ $messages['mr'] = array(
  * @author Fluence
  */
 $messages['nah'] = array(
-	'regexblock-view-go' => 'Yāuh',
+	'regexblock-view-all' => 'Mochīntīn',
+	'regexblock-view-go'  => 'Yāuh',
 );
 
 /** Dutch (Nederlands)
@@ -1093,6 +1094,15 @@ $messages['pt'] = array(
 $messages['rif'] = array(
 	'regexblock-view-all' => 'Maṛṛa',
 	'regexblock-view-go'  => 'Raḥ ɣa',
+);
+
+/** Romanian (Română)
+ * @author KlaudiuMihaila
+ */
+$messages['ro'] = array(
+	'regexblock-form-reason'     => 'Motiv:',
+	'regexblock-already-blocked' => '$1 este deja blocat.',
+	'regexblock-stats-username'  => 'Pentru $1',
 );
 
 /** Russian (Русский)

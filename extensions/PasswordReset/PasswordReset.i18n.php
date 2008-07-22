@@ -339,10 +339,26 @@ $messages['is'] = array(
 
 /** Italian (Italiano)
  * @author Pietrodn
+ * @author Darth Kule
  */
 $messages['it'] = array(
-	'passwordreset-badtoken' => 'Edit token non valido',
-	'passwordreset-username' => 'Nome utente',
+	'passwordreset'                    => 'Reimposta password',
+	'passwordreset-desc'               => "Reimposta le password di utenti della wiki - richiede dei privilegi 'passwordreset'",
+	'passwordreset-invalidusername'    => 'Nome utente non valido',
+	'passwordreset-emptyusername'      => 'Nome utente vuoto',
+	'passwordreset-nopassmatch'        => 'Le password non corrispondono',
+	'passwordreset-badtoken'           => 'Edit token non valido',
+	'passwordreset-username'           => 'Nome utente',
+	'passwordreset-newpass'            => 'Nuova password',
+	'passwordreset-confirmpass'        => 'Conferma password',
+	'passwordreset-submit'             => 'Reimposta password',
+	'passwordreset-success'            => 'La password è stata reimpostata per user_id: $1',
+	'passwordreset-disableuser'        => 'Disabilitare account?',
+	'passwordreset-disableuserexplain' => "(imposta una hash password non valida - l'utente non può effettuare il login)",
+	'passwordreset-disablesuccess'     => "L'account è stato disabilitato (ID utente: $1)",
+	'passwordreset-accountdisabled'    => "L'account è stato dsiabilitato",
+	'disabledusers'                    => 'Utenti disabilitati',
+	'disabledusers-summary'            => 'Questa è la lista degli utenti che sono stati disabilitati con PasswordReset.',
 );
 
 /** Javanese (Basa Jawa)
@@ -383,6 +399,7 @@ $messages['ksh'] = array(
  */
 $messages['lb'] = array(
 	'passwordreset'                 => 'Passwuert zrécksetzen',
+	'passwordreset-desc'            => "Zrécksetzen vu Benotzerpasswierder - Dir braucht dofir 'Passwordreset'-Rechter",
 	'passwordreset-invalidusername' => 'Onbekannte Benotzernumm',
 	'passwordreset-emptyusername'   => 'Eidele Benotzernumm',
 	'passwordreset-nopassmatch'     => 'Déi Passwierder déi Dir aginn hutt sinn net identesch',
@@ -439,6 +456,13 @@ $messages['mr'] = array(
 	'passwordreset-accountdisabled'    => 'खाते बंद केलेले आहे',
 	'disabledusers'                    => 'बंद केलेले सदस्य',
 	'disabledusers-summary'            => 'ही अशा सदस्यांची यादी आहे ज्यांची खाती PasswordReset वापरून बंद करण्यात आलेली आहेत.',
+);
+
+/** Nahuatl (Nahuatl)
+ * @author Fluence
+ */
+$messages['nah'] = array(
+	'passwordreset-username' => 'Tlatēquitiltilīltōcāitl',
 );
 
 /** Dutch (Nederlands)
@@ -599,6 +623,13 @@ $messages['pt'] = array(
  */
 $messages['rm'] = array(
 	'passwordreset-username' => "Num d'utilisader",
+);
+
+/** Romanian (Română)
+ * @author KlaudiuMihaila
+ */
+$messages['ro'] = array(
+	'passwordreset-username' => 'Nume de utilizator',
 );
 
 /** Russian (Русский)

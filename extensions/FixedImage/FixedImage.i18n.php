@@ -144,6 +144,13 @@ $messages['id'] = array(
 	'fixedimage-desc' => 'Menambahkan tag <tt><nowiki><fundraising></nowiki></tt> sebagai sebuah gambar',
 );
 
+/** Italian (Italiano)
+ * @author Darth Kule
+ */
+$messages['it'] = array(
+	'fixedimage-desc' => "Aggiunge il marcatore <tt><nowiki><fundraising></nowiki></tt> come un'immagine",
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
@@ -198,6 +205,13 @@ $messages['pl'] = array(
  */
 $messages['pt'] = array(
 	'fixedimage-desc' => 'Adiciona a marca <tt><nowiki><fundraising></nowiki></tt> como uma imagem',
+);
+
+/** Romanian (Română)
+ * @author KlaudiuMihaila
+ */
+$messages['ro'] = array(
+	'fixedimage-desc' => 'Adaugă eticheta <tt><nowiki><fundraising></nowiki></tt> ca imagine',
 );
 
 /** Russian (Русский)

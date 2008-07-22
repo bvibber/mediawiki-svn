@@ -496,6 +496,13 @@ $messages['mr'] = array(
 	'right-povwatch_user'              => 'इतर सदस्यांच्या पहार्‍याच्या सूचीत पाने वाढवा',
 );
 
+/** Nahuatl (Nahuatl)
+ * @author Fluence
+ */
+$messages['nah'] = array(
+	'povwatch_title' => 'Tōcāitl:',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  * @author GerardM
@@ -649,6 +656,13 @@ $messages['pt'] = array(
 	'povwatch_unsubscribe'     => 'Cancelar subscrição',
 	'povwatch_subscribe'       => 'Subscrever',
 	'povwatch_added'           => 'adicionado',
+);
+
+/** Romanian (Română)
+ * @author KlaudiuMihaila
+ */
+$messages['ro'] = array(
+	'povwatch_title' => 'Titlu:',
 );
 
 /** Russian (Русский)

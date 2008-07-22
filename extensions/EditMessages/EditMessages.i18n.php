@@ -58,13 +58,15 @@ $messages['af'] = array(
  * @author Meno25
  */
 $messages['ar'] = array(
-	'editmessages-desc'   => '[[Special:EditMessages|تعديل معتمد على الويب]] لأعدادا كبيرة من ملفات Messages*.php',
-	'editmessages'        => 'عدل الرسائل',
-	'editmsg-target'      => 'الرسالة الهدف:',
-	'editmsg-search'      => 'بحث',
-	'editmsg-get-patch'   => 'توليد باتش',
-	'editmsg-new-search'  => 'بحث جديد',
-	'editmsg-apply-patch' => 'تنفيذ الباتش',
+	'editmessages-desc'     => '[[Special:EditMessages|تعديل معتمد على الويب]] لأعدادا كبيرة من ملفات Messages*.php',
+	'editmessages'          => 'عدل الرسائل',
+	'editmsg-target'        => 'الرسالة الهدف:',
+	'editmsg-search'        => 'بحث',
+	'editmsg-get-patch'     => 'توليد باتش',
+	'editmsg-new-search'    => 'بحث جديد',
+	'editmsg-apply-patch'   => 'تنفيذ الباتش',
+	'editmsg-no-patch'      => 'غير قادر على تنفيذ أمر "patch"',
+	'editmsg-patch-success' => 'تم تنفيذ الباتش بنجاح.',
 );
 
 /** Bulgarian (Български)
@@ -544,7 +546,8 @@ $messages['rif'] = array(
  * @author KlaudiuMihaila
  */
 $messages['ro'] = array(
-	'editmsg-search' => 'Caută',
+	'editmsg-search'     => 'Caută',
+	'editmsg-new-search' => 'Căutare nouă',
 );
 
 /** Russian (Русский)

@@ -127,6 +127,13 @@ $messages['lb'] = array(
 	'categoryonupload-label' => 'Kategorie:',
 );
 
+/** Nahuatl (Nahuatl)
+ * @author Fluence
+ */
+$messages['nah'] = array(
+	'categoryonupload-label' => 'Neneuhcāyōtl:',
+);
+
 /** Low German (Plattdüütsch)
  * @author Slomox
  */
@@ -175,6 +182,13 @@ $messages['pl'] = array(
 $messages['ps'] = array(
 	'categoryonupload-desc'  => 'د دوتنې د پورته کولو پر مهال، يو کارونکی په دې توانوي چې د دوتنې وېشنيزه وټاکي',
 	'categoryonupload-label' => 'وېشنيزه:',
+);
+
+/** Romanian (Română)
+ * @author KlaudiuMihaila
+ */
+$messages['ro'] = array(
+	'categoryonupload-label' => 'Categorie:',
 );
 
 /** Russian (Русский)

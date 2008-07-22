@@ -746,9 +746,10 @@ $messages['bn'] = array(
 <pre>$3</pre>
 
 [[Special:Boardvote/entry|পেছনে]]',
-	'boardvote_nosession'    => 'আপনার ব্যবহারকারী আইডি খুজে পাওয়া যাচ্ছে না। আপনি যে উইকি তে যোগ্যতাসম্পন্ন দয়াকরে সেখানে লগ-ইন করুন এবং <nowiki>[[Special:Boardvote]]</nowiki> তে যান। আপনাকে এমন অ্যাকাউন্ট ব্যবহার করতে হবে যাতে $2 এর আগে অন্তত $1 অবদান থাকতে হবে, এবং যা দ্বারা $3 এর আগে প্রথম সম্পাদনা করেছেন।',
-	'boardvote_notloggedin'  => 'আপনি লগ-ইন করেননি। ভোট দিতে, আপনাকে অবশ্যই এমন অ্যাকাউন্ট ব্যবহার করতে হবে যা দ্বারা $2 এর আগে অন্তত $1 অবদান রাখা হয়েছে, এবং $3 এর আগে প্রথম সম্পাদনা করা হয়েছে।',
-	'boardvote_notqualified' => 'আপনি এই নির্বাচনে ভোট দেওয়ার যোগ্যতাসম্পন্ন নন। আপনার $2 এর আগে $3 সম্পাদনা থাকতে হবে, এবং $5 এর আগে প্রথম সম্পাদনা করতে হবে।',
+	'boardvote_nosession'    => 'আপনার ব্যবহারকারী আইডি খুজে পাওয়া যাচ্ছে না। আপনি যে উইকি তে যোগ্যতাসম্পন্ন দয়াকরে সেখানে লগ-ইন করুন এবং <nowiki>[[Special:Boardvote]]</nowiki> তে যান। আপনার $2 এর আগে $1 সম্পাদনা থাকতে হবে, এবং $4 থেকে $5 তারিখের মধ্যে $3 সম্পাদনা থাকতে হবে।',
+	'boardvote_notloggedin'  => 'আপনি লগ-ইন করেননি। ভোট দিতে, আপনার $2 এর আগে $1 সম্পাদনা থাকতে হবে, এবং $4 থেকে $5 তারিখের মধ্যে $3 সম্পাদনা থাকতে হবে।',
+	'boardvote_notqualified' => 'আপনি এই নির্বাচনে ভোট দেওয়ার যোগ্যতা সম্পন্ন নন।
+আপনার $2 এর আগে $1 সম্পাদনা থাকতে হবে, এবং $4 থেকে $5 তারিখের মধ্যে $3 সম্পাদনা থাকতে হবে।',
 	'boardvote_novotes'      => 'কেউ এখনও ভোট দেয়নি।',
 	'boardvote_time'         => 'সময়',
 	'boardvote_user'         => 'ব্যবহারকারী',
@@ -763,16 +764,16 @@ $messages['bn'] = array(
 	'boardvote_unstrike'     => 'কাটা উঠিয়ে নিন',
 	'boardvote_needadmin'    => 'শুধু নির্বাচন প্রশাসকগণ এই কাজটি করতে পারবেন।',
 	'boardvote_sitenotice'   => '<a href="{{localurle:Special:Boardvote/vote}}">উইকিমিডিয়া বোর্ড নির্বাচন</a>:
-ভোট গ্রহণ শুরু হবে ১২ই জুলাই Vote open until 22 June',
+ভোট গ্রহণ চলবে ২২ই জুন পর্যন্ত',
 	'boardvote_notstarted'   => 'এখনও ভোট গ্রহণ শুরু হয়নি',
-	'boardvote_closed'       => 'ভোটগ্রহণ বর্তমানে বন্ধ আছে, [http://meta.wikimedia.org/wiki/Elections_for_the_Board_of_Trustees_of_the_Wikimedia_Foundation%2C_2008/En নির্বাচন পাতায় ফলাফল] সিঘ্রই দেখুন।',
+	'boardvote_closed'       => 'ভোটগ্রহণ বর্তমানে বন্ধ আছে, [http://meta.wikimedia.org/wiki/Board_elections/2008/Results নির্বাচন পাতায় ফলাফল] সিঘ্রই দেখুন।',
 	'boardvote_edits_many'   => 'অনেক',
 	'group-boardvote'        => 'বোর্ড নির্বাচন প্রশাসকগণ',
 	'group-boardvote-member' => 'বোর্ড নির্বাচন প্রশাসক',
 	'grouppage-boardvote'    => '{{ns:project}}:বোর্ড নির্বাচন প্রশাসকগণ',
 	'boardvote_blocked'      => 'দুঃখিত, আপনার নিবন্ধিত উইকিতে আপনাকে বাধা দেওয়া হয়েছে। বাধা প্রাপ্ত ব্যবহারকারীদের ভোট দেওয়ার অনুমোদন নাই।',
 	'boardvote_welcome'      => "স্বাগতম '''$1'''!",
-	'go_to_board_vote'       => 'উইকিমিডিয়া বোর্ড নির্বাচন ২০০৭',
+	'go_to_board_vote'       => 'উইকিমিডিয়া বোর্ড নির্বাচন ২০০৮',
 	'boardvote_redirecting'  => 'নিরাপত্তা এবং স্বচ্ছতা বাড়াতে, আমরা ভোট কার্যক্রম অন্য একটি স্বাধীন সার্ভারে চালনা করছি।
 
 আপনি ২০ সেকেন্ডের মধ্যেই অন্য সার্ভারে পুননির্দেশিত হবেন। [$1 এখানে ক্লিক করুন] সেখানে এখনই যাওয়ার জন্য।
@@ -2541,8 +2542,11 @@ Az aláíratlan tanúsítványú oldallal kapcsolatban egy biztonsági figyelmez
 
 /** Interlingua (Interlingua)
  * @author Malafaya
+ * @author McDutchie
  */
 $messages['ia'] = array(
+	'boardvote'      => 'Election del consilio de administration del Fundation Wikimedia',
+	'boardvote-desc' => '[[meta:Board elections/2008|Election del consilio de administration del Fundation Wikimedia]]',
 	'boardvote_user' => 'Usator',
 	'boardvote_days' => 'Dies',
 );
@@ -3336,7 +3340,7 @@ Als Bot darfß De ävver nit afshtemme.',
 löüf dat met dä Afshtemmong ob_ennem extra ßööver.
 
 Doh weeß De en 20 Sekonde hen ömjelengk.
-För dä Fäll, dat dat nit klapp, jangk noh $1.
+För dä Fall, dat dat nit klapp, jangk noh $1.
 
 Womöschlesh kriß De och en Warnong fun wääje de Sesherhëijt fonn_ennem Zächtifikaat.',
 	'right-boardvote'          => 'Wahle för de Shtefftong betreue',
@@ -3897,6 +3901,14 @@ $messages['myv'] = array(
 	'boardvote_ip'         => 'IP',
 	'boardvote_submit'     => 'ОК',
 	'boardvote_edits_many' => 'ламот',
+);
+
+/** Nahuatl (Nahuatl)
+ * @author Fluence
+ */
+$messages['nah'] = array(
+	'boardvote_user'   => 'Tlatēquitiltilīlli',
+	'boardvote_submit' => 'Cualli',
 );
 
 /** Min Nan Chinese (Bân-lâm-gú) */

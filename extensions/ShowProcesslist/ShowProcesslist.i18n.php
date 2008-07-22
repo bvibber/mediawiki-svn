@@ -299,6 +299,13 @@ $messages['ms'] = array(
 	'showprocesslist-time' => 'Masa',
 );
 
+/** Nahuatl (Nahuatl)
+ * @author Fluence
+ */
+$messages['nah'] = array(
+	'showprocesslist-user' => 'Tlatēquitiltilīlli',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */
@@ -403,6 +410,14 @@ $messages['pt'] = array(
 	'showprocesslist-time'    => 'Tempo',
 	'showprocesslist-state'   => 'Estado',
 	'showprocesslist-info'    => 'Informação',
+);
+
+/** Romanian (Română)
+ * @author KlaudiuMihaila
+ */
+$messages['ro'] = array(
+	'showprocesslist-id'   => 'ID',
+	'showprocesslist-user' => 'Utilizator',
 );
 
 /** Russian (Русский)

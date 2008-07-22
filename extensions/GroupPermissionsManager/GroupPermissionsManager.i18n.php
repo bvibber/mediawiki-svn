@@ -144,7 +144,9 @@ $messages['ar'] = array(
 	'grouppermissions-rug-confirm'   => 'أزل المستخدمون من المجموعات غير المستخدمة',
 	'right-viewsource'               => 'رؤية مصدر الويكي للصفحات المحمية',
 	'right-raw'                      => 'رؤية الصفحات الخام',
+	'right-render'                   => 'رؤية الصفحات الناتجة بدون إبحار',
 	'right-info'                     => 'رؤية معلومات الصفحة',
+	'right-credits'                  => 'رؤية حقوق الصفحة',
 	'right-history'                  => 'رؤية تواريخ الصفحات',
 	'right-search'                   => 'البحث في الويكي',
 	'right-contributions'            => 'رؤية صفحات المساهمات',
@@ -441,6 +443,8 @@ $messages['lb'] = array(
  */
 $messages['nah'] = array(
 	'grouppermissions-dosearch' => 'Yāuh',
+	'grouppermissions-never'    => 'Aīcmah',
+	'grouppermissions-sp-save'  => 'Ticpiyāz',
 );
 
 /** Dutch (Nederlands)
@@ -664,6 +668,32 @@ $messages['rif'] = array(
 	'grouppermissions-dosearch' => 'Raḥ ɣa',
 );
 
+/** Romanian (Română)
+ * @author KlaudiuMihaila
+ */
+$messages['ro'] = array(
+	'removeunusedgroups'             => 'Elimină grupuri neutilizate',
+	'grouppermissions-search'        => 'Grup:',
+	'grouppermissions-dologin'       => 'Autentificare',
+	'grouppermissions-searchlabel'   => 'Caută grup',
+	'grouppermissions-deletelabel'   => 'Şterge grup',
+	'grouppermissions-change'        => 'Schimbă permisiunile de grup',
+	'grouppermissions-add'           => 'Adaugă grup',
+	'grouppermissions-delete'        => 'Şterge grup',
+	'grouppermissions-comment'       => 'Comentariu:',
+	'grouppermissions-addsuccess'    => '$1 a fost adăugat cu succes',
+	'grouppermissions-deletesuccess' => '$1 a fost şters cu succes',
+	'grouppermissions-changesuccess' => 'Permisiunile pentru $1 au fost schimbate cu succes',
+	'grouppermissions-never'         => 'Niciodată',
+	'grouppermissions-log-add'       => 'adăugat grupul "$2"',
+	'grouppermissions-log-change'    => 'schimbat permisiunile grupului "$2"',
+	'grouppermissions-log-delete'    => 'şters grupul "$2"',
+	'grouppermissions-sp-save'       => 'Salvează',
+	'grouppermissions-sp-addperm'    => 'Adaugă permisiune',
+	'grouppermissions-sp-remove'     => 'elimină',
+	'right-search'                   => 'Caută în wiki',
+);
+
 /** Russian (Русский)
  * @author Innv
  * @author Александр Сигачёв
@@ -696,6 +726,7 @@ $messages['sk'] = array(
 	'removeunusedgroups'             => 'Odstrániť nepoužité skupiny',
 	'grouppermissions-desc'          => 'Správa oprávnení skupín prostredníctvom [[Special:GroupPermissions|špeciálnej stránky]]',
 	'grouppermissions-desc2'         => 'Rozšírený systém oprávnení',
+	'grouppermissions-desc3'         => 'Umožňuje prispôsobenie operácií s obsahom (záložiek)',
 	'grouppermissions-header'        => 'Pomocou tejto stránky môžete zmeniť oprávnenia rozličných skupín používateľov',
 	'grouppermissions-search'        => 'Skupina:',
 	'grouppermissions-dologin'       => 'Prihlasovacie meno',
@@ -761,6 +792,7 @@ $messages['sv'] = array(
 	'removeunusedgroups'             => 'Ta bort oanvända användargrupper',
 	'grouppermissions-desc'          => 'Hantera behörigheter för användargrupper via en [[Special:GroupPermissions|specialsida]]',
 	'grouppermissions-desc2'         => 'Utökat system för behörigheter',
+	'grouppermissions-desc3'         => 'Tillåter egendefiniering av innehållshandlingar',
 	'grouppermissions-header'        => 'Du kan använda denna sida för att ändra de underliggande behörigheterna av de olika användargrupperna',
 	'grouppermissions-search'        => 'Användargrupp:',
 	'grouppermissions-dologin'       => 'Logga in',

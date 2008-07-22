@@ -1143,9 +1143,17 @@ $messages['rm'] = array(
 
 /** Romanian (Română)
  * @author לערי ריינהארט
+ * @author KlaudiuMihaila
  */
 $messages['ro'] = array(
-	'sitematrix' => 'Lista proiectelor Wikimedia',
+	'sitematrix'           => 'Lista proiectelor Wikimedia',
+	'sitematrix-summary'   => 'Această pagină specială afişează toate proiectele wiki ale Wikimedia.',
+	'sitematrix-language'  => 'Limbă',
+	'sitematrix-others'    => 'Alte proiecte Wikimedia',
+	'sitematrix-total'     => "'''Număr total: $1'''",
+	'sitematrix-sitetotal' => 'Total',
+	'sitematrix-private'   => 'privat',
+	'sitematrix-fishbowl'  => 'modificare restricţionată',
 );
 
 /** Russian (Русский)
@@ -1360,6 +1368,13 @@ $messages['tr'] = array(
 	'sitematrix-sitetotal' => 'Toplam',
 	'sitematrix-private'   => 'mahrem',
 	'sitematrix-fishbowl'  => 'değiştirmek engellendi',
+);
+
+/** Tsonga (Xitsonga)
+ * @author Thuvack
+ */
+$messages['ts'] = array(
+	'sitematrix-language' => 'Ririmi',
 );
 
 /** Ukrainian (Українська)

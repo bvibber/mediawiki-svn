@@ -1033,6 +1033,17 @@ $messages['rif'] = array(
 	'changeauthor-pagenameform-go' => 'Raḥ ɣa',
 );
 
+/** Romanian (Română)
+ * @author KlaudiuMihaila
+ */
+$messages['ro'] = array(
+	'changeauthor-comment'              => 'Comentariu:',
+	'changeauthor-changeauthors-multi'  => 'Schimbă autorul(ii)',
+	'changeauthor-changeauthors-single' => 'Schimbă autorul',
+	'changeauthor-revview'              => 'Versiunea #$1 din $2',
+	'changeauthor-nosuchtitle'          => 'Nu există o pagină numită "$1".',
+);
+
 /** Russian (Русский)
  * @author Александр Сигачёв
  */

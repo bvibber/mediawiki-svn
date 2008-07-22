@@ -1717,6 +1717,16 @@ $wgGoogleMapsMessages['mr'] = array(
 	'gm-mars'                      => 'मंगळ',
 );
 
+/** Nahuatl (Nahuatl)
+ * @author Fluence
+ */
+$wgGoogleMapsMessages['nah'] = array(
+	'gm-balloon-title' => 'Tōcāitl:',
+	'gm-yes'           => 'Quēmah',
+	'gm-no'            => 'Ahmo',
+	'gm-save-path'     => 'Ticpiyāz',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */
@@ -2277,7 +2287,33 @@ $wgGoogleMapsMessages['rif'] = array(
  * @author KlaudiuMihaila
  */
 $wgGoogleMapsMessages['ro'] = array(
-	'gm-search' => 'Caută',
+	'gm-balloon-title'  => 'Titlu:',
+	'gm-remove'         => 'elimină',
+	'gm-save-point'     => 'salvează &amp; închide',
+	'gm-no-results'     => 'Ne pare rău, nici un rezultat',
+	'gm-searching'      => 'căutare…',
+	'gm-are-you-sure'   => 'Sunteţi sigur?',
+	'gm-refresh-points' => 'Reactualizează toate punctele',
+	'gm-width'          => 'Lăţime',
+	'gm-height'         => 'Înălţime',
+	'gm-large'          => 'Mare',
+	'gm-medium'         => 'Mediu',
+	'gm-small'          => 'Mic',
+	'gm-yes'            => 'Da',
+	'gm-no'             => 'Nu',
+	'gm-search'         => 'Caută',
+	'gm-meters'         => 'metri',
+	'gm-miles'          => 'mile',
+	'gm-save-path'      => 'Salvează',
+	'gm-edit-path'      => 'adaugă puncte',
+	'gm-show-path'      => 'arată puncte',
+	'gm-color-path'     => 'schimbă culoare',
+	'gm-opacity'        => 'Opacitate',
+	'gm-line-width'     => 'Lăţime',
+	'gm-kml-loading'    => 'încărcare…',
+	'gm-earth'          => 'Pământ',
+	'gm-moon'           => 'Luna',
+	'gm-mars'           => 'Marte',
 );
 
 /** Russian (Русский)

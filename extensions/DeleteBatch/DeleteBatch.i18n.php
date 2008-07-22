@@ -226,6 +226,13 @@ $messages['lb'] = array(
 	'deletebatch-select-yourself'      => 'Dir',
 );
 
+/** Nahuatl (Nahuatl)
+ * @author Fluence
+ */
+$messages['nah'] = array(
+	'deletebatch-button' => 'Ticpoloāz',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */
@@ -361,7 +368,15 @@ Przesyłany plik powinien zawierać nazwę strony i powód usunięcia w jednej l
  * @author KlaudiuMihaila
  */
 $messages['ro'] = array(
-	'deletebatch-button' => 'Şterge',
+	'deletebatch-button'           => 'Şterge',
+	'deletebatch-here'             => '<b>aici</b>',
+	'deletebatch-or'               => '<b>sau</b>',
+	'deletebatch-page'             => 'Pagini de şters',
+	'deletebatch-reason'           => 'Motiv pentru ştergere',
+	'deletebatch-processing'       => 'ştergere pagini',
+	'deletebatch-from-form'        => 'din formular',
+	'deletebatch-success-subtitle' => 'pentru $1',
+	'deletebatch-file-missing'     => 'Nu se poate citi fişierul dat',
 );
 
 /** Russian (Русский)

@@ -526,6 +526,16 @@ $messages['mr'] = array(
 	'importusers-realname'                => 'खरे नाव',
 );
 
+/** Nahuatl (Nahuatl)
+ * @author Fluence
+ */
+$messages['nah'] = array(
+	'importusers-uploadfile'      => 'Tlahcuilōlquetza',
+	'importusers-log-summary-all' => 'Mochīntīn',
+	'importusers-email'           => 'e-mail',
+	'importusers-realname'        => 'melāhuac motōcā',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */
@@ -699,6 +709,14 @@ $messages['rif'] = array(
 	'importusers-log-summary'     => 'Asgbr',
 	'importusers-log-summary-all' => 'Maṛṛa',
 	'importusers-realname'        => 'ism n dṣṣaḥ',
+);
+
+/** Romanian (Română)
+ * @author KlaudiuMihaila
+ */
+$messages['ro'] = array(
+	'importusers-email'    => 'e-mail',
+	'importusers-realname' => 'nume real',
 );
 
 /** Russian (Русский)

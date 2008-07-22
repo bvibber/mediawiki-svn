@@ -282,6 +282,14 @@ $messages['pt'] = array(
 	'categorystepper-start' => '(Início da categoria)',
 );
 
+/** Romanian (Română)
+ * @author KlaudiuMihaila
+ */
+$messages['ro'] = array(
+	'categorystepper-end'   => '(Sfârşitul categoriei)',
+	'categorystepper-start' => '(Începutul categoriei)',
+);
+
 /** Russian (Русский)
  * @author Александр Сигачёв
  */

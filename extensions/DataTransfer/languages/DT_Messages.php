@@ -455,7 +455,10 @@ $messages['mr'] = array(
  * @author Fluence
  */
 $messages['nah'] = array(
-	'dt_xml_name' => 'Tōcāitl',
+	'dt_viewxml_categories' => 'Neneuhcāyōtl',
+	'dt_xml_page'           => 'Zāzanilli',
+	'dt_xml_name'           => 'Tōcāitl',
+	'dt_xml_title'          => 'Tōcāitl',
 );
 
 /** Low German (Plattdüütsch)
@@ -593,6 +596,21 @@ $messages['pt'] = array(
 	'dt_xml_title'                => 'Título',
 	'dt_xml_id'                   => 'ID',
 	'dt_xml_freetext'             => 'Texto Livre',
+);
+
+/** Romanian (Română)
+ * @author KlaudiuMihaila
+ */
+$messages['ro'] = array(
+	'viewxml'                     => 'Vizualizează XML',
+	'dt_viewxml_categories'       => 'Categorii',
+	'dt_viewxml_namespaces'       => 'Spaţii de nume',
+	'dt_viewxml_simplifiedformat' => 'Format simplificat',
+	'dt_xml_namespace'            => 'Spaţiu de nume',
+	'dt_xml_page'                 => 'Pagină',
+	'dt_xml_name'                 => 'Nume',
+	'dt_xml_title'                => 'Titlu',
+	'dt_xml_id'                   => 'ID',
 );
 
 /** Russian (Русский)

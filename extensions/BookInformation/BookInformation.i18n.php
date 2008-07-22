@@ -872,6 +872,13 @@ $messages['myv'] = array(
 	'bookinfo-result-year'   => 'Ие:',
 );
 
+/** Nahuatl (Nahuatl)
+ * @author Fluence
+ */
+$messages['nah'] = array(
+	'bookinfo-result-title' => 'Tōcāitl:',
+);
+
 /** Low German (Plattdüütsch)
  * @author Slomox
  */

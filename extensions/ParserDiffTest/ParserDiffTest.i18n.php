@@ -29,6 +29,8 @@ $messages['en'] = array(
  */
 $messages['af'] = array(
 	'parserdifftest'      => 'Ontleder verskil toets',
+	'pdtest-desc'         => '[[Special:ParserDiffTest|Spesiale bladsy]] om die afvoer van twee verskillende ontleders te vergelyk',
+	'pdtest_no_target'    => 'Doel nie gespesifiseer nie.',
 	'pdtest_page_missing' => 'Die gespesifiseerde bladsy is nie in die databasis nie.',
 	'pdtest_no_changes'   => 'Geen veranderinge bespeur.',
 	'pdtest_time_report'  => '<b>$1</b> duur $2 sekondes, <b>$3</b> duur $4 sekondes.',
@@ -482,7 +484,19 @@ $messages['hu'] = array(
  * @author McDutchie
  */
 $messages['ia'] = array(
-	'pdtest_ok' => 'OK',
+	'parserdifftest'      => 'Test de "diff" inter duo analysatores syntactic',
+	'pdtest-desc'         => '[[Special:ParserDiffTest|Pagina special]] pro comparar le output de duo differente analysatores syntactic',
+	'pdtest_no_target'    => 'Nulle objectivo specificate.',
+	'pdtest_page_missing' => 'Le pagina specificate non esseva trovate in le base de datos.',
+	'pdtest_no_changes'   => 'Nulle cambiamentos detegite.',
+	'pdtest_time_report'  => '<b>$1</b> prendeva $2 secundas, <b>$3</b> prendeva $4 secundas.',
+	'pdtest_title'        => 'Titulo del contexto:',
+	'pdtest_text'         => 'Texto de input:',
+	'pdtest_ok'           => 'OK',
+	'pdtest_get_text'     => 'Obtener le texto ab le pagina',
+	'pdtest_diff'         => 'Differentias',
+	'pdtest_side_by_side' => 'Comparation del output',
+	'pdt_comparing_page'  => 'Comparation del output del analysator syntactic ab [[$1]]',
 );
 
 /** Indonesian (Bahasa Indonesia)
@@ -631,6 +645,13 @@ $messages['krj'] = array(
 	'pdtest_ok' => 'OK dun',
 );
 
+/** Ripoarisch (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'parserdifftest' => 'Ongerscheed zwesche de Parser prööfe',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
@@ -740,6 +761,13 @@ $messages['ms'] = array(
 	'pdtest_diff'         => 'Perbezaan',
 	'pdtest_side_by_side' => 'Pembandingan output',
 	'pdt_comparing_page'  => 'Membandingkan output penghurai daripada [[$1]]',
+);
+
+/** Nahuatl (Nahuatl)
+ * @author Fluence
+ */
+$messages['nah'] = array(
+	'pdtest_ok' => 'Cualli',
 );
 
 /** Low German (Plattdüütsch)
@@ -885,6 +913,13 @@ $messages['pt'] = array(
 	'pdtest_diff'         => 'Diferenças',
 	'pdtest_side_by_side' => 'Comparação de resultado',
 	'pdt_comparing_page'  => 'Comparação do resultado do analisador "parser" de [[$1]]',
+);
+
+/** Romanian (Română)
+ * @author KlaudiuMihaila
+ */
+$messages['ro'] = array(
+	'pdtest_ok' => 'OK',
 );
 
 /** Russian (Русский)

@@ -845,6 +845,18 @@ $messages['qu'] = array(
 	'imagemap_description' => 'Kay rikchamanta',
 );
 
+/** Romanian (Română)
+ * @author KlaudiuMihaila
+ */
+$messages['ro'] = array(
+	'imagemap_no_image'      => 'Eroare: trebuie specificată o imagine pe prima linie',
+	'imagemap_invalid_image' => 'Eroare: imaginea este incorectă sau nu există',
+	'imagemap_no_link'       => 'Eroare: nu a fost găsită nici o legătură validă la sfârşitul liniei $1',
+	'imagemap_missing_coord' => 'Eroare: coordonate insuficiente pentru forma de la linia $1',
+	'imagemap_invalid_coord' => 'Eroare: coordonată incorectă la linia $1, trebuie să fie număr',
+	'imagemap_description'   => 'Despre această imagine',
+);
+
 /** Russian (Русский)
  * @author Александр Сигачёв
  */

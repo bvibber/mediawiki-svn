@@ -112,6 +112,13 @@ $messages['hu'] = array(
 	'titlekey-desc' => 'Címek keresésekor címeket ajánl az előtagjuk alapján',
 );
 
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'titlekey-desc' => 'Mechanismo pro facer suggestiones de recerca per prefixo de titulo',
+);
+
 /** Indonesian (Bahasa Indonesia)
  * @author IvanLanin
  * @author Rex

@@ -199,6 +199,13 @@ $messages['mr'] = array(
 	'seealso-desc' => "<code><nowiki><seealso></nowiki></code> खूण वापरून स्थानिक 'हे सुद्धा पहा' शीर्षके",
 );
 
+/** Nahuatl (Nahuatl)
+ * @author Fluence
+ */
+$messages['nah'] = array(
+	'seealso' => 'Nō xiquitta',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

@@ -258,6 +258,13 @@ $messages['ms'] = array(
 	'findspam-ok' => 'OK',
 );
 
+/** Nahuatl (Nahuatl)
+ * @author Fluence
+ */
+$messages['nah'] = array(
+	'findspam-ok' => 'Cualli',
+);
+
 /** Low German (Plattdüütsch)
  * @author Slomox
  */
@@ -353,6 +360,14 @@ $messages['pt'] = array(
 	'findspam-ip'          => 'Endereço IP:',
 	'findspam-ok'          => 'OK',
 	'findspam-notextfound' => 'Não foram encontradas contribuições',
+);
+
+/** Romanian (Română)
+ * @author KlaudiuMihaila
+ */
+$messages['ro'] = array(
+	'findspam-ip' => 'Adresă IP:',
+	'findspam-ok' => 'OK',
 );
 
 /** Russian (Русский)

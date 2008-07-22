@@ -88,11 +88,25 @@ $messages['hsb'] = array(
 	'universaleditbutton-desc' => "Přidawa hłowje HTML tafličku <code>&lt;link&gt;</code> za podpěru rozšěrjenja ''Universal Edit Button''",
 );
 
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'universaleditbutton-desc' => 'Adde le etiquetta HTML <code>&lt;link&gt;</code> pro supportar le extension "Universal Edit Button"',
+);
+
 /** Indonesian (Bahasa Indonesia)
  * @author Rex
  */
 $messages['id'] = array(
 	'universaleditbutton-desc' => 'Menambahkan <code>&lt;pranala&gt;</code> header HTML untuk mendukung ekstensi penjelajah Universal Edit Button',
+);
+
+/** Italian (Italiano)
+ * @author Melos
+ */
+$messages['it'] = array(
+	'universaleditbutton-desc' => 'Aggiunge l\'header HTML <code>&lt;link&gt;</code> per supportare l\'estensione del browser "Universal Edit Button browser"',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

@@ -821,18 +821,21 @@ $messages['km'] = array(
 /** Korean (한국어)
  * @author ToePeu
  * @author Klutzy
+ * @author Albamhandae
  */
 $messages['ko'] = array(
-	'expandtemplates'                  => '틀 확장',
-	'expandtemplates-desc'             => '틀, 파서 함수, 변수 등을 모두 풀어낸 문서를 볼 수 있는 [[Special:ExpandTemplates|틀 확장]] 기능',
+	'expandtemplates'                  => '틀 전개',
+	'expandtemplates-desc'             => '틀, 파서 함수, 변수 등을 모두 풀어낸 문서를 볼 수 있는 [[Special:ExpandTemplates|틀 전개]] 기능',
 	'expand_templates_intro'           => '이 특수문서는 글의 모든 틀을 끝까지 풀어 줍니다.
 <nowiki>{{</nowiki>#if:…}} 같은 파서 함수나 <nowiki>{{</nowiki>CURRENTDAY}} 같은 변수를 포함해 두개의 중괄호 사이에 있는 것은 모두 풀어줍니다.
 미디어위키의 자체 파서로 작동합니다.',
+	'expand_templates_title'           => '문서 이름 ({{PAGENAME}} 등):',
 	'expand_templates_input'           => '입력:',
 	'expand_templates_output'          => '결과',
 	'expand_templates_xml_output'      => 'XML 출력',
 	'expand_templates_ok'              => '확인',
 	'expand_templates_remove_comments' => '주석 지우기',
+	'expand_templates_generate_xml'    => 'XML 구문 트리 보기',
 	'expand_templates_preview'         => '미리보기',
 );
 
@@ -983,6 +986,14 @@ $messages['ms'] = array(
  */
 $messages['mt'] = array(
 	'expand_templates_ok' => 'OK',
+);
+
+/** Nahuatl (Nahuatl)
+ * @author Fluence
+ */
+$messages['nah'] = array(
+	'expand_templates_ok'      => 'Cualli',
+	'expand_templates_preview' => 'Xiquittāz achtochīhualiztli',
 );
 
 /** Min Nan Chinese (Bân-lâm-gú) */
@@ -1163,6 +1174,17 @@ $messages['qu'] = array(
 	'expand_templates_output'          => 'Lluqsiynin:',
 	'expand_templates_remove_comments' => 'Willapusqakunata qichuy',
 	'expand_templates_preview'         => 'Ñawpaqta qhawallay',
+);
+
+/** Romanian (Română)
+ * @author KlaudiuMihaila
+ */
+$messages['ro'] = array(
+	'expandtemplates'                  => 'Expandarea formatelor',
+	'expand_templates_output'          => 'Rezultat',
+	'expand_templates_ok'              => 'OK',
+	'expand_templates_remove_comments' => 'Elimină comentarii',
+	'expand_templates_preview'         => 'Previzualizare',
 );
 
 /** Russian (Русский)
@@ -1396,6 +1418,14 @@ $messages['tr'] = array(
 	'expand_templates_ok'              => 'Tamam',
 	'expand_templates_remove_comments' => 'Yorumları sil',
 	'expand_templates_preview'         => 'Ön izleme',
+);
+
+/** Tsonga (Xitsonga)
+ * @author Thuvack
+ */
+$messages['ts'] = array(
+	'expand_templates_ok'      => 'Hiswona',
+	'expand_templates_preview' => 'Ringanisa',
 );
 
 /** Ukrainian (Українська)

@@ -282,6 +282,13 @@ $4',
 	'todo-form-submit'      => 'Naprašowanje wotesłać',
 );
 
+/** Hungarian (Magyar)
+ * @author Dani
+ */
+$messages['hu'] = array(
+	'todo-new-queue' => 'új',
+);
+
 /** Indonesian (Bahasa Indonesia)
  * @author Irwangatot
  */
@@ -386,6 +393,7 @@ $messages['lb'] = array(
 	'todo-list-change'      => 'Änneren',
 	'todo-list-cancel'      => 'Annulléieren',
 	'todo-new-item'         => 'Neien Objet',
+	'todo-issue-summary'    => 'Resumé vun der Aufgab:',
 	'todo-form-details'     => 'Detailer:',
 );
 
@@ -424,6 +432,13 @@ $messages['mr'] = array(
 	'todo-issue-summary'    => 'चर्चा सारांश:',
 	'todo-form-details'     => 'तपशील:',
 	'todo-form-submit'      => 'पृच्छा पाठवा',
+);
+
+/** Nahuatl (Nahuatl)
+ * @author Fluence
+ */
+$messages['nah'] = array(
+	'todo-list-cancel' => 'Ticcuepāz',
 );
 
 /** Low German (Plattdüütsch)
@@ -620,6 +635,14 @@ $messages['pt'] = array(
  */
 $messages['rif'] = array(
 	'todo-new-queue' => 'amaynu',
+);
+
+/** Romanian (Română)
+ * @author KlaudiuMihaila
+ */
+$messages['ro'] = array(
+	'todo-list-cancel'  => 'Anulează',
+	'todo-form-details' => 'Detalii:',
 );
 
 /** Slovak (Slovenčina)

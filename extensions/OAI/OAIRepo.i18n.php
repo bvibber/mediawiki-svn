@@ -95,6 +95,13 @@ $messages['hsb'] = array(
 	'oai-desc' => 'Staja interfejs za repozitorij [http://www.openarchives.org/OAI/openarchivesprotocol.html OAI-PMH] k dispoziciji',
 );
 
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'oai-desc' => 'Forni un interfacie pro repositorios [http://www.openarchives.org/OAI/openarchivesprotocol.html OAI-PMH]',
+);
+
 /** Indonesian (Bahasa Indonesia)
  * @author Rex
  */

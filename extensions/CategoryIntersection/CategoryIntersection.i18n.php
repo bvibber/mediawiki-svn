@@ -287,6 +287,13 @@ $messages['pt'] = array(
 	'categoryintersection-results'       => 'A pesquisa deu  $1 {{PLURAL:$1|resultado|resultados}}.',
 );
 
+/** Romanian (Română)
+ * @author KlaudiuMihaila
+ */
+$messages['ro'] = array(
+	'categoryintersection' => 'Intersecţia categoriilor',
+);
+
 /** Russian (Русский)
  * @author Александр Сигачёв
  */

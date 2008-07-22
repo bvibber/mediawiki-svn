@@ -786,6 +786,13 @@ $messages['rm'] = array(
 	'patrol-revert-reason' => 'Motiv:',
 );
 
+/** Romanian (Română)
+ * @author KlaudiuMihaila
+ */
+$messages['ro'] = array(
+	'patrol-revert-reason' => 'Motiv:',
+);
+
 /** Russian (Русский)
  * @author Illusion
  * @author Александр Сигачёв

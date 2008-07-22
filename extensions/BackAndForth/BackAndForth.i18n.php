@@ -362,6 +362,13 @@ $messages['mr'] = array(
 	'backforth-prev' => 'मागे($1)',
 );
 
+/** Nahuatl (Nahuatl)
+ * @author Fluence
+ */
+$messages['nah'] = array(
+	'backforth-prev' => 'Achtopa ($1)',
+);
+
 /** Low German (Plattdüütsch)
  * @author Slomox
  */

@@ -1770,6 +1770,28 @@ $messages['qu'] = array(
 	'ogg-desc-link'         => 'Kay willañiqimanta',
 );
 
+/** Romanian (Română)
+ * @author KlaudiuMihaila
+ */
+$messages['ro'] = array(
+	'ogg-short-audio'         => 'Fişier de sunet ogg $1, $2',
+	'ogg-short-video'         => 'Fişier video ogg $1, $2',
+	'ogg-short-general'       => 'Fişier media ogg $1, $2',
+	'ogg-long-audio'          => '(Fişier de sunet ogg $1, lungime $2, $3)',
+	'ogg-long-video'          => '(Fişier video ogg $1, lungime $2, $4×$5 pixeli, $3)',
+	'ogg-long-multiplexed'    => '(Fişier multiplexat audio/video ogg, $1, lungime $2, $4×$5 pixeli, $3)',
+	'ogg-long-general'        => '(Fişier media ogg, lungime $2, $3)',
+	'ogg-long-error'          => '(Fişier ogg incorect: $1)',
+	'ogg-pause'               => 'Pauză',
+	'ogg-player-videoElement' => 'element <video>',
+	'ogg-player-oggPlugin'    => 'Plugin ogg',
+	'ogg-player-selected'     => '(selectat)',
+	'ogg-more'                => 'Mai mult…',
+	'ogg-dismiss'             => 'Închide',
+	'ogg-download'            => 'Descarcă fişier',
+	'ogg-desc-link'           => 'Despre acest fişier',
+);
+
 /** Russian (Русский)
  * @author Александр Сигачёв
  */
@@ -2100,6 +2122,14 @@ $messages['tr'] = array(
 	'ogg-dismiss'           => 'Kapat',
 	'ogg-download'          => 'Dosya indir',
 	'ogg-desc-link'         => 'Bu dosya hakkında',
+);
+
+/** Tsonga (Xitsonga)
+ * @author Thuvack
+ */
+$messages['ts'] = array(
+	'ogg-more'    => 'Swinwana…',
+	'ogg-dismiss' => 'Pfala',
 );
 
 /** Ukrainian (Українська)

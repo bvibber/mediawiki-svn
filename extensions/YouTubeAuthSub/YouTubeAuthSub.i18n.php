@@ -613,6 +613,15 @@ $messages['mr'] = array(
 	'youtubeauthsub_jserror_nodesc'      => 'कृपया व्हिडियोची माहिती लिहा.',
 );
 
+/** Nahuatl (Nahuatl)
+ * @author Fluence
+ */
+$messages['nah'] = array(
+	'youtubeauthsub'          => 'Vīdeoquetza īhuīc YouTube',
+	'youtubeauthsub_title'    => 'Tōcāitl',
+	'youtubeauthsub_category' => 'Neneuhcāyōtl',
+);
+
 /** Low German (Plattdüütsch)
  * @author Slomox
  */
@@ -839,6 +848,15 @@ Este vídeo pode ser visualizado [http://www.youtube.com/watch?v=$1 aqui]',
 	'youtubeauthsub_jserror_nokeywords'  => 'Por favor, introduza 1 ou mais palavras-chave.',
 	'youtubeauthsub_jserror_notitle'     => 'Por favor, introduza um título para o vídeo.',
 	'youtubeauthsub_jserror_nodesc'      => 'Por favor, introduza uma descrição para o vídeo.',
+);
+
+/** Romanian (Română)
+ * @author KlaudiuMihaila
+ */
+$messages['ro'] = array(
+	'youtubeauthsub_title'       => 'Titlu',
+	'youtubeauthsub_description' => 'Descriere',
+	'youtubeauthsub_category'    => 'Categorie',
 );
 
 /** Russian (Русский)

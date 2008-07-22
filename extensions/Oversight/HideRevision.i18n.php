@@ -1003,6 +1003,51 @@ adatbázis-adminisztrátor, ha hibát vétesz.",
 Ezen információk kiadása az adatvédelmi biztosi jogosultség végleges elvesztését is jelentheti.',
 );
 
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'hiderevision'                => 'Celar revisiones permanentemente',
+	'hiderevision-desc'           => 'Render revisiones individual invisibile a tote le usatores pro motivos legal, etc.',
+	'group-oversight'             => 'Supervisores',
+	'group-oversight-member'      => 'Supervisor',
+	'grouppage-oversight'         => '{{ns:project}}:Supervisor',
+	'right-oversight'             => 'Vider un revision anteriormente celate',
+	'right-hiderevision'          => 'Revider e restaurar revisiones invisibile al administratores',
+	'hiderevision-prompt'         => 'Numero del revision a deler:',
+	'hiderevision-continue'       => 'Continuar',
+	'hiderevision-text'           => "Isto debe '''solmente''' esser usate pro le sequente motivos:
+* Informationes personal inappropriate
+*: ''adresses de domicilio e numeros de telephono, numeros de identification personal, etc.''
+
+'''Le abuso de iste systema resultara in le perdita de privilegios.'''
+
+Le entratas delite non essera visibile a alcuno via le sito web, ma le deletiones essera registrate e pote esser restaurate manualmente per un administrator del base de datos si tu face un error.",
+	'hiderevision-reason'         => 'Motivo (essera registrate privatemente):',
+	'hiderevision-submit'         => 'Celar iste datos permanentemente',
+	'hiderevision-tab'            => 'Celar revision',
+	'hiderevision-norevisions'    => 'Nulle revisiones specificate a deler.',
+	'hiderevision-noreason'       => 'Tu debe indicar le motivo de iste deletion.',
+	'hiderevision-status'         => 'Revision $1: $2',
+	'hiderevision-success'        => 'Archivate e delite con successo.',
+	'hiderevision-error-missing'  => 'Non trovate in le base de datos.',
+	'hiderevision-error-current'  => 'Non pote deler le ultime modification de un pagina.
+Reverte primo iste modification.',
+	'hiderevision-error-delete'   => 'Non pote archivar lo; esque illo haberea anteriormente essite delite?',
+	'hiderevision-archive-status' => 'Deleva revision de $1: $2',
+	'oversight-nodiff'            => 'Non pote traciar le modificationes proque il non existe un revision precedente de iste pagina. Causas possibile:
+*Le pagina esseva delite
+*Iste revision celate esseva le prime revision',
+	'oversight-log-hiderev'       => 'deleva un modification de $1',
+	'oversight'                   => 'Supervision',
+	'oversight-view'              => 'detalios',
+	'oversight-difference'        => '(Differentia del previe revision remanente)',
+	'oversight-prev'              => 'Ultime revision precedente',
+	'oversight-hidden'            => 'Revision celate',
+	'oversight-header'            => 'Infra es un lista de revisiones recentemente celate permanentemente del publico.
+Le divulgation de iste informationes pote resultar in le perdita permanente del privilegios supervisorial.',
+);
+
 /** Indonesian (Bahasa Indonesia)
  * @author Rex
  * @author Meursault2004
@@ -2011,6 +2056,13 @@ $messages['qu'] = array(
  */
 $messages['rmy'] = array(
 	'hiderevision-submit' => 'Garav o paruvipen',
+);
+
+/** Romanian (Română)
+ * @author KlaudiuMihaila
+ */
+$messages['ro'] = array(
+	'oversight-view' => 'detalii',
 );
 
 /** Russian (Русский)

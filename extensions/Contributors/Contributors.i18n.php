@@ -106,7 +106,7 @@ $messages['bcl'] = array(
 $messages['bg'] = array(
 	'contributors-target'     => 'Заглавие:',
 	'contributors-submit'     => 'Показване',
-	'contributors-others'     => 'и $1 други',
+	'contributors-others'     => 'и {{PLURAL:$1|един друг|$1 други}}',
 	'contributors-badtitle'   => 'Невалидно заглавие.',
 	'contributors-nosuchpage' => 'Страницата $1 не съществува.',
 );
@@ -266,7 +266,7 @@ $messages['fi'] = array(
 	'contributors-target'      => 'Sivun otsikko',
 	'contributors-submit'      => 'Näytä',
 	'contributors-subtitle'    => 'Sivun $1 pääasialliset muokkaajat',
-	'contributors-others-long' => 'Tällä sivulla on $1 muuta muokkaajaa.',
+	'contributors-others-long' => 'Tätä sivua on muokannut {{PLURAL:$1|yksi muu käyttäjä|$1 muuta käyttäjää}}.',
 );
 
 /** French (Français)
@@ -634,6 +634,14 @@ $messages['mr'] = array(
 	'contributors-nosuchpage'  => 'पान $1 अस्तीत्वात नाही.',
 );
 
+/** Nahuatl (Nahuatl)
+ * @author Fluence
+ */
+$messages['nah'] = array(
+	'contributors-target' => 'Tōcāitl:',
+	'contributors-submit' => 'Xiquittāz',
+);
+
 /** Low German (Plattdüütsch)
  * @author Slomox
  */
@@ -777,6 +785,7 @@ $messages['ps'] = array(
 
 /** Portuguese (Português)
  * @author Malafaya
+ * @author 555
  */
 $messages['pt'] = array(
 	'contributors'             => 'Contribuidores',
@@ -786,8 +795,8 @@ $messages['pt'] = array(
 	'contributors-target'      => 'Título:',
 	'contributors-submit'      => 'Exibir',
 	'contributors-subtitle'    => 'Principais contribuidores de $1',
-	'contributors-others-long' => 'Existem ainda outros $1 contribuidores para esta página.',
-	'contributors-others'      => 'e $1 outros',
+	'contributors-others-long' => '{{PLURAL:$1|Ainda há outro contribuidor|Existem ainda outros $1 contribuidores}} para esta página.',
+	'contributors-others'      => 'e {{PLURAL:$1|um outro|$1 outros}}',
 	'contributors-badtitle'    => 'Título inválido.',
 	'contributors-nosuchpage'  => 'O artigo $1 não existe.',
 );
@@ -812,14 +821,14 @@ $messages['rm'] = array(
 $messages['ro'] = array(
 	'contributors'             => 'Contribuitori',
 	'contributors-toolbox'     => 'Contribuitori principali',
-	'contributors-legend'      => 'Afişează contribuitorii principali la un articol',
+	'contributors-legend'      => 'Afişează contribuitorii principali la o pagină',
 	'contributors-target'      => 'Titlu:',
 	'contributors-submit'      => 'Arată',
 	'contributors-subtitle'    => 'Contribuitori principali la $1',
 	'contributors-others-long' => 'Mai sunt $1 alţi contribuitori la această pagină.',
 	'contributors-others'      => 'şi alţii $1',
 	'contributors-badtitle'    => 'Titlu nevalid.',
-	'contributors-nosuchpage'  => 'Articolul $1 nu există.',
+	'contributors-nosuchpage'  => 'Pagina $1 nu există.',
 );
 
 /** Russian (Русский)

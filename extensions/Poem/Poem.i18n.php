@@ -142,6 +142,13 @@ $messages['hu'] = array(
 	'poem-desc' => '<tt>&lt;poem&gt;</tt> tag a versek formázásához',
 );
 
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'poem-desc' => 'Adde le etiquetta <tt>&lt;poem&gt;</tt> pro formatar poemas',
+);
+
 /** Indonesian (Bahasa Indonesia)
  * @author IvanLanin
  */

@@ -253,6 +253,25 @@ $messages['ia'] = array(
 	'importfreeimages_next'  => '$1 {{PLURAL:$1|sequente|sequentes}}',
 );
 
+/** Italian (Italiano)
+ * @author Darth Kule
+ */
+$messages['it'] = array(
+	'importfreeimages'                       => 'Importa immagini libere',
+	'importfreeimages-desc'                  => 'Fornisce un modo per [[Special:ImportFreeImages|importare foto con la giusta licenza]] da [http://www.flickr.com flickr]',
+	'importfreeimages_description'           => 'Questa pagina ti permette di cercare immagini con la giusta licenza su flickr e importarle sulla tua wiki.',
+	'importfreeimages_noapikey'              => 'Non hai configurato la tua chiave API Flickr.
+Per farlo richiedi una chiave API [http://www.flickr.com/services/api/misc.api_keys.html qui] e imposta wgFlickrAPIKey in ImportFreeImages.php.',
+	'importfreeimages_nophotosfound'         => "Nessuna foto soddisfa il criterio di ricerca '$1', prova di nuovo.",
+	'importfreeimages_invalidurl'            => 'L\'URL "$1" non corrisponde a un\'immagine di Flickr valida.',
+	'importfreeimages_owner'                 => 'Autore',
+	'importfreeimages_importthis'            => 'importa questo',
+	'importfreeimages_next'                  => 'Successivi $1',
+	'importfreeimages_filefromflickr'        => "$1 dall'utente <b>[$2]</b> da flickr. URL originale",
+	'importfreeimages_promptuserforfilename' => 'Inserisci un nome per il file di destinazione:',
+	'importfreeimages_returntoform'          => "Oppure fai clic <a href='$1'>qui</a> per tornare ai risultati della tua ricerca",
+);
+
 /** Javanese (Basa Jawa)
  * @author Meursault2004
  */
@@ -459,6 +478,13 @@ $messages['pt'] = array(
 	'importfreeimages_filefromflickr'        => '$1 pelo utilizador <b>[$2]</b> do flickr. URL original',
 	'importfreeimages_promptuserforfilename' => 'Por favor, introduza um nome de ficheiro destino:',
 	'importfreeimages_returntoform'          => "Ou clique <a href='$1'>aqui</a> para voltar aos resultados da sua pesquisa",
+);
+
+/** Romanian (Română)
+ * @author KlaudiuMihaila
+ */
+$messages['ro'] = array(
+	'importfreeimages_owner' => 'Autor',
 );
 
 /** Russian (Русский)

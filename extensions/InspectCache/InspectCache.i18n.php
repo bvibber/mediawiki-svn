@@ -350,6 +350,14 @@ $messages['ms'] = array(
 	'inspectcache-ok' => 'OK',
 );
 
+/** Nahuatl (Nahuatl)
+ * @author Fluence
+ */
+$messages['nah'] = array(
+	'inspectcache-ok'     => 'Cualli',
+	'inspectcache-delete' => 'Ticpoloāz',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  * @author SPQRobin
@@ -469,6 +477,7 @@ $messages['rif'] = array(
  * @author KlaudiuMihaila
  */
 $messages['ro'] = array(
+	'inspectcache-ok'     => 'OK',
 	'inspectcache-delete' => 'Şterge',
 );
 

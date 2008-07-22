@@ -11,6 +11,13 @@ $messages['en'] = array(
 	'mwsearch-desc' => 'MWSearch plugin',
 );
 
+/** Afrikaans (Afrikaans)
+ * @author Naudefj
+ */
+$messages['af'] = array(
+	'mwsearch-desc' => 'MWSearch-uitbreiding',
+);
+
 /** Aragonese (Aragonés)
  * @author Juanpabl
  */

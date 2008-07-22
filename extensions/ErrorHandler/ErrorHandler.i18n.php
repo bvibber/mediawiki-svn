@@ -37,20 +37,24 @@ $messages['en'] = array(
  * @author Meno25
  */
 $messages['ar'] = array(
-	'errorhandler-errors'              => 'الأخطاء:',
-	'errorhandler-error-fatal'         => 'خطأ قاتل',
-	'errorhandler-error-warning'       => 'تحذير',
-	'errorhandler-error-parse'         => 'خطأ محلل',
-	'errorhandler-error-notice'        => 'ملاحظة',
-	'errorhandler-error-core-error'    => 'خطأ قلب',
-	'errorhandler-error-core-warning'  => 'تحذير قلب',
-	'errorhandler-error-user-error'    => 'خطأ مستخدم',
-	'errorhandler-error-user-warning'  => 'تحذير مستخدم',
-	'errorhandler-error-user-notice'   => 'ملاحظة مستخدم',
-	'errorhandler-msg-text'            => '$1 : $2 في $3 (سطر $4)',
-	'errorhandler-trace'               => 'الأثر:',
-	'errorhandler-trace-line'          => '$1 (سطر $2): $3',
-	'errorhandler-trace-line-internal' => '[وظيفة داخلية]: $1',
+	'errorhandler-desc'                  => 'معالج الخطأ لميدياويكي',
+	'errorhandler-errors'                => 'الأخطاء:',
+	'errorhandler-error-fatal'           => 'خطأ قاتل',
+	'errorhandler-error-warning'         => 'تحذير',
+	'errorhandler-error-parse'           => 'خطأ محلل',
+	'errorhandler-error-notice'          => 'ملاحظة',
+	'errorhandler-error-core-error'      => 'خطأ قلب',
+	'errorhandler-error-core-warning'    => 'تحذير قلب',
+	'errorhandler-error-compile-error'   => 'خطأ تراكم',
+	'errorhandler-error-compile-warning' => 'تحذير تراكم',
+	'errorhandler-error-user-error'      => 'خطأ مستخدم',
+	'errorhandler-error-user-warning'    => 'تحذير مستخدم',
+	'errorhandler-error-user-notice'     => 'ملاحظة مستخدم',
+	'errorhandler-msg-text'              => '$1 : $2 في $3 (سطر $4)',
+	'errorhandler-msg-html'              => '<b>$1</b> : <i>$2</i> في <b>$3</b> (سطر <b>$4</b>)',
+	'errorhandler-trace'                 => 'الأثر:',
+	'errorhandler-trace-line'            => '$1 (سطر $2): $3',
+	'errorhandler-trace-line-internal'   => '[وظيفة داخلية]: $1',
 );
 
 /** French (Français)
@@ -114,6 +118,7 @@ $messages['lb'] = array(
 	'errorhandler-error-warning'       => 'Warnung',
 	'errorhandler-error-parse'         => 'Parser-Feeler',
 	'errorhandler-error-notice'        => 'Notiz',
+	'errorhandler-error-user-warning'  => 'Benotzerwarnung',
 	'errorhandler-msg-text'            => '$1 : $2 a(n) $3 (Linn $4)',
 	'errorhandler-trace-line-internal' => '[intern Fonctioun]: $1',
 );
@@ -209,6 +214,17 @@ $messages['pl'] = array(
 	'errorhandler-error-user-error' => 'Błąd użytkownika',
 	'errorhandler-msg-text'         => '$1 : $2 w $3 (linia $4)',
 	'errorhandler-trace-line'       => '$1 (linia $2): $3',
+);
+
+/** Romanian (Română)
+ * @author KlaudiuMihaila
+ */
+$messages['ro'] = array(
+	'errorhandler-errors'      => 'Erori:',
+	'errorhandler-error-fatal' => 'Eroare fatală',
+	'errorhandler-msg-text'    => '$1 : $2 în $3 (linia $4)',
+	'errorhandler-msg-html'    => '<b>$1</b> : <i>$2</i> în <b>$3</b> (linia <b>$4</b>)',
+	'errorhandler-trace-line'  => '$1 (linia $2): $3',
 );
 
 /** Russian (Русский)

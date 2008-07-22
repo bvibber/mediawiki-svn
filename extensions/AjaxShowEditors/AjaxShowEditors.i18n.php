@@ -50,8 +50,13 @@ $messages['ar'] = array(
  * @author Ramsis1978
  */
 $messages['arz'] = array(
-	'ajax-se-desc'  => 'بيبين اليوزرز اللي بيعدلو الصفحة نفسيها',
-	'ajax-se-title' => 'بيعدل دلوقتي:',
+	'ajax-se-desc'             => 'بيبين اليوزرز اللي بيعدلو الصفحة نفسيها',
+	'ajax-se-title'            => 'بيعدل دلوقتي:',
+	'ajax-se-pending'          => ' التحديث متعلق ... (دوس على  الصندوق دا أو ابتدي في التحرير)',
+	'ajax-se-idling'           => '($1s من)',
+	'ajax-se-pagedoesnotexist' => 'الصفحة مش موجودة',
+	'ajax-se-userinvalid'      => 'غلط : اليوزر مش صحيح',
+	'ajax-se-usernotfound'     => 'غلط: مالقيناش اليوزر',
 );
 
 /** Asturian (Asturianu)
@@ -505,6 +510,14 @@ $messages['mr'] = array(
 	'ajax-se-usernotfound'     => 'त्रूटी:सदस्य मिळाला नाही',
 );
 
+/** Nahuatl (Nahuatl)
+ * @author Fluence
+ */
+$messages['nah'] = array(
+	'ajax-se-title'            => 'Āxcān ticpatlahua:',
+	'ajax-se-pagedoesnotexist' => 'zāzanilli ahmo ia',
+);
+
 /** Low German (Plattdüütsch)
  * @author Slomox
  */
@@ -630,8 +643,11 @@ $messages['pt'] = array(
  * @author KlaudiuMihaila
  */
 $messages['ro'] = array(
-	'ajax-se-title'  => 'Modificare curentă:',
-	'ajax-se-idling' => '(acum $1s)',
+	'ajax-se-title'            => 'Modificare curentă:',
+	'ajax-se-idling'           => '(acum $1s)',
+	'ajax-se-pagedoesnotexist' => 'pagina nu există',
+	'ajax-se-userinvalid'      => 'Eroare: utilizator incorect',
+	'ajax-se-usernotfound'     => 'Eroare: utilizator negăsit',
 );
 
 /** Russian (Русский)

@@ -189,6 +189,7 @@ $messages['an'] = array(
  */
 $messages['ar'] = array(
 	'configure'                           => 'اضبط الويكي',
+	'configure-desc'                      => 'يسمح للمستخدمين الموكلين to [[Special:Configure|بضبط]] الويكي بواسطة واجهة معتمدة على الويب',
 	'configure-desc-group'                => 'المجموعات',
 	'configure-desc-key'                  => 'المفتاح',
 	'configure-desc-ns'                   => 'نطاقات',
@@ -196,10 +197,12 @@ $messages['ar'] = array(
 	'configure-edit-core'                 => 'ميدياويكي',
 	'configure-edit-ext'                  => 'امتدادات',
 	'configure-ext-doc'                   => 'انظر الوثائق على الإنترنت',
+	'configure-ext-schemachange'          => "'''تحذير:''' هذا الامتداد يتطلب تحديثا لقاعدة البيانات ليعمل بطرقة صحيحة!",
 	'configure-ext-settings'              => 'إعدادات',
 	'configure-ext-use-extension'         => 'استخدم هذا الامتداد',
 	'configure-ext-use'                   => 'استخدام',
 	'configure-btn-save'                  => 'احفظ الاعدادات',
+	'configure-edit-old'                  => 'تحذير: أنت تعدل نسخة <strong>قديمة</strong> من الإعدادات.',
 	'configure-error'                     => 'الإعدادات لم يمكن حفظها',
 	'configure-js-add'                    => 'إضافة مدخلة جديدة',
 	'configure-js-group-exists'           => 'خطأ: المجموعة موجودة حاليا.',
@@ -211,6 +214,7 @@ $messages['ar'] = array(
 	'configure-no-transwiki'              => 'أنت غير مسموح لك بتغيير الإعدادات في الويكيات الأخرى',
 	'configure-old'                       => 'النسخ القديمة',
 	'configure-old-versions'              => 'قائمة النسخ القديمة من الإعدادات:',
+	'configure-saved'                     => 'الإعدادت تم حفظها',
 	'configure-section-general'           => 'اعدادات عامة',
 	'configure-section-paths'             => 'المسارات',
 	'configure-section-db'                => 'قاعدة البيانات',
@@ -226,6 +230,7 @@ $messages['ar'] = array(
 	'configure-section-zh-conversion'     => 'تحويل صيني',
 	'configure-section-html'              => 'إتش تي إم إل',
 	'configure-section-debug'             => 'تنقيح',
+	'configure-section-profiling'         => 'الملف',
 	'configure-section-site'              => 'تخصيص الموقع',
 	'configure-section-ajax'              => 'أجاكس',
 	'configure-section-css-js'            => 'CSS وجافاسكريبت',
@@ -266,6 +271,7 @@ $messages['ar'] = array(
 	'configure-section-extension'         => 'الامتدادات',
 	'configure-section-search'            => 'بحث',
 	'configure-section-copyright'         => 'حقوق نشر',
+	'configure-section-htcp'              => 'بث HTCP متعدد',
 	'configure-section-misc'              => 'أخرى',
 	'configure-section-mw-extensions'     => 'امتدادت ميدياويكي',
 	'configure-select-wiki'               => 'اختيار الويكي',
@@ -273,6 +279,7 @@ $messages['ar'] = array(
 	'configure-select-wiki-desc'          => 'اختر الويكي الذي تريد ضبطه.',
 	'configure-select-wiki-submit'        => 'تأكيد',
 	'configure-setting-not-available'     => 'هذا الاعداد غير متاح في هذه النسخة من ميدياويكي',
+	'configure-transwiki-not-in-range'    => 'الويكي المطلوب، $1، ليس ضمن القيم المسموح بها ($2).',
 	'configure-view'                      => 'انظر',
 	'configure-view-not-allowed'          => 'أنت غير مسموح لك برؤية هذه الإعدادات',
 	'extensions'                          => 'ضبط الامتدادات',
@@ -321,11 +328,13 @@ $messages['bg'] = array(
 	'configure-js-prompt-group'        => 'Въведете име на новата група:',
 	'configure-js-remove'              => 'Изтриване',
 	'configure-js-remove-row'          => 'Изтриване на записа',
+	'configure-no-diff'                => 'Няма промени в избраните версии.',
 	'configure-no-directory'           => 'Използваната за съхранение на настройките директория, <tt>$1</tt>, не съществува.
 Необходимо е тя да бъде създадена или да бъде променена, за да може да се използва разширението.',
 	'configure-no-old'                 => 'Няма налична стара версия на настройките',
 	'configure-no-setup'               => 'За използване на това разширение е необходимо специално извикване на <code>efConfigureSetup()</code> в LocalSettings.php',
 	'configure-no-transwiki'           => 'Нямате права да променяте настройките в други уикита',
+	'configure-old'                    => 'Стари версии',
 	'configure-old-versions'           => 'Списък със стари версии на конфигурацията:',
 	'configure-old-not-available'      => 'Поисканата стара версия на настройките, $1, не беше намерена',
 	'configure-saved'                  => 'Настройките бяха съхранени',
@@ -370,7 +379,10 @@ $messages['bg'] = array(
 	'right-configure'                  => 'Конфигуриране на уикито',
 	'right-configure-all'              => 'Конфигуриране на всички уикита',
 	'right-extensions'                 => 'Конфигуриране на разширенията',
+	'right-extensions-all'             => 'Разширено настройване на разширенията',
+	'right-extensions-interwiki'       => 'Конфигуриране на разширенията във външни уикита',
 	'right-viewconfig'                 => 'Преглед на конфигурацията на уикито',
+	'right-viewconfig-all'             => 'Преглеждане на всички уики настройки',
 	'viewconfig'                       => 'Преглед на конфигурацията на уикито',
 );
 
@@ -1324,6 +1336,16 @@ $messages['mr'] = array(
 	'viewconfig'                          => 'विकि कॉन्फिगरेशन पहा',
 );
 
+/** Nahuatl (Nahuatl)
+ * @author Fluence
+ */
+$messages['nah'] = array(
+	'configure-js-remove'            => 'Ticpoloāz',
+	'configure-section-email'        => 'E-mail',
+	'configure-section-category'     => 'Neneuhcāyōtl',
+	'configure-section-specialpages' => 'Nōncuahquīzqui āmatl',
+);
+
 /** Low German (Plattdüütsch)
  * @author Slomox
  */
@@ -1885,8 +1907,50 @@ $messages['rif'] = array(
  * @author KlaudiuMihaila
  */
 $messages['ro'] = array(
-	'configure-js-remove'            => 'Şterge',
-	'configure-section-specialpages' => 'Pagini speciale',
+	'configure-desc-group'            => 'Grupuri',
+	'configure-desc-key'              => 'Cheie',
+	'configure-desc-ns'               => 'Spaţii de nume',
+	'configure-desc-val'              => 'Valoare',
+	'configure-edit-core'             => 'MediaWiki',
+	'configure-edit-ext'              => 'Extensii',
+	'configure-ext-use-extension'     => 'Foloseşte această extensie',
+	'configure-ext-use'               => 'Foloseşte',
+	'configure-error'                 => 'Configuraţia nu a putut fi salvată',
+	'configure-js-add'                => 'Adaufă o intrare nouă',
+	'configure-js-group-exists'       => 'Eroare: grupul există deja.',
+	'configure-js-prompt-group'       => 'Numele noului grup:',
+	'configure-js-remove'             => 'Şterge',
+	'configure-js-remove-row'         => 'Şterge această intrare',
+	'configure-old'                   => 'Versiuni vechi',
+	'configure-old-versions'          => 'Listă de versiuni vechi ale configuraţiei:',
+	'configure-saved'                 => 'Configuraţia a fost salvată',
+	'configure-section-paths'         => 'Căi',
+	'configure-section-db'            => 'Baza de date',
+	'configure-section-email'         => 'E-mail',
+	'configure-section-enotif'        => 'Notificare e-mail',
+	'configure-section-localization'  => 'Localizare',
+	'configure-section-zh-conversion' => 'Conversie în chineză',
+	'configure-section-css-js'        => 'CSS şi JavaScript',
+	'configure-section-namespaces'    => 'Spaţii de nume',
+	'configure-section-category'      => 'Categorii',
+	'configure-section-access'        => 'Acces',
+	'configure-section-groups'        => 'Grupuri',
+	'configure-section-block'         => 'Blocări',
+	'configure-section-mime'          => 'Tipuri MIME',
+	'configure-section-images'        => 'Imagini',
+	'configure-section-antivirus'     => 'Antivirus',
+	'configure-section-specialpages'  => 'Pagini speciale',
+	'configure-section-recentchanges' => 'Schimbări recente',
+	'configure-section-users'         => 'Utilizatori',
+	'configure-section-extension'     => 'Extensii',
+	'configure-section-mw-extensions' => 'Extensii MediaWiki',
+	'configure-select-wiki-available' => 'Valori autorizate: $1',
+	'configure-select-wiki-submit'    => 'Validează',
+	'extensions'                      => 'Configurează extensiile',
+	'right-configure-all'             => 'Configurează toate setările wiki',
+	'right-extensions'                => 'Configurează extensiile',
+	'right-viewconfig'                => 'Vizualizează configuraţia wiki',
+	'viewconfig'                      => 'Vizualizează configuraţia wiki',
 );
 
 /** Russian (Русский)

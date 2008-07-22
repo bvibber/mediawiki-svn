@@ -414,6 +414,13 @@ $messages['mr'] = array(
 	'formsaveerrortext'            => "'$1' पान जतन करण्यामध्ये अनोळखी त्रुटी आलेली आहे.",
 );
 
+/** Nahuatl (Nahuatl)
+ * @author Fluence
+ */
+$messages['nah'] = array(
+	'formsave' => 'Ticpiyāz',
+);
+
 /** Low German (Plattdüütsch)
  * @author Slomox
  */
@@ -567,6 +574,13 @@ $messages['pt'] = array(
 	'formsavesummary'              => 'Nova página usando [[Special:Form/$1]]',
 	'formsaveerror'                => 'Erro ao salvar formulário',
 	'formsaveerrortext'            => "Houve um erro desconhecido ao salvar a página '$1'.",
+);
+
+/** Romanian (Română)
+ * @author KlaudiuMihaila
+ */
+$messages['ro'] = array(
+	'formsave' => 'Salvează',
 );
 
 /** Russian (Русский)

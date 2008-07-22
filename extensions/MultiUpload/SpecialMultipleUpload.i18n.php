@@ -488,6 +488,13 @@ $messages['pt'] = array(
 	'multiupload-toolbox'              => 'Carregar múltiplos ficheiros',
 );
 
+/** Romanian (Română)
+ * @author KlaudiuMihaila
+ */
+$messages['ro'] = array(
+	'multipleupload' => 'Încarcă fişiere',
+);
+
 /** Russian (Русский)
  * @author Александр Сигачёв
  */

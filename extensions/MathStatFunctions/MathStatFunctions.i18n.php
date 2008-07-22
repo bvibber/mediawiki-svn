@@ -283,6 +283,13 @@ $messages['pt'] = array(
 	'msfunc_div_zero' => 'Divisão por zero',
 );
 
+/** Romanian (Română)
+ * @author KlaudiuMihaila
+ */
+$messages['ro'] = array(
+	'msfunc_div_zero' => 'Împărţire la zero',
+);
+
 /** Russian (Русский)
  * @author VasilievVV
  * @author Александр Сигачёв

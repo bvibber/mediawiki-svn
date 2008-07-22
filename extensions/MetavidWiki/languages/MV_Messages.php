@@ -380,6 +380,7 @@ $messages['ar'] = array(
 	'mv_list_streams_docu'           => 'الستريمات التالية موجودة:',
 	'mv_list_streams_none'           => 'لا ستريمات موجودة',
 	'mvvideofeed'                    => 'تصدير تلقيم فيديو ميتافيد',
+	'mvexportask'                    => 'تصدير تلقيم فيديو سيمانتيك',
 	'video_feed_cat'                 => 'تلقيم فيديو للتصنيف:',
 	'mv_cat_search_note'             => 'ملاحظة: التصنيفات تعرض فقط التصنيفات العليا، لكل بيانات الميتا في بحث نطاقات التصنيف عن $1',
 	'mv_mvd_linkback'                => 'جزء من الستريم $1 <br />القفز إلى عرض الستريم: $2<br />',
@@ -1560,6 +1561,7 @@ $messages['krj'] = array(
  */
 $messages['ksh'] = array(
 	'mv_tool_search' => 'Sööke',
+	'mv_edit'        => 'Ändere',
 	'mv_search_and'  => ', un',
 );
 
@@ -1841,6 +1843,15 @@ $mvMVDTypeDefaultDisp हा $mvMVDTypeAllAvailable चा सबसेट अ�
 	'mv_mang_layers'                 => 'स्तर व्यवस्थापन',
 	'mv_mang_layers_title'           => 'सद्य स्ट्रीम साठीच्या स्तर-प्रदर्शन प्रणालीचे व्यवस्थापन करा',
 	'mv_protect_source_material'     => 'मूळ स्रोत साहित्य संपादनांपासून सुरक्षित केले',
+);
+
+/** Nahuatl (Nahuatl)
+ * @author Fluence
+ */
+$messages['nah'] = array(
+	'mv_upload_file'     => 'Tlahcuilōlquetza',
+	'mv_search_category' => 'Neneuhcāyōtl',
+	'mv_category'        => 'neneuhcāyōtl',
 );
 
 /** Nedersaksisch (Nedersaksisch)
@@ -2636,7 +2647,13 @@ $messages['rif'] = array(
  * @author KlaudiuMihaila
  */
 $messages['ro'] = array(
-	'mv_tool_search' => 'Caută',
+	'mv_remove_reason'   => 'Motiv pentru ştergere:',
+	'mv_tool_search'     => 'Caută',
+	'mv_edit'            => 'Modifică',
+	'mv_history'         => 'Istoric',
+	'mv_remove'          => 'elimină',
+	'mv_search_category' => 'Categorie',
+	'mv_category'        => 'categorie',
 );
 
 /** Russian (Русский)

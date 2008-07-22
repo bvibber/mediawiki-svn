@@ -164,6 +164,16 @@ $messages['hi'] = array(
 	'simpleantispam-desc'  => 'फ़ार्ममें सादी स्पैम/बोट जाँच बढाता हैं',
 );
 
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'simpleantispam'       => 'Tu modification ha activate le mechanismo antispam',
+	'simpleantispam-label' => "Verification antispam.
+'''NON''' completa isto!",
+	'simpleantispam-desc'  => 'Adde un verification antispam/antibot simple al formularios',
+);
+
 /** Indonesian (Bahasa Indonesia)
  * @author Rex
  */
@@ -172,6 +182,16 @@ $messages['id'] = array(
 	'simpleantispam-label' => "Pemeriksaan anti-spam.
 Masukan ini '''DILARANG'''!",
 	'simpleantispam-desc'  => 'Tambahkan pemeriksaan spam/bot sederhana ke formulir-formulir',
+);
+
+/** Italian (Italiano)
+ * @author Darth Kule
+ */
+$messages['it'] = array(
+	'simpleantispam'       => 'Il tuo edit ha attivato il meccanismo anti-spam',
+	'simpleantispam-label' => "Controllo anti-spam.
+'''NON''' riempire!",
+	'simpleantispam-desc'  => 'Aggiunge un semplice controllo spam/bot ai moduli',
 );
 
 /** Ripoarisch (Ripoarisch)

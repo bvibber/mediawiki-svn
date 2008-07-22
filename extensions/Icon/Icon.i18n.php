@@ -230,6 +230,13 @@ $messages['pt'] = array(
 	'icon-desc'     => 'Permite-lhe usar imagens como ícones e ligações de ícones',
 );
 
+/** Romanian (Română)
+ * @author KlaudiuMihaila
+ */
+$messages['ro'] = array(
+	'icon-badwidth' => 'Lăţime incorectă',
+);
+
 /** Russian (Русский)
  * @author Александр Сигачёв
  */

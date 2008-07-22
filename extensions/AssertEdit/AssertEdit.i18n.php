@@ -245,6 +245,15 @@ $messages['hu'] = array(
 	'assert_edit_message' => 'Az előfeltételezés ($1) hamis értéket adott vissza.',
 );
 
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'assert_edit_title'   => 'Assertion fallite',
+	'assert_edit_desc'    => 'Adde assertiones de modification pro uso per bots',
+	'assert_edit_message' => 'Le assertion specificate ($1) falleva.',
+);
+
 /** Indonesian (Bahasa Indonesia)
  * @author IvanLanin
  */
@@ -306,6 +315,15 @@ $messages['kk-cyrl'] = array(
 $messages['kk-latn'] = array(
 	'assert_edit_title'   => 'Maquldaw sätsiz',
 	'assert_edit_message' => 'Engizilgen maquldaw ($1) sätsiz.',
+);
+
+/** Ripoarisch (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'assert_edit_title'   => 'Secherheits-Aansproch nit bestätesch',
+	'assert_edit_desc'    => 'Deit Secherheits-Aanspröch för Bot-Projramme em Wiki dobei',
+	'assert_edit_message' => 'De jewönschte Secherheits-Aansproch, $1, kunnt nit bestätesch wääde.',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

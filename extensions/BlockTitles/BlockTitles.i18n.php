@@ -400,7 +400,7 @@ $messages['qu'] = array(
  */
 $messages['ro'] = array(
 	'block_title_error_page_title' => 'Titlu blocat',
-	'block_title_error'            => 'Ne pare rău, titlul acestui articol nu poate fi salvat.',
+	'block_title_error'            => 'Ne pare rău, nu este permisă salvarea titlului acestui articol.',
 );
 
 /** Russian (Русский)

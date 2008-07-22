@@ -29,10 +29,12 @@ $messages['mhr'] = array(
 /** Arabic (العربية)
  * @author OsamaK
  * @author Alnokta
+ * @author Meno25
  */
 $messages['ar'] = array(
-	'dplforum-by'    => 'بواسطة',
-	'dplforum-never' => 'أبدا',
+	'dplforum-by'     => 'بواسطة',
+	'dplforum-edited' => '  - آخر تعديل',
+	'dplforum-never'  => 'أبدا',
 );
 
 /** Bulgarian (Български)
@@ -154,6 +156,13 @@ $messages['mr'] = array(
 	'dplforum-toomany' => 'डीपीएल चर्चासत्र: खूप जास्त वर्ग!',
 );
 
+/** Nahuatl (Nahuatl)
+ * @author Fluence
+ */
+$messages['nah'] = array(
+	'dplforum-never' => 'Aīcmah',
+);
+
 /** Low German (Plattdüütsch)
  * @author Slomox
  */
@@ -229,6 +238,13 @@ $messages['pt'] = array(
 	'dplforum-by'     => 'por',
 	'dplforum-edited' => '  - Última edição',
 	'dplforum-never'  => 'Nunca',
+);
+
+/** Romanian (Română)
+ * @author KlaudiuMihaila
+ */
+$messages['ro'] = array(
+	'dplforum-never' => 'Niciodată',
 );
 
 /** Russian (Русский)

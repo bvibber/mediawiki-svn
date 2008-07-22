@@ -884,6 +884,15 @@ $messages['pt'] = array(
 	'review_comment'                => 'Comentário',
 );
 
+/** Romanian (Română)
+ * @author KlaudiuMihaila
+ */
+$messages['ro'] = array(
+	'review_total_statistics'  => 'Total',
+	'review_user_details_link' => '(detalii)',
+	'review_comment'           => 'Comentariu',
+);
+
 /** Russian (Русский)
  * @author Александр Сигачёв
  */

@@ -338,6 +338,7 @@ $messages['mr'] = array(
  * @author Fluence
  */
 $messages['nah'] = array(
+	'randomincategory-label'  => 'Neneuhcāyōtl:',
 	'randomincategory-submit' => 'Yāuh',
 );
 
@@ -439,6 +440,13 @@ $messages['pt'] = array(
  */
 $messages['rif'] = array(
 	'randomincategory-submit' => 'Raḥ ɣa',
+);
+
+/** Romanian (Română)
+ * @author KlaudiuMihaila
+ */
+$messages['ro'] = array(
+	'randomincategory-label' => 'Categorie:',
 );
 
 /** Russian (Русский)

@@ -1042,6 +1042,7 @@ $messages['rm'] = array(
  * @author KlaudiuMihaila
  */
 $messages['ro'] = array(
+	'linksearch-ns' => 'Spaţiu de nume:',
 	'linksearch-ok' => 'Caută',
 );
 
@@ -1249,6 +1250,13 @@ $messages['tr'] = array(
 	'linksearch-ok' => 'Ara',
 );
 
+/** Tsonga (Xitsonga)
+ * @author Thuvack
+ */
+$messages['ts'] = array(
+	'linksearch-ok' => 'Lava',
+);
+
 /** Ukrainian (Українська)
  * @author Ahonc
  */
@@ -1272,7 +1280,8 @@ $messages['vec'] = array(
 	'linksearch-pat'   => 'Pattern de riçerca:',
 	'linksearch-ns'    => 'Namespace:',
 	'linksearch-ok'    => 'Çerca',
-	'linksearch-text'  => 'Se pol doparar dei metacaràteri, ad es. "*.example.org".',
+	'linksearch-text'  => 'Se pol doparar dei metacaràteri, par es. "*.wikipedia.org".<br />
+Protocòli suportè: <tt>$1</tt>',
 	'linksearch-line'  => '$1 presente ne la pagina $2',
 	'linksearch-error' => "I metacaràteri i pode vegner doparài solo a l'inizio del nome de l'host.",
 );

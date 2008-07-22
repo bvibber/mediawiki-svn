@@ -207,6 +207,14 @@ $messages['mr'] = array(
 	'postcomment_nopostingtoadd'           => 'वाढविण्यासाठी संदेश नाही.',
 );
 
+/** Nahuatl (Nahuatl)
+ * @author Fluence
+ */
+$messages['nah'] = array(
+	'postcomment_notloggedin'      => 'Teh ahmo ōticalac.',
+	'postcomment_youareloggedinas' => 'Ōticalac quemeh $1',
+);
+
 /** Dutch (Nederlands)
  * @author SPQRobin
  * @author Siebrand

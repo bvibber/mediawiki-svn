@@ -761,6 +761,13 @@ $messages['pt'] = array(
 	'usagestatisticscumulative-text' => 'cumulativo',
 );
 
+/** Romanian (Română)
+ * @author KlaudiuMihaila
+ */
+$messages['ro'] = array(
+	'usagestatisticstype' => 'Tip',
+);
+
 /** Russian (Русский)
  * @author Александр Сигачёв
  * @author Innv

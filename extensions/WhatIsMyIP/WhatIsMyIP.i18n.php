@@ -143,6 +143,15 @@ $messages['lb'] = array(
 	'whatismyip-out'  => 'Är IP:',
 );
 
+/** Nahuatl (Nahuatl)
+ * @author Fluence
+ */
+$messages['nah'] = array(
+	'whatismyip'      => 'Tlein cah noIP',
+	'whatismyip-desc' => 'Xiquittāz inīn tlatēquitiltilīlli īIP āxcān īpan [[Nōncuahquīzqui:TleinCahNoIP]]',
+	'whatismyip-out'  => 'MoIP:',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */
@@ -178,6 +187,15 @@ $messages['ps'] = array(
 	'whatismyip'      => 'زما IP څه دی',
 	'whatismyip-desc' => 'د اوسني کارونکي IP پته په [[Special:WhatIsMyIP]] ښکاره کوي',
 	'whatismyip-out'  => 'ستاسو IP:',
+);
+
+/** Romanian (Română)
+ * @author KlaudiuMihaila
+ */
+$messages['ro'] = array(
+	'whatismyip'      => 'Care este adresa mea IP',
+	'whatismyip-desc' => 'Arată adresa IP a utilizatorului curent la [[Special:WhatIsMyIP]]',
+	'whatismyip-out'  => 'Adresa ta IP:',
 );
 
 /** Slovak (Slovenčina)

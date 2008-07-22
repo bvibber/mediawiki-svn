@@ -468,6 +468,14 @@ $messages['mr'] = array(
 	'createsigndoc-error-alreadycreated' => 'डॉक्यूमेंट सही "$1" अगोदरच अस्तित्त्वात आहे.',
 );
 
+/** Nahuatl (Nahuatl)
+ * @author Fluence
+ */
+$messages['nah'] = array(
+	'createsigndoc-pagename' => 'Zāzanilli:',
+	'createsigndoc-create'   => 'Ticchīhuāz',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */
@@ -657,7 +665,10 @@ $messages['pt'] = array(
  * @author KlaudiuMihaila
  */
 $messages['ro'] = array(
-	'createsigndoc-create' => 'Creează',
+	'createsigndoc-pagename' => 'Pagină:',
+	'createsigndoc-email'    => 'Adresă e-mail:',
+	'createsigndoc-hidden'   => 'Ascunse',
+	'createsigndoc-create'   => 'Creează',
 );
 
 /** Russian (Русский)

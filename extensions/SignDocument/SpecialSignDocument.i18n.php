@@ -118,9 +118,11 @@ $messages['niu'] = array(
 $messages['af'] = array(
 	'sign-realname'                => 'Naam:',
 	'sign-city'                    => 'Stad:',
+	'sign-country'                 => 'Land:',
 	'sign-email'                   => 'E-pos adres:',
 	'sign-viewfield-realname'      => 'Naam',
 	'sign-viewfield-city'          => 'Stad',
+	'sign-viewfield-country'       => 'Land',
 	'sign-viewfield-email'         => 'E-pos',
 	'sign-viewfield-options'       => 'Opsies',
 	'sign-viewfield-reviewcomment' => 'Opmerking',
@@ -1135,6 +1137,7 @@ $messages['ms'] = array(
 $messages['nah'] = array(
 	'sign-realname'           => 'Tōcāitl:',
 	'sign-viewfield-realname' => 'Tōcāitl',
+	'sign-viewfield-email'    => 'E-mail',
 );
 
 /** Dutch (Nederlands)
@@ -1679,6 +1682,21 @@ $messages['pt'] = array(
  */
 $messages['rm'] = array(
 	'sign-viewfield-realname' => 'Num',
+);
+
+/** Romanian (Română)
+ * @author KlaudiuMihaila
+ */
+$messages['ro'] = array(
+	'sign-realname'                => 'Nume:',
+	'sign-email'                   => 'Adresă e-mail:',
+	'sign-viewfield-realname'      => 'Nume',
+	'sign-viewfield-ip'            => 'Adresă IP',
+	'sign-viewfield-email'         => 'E-mail',
+	'sign-viewfield-options'       => 'Opţiuni',
+	'sig-private'                  => '<i>Privat</i>',
+	'sign-viewfield-reviewcomment' => 'Comentariu',
+	'sign-review-comment'          => 'Comentariu',
 );
 
 /** Russian (Русский)

@@ -40,6 +40,7 @@ To manage invitations for an individual feature, click on its name.',
  */
 $messages['ar'] = array(
 	'invite-logpage'                        => 'سجل الدعوات',
+	'invite-logentry'                       => 'دعا $1 لاستخدام خاصية <i>$2</i>.',
 	'invitations'                           => 'أدر الدعوات لميزات البرنامج',
 	'invitations-invitedlist-none'          => 'لم تتم دعوتك لاستخدام أي ميزات بالدعوة-فقط.',
 	'invitations-pagetitle'                 => 'ميزات بالدعوة-فقط',
@@ -495,6 +496,8 @@ $messages['ps'] = array(
 
 /** Portuguese (Português)
  * @author Malafaya
+ * @author 555
+ * @author Siebrand
  */
 $messages['pt'] = array(
 	'invite-logpage'                        => 'Registo de Convites',
@@ -509,7 +512,7 @@ $messages['pt'] = array(
 	'invitations-uninvitedlist-none'        => 'Neste momento, mais nenhumas funcionalidades do software são atribuídas apenas por convite.',
 	'invitations-feature-pagetitle'         => 'Gestão de Convites - $1',
 	'invitations-feature-access'            => 'Actualmente não possui acesso ao uso de <i>$1</i>.',
-	'invitations-feature-numleft'           => 'Ainda lhe restam <b>$1</b> dos seus $2 convites.',
+	'invitations-feature-numleft'           => 'Ainda lhe {{PLURAL:$2|resta um|restam <b>$1</b>}} dos seus $2 convites.',
 	'invitations-feature-noneleft'          => 'Você já utilizou toda a sua quota de convites para esta funcionalidade',
 	'invitations-feature-noneyet'           => 'Você ainda não recebeu a sua quota de convites para esta funcionalidade.',
 	'invitations-feature-notallowed'        => 'Não tem acesso ao uso de <i>$1</i>.',

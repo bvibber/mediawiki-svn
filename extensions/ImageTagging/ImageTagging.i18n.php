@@ -81,28 +81,30 @@ $messages['af'] = array(
  * @author Meno25
  */
 $messages['ar'] = array(
-	'taggedimages'                        => 'صور موسومة',
-	'imagetagging-addimagetag'            => 'وسم هذه الصورة',
-	'imagetagging-article'                => 'صفحة:',
-	'imagetagging-articletotag'           => 'صفحة للوسم',
-	'imagetagging-imghistory'             => 'تاريخ',
-	'imagetagging-images'                 => 'صور',
-	'imagetagging-inthisimage'            => 'في هذه الصورة: $1',
-	'imagetagging-logentry'               => 'أزال الوسم للصفحة [[$1]] بواسطة $2',
-	'imagetagging-new'                    => '<sup><span style="color:red">جديد!</span></sup>',
-	'imagetagging-removetag'              => 'إزالة وسم',
-	'imagetagging-done-button'            => 'إنتهى الوسم',
-	'imagetagging-tag-button'             => 'وسم',
-	'imagetagging-tagcancel-button'       => 'إلغاء',
-	'imagetagging-tagging-instructions'   => 'اضغط على الأشخاص أو الأشياء في الصورة لوسمهم.',
-	'imagetagging-addingtag'              => 'إضافة وسم...',
-	'imagetagging-removingtag'            => 'إزالة وسم...',
-	'imagetagging-addtagsuccess'          => 'أُضيف الوسم.',
-	'imagetagging-removetagsuccess'       => 'أُزيل الوسم.',
-	'imagetagging-oneuniquetagmessage'    => 'هذه الصورة لديها بالفعل وسم بهذا الاسم.',
-	'imagetagging-imagetag-seemoreimages' => 'راجع المزيد من صور "$1" ($2)',
-	'imagetagging-taggedimages-title'     => 'صور "$1"',
-	'tag-logpagename'                     => 'سجل الوسم',
+	'taggedimages'                         => 'صور موسومة',
+	'imagetagging-addimagetag'             => 'وسم هذه الصورة',
+	'imagetagging-article'                 => 'صفحة:',
+	'imagetagging-articletotag'            => 'صفحة للوسم',
+	'imagetagging-imghistory'              => 'تاريخ',
+	'imagetagging-images'                  => 'صور',
+	'imagetagging-inthisimage'             => 'في هذه الصورة: $1',
+	'imagetagging-logentry'                => 'أزال الوسم للصفحة [[$1]] بواسطة $2',
+	'imagetagging-new'                     => '<sup><span style="color:red">جديد!</span></sup>',
+	'imagetagging-removetag'               => 'إزالة وسم',
+	'imagetagging-done-button'             => 'إنتهى الوسم',
+	'imagetagging-tag-button'              => 'وسم',
+	'imagetagging-tagcancel-button'        => 'إلغاء',
+	'imagetagging-tagging-instructions'    => 'اضغط على الأشخاص أو الأشياء في الصورة لوسمهم.',
+	'imagetagging-addingtag'               => 'إضافة وسم...',
+	'imagetagging-removingtag'             => 'إزالة وسم...',
+	'imagetagging-addtagsuccess'           => 'أُضيف الوسم.',
+	'imagetagging-removetagsuccess'        => 'أُزيل الوسم.',
+	'imagetagging-oneuniquetagmessage'     => 'هذه الصورة لديها بالفعل وسم بهذا الاسم.',
+	'imagetagging-imagetag-seemoreimages'  => 'راجع المزيد من صور "$1" ($2)',
+	'imagetagging-taggedimages-title'      => 'صور "$1"',
+	'imagetagging-taggedimages-displaying' => 'عرض $1 - $2 من $3 صورة ل"$4"',
+	'tag-logpagename'                      => 'سجل الوسم',
+	'tag-logpagetext'                      => 'هذا سجل بكل عمليات إضافة وإزالة وسم الصور.',
 );
 
 /** Bulgarian (Български)
@@ -412,6 +414,14 @@ $messages['mr'] = array(
 	'imagetagging-taggedimages-displaying'  => '"$4" ची $3 चित्रांपैकी $1 - $2 दर्शविली आहेत',
 );
 
+/** Nahuatl (Nahuatl)
+ * @author Fluence
+ */
+$messages['nah'] = array(
+	'imagetagging-article'          => 'Zāzanilli:',
+	'imagetagging-tagcancel-button' => 'Ticcuepāz',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */
@@ -553,6 +563,24 @@ $messages['pt-br'] = array(
  */
 $messages['rif'] = array(
 	'imagetagging-imghistory' => 'Amzruy',
+);
+
+/** Romanian (Română)
+ * @author KlaudiuMihaila
+ */
+$messages['ro'] = array(
+	'taggedimages'                  => 'Imagini etichetate',
+	'imagetagging-addimagetag'      => 'Etichetează această imagine',
+	'imagetagging-article'          => 'Pagină:',
+	'imagetagging-imghistory'       => 'Istoric',
+	'imagetagging-images'           => 'imagini',
+	'imagetagging-inthisimage'      => 'În această imagine: $1',
+	'imagetagging-removetag'        => 'elimină etichetă',
+	'imagetagging-tagcancel-button' => 'Anulează',
+	'imagetagging-addingtag'        => 'Adăugare etichetă…',
+	'imagetagging-removingtag'      => 'Eliminare etichetă…',
+	'imagetagging-addtagsuccess'    => 'Adăugat etichetă.',
+	'imagetagging-removetagsuccess' => 'Şters etichetă.',
 );
 
 /** Slovak (Slovenčina)
