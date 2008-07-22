@@ -101,7 +101,7 @@ process_factory::create_from_filename(
 {
 	struct stat sb;
 
-	if (stat(filename.c_str(), &sb) == -1)
+	if (lstat(filename.c_str(), &sb) == -1)
 		throw creation_failure("cannot access pathname");
 
 	if (mainconf.max_procs > 0 && nactive_ > mainconf.max_procs) {

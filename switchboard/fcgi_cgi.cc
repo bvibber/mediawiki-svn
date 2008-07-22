@@ -77,7 +77,7 @@ fcgi_cgi::fcgi_cgi(
 			s.erase(n);
 		}
 
-		if (stat(s.c_str(), &sb) == 0) {
+		if (lstat(s.c_str(), &sb) == 0) {
 			script_path_ = s;
 
 			/*
