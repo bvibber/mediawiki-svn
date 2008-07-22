@@ -96,11 +96,11 @@ function addLoadEvent(func) {
 }
 window.unload = GUnload;
 </script>
-<div id="map$wgGoogleMapsOnThisPage" class="$class" style="width: {$width}px; height: {$height}px;"></div>
+<div id="map$wgGoogleMapsOnThisPage" class="$class"></div>
 <script type="text/javascript">
 function makeMap{$wgGoogleMapsOnThisPage}() {
 	if (GBrowserIsCompatible()) {
-		var map = new GMap2(document.getElementById("map$wgGoogleMapsOnThisPage"));
+		var map = new GMap2(document.getElementById("map$wgGoogleMapsOnThisPage"), {size: new GSize('$width', '$height')});
 		map.addControl(new {$controls}());
 		map.addControl(new GMapTypeControl());
 END;
@@ -126,10 +126,10 @@ END;
 			// points among this set of locations, so that
 			// the zoom level doesn't set some points at
 			// the very edge of the map
-			$max_lat_plus = $max_lat + (0.1 * $lat_width);
-			$min_lat_plus = $min_lat - (0.1 * $lat_width);
-			$max_lon_plus = $max_lon + (0.1 * $lon_width);
-			$min_lon_plus = $min_lon - (0.1 * $lon_width);
+			$max_lat_plus = $max_lat + (0.05 * $lat_width);
+			$min_lat_plus = $min_lat - (0.05 * $lat_width);
+			$max_lon_plus = $max_lon + (0.05 * $lon_width);
+			$min_lon_plus = $min_lon - (0.05 * $lon_width);
 		} else {
 			$center_lat = 0;
 			$center_lon = 0;

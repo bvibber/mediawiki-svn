@@ -26,7 +26,7 @@ function sgmSetup() {
 	// credits
 	$wgExtensionCredits['parserhook'][] = array(
 		'name'            => 'Semantic Google Maps',
-		'version'         => '0.3',
+		'version'         => '0.3.1',
 		'author'          => array( 'Robert Buzink', 'Yaron Koren' ),
 		'url'             => 'http://www.mediawiki.org/wiki/Extension:Semantic_Google_Maps',
 		'description'     => 'Allows users to add Google Maps to wiki pages based on structured data',
@@ -69,14 +69,11 @@ function sgmFunctionRender( &$parser, $coordinates = '1,1', $zoom = '14', $type 
 	$lat = sm_returnlatlon('lat',$coordinates);
 	$lon = sm_returnlatlon('lon',$coordinates);
 
-	if ($width) {$style .= 'width: '.$width.'px; '; }
-	if ($height) {$style .= 'height: '.$height.'px; ';}
-
 	$output =<<<END
 <script src="http://maps.google.com/maps?file=api&v=2&key=$wgGoogleMapsKey" type="$wgJsMimeType"></script>
 <script type="text/javascript"> function createMarker(point, label) {  var marker = new GMarker(point);  GEvent.addListener(marker, 'click', function() { marker.openInfoWindowHtml(label, GInfoWindoOptions.maxWidth=100); });  return marker;  }  function addLoadEvent(func) {  var oldonload = window.onload;  if (typeof oldonload == 'function') {  window.onload = function() {  oldonload();  func();  };  } else {  window.onload = func;  }  }  window.unload = GUnload;</script>
 <div id="map$wgGoogleMapsOnThisPage" class="$class" style="$style" ></div>
-<script type="text/javascript"> function makeMap{$wgGoogleMapsOnThisPage}() { if (GBrowserIsCompatible()) {var map = new GMap2(document.getElementById("map{$wgGoogleMapsOnThisPage}")); map.addControl(new {$controls}()); map.addControl(new GMapTypeControl()); map.setCenter(new GLatLng({$lat}, {$lon}), {$zoom}, {$type}); var point = new GLatLng({$lat}, {$lon}); var marker = new GMarker(point); map.addOverlay(marker); } else { document.write('should show map'); } } addLoadEvent(makeMap{$wgGoogleMapsOnThisPage});</script>
+<script type="text/javascript"> function makeMap{$wgGoogleMapsOnThisPage}() { if (GBrowserIsCompatible()) {var map = new GMap2(document.getElementById("map{$wgGoogleMapsOnThisPage}"), {size: new GSize('$width', '$height')}); map.addControl(new {$controls}()); map.addControl(new GMapTypeControl()); map.setCenter(new GLatLng({$lat}, {$lon}), {$zoom}, {$type}); var point = new GLatLng({$lat}, {$lon}); var marker = new GMarker(point); map.addOverlay(marker); } else { document.write('should show map'); } } addLoadEvent(makeMap{$wgGoogleMapsOnThisPage});</script>
 
 END;
 
@@ -202,11 +199,7 @@ function sgmInputHTML($coordinates, $input_name, $is_mandatory, $is_disabled, $f
 END;
 
 	// map div
-	$text .= '<div id="sm_map'.$wgGoogleMapsOnThisPage.'" class="'.$class.'" ';
-	$text .= 'style="';
-	if ($width) {$text .= 'width: '.$width.'px; '; }
-	if ($height) {$text .= 'height: '.$height.'px; ';}
-	$text .= '" ></div>';
+	$text .= '<div id="sm_map'.$wgGoogleMapsOnThisPage.'" class="'.$class.'"></div>';
 
 	//geocoder html
 	wfLoadExtensionMessages( 'SemanticGoogleMaps' );
@@ -280,7 +273,7 @@ END;
 <script type="text/javascript">
 function makeMap{$wgGoogleMapsOnThisPage}() {
 	if (GBrowserIsCompatible()) {
-		window.map = new GMap2(document.getElementById("sm_map{$wgGoogleMapsOnThisPage}"));
+		window.map = new GMap2(document.getElementById("sm_map{$wgGoogleMapsOnThisPage}"), {size: new GSize('$width', '$height')});
 		geocoder = new GClientGeocoder();
 		map.addControl(new {$controls}());
 		map.addControl(new GMapTypeControl());
