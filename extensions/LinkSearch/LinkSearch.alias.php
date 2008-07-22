@@ -90,6 +90,16 @@ $aliases['ps'] = array(
 	'LinkSearch' => array( 'د تړنې پلټنه' ),
 );
 
+/** Portuguese (Português) */
+$aliases['pt'] = array(
+	'LinkSearch' => array( 'Pesquisar links' ),
+);
+
+/** Brazilian Portuguese (Português do Brasil) */
+$aliases['pt-br'] = array(
+	'LinkSearch' => array( 'Pesquisar links' ),
+);
+
 /** Swedish (Svenska) */
 $aliases['sv'] = array(
 	'LinkSearch' => array( 'Länksökning' ),

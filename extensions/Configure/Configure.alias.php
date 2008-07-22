@@ -143,6 +143,13 @@ $aliases['pt'] = array(
 	'ViewConfig' => array( 'Ver configurações', 'Ver configuração' ),
 );
 
+/** Brazilian Portuguese (Português do Brasil) */
+$aliases['pt-br'] = array(
+	'Configure'  => array( 'Configurar' ),
+	'Extensions' => array( 'Extenções' ),
+	'ViewConfig' => array( 'Ver configurações', 'Ver configuração' ),
+);
+
 /** Swedish (Svenska) */
 $aliases['sv'] = array(
 	'Configure'  => array( 'Konfigurera' ),

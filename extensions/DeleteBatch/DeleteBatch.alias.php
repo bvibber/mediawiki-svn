@@ -63,3 +63,13 @@ $aliases['no'] = array(
 	'DeleteBatch' => array( 'Slett_en_serie_sider' ),
 );
 
+/** Portuguese (Português) */
+$aliases['pt'] = array(
+	'DeleteBatch' => array( 'Apagar em massa' ),
+);
+
+/** Brazilian Portuguese (Português do Brasil) */
+$aliases['pt-br'] = array(
+	'DeleteBatch' => array( 'Apagar em massa' ),
+);
+

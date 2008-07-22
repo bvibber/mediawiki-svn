@@ -16,7 +16,7 @@ $aliases['en'] = array(
 
 /** Arabic (العربية) */
 $aliases['ar'] = array(
-	'EmailPages' => array( 'مراسلة الصفحة' ),
+	'EmailPages' => array( 'مراسلة الصفحات' ),
 );
 
 /** Egyptian Spoken Arabic (مصرى) */

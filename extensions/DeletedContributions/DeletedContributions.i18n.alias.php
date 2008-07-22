@@ -98,3 +98,13 @@ $aliases['ps'] = array(
 	'DeletedContributions' => array( 'ړنګې شوي ونډې' ),
 );
 
+/** Portuguese (Português) */
+$aliases['pt'] = array(
+	'DeletedContributions' => array( 'Contribuições eliminadas', 'Edições eliminadas' ),
+);
+
+/** Brazilian Portuguese (Português do Brasil) */
+$aliases['pt-br'] = array(
+	'DeletedContributions' => array( 'Contribuições eliminadas', 'Edições eliminadas' ),
+);
+

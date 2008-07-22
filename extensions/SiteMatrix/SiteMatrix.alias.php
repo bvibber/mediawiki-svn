@@ -65,6 +65,16 @@ $aliases['no'] = array(
 	'SiteMatrix' => array( 'Wikimedia-wikier' ),
 );
 
+/** Portuguese (Português) */
+$aliases['pt'] = array(
+	'SiteMatrix' => array( 'Lista de wikis da Wikimedia' ),
+);
+
+/** Brazilian Portuguese (Português do Brasil) */
+$aliases['pt-br'] = array(
+	'SiteMatrix' => array( 'Lista de wikis da Wikimedia' ),
+);
+
 /** Swedish (Svenska) */
 $aliases['sv'] = array(
 	'SiteMatrix' => array( 'Lista över Wikimedias wikier' ),

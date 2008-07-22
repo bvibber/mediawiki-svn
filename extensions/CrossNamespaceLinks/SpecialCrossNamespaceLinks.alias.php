@@ -80,3 +80,13 @@ $aliases['no'] = array(
 	'CrossNamespaceLinks' => array( 'Lenker_mellom_navnerom' ),
 );
 
+/** Portuguese (Português) */
+$aliases['pt'] = array(
+	'CrossNamespaceLinks' => array( 'Links espalhados em diversos espaços nominais', 'Links espalhados em diversos domínios' ),
+);
+
+/** Brazilian Portuguese (Português do Brasil) */
+$aliases['pt-br'] = array(
+	'CrossNamespaceLinks' => array( 'Links espalhados em diversos espaços nominais', 'Links espalhados em diversos domínios' ),
+);
+
