@@ -147,7 +147,7 @@ class SiteMatrix {
 	public function isClosed( $minor, $major ) {
 		global $wgConf;
 
-		$dbname = $major . $minor;
+		$dbname = $minor . $major;
 		if( $wgConf->get( 'wgReadOnly', $dbname, $major, array( 'site' => $major, 'lang' => $minor ) ) )
 			return true;
 		$readOnlyFile = $wgConf->get( 'wgReadOnlyFile', $dbname, $major, array( 'site' => $major, 'lang' => $minor ) );
