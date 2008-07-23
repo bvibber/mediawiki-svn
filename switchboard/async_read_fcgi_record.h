@@ -10,7 +10,7 @@
 #ifndef ASYNC_READ_FCGI_RECORD_H
 #define ASYNC_READ_FCGI_RECORD_H
 
-#include	<asio.hpp>
+#include	<asio/read.hpp>
 #include	<boost/function.hpp>
 #include	<boost/enable_shared_from_this.hpp>
 #include	<log4cxx/logger.h>

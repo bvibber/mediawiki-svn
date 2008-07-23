@@ -16,6 +16,8 @@
 #include	<ctime>
 #include	<deque>
 
+#include	<asio/deadline_timer.hpp>
+
 #include	<boost/multi_index_container.hpp>
 #include	<boost/multi_index/indexed_by.hpp>
 #include	<boost/multi_index/member.hpp>

@@ -15,7 +15,6 @@
 
 #include	<stdexcept>
 
-#include	<asio.hpp>
 #include	<boost/shared_ptr.hpp>
 #include	<boost/noncopyable.hpp>
 #include	<log4cxx/logger.h>

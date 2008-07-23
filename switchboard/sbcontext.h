@@ -10,7 +10,7 @@
 #ifndef SBCONTEXT_H
 #define SBCONTEXT_H
 
-#include	<asio.hpp>
+#include	<asio/io_service.hpp>
 
 struct process_factory;
 

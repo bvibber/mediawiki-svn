@@ -10,7 +10,6 @@
 #include	<cstring>
 using std::strerror;	/* for asio */
 
-#include	<asio.hpp>
 #include	<boost/bind.hpp>
 #include	<boost/format.hpp>
 

@@ -13,7 +13,11 @@
 #include	<vector>
 
 #include	<asio/ip/tcp.hpp>
+#include	<asio/local/stream_protocol.hpp>
 #include	<asio/buffer.hpp>
+#include	<asio/write.hpp>
+#include	<asio/placeholders.hpp>
+
 #include	<boost/system/error_code.hpp>
 #include	<boost/function.hpp>
 #include	<boost/noncopyable.hpp>

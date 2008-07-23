@@ -17,7 +17,6 @@ using std::strerror;	/* for asio */
 
 #include	<pwd.h>
 
-#include	<asio.hpp>
 #include	<boost/bind.hpp>
 #include	<boost/format.hpp>
 

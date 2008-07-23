@@ -14,7 +14,6 @@
 #include	<string>
 #include	<deque>
 
-#include	<asio.hpp>
 #include	<boost/array.hpp>
 #include	<boost/enable_shared_from_this.hpp>
 #include	<log4cxx/logger.h>

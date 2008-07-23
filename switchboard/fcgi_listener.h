@@ -10,7 +10,6 @@
 #ifndef FCGI_LISTENER_H
 #define FCGI_LISTENER_H
 
-#include	<asio.hpp>
 #include	<boost/noncopyable.hpp>
 #include	<boost/multi_index_container.hpp>
 #include	<boost/multi_index/ordered_index.hpp>
