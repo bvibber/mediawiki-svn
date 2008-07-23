@@ -142,6 +142,8 @@ var mvEmbed = {
   	//load css:
   	if(!styleSheetPresent(mv_embed_path+'mv_embed.css'))
 		loadExternalCss(mv_embed_path+'mv_embed.css');
+  	if(!styleSheetPresent(mv_embed_path+'skin/styles.css'))
+		loadExternalCss(mv_embed_path+'skin/styles.css');
 		
   	if(callback)this.load_callback = callback;
  	//two loading stages, first get jQuery

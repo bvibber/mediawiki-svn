@@ -1,0 +1,163 @@
+/*Video player*/
+.videoPlayer {
+	width: 100%;
+	color: white;
+}
+.videoPlayerSmall {
+	width: 439px;
+	height: 334px;
+}
+.videoPlayer .video {
+	display: block;
+	position: relative;
+	font-size: 1px;
+	height: 305px;
+}
+.videoPlayer .controls {
+	height: 29px;
+	width: 100%;
+	background: #454545;
+}
+.videoPlayer .controlInnerSmall {
+	width: 430px;
+	height: 29px;
+	float: left;
+	display: inline;
+}
+.videoPlayer .controls span.border_left {background: url(images/player_bottom_left.png) 0 0 no-repeat; width: 4px; height: 29px; float: left; display: inline;}
+.videoPlayer .controls span.border_right {background: url(images/player_bottom_right.png) 0 0 no-repeat; width: 4px; height: 29px; float: right; display: inline;}
+
+.videoPlayer .play_pause_button {
+	width: 24px;
+	height: 29px;
+	padding: 0 3px;
+	border-right: 1px solid #8a8a8a;
+	cursor: pointer;
+	float: left;
+	display: inline;
+    background: url(images/player_button_pause.png) 2px 0 no-repeat;
+}
+
+.play_pause_button a {
+display: block;
+height: 100%;
+width: 100%;
+}
+
+.videoPlayer .extraButtons {
+	float: right;
+	display: inline;
+	width: 133px;
+	height: 29px;
+	padding: 0 0 0 22px;
+	background: url(images/player_volume_tag.png) 0 8px no-repeat;
+}
+
+.videoPlayer .extraButtons .volume_control {
+	width: 42px;
+	height: 12px;
+	margin: 9px 0 0 0;
+	float: left;
+	display: inline;
+	background: url(images/player_volume_seek.png) 0 0 no-repeat;
+}
+.videoPlayer .extraButtons .volume_knob {
+	background: url(images/player_slider.png) 0 0 no-repeat;
+	width: 14px;
+	height: 14px;
+	position: absolute;
+	z-index: 2;
+	margin: -1px 0 0 3px;
+	cursor: pointer;
+}
+
+.videoPlayer .extraButtons .closed_captions {
+	background: url(images/player_button_cc.png) 0 0 no-repeat;
+	height: 20px;
+	width: 28px;
+	cursor: pointer;
+	float: left;
+	display: inline;
+	margin: 4px 6px 0 6px;
+}
+.videoPlayer .extraButtons .options {
+	background: url(images/player_button_options.png) 0 0 no-repeat;
+	height: 20px;
+	width: 20px;
+	cursor: pointer;
+	float: left;
+	display: inline;
+	margin: 4px 6px 0 0;
+}
+.videoPlayer .extraButtons .fullscreen {
+	background: url(images/player_button_fullscreen.png) 0 0 no-repeat;
+	height: 20px;
+	width: 20px;
+	cursor: pointer;
+	float: left;
+	display: inline;
+	margin: 4px 0 0 0;
+}
+
+.videoPlayer .seeker {
+	float: left;
+	display: inline;
+	width: 55%;
+	margin: 0 0px 0 0;
+	height: 29px;
+}
+.videoPlayer .seeker .time {
+	line-height: 32px;
+	height: 29px;
+	overflow: hidden;
+	font-size: 11px;
+	width: 60px;
+	float: right;
+	display: inline;
+}
+
+.videoPlayer .seeker .seeker_bar {
+	float: left;
+	display: inline;
+	width: 66%;
+	height: 12px;
+	background: url(images/player_seek_bg_loaded.png) 0 1px repeat-x;
+	margin: 9px 0 0 10px;
+}
+.videoPlayer .seeker .seeker_bar_outer {
+	width: 100%;
+	height: 12px;
+	position: relative;
+	z-index: 1;
+	background: url(images/player_seek_left.png) 0 0 no-repeat;
+}
+.videoPlayer .seeker .seeker_bar_close {
+	width: 5px;
+	height: 12px;
+	position: relative;
+	z-index: 1;
+	float: right;
+	display: inline;
+	margin: -12px 0 0 0;
+	background: url(images/player_seek_right.png) 0 0 no-repeat;
+}
+
+.videoPlayer .seeker .seeker_slider {
+	background: url(images/player_slider.png) 0 0 no-repeat;
+	width: 14px;
+	height: 14px;
+	position: absolute;
+	z-index: 2;
+	margin: -13px 0 0 3px;
+	cursor: pointer;
+}
+
+.videoPlayer .large_play_button {
+	background: url(images/player_big_play_button.png) 0 0 no-repeat;
+	width: 130px;
+	height: 96px;
+	margin: -202px 0 0 154px;
+	position: absolute;
+	z-index: 3;
+	cursor: pointer;
+}
