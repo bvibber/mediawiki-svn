@@ -277,7 +277,7 @@ class LuceneSearch extends SpecialPage
 			if( isset( $prevnext ) ) $wgOut->addHTML('<hr />' . $prevnext);
 			$wgOut->addHTML($this->showFullDialog($q));
 		}
-		$wgOut->setRobotpolicy('noindex,nofollow');
+		$wgOut->setRobotPolicy('noindex,nofollow');
                 $wgOut->setArticleRelated(false);
 		wfProfileOut( $fname );
 	}

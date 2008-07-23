@@ -510,7 +510,7 @@ class EditUser extends SpecialPage {
 
 		$wgOut->setPageTitle( wfMsg( 'edituser' ) );
 		$wgOut->setArticleRelated( false );
-		$wgOut->setRobotpolicy( 'noindex,nofollow' );
+		$wgOut->setRobotPolicy( 'noindex,nofollow' );
 
 		$wgOut->disallowUserJs();  # Prevent hijacked user scripts from sniffing passwords etc.
 

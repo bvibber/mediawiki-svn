@@ -25,8 +25,8 @@
 
 $wgExtensionCredits['other'][] = array(
 	'name'           => 'Crowd Authentication Plugin',
-	'svn-date'       => '$LastChangedDate:$',
-	'svn-revision'   => '$LastChangedRevision:$',
+	'svn-date'       => '$LastChangedDate$',
+	'svn-revision'   => '$LastChangedRevision$',
 	'author'         => 'River Tarnell',
 	'description'    => 'Authentication plugin for Atlassian Crowd',
 	'descriptionmsg' => 'crowdauthentication-desc',

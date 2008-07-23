@@ -91,7 +91,7 @@ class SpecialOpenIDLogin extends SpecialOpenID {
 		global $wgUser, $wgOut;
 
 		$wgOut->setPageTitle( wfMsg( 'openiderror' ) );
-		$wgOut->setRobotpolicy( 'noindex,nofollow' );
+		$wgOut->setRobotPolicy( 'noindex,nofollow' );
 		$wgOut->setArticleRelated( false );
 		$wgOut->addWikiText( wfMsg( 'openidalreadyloggedin', $wgUser->getName() ) );
 		$wgOut->returnToMain(false, $this->returnTo() );
