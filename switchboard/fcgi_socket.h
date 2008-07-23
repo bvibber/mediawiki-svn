@@ -118,7 +118,8 @@ fcgi_socket<Socket>::close()
 
 	alive_ = false;
 	close_sig_();
-	writer_->close();
+	if (writer_)
+		writer_->close();
 	writer_.reset();
 	socket_.close();
 }

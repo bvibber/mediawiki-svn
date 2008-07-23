@@ -119,7 +119,6 @@ async_fcgi_reader<Socket>::read_header_done(
 		std::size_t bytes)
 {
 	if (error == asio::error::operation_aborted) {
-		std::cout << "async_fcgi_reader: aborted\n";
 		service_.post(boost::bind(call_, fcgi::recordp(),
 				asio::error::operation_aborted));
 		socket_.reset();
@@ -179,7 +178,6 @@ async_fcgi_reader<Socket>::read_data_done(
 	std::size_t bytes)
 {
 	if (error == asio::error::operation_aborted) {
-		std::cout << "async_fcgi_reader: aborted\n";
 		service_.post(boost::bind(call_, fcgi::recordp(),
 				asio::error::operation_aborted));
 		socket_.reset();
