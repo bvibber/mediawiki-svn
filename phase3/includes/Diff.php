@@ -94,7 +94,7 @@ class BackwardLcs extends AbstractDiffAlgorithm {
 			$fp[0] = $this->backward_snake( 0, min( $fp[1]-1, $fp[-1]), -1, -1, $from, $to);
 		}while($fp[0]!=-1);
 
-		////echo "<br>$delta, $p";
+		//////echo "<br>$delta, $p";
 		return $delta+2*$p;
 	}
 
@@ -307,11 +307,11 @@ class FastDiffAlgorithm extends AbstractDiffAlgorithm {
 	 * Ends are exclusive
 	 */
 	protected function diff_recursive($x_start, $x_end, $y_start, $y_end, $a, $b, $swapped){
-		////echo "<br>$x_start-$x_end , $y_start-$y_end";
+		//////echo "<br>$x_start-$x_end , $y_start-$y_end";
 		if($x_end>$x_start && $y_end>$y_start){
-			////echo "-pass";
+			//////echo "-pass";
 
-			////echo "<br>";
+			//////echo "<br>";
 
 			if($x_end-$x_start>$y_end-$y_start){
 				$temp = $x_end;
@@ -324,7 +324,7 @@ class FastDiffAlgorithm extends AbstractDiffAlgorithm {
 				$a = $b;
 				$b = $temp;
 				$swapped = ! $swapped;
-				////echo "<br>swapped=$swapped";
+				//////echo "<br>swapped=$swapped";
 			}
 
 			$m = $x_end-$x_start;
@@ -361,13 +361,13 @@ class FastDiffAlgorithm extends AbstractDiffAlgorithm {
 					
 				for($k=-$p;$k<$delta;$k++){
 					$fpf_start[$k] = max( $fpf_end[$k-1]+1, $fpf_end[$k+1]);
-					////echo "<br>p=$p, fpf_start[$k]=$fpf_start[$k]";
+					//////echo "<br>p=$p, fpf_start[$k]=$fpf_start[$k]";
 					if($fpf_start[$k]>$fpb_end[$k] && $fpb_end[$k]-$fpb_start[$k]!=0 && !$middle_found[$k]){
 						$no_middle_found = FALSE;
 						$middle_found[$k] = TRUE;
-						////echo "<br>middle found";
+						//////echo "<br>middle found";
 						if($fpb_start[$k]-$fpb_end[$k]>$best_middle_score){
-							////echo " and best! ($fpb_start[$k]-$fpb_end[$k]>$best_middle_score)";
+							//////echo " and best! ($fpb_start[$k]-$fpb_end[$k]>$best_middle_score)";
 							$best_middle_start = $fpb_end[$k]+1;
 							$best_middle_end = $fpb_start[$k]+1;
 							$best_middle_k = $k;
@@ -375,13 +375,13 @@ class FastDiffAlgorithm extends AbstractDiffAlgorithm {
 						}
 					}
 					$fpf_end[$k] = $this->forward_snake( $k, $fpf_start[$k], $m, $n, $a, $b, $x_start, $y_start);
-					////echo ", fpf_end[$k]=$fpf_end[$k]";
+					//////echo ", fpf_end[$k]=$fpf_end[$k]";
 					if($fpf_end[$k]>$fpb_end[$k] && !$middle_found[$k]){
 						$no_middle_found = FALSE;
 						$middle_found[$k] = TRUE;
-						////echo "<br>middle found";
+						//////echo "<br>middle found";
 						if($fpb_end[$k]-$fpf_end[$k]>$best_middle_score){
-							////echo " and best ($fpb_end[$k]-$fpf_end[$k]>$best_middle_score)!";
+							//////echo " and best ($fpb_end[$k]-$fpf_end[$k]>$best_middle_score)!";
 							$best_middle_start = $fpf_start[$k];
 							$best_middle_end = $fpf_end[$k];
 							$best_middle_k = $k;
@@ -393,13 +393,13 @@ class FastDiffAlgorithm extends AbstractDiffAlgorithm {
 
 				for($k=$delta+$p;$k>$delta;$k--){
 					$fpf_start[$k] = max( $fpf_end[$k-1]+1, $fpf_end[$k+1]);
-					////echo "<br>p=$p, fpf_start[$k]=$fpf_start[$k]";
+					//////echo "<br>p=$p, fpf_start[$k]=$fpf_start[$k]";
 					if($fpf_start[$k]>$fpb_end[$k] && $fpb_end[$k]-$fpb_start[$k]!=0 && !$middle_found[$k]){
 						$no_middle_found = FALSE;
 						$middle_found[$k] = TRUE;
-						////echo "<br>middle found";
+						//////echo "<br>middle found";
 						if($fpb_start[$k]-$fpb_end[$k]>$best_middle_score){
-							////echo " and best! ($fpb_start[$k]-$fpb_end[$k]>$best_middle_score)";
+							//////echo " and best! ($fpb_start[$k]-$fpb_end[$k]>$best_middle_score)";
 							$best_middle_start = $fpb_end[$k]+1;
 							$best_middle_end = $fpb_start[$k]+1;
 							$best_middle_k = $k;
@@ -407,13 +407,13 @@ class FastDiffAlgorithm extends AbstractDiffAlgorithm {
 						}
 					}
 					$fpf_end[$k] = $this->forward_snake( $k, $fpf_start[$k], $m, $n, $a, $b, $x_start, $y_start);
-					////echo ", fpf_end[$k]=$fpf_end[$k]";
+					//////echo ", fpf_end[$k]=$fpf_end[$k]";
 					if($fpf_end[$k]>$fpb_end[$k] && !$middle_found[$k]){
 						$no_middle_found = FALSE;
 						$middle_found[$k] = TRUE;
-						////echo "<br>middle found";
+						//////echo "<br>middle found";
 						if($fpb_end[$k]-$fpf_end[$k]>$best_middle_score){
-							////echo " and best! ($fpb_end[$k]-$fpf_end[$k]>$best_middle_score)";
+							//////echo " and best! ($fpb_end[$k]-$fpf_end[$k]>$best_middle_score)";
 							$best_middle_start = $fpf_start[$k];
 							$best_middle_end = $fpf_end[$k];
 							$best_middle_k = $k;
@@ -424,16 +424,16 @@ class FastDiffAlgorithm extends AbstractDiffAlgorithm {
 
 				// delta
 				$fpf_start[$delta] = max( $fpf_end[$delta-1]+1, $fpf_end[$delta+1]);
-				////echo "<br>p=$p, fpf_start[$delta]=$fpf_start[$delta]";
+				//////echo "<br>p=$p, fpf_start[$delta]=$fpf_start[$delta]";
 				if($fpf_start[$delta]>$fpb_end[$delta] && $fpb_end[$delta]-$fpb_start[$delta]!=0 && !$middle_found[$delta]){
 					if($fpb_start[$delta]+1==$n){
 						return $this->foundMiddleSnake($x_start, $x_end, $y_start, $y_end, $fpb_end[$delta]+1,$fpb_start[$delta]+1, $delta, $a, $b, $swapped);
 					}
 					$no_middle_found = FALSE;
 					$middle_found[$delta] = TRUE;
-					////echo "<br>middle found";
+					//////echo "<br>middle found";
 					if($fpb_start[$delta]-$fpb_end[$delta]>$best_middle_score){
-						////echo " and best! ($fpb_start[$delta]-$fpb_end[$delta]>$best_middle_score)";
+						//////echo " and best! ($fpb_start[$delta]-$fpb_end[$delta]>$best_middle_score)";
 						$best_middle_start = $fpb_end[$delta]+1;
 						$best_middle_end = $fpb_start[$delta]+1;
 						$best_middle_k = $delta;
@@ -441,7 +441,7 @@ class FastDiffAlgorithm extends AbstractDiffAlgorithm {
 					}
 				}
 				$fpf_end[$delta] = $this->forward_snake( $delta, $fpf_start[$delta], $m, $n, $a, $b, $x_start, $y_start);
-				////echo ", fpf_end[$delta]=$fpf_end[$delta]";
+				//////echo ", fpf_end[$delta]=$fpf_end[$delta]";
 				if($fpf_end[$delta]==$n){
 					if($fpf_start[$delta]==$fpf_end[$delta]){
 						if($fpf_start[$delta]==$fpf_end[$delta-1]+1){
@@ -458,9 +458,9 @@ class FastDiffAlgorithm extends AbstractDiffAlgorithm {
 				if($fpf_end[$delta]>$fpb_end[$delta] && !$middle_found[$delta]){
 					$no_middle_found = FALSE;
 					$middle_found[$delta] = TRUE;
-					////echo "<br>middle found";
+					//////echo "<br>middle found";
 					if($fpb_end[$delta]-$fpf_end[$delta]>$best_middle_score){
-						////echo " and best! ($fpb_end[$delta]-$fpf_end[$delta]>$best_middle_score)";
+						//////echo " and best! ($fpb_end[$delta]-$fpf_end[$delta]>$best_middle_score)";
 						$best_middle_start = $fpf_start[$delta];
 						$best_middle_end = $fpf_end[$delta];
 						$best_middle_k = $delta;
@@ -476,13 +476,13 @@ class FastDiffAlgorithm extends AbstractDiffAlgorithm {
 
 				for($k=-$p;$k<0;$k++){
 					$fpb_start[$k] = min( $fpb_end[$k+1]-1, $fpb_end[$k-1]);
-					////echo "<br>p=$p, fpb_start[$k]=$fpb_start[$k]";
+					//////echo "<br>p=$p, fpb_start[$k]=$fpb_start[$k]";
 					if($fpf_end[$k]>$fpb_start[$k] && $fpf_end[$k]-$fpf_start[$k]!=0 && !$middle_found[$k]){
 						$no_middle_found = FALSE;
 						$middle_found[$k] = TRUE;
-						////echo "<br>middle found";
+						//////echo "<br>middle found";
 						if($fpf_end[$k]-$fpf_start[$k]>$best_middle_score){
-							////echo " and best! ($fpf_end[$k]-$fpf_start[$k]>$best_middle_score)";
+							//////echo " and best! ($fpf_end[$k]-$fpf_start[$k]>$best_middle_score)";
 							$best_middle_start = $fpf_start[$k];
 							$best_middle_end = $fpf_end[$k];
 							$best_middle_k = $k;
@@ -490,13 +490,13 @@ class FastDiffAlgorithm extends AbstractDiffAlgorithm {
 						}
 					}
 					$fpb_end[$k] = $this->backward_snake( $k, $fpb_start[$k], -1, -1, $a, $b, $x_start, $y_start);
-					////echo ", fpb_end[$k]=$fpb_end[$k]";
+					//////echo ", fpb_end[$k]=$fpb_end[$k]";
 					if($fpf_end[$k]>$fpb_end[$k] && !$middle_found[$k]){
 						$no_middle_found = FALSE;
 						$middle_found[$k] = TRUE;
-						////echo "<br>middle found";
+						//////echo "<br>middle found";
 						if($fpb_end[$k]-$fpf_end[$k]>$best_middle_score){
-							////echo " and best! ($fpb_end[$k]-$fpf_end[$k]>$best_middle_score)";
+							//////echo " and best! ($fpb_end[$k]-$fpf_end[$k]>$best_middle_score)";
 							$best_middle_start = $fpb_end[$k]+1;
 							$best_middle_end = $fpb_start[$k]+1;
 							$best_middle_k = $k;
@@ -507,13 +507,13 @@ class FastDiffAlgorithm extends AbstractDiffAlgorithm {
 				}
 				for($k=$delta+$p;$k>0;$k--){
 					$fpb_start[$k] = min( $fpb_end[$k+1]-1, $fpb_end[$k-1]);
-					////echo "<br>p=$p, fpb_start[$k]=$fpb_start[$k]";
+					//////echo "<br>p=$p, fpb_start[$k]=$fpb_start[$k]";
 					if($fpf_end[$k]>$fpb_start[$k] && $fpf_end[$k]-$fpf_start[$k]!=0 && !$middle_found[$k]){
 						$no_middle_found = FALSE;
 						$middle_found[$k] = TRUE;
-						////echo "<br>middle found";
+						//////echo "<br>middle found";
 						if($fpf_end[$k]-$fpf_start[$k]>$best_middle_score){
-							////echo " and best! ($fpf_end[$k]-$fpf_start[$k]>$best_middle_score)";
+							//////echo " and best! ($fpf_end[$k]-$fpf_start[$k]>$best_middle_score)";
 							$best_middle_start = $fpf_start[$k];
 							$best_middle_end = $fpf_end[$k];
 							$best_middle_k = $k;
@@ -521,13 +521,13 @@ class FastDiffAlgorithm extends AbstractDiffAlgorithm {
 						}
 					}
 					$fpb_end[$k] = $this->backward_snake( $k, $fpb_start[$k], -1, -1, $a, $b, $x_start, $y_start);
-					////echo ", fpb_end[$k]=$fpb_end[$k]";
+					//////echo ", fpb_end[$k]=$fpb_end[$k]";
 					if($fpf_end[$k]>$fpb_end[$k] && !$middle_found[$k]){
 						$no_middle_found = FALSE;
 						$middle_found[$k] = TRUE;
-						////echo "<br>middle found";
+						//////echo "<br>middle found";
 						if($fpb_end[$k]-$fpf_end[$k]>$best_middle_score){
-							////echo " and best! ($fpb_end[$k]-$fpf_end[$k]>$best_middle_score)";
+							//////echo " and best! ($fpb_end[$k]-$fpf_end[$k]>$best_middle_score)";
 							$best_middle_start = $fpb_end[$k]+1;
 							$best_middle_end = $fpb_start[$k]+1;
 							$best_middle_k = $k;
@@ -539,13 +539,13 @@ class FastDiffAlgorithm extends AbstractDiffAlgorithm {
 
 				// 0
 				$fpb_start[0] = min( $fpb_end[1]-1, $fpb_end[-1]);
-				////echo "<br>p=$p, fpb_start[0]=$fpb_start[0]";
+				//////echo "<br>p=$p, fpb_start[0]=$fpb_start[0]";
 				if($fpf_end[0]>$fpb_start[0] && $fpf_end[0]-$fpf_start[0]!=0 && !$middle_found[0]){
 					$no_middle_found = FALSE;
 					$middle_found[0] = TRUE;
-					////echo "<br>middle found";
+					//////echo "<br>middle found";
 					if($fpf_end[0]-$fpf_start[0]>$best_middle_score){
-						////echo " and best! ($fpf_end[0]-$fpf_start[0]>$best_middle_score)";
+						//////echo " and best! ($fpf_end[0]-$fpf_start[0]>$best_middle_score)";
 						$best_middle_start = $fpf_start[0];
 						$best_middle_end = $fpf_end[0];
 						$best_middle_k = 0;
@@ -553,13 +553,13 @@ class FastDiffAlgorithm extends AbstractDiffAlgorithm {
 					}
 				}
 				$fpb_end[0] = $this->backward_snake( 0, $fpb_start[0], -1, -1, $a, $b, $x_start, $y_start);
-				////echo ", fpb_end[0]=$fpb_end[0]";
+				//////echo ", fpb_end[0]=$fpb_end[0]";
 				if($fpf_end[0]>$fpb_end[0] && !$middle_found[0]){
 					$no_middle_found = FALSE;
 					$middle_found[$k] = TRUE;
-					////echo "<br>middle found";
+					//////echo "<br>middle found";
 					if($fpb_end[0]-$fpf_end[0]>$best_middle_score){
-						////echo " and best! ($fpb_end[0]-$fpf_end[0]>$best_middle_score)";
+						//////echo " and best! ($fpb_end[0]-$fpf_end[0]>$best_middle_score)";
 						$best_middle_start = $fpb_end[0]+1;
 						$best_middle_end = $fpb_start[0]+1;
 						$best_middle_k = 0;
@@ -569,7 +569,7 @@ class FastDiffAlgorithm extends AbstractDiffAlgorithm {
 
 				if(!$no_middle_found){
 					if($endgame || $p == $m){
-						////echo "<br>endgame: $best_middle_start->$best_middle_end, k=$best_middle_k";
+						//////echo "<br>endgame: $best_middle_start->$best_middle_end, k=$best_middle_k";
 						return $this->foundMiddleSnake($x_start, $x_end, $y_start, $y_end, $best_middle_start, $best_middle_end, $best_middle_k, $a, $b, $swapped);
 					}
 					$endgame = TRUE;
@@ -583,7 +583,7 @@ class FastDiffAlgorithm extends AbstractDiffAlgorithm {
 	 * Diff the part before and after the middle.
 	 */
 	protected function foundMiddleSnake($x_start, $x_end, $y_start, $y_end, $fp_start, $fp_end, $k, $a, $b, $swapped){
-		////echo "<br><b>foundmiddle= $x_start, $x_end, $y_start, $y_end, $fp_start->$fp_end, $k</b>";
+		//////echo "<br><b>foundmiddle= $x_start, $x_end, $y_start, $y_end, $fp_start->$fp_end, $k</b>";
 
 		$x_snakestart = $x_start+$fp_start-$k;
 		$x_snakeend = $x_start+$fp_end-$k;
@@ -606,396 +606,341 @@ class FastDiffAlgorithm extends AbstractDiffAlgorithm {
 			}
 		}
 
-		////echo "<br>left:";
+		//////echo "<br>left:";
 		$this->diff_recursive($x_start, $x_snakestart, $y_start, $y_snakestart, $a, $b, $swapped);
-		////echo "<br>right:";
+		//////echo "<br>right:";
 		$this->diff_recursive($x_snakeend, $x_end, $y_snakeend, $y_end, $a, $b, $swapped);
 	}
 
 	protected function reachedEndHorizontal($x_start, $x_end, $y_start, $y_end, $a, $b, $swapped){
-		////echo "<br><b>reached end horizontally! $x_start, $x_end, $y_start, $y_end</b>";
+		//////echo "<br><b>reached end horizontally! $x_start, $x_end, $y_start, $y_end</b>";
 		$y_end = $y_end-1;
 		$this->diff_recursive($x_start, $x_end, $y_start, $y_end, $a, $b, $swapped);
 	}
 
 	protected function reachedEndVertical($x_start, $x_end, $y_start, $y_end, $a, $b, $swapped){
-		////echo "<br><b>reached end vertically! $x_start, $x_end, $y_start, $y_end</b>";
+		//////echo "<br><b>reached end vertically! $x_start, $x_end, $y_start, $y_end</b>";
 		$x_end = $x_end-1;
 		$this->diff_recursive($x_start, $x_end, $y_start, $y_end, $a, $b, $swapped);
 	}
 }
 
-class CorrectDiff{
+function correctDiff(array $from, array $to){
+	$fromSequence = new LcsSequence($from);
+	$toSequence = new LcsSequence($to);
 
-	// forward
-	protected $fpForw;
-	protected $lcsSizeForw;
-	protected $snakeBeginForw;
-	protected $snakeEndForw;
-	protected $snakekForw;
+	$m = $fromSequence->sequenceLength;
+	$n = $toSequence->sequenceLength;
+	$offsetx = 0;
+	$offsety = 0;
 
-	//backward
-	protected $fpBack;
-	protected $lcsSizeBack;
-	protected $snakeBeginBack;
-	protected $snakeEndBack;
-	protected $snakekBack;
+	correctDiffSequence($fromSequence, $toSequence, $m, $n, $offsetx, $offsety, /*$lcs*/ /*can also be $n*/ $m);
+	return array($fromSequence->inLcs,$toSequence->inLcs);
+}
 
 
-	//overlap?
-	protected $bestKnownLcs;
-	protected $bestLcsLength;
-	protected $bestLcsLengthTop;
-	protected $bestLcsLengthBottom;
+function correctDiffSequence(LcsSequence $a, LcsSequence $b, $m, $n, $offsetx, $offsety, $bestKnownLcs){
+	//echo "<h4>On Call: diffSequence(..., $m, $n, $offsetx, $offsety, $bestKnownLcs)</h4>";
+	//echo "<br>";
+//	for($i=0;$i<$m;$i++){
+//		//echo " ".$a->sequence[$offsetx+$i];
+//	}
+//	//echo "<br>";
+//	for($i=0;$i<$n;$i++){
+//		//echo " ".$b->sequence[$offsety+$i];
+//	}
 
-	protected $topSnakeStart;
-	protected $topSnakeEnd;
-	protected $topSnakek;
-
-	protected $bottomSnakeStart;
-	protected $bottomSnakeEnd;
-	protected $bottomSnakek;
-
-	protected $overlap;
-
-	public function diff(array $from, array $to){
-//		$flcs = new ForwardLcs();
-//		$lcs = $flcs->lcs($from, $to);
-
-		$fromSequence = new LcsSequence($from);
-		$toSequence = new LcsSequence($to);
-
-		$m = $fromSequence->sequenceLength;
-		$n = $toSequence->sequenceLength;
-		$offsetx = 0;
-		$offsety = 0;
-
-		//remove common tokens at the start
-		//this is not absolutely needed but it reduced the complexity of the logic to come
-		while($m>0 && $n>0 && $fromSequence->sequence[$offsetx]==$toSequence->sequence[$offsety]){
-			//echo "<br> trimming element $offsetx/$offsety";
-			$fromSequence->inLcs[$offsetx] = TRUE;
-			$toSequence->inLcs[$offsety] = TRUE;
-			$offsetx++;	$offsety++;
-			$m--; $n--;
-//			$lcs--;
-		}
-		//echo "<br>trim front: $m, $n, $offsetx, $offsety";
-		//remove common tokens at the end
-		while($m>0 && $n>0 && $fromSequence->sequence[$offsetx+$m-1]==$toSequence->sequence[$offsety+$n-1]){
-			//echo "<br> trimming element ".($offsetx+$m-1)."/".($offsety+$n-1);
-			$fromSequence->inLcs[$offsetx+$m-1] = TRUE;
-			$toSequence->inLcs[$offsety+$n-1] = TRUE;
-			$m--; $n--;
-//			$lcs--;
-		}
-		//echo "<br>trim back: $m, $n, $offsetx, $offsety";
-
-		$this->diffSequence($fromSequence, $toSequence, $m, $n, $offsetx, $offsety, /*$lcs*/ /*can also be $n*/ $m);
-		return array($fromSequence->inLcs,$toSequence->inLcs);
+	if($m==0 || $n==0 || $bestKnownLcs==0){
+		return;
+	}
+	if($m>$n){
+		return correctDiffSequence($b, $a, $n, $m, $offsety, $offsetx, $bestKnownLcs);
+	}
+	
+	$time = microtime(true);
+	
+	//remove common tokens at the start
+	//this is not absolutely needed but it reduced the complexity of the logic to come
+	while($m>0 && $n>0 && $a->sequence[$offsetx]==$b->sequence[$offsety]){
+		////echo "<br> trimming element $offsetx/$offsety";
+		$a->inLcs[$offsetx] = TRUE;
+		$b->inLcs[$offsety] = TRUE;
+		$offsetx++;	$offsety++;
+		$m--; $n--;
+		$bestKnownLcs--;
+		//			$lcs--;
+	}
+	////echo "<br>trim front: $m, $n, $offsetx, $offsety";
+	//remove common tokens at the end
+	while($m>0 && $n>0 && $a->sequence[$offsetx+$m-1]==$b->sequence[$offsety+$n-1]){
+		////echo "<br> trimming element ".($offsetx+$m-1)."/".($offsety+$n-1);
+		$a->inLcs[$offsetx+$m-1] = TRUE;
+		$b->inLcs[$offsety+$n-1] = TRUE;
+		$m--; $n--;
+		$bestKnownLcs--;
+		//			$lcs--;
 	}
 
+	$delta = $n-$m;
 
-	protected function diffSequence(LcsSequence $a, LcsSequence $b, $m, $n, $offsetx, $offsety, $bestKnownLcs){
-		//		echo "<h4>On Call: diffSequence(..., $m, $n, $offsetx, $offsety, $bestKnownLcs)</h4>";
-		//
-		//		echo "<br>";
-		//				for($i=0;$i<$m;$i++){
-		//					echo " ".$a->sequence[$offsetx+$i];
-		//				}
-		//				echo "<br>";
-		//				for($i=0;$i<$n;$i++){
-		//					echo " ".$b->sequence[$offsety+$i];
-		//				}
+	$fpForw = array_fill( 0, $delta+1, -1);
+	$lcsSizeForw = array_fill( 0, $delta+1, 0);
+	$snakeBeginForw = array_fill( 0, $delta+1, -1);
+	$snakeEndForw = array_fill( 0, $delta+1, -1);
+	$snakekForw = array_fill( 0, $delta+1, 0);
 
-		if($m==0 || $n==0 || $bestKnownLcs==0){
-			return;
-		}
-		if($m>$n){
-			return $this->diffSequence($b, $a, $n, $m, $offsety, $offsetx, $bestKnownLcs);
-		}
+	$fpBack = array_fill( 0, $delta+1, $n);
+	$lcsSizeBack = array_fill( 0, $delta+1, 0);
+	$snakeBeginBack = array_fill( 0, $delta+1, $n);
+	$snakeEndBack = array_fill( 0, $delta+1, $n);
+	$snakekBack = array_fill( 0, $delta+1, 0);
 
-		$delta = $n-$m;
+	$overlap = $delta>1 ? array_fill( 1, $delta-1, FALSE) : array();
 
-		$this->fpForw = array_fill( 0, $delta+1, -1);
-		$this->lcsSizeForw = array_fill( 0, $delta+1, 0);
-		$this->snakeBeginForw = array_fill( 0, $delta+1, -1);
-		$this->snakeEndForw = array_fill( 0, $delta+1, -1);
-		$this->snakekForw = array_fill( 0, $delta+1, 0);
+	$bestKnownLcs = $bestKnownLcs;
 
-		$this->fpBack = array_fill( 0, $delta+1, $n);
-		$this->lcsSizeBack = array_fill( 0, $delta+1, 0);
-		$this->snakeBeginBack = array_fill( 0, $delta+1, $n);
-		$this->snakeEndBack = array_fill( 0, $delta+1, $n);
-		$this->snakekBack = array_fill( 0, $delta+1, 0);
+	$bestLcsLength = -1;
+	$bestLcsLengthTop = -1;
+	$bestLcsLengthBottom = -1;
 
-		$this->overlap = $delta>1 ? array_fill( 1, $delta-1, FALSE) : array();
+	$p=-1;
+	while($p<$m-$bestLcsLength-1){
+		////echo "<br>$p<$m-(".$overlap->getBestLcsLength().")-1 => <b>p=".($p+1)."</b>";
+		++$p;
+		//echo "<br><br>p=$p";
+		$overlap[-$p] = FALSE;
+		$overlap[$delta+$p] = FALSE;
+		
+		// forward
+		$fpForw[-$p-1] = -1;
+		$lcsSizeForw[-$p-1] = 0;
+		$snakeBeginForw[-$p-1]=-1;
+		$snakeEndForw[-$p-1]=-1;
+		$snakekForw[-$p-1]=-1;
 
-		$this->bestKnownLcs = $bestKnownLcs;
+		$fpForw[$delta+$p+1] = -1;
+		$lcsSizeForw[$delta+$p+1] = 0;
+		$snakeBeginForw[$delta+$p+1]=-1;
+		$snakeEndForw[$delta+$p+1]=-1;
+		$snakekForw[$delta+$p+1]=-1;
 
-		$this->bestLcsLength = -1;
-		$this->bestLcsLengthTop = -1;
-		$this->bestLcsLengthBottom = -1;
-
-		$p=-1;
-		while($p<$m-$this->bestLcsLength-1){
-			//echo "<br>$p<$m-(".$overlap->getBestLcsLength().")-1 => <b>p=".($p+1)."</b>";
-			++$p;
-
-			// forward
-			$this->fpForw[-$p-1] = -1;
-			$this->lcsSizeForw[-$p-1] = 0;
-			$this->snakeBeginForw[-$p-1]=-1;
-			$this->snakeEndForw[-$p-1]=-1;
-			$this->snakekForw[-$p-1]=-1;
-			$this->overlap[-$p] = FALSE;
-
-			if($this->goForward(-$p, $delta, 1, $m, $n, $offsetx, $offsety, $a, $b)){
-				//echo "<br> done early!";
-				break;
-			}
-
-			$this->fpForw[$delta+$p+1] = -1;
-			$this->lcsSizeForw[$delta+$p+1] = 0;
-			$this->snakeBeginForw[$delta+$p+1]=-1;
-			$this->snakeEndForw[$delta+$p+1]=-1;
-			$this->snakekForw[$delta+$p+1]=-1;
-			$this->overlap[$delta+$p] = FALSE;
-
-			if($this->goForward($delta+$p, $delta-1, -1, $m, $n, $offsetx, $offsety, $a, $b)){
-				//echo "<br> done early!";
-				break;
-			}
-
-			// backward
-			$this->fpBack[-$p-1] = $n;
-			$this->lcsSizeBack[-$p-1] = 0;
-			$this->snakeBeginBack[-$p-1]=$n;
-			$this->snakeEndBack[-$p-1]=$n;
-			$this->snakekBack[-$p-1]=$n;
-
-			if($this->goBackward(-$p, 0, +1, $offsetx, $offsety, $a, $b)){
-				//echo "<br> done early!";
-				break;
-			}
-
-			$this->fpBack[$delta+$p+1] = $n;
-			$this->lcsSizeBack[$delta+$p+1] = 0;
-			$this->snakeBeginBack[$delta+$p+1]=$n;
-			$this->snakeEndBack[$delta+$p+1]=$n;
-			$this->snakekBack[$delta+$p+1]=$n;
-
-			if($this->goBackward($delta+$p, -1, -1, $offsetx, $offsety, $a, $b)){
-				//echo "<br> done early!";
-				break;
-			}
-		}
-		//echo "<br><u>DebugInfo:</u><br>".$this->debugInfo();
-		unset($this->fpForw, $this->fpBack, $this->lcsSizeForw, $this->lcsSizeBack);
-		unset($this->snakeBeginForw, $this->snakeBeginBack, $this->snakeEndForw, $this->snakeEndBack, $this->snakekForw, $this->snakekBack);
-		unset($this->overlap);
-
-		unset($overlap);
-
-		// Mark snakes as in LCS
-		for($i=$offsety+$this->topSnakeStart;$i<$offsety+$this->topSnakeEnd;$i++){
-			$a->inLcs[$i-$this->topSnakek] = TRUE;
-			$b->inLcs[$i] = TRUE;
-		}
-		for($i=$offsety+$this->bottomSnakeStart;$i<$offsety+$this->bottomSnakeEnd;$i++){
-			$a->inLcs[$i-$this->bottomSnakek] = TRUE;
-			$b->inLcs[$i] = TRUE;
-		}
-
-		//remember values for bottom divide
-		$mbottom = $m-($this->bottomSnakeEnd-$this->bottomSnakek);
-		$nbottom = $n-$this->bottomSnakeEnd;
-		$offsetxbottom = $offsetx+($this->bottomSnakeEnd-$this->bottomSnakek);
-		$offsetybottom = $offsety+$this->bottomSnakeEnd;
-		$lengthbottom = $this->bestLcsLengthBottom;
-
-		//echo "<br>top: ";
-		$this->diffSequence($a, $b, $this->topSnakeStart-$this->topSnakek, $this->topSnakeStart, $offsetx, $offsety, $this->bestLcsLengthTop);
-
-		//echo "<br>bottom: ";
-		$this->diffSequence($a, $b, $mbottom, $nbottom, $offsetxbottom, $offsetybottom, $lengthbottom);
-	}
-
-	/**
-	 * Walk down a forward diagonal
-	 */
-	protected function goForward($k, $end, $step, $m, $n, $offsetx, $offsety, $a, $b){
-		while($k!=$end){
-			//echo "<br>forwardDiagonal($k, $end, $step)";
-			$fpBelow = $this->fpForw[$k-1]+1;
-			$fpAbove = $this->fpForw[$k+1];
+		$k=-$p;
+		//echo "<br>FORWARD:";
+		while(TRUE) {
+			//echo "<br>k=$k";
+			$fpBelow = $fpForw[$k-1]+1;
+			$fpAbove = $fpForw[$k+1];
 			if($fpBelow>$fpAbove){
-				$this->fpForw[$k] = $fpBelow;
-				$this->lcsSizeForw[$k] = $this->lcsSizeForw[$k-1];
-				$this->snakeBeginForw[$k] = $this->snakeBeginForw[$k-1];
-				$this->snakeEndForw[$k] = $this->snakeEndForw[$k-1];
-				$this->snakekForw[$k] = $this->snakekForw[$k-1];
+				$fpForw[$k] = $fpBelow;
+				$lcsSizeForw[$k] = $lcsSizeForw[$k-1];
+				$snakeBeginForw[$k] = $snakeBeginForw[$k-1];
+				$snakeEndForw[$k] = $snakeEndForw[$k-1];
+				$snakekForw[$k] = $snakekForw[$k-1];
 			}else{
-				$this->fpForw[$k] = $fpAbove;
-				$this->lcsSizeForw[$k] = $this->lcsSizeForw[$k+1];
-				$this->snakeBeginForw[$k] = $this->snakeBeginForw[$k+1];
-				$this->snakeEndForw[$k] = $this->snakeEndForw[$k+1];
-				$this->snakekForw[$k] = $this->snakekForw[$k+1];
+				$fpForw[$k] = $fpAbove;
+				$lcsSizeForw[$k] = $lcsSizeForw[$k+1];
+				$snakeBeginForw[$k] = $snakeBeginForw[$k+1];
+				$snakeEndForw[$k] = $snakeEndForw[$k+1];
+				$snakekForw[$k] = $snakekForw[$k+1];
 			}
-			$oldy = $this->fpForw[$k];
-			$x = $this->fpForw[$k]-$k;
-			//echo " - y=$y";
-			while($x < $m && $this->fpForw[$k] < $n && $a->sequence[$offsetx+$x]==$b->sequence[$offsety+$this->fpForw[$k]]){
+			$oldy = $fpForw[$k];
+			$x = $fpForw[$k]-$k;
+			//echo " - y=$fpForw[$k]";
+			while($x < $m && $fpForw[$k] < $n && $a->sequence[$offsetx+$x]==$b->sequence[$offsety+$fpForw[$k]]){
 				++$x;
-				++$this->fpForw[$k];
+				++$fpForw[$k];
 			}
-			//echo " --> y=$y";
-			if($this->fpForw[$k]-$oldy>0){
-				$this->lcsSizeForw[$k] += $this->fpForw[$k]-$oldy;
-				$this->snakeBeginForw[$k] = $oldy;
-				$this->snakeEndForw[$k]= $this->fpForw[$k];
-				$this->snakekForw[$k] = $k;
+			//echo " --> y=$fpForw[$k]";
+			if($fpForw[$k]-$oldy>0){
+				$lcsSizeForw[$k] += $fpForw[$k]-$oldy;
+				$snakeBeginForw[$k] = $oldy;
+				$snakeEndForw[$k]= $fpForw[$k];
+				$snakekForw[$k] = $k;
 			}
-			if($this->fpForw[$k]>=$this->fpBack[$k] && !$this->overlap[$k]){
+			if($fpForw[$k]>=$fpBack[$k] && !$overlap[$k]){
 				// there is overlap
-				//echo "<br>Overlap on diagonal $k";
-				$this->overlap[$k]=TRUE;
-				$lcsLength = $this->lcsSizeForw[$k]+$this->lcsSizeBack[$k];
-				if($this->fpForw[$k]>$this->fpBack[$k]+1){
-					$overlap = $this->fpForw[$k]-$this->fpBack[$k]-1;
-					//echo "<br>SNAKE!: $overlap";
-					$lcsLength -= $overlap;
+				//echo " | overlap";
+				$overlap[$k]=TRUE;
+				$lcsLength = $lcsSizeForw[$k]+$lcsSizeBack[$k];
+				if($fpForw[$k]>$fpBack[$k]+1){
+					$snakeoverlap = $fpForw[$k]-$fpBack[$k]-1;
+					////echo "<br>SNAKE!: $overlap";
+					$lcsLength -= $snakeoverlap;
 				}
 				//echo " with lcs $lcsLength";
-				if($lcsLength>$this->bestLcsLength){
+				if($lcsLength>$bestLcsLength){
 					// a better sequence found!
-					//echo "<br>A better sequence found with lcs=$lcsLength";
-					$this->bestLcsLength = $lcsLength;
+					//echo "<br>A better sequence found!";
+					$bestLcsLength = $lcsLength;
 
-					$this->topSnakeStart = $this->snakeBeginForw[$k];
-					$this->topSnakeEnd = $this->snakeEndForw[$k];
-					$this->topSnakek = $this->snakekForw[$k];
+					$topSnakeStart = $snakeBeginForw[$k];
+					$topSnakeEnd = $snakeEndForw[$k];
+					$topSnakek = $snakekForw[$k];
 
 					// aligned snakes bite (\   )
 					//                     ( \ \)
-					$this->bottomSnakeStart = max($this->snakeEndBack[$k]+1, $this->topSnakeEnd+max(0,$this->snakekBack[$k]-$this->snakekForw[$k]));
-					$this->bottomSnakeEnd = max($this->snakeBeginBack[$k]+1, $this->bottomSnakeStart);
-					$this->bottomSnakek = $this->snakekBack[$k];
+					$bottomSnakeStart = max($snakeEndBack[$k]+1, $topSnakeEnd+max(0,$snakekBack[$k]-$snakekForw[$k]));
+					$bottomSnakeEnd = max($snakeBeginBack[$k]+1, $bottomSnakeStart);
+					$bottomSnakek = $snakekBack[$k];
 
-					if($this->bottomSnakeEnd<$this->fpForw[$k]){
-						$this->bottomSnakeStart = $this->fpForw[$k];
-						$this->bottomSnakeEnd = $this->fpForw[$k];
-						$this->bottomSnakek = $k;
+					if($bottomSnakeEnd<$fpForw[$k]){
+						$bottomSnakeStart = $fpForw[$k];
+						$bottomSnakeEnd = $fpForw[$k];
+						$bottomSnakek = $k;
 					}
 
-					$this->bestLcsLengthTop = $this->lcsSizeForw[$k]-($this->snakeEndForw[$k]-$this->snakeBeginForw[$k]);
-					$this->bestLcsLengthBottom = $this->lcsSizeBack[$k]-($this->snakeBeginBack[$k]-$this->snakeEndBack[$k]);
-					//echo "<br>".$this->debugInfo();
-					if($this->bestKnownLcs==$lcsLength){
-						return TRUE;
+					$bestLcsLengthTop = $lcsSizeForw[$k]-($snakeEndForw[$k]-$snakeBeginForw[$k]);
+					$bestLcsLengthBottom = $lcsSizeBack[$k]-($snakeBeginBack[$k]-$snakeEndBack[$k]);
+					////echo "<br>".$debugInfo();
+					if($bestKnownLcs==$lcsLength){
+						break 2;
 					}
 				}
 			}
-			$k += $step;
-		}
-		return FALSE;
-	}
-
-	/**
-	 * Walk up a backward diagonal
-	 */
-
-	protected function goBackward($k, $end, $step, $offsetx, $offsety, $a, $b){
-		while($k!=$end){
-			//echo "<br>backwardDiagonal(<i>$k</i>,...,$offsetx, $offsety)";
-			$fpBelow = $this->fpBack[$k-1];
-			$fpAbove = $this->fpBack[$k+1]-1;
-			if($fpBelow<$fpAbove){
-				$this->fpBack[$k] = $fpBelow;
-				$this->lcsSizeBack[$k] = $this->lcsSizeBack[$k-1];
-				$this->snakeBeginBack[$k] = $this->snakeBeginBack[$k-1];
-				$this->snakeEndBack[$k] = $this->snakeEndBack[$k-1];
-				$this->snakekBack[$k] = $this->snakekBack[$k-1];
+			if($k<$delta-1){
+				$k++;
+			}else if($k>$delta){
+				$k--;
+			}else if($k==$delta-1){
+				$k = $delta+$p;
 			}else{
-				$this->fpBack[$k] = $fpAbove;
-				$this->lcsSizeBack[$k] = $this->lcsSizeBack[$k+1];
-				$this->snakeBeginBack[$k] = $this->snakeBeginBack[$k+1];
-				$this->snakeEndBack[$k] = $this->snakeEndBack[$k+1];
-				$this->snakekBack[$k] = $this->snakekBack[$k+1];
+				break;
 			}
-			$oldy = $this->fpBack[$k];
-			$x = $this->fpBack[$k]-$k;
-			//echo " - y=$y";
-			while($x > -1 && $this->fpBack[$k] > -1 && $a->sequence[$offsetx+$x]==$b->sequence[$offsety+$this->fpBack[$k]]){
+		}
+
+		// backward
+		$fpBack[-$p-1] = $n;
+		$lcsSizeBack[-$p-1] = 0;
+		$snakeBeginBack[-$p-1]=$n;
+		$snakeEndBack[-$p-1]=$n;
+		$snakekBack[-$p-1]=$n;
+
+		$fpBack[$delta+$p+1] = $n;
+		$lcsSizeBack[$delta+$p+1] = 0;
+		$snakeBeginBack[$delta+$p+1]=$n;
+		$snakeEndBack[$delta+$p+1]=$n;
+		$snakekBack[$delta+$p+1]=$n;
+
+		$k=$delta+$p;
+		//echo "<br>BACKWARD:";
+		while(TRUE){
+			//echo "<br>k=$k";
+			$fpBelow = $fpBack[$k-1];
+			$fpAbove = $fpBack[$k+1]-1;
+			if($fpBelow<$fpAbove){
+				$fpBack[$k] = $fpBelow;
+				$lcsSizeBack[$k] = $lcsSizeBack[$k-1];
+				$snakeBeginBack[$k] = $snakeBeginBack[$k-1];
+				$snakeEndBack[$k] = $snakeEndBack[$k-1];
+				$snakekBack[$k] = $snakekBack[$k-1];
+			}else{
+				$fpBack[$k] = $fpAbove;
+				$lcsSizeBack[$k] = $lcsSizeBack[$k+1];
+				$snakeBeginBack[$k] = $snakeBeginBack[$k+1];
+				$snakeEndBack[$k] = $snakeEndBack[$k+1];
+				$snakekBack[$k] = $snakekBack[$k+1];
+			}
+			$oldy = $fpBack[$k];
+			$x = $fpBack[$k]-$k;
+			//echo " - y=$fpBack[$k]";
+			while($x > -1 && $fpBack[$k] > -1 && $a->sequence[$offsetx+$x]==$b->sequence[$offsety+$fpBack[$k]]){
 				--$x;
-				--$this->fpBack[$k];
+				--$fpBack[$k];
 			}
-			//echo " --> y=$y";
-			if($oldy-$this->fpBack[$k]>0){
-				$this->lcsSizeBack[$k] += $oldy-$this->fpBack[$k];
-				$this->snakeBeginBack[$k] = $oldy;
-				$this->snakeEndBack[$k] = $this->fpBack[$k];
-				$this->snakekBack[$k] = $k;
+			//echo " --> y=$fpBack[$k]";
+			if($oldy-$fpBack[$k]>0){
+				$lcsSizeBack[$k] += $oldy-$fpBack[$k];
+				$snakeBeginBack[$k] = $oldy;
+				$snakeEndBack[$k] = $fpBack[$k];
+				$snakekBack[$k] = $k;
 			}
-			if($this->fpForw[$k]>=$this->fpBack[$k] && !$this->overlap[$k]){
+			if($fpForw[$k]>=$fpBack[$k] && !$overlap[$k]){
 				// there is overlap
-				//echo "<br>Overlap on diagonal $k";
-				$this->overlap[$k]=TRUE;
-				$lcsLength = $this->lcsSizeForw[$k]+$this->lcsSizeBack[$k];
-				if($this->fpForw[$k]>$this->fpBack[$k]+1){
-					$overlap = $this->fpForw[$k]-$this->fpBack[$k]-1;
-					//echo "<br>SNAKE!: $overlap";
-					$lcsLength -= $overlap;
+				//echo " | overlap";
+				$overlap[$k]=TRUE;
+				$lcsLength = $lcsSizeForw[$k]+$lcsSizeBack[$k];
+				if($fpForw[$k]>$fpBack[$k]+1){
+					$snakeoverlap = $fpForw[$k]-$fpBack[$k]-1;
+					////echo "<br>SNAKE!: $overlap";
+					$lcsLength -= $snakeoverlap;
 				}
 				//echo " with lcs $lcsLength";
-				if($lcsLength>$this->bestLcsLength){
+				if($lcsLength>$bestLcsLength){
 					// a better sequence found!
-					//echo "<br>A better sequence found with lcs=$lcsLength";
-					$this->bestLcsLength = $lcsLength;
+					//echo "<br>A better sequence found!";
+					$bestLcsLength = $lcsLength;
 
-					$this->topSnakeStart = $this->snakeBeginForw[$k];
-					$this->topSnakeEnd = $this->snakeEndForw[$k];
-					$this->topSnakek = $this->snakekForw[$k];
+					$topSnakeStart = $snakeBeginForw[$k];
+					$topSnakeEnd = $snakeEndForw[$k];
+					$topSnakek = $snakekForw[$k];
 
 					// aligned snakes bite (\   )
 					//                     ( \ \)
-					$this->bottomSnakeStart = max($this->snakeEndBack[$k]+1, $this->topSnakeEnd+max(0,$this->snakekBack[$k]-$this->snakekForw[$k]));
-					$this->bottomSnakeEnd = max($this->snakeBeginBack[$k]+1, $this->bottomSnakeStart);
-					$this->bottomSnakek = $this->snakekBack[$k];
+					$bottomSnakeStart = max($snakeEndBack[$k]+1, $topSnakeEnd+max(0,$snakekBack[$k]-$snakekForw[$k]));
+					$bottomSnakeEnd = max($snakeBeginBack[$k]+1, $bottomSnakeStart);
+					$bottomSnakek = $snakekBack[$k];
 
-					if($this->bottomSnakeEnd<$this->fpForw[$k]){
-						$this->bottomSnakeStart = $this->fpForw[$k];
-						$this->bottomSnakeEnd = $this->fpForw[$k];
-						$this->bottomSnakek = $k;
+					if($bottomSnakeEnd<$fpForw[$k]){
+						$bottomSnakeStart = $fpForw[$k];
+						$bottomSnakeEnd = $fpForw[$k];
+						$bottomSnakek = $k;
 					}
 
-					$this->bestLcsLengthTop = $this->lcsSizeForw[$k]-($this->snakeEndForw[$k]-$this->snakeBeginForw[$k]);
-					$this->bestLcsLengthBottom = $this->lcsSizeBack[$k]-($this->snakeBeginBack[$k]-$this->snakeEndBack[$k]);
-					//echo "<br>".$this->debugInfo();
-					if($this->bestKnownLcs==$lcsLength){
-						return TRUE;
+					$bestLcsLengthTop = $lcsSizeForw[$k]-($snakeEndForw[$k]-$snakeBeginForw[$k]);
+					$bestLcsLengthBottom = $lcsSizeBack[$k]-($snakeBeginBack[$k]-$snakeEndBack[$k]);
+					////echo "<br>".$debugInfo();
+					if($bestKnownLcs==$lcsLength){
+						break 2;
 					}
 				}
 			}
-			$k += $step;
+			if($k>1){
+				$k--;
+			}else if($k<0){
+				$k++;
+			}else if($k==1){
+				$k = -$p;
+			}else{
+				break;
+			}
 		}
-		return FALSE;
+	}
+	//echo "<br>DebugInfo:<br>Best LCS Length: $bestLcsLength ".
+				"<br>LCS top/bottom: $bestLcsLengthTop/$bestLcsLengthBottom".
+				"<br>Top Snake: $topSnakeStart -> $topSnakeEnd \ k=$topSnakek".
+				"<br>Bottom Snake: $bottomSnakeStart -> $bottomSnakeEnd \ k=$bottomSnakek";
+	unset($fpForw, $fpBack, $lcsSizeForw, $lcsSizeBack);
+	unset($snakeBeginForw, $snakeBeginBack, $snakeEndForw, $snakeEndBack, $snakekForw, $snakekBack);
+	unset($overlap);
+
+	// Mark snakes as in LCS
+	for($i=$offsetx+$topSnakeStart-$topSnakek;$i<$offsetx+$topSnakeEnd-$topSnakek;$i++){
+		$a->inLcs[$i] = TRUE;
+	}
+	for($i=$offsety+$topSnakeStart;$i<$offsety+$topSnakeEnd;$i++){
+		$b->inLcs[$i] = TRUE;
+	}
+	for($i=$offsetx+$bottomSnakeStart-$bottomSnakek;$i<$offsetx+$bottomSnakeEnd-$bottomSnakek;$i++){
+		$a->inLcs[$i] = TRUE;
+	}
+	for($i=$offsety+$bottomSnakeStart;$i<$offsety+$bottomSnakeEnd;$i++){
+		$b->inLcs[$i] = TRUE;
 	}
 
-	//	public function debugInfo(){
-	//		return "Best LCS Length: $this->bestLcsLength ".
-	//			"<br>LCS top/bottom: $this->bestLcsLengthTop/$this->bestLcsLengthBottom".
-	//			"<br>Top Snake: $this->topSnakeStart -> $this->topSnakeEnd \ k=$this->topSnakek".
-	//			"<br>Bottom Snake: $this->bottomSnakeStart -> $this->bottomSnakeEnd \ k=$this->bottomSnakek";
-	//	}
+	//remember values for bottom divide
+	$mbottom = $m-($bottomSnakeEnd-$bottomSnakek);
+	$nbottom = $n-$bottomSnakeEnd;
+	$offsetxbottom = $offsetx+($bottomSnakeEnd-$bottomSnakek);
+	$offsetybottom = $offsety+$bottomSnakeEnd;
+	$lengthbottom = $bestLcsLengthBottom;
 
-	//	/**
-	//	 * Override this method to compute the LCS with different equality measures.
-	//	 */
-	//	public function equals($left, $right){
-	//		return $left == $right;
-	//	}
+	echo "<br>TIME:".(microtime(true)-$time);
+	
+	////echo "<br>top: ";
+	correctDiffSequence($a, $b, $topSnakeStart-$topSnakek, $topSnakeStart, $offsetx, $offsety, $bestLcsLengthTop);
 
+	////echo "<br>bottom: ";
+	correctDiffSequence($a, $b, $mbottom, $nbottom, $offsetxbottom, $offsetybottom, $lengthbottom);
 }
 
 class LcsSequence {
@@ -1018,6 +963,150 @@ class LcsSequence {
 		return array_sum($this->inLcs);
 	}
 
+}
+
+function correctBidirectionalLcs(array $a, array $b){
+
+	$m = sizeof($a);
+	$n = sizeof($b);
+
+	if($m==0 || $n==0){
+		return;
+	}
+	if($m>$n){
+		return correctBidirectionalLcs($b, $a);
+	}
+	
+	$time = microtime(true);
+	
+	$delta = $n-$m;
+
+	$fpForw = array_fill( 0, $delta+1, -1);
+	$lcsSizeForw = array_fill( 0, $delta+1, 0);
+
+	$fpBack = array_fill( 0, $delta+1, $n);
+	$lcsSizeBack = array_fill( 0, $delta+1, 0);
+
+	$bestLcsLength = -1;
+	$overlap = $delta>1 ? array_fill( 1, $delta-1, FALSE) : array();
+
+	$p=-1;
+	while($p<$m-$bestLcsLength-1){
+		++$p;
+		
+		$overlap[-$p] = FALSE;
+		$overlap[$delta+$p] = FALSE;
+		
+		// forward
+		$fpForw[-$p-1] = -1;
+		$lcsSizeForw[-$p-1] = 0;
+
+		$fpForw[$delta+$p+1] = -1;
+		$lcsSizeForw[$delta+$p+1] = 0;
+
+		$k=-$p;
+		
+		while(TRUE) {
+			$fpBelow = $fpForw[$k-1]+1;
+			$fpAbove = $fpForw[$k+1];
+			if($fpBelow>$fpAbove){
+				$fpForw[$k] = $fpBelow;
+				$lcsSizeForw[$k] = $lcsSizeForw[$k-1];
+			}else{
+				$fpForw[$k] = $fpAbove;
+				$lcsSizeForw[$k] = $lcsSizeForw[$k+1];
+			}
+			$oldy = $fpForw[$k];
+			$x = $fpForw[$k]-$k;
+			while($x < $m && $fpForw[$k] < $n && $a[$x]==$b[$fpForw[$k]]){
+				++$x;
+				++$fpForw[$k];
+			}
+			$lcsSizeForw[$k] += $fpForw[$k]-$oldy;
+			
+			if($fpForw[$k]>=$fpBack[$k] && !$overlap[$k]){
+				// there is overlap
+				//echo " | overlap";
+				$overlap[$k]=TRUE;
+				$lcsLength = $lcsSizeForw[$k]+$lcsSizeBack[$k];
+				if($fpForw[$k]>$fpBack[$k]+1){
+					$snakeoverlap = $fpForw[$k]-$fpBack[$k]-1;
+					////echo "<br>SNAKE!: $overlap";
+					$lcsLength -= $snakeoverlap;
+				}
+				//echo " with lcs $lcsLength";
+				if($lcsLength>$bestLcsLength){
+					// a better sequence found!
+					//echo "<br>A better sequence found!";
+					$bestLcsLength = $lcsLength;
+				}
+			}
+			if($k<$delta-1){
+				$k++;
+			}else if($k>$delta){
+				$k--;
+			}else if($k==$delta-1){
+				$k = $delta+$p;
+			}else{
+				break;
+			}
+		}
+
+		// backward
+		$fpBack[-$p-1] = $n;
+		$lcsSizeBack[-$p-1] = 0;
+
+		$fpBack[$delta+$p+1] = $n;
+		$lcsSizeBack[$delta+$p+1] = 0;
+
+		$k=$delta+$p;
+		while(TRUE){
+			$fpBelow = $fpBack[$k-1];
+			$fpAbove = $fpBack[$k+1]-1;
+			if($fpBelow<$fpAbove){
+				$fpBack[$k] = $fpBelow;
+				$lcsSizeBack[$k] = $lcsSizeBack[$k-1];
+			}else{
+				$fpBack[$k] = $fpAbove;
+				$lcsSizeBack[$k] = $lcsSizeBack[$k+1];
+			}
+			$oldy = $fpBack[$k];
+			$x = $fpBack[$k]-$k;
+			while($x > -1 && $fpBack[$k] > -1 && $a[$x]==$b[$fpBack[$k]]){
+				--$x;
+				--$fpBack[$k];
+			}
+			$lcsSizeBack[$k] += $oldy-$fpBack[$k];
+			if($fpForw[$k]>=$fpBack[$k] && !$overlap[$k]){
+				// there is overlap
+				//echo " | overlap";
+				$overlap[$k]=TRUE;
+				$lcsLength = $lcsSizeForw[$k]+$lcsSizeBack[$k];
+				if($fpForw[$k]>$fpBack[$k]+1){
+					$snakeoverlap = $fpForw[$k]-$fpBack[$k]-1;
+					////echo "<br>SNAKE!: $overlap";
+					$lcsLength -= $snakeoverlap;
+				}
+				//echo " with lcs $lcsLength";
+				if($lcsLength>$bestLcsLength){
+					// a better sequence found!
+					//echo "<br>A better sequence found!";
+					$bestLcsLength = $lcsLength;
+				}
+			}
+			if($k>1){
+				$k--;
+			}else if($k<0){
+				$k++;
+			}else if($k==1){
+				$k = -$p;
+			}else{
+				break;
+			}
+		}
+	}
+	echo "<br>TIME:".(microtime(true)-$time);
+	return $bestLcsLength;
 }
 
 ?>
