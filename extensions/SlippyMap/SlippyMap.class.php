@@ -63,7 +63,7 @@ class SlippyMap {
 			$marker		= '';
 		}
 
-		$error="";
+		$error='';
 
 		//default values (meaning these parameters can be missed out)
 		if ($width=='')		$width ='450'; 
@@ -77,8 +77,8 @@ class SlippyMap {
 		$marker = ( $marker != '' && $marker != '0' );
 
 		//trim off the 'px' on the end of pixel measurement numbers (ignore if present)
-		if (substr($width,-2)=='px')	$width = substr($width,0,-2);
-		if (substr($height,-2)=='px')	$height = substr($height,0,-2);
+		if (substr($width,-2)=='px')	$width = (int) substr($width,0,-2);
+		if (substr($height,-2)=='px')	$height = (int) substr($height,0,-2);
 
 		//Check required parameters values are provided
 		if ( $lat==''  ) $error .= wfMsg( 'slippymap_latmissing' );
@@ -155,33 +155,16 @@ class SlippyMap {
 			// page loading and rendering dramatically
 			$output .= 'addOnloadHook( function() { ' .
 			 	'	var sc = document.createElement("script");' .
-				'	sc.src = "http://openlayers.org/api/OpenLayers.js";' .
+				'	sc.src = "http://www.openlayers.org/api/OpenLayers.js";' .
 			 	'	document.body.appendChild( sc );' .
 			 	'	var sc = document.createElement("script");' .
 			 	'	sc.src = "http://svn.wikimedia.org/viewvc/mediawiki/trunk/extensions/SlippyMap/OpenStreetMap.js?view=co&' . $wgSlippyMapVersion . '";'.
 			 	'	document.body.appendChild( sc );' .
 			 	'} );';
 
-			$output .= "var lon= $lon; var lat= $lat; var zoom= $zoom; var lonLat;";
+			$output .= "var lon= ${lon}; var lat= ${lat}; var zoom= ${zoom}; var lonLat;";
 
 			$output .= 'var map; ';
-
-			$output .= 'function lonLatToMercator(ll) { ';
-			$output .= '	var lon = ll.lon * 20037508.34 / 180; ';
-			$output .= '	var lat = Math.log (Math.tan ((90 + ll.lat) * Math.PI / 360)) / (Math.PI / 180); ';
-			$output .= '	lat = lat * 20037508.34 / 180; ';
-
-			$output .= '	return new OpenLayers.LonLat(lon, lat); ';
-			$output .= '} ';
-
-			$output .= 'function MercatorToLonLat(ll) { ';
-        		$output .= '   var lon = ll.lon / 20037508.34 * 180; ';
-        		$output .= '   var lat = ll.lat / 20037508.34 * 180 * ( Math.PI / 180 ); ';
-        		$output .= '   lat = ( Math.pow(Math.E, lat) - Math.pow(Math.E, -lat) ) / 2; ';
-        		$output .= '   lat = Math.atan( lat ); ';
-        		$output .= '   lat = lat * 180 / Math.PI;';
-        		$output .= '   return new OpenLayers.LonLat(lon, lat); ';
-			$output .= '   } ';
 
 			$output .= 'addOnloadHook( slippymap_init ); ';
 
@@ -201,13 +184,13 @@ class SlippyMap {
 
 			$output .= '			new OpenLayers.Control.Attribution()], ';
 			$output .= '		maxExtent: new OpenLayers.Bounds(-20037508.34,-20037508.34,20037508.34,20037508.34), ';
-			$output .= "			maxResolution:156543.0399, units:'meters', projection: \"EPSG:900913\"} ); ";
+			$output .= '			maxResolution:156543.0399, units:\'meters\', projection: "EPSG:900913"} ); ';
 
-			$output .= "	layer = new " . $layerObjectDef;
+			$output .= '	layer = new ' . $layerObjectDef;
 
-			$output .= "	map.addLayer(layer); ";
+			$output .= '	map.addLayer(layer); ';
 
-			$output .= "	lonLat = lonLatToMercator(new OpenLayers.LonLat(lon, lat)); ";
+			$output .= '	lonLat = new OpenLayers.LonLat(lon, lat).transform(new OpenLayers.Projection("EPSG:4326"), map.getProjectionObject()); ';
 
 			if ( $marker ) {
 				$output .= 'var markers = new OpenLayers.Layer.Markers( "Markers" ); ' .
@@ -218,11 +201,12 @@ class SlippyMap {
 			           	'   markers.addMarker(new OpenLayers.Marker( lonLat,icon)); ';
 			}
 
-			$output .= "	map.setCenter (lonLat, zoom); ";
-			$output .= "} ";
+			$output .= '	map.setCenter (lonLat, zoom); ';
+			$output .= '} ';
 
 			$output .= 'function slippymap_getWikicode() {';
-			$output .= '    LL = MercatorToLonLat(map.getCenter()); Z = map.getZoom();';
+			$output .= '	LL = map.getCenter().transform(map.getProjectionObject(), new OpenLayers.Projection("EPSG:4326"));';
+			$output .= '    Z = map.getZoom(); ';
 			$output .= '    size = map.getSize();';
 
 			$output .= '    prompt( "' . wfMsg('slippymap_code') .'", "<slippymap h="+size.h+" w="+size.w+" z="+Z+" lat="+LL.lat+" lon="+LL.lon+" layer=mapnik marker=1></slippymap>" ); ';
@@ -233,9 +217,9 @@ class SlippyMap {
 			$output .= '<div class="map">';
 			$output .= "<div style=\"width: {$width}px; height:{$height}px; border-style:solid; border-width:1px; border-color:lightgrey;\" id=\"map\">";
 			$output .= "<noscript><a href=\"http://www.openstreetmap.org/?lat=$lat&lon=$lon&zoom=$zoom\" title=\"See this map on OpenStreetMap.org\" style=\"text-decoration:none\">";
-			$output .= "<img src=\"".$wgMapOfServiceUrl."lat=$lat&long=$lon&z=$zoom&w=$width&h=$height&format=jpeg\" width=\"$width\" height=\"$height\" border=\"0\"><br/>";
-			$output .= '<span style="font-size:60%; background-color:white; position:relative; top:-15px; ">OpenStreetMap - CC-BY-SA-2.0</span>';
-			$output .= '</a></noscript></div><div id="postmap"><input type="button" value="' . wfMsg('slippymap_resetview') . '" onmousedown="map.setCenter(lonLat, zoom);" /><input type="button" value="' . wfMsg('slippymap_button_code') . '" onmousedown="slippymap_getWikicode();" /></div></div>';
+			$output .= "<img src=\"".$wgMapOfServiceUrl."lat=${lat}&long=${lon}&z=${zoom}&w=${width}&h=${height}&format=jpeg\" width=\"${width}\" height=\"${height}\" border=\"0\"><br/>";
+			$output .= '</a></noscript>';
+			$output .= '</div><div id="postmap"><input type="button" value="' . wfMsg('slippymap_resetview') . '" onmousedown="map.setCenter(lonLat, zoom);" /><input type="button" value="' . wfMsg('slippymap_button_code') . '" onmousedown="slippymap_getWikicode();" /></div></div>';
 		}
 		return $output;
 	}
