@@ -365,7 +365,7 @@ var flashEmbed = {
     {
         var clip = flashembed('FlowPlayerAnnotationHolder_'+this.pid,
         { src: mv_embed_path + 'FlowPlayerDark.swf', width: this.width, height: this.height, id: this.pid},
-        { config: { autoPlay: true, showStopButton: false, showPlayButton: false,
+        { config: { autoPlay: true, hideControls: true,
            videoFile: this.media_element.selected_source.uri } });
     },
     /* js hooks/controls */
