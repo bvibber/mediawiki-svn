@@ -51,6 +51,7 @@ struct waiter {
 	std::string filename;
 	boost::function<void (processp)> func;
 	uid_t uid;
+	gid_t gid;
 };
 
 typedef boost::multi_index_container<

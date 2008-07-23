@@ -89,7 +89,7 @@ process_factory::process_released(process_ref const &ref)
 	if (!waiters_.empty()) {
 		waiter n = waiters_.front();
 		waiters_.pop_front();
-		_do_create_from_filename(n.filename, n.func, uid, gid);
+		_do_create_from_filename(n.filename, n.func, n.uid, n.gid);
 	}
 }
 
@@ -108,6 +108,7 @@ process_factory::create_from_filename(
 		n.filename = filename;
 		n.func = func;
 		n.uid = sb.st_uid;
+		n.gid = sb.st_gid;
 		waiters_.push_back(n);
 		return;
 	}
@@ -119,6 +120,7 @@ process_factory::create_from_filename(
 		n.filename = filename;
 		n.func = func;
 		n.uid = sb.st_uid;
+		n.gid = sb.st_gid;
 		waiters_.push_back(n);
 		return;
 	}

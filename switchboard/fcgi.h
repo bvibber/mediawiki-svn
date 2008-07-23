@@ -12,6 +12,7 @@
 
 #include	<vector>
 #include	<stdexcept>
+#include	<map>
 
 #include	<boost/shared_ptr.hpp>
 
