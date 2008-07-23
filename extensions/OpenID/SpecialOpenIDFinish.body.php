@@ -183,7 +183,7 @@ class SpecialOpenIDFinish extends SpecialOpenID {
 		$this->loginSetCookie($openid);
 
 		$wgOut->setPageTitle( wfMsg( 'openidsuccess' ) );
-		$wgOut->setRobotpolicy( 'noindex,nofollow' );
+		$wgOut->setRobotPolicy( 'noindex,nofollow' );
 		$wgOut->setArticleRelated( false );
 		$wgOut->addWikiText( wfMsg( 'openidsuccess', $wgUser->getName(), $openid ) );
 		$wgOut->returnToMain(false, $this->returnTo());
@@ -537,7 +537,7 @@ class SpecialOpenIDFinish extends SpecialOpenID {
 		global $wgUser, $wgOut;
 
 		$wgOut->setPageTitle( wfMsg( 'openiderror' ) );
-		$wgOut->setRobotpolicy( 'noindex,nofollow' );
+		$wgOut->setRobotPolicy( 'noindex,nofollow' );
 		$wgOut->setArticleRelated( false );
 		$wgOut->addWikiText( wfMsg( 'openidalreadyloggedin', $wgUser->getName() ) );
 		$wgOut->returnToMain(false, $this->returnTo() );

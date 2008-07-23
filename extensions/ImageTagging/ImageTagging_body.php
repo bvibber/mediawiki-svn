@@ -73,7 +73,7 @@ class TaggedImages extends SpecialPage {
 		$db->freeResult($res);
 
 		$wgOut->setPageTitle( wfMsg('imagetagging-taggedimages-title', $this->mQuery ? $this->mQuery : "all" ) );
-		$wgOut->setRobotpolicy('noindex,nofollow');
+		$wgOut->setRobotPolicy('noindex,nofollow');
 		$wgOut->addHTML($this->toHTML());
 
 		wfProfileOut( __METHOD__ );

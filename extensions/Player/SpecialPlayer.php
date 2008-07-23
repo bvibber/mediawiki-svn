@@ -126,7 +126,7 @@ class PlayerImagePage extends ImagePage {
 		} else {
 			# Just need to set the right headers
 			$wgOut->setArticleFlag( false );
-			$wgOut->setRobotpolicy( 'noindex,nofollow' );
+			$wgOut->setRobotPolicy( 'noindex,nofollow' );
 			$this->viewUpdates();
 		}
 

@@ -51,7 +51,7 @@ class map_sources {
 		global $wgOut;
 
 		/* No reason for robots to follow map links */
-		$wgOut->setRobotpolicy( 'noindex,nofollow' );
+		$wgOut->setRobotPolicy( 'noindex,nofollow' );
 
 		$wgOut->setPagetitle( $this->mapsources );
 		$wgOut->addWikiText( $this->build_output() );
