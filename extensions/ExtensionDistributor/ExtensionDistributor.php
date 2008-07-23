@@ -25,6 +25,10 @@ $wgExtDistBranches = array(
 		'tarLabel' => 'trunk',
 		'msgName' => 'extdist-current-version',
 	),
+	'branches/REL1_13' => array(
+		'tarLabel' => 'MW1.13',
+		'name' => '1.13.x',
+	),
 	'branches/REL1_12' => array(
 		'tarLabel' => 'MW1.12',
 		'name' => '1.12.x',
