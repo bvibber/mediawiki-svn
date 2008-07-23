@@ -665,6 +665,31 @@ $messages['mr'] = array(
 	'review_comment'                                         => 'टिप्पणी',
 );
 
+/** Nahuatl (Nahuatl)
+ * @author Fluence
+ */
+$messages['nah'] = array(
+	'review_sidebar_title'                   => 'Ticceppahuīz',
+	'review_topic_page'                      => 'Tiquinceppahuīz tlamantli',
+	'review_your_review'                     => 'Moceppahuiliz inīn zāzaniltechcopa/ceppahuiliztli:',
+	'review_page_link'                       => 'ticceppahuīz tlapōhualiztli',
+	'review_for_page'                        => 'Ceppahuiliztli "$1" ītechcopa',
+	'review_for_user'                        => 'Ceppahuiliztli "$1" ītechcopa',
+	'review_error'                           => '¡Cequi ahcualli cah!',
+	'review_no_reviews_for_page'             => 'Āxcān, in ahmo cateh ceppahuiliztli "$1" ītechcopa.',
+	'review_total_statistics'                => 'Mochīntīn',
+	'review_statistics_left_corner'          => 'Ceppahuiliztli',
+	'review_version_link'                    => 'Ceppahuiliztli #$1',
+	'review_concerns_page'                   => 'Inīn ceppahuiliztli cah "$1" ītechcopa.',
+	'review_concerns_user'                   => 'Inīn cah tlatēquitiltilīlpal "$1" īceppahuiliztechcopa.',
+	'review_user_reviews'                    => '<small>(ceppahuiliztli tlatēquitiltilīlli)</small>',
+	'review_has_been_stored'                 => "<span id='review_has_been_stored'>¡Moceppahuiliz ōmopix!</span>",
+	'revision_review_this_page_version_link' => 'Ticceppahuīz inīn zāzanilmachiyōtzin.',
+	'review_page_review'                     => 'Ceppahuiliztli "$1" zāzaniltechcopa',
+	'review_blocked'                         => 'Tehhuātl cah ōtzacuili, ¡xōx!',
+	'review_topic'                           => 'Tlamantli',
+);
+
 /** Dutch (Nederlands)
  * @author SPQRobin
  * @author Siebrand

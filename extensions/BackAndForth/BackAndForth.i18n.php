@@ -366,6 +366,7 @@ $messages['mr'] = array(
  * @author Fluence
  */
 $messages['nah'] = array(
+	'backforth-next' => 'Niman ($1)',
 	'backforth-prev' => 'Achtopa ($1)',
 );
 

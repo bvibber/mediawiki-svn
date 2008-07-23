@@ -36,6 +36,11 @@ $messages['af'] = array(
 $messages['ar'] = array(
 	'createbox-desc'   => 'صندوق إدخال متخصص لإنشاء الصفحات',
 	'createbox-create' => 'إنشاء',
+	'createbox-exists' => "عذرا، \"'''{{FULLPAGENAME}}'''\" موجودة بالفعل.
+
+أنت لا يمكنك إنشاء هذه الصفحة، لكن يمكنك [{{fullurl:{{FULLPAGENAME}}|action=edit}} تعديلها], [{{fullurl:{{FULLPAGENAME}}}} قراءتها]، أو اختيار إنشاء صفحة أخرى باستخدام الصندوق بالأسفل.
+
+<createbox>break=no</createbox>",
 );
 
 /** Bulgarian (Български)

@@ -487,6 +487,7 @@ $messages['bg'] = array(
 	'mv_tool_embed'          => 'Вграждане',
 	'mv_tool_embed_title'    => 'Настройки за вграждане за заявения сегмент',
 	'mv_results_found_for'   => 'Резултати от търсенето от <b>$1</b> до <b>$2</b> от общо <b>$3</b> за:',
+	'mv_tool_mang_layers'    => 'Управление на слоевете',
 	'anno_en'                => 'Анотации и категории',
 	'mvd_default_mismatch'   => 'Грешка във файла с настройките',
 	'mv_data_page_title'     => '$1 за $2 от $3',
@@ -1850,6 +1851,8 @@ $mvMVDTypeDefaultDisp हा $mvMVDTypeAllAvailable चा सबसेट अ�
  */
 $messages['nah'] = array(
 	'mv_upload_file'     => 'Tlahcuilōlquetza',
+	'mv_edit'            => 'Ticpatlāz',
+	'mv_history'         => 'Tlahcuilōlloh',
 	'mv_search_category' => 'Neneuhcāyōtl',
 	'mv_category'        => 'neneuhcāyōtl',
 );

@@ -39,6 +39,7 @@ $messages['ar'] = array(
  */
 $messages['bg'] = array(
 	'watchsubpages'                      => 'Наблюдаване на подстраниците',
+	'watchsubpages-addedtowatchlist'     => 'Следните страници бяха добавени към списъка ви за наблюдение.',
 	'watchsubpages-addtitles'            => 'Добавяне на страниците',
 	'watchsubpages-addtitlestowatchlist' => 'Добавяне на страници в списъка за наблюдение',
 	'watchsubpages-desc'                 => 'Бързо [[Special:WatchSubpages|добавяне на всички подстраници]] на страница в списъка за наблюдение',

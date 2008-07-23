@@ -266,8 +266,12 @@ $messages['el'] = array(
  */
 $messages['eo'] = array(
 	'inplace_scaler_not_enough_params' => 'Ne sufiĉaj parametroj',
+	'inplace_scaler_invalid_image'     => 'Nevalida bildo; ne eblis determini pezon.',
 	'webstore_access'                  => 'Ĉi tiu servo estas limigita laŭ klienta IP-adreso.',
 	'webstore_path_invalid'            => 'La dosiernomo estis nevalida.',
+	'webstore_src_open'                => 'Neeblas malfermi fontdosiero "$1".',
+	'webstore_lock_close'              => 'Eraro fermante ŝlosan dosieron "$1".',
+	'webstore_dest_exists'             => 'Eraro: Destina dosiero "$1" ekzistas.',
 	'webstore_temp_open'               => 'Eraro malfermante laboran dosieron "$1".',
 	'webstore_no_file'                 => 'Neniu dosiero estis alŝutita.',
 	'webstore_invalid_zone'            => 'Nevalida zono "$1".',
@@ -275,9 +279,15 @@ $messages['eo'] = array(
 	'webstore_404'                     => 'Dosiero ne trovita.',
 	'webstore_php_warning'             => 'PHP-Averto: $1',
 	'webstore_metadata_not_found'      => 'Dosiero ne trovita: $1',
+	'webstore_postfile_not_found'      => 'Dosiero por afiŝado ne estis trovita.',
 	'webstore_invalid_response'        => 'Nevalida respondo de servilo:
 
 $1',
+	'webstore_no_response'             => 'Servilo ne respondis',
+	'webstore_backend_error'           => 'Eraro de dosieruja servilo:
+
+$1',
+	'webstore_php_error'               => 'Jen eraroj PHP:',
 );
 
 /** Extremaduran (Estremeñu)

@@ -58,15 +58,22 @@ $messages['af'] = array(
  * @author Meno25
  */
 $messages['ar'] = array(
-	'editmessages-desc'     => '[[Special:EditMessages|تعديل معتمد على الويب]] لأعدادا كبيرة من ملفات Messages*.php',
-	'editmessages'          => 'عدل الرسائل',
-	'editmsg-target'        => 'الرسالة الهدف:',
-	'editmsg-search'        => 'بحث',
-	'editmsg-get-patch'     => 'توليد باتش',
-	'editmsg-new-search'    => 'بحث جديد',
-	'editmsg-apply-patch'   => 'تنفيذ الباتش',
-	'editmsg-no-patch'      => 'غير قادر على تنفيذ أمر "patch"',
-	'editmsg-patch-success' => 'تم تنفيذ الباتش بنجاح.',
+	'editmessages-desc'        => '[[Special:EditMessages|تعديل معتمد على الويب]] لأعدادا كبيرة من ملفات Messages*.php',
+	'editmessages'             => 'عدل الرسائل',
+	'editmsg-target'           => 'الرسالة الهدف:',
+	'editmsg-search'           => 'بحث',
+	'editmsg-show-list'        => 'عرض القيم لاسم الرسالة "$1"',
+	'editmsg-get-patch'        => 'توليد باتش',
+	'editmsg-new-search'       => 'بحث جديد',
+	'editmsg-warning-parse1'   => '* ريجيكس اسم الرسالة لم يطابق: $1',
+	'editmsg-warning-parse2'   => '* حرف اقتباس متوقع بعد السهم: $1',
+	'editmsg-warning-parse3'   => '* نهاية خيط القيمة لم يتم العثور عليه: $1',
+	'editmsg-warning-file'     => '* أخطاء قراءة الملف تمت مصادفتها للغات التالية: $1',
+	'editmsg-warning-mismatch' => '* النص الأصلي لم يمتلك القيمة المتوقعة للغات التالية: $1',
+	'editmsg-apply-patch'      => 'تنفيذ الباتش',
+	'editmsg-no-patch'         => 'غير قادر على تنفيذ أمر "patch"',
+	'editmsg-patch-failed'     => 'الباتش فشلت مع حالة خروج $1',
+	'editmsg-patch-success'    => 'تم تنفيذ الباتش بنجاح.',
 );
 
 /** Bulgarian (Български)

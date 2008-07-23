@@ -4669,7 +4669,9 @@ $messages['ro'] = array(
 	'boardvote_days'       => 'Zile',
 	'boardvote_ip'         => 'IP',
 	'boardvote_listintro'  => '<p>Aceasta este o listă a tuturor voturilor înregistrate până acum. $1 pentru datele criptate.</p>',
+	'boardvote_dumplink'   => 'Click aici',
 	'boardvote_submit'     => 'OK',
+	'boardvote_needadmin'  => 'Doar administratorii alegerilor pot efectua această operaţie.',
 	'boardvote_notstarted' => 'Votarea încă nu a început',
 );
 

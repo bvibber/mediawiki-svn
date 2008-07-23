@@ -2039,6 +2039,7 @@ $wdMessages['mwl'] = array(
  */
 $wdMessages['nah'] = array(
 	'ow_save'     => 'Ticpiyāz',
+	'ow_history'  => 'Tlahcuilōlloh',
 	'ow_dm_OK'    => 'Cualli',
 	'ow_Language' => 'Tlahtōlli',
 );

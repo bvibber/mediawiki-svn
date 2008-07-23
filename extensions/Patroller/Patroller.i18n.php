@@ -596,6 +596,13 @@ $messages['mr'] = array(
 	'grouppage-patroller'    => '{{ns:project}}:निरीक्षक',
 );
 
+/** Nahuatl (Nahuatl)
+ * @author Fluence
+ */
+$messages['nah'] = array(
+	'patrol-revert' => 'Tlacuepāz',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

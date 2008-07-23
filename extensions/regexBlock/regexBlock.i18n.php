@@ -178,6 +178,7 @@ $messages['bg'] = array(
 	'regexblock-form-expiry'          => 'Срок на изтичане:',
 	'regexblock-form-match'           => 'Пълно съвпадение',
 	'regexblock-form-account-block'   => 'Блокиране създаването на нови сметки',
+	'regexblock-form-submit'          => 'Блокиране на този потребител',
 	'regexblock-block-log'            => "Потребител или IP адрес '''$1''' беше блокиран.",
 	'regexblock-block-success'        => 'Блокирането беше успешно',
 	'regexblock-form-submit-regex'    => 'Невалиден регулярен израз.',

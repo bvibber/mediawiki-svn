@@ -256,6 +256,7 @@ $messages['bg'] = array(
 	'group-oversight'             => 'Ревизори',
 	'group-oversight-member'      => 'Ревизор',
 	'grouppage-oversight'         => '{{ns:project}}:Ревизори',
+	'right-oversight'             => 'Преглеждане на предишни скрити версии',
 	'right-hiderevision'          => 'преглед и възстановяване на версии, скрити от администраторите',
 	'hiderevision-prompt'         => 'Номер на версия за премахване:',
 	'hiderevision-continue'       => 'Продължаване',

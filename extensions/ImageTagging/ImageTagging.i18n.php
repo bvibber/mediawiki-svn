@@ -81,30 +81,36 @@ $messages['af'] = array(
  * @author Meno25
  */
 $messages['ar'] = array(
-	'taggedimages'                         => 'صور موسومة',
-	'imagetagging-addimagetag'             => 'وسم هذه الصورة',
-	'imagetagging-article'                 => 'صفحة:',
-	'imagetagging-articletotag'            => 'صفحة للوسم',
-	'imagetagging-imghistory'              => 'تاريخ',
-	'imagetagging-images'                  => 'صور',
-	'imagetagging-inthisimage'             => 'في هذه الصورة: $1',
-	'imagetagging-logentry'                => 'أزال الوسم للصفحة [[$1]] بواسطة $2',
-	'imagetagging-new'                     => '<sup><span style="color:red">جديد!</span></sup>',
-	'imagetagging-removetag'               => 'إزالة وسم',
-	'imagetagging-done-button'             => 'إنتهى الوسم',
-	'imagetagging-tag-button'              => 'وسم',
-	'imagetagging-tagcancel-button'        => 'إلغاء',
-	'imagetagging-tagging-instructions'    => 'اضغط على الأشخاص أو الأشياء في الصورة لوسمهم.',
-	'imagetagging-addingtag'               => 'إضافة وسم...',
-	'imagetagging-removingtag'             => 'إزالة وسم...',
-	'imagetagging-addtagsuccess'           => 'أُضيف الوسم.',
-	'imagetagging-removetagsuccess'        => 'أُزيل الوسم.',
-	'imagetagging-oneuniquetagmessage'     => 'هذه الصورة لديها بالفعل وسم بهذا الاسم.',
-	'imagetagging-imagetag-seemoreimages'  => 'راجع المزيد من صور "$1" ($2)',
-	'imagetagging-taggedimages-title'      => 'صور "$1"',
-	'imagetagging-taggedimages-displaying' => 'عرض $1 - $2 من $3 صورة ل"$4"',
-	'tag-logpagename'                      => 'سجل الوسم',
-	'tag-logpagetext'                      => 'هذا سجل بكل عمليات إضافة وإزالة وسم الصور.',
+	'taggedimages'                          => 'صور موسومة',
+	'imagetagging-addimagetag'              => 'وسم هذه الصورة',
+	'imagetagging-article'                  => 'صفحة:',
+	'imagetagging-articletotag'             => 'صفحة للوسم',
+	'imagetagging-canteditothermessage'     => 'أنت لا يمكنك تعديل هذه الصفحة، إما لأنك لا تمتلك الصلاحية لفعل هذا أو لأن الصفحة محمية لأسباب أخرى.',
+	'imagetagging-imghistory'               => 'تاريخ',
+	'imagetagging-images'                   => 'صور',
+	'imagetagging-inthisimage'              => 'في هذه الصورة: $1',
+	'imagetagging-logentry'                 => 'أزال الوسم للصفحة [[$1]] بواسطة $2',
+	'imagetagging-new'                      => '<sup><span style="color:red">جديد!</span></sup>',
+	'imagetagging-removetag'                => 'إزالة وسم',
+	'imagetagging-done-button'              => 'إنتهى الوسم',
+	'imagetagging-tag-button'               => 'وسم',
+	'imagetagging-tagcancel-button'         => 'إلغاء',
+	'imagetagging-tagging-instructions'     => 'اضغط على الأشخاص أو الأشياء في الصورة لوسمهم.',
+	'imagetagging-addingtag'                => 'إضافة وسم...',
+	'imagetagging-removingtag'              => 'إزالة وسم...',
+	'imagetagging-addtagsuccess'            => 'أُضيف الوسم.',
+	'imagetagging-removetagsuccess'         => 'أُزيل الوسم.',
+	'imagetagging-canteditneedloginmessage' => 'أنت لا يمكنك تعديل هذه الصفحة.
+ربما يكون ذلك بسبب أنك تحتاج إلى تسجيل الدخول لوسم الصور.
+هل تريد تسجيل الدخول الآن؟',
+	'imagetagging-oneactionatatimemessage'  => 'فقط فعل وسم واحد مسموح به كل مرة.
+من فضلك انتظر الفعل الموجود ليكتمل.',
+	'imagetagging-oneuniquetagmessage'      => 'هذه الصورة لديها بالفعل وسم بهذا الاسم.',
+	'imagetagging-imagetag-seemoreimages'   => 'راجع المزيد من صور "$1" ($2)',
+	'imagetagging-taggedimages-title'       => 'صور "$1"',
+	'imagetagging-taggedimages-displaying'  => 'عرض $1 - $2 من $3 صورة ل"$4"',
+	'tag-logpagename'                       => 'سجل الوسم',
+	'tag-logpagetext'                       => 'هذا سجل بكل عمليات إضافة وإزالة وسم الصور.',
 );
 
 /** Bulgarian (Български)
@@ -419,6 +425,7 @@ $messages['mr'] = array(
  */
 $messages['nah'] = array(
 	'imagetagging-article'          => 'Zāzanilli:',
+	'imagetagging-imghistory'       => 'Tlahcuilōlloh',
 	'imagetagging-tagcancel-button' => 'Ticcuepāz',
 );
 

@@ -35,8 +35,10 @@ $messages['bcl'] = array(
 
 /** Bulgarian (Български)
  * @author Spiritia
+ * @author DCLXVI
  */
 $messages['bg'] = array(
+	'donationform-desc'   => 'Добавя етикет <tt>&lt;donateform&gt;</tt> за дарения чрез PayPal',
 	'donationform-submit' => 'Направете дарение чрез PayPal',
 );
 

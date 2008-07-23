@@ -66,6 +66,7 @@ $messages['el'] = array(
  */
 $messages['eo'] = array(
 	'minnamelength-error' => 'Via salutnomo estas tro mallonga. La minimuma longo estas $1.',
+	'minnamelength-desc'  => 'Divigi minimuman longecon de salutnomo',
 );
 
 /** Finnish (Suomi)

@@ -955,7 +955,8 @@ $messages['myv'] = array(
  * @author Fluence
  */
 $messages['nah'] = array(
-	'sitematrix-language' => 'Tlahtōlli',
+	'sitematrix-language'  => 'Tlahtōlli',
+	'sitematrix-sitetotal' => 'Mochīntīn',
 );
 
 /** Min Nan Chinese (Bân-lâm-gú) */

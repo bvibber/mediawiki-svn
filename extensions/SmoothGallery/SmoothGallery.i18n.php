@@ -28,6 +28,13 @@ Please file a bug report.',
 	'smoothgallery-javascript-disabled' => 'Javascript is required to view this gallery properly.',
 );
 
+/** Afrikaans (Afrikaans)
+ * @author Naudefj
+ */
+$messages['af'] = array(
+	'smoothgallery-javascript-disabled' => 'JavaScript word benodig om die galery ordentlik te besigtig.',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */

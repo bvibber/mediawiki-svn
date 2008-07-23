@@ -106,7 +106,11 @@ $messages['bg'] = array(
 	'povwatch_title'                   => 'Заглавие:',
 	'povwatch_no_log'                  => 'Дневникът не съдържа записи.',
 	'povwatch_no_subscribers'          => 'Няма записани потребители.',
+	'povwatch_unsubscribe_intro'       => 'Имате абонамент за PovWatch.
+Натиснете бутона по-долу за отписване.',
 	'povwatch_unsubscribe'             => 'Отписване',
+	'povwatch_subscribe_intro'         => 'Нямате абонамент за PovWatch.
+Натиснете бутона за абониране.',
 	'povwatch_subscribe'               => 'Записване',
 	'right-povwatch_admin'             => 'Администриране на потребителските права за добавяне на страници в списъка за наблюдение на другите потребители',
 	'right-povwatch_user'              => 'добавяне на страници в списъка за наблюдение на други потребители',

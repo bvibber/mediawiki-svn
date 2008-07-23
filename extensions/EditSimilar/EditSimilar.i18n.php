@@ -38,10 +38,18 @@ $messages['af'] = array(
  * @author Meno25
  */
 $messages['ar'] = array(
-	'editsimilar-desc'         => 'يشجع المستخدمين على تعديل صفحة مشابهة بعد حفظ صفحة',
-	'editsimilar-thankyou'     => 'شكرا لمساهمتك، $1!',
-	'editsimilar-link-disable' => 'ضبط الخيارات',
-	'tog-edit-similar'         => 'تفعيل اقتراحات الصفحات المشابهة',
+	'editsimilar-desc'                           => 'يشجع المستخدمين على تعديل صفحة مشابهة بعد حفظ صفحة',
+	'editsimilar-thanks'                         => 'شكرا لمساهمتك.
+تحقق من هذه الصفحات المرتبطة: $1.',
+	'editsimilar-thanks-singleresult'            => 'شكرا لمساهمتك.
+تحقق من هذه الصفحة المرتبطة: $1.',
+	'editsimilar-thanks-notsimilar'              => 'شكرا لمساهمتك.
+هذه الصفحات يمكن أيضا أن تستخدم مساعدتك: $1.',
+	'editsimilar-thanks-notsimilar-singleresult' => 'شكرا لمساهمتك.
+هذه الصفحة يمكن أيضا أن تستخدم مساعدتك: $1.',
+	'editsimilar-thankyou'                       => 'شكرا لمساهمتك، $1!',
+	'editsimilar-link-disable'                   => 'ضبط الخيارات',
+	'tog-edit-similar'                           => 'تفعيل اقتراحات الصفحات المشابهة',
 );
 
 /** Lower Sorbian (Dolnoserbski)

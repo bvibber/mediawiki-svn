@@ -23,9 +23,11 @@ $messages['ar'] = array(
 
 /** Bulgarian (Български)
  * @author Spiritia
+ * @author DCLXVI
  */
 $messages['bg'] = array(
 	'stalepages'         => 'Стари страници',
+	'stalepages-desc'    => 'Генерира [[Special:Stalepages|списък със страници]], които не са били редактирани скоро',
 	'stalepages-summary' => 'Това е списък от страници, които не са били редактирани през последните $1 дни.',
 );
 

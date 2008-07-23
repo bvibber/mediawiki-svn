@@ -255,6 +255,32 @@ $messages['is'] = array(
 	'spamdifftool_option_none' => 'ekkert',
 );
 
+/** Italian (Italiano)
+ * @author Darth Kule
+ */
+$messages['it'] = array(
+	'spamdifftool'                  => 'Gestisci la spam blacklist',
+	'spamdifftool-desc'             => 'Fornisce un semplice modo per aggiungere nuovi valori alla spam blacklist dalle pagine del confronto fra versioni',
+	'spamdifftool_cantedit'         => 'Spiacente - non hai i permessi per modificare la spam blacklist.',
+	'spamdifftool_notext'           => "Non c'è alcun testo da aggiungere alla spam blacklist.
+Fai clic <a href='$1'>qui</a> per continuare.",
+	'spamdifftool_confirm'          => "Conferma che hai intenzione di aggiungere questi valori alla spam blacklist.
+(Fai clic <a href='$1' target='new'>qui</a> per segnalare un problema.)",
+	'spamdifftool_urls_detected'    => "I seguenti URL sono stai rilevai nelle modifiche, quale vorresti aggiungere alla spam blacklist?
+Queste opzioni sono ordinate dalla più restrittiva alla meno restrittiva, bloccare l'intero dominio bloccherà tutti i collegamenti diretti a qualcosa proveniente da quel dominio.
+
+Assicurati di non bloccare quei domini che hostano altri account utente come blogpost.com, geocities.com, ecc.",
+	'spamdifftool_no_urls_detected' => "Nessun URL è stato rilevato.
+Fai click <a href='$1'>qui</a> per tornare.",
+	'spamdifftool_spam_link_text'   => 'aggiungi a spam',
+	'spamdifftool_option_domain'    => 'tutti da questo dominio',
+	'spamdifftool_option_subdomain' => 'tutti da questo sottodominio',
+	'spamdifftool_option_directory' => 'questo sottodominio e directory',
+	'spamdifftool_option_none'      => 'niente',
+	'spamdifftool_block'            => 'Blocca:',
+	'spamdifftool_submit_buttom'    => 'Invia',
+);
+
 /** Javanese (Basa Jawa)
  * @author Meursault2004
  */
@@ -334,6 +360,13 @@ $messages['mr'] = array(
 	'spamdifftool_option_none'      => 'कोणतेचानाही',
 	'spamdifftool_block'            => 'ब्लॉक:',
 	'spamdifftool_submit_buttom'    => 'पाठवा',
+);
+
+/** Nahuatl (Nahuatl)
+ * @author Fluence
+ */
+$messages['nah'] = array(
+	'spamdifftool_submit_buttom' => 'Tiquihuāz',
 );
 
 /** Low German (Plattdüütsch)

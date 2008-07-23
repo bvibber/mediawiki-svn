@@ -201,7 +201,10 @@ $messages['ar'] = array(
 	'configure-ext-settings'              => 'إعدادات',
 	'configure-ext-use-extension'         => 'استخدم هذا الامتداد',
 	'configure-ext-use'                   => 'استخدام',
+	'configure-summary'                   => 'هذه الصفحة الخاصة تسمح لك بضبط هذا الويكي، انظر [http://www.mediawiki.org/wiki/Manual:Configuration_settings إعدادات الضبط] لمزيد من المعلومات.',
 	'configure-btn-save'                  => 'احفظ الاعدادات',
+	'configure-directory-not-writable'    => 'المجلد المستخدم لتخزين الإعدادات، <tt>$1</tt>، لا يمكن الكتابة فيه.
+من فضلك اجعل من الممكن الكتابة فيه بواسطة PHP لاستخدام هذا الامتداد.',
 	'configure-edit-old'                  => 'تحذير: أنت تعدل نسخة <strong>قديمة</strong> من الإعدادات.',
 	'configure-error'                     => 'الإعدادات لم يمكن حفظها',
 	'configure-js-add'                    => 'إضافة مدخلة جديدة',
@@ -210,10 +213,14 @@ $messages['ar'] = array(
 	'configure-js-remove'                 => 'احذف',
 	'configure-js-remove-row'             => 'احذف هذه المدخلة',
 	'configure-no-diff'                   => 'لا توجد تغييرات بين النسخ المختارة.',
+	'configure-no-directory'              => 'المجلد المستخدم لتخزين الإعدادات، <tt>$1</tt>، غير موجود.
+من فضلك قم بإنشائه أو غيره لاستخدام هذا الامتداد.',
 	'configure-no-old'                    => 'لا توجد نسخة قديمة متوفرة من الإعدادات',
+	'configure-no-setup'                  => 'عليك أن تستدعي <code>efConfigureSetup()</code> بشكل صريح في ملف LocalSettings.php الخاص بك لاستخدام هذا الامتداد.',
 	'configure-no-transwiki'              => 'أنت غير مسموح لك بتغيير الإعدادات في الويكيات الأخرى',
 	'configure-old'                       => 'النسخ القديمة',
 	'configure-old-versions'              => 'قائمة النسخ القديمة من الإعدادات:',
+	'configure-old-not-available'         => 'النسخة القديمة من الإعدادات التي طلبتها، $1، غير متوفرة',
 	'configure-saved'                     => 'الإعدادت تم حفظها',
 	'configure-section-general'           => 'اعدادات عامة',
 	'configure-section-paths'             => 'المسارات',
@@ -1340,7 +1347,7 @@ $messages['mr'] = array(
  * @author Fluence
  */
 $messages['nah'] = array(
-	'configure-js-remove'            => 'Ticpoloāz',
+	'configure-js-remove'            => 'Ticpolōz',
 	'configure-section-email'        => 'E-mail',
 	'configure-section-category'     => 'Neneuhcāyōtl',
 	'configure-section-specialpages' => 'Nōncuahquīzqui āmatl',

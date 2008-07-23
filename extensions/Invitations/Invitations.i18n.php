@@ -69,11 +69,12 @@ $messages['bg'] = array(
 	'invitations-invitedlist-description' => 'Имате достъп до следните софтуерни възможности, достъпни с покана.
 За управление на поканите за отделна възможности, щракнете върху името й.',
 	'invitations-invitedlist-none'        => 'Нямате покана да използвате нито една от софтуерните възможности, достъпни с покана.',
+	'invitations-invitedlist-item-count'  => '({{PLURAL:$1|Налична е една покана|Налични са $1 покани}})',
 	'invitations-pagetitle'               => 'Възможности на софтуера, достъпни с покана',
 	'invitations-uninvitedlist-none'      => 'На този етап няма други софтуерни възможности, които да са отбелязани, че са достъпни с покана.',
 	'invitations-feature-pagetitle'       => 'Управление на поканите - $1',
 	'invitations-feature-access'          => 'В момента имате достъп да използвате <i>$1</i>.',
-	'invitations-feature-numleft'         => 'Имате оставащи <b>$1</b> от $2 предоставени покани.',
+	'invitations-feature-numleft'         => 'Имате {{PLURAL:$2|една оставаща покана|оставащи <b>$1</b> от $2 покани}}.',
 	'invitations-feature-noneleft'        => 'Вече сте използвали всички отпуснати покани за тази услуга',
 	'invitations-feature-notallowed'      => 'Нямате достъп да използвате <i>$1</i>.',
 	'invitations-inviteform-title'        => 'Изпращане на покана на потребител да използва $1',

@@ -291,7 +291,8 @@ $messages['pt'] = array(
  * @author KlaudiuMihaila
  */
 $messages['ro'] = array(
-	'categoryintersection' => 'Intersecţia categoriilor',
+	'categoryintersection'         => 'Intersecţia categoriilor',
+	'categoryintersection-results' => 'Căutarea a returnat $1 {{PLURAL:$1|rezultat|rezultate}}.',
 );
 
 /** Russian (Русский)

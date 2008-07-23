@@ -80,8 +80,10 @@ Dai inaakò kan mga operador sa site na ini an mga responsibilidad para mga kome
 /** Bulgarian (Български)
  * @author DCLXVI
  * @author Spiritia
+ * @author Siebrand
  */
 $messages['bg'] = array(
+	'talkhere-desc'        => 'Добавя беседа към страница',
 	'talkhere-foottext'    => 'Коментарите по-горе вероятно са оставени от посетители.
 
 Администраторите на уикито не поемат отговорност за съдържанието им.',

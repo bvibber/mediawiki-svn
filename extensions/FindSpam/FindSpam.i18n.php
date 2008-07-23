@@ -183,6 +183,17 @@ $messages['ia'] = array(
 	'findspam-ok' => 'OK',
 );
 
+/** Italian (Italiano)
+ * @author Darth Kule
+ */
+$messages['it'] = array(
+	'findspam'             => 'Trova spam',
+	'findspam-desc'        => 'Aggiunge una [[Special:FindSpam|pagina speciale]] che permette di trovare spam recentemente aggiunto',
+	'findspam-ip'          => 'Indirizzo IP:',
+	'findspam-ok'          => 'OK',
+	'findspam-notextfound' => 'Nessun contributo trovato',
+);
+
 /** Javanese (Basa Jawa)
  * @author Meursault2004
  */

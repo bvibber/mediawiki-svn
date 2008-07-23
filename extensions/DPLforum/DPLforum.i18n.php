@@ -32,9 +32,12 @@ $messages['mhr'] = array(
  * @author Meno25
  */
 $messages['ar'] = array(
-	'dplforum-by'     => 'بواسطة',
-	'dplforum-edited' => '  - آخر تعديل',
-	'dplforum-never'  => 'أبدا',
+	'dplforum-desc'    => 'امتداد منتدى معتمد على DPL',
+	'dplforum-by'      => 'بواسطة',
+	'dplforum-edited'  => '  - آخر تعديل',
+	'dplforum-never'   => 'أبدا',
+	'dplforum-toofew'  => 'منتدى DPL: تصنيفات قليلة جدا!',
+	'dplforum-toomany' => 'منتدى DPL: تصنيفات كثيرة جدا!',
 );
 
 /** Bulgarian (Български)

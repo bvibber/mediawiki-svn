@@ -79,6 +79,16 @@ $messages['de'] = array(
 	'piwik-browsers'   => 'Browser',
 );
 
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
+$messages['eo'] = array(
+	'piwik-desc'       => 'Enigas skripton "Piwik" en paĝoj MediaWiki por kontrolado kaj aldonas [[Special:Piwik|iujn statistikojn]]',
+	'piwik-lastvisits' => 'Lastaj vizitoj',
+	'piwik-countries'  => 'Landoj',
+	'piwik-browsers'   => 'Retumiloj',
+);
+
 /** Spanish (Español)
  * @author Isb1009
  * @author Castellano

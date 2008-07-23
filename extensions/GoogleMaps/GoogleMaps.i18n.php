@@ -1722,6 +1722,7 @@ $wgGoogleMapsMessages['mr'] = array(
  */
 $wgGoogleMapsMessages['nah'] = array(
 	'gm-balloon-title' => 'Tōcāitl:',
+	'gm-map'           => 'Āmatohtli',
 	'gm-yes'           => 'Quēmah',
 	'gm-no'            => 'Ahmo',
 	'gm-save-path'     => 'Ticpiyāz',

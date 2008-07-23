@@ -355,7 +355,7 @@ $messages['ms'] = array(
  */
 $messages['nah'] = array(
 	'inspectcache-ok'     => 'Cualli',
-	'inspectcache-delete' => 'Ticpoloāz',
+	'inspectcache-delete' => 'Ticpolōz',
 );
 
 /** Dutch (Nederlands)

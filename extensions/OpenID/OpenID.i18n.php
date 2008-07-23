@@ -137,28 +137,41 @@ $messages['af'] = array(
  * @author OsamaK
  */
 $messages['ar'] = array(
-	'openidlogin'          => 'تسجيل الدخول بالهوية المفتوحة',
-	'openidserver'         => 'خادم الهوية المفتوحة',
-	'openiderror'          => 'خطأ تأكيد',
-	'openidcancel'         => 'التأكيد تم إلغاؤه',
-	'openidfailure'        => 'التأكيد فشل',
-	'openidsuccess'        => 'التأكيد نجح',
-	'openidusernameprefix' => 'مستخدم الهوية المفتوحة',
-	'openidallowtrust'     => 'السماح ل$1 بالوثوق بحساب هذا المستخدم.',
-	'openidnopolicy'       => 'الموقع لا يمتلك سياسة محددة للخصوصية.',
-	'openidoptional'       => 'اختياري',
-	'openidrequired'       => 'مطلوب',
-	'openidnickname'       => 'اللقب',
-	'openidfullname'       => 'الاسم الكامل',
-	'openidemail'          => 'عنوان البريد الإلكتروني',
-	'openidlanguage'       => 'اللغة',
-	'openidchoosefull'     => 'اسمك الكامل ($1)',
-	'openidchoosemanual'   => 'اسم من اختيارك:',
-	'openidchooseexisting' => 'حساب موجود في هذه الويكي:',
-	'openidchoosepassword' => 'كلمة السر:',
-	'openidnousername'     => 'لا اسم مستخدم تم تحديده.',
-	'openidbadusername'    => 'اسم المستخدم المحدد سيء.',
-	'openidloginlabel'     => 'مسار الهوية المفتوحة',
+	'openidlogin'             => 'تسجيل الدخول بالهوية المفتوحة',
+	'openidserver'            => 'خادم الهوية المفتوحة',
+	'openiderror'             => 'خطأ تأكيد',
+	'openidcancel'            => 'التأكيد تم إلغاؤه',
+	'openidfailure'           => 'التأكيد فشل',
+	'openidsuccess'           => 'التأكيد نجح',
+	'openidusernameprefix'    => 'مستخدم الهوية المفتوحة',
+	'openidallowtrust'        => 'السماح ل$1 بالوثوق بحساب هذا المستخدم.',
+	'openidnopolicy'          => 'الموقع لا يمتلك سياسة محددة للخصوصية.',
+	'openidoptional'          => 'اختياري',
+	'openidrequired'          => 'مطلوب',
+	'openidnickname'          => 'اللقب',
+	'openidfullname'          => 'الاسم الكامل',
+	'openidemail'             => 'عنوان البريد الإلكتروني',
+	'openidlanguage'          => 'اللغة',
+	'openidchoosefull'        => 'اسمك الكامل ($1)',
+	'openidchoosemanual'      => 'اسم من اختيارك:',
+	'openidchooseexisting'    => 'حساب موجود في هذه الويكي:',
+	'openidchoosepassword'    => 'كلمة السر:',
+	'openidnousername'        => 'لا اسم مستخدم تم تحديده.',
+	'openidbadusername'       => 'اسم المستخدم المحدد سيء.',
+	'openidloginlabel'        => 'مسار الهوية المفتوحة',
+	'openidlogininstructions' => "{{SITENAME}} تدعم معيار [http://openid.net/ الهوية المفتوحة] للدخول الفردي بين مواقع الويب.
+الهوية المفتوحة تسمح لك بتسجيل الدخول إلى مواقع ويب عديدة مختلفة بدون استخدام كلمة سر مختلفة لكل موقع.
+(انظر [http://en.wikipedia.org/wiki/OpenID مقالة الهوية المفتوحة في يويكيبيديا] لمزيد من المعلومات.)
+
+لو أنك لديك بالفعل حساب في {{SITENAME}}، يمكنك [[Special:Userlogin|تسجيل الدخول]] باسم مستخدمك وكلمة السر الخاصة بك كالمعتاد.
+لاستخدام الهوية المفتوحة في المستقبل، يمكنك [[Special:OpenIDConvert|تحويل حسابك إلى الهوية المفتوحة]] بعد تسجيل دخولك بشكل عادي.
+
+يوجد العديد من [http://wiki.openid.net/Public_OpenID_providers موفري الهوية المفتوحة العلنيين]، وربما يكون لديك حسابك بهوية مفتوحة على خدمة أخرى.
+
+; الويكيات الأخرى : لو أنك لديك حساب على ويكي مفعل الهوية المفتوحة، مثل [http://wikitravel.org/ ويكي ترافيل]، [http://www.wikihow.com/ ويكي هاو]، [http://vinismo.com/ فينيزمو]، [http://aboutus.org/ أبوت أس] أو [http://kei.ki/ كيكي]، يمكنك تسجيل الدخول إلى {{SITENAME}} بواسطة إدخال '''المسار الكامل''' لصفحة مستخدمك على هذا الويكي الآخر في الصندوق بالأعلى. على سبيل المثال، ''<nowiki>http://kei.ki/en/User:Evan</nowiki>''.
+; [http://openid.yahoo.com/ ياهو!] : إذا لديك حساب مع ياهو!، يمكنك تسجيل الدخول إلى هذا الموقع بواسطة إدخال هويتك المفتوحة الموفرة بواسطة ياهو! في الصندوق بالأعلى. مسارات هوية ياهو! المفتوحة تأخذ الصيغة ''<nowiki>https://me.yahoo.com/yourusername</nowiki>''.
+; [http://dev.aol.com/aol-and-63-million-openids إيه أو إل] : لو لديك حساب مع [http://www.aol.com/ إيه أو إل]، مثل حساب [http://www.aim.com/ إيه أي إم]، يمكنك تسجيل الدخول إلى {{SITENAME}} بواسطة إدخال هويتك المفتوحة الموفرة بواسطة AOL في الصندوق بالأعلى. مسارات هوية AOL المفتوحة تأخذ الصيغة ''<nowiki>http://openid.aol.com/yourusername</nowiki>''. اسم مستخدمك ينبغي أن يكون كله حروفا صغيرة، لا مسافات.
+; [http://bloggerindraft.blogspot.com/2008/01/new-feature-blogger-as-openid-provider.html بلوجر], [http://faq.wordpress.com/2007/03/06/what-is-openid/ وورد بريس دوت كوم]، [http://www.livejournal.com/openid/about.bml ليف جورنال]، [http://bradfitz.vox.com/library/post/openid-for-vox.html فوكس] : لو لديك مدونة على أي من هذه الخدمات، أدخل مسار مدونتك في الصندوق بالأعلى. على سبيل المثال، ''<nowiki>http://yourusername.blogspot.com/</nowiki>''، ''<nowiki>http://yourusername.wordpress.com/</nowiki>''، ''<nowiki>http://yourusername.livejournal.com/</nowiki>''، أو ''<nowiki>http://yourusername.vox.com/</nowiki>''.",
 );
 
 /** Bulgarian (Български)

@@ -642,6 +642,7 @@ Această opţiune încarcă de obicei serverul, deci vă rugăm să o folosiţi 
 	'querybtn'        => 'Trimite interogare',
 	'selectonly'      => 'Sunt permise doar interogări care efectuează numai citiri.',
 	'querysuccessful' => 'Interogare terminată cu succes',
+	'right-asksql'    => 'Efectuează interogări SQL',
 );
 
 /** Russian (Русский)

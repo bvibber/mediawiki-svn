@@ -419,6 +419,7 @@ $messages['mr'] = array(
  */
 $messages['nah'] = array(
 	'player-goto-page' => 'Zāzanilli',
+	'player-goto-file' => 'tlahcuilōlli',
 );
 
 /** Dutch (Nederlands)

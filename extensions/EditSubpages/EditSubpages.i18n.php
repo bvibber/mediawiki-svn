@@ -22,6 +22,22 @@ $messages['en'] = array(
  #</pre><!-- leave this line alone -->',
 );
 
+/** Arabic (العربية)
+ * @author Meno25
+ */
+$messages['ar'] = array(
+	'editsubpages-desc' => 'يسمح لمديري النظام بإزالة غلق صفحة وكل الصفحات الفرعية لهذه الصفحة للتعديل المجهول من خلال [[MediaWiki:Unlockedpages]]',
+	'unlockedpages'     => '  #<!-- leave this line alone --><pre>
+# ضع الصفحات التي تريد رفع غلقها بالأسفل
+# * اسم الصفحة
+# الصفحات المرفوع غلقها يجب أن تبدأ برصاصة ليتم احتسابها،
+# كل شيء آخر يتم اعتباره تعليق
+# اسم الصفحة ربما يكون [[وصلات]] وهو حساس لحالة الحروف
+# أيضا، صفحات النقاش سيتم رفع غلقها تلقائيا مع الصفحة
+# انظر http://www.mediawiki.org/wiki/Extension:EditSubpages لمزيد من المعلومات
+  #</pre><!-- leave this line alone -->',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  */

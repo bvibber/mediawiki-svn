@@ -594,6 +594,13 @@ $messages['ms'] = array(
 	'scanset_prev'                      => '&lt; Sebelumnya',
 );
 
+/** Nahuatl (Nahuatl)
+ * @author Fluence
+ */
+$messages['nah'] = array(
+	'scanset_next' => 'Niman &gt;',
+);
+
 /** Low German (Plattdüütsch)
  * @author Slomox
  */

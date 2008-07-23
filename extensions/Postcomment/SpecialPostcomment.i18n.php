@@ -41,8 +41,10 @@ $messages['ar'] = array(
 
 /** Bulgarian (Български)
  * @author Spiritia
+ * @author DCLXVI
  */
 $messages['bg'] = array(
+	'postcomment_desc'                     => 'Позволява на потребителите да публикуват коментари директно на дискусионната страница.',
 	'postcomment_discussionprotected'      => 'Тази дискусионна страница е защитена за по-нататъшно редактиране.',
 	'postcomment_notloggedin'              => 'Не сте влезли в системата.',
 	'postcomment_youareloggedinas'         => 'Влязохте в системата като $1',

@@ -211,6 +211,14 @@ $messages['qu'] = array(
 	'nstab-comments'    => 'Rimapuna',
 );
 
+/** Romanian (Română)
+ * @author KlaudiuMihaila
+ */
+$messages['ro'] = array(
+	'commentpages-desc' => 'Pagini de comentarii pentru spaţiul de nume principal',
+	'nstab-comments'    => 'Comentariu',
+);
+
 /** Russian (Русский)
  * @author Александр Сигачёв
  */

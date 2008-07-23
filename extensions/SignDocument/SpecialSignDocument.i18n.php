@@ -779,6 +779,13 @@ $messages['is'] = array(
 	'sign-city'     => 'Staður:',
 );
 
+/** Italian (Italiano)
+ * @author Darth Kule
+ */
+$messages['it'] = array(
+	'sign-viewfield-ip' => 'Indirizzo IP',
+);
+
 /** Javanese (Basa Jawa)
  * @author Meursault2004
  */

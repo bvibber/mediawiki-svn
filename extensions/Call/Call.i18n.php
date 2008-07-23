@@ -474,6 +474,13 @@ Em caso de problemas, poderá experimentar <b>Special:Call/DebuG</b>",
 	'call-save-failed'  => 'O seguinte texto NÃO foi gravado na página <big>[[$1]]</big> porque essa página já existe.',
 );
 
+/** Romanian (Română)
+ * @author KlaudiuMihaila
+ */
+$messages['ro'] = array(
+	'call-save-success' => 'Următorul text a fost salvat la pagina <big>[[$1]]</big> .',
+);
+
 /** Russian (Русский)
  * @author Александр Сигачёв
  * @author Ahonc

@@ -48,10 +48,14 @@ $messages['ar'] = array(
 	'deletebatch-desc'                 => '[[Special:DeleteBatch|حذف باتش من الصفحات]]',
 	'deletebatch-button'               => 'حذف',
 	'deletebatch-here'                 => '<b>هنا</b>',
+	'deletebatch-help'                 => 'حذف باتش من الصفحات. يمكنك إما عمل عملية حذف واحدة، أو حذف الصفحات المرتبة في ملف.
+اختر مستخدما ليتم عرضه في سجلات الحذف.
+الملف المرفوع ينبغي أن يحتوي على اسم الصفحة وسبب اختياري مفصولين بواسطة حرف "|" في كل سطر.',
 	'deletebatch-caption'              => 'قائمة الصفحات',
 	'deletebatch-title'                => 'حذف الباتش',
 	'deletebatch-link-back'            => 'يمكنك العودة إلى الامتداد',
 	'deletebatch-as'                   => 'تشغيل السكريبت ك',
+	'deletebatch-both-modes'           => 'من فضلك اختر إما صفحة واحدة أو قائمة معطاة من الصفحات.',
 	'deletebatch-or'                   => '<b>أو</b>',
 	'deletebatch-page'                 => 'الصفحات للحذف',
 	'deletebatch-reason'               => 'سبب الحذف',
@@ -65,6 +69,7 @@ $messages['ar'] = array(
 	'deletebatch-file-missing'         => 'غير قادر على قراءة الملف المعطى',
 	'deletebatch-select-script'        => 'سكريبت حذف الصفحات',
 	'deletebatch-select-yourself'      => 'أنت',
+	'deletebatch-no-page'              => 'من فضلك اختر على الأقل صفحة واحدة للحذف أو اختر ملفا يحتوي على قائمة الصفحات.',
 );
 
 /** Bulgarian (Български)
@@ -230,7 +235,7 @@ $messages['lb'] = array(
  * @author Fluence
  */
 $messages['nah'] = array(
-	'deletebatch-button' => 'Ticpoloāz',
+	'deletebatch-button' => 'Ticpolōz',
 );
 
 /** Dutch (Nederlands)

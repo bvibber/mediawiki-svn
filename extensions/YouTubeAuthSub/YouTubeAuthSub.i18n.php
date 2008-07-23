@@ -65,22 +65,23 @@ $messages['an'] = array(
  * @author Meno25
  */
 $messages['ar'] = array(
-	'youtubeauthsub'                    => 'رفع فيديو يوتيوب',
-	'youtubeauthsub-desc'               => 'السماح للمستخدمين [[Special:YouTubeAuthSub|بتحميل الفيديو]] مباشرة إلى يوتيوب',
-	'youtubeauthsub_title'              => 'عنوان',
-	'youtubeauthsub_description'        => 'وصف',
-	'youtubeauthsub_password'           => 'كلمة سر يوتيوب',
-	'youtubeauthsub_username'           => 'اسم مستخدم يوتيوب',
-	'youtubeauthsub_keywords'           => 'كلمات مفتاحية',
-	'youtubeauthsub_category'           => 'تصنيف',
-	'youtubeauthsub_submit'             => 'تنفيذ',
-	'youtubeauthsub_clickhere'          => 'أنقر هنا لتسجيل الدخول لليوتيوب',
-	'youtubeauthsub_uploadhere'         => 'رفع مقاطع الفيديو الخاصة بك من هنا:',
-	'youtubeauthsub_uploadbutton'       => 'رفع',
-	'youtubeauthsub_summary'            => 'رفع فيديو يوتيوب',
-	'youtubeauthsub_jserror_nokeywords' => 'رجاءً أدخل كلمة مفتاحية أو أكثر.',
-	'youtubeauthsub_jserror_notitle'    => 'رجاءً أدخل عنوانا للفيديو.',
-	'youtubeauthsub_jserror_nodesc'     => 'رجاءً أدخل وصفا للفيديو.',
+	'youtubeauthsub'                     => 'رفع فيديو يوتيوب',
+	'youtubeauthsub-desc'                => 'السماح للمستخدمين [[Special:YouTubeAuthSub|بتحميل الفيديو]] مباشرة إلى يوتيوب',
+	'youtubeauthsub_title'               => 'عنوان',
+	'youtubeauthsub_description'         => 'وصف',
+	'youtubeauthsub_password'            => 'كلمة سر يوتيوب',
+	'youtubeauthsub_username'            => 'اسم مستخدم يوتيوب',
+	'youtubeauthsub_keywords'            => 'كلمات مفتاحية',
+	'youtubeauthsub_category'            => 'تصنيف',
+	'youtubeauthsub_submit'              => 'تنفيذ',
+	'youtubeauthsub_clickhere'           => 'أنقر هنا لتسجيل الدخول لليوتيوب',
+	'youtubeauthsub_authsubinstructions' => 'لرفع فيديو، سيتعين عليك تسجيل الدخول أولا إلى يوتيوب.',
+	'youtubeauthsub_uploadhere'          => 'رفع مقاطع الفيديو الخاصة بك من هنا:',
+	'youtubeauthsub_uploadbutton'        => 'رفع',
+	'youtubeauthsub_summary'             => 'رفع فيديو يوتيوب',
+	'youtubeauthsub_jserror_nokeywords'  => 'رجاءً أدخل كلمة مفتاحية أو أكثر.',
+	'youtubeauthsub_jserror_notitle'     => 'رجاءً أدخل عنوانا للفيديو.',
+	'youtubeauthsub_jserror_nodesc'      => 'رجاءً أدخل وصفا للفيديو.',
 );
 
 /** Southern Balochi (بلوچی مکرانی)
@@ -620,6 +621,7 @@ $messages['nah'] = array(
 	'youtubeauthsub'          => 'Vīdeoquetza īhuīc YouTube',
 	'youtubeauthsub_title'    => 'Tōcāitl',
 	'youtubeauthsub_category' => 'Neneuhcāyōtl',
+	'youtubeauthsub_submit'   => 'Tiquihuāz',
 );
 
 /** Low German (Plattdüütsch)

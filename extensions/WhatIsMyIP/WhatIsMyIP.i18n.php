@@ -62,6 +62,15 @@ $messages['dsb'] = array(
 	'whatismyip-out'  => 'Twója IP:',
 );
 
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
+$messages['eo'] = array(
+	'whatismyip'      => 'Kio estas mia IP',
+	'whatismyip-desc' => 'Montras nunan IP-adreson de uzanto en [[Special:WhatIsMyIP]]',
+	'whatismyip-out'  => 'Via IP:',
+);
+
 /** Finnish (Suomi)
  * @author Jack Phoenix
  */

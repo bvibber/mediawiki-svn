@@ -48,6 +48,20 @@ $messages['ar'] = array(
 	'slippymap_resetview'   => 'إعادة ضبط الرؤية',
 );
 
+/** Bulgarian (Български)
+ * @author DCLXVI
+ */
+$messages['bg'] = array(
+	'slippymap_desc'         => 'Позволява използването на етикета <tt><nowiki>&lt;slippymap&gt;</nowiki></tt> за показване на OpenLayers slippy карти. Картите са от [http://openstreetmap.org openstreetmap.org]',
+	'slippymap_zoommissing'  => 'Липсваща стойност z (за степен на приближаване).',
+	'slippymap_zoomsmall'    => 'стойността за приближаване (z) не може да бъде отрицателно число',
+	'slippymap_zoombig'      => 'стойността за приближаване (z) не може да бъде по-голяма от 17.',
+	'slippymap_invalidlayer' => "Невалидна стойност на 'слоя' '%1'",
+	'slippymap_maperror'     => 'Грешка в картата:',
+	'slippymap_osmtext'      => 'Преглеждане на картата в OpenStreetMap.org',
+	'slippymap_code'         => 'Уикикод за тази карта:',
+);
+
 /** German (Deutsch)
  * @author Raimond Spekking
  */
@@ -79,6 +93,17 @@ $messages['de'] = array(
 	'slippymap_code'            => 'Wikitext für diese Kartenansicht:',
 	'slippymap_button_code'     => 'Zeige Wikicode',
 	'slippymap_resetview'       => 'Zurücksetzen',
+);
+
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
+$messages['eo'] = array(
+	'slippymap_maperror'    => 'Mapa eraro:',
+	'slippymap_osmtext'     => 'Vidi ĉi tiun mapon en OpenStreetMap.org',
+	'slippymap_code'        => 'Vikikodo por ĉi tiu mapvido:',
+	'slippymap_button_code' => 'Akiri vikikodon',
+	'slippymap_resetview'   => 'Restarigi vidon',
 );
 
 /** French (Français)

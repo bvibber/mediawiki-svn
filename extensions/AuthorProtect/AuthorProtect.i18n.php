@@ -574,7 +574,10 @@ $messages['pt'] = array(
  * @author KlaudiuMihaila
  */
 $messages['ro'] = array(
-	'authorprotect-reason' => 'Motiv',
+	'authorprotect-confirm' => 'Schimbă niveluri de protecţie',
+	'authorprotect-reason'  => 'Motiv',
+	'authorprotect-success' => 'Protejare cu succes!',
+	'authorprotect-failure' => 'Protejare fără succes',
 );
 
 /** Russian (Русский)

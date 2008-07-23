@@ -50,11 +50,27 @@ $messages['ar'] = array(
 	'errorhandler-error-user-error'      => 'خطأ مستخدم',
 	'errorhandler-error-user-warning'    => 'تحذير مستخدم',
 	'errorhandler-error-user-notice'     => 'ملاحظة مستخدم',
+	'errorhandler-error-strict'          => 'معايير صارمة',
+	'errorhandler-error-recoverable'     => 'خطأ قاتل يمكن إمساكه',
 	'errorhandler-msg-text'              => '$1 : $2 في $3 (سطر $4)',
 	'errorhandler-msg-html'              => '<b>$1</b> : <i>$2</i> في <b>$3</b> (سطر <b>$4</b>)',
 	'errorhandler-trace'                 => 'الأثر:',
 	'errorhandler-trace-line'            => '$1 (سطر $2): $3',
 	'errorhandler-trace-line-internal'   => '[وظيفة داخلية]: $1',
+);
+
+/** Bulgarian (Български)
+ * @author DCLXVI
+ */
+$messages['bg'] = array(
+	'errorhandler-errors'             => 'Грешки:',
+	'errorhandler-error-fatal'        => 'Фатална грешка',
+	'errorhandler-error-warning'      => 'Предупреждение',
+	'errorhandler-error-parse'        => 'Грешка в парсера',
+	'errorhandler-error-notice'       => 'Забележка',
+	'errorhandler-error-user-error'   => 'Потребителска грешка',
+	'errorhandler-error-user-warning' => 'Потребителско предупреждение',
+	'errorhandler-error-user-notice'  => 'Потребителска забележка',
 );
 
 /** French (Français)

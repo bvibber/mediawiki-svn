@@ -678,6 +678,8 @@ $2',
  */
 $allMessages['nah'] = array(
 	'whitelisttablemodifyall' => 'Mochīntīn',
+	'whitelisttableedit'      => 'Ticpatlāz',
+	'whitelistnewtablereview' => 'Ticceppahuīz',
 	'whitelistbadtitle'       => 'Ahcualli tōcāitl -',
 	'whitelistnever'          => 'aīcmah',
 );

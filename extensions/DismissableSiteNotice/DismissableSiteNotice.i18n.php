@@ -636,7 +636,7 @@ $messages['tr'] = array(
  * @author Thuvack
  */
 $messages['ts'] = array(
-	'sitenotice_close' => 'Unga tekeli enhlokweni',
+	'sitenotice_close' => 'Bakanya',
 );
 
 /** Ukrainian (Українська)
