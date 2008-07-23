@@ -418,7 +418,7 @@
 
 		//wfRunHooks( 'EditPage::showEditForm:initial', array( &$this ) ) ;
 
-		//$wgOut->setRobotPolicy( 'noindex,nofollow' );
+		//$wgOut->setRobotpolicy( 'noindex,nofollow' );
 
 		# Enabled article-related sidebar, top links, etc.
 		$wgOut->setArticleRelated( true );

@@ -52,7 +52,7 @@ class neighbors {
 		global $wgOut, $wgUser, $wgContLang;
 
 		/* No reason for robots to follow these links */
-		$wgOut->setRobotPolicy( 'noindex,nofollow' );
+		$wgOut->setRobotpolicy( 'noindex,nofollow' );
 
 		$wgOut->setPagetitle( "Neighbors" );
 

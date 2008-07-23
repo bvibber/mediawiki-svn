@@ -25,7 +25,7 @@ class EZParser extends SpecialPage {
 		
 		if (!in_array( 'ezparser', $wgUser->getRights() ) ) {
 			$wgOut->setArticleRelated( false );
-			$wgOut->setRobotPolicy( 'noindex,follow' );
+			$wgOut->setRobotpolicy( 'noindex,follow' );
 			$wgOut->errorpage( 'nosuchspecialpage', 'nospecialpagetext' );
 			return;
 		}

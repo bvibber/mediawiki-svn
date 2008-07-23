@@ -162,7 +162,7 @@ class SpecialOpenIDConvert extends SpecialOpenID {
 			$this->setUserUrl($wgUser, $openid_url);
 
 			$wgOut->setPageTitle( wfMsg( 'openidconvertsuccess' ) );
-			$wgOut->setRobotPolicy( 'noindex,nofollow' );
+			$wgOut->setRobotpolicy( 'noindex,nofollow' );
 			$wgOut->setArticleRelated( false );
 			$wgOut->addWikiText( wfMsg( 'openidconvertsuccesstext', $openid_url ) );
 			$wgOut->returnToMain( );

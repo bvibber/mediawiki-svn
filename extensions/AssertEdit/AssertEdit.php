@@ -59,7 +59,7 @@ function efAssertEditHook( &$editpage ) {
 		//slightly modified from showErrorPage(), to return back here.
 		$wgOut->setPageTitle( wfMsg( 'assert_edit_title' ) );
 		$wgOut->setHTMLTitle( wfMsg( 'errorpagetitle' ) );
-		$wgOut->setRobotPolicy( 'noindex,nofollow' );
+		$wgOut->setRobotpolicy( 'noindex,nofollow' );
 		$wgOut->setArticleRelated( false );
 		$wgOut->enableClientCache( false );
 		$wgOut->mRedirect = '';

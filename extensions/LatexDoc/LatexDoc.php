@@ -57,7 +57,7 @@ class LatexDoc {
 
 		$wgOut->setArticleFlag( false );
 		$wgOut->setArticleRelated( true );
-		$wgOut->setRobotPolicy( 'noindex,nofollow' );
+		$wgOut->setRobotpolicy( 'noindex,nofollow' );
 		$wgOut->setPageTitle( $article->mTitle->getPrefixedText() );
 
 		if ( $ext == 'pdf' ) {

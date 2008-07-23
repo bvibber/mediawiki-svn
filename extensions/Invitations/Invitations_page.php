@@ -40,7 +40,7 @@ class SpecialInvitations extends SpecialPage {
 		$sk = $wgUser->getSkin();
 
 		$wgOut->setPageTitle( wfMsg( 'invitations-pagetitle' ) );
-		$wgOut->setRobotPolicy( "noindex,nofollow" );
+		$wgOut->setRobotpolicy( "noindex,nofollow" );
 		$wgOut->setArticleRelated( false );
 		$wgOut->enableClientCache( false );
 
@@ -110,7 +110,7 @@ class SpecialInvitations extends SpecialPage {
 		$friendlyname = wfMsg("invitation-type-$feature");
 
 		$wgOut->setPageTitle( wfMsg( 'invitations-feature-pagetitle', $friendlyname ) );
-		$wgOut->setRobotPolicy( "noindex,nofollow" );
+		$wgOut->setRobotpolicy( "noindex,nofollow" );
 		$wgOut->setArticleRelated( false );
 		$wgOut->enableClientCache( false );
 

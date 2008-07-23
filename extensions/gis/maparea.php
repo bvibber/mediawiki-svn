@@ -46,7 +46,7 @@ class maparea {
 
 		if ($action != 'raw') {
 			/* No reason for robots to follow map links */
-			$wgOut->setRobotPolicy( 'noindex,nofollow' );
+			$wgOut->setRobotpolicy( 'noindex,nofollow' );
 
 			$wgOut->setPagetitle( "Maparea" );
 
