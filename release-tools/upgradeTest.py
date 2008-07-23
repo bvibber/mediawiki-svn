@@ -84,9 +84,9 @@ def runUpdater(dbname, branch):
 
 def svnCheckout(branch):
 	if os.path.exists(branch):
-		runCommand("cd %s/phase3 && svn up" % branch)
+		runCommand("cd %s/phase3 && svn up -q" % branch)
 	else:
-		runCommand("svn co http://svn.wikimedia.org/svnroot/mediawiki/%s/phase3 %s/phase3" % (branch, branch))
+		runCommand("svn co -q http://svn.wikimedia.org/svnroot/mediawiki/%s/phase3 %s/phase3" % (branch, branch))
 
 
 def testUpgrade(dbname, branch):
@@ -108,6 +108,7 @@ def testUpgrade(dbname, branch):
 	
 	#dropDatabase(dbname)
 
+testUpgrade("uptest113", "branches/REL1_13")
 testUpgrade("uptest112", "branches/REL1_12")
 testUpgrade("uptest111", "branches/REL1_11")
 testUpgrade("uptest110", "branches/REL1_10")
