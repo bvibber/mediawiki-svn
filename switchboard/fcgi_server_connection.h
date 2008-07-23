@@ -67,7 +67,6 @@ struct fcgi_server_connection : fcgi_server_connection_base {
 	{
 	}
 
-	//boost::shared_ptr<fcgi_socket<typename Protocol::socket> > &socket();
 	fcgi_socket_basep socket() {
 		return boost::static_pointer_cast<fcgi_socket<typename Protocol::socket> >(socket_);
 	}

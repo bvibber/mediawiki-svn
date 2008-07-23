@@ -49,6 +49,7 @@ struct fcgi_record_writer :
 		boost::function <void(asio::error_code)>);
 	void write_noflush(fcgi::recordp record);
 	void flush(boost::function<void (asio::error_code)>);
+	void close();
 
 private:
 	sbcontext &context_;
@@ -56,6 +57,7 @@ private:
 	std::vector<record_writer_detail::pending_record> inflight_;
 	std::vector<record_writer_detail::pending_record> waiting_;
 	std::vector<asio::mutable_buffer> buffers_;
+	bool alive_;
 
 	void write_done(
 		asio::error_code error,
@@ -76,13 +78,13 @@ private:
 typedef boost::shared_ptr<fcgi_record_writer<asio::ip::tcp::socket> > fcgi_record_writer_tcpp;
 typedef boost::shared_ptr<fcgi_record_writer<asio::local::stream_protocol::socket> > fcgi_record_writer_unixp;
 
-
 template<typename Socket>
 fcgi_record_writer<Socket>::fcgi_record_writer(
 		sbcontext &context,
 		Socket &socket)
 	: context_(context)
 	, socket_(socket)
+	, alive_(true)
 	, logger(log4cxx::Logger::getLogger("switchboard.fcgi_record_writer"))
 {
 	LOG4CXX_DEBUG(logger, boost::format("record_writer@%p: created") % this);
@@ -90,9 +92,19 @@ fcgi_record_writer<Socket>::fcgi_record_writer(
 
 template<typename Socket>
 void
+fcgi_record_writer<Socket>::close()
+{
+	alive_ = false;
+}
+
+template<typename Socket>
+void
 fcgi_record_writer<Socket>::write_noflush(fcgi::recordp record)
 {
 	LOG4CXX_DEBUG(logger, boost::format("record_writer@%p: write_noflush()") % this);
+
+	if (!alive_)
+		return;
 
 	record_writer_detail::pending_record pend = {
 		record,
@@ -112,6 +124,9 @@ fcgi_record_writer<Socket>::write(
 	fcgi::recordp record,
 	boost::function<void (asio::error_code)> func)
 {
+	if (!alive_)
+		return;
+
 	assert(socket_.native() != -1);
 	LOG4CXX_DEBUG(logger, boost::format("record_writer@%p: write()") % this);
 
@@ -124,6 +139,9 @@ template<typename Socket>
 void
 fcgi_record_writer<Socket>::flush(boost::function<void (asio::error_code)> func)
 {
+	if (!alive_)
+		return;
+
 	assert(socket_.native() != -1);
 	if (!inflight_.empty() || waiting_.empty()) {
 		func(asio::error_code());
@@ -159,6 +177,9 @@ fcgi_record_writer<Socket>::write_done(
 	std::size_t bytes,
 	boost::function<void (asio::error_code)> func)
 {
+	if (!alive_)
+		return;
+
 	if (error) {
 		func(error);
 		return;
