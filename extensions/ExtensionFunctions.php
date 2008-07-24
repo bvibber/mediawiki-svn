@@ -79,4 +79,3 @@ if ( !defined( 'MW_SPECIALPAGE_VERSION' ) ) {
 	}
 }
 
-?>
