@@ -190,6 +190,7 @@ $settings = array(
 			'wgCapitalLinks' => 'bool',
 			'wgDefaultLanguageVariant' => 'text',
 			'wgDefaultRobotPolicy' => 'text',
+			'wgExemptFromUserRobotsControl' => 'array',
 			'wgExtraLanguageNames' => 'array',
 			'wgExtraRandompageSQL' => 'text',
 			'wgExtraSubtitle' => 'text',
@@ -723,6 +724,7 @@ $arrayDefs = array(
 	'wgRestrictionLevels' => 'simple',
 	'wgUrlProtocols' => 'simple',
 	'wgContentNamespaces' => 'ns-simple',
+	'wgExemptFromUserRobotsControl' => 'ns-simple',
 	'wgExtraNamespaces' => 'assoc',
 	'wgNamespaceAliases' => 'assoc',
 	'wgNamespaceProtection' => 'ns-array',
@@ -1123,6 +1125,8 @@ $settingsVersion = array(
 	'wgXMLMimeTypes' => array( array( '1.13alpha', '>=' ) ),
 	'wgDirectoryMode' => array( array( '1.13alpha', '>=' ) ),
 	'wgDiff' => array( array( '1.13alpha', '>=' ) ),
+# 1.14	
+	'wgExemptFromUserRobotsControl' => array( array( '1.14alpha', '>=' ) ),
 ## Obsolete
 	'wgProfileSampleRate' => array( array( '1.8alpha', '<' ) ),
 	'wgProfilerType' => array( array( '1.8alpha', '<' ) ),
