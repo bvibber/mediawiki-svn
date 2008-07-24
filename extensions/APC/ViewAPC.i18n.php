@@ -271,6 +271,13 @@ $messages['ar'] = array(
 	'viewapc-usercache-cleared'     => "'''''تم إفراغ اختزان التطبيق.'''''",
 );
 
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Ramsis1978
+ */
+$messages['arz'] = array(
+	'viewapc-display-filename' => 'اسم الملف',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  */
@@ -306,9 +313,13 @@ $messages['bg'] = array(
 	'viewapc-ls-sort-name'          => 'Име',
 	'viewapc-ls-limit-none'         => 'Всички',
 	'viewapc-ls-more'               => "''Има още $1 {{PLURAL:$1|запис|записа}}''",
+	'viewapc-ls-nodata'             => "''Няма данни''",
 	'viewapc-version-info'          => 'Информация за версията',
 	'viewapc-version-changelog'     => 'Дневник на промените',
 	'viewapc-version-failed'        => 'Беше невъзможно да се извлече информация за версията.',
+	'viewapc-version-ok'            => 'В момента използвате последната версия на APC ($1)',
+	'viewapc-version-old'           => 'Използвате остаряла версия на APC ($1).
+По-нова версия ($2) е налична на адрес http://pecl.php.net/package/APC/$2',
 );
 
 /** Czech (Česky)
@@ -1141,6 +1152,13 @@ $messages['io'] = array(
 	'viewapc-ls-header-name'    => 'Nomo',
 	'viewapc-ls-sort-name'      => 'Nomo',
 	'viewapc-ls-limit-none'     => 'Omna',
+);
+
+/** Italian (Italiano)
+ * @author Darth Kule
+ */
+$messages['it'] = array(
+	'viewapc-ls-options-legend' => 'Opzioni',
 );
 
 /** Javanese (Basa Jawa)

@@ -35,9 +35,15 @@ $messages['en'] = array(
 
 /** Afrikaans (Afrikaans)
  * @author Arnobarnard
+ * @author Naudefj
  */
 $messages['af'] = array(
+	'usagestatisticsallusers'      => 'Alle gebruikers',
+	'usagestatisticsinterval'      => 'Interval',
 	'usagestatisticstype'          => 'Tipe',
+	'usagestatisticsstart'         => 'Begindatum',
+	'usagestatisticsend'           => 'Einddatum',
+	'usagestatisticssubmit'        => 'Genereer statistieke',
 	'usagestatisticsintervalday'   => 'Dag',
 	'usagestatisticsintervalweek'  => 'Week',
 	'usagestatisticsintervalmonth' => 'Maand',

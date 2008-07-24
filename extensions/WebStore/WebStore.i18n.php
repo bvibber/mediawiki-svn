@@ -67,9 +67,11 @@ $1\n",
 
 /** Afrikaans (Afrikaans)
  * @author SPQRobin
+ * @author Naudefj
  */
 $messages['af'] = array(
 	'inplace_scaler_not_enough_params' => 'Nie genoeg parameters nie.',
+	'webstore_no_response'             => 'Geen antwoord van die bediener',
 );
 
 /** Arabic (العربية)

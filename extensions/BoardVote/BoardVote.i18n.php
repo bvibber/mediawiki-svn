@@ -3907,7 +3907,7 @@ $messages['myv'] = array(
  * @author Fluence
  */
 $messages['nah'] = array(
-	'boardvote_user'   => 'Tlatēquitiltilīlli',
+	'boardvote_user'   => 'Tlatequitiltilīlli',
 	'boardvote_submit' => 'Cualli',
 );
 

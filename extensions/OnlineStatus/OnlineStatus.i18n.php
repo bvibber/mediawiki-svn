@@ -33,11 +33,15 @@ $messages['af'] = array(
 
 /** Arabic (العربية)
  * @author OsamaK
+ * @author Meno25
  */
 $messages['ar'] = array(
+	'onlinestatus-desc'             => 'يضيف تفضيلا لعرض ما إذا كان المستخدم موجود حاليا أم لا على الويكي',
 	'onlinestatus-subtitle-offline' => 'هذا المستخدم غير متصل حاليا',
 	'onlinestatus-subtitle-online'  => 'هذا المستخدم متصل حاليا',
 	'onlinestatus-toggles-desc'     => 'حالتك:',
+	'onlinestatus-toggles-explain'  => 'هذا يسمح لك بالعرض للمستخدمين الآخرين إذا ما كنت موجودا أم لا بواسطة رؤية صفحة مستخدمك.',
+	'onlinestatus-toggles-show'     => 'اعرض حالتي على الإنترنت على صفحة مستخدمي',
 	'onlinestatus-toggle-offline'   => 'غير متصل',
 	'onlinestatus-toggle-online'    => 'متصل',
 );

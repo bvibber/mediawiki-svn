@@ -1482,6 +1482,13 @@ $wdMessages['is'] = array(
 	'ow_dm_OK'           => 'Í lagi',
 );
 
+/** Italian (Italiano)
+ * @author Darth Kule
+ */
+$wdMessages['it'] = array(
+	'ow_OptionAttributeOptions' => 'Opzioni',
+);
+
 /** Japanese (日本語)
  * @author JtFuruhata
  */
@@ -2038,10 +2045,11 @@ $wdMessages['mwl'] = array(
  * @author Fluence
  */
 $wdMessages['nah'] = array(
-	'ow_save'     => 'Ticpiyāz',
-	'ow_history'  => 'Tlahcuilōlloh',
-	'ow_dm_OK'    => 'Cualli',
-	'ow_Language' => 'Tlahtōlli',
+	'ow_save'                => 'Ticpiyāz',
+	'ow_history'             => 'Tlahcuilōlloh',
+	'ow_dm_OK'               => 'Cualli',
+	'ow_Language'            => 'Tlahtōlli',
+	'ow_LinkAttributeValues' => 'Tzonhuiliztli',
 );
 
 /** Low German (Plattdüütsch)

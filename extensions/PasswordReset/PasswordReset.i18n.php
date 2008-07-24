@@ -61,6 +61,7 @@ $messages['af'] = array(
  */
 $messages['ar'] = array(
 	'passwordreset'                    => 'تمت إعادة ضبط كلمة السر',
+	'passwordreset-desc'               => "يعيد ضبط كلمات سر مستخدم ويكي - يحتاج إلى صلاحيات 'passwordreset'",
 	'passwordreset-invalidusername'    => 'اسم مستخدم غير صحيح',
 	'passwordreset-emptyusername'      => 'اسم مستخدم فارغ',
 	'passwordreset-nopassmatch'        => 'كلمات السر لا تتطابق',
@@ -462,7 +463,7 @@ $messages['mr'] = array(
  * @author Fluence
  */
 $messages['nah'] = array(
-	'passwordreset-username' => 'Tlatēquitiltilīltōcāitl',
+	'passwordreset-username' => 'Tlatequitiltilīltōcāitl',
 );
 
 /** Dutch (Nederlands)

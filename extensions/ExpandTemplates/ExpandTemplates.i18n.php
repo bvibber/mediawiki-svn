@@ -993,7 +993,7 @@ $messages['mt'] = array(
  */
 $messages['nah'] = array(
 	'expand_templates_ok'      => 'Cualli',
-	'expand_templates_preview' => 'Xiquittāz achtochīhualiztli',
+	'expand_templates_preview' => 'Xiquitta achtochīhualiztli',
 );
 
 /** Min Nan Chinese (Bân-lâm-gú) */

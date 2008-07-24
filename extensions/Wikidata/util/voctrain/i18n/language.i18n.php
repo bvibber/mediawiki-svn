@@ -924,9 +924,10 @@ $messages['lb'] = array(
  * @author Fluence
  */
 $messages['nah'] = array(
-	'voctrain_logout'    => 'tiquīzāz',
-	'voctrain_User_name' => 'Tlatēquitiltilīltōcāitl',
-	'voctrain_Language'  => 'Tlahtōlli',
+	'voctrain_Hello_World' => '¡NILTZE HUIQUI!',
+	'voctrain_logout'      => 'tiquīzāz',
+	'voctrain_User_name'   => 'Tlatequitiltilīltōcāitl',
+	'voctrain_Language'    => 'Tlahtōlli',
 );
 
 /** Neapolitan (Nnapulitano)

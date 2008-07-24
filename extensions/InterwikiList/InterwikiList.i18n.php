@@ -16,6 +16,7 @@ $messages['en'] = array (
  */
 $messages['ar'] = array(
 	'interwikilist'          => 'قائمة الإنترويكي',
+	'interwikilist-desc'     => 'يضيف [[Special:Interwikilist|صفحة خاصة]] لرؤية وصلات الإنترويكي المتوفرة',
 	'interwikilist-linkname' => 'وصلة الإنترويكي',
 	'interwikilist-target'   => 'المسار المستهدف',
 );

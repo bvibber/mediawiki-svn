@@ -11,6 +11,13 @@ $messages['en'] = array(
 	'regexfunctions-desc' => 'Regular expression parser functions',
 );
 
+/** Arabic (العربية)
+ * @author Meno25
+ */
+$messages['ar'] = array(
+	'regexfunctions-desc' => 'دوال محلل تعبيرات منتظمة',
+);
+
 /** French (Français)
  * @author Grondin
  */

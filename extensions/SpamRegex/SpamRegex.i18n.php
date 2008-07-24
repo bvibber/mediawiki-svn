@@ -73,6 +73,7 @@ $messages['an'] = array(
  */
 $messages['ar'] = array(
 	'spamregex'                      => 'سبام ريجيكس',
+	'spamregex-desc'                 => '[[Special:Spamregex|فلتر]] العبارات غير المرغوب فيها في الصفحات المعدلة، بالاعتماد على التعبيرات المنتظمة',
 	'spamregex_summary'              => 'النص تم العثور عليه في ملخص الصفحة.',
 	'spamregex-intro'                => 'استخدم هذه الاستمارة لمنع تعبيرات من الحفظ في نص صفحة بكفاءة. لو أن النص يحتوي على التعبير المعطى، لن يتم حفظ التغيير وسيتم عرض تفسير للمستخدم الذي حاول حفظ الصفحة. ينصح بالحذر، التعبيرات لا ينبغي أن تكون قصيرة جدا أو شائعة جدا.',
 	'spamregex-page-title'           => 'منع سبام ريجيكس التعبيرات غير المرغوب فيها',
@@ -365,6 +366,13 @@ $messages['mr'] = array(
 	'spamregex-block-submit'         => 'ही&nbsp;फ्रेज&nbsp;ब्लॉक&nbsp;करा',
 	'spamregex-text'                 => '(मजकूर)',
 	'spamregex-summary-log'          => 'आढावा',
+);
+
+/** Nahuatl (Nahuatl)
+ * @author Fluence
+ */
+$messages['nah'] = array(
+	'spamregex-summary-log' => '(Tlahcuilōltōn)',
 );
 
 /** Low German (Plattdüütsch)

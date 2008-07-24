@@ -47,10 +47,14 @@ Please be patient.',
 
 /** Afrikaans (Afrikaans)
  * @author Arnobarnard
+ * @author Naudefj
  */
 $messages['af'] = array(
-	'youtubeauthsub_title'    => 'Titel',
-	'youtubeauthsub_category' => 'Kategorie',
+	'youtubeauthsub_title'              => 'Titel',
+	'youtubeauthsub_description'        => 'Beskrywing',
+	'youtubeauthsub_keywords'           => 'Sleutelwoorde',
+	'youtubeauthsub_category'           => 'Kategorie',
+	'youtubeauthsub_jserror_nokeywords' => 'Verskaf asseblief een of meer sleutelwoorde.',
 );
 
 /** Aragonese (Aragonés)
@@ -67,6 +71,7 @@ $messages['an'] = array(
 $messages['ar'] = array(
 	'youtubeauthsub'                     => 'رفع فيديو يوتيوب',
 	'youtubeauthsub-desc'                => 'السماح للمستخدمين [[Special:YouTubeAuthSub|بتحميل الفيديو]] مباشرة إلى يوتيوب',
+	'youtubeauthsub_info'                => 'لرفع فيديو إلى يوتيوب لتضمينه في صفحة، املأ المعلومات التالية:',
 	'youtubeauthsub_title'               => 'عنوان',
 	'youtubeauthsub_description'         => 'وصف',
 	'youtubeauthsub_password'            => 'كلمة سر يوتيوب',
@@ -75,10 +80,24 @@ $messages['ar'] = array(
 	'youtubeauthsub_category'            => 'تصنيف',
 	'youtubeauthsub_submit'              => 'تنفيذ',
 	'youtubeauthsub_clickhere'           => 'أنقر هنا لتسجيل الدخول لليوتيوب',
+	'youtubeauthsub_tokenerror'          => 'خطأ توليد توكين السماح، حاول التحديث.',
+	'youtubeauthsub_success'             => "تهانينا!
+الفيديو الخص بك تم رفعه.
+لرؤية الفيديو الخاص بك اضغط <a href='http://www.youtube.com/watch?v=$1'>هنا</a>.
+يوتيوب ربما يحتاج إلى بعض الوقت لمعالجة الفيديو الخاص بك، لذا ربما لا يكون جاهزا بعد.
+
+لتضمين الفيديو الخاص بك في صفحة على الويكي، أدخل الكود التالي في صفحة:
+<code>{{&#35;ev:youtube|$1}}</code>",
 	'youtubeauthsub_authsubinstructions' => 'لرفع فيديو، سيتعين عليك تسجيل الدخول أولا إلى يوتيوب.',
 	'youtubeauthsub_uploadhere'          => 'رفع مقاطع الفيديو الخاصة بك من هنا:',
 	'youtubeauthsub_uploadbutton'        => 'رفع',
+	'youtubeauthsub_code'                => '{{#ev:youtube|$1}}.
+
+هذا الفيديو يمكن رؤيته [http://www.youtube.com/watch?v=$1 هنا]',
 	'youtubeauthsub_summary'             => 'رفع فيديو يوتيوب',
+	'youtubeauthsub_uploading'           => 'الفيديو الخاص بك يتم رفعه.
+من فضلك كن صبورا.',
+	'youtubeauthsub_viewpage'            => 'كخيار آخر، يمكنك رؤية الفيديو الخاص بك [[$1|هنا]].',
 	'youtubeauthsub_jserror_nokeywords'  => 'رجاءً أدخل كلمة مفتاحية أو أكثر.',
 	'youtubeauthsub_jserror_notitle'     => 'رجاءً أدخل عنوانا للفيديو.',
 	'youtubeauthsub_jserror_nodesc'      => 'رجاءً أدخل وصفا للفيديو.',

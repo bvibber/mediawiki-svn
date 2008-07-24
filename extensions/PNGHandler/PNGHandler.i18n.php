@@ -14,6 +14,13 @@ $messages['en'] = array(
 	'pnghandler-desc' => 'Resize PNGs using pngds',
 );
 
+/** Arabic (العربية)
+ * @author Meno25
+ */
+$messages['ar'] = array(
+	'pnghandler-desc' => 'يغير حجم PNG باستخدام pngds',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  */

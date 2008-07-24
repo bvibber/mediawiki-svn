@@ -22,6 +22,7 @@ $messages['en'] = array(
  * @author Meno25
  */
 $messages['ar'] = array(
+	'mediafunctions-desc'          => 'دوال محلل للحصول على معلومات حول ملفات الميديا',
 	'mediafunctions-invalid-title' => '"$1" ليس عنوانا صحيحا',
 	'mediafunctions-not-exist'     => '"$1" غير موجود',
 );

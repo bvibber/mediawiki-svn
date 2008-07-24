@@ -11,6 +11,13 @@ $messages['en'] = array(
 	'tab0-desc' => 'Adds "0" tab, linking to the edit page of the first section of the page',
 );
 
+/** Arabic (العربية)
+ * @author Meno25
+ */
+$messages['ar'] = array(
+	'tab0-desc' => 'يضيف اللسان "0"، موصولا إلى صفحة التعديل لأول قسم من الصفحة',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  */

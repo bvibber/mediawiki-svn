@@ -646,7 +646,7 @@ $messages['ms'] = array(
  */
 $messages['nah'] = array(
 	'countedits'            => 'Tlapōhua tlapatlaliztli',
-	'countedits-username'   => 'Tlatēquitiltilīltōcāitl:',
+	'countedits-username'   => 'Tlatequitiltilīltōcāitl:',
 	'countedits-ok'         => 'Cualli',
 	'countedits-resulttext' => '$1 ōquichīuh $2 tlapatlaliztli',
 );

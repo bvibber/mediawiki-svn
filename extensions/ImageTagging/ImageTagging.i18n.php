@@ -82,6 +82,7 @@ $messages['af'] = array(
  */
 $messages['ar'] = array(
 	'taggedimages'                          => 'صور موسومة',
+	'imagetagging-desc'                     => 'يسمح للمستخدم باختيار مناطق من صورة مضمنة ومصاحبة صفحة مع هذه المنطقة',
 	'imagetagging-addimagetag'              => 'وسم هذه الصورة',
 	'imagetagging-article'                  => 'صفحة:',
 	'imagetagging-articletotag'             => 'صفحة للوسم',
@@ -90,6 +91,7 @@ $messages['ar'] = array(
 	'imagetagging-images'                   => 'صور',
 	'imagetagging-inthisimage'              => 'في هذه الصورة: $1',
 	'imagetagging-logentry'                 => 'أزال الوسم للصفحة [[$1]] بواسطة $2',
+	'imagetagging-log-tagged'               => 'الصورة [[$1|$2]] تم وسمها للصفحة [[$3]] بواسطة $4',
 	'imagetagging-new'                      => '<sup><span style="color:red">جديد!</span></sup>',
 	'imagetagging-removetag'                => 'إزالة وسم',
 	'imagetagging-done-button'              => 'إنتهى الوسم',

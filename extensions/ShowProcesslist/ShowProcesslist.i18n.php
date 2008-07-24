@@ -303,7 +303,7 @@ $messages['ms'] = array(
  * @author Fluence
  */
 $messages['nah'] = array(
-	'showprocesslist-user' => 'Tlatēquitiltilīlli',
+	'showprocesslist-user' => 'Tlatequitiltilīlli',
 );
 
 /** Dutch (Nederlands)

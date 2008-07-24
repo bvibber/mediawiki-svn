@@ -16,6 +16,13 @@ $messages['af'] = array(
 	'woopra-desc' => 'Maak dit moontlik om die [http://www.woopra.com/ Woopra Live Tracking] sagteware saam met MediaWiki te gebruik',
 );
 
+/** Arabic (العربية)
+ * @author Meno25
+ */
+$messages['ar'] = array(
+	'woopra-desc' => 'يسمح ل[http://www.woopra.com/ برنامج وبرا للتتبع الحي] بالعمل لنسخة ميدياويكي الخاصة بك',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  */

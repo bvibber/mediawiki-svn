@@ -314,6 +314,13 @@ $messages['mr'] = array(
 	'block_title_error'            => 'माफ करा, या पानाचे शीर्षक जतन करायला परवानगी नाही.',
 );
 
+/** Nahuatl (Nahuatl)
+ * @author Fluence
+ */
+$messages['nah'] = array(
+	'block_title_error_page_title' => 'Tōcāitl ōmotzacuili',
+);
+
 /** Low German (Plattdüütsch)
  * @author Slomox
  */

@@ -16,6 +16,14 @@ $messages['en'] = array(
 	'semanticgooglemaps-desc'              => 'Allows users to add Google Maps to wiki pages based on structured data',
 );
 
+/** Arabic (العربية)
+ * @author Meno25
+ */
+$messages['ar'] = array(
+	'semanticgooglemaps_lookupcoordinates' => 'ابحث عن الإحداثيات',
+	'semanticgooglemaps-desc'              => 'يسمح للمستخدمين بإضافة خرائط جوجل لصفحات الويكي بالاعتماد على بيانات هيكلية',
+);
+
 /** French (Français)
  * @author Grondin
  */

@@ -157,7 +157,7 @@ $messages['lb'] = array(
  */
 $messages['nah'] = array(
 	'whatismyip'      => 'Tlein cah noIP',
-	'whatismyip-desc' => 'Xiquittāz inīn tlatēquitiltilīlli īIP āxcān īpan [[Nōncuahquīzqui:TleinCahNoIP]]',
+	'whatismyip-desc' => 'Tiquittāz inīn tlatequitiltilīlli āxcān īIP īpan [[Nōncuahquīzqui:TleinCahNoIP]]',
 	'whatismyip-out'  => 'MoIP:',
 );
 

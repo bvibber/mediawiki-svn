@@ -17,6 +17,7 @@ $messages['en'] = array (
  * @author Meno25
  */
 $messages['ar'] = array(
+	'nomoveuserpages-desc'  => 'يمنع المستخدمين من نقل صفحات المستخدمين إلا لو لديهم صلاحية "move-userpages"',
 	'nomoveuserpages-error' => 'نقل صفحات المستخدمين تم تعطيله',
 	'right-move-userpages'  => 'نقل صفحات المستخدمين',
 );

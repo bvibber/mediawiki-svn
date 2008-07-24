@@ -11,6 +11,13 @@ $messages['en'] = array(
 	'gnuplot-desc' => 'Adds the tag <code><nowiki><gnuplot></nowiki></code> to use Gnuplot',
 );
 
+/** Arabic (العربية)
+ * @author Meno25
+ */
+$messages['ar'] = array(
+	'gnuplot-desc' => 'يضيف الوسم <code><nowiki><gnuplot></nowiki></code> لاستخدام جنو بلوت',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  */

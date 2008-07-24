@@ -32,6 +32,7 @@ $messages['af'] = array(
  * @author OsamaK
  */
 $messages['ar'] = array(
+	'piwik-desc'       => 'يدرج سكريبت بيويك إلى صفحات ميدياويكي للتتبع ويضيف [[Special:Piwik|بعض الإحصاءات]]',
 	'piwik'            => 'بيويك',
 	'piwik-lastvisits' => 'آخر زيارات',
 	'piwik-countries'  => 'دول',

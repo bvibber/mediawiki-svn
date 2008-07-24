@@ -16,6 +16,13 @@ $messages['af'] = array(
 	'tooltip-desc' => 'Maak die <nowiki><tooltip></nowiki> en <nowiki>{{#tooltip:}}</nowiki> etikette beskikbaar',
 );
 
+/** Arabic (العربية)
+ * @author Meno25
+ */
+$messages['ar'] = array(
+	'tooltip-desc' => 'يضيف وسم <tt><nowiki><tooltip></nowiki></tt> و <tt><nowiki>{{#tooltip:}}</nowiki></tt>',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  */

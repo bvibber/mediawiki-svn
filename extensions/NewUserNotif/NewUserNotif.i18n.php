@@ -22,8 +22,9 @@ A new user account, $2, has been created on $3 at $4.",
  * @author Meno25
  */
 $messages['ar'] = array(
-	'newusernotifsubj' => 'إخطار مستخدم جديد ل$1',
-	'newusernotifbody' => 'مرحبا يا $1،
+	'newusernotifsubj'  => 'إخطار مستخدم جديد ل$1',
+	'newusernotif-desc' => 'يرسل إخطار بريد إلكتروني عندما يتم إنشاء حسابات مستخدمين',
+	'newusernotifbody'  => 'مرحبا يا $1،
 
 حساب مستخدم جديد، $2، تم إنشاؤه على $3 في $4.',
 );

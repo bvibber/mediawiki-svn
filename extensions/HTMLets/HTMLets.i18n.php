@@ -11,6 +11,13 @@ $messages['en'] = array(
 	'htmlets-desc' => 'Lets you inline HTML snippets from files using the <tt><nowiki><htmlet></nowiki></tt> tag',
 );
 
+/** Arabic (العربية)
+ * @author Meno25
+ */
+$messages['ar'] = array(
+	'htmlets-desc' => 'يسمح لك باستخدام صيغ HTML من الملفات باستخدام وسم <tt><nowiki><htmlet></nowiki></tt>',
+);
+
 /** German (Deutsch)
  * @author Raimond Spekking
  */

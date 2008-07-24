@@ -25,6 +25,7 @@ $messages['en'] = array(
  */
 $messages['ar'] = array(
 	'templatelink'          => 'وصلة قالب',
+	'templatelink_desc'     => 'هذا الامتداد يمكن أن يعرض قالبا كصفحة جديدة',
 	'templatelink_empty'    => 'يجب عليك توفير محدد.',
 	'templatelink_newtitle' => '$1 (مضمنة)',
 );

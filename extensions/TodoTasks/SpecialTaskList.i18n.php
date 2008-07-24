@@ -49,6 +49,8 @@ $messages['af'] = array(
  */
 $messages['ar'] = array(
 	'tasklist'               => 'قائمة المهام',
+	'tasklist-parser-desc'   => 'يضيف دالة محلل <nowiki>{{#todo:}}</nowiki> لتولية المهام',
+	'tasklist-special-desc'  => 'يضيف صفحة خاصة لمراجعة [[Special:TaskList|توليات المهام]]',
 	'tasklistbyproject'      => 'قائمة المهام حسب المشروع',
 	'tasklistunknownproject' => 'مشروع غير معروف',
 	'tasklistunspecuser'     => 'مستخدم غير محدد',

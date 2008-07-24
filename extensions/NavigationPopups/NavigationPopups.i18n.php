@@ -9,6 +9,13 @@ $messages['en'] = array(
 	'navigationpopups-desc' => 'Loads Lupin’s navigation scripts popups in mediawiki',
 );
 
+/** Arabic (العربية)
+ * @author Meno25
+ */
+$messages['ar'] = array(
+	'navigationpopups-desc' => 'يحمل منبثقات سكريبتات إبحار لوبين في ميدياويكي',
+);
+
 /** Catalan (Català)
  * @author SMP
  */

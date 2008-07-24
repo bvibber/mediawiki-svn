@@ -876,7 +876,8 @@ $messages['myv'] = array(
  * @author Fluence
  */
 $messages['nah'] = array(
-	'bookinfo-result-title' => 'Tōcāitl:',
+	'bookinfo-result-title'  => 'Tōcāitl:',
+	'bookinfo-result-author' => 'Chīhualōni:',
 );
 
 /** Low German (Plattdüütsch)

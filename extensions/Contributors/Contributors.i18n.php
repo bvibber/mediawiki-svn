@@ -62,8 +62,8 @@ $messages['ar'] = array(
 	'contributors-target'      => 'العنوان:',
 	'contributors-submit'      => 'اعرض',
 	'contributors-subtitle'    => 'المساهمون الأساسيون للمقالة $1',
-	'contributors-others-long' => 'هناك $1 مساهم آخر لهذه الصفحة.',
-	'contributors-others'      => 'و $1 آخرين',
+	'contributors-others-long' => 'هناك {{PLURAL:$1|مساهم واحد آخر| $1 مساهم آخر}} لهذه الصفحة.',
+	'contributors-others'      => 'و {{PLURAL:$1|واحد آخر|$1 آخرون}}',
 	'contributors-badtitle'    => 'عنوان خاطئ.',
 	'contributors-nosuchpage'  => 'الصفحة $1 غير موجودة.',
 );
@@ -639,7 +639,7 @@ $messages['mr'] = array(
  */
 $messages['nah'] = array(
 	'contributors-target' => 'Tōcāitl:',
-	'contributors-submit' => 'Xiquittāz',
+	'contributors-submit' => 'Tiquittāz',
 );
 
 /** Low German (Plattdüütsch)

@@ -349,6 +349,13 @@ $messages['mr'] = array(
 	'importfreeimages_returntoform'          => "किंवा, तुमच्या शोध निकालांकडे परत जाण्यासाठी <a href='$1'>इथे</a> टिचकी द्या",
 );
 
+/** Nahuatl (Nahuatl)
+ * @author Fluence
+ */
+$messages['nah'] = array(
+	'importfreeimages_owner' => 'Chīhualōni',
+);
+
 /** Nedersaksisch (Nedersaksisch)
  * @author Siebrand
  */

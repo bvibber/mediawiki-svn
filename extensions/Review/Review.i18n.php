@@ -682,7 +682,7 @@ $messages['nah'] = array(
 	'review_version_link'                    => 'Ceppahuiliztli #$1',
 	'review_concerns_page'                   => 'Inīn ceppahuiliztli cah "$1" ītechcopa.',
 	'review_concerns_user'                   => 'Inīn cah tlatēquitiltilīlpal "$1" īceppahuiliztechcopa.',
-	'review_user_reviews'                    => '<small>(ceppahuiliztli tlatēquitiltilīlli)</small>',
+	'review_user_reviews'                    => '<small>(ceppahuiliztli tlatequitiltilīlpal)</small>',
 	'review_has_been_stored'                 => "<span id='review_has_been_stored'>¡Moceppahuiliz ōmopix!</span>",
 	'revision_review_this_page_version_link' => 'Ticceppahuīz inīn zāzanilmachiyōtzin.',
 	'review_page_review'                     => 'Ceppahuiliztli "$1" zāzaniltechcopa',

@@ -75,6 +75,15 @@ $messages['ar'] = array(
 	'createarticle'           => 'إنشاء صفحة',
 );
 
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Ghaly
+ */
+$messages['arz'] = array(
+	'tryexact'       => 'دور على عنوان مطابق',
+	'searchfulltext' => 'دور فى النص كله',
+	'createarticle'  => 'إنشاء صفحة',
+);
+
 /** Assamese (অসমীয়া)
  * @author Rajuonline
  */

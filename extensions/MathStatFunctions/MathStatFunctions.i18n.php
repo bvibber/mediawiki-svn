@@ -18,6 +18,7 @@ $messages['en'] = array(
  * @author Meno25
  */
 $messages['ar'] = array(
+	'msfunc_desc'     => 'مجموعة من الدوال الرياضية والإحصائية',
 	'msfunc_nan'      => 'القيمة الناتجة ليست رقما',
 	'msfunc_inf'      => 'القيمة الناتجة هي المالانهاية',
 	'msfunc_div_zero' => 'القسمة على صفر',

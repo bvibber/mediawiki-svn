@@ -14,6 +14,13 @@ $messages['en'] = array(
 	'preloader-desc' => 'Provides customisable per-namespace boilerplate text for new pages',
 );
 
+/** Arabic (العربية)
+ * @author Meno25
+ */
+$messages['ar'] = array(
+	'preloader-desc' => 'يوفر نص بويلربلات مخصص لكل نطاق للصفحات الجديدة',
+);
+
 /** German (Deutsch)
  * @author Raimond Spekking
  */

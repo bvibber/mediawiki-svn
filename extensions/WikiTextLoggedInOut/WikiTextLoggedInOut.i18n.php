@@ -14,6 +14,13 @@ $messages['af'] = array(
 	'wikitextloggedinout-desc' => "Twee ontlederhoeke <tt>&lt;loggedin&gt;</tt> en <tt>&lt;loggedout&gt;</tt> om te wys of 'n gebruiker aangeteken is al dan nie",
 );
 
+/** Arabic (العربية)
+ * @author Meno25
+ */
+$messages['ar'] = array(
+	'wikitextloggedinout-desc' => 'خطافا محلل، <tt>&lt;loggedin&gt;</tt> و <tt>&lt;loggedout&gt;</tt> لعرض نص مختلف بالاعتماد على حالة دخول المستخدمين',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  */

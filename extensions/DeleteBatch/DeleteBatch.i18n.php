@@ -80,7 +80,14 @@ $messages['bg'] = array(
 	'deletebatch-here'             => '<b>тук</b>',
 	'deletebatch-as'               => 'Стартиране на скрипта като',
 	'deletebatch-or'               => '<b>ИЛИ</b>',
+	'deletebatch-page'             => 'Страници за изтриване',
+	'deletebatch-reason'           => 'Причина за изтриването',
+	'deletebatch-processing'       => 'изтриване на страниците',
+	'deletebatch-from-file'        => 'от списък във файл',
+	'deletebatch-from-form'        => 'от формуляр',
 	'deletebatch-success-subtitle' => 'за $1',
+	'deletebatch-file-bad-format'  => 'Необходимо е файлът да съдържа само текст',
+	'deletebatch-file-missing'     => 'Предоставеният файл не може да бъде прочетен',
 );
 
 /** Esperanto (Esperanto)

@@ -39,6 +39,7 @@ $messages['af'] = array(
  */
 $messages['ar'] = array(
 	'profiling'              => 'معالجة البيانات',
+	'profiling-desc'         => '[[Special:Profiling|صفحة خاصة]] للبحث والتحقق من بيانات الملف',
 	'profiling-process'      => 'معالجة العملية:',
 	'profiling-wildcard'     => 'استخدم كارتا خاصا',
 	'profiling-ok'           => 'موافق',

@@ -343,6 +343,19 @@ $messages['is'] = array(
 	'edituser-dosearch' => 'Leita',
 );
 
+/** Italian (Italiano)
+ * @author Darth Kule
+ */
+$messages['it'] = array(
+	'edituser-desc'     => 'Permette agli utenti con i privilegi necessari di modificare le preferenze di altri utenti',
+	'edituser'          => 'Modifica utente',
+	'edituser-logout'   => 'Effettua logout',
+	'edituser-username' => 'Nome',
+	'edituser-dosearch' => 'Ricerca',
+	'edituser-nouser'   => "L'utente indicato non esiste",
+	'edituser-exempt'   => "L'utente specificato non può essere modificato",
+);
+
 /** Japanese (日本語)
  * @author JtFuruhata
  */

@@ -69,6 +69,7 @@ $messages['af'] = array(
  * @author Meno25
  */
 $messages['ar'] = array(
+	'form-desc'                    => '[[Special:Form|واجهة إستمارة]] لبدء الصفحات الجديدة',
 	'form'                         => 'استمارة',
 	'formnoname'                   => 'لا اسم استمارة',
 	'formnonametext'               => 'يجب أن توفر اسم استمارة، مثل "Special:Form/Nameofform".',

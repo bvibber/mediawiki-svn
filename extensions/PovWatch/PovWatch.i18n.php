@@ -83,6 +83,7 @@ $messages['ar'] = array(
 	'povwatch_subscribe_intro'         => 'أنت غير مشترك في مراقبة بي أو في. اضغط الزر بالأسفل للاشتراك.',
 	'povwatch_subscribe'               => 'اشتراك',
 	'povwatch_added'                   => 'تمت الإضافة',
+	'right-povwatch_admin'             => 'إدارة صلاحيات المستخدم لإضافة الصفحات إلى قوائم مراقبة المستخدمين الآخرين',
 	'right-povwatch_user'              => 'إضافة صفحات إلى قوائم مراقبة مستخدمين آخرين',
 );
 

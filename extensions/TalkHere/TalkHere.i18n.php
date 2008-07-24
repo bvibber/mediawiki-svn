@@ -34,8 +34,10 @@ This site's operators can not take responsibility for the content of such commen
 
 /** Arabic (العربية)
  * @author Meno25
+ * @author Siebrand
  */
 $messages['ar'] = array(
+	'talkhere-desc'        => 'يضع صفحة النقاش في الصفحة',
 	'talkhere-foottext'    => 'التعليقات بالأعلى ربما تكون قد تركها زائرون.
 
 مديرو هذا الموقع لا يمكن أن يتحملوا المسؤولية لمحتوى هذه التعليقات.',

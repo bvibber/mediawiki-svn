@@ -23,6 +23,7 @@ $messages['an'] = array(
  * @author Meno25
  */
 $messages['ar'] = array(
+	'donationform-desc'   => 'يضيف وسم <tt>&lt;donateform&gt;</tt> لدعم التبرعات من خلال باي بال',
 	'donationform-submit' => 'تبرع من خلال باي بال',
 );
 

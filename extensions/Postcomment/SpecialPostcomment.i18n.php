@@ -26,6 +26,7 @@ $messages['en'] = array(
  * @author Meno25
  */
 $messages['ar'] = array(
+	'postcomment_desc'                     => 'يسمح للمستخدمين بإرسال التعليقات مباشرة إلى صفحات النقاش.',
 	'postcomment_discussionprotected'      => 'صفحة النقاش تمت حمايتها من رسائل أخرى.',
 	'postcomment_notloggedin'              => 'أنت غير مسجل الدخول.',
 	'postcomment_youareloggedinas'         => 'أنت مسجل الدخول باسم $1',

@@ -18,8 +18,9 @@ $messages['en'] = array(
  * @author Meno25
  */
 $messages['ar'] = array(
-	'tidy'   => 'ترتيب',
-	'untidy' => 'لا ترتيب',
+	'tidy-desc' => 'يضيف لسان تيدي أو أنتيدي (معتمدا على $wgUseTidy) في الصفحات العادية سامحا بتجاوز إعدادات تيدي HTML العامة لرؤية واحدة',
+	'tidy'      => 'ترتيب',
+	'untidy'    => 'لا ترتيب',
 );
 
 /** German (Deutsch)

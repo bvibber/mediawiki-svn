@@ -531,6 +531,7 @@ $messages['mr'] = array(
  */
 $messages['nah'] = array(
 	'importusers-uploadfile'      => 'Tlahcuilōlquetza',
+	'importusers-log-summary'     => 'Tlahcuilōltōn',
 	'importusers-log-summary-all' => 'Mochīntīn',
 	'importusers-email'           => 'e-mail',
 	'importusers-realname'        => 'melāhuac motōcā',

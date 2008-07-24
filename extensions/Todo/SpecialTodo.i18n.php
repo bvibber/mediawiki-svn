@@ -83,6 +83,7 @@ $messages['af'] = array(
  */
 $messages['ar'] = array(
 	'todo'                  => 'قائمة للعمل',
+	'todo-desc'             => 'امتداد [[Special:Todo|قائمة للعمل]] شخصية تجريبي',
 	'todo-tab'              => 'للعمل',
 	'todo-new-queue'        => 'جديد',
 	'todo-mail-subject'     => 'المدخلة المكملة في قائمة $1 للعمل',

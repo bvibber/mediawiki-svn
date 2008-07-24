@@ -16,7 +16,8 @@ $messages['en'] = array(
  * @author Meno25
  */
 $messages['ar'] = array(
-	'tog-microid' => 'انشر <a href="http://microid.org/">هوية مصغرة</a> لتأكيد الحساب مع الخدمات الخارجية',
+	'microid-desc' => 'يضيف [http://www.microid.org/ هوية مصغرة] لصفحات المستخدمين لتأكيد الحساب مع خدمات خارجية',
+	'tog-microid'  => 'انشر <a href="http://microid.org/">هوية مصغرة</a> لتأكيد الحساب مع الخدمات الخارجية',
 );
 
 /** Bulgarian (Български)

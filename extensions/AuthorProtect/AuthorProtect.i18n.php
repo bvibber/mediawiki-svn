@@ -27,9 +27,22 @@ $messages['en'] = array(
 
 /** Afrikaans (Afrikaans)
  * @author Arnobarnard
+ * @author Naudefj
  */
 $messages['af'] = array(
-	'authorprotect-reason' => 'Rede',
+	'authorprotect'            => 'Beskerm bladsy teen nie-outeurs',
+	'authorprotect-desc'       => "Laat die outeur van 'n bladsy toe om dit te beskerm teen ander gebruikers",
+	'authorprotect-notauthor'  => 'U is nie die outeur van die bladsy nie',
+	'authorprotect-confirm'    => 'Verander beskermingsvlak',
+	'authorprotect-edit'       => 'Beperk wysigings tot outeurs',
+	'authorprotect-move'       => 'Beperk skuif (hernoem) tot outeur',
+	'authorprotect-expiry'     => 'Vervaltyd',
+	'authorprotect-reason'     => 'Rede',
+	'authorprotect-intro'      => 'Gebruik die vorm om die blad te beskerm teen ander gebruikers',
+	'authorprotect-success'    => 'Beskerming suksesvol!',
+	'authorprotect-failure'    => 'Beskerming het nie geslaag nie',
+	'protect-level-author'     => 'Beskerm teen nie-outeurs',
+	'restriction-level-author' => 'Kan slegs deur outeurs gewysig word',
 );
 
 /** Arabic (العربية)

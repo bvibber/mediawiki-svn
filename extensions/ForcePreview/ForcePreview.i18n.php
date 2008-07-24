@@ -94,6 +94,15 @@ $messages['hsb'] = array(
 	'forcepreview-desc' => 'Přehlad za njewoprawnjenych wužiwarjow wunuzować',
 );
 
+/** Italian (Italiano)
+ * @author Darth Kule
+ */
+$messages['it'] = array(
+	'forcepreview'             => "Salva la pagina (usa prima l'anteprima)",
+	'forcepreview-desc'        => "Forza l'uso dell'anteprima per gli utenti che non hanno privilegi sufficienti",
+	'right-forcepreviewexempt' => 'Può salvare senza usare Visualizza anteprima',
+);
+
 /** Javanese (Basa Jawa)
  * @author Meursault2004
  */

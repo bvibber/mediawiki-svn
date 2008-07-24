@@ -783,7 +783,8 @@ $messages['is'] = array(
  * @author Darth Kule
  */
 $messages['it'] = array(
-	'sign-viewfield-ip' => 'Indirizzo IP',
+	'sign-viewfield-ip'      => 'Indirizzo IP',
+	'sign-viewfield-options' => 'Opzioni',
 );
 
 /** Javanese (Basa Jawa)

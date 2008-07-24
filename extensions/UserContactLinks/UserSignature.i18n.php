@@ -31,6 +31,7 @@ $messages['af'] = array(
  */
 $messages['ar'] = array(
 	'usercontactlink-baduser' => 'اسم مستخدم غير صحيح',
+	'usercontactlink-desc'    => 'يوفر القدرة على تبسيط وإضافة أسماء المستخدمين الآخرين باستخدام صياغة ^^^user^^^',
 );
 
 /** Kotava (Kotava)
