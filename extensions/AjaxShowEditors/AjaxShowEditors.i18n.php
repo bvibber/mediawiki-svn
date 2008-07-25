@@ -339,6 +339,19 @@ $messages['hy'] = array(
 	'ajax-se-idling'  => '($1 վ առաջ)',
 );
 
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'ajax-se-desc'             => 'Monstra al usatores modificante qui modifica al momento le mesme pagina',
+	'ajax-se-title'            => 'Al momento modifica:',
+	'ajax-se-pending'          => 'pendente refrescamento… (clicca iste quadro o comencia a modificar)',
+	'ajax-se-idling'           => '($1s retro)',
+	'ajax-se-pagedoesnotexist' => 'pagina non existe',
+	'ajax-se-userinvalid'      => 'Error: usator invalide',
+	'ajax-se-usernotfound'     => 'Error: usator non trovate',
+);
+
 /** Indonesian (Bahasa Indonesia) */
 $messages['id'] = array(
 	'ajax-se-title'   => 'Sedang menyunting:',
@@ -508,6 +521,14 @@ $messages['mr'] = array(
 	'ajax-se-pagedoesnotexist' => 'पान अस्तित्वात नाही',
 	'ajax-se-userinvalid'      => 'त्रूटी: अयोग्य सदस्य',
 	'ajax-se-usernotfound'     => 'त्रूटी:सदस्य मिळाला नाही',
+);
+
+/** Malay (Bahasa Melayu)
+ * @author Kurniasan
+ */
+$messages['ms'] = array(
+	'ajax-se-desc'  => 'Menunjukkan pengguna menyunting yang menyunting laman yang sama',
+	'ajax-se-title' => 'Sedang menyunting:',
 );
 
 /** Nahuatl (Nahuatl)

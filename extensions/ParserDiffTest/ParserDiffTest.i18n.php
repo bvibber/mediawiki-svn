@@ -767,7 +767,8 @@ $messages['ms'] = array(
  * @author Fluence
  */
 $messages['nah'] = array(
-	'pdtest_ok' => 'Cualli',
+	'pdtest_ok'   => 'Cualli',
+	'pdtest_diff' => 'Ahneneuhquiliztli',
 );
 
 /** Low German (Plattdüütsch)
@@ -977,6 +978,24 @@ $messages['sk'] = array(
 	'pdtest_diff'         => 'Rozdiely',
 	'pdtest_side_by_side' => 'Porovnanie výstupu',
 	'pdt_comparing_page'  => 'Porovnáva sa výstup syntaktického analyzátora z [[$1]]',
+);
+
+/** Serbian Cyrillic ekavian (ћирилица)
+ * @author Millosh
+ */
+$messages['sr-ec'] = array(
+	'parserdifftest'      => 'Проба diff-а парсера.',
+	'pdtest-desc'         => '[[Special:ParserDiffTest|Посебна страна]] за упоређивање излаза два различита парсера.',
+	'pdtest_no_target'    => 'Циљ није одређен.',
+	'pdtest_page_missing' => 'Одређена страна није пронађена у бази.',
+	'pdtest_no_changes'   => 'Нема измена.',
+	'pdtest_title'        => 'Наслов контекста:',
+	'pdtest_text'         => 'Текст уноса:',
+	'pdtest_ok'           => 'У реду',
+	'pdtest_get_text'     => 'Преузми текст стране.',
+	'pdtest_diff'         => 'разлике',
+	'pdtest_side_by_side' => 'поређење излаза',
+	'pdt_comparing_page'  => 'поређење излаза парсера из [[$1]]',
 );
 
 /** Seeltersk (Seeltersk)

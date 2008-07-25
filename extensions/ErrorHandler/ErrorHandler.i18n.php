@@ -134,6 +134,7 @@ $messages['lb'] = array(
 	'errorhandler-error-warning'       => 'Warnung',
 	'errorhandler-error-parse'         => 'Parser-Feeler',
 	'errorhandler-error-notice'        => 'Notiz',
+	'errorhandler-error-user-error'    => 'Feeler (vum Benotzer)',
 	'errorhandler-error-user-warning'  => 'Benotzerwarnung',
 	'errorhandler-msg-text'            => '$1 : $2 a(n) $3 (Linn $4)',
 	'errorhandler-trace-line-internal' => '[intern Fonctioun]: $1',

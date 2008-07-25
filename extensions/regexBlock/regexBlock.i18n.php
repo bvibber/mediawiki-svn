@@ -254,6 +254,7 @@ $messages['eo'] = array(
 	'regexblock-form-username'       => 'IP Adreso aŭ salutnomo:',
 	'regexblock-form-reason'         => 'Kialo:',
 	'regexblock-form-expiry'         => 'Findato:',
+	'regexblock-form-submit'         => 'Forbari ĉi tiun uzanton',
 	'regexblock-block-success'       => 'Forbaro sukcesis',
 	'regexblock-already-blocked'     => '$1 jam estas forbarita.',
 	'regexblock-stats-username'      => 'Por $1',
@@ -812,8 +813,9 @@ $messages['mr'] = array(
  * @author Fluence
  */
 $messages['nah'] = array(
-	'regexblock-view-all' => 'Mochīntīn',
-	'regexblock-view-go'  => 'Yāuh',
+	'regexblock-stats-username' => '$1 ītechcopa',
+	'regexblock-view-all'       => 'Mochīntīn',
+	'regexblock-view-go'        => 'Yāuh',
 );
 
 /** Dutch (Nederlands)

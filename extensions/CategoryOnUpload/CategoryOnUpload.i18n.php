@@ -207,6 +207,14 @@ $messages['sk'] = array(
 	'categoryonupload-label' => 'Kategória:',
 );
 
+/** Sundanese (Basa Sunda)
+ * @author Irwangatot
+ */
+$messages['su'] = array(
+	'categoryonupload-desc'  => 'Mintonkeun pilihan kategori sabot saurang pamaké baris Muatkeun hiji koropak',
+	'categoryonupload-label' => 'Kategori:',
+);
+
 /** Swedish (Svenska)
  * @author M.M.S.
  */

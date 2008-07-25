@@ -424,9 +424,11 @@ $messages['gl'] = array(
 	'createarticle'           => 'Crear páxina',
 );
 
-/** Ancient Greek (Ἀρχαία ἑλληνικὴ) */
+/** Ancient Greek (Ἀρχαία ἑλληνικὴ)
+ * @author Omnipaedista
+ */
 $messages['grc'] = array(
-	'createarticle' => 'Δέλτον ποιῆσαι',
+	'createarticle' => 'Δέλτον δημιουργήσειν',
 );
 
 /** Gujarati (ગુજરાતી)

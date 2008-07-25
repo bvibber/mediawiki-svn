@@ -422,6 +422,13 @@ $messages['is'] = array(
 	'youtubeauthsub_uploadbutton' => 'Hlaða inn',
 );
 
+/** Italian (Italiano)
+ * @author Melos
+ */
+$messages['it'] = array(
+	'youtubeauthsub_title' => 'Titolo',
+);
+
 /** Javanese (Basa Jawa)
  * @author Meursault2004
  */

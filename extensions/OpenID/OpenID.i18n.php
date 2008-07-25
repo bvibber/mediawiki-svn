@@ -289,7 +289,14 @@ $messages['el'] = array(
  * @author Yekrats
  */
 $messages['eo'] = array(
+	'openidlogin'              => 'Ensaluti kun OpenID',
+	'openidfinish'             => 'Elsaluti kun OpenID',
+	'openidserver'             => 'Servilo OpenID',
 	'openidconvert'            => 'OpenID konvertilo',
+	'openidpermission'         => 'OpenID rajt-eraro',
+	'openidpermissiontext'     => 'La OpenID kiun vi provizis ne estas permesita ensaluti ĉi tiun servilon.',
+	'openidusernameprefix'     => 'OpenID-Uzanto',
+	'openidnopolicy'           => 'Retejo ne specifigis regularon pri privateco.',
 	'openidoptional'           => 'Nedeviga',
 	'openidrequired'           => 'Deviga',
 	'openidnickname'           => 'Kaŝnomo',
@@ -299,6 +306,7 @@ $messages['eo'] = array(
 	'openidchooseinstructions' => 'Ĉiuj uzantoj bezonas kromnomo;
 vi povas selekti el unu la jenaj opcioj.',
 	'openidchoosefull'         => 'Via plena nomo ($1)',
+	'openidchooseurl'          => 'Nomo eltenita de via OpenID ($1)',
 	'openidchooseauto'         => 'Automate generita nomo ($1)',
 	'openidchoosemanual'       => 'Nomo de via elekto:',
 	'openidchoosepassword'     => 'pasvorto:',

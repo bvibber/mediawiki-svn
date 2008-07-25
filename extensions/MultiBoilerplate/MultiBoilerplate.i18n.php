@@ -47,6 +47,7 @@ $messages['bg'] = array(
  * @author Yekrats
  */
 $messages['eo'] = array(
+	'multiboilerplate-legend' => 'Selekti norman tekston',
 	'multiboilerplate-submit' => 'Alŝuti',
 );
 

@@ -2243,9 +2243,17 @@ $messages['sr'] = array(
 	'oversight-view'              => 'детаљи',
 );
 
-/** Serbian Cyrillic ekavian (ћирилица) */
+/** Serbian Cyrillic ekavian (ћирилица)
+ * @author Millosh
+ */
 $messages['sr-ec'] = array(
 	'hiderevision'                => 'Трајно сакриј ревизије',
+	'hiderevision-desc'           => 'Сакриј појединачне верзије од свих сарадника због легалних разлога и сл.',
+	'group-oversight'             => 'оверсајтови',
+	'group-oversight-member'      => 'оверсајт',
+	'grouppage-oversight'         => '{{ns:project}}:Оверсајт',
+	'right-oversight'             => 'Прегледај претходно сакривене верзије.',
+	'right-hiderevision'          => 'Преглед и враћање измена сакривених од сисопа.',
 	'hiderevision-prompt'         => 'Број ревизије за уклањање:',
 	'hiderevision-continue'       => 'Настави',
 	'hiderevision-text'           => "Ова опција треба да се користи '''само''' у следећим случајевима:
@@ -2268,9 +2276,16 @@ $messages['sr-ec'] = array(
 	'hiderevision-error-current'  => 'Не могу да обришем најскорију измену на страници. Прво вратите измену.',
 	'hiderevision-error-delete'   => 'Не могу да архивирам; да ли је претходно обрисана?',
 	'hiderevision-archive-status' => 'Обрисана ревизија из $1: $2',
+	'oversight-nodiff'            => 'Нисам у могућности да пратим измене пошто не тренутно не постоје претходне верзије стране. Могући разлози:
+* страна је обрисана или
+* сакривена верзија је била прва верзија.',
 	'oversight-log-hiderev'       => 'уклоњена измена из $1',
 	'oversight'                   => 'Пропуст',
 	'oversight-view'              => 'детаљи',
+	'oversight-difference'        => '(Разлике између претходних верзија које су остале.)',
+	'oversight-prev'              => 'Последња претходна верзија.',
+	'oversight-hidden'            => 'Сакривене верзије.',
+	'oversight-header'            => 'Испод се налази списак верзија претходно сакривених од јавности. Ако откријеш ове податке можеш заувек изгубити оверсајт права.',
 );
 
 /** latinica (latinica)

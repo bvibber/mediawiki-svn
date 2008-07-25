@@ -235,6 +235,14 @@ $messages['sk'] = array(
 	'nstab-comments'    => 'Komentár',
 );
 
+/** Sundanese (Basa Sunda)
+ * @author Irwangatot
+ */
+$messages['su'] = array(
+	'commentpages-desc' => 'Koméntar kaca pikeun ngaranspasi utama',
+	'nstab-comments'    => 'Koméntar',
+);
+
 /** Swedish (Svenska)
  * @author Lejonel
  */

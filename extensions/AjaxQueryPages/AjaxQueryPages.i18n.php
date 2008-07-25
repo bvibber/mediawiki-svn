@@ -95,6 +95,13 @@ $messages['hsb'] = array(
 	'ajax-qp-desc' => 'AJAX naprašowanskim stronam kaž na př. [[Special:Shortpages]] přidać',
 );
 
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'ajax-qp-desc' => 'Adde un poco de AJAX a paginas de consulta como [[Special:Shortpages]]',
+);
+
 /** Italian (Italiano)
  * @author Pietrodn
  */

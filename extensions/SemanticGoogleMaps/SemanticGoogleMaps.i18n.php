@@ -24,6 +24,14 @@ $messages['ar'] = array(
 	'semanticgooglemaps-desc'              => 'يسمح للمستخدمين بإضافة خرائط جوجل لصفحات الويكي بالاعتماد على بيانات هيكلية',
 );
 
+/** German (Deutsch)
+ * @author DaSch
+ */
+$messages['de'] = array(
+	'semanticgooglemaps_lookupcoordinates' => 'Koordinaten nachschlagen',
+	'semanticgooglemaps-desc'              => 'Bietet die Möglichkeit auf Basis von strukturierten Daten Google Maps in das Wiki einzubinden',
+);
+
 /** French (Français)
  * @author Grondin
  */

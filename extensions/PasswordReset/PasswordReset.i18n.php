@@ -163,6 +163,7 @@ $messages['eo'] = array(
 	'passwordreset-confirmpass'     => 'Konfirmu Pasvorton',
 	'passwordreset-submit'          => 'Refari pasvorton',
 	'passwordreset-success'         => 'Pasvorto estis restarigita por user_id: $1',
+	'passwordreset-disableuser'     => 'Ĉu ja malebligu konton de uzanto?',
 	'passwordreset-disablesuccess'  => 'Konto de uzanto estis malebligita (uzanto-identigo: $1)',
 	'disabledusers'                 => 'Malebligitaj uzantoj',
 );

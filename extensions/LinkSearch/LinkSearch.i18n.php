@@ -851,6 +851,13 @@ Protokol yang disokong: <tt>$1</tt>',
 	'linksearch-error' => 'Kad bebas hanya boleh digunakan pada permulaan nama hos.',
 );
 
+/** Nahuatl (Nahuatl)
+ * @author Fluence
+ */
+$messages['nah'] = array(
+	'linksearch-ns' => 'Tōcātzin:',
+);
+
 /** Min Nan Chinese (Bân-lâm-gú) */
 $messages['nan'] = array(
 	'linksearch' => 'Chhiau-chhoē chām-goā liân-kiat',

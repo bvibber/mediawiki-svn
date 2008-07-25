@@ -461,7 +461,7 @@ $messages['ga'] = array(
  * @author Xosé
  */
 $messages['gl'] = array(
-	'sitematrix'           => 'Listaxe dos wikis de Wikimedia',
+	'sitematrix'           => 'Lista dos wikis da Wikimedia',
 	'sitematrix-summary'   => 'Esta páxina especial ten na súa listaxe todos os wikis Wikimedia.',
 	'sitematrix-desc'      => 'Mostra unha [[Special:SiteMatrix|listaxe dos wikis de Wikimedia]]',
 	'sitematrix-language'  => 'Linguaxe',

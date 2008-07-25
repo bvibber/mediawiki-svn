@@ -86,6 +86,13 @@ $messages['he'] = array(
 	'antibot-desc' => 'מערכת פשוטה לבדיקת בוטים של ספאם',
 );
 
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'antibot-desc' => 'Armatura simple pro verification contra spam automatic e pro cargas utile de activation',
+);
+
 /** Indonesian (Bahasa Indonesia)
  * @author Rex
  */

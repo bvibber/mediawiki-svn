@@ -451,6 +451,15 @@ $messages['sk'] = array(
 	'assert_edit_message' => 'Uvedený predpoklad ($1) zlyhal.',
 );
 
+/** Serbian Cyrillic ekavian (ћирилица)
+ * @author Millosh
+ */
+$messages['sr-ec'] = array(
+	'assert_edit_title'   => 'Потврда није успела.',
+	'assert_edit_desc'    => 'Додаје потврде измена код коришћења ботова.',
+	'assert_edit_message' => 'Одређена тврдња ($1) није успела.',
+);
+
 /** Seeltersk (Seeltersk)
  * @author Pyt
  */

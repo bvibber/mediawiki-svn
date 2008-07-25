@@ -207,6 +207,13 @@ $messages['ms'] = array(
 	'mwsearch-desc' => 'Pemalam MWSearch',
 );
 
+/** Nahuatl (Nahuatl)
+ * @author Fluence
+ */
+$messages['nah'] = array(
+	'mwsearch-desc' => 'HMTlatēmoaliztli',
+);
+
 /** Low German (Plattdüütsch)
  * @author Slomox
  */

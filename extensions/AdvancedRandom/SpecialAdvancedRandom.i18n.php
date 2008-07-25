@@ -168,6 +168,14 @@ $messages['hu'] = array(
 	'advancedrandom-desc' => 'Megjelenít egy véletlen lapot, amely vagy amelynek vitalapja egy megadott oldalra, például a [[Special:AdvancedRandom/Template:Kiemelt/Vita]] mutat egy véletlen kiemelt szócikket vagy a [[Special:AdvancedRandom/Template:GFDL/Kép]] mutat egy véletlen GFDL fájlt.',
 );
 
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'advancedrandom'      => 'Accesso aleatori avantiate',
+	'advancedrandom-desc' => 'Obtene un pagina aleatori a partir de un pagina de discussion o ligamines de paginas de subjectos verso un pagina date. Pote esser usate como [[Special:AdvancedRandom/Template:Featured/Talk]] pro obtener un articulo eminente aleatori o como [[Special:AdvancedRandom/Template:GFDL/Image]] pro obtener un file aleatori sub licentia GFDL',
+);
+
 /** Italian (Italiano)
  * @author Pietrodn
  */

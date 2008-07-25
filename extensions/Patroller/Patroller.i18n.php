@@ -187,10 +187,13 @@ $messages['el'] = array(
  * @author Yekrats
  */
 $messages['eo'] = array(
+	'patrol'                 => 'Patroli redaktojn',
 	'patrol-revert'          => 'Restarigi',
 	'patrol-revert-reason'   => 'Kialo:',
 	'patrol-skip'            => 'Forlasi',
 	'patrol-reverting'       => 'Restarigante: $1',
+	'patrol-endorsed-ok'     => 'La redakto estis markita kiel patrolita.',
+	'patrol-endorsed-failed' => 'Ĉi tiu redakto ne povis esti markita kiel patrolita.',
 	'patrol-reverted-ok'     => 'La redakto estis restarigita.',
 	'patrol-reverted-failed' => 'Ne eblis restarigi la redakton.',
 	'patrol-skipped-ok'      => 'Ignorante redakton.',
@@ -201,6 +204,7 @@ $messages['eo'] = array(
 	'patrol-resume'          => 'Klaku ĉi tie por reaktivigi.',
 	'group-patroller'        => 'Patrolantoj',
 	'group-patroller-member' => 'Patrolanto',
+	'grouppage-patroller'    => '{{ns:project}}:Patrolanto',
 );
 
 /** Spanish (Español)

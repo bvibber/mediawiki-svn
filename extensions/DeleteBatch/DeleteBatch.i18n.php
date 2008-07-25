@@ -242,7 +242,8 @@ $messages['lb'] = array(
  * @author Fluence
  */
 $messages['nah'] = array(
-	'deletebatch-button' => 'Ticpolōz',
+	'deletebatch-button'           => 'Ticpolōz',
+	'deletebatch-success-subtitle' => '$1 ītechcopa',
 );
 
 /** Dutch (Nederlands)

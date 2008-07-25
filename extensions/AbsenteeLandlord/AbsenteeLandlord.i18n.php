@@ -241,6 +241,14 @@ $messages['mr'] = array(
 	'absenteelandlord-desc'   => 'प्रबंधकांकडून काही काळासाठी कुठलीही क्रिया न झाल्यान विदागाराला आपोआप कुलुप घालतो',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Kurniasan
+ */
+$messages['ms'] = array(
+	'absenteelandlord-reason' => 'Pengkalan data telah dikunci secara automatik disebabkan oleh ketidakgiatan para sysop.',
+	'absenteelandlord-desc'   => 'Swa-kunci pengkalan data wiki sekiranya kesemua sysop tidak aktif sejak sekian lama',
+);
+
 /** Maltese (Malti)
  * @author Giangian15
  */

@@ -142,6 +142,13 @@ $messages['mr'] = array(
 	'purge-desc' => 'सर्व साधारण पानांवर एक स्वच्छतेचा टॅब वाढवितो, व अनामिक सदस्यांसाठी पर्ज तपासणी वगळून लवकर सय स्वच्छ करण्याची सुविधा देतो',
 );
 
+/** Nahuatl (Nahuatl)
+ * @author Fluence
+ */
+$messages['nah'] = array(
+	'purge' => 'ticchipāhuāz',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  * @author SPQRobin

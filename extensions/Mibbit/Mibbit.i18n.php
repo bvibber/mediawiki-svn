@@ -118,7 +118,8 @@ Anonymen Benutzern wird ein Nickname zugewiesen, dieser kann jedoch geändert we
  * @author Yekrats
  */
 $messages['eo'] = array(
-	'mibbit' => 'Mibbit Babililo',
+	'mibbit'       => 'Mibbit Babililo',
+	'right-mibbit' => 'Rajtigita por uzi babilejon Mibbit',
 );
 
 /** French (Français)

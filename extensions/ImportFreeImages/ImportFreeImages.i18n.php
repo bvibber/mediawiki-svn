@@ -353,7 +353,14 @@ $messages['mr'] = array(
  * @author Fluence
  */
 $messages['nah'] = array(
-	'importfreeimages_owner' => 'Chīhualōni',
+	'importfreeimages'                       => 'Tiquincōhuāz yōllōxoxouhqui īxiptli',
+	'importfreeimages-desc'                  => 'Tihuelīti tiquincōhua [[Special:ImportFreeImages|ōnahuatīli īxiptli]] īhuīcpa [http://www.flickr.com flickr].',
+	'importfreeimages_description'           => 'Tihuelīti inīn zāzanilca tiquincōhua īxiptli īhuīcpa flickr īhuīc mohuiqui.',
+	'importfreeimages_owner'                 => 'Chīhualōni',
+	'importfreeimages_importthis'            => 'ticcōhuāz inīn',
+	'importfreeimages_next'                  => 'Niman $1',
+	'importfreeimages_promptuserforfilename' => 'Timitztlātlauhtia xiquihcuiloa cē tōcāitl:',
+	'importfreeimages_returntoform'          => "Nozo, xiclica <a href='$1'>nicān</a>; ticcuepāz tlatēmoalizhuīc",
 );
 
 /** Nedersaksisch (Nedersaksisch)
