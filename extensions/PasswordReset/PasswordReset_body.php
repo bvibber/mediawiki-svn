@@ -13,6 +13,7 @@
  */
 class PasswordReset extends SpecialPage {
 	function PasswordReset() {
+		wfLoadExtensionMessages('PasswordReset');
 		SpecialPage::SpecialPage( "PasswordReset", "passwordreset" );
 	}
 
@@ -21,8 +22,8 @@ class PasswordReset extends SpecialPage {
 
 		$this->setHeaders();
 
-		wfLoadExtensionMessages('PasswordReset');
-		if ( !$wgUser->isAllowed( 'passwordreset' ) ) {
+		
+		if ( !$wgUser->isAllowed( 'passwordreset' ) || !$wgUser->isAllowed( 'passwordresetself' ) ) {
 			$wgOut->permissionRequired( 'passwordreset' );
 			return;
 		}
