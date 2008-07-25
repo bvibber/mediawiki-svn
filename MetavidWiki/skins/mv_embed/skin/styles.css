@@ -1,10 +1,10 @@
 /*Video player*/
 .videoPlayer {
-	width: 100%;
+/*	width: 100%;*/
 	color: white;
 }
 .videoPlayerSmall {
-	width: 439px;
+/*	width: 439px;*/
 	height: 334px;
 }
 .videoPlayer .video {
@@ -19,7 +19,7 @@
 	background: #454545;
 }
 .videoPlayer .controlInnerSmall {
-	width: 430px;
+/*	width: 430px;*/
 	height: 29px;
 	float: left;
 	display: inline;
@@ -27,7 +27,7 @@
 .videoPlayer .controls span.border_left {background: url(images/player_bottom_left.png) 0 0 no-repeat; width: 4px; height: 29px; float: left; display: inline;}
 .videoPlayer .controls span.border_right {background: url(images/player_bottom_right.png) 0 0 no-repeat; width: 4px; height: 29px; float: right; display: inline;}
 
-.videoPlayer .play_pause_button {
+.videoPlayer .pause_button {
 	width: 24px;
 	height: 29px;
 	padding: 0 3px;
@@ -38,7 +38,24 @@
     background: url(images/player_button_pause.png) 2px 0 no-repeat;
 }
 
-.play_pause_button a {
+.videoPlayer .play_button {
+	width: 24px;
+	height: 29px;
+	padding: 0 3px;
+	border-right: 1px solid #8a8a8a;
+	cursor: pointer;
+	float: left;
+	display: inline;
+    background: url(images/player_button_play.png) 2px 0 no-repeat;
+}
+
+.play_button a {
+display: block;
+height: 100%;
+width: 100%;
+}
+
+.pause_button a {
 display: block;
 height: 100%;
 width: 100%;
@@ -102,7 +119,7 @@ width: 100%;
 .videoPlayer .seeker {
 	float: left;
 	display: inline;
-	width: 55%;
+/*	width: 55%;*/
 	margin: 0 0px 0 0;
 	height: 29px;
 }
@@ -118,8 +135,9 @@ width: 100%;
 
 .videoPlayer .seeker .seeker_bar {
 	float: left;
-	display: inline;
-	width: 66%;
+	display: block;
+/*	width: 66%;*/
+    width: 120px;
 	height: 12px;
 	background: url(images/player_seek_bg_loaded.png) 0 1px repeat-x;
 	margin: 9px 0 0 10px;

@@ -1143,6 +1143,7 @@ mediaSource.prototype =
     /** Duration of the requested segment (NaN if not known) */
     duration:NaN,
     is_playable:null,
+    upddate_interval:null,
 
     id:null,    
     start_ntp:null,
@@ -1923,25 +1924,33 @@ embedVideo.prototype = {
 		js_log('base play or pause');
 		var id = (this.pc!=null)?this.pc.pp.id:this.id;
 		
-		var play_or_pause = document.getElementById('mv_play_or_pause_'+id);	
+		var play_or_pause = document.getElementById('mv_play_or_pause_'+id);
+        var play_pause_button = document.getElementById('mv_play_pause_button_'+id);
+        
 		//check if we are in a playlist: 
 		
-	    if(play_or_pause){
+	    if(play_or_pause || play_pause_button){
 	    	//check state and set play or pause
 	    	if(this.paused){
 	    		js_log('do play');
 				//(paused) do play
 				this.play();
 				this.paused=false;
-				play_or_pause.innerHTML = getTransparentPng(new Object ({id:'mv_pop_btn_'+id,style:'float:left',width:'27', height:'27', border:"0", 
-						src:mv_embed_path+'images/vid_pause_sm.png' }));
+                if(play_or_pause)
+                    play_or_pause.innerHTML = getTransparentPng(new Object ({id:'mv_pop_btn_'+id,style:'float:left',width:'27', height:'27', border:"0", 
+                            src:mv_embed_path+'images/vid_pause_sm.png' }));
+                if(play_pause_button)
+                    play_pause_button.className='pause_button';
 			}else{
 				js_log('do pause');
 				//(playing) do pause
 				this.pause();
 				this.paused=true;
-				play_or_pause.innerHTML = getTransparentPng(new Object ({id:'mv_pop_btn_'+id,style:'float:left',width:'27', height:'27', border:"0", 
-						src:mv_embed_path+'images/vid_play_sm.png' }));
+                if(play_or_pause)
+                    play_or_pause.innerHTML = getTransparentPng(new Object ({id:'mv_pop_btn_'+id,style:'float:left',width:'27', height:'27', border:"0", 
+                            src:mv_embed_path+'images/vid_play_sm.png' }));
+                if(play_pause_button)
+                    play_pause_button.className='play_button';                
 			}
 	    }
 	},
@@ -1976,6 +1985,11 @@ embedVideo.prototype = {
 			this.innerHTML = this.getThumbnailHTML();
 			this.thumbnail_disp=true;
 		}
+        if(this.update_interval)
+        {
+            clearInterval(this.update_interval);
+            this.update_interval = null;
+        }
 	},
 	/* returns bool true if playing false if paused or stooped
 	 */
@@ -2180,7 +2194,7 @@ function getTransparentPng(image){
 /*
 * utility functions: 
 */
-function seconds2ntp(sec){
+function seconds2ntp(sec, use_hours){
 	sec = parseInt(sec);
 	hours = Math.floor(sec/ 3600);
 	minutes = Math.floor((sec/60) % 60);
@@ -2188,7 +2202,7 @@ function seconds2ntp(sec){
 	//if ( hours < 10 ) hours = "0" + hours;
 	if ( minutes < 10 ) minutes = "0" + minutes;
 	if ( seconds < 10 ) seconds = "0" + seconds;
-	return hours+":"+minutes+":"+seconds;
+	return (use_hours?(hours+":"):'')+minutes+":"+seconds;
 }
 /* takes hh:mm:ss input returns number of seconds */
 function ntp2seconds(ntp){

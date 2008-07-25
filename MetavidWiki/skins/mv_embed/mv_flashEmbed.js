@@ -326,21 +326,23 @@ var flashEmbed = {
    						this.getControlsHtml('info_span');
 		}
         setTimeout('document.getElementById(\''+this.id+'\').postEmbedJS()', 150);
-        
         var html_code = '';
-        html_code = '<div class="videoPlayer"><div class="videoPlayerSmall">';
+        html_code = '<div style="width:'+this.width+'px;" class="videoPlayer"><div class="videoPlayerSmall">';
 		html_code += this.wrapEmebedContainer( this.getEmbedObj() );
         html_code += '<div class="controls">' +
 					'<span class="border_left">&nbsp;</span>'+
 					'<div class="controlInnerSmall">'+
-					'	<div class="play_pause_button"><a href="javascript:document.getElementById(\''+this.id+'\').play_or_pause();"></a></div>'+
-					'	<div class="seeker">'+
+					'	<div id="mv_play_pause_button_'+this.id+'" class="pause_button"><a href="javascript:document.getElementById(\''+this.id+'\').play_or_pause();"></a></div>'+
+					'	<div class="seeker">'
+        if(this.width>=400)
+            html_code+=
 					'		<div class="seeker_bar">'+
 					'			<div class="seeker_bar_outer"></div>'+
-					'			<div class="seeker_slider"></div>'+
+					'			<div id="mv_seeker_slider_'+this.id+'" class="seeker_slider"></div>'+
 					'			<div class="seeker_bar_close"></div>'+
-					'		</div>'+
-					'		<div class="time">00:00/00:00</div>'+
+					'		</div>'
+        html_code+=
+					'		<div id="mv_time_'+this.id+'" class="time">00:00/00:00</div>'+
 					'	</div><!--seeker-->'+
 					'	<div class="extraButtons">'+
 					'		<div class="volume_control">'+
@@ -367,6 +369,8 @@ var flashEmbed = {
         { src: mv_embed_path + 'FlowPlayerDark.swf', width: this.width, height: this.height, id: this.pid},
         { config: { autoPlay: true, hideControls: true,
            videoFile: this.media_element.selected_source.uri } });
+        js_log('setInterval');
+        this.update_interval = setInterval('document.getElementById(\''+this.id+'\').updateGUI()', 500);
     },
     /* js hooks/controls */
     play : function(){
@@ -379,8 +383,20 @@ var flashEmbed = {
 			this.paused=false;
     	}
     },
-    pause : function(){
+    pause : function()
+    {
 		this.getPluginEmbed().Pause();
+    },
+    updateGUI : function()
+    {
+        var time = this.getPluginEmbed().getTime();
+        var duration = this.getPluginEmbed().getDuration();
+        document.getElementById('mv_time_'+this.id).innerHTML=
+            seconds2ntp(time, false) + '/' +
+            seconds2ntp(duration, false);
+        var seeker = document.getElementById('mv_seeker_slider_'+this.id);
+        if(seeker != null)
+            seeker.style.marginLeft = (3 + 114 * time / duration) + 'px';
     }
 }
 
