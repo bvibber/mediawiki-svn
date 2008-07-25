@@ -18,23 +18,18 @@ $wgExtensionCredits['specialpage'][] = array(
 	'version'        => '1.6'
 );
 
+// Autoload Classes
 $wgAutoloadClasses['PasswordReset'] = dirname(__FILE__) . '/PasswordReset_body.php';
 $wgAutoloadClasses['Disabledusers'] = dirname(__FILE__) . '/PasswordReset_Disabledusers.php';
+
+// Special Pages
 $wgSpecialPages['PasswordReset'] = 'PasswordReset';
 $wgSpecialPages['Disabledusers'] = 'Disabledusers';
-$wgExtensionMessagesFiles['PasswordReset'] = dirname( __FILE__ ) . '/PasswordReset.i18n.php';
 $wgSpecialPageGroups['PasswordReset'] = 'users';
 $wgSpecialPageGroups['Disabledusers'] = 'users';
 
-$wgExtensionFunctions[] = 'efPasswordReset';
-function efPasswordReset() {
-	global $wgHooks;
-	$wgHooks['GetBlockedStatus'][] = 'PasswordReset::GetBlockedStatus';
+// Messages
+$wgExtensionMessagesFiles['PasswordReset'] = dirname( __FILE__ ) . '/PasswordReset.i18n.php';
 
-	global $wgMessageCache;
-	#Add Messages
-	require( dirname( __FILE__ ) . '/PasswordReset.i18n.php' );
-	foreach( $messages as $key => $value ) {
-		  $wgMessageCache->addMessages( $messages[$key], $key );
-	}
-}
+// Hooks
+$wgHooks['GetBlockedStatus'][] = 'PasswordReset::GetBlockedStatus';

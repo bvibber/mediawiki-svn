@@ -21,6 +21,7 @@ class PasswordReset extends SpecialPage {
 
 		$this->setHeaders();
 
+		wfLoadExtensionMessages('PasswordReset');
 		if ( !$wgUser->isAllowed( 'passwordreset' ) ) {
 			$wgOut->permissionRequired( 'passwordreset' );
 			return;
