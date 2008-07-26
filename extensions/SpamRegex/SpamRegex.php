@@ -1,14 +1,25 @@
 <?php
+/**
+ * SpamRegex - A special page with the interface for blocking, viewing and unblocking of unwanted phrases
+ *
+ * @ingroup Extensions
+ * @author Bartek Łapiński
+ * @version 1.0
+ */
 
-/* help displayed on the special page  */
-define ('SPAMREGEX_PATH', '/');
+/**
+ * Protect against register_globals vulnerabilities.
+ * This line must be present before any global variable is referenced.
+ */
+if (!defined('MEDIAWIKI'))
+	die();
 
 /* for memcached - expiration time */
-define ('SPAMREGEX_EXPIRE', 0);
+define('SPAMREGEX_EXPIRE', 0);
 
 /* two modes for two kinds of blocks */
-define ('SPAMREGEX_TEXTBOX', 0);
-define ('SPAMREGEX_SUMMARY', 1);
+define('SPAMREGEX_TEXTBOX', 0);
+define('SPAMREGEX_SUMMARY', 1);
 
 /* return the name of the table  */
 function wfSpamRegexGetTable() {
@@ -20,16 +31,25 @@ function wfSpamRegexGetTable() {
 	}
 }
 
-/**
- * Protect against register_globals vulnerabilities.
- * This line must be present before any global variable is referenced.
- */
-if (!defined('MEDIAWIKI')) die();
-
 $dir = dirname(__FILE__) . '/';
-$wgExtensionMessagesFiles['Spamregex'] = $dir . 'SpamRegex.i18n.php';
+$wgExtensionMessagesFiles['SpamRegex'] = $dir . 'SpamRegex.i18n.php';
+$wgExtensionAliasesFiles['SpamRegex'] = $dir . 'SpamRegex.alias.php';
+$wgAutoloadClasses['SpamRegex'] = $dir . 'SpecialSpamRegex.php';
+$wgSpecialPages['SpamRegex'] = 'SpamRegex';
 
-require_once ($IP.SPAMREGEX_PATH."extensions/SpamRegex/SpecialSpamRegex.php");
-//will need more, maybe Core?
-require_once ($IP.SPAMREGEX_PATH."extensions/SpamRegex/SpamRegexCore.php");
-require_once ($IP.SPAMREGEX_PATH."extensions/SimplifiedRegex/SimplifiedRegex.php");
+//New user right
+$wgAvailableRights[] = 'spamregex';
+$wgGroupPermissions['staff']['spamregex'] = true;
+
+//Extension credits
+$wgExtensionCredits['specialpage'][] = array(
+	'name' => 'Regular Expression Spam Block',
+	'version' => '1.0',
+	'author' => 'Bartek Łapiński',
+	'url' => 'http://www.mediawiki.org/wiki/Extension:SpamRegex',
+	'description' => 'Filters out unwanted phrases in edited pages, based on regular expressions',
+	'descriptionmsg' => 'spamregex-desc',
+);
+
+require_once("$IP/extensions/SpamRegex/SpamRegexCore.php");
+require_once("$IP/extensions/SimplifiedRegex/SimplifiedRegex.php");
