@@ -5,60 +5,89 @@
 
 global $wgHooks;
 /* initialize hook, FilterEdit is too far in code */
-$wgHooks['AlternateEdit'][] = 'wfGetSpamRegex';
 $wgHooks['EditFilter'][] = 'wfGetSummarySpamRegex';
+$wgHooks['SpecialMovepageBeforeMove'][] = 'wfGetMoveSpamRegex';
 
-function wfGetSpamRegex() {
-	global $wgSpamRegex;
-	if (!wfSimplifiedRegexCheckSharedDB())
-		return true;
+function wfGetSummarySpamRegex($editpage) {
+	wfProfileIn( __METHOD__ );
+	wfLoadExtensionMessages('SpamRegex');
+	global $wgOut, $wgTitle;
 
-	/* get here only the phrases for blocking in textbox */
-	$phrases = wfFetchSpamRegexData(SPAMREGEX_TEXTBOX);
-	("" != $phrases) ? $wgSpamRegex =  "/".$phrases."/i" : $wgSpamRegex = false;
+	// here we get only the phrases for blocking in summaries...	
+	$s_phrases = array();
+	$s_phrases = wfFetchSpamRegexData(SPAMREGEX_SUMMARY);
+	if ( $s_phrases && ($editpage->summary != '') ) {
+		//	...so let's rock with our custom spamPage to indicate that
+		//	(since some phrases can be safely in the text and not in a summary
+		//	and we do not want to confuse the good users, right?)
+		
+		foreach ($s_phrases as $s_phrase) {
+			if ( preg_match($s_phrase, $editpage->summary, $s_matches) ) {
+				$wgOut->setPageTitle( wfMsg( 'spamprotectiontitle' ) );
+				$wgOut->setRobotPolicy( 'noindex,nofollow' );
+				$wgOut->setArticleRelated( false );
+
+				$wgOut->addWikiMsg( 'spamprotectiontext' );
+				$wgOut->addWikiMsg( 'spamprotectionmatch', "<nowiki>{$s_matches[0]}</nowiki>" );
+				$wgOut->addWikiMsg('spamregex-summary'); 
+
+				$wgOut->returnToMain( false, $wgTitle );
+				wfProfileOut( __METHOD__ );
+				return false;
+			}
+		}
+	}
+
+	$t_phrases = array();
+	// and here we check for phrases within the text itself
+	$t_phrases = wfFetchSpamRegexData(SPAMREGEX_TEXTBOX);
+	if ($t_phrases && is_array($t_phrases)) {
+		foreach ($t_phrases as $t_phrase) {
+			if (preg_match ($t_phrase, $editpage->textbox1, $t_matches)) {
+				$editpage->spamPage($t_matches[0]);
+				wfProfileOut( __METHOD__ );
+				return false;
+			}
+		}
+	}	
+	wfProfileOut( __METHOD__ );
 	return true;
 }
 
-function wfGetSummarySpamRegex($editpage) {
-	global $wgOut;
-	if (!wfSimplifiedRegexCheckSharedDB())
-		return true;
+// this is for page move
+function wfGetMoveSpamRegex($movepage) {
+	wfProfileIn( __METHOD__ );
+	wfLoadExtensionMessages('SpamRegex');
 
-	$matches = array();
-	/* here we get only the phrases for blocking in summaries... */
-	$phrases = wfFetchSpamRegexData(SPAMREGEX_SUMMARY);
-	("" != $phrases) ? $m_phrases =  "/".$phrases."/i" : $m_phrases = false;
-	if ( $m_phrases && ($editpage->summary != '') && preg_match( $m_phrases, $editpage->summary, $matches ) ) {
-		/*	...so let's rock with our custom spamPage to indicate that
-			(since some phrases can be safely in the text and not in a summary
-			and we do not want to confuse the good users, right?)
-		*/
-		$wgOut->setPageTitle( wfMsg( 'spamprotectiontitle' ) );
-		$wgOut->setRobotPolicy( 'noindex,nofollow' );
-		$wgOut->setArticleRelated( false );
+	// here we get only the phrases for blocking in summaries...	
+	$s_phrases = array();
+	$s_phrases = wfFetchSpamRegexData(SPAMREGEX_SUMMARY);
+	if ( $s_phrases && ($movepage->reason != '') ) {		
+		foreach ($s_phrases as $s_phrase) {
+			if (preg_match ($s_phrase, $movepage->reason, $s_matches)) {				
+				$spammessage = wfMsg('spamregex-move');
+				$spammessage .= wfMsg('spamprotectionmatch', "<nowiki>{$s_matches[0]}</nowiki>");
+				$movepage->showForm('hookaborted', $spammessage);
 
-		$wgOut->addWikiMsg( 'spamprotectiontext' );
-		if ( $matches[0] ) {
-			$wgOut->addWikiText( wfMsg( 'spamprotectionmatch', "<nowiki>{$matches[0]}</nowiki>" ) );
+				wfProfileOut( __METHOD__ );
+				return false;
+			}
 		}
-		$wgOut->addWikiMsg('spamregex-summary');
-
-		$wgOut->returnToMain( false );
-
-		return false;
 	}
+	wfProfileOut( __METHOD__ );
 	return true;
 }
 
 function wfFetchSpamRegexData($mode) {
+	wfProfileIn( __METHOD__ );
 	global $wgMemc, $wgUser, $wgSpamRegex, $wgSharedDB;
 
-	$phrases = "";
+	$phrases = array();
 	$first = true;
 
 	/* first, check if regex string is already stored in memcache */
 	( $mode == SPAMREGEX_SUMMARY ) ? $key_clause = ":Summary" : $key_clause = ":Textbox";
-	$key = "$wgSharedDB:spamRegexCore:spamRegex" . $key_clause;
+	$key = wfSpamRegexGetMemcDB() . ":spamRegexCore:spamRegex" . $key_clause;
 	$cached = $wgMemc->get($key);
 	if ( !$cached ) {
 		/* fetch data from db, concatenate into one string, then fill cache */
@@ -67,13 +96,8 @@ function wfFetchSpamRegexData($mode) {
 		$query = "SELECT spam_text FROM " . wfSpamRegexGetTable() . $clause;
 		$res = $dbr->query($query);
 		while ( $row = $dbr->fetchObject( $res ) ) {
-			$concat = $row->spam_text;
-			if (!$first) {
-				$phrases .= "|".$concat;
-			} else {
-				$phrases .= $concat;
-				$first = false;
-			}
+			$concat = $row->spam_text ;
+			$phrases [] = "/" . $concat . "/i" ;
 		}
 		$wgMemc->set($key, $phrases, 0);
 		$dbr->freeResult($res);
@@ -81,5 +105,6 @@ function wfFetchSpamRegexData($mode) {
 		/* take from cache */
 		$phrases = $cached;
 	}
+	wfProfileOut( __METHOD__ );
 	return $phrases;
 }

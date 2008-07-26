@@ -97,6 +97,7 @@ class spamRegexList {
 	 * @param $err string: error message
 	 */
 	function showList( $err ) {
+		wfProfileIn( __METHOD__ );
 		global $wgOut, $wgRequest, $wgMemc, $wgLang;
 
 		/* on error, display error */
@@ -143,10 +144,12 @@ class spamRegexList {
 		$dbr->freeResult($res);
 		$wgOut->addHTML("</form>");
 		$this->showPrevNext($wgOut);
+		wfProfileOut( __METHOD__ );
 	}
 
 	/* remove from list - without confirmation */
 	function deleteFromList() {
+		wfProfileIn( __METHOD__ );
 		global $wgOut, $wgRequest, $wgMemc, $wgUser;
 		$text = urldecode( $wgRequest->getVal('text') );
 		/* delete */
@@ -157,18 +160,21 @@ class spamRegexList {
 		if ( $dbw->affectedRows() ) {
 			/* success  */
 			$this->wfSpamRegexUnsetKeys();
+			wfProfileOut( __METHOD__ );
 			$wgOut->redirect( $titleObj->getFullURL( 'action=success_unblock&text='.urlencode($text).'&'.$this->wfSpamRegexGetListBits() ) );
 		} else {
+			wfProfileOut( __METHOD__ );
 			$wgOut->redirect( $titleObj->getFullURL( 'action=failure_unblock&text='.urlencode($text).'&'.$this->wfSpamRegexGetListBits() ) );
 		}
 	}
 
 	/* fetch number of all rows */
 	function fetchNumResults() {
+		wfProfileIn( __METHOD__ );
 		global $wgMemc, $wgSharedDB;
 
 		/* we use memcached here */
-		$key = "$wgSharedDB:spamRegexCore:numResults";
+		$key = wfSpamRegexGetMemcDB() . ":spamRegexCore:numResults";
 		$cached = $wgMemc->get($key);
 		$results = 0;
 		if ( is_null($cached) ) {
@@ -183,6 +189,7 @@ class spamRegexList {
 			$results = $cached;
 		}
 		$this->numResults = $results;
+		wfProfileOut( __METHOD__ );
 		return $results;
 	}
 
@@ -325,16 +332,19 @@ class spamRegexForm {
 
 	/* on submit */
 	function doSubmit() {
+		wfProfileIn( __METHOD__ );
 		global $wgOut, $wgUser, $wgMemc;
 
 		/* empty name */
 		if ( strlen($this->mBlockedPhrase) == 0 ) {
 			$this->showForm(wfMsgHtml('spamregex-warning-1'));
+			wfProfileOut( __METHOD__ );
 			return;
 		}
 		/* validate expression */
 		if ( !$simple_regex = wfValidRegex($this->mBlockedPhrase) ) {
 			$this->showForm(wfMsgHtml('spamregex-error-1'));
+			wfProfileOut( __METHOD__ );
 			return;
 		}
 
@@ -346,6 +356,7 @@ class spamRegexForm {
 		/* we need at least one block mode specified... we can have them both, of course */
 		if ( ($this->mBlockedTextbox == 0) && ($this->mBlockedSummary == 0) ) {
 			$this->showForm(wfMsgHtml('spamregex-warning-2'));
+			wfProfileOut( __METHOD__ );
 			return;
 		}
 
@@ -363,11 +374,13 @@ class spamRegexForm {
 		/* duplicate entry */
 		if (!$dbw->affectedRows()) {
 			$this->showForm(wfMsgHtml('spamregex-already-blocked', $this->mBlockedPhrase));
+			wfProfileOut( __METHOD__ );
 			return;
 		}
 		spamRegexList::wfSpamRegexUnsetKeys($name);
 		/* redirect */
 		$titleObj = Title::makeTitle( NS_SPECIAL, 'SpamRegex' );
+		wfProfileOut( __METHOD__ );
 		$wgOut->redirect( $titleObj->getFullURL( 'action=success_block&text=' .urlencode( $this->mBlockedPhrase )."&".spamRegexList::wfSpamRegexGetListBits() ) );
 	}
 }

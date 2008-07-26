@@ -20,6 +20,7 @@ If the text contains the given expression, change would not be saved and an expl
 Caution advised, expressions should not be too short or too common.',
 	'spamregex-page-title'           => 'Spam regex unwanted expressions block',
 	'spamregex-currently-blocked'    => "'''Currently blocked phrases:'''",
+	'spamregex-move' => 'The reason you entered contained a blocked phrase. ',
 	'spamregex-no-currently-blocked' => "'''There are no blocked phrases.'''",
 	'spamregex-log-1'                => '* \'\'\'$1\'\'\' $2 ([{{SERVER}}$3&text=$4 remove]) added by ',
 	'spamregex-log-2'                => ' on $1',

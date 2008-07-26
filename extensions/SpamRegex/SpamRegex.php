@@ -31,6 +31,16 @@ function wfSpamRegexGetTable() {
 	}
 }
 
+/* return the proper db key for Memc */
+function wfSpamRegexGetMemcDB() {
+	global $wgSharedDB, $wgDBname;
+	if (!empty( $wgSharedDB ) ) {
+		return $wgSharedDB;
+	} else {
+		return $wgDBname;
+	}
+}
+
 $dir = dirname(__FILE__) . '/';
 $wgExtensionMessagesFiles['SpamRegex'] = $dir . 'SpamRegex.i18n.php';
 $wgExtensionAliasesFiles['SpamRegex'] = $dir . 'SpamRegex.alias.php';
