@@ -138,6 +138,7 @@ static void wmerrors_show_message(int type, const char *error_filename, const ui
 	char * tmp1, *tmp2;
 	int tmp1_len, tmp2_len;
 	smart_str expanded = {0};
+	va_list my_args;
 
 	/* Is there a sane message_file? */
 	if (!WMERRORS_G(message_file) || *WMERRORS_G(message_file) == '\0') {
@@ -151,6 +152,9 @@ static void wmerrors_show_message(int type, const char *error_filename, const ui
 		return;
 	}
 	
+	/* Don't destroy the caller's va_list */
+	va_copy(my_args, args);
+
 	/* Read the contents */
 	message_len = php_stream_copy_to_mem(stream, &message, maxlen, 0);
 	php_stream_close(stream);
@@ -170,7 +174,8 @@ static void wmerrors_show_message(int type, const char *error_filename, const ui
 				efree(tmp1);
 				p += sizeof("line") - 1;
 			} else if (!strncmp(p, "$message", sizeof("$message")-1)) {
-				tmp1_len = vspprintf(&tmp1, 0, format, args);
+				/* Don't destroy args */
+				tmp1_len = vspprintf(&tmp1, 0, format, my_args);
 				tmp2 = php_escape_html_entities((unsigned char*)tmp1, tmp1_len, &tmp2_len, 
 						0, ENT_COMPAT, NULL TSRMLS_CC);
 				smart_str_appendl(&expanded, tmp2, tmp2_len);
@@ -202,6 +207,7 @@ static void wmerrors_show_message(int type, const char *error_filename, const ui
 	/* Clean up */
 	smart_str_free(&expanded);
 	efree(message);
+	va_end(my_args);
 }
 
 
