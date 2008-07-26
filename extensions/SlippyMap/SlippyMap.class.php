@@ -231,8 +231,8 @@ class SlippyMap {
 			}
 
 			if ( $showkml ) {
-				$input = str_replace( array( "\n" , "'"  , '"'  , '<'  , '>'  , ' '   ), 
-						      array( '%0A', '%27', '%22', '%3C', '%3E', '%20' ), $input );
+				$input = str_replace( array( "\n" , "'"  , '"'  , '<'  , '>'  , ' '  , '%'   ), 
+						      array( '%0A', '%27', '%22', '%3C', '%3E', '%20', '%25' ), $input );
 				$output .= 'var vector = new OpenLayers.Layer.Vector("Vector Layer"); ' .
 					'   map.addLayer(vector); ' .
 					'   kml = new OpenLayers.Format.KML( { "internalProjection": map.baseLayer.projection, ' .
