@@ -102,6 +102,12 @@ class SlippyMap {
 		if (substr($width,-2)=='px')	$width = (int) substr($width,0,-2);
 		if (substr($height,-2)=='px')	$height = (int) substr($height,0,-2);
 
+
+		if ( trim( $input ) != '' ) {
+			$showkml = true;
+		} else {
+			$showkml = false;
+		}
 		//Check required parameters values are provided
 		if ( $lat==''  ) $error .= wfMsg( 'slippymap_latmissing' );
 		if ( $lon==''  ) $error .= wfMsg( 'slippymap_lonmissing' );
@@ -212,7 +218,8 @@ class SlippyMap {
 
 			$output .= '	map.addLayer(layer); ';
 
-			$output .= '	lonLat = new OpenLayers.LonLat(lon, lat).transform(new OpenLayers.Projection("EPSG:4326"), map.getProjectionObject()); ';
+			$output .= '	epsg4326 = new OpenLayers.Projection("EPSG:4326"); ';
+			$output .= '	lonLat = new OpenLayers.LonLat(lon, lat).transform( epsg4326, map.getProjectionObject()); ';
 
 			if ( $marker ) {
 				$output .= 'var markers = new OpenLayers.Layer.Markers( "Markers" ); ' .
@@ -221,6 +228,19 @@ class SlippyMap {
 				   	'   var offset = new OpenLayers.Pixel(-(size.w/2), -size.h); ' .
 				   	"   var icon = new OpenLayers.Icon('http://boston.openguides.org/markers/YELLOW.png',size,offset);" .
 			           	'   markers.addMarker(new OpenLayers.Marker( lonLat,icon)); ';
+			}
+
+			if ( $showkml ) {
+				$input = str_replace( array( "\n" , "'"  , '"'  , '<'  , '>'  , ' '   ), 
+						      array( '%0A', '%27', '%22', '%3C', '%3E', '%20' ), $input );
+				$output .= 'var vector = new OpenLayers.Layer.Vector("Vector Layer"); ' .
+					'   map.addLayer(vector); ' .
+					'   kml = new OpenLayers.Format.KML( { "internalProjection": map.baseLayer.projection, ' .
+					'                                      "externalProjection": epsg4326, ' .
+					'                                      "extractStyles": true, ' .
+					'                                      "extractAttributes": true } ); ' .
+					"   features = kml.read(unescape('$input')); " .
+					'   vector.addFeatures( features ); ';
 			}
 
 			$output .= '	map.setCenter (lonLat, zoom); ';
