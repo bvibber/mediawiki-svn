@@ -13,3 +13,10 @@ $aliases = array();
 $aliases['en'] = array(
 	'SpamRegex' => array( 'SpamRegex' ),
 );
+
+/** Hebrew (עברית)
+ * @author Rotem Liss
+ */
+$aliases['he'] = array(
+	'SpamRegex' => array( 'ביטויי_ספאם' ),
+);
