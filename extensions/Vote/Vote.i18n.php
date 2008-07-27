@@ -78,7 +78,7 @@ riddler|Riddler',
 $messages['ar'] = array(
 	'vote'                => 'تصويت',
 	'vote-header'         => "يمكنك التصويت لاختيار '''الرئيس الأعلى للعالم''' هنا!",
-	'vote-current'        => "تصويتك الحالي ل '''$1'''.",
+	'vote-current'        => "تصويتك الحالي ل'''$1'''.",
 	'vote-legend'         => 'وضع أو تغيير التصويت',
 	'vote-caption'        => 'اختيارك:',
 	'vote-choices'        => 'جوكر|الجوكر

@@ -69,7 +69,7 @@ $messages['af'] = array(
  * @author Meno25
  */
 $messages['ar'] = array(
-	'form-desc'                    => '[[Special:Form|واجهة إستمارة]] لبدء الصفحات الجديدة',
+	'form-desc'                    => '[[Special:Form|واجهة استمارة]] لبدء الصفحات الجديدة',
 	'form'                         => 'استمارة',
 	'formnoname'                   => 'لا اسم استمارة',
 	'formnonametext'               => 'يجب أن توفر اسم استمارة، مثل "Special:Form/Nameofform".',
@@ -83,8 +83,10 @@ $messages['ar'] = array(
 	'formarticleexiststext'        => 'الصفحة [[$1]] موجودة بالفعل.',
 	'formbadpagename'              => 'اسم صفحة سيء',
 	'formbadpagenametext'          => 'بيانات الاستمارة التي أدخلتها تصنع اسم صفحة سيئا، "$1".',
-	'formrequiredfieldpluralerror' => 'الحقول $1 مطلوبة لهذه الاستمارة. من فضلك املأهم.',
-	'formrequiredfielderror'       => 'الحقل $1 مطلوب لهذه الاستمارة. من فضلك املأه.',
+	'formrequiredfieldpluralerror' => 'الحقول $1 مطلوبة لهذه الاستمارة.
+من فضلك املأها.',
+	'formrequiredfielderror'       => 'الحقل $1 مطلوب لهذه الاستمارة.
+من فضلك املأه.',
 	'formsavesummary'              => 'صفحة جديدة باستخدام [[Special:Form/$1]]',
 	'formsaveerror'                => 'خطأ في حفظ الاستمارة',
 	'formsaveerrortext'            => "حدث خطأ غير معروف أثناء حفظ الاستمارة '$1'.",
@@ -221,6 +223,13 @@ $messages['fr'] = array(
 	'formsavesummary'              => "Créer un nouvel article à l'aide de [[Special:Form/$1]]",
 	'formsaveerror'                => "Une erreur s'est produite pendant la sauvegarde.",
 	'formsaveerrortext'            => "Une erreur inconnue s'est produite pendant la sauvegarde de ''$1''.",
+);
+
+/** Western Frisian (Frysk)
+ * @author Snakesteuben
+ */
+$messages['fy'] = array(
+	'formsave' => 'Fêstlizze',
 );
 
 /** Galician (Galego)

@@ -127,6 +127,18 @@ Ezt az üzenetet $1 küldte neked a(z) {{SITENAME}} email-rendszerén keresztül
 $2',
 );
 
+/** Italian (Italiano)
+ * @author Darth Kule
+ * @author Melos
+ */
+$messages['it'] = array(
+	'email-desc'   => 'Permette di aggiungere intestazione e piè di pagina personalizzate alle e-mail inviate agli altri utenti.',
+	'email_footer' => '----------------------------------------------------------------------------
+Questa e-mail ti è stata inviata attraverso il sistema e-mail di {{SITENAME}} da $1.
+
+$2',
+);
+
 /** Khmer (ភាសាខ្មែរ)
  * @author គីមស៊្រុន
  */

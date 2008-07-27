@@ -132,10 +132,10 @@ $wgGoogleMapsMessages['af'] = array(
  */
 $wgGoogleMapsMessages['ar'] = array(
 	'gm-incompatible-browser'      => 'لكي تشاهد الخريطة المراد إدخالها في هذا الفضاء، ستحتاج لاستخدام متصفح ويب متوافق.',
-	'gm-incompatible-browser-link' => 'أنقر هنا لرؤية قائمة المتصفّحات المتوافقة.',
+	'gm-incompatible-browser-link' => 'اضغط هنا لرؤية قائمة المتصفحات المتوافقة.',
 	'gm-no-editor'                 => 'لسوء الحظ، متصفحك لا يدعم ميزات إنشاء الخريطة التفاعلية. جرب آخر نسخة <a href="http://www.microsoft.com/ie">لإنترنت إكسبلورر</a> (ويندوز) أو <a href="http://www.mozilla.org/products/firefox">فايرفوكس</a> (ويندوز، ماك، ولينكس).',
 	'gm-balloon-title'             => 'العنوان:',
-	'gm-balloon-link-article'      => 'إرتبط إلى هذه الصّفحة (إختياري):',
+	'gm-balloon-link-article'      => 'وصلة إلى هذه الصفحة (اختياري):',
 	'gm-make-marker'               => 'تعليق (تهيئة الويكي ممكنة):',
 	'gm-remove'                    => 'إزالة',
 	'gm-caption'                   => 'تعليق',
@@ -147,16 +147,16 @@ $wgGoogleMapsMessages['ar'] = array(
 	'gm-load-map-from-article'     => 'حمل خريطة من الصفحة:',
 	'gm-no-maps'                   => 'لا توجد خرائط في هذه الصفحة للتحميل.',
 	'gm-refresh-list'              => 'جدد القائمة',
-	'gm-load-map'                  => 'ّحمل خريطة',
+	'gm-load-map'                  => 'تحميل الخريطة',
 	'gm-clip-result'               => 'أضف إلى الخريطة',
-	'gm-no-results'                => 'آسف، لا توجد نتائج',
+	'gm-no-results'                => 'عذرا، لا توجد نتائج',
 	'gm-searching'                 => 'في بحث...',
 	'gm-map'                       => 'خريطة',
 	'gm-note'                      => 'ملاحظة: كن متأكدا من نسخ الذي تريد حفظه في الصفحة (أدناه) قبل النقر على "حمل الخريطة"، "حفظ" أو "عرض مسبق "!',
 	'gm-instructions'              => 'بالأسفل تهيئة الويكي لإنشاء الخريطة بالأعلى.',
 	'gm-are-you-sure'              => 'هل أنت متأكد؟',
 	'gm-clear-all-points'          => 'امسح كل النقاط',
-	'gm-refresh-points'            => 'جدد النقاط',
+	'gm-refresh-points'            => 'حدث النقاط',
 	'gm-width'                     => 'عرض',
 	'gm-height'                    => 'ارتفاع',
 	'gm-scale-control'             => 'مقياس',
@@ -966,6 +966,7 @@ $wgGoogleMapsMessages['fr'] = array(
  */
 $wgGoogleMapsMessages['fy'] = array(
 	'gm-yes'         => 'Ja',
+	'gm-save-path'   => 'Fêstlizze',
 	'gm-kml-loading' => 'ynlade...',
 );
 
@@ -1394,9 +1395,11 @@ $wgGoogleMapsMessages['is'] = array(
 
 /** Italian (Italiano)
  * @author Pietrodn
+ * @author Darth Kule
  */
 $wgGoogleMapsMessages['it'] = array(
 	'gm-zoom-control' => 'Navigazione',
+	'gm-search'       => 'Ricerca',
 );
 
 /** Javanese (Basa Jawa)
@@ -1721,12 +1724,13 @@ $wgGoogleMapsMessages['mr'] = array(
  * @author Fluence
  */
 $wgGoogleMapsMessages['nah'] = array(
-	'gm-balloon-title' => 'Tōcāitl:',
-	'gm-map'           => 'Āmatohtli',
-	'gm-zoom-control'  => 'Ācalpapanōliztli',
-	'gm-yes'           => 'Quēmah',
-	'gm-no'            => 'Ahmo',
-	'gm-save-path'     => 'Ticpiyāz',
+	'gm-balloon-title'   => 'Tōcāitl:',
+	'gm-map'             => 'Āmatohtli',
+	'gm-zoom-control'    => 'Ācalpapanōliztli',
+	'gm-no-zoom-control' => 'Ahtlein',
+	'gm-yes'             => 'Quēmah',
+	'gm-no'              => 'Ahmo',
+	'gm-save-path'       => 'Ticpiyāz',
 );
 
 /** Dutch (Nederlands)

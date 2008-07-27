@@ -39,14 +39,15 @@ $messages['af'] = array(
 $messages['ar'] = array(
 	'importfreeimages'                       => 'استيراد صور حرة',
 	'importfreeimages-desc'                  => 'يوفر طريقة [[Special:ImportFreeImages|لاستيراد صور مرخصة بشكل سليم]] من [http://www.flickr.com فليكر]',
-	'importfreeimages_description'           => 'هذه الصفحة تسمح لك بالبحث في الصور المرخصة جيدا من فلكر واستيرادها إلى الويكي الخاص بك.',
-	'importfreeimages_noapikey'              => 'لم تقم بضبط مفتاح API فلكر الخاص بك. لفعل هذا، من فضلك احصل على مفتاح API من  [http://www.flickr.com/services/api/misc.api_keys.html هنا] واضبط wgFlickrAPIKey في ImportFreeImages.php.',
+	'importfreeimages_description'           => 'هذه الصفحة تسمح لك بالبحث في الصور المرخصة جيدا من فليكر واستيرادها إلى الويكي الخاص بك.',
+	'importfreeimages_noapikey'              => 'لم تقم بضبط مفتاح API فليكر الخاص بك.
+لفعل هذا، من فضلك احصل على مفتاح API من  [http://www.flickr.com/services/api/misc.api_keys.html هنا] واضبط wgFlickrAPIKey في ImportFreeImages.php.',
 	'importfreeimages_nophotosfound'         => "لا صور تم العثور عليها لمدخلة البحث الخاصة بك '$1'، من فضلك حاول مرة ثانية.",
 	'importfreeimages_invalidurl'            => 'المسار "$1" ليس صورة فليكر صحيحة.',
 	'importfreeimages_owner'                 => 'المؤلف',
 	'importfreeimages_importthis'            => 'استورد هذا',
 	'importfreeimages_next'                  => '$1 التالي',
-	'importfreeimages_filefromflickr'        => '$1 بواسطة المستخدم <b>[$2]</b> من فلكر. المسار الأصلي',
+	'importfreeimages_filefromflickr'        => '$1 بواسطة المستخدم <b>[$2]</b> من فليكر. المسار الأصلي',
 	'importfreeimages_promptuserforfilename' => 'من فضلك أدخل اسما لتخزين الملف به:',
 	'importfreeimages_returntoform'          => "أو، اضغط <a href='$1'>هنا</a> للعودة إلى نتائج بحثك",
 );
@@ -357,7 +358,7 @@ $messages['nah'] = array(
 	'importfreeimages-desc'                  => 'Tihuelīti tiquincōhua [[Special:ImportFreeImages|ōnahuatīli īxiptli]] īhuīcpa [http://www.flickr.com flickr].',
 	'importfreeimages_description'           => 'Tihuelīti inīn zāzanilca tiquincōhua īxiptli īhuīcpa flickr īhuīc mohuiqui.',
 	'importfreeimages_owner'                 => 'Chīhualōni',
-	'importfreeimages_importthis'            => 'ticcōhuāz inīn',
+	'importfreeimages_importthis'            => 'tiquicōhuāz inīn',
 	'importfreeimages_next'                  => 'Niman $1',
 	'importfreeimages_promptuserforfilename' => 'Timitztlātlauhtia xiquihcuiloa cē tōcāitl:',
 	'importfreeimages_returntoform'          => "Nozo, xiclica <a href='$1'>nicān</a>; ticcuepāz tlatēmoalizhuīc",

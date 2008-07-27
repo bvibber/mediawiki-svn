@@ -189,14 +189,15 @@ $wdMessages['an'] = array(
  * @author Meno25
  */
 $wdMessages['ar'] = array(
-	'datasearch'                            => 'Wikidata: بحث البيانات',
+	'datasearch'                            => 'ويكي داتا: بحث البيانات',
 	'langman_title'                         => 'مدير اللغة',
-	'languages'                             => 'Wikidata: مدير اللغة',
+	'languages'                             => 'ويكي داتا: مدير اللغة',
 	'ow_save'                               => 'حفظ',
 	'ow_history'                            => 'تاريخ',
 	'ow_datasets'                           => 'اختيار مجموعة البيانات',
 	'ow_noedit_title'                       => 'لا سماح للتعديل',
-	'ow_noedit'                             => 'أنت غير مسموح لك بتعديل الصفحات في مجموعة البيانات "$1". من فضلك انظر [[{{MediaWiki:Ow editing policy url}}|سياسة التحرير الخاصة بنا]].',
+	'ow_noedit'                             => 'أنت غير مسموح لك بتعديل الصفحات في مجموعة البيانات "$1".
+من فضلك انظر [[{{MediaWiki:Ow editing policy url}}|سياسة التحرير الخاصة بنا]].',
 	'ow_uipref_datasets'                    => 'عرض افتراضي',
 	'ow_uiprefs'                            => 'ويكي داتا',
 	'ow_none_selected'                      => '<لا شيء تم اختياره>',
@@ -219,8 +220,10 @@ $wdMessages['ar'] = array(
 	'ow_available_contexts'                 => 'السياقات المتوفرة',
 	'ow_add_concept_link'                   => 'أضف وصلة إلى مبادىء أخرى',
 	'ow_concept_panel'                      => 'لوحة المبدأ',
-	'ow_dm_badtitle'                        => 'هذه الصفحة لا تشير إلى أي معنى معرف (مبدأ). من فضلك تحقق من عنوان الويب.',
-	'ow_dm_missing'                         => 'هذه الصفحة على ما يبدو تشير إلى معنى معرف غير موجود (مبدأ). من فضلك تحقق من عنوان الويب.',
+	'ow_dm_badtitle'                        => 'هذه الصفحة لا تشير إلى أي معنى معرف (مبدأ).
+من فضلك تحقق من عنوان الويب.',
+	'ow_dm_missing'                         => 'هذه الصفحة على ما يبدو تشير إلى معنى معرف غير موجود (مبدأ).
+من فضلك تحقق من عنوان الويب.',
 	'ow_AlternativeDefinition'              => 'تعريف بديل',
 	'ow_AlternativeDefinitions'             => 'تعريفات بديلة',
 	'ow_Annotation'                         => 'هامش',
@@ -274,13 +277,23 @@ $wdMessages['ar'] = array(
 	'ow_Permission_denied'                  => '<h2>السماح مرفوض</h2>',
 	'ow_copy_no_action_specified'           => 'من فضلك حدد فعلا',
 	'ow_copy_help'                          => 'يوما ما، ربما نساعدك.',
-	'ow_please_proved_dmid'                 => 'على ما يبدو دخلك يفقد ?dmid=<something>  (dmid=رقم المعنى المعرف)<br />من فضلك اتصل بإداري خادم.',
-	'ow_please_proved_dc1'                  => 'على ما يبدو دخلك يفقد ?dc1=<something>  (dc1=سياق مجموعة البيانات 1، مجموعة البيانات للنسخ منها)<br />من فضلك اتصل بإداري خادم.',
-	'ow_please_proved_dc2'                  => 'على ما يبدو فدخلك يفقد ?dc2=<something>  (dc2=سياق مجموعة البيانات 2، مجموعة البيانات للنسخ منها)<br />من فضلك اتصل بإداري خادم.',
-	'ow_copy_successful'                    => '<h2>النسخ نجح</h2>بياناتك يبدو أنها قد تم نسخها بنجاح. لا تنس أن تتحقق ثانية للتأكد!',
-	'ow_copy_unsuccessful'                  => '<h3>النسخ لم ينجح</h3> لم تحدث أية عملية نسخ.',
-	'ow_no_action_specified'                => '<h3>لا فعل تم تحديده</h3> ربما أتيت إلى هذه الصفحة مباشرة؟ عادة أنت لا تحتاج إلى أن تكون هنا.',
-	'ow_db_consistency_not_found'           => '<h2>خطأ</h2>توجد مشكلة في ثبات قاعدة البيانات، ويكي داتا لا يمكنها العثور على بيانات صحيحة تتصل برقم المعنى المعرف هذا، ربما يكون قد ضاع. من فضلك اتصل بمشغل أو إداري الخادم.',
+	'ow_please_proved_dmid'                 => 'على ما يبدو دخلك يفقد ?dmid=<something>  (dmid=رقم المعنى المعرف)<br />
+من فضلك اتصل بإداري خادم.',
+	'ow_please_proved_dc1'                  => 'على ما يبدو دخلك يفقد ?dc1=<something>  (dc1=سياق مجموعة البيانات 1، مجموعة البيانات للنسخ منها)<br />
+من فضلك اتصل بإداري خادم.',
+	'ow_please_proved_dc2'                  => 'على ما يبدو فدخلك يفقد ?dc2=<something>  (dc2=سياق مجموعة البيانات 2، مجموعة البيانات للنسخ منها)<br />
+من فضلك اتصل بإداري خادم.',
+	'ow_copy_successful'                    => '<h2>النسخ نجح</h2>
+بياناتك يبدو أنها قد تم نسخها بنجاح.
+لا تنس أن تتحقق ثانية للتأكد!',
+	'ow_copy_unsuccessful'                  => '<h3>النسخ لم ينجح</h3>
+لم تحدث أية عملية نسخ.',
+	'ow_no_action_specified'                => '<h3>لا فعل تم تحديده</h3>
+ربما أتيت إلى هذه الصفحة مباشرة؟ عادة أنت لا تحتاج إلى أن تكون هنا.',
+	'ow_db_consistency_not_found'           => '<h2>خطأ</h2>
+توجد مشكلة في ثبات قاعدة البيانات، ويكي داتا لا يمكنها العثور على بيانات صحيحة تتصل برقم المعنى المعرف هذا.
+ربما يكون قد ضاع.
+من فضلك اتصل بمشغل أو إداري الخادم.',
 );
 
 /** Kotava (Kotava)
@@ -789,7 +802,7 @@ $wdMessages['eo'] = array(
 	'ow_ClassAttributeAttribute'            => 'Atribuo',
 	'ow_ClassAttributes'                    => 'Klasaj atribuoj',
 	'ow_ClassAttributeLevel'                => 'Nivelo',
-	'ow_ClassAttributeType'                 => 'Tipo',
+	'ow_ClassAttributeType'                 => 'Speco',
 	'ow_ClassMembership'                    => 'Klasa membreco',
 	'ow_Collection'                         => 'Kolekto',
 	'ow_Definition'                         => 'Difino',
@@ -1061,6 +1074,14 @@ Veuillez voir [[{{MediaWiki:Ow editing policy url}}|nos règles d'édition]].",
 	'ow_copy_unsuccessful'                  => "<h3>Copie infructueuse</h3> Aucune opération de copie n'a pris place.",
 	'ow_no_action_specified'                => "<h3>Aucune action n'a été spécifiée</h3> Peut-être êtes-vous venu sur cette page directement ? Vous n'avez pas, en principe, à être ici.",
 	'ow_db_consistency_not_found'           => "<h2>Erreur</h2>La base de données semble corrompue, wikidata ne peut trouver des données valides liées à l'identificateur (ID) du sens défini. Il pourrait être détruit. Veuillez contacter l'opérateur ou l'administrateur du serveur.",
+);
+
+/** Western Frisian (Frysk)
+ * @author Snakesteuben
+ */
+$wdMessages['fy'] = array(
+	'ow_save'   => 'Fêstlizze',
+	'ow_Source' => 'Boarne',
 );
 
 /** Irish (Gaeilge)

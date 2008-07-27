@@ -22,7 +22,7 @@ $messages['af'] = array(
  * @author Meno25
  */
 $messages['ar'] = array(
-	'ajax-qp-desc' => 'أضف بعض الأجاكس إلى صفحات الكويري مثل [[Special:Shortpages]]',
+	'ajax-qp-desc' => 'أضف بعض الأجاكس إلى صفحات الاستعلام مثل [[Special:Shortpages]]',
 );
 
 /** Bulgarian (Български)

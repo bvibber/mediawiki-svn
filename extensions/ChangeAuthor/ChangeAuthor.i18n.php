@@ -105,24 +105,27 @@ $messages['an'] = array(
  * @author Meno25
  */
 $messages['ar'] = array(
-	'changeauthor'                      => 'غير مؤلف النسخة',
-	'changeauthor-desc'                 => 'يسمح بتغيير مؤلف نسخة',
-	'changeauthor-title'                => 'غير مؤلف نسخة',
-	'changeauthor-search-box'           => 'ابحث في النسخ',
-	'changeauthor-pagename-or-revid'    => 'اسم الصفحة أو رقم النسخة:',
+	'changeauthor'                      => 'تغيير مؤلف المراجعة',
+	'changeauthor-desc'                 => 'يسمح بتغيير مؤلف مراجعة',
+	'changeauthor-title'                => 'تغيير مؤلف مراجعة',
+	'changeauthor-search-box'           => 'بحث في المراجعات',
+	'changeauthor-pagename-or-revid'    => 'اسم الصفحة أو رقم المراجعة:',
 	'changeauthor-pagenameform-go'      => 'اذهب',
 	'changeauthor-comment'              => 'تعليق:',
-	'changeauthor-changeauthors-multi'  => 'غير المؤلف(ين)',
-	'changeauthor-explanation-multi'    => "باستخدام هذه الاستمارة يمكنك تغيير مؤلفي النسخ. ببساطة غير واحدا أو أكثر من أسماء المستخدمين في القائمة بالأسفل ، أضف تعليقا (اختياري) واضغط على زر 'غير المؤلف(ين)'.",
-	'changeauthor-changeauthors-single' => 'غير المؤلف',
-	'changeauthor-explanation-single'   => "باستخدام هذه الاستمارة يمكنك تغيير مؤلف نسخة. ببساطة غير اسم اسم المستخدم بالأسفل، أضف تعليقا (اختياري) واضغط على زر 'غير المؤلف'.",
+	'changeauthor-changeauthors-multi'  => 'تغيير المؤلف(ين)',
+	'changeauthor-explanation-multi'    => "باستخدام هذه الاستمارة يمكنك تغيير مؤلفي المراجعات.
+ببساطة غير واحدا أو أكثر من أسماء المستخدمين في القائمة بالأسفل ، أضف تعليقا (اختياري) واضغط على زر 'تغيير المؤلف(ين)'.",
+	'changeauthor-changeauthors-single' => 'تغيير المؤلف',
+	'changeauthor-explanation-single'   => "باستخدام هذه الاستمارة يمكنك تغيير مؤلف مراجعة. ببساطة غير اسم اسم المستخدم بالأسفل، أضف تعليقا (اختياري) واضغط على زر 'تغيير المؤلف'.",
 	'changeauthor-invalid-username'     => 'اسم مستخدم غير صحيح "$1".',
 	'changeauthor-nosuchuser'           => 'لا يوجد مستخدم بالاسم "$1".',
-	'changeauthor-revview'              => 'النسخة #$1 من $2',
+	'changeauthor-revview'              => 'المراجعة #$1 من $2',
 	'changeauthor-nosuchtitle'          => 'لا توجد صفحة بالاسم "$1".',
-	'changeauthor-weirderror'           => 'حدث خطأ غريب للغاية. من فضلك حاول القيام بطلبك مرة ثانية. لو استمر هذا الخطأ، إذا فقاعدة البيانات على الأرجح مكسورة.',
+	'changeauthor-weirderror'           => 'حدث خطأ غريب جدا.
+من فضلك حاول القيام بطلبك مرة ثانية.
+لو استمر هذا الخطأ، إذا فقاعدة البيانات على الأرجح مكسورة.',
 	'changeauthor-invalidform'          => 'من فضلك استخدم الاستمارة الموفرة بواسطة Special:ChangeAuthor بدلا من استمارة معدلة.',
-	'changeauthor-success'              => 'طلبك تم الانتهاء منه بنجاح.',
+	'changeauthor-success'              => 'طلبك تمت معالجته بنجاح.',
 	'changeauthor-logentry'             => 'غير مؤلف $2 ل$1 من $3 إلى $4',
 	'changeauthor-logpagename'          => 'سجل تغيير المؤلفين',
 	'changeauthor-rev'                  => 'ن$1',
@@ -598,7 +601,30 @@ $messages['hu'] = array(
  * @author McDutchie
  */
 $messages['ia'] = array(
-	'changeauthor-comment' => 'Commento:',
+	'changeauthor'                      => 'Cambiar le autor del revision',
+	'changeauthor-desc'                 => 'Permitte cambiar le autor de un revision',
+	'changeauthor-title'                => 'Cambiar le autor de un revision',
+	'changeauthor-search-box'           => 'Cercar revisiones',
+	'changeauthor-pagename-or-revid'    => 'Nomine del pagina o ID del revision:',
+	'changeauthor-pagenameform-go'      => 'Ir',
+	'changeauthor-comment'              => 'Commento:',
+	'changeauthor-changeauthors-multi'  => 'Cambiar autor(es)',
+	'changeauthor-explanation-multi'    => "Con iste formulario tu pote cambiar le autores de revisiones.
+Simplemente modifica un o plus nomines de usator in le lista infra, adde un commento (optional) e clicca le button 'Cambiar autor(es)'.",
+	'changeauthor-changeauthors-single' => 'Cambiar autor',
+	'changeauthor-explanation-single'   => "Con iste formulario tu pote cambiar le autor de un revision.
+Simplemente modifica le nomine de usator infra, adde un commento (optional) e cliccar le button 'Cambiar autor'.",
+	'changeauthor-invalid-username'     => 'Nomine de usator "$1" invalide.',
+	'changeauthor-nosuchuser'           => 'Usator "$1" non existe.',
+	'changeauthor-revview'              => 'Revision #$1 de $2',
+	'changeauthor-nosuchtitle'          => 'Non existe un pagina con titulo "$1".',
+	'changeauthor-weirderror'           => 'Un error multo estranie ha occurrite.
+Per favor reprova tu requesta.
+Si iste error persiste, le base de datos es probabilemente defecte.',
+	'changeauthor-invalidform'          => 'Per favor usa le formulario providite per Special:ChangeAuthor e non un formulario personalisate.',
+	'changeauthor-success'              => 'Tu requesta ha essite processate con successo.',
+	'changeauthor-logentry'             => 'Cambiava le autor del revision $2 del pagina $1 de $3 a $4',
+	'changeauthor-logpagename'          => 'Registro de cambiamentos de autores',
 );
 
 /** Icelandic (Íslenska)

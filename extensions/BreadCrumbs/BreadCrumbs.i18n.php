@@ -106,6 +106,13 @@ $messages['hu'] = array(
 	'breadcrumbs-desc' => 'Megjeleníti a felhasználó által a wikiben bejárt utat.',
 );
 
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'breadcrumbs-desc' => 'Monstra le cammino del usatores a transverso del wiki.',
+);
+
 /** Icelandic (Íslenska)
  * @author S.Örvarr.S
  */
@@ -125,6 +132,13 @@ $messages['ja'] = array(
  */
 $messages['jv'] = array(
 	'breadcrumbs-desc' => 'Nuduhaké para panganggo dalan ngliwati wiki.',
+);
+
+/** Ripoarisch (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'breadcrumbs-desc' => 'Zeijsch dem Lesser odder Medmaacher der Wääsch dorj_et Wikki, dänn hä jekumme es, op jede Sigg.',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

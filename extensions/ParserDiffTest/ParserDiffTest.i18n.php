@@ -67,8 +67,8 @@ $messages['an'] = array(
  * @author Siebrand
  */
 $messages['ar'] = array(
-	'parserdifftest'      => 'اختبار فرق البارسر',
-	'pdtest-desc'         => '[[Special:ParserDiffTest|صفحة خاصة]] لمقارنة ناتج بارسرين مختلفين',
+	'parserdifftest'      => 'اختبار فرق المحلل',
+	'pdtest-desc'         => '[[Special:ParserDiffTest|صفحة خاصة]] لمقارنة ناتج محللين مختلفين',
 	'pdtest_no_target'    => 'لا هدف تم تحديده.',
 	'pdtest_page_missing' => 'الصفحة المحددة لم يتم العثور عليها في قاعدة البيانات.',
 	'pdtest_no_changes'   => 'لا تغييرات تم تبينها.',
@@ -79,7 +79,7 @@ $messages['ar'] = array(
 	'pdtest_get_text'     => 'الحصول على النص من الصفحة',
 	'pdtest_diff'         => 'الفروقات',
 	'pdtest_side_by_side' => 'مقارنة الناتج',
-	'pdt_comparing_page'  => 'مقارنة ناتج البارسر من [[$1]]',
+	'pdt_comparing_page'  => 'مقارنة ناتج المحلل من [[$1]]',
 );
 
 /** Asturian (Asturianu)

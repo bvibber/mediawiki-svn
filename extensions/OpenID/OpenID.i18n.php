@@ -687,19 +687,26 @@ panjenengan bisa milih salah siji saka opsi ing ngisor iki.',
  * @author Lovekhmer
  */
 $messages['km'] = array(
-	'openiderror'          => 'កំហុស​ក្នុងការផ្ទៀងផ្ទាត់',
-	'openidcancel'         => 'ការផ្ទៀងផ្ទាត់​ត្រូវបានលុបចោល',
-	'openidfailure'        => 'ការផ្ទៀងផ្ទាត់បរាជ័យ',
-	'openidsuccess'        => 'ផ្ទៀងផ្ទាត់ដោយជោគជ័យ',
-	'openidoptional'       => 'ជាជំរើស',
-	'openidrequired'       => 'ត្រូវការជាចាំបាច់',
-	'openidnickname'       => 'ឈ្មោះហៅក្រៅ',
-	'openidfullname'       => 'ឈ្មោះពេញ',
-	'openidemail'          => 'អាសយដ្ឋានអ៊ីមែល',
-	'openidlanguage'       => 'ភាសា',
-	'openidnotavailable'   => 'ឈ្មោះហៅក្រៅ​ដែលអ្នកពេញចិត្ត ($1) ត្រូវបានប្រើដោយ​អ្នកប្រើប្រាស់​ម្នាក់​ផ្សេងទៀតហើយ។',
-	'openidchoosefull'     => 'ឈ្មោះពេញ​របស់អ្នក ($1)',
-	'openidchoosepassword' => 'ពាក្យសំងាត់៖',
+	'openiderror'              => 'កំហុស​ក្នុងការផ្ទៀងផ្ទាត់',
+	'openidcancel'             => 'ការផ្ទៀងផ្ទាត់​ត្រូវបានលុបចោល',
+	'openidfailure'            => 'ការផ្ទៀងផ្ទាត់បរាជ័យ',
+	'openidsuccess'            => 'ផ្ទៀងផ្ទាត់ដោយជោគជ័យ',
+	'openidoptional'           => 'ជាជំរើស',
+	'openidrequired'           => 'ត្រូវការជាចាំបាច់',
+	'openidnickname'           => 'ឈ្មោះហៅក្រៅ',
+	'openidfullname'           => 'ឈ្មោះពេញ',
+	'openidemail'              => 'អាសយដ្ឋានអ៊ីមែល',
+	'openidlanguage'           => 'ភាសា',
+	'openidnotavailable'       => 'ឈ្មោះហៅក្រៅ​ដែលអ្នកពេញចិត្ត ($1) ត្រូវបានប្រើដោយ​អ្នកប្រើប្រាស់​ម្នាក់​ផ្សេងទៀតហើយ។',
+	'openidchooseinstructions' => 'អ្នកប្រើប្រាស់ទាំងត្រូវការឈ្មោះហៅក្រៅ
+
+អ្នកអាចជ្រើសរើសពីក្នុងជំរើសខាងក្រោម។',
+	'openidchoosefull'         => 'ឈ្មោះពេញ​របស់អ្នក ($1)',
+	'openidchoosemanual'       => 'ឈ្មោះនៃជំរើសរបស់អ្នក:',
+	'openidchooseexisting'     => 'គណនីមាននៅក្នុងវិគីនេះ:',
+	'openidchoosepassword'     => 'ពាក្យសំងាត់៖',
+	'tog-hideopenid'           => 'លាក់<a href="http://openid.net/">OpenID</a>របស់អ្នកនៅលើទំព័រអ្នកប្រើប្រាស់រប់អ្នក ប្រសិនបើអ្នកឡុកអ៊ីនដោយប្រើOpenID។',
+	'openidnousername'         => 'មិនមានឈ្មោះអ្នកប្រើប្រាស់បានបញ្ជាក់ទេ។',
 );
 
 /** Korean (한국어)

@@ -173,10 +173,11 @@ $messages['fi'] = array(
 
 /** French (Français)
  * @author Sherbrooke
+ * @author McDutchie
  */
 $messages['fr'] = array(
 	'backforth-next' => 'Suivant ($1)',
-	'backforth-desc' => 'Ajoute « Suivant » et « Précédent » à la page des liens alphabétiques en haut des pages',
+	'backforth-desc' => 'Ajoute des liens de navigation alphabétique « Suivant » et « Précédent » en haut des pages',
 	'backforth-prev' => 'Précédent ($1)',
 );
 
@@ -246,6 +247,15 @@ $messages['hu'] = array(
 $messages['hy'] = array(
 	'backforth-next' => 'Հաջորդ ($1)',
 	'backforth-prev' => 'Նախորդ ($1)',
+);
+
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'backforth-next' => 'Sequente ($1)',
+	'backforth-desc' => 'Adde ligamines de navigation alphabetic "Sequente" e "Precedente" in alto del paginas',
+	'backforth-prev' => 'Precedente ($1)',
 );
 
 /** Ido (Ido)

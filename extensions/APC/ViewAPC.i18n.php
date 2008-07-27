@@ -170,7 +170,7 @@ $messages['ar'] = array(
 	'viewapc-desc'                  => '[[Special:ViewAPC|عرض والتحكم بكاش الإيه بي سي]] مع ميدياويكي',
 	'right-apc'                     => 'استخدام كل الخواص في [[Special:ViewAPC]]',
 	'viewapc-apc-not-available'     => 'لا معلومات اختزان متوفرة.
-يبدو أن إيه بي سي لا يعمل.',
+يبدو أن APC لا يعمل.',
 	'viewapc-clear-confirm'         => 'هل تريد إفراغ الاختزان؟',
 	'viewapc-clear-user-cache'      => 'أفرغ اختزان المستخدم',
 	'viewapc-clear-code-cache'      => 'أفرغ اختزان opcode',
@@ -206,12 +206,12 @@ $messages['ar'] = array(
 (الشرائح المتعددة تنم عن مبعثرات)',
 	'viewapc-memory-usage'          => 'استعمال الذاكرة',
 	'viewapc-cache-efficiency'      => 'ضربات ومفقودات',
-	'viewapc-memory-free'           => 'حرّة: $1 ($2)',
+	'viewapc-memory-free'           => 'حرة: $1 ($2)',
 	'viewapc-memory-used'           => 'مستخدمة: $1 ($2)',
 	'viewapc-memory-hits'           => 'ضربات: $1 ($2)',
 	'viewapc-memory-miss'           => 'مفقودات: $1 ($2)',
 	'viewapc-memoryfragmentation'   => 'استخدام الذاكرة المفصل والمبعثرات',
-	'viewapc-fragmentation-info'    => 'التبعثر: $1 ($2 من ل $3 في $4 {{PLURAL:$4|مبعثرة|مبعثرات}})',
+	'viewapc-fragmentation-info'    => 'التبعثر: $1 ($2 من ل$3 في $4 {{PLURAL:$4|مبعثرة|مبعثرات}})',
 	'viewapc-fragmentation-none'    => 'التبعثر: لا تبعثر',
 	'viewapc-display-attribute'     => 'صفة',
 	'viewapc-display-value'         => 'قيمة',
@@ -225,7 +225,7 @@ $messages['ar'] = array(
 	'viewapc-display-type-user'     => 'بيانات تطبيقات الكاش',
 	'viewapc-display-num_hits'      => 'ضربات',
 	'viewapc-display-mtime'         => 'معدل',
-	'viewapc-display-creation_time' => 'مُنشأة',
+	'viewapc-display-creation_time' => 'منشأة',
 	'viewapc-display-deletion_time' => 'محذوف',
 	'viewapc-display-no-delete'     => 'غير محذوف',
 	'viewapc-display-access_time'   => 'تم الدخول إليها',
@@ -241,7 +241,7 @@ $messages['ar'] = array(
 	'viewapc-ls-header-size'        => 'حجم',
 	'viewapc-ls-header-accessed'    => 'آخر دخول',
 	'viewapc-ls-header-modified'    => 'آخر تعديل',
-	'viewapc-ls-header-created'     => 'مُنشأة',
+	'viewapc-ls-header-created'     => 'منشأة',
 	'viewapc-ls-header-deleted'     => 'محذوفة',
 	'viewapc-ls-header-timeout'     => 'وقت مستقطع',
 	'viewapc-ls-delete'             => '[حذف الآن]',
@@ -253,7 +253,7 @@ $messages['ar'] = array(
 	'viewapc-ls-sort-name'          => 'اسم',
 	'viewapc-ls-sort-accessed'      => 'آخر دخول',
 	'viewapc-ls-sort-modified'      => 'آخر تعديل',
-	'viewapc-ls-sort-created'       => 'مُنشأة',
+	'viewapc-ls-sort-created'       => 'منشأة',
 	'viewapc-ls-sort-deleted'       => 'محذوفة',
 	'viewapc-ls-sort-timeout'       => 'وقت مستقطع',
 	'viewapc-ls-limit-none'         => 'الكل',
@@ -261,11 +261,11 @@ $messages['ar'] = array(
 	'viewapc-ls-nodata'             => "''لا بيانات مطابقة''",
 	'viewapc-delete-ok'             => 'المدخلة المختزنة <nowiki>$1</nowiki> تم حذفها.',
 	'viewapc-delete-failed'         => 'فشل في حذف مدخلة الكاش <nowiki>$1</nowiki>.',
-	'viewapc-version-info'          => 'معلومات الإصدار',
+	'viewapc-version-info'          => 'معلومات النسخة',
 	'viewapc-version-changelog'     => 'سجل التغيير',
 	'viewapc-version-failed'        => 'غير قادر على جلب معلومات النسخة.',
 	'viewapc-version-ok'            => 'أنت تشغل أحدث نسخة من APC ($1)',
-	'viewapc-version-old'           => 'أنت تستخدم نسخة قديمة من APC ($1).
+	'viewapc-version-old'           => 'أنت تشغل نسخة قديمة من APC ($1).
 نسخة جديدة $2 متوفرة في http://pecl.php.net/package/APC/$2',
 	'viewapc-filecache-cleared'     => "'''''تم إفراغ اختزان الملفات.'''''",
 	'viewapc-usercache-cleared'     => "'''''تم إفراغ اختزان التطبيق.'''''",
@@ -472,6 +472,7 @@ APC verŝajne ne funkcias.',
 	'viewapc-display-info'          => 'Nomo',
 	'viewapc-display-ttl'           => 'Findato',
 	'viewapc-display-inode'         => 'Indeksnodo',
+	'viewapc-display-type'          => 'Speco',
 	'viewapc-display-mtime'         => 'Modifita',
 	'viewapc-display-creation_time' => 'Kreita',
 	'viewapc-display-deletion_time' => 'Forigita',
@@ -721,6 +722,13 @@ APC semble ne pas fonctionner.",
 Une nouvelle version $2 est disponible sur http://pecl.php.net/package/APC/$2',
 	'viewapc-filecache-cleared'     => "'''''Cache des fichiers supprimé.'''''",
 	'viewapc-usercache-cleared'     => "'''''Cache de l’application supprimé.'''''",
+);
+
+/** Western Frisian (Frysk)
+ * @author Snakesteuben
+ */
+$messages['fy'] = array(
+	'viewapc-ls-limit-none' => 'Alle',
 );
 
 /** Galician (Galego)
@@ -1044,6 +1052,7 @@ Nowša wersija $2 steji na http://pecl.php.net/package/APC/$2 k dispoziciji.',
  * @author Dani
  */
 $messages['hu'] = array(
+	'right-apc'                     => 'a Special:ViewAPC összes funkciójának használata',
 	'viewapc-info-general'          => 'Általános információk',
 	'viewapc-apc-version'           => 'APC-verzió',
 	'viewapc-php-version'           => 'PHP-verzió',
@@ -1181,6 +1190,14 @@ APC non pare esser active.',
 	'viewapc-ls-nodata'             => "''Nulle datos correspondente''",
 	'viewapc-delete-ok'             => 'Le entrata <nowiki>$1</nowiki> del cache es delite.',
 	'viewapc-delete-failed'         => 'Non poteva deler le entrata <nowiki>$1</nowiki> del cache.',
+	'viewapc-version-info'          => 'Information de version',
+	'viewapc-version-changelog'     => 'Lista de modificationes',
+	'viewapc-version-failed'        => 'Impossibile obtener le information de version.',
+	'viewapc-version-ok'            => 'Tu executa le ultime version de APC ($1)',
+	'viewapc-version-old'           => 'Tu executa un version ancian de APC ($1).
+Un nove version $2 es disponibile a http://pecl.php.net/package/APC/$2',
+	'viewapc-filecache-cleared'     => "'''''Cache de files radite.'''''",
+	'viewapc-usercache-cleared'     => "'''''Cache de application radite.'''''",
 );
 
 /** Indonesian (Bahasa Indonesia)
@@ -1682,11 +1699,15 @@ $messages['mt'] = array(
  * @author Fluence
  */
 $messages['nah'] = array(
-	'viewapc-display-info'   => 'Tōcāitl',
-	'viewapc-ls-submit'      => '¡Yāuh!',
-	'viewapc-ls-header-name' => 'Tōcāitl',
-	'viewapc-ls-sort-name'   => 'Tōcāitl',
-	'viewapc-ls-limit-none'  => 'Mochīntīn',
+	'viewapc-display-info'          => 'Tōcāitl',
+	'viewapc-display-deletion_time' => 'Ōmopolo',
+	'viewapc-ls-submit'             => '¡Yāuh!',
+	'viewapc-ls-header-name'        => 'Tōcāitl',
+	'viewapc-ls-header-deleted'     => 'Ōmopolo',
+	'viewapc-ls-scope-deleted'      => 'Ōmopolo',
+	'viewapc-ls-sort-name'          => 'Tōcāitl',
+	'viewapc-ls-sort-deleted'       => 'Ōmopolo',
+	'viewapc-ls-limit-none'         => 'Mochīntīn',
 );
 
 /** Low German (Plattdüütsch)
@@ -2171,6 +2192,7 @@ $messages['ps'] = array(
 	'viewapc-memory-free'           => 'تش: $1 ($2)',
 	'viewapc-memory-used'           => 'ډک: $1 ($2)',
 	'viewapc-display-value'         => 'ارزښت',
+	'viewapc-display-filename'      => 'د دوتنې نوم',
 	'viewapc-display-info'          => 'نوم',
 	'viewapc-display-type'          => 'ډول',
 	'viewapc-display-creation_time' => 'جوړ شو',

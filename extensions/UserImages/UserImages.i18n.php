@@ -19,10 +19,11 @@ $messages['en'] = array(
 
 /** Arabic (العربية)
  * @author Mido
+ * @author Meno25
  */
 $messages['ar'] = array(
 	'userimages-caption'  => 'الصور المرفوعة بواسطة $1',
-	'userimages-noname'   => 'اسم مستخدم خاطئ أو لم يتم تحديد أحد.',
+	'userimages-noname'   => 'اسم مستخدم غير صحيح أو لم يتم توفير واحد.',
 	'userimages-noimages' => 'ليس لدى $1 صور مرفوعة.',
 );
 

@@ -343,10 +343,13 @@ $messages['jv'] = array(
  * @author Lovekhmer
  */
 $messages['km'] = array(
-	'player-file'      => 'ឈ្មោះឯកសារ',
-	'player-not-found' => 'ឯកសារមិនត្រូវបានរកឃើញទេ',
-	'player-goto-page' => 'ទំព័រ',
-	'player-goto-file' => 'ឯកសារ',
+	'player'               => 'ឧបករណ៍លេង',
+	'player-file'          => 'ឈ្មោះឯកសារ',
+	'player-play'          => 'លេង',
+	'player-not-found'     => 'ឯកសារមិនត្រូវបានរកឃើញទេ',
+	'player-invalid-title' => 'ចំនងជើងមិនត្រឹមត្រូវ',
+	'player-goto-page'     => 'ទំព័រ',
+	'player-goto-file'     => 'ឯកសារ',
 );
 
 /** Kinaray-a (Kinaray-a)

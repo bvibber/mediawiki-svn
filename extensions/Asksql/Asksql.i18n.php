@@ -38,9 +38,9 @@ $messages['ang'] = array(
  */
 $messages['ar'] = array(
 	'asksql'          => 'استعلام SQL',
-	'asksql-desc'     => 'عمل كويري إس كيو إل من خلال [[Special:Asksql|صفحة خاصة]]',
+	'asksql-desc'     => 'عمل استعلام SQL من خلال [[Special:Asksql|صفحة خاصة]]',
 	'asksqltext'      => "استخدم الاستمارة بالأسفل لعمل استعلام مباشر لقاعدة البيانات.
-استخدم علامات مفردة ('مثل هذه') لتحديد حدود الخيوط.
+استخدم علامات مفردة ('مثل هذه') لتحديد حدود السلاسل.
 هذا عادة يضيف عبئا كبيرا للخادم، لذا من فضلك استخدم هذه الخاصية بقلة.",
 	'sqlislogged'     => 'من فضلك لاحظ أن كل الاستعلامات مسجلة.',
 	'sqlquery'        => 'أدخل الاستعلام',
@@ -378,6 +378,23 @@ az eszközt.",
 	'querysuccessful' => 'Lekérdezés sikeresen megtörtént',
 );
 
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'asksql'          => 'Consulta SQL',
+	'asksql-desc'     => 'Face consultas SQL a transverso de un [[Special:Asksql|pagina special]]',
+	'asksqltext'      => "Le formulario infra permitte facer un consulta directe al base de datos.
+Usa virgulettas singule ('como istes') pro delimitar le series litteral de characteres.
+Iste function frequentemente adde un carga considerabile al servitor, ergo usa lo con economia, per favor.",
+	'sqlislogged'     => 'Nota ben que tote le consultas es registrate.',
+	'sqlquery'        => 'Entra consulta',
+	'querybtn'        => 'Submitter consulta',
+	'selectonly'      => 'Solmente le consultas de lectura solmente es permittite.',
+	'querysuccessful' => 'Consulta succedite',
+	'right-asksql'    => 'Facer consultas SQL',
+);
+
 /** Indonesian (Bahasa Indonesia)
  * @author Ivan Lanin
  */
@@ -458,11 +475,12 @@ $messages['jv'] = array(
 
 /** Khmer (ភាសាខ្មែរ)
  * @author Chhorran
+ * @author Lovekhmer
  */
 $messages['km'] = array(
 	'asksql'          => 'សំណួរអង្កេត របស់ SQL',
-	'sqlquery'        => 'បញ្ចូល សំណួរអង្កេត',
-	'querybtn'        => 'ដាក់ស្នើ សំណួរអង្កេត',
+	'sqlquery'        => 'បញ្ចូលសំណួរអង្កេត',
+	'querybtn'        => 'ដាក់ស្នើសំណួរអង្កេត',
 	'selectonly'      => 'អនុញ្ញាតិ ចំពោះតែ សំណួរអង្កេត "ត្រឹមតែអាន" ។',
 	'querysuccessful' => 'សំណួរអង្កេត បានជោគជ័យ',
 );

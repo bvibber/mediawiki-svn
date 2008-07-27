@@ -87,46 +87,55 @@ $messages['af'] = array(
 
 /** Arabic (العربية)
  * @author Meno25
+ * @author Siebrand
  */
 $messages['ar'] = array(
-	'math_noblahtex'                        => 'لم يمكن تنفيذ بلاهتك، والتي ينبغي أن تكون في $1',
+	'math_noblahtex'                        => 'لم يمكن تنفيذ بلاه تك، والتي ينبغي أن تكون في $1',
 	'math-desc'                             => 'خرج MathML لوسوم &lt;math&gt;',
-	'math_AmbiguousInfix'                   => 'وضع غير مريح ل"$1" (حاول استخدام أقواس إضافية "{ ... }" للتوضيح)',
+	'math_AmbiguousInfix'                   => 'وضع غير مريح ل"$1".
+حاول استخدام أقواس إضافية "{ ... }" للتوضيح',
 	'math_CannotChangeDirectory'            => 'لا يمكن تغيير مجلد العمل',
 	'math_CannotCreateTexFile'              => 'لا يمكن إنشاء ملف تك',
 	'math_CannotRunDvipng'                  => 'لا يمكن تنفيذ dvipng',
-	'math_CannotRunLatex'                   => 'لا يمكن تنفيذ لاتك',
+	'math_CannotRunLatex'                   => 'لا يمكن تشغيل لاتك',
 	'math_CannotWritePngDirectory'          => 'لا يمكن الكتابة لمجلد PNG الخرج',
 	'math_CannotWriteTexFile'               => 'لا يمكن الكتابة إلى ملف تك',
 	'math_CasesRowTooBig'                   => 'يمكن فقط أن تكون هناك مدخلتان في كل صف في منع "حالات"',
 	'math_DoubleSubscript'                  => 'صادف سكريبتين فرعيين مرتبطين بنفس القاعدة (فقط واحد مسموح به)',
 	'math_DoubleSuperscript'                => 'صادف سكريبتين أعلى مرتبطين بنفس القاعدة (فقط واحد مسموح به)',
-	'math_IllegalCharacter'                 => 'مدخل حروف غير قانوني',
+	'math_IllegalCharacter'                 => 'حرف غير قانوني في المدخل',
 	'math_IllegalCommandInMathMode'         => 'الأمر "$1" غير قانوني في نمط الرياضيات',
-	'math_IllegalCommandInMathModeWithHint' => 'الأمر "$1" غير قانوني في نمط الرياضيات (ربما قصدت استخدام "$2" بدلا منه؟)',
+	'math_IllegalCommandInMathModeWithHint' => 'الأمر "$1" غير قانوني في نمط الرياضيات
+ربما قصدت استخدام "$2" بدلا منه؟',
 	'math_IllegalCommandInTextMode'         => 'الأمر "$1" غير قانوني في نمط النص',
-	'math_IllegalCommandInTextModeWithHint' => 'الأمر "$1" غير قانوني في نمط النص (ربما كنت تقصد استخدام "$2" بدلا منه؟)',
+	'math_IllegalCommandInTextModeWithHint' => 'الأمر "$1" غير قانوني في نمط النص
+ربما كنت تقصد استخدام "$2" بدلا منه؟',
 	'math_IllegalDelimiter'                 => 'delimiter غير قانوني يتبع "$1"',
-	'math_IllegalFinalBackslash'            => 'فاصلة غي قانونية "\\" في نهاية المدخل',
-	'math_IllegalNestedFontEncodings'       => 'أوامر إنكودنج الخط لا ينبغي أن تكون نستد',
+	'math_IllegalFinalBackslash'            => 'فاصلة غير قانونية "\\" في نهاية المدخل',
+	'math_IllegalNestedFontEncodings'       => 'أوامر تكويد الخط لا ينبغي أن تكون نستد',
 	'math_IllegalRedefinition'              => 'الأمر "$1" تم تعريفه بالفعل؛ لا يمكنك إعادة تعريفه',
 	'math_InvalidColour'                    => 'اللون "$1" غير صحيح',
 	'math_InvalidUtf8Input'                 => 'النص المدخل ليس UTF-8 صحيحا',
 	'math_LatexFontNotSpecified'            => 'لا خط لاتك تم تحديده ل"$1"',
 	'math_LatexPackageUnavailable'          => 'غير قادر على عرض PNG لأن رزمة لاتك "$1" غير متوفرة',
 	'math_MismatchedBeginAndEnd'            => 'الأمران "$1" و "$2" لا يتطابقان',
-	'math_MisplacedLimits'                  => 'الأمر "$1" يمكن أن يظهر فقط بعد عامل رياضيات (فكر في استخدام "\\mathop")',
-	'math_MissingCommandAfterNewcommand'    => 'اسم أمر جديد مفقود أو غير قانوني بعد "\\newcommand" (يجب أن يكون هناك أمر واحد معرف بالضبط؛ يجب أن يبدأ بباك سلاش "\\" ويحتوي فقط على حروف أبجدية)',
+	'math_MisplacedLimits'                  => 'الأمر "$1" يمكن أن يظهر فقط بعد عامل رياضيات.
+فكر في استخدام "\\mathop".',
+	'math_MissingCommandAfterNewcommand'    => 'اسم أمر جديد مفقود أو غير قانوني بعد "\\newcommand".
+يجب أن يكون هناك أمر واحد معرف بالضبط؛
+يجب أن يبدأ بباك سلاش "\\" ويحتوي فقط على حروف أبجدية.',
 	'math_MissingDelimiter'                 => 'delimiter مفقود بعد "$1"',
 	'math_MissingOpenBraceAfter'            => 'قوس مفتوح مفقود "{" بعد "$1"',
 	'math_MissingOpenBraceAtEnd'            => 'قوس مفتوح مفقود "{" في نهاية المدخل',
 	'math_MissingOpenBraceBefore'           => 'قوس مفتوح مفقود "{" قبل "$1"',
-	'math_MissingOrIllegalParameterCount'   => 'عدد محددات مفقود أو غير قانوني "$1" (يجب أن يكون رقما وحيدا بين 1 و 9 حصريا)',
+	'math_MissingOrIllegalParameterCount'   => 'عدد محددات مفقود أو غير قانوني "$1".
+يجب أن يكون رقما وحيدا بين 1 و 9 حصريا.',
 	'math_MissingOrIllegalParameterIndex'   => 'محدد فهرس مفقود أو غير قانوني في تعريف "$1"',
-	'math_NonAsciiInMathMode'               => 'الحروف التي ليست ASCII يمكن أن تستخدم فقط في نمط النص (حاول إحاطة الحروف المشكلة في "\\text{...}")',
+	'math_NonAsciiInMathMode'               => 'الحروف التي ليست ASCII يمكن أن تستخدم فقط في نمط النص
+حاول إحاطة الحروف المشكلة في "\\text{...}".',
 	'math_NotEnoughArguments'               => 'لا محددات كافية تم توفيرها ل"$1"',
 	'math_PngIncompatibleCharacter'         => 'غير قادر على توليد PNG يحتوي على الحرف $1 بطريقة صحيحة',
-	'math_ReservedCommand'                  => 'الأمر "$1" محفوظ للاستخدام الداخلي بواسطة بلاهتك',
+	'math_ReservedCommand'                  => 'الأمر "$1" محفوظ للاستخدام الداخلي بواسطة بلاه تك',
 	'math_SubstackRowTooBig'                => 'يمكن أن يكون هناك مدخلة واحدة في كل صف من منع "سبستاك"',
 	'math_TooManyMathmlNodes'               => 'توجد عقد كثيرة جدا في شجرة MathML',
 	'math_TooManyTokens'                    => 'المدخل طويل جدا',
@@ -141,8 +150,9 @@ $messages['ar'] = array(
 	'math_UnmatchedOpenBracket'             => 'صادف قوسا مفتوحا "[" بدون قوس مغلق مطابق "]"',
 	'math_UnmatchedRight'                   => 'صادف "\\right" بدون "\\left" مطابقة',
 	'math_UnrecognisedCommand'              => 'أمر غير متعرف عليه "$1"',
-	'math_WrongFontEncoding'                => 'الرمز "$1" ربما لا يظهر في إنكودنج الخط "$2"',
-	'math_WrongFontEncodingWithHint'        => 'الرمز "$1" ربما لا يظهر في إنكودنج الخط "$2" (حاول استخدام أمر "$3{...}")',
+	'math_WrongFontEncoding'                => 'الرمز "$1" ربما لا يظهر في تكويد الخط "$2"',
+	'math_WrongFontEncodingWithHint'        => 'الرمز "$1" ربما لا يظهر في تكويد الخط "$2".
+حاول استخدام أمر "$3{...}".',
 );
 
 /** Kotava (Kotava)
@@ -894,6 +904,77 @@ $messages['hu'] = array(
 	'math_UnrecognisedCommand'              => 'Ismeretlen parancs: „$1”',
 	'math_WrongFontEncoding'                => 'A „$1” szimbólum nem jelenhet meg a „$2” betűtípus-kódolásban',
 	'math_WrongFontEncodingWithHint'        => 'A „$1” szimbólum nem jelenhet meg a „$2” betűtípus-kódolásban (próbáld meg használni a „$3{...}” parancsot)',
+);
+
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'math_noblahtex'                        => 'Impossibile executar blahtex, que deberea trovar se in $1',
+	'math-desc'                             => 'Output de MathML pro le etiquettas &lt;math&gt;',
+	'math_AmbiguousInfix'                   => 'Position ambigue de "$1".
+Proba usar accolladas additional "{ ... }" pro disambiguar.',
+	'math_CannotChangeDirectory'            => 'Non pote cambiar de directorio de labor',
+	'math_CannotCreateTexFile'              => 'Non pote crear le file tex',
+	'math_CannotRunDvipng'                  => 'Non pote executar dvipng',
+	'math_CannotRunLatex'                   => 'Non pote executar latex',
+	'math_CannotWritePngDirectory'          => 'Non pote scriber in le directorio de destination pro le files PNG',
+	'math_CannotWriteTexFile'               => 'Non pote scriber in le file tex',
+	'math_CasesRowTooBig'                   => 'Il pote solmente haber duo entratas in cata rango de un bloco "cases"',
+	'math_DoubleSubscript'                  => 'Incontrava duo subscriptos attachate al mesme base.
+Solmente un es permittite.',
+	'math_DoubleSuperscript'                => 'Incontrava duo superscriptos attachate al mesme base.
+Solmente un es permittite.',
+	'math_IllegalCharacter'                 => 'Character prohibite in input',
+	'math_IllegalCommandInMathMode'         => 'Le commando "$1" es prohibite in modo de mathematica',
+	'math_IllegalCommandInMathModeWithHint' => 'Le commando "$1" es prohibite in modo de mathematica.
+Forsan tu voleva usar "$2" in so loco?',
+	'math_IllegalCommandInTextMode'         => 'Le commando "$1" es prohibite in modo de texto',
+	'math_IllegalCommandInTextModeWithHint' => 'Le commando "$1" es prohibite in modo de texto.
+Forsan tu voleva usar "$2" in so loco?',
+	'math_IllegalDelimiter'                 => 'Delimitator invalide post "$1"',
+	'math_IllegalFinalBackslash'            => 'Barra inverse "\\" invalide al fin del input',
+	'math_IllegalNestedFontEncodings'       => 'Le commandos de codification de typos de litteras non pote esser incapsulate le un in le altere',
+	'math_IllegalRedefinition'              => 'Le commando "$1" ha ja essite definite; tu non pote redefinir lo',
+	'math_InvalidColour'                    => 'Le color "$1" es invalide',
+	'math_InvalidUtf8Input'                 => 'Le serie de characteres de input non esseva in formato UTF-8 valide',
+	'math_LatexFontNotSpecified'            => 'Nulle typo de litteras LaTeX ha essite specificate pro "$1"',
+	'math_LatexPackageUnavailable'          => 'Impossibile facer le file PNG proque le pacchetto LaTeX "$1" non es disponibile',
+	'math_MismatchedBeginAndEnd'            => 'Le commandos "$1" e "$2" non corresponde',
+	'math_MisplacedLimits'                  => 'Le commando "$1" pote solmente apparer post un operator mathematic.
+Considera usar "\\mathop".',
+	'math_MissingCommandAfterNewcommand'    => 'Nove nomine de commando mancante o prohibite post "\\newcommand".
+Il debe haber precisemente un commando definite;
+illo debe comenciar con un barra inverse "\\" e continer solmente characteres alphabetic.',
+	'math_MissingDelimiter'                 => 'Delimitator manca post "$1"',
+	'math_MissingOpenBraceAfter'            => 'Accollada aperte "{" manca post "$1"',
+	'math_MissingOpenBraceAtEnd'            => 'Accollada aperte "{" manca al fin del input',
+	'math_MissingOpenBraceBefore'           => 'Accollada aperte "{" manca ante "$1"',
+	'math_MissingOrIllegalParameterCount'   => 'Numero de parametros mancante o invalide in definition de "$1".
+Debe esser un singule digito inter 1 e 9 inclusive.',
+	'math_MissingOrIllegalParameterIndex'   => 'Indice de parametros mancante o invalide in definition de "$1"',
+	'math_NonAsciiInMathMode'               => 'Le characteres non-ASCII pote solmente esser usate in modo de texto.
+Proba mitter le characteres problematic in un bloco "\\text{...}".',
+	'math_NotEnoughArguments'               => 'Numero de parametros insufficiente pro "$1"',
+	'math_PngIncompatibleCharacter'         => 'Impossibile generar correctemente un imagine PNG continente le character $1',
+	'math_ReservedCommand'                  => 'Le commando "$1" es reservate pro uso interne per blahtex',
+	'math_SubstackRowTooBig'                => 'Il pote solmente haber un entrata in cata rango de un bloco "substack"',
+	'math_TooManyMathmlNodes'               => 'Il ha troppo de nodos in le arbore MathML',
+	'math_TooManyTokens'                    => 'Le input es troppo longe',
+	'math_UnavailableSymbolFontCombination' => 'Le symbolo "$1" non es disponibile in le typo de litteras "$2"',
+	'math_UnexpectedNextCell'               => 'Le commando "&" pote solmente apparer intra un bloco "\\begin ... \\end"',
+	'math_UnexpectedNextRow'                => 'Le commando "\\\\" pote solmente apparer intra un bloco "\\begin ... \\end"',
+	'math_UnmatchedBegin'                   => 'Incontrava "\\begin" sin "\\end" correspondente',
+	'math_UnmatchedCloseBrace'              => 'Incontrava accollada clause "}" sin accollada aperte "{" correspondente',
+	'math_UnmatchedEnd'                     => 'Incontrava "\\end" sin "\\begin" correspondente',
+	'math_UnmatchedLeft'                    => 'Incontrava "\\left" sin "\\right" correspondente',
+	'math_UnmatchedOpenBrace'               => 'Incontrava accollada aperte "{" sin accollada clause "}" correspondente',
+	'math_UnmatchedOpenBracket'             => 'Incontrava parenthese recte aperte "[" sin parenthese recte clause "]" correspondente',
+	'math_UnmatchedRight'                   => 'Incontrava "\\right" sin "\\left" correspondente',
+	'math_UnrecognisedCommand'              => 'Commando "$1" non recognoscite',
+	'math_WrongFontEncoding'                => 'Le symbolo "$1" non pote apparer in le codification de characteres "$2"',
+	'math_WrongFontEncodingWithHint'        => 'Le symbolo "$1" non pote apparer in le codification de characteres "$2".
+Proba usar le commando "$3{...}".',
 );
 
 /** Italian (Italiano)

@@ -232,6 +232,15 @@ $messages['hy'] = array(
 	'block_title_error'            => 'Ցավոք՝ այս հոդվածի անվանման հիշելը չի թույլատրվում։',
 );
 
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'block_title_error_page_title' => 'Titulo blocate',
+	'block_title_error-desc'       => 'Forni un methodo simple pro impedir le creation o immagazinage de paginas con certe titulos',
+	'block_title_error'            => 'Pardono, non es permittite immagazinar un pagina con iste titulo.',
+);
+
 /** Icelandic (Íslenska)
  * @author S.Örvarr.S
  */

@@ -80,7 +80,9 @@ $messages['ar'] = array(
 	'spamregex'                      => 'سبام ريجيكس',
 	'spamregex-desc'                 => '[[Special:Spamregex|فلتر]] العبارات غير المرغوب فيها في الصفحات المعدلة، بالاعتماد على التعبيرات المنتظمة',
 	'spamregex-summary'              => 'النص تم العثور عليه في ملخص الصفحة.',
-	'spamregex-intro'                => 'استخدم هذه الاستمارة لمنع تعبيرات من الحفظ في نص صفحة بكفاءة. لو أن النص يحتوي على التعبير المعطى، لن يتم حفظ التغيير وسيتم عرض تفسير للمستخدم الذي حاول حفظ الصفحة. ينصح بالحذر، التعبيرات لا ينبغي أن تكون قصيرة جدا أو شائعة جدا.',
+	'spamregex-intro'                => 'استخدم هذه الاستمارة لمنع تعبيرات من الحفظ في نص صفحة بكفاءة.
+لو أن النص يحتوي على التعبير المعطى، لن يتم حفظ التغيير وسيتم عرض تفسير للمستخدم الذي حاول حفظ الصفحة.
+ينصح بالحذر، التعبيرات لا ينبغي أن تكون قصيرة جدا أو شائعة جدا.',
 	'spamregex-page-title'           => 'منع سبام ريجيكس التعبيرات غير المرغوب فيها',
 	'spamregex-currently-blocked'    => "'''العبارات الممنوعة حاليا:'''",
 	'spamregex-no-currently-blocked' => "'''لا توجد عبارات ممنوعة.'''",
@@ -395,12 +397,14 @@ $messages['nds'] = array(
 $messages['nl'] = array(
 	'spamregex'                      => 'SpamRegex',
 	'spamregex-desc'                 => "Ongewilde zinnen [[Special:Spamregex|uitfilteren]] in bewerkte pagina's, gebaseerd op reguliere expressies",
+	'spamregex-error-unblocking'     => 'Fout bij het opheffen van de blokkade van "$1". Wellicht bestaat het patroon niet.',
 	'spamregex-summary'              => 'De tekst is gevonden in de paginasamenvatting.',
 	'spamregex-intro'                => 'Gebruik dit formulier om doeltreffend te voorkomen dat uitdrukkingen worden opgeslagen in een paginatekst.
 Als de tekst de gegeven uitdrukkingen bevat, dan wordt de wijziging niet opgeslagen en wordt een uitleg aan de gebruiker weergegeven die de pagina probeerde op te slaan.
 Zorg dat de uitdrukkingen niet te kort of veelvoorkomend zijn.',
 	'spamregex-page-title'           => 'Blokkeren van uitdrukkingen met regex',
 	'spamregex-currently-blocked'    => "'''Huidig geblokkeerde zinnen:'''",
+	'spamregex-move'                 => 'De opgegeven reden bevat een tekstdeel dat op de zwarte lijst staat.',
 	'spamregex-no-currently-blocked' => "'''Er zijn geen geblokkeerde zinnen.'''",
 	'spamregex-log-1'                => "* '''$1''' $2 ([{{SERVER}}$3&text=$4 verwijderen]) toegevoegd door",
 	'spamregex-log-2'                => ' op $1',

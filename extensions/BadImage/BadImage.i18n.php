@@ -74,7 +74,7 @@ $messages['ang'] = array(
  */
 $messages['ar'] = array(
 	'badimages'                => 'قائمة الصور السيئة',
-	'badimages-desc'           => 'يمد قدرات قائمة الصور السيئة للميدياويكي',
+	'badimages-desc'           => 'يمد قدرات قائمة الصور السيئة لميدياويكي',
 	'badimages-add-btn'        => 'إضافة',
 	'badimages-added'          => '$1 تمت إضافتها للقائمة.',
 	'badimages-count'          => "{{PLURAL:$1|توجد|توجد}} '''$1''' {{PLURAL:$1|صورة|صورة}} في قائمة الصور السيئة.",
@@ -720,8 +720,26 @@ $messages['hu'] = array(
  * @author McDutchie
  */
 $messages['ia'] = array(
-	'badimages-add-btn' => 'Adder',
-	'badimages-reason'  => 'Motivo:',
+	'badimages'                => 'Lista de imagines problematic',
+	'badimages-desc'           => 'Extende le capabilitates de listar imagines problematic de MediaWiki',
+	'badimages-add-btn'        => 'Adder',
+	'badimages-added'          => '$1 ha essite addite al lista.',
+	'badimages-count'          => "Il ha '''$1''' {{PLURAL:$1|imagine|imagines}} in le lista de imagines problematic.",
+	'badimages-name'           => 'Nomine:',
+	'badimages-not-added'      => 'Le imagine non poteva esser addite.',
+	'badimages-not-removed'    => 'Le imagine non poteva esser removite.',
+	'badimages-reason'         => 'Motivo:',
+	'badimages-remove'         => '(remover)',
+	'badimages-remove-btn'     => 'Remover',
+	'badimages-remove-confirm' => 'Confirma le remotion del file $1 del lista:',
+	'badimages-removed'        => '$1 ha essite removite del lista.',
+	'badimages-subheading'     => 'Entratas actual',
+	'badimages-unprivileged'   => '(Tu non ha le permission de alterar le lista)',
+	'badimages-log-name'       => 'Lista de imagines problematic',
+	'badimages-log-header'     => 'Isto es un registro de cambiamentos in le [[{{MediaWiki:Badimages-page}}|lista de imagines problematic]].',
+	'badimages-log-add'        => 'addeva [[$1]] al lista de imagines problematic',
+	'badimages-log-remove'     => 'removeva [[$1]] del lista de imagines problematic',
+	'badimages-page'           => '{{ns:help}}:Lista de imagines problematic',
 );
 
 /** Indonesian (Bahasa Indonesia)
@@ -788,6 +806,7 @@ $messages['is'] = array(
 /** Italian (Italiano)
  * @author BrokenArrow
  * @author Melos
+ * @author McDutchie
  */
 $messages['it'] = array(
 	'badimages'                => 'Elenco dei file discutibili',
@@ -805,7 +824,7 @@ $messages['it'] = array(
 	'badimages-subheading'     => 'Elementi attualmente presenti',
 	'badimages-unprivileged'   => "(Non si dispone delle autorizzazioni sufficienti a modificare l'elenco)",
 	'badimages-log-name'       => 'File discutibili',
-	'badimages-log-header'     => "Qui di seguito viene riportata la lista delle modifiche all'elenco dei file discutibili",
+	'badimages-log-header'     => "Qui di seguito viene riportata la lista delle modifiche all'[[{{MediaWiki:Badimages-page}}|elenco dei file discutibili]].",
 	'badimages-log-add'        => "ha aggiunto [[$1]] all'elenco dei file discutibili",
 	'badimages-log-remove'     => "ha rimosso [[$1]] dall'elenco dei file discutibili",
 	'badimages-page'           => '{{ns:help}}:Elenco dei file discutibili',
@@ -1060,7 +1079,9 @@ $messages['mt'] = array(
  * @author Fluence
  */
 $messages['nah'] = array(
-	'badimages-name' => 'Tōcāitl',
+	'badimages-add-btn' => 'Ticcētilīz',
+	'badimages-name'    => 'Tōcāitl',
+	'badimages-reason'  => 'Īxtlamatiliztli:',
 );
 
 /** Low German (Plattdüütsch)

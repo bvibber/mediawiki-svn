@@ -15,12 +15,21 @@ $messages['en'] = array(
 	'right-forcepreviewexempt' => 'May save without using Show preview',
 );
 
+/** Afrikaans (Afrikaans)
+ * @author Naudefj
+ */
+$messages['af'] = array(
+	'forcepreview'             => 'Stoor bladsy (gebruik eers die voorskou)',
+	'forcepreview-desc'        => 'Forseer voorskou vir gebruikers sonder regte',
+	'right-forcepreviewexempt' => "Mag 'n bladsy stoor sonder voorskou",
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */
 $messages['ar'] = array(
 	'forcepreview'             => 'حفظ الصفحة (استخدم عرض مسبق أولا)',
-	'forcepreview-desc'        => 'إجبار على العرض المسبق للمستخدمين الذين لا يمتلكون الصلاحيات اللازمة',
+	'forcepreview-desc'        => 'إجبار المستخدمين غير الموثوقين على العرض المسبق',
 	'right-forcepreviewexempt' => 'يمكنه الحفظ بدون استخدام العرض المسبق',
 );
 

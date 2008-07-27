@@ -27,7 +27,7 @@ $messages['en'] = array(
 $messages['ar'] = array(
 	'categoryintersection'               => 'تقاطع تصنيف',
 	'categoryintersection-desc'          => 'يصون جدول بقيم الهاش ل[[Special:CategoryIntersection|تقاطعات التصنيف]] في صفحة',
-	'categoryintersection-doit'          => 'اعرض الصفحات في هذه التصنيفات',
+	'categoryintersection-doit'          => 'اعرض الصفحات في كل هذه التصنيفات',
 	'categoryintersection-maxcategories' => 'أقصى عدد مسموح به للتصنيفات المتقاطعة هو $1.',
 	'categoryintersection-results'       => 'البحث أرجع $1 {{PLURAL:$1|نتيجة|نتيجة}}.',
 );
@@ -158,6 +158,17 @@ $messages['hu'] = array(
 	'categoryintersection-doit'          => 'Lapok megjelenítése, melyek a következő összes kategóriában benne vannak',
 	'categoryintersection-maxcategories' => 'Egyszerre maximum $1 kategóriának lehet lekérni a metszetét.',
 	'categoryintersection-results'       => 'A keresésnek $1 eredménye van.',
+);
+
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'categoryintersection'               => 'Intersection de categorias',
+	'categoryintersection-desc'          => "Mantene un tabella con valores ''hash'' pro [[Special:CategoryIntersection|intersectiones de categorias]] intra un pagina",
+	'categoryintersection-doit'          => 'Listar le paginas in tote iste categorias',
+	'categoryintersection-maxcategories' => 'Le numero maxime de categorias intersecante permittite es $1.',
+	'categoryintersection-results'       => 'Le recerca retornava $1 {{PLURAL:$1|resultato|resultatos}}.',
 );
 
 /** Icelandic (Íslenska)

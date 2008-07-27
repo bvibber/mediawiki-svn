@@ -150,6 +150,15 @@ $messages['hu'] = array(
 	'categorystepper-start' => '(a kategória eleje)',
 );
 
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'categorystepper-desc'  => 'Presenta un quadro con ligamines pro navigar alphabeticamente a transverso del categorias in que un certe pagina se trova',
+	'categorystepper-end'   => '(Fin del categoria)',
+	'categorystepper-start' => '(Initio del categoria)',
+);
+
 /** Icelandic (Íslenska)
  * @author S.Örvarr.S
  */

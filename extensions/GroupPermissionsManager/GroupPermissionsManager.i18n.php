@@ -306,6 +306,13 @@ $messages['fr'] = array(
 	'right-edit-new'                 => 'Modifier les pages (qui n’ont pas de page de discussion)',
 );
 
+/** Western Frisian (Frysk)
+ * @author Snakesteuben
+ */
+$messages['fy'] = array(
+	'grouppermissions-sp-save' => 'Fêstlizze',
+);
+
 /** Galician (Galego)
  * @author Toliño
  * @author Siebrand
@@ -376,6 +383,58 @@ $messages['gl'] = array(
  */
 $messages['ia'] = array(
 	'grouppermissions-dologin' => 'Aperir un session',
+);
+
+/** Italian (Italiano)
+ * @author Darth Kule
+ */
+$messages['it'] = array(
+	'grouppermissions'               => 'Gestisci permessi di gruppi',
+	'sortpermissions'                => 'Ordina permessi',
+	'removeunusedgroups'             => 'Rimuovi gruppi inutilizzati',
+	'grouppermissions-desc'          => 'Gestisci permessi di gruppo attraverso una [[Special:GroupPermissions|pagina speciale]]',
+	'grouppermissions-desc2'         => 'Sistema dei permessi esteso',
+	'grouppermissions-header'        => 'È possibile usare questa pagina per cambiare i permessi sottostanti dei vari gruppi utente',
+	'grouppermissions-search'        => 'Gruppo:',
+	'grouppermissions-dologin'       => 'Entra',
+	'grouppermissions-dosearch'      => 'Vai',
+	'grouppermissions-searchlabel'   => 'Cerca gruppo',
+	'grouppermissions-deletelabel'   => 'Cancella gruppo',
+	'grouppermissions-error'         => 'Si è verificato un errore sconosciuto, premi il pulsante Indietro sul tuo browser e riprova',
+	'grouppermissions-change'        => 'Cambia i permessi di gruppo',
+	'grouppermissions-add'           => 'Aggiungi gruppo',
+	'grouppermissions-delete'        => 'Cancella gruppo',
+	'grouppermissions-comment'       => 'Commento:',
+	'grouppermissions-addsuccess'    => '$1 è stato aggiunto con successo',
+	'grouppermissions-deletesuccess' => '$1 è stato cancellato con successo',
+	'grouppermissions-changesuccess' => 'I permessi per $1 sono stati cambiati con successo',
+	'grouppermissions-true'          => 'Vero',
+	'grouppermissions-false'         => 'Falso',
+	'grouppermissions-never'         => 'Mai',
+	'grouppermissions-nooldrev'      => 'Si è verificato un errore nel tentativo di archiviare il file config corrente. Non verrà creato alcun archivio',
+	'grouppermissions-sort-read'     => 'Lettura',
+	'grouppermissions-sort-edit'     => 'Modifica',
+	'grouppermissions-sort-manage'   => 'Gestione',
+	'grouppermissions-sort-admin'    => 'Amministrazione',
+	'grouppermissions-sort-tech'     => 'Tecnico',
+	'grouppermissions-sort-misc'     => 'Varie',
+	'grouppermissions-log-add'       => 'aggiunto gruppo "$2"',
+	'grouppermissions-log-change'    => 'permessi modificati per il gruppo "$2"',
+	'grouppermissions-log-delete'    => 'cancellato gruppo "$2"',
+	'grouppermissions-log-name'      => 'Log permessi dei gruppi',
+	'grouppermissions-log-header'    => 'Questa pagina elenca i cambiamenti dei permessi sottostanti dei gruppi utente',
+	'grouppermissions-needjs'        => 'Attenzione: JavaScript non è attivo sul tuo browser. Alcune funzioni potrebbero non funzionare!',
+	'grouppermissions-sp-header'     => 'È possibile usare questa pagina per gestire come i permessi sono ordinati e aggiungerne nuovi',
+	'grouppermissions-sp-sort'       => 'Ordina permessi',
+	'grouppermissions-sp-save'       => 'Salva',
+	'grouppermissions-sp-success'    => 'I permessi sono stati ordinati con successo',
+	'grouppermissions-sp-addtype'    => 'Aggiungi tipo di ordinamento',
+	'grouppermissions-sp-addperm'    => 'Aggiungi permesso',
+	'grouppermissions-sp-remove'     => 'rimuovi',
+	'grouppermissions-sp-deltype'    => 'Cancella tipo di ordinamento',
+	'grouppermissions-rug-header'    => 'È possibile usare questa pagina per rimuovere utenti dai gruppi inutilizzati (cancellati).',
+	'grouppermissions-rug-success'   => 'Utenti rimossi con successo dai gruppi inutilizzati!',
+	'grouppermissions-rug-confirm'   => 'Rimuovi utenti dai gruppi inutilizzati',
 );
 
 /** Khmer (ភាសាខ្មែរ)

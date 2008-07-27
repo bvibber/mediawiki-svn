@@ -48,7 +48,7 @@ $messages['ar'] = array(
 مثال 3: &nbsp; <tt>[[Special:Call/:My Page,parm1=value1,parm2=value2]]</tt><br /><br />
 مثال 4 (مسار متصفح): &nbsp; <tt>http://mydomain/mywiki/index.php?Special:Call/:My Page,parm1=value1</tt><br /><br />
 
-<i>امتداد الاستدعاء</i> سيستدعي الصفحة المعطاة ويمرر المحددات.<br />سترى محتويات الصفحة المستدعاة وعنوانها ولكن 'نوعها' سيكون ذلك الخاص بصفحة خاصة,<br />أي أن صفحة مثل هذه لا يمكن تعديلها.<br />المحتويات التي تراها ربما تتغير على حسب قيمة المحددات التي مررتها.<br /><br />
+<i>امتداد الاستدعاء</i> سيستدعي الصفحة المعطاة ويمرر المحددات.<br />سترى محتويات الصفحة المستدعاة وعنوانها ولكن 'نوعها' سيكون ذلك الخاص بصفحة خاصة،<br />أي أن صفحة مثل هذه لا يمكن تعديلها.<br />المحتويات التي تراها ربما تتغير على حسب قيمة المحددات التي مررتها.<br /><br />
 <i>امتداد الاستدعاء</i> مفيد في بناء تطبيقات تفاعلية مع الميدياويكي.<br />لمثال انظر <a href='http://semeb.com/dpldemo/Template:Catlist'>DPL GUI</a> ..<br />
 في حالة وجود مشكلات يمكنك محاولة <b>Special:Call/DebuG</b>",
 	'call-save'         => "ناتج هذا الاستدعاء سيتم حفظه في صفحة اسمها ''$1''.",
@@ -257,6 +257,31 @@ Probléma esetén megpróbálhatod a <b>Special:Call/DebuG</b> használatát",
 	'call-save'         => "A hívás kimenetét el lehet menteni egy ''$1'' nevű lapra.",
 	'call-save-success' => 'A következő szöveg el lett mentve <big>[[$1]]</big> néven.',
 	'call-save-failed'  => 'A következő szöveg NEM lett elmentve, mert már létezik <big>[[$1]]</big> nevű lap.',
+);
+
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'call'              => 'Appello',
+	'call-desc'         => 'Crea un ligamine verso un patrono (o verso un pagina wiki normal) con passage de parametros.
+Pote esser usate in le linea de commandos del navigator o in texto wiki.',
+	'call-text'         => "Le extension Appello expecta un pagina wiki al qual pote eser passate parametros.
+
+Exemplo 1: &nbsp; <tt>[[Special:Call/Mi patrono,parm1=valor1]]</tt><br />
+Exemplo 2: &nbsp; <tt>[[Special:Call/Talk:Mi discussion,parm1=valor1]]</tt><br />
+Exemplo 3: &nbsp; <tt>[[Special:Call/:Mi pagina,parm1=valor1,parm2=valor2]]</tt><br />
+Exemplo 4 (adresse URL): &nbsp; <tt>http://midominio/miwiki/index.php?Special:Call/:Mi_pagina,parm1=valor1</tt>
+
+Le <i>extension Appello</i> appellara le pagina date e passara le parametros.<br />
+Tu videra le contento del pagina appellate e su titulo, ma su 'typo' essera de un pagina special, i.e. un tal pagina non pote esser modificate.<br />Le contento que tu vide pote variar dependente del valores del parametros que tu passa.
+
+Le <i>extension Appello</i> es utile pro construer applicationes interactive con MediaWiki.<br />
+Pro un exemplo, vide <a href='http://semeb.com/dpldemo/Template:Catlist'>le interfacie de usator graphic de DPL</a> ..<br />
+In caso de problemas, tu pote probar <b>Special:Call/DebuG</b>",
+	'call-save'         => "Le output de iste appello se immagazinarea in un pagina con titulo ''$1''.",
+	'call-save-success' => 'Le sequente texto ha essite immagazinate in le pagina <big>[[$1]]</big> .',
+	'call-save-failed'  => 'Le sequente texto NON ha essite immagazinate in le pagina <big>[[$1]]</big> proque iste pagina existe ja.',
 );
 
 /** Japanese (日本語)

@@ -54,6 +54,7 @@ $messages['af'] = array(
 	'youtubeauthsub_description'        => 'Beskrywing',
 	'youtubeauthsub_keywords'           => 'Sleutelwoorde',
 	'youtubeauthsub_category'           => 'Kategorie',
+	'youtubeauthsub_submit'             => 'Oplaai',
 	'youtubeauthsub_jserror_nokeywords' => 'Verskaf asseblief een of meer sleutelwoorde.',
 );
 

@@ -51,11 +51,12 @@ $messages['af'] = array(
 
 /** Arabic (العربية)
  * @author Meno25
+ * @author Siebrand
  */
 $messages['ar'] = array(
 	'specialuserstats'                => 'إحصاءات الاستخدام',
 	'usagestatistics'                 => 'إحصاءات الاستخدام',
-	'usagestatistics-desc'            => 'يعرض إحصائيات الاستخدام لمستخدم منفرد وللويكي ككل',
+	'usagestatistics-desc'            => 'يعرض إحصاءات الاستخدام لمستخدم منفرد وللويكي ككل',
 	'usagestatisticsfor'              => '<h2>إحصاءات الاستخدام ل[[User:$1|$1]]</h2>',
 	'usagestatisticsallusers'         => 'كل المستخدمين',
 	'usagestatisticsinterval'         => 'مدة',
@@ -74,8 +75,8 @@ $messages['ar'] = array(
 	'usagestatisticscumulative'       => 'تراكمي',
 	'usagestatisticscumulative-text'  => 'تراكمي',
 	'usagestatisticscalselect'        => 'اختيار',
-	'usagestatistics-editindividual'  => 'إحصائيات تعديلات المستخدم المنفرد $1',
-	'usagestatistics-editpages'       => 'إحصائيات صفحات المستخدم المنفرد $1',
+	'usagestatistics-editindividual'  => 'إحصاءات تعديلات المستخدم المنفرد $1',
+	'usagestatistics-editpages'       => 'إحصاءات صفحات المستخدم المنفرد $1',
 );
 
 /** Asturian (Asturianu)
@@ -288,6 +289,7 @@ $messages['el'] = array(
 
 /** Esperanto (Esperanto)
  * @author Yekrats
+ * @author Siebrand
  */
 $messages['eo'] = array(
 	'specialuserstats'                => 'Statistiko de uzado',
@@ -296,7 +298,7 @@ $messages['eo'] = array(
 	'usagestatisticsfor'              => '<h2>Statistiko pri uzado por [[User:$1|$1]]</h2>',
 	'usagestatisticsallusers'         => 'Ĉiuj uzantoj',
 	'usagestatisticsinterval'         => 'Intervalo',
-	'usagestatisticstype'             => 'Tipo',
+	'usagestatisticstype'             => 'Speco',
 	'usagestatisticsstart'            => 'Komenco-dato',
 	'usagestatisticsend'              => 'Fino-dato',
 	'usagestatisticssubmit'           => 'Generu statistikojn',

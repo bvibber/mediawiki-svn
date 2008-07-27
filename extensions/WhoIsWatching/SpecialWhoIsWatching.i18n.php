@@ -22,7 +22,8 @@ Please use the page [[MediaWiki:Number_of_watching_users_pageview]] to define an
 $messages['ar'] = array(
 	'whoiswatching'                => 'من يراقب صفحة ويكي',
 	'specialwhoiswatchingthepage'  => 'من يراقب %s',
-	'specialwhoiswatchingusage'    => 'هذه الصفحة الخاصة لا يمكن استخدامها بمفردها. من فضلك استخدم الصفحة [[MediaWiki:Number_of_watching_users_pageview]] لتعريف نقطة مدخل إلى هذه الصفحة الخاصة.',
+	'specialwhoiswatchingusage'    => 'هذه الصفحة الخاصة لا يمكن استخدامها بمفردها.
+من فضلك استخدم الصفحة [[MediaWiki:Number_of_watching_users_pageview]] لتعريف نقطة مدخل إلى هذه الصفحة الخاصة.',
 	'specialwhoiswatchingaddusers' => 'أضف مستخدمين لمراقبة الصفحة',
 	'specialwhoiswatchingaddbtn'   => 'أضف مستخدمين مختارين',
 );

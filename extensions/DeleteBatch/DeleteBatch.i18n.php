@@ -61,7 +61,7 @@ $messages['ar'] = array(
 	'deletebatch-reason'               => 'سبب الحذف',
 	'deletebatch-processing'           => 'جاري حذف الصفحات',
 	'deletebatch-from-file'            => 'من قائمة ملف',
-	'deletebatch-from-form'            => 'من من',
+	'deletebatch-from-form'            => 'استمارة من',
 	'deletebatch-success-subtitle'     => 'ل$1',
 	'deletebatch-omitting-nonexistant' => 'إزالة صفحة غير موجودة $1.',
 	'deletebatch-omitting-invalid'     => 'إزالة صفحة غير صحيحة $1.',
@@ -97,10 +97,13 @@ $messages['eo'] = array(
 	'deletebatch-button'           => 'FORIGI',
 	'deletebatch-here'             => '<b>ĉi tie</b>',
 	'deletebatch-caption'          => 'Paĝlisto',
+	'deletebatch-as'               => 'Voki la skripton kiel',
 	'deletebatch-or'               => '<b>AŬ</b>',
+	'deletebatch-page'             => 'Forigotaj paĝoj',
 	'deletebatch-from-file'        => 'de dosierlisto',
 	'deletebatch-from-form'        => 'de paĝo',
 	'deletebatch-success-subtitle' => 'por $1',
+	'deletebatch-select-script'    => 'skripto por forigi paĝon',
 	'deletebatch-select-yourself'  => 'vi',
 );
 
@@ -164,6 +167,13 @@ Un fichier importé pourra contenir un nom de la page et un motif facultatif sé
 	'deletebatch-no-page'              => 'Veuillez indiquer au moins une page à supprimer OU un fichier donné contenant une liste de pages.',
 );
 
+/** Western Frisian (Frysk)
+ * @author Snakesteuben
+ */
+$messages['fy'] = array(
+	'deletebatch-reason' => 'Reden foar it wiskjen',
+);
+
 /** Galician (Galego)
  * @author Toliño
  */
@@ -202,6 +212,13 @@ O ficheiro cargado debería conter o nome da páxina e unha razón opcional sepa
 $messages['ia'] = array(
 	'deletebatch-button' => 'Deler',
 	'deletebatch-reason' => 'Motivo pro deletion',
+);
+
+/** Italian (Italiano)
+ * @author Melos
+ */
+$messages['it'] = array(
+	'deletebatch-reason' => 'Motivo della cancellazione',
 );
 
 /** Khmer (ភាសាខ្មែរ)

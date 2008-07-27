@@ -41,10 +41,10 @@ $messages['an'] = array(
  */
 $messages['ar'] = array(
 	'intersection-desc'          => 'يخرج قائمة معلمة بأحدث المدخلات الساكنة في تصنيف، أو اتحاد عدة تصنيفات',
-	'intersection_toomanycats'   => 'قائمة صفحة ديناميكية: تصنيفات كثيرة جدا!',
-	'intersection_toofewcats'    => 'قائمة صفحة ديناميكية: تصنيفات قليلة جدا!',
-	'intersection_noresults'     => 'قائمة صفحة ديناميكية: لا نتائج!',
-	'intersection_noincludecats' => 'قائمة صفحة ديناميكية: ينبغي أن تضمن تصنيفا واحدا على الأقل، أو تحدد نطاقا!',
+	'intersection_toomanycats'   => 'خطأ: تصنيفات كثيرة جدا!',
+	'intersection_toofewcats'    => 'خطأ: تصنيفات قليلة جدا!',
+	'intersection_noresults'     => 'خطأ: لا نتائج!',
+	'intersection_noincludecats' => 'خطأ: ينبغي أن تضمن تصنيفا واحدا على الأقل، أو تحدد نطاقا!',
 );
 
 /** Asturian (Asturianu)

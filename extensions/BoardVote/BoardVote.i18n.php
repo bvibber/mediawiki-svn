@@ -341,7 +341,7 @@ $messages['ar'] = array(
 	'boardvote_edits'          => 'التعديلات',
 	'boardvote_days'           => 'الأيام',
 	'boardvote_ip'             => 'الأيبي',
-	'boardvote_ua'             => 'مؤشر متصفح المستخدم (يوزرإيجنت)',
+	'boardvote_ua'             => 'وسيط المستخدم',
 	'boardvote_listintro'      => '<p>فيما يلي قائمة بكافة عمليات التصويت إلى هذه اللحظة.
 $1 للبيانات المشفرة.</p>',
 	'boardvote_dumplink'       => 'اضغط هنا',
@@ -357,8 +357,10 @@ $1 للبيانات المشفرة.</p>',
 	'group-boardvote'          => 'إداريو انتخابات المجلس',
 	'group-boardvote-member'   => 'إداري انتخابات المجلس',
 	'grouppage-boardvote'      => '{{ns:project}}:إداري انتخابات المجلس',
-	'boardvote_blocked'        => 'عذرا، لقد تم منعك في الويكي الذي أنت مسجل به. المستخدمون الممنوعون غير مسموح لهم بالتصويت.',
-	'boardvote_bot'            => 'عذرا، أنت تمتلك علم بوت في الويكي الخاص بك. حسابات البوت غير مسموح لها بالتصويت.',
+	'boardvote_blocked'        => 'عذرا، لقد تم منعك في الويكي الذي أنت مسجل به.
+المستخدمون الممنوعون غير مسموح لهم بالتصويت.',
+	'boardvote_bot'            => 'عذرا، أنت تمتلك علم بوت في الويكي الخاص بك.
+حسابات البوت غير مسموح لها بالتصويت.',
 	'boardvote_welcome'        => "مرحبا '''$1'''!",
 	'go_to_board_vote'         => 'انتخابات مجلس ويكيميديا 2008',
 	'boardvote_redirecting'    => 'من أجل مزيد من السرية والشفافية، ندير الانتخابات من خلال خادم خارجي مستقل.
@@ -2545,10 +2547,90 @@ Az aláíratlan tanúsítványú oldallal kapcsolatban egy biztonsági figyelmez
  * @author McDutchie
  */
 $messages['ia'] = array(
-	'boardvote'      => 'Election del consilio de administration del Fundation Wikimedia',
-	'boardvote-desc' => '[[meta:Board elections/2008|Election del consilio de administration del Fundation Wikimedia]]',
-	'boardvote_user' => 'Usator',
-	'boardvote_days' => 'Dies',
+	'boardvote'                => 'Election del consilio de administration del Fundation Wikimedia',
+	'boardvote-desc'           => '[[meta:Board elections/2008|Election del consilio de administration del Fundation Wikimedia]]',
+	'boardvote_entry'          => '* [[Special:Boardvote/vote|Votar]]
+* [[Special:Boardvote/list|Lista de votos usque ora]]
+* [[Special:Boardvote/dump|Producer un registro cryptificate del election]]',
+	'boardvote_intro'          => '<p>Benvenite al electiones de 2008 pro le Consilio de Administration de Wikimedia.
+Nos vota pro personas que representara le communitate de usatores in le varie projectos de Wikimedia.
+Illes adjutara a determinar le direction futur que le projectos de Wikimedia prendera, invidialmente e como gruppo, e representara <em>tu</em> interesses e preoccupationes in le Consilio de Administration.
+Illes facera etiam decisiones relative al medios de financiamento e al investimento de fundos.</p>
+
+<p>Per favor lege attentivemente le declarationes del candidatos e lor responsas a consultas.
+Cata candidato es un usator respectate qui ha contribuite considerabile tempore e effortio pro facer de iste projectos un ambiente agradabile, committite al procuration e distribution libere de cognoscentias human.</p>
+
+<p>Per favor rangia le candidatos secundo tu preferentia per entrar un numero al latere del quadro (1 = candidato favorite, 2 = secunde favorite, ...).
+Tu pote dar le mesme preferentia a plus de un candidato e tu pote lassar candidatos non rangitate.
+Es presumite que tu prefere tote le candidatos rangiate a illes non rangiate e que tu sia indifferente inter tote le candidatos non rangiate.</p>
+
+<p>Le victor e election essera calculate con le methodo Schulze. Pro ulterior informationes, vide le paginas official super le electiones.</p>
+
+<p>Pro ulterior informationes, vide:</p>
+<ul><li><a href="http://meta.wikimedia.org/wiki/Board_elections/2008" class="external">Electiones del Consilio de Administration de 2008</a></li>
+<li><a href="http://meta.wikimedia.org/wiki/Board_elections/2008/Candidates" class="external">Candidatos</a></li>
+<li><a href="http://en.wikipedia.org/wiki/Schulze_method" class="external">Le methodo Schulze</a></li></ul>',
+	'boardvote_intro_change'   => '<p>Tu ha ja votate. Nonobstante, tu pote cambiar
+tu voto con le formulario infra. Per favor rangia le candidatos in ordine de tu preferentia; quanto minor le numero,
+tanto plus alte le preferentia pro le candidato in question. Tu pote dar le mesme preferentia a plus de un
+candidato e tu pote lassar candidatos non rangiate.</p>',
+	'boardvote_entered'        => 'Gratias, tu voto ha essite registrate.
+
+Si tu vole, tu pote registrar le sequente detalios. Le registro de tu voto es:
+
+<pre>$1</pre>
+
+Illo ha essite cryptificate con le clave public del Administratores del Election:
+
+<pre>$2</pre>
+
+Seque le resultante version cryptificate. Illo essera publicate in [[Special:Boardvote/dump]].
+
+<pre>$3</pre>
+
+[[Special:Boardvote/entry|Retro]]',
+	'boardvote_invalidentered' => '<p><strong>Error</strong>: le preferentias pro candidatos debe esser exprimite solmente in numeros integre positive (1, 2, 3, ....), o  
+lassate vacue.</p>',
+	'boardvote_nosession'      => 'Tu ID de usator de Wikimedia non poteva esser determinate.
+Per favor aperi un session in le wiki ubi tu qualifica pro votar, e visita <nowiki>[[Special:Boardvote]]</nowiki>.
+Tu debe usar un conto con al minus $1 contributiones ante le $2, e haber facite al minus $3 contributiones inter le $4 e le $5.',
+	'boardvote_notloggedin'    => 'Tu non ha aperite un session.
+Pro votar, tu debe usar un conto con al minus $1 contributiones ante le $2, e haber facite al minus $3 contributiones inter le $4 e le $5.',
+	'boardvote_notqualified'   => 'Tu non es qualificate pro votar in iste election.
+Tu debe haber facite al minus $1 contributiones ante le $2, e al minus $3 contributiones inter le $4 e le $5.',
+	'boardvote_novotes'        => 'Necuno ha ancora votate.',
+	'boardvote_time'           => 'Data e hora',
+	'boardvote_user'           => 'Usator',
+	'boardvote_edits'          => 'Modificationes',
+	'boardvote_days'           => 'Dies',
+	'boardvote_ua'             => 'Agente usator',
+	'boardvote_listintro'      => '<p>Isto es un lista de tote le votos que ha essite registrate usque ora.
+$1 pro le datos cryptificate.</p>',
+	'boardvote_dumplink'       => 'Clicca hic',
+	'boardvote_submit'         => 'OK',
+	'boardvote_strike'         => 'Annullar',
+	'boardvote_unstrike'       => 'Restituer',
+	'boardvote_needadmin'      => 'Solmente le administratores del election pote executar iste operation.',
+	'boardvote_sitenotice'     => '<a href="{{localurle:Special:Boardvote/vote}}">Electiones del Consilio de Administration de Wikimedia</a>:
+Votation aperte usque le 22 de junio',
+	'boardvote_notstarted'     => 'Le votation non ha ancora comenciate',
+	'boardvote_closed'         => 'Le votation es ora concludite, vide tosto [http://meta.wikimedia.org/wiki/Board_elections/2008/Results le pagina del electiones] pro le resultatos.',
+	'boardvote_edits_many'     => 'multes',
+	'group-boardvote'          => 'Administratores del election del consilio',
+	'group-boardvote-member'   => 'Administrator del election del consilio',
+	'grouppage-boardvote'      => '{{ns:project}}:Administrator del election del consilio',
+	'boardvote_blocked'        => 'Tu ha essite blocate in tu wiki registrate.
+Le usatores blocate non pote votar.',
+	'boardvote_bot'            => 'Tu conto ha le stato de bot in tu wiki registrate.
+Le contos de bot non pote votar.',
+	'boardvote_welcome'        => "Benvenite, '''$1'''!",
+	'go_to_board_vote'         => 'Electiones del Consilio Administrative de Wikimedia de 2008',
+	'boardvote_redirecting'    => 'Pro melior securitate e transparentia, nos executa le voto in un servitor externe e sub controlo independente.
+
+Nos va rediriger te verso iste servitor externe post 20 secundas. [$1 Clicca hic] pro ir immediatemente.
+
+Es possibile que se presentara un advertimento de securitate concernente un certificato non signate.',
+	'right-boardvote'          => 'Administrar electiones',
 );
 
 /** Indonesian (Bahasa Indonesia)

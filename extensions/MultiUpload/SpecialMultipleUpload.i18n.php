@@ -363,6 +363,13 @@ $messages['mr'] = array(
 	'multiupload-toolbox'              => 'अनेक संचिका चढवा',
 );
 
+/** Nahuatl (Nahuatl)
+ * @author Fluence
+ */
+$messages['nah'] = array(
+	'multipleupload' => 'Tiquinquetzāz tlahcuilōlli',
+);
+
 /** Dutch (Nederlands)
  * @author SPQRobin
  * @author Siebrand

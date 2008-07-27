@@ -94,14 +94,14 @@ $messages['ar'] = array(
 	'imagetagging-log-tagged'               => 'الصورة [[$1|$2]] تم وسمها للصفحة [[$3]] بواسطة $4',
 	'imagetagging-new'                      => '<sup><span style="color:red">جديد!</span></sup>',
 	'imagetagging-removetag'                => 'إزالة وسم',
-	'imagetagging-done-button'              => 'إنتهى الوسم',
+	'imagetagging-done-button'              => 'تم الوسم',
 	'imagetagging-tag-button'               => 'وسم',
 	'imagetagging-tagcancel-button'         => 'إلغاء',
 	'imagetagging-tagging-instructions'     => 'اضغط على الأشخاص أو الأشياء في الصورة لوسمهم.',
 	'imagetagging-addingtag'                => 'إضافة وسم...',
 	'imagetagging-removingtag'              => 'إزالة وسم...',
-	'imagetagging-addtagsuccess'            => 'أُضيف الوسم.',
-	'imagetagging-removetagsuccess'         => 'أُزيل الوسم.',
+	'imagetagging-addtagsuccess'            => 'تمت إضافة الوسم.',
+	'imagetagging-removetagsuccess'         => 'تمت إزالة الوسم.',
 	'imagetagging-canteditneedloginmessage' => 'أنت لا يمكنك تعديل هذه الصفحة.
 ربما يكون ذلك بسبب أنك تحتاج إلى تسجيل الدخول لوسم الصور.
 هل تريد تسجيل الدخول الآن؟',

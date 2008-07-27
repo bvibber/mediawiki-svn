@@ -54,7 +54,8 @@ $messages['ar'] = array(
 	'duplicator'                       => 'استنساخ صفحة',
 	'duplicator-desc'                  => 'ينشيء نسخا مستقلة من الصفحات بتاريخ التعديلات الكامل',
 	'duplicator-toolbox'               => 'استنسخ هذه الصفحة',
-	'duplicator-header'                => 'هذه الصفحة تسمح بالاستنساخ الكامل لصفحة، وإنشاء نسخ مستقلة لكل التواريخ. هذا مفيد في استساخ صفحة، إلى آخره.',
+	'duplicator-header'                => 'هذه الصفحة تسمح بالاستنساخ الكامل لصفحة، وإنشاء نسخ مستقلة لكل التواريخ.
+هذا مفيد في استنساخ صفحة، إلى آخره.',
 	'duplicator-options'               => 'خيارات',
 	'duplicator-source'                => 'المصدر:',
 	'duplicator-dest'                  => 'الوجهة:',
@@ -62,15 +63,17 @@ $messages['ar'] = array(
 	'duplicator-submit'                => 'استنساخ',
 	'duplicator-summary'               => 'منسوخ من [[$1]]',
 	'duplicator-success'               => "<big>'''[[$1]] تم نسخها إلى [[$2]].'''</big>",
-	'duplicator-success-revisions'     => '$1 {{PLURAL:$1|نسخة|نسخ}} تم نسخها.',
-	'duplicator-success-talkcopied'    => 'صفحة النقاش تم نقلها أيضا.',
+	'duplicator-success-revisions'     => '$1 {{PLURAL:$1|مراجعة|مراجعة}} تم نسخها.',
+	'duplicator-success-talkcopied'    => 'صفحة النقاش تم نسخها أيضا.',
 	'duplicator-success-talknotcopied' => 'لم يمكن نسخ صفحة النقاش.',
-	'duplicator-failed'                => 'لم يمكن استساخ الصفحة. حدث خطأ غير معروف.',
+	'duplicator-failed'                => 'لم يمكن استساخ الصفحة.
+حدث خطأ غير معروف.',
 	'duplicator-source-invalid'        => 'من فضلك اكتب عنوان مصدر صحيح.',
 	'duplicator-source-notexist'       => '[[$1]] غير موجودة. من فضلك اكتب عنوان صفحة موجودة.',
 	'duplicator-dest-invalid'          => 'من فضلك اكتب عنوان وجهة صحيح.',
 	'duplicator-dest-exists'           => '[[$1]] موجودة بالفعل. من فضلك اكتب عنوان هدف غير موجود.',
-	'duplicator-toomanyrevisions'      => '[[$1]] لديه عدد كبير ($2) من النسخ و لا يمكن نسخه. الحد الحالي هو $3.',
+	'duplicator-toomanyrevisions'      => '[[$1]] لديه عدد كبير ($2) من المراجعات ولا يمكن نسخه.
+الحد الحالي هو $3.',
 );
 
 /** Bikol Central (Bikol Central)
@@ -282,6 +285,13 @@ $messages['fr'] = array(
 	'duplicator-toomanyrevisions'      => '[[$1]] a trop ($2) de révisions et ne peut pas être copié. La limite actuelle est de $3.',
 );
 
+/** Western Frisian (Frysk)
+ * @author Snakesteuben
+ */
+$messages['fy'] = array(
+	'duplicator-source' => 'Boarne:',
+);
+
 /** Galician (Galego)
  * @author Xosé
  * @author Toliño
@@ -490,12 +500,14 @@ $messages['jv'] = array(
 /** Khmer (ភាសាខ្មែរ)
  * @author Chhorran
  * @author គីមស៊្រុន
+ * @author Lovekhmer
  */
 $messages['km'] = array(
-	'duplicator-options' => 'ជំរើសនានា',
-	'duplicator-source'  => 'ប្រភព ៖',
-	'duplicator-dest'    => 'គោលដៅ ៖',
-	'duplicator-summary' => 'បានចំលងពី [[$1]]',
+	'duplicator-options'        => 'ជំរើសនានា',
+	'duplicator-source'         => 'ប្រភព ៖',
+	'duplicator-dest'           => 'គោលដៅ ៖',
+	'duplicator-summary'        => 'បានចំលងពី [[$1]]',
+	'duplicator-source-invalid' => 'សូមផ្តល់មកនូវចំនងជើងប្រភពត្រឹមត្រូវ។',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

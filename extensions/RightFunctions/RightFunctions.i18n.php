@@ -19,7 +19,7 @@ $messages['en'] = array(
  * @author Meno25
  */
 $messages['ar'] = array(
-	'rightfunctions-desc'     => 'دوال بارسر تعتمد على السماحات',
+	'rightfunctions-desc'     => 'دوال محلل تعتمد على السماحات',
 	'rightfunctions-restboth' => '$1 (من الصفحة المحلية)، $2 (من المصادر المضمنة)',
 	'rightfunctions-restcasc' => '$1 (من المصادر المضمنة)',
 );

@@ -96,6 +96,14 @@ $messages['hu'] = array(
 	'categoryonupload-label' => 'Kategória:',
 );
 
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'categoryonupload-desc'  => 'Suggere al usator de seliger un categoria quando se carga un file',
+	'categoryonupload-label' => 'Categoria:',
+);
+
 /** Indonesian (Bahasa Indonesia)
  * @author Rex
  */

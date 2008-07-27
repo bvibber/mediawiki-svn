@@ -73,6 +73,25 @@ $messages['bg'] = array(
 	'errorhandler-error-user-notice'  => 'Потребителска забележка',
 );
 
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
+$messages['eo'] = array(
+	'errorhandler-errors'                => 'Eraroj:',
+	'errorhandler-error-fatal'           => 'Neriparebla eraro',
+	'errorhandler-error-warning'         => 'Averto',
+	'errorhandler-error-parse'           => 'Eraro de sintaksa analizilo',
+	'errorhandler-error-notice'          => 'Noto',
+	'errorhandler-error-core-error'      => 'Fundamenta eraro',
+	'errorhandler-error-compile-error'   => 'Tradukila eraro',
+	'errorhandler-error-compile-warning' => 'Tradukila averto',
+	'errorhandler-error-user-error'      => 'Eraro de uzanto',
+	'errorhandler-error-user-warning'    => 'Averto de uzanto',
+	'errorhandler-msg-text'              => '$1 : $2 en $3 (linio $4)',
+	'errorhandler-msg-html'              => '<b>$1</b> : <i>$2</i> en <b>$3</b> (linio <b>$4</b>)',
+	'errorhandler-trace'                 => 'spuro:',
+);
+
 /** French (Français)
  * @author IAlex
  */

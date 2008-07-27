@@ -51,14 +51,14 @@ $messages['af'] = array(
  */
 $messages['ar'] = array(
 	'authorprotect'            => 'احمي الصفحة من غير المؤلفون',
-	'authorprotect-desc'       => 'يسمح لمؤلف الصفحة بأن يحميها من المستخدمون الأخرون',
+	'authorprotect-desc'       => 'يسمح لمؤلف الصفحة بأن يحميها من المستخدمين الآخرين',
 	'authorprotect-notauthor'  => 'أنت لست مؤلف هذه الصفحة',
 	'authorprotect-confirm'    => 'تغيير مستويات الحماية',
-	'authorprotect-edit'       => 'احصر التعديل للمؤلفون',
-	'authorprotect-move'       => 'احصر النقل للمؤلفون',
+	'authorprotect-edit'       => 'احصر التعديل للمؤلفين',
+	'authorprotect-move'       => 'احصر النقل للمؤلفين',
 	'authorprotect-expiry'     => 'تاريخ الانتهاء',
 	'authorprotect-reason'     => 'السبب',
-	'authorprotect-intro'      => 'استخدم هذه الاستمارة لتقفل هذه الصفحة من غير المؤلفون',
+	'authorprotect-intro'      => 'استخدم هذه الاستمارة لتقفل هذه الصفحة عن غير المؤلفين',
 	'authorprotect-success'    => 'نجحت الحماية!',
 	'authorprotect-failure'    => 'فشلت الحماية',
 	'protect-level-author'     => 'احمي من غير المؤلفين',
@@ -320,6 +320,25 @@ $messages['hsb'] = array(
 	'restriction-level-author' => 'Za awtorow škitane',
 );
 
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'authorprotect'            => 'Proteger le pagina contra non-autores',
+	'authorprotect-desc'       => 'Permitte al autor de un pagina proteger lo contra altere usatores',
+	'authorprotect-notauthor'  => 'Tu non es le autor de iste pagina',
+	'authorprotect-confirm'    => 'Cambiar nivellos de protection',
+	'authorprotect-edit'       => 'Restringer le modification al autores',
+	'authorprotect-move'       => 'Restringer le renomination al autores',
+	'authorprotect-expiry'     => 'Tempore de expiration',
+	'authorprotect-reason'     => 'Motivo',
+	'authorprotect-intro'      => 'Usa iste formulario pro blocar iste pagina contra modificationes per non-autores',
+	'authorprotect-success'    => 'Protection succedite!',
+	'authorprotect-failure'    => 'Protection non succedite',
+	'protect-level-author'     => 'Proteger contra non-autores',
+	'restriction-level-author' => 'Protegite per le autor',
+);
+
 /** Ido (Ido)
  * @author Malafaya
  */
@@ -466,6 +485,13 @@ $messages['mr'] = array(
 	'authorprotect-failure'    => 'सुरक्षित करू शकलेलो नाही',
 	'protect-level-author'     => 'लेखक नसणार्‍यांपासून सुरक्षित करा',
 	'restriction-level-author' => 'लेखक-सुरक्षित',
+);
+
+/** Nahuatl (Nahuatl)
+ * @author Fluence
+ */
+$messages['nah'] = array(
+	'authorprotect-reason' => 'Īxtlamatiliztli',
 );
 
 /** Dutch (Nederlands)

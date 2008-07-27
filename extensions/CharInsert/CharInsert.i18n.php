@@ -108,6 +108,13 @@ $messages['hsb'] = array(
 	'charinsert-desc' => 'Dowola wutworjenje JavaScriptoweho kašćika za [[MediaWiki:Edittools|zasunjenje specialnych znamješkow]]',
 );
 
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'charinsert-desc' => 'Permitte crear un quadro JavaScript pro [[MediaWiki:Edittools|inserer characteres non-standard]]',
+);
+
 /** Indonesian (Bahasa Indonesia)
  * @author IvanLanin
  */

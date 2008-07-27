@@ -46,6 +46,13 @@ $messages['bg'] = array(
 	'fixedimage-desc' => 'Добавяне на етикета <tt><nowiki><fundraising></nowiki></tt> като картинка',
 );
 
+/** Bengali (বাংলা)
+ * @author Bellayet
+ */
+$messages['bn'] = array(
+	'fixedimage-desc' => '<tt><nowiki><fundraising></nowiki></tt> ট্যাগ চিত্র হিসেবে যোগ করো',
+);
+
 /** Czech (Česky)
  * @author Matěj Grabovský
  */
@@ -148,7 +155,14 @@ $messages['id'] = array(
  * @author Darth Kule
  */
 $messages['it'] = array(
-	'fixedimage-desc' => "Aggiunge il marcatore <tt><nowiki><fundraising></nowiki></tt> come un'immagine",
+	'fixedimage-desc' => "Aggiunge il tag <tt><nowiki><fundraising></nowiki></tt> come un'immagine",
+);
+
+/** Ripoarisch (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'fixedimage-desc' => 'Deit dä <tt><nowiki><fundraising></nowiki></tt>-Befääl em Wiki dobei, för e Belltsche.',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

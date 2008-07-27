@@ -157,6 +157,13 @@ $messages['hi'] = array(
 	'mibbit-desc' => 'अन्य विकि सदस्योंसे इसी समय चैट करने के लिये उपयुक्त एक [[Special:Mibbit|विशेष पृष्ठ]]',
 );
 
+/** Hungarian (Magyar)
+ * @author Dani
+ */
+$messages['hu'] = array(
+	'right-mibbit' => 'használhatja a Mibbitet',
+);
+
 /** Indonesian (Bahasa Indonesia)
  * @author Rex
  */

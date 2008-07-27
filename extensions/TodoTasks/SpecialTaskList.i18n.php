@@ -58,7 +58,8 @@ $messages['ar'] = array(
 	'tasklistemail'          => 'عزيزي %s',
 	'tasklistemailsubject'   => 'التغيير في قائمة مهام [%s]',
 	'tasklistmytasks'        => 'مهامي',
-	'tasklistbyprojectbad'   => "المشروع '''%s''' ليس مشروعا صحيحا. لقائمة بالمشاريع الصحيحة، انظر [[MediaWiki:TodoTasksValidProjects]].",
+	'tasklistbyprojectbad'   => "المشروع '''%s''' ليس مشروعا صحيحا.
+لقائمة بالمشاريع الصحيحة، انظر [[MediaWiki:TodoTasksValidProjects]].",
 	'tasklistbyprojname'     => "المهام الموكلة ل'''%s'''",
 	'tasklistchooseproj'     => 'اختر المشروع:',
 	'tasklistprojdisp'       => 'عرض',

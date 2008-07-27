@@ -46,12 +46,12 @@ $messages['af'] = array(
  * @author Meno25
  */
 $messages['ar'] = array(
-	'inspectcache'         => 'اشتبه في الكاش',
-	'inspectcache-desc'    => 'أداة ديبجينج بسيطة لفحص محتويات الكاش المشترك',
+	'inspectcache'         => 'افحص الكاش',
+	'inspectcache-desc'    => 'أداة تصليح بسيطة لفحص محتويات الكاش المشترك',
 	'inspectcache-ok'      => 'موافق',
 	'inspectcache-general' => 'الكاش العام',
-	'inspectcache-parser'  => 'كاش البارسر',
-	'inspectcache-message' => 'كاش الرسالة',
+	'inspectcache-parser'  => 'كاش المحلل',
+	'inspectcache-message' => 'كاش الرسائل',
 	'inspectcache-get'     => 'تنفيذ',
 	'inspectcache-delete'  => 'حذف',
 	'inspectcache-deleted' => 'الكاش المحذوف',

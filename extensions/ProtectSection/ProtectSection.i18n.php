@@ -21,7 +21,7 @@ $messages['ar'] = array(
 	'protectsection_desc'       => 'يسمح للمستخدمين الموثوقين بحماية أجزاء من صفحة باستخدام الوسم <tt>&lt;protect&gt;</tt>',
 	'protectsection_add_remove' => 'أنت حاولت إضافة أو إزالة قسم محمي',
 	'protectsection_modify'     => 'أنت حاولت تعديل نص محمي',
-	'protectsection_forbidden'  => 'محظور',
+	'protectsection_forbidden'  => 'ممنوع',
 );
 
 /** Kotava (Kotava)

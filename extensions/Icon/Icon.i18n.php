@@ -21,7 +21,7 @@ $messages['en'] = array(
 $messages['ar'] = array(
 	'icon-badimage' => 'صورة سيئة',
 	'icon-badwidth' => 'عرض سيىء',
-	'icon-desc'     => 'يسمح لك لإستعمال الصّور كأيقونات و روابط أيقونة',
+	'icon-desc'     => 'يسمح لك باستخدام الصور كأيقونات ووصلات أيقونة',
 );
 
 /** Kotava (Kotava)

@@ -27,7 +27,7 @@ $messages['en'] = array(
  */
 $messages['ar'] = array(
 	'editsubpages-desc' => 'يسمح لمديري النظام بإزالة غلق صفحة وكل الصفحات الفرعية لهذه الصفحة للتعديل المجهول من خلال [[MediaWiki:Unlockedpages]]',
-	'unlockedpages'     => '  #<!-- leave this line alone --><pre>
+	'unlockedpages'     => '  #<!-- اترك هذا السطر بمفرده --><pre>
 # ضع الصفحات التي تريد رفع غلقها بالأسفل
 # * اسم الصفحة
 # الصفحات المرفوع غلقها يجب أن تبدأ برصاصة ليتم احتسابها،
@@ -35,7 +35,7 @@ $messages['ar'] = array(
 # اسم الصفحة ربما يكون [[وصلات]] وهو حساس لحالة الحروف
 # أيضا، صفحات النقاش سيتم رفع غلقها تلقائيا مع الصفحة
 # انظر http://www.mediawiki.org/wiki/Extension:EditSubpages لمزيد من المعلومات
-  #</pre><!-- leave this line alone -->',
+  #</pre><!-- اترك هذا السطر بمفرده -->',
 );
 
 /** Bulgarian (Български)

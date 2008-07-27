@@ -70,12 +70,12 @@ $messages['ang'] = array(
  * @author Mido
  */
 $messages['ar'] = array(
-	'newuserlogpage'              => 'سجل إنشاء الحسابات الجديدة',
-	'newuserlogpagetext'          => 'هذا سجل بعمليات إنشاء الحسابات الجديدة',
+	'newuserlogpage'              => 'سجل إنشاء المستخدمين',
+	'newuserlogpagetext'          => 'هذا سجل بعمليات إنشاء المستخدمين',
 	'newuserlog-desc'             => 'يضيف [[Special:Log/newusers|سجل بإنشاء الحسابات]] إلى [[Special:Log]]',
 	'newuserlog-byemail'          => 'كلمة السر تم إرسالها بواسطة البريد الإلكتروني',
 	'newuserlog-create-entry'     => 'مستخدم جديد',
-	'newuserlog-create2-entry'    => 'أنشأ الحساب الخاص باسم $1',
+	'newuserlog-create2-entry'    => 'أنشأ الحساب ل$1',
 	'newuserlog-autocreate-entry' => 'الحساب تم إنشاؤه تلقائيا',
 );
 

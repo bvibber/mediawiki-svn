@@ -37,7 +37,7 @@ $messages['ar'] = array(
 	'lookupuser_not_authenticated' => 'غير مرخص',
 	'lookupuser_id'                => 'رقم المستخدم: <tt>#$1</tt>',
 	'lookupuser_email'             => 'البريد الإلكتروني: [[Special:Emailuser/$2|$1]]',
-	'lookupuser_no_email'          => 'غير متوفر',
+	'lookupuser_no_email'          => 'غير موفر',
 	'lookupuser_realname'          => 'الاسم الحقيقي: $1',
 	'lookupuser_registration'      => 'تاريخ التسجيل: $1',
 	'lookupuser_no_registration'   => 'غير مسجل',
@@ -285,7 +285,7 @@ $messages['km'] = array(
 	'lookupuser-desc'              => '[[Special:LookupUser|ដកស្រង់​ពត៌មាន]] អំពី​អ្នកប្រើប្រាស់ ដូចជា អាស័យដ្ឋានអ៊ីមែល និង អត្តសញ្ញាណ',
 	'lookupuser_intro'             => 'បញ្ចូល​ឈ្មោះអ្នកប្រើប្រាស់ ដើម្បីមើលចំណូលចិត្តនានា​របស់គាត់ ។',
 	'lookupuser_nonexistent'       => 'កំហុស៖ អ្នកប្រើប្រាស់មិនមានទេ',
-	'lookupuser_authenticated'     => 'ភាពពិតប្រាកដ នៃ អ៊ីមែវល៍ ៖ $1',
+	'lookupuser_authenticated'     => 'ភាពពិតប្រាកដនៃអ៊ីមែល៖ $1',
 	'lookupuser_not_authenticated' => 'មិនបានស្គាល់ភិនភាគទេ',
 	'lookupuser_id'                => 'អត្តសញ្ញាណអ្នកប្រើប្រាស់៖<tt>#$1</tt>',
 	'lookupuser_email'             => 'អ៊ីមែល៖[[Special:Emailuser/$2|$1]]',
@@ -294,7 +294,7 @@ $messages['km'] = array(
 	'lookupuser_registration'      => 'កាលបរិច្ឆេទចុះឈ្មោះ​៖ $1',
 	'lookupuser_no_registration'   => 'មិនបានកត់ត្រាទុកទេ',
 	'lookupuser_touched'           => 'រក្សាទុក អ្នកប្រើប្រាស់ ដែលបានប៉ះ ចុងក្រោយ ៖ $1',
-	'lookupuser_useroptions'       => 'ជំរើស នៃអ្នកប្រើប្រាស់ ៖',
+	'lookupuser_useroptions'       => 'ជំរើសនៃអ្នកប្រើប្រាស់ ៖',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

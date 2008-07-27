@@ -137,7 +137,7 @@ $allMessages['ar'] = array(
 	'whitelisttableedit'        => 'عدل',
 	'whitelisttableview'        => 'عرض',
 	'whitelisttablenewdate'     => 'تاريخ جديد:',
-	'whitelisttablechangedate'  => 'تغيير تاريخ إنتهاء الصلاحية',
+	'whitelisttablechangedate'  => 'تغيير تاريخ الانتهاء',
 	'whitelisttablesetedit'     => 'ضبط للتعديل',
 	'whitelisttablesetview'     => 'ضبط للعرض',
 	'whitelisttableremove'      => 'إزالة',
@@ -385,6 +385,14 @@ $2',
 Cette page ne s’applique qu’aux utilisateurs disposant de droits restreints.",
 	'whitelistnever'            => 'jamais',
 	'whitelistnummatches'       => ' - $1 {{PLURAL:$1|occurence|occurences}}',
+);
+
+/** Western Frisian (Frysk)
+ * @author Snakesteuben
+ */
+$allMessages['fy'] = array(
+	'whitelisttablemodifyall' => 'Alle',
+	'whitelisttableedit'      => 'Wizigje',
 );
 
 /** Galician (Galego)
@@ -694,11 +702,12 @@ $2',
  * @author Fluence
  */
 $allMessages['nah'] = array(
-	'whitelisttablemodifyall' => 'Mochīntīn',
-	'whitelisttableedit'      => 'Ticpatlāz',
-	'whitelistnewtablereview' => 'Ticceppahuīz',
-	'whitelistbadtitle'       => 'Ahcualli tōcāitl -',
-	'whitelistnever'          => 'aīcmah',
+	'whitelisttablemodifyall'  => 'Mochīntīn',
+	'whitelisttablemodifynone' => 'Ahtlein',
+	'whitelisttableedit'       => 'Ticpatlāz',
+	'whitelistnewtablereview'  => 'Ticceppahuīz',
+	'whitelistbadtitle'        => 'Ahcualli tōcāitl -',
+	'whitelistnever'           => 'aīcmah',
 );
 
 /** Low German (Plattdüütsch)

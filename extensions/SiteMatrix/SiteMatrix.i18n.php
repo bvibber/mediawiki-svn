@@ -67,7 +67,7 @@ $messages['ang'] = array(
  * @author Meno25
  */
 $messages['ar'] = array(
-	'sitematrix'           => 'قائمة مشاريع ويكيميديا',
+	'sitematrix'           => 'قائمة ويكيات ويكيميديا',
 	'sitematrix-summary'   => 'هذه الصفحة الخاصة تعرض كل ويكيات ويكيميديا.',
 	'sitematrix-desc'      => 'يعرض [[Special:SiteMatrix|قائمة بويكيات ويكيميديا]]',
 	'sitematrix-language'  => 'اللغة',
@@ -475,9 +475,10 @@ $messages['gl'] = array(
 
 /** Ancient Greek (Ἀρχαία ἑλληνικὴ)
  * @author SPQRobin
+ * @author LeighvsOptimvsMaximvs
  */
 $messages['grc'] = array(
-	'sitematrix-language' => 'γλωσσα',
+	'sitematrix-language' => 'Γλῶττα',
 );
 
 /** Gujarati (ગુજરાતી)

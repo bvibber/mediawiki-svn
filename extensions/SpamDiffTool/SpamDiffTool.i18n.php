@@ -50,6 +50,13 @@ $messages['ar'] = array(
 	'spamdifftool_submit_buttom' => 'تنفيذ',
 );
 
+/** Afrikaans (Afrikaans)
+ * @author Naudefj
+ */
+$messages['af'] = array(
+	'spamdifftool_submit_buttom' => 'OK',
+);
+
 /** Aragonese (Aragonés)
  * @author Juanpabl
  */
@@ -65,14 +72,18 @@ $messages['ar'] = array(
 	'spamdifftool'                  => 'التحكم في قائمة السبام السوداء',
 	'spamdifftool-desc'             => 'يوفر طريقة أساسية لإضافة مدخلات جديدة للقائمة السوداء للسبام من صفحات الفرق',
 	'spamdifftool_cantedit'         => 'عذرا - أنت لا تمتلك الصلاحية لتعديل قائمة السبام السوداء.',
-	'spamdifftool_notext'           => "لا يوجد نص لإضافته إلى قائمة السبام السوداء. اضغط <a href='$1'>هنا</a> للمتابعة.",
-	'spamdifftool_confirm'          => "أكد أنك تريد إضافة هذه المدخلات إلى قائمة السبام السوداء. (اضغط <a href='$1' target='new'>هنا</a> للإبلاغ عن مشكلة.)",
-	'spamdifftool_summary'          => 'جاري الإضافة إلى قائمة السبام السوداء',
-	'spamdifftool_urls_detected'    => 'المسارات التالية تم التعرف عليها في التعديل(ات)، أيها تود إضافتها إلى قائمة السبام السوداء؟ هذه الخيارات مرتبة من الأكثر منعا إلى الأقل منعا، منع النطاق بأكمله سيمنع كل الوصلات لأي شيء من هذا النطاق.
+	'spamdifftool_notext'           => "لا يوجد نص لإضافته إلى قائمة السبام السوداء.
+اضغط <a href='$1'>هنا</a> للمتابعة.",
+	'spamdifftool_confirm'          => "أكد أنك تريد إضافة هذه المدخلات إلى قائمة السبام السوداء.
+(اضغط <a href='$1' target='new'>هنا</a> للإبلاغ عن مشكلة.)",
+	'spamdifftool_summary'          => 'إضافة إلى قائمة السبام السوداء',
+	'spamdifftool_urls_detected'    => 'المسارات التالية تم التعرف عليها في التعديل(ات)، أيها تود إضافتها إلى قائمة السبام السوداء؟
+هذه الخيارات مرتبة من الأكثر منعا إلى الأقل منعا، منع النطاق بأكمله سيمنع كل الوصلات لأي شيء من هذا النطاق.
 
 تأكد من عدم منع كل النطاقات التي تستضيف حسابات مستخدمين، مثل blogpost.com، geocities.com، إلى آخره.',
-	'spamdifftool_no_urls_detected' => "لم يتم التعرف على أية مسارات. اضغط <a href='$1'>هنا</a> للعودة.",
-	'spamdifftool_spam_link_text'   => 'الكل إلى السبام',
+	'spamdifftool_no_urls_detected' => "لم يتم التعرف على أية مسارات.
+اضغط <a href='$1'>هنا</a> للعودة.",
+	'spamdifftool_spam_link_text'   => 'أضف إلى السبام',
 	'spamdifftool_option_domain'    => 'الكل من هذا النطاق',
 	'spamdifftool_option_subdomain' => 'الكل من هذا النطاق الفرعي',
 	'spamdifftool_option_directory' => 'هذا النطاق الفرعي والمجلد',

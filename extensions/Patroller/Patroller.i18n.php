@@ -604,7 +604,8 @@ $messages['mr'] = array(
  * @author Fluence
  */
 $messages['nah'] = array(
-	'patrol-revert' => 'Tlacuepāz',
+	'patrol-revert'        => 'Tlacuepāz',
+	'patrol-revert-reason' => 'Īxtlamatiliztli:',
 );
 
 /** Dutch (Nederlands)

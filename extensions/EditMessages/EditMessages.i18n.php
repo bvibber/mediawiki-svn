@@ -65,7 +65,7 @@ $messages['ar'] = array(
 	'editmsg-show-list'        => 'عرض القيم لاسم الرسالة "$1"',
 	'editmsg-get-patch'        => 'توليد باتش',
 	'editmsg-new-search'       => 'بحث جديد',
-	'editmsg-warning-parse1'   => '* ريجيكس اسم الرسالة لم يطابق: $1',
+	'editmsg-warning-parse1'   => '* تعبير اسم الرسالة المنتظم لم يطابق: $1',
 	'editmsg-warning-parse2'   => '* حرف اقتباس متوقع بعد السهم: $1',
 	'editmsg-warning-parse3'   => '* نهاية خيط القيمة لم يتم العثور عليه: $1',
 	'editmsg-warning-file'     => '* أخطاء قراءة الملف تمت مصادفتها للغات التالية: $1',
@@ -302,6 +302,13 @@ $messages['hy'] = array(
  */
 $messages['ia'] = array(
 	'editmsg-search' => 'Cercar',
+);
+
+/** Italian (Italiano)
+ * @author Darth Kule
+ */
+$messages['it'] = array(
+	'editmsg-search' => 'Ricerca',
 );
 
 /** Javanese (Basa Jawa)

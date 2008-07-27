@@ -131,8 +131,10 @@ $messages['ar'] = array(
 	'ogg-stop'                     => 'إيقاف',
 	'ogg-play-video'               => 'عرض الفيديو',
 	'ogg-play-sound'               => 'عرض الصوت',
-	'ogg-no-player'                => 'معذرة ولكن يبدو أنه لا يوجد لديك برنامج عرض مدعوم. من فضلك ثبت <a href="http://www.java.com/en/download/manual.jsp">الجافا</a>.',
-	'ogg-no-xiphqt'                => 'لا يبدو أنك تملك مكون XiphQT لكويك تايم. كويك تايم لا يمكنه عرض ملفات Ogg بدون هذا المكون. من فضلك <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">حمل XiphQT</a> أو اختر برنامجا آخر.',
+	'ogg-no-player'                => 'معذرة ولكن يبدو أنه لا يوجد لديك برنامج عرض مدعوم. من فضلك ثبت <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">الجافا</a>.',
+	'ogg-no-xiphqt'                => 'لا يبدو أنك تملك مكون XiphQT لكويك تايم.
+كويك تايم لا يمكنه عرض ملفات Ogg بدون هذا المكون.
+من فضلك <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">حمل XiphQT</a> أو اختر برنامجا آخر.',
 	'ogg-player-videoElement'      => '<video> عنصر',
 	'ogg-player-oggPlugin'         => 'إضافة Ogg',
 	'ogg-player-cortado'           => 'كور تادو (جافا)',
@@ -145,7 +147,7 @@ $messages['ar'] = array(
 	'ogg-player-selected'          => '(مختار)',
 	'ogg-use-player'               => 'استخدم البرنامج:',
 	'ogg-more'                     => 'المزيد...',
-	'ogg-dismiss'                  => 'غلق',
+	'ogg-dismiss'                  => 'إغلاق',
 	'ogg-download'                 => 'نزل الملف',
 	'ogg-desc-link'                => 'حول هذا الملف',
 );

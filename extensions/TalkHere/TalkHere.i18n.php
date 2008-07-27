@@ -321,6 +321,7 @@ Bul mändemeler mağlumatına torap meñgerwşilerdiñ jawapkerşiligi bolmawı 
  * @author Chhorran
  */
 $messages['km'] = array(
+	'talkhere-desc'        => 'ដាក់ទំព័រពិភាក្សាចូលទៅក្នុងទំព័រនេះ',
 	'talkhere-foottext'    => 'វិចារខាងលើអាចបានត្រូវដាក់ដោយអ្នកចូលទស្សនា។
 
 អ្នកប្រតិបត្តិសៃថ៍នេះមិនអាចទទួលខុសត្រូវ ចំពោះខ្លឹមសារនៃវិចារបែបនោះទេ។',

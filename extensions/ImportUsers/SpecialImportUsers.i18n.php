@@ -74,7 +74,7 @@ $messages['af'] = array(
  */
 $messages['ar'] = array(
 	'importusers'                         => 'استيراد مستخدمين',
-	'importusers-desc'                    => 'يستورد المستخدمين في صيغة bulk من ملف CSV؛ الإنكودينج: UTF-8',
+	'importusers-desc'                    => 'يستورد المستخدمين في صيغة bulk من ملف CSV؛ التكويد: UTF-8',
 	'importusers-uploadfile'              => 'رفع ملف',
 	'importusers-form-caption'            => 'الناتج ملف CSV (UTF-8)',
 	'importusers-form-file'               => 'صيغة ملف المستخدم (csv):',
@@ -251,6 +251,13 @@ $messages['fr'] = array(
 	'importusers-password'                => 'mot de passe',
 	'importusers-email'                   => 'adresse courriel',
 	'importusers-realname'                => 'nom réel',
+);
+
+/** Western Frisian (Frysk)
+ * @author Snakesteuben
+ */
+$messages['fy'] = array(
+	'importusers-log-summary-all' => 'Alle',
 );
 
 /** Galician (Galego)
@@ -531,6 +538,7 @@ $messages['mr'] = array(
  */
 $messages['nah'] = array(
 	'importusers-uploadfile'      => 'Tlahcuilōlquetza',
+	'importusers-form-button'     => 'Tiquicōhuāz',
 	'importusers-log-summary'     => 'Tlahcuilōltōn',
 	'importusers-log-summary-all' => 'Mochīntīn',
 	'importusers-email'           => 'e-mail',

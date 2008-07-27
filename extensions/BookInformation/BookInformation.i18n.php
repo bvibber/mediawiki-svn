@@ -553,11 +553,21 @@ $messages['hu'] = array(
 
 /** Interlingua (Interlingua)
  * @author Malafaya
+ * @author McDutchie
  */
 $messages['ia'] = array(
-	'bookinfo-result-title'  => 'Titulo:',
-	'bookinfo-result-author' => 'Autor:',
-	'bookinfo-result-year'   => 'Anno:',
+	'bookinfo-header'            => 'Informationes de libros',
+	'bookinfo-desc'              => 'Extende [[Special:Booksources]] con informationes proveniente de un servicio web',
+	'bookinfo-result-title'      => 'Titulo:',
+	'bookinfo-result-author'     => 'Autor:',
+	'bookinfo-result-publisher'  => 'Editor:',
+	'bookinfo-result-year'       => 'Anno:',
+	'bookinfo-error-invalidisbn' => 'Tu entrava un ISBN invalide.',
+	'bookinfo-error-nosuchitem'  => 'Le entrata non existe o non poteva esser trovate.',
+	'bookinfo-error-nodriver'    => 'Non poteva initialisar un Motor de Informationes super Libros (Book Information Driver) appropriate.',
+	'bookinfo-error-noresponse'  => 'Nulle responsa, o le requesta expirava.',
+	'bookinfo-purchase'          => 'Acquirer iste libro a $1',
+	'bookinfo-provider'          => 'Providitor de datos: $1',
 );
 
 /** Indonesian (Bahasa Indonesia)

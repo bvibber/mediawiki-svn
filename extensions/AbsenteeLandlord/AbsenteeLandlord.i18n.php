@@ -15,10 +15,11 @@ $messages['en'] = array(
 
 /** Arabic (العربية)
  * @author OsamaK
+ * @author Meno25
  */
 $messages['ar'] = array(
-	'absenteelandlord-reason' => 'أُقفلت قاعدة البيانات تلقائيا نظرا لعدم نشاط الإداريين.',
-	'absenteelandlord-desc'   => 'قفل قاعدة بيانات الويكي تلقائيا إذا كان كل الإداريين غير نشطين لبعض الوقت',
+	'absenteelandlord-reason' => 'تم غلق قاعدة البيانات تلقائيا نظرا لعدم نشاط مدراء النظام.',
+	'absenteelandlord-desc'   => 'قفل قاعدة بيانات الويكي تلقائيا إذا كان كل مدراء النظام غير نشطين لبعض الوقت',
 );
 
 /** Egyptian Spoken Arabic (مصرى)

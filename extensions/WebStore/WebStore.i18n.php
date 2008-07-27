@@ -80,7 +80,8 @@ $messages['af'] = array(
 $messages['ar'] = array(
 	'inplace_access_disabled'          => 'الدخول إلى هذه الخدمة تم تعطيله لكل العملاء.',
 	'inplace_access_denied'            => 'هذه الخدمة مقيدة بواسطة أيبي عميل.',
-	'inplace_scaler_no_temp'           => 'لا مجلد مؤقت صحيح، ضبط $wgLocalTmpDirectory لمجلد قابل للكتابة.',
+	'inplace_scaler_no_temp'           => 'لا مجلد مؤقت صحيح.
+ضبط $wgLocalTmpDirectory لمجلد قابل للكتابة.',
 	'inplace_scaler_not_enough_params' => 'لا محددات كافية.',
 	'inplace_scaler_invalid_image'     => 'صورة غير صحيحة، لم يمكن تحديد الحجم.',
 	'inplace_scaler_failed'            => 'حدث خطأ أثناء وزن الصورة: $1',

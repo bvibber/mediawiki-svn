@@ -79,16 +79,20 @@ Isto lo fa clamando ta o parser correspondient dende o propio MediaWiki.',
  */
 $messages['ar'] = array(
 	'expandtemplates'                  => 'فرد القوالب',
-	'expandtemplates-desc'             => 'يفرد القوالب، دوال البارسر والمتغيرات لعرض نص الويكي الممدد ورؤية الصفحة الناتجة',
-	'expand_templates_intro'           => 'تتعامل هذه الصفحة الخاصة مع نصوص الويكي وتقوم بفرد كل القوالب الموجودة به. وتقوم أيضا بفرد دوال القوالب مثل <nowiki>{{</nowiki>#if:...}}, و المتغيرات مثل <nowiki>{{</nowiki>يوم}}-- و تقوم التعامل مع كل ما بين الأقواس المزدوجة. و تقوم بفعل هذا عن طريق استدعاء المعالج المناسب من الميدياويكي.',
+	'expandtemplates-desc'             => '[[Special:ExpandTemplates|يفرد القوالب، دوال المحلل والمتغيرات]] لعرض نص الويكي الممدد ورؤية الصفحة الناتجة',
+	'expand_templates_intro'           => 'تتعامل هذه الصفحة الخاصة مع نصوص الويكي وتقوم بفرد كل القوالب الموجودة به.
+وتقوم أيضا بفرد دوال القوالب مثل
+<nowiki>{{</nowiki>#if:...}}، و المتغيرات مثل
+<nowiki>{{</nowiki>يوم}}-- و تقوم التعامل مع كل ما بين الأقواس المزدوجة.
+تقوم بفعل هذا عن طريق استدعاء المعالج المناسب من الميدياويكي.',
 	'expand_templates_title'           => 'عنوان صفحة هذا النص، لأجل معالجة {{PAGENAME}} إلخ.:',
-	'expand_templates_input'           => 'النص المدخل (الأصلي)',
+	'expand_templates_input'           => 'النص المدخل:',
 	'expand_templates_output'          => 'النتيجة',
 	'expand_templates_xml_output'      => 'خرج XML',
 	'expand_templates_ok'              => 'موافق',
-	'expand_templates_remove_comments' => 'إزالة التعليقات',
+	'expand_templates_remove_comments' => 'أزل التعليقات',
 	'expand_templates_generate_xml'    => 'اعرض شجرة XML parse',
-	'expand_templates_preview'         => 'عرض',
+	'expand_templates_preview'         => 'عرض مسبق',
 );
 
 /** Assamese (অসমীয়া)

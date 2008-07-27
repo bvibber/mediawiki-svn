@@ -45,9 +45,12 @@ $messages['dsb'] = array(
 Napóraj wersiju w boku, wósebnje   wužytnu za Wikinowosće.',
 );
 
-/** French (Français) */
+/** French (Français)
+ * @author McDutchie
+ */
 $messages['fr'] = array(
-	'catfeed-desc' => 'Utilise des bits pour alimenter les modifications récentes. Crée une version de page, très pratique pour Wikinews.',
+	'catfeed-desc' => 'Utilise des pièces des syndications de modifications récentes.
+Crée une version à insérer dans les pages, très pratique pour Wikinews.',
 );
 
 /** Galician (Galego)
@@ -71,6 +74,14 @@ $messages['hi'] = array(
  */
 $messages['hsb'] = array(
 	'catfeed-desc' => 'Wužiwa bity z kanalow aktualnych změnow. Wutwor wersiju w stronje, kotraž je wosebje wužitna za WikiNews.',
+);
+
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'catfeed-desc' => 'Usa partes de syndicationes de modificationes recente.
+Crea versiones pro uso in paginas, specialmente utile pro Wikinews.',
 );
 
 /** Japanese (日本語)

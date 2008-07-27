@@ -57,7 +57,8 @@ $messages['ar'] = array(
 	'chemicalsources'                  => 'مصادر كيميائية',
 	'chemicalsource-desc'              => 'يضيف الوسم <nowiki><chemform></nowiki>، للصيغ الكيميائية',
 	'chemFunctions_ListPage'           => 'مصادر كيميائية',
-	'chemFunctions_DataList'           => 'بالأسفل قائمة بوصلات إلى مواقع قد تحتوي على معلومات عن المادة الكيميائية التي تبحث عنها.<br /><br /> * <a href="http://webbook.nist.gov/cgi/cbook.cgi?ID=$MIXCASNameFormula&amp;Units=SI">Compound $MIXCASNameFormula at NIST</a><br /> * <a href="http://ptcl.chem.ox.ac.uk/MSDS/">MSDS في جامعة أكسفورد (UK) (غير قابل للبحث)</a><br />',
+	'chemFunctions_DataList'           => 'بالأسفل قائمة بوصلات إلى مواقع قد تحتوي على معلومات عن المادة الكيميائية التي تبحث عنها.<br /><br />
+* <a href="http://webbook.nist.gov/cgi/cbook.cgi?ID=$MIXCASNameFormula&amp;Units=SI">Compound $MIXCASNameFormula at NIST</a><br /> * <a href="http://ptcl.chem.ox.ac.uk/MSDS/">MSDS في جامعة أكسفورد (UK) (غير قابل للبحث)</a><br />',
 	'chemFunctions_CAS'                => 'رقم CAS',
 	'chemFunctions_ATCCode'            => 'كود ATC',
 	'chemFunctions_ECNumber'           => 'رقم EC',
@@ -281,6 +282,17 @@ $messages['hu'] = array(
 	'chemFunctions_Formula'            => 'Képlet',
 	'chemFunctions_Name'               => 'IUPAC név',
 	'chemFunctions_ChemFormInputError' => 'Chemform: bemeneti hiba!',
+);
+
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'chemicalsources'        => 'Fontes chimic',
+	'chemicalsource-desc'    => 'Adde le etiquetta <nowiki><chemform></nowiki>, pro formulas chimic',
+	'chemFunctions_DataList' => 'Infra es un lista de ligamines a sitos que pote fornir informationes super le substantia chimic que tu cerca.<br /><br />
+* <a href="http://webbook.nist.gov/cgi/cbook.cgi?ID=$MIXCASNameFormula&amp;Units=SI">Composito $MIXCASNameFormula a NIST</a><br />
+* <a href="http://ptcl.chem.ox.ac.uk/MSDS/">MSDS al Universitate de Oxford (Regno Unite) (non cercabile)</a><br />',
 );
 
 /** Indonesian (Bahasa Indonesia) */

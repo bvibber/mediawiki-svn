@@ -67,7 +67,9 @@ Releasing this information can result in permanent loss of Oversight privileges.
  * @author Naudefj
  */
 $messages['af'] = array(
-	'oversight-view' => 'details',
+	'hiderevision-continue'      => 'Gaan voort',
+	'hiderevision-error-missing' => 'Nie in databasis gevind nie.',
+	'oversight-view'             => 'details',
 );
 
 /** Aragonese (Aragonés)
@@ -119,14 +121,14 @@ Puestar que:
  * @author Meno25
  */
 $messages['ar'] = array(
-	'hiderevision'                => 'أخف النسخ بشكل دائم',
-	'hiderevision-desc'           => 'إخفاء نسخ منفردة من كل المستخدمين لأسباب قانونية، إلى آخره.',
-	'group-oversight'             => 'مستخدمون أوفرسايت',
-	'group-oversight-member'      => 'أوفرسايت',
+	'hiderevision'                => 'إخفاء المراجعات بشكل دائم',
+	'hiderevision-desc'           => 'إخفاء مراجعات منفردة من كل المستخدمين لأسباب قانونية، إلى آخره.',
+	'group-oversight'             => 'نظار',
+	'group-oversight-member'      => 'ناظر',
 	'grouppage-oversight'         => '{{ns:project}}:أوفرسايت',
-	'right-oversight'             => 'رؤية نسخة مخفية سابقة',
-	'right-hiderevision'          => 'مراجعة واسترجاع المراجعات المخفية عن الإداريين',
-	'hiderevision-prompt'         => 'رقم النسخة للإزالة:',
+	'right-oversight'             => 'رؤية مراجعة مخفية سابقة',
+	'right-hiderevision'          => 'مراجعة واسترجاع المراجعات المخفية عن مديري النظام',
+	'hiderevision-prompt'         => 'رقم المراجعة للإزالة:',
 	'hiderevision-continue'       => 'استمر',
 	'hiderevision-text'           => "هذا يجب أن يستخدم '''فقط''' في الحالات التالية:
 * معلومات شخصية غير ملائمة
@@ -135,29 +137,37 @@ $messages['ar'] = array(
 '''إساءة استخدام هذا النظام سينتج عنه فقد الصلاحيات.'''
 
 المدخلات المزالة لن تكون مرئية لأي شخص عبر موقع الويب،
-لكن عمليات الحذف ستسجل ويمكن استرجاعها يدويا بواسطة مدير قاعدة بيانات لو ارتكبت خطأ.",
+لكن عمليات الحذف ستسجل ويمكن استرجاعها يدويا بواسطة إداري قاعدة بيانات لو ارتكبت خطأ.",
 	'hiderevision-reason'         => 'السبب (سيسجل سرا):',
-	'hiderevision-submit'         => 'أخف هذه البيانات بشكل دائم',
-	'hiderevision-tab'            => 'إخفاء النسخة',
-	'hiderevision-norevisions'    => 'لا نسخ محددة للحذف.',
+	'hiderevision-submit'         => 'إخفاء هذه البيانات بشكل دائم',
+	'hiderevision-tab'            => 'إخفاء المراجعة',
+	'hiderevision-norevisions'    => 'لا مراجعات محددة للحذف.',
 	'hiderevision-noreason'       => 'يجب أن تصف السبب لهذه الإزالة.',
-	'hiderevision-status'         => 'النسخة $1: $2',
+	'hiderevision-status'         => 'المراجعة $1: $2',
 	'hiderevision-success'        => 'تمت الأرشفة والحذف بنجاح.',
 	'hiderevision-error-missing'  => 'غير موجود في قاعدة البيانات.',
-	'hiderevision-error-current'  => 'لا يمكن حذف آخر تعديل لصفحة. استرجع هذا التغيير أولا.',
+	'hiderevision-error-current'  => 'لا يمكن حذف آخر تعديل لصفحة.
+استرجع هذا التغيير أولا.',
 	'hiderevision-error-delete'   => 'لم يمكن الأرشفة؛ هل تم حذفها سابقا؟',
-	'hiderevision-archive-status' => 'النسخة المحذوفة من $1: $2',
-	'oversight-nodiff'            => 'غير قادر على تتبع التغييرات حيث أنه لا توجد نسخة سابقة للصفحة. إما:
+	'hiderevision-archive-status' => 'المراجعة المحذوفة من $1: $2',
+	'oversight-nodiff'            => 'غير قادر على تتبع التغييرات حيث أنه لا توجد مراجعة سابقة للصفحة. إما:
 *الصفحة تم حذفها
-*هذه النسخة المخفية كانت النسخة الأولى',
+*هذه المراجعة المخفية كانت المراجعة الأولى',
 	'oversight-log-hiderev'       => 'أزال تعديلا من $1',
 	'oversight'                   => 'أوفرسايت',
 	'oversight-view'              => 'التفاصيل',
-	'oversight-difference'        => '(الفرق من النسخة المتبقية السابقة)',
-	'oversight-prev'              => 'آخر نسخة سابقة',
-	'oversight-hidden'            => 'نسخة مخفية',
-	'oversight-header'            => 'بالأسفل قائمة بالنسخ التي تم إخفاؤها بشكل دائم حديثا عن العامة.
+	'oversight-difference'        => '(الفرق من المراجعة المتبقية السابقة)',
+	'oversight-prev'              => 'آخر مراجعة سابقة',
+	'oversight-hidden'            => 'مراجعة مخفية',
+	'oversight-header'            => 'بالأسفل قائمة بالمراجعات التي تم إخفاؤها بشكل دائم حديثا عن العامة.
 إفشاء هذه المعلومات يمكن أن ينتج عنه فقد دائم لصلاحيات الأوفرسايت.',
+);
+
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Ghaly
+ */
+$messages['arz'] = array(
+	'hiderevision-status' => 'النسخة $1: $2',
 );
 
 /** Asturian (Asturianu)
@@ -309,6 +319,7 @@ $messages['bn'] = array(
 	'oversight-log-hiderev'       => '$1 থেকে একটি সম্পাদনা মুছে ফেলা হয়েছে',
 	'oversight'                   => 'ওভারসাইট',
 	'oversight-view'              => 'বিস্তারিত',
+	'oversight-prev'              => 'সর্বশেষ পূর্ববর্তী পর্যালোচনা',
 	'oversight-hidden'            => 'লুকায়িত সংশোধন',
 );
 

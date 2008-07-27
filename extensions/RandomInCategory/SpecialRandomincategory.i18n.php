@@ -338,8 +338,9 @@ $messages['mr'] = array(
  * @author Fluence
  */
 $messages['nah'] = array(
-	'randomincategory-label'  => 'Neneuhcāyōtl:',
-	'randomincategory-submit' => 'Yāuh',
+	'randomincategory-toolbox' => 'Zāzozāzanilli',
+	'randomincategory-label'   => 'Neneuhcāyōtl:',
+	'randomincategory-submit'  => 'Yāuh',
 );
 
 /** Dutch (Nederlands)

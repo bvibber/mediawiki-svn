@@ -39,7 +39,7 @@ $messages['ar'] = array(
 $3',
 	'latexdoc_get_dvi'         => 'احصل على DVI',
 	'latexdoc_get_pdf'         => 'احصل على PDF',
-	'latexdoc-desc'            => 'وثيقة لا تكس',
+	'latexdoc-desc'            => 'تعديل تعاوني لوثائق لا تك',
 );
 
 /** Bulgarian (Български)

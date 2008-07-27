@@ -64,7 +64,7 @@ $messages['ar'] = array(
 	'contributors-subtitle'    => 'المساهمون الأساسيون للمقالة $1',
 	'contributors-others-long' => 'هناك {{PLURAL:$1|مساهم واحد آخر| $1 مساهم آخر}} لهذه الصفحة.',
 	'contributors-others'      => 'و {{PLURAL:$1|واحد آخر|$1 آخرون}}',
-	'contributors-badtitle'    => 'عنوان خاطئ.',
+	'contributors-badtitle'    => 'عنوان غير صحيح.',
 	'contributors-nosuchpage'  => 'الصفحة $1 غير موجودة.',
 );
 
@@ -238,8 +238,8 @@ $messages['eo'] = array(
 	'contributors-target'      => 'Titolo:',
 	'contributors-submit'      => 'Montri',
 	'contributors-subtitle'    => 'Ĉefaj kontribuantoj al $1',
-	'contributors-others-long' => 'Estas $1 aliaj konribuantoj al ĉi paĝo.',
-	'contributors-others'      => 'kaj $1 aliaj',
+	'contributors-others-long' => 'Estas {{PLURAL:$1|unu alia kontribuanto|$1 aliaj kontribuantoj}} al ĉi tiu paĝo.',
+	'contributors-others'      => 'kaj {{PLURAL:$1|unu alia|$1 aliaj}}',
 	'contributors-badtitle'    => 'Nevalida titolo.',
 	'contributors-nosuchpage'  => 'La paĝo $1 ne ekzistas.',
 );

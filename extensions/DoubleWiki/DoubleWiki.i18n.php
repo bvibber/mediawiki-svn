@@ -181,9 +181,10 @@ $messages['jv'] = array(
 
 /** Khmer (ភាសាខ្មែរ)
  * @author Chhorran
+ * @author Lovekhmer
  */
 $messages['km'] = array(
-	'doublewiki-desc' => 'បង្ហាញ ទំព័រ និង បំរែសំរួលរបស់វា ពី វិគីផ្សេង លើ ពីរ ជួរឈរ នៃ​ ទំព័រតែមួយ',
+	'doublewiki-desc' => 'បង្ហាញទំព័រនិងការបកប្រែរបស់វាពីវិគីផ្សេងទៀតជាពីរជួរឈរនៃ​ទំព័រដូចគ្នា',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

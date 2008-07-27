@@ -67,6 +67,8 @@ $messages['niu'] = array(
  */
 $messages['af'] = array(
 	'crosswikiblock-reason'         => 'Rede:',
+	'crosswikiblock-anononly'       => 'Blokkeer slegs anonieme gebruikers',
+	'crosswikiblock-nocreate'       => 'Blokkeer registrasie van gebruikers',
 	'crosswikiblock-noemail'        => 'Verbied gebruiker om e-pos te stuur',
 	'crosswikiunblock-reason'       => 'Rede:',
 	'crosswikiblock-alreadyblocked' => 'Gebruiker $3 is reeds geblok.',
@@ -436,6 +438,13 @@ Revenir vers :
 	'crosswikiunblock-local'        => 'Les blocages en écriture locaux ne sont pas supportés via cette interface. Utilisez [[Special:Ipblocklist]]',
 );
 
+/** Western Frisian (Frysk)
+ * @author Snakesteuben
+ */
+$messages['fy'] = array(
+	'crosswikiblock-expiry' => 'Ferrint nei:',
+);
+
 /** Galician (Galego)
  * @author Alma
  * @author Toliño
@@ -734,6 +743,7 @@ Bali menyang:
 /** Khmer (ភាសាខ្មែរ)
  * @author Chhorran
  * @author គីមស៊្រុន
+ * @author Lovekhmer
  */
 $messages['km'] = array(
 	'crosswikiblock-desc'           => 'អនុញ្ញាត​អោយរាំងខ្ទប់​អ្នកប្រើប្រាស់​លើ​​វិគីផ្សេង​ដែលប្រើប្រាស់ [[Special:Crosswikiblock|ទំព័រពិសេស]]',
@@ -746,9 +756,18 @@ $messages['km'] = array(
 	'crosswikiblock-nocreate'       => 'បង្ការ​ការបង្កើត​គណនី',
 	'crosswikiblock-noemail'        => 'បង្ការ​អ្នកប្រើប្រាស់​ពី​ការផ្ញើ​អ៊ីមែល',
 	'crosswikiunblock'              => 'លែងរាំងខ្ទប់​អ្នកប្រើប្រាស់​លើ​វិគី​ផ្សេង',
+	'crosswikiunblock-header'       => 'ទំព័រនេះអនុញ្ញាតអោយហាមឃាត់អ្នកប្រើប្រាស់នៅលើវិគីដ៏ទៃផ្សេងទៀត។
+
+សូមត្រួតពិនិត្យមើលថាតើអ្នកត្រូវអនុញ្ញាតអោយធ្វើសកម្មភាពនៅលើវិគីនេះ និងសកម្មភាពរបស់អ្នកគោរពតាមរាល់គោលការណ៍។',
 	'crosswikiunblock-user'         => 'ឈ្មោះអ្នកប្រើប្រាស់, អាស័យដ្ឋាន IP ឬ រាំងខ្ទប់ ID និង វិគី គោលដៅ ៖',
 	'crosswikiunblock-reason'       => 'មូលហេតុ៖',
 	'crosswikiunblock-submit'       => 'លែងរាំងខ្ទប់ អ្នកប្រើប្រាស់ នេះ',
+	'crosswikiunblock-success'      => "អ្នកប្រើប្រាស់ '''$1''' បានឈប់ហាមឃាត់ដោយជោគជ័យហើយ។
+
+
+ត្រលប់ទៅកាន់:
+* [[Special:CrosswikiBlock|ទំរង់បែបបទសំរាប់ការហាមឃាត់]]
+* [[$2]]",
 	'crosswikiblock-nousername'     => 'គ្មានឈ្មោះអ្នកប្រើប្រាស់ បានត្រូវបញ្ចូល',
 	'crosswikiblock-dbnotfound'     => 'មូលដ្ឋានទិន្នន័យ $1 មិនមាន',
 	'crosswikiblock-noname'         => 'ឈ្មោះអ្នកប្រើប្រាស់ "$1" គ្មានសុពលភាព ។',
@@ -756,6 +775,12 @@ $messages['km'] = array(
 	'crosswikiblock-noreason'       => 'គ្មានហេតុផល ត្រូវបានសំដៅ ។',
 	'crosswikiblock-alreadyblocked' => 'អ្នកប្រើប្រាស់ $3 ត្រូវបាន រាំងខ្ទប់ ហើយ ។',
 	'crosswikiblock-noblock'        => 'អ្នកប្រើប្រាស់នេះ មិនត្រូវបាន​ រាំងខ្ទប់ ។',
+	'crosswikiblock-success'        => "អ្នកប្រើប្រាស់ '''$3''' បានហាមឃាត់ដោយជោគជ័យ។
+
+
+ត្រលប់ទៅកាន់:
+* [[Special:CrosswikiBlock|ទំរង់បែបបទសំរាប់ការហាមឃាត់]]
+* [[$4]]",
 );
 
 /** Ripoarisch (Ripoarisch)
@@ -900,6 +925,14 @@ $messages['mr'] = array(
 * [[Special:CrosswikiBlock|ब्लॉक अर्ज]]
 * [[$4]]",
 	'crosswikiunblock-local'        => 'स्थानिक अनब्लॉक इथे बदलता येत नाहीत. [[Special:Ipblocklist]] चा उपयोग करा',
+);
+
+/** Nahuatl (Nahuatl)
+ * @author Fluence
+ */
+$messages['nah'] = array(
+	'crosswikiblock-reason'   => 'Īxtlamatiliztli:',
+	'crosswikiunblock-reason' => 'Īxtlamatiliztli:',
 );
 
 /** Low German (Plattdüütsch)

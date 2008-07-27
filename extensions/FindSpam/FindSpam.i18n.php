@@ -273,6 +273,7 @@ $messages['ms'] = array(
  * @author Fluence
  */
 $messages['nah'] = array(
+	'findspam-ip' => 'IP:',
 	'findspam-ok' => 'Cualli',
 );
 
