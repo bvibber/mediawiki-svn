@@ -125,7 +125,7 @@ static void log_no_err(const char *fmt,...)
 
 static void clean_env(void)
 {
-    char pathbuf[512];
+    char envbuf[512];
     char **cleanenv;
     char **ep;
     int cidx = 0;
@@ -147,8 +147,11 @@ static void clean_env(void)
         exit(120);
     }
 
-    sprintf(pathbuf, "PATH=%s", SB_SAFE_PATH);
-    cleanenv[cidx] = strdup(pathbuf);
+    sprintf(envbuf, "PATH=%s", SB_SAFE_PATH);
+    cleanenv[cidx] = strdup(envbuf);
+    cidx++;
+    sprintf(envbuf, "PHP_FCGI_MAX_REQUESTS=5000");
+    cleanenv[cidx] = strdup(envbuf);
     cidx++;
 
     for (ep = envp; *ep && cidx < SB_ENVBUF-1; ep++) {
