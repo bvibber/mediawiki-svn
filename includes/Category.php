@@ -14,8 +14,8 @@ class Category {
 	private $mRedir = null;
 	/** Category page title */
 	private $mTitle = null;
-	/** Counts of membership (cat_pages, cat_subcats, cat_files, cat_redir_pages) */
-	private $mPages = null, $mSubcats = null, $mFiles = null, $mRedirPages = null;
+	/** Counts of membership (cat_pages, cat_subcats, cat_files) */
+	private $mPages = null, $mSubcats = null, $mFiles = null;
 
 	private function __construct() {}
 
@@ -49,32 +49,30 @@ class Category {
 			# Okay, there were no contents.  Nothing to initialize.
 			if ( $this->mTitle ) {
 				# If there is a title object but no record in the category table, treat this as an empty category
-				$this->mID         = false;
-				$this->mRedir      = false;
-				$this->mName       = $this->mTitle->getDBKey();
-				$this->mPages      = 0;
-				$this->mSubcats    = 0;
-				$this->mFiles      = 0;
-				$this->mRedirPages = 0;
+				$this->mID      = false;
+				$this->mRedir   = false;
+				$this->mName    = $this->mTitle->getDBKey();
+				$this->mPages   = 0;
+				$this->mSubcats = 0;
+				$this->mFiles   = 0;
 
 				return true;
 			} else {
 				return false; # Fail
 			}
 		}
-		$this->mID         = $row->cat_id;
-		$this->mRedir      = $row->cat_redir;
-		$this->mName       = $row->cat_title;
-		$this->mPages      = $row->cat_pages;
-		$this->mSubcats	   = $row->cat_subcats;
-		$this->mFiles	   = $row->cat_files;
-		$this->mRedirPages = $row->cat_redir_pages;
+		$this->mID      = $row->cat_id;
+		$this->mRedir   = $row->cat_redir;
+		$this->mName    = $row->cat_title;
+		$this->mPages   = $row->cat_pages;
+		$this->mSubcats = $row->cat_subcats;
+		$this->mFiles   = $row->cat_files;
 
 		# (bug 13683) If the count is negative, then 1) it's obviously wrong
 		# and should not be kept, and 2) we *probably* don't have to scan many
 		# rows to obtain the correct figure, so let's risk a one-time recount.
 		if( $this->mPages < 0 || $this->mSubcats < 0 ||
-		$this->mFiles < 0 || $this->mRedirPages < 0 ) {
+		$this->mFiles < 0 ) {
 			$this->refreshCounts();
 		}
 
@@ -156,20 +154,18 @@ class Category {
 				$cat->mName = $title->getDBKey(); # if we have a title object, fetch the category name from there
 			}
 
-			$cat->mID	   	  = false;
-			$cat->mRedir   	  = false;
-			$cat->mSubcats 	  = 0;
-			$cat->mPages   	  = 0;
-			$cat->mFiles   	  = 0;
-			$cat->mRedirPages = 0;
+			$cat->mID	   = false;
+			$cat->mRedir   = false;
+			$cat->mSubcats = 0;
+			$cat->mPages   = 0;
+			$cat->mFiles   = 0;
 		} else {
-			$cat->mName    	  = $row->cat_title;
-			$cat->mID      	  = $row->cat_id;
-			$cat->mRedir   	  = $row->cat_redir;
-			$cat->mSubcats 	  = $row->cat_subcats;
-			$cat->mPages   	  = $row->cat_pages;
-			$cat->mFiles   	  = $row->cat_files;
-			$cat->mRedirPages = $row->cat_redir_pages;
+			$cat->mName    = $row->cat_title;
+			$cat->mID      = $row->cat_id;
+			$cat->mRedir   = $row->cat_redir;
+			$cat->mSubcats = $row->cat_subcats;
+			$cat->mPages   = $row->cat_pages;
+			$cat->mFiles   = $row->cat_files;
 		}
 
 		return $cat;
@@ -187,11 +183,6 @@ class Category {
 	public function getSubcatCount() { return $this->getX( 'mSubcats' ); }
 	/** @return mixed Number of member files, or false on failure */
 	public function getFileCount() { return $this->getX( 'mFiles' ); }
-	/** 
-	 * @return mixed Number of member pages that got included through a redirect,
-	 * or false on failure
-	**/
-	public function getRedirPages() { return $this->getX( 'mRedirPages' ); }
 
 	/**
 	 * @return mixed The Title for this category, or false on failure.
@@ -225,7 +216,6 @@ class Category {
 			return $redir;
 		}
 	}
-
 	/**
 	 * Refresh the counts for this category.
 	 *
@@ -250,13 +240,11 @@ class Category {
 
 		$cond1 = $dbw->conditional( 'page_namespace='.NS_CATEGORY, 1, 'NULL' );
 		$cond2 = $dbw->conditional( 'page_namespace='.NS_IMAGE, 1, 'NULL' );
-		$cond3 = $dbw->conditional( 'cl_target=cl_inline', 'NULL', 1 );
 		$result = $dbw->selectRow(
 			array( 'categorylinks', 'page' ),
 			array( 'COUNT(*) AS pages',
 				   "COUNT($cond1) AS subcats",
-				   "COUNT($cond2) AS files",
-				   "COUNT($cond3) AS redirs"
+				   "COUNT($cond2) AS files"
 			),
 			array( 'cl_target' => $this->mID, 'page_id = cl_from' ),
 			__METHOD__,
@@ -267,19 +255,17 @@ class Category {
 			array(
 				'cat_pages' => $result->pages,
 				'cat_subcats' => $result->subcats,
-				'cat_files' => $result->files,
-				'cat_redir_pages' => $result->redirs
+				'cat_files' => $result->files
 			),
-			array( 'cat_id' => $this->mID ),
+			array( 'cat_title' => $this->mName ),
 			__METHOD__
 		);
 		$dbw->commit();
 
 		# Now we should update our local counts.
-		$this->mPages      = $result->pages;
-		$this->mSubcats    = $result->subcats;
-		$this->mFiles      = $result->files;
-		$this->mRedirPages = $result->redirs;
+		$this->mPages   = $result->pages;
+		$this->mSubcats = $result->subcats;
+		$this->mFiles   = $result->files;
 
 		return $ret;
 	}
@@ -402,19 +388,5 @@ class Category {
 			$dbw->commit();
 		}
 		return true;
-	}
-
-	/**
-	 * Update the counts of the current category : add the pages from $from
-     */
-	public function addRedirFrom( Category $from ) {
-		$dbw = wfGetDB( DB_MASTER );
-		$c = $from->getPageCount();
-		$dbw->update(
-			'category',
-			array(  "cat_pages = cat_pages + $c", 
-					"cat_redir_pages = cat_redir_pages + $c" ),
-			array(  'cat_id' => $this->mId )
-		);
 	}
 }

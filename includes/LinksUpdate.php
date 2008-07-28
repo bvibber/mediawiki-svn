@@ -21,7 +21,7 @@ class LinksUpdate {
 		$mDb,            //!< Database connection reference
 		$mOptions,       //!< SELECT options to be used (array)
 		$mRecursive,     //!< Whether to queue jobs for recursive updates
-		$mCatObjects;	 //!< Map of title strings to Category objects
+		$mCatObjects;	 //!< Map of title strings to Category objects. Only contains initialized Category objects
 	/**@}}*/
 
 	/**
@@ -298,30 +298,20 @@ class LinksUpdate {
 	function updateCategoryCounts( $added, $deleted ) {
 		$a = new Article($this->mTitle);
 		$added_ids = array();
-		$added_redir_ids = array();
 		foreach ( $added as $title => $sort ) {
 			$cat = $this->mCatObjects[$title];
+			# $cat has already been initialized :
+			# the next line do NOT access the DB
 			$id = $cat->getID();
 			$added_ids [] = $id;
-			$redir = $cat->getRedir();
-			if ( $redir != null ) {
-				$added_redir_ids[] = $redir;
-			}
 		}
 		$deleted_ids = array();
-		$deleted_redir_ids = array();
 		foreach ( $deleted as $title => $sort ) {
 			$cat = $this->mCatObjects[$title];
 			$id = $cat->getID();
 			$deleted_ids [] = $id;
-			$redir = $cat->getRedir();
-			if ( $redir != null ) {
-				$deleted_redir_ids[] = $redir;
-			}
 		}
-		$a->updateCategoryCounts( 
-			$added_ids, $deleted_ids, $added_redir_ids, $deleted_redir_ids
-		);
+		$a->updateCategoryCounts( $added_ids, $deleted_ids );
 	}
 	
 	/**
