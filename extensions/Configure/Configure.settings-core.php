@@ -219,6 +219,8 @@ $settings = array(
 			'wgAllowUserJs' => 'bool',
 			'wgUseSiteCss' => 'bool',
 			'wgUseSiteJs' => 'bool',
+			'wgHandheldStyle' => 'text',
+			'wgHandheldForIPhone' => 'bool',
 		),
 	),
 	'namespaces' => array(
@@ -1127,6 +1129,8 @@ $settingsVersion = array(
 	'wgDiff' => array( array( '1.13alpha', '>=' ) ),
 # 1.14	
 	'wgExemptFromUserRobotsControl' => array( array( '1.14alpha', '>=' ) ),
+	'wgHandheldStyle' => array( array( '1.14alpha', '>=' ) ),
+	'wgHandheldForIPhone' => array( array( '1.14alpha', '>=' ) ),
 ## Obsolete
 	'wgProfileSampleRate' => array( array( '1.8alpha', '<' ) ),
 	'wgProfilerType' => array( array( '1.8alpha', '<' ) ),
