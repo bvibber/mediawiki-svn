@@ -1217,6 +1217,13 @@ Pode que se perderan.
 Por favor, póñase en contacto cun operador ou administrador do servidor.',
 );
 
+/** Ancient Greek (Ἀρχαία ἑλληνικὴ)
+ * @author LeighvsOptimvsMaximvs
+ */
+$wdMessages['grc'] = array(
+	'ow_Language' => 'Γλῶττα',
+);
+
 /** Manx (Gaelg)
  * @author MacTire02
  */
@@ -1505,8 +1512,10 @@ $wdMessages['is'] = array(
 
 /** Italian (Italiano)
  * @author Darth Kule
+ * @author Nemo bis
  */
 $wdMessages['it'] = array(
+	'ow_Language'               => 'Lingua',
 	'ow_OptionAttributeOptions' => 'Opzioni',
 );
 

@@ -109,6 +109,13 @@ $messages['it'] = array(
 	'universaleditbutton-desc' => 'Aggiunge l\'header HTML <code>&lt;link&gt;</code> per supportare l\'estensione del browser "Universal Edit Button browser"',
 );
 
+/** Ripoarisch (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'universaleditbutton-desc' => 'Deit ene <code>&lt;link&gt;</code> Befäähl en der HTML Vörspann en jede Sigg em Wiki, öm der <i lang="en">Universal Edit Button</i> Zosatz em Brauser ze nözze — wam_mer_en hät.',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */

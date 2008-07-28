@@ -782,6 +782,14 @@ Veuillez le rendre modifiable par PHP pour que cette extension fonctionne.',
 	'viewconfig'                          => 'Voir la configuration du wiki',
 );
 
+/** Western Frisian (Frysk)
+ * @author Snakesteuben
+ */
+$messages['fy'] = array(
+	'configure-js-remove'      => 'Wiskje',
+	'configure-section-search' => 'Sykje',
+);
+
 /** Galician (Galego)
  * @author Toliño
  */

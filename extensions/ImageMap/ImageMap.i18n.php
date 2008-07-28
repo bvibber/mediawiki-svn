@@ -590,6 +590,23 @@ $messages['km'] = array(
 	'imagemap_description'   => 'អំពីរូបភាពនេះ',
 );
 
+/** Ripoarisch (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'imagemap_desc'               => 'Brengk dä Befäähl <tt><nowiki><imagemap></nowiki></tt> en et Wiki, un med em Belldsche, wo mer op Anndeile fun klecke kann, wo dann Lengks henger lijje.',
+	'imagemap_no_image'           => 'Do es ene Fääler met <tt><nowiki><imagemap></nowiki></tt> opjefalle: En de eetzte Reih mööt e Beld shtonn.',
+	'imagemap_invalid_image'      => 'Do es ene Fääler met <tt><nowiki><imagemap></nowiki></tt> opjefalle: dat Beld jidd_et nit, odder dä Name es verkeeht',
+	'imagemap_no_link'            => 'Do es ene Fääler met <tt><nowiki><imagemap></nowiki></tt> opjefalle: En de {{PLURAL:$1|eetzte|$1-te|nullte}} Reih eß am Engk keine Lengk jefonge woode.',
+	'imagemap_invalid_title'      => 'Do es ene Fääler met <tt><nowiki><imagemap></nowiki></tt> opjefalle: Dä Tittel em Lengk en de {{PLURAL:$1|eetzte|$1-te|nullte}} Reih eß verkeeht.',
+	'imagemap_missing_coord'      => "Do es ene Fääler met <tt><nowiki><imagemap></nowiki></tt> opjefalle: En dä {{PLURAL:$1|eetzte|$1-te|nullte}} Reih sin nit jenooch Ko'oddinate förr_ene komplätte Ömreß.",
+	'imagemap_unrecognised_shape' => 'Do es ene Fääler met <tt><nowiki><imagemap></nowiki></tt> opjefalle: Dä Name förr_enne Ömreß en de {{PLURAL:$1|eetzte|$1-te|nullte}} Reih eß verkeeht. Et mööt „<tt>rect</tt>“, „<tt>circle</tt>“, „<tt>poly</tt>“, udder „<tt>default</tt>“ do shtonn.',
+	'imagemap_no_areas'           => 'Do es ene Fääler met <tt><nowiki><imagemap></nowiki></tt> opjefalle: Do mööt jo winnischßdens eine Ömreß aanjejovve wääde, es ävver nit, es jaa keine doh.',
+	'imagemap_invalid_coord'      => "Do es ene Fääler met <tt><nowiki><imagemap></nowiki></tt> opjefalle: En de {{PLURAL:$1|eetzte|$1-te|nullte}} Reih eß jet verkeeht met de Ko'oddinate. Do mööte luuter Zahle shtonn, es äver nit esu.",
+	'imagemap_invalid_desc'       => 'Do es ene Fääler met <tt><nowiki><imagemap></nowiki></tt> opjefalle: Dä Parammeeter „<tt><nowiki>desc</nowiki></tt>“ eß verkeeht aanjejovve. Bruche kanns De nor ein fun dänne hee: <tt>$1</tt>',
+	'imagemap_description'        => 'Övver dat Beld hee',
+);
+
 /** Latin (Latina)
  * @author SPQRobin
  */

@@ -227,6 +227,13 @@ $messages['is'] = array(
 	'languageselector' => 'Tungumál',
 );
 
+/** Italian (Italiano)
+ * @author Nemo bis
+ */
+$messages['it'] = array(
+	'languageselector' => 'Lingua',
+);
+
 /** Japanese (日本語)
  * @author JtFuruhata
  */

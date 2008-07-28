@@ -222,6 +222,13 @@ $messages['fr'] = array(
 	'edituser-exempt'   => "L'utilisateur spécifié ne peut pas être modifié",
 );
 
+/** Western Frisian (Frysk)
+ * @author Snakesteuben
+ */
+$messages['fy'] = array(
+	'edituser-dosearch' => 'Sykje',
+);
+
 /** Galician (Galego)
  * @author Toliño
  * @author Alma

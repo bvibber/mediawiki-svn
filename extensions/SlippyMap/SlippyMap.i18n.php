@@ -298,6 +298,8 @@ $messages['no'] = array(
 	'slippymap_maperror'        => 'Kartfeil:',
 	'slippymap_osmtext'         => 'Se dette kartet på OpenStreetMap.org',
 	'slippymap_code'            => 'Wikikode for denne kartvisningen:',
+	'slippymap_button_code'     => 'Hent wikikode',
+	'slippymap_resetview'       => 'Tilbakestill visning',
 );
 
 /** Occitan (Occitan)

@@ -171,6 +171,7 @@ Un fichier importé pourra contenir un nom de la page et un motif facultatif sé
  * @author Snakesteuben
  */
 $messages['fy'] = array(
+	'deletebatch-button' => 'Wiskje',
 	'deletebatch-reason' => 'Reden foar it wiskjen',
 );
 
@@ -260,6 +261,7 @@ $messages['lb'] = array(
  */
 $messages['nah'] = array(
 	'deletebatch-button'           => 'Ticpolōz',
+	'deletebatch-reason'           => 'Tlapololiztli īxtlamatiliztli',
 	'deletebatch-success-subtitle' => '$1 ītechcopa',
 );
 

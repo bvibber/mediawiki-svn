@@ -430,10 +430,20 @@ Novější verze $2 je dostupná na http://pecl.php.net/package/APC/$2.',
 
 /** German (Deutsch)
  * @author Purodha
+ * @author Pill
  */
 $messages['de'] = array(
-	'viewapc'             => 'APC-Informationen',
-	'viewapc-apc-version' => 'APC Version',
+	'viewapc'                       => 'APC-Informationen',
+	'viewapc-clear-confirm'         => 'Möchtest du den Cache leeren?',
+	'viewapc-apc-version'           => 'APC Version',
+	'viewapc-display-creation_time' => 'Erstellt',
+	'viewapc-display-deletion_time' => 'Gelöscht',
+	'viewapc-ls-header-accessed'    => 'Zuletzt aufgerufen',
+	'viewapc-ls-header-modified'    => 'Zuletzt geändert',
+	'viewapc-ls-sort-accessed'      => 'Zuletzt aufgerufen',
+	'viewapc-ls-sort-modified'      => 'Zuletzt geändert',
+	'viewapc-ls-sort-created'       => 'Erstellt',
+	'viewapc-ls-sort-deleted'       => 'Gelöscht',
 );
 
 /** Esperanto (Esperanto)

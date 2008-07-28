@@ -198,6 +198,13 @@ $messages['fr'] = array(
 	'editmsg-patch-success'    => 'Patch appliqué avec succès.',
 );
 
+/** Western Frisian (Frysk)
+ * @author Snakesteuben
+ */
+$messages['fy'] = array(
+	'editmsg-search' => 'Sykje',
+);
+
 /** Galician (Galego)
  * @author Toliño
  */

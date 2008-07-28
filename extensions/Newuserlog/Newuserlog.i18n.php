@@ -455,6 +455,7 @@ $messages['frp'] = array(
  */
 $messages['fur'] = array(
 	'newuserlogpage'              => 'Regjistri dai gnûfs utents',
+	'newuserlogpagetext'          => 'Ca sot tu cjatis un regjistri dai gnûfs utents creâts',
 	'newuserlog-byemail'          => 'peraule clâf mandade par pueste eletroniche',
 	'newuserlog-create-entry'     => 'al è rivât il gnûf utent',
 	'newuserlog-create2-entry'    => 'creade une identitât par $1',
@@ -481,6 +482,13 @@ $messages['gl'] = array(
 	'newuserlog-create-entry'     => 'Novo usuario',
 	'newuserlog-create2-entry'    => 'creou unha conta para "$1"',
 	'newuserlog-autocreate-entry' => 'Conta de usuario creada automaticamente',
+);
+
+/** Ancient Greek (Ἀρχαία ἑλληνικὴ)
+ * @author LeighvsOptimvsMaximvs
+ */
+$messages['grc'] = array(
+	'newuserlog-create-entry' => 'Νέος χρώμενος',
 );
 
 /** Manx (Gaelg)

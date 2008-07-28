@@ -149,6 +149,13 @@ $messages['fr'] = array(
 	'inspectcache-list'    => 'Liste',
 );
 
+/** Western Frisian (Frysk)
+ * @author Snakesteuben
+ */
+$messages['fy'] = array(
+	'inspectcache-delete' => 'Wiskje',
+);
+
 /** Galician (Galego)
  * @author Toliño
  * @author Xosé

@@ -95,6 +95,7 @@ $messages['bg'] = array(
 
 /** German (Deutsch)
  * @author Raimond Spekking
+ * @author Pill
  */
 $messages['de'] = array(
 	'invite-logpage'                        => 'Einladungs-Logbuch',
@@ -108,7 +109,7 @@ $messages['de'] = array(
 	'invitations-uninvitedlist-none'        => 'Zur Zeit sind keine weiteren Softwarefunktionen einladungsbasiert.',
 	'invitations-feature-pagetitle'         => 'Einladungs-Verwaltung - $1',
 	'invitations-feature-access'            => 'Du hast Zugang zur Nutzung von <i>$1</i>.',
-	'invitations-feature-numleft'           => 'Dir stehen noch <b>$1</b> von insgesamt $2 Einladungen zur Verfügung.',
+	'invitations-feature-numleft'           => '{{PLURAL:$2|Dir steht noch eine Einladung|Dir stehen noch <b>$1</b> von insgesamt $2 Einladungen}} zur Verfügung.',
 	'invitations-feature-noneleft'          => 'Du hast alle dir zugewiesenen Einladungen für diese Softwarefunktion verbraucht.',
 	'invitations-feature-noneyet'           => 'Dir wurden noch keine Einladungen für diese Softwarefunktion zugewiesen.',
 	'invitations-feature-notallowed'        => 'Du hast keine Berechtigung, um <i>$1</i> zu nutzen.',

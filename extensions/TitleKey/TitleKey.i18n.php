@@ -141,6 +141,13 @@ $messages['jv'] = array(
 	'titlekey-desc' => 'Backend prosès panggolèkan irah-irahan préfiks',
 );
 
+/** Ripoarisch (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'titlekey-desc' => 'Deit em Hengerjrond noh de Aanfäng fun Sigge-Tittele söke un de jefonge Tittele vörschlare',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */

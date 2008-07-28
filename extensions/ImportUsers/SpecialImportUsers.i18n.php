@@ -257,6 +257,7 @@ $messages['fr'] = array(
  * @author Snakesteuben
  */
 $messages['fy'] = array(
+	'importusers-form-button'     => 'Ymportearje',
 	'importusers-log-summary-all' => 'Alle',
 );
 

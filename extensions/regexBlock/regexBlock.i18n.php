@@ -344,8 +344,9 @@ $messages['fr'] = array(
  * @author Snakesteuben
  */
 $messages['fy'] = array(
-	'regexblock-form-expiry' => 'Ferrint nei:',
-	'regexblock-view-all'    => 'Alles',
+	'regexblock-form-expiry'     => 'Ferrint nei:',
+	'regexblock-already-blocked' => '$1 is al útsluten.',
+	'regexblock-view-all'        => 'Alles',
 );
 
 /** Galician (Galego)

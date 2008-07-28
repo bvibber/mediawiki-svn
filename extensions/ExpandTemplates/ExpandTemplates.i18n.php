@@ -473,7 +473,9 @@ tâles que <nowiki>{{</nowiki>#if:...}} et <nowiki>{{</nowiki>CURRENTDAY}}, sont
  * @author Klenje
  */
 $messages['fur'] = array(
-	'expand_templates_ok' => 'Va ben',
+	'expand_templates_output'  => 'Risultât',
+	'expand_templates_ok'      => 'Va ben',
+	'expand_templates_preview' => 'Anteprime',
 );
 
 /** Galician (Galego)

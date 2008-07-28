@@ -371,6 +371,13 @@ $1 للبيانات المشفرة.</p>',
 	'right-boardvote'          => 'إدارة الانتخابات',
 );
 
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Ghaly
+ */
+$messages['arz'] = array(
+	'boardvote_edits_many' => 'كتير',
+);
+
 /** Asturian (Asturianu)
  * @author SPQRobin
  * @author Esbardu
@@ -1926,8 +1933,11 @@ Un avèrtissement regardent un cèrtificat pas signê serat pôt-étre afichiê.
  * @author Klenje
  */
 $messages['fur'] = array(
-	'boardvote_ip'       => 'IP',
+	'boardvote_user'     => 'Utent',
+	'boardvote_edits'    => 'Cambiaments',
+	'boardvote_days'     => 'Zornadis',
 	'boardvote_dumplink' => 'Frache culì',
+	'boardvote_submit'   => 'Va ben',
 	'boardvote_welcome'  => "Benvignût/Benvignude '''$1'''!",
 );
 

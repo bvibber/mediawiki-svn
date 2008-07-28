@@ -639,7 +639,7 @@ $messages['mr'] = array(
  */
 $messages['nah'] = array(
 	'contributors-target' => 'Tōcāitl:',
-	'contributors-submit' => 'Tiquittāz',
+	'contributors-submit' => 'Tiquinttāz',
 );
 
 /** Low German (Plattdüütsch)

@@ -811,6 +811,8 @@ $messages['fr'] = array(
  */
 $messages['fy'] = array(
 	'mv_remove_reason'   => 'Reden foar it wiskjen:',
+	'mv_tool_search'     => 'Sykje',
+	'mv_tool_export'     => 'Eksportearje',
 	'mv_edit'            => 'Wizigje',
 	'mv_search_category' => 'Kategory',
 	'mv_category'        => 'kategory',
@@ -1871,6 +1873,7 @@ $mvMVDTypeDefaultDisp हा $mvMVDTypeAllAvailable चा सबसेट अ�
  * @author Fluence
  */
 $messages['nah'] = array(
+	'mv_remove_reason'   => 'Tlapololiztli īxtlamatiliztli:',
 	'mv_upload_file'     => 'Tlahcuilōlquetza',
 	'mv_tool_export'     => 'Ticnamacāz',
 	'mv_edit'            => 'Ticpatlāz',

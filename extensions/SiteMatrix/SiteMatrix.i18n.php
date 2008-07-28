@@ -657,6 +657,7 @@ $messages['is'] = array(
  * @author .anaconda
  * @author לערי ריינהארט
  * @author Ramac
+ * @author Nemo bis
  */
 $messages['it'] = array(
 	'sitematrix'           => 'Elenco di tutti i progetti Wikimedia nelle varie lingue',

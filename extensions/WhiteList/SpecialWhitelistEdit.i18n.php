@@ -391,8 +391,9 @@ Cette page ne s’applique qu’aux utilisateurs disposant de droits restreints.
  * @author Snakesteuben
  */
 $allMessages['fy'] = array(
-	'whitelisttablemodifyall' => 'Alle',
-	'whitelisttableedit'      => 'Wizigje',
+	'whitelisttablemodifyall'  => 'Alle',
+	'whitelisttablemodifynone' => 'Gjin',
+	'whitelisttableedit'       => 'Wizigje',
 );
 
 /** Galician (Galego)

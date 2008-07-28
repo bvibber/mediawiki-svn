@@ -187,6 +187,13 @@ $messages['km'] = array(
 	'doublewiki-desc' => 'បង្ហាញទំព័រនិងការបកប្រែរបស់វាពីវិគីផ្សេងទៀតជាពីរជួរឈរនៃ​ទំព័រដូចគ្នា',
 );
 
+/** Ripoarisch (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'doublewiki-desc' => 'En Hölp för et Övversäze — zeijsh en zwei Sigge en zwei Shprooche us zwei Wikkis en zwei Shpallde nevvenannder aan.',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */

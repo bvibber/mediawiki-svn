@@ -79,12 +79,14 @@ $messages['an'] = array(
 $messages['ar'] = array(
 	'spamregex'                      => 'سبام ريجيكس',
 	'spamregex-desc'                 => '[[Special:Spamregex|فلتر]] العبارات غير المرغوب فيها في الصفحات المعدلة، بالاعتماد على التعبيرات المنتظمة',
+	'spamregex-error-unblocking'     => 'خطأ رفع منع "$1". على الأرجح لا يوجد نمط كهذا.',
 	'spamregex-summary'              => 'النص تم العثور عليه في ملخص الصفحة.',
 	'spamregex-intro'                => 'استخدم هذه الاستمارة لمنع تعبيرات من الحفظ في نص صفحة بكفاءة.
 لو أن النص يحتوي على التعبير المعطى، لن يتم حفظ التغيير وسيتم عرض تفسير للمستخدم الذي حاول حفظ الصفحة.
 ينصح بالحذر، التعبيرات لا ينبغي أن تكون قصيرة جدا أو شائعة جدا.',
 	'spamregex-page-title'           => 'منع سبام ريجيكس التعبيرات غير المرغوب فيها',
 	'spamregex-currently-blocked'    => "'''العبارات الممنوعة حاليا:'''",
+	'spamregex-move'                 => 'السبب الذي أدخلته يحتوي على عبارة ممنوعة.',
 	'spamregex-no-currently-blocked' => "'''لا توجد عبارات ممنوعة.'''",
 	'spamregex-log-1'                => "* '''$1''' $2 ([{{SERVER}}$3&text=$4 إزالة]) تمت إضافتها بواسطة",
 	'spamregex-log-2'                => ' في $1',
@@ -166,14 +168,17 @@ $messages['eo'] = array(
 
 /** French (Français)
  * @author Urhixidur
+ * @author Grondin
  */
 $messages['fr'] = array(
 	'spamregex'                      => 'Expressions régulières de pourriels',
 	'spamregex-desc'                 => '[[Special:Spamregex|Filtre]], dans les pages, les phrases ou mots indésirables, basé sur des expressions régulières',
+	'spamregex-error-unblocking'     => 'Erreur de déblocage de « $1 ». Il n’y a pas probablement aucun modèle.',
 	'spamregex-summary'              => 'Le texte en question a été détecté dans le commentaire de la page.',
 	'spamregex-intro'                => 'Utilisez ce formulaire pour bloquer effectivement les expressions pouvant être sauvegardées dans une page texte. Si le texte contient les expressions définies, les changements ne pourront être sauvegardés et un motif explicatif sera affiché à l’utilisateur qui a voulu sauvegarder la page. Il est important de prendre en considération que les expressions ne devront être ni trop longues ni trop courantes.',
 	'spamregex-page-title'           => 'Blocage des expressions régulières de pourriels',
 	'spamregex-currently-blocked'    => "'''Phrases actuellement bloquées :'''",
+	'spamregex-move'                 => 'Le motif que vous avez inscrit contenait une phrase bloquée.',
 	'spamregex-no-currently-blocked' => "'''Il n’y a aucune phrase bloquée.'''",
 	'spamregex-log-1'                => "* '''$1''' $2 ([{{SERVER}}$3&text=$4 supprimer]) ajouté par ",
 	'spamregex-log-2'                => ' le $1',
@@ -193,6 +198,13 @@ $messages['fr'] = array(
 	'spamregex-block-submit'         => 'Bloquer&nbsp;cette&nbsp;phrase',
 	'spamregex-text'                 => '(Texte)',
 	'spamregex-summary-log'          => '(Commentaire)',
+);
+
+/** Western Frisian (Frysk)
+ * @author Snakesteuben
+ */
+$messages['fy'] = array(
+	'spamregex-already-blocked' => '"$1" is al útsluten',
 );
 
 /** Galician (Galego)
@@ -554,10 +566,12 @@ $messages['sdc'] = array(
 $messages['sk'] = array(
 	'spamregex'                      => 'SpamRegex',
 	'spamregex-desc'                 => '[[Special:Spamregex|Filtrovanie]] neželaných výrazov v upravovaných stránkach na základe regulárnych výrazov',
+	'spamregex-error-unblocking'     => 'Chyba pri odblokovaní „$1”. Taký vzor pravdepodobne neexistuje.',
 	'spamregex-summary'              => 'Text bol nájdený v zhrnutí úprav stránky.',
 	'spamregex-intro'                => 'Tento formulár slúži na efektívne zamedzenie ukladania nežiaduceho textu stránok. Ak text obsahuje uvedený výraz, zmeny nebude možné uložiť a používateľovi sa zobrazí upozornenie. Odporúča sa opatrnosť - výrazy by nemali byť príliš krátke ani bežne sa vyskytujúce.',
 	'spamregex-page-title'           => 'Blokovanie nežiaduceho spamu pomocou regulárnych výrazov',
 	'spamregex-currently-blocked'    => "'''Momentálne zablokované frázy.'''",
+	'spamregex-move'                 => 'Dôvod, ktorý ste zadali, obsahoval zablokovaný výraz.',
 	'spamregex-no-currently-blocked' => "'''Nie sú žiadne zablokované frázy.'''",
 	'spamregex-log-1'                => "* '''$1''' $2 ([{{SERVER}}$3&text=$4 remove]) pridal",
 	'spamregex-log-2'                => '$1',

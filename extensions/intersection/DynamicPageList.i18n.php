@@ -109,9 +109,10 @@ $messages['cs'] = array(
 
 /** German (Deutsch)
  * @author Raimond Spekking
+ * @author Purodha
  */
 $messages['de'] = array(
-	'intersection-desc'          => 'Ausgabe einer Liste der aktuellsten Einträge in einer Kategorie, oder der Schnittmenge mehrerer Kategorien',
+	'intersection-desc'          => 'Ausgabe einer Liste der aktuellsten Einträge in einer Kategorie, oder der Vereinigungsmenge mehrerer Kategorien',
 	'intersection_toomanycats'   => 'DynamicPageList: Zuviele Kategorien!',
 	'intersection_toofewcats'    => 'DynamicPageList: Zuwenige Kategorien!',
 	'intersection_noresults'     => 'DynamicPageList: Kein Ergebnis!',
@@ -316,6 +317,17 @@ $messages['km'] = array(
 	'intersection_toofewcats'    => 'Error: ចំណាត់ក្រុម តិចពេក!',
 	'intersection_noresults'     => 'Error: គ្មានលទ្ធផល!',
 	'intersection_noincludecats' => 'Error: អ្នកត្រូវតែមាន យ៉ាងតិច មួយចំណាត់ក្រុម, ឬ សំដៅ មួយ វាលឈ្មោះ​!',
+);
+
+/** Ripoarisch (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'intersection-desc'          => 'Zeij_en Liß met de neuste Enndrääsch en en Saachjrupp, udder de neuste Enndrääsch, die en ein uss_enem Knubbel fun Saachjrupp dren sin.',
+	'intersection_toomanycats'   => '<i lang="en">DynamicPageList</i> hät ene Fääler jefonge: Dat sinn_er zo vill Saachjroppe!',
+	'intersection_toofewcats'    => '<i lang="en">DynamicPageList</i> hät ene Fääler jefonge: Dat sin ze winnisch Saachjruppe!',
+	'intersection_noresults'     => '<i lang="en">DynamicPageList</i> hät ene Fääler jefonge: Do kohm nix bei erus!',
+	'intersection_noincludecats' => '<i lang="en">DynamicPageList</i> hät ene Fääler jefonge: Mer bruch winnischßdens ein Saachjrupp. Sön jivv en Appachtemang aan!',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

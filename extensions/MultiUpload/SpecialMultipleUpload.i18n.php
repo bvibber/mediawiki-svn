@@ -189,6 +189,13 @@ Les images non pertinentes pourront être supprimées immédiatement. Voyez la p
 	'multiupload-toolbox'              => 'Importer (Téléverser) plusieurs fichiers',
 );
 
+/** Western Frisian (Frysk)
+ * @author Snakesteuben
+ */
+$messages['fy'] = array(
+	'multipleupload' => 'Triemmen oplade',
+);
+
 /** Galician (Galego)
  * @author Xosé
  * @author Toliño

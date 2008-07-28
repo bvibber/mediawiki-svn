@@ -657,6 +657,13 @@ $messages['is'] = array(
 	'openidchoosepassword' => 'lykilorð:',
 );
 
+/** Italian (Italiano)
+ * @author Nemo bis
+ */
+$messages['it'] = array(
+	'openidlanguage' => 'Lingua',
+);
+
 /** Javanese (Basa Jawa)
  * @author Meursault2004
  */

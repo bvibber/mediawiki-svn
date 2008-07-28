@@ -658,6 +658,7 @@ $messages['fur'] = array(
 	'ogg-short-general'     => 'File multimediâl Ogg $1, $2',
 	'ogg-long-audio'        => '(File audio Ogg $1, durade $2, $3)',
 	'ogg-long-video'        => '(File video Ogg $1, durade $2, dimensions $4×$5 pixels, $3)',
+	'ogg-long-multiplexed'  => '(File audio/video multiplexed Ogg $1, lungjece $2, dimensions $4×$5 pixels, in dut $3)',
 	'ogg-long-general'      => '(File multimediâl Ogg, durade $2, $3)',
 	'ogg-play'              => 'Riprodûs',
 	'ogg-pause'             => 'Pause',

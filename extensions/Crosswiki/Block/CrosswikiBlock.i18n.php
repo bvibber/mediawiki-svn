@@ -442,7 +442,10 @@ Revenir vers :
  * @author Snakesteuben
  */
 $messages['fy'] = array(
-	'crosswikiblock-expiry' => 'Ferrint nei:',
+	'crosswikiblock-expiry'         => 'Ferrint nei:',
+	'crosswikiblock-anononly'       => 'Slút allinich anonyme meidoggers út',
+	'crosswikiblock-autoblock'      => "Automatysk de lêste IP adressen útslute dy't troch dizze meidogger brûkt binne.",
+	'crosswikiblock-alreadyblocked' => 'Meidogger $3 is al útsluten.',
 );
 
 /** Galician (Galego)

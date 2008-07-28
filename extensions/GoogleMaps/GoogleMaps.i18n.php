@@ -965,9 +965,11 @@ $wgGoogleMapsMessages['fr'] = array(
  * @author Snakesteuben
  */
 $wgGoogleMapsMessages['fy'] = array(
-	'gm-yes'         => 'Ja',
-	'gm-save-path'   => 'Fêstlizze',
-	'gm-kml-loading' => 'ynlade...',
+	'gm-no-zoom-control' => 'Ut',
+	'gm-yes'             => 'Ja',
+	'gm-search'          => 'Sykje',
+	'gm-save-path'       => 'Fêstlizze',
+	'gm-kml-loading'     => 'ynlade...',
 );
 
 /** Irish (Gaeilge)

@@ -740,6 +740,13 @@ Los articllos èfaciês sont pas més visiblos dens ceti sistèmo, mas celes sup
 	'oversight-header'            => 'Ce-desot, figure la lista de les vèrsions cachiês de maniére durâbla u publico. La publecacion de ceta enformacion pôt avêr coment consèquence la pèrta des privilèjos de survelyence.',
 );
 
+/** Friulian (Furlan)
+ * @author Klenje
+ */
+$messages['fur'] = array(
+	'oversight-view' => 'detais',
+);
+
 /** Galician (Galego)
  * @author Xosé
  * @author Toliño

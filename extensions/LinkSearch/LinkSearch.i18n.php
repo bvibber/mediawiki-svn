@@ -411,6 +411,13 @@ $messages['fur'] = array(
 	'linksearch-ok' => 'Cîr',
 );
 
+/** Western Frisian (Frysk)
+ * @author Snakesteuben
+ */
+$messages['fy'] = array(
+	'linksearch-ok' => 'Sykje',
+);
+
 /** Galician (Galego)
  * @author Toliño
  * @author Alma
