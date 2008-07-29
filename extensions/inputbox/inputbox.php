@@ -4,9 +4,8 @@
  * This file contains the main include file for the Inputbox extension of 
  * MediaWiki. 
  *
- * Usage: require_once("path/to/inputbox.php"); in LocalSettings.php
- *
- * This extension requires MediaWiki 1.5 or higher.
+ * Usage: Add the following line in LocalSettings.php:
+ * require_once( "$IP/extensions/Inputbox/Inputbox.php" );
  *
  * @author Erik Moeller <moeller@scireview.de>
  *  namespaces search improvements partially by
