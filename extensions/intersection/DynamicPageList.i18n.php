@@ -9,7 +9,7 @@
 $messages= array();
 
 $messages['en'] = array(
-	'intersection-desc'          => 'Outputs a bulleted list of the most recent items residing in a category, or a union of several categories',
+	'intersection-desc'          => 'Outputs a bulleted list of the most recent items residing in a category, or an intersection of several categories',
 	'intersection_toomanycats'   => 'Error: Too many categories!',
 	'intersection_toofewcats'    => 'Error: Too few categories!',
 	'intersection_noresults'     => 'Error: No results!',
@@ -112,7 +112,7 @@ $messages['cs'] = array(
  * @author Purodha
  */
 $messages['de'] = array(
-	'intersection-desc'          => 'Ausgabe einer Liste der aktuellsten Einträge in einer Kategorie, oder der Vereinigungsmenge mehrerer Kategorien',
+	'intersection-desc'          => 'Ausgabe einer Liste der aktuellsten Einträge in einer Kategorie, oder der Schnittmenge mehrerer Kategorien',
 	'intersection_toomanycats'   => 'DynamicPageList: Zuviele Kategorien!',
 	'intersection_toofewcats'    => 'DynamicPageList: Zuwenige Kategorien!',
 	'intersection_noresults'     => 'DynamicPageList: Kein Ergebnis!',
@@ -323,7 +323,7 @@ $messages['km'] = array(
  * @author Purodha
  */
 $messages['ksh'] = array(
-	'intersection-desc'          => 'Zeij_en Liß met de neuste Enndrääsch en en Saachjrupp, udder de neuste Enndrääsch, die en ein uss_enem Knubbel fun Saachjrupp dren sin.',
+	'intersection-desc'          => 'Zeij_en Liß met de neuste Enndrääsch en en Saachjrupp, udder de neuste Enndrääsch, die en alle uss_enem Knubbel fun Saachjrupp dren sin.',
 	'intersection_toomanycats'   => '<i lang="en">DynamicPageList</i> hät ene Fääler jefonge: Dat sinn_er zo vill Saachjroppe!',
 	'intersection_toofewcats'    => '<i lang="en">DynamicPageList</i> hät ene Fääler jefonge: Dat sin ze winnisch Saachjruppe!',
 	'intersection_noresults'     => '<i lang="en">DynamicPageList</i> hät ene Fääler jefonge: Do kohm nix bei erus!',
