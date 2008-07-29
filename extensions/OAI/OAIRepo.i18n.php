@@ -120,7 +120,7 @@ $messages['it'] = array(
  * @author Purodha
  */
 $messages['ksh'] = array(
-	'oai-desc' => 'De [http://www.openarchives.org/OAI/openarchivesprotocol.html OAI-PMH] Schnettshtëll',
+	'oai-desc' => 'De [http://www.openarchives.org/OAI/openarchivesprotocol.html OAI-PMH] Schnettshtëll.',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -128,6 +128,13 @@ $messages['ksh'] = array(
  */
 $messages['lb'] = array(
 	'oai-desc' => 'Stellt den [http://www.openarchives.org/OAI/openarchivesprotocol.html OAI-PMH] Repertoires-Interface zur Verfügung',
+);
+
+/** Limburgish (Limburgs)
+ * @author Matthias
+ */
+$messages['li'] = array(
+	'oai-desc' => 'Gef interface aan [http://www.openarchives.org/OAI/openarchivesprotocol.html OAI-PMH-repository]',
 );
 
 /** Marathi (मराठी)

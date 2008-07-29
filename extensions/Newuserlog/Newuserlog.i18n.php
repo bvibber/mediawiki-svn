@@ -650,15 +650,16 @@ $messages['is'] = array(
 /** Italian (Italiano)
  * @author BrokenArrow
  * @author Melos
+ * @author Nemo bis
  */
 $messages['it'] = array(
-	'newuserlogpage'              => 'Registro nuovi utenti',
-	'newuserlogpagetext'          => 'Di seguito viene riportato il registro dei nomi utente di nuova creazione',
+	'newuserlogpage'              => 'Nuovi utenti',
+	'newuserlogpagetext'          => 'Di seguito sono elencati gli account di nuova creazione.',
 	'newuserlog-desc'             => 'Aggiunge un [[Special:Log/newusers|registro degli utenti creati]] alla [[Special:Log|pagina dei registri]]',
 	'newuserlog-byemail'          => 'password inviata via mail',
-	'newuserlog-create-entry'     => 'si è registrato',
+	'newuserlog-create-entry'     => 'si è appena registrato/a',
 	'newuserlog-create2-entry'    => 'ha registrato il nome utente $1',
-	'newuserlog-autocreate-entry' => 'Account creato automaticamente',
+	'newuserlog-autocreate-entry' => 'account creato automaticamente',
 );
 
 /** Japanese (日本語)
@@ -767,7 +768,7 @@ $messages['ko'] = array(
 $messages['ksh'] = array(
 	'newuserlogpage'              => 'Logbooch för nöü Metmaachere',
 	'newuserlogpagetext'          => 'He sin de Metmaacher opjelėßß, di sesh nöü aanjemäldt han.',
-	'newuserlog-desc'             => 'Deit dat [[Special:Log/newusers|Logbooch med de neu aanjemelldt Metmaacher]] bei de [[Special:Log|Logböcher]]',
+	'newuserlog-desc'             => 'Deit dat [[Special:Log/newusers|Logbooch med de neu aanjemelldt Metmaacher]] bei de [[Special:Log|Logböcher]].',
 	'newuserlog-byemail'          => ' dat Paßwood wood med de e-mail loßjescheck',
 	'newuserlog-create-entry'     => 'eß enne nöüje User',
 	'newuserlog-create2-entry'    => 'Nöüje Zojang enjerėshdt för „$1“',

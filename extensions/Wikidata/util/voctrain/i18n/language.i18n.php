@@ -698,6 +698,13 @@ $messages['fr'] = array(
 	'voctrain_Separate_values_by_commas_to_use_multiple_languages_'                                 => 'Séparer les valeurs par des virgules pour utiliser plusieurs langues.',
 );
 
+/** Western Frisian (Frysk)
+ * @author Snakesteuben
+ */
+$messages['fy'] = array(
+	'voctrain_User_name' => 'Meidoggernamme',
+);
+
 /** Galician (Galego)
  * @author Toliño
  */

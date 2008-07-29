@@ -515,6 +515,14 @@ $1',
 	'sign-uniquequery-1signed2'       => '[{{SERVER}}{{localurl: Special:SignDocument|doc=$4&viewsigs&detail=$3}} $1] a authentifié [{{SERVER}}{{localurl: Special:SignDocument|doc=$4&viewsigs}} $2].',
 );
 
+/** Western Frisian (Frysk)
+ * @author Snakesteuben
+ */
+$messages['fy'] = array(
+	'sign-viewfield-reviewcomment' => 'Oanmerking',
+	'sign-review-comment'          => 'Oanmerking',
+);
+
 /** Galician (Galego)
  * @author Xosé
  * @author Alma

@@ -2079,6 +2079,7 @@ $wdMessages['nah'] = array(
 	'ow_history'             => 'Tlahcuilōlloh',
 	'ow_dm_OK'               => 'Cualli',
 	'ow_Language'            => 'Tlahtōlli',
+	'ow_Source'              => 'Īhuīcpa:',
 	'ow_LinkAttributeValues' => 'Tzonhuiliztli',
 );
 

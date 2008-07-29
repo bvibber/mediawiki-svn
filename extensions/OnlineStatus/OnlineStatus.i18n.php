@@ -141,6 +141,16 @@ $messages['es'] = array(
 	'onlinestatus-toggle-online'    => 'Conectado',
 );
 
+/** Finnish (Suomi)
+ * @author Jaakonam
+ */
+$messages['fi'] = array(
+	'onlinestatus-desc'             => 'Lisää asetuksen, joka näyttää onko käyttäjä kirjautunut sisään vai ei',
+	'onlinestatus-subtitle-offline' => 'Tämä käyttäjä ei ole kirjautunut sisään nyt',
+	'onlinestatus-subtitle-online'  => 'Tämä käyttäjä on kirjautunut sisään',
+	'onlinestatus-toggles-show'     => 'Näytä sisäänkirjautumisen tila käyttäjäsivullani',
+);
+
 /** French (Français)
  * @author IAlex
  */

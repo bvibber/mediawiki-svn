@@ -172,6 +172,13 @@ $messages['lb'] = array(
 	'fixedimage-desc' => 'Setzt den Tag <tt><nowiki><fundraising></nowiki></tt> als Bild derbäi',
 );
 
+/** Limburgish (Limburgs)
+ * @author Matthias
+ */
+$messages['li'] = array(
+	'fixedimage-desc' => 'Veug tag <tt><nowiki><fundraising></nowiki></tt> es aafbeilding',
+);
+
 /** Marathi (मराठी)
  * @author Kaustubh
  */

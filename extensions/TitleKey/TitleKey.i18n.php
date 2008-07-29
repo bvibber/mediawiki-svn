@@ -145,7 +145,7 @@ $messages['jv'] = array(
  * @author Purodha
  */
 $messages['ksh'] = array(
-	'titlekey-desc' => 'Deit em Hengerjrond noh de Aanfäng fun Sigge-Tittele söke un de jefonge Tittele vörschlare',
+	'titlekey-desc' => 'Deit em Hengerjrond noh de Aanfäng fun Sigge-Tittele söke un de jefonge Tittele vörschlare.',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -153,6 +153,13 @@ $messages['ksh'] = array(
  */
 $messages['lb'] = array(
 	'titlekey-desc' => 'Hannergrondprozess fir no Titelen ze sichen',
+);
+
+/** Limburgish (Limburgs)
+ * @author Matthias
+ */
+$messages['li'] = array(
+	'titlekey-desc' => 'Backend veur zeuksuggesties veur paginanaamveurvoegsels',
 );
 
 /** Marathi (मराठी)

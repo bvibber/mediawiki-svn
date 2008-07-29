@@ -287,7 +287,7 @@ $messages['km'] = array(
  */
 $messages['ksh'] = array(
 	'languageselector'         => 'Sproch',
-	'languageselector-desc'    => 'Shprooche-Wahl op jede Sigk, och för namelose Metmaacher, un oohne Aanměllde',
+	'languageselector-desc'    => 'Shprooche-Wahl op jede Sigk, och för namelose Metmaacher, un oohne Aanmëllde.',
 	'languageselector-setlang' => 'Setze',
 );
 

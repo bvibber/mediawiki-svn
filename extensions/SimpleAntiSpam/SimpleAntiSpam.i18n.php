@@ -200,7 +200,7 @@ $messages['it'] = array(
 $messages['ksh'] = array(
 	'simpleantispam'       => 'Deine Änderung hät unsere SPAMschotz op der Plan jeroofe',
 	'simpleantispam-label' => 'SPAMschotz — donn hee nix endraare!',
-	'simpleantispam-desc'  => 'Deit enne ëijfache Schoz jäje Bots un SPAM bëij de Formolare dobëij',
+	'simpleantispam-desc'  => 'Deit enne ëijfache Schoz jäje Bots un SPAM bëij de Formolare dobëij.',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -211,6 +211,16 @@ $messages['lb'] = array(
 	'simpleantispam-label' => "Anti-Spam Kontroll.
 Fëllt '''näischt''' hei ënnendrënner aus!",
 	'simpleantispam-desc'  => 'Setzt eng einfach Spam/Bot Kontroll a Formulairen derbäi',
+);
+
+/** Limburgish (Limburgs)
+ * @author Matthias
+ */
+$messages['li'] = array(
+	'simpleantispam'       => "Oew bewerking heet 't antispammechanisme in werking gesteld",
+	'simpleantispam-label' => "Antispemcontrole.
+Vol dit veld '''NEET''' in!",
+	'simpleantispam-desc'  => 'Veug ein einvaawdife spem/botcontrole aan formulere',
 );
 
 /** Marathi (मराठी)

@@ -649,7 +649,19 @@ $messages['krj'] = array(
  * @author Purodha
  */
 $messages['ksh'] = array(
-	'parserdifftest' => 'Ongerscheed zwesche de Parser prööfe',
+	'parserdifftest'      => 'Ongerscheed zwesche de Parser prööfe',
+	'pdtest-desc'         => '[[Special:ParserDiffTest|Söndersigg]] för zwei ungerscheedlijje Paaser-Projramme ze verjliishe.',
+	'pdtest_no_target'    => 'Kein Sigg aanjejovve för jet ze verjliishe.',
+	'pdtest_page_missing' => 'Di Sigg ham_mer nit en de Datebank.',
+	'pdtest_no_changes'   => 'Kein Ongerscheed jefonge.',
+	'pdtest_time_report'  => '<b>$1</b> hät {{PLURAL:$2|ein Sekund|$2 Sekunde|kein Sekund}} jebruch, <b>$3</b> hät {{PLURAL:$4|ein Sekund|$4 Sekunde|kein Sekund}} jebruch.',
+	'pdtest_title'        => 'Dä Siggetitel, also wat för {{PAGENAME}} uew. enjeföllt weed:',
+	'pdtest_text'         => 'Der Wikitex för ze Verjiishe:',
+	'pdtest_ok'           => 'Loß Jonn!',
+	'pdtest_get_text'     => 'Don dä Wikitex fun dä Sigg holle',
+	'pdtest_diff'         => 'De Ongerscheede',
+	'pdtest_side_by_side' => 'De Ußjave nevve enannder jelaat',
+	'pdt_comparing_page'  => 'Don de Ußjaave fun de Paaser verjliishe för de Sigg [[$1]].',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

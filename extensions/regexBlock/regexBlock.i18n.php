@@ -1022,6 +1022,13 @@ $messages['oc'] = array(
 	'regexblock-view-time'            => 'lo $1',
 );
 
+/** Punjabi (ਪੰਜਾਬੀ)
+ * @author Gman124
+ */
+$messages['pa'] = array(
+	'regexblock-view-all' => 'ਸਬ ਕੁਝ',
+);
+
 /** Polish (Polski)
  * @author Sp5uhe
  * @author McMonster

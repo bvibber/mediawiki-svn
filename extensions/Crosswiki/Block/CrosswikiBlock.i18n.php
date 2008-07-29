@@ -630,6 +630,7 @@ $messages['is'] = array(
 /** Italian (Italiano)
  * @author Darth Kule
  * @author Pietrodn
+ * @author Nemo bis
  */
 $messages['it'] = array(
 	'crosswikiblock-desc'           => 'Permette di bloccare utenti su altre wiki usando una [[Special:Crosswikiblock|pagina speciale]]',
@@ -640,7 +641,7 @@ Per favore, controlla che tu sia autorizzato a farlo su questa wiki e che l'azio
 	'crosswikiblock-expiry'         => 'Scadenza del blocco:',
 	'crosswikiblock-reason'         => 'Motivo del blocco:',
 	'crosswikiblock-submit'         => "Blocca l'utente",
-	'crosswikiblock-anononly'       => 'Blocca solo utenti anonimi',
+	'crosswikiblock-anononly'       => 'Blocca solo utenti anonimi (gli utenti registrati che condividono lo stesso IP non vengono bloccati)',
 	'crosswikiblock-nocreate'       => 'Impedisci la creazione di altri account',
 	'crosswikiblock-autoblock'      => "Blocca automaticamente l'ultimo indirizzo IP usato dall'utente e i successivi con cui vengono  tentate modifiche",
 	'crosswikiblock-noemail'        => "Impedisci all'utente l'invio di e-mail",

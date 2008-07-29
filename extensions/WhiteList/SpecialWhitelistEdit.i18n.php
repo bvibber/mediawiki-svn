@@ -902,6 +902,15 @@ $allMessages['os'] = array(
 	'whitelistnever'     => 'никуы',
 );
 
+/** Punjabi (ਪੰਜਾਬੀ)
+ * @author Gman124
+ */
+$allMessages['pa'] = array(
+	'whitelisttablemodifyall' => 'ਵੇਖੋ',
+	'whitelisttableedit'      => 'ਬਦਲੋ',
+	'whitelisttableview'      => 'ਵੇਖੋ',
+);
+
 /** Polish (Polski)
  * @author Wpedzich
  * @author Sp5uhe

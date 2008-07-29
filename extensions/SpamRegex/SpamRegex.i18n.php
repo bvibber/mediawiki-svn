@@ -609,16 +609,19 @@ $messages['su'] = array(
 
 /** Swedish (Svenska)
  * @author M.M.S.
+ * @author Boivie
  */
 $messages['sv'] = array(
 	'spamregex'                      => 'SpamRegex',
 	'spamregex-desc'                 => '[[Special:Spamregex|Filtrera ut]] oönskade fraser i redigerade sidor, baserade på reguljära uttryck',
+	'spamregex-error-unblocking'     => 'Fel vid avblockering av "$1". Förmodligen finns det inget sådand mönster.',
 	'spamregex-summary'              => 'Texten hittades i sidans sammanfattning.',
 	'spamregex-intro'                => 'Använd det här formuläret för att effektivt blockera uttryck från att sparas på sidorna.
 Om texten innehåller det angivna uttrycket, kommer ändringen inte att sparas, och en förklaring kommer visas för användaren som försökte att spara sidan.
 Var observant på att uttryck inte bör vara för korta eller för vanliga.',
 	'spamregex-page-title'           => 'Blockering av oönskade uttryck med reguljära uttryck',
 	'spamregex-currently-blocked'    => "'''Nuvarande blockerade fraser:'''",
+	'spamregex-move'                 => 'Anledningen du skrev in innehöll en blockerad fras.',
 	'spamregex-no-currently-blocked' => "'''Det finns inga blockerade fraser.'''",
 	'spamregex-log-1'                => "* '''$1''' $2 ([{{SERVER}}$3&text=$4 ta bort]) tillaggd av",
 	'spamregex-log-2'                => ' på $1',

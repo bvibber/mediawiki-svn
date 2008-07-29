@@ -73,11 +73,25 @@ $messages['id'] = array(
 	'i18ntags-desc' => 'Mengakses fungsi-fungsi i18n untuk pemformatan nomor, tatabahasa, dan bentuk jamak di berbagai bahasa yang tersedia',
 );
 
+/** Italian (Italiano)
+ * @author Pietrodn
+ */
+$messages['it'] = array(
+	'i18ntags-desc' => 'Accedi alle funzioni i18n per la formattazione dei numeri, la grammatica e il plurale in tutte le lingue disponibili',
+);
+
 /** Japanese (日本語)
  * @author JtFuruhata
  */
 $messages['ja'] = array(
 	'i18ntags-desc' => '対応言語における数値書式、文法、複数形に関するi18n関数へのアクセスを提供する',
+);
+
+/** Ripoarisch (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'i18ntags-desc' => 'Määt de Fungkßjohne för de Zahle ze Fommateere, de Jrammatik, de Ein- un Miehzahl, un esu, en alle Shprooche zojänglesch.',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

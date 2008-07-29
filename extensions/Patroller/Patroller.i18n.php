@@ -257,6 +257,13 @@ $messages['fr'] = array(
 	'grouppage-patroller'    => '{{ns:project}}:Patrouilleur',
 );
 
+/** Western Frisian (Frysk)
+ * @author Snakesteuben
+ */
+$messages['fy'] = array(
+	'patrol-revert' => 'Werom sette',
+);
+
 /** Galician (Galego)
  * @author Xosé
  * @author Toliño

@@ -195,7 +195,7 @@ $messages['ko'] = array(
  * @author Purodha
  */
 $messages['ksh'] = array(
-	'poem-desc' => 'Brengk et <tt>&lt;poem&gt;</tt>-Kommando met, för Jedeeshte ze jeshtallde',
+	'poem-desc' => 'Brengk et <tt>&lt;poem&gt;</tt>-Kommando met, för Jedeeshte ze jeshtallde.',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

@@ -3316,7 +3316,7 @@ $messages['krj'] = array(
  */
 $messages['ksh'] = array(
 	'boardvote'                => 'Waahle för_t „<span lang="en">Wikimedia Board of Trustees</span>“ (De forantwochtlijje Füürshtändt bëij Wikkimedija)',
-	'boardvote-desc'           => '[[meta:Board elections/2008|Wahle för de Förshtänd en de Wikimedia-Shteftong]]',
+	'boardvote-desc'           => '[[meta:Board elections/2008|Wahle för de Förshtänd en de Wikimedia-Shteftong]].',
 	'boardvote_entry'          => '* [[Special:Boardvote/vote|Affshtemme]]
 * [[Special:Boardvote/list|Zëijsh de affjejovve Shtemme beß jäz]]
 * [[Special:Boardvote/dump|Zëijsh de affjejovve Shtemme beß jäz en {{int:boardvote_dumplink}}]]',
@@ -3555,6 +3555,7 @@ $messages['lfn'] = array(
  * @author Ooswesthoesbes
  * @author Tibor
  * @author Siebrand
+ * @author Matthias
  */
 $messages['li'] = array(
 	'boardvote'              => 'Wikimedia Board of Trustees-verkezing',
@@ -3616,7 +3617,7 @@ Noe volg de versjleutelde versie. Dees is aopebaar en nao te zeen op [[Special:B
 	'boardvote_unstrike'     => 'Geljig',
 	'boardvote_needadmin'    => 'Allein lede van de Verkezingscommisie kinne dees hanjeling oetveure.',
 	'boardvote_sitenotice'   => '<a href="{{localurle:Special:Boardvote/vote}}">Wikimedia Bestuursverkeziginge</a>:
-Vote open until 22 June',
+Stumming tot 22 juni',
 	'boardvote_notstarted'   => "'t Stömme is nag neet begós",
 	'boardvote_closed'       => 'De stömming is noe geslaote. zee saon [http://meta.wikimedia.org/wiki/Board_elections de verkezingspazjena veur de rezultaote].',
 	'boardvote_edits_many'   => 'väöl',
@@ -3624,8 +3625,9 @@ Vote open until 22 June',
 	'group-boardvote-member' => 'Boardvote-administrator',
 	'grouppage-boardvote'    => '{{ns:project}}:Boardvote-administrator',
 	'boardvote_blocked'      => 'Sorry, de bis geblokkeerd op diene geregistreerde wiki. Geblokkeerde gebroekers maoge neet sjtömme.',
+	'boardvote_bot'          => 'Deze gebroeker steit geregistreerd as bot. Bots moge gein stum oetbringe.',
 	'boardvote_welcome'      => "Wèlkom, '''$1'''!",
-	'go_to_board_vote'       => 'Wikimedia Bestuursverkezing 2007',
+	'go_to_board_vote'       => 'Wikimedia Bestuursverkezing 2008',
 	'boardvote_redirecting'  => "Waeges 'ne baetere beveilige en mieë transparantie vinje de verkezinge plaats op 'ne externe, ónaafhankelik beheerde server.
 
 Geer wuuertj euver 20 second ómgeleid nao deze externe server. [$1 Klik hiej] óm d'r noe haer te gaon.
@@ -4319,9 +4321,9 @@ La version criptada seguís. Serà afichada publicament sus [[Special:Boardvote/
 	'boardvote_user'           => 'Utilizaire',
 	'boardvote_edits'          => 'Modificacions',
 	'boardvote_days'           => 'Jorns',
-	'boardvote_ip'             => 'IP',
 	'boardvote_ua'             => 'Representant de l’utilizaire',
-	'boardvote_listintro'      => 'Vaquí la lista de las personas que ja an votat :<br /><br />',
+	'boardvote_listintro'      => '<p>Tièra de totes los vòtes que son estats enregistrats a aqueste jorn.
+$1 per las donadas criptadas.</p>',
 	'boardvote_dumplink'       => 'Clicatz aicí',
 	'boardvote_submit'         => "D'acòrdi",
 	'boardvote_strike'         => 'Raiar',
@@ -4329,7 +4331,7 @@ La version criptada seguís. Serà afichada publicament sus [[Special:Boardvote/
 	'boardvote_needadmin'      => 'Sols los administrators del vòte pòdon efectuar aquesta operacion.',
 	'boardvote_sitenotice'     => '<a href="{{localurle:Special:Boardvote/vote}}">Eleccions al conselh d’administracion Wikimèdia</a> : Vòte dobert fins al 12 de julhet',
 	'boardvote_notstarted'     => 'Lo vòte es pas encara començat',
-	'boardvote_closed'         => "L’eleccion es d'ara enlà clausa. Lo resultat es proclamat sus [[meta:Election results 2008/oc|la pagina de resultats]] (oc).",
+	'boardvote_closed'         => "L’eleccion es d'ara enlà acabada. Lo resultat es o serà proclamat sus [http://meta.wikimedia.org/wiki/Board_elections/2008/Results/oc la pagina dedicada] (oc).",
 	'boardvote_edits_many'     => 'mantun',
 	'group-boardvote'          => 'Membres votants del conselh d’administracion',
 	'group-boardvote-member'   => 'Membre votant del conselh d’administracion',

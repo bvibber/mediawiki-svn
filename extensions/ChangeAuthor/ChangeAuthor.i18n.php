@@ -447,6 +447,13 @@ $messages['frp'] = array(
 	'changeauthor-rev'                  => 'v$1',
 );
 
+/** Western Frisian (Frysk)
+ * @author Snakesteuben
+ */
+$messages['fy'] = array(
+	'changeauthor-comment' => 'Oanmerking:',
+);
+
 /** Galician (Galego)
  * @author Alma
  * @author Xosé

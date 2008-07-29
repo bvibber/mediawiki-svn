@@ -71,6 +71,17 @@ $messages['eo'] = array(
 Nova konto por uzanto, $2, estis kreita je $3 $4.',
 );
 
+/** Finnish (Suomi)
+ * @author Jaakonam
+ */
+$messages['fi'] = array(
+	'newusernotifsubj'  => 'Tiedote uudelle §1 -käyttäjälle',
+	'newusernotif-desc' => 'Lähettää sähköpostiviestin, kun käyttäjätilit on luotu',
+	'newusernotifbody'  => 'Tervehdys $1,
+
+Uusi käyttäjätunnus $2 on luotu $3 $4.',
+);
+
 /** French (Français)
  * @author Grondin
  */

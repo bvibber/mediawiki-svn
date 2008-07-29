@@ -471,7 +471,7 @@ $messages['ko'] = array(
  */
 $messages['ksh'] = array(
 	'crossnamespacelinks'         => 'Atikele met Links en ander Appachtemangs',
-	'crossnamespacelinks-desc'    => '[[Special:CrossNamespaceLinks|Leß med Lengkß zwesche de Appachtemangs]], di_mer en de {{SITENAME}} nit hann sulte',
+	'crossnamespacelinks-desc'    => '[[Special:CrossNamespaceLinks|Leß med Lengkß zwesche de Appachtemangs]], di_mer en de {{SITENAME}} nit hann sulte.',
 	'crossnamespacelinks-summary' => 'Die Sigg hee hädd en Liss met Sigge em Appachtemeng vun de Atikkele, wo Links dren sin, die en ander Appachtemangs jonn (usser {{ns:special}}, {{ns:talk}}, {{ns:project}}, un {{ns:template}}) - su jet sollte mer eijentlesh nit han.',
 	'crossnamespacelinkstext'     => '$1 hät {{PLURAL:$2|eine Lengk|$2&nbsp;Lengks|keine Lengk}} en et Apachtemang „$3“',
 );

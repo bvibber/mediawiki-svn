@@ -190,6 +190,7 @@ $messages['fr'] = array(
  */
 $messages['fy'] = array(
 	'player-goto-page' => 'Side',
+	'player-goto-file' => 'triem',
 );
 
 /** Galician (Galego)
@@ -423,6 +424,7 @@ $messages['mr'] = array(
  * @author Fluence
  */
 $messages['nah'] = array(
+	'player-file'      => 'Tlahcuilōlli ītōcā',
 	'player-goto-page' => 'Zāzanilli',
 	'player-goto-file' => 'tlahcuilōlli',
 );

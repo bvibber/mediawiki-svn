@@ -323,11 +323,11 @@ $messages['km'] = array(
  * @author Purodha
  */
 $messages['ksh'] = array(
-	'intersection-desc'          => 'Zeij_en Liß met de neuste Enndrääsch en en Saachjrupp, udder de neuste Enndrääsch, die en alle uss_enem Knubbel fun Saachjrupp dren sin.',
+	'intersection-desc'          => 'Zeij_en Liß met de neuste Enndrääsch en en Saachjrupp, udder de neuste Enndrääsch, die en alle Jruppe uss_enem Knubbel fun Saachjrupp dren sin.',
 	'intersection_toomanycats'   => '<i lang="en">DynamicPageList</i> hät ene Fääler jefonge: Dat sinn_er zo vill Saachjroppe!',
 	'intersection_toofewcats'    => '<i lang="en">DynamicPageList</i> hät ene Fääler jefonge: Dat sin ze winnisch Saachjruppe!',
 	'intersection_noresults'     => '<i lang="en">DynamicPageList</i> hät ene Fääler jefonge: Do kohm nix bei erus!',
-	'intersection_noincludecats' => '<i lang="en">DynamicPageList</i> hät ene Fääler jefonge: Mer bruch winnischßdens ein Saachjrupp. Sön jivv en Appachtemang aan!',
+	'intersection_noincludecats' => '<i lang="en">DynamicPageList</i> hät ene Fääler jefonge: Mer bruch winnischßdens ein Saachjrupp. Söns jivv e Appachtemang aan!',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

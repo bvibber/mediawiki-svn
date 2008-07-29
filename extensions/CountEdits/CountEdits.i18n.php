@@ -232,9 +232,12 @@ $messages['ext'] = array(
 
 /** Finnish (Suomi)
  * @author Niklas Laxström
+ * @author Siebrand
+ * @author Jaakonam
  */
 $messages['fi'] = array(
 	'countedits'              => 'Muokkausmäärälaskuri',
+	'countedits-desc'         => '[[Special:CountEdits|Toimintosivu]], joka laskee käyttäjien muokkauksia ja luo luettelon kymmenestä eniten muokanneesta käyttäjästä.',
 	'countedits-warning'      => 'Älä arvioi kirjaa kannen perusteella. Älä arvioi käyttäjää muokkausten lukumäärän perusteella.',
 	'countedits-username'     => 'Käyttäjä',
 	'countedits-ok'           => 'Hae',
@@ -261,6 +264,13 @@ $messages['fr'] = array(
 	'countedits-resulttext'   => '$1 a fait {{PLURAL:$2|$2 édition|$2 éditions}}',
 	'countedits-mostactive'   => 'Contributeurs les plus actifs',
 	'countedits-nocontribs'   => 'Aucune contribution sur ce wiki.',
+);
+
+/** Western Frisian (Frysk)
+ * @author Snakesteuben
+ */
+$messages['fy'] = array(
+	'countedits-username' => 'Meidoggernamme:',
 );
 
 /** Galician (Galego)

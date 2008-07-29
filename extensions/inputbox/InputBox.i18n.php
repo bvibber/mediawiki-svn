@@ -715,7 +715,7 @@ $messages['ko'] = array(
  * @author Purodha
  */
 $messages['ksh'] = array(
-	'inputbox-desc'           => 'Bestemmpte HTML-Formulare könne enjebonge wääde',
+	'inputbox-desc'           => 'Bestemmpte HTML-Formulare könne hhe met enjebonge wääde.',
 	'inputbox-error-no-type'  => 'Wat för en Zoot Kaste wells De dann han?',
 	'inputbox-error-bad-type' => 'De Zoot „$1“ för et Feld för jet enzejevve kenne mer nit, De moss schunn „create“, „comment“, „search“ oder „search2“ doför aanjevve.',
 	'tryexact'                => 'Versök en akkurate Üvvereinstimmung:',
@@ -737,10 +737,11 @@ $messages['la'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
-	'inputbox-desc'  => "Erlaabt d'Afüge vu viirdefinéierten HTML-Formulairen",
-	'tryexact'       => 'Versicht et matt der preziser Sich:',
-	'searchfulltext' => 'Am ganzen Text sichen',
-	'createarticle'  => 'Säit uleeën',
+	'inputbox-desc'          => "Erlaabt d'Afüge vu viirdefinéierten HTML-Formulairen",
+	'inputbox-error-no-type' => 'Dir hutt den Typ vu Këscht fir eppes anzeginn net uginn.',
+	'tryexact'               => 'Versicht et matt der preziser Sich:',
+	'searchfulltext'         => 'Am ganzen Text sichen',
+	'createarticle'          => 'Säit uleeën',
 );
 
 /** Ganda (Luganda) */

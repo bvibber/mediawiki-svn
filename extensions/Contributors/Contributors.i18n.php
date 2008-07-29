@@ -287,6 +287,13 @@ $messages['fr'] = array(
 	'contributors-nosuchpage'  => 'L’article $1 n’existe pas.',
 );
 
+/** Western Frisian (Frysk)
+ * @author Snakesteuben
+ */
+$messages['fy'] = array(
+	'contributors-submit' => 'Sjen litte',
+);
+
 /** Galician (Galego)
  * @author Xosé
  * @author Toliño
@@ -726,8 +733,8 @@ $messages['oc'] = array(
 	'contributors-target'      => 'Títol :',
 	'contributors-submit'      => 'Afichar',
 	'contributors-subtitle'    => 'Contributors principals de $1',
-	'contributors-others-long' => 'I a $1 autres contributors per aquesta pagina.',
-	'contributors-others'      => 'e $1 autres',
+	'contributors-others-long' => 'I a {{PLURAL:$1|$1 autre contributor|$1 autres contributors}} per aquesta pagina.',
+	'contributors-others'      => 'e {{PLURAL:$1|$1 autre|$1 autres}}',
 	'contributors-badtitle'    => 'Títol incorrècte.',
 	'contributors-nosuchpage'  => 'L’article $1 existís pas.',
 );

@@ -215,6 +215,7 @@ $messages['co'] = array(
 /** Czech (Česky)
  * @author Li-sung
  * @author Matěj Grabovský
+ * @author Mormegil
  */
 $messages['cs'] = array(
 	'linksearch'       => 'Hledání externích odkazů',
@@ -222,7 +223,8 @@ $messages['cs'] = array(
 	'linksearch-pat'   => 'Vyhledávací vzor:',
 	'linksearch-ns'    => 'Jmenný prostor:',
 	'linksearch-ok'    => 'Hledat',
-	'linksearch-text'  => 'Lze používat zástupné znaky, např. „*.wikipedia.org“.',
+	'linksearch-text'  => 'Lze používat zástupné znaky, např. „*.wikipedia.org“.<br />
+Podporované protokoly: <tt>$1</tt>',
 	'linksearch-line'  => '$2 odkazuje na $1',
 	'linksearch-error' => 'Zástupné znaky lze použít jen na začátku doménového jména.',
 );
@@ -623,6 +625,7 @@ $messages['is'] = array(
  * @author .anaconda
  * @author BrokenArrow
  * @author Darth Kule
+ * @author Nemo bis
  */
 $messages['it'] = array(
 	'linksearch'       => 'Ricerca collegamenti esterni',
@@ -633,7 +636,7 @@ $messages['it'] = array(
 	'linksearch-text'  => 'È possibile fare uso di metacaratteri, ad es. "*.wikipedia.org".<br />
 Protocolli supportati: <tt>$1</tt>',
 	'linksearch-line'  => '$1 presente nella pagina $2',
-	'linksearch-error' => "I metacaratteri possono essere usati solo all'inizio del nome dell'host.",
+	'linksearch-error' => "I metacaratteri possono essere usati solo all'inizio dell'indirizzo.",
 );
 
 /** Japanese (日本語)
@@ -744,8 +747,18 @@ $messages['krj'] = array(
  * @author Purodha
  */
 $messages['ksh'] = array(
-	'linksearch'    => 'Lėngkß op Websigge sööke',
-	'linksearch-ok' => 'Sööke',
+	'linksearch'       => 'Lėngkß op Websigge sööke',
+	'linksearch-desc'  => 'Don noh [[Special:Linksearch|Sigge met Links op Websigge söke]], di op e aanjejovve Muster paße.',
+	'linksearch-pat'   => 'Sök noh:',
+	'linksearch-ns'    => 'Appachtemang:',
+	'linksearch-ok'    => 'Sööke',
+	'linksearch-text'  => 'Di Sondersigg hee mäd_et mööschlesch noh Sigge ze söke, woh beshtemmpte Links op Websigge dren enthallde sin.
+
+Beim Söke künnd_Er Shternshe aanjevve för e Shtöckshe fun ennem Name, wo mer nit jenou weiß, wi et heiß udder wat me nit kenne deit, zem Beishpöll esu: <tt>http://*.example.com</tt>
+
+De Brauserprotokolle, di beim Söke aanjejovve wäde künne, sen: <tt>$1</tt>',
+	'linksearch-line'  => '„$2“ hät ene Link op $1',
+	'linksearch-error' => 'Shternshe kam_mer nor aam Aanfang fum Domain-Name bruche.',
 );
 
 /** Kurdish (Latin) (Kurdî / كوردی (Latin))

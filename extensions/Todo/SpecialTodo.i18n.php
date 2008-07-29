@@ -346,7 +346,7 @@ $messages['krj'] = array(
  */
 $messages['ksh'] = array(
 	'todo'                  => 'Opjaveliss',
-	'todo-desc'             => 'Ene Zosatz för en persönliche [[Special:Todo|Opjaveliss]] för zem Ußprobeere',
+	'todo-desc'             => 'Ene Zosatz för en persönliche [[Special:Todo|Opjaveliss]] för zem Ußprobeere.',
 	'todo-tab'              => 'Opjav',
 	'todo-new-queue'        => 'neu',
 	'todo-mail-subject'     => 'Erledichte Opjav en däm $1 sing Opjaveliss',

@@ -310,6 +310,7 @@ $messages['fr'] = array(
  * @author Snakesteuben
  */
 $messages['fy'] = array(
+	'grouppermissions-comment' => 'Oanmerking:',
 	'grouppermissions-sp-save' => 'Fêstlizze',
 );
 

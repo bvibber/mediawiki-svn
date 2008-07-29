@@ -380,6 +380,13 @@ $messages['fr'] = array(
 	'review_comment'                                         => 'Commentaire',
 );
 
+/** Western Frisian (Frysk)
+ * @author Snakesteuben
+ */
+$messages['fy'] = array(
+	'review_comment' => 'Oanmerking',
+);
+
 /** Galician (Galego)
  * @author Alma
  * @author Toliño

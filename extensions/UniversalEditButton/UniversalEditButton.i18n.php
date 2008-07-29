@@ -123,6 +123,13 @@ $messages['lb'] = array(
 	'universaleditbutton-desc' => "Setzt dwn HTML Header <code>&lt;link&gt;</code> derbäi, fir den universellen Ännere-Knäppchen vun der Browser-Erweiderung z'ënnerstetzen",
 );
 
+/** Limburgish (Limburgs)
+ * @author Matthias
+ */
+$messages['li'] = array(
+	'universaleditbutton-desc' => 'Veug de HTML-header <code>&lt;link&gt;</code> veur de browserextensie Universal Edit Button',
+);
+
 /** Malay (Bahasa Melayu)
  * @author Aviator
  */

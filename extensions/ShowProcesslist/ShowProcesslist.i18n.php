@@ -246,7 +246,16 @@ $messages['km'] = array(
  * @author Purodha
  */
 $messages['ksh'] = array(
-	'showprocesslist-user' => 'Metmaacher',
+	'showprocesslist'         => 'De Leß met de Datebank-Opjave',
+	'showprocesslist-desc'    => 'Donn de aktoälle Leß met de Datebank-Opjave aanzeije (SQL-Kommando: <span lang="en">[[Special:ShowProcesslist|SHOW FULL PROCESSLIST]]</span>)',
+	'showprocesslist-id'      => 'Kennong',
+	'showprocesslist-user'    => 'Metmaacher',
+	'showprocesslist-host'    => 'Rääschner',
+	'showprocesslist-db'      => 'Datebank',
+	'showprocesslist-command' => 'Kommando udder Befäähl',
+	'showprocesslist-time'    => 'Zick',
+	'showprocesslist-state'   => 'Zostand',
+	'showprocesslist-info'    => 'Enfommazjohn',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

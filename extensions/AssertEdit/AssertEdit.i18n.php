@@ -322,7 +322,7 @@ $messages['kk-latn'] = array(
  */
 $messages['ksh'] = array(
 	'assert_edit_title'   => 'Secherheits-Aansproch nit bestätesch',
-	'assert_edit_desc'    => 'Deit Secherheits-Aanspröch för Bot-Projramme em Wiki dobei',
+	'assert_edit_desc'    => 'Deit Secherheits-Aanspröch för Bot-Projramme em Wiki dobei.',
 	'assert_edit_message' => 'De jewönschte Secherheits-Aansproch, $1, kunnt nit bestätesch wääde.',
 );
 

@@ -144,6 +144,13 @@ $messages['mr'] = array(
 	'ajax-qp-desc' => 'पृच्छापानांना [[Special:Shortpages]] सारखे थोडे AJAX  वाढवा',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Kurniasan
+ */
+$messages['ms'] = array(
+	'ajax-qp-desc' => 'Tambahkan sedikit AJAX kepada laman-laman pertanyaan seperti [[Special:Shortpages]]',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

@@ -64,25 +64,27 @@ $messages['ca'] = array(
 
 /** Czech (Česky)
  * @author Matěj Grabovský
+ * @author Mormegil
  */
 $messages['cs'] = array(
 	'categoryintersection'               => 'Průnik kategorií',
 	'categoryintersection-desc'          => 'Udržuje tabulku s hash hodnotami [[Special:CategoryIntersection|průniků kategorií]] na speciální stránce.',
 	'categoryintersection-doit'          => 'Seznam stránek ve všech těchto kategoriích',
-	'categoryintersection-maxcategories' => 'Maximální povolený počet kategorií, které mají průnik je $1.',
+	'categoryintersection-maxcategories' => 'Maximální povolený počet kategorií, pro které lze hledat průnik, je $1.',
 	'categoryintersection-results'       => 'Hledání vrátilo $1 {{PLURAL:$1|výsledek|výsledky|výsledků}}.',
 );
 
 /** German (Deutsch)
  * @author Magnus Manske
  * @author Raimond Spekking
+ * @author Raymond
  */
 $messages['de'] = array(
 	'categoryintersection'               => 'Kategorien-Schnittmenge',
 	'categoryintersection-desc'          => 'Pflege einer Tabelle mit Hashwerten für die [[Special:CategoryIntersection|Kategorien-Schnittmengensuche]]',
 	'categoryintersection-doit'          => 'Alle Seiten in dieser Schnittmenge anzeigen',
 	'categoryintersection-maxcategories' => 'Die maximale Anzahl von Kategorien für Schnittmengen ist $1.',
-	'categoryintersection-results'       => 'Die Suche ergab $1 Treffer.',
+	'categoryintersection-results'       => 'Die Suche ergab $1 {{PLURAL:$1|Treffer|Treffer}}.',
 );
 
 /** Lower Sorbian (Dolnoserbski)

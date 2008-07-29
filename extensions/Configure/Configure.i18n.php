@@ -1363,8 +1363,10 @@ $messages['mr'] = array(
  * @author Fluence
  */
 $messages['nah'] = array(
+	'configure-desc-ns'              => 'Tōcātzin',
 	'configure-js-remove'            => 'Ticpolōz',
 	'configure-section-email'        => 'E-mail',
+	'configure-section-namespaces'   => 'Tōcātzin',
 	'configure-section-category'     => 'Neneuhcāyōtl',
 	'configure-section-specialpages' => 'Nōncuahquīzqui āmatl',
 );

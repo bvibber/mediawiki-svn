@@ -538,12 +538,13 @@ $messages['mr'] = array(
  * @author Fluence
  */
 $messages['nah'] = array(
-	'importusers-uploadfile'      => 'Tlahcuilōlquetza',
-	'importusers-form-button'     => 'Tiquicōhuāz',
-	'importusers-log-summary'     => 'Tlahcuilōltōn',
-	'importusers-log-summary-all' => 'Mochīntīn',
-	'importusers-email'           => 'e-mail',
-	'importusers-realname'        => 'melāhuac motōcā',
+	'importusers-uploadfile'          => 'Tlahcuilōlquetza',
+	'importusers-form-button'         => 'Tiquicōhuāz',
+	'importusers-log-summary'         => 'Tlahcuilōltōn',
+	'importusers-log-summary-all'     => 'Mochīntīn',
+	'importusers-log-summary-updated' => 'Ōmoyancuīli',
+	'importusers-email'               => 'e-mail',
+	'importusers-realname'            => 'melāhuac motōcā',
 );
 
 /** Dutch (Nederlands)

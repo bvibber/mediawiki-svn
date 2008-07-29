@@ -104,7 +104,7 @@ $messages['id'] = array(
  * @author Purodha
  */
 $messages['ksh'] = array(
-	'antibot-desc' => 'En ëijfach Jundlaach för SPAM un SPAMbots ze fenge',
+	'antibot-desc' => 'En ëijfach Jundlaach för SPAM un SPAMbots ze fenge.',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

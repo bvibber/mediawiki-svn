@@ -43,3 +43,10 @@ $messages['sk'] = array(
 	'substall-desc' => 'Vytvorí značku <nowiki><substall></nowiki>, ktorá rozbalí všetky šablóny na wiki syntax.',
 );
 
+/** Swedish (Svenska)
+ * @author Boivie
+ */
+$messages['sv'] = array(
+	'substall-desc' => 'Skapar en <nowiki><substall></nowiki>-tagg som expanderar alla mallar till wikisyntax',
+);
+

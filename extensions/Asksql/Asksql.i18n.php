@@ -312,6 +312,17 @@ Isto con frecuencia pode engadir unha carga considerábel ao servidor, así que 
 	'right-asksql'    => 'Facer procuras SQL',
 );
 
+/** Hebrew (עברית)
+ * @author Rotemliss
+ * @author Agbad
+ */
+$messages['he'] = array(
+	'asksql'       => 'שאילתת SQL',
+	'asksql-desc'  => 'ביצוע שאילתות SQL באמצעות [[Special:Asksql|דף מיוחד]]',
+	'querybtn'     => 'שליחת שאילתה',
+	'right-asksql' => 'ביצוע שאילתות SQL',
+);
+
 /** Hindi (हिन्दी)
  * @author Kaustubh
  */

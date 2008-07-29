@@ -642,6 +642,15 @@ sphinx|Esfinx',
 	'vote-invalid-choice' => 'Vos cal causir una de las opcions disponiblas.',
 );
 
+/** Punjabi (ਪੰਜਾਬੀ)
+ * @author Gman124
+ */
+$messages['pa'] = array(
+	'vote'              => 'ਵੋਟ',
+	'vote-submit'       => 'ਵੋਟ',
+	'vote-view-results' => 'ਨਤੀਜਾ ਵੇਖੋ',
+);
+
 /** Polish (Polski)
  * @author Wpedzich
  * @author Sp5uhe

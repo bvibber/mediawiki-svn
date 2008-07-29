@@ -377,7 +377,7 @@ $messages['ko'] = array(
  */
 $messages['ksh'] = array(
 	'sitenotice_close' => "maach fott, ha'sch jelesse",
-	'sitenotice-desc'  => "Löht de Lesser un de Metmaachere de <span lang=\"en\">''Sitenotice''</span> ußblende",
+	'sitenotice-desc'  => 'Löht de Lesser un de Metmaachere de <i lang="en">sitenotice</i> ußblende.',
 );
 
 /** Latin (Latina)

@@ -194,6 +194,13 @@ $messages['fr'] = array(
 	'disabledusers-summary'            => 'Ceci est la liste des utilisateurs qui ont été désactivés par PasswordReset.',
 );
 
+/** Western Frisian (Frysk)
+ * @author Snakesteuben
+ */
+$messages['fy'] = array(
+	'passwordreset-username' => 'Meidoggernamme',
+);
+
 /** Galician (Galego)
  * @author Xosé
  * @author Toliño

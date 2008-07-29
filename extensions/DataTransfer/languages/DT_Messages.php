@@ -456,6 +456,7 @@ $messages['mr'] = array(
  */
 $messages['nah'] = array(
 	'dt_viewxml_categories' => 'Neneuhcāyōtl',
+	'dt_viewxml_namespaces' => 'Tōcātzin',
 	'dt_xml_namespace'      => 'Tōcātzin',
 	'dt_xml_page'           => 'Zāzanilli',
 	'dt_xml_name'           => 'Tōcāitl',

@@ -858,7 +858,7 @@ $messages['krj'] = array(
  */
 $messages['ksh'] = array(
 	'expandtemplates'                  => 'Schablone üvverpröfe',
-	'expandtemplates-desc'             => '[[Special:ExpandTemplates|Schablone, Parserfunktione un Variable oplöse]] en der komplette Wikitex un dä aanzeije',
+	'expandtemplates-desc'             => '[[Special:ExpandTemplates|Schablone, Parserfunktione un Variable oplöse]] un dä komplette Wikitex aanzeije',
 	'expand_templates_intro'           => 'Hee kanns de en Schablon usprobeere. Do jiss ene Oprof en, un dann kriss De dä komplett opjelös, och all die ennedren widder opjerofe Schablone, Parameter, Funktione, spezielle Name, un esu, bes nix mieh üvverich es, wat mer noch oplöse künnt. Wann jet en <nowiki>{{ … }} Klammere üvverbliet, dann wor et unbekannt. Do passeet jenau et selve wie söns em Wiki och, nor dat De hee tirek ze sinn kriss wat erus kütt.',
 	'expand_templates_title'           => 'Dä Siggetitel, also wat för {{PAGENAME}} uew. enjeföllt weed:',
 	'expand_templates_input'           => 'Wat De üvverpröfe wells:',

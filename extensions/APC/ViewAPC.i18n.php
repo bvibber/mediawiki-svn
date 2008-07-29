@@ -1709,6 +1709,7 @@ $messages['mt'] = array(
  * @author Fluence
  */
 $messages['nah'] = array(
+	'viewapc-display-filename'      => 'Tlahcuilōlli ītōcā',
 	'viewapc-display-info'          => 'Tōcāitl',
 	'viewapc-display-deletion_time' => 'Ōmopolo',
 	'viewapc-ls-submit'             => '¡Yāuh!',

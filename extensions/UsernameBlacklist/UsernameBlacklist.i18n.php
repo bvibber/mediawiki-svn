@@ -766,7 +766,18 @@ $messages['ko'] = array(
  * @author Purodha
  */
 $messages['ksh'] = array(
-	'right-uboverride' => 'De Liss met verbodde Metmaacher-Name övverjonn',
+	'usernameblacklist-desc'          => 'Deit en [[MediaWiki:Usernameblacklist|Schwazze Leß]] met verbodde Metmaacher-Name en et Wiki, di mer nit aanlääje künne soll.',
+	'blacklistedusername'             => 'Verbodde Metmaacher-Name',
+	'blacklistedusernametext'         => 'Dä Name als Metmaacher, dä de Der jevve wells, es verbodde. Verbodde Name fengks De en de [[MediaWiki:Usernameblacklist|Leß met verbodde Metmaacher-Name]]. Sök Der ene andere Name uß.',
+	'usernameblacklist'               => '<pre>
+# Endrääch en dä Leß hee wäde en „regular expressions“ jebruch.
+# Esu en Name sin för neu aanzemellde verbodde.
+# Jede Endraach moß enne * am Aanfang han. Esu zem Beispöll:
+# * Foo
+# * [Bb]ar
+</pre>',
+	'usernameblacklist-invalid-lines' => 'Hee di {{PLURAL:$1|Reih|Reije|-}} en de Leß met verbodde Metmaacher-Name sin esu nit mööschlesch. Donn se für em Afspeichere ets ens repareere.',
+	'right-uboverride'                => 'De Liss met verbodde Metmaacher-Name övverjonn',
 );
 
 /** Kurdish (Latin) (Kurdî / كوردی (Latin))

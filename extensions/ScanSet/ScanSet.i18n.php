@@ -227,9 +227,12 @@ $messages['fa'] = array(
 
 /** Finnish (Suomi)
  * @author Nike
+ * @author Jaakonam
  */
 $messages['fi'] = array(
 	'scanset-desc'           => 'Mahdollistaa Andreas Groszin CD- ja DVD-kokoelmien skannattujen kuvien katselun.',
+	'scanset_opendir_error'  => 'Virhe: Hakemistoa $1 ei voitu avata',
+	'scanset_no_files'       => 'Virhe: Valitussa hakemistossa ei ole tiedostoja.',
 	'scanset_invalid_volume' => 'Scanset: Väärä kirja',
 	'scanset_next'           => 'Seuraava →',
 	'scanset_prev'           => '← Edellinen',
