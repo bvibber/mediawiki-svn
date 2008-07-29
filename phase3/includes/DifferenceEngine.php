@@ -7,6 +7,8 @@
  * @todo indicate where diff.doc can be found.
  */
 
+require_once( 'Diff.php' );
+
 /**
  * Constant to indicate diff cache compatibility.
  * Bump this when changing the diff formatting in a way that
@@ -900,95 +902,36 @@ class _DiffOp_Change extends _DiffOp {
 /**
  * Class used internally by Diff to actually compute the diffs.
  *
- * The algorithm used here is mostly lifted from the perl module
- * Algorithm::Diff (version 1.06) by Ned Konz, which is available at:
- *	 http://www.perl.com/CPAN/authors/id/N/NE/NEDKONZ/Algorithm-Diff-1.06.zip
+ * The actual diff algorithm is replaced byt he wikidiff3_diff function in Diff.php.
  *
- * More ideas are taken from:
- *	 http://www.ics.uci.edu/~eppstein/161/960229.html
- *
- * Some ideas are (and a bit of code) are from from analyze.c, from GNU
- * diffutils-2.7, which can be found at:
- *	 ftp://gnudist.gnu.org/pub/gnu/diffutils/diffutils-2.7.tar.gz
- *
- * closingly, some ideas (subdivision by NCHUNKS > 2, and some optimizations)
- * are my own.
- *
- * Line length limits for robustness added by Tim Starling, 2005-08-31
- *
- * @author Geoffrey T. Dairiki, Tim Starling
+ * @author Geoffrey T. Dairiki, Tim Starling, Guy Van den Broeck
  * @private
  * @ingroup DifferenceEngine
  */
 class _DiffEngine {
-	const MAX_XREF_LENGTH =  10000;
 
 	function diff ($from_lines, $to_lines) {
 		wfProfileIn( __METHOD__ );
-
-		$n_from = sizeof($from_lines);
-		$n_to = sizeof($to_lines);
-
-		$this->xchanged = $this->ychanged = array();
-		$this->xv = $this->yv = array();
-		$this->xind = $this->yind = array();
-		unset($this->seq);
-		unset($this->in_seq);
-		unset($this->lcs);
-
-		// Skip leading common lines.
-		for ($skip = 0; $skip < $n_from && $skip < $n_to; $skip++) {
-			if ($from_lines[$skip] !== $to_lines[$skip])
-				break;
-			$this->xchanged[$skip] = $this->ychanged[$skip] = false;
-		}
-		// Skip trailing common lines.
-		$xi = $n_from; $yi = $n_to;
-		for ($endskip = 0; --$xi > $skip && --$yi > $skip; $endskip++) {
-			if ($from_lines[$xi] !== $to_lines[$yi])
-				break;
-			$this->xchanged[$xi] = $this->ychanged[$yi] = false;
-		}
-
-		// Ignore lines which do not exist in both files.
-		for ($xi = $skip; $xi < $n_from - $endskip; $xi++) {
-			$xhash[$this->_line_hash($from_lines[$xi])] = 1;
-		}
-
-		for ($yi = $skip; $yi < $n_to - $endskip; $yi++) {
-			$line = $to_lines[$yi];
-			if ( ($this->ychanged[$yi] = empty($xhash[$this->_line_hash($line)])) )
-				continue;
-			$yhash[$this->_line_hash($line)] = 1;
-			$this->yv[] = $line;
-			$this->yind[] = $yi;
-		}
-		for ($xi = $skip; $xi < $n_from - $endskip; $xi++) {
-			$line = $from_lines[$xi];
-			if ( ($this->xchanged[$xi] = empty($yhash[$this->_line_hash($line)])) )
-				continue;
-			$this->xv[] = $line;
-			$this->xind[] = $xi;
-		}
-
-		// Find the LCS.
-		$this->_compareseq(0, sizeof($this->xv), 0, sizeof($this->yv));
-
+		// Perform the basic diff algorithm
+		list($xchanged, $ychanged) = wikidiff3_diff($from_lines, $to_lines);
+		
 		// Merge edits when possible
-		$this->_shift_boundaries($from_lines, $this->xchanged, $this->ychanged);
-		$this->_shift_boundaries($to_lines, $this->ychanged, $this->xchanged);
+		$this->_shift_boundaries($from_lines, $xchanged, $ychanged);
+		$this->_shift_boundaries($to_lines, $ychanged, $xchanged);
 
 		// Compute the edit operations.
+		$n_from = sizeof($from_lines);
+		$n_to = sizeof($to_lines);
 		$edits = array();
 		$xi = $yi = 0;
 		while ($xi < $n_from || $yi < $n_to) {
-			USE_ASSERTS && assert($yi < $n_to || $this->xchanged[$xi]);
-			USE_ASSERTS && assert($xi < $n_from || $this->ychanged[$yi]);
+			USE_ASSERTS && assert($yi < $n_to || $xchanged[$xi]);
+			USE_ASSERTS && assert($xi < $n_from || $ychanged[$yi]);
 
 			// Skip matching "snake".
 			$copy = array();
 			while ( $xi < $n_from && $yi < $n_to
-					&& !$this->xchanged[$xi] && !$this->ychanged[$yi]) {
+					&& !$xchanged[$xi] && !$ychanged[$yi]) {
 				$copy[] = $from_lines[$xi++];
 				++$yi;
 			}
@@ -997,11 +940,11 @@ class _DiffEngine {
 
 			// Find deletes & adds.
 			$delete = array();
-			while ($xi < $n_from && $this->xchanged[$xi])
+			while ($xi < $n_from && $xchanged[$xi])
 				$delete[] = $from_lines[$xi++];
 
 			$add = array();
-			while ($yi < $n_to && $this->ychanged[$yi])
+			while ($yi < $n_to && $ychanged[$yi])
 				$add[] = $to_lines[$yi++];
 
 			if ($delete && $add)
@@ -1013,17 +956,6 @@ class _DiffEngine {
 		}
 		wfProfileOut( __METHOD__ );
 		return $edits;
-	}
-
-	/**
-	 * Returns the whole line if it's small enough, or the MD5 hash otherwise
-	 */
-	function _line_hash( $line ) {
-		if ( strlen( $line ) > self::MAX_XREF_LENGTH ) {
-			return md5( $line );
-		} else {
-			return $line;
-		}
 	}
 
 

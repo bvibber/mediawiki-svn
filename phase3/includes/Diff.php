@@ -19,25 +19,30 @@
 
 /**
  * Implementation of the Diff algorithm.
- * 
+ *
  * The algorithm is based on the O(NP) LCS algorithm as descibed by Wu et al. in "An O(NP) Sequence Comparison Algorithm"
- * and extended with my own ideas. 
+ * and extended with my own ideas.
+ *
+ * @return array($from_removed, $to_added)
+ * 		   | TRUE if the token was removed or added.
  *
  * @author Guy Van den Broeck
  */
 function wikidiff3_diff(array $from, array $to, $boundRunningTime=FALSE, $max_NP_before_bound = 800000){
+	wfProfileIn( __METHOD__ );
+
 	$m = sizeof($from);
 	$n = sizeof($to);
 
-	$result_from =  array_fill(0,$m,FALSE);
-	$result_to =  array_fill(0,$n,FALSE);
+	$result_from =  array_fill(0,$m,TRUE);
+	$result_to =  array_fill(0,$n,TRUE);
 
 	//reduce the complexity for the next step (intentionally done twice)
 	//remove common tokens at the start
 	$i=0;
 	while($i<$m && $i<$n && $from[$i]===$to[$i]){
-		$result_from[$i] = TRUE;
-		$result_to[$i] = TRUE;
+		$result_from[$i] = FALSE;
+		$result_to[$i] = FALSE;
 		unset($from[$i],$to[$i]);
 		++$i;
 	}
@@ -45,8 +50,8 @@ function wikidiff3_diff(array $from, array $to, $boundRunningTime=FALSE, $max_NP
 	//remove common tokens at the end
 	$j=1;
 	while($i+$j<=$m && $i+$j<=$n && $from[$m-$j]===$to[$n-$j]){
-		$result_from[$m-$j] = TRUE;
-		$result_to[$n-$j] = TRUE;
+		$result_from[$m-$j] = FALSE;
+		$result_to[$n-$j] = FALSE;
 		unset($from[$m-$j],$to[$n-$j]);
 		++$j;
 	}
@@ -74,6 +79,8 @@ function wikidiff3_diff(array $from, array $to, $boundRunningTime=FALSE, $max_NP
 		}
 	}
 
+	unset($from, $to);
+
 	$m = sizeof($newFrom);
 	$n = sizeof($newTo);
 	$offsetx = 0;
@@ -85,14 +92,15 @@ function wikidiff3_diff(array $from, array $to, $boundRunningTime=FALSE, $max_NP
 
 	foreach($from_inLcs->inLcs as $key => $in){
 		if($in){
-			$result_from[$newFromIndex[$key]] = TRUE;
+			$result_from[$newFromIndex[$key]] = FALSE;
 		}
 	}
 	foreach($to_inLcs->inLcs as $key => $in){
 		if($in){
-			$result_to[$newToIndex[$key]] = TRUE;
+			$result_to[$newToIndex[$key]] = FALSE;
 		}
 	}
+	wfProfileOut( __METHOD__ );
 	return array($result_from, $result_to);
 }
 
@@ -103,7 +111,9 @@ function wikidiff3_diffPart(array $a, array $b, InLcs $a_inLcs, InLcs $b_inLcs, 
 	if($m>$n){
 		return wikidiff3_diffPart($b, $a, $b_inLcs, $a_inLcs, $n, $m, $offsety, $offsetx, $bestKnownLcs, $boundRunningTime, $max_NP_before_bound);
 	}
-	
+
+	wfProfileIn( __METHOD__ );
+
 	$a_inLcs_sym = &$a_inLcs->inLcs;
 	$b_inLcs_sym = &$b_inLcs->inLcs;
 
@@ -419,7 +429,7 @@ function wikidiff3_diffPart(array $a, array $b, InLcs $a_inLcs, InLcs $b_inLcs, 
 			}
 		} while(TRUE);
 	}
-	
+
 	unset($fpForw, $fpBack, $lcsSizeForw, $lcsSizeBack);
 	unset($snakeBeginForw, $snakeBeginBack, $snakeEndForw, $snakeEndBack, $snakekForw, $snakekBack);
 	unset($overlap);
@@ -454,6 +464,8 @@ function wikidiff3_diffPart(array $a, array $b, InLcs $a_inLcs, InLcs $b_inLcs, 
 	wikidiff3_diffPart($a_t, $b_t, $a_inLcs, $b_inLcs, $m_t, $topSnakeStart, $offsetx, $offsety, $bestLcsLengthTop, $boundRunningTime, $max_NP_before_bound);
 
 	wikidiff3_diffPart($a_b, $b_b, $a_inLcs, $b_inLcs, $m_b, $n_b, $offsetx+($bottomSnakeEnd-$bottomSnakek), $offsety+$bottomSnakeEnd, $bestLcsLengthBottom, $boundRunningTime, $max_NP_before_bound);
+
+	wfProfileOut( __METHOD__ );
 }
 
 class InLcs {
@@ -735,6 +747,5 @@ class BidirectionalLcs extends AbstractDiffAlgorithm {
 
 		}
 	}
-
 }
 ?>
