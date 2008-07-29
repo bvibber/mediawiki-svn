@@ -80,7 +80,7 @@ Vote open until June 22",
 	'boardvote_closed'        => 'Voting is now closed, see [http://meta.wikimedia.org/wiki/Board_elections/2008/Results the elections page for results] soon.',
 	'boardvote_edits_many'    => 'many',
 	'group-boardvote'         => 'Board vote admins',
-	'group-boardvote-member'  => 'Board vote admin',
+	'group-boardvote-member'  => 'board vote admin',
 	'grouppage-boardvote'     => '{{ns:project}}:Board vote admin',
 	'boardvote_blocked'       => 'You have been blocked on your registered wiki.
 Blocked users are not allowed to vote.',
