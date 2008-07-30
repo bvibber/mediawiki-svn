@@ -39,7 +39,7 @@ Please make it writable by PHP to use this extension.',
 	'configure-no-diff'                   => 'There is no changes between selected versions.',
 	'configure-no-directory'              => 'The directory used to store the settings, <tt>$1</tt>, does not exist.
 Please create it or change it to use this extension.',
-	'configure-no-old'                    => 'No old version of the configuration available',
+	'configure-no-old'                    => 'No old version of the configuration available.',
 	'configure-no-setup'                  => 'You have to call <code>efConfigureSetup()</code> explicitly in your LocalSettings.php file to use this extension.',
 	'configure-no-transwiki'              => 'You are not allowed to change settings in other wikis',
 	'configure-old'                       => 'Old versions',

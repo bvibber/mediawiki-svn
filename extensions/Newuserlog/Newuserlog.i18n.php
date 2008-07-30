@@ -9,7 +9,7 @@ $messages = array();
 
 $messages['en'] = array(
 	'newuserlogpage'              => 'User creation log',
-	'newuserlogpagetext'          => 'This is a log of user creations',
+	'newuserlogpagetext'          => 'This is a log of user creations.',
 	'newuserlog-desc'             => 'Adds a [[Special:Log/newusers|log of account creations]] to [[Special:Log]]',
 	'newuserlogentry'             => '', # For compatibility, do not translate this
 	'newuserlog-byemail'          => 'password sent by e-mail',
