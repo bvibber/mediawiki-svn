@@ -81,7 +81,7 @@ class ExpandTemplates extends SpecialPage {
 		if ( $this->isNewParser ) {
 			$form .= '<p>' . Xml::checkLabel( wfMsg( 'expand_templates_generate_xml' ), 'generate_xml', 'generate_xml', $this->generateXML ) . '</p>';
 		}
-		$form .= '<p>' . Xml::submitButton( wfMsg( 'expand_templates_ok' ) ) . '</p>';
+		$form .= '<p>' . Xml::submitButton( wfMsg( 'expand_templates_ok' ), array( 'accesskey' => 's' ) ) . '</p>';
 		$form .= "</fieldset>\n";
 		$form .= Xml::closeElement( 'form' );
 		return $form;
