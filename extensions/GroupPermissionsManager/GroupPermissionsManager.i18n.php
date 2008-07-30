@@ -212,6 +212,7 @@ $messages['el'] = array(
  * @author Yekrats
  */
 $messages['eo'] = array(
+	'sortpermissions'                => 'Ordigi rajtojn',
 	'grouppermissions-search'        => 'Grupo:',
 	'grouppermissions-dologin'       => 'Salutnomo',
 	'grouppermissions-dosearch'      => 'Ek',
@@ -238,6 +239,9 @@ $messages['eo'] = array(
 	'grouppermissions-sp-addperm'    => 'Aldoni rajton',
 	'right-raw'                      => 'Vidi krudajn paĝojn',
 	'right-info'                     => 'Vidi paĝan informon',
+	'right-history'                  => 'Vidi paĝajn historiojn',
+	'right-search'                   => 'Serĉi la vikion',
+	'right-edittalk'                 => 'Redakti diskuto-paĝojn',
 	'right-edit-new'                 => 'Redaktu paĝojn',
 );
 

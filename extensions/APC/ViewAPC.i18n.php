@@ -431,11 +431,14 @@ Novější verze $2 je dostupná na http://pecl.php.net/package/APC/$2.',
 /** German (Deutsch)
  * @author Purodha
  * @author Pill
+ * @author Leithian
  */
 $messages['de'] = array(
 	'viewapc'                       => 'APC-Informationen',
 	'viewapc-clear-confirm'         => 'Möchtest du den Cache leeren?',
 	'viewapc-apc-version'           => 'APC Version',
+	'viewapc-shared-memory'         => 'Shared Memory',
+	'viewapc-rps'                   => '$1 Anfragen pro Sekunde',
 	'viewapc-display-creation_time' => 'Erstellt',
 	'viewapc-display-deletion_time' => 'Gelöscht',
 	'viewapc-ls-header-accessed'    => 'Zuletzt aufgerufen',
@@ -444,6 +447,7 @@ $messages['de'] = array(
 	'viewapc-ls-sort-modified'      => 'Zuletzt geändert',
 	'viewapc-ls-sort-created'       => 'Erstellt',
 	'viewapc-ls-sort-deleted'       => 'Gelöscht',
+	'viewapc-version-changelog'     => 'Changelog',
 );
 
 /** Esperanto (Esperanto)
@@ -738,7 +742,8 @@ Une nouvelle version $2 est disponible sur http://pecl.php.net/package/APC/$2',
  * @author Snakesteuben
  */
 $messages['fy'] = array(
-	'viewapc-ls-limit-none' => 'Alle',
+	'viewapc-display-filename' => 'Triemnamme',
+	'viewapc-ls-limit-none'    => 'Alle',
 );
 
 /** Galician (Galego)
@@ -1416,7 +1421,7 @@ $messages['km'] = array(
  */
 $messages['ksh'] = array(
 	'viewapc'                   => 'Enfomazjohne vum APC',
-	'right-apc'                 => 'all de Möschleschkeite fum [[{{#special:ViewAPC}}]] notze',
+	'right-apc'                 => 'All de Möschleschkeite fum [[{{#special:ViewAPC}}]] notze',
 	'viewapc-apc-not-available' => 'Kein Cache-Daate ze fenge.
 Der APC es wall nit am Loufe.',
 	'viewapc-apc-version'       => 'APC Version',

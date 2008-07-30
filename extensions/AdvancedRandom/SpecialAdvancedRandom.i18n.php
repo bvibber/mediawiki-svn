@@ -213,6 +213,14 @@ $messages['ko'] = array(
 	'advancedrandom' => '향상된 임의 문서',
 );
 
+/** Ripoarisch (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'advancedrandom'      => 'Zofällijje Sigg (Met Extra Möschleschkeite )',
+	'advancedrandom-desc' => 'Deit en zosäzlijje Möschleschkeit för zofällije Sigge en et Wikki, esu dat [[{{#special:AdvancedRandom}}/{{ns:Template}}:Dach/Atikkel]] ene zofällije DaresAtikkel brenge kann, udder [[{{#special:AdvancedRandom}}/{{ns:Template}}:GFDL/Beld]] e zofällesch Beld unger de GFDL.',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */

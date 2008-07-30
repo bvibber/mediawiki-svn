@@ -200,6 +200,17 @@ $messages['km'] = array(
 	'categoryintersection-results' => 'ការស្វែងរកផ្ដល់ $1 {{PLURAL:$1|លទ្ឋផល|លទ្ឋផល}}។',
 );
 
+/** Ripoarisch (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'categoryintersection'               => 'Jemeinsam Saachjroppe',
+	'categoryintersection-desc'          => 'Hälld_en Tabäll met <i lang="en">hashes</i> för [[Special:CategoryIntersection|Övverschneidonge fun Saachrjoppe]] en en Sigg faßzehallde.',
+	'categoryintersection-doit'          => 'Donn de Sigge en all dä SaachJroppe op_leßte',
+	'categoryintersection-maxcategories' => 'Nit mieh wie {{PLURAL:$1|ein Saachjrupp|$1 Saachjruppe|kein Saachjrupp}} künne för de Jeimeinsamkeite eraanjetrocke wääde.',
+	'categoryintersection-results'       => '{{PLURAL:$1|Eine|$1|Keine}} Treffer jefonge beim Söke.',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */

@@ -70,6 +70,14 @@ $messages['cs'] = array(
 	'dplforum-toomany' => 'DPL fórum: Příliš mnoho kategorií!',
 );
 
+/** German (Deutsch)
+ * @author Leithian
+ */
+$messages['de'] = array(
+	'dplforum-by'     => 'durch',
+	'dplforum-edited' => '  - Zuletzt bearbeitet',
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */

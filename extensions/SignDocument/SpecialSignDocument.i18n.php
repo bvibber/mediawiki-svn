@@ -519,6 +519,7 @@ $1',
  * @author Snakesteuben
  */
 $messages['fy'] = array(
+	'sign-viewfield-reviewedby'    => 'Kontroleur',
 	'sign-viewfield-reviewcomment' => 'Oanmerking',
 	'sign-review-comment'          => 'Oanmerking',
 );

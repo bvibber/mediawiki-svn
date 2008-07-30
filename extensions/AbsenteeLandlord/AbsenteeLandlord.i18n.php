@@ -82,10 +82,11 @@ $messages['da'] = array(
 
 /** German (Deutsch)
  * @author Raimond Spekking
+ * @author Gnu1742
  */
 $messages['de'] = array(
 	'absenteelandlord-reason' => 'Die Datenbank wurde automatisch gesperrt, da kein Administrator aktiv ist.',
-	'absenteelandlord-desc'   => 'Automatisch Sperre der Datenbank, wenn die Administratoren für eine bestimmte Zeit inaktiv sind',
+	'absenteelandlord-desc'   => 'Automatische Sperre der Datenbank, wenn die Administratoren für eine bestimmte Zeit inaktiv sind',
 );
 
 /** Lower Sorbian (Dolnoserbski)
@@ -102,6 +103,14 @@ $messages['dsb'] = array(
 $messages['eo'] = array(
 	'absenteelandlord-reason' => 'La datumbazo estis aŭtomate ŝlosita pro neaktiveco de la administrantoj.',
 	'absenteelandlord-desc'   => 'Aŭtomate ŝlosas la vikian datumbazon se la administrantoj ĉiuj estas daŭre neaktiva.',
+);
+
+/** Finnish (Suomi)
+ * @author Jaakonam
+ */
+$messages['fi'] = array(
+	'absenteelandlord-reason' => 'Tämä tietokanta on lukittu automaattisesti ylläpitäjien aktiivisuuden puutteen takia.',
+	'absenteelandlord-desc'   => 'Lukitsee wikin tietokannan automaattisesti, jos ylläpitäjät eivät ole aktiivisia tiettyyn aikaan mennessä.',
 );
 
 /** French (Français)
@@ -208,6 +217,14 @@ $messages['jv'] = array(
 $messages['km'] = array(
 	'absenteelandlord-reason' => 'មូលដ្ឋានទិន្នន័យត្រូវបានចាក់សោដោយស្វ័យប្រវត្តិ ដោយសារតែអ្នកថែទាំប្រព័ន្ឋគ្មានសកម្មភាព។',
 	'absenteelandlord-desc'   => 'ចាក់សោមូលដ្ឋានទិន្នន័យដោយស្វ័យប្រវត្តិ ប្រសិនបើអ្នកថែទាំប្រព័ន្ឋទាំងអស់គ្នាគ្មានសកម្មភាពក្នុងរយៈពេលមួយ',
+);
+
+/** Ripoarisch (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'absenteelandlord-reason' => 'De Datebank es automattesch jesperrt woode, weil zigg en Zick keine Wiki-Köbes doh es.',
+	'absenteelandlord-desc'   => 'Deit de Datebank automatsch sperre, wann e jewesse Zick keine Wiki-Köbes doh es.',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

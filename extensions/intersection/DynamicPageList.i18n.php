@@ -95,6 +95,16 @@ $messages['br'] = array(
 	'intersection_noresults'   => "Error: Disoc'h ebet !",
 );
 
+/** Catalan (Català)
+
+ */
+$messages['ca'] = array(
+	'intersection_toomanycats'   => 'Error: Massa categories!',
+	'intersection_toofewcats'    => 'Error: Massa poques categories!',
+	'intersection_noresults'     => 'Error: Cap resultat!',
+	'intersection_noincludecats' => "Error: Heu d'incloure almenys una categoria o especificar un espai de noms!",
+);
+
 /** Czech (Česky)
  * @author Li-sung
  * @author Matěj Grabovský

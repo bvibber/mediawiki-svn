@@ -500,7 +500,17 @@ $messages['km'] = array(
  * @author Purodha
  */
 $messages['ksh'] = array(
-	'querybtn' => 'Loß Jonn!',
+	'asksql'          => 'SQL-Befäähl',
+	'asksql-desc'     => 'Määt SQL-Befäähle övver en [[Special:Asksql|{{int:specialpage}}]] mööschlesch.',
+	'asksqltext'      => "Met däm Formula onge kanns de tiräk en de Datebank Affrore maache.
+Don einzel Apoßtroffe ('wi di he') öm Zeichekette eröm maache.
+Dat kann der ßööver ööndlesh beschäfftijje, also beß e besje fürseschtesch.",
+	'sqlislogged'     => 'All de Affroore wäde em Logbooch opjezeishnet.',
+	'sqlquery'        => 'Affrooch enjävve',
+	'querybtn'        => 'Loß Jonn!',
+	'selectonly'      => 'De darfs nor Affroore maache, di uß de Datebank lesse.',
+	'querysuccessful' => 'De Affroch hät jeflupp',
+	'right-asksql'    => 'SQL Affroore maache',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

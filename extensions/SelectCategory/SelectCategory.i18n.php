@@ -48,9 +48,11 @@ $messages['bg'] = array(
 
 /** German (Deutsch)
  * @author Manuel Schneider <manuel.schneider@wikimedia.ch>
+ * @author Leithian
  */
 $messages['de'] = array(
 	'selectcategory-title'    => 'Kategorien auswählen',
+	'selectcategory-desc'     => 'Ermöglicht es dem Benutzer, beim Bearbeiten einer Seite aus bestehenden Kategorien auszuwählen',
 	'selectcategory-subtitle' => 'Shift-Maus um mehrere nachfolgende Einträge zu (de-)selektieren, Strg-Maus um einzelne Einträge zu (de-)selektieren.',
 );
 
@@ -152,6 +154,15 @@ $messages['jv'] = array(
 $messages['km'] = array(
 	'selectcategory-title' => 'ជ្រើសយកចំណាត់ថ្នាក់ក្រុម',
 	'selectcategory-desc'  => 'អនុញ្ញាតិ អ្នកប្រើប្រាស់ អោយជ្រើសយក ពីចំណាត់ក្រុមមានស្រាប់ ពេលកែប្រែ មួយទំព័រ',
+);
+
+/** Ripoarisch (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'selectcategory-title'    => 'Saachjruppe ußsöke',
+	'selectcategory-desc'     => 'Määt et mööschlesch, beim Sigge-Ändere uß dä Saachjroppe ußzewähle, di ald beshtonn.',
+	'selectcategory-subtitle' => 'Ettlije Enndräsch op eijmol ußsöke met „Jrußschreff+Muus“, un nit mieh ußsööke met „Strg+Muus“.',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

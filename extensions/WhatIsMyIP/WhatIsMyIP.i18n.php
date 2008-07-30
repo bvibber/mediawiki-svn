@@ -53,6 +53,20 @@ $messages['cs'] = array(
 	'whatismyip-out'  => 'Vaše IP:',
 );
 
+/** German (Deutsch)
+ * @author Leithian
+ */
+$messages['de'] = array(
+	'whatismyip-out' => 'Deine IP-Adresse:',
+);
+
+/** German (formal address) (Deutsch (Sie-Form))
+ * @author Raymond
+ */
+$messages['de-formal'] = array(
+	'whatismyip-out' => 'Ihre IP-Adresse:',
+);
+
 /** Lower Sorbian (Dolnoserbski)
  * @author Michawiki
  */
@@ -130,7 +144,7 @@ $messages['it'] = array(
  */
 $messages['ksh'] = array(
 	'whatismyip'      => 'Ming IP_Addrëß',
-	'whatismyip-desc' => 'Zëijsch em Medmaacher sing IP_Addrëß op [[{{#special:WhatIsMyIP}}]] aan.',
+	'whatismyip-desc' => 'Zëijsch enem Medmaacher sing IP_Addrëß op [[{{#special:WhatIsMyIP}}]] aan.',
 	'whatismyip-out'  => 'Ding IP_Addrëß eß',
 );
 

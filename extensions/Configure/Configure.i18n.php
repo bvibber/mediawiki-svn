@@ -500,6 +500,7 @@ $messages['cu'] = array(
 
 /** German (Deutsch)
  * @author Raimond Spekking
+ * @author Leithian
  */
 $messages['de'] = array(
 	'configure'                        => 'Konfiguration dieses Wikis',
@@ -532,36 +533,29 @@ $messages['de'] = array(
 	'configure-section-email'          => 'E-Mail',
 	'configure-section-enotif'         => 'E-Mail Benachrichtigung',
 	'configure-section-localization'   => 'Lokalisierung',
-	'configure-section-html'           => 'HTML',
+	'configure-section-timezone'       => 'Zeitzone',
 	'configure-section-debug'          => 'Debugging',
 	'configure-section-profiling'      => 'Profiling',
 	'configure-section-site'           => 'Site-Anpassung',
-	'configure-section-ajax'           => 'Ajax',
 	'configure-section-namespaces'     => 'Namensräume',
 	'configure-section-skin'           => 'Skins',
 	'configure-section-category'       => 'Kategorien',
 	'configure-section-cache'          => 'Cache',
 	'configure-section-pcache'         => 'Parser-Cache',
 	'configure-section-messagecache'   => 'Systemnachrichten-Cache',
-	'configure-section-memcached'      => 'Memcached',
-	'configure-section-interwiki'      => 'Interwiki',
 	'configure-section-access'         => 'Zugriff',
 	'configure-section-groups'         => 'Gruppen',
 	'configure-section-block'          => 'Sperren',
 	'configure-section-rates'          => 'Limitierungen',
 	'configure-section-proxy'          => 'Proxies',
-	'configure-section-squid'          => 'Squids',
 	'configure-section-cookie'         => 'Cookies',
 	'configure-section-reduction'      => 'Einschränkungen',
 	'configure-section-upload'         => 'Hochladen',
 	'configure-section-sharedupload'   => 'Gemeinsames Repositorium',
 	'configure-section-mime'           => 'MIME-Typen',
 	'configure-section-images'         => 'Dateien',
-	'configure-section-svg'            => 'SVG',
 	'configure-section-antivirus'      => 'Antivirus',
 	'configure-section-parser'         => 'Parser',
-	'configure-section-tex'            => 'TeX',
-	'configure-section-tidy'           => 'Tidy',
 	'configure-section-specialpages'   => 'Spezialseiten',
 	'configure-section-recentchanges'  => 'Letzte Änderungen',
 	'configure-section-users'          => 'Benutzer',
@@ -609,6 +603,7 @@ $messages['eo'] = array(
 	'configure-js-remove-row'         => 'Forigi ĉi tiun enigon',
 	'configure-no-old'                => 'Neniu malnova versio de la konfiguro havebla',
 	'configure-no-transwiki'          => 'Vi ne estas permesita ŝanĝi konfigurojn en aliaj vikioj',
+	'configure-old'                   => 'Malnovaj versioj',
 	'configure-old-versions'          => 'Listo de malnovaj versioj de la konfiguro:',
 	'configure-old-not-available'     => 'La malnova versio de la agordoj, kiun vi serĉas, $1, ne plu uzeblas',
 	'configure-saved'                 => 'La agordo estis konservita',
@@ -657,9 +652,11 @@ $messages['eo'] = array(
 	'extensions'                      => 'Konfiguri la etendilojn',
 	'right-configure'                 => 'Konfiguri la vikion',
 	'right-configure-all'             => 'Konfiguri la preferojn de la vikio',
+	'right-configure-interwiki'       => 'Konfiguri preferojn de ekstera vikio',
 	'right-extensions'                => 'Konfiguri la etendilojn',
 	'right-viewconfig'                => 'Rigardi vikian konfiguron',
 	'right-viewconfig-all'            => 'Vidi ĉiujn vikiajn konfigurojn',
+	'right-viewconfig-interwiki'      => 'Vidi eksteran vikian konfiguron',
 	'viewconfig'                      => 'Rigardi vikiajn preferojn',
 );
 
@@ -786,8 +783,10 @@ Veuillez le rendre modifiable par PHP pour que cette extension fonctionne.',
  * @author Snakesteuben
  */
 $messages['fy'] = array(
-	'configure-js-remove'      => 'Wiskje',
-	'configure-section-search' => 'Sykje',
+	'configure-desc-ns'            => 'Nammeromten',
+	'configure-js-remove'          => 'Wiskje',
+	'configure-section-namespaces' => 'Nammeromten',
+	'configure-section-search'     => 'Sykje',
 );
 
 /** Galician (Galego)

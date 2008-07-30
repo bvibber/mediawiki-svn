@@ -211,6 +211,7 @@ $messages['da'] = array(
 
 /** German (Deutsch)
  * @author MF-Warburg
+ * @author Leithian
  */
 $messages['de'] = array(
 	'vote'              => 'Wählen',
@@ -225,6 +226,7 @@ riddler|Riddler',
 	'vote-registered'   => 'Deine Stimme wurde registriert.',
 	'vote-view-results' => 'Ergebnisse zeigen',
 	'vote-results'      => 'Wahlergebnisse',
+	'vote-results-none' => 'Es wurden noch keine Stimmen abgegeben.',
 );
 
 /** Greek (Ελληνικά)

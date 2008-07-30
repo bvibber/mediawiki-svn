@@ -172,6 +172,13 @@ $messages['jv'] = array(
 	'mwsearch-desc' => 'plugin MWSearch',
 );
 
+/** Ripoarisch (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'mwsearch-desc' => 'De Hengerjrondprozeß för de <i lang="en">Lucene</i> Söke.',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */

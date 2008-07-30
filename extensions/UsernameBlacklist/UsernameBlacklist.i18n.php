@@ -1236,10 +1236,12 @@ $messages['tr'] = array(
 
 /** Ukrainian (Українська)
  * @author AS
+ * @author Ahonc
  */
 $messages['uk'] = array(
 	'blacklistedusername'     => "Заборонене ім'я користувача",
 	'blacklistedusernametext' => "Ім'я користувача, вибране вами, містить елементи, вказані у [[MediaWiki:Usernameblacklist|списку заборонених імен]]. Будь ласка, виберіть інше ім'я.",
+	'right-uboverride'        => 'Ігнорування чорного списку імен користувачів',
 );
 
 /** Vèneto (Vèneto)

@@ -73,10 +73,11 @@ Nova konto por uzanto, $2, estis kreita je $3 $4.',
 
 /** Finnish (Suomi)
  * @author Jaakonam
+ * @author Nike
  */
 $messages['fi'] = array(
-	'newusernotifsubj'  => 'Tiedote uudelle §1 -käyttäjälle',
-	'newusernotif-desc' => 'Lähettää sähköpostiviestin, kun käyttäjätilit on luotu',
+	'newusernotifsubj'  => 'Tiedote sivuston uudelle käyttäjälle $1',
+	'newusernotif-desc' => 'Lähettää sähköpostiviestin, kun käyttäjätunnukset on luotu',
 	'newusernotifbody'  => 'Tervehdys $1,
 
 Uusi käyttäjätunnus $2 on luotu $3 $4.',

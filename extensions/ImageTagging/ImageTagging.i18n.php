@@ -180,16 +180,21 @@ $messages['de'] = array(
  * @author Yekrats
  */
 $messages['eo'] = array(
-	'imagetagging-addimagetag'        => 'Marki ĉi tiun bildon',
-	'imagetagging-article'            => 'Paĝo',
-	'imagetagging-articletotag'       => 'Paĝo por marki',
-	'imagetagging-imghistory'         => 'Historio',
-	'imagetagging-images'             => 'bildoj',
-	'imagetagging-inthisimage'        => 'En ĉi tiu bildo: $1',
-	'imagetagging-removetag'          => 'forigi etikedon',
-	'imagetagging-tagcancel-button'   => 'Nuligi',
-	'imagetagging-removingtag'        => 'Forigante markon...',
-	'imagetagging-taggedimages-title' => 'Bildoj de "$1"',
+	'imagetagging-addimagetag'          => 'Marki ĉi tiun bildon',
+	'imagetagging-article'              => 'Paĝo',
+	'imagetagging-articletotag'         => 'Paĝo por marki',
+	'imagetagging-imghistory'           => 'Historio',
+	'imagetagging-images'               => 'bildoj',
+	'imagetagging-inthisimage'          => 'En ĉi tiu bildo: $1',
+	'imagetagging-removetag'            => 'forigi etikedon',
+	'imagetagging-tag-button'           => 'Etikedo',
+	'imagetagging-tagcancel-button'     => 'Nuligi',
+	'imagetagging-tagging-instructions' => 'Klaku homojn aŭ aĵojn en la bildo por marki kun etikedo.',
+	'imagetagging-addingtag'            => 'Aldonante etikedon...',
+	'imagetagging-removingtag'          => 'Forigante markon...',
+	'imagetagging-addtagsuccess'        => 'Aldoniĝis etikedo.',
+	'imagetagging-removetagsuccess'     => 'Foriĝis etikedo.',
+	'imagetagging-taggedimages-title'   => 'Bildoj de "$1"',
 );
 
 /** Finnish (Suomi)

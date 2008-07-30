@@ -71,7 +71,10 @@ $messages['bg'] = array(
  * @author Jordi Roqué
  */
 $messages['ca'] = array(
-	'simpleantispam' => 'La vostra edició ha activat un mecanisme anti-spam',
+	'simpleantispam'       => 'La vostra edició ha activat un mecanisme anti-spam',
+	'simpleantispam-label' => "Comprovació anti-spam.
+'''NO''' ho ompliu!",
+	'simpleantispam-desc'  => 'Inclou un detector simple de spam o bots als formularis',
 );
 
 /** Czech (Česky)

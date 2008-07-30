@@ -189,6 +189,7 @@ $messages['fr'] = array(
  * @author Snakesteuben
  */
 $messages['fy'] = array(
+	'player-file'      => 'Triemnamme',
 	'player-goto-page' => 'Side',
 	'player-goto-file' => 'triem',
 );

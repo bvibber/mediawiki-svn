@@ -123,6 +123,13 @@ $messages['jv'] = array(
 	'ajax-qp-desc' => 'Nambahaké sawetara AJAX ing QueryPages kayata [[Special:Shortpages]]',
 );
 
+/** Ripoarisch (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'ajax-qp-desc' => 'Deit jet AJAX dobei en Sigge met Leßte, wi zem Beispöll en de [[Special:Shortpages|{{int:shortpages}}]].',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */

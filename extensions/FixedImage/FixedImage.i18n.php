@@ -53,6 +53,13 @@ $messages['bn'] = array(
 	'fixedimage-desc' => '<tt><nowiki><fundraising></nowiki></tt> ট্যাগ চিত্র হিসেবে যোগ করো',
 );
 
+/** Catalan (Català)
+
+ */
+$messages['ca'] = array(
+	'fixedimage-desc' => "Afegeix l'etiqueta <tt><nowiki><fundraising></nowiki></tt> com una imatge",
+);
+
 /** Czech (Česky)
  * @author Matěj Grabovský
  */

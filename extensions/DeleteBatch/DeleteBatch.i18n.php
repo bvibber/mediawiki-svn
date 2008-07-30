@@ -94,12 +94,15 @@ $messages['bg'] = array(
  * @author Yekrats
  */
 $messages['eo'] = array(
+	'deletebatch'                  => 'Forigi aron de paĝoj',
 	'deletebatch-button'           => 'FORIGI',
 	'deletebatch-here'             => '<b>ĉi tie</b>',
 	'deletebatch-caption'          => 'Paĝlisto',
 	'deletebatch-as'               => 'Voki la skripton kiel',
 	'deletebatch-or'               => '<b>AŬ</b>',
 	'deletebatch-page'             => 'Forigotaj paĝoj',
+	'deletebatch-reason'           => 'Kialo por forigo',
+	'deletebatch-processing'       => 'forigante paĝojn',
 	'deletebatch-from-file'        => 'de dosierlisto',
 	'deletebatch-from-form'        => 'de paĝo',
 	'deletebatch-success-subtitle' => 'por $1',

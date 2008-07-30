@@ -202,8 +202,9 @@ $messages['fr'] = array(
  * @author Snakesteuben
  */
 $messages['fy'] = array(
-	'dt_xml_page' => 'Side',
-	'dt_xml_name' => 'Namme',
+	'dt_viewxml_namespaces' => 'Nammeromten',
+	'dt_xml_page'           => 'Side',
+	'dt_xml_name'           => 'Namme',
 );
 
 /** Galician (Galego)

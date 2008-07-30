@@ -63,6 +63,15 @@ $messages['bn'] = array(
 	'userimages-noimages' => '$1 কোন চিত্র আপলোড করেন নাই।',
 );
 
+/** German (Deutsch)
+ * @author Leithian
+ */
+$messages['de'] = array(
+	'userimages-caption'  => 'Von $1 hochgeladene Bilder',
+	'userimages-noname'   => 'Ungültiger Benutzername oder Eingabefeld leer.',
+	'userimages-noimages' => '$1 hat keine hochgeladenen Bilder.',
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */

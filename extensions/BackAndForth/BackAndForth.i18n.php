@@ -333,6 +333,8 @@ $messages['kn'] = array(
  */
 $messages['ksh'] = array(
 	'backforth-next' => 'Nähkß ($1)',
+	'backforth-desc' => 'Deit „förije“ un „nähkß“ Lenks zom Bläddere nohm Alfabeet en der Kopp fun jede Sigg.',
+	'backforth-prev' => 'Förije ($1)',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

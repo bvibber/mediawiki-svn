@@ -906,7 +906,7 @@ $allMessages['os'] = array(
  * @author Gman124
  */
 $allMessages['pa'] = array(
-	'whitelisttablemodifyall' => 'ਵੇਖੋ',
+	'whitelisttablemodifyall' => 'ਸਭ',
 	'whitelisttableedit'      => 'ਬਦਲੋ',
 	'whitelisttableview'      => 'ਵੇਖੋ',
 );

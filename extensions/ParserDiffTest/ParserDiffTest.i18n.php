@@ -174,8 +174,9 @@ $messages['br'] = array(
  * @author Toniher
  */
 $messages['ca'] = array(
-	'pdtest_ok'   => "D'acord",
-	'pdtest_diff' => 'Diferències',
+	'pdtest_no_changes' => "No s'han detectat canvis.",
+	'pdtest_ok'         => "D'acord",
+	'pdtest_diff'       => 'Diferències',
 );
 
 /** Czech (Česky)

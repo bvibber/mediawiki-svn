@@ -452,6 +452,19 @@ $messages['km'] = array(
 	'ajax-se-usernotfound'     => 'កំហុស៖ អ្នកប្រើប្រាស់មិនត្រូវបានរកឃើញទេ',
 );
 
+/** Ripoarisch (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'ajax-se-desc'             => 'Zeich dä Metmaacher beim Ändere, wä noch aan dä sellve Sigg am Ändere es.',
+	'ajax-se-title'            => 'Hee di Sigg sen jraad och noch am Ändere:',
+	'ajax-se-pending'          => 'Änderonge sin ongerwähshß. Klick op dä Kaste hee, odder donn et Beärrbeide aanfange.',
+	'ajax-se-idling'           => '(vör {{PLURAL:$1|ein Sekund|$1 Sekunde|nit ens 1 Sekund}})',
+	'ajax-se-pagedoesnotexist' => 'Di Sigg jidd_et nit',
+	'ajax-se-userinvalid'      => 'Dat es keine Name för ene Metmaacher',
+	'ajax-se-usernotfound'     => 'Dä Metmaacher jidd_et nit',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */

@@ -161,6 +161,14 @@ $messages['km'] = array(
 	'seealso' => 'សូមមើលផងដែរ',
 );
 
+/** Ripoarisch (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'seealso'      => 'Loor och hee',
+	'seealso-desc' => 'Övverschreffte en de jeweilije Shprooch met däm zosäzlijje <code><nowiki><seealso></nowiki></code> Befäähl em Wiki.',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */

@@ -376,6 +376,7 @@ $1 للبيانات المشفرة.</p>',
  */
 $messages['arz'] = array(
 	'boardvote_edits_many' => 'كتير',
+	'boardvote_welcome'    => "اهلا '''$1'''!",
 );
 
 /** Asturian (Asturianu)
@@ -4021,15 +4022,14 @@ $messages['nan'] = array(
 $messages['nds'] = array(
 	'boardvote'              => 'Wahlen to dat Wikimedia-Kuratorium',
 	'boardvote-desc'         => '[[meta:Board elections/2008|Wahlen to dat Wikimedia-Kuratorium]]',
-	'boardvote_entry'        => '* [[{{ns:special}}:Boardvote/vote|Afstimmen]]
-* [[{{ns:special}}:Boardvote/list|Bet nu al afgevene Stimmen]]
-* [[{{ns:special}}:Boardvote/dump|Verslötelte Wahlindrääg]]',
+	'boardvote_entry'        => '* [[Special:Boardvote/vote|Afstimmen]]
+* [[Special:Boardvote/list|Bet nu al afgevene Stimmen]]
+* [[Special:Boardvote/dump|Verslötelte Wahlindrääg]]',
 	'boardvote_novotes'      => 'Noch hett nüms afstimmt.',
 	'boardvote_time'         => 'Tiet',
 	'boardvote_user'         => 'Bruker',
 	'boardvote_edits'        => 'Ännern',
 	'boardvote_days'         => 'Daag',
-	'boardvote_ip'           => 'IP',
 	'boardvote_dumplink'     => 'Hier klicken',
 	'boardvote_submit'       => 'Afstimmen',
 	'boardvote_strike'       => 'Strieken',

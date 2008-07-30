@@ -239,6 +239,13 @@ $messages['sv'] = array(
 	'titlekey-desc' => 'Bakstycke för sökning efter titelprefix',
 );
 
+/** Ukrainian (Українська)
+ * @author Ahonc
+ */
+$messages['uk'] = array(
+	'titlekey-desc' => 'Двигун пошукових підказок за першими літерами назви',
+);
+
 /** Vèneto (Vèneto)
  * @author Candalua
  */
