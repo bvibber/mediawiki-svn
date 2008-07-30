@@ -109,8 +109,8 @@ END;
 			// the correct zoom level for the map
 			$min_lat = 90;
 			$max_lat = -90;
-			$min_lon = 90;
-			$max_lon = -90;
+			$min_lon = 180;
+			$max_lon = -180;
 			foreach ($locations as $i => $location) {
 				list($lat, $lon) = $location;
 				if ($lat < $min_lat) {$min_lat = $lat; }
