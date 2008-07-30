@@ -1,0 +1,16 @@
+== Description ==
+StalkerLog is designed to add a log of user login/logout actions
+to the general log pages. Designed primarily for office productivity
+monitoring, etc.
+
+== Setup ==
+* Download the extension from SVN
+* Copy the files to a subdirectory of your extensions folder
+* Add the following line to LocalSettings.php:
+	require_once("extensions/StalkerLog/StalkerLog.php");
+
+== Configuration ==
+A new right of 'stalkerlog-view-log' has been created. Granting this
+to a user via $wgGroupPermissions allows them to view the log. For
+example, if managers in an office need to see the log but employees
+shouldn't.
