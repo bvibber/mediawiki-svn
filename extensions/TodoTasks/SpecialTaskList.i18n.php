@@ -5,7 +5,7 @@
 $messages = array();
 $messages['en'] = array(
 	'tasklist'                => 'Task list',
-	'tasklist-parser-desc'    => 'adds <nowiki>{{#todo:}}</nowiki> parser function for assigning tasks',
+	'tasklist-parser-desc'    => 'Adds <nowiki>{{#todo:}}</nowiki> parser function for assigning tasks',
 	'tasklist-special-desc'   => 'Adds a special page for reviewing [[Special:TaskList|tasks assignments]]',
 	'tasklistbyproject'       => 'Task list by project',
 	'tasklistunknownproject'  => 'Unknown project',
