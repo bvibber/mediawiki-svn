@@ -33,6 +33,13 @@ $messages['cs'] = array(
 	'tab0-desc' => 'Přidává záložku „0“ pro editaci první části stránky',
 );
 
+/** German (Deutsch)
+ * @author Raymond
+ */
+$messages['de'] = array(
+	'tab0-desc' => 'Fügt ein „0“-Tab hinzu, mit dem man den ersten Abschnitt einer Seite bearbeiten kann',
+);
+
 /** Lower Sorbian (Dolnoserbski)
  * @author Michawiki
  */

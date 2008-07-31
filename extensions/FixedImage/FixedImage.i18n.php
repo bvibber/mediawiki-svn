@@ -200,6 +200,13 @@ $messages['ms'] = array(
 	'fixedimage-desc' => 'Menambah tag <tt><nowiki><fundraising></nowiki></tt> sebagai imej',
 );
 
+/** Low German (Plattdüütsch)
+ * @author Slomox
+ */
+$messages['nds'] = array(
+	'fixedimage-desc' => 'Föögt dat <tt><nowiki><fundraising></nowiki></tt>-Tag as Bild to',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

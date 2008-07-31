@@ -55,9 +55,12 @@ $messages['cs'] = array(
 
 /** German (Deutsch)
  * @author Leithian
+ * @author Revolus
  */
 $messages['de'] = array(
-	'whatismyip-out' => 'Deine IP-Adresse:',
+	'whatismyip'      => 'Wie lautet meine IP-Adresse',
+	'whatismyip-desc' => 'Zeigt die derzeite IP-Adresse des Benutzers auf [[Special:WhatIsMyIP]] an',
+	'whatismyip-out'  => 'Deine IP-Adresse:',
 );
 
 /** German (formal address) (Deutsch (Sie-Form))

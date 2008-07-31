@@ -657,7 +657,9 @@ $wdMessages['da'] = array(
 	'ow_TranslatedTextAttributeValue' => 'Tekst',
 );
 
-/** German (Deutsch) */
+/** German (Deutsch)
+ * @author Revolus
+ */
 $wdMessages['de'] = array(
 	'datasearch'                            => 'Wikidata: Datensuche',
 	'langman_title'                         => 'Sprachmanager',
@@ -1517,6 +1519,7 @@ $wdMessages['is'] = array(
 $wdMessages['it'] = array(
 	'ow_Language'               => 'Lingua',
 	'ow_OptionAttributeOptions' => 'Opzioni',
+	'ow_Value'                  => 'Valore',
 );
 
 /** Japanese (日本語)

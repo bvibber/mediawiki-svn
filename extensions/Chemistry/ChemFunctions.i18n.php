@@ -118,7 +118,9 @@ $messages['da'] = array(
 	'chemFunctions_Name' => 'IUPAC Navn',
 );
 
-/** German (Deutsch) */
+/** German (Deutsch)
+ * @author Revolus
+ */
 $messages['de'] = array(
 	'chemicalsources'                  => 'Chemische Quellen',
 	'chemFunctions_ListPage'           => 'Chemische Quellen',
@@ -126,6 +128,8 @@ $messages['de'] = array(
 * <a href="http://webbook.nist.gov/cgi/cbook.cgi?ID=$MIXCASNameFormula&amp;Units=SI">Verbindung $MIXCASNameFormula auf NIST</a><br />
 * <a href="http://ptcl.chem.ox.ac.uk/MSDS/">MSDS an der Oxford University (UK) (nicht durchsuchbar)</a><br />',
 	'chemFunctions_CAS'                => 'CAS Nummer',
+	'chemFunctions_Formula'            => 'Formel',
+	'chemFunctions_Name'               => 'IUPAC-Name',
 	'chemFunctions_ChemFormInputError' => 'Chemform: Eingabe Fehler!',
 );
 

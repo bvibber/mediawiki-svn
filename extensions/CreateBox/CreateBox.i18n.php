@@ -50,6 +50,13 @@ $messages['bg'] = array(
 	'createbox-create' => 'Създаване',
 );
 
+/** German (Deutsch)
+ * @author Revolus
+ */
+$messages['de'] = array(
+	'createbox-create' => 'Erstellen',
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */

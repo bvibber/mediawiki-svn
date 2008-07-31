@@ -397,6 +397,68 @@ $messages['cs'] = array(
 	'math_WrongFontEncodingWithHint'        => 'Symbol „$1“ se nemůže nacházet v kódování písma „$2“ (zkuste použít příkaz „$3{...}“)',
 );
 
+/** German (Deutsch)
+ * @author Revolus
+ */
+$messages['de'] = array(
+	'math-desc'                             => 'MathML-Ausgabe für &lt;math&gt;-Tags',
+	'math_AmbiguousInfix'                   => 'An dieser Stelle ist „$1“ mehrdeutig.
+Versuche weitere geschwungene Klammern „{ … }“ einzufügen, um die Eingabe eindeutig zu machen.',
+	'math_CannotChangeDirectory'            => 'Arbeitsverzeichnis konnte nicht gewechselt werden',
+	'math_CannotCreateTexFile'              => 'tex-Datei konnte nicht erstellt werden',
+	'math_CannotRunDvipng'                  => 'dvipng konnte nicht ausgeführt werden',
+	'math_CannotRunLatex'                   => 'latex konnte nicht ausgeführt werden',
+	'math_CannotWritePngDirectory'          => 'Das PNG-Verzeichnis ist nicht beschreibbar',
+	'math_CannotWriteTexFile'               => 'Es war nicht möglich in die tex-Datei zu schreiben',
+	'math_CasesRowTooBig'                   => 'Es kann pro Zeile eines „cases“-Block bloß zwei Einträge geben',
+	'math_IllegalCharacter'                 => 'Ungültiges Zeichen in der Eingabe',
+	'math_IllegalCommandInMathMode'         => 'Im mathematischen Modus ist die Anweisung „$1“ nicht erlaubt',
+	'math_IllegalCommandInMathModeWithHint' => 'Im mathematischen Modus ist die Anweisung „$1“ nicht erlaubt.
+Vielleicht magst du „$2“ stattdessen verwenden?',
+	'math_IllegalCommandInTextMode'         => 'Im Texmodus ist die Anweisung „$1“ nicht erlaubt',
+	'math_IllegalCommandInTextModeWithHint' => 'Im Textmodus ist die Anweisung „$1“ nicht erlaubt.
+Vielleicht magst du „$2“ stattdessen verwenden?',
+	'math_IllegalDelimiter'                 => 'Ungültiges Trennzeichen hinter „$1“',
+	'math_IllegalFinalBackslash'            => 'Ungültiger Backslash „\\“ am Ende der Eingabe',
+	'math_IllegalNestedFontEncodings'       => 'Zeichenkodierungsanweisungen können nicht geschachtelt werden',
+	'math_IllegalRedefinition'              => 'Die Anweiung „$1“ wurde bereits definiert. Du kannst sie nicht überschreiben',
+	'math_InvalidColour'                    => 'Die Farbe „$1“ ist ungültig',
+	'math_InvalidUtf8Input'                 => 'Die Eingabe ist keine gültige UTF-8-Zeichenkette',
+	'math_LatexFontNotSpecified'            => 'Es wurde keine LaTeX-Schriftart für „$1” angegeben',
+	'math_LatexPackageUnavailable'          => 'Die PNG konnte nicht erstellt werden, weil das LaTeX-Paket „$1“ nicht verfügbar ist',
+	'math_MismatchedBeginAndEnd'            => 'Die öffnende Anweisung „$1“ entspricht nicht der schließenden „$2“',
+	'math_MisplacedLimits'                  => 'Die Anweisung „$1“ kann nur hinter einem mathematischen Operator vorkommen.
+Überlege es dir „\\mathop“ zu verwenden.',
+	'math_MissingDelimiter'                 => 'Fehlendes Trennzeichen hinter „$1“',
+	'math_MissingOpenBraceAfter'            => 'Öffnende Klammer „{“ hinter „$1“ fehlt',
+	'math_MissingOpenBraceAtEnd'            => 'Öffnende Klammer „{“ am Ende der Eingabe fehlt',
+	'math_MissingOpenBraceBefore'           => 'Öffnende Klammer „{“ vor „$1“ fehlt',
+	'math_MissingOrIllegalParameterCount'   => 'Fehlende oder ungültige Parameterzahl in der Definition von „$1“.
+Es muss eine einzelne Ziffer zwischen einschließlich 1 und 9 sein.',
+	'math_MissingOrIllegalParameterIndex'   => 'Fehlender oder falscher Parameterindex in der Definition von „$1“',
+	'math_NonAsciiInMathMode'               => 'Sonderzeichen (Nicht-ASCII-Zeichen) dürfen nur im Textmodus verwendet werden
+Versuche die problematischen Zeichen in „\\text{…}“ einzuschließen.',
+	'math_NotEnoughArguments'               => 'Es wurden nicht genügend Parameter für „$1“ übergeben',
+	'math_ReservedCommand'                  => 'Die Anweisung „$1“ ist für die interne Verwendung in blahtex reserviert',
+	'math_SubstackRowTooBig'                => 'Pro Zeile eines „substack“-Blockes darf es einen Eintrag geben',
+	'math_TooManyMathmlNodes'               => 'Der MathML-Verarbeitungsbaum enthält zu viele Knoten',
+	'math_TooManyTokens'                    => 'Die Eingabe ist zu lang',
+	'math_UnavailableSymbolFontCombination' => 'Das Symbol „$1“ ist in der Schriftart „$2“ nicht vorhanden',
+	'math_UnexpectedNextCell'               => 'Die Anweisung „&amp;“ kann nur zwischen in einem „\\begin … \\block“-Block stehen',
+	'math_UnexpectedNextRow'                => 'Die Anweisung „\\\\“ kann nur zwischen in einem „\\begin … \\block“-Block stehen',
+	'math_UnmatchedBegin'                   => '„\\begin“ ohne zugehöriges „\\end“',
+	'math_UnmatchedCloseBrace'              => 'Schließende Klammer „}” ohne zugehörige öffnende Klammer „{”',
+	'math_UnmatchedEnd'                     => '„\\end” ohne zugehöriges „\\begin”',
+	'math_UnmatchedLeft'                    => '„\\left” ohne zugehöriges „\\right”',
+	'math_UnmatchedOpenBrace'               => 'Öffnende Klammer „{” ohne zugehörige schließende Klammer „}”',
+	'math_UnmatchedOpenBracket'             => 'Öffnende Klammer „[” ohne zugehörige schließende Klammer „]”',
+	'math_UnmatchedRight'                   => '„\\right” ohne zugehöriges „\\left”',
+	'math_UnrecognisedCommand'              => 'Unbekannte Anweisung „$1“',
+	'math_WrongFontEncoding'                => 'Das Symbol „$1“ darf in der Zeichenkodierung „$2“ nicht vorkommen',
+	'math_WrongFontEncodingWithHint'        => 'Das Symbol „$1“ darf in der Zeichenkodierung „$2“ nicht vorkommen
+Probiere die Anweisung „$3{…}“ aus.',
+);
+
 /** Greek (Ελληνικά)
  * @author Consta
  */

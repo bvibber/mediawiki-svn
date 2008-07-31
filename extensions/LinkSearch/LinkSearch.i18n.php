@@ -895,11 +895,14 @@ $messages['nap'] = array(
  * @author Slomox
  */
 $messages['nds'] = array(
-	'linksearch'      => 'Weblenken söken',
-	'linksearch-pat'  => 'Söökmunster:',
-	'linksearch-ns'   => 'Naamruum:',
-	'linksearch-ok'   => 'Söken',
-	'linksearch-line' => '$1 hett en Lenk vun $2',
+	'linksearch'       => 'Weblenken söken',
+	'linksearch-pat'   => 'Söökmunster:',
+	'linksearch-ns'    => 'Naamruum:',
+	'linksearch-ok'    => 'Söken',
+	'linksearch-text'  => 'Wildcards as to’n Bispeel <tt>*.wikipedia.org</tt> köönt bruukt warrn.<br />
+Ünnerstütt Protokollen: <tt>$1</tt>',
+	'linksearch-line'  => '$1 hett en Lenk vun $2',
+	'linksearch-error' => 'Wildcards dröfft blot an’n Anfang vun de URL stahn.',
 );
 
 /** Nepali (नेपाली)

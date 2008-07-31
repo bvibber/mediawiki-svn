@@ -90,6 +90,32 @@ $messages['bg'] = array(
 	'deletebatch-file-missing'     => 'Предоставеният файл не може да бъде прочетен',
 );
 
+/** German (Deutsch)
+ * @author Revolus
+ * @author Raymond
+ * @author Leithian
+ */
+$messages['de'] = array(
+	'deletebatch-button'               => 'Löschen',
+	'deletebatch-here'                 => '<b>hier</b>',
+	'deletebatch-caption'              => 'Dateiliste',
+	'deletebatch-as'                   => 'Das Skript ausführen als',
+	'deletebatch-both-modes'           => 'Bitte wähle entweder eine spezifische Seite oder eine gegebene Liste von Seiten.',
+	'deletebatch-or'                   => '<b>oder</b>',
+	'deletebatch-page'                 => 'Zu löschende Seiten',
+	'deletebatch-reason'               => 'Löschgrund',
+	'deletebatch-processing'           => 'Lösche Seiten',
+	'deletebatch-from-file'            => 'von Dateiliste',
+	'deletebatch-from-form'            => 'von Eingabe',
+	'deletebatch-success-subtitle'     => 'für $1',
+	'deletebatch-omitting-nonexistant' => 'Überspringe nicht vorhandene Seite $1.',
+	'deletebatch-omitting-invalid'     => 'Überspringe ungültige Seite $1.',
+	'deletebatch-file-bad-format'      => 'Die Datei sollte Klartext enthalten.',
+	'deletebatch-file-missing'         => 'Übergebene Datei konnte nicht gelesen werden',
+	'deletebatch-select-yourself'      => 'du',
+	'deletebatch-no-page'              => 'Bitte gebe entweder zumindest eine zu löschende Seite oder wähle eine Datei, die eine Liste von zu löschenden Seiten enthält.',
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */
@@ -220,8 +246,10 @@ $messages['ia'] = array(
 
 /** Italian (Italiano)
  * @author Melos
+ * @author Darth Kule
  */
 $messages['it'] = array(
+	'deletebatch-button' => 'Cancella',
 	'deletebatch-reason' => 'Motivo della cancellazione',
 );
 

@@ -251,6 +251,18 @@ $messages['is'] = array(
 	'randomincategory-label' => 'Flokkur:',
 );
 
+/** Italian (Italiano)
+ * @author Darth Kule
+ */
+$messages['it'] = array(
+	'randomincategory'            => 'Pagina casuale in una categoria',
+	'randomincategory-desc'       => "[[Special:Randomincategory|Pagina speciale]] che dà una pagina casuale all'interno di una categoria",
+	'randomincategory-toolbox'    => 'Una pagina a caso',
+	'randomincategory-nocategory' => 'La categoria $1 non esiste o è vuota',
+	'randomincategory-label'      => 'Categoria:',
+	'randomincategory-submit'     => 'Vai',
+);
+
 /** Javanese (Basa Jawa)
  * @author Meursault2004
  */

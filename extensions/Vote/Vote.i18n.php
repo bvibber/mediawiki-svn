@@ -136,6 +136,17 @@ $messages['bcl'] = array(
 	'vote-login-link'     => 'maglaog',
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author Siebrand
+ * @author EugeneZelenko
+ */
+$messages['be-tarask'] = array(
+	'vote-caption'        => 'Ваш выбар:',
+	'vote-registered'     => 'Ваш голас быў залічаны.',
+	'vote-view-results'   => 'Паказаць вынікі',
+	'vote-invalid-choice' => 'Вы павінны выбраць адзін з прапанаваных варыянтаў.',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  */
@@ -212,21 +223,24 @@ $messages['da'] = array(
 /** German (Deutsch)
  * @author MF-Warburg
  * @author Leithian
+ * @author Revolus
  */
 $messages['de'] = array(
-	'vote'              => 'Wählen',
-	'vote-header'       => "Du kannst hier den '''Obersten Oberherrn der Welt''' wählen!",
-	'vote-current'      => "Deine aktuelle Stimme ist für '''$1'''.",
-	'vote-legend'       => 'Abstimmen',
-	'vote-caption'      => 'Deine Stimme:',
-	'vote-choices'      => 'joker|Der Joker
+	'vote'                => 'Wählen',
+	'vote-header'         => "Du kannst hier den '''Obersten Oberherrn der Welt''' wählen!",
+	'vote-current'        => "Deine aktuelle Stimme ist für '''$1'''.",
+	'vote-legend'         => 'Abstimmen',
+	'vote-caption'        => 'Deine Stimme:',
+	'vote-choices'        => 'joker|Der Joker
 penguin|Der Pinguin
 riddler|Riddler',
-	'vote-submit'       => 'Abstimmen',
-	'vote-registered'   => 'Deine Stimme wurde registriert.',
-	'vote-view-results' => 'Ergebnisse zeigen',
-	'vote-results'      => 'Wahlergebnisse',
-	'vote-results-none' => 'Es wurden noch keine Stimmen abgegeben.',
+	'vote-submit'         => 'Abstimmen',
+	'vote-registered'     => 'Deine Stimme wurde registriert.',
+	'vote-view-results'   => 'Ergebnisse zeigen',
+	'vote-results'        => 'Wahlergebnisse',
+	'vote-results-none'   => 'Es wurden noch keine Stimmen abgegeben.',
+	'vote-login-link'     => 'Anmelden',
+	'vote-invalid-choice' => 'Du musst eine der möglichen Optionen wählen.',
 );
 
 /** Greek (Ελληνικά)

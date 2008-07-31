@@ -46,10 +46,11 @@ $messages['am'] = array(
 /** Aragonese (Aragonés)
  * @author Juanpabl
  * @author SPQRobin
+ * @author Jon Harald Søby
  */
 $messages['an'] = array(
 	'newuserlogpage'              => 'Rechistro de nuebos usuarios',
-	'newuserlogpagetext'          => "Isto ye un rechistro de creyazión d'usuarios",
+	'newuserlogpagetext'          => "Isto ye un rechistro de creyazión d'usuarios.",
 	'newuserlog-desc'             => 'Adibe un [[Special:Log/newusers|rechistro de creyazión de cuentas]] ta [[Special:Log]]',
 	'newuserlog-byemail'          => 'Palabra de paso nimbiata por correu electronico',
 	'newuserlog-create-entry'     => 'Nuebo usuario',
@@ -71,7 +72,7 @@ $messages['ang'] = array(
  */
 $messages['ar'] = array(
 	'newuserlogpage'              => 'سجل إنشاء المستخدمين',
-	'newuserlogpagetext'          => 'هذا سجل بعمليات إنشاء المستخدمين',
+	'newuserlogpagetext'          => 'هذا سجل بعمليات إنشاء المستخدمين.',
 	'newuserlog-desc'             => 'يضيف [[Special:Log/newusers|سجل بإنشاء الحسابات]] إلى [[Special:Log]]',
 	'newuserlog-byemail'          => 'كلمة السر تم إرسالها بواسطة البريد الإلكتروني',
 	'newuserlog-create-entry'     => 'مستخدم جديد',
@@ -81,11 +82,11 @@ $messages['ar'] = array(
 
 /** Egyptian Spoken Arabic (مصرى)
  * @author Ramsis1978
+ * @author Ghaly
  */
 $messages['arz'] = array(
 	'newuserlogpage'              => 'سجل اليوزرز الجداد',
-	'newuserlogpagetext'          => 'دا سجل لليوزرز الجدا
-د',
+	'newuserlogpagetext'          => 'دا سجل لليوزرز الجداد',
 	'newuserlog-desc'             => 'بيزود[[Special:Log/newusers|سجل فتح الحسابات]] لـ [[Special:Log]]',
 	'newuserlog-byemail'          => 'الباسورد اتبعتت بالايميل',
 	'newuserlog-create-entry'     => 'يوزر جديد',
@@ -105,10 +106,11 @@ $messages['as'] = array(
 
 /** Asturian (Asturianu)
  * @author Esbardu
+ * @author Jon Harald Søby
  */
 $messages['ast'] = array(
 	'newuserlogpage'           => "Rexistru de creación d'usuarios",
-	'newuserlogpagetext'       => "Esti ye un rexistru de creación d'usuarios",
+	'newuserlogpagetext'       => "Esti ye un rexistru de creación d'usuarios.",
 	'newuserlog-desc'          => 'Añade un [[Special:Log/newusers|rexistru de creación de cuentes]] a [[Special:Log]]',
 	'newuserlog-byemail'       => 'clave unviada per corréu electrónicu',
 	'newuserlog-create-entry'  => 'Usuariu nuevu',
@@ -154,7 +156,7 @@ $messages['bcl'] = array(
  */
 $messages['be-tarask'] = array(
 	'newuserlogpage'              => 'Журнал стварэньня рахункаў',
-	'newuserlogpagetext'          => 'Гэта журнал стварэньня рахункаў удзельнікаў і ўдзельніц',
+	'newuserlogpagetext'          => 'Гэта журнал стварэньня рахункаў удзельнікаў і ўдзельніц.',
 	'newuserlog-desc'             => 'Дадае [[Special:Log/newusers|журнал стварэньня рахункаў]] у [[Special:Log]]',
 	'newuserlog-byemail'          => 'Пароль адасланы па электроннай пошце',
 	'newuserlog-create-entry'     => 'Новы ўдзельнік',
@@ -167,6 +169,7 @@ $messages['be-tarask'] = array(
  * @author Daggerstab
  * @author Borislav
  * @author Spiritia
+ * @author Jon Harald Søby
  */
 $messages['bg'] = array(
 	'newuserlogpage'              => 'Дневник на регистрациите',
@@ -195,10 +198,11 @@ $messages['bn'] = array(
 /** Breton (Brezhoneg)
  * @author Fulup
  * @author SPQRobin
+ * @author Jon Harald Søby
  */
 $messages['br'] = array(
 	'newuserlogpage'              => "Marilh ar c'hontoù krouet",
-	'newuserlogpagetext'          => "Marilh krouiñ ar c'hontoù implijer",
+	'newuserlogpagetext'          => "Marilh krouiñ ar c'hontoù implijer.",
 	'newuserlog-desc'             => 'Ouzhpennañ a ra ur [[Special:Log/newusers|marilh krouiñ kontoù]] da [[Special:Log|roll an holl varilhoù]]',
 	'newuserlog-byemail'          => 'ger-tremen kaset dre bostel',
 	'newuserlog-create-entry'     => 'Implijer nevez',
@@ -210,10 +214,11 @@ $messages['br'] = array(
  * @author Toniher
  * @author SMP
  * @author Jordi Roqué
+ * @author Jon Harald Søby
  */
 $messages['ca'] = array(
 	'newuserlogpage'              => "Registre de creació de l'usuari",
-	'newuserlogpagetext'          => 'Aquest és un registre de creació de nous usuaris',
+	'newuserlogpagetext'          => 'Aquest és un registre de creació de nous usuaris.',
 	'newuserlog-desc'             => 'Afegeix un [[Special:Log/newusers|registre de creació de comptes]] a [[Special:Log]]',
 	'newuserlog-byemail'          => 'contrasenya enviada per correu electrònic',
 	'newuserlog-create-entry'     => 'Nou usuari',
@@ -237,10 +242,11 @@ $messages['ce'] = array(
 
 /** Crimean Turkish (Latin) (Qırımtatarca (Latin))
  * @author Alessandro
+ * @author Jon Harald Søby
  */
 $messages['crh-latn'] = array(
 	'newuserlogpage'              => 'Yañı qullanıcı jurnalı',
-	'newuserlogpagetext'          => 'Eñ sоñki qayd оlğan qullanıcı jurnalı',
+	'newuserlogpagetext'          => 'Eñ sоñki qayd оlğan qullanıcı jurnalı.',
 	'newuserlog-create-entry'     => 'Yañı qullanıcı',
 	'newuserlog-create2-entry'    => '$1 içün esap açtı',
 	'newuserlog-autocreate-entry' => 'Esap avtomatik olaraq yaratıldı',
@@ -248,10 +254,11 @@ $messages['crh-latn'] = array(
 
 /** Crimean Turkish (Cyrillic) (Qırımtatarca (Cyrillic))
  * @author Alessandro
+ * @author Jon Harald Søby
  */
 $messages['crh-cyrl'] = array(
 	'newuserlogpage'              => 'Янъы къулланыджы журналы',
-	'newuserlogpagetext'          => 'Энъ сонъки къайд олгъан къулланыджы журналы',
+	'newuserlogpagetext'          => 'Энъ сонъки къайд олгъан къулланыджы журналы.',
 	'newuserlog-create-entry'     => 'Янъы къулланыджы',
 	'newuserlog-create2-entry'    => '$1 ичюн эсап ачты',
 	'newuserlog-autocreate-entry' => 'Эсап автоматик оларакъ яратылды',
@@ -261,6 +268,7 @@ $messages['crh-cyrl'] = array(
  * @author Li-sung
  * @author Martin Kozák
  * @author Danny B.
+ * @author Jon Harald Søby
  */
 $messages['cs'] = array(
 	'newuserlogpage'              => 'Kniha nových uživatelů',
@@ -282,10 +290,11 @@ $messages['cu'] = array(
 
 /** Danish (Dansk)
  * @author Morten
+ * @author Jon Harald Søby
  */
 $messages['da'] = array(
 	'newuserlogpage'           => 'Brugeroprettelseslog',
-	'newuserlogpagetext'       => 'Dette er en log over de senest oprettede brugere',
+	'newuserlogpagetext'       => 'Dette er en log over de senest oprettede brugere.',
 	'newuserlog-desc'          => 'Tilføjer en [[Speciel:Loglister/newusers|brugeroprettelseslog]] til [[Speciel:Loglister]]',
 	'newuserlog-byemail'       => 'kodeord tilsend pr. e-mail',
 	'newuserlog-create-entry'  => 'Ny bruger',
@@ -308,6 +317,7 @@ $messages['de'] = array(
 /** Lower Sorbian (Dolnoserbski)
  * @author Michawiki
  * @author Tlustulimu
+ * @author Jon Harald Søby
  */
 $messages['dsb'] = array(
 	'newuserlogpage'              => 'Protokol nowych wužywarjow',
@@ -322,6 +332,7 @@ $messages['dsb'] = array(
 /** Greek (Ελληνικά)
  * @author MF-Warburg
  * @author ZaDiak
+ * @author Jon Harald Søby
  */
 $messages['el'] = array(
 	'newuserlogpage'           => 'Αρχείο δημιουργίας χρηστών',
@@ -341,10 +352,11 @@ $messages['eml'] = array(
 /** Esperanto (Esperanto)
  * @author Yekrats
  * @author Tlustulimu
+ * @author Jon Harald Søby
  */
 $messages['eo'] = array(
 	'newuserlogpage'              => 'Protokolo de uzanto-kreado',
-	'newuserlogpagetext'          => 'Ĉi tio estas protokolo de uzantokreadoj',
+	'newuserlogpagetext'          => 'Jen protokolo de lastaj kreadoj de uzantoj.',
 	'newuserlog-desc'             => 'Aldonas [[Special:Log/newusers|protokolon pri kontkreado]] al [[Special:Log]]',
 	'newuserlog-byemail'          => 'pasvorto sendita retpoŝte',
 	'newuserlog-create-entry'     => 'Nova uzanto',
@@ -356,10 +368,11 @@ $messages['eo'] = array(
  * @author Icvav
  * @author Titoxd
  * @author Lin linao
+ * @author Jon Harald Søby
  */
 $messages['es'] = array(
 	'newuserlogpage'              => 'Registro de creación de usuarios',
-	'newuserlogpagetext'          => 'Este es un registro de creación de usuarios',
+	'newuserlogpagetext'          => 'Este es un registro de creación de usuarios.',
 	'newuserlog-desc'             => 'Añade un [[Special:Log/newusers|registro de creación de cuentas]] a [[Special:Log|Especial:Log]]',
 	'newuserlog-byemail'          => 'contraseña enviada por correo electrónico',
 	'newuserlog-create-entry'     => 'Usuario nuevo',
@@ -369,19 +382,21 @@ $messages['es'] = array(
 
 /** Estonian (Eesti)
  * @author SPQRobin
+ * @author Jon Harald Søby
  */
 $messages['et'] = array(
 	'newuserlogpage'          => 'Kasutaja loomise logi',
-	'newuserlogpagetext'      => 'See logi sisaldab infot äsja loodud uute kasutajate kohta',
+	'newuserlogpagetext'      => 'See logi sisaldab infot äsja loodud uute kasutajate kohta.',
 	'newuserlog-create-entry' => 'Uus kasutaja',
 );
 
 /** Basque (Euskara)
  * @author SPQRobin
+ * @author Jon Harald Søby
  */
 $messages['eu'] = array(
 	'newuserlogpage'           => 'Erabiltzaile erregistroa',
-	'newuserlogpagetext'       => 'Hau azken erabiltzaileen sorreren erregistroa da',
+	'newuserlogpagetext'       => 'Hau azken erabiltzaileen sorreren erregistroa da.',
 	'newuserlog-byemail'       => 'pasahitza e-postaz bidali da',
 	'newuserlog-create-entry'  => 'Lankide berria',
 	'newuserlog-create2-entry' => '$1(r)entzako kontua sortu da',
@@ -426,6 +441,7 @@ $messages['fo'] = array(
  * @author Hégésippe Cormier
  * @author Grondin
  * @author IAlex
+ * @author Jon Harald Søby
  */
 $messages['fr'] = array(
 	'newuserlogpage'              => 'Historique des créations de comptes',
@@ -439,6 +455,7 @@ $messages['fr'] = array(
 
 /** Franco-Provençal (Arpetan)
  * @author ChrisPtDe
+ * @author Jon Harald Søby
  */
 $messages['frp'] = array(
 	'newuserlogpage'           => 'Historico de les crèacions de comptos',
@@ -452,10 +469,11 @@ $messages['frp'] = array(
 /** Friulian (Furlan)
  * @author MF-Warburg
  * @author Klenje
+ * @author Jon Harald Søby
  */
 $messages['fur'] = array(
 	'newuserlogpage'              => 'Regjistri dai gnûfs utents',
-	'newuserlogpagetext'          => 'Ca sot tu cjatis un regjistri dai gnûfs utents creâts',
+	'newuserlogpagetext'          => 'Ca sot tu cjatis un regjistri dai gnûfs utents creâts.',
 	'newuserlog-byemail'          => 'peraule clâf mandade par pueste eletroniche',
 	'newuserlog-create-entry'     => 'al è rivât il gnûf utent',
 	'newuserlog-create2-entry'    => 'creade une identitât par $1',
@@ -473,6 +491,7 @@ $messages['ga'] = array(
  * @author Alma
  * @author Toliño
  * @author Prevert
+ * @author Jon Harald Søby
  */
 $messages['gl'] = array(
 	'newuserlogpage'              => 'Rexistro de creación de usuarios',
@@ -500,10 +519,11 @@ $messages['gv'] = array(
 
 /** Hakka (Hak-kâ-fa)
  * @author Hakka
+ * @author Jon Harald Søby
  */
 $messages['hak'] = array(
 	'newuserlogpage'           => 'Sîn-chin yung-fu miàng-chhak',
-	'newuserlogpagetext'       => 'Liá-he yit-ke chui-khiun pûn chhóng-kien yung-fu ke ngit-ki',
+	'newuserlogpagetext'       => 'Liá-he yit-ke chui-khiun pûn chhóng-kien yung-fu ke ngit-ki.',
 	'newuserlog-create-entry'  => 'Sîn yung-fu',
 	'newuserlog-create2-entry' => 'Yí-kîn chhong-kien $1 ke chong-fu',
 );
@@ -536,10 +556,11 @@ $messages['hi'] = array(
  * @author SpeedyGonsales
  * @author Dalibor Bosits
  * @author Dnik
+ * @author Jon Harald Søby
  */
 $messages['hr'] = array(
 	'newuserlogpage'              => 'Evidencija novih suradnika',
-	'newuserlogpagetext'          => 'Ispod je popis nedavno otvorenih suradničkih imena',
+	'newuserlogpagetext'          => 'Ispod je popis nedavno otvorenih suradničkih imena.',
 	'newuserlog-desc'             => 'Dodaje [[Special:Log/newusers|evidencije suradničkih računa]] u [[Special:Log|evidencije]]',
 	'newuserlog-byemail'          => 'lozinka poslana e-poštom',
 	'newuserlog-create-entry'     => 'Novi suradnik',
@@ -566,7 +587,7 @@ $messages['hsb'] = array(
  */
 $messages['ht'] = array(
 	'newuserlogpage'              => 'Istorik pou kreyasyon kont itilizatè yo',
-	'newuserlogpagetext'          => 'Jounal, istorik kreyasyon kont itilizatè yo.',
+	'newuserlogpagetext'          => 'Men jounal, istorik kreyasyon kont itilizatè yo.',
 	'newuserlog-desc'             => 'Ajoute yon [[Special:Log/newusers|jounal pou kreyasyon kont yo]] nan [[Special:Log|log sistèm an]]',
 	'newuserlog-byemail'          => 'mopas an voye pa imèl',
 	'newuserlog-create-entry'     => 'Nouvo itilizatè',
@@ -578,6 +599,7 @@ $messages['ht'] = array(
  * @author Samat
  * @author Dani
  * @author Dorgan
+ * @author Jon Harald Søby
  */
 $messages['hu'] = array(
 	'newuserlogpage'              => 'Új szerkesztők naplója',
@@ -591,20 +613,22 @@ $messages['hu'] = array(
 
 /** Armenian (Հայերեն)
  * @author Teak
+ * @author Jon Harald Søby
  */
 $messages['hy'] = array(
 	'newuserlogpage'           => 'Մասնակիցների գրանցման տեղեկամատյան',
-	'newuserlogpagetext'       => 'Սա նոր մասնակիցների գրանցման տեղեկամատյանն է',
+	'newuserlogpagetext'       => 'Սա նոր մասնակիցների գրանցման տեղեկամատյանն է.',
 	'newuserlog-create-entry'  => 'Նոր մասնակից',
 	'newuserlog-create2-entry' => 'ստեղծեց նոր հաշիվ $1 մասնակցի համար',
 );
 
 /** Interlingua (Interlingua)
  * @author McDutchie
+ * @author Jon Harald Søby
  */
 $messages['ia'] = array(
 	'newuserlogpage'              => 'Registro de creation de usatores',
-	'newuserlogpagetext'          => 'Isto es un registro de creation de usatores',
+	'newuserlogpagetext'          => 'Isto es un registro de creation de usatores.',
 	'newuserlog-desc'             => 'Adde un [[{{ns:special}}:Log/newusers|registro de creation de contos]] a [[{{ns:special}}:Log]]',
 	'newuserlog-byemail'          => 'contrasigno inviate per e-mail',
 	'newuserlog-create-entry'     => 'Nove usator',
@@ -638,10 +662,11 @@ $messages['io'] = array(
  * @author S.Örvarr.S
  * @author SPQRobin
  * @author Jóna Þórunn
+ * @author Jon Harald Søby
  */
 $messages['is'] = array(
 	'newuserlogpage'              => 'Skrá yfir nýja notendur',
-	'newuserlogpagetext'          => 'Þetta er skrá yfir nýskráða notendur',
+	'newuserlogpagetext'          => 'Þetta er skrá yfir nýskráða notendur.',
 	'newuserlog-create-entry'     => 'Nýr notandi',
 	'newuserlog-create2-entry'    => 'bjó til notanda fyrir $1',
 	'newuserlog-autocreate-entry' => 'Aðgangur búinn til sjálfkrafa',
@@ -651,10 +676,11 @@ $messages['is'] = array(
  * @author BrokenArrow
  * @author Melos
  * @author Nemo bis
+ * @author Darth Kule
  */
 $messages['it'] = array(
 	'newuserlogpage'              => 'Nuovi utenti',
-	'newuserlogpagetext'          => 'Di seguito sono elencati gli account di nuova creazione.',
+	'newuserlogpagetext'          => 'Di seguito sono elencate le creazioni di nuovi account.',
 	'newuserlog-desc'             => 'Aggiunge un [[Special:Log/newusers|registro degli utenti creati]] alla [[Special:Log|pagina dei registri]]',
 	'newuserlog-byemail'          => 'password inviata via mail',
 	'newuserlog-create-entry'     => 'si è appena registrato/a',
@@ -666,6 +692,7 @@ $messages['it'] = array(
  * @author Suisui
  * @author JtFuruhata
  * @author Marine-Blue
+ * @author Jon Harald Søby
  */
 $messages['ja'] = array(
 	'newuserlogpage'              => 'アカウント作成記録',
@@ -679,10 +706,11 @@ $messages['ja'] = array(
 
 /** Jutish (Jysk)
  * @author Huslåke
+ * @author Jon Harald Søby
  */
 $messages['jut'] = array(
 	'newuserlogpage'           => 'Brugeråprettelseslog',
-	'newuserlogpagetext'       => "Dett'er en log åver de senest åprettede brugere",
+	'newuserlogpagetext'       => "Dett'er en log åver de senest åprettede brugere.",
 	'newuserlog-desc'          => 'Tilføjer en [[Special:Logs/newusers|brugeråprettelseslog]] til [[Special:Logs|logherseler]]',
 	'newuserlog-byemail'       => 'kodeort tilsend via e-mail',
 	'newuserlog-create-entry'  => 'Ny bruger',
@@ -691,10 +719,11 @@ $messages['jut'] = array(
 
 /** Javanese (Basa Jawa)
  * @author Meursault2004
+ * @author Jon Harald Søby
  */
 $messages['jv'] = array(
 	'newuserlogpage'           => 'Log panganggo anyar',
-	'newuserlogpagetext'       => 'Ing ngisor iki kapacak log pandaftaran panganggo anyar',
+	'newuserlogpagetext'       => 'Ing ngisor iki kapacak log pandaftaran panganggo anyar.',
 	'newuserlog-desc'          => 'Nambahaké [[Special:Log/newusers|log rékening anyar]] ing [[Special:Log]]',
 	'newuserlog-byemail'       => 'tembung sandhi wis dikirim liwat e-mail',
 	'newuserlog-create-entry'  => 'Panganggo anyar',
@@ -752,6 +781,7 @@ $messages['km'] = array(
 /** Korean (한국어)
  * @author ToePeu
  * @author Klutzy
+ * @author Jon Harald Søby
  */
 $messages['ko'] = array(
 	'newuserlogpage'              => '사용자 등록 기록',
@@ -764,6 +794,7 @@ $messages['ko'] = array(
 
 /** Ripoarisch (Ripoarisch)
  * @author Purodha
+ * @author Jon Harald Søby
  */
 $messages['ksh'] = array(
 	'newuserlogpage'              => 'Logbooch för nöü Metmaachere',
@@ -784,10 +815,11 @@ $messages['ku-latn'] = array(
 /** Latin (Latina)
  * @author SPQRobin
  * @author UV
+ * @author Jon Harald Søby
  */
 $messages['la'] = array(
 	'newuserlogpage'              => 'Index rationum novarum creatarum',
-	'newuserlogpagetext'          => 'Hic est index rationum novarum creatarum',
+	'newuserlogpagetext'          => 'Hic est index rationum novarum creatarum.',
 	'newuserlog-byemail'          => 'tessera missa litteris electronicis',
 	'newuserlog-create-entry'     => 'Usor novus',
 	'newuserlog-create2-entry'    => 'creavit rationem pro $1',
@@ -797,10 +829,11 @@ $messages['la'] = array(
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  * @author SPQRobin
+ * @author Jon Harald Søby
  */
 $messages['lb'] = array(
 	'newuserlogpage'              => 'Logbuch vun den neien Umeldungen',
-	'newuserlogpagetext'          => "Dëst ass d'Lescht vun de Benotzernimm déi ugeluecht goufen",
+	'newuserlogpagetext'          => "Dëst ass d'Lescht vun de Benotzernimm déi ugeluecht goufen.",
 	'newuserlog-desc'             => 'Setzt eng [[Special:Log/newusers|Lëscht vun de neie Benotzerkonten]] op [[Special:Log]] derbäi',
 	'newuserlog-byemail'          => "d'Passwuert gouf per E-Mail geschéckt",
 	'newuserlog-create-entry'     => 'Neie Benotzer',
@@ -812,10 +845,11 @@ $messages['lb'] = array(
  * @author Ooswesthoesbes
  * @author Tibor
  * @author Matthias
+ * @author Jon Harald Søby
  */
 $messages['li'] = array(
 	'newuserlogpage'              => 'Logbook nuuj gebroekers',
-	'newuserlogpagetext'          => 'Hiej ónger saton de nuuj ingesjreve gebroekers',
+	'newuserlogpagetext'          => 'Hiej ónger saton de nuuj ingesjreve gebroekers.',
 	'newuserlog-desc'             => "Voegt 'n [[Special:Log/newusers|logbook van nuje gebroejkers]] toe aan de [[special:Log|logbuuek]].",
 	'newuserlog-byemail'          => 'wachwaord is verzönje per e-mail',
 	'newuserlog-create-entry'     => "is 'ne nuje gebroeker",
@@ -834,10 +868,11 @@ $messages['lo'] = array(
 /** Lithuanian (Lietuvių)
  * @author Hugo.arg
  * @author Matasg
+ * @author Jon Harald Søby
  */
 $messages['lt'] = array(
 	'newuserlogpage'           => 'Naudotojo kūrimo registras',
-	'newuserlogpagetext'       => 'Tai yra naudotojų kūrimo registras',
+	'newuserlogpagetext'       => 'Tai yra naudotojų kūrimo registras.',
 	'newuserlog-desc'          => 'Prideda [[Special:Log/newusers|naudotojų sūkūrimo sąrašą]] į [[Special:Log]]',
 	'newuserlog-byemail'       => 'slaptažodis nusiųstas elektroniniu paštu',
 	'newuserlog-create-entry'  => 'Naujas naudotojas',
@@ -846,19 +881,21 @@ $messages['lt'] = array(
 
 /** Latvian (Latviešu)
  * @author SPQRobin
+ * @author Jon Harald Søby
  */
 $messages['lv'] = array(
 	'newuserlogpage'          => 'Jauno lietotāju reģistrs',
-	'newuserlogpagetext'      => 'Jauno lietotājvārdu reģistrs',
+	'newuserlogpagetext'      => 'Jauno lietotājvārdu reģistrs.',
 	'newuserlog-create-entry' => 'Reģistrēts lietotājvārds',
 );
 
 /** Macedonian (Македонски)
  * @author Misos
+ * @author Jon Harald Søby
  */
 $messages['mk'] = array(
 	'newuserlogpage'           => 'Листа на нови корисници',
-	'newuserlogpagetext'       => 'Ова е листа на скоро регистрирани корисници',
+	'newuserlogpagetext'       => 'Ова е листа на скоро регистрирани корисници.',
 	'newuserlog-create-entry'  => 'Нов корисник:',
 	'newuserlog-create2-entry' => 'направив налог за $1',
 );
@@ -866,6 +903,7 @@ $messages['mk'] = array(
 /** Malayalam (മലയാളം)
  * @author Shijualex
  * @author Jacob.jose
+ * @author Jon Harald Søby
  */
 $messages['ml'] = array(
 	'newuserlogpage'              => 'പുതിയ ഉപയോക്താക്കളുടെ പട്ടിക',
@@ -879,6 +917,7 @@ $messages['ml'] = array(
 
 /** Marathi (मराठी)
  * @author Kaustubh
+ * @author Jon Harald Søby
  */
 $messages['mr'] = array(
 	'newuserlogpage'              => 'नवीन सदस्यांची नोंद',
@@ -893,10 +932,11 @@ $messages['mr'] = array(
 /** Malay (Bahasa Melayu)
  * @author Aviator
  * @author Aurora
+ * @author Jon Harald Søby
  */
 $messages['ms'] = array(
 	'newuserlogpage'              => 'Log akaun baru',
-	'newuserlogpagetext'          => 'Berikut ialah log penciptaan pengguna',
+	'newuserlogpagetext'          => 'Berikut ialah log penciptaan pengguna.',
 	'newuserlog-desc'             => 'Menambahkan [[Special:Log/newusers|log pembukaan akaun]] ke dalam [[Khas:Log]]',
 	'newuserlog-byemail'          => 'kata laluan dihantar melalui e-mel',
 	'newuserlog-create-entry'     => 'Pengguna baru',
@@ -920,10 +960,12 @@ $messages['myv'] = array(
 
 /** Low German (Plattdüütsch)
  * @author Slomox
+ * @author Jon Harald Søby
  */
 $messages['nds'] = array(
 	'newuserlogpage'              => 'Ne’e-Bruker-Logbook',
 	'newuserlogpagetext'          => 'Dit is dat Logbook för nee opstellte Brukerkonten.',
+	'newuserlog-desc'             => 'Föögt en Logbook vun de [[Special:Log/newusers|nee anmellten Brukers]] to',
 	'newuserlog-byemail'          => 'Passwoord per E-Mail toschickt',
 	'newuserlog-create-entry'     => 'Nee Bruker',
 	'newuserlog-create2-entry'    => 'hett Brukerkonto opstellt för $1',
@@ -969,6 +1011,7 @@ $messages['nl'] = array(
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
  * @author Eirik
+ * @author Jon Harald Søby
  */
 $messages['nn'] = array(
 	'newuserlogpage'           => 'Brukaropprettingslogg',
@@ -984,7 +1027,7 @@ $messages['nn'] = array(
  */
 $messages['no'] = array(
 	'newuserlogpage'              => 'Brukeropprettelseslogg',
-	'newuserlogpagetext'          => 'Dette er en logg over brukeropprettelser',
+	'newuserlogpagetext'          => 'Dette er en logg over brukeropprettelser.',
 	'newuserlog-desc'             => 'Legger til en [[Special:Log/newusers|logg over nyopprettede kontoer]] på [[Special:Log]]',
 	'newuserlog-byemail'          => 'passord sendt på e-post',
 	'newuserlog-create-entry'     => 'Ny bruker',
@@ -994,10 +1037,11 @@ $messages['no'] = array(
 
 /** Occitan (Occitan)
  * @author Cedric31
+ * @author Jon Harald Søby
  */
 $messages['oc'] = array(
 	'newuserlogpage'              => 'Istoric de las creacions de comptes',
-	'newuserlogpagetext'          => "Jornal de las creacions de comptes d'utilizaires",
+	'newuserlogpagetext'          => "Jornal de las creacions de comptes d'utilizaires.",
 	'newuserlog-desc'             => 'Apondís un [[Special:Log/newusers|jornal de las creacions de comptes]] a [[Special:Log]]',
 	'newuserlog-byemail'          => 'senhal mandat per corrièr electronic',
 	'newuserlog-create-entry'     => 'Utilizaire novèl',
@@ -1028,10 +1072,11 @@ $messages['pl'] = array(
 
 /** Piedmontese (Piemontèis)
  * @author Bèrto 'd Sèra
+ * @author Jon Harald Søby
  */
 $messages['pms'] = array(
 	'newuserlogpage'           => "Registr dla creassion dj'utent",
-	'newuserlogpagetext'       => "Sossì a l'é un registr andova ch'as marco le creassion dj'utent",
+	'newuserlogpagetext'       => "Sossì a l'é un registr andova ch'as marco le creassion dj'utent.",
 	'newuserlog-create-entry'  => 'Neuv utent',
 	'newuserlog-create2-entry' => 'Cont doertà për $1',
 );
@@ -1063,10 +1108,11 @@ $messages['pt'] = array(
 
 /** Quechua (Runa Simi)
  * @author AlimanRuna
+ * @author Jon Harald Søby
  */
 $messages['qu'] = array(
 	'newuserlogpage'              => "Rakiquna kamariy hallch'a",
-	'newuserlogpagetext'          => "Kayqa ruraqkunap rakiqunankunata kamariymanta hallch'am",
+	'newuserlogpagetext'          => "Kayqa ruraqkunap rakiqunankunata kamariymanta hallch'am.",
 	'newuserlog-desc'             => "[[Special:Log/newusers|Rakiquna kamariy hallch'asqata]] yapan [[Special:Log|tukuy hallch'ayuq p'anqaman]]",
 	'newuserlog-byemail'          => 'e-chaskiwan kachasqa yaykuna rima',
 	'newuserlog-create-entry'     => 'Musuq ruraq',
@@ -1102,10 +1148,11 @@ $messages['ru'] = array(
 
 /** Yakut (Саха тыла)
  * @author HalanTul
+ * @author Jon Harald Søby
  */
 $messages['sah'] = array(
 	'newuserlogpage'           => 'Кыттааччылары бэлиэтиир сурунаал',
-	'newuserlogpagetext'       => 'Соторутааҕыта бэлиэтэммит кыттааччылар',
+	'newuserlogpagetext'       => 'Соторутааҕыта бэлиэтэммит кыттааччылар.',
 	'newuserlog-desc'          => '[[Special:Log/newusers|Саҥа ааттары тиһэр сурунаалы]] бу [[Special:Log]] сирэйгэ эбэр',
 	'newuserlog-byemail'       => 'киирии тыл эл. почтаннан ыытылынна',
 	'newuserlog-create-entry'  => 'Саҥа кыттааччы',
@@ -1114,11 +1161,11 @@ $messages['sah'] = array(
 
 /** Slovak (Slovenčina)
  * @author Helix84
- * @author Andre Engels
+ * @author Jon Harald Søby
  */
 $messages['sk'] = array(
 	'newuserlogpage'              => 'Záznam vytvorených používateľov',
-	'newuserlogpagetext'          => 'Toto je záznam naposledy vytvorených používateľských účtov',
+	'newuserlogpagetext'          => 'Toto je záznam naposledy vytvorených používateľských účtov.',
 	'newuserlog-desc'             => 'Pridáva [[Special:Log/newusers|záznam vytvorených používateľov]] na stránku [[Special:Log]]',
 	'newuserlog-byemail'          => 'heslo poslané emailom',
 	'newuserlog-create-entry'     => 'Nový používateľ',
@@ -1135,6 +1182,16 @@ $messages['sq'] = array(
 	'newuserlog-create-entry'     => 'Përdorues i ri',
 	'newuserlog-create2-entry'    => 'krijoi llogarin për përdouesin $1',
 	'newuserlog-autocreate-entry' => 'Llogaria u hap automatikisht',
+);
+
+/** Serbian (Српски / Srpski)
+ * @author Misos
+ * @author Jon Harald Søby
+ */
+$messages['sr'] = array(
+	'newuserlogpage'           => 'историја креирања корисника',
+	'newuserlogpagetext'       => 'Ово је историја скорашњих креација корисника.',
+	'newuserlog-create2-entry' => 'направио налог за $1',
 );
 
 /** Serbian Cyrillic ekavian (ћирилица)
@@ -1162,6 +1219,7 @@ $messages['sr-el'] = array(
 /** Seeltersk (Seeltersk)
  * @author Pyt
  * @author Maartenvdbent
+ * @author Jon Harald Søby
  */
 $messages['stq'] = array(
 	'newuserlogpage'           => 'Näianmäldengs-Logbouk',
@@ -1173,10 +1231,11 @@ $messages['stq'] = array(
 /** Sundanese (Basa Sunda)
  * @author Kandar
  * @author Irwangatot
+ * @author Jon Harald Søby
  */
 $messages['su'] = array(
 	'newuserlogpage'              => 'Log pamaké anyar',
-	'newuserlogpagetext'          => 'Di handap ieu béréndélan log pamaké anyar',
+	'newuserlogpagetext'          => 'Di handap ieu béréndélan log pamaké anyar.',
 	'newuserlog-desc'             => 'Nambahkeun [[Special:Log/newusers|log nyieun rekening]] ka [[Special:Log]]',
 	'newuserlog-byemail'          => 'Sandi geus dikirim maké surélék.',
 	'newuserlog-create-entry'     => 'Pamaké anyar',
@@ -1191,7 +1250,7 @@ $messages['su'] = array(
  */
 $messages['sv'] = array(
 	'newuserlogpage'              => 'Logg över nya användare',
-	'newuserlogpagetext'          => 'Detta är en logg över nyligen skapade användarkonton',
+	'newuserlogpagetext'          => 'Detta är en logg över skapade användarkonton.',
 	'newuserlog-desc'             => 'Lägger till en [[Special:Log/newusers|logg över nyskapade konton]] i [[Special:Log]]',
 	'newuserlog-byemail'          => 'lösenord skickat med e-post',
 	'newuserlog-create-entry'     => 'Ny användare',
@@ -1214,20 +1273,22 @@ $messages['te'] = array(
 
 /** Tetum (Tetun)
  * @author MF-Warburg
+ * @author Jon Harald Søby
  */
 $messages['tet'] = array(
 	'newuserlogpage'           => "Lista kria uza-na'in",
-	'newuserlogpagetext'       => "Ne'e lista kria uza-na'in",
+	'newuserlogpagetext'       => "Ne'e lista kria uza-na'in.",
 	'newuserlog-create-entry'  => "Uza-na'in foun",
 	'newuserlog-create2-entry' => "registrar uza-na'in $1",
 );
 
 /** Tajik (Cyrillic) (Тоҷикӣ/tojikī (Cyrillic))
  * @author Ibrahim
+ * @author Jon Harald Søby
  */
 $messages['tg-cyrl'] = array(
 	'newuserlogpage'           => 'Гузориши эҷоди корбар',
-	'newuserlogpagetext'       => 'Ин гузориш аз номҳои корбарии тозасохташуда аст',
+	'newuserlogpagetext'       => 'Ин гузориш аз номҳои корбарии тозасохташуда аст.',
 	'newuserlog-desc'          => '[[Special:Log/newusers|Гузорише аз ҳисобҳои корбарии эҷодшуда]] ба [[Special:Log]] илова мекунад',
 	'newuserlog-byemail'       => 'калимаи убур ба почтаи электронӣ фиристода шуд',
 	'newuserlog-create-entry'  => 'Корбари нав',
@@ -1236,10 +1297,11 @@ $messages['tg-cyrl'] = array(
 
 /** Tonga (faka-Tonga)
  * @author SPQRobin
+ * @author Jon Harald Søby
  */
 $messages['to'] = array(
 	'newuserlogpage'           => 'Tohinoa ʻo e fakatupu kau ʻetita',
-	'newuserlogpagetext'       => 'Ko e tohinoa ʻeni ʻo e fakatupu kau ʻetita',
+	'newuserlogpagetext'       => 'Ko e tohinoa ʻeni ʻo e fakatupu kau ʻetita.',
 	'newuserlog-create-entry'  => 'ʻEtita foʻou',
 	'newuserlog-create2-entry' => 'Naʻe fakatupu ʻa e tohi-kau-ki-ai maʻa $1',
 );
@@ -1248,10 +1310,11 @@ $messages['to'] = array(
  * @author Uğur Başak
  * @author Srhat
  * @author Karduelis
+ * @author Jon Harald Søby
  */
 $messages['tr'] = array(
 	'newuserlogpage'              => 'Yeni kullanıcı kayıtları',
-	'newuserlogpagetext'          => 'En son kaydolan kullanıcı kayıtları',
+	'newuserlogpagetext'          => 'En son kaydolan kullanıcı kayıtları.',
 	'newuserlog-byemail'          => 'eposta yoluyla şifre gönderilmiştir',
 	'newuserlog-create-entry'     => 'Yeni kullanıcı',
 	'newuserlog-create2-entry'    => '$1 yeni hesap oluşturdu',
@@ -1274,10 +1337,11 @@ $messages['ty'] = array(
 
 /** Ukrainian (Українська)
  * @author Ahonc
+ * @author Jon Harald Søby
  */
 $messages['uk'] = array(
 	'newuserlogpage'              => 'Журнал нових користувачів',
-	'newuserlogpagetext'          => 'Список нещодавно зареєстрованих користувачів',
+	'newuserlogpagetext'          => 'Список нещодавно зареєстрованих користувачів.',
 	'newuserlog-desc'             => 'Додає [[Special:Log/newusers|журнал нових користувачів]] на сторінку [[Special:Log]]',
 	'newuserlog-byemail'          => 'пароль надісланий електронною поштою',
 	'newuserlog-create-entry'     => 'Новий користувач',
@@ -1294,10 +1358,11 @@ $messages['ur'] = array(
 
 /** Vèneto (Vèneto)
  * @author Candalua
+ * @author Jon Harald Søby
  */
 $messages['vec'] = array(
 	'newuserlogpage'              => 'Registro utenti novi',
-	'newuserlogpagetext'          => 'Sto qua el xè el registro dei novi utenti registrai',
+	'newuserlogpagetext'          => 'Sto qua el xè el registro dei novi utenti registrai.',
 	'newuserlog-desc'             => 'Zonta un [[Special:Log/newusers|registro dei utenti creà]] a la [[Special:Log|pagina dei registri]]',
 	'newuserlog-byemail'          => 'password spedìa par e-mail',
 	'newuserlog-create-entry'     => 'se gà registrà',
@@ -1308,10 +1373,11 @@ $messages['vec'] = array(
 /** Vietnamese (Tiếng Việt)
  * @author Vinhtantran
  * @author Minh Nguyen
+ * @author Jon Harald Søby
  */
 $messages['vi'] = array(
 	'newuserlogpage'              => 'Nhật trình mở tài khoản',
-	'newuserlogpagetext'          => 'Đây là danh sách những tài khoản thành viên mở lên gần đây',
+	'newuserlogpagetext'          => 'Đây là danh sách những tài khoản thành viên mở lên gần đây.',
 	'newuserlog-desc'             => 'Thêm một [[Special:Log/newusers|nhật trình tạo tài khoản]] vào [[Special:Log|danh sách nhật trình]]',
 	'newuserlog-byemail'          => 'gửi mật khẩu qua thư điện tử',
 	'newuserlog-create-entry'     => 'Tài khoản mới',
@@ -1330,10 +1396,11 @@ $messages['vls'] = array(
 /** Volapük (Volapük)
  * @author Smeira
  * @author Malafaya
+ * @author Jon Harald Søby
  */
 $messages['vo'] = array(
 	'newuserlogpage'           => 'Lised gebanijafamas',
-	'newuserlogpagetext'       => 'Is palisedons jafams gebanas nulik',
+	'newuserlogpagetext'       => 'Is palisedons jafams gebanas nulik.',
 	'newuserlog-byemail'       => 'letavöd pesedon me pot leäktronik',
 	'newuserlog-create-entry'  => 'Geban nulik',
 	'newuserlog-create2-entry' => 'ejafon kali gebane: $1',
@@ -1341,6 +1408,7 @@ $messages['vo'] = array(
 
 /** Walloon (Walon)
  * @author Srtxg
+ * @author Jon Harald Søby
  */
 $messages['wa'] = array(
 	'newuserlogpage'           => 'Djournå des noveas uzeus',
@@ -1351,6 +1419,7 @@ $messages['wa'] = array(
 
 /** Yiddish (ייִדיש)
  * @author פוילישער
+ * @author Jon Harald Søby
  */
 $messages['yi'] = array(
 	'newuserlogpage'           => 'נייע באַניצערס לאָג-בוך',

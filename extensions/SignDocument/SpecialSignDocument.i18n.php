@@ -798,6 +798,7 @@ $messages['is'] = array(
  */
 $messages['it'] = array(
 	'sign-viewfield-ip'      => 'Indirizzo IP',
+	'sign-viewfield-email'   => 'Indirizzo e-mail',
 	'sign-viewfield-options' => 'Opzioni',
 );
 

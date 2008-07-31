@@ -46,6 +46,13 @@ $messages['hsb'] = array(
 	'randomimage-desc' => 'Přidawa tafličku <tt>&lt;randomimage /&gt;</tt> za zwobraznjenje připadneho wobraza',
 );
 
+/** Italian (Italiano)
+ * @author Darth Kule
+ */
+$messages['it'] = array(
+	'randomimage-desc' => 'Fornisce un raccoglitore di file casuali utilizzando il tag <tt>&lt;randomimage /&gt;</tt>',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */

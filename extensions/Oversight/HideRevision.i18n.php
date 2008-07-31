@@ -498,7 +498,7 @@ $messages['eo'] = array(
 	'right-oversight'             => 'Rigardi antaŭe kaŝitan revizion',
 	'right-hiderevision'          => 'Kontrolu kaj restarigu reviziojn kaŝitajn de administrantoj',
 	'hiderevision-prompt'         => 'Nombro de revizio por forigi:',
-	'hiderevision-continue'       => 'Kontinui',
+	'hiderevision-continue'       => 'Daŭrigi',
 	'hiderevision-text'           => "Ĉi tiu ago '''nur''' estu uzata por la jenaj kazoj:
 * Netaŭga persona informo
 *: ''hejmaj adresoj kaj nombroj de telefono, personaj ŝtataj nombroj de identigo, ktp''
@@ -618,6 +618,7 @@ $messages['fa'] = array(
  * @author Crt
  * @author Nike
  * @author Cimon Avaro
+ * @author Agony
  */
 $messages['fi'] = array(
 	'hiderevision'                => 'Versioiden pysyvä piilottaminen',
@@ -647,6 +648,7 @@ Poistetut kohteet eivät näy kenellekään web-sivuston kautta, mutta kaikki po
 	'hiderevision-error-delete'   => 'Arkistointi epäonnistui. Kenties se on jo aiemmin poistettu?',
 	'hiderevision-archive-status' => 'Poistettu versio $1: $2',
 	'oversight-log-hiderev'       => 'poisti muokkauksen sivulta $1',
+	'oversight'                   => 'Häivytys',
 	'oversight-view'              => 'tiedot',
 	'oversight-hidden'            => 'Piilotettu versio',
 	'oversight-header'            => 'Alla on lista pysyvästi piilotetuista versioista, jotka eivät näy julkisesti. Näiden tietojen julkaiseminen voi johtaa tämän työkalun käyttöoikeuksien menetykseen.',
@@ -1516,6 +1518,8 @@ Annulléiert dës Ännerung d'éischt.",
 	'oversight-difference'        => '(Ënnerscheed zu der viregter läschter Versioun)',
 	'oversight-prev'              => 'Lescht vireg Versioun',
 	'oversight-hidden'            => 'Verstoppte Versioun',
+	'oversight-header'            => "Hei ass eng Lëscht vun de Versiounen déi permanent virun der Ëffentlechkeet verstoppt goufen.
+Verbreedung vun dësen Informatiounen kann zum definitve Verloscht vun den ''Oversight''-Rechter féieren.",
 );
 
 /** Limburgish (Limburgs)
@@ -2405,7 +2409,7 @@ $messages['sv'] = array(
 	'hiderevision'                => 'Dölj sidversioner permanent',
 	'hiderevision-desc'           => 'Döljer enskilda sidversioner från alla användare, t.ex. av juridiska skäl',
 	'group-oversight'             => 'Översynare',
-	'group-oversight-member'      => 'Översynare',
+	'group-oversight-member'      => 'översynare',
 	'grouppage-oversight'         => '{{ns:project}}:Översyn',
 	'right-oversight'             => 'Visa tidigare dolda versioner',
 	'right-hiderevision'          => 'Se och återställa sidversioner som dolts för administratörer',

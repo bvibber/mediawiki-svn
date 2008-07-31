@@ -345,7 +345,7 @@ $messages['eo'] = array(
 <nowiki>{{</nowiki>CURRENTDAY}}&mdash;fakte preskaŭ iujn ajn en duoblaj krampoj.
 Ĝi faras tion per vokado de la koncerna sintaksa kodpeco de MediaWiki mem.',
 	'expand_templates_title'           => 'Kunteksta titolo, por {{PAGENAME}}, ktp.:',
-	'expand_templates_input'           => 'Enigu tekston:',
+	'expand_templates_input'           => 'Enigita teksto:',
 	'expand_templates_output'          => 'Rezulto',
 	'expand_templates_xml_output'      => 'XML-eligo',
 	'expand_templates_ok'              => 'Ek!',
@@ -407,9 +407,11 @@ $messages['fa'] = array(
 /** Finnish (Suomi)
  * @author Nike
  * @author Crt
+ * @author Agony
  */
 $messages['fi'] = array(
 	'expandtemplates'                  => 'Mallineiden laajennus',
+	'expandtemplates-desc'             => '[[Toiminnot:Mallineiden laajennus|Laajentaa mallineet, jäsentäjän funktiot sekä muuttujat]] wikitekstiksi sekä näyttää esikatseluversion laajennetusta sivusta',
 	'expand_templates_intro'           => 'Tämä toimintosivu ottaa syötteekseen tekstiä ja laajentaa kaikki mallineet rekursiivisesti sekä jäsenninfunktiot, kuten <nowiki>{{</nowiki>#if:...}}, ja -muuttujat, kuten <nowiki>{{</nowiki>CURRENTDAY}} &mdash; toisin sanoen melkein kaiken, joka on kaksoisaaltosulkeiden sisällä.',
 	'expand_templates_title'           => 'Otsikko (esimerkiksi muuttujaa {{PAGENAME}} varten)',
 	'expand_templates_input'           => 'Teksti',
@@ -1101,6 +1103,13 @@ $messages['oc'] = array(
  */
 $messages['os'] = array(
 	'expand_templates_ok' => 'Афтæ уæд!',
+);
+
+/** Punjabi (ਪੰਜਾਬੀ)
+ * @author Gman124
+ */
+$messages['pa'] = array(
+	'expand_templates_preview' => 'ਝਲਕ',
 );
 
 /** Polish (Polski)

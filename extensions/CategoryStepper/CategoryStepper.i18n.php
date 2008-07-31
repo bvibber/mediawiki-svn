@@ -71,6 +71,14 @@ $messages['cs'] = array(
 	'categorystepper-start' => '(začátek kategorie)',
 );
 
+/** German (Deutsch)
+ * @author Revolus
+ */
+$messages['de'] = array(
+	'categorystepper-end'   => '(Ende der Kategorie)',
+	'categorystepper-start' => '(Anfang der Kategorie)',
+);
+
 /** Lower Sorbian (Dolnoserbski)
  * @author Michawiki
  */

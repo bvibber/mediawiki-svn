@@ -147,6 +147,24 @@ $messages['da'] = array(
 	'spamregex-text' => '(Tekst)',
 );
 
+/** German (Deutsch)
+ * @author Revolus
+ */
+$messages['de'] = array(
+	'spamregex'                      => 'Spam regex',
+	'spamregex-desc'                 => '[[Special:SpamRegex|Filtere]] ungewollte Phrasen, basierend auf regulären Ausdrücken, aus geänderten Seiten aus',
+	'spamregex-error-unblocking'     => 'Konnte „$1“ nicht freigeben. Wahrscheinlich existiert kein solches Muster.',
+	'spamregex-summary'              => 'Der Text wurde in der Zusammenfassung gefunden.',
+	'spamregex-page-title'           => 'Spam regex filtert ungewollte Ausdrücke',
+	'spamregex-currently-blocked'    => "'''Derzeit gesperrte Phrasen:'''",
+	'spamregex-move'                 => 'Die Zusammenfassung, die du angabst, enthält eine gesperrte Phrase.',
+	'spamregex-no-currently-blocked' => "'''Es gibt derzeit keine gesperrten Phrasen.'''",
+	'spamregex-log-1'                => "* '''$1''' $2 ([{{SERVER}}$3&text=$4 entfernen]), hinzugefügt von",
+	'spamregex-block-submit'         => 'Diese&nbsp;Phrase&nbsp;sperren',
+	'spamregex-text'                 => '(Text)',
+	'spamregex-summary-log'          => '(Beschreibung)',
+);
+
 /** Greek (Ελληνικά)
  * @author Consta
  */

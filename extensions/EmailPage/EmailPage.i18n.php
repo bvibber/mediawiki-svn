@@ -77,6 +77,14 @@ $messages['bg'] = array(
 	'ea-selectcss'        => 'Избиране на CSS стил',
 );
 
+/** German (Deutsch)
+ * @author Leithian
+ */
+$messages['de'] = array(
+	'ea-listrecipients' => '=== {{PLURAL:$1|Empfänger|$1 Empfänger}} ===',
+	'ea-send'           => 'Senden!',
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */

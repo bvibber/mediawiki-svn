@@ -215,7 +215,7 @@ $messages['ar'] = array(
 	'configure-no-diff'                   => 'لا توجد تغييرات بين النسخ المختارة.',
 	'configure-no-directory'              => 'المجلد المستخدم لتخزين الإعدادات، <tt>$1</tt>، غير موجود.
 من فضلك قم بإنشائه أو غيره لاستخدام هذا الامتداد.',
-	'configure-no-old'                    => 'لا توجد نسخة قديمة متوفرة من الإعدادات',
+	'configure-no-old'                    => 'لا توجد نسخة قديمة متوفرة من الإعدادات.',
 	'configure-no-setup'                  => 'عليك أن تستدعي <code>efConfigureSetup()</code> بشكل صريح في ملف LocalSettings.php الخاص بك لاستخدام هذا الامتداد.',
 	'configure-no-transwiki'              => 'أنت غير مسموح لك بتغيير الإعدادات في الويكيات الأخرى',
 	'configure-old'                       => 'النسخ القديمة',
@@ -304,13 +304,16 @@ $messages['ar'] = array(
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
+ * @author Cesco
  */
 $messages['be-tarask'] = array(
+	'configure-no-old'           => 'Няма даступнай старай вэрсіі канфігурацыі.',
 	'configure-section-category' => 'Катэгорыі',
 );
 
 /** Bulgarian (Български)
  * @author DCLXVI
+ * @author Jon Harald Søby
  */
 $messages['bg'] = array(
 	'configure'                        => 'Конфигуриране на уикито',
@@ -338,7 +341,7 @@ $messages['bg'] = array(
 	'configure-no-diff'                => 'Няма промени в избраните версии.',
 	'configure-no-directory'           => 'Използваната за съхранение на настройките директория, <tt>$1</tt>, не съществува.
 Необходимо е тя да бъде създадена или да бъде променена, за да може да се използва разширението.',
-	'configure-no-old'                 => 'Няма налична стара версия на настройките',
+	'configure-no-old'                 => 'Няма налична стара версия на настройките.',
 	'configure-no-setup'               => 'За използване на това разширение е необходимо специално извикване на <code>efConfigureSetup()</code> в LocalSettings.php',
 	'configure-no-transwiki'           => 'Нямате права да променяте настройките в други уикита',
 	'configure-old'                    => 'Стари версии',
@@ -428,7 +431,7 @@ Prosím, umožněte do něho zápis, aby jste mohli používat toto rozšířen�
 	'configure-js-remove-row'             => 'Smazat tuto položku',
 	'configure-no-directory'              => 'Adresář pro uložení nastavení (<tt>$1</tt>) neexistuje.
 Abyste mohli používat toto rozšíření, vytvořte ho nebo změňte konfiguraci.',
-	'configure-no-old'                    => 'Není dostupná žádná stará verze konfigurace',
+	'configure-no-old'                    => 'Není dostupná žádná stará verze konfigurace.',
 	'configure-no-setup'                  => 'Abyste mohli používat toto rozšíření, musíte ve svém <tt>LocalSettings.php</tt> explicitně zavolat <code>efConfigureSetup()</code>.',
 	'configure-no-transwiki'              => 'Nemáte oprávnění měnit nastavení na jiných wiki',
 	'configure-old-versions'              => 'Seznam starých verzí konfigurace:',
@@ -501,6 +504,7 @@ $messages['cu'] = array(
 /** German (Deutsch)
  * @author Raimond Spekking
  * @author Leithian
+ * @author Revolus
  */
 $messages['de'] = array(
 	'configure'                        => 'Konfiguration dieses Wikis',
@@ -509,6 +513,8 @@ $messages['de'] = array(
 	'configure-desc-key'               => 'Schlüssel',
 	'configure-desc-ns'                => 'Namensräume',
 	'configure-desc-val'               => 'Wert',
+	'configure-ext-schemachange'       => "'''Warnung:''' diese Erweiterung benötigt ein Datenbankupdate um korrekt zu funktionieren!",
+	'configure-ext-settings'           => 'Einstellungen',
 	'configure-summary'                => 'Diese Spezialseite ermöglicht dir die Konfiguration dieses Wikis, siehe [http://www.mediawiki.org/wiki/Manual:Configuration_settings Konfigurationsoptionen] für weitere Information.',
 	'configure-btn-save'               => 'Einstellungen speichern',
 	'configure-directory-not-writable' => 'Das Verzeichnis, in dem die Konfigurationen gespeichert werden, <tt>$1</tt>, ist nicht beschreibbar. Bitte mache es für PHP beschreibbar, damit diese Erweiterung genutzt werden kann.',
@@ -523,6 +529,7 @@ $messages['de'] = array(
 	'configure-no-old'                 => 'Es ist keine alte Version der Konfiguration vorhanden',
 	'configure-no-setup'               => '<code>efConfigureSetup()</code> muss explizit in deiner LocalSettings.php aufgerufen werden, um diese Erweiterung nutzen zu können.',
 	'configure-no-transwiki'           => 'Du hast keine Berechtigung, Einstellungen in anderen Wikis zu ändern',
+	'configure-old'                    => 'Alte Versionen',
 	'configure-old-versions'           => 'Liste der alten Versionen der Konfiguration:',
 	'configure-old-not-available'      => 'Die alte Version an Einstellungen, die du angefragt hast, $1, ist nicht vorhanden',
 	'configure-saved'                  => 'Die Konfiguration wurde gespeichert',
@@ -537,6 +544,7 @@ $messages['de'] = array(
 	'configure-section-debug'          => 'Debugging',
 	'configure-section-profiling'      => 'Profiling',
 	'configure-section-site'           => 'Site-Anpassung',
+	'configure-section-css-js'         => 'CSS und JavaScript',
 	'configure-section-namespaces'     => 'Namensräume',
 	'configure-section-skin'           => 'Skins',
 	'configure-section-category'       => 'Kategorien',
@@ -565,9 +573,14 @@ $messages['de'] = array(
 	'configure-section-copyright'      => 'Copyright',
 	'configure-section-htcp'           => 'HTCP multicast',
 	'configure-section-misc'           => 'Verschiedenes',
+	'configure-section-mw-extensions'  => 'MediaWiki-Erweiterung',
+	'configure-select-wiki-submit'     => 'Validieren',
 	'configure-setting-not-available'  => 'Diese Einstellung ist in dieser Version von MediaWiki nicht verfügbar',
+	'configure-view-not-allowed'       => 'Es ist dir nicht gestattet diese Einstellung einzusehen',
+	'extensions'                       => 'Erweiterungen konfigurieren',
 	'right-configure'                  => 'Wiki einrichten',
 	'right-configure-all'              => 'Alle Einstellungen im Wiki vornehmen',
+	'right-extensions'                 => 'Erweiterungen konfigurieren',
 );
 
 /** Greek (Ελληνικά)
@@ -581,6 +594,7 @@ $messages['el'] = array(
 /** Esperanto (Esperanto)
  * @author Yekrats
  * @author Amikeco
+ * @author Jon Harald Søby
  */
 $messages['eo'] = array(
 	'configure'                       => 'Agordu la vikion',
@@ -601,7 +615,7 @@ $messages['eo'] = array(
 	'configure-js-prompt-group'       => 'Enigu la nomon de la nova grupo:',
 	'configure-js-remove'             => 'Forigi',
 	'configure-js-remove-row'         => 'Forigi ĉi tiun enigon',
-	'configure-no-old'                => 'Neniu malnova versio de la konfiguro havebla',
+	'configure-no-old'                => 'Neniu malnova versio de la konfiguro havebla.',
 	'configure-no-transwiki'          => 'Vi ne estas permesita ŝanĝi konfigurojn en aliaj vikioj',
 	'configure-old'                   => 'Malnovaj versioj',
 	'configure-old-versions'          => 'Listo de malnovaj versioj de la konfiguro:',
@@ -672,6 +686,7 @@ $messages['eu'] = array(
  * @author Grondin
  * @author Verdy p
  * @author Louperivois
+ * @author Jon Harald Søby
  */
 $messages['fr'] = array(
 	'configure'                           => 'Configurer le wiki',
@@ -791,6 +806,7 @@ $messages['fy'] = array(
 
 /** Galician (Galego)
  * @author Toliño
+ * @author Jon Harald Søby
  */
 $messages['gl'] = array(
 	'configure'                           => 'Configurar o wiki',
@@ -820,7 +836,7 @@ Por favor, faga que se poida escribir nel mediante PHP para usar esta extensión
 	'configure-no-diff'                   => 'Non se produciron cambios entre as versións seleccionadas.',
 	'configure-no-directory'              => 'O directorio usado para almacenar as configuracións, <tt>$1</tt>, non existe.
 Por favor, créeo ou tróqueo para usar esta extensión.',
-	'configure-no-old'                    => 'Non hai dispoñible ningunha versión vella da configuración',
+	'configure-no-old'                    => 'Non hai dispoñible ningunha versión vella da configuración.',
 	'configure-no-setup'                  => 'Ten que chamar explicitamente <code>efConfigureSetup()</code> no seu ficheiro LocalSettings.php para usar esta extensión.',
 	'configure-no-transwiki'              => 'Non ten permiso para cambiar as configuracións noutros wikis',
 	'configure-old'                       => 'Versións vellas',
@@ -1005,6 +1021,104 @@ $messages['is'] = array(
 	'configure-section-namespaces' => 'Nafnrými',
 );
 
+/** Italian (Italiano)
+ * @author Darth Kule
+ */
+$messages['it'] = array(
+	'configure'                           => 'Configura la wiki',
+	'configure-desc'                      => "Permette agli utenti autorizzati di [[Special:Configure|configurare]] la wiki con un'interfaccia web-based",
+	'configure-desc-group'                => 'Gruppi',
+	'configure-desc-key'                  => 'Chiave',
+	'configure-desc-ns'                   => 'Namespace',
+	'configure-desc-val'                  => 'Valore',
+	'configure-edit-core'                 => 'MediaWiki',
+	'configure-edit-ext'                  => 'Estensioni',
+	'configure-ext-doc'                   => 'Leggi la documentazione in linea',
+	'configure-ext-schemachange'          => "'''Attenzione:''' questa estensione richiede un aggiornamento del database per funzionare correttamente!",
+	'configure-ext-settings'              => 'Impostazioni',
+	'configure-ext-use-extension'         => 'Usa questa estensione',
+	'configure-ext-use'                   => 'Usa',
+	'configure-summary'                   => 'Questa pagina speciale permette di configurare questa wiki, leggi le [http://www.mediawiki.org/wiki/Manual:Configuration_settings impostazioni di configurazione] per maggiori informazioni.',
+	'configure-btn-save'                  => 'Salva impostazioni',
+	'configure-directory-not-writable'    => 'La directory usata per memorizzare le impostazioni, <tt>$1</tt>, non può essere scritta.
+Fai in modo che possa essere scritta da PHP per poter usare questa estensione.',
+	'configure-edit-old'                  => 'Attenzione: stai modificando una versione <strong>vecchia</strong> della configurazione.',
+	'configure-error'                     => 'La configurazione potrebbe non essere salvata',
+	'configure-js-add'                    => 'Aggiungi un nuovo valore',
+	'configure-js-group-exists'           => 'Errore: il gruppo esiste già.',
+	'configure-js-prompt-group'           => 'Inserisci il nome del nuovo gruppo:',
+	'configure-js-remove'                 => 'Cancella',
+	'configure-js-remove-row'             => 'Cancella questo valore',
+	'configure-no-diff'                   => 'Non ci sono cambiamenti fra le versioni selezionate.',
+	'configure-no-directory'              => 'La directory usata per memorizzare le impostazioni, <tt>$1</tt>, non esiste.
+Creala o cambiala per poter usare questa estensione.',
+	'configure-no-old'                    => 'Nessuna vecchia versione della configurazione disponibile.',
+	'configure-no-transwiki'              => 'Non sei autorizzato a cambiare le impostazioni in altre wiki',
+	'configure-old'                       => 'Versioni vecchie',
+	'configure-old-versions'              => 'Elenco delle vecchie versioni della configurazione:',
+	'configure-old-not-available'         => 'La vecchia versione delle impostazioni che hai richiesto, $1, non è disponibile.',
+	'configure-saved'                     => 'La configurazione è stata salvata',
+	'configure-section-general'           => 'Impostazioni generali',
+	'configure-section-paths'             => 'Percorsi',
+	'configure-section-db'                => 'Database',
+	'configure-section-db-notallowed'     => 'Non sei autorizzato a cambiare le impostazioni del database.',
+	'configure-section-email'             => 'Indirizzo e-mail',
+	'configure-section-enotif'            => 'Notificazione e-mail',
+	'configure-section-localization'      => 'Localizzazione',
+	'configure-section-timezone'          => 'Fuso orario',
+	'configure-section-zh-conversion'     => 'Conversione cinese',
+	'configure-section-debug'             => 'Debugging',
+	'configure-section-site'              => 'Personalizzazione sito',
+	'configure-section-css-js'            => 'CSS e JavaScript',
+	'configure-section-namespaces'        => 'Namespace',
+	'configure-section-stats'             => 'Statistiche sito',
+	'configure-section-skin'              => 'Skin',
+	'configure-section-category'          => 'Categorie',
+	'configure-section-cache'             => 'Cache',
+	'configure-section-access'            => 'Accesso',
+	'configure-section-groups'            => 'Gruppi',
+	'configure-section-groups-notallowed' => 'Non sei autorizzato a modificare le impostazioni di gruppo.',
+	'configure-section-block'             => 'Blocchi',
+	'configure-section-rates'             => 'Limiti di azione',
+	'configure-section-proxy'             => 'Proxy',
+	'configure-section-squid'             => 'Squid',
+	'configure-section-cookie'            => 'Cookie',
+	'configure-section-reduction'         => 'Riduzione',
+	'configure-section-upload'            => 'Carica',
+	'configure-section-images'            => 'Immagini',
+	'configure-section-antivirus'         => 'Antivirus',
+	'configure-section-parser'            => 'Parser',
+	'configure-section-specialpages'      => 'Pagine speciali',
+	'configure-section-recentchanges'     => 'Ultime modifiche',
+	'configure-section-users'             => 'Utenti',
+	'configure-section-feed'              => 'Feed',
+	'configure-section-job'               => 'Lavori',
+	'configure-section-extension'         => 'Estensioni',
+	'configure-section-search'            => 'Ricerca',
+	'configure-section-copyright'         => 'Copyright',
+	'configure-section-htcp'              => 'HTCP multicast',
+	'configure-section-misc'              => 'Varie',
+	'configure-section-mw-extensions'     => 'Estensioni MediaWiki',
+	'configure-select-wiki'               => 'Selezione wiki',
+	'configure-select-wiki-available'     => 'Valori autorizzati: $1',
+	'configure-select-wiki-desc'          => 'Seleziona la wiki che intendi configurare.',
+	'configure-setting-not-available'     => "L'impostazione non è disponibile in questa versione di MediaWiki",
+	'configure-transwiki-not-in-range'    => 'La wiki richiesta, $1, non è fra i valori permessi ($2).',
+	'configure-view'                      => 'Vedi',
+	'configure-view-not-allowed'          => 'Non sei autorizzato a vedere questa impostazione',
+	'extensions'                          => 'Configura le estensioni',
+	'right-configure'                     => 'Configura la wiki',
+	'right-configure-all'                 => 'Configura tutte le impostazioni della wiki',
+	'right-configure-interwiki'           => 'Configura le impostazioni delle altre wiki',
+	'right-extensions'                    => 'Configura le estensioni',
+	'right-extensions-all'                => 'Configurazioni avanzate delle estensioni',
+	'right-extensions-interwiki'          => 'Configura le estensioni delle altre wiki',
+	'right-viewconfig'                    => 'Visualizza le configurazioni della wiki',
+	'right-viewconfig-all'                => 'Visualizza tutte le configurazioni della wiki',
+	'right-viewconfig-interwiki'          => 'Visualizza le configurazioni delle altre wiki',
+	'viewconfig'                          => 'Visualizza le configurazioni della wiki',
+);
+
 /** Japanese (日本語)
  * @author Broad-Sky
  */
@@ -1108,6 +1222,7 @@ $messages['ksh'] = array(
 
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
+ * @author Jon Harald Søby
  */
 $messages['lb'] = array(
 	'configure'                           => "D'Wiki configuréieren",
@@ -1135,7 +1250,7 @@ $messages['lb'] = array(
 	'configure-no-directory'              => "De Repertoire dee benotzt gëtt fir d'Configuratioun ze späicheren, <tt>$1</tt>, gëtt et net.
 
 Leet e w.e.g un oder ännert en esou datt dës Erweiderung funktionéiert.",
-	'configure-no-old'                    => 'Et gëtt keng al Versioun vun der Configuratioun',
+	'configure-no-old'                    => 'Et gëtt keng al Versioun vun der Configuratioun.',
 	'configure-no-transwiki'              => "Dir däerft d'Configuratioun an anere Wikien net änneren",
 	'configure-old'                       => 'Al Versiounen',
 	'configure-old-versions'              => 'Lëscht vun den ale Versioune vun der Configuratioun:',
@@ -1425,7 +1540,7 @@ Zorg er alstublieft voor dat PHP in de map kan schrijven om deze extensie te geb
 	'configure-no-diff'                   => 'Er is geen verschil tussen de aangegeven versies.',
 	'configure-no-directory'              => 'De map waarin de instellingen moeten worden opgeslagen (<tt>$1</tt>) bestaat niet.
 Maak die map alstublieft aan, of verander de instelling voordat u deze extensie kunt gebruiken.',
-	'configure-no-old'                    => 'Er zijn geen oude versies van de instellingen',
+	'configure-no-old'                    => 'Er zijn geen oude versies van de instellingen.',
 	'configure-no-setup'                  => 'Om deze extensie te gebruiken, moet u <code>efConfigureSetup()</code> expliciet aanroepen in het bestand LocalSettings.php.',
 	'configure-no-transwiki'              => "U mag geen instellingen in andere wiki's veranderen",
 	'configure-old'                       => 'Oude versies',
@@ -1612,6 +1727,7 @@ Opprett den eller endre den for å bruke denne utvidelsen.',
 
 /** Occitan (Occitan)
  * @author Cedric31
+ * @author Jon Harald Søby
  */
 $messages['oc'] = array(
 	'configure'                           => 'Configurar lo wiki',
@@ -1730,6 +1846,7 @@ $messages['os'] = array(
  * @author McMonster
  * @author Wpedzich
  * @author Maikking
+ * @author Jon Harald Søby
  */
 $messages['pl'] = array(
 	'configure'                           => 'Konfiguracja wiki',
@@ -1759,7 +1876,7 @@ Ustaw uprawnienia do zapisu dla PHP, jeśli chcesz korzystać z tego rozszerzeni
 	'configure-no-diff'                   => 'Pomiędzy wybranymi wersjami nie nastąpiły żadne zmiany.',
 	'configure-no-directory'              => 'Katalog <tt>$1</tt> wykorzystywany do przetrzymywania konfiguracji nie istnieje.
 Utwórz katalog lub wybierz inny, jeśli chcesz korzystać z tego rozszerzenia.',
-	'configure-no-old'                    => 'Brak dostępnych starych wersji konfiguracji',
+	'configure-no-old'                    => 'Brak dostępnych starych wersji konfiguracji.',
 	'configure-no-setup'                  => 'Wstaw jawne wywołanie funkcji <code>efConfigureSetup()</code> w pliku LocalSettings.php by korzystać z tego rozszerzenia.',
 	'configure-no-transwiki'              => 'Nie masz dostępu do zmian ustawień na innych wiki',
 	'configure-old'                       => 'Stare wersje',
@@ -1858,6 +1975,7 @@ $messages['ps'] = array(
 /** Portuguese (Português)
  * @author Malafaya
  * @author Lijealso
+ * @author Jon Harald Søby
  */
 $messages['pt'] = array(
 	'configure'                        => 'Configurar o wiki',
@@ -1870,7 +1988,7 @@ Por favor, torne possível a sua escrita por PHP para usar esta extensão.',
 	'configure-error'                  => 'A configuração não pôde ser gravada',
 	'configure-no-directory'           => 'A directoria usada para guardar a parametrização, <tt>$1</tt>, não existe.
 Por favor, crie-a ou altere-a para usar esta extensão.',
-	'configure-no-old'                 => 'Nenhuma versão antiga da configuração disponível',
+	'configure-no-old'                 => 'Nenhuma versão antiga da configuração disponível.',
 	'configure-no-setup'               => 'Você tem de chamar <code>efConfigureSetup()</code> explicitamente no seu ficheiro LocalSettings.php para usar esta extensão.',
 	'configure-no-transwiki'           => 'Você não está autorizado a alterar os parâmetros noutros wikis',
 	'configure-old-versions'           => 'Lista de versões antigas da configuração:',
@@ -1981,6 +2099,7 @@ $messages['ro'] = array(
  * @author Александр Сигачёв
  * @author Flrn
  * @author Innv
+ * @author Jon Harald Søby
  */
 $messages['ru'] = array(
 	'configure'                           => 'Настройка вики',
@@ -2004,7 +2123,7 @@ $messages['ru'] = array(
 	'configure-js-remove-row'             => 'Удалить эту запись',
 	'configure-no-directory'              => 'Директория <tt>$1</tt>, используемая для хранения настроек, не существует.
 Пожалуйста, создайте её или используйте другую директорию.',
-	'configure-no-old'                    => 'Нет старых версий настроек',
+	'configure-no-old'                    => 'Нет старых версий настроек.',
 	'configure-no-setup'                  => 'Вы должны явно вызывать <code>efConfigureSetup()</code> в вашем файле LocalSettings.php, чтобы использовать это расширение.',
 	'configure-no-transwiki'              => 'Вам не разрешено изменять настройки в других виках',
 	'configure-old-versions'              => 'Список старых версий настроек:',
@@ -2068,6 +2187,7 @@ $messages['ru'] = array(
 
 /** Slovak (Slovenčina)
  * @author Helix84
+ * @author Jon Harald Søby
  */
 $messages['sk'] = array(
 	'configure'                           => 'Konfigurácia wiki',
@@ -2096,7 +2216,7 @@ $messages['sk'] = array(
 	'configure-no-diff'                   => 'Medzi zvolenými revíziami nenastali zmeny.',
 	'configure-no-directory'              => 'Adresár na uloženie nastavení, <tt>$1</tt>, neexistuje.
 Aby ste mohli používať toto rozšírenie, vytvorte ho alebo ho zmeňte.',
-	'configure-no-old'                    => 'Nie je dostupná žiadna stará verzia konfigurácie',
+	'configure-no-old'                    => 'Nie je dostupná žiadna stará verzia konfigurácie.',
 	'configure-no-setup'                  => 'Musíte explicitne zavolať <code>efConfigureSetup()</code> vo svojom súbore LocalSettings.php, aby ste mohli používať toto rozšírenie.',
 	'configure-no-transwiki'              => 'Nemáte oprávnenie meniť nastavenia na iných wiki',
 	'configure-old'                       => 'Staré verzie',
@@ -2402,6 +2522,7 @@ $messages['tr'] = array(
 /** Ukrainian (Українська)
  * @author AS
  * @author Ahonc
+ * @author Jon Harald Søby
  */
 $messages['uk'] = array(
 	'configure'              => 'Конфігурувати вікі',
@@ -2412,7 +2533,7 @@ $messages['uk'] = array(
 	'configure-error'        => 'Конфігурація не може бути збережена',
 	'configure-no-directory' => "Директорія для запам'ятовування налаштувань <tt>$1</tt> не існує.
 Будь ласка, створіть або змініть її, щоб використати це розширення.",
-	'configure-no-old'       => 'Немає доступної старої версії конфігурації',
+	'configure-no-old'       => 'Немає доступної старої версії конфігурації.',
 	'configure-no-setup'     => 'Ви повинні явно викликати <code>efConfigureSetup()</code> у вашому LocalSettings.php файлі, щоб використати це розширення.',
 	'configure-no-transwiki' => 'Вам не дозволено змінювати налаштування в інших вікі',
 );
@@ -2429,6 +2550,7 @@ $messages['vec'] = array(
 /** Vietnamese (Tiếng Việt)
  * @author Vinhtantran
  * @author Minh Nguyen
+ * @author Jon Harald Søby
  */
 $messages['vi'] = array(
 	'configure'                           => 'Cấu hình wiki',
@@ -2458,7 +2580,7 @@ Xin hãy chỉnh nó để cho phép PHP ghi vào mới dùng gói mở rộng n
 	'configure-no-diff'                   => 'Các phiên bản được chọn không khác với nhau.',
 	'configure-no-directory'              => 'Thư mục dùng để lưu cấu hình, <tt>$1</tt>, không tồn tại.
 Xin hãy khởi tạo hoặc thay đổi nó để dùng được gói mở rộng này.',
-	'configure-no-old'                    => 'Không có phiên bản cấu hình cũ nào',
+	'configure-no-old'                    => 'Không có phiên bản cấu hình cũ nào.',
 	'configure-no-setup'                  => 'Bạn phải gọi tường minh <code>efConfigureSetup()</code> trong tập tin LocalSettings.php của bạn để dùng được gói mở rộng này.',
 	'configure-no-transwiki'              => 'Bạn không được phép thay đổi thiết lập ở các wiki khác',
 	'configure-old'                       => 'Phiên bản cũ',

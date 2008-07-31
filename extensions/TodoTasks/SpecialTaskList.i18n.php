@@ -93,9 +93,13 @@ $messages['bg'] = array(
 	'tasklistbyname'         => '== Списък със задачи за %s ==',
 );
 
-/** German (Deutsch) */
+/** German (Deutsch)
+ * @author Raymond
+ * @author Revolus
+ */
 $messages['de'] = array(
 	'tasklist'               => 'Aufgabenliste',
+	'tasklist-parser-desc'   => 'Fügt die Parserfunktion <nowiki>{{#todo:}}</nowiki> zum Zuordnen von Aufgaben hinzu',
 	'tasklistbyproject'      => 'Aufgabenliste pro Projekt',
 	'tasklistunknownproject' => 'Unbekanntes Projekt',
 	'tasklistunspecuser'     => 'Unbestimmter Benutzername',
@@ -109,6 +113,13 @@ $messages['de'] = array(
 	'tasklistprojdisp'       => 'Anzeigen',
 	'tasklistbyname'         => '== Aufgabenliste für %s ==',
 	'tasklistnoprojects'     => "Fehler: Es sieht so aus, als wenn '''\$wgUseProjects''' aktiviert wäre, aber es wurde keine Seiten [[MediaWiki:TodoTasksValidProjects]] erstellt. Siehe die [http://www.mediawiki.org/wiki/Extension:Todo_Tasks#Step_8 Installationsanweisungen] für weitere Details.",
+	'tasklistemailbody'      => ',
+
+Jemand hat dir eine neue Aufgabe bei %s zugeordnet.
+
+Zum Anschauen deiner kompletten Aufgabenliste siehe %s.
+
+Dein freundliches %s-Benachrichtungssystem',
 );
 
 /** Esperanto (Esperanto)

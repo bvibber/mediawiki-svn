@@ -933,6 +933,7 @@ $messages['su'] = array(
 /** Swedish (Svenska)
  * @author M.M.S.
  * @author Lokal Profil
+ * @author Lejonel
  */
 $messages['sv'] = array(
 	'patrol'                 => 'Patrullera redigeringar',
@@ -955,7 +956,7 @@ $messages['sv'] = array(
 	'patrol-stopped'         => 'Du har valt och inte patrullera en annan redigering. $1',
 	'patrol-resume'          => 'Klicka här för att fortsätta.',
 	'group-patroller'        => 'Patrullerare',
-	'group-patroller-member' => 'Patrullerare',
+	'group-patroller-member' => 'patrullerare',
 	'grouppage-patroller'    => '{{ns:project}}:Patrullerare',
 );
 

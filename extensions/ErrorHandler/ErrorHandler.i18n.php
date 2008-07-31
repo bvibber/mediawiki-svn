@@ -73,6 +73,21 @@ $messages['bg'] = array(
 	'errorhandler-error-user-notice'  => 'Потребителска забележка',
 );
 
+/** German (Deutsch)
+ * @author Revolus
+ */
+$messages['de'] = array(
+	'errorhandler-errors'             => 'Fehler:',
+	'errorhandler-error-fatal'        => 'Fataler Fehler',
+	'errorhandler-error-warning'      => 'Warnung',
+	'errorhandler-error-parse'        => 'Verarbeitungsfehler',
+	'errorhandler-error-notice'       => 'Anmerkung',
+	'errorhandler-error-core-error'   => 'Tiefsitzender Fehler',
+	'errorhandler-error-user-error'   => 'Benutzerfehler',
+	'errorhandler-error-user-warning' => 'Benutzerwarnung',
+	'errorhandler-msg-text'           => '$1: $2 in $3 (Zeile $4)',
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */

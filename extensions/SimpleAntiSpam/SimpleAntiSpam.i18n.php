@@ -167,6 +167,15 @@ $messages['hi'] = array(
 	'simpleantispam-desc'  => 'फ़ार्ममें सादी स्पैम/बोट जाँच बढाता हैं',
 );
 
+/** Hungarian (Magyar)
+ * @author Bdamokos
+ */
+$messages['hu'] = array(
+	'simpleantispam'       => 'A szerkesztésed egy spam ellenes mechanizmust aktivált.',
+	'simpleantispam-label' => "Spam elleni ellenőrzés.
+'''NE''' töltsd ezt ki!",
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */

@@ -63,6 +63,13 @@ $messages['id'] = array(
 	'wikitextloggedinout-desc' => 'Dua kait parser, <tt>&lt;loggedin&gt;</tt> dan <tt>&lt;loggedout&gt;</tt> yang menampilkan teks yang berbeda berdasarkan status log masuk pengguna',
 );
 
+/** Italian (Italiano)
+ * @author Darth Kule
+ */
+$messages['it'] = array(
+	'wikitextloggedinout-desc' => "Due hook del parser, <tt>&lt;loggedin&gt;</tt> e <tt>&lt;loggedout&gt;</tt> per mostrare testi differenti a seconda dello stato di login dell'utente",
+);
+
 /** Ripoarisch (Ripoarisch)
  * @author Purodha
  */

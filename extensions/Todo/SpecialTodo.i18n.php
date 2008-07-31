@@ -139,6 +139,37 @@ $messages['da'] = array(
 	'todo-list-cancel' => 'Afbryd',
 );
 
+/** German (Deutsch)
+ * @author Revolus
+ * @author Raymond
+ */
+$messages['de'] = array(
+	'todo'                  => 'Aufgabenliste',
+	'todo-desc'             => 'Experimentelle persönliche [[Special:Todo|Aufgabenliste]]',
+	'todo-tab'              => 'Aufgaben',
+	'todo-new-queue'        => 'Neu',
+	'todo-mail-subject'     => 'Eintrag auf $1s Aufgabenliste abgeschlossen',
+	'todo-mail-body'        => 'Du hast um eine Benachrichtigung gebeten, wenn ein Auftrag, den du an $1 übergeben hast, abgeschlossen wurde.
+
+Eintrag: $2
+Übergeben: $3
+
+Dieser Eintrag wurde mit diesem Kommentar als abgeschlossen markiert:
+$4',
+	'todo-invalid-item'     => 'Fehlender oder falscher Eintrag',
+	'todo-unrecognize-type' => 'Unbekannter Typ',
+	'todo-item-list'        => 'Deine Einträge',
+	'todo-no-item'          => 'Keine Aufgaben.',
+	'todo-invalid-owner'    => 'Ungültiger Besitzer für diesen Eintrag',
+	'todo-list-for'         => 'Aufgabenliste für',
+	'todo-list-change'      => 'Ändern',
+	'todo-list-cancel'      => 'Abbrechen',
+	'todo-new-item'         => 'Neuer Eintrag',
+	'todo-form-details'     => 'Details:',
+	'todo-form-email'       => 'Gib deine E-Mail-Adresse ein, um eine Benachrichtigung zu erhalten, wenn der Eintrag geschlossen wurde:',
+	'todo-form-submit'      => 'Anfrage übergeben',
+);
+
 /** Greek (Ελληνικά)
  * @author Consta
  */

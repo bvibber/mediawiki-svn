@@ -399,6 +399,7 @@ $messages['da'] = array(
 /** German (Deutsch)
  * @author Raimond Spekking
  * @author Leithian
+ * @author MichaelFrey
  */
 $messages['de'] = array(
 	'ogg-desc'                => 'Steuerungsprogramm für Ogg Theora- und Vorbis-Dateien, inklusive einer JavaScript-Abspielsoftware',
@@ -412,6 +413,7 @@ $messages['de'] = array(
 	'ogg-long-error'          => '(Ungültige Ogg-Datei: $1)',
 	'ogg-play'                => 'Start',
 	'ogg-pause'               => 'Pause',
+	'ogg-stop'                => 'Stopp',
 	'ogg-play-video'          => 'Video abspielen',
 	'ogg-play-sound'          => 'Audio abspielen',
 	'ogg-no-player'           => 'Dein System scheint über keine Abspielsoftware zu verfügen. Bitte installiere <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">eine Abspielsoftware</a>.',
@@ -1636,6 +1638,13 @@ $messages['oc'] = array(
  */
 $messages['os'] = array(
 	'ogg-more' => 'Фылдæр…',
+);
+
+/** Punjabi (ਪੰਜਾਬੀ)
+ * @author Gman124
+ */
+$messages['pa'] = array(
+	'ogg-more' => 'ਹੋਰ...',
 );
 
 /** Polish (Polski)

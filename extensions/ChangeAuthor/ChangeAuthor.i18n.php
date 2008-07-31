@@ -273,9 +273,12 @@ $messages['da'] = array(
 	'changeauthor-pagenameform-go' => 'Gå',
 );
 
-/** German (Deutsch) */
+/** German (Deutsch)
+ * @author Raymond
+ */
 $messages['de'] = array(
 	'changeauthor'                      => 'Autor einer Version ändern',
+	'changeauthor-desc'                 => 'Erlaubt es den Autor einer Version zu ändern',
 	'changeauthor-title'                => 'Autor einer Version ändern',
 	'changeauthor-search-box'           => 'Version suchen',
 	'changeauthor-pagename-or-revid'    => 'Seitenname oder Versionsnummer:',

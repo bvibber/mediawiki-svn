@@ -613,6 +613,13 @@ $messages['is'] = array(
 	'regexblock-stats-username' => 'Fyrir $1',
 );
 
+/** Italian (Italiano)
+ * @author Darth Kule
+ */
+$messages['it'] = array(
+	'regexblock-view-go' => 'Vai',
+);
+
 /** Javanese (Basa Jawa)
  * @author Meursault2004
  */

@@ -61,6 +61,13 @@ $messages['id'] = array(
 	'psinotocnum-desc' => 'Kata Magic baru "<nowiki>__</nowiki>NOTOCNUM<nowiki>__</nowiki>"',
 );
 
+/** Italian (Italiano)
+ * @author Darth Kule
+ */
+$messages['it'] = array(
+	'psinotocnum-desc' => 'Nuova parola magica "<nowiki>__</nowiki>NOTOCNUM<nowiki>__</nowiki>"',
+);
+
 /** Ripoarisch (Ripoarisch)
  * @author Purodha
  */

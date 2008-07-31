@@ -60,6 +60,13 @@ $messages['da'] = array(
 	'ajax-qp-desc' => 'Tilføj nogle AJAX-funktioner til visse specialssider, som [[Special:Shortpages]].',
 );
 
+/** German (Deutsch)
+ * @author Raymond
+ */
+$messages['de'] = array(
+	'ajax-qp-desc' => 'Fügt AJAX zu Spezialseiten, wie [[{{#special:Shortpages}}]], hinzu',
+);
+
 /** Lower Sorbian (Dolnoserbski)
  * @author Michawiki
  */

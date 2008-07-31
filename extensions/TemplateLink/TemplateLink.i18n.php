@@ -51,6 +51,7 @@ $messages['bcl'] = array(
  * @author DCLXVI
  */
 $messages['bg'] = array(
+	'templatelink_desc'  => 'Това разширение може да показва шаблон като нова страница',
 	'templatelink_empty' => 'Необходимо е да се въведе параметър.',
 );
 

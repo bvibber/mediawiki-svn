@@ -168,9 +168,11 @@ $messages['da'] = array(
 
 /** German (Deutsch)
  * @author Leon Weber
+ * @author Revolus
  */
 $messages['de'] = array(
 	'duplicator'                       => 'Seite duplizieren',
+	'duplicator-toolbox'               => 'Diese Seite duplizieren',
 	'duplicator-header'                => 'Mit dieser Spezialseite können Seiten komplett dupliziert werden. Dabei wird die gesamte Versionsgeschichte übernommen. Dies kann beispielsweise nützlich sein, um eine Seite in Unterseiten aufzuteilen.',
 	'duplicator-options'               => 'Optionen',
 	'duplicator-source'                => 'Quelle:',

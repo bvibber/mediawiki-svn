@@ -72,10 +72,12 @@ $messages['cs'] = array(
 
 /** German (Deutsch)
  * @author Leithian
+ * @author Revolus
  */
 $messages['de'] = array(
 	'dplforum-by'     => 'durch',
 	'dplforum-edited' => '  - Zuletzt bearbeitet',
+	'dplforum-never'  => 'Nie',
 );
 
 /** Esperanto (Esperanto)

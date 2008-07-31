@@ -116,6 +116,17 @@ Para engadir unha páxina, marque o casilla que está ao seu carón e prema en "
 Para marcar ou deixar de marcar diversas páxinas, só ten que premer na tecla "Maiúsculas", e isto permitiralle seleccionar casillas consecutivas con só facer clic en cada final do rexistro.',
 );
 
+/** Italian (Italiano)
+ * @author Darth Kule
+ */
+$messages['it'] = array(
+	'watchsubpages'                      => 'Segui sottopagine',
+	'watchsubpages-addedtowatchlist'     => 'Il seguente è stato aggiunto ai tuo Osservati Speciali.',
+	'watchsubpages-addtitles'            => 'Aggiungi pagine',
+	'watchsubpages-addtitlestowatchlist' => 'Aggiungi pagine agli Osservati Speciali',
+	'watchsubpages-desc'                 => '[[Special:WatchSubpages|Aggiunge rapidamente tutte le sottopagine]] di una pagina agli Osservati Speciali',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */

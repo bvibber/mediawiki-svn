@@ -399,6 +399,13 @@ $messages['is'] = array(
 	'importusers-password' => 'lykilorð',
 );
 
+/** Italian (Italiano)
+ * @author Darth Kule
+ */
+$messages['it'] = array(
+	'importusers-email' => 'indirizzo e-mail',
+);
+
 /** Javanese (Basa Jawa)
  * @author Meursault2004
  */

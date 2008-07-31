@@ -219,6 +219,43 @@ $messages['da'] = array(
 	'youtubeauthsub_category'    => 'Kategori',
 );
 
+/** German (Deutsch)
+ * @author Revolus
+ * @author Raymond
+ */
+$messages['de'] = array(
+	'youtubeauthsub-desc'                => 'Ermöglicht es Benutzern, Videos direkt zu YouTube [[Special:YouTubeAuthSub|hochzuladen]]',
+	'youtubeauthsub_info'                => 'Um ein Video zu YouTube hochzuladen, um es anschließend auf einer Seite einzubetten, musst du folgende Felder ausfüllen:',
+	'youtubeauthsub_title'               => 'Titel',
+	'youtubeauthsub_description'         => 'Beschreibung',
+	'youtubeauthsub_password'            => 'YouTube-Passwort',
+	'youtubeauthsub_username'            => 'YouTube-Benutzername',
+	'youtubeauthsub_keywords'            => 'Schlüsselwörter',
+	'youtubeauthsub_category'            => 'Kategorie',
+	'youtubeauthsub_submit'              => 'Senden',
+	'youtubeauthsub_clickhere'           => 'Hier klicken zum Einloggen bei YouTube',
+	'youtubeauthsub_tokenerror'          => 'Fehler beim Erstellen es Authorisierungstoken. Versuche die Seite neu zuladen.',
+	'youtubeauthsub_success'             => "Gratuliere!
+Dein Video wurde hochgeladen.
+Zum schauen klicke <a href='http://www.youtube.com/watch?v=$1'>hier</a>.
+YouTube könnte etwas Zeit brauchen, um dein Video zu verarbeiten, so dass die Seite eventuell noch nicht bereit ist.
+
+Um das Video auf einer Seite einzubetten, füge folgenden Text ein:
+<code>{{&#35;ev:youtube|$1}}</code>",
+	'youtubeauthsub_authsubinstructions' => 'Du musst dich zuerst bei YouTube einloggen, um ein Video hochzuladen.',
+	'youtubeauthsub_uploadhere'          => 'Video von dort hochladen:',
+	'youtubeauthsub_uploadbutton'        => 'Hochladen',
+	'youtubeauthsub_code'                => '{{#ev:youtube|$1}}.
+
+Dieses Video kann [http://www.youtube.com/watch?v=$1 hier] angeschaut werden.',
+	'youtubeauthsub_uploading'           => 'Dein Video wird gerade hochgeladen.
+Bitte habe Geduld.',
+	'youtubeauthsub_viewpage'            => 'Alternativ kann du das Video [[$1|hier]] anschauen.',
+	'youtubeauthsub_jserror_nokeywords'  => 'Bitte gib ein oder mehr Schlüsselwörter an.',
+	'youtubeauthsub_jserror_notitle'     => 'Bitte gib einen Titel für das Video an.',
+	'youtubeauthsub_jserror_nodesc'      => 'Bitte gib eine Beschreibung für das Video an.',
+);
+
 /** Greek (Ελληνικά)
  * @author Consta
  */
@@ -425,9 +462,40 @@ $messages['is'] = array(
 
 /** Italian (Italiano)
  * @author Melos
+ * @author Darth Kule
  */
 $messages['it'] = array(
-	'youtubeauthsub_title' => 'Titolo',
+	'youtubeauthsub'                     => 'Carica video su YouTube',
+	'youtubeauthsub-desc'                => 'Permette agli utenti di [[Special:YouTubeAuthSub|caricare video]] direttamente su YouTube',
+	'youtubeauthsub_info'                => 'Per caricare un video su YouTube da includere in una pagina, inserisci le informazioni seguenti:',
+	'youtubeauthsub_title'               => 'Titolo',
+	'youtubeauthsub_description'         => 'Descrizione',
+	'youtubeauthsub_password'            => 'Password di YouTube',
+	'youtubeauthsub_username'            => 'Nome utente di YouTube',
+	'youtubeauthsub_keywords'            => 'Parole chiave',
+	'youtubeauthsub_category'            => 'Categoria',
+	'youtubeauthsub_submit'              => 'Invia',
+	'youtubeauthsub_clickhere'           => 'Fai clic qui per effettuare il log in su YouTube',
+	'youtubeauthsub_tokenerror'          => 'Errore nella generazione del token di autorizzazione, prova ad aggiornare.',
+	'youtubeauthsub_success'             => "Complimenti!
+Il tuo video è stato caricato.
+Per guardare il tuo video fai clic <a href='http://www.youtube.com/watch?v=$1'>qui</a>.
+YouTube potrebbe richiedere un po' di tempo per elaborare il tuo video, quindi potrebbe non essere ancora pronto.
+
+Per includere il tuo video in una pagina della wiki, inserisci il codice seguente in una pagina: <code>{{&#35;ev:youtube|$1}}</code>",
+	'youtubeauthsub_authsubinstructions' => 'Per caricare un video ti verrà richiesto di effettuare prima il log in a YouTube.',
+	'youtubeauthsub_uploadhere'          => 'Carica il tuo video da qui:',
+	'youtubeauthsub_uploadbutton'        => 'Carica',
+	'youtubeauthsub_code'                => '{{#ev:youtube|$1}}.
+
+Questo video può essere visto [http://www.youtube.com/watch?v=$1 qui]',
+	'youtubeauthsub_summary'             => 'Caricamento video YouTube',
+	'youtubeauthsub_uploading'           => 'Il tuo video è in fase di caricamento.
+Sii paziente.',
+	'youtubeauthsub_viewpage'            => 'Oppure puoi guardare il tuo video [[$1|qui]].',
+	'youtubeauthsub_jserror_nokeywords'  => "Inserisci un'altra parola chiave.",
+	'youtubeauthsub_jserror_notitle'     => 'Inserisci un titolo per il video.',
+	'youtubeauthsub_jserror_nodesc'      => 'Inserisci una descrizione per il video.',
 );
 
 /** Javanese (Basa Jawa)

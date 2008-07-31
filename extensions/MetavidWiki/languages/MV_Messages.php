@@ -1460,8 +1460,10 @@ $messages['is'] = array(
  * @author Melos
  */
 $messages['it'] = array(
-	'mv_remove_reason' => 'Motivo della cancellazione:',
-	'mv_tool_search'   => 'Ricerca',
+	'mv_remove_reason'   => 'Motivo della cancellazione:',
+	'mv_tool_search'     => 'Ricerca',
+	'mv_search_category' => 'Categoria',
+	'mv_category'        => 'categoria',
 );
 
 /** Lojban (Lojban)

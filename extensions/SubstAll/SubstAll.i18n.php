@@ -22,6 +22,13 @@ $messages['ar'] = array(
 	'substall-desc' => 'ينشئ وسم <nowiki><substall></nowiki> الذي يمد كل القوالب إلى صياغة ويكي',
 );
 
+/** German (Deutsch)
+ * @author Revolus
+ */
+$messages['de'] = array(
+	'substall-desc' => 'Erstellt einen &lt;substall&gt;-Tag, der alle Vorlagen auf dieser Seite expandiert',
+);
+
 /** French (Français)
  * @author Grondin
  */

@@ -298,6 +298,7 @@ $messages['da'] = array(
 
 /** German (Deutsch)
  * @author Raimond Spekking
+ * @author Revolus
  */
 $messages['de'] = array(
 	'badimages'                => 'Liste unerwünschter Bilder',
@@ -305,6 +306,7 @@ $messages['de'] = array(
 	'badimages-add-btn'        => 'Füge hinzu',
 	'badimages-added'          => '$1 wurde der Liste hinzugefügt',
 	'badimages-count'          => "Die Liste unerwünschter Bilder enthält '''$1''' {{PLURAL:$1|Eintrag|Einträge}}",
+	'badimages-name'           => 'Name:',
 	'badimages-not-added'      => 'Das Bild konnte nicht hinzugefügt werden.',
 	'badimages-not-removed'    => 'Das Bild konnte nicht entfernt werden.',
 	'badimages-reason'         => 'Grund:',

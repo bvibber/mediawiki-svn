@@ -323,6 +323,14 @@ $messages['is'] = array(
 	'dt_xml_page'           => 'Síða',
 );
 
+/** Italian (Italiano)
+ * @author Darth Kule
+ */
+$messages['it'] = array(
+	'dt_viewxml_categories' => 'Categorie',
+	'dt_viewxml_namespaces' => 'Namespace',
+);
+
 /** Japanese (日本語)
  * @author JtFuruhata
  */

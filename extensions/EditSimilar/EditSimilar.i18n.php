@@ -64,6 +64,23 @@ $messages['bg'] = array(
 	'editsimilar-thankyou'            => 'Благодарности за приноса по тази страница, $1!',
 );
 
+/** German (Deutsch)
+ * @author Revolus
+ * @author Leithian
+ */
+$messages['de'] = array(
+	'editsimilar-thanks'                         => 'Dank dir für deinen Beitrag.
+Schau dir auch diese ähnlichen Seiten an: $1.',
+	'editsimilar-thanks-singleresult'            => 'Dank dir für deinen Beitrag.
+Schau dir auch diese Seite an: $1.',
+	'editsimilar-thanks-notsimilar'              => 'Dank dir für deinen Beitrag.
+Diese Seiten könnten dir auch hilfreich sein: $1.',
+	'editsimilar-thanks-notsimilar-singleresult' => 'Dank dir für deinen Beitrag.
+Diese Seite könnte dir auch hilfreich sein: $1.',
+	'editsimilar-thankyou'                       => 'Danke für deinen Beitrag, $1!',
+	'editsimilar-link-disable'                   => 'Einstellungen setzen',
+);
+
 /** Lower Sorbian (Dolnoserbski)
  * @author Michawiki
  */

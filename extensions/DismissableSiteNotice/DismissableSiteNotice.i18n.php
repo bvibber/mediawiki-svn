@@ -445,6 +445,7 @@ $messages['nan'] = array(
  */
 $messages['nds'] = array(
 	'sitenotice_close' => 'wegmaken',
+	'sitenotice-desc'  => 'Verlöövt Brukers dat Sluten vun de Sitenotice',
 );
 
 /** Nepali (नेपाली)

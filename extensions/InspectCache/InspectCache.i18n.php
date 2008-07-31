@@ -260,6 +260,13 @@ $messages['ia'] = array(
 	'inspectcache-delete' => 'Deler',
 );
 
+/** Italian (Italiano)
+ * @author Darth Kule
+ */
+$messages['it'] = array(
+	'inspectcache-delete' => 'Cancella',
+);
+
 /** Javanese (Basa Jawa)
  * @author Meursault2004
  */

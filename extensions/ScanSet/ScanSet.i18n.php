@@ -608,8 +608,9 @@ $messages['nah'] = array(
  * @author Slomox
  */
 $messages['nds'] = array(
-	'scanset_next' => 'Tokamen →',
-	'scanset_prev' => '← Vörig',
+	'scanset_opendir_error' => 'Fehler: Kann den Ordner $1 nich apen maken',
+	'scanset_next'          => 'Tokamen →',
+	'scanset_prev'          => '← Vörig',
 );
 
 /** Dutch (Nederlands)

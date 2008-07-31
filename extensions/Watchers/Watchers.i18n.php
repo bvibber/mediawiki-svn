@@ -109,8 +109,11 @@ $messages['br'] = array(
 	'watchers_less_than_x'   => "Nebeutoc'h eget $1 implijer o deus lakaet ar bajenn-mañ war evezh.",
 );
 
-/** German (Deutsch) */
+/** German (Deutsch)
+ * @author Revolus
+ */
 $messages['de'] = array(
+	'watchers'               => 'Beobachter',
 	'watchers_link_title'    => 'Wer beobachtet diese Seite?',
 	'watchers_error_article' => '"<b>Fehler:</b> Seite existiert nicht.',
 	'watchers_header'        => 'Benutzer, die „$1“ beobachten',

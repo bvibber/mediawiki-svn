@@ -100,6 +100,7 @@ $messages['af'] = array(
 /** Arabic (العربية)
  * @author Meno25
  * @author Alnokta
+ * @author Siebrand
  */
 $messages['ar'] = array(
 	'grouppermissions'               => 'التحكم بسماحات المجموعات',
@@ -108,7 +109,7 @@ $messages['ar'] = array(
 	'grouppermissions-desc'          => 'أدر صلاحيات المجموعات من [[Special:GroupPermissions|صفحة خاصة]]',
 	'grouppermissions-desc2'         => 'نظام الصلاحيات الممتد',
 	'grouppermissions-desc3'         => 'يسمح بتخصيص أفعال المحتوى (الألسنة)',
-	'grouppermissions-header'        => 'أنت يمكنك استخدام هذه الصفحة لتغيير السماحات المتضمنة في مجموعات المستخدم المختلفة',
+	'grouppermissions-header'        => 'أنت يمكنك استخدام هذه الصفحة لتغيير السماحات المتضمنة في مجموعات المستخدم المختلفة.',
 	'grouppermissions-search'        => 'المجموعة:',
 	'grouppermissions-dologin'       => 'دخول',
 	'grouppermissions-dosearch'      => 'اذهب',
@@ -136,9 +137,9 @@ $messages['ar'] = array(
 	'grouppermissions-log-change'    => 'تغيرت الصلاحيات للمجموعة "$2"',
 	'grouppermissions-log-delete'    => 'حذف المجموعة "$2"',
 	'grouppermissions-log-name'      => 'سجل سماحات المجموعات',
-	'grouppermissions-log-header'    => 'هذه الصفحة تتتبع التغييرات للسماحات المتضمنة لمجموعات المستخدم',
+	'grouppermissions-log-header'    => 'هذه الصفحة تتتبع التغييرات للسماحات المتضمنة لمجموعات المستخدم.',
 	'grouppermissions-needjs'        => 'تحذير: الجافاسكريبت في متصفحك معطبة. بعض الميزات لن تعمل!',
-	'grouppermissions-sp-header'     => 'أنت يمكنك استخدام هذه الصفحة للتحكم بترتيب السماحات وإضافة سماحات جديدة',
+	'grouppermissions-sp-header'     => 'أنت يمكنك استخدام هذه الصفحة للتحكم بترتيب السماحات وإضافة سماحات جديدة.',
 	'grouppermissions-sp-sort'       => 'ترتيب السماحات',
 	'grouppermissions-sp-save'       => 'حفظ',
 	'grouppermissions-sp-success'    => 'السماحات تم ترتيبها بنجاح',
@@ -201,6 +202,13 @@ $messages['bg'] = array(
 	'right-edit-new'               => 'редактиране на страници',
 );
 
+/** German (Deutsch)
+ * @author Leithian
+ */
+$messages['de'] = array(
+	'grouppermissions-comment' => 'Kommentar:',
+);
+
 /** Greek (Ελληνικά)
  * @author Consta
  */
@@ -248,6 +256,7 @@ $messages['eo'] = array(
 /** French (Français)
  * @author Grondin
  * @author Siebrand
+ * @author Jon Harald Søby
  */
 $messages['fr'] = array(
 	'grouppermissions'               => 'Gérer les permissions des groupes',
@@ -256,7 +265,7 @@ $messages['fr'] = array(
 	'grouppermissions-desc'          => 'Gère les permissions des groupes au travers d’une [[Special:GroupPermissions|page spéciale]]',
 	'grouppermissions-desc2'         => 'Système étendu des permissions',
 	'grouppermissions-desc3'         => 'Permet au contenu des actions (tabulations) d’être personalisé',
-	'grouppermissions-header'        => 'Vous pouvez utiliser cette page pour modifier les permissions soulignées des différents groupes d’utilisateurs',
+	'grouppermissions-header'        => 'Vous pouvez utiliser cette page pour modifier les permissions soulignées des différents groupes d’utilisateurs.',
 	'grouppermissions-search'        => 'Groupe :',
 	'grouppermissions-dologin'       => 'Connexion',
 	'grouppermissions-dosearch'      => 'Lancer',
@@ -286,7 +295,7 @@ $messages['fr'] = array(
 	'grouppermissions-log-name'      => 'Journal des permissions des groupes',
 	'grouppermissions-log-header'    => 'Cette page piste les changements des permissions soulignées des groupes utilisateurs.',
 	'grouppermissions-needjs'        => 'Aversissement : JavaScript est désactivé sur votre navigateur. Plusieurs fonctionnalités peuvent ne pas fonctionner !',
-	'grouppermissions-sp-header'     => 'Vous pouvez utiliser cette page pour gérer comment les permissions sont affichées et pour ajouter de nouvelles permissions',
+	'grouppermissions-sp-header'     => 'Vous pouvez utiliser cette page pour gérer comment les permissions sont affichées et pour ajouter de nouvelles permissions.',
 	'grouppermissions-sp-sort'       => 'Trier les permissions',
 	'grouppermissions-sp-save'       => 'Sauvegarder',
 	'grouppermissions-sp-success'    => 'Les permissions ont été triées avec succès',
@@ -321,6 +330,7 @@ $messages['fy'] = array(
 /** Galician (Galego)
  * @author Toliño
  * @author Siebrand
+ * @author Jon Harald Søby
  */
 $messages['gl'] = array(
 	'grouppermissions'               => 'Xestionar os permisos dun grupo',
@@ -329,7 +339,7 @@ $messages['gl'] = array(
 	'grouppermissions-desc'          => 'Xestionar os permisos dun grupo mediante unha [[Special:GroupPermissions|páxina especial]]',
 	'grouppermissions-desc2'         => 'Sistema de permisos estendido',
 	'grouppermissions-desc3'         => 'Permite que sexan personalizadas as accións de contido (lapelas)',
-	'grouppermissions-header'        => 'Pode usar esta páxina para cambiar os permisos subxacentes de varios grupos de usuario',
+	'grouppermissions-header'        => 'Pode usar esta páxina para cambiar os permisos subxacentes de varios grupos de usuario.',
 	'grouppermissions-search'        => 'Grupo:',
 	'grouppermissions-dologin'       => 'Rexistro',
 	'grouppermissions-dosearch'      => 'Ir',
@@ -357,9 +367,9 @@ $messages['gl'] = array(
 	'grouppermissions-log-change'    => 'cambiou os permisos do grupo "$2"',
 	'grouppermissions-log-delete'    => 'borrou o grupo "$2"',
 	'grouppermissions-log-name'      => 'Rexistro de permisos de grupo',
-	'grouppermissions-log-header'    => 'Nesta páxina pode seguir os cambios dos permisos subxacentes dos grupos de usuario',
+	'grouppermissions-log-header'    => 'Nesta páxina pode seguir os cambios dos permisos subxacentes dos grupos de usuario.',
 	'grouppermissions-needjs'        => 'Aviso: o JavaScript non está permitido no seu navegador. Pode que algunhas características non funcionen ben!',
-	'grouppermissions-sp-header'     => 'Pode usar esta páxina para xestionar como están ordenados e engadir novos permisos',
+	'grouppermissions-sp-header'     => 'Pode usar esta páxina para xestionar como están ordenados e engadir novos permisos.',
 	'grouppermissions-sp-sort'       => 'Ordenar os permisos',
 	'grouppermissions-sp-save'       => 'Gardar',
 	'grouppermissions-sp-success'    => 'Os permisos foron ordenados con éxito',
@@ -399,7 +409,7 @@ $messages['it'] = array(
 	'removeunusedgroups'             => 'Rimuovi gruppi inutilizzati',
 	'grouppermissions-desc'          => 'Gestisci permessi di gruppo attraverso una [[Special:GroupPermissions|pagina speciale]]',
 	'grouppermissions-desc2'         => 'Sistema dei permessi esteso',
-	'grouppermissions-header'        => 'È possibile usare questa pagina per cambiare i permessi sottostanti dei vari gruppi utente',
+	'grouppermissions-header'        => 'È possibile usare questa pagina per cambiare i permessi sottostanti dei vari gruppi utente.',
 	'grouppermissions-search'        => 'Gruppo:',
 	'grouppermissions-dologin'       => 'Entra',
 	'grouppermissions-dosearch'      => 'Vai',
@@ -427,9 +437,9 @@ $messages['it'] = array(
 	'grouppermissions-log-change'    => 'permessi modificati per il gruppo "$2"',
 	'grouppermissions-log-delete'    => 'cancellato gruppo "$2"',
 	'grouppermissions-log-name'      => 'Log permessi dei gruppi',
-	'grouppermissions-log-header'    => 'Questa pagina elenca i cambiamenti dei permessi sottostanti dei gruppi utente',
+	'grouppermissions-log-header'    => 'Questa pagina elenca i cambiamenti dei permessi sottostanti dei gruppi utente.',
 	'grouppermissions-needjs'        => 'Attenzione: JavaScript non è attivo sul tuo browser. Alcune funzioni potrebbero non funzionare!',
-	'grouppermissions-sp-header'     => 'È possibile usare questa pagina per gestire come i permessi sono ordinati e aggiungerne nuovi',
+	'grouppermissions-sp-header'     => 'È possibile usare questa pagina per gestire come i permessi sono ordinati e aggiungerne nuovi.',
 	'grouppermissions-sp-sort'       => 'Ordina permessi',
 	'grouppermissions-sp-save'       => 'Salva',
 	'grouppermissions-sp-success'    => 'I permessi sono stati ordinati con successo',
@@ -476,6 +486,7 @@ $messages['km'] = array(
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  * @author Siebrand
+ * @author Jon Harald Søby
  */
 $messages['lb'] = array(
 	'grouppermissions'               => "D'Rechter vu Gruppe geréieren",
@@ -483,7 +494,7 @@ $messages['lb'] = array(
 	'removeunusedgroups'             => 'Gruppen déi net benotzt ginn ewechhuelen',
 	'grouppermissions-desc'          => "D'Rechter vu Gruppen iwwer eng [[Special:GroupPermissions|Spezialsäit]] geréieren",
 	'grouppermissions-desc2'         => 'ERweiderte System vun de Rechter',
-	'grouppermissions-header'        => "Dir kënnt dës Säit benotzen fir déi ënnerluechte Rechter vun de verschidden Benotzergruppen z'änneren",
+	'grouppermissions-header'        => "Dir kënnt dës Säit benotzen fir déi ënnerluechte Rechter vun de verschidden Benotzergruppen z'änneren.",
 	'grouppermissions-search'        => 'Grupp:',
 	'grouppermissions-dologin'       => 'Aloggen',
 	'grouppermissions-dosearch'      => 'Lass',
@@ -535,7 +546,7 @@ $messages['nl'] = array(
 	'grouppermissions-desc'          => 'Groepsrechten beheren via een [[Special:GroupPermissions|speciale pagina]]',
 	'grouppermissions-desc2'         => 'Uitgebreid rechtensysteem',
 	'grouppermissions-desc3'         => 'Maakt het mogelijk om alle contentgerelateerde handelingen (tabs) aan te passen',
-	'grouppermissions-header'        => 'U kunt via deze pagina de groepsrechten van gebruikersgroepen aanpassen',
+	'grouppermissions-header'        => 'U kunt via deze pagina de groepsrechten van gebruikersgroepen aanpassen.',
 	'grouppermissions-search'        => 'Groep:',
 	'grouppermissions-dologin'       => 'Aanmelden',
 	'grouppermissions-dosearch'      => 'OK',
@@ -563,9 +574,9 @@ $messages['nl'] = array(
 	'grouppermissions-log-change'    => 'heeft de rechten voor groep "$2" aangepast',
 	'grouppermissions-log-delete'    => 'heeft groep "$2" verwijderd',
 	'grouppermissions-log-name'      => 'Groepsrechtenlogboek',
-	'grouppermissions-log-header'    => 'Op deze pagina worden wijzigingen in de rechten van gebruikersgroepen weergegeven',
+	'grouppermissions-log-header'    => 'Op deze pagina worden wijzigingen in de rechten van gebruikersgroepen weergegeven.',
 	'grouppermissions-needjs'        => 'Waarschuwing: JavaScript is uitgeschakeld in uw browser. Een aantal mogelijkheden werkt wellicht niet!',
-	'grouppermissions-sp-header'     => 'U kunt deze pagina gebruiker voor het sorteren van rechten en het toevoegen van nieuwe rechten',
+	'grouppermissions-sp-header'     => 'U kunt deze pagina gebruiker voor het sorteren van rechten en het toevoegen van nieuwe rechten.',
 	'grouppermissions-sp-sort'       => 'Rechten sorteren',
 	'grouppermissions-sp-save'       => 'Opslaan',
 	'grouppermissions-sp-success'    => 'De rechten zijn gesorteerd',
@@ -600,7 +611,7 @@ $messages['no'] = array(
 	'grouppermissions-desc'          => 'Behandle grupperettigheter via en [[Special:GroupPermissions|spesialside]]',
 	'grouppermissions-desc2'         => 'Utvidet rettighetssystem',
 	'grouppermissions-desc3'         => 'Tillater egendefinering av innholdsfanene',
-	'grouppermissions-header'        => 'Du kan bruke denne siden for å endre rettightene de forskjellige brukergruppene har',
+	'grouppermissions-header'        => 'Du kan bruke denne siden for å endre rettightene de forskjellige brukergruppene har.',
 	'grouppermissions-search'        => 'Gruppe:',
 	'grouppermissions-dologin'       => 'Logg inn',
 	'grouppermissions-dosearch'      => 'Gå',
@@ -630,7 +641,7 @@ $messages['no'] = array(
 	'grouppermissions-log-name'      => 'Logg for endringer i grupperettigheter',
 	'grouppermissions-log-header'    => 'Denne siden viser endringer i rettighetene brukergrupper innehar.',
 	'grouppermissions-needjs'        => 'Advarsel: JavaScript er slått av i nettleseren din. Noen funksjoner vil ikke fungere.',
-	'grouppermissions-sp-header'     => 'Du kan bruke denne siden for å styre hvordan rettigheter sorteres, og legge til nye rettigheter',
+	'grouppermissions-sp-header'     => 'Du kan bruke denne siden for å styre hvordan rettigheter sorteres, og legge til nye rettigheter.',
 	'grouppermissions-sp-sort'       => 'Sorter rettigheter',
 	'grouppermissions-sp-save'       => 'Lagre',
 	'grouppermissions-sp-success'    => 'Rettighetene ble sortert',
@@ -656,6 +667,7 @@ $messages['no'] = array(
 
 /** Occitan (Occitan)
  * @author Cedric31
+ * @author Jon Harald Søby
  */
 $messages['oc'] = array(
 	'grouppermissions'               => 'Gerir las permissions dels gropes',
@@ -663,7 +675,7 @@ $messages['oc'] = array(
 	'removeunusedgroups'             => 'Levar los gropes inutilizats',
 	'grouppermissions-desc'          => 'Gerís las permissions dels gropes al travèrs d’una [[Special:GroupPermissions|pagina especiala]]',
 	'grouppermissions-desc2'         => 'Sistèma espandit de las permissions',
-	'grouppermissions-header'        => 'Podètz utilizar aquesta pagina per modificar las permissions soslinhadas dels diferents gropes d’utilizaires',
+	'grouppermissions-header'        => 'Podètz utilizar aquesta pagina per modificar las permissions soslinhadas dels diferents gropes d’utilizaires.',
 	'grouppermissions-search'        => 'Grop :',
 	'grouppermissions-dologin'       => 'Connexion',
 	'grouppermissions-dosearch'      => 'Aviar',
@@ -797,6 +809,7 @@ $messages['ru'] = array(
 /** Slovak (Slovenčina)
  * @author Helix84
  * @author Siebrand
+ * @author Jon Harald Søby
  */
 $messages['sk'] = array(
 	'grouppermissions'               => 'Spravovať skupinové oprávnenia',
@@ -805,7 +818,7 @@ $messages['sk'] = array(
 	'grouppermissions-desc'          => 'Správa oprávnení skupín prostredníctvom [[Special:GroupPermissions|špeciálnej stránky]]',
 	'grouppermissions-desc2'         => 'Rozšírený systém oprávnení',
 	'grouppermissions-desc3'         => 'Umožňuje prispôsobenie operácií s obsahom (záložiek)',
-	'grouppermissions-header'        => 'Pomocou tejto stránky môžete zmeniť oprávnenia rozličných skupín používateľov',
+	'grouppermissions-header'        => 'Pomocou tejto stránky môžete zmeniť oprávnenia rozličných skupín používateľov.',
 	'grouppermissions-search'        => 'Skupina:',
 	'grouppermissions-dologin'       => 'Prihlasovacie meno',
 	'grouppermissions-dosearch'      => 'Vykonať',
@@ -833,9 +846,9 @@ $messages['sk'] = array(
 	'grouppermissions-log-change'    => 'zmenil oprávnenia skupiny „$2”',
 	'grouppermissions-log-delete'    => 'zmazal skupinu „$2”',
 	'grouppermissions-log-name'      => 'Záznam skupinových oprávnení',
-	'grouppermissions-log-header'    => 'Táto stránka obsahuje zoznam zmien oprávnení skupín používateľov',
+	'grouppermissions-log-header'    => 'Táto stránka obsahuje zoznam zmien oprávnení skupín používateľov.',
 	'grouppermissions-needjs'        => 'Upozornenie: Váš prehlidač má vypnutý JavaScript. Niektoré možnosti nebudú fungovať!',
-	'grouppermissions-sp-header'     => 'Táto stránka slúži na správu oprávnení a pridávanie nových oprávnení',
+	'grouppermissions-sp-header'     => 'Táto stránka slúži na správu oprávnení a pridávanie nových oprávnení.',
 	'grouppermissions-sp-sort'       => 'Radiť oprávnenia',
 	'grouppermissions-sp-save'       => 'Uložiť',
 	'grouppermissions-sp-success'    => 'Oprávnenia boli úspešne zoradené',
@@ -863,6 +876,7 @@ $messages['sk'] = array(
  * @author Boivie
  * @author M.M.S.
  * @author Siebrand
+ * @author Jon Harald Søby
  */
 $messages['sv'] = array(
 	'grouppermissions'               => 'Hantera behörigheter för användargrupper',
@@ -871,7 +885,7 @@ $messages['sv'] = array(
 	'grouppermissions-desc'          => 'Hantera behörigheter för användargrupper via en [[Special:GroupPermissions|specialsida]]',
 	'grouppermissions-desc2'         => 'Utökat system för behörigheter',
 	'grouppermissions-desc3'         => 'Tillåter egendefiniering av innehållshandlingar',
-	'grouppermissions-header'        => 'Du kan använda denna sida för att ändra de underliggande behörigheterna av de olika användargrupperna',
+	'grouppermissions-header'        => 'Du kan använda denna sida för att ändra de underliggande behörigheterna av de olika användargrupperna.',
 	'grouppermissions-search'        => 'Användargrupp:',
 	'grouppermissions-dologin'       => 'Logga in',
 	'grouppermissions-dosearch'      => 'Gå till',
@@ -899,9 +913,9 @@ $messages['sv'] = array(
 	'grouppermissions-log-change'    => 'ändrade rättigheter för grupp "$2"',
 	'grouppermissions-log-delete'    => 'raderade grupp "$2"',
 	'grouppermissions-log-name'      => 'Grupprättighetslogg',
-	'grouppermissions-log-header'    => 'Denna sida visar ändringar i användargruppernas underliggande rättigheter',
+	'grouppermissions-log-header'    => 'Denna sida visar ändringar i användargruppernas underliggande rättigheter.',
 	'grouppermissions-needjs'        => 'Warning: JavaScript är avstängt i din webbläsare. Det kan få vissa funktioner att inte fungera.',
-	'grouppermissions-sp-header'     => 'Du kan använda denna sida för att hantera hur rättigheter sorteras och lägga till nya rättigheter',
+	'grouppermissions-sp-header'     => 'Du kan använda denna sida för att hantera hur rättigheter sorteras och lägga till nya rättigheter.',
 	'grouppermissions-sp-sort'       => 'Sortera behörigheter',
 	'grouppermissions-sp-save'       => 'Spara',
 	'grouppermissions-sp-success'    => 'Behörigheterna har blivit sorterade',

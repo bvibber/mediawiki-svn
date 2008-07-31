@@ -240,6 +240,13 @@ $messages['da'] = array(
 	'review-desc'          => 'Den genopstandne [[Special:Review|valideringsfeature]].',
 );
 
+/** German (Deutsch)
+ * @author Revolus
+ */
+$messages['de'] = array(
+	'review_user_details_link' => '(Details)',
+);
+
 /** Greek (Ελληνικά)
  * @author Consta
  */
