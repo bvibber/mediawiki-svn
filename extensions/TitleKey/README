@@ -23,7 +23,7 @@ To enable the extension, add the following line to your LocalSettings.php file:
   include "$IP/extensions/TitleKey/TitleKey.php";
 
 
-You must the create and populate the new database table.
+You must then create and populate the new database table.
 
 The easiest way to do this is to run MediaWIki's standard updaters:
 
