@@ -39,9 +39,9 @@ $aliases['bcc'] = array(
 
 /** Czech (Česky) */
 $aliases['cs'] = array(
-	'Configure'  => array( 'Configure', 'Konfigurace', 'Nastavení' ),
-	'Extensions' => array( 'Extensions', 'Rozšíření', 'Dopňky' ),
-	'ViewConfig' => array( 'ViewConfig', 'Zobrazit konfiguraci', 'Zobrazit nastavení' ),
+	'Configure'  => array( 'Konfigurace', 'Nastavení' ),
+	'Extensions' => array( 'Rozšíření', 'Dopňky' ),
+	'ViewConfig' => array( 'Zobrazit konfiguraci', 'Zobrazit nastavení' ),
 );
 
 /** Lower Sorbian (Dolnoserbski) */
