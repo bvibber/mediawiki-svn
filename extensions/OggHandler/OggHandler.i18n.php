@@ -1620,7 +1620,7 @@ $messages['oc'] = array(
 	'ogg-play-video'          => 'Legir la vidèo',
 	'ogg-play-sound'          => 'Legir lo son',
 	'ogg-no-player'           => 'O planhèm, aparentament, vòstre sistèma a pas cap de lectors suportats. Installatz <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download/oc">un dels lectors suportats</a>.',
-	'ogg-no-xiphqt'           => 'Aparentament avètz pas lo compausant XiphQT per Quicktime. Quicktime pòt pas legir los fiquièrs Ogg sens aqueste compausant. <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download/fr"> Telecargatz-lo XiphQT</a> o causissetz un autre lector.',
+	'ogg-no-xiphqt'           => 'Aparentament avètz pas lo compausant XiphQT per Quicktime. Quicktime pòt pas legir los fiquièrs Ogg sens aqueste compausant. <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download/fr"> Telecargatz-lo XiphQT</a> o causissètz un autre lector.',
 	'ogg-player-videoElement' => 'Element <video>',
 	'ogg-player-oggPlugin'    => 'Plugin Ogg',
 	'ogg-player-thumbnail'    => 'Imatge estatic solament',

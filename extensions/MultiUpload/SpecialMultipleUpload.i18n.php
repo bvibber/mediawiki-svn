@@ -289,6 +289,27 @@ $messages['hu'] = array(
 	'multiupload-toolbox'              => 'Több fájl feltöltése',
 );
 
+/** Italian (Italiano)
+ * @author Darth Kule
+ */
+$messages['it'] = array(
+	'multipleupload'                   => 'Carica file multimediali',
+	'multipleupload-desc'              => 'Permetti agli utenti di [[Special:MultipleUpload|caricare più file contemporaneamente]]',
+	'multipleupload-ignoreallwarnings' => "Ignora '''tutti gli avvertimenti''' e salva comunque i file.",
+	'multipleupload-saveallfiles'      => 'Salva tutti i file',
+	'multipleupload-page'              => '{{ns:project}}:Regole per la cancellazione dei file',
+	'multipleupload-text'              => "Carica qui più file insieme.
+
+Scegli 'Sfoglia' e seleziona i file che intendi caricare.
+Puoi caricare da 1 a $1 file alla volta.
+
+Puoi inserire un '''Nome del file di destinazione''' e fornire dei '''Dettagli''' che descrivono il tuo file.
+
+File inappropriati verranno cancellati immediatamente, leggi le [[{{MediaWiki:Multipleupload-page}}|regole per la cancellazione dei file]].",
+	'multiupload-fileuploaded'         => 'File caricato.',
+	'multiupload-toolbox'              => 'Carica file multipli',
+);
+
 /** Javanese (Basa Jawa)
  * @author Meursault2004
  */

@@ -338,6 +338,14 @@ $messages['da'] = array(
 	'sig-private'             => '<i>Privat</i>',
 );
 
+/** German (Deutsch)
+ * @author Leithian
+ */
+$messages['de'] = array(
+	'sign-bday'          => 'Alter:',
+	'sign-viewfield-age' => 'Alter',
+);
+
 /** Greek (Ελληνικά)
  * @author Consta
  */

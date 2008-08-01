@@ -61,7 +61,7 @@ $messages['af'] = array(
  */
 $messages['ar'] = array(
 	'passwordreset'                    => 'تمت إعادة ضبط كلمة السر',
-	'passwordreset-desc'               => "يعيد ضبط كلمات سر مستخدم ويكي - يحتاج إلى صلاحيات 'passwordreset'",
+	'passwordreset-desc'               => "[[Special:Passwordreset|يعيد ضبط كلمات سر مستخدم ويكي]] - يحتاج إلى صلاحيات 'passwordreset'",
 	'passwordreset-invalidusername'    => 'اسم مستخدم غير صحيح',
 	'passwordreset-emptyusername'      => 'اسم مستخدم فارغ',
 	'passwordreset-nopassmatch'        => 'كلمات السر لا تتطابق',
@@ -114,10 +114,11 @@ $messages['da'] = array(
 
 /** German (Deutsch)
  * @author Raimond Spekking
+ * @author Raymond
  */
 $messages['de'] = array(
 	'passwordreset'                    => 'Passwort zurücksetzen',
-	'passwordreset-desc'               => "Zurücksetzen eines Benutzer-Passwortes - ''passwordreset''-Recht notwendig",
+	'passwordreset-desc'               => "[[Special:Passwordreset|Zurücksetzen eines Benutzer-Passwortes]] - ''passwordreset''-Recht notwendig",
 	'passwordreset-invalidusername'    => 'Ungültiger Benutzername',
 	'passwordreset-emptyusername'      => 'Leerer Benutzername',
 	'passwordreset-nopassmatch'        => 'Passwörter stimmen nicht überein',
@@ -352,7 +353,7 @@ $messages['is'] = array(
  */
 $messages['it'] = array(
 	'passwordreset'                    => 'Reimposta password',
-	'passwordreset-desc'               => "Reimposta le password di utenti della wiki - richiede dei privilegi 'passwordreset'",
+	'passwordreset-desc'               => "[[Special:Passwordreset|Reimposta le password di utenti della wiki]] - richiede dei privilegi 'passwordreset'",
 	'passwordreset-invalidusername'    => 'Nome utente non valido',
 	'passwordreset-emptyusername'      => 'Nome utente vuoto',
 	'passwordreset-nopassmatch'        => 'Le password non corrispondono',
@@ -480,7 +481,7 @@ $messages['nah'] = array(
  */
 $messages['nl'] = array(
 	'passwordreset'                    => 'Wachtwoord opnieuw instellen',
-	'passwordreset-desc'               => "Voegt een [[Special:Passwordreset|speciale pagina]] toe om wachtwoorden van gebruikers opnieuw in te stellen - het recht 'passwordreset' is hiervoor nodig",
+	'passwordreset-desc'               => "Voegt een [[Special:Passwordreset|speciale pagina]] toe om wachtwoorden van gebruikers opnieuw in te stellen - hiervoor is het recht 'passwordreset' nodig",
 	'passwordreset-invalidusername'    => 'Onjuiste gebruiker',
 	'passwordreset-emptyusername'      => 'Gebruiker niet ingegeven',
 	'passwordreset-nopassmatch'        => 'De wachtwoorden komen niet overeen',
@@ -512,7 +513,7 @@ $messages['nn'] = array(
  */
 $messages['no'] = array(
 	'passwordreset'                    => 'Passordresetting',
-	'passwordreset-desc'               => "Resett brukeres passord &ndash; krever 'passwordreset'-rettigheter",
+	'passwordreset-desc'               => "[[Special:Passwordreset|Nullstill brukeres passord]] &ndash; krever 'passwordreset'-rettigheter",
 	'passwordreset-invalidusername'    => 'Ugyldig brukernavn',
 	'passwordreset-emptyusername'      => 'Tomt brukernavn',
 	'passwordreset-nopassmatch'        => 'Passordene er ikke de samme',

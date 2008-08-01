@@ -47,6 +47,13 @@ $messages['dsb'] = array(
 	'tab0-desc' => 'Pśidawa rejtark "0", kótaryž wótkazujo na wobźěłański bok prědnego wótrězka boka',
 );
 
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
+$messages['eo'] = array(
+	'tab0-desc' => 'Aldonas langeton "0" ligantan al la redaktpaĝo de la unua sekcio de la paĝo',
+);
+
 /** French (Français)
  * @author Grondin
  * @author Verdy p
@@ -113,7 +120,7 @@ $messages['no'] = array(
  * @author Cedric31
  */
 $messages['oc'] = array(
-	'tab0-desc' => 'Ajusta la tabulacion « 0 », ligason vèrs la pagina d’edicion de la primièra seccion.',
+	'tab0-desc' => 'Apondís la tabulacion « 0 », ligason cap a la pagina d’edicion de la primièra seccion.',
 );
 
 /** Polish (Polski)

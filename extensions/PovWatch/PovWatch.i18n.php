@@ -622,7 +622,7 @@ $messages['oc'] = array(
 	'povwatch_not_allowed_subscribers' => 'Avètz pas la permission de visionar la lista de las personas inscrichas per la susvelhança de las guèrras d’edicions.',
 	'povwatch_unknown_subpage'         => 'Sospagina desconeguda.',
 	'povwatch_push'                    => 'Inscriure',
-	'povwatch_push_intro'              => "Utilizatz lo formulari çaijós per inscriure los articles dins la lista de susvelhança dels utilizaires abonats. Inscrivissetz escrupulosament lo títol : los articles pòdon quitament èsser ajustats, e existís pas cap d'eissida per o levar un còp inscrich.",
+	'povwatch_push_intro'              => "Utilizatz lo formulari çaijós per inscriure los articles dins la tièra de susvelhança dels utilizaires abonats. Inscrivissètz escrupulosament lo títol : los articles pòdon quitament èsser aponduts, e existís pas cap d'eissida per o levar un còp inscrich.",
 	'povwatch_title'                   => 'Títol :',
 	'povwatch_comment'                 => 'Comentari del jornal :',
 	'povwatch_no_log'                  => "Existís pas cap d'entrada dins lo jornal.",
@@ -631,7 +631,7 @@ $messages['oc'] = array(
 	'povwatch_unsubscribe'             => 'Resiliar',
 	'povwatch_subscribe_intro'         => 'Sètz pas marcat(ada) sus la tièra de susvelhança de las guèrras d’edicions. Clicatz sul boton çaijós per vos marcar.',
 	'povwatch_subscribe'               => 'Soscriure',
-	'povwatch_added'                   => 'ajustat',
+	'povwatch_added'                   => 'apondut',
 	'right-povwatch_admin'             => "Administrar los dreches d’utilizaire per l'ajust de paginas a la lista de seguit dels autres utilizaires.",
 	'right-povwatch_user'              => 'Apondís de paginas a la lista de seguit dels autres utilizaires',
 );

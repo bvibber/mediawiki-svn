@@ -18,15 +18,16 @@ $messages['en'] = array(
 $messages['ar'] = array(
 	'signaturelogpage'     => 'سجل التوقيع',
 	'signature-desc'       => 'يفعل [[Special:SignDocument|توقيع]] الوثيقة',
-	'signaturelogpagetext' => 'هذا سجل بكل التوقيعات التي أضيفت إلى الوثائق من خلال [[Special:SignDocument]].',
+	'signaturelogpagetext' => 'هذا سجل [[Special:SignDocument|بكل التوقيعات التي أضيفت إلى الوثائق]].',
 	'signaturelogentry'    => 'وقع الوثيقة $1',
 );
 
 /** German (Deutsch)
+ * @author Raymond
  */
 $messages['de'] = array(
 	'signaturelogpage'     => 'Unterschrifts-Logbuch',
-	'signaturelogpagetext' => 'Dies ist das Unterschrifts-Logbuch für Dokumente, die über die Seite [[Special:SignDocument]] unterschrieben werden können.',
+	'signaturelogpagetext' => 'Dies ist das [[Special:SignDocument|Unterschrifts-Logbuch für Dokumente]].',
 	'signaturelogentry'    => 'hat das Dokument $1 unterschrieben',
 );
 
@@ -123,7 +124,7 @@ $messages['mr'] = array(
 $messages['nl'] = array(
 	'signaturelogpage'     => 'Logboek ondertekeningen',
 	'signature-desc'       => 'Maakt het [[Special:SignDocument|ondertekenen]] van documenten mogelijk',
-	'signaturelogpagetext' => 'Dit is een logboek van alle ondertekeningen van documenten via [[Special:SignDocument]].',
+	'signaturelogpagetext' => 'Dit is een logboek van alle [[Special:SignDocument|ondertekeningen van documenten]].',
 	'signaturelogentry'    => 'ondertekende het document $1',
 );
 
@@ -133,7 +134,7 @@ $messages['nl'] = array(
 $messages['no'] = array(
 	'signaturelogpage'     => 'Signaturlogg',
 	'signature-desc'       => 'Slår på [[Special:SignDocument|dokumentsignering]]',
-	'signaturelogpagetext' => 'Dette er en logg over alle signaturer lagt til dokumenter via [[Special:SignDocument]].',
+	'signaturelogpagetext' => 'Dette er en logg over [[Special:SignDocument|alle signaturer lagt til dokumenter]].',
 	'signaturelogentry'    => 'signerte dokumentet $1',
 );
 
@@ -143,7 +144,7 @@ $messages['no'] = array(
 $messages['oc'] = array(
 	'signaturelogpage'     => 'Jornal de las signaturas',
 	'signature-desc'       => 'Activa la [[Special:SignDocument|signatura]] dels documents',
-	'signaturelogpagetext' => 'Aquò es lo jornal de totas las signaturas ajustadas als documents via [[Special:SignDocument]].',
+	'signaturelogpagetext' => 'Aquò es lo jornal de [[Special:SignDocument|totas las signaturas apondudas als documents]].',
 	'signaturelogentry'    => 'a signat lo document $1.',
 );
 

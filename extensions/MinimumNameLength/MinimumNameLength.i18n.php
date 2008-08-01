@@ -133,6 +133,14 @@ $messages['id'] = array(
 	'minnamelength-error' => 'Nama pengguna Anda terlalu pendek. Panjang minimum adalah $1.',
 );
 
+/** Italian (Italiano)
+ * @author Darth Kule
+ */
+$messages['it'] = array(
+	'minnamelength-error' => 'Il tuo nome utente è troppo corto. La lunghezza minima è $1.',
+	'minnamelength-desc'  => 'Imponi una lunghezza minima per il nome utente',
+);
+
 /** Japanese (日本語) */
 $messages['ja'] = array(
 	'minnamelength-error' => 'あなたの利用者名は短すぎます。最短の長さは $1 バイトです。',

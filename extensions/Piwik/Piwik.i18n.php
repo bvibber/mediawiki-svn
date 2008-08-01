@@ -167,7 +167,7 @@ $messages['no'] = array(
  * @author Cedric31
  */
 $messages['oc'] = array(
-	'piwik-desc'       => 'Ajusta un escript Piwik dins las paginas Mediawiki per lo pistatge e ajusta [[Special:Piwik|qualques estatisticas]]',
+	'piwik-desc'       => 'Apondís un escript Piwik dins las paginas Mediawiki per lo pistatge e apondís [[Special:Piwik|qualques estatisticas]]',
 	'piwik-lastvisits' => 'Darrièras visitas',
 	'piwik-countries'  => 'Païses',
 	'piwik-browsers'   => 'Navigadors',

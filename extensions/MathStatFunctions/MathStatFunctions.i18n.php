@@ -162,8 +162,11 @@ $messages['io'] = array(
 	'msfunc_div_zero' => 'Divido per zero',
 );
 
-/** Italian (Italiano) */
+/** Italian (Italiano)
+ * @author Darth Kule
+ */
 $messages['it'] = array(
+	'msfunc_desc'     => 'Una raccolta di funzioni matematiche e statistiche',
 	'msfunc_nan'      => 'Il risultato non è un numero',
 	'msfunc_inf'      => 'Il risultato è infinito',
 	'msfunc_div_zero' => 'Divisione per zero',

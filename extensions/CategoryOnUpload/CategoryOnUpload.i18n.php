@@ -64,6 +64,13 @@ $messages['dsb'] = array(
 	'categoryonupload-label' => 'Kategorija:',
 );
 
+/** Greek (Ελληνικά)
+ * @author Consta
+ */
+$messages['el'] = array(
+	'categoryonupload-label' => 'Κατηγορία:',
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */

@@ -116,6 +116,15 @@ $messages['hu'] = array(
 	'mediafunctions-not-exist'     => '„$1” nem létezik',
 );
 
+/** Italian (Italiano)
+ * @author Darth Kule
+ */
+$messages['it'] = array(
+	'mediafunctions-desc'          => 'Funzioni parser per ottenere informazioni sui file multimediali',
+	'mediafunctions-invalid-title' => '"$1" non è un titolo valido',
+	'mediafunctions-not-exist'     => '"$1" non esiste',
+);
+
 /** Javanese (Basa Jawa)
  * @author Meursault2004
  */

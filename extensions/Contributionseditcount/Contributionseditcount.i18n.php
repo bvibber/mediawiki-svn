@@ -17,7 +17,7 @@ $messages['en'] = array(
  */
 $messages['ar'] = array(
 	'contributionseditcount'      => 'هذا المستخدم لديه $1 تعديل.',
-	'contributionseditcount-desc' => 'يعرض عدد المساهمات في [[Special:Contributions]]',
+	'contributionseditcount-desc' => 'يعرض عدد المساهمات في [[Special:Contributions|صفحة مساهمات المستخدم]]',
 );
 
 /** Bikol Central (Bikol Central)
@@ -59,9 +59,12 @@ $messages['cs'] = array(
 	'contributionseditcount-desc' => 'Zobrazuje počet editací na stránce [[Special:Contributions|Příspěvky uživatele]]',
 );
 
-/** German (Deutsch) */
+/** German (Deutsch)
+ * @author Raymond
+ */
 $messages['de'] = array(
-	'contributionseditcount' => 'Dieser Benutzer hat $1 Bearbeitungen.',
+	'contributionseditcount'      => 'Dieser Benutzer hat $1 Bearbeitungen.',
+	'contributionseditcount-desc' => 'Zeigt einen Beitragszähler auf der [[Special:Contributions|Beitragsseite des Benutzers]] an',
 );
 
 /** Lower Sorbian (Dolnoserbski)
@@ -161,7 +164,7 @@ $messages['is'] = array(
  */
 $messages['it'] = array(
 	'contributionseditcount'      => 'Questo utente ha $1 edit',
-	'contributionseditcount-desc' => 'Mostra un edit count in [[Special:Contributions]]',
+	'contributionseditcount-desc' => 'Mostra un edit count nella [[Special:Contributions|pagina dei contributi utente]]',
 );
 
 /** Japanese (日本語)
@@ -187,6 +190,14 @@ $messages['jv'] = array(
 $messages['km'] = array(
 	'contributionseditcount'      => 'អ្នកប្រើប្រាស់នេះ​មាន $1 កំនែប្រែ។',
 	'contributionseditcount-desc' => 'បង្ហាញការរាប់កំនែប្រែនៅ[[Special:Contributions|ការរួមចំនែករបស់អ្នកប្រើប្រាស់]]',
+);
+
+/** Ripoarisch (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'contributionseditcount'      => 'Dä Metmaacher hät $1 Änderunge jemaat.',
+	'contributionseditcount-desc' => 'Don däm sing Aanzahl Änderunge aam Wiki op de [[Special:Contributions|Sigg met enem Metmaacher sing Beidräsch]] aanzeije.',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -248,7 +259,7 @@ $messages['nn'] = array(
  */
 $messages['no'] = array(
 	'contributionseditcount'      => 'Denne brukeren har $1 redigeringer.',
-	'contributionseditcount-desc' => 'Viser en redigeringsteller på [[Special:Contributions]]',
+	'contributionseditcount-desc' => 'Viser en redigeringsteller på [[Special:Contributions|bidragsoversikten]]',
 );
 
 /** Northern Sotho (Sesotho sa Leboa)

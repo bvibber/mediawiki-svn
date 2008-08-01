@@ -165,6 +165,13 @@ $messages['id'] = array(
 	'mwsearch-desc' => 'Plugin MWSearch',
 );
 
+/** Italian (Italiano)
+ * @author Darth Kule
+ */
+$messages['it'] = array(
+	'mwsearch-desc' => 'Plugin MWSearch',
+);
+
 /** Javanese (Basa Jawa)
  * @author Meursault2004
  */

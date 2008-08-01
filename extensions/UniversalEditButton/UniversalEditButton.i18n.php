@@ -155,7 +155,7 @@ $messages['no'] = array(
  * @author Cedric31
  */
 $messages['oc'] = array(
-	'universaleditbutton-desc' => 'Ajusta l’entèsta HTML  <code>&lt;link&gt;</code> per suportar lo boton d’edicion universal de l’extension del navigador',
+	'universaleditbutton-desc' => 'Apondís l’entèsta HTML  <code>&lt;link&gt;</code> per suportar lo boton d’edicion universal de l’extension del navigador',
 );
 
 /** Polish (Polski)

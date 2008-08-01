@@ -169,9 +169,10 @@ $messages['hi'] = array(
 
 /** Hungarian (Magyar)
  * @author Bdamokos
+ * @author Dani
  */
 $messages['hu'] = array(
-	'simpleantispam'       => 'A szerkesztésed egy spam ellenes mechanizmust aktivált.',
+	'simpleantispam'       => 'A szerkesztésed egy spamellenes mechanizmust aktivált.',
 	'simpleantispam-label' => "Spam elleni ellenőrzés.
 '''NE''' töltsd ezt ki!",
 );

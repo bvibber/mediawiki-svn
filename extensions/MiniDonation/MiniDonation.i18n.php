@@ -127,8 +127,11 @@ $messages['id'] = array(
 	'donationform-submit' => 'Donasi melalui PayPal',
 );
 
-/** Italian (Italiano) */
+/** Italian (Italiano)
+ * @author Darth Kule
+ */
 $messages['it'] = array(
+	'donationform-desc'   => 'Aggiunge un tag <tt>&lt;donateform&gt;</tt> per sostenere le donazioni attraverso PayPal',
 	'donationform-submit' => 'Donazione mediante PayPal',
 );
 

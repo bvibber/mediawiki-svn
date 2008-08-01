@@ -66,7 +66,7 @@ $messages['an'] = array(
  */
 $messages['ar'] = array(
 	'bookinfo-header'            => 'معلومات كتاب',
-	'bookinfo-desc'              => 'يمد [[Special:Booksources]] بمعلومات من خدمة ويب',
+	'bookinfo-desc'              => 'يمد [[Special:Booksources|صفحة مصادر الكتب الخاصة]] بمعلومات من خدمة ويب',
 	'bookinfo-result-title'      => 'العنوان:',
 	'bookinfo-result-author'     => 'المؤلف:',
 	'bookinfo-result-publisher'  => 'الناشر:',
@@ -248,10 +248,11 @@ $messages['da'] = array(
 
 /** German (Deutsch)
  * @author Raimond Spekking
+ * @author Raymond
  */
 $messages['de'] = array(
 	'bookinfo-header'            => 'Informationen über Bücher',
-	'bookinfo-desc'              => 'Ergänzt [[Special:Booksources]] mit Informationen von einem Webangebot',
+	'bookinfo-desc'              => 'Ergänzt die [[Special:Booksources|Buchquellen-Spezialseite]] um Informationen von einem Webangebot',
 	'bookinfo-result-title'      => 'Titel:',
 	'bookinfo-result-author'     => 'Autor:',
 	'bookinfo-result-publisher'  => 'Verlag:',
@@ -616,10 +617,11 @@ $messages['is'] = array(
 
 /** Italian (Italiano)
  * @author BrokenArrow
+ * @author Darth Kule
  */
 $messages['it'] = array(
 	'bookinfo-header'            => 'Informazioni sui libri',
-	'bookinfo-desc'              => 'Aggiunge a [[Special:Booksources]] informazioni provenienti da un servizio Web',
+	'bookinfo-desc'              => 'Espande la [[Special:Booksources|pagina speciale per la ricerca di fonti librarie]] con informazioni provenienti da un servizio Web',
 	'bookinfo-result-title'      => 'Titolo:',
 	'bookinfo-result-author'     => 'Autore:',
 	'bookinfo-result-publisher'  => 'Editore:',
@@ -909,7 +911,7 @@ $messages['nds'] = array(
  */
 $messages['nl'] = array(
 	'bookinfo-header'            => 'Boekinformatie',
-	'bookinfo-desc'              => 'Uitbreiding voor [[Special:Booksources]] met informatie van een webservice',
+	'bookinfo-desc'              => 'Uitbreiding voor de [[Special:Booksources|special pagina Boekinformatie]] met informatie van een webservice',
 	'bookinfo-result-title'      => 'Titel:',
 	'bookinfo-result-author'     => 'Auteur:',
 	'bookinfo-result-publisher'  => 'Uitgever:',
@@ -935,7 +937,7 @@ $messages['nn'] = array(
  */
 $messages['no'] = array(
 	'bookinfo-header'            => 'Bokinformasjon',
-	'bookinfo-desc'              => 'Utvider [[Special:Booksources]] med informasjon fra en nettjeneste',
+	'bookinfo-desc'              => 'Utvider [[Special:Booksources|siden med bokkilder]] med informasjon fra en nettjeneste',
 	'bookinfo-result-title'      => 'Tittel:',
 	'bookinfo-result-author'     => 'Forfatter:',
 	'bookinfo-result-publisher'  => 'Utgiver:',

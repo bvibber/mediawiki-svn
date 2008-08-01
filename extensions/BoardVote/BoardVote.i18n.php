@@ -159,7 +159,6 @@ U moes ten minste $1 bydraes voor $2, en ten minste $3 bydraes tussen $4 en $5 g
 	'boardvote_user'           => 'Gebruiker',
 	'boardvote_edits'          => 'Redigerings',
 	'boardvote_days'           => 'Dae',
-	'boardvote_ip'             => 'IP',
 	'boardvote_ua'             => 'Gebruiker agent',
 	'boardvote_listintro'      => "<p>Hierdie is 'n lys van al die stemme wat tot dusver genoteer is.
 
@@ -312,17 +311,17 @@ $messages['ar'] = array(
 <li><a href="http://meta.wikimedia.org/wiki/Board_elections/2008/Candidates" class="external">المرشحون</a></li>
 <li><a href="http://en.wikipedia.org/wiki/Schulze_method" class="external">طريقة شولز</a></li></ul>',
 	'boardvote_intro_change'   => '<p>لقد قمت بالتصويت بالفعل. إلا أنه يجوز لك تعديل صوك من خلال النموذج في الاسفل. رجاء رتب المرشحين المقضلين لديك. الرقم الأقل يعني مرشح مفضل أكثر. يمكنك إعطاء نفس القيمة لأكثر من مرشح ، كما يمكنك تجاهل وضع أي قيمة لمرشح إذا لم تكن مهتما به.</p>',
-	'boardvote_entered'        => 'شكرا لك، لقد تم اعتماد صوتك.
+	'boardvote_entered'        => 'شكرا لك، لقد تم تسجيل صوتك.
 
 إذا رغبت، بمكنك حفظ المعلومات التالية. سجل تصويتك هو:
 
 <pre>$1</pre>
 
-تم تشفيرها باستعمال مفتاح عام  بخص اداري الانتخابات:
+تم تشفيرها باستعمال مفتاح عام بخص إداريي الانتخابات:
 
 <pre>$2</pre>
 
-النسخة التشفير الناتجة هي التالية. و سيتم عرضها للجميع في [[Special:Boardvote/dump|الصفحة]].
+نسخة التشفير الناتجة هي التالية. سيتم عرضها [[Special:Boardvote/dump|علنيا]].
 
 <pre>$3</pre>
 
@@ -435,7 +434,6 @@ A continuación amuésase la versión encriptada resultante. Va ser publicada en
 	'boardvote_user'         => 'Usuariu',
 	'boardvote_edits'        => 'Ediciones',
 	'boardvote_days'         => 'Díes',
-	'boardvote_ip'           => 'IP',
 	'boardvote_ua'           => 'Representante del usuariu',
 	'boardvote_listintro'    => '<p>Esta ye una llista de tolos votos rexistraos
 hasta la fecha. $1 pa los datos encriptaos.</p>',
@@ -694,7 +692,6 @@ $messages['bg'] = array(
 	'boardvote_user'           => 'Потребител',
 	'boardvote_edits'          => 'Редакции',
 	'boardvote_days'           => 'Дни',
-	'boardvote_ip'             => 'IP',
 	'boardvote_listintro'      => '<p>Тази страница съдържа списък на всички гласувания, отчетени към настоящия момент.
 $1 за криптирани данни.</p>',
 	'boardvote_dumplink'       => 'Тук',
@@ -825,7 +822,6 @@ Setu ar stumm sifrennet anezhañ. Dispaket e vo ent foran war [[Special:Boardvot
 	'boardvote_user'         => 'Implijer',
 	'boardvote_edits'        => 'Degasadennoù',
 	'boardvote_days'         => 'Deiz',
-	'boardvote_ip'           => 'IP',
 	'boardvote_ua'           => 'Dileuriad an implijer',
 	'boardvote_listintro'    => '<p>setu aze ur roll eus an holl votoù bet enrollet evit ar mare. $1 evit ar roadennoù sifrennet.</p>',
 	'boardvote_dumplink'     => 'Klikañ amañ',
@@ -1009,7 +1005,6 @@ Výsledná šifrovaná podoba následuje. Bude veřejně dostupná na stránce [
 	'boardvote_user'           => 'Uživatel',
 	'boardvote_edits'          => 'Editací',
 	'boardvote_days'           => 'Dní',
-	'boardvote_ip'             => 'IP',
 	'boardvote_ua'             => 'Klient',
 	'boardvote_listintro'      => '<p>Toto je seznam všech dosud zaznamenaných hlasů. Také můžete získat $1.</p>',
 	'boardvote_dumplink'       => 'šifrovaný záznam hlasování',
@@ -1155,6 +1150,7 @@ $messages['da'] = array(
 
 /** German (Deutsch)
  * @author Raimond Spekking
+ * @author Raymond
  */
 $messages['de'] = array(
 	'boardvote'                => 'Wahlen zum Wikimedia-Kuratorium',
@@ -1194,7 +1190,7 @@ Diese wurde mit dem Public Key der Wahladministratoren verschlüsselt:
 
 <pre>$2</pre>
 
-Die daraus folgende, verschlüsselte Version folgt unten. Sie wird öffentlich auf [[Special:Boardvote/dump]] angezeigt.
+Die daraus folgende, verschlüsselte Version folgt unten. Sie wird [[Special:Boardvote/dump|öffentlich angezeigt]].
 
 <pre>$3</pre>
 
@@ -1345,7 +1341,6 @@ $messages['el'] = array(
 	'boardvote_user'           => 'Χρήστης',
 	'boardvote_edits'          => 'Επεξεργασίες',
 	'boardvote_days'           => 'Ημέρες',
-	'boardvote_ip'             => 'IP',
 	'boardvote_ua'             => 'User agent',
 	'boardvote_listintro'      => '<p>Αυτός είναι ένας κατάλογος με όλες τις ψηφοφορίες που έχουν καταγραφεί μέχρι σήμερα. $1 για τα κρυπτογραφημένα δεδομένα</p>',
 	'boardvote_dumplink'       => 'Πάτησε εδώ',
@@ -1508,7 +1503,6 @@ Necesitas tener $1 ediciones antes del $2, y haber hecho por lo menos $3 edicion
 	'boardvote_user'           => 'Usuario',
 	'boardvote_edits'          => 'Ediciones',
 	'boardvote_days'           => 'Días',
-	'boardvote_ip'             => 'IP',
 	'boardvote_ua'             => 'Navegador',
 	'boardvote_listintro'      => '<p>Esta en una lista con todos los votos que hasta ahora han sido registrados.
 $1 para los datos codificados.</p>',
@@ -1828,7 +1822,6 @@ Il vous est nécessaire d’avoir au moins $1 {{PLURAL:$1|contribution effectué
 	'boardvote_user'           => 'Utilisateur',
 	'boardvote_edits'          => 'Modifications ',
 	'boardvote_days'           => 'Jours',
-	'boardvote_ip'             => 'IP',
 	'boardvote_ua'             => 'Agent utilisateur',
 	'boardvote_listintro'      => '<p>Liste de tous les votes ayant été enregistrés à ce jour.
 $1 pour les données cryptées.</p>',
@@ -1905,7 +1898,6 @@ La vèrsion criptâ siut. Serat afichiê publicament dessus [[Special:Boardvote/
 	'boardvote_user'         => 'Utilisator',
 	'boardvote_edits'        => 'Modificacions',
 	'boardvote_days'         => 'Jorns',
-	'boardvote_ip'           => 'IP',
 	'boardvote_ua'           => 'Reprèsentent de l’utilisator',
 	'boardvote_listintro'    => 'Lista de les gens èyent votâ :<br /><br />',
 	'boardvote_dumplink'     => 'Clicâd ique',
@@ -2444,7 +2436,6 @@ Ou dwèt fè $3 edisyon anvan $2, epitou premye edisyon ou an dwèt fèt anvan $
 	'boardvote_user'         => 'Itilizatè',
 	'boardvote_edits'        => 'Modifikasyon yo',
 	'boardvote_days'         => 'Jou yo',
-	'boardvote_ip'           => 'IP',
 	'boardvote_ua'           => 'Reprezantan itilizatè sa a',
 	'boardvote_listintro'    => 'Lis moun ki vote :<br /><br />
 $1 pou done yo ki pa kripte, sekirize.</p>',
@@ -2523,7 +2514,6 @@ Csak az szavazhat, aki $2 előtt legalább $3 szerkesztést végzett, valamint a
 	'boardvote_user'         => 'felhasználó',
 	'boardvote_edits'        => 'szerkesztések száma',
 	'boardvote_days'         => 'Napok',
-	'boardvote_ip'           => 'IP',
 	'boardvote_ua'           => 'User agent',
 	'boardvote_listintro'    => '<p>Itt olvasható az összes, mostanáig leadott szavazat.
 A titkosított adatokhoz $1.</p>',
@@ -2702,7 +2692,6 @@ Anda harus memiliki minimal $1 kontribusi sebelum $2, dan telah memiliki minimal
 	'boardvote_user'           => 'Pengguna',
 	'boardvote_edits'          => 'Suntingan',
 	'boardvote_days'           => 'Hari',
-	'boardvote_ip'             => 'IP',
 	'boardvote_ua'             => 'Aplikasi pengguna',
 	'boardvote_listintro'      => '<p>Berikut adalah daftar semua suara yang telah masuk sampai hari ini.
 $1 untuk data terenkripsi.</p>',
@@ -3022,7 +3011,6 @@ Panjenengan kudu nganggo sawijining rékening (akun) mawa minimal $1 kontribusi 
 	'boardvote_user'         => 'Panganggo',
 	'boardvote_edits'        => 'Suntingan',
 	'boardvote_days'         => 'Dina',
-	'boardvote_ip'           => 'IP',
 	'boardvote_ua'           => 'Agèn panganggo',
 	'boardvote_listintro'    => '<p>Ing ngisor iki kapacak daftar kabèh swara sing wis mlebu nganti dina iki. $1 iku kanggo data sing diènkripsi.</p>',
 	'boardvote_dumplink'     => 'Kliken ing kéné',
@@ -3270,7 +3258,6 @@ The resulting encrypted version follows. It will be displayed publicly on [[Spec
 	'boardvote_user'         => 'អ្នកប្រើប្រាស់',
 	'boardvote_edits'        => 'ចំនួនកំនែប្រែ',
 	'boardvote_days'         => 'ចំនួនថ្ងៃ',
-	'boardvote_ip'           => 'IP',
 	'boardvote_listintro'    => '<p>នេះជា​បញ្ជី​នៃគ្រប់សន្លឹកឆ្នោត​បានដែលត្រូវកត់ត្រាទុក​មកទល់ពេលនេះ ។ $1 សំរាប់​ទិន្នន័យ​បំលែង​ជា​អក្សរកូដ ។</p>',
 	'boardvote_dumplink'     => 'សូមចុចទីនេះ',
 	'boardvote_submit'       => 'យល់ព្រម',
@@ -3477,9 +3464,9 @@ Et gëtt ugeholl datt dir all déi Kandidaten, denen hir Preferenz Dir uginn hut
 <li><a href="http://meta.wikimedia.org/wiki/Board_elections/2008/Candidates" class="external">Kandidaten</a></li>
 <li><a href="http://en.wikipedia.org/wiki/Schulze_method" class="external">Schulze-Method</a></li></ul>',
 	'boardvote_intro_change'   => "<p>Dir hutt schonn ofgestëmmt. Dir kënnt är Stëmm awer mat dem Formulaire ënnedrënner änneren. Klickt op d'Këschten niewent de Kandidaten fir déi Dir wiele wëllt.</p>",
-	'boardvote_entered'        => "Merci, är Stëmm gouf gespäichert.
+	'boardvote_entered'        => 'Merci, är Stëmm gouf gespäichert.
 
-Wann der wëllt, kënnt der déi folgend Detailer festhalen. Är Ofstëmmungsfiche ass:
+Wann dir wëllt, kënnt dir dës Detailer festhalen. Är Ofstëmmungsfiche ass:
 
 <pre>$1</pre>
 
@@ -3487,11 +3474,11 @@ Dës Fiche gouf mam Public Key vun de Waladministrateure verschlësselt:
 
 <pre>$2</pre>
 
-D'verschlësselt Versioun dovunner fannt der ënnen. Si gëtt ëffentlech op [[Special:Boardvote/dump]] ugewisen.
+Déi verschlësselt Versioun dovunner fannt dir ënnen. Si gëtt [[Special:Boardvote/dump|ëffentlech ugewisen]].
 
 <pre>$3</pre>
 
-[[Special:Boardvote/entry|Zréck]]",
+[[Special:Boardvote/entry|Zréck]]',
 	'boardvote_invalidentered' => "<p><strong>Feeler:</strong> D'Präferenz vun de Kandidaten muss a ganze, positiven Zuelen ausgedréckt ginn (1, 2, 3, ...) oder loosst eidelgelooss ginn.</p>",
 	'boardvote_nosession'      => "Är Wikimedia Benotzernummer (ID) konnt net festgestallt ginn.
 Logged iech w.e.g. an déi Wiki an wou dir d'Bedingunge vun de Walen erfëllt a gitt op <nowiki>[[Special:Boardvote]]</nowiki>.
@@ -3505,7 +3492,6 @@ Dir musst mindestens $1 Kontributioune virum $2 gemaacht hunn, a mindestens $3 K
 	'boardvote_user'           => 'Benotzer',
 	'boardvote_edits'          => 'Ännerungen',
 	'boardvote_days'           => 'Deeg',
-	'boardvote_ip'             => 'IP',
 	'boardvote_ua'             => 'Vertrieder vum Benotzer',
 	'boardvote_listintro'      => '<p>Dëst ass eng Lëscht mat all Stëmmen déi bis haut gespäichert goufen.
 $1 fir déi verschlëselt Daten.</p>',
@@ -3694,7 +3680,6 @@ Paskutinė koduota versija žemiau. Ji bus viešai rodoma [[Special:Boardvote/du
 	'boardvote_user'         => 'Naudotojas',
 	'boardvote_edits'        => 'Redagavimai',
 	'boardvote_days'         => 'Dienos',
-	'boardvote_ip'           => 'IP',
 	'boardvote_ua'           => 'Naudotojo agentas',
 	'boardvote_dumplink'     => 'Spauskite čia',
 	'boardvote_submit'       => 'Gerai',
@@ -3779,7 +3764,6 @@ $messages['ml'] = array(
 	'boardvote_user'           => 'ഉപയോക്താവ്',
 	'boardvote_edits'          => 'തിരുത്തലുകള്‍',
 	'boardvote_days'           => 'ദിവസങ്ങള്‍',
-	'boardvote_ip'             => 'IP',
 	'boardvote_ua'             => 'യൂസര്‍ ഏജന്റ് (User agent)',
 	'boardvote_listintro'      => '<p>ഇന്നേ വരെ രേഖപ്പെടുത്തപ്പെട്ട എല്ലാ വോട്ടുകളുടേയും പട്ടികയാണിതു.  
 എന്‍‌ക്രിപറ്റ്ഡ് ഡാറ്റയ്ക്കു $1.</p>',
@@ -3955,7 +3939,6 @@ Berikut ialah data yang telah disulitkan. Ia akan ditunjukkan kepada orang ramai
 	'boardvote_user'           => 'Pengguna',
 	'boardvote_edits'          => 'Suntingan',
 	'boardvote_days'           => 'Hari',
-	'boardvote_ip'             => 'IP',
 	'boardvote_ua'             => 'Ejen pengguna',
 	'boardvote_listintro'      => '<p>Berikut merupakan senarai semua undi yang telah direkodkan sehingga hari ini.
 $1 untuk data yang disulitkan.</p>',
@@ -4100,7 +4083,7 @@ Deze is versleuteld met de publieke sleutel van de Verkiezingscommissie:
 
 <pre>$2</pre>
 
-Nu volgt de versleutelde versie. Deze is openbaar en na te zien op [[Special:Boardvote/dump]].
+Nu volgt de versleutelde versie. Deze is openbaar en [[Special:Boardvote/dump|na te zien]].
 
 <pre>$3</pre>
 
@@ -4216,7 +4199,7 @@ Det er blitt kryptert med den offentlige nøkkelen fra valgadminsitratorene:
 
 <pre>$2</pre>
 
-Dette resulterer i den følgende krypterte versjonen. Den vil vises offentlig på [[Special:Boardvote/dump]].
+Dette resulterer i den følgende krypterte versjonen. Den vil [[Special:Boardvote/dump|vises offentlig]].
 
 <pre>$3</pre>
 
@@ -4233,7 +4216,6 @@ For å stemme må du ha gjort minst $1 redigeringer før $2, og ha gjort minst $
 	'boardvote_user'           => 'Bruker',
 	'boardvote_edits'          => 'Redigeringer',
 	'boardvote_days'           => 'Dager',
-	'boardvote_ip'             => 'IP',
 	'boardvote_ua'             => 'Brukeragent',
 	'boardvote_listintro'      => '<p>Dette er en liste over alle stemmer som har blitt registrert hittil. $1 for krypterte data.</p>',
 	'boardvote_dumplink'       => 'Klikk her',
@@ -4314,7 +4296,7 @@ La version criptada seguís. Serà afichada publicament sus [[Special:Boardvote/
 [[Special:Boardvote/entry|Retorn]]",
 	'boardvote_invalidentered' => '<p><strong>Error</strong> : la preferéncia per un candidat deu èsser exprimida unicament sus de nombres positius dins lor totalitat (1, 2, 3…) o alara daissada voida.</p>',
 	'boardvote_nosession'      => 'Impossible de determinar vòstre identificant Wikimèdia. Rendètz-vos sus vòstre wiki d’origina, enregistratz-vos, e rendètz-vos sus la pagina <nowiki>[[Special:Boardvote]]</nowiki>. Vos cal aver un compte amb almens $1 contribucions efectuadas abans lo $2, e aver efectuat vòstra primièra edicion abans lo $3 e aver fach al mens $3 contribucions entre lo $4 e lo $5.',
-	'boardvote_notloggedin'    => 'Actualament sètz pas autentificat. Per votar, devètz utilizar un compte comportant al mens $1 contribucions abans lo $2, e aver efectuar al mens $3 contribucions entre lo $4 e lo $5.',
+	'boardvote_notloggedin'    => 'Actualament sètz pas autentificat. Per votar, vos cal utilizar un compte comportant al mens $1 contribucions abans lo $2, e aver efectuar al mens $3 contribucions entre lo $4 e lo $5.',
 	'boardvote_notqualified'   => "Respondètz pas a una de las condicions requesidas per votar a aqueste escrutin. Es necessari d’aver $3 contribucions abans lo $2, e n'avètz efectuadas $1. En otra, vòstra primièra modificacion data del $4, e deu aver estada facha abans lo $5.",
 	'boardvote_novotes'        => 'Degun a pas encara votat.',
 	'boardvote_time'           => 'Ora',
@@ -4444,7 +4426,6 @@ Zagłosować mógłbyś, gdybyś zalogował się na konto z przynajmniej $1 edyc
 	'boardvote_user'           => 'Użytkownik',
 	'boardvote_edits'          => 'Edycje',
 	'boardvote_days'           => 'dni',
-	'boardvote_ip'             => 'IP',
 	'boardvote_ua'             => 'Klient',
 	'boardvote_listintro'      => '<p>Lista wszystkich głosów dotychczas oddanych. $1 dla zakodowanych danych.</p>',
 	'boardvote_dumplink'       => 'Kliknij tutaj',
@@ -4474,7 +4455,7 @@ Może pojawić się ostrzeżenie o niepodpisanym certyfikacie.',
 	'right-boardvote'          => 'Zarządzanie przebiegiem wyborów',
 );
 
-/** Piemontèis (Piemontèis)
+/** Piedmontese (Piemontèis)
  * @author Bèrto 'd Sèra
  * @author Siebrand
  */
@@ -4640,7 +4621,6 @@ Seria necessário ter feito ao menos $1 edições antes de $2, tendo feito $3 ed
 	'boardvote_user'           => 'Utilizador',
 	'boardvote_edits'          => 'Edições',
 	'boardvote_days'           => 'Dias',
-	'boardvote_ip'             => 'IP',
 	'boardvote_ua'             => '"User agent"',
 	'boardvote_listintro'      => '<p>Esta é uma lista de todos votos registados até o momento.
 $1 para acessar os dados encriptados.</p>',
@@ -4826,7 +4806,6 @@ $messages['ru'] = array(
 	'boardvote_user'           => 'Участник',
 	'boardvote_edits'          => 'Число правок',
 	'boardvote_days'           => 'Дни',
-	'boardvote_ip'             => 'IP',
 	'boardvote_ua'             => 'Браузер',
 	'boardvote_listintro'      => '<p>Это список всех принятых на данный момент бюллетеней для голосования. В зашифрованном виде они доступны $1.</p>',
 	'boardvote_dumplink'       => 'Нажмите здесь',
@@ -4895,7 +4874,6 @@ $messages['sah'] = array(
 	'boardvote_user'         => 'Кыттааччы',
 	'boardvote_edits'        => 'Көннөрүүлэр',
 	'boardvote_days'         => 'Күннэр',
-	'boardvote_ip'           => 'IP',
 	'boardvote_ua'           => 'Браузер',
 	'boardvote_listintro'    => '<p>Бу быыбар бүллэтиэннэрин испииһэгэ. Билиҥҥи түмүгүн манна: $1 көрүөххэ сөп (ким туох иһин куоластаабыта көстүбэт).</p>',
 	'boardvote_dumplink'     => 'Маны баттаа',
@@ -4978,7 +4956,6 @@ Museli by ste urobiť aspoň $1 úprav pred $2 a aspoň $3 úprav medzi $4 a $5.
 	'boardvote_user'           => 'Používateľ',
 	'boardvote_edits'          => 'Úpravy',
 	'boardvote_days'           => 'Dni',
-	'boardvote_ip'             => 'IP',
 	'boardvote_ua'             => 'Prehliadač',
 	'boardvote_listintro'      => '<p>Toto je zoznam všetkých doteraz zaznamenaných hlasov. Kliknutím sem získate $1.</p>',
 	'boardvote_dumplink'       => 'kryptované údaje',
@@ -5223,7 +5200,6 @@ Din Browser mout so konfigurierd weese, dät hie Cookies fon dän externe Woalco
 	'boardvote_user'         => 'Benutser',
 	'boardvote_edits'        => 'Beoarbaidengen',
 	'boardvote_days'         => 'Deege',
-	'boardvote_ip'           => 'IP',
 	'boardvote_ua'           => 'User-Agent',
 	'boardvote_listintro'    => '<p>Dit is ne Lieste fon aal Stämme, do der tou nu tou ouroat wuuden. $1 foar do ferslöätelde Doaten.<p>',
 	'boardvote_dumplink'     => 'Klik hier',
@@ -5306,7 +5282,6 @@ Anjeun kudu grus boga minimal $1 éditan saméméh $2, jeung boga minimal $3 kon
 	'boardvote_user'           => 'Pamaké',
 	'boardvote_edits'          => 'Édit',
 	'boardvote_days'           => 'Poé',
-	'boardvote_ip'             => 'IP',
 	'boardvote_ua'             => 'Agén pamaké',
 	'boardvote_listintro'      => '<p>Di handap ieu béréndélan sakabéh sora nu geus kacatet. $1 pikeun enkripsi data.</p>',
 	'boardvote_dumplink'       => 'Klik di dieu',
@@ -5393,7 +5368,6 @@ Du måste ha gjort minst $1 redigeringar före $2, och minst $3 redigeringar mel
 	'boardvote_user'           => 'Användare',
 	'boardvote_edits'          => 'Redigeringar',
 	'boardvote_days'           => 'Dagar',
-	'boardvote_ip'             => 'IP',
 	'boardvote_ua'             => 'Användaragent',
 	'boardvote_listintro'      => '<p>Det här är en lista över alla röster som har registrerats hittills.
 $1 för de krypterade uppgifterna.</p>',
@@ -5790,7 +5764,6 @@ Bisogna necessariamente che te gavi $1 contributi prima del $2, e che te gavi fa
 	'boardvote_user'           => 'Utente',
 	'boardvote_edits'          => 'Modifiche',
 	'boardvote_days'           => 'Giòrni',
-	'boardvote_ip'             => 'IP',
 	'boardvote_ua'             => 'User agent',
 	'boardvote_listintro'      => '<p>Qua se cata na lista dei voti registrà fin desso. $1 par descargar i dati in forma cifrà.</p>',
 	'boardvote_dumplink'       => 'Struca qua',

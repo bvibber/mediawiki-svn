@@ -100,6 +100,17 @@ $messages['hsb'] = array(
 	'newsextension-desc' => 'Pokazuje přiměrjene aktualne změny na wikijowych stronach abo jako RSS abo kanal Atom',
 );
 
+/** Italian (Italiano)
+ * @author Darth Kule
+ */
+$messages['it'] = array(
+	'newsextension-desc'          => 'Mostra ultime modifiche personalizzate su una pagina wiki o come feed RSS o Atom',
+	'newsextension-unknownformat' => '$1: formato feed sconosciuto: $2<br />',
+	'newsextension-feednotfound'  => '$1: pagina del feed non trovata: $2<br />',
+	'newsextension-feedrequest'   => '$1: gestione della richiesta feed per $2<br />',
+	'newsextension-checkok'       => '$1: cache HTTP ok, header 304 inviato</br >',
+);
+
 /** Khmer (ភាសាខ្មែរ)
  * @author Chhorran
  * @author Lovekhmer

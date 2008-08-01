@@ -209,7 +209,7 @@ $messages['oc'] = array(
 	'createbox-create' => 'Crear',
 	'createbox-exists' => "O planhèm, \"'''{{FULLPAGENAME}}'''\" existís ja.
 
-Podètz pas crear aquesta pagina, mas la podètz [{{fullurl:{{FULLPAGENAME}}|action=edit}} modificar], [{{fullurl:{{FULLPAGENAME}}}} legir] o causir de crear una pagina diferenta amb l’ajuda de la boita çaijós.
+Podètz pas crear aquesta pagina, mas la podètz [{{fullurl:{{FULLPAGENAME}}|action=edit}} modificar], [{{fullurl:{{FULLPAGENAME}}}} legir] o causir de crear una pagina diferenta amb l’ajuda de la bóstia çaijós.
 
 <createbox>break=no</createbox>",
 );

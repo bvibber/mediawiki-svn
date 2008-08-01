@@ -489,7 +489,7 @@ $messages['mr'] = array(
  * @author SPQRobin
  */
 $messages['ms'] = array(
-	'deletedcontributions'      => 'Sumbangan pengguna yang telah dipadam',
+	'deletedcontributions'      => 'Sumbangan dihapuskan',
 	'deletedcontributions-desc' => 'Membolehkan penyelia melihat [[Special:DeletedContributions|suntingan pengguna yang telah dihapuskan]]',
 );
 

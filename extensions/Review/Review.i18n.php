@@ -242,9 +242,11 @@ $messages['da'] = array(
 
 /** German (Deutsch)
  * @author Revolus
+ * @author Leithian
  */
 $messages['de'] = array(
-	'review_user_details_link' => '(Details)',
+	'review_version_statistic_cell' => '$1 von $2',
+	'review_user_details_link'      => '(Details)',
 );
 
 /** Greek (Ελληνικά)

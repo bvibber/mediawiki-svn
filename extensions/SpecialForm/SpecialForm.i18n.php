@@ -87,7 +87,7 @@ $messages['ar'] = array(
 من فضلك املأها.',
 	'formrequiredfielderror'       => 'الحقل $1 مطلوب لهذه الاستمارة.
 من فضلك املأه.',
-	'formsavesummary'              => 'صفحة جديدة باستخدام [[Special:Form/$1]]',
+	'formsavesummary'              => 'صفحة جديدة باستخدام [[Special:Form/$1|الاستمارة $1]]',
 	'formsaveerror'                => 'خطأ في حفظ الاستمارة',
 	'formsaveerrortext'            => "حدث خطأ غير معروف أثناء حفظ الاستمارة '$1'.",
 );
@@ -143,6 +143,7 @@ $messages['cs'] = array(
 );
 
 /** German (Deutsch)
+ * @author Raymond
  */
 $messages['de'] = array(
 	'form'                         => 'Formular',
@@ -160,7 +161,7 @@ $messages['de'] = array(
 	'formbadpagenametext'          => 'Die eingegebenen Formulardaten erzeugen einen unzulässigen Seitennamen: „$1“.',
 	'formrequiredfieldpluralerror' => 'Die Felder $1 sind Pflichtfelder. Bitte fülle sie aus.',
 	'formrequiredfielderror'       => 'Das Feld $1 ist ein Pfichtfeld. Bitte fülle es aus.',
-	'formsavesummary'              => 'Neue Seite, die auf [[Special:Form/$1]] basiert',
+	'formsavesummary'              => 'Neue Seite, die auf dem [[Special:Form/$1|Formular $1]] basiert',
 	'formsaveerror'                => 'Fehler beim Speichern des Formulares',
 	'formsaveerrortext'            => 'Es gab einen unbekannten Fehler beim Speichern der Seite „$1“.',
 );
@@ -460,7 +461,7 @@ $messages['nl'] = array(
 	'formbadpagenametext'          => 'De formuliergegevens die u hebt opgegeven zorgen voor een onjuiste pagina, "$1".',
 	'formrequiredfieldpluralerror' => 'De velden $1 zijn verplicht voor dit formulier. Vul ze alstublieft in.',
 	'formrequiredfielderror'       => 'Het veld $1 is verplicht voor dit formulier. Vul het alstublieft in.',
-	'formsavesummary'              => 'Nieuwe pagina via [[Special:Form/$1]]',
+	'formsavesummary'              => 'Nieuwe pagina via [[Special:Form/$1|formulier $1]]',
 	'formsaveerror'                => 'Fout bij opslaan formulier',
 	'formsaveerrortext'            => "Er is een onbekende fout opgetreden bij het opslaan van pagina '$1'.",
 );
@@ -491,7 +492,7 @@ $messages['no'] = array(
 	'formbadpagenametext'          => 'Skjemadataene du skrev inn utgjør et ugyldig sidenavn, «$1».',
 	'formrequiredfieldpluralerror' => 'Feltene $1 er påkrevde for dette skjemaet. Vennligst fyll dem inn.',
 	'formrequiredfielderror'       => 'Feltet $1 er påkrevd for dette skjemaet. Vennligst fyll det inn.',
-	'formsavesummary'              => 'Ny side vha. [[Special:Form/$1]]',
+	'formsavesummary'              => 'Ny side vha. [[Special:Form/$1|skjemaet $1]]',
 	'formsaveerror'                => 'Feil under skjemalagring',
 	'formsaveerrortext'            => 'Det var en ukjent feil under lagring av siden ‘$1’.',
 );

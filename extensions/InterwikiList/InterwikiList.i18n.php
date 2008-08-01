@@ -82,6 +82,16 @@ $messages['hsb'] = array(
 	'interwikilist-target'   => 'Cilowy URL',
 );
 
+/** Italian (Italiano)
+ * @author Darth Kule
+ */
+$messages['it'] = array(
+	'interwikilist'          => 'Elenco interwiki',
+	'interwikilist-desc'     => 'Aggiunge una [[Special:Interwikilist|pagina speciale]] per visualizzare i collegamenti interwiki disponibili',
+	'interwikilist-linkname' => 'Collegamenti interwiki',
+	'interwikilist-target'   => 'URL di destinazione',
+);
+
 /** Khmer (ភាសាខ្មែរ)
  * @author Lovekhmer
  */
@@ -136,7 +146,7 @@ $messages['no'] = array(
  */
 $messages['oc'] = array(
 	'interwikilist'          => 'Tièra Interwiki',
-	'interwikilist-desc'     => 'Ajusta una [[Special:Interwikilist|pagina especiala]] per veire totes los ligams interwikis disponibles',
+	'interwikilist-desc'     => 'Apondís una [[Special:Interwikilist|pagina especiala]] per veire totes los ligams interwikis disponibles',
 	'interwikilist-linkname' => 'Ligam interwiki',
 	'interwikilist-target'   => 'Adreça concernida',
 );

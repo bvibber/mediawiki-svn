@@ -260,12 +260,30 @@ Bitte habe Geduld.',
  * @author Consta
  */
 $messages['el'] = array(
-	'youtubeauthsub_title'           => 'Τίτλος',
-	'youtubeauthsub_description'     => 'Περιγραφή',
-	'youtubeauthsub_keywords'        => 'Λέξεις κλειδιά',
-	'youtubeauthsub_category'        => 'Κατηγορία',
-	'youtubeauthsub_clickhere'       => 'Πατήστε εδώ για να συνδεθείτε στο YouTube',
-	'youtubeauthsub_jserror_notitle' => 'Παρακαλώ εισάγετε έναν τίτλο για το βίντεο.',
+	'youtubeauthsub-desc'                => 'Επιτρέπει στους χρήστες να [[Special:YouTubeAuthSub|ανεβάσουν βίντεο]] απευθείας στο YouTube',
+	'youtubeauthsub_title'               => 'Τίτλος',
+	'youtubeauthsub_description'         => 'Περιγραφή',
+	'youtubeauthsub_password'            => 'Κωδικός πρόσβασης στο YouTube',
+	'youtubeauthsub_username'            => 'Ψευδώνυμο στο YouTube',
+	'youtubeauthsub_keywords'            => 'Λέξεις κλειδιά',
+	'youtubeauthsub_category'            => 'Κατηγορία',
+	'youtubeauthsub_clickhere'           => 'Πατήστε εδώ για να συνδεθείτε στο YouTube',
+	'youtubeauthsub_success'             => "Συγχαρητήρια!
+Το βίντεο σας είναι ανεβασμένο.
+Για να δείτε το βίντεο σας πατήστε <a href='http://www.youtube.com/watch?v=$1'>εδώ</a>.
+Το YouTube μπορεί να χρειαστεί χρόνο για να συμπεριλάβει το βίντεο σας, γι' αυτό ίσως να μην ακόμη έτοιμο.
+
+Για να συμπεριληφθεί το βίντεο σας σε μια σελίδα στο wiki, εισάγεται τον ακόλουθο κώδικα σε μια σελίδα:
+<code>{{&#35;ev:youtube|$1}}</code>",
+	'youtubeauthsub_authsubinstructions' => 'Για να ανεβάσετε ένα βίντεο, θα πρέπει πρώτα να συνδεθείτε στο YouTube.',
+	'youtubeauthsub_uploadhere'          => 'Ανεβάστε το βίντεο σας από εδώ:',
+	'youtubeauthsub_code'                => '{{#ev:youtube|$1}}.
+
+Αυτό το βίντεο μπορεί να προβληθεί [http://www.youtube.com/watch?v=$1 εδώ]',
+	'youtubeauthsub_viewpage'            => 'Διαφορετικά, μπορείτε να δείτε το βίντεο σας [[$1|εδώ]].',
+	'youtubeauthsub_jserror_nokeywords'  => 'Παρακαλούμε εισάγεται 1 ή περισσότερες λέξεις κλειδιά.',
+	'youtubeauthsub_jserror_notitle'     => 'Παρακαλώ εισάγετε έναν τίτλο για το βίντεο.',
+	'youtubeauthsub_jserror_nodesc'      => 'Παρακαλούμε εισάγετε μια περιγραφή για το βίντεο.',
 );
 
 /** Esperanto (Esperanto)

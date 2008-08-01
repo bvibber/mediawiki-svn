@@ -109,10 +109,11 @@ $messages['da'] = array(
 
 /** German (Deutsch)
  * @author Raimond Spekking
+ * @author Raymond
  */
 $messages['de'] = array(
 	'filelist'              => 'Dateiliste',
-	'filelist-desc'         => 'Spezialseite zur Anzeige hochgeladener Dateien',
+	'filelist-desc'         => '[[Special:Filelist|Spezialseite]] zur Anzeige hochgeladener Dateien',
 	'filelist-show-list'    => 'Zeige Liste',
 	'filelist-show-gallery' => 'Zeige Galerie',
 	'filelist-image-desc'   => 'absteigend',

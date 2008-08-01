@@ -91,6 +91,13 @@ $messages['nl'] = array(
 	'wikitextloggedinout-desc' => 'Twee parserhooks: <tt>&lt;loggedin&gt;</tt> en <tt>&lt;loggedout&gt;</tt> om andere tekst weer te geven afhankelijk van de aanmeldstatus van een gebruiker',
 );
 
+/** Occitan (Occitan)
+ * @author Cedric31
+ */
+$messages['oc'] = array(
+	'wikitextloggedinout-desc' => "Dos croquets de parser, <tt>&lt;loggedin&gt;</tt> e <tt>&lt;loggedout&gt;</tt>, per mostrar un tèxt diferent en foncion de l'estatut de connexion de l’utilizaire",
+);
+
 /** Polish (Polski)
  * @author Sp5uhe
  */

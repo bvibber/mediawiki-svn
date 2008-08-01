@@ -505,6 +505,7 @@ $messages['cu'] = array(
  * @author Raimond Spekking
  * @author Leithian
  * @author Revolus
+ * @author Raymond
  */
 $messages['de'] = array(
 	'configure'                        => 'Konfiguration dieses Wikis',
@@ -526,7 +527,7 @@ $messages['de'] = array(
 	'configure-js-remove'              => 'Löschen',
 	'configure-js-remove-row'          => 'Diesen Eintrag löschen',
 	'configure-no-directory'           => 'Das Verzeichnis zum Speichern der Einstellungen, <tt>$1</tt>, ist nicht vorhanden. Bitte erstelle oder ändere es, um diese Erweiterung nutzen zu können',
-	'configure-no-old'                 => 'Es ist keine alte Version der Konfiguration vorhanden',
+	'configure-no-old'                 => 'Es ist keine alte Konfigurationsversion vorhanden.',
 	'configure-no-setup'               => '<code>efConfigureSetup()</code> muss explizit in deiner LocalSettings.php aufgerufen werden, um diese Erweiterung nutzen zu können.',
 	'configure-no-transwiki'           => 'Du hast keine Berechtigung, Einstellungen in anderen Wikis zu ändern',
 	'configure-old'                    => 'Alte Versionen',

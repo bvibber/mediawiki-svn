@@ -204,9 +204,28 @@ $messages['bg'] = array(
 
 /** German (Deutsch)
  * @author Leithian
+ * @author Raymond
  */
 $messages['de'] = array(
-	'grouppermissions-comment' => 'Kommentar:',
+	'grouppermissions'               => 'Gruppenberechtigungen verwalten',
+	'sortpermissions'                => 'Berechtigungen sortieren',
+	'removeunusedgroups'             => 'Unbenutzte Gruppen entfernen',
+	'grouppermissions-desc'          => 'Verwalten von Gruppenberechtigungen über eine [[Special:GroupPermissions|Spezialseite]]',
+	'grouppermissions-desc2'         => 'Erweitertes Berechtigungssystem',
+	'grouppermissions-header'        => 'Mit dieser Spezialseite kannst du die Berechtigungen verschiedener Benutzergruppen ändern.',
+	'grouppermissions-search'        => 'Gruppe:',
+	'grouppermissions-dologin'       => 'Anmelden',
+	'grouppermissions-dosearch'      => 'OK',
+	'grouppermissions-searchlabel'   => 'Suche nach Gruppe',
+	'grouppermissions-deletelabel'   => 'Gruppe löschen',
+	'grouppermissions-error'         => 'Es ist ein unbekannter Fehler aufgetreten. Klicke bitte auf die Zurück-Schaltfläche deines Browsers und sende die Seite erneut ab.',
+	'grouppermissions-change'        => 'Gruppenberechtigungen ändern',
+	'grouppermissions-add'           => 'Gruppe hinzufügen',
+	'grouppermissions-delete'        => 'Gruppe löschen',
+	'grouppermissions-comment'       => 'Kommentar:',
+	'grouppermissions-addsuccess'    => '$1 wurde erfolgreich hinzugefügt',
+	'grouppermissions-deletesuccess' => '$1 wurde erfolgreich gelöscht',
+	'grouppermissions-sp-header'     => 'Auf dieser Spezialseite kannst du Berechtigungen sortieren und neue Berechtigungen einrichten.',
 );
 
 /** Greek (Ελληνικά)

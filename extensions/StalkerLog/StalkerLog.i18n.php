@@ -43,6 +43,17 @@ $messages['de'] = array(
 	'stalkerlog-log-text'   => 'Dies ist das Logbuch der An- und Abmeldungen.',
 );
 
+/** French (Français)
+ * @author Grondin
+ */
+$messages['fr'] = array(
+	'stalkerlog-desc'       => 'Ajoute [[Special:Log/stalkerlog|un journal]] des connections des utilisateurs',
+	'stalkerlog-log-login'  => 'connecté.',
+	'stalkerlog-log-logout' => 'déconnecté.',
+	'stalkerlog-log-type'   => 'Journal d’authentification de l’utilisateur',
+	'stalkerlog-log-text'   => 'Voici un journal des connections et des déconnections de l’utilisateur.',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

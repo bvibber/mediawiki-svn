@@ -433,12 +433,13 @@ Novější verze $2 je dostupná na http://pecl.php.net/package/APC/$2.',
  * @author Pill
  * @author Leithian
  * @author Revolus
+ * @author Raymond
  */
 $messages['de'] = array(
 	'viewapc'                       => 'APC-Informationen',
 	'viewapc-clear-confirm'         => 'Möchtest du den Cache leeren?',
 	'viewapc-info-general'          => 'Generelle Informationen',
-	'viewapc-apc-version'           => 'APC Version',
+	'viewapc-apc-version'           => 'APC-Version',
 	'viewapc-php-version'           => 'PHP-Version',
 	'viewapc-shared-memory'         => 'Shared Memory',
 	'viewapc-cached-files'          => 'Zwischengespeicherte Dateien',
@@ -492,6 +493,17 @@ $messages['de'] = array(
 	'viewapc-ls-nodata'             => "''Keine passenden Daten''",
 	'viewapc-version-info'          => 'Versionsinformationen',
 	'viewapc-version-changelog'     => 'Changelog',
+);
+
+/** Greek (Ελληνικά)
+ * @author Consta
+ */
+$messages['el'] = array(
+	'viewapc-display-mem_size' => 'Μέγεθος',
+	'viewapc-ls-header-name'   => 'Όνομα',
+	'viewapc-ls-header-size'   => 'Μέγεθος',
+	'viewapc-ls-sort-size'     => 'Μέγεθος',
+	'viewapc-ls-sort-name'     => 'Όνομα',
 );
 
 /** Esperanto (Esperanto)
@@ -2719,6 +2731,13 @@ $messages['te'] = array(
 	'viewapc-ls-limit-none'     => 'అన్నీ',
 	'viewapc-ls-nodata'         => "''పోలిన భోగట్టా ఏమీ లేదు''",
 	'viewapc-version-info'      => 'సంచిక సమాచారం',
+);
+
+/** Tajik (Cyrillic) (Тоҷикӣ/tojikī (Cyrillic))
+ * @author Ibrahim
+ */
+$messages['tg-cyrl'] = array(
+	'viewapc-display-value' => 'Қимат',
 );
 
 /** Ukrainian (Українська)

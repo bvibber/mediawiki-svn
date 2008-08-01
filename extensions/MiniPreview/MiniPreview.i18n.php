@@ -158,6 +158,23 @@ karaktersorozattal kezdődő kategóriát, így a „Közkincs-régi”-t sem.
 * Saját',
 );
 
+/** Italian (Italiano)
+ * @author Darth Kule
+ */
+$messages['it'] = array(
+	'minipreview-desc'                => "MiniPreview mostra, affianco a un'immagine, piccole anteprima di file multimediali nella stessa categoria o mostrati nella stessa pagina",
+	'minipreview-files_in_category'   => '$1 file totali in questa categoria.',
+	'minipreview-files_in_gallery'    => '$1 file totali in questa galleria.',
+	'minipreview-no_more_files_here'  => 'Nessun altro file in questa direzione.',
+	'minipreview-no_category_gallery' => 'Nessuna categoria o galleria!',
+	'minipreview-ignore_categories'   => 'Di seguito è riportato un elenco di nomi di categorie o inizi di nomi. Queste categorie non verranno mostrate da MiniPreview. Per esempio, "* PD-" non mostrerà tutte le categorie che cominciano con "PD-", come "PD-old".
+* GFDL-
+* GFDL
+* CC-
+* PD-
+* Self',
+);
+
 /** Javanese (Basa Jawa)
  * @author Meursault2004
  */
@@ -185,6 +202,14 @@ $messages['lb'] = array(
 	'minipreview-files_in_category'   => 'Et gëtt am ganzen $1 {{PLURAL:$1|Fichier|Fichieren}} an dëser Kategorie.',
 	'minipreview-files_in_gallery'    => 'Et gëtt am ganzen $1 {{PLURAL:$1|Fichier|Fichieren}} an dëser Biller-Galerie.',
 	'minipreview-no_category_gallery' => 'Keng Kategorien oder Galerien!',
+);
+
+/** Lithuanian (Lietuvių)
+ * @author Hugo.arg
+ */
+$messages['lt'] = array(
+	'minipreview-files_in_category' => '$1 iš viso failų šioje kategorijoje.',
+	'minipreview-files_in_gallery'  => '$1 iš viso failų šioje galerijoje.',
 );
 
 /** Malayalam (മലയാളം)

@@ -1208,6 +1208,15 @@ $messages['oc'] = array(
 	'voctrain_Definitions'                                                                          => 'Definicions',
 	'voctrain_Could_not_create_new_user'                                                            => 'A pas pogut crear un utilizaire novèl',
 	'voctrain_Type_a_username_and_optional_password_or_try_a_different_username_'                   => 'Picatz un nom d’utilizaire e un senhal facultatiu, (o alara ensajatz un autre nom d’utilizaire)',
+	'voctrain_Vocview'                                                                              => 'Visualizador del vocabulari',
+	'voctrain_Dictionary_definitions'                                                               => 'definicions_diccionari',
+	'voctrain_Translation'                                                                          => 'Traduccion',
+	'voctrain_unhide_definition'                                                                    => 'tornar afichar la definicion',
+	'voctrain_unhide_words'                                                                         => 'tornar afichar los mots',
+	'voctrain_hiding'                                                                               => 'Amagament',
+	'voctrain_hide_definitions_in_question_language'                                                => 'Amaga las definicions dins las lengas per las questions',
+	'voctrain_hide_words_in_question_language'                                                      => 'Amagar los mots dins las lengas per las questions',
+	'voctrain_Separate_values_by_commas_to_use_multiple_languages_'                                 => 'Separar las valors per de virgulas per utilizar mantuna lenga.',
 );
 
 /** Polish (Polski)

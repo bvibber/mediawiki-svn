@@ -229,9 +229,11 @@ $messages['is'] = array(
 
 /** Italian (Italiano)
  * @author Nemo bis
+ * @author Darth Kule
  */
 $messages['it'] = array(
-	'languageselector' => 'Lingua',
+	'languageselector'         => 'Lingua',
+	'languageselector-setlang' => 'imposta',
 );
 
 /** Japanese (日本語)

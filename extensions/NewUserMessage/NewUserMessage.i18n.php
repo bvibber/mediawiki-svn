@@ -127,6 +127,13 @@ $messages['lb'] = array(
 	'newusermessage-desc' => "Ee [[MediaWiki:NewUserMessage|Message]] op d'Diskussiounssäite vun neie Benotzer setzen",
 );
 
+/** Lithuanian (Lietuvių)
+ * @author Hugo.arg
+ */
+$messages['lt'] = array(
+	'newusermessage-desc' => 'Prideda [[MediaWiki:NewUserMessage|pranešimą]] į naujai sukurtų naudotojų aptarimų puslapius.',
+);
+
 /** Malayalam (മലയാളം)
  * @author Shijualex
  */

@@ -535,7 +535,7 @@ $messages['oc'] = array(
 	'imagetagging-tagging-instructions'     => 'Clicar sus las personas o las causas dins l’imatge per las balisar.',
 	'imagetagging-addingtag'                => 'Balisa en cors d’ajust…',
 	'imagetagging-removingtag'              => 'Balisa en cors de levament…',
-	'imagetagging-addtagsuccess'            => 'Balisa ajustada.',
+	'imagetagging-addtagsuccess'            => 'Balisa aponduda.',
 	'imagetagging-removetagsuccess'         => 'Balisa levada.',
 	'imagetagging-canteditneedloginmessage' => 'Podètz pas modificar aquesta pagina.
 Aquò poiriá èsser perque avètz besonh de vos connectar per balisar los imatges.

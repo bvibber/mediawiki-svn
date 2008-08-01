@@ -259,6 +259,15 @@ $messages['lb'] = array(
 	'onlinestatus-toggle-online'    => 'Online',
 );
 
+/** Lithuanian (Lietuvių)
+ * @author Hugo.arg
+ */
+$messages['lt'] = array(
+	'onlinestatus-toggles-desc'   => 'Jūsų statusas:',
+	'onlinestatus-toggle-offline' => 'Neprisijungęs',
+	'onlinestatus-toggle-online'  => 'Prisijungęs',
+);
+
 /** Malayalam (മലയാളം)
  * @author Shijualex
  */

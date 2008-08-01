@@ -66,8 +66,7 @@ $messages['ang'] = array(
  */
 $messages['ar'] = array(
 	'createsigndocument'                 => 'فعل توقيع الوثيقة',
-	'createsigndoc-head'                 => "استخدم هذه الوثيقة لإنشاء صفحة 'Sign Document' للصفحة المعطاة، بحيث
-يمكن للمستخدمين توقيعها من خلال [[Special:SignDocument]].
+	'createsigndoc-head'                 => "استخدم هذه الوثيقة لإنشاء صفحة 'Sign Document' للصفحة المعطاة، بحيث يمكن للمستخدمين [[Special:SignDocument|توقيعها]].
 من فضلك حدد اسم الصفحة التي تود تفعيل التوقيع الرقمي عليها، أعضاء أي مجموعة مستخدم مسموح لهم بتوقيعها، أي حقول تود أن تكون مرئية للمستخدمين وأي يجب أن تكون اختيارية، عمر أدنى لمستخدمين ليمكن لهم توقيع الوثيقة (لا حد أدنى لو حذفت)؛
 ونص تقديمي مختصر يصف الوثيقة ويوفر التعليمات للمستخدمين.
 
@@ -480,13 +479,14 @@ $messages['nah'] = array(
  */
 $messages['nl'] = array(
 	'createsigndocument'                 => 'Documentondertekening inschakelen',
-	'createsigndoc-head'                 => "Gebruik dit formulier om een pagina 'Document ondertekenen' voor een gegeven pagina te maken, zodat gebruikers het kunnen ondertekenen via [[Special:SignDocument]].
-Geef alstublieft op voor welke pagina u digitaal ondertekenen wilt inschakelen, welke gebruikersgroepen kunnen ondertekeken, welke velden zichtbaar moeten zijn voor gebruikers en welke optioneel zijn, een minimale leeftijd waaraan gebruikers moeten voldoen alvorens te kunnen ondertekenen (geen beperkingen als leeg gelaten);
+	'createsigndoc-head'                 => "Gebruik dit formulier om een pagina 'Document ondertekenen' voor een gegeven pagina te maken, zodat gebruikers het kunnen [[Special:SignDocument|ondertekenen]].
+Geef alstublieft op voor welke pagina u digitaal ondertekenen wilt inschakelen, welke gebruikersgroepen kunnen ondertekenen, welke velden zichtbaar moeten zijn voor gebruikers en welke optioneel zijn, een minimale leeftijd waaraan gebruikers moeten voldoen alvorens te kunnen ondertekenen (geen beperkingen als leeg gelaten);
 en een korte inleidende tekst over het document en instructies voor de gebruikers.
 
 <b>Er is op het moment geen mogelijkheid om te ondertekenen documenten te verwijderen of te wijzigen nadat ze zijn aangemaakt</b> zonder directe toegang tot de database.
 Daarnaast is de tekst van de pagina die wordt weergegeven op de ondertekeningspagina de ''huidige'' tekst van de pagina, ongeacht de wijzigingen die erna gemaakt worden.
-Zorg er alstublieft voor dat het document een stabiele versie heeft voordat u ondertekenen inschakelt, en zorg er alstublieft voor dat alle velden de juiste waarden hebben ''voordat u het formulier instuurt''.",
+Zorg er alstublieft voor dat het document een stabiele versie heeft voordat u ondertekenen inschakelt.
+Zorg er ook voor dat alle velden de juiste waarden hebben ''voordat u het formulier instuurt''.",
 	'createsigndoc-pagename'             => 'Pagina:',
 	'createsigndoc-allowedgroup'         => 'Toegelaten groep:',
 	'createsigndoc-email'                => 'E-mailadres:',
@@ -519,7 +519,7 @@ $messages['nn'] = array(
  */
 $messages['no'] = array(
 	'createsigndocument'                 => 'Slå på dokumentsignering',
-	'createsigndoc-head'                 => "Bruk dette skjemaet for å opprette et «signaturdokument» for denne siden, slik at brukere kan signere den via [[Special:SignDocument]]. Vennligst oppgi sidens navn, hvilken brukergruppe som skal kunne signere den, hvilke felter som skal være synlige for brukerne, hvilke som skal være valgfrie, minimumsalder for å kunne signere dokumentet (om denne ikke oppgis, er det ingen grense), og en kjapp introduksjonstekst som beskriver dokumentet og gir instruksjoner til brukerne.
+	'createsigndoc-head'                 => "Bruk dette skjemaet for å opprette et «signaturdokument» for denne siden, slik at brukere kan [[Special:SignDocument|signere den]]. Vennligst oppgi sidens navn, hvilken brukergruppe som skal kunne signere den, hvilke felter som skal være synlige for brukerne, hvilke som skal være valgfrie, minimumsalder for å kunne signere dokumentet (om denne ikke oppgis, er det ingen grense), og en kjapp introduksjonstekst som beskriver dokumentet og gir instruksjoner til brukerne.
 
 <b>Det er ingen måte å slette eller endre signaturdokumenter etter at de opprettes</b> uten direkte databasetilgang. Teksten på siden på signatursiden vil også være den ''nåværende'' teksten, uavhengig av hvilke endringer som gjøres etter i dag. Vær hundre prosent sikker på at dokumentet er stabilt når det signeres, og vær også sikker på at du oppgir alle felt som de burde være, ''før du lagrer dette skjemaet''.",
 	'createsigndoc-pagename'             => 'Side:',

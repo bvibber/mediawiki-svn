@@ -82,6 +82,15 @@ $messages['lb'] = array(
 	'right-move-userpages'  => 'Benotzersäite réckelen',
 );
 
+/** Lithuanian (Lietuvių)
+ * @author Hugo.arg
+ */
+$messages['lt'] = array(
+	'nomoveuserpages-desc'  => 'Draudžia naudotojams perkelti naudotojų puslapius, nebent jie turi perkėlimo teisę',
+	'nomoveuserpages-error' => 'Naudotojų puslapių perkėlimas buvo išjungtas',
+	'right-move-userpages'  => 'Perkelti naudotojų puslapius',
+);
+
 /** Dutch (Nederlands)
  * @author SPQRobin
  * @author Siebrand

@@ -276,6 +276,13 @@ $messages['da'] = array(
 	'openidchoosepassword' => 'adgangskode:',
 );
 
+/** German (Deutsch)
+ * @author Leithian
+ */
+$messages['de'] = array(
+	'openidlanguage' => 'Sprache',
+);
+
 /** Greek (Ελληνικά)
  * @author Consta
  */

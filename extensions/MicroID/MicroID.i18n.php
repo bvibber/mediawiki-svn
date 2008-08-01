@@ -79,6 +79,14 @@ $messages['hsb'] = array(
 	'tog-microid' => '<a href="http://microid.org/">MicroID</a> publikować, zo by so konto z wonkownymi słužbami potwjerdźiło',
 );
 
+/** Italian (Italiano)
+ * @author Darth Kule
+ */
+$messages['it'] = array(
+	'microid-desc' => "Aggiunge un [http://www.microid.org/ MicroID] alle pagine utente per confermare l'account con servizi esterni",
+	'tog-microid'  => 'Pubblica un <a href="http://microid.org/">MicroID</a> per confermare l\'account con servizi esterni',
+);
+
 /** Khmer (ភាសាខ្មែរ)
  * @author Chhorran
  */

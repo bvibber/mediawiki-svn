@@ -1033,7 +1033,7 @@ $messages['oc'] = array(
  * @author Gman124
  */
 $messages['pa'] = array(
-	'regexblock-view-all' => 'ਸਬ ਕੁਝ',
+	'regexblock-view-all' => 'ਸਭ',
 );
 
 /** Polish (Polski)

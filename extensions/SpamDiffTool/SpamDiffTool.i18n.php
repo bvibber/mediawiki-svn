@@ -449,7 +449,7 @@ $messages['oc'] = array(
 	'spamdifftool_cantedit'         => 'O planhèm - Avètz pas la permission d’editar la Lista Negra dels Spams.',
 	'spamdifftool_notext'           => "I a pas de tèxt d'ajustar a la Lista Negra dels Spams. Clicatz <a href='$1'>aicí</a> per contunhar.",
 	'spamdifftool_confirm'          => "Confirmatz que volètz apondre aquestas entradas dins la Lista Negra dels Spams. (Clicatz <a href='$1' target='new'>aicí</a> per senhalar tot problèma.)",
-	'spamdifftool_summary'          => 'Ajustat a la Lista Negra dels Spams',
+	'spamdifftool_summary'          => 'Apondut a la Tièra Negra dels Spams',
 	'spamdifftool_urls_detected'    => "Las URLs seguentas son estadas detectadas dins aquestas modificacions.
 Qualas son las que volètz apondre a la Lista Negra dels Spams ?
 Aquestas opcions van de las mai restrictivas vèrs las mens restrictivas.

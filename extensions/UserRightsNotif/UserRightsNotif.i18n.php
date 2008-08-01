@@ -380,7 +380,7 @@ $2',
  */
 $messages['oc'] = array(
 	'userrightsnotifysubject' => 'Cambiament d’apartenéncia a de gropes d’utilizaires sus $1',
-	'userrightsnotifybody'    => "Bonjorn $1, Ai l'onor de vos informar que vòstra apartenéncia als gropes d'utilizaires sus $2 es estada modificada per $3 lo $4. Ajustat : $5 Levat : $6 Coralament, $2",
+	'userrightsnotifybody'    => "Bonjorn $1, Ai l'onor de vos informar que vòstra apartenéncia als gropes d'utilizaires sus $2 es estada modificada per $3 lo $4. Apondut : $5 Levat : $6 Coralament, $2",
 	'userrightsnotif-desc'    => 'Manda una notificacion, per corrièr electronic, als utilizaires concernits al moment de la modificacion de lors dreches',
 );
 
