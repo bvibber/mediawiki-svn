@@ -20,6 +20,9 @@ Did you enter the name correctly?</b>",
 	'desysopnot_sysop'     => 'This user is not an administrator',
 );
 
+/** Arabic (العربية)
+ * @author Meno25
+ */
 $messages['ar'] = array(
 	'desysoptitle'         => 'اسحب الصلاحيات الإدارية من مستخدم',
 	'desysoptext'          => 'هذه الاستمارة يتم استخدامها بواسطة البيروقراطيين لسحب صلاحيات المستخدم الإدارية. اكتب اسم المستخدم في الصندوق واضغط الزر لكي تسحب صلاحيات المستخدم الإدارية.',
