@@ -7,12 +7,12 @@ $messages = array();
 
 $messages['en'] = array(
 	'newsextension-desc'          => 'Shows customized recent changes on a wiki pages or as RSS or Atom feed',
-	'newsextension-unknownformat' => '$1: unknown feed format : $2<br />',	
-	'newsextension-feednotfound'  => '$1: feed page not found : $2<br />',
+	'newsextension-unknownformat' => '$1: unknown feed format: $2<br />',	
+	'newsextension-feednotfound'  => '$1: feed page not found: $2<br />',
 	'newsextension-feedrequest'   => '$1: handling feed request for $2<br />',
 	'newsextension-checkok'       => '$1: HTTP cache ok, 304 header sent</br >',
 	'newsextension-checkok1'      => '$1: checking cache-ok:  IMS $2 vs. changed $3<br />',
-	'newsextension-gotcached'     => '$1: ($2? "got cached" : "no cached")<br />',
+	'newsextension-gotcached'     => '$1: ($2? "got cached": "no cached")<br />',
 	'newsextension-purge'         => '$1: purge, ignoring cache<br />',
 	'newsextension-loggin'        => '$1: logged in, ignoring cache<br />',
 	'newsextension-outputting'    => '$1: outputting cached copy ($2): $3 < {$4}<br />',
