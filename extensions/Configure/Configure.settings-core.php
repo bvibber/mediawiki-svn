@@ -513,6 +513,7 @@ $settings = array(
 			'wgAllowExternalImages' => 'bool',
 			'wgAllowExternalImagesFrom' => 'text',
 			'wgExpensiveParserFunctionLimit' => 'int',
+			'wgCleanSignatures' => 'bool',
 			'wgGrammarForms' => 'array',
 			'wgMaxPPExpandDepth' => 'int',
 			'wgMaxPPNodeCount' => 'int',
@@ -1131,6 +1132,7 @@ $settingsVersion = array(
 	'wgExemptFromUserRobotsControl' => array( array( '1.14alpha', '>=' ) ),
 	'wgHandheldStyle' => array( array( '1.14alpha', '>=' ) ),
 	'wgHandheldForIPhone' => array( array( '1.14alpha', '>=' ) ),
+	'wgCleanSignatures' => array( array( '1.14alpha', '>=' ) ),
 ## Obsolete
 	'wgProfileSampleRate' => array( array( '1.8alpha', '<' ) ),
 	'wgProfilerType' => array( array( '1.8alpha', '<' ) ),
