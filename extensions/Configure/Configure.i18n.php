@@ -508,7 +508,7 @@ $messages['cu'] = array(
  */
 $messages['de'] = array(
 	'configure'                        => 'Konfiguration dieses Wikis',
-	'configure-desc'                   => 'Ermögliche berechtigten Benutzern das Wiki über eine webbasierte Oberfläche zu [[Special:Configure|konfigurierene]]',
+	'configure-desc'                   => 'Ermögliche berechtigten Benutzern das Wiki über eine webbasierte Oberfläche zu [[Special:Configure|konfigurieren]]',
 	'configure-desc-group'             => 'Gruppen',
 	'configure-desc-key'               => 'Schlüssel',
 	'configure-desc-ns'                => 'Namensräume',
@@ -531,7 +531,7 @@ $messages['de'] = array(
 	'configure-no-transwiki'           => 'Du hast keine Berechtigung, Einstellungen in anderen Wikis zu ändern',
 	'configure-old'                    => 'Alte Versionen',
 	'configure-old-versions'           => 'Liste der alten Versionen der Konfiguration:',
-	'configure-old-not-available'      => 'Die alte Version an Einstellungen, die du angefragt hast, $1, ist nicht vorhanden',
+	'configure-old-not-available'      => 'Die alte Version der Einstellungen, die du angefragt hast, $1, ist nicht vorhanden',
 	'configure-saved'                  => 'Die Konfiguration wurde gespeichert',
 	'configure-section-general'        => 'Allgemeine Einstellungen',
 	'configure-section-paths'          => 'Pfade',
