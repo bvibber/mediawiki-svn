@@ -85,6 +85,7 @@ function DynamicPageList( $input ) {
 	$sOrderMethod = 'categoryadd';
 	$sOrder = 'descending';
 	$sRedirects = 'exclude';
+	$sStable = $sQuality = 'include';
 
 	$bNamespace = false;
 	$iNamespace = 0;
@@ -125,23 +126,23 @@ function DynamicPageList( $input ) {
 		else if ('namespace' == $sType)
 		{
 			$ns = $wgContLang->getNsIndex($sArg);
-	if (NULL != $ns)
-	{
-		$iNamespace = $ns;
-		$bNamespace = true;
-	}
-	else
-	{
-		$iNamespace = intval($sArg);
-		if ($iNamespace >= 0)
-		{
-			$bNamespace = true;
-		}
-		else
-		{
-			$bNamespace = false;
-		}
-	}
+			if (NULL != $ns)
+			{
+				$iNamespace = $ns;
+				$bNamespace = true;
+			}
+			else
+			{
+				$iNamespace = intval($sArg);
+				if ($iNamespace >= 0)
+				{
+					$bNamespace = true;
+				}
+				else
+				{
+					$bNamespace = false;
+				}
+			}
 		}
 		else if ('count' == $sType)
 		{
@@ -151,54 +152,54 @@ function DynamicPageList( $input ) {
 		}
 		else if ('mode' == $sType)
 		{
-	switch ($sArg)
-	{
-	case 'none':
-		$sStartList = '';
-		$sEndList = '';
-		$sStartItem = '';
-		$sEndItem = '<br />';
-		break;
-	case 'ordered':
-		$sStartList = '<ol>';
-		$sEndList = '</ol>';
-		$sStartItem = '<li>';
-		$sEndItem = '</li>';
-		break;
-	case 'unordered':
-	default:
-		$sStartList = '<ul>';
-		$sEndList = '</ul>';
-		$sStartItem = '<li>';
-		$sEndItem = '</li>';
-		break;
-	}
+			switch ($sArg)
+			{
+			case 'none':
+				$sStartList = '';
+				$sEndList = '';
+				$sStartItem = '';
+				$sEndItem = '<br />';
+				break;
+			case 'ordered':
+				$sStartList = '<ol>';
+				$sEndList = '</ol>';
+				$sStartItem = '<li>';
+				$sEndItem = '</li>';
+				break;
+			case 'unordered':
+			default:
+				$sStartList = '<ul>';
+				$sEndList = '</ul>';
+				$sStartItem = '<li>';
+				$sEndItem = '</li>';
+				break;
+			}
 		}
 		else if ('order' == $sType)
 		{
 			switch ($sArg)
-	{
-	case 'ascending':
-		$sOrder = 'ascending';
-		break;
-	case 'descending':
-	default:
-		$sOrder = 'descending';
-		break;
-	}
+			{
+			case 'ascending':
+				$sOrder = 'ascending';
+				break;
+			case 'descending':
+			default:
+				$sOrder = 'descending';
+				break;
+			}
 		}
 		else if ('ordermethod' == $sType)
 		{
-	switch ($sArg)
-	{
-	case 'lastedit':
-		$sOrderMethod = 'lastedit';
-		break;
-	case 'categoryadd':
-	default:
-		$sOrderMethod = 'categoryadd';
-		break;
-	}
+			switch ($sArg)
+			{
+			case 'lastedit':
+				$sOrderMethod = 'lastedit';
+				break;
+			case 'categoryadd':
+			default:
+				$sOrderMethod = 'categoryadd';
+				break;
+			}
 		}
 		else if ('redirects' == $sType)
 		{
@@ -216,12 +217,44 @@ function DynamicPageList( $input ) {
 				break;
 			}
 		}
+		else if ('stablepages' == $sType)
+		{
+			switch ($sArg)
+			{
+			case 'include':
+				$sStable = 'include';
+				break;
+			case 'only':
+				$sStable = 'only';
+				break;
+			case 'exclude':
+			default:
+				$sStable = 'exclude';
+				break;
+			}
+		}
+		else if ('qualitypages' == $sType)
+		{
+			switch ($sArg)
+			{
+			case 'include':
+				$sQuality = 'include';
+				break;
+			case 'only':
+				$sQuality = 'only';
+				break;
+			case 'exclude':
+			default:
+				$sQuality = 'exclude';
+				break;
+			}
+		}
 		else if ('suppresserrors' == $sType)
 		{
-	if ('true' == $sArg)
-		$bSuppressErrors = true;
-	else
-		$bSuppressErrors = false;
+			if ('true' == $sArg)
+				$bSuppressErrors = true;
+			else
+				$bSuppressErrors = false;
 		}
 		else if ('addfirstcategorydate' == $sType)
 		{
@@ -232,10 +265,10 @@ function DynamicPageList( $input ) {
 		}
 		else if ('shownamespace' == $sType)
 		{
-	if ('false' == $sArg)
-		$bShowNamespace = false;
-	else
-		$bShowNamespace = true;
+			if ('false' == $sArg)
+				$bShowNamespace = false;
+			else
+				$bShowNamespace = true;
 		}
 	}
 
@@ -298,6 +331,35 @@ function DynamicPageList( $input ) {
 		$sSqlWhere = ' WHERE page_namespace='.$iNamespace.' ';
 	else
 		$sSqlWhere = ' WHERE 1=1 ';
+		
+	// Bug 14943 - Allow filtering based on FlaggedRevs stability.
+	// Check if the extension actually exists before changing the query...
+	if( function_exists('efLoadFlaggedRevs') ) {
+		$flaggedpages = $dbr->tableName( 'flaggedpages' );
+		$filterSet = array('only','exclude');
+		# Either involves the same JOIN here...
+		if( in_array($sStable,$filterSet) || in_array($sQuality,$filterSet) ) {
+			$sSqlSelectFrom .= " LEFT JOIN $flaggedpages ON page_id = fp_page_id";
+		}
+		switch( $sStable )
+		{
+			case 'only':
+				$sSqlWhere .= ' AND fp_stable IS NOT NULL ';
+				break;
+			case 'exclude':
+				$sSqlWhere .= ' AND fp_stable IS NULL ';
+				break;
+		}
+		switch( $sQuality )
+		{
+			case 'only':
+				$sSqlWhere .= ' AND fp_quality >= 1';
+				break;
+			case 'exclude':
+				$sSqlWhere .= ' AND fp_quality = 0';
+				break;
+		}
+	}
 
 	switch ($sRedirects)
 	{
