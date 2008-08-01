@@ -11,7 +11,7 @@ $messages = array();
 /* English (Rob Church) */
 $messages['en'] = array(
 	'bookinfo-header'            => 'Book information',
-	'bookinfo-desc'              => 'Expands [[Special:Booksources]] with information from a web service',
+	'bookinfo-desc'              => 'Expands the [[Special:Booksources|book sources special page]] with information from a web service',
 	'bookinfo-result-title'      => 'Title:',
 	'bookinfo-result-author'     => 'Author:',
 	'bookinfo-result-publisher'  => 'Publisher:',

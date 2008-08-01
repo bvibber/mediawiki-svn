@@ -16,7 +16,7 @@ $messages['en'] = array(
 	'ea-heading'          => "=== E-mailing the page [[$1]] ===",
 	'ea-fromgroup'        => 'From group:',
 	'ea-pagesend'         => 'Page "$1" sent from $2',
-	'ea-nopage'           => "Please specify a page to send, for example [[Special:EmailPage/Main Page]].",
+	'ea-nopage'           => "Please specify a page to send, for example \"[[Special:EmailPage/{{MediaWiki:Mainpage-url}}]]\".",
 	'ea-norecipients'     => "No valid e-mail addresses found!",
 	'ea-listrecipients'   => "=== {{PLURAL:$1|Recipient|$1 recipients}} ===",
 	'ea-error'            => "'''Error sending [[$1]]:''' ''$2''",

@@ -8,7 +8,7 @@
 $messages = array();
 
 $messages['en'] = array(
-	'ajax-qp-desc' => 'Add some AJAX to query pages such as [[Special:Shortpages]]',
+	'ajax-qp-desc' => 'Add some AJAX to query pages such as [[Special:Shortpages|{{int:shortpages}}]]',
 );
 
 /** Afrikaans (Afrikaans)

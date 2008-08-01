@@ -46,7 +46,7 @@ $messages['en'] = array(
 Please fill them in.',
 	'formrequiredfielderror'       => 'The field $1 is required for this form.
 Please fill it in.',
-	'formsavesummary'              => 'New page using [[Special:Form/$1]]',
+	'formsavesummary'              => 'New page using [[Special:Form/$1|form $1]]',
 	'formsaveerror'                => 'Error saving form',
 	'formsaveerrortext'            => 'There was an unknown error saving page \'$1\'.',
 );

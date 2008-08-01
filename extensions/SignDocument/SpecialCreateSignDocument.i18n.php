@@ -7,13 +7,14 @@ $messages = array();
 
 $messages['en'] = array(
 	'createsigndocument'         => 'Enable document signing',
-	'createsigndoc-head'         => "Use this form to create a 'Sign document' page for the provided page, such that users will be able to sign it via [[Special:SignDocument]].
+	'createsigndoc-head'         => "Use this form to create a 'Sign document' page for the provided page, such that users will be able to [[Special:SignDocument|sign it]].
 Please specify the name of the page on which you wish to enable digital signing, members of which usergroup should be allowed to sign it, which fields you wish to be visible to users and which should be optional, a minimum age to require users to be to sign the document (no minimum if omitted);
 and a brief introductory text describing the document and providing instructions to users.
 
 <b>There is presently no way to delete or modify signature documents after they are created</b> without direct database access.
 Additionally, the text of the page displayed on the signature page will be the ''current'' text of the page, regardless of changes made to it after today.
-Please be absolutely positive that the document is to a point of stability for signing, and please also be sure that you specify all fields exactly as they should be, ''before submitting this form''.",
+Please be absolutely positive that the document is to a point of stability for signing.
+Please also be sure that you specify all fields exactly as they should be, ''before submitting this form''.",
 	'createsigndoc-pagename'     => 'Page:',
 	'createsigndoc-allowedgroup' => 'Allowed group:',
 	'createsigndoc-email'        => 'E-mail address:',

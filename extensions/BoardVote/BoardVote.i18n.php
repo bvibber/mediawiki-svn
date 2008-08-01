@@ -46,7 +46,7 @@ It has been encrypted with the public key of the Election Administrators:
 
 <pre>$2</pre>
 
-The resulting encrypted version follows. It will be displayed publicly on [[Special:Boardvote/dump]].
+The resulting encrypted version follows. It will be [[Special:Boardvote/dump|displayed publicly]].
 
 <pre>$3</pre>
 
