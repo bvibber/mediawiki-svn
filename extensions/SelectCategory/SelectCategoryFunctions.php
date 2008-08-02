@@ -179,7 +179,7 @@ function fnSelectCategoryGetChildren( $m_root, $m_prefix = 1 ) {
 	$m_sql = "	SELECT tmpSelectCatPage.page_title AS title
 			FROM $m_tblCatLink AS tmpSelectCat
 			LEFT JOIN $m_tblPage AS tmpSelectCatPage ON tmpSelectCat.cl_from = tmpSelectCatPage.page_id
-			WHERE tmpSelectCat.cl_to LIKE '$m_root' AND tmpSelectCatPage.page_namespace = 14";
+			WHERE tmpSelectCat.cl_to LIKE '" . $m_dbObj->addQuotes( $m_root ) . "' AND tmpSelectCatPage.page_namespace = 14";
 	# Run the query:
 	$m_res = $m_dbObj->query( $m_sql, __METHOD__ );
 	# Process the resulting rows:
@@ -230,7 +230,7 @@ function fnSelectCategoryGetPageCategories( $m_pageObj ) {
 		# Check if we have found a category, else proceed with next line:
                 if( !preg_match( "/{$m_pattern}/i", $m_textLine) ) continue;
 		# Get the category link from the original text and store it in our list:
-		$m_catLinks[ preg_replace( "/.*{$m_pattern}/i", $m_replace, $m_textLine ) ] = true;
+		$m_catLinks[ str_replace( ' ', '_', preg_replace( "/.*{$m_pattern}/i", $m_replace, $m_textLine ) ) ] = true;
 	}
 	# Place the cleaned text into the text box:
 	$m_pageObj->textbox1 = trim( $m_cleanText );
