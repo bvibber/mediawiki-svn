@@ -152,7 +152,9 @@ class IPPrefix(object):
     def __init__(self, ipprefix):
         self.prefix = None # packed ip string
         
-        if type(ipprefix) is tuple:
+        if isinstance(ipprefix, IPPrefix):
+            self.prefix, self.prefixlen = ipprefix.prefix, ipprefix.prefixlen
+        elif type(ipprefix) is tuple:
             prefix, self.prefixlen = ipprefix
             if type(prefix) is str:
                 # tuple (ipstr, prefixlen)
@@ -221,6 +223,9 @@ class IPPrefix(object):
         self.prefix = struct.pack('!I', self.ipToInt() >> masklen << masklen)
         if shorten: self.prefixlen = prefixlen
         return self
+    
+    def packed(self):
+        return self.prefix
 
 class IPv4IP(IPPrefix):
     """Class that represents a single non-prefix IPv4 IP."""
@@ -239,20 +244,18 @@ class Attribute(object):
     
     typeToClass = {}
     name = 'Attribute'
+    typeCode = None
     
     def __init__(self, attrTuple=None):
         super(Attribute, self).__init__()
         
-        self.tuple = attrTuple
-        
         if attrTuple is None:            
-            self.optional = 0
-            self.transitive = 0
-            self.partial = 0
-            self.extendedLength = 0
+            self.optional = False
+            self.transitive = False
+            self.partial = False
+            self.extendedLength = False
             
             self.value = None
-            self.typeCode = 0
         else:
             flags, typeCode, value = attrTuple
             self.optional = (flags & ATTR_OPTIONAL != 0)
@@ -261,12 +264,12 @@ class Attribute(object):
             self.extendedLength = (flags & ATTR_EXTENDED_LEN != 0)
             
             self.value = value
-            self.typeCode = typeCode
             
             if typeCode not in self.typeToClass:
                 if self.optional and self.transitive:
                     # Unrecognized optional, transitive attribute, set partial bit
-                    self.partial = 1
+                    self.typeCode = typeCode
+                    self.partial = True
                 elif not self.optional:
                     raise AttributeException(ERR_MSG_UPDATE_UNRECOGNIZED_WELLKNOWN_ATTR, attrTuple)
             
@@ -280,7 +283,7 @@ class Attribute(object):
         return not self.__eq__(other)
     
     def __repr__(self):
-        return repr(self.tuple)
+        return repr(self.tuple())
     
     def __str__(self):
         return str(self.value)
@@ -293,26 +296,47 @@ class Attribute(object):
         for c, f in [('O', self.optional), ('T', self.transitive),
                      ('P', self.partial), ('E', self.extendedLength)]:
             if f: s += c
-        return s            
+        return s
+    
+    def flags(self):
+        return ((self.optional and ATTR_OPTIONAL or 0)
+                | (self.transitive and ATTR_TRANSITIVE or 0)
+                | (self.partial and ATTR_PARTIAL or 0)
+                | (self.extendedLength and ATTR_EXTENDED_LEN or 0))
+    
+    def tuple(self):
+        return (self.flags(), self.typeCode, self.value)       
     
     @classmethod
     def fromTuple(cls, attrTuple):
-        """Instantiates an Attribute inheritant of the right type for a 
+        """Instantiates an Attribute inheritor of the right type for a 
         given attribute tuple.
         """
 
         return cls.typeToClass.get(attrTuple[1], cls)(attrTuple)
+    
+    def encode(self):
+        return BGP.encodeAttribute(self.flags(), self.typeCode, self.value)
 
 class OriginAttribute(Attribute):
     name = 'Origin'
+    typeCode = ATTR_TYPE_ORIGIN
     
     ORIGIN_IGP = 0
     ORIGIN_EGP = 1
     ORIGIN_INCOMPLETE = 2
 
-    def __init__(self, attrTuple):
-        super(OriginAttribute, self).__init__(attrTuple)
-        
+    def __init__(self, value=None):        
+        if type(value) is tuple:
+            super(OriginAttribute, self).__init__(value)
+            self.fromTuple(value)
+        else:
+            super(OriginAttribute, self).__init__(None)
+            self.optional = False
+            self.transitive = True
+            self.value = value or self.ORIGIN_IGP
+
+    def fromTuple(self, attrTuple):        
         value = attrTuple[2]
         
         if self.optional or not self.transitive:
@@ -323,13 +347,25 @@ class OriginAttribute(Attribute):
             raise AttributeException(ERR_MSG_UPDATE_INVALID_ORIGIN, attrTuple)
         
         self.value = ord(value)
+    
+    def encode(self):
+        return struct.pack('!BBBB', self.flags(), self.typeCode, 1, self.value)
             
 class ASPathAttribute(Attribute):
     name = 'AS Path'
+    typeCode = ATTR_TYPE_AS_PATH
     
-    def __init__(self, attrTuple):
-        super(ASPathAttribute, self).__init__(attrTuple)
-
+    def __init__(self, value=None):
+        if type(value) is tuple:
+            super(ASPathAttribute, self).__init__(value)
+            self.fromTuple(value)
+        else:
+            super(ASPathAttribute, self).__init__(None)
+            self.optional = False
+            self.transitive = True
+            self.value = value or [(2, [])] # One segment with one AS path sequence
+    
+    def fromTuple(self, attrTuple):
         value = attrTuple[2]
 
         if self.optional or not self.transitive:
@@ -342,20 +378,36 @@ class ASPathAttribute(Attribute):
         try:
             # Loop over all path segments
             while len(postfix) > 0:
-                type, length = struct.unpack('!BB', postfix[:2])
+                segType, length = struct.unpack('!BB', postfix[:2])
                 asPath = list(struct.unpack('!%dH' % length, postfix[2:2+length*2]))
                 
                 postfix = postfix[2+length*2:]
-                self.value.append( (type, asPath) )
+                self.value.append( (segType, asPath) )
         except:
-            raise AttributeException(ERR_MSG_UPDATE_MALFORMED_ASPATH)  
+            raise AttributeException(ERR_MSG_UPDATE_MALFORMED_ASPATH)
+    
+    def encode(self):
+        packedPath = "".join([struct.pack('!BB%dH' % len(asPath), segType, len(asPath), *asPath) for segType, asPath in self.value])
+        return struct.pack('!BBB', self.flags(), self.typeCode, len(packedPath)) + packedPath
         
 class NextHopAttribute(Attribute):
     name = 'Next Hop'
+    typeCode = ATTR_TYPE_NEXT_HOP
 
-    def __init__(self, attrTuple):
-        super(NextHopAttribute, self).__init__(attrTuple)
-        
+    def __init__(self, value=None):
+        if type(value) is tuple:
+            super(NextHopAttribute, self).__init__(value)
+            self.fromTuple(value)
+        else:
+            super(NextHopAttribute, self).__init__(None)
+            self.optional = False
+            self.transitive = True
+            if value:
+                self.value = IPv4IP(value)
+            else:
+                self.value = IPv4IP('0.0.0.0')
+
+    def fromTuple(self, attrTuple):      
         value = attrTuple[2]
         
         if self.optional or not self.transitive:
@@ -367,12 +419,24 @@ class NextHopAttribute(Attribute):
         
         self.value = IPv4IP(value)
     
+    def encode(self):
+        return struct.pack('!BBB', self.flags(), self.typeCode, len(self.value.packed())) + self.value.packed()
+
 class MEDAttribute(Attribute):
     name = 'MED'
+    typeCode = ATTR_TYPE_MULTI_EXIT_DISC
 
-    def __init__(self, attrTuple):
-        super(MEDAttribute, self).__init__(attrTuple)
-        
+    def __init__(self, value=None):
+        if type(value) is tuple:
+            super(MEDAttribute, self).__init__(value)
+            self.fromTuple(value)
+        else:
+            super(MEDAttribute, self).__init__(None)
+            self.optional = True
+            self.transitive = False
+            self.value = value or 0
+
+    def fromTuple(self, attrTuple):       
         value = attrTuple[2]
         
         if not self.optional or self.transitive:
@@ -381,13 +445,25 @@ class MEDAttribute(Attribute):
             raise AttributeException(ERR_MSG_UPDATE_ATTR_LEN, attrTuple)
         
         self.value = struct.unpack('!I', value)[0]
+    
+    def encode(self):
+        return struct.pack('!BBBI', self.flags(), self.typeCode, 4, self.value)
         
 class LocalPrefAttribute(Attribute):
     name = 'Local Pref'
+    typeCode = ATTR_TYPE_LOCAL_PREF
     
-    def __init__(self, attrTuple):
-        super(LocalPrefAttribute, self).__init__(attrTuple)
-        
+    def __init__(self, value=None):
+        if type(value) is tuple:
+            super(LocalPrefAttribute, self).__init__(value)
+            self.fromTuple(value)
+        else:
+            super(LocalPrefAttribute, self).__init__(None)
+            self.optional = True
+            self.transitive = False
+            self.value = value or 0
+    
+    def fromTuple(self, attrTuple):       
         value = attrTuple[2]
         
         if not self.optional or self.transitive:
@@ -397,23 +473,46 @@ class LocalPrefAttribute(Attribute):
         
         self.value = struct.unpack('!I', value)[0]
     
+    def encode(self):
+        return struct.pack('!BBBI', self.flags(), self.typeCode, 4, self.value)
+    
 class AtomicAggregateAttribute(Attribute):
     name = 'Atomic Aggregate'
+    typeCode = ATTR_TYPE_ATOMIC_AGGREGATE
     
-    def __init__(self, attrTuple):
-        super(AtomicAggregateAttribute, self).__init__(attrTuple)
-        
+    def __init__(self, value=None):
+        if type(value) is tuple:
+            super(AtomicAggregateAttribute, self).__init__(value)
+            self.fromTuple(value)
+        else:
+            super(AtomicAggregateAttribute, self).__init__(None)
+            self.optional = False
+            self.value = None
+    
+    def fromTuple(self, attrTuple):        
         if self.optional:
             raise AttributeException(ERR_MSG_UPDATE_ATTR_FLAGS, attrTuple)
         if len(attrTuple[2]) != 0:
             raise AttributeException(ERR_MSG_UPDATE_ATTR_LEN, attrTuple)
 
+    def encode(self):
+        return struct.pack('!BBB', self.flags(), self.typeCode, 0)
+
 class AggregatorAttribute(Attribute):
     name = 'Aggregator'
+    typeCode = ATTR_TYPE_AGGREGATOR
 
-    def __init__(self, attrTuple):
-        super(AggregatorAttribute, self).__init__(attrTuple)
-        
+    def __init__(self, value=None):
+        if type(value) is tuple:
+            super(AggregatorAttribute, self).__init__(value)
+            self.fromTuple(value)
+        else:
+            super(AggregatorAttribute, self).__init__(None)
+            self.optional = True
+            self.transitive = True
+            self.value = value or (0, IPv4IP('0.0.0.0')) # TODO: IPv6
+
+    def fromTuple(self, attrTuple):       
         value = attrTuple[2]
 
         if not self.optional or not self.transitive:
@@ -424,13 +523,25 @@ class AggregatorAttribute(Attribute):
         asn = struct.unpack('!H', value[:2])[0]
         aggregator = IPv4IP(value[2:]) # TODO: IPv6
         self.value = (asn, aggregator)
+    
+    def encode(self):
+        return struct.pack('!BBBH', self.flags(), self.typeCode, 6, self.value[0]) + self.value[1].packed()
 
 class CommunityAttribute(Attribute):
     name = 'Community'
+    typeCode = ATTR_TYPE_COMMUNITY
     
-    def __init__(self, attrTuple):
-        super(CommunityAttribute, self).__init__(attrTuple)
-        
+    def __init__(self, value=None):
+        if type(value) is tuple:
+            super(CommunityAttribute, self).__init__(value)
+            self.fromTuple(value)
+        else:
+            super(CommunityAttribute, self).__init__(None)
+            self.optional = True
+            self.transitive = True
+            self.value = value or []
+    
+    def fromTuple(self, attrTuple):
         value = attrTuple[2]
         
         if not self.optional or not self.transitive:
@@ -441,15 +552,25 @@ class CommunityAttribute(Attribute):
         length = len(value) / 4
         self.value = list(struct.unpack('!%dI' % length, value))
     
+    def encode(self):
+        return struct.pack('!BBB%dI' % len(self.value), self.flags(), self.typeCode, len(self.value) * 4, *self.value)
+    
     def __str__(self):
         return str(["%d:%d" % (c / 2**16, c % 2**16) for c in self.value])
 
 class LastUpdateIntAttribute(Attribute):
     name = 'Last Update'
+    typeCode = ATTR_TYPE_INT_LAST_UPDATE
     
-    def __init__(self, attrTuple):
-        super(LastUpdateIntAttribute, self).__init__(attrTuple)
-        
+    def __init__(self, value=None):
+        if type(value) is tuple:
+            super(LastUpdateIntAttribute, self).__init__(value)
+            self.fromTuple(value)
+        else:
+            super(LastUpdateIntAttribute, self).__init__(None)
+            self.value = value        
+    
+    def fromTuple(self, attrTuple):
         self.value = attrTuple[2]
     
 Attribute.typeToClass = {
@@ -470,7 +591,7 @@ class AttributeSet(set):
     
     def __init__(self, attributes):
         """Expects a sequence of either unparsed attribute tuples, or parsed
-        Attribute inheritants.
+        Attribute inheritors.
         """
 
         self.origin, self.asPath, self.nextHop = None, None, None
@@ -483,7 +604,7 @@ class AttributeSet(set):
     
             self.add(attr)
         
-        # Check whether all mandatory wellknown attributes are present
+        # Check whether all mandatory well-known attributes are present
         for attr, typeCode in [(self.origin, ATTR_TYPE_ORIGIN),
                                (self.asPath, ATTR_TYPE_AS_PATH),
                                (self.nextHop, ATTR_TYPE_NEXT_HOP)]:
@@ -496,7 +617,7 @@ class AttributeSet(set):
         try:
             super(AttributeSet, self).add(attr)
             
-            # Add direct references for the mandatory wellknown attributes
+            # Add direct references for the mandatory well-known attributes
             if type(attr) is OriginAttribute:
                 self.origin = attr
             elif type(attr) is ASPathAttribute:
@@ -986,6 +1107,17 @@ class BGP(protocol.Protocol):
         
         self.transport.write(self.constructOpen())
     
+    def sendUpdate(self, withdrawnPrefixes, attributes, nlri):
+        """Sends a BGP Update message to the peer"""
+        
+        # DEBUG
+        print "Sending Update"
+        print "Withdrawing:", withdrawnPrefixes
+        print "Attributes:", attributes
+        print "NLRI:", nlri
+        
+        self.transport.write(self.constructUpdate(withdrawnPrefixes, attributes, nlri))
+    
     def sendKeepAlive(self):
         """Sends a BGP KeepAlive message to the peer"""
                
@@ -1018,7 +1150,22 @@ class BGP(protocol.Protocol):
         # TODO: support optional parameters
         
         return self.constructHeader(msg, MSG_OPEN)
-    
+
+    def constructUpdate(self, withdrawnPrefixes, attributes, nlri):
+        """Constructs a BGP Update message"""
+        
+        withdrawnPrefixesData = BGP.encodePrefixes(withdrawnPrefixes)
+        attributesData = BGP.encodeAttributes(attributes)
+        nlriData = BGP.encodePrefixes(nlri)
+        
+        msg = (struct.pack('!H', len(withdrawnPrefixesData))
+               + withdrawnPrefixesData
+               + struct.pack('!H', len(attributesData))
+               + attributesData
+               + nlriData)
+                          
+        return self.constructHeader(msg, MSG_UPDATE)
+        
     def constructKeepAlive(self):
         """Constructs a BGP KeepAlive message"""
         
@@ -1296,6 +1443,37 @@ class BGP(protocol.Protocol):
             fmtString = '!BBB'
         
         return struct.pack(fmtString, flags, typeCode, len(value)) + value
+    
+    @staticmethod
+    def encodeAttributes(attributes):
+        """Encodes a set of attributes"""
+        
+        attrData = ""
+        print "Type of attributes:", type(attributes)
+        for attr in attributes:
+            print "Now looking at attr:", attr # DEBUG
+            if isinstance(attr, Attribute):
+                attrData += attr.encode()
+            else:
+                attrData += BGP.encodeAttribute(attr)
+        
+        return attrData
+    
+    @staticmethod
+    def encodePrefixes(prefixes):
+        """Encodes a list of IPPrefix"""
+        
+        prefixData = ""
+        for prefix in prefixes:
+            octetLen, remainder = len(prefix) / 8, len(prefix) % 8
+            if remainder > 0:
+                # prefix length doesn't fall on octet boundary
+                octetLen += 1
+            
+            prefixData += struct.pack('!B', len(prefix)) + prefix.packed()[:octetLen]
+        
+        return prefixData
+
 
 class BGPFactory(protocol.Factory):
     """Base factory for creating BGP protocol instances"""
