@@ -33,6 +33,6 @@ google_ad_height = $wgGoogleAdSenseHeight;
 src=\"$wgGoogleAdSenseSrc\">
 </script>";
 
-		return $bar;
+		return true;
 	}
 }
