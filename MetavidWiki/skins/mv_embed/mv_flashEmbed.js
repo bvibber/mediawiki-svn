@@ -314,50 +314,12 @@ if (typeof jQuery == 'function') {
 /* ------------ following is part of mv_embed ---------------------------   */
 
 
-var flashEmbed = {    
+var flashEmbed = {
 	instanceOf:'flashEmbed',
-    getEmbedHTML : function (){
-    	var controls_html ='';
-    	js_log('embedObj control is: '+this.controls);
-		if(this.controls){
-			controls_html+= this.getControlsHtml('play_head') +					
-						this.getControlsHtml('play_or_pause') + 
-						this.getControlsHtml('stop') +
-   						this.getControlsHtml('info_span');
-		}
+    supports: {'play_head':true, 'play_or_pause':true, 'stop':true, 'fullscreen':true, 'time_display':true, 'volume_control':true},
+    getPluginEmbedHTML : function (){
         setTimeout('document.getElementById(\''+this.id+'\').postEmbedJS()', 150);
-        var html_code = '';
-        html_code = '<div style="width:'+this.width+'px;" class="videoPlayer"><div class="videoPlayerSmall">';
-		html_code += this.wrapEmebedContainer( this.getEmbedObj() );
-        html_code += '<div class="controls">' +
-					'<span class="border_left">&nbsp;</span>'+
-					'<div class="controlInnerSmall">'+
-					'	<div id="mv_play_pause_button_'+this.id+'" class="pause_button"><a href="javascript:document.getElementById(\''+this.id+'\').play_or_pause();"></a></div>'+
-					'	<div class="seeker">'
-        if(this.width>=400)
-            html_code+=
-					'		<div class="seeker_bar">'+
-					'			<div class="seeker_bar_outer"></div>'+
-					'			<div id="mv_seeker_slider_'+this.id+'" class="seeker_slider"></div>'+
-					'			<div class="seeker_bar_close"></div>'+
-					'		</div>'
-        html_code+=
-					'		<div id="mv_time_'+this.id+'" class="time">00:00/00:00</div>'+
-					'	</div><!--seeker-->'+
-					'	<div class="extraButtons">'+
-					'		<div class="volume_control">'+
-					'			<div class="volume_knob"></div>'+
-					'		</div>'+
-					'		<div class="closed_captions"></div>'+
-					'		<div class="options"></div>'+
-					'		<div class="fullscreen"></div>'+
-					'	</div><!--extraButtons-->'+
-					'</div><!--controlInnerSmall-->'+
-					'<span class="border_right">&nbsp;</span>'+
-                    '</div><!--controls-->'
-        + controls_html;
-        html_code += '</div></div>';
-        return html_code;
+        return this.getEmbedObj();
     },
     getEmbedObj:function(){
     	if(!this.duration)this.duration=30;

@@ -357,7 +357,7 @@ mediaPlayers.prototype =
                 var embed = document.getElementById(global_ogg_list[i]);
                 if(embed.media_element.selected_source.mime_type == mime_type)
                 {
-                    embed.selected_player = selected_player;
+                    embed.selectPlayer(selected_player);
                     js_log('using ' + embed.selected_player.getName() + ' for ' + embed.media_element.selected_source.getTitle());
                 }
             }
@@ -1517,6 +1517,12 @@ embedVideo.prototype = {
 	   //return this object:	   
 	   return this;
 	},
+    selectPlayer:function(player)
+    {
+        this.selected_player = player;
+        this.inheritEmbedObj();
+        this.refreshControlsHTML();
+    },
 	getTimeReq:function(){
 		return this.media_element.selected_source.start_ntp+'/'+this.media_element.selected_source.end_ntp;
 	},
@@ -1528,13 +1534,89 @@ embedVideo.prototype = {
 		return seconds2ntp(this.getDuration()/1000);
 	},	
     doEmbedHTML:function()
-    {     
-    	this.inheritEmbedObj();   
+    {
         var embed_code = this.getEmbedHTML();
         js_log(embed_code);
-        this.innerHTML = embed_code;
+        document.getElementById('mv_embedded_player_'+this.id).innerHTML=embed_code;
+        js_log('changed embed code');
 		this.paused = false;
 		this.thumbnail_disp=false;
+    },
+    doThumbnailHTML:function()
+    {
+        this.thumbnail_disp = true;
+        var embed_code = this.getThumbnailHTML();
+        js_log(embed_code);
+        document.getElementById('mv_embedded_player_'+this.id).innerHTML=embed_code;
+    },
+    refreshControlsHTML:function()
+    {
+        var available_width = this.width;
+        var html_code='';
+        // borders
+        html_code += '<span class="border_left">&nbsp;</span>';
+        available_width -= 4;
+        html_code += '<span class="border_right">&nbsp;</span>';
+        available_width -= 4;
+
+        // play_pause
+        if (this.supports['play_or_pause'])
+        {
+            html_code += '<div id="mv_play_pause_button_'+this.id+'" class="pause_button"><a href="javascript:document.getElementById(\''+this.id+'\').play_or_pause();"></a></div>';
+            available_width -= 24;
+        }
+        
+        // fullscreen
+        if(this.supports['fullscreen'])
+        {
+            html_code += '<div class="fullscreen"></div>';
+            available_width -= 20;
+        }
+
+        // options
+        html_code += '<div class="options"></div>';
+        available_width -= 26;
+        
+        // closed captioning
+	  	if(this.media_element.hasStreamOfMIMEType('text/cmml') && this.show_meta_link)
+        {
+            html_code += '<div class="closed_captions"></div>';
+            available_width -= 40;
+	  	}
+        
+        // volume control
+        if(this.supports['volume_control'])
+        {
+             html_code +=
+                        '		<div class="volume_control">'+
+                        '			<div class="volume_knob"></div>'+
+                        '		</div>';
+            available_width -= 46;
+            html_code +='<div class="volume_icon"></div>';
+            available_width -= 22;
+        }
+        
+        // time display
+        if(this.supports['time_display'])
+        {
+            html_code += '<div id="mv_time_'+this.id+'" class="time">00:00/00:00</div>';
+            available_width -= 60;
+        }
+
+        if(this.supports['play_head'])
+        {
+            html_code +=
+                    '	<div class="seeker" style="width: ' + (available_width - 20) + 'px;">';
+            html_code+=
+                    '		<div class="seeker_bar">'+
+                    '			<div class="seeker_bar_outer"></div>'+
+                    '			<div id="mv_seeker_slider_'+this.id+'" class="seeker_slider"></div>'+
+                    '			<div class="seeker_bar_close"></div>'+
+                    '		</div>';
+            html_code+=
+                    '	</div><!--seeker-->';
+        }
+        document.getElementById('mv_embedded_controls_'+this.id).innerHTML=html_code;
     },
 	inheritEmbedObj:function(){
 		js_log("inheritEmbedObj");
@@ -1550,6 +1632,8 @@ embedVideo.prototype = {
 				}
 			}
 		}
+        if(!this.supports)
+        this.supports = {};
 		//set up the new embedObj
         js_log('embedding with ' + this.selected_player.library);
 		eval('embedObj = ' +this.selected_player.library +'Embed;');
@@ -1564,16 +1648,22 @@ embedVideo.prototype = {
         }
 	},
 	getHTML : function (){
-        //returns the innerHTML based on auto play option and global_embed_type
+        var html_code = '';
+        html_code = '<div style="width:'+this.width+'px;" class="videoPlayer">';
+
+        html_code += '<div id="mv_embedded_player_'+this.id+'"></div>';
+        if(this.controls)
+            html_code += '<div id="mv_embedded_controls_'+this.id+'" class="controls"></div>';
+        html_code += '</div>';
+        js_log(html_code);
+        this.innerHTML=html_code;
+        this.refreshControlsHTML();
         //if auto play==true directly embed the plugin
-        if(this.autoplay){ 	   
-            this.thumbnail_disp = false;			
-            this.innerHTML = this.getEmbedHTML();
-        }else{
-            //if autoplay=false or render out a thumbnail with link to embed html      
-           this.thumbnail_disp = true;
-           this.innerHTML = this.getThumbnailHTML();	    
-        }
+        if(this.autoplay)
+            this.doEmbedHTML();
+        else
+            //if autoplay=false or render out a thumbnail with link to embed html
+            this.doThumbnailHTML();
 	},
 	/*
 	* get missing plugin html (check for user included code)
@@ -1714,6 +1804,7 @@ embedVideo.prototype = {
 			thumb_html+='<div id="embed_code_'+this.id+'" style="border:solid;border-color:black;overflow:hidden;display:none;position:absolute;bottom:2px;right:'+(right_offset+30)+'px;width:'+(this.width-100)+'px;z-index:1">'+
 				'<input onClick="this.select();" type="text" size="40" length="1024" value="'+embed_code_html+'">'
 				 '</div>';
+            thumb_html+='</div>';
 	    }	
 	    thumb_html+='</div>';		  	
 	    return thumb_html;
@@ -1981,9 +2072,7 @@ embedVideo.prototype = {
 			js_log('already in stopped state');
 		}else{
 			//rewrite the html to thumbnail disp 
-			//$j(this).html(this.getThumbnailHTML());						
-			this.innerHTML = this.getThumbnailHTML();
-			this.thumbnail_disp=true;
+			doThumbnailHTML();
 		}
         if(this.update_interval)
         {
@@ -2025,8 +2114,7 @@ embedVideo.prototype = {
 				return true;
 			}else{
 				//non loading request means time has passed so we need to update the innerHTML
-				//$j('#'+this.id).html(this.getEmbedHTML());
-				this.innerHTML = this.getEmbedHTML();
+				doEmbedHTML();
 			}
 		}
 	},
@@ -2115,12 +2203,7 @@ embedVideo.prototype = {
 		if(!this.selected_player){
 			return this.getPluginMissingHTML();		
 		}else{
-	    	var controls_html ='';
-			if(this.controls){
-				//all that is supported when we don't know the js hooks is "stop"
-				controls_html = this.getControlsHtml('stop');
-			}
-	        return this.wrapEmebedContainer( this.getEmbedObj() ) + controls_html;
+            return this.wrapEmebedContainer( this.getPluginEmbedHTML() );
 		}
     },    
 	getControlsHtml : function(type){

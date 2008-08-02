@@ -1,5 +1,6 @@
 var javaEmbed = {    
 	instanceOf:'javaEmbed',
+    supports: {'play_head':true, 'play_or_pause':true, 'stop':true, 'fullscreen':true, 'time_display':true, 'volume_control':true},
     getEmbedHTML : function (){    
     	var controls_html ='';
     	js_log('embedObj control is: '+this.controls);

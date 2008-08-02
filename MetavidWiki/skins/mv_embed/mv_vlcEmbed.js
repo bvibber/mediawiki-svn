@@ -6,34 +6,18 @@
 
 var vlcEmbed = { 
 	instanceOf:'vlcEmbed',
+    supports: {'play_head':true, 'play_or_pause':true, 'stop':true, 'fullscreen':true, 'time_display':true, 'volume_control':true},
 	//init vars: 
 	monitorTimerId : 0,
 	prevState : 0,
 	currentTime:0,
 	duration:0,
     userSlide:false,
-    getEmbedHTML : function(){   
-		//setup the interface controls if requested		
-		if(this.controls){
-			/*for the vlc playhead we need scriptaculus/prototype
-			 only the slider uses scriptaculous/prototype code so 
-			as long as you don't set controls to "true" the extra files won't load. */			
-			//try and get the interface 
-			if( this.get_interface_lib(true) ){
-				js_log('interface loaded');
-				controls_html =this.getControlsHtml('all');
-				controls_html+='<div style="clear:both"></div>';
-			}else{
-				//if not present, it's loading
-				return 'loading interface <blink>...</blink>';
-			}		
-		}else{	    	        	
-			controls_html ='';
-		}		
+    getEmbedHTML : function(){
 		//give VLC 150ms to initialize before we start playback 
 		//@@todo should be able to do this as an ready event
 		setTimeout('document.getElementById(\''+this.id+'\').postEmbedJS()', 150);
-	   	return this.wrapEmebedContainer( this.getEmbedObj() ) + controls_html;
+	   	return this.getEmbedObj();
 	},
 	getEmbedObj:function(){
 		return '<object classid="clsid:9BE31822-FDAD-461B-AD51-BE1D1C159921" '+
