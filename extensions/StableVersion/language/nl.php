@@ -1,6 +1,6 @@
 <?php
 /**
- * Dutch language file for the 'StableVErsion' extension
+ * Dutch language file for the 'StableVersion' extension
  */
 
 // We will add messages to the global cache

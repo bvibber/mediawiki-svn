@@ -1,6 +1,6 @@
 <?php
 /**
- * Portuguese language file for the 'StableVErsion' extension
+ * Portuguese language file for the 'StableVersion' extension
  */
 
 // We will add messages to the global cache
