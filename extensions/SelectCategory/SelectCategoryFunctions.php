@@ -184,6 +184,11 @@ function fnSelectCategoryGetChildren( $m_root, $m_prefix = 1 ) {
 	$m_res = $m_dbObj->query( $m_sql, __METHOD__ );
 	# Process the resulting rows:
 	while ( $m_row = $m_dbObj->fetchRow( $m_res ) ) {
+    # Detect category link loops first:
+    if( $m_root == $m_row['title'] ) {
+      continue;
+    }
+
 		# Add current entry to array:
 		$m_allCats += array( $m_row['title'] => $m_prefix );
 		$m_allCats += fnSelectCategoryGetChildren( $m_row['title'], $m_prefix + 1 );
