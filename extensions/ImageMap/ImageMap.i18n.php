@@ -14,6 +14,7 @@ $messages['en'] = array(
 	'imagemap_desc'                 => 'Allows client-side clickable image maps using <tt><nowiki><imagemap></nowiki></tt> tag',
 	'imagemap_no_image'             => 'Error: must specify an image in the first line',
 	'imagemap_invalid_image'        => 'Error: image is invalid or non-existent',
+	'imagemap_bad_image'            => 'Error: image is blacklisted on this page',
 	'imagemap_no_link'              => 'Error: no valid link was found at the end of line $1',
 	'imagemap_invalid_title'        => 'Error: invalid title in link at line $1',
 	'imagemap_missing_coord'        => 'Error: not enough coordinates for shape at line $1',

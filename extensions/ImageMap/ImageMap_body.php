@@ -67,6 +67,9 @@ class ImageMap {
 				if ( !$imageTitle || $imageTitle->getNamespace() != NS_IMAGE ) {
 					return self::error( 'imagemap_no_image' );
 				}
+				if ( wfIsBadImage( $imageTitle->getDBkey() , $parser->mTitle ) ) {
+					return self::error( 'imagemap_bad_image' );
+				}
 				$imageHTML = $parser->makeImage( $imageTitle, $options );
 				$parser->mOutput->addImage( $imageTitle->getDBkey() );
 
