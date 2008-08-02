@@ -8,6 +8,16 @@ class WatchSubpages extends SpecialPage {
 	function execute( $par ) {
 		global $wgRequest, $wgOut, $wgUser;
 
+		if( !$wgUser->isAllowed('watchsubpages') ) {
+			$wgOut->permissionRequired('watchsubpages');
+			return;
+		}
+		
+		if ( wfReadOnly() ) {
+			$wgOut->readOnlyPage();
+			return;
+		}
+		
 		wfLoadExtensionMessages( 'WatchSubpages' );
 
 		$namespace = $wgRequest->getInt( 'namespace' );
@@ -20,12 +30,9 @@ class WatchSubpages extends SpecialPage {
 
 		$this->setHeaders();
 
+		
 #		$guidename = Title::newFromText( $guidename , NS_MAIN );
 
-		if ( wfReadOnly() ) {
-			$wgOut->readOnlyPage();
-			return;
-		}
 		if( $wgRequest->wasPosted() && $wgUser->matchEditToken( $wgRequest->getVal( 'token' ), 'watchsubpages' ) ) {
 			$titles = $this->extractTitles( $wgRequest->getArray( 'titles' ) );
 			$current = $this->getWatchlist( $wgUser );
