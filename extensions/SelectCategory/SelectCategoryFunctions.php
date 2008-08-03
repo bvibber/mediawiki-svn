@@ -42,7 +42,7 @@ function fnSelectCategoryShowHook( $m_isUpload = false, &$m_pageObj ) {
 			$m_place = 'editFormTextAfterWarn';
 			# Print the localised title for the select box:
 			$m_textBefore = '<b>'. wfMsg( 'selectcategory-title' ) . '</b>:';
-		} else	{
+		} else {
 			# No need to get categories:
 			$m_pageCats = array();
 
@@ -61,17 +61,27 @@ function fnSelectCategoryShowHook( $m_isUpload = false, &$m_pageObj ) {
 #		$m_pageObj->$m_place .= "<noscript>\n";
 #		$m_pageObj->$m_place .= "</noscript>\n";
 
-    $m_pageObj->$m_place .= '<ul id="SelectCategoryList">';
-    foreach( $m_allCats as $m_cat => $m_prefix ) {
-      $checked = ( @$m_pageCats[ $m_cat ] ) ? "checked=\"checked\"" : '';
+    $m_pageObj->$m_place .= "<ul id='SelectCategoryList'>";
+    foreach( $m_allCats as $m_cat => $m_depth ) {
+		  $checked = '';
+
+	    if (isset($m_pageCats[$m_cat])) {
+        $checked = "checked='checked'";
+			}
+
       $category =  htmlspecialchars( $m_cat );
+
+			# Indent subcategories
+			$indention = '';
+			for ($i = 0; $i < $m_depth; $i++) {
+				$indention .= '&nbsp;&nbsp;';
+			}
+
       $m_pageObj->$m_place .= "
         <li>
-          <label>
-            <input type=\"checkbox\" name=\"SelectCategoryList[]\"
-              value=\"$category\" class=\"checkbox\" $checked />
-            $category
-          </label>
+          $indention<input type='checkbox' name='SelectCategoryList[]'
+            value='$category' class='checkbox' $checked />
+          $category
         </li>";
     }
     $m_pageObj->$m_place .= '</ul>';
@@ -124,7 +134,12 @@ function fnSelectCategorySaveHook( $m_isUpload, &$m_pageObj ) {
 	return true;
 }
 
-## Get all categories from the wiki - starting with a given root or otherwise detect root automagically (expensive):
+## Get all categories from the wiki - starting with a given root or otherwise detect root automagically (expensive)
+## Returns an array like this:
+## array (
+##   'Name' => (int) Depth,
+##   ...
+## )
 function fnSelectCategoryGetAllCategories() {
 	global $wgTitle;
 	global $wgSelectCategoryRoot;
@@ -179,16 +194,15 @@ function fnSelectCategoryGetChildren( $m_root, $m_prefix = 1 ) {
 	$m_sql = "	SELECT tmpSelectCatPage.page_title AS title
 			FROM $m_tblCatLink AS tmpSelectCat
 			LEFT JOIN $m_tblPage AS tmpSelectCatPage ON tmpSelectCat.cl_from = tmpSelectCatPage.page_id
-			WHERE tmpSelectCat.cl_to LIKE '" . $m_dbObj->addQuotes( $m_root ) . "' AND tmpSelectCatPage.page_namespace = 14";
+			WHERE tmpSelectCat.cl_to LIKE " . $m_dbObj->addQuotes( $m_root ) . " AND tmpSelectCatPage.page_namespace = 14";
 	# Run the query:
 	$m_res = $m_dbObj->query( $m_sql, __METHOD__ );
 	# Process the resulting rows:
 	while ( $m_row = $m_dbObj->fetchRow( $m_res ) ) {
-    # Detect category link loops first:
+    # Survive category link loops:
     if( $m_root == $m_row['title'] ) {
       continue;
     }
-
 		# Add current entry to array:
 		$m_allCats += array( $m_row['title'] => $m_prefix );
 		$m_allCats += fnSelectCategoryGetChildren( $m_row['title'], $m_prefix + 1 );
