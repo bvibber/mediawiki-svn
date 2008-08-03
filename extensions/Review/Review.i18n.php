@@ -162,7 +162,8 @@ $messages['ast'] = array(
  * @author EugeneZelenko
  */
 $messages['be-tarask'] = array(
-	'review_comment' => 'Камэнтар',
+	'review_user_details_link' => '(падрабязнасьці)',
+	'review_comment'           => 'Камэнтар',
 );
 
 /** Bulgarian (Български)

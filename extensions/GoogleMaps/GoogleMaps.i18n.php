@@ -80,6 +80,13 @@ $wgGoogleMapsMessages['en'] = array(
 	'gm-mars'                      => 'Mars',
 );
 
+/** Faeag Rotuma* (Faeag Rotuma*)
+ * @author Mattbray
+ */
+$wgGoogleMapsMessages['rtm'] = array(
+	'gm-search' => 'Ao',
+);
+
 /** Karelian (Karjala)
  * @author Flrn
  */

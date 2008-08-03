@@ -60,3 +60,10 @@ $messages['sv'] = array(
 	'regexfunctions-desc' => 'Parserfunktioner för Reguljära uttryck',
 );
 
+/** Ukrainian (Українська)
+ * @author AS
+ */
+$messages['uk'] = array(
+	'regexfunctions-desc' => 'Парсерні функції регулярних виразів',
+);
+

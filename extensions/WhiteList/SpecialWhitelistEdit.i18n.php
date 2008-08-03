@@ -168,6 +168,13 @@ $2',
 	'whitelistnummatches'       => '  - $1 مطابقة',
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
+ */
+$allMessages['be-tarask'] = array(
+	'whitelisttableedit' => 'Рэдагаваць',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  */

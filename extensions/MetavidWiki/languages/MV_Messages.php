@@ -576,7 +576,9 @@ $messages['da'] = array(
  * @author Leithian
  */
 $messages['de'] = array(
+	'mv_upload_file'   => 'Datei hochladen',
 	'mv_add_filter'    => 'Filter hinzufügen',
+	'mv_category'      => 'Kategorie',
 	'mv_remove_filter' => 'Filter entfernen',
 );
 
@@ -1470,6 +1472,7 @@ $messages['is'] = array(
 $messages['it'] = array(
 	'mv_remove_reason'   => 'Motivo della cancellazione:',
 	'mv_tool_search'     => 'Ricerca',
+	'mv_play'            => 'Riproduci',
 	'mv_search_category' => 'Categoria',
 	'mv_category'        => 'categoria',
 );

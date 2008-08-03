@@ -43,8 +43,11 @@ $messages['ca'] = array(
 	'mediafunctions-not-exist'     => '«$1» no existeix',
 );
 
-/** German (Deutsch) */
+/** German (Deutsch)
+ * @author Raymond
+ */
 $messages['de'] = array(
+	'mediafunctions-desc'          => 'Parserfunktionen zur Ermittlung von Informatioen über Mediendateien',
 	'mediafunctions-invalid-title' => '„$1“ ist kein gültiger Name',
 	'mediafunctions-not-exist'     => '„$1“ ist nicht vorhanden',
 );

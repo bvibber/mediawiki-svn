@@ -399,8 +399,10 @@ $messages['cs'] = array(
 
 /** German (Deutsch)
  * @author Revolus
+ * @author ChrisiPK
  */
 $messages['de'] = array(
+	'math_noblahtex'                        => 'blahtex konnte in $1 nicht ausgeführt werden.',
 	'math-desc'                             => 'MathML-Ausgabe für &lt;math&gt;-Tags',
 	'math_AmbiguousInfix'                   => 'An dieser Stelle ist „$1“ mehrdeutig.
 Versuche weitere geschwungene Klammern „{ … }“ einzufügen, um die Eingabe eindeutig zu machen.',
@@ -429,6 +431,9 @@ Vielleicht magst du „$2“ stattdessen verwenden?',
 	'math_MismatchedBeginAndEnd'            => 'Die öffnende Anweisung „$1“ entspricht nicht der schließenden „$2“',
 	'math_MisplacedLimits'                  => 'Die Anweisung „$1“ kann nur hinter einem mathematischen Operator vorkommen.
 Überlege es dir „\\mathop“ zu verwenden.',
+	'math_MissingCommandAfterNewcommand'    => 'Fehlender oder ungültiger Befehlsname nach "\\newcommand".
+Es muss genau ein Befehl definiert werden;
+er muss mit einem umgekehrten Schrägstrich (Backslash) "\\" beginnen und darf nur alphabetische Zeichen enthalten.',
 	'math_MissingDelimiter'                 => 'Fehlendes Trennzeichen hinter „$1“',
 	'math_MissingOpenBraceAfter'            => 'Öffnende Klammer „{“ hinter „$1“ fehlt',
 	'math_MissingOpenBraceAtEnd'            => 'Öffnende Klammer „{“ am Ende der Eingabe fehlt',
@@ -439,6 +444,7 @@ Es muss eine einzelne Ziffer zwischen einschließlich 1 und 9 sein.',
 	'math_NonAsciiInMathMode'               => 'Sonderzeichen (Nicht-ASCII-Zeichen) dürfen nur im Textmodus verwendet werden
 Versuche die problematischen Zeichen in „\\text{…}“ einzuschließen.',
 	'math_NotEnoughArguments'               => 'Es wurden nicht genügend Parameter für „$1“ übergeben',
+	'math_PngIncompatibleCharacter'         => 'PNG mit dem Zeichen $1 kann nicht fehlerfrei generiert werden',
 	'math_ReservedCommand'                  => 'Die Anweisung „$1“ ist für die interne Verwendung in blahtex reserviert',
 	'math_SubstackRowTooBig'                => 'Pro Zeile eines „substack“-Blockes darf es einen Eintrag geben',
 	'math_TooManyMathmlNodes'               => 'Der MathML-Verarbeitungsbaum enthält zu viele Knoten',

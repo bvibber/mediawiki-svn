@@ -20,6 +20,7 @@ $messages['en'] = array(
  */
 $messages['ar'] = array(
 	'substall-desc' => 'ينشئ وسم <nowiki><substall></nowiki> الذي يمد كل القوالب إلى صياغة ويكي',
+	'substall-hook' => 'نسخ_الكل',
 );
 
 /** German (Deutsch)

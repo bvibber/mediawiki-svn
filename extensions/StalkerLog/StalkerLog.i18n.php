@@ -76,3 +76,13 @@ $messages['no'] = array(
 	'stalkerlog-log-text'   => 'Dett er en logg over inn- og utlogginger.',
 );
 
+/** Swedish (Svenska)
+ * @author M.M.S.
+ */
+$messages['sv'] = array(
+	'stalkerlog-desc'       => 'Lägger till en [[Special:Log/stalkerlog|logg]] över när användare loggar in eller ut',
+	'stalkerlog-log-login'  => 'loggade in.',
+	'stalkerlog-log-logout' => 'loggade ut.',
+	'stalkerlog-log-type'   => 'Logg över in och utloggningar',
+);
+

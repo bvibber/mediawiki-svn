@@ -280,7 +280,9 @@ $messages['da'] = array(
  * @author Leithian
  */
 $messages['de'] = array(
-	'openidlanguage' => 'Sprache',
+	'openidemail'          => 'E-Mail-Adresse:',
+	'openidlanguage'       => 'Sprache',
+	'openidchoosepassword' => 'Passwort:',
 );
 
 /** Greek (Ελληνικά)

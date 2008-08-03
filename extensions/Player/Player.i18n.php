@@ -326,6 +326,23 @@ $messages['is'] = array(
 	'player-goto-file'     => 'skrá',
 );
 
+/** Italian (Italiano)
+ * @author Darth Kule
+ */
+$messages['it'] = array(
+	'player'               => 'Player',
+	'player-title'         => 'Player',
+	'player-file'          => 'Nome del file',
+	'player-play'          => 'Riproduci',
+	'player-not-allowed'   => 'formato non permesso',
+	'player-not-found'     => 'file non trovato',
+	'player-invalid-title' => 'titolo non valido',
+	'player-clicktoplay'   => 'Riproduci $1',
+	'player-goto-player'   => 'player',
+	'player-goto-page'     => 'Pagina',
+	'player-goto-file'     => 'file',
+);
+
 /** Javanese (Basa Jawa)
  * @author Meursault2004
  */

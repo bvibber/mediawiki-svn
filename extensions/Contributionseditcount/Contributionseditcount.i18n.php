@@ -33,7 +33,7 @@ $messages['bcl'] = array(
  */
 $messages['bg'] = array(
 	'contributionseditcount'      => 'Този потребител е направил $1 редакции.',
-	'contributionseditcount-desc' => 'Показва броят редакции на [[Special:Contributions]]',
+	'contributionseditcount-desc' => 'Показва броя редакции на [[Special:Contributions|специална страница]]',
 );
 
 /** Bengali (বাংলা)
@@ -205,7 +205,7 @@ $messages['ksh'] = array(
  */
 $messages['lb'] = array(
 	'contributionseditcount'      => 'Dëse Benotzer huet $1 Kontributiounen.',
-	'contributionseditcount-desc' => 'Weist e Compteur vun den Ännerungen op [[Special:Contributions]]',
+	'contributionseditcount-desc' => 'Weist e Compteur vun den [[Special:Contributions|Ännerungen vun de Benotzer]]',
 );
 
 /** Lao (ລາວ)

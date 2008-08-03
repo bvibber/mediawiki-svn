@@ -343,6 +343,7 @@ $messages['da'] = array(
  */
 $messages['de'] = array(
 	'sign-bday'          => 'Alter:',
+	'sign-email'         => 'E-Mail-Adresse:',
 	'sign-viewfield-age' => 'Alter',
 );
 

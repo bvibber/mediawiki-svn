@@ -168,8 +168,10 @@ $messages['hy'] = array(
 
 /** Italian (Italiano)
  * @author BrokenArrow
+ * @author Darth Kule
  */
 $messages['it'] = array(
+	'pageby-desc'         => 'Mostra i contributori su una pagina wiki usando il tag <code><nowiki><pageby></nowiki></code>',
 	'pageby-first'        => 'Pagina creata da $1 ($2)',
 	'pageby-last'         => 'Ultima <a href="$3">modifica</a> da parte di $1 ($2)',
 	'pageby-contributors' => 'Autori:',

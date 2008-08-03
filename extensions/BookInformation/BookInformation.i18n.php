@@ -138,7 +138,7 @@ $messages['be-tarask'] = array(
  */
 $messages['bg'] = array(
 	'bookinfo-header'            => 'Информация за книга',
-	'bookinfo-desc'              => 'Разширява [[Special:Booksources]] с информация от уеб услуга',
+	'bookinfo-desc'              => 'Разширява [[Special:Booksources|специалната страница с източници за книги]] с информация от уеб услуга',
 	'bookinfo-result-title'      => 'Заглавие:',
 	'bookinfo-result-author'     => 'Автор:',
 	'bookinfo-result-publisher'  => 'Издател:',
@@ -778,7 +778,7 @@ $messages['la'] = array(
  */
 $messages['lb'] = array(
 	'bookinfo-header'            => 'Informatiounen iwwer Bicher',
-	'bookinfo-desc'              => '[[Special:Booksources|Bicherreferenzen]] mat Informatiounen vun enger Offer um Internet',
+	'bookinfo-desc'              => "Erweidert [[Special:Booksources|d'Spezialsäit vun de Bicherreferenzen]] mat Informatiounen vun enger Offer um Internet",
 	'bookinfo-result-title'      => 'Titel:',
 	'bookinfo-result-author'     => 'Auteur:',
 	'bookinfo-result-publisher'  => 'Editeur:',

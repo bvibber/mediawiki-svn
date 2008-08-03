@@ -215,9 +215,15 @@ $messages['fa'] = array(
 
 /** Finnish (Suomi)
  * @author Nike
+ * @author Jaakonam
  */
 $messages['fi'] = array(
-	'authorprotect-desc' => 'Mahdollistaa sivun tekijän suojata se muilta käyttäjiltä.',
+	'authorprotect-desc'      => 'Mahdollistaa sivun tekijän suojata se muilta käyttäjiltä.',
+	'authorprotect-notauthor' => 'Et ole tämän sivun luoja.',
+	'authorprotect-confirm'   => 'Vaihda suojauksen tasoa',
+	'authorprotect-reason'    => 'Syy',
+	'authorprotect-success'   => 'Suojaus onnistui!',
+	'authorprotect-failure'   => 'Suojaus ei onnistunut',
 );
 
 /** French (Français)

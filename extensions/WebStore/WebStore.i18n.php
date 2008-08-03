@@ -472,6 +472,13 @@ $1',
 	'webstore_no_handler'              => 'Žadyn rjadowak, zo by so tutón MIME-typ přetworił',
 );
 
+/** Italian (Italiano)
+ * @author Darth Kule
+ */
+$messages['it'] = array(
+	'webstore_404' => 'File non trovato.',
+);
+
 /** Javanese (Basa Jawa)
  * @author Meursault2004
  */

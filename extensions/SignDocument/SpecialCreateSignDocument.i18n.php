@@ -62,7 +62,6 @@ $messages['ang'] = array(
 
 /** Arabic (العربية)
  * @author Meno25
- * @author Siebrand
  */
 $messages['ar'] = array(
 	'createsigndocument'                 => 'فعل توقيع الوثيقة',
@@ -145,6 +144,13 @@ $messages['cu'] = array(
  */
 $messages['da'] = array(
 	'createsigndoc-create' => 'Opret',
+);
+
+/** German (Deutsch)
+ * @author Leithian
+ */
+$messages['de'] = array(
+	'createsigndoc-email' => 'E-Mail-Adresse:',
 );
 
 /** Greek (Ελληνικά)

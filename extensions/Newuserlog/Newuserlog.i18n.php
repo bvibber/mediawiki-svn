@@ -109,12 +109,13 @@ $messages['as'] = array(
  * @author Jon Harald Søby
  */
 $messages['ast'] = array(
-	'newuserlogpage'           => "Rexistru de creación d'usuarios",
-	'newuserlogpagetext'       => "Esti ye un rexistru de creación d'usuarios.",
-	'newuserlog-desc'          => 'Añade un [[Special:Log/newusers|rexistru de creación de cuentes]] a [[Special:Log]]',
-	'newuserlog-byemail'       => 'clave unviada per corréu electrónicu',
-	'newuserlog-create-entry'  => 'Usuariu nuevu',
-	'newuserlog-create2-entry' => 'creó una cuenta pa $1',
+	'newuserlogpage'              => "Rexistru de creación d'usuarios",
+	'newuserlogpagetext'          => "Esti ye un rexistru de creación d'usuarios.",
+	'newuserlog-desc'             => 'Añade un [[Special:Log/newusers|rexistru de creación de cuentes]]',
+	'newuserlog-byemail'          => 'clave unviada per corréu electrónicu',
+	'newuserlog-create-entry'     => 'Usuariu nuevu',
+	'newuserlog-create2-entry'    => 'creó una cuenta pa $1',
+	'newuserlog-autocreate-entry' => 'Cuenta creada automáticamente',
 );
 
 /** Avaric (Авар)
@@ -136,8 +137,8 @@ $messages['avk'] = array(
  */
 $messages['bcc'] = array(
 	'newuserlogpage'              => 'ورود شرکتن کاربر',
-	'newuserlogpagetext'          => ' شی یک ورودی چه شرکتن کاربر',
-	'newuserlog-desc'             => 'هورکنت یک [[Special:Log/newusers|ورودان شرکتن حساب]] to [[Special:Log]]',
+	'newuserlogpagetext'          => '.شی یک ورودی چه شرکتن کاربر',
+	'newuserlog-desc'             => 'هورکنت یک [[Special:Log/newusers|ورودان شرکتن حساب]]',
 	'newuserlog-byemail'          => 'کلمه رمز گون ایمیل دیم دهگ بوت',
 	'newuserlog-create-entry'     => 'نوکین کاربر',
 	'newuserlog-create2-entry'    => 'حساب شربوت په $1',
@@ -174,7 +175,7 @@ $messages['be-tarask'] = array(
 $messages['bg'] = array(
 	'newuserlogpage'              => 'Дневник на регистрациите',
 	'newuserlogpagetext'          => 'В този дневник се записват регистрациите на потребители.',
-	'newuserlog-desc'             => 'Добавя [[Special:Log/newusers|дневник на регистрациите]] в страницата с [[Special:Log|дневниците]]',
+	'newuserlog-desc'             => 'Добавя [[Special:Log/newusers|дневник на регистрациите]] в страницата с дневниците',
 	'newuserlog-byemail'          => 'паролата е изпратена по е-поща',
 	'newuserlog-create-entry'     => 'Нов потребител',
 	'newuserlog-create2-entry'    => 'създаване на сметка за $1',
@@ -188,7 +189,7 @@ $messages['bg'] = array(
 $messages['bn'] = array(
 	'newuserlogpage'              => 'ব্যবহারকারী সৃষ্টি লগ',
 	'newuserlogpagetext'          => 'এটি নতুন ব্যবহারকারী সৃষ্টির লগ',
-	'newuserlog-desc'             => '[[Special:Log]]-এ একটি [[Special:Log/newusers|অ্যাকাউন্ট সৃষ্টির লগ]] যোগ করে',
+	'newuserlog-desc'             => 'একটি [[Special:Log/newusers|অ্যাকাউন্ট সৃষ্টির লগ]] যোগ করে',
 	'newuserlog-byemail'          => 'শব্দচাবি ইমেইলের মাধ্যমে পাঠানো হয়েছে',
 	'newuserlog-create-entry'     => 'নতুন ব্যবহারকারী',
 	'newuserlog-create2-entry'    => '$1-এর জন্য অ্যাকাউন্ট সৃষ্টি করা হয়েছে',
@@ -238,6 +239,16 @@ $messages['cdo'] = array(
 $messages['ce'] = array(
 	'newuserlogpage'          => 'Керла юзери терахь',
 	'newuserlog-create-entry' => 'Керла Юзер',
+);
+
+/** Cebuano (Cebuano)
+ * @author Abastillas
+ */
+$messages['ceb'] = array(
+	'newuserlogpagetext'       => "Kini mao ang ''log'' sa bag-ong namugnang mga gumagamit.",
+	'newuserlog-byemail'       => "ang pasword gipadala na agi ang ''e-mail''",
+	'newuserlog-create-entry'  => 'Bag-ong gumagamit',
+	'newuserlog-create2-entry' => "nagmiho'g akawnt alang kang $1",
 );
 
 /** Crimean Turkish (Latin) (Qırımtatarca (Latin))
@@ -643,7 +654,7 @@ $messages['ia'] = array(
 $messages['id'] = array(
 	'newuserlogpage'              => 'Log pengguna baru',
 	'newuserlogpagetext'          => 'Di bawah ini adalah log pendaftaran pengguna baru',
-	'newuserlog-desc'             => 'Menambahkan [[Special:Log/newusers|log pembuatan akun]] di [[Special:Log]]',
+	'newuserlog-desc'             => 'Menambahkan [[Special:Log/newusers|log pembuatan akun]]',
 	'newuserlog-byemail'          => 'kata sandi dikirim melalui surat-e',
 	'newuserlog-create-entry'     => 'mendaftar sebagai pengguna',
 	'newuserlog-create2-entry'    => 'mendaftarkan akun untuk $1',
@@ -828,7 +839,6 @@ $messages['la'] = array(
 
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
- * @author SPQRobin
  * @author Jon Harald Søby
  */
 $messages['lb'] = array(
@@ -1252,7 +1262,7 @@ $messages['su'] = array(
 $messages['sv'] = array(
 	'newuserlogpage'              => 'Logg över nya användare',
 	'newuserlogpagetext'          => 'Detta är en logg över skapade användarkonton.',
-	'newuserlog-desc'             => 'Lägger till en [[Special:Log/newusers|logg över nyskapade konton]] i [[Special:Log]]',
+	'newuserlog-desc'             => 'Lägger till en [[Special:Log/newusers|logg över nyskapade konton]]',
 	'newuserlog-byemail'          => 'lösenord skickat med e-post',
 	'newuserlog-create-entry'     => 'Ny användare',
 	'newuserlog-create2-entry'    => 'skapade användarkonto för $1',
@@ -1339,11 +1349,12 @@ $messages['ty'] = array(
 /** Ukrainian (Українська)
  * @author Ahonc
  * @author Jon Harald Søby
+ * @author AS
  */
 $messages['uk'] = array(
 	'newuserlogpage'              => 'Журнал нових користувачів',
 	'newuserlogpagetext'          => 'Список нещодавно зареєстрованих користувачів.',
-	'newuserlog-desc'             => 'Додає [[Special:Log/newusers|журнал нових користувачів]] на сторінку [[Special:Log]]',
+	'newuserlog-desc'             => 'Додає [[Special:Log/newusers|журнал нових користувачів]]',
 	'newuserlog-byemail'          => 'пароль надісланий електронною поштою',
 	'newuserlog-create-entry'     => 'Новий користувач',
 	'newuserlog-create2-entry'    => 'створив обліковий запис $1',
@@ -1364,7 +1375,7 @@ $messages['ur'] = array(
 $messages['vec'] = array(
 	'newuserlogpage'              => 'Registro utenti novi',
 	'newuserlogpagetext'          => 'Sto qua el xè el registro dei novi utenti registrai.',
-	'newuserlog-desc'             => 'Zonta un [[Special:Log/newusers|registro dei utenti creà]] a la [[Special:Log|pagina dei registri]]',
+	'newuserlog-desc'             => 'Zonta un [[Special:Log/newusers|registro dei utenti creà]]',
 	'newuserlog-byemail'          => 'password spedìa par e-mail',
 	'newuserlog-create-entry'     => 'se gà registrà',
 	'newuserlog-create2-entry'    => 'ga registrà el nome utente $1',

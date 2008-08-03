@@ -75,8 +75,10 @@ $messages['bg'] = array(
 
 /** German (Deutsch)
  * @author Revolus
+ * @author Leithian
  */
 $messages['de'] = array(
+	'errorhandler-desc'               => 'Fehlerbehandlung für MediaWiki',
 	'errorhandler-errors'             => 'Fehler:',
 	'errorhandler-error-fatal'        => 'Fataler Fehler',
 	'errorhandler-error-warning'      => 'Warnung',
@@ -86,6 +88,7 @@ $messages['de'] = array(
 	'errorhandler-error-user-error'   => 'Benutzerfehler',
 	'errorhandler-error-user-warning' => 'Benutzerwarnung',
 	'errorhandler-msg-text'           => '$1: $2 in $3 (Zeile $4)',
+	'errorhandler-trace-line'         => '$1 (Zeile $2): $3',
 );
 
 /** Esperanto (Esperanto)

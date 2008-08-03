@@ -44,7 +44,7 @@ $messages['ar'] = array(
 	'ea-heading'          => '=== مراسلة الصفحة [[$1]] ===',
 	'ea-fromgroup'        => 'من مجموعة:',
 	'ea-pagesend'         => 'الصفحة "$1" أُرسلت من $2',
-	'ea-nopage'           => 'من فضلك حدد صفحة للإرسال، على سبيل المثال [[Special:EmailPage/{{MediaWiki:Mainpage-url}}]].',
+	'ea-nopage'           => 'من فضلك حدد صفحة للإرسال، على سبيل المثال "[[Special:EmailPage/{{MediaWiki:Mainpage-url}}]]".',
 	'ea-norecipients'     => 'لم يتم إيجاد عناوين بريد إلكتروني صحيحة!',
 	'ea-listrecipients'   => '=== {{PLURAL:$1|متلقي|$1 متلقي}} ===',
 	'ea-error'            => "'''خطأ في إرسال [[$1]]:''' ''$2''",
@@ -401,6 +401,7 @@ $messages['su'] = array(
 
 /** Swedish (Svenska)
  * @author M.M.S.
+ * @author Jon Harald Søby
  */
 $messages['sv'] = array(
 	'emailpages'          => 'E-posta sida',
@@ -408,7 +409,7 @@ $messages['sv'] = array(
 	'ea-heading'          => '=== E-posta sidan [[$1]] ===',
 	'ea-fromgroup'        => 'Från grupp:',
 	'ea-pagesend'         => 'Artikeln "$1" skickades från $2',
-	'ea-nopage'           => 'Var god ange en sida att skicka, för exempel [[Special:EmailPage/Main Page]].',
+	'ea-nopage'           => 'Var god ange en sida att skicka, för exempel [[Special:EmailPage/{{MediaWiki:Mainpage-url}}]].',
 	'ea-norecipients'     => 'Inga giltiga e-postadresser hittades!',
 	'ea-listrecipients'   => '=== Lista över $1 {{PLURAL:$1|mottagare|mottagare}} ===',
 	'ea-error'            => "'''Fel under sändande av [[$1]]:''' ''$2''",

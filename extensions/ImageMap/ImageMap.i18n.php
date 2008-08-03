@@ -58,6 +58,7 @@ $messages['ar'] = array(
 	'imagemap_desc'               => 'يسمح بخرائط صور قابلة للضغط عليها من طرف العميل باستخدام وسم <tt><nowiki><imagemap></nowiki></tt>',
 	'imagemap_no_image'           => 'خطأ: يجب تحديد صورة في السطر الأول',
 	'imagemap_invalid_image'      => 'خطأ: الصورة غير صحيحة أو غير موجودة',
+	'imagemap_bad_image'          => 'خطأ: الصورة في القائمة السوداء على هذه الصفحة',
 	'imagemap_no_link'            => 'خطأ: لم يتم العثور على وصلة صحيحة في نهاية السطر $1',
 	'imagemap_invalid_title'      => 'خطأ: عنوان غير صحيح في الوصلة عند السطر $1',
 	'imagemap_missing_coord'      => 'خطأ: إحداثيات غير كافية للشكل عند السطر $1',
@@ -128,6 +129,7 @@ $messages['bg'] = array(
 $messages['bn'] = array(
 	'imagemap_no_image'      => 'ত্রুটি:প্রথম লাইনে অবশ্যই একটি চিত্র নির্দিষ্ট করতে হবে',
 	'imagemap_invalid_image' => 'ত্রুটি:চিত্রটি সঠিক নয় অথবা চিত্রটি নাই',
+	'imagemap_bad_image'     => 'ত্রুটি:এই পাতায় ছবি কালতালিকাভুক্ত করা হয়েছে',
 	'imagemap_no_link'       => 'ত্রুটি:লাইন নম্বর $1 এ শেষ কোন সঠিক লিঙ্ক পাওয়া যায় নি',
 	'imagemap_invalid_title' => 'ত্রুটি:লাইন নম্বর $1 এ লিঙ্কে সঠিক শিরোনাম নাই',
 	'imagemap_missing_coord' => 'ত্রুটি:লাইন নম্বর $1 এ আকারের জন্য যথেষ্ট স্থানাংক নাই',
@@ -202,11 +204,13 @@ $messages['da'] = array(
 
 /** German (Deutsch)
  * @author Raimond Spekking
+ * @author Raymond
  */
 $messages['de'] = array(
 	'imagemap_desc'               => "Ermöglicht die Erstellung von verweissensitiven Grafiken ''(image maps)'' mit Hilfe der <tt><nowiki><imagemap></nowiki></tt>-Syntax",
 	'imagemap_no_image'           => '&lt;imagemap&gt;-Fehler: In der ersten Zeile muss ein Bild angegeben werden',
 	'imagemap_invalid_image'      => '&lt;imagemap&gt;-Fehler: Bild ist ungültig oder nicht vorhanden',
+	'imagemap_bad_image'          => 'Fehler: Das Bild steht auf der Liste unerwünschter Bilder',
 	'imagemap_no_link'            => '&lt;imagemap&gt;-Fehler: Am Ende von Zeile $1 wurde kein gültiger Link gefunden',
 	'imagemap_invalid_title'      => '&lt;imagemap&gt;-Fehler: ungültiger Titel im Link in Zeile $1',
 	'imagemap_missing_coord'      => '&lt;imagemap&gt;-Fehler: Zu wenige Koordinaten in Zeile $1 für den Umriss',
@@ -215,7 +219,6 @@ $messages['de'] = array(
 	'imagemap_invalid_coord'      => '&lt;imagemap&gt;-Fehler: Ungültige Koordinate in Zeile $1: es sind nur Zahlen erlaubt',
 	'imagemap_invalid_desc'       => '&lt;imagemap&gt;-Fehler: Ungültiger „desc“-Parameter, möglich sind: <tt>$1</tt>',
 	'imagemap_description'        => 'Über dieses Bild',
-	'imagemap_desc_types'         => 'oben rechts, unten rechts, unten links, oben links, keine',
 );
 
 /** Greek (Ελληνικά)
@@ -452,11 +455,13 @@ $messages['ia'] = array(
 
 /** Indonesian (Bahasa Indonesia)
  * @author IvanLanin
+ * @author Rex
  */
 $messages['id'] = array(
 	'imagemap_desc'               => 'Menyediakan peta gambar yang dapat diklik dari klien dengan menggunakan tag <tt><nowiki><imagemap></nowiki></tt>',
 	'imagemap_no_image'           => '&lt;imagemap&gt;: harus memberikan suatu gambar di baris pertama',
 	'imagemap_invalid_image'      => '&lt;imagemap&gt;: gambar tidak sah atau tidak ditemukan',
+	'imagemap_bad_image'          => 'Kesalahan: berkas tidak diperbolehkan pada halaman ini',
 	'imagemap_no_link'            => '&lt;imagemap&gt;: tidak ditemukan pranala yang sah di akhir baris ke $1',
 	'imagemap_invalid_title'      => '&lt;imagemap&gt;: judul tidak sah pada pranala di baris ke $1',
 	'imagemap_missing_coord'      => '&lt;imagemap&gt;: tidak cukup koordinat untuk bentuk pada baris ke $1',
@@ -707,6 +712,7 @@ $messages['ms'] = array(
 	'imagemap_desc'               => 'Membenarkan peta imej boleh klik menggunakan tag <tt><nowiki><imagemap></nowiki></tt>',
 	'imagemap_no_image'           => 'Error: sila nyatakan imej dalam baris pertama',
 	'imagemap_invalid_image'      => 'Error: imej tidak sah atau tidak wujud',
+	'imagemap_bad_image'          => 'Ralat: imej disenaraihitamkan di laman ini',
 	'imagemap_no_link'            => 'Error: tiada pautan sah dijumpai pada akhir baris $1',
 	'imagemap_invalid_title'      => 'Error: tajuk tidak sah dalam pautan pada baris $1',
 	'imagemap_missing_coord'      => 'Error: koordinat bagi bentuk tidak cukup pada baris $1',
@@ -742,11 +748,13 @@ $messages['ne'] = array(
 
 /** Dutch (Nederlands)
  * @author Siebrand
+ * @author SPQRobin
  */
 $messages['nl'] = array(
 	'imagemap_desc'               => 'Maakt aanklikbare imagemaps mogelijk met de tag <tt><nowiki><imagemap></nowiki></tt>',
 	'imagemap_no_image'           => '&lt;imagemap&gt;: geef een afbeelding op in de eerste regel',
 	'imagemap_invalid_image'      => '&lt;imagemap&gt;: de afbeelding is corrupt of bestaat niet',
+	'imagemap_bad_image'          => 'Fout: de afbeelding staat op de zwarte lijst voor deze pagina',
 	'imagemap_no_link'            => '&lt;imagemap&gt;: er is geen geldige link aangetroffen aan het einde van regel $1',
 	'imagemap_invalid_title'      => '&lt;imagemap&gt;: er staat een ongeldige titel in de verwijzing op regel $1',
 	'imagemap_missing_coord'      => '&lt;imagemap&gt;: niet genoeg coördinaten voor vorm in regel $1',
@@ -764,6 +772,7 @@ $messages['no'] = array(
 	'imagemap_desc'               => 'Gjør at man kan bruke klikkbare bilder ved hjelp av <tt><nowiki><imagemap></nowiki></tt>.',
 	'imagemap_no_image'           => 'Error: må angi et bilde i første linje',
 	'imagemap_invalid_image'      => 'Error: bilde er ugyldig eller ikke-eksisterende',
+	'imagemap_bad_image'          => 'Feil: bildet er svartelistet på denne siden',
 	'imagemap_no_link'            => 'Error: ingen gyldig lenke ble funnet i slutten av linje $1',
 	'imagemap_invalid_title'      => 'Error: ugyldig tittel i lenke på linje $1',
 	'imagemap_missing_coord'      => 'Error: ikke nok koordinater for form på linje $1',
@@ -977,6 +986,7 @@ $messages['sv'] = array(
 	'imagemap_desc'               => 'Lägger till taggen <tt><nowiki><imagemap></nowiki></tt> för klickbara bilder',
 	'imagemap_no_image'           => '&lt;imagemap&gt;: en bild måste anges på första raden',
 	'imagemap_invalid_image'      => '&lt;imagemap&gt;: bilden är ogiltig eller existerar inte',
+	'imagemap_bad_image'          => 'Fel: bilden är svartlistad på den här sidan',
 	'imagemap_no_link'            => '&lt;imagemap&gt;: ingen giltig länk fanns i slutet av rad $1',
 	'imagemap_invalid_title'      => '&lt;imagemap&gt;: felaktig titel i länken på rad $1',
 	'imagemap_missing_coord'      => '&lt;imagemap&gt;: koordinater saknas för området på rad $1',
@@ -1037,11 +1047,13 @@ $messages['tr'] = array(
 
 /** Ukrainian (Українська)
  * @author Ahonc
+ * @author AS
  */
 $messages['uk'] = array(
 	'imagemap_desc'               => 'Дозволяє створювати на боці клієнта карти зображень, які спрацьовують при натисканні, за допомогою тегу <tt><nowiki><imagemap></nowiki></tt>',
 	'imagemap_no_image'           => 'Error: у першому рядку має бути задане зображення',
 	'imagemap_invalid_image'      => 'Error: неправильне або відсутнє зображення',
+	'imagemap_bad_image'          => 'Помилка: зображення на цій сторінці присутнє у чорному списку',
 	'imagemap_no_link'            => 'Error: неправильне посилання в кінці рядка $1',
 	'imagemap_invalid_title'      => 'Error: неправильний заголовок посилання в рядку $1',
 	'imagemap_missing_coord'      => 'Error: недостатньо координат для фігури в рядку $1',

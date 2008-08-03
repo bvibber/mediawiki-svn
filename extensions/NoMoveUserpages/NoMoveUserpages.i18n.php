@@ -57,6 +57,15 @@ $messages['gl'] = array(
 	'right-move-userpages'  => 'Mover páxinas de usuario',
 );
 
+/** Italian (Italiano)
+ * @author Darth Kule
+ */
+$messages['it'] = array(
+	'nomoveuserpages-desc'  => 'Impedisci agli utenti che non hanno il diritto "move-userpages" di spostare le pagine utente',
+	'nomoveuserpages-error' => 'Lo spostamento di pagine utente è stato disabilitato',
+	'right-move-userpages'  => 'Sposta pagine utente',
+);
+
 /** Korean (한국어)
  * @author Klutzy
  */

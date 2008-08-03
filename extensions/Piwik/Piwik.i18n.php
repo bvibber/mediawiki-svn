@@ -122,6 +122,16 @@ $messages['gl'] = array(
 	'piwik-browsers'   => 'Navegadores',
 );
 
+/** Italian (Italiano)
+ * @author Darth Kule
+ */
+$messages['it'] = array(
+	'piwik-desc'       => 'Inserisce uno script Piwik nelle pagine MediaWiki per aggiungere [[Special:Piwik|alcune statistiche]]',
+	'piwik-lastvisits' => 'Ultime visite',
+	'piwik-countries'  => 'Paesi',
+	'piwik-browsers'   => 'Browser',
+);
+
 /** Ripoarisch (Ripoarisch)
  * @author Purodha
  */

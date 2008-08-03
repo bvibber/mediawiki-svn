@@ -36,6 +36,13 @@ $messages['bg'] = array(
 	'eval_code' => 'Код',
 );
 
+/** German (Deutsch)
+ * @author Leithian
+ */
+$messages['de'] = array(
+	'eval_out' => 'Ausgabe',
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */

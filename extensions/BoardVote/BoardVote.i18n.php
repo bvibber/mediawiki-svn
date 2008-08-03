@@ -639,7 +639,6 @@ $messages['be-tarask'] = array(
  * @author DCLXVI
  * @author Spiritia
  * @author Borislav
- * @author Siebrand
  */
 $messages['bg'] = array(
 	'boardvote'                => 'Избори за борда на Фондация Уикимедия',
@@ -720,7 +719,6 @@ $1 за криптирани данни.</p>',
 /** Bengali (বাংলা)
  * @author Bellayet
  * @author Zaheen
- * @author Siebrand
  */
 $messages['bn'] = array(
 	'boardvote'              => 'উইকিমিডিয়া বোর্ড অফ ট্রাস্টিজ-এর নির্বাচন',
@@ -786,6 +784,7 @@ $messages['bn'] = array(
 আপনি ২০ সেকেন্ডের মধ্যেই অন্য সার্ভারে পুননির্দেশিত হবেন। [$1 এখানে ক্লিক করুন] সেখানে এখনই যাওয়ার জন্য।
 
 অস্বাক্ষরিত সার্টিফিকেটের সম্পর্কিত একটি সতর্কিকরণ বার্তা দেখাতে পারে।',
+	'right-boardvote'        => 'নির্বাচনসমূহ শাসন করো',
 );
 
 /** Breton (Brezhoneg)
@@ -2636,7 +2635,6 @@ Es possibile que se presentara un advertimento de securitate concernente un cert
 
 /** Indonesian (Bahasa Indonesia)
  * @author Rex
- * @author Siebrand
  */
 $messages['id'] = array(
 	'boardvote'                => 'Pemilihan anggota Dewan Pengawas Wikimedia Foundation',
@@ -2665,15 +2663,15 @@ Kami akan mengasumsikan bahwa Anda lebih menyukai seluruh kandidat yang Anda ber
 	'boardvote_intro_change'   => '<p>Anda telah memilih sebelumnya. Meskipun demikian, Anda masih dapat mengganti pilihan Anda pada isian berikut. Silakan berikan peringkat para kandidat sesuai dengan preferensi Anda, di mana nilai yang lebih kecil menunjukkan preferensi lebih tinggi kepada kandidat yang bersangkutan. Anda dapat memberikan peringkat yang sama untuk lebih dari satu kandidat dan boleh tidak memberikan peringkat untuk kandidat yang lain. </p>',
 	'boardvote_entered'        => 'Terima kasih, pilihan Anda telah dicatat.
 
-Jika mau, Anda dapat mencatat rincian berikut. Catatan suara Anda adalah:
+Anda dapat mencatat rincian catatan suara Anda sebagai berikut:
 
 <pre>$1</pre>
 
-Catatan tersebut telah dienkripsi dengan kunci publik para Administrator Pemilihan:
+Catatan tersebut telah dienkripsi dengan kunci publik oleh Panitia Pemilihan:
 
 <pre>$2</pre>
 
-Versi terenkripsi tercantum di bawah ini. Hasil tersebut akan ditampilkan untuk publik di [[Special:Boardvote/dump]].
+Versi terenkripsi tercantum di bawah ini. Hasil tersebut akan [[Special:Boardvote/dump|ditampilkan untuk umum]].
 
 <pre>$3</pre>
 
@@ -3441,7 +3439,6 @@ $messages['la'] = array(
 
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
- * @author Siebrand
  */
 $messages['lb'] = array(
 	'boardvote'                => 'Wale fir de Wikimedia Board of Trustees',
@@ -3925,11 +3922,11 @@ Rekod tersebut disulitkan menggunakan kunci awam Pentadbir Pilihan Raya:
 
 <pre>$2</pre>
 
-Berikut ialah data yang telah disulitkan. Ia akan ditunjukkan kepada orang ramai di [[Special:Boardvote/dump]].
+Berikut ialah data yang telah disulitkan. Data ini akan [[Special:Boardvote/dump|ditunjukkan kepada orang ramai]].
 
 <pre>$3</pre>
 
-[[Special:Boardvote/entry|Back]]',
+[[Special:Boardvote/entry|Kembali]]',
 	'boardvote_invalidentered' => '<p><strong>Ralat</strong>: keutamaan calon mestilah dinyatakan menggunakan nombor bulat yang positif sahaja (1, 2, 3, ....) atau dibiarkan kosong.</p>',
 	'boardvote_nosession'      => 'ID pengguna Wikimedia anda tidak dapat ditentukan. Sila log masuk di wiki di mana anda layak mengundi, kemudian pergi ke <nowiki>[[Special:Boardvote]]</nowiki>. Anda hendaklah menggunakan akaun yang mempunyai sekurang-kurangnya $1 sumbangan sebelum $2, dan telah membuat sekurang-kurangnya $3 sumbangan dari $4 sehingga $5.',
 	'boardvote_notloggedin'    => 'Anda tidak log masuk. Untuk mengundi, anda hendaklah menggunakan akaun dengan sekurang-kurangnya $1 sumbangan sebelum $2, dan telah membuat sekurang-kurangnya $3 sumbangan dari $4 sehingga $5.',
@@ -5313,8 +5310,6 @@ Hiji peringatan kaamanan ngeunaan sértipikat teu nandaan meureun baris mecenghu
  * @author Lejonel
  * @author Sannab
  * @author M.M.S.
- * @author SPQRobin
- * @author Siebrand
  */
 $messages['sv'] = array(
 	'boardvote'                => 'Val till Wikimedias styrelse (Wikimedia Board of Trustees)',
@@ -5340,7 +5335,7 @@ Det förutsätts att du föredrar rangordnade kandidater före kandidater som du
 	'boardvote_intro_change'   => '<p>Du har redan röstat. Emellertid kan du ändra din röst genom att använda nedanstående formulär. 
 Rangordna kandidaterna som du vill rösta på genom att fylla i ett tal bredvid rutan (1 = din favoritkandidat, 2 = din andrahandsfavorit, ...).
 Du kan ge flera kandidater samma rangordning och du kan låta bli att ge kandidater någon rangordning.</p>',
-	'boardvote_entered'        => 'Tack för det. Din röst är registrerad.
+	'boardvote_entered'        => 'Tack, din röst är registrerad.
 
 Om du så önskar, kan du notera följande detaljer. Din röst är registrerad som:
 
@@ -5350,7 +5345,7 @@ Den är krypterad med valadministratörernas publika nyckel:
 
 <pre>$2</pre>
 
-Den resulterande krypterade versionen följer här. Den kommer att visas öppet på [[Special:Boardvote/dump]].
+Den resulterande krypterade versionen följer här. Den kommer att [[Special:Boardvote/dump|visas öppet]].
 
 <pre>$3</pre>
 
@@ -5629,7 +5624,6 @@ $messages['ty'] = array(
 /** Ukrainian (Українська)
  * @author Ahonc
  * @author AS
- * @author Siebrand
  */
 $messages['uk'] = array(
 	'boardvote'                => 'Вибори до Ради повірених фонду «Вікімедіа»',
@@ -5663,7 +5657,7 @@ $messages['uk'] = array(
 
 <pre>$2</pre>
 
-Зашифрований текст наведено нижче. Будь-хто може знайти його на сторінці [[Special:Boardvote/dump]].
+Зашифрований текст наведено нижче. Будь-хто може знайти його на [[Special:Boardvote/dump|тут]].
 
 <pre>$3</pre>
 
@@ -5711,7 +5705,6 @@ $messages['uk'] = array(
 
 /** Vèneto (Vèneto)
  * @author Candalua
- * @author Siebrand
  */
 $messages['vec'] = array(
 	'boardvote'                => 'Elezion del Consejo diretivo de la Wikimedia Foundation',
@@ -5737,17 +5730,17 @@ Se presume che te preferissi i candidati a cui te ghè dato un voto a quei sensa
 <li><a href="http://meta.wikimedia.org/wiki/Board elections/2008/Candidates" class="external">Candidati</a></li>
 <li><a href="http://en.wikipedia.org/wiki/Schulze_method" class="external">Metodo Schulze</a></li></ul>',
 	'boardvote_intro_change'   => '<p>Te ghè zà votà. Comunque te podi canbiar el to voto doparando el modulo qua soto. Par piaser spunta la casela de fianco de ognuno dei candicati che te vol sostegner.</p>',
-	'boardvote_entered'        => "El to voto el xe stà registrà. Grassie.
+	'boardvote_entered'        => "Grassie, el to voto el xe stà registrà.
 
 Se te voli, te pol registrar i detagli del to voto, riportà de seguito:
 
 <pre>$1</pre>
 
-El voto el xe stà crità con la ciave publica de la comission eletoral:
+El voto el xe stà crità con la ciave publica dei Aministradori de l'Elession:
 
 <pre>$2</pre>
 
-El voto espresso in forma cifrà el xe riportà de seguito. Se pol védarlo anca a l'indirizo [[Special:Boardvote/dump]].
+El voto espresso in forma cifrà el xe riportà de seguito. Se pol védarlo anca [[Special:Boardvote/dump|publicamente]].
 
 <pre>$3</pre>
 

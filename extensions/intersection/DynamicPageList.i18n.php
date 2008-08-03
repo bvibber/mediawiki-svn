@@ -81,9 +81,10 @@ $messages['bg'] = array(
  * @author Bellayet
  */
 $messages['bn'] = array(
-	'intersection_toomanycats' => 'Error: অনেক বেশি বিষয়শ্রেণী!',
-	'intersection_toofewcats'  => 'Error: অনেক কম বিষয়শ্রেণী!',
-	'intersection_noresults'   => 'Error: ফলাফল নাই!',
+	'intersection_toomanycats'   => 'Error: অনেক বেশি বিষয়শ্রেণী!',
+	'intersection_toofewcats'    => 'Error: অনেক কম বিষয়শ্রেণী!',
+	'intersection_noresults'     => 'Error: ফলাফল নাই!',
+	'intersection_noincludecats' => 'ত্রুটি:আপনার অন্তত একটি বিষয়শ্রেণী যুক্ত করতে, অথবা একটি নেমস্পেস দিতে হবে!',
 );
 
 /** Breton (Brezhoneg)

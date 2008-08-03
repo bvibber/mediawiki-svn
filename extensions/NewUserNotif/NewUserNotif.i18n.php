@@ -149,6 +149,17 @@ $messages['hy'] = array(
 $3 կայքում ստեղծվել է նոր մասնակցային հաշիվ՝ $2, $4-ին։',
 );
 
+/** Italian (Italiano)
+ * @author Darth Kule
+ */
+$messages['it'] = array(
+	'newusernotifsubj'  => 'Notifica nuovo utente per $1',
+	'newusernotif-desc' => 'Invia una e-mail di notifica quando vengono creati nuovi account',
+	'newusernotifbody'  => 'Ciao $1,
+
+Un nuovo account, $2, è stato creato su $3 il $4.',
+);
+
 /** Japanese (日本語)
  * @author JtFuruhata
  */

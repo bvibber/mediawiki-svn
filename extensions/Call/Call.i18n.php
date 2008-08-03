@@ -135,6 +135,14 @@ V případě problémů můžete zkusit <b>Special:Call/DebuG</b>",
 	'call-save-failed'  => "Následující text NEBYL uložený do stránky ''$1'', protože tato stránka už existuje.",
 );
 
+/** German (Deutsch)
+ * @author ChrisiPK
+ */
+$messages['de'] = array(
+	'call-desc' => 'Erstellt einen Hyperlink zu einer Vorlage (oder zu einer normalen Seite) mit Parameterübergabe.
+Kann in der Eingabeaufforderung des Browser oder im Wiki-Text verwendet werden.',
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */

@@ -711,7 +711,7 @@ $messages['sv'] = array(
 Var god fyll i dom.',
 	'formrequiredfielderror'       => 'Fältet $1 behövs för det här formuläret.
 Var god fyll i det.',
-	'formsavesummary'              => 'Ny sida använder [[Special:Form/$1]]',
+	'formsavesummary'              => 'Ny sida använder [[Special:Form/$1|formuläret $1]]',
 	'formsaveerror'                => 'Fel under sparning av formuläret',
 	'formsaveerrortext'            => 'Det uppstod ett okänt fel under sparning av sidan "$1".',
 );

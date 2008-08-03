@@ -61,6 +61,14 @@ $3',
 	'latexdoc_get_pdf'         => 'Генериране на PDF',
 );
 
+/** German (Deutsch)
+ * @author Leithian
+ */
+$messages['de'] = array(
+	'latexdoc_no_text'         => 'Seite enthält keinen Text, DVI kann nicht generiert werden',
+	'latexdoc_cant_create_dir' => 'Temporäres Verzeichnis $1 kann nicht erstellt werden',
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */
