@@ -82,7 +82,7 @@ function efGPManagerExtendedPermissionsGrant($title, $user, $action, &$result) {
 					}
 				}
 			}
-			if( !$title->isNamespaceProtected ) {
+			if( !$title->isNamespaceProtected() ) {
 				//user can't edit due to namespace protection
 				$result = null;
 				return false;
