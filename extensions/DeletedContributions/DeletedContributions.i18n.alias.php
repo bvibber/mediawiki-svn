@@ -16,12 +16,12 @@ $aliases['en'] = array(
 
 /** Arabic (العربية) */
 $aliases['ar'] = array(
-	'DeletedContributions' => array( 'مساهمات محذوفة' ),
+	'DeletedContributions' => array( 'مساهمات_محذوفة' ),
 );
 
 /** Egyptian Spoken Arabic (مصرى) */
 $aliases['arz'] = array(
-	'DeletedContributions' => array( 'مساهمات محذوفة' ),
+	'DeletedContributions' => array( 'مساهمات_محذوفة' ),
 );
 
 /** German (Deutsch)

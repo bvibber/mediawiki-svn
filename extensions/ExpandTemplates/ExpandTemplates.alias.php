@@ -16,12 +16,12 @@ $aliases['en'] = array(
 
 /** Arabic (العربية) */
 $aliases['ar'] = array(
-	'ExpandTemplates' => array( 'فرد القوالب' ),
+	'ExpandTemplates' => array( 'فرد_القوالب' ),
 );
 
 /** Egyptian Spoken Arabic (مصرى) */
 $aliases['arz'] = array(
-	'ExpandTemplates' => array( 'فرد القوالب' ),
+	'ExpandTemplates' => array( 'فرد_القوالب' ),
 );
 
 /** German (Deutsch)

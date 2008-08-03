@@ -16,12 +16,12 @@ $aliases['en'] = array(
 
 /** Arabic (العربية) */
 $aliases['ar'] = array(
-	'CrossNamespaceLinks' => array( 'وصلات عبر النطاقات' ),
+	'CrossNamespaceLinks' => array( 'وصلات_عبر_النطاقات' ),
 );
 
 /** Egyptian Spoken Arabic (مصرى) */
 $aliases['arz'] = array(
-	'CrossNamespaceLinks' => array( 'وصلات عبر النطاقات' ),
+	'CrossNamespaceLinks' => array( 'وصلات_عبر_النطاقات' ),
 );
 
 /** German (Deutsch)

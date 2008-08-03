@@ -21,14 +21,14 @@ $aliases['en'] = array(
 $aliases['ar'] = array(
 	'Configure'  => array( 'ضبط' ),
 	'Extensions' => array( 'امتدادات' ),
-	'ViewConfig' => array( 'عرض الإعدادات' ),
+	'ViewConfig' => array( 'عرض_الإعدادات' ),
 );
 
 /** Egyptian Spoken Arabic (مصرى) */
 $aliases['arz'] = array(
 	'Configure'  => array( 'ضبط' ),
 	'Extensions' => array( 'امتدادات' ),
-	'ViewConfig' => array( 'عرض الإعدادات' ),
+	'ViewConfig' => array( 'عرض_الإعدادات' ),
 );
 
 /** Southern Balochi (بلوچی مکرانی) */

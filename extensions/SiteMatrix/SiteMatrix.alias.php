@@ -16,12 +16,12 @@ $aliases['en'] = array(
 
 /** Arabic (العربية) */
 $aliases['ar'] = array(
-	'SiteMatrix' => array( 'مصفوفة الموقع', 'ويكيات ويكيميديا' ),
+	'SiteMatrix' => array( 'مصفوفة_الموقع', 'ويكيات_ويكيميديا' ),
 );
 
 /** Egyptian Spoken Arabic (مصرى) */
 $aliases['arz'] = array(
-	'SiteMatrix' => array( 'مصفوفة الموقع', 'ويكيات ويكيميديا' ),
+	'SiteMatrix' => array( 'مصفوفة_الموقع', 'ويكيات_ويكيميديا' ),
 );
 
 /** German (Deutsch)

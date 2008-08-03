@@ -16,12 +16,12 @@ $aliases['en'] = array(
 
 /** Arabic (العربية) */
 $aliases['ar'] = array(
-	'ImportUsers' => array( 'استيراد المستخدمين' ),
+	'ImportUsers' => array( 'استيراد_المستخدمين' ),
 );
 
 /** Egyptian Spoken Arabic (مصرى) */
 $aliases['arz'] = array(
-	'ImportUsers' => array( 'استيراد المستخدمين' ),
+	'ImportUsers' => array( 'استيراد_المستخدمين' ),
 );
 
 /** French (Français) */

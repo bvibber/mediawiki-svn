@@ -16,12 +16,12 @@ $aliases['en'] = array(
 
 /** Arabic (العربية) */
 $aliases['ar'] = array(
-	'EditUser' => array( 'تعديل المستخدم' ),
+	'EditUser' => array( 'تعديل_المستخدم' ),
 );
 
 /** Egyptian Spoken Arabic (مصرى) */
 $aliases['arz'] = array(
-	'EditUser' => array( 'تعديل المستخدم' ),
+	'EditUser' => array( 'تعديل_المستخدم' ),
 );
 
 /** French (Français) */

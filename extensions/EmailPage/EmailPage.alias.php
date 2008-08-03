@@ -16,12 +16,12 @@ $aliases['en'] = array(
 
 /** Arabic (العربية) */
 $aliases['ar'] = array(
-	'EmailPages' => array( 'مراسلة الصفحات' ),
+	'EmailPages' => array( 'مراسلة_الصفحات' ),
 );
 
 /** Egyptian Spoken Arabic (مصرى) */
 $aliases['arz'] = array(
-	'EmailPages' => array( 'مراسلة الصفحات' ),
+	'EmailPages' => array( 'مراسلة_الصفحات' ),
 );
 
 /** French (Français) */

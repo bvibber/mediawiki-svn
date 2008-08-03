@@ -16,12 +16,12 @@ $aliases['en'] = array(
 
 /** Arabic (العربية) */
 $aliases['ar'] = array(
-	'DeleteBatch' => array( 'حذف الباتش' ),
+	'DeleteBatch' => array( 'حذف_الباتش' ),
 );
 
 /** Egyptian Spoken Arabic (مصرى) */
 $aliases['arz'] = array(
-	'DeleteBatch' => array( 'حذف الباتش' ),
+	'DeleteBatch' => array( 'حذف_الباتش' ),
 );
 
 /** French (Français) */

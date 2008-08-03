@@ -16,12 +16,12 @@ $aliases['en'] = array(
 
 /** Arabic (العربية) */
 $aliases['ar'] = array(
-	'SpamRegex' => array( 'سبام ريجيكس' ),
+	'SpamRegex' => array( 'سبام_ريجيكس' ),
 );
 
 /** Egyptian Spoken Arabic (مصرى) */
 $aliases['arz'] = array(
-	'SpamRegex' => array( 'سبام ريجيكس' ),
+	'SpamRegex' => array( 'سبام_ريجيكس' ),
 );
 
 /** Hebrew (עברית)

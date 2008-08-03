@@ -16,12 +16,12 @@ $aliases['en'] = array(
 
 /** Arabic (العربية) */
 $aliases['ar'] = array(
-	'LinkSearch' => array( 'بحث الوصلات' ),
+	'LinkSearch' => array( 'بحث_الوصلات' ),
 );
 
 /** Egyptian Spoken Arabic (مصرى) */
 $aliases['arz'] = array(
-	'LinkSearch' => array( 'بحث الوصلات' ),
+	'LinkSearch' => array( 'بحث_الوصلات' ),
 );
 
 /** German (Deutsch)

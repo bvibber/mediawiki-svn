@@ -16,12 +16,12 @@ $aliases['en'] = array(
 
 /** Arabic (العربية) */
 $aliases['ar'] = array(
-	'AdvancedRandom' => array( 'عشوائي متقدم' ),
+	'AdvancedRandom' => array( 'عشوائي_متقدم' ),
 );
 
 /** Egyptian Spoken Arabic (مصرى) */
 $aliases['arz'] = array(
-	'AdvancedRandom' => array( 'عشوائى متقدم' ),
+	'AdvancedRandom' => array( 'عشوائى_متقدم' ),
 );
 
 /** Finnish (Suomi) */
