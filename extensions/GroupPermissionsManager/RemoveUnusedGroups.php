@@ -9,7 +9,7 @@ class RemoveUnusedGroups extends SpecialPage {
 	* Constructor function
 	* Registers the special page, restricts it to those with the 'userrights' right
 	*/
-	function RemoveUnusedGroups() {
+	function __construct() {
 		SpecialPage::SpecialPage( 'RemoveUnusedGroups', 'userrights' );
 	}
 	
@@ -25,7 +25,7 @@ class RemoveUnusedGroups extends SpecialPage {
 			return;
 		}
 		
-		wfLoadExtensionMessages('GroupPermissions');
+		loadMessages();
 		$this->setHeaders();
 		$wgOut->addWikiText( wfMsg( 'grouppermissions-rug-header' ) );
 		if($wgRequest->wasPosted()) {

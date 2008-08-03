@@ -15,7 +15,7 @@ $wgExtensionCredits['other'][] = array(
 	'name'           => 'Extended Permissions',
 	'author'         => 'Ryan Schmidt',
 	'url'            => 'http://www.mediawiki.org/wiki/Extension:GroupPermissionsManager',
-	'version'        => '1.0',
+	'version'        => '1.1',
 	'description'    => 'Extended permissions system',
 	'descriptionmsg' => 'grouppermissions-desc2',
 );
@@ -81,6 +81,11 @@ function efGPManagerExtendedPermissionsGrant($title, $user, $action, &$result) {
 						return true;
 					}
 				}
+			}
+			if( !$title->isNamespaceProtected ) {
+				//user can't edit due to namespace protection
+				$result = null;
+				return false;
 			}
 			if( $title->isTalkPage() && $user->isAllowed('edittalk') ) {
 				$result = true;
@@ -166,7 +171,7 @@ function efGPManagerExtendedPermissionsRevoke($title, $user, $action, &$result) 
 }
 
 //replace right-edit messages with right-edit-new wherever applicable
-function efGPManagerReplaceEditMessage(&$key, &$useDB, &$langCode) {
+function efGPManagerReplaceEditMessage(&$key, &$useDB, &$langCode, &$transform) {
 	if($key == 'right-edit') {
 		$key = 'right-edit-new';
 		return false; //so it doesn't change load times TOO much

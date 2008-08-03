@@ -17,6 +17,8 @@ $messages['en'] = array(
 	'grouppermissions-desc'          => 'Manage group permissions via a [[Special:GroupPermissions|special page]]',
 	'grouppermissions-desc2'         => 'Extended permissions system',
 	'grouppermissions-desc3'         => 'Allows for the content actions (tabs) to be customized',
+	'grouppermissions-desc4'         => 'Allows adding additional items to the Toolbox',
+	'grouppermissions-desc-nsm'      => 'Manage namespaces via a special page',
 	'grouppermissions-header'        => 'You may use this page to change the underlying permissions of the various usergroups.',
 	'grouppermissions-search'        => 'Group:',
 	'grouppermissions-dologin'       => 'Login',
@@ -45,7 +47,6 @@ $messages['en'] = array(
 	'grouppermissions-log-change'    => 'changed permissions for group "$2"',
 	'grouppermissions-log-delete'    => 'deleted group "$2"',
 	'grouppermissions-log-name'      => 'Group permissions log',
-	'grouppermissions-log-entry'     => '', #do not translate this message
 	'grouppermissions-log-header'    => 'This page tracks changes to the underlying permissions of user groups.',
 	'grouppermissions-needjs'        => 'Warning: JavaScript is disabled on your browser. Some features may not work!',
 	'grouppermissions-sp-header'     => 'You may use this page to manage how permissions are sorted and add new permissions.',
@@ -70,16 +71,6 @@ $messages['en'] = array(
 	'right-recentchanges'            => 'View recent changes',
 	'right-edittalk'                 => 'Edit discussion pages',
 	'right-edit-new'                 => 'Edit pages (which are not discussion pages)',
-	'grouppermissions-ca-article'    => 'ARTICLE',
-	'grouppermissions-ca-discussion' => 'DISCUSSION',
-	'grouppermissions-ca-edit'       => 'EDIT',
-	'grouppermissions-ca-watch'      => 'WATCH',
-	'grouppermissions-ca-protect'    => 'PROTECT',
-	'grouppermissions-ca-delete'     => 'DELETE',
-	'grouppermissions-ca-history'    => 'HISTORY',
-	'grouppermissions-ca-move'       => 'MOVE',
-	'grouppermissions-ca-newsection' => 'NEWSECTION',
-	'content_actions'                => "* ARTICLE\n* DISCUSSION\n* EDIT\n* NEWSECTION\n* HISTORY\n* DELETE\n* MOVE\n* PROTECT\n* WATCH",
 );
 
 /** Faeag Rotuma (Faeag Rotuma)

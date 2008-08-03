@@ -14,7 +14,7 @@ class GroupPermissions extends SpecialPage {
 	/**
 	* Constructor
 	*/
-	function GroupPermissions() {
+	function __construct() {
 		SpecialPage::SpecialPage( 'GroupPermissions', 'grouppermissions' );
 	}
 
@@ -29,7 +29,7 @@ class GroupPermissions extends SpecialPage {
 			$wgOut->permissionRequired( 'grouppermissions' );
 			return;
 		}
-		wfLoadExtensionMessages('GroupPermissions');
+		loadMessages();
 		$this->setHeaders();
 		$wgOut->addWikiText( wfMsg( 'grouppermissions-header' ) );
 
