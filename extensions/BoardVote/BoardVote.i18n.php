@@ -2103,7 +2103,7 @@ $messages['he'] = array(
 
 <pre>$2</pre>
 
-תוצאות ההצפנה מופיעות בהמשך. הן גם תופענה בפומבי בקישור [[Special:Boardvote/entry]].
+הגרסה המוצפנת מופיעה בהמשך. היא גם [[Special:Boardvote/entry|תוצג בפומבי]].
 
 <pre>$3</pre>
 
