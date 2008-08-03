@@ -10,6 +10,13 @@ $messages['en'] = array(
 	'automaticgroups-desc' => 'Convenient configuration of user rights and group membership based on user account age and edit count',
 );
 
+/** Arabic (العربية)
+ * @author Meno25
+ */
+$messages['ar'] = array(
+	'automaticgroups-desc' => 'ضبط ملائم لصلاحيات المستخدم وعضوية المجموعات بالاعتماد على عمر حساب المستخدم وعدد التعديلات',
+);
+
 $messages['fr'] = array(
 	'automaticgroups-desc' => 'Configuration pour les droits d’utilisateurs et les membres d’un groupes basés sur l’ancienneté du compte utilisateur et nombre d’éditions.',
 );
