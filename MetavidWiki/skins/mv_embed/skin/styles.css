@@ -49,13 +49,7 @@
     background: url(images/player_button_play.png) 2px 0 no-repeat;
 }
 
-.play_button a {
-display: block;
-height: 100%;
-width: 100%;
-}
-
-.pause_button a {
+.videoPlayer a {
 display: block;
 height: 100%;
 width: 100%;

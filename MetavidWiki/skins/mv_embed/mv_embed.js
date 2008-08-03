@@ -249,7 +249,7 @@ var videoElementPlayer = new mediaPlayer(
 
 var vlcMozillaPlayer = new mediaPlayer(
     'vlc-mozilla',
-    ['video/ogg', 'video/x-flv', 'video/mp4'],
+    [],
     'vlc'
 );
 
@@ -301,12 +301,21 @@ mediaPlayers.prototype =
         this.default_players['video/x-flv']= ['flowplayer','vlc'];
         this.default_players['video/annodex']=['cortado','vlc'];
     },
-    addPlayer : function(player)
+    addPlayer : function(player, mime_type)
     {
+        js_log('Adding ' + player.id + ' with mime_type ' + mime_type);
         for (var i in this.players)
             if (this.players[i].id==player.id)
+            {
+                if(mime_type!=null)
+                {
+                    js_log('adding ' + mime_type + ' support to ' + player.id);
+                    this.players[i].supported_types.push(mime_type);
+                }
                 return;
-        js_log('Adding ' + player.id);
+            }
+        if(mime_type!=null)
+            player.supported_types.push(mime_type);
         this.players.push(player);
     },
     getMIMETypePlayers : function(mime_type)
@@ -316,7 +325,7 @@ mediaPlayers.prototype =
             if (this.players[i].supportsMIMEType(mime_type))
                 mime_players.push(this.players[i]);
                 
-        return mime_players;               
+        return mime_players;
     },
     defaultPlayer : function(mime_type)
     {
@@ -502,6 +511,11 @@ var embedTypes = {
 					// In case it is null or undefined
 					pluginName = '';
 				}
+                if ( pluginName.toLowerCase() == 'vlc multimedia plugin' || pluginName.toLowerCase() == 'vlc multimedia plug-in' ) {
+                    this.players.addPlayer(vlcMozillaPlayer, type);
+                    continue;
+                }
+                    
 				if ( javaEnabled && type == 'application/x-java-applet' ) {
 					this.players.addPlayer(cortadoPlayer);
 					continue;
@@ -513,7 +527,7 @@ var embedTypes = {
 				
 				if ( type == 'application/ogg' ) {
 					if ( pluginName.toLowerCase() == 'vlc multimedia plugin' )
-						this.players.addPlayer(vlcMozillaPlayer);
+						this.players.addPlayer(vlcMozillaPlayer, type);
 					else if ( pluginName.indexOf( 'QuickTime' ) > -1 )
 						this.players.addPlayer(quicktimeMozillaPlayer);
 					else
@@ -521,7 +535,7 @@ var embedTypes = {
 					continue;
 				} else if ( uniqueMimesOnly ) {
 					if ( type == 'application/x-vlc-player' ) {
-						this.players.addPlayer(vlcMozillaPlayer);
+						this.players.addPlayer(vlcMozillaPlayer, type);
 						continue;
 					} else if ( type == 'video/quicktime' ) {
 						this.players.addPlayer(quicktimeMozillaPlayer);
@@ -530,16 +544,11 @@ var embedTypes = {
 				}
 			
 				if ( type == 'video/quicktime' ) {
-					this.players.addPlayer(vlcMozillaPlayer);
+					this.players.addPlayer(vlcMozillaPlayer, type);
 					continue;
 				}
    				if(type=='application/x-shockwave-flash'){
 					this.players.addPlayer(flowPlayer);
-					continue;
-				}
-   				if(type=='application/x-shockwave-flash'){
-   					//@@temporary disabled flash player (not fully functional yet)    		
-					//this.clientSupports['flowplayer']= true;
 					continue;
 				}
 			}
@@ -1574,7 +1583,7 @@ embedVideo.prototype = {
         }
 
         // options
-        html_code += '<div class="options"></div>';
+        html_code += '<div class="options"><a href="javascript:document.getElementById(\''+this.id+'\').DoOptionsHTML();"></a></div>';
         available_width -= 26;
         
         // closed captioning
@@ -1716,7 +1725,8 @@ embedVideo.prototype = {
         playing, configuring the player, inline cmml display, HTML linkback,
         download, and embed code.
     */
-	getThumbnailHTML : function (){
+	getThumbnailHTML : function ()
+    {
 	    var thumb_html = '';
 	    var class_atr='';
 	    var style_atr='';
@@ -1734,7 +1744,15 @@ embedVideo.prototype = {
 		js_log("PLAY BUTTON: " + this.play_button);
 	    if(this.play_button==true)
 		  	thumb_html+=this.getPlayButton();
-	  	
+
+   	    thumb_html+='</div>';		  	
+	    return thumb_html;
+
+    },
+    DoOptionsHTML:function()
+    {
+        var thumbnail = this.media_element.getThumbnailURL();
+        var thumb_html='';
 	  	 //add plugin config button (don't add for playlists) 
 	  	 if(!this.pc){
 			 thumb_html+='<div style="border:none;position:absolute;top:2px;left:2px;z-index:99;width:28px;height:28px;">' +
@@ -1746,13 +1764,13 @@ embedVideo.prototype = {
 
 	  	//add in cmml inline dispaly if roe description avaliable
 	  	//not to be displayed in stream interface.
-	  	if(this.media_element.hasStreamOfMIMEType('text/cmml') && this.show_meta_link){
+/*	  	if(this.media_element.hasStreamOfMIMEType('text/cmml') && this.show_meta_link){
 	  		thumb_html+='<div style="border:none;position:absolute;top:2px;right:2px;z-index:1">'+
 		     '<a title="'+getMsg('select_transcript_set')+'" href="javascript:$j(\'#'+this.id+'\').get(0).showTextInterface();">';
 		    thumb_html+=getTransparentPng({id:'metaButton_'+this.id, width:"40", height:"27", border:"0", 
 						src:mv_embed_path + 'images/cc_meta_sm.png' });
 			thumb_html+='</div>';    	
-	  	}
+	  	}*/
 	  	
 	    //add link back if requested
 	    if(this.linkback){
@@ -1806,8 +1824,7 @@ embedVideo.prototype = {
 				 '</div>';
             thumb_html+='</div>';
 	    }	
-	    thumb_html+='</div>';		  	
-	    return thumb_html;
+	    this.displayHTML(thumb_html);
 	},
 	getPlayButton:function(id){
 		if(!id)id=this.id;
@@ -1879,19 +1896,28 @@ embedVideo.prototype = {
         if(height<240)height=240;
 
         var sel_id = (this.pc!=null)?this.pc.pp.id:this.id;
-        var close_link ='<a href="#" style="color:white" onClick="document.getElementById(\''+this.id+'\').closeDisplayedHTML();return false;">close</a>';
+        var fade_in = true;
+        if($j('#blackbg_'+sel_id).length!=0)
+        {
+            fade_in = false;
+            $j('#blackbg_'+sel_id).remove();
+        }
 
         //fade in a black bg div ontop of everything
          var div_code = '<div id="blackbg_'+sel_id+'" ' +
 			 'style="overflow:auto;position:absolute;display:none;z-index:2;background:black;top:0px;left:0px;' +
 				 'height:'+parseInt(height)+'px;width:'+parseInt(width)+'px;">'+
-                 '<span id="close_vl'+this.id+'" style="position:absolute:top:2px;left:2px;color:white;">'+close_link+'</span>'+
-       			 '<span class="displayHTML" id="con_vl_'+this.id+'" style="position:absolute;top:20px;left:20px;color:white;">' +
+//       			 '<span class="displayHTML" id="con_vl_'+this.id+'" style="position:absolute;top:20px;left:20px;color:white;">' +
+	  		'<div style="border:none;position:absolute;top:2px;right:2px;z-index:1"><span>'+
+		    '<a href="#" style="color:white;" onClick="$j(\'#'+sel_id+'\').get(0).closeDisplayedHTML();">close</a></span></div>'+
              html_code +
-                close_link+'</span>'
+//                close_link+'</span>'+
       		 '</div>';
         $j('#'+sel_id).append(div_code);
-        $j('#blackbg_'+sel_id).fadeIn("slow");
+        if (fade_in)
+            $j('#blackbg_'+sel_id).fadeIn("slow");
+        else
+            $j('#blackbg_'+sel_id).show();
         return false; //onclick action return false
     },
     /** Close the custom HTML displayed using displayHTML and restores the
@@ -2072,7 +2098,7 @@ embedVideo.prototype = {
 			js_log('already in stopped state');
 		}else{
 			//rewrite the html to thumbnail disp 
-			doThumbnailHTML();
+			this.doThumbnailHTML();
 		}
         if(this.update_interval)
         {
@@ -2382,11 +2408,19 @@ function mv_jsdata_cb(response){
 //load external js via dom injection
 function loadExternalJs(url){  
    	js_log('load js: '+ url);
-	var e = document.createElement("script");
-	e.setAttribute('src', url);
-	e.setAttribute('type',"text/javascript");
-	//e.setAttribute('defer', true);
-	document.getElementsByTagName("head")[0].appendChild(e);     
+    if(window['$j'])
+    {
+        js_log('using jQuery');
+        $j.getScript(url);
+    }
+    else
+    {
+    	var e = document.createElement("script");
+        e.setAttribute('src', url);
+        e.setAttribute('type',"text/javascript");
+        //e.setAttribute('defer', true);
+        document.getElementsByTagName("head")[0].appendChild(e);
+    }
 }
 function styleSheetPresent(url){
     style_elements = document.getElementsByTagName('link');  
