@@ -180,7 +180,7 @@ function fnSelectCategoryGetAllCategories() {
 	return $m_allCats;
 }
 
-function fnSelectCategoryGetChildren( $m_root, $m_prefix = 1 ) {
+function fnSelectCategoryGetChildren( $m_root, $m_depth = 1 ) {
 	# Initialize return value:
 	$m_allCats = array();
 
@@ -204,8 +204,8 @@ function fnSelectCategoryGetChildren( $m_root, $m_prefix = 1 ) {
       continue;
     }
 		# Add current entry to array:
-		$m_allCats += array( $m_row['title'] => $m_prefix );
-		$m_allCats += fnSelectCategoryGetChildren( $m_row['title'], $m_prefix + 1 );
+		$m_allCats += array( $m_row['title'] => $m_depth );
+		$m_allCats += fnSelectCategoryGetChildren( $m_row['title'], $m_depth + 1 );
 	}
 	# Free result:
 	$m_dbObj->freeResult( $m_res );
@@ -267,9 +267,9 @@ function fnSelectCategoryCheckConditions ($m_isUpload, &$m_pageObj ) {
 	# Check if page is subpage once to save method calls later:
 	$m_isSubpage = $wgTitle->isSubpage();
 
-	# Run only if we are in an upload, a activated namespace or if page is
-        # a subpage and subpages are enabled (unfortunately we can't use
-        # implication in PHP) but not if we do a sectionedit:
+	# Run only if we are in an upload, an activated namespace or if page is
+  # a subpage and subpages are enabled (unfortunately we can't use
+  # implication in PHP) but not if we do a sectionedit:
 	return (
     $m_isUpload
       || ( $wgSelectCategoryNamespaces[$wgTitle->getNamespace()]

@@ -1,12 +1,11 @@
-* v0.7pre (SVN trunk)
+* v0.7dev
   - Update to comply to the current MediaWiki core (Patch by Lambert Lum)
-	- Changed the user interface to use checkboxes instead of scrolling lists
+  - Changed the user interface to use checkboxes instead of scrolling lists
 	  for selecting (Patch by Lambert Lum)
-  - Some minor code reformatting (Patch by Lambert Lum)
-	- Fixed to work with category names containing spaces
-	- Fixed a possible raw sql injection problem
-	- Update to survive category loops
-	- Indent subcategories like in a tree
+  - Fixed to work with category names containing spaces
+  - Fixed a possible raw sql injection problem
+  - Update to survive category loops
+  - Indent subcategories like in a tree
 
 * v0.6 - 2008-01-19
   - using wfLoadExtensionMessages now, all messages in one file
