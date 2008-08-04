@@ -95,6 +95,15 @@ $messages['ar'] = array(
 	'expand_templates_preview'         => 'عرض مسبق',
 );
 
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Ghaly
+ */
+$messages['arz'] = array(
+	'expand_templates_output'  => 'النتيجه',
+	'expand_templates_ok'      => 'موافق',
+	'expand_templates_preview' => 'بروفه',
+);
+
 /** Assamese (অসমীয়া)
  * @author Rajuonline
  */

@@ -129,6 +129,7 @@ $messages['el'] = array(
  * @author Yekrats
  */
 $messages['eo'] = array(
+	'talkhere-desc'        => 'Metas la diskuto-paĝon en la paĝon',
 	'talkhere-foottext'    => 'La supraj komentoj eble estis faritaj de vizitantoj.
 
 La operaciistoj de la retejo ne estas respondeca pri la enhavo de tiaj komentoj.',
@@ -411,6 +412,7 @@ Sidens operatører kan ikke ta ansvar for innholdet i slike kommentarer.',
  * @author Cedric31
  */
 $messages['oc'] = array(
+	'talkhere-desc'        => 'Met la pagina de discussion dins la pagina',
 	'talkhere-foottext'    => 'Los comentaris çaisús son estats daissats per de vesitaires.
 
 Lo gestionari del sit es pas responsable de lor contengut.',

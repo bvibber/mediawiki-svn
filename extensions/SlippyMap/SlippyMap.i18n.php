@@ -304,7 +304,6 @@ $messages['no'] = array(
 
 /** Occitan (Occitan)
  * @author Cedric31
- * @author Siebrand
  */
 $messages['oc'] = array(
 	'slippymap_desc'            => 'Autoriza l’utilizacion de la balisa <tt><nowiki>&lt;slippymap&gt;</nowiki></tt> per afichar una mapa lisanta d’OpenLayers. Las mapas provenon de [http://openstreetmap.org openstreetmap.org]',
@@ -332,6 +331,8 @@ $messages['oc'] = array(
 	'slippymap_maperror'        => 'Error de mapa :',
 	'slippymap_osmtext'         => 'Vejatz aquesta mapa sus OpenStreetMap.org',
 	'slippymap_code'            => "Còde Wiki pel visionament d'aquesta mapa :",
+	'slippymap_button_code'     => 'Obténer lo còde wiki',
+	'slippymap_resetview'       => 'Tornar inicializar lo visionament',
 );
 
 /** Polish (Polski)

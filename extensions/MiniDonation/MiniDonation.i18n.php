@@ -216,6 +216,7 @@ $messages['no'] = array(
  * @author Cedric31
  */
 $messages['oc'] = array(
+	'donationform-desc'   => "Apondís la balisa <tt>&lt;donateform&gt;</tt> per permetre los dons amb l'ajuda de PayPal",
 	'donationform-submit' => 'Far un don amb PayPal',
 );
 

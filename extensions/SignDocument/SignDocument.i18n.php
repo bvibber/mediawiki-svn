@@ -43,11 +43,12 @@ $messages['dsb'] = array(
 
 /** French (Français)
  * @author Sherbrooke
+ * @author Grondin
  */
 $messages['fr'] = array(
 	'signaturelogpage'     => 'Journal des signatures',
 	'signature-desc'       => 'Active la [[Special:SignDocument|signature]] des documents',
-	'signaturelogpagetext' => 'Ceci est le journal de toutes les signatures ajoutées aux documents via [[Special:SignDocument]].',
+	'signaturelogpagetext' => 'Ceci est le journal de [[Special:SignDocument|toutes les signatures ajoutées aux documents]].',
 	'signaturelogentry'    => 'a signé le document $1.',
 );
 
@@ -207,7 +208,7 @@ $messages['stq'] = array(
 $messages['sv'] = array(
 	'signaturelogpage'     => 'Signeringslogg',
 	'signature-desc'       => 'Gör det möjligt att [[Special:SignDocument|signera]] dokument',
-	'signaturelogpagetext' => 'Detta är en logg över alla signaturer som lagts till dokument via [[Special:SignDocument]].',
+	'signaturelogpagetext' => 'Detta är en logg över [[Special:SignDocument|alla signaturer som lagts till dokument]].',
 	'signaturelogentry'    => 'signerade dokumentet $1',
 );
 

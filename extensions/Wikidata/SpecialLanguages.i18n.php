@@ -403,6 +403,13 @@ $wdMessages['bcl'] = array(
 	'languages'  => 'Wikidata: Manager kan tataramon',
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
+ */
+$wdMessages['be-tarask'] = array(
+	'ow_history' => 'Гісторыя',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  */
@@ -2069,6 +2076,13 @@ $wdMessages['mr'] = array(
  */
 $wdMessages['ms'] = array(
 	'ow_dm_OK' => 'OK',
+);
+
+/** Maltese (Malti)
+ * @author Roderick Mallia
+ */
+$wdMessages['mt'] = array(
+	'ow_Language' => 'Lingwa',
 );
 
 /** Mirandese (Mirandés)

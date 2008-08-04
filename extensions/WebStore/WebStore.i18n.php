@@ -150,6 +150,7 @@ $messages['bg'] = array(
 	'webstore_path_invalid'            => 'Името на файла е невалидно.',
 	'webstore_dest_open'               => 'Целевият файл „$1“ не може да бъде отворен.',
 	'webstore_dest_mkdir'              => 'Невъзможно е да бъде създадена целевата директория „$1“.',
+	'webstore_archive_lock'            => 'Неуспех при опит за заключване на архивния файл „$1“.',
 	'webstore_archive_mkdir'           => 'Невъзможно е да бъде създадена архивната директория „$1“.',
 	'webstore_src_open'                => 'Файлът-източник „$1“ не може да бъде отворен.',
 	'webstore_src_close'               => 'Грешка при затваряне на файла-източник „$1“.',
@@ -721,7 +722,6 @@ $1',
 
 /** Occitan (Occitan)
  * @author Cedric31
- * @author Siebrand
  */
 $messages['oc'] = array(
 	'inplace_access_disabled'          => "L'accès a aqueste servici es desactivat per totes los clients.",
@@ -751,7 +751,7 @@ $messages['oc'] = array(
 	'webstore_temp_copy'               => 'Error de còpia del fichièr temporari « $1 » vèrs lo fichièr de destinacion « $2 ».',
 	'webstore_temp_close'              => 'Error de tampadura del fichièr temporari « $1 ».',
 	'webstore_temp_lock'               => 'Error de varrolhatge del fichièr temporari « $1 ».',
-	'webstore_no_archive'              => 'Error de varrolhatge del fichièr temporari « $1 ».',
+	'webstore_no_archive'              => "Lo fichièr de destinacion existís e cap d'archiu es pas estat balhat.",
 	'webstore_no_file'                 => 'Cap de fichièr es pas estat telecargat.',
 	'webstore_move_uploaded'           => 'Error de desplaçament del fichièr telecargat « $1 » vèrs l’emplaçament temporari « $2 ».',
 	'webstore_invalid_zone'            => 'Zòna « $1 » invalida.',

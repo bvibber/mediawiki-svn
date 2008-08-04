@@ -177,7 +177,7 @@ $messages['eo'] = array(
  */
 $messages['fr'] = array(
 	'passwordreset'                    => 'Remise à zéro du mot de passe',
-	'passwordreset-desc'               => 'Réinitialise le mot de passe wiki d’un utilisateur - nécessite les droits de « passwordreset »',
+	'passwordreset-desc'               => '[[Special:Passwordreset|Réinitialise le mot de passe wiki d’un utilisateur]] - nécessite les droits de « passwordreset »',
 	'passwordreset-invalidusername'    => "Nom d'usager inconnu",
 	'passwordreset-emptyusername'      => "Nom d'usager vide",
 	'passwordreset-nopassmatch'        => 'Les mots de passe que vous avez saisis ne sont pas identiques.',
@@ -409,7 +409,7 @@ $messages['ksh'] = array(
  */
 $messages['lb'] = array(
 	'passwordreset'                 => 'Passwuert zrécksetzen',
-	'passwordreset-desc'            => "Zrécksetzen vu Benotzerpasswierder - Dir braucht dofir 'Passwordreset'-Rechter",
+	'passwordreset-desc'            => "[[Special:Passwordreset|Zrécksetzen vu Benotzerpasswierder]] - Dir braucht dofir 'Passwordreset'-Rechter",
 	'passwordreset-invalidusername' => 'Onbekannte Benotzernumm',
 	'passwordreset-emptyusername'   => 'Eidele Benotzernumm',
 	'passwordreset-nopassmatch'     => 'Déi Passwierder déi Dir aginn hutt sinn net identesch',
@@ -466,6 +466,13 @@ $messages['mr'] = array(
 	'passwordreset-accountdisabled'    => 'खाते बंद केलेले आहे',
 	'disabledusers'                    => 'बंद केलेले सदस्य',
 	'disabledusers-summary'            => 'ही अशा सदस्यांची यादी आहे ज्यांची खाती PasswordReset वापरून बंद करण्यात आलेली आहेत.',
+);
+
+/** Maltese (Malti)
+ * @author Roderick Mallia
+ */
+$messages['mt'] = array(
+	'passwordreset-submit' => 'Irrisettja l-password',
 );
 
 /** Nahuatl (Nahuatl)
@@ -536,7 +543,7 @@ $messages['no'] = array(
  */
 $messages['oc'] = array(
 	'passwordreset'                    => 'Remesa a zèro del senhal',
-	'passwordreset-desc'               => 'Reïnicializa lo senhal wiki d’un utilizaire - necessita los dreches de « passwordreset »',
+	'passwordreset-desc'               => '[[Special:Passwordreset|Torna inicializar lo senhal wiki d’un utilizaire]] - necessita los dreches de « passwordreset »',
 	'passwordreset-invalidusername'    => "Nom d'utilizaire desconegut",
 	'passwordreset-emptyusername'      => "Nom d'utilizaire void",
 	'passwordreset-nopassmatch'        => "Los senhals qu'avètz picats son pas identics.",

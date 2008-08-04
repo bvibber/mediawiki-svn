@@ -30,11 +30,32 @@ $messages['bg'] = array(
 	'googleadsense-desc' => 'Добавя [http://www.google.com/adsense Google AdSense] в страничната лента',
 );
 
+/** French (Français)
+ * @author Grondin
+ */
+$messages['fr'] = array(
+	'googleadsense-desc' => 'Ajoute [http://www.google.com/adsense Google AdSense] à la barre latérale',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand Mazeland
  * @author Siebrand
  */
 $messages['nl'] = array(
 	'googleadsense-desc' => 'Voegt [http://www.google.com/adsense?hl=nl Google AdSense] toe aan de sidebar',
+);
+
+/** Occitan (Occitan)
+ * @author Cedric31
+ */
+$messages['oc'] = array(
+	'googleadsense-desc' => 'Apondís [http://www.google.com/adsense Google AdSense] a la barra laterala',
+);
+
+/** Swedish (Svenska)
+ * @author M.M.S.
+ */
+$messages['sv'] = array(
+	'googleadsense-desc' => 'Lägger till [http://www.google.com/adsense Google AdSense] till sidpanelen',
 );
 

@@ -200,6 +200,7 @@ $messages['no'] = array(
  * @author Cedric31
  */
 $messages['oc'] = array(
+	'mediafunctions-desc'          => "Foncion parser per l’obtencion d'entresenhas que concernisson los fichièrs mèdias",
 	'mediafunctions-invalid-title' => '« $1 » es pas un títol valid.',
 	'mediafunctions-not-exist'     => '« $1 » existís pas.',
 );

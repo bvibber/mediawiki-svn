@@ -104,6 +104,7 @@ $messages['fi'] = array(
 
 /** French (Français)
  * @author Sherbrooke
+ * @author Cedric31
  */
 $messages['fr'] = array(
 	'contributionseditcount'      => 'Cet utilisateur a {{PLURAL:$1|$1 édition|$1 éditions}}.',
@@ -117,6 +118,15 @@ $messages['fr'] = array(
 $messages['gl'] = array(
 	'contributionseditcount'      => 'Este usuario ten $1 edicións.',
 	'contributionseditcount-desc' => 'Mostra a conta de edicións en [[Special:Contributions]]',
+);
+
+/** Hebrew (עברית)
+ * @author Agbad
+ * @author Rotemliss
+ */
+$messages['he'] = array(
+	'contributionseditcount'      => 'משתמש זה ביצע $1 עריכות.',
+	'contributionseditcount-desc' => 'הצגת מונה העריכות ב[[Special:Contributions|דף תרומות המשתמש]]',
 );
 
 /** Hindi (हिन्दी)
@@ -147,7 +157,7 @@ $messages['hu'] = array(
  */
 $messages['id'] = array(
 	'contributionseditcount'      => 'Pengguna ini memiliki $1 suntingan.',
-	'contributionseditcount-desc' => 'Menampilkan jumlah suntingan di [[Special:Contributions]]',
+	'contributionseditcount-desc' => 'Menampilkan jumlah suntingan di [[Special:Contributions|halaman kontribusi pengguna]]',
 );
 
 /** Icelandic (Íslenska)

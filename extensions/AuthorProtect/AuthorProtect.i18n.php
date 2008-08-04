@@ -84,6 +84,13 @@ $messages['avk'] = array(
 	'restriction-level-author' => 'Sutesikafa nendara',
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
+ */
+$messages['be-tarask'] = array(
+	'authorprotect-reason' => 'Прычына',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  */

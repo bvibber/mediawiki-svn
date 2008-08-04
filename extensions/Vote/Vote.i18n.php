@@ -251,6 +251,7 @@ $messages['el'] = array(
 	'vote-caption'        => 'Η επιλογή σας:',
 	'vote-submit'         => 'Ψηφοφορία',
 	'vote-registered'     => 'Η ψήφος σας έχει προσμετρηθεί.',
+	'vote-view-results'   => 'Δείτε τα αποτελέσματα',
 	'vote-results'        => 'Αποτελέσματα ψηφοφορίας',
 	'vote-results-choice' => 'Επιλογή',
 	'vote-results-none'   => 'Δεν διεξάγονται ψηφοφορίες αυτήν την περίοδο.',

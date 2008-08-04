@@ -104,6 +104,7 @@ $messages['bcl'] = array(
  * @author DCLXVI
  */
 $messages['bg'] = array(
+	'form-desc'                    => '[[Special:Form|Формуляр]] за започване на нови страници',
 	'form'                         => 'Формуляр',
 	'formnoname'                   => 'Липсва име на формуляра',
 	'formnonametext'               => 'Необходимо е да се посочи име на формуляр, напр. „Special:Form/ИмеНаФормуляр“',
@@ -221,7 +222,7 @@ $messages['fr'] = array(
 	'formbadpagenametext'          => 'Les données saisies forment un mauvais nom de page, « $1 ».',
 	'formrequiredfieldpluralerror' => 'Les champs $1 sont requis dans ce formulaire.',
 	'formrequiredfielderror'       => 'Le champ $1 est requis dans ce formulaire.',
-	'formsavesummary'              => "Créer un nouvel article à l'aide de [[Special:Form/$1]]",
+	'formsavesummary'              => 'Nouvelle page utilisant [[Special:Form/$1|le formulaire $1]]',
 	'formsaveerror'                => "Une erreur s'est produite pendant la sauvegarde.",
 	'formsaveerrortext'            => "Une erreur inconnue s'est produite pendant la sauvegarde de ''$1''.",
 );
@@ -501,6 +502,7 @@ $messages['no'] = array(
  * @author Cedric31
  */
 $messages['oc'] = array(
+	'form-desc'                    => 'Un [[Special:Form|formulari d’interfàcia]] per començar de paginas novèlas',
 	'form'                         => 'Formulari',
 	'formnoname'                   => 'Cap de nom',
 	'formnonametext'               => 'Especificatz lo nom del formulari, jos la forma "Special:Formulari/NomDelFormulari".',
@@ -516,7 +518,7 @@ $messages['oc'] = array(
 	'formbadpagenametext'          => 'Las donadas picadas fòrman un marrit nom de pagina, « $1 ».',
 	'formrequiredfieldpluralerror' => 'Los camps $1 son requeses dins aqueste formulari.',
 	'formrequiredfielderror'       => 'Lo camp $1 es requés dins aqueste formulari.',
-	'formsavesummary'              => "Crear un article novèl amb l'ajuda de [[Special:Form/$1]]",
+	'formsavesummary'              => "Crear un article novèl amb l'ajuda de [[Special:Form/$1|formulari $1]]",
 	'formsaveerror'                => "Una error s'es producha pendent lo salvament.",
 	'formsaveerrortext'            => "Una error desconeguda s'es producha pendent lo salvament de ''$1''.",
 );

@@ -212,6 +212,13 @@ $messages['id'] = array(
 	'showprocesslist-time' => 'Waktu',
 );
 
+/** Italian (Italiano)
+ * @author Darth Kule
+ */
+$messages['it'] = array(
+	'showprocesslist-user' => 'Utente',
+);
+
 /** Javanese (Basa Jawa)
  * @author Meursault2004
  */

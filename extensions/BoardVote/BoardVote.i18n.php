@@ -372,46 +372,57 @@ $1 للبيانات المشفرة.</p>',
 
 /** Egyptian Spoken Arabic (مصرى)
  * @author Ghaly
+ * @author Ramsis1978
  */
 $messages['arz'] = array(
-	'boardvote_edits_many' => 'كتير',
-	'boardvote_welcome'    => "اهلا '''$1'''!",
+	'boardvote_time'         => 'الوقت',
+	'boardvote_user'         => 'يوزر',
+	'boardvote_edits'        => 'التعديلات',
+	'boardvote_days'         => 'الايام',
+	'boardvote_ua'           => 'وسيط اليوزر',
+	'boardvote_dumplink'     => 'كليك هنا',
+	'boardvote_submit'       => 'موافق',
+	'boardvote_strike'       => 'شطب',
+	'boardvote_unstrike'     => 'احتساب',
+	'boardvote_notstarted'   => 'التصويت مابتداش  لسه',
+	'boardvote_edits_many'   => 'كتير',
+	'group-boardvote'        => 'اداريين انتخابات المجلس',
+	'group-boardvote-member' => 'ادارى انتخابات المجلس',
+	'boardvote_welcome'      => "اهلا '''$1'''!",
+	'right-boardvote'        => 'إدارة الانتخابات',
 );
 
 /** Asturian (Asturianu)
- * @author SPQRobin
  * @author Esbardu
- * @author Siebrand
  */
 $messages['ast'] = array(
-	'boardvote'              => "Eleiciones pal Conseyu d'Alministración de Wikimedia (Board of Trustees)",
-	'boardvote-desc'         => "[[meta:Board elections/2008|Eleiciones pal Conseyu d'Alministración de Wikimedia]]",
-	'boardvote_entry'        => "* [[Special:Boardvote/vote|Votar]]
+	'boardvote'                => "Eleiciones pal Conseyu d'Alministración de Wikimedia (Board of Trustees)",
+	'boardvote-desc'           => "[[meta:Board elections/2008|Eleiciones pal Conseyu d'Alministración de Wikimedia]]",
+	'boardvote_entry'          => "* [[Special:Boardvote/vote|Votar]]
 * [[Special:Boardvote/list|Llista de votos hasta la fecha]]
 * [[Special:Boardvote/dump|Volcáu de datos encriptaos d'eleición]]",
-	'boardvote_intro'        => "<p>Bienveníu a la segunda eleición pal Conseyu d'Alministración de Wikimedia.
-Tamos votando pa que dos persones representen a la comunidá d'usuarios de
-los distintos proyectos Wikimedia. Ellos aidarán a determinar la direición
-futura que los proyectos Wikimedia van siguir, en forma individual y en grupu,
-y representen los <em>tos</em> intereses y esmoliciones hacia'l Conseyu d'Alministración.
+	'boardvote_intro'          => '<p>Bienveníu a les eleiciones 2008 pal Conseyu d\'Alministración de Wikimedia.
+Tamos votando pa qu\'una persona represente a la comunidá d\'usuarios de los distintos proyectos Wikimedia.
+Ellos aidarán a determinar la direición futura que los proyectos Wikimedia van siguir, en forma individual y en grupu, y representen los <em>tos</em> intereses y esmoliciones hacia\'l Conseyu d\'Alministración.
 Ellos decidirán les formes de xenerar ingresos y la destinación de los mesmos.</p>
 
-<p>Por favor, llei con procuru les declaraciones y rempuestes de los candidatos
-enantes de votar. Caún de los candidatos ye un usuariu respetáu que contribuyó
-con munchu esfuerzu y tiempu pa facer d'estos proyectos un llugar afayadizu
-col enfotu de distribuyir llibremente'l conocimientu humanu.</p>
+<p>Por favor, llei con procuru les declaraciones y rempuestes de los candidatos enantes de votar.
+Caún de los candidatos ye un usuariu respetáu que contribuyó con munchu esfuerciu y tiempu pa facer d\'estos proyectos un llugar afayadizu col enfotu de distribuyir llibremente\'l conocimientu humanu.</p>
 
-<p>Pues votar por tolos candidatos que quieras. El candidatu con más votos en cada
-posición sedrá declaráu'l ganador d'esa posición. En casu d'empate, llevaráse a
-cabu una eleición de desempate.</p>
+<p>Por favor califica a los candidatos acordies coles tos preferencies poniendo un númberu al llau la caxa (1 = candidatu favoritu, 2 = segundu favoritu, ...).
+Pues dar la mesma preferencia a más d\'un candidatu y pues dexar candidatos ensin calificar.
+Asúmese que prefieres a tolos candidatos calificaos respeuto a los non calificaos, y que nun tienes preferencia entre tolos candidatos non calificaos.</p>
+
+<p>El ganador de la eleición sedrá calculáu usando\'l métodu Schulze. Pa más información, consulta les páxines oficiales de les eleiciones.</p>
 
 <p>Pa más información, ver:</p>
-<ul><li><a href=\\\"http://meta.wikimedia.org/wiki/Board_elections/2008/Es\\\" class=\\\"external\\\">Entrugues frecuentes sobre la eleición (FAQ)</a></li>
-<li><a href=\\\"http://meta.wikimedia.org/wiki/Election_candidates_2008/Es\\\" class=\\\"external\\\">Candidatos</a></li></ul>",
-	'boardvote_intro_change' => "<p>Yá votasti. Sicasí, pues camudar el to votu usando'l
+<ul><li><a href="http://meta.wikimedia.org/wiki/Board_elections/2008" class="external">Eleiciones al Conseyu d\'Alministración 2008</a></li>
+<li><a href="http://meta.wikimedia.org/wiki/Board_elections/2008/Candidates" class="external">Candidatos</a></li>
+<li><a href="http://en.wikipedia.org/wiki/Schulze_method" class="external">Métodu Schulze</a></li></ul>',
+	'boardvote_intro_change'   => "<p>Yá votasti. Sicasí, pues camudar el to votu usando'l
 formulariu d'embaxo. Por favor rellena les casielles d'al llau de cada candidatu
 que quieras aprobar.</p>",
-	'boardvote_entered'      => 'Gracies, el to votu quedó grabáu.
+	'boardvote_entered'        => 'Gracies, el to votu quedó grabáu.
 
 Si quies, pues guardar los siguientes detalles. El rexistru del to votu ye:
 
@@ -421,44 +432,51 @@ Encriptóse cola clave pública de los Alministradores de la Eleición:
 
 <pre>$2</pre>
 
-A continuación amuésase la versión encriptada resultante. Va ser publicada en [[Special:Boardvote/dump]].
+A continuación amuésase la versión encriptada resultante. Va ser [[Special:Boardvote/dump|amosada públicamente]].
 
 <pre>$3</pre>
 
 [[Special:Boardvote/entry|Volver]]',
-	'boardvote_nosession'    => "Nun se pue determinar el to númeru d'identificación d'usuariu de Wikimedia. Por favor, identifícate na wiki onde tas rexistráu y vete a <nowiki>[[Special:Boardvote]]</nowiki>. Tienes qu'usar una cuenta con a lo menos $1 contribuciones enantes del $2, y con una primer edición enantes del $3.",
-	'boardvote_notloggedin'  => "Nun tas identificáu. Pa votar tienes qu'usar una cuenta con a lo menos $1 contribuciones enantes del $2, y con una primer edición enantes del $3.",
-	'boardvote_notqualified' => 'Nun cumples criterios pa votar nesta eleición. Necesites tener feches $3 ediciones enantes del $2, y que la to primer edición seya enantes del $5.',
-	'boardvote_novotes'      => 'Naide votó tovía.',
-	'boardvote_time'         => 'Hora',
-	'boardvote_user'         => 'Usuariu',
-	'boardvote_edits'        => 'Ediciones',
-	'boardvote_days'         => 'Díes',
-	'boardvote_ua'           => 'Representante del usuariu',
-	'boardvote_listintro'    => '<p>Esta ye una llista de tolos votos rexistraos
+	'boardvote_invalidentered' => "<p><strong>Error</strong>: la preferencia de candidatu ha ser espresada namái per aciu d'un númberu enteru positivu (1, 2, 3, ....), o bien dexalo vacio.</p>",
+	'boardvote_nosession'      => "Nun se pudo determinar el to númeru d'identificación d'usuariu de Wikimedia.
+Por favor, identifícate na wiki onde tas rexistráu y vete a <nowiki>[[Special:Boardvote]]</nowiki>.
+Tienes qu'usar una cuenta con a lo menos $1 contribuciones enantes de $2, y tener feches a lo menos $3 contribuciones entre $4 y $5.",
+	'boardvote_notloggedin'    => "Nun tas identificáu.
+Pa votar tienes qu'usar una cuenta con a lo menos $1 contribuciones enantes de $2, y teenr feches a lo menos $3 contribuciones entre $4 y $5.",
+	'boardvote_notqualified'   => 'Nun cumples criterios pa votar nesta eleición.
+Necesites tener feches a lo menos $1 contribuciones enantes de $2, y tener feches a lo menos $3 contribuciones ente $4 y $5.',
+	'boardvote_novotes'        => 'Naide votó tovía.',
+	'boardvote_time'           => 'Hora',
+	'boardvote_user'           => 'Usuariu',
+	'boardvote_edits'          => 'Ediciones',
+	'boardvote_days'           => 'Díes',
+	'boardvote_ua'             => 'Representante del usuariu',
+	'boardvote_listintro'      => '<p>Esta ye una llista de tolos votos rexistraos
 hasta la fecha. $1 pa los datos encriptaos.</p>',
-	'boardvote_dumplink'     => 'Calca equí',
-	'boardvote_submit'       => 'Aceutar',
-	'boardvote_strike'       => 'Tachar',
-	'boardvote_unstrike'     => 'Destachar',
-	'boardvote_needadmin'    => 'Esta operación namái la puen facer los alministradores de la eleición.',
-	'boardvote_sitenotice'   => "<a href={{localurle:Special:Boardvote/vote}}\\\">Eleiciones al Conseyu d'Alministración de Wikimedia</a>: Votación abierta hasta'l 22 June",
-	'boardvote_notstarted'   => 'La votación entá nun empecipió',
-	'boardvote_closed'       => 'La votación ta zarrada, mira en breve [http://meta.wikimedia.org/wiki/Elections_for_the_Board_of_Trustees_of_the_Wikimedia_Foundation%2C_2008/En la páxina de resultaos de les eleiciones].',
-	'boardvote_edits_many'   => 'munches',
-	'group-boardvote'        => "Alministradores de votaciones pal Conseyu d'Alministración",
-	'group-boardvote-member' => "Alministrador de votaciones pal Conseyu d'Alministración",
-	'grouppage-boardvote'    => "{{ns:project}}:Alministrador de votaciones pal Conseyu d'Alministración",
-	'boardvote_blocked'      => 'Sentímoslo, fuisti bloquiáu na to wiki. Los usuarios bloquiaos nun puen votar.',
-	'boardvote_welcome'      => "¡Bienveníu '''$1'''!",
-	'go_to_board_vote'       => "Eleiciones pal Conseyu d'Alministración de Wikimedia 2007",
-	'boardvote_redirecting'  => "P'ameyorar la seguridá y tresparencia, tamos faciendo les votaciones nun
+	'boardvote_dumplink'       => 'Calca equí',
+	'boardvote_submit'         => 'Aceutar',
+	'boardvote_strike'         => 'Tachar',
+	'boardvote_unstrike'       => 'Destachar',
+	'boardvote_needadmin'      => 'Esta operación namái la puen facer los alministradores de la eleición.',
+	'boardvote_sitenotice'     => '<a href="{{localurle:Special:Boardvote/vote}}">Eleiciones al Conseyu d\'Alministración de Wikimedia</a>: Votación abierta hasta\'l 22 de xunu',
+	'boardvote_notstarted'     => 'La votación entá nun empecipió',
+	'boardvote_closed'         => 'La votación ta zarrada, mira en breve [http://meta.wikimedia.org/wiki/Board_elections/2008/Results la páxina de resultaos de les eleiciones].',
+	'boardvote_edits_many'     => 'munches',
+	'group-boardvote'          => "Alministradores de votaciones pal Conseyu d'Alministración",
+	'group-boardvote-member'   => "Alministrador de votaciones pal Conseyu d'Alministración",
+	'grouppage-boardvote'      => "{{ns:project}}:Alministrador de votaciones pal Conseyu d'Alministración",
+	'boardvote_blocked'        => 'Sentímoslo, fuisti bloquiáu na to wiki. Los usuarios bloquiaos nun puen votar.',
+	'boardvote_bot'            => 'Tas marcáu como bot na to wiki rexistrada.
+Les cuentes de bots nun puen votar.',
+	'boardvote_welcome'        => "¡Bienveníu '''$1'''!",
+	'go_to_board_vote'         => "Eleiciones pal Conseyu d'Alministración de Wikimedia 2008",
+	'boardvote_redirecting'    => "P'ameyorar la seguridá y tresparencia, tamos faciendo les votaciones nun
 servidor esternu y controláu de forma independiente.
 
 Vas ser redirixíu a esti servidor esternu en 20 segundos. [$1 Calca equí] pa dir agora.
 
 Podría apaecer un avisu de seguridá tocante a un certificáu non firmáu.",
-	'right-boardvote'        => 'Alministrar les eleiciones',
+	'right-boardvote'          => 'Alministrar les eleiciones',
 );
 
 /** Kotava (Kotava)
@@ -4253,7 +4271,6 @@ $messages['nso'] = array(
 
 /** Occitan (Occitan)
  * @author Cedric31
- * @author Siebrand
  */
 $messages['oc'] = array(
 	'boardvote'                => 'Eleccions al conselh d’administracion de la Wikimedia Foundation',
@@ -4276,7 +4293,7 @@ Totes los candidats son d\'utilizaires respectats, qu\'an balhat fòrça de temp
 <li><a href="http://meta.wikimedia.org/wiki/Board_elections/2008/Candidates" class="external">Candidates</a></li>
 <li><a href="http://en.wikipedia.org/wiki/Schulze_method" class="external">Schulze method</a></li></ul>',
 	'boardvote_intro_change'   => "<p>Ja avètz votat. Çaquelà, podètz modificar vòstre vòte en utilizant lo formulari çaijós. Mercés de marcar las casas en regard de cada candidat qu'a vòstre supòrt.</p></p>",
-	'boardvote_entered'        => "Mercé, vòstre vòte es estat enregistrat. 
+	'boardvote_entered'        => "Mercés, vòstre vòte es estat enregistrat. 
 
 S'o desiratz, podètz enregistrar los detalhs seguents. Vòstre istoric de vòte es :
 
@@ -4286,7 +4303,7 @@ Es estat criptat amb la clau publica dels escrutators oficials per l’eleccion 
 
 <pre>$2</pre> 
 
-La version criptada seguís. Serà afichada publicament sus [[Special:Boardvote/dump]].
+Seguís la version criptada çaijós, que serà afichada publicament sus [[Special:Boardvote/dump|aquesta pagina]].
 
 <pre>$3</pre> 
 
@@ -4367,7 +4384,6 @@ $messages['pam'] = array(
  * @author Sp5uhe
  * @author Derbeth
  * @author Saper
- * @author Siebrand
  * @author Leinad
  */
 $messages['pl'] = array(
@@ -4395,7 +4411,7 @@ Interpretacja głosu będzie taka, że preferujesz każdego z tych, na których 
 <li><a href="http://meta.wikimedia.org/wiki/Board_elections/2008/Candidates" class="external">Kandydaci</a></li>
 <li><a href="http://en.wikipedia.org/wiki/Schulze_method" class="external">Metoda Schulze\'a (opis w języku angielskim)</a></li></ul>',
 	'boardvote_intro_change'   => '<p>W tych wyborach już głosowałeś. Możesz jednak zmienić głos za pomocą poniższego formularza. Określ swoje preferencje. Liczbą o wyższej wartości oznacz kandydata, którego bardziej popierasz, a niższą tego, który mniej Ci odpowiada. Możesz wystawić tą samą notę więcej niż jednemu kandydatowi, możesz również pozostawić kandydata bez oceny.</p>',
-	'boardvote_entered'        => 'Twój głos został zapisany.
+	'boardvote_entered'        => 'Dziękujemy, twój głos został zapisany.
 
 Jeśli chcesz, możesz zapisać poniższe informacje. Oto zapis Twojego głosu:
 

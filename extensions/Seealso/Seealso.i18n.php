@@ -139,6 +139,14 @@ $messages['is'] = array(
 	'seealso' => 'Tengt efni',
 );
 
+/** Italian (Italiano)
+ * @author Darth Kule
+ */
+$messages['it'] = array(
+	'seealso'      => 'Vedi anche',
+	'seealso-desc' => "Intestazioni 'Vedi anche' localizzate usando il tag <code><nowiki><seealso></nowiki></code>",
+);
+
 /** Javanese (Basa Jawa)
  * @author Meursault2004
  */

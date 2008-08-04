@@ -121,7 +121,8 @@ $messages['no'] = array(
  * @author Cedric31
  */
 $messages['oc'] = array(
-	'tog-microid' => 'Publicar un <a href="http://microid.org/">MicroID</a> en vista de confirmar vòstra identitat alprèp de servicis extèrnes',
+	'microid-desc' => "Apondís un [http://www.microid.org/ MicroID] per las paginas d'utilizaire per confirmar lo compte amb de servicis extèrnes",
+	'tog-microid'  => 'Publicar un <a href="http://microid.org/">MicroID</a> en vista de confirmar vòstra identitat alprèp de servicis extèrnes',
 );
 
 /** Portuguese (Português)

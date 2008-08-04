@@ -161,6 +161,16 @@ $messages['hu'] = array(
 	'sc_nextmonth'     => 'Következő hónap',
 );
 
+/** Italian (Italiano)
+ * @author Darth Kule
+ */
+$messages['it'] = array(
+	'sc_previousmonth' => 'Mese precedente',
+	'sc_nextmonth'     => 'Mese successivo',
+	'sc_today'         => 'Oggi',
+	'sc_gotomonth'     => 'Vai al mese',
+);
+
 /** Japanese (日本語)
  * @author JtFuruhata
  */

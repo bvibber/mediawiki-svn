@@ -343,6 +343,13 @@ $messages['mr'] = array(
 	'languageselector-setlang' => 'सेट (set)',
 );
 
+/** Maltese (Malti)
+ * @author Roderick Mallia
+ */
+$messages['mt'] = array(
+	'languageselector' => 'Lingwa',
+);
+
 /** Nahuatl (Nahuatl)
  * @author Fluence
  */

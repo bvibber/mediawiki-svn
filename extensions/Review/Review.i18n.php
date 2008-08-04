@@ -549,6 +549,13 @@ $messages['id'] = array(
 	'review_user_details_link' => '(rincian)',
 );
 
+/** Italian (Italiano)
+ * @author Darth Kule
+ */
+$messages['it'] = array(
+	'review_user_details_link' => '(dettagli)',
+);
+
 /** Javanese (Basa Jawa)
  * @author Meursault2004
  */

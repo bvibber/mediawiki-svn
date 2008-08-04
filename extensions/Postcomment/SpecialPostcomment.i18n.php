@@ -57,6 +57,13 @@ $messages['bg'] = array(
 	'postcomment_nopostingtoadd'           => 'Няма коментар за добавяне.',
 );
 
+/** German (Deutsch)
+ * @author Leithian
+ */
+$messages['de'] = array(
+	'postcomment_youareloggedinas' => 'Du bist jetzt als $1 angemeldet.',
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */
@@ -257,9 +264,9 @@ $messages['no'] = array(
 
 /** Occitan (Occitan)
  * @author Cedric31
- * @author Siebrand
  */
 $messages['oc'] = array(
+	'postcomment_desc'                     => 'Permet als utilizaires de mandar de comentaris dirèctament dins las paginas de discussion',
 	'postcomment_discussionprotected'      => 'La pagina de discussion es estada protegida en escritura.',
 	'postcomment_notloggedin'              => 'Sètz pas identificat(ada).',
 	'postcomment_youareloggedinas'         => 'Sètz pas identificat(ada) en tant que $1.',

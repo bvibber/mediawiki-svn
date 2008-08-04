@@ -139,8 +139,12 @@ $messages['el'] = array(
  */
 $messages['eo'] = array(
 	'watchers'               => 'Rigardantoj',
+	'watchers_link_title'    => 'Kiu atentas ĉi tiun paĝon?',
 	'watchers_error_article' => '<b>Eraro:</b> Paĝo ne ekzistas.',
+	'watchers_header'        => 'Uzantoj atentantaj "$1"',
 	'watchers_noone_watches' => 'Neniu rigardas ĉi tiun paĝon',
+	'watchers_x_or_more'     => '$1 aŭ pli uzantoj atentas ĉi tiun paĝon.',
+	'watchers_less_than_x'   => 'Malpli ol $1 uzantoj atentas ĉi tiun paĝon.',
 );
 
 /** French (Français)

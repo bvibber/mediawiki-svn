@@ -152,6 +152,15 @@ $messages['ar'] = array(
 	'ogg-desc-link'                => 'حول هذا الملف',
 );
 
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Ghaly
+ */
+$messages['arz'] = array(
+	'ogg-play'  => 'عرض',
+	'ogg-pause' => ' توقيف مؤقت',
+	'ogg-stop'  => ' توقيف',
+);
+
 /** Asturian (Asturianu)
  * @author Esbardu
  */

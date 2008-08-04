@@ -196,6 +196,15 @@ $messages['no'] = array(
 	'whatismyip-out'  => 'Din IP-adresse:',
 );
 
+/** Occitan (Occitan)
+ * @author Cedric31
+ */
+$messages['oc'] = array(
+	'whatismyip'      => 'Quina es mon IP',
+	'whatismyip-desc' => 'Afichar l’adreça IP correnta de l’utilizaire dins [[Special:WhatIsMyIP]]',
+	'whatismyip-out'  => 'Vòstra IP :',
+);
+
 /** Polish (Polski)
  * @author Airwolf
  * @author Sp5uhe

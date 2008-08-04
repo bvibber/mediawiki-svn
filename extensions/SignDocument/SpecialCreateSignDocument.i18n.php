@@ -150,7 +150,9 @@ $messages['da'] = array(
  * @author Leithian
  */
 $messages['de'] = array(
-	'createsigndoc-email' => 'E-Mail-Adresse:',
+	'createsigndoc-email'         => 'E-Mail-Adresse:',
+	'createsigndoc-minage'        => 'Mindestalter:',
+	'createsigndoc-error-generic' => 'Fehler: $1',
 );
 
 /** Greek (Ελληνικά)
@@ -211,9 +213,13 @@ $messages['ext'] = array(
  */
 $messages['fr'] = array(
 	'createsigndocument'                 => "Activer l'authentification des documents",
-	'createsigndoc-head'                 => "Utilisez ce formulaire pour créer une « page d'authentification » de documents pour l'article en question, de façon que chaque utilisateur soit capable d'authentifier via [[Special:SignDocument]]. Prière d'indiquer l'intitulé de l'article pour lequel vous souhaitez activer la fonction, les membres du groupe d'utilisateurs, quels champs seront accessibles aux utilisateurs (lesquels seront optionnels), l'âge minimal pour être membre du groupe (pas de minimum sinon) et un bref document expliquant le document et donnant des instructions aux utilisateurs.
+	'createsigndoc-head'                 => "Utilisez ce formulaire pour créer une « page d'authentification » de documents pour l'article en question, de façon que chaque utilisateur soit capable de [[Special:SignDocument|l’authentifier]].
+Prière d'indiquer l'intitulé de l'article pour lequel vous souhaitez activer la fonction, les membres du groupe d'utilisateurs, quels champs seront accessibles aux utilisateurs et ceux qui seront optionnels, l'âge minimal pour être membre du groupe (pas de minimum par défaut) ;
+et un bref document expliquant le document et donnant des instructions aux utilisateurs.
 
-'''Présentement, il n'y a aucun moyen d'effacer les documents une fois créés''', sauf en éditant la base de données du wiki. De plus, le texte de l'article affiché sur la page authentifiée sera le texte ''courant'', peu importe les modifications faites par la suite. Pour cette raison, soyez certain que le document soit sufisamment stable pour être authentifié et, ''avant de soumettre le formulaire'', vérifiez que vous avez bien choisi les champs tels que vous souhaitiez qu'ils soient.",
+'''Présentement, il n'y a aucun moyen d'effacer les documents une fois créés''', sauf en éditant la base de données du wiki. De plus, le texte de l'article affiché sur la page authentifiée sera le texte ''courant'', peu importe les modifications faites par la suite.
+Pour cette raison, soyez certain que le document soit suffisamment stable pour être authentifié.
+''Avant de soumettre le formulaire'', vérifiez que vous avez bien choisi les champs tels que vous souhaitiez qu'ils soient.",
 	'createsigndoc-pagename'             => 'Page :',
 	'createsigndoc-allowedgroup'         => 'Groupe autorisé :',
 	'createsigndoc-email'                => 'Addresse de courriel :',
@@ -551,7 +557,8 @@ $messages['no'] = array(
  */
 $messages['oc'] = array(
 	'createsigndocument'                 => "Activar l'autentificacion dels documents",
-	'createsigndoc-head'                 => "Utilizatz aqueste formulari per crear una pagina d'autentificacion de documents per l'article en question, de biais que cada utilizaire serà capable d'autentificar via [[Special:SignDocument]]. Mercés d'indicar lo nom de l'article pelqual desiratz activar la foncion, los membres del grop d'utilizaires, quals camps seràn accessibles als utilizaires (losquals seràn opcionals), l'edat minimala per èsser membre del grop (pas de minimom siquenon) e un document brèu explicant lo document e balhant d'instruccions als utilizaires. 
+	'createsigndoc-head'                 => "Utilizatz aqueste formulari per crear una pagina d'autentificacion de documents per l'article en question, de biais que cada utilizaire serà capable d'autentificar via [[Special:SignDocument|Signit]].
+Mercés d'indicar lo nom de l'article pelqual desiratz activar la foncion, los membres del grop d'utilizaires, quals camps seràn accessibles als utilizaires (losquals seràn opcionals), l'edat minimala per èsser membre del grop (pas de minimom siquenon) e un document brèu explicant lo document e balhant d'instruccions als utilizaires. 
 
 <b>Presentadament, i a pas cap de mejan d'escafar los documents un còp creats</b>, al despart en editant la banca de donadas del wiki. E mai, lo tèxt de l'article afichat sus la pagina autentificada serà lo tèxt ''corrent'', pauc impòrta las modificacions fachas de per aprèp. Per aquesta rason, siatz segur que lo document es sufisentament estable per èsser autentificat e, ''abans de sometre lo formulari'', verificatz qu'avètz plan causit los camps tals coma desiratz que sián.",
 	'createsigndoc-pagename'             => 'Pagina :',

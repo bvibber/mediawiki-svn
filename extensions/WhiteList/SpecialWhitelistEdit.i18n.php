@@ -192,6 +192,7 @@ $allMessages['bg'] = array(
 	'whitelisttableedit'       => 'Редактиране',
 	'whitelisttableview'       => 'Преглед',
 	'whitelisttablenewdate'    => 'Нова дата:',
+	'whitelisttablechangedate' => 'Промяна срока на валидност',
 	'whitelisttableremove'     => 'Премахване',
 	'whitelistnewtabledate'    => 'Дата на изтичане:',
 	'whitelistpagelist'        => 'Страници за $1 в {{SITENAME}}',
@@ -523,6 +524,13 @@ $allMessages['id'] = array(
  */
 $allMessages['is'] = array(
 	'whitelistnever' => 'aldrei',
+);
+
+/** Italian (Italiano)
+ * @author Darth Kule
+ */
+$allMessages['it'] = array(
+	'whitelisttableedit' => 'Modifica',
 );
 
 /** Javanese (Basa Jawa)

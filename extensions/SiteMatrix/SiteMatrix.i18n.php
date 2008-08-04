@@ -79,9 +79,16 @@ $messages['ar'] = array(
 	'sitematrix-fishbowl'  => 'التعديل محدد',
 );
 
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Ghaly
+ */
+$messages['arz'] = array(
+	'sitematrix-total'     => "'''اجمالى العدد: $1'''",
+	'sitematrix-sitetotal' => 'المجموع',
+);
+
 /** Asturian (Asturianu)
  * @author Esbardu
- * @author SPQRobin
  */
 $messages['ast'] = array(
 	'sitematrix'           => 'Llista de wikis de Wikimedia',
@@ -90,7 +97,10 @@ $messages['ast'] = array(
 	'sitematrix-language'  => 'Llingua',
 	'sitematrix-project'   => 'Nomes del proyeutu, del enllaz interproyeutu y del enllaz interwiki',
 	'sitematrix-others'    => 'Otros proyeutos de Wikimedia',
+	'sitematrix-total'     => "'''Númberu total: $1'''",
 	'sitematrix-sitetotal' => 'Total',
+	'sitematrix-private'   => 'priváu',
+	'sitematrix-fishbowl'  => 'edición restrinxida',
 );
 
 /** Southern Balochi (بلوچی مکرانی)
@@ -942,6 +952,13 @@ $messages['ms'] = array(
 	'sitematrix-sitetotal' => 'Jumlah',
 	'sitematrix-private'   => 'tertutup',
 	'sitematrix-fishbowl'  => 'penyuntingan terhad',
+);
+
+/** Maltese (Malti)
+ * @author Roderick Mallia
+ */
+$messages['mt'] = array(
+	'sitematrix-language' => 'Lingwa',
 );
 
 /** Erzya (Эрзянь)

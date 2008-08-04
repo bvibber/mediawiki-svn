@@ -115,6 +115,13 @@ $messages['ar'] = array(
 	'tag-logpagetext'                       => 'هذا سجل بكل عمليات إضافة وإزالة وسم الصور.',
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
+ */
+$messages['be-tarask'] = array(
+	'imagetagging-imghistory' => 'Гісторыя',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  */

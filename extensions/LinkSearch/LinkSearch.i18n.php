@@ -88,6 +88,13 @@ $messages['ar'] = array(
 	'linksearch-error' => 'الكروت الخاصة يمكن أن تظهر فقط في بداية اسم المضيف.',
 );
 
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Ghaly
+ */
+$messages['arz'] = array(
+	'linksearch-line' => '$1 موصوله من $2',
+);
+
 /** Asturian (Asturianu)
  * @author Esbardu
  * @author SPQRobin

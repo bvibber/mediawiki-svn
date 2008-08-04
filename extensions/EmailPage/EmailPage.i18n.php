@@ -114,7 +114,7 @@ $messages['fr'] = array(
 	'ea-heading'          => '=== Envoi de la page [[$1]] par courrier électronique ===',
 	'ea-fromgroup'        => 'Depuis le groupe :',
 	'ea-pagesend'         => 'Page « $1 » envoyée depuis $2',
-	'ea-nopage'           => 'Veuillez spécifier une page à envoyer, par exemple [[Special:EmailPage/Accueil]]',
+	'ea-nopage'           => 'Veuillez spécifier une page à envoyer, par exemple [[Special:EmailPage/{{MediaWiki:Mainpage-url}}]]',
 	'ea-norecipients'     => 'Aucune adresse courriel de trouvée !',
 	'ea-listrecipients'   => '=== Liste de $1 {{PLURAL:$1|destinataire|destinataires}} ===',
 	'ea-error'            => "'''Erreur de l’envoi de [[$1]] :''' ''$2''",

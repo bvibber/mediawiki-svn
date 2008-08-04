@@ -91,7 +91,6 @@ $messages['af'] = array(
 /** Arabic (العربية)
  * @author Meno25
  * @author Alnokta
- * @author Siebrand
  */
 $messages['ar'] = array(
 	'grouppermissions'               => 'التحكم بسماحات المجموعات',
@@ -100,6 +99,8 @@ $messages['ar'] = array(
 	'grouppermissions-desc'          => 'أدر صلاحيات المجموعات من [[Special:GroupPermissions|صفحة خاصة]]',
 	'grouppermissions-desc2'         => 'نظام الصلاحيات الممتد',
 	'grouppermissions-desc3'         => 'يسمح بتخصيص أفعال المحتوى (الألسنة)',
+	'grouppermissions-desc4'         => 'يسمح بإضافة مدخلات إضافية إلى صندوق الأدوات',
+	'grouppermissions-desc-nsm'      => 'التحكم بالنطاقات من خلال صفحة خاصة',
 	'grouppermissions-header'        => 'أنت يمكنك استخدام هذه الصفحة لتغيير السماحات المتضمنة في مجموعات المستخدم المختلفة.',
 	'grouppermissions-search'        => 'المجموعة:',
 	'grouppermissions-dologin'       => 'دخول',
@@ -203,6 +204,8 @@ $messages['de'] = array(
 	'removeunusedgroups'             => 'Unbenutzte Gruppen entfernen',
 	'grouppermissions-desc'          => 'Verwalten von Gruppenberechtigungen über eine [[Special:GroupPermissions|Spezialseite]]',
 	'grouppermissions-desc2'         => 'Erweitertes Berechtigungssystem',
+	'grouppermissions-desc4'         => 'Erlaubt das Hinzufügen von zusätzlichen Einträgen zur Werkzeug-Navigationsleiste',
+	'grouppermissions-desc-nsm'      => 'Verwalten von Namensräumen über eine Spezialseite',
 	'grouppermissions-header'        => 'Mit dieser Spezialseite kannst du die Berechtigungen verschiedener Benutzergruppen ändern.',
 	'grouppermissions-search'        => 'Gruppe:',
 	'grouppermissions-dologin'       => 'Anmelden',
@@ -265,8 +268,6 @@ $messages['eo'] = array(
 
 /** French (Français)
  * @author Grondin
- * @author Siebrand
- * @author Jon Harald Søby
  */
 $messages['fr'] = array(
 	'grouppermissions'               => 'Gérer les permissions des groupes',
@@ -275,6 +276,8 @@ $messages['fr'] = array(
 	'grouppermissions-desc'          => 'Gère les permissions des groupes au travers d’une [[Special:GroupPermissions|page spéciale]]',
 	'grouppermissions-desc2'         => 'Système étendu des permissions',
 	'grouppermissions-desc3'         => 'Permet au contenu des actions (tabulations) d’être personalisé',
+	'grouppermissions-desc4'         => 'Permet d’ajouter des éléments supplémentaires dans la boîte à outils',
+	'grouppermissions-desc-nsm'      => 'Gère les espaces de nom au travers d’une page spéciale',
 	'grouppermissions-header'        => 'Vous pouvez utiliser cette page pour modifier les permissions soulignées des différents groupes d’utilisateurs.',
 	'grouppermissions-search'        => 'Groupe :',
 	'grouppermissions-dologin'       => 'Connexion',
@@ -679,7 +682,6 @@ $messages['no'] = array(
 
 /** Occitan (Occitan)
  * @author Cedric31
- * @author Jon Harald Søby
  */
 $messages['oc'] = array(
 	'grouppermissions'               => 'Gerir las permissions dels gropes',
@@ -687,6 +689,9 @@ $messages['oc'] = array(
 	'removeunusedgroups'             => 'Levar los gropes inutilizats',
 	'grouppermissions-desc'          => 'Gerís las permissions dels gropes al travèrs d’una [[Special:GroupPermissions|pagina especiala]]',
 	'grouppermissions-desc2'         => 'Sistèma espandit de las permissions',
+	'grouppermissions-desc3'         => 'Permet al contengut de las accions (tabulacions) d’èsser personalizat',
+	'grouppermissions-desc4'         => "Permet d’apondre d'elements suplementaris dins la bóstia d'espleches",
+	'grouppermissions-desc-nsm'      => 'Gerís los espacis de nom al travèrs d’una pagina especiala',
 	'grouppermissions-header'        => 'Podètz utilizar aquesta pagina per modificar las permissions soslinhadas dels diferents gropes d’utilizaires.',
 	'grouppermissions-search'        => 'Grop :',
 	'grouppermissions-dologin'       => 'Connexion',
@@ -707,6 +712,38 @@ $messages['oc'] = array(
 	'grouppermissions-nooldrev'      => "Una error es intervenguda al moment de la temptativa d’archivatge del fichièr de configuracion. Cap d'archiu serà pas creat.",
 	'grouppermissions-sort-read'     => 'Lectura',
 	'grouppermissions-sort-edit'     => 'Edicion',
+	'grouppermissions-sort-manage'   => 'Gestion',
+	'grouppermissions-sort-admin'    => 'Administracion',
+	'grouppermissions-sort-tech'     => 'Tecnica',
+	'grouppermissions-sort-misc'     => 'Divèrs',
+	'grouppermissions-log-add'       => 'a apondut lo grop « $2 »',
+	'grouppermissions-log-change'    => 'a modificat las permissions del grop « $2 »',
+	'grouppermissions-log-delete'    => 'a suprimit lo grop « $2 »',
+	'grouppermissions-log-name'      => 'Jornal de las permissions dels gropes',
+	'grouppermissions-log-header'    => "Aquesta pagina susvelha los cambiaments de las permissions soslinhadas dels gropes d'utilizaires.",
+	'grouppermissions-needjs'        => 'Avertiment : JavaScript es desactivat sus vòstre navigador. Maitas foncionalitats pòdon foncionar pas !',
+	'grouppermissions-sp-header'     => 'Podètz utilizar aquesta pagina per gerir cossí las permissions son afichadas e per apondre de permissions novèlas.',
+	'grouppermissions-sp-sort'       => 'Triar las permissions',
+	'grouppermissions-sp-save'       => 'Salvar',
+	'grouppermissions-sp-success'    => 'Las permissions son estadas triadas amb succès',
+	'grouppermissions-sp-addtype'    => 'Apondre tota mena de classament',
+	'grouppermissions-sp-addperm'    => 'Apondre la permission',
+	'grouppermissions-sp-remove'     => 'levar',
+	'grouppermissions-sp-deltype'    => 'Suprimir lo tipe de triada',
+	'grouppermissions-rug-header'    => 'Podètz utilizar aquesta pagina per levar los utilizaires dels gropes inutilizats o suprimits.',
+	'grouppermissions-rug-success'   => 'Utilizaires levats amb succès dels gropes inutilizats !',
+	'grouppermissions-rug-confirm'   => 'Levar los utilizaires dels gropes inutilizats',
+	'right-viewsource'               => 'Veire lo còde font wiki de las paginas protegidas',
+	'right-raw'                      => 'Veire las paginas brutas',
+	'right-render'                   => 'Veire lo rendut de las paginas sens navigacion',
+	'right-info'                     => 'Veire las informacions de la pagina',
+	'right-credits'                  => 'Veire los credits de la pagina',
+	'right-history'                  => 'Veire los istorics de la pagina',
+	'right-search'                   => 'Recercar lo wiki',
+	'right-contributions'            => 'Veire las paginas de las contribucions',
+	'right-recentchanges'            => 'Veire las modificacions recentas',
+	'right-edittalk'                 => 'Modificar las paginas de discussion',
+	'right-edit-new'                 => 'Modificar las paginas (qu’an pas de pagina de discussion)',
 );
 
 /** Polish (Polski)

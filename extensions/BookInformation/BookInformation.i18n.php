@@ -390,10 +390,11 @@ $messages['fi'] = array(
 
 /** French (Français)
  * @author Urhixidur
+ * @author Grondin
  */
 $messages['fr'] = array(
 	'bookinfo-header'            => 'Informations sur les ouvrages',
-	'bookinfo-desc'              => 'Étend [[Special:Booksources]] avec des informations à partir d’un service Internet',
+	'bookinfo-desc'              => 'Étend [[Special:Booksources|la page spéciale des sources du livre]] avec des informations à partir d’un service Internet',
 	'bookinfo-result-title'      => 'Titre :',
 	'bookinfo-result-author'     => 'Auteur :',
 	'bookinfo-result-publisher'  => 'Éditeur :',
@@ -967,7 +968,7 @@ $messages['nso'] = array(
  */
 $messages['oc'] = array(
 	'bookinfo-header'            => 'Entresenhas suls obratges',
-	'bookinfo-desc'              => "Espandís [[Special:Booksources]] amb d'entresenhas a partir d’un servici internet",
+	'bookinfo-desc'              => "Espandís [[Special:Booksources|la pagina especiala de las fonts del libre]] amb d'entresenhas a partir d’un servici internet",
 	'bookinfo-result-title'      => 'Títol :',
 	'bookinfo-result-author'     => 'Autor :',
 	'bookinfo-result-publisher'  => 'Editor :',

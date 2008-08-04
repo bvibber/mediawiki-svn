@@ -86,6 +86,14 @@ $messages['no'] = array(
 	'random-users-avatars-desc'  => 'Legger til taggen <tt>&lt;randomuserswithavatar&gt;</tt> for å vise avatarene for tilfeldig valgte brukere',
 );
 
+/** Occitan (Occitan)
+ * @author Cedric31
+ */
+$messages['oc'] = array(
+	'random-users-avatars-title' => 'Fasètz coneissença amb la comunautat',
+	'random-users-avatars-desc'  => 'Apondís la balisa <tt>&lt;randomuserswithavatars&gt;</tt> per afichar los avatars d’utilizaires causits aleatòriament',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

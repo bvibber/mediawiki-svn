@@ -30,6 +30,13 @@ $messages['de'] = array(
 	'substall-desc' => 'Erstellt einen &lt;substall&gt;-Tag, der alle Vorlagen auf dieser Seite expandiert',
 );
 
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
+$messages['eo'] = array(
+	'substall-desc' => 'Kreas etikedon <nowiki><substall></nowiki> kiu etendas ĉiujn ŝablonoj al vikisintakso',
+);
+
 /** French (Français)
  * @author Grondin
  */
@@ -42,6 +49,13 @@ $messages['fr'] = array(
  */
 $messages['nl'] = array(
 	'substall-desc' => 'Voegt de tag <nowiki><substall></nowiki> toe die van alle sjablonen wikisyntaxis maakt',
+);
+
+/** Occitan (Occitan)
+ * @author Cedric31
+ */
+$messages['oc'] = array(
+	'substall-desc' => 'Crea una balisa <nowiki><substall></nowiki> que convertís totes los modèls en sintaxi wiki.',
 );
 
 /** Slovak (Slovenčina)

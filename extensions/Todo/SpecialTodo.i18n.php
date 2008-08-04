@@ -329,6 +329,13 @@ $messages['id'] = array(
 	'todo-form-details' => 'Rincian:',
 );
 
+/** Italian (Italiano)
+ * @author Darth Kule
+ */
+$messages['it'] = array(
+	'todo-form-details' => 'Dettagli:',
+);
+
 /** Javanese (Basa Jawa)
  * @author Meursault2004
  */

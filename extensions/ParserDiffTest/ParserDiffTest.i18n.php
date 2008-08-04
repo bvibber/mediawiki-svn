@@ -82,6 +82,13 @@ $messages['ar'] = array(
 	'pdt_comparing_page'  => 'مقارنة ناتج المحلل من [[$1]]',
 );
 
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Ghaly
+ */
+$messages['arz'] = array(
+	'pdtest_ok' => 'موافق',
+);
+
 /** Asturian (Asturianu)
  * @author Esbardu
  */

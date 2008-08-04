@@ -43,8 +43,20 @@ $messages['de'] = array(
 	'stalkerlog-log-text'   => 'Dies ist das Logbuch der An- und Abmeldungen.',
 );
 
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
+$messages['eo'] = array(
+	'stalkerlog-desc'       => 'Alsonas [[Special:Log/stalkerlog|protokolon]] de ensalutoj kaj elsalutoj de uzantoj',
+	'stalkerlog-log-login'  => 'ensalutis.',
+	'stalkerlog-log-logout' => 'elsalutis.',
+	'stalkerlog-log-type'   => 'Protokolo pri aŭtentokontrolo',
+	'stalkerlog-log-text'   => 'Jen protokolo pri ensalutoj kaj elsaltuoj de uzantoj.',
+);
+
 /** French (Français)
  * @author Grondin
+ * @author Cedric31
  */
 $messages['fr'] = array(
 	'stalkerlog-desc'       => 'Ajoute [[Special:Log/stalkerlog|un journal]] des connections des utilisateurs',
@@ -76,6 +88,17 @@ $messages['no'] = array(
 	'stalkerlog-log-text'   => 'Dett er en logg over inn- og utlogginger.',
 );
 
+/** Occitan (Occitan)
+ * @author Cedric31
+ */
+$messages['oc'] = array(
+	'stalkerlog-desc'       => 'Apondís [[Special:Log/stalkerlog|un jornal]] de las connexions dels utilizaires',
+	'stalkerlog-log-login'  => 'connectat.',
+	'stalkerlog-log-logout' => 'desconnectat.',
+	'stalkerlog-log-type'   => 'Jornal d’autentificacion de l’utilizaire',
+	'stalkerlog-log-text'   => 'Vaquí un jornal de las connexions e de las desconnexions de l’utilizaire.',
+);
+
 /** Swedish (Svenska)
  * @author M.M.S.
  */
@@ -84,5 +107,6 @@ $messages['sv'] = array(
 	'stalkerlog-log-login'  => 'loggade in.',
 	'stalkerlog-log-logout' => 'loggade ut.',
 	'stalkerlog-log-type'   => 'Logg över in och utloggningar',
+	'stalkerlog-log-text'   => 'Det här är en logg över in och utloggningar.',
 );
 

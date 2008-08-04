@@ -64,6 +64,14 @@ $messages['no'] = array(
 	'semanticgooglemaps-desc'              => 'Lar brukere legge til Google Maps på wikisider, basert på strukturert data',
 );
 
+/** Occitan (Occitan)
+ * @author Cedric31
+ */
+$messages['oc'] = array(
+	'semanticgooglemaps_lookupcoordinates' => 'Estimar las coordenadas',
+	'semanticgooglemaps-desc'              => 'Permet als utilizaires d’apondre Google Maps sus de paginas wiki sus la banca de donadas estructuradas',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

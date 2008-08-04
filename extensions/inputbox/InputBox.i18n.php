@@ -80,9 +80,11 @@ $messages['ar'] = array(
  * @author Ghaly
  */
 $messages['arz'] = array(
-	'tryexact'       => 'دور على عنوان مطابق',
-	'searchfulltext' => 'دور فى النص كله',
-	'createarticle'  => 'إنشاء صفحة',
+	'inputbox-desc'          => 'يسمح بتضمين أشكال اتش تى ام ال معرفه من الاول',
+	'inputbox-error-no-type' => 'إنت ما حددتش نوع صندوق الإدخال للإنشاء',
+	'tryexact'               => 'دور على عنوان مطابق',
+	'searchfulltext'         => 'دور فى النص كله',
+	'createarticle'          => 'إنشاء صفحة',
 );
 
 /** Assamese (অসমীয়া)

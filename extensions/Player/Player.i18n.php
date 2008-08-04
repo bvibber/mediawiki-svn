@@ -332,6 +332,7 @@ $messages['is'] = array(
 $messages['it'] = array(
 	'player'               => 'Player',
 	'player-title'         => 'Player',
+	'player-playertitle'   => 'Player: $1',
 	'player-file'          => 'Nome del file',
 	'player-play'          => 'Riproduci',
 	'player-not-allowed'   => 'formato non permesso',

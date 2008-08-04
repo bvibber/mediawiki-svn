@@ -40,6 +40,13 @@ $messages['ar'] = array(
 	'assert_edit_message' => 'التأكيد المحدد ($1) فشل.',
 );
 
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Ghaly
+ */
+$messages['arz'] = array(
+	'assert_edit_title' => 'التأكيد فشل',
+);
+
 /** Asturian (Asturianu)
  * @author Esbardu
  */

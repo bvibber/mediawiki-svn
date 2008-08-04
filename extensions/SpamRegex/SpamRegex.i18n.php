@@ -500,10 +500,12 @@ $messages['no'] = array(
 $messages['oc'] = array(
 	'spamregex'                      => 'Expressions regularas de Spams',
 	'spamregex-desc'                 => "[[Special:Spamregex|Filtre]], dins las paginas, las frasas o mots indesirables, basat sus d'expressions regularas",
+	'spamregex-error-unblocking'     => 'Error de desblocatge de « $1 ». I a probablament pas cap de modèl.',
 	'spamregex-summary'              => 'Lo tèxt en question es estat detectat dins lo comentari de la pagina.',
 	'spamregex-intro'                => "Utilizatz aqueste formulari per blocar efièchament las expressions que pòdon èsser salvadas dins una pagina tèxt. Se lo tèxt conten las expressions definidas, los cambiaments poiràn pas èsser salvats e un motiu explicatiu serà afichat a l’utilizaire qu'a volgut salvar la pagina. Es important de prendre en consideracion que las expressions deuràn pas èsser ni tròp longas ni tròp correntas.",
 	'spamregex-page-title'           => 'Blocatge de las expressions regularas de spams',
 	'spamregex-currently-blocked'    => "'''Frasas actualament blocadas :'''",
+	'spamregex-move'                 => "Lo motiu qu'avètz inscrich conteniá una frasa blocada.",
 	'spamregex-no-currently-blocked' => "'''I a pas cap de frasa blocada.'''",
 	'spamregex-log-1'                => "* '''$1''' $2 ([{{SERVER}}$3&text=$4 suprimir]) apondut per",
 	'spamregex-log-2'                => 'lo $1',

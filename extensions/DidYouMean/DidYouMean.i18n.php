@@ -53,6 +53,13 @@ $messages['eo'] = array(
 	'didyoumean-desc' => 'Aldonu ligilojn al paĝoj kun "similaj" titoloj',
 );
 
+/** Finnish (Suomi)
+ * @author Jaakonam
+ */
+$messages['fi'] = array(
+	'didyoumean-desc' => 'Lisää linkin sivuihin, joilla on samankaltainen otsikko',
+);
+
 /** French (Français)
  * @author Grondin
  */

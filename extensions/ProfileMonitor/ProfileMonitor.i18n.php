@@ -342,6 +342,7 @@ $messages['nso'] = array(
  */
 $messages['oc'] = array(
 	'profiling'              => 'Donadas per evaluar',
+	'profiling-desc'         => '[[Special:Profiling|Pagina especiala]] per recercar e inspectar de donadas de perfil',
 	'profiling-process'      => 'Cadena de caractèrs de tractar :',
 	'profiling-wildcard'     => 'Utilizatz de « joker »',
 	'profiling-ok'           => 'Acceptar',

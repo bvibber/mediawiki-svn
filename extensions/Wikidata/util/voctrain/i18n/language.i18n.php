@@ -555,11 +555,13 @@ $messages['el'] = array(
 	'voctrain_Question'                                  => 'Ερώτηση',
 	'voctrain_Answer'                                    => 'Απάντηση',
 	'voctrain_one_of'                                    => 'ένα από',
+	'voctrain_logout'                                    => 'αποσύνδεση',
 	'voctrain_Start_a_new_exercise'                      => 'Ξεκινήστε μια νέα άσκηση',
 	'voctrain_User_name'                                 => 'Όνομα χρήστη',
 	'voctrain_Password'                                  => 'Κωδικός',
 	'voctrain_Login'                                     => 'Σύνδεση',
 	'voctrain_Language'                                  => 'Γλώσσα',
+	'voctrain_Log_in'                                    => 'Συνδεθείτε',
 	'voctrain_Translation'                               => 'Μετάφραση',
 );
 
@@ -928,6 +930,13 @@ $messages['lb'] = array(
 	'voctrain_Definitions'                                          => 'Definitiounen',
 	'voctrain_Translation'                                          => 'Iwwersetzung',
 	'voctrain_hiding'                                               => 'Verstoppen',
+);
+
+/** Maltese (Malti)
+ * @author Roderick Mallia
+ */
+$messages['mt'] = array(
+	'voctrain_Language' => 'Lingwa',
 );
 
 /** Nahuatl (Nahuatl)

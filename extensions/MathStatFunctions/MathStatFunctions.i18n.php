@@ -255,6 +255,7 @@ $messages['no'] = array(
  * @author Cedric31
  */
 $messages['oc'] = array(
+	'msfunc_desc'     => 'Colleccion de foncions matematicas e estatisticas',
 	'msfunc_nan'      => 'Lo resultat es pas un nombre.',
 	'msfunc_inf'      => 'Lo resultat es l’infinit.',
 	'msfunc_div_zero' => 'Division per zèro',

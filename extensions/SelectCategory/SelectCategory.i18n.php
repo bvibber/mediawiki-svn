@@ -79,6 +79,15 @@ $messages['eo'] = array(
 	'selectcategory-title' => 'Elektu kategoriojn',
 );
 
+/** Finnish (Suomi)
+ * @author Jaakonam
+ */
+$messages['fi'] = array(
+	'selectcategory-title'    => 'Valitse luokat',
+	'selectcategory-desc'     => 'Käyttäjä voi muokatessaan valita jo olemassa olevista luokista sopivan',
+	'selectcategory-subtitle' => 'Painamalla yhtä aikaa Shift-näppäintä ja hiiren vasenta nappia voi valikosta poimia useita peräkkäisiä vaihtoehtoja. Ctrl-näppäintä ja hiiren vasenta nappia yhtä aikaa painamalla voi valita haluamansa vaihtoehdot yksitellen.',
+);
+
 /** French (Français)
  * @author Marius Engler <marius.engler@coop.ch>
  * @author Sherbrooke

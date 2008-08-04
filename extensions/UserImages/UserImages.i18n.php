@@ -72,6 +72,13 @@ $messages['de'] = array(
 	'userimages-noimages' => '$1 hat keine hochgeladenen Bilder.',
 );
 
+/** Greek (Ελληνικά)
+ * @author Consta
+ */
+$messages['el'] = array(
+	'userimages-noimages' => 'Ο/Η $1 δεν έχει ανεβάσει εικόνες.',
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */

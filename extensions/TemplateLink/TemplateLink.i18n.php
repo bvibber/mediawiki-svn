@@ -191,6 +191,7 @@ $messages['no'] = array(
  */
 $messages['oc'] = array(
 	'templatelink'          => 'Ligam vèrs modèl',
+	'templatelink_desc'     => 'Aquesta extention pòt afichar un modèl coma una pagina novèla',
 	'templatelink_empty'    => 'Vos cal picar un paramètre.',
 	'templatelink_newtitle' => '$1 (tranclut)',
 );

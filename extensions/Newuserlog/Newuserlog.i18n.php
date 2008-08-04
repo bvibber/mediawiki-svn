@@ -452,12 +452,11 @@ $messages['fo'] = array(
  * @author Hégésippe Cormier
  * @author Grondin
  * @author IAlex
- * @author Jon Harald Søby
  */
 $messages['fr'] = array(
 	'newuserlogpage'              => 'Historique des créations de comptes',
 	'newuserlogpagetext'          => 'Journal des créations de comptes utilisateurs.',
-	'newuserlog-desc'             => 'Ajoute un [[Special:Log/newusers|journal des créations de comptes]] à [[Special:Log]]',
+	'newuserlog-desc'             => 'Ajoute un [[Special:Log/newusers|journal des créations de comptes]]',
 	'newuserlog-byemail'          => 'mot de passe envoyé par courriel',
 	'newuserlog-create-entry'     => 'Nouvel utilisateur',
 	'newuserlog-create2-entry'    => 'compte créé pour $1',
@@ -1050,12 +1049,11 @@ $messages['no'] = array(
 
 /** Occitan (Occitan)
  * @author Cedric31
- * @author Jon Harald Søby
  */
 $messages['oc'] = array(
 	'newuserlogpage'              => 'Istoric de las creacions de comptes',
 	'newuserlogpagetext'          => "Jornal de las creacions de comptes d'utilizaires.",
-	'newuserlog-desc'             => 'Apondís un [[Special:Log/newusers|jornal de las creacions de comptes]] a [[Special:Log]]',
+	'newuserlog-desc'             => 'Apondís un [[Special:Log/newusers|jornal de las creacions de comptes]]',
 	'newuserlog-byemail'          => 'senhal mandat per corrièr electronic',
 	'newuserlog-create-entry'     => 'Utilizaire novèl',
 	'newuserlog-create2-entry'    => 'compte creat per $1',
@@ -1076,7 +1074,7 @@ $messages['pag'] = array(
 $messages['pl'] = array(
 	'newuserlogpage'              => 'Nowi użytkownicy',
 	'newuserlogpagetext'          => 'To jest rejestr ostatnio utworzonych kont użytkowników',
-	'newuserlog-desc'             => 'Dodaje [[Special:Log/newusers|rejestr utworzeń kont]] do [[Special:Log|Specjalna:Log]]',
+	'newuserlog-desc'             => 'Dodaje [[Special:Log/newusers|rejestr utworzeń kont]]',
 	'newuserlog-byemail'          => 'hasło zostało wysłane e-mailem',
 	'newuserlog-create-entry'     => '– nowy użytkownik',
 	'newuserlog-create2-entry'    => '– utworzył konto $1',

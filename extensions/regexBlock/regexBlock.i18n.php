@@ -617,7 +617,9 @@ $messages['is'] = array(
  * @author Darth Kule
  */
 $messages['it'] = array(
-	'regexblock-view-go' => 'Vai',
+	'regexblock-form-reason' => 'Motivo:',
+	'regexblock-form-expiry' => 'Scadenza del blocco:',
+	'regexblock-view-go'     => 'Vai',
 );
 
 /** Javanese (Basa Jawa)

@@ -32,6 +32,13 @@ $messages['gl'] = array(
 	'regexfunctions-desc' => 'Funcións de análise de expresións regulares',
 );
 
+/** Italian (Italiano)
+ * @author Darth Kule
+ */
+$messages['it'] = array(
+	'regexfunctions-desc' => 'Funzioni parser di espressioni regolari',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */
@@ -44,6 +51,13 @@ $messages['nl'] = array(
  */
 $messages['no'] = array(
 	'regexfunctions-desc' => 'Parserfunksjon for regulære uttrykk',
+);
+
+/** Occitan (Occitan)
+ * @author Cedric31
+ */
+$messages['oc'] = array(
+	'regexfunctions-desc' => 'Foncions parsers de las expressions regularas',
 );
 
 /** Slovak (Slovenčina)
