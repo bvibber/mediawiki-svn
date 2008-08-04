@@ -14,12 +14,16 @@ $aliases['en'] = array(
     'CrossNamespaceLinks' => array( 'CrossNamespaceLinks' ),
 );
 
-/** Arabic (العربية) */
+/** Arabic (العربية)
+ * @author Meno25
+ */
 $aliases['ar'] = array(
 	'CrossNamespaceLinks' => array( 'وصلات_عبر_النطاقات' ),
 );
 
-/** Egyptian Spoken Arabic (مصرى) */
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Meno25
+ */
 $aliases['arz'] = array(
 	'CrossNamespaceLinks' => array( 'وصلات_عبر_النطاقات' ),
 );
