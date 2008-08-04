@@ -684,11 +684,15 @@ class FSM(object):
         self.keepAliveTime = self.holdTime / 3
         self.keepAliveTimer = FSM.BGPTimer(self.keepAliveEvent)
     
-        self.allowAutomaticStart = False
+        self.allowAutomaticStart = True
         self.allowAutomaticStop = False
         self.delayOpen = False
         self.delayOpenTime = 30
         self.delayOpenTimer = FSM.BGPTimer(self.delayOpenEvent)
+        
+        self.dampPeerOscillations = True
+        self.idleHoldTime = 30
+        self.idleHoldTimer = FSM.BGPTimer(self.idleHoldTimeEvent)
 
     def manualStart(self):
         """
@@ -708,7 +712,7 @@ class FSM(object):
             self.protocol.sendNotification(ERR_CEASE, 0)
             # Stop all timers
             for timer in (self.connectRetryTimer, self.holdTimer, self.keepAliveTimer,
-                          self.delayOpenTimer):
+                          self.delayOpenTimer, self.idleHoldTimer):
                 timer.cancel()
             if self.bgpPeering is not None: self.bgpPeering.releaseResources()
             self._errorClose()
@@ -716,6 +720,22 @@ class FSM(object):
             raise NotificationSent(self.protocol, ERR_CEASE, 0)
             
             self.state = ST_IDLE
+
+    def automaticStart(self, idleHold=False):
+        """
+        Should be called when a BGP Automatic Start event (event 3) is requested.
+        Returns True or False to indicate BGPPeering whether a connection attempt
+        should be initiated.
+        """
+        
+        if self.state == ST_IDLE:
+            if idleHold:
+                self.idleHoldTimer.reset(self.idleHoldTime)
+                return False
+            else:
+                self.connectRetryCounter = 0
+                self.connectRetryTimer.reset(self.connectRetryTime)
+                return True
 
     def connectionMade(self):
         """Should be called when a TCP connection has successfully been
@@ -1011,6 +1031,12 @@ class FSM(object):
             self.protocol.sendNotification(ERR_FSM, 0)
             self._errorClose()
             raise NotificationSent(self.protocol, ERR_FSM, 0)
+    
+    def idleHoldTimeEvent(self):
+        """Called when the IdleHoldTimer expires. (event 13)"""
+        
+        if self.state == ST_IDLE:
+            if self.bgpPeering: self.bgpPeering.automaticStart(idleHold=False)
     
     def _errorClose(self):
         """Internal method that closes a connection and returns the state
@@ -1542,6 +1568,8 @@ class BGPPeering(BGPFactory):
     def buildProtocol(self, addr):
         """Builds a BGP protocol instance"""
         
+        print "Building a new BGP protocol instance"
+        
         p = BGPFactory.buildProtocol(self, addr)
         if p is not None:
             self._initProtocol(p, addr)
@@ -1613,6 +1641,15 @@ class BGPPeering(BGPFactory):
             except NotificationSent, e:
                 c.deferred.errback(e)
     
+    def automaticStart(self, idleHold=False):
+        """BGP AutomaticStart event (event 3)"""
+        
+        if self.fsm.state == ST_IDLE:
+            if self.fsm.automaticStart(idleHold):
+                # Create outbound connection
+                self.connect()
+                self.fsm.state = ST_CONNECT
+    
     def releaseResources(self, protocol):
         """
         Called by FSM when BGP resources (routes etc.) should be released
@@ -1628,21 +1665,23 @@ class BGPPeering(BGPFactory):
         
         print "Connection closed", protocol
         
-        if protocol is None:
-            # Protocol did not exist yet, connection never succeeded
-            # No further cleanup needed.
-            return
+        if protocol is not None:
+            # Connection succeeded previously, protocol exists
+            # Remove the protocol, if it exists
+            try:
+                if protocol.isOutgoing():
+                    self.outConnections.remove(protocol)
+                else:
+                    self.inConnections.remove(protocol)
+            except ValueError:
+                pass
+            
+            if protocol is self.estabProtocol:
+                self.estabProtocol = None
+                # self.fsm should still be valid and set to ST_IDLE
+                assert self.fsm.state == ST_IDLE
         
-        # Remove the protocol
-        if protocol.isOutgoing():
-            self.outConnections.remove(protocol)
-        else:
-            self.inConnections.remove(protocol)
-        
-        if protocol is self.estabProtocol:
-            self.estabProtocol = None
-            # self.fsm should still be valid and set to ST_IDLE
-            assert self.fsm.state == ST_IDLE
+        if self.fsm.allowAutomaticStart: self.automaticStart(idleHold=True)
     
     def completeInit(self, protocol):
         """
