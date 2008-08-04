@@ -14,12 +14,16 @@ $aliases['en'] = array(
 	'SpecialInvitations' => array( 'Invitations' ),
 );
 
-/** Arabic (العربية) */
+/** Arabic (العربية)
+ * @author Meno25
+ */
 $aliases['ar'] = array(
 	'SpecialInvitations' => array( 'دعوات' ),
 );
 
-/** Egyptian Spoken Arabic (مصرى) */
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Meno25
+ */
 $aliases['arz'] = array(
 	'SpecialInvitations' => array( 'دعوات' ),
 );

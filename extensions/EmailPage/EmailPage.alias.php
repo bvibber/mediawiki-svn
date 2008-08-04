@@ -14,12 +14,16 @@ $aliases['en'] = array(
     'EmailPages' => array( 'EmailPages' ),
 );
 
-/** Arabic (العربية) */
+/** Arabic (العربية)
+ * @author Meno25
+ */
 $aliases['ar'] = array(
 	'EmailPages' => array( 'مراسلة_الصفحات' ),
 );
 
-/** Egyptian Spoken Arabic (مصرى) */
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Meno25
+ */
 $aliases['arz'] = array(
 	'EmailPages' => array( 'مراسلة_الصفحات' ),
 );

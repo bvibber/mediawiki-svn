@@ -14,12 +14,16 @@ $aliases['en'] = array(
 	'SpamRegex' => array( 'SpamRegex' ),
 );
 
-/** Arabic (العربية) */
+/** Arabic (العربية)
+ * @author Meno25
+ */
 $aliases['ar'] = array(
 	'SpamRegex' => array( 'سبام_ريجيكس' ),
 );
 
-/** Egyptian Spoken Arabic (مصرى) */
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Meno25
+ */
 $aliases['arz'] = array(
 	'SpamRegex' => array( 'سبام_ريجيكس' ),
 );
