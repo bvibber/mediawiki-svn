@@ -14,12 +14,16 @@ $aliases['en'] = array(
     'DeleteBatch' => array( 'DeleteBatch' ),
 );
 
-/** Arabic (العربية) */
+/** Arabic (العربية)
+ * @author Meno25
+ */
 $aliases['ar'] = array(
 	'DeleteBatch' => array( 'حذف الباتش' ),
 );
 
-/** Egyptian Spoken Arabic (مصرى) */
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Meno25
+ */
 $aliases['arz'] = array(
 	'DeleteBatch' => array( 'حذف الباتش' ),
 );

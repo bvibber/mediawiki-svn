@@ -14,12 +14,16 @@ $aliases['en'] = array(
 	'DeletedContributions' => array( 'DeletedContributions' ),
 );
 
-/** Arabic (العربية) */
+/** Arabic (العربية)
+ * @author Meno25
+ */
 $aliases['ar'] = array(
 	'DeletedContributions' => array( 'مساهمات محذوفة' ),
 );
 
-/** Egyptian Spoken Arabic (مصرى) */
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Meno25
+ */
 $aliases['arz'] = array(
 	'DeletedContributions' => array( 'مساهمات محذوفة' ),
 );

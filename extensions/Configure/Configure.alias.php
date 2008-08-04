@@ -17,14 +17,18 @@ $aliases['en'] = array(
 	'ViewConfig' => array( 'ViewConfig' ),
 );
 
-/** Arabic (العربية) */
+/** Arabic (العربية)
+ * @author Meno25
+ */
 $aliases['ar'] = array(
 	'Configure'  => array( 'ضبط' ),
 	'Extensions' => array( 'امتدادات' ),
 	'ViewConfig' => array( 'عرض الإعدادات' ),
 );
 
-/** Egyptian Spoken Arabic (مصرى) */
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Meno25
+ */
 $aliases['arz'] = array(
 	'Configure'  => array( 'ضبط' ),
 	'Extensions' => array( 'امتدادات' ),

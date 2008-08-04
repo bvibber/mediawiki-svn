@@ -14,12 +14,16 @@ $aliases['en'] = array(
     'AdvancedRandom' => array( 'AdvancedRandom' ),
 );
 
-/** Arabic (العربية) */
+/** Arabic (العربية)
+ * @author Meno25
+ */
 $aliases['ar'] = array(
 	'AdvancedRandom' => array( 'عشوائي متقدم' ),
 );
 
-/** Egyptian Spoken Arabic (مصرى) */
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Meno25
+ */
 $aliases['arz'] = array(
 	'AdvancedRandom' => array( 'عشوائى متقدم' ),
 );

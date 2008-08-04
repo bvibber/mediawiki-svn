@@ -14,12 +14,16 @@ $aliases['en'] = array(
     'LinkSearch' => array( 'LinkSearch' ),
 );
 
-/** Arabic (العربية) */
+/** Arabic (العربية)
+ * @author Meno25
+ */
 $aliases['ar'] = array(
 	'LinkSearch' => array( 'بحث الوصلات' ),
 );
 
-/** Egyptian Spoken Arabic (مصرى) */
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Meno25
+ */
 $aliases['arz'] = array(
 	'LinkSearch' => array( 'بحث الوصلات' ),
 );

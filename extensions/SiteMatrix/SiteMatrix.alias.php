@@ -14,12 +14,16 @@ $aliases['en'] = array(
     'SiteMatrix' => array( 'SiteMatrix', 'WikimediaWikis' ),
 );
 
-/** Arabic (العربية) */
+/** Arabic (العربية)
+ * @author Meno25
+ */
 $aliases['ar'] = array(
 	'SiteMatrix' => array( 'مصفوفة الموقع', 'ويكيات ويكيميديا' ),
 );
 
-/** Egyptian Spoken Arabic (مصرى) */
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Meno25
+ */
 $aliases['arz'] = array(
 	'SiteMatrix' => array( 'مصفوفة الموقع', 'ويكيات ويكيميديا' ),
 );

@@ -14,12 +14,16 @@ $aliases['en'] = array(
     'ExpandTemplates' => array( 'ExpandTemplates' ),
 );
 
-/** Arabic (العربية) */
+/** Arabic (العربية)
+ * @author Meno25
+ */
 $aliases['ar'] = array(
 	'ExpandTemplates' => array( 'فرد القوالب' ),
 );
 
-/** Egyptian Spoken Arabic (مصرى) */
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Meno25
+ */
 $aliases['arz'] = array(
 	'ExpandTemplates' => array( 'فرد القوالب' ),
 );
