@@ -1,5 +1,3 @@
-==mv_embed helper scripts==
+==flvServer==
 
-These are the mv_embed helper scripts. 
-
-@@todo document
+enables the serving of flv video segments. 

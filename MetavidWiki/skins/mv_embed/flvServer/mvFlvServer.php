@@ -50,16 +50,28 @@ if($time_req==''){
 	//print "DO: $start_sec $end_sec \n";
 	require_once('MvFlv.php');
 	//open up the metavid Flv object: 
-	$flv = new MvFLV();
+	/*$flv = new MvFLV();
 	try {
 		$flv->open( $file_loc );
 	} catch (Exception $e) {
 		die("<pre>The following exception was detected while trying to open a FLV file:\n" . $e->getMessage() . "</pre>");
 	}
-	//header('Content-type: '.FLASH_VIDEO_CONTENT_TYPE);
+	header('Content-type: '.FLASH_VIDEO_CONTENT_TYPE);
 	$flv->playTimeReq($start_sec, $end_sec);
 	//print_r($flv->computeMetaData() );
 	$flv->close();
+	*/
+	$flv = new MyFLV();
+	try {
+		$flv->open( $file_loc );
+	} catch (Exception $e) {
+		die("<pre>The following exception was detected while trying to open a FLV file:\n" . $e->getMessage() . "</pre>");
+	}
+	header('Content-type: '.FLASH_VIDEO_CONTENT_TYPE);
+	//$flv->play(331630, 647659);
+	$flv->playTimeReq($start_sec, $end_sec);
+	$flv->close();	
+	
 }
 
 
