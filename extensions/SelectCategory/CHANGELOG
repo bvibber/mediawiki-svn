@@ -6,6 +6,11 @@
   - Fixed a possible raw sql injection problem
   - Update to survive category loops
   - Indent subcategories like in a tree
+  - Set our hook functions immediately instead of setting them from the fnSelectCategory()
+    entry function. This is to avoid some weird race condition someone experienced where
+    the hooks where called before fnSelectCategory(), so they weren't set yet. (Patch by
+    Lambert Lum)
+  - Avoid an array indexing error (Patch by Lambert Lum)
 
 * v0.6 - 2008-01-19
   - using wfLoadExtensionMessages now, all messages in one file

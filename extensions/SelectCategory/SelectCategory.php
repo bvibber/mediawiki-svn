@@ -14,6 +14,9 @@ if( !defined( 'MEDIAWIKI' ) ) {
 	die();
 }
 
+## Load the file containing the hook functions:
+require_once( 'SelectCategoryFunctions.php' );
+
 ## Options:
 # $wgSelectCategoryNamespaces - list of namespaces in which this extension should be active
 if( !isset( $wgSelectCategoryNamespaces	) ) $wgSelectCategoryNamespaces = array(
@@ -70,24 +73,19 @@ $wgExtensionCredits['parserhook'][] = array(
 
 $dir = dirname(__FILE__) . '/';
 $wgExtensionMessagesFiles['SelectCategory'] = $dir . 'SelectCategory.i18n.php';
-$wgExtensionFunctions[]	= 'fnSelectCategory';
 
 ## Set Hook:
-function fnSelectCategory() {
-	global $wgHooks;
+global $wgHooks;
 
-	## Showing the boxes
-	# Hook when starting editing:
-	$wgHooks['EditPage::showEditForm:initial'][] = array( 'fnSelectCategoryShowHook', false );
-	# Hook for the upload page:
-	$wgHooks['UploadForm:initial'][] = array( 'fnSelectCategoryShowHook', true );
+## Showing the boxes
+# Hook when starting editing:
+$wgHooks['EditPage::showEditForm:initial'][] = array( 'fnSelectCategoryShowHook', false );
+# Hook for the upload page:
+$wgHooks['UploadForm:initial'][] = array( 'fnSelectCategoryShowHook', true );
 
-	## Saving the data
-	# Hook when saving page:
-	$wgHooks['EditPage::attemptSave'][] = array( 'fnSelectCategorySaveHook', false );
-	# Hook when saving the upload:
-	$wgHooks['UploadForm:BeforeProcessing'][] = array( 'fnSelectCategorySaveHook', true );
-}
+## Saving the data
+# Hook when saving page:
+$wgHooks['EditPage::attemptSave'][] = array( 'fnSelectCategorySaveHook', false );
+# Hook when saving the upload:
+$wgHooks['UploadForm:BeforeProcessing'][] = array( 'fnSelectCategorySaveHook', true );
 
-## Load the file containing the hook functions:
-require_once( 'SelectCategoryFunctions.php' );
