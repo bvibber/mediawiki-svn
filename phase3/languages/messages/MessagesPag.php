@@ -5,7 +5,6 @@
  * @file
  *
  * @author Arikasikis
- * @author SPQRobin
  */
 
 $messages = array(
@@ -71,7 +70,6 @@ $messages = array(
 'mainpage-description' => 'Arapan ya Bolong',
 'portal'               => 'Pwerta na komyunidad',
 'portal-url'           => 'Project:Pwerta na Komyunidad',
-'sitesupport'          => 'Donasyon',
 
 'badaccess-group0' => 'Agmo sarag ya gaween so action ya kekerewen mo.',
 
@@ -123,7 +121,6 @@ $messages = array(
 'blockededitsource'     => "Wadyad leksab so text na '''saray binalom''' anggag '''$1''':",
 'whitelistedittitle'    => 'Nakaukulan ya onloob umpian makapanbalo',
 'whitelistedittext'     => 'Nakaukulan mo ya $1 umpian nabalo o nadagdagan ray bolobolong.',
-'whitelistreadtext'     => 'Nakaukulan mon [[Special:Userlogin|onloob]] umpian basaen ramay bolong.',
 'confirmedittitle'      => 'Nakaukulan na e-mail confirmation para makapan-edit',
 'loginreqtitle'         => 'Nakaukulan kan Onloob',
 'loginreqlink'          => 'onloob',
@@ -339,7 +336,6 @@ Pinengneng so $2 para ed listaan na saray abural ran balo.',
 'tooltip-ca-move'            => 'Iyales so ayan bolong',
 'tooltip-search'             => 'Anapen {{SITENAME}}',
 'tooltip-p-logo'             => 'Arapan ya Bolong',
-'tooltip-n-sitesupport'      => 'Itdan na tolong kami',
 'tooltip-t-specialpages'     => 'Listaan na amin ran niduman bolobolong',
 'tooltip-ca-nstab-user'      => 'Nengnengen so bolong na manag-usar',
 'tooltip-ca-nstab-mediawiki' => 'Nengnengen so pakabat na oksoy',

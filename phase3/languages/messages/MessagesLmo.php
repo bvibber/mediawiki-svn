@@ -4,6 +4,9 @@
  * @ingroup Language
  * @file
  *
+ * @author Dakrismeno
+ * @author Malafaya
+ * @author SabineCretella
  * @author Kemmótar
  * @author Flavio05
  * @author Clamengh
@@ -11,10 +14,6 @@
  * @author Amgine
  * @author Remulazz
  * @author DracoRoboter
- * @author SPQRobin
- * @author SabineCretella
- * @author Malafaya
- * @author Siebrand
  */
 
 $fallback = 'it';
@@ -37,6 +36,11 @@ süi titul dai sezziún (JavaScript)',
 'tog-fancysig'                => 'Firma semplificava (senza al ligamm utumatich)',
 'tog-externaleditor'          => 'Druvá sémpar un prugráma da redatazziún esternu',
 'tog-externaldiff'            => 'Druvá sempar un "diff" estèrnu',
+'tog-watchlisthideown'        => "Sconda i me mudifich dai pagin che a ten d'ögg",
+'tog-watchlisthidebots'       => "Sconda i mudifich di bot da i pagin che a ten d'ögg",
+
+'underline-always' => 'Semper',
+'underline-never'  => 'Mai',
 
 # Dates
 'sunday'    => 'dumeniga',
@@ -67,6 +71,7 @@ süi titul dai sezziún (JavaScript)',
 'nov'       => 'nuv',
 
 # Categories related messages
+'pagecategories'  => '{{PLURAL:$1|Categuria|Categurij}}',
 'category_header' => 'Vus in de la categuria "$1"',
 'subcategories'   => 'Sót-categurii',
 
@@ -89,10 +94,13 @@ süi titul dai sezziún (JavaScript)',
 'printableversion' => 'Versiun də stampà',
 'permalink'        => 'Culegament permanent',
 'edit'             => 'Mudifica',
+'editthispage'     => 'Mudifica cula pagina chi',
+'create-this-page' => 'Crea cula pagina chi',
 'delete'           => 'Scancela',
 'undelete_short'   => 'Rimett a post {{PLURAL:$1|1 mudifica|$1 mudifich}}',
 'protect'          => 'Bloca',
 'unprotect'        => 'sbloca',
+'newpage'          => 'Pagina növa',
 'specialpage'      => 'Pagina speciala',
 'talk'             => 'Discüssiun',
 'toolbox'          => 'Strüment',
@@ -115,19 +123,18 @@ süi titul dai sezziún (JavaScript)',
 'portal'               => 'Purtaal da cumünitaa',
 'portal-url'           => 'Project:Purtaal da cumünitaa',
 'privacy'              => "Pulitica de la ''privacy''",
-'sitesupport'          => 'Dunazziun',
-'sitesupport-url'      => 'Project:Donazioni',
 
-'retrievedfrom'       => 'Utegnüü da "$1"',
-'youhavenewmessages'  => "Gh'hinn di $1 ($2).",
-'newmessageslink'     => 'messacc nööf',
-'newmessagesdifflink' => 'diferenza par rapòort a la versiun da prima',
-'editsection'         => 'Mudifica',
-'toc'                 => 'Cuntegnüü',
-'showtoc'             => 'varda',
-'hidetoc'             => 'scuunt',
-'thisisdeleted'       => 'Varda o rimett a pòst $1?',
-'restorelink'         => '{{PLURAL:$1|1 mudifica scancelada|$1 mudifich scancelaa}}',
+'retrievedfrom'           => 'Utegnüü da "$1"',
+'youhavenewmessages'      => "Gh'hinn di $1 ($2).",
+'newmessageslink'         => 'messacc nööf',
+'newmessagesdifflink'     => 'diferenza par rapòort a la versiun da prima',
+'youhavenewmessagesmulti' => "Te gh'è di messagg növ ins'el $1",
+'editsection'             => 'Mudifica',
+'toc'                     => 'Cuntegnüü',
+'showtoc'                 => 'varda',
+'hidetoc'                 => 'scuunt',
+'thisisdeleted'           => 'Varda o rimett a pòst $1?',
+'restorelink'             => '{{PLURAL:$1|1 mudifica scancelada|$1 mudifich scancelaa}}',
 
 # Short words for each namespace, by default used in the namespace tab in monobook
 'nstab-main'      => 'Vus',
@@ -139,44 +146,47 @@ süi titul dai sezziún (JavaScript)',
 'nstab-category'  => 'Categuría',
 
 # General errors
-'internalerror'    => 'Erur in del sistema',
-'badtitle'         => 'Títul mía bun',
-'viewsource'       => 'Còdas surgeent',
-'editinginterface' => "'''Attenzion''': el testo de quella pagina chì el fà part de l'interfacia utent del sitt. Tutt i modifigh che te fet se vedaran subit su i messagg visualizzaa per tutt i utent.",
+'internalerror'     => 'Erur in del sistema',
+'badtitle'          => 'Títul mía bun',
+'viewsource'        => 'Còdas surgeent',
+'protectedpagetext' => "Cula pagina chi l'è stata blucà per impedinn la mudifica.",
+'viewsourcetext'    => "L'è pussibil vèd e cupià el codes surgent de cula pagina chí:",
+'editinginterface'  => "'''Attenzion''': el testo de quella pagina chì el fà part de l'interfacia utent del sitt. Tutt i modifigh che te fet se vedaran subit su i messagg visualizzaa per tutt i utent.",
 
 # Login and logout pages
-'logouttext'            => '<strong>Adess a sii descuness.</strong><br />
+'logouttext'              => '<strong>Adess a sii descuness.</strong><br />
 A pudii ná innaanz a druvá la {{SITENAME}} in manera anònima, a pudii
 cunètas ancamò cul istéss u cunt un altar nomm. Tegnii cüünt che di
 pagin a pudarian véss visüalizaat cuma se vüü füdéssuf ancamò cuness, finn a che
 vüü a scancelii mía la memòria cava dal voost bigatt.',
-'welcomecreation'       => "== Benvegnüü, $1! ==
+'welcomecreation'         => "== Benvegnüü, $1! ==
 Ul tò permèss d'entrava l è prunt. Dismentéga mia de mudifigá i prefereenz dala {{SITENAME}}.",
-'yourname'              => 'Nomm ütent',
-'yourpassword'          => "Parola d'urdin",
-'yourpasswordagain'     => "Mett dent ammò la parola d'urdin",
-'remembermypassword'    => "Regordass la mè parola d'urdin",
-'loginprompt'           => 'Par cunett a {{SITENAME}}, a duvii abilitá i galet.',
-'userlogin'             => 'Entra/Crea un cünt',
-'logout'                => 'Và fö',
-'userlogout'            => 'Và fö',
-'nologin'               => 'Sii-f gnamò registraa? $1.',
-'nologinlink'           => 'Creé un cüünt!',
-'createaccount'         => 'Creá un cüünt',
-'createaccountmail'     => 'par adressa da cureel (e-mail)',
-'youremail'             => 'E-mail',
-'username'              => 'Nomm registraa:',
-'yourrealname'          => 'Nomm:',
-'yourlanguage'          => 'Lengua:',
-'yournick'              => 'Suranomm:',
-'email'                 => 'Indirizz de pòsta elettrònica.',
-'prefs-help-email'      => 'E-mail (mia ubligatòri): ga permètt ai óltar üteent da cuntatátt senza da büsögn che i sapia la tóa identitaa.',
-'noname'                => "Vüü avii mía specificaa un nomm d'üsüari valévul.",
-'loginsuccesstitle'     => "La cunessiun l'è scumenzada cun sücess.",
-'loginsuccess'          => 'Te set cuness a {{SITENAME}} cume "$1".',
-'mailmypassword'        => "Desmentegaa la parola d'urdin?",
-'emailauthenticated'    => 'Ul tò adrèss e-mail l è staa verificaa: $1.',
-'emailnotauthenticated' => 'Ul tò adrèss da pòsta letronica l è mia staa gnamò verificaa. Nissün mesacc al saraa mandaa par i servizzi che segütan.',
+'yourname'                => 'Nomm ütent',
+'yourpassword'            => "Parola d'urdin",
+'yourpasswordagain'       => "Mett dent ammò la parola d'urdin",
+'remembermypassword'      => "Regordass la mè parola d'urdin",
+'nav-login-createaccount' => 'Vena drenta / Crea un cünt',
+'loginprompt'             => 'Par cunett a {{SITENAME}}, a duvii abilitá i galet.',
+'userlogin'               => 'Entra/Crea un cünt',
+'logout'                  => 'Và fö',
+'userlogout'              => 'Và fö',
+'nologin'                 => 'Sii-f gnamò registraa? $1.',
+'nologinlink'             => 'Creé un cüünt!',
+'createaccount'           => 'Creá un cüünt',
+'createaccountmail'       => 'par adressa da cureel (e-mail)',
+'youremail'               => 'E-mail',
+'username'                => 'Nomm registraa:',
+'yourrealname'            => 'Nomm:',
+'yourlanguage'            => 'Lengua:',
+'yournick'                => 'Suranomm:',
+'email'                   => 'Indirizz de pòsta elettrònica.',
+'prefs-help-email'        => 'E-mail (mia ubligatòri): ga permètt ai óltar üteent da cuntatátt senza da büsögn che i sapia la tóa identitaa.',
+'noname'                  => "Vüü avii mía specificaa un nomm d'üsüari valévul.",
+'loginsuccesstitle'       => "La cunessiun l'è scumenzada cun sücess.",
+'loginsuccess'            => 'Te set cuness a {{SITENAME}} cume "$1".',
+'mailmypassword'          => "Desmentegaa la parola d'urdin?",
+'emailauthenticated'      => 'Ul tò adrèss e-mail l è staa verificaa: $1.',
+'emailnotauthenticated'   => 'Ul tò adrèss da pòsta letronica l è mia staa gnamò verificaa. Nissün mesacc al saraa mandaa par i servizzi che segütan.',
 
 # Edit pages
 'summary'              => 'Argument de la mudifica',
@@ -210,10 +220,13 @@ Spiegazziún di símbui: (cur) = difərenza cun la versiún curénta, (ültima) 
 'compareselectedversions' => 'Cumpara i versiun selezziunaa',
 
 # Search results
-'prevn'        => 'preçedeent $1',
-'nextn'        => 'pròssim $1',
-'viewprevnext' => 'Vidé ($1) ($2) ($3).',
-'powersearch'  => 'Truvá',
+'noexactmatch'          => "'''La pagina \"\$1\" la esista no.''' L'è pussibil [[:\$1|creala adèss]].",
+'noexactmatch-nocreate' => "'''La pagina cun el titul \"\$1\" la esista no.'''",
+'toomanymatches'        => "Gh'è tropi curispundens. Mudifichè la richiesta.",
+'prevn'                 => 'preçedeent $1',
+'nextn'                 => 'pròssim $1',
+'viewprevnext'          => 'Vidé ($1) ($2) ($3).',
+'powersearch'           => 'Truvá',
 
 # Preferences page
 'preferences'        => 'Prefereenz',
@@ -252,22 +265,17 @@ Spiegazziún di símbui: (cur) = difərenza cun la versiún curénta, (ültima) 
 'files'              => 'Archivi',
 
 # User rights
-'userrights-lookup-user'      => 'Gestione dei gruppi utente',
-'userrights-user-editname'    => 'Inserire il nome utente:',
-'editusergroup'               => 'Modifica gruppi utente',
-'userrights-editusergroup'    => 'Modifica gruppi utente',
-'saveusergroups'              => 'Salva gruppi utente',
-'userrights-groupsmember'     => 'Appartiene ai gruppi:',
-'userrights-groupsremovable'  => 'Gruppi eliminabili:',
-'userrights-groupsavailable'  => 'Gruppi disponibili:',
-'userrights-reason'           => 'Motivo della modifica:',
-'userrights-available-none'   => "Non è consentito modificare l'appartenenza ai gruppi.",
-'userrights-available-add'    => 'È possibile associare utenti {{PLURAL:$2|al gruppo|ai gruppi}}: $1.',
-'userrights-available-remove' => 'È possibile rimuovere utenti {{PLURAL:$2|dal gruppo|dai gruppi}}: $1.',
-'userrights-no-interwiki'     => 'Non si dispone dei permessi necessari per modificare i diritti degli utenti su altri siti.',
-'userrights-nodatabase'       => 'Il database $1 non esiste o non è un database locale.',
-'userrights-nologin'          => "Per assegnare diritti agli utenti è necessario [[Special:Userlogin|effettuare l'accesso]] come amministratore.",
-'userrights-notallowed'       => "L'utente non dispone dei permessi necessari per assegnare diritti agli utenti.",
+'userrights-lookup-user'   => 'Gestione dei gruppi utente',
+'userrights-user-editname' => 'Inserire il nome utente:',
+'editusergroup'            => 'Modifica gruppi utente',
+'userrights-editusergroup' => 'Modifica gruppi utente',
+'saveusergroups'           => 'Salva gruppi utente',
+'userrights-groupsmember'  => 'Appartiene ai gruppi:',
+'userrights-reason'        => 'Motivo della modifica:',
+'userrights-no-interwiki'  => 'Non si dispone dei permessi necessari per modificare i diritti degli utenti su altri siti.',
+'userrights-nodatabase'    => 'Il database $1 non esiste o non è un database locale.',
+'userrights-nologin'       => "Per assegnare diritti agli utenti è necessario [[Special:Userlogin|effettuare l'accesso]] come amministratore.",
+'userrights-notallowed'    => "L'utente non dispone dei permessi necessari per assegnare diritti agli utenti.",
 
 # Recent changes
 'recentchanges'     => 'Cambiameent reçeent',
@@ -388,6 +396,10 @@ al butún \"tegn piü d'öcc\".",
 'watchnochange'    => "Nissün cambiameent l è stai faa süi articui/págin che ti tegnat d'öcc indal períut da teemp selezziunaa.",
 'wlshowlast'       => 'Fa vidé i ültim $1 uur $2 dí $3',
 
+# Displayed when you click the "watch" button and it is in the process of watching
+'watching'   => "Giuntà ai pagin da ten d'ögg...",
+'unwatching' => "Eliminà dai pagin da ten d'ögg...",
+
 'enotif_newpagetext' => "Chesta-chí l'è una pàgina növa.",
 'changed'            => 'cambiaa',
 
@@ -473,8 +485,9 @@ Cheest-chí al pöö vess un canbi dràstegh e inaspetaa par una pàgina pupüla
 'import' => 'Impurtá di pagin',
 
 # Tooltip help for the actions
-'tooltip-ca-addsection' => 'Taca un cument a questa discüssiun',
-'tooltip-ca-delete'     => 'Scancela questa pagina',
+'tooltip-ca-addsection'  => 'Taca un cument a questa discüssiun',
+'tooltip-ca-delete'      => 'Scancela questa pagina',
+'tooltip-t-specialpages' => 'Lista de tütt i pagin speciaal',
 
 # Attribution
 'siteuser' => '{{SITENAME}} ütent $1',

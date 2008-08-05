@@ -4,22 +4,22 @@
  * @ingroup Language
  * @file
  *
- * @author Derbeth
- * @author Wpedzich
- * @author Stv
- * @author Siebrand
- * @author לערי ריינהארט
  * @author Sp5uhe
- * @author Masti
- * @author Matma Rex
- * @author Szczepan1990
- * @author Leinad
- * @author Herr Kriss
- * @author Lajsikonik
- * @author Equadus
- * @author Ymar
+ * @author Derbeth
  * @author ToSter
+ * @author לערי ריינהארט
+ * @author Wpedzich
+ * @author Leinad
  * @author Beau
+ * @author Stv
+ * @author Masti
+ * @author Maikking
+ * @author Ymar
+ * @author Matma Rex
+ * @author Equadus
+ * @author Lajsikonik
+ * @author Szczepan1990
+ * @author Herr Kriss
  */
 
 $namespaceNames = array(
@@ -258,8 +258,6 @@ $messages = array(
 'underline-never'   => 'nigdy',
 'underline-default' => 'według ustawień przeglądarki',
 
-'skinpreview' => '(podgląd)',
-
 # Dates
 'sunday'        => 'niedziela',
 'monday'        => 'poniedziałek',
@@ -436,8 +434,6 @@ $messages = array(
 'portal-url'           => 'Project:Portal społeczności',
 'privacy'              => 'Zasady ochrony prywatności',
 'privacypage'          => 'Project:Zasady ochrony prywatności',
-'sitesupport'          => 'Darowizny',
-'sitesupport-url'      => 'Project:Wspomóż nas',
 
 'badaccess'        => 'Niewłaściwe uprawnienia',
 'badaccess-group0' => 'Nie masz uprawnień wymaganych do wykonania tej operacji.',
@@ -522,7 +518,7 @@ Administrator, który zablokował bazę, podał następujące wyjaśnienie: $1',
 Zazwyczaj jest to spowodowane odwołaniem do nieaktualnego linku prowadzącego do różnicy pomiędzy dwoma wersjami strony lub do wersji z historii usuniętej strony.
 
 Jeśli tak nie jest, możliwe, że problem został wywołany przez błąd w oprogramowaniu.
-Można zgłosić ten fakt administratorowi, podając adres URL.',
+Można zgłosić ten fakt [[Special:ListUsers/sysop|administratorowi]], podając adres URL.',
 'missingarticle-rev'   => '(wersja: $1)',
 'missingarticle-diff'  => '(różnica: $1, $2)',
 'readonly_lag'         => 'Baza danych została automatycznie zablokowana na czas potrzebny do wykonania synchronizacji zmian między serwerem głównym i serwerami pośredniczącymi.',
@@ -567,15 +563,20 @@ $2',
 'titleprotected'       => "Utworzenie strony o tej nazwie zostało zablokowane przez [[User:$1|$1]].
 Uzasadnienie blokady: ''$2''.",
 
+# Virus scanner
+'virus-badscanner'     => 'Zła konfiguracja – nieznany skaner antywirusowy <i>$1</i>',
+'virus-scanfailed'     => 'skanowanie nieudane (błąd $1)',
+'virus-unknownscanner' => 'nieznany program antywirusowy',
+
 # Login and logout pages
 'logouttitle'                => 'Wylogowanie użytkownika',
 'logouttext'                 => '<strong>Zostałeś wylogowany.</strong>
 
-Możesz kontynuować pracę w {{GRAMMAR:MS.lp|{{SITENAME}}}} jako niezarejestrowany użytkownik albo zalogować się ponownie jako ten sam lub inny użytkownik.
-Zauważ, że do momentu wyczyszczenia pamięci podręcznej przeglądarki niektóre strony oglądane przez Ciebie wcześniej, gdy byłeś zalogowany, mogą być nadal przeglądane.',
+Możesz kontynuować pracę w {{GRAMMAR:MS.lp|{{SITENAME}}}} jako niezarejestrowany użytkownik albo [[Special:Userlogin|zalogować się ponownie]] jako ten sam lub inny użytkownik.
+Zauważ, że do momentu wyczyszczenia pamięci podręcznej przeglądarki niektóre strony mogą wyglądać tak, jakbyś wciąż był zalogowany.',
 'welcomecreation'            => '== Witaj, $1! ==
-Konto zostało utworzone.
-Nie zapomnij dostosować [[Special:Preferences|preferencji]].',
+Twoje konto zostało utworzone.
+Nie zapomnij dostosować [[Special:Preferences|preferencji dla {{GRAMMAR:D.lp|{{SITENAME}}}}]].',
 'loginpagetitle'             => 'Logowanie',
 'yourname'                   => 'Nazwa użytkownika:',
 'yourpassword'               => 'Hasło:',
@@ -691,7 +692,7 @@ Być może zakończyłeś już proces zmiany hasła lub poprosiłeś o nowe has�
 'italic_tip'      => 'Tekst pochyłą czcionką',
 'link_sample'     => 'Tytuł linku',
 'link_tip'        => 'Link wewnętrzny',
-'extlink_sample'  => 'http://www.przyklad.pl nazwa linku',
+'extlink_sample'  => 'http://www.example.com nazwa linku',
 'extlink_tip'     => 'Link zewnętrzny (pamiętaj o przedrostku http:// )',
 'headline_sample' => 'Tekst nagłówka',
 'headline_tip'    => 'Nagłówek 2. poziomu',
@@ -756,10 +757,6 @@ Zanotuj go i podaj administratorowi.",
 'blockededitsource'                => "Tekst '''Twoich edycji''' na '''$1''' został pokazany poniżej:",
 'whitelistedittitle'               => 'Przed edycją musisz się zalogować',
 'whitelistedittext'                => 'Musisz $1, by edytować strony.',
-'whitelistreadtitle'               => 'Czytanie możliwe jest dopiero po zalogowaniu się',
-'whitelistreadtext'                => 'Musisz [[Special:Userlogin|zalogować się]], żeby czytać strony.',
-'whitelistacctitle'                => 'Nie masz uprawnień do założenia konta',
-'whitelistacctext'                 => 'Zakładanie kont w {{GRAMMAR:MS.lp|{{SITENAME}}}} wymaga [[Special:Userlogin|zalogowania się]] oraz posiadania odpowiednich uprawnień.',
 'confirmedittitle'                 => 'Edytowanie jest możliwe dopiero po zweryfikowaniu adresu e-mail',
 'confirmedittext'                  => 'Edytowanie jest możliwe dopiero po zweryfikowaniu adresu e-mail.
 Podaj adres e-mail i potwierdź go w swoich [[Special:Preferences|ustawieniach użytkownika]].',
@@ -775,16 +772,17 @@ Ponieważ brak sekcji $1, nie jest możliwe zapisanie Twojej edycji.',
 'newarticletext'                   => "Brak strony o tym tytule.
 Jeśli chcesz ją utworzyć, wpisz treść strony w poniższym polu (więcej informacji odnajdziesz [[{{MediaWiki:Helppage}}|na stronie pomocy]]). 
 Jeśli utworzenie nowej strony nie było Twoim zamiarem, wciśnij ''Wstecz'' w swojej przeglądarce.",
-'anontalkpagetext'                 => "---- ''To jest strona dyskusji anonimowego użytkownika – takiego, który nie ma jeszcze swojego konta lub nie chce go w tej chwili używać. By go identyfikować, używamy adresów IP.
+'anontalkpagetext'                 => "---- ''To jest strona dyskusji anonimowego użytkownika – takiego, który nie ma jeszcze swojego konta lub nie chce go w tej chwili używać.
+By go identyfikować, używamy adresów IP.
 Jednak adres IP może być współdzielony przez wielu użytkowników.
-Jeśli jesteś anonimowym użytkownikiem i uważasz, że zamieszczone tu komentarze nie są skierowane do Ciebie, [[Special:Userlogin|utwórz konto lub zaloguj się]] – dzięki temu unikniesz w przyszłości podobnych nieporozumień.''",
+Jeśli jesteś anonimowym użytkownikiem i uważasz, że zamieszczone tu komentarze nie są skierowane do Ciebie, [[Special:Userlogin/signup|utwórz konto]] lub [[Special:Userlogin|zaloguj się]] – dzięki temu unikniesz w przyszłości podobnych nieporozumień.''",
 'noarticletext'                    => 'Brak strony o tym tytule. Możesz [[Special:Search/{{PAGENAME}}|poszukać {{PAGENAME}} na innych stronach]] lub [{{fullurl:{{FULLPAGENAME}}|action=edit}} utworzyć stronę {{FULLPAGENAME}}].',
 'userpage-userdoesnotexist'        => 'Użytkownik „$1” nie jest zarejestrowany. Upewnij się, czy na pewno zamierzałeś utworzyć/zmodyfikować właśnie tę stronę.',
 'clearyourcache'                   => "'''Uwaga:''' Zmiany po zapisaniu nowych ustawień mogą nie być widoczne. Należy wyczyścić zawartość pamięci podręcznej przeglądarki internetowej.
-*'''Mozilla, Firefox lub Safari:''' przytrzymaj wciśnięty ''Shift'' i kliknij na ''Odśwież'' lub wciśnij ''Ctrl-Shift-R'' (''Cmd-Shift-R'' na Macintoshu);
-*'''IE:''' przytrzymaj ''Ctrl'' i kliknij na ''Odśwież'' lub wciśnij ''Ctrl-F5'';
-*'''Konqueror:''': po prostu kliknij przycisk ''Odśwież'' lub wciśnij ''F5'';
-*'''Opera''' może wymagać wyczyszczenia pamięci podręcznej w menu ''Narzędzia → Preferencje''.",
+*'''Mozilla, Firefox lub Safari –''' przytrzymaj wciśnięty ''Shift'' i kliknij na ''Odśwież'' lub wciśnij ''Ctrl-F5'' lub ''Ctrl-R'' (''Cmd-Shift-R'' na Macintoshu)
+*'''Konqueror –''' kliknij przycisk ''Odśwież'' lub wciśnij ''F5''
+*'''Opera –''' wyczyść pamięć podręczną w menu ''Narzędzia → Preferencje''
+*'''Internet Explorer –''' przytrzymaj ''Ctrl'' i kliknij na ''Odśwież'' lub wciśnij ''Ctrl-F5''",
 'usercssjsyoucanpreview'           => '<strong>Podpowiedź:</strong> Użyj przycisku „Podgląd”, aby przetestować nowy arkusz stylów CSS lub kod JavaScript przed jego zapisaniem.',
 'usercsspreview'                   => "'''Pamiętaj, że to tylko podgląd arkusza stylów CSS – nic jeszcze nie zostało zapisane!'''",
 'userjspreview'                    => "'''Pamiętaj, że to tylko podgląd Twojego kodu JavaScript – nic jeszcze nie zostało zapisane!'''",
@@ -794,12 +792,15 @@ Strony użytkownika zawierające CSS i JavaScript powinny zaczynać się małą 
 'note'                             => '<strong>Uwaga:</strong>',
 'previewnote'                      => '<strong>To jest tylko podgląd – zmiany nie zostały jeszcze zapisane!</strong>',
 'previewconflict'                  => 'Podgląd odnosi się do tekstu z górnego pola edycji. Tak będzie wyglądać strona, jeśli zdecydujesz się ją zapisać.',
-'session_fail_preview'             => '<strong>Uwaga! Serwer nie może przetworzyć tej edycji z powodu utraty danych sesji. Spróbuj jeszcze raz. Jeśli to nie pomoże – wyloguj się i zaloguj ponownie.</strong>',
+'session_fail_preview'             => '<strong>Uwaga! Serwer nie może przetworzyć tej edycji z powodu utraty danych sesji.
+Spróbuj jeszcze raz.
+Jeśli to nie pomoże – [[Special:Userlogout|wyloguj się]] i zaloguj ponownie.</strong>',
 'session_fail_preview_html'        => "<strong>Uwaga! Serwer nie może przetworzyć tej edycji z powodu utraty danych sesji.</strong>
 
 ''Ponieważ w {{GRAMMAR:MS.lp|{{SITENAME}}}} włączona została opcja „surowy HTML”, podgląd został ukryty w celu zabezpieczenia przed atakami JavaScript.''
 
-<strong>Jeśli jest to uprawniona próba dokonania edycji, spróbuj jeszcze raz. Jeśli to nie pomoże – wyloguj się i zaloguj ponownie.</strong>",
+<strong>Jeśli jest to uprawniona próba dokonania edycji, spróbuj jeszcze raz.
+Jeśli to nie pomoże – [[Special:Userlogout|wyloguj się]] i zaloguj ponownie.</strong>",
 'token_suffix_mismatch'            => '<strong>Twoja edycja została odrzucona, ponieważ twój klient pomieszał znaki interpunkcyjne w żetonie edycyjnym.
 Twoja edycja została odrzucona by zapobiec zniszczeniu tekstu strony.
 Takie problemy zdarzają się w wypadku korzystania z wadliwych anonimowych sieciowych usług proxy.</strong>',
@@ -895,6 +896,7 @@ Podany przez $3 powód to ''$2''",
 'histlegend'          => "Wybór porównania: zaznacz kropeczkami dwie wersje do porównania i wciśnij enter lub przycisk ''Porównaj wybrane wersje''.<br />
 Legenda: (bież.) – pokaż zmiany od tej wersji do bieżącej,
 (poprz.) – pokaż zmiany od wersji poprzedzającej, m – mała (drobna) zmiana",
+'history-search'      => 'Wyszukiwanie w historii',
 'deletedrev'          => '[usunięto]',
 'histfirst'           => 'od początku',
 'histlast'            => 'od końca',
@@ -1002,8 +1004,10 @@ Użycie linków nawigacyjnych kasuje wybór w kolumnie.',
 
 # Search results
 'searchresults'             => 'Wyniki wyszukiwania',
+'searchresults-title'       => 'Wyniki wyszukiwania „$1”',
 'searchresulttext'          => 'Więcej informacji o przeszukiwaniu {{GRAMMAR:D.lp|{{SITENAME}}}} odnajdziesz na [[{{MediaWiki:Helppage}}|stronach pomocy]].',
-'searchsubtitle'            => "Wyniki dla zapytania '''[[:$1]]'''",
+'searchsubtitle'            => "Wyniki dla zapytania '''[[:$1]]''' ([[Special:Prefixindex/$1|strony zaczynające się od „$1”]] |
+[[Special:Whatlinkshere/$1|strony, które linkują do „$1”]])",
 'searchsubtitleinvalid'     => "Dla zapytania '''$1'''",
 'noexactmatch'              => "'''Brak strony zatytułowanej „$1”.'''
 Możesz [[:$1|utworzyć tę stronę]].",
@@ -1027,7 +1031,7 @@ Możesz [[:$1|utworzyć tę stronę]].",
 'search-mwsuggest-enabled'  => 'z dynamicznymi propozycjami',
 'search-mwsuggest-disabled' => 'bez dynamicznych propozycji',
 'search-relatedarticle'     => 'Pokrewne',
-'mwsuggest-disable'         => 'Wyłącz dynamiczne propozycje AJAX',
+'mwsuggest-disable'         => 'Wyłącz dynamiczne podpowiedzi',
 'searchrelated'             => 'pokrewne',
 'searchall'                 => 'wszystkie',
 'showingresults'            => "Poniżej znajduje się lista z {{PLURAL:$1|'''1''' wynikiem|'''$1''' wynikami}}, rozpoczynając od wyniku numer '''$2'''.",
@@ -1059,6 +1063,7 @@ Jednak informacje o treści {{GRAMMAR:D.lp|{{SITENAME}}}} mogą być w Google ni
 'qbsettings-floatingright' => 'Unoszący się, z prawej',
 'changepassword'           => 'Zmiana hasła',
 'skin'                     => 'Skórka',
+'skin-preview'             => 'podgląd',
 'math'                     => 'Wzory',
 'dateformat'               => 'Format daty',
 'datedefault'              => 'Domyślny',
@@ -1110,32 +1115,25 @@ Zapoznaj się z math/README w celu konfiguracji.',
 'files'                    => 'Pliki',
 
 # User rights
-'userrights'                       => 'Zarządzaj uprawnieniami użytkowników', # Not used as normal message but as header for the special page itself
-'userrights-lookup-user'           => 'Zarządzaj grupami użytkownika',
-'userrights-user-editname'         => 'Wprowadź nazwę użytkownika',
-'editusergroup'                    => 'Edytuj grupy użytkownika',
-'editinguser'                      => "Zmiana uprawnień użytkownika '''[[User:$1|$1]]''' ([[User talk:$1|{{int:talkpagelinktext}}]] | [[Special:Contributions/$1|{{int:contribslink}}]])",
-'userrights-editusergroup'         => 'Edytuj grupy użytkownika',
-'saveusergroups'                   => 'Zapisz',
-'userrights-groupsmember'          => 'Należy do:',
-'userrights-groupsremovable'       => 'Usuwalny z grup:',
-'userrights-groupsavailable'       => 'Dostępne grupy:',
-'userrights-groups-help'           => 'Możesz zmienić przynależność tego użytkownika do podanych grup:
+'userrights'                  => 'Zarządzaj uprawnieniami użytkowników', # Not used as normal message but as header for the special page itself
+'userrights-lookup-user'      => 'Zarządzaj grupami użytkownika',
+'userrights-user-editname'    => 'Wprowadź nazwę użytkownika',
+'editusergroup'               => 'Edytuj grupy użytkownika',
+'editinguser'                 => "Zmiana uprawnień użytkownika '''[[User:$1|$1]]''' ([[User talk:$1|{{int:talkpagelinktext}}]] | [[Special:Contributions/$1|{{int:contribslink}}]])",
+'userrights-editusergroup'    => 'Edytuj grupy użytkownika',
+'saveusergroups'              => 'Zapisz',
+'userrights-groupsmember'     => 'Należy do:',
+'userrights-groups-help'      => 'Możesz zmienić przynależność tego użytkownika do podanych grup:
 * Zaznaczone pole oznacza przynależność użytkownika do danej grupy.
 * Niezaznaczone pole oznacza, że użytkownik nie należy do danej grupy.
 * Gwiazdka * informuje, że nie możesz usunąć z grupy po dodaniu do niej lub dodać po usunięciu z grupy.',
-'userrights-reason'                => 'Powód zmiany',
-'userrights-available-none'        => 'Nie możesz zmieniać przynależności do grup.',
-'userrights-available-add'         => 'Możesz dodać dowolnego użytkownika do {{PLURAL:$2|grupy|grup}}: $1.',
-'userrights-available-remove'      => 'Możesz usunąć dowolnego użytkownika z {{PLURAL:$2|grupy|grup}}: $1.',
-'userrights-available-add-self'    => 'Nie możesz dodać siebie do {{PLURAL:$2|grupy|grup}}: $1.',
-'userrights-available-remove-self' => 'Nie możesz usunąć siebie z {{PLURAL:$2|grupy|grup}}: $1.',
-'userrights-no-interwiki'          => 'Nie masz dostępu do edycji uprawnień na innych wiki.',
-'userrights-nodatabase'            => 'Baza danych $1 nie istnieje lub nie jest lokalna.',
-'userrights-nologin'               => 'Musisz [[Special:Userlogin|zalogować się]] na konto administratora, by nadawać uprawnienia użytkownikom.',
-'userrights-notallowed'            => 'Nie masz dostępu do nadawania uprawnień użytkownikom.',
-'userrights-changeable-col'        => 'Grupy, które możesz wybrać',
-'userrights-unchangeable-col'      => 'Grupy, których nie możesz wybrać',
+'userrights-reason'           => 'Powód zmiany',
+'userrights-no-interwiki'     => 'Nie masz dostępu do edycji uprawnień na innych wiki.',
+'userrights-nodatabase'       => 'Baza danych $1 nie istnieje lub nie jest lokalna.',
+'userrights-nologin'          => 'Musisz [[Special:Userlogin|zalogować się]] na konto administratora, by nadawać uprawnienia użytkownikom.',
+'userrights-notallowed'       => 'Nie masz dostępu do nadawania uprawnień użytkownikom.',
+'userrights-changeable-col'   => 'Grupy, które możesz wybrać',
+'userrights-unchangeable-col' => 'Grupy, których nie możesz wybrać',
 
 # Groups
 'group'               => 'Grupa',
@@ -1225,7 +1223,7 @@ Zapoznaj się z math/README w celu konfiguracji.',
 'recentchanges'                     => 'Ostatnie zmiany',
 'recentchangestext'                 => 'Ta strona przedstawia historię ostatnich zmian w tej wiki.',
 'recentchanges-feed-description'    => 'Obserwuj najświeższe zmiany w tej wiki.',
-'rcnote'                            => "Poniżej {{PLURAL:$1|znajduje się '''1''' ostatnia zmiana wykonana|znajdują się ostatnie '''$1''' zmiany wykonane|znajduje się ostatnich '''$1''' zmian wykonanych}} w ciągu {{PLURAL:$2|ostatniego dnia|ostatnich '''$2''' dni}}, licząc od $3.",
+'rcnote'                            => "Poniżej {{PLURAL:$1|znajduje się '''1''' ostatnia zmiana wykonana|znajdują się ostatnie '''$1''' zmiany wykonane|znajduje się ostatnich '''$1''' zmian wykonanych}} w ciągu {{PLURAL:$2|ostatniego dnia|ostatnich '''$2''' dni}}, licząc od $5 dnia $4.",
 'rcnotefrom'                        => "Poniżej pokazano zmiany wykonane po '''$2''' (nie więcej niż '''$1''' pozycji).",
 'rclistfrom'                        => 'Pokaż nowe zmiany od $1',
 'rcshowhideminor'                   => '$1 drobne zmiany',
@@ -1270,15 +1268,16 @@ Strony z [[Special:Watchlist|listy obserwowanych]] są '''wytłuszczone'''.",
 Jeśli chcesz przejrzeć lub przeszukać dotychczas przesłane pliki, przejdź do [[Special:Imagelist|listy plików]]. Każde przesłanie jest odnotowane w [[Special:Log/upload|rejestrze przesyłanych plików]].
 
 Plik pojawi się na stronie, jeśli użyjesz linku według jednego z następujących wzorów:
-'''<nowiki>[[</nowiki>{{ns:image}}<nowiki>:Plik.jpg]]</nowiki>''',
-'''<nowiki>[[</nowiki>{{ns:image}}<nowiki>:Plik.png|tekst opisu]]</nowiki>''' lub
-'''<nowiki>[[</nowiki>{{ns:media}}<nowiki>:Plik.ogg]]</nowiki>''' aby uzyskać bezpośredni link do pliku.",
+* '''<tt><nowiki>[[</nowiki>{{ns:image}}<nowiki>:Plik.jpg]]</nowiki></tt>''' pokaże pliku w pełnej postaci
+* '''<tt><nowiki>[[</nowiki>{{ns:image}}<nowiki>:Plik.png|200px|thumb|left|podpis grafiki]]</nowiki></tt>''' pokaże szeroką na 200 pikseli miniaturkę umieszczoną na lewym marginesie i otoczoną ramką, z podpisem „podpis grafiki”
+* '''<tt><nowiki>[[</nowiki>{{ns:media}}<nowiki>:Plik.ogg]]</nowiki></tt>''' utworzy bezpośredni link do pliku bez wyświetlania samego pliku",
 'upload-permitted'            => 'Dopuszczalne formaty plików: $1.',
 'upload-preferred'            => 'Zalecane formaty plików: $1.',
 'upload-prohibited'           => 'Zabronione formaty plików: $1.',
 'uploadlog'                   => 'rejestr przesyłania plików',
 'uploadlogpage'               => 'Przesłane',
-'uploadlogpagetext'           => 'Lista ostatnio przesłanych plików.',
+'uploadlogpagetext'           => 'Lista ostatnio przesłanych plików.
+Przejdź na stronę [[Special:NewImages|Nowe pliki]], by zobaczyć pliki jako miniaturki.',
 'filename'                    => 'Nazwa pliku',
 'filedesc'                    => 'Opis',
 'fileuploadsummary'           => 'Opis',
@@ -1292,8 +1291,8 @@ Plik pojawi się na stronie, jeśli użyjesz linku według jednego z następują
 Zmień nazwę pliku i prześlij go ponownie.',
 'badfilename'                 => 'Nazwa pliku została zmieniona na „$1”.',
 'filetype-badmime'            => 'Przesyłanie plików z typem MIME „$1” jest niedozwolone.',
-'filetype-unwanted-type'      => "'''„.$1”''' nie jest zalecanym typem pliku. Pożądane są pliki w formatach $2.",
-'filetype-banned-type'        => "'''„.$1”''' jest niedozwolonym typem pliku. Dopuszczalne są pliki w formatach $2.",
+'filetype-unwanted-type'      => "'''„.$1”''' nie jest zalecanym typem pliku. Pożądane są pliki w {{PLURAL:$3|formacie|formatach}} $2.",
+'filetype-banned-type'        => "'''„.$1”''' jest niedozwolonym typem pliku. Dopuszczalne są pliki w {{PLURAL:$3|formacie|formatach}} $2.",
 'filetype-missing'            => 'Plik nie ma rozszerzenia (np. „.jpg”).',
 'large-file'                  => 'Zalecane jest aby rozmiar pliku nie był większy niż {{PLURAL:$1|1 bajt|$1 bajty|$1 bajtów}}.
 Plik ma rozmiar {{PLURAL:$2|1 bajt|$2 bajty|$2 bajtów}}.',
@@ -1362,11 +1361,11 @@ PICT # wiele różnych
 'upload-proto-error-text' => 'Zdalne przesyłanie plików wymaga podania adresu URL zaczynającego się od <code>http://</code> lub <code>ftp://</code>.',
 'upload-file-error'       => 'Błąd wewnętrzny',
 'upload-file-error-text'  => 'Wystąpił błąd wewnętrzny podczas próby utworzenia tymczasowego pliku na serwerze.
-Skontaktuj się z administratorem systemu.',
+Skontaktuj się z [[Special:ListUsers/sysop|administratorem systemu]].',
 'upload-misc-error'       => 'Nieznany błąd przesyłania',
 'upload-misc-error-text'  => 'Wystąpił nieznany błąd podczas przesyłania.
-Sprawdź czy podany adres URL jest poprawny i dostępny, a następnie spróbuj ponownie.
-Jeśli problem będzie się powtarzał skontaktuj się z administratorem systemu.',
+Sprawdź, czy podany adres URL jest poprawny i dostępny, a następnie spróbuj ponownie.
+Jeśli problem będzie się powtarzał, skontaktuj się z [[Special:ListUsers/sysop|administratorem systemu]].',
 
 # Some likely curl errors. More could be added from <http://curl.haxx.se/libcurl/c/libcurl-errors.html>
 'upload-curl-error6'       => 'Adres URL jest nieosiągalny',
@@ -1408,7 +1407,7 @@ Kliknięcie w nagłówek kolumny zmienia sposób sortowania.',
 'filehist-filesize'              => 'Rozmiar pliku',
 'filehist-comment'               => 'Opis',
 'imagelinks'                     => 'Odnośniki do pliku',
-'linkstoimage'                   => 'Następujące strony odwołują się do tego pliku:',
+'linkstoimage'                   => '{{PLURAL:$1|Poniższa strona odwołuje|Następujące strony odwołują}} się do tego pliku:',
 'nolinkstoimage'                 => 'Żadna strona nie odwołuje się do tego pliku.',
 'morelinkstoimage'               => 'Pokaż [[Special:Whatlinkshere/$1|więcej odnośników]] do tego pliku.',
 'redirectstofile'                => '{{PLURAL:$1|Następujący plik przekierowuje|Następujące pliki przekierowują}} do tego pliku:',
@@ -1429,18 +1428,18 @@ Kliknięcie w nagłówek kolumny zmienia sposób sortowania.',
 # File reversion
 'filerevert'                => 'Przywracanie $1',
 'filerevert-legend'         => 'Przywracanie poprzedniej wersji pliku',
-'filerevert-intro'          => '<span class="plainlinks">Zamierzasz przywrócić \'\'\'[[Media:$1|$1]]\'\'\' do [wersji $4 z $3, $2].</span>',
+'filerevert-intro'          => "Zamierzasz przywrócić '''[[Media:$1|$1]]''' do [wersji $4 z $3, $2].",
 'filerevert-comment'        => 'Komentarz:',
 'filerevert-defaultcomment' => 'Przywrócono wersję z $2, $1',
 'filerevert-submit'         => 'Przywróć',
-'filerevert-success'        => '<span class="plainlinks">Plik \'\'\'[[Media:$1|$1]]\'\'\' został cofnięty do [wersji $4 z $3, $2].</span>',
+'filerevert-success'        => "Plik '''[[Media:$1|$1]]''' został cofnięty do [wersji $4 z $3, $2].",
 'filerevert-badversion'     => 'Brak poprzedniej lokalnej wersji tego pliku z podaną datą.',
 
 # File deletion
 'filedelete'                  => 'Usuń „$1”',
 'filedelete-legend'           => 'Usuń plik',
 'filedelete-intro'            => "Usuwasz '''[[Media:$1|$1]]'''.",
-'filedelete-intro-old'        => '<span class="plainlinks">Usuwasz wersję pliku \'\'\'[[Media:$1|$1]]\'\'\' z datą [$4 $3, $2].</span>',
+'filedelete-intro-old'        => "Usuwasz wersję pliku '''[[Media:$1|$1]]''' z datą [$4 $3, $2].",
 'filedelete-comment'          => 'Komentarz:',
 'filedelete-submit'           => 'Usuń',
 'filedelete-success'          => "Usunięto plik '''$1'''.",
@@ -1464,12 +1463,10 @@ Użycie: typ_treści/podtyp, np. <tt>image/jpeg</tt>.',
 'download'           => 'pobierz',
 
 # Unwatched pages
-'unwatchedpages'         => 'Nieobserwowane strony',
-'unwatchedpages-summary' => 'Poniżej znajduje się lista stron nieobserwowanych przez żadnego użytkownika.',
+'unwatchedpages' => 'Nieobserwowane strony',
 
 # List redirects
-'listredirects'         => 'Lista przekierowań',
-'listredirects-summary' => 'Poniżej znajduje się lista przekierowań.',
+'listredirects' => 'Lista przekierowań',
 
 # Unused templates
 'unusedtemplates'     => 'Nieużywane szablony',
@@ -1503,15 +1500,16 @@ Długość [http://www.mediawiki.org/wiki/Manual:Job_queue kolejki zadań] wynos
 'userstatstext'          => "Jest {{PLURAL:$1|'''1''' zarejestrowany użytkownik|'''$1''' zarejestrowanych użytkowników}}. {{PLURAL:$1|Użytkownik ten|Spośród nich '''$2''' (czyli '''$4%''')}} ma status $5.",
 'statistics-mostpopular' => 'Najczęściej odwiedzane strony',
 
-'disambiguations'         => 'Strony ujednoznaczniające',
-'disambiguations-summary' => 'Poniżej znajduje się lista stron ujednoznaczniających.',
-'disambiguationspage'     => 'Template:disambig',
-'disambiguations-text'    => "Poniższe strony odwołują się do '''stron ujednoznaczniających''',
+'disambiguations'      => 'Strony ujednoznaczniające',
+'disambiguationspage'  => 'Template:disambig',
+'disambiguations-text' => "Poniższe strony odwołują się do '''stron ujednoznaczniających''',
 a powinny odwoływać się bezpośrednio do stron treści.<br />
 Strona uznawana jest za ujednoznaczniającą, jeśli zawiera ona szablon linkowany przez stronę [[MediaWiki:Disambiguationspage]]",
 
-'doubleredirects'     => 'Podwójne przekierowania',
-'doubleredirectstext' => 'Lista zawiera strony z przekierowaniami do stron, które przekierowują do innej strony. Każdy wiersz zawiera linki do pierwszego i drugiego przekierowania oraz link, do którego prowadzi drugie przekierowanie. Ostatni link prowadzi zazwyczaj do strony, do której powinna w rzeczywistości przekierowywać pierwsza strona.',
+'doubleredirects'            => 'Podwójne przekierowania',
+'doubleredirectstext'        => 'Lista zawiera strony z przekierowaniami do stron, które przekierowują do innej strony. Każdy wiersz zawiera linki do pierwszego i drugiego przekierowania oraz link, do którego prowadzi drugie przekierowanie. Ostatni link prowadzi zazwyczaj do strony, do której powinna w rzeczywistości przekierowywać pierwsza strona.',
+'double-redirect-fixed-move' => 'strona [[$1]] została zastąpiona przekierowaniem, ponieważ została przeniesiona do [[$2]]',
+'double-redirect-fixer'      => 'Korektor przekierowań',
 
 'brokenredirects'        => 'Zerwane przekierowania',
 'brokenredirectstext'    => 'Poniższe przekierowania wskazują na nieistniejące strony.',
@@ -1526,66 +1524,58 @@ Strona uznawana jest za ujednoznaczniającą, jeśli zawiera ona szablon linkowa
 'fewestrevisions' => 'Strony z najmniejszą liczbą wersji',
 
 # Miscellaneous special pages
-'nbytes'                          => '$1 {{PLURAL:$1|bajt|bajty|bajtów}}',
-'ncategories'                     => '$1 {{PLURAL:$1|kategoria|kategorie|kategorii}}',
-'nlinks'                          => '$1 {{PLURAL:$1|link|linki|linków}}',
-'nmembers'                        => '$1 {{PLURAL:$1|element|elementy|elementów}}',
-'nrevisions'                      => '$1 {{PLURAL:$1|wersja|wersje|wersji}}',
-'nviews'                          => 'odwiedzono $1 {{PLURAL:$1|raz|razy}}',
-'specialpage-empty'               => 'Ta strona raportu jest pusta.',
-'lonelypages'                     => 'Porzucone strony',
-'lonelypagestext'                 => 'Do poniższych stron nie odwołuje się żadna inna strona w {{GRAMMAR:MS.lp|{{SITENAME}}}}.',
-'uncategorizedpages'              => 'Nieskategoryzowane strony',
-'uncategorizedpages-summary'      => 'Poniżej znajduje się lista stron nienależących do żadnej kategorii.',
-'uncategorizedcategories'         => 'Nieskategoryzowane kategorie',
-'uncategorizedcategories-summary' => 'Poniżej znajduje się lista kategorii nienależących do żadnej kategorii.',
-'uncategorizedimages'             => 'Nieskategoryzowane pliki',
-'uncategorizedimages-summary'     => 'Poniżej znajduje się lista plików nienależących do żadnej kategorii.',
-'uncategorizedtemplates'          => 'Nieskategoryzowane szablony',
-'unusedcategories'                => 'Puste kategorie',
-'unusedimages'                    => 'Nieużywane pliki',
-'popularpages'                    => 'Najpopularniejsze strony',
-'wantedcategories'                => 'Brakujące kategorie',
-'wantedpages'                     => 'Najpotrzebniejsze strony',
-'missingfiles'                    => 'Brak plików',
-'mostlinked'                      => 'Najczęściej linkowane strony',
-'mostlinkedcategories'            => 'Kategorie o największej liczbie stron',
-'mostlinkedtemplates'             => 'Najczęściej linkowane szablony',
-'mostcategories'                  => 'Artykuły z największą liczbą kategorii',
-'mostcategories-summary'          => 'Poniżej znajduje się lista stron zawierających największą liczbę kategorii.',
-'mostimages'                      => 'Najczęściej linkowane pliki',
-'mostrevisions'                   => 'Artykuły o największej liczbie wersji',
-'mostrevisions-summary'           => 'Poniżej znajduje się lista najczęściej edytowanych stron.',
-'prefixindex'                     => 'Wszystkie strony według prefiksu',
-'shortpages'                      => 'Najkrótsze strony',
-'shortpages-summary'              => 'Poniżej znajduje się lista najkrótszych stron.',
-'longpages'                       => 'Najdłuższe strony',
-'longpages-summary'               => 'Poniżej znajduje się lista najdłuższych stron.',
-'deadendpages'                    => 'Strony bez linków wewnętrznych',
-'deadendpagestext'                => 'Poniższe strony nie posiadają odnośników do innych stron znajdujących się w {{GRAMMAR:MS.lp|{{SITENAME}}}}.',
-'protectedpages'                  => 'Strony zabezpieczone',
-'protectedpages-indef'            => 'Tylko zabezpieczenia nieokreślone',
-'protectedpagestext'              => 'Poniższe strony zostały zabezpieczone przed przenoszeniem lub edytowaniem.',
-'protectedpagesempty'             => 'Żadna strona nie jest obecnie zablokowana z podanymi parametrami.',
-'protectedtitles'                 => 'Zablokowane nazwy artykułów',
-'protectedtitlestext'             => 'Utworzenie artykułów o następujących nazwach jest zablokowane',
-'protectedtitlesempty'            => 'Dla tych ustawień dopuszczalne jest utworzenie artykułu o dowolnej nazwie.',
-'listusers'                       => 'Lista użytkowników',
-'listusers-summary'               => 'Poniżej znajduje się lista wszystkich użytkowników zarejestrowanych w tej wiki.',
-'newpages'                        => 'Nowe strony',
-'newpages-username'               => 'Nazwa użytkownika',
-'ancientpages'                    => 'Najstarsze strony',
-'move'                            => 'przenieś',
-'movethispage'                    => 'Przenieś tę stronę',
-'unusedimagestext'                => 'Inne witryny mogą odwoływać się do tych plików, używając bezpośrednich adresów URL. Oznacza to, że niektóre z plików mogą się znajdować na tej liście pomimo tego, że są wykorzystywane.',
-'unusedcategoriestext'            => 'Poniższe kategorie istnieją, choć nie korzysta z nich żaden artykuł ani kategoria.',
-'notargettitle'                   => 'Wskazywana strona nie istnieje',
-'notargettext'                    => 'Nie podano strony albo użytkownika, dla których ta operacja ma być wykonana.',
-'nopagetitle'                     => 'Strona docelowa nie istnieje',
-'nopagetext'                      => 'Wybrana strona docelowa nie istnieje.',
-'pager-newer-n'                   => '{{PLURAL:$1|1 nowszy|$1 nowsze|$1 nowszych}}',
-'pager-older-n'                   => '{{PLURAL:$1|1 starszy|$1 starsze|$1 starszych}}',
-'suppress'                        => 'Rewizor',
+'nbytes'                  => '$1 {{PLURAL:$1|bajt|bajty|bajtów}}',
+'ncategories'             => '$1 {{PLURAL:$1|kategoria|kategorie|kategorii}}',
+'nlinks'                  => '$1 {{PLURAL:$1|link|linki|linków}}',
+'nmembers'                => '$1 {{PLURAL:$1|element|elementy|elementów}}',
+'nrevisions'              => '$1 {{PLURAL:$1|wersja|wersje|wersji}}',
+'nviews'                  => 'odwiedzono $1 {{PLURAL:$1|raz|razy}}',
+'specialpage-empty'       => 'Ta strona raportu jest pusta.',
+'lonelypages'             => 'Porzucone strony',
+'lonelypagestext'         => 'Do poniższych stron nie odwołuje się żadna inna strona w {{GRAMMAR:MS.lp|{{SITENAME}}}}.',
+'uncategorizedpages'      => 'Nieskategoryzowane strony',
+'uncategorizedcategories' => 'Nieskategoryzowane kategorie',
+'uncategorizedimages'     => 'Nieskategoryzowane pliki',
+'uncategorizedtemplates'  => 'Nieskategoryzowane szablony',
+'unusedcategories'        => 'Puste kategorie',
+'unusedimages'            => 'Nieużywane pliki',
+'popularpages'            => 'Najpopularniejsze strony',
+'wantedcategories'        => 'Brakujące kategorie',
+'wantedpages'             => 'Najpotrzebniejsze strony',
+'missingfiles'            => 'Brak plików',
+'mostlinked'              => 'Najczęściej linkowane strony',
+'mostlinkedcategories'    => 'Kategorie o największej liczbie stron',
+'mostlinkedtemplates'     => 'Najczęściej linkowane szablony',
+'mostcategories'          => 'Artykuły z największą liczbą kategorii',
+'mostimages'              => 'Najczęściej linkowane pliki',
+'mostrevisions'           => 'Artykuły o największej liczbie wersji',
+'prefixindex'             => 'Wszystkie strony według prefiksu',
+'shortpages'              => 'Najkrótsze strony',
+'longpages'               => 'Najdłuższe strony',
+'deadendpages'            => 'Strony bez linków wewnętrznych',
+'deadendpagestext'        => 'Poniższe strony nie posiadają odnośników do innych stron znajdujących się w {{GRAMMAR:MS.lp|{{SITENAME}}}}.',
+'protectedpages'          => 'Strony zabezpieczone',
+'protectedpages-indef'    => 'Tylko zabezpieczenia nieokreślone',
+'protectedpagestext'      => 'Poniższe strony zostały zabezpieczone przed przenoszeniem lub edytowaniem.',
+'protectedpagesempty'     => 'Żadna strona nie jest obecnie zablokowana z podanymi parametrami.',
+'protectedtitles'         => 'Zablokowane nazwy artykułów',
+'protectedtitlestext'     => 'Utworzenie artykułów o następujących nazwach jest zablokowane',
+'protectedtitlesempty'    => 'Dla tych ustawień dopuszczalne jest utworzenie artykułu o dowolnej nazwie.',
+'listusers'               => 'Lista użytkowników',
+'newpages'                => 'Nowe strony',
+'newpages-username'       => 'Nazwa użytkownika',
+'ancientpages'            => 'Najstarsze strony',
+'move'                    => 'przenieś',
+'movethispage'            => 'Przenieś tę stronę',
+'unusedimagestext'        => 'Inne witryny mogą odwoływać się do tych plików, używając bezpośrednich adresów URL. Oznacza to, że niektóre z plików mogą się znajdować na tej liście pomimo tego, że są wykorzystywane.',
+'unusedcategoriestext'    => 'Poniższe kategorie istnieją, choć nie korzysta z nich żaden artykuł ani kategoria.',
+'notargettitle'           => 'Wskazywana strona nie istnieje',
+'notargettext'            => 'Nie podano strony albo użytkownika, dla których ta operacja ma być wykonana.',
+'nopagetitle'             => 'Strona docelowa nie istnieje',
+'nopagetext'              => 'Wybrana strona docelowa nie istnieje.',
+'pager-newer-n'           => '{{PLURAL:$1|1 nowszy|$1 nowsze|$1 nowszych}}',
+'pager-older-n'           => '{{PLURAL:$1|1 starszy|$1 starsze|$1 starszych}}',
+'suppress'                => 'Rewizor',
 
 # Book sources
 'booksources'               => 'Książki',
@@ -1634,20 +1624,25 @@ Możesz zawęzić liczbę wyników poprzez wybranie typu rejestru, nazwy użytko
 'listusers-noresult' => 'Nie znaleziono żadnego użytkownika.',
 
 # Special:Listgrouprights
-'listgrouprights'          => 'Uprawnienia grup użytkowników',
-'listgrouprights-summary'  => 'Poniżej znajduje się spis zdefiniowanych na tej wiki grup użytkowników, z wyszczególnieniem przydzielonych im praw dostępu.
-Szczegółową informację o uprawnieniach odnajdziesz [[{{MediaWiki:Listgrouprights-helppage}}|tutaj]].',
-'listgrouprights-group'    => 'Grupa',
-'listgrouprights-rights'   => 'Uprawnienia',
-'listgrouprights-helppage' => 'Help:Uprawnienia grup użytkowników',
-'listgrouprights-members'  => '(lista członków grupy)',
+'listgrouprights'                 => 'Uprawnienia grup użytkowników',
+'listgrouprights-summary'         => 'Poniżej znajduje się spis zdefiniowanych na tej wiki grup użytkowników, z wyszczególnieniem przydzielonych im praw dostępu.
+Sprawdź stronę z [[{{MediaWiki:Listgrouprights-helppage}}|dodatkowymi informacjami]] o prawach dostępu.',
+'listgrouprights-group'           => 'Grupa',
+'listgrouprights-rights'          => 'Uprawnienia',
+'listgrouprights-helppage'        => 'Help:Uprawnienia grup użytkowników',
+'listgrouprights-members'         => '(lista członków grupy)',
+'listgrouprights-addgroup'        => 'Może dodawać grupy: $1',
+'listgrouprights-removegroup'     => 'Może usuwać grupy: $1',
+'listgrouprights-addgroup-all'    => 'Może dodawać wszystkie grupy',
+'listgrouprights-removegroup-all' => 'Może usuwać wszystkie grupy',
 
 # E-mail user
 'mailnologin'     => 'Brak adresu',
 'mailnologintext' => 'Musisz się [[Special:Userlogin|zalogować]] i mieć wpisany aktualny adres e-mailowy w swoich [[Special:Preferences|preferencjach]], aby móc wysłać e-mail do innego użytkownika.',
 'emailuser'       => 'Wyślij e-mail do tego użytkownika',
 'emailpage'       => 'Wyślij e-mail do użytkownika',
-'emailpagetext'   => 'Poniższy formularz pozwala na wysłanie jednej wiadomości do użytkownika pod warunkiem, że wpisał on poprawny adres e-mail w swoich preferencjach. Adres e-mailowy, który został przez Ciebie wprowadzony w Twoich preferencjach pojawi się w polu „Od”, dzięki czemu odbiorca będzie mógł Ci odpowiedzieć.',
+'emailpagetext'   => 'Poniższy formularz pozwala na wysłanie jednej wiadomości do użytkownika pod warunkiem, że wpisał on poprawny adres e-mail w swoich preferencjach.
+Adres e-mailowy, który został przez Ciebie wprowadzony w [[Special:Preferences|Twoich preferencjach]], pojawi się w polu „Od”, dzięki czemu odbiorca będzie mógł Ci odpowiedzieć.',
 'usermailererror' => 'Moduł obsługi poczty zwrócił błąd:',
 'defemailsubject' => 'Wiadomość z {{GRAMMAR:D.lp|{{SITENAME}}}}',
 'noemailtitle'    => 'Brak adresu e-mail',
@@ -1661,6 +1656,7 @@ Szczegółową informację o uprawnieniach odnajdziesz [[{{MediaWiki:Listgroupri
 'emailccsubject'  => 'Kopia Twojej wiadomości do $1: $2',
 'emailsent'       => 'Wiadomość została wysłana',
 'emailsenttext'   => 'Twoja wiadomość została wysłana.',
+'emailuserfooter' => 'Wiadomość e-mail została wysłana z {{GRAMMAR:D.lp|{{SITENAME}}}} do $2 przez $1 z użyciem „Wyślij e-mail do tego użytkownika”.',
 
 # Watchlist
 'watchlist'            => 'Obserwowane',
@@ -1674,7 +1670,7 @@ Szczegółową informację o uprawnieniach odnajdziesz [[{{MediaWiki:Listgroupri
 'addedwatchtext'       => "Strona „[[:$1|$1]]” została dodana do Twojej [[Special:Watchlist|listy obserwowanych]].
 Każda zmiana treści tej strony lub związanej z nią strony dyskusji zostanie odnotowana na poniższej liście. Dodatkowo nazwa strony zostanie '''wytłuszczona''' na [[Special:Recentchanges|liście ostatnich zmian]], aby ułatwić Ci zauważenie faktu zmiany.",
 'removedwatch'         => 'Usunięto z listy obserwowanych',
-'removedwatchtext'     => 'Strona „[[:$1]]” została usunięta z Twojej listy obserwowanych.',
+'removedwatchtext'     => 'Strona „[[:$1]]” została usunięta z Twojej [[Special:Watchlist|listy obserwowanych]].',
 'watch'                => 'Obserwuj',
 'watchthispage'        => 'Obserwuj',
 'unwatch'              => 'nie obserwuj',
@@ -1774,10 +1770,10 @@ Bądź ostrożny, ponieważ usunięcie jej może spowodować zakłócenia w prac
 'rollbacklink'                => 'cofnij',
 'rollbackfailed'              => 'Nie udało się cofnąć zmiany',
 'cantrollback'                => 'Nie można cofnąć edycji, ponieważ jest tylko jedna wersja tej strony.',
-'alreadyrolled'               => 'Nie można dla strony [[:$1|$1]] cofnąć ostatniej zmiany, którą wykonał [[User:$2|$2]] ([[User talk:$2|dyskusja]]).
+'alreadyrolled'               => 'Nie można dla strony [[:$1|$1]] cofnąć ostatniej zmiany, którą wykonał [[User:$2|$2]] ([[User talk:$2|dyskusja]] | [[Special:Contributions/$2|{{int:contribslink}}]]).
 Ktoś inny zdążył już to zrobić lub wprowadził własne poprawki do treści strony.
 
-Autorem ostatniej zmiany jest teraz [[User:$3|$3]] ([[User talk:$3|dyskusja]]).',
+Autorem ostatniej zmiany jest teraz [[User:$3|$3]] ([[User talk:$3|dyskusja]] | [[Special:Contributions/$3|{{int:contribslink}}]]).',
 'editcomment'                 => 'Edycję opisano: „<i>$1</i>”.', # only shown if there is an edit comment
 'revertpage'                  => 'Wycofano edycje użytkownika [[Special:Contributions/$2|$2]] ([[User talk:$2|dyskusja]]). Autor przywróconej wersji to [[User:$1|$1]].', # Additional available: $3: revid of the revision reverted to, $4: timestamp of the revision reverted to, $5: revid of the revision reverted from, $6: timestamp of the revision reverted from
 'rollback-success'            => 'Wycofano edycje użytkownika $1.
@@ -1836,6 +1832,7 @@ Obecne ustawienia dla strony <strong>$1</strong> to:',
 'viewdeletedpage'              => 'Zobacz usunięte wersje',
 'undeletepagetext'             => 'Poniższe strony zostały usunięte, ale ich kopia wciąż znajduje się w archiwum.
 Archiwum co jakiś czas może być oczyszczane.',
+'undelete-fieldset-title'      => 'Odtwarzanie wersji',
 'undeleteextrahelp'            => "Jeśli chcesz odtworzyć całą stronę, pozostaw wszystkie pola niezaznaczone i kliknij '''''Odtwórz'''''.
 Częściowe odtworzenie możesz wykonać, zaznaczając odpowiednie pola, odpowiadające wersjom, które będą odtworzone, a następnie klikając '''''Odtwórz'''''.
 Naciśnięcie '''''Wyczyść''''' usunie wszystkie zaznaczenia i wyczyści pole komentarza.",
@@ -1922,17 +1919,17 @@ $1',
 'whatlinkshere-filters'    => 'Filtry',
 
 # Block/unblock
-'blockip'                     => 'Zablokuj użytkownika',
-'blockip-legend'              => 'Zablokuj użytkownika',
-'blockiptext'                 => 'Użyj poniższego formularza do zablokowania możliwości edycji spod określonego adresu IP lub konkretnemu użytkownikowi.
+'blockip'                         => 'Zablokuj użytkownika',
+'blockip-legend'                  => 'Zablokuj użytkownika',
+'blockiptext'                     => 'Użyj poniższego formularza do zablokowania możliwości edycji spod określonego adresu IP lub konkretnemu użytkownikowi.
 Blokować należy jedynie po to, by zapobiec wandalizmom, zgodnie z [[{{MediaWiki:Policy-url}}|przyjętymi zasadami]].
 Podaj powód (np. umieszczając nazwy stron, na których dopuszczono się wandalizmu).',
-'ipaddress'                   => 'Adres IP',
-'ipadressorusername'          => 'Adres IP lub nazwa użytkownika',
-'ipbexpiry'                   => 'Czas blokady',
-'ipbreason'                   => 'Powód',
-'ipbreasonotherlist'          => 'Inny powód',
-'ipbreason-dropdown'          => '*Najczęstsze przyczyny blokad
+'ipaddress'                       => 'Adres IP',
+'ipadressorusername'              => 'Adres IP lub nazwa użytkownika',
+'ipbexpiry'                       => 'Czas blokady',
+'ipbreason'                       => 'Powód',
+'ipbreasonotherlist'              => 'Inny powód',
+'ipbreason-dropdown'              => '*Najczęstsze przyczyny blokad
 ** Ataki na innych użytkowników
 ** Naruszenie praw autorskich
 ** Niedozwolona nazwa użytkownika
@@ -1942,75 +1939,76 @@ Podaj powód (np. umieszczając nazwy stron, na których dopuszczono się wandal
 ** Wprowadzanie fałszywych informacji
 ** Wulgaryzmy
 ** Wypisywanie bzdur na stronach',
-'ipbanononly'                 => 'Zablokuj tylko anonimowych użytkowników',
-'ipbcreateaccount'            => 'Zapobiegnij utworzeniu konta',
-'ipbemailban'                 => 'Zablokuj możliwość wysyłania e-maili',
-'ipbenableautoblock'          => 'Zablokuj ostatni adres IP tego użytkownika i automatycznie wszystkie kolejne, z których będzie próbował edytować',
-'ipbsubmit'                   => 'Zablokuj użytkownika',
-'ipbother'                    => 'Inny czas',
-'ipboptions'                  => '2 godziny:2 hours,1 dzień:1 day,3 dni:3 days,1 tydzień:1 week,2 tygodnie:2 weeks,1 miesiąc:1 month,3 miesiące:3 months,6 miesięcy:6 months,1 rok:1 year,nieskończony:infinite', # display1:time1,display2:time2,...
-'ipbotheroption'              => 'inny',
-'ipbotherreason'              => 'Inne uzasadnienie',
-'ipbhidename'                 => 'Ukryj nazwę użytkownika/adres IP w rejestrze blokad, na liście aktywnych blokad i liście użytkowników',
-'ipbwatchuser'                => 'Obserwuj stronę osobistą i stronę dyskusji tego użytkownika',
-'badipaddress'                => 'Niepoprawny adres IP',
-'blockipsuccesssub'           => 'Zablokowanie powiodło się',
-'blockipsuccesstext'          => 'Użytkownik [[Special:Contributions/$1|$1]] został zablokowany.<br />
+'ipbanononly'                     => 'Zablokuj tylko anonimowych użytkowników',
+'ipbcreateaccount'                => 'Zapobiegnij utworzeniu konta',
+'ipbemailban'                     => 'Zablokuj możliwość wysyłania e-maili',
+'ipbenableautoblock'              => 'Zablokuj ostatni adres IP tego użytkownika i automatycznie wszystkie kolejne, z których będzie próbował edytować',
+'ipbsubmit'                       => 'Zablokuj użytkownika',
+'ipbother'                        => 'Inny czas',
+'ipboptions'                      => '2 godziny:2 hours,1 dzień:1 day,3 dni:3 days,1 tydzień:1 week,2 tygodnie:2 weeks,1 miesiąc:1 month,3 miesiące:3 months,6 miesięcy:6 months,1 rok:1 year,nieskończony:infinite', # display1:time1,display2:time2,...
+'ipbotheroption'                  => 'inny',
+'ipbotherreason'                  => 'Inne uzasadnienie',
+'ipbhidename'                     => 'Ukryj nazwę użytkownika/adres IP w rejestrze blokad, na liście aktywnych blokad i liście użytkowników',
+'ipbwatchuser'                    => 'Obserwuj stronę osobistą i stronę dyskusji tego użytkownika',
+'badipaddress'                    => 'Niepoprawny adres IP',
+'blockipsuccesssub'               => 'Zablokowanie powiodło się',
+'blockipsuccesstext'              => 'Użytkownik [[Special:Contributions/$1|$1]] został zablokowany.<br />
 Przejdź do [[Special:Ipblocklist|listy zablokowanych adresów IP]], by przejrzeć blokady.',
-'ipb-edit-dropdown'           => 'Edytuj przyczynę blokady',
-'ipb-unblock-addr'            => 'Odblokuj $1',
-'ipb-unblock'                 => 'Odblokuj użytkownika lub adres IP',
-'ipb-blocklist-addr'          => 'Zobacz istniejące blokady $1',
-'ipb-blocklist'               => 'Zobacz istniejące blokady',
-'unblockip'                   => 'Odblokuj użytkownika',
-'unblockiptext'               => 'Użyj poniższego formularza, by przywrócić możliwość edycji z wcześniej zablokowanego adresu IP lub użytkownikowi.',
-'ipusubmit'                   => 'Odblokuj użytkownika',
-'unblocked'                   => '[[User:$1|$1]] został odblokowany.',
-'unblocked-id'                => 'Blokada $1 została zdjęta',
-'ipblocklist'                 => 'Lista zablokowanych użytkowników i adresów IP',
-'ipblocklist-legend'          => 'Znajdź zablokowanego użytkownika',
-'ipblocklist-username'        => 'Nazwa użytkownika lub adres IP',
-'ipblocklist-submit'          => 'Szukaj',
-'blocklistline'               => '$1, $2 zablokował $3 ($4)',
-'infiniteblock'               => 'na zawsze',
-'expiringblock'               => 'wygasa $1',
-'anononlyblock'               => 'tylko niezalogowani',
-'noautoblockblock'            => 'automatyczne blokowanie wyłączone',
-'createaccountblock'          => 'blokada tworzenia kont',
-'emailblock'                  => 'zablokowany e-mail',
-'ipblocklist-empty'           => 'Lista blokad jest pusta.',
-'ipblocklist-no-results'      => 'Podany adres IP lub użytkownik nie jest zablokowany.',
-'blocklink'                   => 'zablokuj',
-'unblocklink'                 => 'odblokuj',
-'contribslink'                => 'wkład',
-'autoblocker'                 => 'Zablokowano Cię automatycznie, ponieważ używasz tego samego adresu IP, co użytkownik „[[User:$1|$1]]”.
+'ipb-edit-dropdown'               => 'Edytuj przyczynę blokady',
+'ipb-unblock-addr'                => 'Odblokuj $1',
+'ipb-unblock'                     => 'Odblokuj użytkownika lub adres IP',
+'ipb-blocklist-addr'              => 'Zobacz istniejące blokady $1',
+'ipb-blocklist'                   => 'Zobacz istniejące blokady',
+'unblockip'                       => 'Odblokuj użytkownika',
+'unblockiptext'                   => 'Użyj poniższego formularza, by przywrócić możliwość edycji z wcześniej zablokowanego adresu IP lub użytkownikowi.',
+'ipusubmit'                       => 'Odblokuj użytkownika',
+'unblocked'                       => '[[User:$1|$1]] został odblokowany.',
+'unblocked-id'                    => 'Blokada $1 została zdjęta',
+'ipblocklist'                     => 'Lista zablokowanych użytkowników i adresów IP',
+'ipblocklist-legend'              => 'Znajdź zablokowanego użytkownika',
+'ipblocklist-username'            => 'Nazwa użytkownika lub adres IP',
+'ipblocklist-submit'              => 'Szukaj',
+'blocklistline'                   => '$1, $2 zablokował $3 ($4)',
+'infiniteblock'                   => 'na zawsze',
+'expiringblock'                   => 'wygasa $1',
+'anononlyblock'                   => 'tylko niezalogowani',
+'noautoblockblock'                => 'automatyczne blokowanie wyłączone',
+'createaccountblock'              => 'blokada tworzenia kont',
+'emailblock'                      => 'zablokowany e-mail',
+'ipblocklist-empty'               => 'Lista blokad jest pusta.',
+'ipblocklist-no-results'          => 'Podany adres IP lub użytkownik nie jest zablokowany.',
+'blocklink'                       => 'zablokuj',
+'unblocklink'                     => 'odblokuj',
+'contribslink'                    => 'wkład',
+'autoblocker'                     => 'Zablokowano Cię automatycznie, ponieważ używasz tego samego adresu IP, co użytkownik „[[User:$1|$1]]”.
 Przyczyna blokady $1 to: „$2”',
-'blocklogpage'                => 'Historia blokad',
-'blocklogentry'               => 'zablokował [[$1]], czas blokady: $2 $3',
-'blocklogtext'                => 'Poniżej znajduje się lista blokad założonych i zdjętych z poszczególnych adresów IP.
+'blocklogpage'                    => 'Historia blokad',
+'blocklogentry'                   => 'zablokował [[$1]], czas blokady: $2 $3',
+'blocklogtext'                    => 'Poniżej znajduje się lista blokad założonych i zdjętych z poszczególnych adresów IP.
 Na liście nie znajdą się adresy IP, które zablokowano w sposób automatyczny.
 By przejrzeć listę obecnie aktywnych blokad, przejdź na stronę [[Special:Ipblocklist|zablokowanych adresów i użytkowników]].',
-'unblocklogentry'             => 'odblokował $1',
-'block-log-flags-anononly'    => 'tylko anonimowi',
-'block-log-flags-nocreate'    => 'blokada tworzenia konta',
-'block-log-flags-noautoblock' => 'automatyczne blokowanie wyłączone',
-'block-log-flags-noemail'     => 'e-mail zablokowany',
-'range_block_disabled'        => 'Możliwość blokowania zakresu adresów IP została wyłączona.',
-'ipb_expiry_invalid'          => 'Błędny czas wygaśnięcia blokady.',
-'ipb_expiry_temp'             => 'Ukrytą nazwę użytkownika należy zablokować trwale.',
-'ipb_already_blocked'         => '„$1” jest już zablokowany',
-'ipb_cant_unblock'            => 'Błąd: Blokada o ID $1 nie została znaleziona. Mogła ona zostać zdjęta wcześniej.',
-'ipb_blocked_as_range'        => 'Błąd: Adres IP $1 nie został zablokowany bezpośrednio i nie może zostać odblokowany.
+'unblocklogentry'                 => 'odblokował $1',
+'block-log-flags-anononly'        => 'tylko anonimowi',
+'block-log-flags-nocreate'        => 'blokada tworzenia konta',
+'block-log-flags-noautoblock'     => 'automatyczne blokowanie wyłączone',
+'block-log-flags-noemail'         => 'e-mail zablokowany',
+'block-log-flags-angry-autoblock' => 'rozszerzone automatyczne blokowanie włączone',
+'range_block_disabled'            => 'Możliwość blokowania zakresu adresów IP została wyłączona.',
+'ipb_expiry_invalid'              => 'Błędny czas wygaśnięcia blokady.',
+'ipb_expiry_temp'                 => 'Ukrytą nazwę użytkownika należy zablokować trwale.',
+'ipb_already_blocked'             => '„$1” jest już zablokowany',
+'ipb_cant_unblock'                => 'Błąd: Blokada o ID $1 nie została znaleziona. Mogła ona zostać zdjęta wcześniej.',
+'ipb_blocked_as_range'            => 'Błąd: Adres IP $1 nie został zablokowany bezpośrednio i nie może zostać odblokowany.
 Należy on do zablokowanego zakresu adresów $2. Odblokować można tylko cały zakres.',
-'ip_range_invalid'            => 'Niepoprawny zakres adresów IP.',
-'blockme'                     => 'Zablokuj mnie',
-'proxyblocker'                => 'Blokowanie proxy',
-'proxyblocker-disabled'       => 'Ta funkcja jest wyłączona.',
-'proxyblockreason'            => 'Twój adres IP został zablokowany, ponieważ jest to adres otwartego proxy.
+'ip_range_invalid'                => 'Niepoprawny zakres adresów IP.',
+'blockme'                         => 'Zablokuj mnie',
+'proxyblocker'                    => 'Blokowanie proxy',
+'proxyblocker-disabled'           => 'Ta funkcja jest wyłączona.',
+'proxyblockreason'                => 'Twój adres IP został zablokowany, ponieważ jest to adres otwartego proxy.
 O tym poważnym problemie dotyczącym bezpieczeństwa należy poinformować dostawcę Internetu lub pomoc techniczną.',
-'proxyblocksuccess'           => 'Wykonano.',
-'sorbsreason'                 => 'Twój adres IP znajduje się na liście serwerów open proxy w DNSBL, używanej przez {{GRAMMAR:B.lp|{{SITENAME}}}}.',
-'sorbs_create_account_reason' => 'Twój adres IP znajduje się na liście serwerów open proxy w DNSBL, używanej przez {{GRAMMAR:B.lp|{{SITENAME}}}}.
+'proxyblocksuccess'               => 'Wykonano.',
+'sorbsreason'                     => 'Twój adres IP znajduje się na liście serwerów open proxy w DNSBL, używanej przez {{GRAMMAR:B.lp|{{SITENAME}}}}.',
+'sorbs_create_account_reason'     => 'Twój adres IP znajduje się na liście serwerów open proxy w DNSBL, używanej przez {{GRAMMAR:B.lp|{{SITENAME}}}}.
 Nie możesz utworzyć konta',
 
 # Developer tools
@@ -2038,14 +2036,11 @@ Blokowanie i odblokowywanie bazy danych, wymaga by plik mógł być zapisywany p
 'move-page-legend'        => 'Przeniesienie strony',
 'movepagetext'            => "Za pomocą poniższego formularza zmienisz nazwę strony, przenosząc jednocześnie jej historię.
 Pod starym tytułem zostanie umieszczona strona przekierowująca.
-Linki do starego tytułu pozostaną niezmienione.
-Upewnij się, że uwzględniasz podwójne lub zerwane przekierowania.
-Odpowiadasz za to, żeby linki odnosiły się do właściwych artykułów!
+Możesz automatycznie zaktualizować przekierowania wskazujące na tytuł przed zmianą.
+Jeśli nie wybierzesz tej opcji, upewnij się po przeniesieniu strony, czy nie powstały [[Special:DoubleRedirects|podwójne]] lub [[Special:BrokenRedirects|zerwane przekierowania]].
+Pamiętaj, że to ty odpowiadasz za to, by linki w dalszym ciągu pokazywały tam, gdzie powinny.
 
-Strona '''nie''' zostanie przeniesiona, jeśli:
-*jest pusta i nigdy nie była edytowana
-*jest stroną przekierowującą
-*strona o nowej nazwie już istnieje, chyba że jest pusta lub jest przekierowaniem i ma pustą historię edycji. To oznacza, że błędną operację zmiany nazwy można bezpiecznie odwrócić, zmieniając nową nazwę strony na poprzednią.
+Strona '''nie''' zostanie przeniesiona, jeśli strona o nowej nazwie już istnieje, chyba że jest pusta lub jest przekierowaniem i ma pustą historię edycji. To oznacza, że błędną operację zmiany nazwy można bezpiecznie odwrócić, zmieniając nową nazwę strony na poprzednią, i że nie można nadpisać istniejącej strony.
 
 '''UWAGA!'''
 Może to być drastyczna lub nieprzewidywalna zmiana w przypadku popularnych stron.
@@ -2056,8 +2051,6 @@ Upewnij się co do konsekwencji tej operacji, zanim się na nią zdecydujesz.",
 
 W takich przypadkach treść dyskusji można przenieść tylko ręcznie.',
 'movearticle'             => 'Przeniesienie strony',
-'movenologin'             => 'Nie jesteś zalogowany',
-'movenologintext'         => 'Przenoszenie stron jest możliwe dopiero po zarejestrowaniu się i [[Special:Userlogin|zalogowaniu]].',
 'movenotallowed'          => 'Nie masz uprawnień do przenoszenia stron w {{GRAMMAR:MS.lp|{{SITENAME}}}}.',
 'newtitle'                => 'Nowy tytuł',
 'move-watch'              => 'Obserwuj',
@@ -2084,7 +2077,7 @@ Wybierz inną nazwę.',
 'revertmove'              => 'cofnij',
 'delete_and_move'         => 'Usuń i przenieś',
 'delete_and_move_text'    => '== Przeniesienie wymaga usunięcia innej strony ==
-Strona docelowa „[[:$1|$1]]” istnieje.
+Strona docelowa „[[$1]]” istnieje.
 Czy chcesz ją usunąć, by zrobić miejsce dla przenoszonej strony?',
 'delete_and_move_confirm' => 'Tak, usuń stronę',
 'delete_and_move_reason'  => 'Usunięto, by zrobić miejsce dla przenoszonej strony',
@@ -2094,6 +2087,8 @@ Strony nie można przenieść na nią samą.',
 Nie można przenieść z lub do tej przestrzeni nazw.',
 'imagenocrossnamespace'   => 'Nie można przenieść grafiki do przestrzeni nazw nie przeznaczonej dla grafik',
 'imagetypemismatch'       => 'Nowe rozszerzenie nazwy pliku jest innego typu niż zawartość',
+'imageinvalidfilename'    => 'Nazwa pliku docelowego jest nieprawidłowa',
+'fix-double-redirects'    => 'Popraw przekierowania wskazujące na oryginalny tytuł strony',
 
 # Export
 'export'            => 'Eksport stron',
@@ -2141,7 +2136,7 @@ Wszystkie operacje importu transwiki są odnotowywane w [[Special:Log/import|rej
 'import-interwiki-history'   => 'Kopiuj całą historię edycji tej strony',
 'import-interwiki-submit'    => 'Importuj',
 'import-interwiki-namespace' => 'Przenieś strony do przestrzeni nazw',
-'importtext'                 => 'Używając narzędzia Special:Export, wyeksportuj plik ze źródłowej wiki, zapisz go na swoim dysku, a następnie prześlij go tutaj.',
+'importtext'                 => 'Używając narzędzia [[Special:Export|eksportu]], wyeksportuj plik ze źródłowej wiki, zapisz go na swoim dysku, a następnie prześlij go tutaj.',
 'importstart'                => 'Trwa importowanie stron...',
 'import-revision-count'      => '$1 {{PLURAL:$1|wersja|wersje|wersji}}',
 'importnopages'              => 'Brak stron do importu.',
@@ -2203,7 +2198,6 @@ Wszystkie operacje importu transwiki są odnotowywane w [[Special:Log/import|rej
 'tooltip-n-recentchanges'         => 'Lista ostatnich zmian na {{GRAMMAR:D.lp|{{SITENAME}}}}.',
 'tooltip-n-randompage'            => 'Pokaż losowo wybraną stronę',
 'tooltip-n-help'                  => 'Tutaj możesz się wielu rzeczy dowiedzieć.',
-'tooltip-n-sitesupport'           => 'Wesprzyj nas',
 'tooltip-t-whatlinkshere'         => 'Pokaż listę wszystkich stron linkujących do tego artykułu',
 'tooltip-t-recentchangeslinked'   => 'Ostatnie zmiany w stronach, do których ta strona linkuje',
 'tooltip-feed-rss'                => 'Kanał RSS dla tej strony',
@@ -2293,9 +2287,10 @@ Najprawdopodobniej zostało to spowodowane przez link do zewnętrznej strony int
 'markedaspatrollederror-noautopatrol' => 'Nie masz uprawnień wymaganych do oznaczania swoich edycji jako „sprawdzone”.',
 
 # Patrol log
-'patrol-log-page' => 'Dziennik patrolowania',
-'patrol-log-line' => 'oznaczył wersję $1 hasła $2 jako sprawdzoną $3',
-'patrol-log-auto' => '(automatycznie)',
+'patrol-log-page'   => 'Dziennik patrolowania',
+'patrol-log-header' => 'Poniżej znajduje się dziennik patrolowania stron.',
+'patrol-log-line'   => 'oznaczył wersję $1 hasła $2 jako sprawdzoną $3',
+'patrol-log-auto'   => '(automatycznie)',
 
 # Image deletion
 'deletedrevision'                 => 'Usunięto poprzednie wersje $1',
@@ -2730,8 +2725,8 @@ $1',
 'livepreview-error'   => 'Nieudane połączenie: $1 „$2” Spróbuj podglądu standardowego.',
 
 # Friendlier slave lag warnings
-'lag-warn-normal' => 'Na tej liście zmiany nowsze niż $1 sekund mogą nie być widoczne.',
-'lag-warn-high'   => 'Z powodu dużego obciążenia serwerów bazy danych, na tej liście zmiany nowsze niż $1 sekund mogą nie być widoczne.',
+'lag-warn-normal' => 'Zmiany nowsze niż $1 {{PLURAL:$1|sekunda|sekundy|sekund}} mogą nie być widoczne na tej liście.',
+'lag-warn-high'   => 'Z powodu dużego obciążenia serwerów bazy danych, zmiany nowsze niż $1 {{PLURAL:$1|sekunda|sekundy|sekund}} mogą nie być widoczne na tej liście.',
 
 # Watchlist editor
 'watchlistedit-numitems'       => 'Twoja lista obserwowanych zawiera {{PLURAL:$1|1 tytuł|$1 tytuły|$1 tytułów}}, nieuwzględniając stron dyskusji.',
@@ -2848,5 +2843,9 @@ Wpisz nazwę pliku z pominięciem prefiksu „{{ns:image}}:”.',
 'specialpages-group-wiki'        => 'Informacje oraz narzędzia wiki',
 'specialpages-group-redirects'   => 'Specjalne strony przekierowujące',
 'specialpages-group-spam'        => 'Narzędzia walki ze spamem',
+
+# Special:Blankpage
+'blankpage'              => 'Pusta strona',
+'intentionallyblankpage' => 'Ta strona umyślnie pozostała pusta',
 
 );

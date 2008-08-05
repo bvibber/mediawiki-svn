@@ -86,14 +86,14 @@ function appendCSS(text) {
 	return s;
 }
 
-// document.write special stylesheet links
+// special stylesheet links
 if (typeof stylepath != 'undefined' && typeof skin != 'undefined') {
 	if (is_opera_preseven) {
-		document.write('<link rel="stylesheet" type="text/css" href="'+stylepath+'/'+skin+'/Opera6Fixes.css">');
+		importStylesheetURI(stylepath+'/'+skin+'/Opera6Fixes.css');
 	} else if (is_opera_seven && !is_opera_95) {
-		document.write('<link rel="stylesheet" type="text/css" href="'+stylepath+'/'+skin+'/Opera7Fixes.css">');
+		importStylesheetURI(stylepath+'/'+skin+'/Opera7Fixes.css');
 	} else if (is_khtml) {
-		document.write('<link rel="stylesheet" type="text/css" href="'+stylepath+'/'+skin+'/KHTMLFixes.css">');
+		importStylesheetURI(stylepath+'/'+skin+'/KHTMLFixes.css');
 	}
 }
 
@@ -504,11 +504,10 @@ function redirectToFragment(fragment) {
 }
 
 /*
- * Table sorting script  by Joost de Valk, check it out at http://www.joostdevalk.nl/code/sortable-table/.
- * Based on a script from http://www.kryogenix.org/code/browser/sorttable/.
- * Distributed under the MIT license: http://www.kryogenix.org/code/browser/licence.html .
- *
- * Copyright (c) 1997-2006 Stuart Langridge, Joost de Valk.
+ * Table sorting script based on one (c) 1997-2006 Stuart Langridge and Joost
+ * de Valk:
+ * http://www.joostdevalk.nl/code/sortable-table/
+ * http://www.kryogenix.org/code/browser/sorttable/
  *
  * @todo don't break on colspans/rowspans (bug 8028)
  * @todo language-specific digit grouping/decimals (bug 8063)

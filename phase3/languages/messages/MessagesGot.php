@@ -4,7 +4,6 @@
  * @ingroup Language
  * @file
  *
- * @author SPQRobin
  */
 
 $messages = array(
@@ -25,11 +24,10 @@ $messages = array(
 'otherlanguages' => '𐌰𐌽𐌸𐌰𐍂 𐍂𐌰𐌶𐌳𐍉𐍃',
 
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
-'aboutpage'   => 'Project:Iubair',
-'bugreports'  => '𐌰𐌹𐍂𐌶𐌹𐌸𐌰𐌷𐌰𐌿𐍃𐌴𐌹𐌽𐌴𐌹𐍃',
-'portal'      => '𐌱𐌰𐌿𐍂𐌲𐍃 𐌲𐌰𐍅𐌹',
-'portal-url'  => 'Project:𐌱𐌰𐌿𐍂𐌲𐍃 𐌲𐌰𐍅𐌹',
-'sitesupport' => '𐌷𐌹𐌻𐍀𐌰 𐍅𐌹𐌺𐌹𐍀𐌴𐌳𐌾𐌰',
+'aboutpage'  => 'Project:Iubair',
+'bugreports' => '𐌰𐌹𐍂𐌶𐌹𐌸𐌰𐌷𐌰𐌿𐍃𐌴𐌹𐌽𐌴𐌹𐍃',
+'portal'     => '𐌱𐌰𐌿𐍂𐌲𐍃 𐌲𐌰𐍅𐌹',
+'portal-url' => 'Project:𐌱𐌰𐌿𐍂𐌲𐍃 𐌲𐌰𐍅𐌹',
 
 # Short words for each namespace, by default used in the namespace tab in monobook
 'nstab-main'     => '𐍃𐌴𐌹𐌳𐍉',

@@ -1,9 +1,10 @@
 <?php
-/**
- * Min Nan (Bân-lâm-gú/閩南話)
+/** Min Nan Chinese (Bân-lâm-gú)
  *
  * @ingroup Language
  * @file
+ *
+
  */
 
 $datePreferences = array(
@@ -53,8 +54,6 @@ $messages = array(
 'underline-always'  => 'Tiāⁿ-tio̍h',
 'underline-never'   => 'Tiāⁿ-tio̍h mài',
 'underline-default' => 'Tòe liû-lám-khì ê default',
-
-'skinpreview' => '(Chhì khoàⁿ)',
 
 # Dates
 'sunday'        => 'Lé-pài',
@@ -175,8 +174,6 @@ $messages = array(
 'portal'               => 'Siā-lí mn̂g-chhùi-kháu',
 'portal-url'           => 'Project:Siā-lí mn̂g-chhùi-kháu',
 'privacy'              => 'Ín-su chèng-chhek',
-'sitesupport'          => 'Kià-hù',
-'sitesupport-url'      => 'Project:Kià-hù',
 
 'retrievedfrom'       => 'Lâi-goân: "$1"',
 'youhavenewmessages'  => 'Lí ū $1 ($2).',
@@ -303,10 +300,6 @@ $messages = array(
 'subject-preview'        => 'Ū-lám tê-bo̍k/piau-tê',
 'whitelistedittitle'     => 'Su-iàu teng-ji̍p chiah ē-sái siu-kái',
 'whitelistedittext'      => 'Lí ài $1 chiah ē-sái siu-kái.',
-'whitelistreadtitle'     => 'Su-iàu teng-ji̍p chiah ē-iong-tit tha̍k',
-'whitelistreadtext'      => 'Lí ài [[Special:Userlogin|teng-ji̍p]] chiah ē-sái tha̍k.',
-'whitelistacctitle'      => 'Bô ún-chún lí khui kháu-chō',
-'whitelistacctext'       => 'eh ē-tàng tiàm chit ê Wiki khui kháu-chō, lí su-iàu [[Special:Userlogin|teng-ji̍p]] jī-chhiáⁿ ū sek-tong ê hí-khó.',
 'confirmedittitle'       => 'Su-iàu khak-jīn e-mail chū-chí chiah ē-tit pian-chi̍p',
 'loginreqtitle'          => 'Su-iàu Teng-ji̍p',
 'accmailtitle'           => 'Bi̍t-bé kià chhut khì ah.',
@@ -391,6 +384,7 @@ $messages = array(
 'qbsettings'            => 'Quickbar ê siat-tēng',
 'changepassword'        => 'Oāⁿ bi̍t-bé',
 'skin'                  => 'Phôe',
+'skin-preview'          => 'Chhì khoàⁿ',
 'math'                  => 'Sò·-ha̍k ê rendering',
 'dateformat'            => 'Ji̍t-kî keh-sek',
 'datedefault'           => 'Chhìn-chhái',
@@ -720,16 +714,23 @@ Template:Khu-pia̍t-ia̍h',
 
 # Move page
 'move-page-legend' => 'Sóa ia̍h',
-'movepagetext'     => 'Ē-kha chit ê form> iōng lâi kái 1 ê ia̍h ê piau-tê (miâ-chheng); só·-ū siong-koan ê le̍k-sú ē tòe leh sóa khì sin piau-tê. Kū piau-tê ē chiâⁿ-chò 1 ia̍h choán khì sin piau-tê ê choán-ia̍h. Liân khì kū piau-tê ê liân-kiat (link) bē khì tāng--tio̍h; ē-kì-tit [[Special:Maintenance|chhiau-chhōe]] siang-thâu (double) ê a̍h-sī kò·-chiòng ê choán-ia̍h. Lí ū chek-jīm khak-tēng liân-kiat kè-sio̍k liân tio̍h ūi. Sin piau-tê nā í-keng tī leh (bô phian-chi̍p koè ê khang ia̍h, choán-ia̍h bô chún-sǹg), tō bô-hoat-tō· soá khì hia. Che piaú-sī nā ū têng-tâⁿ, ē-sái kā sin ia̍h soà tńg-khì goân-lâi ê kū ia̍h. <strong>SÈ-JĪ!</strong> Tùi chē lâng tha̍k ê ia̍h lâi kóng, soá-ūi sī toā tiâu tāi-chì. Liâu--lo̍h-khì chìn-chêng, chhiáⁿ seng khak-tēng lí ū liáu-kái chiah-ê hiō-kó.',
+'movepagetext'     => "Ē-kha chit ê form> iōng lâi kái 1 ê ia̍h ê piau-tê (miâ-chheng); só·-ū siong-koan ê le̍k-sú ē tòe leh sóa khì sin piau-tê.
+Kū piau-tê ē chiâⁿ-chò 1 ia̍h choán khì sin piau-tê ê choán-ia̍h.
+Liân khì kū piau-tê ê liân-kiat (link) bē khì tāng--tio̍h; ē-kì-tit chhiau-chhōe siang-thâu (double) ê a̍h-sī kò·-chiòng ê choán-ia̍h.
+Lí ū chek-jīm khak-tēng liân-kiat kè-sio̍k liân tio̍h ūi.
+
+Sin piau-tê nā í-keng tī leh (bô phian-chi̍p koè ê khang ia̍h, choán-ia̍h bô chún-sǹg), tō bô-hoat-tō· soá khì hia.
+Che piaú-sī nā ū têng-tâⁿ, ē-sái kā sin ia̍h soà tńg-khì goân-lâi ê kū ia̍h.
+
+'''SÈ-JĪ!'''
+Tùi chē lâng tha̍k ê ia̍h lâi kóng, soá-ūi sī toā tiâu tāi-chì.
+Liâu--lo̍h-khì chìn-chêng, chhiáⁿ seng khak-tēng lí ū liáu-kái chiah-ê hiō-kó.",
 'movepagetalktext' => "Siong-koan ê thó-lūn-ia̍h (chún ū) oân-nâ ē chū-tōng tòe leh sóa-ūi. Í-hā ê chêng-hêng '''bô chún-sǹg''': *Beh kā chit ia̍h tùi 1 ê miâ-khong-kan (namespace) soá khì lēng-gōa 1 ê miâ-khong-kan, *Sin piau-tê í-keng ū iōng--kòe ê thó-lūn-ia̍h, he̍k-chiá *Ē-kha ê sió-keh-á bô phah-kau. Í-siōng ê chêng-hêng nā-chún tī leh, lí chí-hó iōng jîn-kang ê hong-sek sóa ia̍h a̍h-sī kā ha̍p-pèng (nā ū su-iàu).",
 'movearticle'      => 'Sóa ia̍h:',
-'movenologin'      => 'Bô teng-ji̍p',
-'movenologintext'  => 'Lí it-tēng ài sī chù-chheh ê iōng-chiá jī-chhiáⁿ ū [[Special:Userlogin|teng-ji̍p]] chiah ē-tàng sóa ia̍h.',
 'newtitle'         => 'Khì sin piau-tê:',
 'move-watch'       => 'Kàm-sī chit ia̍h',
 'movepagebtn'      => 'Sóa ia̍h',
 'pagemovedsub'     => 'Sóa-ūi sêng-kong',
-'movepage-moved'   => '<big>\'\'\'"$1" í-keng sóa khì tī "$2"\'\'\'</big>', # The two titles are passed in plain text as $3 and $4 to allow additional goodies in the message.
 'articleexists'    => 'Kāng miâ ê ia̍h í-keng tī leh, a̍h-sī lí kéng ê miâ bô-hāu. Chhiáⁿ kéng pa̍t ê miâ.',
 'talkexists'       => "'''Ia̍h ê loē-bûn ū soá cháu, m̄-koh siong-koan ê thó-lūn-ia̍h bô toè leh soá, in-ūi sin piau-tê pun-té tō ū hit ia̍h. Chhiáⁿ iōng jîn-kang ê hoat-tō· kā ha̍p-pèng.'''",
 'movedto'          => 'sóa khì tī',

@@ -4,10 +4,8 @@
  * @ingroup Language
  * @file
  *
- * @author SPQRobin
- * @author Siebrand
- * @author לערי ריינהארט
  * @author Tbc
+ * @author לערי ריינהארט
  */
 
 $fallback = 'nl';

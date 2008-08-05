@@ -7,7 +7,6 @@
  * @author CdaMVvWgS
  * @author Belgian man
  * @author Node ue
- * @author SPQRobin
  */
 
 
@@ -44,7 +43,6 @@ $messages = array(
 'helppage'             => 'Help:Oangan',
 'mainpage'             => 'Bwiema peij',
 'mainpage-description' => 'Bwiema peij',
-'sitesupport'          => 'Eadu a me',
 
 'editsection' => 'Kiwiwid',
 'showtoc'     => 'oduwen',

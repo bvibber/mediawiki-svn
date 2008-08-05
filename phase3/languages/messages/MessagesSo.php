@@ -5,10 +5,7 @@
  * @file
  *
  * @author Mimursal
- * @author Nike
- * @author Siebrand
  * @author Yariiska
- * @author Jon Harald Søby
  */
 
 $messages = array(
@@ -50,8 +47,6 @@ $messages = array(
 
 'underline-always' => 'Marwalba',
 'underline-never'  => 'Marnaba',
-
-'skinpreview' => '(Horfiirin)',
 
 # Dates
 'sunday'        => 'Axad',
@@ -183,7 +178,6 @@ $messages = array(
 'mainpage-description' => 'Bogga Hore',
 'portal'               => 'Bortaalka jaaliyada',
 'portal-url'           => 'Project:Bortaalka jaaliyada',
-'sitesupport'          => 'Tabarucid',
 
 'badaccess'        => 'Qalad dhinaca idanka',
 'badaccess-group0' => 'Laguuma ogala in aad sameyso waxaad dooneysid.',
@@ -296,7 +290,6 @@ Wax e-boosto ah oo ku saabsan arrimaha soo socdo looma soo diridoono.',
 'blockededitsource'         => "Qoraalkii '''aad waxkaga bedashay''' '''$1''' waxaad ku arkikartaa hoos:",
 'whitelistedittitle'        => 'Waxaa loo baahanyahay gudagal si aad wax uga bedeshid',
 'whitelistedittext'         => 'Waa in aad $1 si aad wax uga bedeshid boggaga.',
-'whitelistacctitle'         => 'Laguuma ogola in aad sameysid gudagale',
 'loginreqtitle'             => 'Waxaa loo baahanyahay gudagalid',
 'loginreqpagetext'          => 'Waa in aad $1 si aad u fiirisid boggaga kale.',
 'accmailtitle'              => "Ereysirka waa la'diray.",
@@ -340,9 +333,6 @@ Iskuday in aad [[Special:Search|karaadiso wikigan]] beyjaj laxiira oo cusub.',
 # Revision deletion
 'rev-delundel' => "i'tus/qari",
 
-# Diffs
-'diff-multi' => '({{PLURAL:$1|One intermediate revision|$1 intermediate revisions}} not shown.)',
-
 # Search results
 'searchresults'         => 'Natiijooyinkii ka soo baxay raadinta',
 'searchsubtitle'        => "Waxaad raadisay '''[[:$1]]'''",
@@ -358,6 +348,7 @@ Iskuday in aad [[Special:Search|karaadiso wikigan]] beyjaj laxiira oo cusub.',
 'prefsnologin'         => 'Gudaha kuma jirtid',
 'prefsnologintext'     => 'Waa in aad [[Special:Userlogin|Gudaha ku jirtaa]] si aad dooqyadaada u dalbatid.',
 'prefsreset'           => 'Dooqyada waxaa laga keenay keydka.',
+'skin-preview'         => 'Horfiirin',
 'math'                 => 'Xisaab',
 'datedefault'          => "Ma'jiro dooq",
 'datetime'             => 'Taariikhda iyo saacada',
@@ -548,7 +539,6 @@ Hadii aad rabootid in aad boggan ka saartid wardiyeynta, dhagsii \"Ha' wardiyeyn
 'block-log-flags-nocreate' => 'sameynta gudagalah lamaogola',
 
 # Move page
-'movenologin'     => 'Gudaha kuma jirtid',
 'movedto'         => 'loo wareejiyey',
 'movetalk'        => "Wareejiyey bogga wadahadalka la'xiriira",
 '1movedto2'       => '[[$1]] waxaa loo wareejiyey [[$2]]',
@@ -579,7 +569,6 @@ Please visit [http://www.mediawiki.org/wiki/Localisation MediaWiki Localisation]
 'tooltip-n-mainpage'         => 'Soo booqo bogga hore',
 'tooltip-n-portal'           => 'Faahfaahinta mashruuca, waxaad ku caawinkartid, xageed ka helikartaa waxaad u baahantahay',
 'tooltip-n-randompage'       => 'Ku nasiibso bog',
-'tooltip-n-sitesupport'      => 'Nacaawi',
 'tooltip-t-emailuser'        => 'U dir E-boosto isticmaalahaan',
 'tooltip-t-specialpages'     => 'Liiska boggaga qaaska ah oo dhan',
 'tooltip-ca-nstab-main'      => 'Fiiri bogga qoraalka',

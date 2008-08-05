@@ -696,8 +696,8 @@ echo "error!\n";
 		return 0;
 	}
 
-	function setFakeSlaveLag() {}
-	function setFakeMaster() {}
+	function setFakeSlaveLag( $lag ) {}
+	function setFakeMaster( $enabled = true ) {}
 
 	function getDBname() {
 		return $this->mDBname;
@@ -705,6 +705,16 @@ echo "error!\n";
 
 	function getServer() {
 		return $this->mServer;
+	}
+	
+	/** 
+	 * No-op lock functions
+	 */
+	public function lock( $lockName, $method ) {
+		return true;
+	}
+	public function unlock( $lockName, $method ) {
+		return true;
 	}
 
 } // end DatabaseOracle class

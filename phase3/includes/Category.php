@@ -46,7 +46,18 @@ class Category {
 		);
 		if( !$row ) {
 			# Okay, there were no contents.  Nothing to initialize.
-			return false;
+			if ( $this->mTitle ) {
+				# If there is a title object but no record in the category table, treat this as an empty category
+				$this->mID      = false;
+				$this->mName    = $this->mTitle->getDBKey();
+				$this->mPages   = 0;
+				$this->mSubcats = 0;
+				$this->mFiles   = 0;
+
+				return true;
+			} else {
+				return false; # Fail
+			}
 		}
 		$this->mID      = $row->cat_id;
 		$this->mName    = $row->cat_title;
@@ -123,9 +134,9 @@ class Category {
 	 * @return Category
 	 */
 	public static function newFromRow( $row, $title = null ) {
+		$cat = new self();
 		$cat->mTitle = $title;
 
-		$cat = new self();
 
 		# NOTE: the row often results from a LEFT JOIN on categorylinks. This may result in 
 		#       all the cat_xxx fields being null, if the category page exists, but nothing
@@ -179,6 +190,33 @@ class Category {
 
 		$this->mTitle = Title::makeTitleSafe( NS_CATEGORY, $this->mName );
 		return $this->mTitle;
+	}
+
+	/**
+	 * Fetch a TitleArray of up to $limit category members, beginning after the
+	 * category sort key $offset.
+	 * @param $limit integer
+	 * @param $offset string
+	 * @return TitleArray object for category members.
+	 */
+	public function getMembers( $limit = false, $offset = '' ) {
+		$dbr = wfGetDB( DB_SLAVE );
+
+		$conds = array( 'cl_to' => $this->getName(), 'cl_from = page_id' );
+		$options = array( 'ORDER BY' => 'cl_sortkey' );
+		if( $limit ) $options[ 'LIMIT' ] = $limit;
+		if( $offset !== '' ) $conds[] = 'cl_sortkey > ' . $dbr->addQuotes( $offset );
+
+		return TitleArray::newFromResult(
+			$dbr->select(
+				array( 'page', 'categorylinks' ),
+				array( 'page_id', 'page_namespace','page_title', 'page_len',
+					'page_is_redirect', 'page_latest' ),
+				$conds,
+				__METHOD__,
+				$options
+			)
+		);
 	}
 
 	/** Generic accessor */

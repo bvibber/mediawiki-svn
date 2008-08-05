@@ -6,9 +6,6 @@
  *
  * @author Symane
  * @author Vipuser
- * @author Siebrand
- * @author Jon Harald Søby
- * @author SPQRobin
  */
 
 $fallback = 'zh-hant';
@@ -59,8 +56,6 @@ $messages = array(
 'underline-always'  => '總歸要用',
 'underline-never'   => '絕伓使用',
 'underline-default' => '瀏覽器預設',
-
-'skinpreview' => '（預覽）',
 
 # Dates
 'sunday'        => '禮拜天',
@@ -231,8 +226,6 @@ $messages = array(
 'portal-url'           => 'Project:社區',
 'privacy'              => '隱私政策',
 'privacypage'          => 'Project:隱私政策',
-'sitesupport'          => '贊助',
-'sitesupport-url'      => 'Project:贊助',
 
 'badaccess'        => '許可權錯誤',
 'badaccess-group0' => '倷嗰要求冇拕批准。',
@@ -495,10 +488,6 @@ $2',
 'blockededitsource'         => "底下係倷對'''$1'''嗰'''編輯'''內容:",
 'whitelistedittitle'        => '登入後才編得正',
 'whitelistedittext'         => '起先倷要$1才編得正箇頁。',
-'whitelistreadtitle'        => '登入後才眵得正',
-'whitelistreadtext'         => '起先倷要[[Special:Userlogin|登入]] 才眵得正箇頁。',
-'whitelistacctitle'         => '倷伓可以開帳戶',
-'whitelistacctext'          => '到箇隻{{SITENAME}}站點開帳戶嗰時間倷起首要[[Special:Userlogin|登入]]同到提供有關許可。',
 'confirmedittitle'          => 'email確認後才編得正',
 'confirmedittext'           => '確認嘞email才能編寫箇頁。麻煩用[[Special:Preferences|參數設置]]設置同確認倷嗰email。',
 'nosuchsectiontitle'        => '冇箇隻段落',
@@ -706,6 +695,7 @@ $2',
 'qbsettings-floatingright' => '左首漂移',
 'changepassword'           => '改過密碼',
 'skin'                     => '皮',
+'skin-preview'             => '（預覽）',
 'math'                     => '數學公式',
 'dateformat'               => '日期格式',
 'datedefault'              => '默認項目',
@@ -753,23 +743,17 @@ $2',
 'files'                    => '檔案',
 
 # User rights
-'userrights'                    => '用戶許可權管理', # Not used as normal message but as header for the special page itself
-'userrights-lookup-user'        => '管理用戶群',
-'userrights-user-editname'      => '輸入用戶名:',
-'editusergroup'                 => '編輯用戶群',
-'editinguser'                   => "眼下在編輯用戶嗰權限 '''[[User:$1|$1]]''' ([[User talk:$1|{{int:talkpagelinktext}}]] | [[Special:Contributions/$1|{{int:contribslink}}]])",
-'userrights-editusergroup'      => '編輯用戶群',
-'saveusergroups'                => '存儲用戶群',
-'userrights-groupsmember'       => '歸到:',
-'userrights-groupsremovable'    => '移得動嗰組：',
-'userrights-groupsavailable'    => '可加入群:',
-'userrights-reason'             => '改嗰原因:',
-'userrights-available-none'     => '倷改組伓正別嗰成員。',
-'userrights-available-add'      => '倷可以搦用戶加到{{PLURAL:$2|箇隻組|箇隻組}}：$1。',
-'userrights-available-remove'   => '倷可以搦用戶從{{PLURAL:$2|箇隻組|箇隻組}}開除：$1。',
-'userrights-available-add-self' => '倷可以搦倷自家加到{{PLURAL:$2|箇隻組|箇隻組}}： $1。',
-'userrights-no-interwiki'       => '倷冇得權改吥別嗰wiki網站上箇隻用戶嗰權利。',
-'userrights-nodatabase'         => '冇得箇隻數據庫 $1 或係冇在本地。',
+'userrights'               => '用戶許可權管理', # Not used as normal message but as header for the special page itself
+'userrights-lookup-user'   => '管理用戶群',
+'userrights-user-editname' => '輸入用戶名:',
+'editusergroup'            => '編輯用戶群',
+'editinguser'              => "眼下在編輯用戶嗰權限 '''[[User:$1|$1]]''' ([[User talk:$1|{{int:talkpagelinktext}}]] | [[Special:Contributions/$1|{{int:contribslink}}]])",
+'userrights-editusergroup' => '編輯用戶群',
+'saveusergroups'           => '存儲用戶群',
+'userrights-groupsmember'  => '歸到:',
+'userrights-reason'        => '改嗰原因:',
+'userrights-no-interwiki'  => '倷冇得權改吥別嗰wiki網站上箇隻用戶嗰權利。',
+'userrights-nodatabase'    => '冇得箇隻數據庫 $1 或係冇在本地。',
 
 # Groups
 'group'               => '群:',
@@ -947,18 +931,18 @@ $2',
 # File reversion
 'filerevert'                => '恢復$1',
 'filerevert-legend'         => '恢復檔案',
-'filerevert-intro'          => '<span class="plainlinks">眼下倷在恢復\'\'\'[[Media:$1|$1]]\'\'\'到[$4 於$2 $3嗰版本]。</span>',
+'filerevert-intro'          => "眼下倷在恢復'''[[Media:$1|$1]]'''到[$4 於$2 $3嗰版本]。",
 'filerevert-comment'        => '說明:',
 'filerevert-defaultcomment' => '恢復到嘞$1, $2嗰版本',
 'filerevert-submit'         => '恢復',
-'filerevert-success'        => '<span class="plainlinks">\'\'\'[[Media:$1|$1]]\'\'\'恢復到嘞[$4 於$2 $3嗰版本]。</span>',
+'filerevert-success'        => "'''[[Media:$1|$1]]'''恢復到嘞[$4 於$2 $3嗰版本]。",
 'filerevert-badversion'     => '箇隻檔案所提供嗰時間標記並冇早先嗰本地版本。',
 
 # File deletion
 'filedelete'                  => '刪吥 $1',
 'filedelete-legend'           => '刪吥檔案',
 'filedelete-intro'            => "倷正刪吥'''[[Media:$1|$1]]'''。",
-'filedelete-intro-old'        => '<span class="plainlinks">倷正刪吥\'\'\'[[Media:$1|$1]]\'\'\'到[$4 $2 $3]嗰版本。</span>',
+'filedelete-intro-old'        => "倷正刪吥'''[[Media:$1|$1]]'''到[$4 $2 $3]嗰版本。",
 'filedelete-comment'          => '說明:',
 'filedelete-submit'           => '刪吥',
 'filedelete-success'          => "'''$1'''刪吥嘞。",
@@ -1015,7 +999,8 @@ $2',
 'statistics-mostpopular' => '眵嗰人最多嗰頁面',
 
 'disambiguations'      => '扤清楚頁',
-'disambiguations-text' => '底下嗰頁面都有到<b>扤清楚頁</b>嗰連結, 但係佢俚應當係連到正當嗰標題。<br />如果一隻頁面係連結自[[MediaWiki:disambiguationspage]]，佢會拕當成扤清楚頁。',
+'disambiguations-text' => "底下嗰頁面都有到'''扤清楚頁'''嗰連結, 但係佢俚應當係連到正當嗰標題。<br />
+如果一隻頁面係連結自[[MediaWiki:Disambiguationspage]]，佢會拕當成扤清楚頁。",
 
 'doubleredirects'     => '雙重重定向頁面',
 'doubleredirectstext' => '底下嗰重定向連結到別隻重定向頁面:',
@@ -1471,14 +1456,11 @@ $NEWPAGE
 *倷伓選下底嗰選擇方塊。
 噉倷就非要手工移動或合併頁面。",
 'movearticle'             => '換動頁面:',
-'movenologin'             => '冇登入',
-'movenologintext'         => '倷要係登記用戶接到[[Special:Userlogin|登入]]後才移動得正頁面。',
 'movenotallowed'          => '倷到{{SITENAME}}冇權移動頁面。',
 'newtitle'                => '新標題:',
 'move-watch'              => '眏到箇頁',
 'movepagebtn'             => '換卟箇頁',
 'pagemovedsub'            => '換正嘞',
-'movepage-moved'          => "<big>'''“$1”換到嘞“$2”'''</big>", # The two titles are passed in plain text as $3 and $4 to allow additional goodies in the message.
 'articleexists'           => '已經有頁面叫箇隻名字，要伓倷揀嗰名字冇用。請揀過隻名字。',
 'cantmove-titleprotected' => '倷移伓正一隻頁面到箇隻位置，箇隻新題目已經拕保護起來嘞，新建伓正。',
 'talkexists'              => '頁面本身移動正嘞，但係新標題下底有嘞對話頁，所以對話頁移伓正。請手工合併兩頁。',
@@ -1503,7 +1485,7 @@ $NEWPAGE
 'export'            => '導出頁面',
 'exporttext'        => '通過XML格式倷能搦特定嗰頁面或一組頁面嗰文本同到佢編輯嗰歷史一齊導出；噉通過"[[Special:Import|導入頁面]]"就導入得到別嗰MediaWiki網站。要導出頁面嗰話，請到下底嗰文字框寫正標題，一行一隻標題，再話正倷係否要導出含歷史嗰舊版本，或單就選導出最晏一回編輯嗰相關內容。
 
-再就係通過連結倷哈導出得正檔案，比如倷用得正[[{{ns:special}}:Export/{{int:mainpage}}]]導出"[[{{int:mainpage}}]]"頁面',
+再就係通過連結倷哈導出得正檔案，比如倷用得正[[{{ns:special}}:Export/{{MediaWiki:Mainpage}}]]導出"[[{{MediaWiki:Mainpage}}]]"頁面',
 'exportcuronly'     => '獨今吖嗰改動，伓係全部嗰歷史。',
 'exportnohistory'   => "----
 '''注意:''' 由於性能嗰原因，箇隻表格導出嗰頁面嗰全部歷史都拕禁用。",
@@ -1601,7 +1583,6 @@ Please visit [http://www.mediawiki.org/wiki/Localisation MediaWiki Localisation]
 'tooltip-n-recentchanges'         => '列出箇隻網站該朝子嗰改動',
 'tooltip-n-randompage'            => '隨機載進一隻頁面',
 'tooltip-n-help'                  => '求人幫',
-'tooltip-n-sitesupport'           => '資援偶嗰俚',
 'tooltip-t-whatlinkshere'         => '列出全部同箇頁連到嗰頁面',
 'tooltip-t-recentchangeslinked'   => '從箇頁連出嗰全部頁面嗰改動',
 'tooltip-feed-rss'                => '箇頁嗰RSS訂閱',
@@ -1710,7 +1691,7 @@ $1',
 'nextdiff'     => '下一隻差異→',
 
 # Media information
-'mediawarning'         => "'''警告''': 話伓定箇隻檔案含到惡意代碼，執行佢話伓定會損壞倷嗰系統。<hr>",
+'mediawarning'         => "'''警告''': 話伓定箇隻檔案含到惡意代碼，執行佢話伓定會損壞倷嗰系統。<hr />",
 'imagemaxsize'         => '檔案解釋頁嗰圖像大細限制到:',
 'thumbsize'            => '縮略圖大細:',
 'widthheightpage'      => '$1×$2,$3頁',

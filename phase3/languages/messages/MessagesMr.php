@@ -4,6 +4,9 @@
  * @ingroup Language
  * @file
  *
+ * @author Mahitgar
+ * @author Kaustubh
+ * @author प्रणव कुलकर्णी
  * @author Angela
  * @author Hemanshu
  * @author Harshalhayat
@@ -11,11 +14,6 @@
  * @author Sankalpdravid
  * @author अभय नातू
  * @author शࣿरीहरि
- * @author Kaustubh
- * @author SPQRobin
- * @author Siebrand
- * @author Mahitgar
- * @author प्रणव कुलकर्णी
  */
 
 $specialPageAliases = array(
@@ -200,8 +198,6 @@ $messages = array(
 'underline-never'   => 'कधीच नाही',
 'underline-default' => 'न्याहाळक अविचल (browser default)',
 
-'skinpreview' => '(झलक)',
-
 # Dates
 'sunday'        => 'रविवार',
 'monday'        => 'सोमवार',
@@ -379,8 +375,6 @@ $messages = array(
 'portal-url'           => 'Project:समाज मुखपृष्ठ',
 'privacy'              => 'गुप्तता नीती',
 'privacypage'          => 'Project:गुप्तता नीती',
-'sitesupport'          => 'दान',
-'sitesupport-url'      => 'Project:संकेतस्थळास पाठबळ',
 
 'badaccess'        => 'परवानगी नाकारण्यात आली आहे',
 'badaccess-group0' => 'तुम्ही करत असलेल्या क्रियेचे तुम्हाला अधिकार नाहीत.',
@@ -506,6 +500,11 @@ $2',
 'ns-specialprotected'  => 'विशेष पाने संपादीत करता येत नाहीत.',
 'titleprotected'       => "या शीर्षकाचे पान सदस्य [[User:$1|$1]]ने निर्मीत करण्यापासून सुरक्षित केलेले आहे.
 ''$2'' हे कारण नमूद केलेले आहे.",
+
+# Virus scanner
+'virus-badscanner'     => 'चुकीचे कॉन्फिगरेशन: व्हायरस स्कॅनर अनोळखी: <i>$1</i>',
+'virus-scanfailed'     => 'स्कॅन पूर्ण झाले नाही (कोड $1)',
+'virus-unknownscanner' => 'अनोळखी ऍन्टीव्हायरस:',
 
 # Login and logout pages
 'logouttitle'                => 'बाहेर पडा',
@@ -667,10 +666,6 @@ $2',
 'blockededitsource'                => "'''$1'''ला '''तुमची संपादने'''चा मजकुर खाली दाखवला आहे:",
 'whitelistedittitle'               => 'संपादनासाठी सदस्य म्हणून प्रवेश आवश्यक आहे.',
 'whitelistedittext'                => 'लेखांचे संपादन करण्यासाठी आधी $1 करा.',
-'whitelistreadtitle'               => 'हा लेख वाचण्यासाठी सदस्य म्हणून प्रवेश करावा लागेल',
-'whitelistreadtext'                => 'हा लेख वाचण्यासाठी [[Special:Userlogin|सदस्य म्हणून प्रवेश करावा लागेल]].',
-'whitelistacctitle'                => 'आपणास नवीन खात्याची नोंदणी करण्यास मनाई आहे.',
-'whitelistacctext'                 => '{{SITENAME}} नवीन सदस्य नोंदणी करता, तुम्ही [[Special:Userlogin|प्रवेश]] केलेला असणे आवश्यक आहे तसेच तुम्हांला योग्य ते अधिकार असले पाहिजेत.',
 'confirmedittitle'                 => 'संपादनाकरिता विपत्राने शाबीत करणे आवश्यक',
 'confirmedittext'                  => 'तुम्ही संपादने करण्यापुर्वी तुमचा विपत्र पत्ता शाबीत करणे आवश्यक आहे.Please set and validate तुमचा विपत्र पत्ता तुमच्या[[Special:Preferences|सदस्य पसंती]]तून लिहा व सिद्ध करा.',
 'nosuchsectiontitle'               => 'असा विभाग नाही.',
@@ -955,6 +950,7 @@ $3ने ''$2'' कारण दिले आहे.",
 'qbsettings-floatingright' => 'तरंगते ऊजवे',
 'changepassword'           => 'परवलीचा शब्द बदला',
 'skin'                     => 'त्वचा',
+'skin-preview'             => 'झलक',
 'math'                     => 'गणित',
 'dateformat'               => 'दिनांक लेखनशैली',
 'datedefault'              => 'प्राथमिकता नाही',
@@ -1004,32 +1000,25 @@ $3ने ''$2'' कारण दिले आहे.",
 'files'                    => 'संचिका',
 
 # User rights
-'userrights'                       => 'सदस्य अधिकार व्यवस्थापन', # Not used as normal message but as header for the special page itself
-'userrights-lookup-user'           => 'सदस्य गटांचे(ग्रूप्स) व्यवस्थापन करा.',
-'userrights-user-editname'         => 'सदस्य नाव टाका:',
-'editusergroup'                    => 'सदस्य गट (ग्रूप्स) संपादीत करा',
-'editinguser'                      => "सदस्य '''[[User:$1|$1]]''' ([[User talk:$1|{{int:talkpagelinktext}}]] | [[Special:Contributions/$1|{{int:contribslink}}]])चे सदस्य अधिकारात बदल केला जात आहे.",
-'userrights-editusergroup'         => 'सदस्य मंडळे संपादीत करा',
-'saveusergroups'                   => 'सदस्य गट जतन करा',
-'userrights-groupsmember'          => '(चा) सभासद:',
-'userrights-groupsremovable'       => 'वगळण्यायोग्य गट:',
-'userrights-groupsavailable'       => 'उपलब्ध गट:',
-'userrights-groups-help'           => 'तुम्ही एखाद्या सदस्याचे गट सदस्यत्व बदलू शकता:
+'userrights'                  => 'सदस्य अधिकार व्यवस्थापन', # Not used as normal message but as header for the special page itself
+'userrights-lookup-user'      => 'सदस्य गटांचे(ग्रूप्स) व्यवस्थापन करा.',
+'userrights-user-editname'    => 'सदस्य नाव टाका:',
+'editusergroup'               => 'सदस्य गट (ग्रूप्स) संपादीत करा',
+'editinguser'                 => "सदस्य '''[[User:$1|$1]]''' ([[User talk:$1|{{int:talkpagelinktext}}]] | [[Special:Contributions/$1|{{int:contribslink}}]])चे सदस्य अधिकारात बदल केला जात आहे.",
+'userrights-editusergroup'    => 'सदस्य मंडळे संपादीत करा',
+'saveusergroups'              => 'सदस्य गट जतन करा',
+'userrights-groupsmember'     => '(चा) सभासद:',
+'userrights-groups-help'      => 'तुम्ही एखाद्या सदस्याचे गट सदस्यत्व बदलू शकता:
 * निवडलेला चौकोन म्हणजे सदस्य त्या गटात आहे.
 * न निवडलेला चौकोन म्हणजे सदस्य त्या गटात नाही.
 * एक * चा अर्थ तुम्ही एकदा समावेश केल्यानंतर तो गट बदलू शकत नाही, किंवा काढल्यानंतर समावेश करू शकत नाही.',
-'userrights-reason'                => 'बदलाचे कारण:',
-'userrights-available-none'        => 'तुम्ही गट सदस्यत्व बदलू शकत नाही.',
-'userrights-available-add'         => 'तुम्ही {{PLURAL:$2|या ग्रुपमध्ये|या ग्रुप्समध्ये}} कुठलाही सदस्य वाढवू शकता: $1.',
-'userrights-available-remove'      => 'तुम्ही {{PLURAL:$2|या ग्रुपमधून|या ग्रुप्समधून}} कुठलाही सदस्य वगळू शकता: $1.',
-'userrights-available-add-self'    => 'तुम्ही {{PLURAL:$2|या ग्रुपचे|या ग्रुप्सचे}} सदस्यत्व घेऊ शकता: $1.',
-'userrights-available-remove-self' => 'तुम्ही {{PLURAL:$2|या ग्रुपचे|या ग्रुप्सचे}} सदस्यत्व रद्द करू शकता: $1.',
-'userrights-no-interwiki'          => 'इतर विकींवरचे सदस्य अधिकार बदलण्याची परवानगी तुम्हाला नाही.',
-'userrights-nodatabase'            => 'विदा $1 अस्तीत्वात नाही अथवा स्थानिक नाही.',
-'userrights-nologin'               => 'सदस्य अधिकार देण्यासाठी तुम्ही प्रबंधक म्हणून [[Special:Userlogin|प्रवेश केलेला]] असणे आवश्यक आहे.',
-'userrights-notallowed'            => 'तुमच्या सदस्य खात्यास सदस्य अधिकारांची निश्चिती करण्याची परवानगी नाही.',
-'userrights-changeable-col'        => 'गट जे तुम्ही बदलू शकता',
-'userrights-unchangeable-col'      => 'गट जे तुम्ही बदलू शकत नाही',
+'userrights-reason'           => 'बदलाचे कारण:',
+'userrights-no-interwiki'     => 'इतर विकींवरचे सदस्य अधिकार बदलण्याची परवानगी तुम्हाला नाही.',
+'userrights-nodatabase'       => 'विदा $1 अस्तीत्वात नाही अथवा स्थानिक नाही.',
+'userrights-nologin'          => 'सदस्य अधिकार देण्यासाठी तुम्ही प्रबंधक म्हणून [[Special:Userlogin|प्रवेश केलेला]] असणे आवश्यक आहे.',
+'userrights-notallowed'       => 'तुमच्या सदस्य खात्यास सदस्य अधिकारांची निश्चिती करण्याची परवानगी नाही.',
+'userrights-changeable-col'   => 'गट जे तुम्ही बदलू शकता',
+'userrights-unchangeable-col' => 'गट जे तुम्ही बदलू शकत नाही',
 
 # Groups
 'group'               => 'गट:',
@@ -1119,7 +1108,7 @@ $3ने ''$2'' कारण दिले आहे.",
 'recentchanges'                     => 'अलीकडील बदल',
 'recentchangestext'                 => 'विकितील अलीकडील बदल या पानावर दिसतात.',
 'recentchanges-feed-description'    => 'या रसदीमधील विकीवर झालेले सर्वात अलीकडील बदल पहा.',
-'rcnote'                            => "खाली $3 पर्यंतचे गेल्या {{PLURAL:$2|'''१''' दिवसातील|'''$2''' दिवसांतील}} {{PLURAL:$1|शेवटचा '''1''' बदल|शेवटचे '''$1''' बदल}} दिलेले आहेत.",
+'rcnote'                            => "खाली $4, $5 पर्यंतचे गेल्या {{PLURAL:$2|'''१''' दिवसातील|'''$2''' दिवसांतील}} {{PLURAL:$1|शेवटचा '''1''' बदल|शेवटचे '''$1''' बदल}} दिलेले आहेत.",
 'rcnotefrom'                        => 'खाली <b>$2</b> पासूनचे (<b>$1</b> किंवा कमी) बदल दाखवले आहेत.',
 'rclistfrom'                        => '$1 नंतर केले गेलेले बदल दाखवा.',
 'rcshowhideminor'                   => 'छोटे बदल $1',
@@ -1185,7 +1174,7 @@ $3ने ''$2'' कारण दिले आहे.",
 'illegalfilename'             => '"$1" या संचिकानामात शीर्षकात चालू न शकणारी अक्षरे आहेत. कृपया संचिकानाम बदलून पुन्हा चढवण्याचा प्रयत्न करा.',
 'badfilename'                 => 'संचिकेचे नाव बदलून "$1" असे केले आहे.',
 'filetype-badmime'            => 'विविधामाप(माईम) "$1" प्रकारच्या संचिका चढवण्यास परवानगी नाही.',
-'filetype-unwanted-type'      => "'''\".\$1\"''' ही नको असलेल्या प्रकारची संचिका आहे. \$2 ह्या हव्या असलेल्या प्रकारच्या संचिका आहेत.",
+'filetype-unwanted-type'      => "'''\".\$1\"''' ही नको असलेल्या प्रकारची संचिका आहे. \$2 {{PLURAL:\$3|ही हव्या असलेल्या प्रकारची संचिका आहे|ह्या हव्या असलेल्या प्रकारच्या संचिका आहेत}}.",
 'filetype-banned-type'        => "'''\".\$1\"''' ही परवानगी नसलेल्या प्रकारची संचिका आहे. \$2 ह्या परवानगी असलेल्या प्रकारच्या संचिका आहेत.",
 'filetype-missing'            => 'या संचिकेला एक्सटेंशन दिलेले नाही (उदा. ".jpg").',
 'large-file'                  => 'संचिका $1 पेक्षा कमी आकाराची असण्याची अपेक्षा आहे, ही संचिका $2 एवढी आहे.',
@@ -1293,18 +1282,18 @@ $3ने ''$2'' कारण दिले आहे.",
 # File reversion
 'filerevert'                => '$1 पूर्वपद',
 'filerevert-legend'         => 'संचिका पूर्वपदास',
-'filerevert-intro'          => '<span class="plainlinks">तुम्ही [$3, $2 प्रमाणे आवर्तन$4 कडे] [[Media:$1|$1]]  उलटवत आहात.</span>',
+'filerevert-intro'          => 'तुम्ही [$3, $2 प्रमाणे आवर्तन$4 कडे] [[Media:$1|$1]]  उलटवत आहात.',
 'filerevert-comment'        => 'प्रतिक्रीया:',
 'filerevert-defaultcomment' => '$2, $1 च्या आवृत्तीत पूर्वपदास',
 'filerevert-submit'         => 'पूर्वपद',
-'filerevert-success'        => '<span class="plainlinks"> [$3, $2 प्रमाणे आवर्तन $4]कडे \'\'\'[[Media:$1|$1]]\'\'\' उलटवण्यात आली.</span>',
+'filerevert-success'        => "[$3, $2 प्रमाणे आवर्तन $4]कडे '''[[Media:$1|$1]]''' उलटवण्यात आली.",
 'filerevert-badversion'     => 'दिलेलेल्या वेळ मापनानुसार,या संचिकेकरिता कोणतीही पूर्वीची स्थानिक आवृत्ती नाही.',
 
 # File deletion
 'filedelete'                  => '$1 वगळा',
 'filedelete-legend'           => 'संचिका वगळा',
 'filedelete-intro'            => "तुम्ही '''[[Media:$1|$1]]''' वगळत आहात.",
-'filedelete-intro-old'        => '<span class="plainlinks">[$4 $3, $2]च्या वेळेचे \'\'\'[[Media:$1|$1]]\'\'\'चे आवर्तन तुम्ही वगळत आहात.</span>',
+'filedelete-intro-old'        => "[$4 $3, $2]च्या वेळेचे '''[[Media:$1|$1]]'''चे आवर्तन तुम्ही वगळत आहात.",
 'filedelete-comment'          => 'वगळ्ण्याची कारणे:',
 'filedelete-submit'           => 'वगळा',
 'filedelete-success'          => "'''$1'''वगळण्यात आले.",
@@ -1482,7 +1471,7 @@ Input:contenttype/subtype, e.g. <tt>image/jpeg</tt>.',
 
 # Special:Listgrouprights
 'listgrouprights'          => 'सदस्य गट अधिकार',
-'listgrouprights-summary'  => 'खाली या विकिवर दिलेली सदस्य गटांची यादी त्यांच्या अधिकारांसकट दर्शविलेली आहे. प्रत्येकाच्या अधिकारांची अधिक माहिती [[{{int:Listgrouprights-helppage}}|इथे]] दिलेली आहे.',
+'listgrouprights-summary'  => 'खाली या विकिवर दिलेली सदस्य गटांची यादी त्यांच्या अधिकारांसकट दर्शविलेली आहे. प्रत्येकाच्या अधिकारांची अधिक माहिती [[{{MediaWiki:Listgrouprights-helppage}}|इथे]] दिलेली आहे.',
 'listgrouprights-group'    => 'गट',
 'listgrouprights-rights'   => 'अधिकार',
 'listgrouprights-helppage' => 'Help:गट अधिकार',
@@ -1879,14 +1868,12 @@ $1',
 
 या बाबतीत तुम्हाला स्वतःला ही पाने एकत्र करावी लागतील.",
 'movearticle'             => 'पृष्ठाचे स्थानांतरण',
-'movenologin'             => 'प्रवेश केलेला नाही',
-'movenologintext'         => 'पान स्थानांतरित करण्यासाठी तुम्हाला [[Special:Userlogin|प्रवेश]] करावा लागेल.',
 'movenotallowed'          => '{{SITENAME}}वरील पाने स्थानांतरीत करण्याची आपल्यापाशी परवानगी नाही.',
 'newtitle'                => 'नवीन शीर्षकाकडे:',
 'move-watch'              => 'या पानावर लक्ष ठेवा',
 'movepagebtn'             => 'स्थानांतरण करा',
 'pagemovedsub'            => 'स्थानांतरण यशस्वी',
-'movepage-moved'          => '<big>\'\'\'"$1" हे पान "$2" या मथळ्याखाली स्थानांतरित केले आहे.\'\'\'</big>', # The two titles are passed in plain text as $3 and $4 to allow additional goodies in the message.
+'movepage-moved'          => '<big>\'\'\'"$1" ला "$2" मथळ्याखाली स्थानांतरीत केले\'\'\'</big>', # The two titles are passed in plain text as $3 and $4 to allow additional goodies in the message.
 'articleexists'           => 'त्या नावाचे पृष्ठ अगोदरच अस्तित्वात आहे, किंवा तुम्ही निवडलेले
 नाव योग्य नाही आहे.
 कृपया दुसरे नाव शोधा.',
@@ -2024,7 +2011,6 @@ $1',
 'tooltip-n-recentchanges'         => 'विकिवरील अलीकडील बदलांची यादी',
 'tooltip-n-randompage'            => 'कोणतेही पान पहा',
 'tooltip-n-help'                  => 'मदत मिळवण्याचे ठिकाण',
-'tooltip-n-sitesupport'           => 'आम्हाला मदत करा',
 'tooltip-t-whatlinkshere'         => 'येथे जोडलेल्या सर्व विकिपानांची यादी',
 'tooltip-t-recentchangeslinked'   => 'येथुन जोडलेल्या सर्व पानांवरील अलीकडील बदल',
 'tooltip-feed-rss'                => 'या पानाकरिता आर.एस.एस. रसद',

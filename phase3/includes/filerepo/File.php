@@ -264,7 +264,14 @@ abstract class File {
 	 * Overridden by LocalFile, UnregisteredLocalFile
 	 * STUB
 	 */
-	function getMetadata() { return false; }
+	public function getMetadata() { return false; }
+
+	/**
+	 * Return the bit depth of the file
+	 * Overridden by LocalFile
+	 * STUB
+	 */
+	public function getBitDepth() { return 0; }
 
 	/**
 	 * Return the size of the image file, in bytes
@@ -1062,13 +1069,26 @@ abstract class File {
 	 * Get the HTML text of the description page, if available
 	 */
 	function getDescriptionText() {
+		global $wgMemc;
 		if ( !$this->repo->fetchDescription ) {
 			return false;
 		}
 		$renderUrl = $this->repo->getDescriptionRenderUrl( $this->getName() );
 		if ( $renderUrl ) {
+			if ( $this->repo->descriptionCacheExpiry > 0 ) {
+				wfDebug("Attempting to get the description from cache...");
+				$key = wfMemcKey( 'RemoteFileDescription', 'url', md5($renderUrl) );
+				$obj = $wgMemc->get($key);
+				if ($obj) {
+					wfDebug("success!\n");
+					return $obj;
+				}
+				wfDebug("miss\n");
+			}
 			wfDebug( "Fetching shared description from $renderUrl\n" );
-			return Http::get( $renderUrl );
+			$res = Http::get( $renderUrl );
+			if ( $res && $this->repo->descriptionCacheExpiry > 0 ) $wgMemc->set( $key, $res, $this->repo->descriptionCacheExpiry );
+			return $res;
 		} else {
 			return false;
 		}

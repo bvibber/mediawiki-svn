@@ -4,8 +4,9 @@
  * @ingroup Language
  * @file
  *
+ * @author Rajuonline
+ * @author Psneog
  * @author Priyankoo
- * @author Siebrand
  */
 
 $fallback='hi';
@@ -26,7 +27,7 @@ $digitTransformTable = array(
 $messages = array(
 # User preference toggles
 'tog-underline'               => 'সংযোগ সমুহ অধোৰেখিত কৰক:',
-'tog-justify'                 => 'অধ্যায় সমুহৰ দুয়োফাল সমান কৰক',
+'tog-justify'                 => 'লেখা বিলাকৰ দুয়োকাষ সমান কৰা হওক',
 'tog-hideminor'               => 'সাম্প্রতিক সাল-সলনিত অগুৰুত্বপূর্ণ সম্পাদনা নেদেখুৱাব',
 'tog-extendwatchlist'         => 'লক্ষ্য-তালিকাৰ সকলো সাল-সলনি বহলাই দেখুৱাওক',
 'tog-usenewrc'                => 'বর্দ্ধিত সাম্প্রতিক সাল-সলনি (JavaScript)',
@@ -65,8 +66,6 @@ $messages = array(
 'underline-always'  => 'সদায়',
 'underline-never'   => 'কেতিয়াও নহয়',
 'underline-default' => 'ব্রাউজাৰ ডিফল্ট',
-
-'skinpreview' => '(খচৰা)',
 
 # Dates
 'sunday'        => 'দেওবাৰ',
@@ -130,22 +129,23 @@ $messages = array(
 'hidden-category-category'      => 'গোপন শ্রেণী সমুহ', # Name of the category where hidden categories will be listed
 'category-subcat-count'         => '{{PLURAL:$2|এই শ্রেণীত নিম্নলিখিত উপশ্রেণী আছে| এই শ্রেণীত নিম্নলিখিত {{PLURAL:$1|উপশ্রেণীটো|$1 উপশ্রেণীসমুহ}} আছে, মুঠতে $2  তা উপশ্রেণী।}}',
 'category-subcat-count-limited' => 'এই শ্রেণীত নিম্নলিখিত {{PLURAL:$1|উপশ্রেণী আছে|$1 উপশ্রেণী আছে}}.',
+'category-article-count'        => '{{PLURAL:$2|এই শ্রেণীটোত কেবল তলত দিয়া লিখনীটোহে আছে।|এই শ্রেণীটোত তলৰ  {{PLURAL:$1|এটা লিখনী আছে|$1 টা লিখনী আছে}}, মুঠ লিখনী $2 টা।}}',
 'listingcontinuesabbrev'        => 'আগলৈ',
 
 'about'          => 'বিষয়ে',
 'article'        => 'লিখনী',
 'newwindow'      => '(নতুন উইণ্ডোত খোল খায়)',
-'cancel'         => 'ৰদ কৰক',
-'qbfind'         => 'সন্ধান কৰক',
-'qbbrowse'       => 'চাবলৈ(ব্রাওজ)',
+'cancel'         => 'ৰদ কৰা হওক',
+'qbfind'         => 'বিচৰা হওক',
+'qbbrowse'       => 'বিচৰণ',
 'qbedit'         => 'সম্পাদনা',
 'qbpageoptions'  => 'এই পৃষ্ঠা',
-'qbpageinfo'     => 'প্রসংগ(কনটেক্স্ট)',
+'qbpageinfo'     => 'প্রসংগ',
 'qbmyoptions'    => 'মোৰ পৃষ্ঠাসমুহ',
 'qbspecialpages' => 'বিশেষ পৃষ্ঠাসমুহ',
 'moredotdotdot'  => 'ক্রমশ:...',
-'mypage'         => 'মোৰ পৃষ্ঠা',
-'mytalk'         => 'মোৰ কথা-বতৰা',
+'mypage'         => 'মোৰ ব্যক্তিগত পৃষ্ঠা',
+'mytalk'         => 'মোৰ আলাপ',
 'anontalk'       => 'এই IP-ত যোগাযোগ কৰক',
 'navigation'     => 'দিকদৰ্শন',
 'and'            => 'আৰু',
@@ -158,7 +158,7 @@ $messages = array(
 'tagline'           => '{{SITENAME}} -ৰ পৰা',
 'help'              => 'সহায়',
 'search'            => 'সন্ধান',
-'searchbutton'      => 'সন্ধান কৰক',
+'searchbutton'      => 'বিচৰা হওক',
 'go'                => 'গমন',
 'searcharticle'     => 'গমন',
 'history'           => 'খতিয়ান',
@@ -228,12 +228,10 @@ $messages = array(
 'mainpage'             => 'বেটুপাত',
 'mainpage-description' => 'বেটুপাত',
 'policy-url'           => 'Project:নীতি',
-'portal'               => 'সমজুৱা পৃষ্ঠা',
+'portal'               => 'সদন',
 'portal-url'           => 'Project:সমজুৱা পৃষ্ঠা',
-'privacy'              => 'গোপনীয়তা নিতী',
+'privacy'              => 'গোপনীয়তা নীতি',
 'privacypage'          => 'Project:গোপনীয়তাৰ নীতি',
-'sitesupport'          => 'দান-বৰঙনি',
-'sitesupport-url'      => 'Project:চাইট সাহায্য',
 
 'badaccess'        => 'অনুমতি ভুল',
 'badaccess-group0' => 'আপুনি কৰিব বিছৰা কামতো কৰাৰ আধিকাৰ আপোনাৰ নাই।',
@@ -252,7 +250,7 @@ $messages = array(
 'youhavenewmessagesmulti' => '$1 ত আপোনাৰ কাৰণে নতুন বার্তা আছে',
 'editsection'             => 'সম্পাদন কৰক',
 'editold'                 => 'সম্পাদনা',
-'viewsourceold'           => 'উত্‍স চাওক',
+'viewsourceold'           => 'অক্ষৰ-মূল দেখুওৱা হওক',
 'editsectionhint'         => '$1 খণ্ডৰ সম্পাদনা',
 'toc'                     => 'সূচী',
 'showtoc'                 => 'দেখুৱাব লাগে',
@@ -260,30 +258,33 @@ $messages = array(
 'thisisdeleted'           => '$1 চাওক বা সলনি কৰক?',
 'viewdeleted'             => '$1 চাওক?',
 'page-rss-feed'           => '"$1" আৰ-এচ-এচ ফীড',
+'red-link-title'          => '$1 (এতিয়ালৈকে সৃষ্টি কৰা হোৱা নাই)',
 
 # Short words for each namespace, by default used in the namespace tab in monobook
 'nstab-main'      => 'পৃষ্ঠা',
 'nstab-user'      => 'সদস্য পৃষ্ঠা',
 'nstab-media'     => 'মেডিয়া পৃষ্ঠা',
 'nstab-special'   => 'বিশেষ',
-'nstab-project'   => 'আচনী পৃষ্ঠা',
+'nstab-project'   => 'প্রকল্প পৃষ্ঠা',
 'nstab-image'     => 'চিত্র',
 'nstab-mediawiki' => 'বার্তা',
 'nstab-template'  => 'সাঁচ',
-'nstab-help'      => 'সহায় পৃষ্ঠা',
+'nstab-help'      => 'সাহায্য পৃষ্ঠা',
 'nstab-category'  => 'শ্রেণী',
 
 # Main script and global functions
-'nosuchaction'      => 'এনেকুৱা কোনো ক্রীয়া নাই',
-'nosuchactiontext'  => 'এই URL তোৱে দিয়া নির্দেশ ৱিকিয়ে বুজি পোৱা নাই',
+'nosuchaction'      => 'এনে কাৰ্য্য নাই',
+'nosuchactiontext'  => 'এই URL-ৰ নির্দেশিত কাৰ্য্য {{SITENAME}} -অত উপলব্ধ নহয়',
 'nosuchspecialpage' => 'এনেকুৱা কোনো বিশেষ পৃষ্ঠা নাই',
 'nospecialpagetext' => "<big>'''আপুনি অস্তিত্বত নথকা বিশেষ পৃষ্ঠা এটা বিচাৰিছে '''</big>
-<br>
+
    বিশেষ পৃষ্ঠাহমুহৰ তালিকা ইয়াত পাব [[Special:Specialpages|{{int:specialpages}}]].",
 
 # General errors
 'error'                => 'ভুল',
 'databaseerror'        => 'তথ্যকোষৰ ভুল',
+'noconnect'            => 'ক্ষ্মমা কৰিব, এই ৱিকিয়ে বর্তমান কাৰিকৰি অসুবিধাৰ কাৰণে তথ্যকোষ চার্ভাৰৰ লগত সম্পর্ক স্থাপন কৰাত অপৰাগ।<br />
+$1',
 'nodb'                 => 'তথ্যকোষ $1 বাচনী কৰিব পৰা নগল',
 'cachederror'          => 'এয়া আগতে জমা কৰি থোৱা(cached) প্রতিলিপী, আৰু এয়া সাম্প্রতিক নহব পাৰে।',
 'laggedslavemode'      => 'সাবধান: ইয়াত সাম্প্রতিক সাল-সলনি নাথাকিব পাৰে',
@@ -297,14 +298,24 @@ $messages = array(
 'filecopyerror'        => '"$1" ফাইলটো "$2" লৈ প্রতিলিপী কৰিব পৰা নগল।',
 'filerenameerror'      => '"$1" ফাইলৰ নাম সলনি কৰি "$2" কৰিব পৰা নগল ।',
 'filedeleteerror'      => '"$1" ফাইলতো বিলোপ কৰিব পৰা নগল।',
-'badtitle'             => 'অনুপোযোগি শিৰোণামা',
+'directorycreateerror' => '"$1" ডাইৰেক্টৰি বনাব পৰা নগল।',
+'filenotfound'         => '"$1" নামৰ ফাইলটো বিচাৰি পোৱা নগল।',
+'fileexistserror'      => '"$1" ফাইলটোত লিখিব নোৱাৰি: ফাইলটো আগৰ পৰাই আছে',
+'unexpected'           => 'অনাকাংক্ষিত মুল্য: "$1"="$2".',
+'formerror'            => 'ভুল: ফর্ম খন জমা দিব পৰা নগল',
+'badarticleerror'      => 'এই পৃষ্ঠাটোত এই কামটো কৰিব নোৱাৰি ।',
+'badtitle'             => 'অনভিপ্রেত শিৰোণামা',
 'badtitletext'         => 'আপুনি বিচৰা পৃষ্ঠাটোৰ শিৰোণামা অযোগ্য, খালী বা ভুলকে জৰিত আন্তর্ভাষিক বা আন্তর্ৱিকি শিৰোণামা। ইয়াত এক বা ততোধিক বর্ণ থাকিব পাৰে যাক শিৰোণামাত ব্যৱহাৰ কৰিব নোৱাৰি।',
 'perfdisabled'         => 'ক্ষমা কৰিব! এই সুবিধাতো সাময়িক ভাবে বন্ধ কৰা হৈছে, কাৰণ ই তথ্যকোষ ইমানেই লেহেম কৰি দিয়ে যে কোনেও ৱিকি ব্যৱহাৰ কৰিব নোৱাৰে।',
 'perfcached'           => 'তলত দিয়া তথ্য খিনি আগতে জমা কৰি থোৱা (cached) আৰু সাম্প্রতিক নহব পাৰে।',
 'perfcachedts'         => 'তলত দিয়া তথ্য খিনি আগতে জমা কৰি থোৱা (cached) আৰু শেষবাৰৰ কাৰণে $1 ত নৱীকৰণ কৰা হৈছিল।',
 'querypage-no-updates' => 'এই পৃষ্ঠাটো নৱীকৰণ কৰা ৰোধ কৰা হৈছে। ইয়াৰ তথ্য এতিয়া সতেজ কৰিব নোৱাৰি।',
-'viewsource'           => 'উত্‍স চাঁওক',
+'wrong_wfQuery_params' => 'wfQuery() ৰ কাৰণে ভুল মাপদণ্ড দিয়া হৈছে <br />
+কার্য্য: $1<br />পৃষ্ঠা: $2',
+'viewsource'           => 'উৎস চাবলৈ',
 'viewsourcefor'        => '$1 ৰ কাৰণে',
+'actionthrottledtext'  => 'স্পাম ৰোধ কৰিবলৈ এই ক্রিয়াতো কম সময়ৰ ভিতৰত বহু বেছি বাৰ কৰাতো ৰোধ কৰা হৈছে, আৰু আপুনি ইতিমধ্যে সেই সীমা অতিক্রম কৰিলে। 
+অনুগ্রহ কৰি কিছু সময় পাছত চেষ্টা কৰক।',
 'protectedpagetext'    => 'এই পৃষ্ঠাটোৰ সম্পাদনা ৰোধ কৰিবলৈ সুৰক্ষিত কৰা হৈছে।',
 'viewsourcetext'       => 'আপুনি এই পৃষ্ঠাটোৰ উত্‍স চাব আৰু নকল কৰিব পাৰে',
 'namespaceprotected'   => "আপোনাৰ '''$1''' নামস্থানৰ পৃষ্ঠাহমুহ সম্পাদনা কৰাৰ অধিকাৰ নাই।",
@@ -337,7 +348,7 @@ $messages = array(
 'notloggedin'                => 'প্রৱেশ কৰা নাই',
 'nologin'                    => 'আপুনি সদস্য নহয়? $1।',
 'nologinlink'                => 'নতুন সদস্যভুক্তি কৰক',
-'createaccount'              => 'নতুন সদস্যভুক্তি কৰক',
+'createaccount'              => 'সভ্যভুক্ত হবলৈ',
 'gotaccount'                 => 'আপুনি সদস্য হয়নে? $1',
 'gotaccountlink'             => 'প্রবেশ',
 'createaccountmail'          => 'ই-মেইলেৰে',
@@ -366,7 +377,7 @@ $messages = array(
 আপুনি কুকী নিস্ক্রিয় কৰি থৈছে।
 অনুগ্রহ কৰি কুকী সক্রীয় কৰক, আৰু তাৰ পাছত চেষ্টা কৰক।',
 'noname'                     => 'আপুনি বৈধ সদস্যনাম এটা দিয়া নাই।',
-'loginsuccesstitle'          => 'সফলতাৰে প্রবেশ কৰা হল',
+'loginsuccesstitle'          => "প্রবেশ অনুমোদিত হ'ল",
 'loginsuccess'               => "''' আপুনি {{SITENAME}}ত \"\$1\" নামেৰে প্রবেশ কৰিলে '''",
 'nosuchuser'                 => '"$1" নামৰ কোনো সদস্য নাই।
 আপোনাৰ বানানতো চাওক, বা নতুন সদস্যভুক্তি কৰক।',
@@ -387,6 +398,7 @@ $messages = array(
 যদি আপুনি এই অনুৰোধ কৰা নাছিল অথবা যদি আপোনাৰ গুপ্তশব্দতো মনত আছে আৰু তাক সলাব নিবিছাৰে, তেনেহলে আপুনি এই বার্তাতো অবজ্ঞা কৰিব পাৰে আৰু আপোনাৰ আগৰ গুপ্তশব্দতোকে ব্যৱহাৰ কৰি থাকিব পাৰে।',
 'noemail'                    => '"$1" সদস্যজনৰ কোনো ই-মেইল ঠিকনা সঞ্চিত কৰা নাই।',
 'passwordsent'               => '"$1" ৰ ই-মেইল ঠিকনাত নতুন গুপ্তশব্দ এটা পঠোৱা হৈছে। অনুগ্রহ কৰি সেয়া পোৱাৰ পাছত পুনৰ প্রবেশ কৰক।',
+'blocked-mailpassword'       => 'আপোনাৰ IP ঠিকনাৰ পৰা সম্পাদনা কৰা বাৰণ কৰা হৈছে, এনে অৱস্থাত দুর্ব্যৱহাৰ ৰোধ কৰিবলৈ গুপ্তশব্দ পুনঃউদ্ধাৰ কৰা সুবিধাতো বাতিল কৰা হৈছে।',
 'eauthentsent'               => 'সঞ্চিত ই-মেইল ঠিকনাত নিশ্বিতকৰণ ই-মেইল এখন পঠোৱা হৈছে।
 আৰু অন্যান্য ই-মেইল পঠোৱাৰ আগতে, আপোনাৰ সদস্যতাৰ নিশ্বিত কৰিবলৈ সেই ই-মেইলত দিয়া নির্দেশনা আপুনি অনুসৰন কৰিব লাগিব।',
 'throttled-mailpassword'     => 'যোৱা $1 ঘণ্টাত গুপ্তশব্দ পুনৰুদ্ধাৰ সুচনা পঠিওৱা হৈছে ।
@@ -404,6 +416,9 @@ $messages = array(
 'accountcreated'             => 'সদস্যতা সৃষ্টি কৰা হল',
 'accountcreatedtext'         => '$1 ৰ কাৰণে সদস্যভুক্তি কৰা হল।',
 'createaccount-title'        => '{{SITENAME}} ৰ কাৰণে সদস্যভুক্তি কৰক।',
+'createaccount-text'         => 'আপোনাৰ ই-মেইল ঠিকণাৰ কাৰণে {{SITENAME}} ($4) ত "$2" নামৰ কোনোবাই, "$3" গুপ্তশব্দ দি সদস্যভুক্তি কৰিছে। আনুগ্রহ কৰি আপুনি প্রৱেশ কৰক আৰু গুপ্তশব্দটো সলনি কৰক।
+
+যদি এ্য়া ভুলতে হৈছে, তেনেহলে আপুনি এই বার্তাটো অবজ্ঞা কৰিব পাৰে ।',
 
 # Password reset dialog
 'resetpass'               => 'গুপ্তশব্দ পূণর্স্থাপন কৰক',
@@ -415,11 +430,12 @@ $messages = array(
 'resetpass_bad_temporary' => 'অস্থায়ী গুপ্তশব্দ ভুল ।
 হয়তো আপুনি আগতেই গুপ্তশব্দ সলনি কৰিছে, অথবা নতুন গুপ্তশব্দৰ কাৰণে অনুৰোধ পঠাইছে।',
 'resetpass_forbidden'     => '{{SITENAME}} ত গুপ্তশব্দ সলনি কৰিব নোৱাৰি',
+'resetpass_missing'       => 'ফর্মৰ তথ্য নাই ।',
 
 # Edit page toolbar
 'bold_sample'     => 'শকত পাঠ্য',
-'bold_tip'        => 'শকত পাঠ্য',
-'italic_sample'   => 'বেঁকা পাঠ্য',
+'bold_tip'        => 'গুৰুলেখ',
+'italic_sample'   => 'তীৰ্যকলেখ',
 'italic_tip'      => 'বেঁকা পাঠ্য',
 'link_sample'     => 'শিৰোণামা সংযোগ',
 'link_tip'        => 'ভিতৰুৱা সংযোগ',
@@ -439,35 +455,92 @@ $messages = array(
 # Edit pages
 'summary'                => 'সাৰাংশ',
 'subject'                => 'বিষয় / শীর্ষক',
-'minoredit'              => 'এইটো এটা সৰু সম্পদনা',
+'minoredit'              => 'এইটো নগন্য সম্পদনা',
 'watchthis'              => 'এই পৃষ্ঠাটো অনুসৰণ-সূচীভুক্ত কৰক',
 'savearticle'            => 'পৃষ্ঠা সংৰাক্ষিত কৰক',
 'preview'                => 'খচৰা',
 'showpreview'            => 'খচৰা',
+'showlivepreview'        => 'জীৱন্ত খছৰা',
 'showdiff'               => 'সালসলনিবোৰ দেখুৱাওক',
 'anoneditwarning'        => "'''সাৱধান:''' আপুনি প্রৱেশ কৰা নাই, এই পৃষ্ঠাৰ ইতিসাহত আপোনাৰ আই পি ঠিকনা সংৰক্ষিত কৰা হব|",
+'missingsummary'         => "'''স্মাৰক:''' আপুনি সম্পাদনা সাৰাংশ দিয়া নাই।
+আপুনি আৰু এবাৰ সংৰক্ষণৰ বাবে ক্লীক কৰিলে সাৰাংশৰ অবিহনে সংৰক্ষিত হব।",
+'missingcommenttext'     => 'অনুগ্রহ কৰি তলত মন্তব্য এটা দিয়্ক।',
+'missingcommentheader'   => "'''স্মাৰক:''' আপুনি এই মন্তব্যটোত শিৰোণামা দিয়া নাই।
+যদি আকৌ এবাৰ সংৰক্ষিত কৰে, তেনেহলে শিৰোণামা অবিহনে সংৰক্ষিত হব।",
 'summary-preview'        => 'সাৰাংশৰ খচৰা',
+'subject-preview'        => 'বিষয়/শিৰোণামাৰ খচৰা',
+'blockedtitle'           => 'সদস্যজনক অবৰোধ কৰা হৈছে',
+'blockedtext'            => "<big>'''আপোনাৰ সদস্যনাম অথবা আই-পি ঠিকণা অবৰোধ কৰা হৈছে ।'''</big>
+
+ $1 ৰ দ্বাৰ এই অবৰোধ কৰা হৈছে । ইয়াৰ বাবে দিয়া কাৰণ হৈছে ''$2'' ।
+
+* অবৰোধ আৰম্ভনী: $8
+* অবৰোধ সমাপ্তি: $6
+* অবৰোধ কৰা হৈছে: $7
+
+আপুনি এই অবৰোধৰ বিষয়ে আলোচনা কৰিবলৈ $1 বা [[{{MediaWiki:Grouppage-sysop}}|প্রবন্ধকৰ]] লগত সম্পর্ক স্থাপন কৰিব পাৰে ।
+আপুনি যেতিয়ালৈ [[Special:Preferences|সদস্য পছন্দ]] পৃষ্ঠাত আপোনাৰ ই-মেইল ঠিকনা নিদিয়ে তেতিয়ালৈ ’সদস্যক ই-মেইল পঠাওক’ সুবিধাতো ব্যৱহাৰ কৰিব নোৱাৰে। আপোনাক এয়া কৰিবলৈ ৰোধ কৰা হোৱা নাই । 
+আপোনাৰ এতিয়াৰ IP ঠিকনা হল $3, আৰু আপোনাৰ অবৰোধ ক্রমিক হৈছে #$5 । 
+এই বিষয়ে হোৱা আলোচনাত ইয়াৰ যিকোনো এটা ব্যৱহাৰ কৰিবলৈ অনুৰোধ কৰা হল।",
+'autoblockedtext'        => "আপোনাৰ IP ঠিকনা নিজে নিজে অবৰোধিত হৈ গৈছে, কাৰণ ইয়াক কোনোবাই ব্যৱহাৰ কৰি থাকোতে $1 ৰ দ্বাৰা অবৰোধ কৰা হৈছে।
+ইয়াৰ বাবে দিয়া কাৰণ হৈছে:
+
+:''$2''
+
+* অবৰোধ আৰম্ভনী:  $8
+* অবৰোধ সমাপ্তি: $6
+
+আপুনি এই অবৰোধৰ বিষয়ে আলোচনা কৰিবলৈ $1 বা [[{{MediaWiki:Grouppage-sysop}}|প্রবন্ধক]]ৰ লগত সম্পর্ক স্থাপন কৰিব পাৰে ।
+
+আপুনি যেতিয়ালৈ [[Special:Preferences|সদস্য পছন্দ]] পৃষ্ঠাত আপোনাৰ ই-মেইল ঠিকনা নিদিয়ে তেতিয়ালৈ ’সদস্যক ই-মেইল পঠাওক’ সুবিধাতো ব্যৱহাৰ কৰিব নোৱাৰে। আপোনাক এয়া কৰিবলৈ ৰোধ কৰা হোৱা নাই ।
+আপোনাৰ অবৰোধ ক্রমিক হৈছে $5 ।
+এই বিষয়ে হোৱা আলোচনাত ইয়াক ব্যৱহাৰ কৰিবলৈ অনুৰোধ কৰা হল।",
+'blockednoreason'        => 'কাৰণ দিয়া নাই',
+'blockedoriginalsource'  => "'''$1''' ৰ উত্‍স তলত দিয়া হৈছে।",
+'blockededitsource'      => "'''$1''' ৰ '''আপুনি কৰা সাল-সলনি''' ৰ পাঠ্য তলত দিয়া হৈছে:",
+'whitelistedittitle'     => 'সম্পাদনা কৰিবলৈ প্রবেশ কৰিব লাগিব।',
+'whitelistedittext'      => 'সম্পাদনা কৰিবলৈ $1 কৰক ।',
+'confirmedittitle'       => 'সম্পাদনা কৰিবলৈ ই-মেইলেৰে নিশ্বয়তা কৰিব লাগিব।',
+'confirmedittext'        => 'সম্পাদনা কৰাৰ আগতে আপুনি আপোনাৰ ই-মেইল ঠিকনাটো প্রমানিত কৰিব লাগিব।
+অনুগ্রহ কৰি [[Special:Preferences|মোৰ পচন্দ]] ত গৈ আপোনাৰ ই-মেইল ঠিকনা দিয়ক আৰু তাক প্রমানিত কৰক।',
+'nosuchsectiontitle'     => 'এনেকুৱা কোনো বিভাগ নাই',
+'nosuchsectiontext'      => 'অপুনি এনে এটা বিভাগ সম্পাদিত কৰিব বিচাৰিছে যাৰ কোনো অস্তিত্ব নাই।
+
+যিহেতু $1 বিভাগ নাই, আপুনি সম্পাদনা কৰিবলৈ কোনো স্থান নাই।',
+'loginreqtitle'          => 'প্রবেশ আৱশ্যক',
+'loginreqlink'           => 'প্রবেশ',
+'loginreqpagetext'       => 'অন্যান্য পৃষ্ঠা চাবলৈ আপুনি $1 কৰিব লাগিব।',
+'accmailtitle'           => 'গুপ্তশব্দ পঠোৱা হৈছে।',
 'accmailtext'            => '"$1"ৰ পাছৱৰ্ড $2 লৈ পঠোৱা হ\'ল|',
 'newarticle'             => '(নতুন)',
-'newarticletext'         => 'আপুনি বিছৰা পৃষ্ঠাটো এতিয়ালৈকে লিখা হোৱা নাই। 
-এই লিখনীতো লিখিবলৈ তলত লিখা আৰম্ভ কৰক। (সহায়ৰ কাৰণে [[{{MediaWiki:Helppage}}|ইয়াত]] টিপা মাৰক।)
+'newarticletext'         => 'আপুনি বিচৰা প্রবন্ধটো বিচাৰি পোৱা নগল।
 
-আপুনি যদি ইয়ালৈ ভূলতে আহিছে, তেনেহলে আপোনাৰ ব্রাউজাৰত (BACK) বুতামত টিপা মাৰক।',
-'noarticletext'          => 'এই পৃষ্ঠাত বর্তমান কোনো পাঠ্য নাই| আপুনি ৱিকিপিডিয়াৰ আন পৃষ্ঠাত [[Special:Search/{{PAGENAME}}| শিৰোণামাতো বিচাৰিব পাৰে, বা [{{fullurl:{{FULLPAGENAME}}|action=edit}} লিখা আৰম্ভ কৰিব পাৰে] ।',
+ইচ্ছা কৰিলে আপুনিয়েই এই প্রবন্ধটো লিখা আৰম্ভ কৰিব পাৰে। [[{{MediaWiki:Helppage}}|ইয়াত]] সহায় পাব।
+
+আপুনি যদি ইয়ালৈ ভুলতে আহিছে, তেনেহলে আপোনাৰ ব্রাওজাৰত (BACK) বুতামত টিপা মাৰক।',
+'noarticletext'          => 'এই পৃষ্ঠাত বর্তমান কোনো পাঠ্য নাই| আপুনি ৱিকিপিডিয়াৰ আন পৃষ্ঠাত [[Special:Search/{{PAGENAME}}| শিৰোণামাতো বিচাৰিব পাৰে, বা]] [{{fullurl:{{FULLPAGENAME}}|action=edit}} লিখা আৰম্ভ কৰিব পাৰে] ।',
 'previewnote'            => '<strong>মনত ৰাখিব যে এয়া কেৱল খচৰা হে, সাল-সলনিবোৰ এতিয়াও সংৰক্ষিত কৰা হোৱা নাই!</strong>',
 'editing'                => '$1 সম্পাদনা',
 'editingsection'         => '$1 (বিভাগ) সম্পদনা কৰি থকা হৈছে',
+'editingcomment'         => '$1 (মন্তব্য) সম্পাদন',
 'copyrightwarning'       => "অনুগ্ৰহ কৰি মন কৰক যে {{SITENAME}}লৈ কৰা সকলো অৱদান $2 ৰ চর্তাৱলীৰ মতে প্রদান কৰা বুলি ধৰি লোৱা হব (আৰু অধিক জানিবলৈ $1 চাঁওক)। যদি আপুনি আপোনাৰ লিখনি নিৰ্দয়ভাৱে সম্পাদনা কৰা আৰু ইচ্ছামতে পুনৰ্বিতৰণ কৰা ভাল নাপায়, তেনেহ'লে নিজৰ লিখনি ইয়াত নিদিব|
 <br />
 
 ইয়াত আপোনাৰ লিখনি দিয়াৰ লগে লগে আপুনি আপোনা-আপুনি প্ৰতিশ্ৰুতি দিছে যে এই লিখনিটো আপোনাৰ মৌলিক লিখনি, বা কোনো স্বত্বাধিকাৰ নথকা বা কোনো ৰাজহুৱা ৱেবছাইট বা তেনে কোনো মুকলি উৎসৰ পৰা আহৰণ কৰা| 
 <strong>স্বত্বাধিকাৰযুক্ত কোনো সমল অনুমতি অবিহনে দাখিল নকৰে যেন!</strong>",
+'copyrightwarning2'      => 'অনুগ্ৰহ কৰি মন কৰক যে {{SITENAME}}লৈ কৰা সকলো অৱদান আন সদস্যই সম্পাদনা কৰিব, সলনি কৰিব অথবা মচি দিব পাৰে।
+আপুনি যদি আপোনাৰ লিখনি নিৰ্দয়ভাৱে সম্পাদনা কৰা ভাল নাপায়, তেনেহলে নিজৰ লিখনি ইয়াত নিদিব|<br />
+ইয়াত আপোনাৰ লিখনি দিয়াৰ লগে লগে আপুনি আপোনা-আপুনি প্ৰতিশ্ৰুতি দিছে যে এই লিখনিটো আপোনাৰ মৌলিক লিখনি, বা কোনো স্বত্বাধিকাৰ নথকা বা কোনো ৰাজহুৱা ৱেবছাইট বা তেনে কোনো মুকলি উৎসৰ পৰা আহৰণ কৰা| 
+<strong>স্বত্বাধিকাৰযুক্ত কোনো সমল অনুমতি অবিহনে দাখিল নকৰে যেন!</strong>',
 'longpagewarning'        => '<strong>সাবধান: এই পৃষ্ঠাটো $1 কিলোবাইট আকাৰৰ; কিছুমান ব্রাউজাৰে 32kb বা তাতকৈ বেছি আকাৰৰ পৃষ্ঠা দেখুৱাবলৈ বা সম্পাদনা কৰিবলৈ অসুবিধা পাব পাৰে ।
 অনুগ্রহ কৰি এই পৃষ্ঠাটোক সৰু সৰু খণ্ডত বিভক্ত কৰাৰ কথা বিবেচনা কৰক ।</strong>',
-'templatesused'          => 'এই পৃষ্ঠাত ব্যৱহৃত সাঁচ সমুহ',
-'templatesusedpreview'   => 'এই খচৰাত ব্যৱহৃত সাঁচ সমুহ',
+'longpageerror'          => '<strong>ভুল: আপুনি দিয়া লিখনী $1 কিলো-বাইট আকাৰৰ, যি $2 কিলো-বাইট সীমাটকৈ বেছি।
+ইয়াক সঞ্চিত কৰিব পৰা নাযাব।</strong>',
+'templatesused'          => 'এই পৃষ্ঠাত ব্যৱহৃত ঠাঁচ সমুহ',
+'templatesusedpreview'   => 'ব্যৱহৃত ঠাঁচ সমুহ',
 'template-protected'     => '(সুৰক্ষিত)',
-'template-semiprotected' => '(অর্ধ-সংৰক্ষিত)',
+'template-semiprotected' => '(অর্ধ-সুৰক্ষিত)',
 'nocreatetext'           => '{{SITENAME}} ত নতুন লিখনী লিখা ৰদ কৰা হৈছে।
 আপুনি ঘুৰি গৈ অস্তিত্বত থকা পৃষ্ঠা এটা সম্পাদনা কৰিব পাৰে, বা [[Special:Userlogin| নতুন সদস্যভর্তি হওক/ প্রবেশ কৰক]] ।',
 'recreate-deleted-warn'  => "'''সাৱধান: আপুনি আগতে বিলোপিত কৰা পৃষ্ঠা এটা পূণঃনির্মান কৰি আছে। '''
@@ -477,51 +550,71 @@ $messages = array(
 
 # History pages
 'viewpagelogs'        => 'এই পৃষ্ঠাৰ লগ চাঁওক|',
-'currentrev'          => 'এতিয়াৰ অৱতৰন',
+'currentrev'          => 'শেহতীয়া ভাষ্য',
 'revisionasof'        => '$1 তম ভাষ্য',
-'previousrevision'    => '← আগৰ সংসোধন',
-'nextrevision'        => 'নতুন সংসোধন →',
-'currentrevisionlink' => 'সাম্প্রতিক সংসোধন',
+'previousrevision'    => '← আগৰ সংশোধন',
+'nextrevision'        => 'সদ্যসংশোধিত',
+'currentrevisionlink' => 'শেহতীয়া ভাষ্য',
 'cur'                 => 'বর্তমান',
 'last'                => 'আগৰ',
 'page_first'          => 'প্রথম',
 'page_last'           => 'অন্তিম',
+'histlegend'          => 'পার্থক্য বাচনী: পার্থক্য চাবলৈ সংকলনবোৰৰ সম্মুখত থকা ৰেডিও বুটামবোৰ বাচনী কৰি এণ্টাৰ টিপক অথবা একেবাৰে তলত দিয়া বুটামতো ক্লীক কৰক <br />
+লিজেণ্ড: (বর্তমান) = বর্তমানৰ সংকলনৰ লগত পার্থক্য,
+(অন্তিম) = আগৰ সংকলনৰ লগত পার্থক্য, M = অগুৰুত্বপুর্ণ সম্পাদনা।',
+'deletedrev'          => '[বিলোপন কৰা হল]',
 'histfirst'           => 'আটাইতকৈ পূৰণি',
 'histlast'            => 'শেহতীয়া',
+'historyempty'        => '(খালী)',
+
+# Revision feed
+'history-feed-title' => 'সংকলন ইতিসাহ',
+
+# Revision deletion
+'rev-delundel'   => 'দেখোৱা হওক / লুকুওৱা হওক',
+'revisiondelete' => 'সংকলন বিলোপন কৰক / পুণর্স্থাপিত কৰক',
 
 # Diffs
 'history-title'           => '"$1" ৰ সাল-সলনিৰ ইতিহাস',
-'difference'              => '(খঁচৰা সমুহৰ মাজৰ পার্থক্য)',
+'difference'              => 'বিভিন্ন সংস্কৰণৰ প্রভেদ',
 'lineno'                  => 'পংক্তি $1:',
 'compareselectedversions' => 'নির্বাচিত কৰা সংকলন সমুহৰ মাজত পার্থক্য চাঁওক|',
 'editundo'                => 'পূৰ্ববতাৰ্থে',
 
 # Search results
-'noexactmatch' => "'''\"\$1\" শিৰোণামাৰ কোনো লিখনী নাই।''' আপুনী এই লিখনী [[:\$1|লিখিব পাৰে]]।",
-'prevn'        => 'পিছলৈ $1',
-'nextn'        => 'পৰৱর্তি $1',
-'viewprevnext' => 'চাঁওক ($1) ($2) ($3)',
-'powersearch'  => 'অতিসন্ধান',
+'noexactmatch'          => "'''\"\$1\" শিৰোণামাৰ কোনো লিখনী নাই।''' আপুনী এই লিখনী [[:\$1|লিখিব পাৰে]]।",
+'noexactmatch-nocreate' => "'''\"\$1\" শিৰোণামাৰ কোনো লিখনী নাই।'''",
+'toomanymatches'        => 'বহুত বেছি মিল পোৱা গৈছে, সন্ধাণ-শব্দ সলনি কৰিবলৈ অনুৰোধ কৰা হল',
+'titlematches'          => 'পৃষ্ঠাৰ শিৰোণামা মিলিছে',
+'notitlematches'        => 'এটাও পৃষ্ঠাৰ শিৰোণামা মিলা নাই',
+'textmatches'           => 'লিখনীৰ পাঠ্য মিলিছে',
+'notextmatches'         => 'এটাও লিখনীৰ পাঠ্য মিলা নাই',
+'prevn'                 => 'পুর্ববর্তি $1',
+'nextn'                 => 'পৰৱর্তি $1',
+'viewprevnext'          => 'চাওক ($1) ($2) ($3)',
+'showingresults'        => "তলত #'''$2'''ৰ পৰা {{PLURAL:$1|'''1''' ফলাফল|'''$1''' ফলাফল}} দেখুওৱা হৈছে।",
+'powersearch'           => 'অতিসন্ধান',
 
 # Preferences page
-'preferences'   => 'পচন্দ',
+'preferences'   => 'ৰুচি',
 'mypreferences' => 'মোৰ পচন্দ',
+'skin-preview'  => 'খচৰা',
 'retypenew'     => 'নতুন গুপ্তশব্দ আকৌ টাইপ কৰক',
 
 'grouppage-sysop' => '{{ns:project}}:প্রবন্ধক',
 
 # User rights log
-'rightslog' => 'সদস্যৰ অধিকাৰ সুচী',
+'rightslog' => 'সভ্যৰ অধিকাৰৰ লেখ',
 
 # Recent changes
 'nchanges'                       => '$1 {{PLURAL:$1|সাল-সলনি|সাল-সলনি}}',
-'recentchanges'                  => 'অলপতে হোৱা সাল-সলনি',
+'recentchanges'                  => 'শেহতীয়া কাম',
 'recentchanges-feed-description' => 'ৱিকিত হোৱা শেহতিয়া সাল-সলনি এই ফীডত অনুসৰন কৰক।',
 'rcnotefrom'                     => "তলত '''$2''' ৰ পৰা হোৱা ('''$1''' লৈকে) পৰিৱর্তন দেখুওৱা হৈছে ।",
 'rclistfrom'                     => '$1 ৰ নতুন সাল-সলনি দেখুওৱাওক',
 'rcshowhideminor'                => '$1 -সংখ্যক নগণ্য সম্পাদনা',
 'rcshowhidebots'                 => 'বট $1',
-'rcshowhideliu'                  => 'প্রবেশ কৰা সদস্যৰ সাল-সলনি $1',
+'rcshowhideliu'                  => 'প্রবিষ্ট সভ্যৰ সাল-সলনি $1',
 'rcshowhideanons'                => 'বেনাম সদস্যৰ সাল-সলনি $1',
 'rcshowhidepatr'                 => '$1 পহৰা দিয়া সম্পাদনা',
 'rcshowhidemine'                 => 'মোৰ সম্পাদনা $1',
@@ -591,7 +684,7 @@ The [http://www.mediawiki.org/wiki/Manual:Job_queue job queue] length is '''\$7'
 'nbytes'         => '$1 {{PLURAL:$1|বাইট|বাইট}}',
 'nlinks'         => '$1 {{PLURAL:$1|সংযোগ|সংযোগ}}',
 'nmembers'       => '{{PLURAL:$1|সদস্য|$1 সদস্যবৃন্দ}}',
-'prefixindex'    => 'উপশব্দ সুচী',
+'prefixindex'    => 'পূৰ্বপদৰ সুচী',
 'longpages'      => 'দিঘলীয়া পৃষ্ঠাসমুহ',
 'deadendpages'   => 'ডেড এণ্ড পৃষ্ঠাসমুহ',
 'protectedpages' => 'সুৰক্ষিত পৃষ্ঠাসমুহ',
@@ -605,7 +698,7 @@ The [http://www.mediawiki.org/wiki/Manual:Job_queue job queue] length is '''\$7'
 'booksources' => 'গ্রন্থৰ উত্‍স সমুহ',
 
 # Special:Log
-'specialloguserlabel'  => 'সদস্য:',
+'specialloguserlabel'  => 'সভ্য:',
 'speciallogtitlelabel' => 'শিৰোণামা:',
 'log'                  => 'আলেখ',
 'all-logs-page'        => 'সকলো সুচী',
@@ -622,7 +715,7 @@ The [http://www.mediawiki.org/wiki/Manual:Job_queue job queue] length is '''\$7'
 'allpagesprefix' => 'এই উপশব্দৰে আৰম্ভ হোৱা পৃষ্ঠা দেখুৱাওক:',
 
 # Special:Categories
-'categories' => '{{PLURAL:$1|শ্রেণী|শ্রেণী}}',
+'categories' => 'শ্রেণী',
 
 # E-mail user
 'emailuser' => 'এই সদস্যজনলৈ ই-মেইল পথাওক',
@@ -641,8 +734,8 @@ The [http://www.mediawiki.org/wiki/Manual:Job_queue job queue] length is '''\$7'
 'unwatch'              => 'অনুসৰণ কৰিব নালাগে',
 'watchlist-details'    => 'বার্তা পৃষ্ঠা সমুহ নধৰি {{PLURAL:$1|$1 পৃষ্ঠা|$1 পৃষ্ঠা}} লক্ষ্য-তালিকাত আছে।',
 'wlshowlast'           => 'যোৱা $1 ঘণ্টা $2 দিন $3 চাওক',
-'watchlist-hide-bots'  => 'বটে কৰা সম্পাদনা লুকুৱাওক',
-'watchlist-hide-own'   => 'মই কৰা সম্পাদনা লুকুৱাওক',
+'watchlist-hide-bots'  => 'যান্ত্রিক সম্পাদনাবিলাক দেখুৱাব নালাগে',
+'watchlist-hide-own'   => 'মোৰ সম্পাদনাবোৰ দেখুৱাব নালাগে',
 'watchlist-hide-minor' => 'অগুৰুত্ব্পূর্ণ সম্পাদনা লুকুৱাওক',
 
 # Displayed when you click the "watch" button and it is in the process of watching
@@ -662,7 +755,7 @@ The [http://www.mediawiki.org/wiki/Manual:Job_queue job queue] length is '''\$7'
 'deletecomment'               => 'বিলোপনৰ কাৰণ।',
 'deleteotherreason'           => 'আন/অতিৰিক্ত কাৰণ:',
 'deletereasonotherlist'       => 'আন কাৰণ:',
-'rollbacklink'                => 'অগ্রায্য',
+'rollbacklink'                => 'পূৰ্ববৎ কৰিবলৈ',
 'protectlogpage'              => 'সুৰক্ষা সুচী',
 'protectcomment'              => 'মন্তব্য:',
 'protectexpiry'               => 'সময় শেষ:',
@@ -697,13 +790,13 @@ The [http://www.mediawiki.org/wiki/Manual:Job_queue job queue] length is '''\$7'
 'month'         => 'এই মাহৰ পৰা (আৰু আগৰ):',
 'year'          => 'এই বছৰৰ পৰা (আৰু আগৰ):',
 
-'sp-contributions-newbies-sub' => 'নতুন সদস্যৰ কাৰনে',
+'sp-contributions-newbies-sub' => 'নতুন সভ্যৰ কাৰণে',
 'sp-contributions-blocklog'    => 'বাৰণ সুচী',
 
 # What links here
 'whatlinkshere'       => 'এই পৃষ্ঠা ব্যৱ্হাৰ কৰিছে...',
 'whatlinkshere-title' => '$1 লৈ সংযোগ কৰা পৃষ্ঠাসমুহ',
-'linklistsub'         => '(সংযোগবোৰৰ সুচী)',
+'linklistsub'         => 'সংযোগসুচী',
 'linkshere'           => "এই পৃষ্ঠাটো '''[[:$1]]''' ৰ লগত সংযোজিত:",
 'nolinkshere'         => "'''[[:$1]]''' ৰ লগত কোনো পৃষ্ঠা সংযোজিত নহয়।",
 'isredirect'          => 'পূণঃনির্দেশন পৃষ্ঠা',
@@ -749,7 +842,7 @@ The [http://www.mediawiki.org/wiki/Manual:Job_queue job queue] length is '''\$7'
 'revertmove'     => 'আগৰ অৱ্স্থালৈ ঘুৰি যাওক',
 
 # Export
-'export' => 'পৃষ্ঠা ৰপ্টানি কৰক|',
+'export' => 'পৃষ্ঠা নিষ্কাষন',
 
 # Namespace 8 related
 'allmessages' => 'ব্যৱস্থাৰ বতৰা',
@@ -785,15 +878,14 @@ The [http://www.mediawiki.org/wiki/Manual:Job_queue job queue] length is '''\$7'
 'tooltip-n-recentchanges'         => 'শেহতীয়া সালসলনিসমূহৰ সূচী',
 'tooltip-n-randompage'            => 'অ-পূৰ্বনিৰ্ধাৰিতভাবে যিকোনো এটা পৃষ্ঠা দেখুৱাবৰ কাৰণে',
 'tooltip-n-help'                  => 'সহায়ৰ বাবে ইয়াত ক্লিক কৰক',
-'tooltip-n-sitesupport'           => 'আমাক সহায় কৰক!',
 'tooltip-t-whatlinkshere'         => 'ইয়ালৈ সংযোজিত সকলো পৃষ্ঠাৰ সুচী',
 'tooltip-t-contributions'         => 'এই সদস্যজনৰ অৰিহনাসমূহৰ সূচী চাঁওক ।',
 'tooltip-t-emailuser'             => 'এই সদস্যজনলৈ ই-মেইল পঠাওক',
 'tooltip-t-upload'                => "ফাইল আপল'ড-অৰ অৰ্থে",
 'tooltip-t-specialpages'          => 'বিশেষ পৃষ্ঠাসমূ্হৰ সূচী',
-'tooltip-ca-nstab-user'           => 'সদস্যৰ পৃষ্ঠা চাঁওক',
+'tooltip-ca-nstab-user'           => 'সভ্যৰ ব্যক্তিগত পৃষ্ঠালৈ',
 'tooltip-ca-nstab-project'        => 'আচনী পৃষ্ঠা চাঁওক।',
-'tooltip-ca-nstab-image'          => 'নথি পৃষ্ঠা চাঁওক',
+'tooltip-ca-nstab-image'          => 'নথি পৃষ্ঠা চাওক',
 'tooltip-ca-nstab-template'       => 'সাঁচ চাওক',
 'tooltip-ca-nstab-help'           => 'সহায় পৃষ্ঠা চাওক',
 'tooltip-ca-nstab-category'       => 'শ্রেণীসমূহৰ পৃষ্ঠা চাঁওক|',
@@ -802,7 +894,7 @@ The [http://www.mediawiki.org/wiki/Manual:Job_queue job queue] length is '''\$7'
 'tooltip-preview'                 => 'অপুনি কৰা সালসলনিবোৰৰ খচৰা চাওক, আনুগ্রহ কৰি সালসলনি সাচী থোৱাৰ আগতে ব্যৱহাৰ কৰক!',
 'tooltip-diff'                    => 'ইয়াত আপুনি কৰা সালসলনিবোৰ দেখুৱাওক',
 'tooltip-compareselectedversions' => 'এই পৃষ্ঠাত নির্বাচিত কৰা দুটা অৱতৰৰ মাজত পার্থক্য দেখুৱাওক|',
-'tooltip-watch'                   => 'এই পৃষ্ঠাটোক আপোনাৰ লক্ষ-তালিকাত সংলগ্ন কৰক|',
+'tooltip-watch'                   => 'এই পৃষ্ঠাটো আপোনাৰ অনুসৰণতালিকাভুক্ত কৰক',
 
 # Browsing diffs
 'previousdiff' => '← পিছৰ পার্থক্য',
@@ -821,7 +913,7 @@ The [http://www.mediawiki.org/wiki/Manual:Job_queue job queue] length is '''\$7'
 'metadata-help'     => 'এই ফাইলত অতিৰিক্ত খবৰ আছে, হয়তো ডিজিটেল কেমেৰা বা স্কেনাৰ ব্যৱহাৰ কৰি সৃস্তি বা পৰিৱর্তন কৰা হৈছে|
 এই ফাইলটো আচলৰ পৰা পৰিৱর্তন  কৰা হৈছে, সেয়েহে পৰিৱর্তিত ফাইলটোৰ সৈতে নিমিলিব পাৰে|',
 'metadata-expand'   => 'বহলাই ইয়াৰ বিষয়ে জনাওক',
-'metadata-collapse' => 'বহলোৱা বিষয়বোৰ লুকুৱাওক',
+'metadata-collapse' => 'বিষয় বৰ্ণনা নেদেখুৱাবলৈ',
 'metadata-fields'   => 'এই সুচীত থকা বিষয়বোৰ চিত্রৰ পৃষ্ঠাৰ তলত সদায় দেখা যাব ।
 বাকী বিষয়বোৰ গুপ্ত থাকিব ।
 * make

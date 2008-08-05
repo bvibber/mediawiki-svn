@@ -4,7 +4,6 @@
  * @ingroup Language
  * @file
  *
- * @author SPQRobin
  */
 
 $messages = array(
@@ -32,7 +31,6 @@ $messages = array(
 'mainpage'             => 'ᎤᎵᎮᎵᏍᏗ',
 'mainpage-description' => 'ᎤᎵᎮᎵᏍᏗ',
 'portal'               => 'ᎾᎥ ᏄᎾᏓᎸ ᎠᏍᏚᎢᏍᏗ',
-'sitesupport'          => 'ᎠᎵᏍᎪᎸᏙᏗ',
 
 # Short words for each namespace, by default used in the namespace tab in monobook
 'nstab-main'     => 'ᎤᏓᏡᎬ',

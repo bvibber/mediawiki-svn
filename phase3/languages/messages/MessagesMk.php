@@ -7,11 +7,8 @@
  * @author FlavrSavr
  * @author Misos
  * @author INkubusse
- * @author Siebrand
  * @author Glupav
  * @author לערי ריינהארט
- * @author Nike
- * @author Jon Harald Søby
  */
 
 $skinNames = array(
@@ -129,8 +126,6 @@ $messages = array(
 'underline-always'  => 'Секогаш',
 'underline-never'   => 'Никогаш',
 'underline-default' => 'Според прилагодувањата на прелистувачот',
-
-'skinpreview' => '(Прегледај)',
 
 # Dates
 'sunday'        => 'недела',
@@ -303,8 +298,6 @@ $messages = array(
 'portal-url'           => 'Project:Портал',
 'privacy'              => 'Заштита на личните податоци',
 'privacypage'          => 'Project:Заштита на личните податоци',
-'sitesupport'          => 'Донации',
-'sitesupport-url'      => 'Project:Поддршка',
 
 'badaccess'        => 'Грешка во пермисии',
 'badaccess-group0' => 'Немате дозвола да ја извршите бараната акција.',
@@ -577,10 +570,6 @@ ID-то на вашето блокирање е $5.
 'blockededitsource'                => "Текстот на '''вашите уредувања''' на '''$1''' е прикажан подолу:",
 'whitelistedittitle'               => 'Мора да сте најавени за менување на статии',
 'whitelistedittext'                => 'Мора да сте $1 за да уредувате страници.',
-'whitelistreadtitle'               => 'Мора да сте најавени за да читате статии',
-'whitelistreadtext'                => 'Мора да сте [[Special:Userlogin|најавени]] за да читате статии.',
-'whitelistacctitle'                => 'Немате дозвола да додавате корисници',
-'whitelistacctext'                 => 'За да можете да додавате корисници во ова Вики мора да се [[Special:Userlogin|најавите]] и да имате соодветна дозвола.',
 'confirmedittitle'                 => 'Потребна е потврда за е-поштенската адреса за уредување',
 'confirmedittext'                  => 'Морате да ја потврдите вашата е-поштенска адреса пред да уредувате страници. Поставете ја и валидирајте ја вашата е-поштенска адреса преку вашите [[Special:Preferences|прилагодувања]].',
 'nosuchsectiontitle'               => 'Нема такваа секција',
@@ -787,6 +776,7 @@ ID-то на вашето блокирање е $5.
 'qbsettings-floatingright' => 'Пловечки десно',
 'changepassword'           => 'Промени лозинка',
 'skin'                     => 'Маска',
+'skin-preview'             => 'Прегледај',
 'math'                     => 'Математички операции',
 'dateformat'               => 'Приказ на време',
 'datedefault'              => 'Небитно',
@@ -832,15 +822,14 @@ ID-то на вашето блокирање е $5.
 'files'                    => 'Датотеки',
 
 # User rights
-'userrights'                 => 'Управување со кориснички права', # Not used as normal message but as header for the special page itself
-'userrights-lookup-user'     => 'Управувај со корисничките групи',
-'userrights-user-editname'   => 'Внеси корисничко име:',
-'editusergroup'              => 'Уреди кориснички групи',
-'editinguser'                => "Менување на корисничките права на корисникот '''[[User:$1|$1]]''' ([[User talk:$1|{{int:talkpagelinktext}}]] | [[Special:Contributions/$1|{{int:contribslink}}]])",
-'userrights-editusergroup'   => 'Уреди ги корисничките групи',
-'saveusergroups'             => 'Зачувај ги корисничките групи',
-'userrights-groupsmember'    => 'Член на:',
-'userrights-groupsavailable' => 'Достапни групи:',
+'userrights'               => 'Управување со кориснички права', # Not used as normal message but as header for the special page itself
+'userrights-lookup-user'   => 'Управувај со корисничките групи',
+'userrights-user-editname' => 'Внеси корисничко име:',
+'editusergroup'            => 'Уреди кориснички групи',
+'editinguser'              => "Менување на корисничките права на корисникот '''[[User:$1|$1]]''' ([[User talk:$1|{{int:talkpagelinktext}}]] | [[Special:Contributions/$1|{{int:contribslink}}]])",
+'userrights-editusergroup' => 'Уреди ги корисничките групи',
+'saveusergroups'           => 'Зачувај ги корисничките групи',
+'userrights-groupsmember'  => 'Член на:',
 
 # Groups
 'group'            => 'Група:',
@@ -999,11 +988,11 @@ ID-то на вашето блокирање е $5.
 # File reversion
 'filerevert'                => 'Врати $1',
 'filerevert-legend'         => 'Врати датотека',
-'filerevert-intro'          => '<span class="plainlinks">Ја враќата \'\'\'[[Media:$1|$1]]\'\'\' на [$4 верзија од $3, $2].</span>',
+'filerevert-intro'          => "Ја враќата '''[[Media:$1|$1]]''' на [$4 верзија од $3, $2].",
 'filerevert-comment'        => 'Коментар:',
 'filerevert-defaultcomment' => 'Вратена на верзија од $2, $1',
 'filerevert-submit'         => 'Врати',
-'filerevert-success'        => '<span class="plainlinks">\'\'\'[[Media:$1|$1]]\'\'\' е вратен на [$4 верзија од $3, $2].</span>',
+'filerevert-success'        => "'''[[Media:$1|$1]]''' е вратен на [$4 верзија од $3, $2].",
 'filerevert-badversion'     => 'Нема претходна локална верзија на оваа датотека со даденото време.',
 
 # MIME search
@@ -1049,7 +1038,9 @@ ID-то на вашето блокирање е $5.
 
 'disambiguations'      => 'Страници за појаснување',
 'disambiguationspage'  => 'Template:Врски до страници за појаснување',
-'disambiguations-text' => "Следните страници покажуваат до '''страница за појаснување'''. Тие треба да покажуваат кон соодветната тема. <br />Страница се третира како појаснувачка ако користи шаблон кој е наведен во [[MediaWiki:disambiguationspage]]",
+'disambiguations-text' => "Следните страници покажуваат до '''страница за појаснување'''.
+Тие треба да покажуваат кон соодветната тема.<br />
+Страница се третира како појаснувачка ако користи шаблон кој е наведен во [[MediaWiki:Disambiguationspage]]",
 
 'doubleredirects'     => 'Двојни пренасочувања',
 'doubleredirectstext' => 'Секој ред содржи врски кон првото и второто пренасочување, којшто обично ја посочува <i>вистинската</i> целна страница кон кое првото пренасочување би требало да насочува.',
@@ -1461,14 +1452,11 @@ $NEWPAGE
 *Непразна страница за разговор веќе постои за новиот наслов, или
 *Не сте го одштиклирале долното поле. Во тие случаи, вие ќе треба да ја преместите или споите страницата рачно, доколку сакате.',
 'movearticle'             => 'Премести ја страницата',
-'movenologin'             => 'Не сте најавени',
-'movenologintext'         => 'Мора да бидете регистриран корисник и [[Special:Userlogin|најавен]] да преместите страница.',
 'movenotallowed'          => 'You do not have permission to move pages on Википедија.',
 'newtitle'                => 'Кон новиот наслов',
 'move-watch'              => 'Набљудувај ја оваа страница',
 'movepagebtn'             => 'Премести ја страницата',
 'pagemovedsub'            => 'Преместувањето успеа',
-'movepage-moved'          => '<big>\'\'\'"$1" беше преместена во "$2"\'\'\'</big>', # The two titles are passed in plain text as $3 and $4 to allow additional goodies in the message.
 'articleexists'           => 'Страница со тоа име веќе постои, или името што го избравте не е валидно. Ве молиме изберете друго име.',
 'talkexists'              => 'Самата страница беше преместена успешно, но страницата за разговор не можеше да биде преместена бидејќи веќе постои таква на новиот наслов. Ве молиме спојте ги рачно.',
 'movedto'                 => 'преместена како',
@@ -1495,7 +1483,7 @@ $NEWPAGE
 
 За да извезете неколку страници, секоја нова секција ставајте ја во '''нов ред'''. Потоа изберете дали ја сакате само тековната верзија (заедно со информацијата за последното уредување) или сите верзии (заедно со тековната) на страницата.
 
-Ако ја сакате само тековната верзија, би можеле да искористите врска од видот [[Special:Export/Шах]] за страницата [[Шах]].",
+Ако ја сакате само тековната верзија, би можеле да искористите врска од видот [[{{ns:special}}:Export/{{MediaWiki:Mainpage}}]] за страницата \"[[{{MediaWiki:Mainpage}}]]\".",
 'exportcuronly'   => 'Вклучи ја само тековната верзија, не целосната историја',
 'exportnohistory' => "----
 '''Забелешка:''' извезувањето на целата историја на страниците преку овој формулар е оневозможено заради подобри перформанси.",
@@ -1578,7 +1566,6 @@ $NEWPAGE
 'tooltip-n-recentchanges'         => 'Листа на скорешни промени на викито.',
 'tooltip-n-randompage'            => 'Случајна страница',
 'tooltip-n-help'                  => 'Место каде што може да се информирате.',
-'tooltip-n-sitesupport'           => 'Поддржете ја Википедија',
 'tooltip-t-whatlinkshere'         => 'Листа на сите вики страници поврзани овде',
 'tooltip-t-recentchangeslinked'   => 'Скорешни промени поврзани од оваа страница',
 'tooltip-feed-rss'                => 'RSS feed за страницата',

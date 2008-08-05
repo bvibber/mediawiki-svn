@@ -6,9 +6,6 @@
  *
  * @author SeriCtam
  * @author Ccaxjoj Iteja Z Iti Poop
- * @author Siebrand
- * @author SPQRobin
- * @author Jon Harald Søby
  * @author Teak
  */
 
@@ -57,8 +54,6 @@ $messages = array(
 'underline-always'  => 'Jömdexepe',
 'underline-never'   => 'Diixepe',
 'underline-default' => 'AutoBrowser',
-
-'skinpreview' => '(Cuáxiit)',
 
 # Dates
 'sunday'        => 'Dajmino',
@@ -220,8 +215,6 @@ $messages = array(
 'portal-url'           => 'Project:Portalde ctám',
 'privacy'              => 'Cáyunde privacy',
 'privacypage'          => 'Project:Cáyunde privacy',
-'sitesupport'          => 'Donación',
-'sitesupport-url'      => 'Project:Donación',
 
 'badaccess'        => 'Römjde permicion',
 'badaccess-group0' => 'Menepermicion executan accion z hecocmíiit.',
@@ -312,7 +305,8 @@ Sysop zo locköx zo xuniim jan rae': $1",
 'badarticleerror'      => 'Jan accion neperformon jan páhina iti.',
 'cannotdelete'         => 'Nedelatom páhina zo jöx ciúchan zo fillöx. (Jömdectam coccebj delatom jan pos-poop.)',
 'badtitle'             => 'Ahisharliit',
-'badtitletext'         => 'Zo páhina coccebj [[ahisharliit]] zo. Jan pos-coccebj plusöxde 1 jöx 1 characterám jan nepos-coccebj usadas titlenám iti.',
+'badtitletext'         => 'Zo páhina coccebj ahisharliit zo.
+Jan pos-coccebj plusöxde 1 jöx 1 characterám jan nepos-coccebj usadas titlenám iti.',
 'perfdisabled'         => 'Sorry! Jan part coccebj disablenöxde temp. Zo minöxde cáipyde database ponit zo iti nectám pos-usadad wiki zo.',
 'perfcached'           => 'Jan data coccebj cache ö necoccebj updatenom.',
 'perfcachedts'         => "Jan data coccebj cache ö coccebjöx updatenom $1 'de.",
@@ -490,10 +484,6 @@ Me IDde block coccebj $5. Includam 1 jöx 2 pac querinám iti.",
 'blockededitsource'         => "Textua zode '''meticpatlöxde''' '''$1''' coccebj cohuatlöx:",
 'whitelistedittitle'        => 'Caápo Neces ticpatlöx',
 'whitelistedittext'         => 'Mecoccebj $1 ticpatlöx páhinám.',
-'whitelistreadtitle'        => 'Caápo Neces caitom',
-'whitelistreadtext'         => 'Mecoccebj [[Special:Userlogin|caápo]] caitom páhinám.',
-'whitelistacctitle'         => 'Me necoccebj permiccion de creacionde IDde caitom',
-'whitelistacctext'          => 'Coccebj permiccionde creacionde accountám coccebj [[Special:Userlogin|caápo]] ö coccebj permicción appropriatenón.',
 'confirmedittitle'          => 'Confirmacionde e-iitom coccebj Neces ticpatlöx',
 'confirmedittext'           => "Me confirmöx menadressade de e-iitom ticpatlöx 'depre. Set' ö validatenan menadressade IP [[Special:Preferences|hequáatlaác]] mii.",
 'nosuchsectiontitle'        => "Ne'dáár partam",
@@ -643,6 +633,7 @@ Informacion: (curt) = quiíxde vercion currentua,
 'qbsettings-none'       => 'Nepartám',
 'changepassword'        => "Reset'quimx canj",
 'skin'                  => 'Zuláugaum',
+'skin-preview'          => 'Cuáxiit',
 'math'                  => 'HTML-cuat',
 'dateformat'            => 'Formatumde datum',
 'datedefault'           => 'Diiquáatlaac',
@@ -677,15 +668,14 @@ Informacion: (curt) = quiíxde vercion currentua,
 'files'                 => 'Ciúchán',
 
 # User rights
-'userrights-lookup-user'     => "Yoc' polámde caitom",
-'userrights-user-editname'   => 'Caitom ID ra:',
-'editusergroup'              => 'Ticpatlöx Polám Caitóm',
-'editinguser'                => "Ticpatlöx caitom '''[[User:$1|$1]]''' ([[User talk:$1|{{int:talkpagelinktext}}]] | [[Special:Contributions/$1|{{int:contribslink}}]])",
-'userrights-editusergroup'   => 'Ticpatlöx polám caitóm',
-'saveusergroups'             => 'Xuniim Polámde Caitom',
-'userrights-groupsmember'    => 'Ctamde:',
-'userrights-groupsavailable' => 'Polám avaylbul:',
-'userrights-reason'          => "Rade'reset:",
+'userrights-lookup-user'   => "Yoc' polámde caitom",
+'userrights-user-editname' => 'Caitom ID ra:',
+'editusergroup'            => 'Ticpatlöx Polám Caitóm',
+'editinguser'              => "Ticpatlöx caitom '''[[User:$1|$1]]''' ([[User talk:$1|{{int:talkpagelinktext}}]] | [[Special:Contributions/$1|{{int:contribslink}}]])",
+'userrights-editusergroup' => 'Ticpatlöx polám caitóm',
+'saveusergroups'           => 'Xuniim Polámde Caitom',
+'userrights-groupsmember'  => 'Ctamde:',
+'userrights-reason'        => "Rade'reset:",
 
 # Groups
 'group'               => 'Polám:',
@@ -1019,7 +1009,6 @@ iitom e-iitomde diijömde caitóm.',
 # Move page
 'move-page-legend' => 'Yacom páhina',
 'movearticle'      => 'Yacom páhina:',
-'movenologin'      => 'Necaápo',
 'move-watch'       => 'Cáminot jan páhina',
 'movepagebtn'      => 'Yacom páhina',
 'movedto'          => 'yacomöxde',
@@ -1056,7 +1045,6 @@ iitom e-iitomde diijömde caitóm.',
 'tooltip-p-logo'             => 'Caálixötöj',
 'tooltip-n-mainpage'         => 'Yahöx caálixötöj zo',
 'tooltip-n-help'             => 'Áahuiitl hant zo iti.',
-'tooltip-n-sitesupport'      => 'Donacíonhuíiitl',
 'tooltip-t-emailuser'        => 'E-iitom jan caitom',
 'tooltip-t-specialpages'     => 'Lista jömde páhinám extravám',
 'tooltip-ca-nstab-main'      => 'Cohuatlöx contentua páhina zo',

@@ -4,14 +4,11 @@
  * @ingroup Language
  * @file
  *
- * @author Carmine Colacino
  * @author SabineCretella
  * @author Cryptex
  * @author E. abu Filumena
- * @author SPQRobin
- * @author Siebrand
  * @author לערי ריינהארט
- * @author Nike
+ * @author Carmine Colacino
  */
 
 $fallback = 'it';
@@ -130,8 +127,6 @@ $messages = array(
 'mainpage-description' => 'Paggena prencepale',
 'portal'               => "Porta d''a cummunetà",
 'portal-url'           => "Project:Porta d''a cummunetà",
-'sitesupport'          => 'Donazzione',
-'sitesupport-url'      => 'Project:Donazzione',
 
 'badaccess' => "Nun haje 'e premmesse abbastante.",
 
@@ -294,7 +289,7 @@ Putite cuntinuà a ausà {{SITENAME}} comme n'utente senza nomme, o si nò putit
 'allinnamespace' => "Tutt' 'e ppaggene d&#39;&#39;o namespace $1",
 
 # Special:Categories
-'categories'         => '{{PLURAL:$1|Categurìa|Categurìe}}',
+'categories'         => 'Categurìe',
 'categoriespagetext' => "Lista cumpleta d\"e categurie presente ncopp' 'o sito.",
 
 # Watchlist

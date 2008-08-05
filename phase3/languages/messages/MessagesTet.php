@@ -5,8 +5,6 @@
  * @file
  *
  * @author MF-Warburg
- * @author Siebrand
- * @author SPQRobin
  */
 
 $skinNames = array(
@@ -216,7 +214,6 @@ $messages = array(
 'portal-url'           => 'Project:Portál komunidade nian',
 'privacy'              => 'Polítika privasidade nian',
 'privacypage'          => 'Project:Polítika privasidade nian',
-'sitesupport'          => 'Fó donativu ida',
 
 'badaccess-group0' => "Ó la bele halo ne'e.",
 'badaccess-group1' => "Ba halo ne'e tenke iha lubu $1.",
@@ -337,16 +334,13 @@ $messages = array(
 'searchresultshead' => 'Buka',
 
 # User rights
-'userrights'                  => "Filak kuana uza-na'in", # Not used as normal message but as header for the special page itself
-'userrights-lookup-user'      => "Filak lubu uza-na'in",
-'userrights-user-editname'    => "Hakerek naran uza-na'in ida-nian:",
-'editusergroup'               => "Filak lubu uza-na'in",
-'userrights-editusergroup'    => "Filak lubu uza-na'in",
-'userrights-groupsmember'     => 'Membru iha:',
-'userrights-available-none'   => "Ó la bele filak lubu uza-na'in.",
-'userrights-available-add'    => "Ó bele tau tan uza-na'in hotu ba lubu ne'e{{PLURAL:$2||}}: $1.",
-'userrights-available-remove' => "Ó bele hasai uza-na'in hotu ba lubu ne'e{{PLURAL:$2||}}: $1.",
-'userrights-no-interwiki'     => "Ó la bele filak kuana uza-na'in iha wiki seluk.",
+'userrights'               => "Filak kuana uza-na'in", # Not used as normal message but as header for the special page itself
+'userrights-lookup-user'   => "Filak lubu uza-na'in",
+'userrights-user-editname' => "Hakerek naran uza-na'in ida-nian:",
+'editusergroup'            => "Filak lubu uza-na'in",
+'userrights-editusergroup' => "Filak lubu uza-na'in",
+'userrights-groupsmember'  => 'Membru iha:',
+'userrights-no-interwiki'  => "Ó la bele filak kuana uza-na'in iha wiki seluk.",
 
 # Groups
 'group'            => 'Lubu:',
@@ -419,15 +413,15 @@ $messages = array(
 # Statistics
 'statistics'    => 'Estátistika',
 'sitestats'     => '{{SITENAME}} estátistika',
-'userstatstext' => "Iha ne'e registrar tiha ona '''$1''' [[Special:Listusers|uza-na'in]], '''$2''' (ka '''$4%''') $5.",
+'userstatstext' => "Iha ne'e registrar tiha ona '''$1''' {{PLURAL:$1|[[Special:Listusers|uza-na'in]]|[[Special:Listusers|uza-na'in]]}}, '''$2''' (ka '''$4%''') $5.",
 
 'brokenredirects-edit'   => '(edita)',
 'brokenredirects-delete' => '(halakon)',
 
 # Miscellaneous special pages
 'nlinks'            => '$1 ligasaun',
-'nmembers'          => '$1 membru',
-'nrevisions'        => '$1 versaun',
+'nmembers'          => '$1 {{PLURAL:$1|membru|membru}}',
+'nrevisions'        => '$1 {{PLURAL:$1|versaun|versaun}}',
 'shortpages'        => 'Pájina badak',
 'longpages'         => 'Pájina naruk',
 'listusers'         => "Lista uza-na'in",
@@ -521,7 +515,7 @@ $messages = array(
 'undeletelink'           => 'restaurar',
 'undeletecomment'        => 'Komentáriu:',
 'undeletedarticle'       => 'restaurar "[[$1]]"',
-'undeletedrevisions'     => 'restaurar $1 versaun',
+'undeletedrevisions'     => 'restaurar $1 {{PLURAL:$1|versaun|versaun}}',
 'undelete-search-submit' => 'Buka',
 
 # Namespace form on various pages
@@ -569,7 +563,6 @@ $messages = array(
 'newtitle'                => 'Naran foun:',
 'move-watch'              => "Hateke pájina ne'e",
 'movepagebtn'             => 'Book pájina',
-'movepage-moved'          => '<big>\'\'\'Ó book "$1" ba "$2"\'\'\'</big>', # The two titles are passed in plain text as $3 and $4 to allow additional goodies in the message.
 'movedto'                 => 'book tiha ba',
 'movetalk'                => 'Book pájina diskusaun mós',
 '1movedto2'               => 'book tiha [[$1]] ba [[$2]]',
@@ -585,7 +578,7 @@ $messages = array(
 'allmessagescurrent' => 'Testu atuál',
 
 # Import log
-'import-logentry-interwiki-detail' => '$1 versaun husi $2',
+'import-logentry-interwiki-detail' => '$1 {{PLURAL:$1|versaun|versaun}} husi $2',
 
 # Tooltip help for the actions
 'tooltip-pt-userpage'      => "Ha'u-nia pájina uza-na'in",
@@ -603,7 +596,6 @@ $messages = array(
 'tooltip-n-recentchanges'  => "Lista mudansa foufoun sira iha wiki ne'e.",
 'tooltip-n-randompage'     => 'Hola pájina ruma',
 'tooltip-n-help'           => 'Hatudu pájina ajuda.',
-'tooltip-n-sitesupport'    => 'Tulun ami',
 'tooltip-t-whatlinkshere'  => "Lista pájina nian ne'ebé bá iha ne'e",
 'tooltip-t-contributions'  => "Haree lista kontribuisaun uza-na'in ne'e nian",
 'tooltip-t-upload'         => 'Tau iha arkivu laran',

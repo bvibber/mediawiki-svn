@@ -6,9 +6,6 @@
  *
  * @author RoyAlcatraz
  * @author JeanVoisin
- * @author Siebrand
- * @author Nike
- * @author SPQRobin
  */
 
 $messages = array(
@@ -56,8 +53,6 @@ $messages = array(
 'underline-always'  => 'Tout le temps',
 'underline-never'   => 'Jamais',
 'underline-default' => "D'après le réglage du navigateur",
-
-'skinpreview' => "(Vue d'avance)",
 
 # Dates
 'sunday'        => 'dimanche',
@@ -220,8 +215,6 @@ $messages = array(
 'portal-url'           => 'Project:Communauté',
 'privacy'              => 'Régulations des affaires privées',
 'privacypage'          => 'Project:Régulations des affaires privées',
-'sitesupport'          => "Donner de l'argent",
-'sitesupport-url'      => "Project:Donner de l'argent",
 
 'badaccess'        => 'Erreur de permission',
 'badaccess-group0' => 'Vous avez pas assez de permission de faire ça que vous demandez.',
@@ -416,7 +409,7 @@ Si quèqu\'une d\'autre a demandé ce mot de passe ou si vous vous rappelez de v
 'italic_tip'      => 'Italique',
 'link_sample'     => 'Nom du lien',
 'link_tip'        => 'Lien intérieur',
-'extlink_sample'  => 'http://www.exemple.com nom du lien',
+'extlink_sample'  => 'http://www.example.com nom du lien',
 'extlink_tip'     => 'Lien extérieur (Oubliez pas de mettre http:// avant.)',
 'headline_sample' => 'Sujet',
 'headline_tip'    => 'Sujet niveau 2',
@@ -473,10 +466,6 @@ Votre numéro de blocage est #$5.  Mettez donc cette information dans toutes vos
 'blockededitsource'         => "Le texte de '''votres changements''' à '''$1''' est montré en bas.",
 'whitelistedittitle'        => 'Il faut connecter pour faire des changements.',
 'whitelistedittext'         => 'Il faut $1 pour faire des changements.',
-'whitelistreadtitle'        => 'Il faut connecter pour lire.',
-'whitelistreadtext'         => 'Il faut [[Special:Userlogin|connecter]] pour lire.',
-'whitelistacctitle'         => 'Vous avez pas la permission de créer un compte.',
-'whitelistacctext'          => 'Pour être capable de créer des comptes dans ce wiki, il faut [[Special:Userlogin|connecter]] et avoir la permission.',
 'confirmedittitle'          => 'Il faut confirmer votre adresse e-mail pour faire des changements.',
 'confirmedittext'           => "Il faut confirmer votre adresse e-mail pour faire des changements.  Mettez et confirmez un adresse e-mail dans votre [[Special:Preferences|réglage de compte]], s'il vous plaît.",
 'nosuchsectiontitle'        => 'Aucune section pareille',
@@ -487,7 +476,9 @@ Votre numéro de blocage est #$5.  Mettez donc cette information dans toutes vos
 'accmailtitle'              => 'Mot de passe envoyé.',
 'accmailtext'               => 'Le mot de passe pour "$1" a été envoyé à $2.',
 'newarticle'                => '(Nouveau)',
-'newarticletext'            => "Vous avez suit un lien à une page qu'existe pas encore.  Pour créer la page, mettez des mots dans la boëte en bas (voyez la [[{{MediaWiki:Helppage}}|page d'aide]] pour plus d'information.  Si vous êtes ici par erreur, cliquez le bouton \"back\" sus votre navigateur.",
+'newarticletext'            => "Vous avez suit un lien à une page qu'existe pas encore. 
+Pour créer la page, mettez des mots dans la boëte en bas (voyez la [[{{MediaWiki:Helppage}}|page d'aide]] pour plus d'information). 
+Si vous êtes ici par erreur, cliquez le bouton \"back\" sus votre navigateur.",
 'anontalkpagetext'          => "----''Ça ici, c'est la page de discussion pour un useur sans nom qu'a pas encore créé un compte ou qui l'use pas.  Ça fait, il faut user l'adresse IP numérique pour l'identifier.  Une adresse comme ça pourrait être usée par plusieurs useurs.  Si vous êtes un useur sans nom et vous croyez que des messages sans rapport ont été envoyés à vous, [[Special:Userlogin|créer un compte ou connecter]] pour empêcher la confusion avec des autres useurs sans nom dans l'avenir.''",
 'noarticletext'             => 'À présent, y a pas de texte sus cette page. Vous pouvez [[Special:Search/{{PAGENAME}}|charcher pour le titre de cette page]] dans des autres pages ou [{{fullurl:{{FULLPAGENAME}}|action=edit}} changer cette page].',
 'clearyourcache'            => "'''Notez:''' Après que vous avez sauvé votres changements, il foudra peut-être dépasser le cache de votre navigateur pour voir les changements.  '''Mozilla / Firefox / Safari:''' Tenez le bouton ''Shift'' en pèsant ''Reload'', ou pèsez ''Ctrl-Shift-R'' (''Cmd-Shift-R'' sus Apple Mac); '''IE:''' Tenez ''Ctrl'' en pèsant ''Refresh'', ou pèsez ''Ctrl-F5''; '''Konqueror:''' Simplement pèsez le bouton ''Reload'', ou pèsez ''F5''; Pour les useurs de '''Opera''', il foudra peut-être vider complètement le cache dans ''Tools→Preferences''.",
@@ -595,7 +586,7 @@ Assayez de [[Special:Search|charcher dans le wiki]] pour des nouvelles pages.',
 'revdelete-nooldid-title'     => 'Aucun changement choisi',
 'revdelete-nooldid-text'      => 'Vous avez pas choisi le ou les changement(s) pour user cette fonction.',
 'revdelete-selected'          => "{{PLURAL:$2|Changement choisi|Changements choisis}} de '''$1:'''",
-'logdelete-selected'          => "{{PLURAL:$2|Événement de notes choisi|Événements de notes choisis}} pour '''$1:'''",
+'logdelete-selected'          => '{{PLURAL:$1|Événement de notes choisi|Événements de notes choisis}}:',
 'revdelete-text'              => "La liste des changements va sauver les versions ôtées, mais le public pourra pas voir certains morceaux de ces versions.  
 
 Des autres administrateurs sus ce wiki ont la permission de voir et de rétablir les morceaux cachés hormis qu'y aye des restrictions.",
@@ -629,6 +620,7 @@ Des autres administrateurs sus ce wiki ont la permission de voir et de rétablir
 # Preferences page
 'preferences'   => 'Réglage',
 'mypreferences' => 'Mon réglage',
+'skin-preview'  => "Vue d'avance",
 
 # User rights
 'editinguser' => "Changement de '''[[User:$1|$1]]''' ([[User talk:$1|{{int:talkpagelinktext}}]] | [[Special:Contributions/$1|{{int:contribslink}}]])",

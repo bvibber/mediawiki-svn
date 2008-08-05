@@ -5,10 +5,8 @@
  * @file
  *
  * @author 80686
- * @author Siebrand
  * @author לערי ריינהארט
  * @author Spacebirdy
- * @author Jon Harald Søby
  */
 
 $fallback = 'de';
@@ -59,8 +57,6 @@ $messages = array(
 'underline-always'  => 'immer',
 'underline-never'   => 'nie',
 'underline-default' => 'Browser-Vorystellig',
-
-'skinpreview' => '(Vorschou)',
 
 # Dates
 'sunday'    => 'Sundi',
@@ -169,8 +165,6 @@ $messages = array(
 'portal-url'           => 'Project:Gemeinschafts-Portal',
 'privacy'              => 'Daateschutz',
 'privacypage'          => 'Project:Daateschutz',
-'sitesupport'          => 'Finanzielli Hilf',
-'sitesupport-url'      => 'Project:Spenden',
 
 'badaccess' => 'Kei usreichendi Rechte.',
 
@@ -251,11 +245,9 @@ Abfrog: $2',
 <b>Du bisch jitz abgmäldet!</b>
 </div><br />
 We du jitz öppis uf der {{SITENAME}} änderisch, de wird dyni IP-Adrässen als Urhäber regischtriert u nid dy Benutzername. Du chasch di mit em glychen oder emnen andere Benutzername nöi aamälde.',
-'welcomecreation'            => '<h2>Willkomme, $1!</h2>
-
-Dys Benutzerkonto isch aagleit worde
-
-Vergis nid, dyni [[Special:Preferences|Ystelligen]] aazpasse.',
+'welcomecreation'            => '==Willkomme, $1!==
+Dys Benutzerkonto isch aagleit worde.
+Vergis nid, dyni Ystelligen aazpasse.',
 'loginpagetitle'             => 'Benutzer-Aamelde',
 'yourname'                   => 'Dii Benutzername',
 'yourpassword'               => 'Basswort',
@@ -333,7 +325,7 @@ Für d Bestätigung muesch du em Link folge, wo dir isch gmailet worde. Du chasc
 'italic_sample'   => 'kursiv gschribe',
 'italic_tip'      => 'Kursiv gschribe',
 'link_sample'     => 'Stichwort',
-'extlink_sample'  => 'http://www.zumbyschpil.ch Linktekscht',
+'extlink_sample'  => 'http://www.example.com Linktekscht',
 'extlink_tip'     => 'Externer Link (http:// beachte)',
 'headline_sample' => 'Abschnitts-Überschrift',
 'math_sample'     => 'Formel do yfüge',
@@ -356,8 +348,6 @@ Für d Bestätigung muesch du em Link folge, wo dir isch gmailet worde. Du chasc
 'missingsummary'           => "'''Obacht:''' Du hesch kei Zämefassig ongebe. Wenn du erneijt uf Spacher durcksch, wird d Änderung ohni gspychert.",
 'missingcommenttext'       => 'Bitte gib dinr Kommentar unte ii.',
 'whitelistedittext'        => 'Sie müssen sich $1, um Artikel bearbeiten zu können.',
-'whitelistreadtext'        => 'Sie müssen sich [[Special:Userlogin|hier anmelden]], um Artikel lesen zu können.',
-'whitelistacctext'         => 'Um in diesem Wiki Accounts anlegen zu dürfen, müssen Sie sich [[Special:Userlogin|hier anmelden]] und die nötigen Berechtigungen haben.',
 'confirmedittitle'         => 'Zuem Ändere isch e bschtätigti E-Bost-Adräss nötig.',
 'confirmedittext'          => 'Si muen Ihri E-Bost-Adräss erscht bstätige bevor Si Syte go ändere chönne. Bitte setze Si in [[Special:Preferences|Ihre Iistellige]] Ihri E-Bost Adräss ii un löhn Si si pruefe.',
 'accmailtitle'             => 'S Bassword isch verschickt worre.',
@@ -435,6 +425,7 @@ Erklärig: (aktuell) = Underschid zu jetz,
 'prefsnologintext'   => 'Du muesch [[Special:Userlogin|aagmäldet]] sy, für Benutzerystellige chönne z ändere',
 'prefsreset'         => 'Du hesch itz wider Standardystellige',
 'changepassword'     => 'Passwort ändere',
+'skin-preview'       => 'Vorschou',
 'datedefault'        => 'kei Aagab',
 'datetime'           => 'Datum un Zit',
 'prefs-personal'     => 'Benutzerdate',
@@ -708,7 +699,7 @@ Der aktuelle Text des gelöschten Artikels ist nur Administratoren zugänglich.'
 'blocklogpage'    => 'Sperrigs-Protokoll',
 'blocklogentry'   => 'sperrt [[$1]] für d Ziit vo: $2 $3',
 'blocklogtext'    => 'Des ischs Logbuech yber Sperrunge un Entsperrunge vun Bnutzer. Automatisch blockti IP-Adresse werre nit erfasst. Lueg au [[Special:Ipblocklist|IP-Block Lischt]] fyr ä Lischt vun gsperrti Bnutzer.',
-'unblocklogentry' => 'Blockade von [[User:$1]] aufgehoben',
+'unblocklogentry' => 'Blockade von $1 aufgehoben',
 
 # Move page
 'move-page-legend' => 'Artikel verschiebe',
@@ -720,8 +711,6 @@ Der aktuelle Text des gelöschten Artikels ist nur Administratoren zugänglich.'
 
 I söttigne Fäll müessti d Diskussionssyten allefalls vo Hand kopiert wärde.",
 'movearticle'      => 'Artikel verschiebe',
-'movenologin'      => 'Du bisch nid aagmäldet',
-'movenologintext'  => 'Du muesch dich z’ersch [[Special:Userlogin|aamälde]] damit du die Syte chasch zügle.',
 'newtitle'         => 'Zum nöie Titel',
 'movepagebtn'      => 'Artikel verschiebe',
 'pagemovedsub'     => 'Verschiebig erfolgrych',
@@ -777,7 +766,6 @@ Please visit [http://www.mediawiki.org/wiki/Localisation MediaWiki Localisation]
 'tooltip-n-recentchanges'       => 'Lischte vo de letschten Änderige i däm Wiki.',
 'tooltip-n-randompage'          => 'E zuefälligi Syte',
 'tooltip-n-help'                => 'Ds Ort zum Usefinde.',
-'tooltip-n-sitesupport'         => 'Unterstütz üs',
 'tooltip-t-whatlinkshere'       => 'Lischte vo allne Sytene, wo do ane linke',
 'tooltip-t-recentchangeslinked' => 'Letschti Änderige vo de Syte, wo vo do verlinkt sin',
 'tooltip-feed-rss'              => 'RSS-Feed für selli Syte',

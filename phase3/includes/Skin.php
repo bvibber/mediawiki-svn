@@ -157,7 +157,7 @@ class Skin extends Linker {
 	}
 
 	function initPage( &$out ) {
-		global $wgFavicon, $wgAppleTouchIcon, $wgScriptPath, $wgScriptExtension;
+		global $wgFavicon, $wgAppleTouchIcon;
 
 		wfProfileIn( __METHOD__ );
 
@@ -173,7 +173,7 @@ class Skin extends Linker {
 		$out->addLink( array(
 			'rel' => 'search',
 			'type' => 'application/opensearchdescription+xml',
-			'href' => "$wgScriptPath/opensearch_desc{$wgScriptExtension}",
+			'href' => wfScript( 'opensearch_desc' ),
 			'title' => wfMsgForContent( 'opensearch-desc' ),
 		));
 
@@ -280,14 +280,14 @@ class Skin extends Linker {
 	static function makeVariablesScript( $data ) {
 		global $wgJsMimeType;
 
-		$r = "<script type= \"$wgJsMimeType\">/*<![CDATA[*/\n";
+		$r = array( "<script type= \"$wgJsMimeType\">/*<![CDATA[*/" );
 		foreach ( $data as $name => $value ) {
 			$encValue = Xml::encodeJsVar( $value );
-			$r .= "var $name = $encValue;\n";
+			$r[] = "var $name = $encValue;";
 		}
-		$r .= "/*]]>*/</script>\n";
+		$r[] = "/*]]>*/</script>\n";
 
-		return $r;
+		return implode( "\n\t\t", $r );
 	}
 
 	/**
@@ -362,7 +362,7 @@ class Skin extends Linker {
 			$vars['wgAjaxWatch'] = $msgs;
 		}
 
-		wfRunHooks('ExtendJSGlobalVars', array(&$vars));
+		wfRunHooks('MakeGlobalVariablesScript', array(&$vars));
 
 		return self::makeVariablesScript( $vars );
 	}
@@ -657,7 +657,7 @@ END;
 
 			$msg = wfMsgExt( 'pagecategories', array( 'parsemag', 'escapenoentities' ), count( $allCats['normal'] ) );
 			$s .= '<div id="mw-normal-catlinks">' .
-				$this->makeLinkObj( Title::newFromText( wfMsgForContent('pagecategorieslink') ), $msg )
+				$this->link( Title::newFromText( wfMsgForContent('pagecategorieslink') ), $msg )
 				. $colon . $t . '</div>';
 		}
 
@@ -712,8 +712,8 @@ END;
 				$return .= Skin::drawCategoryBrowser($parent, $skin) . ' &gt; ';
 			}
 			# add our current element to the list
-			$eltitle = Title::NewFromText($element);
-			$return .=  $skin->makeLinkObj( $eltitle, $eltitle->getText() ) ;
+			$eltitle = Title::newFromText($element);
+			$return .=  $skin->link( $eltitle, $eltitle->getText() ) ;
 		}
 		return $return;
 	}
@@ -928,50 +928,54 @@ END;
 	function nameAndLogin() {
 		global $wgUser, $wgTitle, $wgLang, $wgContLang;
 
-		$lo = $wgContLang->specialPage( 'Userlogout' );
+		$logoutPage = $wgContLang->specialPage( 'Userlogout' );
 
-		$s = '';
+		$ret = '';
 		if ( $wgUser->isAnon() ) {
 			if( $this->showIPinHeader() ) {
-				$n = wfGetIP();
+				$name = wfGetIP();
 
-				$tl = $this->makeKnownLinkObj( $wgUser->getTalkPage(),
-				  $wgLang->getNsText( NS_TALK ) );
+				$talkLink = $this->link( $wgUser->getTalkPage(),
+					$wgLang->getNsText( NS_TALK ) );
 
-				$s .= $n . ' ('.$tl.')';
+				$ret .= "$name ($talkLink)";
 			} else {
-				$s .= wfMsg('notloggedin');
+				$ret .= wfMsg( 'notloggedin' );
 			}
 
-			$rt = $wgTitle->getPrefixedURL();
-			if ( 0 == strcasecmp( urlencode( $lo ), $rt ) ) {
-				$q = '';
-			} else { $q = "returnto={$rt}"; }
+			$returnTo = $wgTitle->getPrefixedDBkey();
+			$query = array();
+			if ( $logoutPage != $returnTo ) {
+				$query['returnto'] = $returnTo;
+			}
 
 			$loginlink = $wgUser->isAllowed( 'createaccount' )
 				? 'nav-login-createaccount'
 				: 'login';
-			$s .= "\n<br />" . $this->makeKnownLinkObj(
+			$ret .= "\n<br />" . $this->link(
 				SpecialPage::getTitleFor( 'Userlogin' ),
-				wfMsg( $loginlink ), $q );
+				wfMsg( $loginlink ), array(), $query
+			);
 		} else {
-			$n = $wgUser->getName();
-			$rt = $wgTitle->getPrefixedURL();
-			$tl = $this->makeKnownLinkObj( $wgUser->getTalkPage(),
-			  $wgLang->getNsText( NS_TALK ) );
+			$returnTo = $wgTitle->getPrefixedDBkey();
+			$talkLink = $this->link( $wgUser->getTalkPage(),
+				$wgLang->getNsText( NS_TALK ) );
 
-			$tl = " ({$tl})";
-
-			$s .= $this->makeKnownLinkObj( $wgUser->getUserPage(),
-			  $n ) . "{$tl}<br />" .
-			  $this->makeKnownLinkObj( SpecialPage::getTitleFor( 'Userlogout' ), wfMsg( 'logout' ),
-			  "returnto={$rt}" ) . ' | ' .
-			  $this->specialLink( 'preferences' );
+			$ret .= $this->link( $wgUser->getUserPage(),
+				htmlspecialchars( $wgUser->getName() ) );
+			$ret .= " ($talkLink)<br />";
+			$ret .= $this->link(
+				SpecialPage::getTitleFor( 'Userlogout' ), wfMsg( 'logout' ),
+				array(), array( 'returnto' => $returnTo )
+			);
+			$ret .= ' | ' . $this->specialLink( 'preferences' );
 		}
-		$s .= ' | ' . $this->makeKnownLink( wfMsgForContent( 'helppage' ),
-		  wfMsg( 'help' ) );
+		$ret .= ' | ' . $this->link(
+			Title::newFromText( wfMsgForContent( 'helppage' ) ),
+			wfMsg( 'help' )
+		);
 
-		return $s;
+		return $ret;
 	}
 
 	function getSearchLink() {
@@ -1206,8 +1210,11 @@ END;
 
 	function lastModified() {
 		global $wgLang, $wgArticle;
-
-		$timestamp = $wgArticle->getTimestamp();
+		if( $this->mRevisionId ) {
+			$timestamp = Revision::getTimestampFromId( $this->mRevisionId, $wgArticle->getId() );
+		} else {
+			$timestamp = $wgArticle->getTimestamp();
+		}
 		if ( $timestamp ) {
 			$d = $wgLang->date( $timestamp, true );
 			$t = $wgLang->time( $timestamp, true );
@@ -1677,6 +1684,7 @@ END;
 			if (strpos($line, '**') !== 0) {
 				$line = trim($line, '* ');
 				$heading = $line;
+				if( !array_key_exists($heading, $bar) ) $bar[$heading] = array();
 			} else {
 				if (strpos($line, '|') !== false) { // sanity check
 					$line = array_map('trim', explode( '|' , trim($line, '* '), 2 ) );
@@ -1709,6 +1717,7 @@ END;
 				} else { continue; }
 			}
 		}
+		wfRunHooks('SkinBuildSidebar', array($this, &$bar));
 		if ( $wgEnableSidebarCache ) $parserMemc->set( $key, $bar, $wgSidebarCacheExpiry );
 		wfProfileOut( __METHOD__ );
 		return $bar;

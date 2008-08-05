@@ -5,13 +5,7 @@
  * @file
  *
  * @author Wantok
- * @author Niklas Laxström
  * @author לערי ריינהארט
- * @author Siebrand
- * @author Wytukaze
- * @author Wantok
- * @author לערי ריינהארט
- * @author Siebrand
  * @author Wytukaze
  */
 
@@ -46,8 +40,6 @@ $messages = array(
 'tog-watchlisthideown'        => 'Haitim ol senis mi wokim long lukautbuk bilong mi',
 'tog-watchlisthidebots'       => 'Haitim ol senis ol bot i wokim long lukautbuk bilong mi',
 'tog-watchlisthideminor'      => 'Haitim ol liklik senis long lukautbuk bilong mi',
-
-'skinpreview' => '(pes mi senisim, pastaim long raitim)',
 
 # Dates
 'sunday'    => 'Sande',
@@ -103,8 +95,6 @@ $messages = array(
 'mainpage-description' => 'Fran Pes',
 'portal'               => 'Bung ples',
 'portal-url'           => 'Project:Bung ples',
-'sitesupport'          => 'Givim moni',
-'sitesupport-url'      => 'Project:Givim moni',
 
 # Short words for each namespace, by default used in the namespace tab in monobook
 'nstab-main'      => 'Stori',
@@ -141,6 +131,7 @@ Na tu yu tok tru nau olsem yu raitim dispela yu yet, o yu kisim long wanpela hap
 # Preferences page
 'mypreferences'   => 'Ol laik bilong mi',
 'prefs-edits'     => 'Hamas senis:',
+'skin-preview'    => 'pes mi senisim, pastaim long raitim',
 'prefs-rc'        => 'Nupela senis',
 'prefs-watchlist' => 'Lukautbuk',
 
@@ -220,7 +211,6 @@ Sapos yu laik rausim dispela pes long lukautbuk bilong yu bihain, paitim \"Pinis
 # Move page
 'movepagebtn'     => 'Surikim',
 'pagemovedsub'    => 'Pes i surik pinis',
-'movepage-moved'  => '<big>\'\'\'"$1" i surik i go long "$2"\'\'\'</big>', # The two titles are passed in plain text as $3 and $4 to allow additional goodies in the message.
 'articleexists'   => 'Wanpela pes wantaim dispela nem i stap pinis, o dispela nem i no stret.
 Yu mas painim narapela nem.',
 'talkexists'      => "'''Pes bilong buk i surik pinis, tasol pes bilong toktok i no inap surik, bilong wanem wanpela pes bilong toktok istap pinis wantaim dispela nam.  Yu mas pasim wantaim tupela pes bilong toktok yu yet.'''",

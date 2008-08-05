@@ -5,7 +5,6 @@
  * @file
  *
  * @author PCode
- * @author Siebrand
  * @author Chavash
  */
 
@@ -81,8 +80,6 @@ $messages = array(
 'underline-always'  => 'Яланах',
 'underline-never'   => 'Нихăçан та',
 'underline-default' => 'Браузер ĕнерлевĕсене усă курмалла',
-
-'skinpreview' => '(Малтанхи курăну)',
 
 # Dates
 'sunday'        => 'вырсарникун',
@@ -261,8 +258,6 @@ $messages = array(
 'portal-url'           => 'Project:Портал',
 'privacy'              => 'Конфиденциальность йĕркисем',
 'privacypage'          => 'Project:Конфиденциальность йĕркисем',
-'sitesupport'          => 'Пожертвованисем',
-'sitesupport-url'      => 'Project:Нимелĕх',
 
 'badaccess'        => 'Доступ йăнăшĕ',
 'badaccess-group0' => 'Эсир ыйтакан ĕçе тăваймастăр',
@@ -494,7 +489,6 @@ $1 хутшăнакан патне, е ытти [[{{MediaWiki:Grouppage-sysop}}|
 'blockedoriginalsource'  => 'Аяларах «$1» страницăн текстне куратăр.',
 'blockededitsource'      => "Аяларах эсир «$1» страницăра '''хăвсамăр тунă''' улшăнусене куратăр.",
 'whitelistedittitle'     => 'Улăштарма сирĕн авторизациленмелле',
-'whitelistreadtitle'     => 'Вулас тесен малтан сайта кĕмелле',
 'loginreqtitle'          => 'Сайта кĕмелле',
 'loginreqlink'           => 'сайта кĕр',
 'loginreqpagetext'       => 'Ытти страницăсене курмашкăн сирĕн $1.',
@@ -604,6 +598,7 @@ $1 хутшăнакан патне, е ытти [[{{MediaWiki:Grouppage-sysop}}|
 'qbsettings'         => 'Навигаци хăми',
 'changepassword'     => 'Пароле улăштар',
 'skin'               => 'Ерешленӳ',
+'skin-preview'       => 'Малтанхи курăну',
 'dateformat'         => 'Дата формачĕ',
 'datedefault'        => 'Палăртман чухнехи',
 'math_syntax_error'  => 'синтаксис йăнăшĕ',
@@ -626,16 +621,14 @@ $1 хутшăнакан патне, е ытти [[{{MediaWiki:Grouppage-sysop}}|
 'files'              => 'Файлсем',
 
 # User rights
-'userrights'                 => 'Хутшăнакансен прависемпе ĕçлесси', # Not used as normal message but as header for the special page itself
-'userrights-lookup-user'     => 'Хутшăнакансен ушкăнĕсемпе ĕçлесси',
-'userrights-user-editname'   => 'Хутшăнакан ятне кăтартăр:',
-'editinguser'                => "тӳрлетни '''[[User:$1|$1]]''' ([[User talk:$1|{{int:talkpagelinktext}}]] | [[Special:Contributions/$1|{{int:contribslink}}]])",
-'userrights-editusergroup'   => 'Хутшăнакансен ушкăнĕсене улăштар',
-'saveusergroups'             => 'Хутшăнаканăн ушкăнĕсем астуса юл',
-'userrights-groupsmember'    => 'Çак ушкăнсене кĕрет:',
-'userrights-groupsavailable' => 'Çак ушкăнсем пур:',
-'userrights-reason'          => 'Улăштару сăлтавĕ:',
-'userrights-available-none'  => 'Эсир ушкăнри хутшăнакансене кăларса парахма е урăхла улăштарма пултараймастăр.',
+'userrights'               => 'Хутшăнакансен прависемпе ĕçлесси', # Not used as normal message but as header for the special page itself
+'userrights-lookup-user'   => 'Хутшăнакансен ушкăнĕсемпе ĕçлесси',
+'userrights-user-editname' => 'Хутшăнакан ятне кăтартăр:',
+'editinguser'              => "тӳрлетни '''[[User:$1|$1]]''' ([[User talk:$1|{{int:talkpagelinktext}}]] | [[Special:Contributions/$1|{{int:contribslink}}]])",
+'userrights-editusergroup' => 'Хутшăнакансен ушкăнĕсене улăштар',
+'saveusergroups'           => 'Хутшăнаканăн ушкăнĕсем астуса юл',
+'userrights-groupsmember'  => 'Çак ушкăнсене кĕрет:',
+'userrights-reason'        => 'Улăштару сăлтавĕ:',
 
 # Groups
 'group'               => 'Ушкăн:',
@@ -1008,7 +1001,6 @@ The list is used by [[Special:Disambiguations]] to show any pages linking to dis
 # Move page
 'move-page-legend'        => 'Страницăна куçарнă',
 'movearticle'             => 'Страницăн ятне улăштар',
-'movenologin'             => 'Система сирĕн ята пĕлмест',
 'newtitle'                => 'Çĕнĕ ят',
 'move-watch'              => 'Ку страницăна сăнамаллисем шутне хуш',
 'movepagebtn'             => 'Страницăн ятне улăштар',

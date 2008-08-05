@@ -5,7 +5,6 @@
  * @file
  *
  * @author Kanon6917
- * @author Siebrand
  */
 
 $fallback = 'es';
@@ -40,7 +39,6 @@ $messages = array(
 'mainpage-description' => 'Nayriri Uñstawi',
 'portal'               => 'Jayma punku',
 'portal-url'           => 'Project:Jayma punku',
-'sitesupport'          => 'Ramañanaka',
 
 'editsection' => 'trukaña',
 'editold'     => 'trukaña',

@@ -4,9 +4,8 @@
  * @ingroup Language
  * @file
  *
- * @author Siebrand
- * @author לערי ריינהארט
  * @author Amikeco
+ * @author לערי ריינהארט
  */
 
 $fallback = 'ru';
@@ -364,7 +363,7 @@ $3',
 'filehist'         => 'Файлы истори',
 'filehist-current' => 'нырыккон',
 'imagelinks'       => 'Æрвитæнтæ',
-'linkstoimage'     => 'Ацы нывæй чи пайда кæны, ахæм статьятæ:',
+'linkstoimage'     => 'Ацы нывæй пайда {{PLURAL:$1|кæны иу фарс|кæнынц ахæм фæрстæ}}:',
 
 # File deletion
 'filedelete-submit' => 'Аппар',
@@ -374,7 +373,7 @@ $3',
 
 # Statistics
 'userstats'     => 'Архайджыты статистикæ',
-'userstatstext' => 'Регистрацигонд æрцыдысты <b>$1</b> архайджыты, уыдонæй <b>$2</b> — админтæ (кæс $3).',
+'userstatstext' => "Регистрацигонд {{PLURAL:$1|æрцыд '''иу архайæг'''|æрцыдысты $1 [[Special:Listusers|архайæджы]]}}, уыдонæй '''$2''' (ома сæ '''$4%''') {{PLURAL:$2|у|сты}} $5.",
 
 'brokenredirects-edit'   => '(баив æй)',
 'brokenredirects-delete' => '(аппар)',
@@ -382,8 +381,8 @@ $3',
 'withoutinterwiki-submit' => 'Равдис',
 
 # Miscellaneous special pages
-'nbytes'            => '$1 байт(ы)',
-'nlinks'            => '$1 æрвитæн(ы)',
+'nbytes'            => '$1 {{PLURAL:$1|байт|байты}}',
+'nlinks'            => '$1 {{PLURAL:$1|æрвитæн|æрвитæны}}',
 'nviews'            => '$1 {{PLURAL:$1|æркаст|æркасты}}',
 'lonelypages'       => 'Сидзæр фæрстæ',
 'wantedpages'       => 'Хъæугæ фæрстæ',
@@ -463,7 +462,6 @@ $3',
 
 # Move page
 'movearticle' => 'Статьяйы ном баив',
-'movenologin' => 'Системæйæн дæхи нæ бацамыдтай',
 'newtitle'    => 'Ног ном',
 
 # Namespace 8 related

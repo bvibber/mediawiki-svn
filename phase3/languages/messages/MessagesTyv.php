@@ -4,12 +4,10 @@
  * @ingroup Language
  * @file
  *
+ * @author Sborsody
+ * @author לערי ריינהארט
  * @author Krice from Tyvanet.com
  * @author friends at tyvawiki.org
- * @author Nike
- * @author Sborsody
- * @author Siebrand
- * @author לערי ריינהארט
  */
 
 $namespaceNames = array(
@@ -65,8 +63,6 @@ $messages = array(
 'underline-always'  => 'Кезээде',
 'underline-never'   => 'Кажан-даа',
 'underline-default' => 'Веб-браузерниң ниити үнези',
-
-'skinpreview' => '(Чижеглей көөр)',
 
 # Dates
 'sunday'        => 'Улуг хүн',
@@ -196,7 +192,6 @@ $messages = array(
 'policy-url'           => 'Project:Политика',
 'portal'               => 'Ниитилелдиң хаалгазы',
 'portal-url'           => 'Project:Ниитилелдиң хаалгазы',
-'sitesupport'          => 'Белектер',
 
 'retrievedfrom'       => '"$1" деп арынында парлаттынган',
 'newmessageslink'     => 'чаа чагаалар',
@@ -284,7 +279,7 @@ $1',
 'italic_sample'   => 'Ийлендирер',
 'link_sample'     => 'Холбаа ады',
 'link_tip'        => 'Иштики холбаа',
-'extlink_sample'  => 'http://www.чижек.com холбаа ады',
+'extlink_sample'  => 'http://www.example.com холбаа ады',
 'extlink_tip'     => 'Даштыкы холбаа ("http://" чүве сактып алыр)',
 'headline_sample' => 'Кол сөс сөзүглел',
 'nowiki_sample'   => 'Форматтаваан сөзүглелини бээр салыр',
@@ -362,6 +357,7 @@ $1',
 'preferences'        => 'Дээре деп санаарылар',
 'changepassword'     => 'Чажыт сөстү өскертир',
 'skin'               => 'Кеш',
+'skin-preview'       => 'Чижеглей көөр',
 'math_unknown_error' => 'билбес алдаг',
 'prefs-personal'     => 'Ажыглакчының медээлери',
 'prefs-rc'           => 'Дээм чаагы өскерлиишкиннер',

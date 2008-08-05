@@ -4,7 +4,6 @@
  * @ingroup Language
  * @file
  *
- * @author SPQRobin
  * @author Eruedin
  */
 
@@ -110,7 +109,6 @@ $messages = array(
 'mainpage'             => 'Lokásá ya libosó',
 'mainpage-description' => 'Lokásá ya libosó',
 'portal'               => 'Bísó na bísó',
-'sitesupport'          => 'Kofutela',
 
 'ok'                 => 'Nandimi',
 'youhavenewmessages' => 'Nazweí $1 ($2).',
@@ -251,7 +249,7 @@ $messages = array(
 'allpagessubmit' => 'kokɛndɛ',
 
 # Special:Categories
-'categories' => '{{PLURAL:$1|Loléngé|Ndéngé}}',
+'categories' => 'Ndéngé',
 
 # E-mail user
 'defemailsubject' => '{{SITENAME}} mokánda',

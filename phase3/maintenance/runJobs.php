@@ -1,5 +1,11 @@
 <?php
 /**
+ * This script starts pending jobs.
+ *
+ * Usage:
+ *  --maxjobs <num> (default 10000)
+ *  --type <job_cmd>
+ *
  * @file
  * @ingroup Maintenance
  */
@@ -28,7 +34,7 @@ $conds = '';
 if ($type !== false)
 	$conds = "job_cmd = " . $dbw->addQuotes($type);
 
-while ( $dbw->selectField( 'job', 'count(*)', $conds, 'runJobs.php' ) ) {
+while ( $dbw->selectField( 'job', 'job_id', $conds, 'runJobs.php' ) ) {
 	$offset=0;
 	for (;;) {
 		$job = ($type == false) ?

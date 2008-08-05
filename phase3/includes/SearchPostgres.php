@@ -28,7 +28,7 @@
  */
 class SearchPostgres extends SearchEngine {
 
-	function SearchPostgres( $db ) {
+	function __construct( $db ) {
 		$this->db = $db;
 	}
 
@@ -201,9 +201,9 @@ class SearchPostgres extends SearchEngine {
 
 	function update( $pageid, $title, $text ) {
 		## We don't want to index older revisions
-		$SQL = "UPDATE pagecontent SET textvector = NULL WHERE old_id = ".
+		$SQL = "UPDATE pagecontent SET textvector = NULL WHERE old_id IN ".
 				"(SELECT rev_text_id FROM revision WHERE rev_page = $pageid ".
-				"ORDER BY rev_text_id DESC LIMIT 1 OFFSET 1)";
+				"ORDER BY rev_text_id DESC OFFSET 1)";
 		$this->db->doQuery($SQL);
 		return true;
 	}
@@ -218,8 +218,8 @@ class SearchPostgres extends SearchEngine {
  * @ingroup Search
  */
 class PostgresSearchResult extends SearchResult {
-	function PostgresSearchResult( $row ) {
-		parent::SearchResult($row);
+	function __construct( $row ) {
+		parent::__construct($row);
 		$this->score = $row->score;
 	}
 	function getScore() {
@@ -231,7 +231,7 @@ class PostgresSearchResult extends SearchResult {
  * @ingroup Search
  */
 class PostgresSearchResultSet extends SearchResultSet {
-	function PostgresSearchResultSet( $resultSet, $terms ) {
+	function __construct( $resultSet, $terms ) {
 		$this->mResultSet = $resultSet;
 		$this->mTerms = $terms;
 	}

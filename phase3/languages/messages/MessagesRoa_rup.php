@@ -3,7 +3,7 @@
  *
  * @ingroup Language
  * @file
- * @author Niklas Laxström
+ *
  * @author Hakka (with the help of a native speaker Dumitrachi T. Fundu)
  */
 
@@ -72,7 +72,6 @@ $messages = array(
 'mainpage'             => 'Prota frãndzã',
 'mainpage-description' => 'Prota frãndzã',
 'portal'               => 'Portal-a comunitatiljei',
-'sitesupport'          => 'Donatsiur',
 
 'newmessageslink'         => 'dimãndare nao',
 'youhavenewmessagesmulti' => 'Avets nãi dimãndãri pi $1',

@@ -5,7 +5,6 @@
  * @file
  *
  * @author לערי ריינהארט
- * @author SPQRobin
  */
 
 $messages = array(
@@ -79,7 +78,6 @@ $messages = array(
 'mainpage-description' => 'Ikhasi Elikhulu',
 'portal'               => 'Umnyango wamgwamanda',
 'portal-url'           => 'Project:Umnyango wamgwamanda',
-'sitesupport'          => 'Izipho',
 
 'newmessageslink'         => 'Imilayezo emisha',
 'youhavenewmessagesmulti' => 'Uyanemilayezo emisha e $1',
@@ -269,7 +267,6 @@ ikhawundi lakho liyadalwa. musa ukukhohlwa ukuguqula amakhethelo a-{{SITENAME}} 
 # Move page
 'move-page-legend'        => 'Thuthisa ikhasi',
 'movearticle'             => 'Thuthisa ikhasi',
-'movenologin'             => 'Awungenile',
 'movepagebtn'             => 'Thuthisa ikhasi',
 'movedto'                 => 'Lithuthiselwe e',
 'movereason'              => 'Isizathu',

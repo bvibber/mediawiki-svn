@@ -103,7 +103,6 @@ $messages = array(
 'mainpage'             => 'གཙོ་ངོས།',
 'mainpage-description' => 'གཙོ་ངོས།',
 'portal'               => 'ཁོངས་མི་འདུ་ར།',
-'sitesupport'          => 'ཞལ་འདེབས།',
 
 'editsection' => 'རྩོམ་སྒྲིག',
 'editold'     => 'རྩོམ་སྒྲིག',
@@ -219,7 +218,6 @@ $messages = array(
 
 # Move page
 'movearticle' => 'སྤོར་ངོས།',
-'movenologin' => 'ནང་འཛུལ་བྱས་མེད།',
 'move-watch'  => 'དྲ་ངོས་འདི་ལ་མཉམ་འཇོག་པ།',
 'movereason'  => 'རྒྱུ་མཚན།',
 

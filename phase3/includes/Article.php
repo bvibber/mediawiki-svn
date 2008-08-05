@@ -16,27 +16,30 @@ class Article {
 	/**@{{
 	 * @private
 	 */
-	var $mComment;			//!<
-	var $mContent;			//!<
-	var $mContentLoaded;	//!<
-	var $mCounter;			//!<
-	var $mForUpdate;		//!<
-	var $mGoodAdjustment;	//!<
-	var $mLatest;			//!<
-	var $mMinorEdit;		//!<
-	var $mOldId;			//!<
-	var $mRedirectedFrom;	//!<
-	var $mRedirectUrl;		//!<
-	var $mRevIdFetched;		//!<
-	var $mRevision;			//!<
-	var $mTimestamp;		//!<
-	var $mTitle;			//!<
-	var $mTotalAdjustment;	//!<
-	var $mTouched;			//!<
-	var $mUser;				//!<
-	var $mUserText;			//!<
-	var $mRedirectTarget;		//!<
-	var $mIsRedirect;
+	var $mComment = '';               //!<
+	var $mContent;                    //!<
+	var $mContentLoaded = false;      //!<
+	var $mCounter = -1;               //!< Not loaded
+	var $mCurID = -1;                 //!< Not loaded
+	var $mDataLoaded = false;         //!<
+	var $mForUpdate = false;          //!<
+	var $mGoodAdjustment = 0;         //!<
+	var $mIsRedirect = false;         //!<
+	var $mLatest = false;             //!<
+	var $mMinorEdit;                  //!<
+	var $mOldId;                      //!<
+	var $mPreparedEdit = false;       //!< Title object if set
+	var $mRedirectedFrom = null;      //!< Title object if set
+	var $mRedirectTarget = null;      //!< Title object if set
+	var $mRedirectUrl = false;        //!<
+	var $mRevIdFetched = 0;           //!<
+	var $mRevision;                   //!<
+	var $mTimestamp = '';             //!<
+	var $mTitle;                      //!<
+	var $mTotalAdjustment = 0;        //!<
+	var $mTouched = '19700101000000'; //!<
+	var $mUser = -1;                  //!< Not loaded
+	var $mUserText = '';              //!<
 	/**@}}*/
 
 	/**
@@ -47,7 +50,6 @@ class Article {
 	function __construct( Title $title, $oldId = null ) {
 		$this->mTitle =& $title;
 		$this->mOldId = $oldId;
-		$this->clear();
 	}
 
 	/**
@@ -111,10 +113,18 @@ class Article {
 	 *
 	 * @return mixed false, Title of in-wiki target, or string with URL
 	 */
-	function followRedirect() {
+	public function followRedirect() {
 		$text = $this->getContent();
+		return self::followRedirectText( $text );
+	}
+	
+	/**
+	 * Get the Title object this text redirects to
+	 *
+	 * @return mixed false, Title of in-wiki target, or string with URL
+	 */
+	public function followRedirectText( $text ) {
 		$rt = Title::newFromRedirect( $text );
-
 		# process if title object is valid and not special:userlogout
 		if( $rt ) {
 			if( $rt->getInterwiki() != '' ) {
@@ -144,7 +154,6 @@ class Article {
 				return $rt;
 			}
 		}
-
 		// No or invalid redirect
 		return false;
 	}
@@ -197,7 +206,7 @@ class Article {
 
 		if ( 0 == $this->getID() ) {
 			wfProfileOut( __METHOD__ );
-			$wgOut->setRobotpolicy( 'noindex,nofollow' );
+			$wgOut->setRobotPolicy( 'noindex,nofollow' );
 
 			if ( $this->mTitle->getNamespace() == NS_MEDIAWIKI ) {
 				$wgMessageCache->loadAllMessages();
@@ -628,7 +637,6 @@ class Article {
 	}
 
 	/**
-	 * @todo Document, fixme $offset never used.
 	 * @param $limit Integer: default 0.
 	 * @param $offset Integer: default 0.
 	 */
@@ -650,6 +658,8 @@ class Article {
 			ORDER BY timestamp DESC";
 
 		if ($limit > 0) { $sql .= ' LIMIT '.$limit; }
+		if ($offset > 0) { $sql .= ' OFFSET '.$offset; }
+		
 		$sql .= ' '. $this->getSelectOptions();
 
 		$res = $dbr->query($sql, __METHOD__);
@@ -746,12 +756,7 @@ class Article {
 		}
 
 		# Should the parser cache be used?
-		$pcache = $wgEnableParserCache
-			&& intval( $wgUser->getOption( 'stubthreshold' ) ) == 0
-			&& $this->exists()
-			&& empty( $oldid )
-			&& !$this->mTitle->isCssOrJsPage()
-			&& !$this->mTitle->isCssJsSubpage();
+		$pcache = $this->useParserCache( $oldid );
 		wfDebug( 'Article::view using parser cache: ' . ($pcache ? 'yes' : 'no' ) . "\n" );
 		if ( $wgUser->getOption( 'stubthreshold' ) ) {
 			wfIncrStats( 'pcache_miss_stub' );
@@ -762,7 +767,6 @@ class Article {
 			// This is an internally redirected page view.
 			// We'll need a backlink to the source page for navigation.
 			if ( wfRunHooks( 'ArticleViewRedirect', array( &$this ) ) ) {
-				$sk = $wgUser->getSkin();
 				$redir = $sk->makeKnownLinkObj( $this->mRedirectedFrom, '', 'redirect=no' );
 				$s = wfMsg( 'redirectedfrom', $redir );
 				$wgOut->setSubtitle( $s );
@@ -779,7 +783,6 @@ class Article {
 			// If it was reported from a trusted site, supply a backlink.
 			global $wgRedirectSources;
 			if( $wgRedirectSources && preg_match( $wgRedirectSources, $rdfrom ) ) {
-				$sk = $wgUser->getSkin();
 				$redir = $sk->makeExternalLink( $rdfrom, $rdfrom );
 				$s = wfMsg( 'redirectedfrom', $redir );
 				$wgOut->setSubtitle( $s );
@@ -797,6 +800,7 @@ class Article {
 				$outputDone = true;
 			}
 		}
+		# Fetch content and check for errors
 		if ( !$outputDone ) {
 			$text = $this->getContent();
 			if ( $text === false ) {
@@ -819,9 +823,8 @@ class Article {
 			}
 
 			# We're looking at an old revision
-
 			if ( !empty( $oldid ) ) {
-				$wgOut->setRobotpolicy( 'noindex,nofollow' );
+				$wgOut->setRobotPolicy( 'noindex,nofollow' );
 				if( is_null( $this->mRevision ) ) {
 					// FIXME: This would be a nice place to load the 'no such page' text.
 				} else {
@@ -838,16 +841,13 @@ class Article {
 						}
 					}
 				}
-
 			}
-		}
-		if( !$outputDone ) {
+			
 			$wgOut->setRevisionId( $this->getRevIdFetched() );
 
 			 // Pages containing custom CSS or JavaScript get special treatment
 			if( $this->mTitle->isCssOrJsPage() || $this->mTitle->isCssJsSubpage() ) {
 				$wgOut->addHtml( wfMsgExt( 'clearyourcache', 'parse' ) );
-
 				// Give hooks a chance to customise the output
 				if( wfRunHooks( 'ShowRawCssJs', array( $this->mContent, $this->mTitle, $wgOut ) ) ) {
 					// Wrap the whole lot in a <pre> and don't parse
@@ -857,12 +857,9 @@ class Article {
 					$wgOut->addHtml( htmlspecialchars( $this->mContent ) );
 					$wgOut->addHtml( "\n</pre>\n" );
 				}
-
-			}
-
-			elseif ( $rt = Title::newFromRedirect( $text ) ) {
-				# Don't overwrite the subtitle if this was an old revision
-				$this->viewRedirect( $rt, !$wasRedirected && $this->isCurrent() );
+			} else if ( $rt = Title::newFromRedirect( $text ) ) {
+				# Don't append the subtitle if this was an old revision
+				$wgOut->addHTML( $this->viewRedirect( $rt, !$wasRedirected && $this->isCurrent() ) );
 				$parseout = $wgParser->parse($text, $this->mTitle, ParserOptions::newFromUser($wgUser));
 				$wgOut->addParserOutputNoText( $parseout );
 			} else if ( $pcache ) {
@@ -889,7 +886,6 @@ class Article {
 				if( !$this->isCurrent() ) {
 					$wgOut->parserOptions()->setEditSection( $oldEditSectionSetting );
 				}
-
 			}
 		}
 		/* title may have been set from the cache */
@@ -899,8 +895,7 @@ class Article {
 		}
 
 		# check if we're displaying a [[User talk:x.x.x.x]] anonymous talk page
-		if( $ns == NS_USER_TALK &&
-			IP::isValid( $this->mTitle->getText() ) ) {
+		if( $ns == NS_USER_TALK && IP::isValid( $this->mTitle->getText() ) ) {
 			$wgOut->addWikiMsg('anontalkpagetext');
 		}
 
@@ -925,15 +920,35 @@ class Article {
 		wfProfileOut( __METHOD__ );
 	}
 	
-	protected function viewRedirect( $target, $overwriteSubtitle = true, $forceKnown = false ) {
+	/* 
+	* Should the parser cache be used?
+	*/
+	protected function useParserCache( $oldid ) {
+		global $wgUser, $wgEnableParserCache;
+		
+		return $wgEnableParserCache
+			&& intval( $wgUser->getOption( 'stubthreshold' ) ) == 0
+			&& $this->exists()
+			&& empty( $oldid )
+			&& !$this->mTitle->isCssOrJsPage()
+			&& !$this->mTitle->isCssJsSubpage();
+	}
+	
+	/**
+	 * View redirect
+	 * @param Title $target Title of destination to redirect
+	 * @param Bool  $appendSubtitle Object[optional]
+	 * @param Bool  $forceKnown Should the image be shown as a bluelink regardless of existence?
+	 */
+	public function viewRedirect( $target, $appendSubtitle = true, $forceKnown = false ) {
 		global $wgParser, $wgOut, $wgContLang, $wgStylePath, $wgUser;
 		
 		# Display redirect
 		$imageDir = $wgContLang->isRTL() ? 'rtl' : 'ltr';
 		$imageUrl = $wgStylePath.'/common/images/redirect' . $imageDir . '.png';
 		
-		if( $overwriteSubtitle ) {
-			$wgOut->setSubtitle( wfMsgHtml( 'redirectpagesub' ) );
+		if( $appendSubtitle ) {
+			$wgOut->appendSubtitle( wfMsgHtml( 'redirectpagesub' ) );
 		}
 		$sk = $wgUser->getSkin();
 		if ( $forceKnown )
@@ -941,8 +956,8 @@ class Article {
 		else
 			$link = $sk->makeLinkObj( $target, htmlspecialchars( $target->getFullText() ) );
 
-		$wgOut->addHTML( '<img src="'.$imageUrl.'" alt="#REDIRECT " />' .
-			'<span class="redirectText">'.$link.'</span>' );
+		return '<img src="'.$imageUrl.'" alt="#REDIRECT " />' .
+			'<span class="redirectText">'.$link.'</span>';
 		
 	}
 
@@ -1027,7 +1042,7 @@ class Article {
 				"</form>\n", $msg );
 
 			$wgOut->setPageTitle( $this->mTitle->getPrefixedText() );
-			$wgOut->setRobotpolicy( 'noindex,nofollow' );
+			$wgOut->setRobotPolicy( 'noindex,nofollow' );
 			$wgOut->addHTML( $msg );
 		}
 	}
@@ -1451,14 +1466,14 @@ class Article {
 
 				# Update page
 				$ok = $this->updateRevisionOn( $dbw, $revision, $lastRevision );
-				
-				wfRunHooks( 'NewRevisionFromEditComplete', array($this, $revision, $baseRevId) );
 
 				if( !$ok ) {
 					/* Belated edit conflict! Run away!! */
 					$good = false;
 					$dbw->rollback();
 				} else {
+					wfRunHooks( 'NewRevisionFromEditComplete', array( $this, $revision, $baseRevId ) );
+
 					# Update recentchanges
 					if( !( $flags & EDIT_SUPPRESS_RC ) ) {
 						$rcid = RecentChange::notifyEdit( $now, $this->mTitle, $isminor, $wgUser, $summary,
@@ -1689,7 +1704,7 @@ class Article {
 
 		if( $this->doWatch() ) {
 			$wgOut->setPagetitle( wfMsg( 'addedwatch' ) );
-			$wgOut->setRobotpolicy( 'noindex,nofollow' );
+			$wgOut->setRobotPolicy( 'noindex,nofollow' );
 
 			$wgOut->addWikiMsg( 'addedwatchtext', $this->mTitle->getPrefixedText() );
 		}
@@ -1734,7 +1749,7 @@ class Article {
 
 		if( $this->doUnwatch() ) {
 			$wgOut->setPagetitle( wfMsg( 'removedwatch' ) );
-			$wgOut->setRobotpolicy( 'noindex,nofollow' );
+			$wgOut->setRobotPolicy( 'noindex,nofollow' );
 
 			$wgOut->addWikiMsg( 'removedwatchtext', $this->mTitle->getPrefixedText() );
 		}
@@ -1814,7 +1829,6 @@ class Article {
 
 		# If nothing's changed, do nothing
 		if( $changed ) {
-			global $wgGroupPermissions;
 			if( wfRunHooks( 'ArticleProtect', array( &$this, &$wgUser, $limit, $reason ) ) ) {
 
 				$dbw = wfGetDB( DB_MASTER );
@@ -1876,6 +1890,7 @@ class Article {
 				$nullRevision = Revision::newNullRevision( $dbw, $id, $comment, true );
 				$nullRevId = $nullRevision->insertOn( $dbw );
 
+				$latest = $this->getLatest();
 				# Update page record
 				$dbw->update( 'page',
 					array( /* SET */
@@ -1887,7 +1902,7 @@ class Article {
 					), 'Article::protect'
 				);
 				
-				wfRunHooks( 'NewRevisionFromEditComplete', array($this, $nullRevision, false) );
+				wfRunHooks( 'NewRevisionFromEditComplete', array($this, $nullRevision, $latest) );
 				wfRunHooks( 'ArticleProtectComplete', array( &$this, &$wgUser, $limit, $reason ) );
 
 				# Update the protection log
@@ -1968,7 +1983,7 @@ class Article {
 		$row = $dbw->fetchObject($res);
 		$onlyAuthor = $row->rev_user_text;
 		// Try to find a second contributor
-		while( $row = $dbw->fetchObject($res) ) {
+		foreach( $res as $row ) {
 			if($row->rev_user_text != $onlyAuthor) {
 				$onlyAuthor = false;
 				break;
@@ -2086,7 +2101,7 @@ class Article {
 			}
 		}
 
-		return $this->confirmDelete( '', $reason );
+		return $this->confirmDelete( $reason );
 	}
 
 	/**
@@ -2161,17 +2176,16 @@ class Article {
 
 	/**
 	 * Output deletion confirmation dialog
-	 * @param $par string FIXME: do we need this parameter? One Call from Article::delete with '' only.
 	 * @param $reason string Prefilled reason
 	 */
-	function confirmDelete( $par, $reason ) {
+	function confirmDelete( $reason ) {
 		global $wgOut, $wgUser, $wgContLang;
 		$align = $wgContLang->isRtl() ? 'left' : 'right';
 
 		wfDebug( "Article::confirmDelete\n" );
 
 		$wgOut->setSubtitle( wfMsg( 'delete-backlink', $wgUser->getSkin()->makeKnownLinkObj( $this->mTitle ) ) );
-		$wgOut->setRobotpolicy( 'noindex,nofollow' );
+		$wgOut->setRobotPolicy( 'noindex,nofollow' );
 		$wgOut->addWikiMsg( 'confirmdeletetext' );
 
 		if( $wgUser->isAllowed( 'suppressrevision' ) ) {
@@ -2182,7 +2196,7 @@ class Article {
 			$suppress = '';
 		}
 
-		$form = Xml::openElement( 'form', array( 'method' => 'post', 'action' => $this->mTitle->getLocalURL( 'action=delete' . $par ), 'id' => 'deleteconfirm' ) ) .
+		$form = Xml::openElement( 'form', array( 'method' => 'post', 'action' => $this->mTitle->getLocalURL( 'action=delete' ), 'id' => 'deleteconfirm' ) ) .
 			Xml::openElement( 'fieldset', array( 'id' => 'mw-delete-table' ) ) .
 			Xml::tags( 'legend', null, wfMsgExt( 'delete-legend', array( 'parsemag', 'escapenoentities' ) ) ) .
 			Xml::openElement( 'table' ) .
@@ -2258,7 +2272,7 @@ class Article {
 				$deleted = $this->mTitle->getPrefixedText();
 
 				$wgOut->setPagetitle( wfMsg( 'actioncomplete' ) );
-				$wgOut->setRobotpolicy( 'noindex,nofollow' );
+				$wgOut->setRobotPolicy( 'noindex,nofollow' );
 
 				$loglink = '[[Special:Log/delete|' . wfMsgNoTrans( 'deletionlog' ) . ']]';
 
@@ -3272,12 +3286,10 @@ class Article {
 		$res = $dbr->select( array( 'templatelinks' ),
 			array( 'tl_namespace', 'tl_title' ),
 			array( 'tl_from' => $id ),
-			'Article:getUsedTemplates' );
-		if ( false !== $res ) {
-			if ( $dbr->numRows( $res ) ) {
-				while ( $row = $dbr->fetchObject( $res ) ) {
-					$result[] = Title::makeTitle( $row->tl_namespace, $row->tl_title );
-				}
+			__METHOD__ );
+		if( false !== $res ) {
+			foreach( $res as $row ) {
+				$result[] = Title::makeTitle( $row->tl_namespace, $row->tl_title );
 			}
 		}
 		$dbr->freeResult( $res );
@@ -3302,12 +3314,10 @@ class Article {
 			array( 'cl_to' ),
 			array( 'cl_from' => $id, 'pp_page=page_id', 'pp_propname' => 'hiddencat',
 				'page_namespace' => NS_CATEGORY, 'page_title=cl_to'),
-			'Article:getHiddenCategories' );
+			__METHOD__ );
 		if ( false !== $res ) {
-			if ( $dbr->numRows( $res ) ) {
-				while ( $row = $dbr->fetchObject( $res ) ) {
-					$result[] = Title::makeTitle( NS_CATEGORY, $row->cl_to );
-				}
+			foreach( $res as $row ) {
+				$result[] = Title::makeTitle( NS_CATEGORY, $row->cl_to );
 			}
 		}
 		$dbr->freeResult( $res );
@@ -3400,15 +3410,13 @@ class Article {
 			$res = $dbr->select( array( 'templatelinks' ),
 				array( 'tl_namespace', 'tl_title' ),
 				array( 'tl_from' => $id ),
-				'Article:getUsedTemplates' );
+				__METHOD__ );
 
 			global $wgContLang;
 
 			if ( false !== $res ) {
-				if ( $dbr->numRows( $res ) ) {
-					while ( $row = $dbr->fetchObject( $res ) ) {
-						$tlTemplates[] = $wgContLang->getNsText( $row->tl_namespace ) . ':' . $row->tl_title ;
-					}
+				foreach( $res as $row ) {
+					$tlTemplates[] = $wgContLang->getNsText( $row->tl_namespace ) . ':' . $row->tl_title ;
 				}
 			}
 

@@ -7,9 +7,7 @@
  * @author Demicx
  * @author Kal-El
  * @author לערי ריינהארט
- * @author Siebrand
  * @author CERminator
- * @author Gangleri
  */
 
 $namespaceNames = array(
@@ -132,8 +130,6 @@ $messages = array(
 'underline-always'  => 'Uvijek',
 'underline-never'   => 'Nikad',
 'underline-default' => 'Po podešavanjima brauzera',
-
-'skinpreview' => '(Pregled)',
 
 # Dates
 'sunday'        => 'nedelja',
@@ -290,8 +286,6 @@ $messages = array(
 'portal-url'           => 'Project:Portal_zajednice',
 'privacy'              => 'Pravila o anonimnosti',
 'privacypage'          => 'Project:Pravila o anonimnosti',
-'sitesupport'          => 'Donacije',
-'sitesupport-url'      => 'Project:Donacije',
 
 'versionrequired'     => 'Potrebna je verzija $1 MediaWikija',
 'versionrequiredtext' => 'Potrebna je verzija $1 MediaWikija da bi se koristila ova strana. Pogledaj [[Special:Version|verziju]].',
@@ -455,7 +449,7 @@ Molimo Vas da se prijavite pošto je primite.',
 'italic_tip'      => 'Kurzivan tekst',
 'link_sample'     => 'Naslov poveznice',
 'link_tip'        => 'Unutrašnja poveznica',
-'extlink_sample'  => 'http://www.adresa.com opis adrese',
+'extlink_sample'  => 'http://www.example.com opis adrese',
 'extlink_tip'     => 'Spoljašnja poveznica (zapamti prefiks http://)',
 'headline_sample' => 'Naslov',
 'headline_tip'    => 'Podnaslov',
@@ -485,11 +479,7 @@ Molimo Vas da se prijavite pošto je primite.',
 Dati razlog je sledeći:<br />''$2''<p>Možete kontaktirati $1 ili nekog drugog [[{{MediaWiki:Grouppage-sysop}}|administratora]] da biste razgovarili o blokadi.",
 'whitelistedittitle'       => 'Obavezno je prijavljivanje za uređivanje',
 'whitelistedittext'        => 'Morate da se [[Special:Userlogin|prijavite]] da bi ste uređivali stranice.',
-'whitelistreadtitle'       => 'Obavezno je prijavljivanje za čitanje',
-'whitelistreadtext'        => 'Morate da se [[Special:Userlogin|prijavite]] da bi ste čitali članke.',
-'whitelistacctitle'        => 'Nije vam dozvoljeno da napravite nalog',
-'whitelistacctext'         => 'Da bi vam bilo dozvoljeno da napravite naloge na ovom Vikiju, morate da se [[Special:Userlogin|prijavite]] i imate odgovarajuća ovlašćenja.',
-'loginreqtitle'            => 'Potrebno je [[Special:Userlogin|prijavljivanje]]',
+'loginreqtitle'            => 'Potrebno je prijavljivanje',
 'accmailtitle'             => 'Lozinka poslata.',
 'accmailtext'              => "Lozinka za nalog '$1' je poslata na adresu $2.",
 'newarticle'               => '(Novi)',
@@ -534,14 +524,13 @@ Ukoliko ne želite da vaši članci budu podložni izmjenama i slobodnom rastura
 nemojte ih slati ovdje. Takođe, slanje članka podrazumijeva i vašu izjavu da ste ga napisali sami, ili da ste ga kopirali iz izvora u javnom domenu ili sličnog slobodnog izvora.
 
 <strong>NEMOJTE SLATI RAD ZAŠTIĆEN AUTORSKIM PRAVIMA BEZ DOZVOLE AUTORA!</strong>',
-'longpagewarning'          => '<strong>PAŽNJA:  Ova stranica ima $1 kilobajta; niki
-brauzeri mogu imati problema kad uređujete stranice skoro ili veće od 32 kilobajta.
+'longpagewarning'          => '<strong>PAŽNJA: Ova stranica ima $1 kilobajta; neki
+preglednici mogu imati problema kad uređujete stranice skoro ili veće od 32 kilobajta.
 Molimo Vas da razmotrite razbijanje stranice na manje dijelove.</strong>',
 'readonlywarning'          => '<strong>PAŽNJA:  Baza je zaključana zbog održavanja,
 tako da nećete moći da sačuvate svoje izmjene za sada.  Možda želite da kopirate
 i nalijepite tekst u tekst editor i sačuvate ga za kasnije.</strong>',
-'protectedpagewarning'     => '<strong>PAŽNJA: Ova stranica je zaključana tako da samo korisnici sa
-administratorkim privilegijama mogu da je mijenjaju. Uvjerite se da pratite [[Special:Protectedpages|pravila o zaštiti stranica]]</strong>.',
+'protectedpagewarning'     => '<strong>PAŽNJA: Ova stranica je zaključana tako da samo korisnici sa administratorskim privilegijama mogu da je mijenjaju.</strong>',
 'semiprotectedpagewarning' => "'''Pažnja:''' Ova stranica je zaključana tako da je samo registrovani korisnici mogu uređivati.",
 'templatesused'            => 'Šabloni koji su upotrebljeni na ovoj stranici:',
 'template-protected'       => '(zaštićeno)',
@@ -579,11 +568,11 @@ Molimo Vas da provjerite URL pomoću kojeg ste pristupili ovoj stranici.',
 # Search results
 'searchresults'         => 'Rezultati pretrage',
 'searchresulttext'      => 'Za više informacija o pretraživanju {{SITENAME}}, pogledajte [[{{MediaWiki:Helppage}}|{{int:help}}]].',
-'searchsubtitle'        => 'Tražili ste [[$1]] [[Special:Allpages/$1|&#x5B;Sadržaj&#x5D;]]',
+'searchsubtitle'        => "Tražili ste '''[[:$1]]'''",
 'searchsubtitleinvalid' => 'Tražili ste $1',
-'noexactmatch'          => "Nema stranice sa takvim imenom.
+'noexactmatch'          => "Nema stranice sa imenom \"\$1\".
 
-Možete '''[[:$1|da napravite članak sa tim naslovom]]''' ili [[{{MediaWiki:Helppage}}|da stavite zahtjev za ovaj članak]] ili [[Special:Allpages/$1|potražite na drugim stranicama]].
+Možete '''[[:\$1|da napravite članak sa tim naslovom]]''' ili [[{{MediaWiki:Helppage}}|da stavite zahtjev za ovaj članak]] ili [[Special:Allpages/\$1|potražite na drugim stranicama]].
 
 ::*'''''<u>Opomena: Nemojte da kopirate materijale za koje nemate dozvolu!</u>'''''",
 'titlematches'          => 'Naslov članka odgovara',
@@ -615,6 +604,7 @@ koje sadrže sve izraze koji se traže će se pojaviti u rezultatima).",
 'qbsettings-floatingleft' => 'Plutajuća lijevo',
 'changepassword'          => 'Promjeni lozinku',
 'skin'                    => 'Koža',
+'skin-preview'            => 'Pregled',
 'math'                    => 'Prikazivanje matematike',
 'dateformat'              => 'Format datuma',
 'datedefault'             => 'Nije bitno',
@@ -725,7 +715,7 @@ da bi ste slali fajlove.',
 'filehist-filesize'   => 'Veličina datoteke',
 'filehist-comment'    => 'Komentar',
 'imagelinks'          => 'Upotreba slike',
-'linkstoimage'        => 'Sledeće stranice koriste ovu sliku:',
+'linkstoimage'        => '{{PLURAL:$1|Slijedeća stranica koristi|Slijedećih $1 stranica koriste}} ovu sliku:',
 'nolinkstoimage'      => 'Nema stranica koje koriste ovu sliku.',
 'sharedupload'        => 'Ova datoteka se nalazi na [[Commons:Početna strana|Wikimedia Commons]] i može se koristiti i na drugim projektima.',
 
@@ -805,6 +795,8 @@ na kome bi se izvela ova funkcija.',
 # Special:Allpages
 'allpages'       => 'Sve stranice',
 'alphaindexline' => '$1 do $2',
+'prevpage'       => 'Prethodna stranica ($1)',
+'allpagesfrom'   => 'Prikaži stranice počev od:',
 'allarticles'    => 'Svi članci',
 'allpagessubmit' => 'Idi',
 
@@ -968,6 +960,8 @@ neće biti automatski zamijenjena.',
 'month'         => 'Od mjeseca (i ranije):',
 'year'          => 'Od godine (i ranije):',
 
+'sp-contributions-blocklog' => 'Evidencija blokiranja',
+
 # What links here
 'whatlinkshere'       => 'Šta je povezano ovdje',
 'whatlinkshere-title' => 'Stranice koje vode na $1',
@@ -1046,7 +1040,7 @@ na članak pod novim imenom. Linkovi koji vode na članak sa
 starim imenom neće biti preusmjereni. Vaša je dužnost da se 
 pobrinete da svi linkovi koji vode na članak sa starim imenom 
 budu adekvatno preusmjereni (stranica posebne namjene za 
-[[Special:Maintenance|održavanje]] je korisna za obavještenje 
+održavanje je korisna za obavještenje 
 o mrtvim i duplim preusmjerenjima).
 
 Imajte na umu da članak '''neće''' biti preusmjeren ukoliko 
@@ -1063,9 +1057,6 @@ drastična i neočekivana promjena za korisnike.",
 
 U tim slučajevima, moraćete ručno da premjestite stranicu ukoliko to želite.",
 'movearticle'      => 'Premjestite stranicu',
-'movenologin'      => 'Niste prijavljeni',
-'movenologintext'  => 'Morate biti registrovani korisnik i [[Special:Userlogin|prijavljeni]]
-da biste premjestili stranicu.',
 'newtitle'         => 'Novi naslov',
 'movepagebtn'      => 'premjestite stranicu',
 'pagemovedsub'     => 'Premještanje uspjelo',
@@ -1092,7 +1083,7 @@ U drugom slučaju možete koristiti i vezu, npr. [[{{ns:special}}:Export/{{Media
 # Namespace 8 related
 'allmessages'               => 'Sve sistemske poruke',
 'allmessagestext'           => 'Ovo je spisak svih sistemskih poruka u {{ns:mediawiki}} imenskom prostoru.',
-'allmessagesnotsupportedDB' => '[[{{ns:special}}:Allmessages|sistemske poruke]] nisu podržane zato što je <i>wgUseDatabaseMessages</i> isključen.',
+'allmessagesnotsupportedDB' => 'Ova stranica ne može biti korištena jer je <i>wgUseDatabaseMessages</i> isključen.',
 
 # Thumbnails
 'thumbnail-more'  => 'uvećajte',
@@ -1137,7 +1128,6 @@ U drugom slučaju možete koristiti i vezu, npr. [[{{ns:special}}:Export/{{Media
 'tooltip-n-recentchanges'         => 'Spisak nedavnih izmjena na wiki.',
 'tooltip-n-randompage'            => 'Otvorite slučajan članak',
 'tooltip-n-help'                  => 'Mjesto gdje možete nešto da naučite.',
-'tooltip-n-sitesupport'           => 'Podržite nas',
 'tooltip-t-whatlinkshere'         => 'Spisak svih članaka koji su povezani sa ovim',
 'tooltip-t-recentchangeslinked'   => 'Nedavne izmjene na stranicama koje su povezane sa ovom',
 'tooltip-feed-rss'                => 'RSS za ovu stranicu',
@@ -1190,6 +1180,7 @@ U drugom slučaju možete koristiti i vezu, npr. [[{{ns:special}}:Export/{{Media
 
 # Browsing diffs
 'previousdiff' => '← Prethodna izmjena',
+'nextdiff'     => 'Slijedeća razlika →',
 
 # Media information
 'mediawarning'         => "'''Upozorenje''': Ovaj fajl sadrži loš kod, njegovim izvršavanjem možete da ugrozite Vaš sistem.
@@ -1259,6 +1250,12 @@ Ako ovo niste vi, ne pratite poveznicu. Ovaj kod za potvrdu će isteći u $4.',
 : ''$2''
 
 Molimo Vas da potvrdite da stvarno želite da ponovo napravite ovaj članak.",
+
+# Multipage image navigation
+'imgmultipageprev' => '← prethodna stranica',
+
+# Table pager
+'table_pager_prev' => 'Prethodna stranica',
 
 # Special:Version
 'version' => 'Verzija', # Not used as normal message but as header for the special page itself

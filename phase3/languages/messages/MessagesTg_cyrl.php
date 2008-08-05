@@ -6,8 +6,6 @@
  *
  * @author Ibrahim
  * @author FrancisTyers
- * @author SPQRobin
- * @author Siebrand
  * @author לערי ריינהארט
  * @author Farrukh
  * @author Soroush
@@ -112,8 +110,6 @@ $messages = array(
 'underline-always'  => 'Доимо',
 'underline-never'   => 'Ҳеҷгоҳ',
 'underline-default' => 'Пешфарзи мурургар',
-
-'skinpreview' => '(Пешнамоиш)',
 
 # Dates
 'sunday'        => 'Якшанбе',
@@ -292,8 +288,6 @@ $messages = array(
 'portal-url'           => 'Project:Вуруди корбарон',
 'privacy'              => 'Сиёсати ҳифзи асрор',
 'privacypage'          => 'Project:Сиёсати ҳифзи асрор',
-'sitesupport'          => 'Кӯмаки молӣ',
-'sitesupport-url'      => 'Project:Кӯмаки молӣ',
 
 'badaccess'        => 'Иштибоҳи иҷоза',
 'badaccess-group0' => 'Шумо рухсати иҷрои амали дархостшударо надоред.',
@@ -431,7 +425,7 @@ $1',
 'loginproblem'               => '<b>Вуруди шумо ба систем бо мушкили рӯ ба рӯ шуд.</b><br />Бори дигар санҷед!',
 'login'                      => 'Вуруд',
 'nav-login-createaccount'    => 'Вуруд / Сохтани ҳисоби ҷадид',
-'loginprompt'                => 'Барои вуруд ба {{SITENAME}} бояд кукиҳоро фаъол кунед.',
+'loginprompt'                => '[[Special:Userlogin|Барои вуруд ба {{SITENAME}}]] бояд кукиҳоро фаъол кунед.',
 'userlogin'                  => 'Вуруд / Сохтани ҳисоби ҷадид',
 'logout'                     => 'Хуруҷ аз систем',
 'userlogout'                 => 'Хуруҷ аз систем',
@@ -493,7 +487,7 @@ $1',
 'accountcreated'             => 'Ҳисоби ҷадид сохта шуд',
 'accountcreatedtext'         => 'Ҳисоби корбар барои $1 сохта шуд.',
 'createaccount-title'        => 'Эҷоди ҳисоби корбарӣ дар {{SITENAME}}',
-'createaccount-text'         => 'Як нафаре ($1) барои 2$ як ҳисоби корбарӣ дар {{SITENAME}} эҷод кардааст ($4). Калимаи убури "$2" чунин аст: "$3". Шумо бояд вориди систем шавед то калимаи убури худро тағйир бидиҳед.
+'createaccount-text'         => 'Як нафаре барои 2$ як ҳисоби корбарӣ дар {{SITENAME}} эҷод кардааст ($4). Калимаи убури "$2" чунин аст: "$3". Шумо бояд вориди систем шавед то калимаи убури худро тағйир бидиҳед.
 
 Агар ин ҳисоб иштибоҳе сохта шудааст, ин номаро нодида бигиред.',
 'loginlanguagelabel'         => 'Забон: $1',
@@ -576,10 +570,6 @@ $1',
 'blockededitsource'         => "Матни '''вироишҳои шумо''' дар '''$1''' дар зер нишон дода шудааст:",
 'whitelistedittitle'        => 'Барои вироиш вуруд бояд кард',
 'whitelistedittext'         => 'Барои вироиши мақола бояд ба систем $1 шавед.',
-'whitelistreadtitle'        => 'Барои хондан бояд вуруд кард',
-'whitelistreadtext'         => 'Барои хонадани мақолаҳо бояд [[Special:Userlogin|ба систем ворид шавед]].',
-'whitelistacctitle'         => 'Ба Шумо барои сохтани номи корбар иҷозат нест.',
-'whitelistacctext'          => 'Барои эчоди ҳисоб дар {{SITENAME}} шумо бояд [[Special:Userlogin|вуруд]] карда, рухсати марбута ба ин корро дошта бошед.',
 'confirmedittitle'          => 'Тасдиқ кардани нишонаи почтаи электронӣ барои вироиш кардан лозим аст',
 'confirmedittext'           => 'Шумо бояд нишонаи почтаи электрониатонро пеш аз вироиш кардани саҳифаҳо, тасдиқ кунед. Лутфан ин корро тариқи [[Special:Preferences|тарҷиҳоти корбар]] сурат диҳед.',
 'nosuchsectiontitle'        => 'Чунин бахше вуҷуд надорад',
@@ -835,6 +825,7 @@ $1',
 'qbsettings-floatingright' => 'Шиновар рост',
 'changepassword'           => 'Иваз намудани калимаи убур',
 'skin'                     => 'Пӯст',
+'skin-preview'             => 'Пешнамоиш',
 'math'                     => 'Риёзиёт',
 'dateformat'               => 'Қолаби сана',
 'datedefault'              => 'Бе тарҷиҳ',
@@ -882,32 +873,25 @@ $1',
 'files'                    => 'Файлҳо',
 
 # User rights
-'userrights'                       => 'Мудирияти ихтиёроти корбарӣ', # Not used as normal message but as header for the special page itself
-'userrights-lookup-user'           => 'Мудирияти гурӯҳҳои корбарӣ',
-'userrights-user-editname'         => 'Номи корбарро дохил кунед:',
-'editusergroup'                    => 'Гуруҳҳои корбарро вироиш кунед',
-'editinguser'                      => "Дар ҳоли вироиши корбар '''[[User:$1|$1]]''' ([[User talk:$1|{{int:talkpagelinktext}}]] | [[Special:Contributions/$1|{{int:contribslink}}]])",
-'userrights-editusergroup'         => 'Вироиши гурӯҳҳои корбарӣ',
-'saveusergroups'                   => 'Сабти гурӯҳҳои корбарӣ',
-'userrights-groupsmember'          => 'Аъзои:',
-'userrights-groupsremovable'       => 'Гурӯҳҳои қобили ҳазф:',
-'userrights-groupsavailable'       => 'Гурӯҳҳои мавҷуд:',
-'userrights-groups-help'           => 'Шумо метавонед гурӯҳҳое, ки корбар дар он қарор доштаро тағйир диҳед.
+'userrights'                  => 'Мудирияти ихтиёроти корбарӣ', # Not used as normal message but as header for the special page itself
+'userrights-lookup-user'      => 'Мудирияти гурӯҳҳои корбарӣ',
+'userrights-user-editname'    => 'Номи корбарро дохил кунед:',
+'editusergroup'               => 'Гуруҳҳои корбарро вироиш кунед',
+'editinguser'                 => "Дар ҳоли вироиши корбар '''[[User:$1|$1]]''' ([[User talk:$1|{{int:talkpagelinktext}}]] | [[Special:Contributions/$1|{{int:contribslink}}]])",
+'userrights-editusergroup'    => 'Вироиши гурӯҳҳои корбарӣ',
+'saveusergroups'              => 'Сабти гурӯҳҳои корбарӣ',
+'userrights-groupsmember'     => 'Аъзои:',
+'userrights-groups-help'      => 'Шумо метавонед гурӯҳҳое, ки корбар дар он қарор доштаро тағйир диҳед.
 * Қуттии аломатхӯрда ба ин маънӣ аст, ки корбар дар он гурӯҳ қарор дорад.
 * Қуттии аломатнахӯрда ба ин маънӣ аст, ки корбар дар он гурӯҳ қарор надорад.
 * "*" маънои онро дорад, ки шумо қобили ҳазф кардани гурӯҳе нестед дар ҳоле ки шумо онро илова карда бошед, ин ё он.',
-'userrights-reason'                => 'Иллати тағйир:',
-'userrights-available-none'        => 'Шумо узвияти дар гурӯҳҳоро наметавонед тағйир диҳед.',
-'userrights-available-add'         => 'Шумо метавонед ҳар корбареро ба ин {{PLURAL:$2|гурӯҳ|гурӯҳо}}: $1 илова кунед.',
-'userrights-available-remove'      => 'Шумо метавонед ҳар корбареро аз ин {{PLURAL:$2|гурӯҳ|гурӯҳо}}: $1 ҳазф кунед.',
-'userrights-available-add-self'    => 'Шумо метавонед худро ба ин {{PLURAL:$2|гурӯҳ|гурӯҳо}}: $1 илова бикунед.',
-'userrights-available-remove-self' => 'Шумо метавонед худро аз ин {{PLURAL:$2|гурӯҳ|гурӯҳо}}: $1 ҳазф бикунед.',
-'userrights-no-interwiki'          => 'Шумо иҷозати тағйири ихтиёроти корбарони дигар викиҳоро надоред.',
-'userrights-nodatabase'            => 'Пойгоҳи дода $1 вуҷуд надорад ё маҳаллӣ нест.',
-'userrights-nologin'               => 'Шумо бояд бо як ҳисоби корбарӣ дорои ихтиёроти мудириятӣ [[Special:Userlogin|ба систем вуруд кунед]], то битавонед ихтиёроти корбаронро таъйид кунед.',
-'userrights-notallowed'            => 'Ҳисоби корбарии шумо иҷозати тағйири ихтиёроти корбариро надорад.',
-'userrights-changeable-col'        => 'Гурӯҳҳое, ки шумо метавонед тағйир диҳед',
-'userrights-unchangeable-col'      => 'Гурӯҳҳое, ки шумо наметавонед тағйир диҳед',
+'userrights-reason'           => 'Иллати тағйир:',
+'userrights-no-interwiki'     => 'Шумо иҷозати тағйири ихтиёроти корбарони дигар викиҳоро надоред.',
+'userrights-nodatabase'       => 'Пойгоҳи дода $1 вуҷуд надорад ё маҳаллӣ нест.',
+'userrights-nologin'          => 'Шумо бояд бо як ҳисоби корбарӣ дорои ихтиёроти мудириятӣ [[Special:Userlogin|ба систем вуруд кунед]], то битавонед ихтиёроти корбаронро таъйид кунед.',
+'userrights-notallowed'       => 'Ҳисоби корбарии шумо иҷозати тағйири ихтиёроти корбариро надорад.',
+'userrights-changeable-col'   => 'Гурӯҳҳое, ки шумо метавонед тағйир диҳед',
+'userrights-unchangeable-col' => 'Гурӯҳҳое, ки шумо наметавонед тағйир диҳед',
 
 # Groups
 'group'               => 'Гурӯҳ:',
@@ -956,7 +940,7 @@ $1',
 'recentchanges'                     => 'Тағйироти охирин',
 'recentchangestext'                 => 'Назорати тағйиротҳои навтарин дар Википедиа дар ҳамин саҳифа аст.',
 'recentchanges-feed-description'    => 'Радёбии охирин тағйироти ин вики дар ин хурд.',
-'rcnote'                            => "Дар поён  {{PLURAL:$1|'''1''' тағйире аст|'''$1''' тағйирот мебошанд}}, ки дар давоми {{PLURAL:$2|рӯҳ|'''$2''' рӯзҳои}} охир, сар карда аз $3.",
+'rcnote'                            => "Дар поён  {{PLURAL:$1|'''1''' тағйире аст|'''$1''' тағйирот мебошанд}}, ки дар давоми {{PLURAL:$2|рӯҳ|'''$2''' рӯзҳои}} охир, сар карда аз $5, $4.",
 'rcnotefrom'                        => 'Дар зер тағйиротҳои охирин аз <b>$2</b> (то <b>$1</b> нишон дода шудааст).',
 'rclistfrom'                        => 'Нишон додани тағйиротҳои нав сар карда аз $1',
 'rcshowhideminor'                   => '$1 вироишҳои хурд',
@@ -1120,18 +1104,18 @@ $1',
 # File reversion
 'filerevert'                => 'Вогардонии $1',
 'filerevert-legend'         => 'Вогардонии парванда',
-'filerevert-intro'          => '<span class="plainlinks">Шумо дар ҳоли вогардонии \'\'\'[[Media:$1|$1]]\'\'\' ба [$4 нусхаи аз $3, $2] ҳастед.</span>',
+'filerevert-intro'          => "Шумо дар ҳоли вогардонии '''[[Media:$1|$1]]''' ба [$4 нусхаи аз $3, $2] ҳастед.",
 'filerevert-comment'        => 'Тавзеҳ:',
 'filerevert-defaultcomment' => 'Вогардонӣ ба нусхаи $2, $1',
 'filerevert-submit'         => 'бирав',
-'filerevert-success'        => '<span class="plainlinks">\'\'\'[[Media:$1|$1]]\'\'\' вогардонида шуд ба [нусхаи $4 аз таърихи $3, $2].</span>',
+'filerevert-success'        => "'''[[Media:$1|$1]]''' вогардонида шуд ба [нусхаи $4 аз таърихи $3, $2].",
 'filerevert-badversion'     => 'Нусхаи кӯҳнатаре аз ин парванда вуҷуд надошт.',
 
 # File deletion
 'filedelete'                  => 'Ҳазфи $1',
 'filedelete-legend'           => 'Ҳазфи парванда',
 'filedelete-intro'            => "Шумо дар ҳоли ҳазф кардани '''[[Media:$1|$1]]''' ҳастед.",
-'filedelete-intro-old'        => '<span class="plainlinks">Шумо дар ҳоли ҳазфи нусхаи \'\'\'[[Media:$1|$1]]\'\'\' аз таърихи [$4 $3, $2] ҳастед.</span>',
+'filedelete-intro-old'        => "Шумо дар ҳоли ҳазфи нусхаи '''[[Media:$1|$1]]''' аз таърихи [$4 $3, $2] ҳастед.",
 'filedelete-comment'          => 'Сабаби ҳазф:',
 'filedelete-submit'           => 'Ҳазф',
 'filedelete-success'          => "'''$1''' ҳазф шуд.",
@@ -1691,14 +1675,12 @@ $1',
 
 Дар он ҳолатҳо, саҳифаро бояд ба таври дастӣ кӯчонид ва ё ду саҳифаро бо вироиш як кунед.",
 'movearticle'             => 'Кӯчонидани саҳифа:',
-'movenologin'             => 'Вуруд нашудаед',
-'movenologintext'         => 'Барои кӯчонидани саҳифа шумо бояд корбари сабтшуда ва [[Special:Userlogin|ба систем вурудшуда]] бошед.',
 'movenotallowed'          => 'Шумо иҷозати кӯчонидани саҳифаҳоро дар Википедиа надоред.',
 'newtitle'                => 'Ба унвони ҷадид:',
 'move-watch'              => 'Назар кардани ин саҳифа',
 'movepagebtn'             => 'Кӯчонидани саҳифа',
 'pagemovedsub'            => 'Кӯчониш бомуваффақият анҷом ёфт',
-'movepage-moved'          => '<big>\'\'\'"$1" ба "$2" кӯчонида шудааст\'\'\'</big>', # The two titles are passed in plain text as $3 and $4 to allow additional goodies in the message.
+'movepage-moved'          => '<big>\'\'\'"$1" ба "$2" кӯчонида шуд\'\'\'</big>', # The two titles are passed in plain text as $3 and $4 to allow additional goodies in the message.
 'articleexists'           => 'Саҳифае бо ин ном вуҷуд надорад, ё номе, ки интихоб кардаед мӯътабар нест.
 Лутфан номи дигареро интихоб намоед.',
 'cantmove-titleprotected' => 'Шумо наметавонед ин саҳифаро ба ин нишона кӯчонед, барои он, ки унвони ҷадид аз эҷод кардан муҳофизат шудааст',
@@ -1825,7 +1807,6 @@ $1',
 'tooltip-n-recentchanges'         => 'Рӯйхати тағйиротҳо дар Википедиа',
 'tooltip-n-randompage'            => 'Овардани як саҳифаи тасодуфӣ',
 'tooltip-n-help'                  => 'Гузаштан ба Роҳнамо.',
-'tooltip-n-sitesupport'           => 'Моро дастгирӣ намоед',
 'tooltip-t-whatlinkshere'         => 'Рӯйхати ҳамаи саҳифаҳое, ки ба ин саҳифа пайванд доранд',
 'tooltip-t-recentchangeslinked'   => 'Тағйироти охир ин саҳифаҳое, ки ин саҳифа ба онҳо пайванд дорад',
 'tooltip-feed-rss'                => 'Хабарномаи RSS барои ин саҳифа',
@@ -1940,7 +1921,7 @@ $1',
 # Special:Newimages
 'newimages'             => 'Намоишгоҳи парвандаҳои ҷадид',
 'imagelisttext'         => "Дар зер феҳристи '''$1''' {{PLURAL:$1|парвандаи|парвандаҳои}} ба тартиб оварда шуда, омадааст $2.",
-'newimages-summary'     => 'Ин саҳифаи вижа охирин парвандаҳои боршударо намоиш медиҳад',
+'newimages-summary'     => 'Ин саҳифаи вижа охирин парвандаҳои боршударо намоиш медиҳад.',
 'showhidebots'          => '($1 ботҳо)',
 'noimages'              => 'Чизе барои дидан нест.',
 'ilsubmit'              => 'Ҷустуҷӯи',

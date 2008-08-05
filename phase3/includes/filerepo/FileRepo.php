@@ -15,6 +15,7 @@ abstract class FileRepo {
 	var $thumbScriptUrl, $transformVia404;
 	var $descBaseUrl, $scriptDirUrl, $articleUrl, $fetchDescription, $initialCapital;
 	var $pathDisclosureProtection = 'paranoid';
+	var $descriptionCacheExpiry, $apiThumbCacheExpiry, $apiThumbCacheDir;
 
 	/**
 	 * Factory functions for creating new files
@@ -30,7 +31,8 @@ abstract class FileRepo {
 		// Optional settings
 		$this->initialCapital = true; // by default
 		foreach ( array( 'descBaseUrl', 'scriptDirUrl', 'articleUrl', 'fetchDescription',
-			'thumbScriptUrl', 'initialCapital', 'pathDisclosureProtection' ) as $var )
+			'thumbScriptUrl', 'initialCapital', 'pathDisclosureProtection', 
+			'descriptionCacheExpiry', 'apiThumbCacheExpiry', 'apiThumbCacheDir' ) as $var )
 		{
 			if ( isset( $info[$var] ) ) {
 				$this->$var = $info[$var];

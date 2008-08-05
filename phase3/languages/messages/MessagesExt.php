@@ -5,10 +5,7 @@
  * @file
  *
  * @author Better
- * @author Siebrand
  * @author M.M.S.
- * @author Jon Harald Søby
- * @author SPQRobin
  */
 
 $messages = array(
@@ -57,8 +54,6 @@ $messages = array(
 'underline-always'  => 'Sempri',
 'underline-never'   => 'Nunca',
 'underline-default' => 'Sigún esté nel esproraol',
-
-'skinpreview' => '(Previsoreal)',
 
 # Dates
 'sunday'        => 'Domingu',
@@ -226,9 +221,9 @@ $messages = array(
 'disclaimers'          => 'Avisu legal',
 'disclaimerpage'       => 'Project:Arrayu heneral de responsabiliá',
 'edithelp'             => "Ayua d'eición",
-'edithelppage'         => 'Ayua:Eitandu',
+'edithelppage'         => 'Help:Eitandu',
 'faqpage'              => 'Project:FAQ',
-'helppage'             => 'Ayua:Continius',
+'helppage'             => 'Help:Continius',
 'mainpage'             => 'Páhina prencipal',
 'mainpage-description' => 'Páhina prencipal',
 'policy-url'           => 'Project:Pulítica',
@@ -236,8 +231,6 @@ $messages = array(
 'portal-url'           => 'Project:Puertal la Comuniá',
 'privacy'              => 'Pulítica',
 'privacypage'          => 'Project:Pulítica e privaciá',
-'sitesupport'          => 'Donacionis',
-'sitesupport-url'      => 'Project:Apoyu al proyeutu',
 
 'badaccess'        => 'Marru colos tus premisus',
 'badaccess-group0' => 'Nu se te premiti hazel esa ación.',
@@ -442,8 +435,8 @@ pol ca $1 oras.",
 'accountcreated'             => 'Cuenta criá',
 'accountcreatedtext'         => "La cuenta d'usuáriu pa $1 á siu criá.",
 'createaccount-title'        => 'Criaeru e cuentas de {{SITENAME}}',
-'createaccount-text'         => 'Alguien ($1) á criau una cuenta pa $2 en {{SITENAME}}
-($4). La consínia pa "$2" es "$3". Eberias entral ena tu cuenta i chambal la tu consínia.
+'createaccount-text'         => 'Alguien á criau una cuenta pa $2 en {{SITENAME}} ($4). La consínia pa "$2" es "$3".
+Eberias entral ena tu cuenta i chambal la tu consínia.
 
 Si s\'á criau la cuenta ebiu a angún marru, inora esti mensahi.',
 'loginlanguagelabel'         => 'Palra: $1',
@@ -466,7 +459,7 @@ Si s\'á criau la cuenta ebiu a angún marru, inora esti mensahi.',
 'italic_tip'      => 'Testu en letra "Itálica"',
 'link_sample'     => 'Atihal entítulu',
 'link_tip'        => 'Atihu entelnu',
-'extlink_sample'  => 'http://www.sabulugal.com Entítulu el atihu',
+'extlink_sample'  => 'http://www.example.com Entítulu el atihu',
 'extlink_tip'     => 'Atihu esternu (alcuerdati el prefihu http://)',
 'headline_sample' => 'Entítulu',
 'headline_tip'    => 'Entítulu e nivel 2',
@@ -525,10 +518,6 @@ La ID el tu tarugu es $5. Pol favol, escrebi esta ID enas tus solicituis.",
 'blockededitsource'                => "Embahu se muestra el testu '''las tus eicionis''' en '''$1''':",
 'whitelistedittitle'               => 'Es mestel rustrilsi pa eital',
 'whitelistedittext'                => 'Tiinis que $1 pa eital páhinas.',
-'whitelistreadtitle'               => 'Es mestel rustrilsi pa leyel',
-'whitelistreadtext'                => 'Ebis [[Special:Userlogin|rustrilti]] pa leyel páhinas.',
-'whitelistacctitle'                => 'Nu se te premiti crial denguna cuenta',
-'whitelistacctext'                 => 'Pa que se te premita crial cuentas nesti güiqui, ebis [[Special:Userlogin|rustrilti]] i tenel los premisus correspondientis.',
 'confirmedittitle'                 => 'Es mestel confirmal el tu email pa puel eital',
 'confirmedittext'                  => 'Ebis confirmal la tu direción d´email enantis d´eital páhinas. Pol favol, escrebi i compreba el tu email pol meyu las tus [[Special:Preferences|preferéncias d´usuáriu]].',
 'nosuchsectiontitle'               => 'Nu esa seción',
@@ -792,6 +781,7 @@ Asigurati e qu'esti chambu mantenga la continuiá el estorial la páhina.",
 'qbsettings-floatingright' => 'Frotanti ena derecha',
 'changepassword'           => 'Chambal consínia',
 'skin'                     => 'Aparéncia',
+'skin-preview'             => 'Previsoreal',
 'math'                     => 'Hórmulas',
 'dateformat'               => 'Hormatu e fecha',
 'datedefault'              => 'Sin preferéncias',
@@ -839,32 +829,25 @@ Asigurati e qu'esti chambu mantenga la continuiá el estorial la páhina.",
 'files'                    => 'Archivus',
 
 # User rights
-'userrights'                       => "Alministral premisus d'usuárius", # Not used as normal message but as header for the special page itself
-'userrights-lookup-user'           => "Alministral grupus d'usuárius",
-'userrights-user-editname'         => 'Escrebi un nombri d´usuáriu:',
-'editusergroup'                    => "Eital grupus d'usuárius",
-'editinguser'                      => "Chambandu los derechus del usuáriu '''[[User:$1|$1]]''' ([[User talk:$1|{{int:talkpagelinktext}}]] | [[Special:Contributions/$1|{{int:contribslink}}]])",
-'userrights-editusergroup'         => "Eital grupus d'usuárius",
-'saveusergroups'                   => "Emburacal grupus d'usuárius",
-'userrights-groupsmember'          => 'Miembru e:',
-'userrights-groupsremovable'       => 'Grupus esborrabris:',
-'userrights-groupsavailable'       => 'Grupus disponibris:',
-'userrights-groups-help'           => "Pueis chambal los grupus enos qu'está esti usuáriu.
+'userrights'                  => "Alministral premisus d'usuárius", # Not used as normal message but as header for the special page itself
+'userrights-lookup-user'      => "Alministral grupus d'usuárius",
+'userrights-user-editname'    => 'Escrebi un nombri d´usuáriu:',
+'editusergroup'               => "Eital grupus d'usuárius",
+'editinguser'                 => "Chambandu los derechus del usuáriu '''[[User:$1|$1]]''' ([[User talk:$1|{{int:talkpagelinktext}}]] | [[Special:Contributions/$1|{{int:contribslink}}]])",
+'userrights-editusergroup'    => "Eital grupus d'usuárius",
+'saveusergroups'              => "Emburacal grupus d'usuárius",
+'userrights-groupsmember'     => 'Miembru e:',
+'userrights-groups-help'      => "Pueis chambal los grupus enos qu'está esti usuáriu.
 * Un cuairu aseñalau endica qu'el usuáriu está nesi grupu.
 * Un cuairu sin aseñalal endica qu'el usuáriu nu está nesi grupu.
 * Una * endica que nu pudrás esborralu del grupu una vezi lo aigas añiiu, u vice versa.",
-'userrights-reason'                => 'Razón el chambu:',
-'userrights-available-none'        => 'Nu pueis chambal los miembrus del grupu.',
-'userrights-available-add'         => 'Pueis añiil cualisquiel usuáriu a {{PLURAL:$2|esti grupu|estus grupus}}: $1.',
-'userrights-available-remove'      => 'Pueis esborral usuárius {{PLURAL:$2|del siguienti grupu|de los siguientis grupus}}: $1.',
-'userrights-available-add-self'    => 'Pueis uñilti tu mesmu {{PLURAL:$2|al siguienti grupu|a los siguientis grupus}}: $1.',
-'userrights-available-remove-self' => 'Pueis esborralti {{PLURAL:$2|del siguienti grupu|de los siguientis grupus}}: $1.',
-'userrights-no-interwiki'          => 'Nu tienis premisu pa eital los derechus los usuárius en otras güiquis.',
-'userrights-nodatabase'            => 'La basi e datus $1 nu desisti, u nu es local.',
-'userrights-nologin'               => "Ebis [[Special:Userlogin|rustrilti]] con una cuenta d'alministraol pa puel asinal derechus a los usuárius.",
-'userrights-notallowed'            => "Nu tienis los permisus nesezárius p'asinal derechus a los usuárius.",
-'userrights-changeable-col'        => 'Grupus que pueis chambal',
-'userrights-unchangeable-col'      => 'Grupus que nu pueis chambal',
+'userrights-reason'           => 'Razón el chambu:',
+'userrights-no-interwiki'     => 'Nu tienis premisu pa eital los derechus los usuárius en otras güiquis.',
+'userrights-nodatabase'       => 'La basi e datus $1 nu desisti, u nu es local.',
+'userrights-nologin'          => "Ebis [[Special:Userlogin|rustrilti]] con una cuenta d'alministraol pa puel asinal derechus a los usuárius.",
+'userrights-notallowed'       => "Nu tienis los permisus nesezárius p'asinal derechus a los usuárius.",
+'userrights-changeable-col'   => 'Grupus que pueis chambal',
+'userrights-unchangeable-col' => 'Grupus que nu pueis chambal',
 
 # Groups
 'group'               => 'Grupu:',
@@ -1078,18 +1061,18 @@ Pursa nel entítulu la coluna pa chambal el ordin.',
 # File reversion
 'filerevert'                => 'Revertil $1',
 'filerevert-legend'         => 'Revertil archivu',
-'filerevert-intro'          => '<span class="plainlinks">Estás revirtiendu \'\'\'[[Media:$1|$1]]\'\'\' a la [$4 velsión del $3 a las $2].</span>',
+'filerevert-intro'          => "Estás revirtiendu '''[[Media:$1|$1]]''' a la [$4 velsión del $3 a las $2].",
 'filerevert-comment'        => 'Comentáriu:',
 'filerevert-defaultcomment' => 'Revertiu a la velsión de $2, $1',
 'filerevert-submit'         => 'Revertil',
-'filerevert-success'        => '<span class="plainlinks">S\'á revertiu \'\'\'[[Media:$1|$1]]\'\'\' a [$4 velsión de $3, $2].</span>',
+'filerevert-success'        => "S'á revertiu '''[[Media:$1|$1]]''' a [$4 velsión de $3, $2].",
 'filerevert-badversion'     => "Nu desisti denguna velsión local prévia d'esti archivu cola fecha aseñalá.",
 
 # File deletion
 'filedelete'                  => 'Esborral $1',
 'filedelete-legend'           => 'Esborral archivu',
 'filedelete-intro'            => "Estás esborrandu '''[[Media:$1|$1]]'''.",
-'filedelete-intro-old'        => '<span class="plainlinks">Estás esborrandu la velsón de \'\'\'[[Media:$1|$1]]\'\'\' del [$4 $3 a las $2].</span>',
+'filedelete-intro-old'        => "Estás esborrandu la velsón de '''[[Media:$1|$1]]''' del [$4 $3 a las $2].",
 'filedelete-comment'          => 'Comentáriu:',
 'filedelete-submit'           => 'Esborral',
 'filedelete-success'          => "S´á esborrau '''$1'''.",
@@ -1261,7 +1244,7 @@ El longol de la [http://www.mediawiki.org/wiki/Manual:Job_queue cola e tareas] e
 'listgrouprights'          => "Derechus del grupu d'usuárius",
 'listgrouprights-group'    => 'Grupu',
 'listgrouprights-rights'   => 'Derechus',
-'listgrouprights-helppage' => 'Ayua:Derechus del grupu',
+'listgrouprights-helppage' => 'Help:Derechus del grupu',
 'listgrouprights-members'  => '(lista e miembrus)',
 
 # E-mail user
@@ -1655,14 +1638,11 @@ pol favol, asigurati e qu'entiendis las consecuéncias enantis d'acontinal.",
 
 En dambus los dos chascus, si lo deseas, tendrás que movel u mestural la páhina manualmenti.",
 'movearticle'             => 'Movel páhina:',
-'movenologin'             => "Nu t'alcuentras rustriu",
-'movenologintext'         => 'Ebis estal rustriu i [[Special:Userlogin|entral ena tu cuenta]] pa movel una páhina.',
 'movenotallowed'          => 'Nu tiinis premisu pa mual páhinas nesti güiqui.',
 'newtitle'                => 'Nuevu entítulu:',
 'move-watch'              => 'Vehilal esta páhina',
 'movepagebtn'             => 'Movel páhina',
 'pagemovedsub'            => 'S´á moviu la páhina',
-'movepage-moved'          => '<big>\'\'\'"$1" agora s´alcuentra en "$2"\'\'\'</big>', # The two titles are passed in plain text as $3 and $4 to allow additional goodies in the message.
 'articleexists'           => 'Ya desisti una páhina con esi nombri u nu se premiti el nombri qu´as lihiu.
 Pol favol, escrebi otru entítulu.',
 'cantmove-titleprotected' => "Nu t'es posibri movel la páhina ebiu a qu'el nuevu entítulu s'alcuentra atarugau",
@@ -1778,7 +1758,6 @@ Tolas acionis d'emporteau transwiki se rustrin nel [[Special:Log/import|rustrihu
 'tooltip-n-recentchanges'         => 'La lista e los úrtimus chambus nesti güiqui.',
 'tooltip-n-randompage'            => 'Cargal cualisquiel páhina',
 'tooltip-n-help'                  => 'El lugal pa deprendel.',
-'tooltip-n-sitesupport'           => 'Ayúamus',
 'tooltip-t-whatlinkshere'         => 'Lista e tolas páhinas güiqui qu´atihan p´aquí',
 'tooltip-t-recentchangeslinked'   => 'Úrtimus chambus en páhinas atihás dendi esta páhina',
 'tooltip-feed-rss'                => 'RSS feed pa esta páhina',

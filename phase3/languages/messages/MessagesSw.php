@@ -4,13 +4,10 @@
  * @ingroup Language
  * @file
  *
- * @author Robert Ullmann
  * @author Malangali
  * @author לערי ריינהארט
- * @author Siebrand
- * @author Nike
- * @author SPQRobin
  * @author Marcos
+ * @author Robert Ullmann
  */
 
 $messages = array(
@@ -142,8 +139,6 @@ $messages = array(
 'portal-url'           => 'Project:Jumuia',
 'privacy'              => 'Sera ya faragha',
 'privacypage'          => 'Project:Sera ya faragha',
-'sitesupport'          => 'Michango',
-'sitesupport-url'      => 'Project:Tuunge mkono',
 
 'retrievedfrom'       => 'Rudishwa kutoka "$1"',
 'youhavenewmessages'  => 'Una $1 ($2).',
@@ -185,7 +180,7 @@ $messages = array(
 'loginproblem'            => '<b>Tatizo limetokea wakati ulipojaribu kuingia.</b><br />Jaribu tena!',
 'login'                   => 'Ingia',
 'nav-login-createaccount' => 'Ingia/ sajili akaunti',
-'loginprompt'             => 'Lazima kompyuta yako ipokee [[kuki]] ili uweze kuingia kwenye {{SITENAME}}.',
+'loginprompt'             => 'Lazima kompyuta yako ipokee kuki ili uweze kuingia kwenye {{SITENAME}}.',
 'userlogin'               => 'Ingia/ sajili akaunti',
 'logout'                  => 'Toka',
 'userlogout'              => 'Toka',
@@ -201,7 +196,9 @@ $messages = array(
 'prefs-help-realname'     => 'Jina la kweli si lazima. Ukichagua kutaja jina lako hapa, litatumiwa kuonyesha kwamba ndiyo ulifanya kazi unayochangia.',
 'loginerror'              => 'Kosa la kuingia',
 'nocookiesnew'            => "Umesajiliwa, lakini bado hujaingizwa. {{SITENAME}} inatumia ''kuki'' ili watumiaji waingizwe. Kompyuta yako inazuia ''kuki''. Tafadhali, ondoa kizuizi hicho uingie kwa kutumia jina mpya na neno la siri.",
-'nocookieslogin'          => '{{SITENAME}} inatumia [[kuki]] ili watumiaji waweze kuingia. Kompyuta yako inakataa kupokea kuki. Tafadhali, ondoa kizuizi hicho, baadaye jaribu tena.',
+'nocookieslogin'          => '{{SITENAME}} inatumia kuki ili watumiaji waweze kuingia.
+Kompyuta yako inakataa kupokea kuki.
+Tafadhali, ondoa kizuizi hicho, baadaye jaribu tena.',
 'loginsuccesstitle'       => 'Umefaulu kuingia',
 'loginsuccess'            => "'''Umeingia {{SITENAME}} kama \"\$1\".'''",
 'nosuchuser'              => 'Hakuna mtumiaji mwenye jina "$1". Labda umeandika vibaya, au sajili akaunti mpya.',
@@ -234,7 +231,7 @@ kuthibitisha kwamba wewe ndiyo ni mwenye akaunti.',
 'italic_tip'      => 'Matini ya italiki',
 'link_sample'     => 'Jina la kiungo',
 'link_tip'        => 'Kiungo cha ndani',
-'extlink_sample'  => 'http://www.mfano.com jina la kiungo',
+'extlink_sample'  => 'http://www.example.com jina la kiungo',
 'extlink_tip'     => 'Kiungo cha nje (kumbuka kuanza na http:// )',
 'headline_sample' => 'Matini ya kichwa cha habari',
 'headline_tip'    => 'Kichwa cha habari, saizi 2',
@@ -619,7 +616,6 @@ Kama tayari kuna ukurasa au ukifuta tiki, itabidi usogeze au uunganishe ukurasa 
 'move-watch'       => 'Fuatilia ukurasa huu',
 'movepagebtn'      => 'Sogeza ukurasa',
 'pagemovedsub'     => 'Umefaulu kusogeza ukurasa',
-'movepage-moved'   => '<big>\'\'\'"$1" imesogezwa hadi "$2"\'\'\'</big>', # The two titles are passed in plain text as $3 and $4 to allow additional goodies in the message.
 'articleexists'    => 'Tayari kuna ukurasa wenye jina hilo, au
 jina ulilochagua ni batilifu.
 Chagua jina lengine.',
@@ -668,7 +664,6 @@ Chagua jina lengine.',
 'tooltip-n-recentchanges'         => 'Orodha ya mabadiliko ya hivi karibuni katika Wiki.',
 'tooltip-n-randompage'            => 'Onyesha ukurasa wa bahati',
 'tooltip-n-help'                  => 'Mahali pa kueleweshwa.',
-'tooltip-n-sitesupport'           => 'Tuunge mkono',
 'tooltip-t-whatlinkshere'         => 'Orodha ya kurasa zote za Wiki zilizounganishwa na ukurasa huu',
 'tooltip-t-contributions'         => 'Tazama orodha ya michango kwa mtumiaji huyu',
 'tooltip-t-emailuser'             => 'Mtumie mtumiaji huyu barua pepe',

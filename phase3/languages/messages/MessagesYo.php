@@ -5,11 +5,7 @@
  * @file
  *
  * @author Demmy
- * @author SPQRobin
- * @author Siebrand
  */
-
-
 
 $messages = array(
 # User preference toggles
@@ -83,7 +79,6 @@ $messages = array(
 'mainpage-description' => 'Ojúewé Àkọ́kọ́',
 'portal'               => 'Èbúté àwùjọ',
 'portal-url'           => 'Project:Èbúté Àwùjọ',
-'sitesupport'          => 'Se ẹ̀bùn owó',
 
 'badaccess-group0' => "A kò gbàyín l'áyè l'áti ṣe ohun tí ẹ bèrè fún.",
 

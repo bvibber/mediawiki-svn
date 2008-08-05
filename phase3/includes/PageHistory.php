@@ -68,12 +68,11 @@ class PageHistory {
 	 * @returns nothing
 	 */
 	function history() {
-		global $wgOut, $wgRequest, $wgTitle;
+		global $wgOut, $wgRequest, $wgTitle, $wgScript;
 
 		/*
 		 * Allow client caching.
 		 */
-
 		if( $wgOut->checkLastModified( $this->mArticle->getTouched() ) )
 			/* Client cache fresh and headers sent, nothing more to do. */
 			return;
@@ -87,7 +86,7 @@ class PageHistory {
 		$wgOut->setPageTitleActionText( wfMsg( 'history_short' ) );
 		$wgOut->setArticleFlag( false );
 		$wgOut->setArticleRelated( true );
-		$wgOut->setRobotpolicy( 'noindex,nofollow' );
+		$wgOut->setRobotPolicy( 'noindex,nofollow' );
 		$wgOut->setSyndicated( true );
 		$wgOut->setFeedAppendQuery( 'action=history' );
 		$wgOut->addScriptFile( 'history.js' );
@@ -124,13 +123,30 @@ class PageHistory {
 			$wgOut->redirect( $wgTitle->getLocalURL( "action=history&limit={$limit}&dir=prev" ) );
 			return;
 		}
+		
+		/**
+		 * Add date selector to quickly get to a certain time
+		 */
+		$year = $wgRequest->getInt( 'year' );
+		$month = $wgRequest->getInt( 'month' );
+		
+		$action = htmlspecialchars( $wgScript );
+		$wgOut->addHTML(
+			Xml::fieldset( wfMsg( 'history-search' ), false, array( 'id' => 'mw-history-search' ) ) .
+			"<form action=\"$action\" method=\"get\">" .
+			Xml::hidden( 'title', $this->mTitle->getPrefixedDBKey() ) . "\n" .
+			Xml::hidden( 'action', 'history' ) . "\n" .
+			$this->getDateMenu( $year, $month ) . '&nbsp;' . 
+			Xml::submitButton( wfMsg( 'allpagessubmit' ) ) . "\n" .
+			'</form></fieldset>'
+		);
 
 		wfRunHooks( 'PageHistoryBeforeList', array( &$this->mArticle ) );
 
 		/**
 		 * Do the list
 		 */
-		$pager = new PageHistoryPager( $this );
+		$pager = new PageHistoryPager( $this, $year, $month );
 		$this->linesonpage = $pager->getNumRows();
 		$wgOut->addHTML(
 			$pager->getNavigationBar() .
@@ -140,6 +156,37 @@ class PageHistory {
 			$pager->getNavigationBar()
 		);
 		wfProfileOut( __METHOD__ );
+	}
+	
+	/**
+	 * @return string Formatted HTML
+	 * @param int $year
+	 * @param int $month
+	 */
+	private function getDateMenu( $year, $month ) {
+		# Offset overrides year/month selection
+		if( $month && $month !== -1 ) {
+			$encMonth = intval( $month );
+		} else {
+			$encMonth = '';
+		}
+		if ( $year ) {
+			$encYear = intval( $year );
+		} else if( $encMonth ) {
+			$thisMonth = intval( gmdate( 'n' ) );
+			$thisYear = intval( gmdate( 'Y' ) );
+			if( intval($encMonth) > $thisMonth ) {
+				$thisYear--;
+			}
+			$encYear = $thisYear;
+		} else {
+			$encYear = '';
+		}
+		return Xml::label( wfMsg( 'year' ), 'year' ) . ' '.
+			Xml::input( 'year', 4, $encYear, array('id' => 'year', 'maxlength' => 4) ) .
+			' '.
+			Xml::label( wfMsg( 'month' ), 'month' ) . ' '.
+			Xml::monthSelector( $encMonth, -1 );
 	}
 
 	/**
@@ -245,11 +292,7 @@ class PageHistory {
 		}
 
 		if ( !is_null( $size = $rev->getSize() ) && $rev->userCan( Revision::DELETED_TEXT ) ) {
-			if ( $size == 0 )
-				$stxt = wfMsgHtml( 'historyempty' );
-			else
-				$stxt = wfMsgExt( 'historysize', array( 'parsemag' ), $wgLang->formatNum( $size ) );
-			$s .= " <span class=\"history-size\">$stxt</span>";
+			$s .= ' ' . $this->mSkin->formatRevisionSize( $size );
 		}
 
 		$s .= $this->mSkin->revComment( $rev, false, true );
@@ -448,20 +491,14 @@ class PageHistory {
 
 		$page_id = $this->mTitle->getArticleID();
 
-		$res = $dbr->select(
+		return $dbr->select(
 			'revision',
 			Revision::selectFields(),
 			array_merge(array("rev_page=$page_id"), $offsets),
 			__METHOD__,
 			array('ORDER BY' => "rev_timestamp $dirs",
 				'USE INDEX' => 'page_timestamp', 'LIMIT' => $limit)
-			);
-
-		$result = array();
-		while (($obj = $dbr->fetchObject($res)) != NULL)
-			$result[] = $obj;
-
-		return $result;
+		);
 	}
 
 	/** @todo document */
@@ -498,7 +535,7 @@ class PageHistory {
 	 * @param string $type
 	 */
 	function feed( $type ) {
-		global $wgFeedClasses;
+		global $wgFeedClasses, $wgRequest, $wgFeedLimit;
 		if ( !FeedUtils::checkFeedOutput($type) ) {
 			return;
 		}
@@ -509,7 +546,14 @@ class PageHistory {
 			wfMsgForContent( 'history-feed-description' ),
 			$this->mTitle->getFullUrl( 'action=history' ) );
 
-		$items = $this->fetchRevisions(10, 0, PageHistory::DIR_NEXT);
+		// Get a limit on number of feed entries. Provide a sane default
+		// of 10 if none is defined (but limit to $wgFeedLimit max)
+		$limit = $wgRequest->getInt( 'limit', 10 );
+		if( $limit > $wgFeedLimit || $limit < 1 ) {
+			$limit = 10;
+		}
+ 		$items = $this->fetchRevisions($limit, 0, PageHistory::DIR_NEXT);
+
 		$feed->outHeader();
 		if( $items ) {
 			foreach( $items as $row ) {
@@ -582,17 +626,18 @@ class PageHistory {
 class PageHistoryPager extends ReverseChronologicalPager {
 	public $mLastRow = false, $mPageHistory;
 
-	function __construct( $pageHistory ) {
+	function __construct( $pageHistory, $year='', $month='' ) {
 		parent::__construct();
 		$this->mPageHistory = $pageHistory;
+		$this->getDateCond( $year, $month );
 	}
 
 	function getQueryInfo() {
 		$queryInfo = array(
-			'tables' => array('revision'),
-			'fields' => Revision::selectFields(),
-			'conds' => array('rev_page' => $this->mPageHistory->mTitle->getArticleID() ),
-			'options' => array( 'USE INDEX' => array('revision','page_timestamp') )
+			'tables'  => array('revision'),
+			'fields'  => Revision::selectFields(),
+			'conds'   => array('rev_page' => $this->mPageHistory->mTitle->getArticleID() ),
+			'options' => array( 'USE INDEX' => array('revision' => 'page_timestamp') )
 		);
 		wfRunHooks( 'PageHistoryPager::getQueryInfo', array( &$this, &$queryInfo ) );
 		return $queryInfo;

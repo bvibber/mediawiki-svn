@@ -91,7 +91,7 @@ class EmailUserForm {
 		$wgOut->addWikiMsg( "emailpagetext" );
 
 		if ( $this->subject === "" ) {
-			$this->subject = wfMsgForContent( "defemailsubject" );
+			$this->subject = wfMsgExt( 'defemailsubject', array( 'content', 'parsemag' ) );
 		}
 
 		$emf = wfMsg( "emailfrom" );
@@ -130,7 +130,7 @@ class EmailUserForm {
 <textarea id=\"wpText\" name=\"wpText\" rows='20' cols='80' style=\"width: 100%;\">" . htmlspecialchars( $this->text ) .
 "</textarea>
 " . wfCheckLabel( $emc, 'wpCCMe', 'wpCCMe', $wgUser->getBoolOption( 'ccmeonemails' ) ) . "<br />
-<input type='submit' name=\"wpSend\" value=\"{$ems}\" />
+<input type='submit' name=\"wpSend\" value=\"{$ems}\" accesskey=\"s\" />
 <input type='hidden' name='wpEditToken' value=\"$token\" />
 </form>\n" );
 
@@ -148,7 +148,9 @@ class EmailUserForm {
 		$from = new MailAddress( $wgUser );
 		$subject = $this->subject;
 
-		$prefsTitle = Title::newFromText( 'Preferences', NS_SPECIAL );
+		// Add a standard footer and trim up trailing newlines
+		$this->text = rtrim($this->text) . "\n\n---\n" . wfMsgExt( 'emailuserfooter',
+			array( 'content', 'parsemag' ), array( $from->name, $to->name ) );
 		
 		if( wfRunHooks( 'EmailUser', array( &$to, &$from, &$subject, &$this->text ) ) ) {
 

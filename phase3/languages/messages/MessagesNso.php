@@ -5,8 +5,6 @@
  * @file
  *
  * @author Mohau
- * @author Siebrand
- * @author Jon Harald Søby
  */
 
 $messages = array(
@@ -42,8 +40,6 @@ $messages = array(
 'tog-ccmeonemails'            => 'Nromele kopi ya melaetša yeo ke romelago bašumiši ba bangwe',
 
 'underline-always' => 'Kamehla',
-
-'skinpreview' => '(Ponopele)',
 
 # Dates
 'sunday'        => 'Sontaga',
@@ -193,8 +189,6 @@ $messages = array(
 'portal-url'           => 'Project:Portal ya Badudi',
 'privacy'              => 'Melao ya praebesi',
 'privacypage'          => 'Project:Polisi ya praefesi',
-'sitesupport'          => 'Dineelo',
-'sitesupport-url'      => 'Project:Thekgo ya Setsha',
 
 'badaccess'        => 'Thušo ya tumello',
 'badaccess-group0' => 'Ga wa dumelwa go dira seo o lekago go se dira.',
@@ -336,7 +330,7 @@ Go thibela go hlapanya/kgobošo, kgopotšo e tee ka diiri tše $1 e tla romellwa
 'italic_tip'      => 'Mongwala wa Italic',
 'link_sample'     => 'Thaetlele ya hlomaganyo',
 'link_tip'        => 'Hlomaganyo ya kagare',
-'extlink_sample'  => 'http://www.mohlala.com hlomaganyo thaetlele',
+'extlink_sample'  => 'http://www.example.com hlomaganyo thaetlele',
 'extlink_tip'     => 'Hlomaganyo ya ka ntle (gopola go thoma ka http://)',
 'headline_sample' => 'Tlhaka ya hlogotaba',
 'headline_tip'    => 'Hlogotaba ya boemo 2',
@@ -379,10 +373,6 @@ IP atrese ya gago ke $3, ge ID ya go thiba ele #$5. Ka kgopelo šumiša ID le IP
 'blockedoriginalsource'  => "Mothopo wa '''$1''' oa botšhwa tlase:",
 'whitelistedittitle'     => 'O swanela ke go tsena go fetola',
 'whitelistedittext'      => 'O swanela ke go $1 go fetola matlakala.',
-'whitelistreadtitle'     => 'O swanela ke go tsena bo bala',
-'whitelistreadtext'      => 'O swanela ke go  [[Special:Userlogin|tsena]] go bala matlakala.',
-'whitelistacctitle'      => 'Ga wa dumelwa go tlhola tšhupaleloko',
-'whitelistacctext'       => 'Go dumelwa go tlhola tšhupaleloko go {{SITENAME}} o swanela ke go  [[Special:Userlogin|tsena]]  gape obe le ditshwanelo tša maleba.',
 'confirmedittitle'       => 'E-mail e swanetše ke go tiišetšwa pele ge o ka fetola',
 'confirmedittext'        => 'E-mail e swanetše ke go tiišetšwa pele ge o ka fetola matlakala. Ka kgopelo, tiišetša e-mail atrese ya gago go [[Special:Preferences|dikgatlhego tša mošomiši]].',
 'nosuchsectiontitle'     => 'Gago sekgao seo',
@@ -491,6 +481,7 @@ Leka [[Special:Search|go fetleka wikii]] go humana matlakala a mapsha.',
 'prefs-edits'        => 'Palo ya diphetogo:',
 'prefsnologin'       => 'Ga wa tsena',
 'changepassword'     => 'Fetola ditlhaka-tša-siphiri',
+'skin-preview'       => 'Ponopele',
 'datetime'           => 'Tšatšikgwedi le nako',
 'math_unknown_error' => 'Phošo ya gose tsebege',
 'math_syntax_error'  => 'phošo ya popafoko',
@@ -507,17 +498,13 @@ Leka [[Special:Search|go fetleka wikii]] go humana matlakala a mapsha.',
 'files'              => 'Difaele',
 
 # User rights
-'editusergroup'                    => 'Fetola sehlopha sa bašomiši',
-'editinguser'                      => "Fetola mošomiši '''[[User:$1|$1]]''' ([[User talk:$1|{{int:talkpagelinktext}}]] | [[Special:Contributions/$1|{{int:contribslink}}]])",
-'userrights-editusergroup'         => 'Fetola sehlopha sa bašomiši',
-'saveusergroups'                   => 'Boloko Dihlopha tša bašomiši',
-'userrights-groupsmember'          => 'Leloko la:',
-'userrights-reason'                => 'Lebaka lago fetola:',
-'userrights-available-add'         => 'O ka tsenya bašomiši go {{PLURAL:$2|sehlopha se|ya dihlopha}}: $1.',
-'userrights-available-remove'      => 'O ka tloša bašomiši go {{PLURAL:$2|sehlopha se|ya dihlopha}}: $1.',
-'userrights-available-add-self'    => 'O ka itsenya go {{PLURAL:$2|sehlopha se|ya dihlopha}}: $1.',
-'userrights-available-remove-self' => 'O ka etloša  go {{PLURAL:$2|sehlopha se|ya dihlopha}}: $1.',
-'userrights-no-interwiki'          => 'Gawa dumelwa go fetola di dumello tša mošumiši go di wiki tše dingwe.',
+'editusergroup'            => 'Fetola sehlopha sa bašomiši',
+'editinguser'              => "Fetola mošomiši '''[[User:$1|$1]]''' ([[User talk:$1|{{int:talkpagelinktext}}]] | [[Special:Contributions/$1|{{int:contribslink}}]])",
+'userrights-editusergroup' => 'Fetola sehlopha sa bašomiši',
+'saveusergroups'           => 'Boloko Dihlopha tša bašomiši',
+'userrights-groupsmember'  => 'Leloko la:',
+'userrights-reason'        => 'Lebaka lago fetola:',
+'userrights-no-interwiki'  => 'Gawa dumelwa go fetola di dumello tša mošumiši go di wiki tše dingwe.',
 
 # Groups
 'group'     => 'Sehlopha:',
@@ -884,7 +871,6 @@ Ge go le bjalo,o tla swanela ke go huduša goba go kopanya matlakala ka bowena."
 'move-watch'              => 'Tlhapetša letlakala le',
 'movepagebtn'             => 'Huduša letlakala',
 'pagemovedsub'            => 'Hudugile ka katlego',
-'movepage-moved'          => '<big>\'\'\'"$1" e hudušitšwe go "$2"\'\'\'</big>', # The two titles are passed in plain text as $3 and $4 to allow additional goodies in the message.
 'articleexists'           => 'Letlakala la goba le leina le legona, goba
 leina leo o le kgethilego ga la dumelega.
 Ka kgopelo, kgetha leina le lengwe.',
@@ -940,7 +926,6 @@ Ka kgopelo, kgetha leina le lengwe.',
 'tooltip-n-recentchanges'         => 'Lenano la diphetogo tša bjale go wiki.',
 'tooltip-n-randompage'            => 'Laiša letlakala le lengwe le le lengwe',
 'tooltip-n-help'                  => 'O tla humana thušo mo.',
-'tooltip-n-sitesupport'           => 'Re thekge',
 'tooltip-t-whatlinkshere'         => "Lenano la matlakala ao a hlomaganyago (''link'') mo",
 'tooltip-t-contributions'         => 'Lebelela lenano la diabe tša mošomiši yo',
 'tooltip-t-emailuser'             => 'Romela molaetša go mošomiši yo',

@@ -133,6 +133,8 @@ class Parser
 		$this->mVarCache = array();
 		if ( isset( $conf['preprocessorClass'] ) ) {
 			$this->mPreprocessorClass = $conf['preprocessorClass'];
+		} elseif ( class_exists( 'DOMDocument' ) ) {
+			$this->mPreprocessorClass = 'Preprocessor_DOM';
 		} else {
 			$this->mPreprocessorClass = 'Preprocessor_Hash';
 		}
@@ -1468,7 +1470,7 @@ class Parser
 		     || ( $imagesexception && strpos( $url, $imagesfrom ) === 0 ) ) {
 			if ( preg_match( self::EXT_IMAGE_REGEX, $url ) ) {
 				# Image found
-				$text = $sk->makeExternalImage( htmlspecialchars( $url ) );
+				$text = $sk->makeExternalImage( $url );
 			}
 		}
 		return $text;
@@ -1756,7 +1758,7 @@ class Parser
 				$skip = $time = false;
 				wfRunHooks( 'BeforeParserMakeImageLinkObj', array( &$this, &$nt, &$skip, &$time ) );
 				if ( $skip ) {
-					$link = $sk->makeLinkObj( $nt );
+					$link = $sk->link( $nt );
 				} else {
 					$link = $sk->makeMediaLinkObj( $nt, $text, $time );
 				}
@@ -2546,7 +2548,7 @@ class Parser
 			case 'numberofpages':
 				return $this->mVarCache[$index] = $wgContLang->formatNum( SiteStats::pages() );
 			case 'numberofadmins':
-				return $this->mVarCache[$index] = $wgContLang->formatNum( SiteStats::admins() );
+				return $this->mVarCache[$index] = $wgContLang->formatNum( SiteStats::numberingroup('sysop') );
 			case 'numberofedits':
 				return $this->mVarCache[$index] = $wgContLang->formatNum( SiteStats::edits() );
 			case 'currenttimestamp':
@@ -3378,6 +3380,16 @@ class Parser
 				wfDebug( __METHOD__.": [[MediaWiki:hidden-category-category]] is not a valid title!\n" );
 			}
 		}
+		# (bug 8068) Allow control over whether robots index a page.
+		#
+		# FIXME (bug 14899): __INDEX__ always overrides __NOINDEX__ here!  This
+		# is not desirable, the last one on the page should win.
+		if( isset( $this->mDoubleUnderscores['noindex'] ) ) {
+			$this->mOutput->setIndexPolicy( 'noindex' );
+		} elseif( isset( $this->mDoubleUnderscores['index'] ) ) {
+			$this->mOutput->setIndexPolicy( 'index' );
+		}
+
 		return $text;
 	}
 
@@ -3597,9 +3609,9 @@ class Parser
 				if( $isTemplate ) {
 					# Put a T flag in the section identifier, to indicate to extractSections()
 					# that sections inside <includeonly> should be counted.
-					$editlink = $sk->editSectionLinkForOther($titleText, "T-$sectionIndex");
+					$editlink = $sk->doEditSectionLink(Title::newFromText( $titleText ), "T-$sectionIndex");
 				} else {
-					$editlink = $sk->editSectionLink($this->mTitle, $sectionIndex, $headlineHint);
+					$editlink = $sk->doEditSectionLink($this->mTitle, $sectionIndex, $headlineHint);
 				}
 			} else {
 				$editlink = '';
@@ -3827,6 +3839,11 @@ class Parser
 			$this->setOutputType = self::OT_PREPROCESS;
 		}
 
+		# Option to disable this feature
+		if ( !$this->mOptions->getCleanSignatures() ) {
+			return $text;
+		}
+
 		# FIXME: regex doesn't respect extension tags or nowiki
 		#  => Move this logic to braceSubstitution()
 		$substWord = MagicWord::get( 'subst' );
@@ -3945,6 +3962,9 @@ class Parser
 	 * The callback function should have the form:
 	 *    function myParserFunction( &$parser, $arg1, $arg2, $arg3 ) { ... }
 	 *
+	 * Or with SFH_OBJECT_ARGS:
+	 *    function myParserFunction( $parser, $frame, $args ) { ... }
+	 *
 	 * The callback may either return the text result of the function, or an array with the text
 	 * in element 0, and a number of flags in the other elements. The names of the flags are
 	 * specified in the keys. Valid flags are:
@@ -3958,7 +3978,26 @@ class Parser
 	 * @param string $id The magic word ID
 	 * @param mixed $callback The callback function (and object) to use
 	 * @param integer $flags a combination of the following flags:
-	 *                SFH_NO_HASH No leading hash, i.e. {{plural:...}} instead of {{#if:...}}
+	 *     SFH_NO_HASH   No leading hash, i.e. {{plural:...}} instead of {{#if:...}}
+	 *
+	 *     SFH_OBJECT_ARGS   Pass the template arguments as PPNode objects instead of text. This 
+	 *     allows for conditional expansion of the parse tree, allowing you to eliminate dead
+	 *     branches and thus speed up parsing. It is also possible to analyse the parse tree of 
+	 *     the arguments, and to control the way they are expanded.
+	 *
+	 *     The $frame parameter is a PPFrame. This can be used to produce expanded text from the
+	 *     arguments, for instance:
+	 *         $text = isset( $args[0] ) ? $frame->expand( $args[0] ) : '';
+	 *
+	 *     For technical reasons, $args[0] is pre-expanded and will be a string. This may change in 
+	 *     future versions. Please call $frame->expand() on it anyway so that your code keeps
+	 *     working if/when this is changed.
+	 *
+	 *     If you want whitespace to be trimmed from $args, you need to do it yourself, post-
+	 *     expansion.
+	 *
+	 *     Please read the documentation in includes/parser/Preprocessor.php for more information 
+	 *     about the methods available in PPFrame and PPNode.
 	 *
 	 * @return The old callback function for this name, if any
 	 */
@@ -4252,7 +4291,7 @@ class Parser
 			$replacePairs = array();
 			foreach( $this->mInterwikiLinkHolders['texts'] as $key => $link ) {
 				$title = $this->mInterwikiLinkHolders['titles'][$key];
-				$replacePairs[$key] = $sk->makeLinkObj( $title, $link );
+				$replacePairs[$key] = $sk->link( $title, $link );
 			}
 			$replacer = new HashtableReplacer( $replacePairs, 1 );
 
@@ -4468,7 +4507,7 @@ class Parser
 		wfRunHooks( 'BeforeParserMakeImageLinkObj', array( &$this, &$title, &$skip, &$time, &$descQuery ) );
 
 		if ( $skip ) {
-			return $sk->makeLinkObj( $title );
+			return $sk->link( $title );
 		}
 
 		# Get parameter map

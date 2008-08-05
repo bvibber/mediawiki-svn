@@ -127,7 +127,7 @@ abstract class Job {
 			// Failed, someone else beat us to it
 			// Try getting a random row
 			$row = $dbw->selectRow( 'job', array( 'MIN(job_id) as minjob',
-				'MAX(job_id) as maxjob' ), "job_id >= $offset", __METHOD__ );
+				'MAX(job_id) as maxjob' ), '1=1', __METHOD__ );
 			if ( $row === false || is_null( $row->minjob ) || is_null( $row->maxjob ) ) {
 				// No jobs to get
 				wfProfileOut( __METHOD__ );
@@ -163,7 +163,10 @@ abstract class Job {
 		$job = Job::factory( $row->job_cmd, $title, Job::extractBlob( $row->job_params ), $row->job_id );
 
 		// Remove any duplicates it may have later in the queue
+		// Deadlock prone section
+		$dbw->begin();
 		$dbw->delete( 'job', $job->insertFields(), __METHOD__ );
+		$dbw->commit();
 
 		wfProfileOut( __METHOD__ );
 		return $job;
@@ -213,12 +216,23 @@ abstract class Job {
 	 * @param $jobs array of Job objects
 	 */
 	static function batchInsert( $jobs ) {
-		if( count( $jobs ) ) {
-			$dbw = wfGetDB( DB_MASTER );
-			$dbw->begin();
-			foreach( $jobs as $job ) {
-				$rows[] = $job->insertFields();
+		if( !count( $jobs ) ) {
+			return;
+		}
+		$dbw = wfGetDB( DB_MASTER );
+		$rows = array();
+		foreach( $jobs as $job ) {
+			$rows[] = $job->insertFields();
+			if ( count( $rows ) >= 50 ) {
+				# Do a small transaction to avoid slave lag
+				$dbw->begin();
+				$dbw->insert( 'job', $rows, __METHOD__, 'IGNORE' );
+				$dbw->commit();
+				$rows = array();
 			}
+		}
+		if ( $rows ) {
+			$dbw->begin();
 			$dbw->insert( 'job', $rows, __METHOD__, 'IGNORE' );
 			$dbw->commit();
 		}
@@ -286,6 +300,10 @@ abstract class Job {
 		} else {
 			return "{$this->command} $paramString";
 		}
+	}
+
+	protected function setLastError( $error ) {
+		$this->error = $error;
 	}
 
 	function getLastError() {

@@ -136,6 +136,7 @@ class SpecialPage
 		'Categories'                => array( 'SpecialPage', 'Categories' ),
 		'Export'                    => array( 'SpecialPage', 'Export' ),
 		'Version'                   => array( 'SpecialPage', 'Version' ),
+		'Blankpage'                 => array( 'UnlistedSpecialPage', 'Blankpage' ),
 		'Allmessages'               => array( 'SpecialPage', 'Allmessages' ),
 		'Log'                       => array( 'SpecialPage', 'Log' ),
 		'Blockip'                   => array( 'SpecialPage', 'Blockip', 'block' ),
@@ -483,7 +484,7 @@ class SpecialPage
 		if ( !$page ) {
 			if ( !$including ) {
 				$wgOut->setArticleRelated( false );
-				$wgOut->setRobotpolicy( 'noindex,nofollow' );
+				$wgOut->setRobotPolicy( 'noindex,nofollow' );
 				$wgOut->setStatusCode( 404 );
 				$wgOut->showErrorPage( 'nosuchspecialpage', 'nospecialpagetext' );
 			}

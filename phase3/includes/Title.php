@@ -4,21 +4,22 @@
  * @file
  */
 
-/** */
 if ( !class_exists( 'UtfNormal' ) ) {
 	require_once( dirname(__FILE__) . '/normal/UtfNormal.php' );
 }
 
 define ( 'GAID_FOR_UPDATE', 1 );
 
-# Title::newFromTitle maintains a cache to avoid
-# expensive re-normalization of commonly used titles.
-# On a batch operation this can become a memory leak
-# if not bounded. After hitting this many titles,
-# reset the cache.
+/**
+ * Title::newFromText maintains a cache to avoid expensive re-normalization of
+ * commonly used titles. On a batch operation this can become a memory leak
+ * if not bounded. After hitting this many titles reset the cache.
+ */
 define( 'MW_TITLECACHE_MAX', 1000 );
 
-# Constants for pr_cascade bitfield
+/**
+ * Constants for pr_cascade bitfield
+ */
 define( 'CASCADE', 1 );
 
 /**
@@ -44,27 +45,30 @@ class Title {
 	 * @private
 	 */
 
-	var $mTextform;           	# Text form (spaces not underscores) of the main part
-	var $mUrlform;            	# URL-encoded form of the main part
-	var $mDbkeyform;          	# Main part with underscores
-	var $mUserCaseDBKey;        # DB key with the initial letter in the case specified by the user
-	var $mNamespace;          	# Namespace index, i.e. one of the NS_xxxx constants
-	var $mInterwiki;          	# Interwiki prefix (or null string)
-	var $mFragment;           	# Title fragment (i.e. the bit after the #)
-	var $mArticleID;          	# Article ID, fetched from the link cache on demand
-	var $mLatestID;         	# ID of most recent revision
-	var $mRestrictions;       	# Array of groups allowed to edit this article
-	var $mCascadeRestriction;	# Cascade restrictions on this page to included templates and images?
-	var $mRestrictionsExpiry;	# When do the restrictions on this page expire?
-	var $mHasCascadingRestrictions;	# Are cascading restrictions in effect on this page?
-	var $mCascadeRestrictionSources;# Where are the cascading restrictions coming from on this page?
-	var $mRestrictionsLoaded; 	# Boolean for initialisation on demand
-	var $mPrefixedText;       	# Text form including namespace/interwiki, initialised on demand
-	var $mDefaultNamespace;   	# Namespace index when there is no namespace
-	                    		# Zero except in {{transclusion}} tags
-	var $mWatched;      		# Is $wgUser watching this page? NULL if unfilled, accessed through userIsWatching()
-	var $mLength;              # The page length, 0 for special pages
-	var $mRedirect;            # Is the article at this title a redirect?
+	var $mTextform = '';           	  # Text form (spaces not underscores) of the main part
+	var $mUrlform = '';            	  # URL-encoded form of the main part
+	var $mDbkeyform = '';          	  # Main part with underscores
+	var $mUserCaseDBKey;              # DB key with the initial letter in the case specified by the user
+	var $mNamespace = NS_MAIN;        # Namespace index, i.e. one of the NS_xxxx constants
+	var $mInterwiki = '';          	  # Interwiki prefix (or null string)
+	var $mFragment;           	      # Title fragment (i.e. the bit after the #)
+	var $mArticleID = -1;             # Article ID, fetched from the link cache on demand
+	var $mLatestID = false;           # ID of most recent revision
+	var $mRestrictions = array();     # Array of groups allowed to edit this article
+	var $mOldRestrictions = false;
+	var $mCascadeRestriction;	      # Cascade restrictions on this page to included templates and images?
+	var $mRestrictionsExpiry;	      # When do the restrictions on this page expire?
+	var $mHasCascadingRestrictions;	  # Are cascading restrictions in effect on this page?
+	var $mCascadeRestrictionSources;  # Where are the cascading restrictions coming from on this page?
+	var $mRestrictionsLoaded = false; # Boolean for initialisation on demand
+	var $mPrefixedText;       	      # Text form including namespace/interwiki, initialised on demand
+	# Don't change the following default, NS_MAIN is hardcoded in several
+	# places.  See bug 696.
+	var $mDefaultNamespace = NS_MAIN; # Namespace index when there is no namespace
+	                    		      # Zero except in {{transclusion}} tags
+	var $mWatched = null;      		  # Is $wgUser watching this page? null if unfilled, accessed through userIsWatching()
+	var $mLength = -1;                # The page length, 0 for special pages
+	var $mRedirect = null;            # Is the article at this title a redirect?
 	/**#@-*/
 
 
@@ -72,22 +76,7 @@ class Title {
 	 * Constructor
 	 * @private
 	 */
-	/* private */ function __construct() {
-		$this->mInterwiki = $this->mUrlform =
-		$this->mTextform = $this->mDbkeyform = '';
-		$this->mArticleID = -1;
-		$this->mNamespace = NS_MAIN;
-		$this->mRestrictionsLoaded = false;
-		$this->mRestrictions = array();
-		# Dont change the following, NS_MAIN is hardcoded in several place
-		# See bug #696
-		$this->mDefaultNamespace = NS_MAIN;
-		$this->mWatched = NULL;
-		$this->mLatestID = false;
-		$this->mOldRestrictions = false;
-		$this->mLength = -1;
-		$this->mRedirect = NULL;
-	}
+	/* private */ function __construct() {}
 
 	/**
 	 * Create a new Title from a prefixed DB key
@@ -220,7 +209,7 @@ class Title {
 			'page_id IN (' . $dbr->makeList( $ids ) . ')', __METHOD__ );
 
 		$titles = array();
-		while ( $row = $dbr->fetchObject( $res ) ) {
+		foreach( $res as $row ) {
 			$titles[] = Title::makeTitle( $row->page_namespace, $row->page_title );
 		}
 		return $titles;
@@ -250,12 +239,13 @@ class Title {
 	 *
 	 * @param int $ns the namespace of the article
 	 * @param string $title the unprefixed database key form
+	 * @param string $fragment The link fragment (after the "#")
 	 * @return Title the new object
 	 */
-	public static function &makeTitle( $ns, $title ) {
+	public static function &makeTitle( $ns, $title, $fragment = '' ) {
 		$t = new Title();
 		$t->mInterwiki = '';
-		$t->mFragment = '';
+		$t->mFragment = $fragment;
 		$t->mNamespace = $ns = intval( $ns );
 		$t->mDbkeyform = str_replace( ' ', '_', $title );
 		$t->mArticleID = ( $ns >= 0 ) ? -1 : 0;
@@ -271,11 +261,12 @@ class Title {
 	 *
 	 * @param int $ns the namespace of the article
 	 * @param string $title the database key form
+	 * @param string $fragment The link fragment (after the "#")
 	 * @return Title the new object, or NULL on an error
 	 */
-	public static function makeTitleSafe( $ns, $title ) {
+	public static function makeTitleSafe( $ns, $title, $fragment = '' ) {
 		$t = new Title();
-		$t->mDbkeyform = Title::makeName( $ns, $title );
+		$t->mDbkeyform = Title::makeName( $ns, $title, $fragment );
 		if( $t->secureAndSplit() ) {
 			return $t;
 		} else {
@@ -335,17 +326,14 @@ class Title {
 	 * @param int $id the page_id of the article
 	 * @return Title an object representing the article, or NULL
 	 * 	if no such article was found
-	 * @static
-	 * @access public
 	 */
-	function nameOf( $id ) {
-		$fname = 'Title::nameOf';
+	public static function nameOf( $id ) {
 		$dbr = wfGetDB( DB_SLAVE );
 
-		$s = $dbr->selectRow( 'page', array( 'page_namespace','page_title' ),  array( 'page_id' => $id ), $fname );
+		$s = $dbr->selectRow( 'page', array( 'page_namespace','page_title' ),  array( 'page_id' => $id ), __METHOD__ );
 		if ( $s === false ) { return NULL; }
 
-		$n = Title::makeName( $s->page_namespace, $s->page_title );
+		$n = self::makeName( $s->page_namespace, $s->page_title );
 		return $n;
 	}
 
@@ -391,13 +379,18 @@ class Title {
 	 * Make a prefixed DB key from a DB key and a namespace index
 	 * @param int $ns numerical representation of the namespace
 	 * @param string $title the DB key form the title
+	 * @param string $fragment The link fragment (after the "#")
 	 * @return string the prefixed form of the title
 	 */
-	public static function makeName( $ns, $title ) {
+	public static function makeName( $ns, $title, $fragment = '' ) {
 		global $wgContLang;
 
-		$n = $wgContLang->getNsText( $ns );
-		return $n == '' ? $title : "$n:$title";
+		$namespace = $wgContLang->getNsText( $ns );
+		$name = $namespace == '' ? $title : "$namespace:$title";
+		if ( strval( $fragment ) != '' ) {
+			$name .= '#' . $fragment;
+		}
+		return $name;
 	}
 
 	/**
@@ -752,13 +745,18 @@ class Title {
 	 * Get a real URL referring to this title, with interwiki link and
 	 * fragment
 	 *
-	 * @param string $query an optional query string, not used
-	 * 	for interwiki links
+	 * @param array $query an optional query string, not used for interwiki
+	 *   links. Can be specified as an associative array as well, e.g.,
+	 *   array( 'action' => 'edit' ) (keys and values will be URL-escaped).
 	 * @param string $variant language variant of url (for sr, zh..)
 	 * @return string the URL
 	 */
 	public function getFullURL( $query = '', $variant = false ) {
 		global $wgContLang, $wgServer, $wgRequest;
+
+		if( is_array( $query ) ) {
+			$query = wfArrayToCGI( $query );
+		}
 
 		if ( '' == $this->mInterwiki ) {
 			$url = $this->getLocalUrl( $query, $variant );
@@ -791,14 +789,20 @@ class Title {
 	/**
 	 * Get a URL with no fragment or server name.  If this page is generated
 	 * with action=render, $wgServer is prepended.
-	 * @param string $query an optional query string; if not specified,
-	 * 	$wgArticlePath will be used.
+	 * @param mixed $query an optional query string; if not specified,
+	 * 	 $wgArticlePath will be used.  Can be specified as an associative array
+	 *   as well, e.g., array( 'action' => 'edit' ) (keys and values will be
+	 *   URL-escaped).
 	 * @param string $variant language variant of url (for sr, zh..)
 	 * @return string the URL
 	 */
 	public function getLocalURL( $query = '', $variant = false ) {
 		global $wgArticlePath, $wgScript, $wgServer, $wgRequest;
 		global $wgVariantArticlePath, $wgContLang, $wgUser;
+
+		if( is_array( $query ) ) {
+			$query = wfArrayToCGI( $query );
+		}
 
 		// internal links should point to same variant as current page (only anonymous users)
 		if($variant == false && $wgContLang->hasVariants() && !$wgUser->isLoggedIn()){
@@ -861,6 +865,36 @@ class Title {
 		}
 		wfRunHooks( 'GetLocalURL', array( &$this, &$url, $query ) );
 		return $url;
+	}
+
+	/**
+	 * Get a URL that's the simplest URL that will be valid to link, locally,
+	 * to the current Title.  It includes the fragment, but does not include
+	 * the server unless action=render is used (or the link is external).  If
+	 * there's a fragment but the prefixed text is empty, we just return a link
+	 * to the fragment.
+	 *
+	 * @param array $query An associative array of key => value pairs for the
+	 *   query string.  Keys and values will be escaped.
+	 * @param string $variant Language variant of URL (for sr, zh..).  Ignored
+	 *   for external links.  Default is "false" (same variant as current page,
+	 *   for anonymous users).
+	 * @return string the URL
+	 */
+	public function getLinkUrl( $query = array(), $variant = false ) {
+		if( !is_array( $query ) ) {
+			throw new MWException( 'Title::getLinkUrl passed a non-array for '.
+			'$query' );
+		}
+		if( $this->isExternal() ) {
+			return $this->getFullURL( $query );
+		} elseif( $this->getPrefixedText() === ''
+		and $this->getFragment() !== '' ) {
+			return $this->getFragmentForURL();
+		} else {
+			return $this->getLocalURL( $query, $variant )
+				. $this->getFragmentForURL();
+		}
 	}
 
 	/**
@@ -1069,7 +1103,7 @@ class Title {
 			$errors[] = array( 'confirmedittext' );
 		}
 
-		if ( $user->isBlockedFrom( $this ) ) {
+		if ( $user->isBlockedFrom( $this ) && $action != 'createaccount' ) {
 			$block = $user->mBlock;
 
 			// This is from OutputPage::blockedPage
@@ -1273,29 +1307,16 @@ class Title {
 			$errors[] = $user->isAnon() ? array ( 'movenologintext' ) : array ('movenotallowed');
 		} elseif ( !$user->isAllowed( $action ) ) {
 			$return = null;
-			$groups = array();
-			global $wgGroupPermissions;
-			foreach( $wgGroupPermissions as $key => $value ) {
-				if( isset( $value[$action] ) && $value[$action] == true ) {
-					$groupName = User::getGroupName( $key );
-					$groupPage = User::getGroupPage( $key );
-					if( $groupPage ) {
-						$groups[] = '[['.$groupPage->getPrefixedText().'|'.$groupName.']]';
-					} else {
-						$groups[] = $groupName;
-					}
-				}
+			$groups = array_map( array( 'User', 'makeGroupLinkWiki' ),
+				User::getGroupsWithPermission( $action ) );
+			if ( $groups ) {
+				$return = array( 'badaccess-groups',
+					array(
+						implode( ', ', $groups ),
+						count( $groups ) ) );
 			}
-			$n = count( $groups );
-			$groups = implode( ', ', $groups );
-			switch( $n ) {
-				case 0:
-				case 1:
-				case 2:
-					$return = array( "badaccess-group$n", $groups );
-					break;
-				default:
-					$return = array( 'badaccess-groups', $groups );
+			else {
+				$return = array( "badaccess-group0" );
 			}
 			$errors[] = $return;
 		}
@@ -1668,7 +1689,7 @@ class Title {
 		$now = wfTimestampNow();
 		$purgeExpired = false;
 
-		while( $row = $dbr->fetchObject( $res ) ) {
+		foreach( $res as $row ) {
 			$expiry = Block::decodeExpiry( $row->pr_expiry );
 			if( $expiry > $now ) {
 				if ($get_pages) {
@@ -1757,7 +1778,7 @@ class Title {
 			$now = wfTimestampNow();
 			$purgeExpired = false;
 
-			while ($row = $dbr->fetchObject( $res ) ) {
+			foreach( $res as $row ) {
 				# Cycle through all the restrictions.
 
 				// Don't take care of restrictions types that aren't in $wgRestrictionTypes
@@ -1813,6 +1834,8 @@ class Title {
 					} else { // Get rid of the old restrictions
 						Title::purgeExpiredRestrictions();
 					}
+				} else {
+					$this->mRestrictionsExpiry = Block::decodeExpiry('');
 				}
 				$this->mRestrictionsLoaded = true;
 			}
@@ -2145,9 +2168,9 @@ class Title {
 		}
 
 		/**
-		 * Pages with "/./" or "/../" appearing in the URLs will
-		 * often be unreachable due to the way web browsers deal
-		 * with 'relative' URLs. Forbid them explicitly.
+		 * Pages with "/./" or "/../" appearing in the URLs will often be un-
+		 * reachable due to the way web browsers deal with 'relative' URLs.
+		 * Also, they conflict with subpage syntax.  Forbid them explicitly.
 		 */
 		if ( strpos( $dbkey, '.' ) !== false &&
 		     ( $dbkey === '.' || $dbkey === '..' ||
@@ -2282,12 +2305,12 @@ class Title {
 				"{$prefix}_from=page_id",
 				"{$prefix}_namespace" => $this->getNamespace(),
 				"{$prefix}_title"     => $this->getDBkey() ),
-			'Title::getLinksTo',
+			__METHOD__,
 			$options );
 
 		$retVal = array();
 		if ( $db->numRows( $res ) ) {
-			while ( $row = $db->fetchObject( $res ) ) {
+			foreach( $res as $row ) {
 				if ( $titleObj = Title::makeTitle( $row->page_namespace, $row->page_title ) ) {
 					$linkCache->addGoodLinkObj( $row->page_id, $titleObj, $row->page_len, $row->page_is_redirect );
 					$retVal[] = $titleObj;
@@ -2347,7 +2370,7 @@ class Title {
 
 		$retVal = array();
 		if ( $db->numRows( $res ) ) {
-			while ( $row = $db->fetchObject( $res ) ) {
+			foreach( $res as $row ) {
 				$retVal[] = Title::makeTitle( $row->pl_namespace, $row->pl_title );
 			}
 		}
@@ -2440,6 +2463,9 @@ class Title {
 			if( $file->exists() ) {
 				if( $nt->getNamespace() != NS_IMAGE ) {
 					$errors[] = array('imagenocrossnamespace');
+				}
+				if( $nt->getText() != wfStripIllegalFilenameChars( $nt->getText() ) ) {
+					$errors[] = array('imageinvalidfilename');
 				}
 				if( !File::checkExtensionCompatibility( $file, $nt->getDbKey() ) ) {
 					$errors[] = array('imagetypemismatch');
@@ -2604,6 +2630,7 @@ class Title {
 		$now = wfTimestampNow();
 		$newid = $nt->getArticleID();
 		$oldid = $this->getArticleID();
+		$latest = $this->getLatestRevID();
 
 		$dbw = wfGetDB( DB_MASTER );
 		$dbw->begin();
@@ -2632,7 +2659,7 @@ class Title {
 		$nullRevId = $nullRevision->insertOn( $dbw );
 		
 		$article = new Article( $this );
-		wfRunHooks( 'NewRevisionFromEditComplete', array($article, $nullRevision, false) );
+		wfRunHooks( 'NewRevisionFromEditComplete', array($article, $nullRevision, $latest) );
 
 		# Change the name of the target page:
 		$dbw->update( 'page',
@@ -2718,6 +2745,7 @@ class Title {
 
 		$newid = $nt->getArticleID();
 		$oldid = $this->getArticleID();
+		$latest = $this->getLatestRevId();
 		
 		$dbw = wfGetDB( DB_MASTER );
 		$dbw->begin();
@@ -2728,7 +2756,7 @@ class Title {
 		$nullRevId = $nullRevision->insertOn( $dbw );
 		
 		$article = new Article( $this );
-		wfRunHooks( 'NewRevisionFromEditComplete', array($article, $nullRevision, false) );
+		wfRunHooks( 'NewRevisionFromEditComplete', array($article, $nullRevision, $latest) );
 
 		# Rename page entry
 		$dbw->update( 'page',
@@ -2892,9 +2920,9 @@ class Title {
 		$res = $dbr->query( $sql );
 
 		if( $dbr->numRows( $res ) > 0 ) {
-			while( $x = $dbr->fetchObject( $res ) )
-				//$data[] = Title::newFromText($wgContLang->getNSText ( NS_CATEGORY ).':'.$x->cl_to);
-				$data[$wgContLang->getNSText( NS_CATEGORY ).':'.$x->cl_to] = $this->getFullText();
+			foreach( $res as $row )
+				//$data[] = Title::newFromText($wgContLang->getNSText ( NS_CATEGORY ).':'.$row->cl_to);
+				$data[$wgContLang->getNSText( NS_CATEGORY ).':'.$row->cl_to] = $this->getFullText();
 			$dbr->freeResult( $res );
 		} else {
 			$data = array();
@@ -2943,16 +2971,16 @@ class Title {
 	/**
 	 * Get the revision ID of the previous revision
 	 *
-	 * @param integer $revision  Revision ID. Get the revision that was before this one.
+	 * @param integer $revId Revision ID. Get the revision that was before this one.
 	 * @param integer $flags, GAID_FOR_UPDATE
 	 * @return integer $oldrevision|false
 	 */
-	public function getPreviousRevisionID( $revision, $flags=0 ) {
+	public function getPreviousRevisionID( $revId, $flags=0 ) {
 		$db = ($flags & GAID_FOR_UPDATE) ? wfGetDB( DB_MASTER ) : wfGetDB( DB_SLAVE );
 		return $db->selectField( 'revision', 'rev_id',
 			array(
 				'rev_page' => $this->getArticleId($flags),
-				'rev_id < ' . intval( $revision )
+				'rev_id < ' . intval( $revId )
 			),
 			__METHOD__,
 			array( 'ORDER BY' => 'rev_id DESC' )
@@ -2962,16 +2990,16 @@ class Title {
 	/**
 	 * Get the revision ID of the next revision
 	 *
-	 * @param integer $revision  Revision ID. Get the revision that was after this one.
+	 * @param integer $revId Revision ID. Get the revision that was after this one.
 	 * @param integer $flags, GAID_FOR_UPDATE
 	 * @return integer $oldrevision|false
 	 */
-	public function getNextRevisionID( $revision, $flags=0 ) {
+	public function getNextRevisionID( $revId, $flags=0 ) {
 		$db = ($flags & GAID_FOR_UPDATE) ? wfGetDB( DB_MASTER ) : wfGetDB( DB_SLAVE );
 		return $db->selectField( 'revision', 'rev_id',
 			array(
 				'rev_page' => $this->getArticleId($flags),
-				'rev_id > ' . intval( $revision )
+				'rev_id > ' . intval( $revId )
 			),
 			__METHOD__,
 			array( 'ORDER BY' => 'rev_id' )
@@ -3002,7 +3030,7 @@ class Title {
 	 * @param Title $title
 	 * @return bool
 	 */
-	public function equals( $title ) {
+	public function equals( Title $title ) {
 		// Note: === is necessary for proper matching of number-like titles.
 		return $this->getInterwiki() === $title->getInterwiki()
 			&& $this->getNamespace() == $title->getNamespace()
@@ -3207,7 +3235,7 @@ class Title {
 		);
 		if ( !is_null($ns) ) $where['page_namespace'] = $ns;
 		
-		$result = $dbr->select(
+		$res = $dbr->select(
 			array( 'redirect', 'page' ),
 			array( 'page_namespace', 'page_title' ),
 			$where,
@@ -3215,7 +3243,7 @@ class Title {
 		);
 
 
-		while( $row = $dbr->fetchObject( $result ) ) {
+		foreach( $res as $row ) {
 			$redirs[] = self::newFromRow( $row );
 		}
 		return $redirs;

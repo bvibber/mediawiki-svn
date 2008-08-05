@@ -4,10 +4,9 @@
  * @ingroup Language
  * @file
  *
- * @author Jmb
- * @author SPQRobin
  * @author Malafaya
  * @author לערי ריינהארט
+ * @author Jmb
  */
 
 $messages = array(
@@ -133,7 +132,6 @@ $messages = array(
 'mainpage-description' => 'Principal págine',
 'portal'               => 'Págine del comunité',
 'portal-url'           => 'Project:Págine del comunité',
-'sitesupport'          => 'Donationes',
 
 'youhavenewmessages' => 'Vu have $1 ($2).',
 'newmessageslink'    => 'nov missages',
@@ -326,7 +324,6 @@ Vu posse continuar usar {{SITENAME}} anonimimen, o vu posse aperter un session d
 
 # Move page
 'movearticle' => 'Moer págine:',
-'movenologin' => 'Vu ne ha intrat',
 'movepagebtn' => 'Moer págine',
 'movedto'     => 'moet a',
 '1movedto2'   => '[[$1]] moet a [[$2]]',

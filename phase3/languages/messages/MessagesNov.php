@@ -4,9 +4,8 @@
  * @ingroup Language
  * @file
  *
- * @author nov.wikipedia.org sysops
  * @author Malafaya
- * @author SPQRobin
+ * @author nov.wikipedia.org sysops
  */
 
 $messages = array(
@@ -110,7 +109,6 @@ $messages = array(
 'mainpage-description' => 'Chefi pagine',
 'portal'               => 'Li komun chambre',
 'portal-url'           => 'Project:Li komun chambre',
-'sitesupport'          => 'Donationes',
 
 'badaccess' => 'Permisione erore',
 
@@ -352,7 +350,6 @@ Si vu voli plu tardim ekarta li pagine fro vun observa-liste, klikta \"Desobserv
 
 # Move page
 'movearticle'             => 'Mova pagine',
-'movenologin'             => 'Non ensignatat',
 'move-watch'              => 'Observa disi pagine',
 'movedto'                 => 'movat a',
 '1movedto2'               => '[[$1]] movat a [[$2]]',

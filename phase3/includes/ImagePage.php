@@ -66,8 +66,8 @@ class ImagePage extends Article {
 				// mTitle is not the same as the redirect target so it is 
 				// probably the redirect page itself. Fake the redirect symbol
 				$wgOut->setPageTitle( $this->mTitle->getPrefixedText() );
-				$this->viewRedirect( Title::makeTitle( NS_IMAGE, $this->img->getName() ),
-					/* $overwriteSubtitle */ true, /* $forceKnown */ true );
+				$wgOut->addHTML( $this->viewRedirect( Title::makeTitle( NS_IMAGE, $this->img->getName() ),
+					/* $appendSubtitle */ true, /* $forceKnown */ true ) );
 				$this->viewUpdates();
 				return;
 			}
@@ -98,7 +98,7 @@ class ImagePage extends Article {
 		} else {
 			# Just need to set the right headers
 			$wgOut->setArticleFlag( true );
-			$wgOut->setRobotpolicy( 'noindex,nofollow' );
+			$wgOut->setRobotPolicy( 'noindex,nofollow' );
 			$wgOut->setPageTitle( $this->mTitle->getPrefixedText() );
 			$this->viewUpdates();
 		}
@@ -596,21 +596,18 @@ EOT
 	 * If the page we've just displayed is in the "Image" namespace,
 	 * we follow it with an upload history of the image and its usage.
 	 */
-	function imageHistory()
-	{
+	function imageHistory() {
 		global $wgOut, $wgUseExternalEditor;
 
 		$this->loadFile();
 		if ( $this->img->exists() ) {
 			$list = new ImageHistoryList( $this );
 			$file = $this->img;
-			$dims = $file->getDimensionsString();
 			$s = $list->beginImageHistoryList();
 			$s .= $list->imageHistoryLine( true, $file );
 			// old image versions
 			$hist = $this->img->getHistory();
 			foreach( $hist as $file ) {
-				$dims = $file->getDimensionsString();
 				$s .= $list->imageHistoryLine( false, $file );
 			}
 			$s .= $list->endImageHistoryList();
@@ -762,7 +759,7 @@ EOT
 	function showError( $description ) {
 		global $wgOut;
 		$wgOut->setPageTitle( wfMsg( "internalerror" ) );
-		$wgOut->setRobotpolicy( "noindex,nofollow" );
+		$wgOut->setRobotPolicy( "noindex,nofollow" );
 		$wgOut->setArticleRelated( false );
 		$wgOut->enableClientCache( false );
 		$wgOut->addWikiText( $description );

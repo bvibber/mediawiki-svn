@@ -1495,7 +1495,7 @@ class Parser_OldPP
 		     || ( $imagesexception && strpos( $url, $imagesfrom ) === 0 ) ) {
 			if ( preg_match( self::EXT_IMAGE_REGEX, $url ) ) {
 				# Image found
-				$text = $sk->makeExternalImage( htmlspecialchars( $url ) );
+				$text = $sk->makeExternalImage( $url );
 			}
 		}
 		return $text;
@@ -2544,7 +2544,7 @@ class Parser_OldPP
 			case 'numberofpages':
 				return $varCache[$index] = $wgContLang->formatNum( SiteStats::pages() );
 			case 'numberofadmins':
-				return $varCache[$index]  = $wgContLang->formatNum( SiteStats::admins() );
+				return $varCache[$index]  = $wgContLang->formatNum( SiteStats::numberingroup('sysop') );
 			case 'numberofedits':
 				return $varCache[$index]  = $wgContLang->formatNum( SiteStats::edits() );
 			case 'currenttimestamp':

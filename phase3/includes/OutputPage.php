@@ -6,20 +6,22 @@ if ( ! defined( 'MEDIAWIKI' ) )
  * @todo document
  */
 class OutputPage {
-	var $mMetatags, $mKeywords;
-	var $mLinktags, $mPagetitle, $mBodytext, $mDebugtext;
-	var $mHTMLtitle, $mRobotpolicy, $mIsarticle, $mPrintable;
-	var $mSubtitle, $mRedirect, $mStatusCode;
-	var $mLastModified, $mETag, $mCategoryLinks;
-	var $mScripts, $mLinkColours, $mPageLinkTitle;
+	var $mMetatags = array(), $mKeywords = array(), $mLinktags = array();
+	var $mPagetitle = '', $mBodytext = '', $mDebugtext = '';
+	var $mHTMLtitle = '', $mIsarticle = true, $mPrintable = false;
+	var $mSubtitle = '', $mRedirect = '', $mStatusCode;
+	var $mLastModified = '', $mETag = false;
+	var $mCategoryLinks = array(), $mLanguageLinks = array();
+	var $mScripts = '', $mLinkColours, $mPageLinkTitle = '', $mHeadItems = array();
+	var $mTemplateIds = array();
 
 	var $mAllowUserJs;
-	var $mSuppressQuickbar;
-	var $mOnloadHandler;
-	var $mDoNothing;
-	var $mContainsOldMagic, $mContainsNewMagic;
-	var $mIsArticleRelated;
-	protected $mParserOptions; // lazy initialised, use parserOptions()
+	var $mSuppressQuickbar = false;
+	var $mOnloadHandler = '';
+	var $mDoNothing = false;
+	var $mContainsOldMagic = 0, $mContainsNewMagic = 0;
+	var $mIsArticleRelated = true;
+	protected $mParserOptions = null; // lazy initialised, use parserOptions()
 	var $mShowFeedLinks = false;
 	var $mFeedLinksAppendQuery = false;
 	var $mEnableClientCache = true;
@@ -29,6 +31,11 @@ class OutputPage {
 	var $mNoGallery = false;
 	var $mPageTitleActionText = '';
 	var $mParseWarnings = array();
+	var $mSquidMaxage = 0;
+	var $mRevisionId = null;
+
+	private $mIndexPolicy = 'index';
+	private $mFollowPolicy = 'follow';
 
 	/**
 	 * Constructor
@@ -37,25 +44,6 @@ class OutputPage {
 	function __construct() {
 		global $wgAllowUserJs;
 		$this->mAllowUserJs = $wgAllowUserJs;
-		$this->mMetatags = $this->mKeywords = $this->mLinktags = array();
-		$this->mHTMLtitle = $this->mPagetitle = $this->mBodytext =
-		$this->mRedirect = $this->mLastModified =
-		$this->mSubtitle = $this->mDebugtext = $this->mRobotpolicy =
-		$this->mOnloadHandler = $this->mPageLinkTitle = '';
-		$this->mIsArticleRelated = $this->mIsarticle = $this->mPrintable = true;
-		$this->mSuppressQuickbar = $this->mPrintable = false;
-		$this->mLanguageLinks = array();
-		$this->mCategoryLinks = array();
-		$this->mDoNothing = false;
-		$this->mContainsOldMagic = $this->mContainsNewMagic = 0;
-		$this->mParserOptions = null;
-		$this->mSquidMaxage = 0;
-		$this->mScripts = '';
-		$this->mHeadItems = array();
-		$this->mETag = false;
-		$this->mRevisionId = null;
-		$this->mNewSectionLink = false;
-		$this->mTemplateIds = array();
 	}
 
 	public function redirect( $url, $responsecode = '302' ) {
@@ -85,7 +73,8 @@ class OutputPage {
 		$this->addLink(
 				array(
 					'rel' => 'stylesheet',
-					'href' => $wgStylePath . '/' . $style . '?' . $wgStyleVersion ) );
+					'href' => $wgStylePath . '/' . $style . '?' . $wgStyleVersion,
+					'type' => 'text/css' ) );
 	}
 
 	/**
@@ -222,7 +211,61 @@ class OutputPage {
 		}
 	}
 
-	public function setRobotpolicy( $str ) { $this->mRobotpolicy = $str; }
+	/**
+	 * Set the robot policy for the page: <http://www.robotstxt.org/meta.html>
+	 *
+	 * @param $policy string The literal string to output as the contents of
+	 *   the meta tag.  Will be parsed according to the spec and output in
+	 *   standardized form.
+	 * @return null
+	 */
+	public function setRobotPolicy( $policy ) {
+		$policy = explode( ',', $policy );
+		$policy = array_map( 'trim', $policy );
+
+		# The default policy is follow, so if nothing is said explicitly, we
+		# do that.
+		if( in_array( 'nofollow', $policy ) ) {
+			$this->mFollowPolicy = 'nofollow';
+		} else {
+			$this->mFollowPolicy = 'follow';
+		}
+
+		if( in_array( 'noindex', $policy ) ) {
+			$this->mIndexPolicy = 'noindex';
+		} else {
+			$this->mIndexPolicy = 'index';
+		}
+	}
+
+	/**
+	 * Set the index policy for the page, but leave the follow policy un-
+	 * touched.
+	 *
+	 * @param $policy string Either 'index' or 'noindex'.
+	 * @return null
+	 */
+	public function setIndexPolicy( $policy ) {
+		$policy = trim( $policy );
+		if( in_array( $policy, array( 'index', 'noindex' ) ) ) {
+			$this->mIndexPolicy = $policy;
+		}
+	}
+
+	/**
+	 * Set the follow policy for the page, but leave the index policy un-
+	 * touched.
+	 *
+	 * @param $policy string Either 'follow' or 'nofollow'.
+	 * @return null
+	 */
+	public function setFollowPolicy( $policy ) {
+		$policy = trim( $policy );
+		if( in_array( $policy, array( 'follow', 'nofollow' ) ) ) {
+			$this->mFollowPolicy = $policy;
+		}
+	}
+
 	public function setHTMLTitle( $name ) {$this->mHTMLtitle = $name; }
 	public function setPageTitle( $name ) {
 		global $action, $wgContLang;
@@ -319,11 +362,13 @@ class OutputPage {
 		}
 
 		# Add the remaining categories to the skin
-		$sk = $wgUser->getSkin();
-		foreach ( $categories as $category => $type ) {
-			$title = Title::makeTitleSafe( NS_CATEGORY, $category );
-			$text = $wgContLang->convertHtml( $title->getText() );
-			$this->mCategoryLinks[$type][] = $sk->makeLinkObj( $title, $text );
+		if ( wfRunHooks( 'OutputPageMakeCategoryLinks', array( &$this, $categories, &$this->mCategoryLinks ) ) ) {
+			$sk = $wgUser->getSkin();
+			foreach ( $categories as $category => $type ) {
+				$title = Title::makeTitleSafe( NS_CATEGORY, $category );
+				$text = $wgContLang->convertHtml( $title->getText() );
+				$this->mCategoryLinks[$type][] = $sk->makeLinkObj( $title, $text );
+			}
 		}
 	}
 
@@ -413,9 +458,23 @@ class OutputPage {
 	 * @param ParserOutput object &$parserOutput
 	 */
 	public function addParserOutputNoText( &$parserOutput ) {
+		global $wgTitle, $wgExemptFromUserRobotsControl, $wgContentNamespaces;
+
 		$this->mLanguageLinks += $parserOutput->getLanguageLinks();
 		$this->addCategoryLinks( $parserOutput->getCategories() );
 		$this->mNewSectionLink = $parserOutput->getNewSection();
+
+		if( is_null( $wgExemptFromUserRobotsControl ) ) {
+			$bannedNamespaces = $wgContentNamespaces;
+		} else {
+			$bannedNamespaces = $wgExemptFromUserRobotsControl;
+		}
+		if( !in_array( $wgTitle->getNamespace(), $bannedNamespaces ) ) {
+			# FIXME (bug 14900): This overrides $wgArticleRobotPolicies, and it
+			# shouldn't
+			$this->setIndexPolicy( $parserOutput->getIndexPolicy() );
+		}
+
 		$this->addKeywords( $parserOutput );
 		$this->mParseWarnings = $parserOutput->getWarnings();
 		if ( $parserOutput->getCacheTime() == -1 ) {
@@ -685,7 +744,7 @@ class OutputPage {
 		global $wgUser, $wgOutputEncoding, $wgRequest;
 		global $wgContLanguageCode, $wgDebugRedirects, $wgMimeType;
 		global $wgJsMimeType, $wgUseAjax, $wgAjaxSearch, $wgAjaxWatch;
-		global $wgServer, $wgEnableMWSuggest;
+		global $wgEnableMWSuggest;
 
 		if( $this->mDoNothing ){
 			return;
@@ -797,12 +856,8 @@ class OutputPage {
 			$this->addScriptFile( 'rightclickedit.js' );
 		}
 
-
 		# Buffer output; final headers may depend on later processing
 		ob_start();
-
-		# Disable temporary placeholders, so that the skin produces HTML
-		$sk->postParseLinkColour( false );
 
 		$wgRequest->response()->header( "Content-type: $wgMimeType; charset={$wgOutputEncoding}" );
 		$wgRequest->response()->header( 'Content-language: '.$wgContLanguageCode );
@@ -876,7 +931,7 @@ class OutputPage {
 		global $wgUser, $wgContLang, $wgTitle, $wgLang;
 
 		$this->setPageTitle( wfMsg( 'blockedtitle' ) );
-		$this->setRobotpolicy( 'noindex,nofollow' );
+		$this->setRobotPolicy( 'noindex,nofollow' );
 		$this->setArticleRelated( false );
 
 		$name = User::whoIs( $wgUser->blockedBy() );
@@ -942,7 +997,7 @@ class OutputPage {
 		}
 		$this->setPageTitle( wfMsg( $title ) );
 		$this->setHTMLTitle( wfMsg( 'errorpagetitle' ) );
-		$this->setRobotpolicy( 'noindex,nofollow' );
+		$this->setRobotPolicy( 'noindex,nofollow' );
 		$this->setArticleRelated( false );
 		$this->enableClientCache( false );
 		$this->mRedirect = '';
@@ -968,7 +1023,7 @@ class OutputPage {
 		$wgTitle->getPrefixedText() . "\n";
 		$this->setPageTitle( wfMsg( 'permissionserrors' ) );
 		$this->setHTMLTitle( wfMsg( 'permissionserrors' ) );
-		$this->setRobotpolicy( 'noindex,nofollow' );
+		$this->setRobotPolicy( 'noindex,nofollow' );
 		$this->setArticleRelated( false );
 		$this->enableClientCache( false );
 		$this->mRedirect = '';
@@ -991,7 +1046,7 @@ class OutputPage {
 	public function versionRequired( $version ) {
 		$this->setPageTitle( wfMsg( 'versionrequired', $version ) );
 		$this->setHTMLTitle( wfMsg( 'versionrequired', $version ) );
-		$this->setRobotpolicy( 'noindex,nofollow' );
+		$this->setRobotPolicy( 'noindex,nofollow' );
 		$this->setArticleRelated( false );
 		$this->mBodytext = '';
 
@@ -1009,35 +1064,19 @@ class OutputPage {
 
 		$this->setPageTitle( wfMsg( 'badaccess' ) );
 		$this->setHTMLTitle( wfMsg( 'errorpagetitle' ) );
-		$this->setRobotpolicy( 'noindex,nofollow' );
+		$this->setRobotPolicy( 'noindex,nofollow' );
 		$this->setArticleRelated( false );
 		$this->mBodytext = '';
 
-		$groups = array();
-		foreach( $wgGroupPermissions as $key => $value ) {
-			if( isset( $value[$permission] ) && $value[$permission] == true ) {
-				$groupName = User::getGroupName( $key );
-				$groupPage = User::getGroupPage( $key );
-				if( $groupPage ) {
-					$skin = $wgUser->getSkin();
-					$groups[] = $skin->makeLinkObj( $groupPage, $groupName );
-				} else {
-					$groups[] = $groupName;
-				}
-			}
+		$groups = array_map( array( 'User', 'makeGroupLinkWiki' ),
+			User::getGroupsWithPermission( $permission ) );
+		if( $groups ) {
+			$this->addWikiMsg( 'badaccess-groups',
+				implode( ', ', $groups ),
+				count( $groups) );
+		} else {
+			$this->addWikiMsg( 'badaccess-group0' );
 		}
-		$n = count( $groups );
-		$groups = implode( ', ', $groups );
-		switch( $n ) {
-			case 0:
-			case 1:
-			case 2:
-				$message = wfMsgHtml( "badaccess-group$n", $groups );
-				break;
-			default:
-				$message = wfMsgHtml( 'badaccess-groups', $groups );
-		}
-		$this->addHtml( $message );
 		$this->returnToMain();
 	}
 
@@ -1145,7 +1184,7 @@ class OutputPage {
 		global $wgUser, $wgTitle;
 		$skin = $wgUser->getSkin();
 
-		$this->setRobotpolicy( 'noindex,nofollow' );
+		$this->setRobotPolicy( 'noindex,nofollow' );
 		$this->setArticleRelated( false );
 
 		// If no reason is given, just supply a default "I can't let you do
@@ -1235,7 +1274,7 @@ class OutputPage {
 
 	public function showFatalError( $message ) {
 		$this->setPageTitle( wfMsg( "internalerror" ) );
-		$this->setRobotpolicy( "noindex,nofollow" );
+		$this->setRobotPolicy( "noindex,nofollow" );
 		$this->setArticleRelated( false );
 		$this->enableClientCache( false );
 		$this->mRedirect = '';
@@ -1354,8 +1393,8 @@ class OutputPage {
 		}
 		$ret .= "xml:lang=\"$wgContLanguageCode\" lang=\"$wgContLanguageCode\" $rtl>\n";
 		$ret .= "<head>\n<title>" . htmlspecialchars( $this->getHTMLTitle() ) . "</title>\n";
-		array_push( $this->mMetatags, array( "http:Content-type", "$wgMimeType; charset={$wgOutputEncoding}" ) );
-
+		$this->addMeta( "http:Content-type", "$wgMimeType; charset={$wgOutputEncoding}" );
+		
 		$ret .= $this->getHeadLinks();
 		global $wgStylePath;
 		if( $this->isPrintable() ) {
@@ -1378,28 +1417,16 @@ class OutputPage {
 		$ret .= "</head>\n";
 		return $ret;
 	}
-
-	/**
-	 * @return string HTML tag links to be put in the header.
-	 */
-	public function getHeadLinks() {
-		global $wgRequest, $wgFeed, $wgVersion;
-		$ret = "<meta name=\"generator\" content=\"MediaWiki " . $wgVersion . "\" />\n";
-		foreach ( $this->mMetatags as $tag ) {
-			if ( 0 == strcasecmp( 'http:', substr( $tag[0], 0, 5 ) ) ) {
-				$a = 'http-equiv';
-				$tag[0] = substr( $tag[0], 5 );
-			} else {
-				$a = 'name';
-			}
-			$ret .= "<meta $a=\"{$tag[0]}\" content=\"{$tag[1]}\" />\n";
-		}
-
-		$p = $this->mRobotpolicy;
-		if( $p !== '' && $p != 'index,follow' ) {
+	
+	protected function addDefaultMeta() {
+		global $wgVersion;
+		$this->addMeta( "generator", "MediaWiki $wgVersion" );
+		
+		$p = "{$this->mIndexPolicy},{$this->mFollowPolicy}";
+		if( $p !== 'index,follow' ) {
 			// http://www.robotstxt.org/wc/meta-user.html
 			// Only show if it's different from the default robots policy
-			$ret .= "<meta name=\"robots\" content=\"$p\" />\n";
+			$this->addMeta( 'robots', $p );
 		}
 
 		if ( count( $this->mKeywords ) > 0 ) {
@@ -1407,15 +1434,35 @@ class OutputPage {
 				"/<.*?>/" => '',
 				"/_/" => ' '
 			);
-			$ret .= "\t\t<meta name=\"keywords\" content=\"" .
-			  htmlspecialchars(preg_replace(array_keys($strip), array_values($strip),implode( ",", $this->mKeywords ))) . "\" />\n";
+			$this->addMeta( 'keywords', preg_replace(array_keys($strip), array_values($strip),implode( ",", $this->mKeywords ) ) );
+		}
+	}
+
+	/**
+	 * @return string HTML tag links to be put in the header.
+	 */
+	public function getHeadLinks() {
+		global $wgRequest, $wgFeed;
+		
+		// Ideally this should happen earlier, somewhere. :P
+		$this->addDefaultMeta();
+		
+		$tags = array();
+		
+		foreach ( $this->mMetatags as $tag ) {
+			if ( 0 == strcasecmp( 'http:', substr( $tag[0], 0, 5 ) ) ) {
+				$a = 'http-equiv';
+				$tag[0] = substr( $tag[0], 5 );
+			} else {
+				$a = 'name';
+			}
+			$tags[] = Xml::element( 'meta',
+				array(
+					$a => $tag[0],
+					'content' => $tag[1] ) );
 		}
 		foreach ( $this->mLinktags as $tag ) {
-			$ret .= "\t\t<link";
-			foreach( $tag as $attr => $val ) {
-				$ret .= " $attr=\"" . htmlspecialchars( $val ) . "\"";
-			}
-			$ret .= " />\n";
+			$tags[] = Xml::element( 'link', $tag );
 		}
 
 		if( $wgFeed ) {
@@ -1426,7 +1473,7 @@ class OutputPage {
 				# with having the same name for different feeds corresponding to
 				# the same page, but we can't avoid that at this low a level.
 
-				$ret .= $this->feedLink(
+				$tags[] = $this->feedLink(
 					$format,
 					$link,
 					wfMsg( "page-{$format}-feed", $wgTitle->getPrefixedText() ) ); # Used messages: 'page-rss-feed' and 'page-atom-feed' (for an easier grep)
@@ -1441,18 +1488,18 @@ class OutputPage {
 			if ( $wgTitle->getPrefixedText() != $rctitle->getPrefixedText() ) {
 				global $wgSitename;
 				
-				$ret .= $this->feedLink(
+				$tags[] = $this->feedLink(
 					'rss',
 					$rctitle->getFullURL( 'feed=rss' ),
 					wfMsg( 'site-rss-feed', $wgSitename ) );
-				$ret .= $this->feedLink(
+				$tags[] = $this->feedLink(
 					'atom',
 					$rctitle->getFullURL( 'feed=atom' ),
 					wfMsg( 'site-atom-feed', $wgSitename ) );
 			}
 		}
 
-		return $ret;
+		return implode( "\n\t\t", $tags ) . "\n";
 	}
 
 	/**
@@ -1485,7 +1532,7 @@ class OutputPage {
 			'rel' => 'alternate',
 			'type' => "application/$type+xml",
 			'title' => $text,
-			'href' => $url ) ) . "\n";
+			'href' => $url ) );
 	}
 
 	/**

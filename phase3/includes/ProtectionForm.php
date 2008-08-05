@@ -103,7 +103,7 @@ class ProtectionForm {
 	function show( $err = null ) {
 		global $wgOut, $wgUser;
 
-		$wgOut->setRobotpolicy( 'noindex,nofollow' );
+		$wgOut->setRobotPolicy( 'noindex,nofollow' );
 
 		if( is_null( $this->mTitle ) ||
 			$this->mTitle->getNamespace() == NS_MEDIAWIKI ) {
@@ -337,7 +337,7 @@ class ProtectionForm {
 			//don't let them choose levels above their own (aka so they can still unprotect and edit the page). but only when the form isn't disabled
 			if( $key == 'sysop' ) {
 				//special case, rewrite sysop to protect and editprotected
-				if( !$wgUser->isAllowed('protect') && !$wgUser->isAllowed('editprotected') && $this->disabled )
+				if( !$wgUser->isAllowed('protect') && !$wgUser->isAllowed('editprotected') && !$this->disabled )
 					continue;
 			} else {
 				if( !$wgUser->isAllowed($key) && !$this->disabled )

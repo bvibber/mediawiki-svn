@@ -4,10 +4,6 @@
  * @ingroup Language
  * @file
  *
- * @author SPQRobin
- * @author Siebrand
- * @author Max sonnelid
- * @author M.M.S.
  */
 
 $messages = array(
@@ -113,7 +109,6 @@ $messages = array(
 'portal-url'           => 'Project:ᖃᒡᒋᖅ',
 'privacy'              => 'ᓇᒻᒥᓂᖅ ᐱᓕᕆᕝᕕᖃᐅᖅᑐᓄᑦ ᐊᐅᓚᑕᐅᔪᑦ ᐊᑐᐊᒐᖅ, ᐱᓇᓱᐊᕐᓂᖅ',
 'privacypage'          => 'Project:ᓇᒻᒥᓂᖅ ᐱᓕᕆᕝᕕᖃᐅᖅᑐᓄᑦ ᐊᐅᓚᑕᐅᔪᑦ ᐊᑐᐊᒐᖅ, ᐱᓇᓱᐊᕐᓂᖅ',
-'sitesupport'          => 'ᑐᓐᓂᖅᑯᓯᐊᑦ ᑮᓇᐅᔭᐃᑦ',
 
 'youhavenewmessages'  => 'ᐃᓕᔅᓯ ᐱᒋᕚ $1 ($2).',
 'newmessageslink'     => 'ᐱᒋᕗᖅ ᑭᒡᒐᐹ',

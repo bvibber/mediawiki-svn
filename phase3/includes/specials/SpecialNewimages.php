@@ -24,10 +24,8 @@ function wfSpecialNewimages( $par, $specialPage ) {
 		    set.
 		*/
 		$botconds=array();
-		foreach ($wgGroupPermissions as $groupname=>$perms) {
-			if(array_key_exists('bot',$perms) && $perms['bot']) {
-				$botconds[]="ug_group='$groupname'";
-			}
+		foreach ( User::getGroupsWithPermission('bot') as $groupname ) {
+			$botconds[]="ug_group='$groupname'";
 		}
 
 		/* If not bot groups, do not set $hidebotsql */
@@ -184,12 +182,14 @@ function wfSpecialNewimages( $par, $specialPage ) {
 	$botLink = $sk->makeKnownLinkObj($titleObj, wfMsgHtml( 'showhidebots', 
 		($hidebots ? wfMsgHtml('show') : wfMsgHtml('hide'))),'hidebots='.($hidebots ? '0' : '1').$searchpar);
 
-	$prevLink = wfMsgHtml( 'prevn', $wgLang->formatNum( $limit ) );
+
+	$opts = array( 'parsemag', 'escapenoentities' );
+	$prevLink = wfMsgExt( 'prevn', $opts, $wgLang->formatNum( $limit ) );
 	if( $firstTimestamp && $firstTimestamp != $latestTimestamp ) {
 		$prevLink = $sk->makeKnownLinkObj( $titleObj, $prevLink, 'from=' . $firstTimestamp . $botpar . $searchpar );
 	}
 
-	$nextLink = wfMsgHtml( 'nextn', $wgLang->formatNum( $limit ) );
+	$nextLink = wfMsgExt( 'nextn', $opts, $wgLang->formatNum( $limit ) );
 	if( $shownImages > $limit && $lastTimestamp ) {
 		$nextLink = $sk->makeKnownLinkObj( $titleObj, $nextLink, 'until=' . $lastTimestamp.$botpar.$searchpar );
 	}

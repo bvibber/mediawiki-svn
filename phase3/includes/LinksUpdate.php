@@ -97,11 +97,12 @@ class LinksUpdate {
 
 		# Image links
 		$existing = $this->getExistingImages();
-		$this->incrTableUpdate( 'imagelinks', 'il', $this->getImageDeletions( $existing ),
-			$this->getImageInsertions( $existing ) );
+
+		$imageDeletes = $this->getImageDeletions( $existing );
+		$this->incrTableUpdate( 'imagelinks', 'il', $imageDeletes, $this->getImageInsertions( $existing ) );
 
 		# Invalidate all image description pages which had links added or removed
-		$imageUpdates = array_diff_key( $existing, $this->mImages ) + array_diff_key( $this->mImages, $existing );
+		$imageUpdates = $imageDeletes + array_diff_key( $this->mImages, $existing );
 		$this->invalidateImageDescriptions( $imageUpdates );
 
 		# External links
@@ -121,23 +122,26 @@ class LinksUpdate {
 
 		# Category links
 		$existing = $this->getExistingCategories();
-		$this->incrTableUpdate( 'categorylinks', 'cl', $this->getCategoryDeletions( $existing ),
-			$this->getCategoryInsertions( $existing ) );
+
+		$categoryDeletes = $this->getCategoryDeletions( $existing );
+
+		$this->incrTableUpdate( 'categorylinks', 'cl', $categoryDeletes, $this->getCategoryInsertions( $existing ) );
 
 		# Invalidate all categories which were added, deleted or changed (set symmetric difference)
 		$categoryInserts = array_diff_assoc( $this->mCategories, $existing );
-		$categoryDeletes = array_diff_assoc( $existing, $this->mCategories );
 		$categoryUpdates = $categoryInserts + $categoryDeletes;
 		$this->invalidateCategories( $categoryUpdates );
 		$this->updateCategoryCounts( $categoryInserts, $categoryDeletes );
 
 		# Page properties
 		$existing = $this->getExistingProperties();
-		$this->incrTableUpdate( 'page_props', 'pp', $this->getPropertyDeletions( $existing ),
-			$this->getPropertyInsertions( $existing ) );
+
+		$propertiesDeletes = $this->getPropertyDeletions( $existing );
+
+		$this->incrTableUpdate( 'page_props', 'pp', $propertiesDeletes, $this->getPropertyInsertions( $existing ) );
 
 		# Invalidate the necessary pages
-		$changed = array_diff_assoc( $existing, $this->mProperties ) + array_diff_assoc( $this->mProperties, $existing );
+		$changed = $propertiesDeletes + array_diff_assoc( $this->mProperties, $existing );
 		$this->invalidateProperties( $changed );
 
 		# Refresh links of all pages including this page
@@ -160,7 +164,7 @@ class LinksUpdate {
 		# Refresh category pages and image description pages
 		$existing = $this->getExistingCategories();
 		$categoryInserts = array_diff_assoc( $this->mCategories, $existing );
-		$categoryDeletes = array_diff_assoc( $existing, $this->mCategoties );
+		$categoryDeletes = array_diff_assoc( $existing, $this->mCategories );
 		$categoryUpdates = $categoryInserts + $categoryDeletes;
 		$existing = $this->getExistingImages();
 		$imageUpdates = array_diff_key( $existing, $this->mImages ) + array_diff_key( $this->mImages, $existing );

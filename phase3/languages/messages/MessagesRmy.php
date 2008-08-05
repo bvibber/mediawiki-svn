@@ -4,11 +4,8 @@
  * @ingroup Language
  * @file
  *
- * @author Niklas Laxström
  * @author לערי ריינהארט
  * @author Desiphral
- * @author Siebrand
- * @author Jon Harald Søby
  */
 
 $fallback = 'ro';
@@ -138,8 +135,6 @@ $messages = array(
 'portal'               => 'Maladipnasko than',
 'portal-url'           => 'Project:Maladipnasko than',
 'privacy'              => 'Pativyako forovipen',
-'sitesupport'          => 'Denimata',
-'sitesupport-url'      => 'Project:Denimata',
 
 'retrievedfrom'   => 'Lino katar "$1"',
 'editsection'     => 'editisar',
@@ -230,11 +225,8 @@ Mishto si te jas kai {{SITENAME}} thai te paruves tiro lav sigo.',
 'showpreview'        => 'Dikh sar avelas i patrin',
 'showlivepreview'    => 'Jivutno angledikhipen',
 'showdiff'           => 'Dikh le paruvimata',
-'whitelistedittitle' => 'Trebul o [[Special:Userlogin|autentifikaripen]] kashte editisares',
+'whitelistedittitle' => 'Trebul o autentifikaripen kashte editisares',
 'whitelistedittext'  => 'Trebul te [[Special:Userlogin|autentifikisares]] kashte editisares artikolurya.',
-'whitelistreadtitle' => 'Trebul o autentifikaripen kashte drabares',
-'whitelistreadtext'  => 'Trebul te [[Special:Userlogin|autentifikisares]] kashte drabares artikolurya.',
-'whitelistacctitle'  => 'Chi shai (nai tuke xakaya) te keres konturya',
 'accmailtitle'       => 'O nakhavipnasko lav bićhaldo.',
 'accmailtext'        => "O nakhavipnasko lav andar '$1' bićhaldo ko $2.",
 'newarticle'         => '(Nevo)',
@@ -502,7 +494,6 @@ Dikh ando $2 ek patrinipen le palutne butyange khosle.',
 'tooltip-n-recentchanges'       => 'I lista le neve paruvimatenge kerdini andi kadaya wiki.',
 'tooltip-n-randompage'          => 'Ja ki ek aleatori pajina',
 'tooltip-n-help'                => 'O than kai arakhes zhutipen.',
-'tooltip-n-sitesupport'         => 'Zhutisar amen',
 'tooltip-t-whatlinkshere'       => 'I lista sa le wiki pajinenge so aven (si phande) vi kathe',
 'tooltip-t-recentchangeslinked' => 'Neve paruvimata andi kadaya pajina',
 'tooltip-feed-rss'              => 'Kathe te pravares o RSS flukso le kadale pajinyako',

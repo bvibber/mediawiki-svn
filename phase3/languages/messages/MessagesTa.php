@@ -6,10 +6,8 @@
  *
  * @author Trengarasu
  * @author Mayooranathan
- * @author Siebrand
  * @author Sundar
  * @author לערי ריינהארט
- * @author Jon Harald Søby
  */
 
 $skinNames = array(
@@ -91,8 +89,6 @@ $messages = array(
 'underline-always'  => 'எப்பொழுதும்',
 'underline-never'   => 'எப்போதுமில்லை',
 'underline-default' => 'உலாவி இயல்பிருப்பு',
-
-'skinpreview' => '(முன்தோற்றம்)',
 
 # Dates
 'sunday'        => 'ஞாயிறு',
@@ -271,8 +267,6 @@ $messages = array(
 'portal-url'           => 'Project:சமுதாய வலைவாசல்',
 'privacy'              => 'தகவல் பாதுகாப்பு',
 'privacypage'          => 'Project:தகவல் பாதுகாப்பு',
-'sitesupport'          => 'நன்கொடை',
-'sitesupport-url'      => 'Project:நன்கொடைகள்',
 
 'badaccess'        => 'அனுமதி தவறு',
 'badaccess-group0' => 'நீங்கள் கோரிய செயலைச் செய்வதற்கு உங்களுக்கு அனுமதி கிடையாது.',
@@ -551,10 +545,6 @@ $1 பயனரையோ அல்லது வேறு [[{{MediaWiki:Grouppage
 'blockededitsource'         => "'''$1''' பக்கத்துக்கான '''உங்கள் தொகுப்புகள்''' கீழே கொடுக்கப்பட்டுள்ளன:",
 'whitelistedittitle'        => 'தொகுப்பதற்கு புகுபதிகை செய்யப்படவேண்டும்.',
 'whitelistedittext'         => 'நீங்கள் பக்கங்களத் தொகுக்க $1 செய்யவேண்டும்.',
-'whitelistreadtitle'        => 'வாசிப்பதற்கு புகுபதிகை செய்ய வேண்டும்',
-'whitelistreadtext'         => 'பக்கங்களை வாசிக்க நீங்கள் [[Special:Userlogin|புகுபதிகை]] செய்யவேண்டும்.',
-'whitelistacctitle'         => 'கணக்கொன்று உருவாக்குவதற்கு நீங்கள் அனுமதிக்கப்படவில்லை.',
-'whitelistacctext'          => '{{SITENAME}} தளத்தில் கணக்குகளைத் தொடங்க நீங்கள் [[Special:Userlogin|புகுபதிகைச்]] செய்து உரிய அனுமதிகளைக் கொண்டிருக்க வேண்டும்.',
 'confirmedittitle'          => 'தொகுப்புக்கு மின்னஞ்சல் உறுதிப்படுத்தப்பட வேண்டும்',
 'confirmedittext'           => 'நீங்கள் பக்கங்களைத் தொகுக்க முன்னர் மின்னஞ்சல் முகவரியை உறுதிப்படுத்த வேண்டும். உங்கள் [[Special:Preferences|விருப்பத்தேர்வுகள்]] பக்கத்தில் செல்லுபடியான மின்னஞ்சலைக் கொடுத்து அதனை உறுதிப்படுத்துங்கள்.',
 'nosuchsectiontitle'        => 'அப்படியொரு பகுதி கிடையாது',
@@ -770,7 +760,7 @@ $1 பயனரையோ அல்லது வேறு [[{{MediaWiki:Grouppage
 
 # Search results
 'searchresults'             => 'தேடல் முடிவுகள்',
-'searchresulttext'          => '{{SITENAME}} தளத்தில் தேடுவது தொடர்பான மேலதிகத் தகவல்களுக்கு [[{{Mediawiki:Helppage}}|{{int:help}}]] பக்கத்தைப் பார்க்க.',
+'searchresulttext'          => '{{SITENAME}} தளத்தில் தேடுவது தொடர்பான மேலதிகத் தகவல்களுக்கு [[{{MediaWiki:Helppage}}|{{int:help}}]] பக்கத்தைப் பார்க்க.',
 'searchsubtitle'            => 'நீர் தேடியப் பக்கம் "[[:$1]]"',
 'searchsubtitleinvalid'     => 'நீர் தேடியப் பக்கம் "$1"',
 'noexactmatch'              => "'''\"\$1\" என்றத் தலைப்பில் பக்கமெதுவுமில்லை.''' நீங்கள் [[:\$1|இப்பக்கத்தை உருவாக்கலாம்]].",
@@ -821,6 +811,7 @@ $1 பயனரையோ அல்லது வேறு [[{{MediaWiki:Grouppage
 'qbsettings-floatingright' => 'மிதப்பு வலது',
 'changepassword'           => 'கடவுச்சொல்லை மாற்று',
 'skin'                     => 'தோல்',
+'skin-preview'             => 'முன்தோற்றம்',
 'math'                     => 'கணிதம்',
 'dateformat'               => 'நாள் வடிவம்',
 'datedefault'              => 'விருப்பத்தேர்வுகள் இல்லை',
@@ -866,28 +857,21 @@ $1 பயனரையோ அல்லது வேறு [[{{MediaWiki:Grouppage
 'files'                    => 'கோப்புகள்',
 
 # User rights
-'userrights'                       => 'பயனர் அனுமதி முகாமைத்துவம்', # Not used as normal message but as header for the special page itself
-'userrights-lookup-user'           => 'பயனர்க் குழுக்களை நிர்வாகி',
-'userrights-user-editname'         => 'பயனர் பெயரொன்றை இடுக:',
-'editusergroup'                    => 'பயனர் குழுக்களை தொகு',
-'editinguser'                      => "'''[[User:$1|$1]]''' ([[User talk:$1|{{int:talkpagelinktext}}]] | [[Special:Contributions/$1|{{int:contribslink}}]]) பயனருக்கான அனுமதிகளை மாற்றல்",
-'userrights-editusergroup'         => 'பயனர் குழுக்களை தொகு',
-'saveusergroups'                   => 'பயனர் குழுக்களை சேமி',
-'userrights-groupsmember'          => 'அங்கத்துவம்:',
-'userrights-groupsremovable'       => 'அகற்றப்படக்கூடிய குழுக்கள்:',
-'userrights-groupsavailable'       => 'கையிலிருப்பிலுள்ள குழுக்கள்:',
-'userrights-reason'                => 'மாற்றத்துக்கான காரணம்:',
-'userrights-available-none'        => 'உங்களால் குழு அங்கத்துவத்தை மாற்ற முடியாது.',
-'userrights-available-add'         => 'இந்தக் {{PLURAL:$2|குழுவுக்கு|குழுக்களுக்கு}} எந்தவொரு பயனரையும் இணைக்கலாம்: $1.',
-'userrights-available-remove'      => 'இந்தக் {{PLURAL:$2|குழுவிலிருந்து|குழுக்களிலிருந்து}} எந்தவொரு பயனரையும் நீக்க்கலாம்: $1.',
-'userrights-available-add-self'    => 'இந்தக் {{PLURAL:$2|குழுவுக்கு|குழுக்களுக்கு}} உங்களை இணைத்துக் கொள்ளலாம்: $1.',
-'userrights-available-remove-self' => 'இந்தக் {{PLURAL:$2|குழுவிலிருந்து|குழுக்களிலிருந்து}} உங்களை நீக்கிக் கொள்ளலாம்: $1.',
-'userrights-no-interwiki'          => 'ஏனைய விக்கிகளில் பயனர் உரிமைகளை மாற்றும் அனுமதி உங்களுக்குக் கிடையாது.',
-'userrights-nodatabase'            => '$1 தரவுத்தளம் கிடையாது அல்லது உள்ளக விக்கியில் கிடையாது.',
-'userrights-nologin'               => 'பயனர் உரிமைகளை வழங்குவதற்கு நீங்கள் நிர்வாகி கணக்கில் [[Special:Userlogin|புகுபதிகை]] செய்ய வேண்டும்.',
-'userrights-notallowed'            => 'பயனர் உரிமைகளை மாற்றும் அனுமதி உங்கள் பயனர் கணக்குக் கிடையாது.',
-'userrights-changeable-col'        => 'நீங்கள் மாற்றக்கூடிய குழுக்கள்',
-'userrights-unchangeable-col'      => 'நீங்கள் மாற்ற முடியாத குழுக்கள்',
+'userrights'                  => 'பயனர் அனுமதி முகாமைத்துவம்', # Not used as normal message but as header for the special page itself
+'userrights-lookup-user'      => 'பயனர்க் குழுக்களை நிர்வாகி',
+'userrights-user-editname'    => 'பயனர் பெயரொன்றை இடுக:',
+'editusergroup'               => 'பயனர் குழுக்களை தொகு',
+'editinguser'                 => "'''[[User:$1|$1]]''' ([[User talk:$1|{{int:talkpagelinktext}}]] | [[Special:Contributions/$1|{{int:contribslink}}]]) பயனருக்கான அனுமதிகளை மாற்றல்",
+'userrights-editusergroup'    => 'பயனர் குழுக்களை தொகு',
+'saveusergroups'              => 'பயனர் குழுக்களை சேமி',
+'userrights-groupsmember'     => 'அங்கத்துவம்:',
+'userrights-reason'           => 'மாற்றத்துக்கான காரணம்:',
+'userrights-no-interwiki'     => 'ஏனைய விக்கிகளில் பயனர் உரிமைகளை மாற்றும் அனுமதி உங்களுக்குக் கிடையாது.',
+'userrights-nodatabase'       => '$1 தரவுத்தளம் கிடையாது அல்லது உள்ளக விக்கியில் கிடையாது.',
+'userrights-nologin'          => 'பயனர் உரிமைகளை வழங்குவதற்கு நீங்கள் நிர்வாகி கணக்கில் [[Special:Userlogin|புகுபதிகை]] செய்ய வேண்டும்.',
+'userrights-notallowed'       => 'பயனர் உரிமைகளை மாற்றும் அனுமதி உங்கள் பயனர் கணக்குக் கிடையாது.',
+'userrights-changeable-col'   => 'நீங்கள் மாற்றக்கூடிய குழுக்கள்',
+'userrights-unchangeable-col' => 'நீங்கள் மாற்ற முடியாத குழுக்கள்',
 
 # Groups
 'group'               => 'குழு:',
@@ -1117,18 +1101,18 @@ $1 பயனரையோ அல்லது வேறு [[{{MediaWiki:Grouppage
 # File reversion
 'filerevert'                => '$1 ஐ முன்நிலையாக்கு',
 'filerevert-legend'         => 'கோப்பை முன்நிலையாக்கு',
-'filerevert-intro'          => '<span class="plainlinks">நீங்கள் [$3, $2 இன் திருத்தம் $4க்கு] \'\'\'[[Media:$1|$1]]\'\'\' ஊடகத்தை முன்நிலையாக்குகிறீர்கள்.</span>',
+'filerevert-intro'          => "நீங்கள் [$3, $2 இன் திருத்தம் $4க்கு] '''[[Media:$1|$1]]''' ஊடகத்தை முன்நிலையாக்குகிறீர்கள்.",
 'filerevert-comment'        => 'கருத்து:',
 'filerevert-defaultcomment' => '$2, $1 இல் உள்ளபடியான பதிப்புக்கு முன்நிலையாக்கப்பட்டது',
 'filerevert-submit'         => 'முன்நிலையாக்கு',
-'filerevert-success'        => '<span class="plainlinks">ஊடகம் \'\'\'[[Media:$1|$1]]\'\'\' $3, $2 இல் உள்ளபடியான $4 பதிப்புக்கு முன்நிலையாக்கப்பட்டது.</span>',
+'filerevert-success'        => "ஊடகம் '''[[Media:$1|$1]]''' $3, $2 இல் உள்ளபடியான $4 பதிப்புக்கு முன்நிலையாக்கப்பட்டது.",
 'filerevert-badversion'     => 'குறித்த நேர முத்திரையுடன் கூடிய முந்தைய உள்ளக திருத்தங்கள் காணப்படவில்லை.',
 
 # File deletion
 'filedelete'                  => '$1 கோப்பை நீக்கு',
 'filedelete-legend'           => 'கோப்பை நீக்கு',
 'filedelete-intro'            => "நீங்கள் '''[[Media:$1|$1]]''' கோப்பை நீக்குகிறீர்கள்.",
-'filedelete-intro-old'        => '<span class="plainlinks"> \'\'\'[[Media:$1|$1]]\'\'\' என்றப் பெயருள்ள ஊடகத்தின் [$4 $3, $2] இல் உள்ளப் படியான பதிப்பை நீக்குகிறீர்கள்.</span>',
+'filedelete-intro-old'        => "'''[[Media:$1|$1]]''' என்றப் பெயருள்ள ஊடகத்தின் [$4 $3, $2] இல் உள்ளப் படியான பதிப்பை நீக்குகிறீர்கள்.",
 'filedelete-comment'          => 'நீக்கலுக்கான காரணம்:',
 'filedelete-submit'           => 'நீக்கு',
 'filedelete-success'          => "'''$1''' நீக்கப்பட்டுவிட்டது.",
@@ -1287,7 +1271,7 @@ $1 பயனரையோ அல்லது வேறு [[{{MediaWiki:Grouppage
 'allpages-bad-ns'   => '{{SITENAME}} தளத்தில் "$1" பெயர்வெளி கிடையாது.',
 
 # Special:Categories
-'categories'                    => '{{PLURAL:$1|பகுப்பு|பகுப்புகள்}}',
+'categories'                    => 'பகுப்புகள்',
 'categoriespagetext'            => 'பின்வரும் பகுப்புகள் பக்கங்களையோ அலது ஊடகங்களையோ கொண்டுள்ளன.',
 'special-categories-sort-count' => 'எண்ணிக்கையின் படி ஒழுங்குப் படுத்துக',
 'special-categories-sort-abc'   => 'அகரவரிசைப்படி ஒழுங்குப் படுத்துக',
@@ -1675,8 +1659,6 @@ $1',
 '''இல்லாவிடில்''' சேர்ந்திருக்கும் பேச்சுப் பக்கம், ஏதாவது இருந்தால், தன்னியக்கமாக அதனுடன் நகர்த்தப்படும்.
 இப்படியான சந்தர்ப்பங்களில், விரும்பினால், நகர்த்தலையோ அல்லது ஒன்றிணைத்தலையோ நீங்கள் கைவினையாகச் செய்யவேண்டியிருக்கும்.",
 'movearticle'             => 'பக்கத்தை நகர்து',
-'movenologin'             => 'புகுபதிகை செய்யப்படவில்லை',
-'movenologintext'         => 'இப் பக்கத்தை நகர்த்துவதற்கு, நீங்கள் ஒரு பதிவு செய்யப்பட்ட பயனராயும் [[Special:Userlogin|புகுபதிகை செய்தும்]] இருக்க வேண்டும்.',
 'movenotallowed'          => 'உமக்கு {{SITENAME}} தளத்தில் பக்கங்களை நகர்த்த அனுமதி கிடையாது.',
 'newtitle'                => 'புதிய தலைப்பு',
 'move-watch'              => 'இப்பக்கத்தைக் கவனி',
@@ -1804,7 +1786,6 @@ $1',
 'tooltip-n-recentchanges'         => 'இந்த விக்கியில் செய்யப்பட்ட அண்மைய மாற்றங்களின் பட்டியல்',
 'tooltip-n-randompage'            => 'குறிப்பில்வழிப் பக்கமொன்றைக் காட்டு',
 'tooltip-n-help'                  => 'உதவிகளைப் பெற',
-'tooltip-n-sitesupport'           => 'நன்கொடைகளை வழங்குங்கள்',
 'tooltip-t-whatlinkshere'         => 'இங்கே இணைக்கப்பட்ட எல்லா விக்கிப் பக்கங்களின் பட்டியல்',
 'tooltip-t-recentchangeslinked'   => 'இப்பக்கத்துடன் இணைக்கப்பட்ட பக்கங்களில் மாற்றங்கள்',
 'tooltip-feed-rss'                => 'இப்பக்கத்துக்கான ஆர்.எஸ்.எஸ். ஓடை கிடையாது',

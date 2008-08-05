@@ -4,22 +4,20 @@
  * @ingroup Language
  * @file
  *
- * @author Samuelsen
  * @author Jon Harald Søby
- * @author Teak
- * @author לערי ריינהארט
- * @author Siebrand
- * @author SPQRobin
- * @author Max sonnelid
- * @author Eirik
- * @author Kph-no
- * @author M.M.S.
- * @author Stigmj
  * @author Kph
+ * @author Stigmj
+ * @author לערי ריינהארט
  * @author H92
+ * @author M.M.S.
+ * @author Eirik
  * @author Jóna Þórunn
+ * @author EivindJ
  * @author Finnrind
  * @author Boivie
+ * @author Samuelsen
+ * @author Teak
+ * @author Kph-no
  */
 
 $skinNames = array(
@@ -211,8 +209,6 @@ $messages = array(
 'underline-never'   => 'Aldri',
 'underline-default' => 'Bruk nettleserstandard',
 
-'skinpreview' => '(forhåndsvisning)',
-
 # Dates
 'sunday'        => 'søndag',
 'monday'        => 'mandag',
@@ -389,8 +385,6 @@ $messages = array(
 'portal-url'           => 'Project:Prosjektportal',
 'privacy'              => 'Personvern',
 'privacypage'          => 'Project:Personvern',
-'sitesupport'          => 'Donasjoner',
-'sitesupport-url'      => 'Project:Donasjoner',
 
 'badaccess'        => 'Rettighetsfeil',
 'badaccess-group0' => 'Du har ikke tilgang til å utføre handlingen du prøvde på.',
@@ -463,7 +457,7 @@ Administratoren som låste databasen ga forklaringen: $1',
 De vanligste grunnene til denne feilen er en lenke til en diff mellom forskjellige versjoner eller lenker til en gammel versjon av en side som har blitt slettet.
 
 Om det ikke er tilfellet kan du ha funnet en feil i programvaren.
-Rapporter gjerne problemet til en administrator, angi da adressen til siden.',
+Rapporter gjerne problemet til en [[Special:Listusers/sysop|administrator]], angi da adressen til siden.',
 'missingarticle-rev'   => '(versjon $1)',
 'missingarticle-diff'  => '(diff: $1, $2)',
 'readonly_lag'         => 'Databasen er automatisk skrivebeskyttet så slavetjenerne kan ta igjen mestertjeneren',
@@ -505,13 +499,20 @@ $2',
 'titleprotected'       => "Denne tittelen har blitt låst for oppretting av [[User:$1|$1]].
 Den angitte grunnen er ''$2''.",
 
+# Virus scanner
+'virus-badscanner'     => 'Dårlig konfigurasjon: ukjent virusskanner: <i>$1</i>',
+'virus-scanfailed'     => 'skanning mislyktes (kode $1)',
+'virus-unknownscanner' => 'ukjent antivirusprogram:',
+
 # Login and logout pages
 'logouttitle'                => 'Logg ut',
-'logouttext'                 => '<strong>Du er nå logget ut.</strong><br />
-Du kan fortsette å bruke {{SITENAME}} anonymt, eller logge inn igjen som samme eller annen bruker.',
-'welcomecreation'            => '==Velkommen, $1!==
+'logouttext'                 => '<strong>Du er nå logget ut.</strong>
 
-Brukerkontoen din har blitt opprettet. Ikke glem å endre [[Special:Preferences|innstillingene dine]].',
+Du kan fortsette å bruke {{SITENAME}} anonymt, eller [[Special:Userlogin|logge inn igjen]] som samme eller annen bruker.
+Merk at noen sider kan vise at du fortsatt er logget inn fram til du tømmer mellomlageret i nettleseren.',
+'welcomecreation'            => '==Velkommen, $1!==
+Brukerkontoen din har blitt opprettet.
+Ikke glem å endre [[Special:Preferences|innstillingene]] dine.',
 'loginpagetitle'             => 'Logg inn',
 'yourname'                   => 'Brukernavn:',
 'yourpassword'               => 'Passord:',
@@ -522,7 +523,7 @@ Brukerkontoen din har blitt opprettet. Ikke glem å endre [[Special:Preferences|
 'loginproblem'               => '<strong>Du ble ikke logget inn.</strong><br />Prøv igjen!',
 'login'                      => 'Logg inn',
 'nav-login-createaccount'    => 'Logg inn eller registrer deg',
-'loginprompt'                => 'Du må ha slått på cookies for å logge in på {{SITENAME}}.',
+'loginprompt'                => 'Du må ha slått på informasjonskapsler for å [[Special:Userlogin|logge in på {{SITENAME}}]].',
 'userlogin'                  => 'Logg inn eller registrer deg',
 'logout'                     => 'Logg ut',
 'userlogout'                 => 'Logg ut',
@@ -606,7 +607,7 @@ Du kan ignorere denne beskjeden dersom kontoen ble opprettet ved en feil.',
 'italic_tip'      => 'Kursiv tekst',
 'link_sample'     => 'Lenketittel',
 'link_tip'        => 'Intern lenke',
-'extlink_sample'  => '{{SERVER}} lenketittel',
+'extlink_sample'  => 'http://www.example.com lenketittel',
 'extlink_tip'     => 'Ekstern lenke (husk prefikset http://)',
 'headline_sample' => 'Overskrift',
 'headline_tip'    => 'Overskrift',
@@ -632,7 +633,8 @@ Du kan ignorere denne beskjeden dersom kontoen ble opprettet ved en feil.',
 'showlivepreview'                  => 'Levende forhåndsvisning',
 'showdiff'                         => 'Vis endringer',
 'anoneditwarning'                  => "'''Advarsel:''' Du er ikke logget inn. IP-adressen din blir bevart i sidens redigeringshistorikk.",
-'missingsummary'                   => "'''Påminnelse:''' Du har ikke lagt inn en [[Help:Redigeringsforklaring|redigeringsforklaring]]. velger du ''Lagre siden'' en gang til blir endringene lagret uten forklaring.",
+'missingsummary'                   => "'''Påminnelse:''' Du har ikke lagt inn en redigeringsforklaring.
+Velger du ''Lagre siden'' en gang til blir endringene lagret uten forklaring.",
 'missingcommenttext'               => 'Vennligst legg inn en kommentar under.',
 'missingcommentheader'             => "'''Merk:''' Du har ikke angitt et emne/overskrift for denne kommentaren. Om du trykker Lagre igjen, vil redigeringen din bli lagret uten en.",
 'summary-preview'                  => 'Forhåndsvisning av sammendrag',
@@ -653,7 +655,7 @@ Den oppgitte grunnen var:
 :'''$2'''
 
 * Blokkeringen begynte: $8
-* Blokkringen utgår: $6
+* Blokkeringen utgår: $6
 
 Du kan kontakte $1 eller en av de andre [[{{MediaWiki:Grouppage-sysop}}|administratorene]] for å diskutere blokkeringen.
 
@@ -663,12 +665,8 @@ Din blokkerings-ID er $5. Vennligst ta med denne ID-en i din forespørsel.",
 'blockednoreason'                  => 'ingen grunn gitt',
 'blockedoriginalsource'            => "Kildekoden til '''$1''' vises nedenfor:",
 'blockededitsource'                => "Kildekoden '''dine endringer''' på '''$1''' vises nedenfor:",
-'whitelistedittitle'               => 'Du må logge inn for å redigere',
+'whitelistedittitle'               => 'Du må [[Special:Userlogin|logge inn]] for å redigere',
 'whitelistedittext'                => 'Du må $1 for å redigere artikler.',
-'whitelistreadtitle'               => 'Du må logge inn for å kunne lese',
-'whitelistreadtext'                => 'Du må [[Special:Userlogin|logge inn]] for å lese artikler.',
-'whitelistacctitle'                => 'Du har ikke adgang til å opprette en konto',
-'whitelistacctext'                 => 'For å få adgang til å opprette kontoer på {{SITENAME}} må du [[Special:Userlogin|logge inn]] og ha riktige rettigheter.',
 'confirmedittitle'                 => 'E-postbekreftelse nødvendig før du kan redigere',
 'confirmedittext'                  => 'Du må bekrefte e-postadressen din før du kan redigere sider. Vennligst oppgi og bekreft e-postadressen din via [[Special:Preferences|innstillingene dine]].',
 'nosuchsectiontitle'               => 'Ingen slik seksjon',
@@ -681,7 +679,10 @@ Din blokkerings-ID er $5. Vennligst ta med denne ID-en i din forespørsel.",
 'newarticle'                       => '(Ny)',
 'newarticletext'                   => "Du fulgte en lenke til en side som ikke finnes ennå. For å opprette siden, start å skrive i boksen nedenfor (se [[{{MediaWiki:Helppage}}|hjelpesiden]] for mer informasjon). Om du kom hit ved en feil, bare trykk på nettleserens '''tilbake'''-knapp.",
 'anontalkpagetext'                 => "----
-''Dette er en diskusjonsside for en uregistrert bruker som ikke har opprettet konto eller ikke er logget inn. Vi er derfor nødt til å bruke den numeriske IP-adressen til å identifisere ham eller henne. En IP-adresse kan være delt mellom flere brukere. Hvis du er en uregistrert bruker og synes at du har fått irrelevante kommentarer på en slik side, [[Special:Userlogin|logg på]] så vi unngår framtidige forvekslinger med andre uregistrerte brukere.''",
+''Dette er en diskusjonsside for en uregistrert bruker som ikke har opprettet konto eller ikke er logget inn.
+Vi er derfor nødt til å bruke den numeriske IP-adressen til å identifisere ham eller henne.
+En IP-adresse kan være delt mellom flere brukere.
+Hvis du er en uregistrert bruker og synes at du har fått irrelevante kommentarer på en slik side, [[Special:Userlogin/signup|opprett en konto]] eller [[Special:Userlogin|logg inn]] så vi unngår framtidige forvekslinger med andre uregistrerte brukere.''",
 'noarticletext'                    => 'Det er ikke noe tekst på denne siden. Du kan [[Special:Search/{{PAGENAME}}|søke etter siden]] i andre sider, eller [{{fullurl:{{FULLPAGENAME}}|action=edit}} redigere siden].',
 'userpage-userdoesnotexist'        => 'Brukerkontoen «$1» er ikke registrert. Sjekk om du ønsker å opprette/redigere denne siden.',
 'clearyourcache'                   => "'''Merk:''' Etter lagring vil det kanskje være nødvendig at nettleseren sletter mellomlageret sitt for at endringene skal tre i kraft. '''Mozilla og Firefox:''' trykk ''Ctrl-Shift-R'', '''Internet Explorer:''' ''Ctrl-F5'', '''Safari:''' ''Cmd-Shift-R'' i engelskspråklig versjon, ''Cmd-Alt-E'' i norskspråklig versjon, '''Konqueror og Opera:''' ''F5''.",
@@ -693,12 +694,12 @@ Din blokkerings-ID er $5. Vennligst ta med denne ID-en i din forespørsel.",
 'note'                             => '<strong>Merk:</strong>',
 'previewnote'                      => '<strong>Dette er bare en forhåndsvisning; endringer har ikke blitt lagret!</strong>',
 'previewconflict'                  => 'Slik vil teksten i redigeringsvinduet se ut dersom du lagrer den.',
-'session_fail_preview'             => '<strong>Beklager! Klarte ikke å lagre redigeringen din. Prøv igjen. Om det fortsetter å gå galt, prøv å logge ut og så inn igjen.</strong>',
+'session_fail_preview'             => '<strong>Beklager! Klarte ikke å lagre redigeringen din. Prøv igjen. Om det fortsetter å gå galt, prøv å [[Special:Userlogout|logge ut]] og så inn igjen.</strong>',
 'session_fail_preview_html'        => "<strong>Beklager! Klarte ikke å lagre redigeringen din på grunn av tap av øktdata.</strong>
 
 ''Fordi {{SITENAME}} har rå HTML slått på, er forhåndsvisningen skjult for å forhindre JavaScript-angrep.''
 
-<strong>Om dette er et legitimt redigeringsforsøk, prøv igjen. Om det da ikke fungerer, prøv å logge ut og logge inn igjen.</strong>",
+<strong>Om dette er et legitimt redigeringsforsøk, prøv igjen. Om det da ikke fungerer, prøv å [[Special:Userlogout|logge ut]] og logge inn igjen.</strong>",
 'token_suffix_mismatch'            => '<strong>Redigeringen din har blitt avvist fordi klienten din ikke hadde punktasjonstegn i redigeringsteksten. Redigeringen har blitt avvist for å hindre ødeleggelse av artikkelteksten. Dette forekommer av og til når man bruker vevbaserte anonyme proxytjenester.</strong>',
 'editing'                          => 'Redigerer $1',
 'editingsection'                   => 'Redigerer $1 (seksjon)',
@@ -762,7 +763,7 @@ Disse parameterne har blitt utelatt.',
 'undo-success' => 'Redigeringen kan omgjøres. Sjekk sammenligningen under for å bekrefte at du vil gjøre dette, og lagre endringene for å fullføre omgjøringen.',
 'undo-failure' => 'Redigeringen kunne ikke omgjøres på grunn av konflikterende etterfølgende redigeringer.',
 'undo-norev'   => 'Redigeringen kunne ikke fjernes fordi den ikke eksisterer eller ble slettet',
-'undo-summary' => 'Fjerner revisjon $1 av [[Special:Contributions/$2]] ([[User talk:$2|Brukerdiskusjon:$2]])',
+'undo-summary' => 'Fjerner revisjon $1 av [[Special:Contributions/$2]] ([[User talk:$2|diskusjon]] | [[Special:Contributions/$2|{{int:contribsilnk}}]])',
 
 # Account creation failure
 'cantcreateaccounttitle' => 'Kan ikke opprette konto',
@@ -787,6 +788,7 @@ Grunnen som ble oppgitt av $3 er ''$2''",
 'page_first'          => 'første',
 'page_last'           => 'siste',
 'histlegend'          => "Forklaring: (nå) = forskjell fra nåværende versjon, (forrige) = forskjell fra forrige versjon, '''m''' = mindre endring.",
+'history-search'      => 'Søk i historikken',
 'deletedrev'          => '[slettet]',
 'histfirst'           => 'Første',
 'histlast'            => 'Siste',
@@ -814,7 +816,7 @@ Denne revisjonen har blitt fjernet fra det offentlige arkivet. Som administrator
 'revdelete-nooldid-title'     => 'Ugyldig målversjon',
 'revdelete-nooldid-text'      => 'Du har ikke angitt en målversjon for denne funksjonen, den angitte versjonen finnes ikke, eller du forsøker å skjule den nåværende versjonen.',
 'revdelete-selected'          => '{{PLURAL:$2|Valgt revisjon|Valgte revisjoner}} av [[:$1]]:',
-'logdelete-selected'          => '!{{PLURAL:$1|Valgt loggoppføring|Valgte loggoppføringer}}:',
+'logdelete-selected'          => '{{PLURAL:$1|Valgt loggoppføring|Valgte loggoppføringer}}:',
 'revdelete-text'              => 'Slettede revisjoner vil fortsatt vises i sidehistorikken, men innholdet vil ikke være tilgjengelig for offentligheten.
 
 Andre administratorer på {{SITENAME}} vil fortsatt kunne se det skjulte innholdet, og kan gjenopprette det, med mindre videre begrensninger blir gitt av sideoperatørene.',
@@ -888,8 +890,9 @@ Forsikre deg om at denne endringen vil opprettholde historisk sidekontinuitet.',
 
 # Search results
 'searchresults'             => 'Søkeresultater',
+'searchresults-title'       => 'Søkeresultater for $1',
 'searchresulttext'          => 'For mer informasjon om søking i {{SITENAME}}, se [[{{MediaWiki:Helppage}}|{{int:help}}]].',
-'searchsubtitle'            => 'Du søkte på «[[$1]]».',
+'searchsubtitle'            => "Du søkte på '''[[:$1]]''' ([[Special:Prefixindex/$1|alle sider som begynner med «$1»]] | [[Special:Whatlinkshere/$1|alle sider som lenker til «$1»]])",
 'searchsubtitleinvalid'     => 'For forespørsel "$1"',
 'noexactmatch'              => "'''Det er ingen side med tittelen «$1».''' Du kan [[:$1|opprette siden]].",
 'noexactmatch-nocreate'     => "'''Det er ingen side med tittelen «$1».'''",
@@ -942,6 +945,7 @@ Forsikre deg om at denne endringen vil opprettholde historisk sidekontinuitet.',
 'qbsettings-floatingright' => 'Flytende til høyre',
 'changepassword'           => 'Endre passord',
 'skin'                     => 'Utseende',
+'skin-preview'             => 'forhåndsvisning',
 'math'                     => 'Matteformler',
 'dateformat'               => 'Datoformat',
 'datedefault'              => 'Ingen foretrukket',
@@ -992,32 +996,25 @@ se math/README for oppsett.',
 'files'                    => 'Filer',
 
 # User rights
-'userrights'                       => 'Brukerrettighetskontroll', # Not used as normal message but as header for the special page itself
-'userrights-lookup-user'           => 'Ordne brukergrupper',
-'userrights-user-editname'         => 'Skriv inn et brukernavn:',
-'editusergroup'                    => 'Endre brukergrupper',
-'editinguser'                      => "Endrer brukerrettighetene til '''[[User:$1|$1]]''' ([[User talk:$1|{{int:talkpagelinktext}}]] | [[Special:Contributions/$1|{{int:contribslink}}]])",
-'userrights-editusergroup'         => 'Rediger brukergrupper',
-'saveusergroups'                   => 'Lagre brukergrupper',
-'userrights-groupsmember'          => 'Medlem av:',
-'userrights-groupsremovable'       => 'Fjernbare grupper:',
-'userrights-groupsavailable'       => 'Tilgjengelige grupper:',
-'userrights-groups-help'           => 'Du kan endre hvilke grupper denne brukeren er medlem av.
+'userrights'                  => 'Brukerrettighetskontroll', # Not used as normal message but as header for the special page itself
+'userrights-lookup-user'      => 'Ordne brukergrupper',
+'userrights-user-editname'    => 'Skriv inn et brukernavn:',
+'editusergroup'               => 'Endre brukergrupper',
+'editinguser'                 => "Endrer brukerrettighetene til '''[[User:$1|$1]]''' ([[User talk:$1|{{int:talkpagelinktext}}]] | [[Special:Contributions/$1|{{int:contribslink}}]])",
+'userrights-editusergroup'    => 'Rediger brukergrupper',
+'saveusergroups'              => 'Lagre brukergrupper',
+'userrights-groupsmember'     => 'Medlem av:',
+'userrights-groups-help'      => 'Du kan endre hvilke grupper denne brukeren er medlem av.
 * En avkrysset boks betyr at brukeren er medlem av gruppen.
 * En uavkrysset boks betyr at brukeren ikke er medlem av gruppen.
 * En * betyr at du ikke kan fjerne gruppemedlemskapet når du har lagt det til, eller vice versa.',
-'userrights-reason'                => 'Endringsgrunn:',
-'userrights-available-none'        => 'Du kan ikke endre gruppemedlemsskaper.',
-'userrights-available-add'         => 'Du kan legge til brukere i {{PLURAL:$2|denne gruppa|disse gruppene}}: $1.',
-'userrights-available-remove'      => 'Du kan fjerne brukere fra {{PLURAL:$2|denne gruppa|disse gruppene}}: $1.',
-'userrights-available-add-self'    => 'Du kan legge deg selv inn i {{PLURAL:$2|denne gruppa|disse gruppene}}: $1',
-'userrights-available-remove-self' => 'Du kan fjerne deg selv fra {{PLURAL:$2|denne gruppa|disse gruppene}}: $1.',
-'userrights-no-interwiki'          => 'Du har ikke tillatelse til å endre brukerrettigheter på andre wikier.',
-'userrights-nodatabase'            => 'Databasen $1 finnes ikke, eller er ikke lokal.',
-'userrights-nologin'               => 'Du må [[Special:Userlogin|logge inn]] med en administratorkonto for å endre brukerrettigheter.',
-'userrights-notallowed'            => 'Kontoen din har ikke tillatelse til å endre brukerrettigheter.',
-'userrights-changeable-col'        => 'Grupper du kan endre',
-'userrights-unchangeable-col'      => 'Grupper du ikke kan endre',
+'userrights-reason'           => 'Endringsgrunn:',
+'userrights-no-interwiki'     => 'Du har ikke tillatelse til å endre brukerrettigheter på andre wikier.',
+'userrights-nodatabase'       => 'Databasen $1 finnes ikke, eller er ikke lokal.',
+'userrights-nologin'          => 'Du må [[Special:Userlogin|logge inn]] med en administratorkonto for å endre brukerrettigheter.',
+'userrights-notallowed'       => 'Kontoen din har ikke tillatelse til å endre brukerrettigheter.',
+'userrights-changeable-col'   => 'Grupper du kan endre',
+'userrights-unchangeable-col' => 'Grupper du ikke kan endre',
 
 # Groups
 'group'               => 'Gruppe:',
@@ -1029,12 +1026,12 @@ se math/README for oppsett.',
 'group-suppress'      => 'Sidefjernere',
 'group-all'           => '(alle)',
 
-'group-user-member'          => 'Bruker',
-'group-autoconfirmed-member' => 'Autobekreftet bruker',
+'group-user-member'          => 'bruker',
+'group-autoconfirmed-member' => 'autobekreftet bruker',
 'group-bot-member'           => 'robot',
 'group-sysop-member'         => 'administrator',
 'group-bureaucrat-member'    => 'byråkrat',
-'group-suppress-member'      => 'Sidefjerner',
+'group-suppress-member'      => 'revisjonsfjerner',
 
 'grouppage-user'          => '{{ns:project}}:Brukere',
 'grouppage-autoconfirmed' => '{{ns:project}}:Autobekreftede brukere',
@@ -1107,7 +1104,7 @@ se math/README for oppsett.',
 'recentchanges'                     => 'Siste endringer',
 'recentchangestext'                 => 'Vis de siste endringene til denne siden',
 'recentchanges-feed-description'    => 'Følg med på siste endringer i denne wikien med denne feed-en.',
-'rcnote'                            => "Nedenfor vises {{PLURAL:$1|én endring|de siste '''$1''' endringene}} fra de siste <strong>$2</strong> dagene, per $3.",
+'rcnote'                            => "Nedenfor vises {{PLURAL:$1|én endring|de siste '''$1''' endringene}} fra {{PLURAL:$2|det siste døgnet|de siste '''$2''' døgnene}} per $5 $4.",
 'rcnotefrom'                        => "Nedenfor er endringene fra '''$2''' til '''$1''' vist.",
 'rclistfrom'                        => 'Vis nye endringer med start fra $1',
 'rcshowhideminor'                   => '$1 mindre endringer',
@@ -1149,19 +1146,21 @@ Sider som også er på din [[Special:Watchlist|overvåkningsliste]] vises i '''f
 'upload_directory_missing'    => 'Oppplastingsmappen ($1) mangler og kunne ikke opprettes av tjeneren.',
 'upload_directory_read_only'  => 'Opplastingsmappa ($1) er ikke skrivbar for tjeneren.',
 'uploaderror'                 => 'Feil under opplasting av fil',
-'uploadtext'                  => "Bruk skjemaet under for å laste opp filer. For å se eller søke i tidligere opplastede filer, gå til [[Special:Imagelist|listen over filer]]. Opplastinger lagres også i [[Special:Log/upload|opplastingsloggen]].
+'uploadtext'                  => "Bruk skjemaet under for å laste opp filer.
+For å se eller søke i eksisterende filer, gå til [[Special:Imagelist|listen over filer]]. Opplastinger lagres også i [[Special:Log/upload|opplastingsloggen]].
 
 For å inkludere en fil på en side, bruk en slik lenke:
-*'''<nowiki>[[</nowiki>{{ns:image}}:Filnavn.jpg<nowiki>]]</nowiki>'''
-*'''<nowiki>[[</nowiki>{{ns:image}}:Filnavn.png|Alternativ tekst<nowiki>]]</nowiki>'''
+*'''<tt><nowiki>[[</nowiki>{{ns:image}}:Filnavn.jpg<nowiki>]]</nowiki></tt>'''
+*'''<tt><nowiki>[[</nowiki>{{ns:image}}:Filnavn.png|Alternativ tekst<nowiki>]]</nowiki></tt>'''
 For å lenke direkte til filen, skriv:
-*'''<nowiki>[[</nowiki>{{ns:media}}:Filnavn.ogg<nowiki>]]</nowiki>'''",
+*'''<tt><nowiki>[[</nowiki>{{ns:media}}:Filnavn.ogg<nowiki>]]</nowiki></tt>'''",
 'upload-permitted'            => 'Tillatte filtyper: $1.',
 'upload-preferred'            => 'Foretrukne filtyper: $1',
 'upload-prohibited'           => 'Forbudte filtyper: $1.',
 'uploadlog'                   => 'opplastingslogg',
 'uploadlogpage'               => 'Opplastingslogg',
-'uploadlogpagetext'           => 'Her er en liste over de siste opplastede filene.',
+'uploadlogpagetext'           => 'Her er en liste over de siste opplastede filene.
+Se [[Special:Newimages|galleriet over nye filer]] for en mer visuell visning',
 'filename'                    => 'Filnavn',
 'filedesc'                    => 'Beskrivelse',
 'fileuploadsummary'           => 'Beskrivelse:',
@@ -1174,8 +1173,10 @@ For å lenke direkte til filen, skriv:
 'illegalfilename'             => 'Filnavnet «$1» inneholder ugyldige tegn; gi fila et nytt navn og prøv igjen.',
 'badfilename'                 => 'Navnet på filen er blitt endret til «$1».',
 'filetype-badmime'            => 'Filer av typen «$1» kan ikke lastes opp.',
-'filetype-unwanted-type'      => "'''«.$1»''' er en uønsket filtype. Foretrukne filtyper er $2.",
-'filetype-banned-type'        => "'''«$1»''' er ikke en tillatt filtype. Foretrukne filtyper er $2.",
+'filetype-unwanted-type'      => "'''«.$1»''' er en uønsket filtype.
+{{PLURAL:$3|Foretrukken filtype|Foretrukne filtyper}} er $2.",
+'filetype-banned-type'        => "'''«$1»''' er ikke en tillatt filtype.
+{{PLURAL:$3|Tillatt filtype|Tillatte filtyper}} er $2.",
 'filetype-missing'            => 'Filen har ingen endelse (som «.jpg»).',
 'large-file'                  => 'Det er anbefalt at filen ikke er større enn $1; denne filen er $2.',
 'largefileserver'             => 'Denne fila er større enn det tjeneren er satt opp til å tillate.',
@@ -1230,9 +1231,11 @@ PICT # div.
 'upload-proto-error'      => 'Gal protokoll',
 'upload-proto-error-text' => 'Fjernopplasting behøver adresser som begynner med <code>http://</code> eller <code>ftp://</code>.',
 'upload-file-error'       => 'Intern feil',
-'upload-file-error-text'  => 'En intern feil oppsto under forsøk på å lage en midlertidig fil på tjeneren. Vennligst kontakt en systemadministrator.',
+'upload-file-error-text'  => 'En intern feil oppsto under forsøk på å lage en midlertidig fil på tjeneren. Vennligst kontakt en [[Special:Listusers/sysop|administrator]].',
 'upload-misc-error'       => 'Ukjent opplastingsfeil',
-'upload-misc-error-text'  => 'En ukjent feil forekom under opplastingen. Vennligst bekreft at adressen er gyldig og tilgjengelig, og prøv igjen. Om problemet fortsetter, kontakt en systemadministrator.',
+'upload-misc-error-text'  => 'En ukjent feil forekom under opplastingen.
+Bekreft at adressen er gyldig og tilgjengelig, og prøv igjen.
+Om problemet fortsetter, kontakt en [[Special:Listusers/sysop|administrator]].',
 
 # Some likely curl errors. More could be added from <http://curl.haxx.se/libcurl/c/libcurl-errors.html>
 'upload-curl-error6'       => 'Kunne ikke nå adressen',
@@ -1275,7 +1278,7 @@ PICT # div.
 'morelinkstoimage'               => 'Vis [[Special:Whatlinkshere/$1|flere lenker]] til denne filen.',
 'redirectstofile'                => 'Følgende {{PLURAL:$1|fil er en omdirigering|filer er omdirigeringer}} til denne filen:',
 'duplicatesoffile'               => 'Følgende {{PLURAL:$1|fil er en dublett|filer er dubletter}} av denne filen:',
-'sharedupload'                   => 'Denne fila deles av andre prosjekter.',
+'sharedupload'                   => 'Denne filen er en delt opplasting og kan brukes av andre prosjekter.',
 'shareduploadwiki'               => 'Se $1 for mer informasjon.',
 'shareduploadwiki-desc'          => 'Beskrivelsen som vist på dens $1 vises nedenfor.',
 'shareduploadwiki-linktext'      => 'filbeskrivelsesside',
@@ -1291,18 +1294,18 @@ PICT # div.
 # File reversion
 'filerevert'                => 'Tilbakestill $1',
 'filerevert-legend'         => 'Tilbakestill fil',
-'filerevert-intro'          => '<span class="plainlinks">Du tilbakestiller \'\'\'[[Media:$1|$1]]\'\'\' til [$4 versjonen à $2, $3].</span>',
+'filerevert-intro'          => "Du tilbakestiller '''[[Media:$1|$1]]''' til [$4 versjonen à $2, $3].",
 'filerevert-comment'        => 'Kommentar:',
 'filerevert-defaultcomment' => 'Tilbakestilte til versjonen à $1, $2',
 'filerevert-submit'         => 'Tilbakestill',
-'filerevert-success'        => '<span class="plainlinks">\'\'\'[[Media:$1|$1]]\'\'\' ble tilbakestilt til [$4 versjonen à $2, $3].</span>',
+'filerevert-success'        => "'''[[Media:$1|$1]]''' ble tilbakestilt til [$4 versjonen à $2, $3].",
 'filerevert-badversion'     => 'Det er ingen tidligere lokal versjon av denne filen med det gitte tidstrykket.',
 
 # File deletion
 'filedelete'                  => 'Slett $1',
 'filedelete-legend'           => 'Slett fil',
 'filedelete-intro'            => "Du sletter '''[[Media:$1|$1]]'''.",
-'filedelete-intro-old'        => '<span class="plainlinks">Du sletter versjonen av \'\'\'[[Media:$1|$1]]\'\'\' à [$4 $3, $2].</span>',
+'filedelete-intro-old'        => "Du sletter versjonen av '''[[Media:$1|$1]]''' à [$4 $3, $2].",
 'filedelete-comment'          => 'Slettingsårsak:',
 'filedelete-submit'           => 'Slett',
 'filedelete-success'          => "'''$1''' ble slettet.",
@@ -1358,10 +1361,14 @@ Det har vært totalt {{PLURAL:$3|'''én''' sidevisning|'''$3''' sidevisninger}},
 
 'disambiguations'      => 'Artikler med flertydige titler',
 'disambiguationspage'  => 'Template:Peker',
-'disambiguations-text' => "Følgende sider lenker til en '''pekerside'''. De burde i stedet lenke til en passende innholdsside.<br />En side anses om en pekerside om den inneholder en mal som det lenkes til fra [[MediaWiki:disambiguationspage]]",
+'disambiguations-text' => "Følgende sider lenker til en '''pekerside'''.
+De burde i stedet lenke til en passende innholdsside.<br />
+En side anses om en pekerside om den inneholder en mal som det lenkes til fra [[MediaWiki:Disambiguationspage]]",
 
-'doubleredirects'     => 'Doble omdirigeringer',
-'doubleredirectstext' => "'''NB:''' Denne listen kan inneholde gale resultater. Det er som regel fordi siden inneholder ekstra tekst under den første <tt>#redirect</tt>.<br />Hver linje inneholder lenker til den første og den andre omdirigeringen, og den første linjen fra den andre omdirigeringsteksten. Det gir som regel den «riktige» målartikkelen, som den første omdirigeringen skulle ha pekt på.",
+'doubleredirects'            => 'Doble omdirigeringer',
+'doubleredirectstext'        => "'''NB:''' Denne listen kan inneholde gale resultater. Det er som regel fordi siden inneholder ekstra tekst under den første <tt>#redirect</tt>.<br />Hver linje inneholder lenker til den første og den andre omdirigeringen, og den første linjen fra den andre omdirigeringsteksten. Det gir som regel den «riktige» målartikkelen, som den første omdirigeringen skulle ha pekt på.",
+'double-redirect-fixed-move' => '[[$1]] har blitt flyttet, og er nå en omdirigering til [[$2]]',
+'double-redirect-fixer'      => 'Omdirigeringsfikser',
 
 'brokenredirects'        => 'Brutte omdirigeringer',
 'brokenredirectstext'    => 'Følgende omdirigeringer peker til ikkeeksisterende sider.',
@@ -1475,19 +1482,25 @@ Det har vært totalt {{PLURAL:$3|'''én''' sidevisning|'''$3''' sidevisninger}},
 'listusers-noresult' => 'Ingen bruker funnet.',
 
 # Special:Listgrouprights
-'listgrouprights'          => 'Rettigheter for brukergrupper',
-'listgrouprights-summary'  => 'Følgende er en liste over brukergrupper som er definert på denne wikien, og hvilke rettigheter de har. Mer informasjon om de enkelte rettighetstypene kan finnes [[{{MediaWiki:Listgrouprights-helppage}}|her]].',
-'listgrouprights-group'    => 'Gruppe',
-'listgrouprights-rights'   => 'Rettigheter',
-'listgrouprights-helppage' => 'Help:Grupperettigheter',
-'listgrouprights-members'  => '(liste over medlemmer)',
+'listgrouprights'                 => 'Rettigheter for brukergrupper',
+'listgrouprights-summary'         => 'Følgende er en liste over brukergrupper som er definert på denne wikien, og hvilke rettigheter de har.
+Mer informasjon om de enkelte rettighetstypene kan finnes [[{{MediaWiki:Listgrouprights-helppage}}|her]].',
+'listgrouprights-group'           => 'Gruppe',
+'listgrouprights-rights'          => 'Rettigheter',
+'listgrouprights-helppage'        => 'Help:Grupperettigheter',
+'listgrouprights-members'         => '(liste over medlemmer)',
+'listgrouprights-addgroup'        => 'Kan legge til gruppene: $1',
+'listgrouprights-removegroup'     => 'Kan fjerne gruppene: $1',
+'listgrouprights-addgroup-all'    => 'Kan legge til alle grupper',
+'listgrouprights-removegroup-all' => 'Kan fjerne alle grupper',
 
 # E-mail user
 'mailnologin'     => 'Ingen avsenderadresse',
 'mailnologintext' => 'Du må være [[Special:Userlogin|logget inn]] og ha en gyldig e-postadresse satt i [[Special:Preferences|brukerinnstillingene]] for å sende e-post til andre brukere.',
 'emailuser'       => 'E-post til denne brukeren',
 'emailpage'       => 'E-post til bruker',
-'emailpagetext'   => 'Hvis denne brukeren har oppgitt en gyldig e-postadresse i sine innstillinger, vil dette skjemaet sende en enkelt beskjed. Den e-postadressen du har satt i innstillingene dine vil dukke opp i «fra»-feltet på denne e-posten, så mottakeren er i stand til å svare.',
+'emailpagetext'   => 'Hvis denne brukeren har oppgitt en gyldig e-postadresse i sine innstillinger, vil dette skjemaet sende en enkelt beskjed.
+Den e-postadressen du har satt i [[Special:Preferences|innstillingene dine]] vil dukke opp i «fra»-feltet på denne e-posten, så mottakeren er i stand til å svare.',
 'usermailererror' => 'E-postobjekt returnerte feilen:',
 'defemailsubject' => 'E-post fra {{SITENAME}}',
 'noemailtitle'    => 'Ingen e-postadresse',
@@ -1501,6 +1514,7 @@ Det har vært totalt {{PLURAL:$3|'''én''' sidevisning|'''$3''' sidevisninger}},
 'emailccsubject'  => 'Kopi av din beskjed til $1: $2',
 'emailsent'       => 'E-post sendt',
 'emailsenttext'   => 'E-postbeskjeden er sendt',
+'emailuserfooter' => 'E-posten ble sendt av $1 til $2 via «Send e-post»-funksjonen på {{SITENAME}}.',
 
 # Watchlist
 'watchlist'            => 'Overvåkningsliste',
@@ -1515,7 +1529,7 @@ Det har vært totalt {{PLURAL:$3|'''én''' sidevisning|'''$3''' sidevisninger}},
 
 Hvis du senere vil fjerne siden fra overvåkningslisten, klikk «Avslutt overvåkning» på den aktuelle siden.",
 'removedwatch'         => 'Fjernet fra overvåkningslisten',
-'removedwatchtext'     => 'Siden «[[:$1]]» er fjernet fra overvåkningslisten din.',
+'removedwatchtext'     => 'Siden «[[:$1]]» er fjernet fra [[Special:Watchlist|overvåkningslisten din]].',
 'watch'                => 'Overvåk',
 'watchthispage'        => 'Overvåk denne siden',
 'unwatch'              => 'Avslutt overvåkning',
@@ -1580,7 +1594,7 @@ Tilbakemeldinger og videre assistanse:
 'deletepage'                  => 'Slett side',
 'confirm'                     => 'Bekreft',
 'excontent'                   => 'Innholdet var: «$1»',
-'excontentauthor'             => 'innholdet var «$1» (og eneste bidragsyter var [[{{ns:special}}:Contributions/$2|$2]])',
+'excontentauthor'             => 'innholdet var «$1» (og eneste bidragsyter var [[Special:Contributions/$2|$2]])',
 'exbeforeblank'               => 'innholdet før siden ble tømt var: «$1»',
 'exblank'                     => 'siden var tom',
 'delete-confirm'              => 'Slett «$1»',
@@ -1603,14 +1617,16 @@ Tilbakemeldinger og videre assistanse:
 ** Opphavsrettsbrudd
 ** Vandalisme',
 'delete-edit-reasonlist'      => 'Rediger begrunnelser for sletting',
-'delete-toobig'               => 'Denne siden har en stor redigeringshistorikk, med over $1&nbsp;revisjoner. Muligheten til å slette slike sider er begrenset for å unngå utilsiktet forstyrring av {{SITENAME}}.',
-'delete-warning-toobig'       => 'Denne siden har en stor redigeringshistorikk, med over $1&nbsp;revisjoner. Sletting av denne siden kan forstyrre databasen til {{SITENAME}}; vær varsom.',
+'delete-toobig'               => 'Denne siden har en stor redigeringshistorikk, med over {{PLURAL:$1|$1&nbsp;revisjon|$1&nbsp;revisjoner}}. Muligheten til å slette slike sider er begrenset for å unngå utilsiktet forstyrring av {{SITENAME}}.',
+'delete-warning-toobig'       => 'Denne siden har en stor redigeringshistorikk, med over {{PLURAL:$1|$1&nbsp;revisjon|$1&nbsp;revisjoner}}. Sletting av denne siden kan forstyrre databasen til {{SITENAME}}; vær varsom.',
 'rollback'                    => 'Fjern redigeringer',
 'rollback_short'              => 'Tilbakestill',
 'rollbacklink'                => 'tilbakestill',
 'rollbackfailed'              => 'Kunne ikke tilbakestille',
 'cantrollback'                => 'Kan ikke fjerne redigering; den siste brukeren er den eneste forfatteren.',
-'alreadyrolled'               => 'Kan ikke fjerne den siste redigeringen på [[$1]] av [[User:$2|$2]] ([[User talk:$2|diskusjon]]); en annen har allerede redigert siden eller fjernet redigeringen. Den siste redigeringen er foretatt av [[User:$3|$3]] ([[User talk:$3|diskusjon]]).',
+'alreadyrolled'               => 'Kan ikke fjerne den siste redigeringen på [[$1]] av [[User:$2|$2]] ([[User talk:$2|diskusjon]] | [[Special:Contributions/$2|{{int:contribslink}}]]); en annen har allerede redigert siden eller fjernet redigeringen.
+
+Den siste redigeringen ble foretatt av [[User:$3|$3]] ([[User talk:$3|diskusjon]] | [[Special:Contributions/$3|{{int:contribslink}}]]).',
 'editcomment'                 => "Redigeringskommentaren var: «''$1''»", # only shown if there is an edit comment
 'revertpage'                  => 'Tilbakestilte endring av [[Special:Contributions/$2|$2]] ([[User talk:$2|diskusjon]]) til siste versjon av [[User:$1|$1]]', # Additional available: $3: revid of the revision reverted to, $4: timestamp of the revision reverted to, $5: revid of the revision reverted from, $6: timestamp of the revision reverted from
 'rollback-success'            => 'Tilbakestilte endringer av $1; endret til siste versjon av $2.',
@@ -1663,6 +1679,7 @@ Tilbakemeldinger og videre assistanse:
 'undeletepagetitle'            => "'''Følgende innhold er slettede revisjoner av [[:$1]].'''",
 'viewdeletedpage'              => 'Vis slettede sider',
 'undeletepagetext'             => 'Følgende sider er slettet, men finnes fortsatt i arkivet og kan gjenopprettes. Arkivet blir periodevis slettet.',
+'undelete-fieldset-title'      => 'Gjenopprett revisjoner',
 'undeleteextrahelp'            => "For å gjenopprette hele siden, la alle boksene være som de er, og klikk '''Gjenopprett'''. For å gjenopprette kun deler, kryss av revisjonenes bokser, og klikk '''Gjenopprett'''.",
 'undeleterevisions'            => '{{PLURAL:$1|Én versjon arkivert|$1 versjoner arkiverte}}',
 'undeletehistory'              => 'Om du gjenoppretter siden vil alle revisjoner gjenopprettes i historikken. Dersom en ny side ved samme navn har blitt oprettet etter slettingen, vil de gjenopprettede revisjonene dukke opp før denne i redigeringshistorikken. Merk også at restriksjoner på filrevisjoner mistes ved gjenoppretting.',
@@ -1739,15 +1756,15 @@ $1',
 'whatlinkshere-filters'    => 'Filtere',
 
 # Block/unblock
-'blockip'                     => 'Blokker bruker',
-'blockip-legend'              => 'Blokker bruker',
-'blockiptext'                 => 'Bruk skjemaet under for å blokkere en IP-adresses tilgang til å redigere artikler. Dette må kun gjøres for å forhindre hærverk, og i overensstemmelse med [[{{MediaWiki:Policy-url}}|retningslinjene]]. Fyll ut en spesiell begrunnelse under.',
-'ipaddress'                   => 'IP-adresse',
-'ipadressorusername'          => 'IP-adresse eller brukernavn',
-'ipbexpiry'                   => 'Varighet:',
-'ipbreason'                   => 'Årsak:',
-'ipbreasonotherlist'          => 'Annen grunn',
-'ipbreason-dropdown'          => '*Vanlige blokkeringsgrunner
+'blockip'                         => 'Blokker bruker',
+'blockip-legend'                  => 'Blokker bruker',
+'blockiptext'                     => 'Bruk skjemaet under for å blokkere en IP-adresses tilgang til å redigere artikler. Dette må kun gjøres for å forhindre hærverk, og i overensstemmelse med [[{{MediaWiki:Policy-url}}|retningslinjene]]. Fyll ut en spesiell begrunnelse under.',
+'ipaddress'                       => 'IP-adresse',
+'ipadressorusername'              => 'IP-adresse eller brukernavn',
+'ipbexpiry'                       => 'Varighet:',
+'ipbreason'                       => 'Årsak:',
+'ipbreasonotherlist'              => 'Annen grunn',
+'ipbreason-dropdown'              => '*Vanlige blokkeringsgrunner
 ** Legger inn feilinformasjon
 ** Fjerner innhold fra sider
 ** Lenkespam
@@ -1755,69 +1772,70 @@ $1',
 ** Truende oppførsel
 ** Misbruk av flere kontoer
 ** Uakseptabelt brukernavn',
-'ipbanononly'                 => 'Blokker kun anonyme brukere',
-'ipbcreateaccount'            => 'Hindre kontoopprettelse',
-'ipbemailban'                 => 'Forhindre brukeren fra å sende e-post',
-'ipbenableautoblock'          => 'Blokker forrige IP-adresse brukt av denne brukeren automatisk, samt alle IP-adresser brukeren forsøker å redigere med i framtiden',
-'ipbsubmit'                   => 'Blokker denne brukeren',
-'ipbother'                    => 'Annen tid',
-'ipboptions'                  => '2 timer:2 hours,1 dag:1 day,3 dager:3 days,1 uke:1 week,2 uker:2 weeks,1 måned:1 month,3 måneder:3 months,6 måneder:6 months,1 år:1 year,uendelig:infinite', # display1:time1,display2:time2,...
-'ipbotheroption'              => 'annet',
-'ipbotherreason'              => 'Annen/utdypende grunn:',
-'ipbhidename'                 => 'Skjul brukernavn i blokkeringsloggen, blokkeringslisten og brukerlisten',
-'ipbwatchuser'                => 'Overvåk brukerens brukerside og diskusjonsside',
-'badipaddress'                => 'Ugyldig IP-adresse.',
-'blockipsuccesssub'           => 'Blokkering utført',
-'blockipsuccesstext'          => 'IP-adressen «$1» er blokkert. Se [[Special:Ipblocklist|blokkeringslisten]] for alle blokkeringer.',
-'ipb-edit-dropdown'           => 'Rediger blokkeringsgrunner',
-'ipb-unblock-addr'            => 'Avblokker $1',
-'ipb-unblock'                 => 'Avblokker et brukernavn eller en IP-adresse',
-'ipb-blocklist-addr'          => 'Vis gjeldende blokkeringer for $1',
-'ipb-blocklist'               => 'Vis gjeldende blokkeringer',
-'unblockip'                   => 'Opphev blokkering',
-'unblockiptext'               => 'Bruk skjemaet under for å gjenopprette skriveadgangen for en tidligere blokkert adresse eller bruker.',
-'ipusubmit'                   => 'Opphev blokkeringen av denne adressen',
-'unblocked'                   => '[[User:$1|$1]] ble avblokkert',
-'unblocked-id'                => 'Blokkering $1 ble fjernet',
-'ipblocklist'                 => 'Liste over blokkerte IP-adresser og brukere',
-'ipblocklist-legend'          => 'Finn en blokkert bruker',
-'ipblocklist-username'        => 'Brukernavn eller IP-adresse:',
-'ipblocklist-submit'          => 'Søk',
-'blocklistline'               => '$1, $2 blokkerte $3 ($4)',
-'infiniteblock'               => 'uendelig',
-'expiringblock'               => 'utgår $1',
-'anononlyblock'               => 'kun uregistrerte',
-'noautoblockblock'            => 'autoblokkering slått av',
-'createaccountblock'          => 'kontooppretting blokkert',
-'emailblock'                  => 'e-post blokkert',
-'ipblocklist-empty'           => 'Blokkeringslisten er tom.',
-'ipblocklist-no-results'      => 'Den angitte IP-adressen eller brukeren er ikke blokkert.',
-'blocklink'                   => 'blokker',
-'unblocklink'                 => 'opphev blokkering',
-'contribslink'                => 'bidrag',
-'autoblocker'                 => 'Du ble automatisk blokkert fordi du deler IP-adresse med «[[User:$1|$1]]». Grunnen som ble gitt til at «$1» ble blokkert var: «$2».',
-'blocklogpage'                => 'Blokkeringslogg',
-'blocklogentry'               => 'blokkerte «[[$1]]» med en varighet på $2 $3',
-'blocklogtext'                => 'Dette er en logg som viser hvilke brukere som har blitt blokkert og avblokkert. Automatisk blokkerte IP-adresser vises ikke. Se [[Special:Ipblocklist|blokkeringslisten]] for en liste over IP-adresser som er blokkert akkurat nå.',
-'unblocklogentry'             => 'opphevet blokkeringen av $1',
-'block-log-flags-anononly'    => 'kun uregistrerte brukere',
-'block-log-flags-nocreate'    => 'kontooppretting slått av',
-'block-log-flags-noautoblock' => 'autoblokkering slått av',
-'block-log-flags-noemail'     => 'e-post blokkert',
-'range_block_disabled'        => 'Muligheten til å blokkere flere IP-adresser om gangen er slått av.',
-'ipb_expiry_invalid'          => 'Ugyldig utløpstid.',
-'ipb_expiry_temp'             => 'For å skjule brukernavnet må blokkeringen være permanent.',
-'ipb_already_blocked'         => '«$1» er allerede blokkert',
-'ipb_cant_unblock'            => 'Feil: Blokk-ID $1 ikke funnet. Kan ha blitt avblokkert allerede.',
-'ipb_blocked_as_range'        => 'Feil: IP-en $1 er ikke blokkert direkte, og kan ikke avblokkeres. Den er imidlertid blokkert som del av blokkeringa av IP-rangen $2, som kan avblokkeres.',
-'ip_range_invalid'            => 'Ugyldig IP-rad.',
-'blockme'                     => 'Blokker meg',
-'proxyblocker'                => 'Proxyblokker',
-'proxyblocker-disabled'       => 'Denne funksjonen er slått av.',
-'proxyblockreason'            => 'IP-adressen din ble blokkert fordi den er en åpen proxy. Kontakt internettleverandøren din eller teknisk støtte og informer dem om dette alvorlige sikkerhetsproblemet.',
-'proxyblocksuccess'           => 'Utført.',
-'sorbsreason'                 => 'Din IP-adresse angis som en åpen proxy i DNSBL-en brukt av {{SITENAME}}.',
-'sorbs_create_account_reason' => 'Din IP-adresse angis som en åpen proxy i DNSBL-en brukt av {{SITENAME}}. Du kan ikke opprette en konto',
+'ipbanononly'                     => 'Blokker kun anonyme brukere',
+'ipbcreateaccount'                => 'Hindre kontoopprettelse',
+'ipbemailban'                     => 'Forhindre brukeren fra å sende e-post',
+'ipbenableautoblock'              => 'Blokker forrige IP-adresse brukt av denne brukeren automatisk, samt alle IP-adresser brukeren forsøker å redigere med i framtiden',
+'ipbsubmit'                       => 'Blokker denne brukeren',
+'ipbother'                        => 'Annen tid',
+'ipboptions'                      => '2 timer:2 hours,1 dag:1 day,3 dager:3 days,1 uke:1 week,2 uker:2 weeks,1 måned:1 month,3 måneder:3 months,6 måneder:6 months,1 år:1 year,uendelig:infinite', # display1:time1,display2:time2,...
+'ipbotheroption'                  => 'annet',
+'ipbotherreason'                  => 'Annen/utdypende grunn:',
+'ipbhidename'                     => 'Skjul brukernavn i blokkeringsloggen, blokkeringslisten og brukerlisten',
+'ipbwatchuser'                    => 'Overvåk brukerens brukerside og diskusjonsside',
+'badipaddress'                    => 'Ugyldig IP-adresse.',
+'blockipsuccesssub'               => 'Blokkering utført',
+'blockipsuccesstext'              => 'IP-adressen «$1» er blokkert. Se [[Special:Ipblocklist|blokkeringslisten]] for alle blokkeringer.',
+'ipb-edit-dropdown'               => 'Rediger blokkeringsgrunner',
+'ipb-unblock-addr'                => 'Avblokker $1',
+'ipb-unblock'                     => 'Avblokker et brukernavn eller en IP-adresse',
+'ipb-blocklist-addr'              => 'Vis gjeldende blokkeringer for $1',
+'ipb-blocklist'                   => 'Vis gjeldende blokkeringer',
+'unblockip'                       => 'Opphev blokkering',
+'unblockiptext'                   => 'Bruk skjemaet under for å gjenopprette skriveadgangen for en tidligere blokkert adresse eller bruker.',
+'ipusubmit'                       => 'Opphev blokkeringen av denne adressen',
+'unblocked'                       => '[[User:$1|$1]] ble avblokkert',
+'unblocked-id'                    => 'Blokkering $1 ble fjernet',
+'ipblocklist'                     => 'Liste over blokkerte IP-adresser og brukere',
+'ipblocklist-legend'              => 'Finn en blokkert bruker',
+'ipblocklist-username'            => 'Brukernavn eller IP-adresse:',
+'ipblocklist-submit'              => 'Søk',
+'blocklistline'                   => '$1, $2 blokkerte $3 ($4)',
+'infiniteblock'                   => 'uendelig',
+'expiringblock'                   => 'utgår $1',
+'anononlyblock'                   => 'kun uregistrerte',
+'noautoblockblock'                => 'autoblokkering slått av',
+'createaccountblock'              => 'kontooppretting blokkert',
+'emailblock'                      => 'e-post blokkert',
+'ipblocklist-empty'               => 'Blokkeringslisten er tom.',
+'ipblocklist-no-results'          => 'Den angitte IP-adressen eller brukeren er ikke blokkert.',
+'blocklink'                       => 'blokker',
+'unblocklink'                     => 'opphev blokkering',
+'contribslink'                    => 'bidrag',
+'autoblocker'                     => 'Du ble automatisk blokkert fordi du deler IP-adresse med «[[User:$1|$1]]». Grunnen som ble gitt til at «$1» ble blokkert var: «$2».',
+'blocklogpage'                    => 'Blokkeringslogg',
+'blocklogentry'                   => 'blokkerte «[[$1]]» med en varighet på $2 $3',
+'blocklogtext'                    => 'Dette er en logg som viser hvilke brukere som har blitt blokkert og avblokkert. Automatisk blokkerte IP-adresser vises ikke. Se [[Special:Ipblocklist|blokkeringslisten]] for en liste over IP-adresser som er blokkert akkurat nå.',
+'unblocklogentry'                 => 'opphevet blokkeringen av $1',
+'block-log-flags-anononly'        => 'kun uregistrerte brukere',
+'block-log-flags-nocreate'        => 'kontooppretting slått av',
+'block-log-flags-noautoblock'     => 'autoblokkering slått av',
+'block-log-flags-noemail'         => 'e-post blokkert',
+'block-log-flags-angry-autoblock' => 'utvidet autoblokkering aktivert',
+'range_block_disabled'            => 'Muligheten til å blokkere flere IP-adresser om gangen er slått av.',
+'ipb_expiry_invalid'              => 'Ugyldig utløpstid.',
+'ipb_expiry_temp'                 => 'For å skjule brukernavnet må blokkeringen være permanent.',
+'ipb_already_blocked'             => '«$1» er allerede blokkert',
+'ipb_cant_unblock'                => 'Feil: Blokk-ID $1 ikke funnet. Kan ha blitt avblokkert allerede.',
+'ipb_blocked_as_range'            => 'Feil: IP-en $1 er ikke blokkert direkte, og kan ikke avblokkeres. Den er imidlertid blokkert som del av blokkeringa av IP-rangen $2, som kan avblokkeres.',
+'ip_range_invalid'                => 'Ugyldig IP-rad.',
+'blockme'                         => 'Blokker meg',
+'proxyblocker'                    => 'Proxyblokker',
+'proxyblocker-disabled'           => 'Denne funksjonen er slått av.',
+'proxyblockreason'                => 'IP-adressen din ble blokkert fordi den er en åpen proxy. Kontakt internettleverandøren din eller teknisk støtte og informer dem om dette alvorlige sikkerhetsproblemet.',
+'proxyblocksuccess'               => 'Utført.',
+'sorbsreason'                     => 'Din IP-adresse angis som en åpen proxy i DNSBL-en brukt av {{SITENAME}}.',
+'sorbs_create_account_reason'     => 'Din IP-adresse angis som en åpen proxy i DNSBL-en brukt av {{SITENAME}}. Du kan ikke opprette en konto',
 
 # Developer tools
 'lockdb'              => 'Lås database',
@@ -1848,8 +1866,9 @@ Bekreft at du har til hensikt å gjøre dette.',
 'move-page-legend'        => 'Flytt side',
 'movepagetext'            => "Når du bruker skjemaet under, vil du få omdøpt en side og flyttet hele historikken til det nye navnet.
 Den gamle tittelen blir en omdirigeringsside til den nye tittelen.
-Lenker til den gamle tittelen blir ikke endret.
-Eventuelle omdirigeringer blir brutt.
+Du kan oppdatere omdirigeringer som peker til den originale tittelen automatisk.
+Om du velger å ikke gjøre det, sjekk at flyttingen ikke skaper noen [[Special:Doubleredirects|doble]] eller [[Special:Brokenredirects|ødelagte omdirigeringer]].
+Du er ansvarlig for at lenker fortsetter å peke til de sidene de er ment å peke til.
 
 Legg merke til at siden '''ikke''' kan flyttes hvis det allerede finnes en side med den nye tittelen, med mindre den siden er tom eller er en omdirigering uten noen historikk.
 Det betyr at du kan flytte en side tilbake dit den kom fra hvis du gjør en feil.
@@ -1863,8 +1882,6 @@ vær sikker på at du forstår konsekvensene av dette før du fortsetter.",
 
 I disse tilfellene er du nødt til å flytte eller flette sammen siden manuelt.",
 'movearticle'             => 'Flytt side:',
-'movenologin'             => 'Ikke logget inn',
-'movenologintext'         => 'Du må være registrert bruker og være [[Special:Userlogin|logget på]] for å flytte en side.',
 'movenotallowed'          => 'Du har ikke tillatelse til å flytte sider på {{SITENAME}}.',
 'newtitle'                => 'Ny tittel',
 'move-watch'              => 'Overvåk denne siden',
@@ -1897,12 +1914,17 @@ Målsiden «[[$1]]» finnes allerede. Vil du slette den så denne siden kan flyt
 'immobile_namespace'      => 'Sider kan ikke flyttes til dette navnerommet.',
 'imagenocrossnamespace'   => 'Kan ikke flytte bilder til andre navnerom enn bildenavnerommet',
 'imagetypemismatch'       => 'Den nye filendelsen tilsvarer ikke filtypen',
+'imageinvalidfilename'    => 'Målnavnet er ugyldig',
+'fix-double-redirects'    => 'Oppdater omdirigeringer som fører til den gamle tittelen',
 
 # Export
 'export'            => 'Eksportsider',
-'exporttext'        => 'Du kan eksportere teksten og redigeringshistorikken for en bestemt side eller en gruppe sider i XML. Dette kan senere importeres til en annen wiki som bruker MediaWiki ved hjelp av [[Special:Import]].
+'exporttext'        => 'Du kan eksportere teksten og redigeringshistorikken for en bestemt side eller en gruppe sider i XML.
+Dette kan senere importeres til en annen wiki som bruker MediaWiki ved hjelp av [[Special:Import|importsiden]].
 
-For å eksportere sider, skriv inn titler i tekstboksen under, én tittel per linje, og velg om du vil ha kun nåværende versjon, eller alle versjoner i historikken. Dersom du bare vil ha nåværende versjon, kan du også bruke en lenke, for eksempel [[Special:Export/{{Mediawiki:Mainpage}}]] for siden «{{Mediawiki:Mainpage}}».',
+For å eksportere sider, skriv inn titler i tekstboksen under, én tittel per linje, og velg om du vil ha kun nåværende versjon, eller alle versjoner i historikken.
+
+Dersom du bare vil ha nåværende versjon, kan du også bruke en lenke, for eksempel [[{{ns:special}}:Export/{{MediaWiki:Mainpage}}]] for siden «[[{{MediaWiki:Mainpage}}]]».',
 'exportcuronly'     => 'Ta bare med den nåværende versjonen, ikke hele historikken.',
 'exportnohistory'   => "----
 '''Merk:''' Eksportering av hele historikken gjennom dette skjemaet har blitt slått av av ytelsesgrunner.",
@@ -1939,7 +1961,7 @@ Besøk [http://translatewiki.net Betawiki] om du ønsker å bidra med oversettel
 'import-interwiki-history'   => 'Kopier all historikk for denne siden',
 'import-interwiki-submit'    => 'Importer',
 'import-interwiki-namespace' => 'Flytt sidene til navnerommet:',
-'importtext'                 => 'Importer fila fra kildewikien med Special:Export-verktøyet, lagre den på den egen datamaskin, og last den opp hit.',
+'importtext'                 => 'Importer fila fra kildewikien med [[Special:Export|eksporteringsverktøyet]], lagre den på den egen datamaskin, og last den opp hit.',
 'importstart'                => 'Importerer sider&nbsp;…',
 'import-revision-count'      => '({{PLURAL:$1|Én revisjon|$1 revisjoner}})',
 'importnopages'              => 'Ingen sider å importere.',
@@ -2001,7 +2023,6 @@ Besøk [http://translatewiki.net Betawiki] om du ønsker å bidra med oversettel
 'tooltip-n-recentchanges'         => 'Liste over siste endringer på wikien.',
 'tooltip-n-randompage'            => 'Gå inn på en tilfeldig side',
 'tooltip-n-help'                  => 'Stedet for å få hjelp.',
-'tooltip-n-sitesupport'           => 'Støtt oss',
 'tooltip-t-whatlinkshere'         => 'Liste over alle sider som lenker hit',
 'tooltip-t-recentchangeslinked'   => 'Siste endringer i sider som blir lenket fra denne siden',
 'tooltip-feed-rss'                => 'RSS-kilde for denne siden',
@@ -2037,7 +2058,7 @@ Besøk [http://translatewiki.net Betawiki] om du ønsker å bidra med oversettel
 
 # Scripts
 'common.js'   => '/* All JavaScript i denne fila vil bli lastet for alle brukere på hver side. */',
-'monobook.js' => '/* Foreldet; bruk [[MediaWiki:common.js]] */',
+'monobook.js' => '/* Javascript herfra lastes for brukere som bruker utseendet Monobook */',
 
 # Metadata
 'nodublincore'      => 'Dublin Core RDF-metadata er slått av på denne tjeneren.',
@@ -2090,9 +2111,10 @@ Besøk [http://translatewiki.net Betawiki] om du ønsker å bidra med oversettel
 'markedaspatrollederror-noautopatrol' => 'Du kan ikke merke dine egne endringer som godkjente.',
 
 # Patrol log
-'patrol-log-page' => 'Godkjenningslogg',
-'patrol-log-line' => 'merket $1 av $2 godkjent $3',
-'patrol-log-auto' => '(automatisk)',
+'patrol-log-page'   => 'Godkjenningslogg',
+'patrol-log-header' => 'Dette er en logg over patruljerte sideversjoner.',
+'patrol-log-line'   => 'merket $1 av $2 godkjent $3',
+'patrol-log-auto'   => '(automatisk)',
 
 # Image deletion
 'deletedrevision'                 => 'Slettet gammel revisjon $1.',
@@ -2625,5 +2647,9 @@ Skriv inn filnavn uten «{{ns:image}}:»-prefikset.',
 'specialpages-group-wiki'        => 'Informasjon og verktøy for wikien',
 'specialpages-group-redirects'   => 'Omdirigerende spesialsider',
 'specialpages-group-spam'        => 'Spamverktøy',
+
+# Special:Blankpage
+'blankpage'              => 'Tom side',
+'intentionallyblankpage' => 'Denne siden er tom med vilje',
 
 );

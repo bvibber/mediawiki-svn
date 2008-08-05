@@ -4,8 +4,6 @@
  * @ingroup Language
  * @file
  *
- * @author SPQRobin
- * @author M.M.S.
  */
 
 $messages = array(
@@ -94,7 +92,6 @@ $messages = array(
 'portal-url'           => 'Project:qaggiq',
 'privacy'              => 'namminiq pilirivviqauqtunut aulataujut atuagaq, pinasuarniq',
 'privacypage'          => 'Project:namminiq pilirivviqauqtunut aulataujut atuagaq, pinasuarniq',
-'sitesupport'          => 'tunniqkusiat kiinaujait',
 
 'youhavenewmessages'  => 'ilissu pigivaa $1 ($2).',
 'newmessageslink'     => 'pigivuk kiggapaa',

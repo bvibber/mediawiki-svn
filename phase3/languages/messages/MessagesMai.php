@@ -5,8 +5,6 @@
  * @file
  *
  * @author Ggajendra
- * @author Siebrand
- * @author SPQRobin
  */
 
 $fallback = 'hi';
@@ -15,10 +13,14 @@ $messages = array(
 # User preference toggles
 'tog-underline'           => 'लिंककेँ रेखांकित करू:',
 'tog-highlightbroken'     => 'टूटल श्रृंखला <a href="" class="new">एना देखाऊ</a> (आकि फेर: एना देखाऊ<a href="" class="internal">?</a>).',
+'tog-justify'             => 'सुगढ़ बनाऊ',
 'tog-hideminor'           => 'सन्निकट परिवर्त्तनमे छोट परिवर्त्तन नुकाऊ',
+'tog-extendwatchlist'     => 'ध्यानसूचीमे सभ परिवर्तन देखाऊ',
 'tog-usenewrc'            => 'बढ़ल सन्निकट परिवर्त्तन (जावास्क्रीप्ट)',
+'tog-numberheadings'      => 'शीर्षक स्वयं-क्रमांकित करू',
 'tog-showtoolbar'         => 'संपादन ओजारपेटी देखाऊ (जावास्क्रीप्ट)',
-'tog-editsection'         => '[संपादित करू] श्रृंखक़्ला द्वारा विभाग संपादनक आज्ञा दिअ',
+'tog-editondblclick'      => 'दू बेर क्लीक कए पन्ना संपादित करू (जावास्क्रीप्ट)',
+'tog-editsection'         => '[संपादित करू] श्रृंखला द्वारा विभाग संपादनक आज्ञा दिअ',
 'tog-showtoc'             => 'अनुक्रम देखाऊ (जाहि पृष्ठ पर तीनसँ बेशी विभाग होए)',
 'tog-editwidth'           => 'सँपादन पेटी पूर्ण चौरस देखाऊ',
 'tog-watchdefault'        => 'हमर संपादित पृष्ठ हमर साकांक्ष सूचीमे देखाऊ',
@@ -124,8 +126,9 @@ $messages = array(
 'site-atom-feed'  => '$1 अणु फीड',
 
 # Login and logout pages
-'userlogin'  => 'लॉग इन / खेसरा बनाऊ',
-'userlogout' => 'फेर आयब',
+'nav-login-createaccount' => 'सदस्य लॉग इन',
+'userlogin'               => 'लॉग इन / खेसरा बनाऊ',
+'userlogout'              => 'फेर आयब',
 
 # Edit page toolbar
 'bold_sample'     => 'गँहीर लेखन',
@@ -134,7 +137,7 @@ $messages = array(
 'italic_tip'      => 'क़टि लेखन',
 'link_sample'     => 'लिंक उपाधि',
 'link_tip'        => 'अंतरंग इशारा',
-'extlink_sample'  => 'http://www.उदाहरण.com लिंक उपाधि',
+'extlink_sample'  => 'http://www.example.com लिंक उपाधि',
 'extlink_tip'     => 'बहरी लिंक (यादि राखू http:// उपसर्ग)',
 'headline_sample' => 'मुख्यपंक्ति लेखन',
 'headline_tip'    => 'स्तर 2 मुख्यपंक्ति',
@@ -158,6 +161,7 @@ $messages = array(
 एतय अहाँ ईहो सप्पत खाइत छी जी ई अहाँक अपन रचना छी आकि अहाँ एकरा कोनो सार्वजनिक डोमेन किंवा ओह्ने कोनो मँगनीक संदर्भ-स्थलसँ कॉपी कएने छी। 
 < दृढ़> सर्वाधिकार सुरक्षित कार्य एतय नहि दी।!</दृढ़>',
 'templatesusedpreview' => 'एहि पूर्वप्रदर्शनमे प्रयुक्त मास्टरफाइल:',
+'template-protected'   => '(सुरक्षित)',
 
 # History pages
 'revisionasof'     => 'अंतिम परिवर्त्तन  $1',
@@ -170,7 +174,8 @@ $messages = array(
 'editundo' => 'असंपादन',
 
 # Search results
-'powersearch' => 'त्वरित खोज',
+'noexactmatch' => "'''\"\$1\" नामसँ कोनो लेख नहि अछि।''' अहाँ ई लेख [[:\$1|बना सकैत छी]]।",
+'powersearch'  => 'त्वरित खोज',
 
 # Preferences page
 'preferences'   => 'विकल्प',
@@ -178,7 +183,7 @@ $messages = array(
 
 # Recent changes
 'nchanges'        => '$1 {{PLURAL:$1|परिवर्त्तन|परिवर्त्तन}}',
-'rcnote'          => "नीचाँ {{PLURAL:$1|अछि '''1''' परिवर्त्तन|अंतिम अछि '''$1''' परिवर्त्तन}} अंतमे {{PLURAL:$2|दिन|'''$2''' दिन}}, केँ $3.",
+'rcnote'          => "नीचाँ $3 तक पहिलुका {{PLURAL:$2|'''१''' दिनमे भेल|'''$2''' दिनमे भेल}} अंतिम $1 बदलाव {{PLURAL:$1|देल अछि|देल अछि}}।",
 'rcshowhideminor' => '$1 अल्प संपादन',
 'rclinks'         => 'देखाऊ अंतिम $1 परिवर्त्तन अंतिम $2 दिनमे<br />$3',
 'diff'            => 'अंतर',
@@ -189,7 +194,8 @@ $messages = array(
 'boteditletter'   => 'ब',
 
 # Recent changes linked
-'recentchangeslinked' => 'संबंधित परिवर्त्तन',
+'recentchangeslinked'       => 'संबंधित परिवर्त्तन',
+'recentchangeslinked-title' => '"$1" मे भेल परिवर्तन',
 
 # Upload
 'upload'        => 'फाइल अपलोड करू',
@@ -266,7 +272,6 @@ $messages = array(
 'tooltip-n-recentchanges' => 'विकीमे लगक परिवर्त्तनक सूची.',
 'tooltip-n-randompage'    => 'कोनो अनिर्धारित पन्ना लोड करू',
 'tooltip-n-help'          => 'प्राप्त करबाक स्थान.',
-'tooltip-n-sitesupport'   => 'हमरा सभकेँ सहयोग करू',
 'tooltip-t-whatlinkshere' => 'सभटा विकी-पन्नाक सूची जकर एतय लिंक अछि',
 'tooltip-t-upload'        => 'चित्र आकि मीडिया फाइलकेँ अपलोड करू',
 'tooltip-t-specialpages'  => 'सभटा विशेष पन्नाक सूची',

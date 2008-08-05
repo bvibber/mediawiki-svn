@@ -38,8 +38,6 @@ $messages = array(
 'underline-never'   => '从来弗',
 'underline-default' => '浏览器默认',
 
-'skinpreview' => '(预览)',
-
 # Dates
 'sunday'        => '星期天',
 'monday'        => '星期一',
@@ -93,14 +91,14 @@ $messages = array(
 'dec'           => '12月',
 
 # Categories related messages
-'pagecategories'                => '$1个分类',
+'pagecategories'                => '个分类',
 'category_header'               => '“$1”分类中个页面',
 'subcategories'                 => '亚类',
 'category-media-header'         => '"$1"分类中个媒体',
 'category-empty'                => "''该个分类中尚未包含任何文章或媒体。''",
-'hidden-categories'             => '$1个囥脱分类',
+'hidden-categories'             => '个囥脱分类',
 'hidden-category-category'      => '囥脱分类', # Name of the category where hidden categories will be listed
-'category-subcat-count-limited' => '该个分类中有$1个亚类。',
+'category-subcat-count-limited' => '该个分类中有个亚类。',
 
 'mainpagetext'      => "<big>'''已成功安装MediaWiki！'''</big>",
 'mainpagedocfooter' => '请访问[http://meta.wikimedia.org/wiki/Help:Contents 用户手册]以获得使用此维基软件的信息！
@@ -144,7 +142,7 @@ $messages = array(
 'editthispage'      => '编辑此页',
 'delete'            => '删除',
 'deletethispage'    => '删除此页',
-'undelete_short'    => '反删除$1项修订',
+'undelete_short'    => '反删除项修订',
 'protect'           => '保护',
 'protect_change'    => '更改保护',
 'protectthispage'   => '保护此页',
@@ -194,8 +192,6 @@ $messages = array(
 'portal-url'           => 'Project:社区门荡',
 'privacy'              => '隐私政策',
 'privacypage'          => 'Project:隐私政策',
-'sitesupport'          => '捐款',
-'sitesupport-url'      => 'Project:捐款',
 
 'ok'                      => '确定',
 'retrievedfrom'           => '取自“$1”',
@@ -211,7 +207,7 @@ $messages = array(
 'hidetoc'                 => '隐藏',
 'thisisdeleted'           => '查看或者恢复$1？',
 'viewdeleted'             => '望望$1看？',
-'restorelink'             => '$1个被删除个版本',
+'restorelink'             => '个被删除个版本',
 'site-rss-feed'           => '$1的RSS订阅',
 'site-atom-feed'          => '$1的Atom订阅',
 
@@ -371,6 +367,7 @@ $messages = array(
 'qbsettings-none'       => '呒',
 'changepassword'        => '改密码',
 'skin'                  => '皮肤',
+'skin-preview'          => '预览',
 'math'                  => '数学公式',
 'datedefault'           => '呒拨偏好',
 'datetime'              => '日脚搭仔辰光',
@@ -624,7 +621,7 @@ $messages = array(
 'rollback_short'  => '恢复',
 'rollbacklink'    => '恢复',
 'rollbackfailed'  => '恢复失败',
-'revertpage'      => '恢复[[Special:Contributions/$2|$2]] ([[User_talk:$2|讲张]])个改动；恢复到[[User:$1|$1]]个上一版本', # Additional available: $3: revid of the revision reverted to, $4: timestamp of the revision reverted to, $5: revid of the revision reverted from, $6: timestamp of the revision reverted from
+'revertpage'      => '恢复[[Special:Contributions/$2|$2]] ([[User talk:$2|讲张]])个改动；恢复到[[User:$1|$1]]个上一版本', # Additional available: $3: revid of the revision reverted to, $4: timestamp of the revision reverted to, $5: revid of the revision reverted from, $6: timestamp of the revision reverted from
 'protectlogpage'  => '保护日志',
 'protectcomment'  => '保护理由:',
 'protect-default' => '(默认)',
@@ -685,8 +682,6 @@ $messages = array(
 个作兴会引起对一只热门页面剧烈个、想弗着个改变。
 来操作前头请倷确定倷已经充分了解个能做法个后果。",
 'movearticle'             => '页面捅荡:',
-'movenologin'             => '朆登录',
-'movenologintext'         => '倷板定要是已登记用户且勒拉[[Special:Userlogin|登录]]状态下头再好拿页面捅荡。',
 'newtitle'                => '新个题目:',
 'movepagebtn'             => '页面捅荡',
 'pagemovedsub'            => '捅荡成功哉',
@@ -738,7 +733,6 @@ $messages = array(
 'tooltip-n-portal'           => '关于本计划，可以做什么，应该如何做',
 'tooltip-n-recentchanges'    => '列出近段辰光个改动',
 'tooltip-n-help'             => '寻求帮助',
-'tooltip-n-sitesupport'      => '支持倪',
 'tooltip-t-whatlinkshere'    => '列出所有与此页相链个页面',
 'tooltip-t-emailuser'        => '发封信拨该个用户',
 'tooltip-t-upload'           => '上载图像或媒体文物',

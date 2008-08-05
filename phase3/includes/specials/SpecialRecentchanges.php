@@ -6,7 +6,7 @@
  */
 class SpecialRecentChanges extends SpecialPage {
 	public function __construct() {
-  		SpecialPage::SpecialPage( 'Recentchanges' );
+  		parent::__construct( 'Recentchanges' );
 		$this->includable( true );
 	}
 
@@ -16,13 +16,14 @@ class SpecialRecentChanges extends SpecialPage {
 	 * @return FormOptions
 	 */
 	public function getDefaultOptions() {
+		global $wgUser;
 		$opts = new FormOptions();
 
-		$opts->add( 'days',  (int)User::getDefaultOption( 'rcdays' ) );
-		$opts->add( 'limit', (int)User::getDefaultOption( 'rclimit' ) );
+		$opts->add( 'days',  (int)$wgUser->getOption( 'rcdays' ) );
+		$opts->add( 'limit', (int)$wgUser->getOption( 'rclimit' ) );
 		$opts->add( 'from', '' );
 
-		$opts->add( 'hideminor',     false );
+		$opts->add( 'hideminor',     (bool)$wgUser->getOption( 'hideminor' ) );
 		$opts->add( 'hidebots',      true  );
 		$opts->add( 'hideanons',     false );
 		$opts->add( 'hideliu',       false );
@@ -34,7 +35,6 @@ class SpecialRecentChanges extends SpecialPage {
 
 		$opts->add( 'categories', '' );
 		$opts->add( 'categories_any', false );
-
 		return $opts;
 	}
 
@@ -44,12 +44,9 @@ class SpecialRecentChanges extends SpecialPage {
 	 * @return FormOptions
 	 */
 	public function setup( $parameters ) {
-		global $wgUser, $wgRequest;
+		global $wgRequest;
 
 		$opts = $this->getDefaultOptions();
-		$opts['days'] = (int)$wgUser->getOption( 'rcdays', $opts['days'] );
-		$opts['limit'] = (int)$wgUser->getOption( 'rclimit', $opts['limit'] );
-		$opts['hideminor'] = $wgUser->getOption( 'hideminor', $opts['hideminor'] );
 		$opts->fetchValuesFromRequest( $wgRequest );
 
 		// Give precedence to subpage syntax
@@ -99,22 +96,19 @@ class SpecialRecentChanges extends SpecialPage {
 		$rows = array();
 		$batch = new LinkBatch;
 		$conds = $this->buildMainQueryConds( $opts );
-		$res = $this->doMainQuery( $conds, $opts );
-		if( $res === false ){
+		$rows = $this->doMainQuery( $conds, $opts );
+		if( $rows === false ){
 			$this->doHeader( $opts );
 			return;
 		}
-		$dbr = wfGetDB( DB_SLAVE );
-		while( $row = $dbr->fetchObject( $res ) ){
-			$rows[] = $row;
+
+		foreach( $rows as $row ) {
 			if ( !$feedFormat ) {
 				// User page and talk links
 				$batch->add( NS_USER, $row->rc_user_text  );
 				$batch->add( NS_USER_TALK, $row->rc_user_text  );
 			}
-
 		}
-		$dbr->freeResult( $res );
 
 		if ( $feedFormat ) {
 			list( $feed, $feedObj ) = $this->getFeedObject( $feedFormat );
@@ -123,6 +117,8 @@ class SpecialRecentChanges extends SpecialPage {
 			$batch->execute();
 			$this->webOutput( $rows, $opts );
 		}
+
+		$rows->free();
 	}
 
 	/**
@@ -407,6 +403,7 @@ class SpecialRecentChanges extends SpecialPage {
 
 		$panel = array();
 		$panel[] = $this->optionsPanel( $defaults, $nondefaults );
+		$panel[] = '<hr />';
 
 		$extraOpts = $this->getExtraOptions( $opts );
 
@@ -434,7 +431,9 @@ class SpecialRecentChanges extends SpecialPage {
 		$panel[] = $form;
 		$panelString = implode( "\n", $panel );
 
-		$wgOut->addHTML( '<div class="rcoptions">' . $panelString . '</div>' );
+		$wgOut->addHTML(
+			Xml::fieldset( wfMsg( strtolower( $this->mName )  ), $panelString, array( 'class' => 'rcoptions' ) )
+		);
 
 		$this->setBottomText( $wgOut, $opts );
 	}
@@ -595,7 +594,9 @@ class SpecialRecentChanges extends SpecialPage {
 			$note = wfMsgExt( 'rcnote', array( 'parseinline' ),
 				$wgLang->formatNum( $options['limit'] ),
 				$wgLang->formatNum( $options['days'] ),
-				$wgLang->timeAndDate( wfTimestampNow(), true ) );
+				$wgLang->timeAndDate( wfTimestampNow(), true ),
+				$wgLang->date( wfTimestampNow(), true ),
+				$wgLang->time( wfTimestampNow(), true ) );
 
 		# Sort data for display and make sure it's unique after we've added user data.
 		$wgRCLinkLimits[] = $options['limit'];

@@ -131,7 +131,7 @@ $messages = array(
 
 # Login and logout pages
 'yourname'           => 'Tami lludüchi üy',
-'yourpassword'       => 'Tami konün dungu',
+'yourpassword'       => 'Tami kondungu',
 'login'              => 'Konün',
 'logout'             => 'Tripan',
 'userlogout'         => 'Tripan',

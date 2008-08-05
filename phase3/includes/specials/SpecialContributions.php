@@ -12,7 +12,7 @@
 class ContribsPager extends ReverseChronologicalPager {
 	public $mDefaultDirection = true;
 	var $messages, $target;
-	var $namespace = '', $year = '', $month = '', $mDb;
+	var $namespace = '', $mDb;
 
 	function __construct( $target, $namespace = false, $year = false, $month = false ) {
 		parent::__construct();
@@ -22,12 +22,7 @@ class ContribsPager extends ReverseChronologicalPager {
 		$this->target = $target;
 		$this->namespace = $namespace;
 
-		$year = intval($year);
-		$month = intval($month);
-
-		$this->year = $year > 0 ? $year : false;
-		$this->month = ($month > 0 && $month < 13) ? $month : false;
-		$this->getDateCond();
+		$this->getDateCond( $year, $month );
 
 		$this->mDb = wfGetDB( DB_SLAVE, 'contributions' );
 	}
@@ -35,15 +30,15 @@ class ContribsPager extends ReverseChronologicalPager {
 	function getDefaultQuery() {
 		$query = parent::getDefaultQuery();
 		$query['target'] = $this->target;
-		$query['month'] = $this->month;
-		$query['year'] = $this->year;
+		$query['month'] = $this->mMonth;
+		$query['year'] = $this->mYear;
 		return $query;
 	}
 
 	function getQueryInfo() {
 		list( $index, $userCond ) = $this->getUserCond();
 		$conds = array_merge( array('page_id=rev_page'), $userCond, $this->getNamespaceCond() );
-		return array(
+		$queryInfo = array(
 			'tables' => array( 'page', 'revision' ),
 			'fields' => array(
 				'page_namespace', 'page_title', 'page_is_new', 'page_latest', 'rev_id', 'rev_page',
@@ -51,8 +46,10 @@ class ContribsPager extends ReverseChronologicalPager {
 				'rev_user_text', 'rev_parent_id', 'rev_deleted'
 			),
 			'conds' => $conds,
-			'options' => array( 'USE INDEX' => $index )
+			'options' => array( 'USE INDEX' => array('revision' => $index) )
 		);
+		wfRunHooks( 'ContribsPager::getQueryInfo', array( &$this, &$queryInfo ) );
+		return $queryInfo;
 	}
 
 	function getUserCond() {
@@ -75,53 +72,6 @@ class ContribsPager extends ReverseChronologicalPager {
 		} else {
 			return array();
 		}
-	}
-
-	function getDateCond() {
-		// Given an optional year and month, we need to generate a timestamp
-		// to use as "WHERE rev_timestamp <= result"
-		// Examples: year = 2006 equals < 20070101 (+000000)
-		// year=2005, month=1    equals < 20050201
-		// year=2005, month=12   equals < 20060101
-
-		if (!$this->year && !$this->month)
-			return;
-
-		if ( $this->year ) {
-			$year = $this->year;
-		}
-		else {
-			// If no year given, assume the current one
-			$year = gmdate( 'Y' );
-			// If this month hasn't happened yet this year, go back to last year's month
-			if( $this->month > gmdate( 'n' ) ) {
-				$year--;
-			}
-		}
-
-		if ( $this->month ) {
-			$month = $this->month + 1;
-			// For December, we want January 1 of the next year
-			if ($month > 12) {
-				$month = 1;
-				$year++;
-			}
-		}
-		else {
-			// No month implies we want up to the end of the year in question
-			$month = 1;
-			$year++;
-		}
-
-		if ($year > 2032)
-			$year = 2032;
-		$ymd = (int)sprintf( "%04d%02d01", $year, $month );
-
-		// Y2K38 bug
-		if ($ymd > 20320101)
-			$ymd = 20320101;
-
-		$this->mOffset = $this->mDb->timestamp( "${ymd}000000" );
 	}
 
 	function getIndexField() {
@@ -209,6 +159,9 @@ class ContribsPager extends ReverseChronologicalPager {
 		if( $rev->isDeleted( Revision::DELETED_TEXT ) ) {
 			$ret .= ' ' . wfMsgHtml( 'deletedrev' );
 		}
+		// Let extensions add data
+		wfRunHooks( 'ContributionsLineEnding', array( &$this, &$ret, $row ) );
+		
 		$ret = "<li>$ret</li>\n";
 		wfProfileOut( __METHOD__ );
 		return $ret;

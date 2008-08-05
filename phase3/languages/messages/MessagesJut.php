@@ -6,8 +6,6 @@
  *
  * @author Ælsån
  * @author Huslåke
- * @author Siebrand
- * @author Nike
  * @author M.M.S.
  */
 
@@ -58,8 +56,6 @@ $messages = array(
 'underline-always'  => 'åltid',
 'underline-never'   => 'åldreg',
 'underline-default' => 'æfter brovserendstellenge',
-
-'skinpreview' => '(Førhåndsvesnenge)',
 
 # Dates
 'sunday'        => 'søndåg',
@@ -226,8 +222,6 @@ $messages = array(
 'portal-url'           => 'Project:Førside før skrebenter',
 'privacy'              => 'Behandlenge åf personlige åplysnenger',
 'privacypage'          => 'Project:Behandlinge åf personlige åplysnenger',
-'sitesupport'          => 'Støtside',
-'sitesupport-url'      => 'Project:Støtside',
 
 'badaccess'        => 'Manglende rettigheder',
 'badaccess-group0' => 'Du harst ekke de nødvendege rettegheder til denne håndlenge.',
@@ -284,8 +278,12 @@ $messages = array(
 # General errors
 'error'                => 'Fejl',
 'databaseerror'        => 'Databasefejl',
-'dberrortext'          => 'Der er åpstået en syntaksfejl i en databaseførespørgsel. Dette ken være på grund åf en ugyldeg førespørgsel (sæg $5), æller det ken betyde en fejl i\'n softwær. 
-Den seneste førsøĝte databaseførespørgsel var: <blockquote><tt>$1</tt></blockquote> frå\'n funksje "<tt>$2</tt>". 
+'dberrortext'          => 'Der er åpstået en syntaksfejl i en databaseførespørgsel.
+Dette ken være på grund åf en ugyldeg førespørgsel,
+æller det ken betyde en fejl i\'n softwær. 
+Den seneste førsøĝte databaseførespørgsel var:
+<blockquote><tt>$1</tt></blockquote>
+frå\'n funksje "<tt>$2</tt>". 
 MySQL æ returnerede fejl "<tt>$3: $4</tt>".',
 'dberrortextcl'        => 'Der er åpstået en syntaksfejl i en databaseførespørgsel. 
 Den seneste førsøĝte databaseførespørgsel var: "$1" frå\'n funksje "$2". 
@@ -369,7 +367,7 @@ Før en e-mail ken modtages åf andre brugere åf æ {{SITENAME}}-mailfunksje, s
 'italic_tip'      => 'Skyn skrevselenger',
 'link_sample'     => 'Henvesnenge',
 'link_tip'        => 'Ensende henvesnenge',
-'extlink_sample'  => 'http://www.bibillet.jut Skrevselenger på henvesnenge',
+'extlink_sample'  => 'http://www.example.com Skrevselenger på henvesnenge',
 'extlink_tip'     => 'Utsende henvesnenge (husk http:// førgøret)',
 'headline_sample' => 'Skrevselenger til åverskreft',
 'headline_tip'    => 'Skå 2 åverskreft',
@@ -468,6 +466,7 @@ hersenenge, (førge) = førskel til den førge hersenenge, l = lile til mendre �
 # Preferences page
 'preferences'   => 'Endstellenger',
 'mypreferences' => 'Endstellenger',
+'skin-preview'  => 'Førhåndsvesnenge',
 'retypenew'     => 'Gentag ny adgangskode',
 
 'grouppage-sysop' => '{{ns:project}}:Administråtorer',
@@ -601,7 +600,7 @@ hersenenge, (førge) = førskel til den førge hersenenge, l = lile til mendre �
 'alphaindexline' => '$1 til $2',
 'nextpage'       => 'Næste side ($1)',
 'prevpage'       => 'Førge side ($1)',
-'allpagesfrom'   => 'Ves sider startende frå: $1',
+'allpagesfrom'   => 'Ves sider startende frå:',
 'allarticles'    => 'Åle ertikler',
 'allpagessubmit' => 'Ves',
 'allpagesprefix' => 'Ves sider ve førgøret:',
@@ -779,7 +778,6 @@ navn du harst valgt er ekke gyldegt. Vælg et andet navn.',
 'tooltip-n-recentchanges'         => "Æ liste åver de seneste ændrenger æ'n wiki.",
 'tooltip-n-randompage'            => 'Gå til æ tilfældig ertikel',
 'tooltip-n-help'                  => 'Vordan gør a ...',
-'tooltip-n-sitesupport'           => 'Støt os',
 'tooltip-t-whatlinkshere'         => 'Liste ve ål sider søm henveser hertil',
 'tooltip-t-contributions'         => 'Se denne brugers bidråg',
 'tooltip-t-emailuser'             => 'Send en e-mail til denne bruger',

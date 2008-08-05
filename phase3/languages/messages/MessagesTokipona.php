@@ -5,7 +5,6 @@
  * @file
  *
  * @author http://tokipona.wikia.com sysops
- * @author Siebrand
  */
 
 $messages = array(
@@ -67,7 +66,6 @@ $messages = array(
 'mainpage-description' => 'lipu lawa',
 'portal'               => 'lipu pi kulupu ni',
 'privacy'              => 'ken pi awen weka',
-'sitesupport'          => 'o pana e mani',
 
 'ok'            => 'pona',
 'retrievedfrom' => 'tan $1',

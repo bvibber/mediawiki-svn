@@ -320,6 +320,47 @@ function wfReadOnlyReason() {
 }
 
 /**
+ * Return a Language object from $langcode
+ * @param $langcode Mixed: either:
+ *                  - a Language object
+ *                  - code of the language to get the message for, if it is
+ *                    a valid code create a language for that language, if
+ *                    it is a string but not a valid code then make a basic
+ *                    language object
+ *                  - a boolean: if it's false then use the current users
+ *                    language (as a fallback for the old parameter
+ *                    functionality), or if it is true then use the wikis
+ * @return Language object
+ */
+function wfGetLangObj( $langcode = false ){
+	# Identify which language to get or create a language object for.
+	if( $langcode instanceof Language )
+		# Great, we already have the object!
+		return $langcode;
+		
+	global $wgContLang;
+	if( $langcode === $wgContLang->getCode() || $langcode === true )
+		# $langcode is the language code of the wikis content language object.
+		# or it is a boolean and value is true
+		return $wgContLang;
+	
+	global $wgLang;
+	if( $langcode === $wgLang->getCode() || $langcode === false )
+		# $langcode is the language code of user language object.
+		# or it was a boolean and value is false
+		return $wgLang;
+
+	$validCodes = array_keys( Language::getLanguageNames() );
+	if( in_array( $langcode, $validCodes ) )
+		# $langcode corresponds to a valid language.
+		return Language::factory( $langcode );
+
+	# $langcode is a string, but not a valid language code; use content language.
+	wfDebug( 'Invalid language code passed to wfGetLangObj, falling back to content language.' );
+	return $wgContLang;
+}
+
+/**
  * Get a message from anywhere, for the current user language.
  *
  * Use wfMsgForContent() instead if the message should NOT
@@ -452,14 +493,16 @@ function wfMsgWeirdKey ( $key ) {
  * @param string $key
  * @param bool $useDB
  * @param string $langcode Code of the language to get the message for, or
- *                         behaves as a content language switch if it is a 
+ *                         behaves as a content language switch if it is a
  *                         boolean.
  * @return string
  * @private
  */
 function wfMsgGetKey( $key, $useDB, $langCode = false, $transform = true ) {
-	global $wgParser, $wgContLang, $wgMessageCache, $wgLang;
+	global $wgContLang, $wgMessageCache;
 
+	wfRunHooks('NormalizeMessageKey', array(&$key, &$useDB, &$langCode, &$transform));
+	
 	# If $wgMessageCache isn't initialised yet, try to return something sensible.
 	if( is_object( $wgMessageCache ) ) {
 		$message = $wgMessageCache->get( $key, $useDB, $langCode );
@@ -467,21 +510,7 @@ function wfMsgGetKey( $key, $useDB, $langCode = false, $transform = true ) {
 			$message = $wgMessageCache->transform( $message );
 		}
 	} else {
-		if( $langCode === true ) {
-			$lang = &$wgContLang;
-		} elseif( $langCode === false ) {
-			$lang = &$wgLang;
-		} else {
-			$validCodes = array_keys( Language::getLanguageNames() );
-			if( in_array( $langCode, $validCodes ) ) {
-				# $langcode corresponds to a valid language.
-				$lang = Language::factory( $langCode );
-			} else {
-				# $langcode is a string, but not a valid language code; use content language.
-				$lang =& $wgContLang;
-				wfDebug( 'Invalid language code passed to wfMsgGetKey, falling back to content language.' );
-			}
-		}
+		$lang = wfGetLangObj( $langCode );
 
 		# MessageCache::get() does this already, Language::getMessage() doesn't
 		# ISSUE: Should we try to handle "message/lang" here too?
@@ -1177,6 +1206,68 @@ function wfMerge( $old, $mine, $yours, &$result ){
 }
 
 /**
+ * Returns unified plain-text diff of two texts.
+ * Useful for machine processing of diffs.
+ * @param $before string The text before the changes.
+ * @param $after string The text after the changes.
+ * @param $params string Command-line options for the diff command.
+ * @return string Unified diff of $before and $after
+ */
+function wfDiff( $before, $after, $params = '-u' ) {
+	global $wgDiff;
+
+	# This check may also protect against code injection in
+	# case of broken installations.
+	if( !file_exists( $wgDiff ) ){
+		wfDebug( "diff executable not found\n" );
+		$diffs = new Diff( explode( "\n", $before ), explode( "\n", $after ) );
+		$format = new UnifiedDiffFormatter();
+		return $format->format( $diffs );
+	}
+
+	# Make temporary files
+	$td = wfTempDir();
+	$oldtextFile = fopen( $oldtextName = tempnam( $td, 'merge-old-' ), 'w' );
+	$newtextFile = fopen( $newtextName = tempnam( $td, 'merge-your-' ), 'w' );
+
+	fwrite( $oldtextFile, $before ); fclose( $oldtextFile );
+	fwrite( $newtextFile, $after ); fclose( $newtextFile );
+	
+	// Get the diff of the two files
+	$cmd = "$wgDiff " . $params . ' ' .wfEscapeShellArg( $oldtextName, $newtextName );
+	
+	$h = popen( $cmd, 'r' );
+	
+	$diff = '';
+	
+	do {
+		$data = fread( $h, 8192 );
+		if ( strlen( $data ) == 0 ) {
+			break;
+		}
+		$diff .= $data;
+	} while ( true );
+	
+	// Clean up
+	pclose( $h );
+	unlink( $oldtextName );
+	unlink( $newtextName );
+	
+	// Kill the --- and +++ lines. They're not useful.
+	$diff_lines = explode( "\n", $diff );
+	if (strpos( $diff_lines[0], '---' ) === 0) {
+		unset($diff_lines[0]);
+	}
+	if (strpos( $diff_lines[1], '+++' ) === 0) {
+		unset($diff_lines[1]);
+	}
+	
+	$diff = implode( "\n", $diff_lines );
+	
+	return $diff;
+}
+
+/**
  * @todo document
  */
 function wfVarDump( $var ) {
@@ -1707,12 +1798,22 @@ function wfTempDir() {
 
 /**
  * Make directory, and make all parent directories if they don't exist
+ * 
+ * @param string $fullDir Full path to directory to create
+ * @param int $mode Chmod value to use, default is $wgDirectoryMode
+ * @return bool
  */
-function wfMkdirParents( $fullDir, $mode = 0777 ) {
+function wfMkdirParents( $fullDir, $mode = null ) {
+	global $wgDirectoryMode;
 	if( strval( $fullDir ) === '' )
 		return true;
 	if( file_exists( $fullDir ) )
 		return true;
+	// If not defined or isn't an int, set to default
+	if ( is_null( $mode ) ) {
+		$mode = $wgDirectoryMode;
+	}
+
 
 	# Go back through the paths to find the first directory that exists
 	$currentDir = $fullDir;
@@ -1732,7 +1833,7 @@ function wfMkdirParents( $fullDir, $mode = 0777 ) {
 			$currentDir = substr( $currentDir, 0, $p );
 		}
 	}
-	
+
 	if ( count( $createList ) == 0 ) {
 		# Directory specified already exists
 		return true;
@@ -1752,7 +1853,7 @@ function wfMkdirParents( $fullDir, $mode = 0777 ) {
 		wfDebugLog( 'mkdir', "Not writable: $currentDir\n" );
 		return false;
 	}
-	
+
 	foreach ( $createList as $dir ) {
 		# use chmod to override the umask, as suggested by the PHP manual
 		if ( !mkdir( $dir, $mode ) || !chmod( $dir, $mode ) ) {
@@ -1812,7 +1913,7 @@ function wfPercent( $nr, $acc = 2, $round = true ) {
 function wfEncryptPassword( $userid, $password ) {
 	wfDeprecated(__FUNCTION__);
 	# Just wrap around User::oldCrypt()
-	return User::oldCrypt($password, $userid); 
+	return User::oldCrypt($password, $userid);
 }
 
 /**
@@ -2294,12 +2395,20 @@ function wfCreateObject( $name, $p ){
 }
 
 /**
- * Aliases for modularized functions
+ * Alias for modularized function
+ * @deprecated Use Http::get() instead
  */
 function wfGetHTTP( $url, $timeout = 'default' ) {
+	wfDeprecated(__FUNCTION__);
 	return Http::get( $url, $timeout );
 }
+
+/**
+ * Alias for modularized function
+ * @deprecated Use Http::isLocalURL() instead
+ */
 function wfIsLocalURL( $url ) {
+	wfDeprecated(__FUNCTION__);
 	return Http::isLocalURL( $url );
 }
 
@@ -2307,7 +2416,7 @@ function wfHttpOnlySafe() {
 	global $wgHttpOnlyBlacklist;
 	if( !version_compare("5.2", PHP_VERSION, "<") )
 		return false;
-	
+
 	if( isset( $_SERVER['HTTP_USER_AGENT'] ) ) {
 		foreach( $wgHttpOnlyBlacklist as $regex ) {
 			if( preg_match( $regex, $_SERVER['HTTP_USER_AGENT'] ) ) {
@@ -2315,7 +2424,7 @@ function wfHttpOnlySafe() {
 			}
 		}
 	}
-	
+
 	return true;
 }
 
@@ -2454,9 +2563,9 @@ function wfSplitWikiID( $wiki ) {
  *
  * @param string $wiki The wiki ID, or false for the current wiki
  *
- * Note: multiple calls to wfGetDB(DB_SLAVE) during the course of one request 
- * will always return the same object, unless the underlying connection or load 
- * balancer is manually destroyed. 
+ * Note: multiple calls to wfGetDB(DB_SLAVE) during the course of one request
+ * will always return the same object, unless the underlying connection or load
+ * balancer is manually destroyed.
  */
 function &wfGetDB( $db = DB_LAST, $groups = array(), $wiki = false ) {
 	return wfGetLB( $wiki )->getConnection( $db, $groups, $wiki );
@@ -2544,6 +2653,8 @@ function wfBoolToStr( $value ) {
  * @param string $extensionName Name of extension to load messages from\for.
  * @param string $langcode Language to load messages for, or false for default
  *                         behvaiour (en, content language and user language).
+ * @since r24808 (v1.11) Using this method of loading extension messages will not work
+ * on MediaWiki prior to that
  */
 function wfLoadExtensionMessages( $extensionName, $langcode = false ) {
 	global $wgExtensionMessagesFiles, $wgMessageCache, $wgLang, $wgContLang;
@@ -2674,4 +2785,14 @@ function wfGenerateToken( $salt = '' ) {
  	$salt = serialize($salt);
 
  	return md5( mt_rand( 0, 0x7fffffff ) . $salt );
+}
+
+/**
+ * Replace all invalid characters with -
+ * @param mixed $title Filename to process
+ */
+function wfStripIllegalFilenameChars( $name ) {
+	$name = wfBaseName( $name );
+	$name = preg_replace ( "/[^".Title::legalChars()."]|:/", '-', $name );
+	return $name;
 }

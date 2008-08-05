@@ -4,11 +4,9 @@
  * @ingroup Language
  * @file
  *
+ * @author 334a
  * @author A2raya07
  * @author The Thadman
- * @author Siebrand
- * @author SPQRobin
- * @author 334a
  */
 
 $rtl = true;
@@ -109,7 +107,6 @@ $messages = array(
 'mainpage-description' => 'ܕܦܐ ܪܫܝܐ',
 'portal'               => 'ܬܪܥܐ ܕܟܢܫܐ',
 'portal-url'           => 'Project:ܬܪܥܐ ܕܟܢܫܐ',
-'sitesupport'          => 'ܕܚܘܝܬܐ',
 
 'ok'              => 'ܛܒ',
 'newmessageslink' => 'ܣܒܪ̈ܬܐ ܚܕ̈ܬܬܐ',

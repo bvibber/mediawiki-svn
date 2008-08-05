@@ -4,11 +4,9 @@
  * @ingroup Language
  * @file
  *
+ * @author Ooswesthoesbes
  * @author SF-Language
  * @author Litingatinga Silozi
- * @author Ooswesthoesbes
- * @author Siebrand
- * @author Jon Harald Søby
  */
 
 $messages = array(
@@ -48,8 +46,6 @@ $messages = array(
 'underline-always'  => 'Xet',
 'underline-never'   => 'Yexet',
 'underline-default' => 'Pokuhe',
-
-'skinpreview' => '(PendiBe)',
 
 # Dates
 'sunday'        => 'La Pumulo',
@@ -209,8 +205,6 @@ $messages = array(
 'portal-url'           => 'Project:Petulo Bulili',
 'privacy'              => 'Busize likunutu',
 'privacypage'          => 'Project:Busize likunutu',
-'sitesupport'          => 'Adonetarina',
-'sitesupport-url'      => 'Project:Adonetarina',
 
 'badaccess'        => 'Bufosi pemiko',
 'badaccess-group0' => 'Zwa eksyon ni sa di sebelu kwa zwa kattegorina. Kyon ni sa vanu.',
@@ -402,7 +396,6 @@ A IP sa $3, e ID di bolok sa #$5. Bulelezi IP e ID kwa bukizisize.",
 'blockedoriginalsource'  => "Olige di '''$1''' sa kamukile:",
 'blockededitsource'      => "Selt di '''zwa hloli ye ng'i''' di '''$1''' sa kamukile:",
 'whitelistedittext'      => "A sa $1 di hloli ye ng'i petulo.",
-'whitelistacctitle'      => 'A ni sa di usa di hloli sebelu',
 'nosuchsectiontitle'     => 'Ni di lyangutukezi',
 'loginreqlink'           => 'menuhile',
 'loginreqpagetext'       => 'A sa $1 di kamukile xeti di petulo.',
@@ -504,6 +497,7 @@ Informasi: (bye) = petuho a nca selt,
 'prefsnologin'      => 'Ni menuhile',
 'qbsettings-none'   => 'Ni',
 'skin'              => 'PendiBe',
+'skin-preview'      => 'PendiBe',
 'math'              => 'Mat',
 'dateformat'        => 'Data apukisize',
 'datedefault'       => 'Ni di petohoni di sebelu',
@@ -899,12 +893,10 @@ a sa gukilize di nyanganyisize.",
 
 Teri yaki, a nyanganyisize.",
 'movearticle'      => 'Nyanganyisize petulo:',
-'movenologin'      => 'A ni sa menuhile',
 'newtitle'         => 'Di nca petulo:',
 'move-watch'       => 'Kentezi bye petulo',
 'movepagebtn'      => 'Nyanganyisize petulo',
 'pagemovedsub'     => 'Nyanganyisize sa afi.',
-'movepage-moved'   => '<big>\'\'\'"$1" sa nyanganyisize di "$2"\'\'\'</big>', # The two titles are passed in plain text as $3 and $4 to allow additional goodies in the message.
 'articleexists'    => 'Petulo zwa nyanganyisize afi sa, e nom sa bufosi. Xete nom sa kulikawi.',
 'talkexists'       => "'''No bufosi di nyanganyisize petulo, bufosi di nyanganyisize bulelezi, tubi hani.'''",
 'movedto'          => 'nyanganyisize di',
@@ -969,7 +961,6 @@ Please visit [http://www.mediawiki.org/wiki/Localisation MediaWiki Localisation]
 'tooltip-n-recentchanges'         => 'Mukoloko di petuho nca di wiki.',
 'tooltip-n-randompage'            => 'Apuzi petulo fona',
 'tooltip-n-help'                  => 'Yembani di fatukile.',
-'tooltip-n-sitesupport'           => 'Sepotisize',
 'tooltip-t-whatlinkshere'         => "Mukoloko di xete petulo di wiki bye sa ling'ki",
 'tooltip-t-recentchangeslinked'   => "Petuho nca di petulo sa ling'ki di bye petulo",
 'tooltip-feed-rss'                => 'RSS feed bye petulo',

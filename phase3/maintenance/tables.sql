@@ -616,7 +616,7 @@ CREATE TABLE /*$wgDBprefix*/site_stats (
 --
 CREATE TABLE /*$wgDBprefix*/hitcounter (
   hc_id int unsigned NOT NULL
-) TYPE=HEAP MAX_ROWS=25000;
+) ENGINE=HEAP MAX_ROWS=25000;
 
 
 --
@@ -745,8 +745,7 @@ CREATE TABLE /*$wgDBprefix*/image (
   INDEX img_size (img_size),
   -- Used by Special:Newimages and Special:Imagelist
   INDEX img_timestamp (img_timestamp),
-
-  -- For future use
+  -- Used in API and duplicate search
   INDEX img_sha1 (img_sha1)
 
 
@@ -995,7 +994,7 @@ CREATE TABLE /*$wgDBprefix*/searchindex (
   FULLTEXT si_title (si_title),
   FULLTEXT si_text (si_text)
 
-) TYPE=MyISAM;
+) ENGINE=MyISAM;
 
 --
 -- Recognized interwiki link prefixes

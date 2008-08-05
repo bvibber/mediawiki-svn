@@ -1,10 +1,6 @@
 <?php
 /**
  * @defgroup DifferenceEngine DifferenceEngine
- *
- * @file
- * See diff.doc
- * @todo indicate where diff.doc can be found.
  */
 
 require_once( 'Diff.php' );
@@ -148,7 +144,7 @@ CONTROL;
 			$wgOut->setPageTitle( $oldTitle . ', ' . $newTitle );
 		}
 		$wgOut->setSubtitle( wfMsg( 'difference' ) );
-		$wgOut->setRobotpolicy( 'noindex,nofollow' );
+		$wgOut->setRobotPolicy( 'noindex,nofollow' );
 
 		if ( !( $this->mOldPage->userCanRead() && $this->mNewPage->userCanRead() ) ) {
 			$wgOut->loginToUse();
@@ -161,7 +157,7 @@ CONTROL;
 
 		// Check if page is editable
 		$editable = $this->mNewRev->getTitle()->userCan( 'edit' );
-		if ( $editable && $this->mNewRev->isCurrent() && $wgUser->isAllowed('rollback') ) {
+		if ( $editable && $this->mNewRev->isCurrent() && $wgUser->isAllowed( 'rollback' ) ) {
 			$rollback = '&nbsp;&nbsp;&nbsp;' . $sk->generateRollback( $this->mNewRev );
 		} else {
 			$rollback = '';
@@ -369,7 +365,7 @@ CONTROL;
 		$wgOut->addHTML( $header );
 
 		$wgOut->setSubtitle( wfMsg( 'difference' ) );
-		$wgOut->setRobotpolicy( 'noindex,nofollow' );
+		$wgOut->setRobotPolicy( 'noindex,nofollow' );
 
 		wfProfileOut( __METHOD__ );
 	}

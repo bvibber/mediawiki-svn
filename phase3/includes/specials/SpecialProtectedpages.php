@@ -89,11 +89,7 @@ class ProtectedPagesForm {
 		}
 
 		if (!is_null($size = $row->page_len)) {
-			if ($size == 0)
-				$stxt = ' <small>' . wfMsgHtml('historyempty') . '</small>';
-			else
-				$stxt = ' <small>' . wfMsgHtml('historysize', $wgLang->formatNum( $size ) ) . '</small>';
-			$stxt = $wgContLang->getDirMark() . $stxt;
+			$stxt = $wgContLang->getDirMark() . ' ' . $skin->formatRevisionSize( $size );
 		}
 
 		# Show a link to the change protection form for allowed users otherwise a link to the protection log

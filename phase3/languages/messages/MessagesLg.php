@@ -5,7 +5,6 @@
  * @file
  *
  * @author Kizito
- * @author Siebrand
  */
 
 $messages = array(
@@ -138,8 +137,6 @@ $messages = array(
 'portal-url'           => 'Project:Embuga',
 'privacy'              => 'Enkola yaffe ku kukuuma ebikufako',
 'privacypage'          => 'Project:Enkola yaffe ku kukuuma ebikufako',
-'sitesupport'          => 'Okutonera wiki',
-'sitesupport-url'      => 'Project:Okutonera wiki',
 
 'ok'                      => 'Kale',
 'retrievedfrom'           => 'Bino bigyidwa ku "$1"',
@@ -213,7 +210,7 @@ olwa 'yogera nange' nga ggwe tewetaaze kulaga bikufaako.",
 'italic_tip'      => "Bw'onyiga ku kano, ennukuta z'oddako okuwandiika ziba za italiki (ez'esurise). Okuddamu okufuna ennukuta eza bulijjo, ddamu okukanyiga ko.",
 'link_sample'     => 'Enyunzi yo eno egguke wa?',
 'link_tip'        => "Nyiga wano ob'oyagala okukolawo enyunzi egguka ku kifo ekiri ku wiki eno",
-'extlink_sample'  => 'http://www.kyakulabirako.com linnya lya nyunzi',
+'extlink_sample'  => 'http://www.example.com linnya lya nyunzi',
 'extlink_tip'     => "Nyiga ku kano ob'oyagala okuteekawo enyunzi egguka ku kifo ekitali ku wiki eno. (genderera ne kutabulako ennukuta ezikulembedde, http:// )",
 'headline_sample' => 'Mutwe omukulu',
 'headline_tip'    => "Nyiga ku kano okuwandiika omutwe ogw'eddaala ery'okubiri",
@@ -498,7 +495,6 @@ Bw\'oba oyagala okulekerawo okulugoberera, nyiga ku kigambo "Suula" awo ku bbali
 'tooltip-n-recentchanges'         => "Nyiga wano okulaba olukalala lw'ebyakakyusibwamu ku wiki eno",
 'tooltip-n-randompage'            => 'Nnondera olupapula lwemba nkebera',
 'tooltip-n-help'                  => 'Ebikutangaaza ku nkola ya Wiki eno',
-'tooltip-n-sitesupport'           => "Nyiga wano ob'oyagala wiki okugiwa obuyambi obw'ensimbi",
 'tooltip-t-whatlinkshere'         => "Nyiga wano okulaba empapula ez'oku wiki zonna eziriko enyunzi ezikuggusa ku luno",
 'tooltip-t-contributions'         => "Nyiga wano ob'oyagala okumanya memba ono by'akozeyo ku wiki eno",
 'tooltip-t-emailuser'             => "Nyiga wano ob'oyagala memba ono okumusindikira e-mail",

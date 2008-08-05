@@ -5,7 +5,6 @@
  * @file
  *
  * @author Guaka
- * @author Siebrand
  */
 
 $fallback = 'fr';
@@ -59,7 +58,6 @@ $messages = array(
 'mainpage'             => 'Nyɛ fɔlɔ',
 'mainpage-description' => 'Nyɛ fɔlɔ',
 'portal'               => 'Jamaje',
-'sitesupport'          => 'Banumanke',
 
 'editsection' => 'yɛlɛma',
 'hidetoc'     => 'dogo',

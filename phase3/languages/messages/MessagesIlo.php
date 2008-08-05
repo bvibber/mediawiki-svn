@@ -6,8 +6,6 @@
  *
  * @author Saluyot
  * @author לערי ריינהארט
- * @author SPQRobin
- * @author Siebrand
  */
 
 $messages = array(
@@ -55,8 +53,6 @@ $messages = array(
 'underline-always'  => 'Kanayon',
 'underline-never'   => 'Saan',
 'underline-default' => 'Kasisigud ti browser',
-
-'skinpreview' => '(I-preview)',
 
 # Dates
 'sunday'        => 'Domingo',
@@ -228,8 +224,6 @@ $messages = array(
 'portal-url'           => 'Project:Portal ti Komunidad',
 'privacy'              => 'Annuroten iti kinaprivado',
 'privacypage'          => 'Project:Annuroten iti kinaprivado',
-'sitesupport'          => 'Donasion',
-'sitesupport-url'      => 'Project:Suporta iti sitio',
 
 'badaccess'        => 'Biddut iti pammalubos',
 'badaccess-group0' => 'Saanka a mapalubosan a mangpataray iti aksion a kiniddawmo.',
@@ -483,10 +477,6 @@ Ti agdama nga IP addressmo ket $3, ket ti block ID ket #$5. Pangngaasim ta irama
 'blockededitsource'                => "Makita iti baba '''dagiti panangbalbaliwmo''' iti '''$1''':",
 'whitelistedittitle'               => 'Masapul a nakastrekka tapno makaeditka',
 'whitelistedittext'                => 'Nasken a $1 ka tapno makaeditka iti pampanid.',
-'whitelistreadtitle'               => 'Masapul a nakastrekka tapno makabasaka',
-'whitelistreadtext'                => 'Masapul a [[Special:Userlogin|sumrekka]] tapno makabasaka iti pampanid.',
-'whitelistacctitle'                => 'Saanka a mapalubosan a mangaramid iti account',
-'whitelistacctext'                 => 'Tapno mapalubosanka a mangaramid iti accounts iti {{SITENAME}} masapul a [[Special:Userlogin|sumrekka]] ken maaddaan kadagiti mainugot a pammalubos.',
 'confirmedittitle'                 => 'Masapul ti pammasingked ti email tapno makaedit',
 'nosuchsectiontitle'               => 'Awan ti kasta a benneg',
 'nosuchsectiontext'                => 'Pinadasmo nga editen ti maysa a benneg nga awan pay.
@@ -692,6 +682,7 @@ Mabalinmo a [[:\$1|partuaten daytoy a panid]].",
 'qbsettings-floatingright' => 'Floating right',
 'changepassword'           => 'Baliwan ti password',
 'skin'                     => 'Kudil',
+'skin-preview'             => 'I-preview',
 'math'                     => 'Math',
 'dateformat'               => 'Format ti petsa',
 'datedefault'              => 'Awanan preferencia',
@@ -726,20 +717,14 @@ itsek ti husto a panangikapet iti latex, dvips, gs, samo i-convert',
 'files'                    => 'Dagiti files',
 
 # User rights
-'userrights-user-editname'         => 'Mangiserrek iti nagan-agar-aramat:',
-'userrights-groupsmember'          => 'Kameng ti:',
-'userrights-groupsremovable'       => 'Mabalin a maikkat a bungbunggoy:',
-'userrights-groupsavailable'       => 'Dagiti adda a bungbunggoy:',
-'userrights-reason'                => 'Rason ti panangbaliw:',
-'userrights-available-add'         => 'Mabalinmo laeng ti manginayon iti siasino man nga agar-aramat iti {{PLURAL:$2|daytoy a bunggoy|kadagitoy a bunggoy}}: $1.',
-'userrights-available-remove'      => 'Mabalinmo ti mangikkat iti siasino man nga agar-aramat {{PLURAL:$2|kadaytoy a bunggoy|kadagitoy a bunggoy}}: $1.',
-'userrights-available-add-self'    => 'Mabalinmo nga inayon ti bagim {{PLURAL:$2|kadaytoy a bunggoy|kadagitoy a bunggoy}}: $1.',
-'userrights-available-remove-self' => 'Mabalinmo na ikkaten ti bagim {{PLURAL:$2|kadaytoy a bunggoy|kadagitoy a bunggoy}}: $1.',
-'userrights-no-interwiki'          => 'Awananka iti pammalubos a mangedit iti karkarbengan ti agar-aramat iti sabali a wikwiki.',
-'userrights-nodatabase'            => 'Awan ti database a $1 wenno baka saan a local.',
-'userrights-notallowed'            => 'Awanan pammalubos ti accountmo a mangted iti karkarbengan ti agar-aramat.',
-'userrights-changeable-col'        => 'Dagiti grupo a mabalinmo a baliwan',
-'userrights-unchangeable-col'      => 'Dagiti grupo a dimo mabalin a baliwan',
+'userrights-user-editname'    => 'Mangiserrek iti nagan-agar-aramat:',
+'userrights-groupsmember'     => 'Kameng ti:',
+'userrights-reason'           => 'Rason ti panangbaliw:',
+'userrights-no-interwiki'     => 'Awananka iti pammalubos a mangedit iti karkarbengan ti agar-aramat iti sabali a wikwiki.',
+'userrights-nodatabase'       => 'Awan ti database a $1 wenno baka saan a local.',
+'userrights-notallowed'       => 'Awanan pammalubos ti accountmo a mangted iti karkarbengan ti agar-aramat.',
+'userrights-changeable-col'   => 'Dagiti grupo a mabalinmo a baliwan',
+'userrights-unchangeable-col' => 'Dagiti grupo a dimo mabalin a baliwan',
 
 # Groups
 'group'            => 'Grupo:',
@@ -1355,8 +1340,6 @@ pangngaasim ta pasingkedam a maawatam ti ibunga dayoty sakbay nga agtuloyka a ma
 
 Kadagitoy a kaso, masapul nga iyakar wenno itiponmo a manual ti panid no kayatmo.",
 'movearticle'             => 'Iyakar ti panid',
-'movenologin'             => 'Saan a nakastrek',
-'movenologintext'         => 'Nasken a nakarehistroka nga agar-aramat ken [[Special:Userlogin|nakastrek]] tapno makaiyakarka iti panid.',
 'movenotallowed'          => 'Awanka iti pammalubos nga agiyakar iti pampanid iti {{SITENAME}}.',
 'newtitle'                => 'Iti baro a titulo:',
 'move-watch'              => 'Bantayan daytoy a panid',
@@ -1448,7 +1431,6 @@ Pangngaasim ta i-manualmo lattan a pagtiponem ida.'''",
 'tooltip-n-recentchanges'         => 'Listaan dagiti naudi a panangbalbaliw iti wiki.',
 'tooltip-n-randompage'            => 'Mangiparuar iti pugto a panid',
 'tooltip-n-help'                  => 'Ti lugar a pakasapulan.',
-'tooltip-n-sitesupport'           => 'Suportarandakami',
 'tooltip-t-whatlinkshere'         => 'Listaan ti am-amin a pampanid ti wiki a nakasilpo ditoy',
 'tooltip-feed-rss'                => 'RSS feed para iti daytoy a panid',
 'tooltip-feed-atom'               => 'Atom feed para itoy a panid',

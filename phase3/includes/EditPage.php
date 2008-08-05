@@ -212,7 +212,7 @@ class EditPage {
 	 * @param $preload String: the title of the page.
 	 * @return string The contents of the page.
 	 */
-	private function getPreloadedText($preload) {
+	protected function getPreloadedText($preload) {
 		if ( $preload === '' )
 			return '';
 		else {
@@ -508,7 +508,7 @@ class EditPage {
 	 *
 	 * @return bool
 	 */
-	private function previewOnOpen() {
+	protected function previewOnOpen() {
 		global $wgRequest, $wgUser;
 		if( $wgRequest->getVal( 'preview' ) == 'yes' ) {
 			// Explicit override from request
@@ -660,7 +660,7 @@ class EditPage {
 	/**
 	 * Show all applicable editing introductions
 	 */
-	private function showIntro() {
+	protected function showIntro() {
 		global $wgOut, $wgUser;
 		if( $this->suppressIntro )
 			return;
@@ -693,7 +693,7 @@ class EditPage {
 	 *
 	 * @return bool
 	 */
-	private function showCustomIntro() {
+	protected function showCustomIntro() {
 		if( $this->editintro ) {
 			$title = Title::newFromText( $this->editintro );
 			if( $title instanceof Title && $title->exists() && $title->userCanRead() ) {
@@ -1042,7 +1042,7 @@ class EditPage {
 
 		wfRunHooks( 'EditPage::showEditForm:initial', array( &$this ) ) ;
 
-		$wgOut->setRobotpolicy( 'noindex,nofollow' );
+		$wgOut->setRobotPolicy( 'noindex,nofollow' );
 
 		# Enabled article-related sidebar, toplinks, etc.
 		$wgOut->setArticleRelated( true );
@@ -1144,7 +1144,9 @@ class EditPage {
 				# Then it must be protected based on static groups (regular)
 				$noticeMsg = 'protectedpagewarning';
 			}
+			$wgOut->addHTML( "<div id='mw-edit-$noticeMsg'>\n" );
 			$wgOut->addWikiMsg( $noticeMsg );
+			$wgOut->addHTML( "</div>\n" );
 		}
 		if ( $this->mTitle->isCascadeProtected() ) {
 			# Is this page under cascading protection from some source pages?
@@ -1166,9 +1168,13 @@ class EditPage {
 			$this->kblength = (int)(strlen( $this->textbox1 ) / 1024);
 		}
 		if ( $this->tooBig || $this->kblength > $wgMaxArticleSize ) {
-			$wgOut->addWikiMsg( 'longpageerror', $wgLang->formatNum( $this->kblength ), $wgMaxArticleSize );
+			$wgOut->addHTML( "<div id='mw-edit-longpageerror'>\n" );
+			$wgOut->addWikiMsg( 'longpageerror', $wgLang->formatNum( $this->kblength ), $wgLang->formatNum( $wgMaxArticleSize ) );
+			$wgOut->addHTML( "</div>\n" );
 		} elseif( $this->kblength > 29 ) {
+			$wgOut->addHTML( "<div id='mw-edit-longpagewarning'>\n" );
 			$wgOut->addWikiMsg( 'longpagewarning', $wgLang->formatNum( $this->kblength ) );
+			$wgOut->addHTML( "</div>\n" );
 		}
 
 		#need to parse the preview early so that we know which templates are used,
@@ -1449,7 +1455,7 @@ END
 	 *
 	 * @param string $text The HTML to be output for the preview.
 	 */
-	private function showPreview( $text ) {
+	protected function showPreview( $text ) {
 		global $wgOut;
 
 		$wgOut->addHTML( '<div id="wikiPreview">' );
@@ -1516,7 +1522,8 @@ END
 	}
 
 	/**
-	 * @todo document
+	 * Get the rendered text for previewing.
+	 * @return string
 	 */
 	function getPreviewText() {
 		global $wgOut, $wgUser, $wgTitle, $wgParser, $wgLang, $wgContLang;
@@ -1558,6 +1565,8 @@ END
 			$parserOutput = $wgParser->parse( $previewtext , $this->mTitle, $parserOptions );
 			$wgOut->addHTML( $parserOutput->mText );
 			$previewHTML = '';
+		} else if( $rt = Title::newFromRedirect( $this->textbox1 ) ) {
+			$previewHTML = $this->mArticle->viewRedirect( $rt, false );
 		} else {
 			$toparse = $this->textbox1;
 
@@ -1624,7 +1633,7 @@ END
 		} else {
 			$previewfoot = '';
 		}
-
+		
 		wfProfileOut( $fname );
 		return $previewhead . $previewHTML . $previewfoot;
 	}
@@ -1799,7 +1808,7 @@ END
 	 * @return string
 	 */
 	static function getEditToolbar() {
-		global $wgStylePath, $wgContLang, $wgJsMimeType;
+		global $wgStylePath, $wgContLang, $wgLang, $wgJsMimeType;
 
 		/**
 		 * toolarray an array of arrays which each include the filename of
@@ -1813,93 +1822,104 @@ END
 		 * sure these keys are not defined on the edit page.
 		 */
 		$toolarray = array(
-			array(	'image'	=> 'button_bold.png',
-				'id'	=> 'mw-editbutton-bold',
-				'open'	=> '\'\'\'',
-				'close'	=> '\'\'\'',
-				'sample'=> wfMsg('bold_sample'),
-				'tip'	=> wfMsg('bold_tip'),
-				'key'	=> 'B'
+			array(
+				'image'  => $wgLang->getImageFile('button-bold'),
+				'id'     => 'mw-editbutton-bold',
+				'open'   => '\'\'\'',
+				'close'  => '\'\'\'',
+				'sample' => wfMsg('bold_sample'),
+				'tip'    => wfMsg('bold_tip'),
+				'key'    => 'B'
 			),
-			array(	'image'	=> 'button_italic.png',
-				'id'	=> 'mw-editbutton-italic',
-				'open'	=> '\'\'',
-				'close'	=> '\'\'',
-				'sample'=> wfMsg('italic_sample'),
-				'tip'	=> wfMsg('italic_tip'),
-				'key'	=> 'I'
+			array(
+				'image'  => $wgLang->getImageFile('button-italic'),
+				'id'     => 'mw-editbutton-italic',
+				'open'   => '\'\'',
+				'close'  => '\'\'',
+				'sample' => wfMsg('italic_sample'),
+				'tip'    => wfMsg('italic_tip'),
+				'key'    => 'I'
 			),
-			array(	'image'	=> 'button_link.png',
-				'id'	=> 'mw-editbutton-link',
-				'open'	=> '[[',
-				'close'	=> ']]',
-				'sample'=> wfMsg('link_sample'),
-				'tip'	=> wfMsg('link_tip'),
-				'key'	=> 'L'
+			array(
+				'image'  => $wgLang->getImageFile('button-link'),
+				'id'     => 'mw-editbutton-link',
+				'open'   => '[[',
+				'close'  => ']]',
+				'sample' => wfMsg('link_sample'),
+				'tip'    => wfMsg('link_tip'),
+				'key'    => 'L'
 			),
-			array(	'image'	=> 'button_extlink.png',
-				'id'	=> 'mw-editbutton-extlink',
-				'open'	=> '[',
-				'close'	=> ']',
-				'sample'=> wfMsg('extlink_sample'),
-				'tip'	=> wfMsg('extlink_tip'),
-				'key'	=> 'X'
+			array(
+				'image'  => $wgLang->getImageFile('button-extlink'),
+				'id'     => 'mw-editbutton-extlink',
+				'open'   => '[',
+				'close'  => ']',
+				'sample' => wfMsg('extlink_sample'),
+				'tip'    => wfMsg('extlink_tip'),
+				'key'    => 'X'
 			),
-			array(	'image'	=> 'button_headline.png',
-				'id'	=> 'mw-editbutton-headline',
-				'open'	=> "\n== ",
-				'close'	=> " ==\n",
-				'sample'=> wfMsg('headline_sample'),
-				'tip'	=> wfMsg('headline_tip'),
-				'key'	=> 'H'
+			array(
+				'image'  => $wgLang->getImageFile('button-headline'),
+				'id'     => 'mw-editbutton-headline',
+				'open'   => "\n== ",
+				'close'  => " ==\n",
+				'sample' => wfMsg('headline_sample'),
+				'tip'    => wfMsg('headline_tip'),
+				'key'    => 'H'
 			),
-			array(	'image'	=> 'button_image.png',
-				'id'	=> 'mw-editbutton-image',
-				'open'	=> '[['.$wgContLang->getNsText(NS_IMAGE).":",
-				'close'	=> ']]',
-				'sample'=> wfMsg('image_sample'),
-				'tip'	=> wfMsg('image_tip'),
-				'key'	=> 'D'
+			array(
+				'image'  => $wgLang->getImageFile('button-image'),
+				'id'     => 'mw-editbutton-image',
+				'open'   => '[['.$wgContLang->getNsText(NS_IMAGE).':',
+				'close'  => ']]',
+				'sample' => wfMsg('image_sample'),
+				'tip'    => wfMsg('image_tip'),
+				'key'    => 'D'
 			),
-			array(	'image'	=> 'button_media.png',
-				'id'	=> 'mw-editbutton-media',
-				'open'	=> '[['.$wgContLang->getNsText(NS_MEDIA).':',
-				'close'	=> ']]',
-				'sample'=> wfMsg('media_sample'),
-				'tip'	=> wfMsg('media_tip'),
-				'key'	=> 'M'
+			array(
+				'image'  => $wgLang->getImageFile('button-media'),
+				'id'     => 'mw-editbutton-media',
+				'open'   => '[['.$wgContLang->getNsText(NS_MEDIA).':',
+				'close'  => ']]',
+				'sample' => wfMsg('media_sample'),
+				'tip'    => wfMsg('media_tip'),
+				'key'    => 'M'
 			),
-			array(	'image'	=> 'button_math.png',
-				'id'	=> 'mw-editbutton-math',
-				'open'	=> "<math>",
-				'close'	=> "</math>",
-				'sample'=> wfMsg('math_sample'),
-				'tip'	=> wfMsg('math_tip'),
-				'key'	=> 'C'
+			array(
+				'image'  => $wgLang->getImageFile('button-math'),
+				'id'     => 'mw-editbutton-math',
+				'open'   => "<math>",
+				'close'  => "</math>",
+				'sample' => wfMsg('math_sample'),
+				'tip'    => wfMsg('math_tip'),
+				'key'    => 'C'
 			),
-			array(	'image'	=> 'button_nowiki.png',
-				'id'	=> 'mw-editbutton-nowiki',
-				'open'	=> "<nowiki>",
-				'close'	=> "</nowiki>",
-				'sample'=> wfMsg('nowiki_sample'),
-				'tip'	=> wfMsg('nowiki_tip'),
-				'key'	=> 'N'
+			array(
+				'image'  => $wgLang->getImageFile('button-nowiki'),
+				'id'     => 'mw-editbutton-nowiki',
+				'open'   => "<nowiki>",
+				'close'  => "</nowiki>",
+				'sample' => wfMsg('nowiki_sample'),
+				'tip'    => wfMsg('nowiki_tip'),
+				'key'    => 'N'
 			),
-			array(	'image'	=> 'button_sig.png',
-				'id'	=> 'mw-editbutton-signature',
-				'open'	=> '--~~~~',
-				'close'	=> '',
-				'sample'=> '',
-				'tip'	=> wfMsg('sig_tip'),
-				'key'	=> 'Y'
+			array(
+				'image'  => $wgLang->getImageFile('button-sig'),
+				'id'     => 'mw-editbutton-signature',
+				'open'   => '--~~~~',
+				'close'  => '',
+				'sample' => '',
+				'tip'    => wfMsg('sig_tip'),
+				'key'    => 'Y'
 			),
-			array(	'image'	=> 'button_hr.png',
-				'id'	=> 'mw-editbutton-hr',
-				'open'	=> "\n----\n",
-				'close'	=> '',
-				'sample'=> '',
-				'tip'	=> wfMsg('hr_tip'),
-				'key'	=> 'R'
+			array(
+				'image'  => $wgLang->getImageFile('button-hr'),
+				'id'     => 'mw-editbutton-hr',
+				'open'   => "\n----\n",
+				'close'  => '',
+				'sample' => '',
+				'tip'    => wfMsg('hr_tip'),
+				'key'    => 'R'
 			)
 		);
 		$toolbar = "<div id='toolbar'>\n";
@@ -1955,7 +1975,7 @@ END
 			);
 			$checkboxes['minor'] =
 				Xml::check( 'wpMinoredit', $checked['minor'], $attribs ) .
-				"&nbsp;<label for='wpMinoredit'".$skin->tooltipAndAccesskey('minoredit').">{$minorLabel}</label>";
+				"&nbsp;<label for='wpMinoredit'".$skin->tooltip('minoredit').">{$minorLabel}</label>";
 		}
 
 		$watchLabel = wfMsgExt('watchthis', array('parseinline'));
@@ -1968,7 +1988,7 @@ END
 			);
 			$checkboxes['watch'] =
 				Xml::check( 'wpWatchthis', $checked['watch'], $attribs ) .
-				"&nbsp;<label for='wpWatchthis'".$skin->tooltipAndAccesskey('watch').">{$watchLabel}</label>";
+				"&nbsp;<label for='wpWatchthis'".$skin->tooltip('watch').">{$watchLabel}</label>";
 		}
 		return $checkboxes;
 	}
@@ -2236,7 +2256,7 @@ END
 	 *
 	 * @param OutputPage $out
 	 */
-	private function showDeletionLog( $out ) {
+	protected function showDeletionLog( $out ) {
 		global $wgUser;
 		$loglist = new LogEventsList( $wgUser->getSkin(), $out );
 		$pager = new LogPager( $loglist, 'delete', false, $this->mTitle->getPrefixedText() );
@@ -2326,7 +2346,7 @@ END
 		if ($this->mBaseRevision == false) {
 			$db = wfGetDB( DB_MASTER );
 			$baseRevision = Revision::loadFromTimestamp(
-				$db, $editor->mTitle, $editor->edittime );
+				$db, $this->mTitle, $this->edittime );
 			return $this->mBaseRevision = $baseRevision;
 		} else {
 			return $this->mBaseRevision;

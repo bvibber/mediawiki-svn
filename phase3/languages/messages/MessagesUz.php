@@ -4,9 +4,8 @@
  * @ingroup Language
  * @file
  *
- * @author Behzod Saidov <behzodsaidov@gmail.com>
  * @author Abdulla
- * @author Siebrand
+ * @author Behzod Saidov <behzodsaidov@gmail.com>
  */
 
 $fallback8bitEncoding = 'windows-1252';
@@ -177,8 +176,6 @@ $messages = array(
 'portal-url'           => 'Project:Jamoa portali',
 'privacy'              => 'Konfidensiallik siyosati',
 'privacypage'          => 'Project:Konfidensiallik siyosati',
-'sitesupport'          => "Loyihaga ko'mak",
-'sitesupport-url'      => "Project:Loyihaga ko'mak",
 
 'retrievedfrom'       => ' "$1" dan olindi',
 'youhavenewmessages'  => 'Sizga $1 keldi ($2).',
@@ -266,7 +263,9 @@ Sizni $1 chetlashtirdi. Bunga sabab: ''$2''.
 Siz $1 yoki boshqa [[{{MediaWiki:Grouppage-sysop}}|administrator]] bilan bogʻlanib, arz qilishingiz mumkin.
 Sizning hozirgi IP manzilingiz - $3, chetlashtirish raqamingiz - #$5. Arizaga bularni ilova qilishingiz mumkin.",
 'newarticle'             => '(Yangi)',
-'newarticletext'         => "Bu sahifa hali mavjud emas. Sahifani yaratish uchun quyida matn kiritishingiz mumkin (qo'shimcha axborot uchun [[Help:Mundarija|yordam sahifasini]] ko'ring). Agar bu sahifaga xatolik sabab kelgan bo'lsangiz brauzeringizning '''orqaga''' tugmasini bosing.",
+'newarticletext'         => "Bu sahifa hali mavjud emas.
+Sahifani yaratish uchun quyida matn kiritishingiz mumkin (qo'shimcha axborot uchun [[{{MediaWiki:Helppage}}|yordam sahifasini]] ko'ring).
+Agar bu sahifaga xatolik sabab kelgan bo'lsangiz brauzeringizning '''orqaga''' tugmasini bosing.",
 'noarticletext'          => "Bu sahifada hozircha hech qanday matn yo'q. Siz bu sarlavhani boshqa sahifalardan [[Special:Search/{{PAGENAME}}|qidirishingiz]] yoki bu sahifani [{{fullurl:{{FULLPAGENAME}}|action=edit}} tahrirlashingiz] mumkin.",
 'clearyourcache'         => "'''Etibor bering:''' O'zgartirishlaringiz ko'rish uchun, yangi moslamalaringizning saqlashdan keyin, brauser keshini tozalash kerak:<br />
 '''Mozilla / Firefox:''' ''Ctrl+Shift+R'', '''IE:''' ''Ctrl+F5'', '''Safari:''' ''Cmd+Shift+R'', '''Konqueror:''' ''F5'', '''Opera:''' ''Tools → Preferences'' orqali keshni tozalang.",
@@ -569,7 +568,6 @@ Yaqinda sodir etilgan yoʻqotishlar uchun $2ni koʻring.',
 'tooltip-n-recentchanges'         => "Yangi o'zgarishlar ro'yxati.",
 'tooltip-n-randompage'            => 'Tasodifiy sahifani yuklash',
 'tooltip-n-help'                  => "O'rganish uchun manzil.",
-'tooltip-n-sitesupport'           => "Bizni qo'llab quvvatlang.",
 'tooltip-t-whatlinkshere'         => "Bu sahifaga bog'langan sahifalar ro'yxati",
 'tooltip-t-recentchangeslinked'   => "Bu sahifa bog'langan sahifalardagi yangi o'zgarishlar",
 'tooltip-feed-rss'                => "Bu sahifa uchun RSS ta'minot",

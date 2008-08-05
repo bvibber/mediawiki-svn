@@ -6,8 +6,6 @@
  *
  * @author Chinneeb
  * @author לערי ריינהארט
- * @author SPQRobin
- * @author Siebrand
  */
 
 $linkTrail = '/^([a-zабвгдеёжзийклмнопрстуфхцчшщъыьэюя“»]+)(.*)$/sDu';
@@ -57,8 +55,6 @@ $messages = array(
 'underline-always'  => 'Байнга',
 'underline-never'   => 'Хэзээ ч үгүй',
 'underline-default' => 'Броузерын тохиргоотой адил',
-
-'skinpreview' => '(Урьдчилж харах)',
 
 # Dates
 'sunday'        => 'Ням',
@@ -236,8 +232,6 @@ $messages = array(
 'portal-url'           => 'Project:Бүлгэмийн портал',
 'privacy'              => 'Хувийн мэдээллийн талаарх баримтлал',
 'privacypage'          => 'Project:Хувийн мэдээллийн талаарх баримтлал',
-'sitesupport'          => 'Хандив',
-'sitesupport-url'      => 'Project:Хандив өргөх',
 
 'badaccess'        => 'Зөвшөөрлийн алдаа',
 'badaccess-group0' => 'Таньд энэ үйлдлийг гүйцэтгэх зөвшөөрөл байхгүй байна.',
@@ -399,7 +393,8 @@ $2',
 'yourvariant'                => 'Вариант',
 'yournick'                   => 'Дуудах нэр (хоч):',
 'badsig'                     => 'Хүчингүй гарын үсэг байна; HTML тагуудаа шалгаж үзнэ үү.',
-'badsiglength'               => 'Хоч нэр хэтэрхий урт байна; $1 үсгээс богино байх ёстой.',
+'badsiglength'               => 'Хоч нэр хэтэрхий урт байна;
+$1 үсгээс богино байх ёстой.',
 'email'                      => 'Мэйл хаяг',
 'prefs-help-realname'        => 'Жинхэнэ нэрээ заавал оруулах албагүй бөгөөд оруулбал таны хийсэн бүтээлийг түүгээр хаяглана.',
 'loginerror'                 => 'Нэвтрэхэд алдаа гарлаа',
@@ -426,7 +421,7 @@ $2',
 Хамгийн багадаа $1 тэмдэгттэй байх ёстой бөгөөд таны хэрэглэгчийн нэрнээс өөр байх ёстой.',
 'mailmypassword'             => 'Мэйл хаягаар нууц үгийг илгээх',
 'passwordremindertitle'      => '{{SITENAME}}-д нэвтрэх түр зуурын шинэ нууц үг',
-'passwordremindertext'       => 'Хэн нэгэн (бодвол та, IP хаяг нь $1)) {{SITENAME}}-д ($4) шинэ нууц үг явуулах хүсэлтийг тавьсан байна.
+'passwordremindertext'       => 'Хэн нэгэн (бодвол та, IP хаяг нь $1) {{SITENAME}}-д ($4) шинэ нууц үг явуулах хүсэлтийг тавьсан байна.
 "$2" хэрэглэгчийн шинэ нууц үг "$3" боллоо.
 Та одоо нэвтэрч нууц үгээ солих хэрэгтэй.
 
@@ -477,7 +472,7 @@ $2',
 'italic_tip'      => 'Налуу текст',
 'link_sample'     => 'Холбоосны нэр',
 'link_tip'        => 'Дотоод холбоос',
-'extlink_sample'  => 'http://www.жишээ.com холбоосны нэр',
+'extlink_sample'  => 'http://www.example.com холбоосны нэр',
 'extlink_tip'     => 'Гадаад холбоос (эхэнд нь http:// бичихээ мартуузай)',
 'headline_sample' => 'Гарчигийн текст',
 'headline_tip'    => '2-р түвшний гарчиг',
@@ -541,10 +536,6 @@ $2',
 'blockededitsource'         => "Таны '''$1'''-д хийж байгаа '''засваруудын''' текстийг доор үзүүлэв:",
 'whitelistedittitle'        => 'Засварлахын тулд холбогдох шаардлагатай',
 'whitelistedittext'         => 'Хуудсуудад засвар хийхийн тулд та урьдаар $1 хэрэгтэй.',
-'whitelistreadtitle'        => 'Уншихийн тулд та нэвтрэх хэрэгтэй',
-'whitelistreadtext'         => 'Та хуудсуудыг уншихын тулд [[Special:Userlogin|нэвтрэх]] хэрэгтэй.',
-'whitelistacctitle'         => 'Та бүртгэл үүсгэх эрхгүй байна',
-'whitelistacctext'          => '{{SITENAME}}-д хэрэглэгчийн бүртгэл үүсгэхэд та [[Special:Userlogin|нэвтрэн]] орж, зохих зөвшөөрлийг авах шаардлагатай.',
 'confirmedittitle'          => 'Засварлахын тулд мэйлийн баталгаа шаардлагатай',
 'confirmedittext'           => 'Та хуудсуудыг засварлахдаа мэйл хаягаа баталгаажуулах хэрэгтэй.
 [[Special:Preferences|Хэрэглэгчийн тохиргоо]] хэсэгт өөрийнхөө мэйл хаягийг оруулж, баталгаажуулна уу.',
@@ -826,6 +817,7 @@ $3-н тодорхойлсон шалтгаан нь ''$2''",
 'qbsettings-floatingright' => 'Баруун талд хөвсөн',
 'changepassword'           => 'Нууц үгээ өөрчлөх',
 'skin'                     => 'Арьс',
+'skin-preview'             => 'Урьдчилж харах',
 'math'                     => 'Томъёонууд',
 'dateformat'               => 'Огнооний хэлбэр',
 'datedefault'              => 'Анхны байдал',
@@ -875,31 +867,24 @@ math/README-г уншиж тохируулна уу.',
 'files'                    => 'Файлууд',
 
 # User rights
-'userrights'                       => 'Хэрэглэгчдийн эрхийн удирдлага', # Not used as normal message but as header for the special page itself
-'userrights-lookup-user'           => 'Хэрэглэгчдийн бүлгүүдийг удирдах',
-'userrights-user-editname'         => 'Хэрэглэгчийн нэрээ оруулна уу:',
-'editusergroup'                    => 'Хэрэглэгчийн бүлгийг засварлах',
-'editinguser'                      => "Дараах хэрэглэгчийн эрхийг засварлаж байна: '''[[User:$1|$1]]''' ([[User talk:$1|{{int:talkpagelinktext}}]] | [[Special:Contributions/$1|{{int:contribslink}}]])",
-'userrights-editusergroup'         => 'Хэрэглэгчийн бүлгүүдийг засварлах',
-'saveusergroups'                   => 'Хэрэглэгчийн бүлгүүдийг хадгалах',
-'userrights-groupsmember'          => 'Үүний гишүүн:',
-'userrights-groupsremovable'       => 'Авч хаяж болох бүлгүүд:',
-'userrights-groupsavailable'       => 'Байгаа бүлгүүд:',
-'userrights-groups-help'           => 'Та энэ хэрэглэгчийн гишүүн болсон бүлгүүдийг өөрчлөх боломжтой.
+'userrights'                  => 'Хэрэглэгчдийн эрхийн удирдлага', # Not used as normal message but as header for the special page itself
+'userrights-lookup-user'      => 'Хэрэглэгчдийн бүлгүүдийг удирдах',
+'userrights-user-editname'    => 'Хэрэглэгчийн нэрээ оруулна уу:',
+'editusergroup'               => 'Хэрэглэгчийн бүлгийг засварлах',
+'editinguser'                 => "Дараах хэрэглэгчийн эрхийг засварлаж байна: '''[[User:$1|$1]]''' ([[User talk:$1|{{int:talkpagelinktext}}]] | [[Special:Contributions/$1|{{int:contribslink}}]])",
+'userrights-editusergroup'    => 'Хэрэглэгчийн бүлгүүдийг засварлах',
+'saveusergroups'              => 'Хэрэглэгчийн бүлгүүдийг хадгалах',
+'userrights-groupsmember'     => 'Үүний гишүүн:',
+'userrights-groups-help'      => 'Та энэ хэрэглэгчийн гишүүн болсон бүлгүүдийг өөрчлөх боломжтой.
 Хайрцгийг тэмдэглэсэн байвал хэрэглэгч тэр бүлэгт байгаа, тэмдэглээгүй байвал бүлэгт байхгүй гэсэн үг.
 <nowiki>*</nowiki> гэдэг нь нэгэнт нэмсэн бол бүлгийг авч болохгүй, эсвэл түүний эсрэгээр байна гэсэн үг.',
-'userrights-reason'                => 'Өөрчилсөн шалтгаан:',
-'userrights-available-none'        => 'Та бүлгийн гишүүнчлэлийг өөрчилж болохгүй.',
-'userrights-available-add'         => 'Та ямар ч хэрэглэгчийг дараах {{PLURAL:$2|бүлэгт|бүлгүүдэд}} нэмж болно: $1.',
-'userrights-available-remove'      => 'Та ямар ч хэрэглэгчийг дараах {{PLURAL:$2|бүлгээс|бүлгүүдээс}} хасч болно: $1.',
-'userrights-available-add-self'    => 'Та өөрийгөө дараах {{PLURAL:$2|бүлэгт|бүлгүүдэд}} нэмж болно: $1.',
-'userrights-available-remove-self' => 'Та өөрийгөө дараах {{PLURAL:$2|бүлгээс|бүлгүүдээс}} хасч болно: $1.',
-'userrights-no-interwiki'          => 'Таньд өөр викинүүдэд хэрэглэгчдийн эрхийг өөрчлөх зөвшөөрөл байхгүй.',
-'userrights-nodatabase'            => '$1 мэдээллийн сан байхгүй, эсвэл дотоодынх биш байна.',
-'userrights-nologin'               => 'Та хэрэглэгчдийн эрхийг хуваарилахбн тулд администраторын бүртгэлтэйгээр [[Special:Userlogin|нэвтэрч орох]] шаардлагатай.',
-'userrights-notallowed'            => 'Таны бүртгэл хэрэглэгчдийн эрхийг хуваарилах зөвшөөрөлгүй байна.',
-'userrights-changeable-col'        => 'Таны өөрчилж болох бүлгүүд',
-'userrights-unchangeable-col'      => 'Таны өөрчилж болохгүй бүлгүүд',
+'userrights-reason'           => 'Өөрчилсөн шалтгаан:',
+'userrights-no-interwiki'     => 'Таньд өөр викинүүдэд хэрэглэгчдийн эрхийг өөрчлөх зөвшөөрөл байхгүй.',
+'userrights-nodatabase'       => '$1 мэдээллийн сан байхгүй, эсвэл дотоодынх биш байна.',
+'userrights-nologin'          => 'Та хэрэглэгчдийн эрхийг хуваарилахбн тулд администраторын бүртгэлтэйгээр [[Special:Userlogin|нэвтэрч орох]] шаардлагатай.',
+'userrights-notallowed'       => 'Таны бүртгэл хэрэглэгчдийн эрхийг хуваарилах зөвшөөрөлгүй байна.',
+'userrights-changeable-col'   => 'Таны өөрчилж болох бүлгүүд',
+'userrights-unchangeable-col' => 'Таны өөрчилж болохгүй бүлгүүд',
 
 # Groups
 'group'               => 'Бүлэг:',
@@ -1118,11 +1103,11 @@ URL нь зөв болон сайт ажиллагаатай байгаа эсэ
 # File reversion
 'filerevert'                => '$1-г буцаах',
 'filerevert-legend'         => 'Файлыг буцаах',
-'filerevert-intro'          => '<span class="plainlinks">Та \'\'\'[[Media:$1|$1]]\'\'\'-г [$3, $2-ий байдлаарх $4 хувилбар] руу буцааж байна.</span>',
+'filerevert-intro'          => "Та '''[[Media:$1|$1]]'''-г [$3, $2-ий байдлаарх $4 хувилбар] руу буцааж байна.",
 'filerevert-comment'        => 'Тайлбар:',
 'filerevert-defaultcomment' => '$2, $1-ий байдлаарх хувилбар руу буцаалаа',
 'filerevert-submit'         => 'Буцаах',
-'filerevert-success'        => '<span class="plainlinks">\'\'\'[[Media:$1|$1]]\'\'\' нь [$3, $2-ий байдлаарх $4 хувилбар руу] буцаагдлаа.</span>',
+'filerevert-success'        => "'''[[Media:$1|$1]]''' нь [$3, $2-ий байдлаарх $4 хувилбар руу] буцаагдлаа.",
 'filerevert-badversion'     => 'Өгөгдсөн огнооны тэмдэгтэй энэ файлын дотоод хувилбар байхгүй байна.',
 
 # File deletion
@@ -1671,8 +1656,6 @@ $1',
 
 Эдгээр тохиолдлуудад уг хуудсыг гар аргаар зөөх эсвэл нэгтгэх шаардлагатай болно.",
 'movearticle'             => 'Хуудсыг зөөх:',
-'movenologin'             => 'нэвтрээгүй байна',
-'movenologintext'         => 'Та хуудсыг зөөхийн тулд бүртгэлтэй бөгөөд [[Special:Userlogin|холбогдсон]] байх ёстой.',
 'movenotallowed'          => 'Таньд {{SITENAME}} дээрх хуудсуудыг зөөх зөвшөөрөл байхгүй байна.',
 'newtitle'                => 'Шинээр нэрлэх:',
 'move-watch'              => 'Энэ хуудсыг хянах',
@@ -1799,7 +1782,6 @@ $1',
 'tooltip-n-recentchanges'         => '{{SITENAME}} дэх хамгийн сүүлийн өөрчлөлтүүдийн жагсаалт.',
 'tooltip-n-randompage'            => 'Хамаагүй хуудсыг дуудах',
 'tooltip-n-help'                  => 'Туслалцааг олох газар.',
-'tooltip-n-sitesupport'           => 'Биднийг дэмжээрэй',
 'tooltip-t-whatlinkshere'         => 'Энд холбогдсон бүх вики хуудсуудын жагсаалт',
 'tooltip-t-recentchangeslinked'   => 'Энэ хуудаснаас линк хийгдсэн хуудсуудын шинэ өөрчлөлтүүд',
 'tooltip-feed-rss'                => 'Энэ хуудасны RSS фийд',
@@ -1908,7 +1890,7 @@ $1',
 # Special:Newimages
 'newimages'             => 'Шинэ файлуудын галерэй',
 'imagelisttext'         => "Доорх нь $2-р ангилсан '''$1''' файлын жагсаалт юм.",
-'newimages-summary'     => 'Энэ тусгай хуудсанд хамгийн сүүлд оруулагдсан файлуудыг үзүүлнэ',
+'newimages-summary'     => 'Энэ тусгай хуудсанд хамгийн сүүлд оруулагдсан файлуудыг үзүүлнэ.',
 'showhidebots'          => '(Роботуудыг $1)',
 'noimages'              => 'Харах юмгүй.',
 'ilsubmit'              => 'Хайлт',

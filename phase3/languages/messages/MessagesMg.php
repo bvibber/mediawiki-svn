@@ -4,10 +4,7 @@
  * @ingroup Language
  * @file
  *
- * @author SPQRobin
- * @author Siebrand
  * @author Alno
- * @author Nike
  * @author לערי ריינהארט
  */
 
@@ -46,8 +43,6 @@ $messages = array(
 'underline-always'  => 'Foana foana',
 'underline-never'   => 'Tsy tsipihina mihitsy',
 'underline-default' => "Izay itiavan'ny navigateur azy",
-
-'skinpreview' => '(Tsipalotra)',
 
 # Dates
 'sunday'    => 'Alahady',
@@ -155,7 +150,6 @@ $messages = array(
 'mainpage'             => 'Fandraisana',
 'mainpage-description' => 'Fandraisana',
 'portal'               => 'Toerana iraisana',
-'sitesupport'          => 'Fanomezana',
 
 'badaccess'        => 'Tsy manana alàlana',
 'badaccess-group0' => 'Tsy afaka manantontosa ny asa nangatahinao ianao tompoko',
@@ -228,7 +222,7 @@ Mihidy ho azy aloha ny banky angona mandra-pahatratran'ny serveur andevo ny tomp
 'unexpected'      => 'Tsy nandrasana: "$1"="$2".',
 'formerror'       => 'Tsy mety: tsy lasa ny fisy',
 'badarticleerror' => "Tsy azo atao eto amin'ity pejy ity io asa io.",
-'cannotdelete'    => 'Tsy voafafa ny pejy na rakitra nomenao. (Angamba efa nisy olon-kafa namafa ilay izy).)',
+'cannotdelete'    => 'Tsy voafafa ny pejy na rakitra nomenao. (Angamba efa nisy olon-kafa namafa ilay izy.)',
 'badtitle'        => 'Tsy mety ny lohateny',
 'badtitletext'    => "Tsy mety io anaram-pejy nangatahinao io na tsy misy n'inon'inona na rohy dikan-teny vahiny misy diso tsipelina.",
 'perfcached'      => 'Ireto angona ireto dia nalaina tao anaty cache koa mety ho efa lany daty.:',
@@ -259,8 +253,8 @@ Voaforona ny kaontinao. Aza adinoina ny manova ny mombamomba anao ao amin'ny {{S
 'loginprompt'                => "
 Mila manaiky cookies ianao raha te hiditra amin'ny {{SITENAME}}.",
 'userlogin'                  => 'Ampidiro ny solonanarana',
-'logout'                     => 'Hidio',
-'userlogout'                 => 'Hidio',
+'logout'                     => 'Hiala',
+'userlogout'                 => 'Hiala',
 'notloggedin'                => 'Tsy tafiditra',
 'nologin'                    => 'Tsy manana solonanarana? $1.',
 'nologinlink'                => 'Manokafa kaonty',
@@ -289,12 +283,13 @@ Mila manaiky cookies ianao raha te hiditra amin'ny {{SITENAME}}.",
 'nosuchusershort'            => 'Tsy misy mpikambana hoe "<nowiki>$1</nowiki>". Hamarino ny tsipelina.',
 'wrongpassword'              => 'Diso ny tenimiafina. Manandrama tenimiafina hafa azafady.',
 'wrongpasswordempty'         => 'Tsy nampiditra tenimiafina ianao, azafady mba avereno indray.',
-'passwordtooshort'           => 'Fohy loatra io tenimiafina io. Farafahakeliny tokony hisy litera $1 ny tenimiafina.',
+'passwordtooshort'           => 'Fohy loatra io tenimiafina io.
+Farafahakeliny tokony hisy litera $1 ny tenimiafina.',
 'mailmypassword'             => 'Alefaso imailaka ny tenimiafiko',
 'passwordremindertitle'      => "Fampatsiahivana tenimiafina avy amin'i {{SITENAME}}",
 'passwordremindertext'       => 'Nisy olona, izay ianao ihany angamba, avy tamin\'ny adiresy IP $1, nangataka
 ny handefasanay tenimiafina vaovao ho an\'ny sehatra {{SITENAME}} ao amin\'ny
-{{SERVERNAME}}.
+$4.
 Lasa "$3" ankehitriny ny tenimiafin\'i "$2"
 Afaka miditra ary ianao ankehitriny ary manova ny tenimiafinao.
 
@@ -324,7 +319,7 @@ Azafady manomeza adiresy voasoratra tsara na avelao ho banga io toerana io.',
 'italic_tip'      => 'Sora-mandry',
 'link_sample'     => "Soratra eo amin'ny rohy",
 'link_tip'        => 'Rohy anatiny',
-'extlink_sample'  => 'http://www.ohatra.mg rohy lohateny',
+'extlink_sample'  => 'http://www.example.com rohy lohateny',
 'extlink_tip'     => 'Rohy ivelany (tadidio ny tovana http://)',
 'headline_sample' => 'Lohateny anankiray',
 'headline_tip'    => 'Lohatena ambaratonga faha 2',
@@ -350,10 +345,6 @@ Azafady manomeza adiresy voasoratra tsara na avelao ho banga io toerana io.',
 'blockedtitle'           => 'Mpikambana voasakana',
 'whitelistedittitle'     => 'Midira/Misorata anarana',
 'whitelistedittext'      => "Mila $1 aloha ianao vao afaka manova/mamorona pejy eto amin'ity wiki ity.",
-'whitelistreadtitle'     => 'Mila miditra vao mamaky pejy',
-'whitelistreadtext'      => "Mila [[Special:Userlogin|miditra/misoratra anarana]] ianao vao afaka mijery ny votoatin'ny pejy.",
-'whitelistacctitle'      => "Tsy manana alàlana hamorona kaonty eto amin'ity wiki ity ianao",
-'whitelistacctext'       => "Mila [[Special:Userlogin|miditra/misoratra anarana]] aloha ianao ary manana ny fahazoan-dàlana takiana vao afaka mamorona kaonty eto amin'ity wiki ity.",
 'loginreqtitle'          => 'Mila fidirana',
 'loginreqlink'           => 'hiditra',
 'loginreqpagetext'       => 'Tokony $1 ianao raha te hijery pejy hafa.',
@@ -460,6 +451,7 @@ ihany no miseho amin'ny vokatry ny karoka).",
 'prefsnologintext'      => '[[Special:Userlogin|Midira]] aloha izay vao manova ny mombamomba anao.',
 'changepassword'        => 'Hanova tenimiafina',
 'skin'                  => 'Endrika',
+'skin-preview'          => 'Tsipalotra',
 'dateformat'            => 'endriky ny daty',
 'datetime'              => 'Daty sy ora',
 'math_failure'          => 'Tsy nety ny fanodinana ny raikipohy',
@@ -491,13 +483,12 @@ Fenoy araka ny datin'ny solosainan'ny mpitsidika",
 'files'                 => 'Rakitra',
 
 # User rights
-'userrights'                 => 'Fandrindràna ny fahazoan-dàlana', # Not used as normal message but as header for the special page itself
-'userrights-lookup-user'     => 'Handrindra vondrom-pikambana',
-'userrights-user-editname'   => 'Manomeza solonanarana:',
-'userrights-editusergroup'   => 'Hanova vondrom-pikambana',
-'saveusergroups'             => 'Tehirizo ny vondrom-pikambana',
-'userrights-groupsmember'    => "Mpikambana amin'ny vondrona:",
-'userrights-groupsavailable' => 'Vondrona misy:',
+'userrights'               => 'Fandrindràna ny fahazoan-dàlana', # Not used as normal message but as header for the special page itself
+'userrights-lookup-user'   => 'Handrindra vondrom-pikambana',
+'userrights-user-editname' => 'Manomeza solonanarana:',
+'userrights-editusergroup' => 'Hanova vondrom-pikambana',
+'saveusergroups'           => 'Tehirizo ny vondrom-pikambana',
+'userrights-groupsmember'  => "Mpikambana amin'ny vondrona:",
 
 # User rights log
 'rightslogtext' => "Tantaran'asa momba ny fahazoan-dàlan'ny mpikambana.",
@@ -890,8 +881,6 @@ Azafady mba antero fa izay tokoa no tena irinao.",
 # Move page
 'move-page-legend'        => 'Afindrao toerana ny pejy',
 'movearticle'             => 'Afindrao toerana ny pejy',
-'movenologin'             => 'Tsy mbola tafiditra ianao',
-'movenologintext'         => 'Ny mpikambana nisoratra anarana sy [[Special:Userlogin|tafiditra]] ihany no afaka mamindra toerana takelaka.',
 'newtitle'                => 'Lohateny vaovao',
 'movepagebtn'             => 'Afindrao',
 'pagemovedsub'            => 'Voafindra ny pejy',
@@ -928,7 +917,7 @@ Ny fomba fanondranana pejy dia, manomeza lohateny izay na maromaro eto amin'ny b
 ary safidio na ny votoatiny ankehitriny ihany no ilainao na miaraka amin'ny endriky ny pejy rehetra taloha, sy hoe ny votoatiny ankehitriny
 miampy fampahalalana momba ny fanovana farany fotsiny ve sa miaraka amin'ny tantaran'ny fanovana rehetra.
 
-Etsy amin'ny toerana farany dia afaka mampiasa rohy ihany koa ianao, ohatra [[{{ns:special}}:Export/{{Mediawiki:Mainpage}}]] ho an'ny [[{{Mediawiki:Mainpage}}]].",
+Etsy amin'ny toerana farany dia afaka mampiasa rohy ihany koa ianao, ohatra [[{{ns:special}}:Export/{{MediaWiki:Mainpage}}]] ho an'ny [[{{MediaWiki:Mainpage}}]].",
 'exportcuronly'   => "Ny votoatiny ankehitriny ihany no haondrana fa tsy miaraka amin'ny tantarany iray manontolo",
 'exportnohistory' => "
 ----
@@ -996,8 +985,7 @@ Amporisihina ho an'ny navigateur moderna",
 'nextdiff'     => 'fampitahana manaraka →',
 
 # Media information
-'mediawarning' => "'''Fampitandremana''': Tsy azo antoka ho tsy misy viriosy ity rakitra ity, ahiana hanimba ny solosainao ny fandefasana azy.
-<hr>",
+'mediawarning' => "'''Fampitandremana''': Tsy azo antoka ho tsy misy viriosy ity rakitra ity, ahiana hanimba ny solosainao ny fandefasana azy.<hr />",
 'imagemaxsize' => "Ferana ny haben'ny sary ao amin'ny pejy famaritana ho:",
 'thumbsize'    => "Haben'ny thumbnail",
 

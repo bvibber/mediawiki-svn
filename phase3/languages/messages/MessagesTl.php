@@ -7,7 +7,6 @@
  * @author Sky Harbor
  * @author לערי ריינהארט
  * @author Felipe Aira
- * @author Siebrand
  */
 
 $messages = array(
@@ -53,8 +52,6 @@ $messages = array(
 'underline-always'  => 'Palagi',
 'underline-never'   => 'Hindi magpakailanman',
 'underline-default' => 'Tinakda ng pambasa-basa',
-
-'skinpreview' => '(Pribyu)',
 
 # Dates
 'sunday'        => 'Linggo',
@@ -219,8 +216,6 @@ $messages = array(
 'portal-url'           => 'Project:Puntahan ng pamayanan',
 'privacy'              => 'Patakaran sa paglilihim',
 'privacypage'          => 'Project:Patakaran sa paglilihim',
-'sitesupport'          => 'Donasyon',
-'sitesupport-url'      => 'Project:Donasyon',
 
 'badaccess'        => 'Kamalian sa pahintulot',
 'badaccess-group0' => 'Hindi ka pinahintulutang isagawa hiniling mo.',
@@ -381,6 +376,7 @@ Nilikha na ang iyong kuwenta. Huwag kalimutang baguhin ang iyong mga kagustuhan 
 # Preferences page
 'preferences'   => 'Mga kagustuhan',
 'mypreferences' => 'Aking mga kagustuhan',
+'skin-preview'  => 'Pribyu',
 
 # Recent changes
 'recentchanges'     => 'Mga huling binago',
@@ -532,14 +528,11 @@ $1',
 'unlockdb' => 'Buksan ang kalipunan ng datos',
 
 # Move page
-'movenologin'             => 'Hindi nakalagda',
-'movenologintext'         => 'Kailangang ikaw ay isang naka-rehistrong manggagamit at ay [[Special:Userlogin|nakalagda]] upang makapaglipat ng pahina.',
 'movenotallowed'          => 'Wala kang permisong maglipat ng pahina sa {{SITENAME}}.',
 'newtitle'                => 'Sa bagong pamagat:',
 'move-watch'              => 'Bantayan itong pahina',
 'movepagebtn'             => 'Ilipat ang pahina',
 'pagemovedsub'            => 'Matagumpay ang paglipat',
-'movepage-moved'          => '<big>\'\'\'Ang "$1" ay inilipat sa "$2"\'\'\'</big>', # The two titles are passed in plain text as $3 and $4 to allow additional goodies in the message.
 'articleexists'           => 'May umiiral nang pahinang may ganitong pangalan, o ang
 pangalang pinili mo ay hindi mabisa.
 Pumili muli ng ibang pangalan.',

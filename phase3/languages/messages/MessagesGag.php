@@ -5,8 +5,6 @@
  * @file
  *
  * @author Cuman
- * @author Nike
- * @author Siebrand
  */
 
 $fallback = 'tr';
@@ -55,8 +53,6 @@ $messages = array(
 'underline-always'  => 'Dayma',
 'underline-never'   => 'Hiç bir zaman',
 'underline-default' => 'Brauzer karar kabletsin',
-
-'skinpreview' => '(Ön siir)',
 
 # Dates
 'sunday'        => 'Pazar',
@@ -225,8 +221,6 @@ $messages = array(
 'portal-url'           => 'Project:Topluluk portalı',
 'privacy'              => 'Saklamaa politikası',
 'privacypage'          => 'Project:Saklamaa politikası',
-'sitesupport'          => 'Baaşişlär',
-'sitesupport-url'      => 'Project:Baaşiş',
 
 'badaccess'        => 'İzin kusurluu',
 'badaccess-group0' => 'Bu işlemi yapmaa kuvediniz yok.',
@@ -376,7 +370,7 @@ O zamana kadar ani e-maildaki instrukțiyalar yapılmaycêk hem doorulanmaycêk 
 'italic_tip'      => 'İtalik tekst',
 'link_sample'     => 'Sayfanın adı',
 'link_tip'        => 'İç baalantı',
-'extlink_sample'  => '{{SERVER}} adres adı',
+'extlink_sample'  => 'http://www.example.com adres adı',
 'extlink_tip'     => 'Dış baalantı (Unutmayın adresin önüne http:// koymaa)',
 'headline_sample' => 'Başlık teksti',
 'headline_tip'    => '2. düzey başlık',
@@ -510,6 +504,7 @@ Nışannar: (bitki) = şindiki versiyalan aradaki fark,
 # Preferences page
 'preferences'   => 'Seçimner',
 'mypreferences' => 'Seçimnerim',
+'skin-preview'  => 'Ön siir',
 'retypenew'     => 'Eni parolu tekrar girin',
 
 # User rights
@@ -652,7 +647,7 @@ Nışannar: (bitki) = şindiki versiyalan aradaki fark,
 'allpagesprefix' => 'Gösterin sayfaları angıları çekeder bukvalarlan ani buraya yazdınız:',
 
 # Special:Categories
-'categories' => '{{PLURAL:$1|Kategoriya|Kategoriyalar}}',
+'categories' => 'Kategoriyalar',
 
 # E-mail user
 'emailuser' => 'Gönder bu kullanıcıya bir e-mail',
@@ -766,7 +761,7 @@ Burada bitki seçimner <strong>$1</strong> yazı diiştirmää deyni:',
 'movepagetext'     => "Aşaadaki formayı kullanılarak var nicä sayfanın adın diiştirin, onnan bilä hepsi diiştirmää jurnalı eni ada aktarılacêk.
 Eski ad eni ada yönnendirmäk olacêk.
 Eski başlaa baalantılar diişmeycek;
-[[Special:DoubleRedirects|çift]] yaki [[Special:BrokenRedirects|yannış]] yönnendirmäkleri.
+çift yaki yannış yönnendirmäkleri.
 Läazım inanmaa ani baalantılar genä dä gösterer orayı nerä läazım göstersin.
 
 Herliim ilerdän eni adda sayfa vardı, ad diişmää '''yapılmaycêk'''.
@@ -787,7 +782,6 @@ Bu hallerdä läazım kendiniz ellän sayfaları aktarmaa yaki birleştirmää."
 'move-watch'       => 'Bak bu sayfaya',
 'movepagebtn'      => 'Adı diiştir',
 'pagemovedsub'     => 'Ad diişmäk tamannandı.',
-'movepage-moved'   => '<big>"$1" sayfasın eni adı: "$2"</big>', # The two titles are passed in plain text as $3 and $4 to allow additional goodies in the message.
 'articleexists'    => 'Bu adda bir sayfa bulunêr yaki o ad geçersiz angısını seçtiniz.
 Yalvarêrêz başka bir ad seçmää.',
 'talkexists'       => "'''Bu sayfa kendisi başarılan aktarıldı, ama konuşmaa sayfası aktarılamadı neçin ki eni ad altında bulunêr taa birisi. Yalvarêrêz onnarı ellän birleştirmää.'''",
@@ -835,7 +829,6 @@ Yalvarêrêz başka bir ad seçmää.',
 'tooltip-n-recentchanges'         => 'Bitki diişmäklär listası angıları Vikidä yapıldı.',
 'tooltip-n-randompage'            => 'Razgele bir yazıya gidin',
 'tooltip-n-help'                  => 'Yardım almaa deyni',
-'tooltip-n-sitesupport'           => 'Material destek',
 'tooltip-t-whatlinkshere'         => 'Başka viki sayfaların listası angıları bu sayfaa baalantı verdi',
 'tooltip-t-contributions'         => 'Kullanıcının katılmak listasını gör',
 'tooltip-t-emailuser'             => 'Bu kullanıcı için e-mail gönder',

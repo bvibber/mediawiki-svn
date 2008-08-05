@@ -279,7 +279,7 @@ class UploadForm {
 	 * @access private
 	 */
 	function processUpload(){
-		global $wgUser, $wgOut, $wgFileExtensions;
+		global $wgUser, $wgOut, $wgFileExtensions, $wgLang;
 	 	$details = null;
 	 	$value = null;
 	 	$value = $this->internalProcessUpload( $details );
@@ -331,7 +331,8 @@ class UploadForm {
 						implode(
 							wfMsgExt( 'comma-separator', array( 'escapenoentities' ) ),
 							$wgFileExtensions
-						)
+						),
+						$wgLang->formatNum( count($wgFileExtensions) )
 					)
 				);
 				break;
@@ -390,13 +391,17 @@ class UploadForm {
 			return self::BEFORE_PROCESSING;
 		}
 
-		# Chop off any directories in the given filename
+		/**
+		 * Chop off any directories in the given filename. Then
+		 * filter out illegal characters, and try to make a legible name
+		 * out of it. We'll strip some silently that Title would die on.
+		 */
 		if( $this->mDesiredDestName ) {
 			$basename = $this->mDesiredDestName;
 		} else {
 			$basename = $this->mSrcName;
 		}
-		$filtered = wfBaseName( $basename );
+		$filtered = wfStripIllegalFilenameChars( $basename );
 
 		/**
 		 * We'll want to blacklist against *any* 'extension', and use
@@ -421,11 +426,6 @@ class UploadForm {
 			return self::MIN_LENGHT_PARTNAME;
 		}
 
-		/**
-		 * Filter out illegal characters, and try to make a legible name
-		 * out of it. We'll strip some silently that Title would die on.
-		 */
-		$filtered = preg_replace ( "/[^".Title::legalChars()."]|:/", '-', $filtered );
 		$nt = Title::makeTitleSafe( NS_IMAGE, $filtered );
 		if( is_null( $nt ) ) {
 			$resultDetails = array( 'filtered' => $filtered );
@@ -515,6 +515,7 @@ class UploadForm {
 			global $wgCheckFileExtensions;
 			if ( $wgCheckFileExtensions ) {
 				if ( !$this->checkFileExtension( $finalExt, $wgFileExtensions ) ) {
+					global $wgLang;
 					$warning .= '<li>' .
 					wfMsgExt( 'filetype-unwanted-type',
 						array( 'parseinline' ),
@@ -522,7 +523,8 @@ class UploadForm {
 						implode(
 							wfMsgExt( 'comma-separator', array( 'escapenoentities' ) ),
 							$wgFileExtensions
-						)
+						),
+						$wgLang->formatNum( count($wgFileExtensions) )
 					) . '</li>';
 				}
 			}
@@ -1697,7 +1699,7 @@ wgUploadAutoFill = {$autofill};
 	function showError( $description ) {
 		global $wgOut;
 		$wgOut->setPageTitle( wfMsg( "internalerror" ) );
-		$wgOut->setRobotpolicy( "noindex,nofollow" );
+		$wgOut->setRobotPolicy( "noindex,nofollow" );
 		$wgOut->setArticleRelated( false );
 		$wgOut->enableClientCache( false );
 		$wgOut->addWikiText( $description );

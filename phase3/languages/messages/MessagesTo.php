@@ -4,11 +4,9 @@
  * @ingroup Language
  * @file
  *
- * @author SPQRobin
  * @author Tauʻolunga
- * @author Siebrand
- * @author לערי ריינהארט
  * @author Cbrown1023
+ * @author לערי ריינהארט
  */
 
 $messages = array(
@@ -28,8 +26,6 @@ $messages = array(
 'underline-always'  => 'Taimi kotoa',
 'underline-never'   => 'ʻIkai teitei',
 'underline-default' => 'Palausa tuʻunga',
-
-'skinpreview' => '(Vakai pē)',
 
 # Dates
 'sunday'        => 'Sāpate',
@@ -168,7 +164,6 @@ $messages = array(
 'mainpage-description' => 'Peesi tali fiefia',
 'portal'               => 'Fale fakataha',
 'portal-url'           => 'Project:Fale fakataha',
-'sitesupport'          => 'Ngaahi meʻa ʻofa',
 
 'badaccess'        => 'Halaʻi fakangofua',
 'badaccess-group0' => 'ʻOku ʻikai ngofua kia te koe ʻo fai ʻa e ngāue naʻa ke eke ki ai.',
@@ -318,7 +313,7 @@ Kapau naʻe kole ia ʻe he tokotaha kehe, pea ʻosi hoʻo manatuʻi ʻo e leatap
 'italic_tip'      => 'Mataʻitohi mahei',
 'link_sample'     => 'Hingoa ʻo e fehokotaki',
 'link_tip'        => 'Fehokotaki fakalotovā',
-'extlink_sample'  => 'Hingoa fakafehokotaki http://www.fakatātā.to',
+'extlink_sample'  => 'http://www.example.com Hingoa fakafehokotaki',
 'extlink_tip'     => 'Fehokotaki ki tuʻa (manatuʻi ko e fakapipikimuʻa — http://)',
 'headline_sample' => 'Mataʻitohi tuʻumuʻa',
 'headline_tip'    => 'Tuʻumuʻa fakatuʻunga hono 2',
@@ -344,10 +339,6 @@ Kapau naʻe kole ia ʻe he tokotaha kehe, pea ʻosi hoʻo manatuʻi ʻo e leatap
 'blockededitsource'       => "ʻOku ʻasi ʻi lalo ʻa e tohi ʻo '''hoʻo ngaahi fatu''' ki he '''$1''':",
 'whitelistedittitle'      => 'ʻOku pau ke kau ki ai ke fatuʻi',
 'whitelistedittext'       => 'ʻOku pau te ke $1 kapau te ke fiefatu ʻa e ngaahi kupu.',
-'whitelistreadtitle'      => 'ʻOku pau ke kau ki ai ke lau',
-'whitelistreadtext'       => 'ʻOku pau te ke [[Special:Userlogin|kau ki ai]] kapau te ke fielau ʻa e ngaahi kupu.',
-'whitelistacctitle'       => 'ʻOku ʻikai ngofua kia te koe ʻe fakatupu ha tohi kau-ki-ai',
-'whitelistacctext'        => 'Ke tuku ange ʻi he fakatupu ʻo e ngaahi tohi kau-ki-ai ʻi heni, ʻoku pau te ke [[Special:Userlogin|kau-ki-ai]] mo ʻoku ʻi ai haʻo fakangofua totonu.',
 'confirmedittitle'        => 'ʻOku pau ʻe fakaʻmoʻoniʻi hoʻo tohila kapau te ke fieʻetita',
 'confirmedittext'         => 'ʻOku pau te ke fakamoʻoniʻi ho tuʻasila tohila ʻi muʻa hoʻo fatu kupu. Kātaki ʻe fakamoʻoniʻi ia ngāueʻaki hoʻo [[Special:Preferences|faʻiteliha]] fakaʻetita.',
 'loginreqtitle'           => 'ʻOku pau te ke kau ki ai',
@@ -441,6 +432,7 @@ Ko e konga ʻi olunga, ko e '''konga pē ʻe taha''' ʻe haofaki ʻi he lomiʻi 
 'prefsnologin'          => 'ʻOku ʻikai kau ki ai',
 'changepassword'        => 'Liliu hoʻo leatapu',
 'skin'                  => 'Kili',
+'skin-preview'          => 'Vakai pē',
 'math'                  => 'Matematika',
 'dateformat'            => 'Ngaohi ʻo e ʻaho',
 'datedefault'           => 'ʻIkai ha faʻiteliha',
@@ -580,11 +572,11 @@ Ko e konga ʻi olunga, ko e '''konga pē ʻe taha''' ʻe haofaki ʻi he lomiʻi 
 # File reversion
 'filerevert'                => 'Toe foki $1 ki hono tuʻunga muʻa',
 'filerevert-legend'         => 'Toe foki ʻa e faile ki hono tuʻunga muʻa',
-'filerevert-intro'          => '<span class="plainlinks">ʻOku ke toe foki ʻa e \'\'\'[[Media:$1|$1]]\'\'\' ki hono tuʻunga muʻa, paaki $4 ʻo e $2 $3.</span>',
+'filerevert-intro'          => "ʻOku ke toe foki ʻa e '''[[Media:$1|$1]]''' ki hono tuʻunga muʻa, paaki $4 ʻo e $2 $3.",
 'filerevert-comment'        => 'Fakamatala:',
 'filerevert-defaultcomment' => 'Kuo toe foki $1 ki hono tuʻunga muʻa ʻo e $2',
 'filerevert-submit'         => 'Toe foki ki hono tuʻunga muʻa',
-'filerevert-success'        => '<span class="plainlinks">Kuo toe foki ʻa e \'\'\'[[Media:$1|$1]]\'\'\' ki hono tuʻunga muʻa, paaki $4 ʻo e $2 $3.</span>',
+'filerevert-success'        => "Kuo toe foki ʻa e '''[[Media:$1|$1]]''' ki hono tuʻunga muʻa, paaki $4 ʻo e $2 $3.",
 
 # MIME search
 'mimesearch' => 'Kumi fakaMIME',
@@ -910,13 +902,10 @@ Vakai ki he [[Special:Log/delete|hokohoko tāmateʻi]] ki he lekooti ʻo e ngaah
 *te ke tiki ʻa e puha ʻi lalo.
 ʻI he meʻa ko ia, ʻe ʻunuʻi pe fakatahaʻi ʻa e peesi alea faiʻaki ʻa e nima.",
 'movearticle'             => 'ʻUnu ʻa e kupu',
-'movenologin'             => 'ʻOku ʻikai ke kau-ki-ai',
-'movenologintext'         => 'Kuo pau ko e ʻetita lēsisita koe pea [[Special:Userlogin|kau-ki-ai]] kapau te ke fieʻunu ha peesi.',
 'newtitle'                => 'Ki he hingoa foʻou',
 'move-watch'              => 'Leʻo he pēsí ni',
 'movepagebtn'             => 'Peesi ʻunu',
 'pagemovedsub'            => 'Kuo ola ʻa e ʻunu',
-'movepage-moved'          => "<big>Kuo ʻunu ʻa e '''\"\$1\"''' ki he '''\"\$2\"'''</big>", # The two titles are passed in plain text as $3 and $4 to allow additional goodies in the message.
 'articleexists'           => 'ʻOku toka ʻi ai ha peesi mo e hingoa ē, pe ʻoku ʻikai sai ʻa e hingoa ʻoku ke fiemaʻu. Kātaki fili ha hingoa kehe.',
 'talkexists'              => "'''Kuo ola ʻa e ʻunu ʻo e peesi ia, kā naʻe ʻikai ʻunu he peesi alea koeʻuhi ʻoku toe tuʻu ha peesi pehē mo e hingoa foʻou. Kātaki fakataha kinaua faiʻaki ʻa e nima.'''",
 'movedto'                 => 'kuo ʻunu ki he',

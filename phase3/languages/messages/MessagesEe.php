@@ -4,13 +4,20 @@
  * @ingroup Language
  * @file
  *
+ * @author M.M.S.
  * @author Natsubee
  * @author Cbrown1023
- * @author M.M.S.
  */
 
 $messages = array(
 # Dates
+'sun'           => 'Dzo',
+'mon'           => 'Dzo',
+'tue'           => 'Brã',
+'wed'           => 'Kuɖ',
+'thu'           => 'Yaw',
+'fri'           => 'Fiɖ',
+'sat'           => 'Mem',
 'january'       => 'Dzove',
 'february'      => 'Dzodze',
 'march'         => 'Tedoxe',
@@ -81,7 +88,6 @@ $messages = array(
 'edithelp'          => 'Kpekpeɖeŋu na etɔtrɔ',
 'portal'            => 'Takpekpewɔƒe',
 'portal-url'        => 'Project:Takpekpewɔƒe',
-'sitesupport'       => 'Wɔ nunana',
 
 'newmessageslink' => 'du yeyewo',
 'editsection'     => 'trɔ asi le eŋu',
@@ -183,7 +189,6 @@ $messages = array(
 'tooltip-search'          => 'Dii {{SITENAME}}',
 'tooltip-n-recentchanges' => 'Tɔtrɔ yeyewo le wiki sia me.',
 'tooltip-n-help'          => 'Nuwo srɔ̃ƒe',
-'tooltip-n-sitesupport'   => 'Kpe ɖe mía ŋu',
 'tooltip-t-whatlinkshere' => 'Wiki nuŋɔŋlɔwo katã siwo ku ɖe afii ŋuti',
 'tooltip-t-upload'        => 'Ɖo nutatawo kple nuƒoƒowo ɖa',
 'tooltip-t-specialpages'  => 'Axa tɔxewo ƒe xexlẽme',

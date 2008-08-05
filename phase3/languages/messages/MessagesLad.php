@@ -7,7 +7,6 @@
  * @author ILVI
  * @author Taichi
  * @author לערי ריינהארט
- * @author SPQRobin
  * @author Runningfridgesrule
  */
 
@@ -158,7 +157,6 @@ $messages = array(
 'portal'               => 'Portal de la komunidád',
 'privacy'              => 'Politika de proteksion de informasiones',
 'privacypage'          => 'Project:Politika de proteksion de informasiones',
-'sitesupport'          => 'Donasiones',
 
 'badaccess' => 'Falta de permesos',
 

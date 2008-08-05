@@ -5,13 +5,9 @@
  * @file
  *
  * @author WikedKentaur
- * @author SPQRobin
- * @author Siebrand
  * @author M.M.S.
- * @author Nike
  * @author לערי ריינהארט
  * @author Võrok
- * @author Jon Harald Søby
  */
 
 $namespaceNames = array(
@@ -129,8 +125,6 @@ $messages = array(
 'underline-always'  => 'Alati',
 'underline-never'   => 'Mitte kunagi',
 'underline-default' => 'Brauseri vaikeväärtus',
-
-'skinpreview' => '(Eelvaade)',
 
 # Dates
 'sunday'        => 'pühapäev',
@@ -290,8 +284,6 @@ ning [http://meta.wikimedia.org/wiki/MediaWiki_User%27s_Guide kasutusjuhendit].'
 'portal-url'           => 'Project:Kogukonnavärav',
 'privacy'              => 'Privaatsus',
 'privacypage'          => 'Project:Privaatsus',
-'sitesupport'          => 'Annetused',
-'sitesupport-url'      => 'Project:Annetused',
 
 'badaccess' => 'Õigus puudub',
 
@@ -333,7 +325,7 @@ ning [http://meta.wikimedia.org/wiki/MediaWiki_User%27s_Guide kasutusjuhendit].'
 'error'                => 'Viga',
 'databaseerror'        => 'Andmebaasi viga',
 'dberrortext'          => 'Andmebaasipäringus oli süntaksiviga.
-Otsingupäring oli ebakorrektne (vaata $5) või on tarkvaras viga.
+Otsingupäring oli ebakorrektne või on tarkvaras viga.
 Viimane andmebaasipäring oli:
 <blockquote><tt>$1</tt></blockquote>
 ja see kutsuti funktsioonist "<tt>$2</tt>".
@@ -449,7 +441,7 @@ Pärast parooli saamist logige palun sisse.',
 'italic_tip'      => 'Kaldkiri',
 'link_sample'     => 'Lingitav pealkiri',
 'link_tip'        => 'Siselink',
-'extlink_sample'  => 'http://www.välislink.ee Lingi nimi',
+'extlink_sample'  => 'http://www.example.com Lingi nimi',
 'extlink_tip'     => 'Välislink (ärge unustage kasutada http:// eesliidet)',
 'headline_sample' => 'Pealkiri',
 'headline_tip'    => '2. taseme pealkiri',
@@ -492,10 +484,6 @@ Pange tähele, et Te ei saa sellele kasutajale teadet saata, kui Te pole registr
 Teie praegune IP on $3 ning blokeeringu number on #$5. Lisage vähemalt üks nendest kõigile järelpärimistele, mida kavatsete teha.",
 'whitelistedittitle'       => 'Redigeerimiseks tuleb sisse logida',
 'whitelistedittext'        => 'Lehekülgede toimetamiseks peate $1.',
-'whitelistreadtitle'       => 'Lugemiseks peate olema sisse logitud',
-'whitelistreadtext'        => 'Lehekülgede lugemiseks peate [[Special:Userlogin|sisse logima]].',
-'whitelistacctitle'        => 'Teil pole õigust kasutajakontot luua',
-'whitelistacctext'         => 'Et selles Vikis kontosid luua, peate olema [[Special:Userlogin|sisse logitud]] ja omama vastavaid õigusi.',
 'loginreqtitle'            => 'Vajalik on sisselogimine',
 'loginreqlink'             => 'sisse logima',
 'loginreqpagetext'         => 'Lehekülgede vaatamiseks peate $1.',
@@ -557,7 +545,7 @@ Lehe eelnevad kustutamised:",
 
 # "Undo" feature
 'undo-success' => 'Selle redaktsiooni käigus tehtud muudatusi saab eemaldada. Palun kontrolli allolevat võrdlust veendumaks, et tahad need muudatused tõepoolest eemaldada. Seejärel saad lehekülje salvestada.',
-'undo-summary' => 'Tühistati muudatus $1, mille tegi [[Special:Contributions/$2|$2]] ([[User_talk:$2|Arutelu]])',
+'undo-summary' => 'Tühistati muudatus $1, mille tegi [[Special:Contributions/$2|$2]] ([[User talk:$2|Arutelu]])',
 
 # History pages
 'viewpagelogs'        => 'Vaata selle lehe logisid',
@@ -593,7 +581,7 @@ Legend: (viim) = erinevused võrreldes viimase redaktsiooniga,
 
 # Search results
 'searchresults'         => 'Otsingu tulemused',
-'searchresulttext'      => 'Lisainfot otsimise kohta vaata $1.',
+'searchresulttext'      => 'Lisainfot otsimise kohta vaata [[{{MediaWiki:Helppage}}|{{int:help}}]].',
 'searchsubtitle'        => 'Päring "[[:$1]]"',
 'searchsubtitleinvalid' => 'Päring "$1"',
 'noexactmatch'          => "'''Artiklit pealkirjaga \"\$1\" ei leitud.''' Võite [[:\$1|selle artikli luua]].",
@@ -625,6 +613,7 @@ sisse logida.',
 'qbsettings-floatingleft' => 'Ujuvalt vasakul',
 'changepassword'          => 'Muuda parool',
 'skin'                    => 'Kujundus',
+'skin-preview'            => 'Eelvaade',
 'math'                    => 'Valemite näitamine',
 'dateformat'              => 'Kuupäeva formaat',
 'datedefault'             => 'Eelistus puudub',
@@ -666,15 +655,14 @@ sisse logida.',
 'files'                   => 'Failid',
 
 # User rights
-'userrights'                 => 'Kasutaja õiguste muutmine', # Not used as normal message but as header for the special page itself
-'userrights-lookup-user'     => 'Muuda kasutajagruppi',
-'userrights-user-editname'   => 'Sisesta kasutajatunnus:',
-'editusergroup'              => 'Muuda kasutajagruppi',
-'editinguser'                => "Redigeerimisel on '''[[User:$1|$1]]''' ([[User talk:$1|{{int:talkpagelinktext}}]] | [[Special:Contributions/$1|{{int:contribslink}}]])",
-'userrights-editusergroup'   => 'Kasutajagrupi valik',
-'saveusergroups'             => 'Salvesta grupi muudatused',
-'userrights-groupsmember'    => 'Kuulub gruppi:',
-'userrights-groupsavailable' => 'Võimalik lisada gruppidesse:',
+'userrights'               => 'Kasutaja õiguste muutmine', # Not used as normal message but as header for the special page itself
+'userrights-lookup-user'   => 'Muuda kasutajagruppi',
+'userrights-user-editname' => 'Sisesta kasutajatunnus:',
+'editusergroup'            => 'Muuda kasutajagruppi',
+'editinguser'              => "Redigeerimisel on '''[[User:$1|$1]]''' ([[User talk:$1|{{int:talkpagelinktext}}]] | [[Special:Contributions/$1|{{int:contribslink}}]])",
+'userrights-editusergroup' => 'Kasutajagrupi valik',
+'saveusergroups'           => 'Salvesta grupi muudatused',
+'userrights-groupsmember'  => 'Kuulub gruppi:',
 
 # Groups
 'group'            => 'Grupp:',
@@ -1162,9 +1150,6 @@ enne muudatuse tegemist mõelge palun järele, mis võib olla selle tagajärjeks
 
 Neil juhtudel teisaldage arutelulehekülg soovi korral eraldi või ühendage ta omal käel uue aruteluleheküljega.",
 'movearticle'             => 'Teisalda artiklilehekülg',
-'movenologin'             => 'Te ei ole sisse loginud',
-'movenologintext'         => 'Et lehekülge teisaldada, peate registreeruma
-kasutajaks ja [[Special:Userlogin|sisse logima]]',
 'newtitle'                => 'Uue pealkirja alla',
 'move-watch'              => 'Jälgi seda lehekülge',
 'movepagebtn'             => 'Teisalda artikkel',
@@ -1233,7 +1218,6 @@ Kui soovid MediaWiki tarkvara tõlkimises osaleda siis vaata lehti [http://www.m
 'tooltip-n-recentchanges'         => 'Vikis tehtud viimaste muudatuste loend.',
 'tooltip-n-randompage'            => 'Mine juhuslikule leheküljele',
 'tooltip-n-help'                  => 'Kuidas redigeerida.',
-'tooltip-n-sitesupport'           => 'Toeta meid',
 'tooltip-t-whatlinkshere'         => 'Kõik Viki leheküljed, mis siia viitavad',
 'tooltip-t-recentchangeslinked'   => 'Viimased muudatused lehekülgedel, milledele on siit viidatud',
 'tooltip-feed-rss'                => 'Selle lehekülje RSS sööt',

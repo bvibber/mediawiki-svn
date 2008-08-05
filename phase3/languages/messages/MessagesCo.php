@@ -4,8 +4,6 @@
  * @ingroup Language
  * @file
  *
- * @author SPQRobin
- * @author Siebrand
  */
 
 $messages = array(
@@ -124,7 +122,6 @@ $messages = array(
 'portal-url'           => 'Project:Purtone di a cumunità',
 'privacy'              => 'Pulitica pè a riservatezza',
 'privacypage'          => 'Project:Pulitica pè a riservatezza',
-'sitesupport'          => 'Dunazione',
 
 'versionrequired' => 'A version $1 di MediaWiki hè necessaria',
 
@@ -176,7 +173,8 @@ $messages = array(
 # Edit pages
 'savearticle'            => 'Arrighjistrà a pagina',
 'showdiff'               => 'Mustrà i cambiamenti',
-'anoneditwarning'        => "'''Attenzione''': ùn sè micca un utilizatore registratu, oppuru ùn ai fattu a [[Special:Userlogin|cunnessione]]. U to indirizzu IP serà registratu indu a cronolugia di ista pagina.",
+'anoneditwarning'        => "'''Attenzione''': ùn sè micca un utilizatore registratu, oppuru ùn ai fattu a cunnessione.
+U to indirizzu IP serà registratu indu a cronolugia di ista pagina.",
 'loginreqlink'           => 'cunnessione',
 'accmailtitle'           => 'Parulla secreta inviata.',
 'accmailtext'            => 'A parulla secreta per "$1" hè stata inviata à l\'indirizzu $2.',

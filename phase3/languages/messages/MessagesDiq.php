@@ -6,9 +6,6 @@
  *
  * @author Mirzali
  * @author Belekvor
- * @author Nike
- * @author Siebrand
- * @author SPQRobin
  */
 
 $messages = array(
@@ -57,8 +54,6 @@ href="" class="internal"}?{/a}) bımocne.',
 'underline-always'  => 'tım',
 'underline-never'   => 'qet',
 'underline-default' => 'Qerar browseri (cıgeyraoği) dest dero',
-
-'skinpreview' => '(Verqayt)',
 
 # Dates
 'sunday'        => 'Bazar',
@@ -219,8 +214,6 @@ href="" class="internal"}?{/a}) bımocne.',
 'portal-url'           => 'Project:Portalê cemaeti',
 'privacy'              => 'Maddey dızdine',
 'privacypage'          => 'Project:Maddey dızdine',
-'sitesupport'          => 'Beğş',
-'sitesupport-url'      => 'Project:Beğş',
 
 'badaccess' => 'Xeta mısadey',
 
@@ -320,6 +313,7 @@ It must have at least $1 characters and be different from your username.',
 # Preferences page
 'mypreferences'   => 'tercihê mı',
 'qbsettings-none' => 'çino',
+'skin-preview'    => 'Verqayt',
 'prefs-personal'  => 'Pela karberi',
 'prefs-rc'        => 'Vurnayışê peyêni',
 'prefs-watchlist' => 'Lista seyr-kerdışi',
@@ -398,7 +392,7 @@ It must have at least $1 characters and be different from your username.',
 'allpagessubmit' => 'Şo',
 
 # Special:Categories
-'categories' => '{{PLURAL:$1|Kategoriye|Kategoriy}}',
+'categories' => 'Kategoriy',
 
 # Special:Listusers
 'listusers-submit' => 'Bımocne',

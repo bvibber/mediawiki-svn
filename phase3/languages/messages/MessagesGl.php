@@ -8,11 +8,8 @@
  * @author Toliño
  * @author Prevert
  * @author Xosé
- * @author Siebrand
  * @author Lameiro
  * @author לערי ריינהארט
- * @author SPQRobin
- * @author Jon Harald Søby
  */
 
 $namespaceNames = array(
@@ -82,8 +79,6 @@ $messages = array(
 'underline-always'  => 'Sempre',
 'underline-never'   => 'Nunca',
 'underline-default' => 'Opción do propio navegador',
-
-'skinpreview' => '(Probar)',
 
 # Dates
 'sunday'        => 'Domingo',
@@ -261,8 +256,6 @@ $messages = array(
 'portal-url'           => 'Project:Portal da comunidade',
 'privacy'              => 'Política de Privacidade',
 'privacypage'          => 'Project:Política de Privacidade',
-'sitesupport'          => 'Doazóns',
-'sitesupport-url'      => 'Project:Axuda do sitio',
 
 'badaccess'        => 'Erro de permisos',
 'badaccess-group0' => 'Non ten autorización para executar a acción que solicitou.',
@@ -363,7 +356,7 @@ Por favor, comuníquello a un administrador tomando nota do URL.',
 'cannotdelete'         => 'Non se pode borrar a páxina ou imaxe especificada.
 Se cadra xa foi borrada por alguén.',
 'badtitle'             => 'Título incorrecto',
-'badtitletext'         => 'O título da páxina pedida non era válido, estaba baleiro ou proviña dunha ligazón inter-lingua ou inter-wiki incorrecta. Pode conter un ou máis caracteres dos que non se poden empregar nos títulos.',
+'badtitletext'         => 'O título da páxina pedida non era válido, estaba baleiro ou proviña dunha ligazón interlingua ou interwiki incorrecta. Pode conter un ou máis caracteres dos que non se poden empregar nos títulos.',
 'perfdisabled'         => 'Sentímolo! Esta funcionalidade foi deshabilitada temporalmente porque fai moi lenta a base de datos até o punto no que non se pode usar o wiki.',
 'perfcached'           => 'A información seguinte é da memoria caché e pode ser que non estea completamente actualizada.',
 'perfcachedts'         => 'Esta información é da memoria caché. Última actualización: $1.',
@@ -390,6 +383,11 @@ $2',
 'titleprotected'       => "Este título foi protexido da creación por [[User:$1|$1]].
 A razón dada foi ''$2''.",
 
+# Virus scanner
+'virus-badscanner'     => 'Configuración errónea: escáner de virus descoñecido: <i>$1</i>',
+'virus-scanfailed'     => 'fallou o escaneado (código $1)',
+'virus-unknownscanner' => 'antivirus descoñecido:',
+
 # Login and logout pages
 'logouttitle'                => 'Saída de usuario a anónimo',
 'logouttext'                 => '<strong>Agora está fóra do sistema.</strong>
@@ -398,7 +396,7 @@ Pode continuar usando {{SITENAME}} de xeito anónimo, ou pode acceder de novo co
 Teña en conta que mentres se limpa a memoria caché do seu navegador algunhas páxinas poden continuar a ser amosadas como se aínda estivesen dentro do sistema.',
 'welcomecreation'            => '== Reciba a nosa benvida, $1! ==
 Creouse a súa conta.
-Non esqueza [[Special:Preferences|personalizar]] as súas preferencias en {{SITENAME}}.',
+Non esqueza personalizar as súas preferencias en {{SITENAME}}.',
 'loginpagetitle'             => 'Acceso de usuario',
 'yourname'                   => 'O seu nome de usuario:',
 'yourpassword'               => 'O seu contrasinal:',
@@ -501,13 +499,13 @@ Pode facer caso omiso desta mensaxe se se creou esta conta por erro.',
 'italic_tip'      => 'Texto en cursiva',
 'link_sample'     => 'Título de ligazón',
 'link_tip'        => 'Ligazón interna',
-'extlink_sample'  => 'http://www.exemplo.com título de ligazón',
+'extlink_sample'  => 'http://www.example.com título de ligazón',
 'extlink_tip'     => 'Ligazón externa (lembre o prefixo http://)',
 'headline_sample' => 'Texto de cabeceira',
 'headline_tip'    => 'Cabeceira de nivel 2',
 'math_sample'     => 'Insira unha fórmula aquí',
 'math_tip'        => 'Fórmula matemática (LaTeX)',
-'nowiki_sample'   => 'Insira aquí un texto non formatado',
+'nowiki_sample'   => 'Insira aquí un texto sen formato',
 'nowiki_tip'      => 'Ignorar o formato wiki',
 'image_sample'    => 'Exemplo.jpg',
 'image_tip'       => 'Ficheiro embebido',
@@ -567,10 +565,6 @@ O ID do seu bloqueo é $5. Inclúao nas consultas que faga.',
 'blockededitsource'                => "O texto das '''súas edicións''' en '''$1''' móstrase a continuación:",
 'whitelistedittitle'               => 'Cómpre rexistrarse para poder editar',
 'whitelistedittext'                => 'Ten que $1 para poder editar páxinas.',
-'whitelistreadtitle'               => 'Cómpre rexistrarse para poder ler',
-'whitelistreadtext'                => 'Tense que [[Special:Userlogin|rexistrar]] para poder ler artigos.',
-'whitelistacctitle'                => 'Non se lle permite crear unha conta',
-'whitelistacctext'                 => 'Para que se lle permita crear contas en {{SITENAME}} cómpre [[Special:Userlogin|rexistrarse]] e contar cos permisos apropiados.',
 'confirmedittitle'                 => 'Requírese confirmar o enderezo electrónico para editar',
 'confirmedittext'                  => 'Debe confirmar o enderezo electrónico antes de comezar a editar. Por favor configure e valide o enderezo electrónico mediante as [[Special:Preferences|preferencias de usuario]].',
 'nosuchsectiontitle'               => 'Non existe tal sección',
@@ -587,15 +581,14 @@ Se chegou aquí por erro, simplemente prema no botón '''atrás''' do seu navega
 'anontalkpagetext'                 => "---- ''Esta é a páxina de conversa dun usuario anónimo que aínda non creou unha conta ou que non a usa. Polo tanto, empregamos o enderezo IP para a súa identificación. Este enderezo IP pódeno compartir varios usuarios distintos. Se vostede pensa que foron dirixidos contra a súa persoa comentarios inadecuados, por favor [[Special:Userlogin|cree unha conta]] para evitar futuras confusións con outros usuarios anónimos.''",
 'noarticletext'                    => 'Actualmente non existe texto nesta páxina. Pode [[Special:Search/{{PAGENAME}}|procurar polo título desta páxina]] noutras páxinas ou [{{fullurl:{{FULLPAGENAME}}|action=edit}} editala].',
 'userpage-userdoesnotexist'        => 'A conta do usuario "$1" non está rexistrada. Comprobe se desexa crear/editar esta páxina.',
-'clearyourcache'                   => "'''Nota:''' despois de gravar, cómpre limpar a memoria caché do seu navegador para ver os cambios. '''Mozilla/Firefox/Safari:''' prema ''Maiúsculas'' á vez que en ''Recargar'' ou ''Ctrl-Shift-R'' (''Cmd-Maiúsculas-R'' nos Apple Mac); '''IE:''' prema ''Ctrl'' ao tempo que fai clic en ''Refrescar'' ou prema ''Ctrl-F5''; '''Konqueror:''' simplemente faga clic no botón ''Recargar'' ou prema ''F5''; os usuarios de '''Opera''' pode que teñan que limpar completamente a súa memoria caché en ''Ferramentas→Preferencias''.",
+'clearyourcache'                   => "'''Nota: despois de gravar cómpre limpar a memoria caché do seu navegador para ver os cambios.''' '''Mozilla / Firefox / Safari:''' prema ''Maiúsculas'' á vez que en ''Recargar'', ou prema en ''Ctrl-F5'' ou ''Ctrl-R'' (''Command-R'' nos Macintosh); '''Konqueror: '''faga clic en ''Recargar'' ou prema en ''F5''; '''Opera:''' limpe a súa memoria caché en ''Ferramentas → Preferencias''; '''Internet Explorer:''' prema ''Ctrl'' ao tempo que fai clic en ''Refrescar'', ou prema ''Ctrl-F5''.",
 'usercssjsyoucanpreview'           => '<strong>Nota:</strong> use o botón "Mostrar a vista previa" para verificar o novo CSS/JS antes de gardalo.',
 'usercsspreview'                   => "'''Lembre que só está avaliando o uso do css, non foi aínda gardado!'''",
 'userjspreview'                    => "'''Lembre que só está testando/previsualizando o seu javascript de usuario, non foi aínda gardado!'''",
 'userinvalidcssjstitle'            => "'''Aviso:''' Non hai ningún tema \"\$1\". Lembre que as páxinas .css e .js utilizan un título en minúsculas, como por exemplo {{ns:user}}:Foo/monobook.css no canto de {{ns:user}}:Foo/Monobook.css.",
 'updated'                          => '(Actualizado)',
 'note'                             => '<strong>Nota:</strong>',
-'previewnote'                      => '<strong>Lembre que esta é só unha vista previa
-e que os seus cambios aínda non foron gardados!</strong>',
+'previewnote'                      => '<strong>Lembre que esta é só unha vista previa e que os seus cambios aínda non foron gardados!</strong>',
 'previewconflict'                  => 'Esta vista previa amosa o texto na área superior tal e como aparecerá se escolle gardar.',
 'session_fail_preview'             => '<strong>Sentímolo! O sistema non pode procesar a súa edición porque se perderon os datos de inicio da sesión.
 Por favor, ténteo de novo. Se segue sen funcionar, probe a saír do sistema e volver entrar.</strong>',
@@ -701,7 +694,7 @@ Por favor verifique o URL que utilizou para acceder a esta páxina.',
 'last'                => 'última',
 'page_first'          => 'primeira',
 'page_last'           => 'derradeira',
-'histlegend'          => 'Selección de diferenzas: marque as versións para comparalas e prema o botón ao final.<br />
+'histlegend'          => 'Selección de diferenzas: marque as versións que queira comparar e prema no botón ao final.<br />
 Lenda: (actual) = diferenza coa versión actual,
 (última) = diferenza coa versión precedente, m = edición pequena.',
 'deletedrev'          => '[borrado]',
@@ -715,8 +708,8 @@ Lenda: (actual) = diferenza coa versión actual,
 'history-feed-description'    => 'Historial de revisións desta páxina no wiki',
 'history-feed-item-nocomment' => '$1 en $2', # user at time
 'history-feed-empty'          => 'A páxina solicitada non existe.
-Puido <span class="plainlinks">[{{fullurl:Special:Log|type=delete&page={{FULLPAGENAMEE}}}} borrarse]</span> ou moverse a outro nome.
-Probe a [[{{ns:special}}:Search/{{PAGENAME}}|buscar no wiki]] para atopar as páxinas relacionadas.',
+Puido borrarse ou moverse a outro nome.
+Probe a [[Special:Search|buscar no wiki]] para atopar as páxinas relacionadas.',
 
 # Revision deletion
 'rev-deleted-comment'         => '(comentario eliminado)',
@@ -752,7 +745,7 @@ Outros administradores de {{SITENAME}} poderán acceder aínda ao contido oculto
 'revdelete-unsuppress'        => 'Retirar as restricións sobre as revisións restauradas',
 'revdelete-log'               => 'Comentario do rexistro:',
 'revdelete-submit'            => 'Aplicar á revisión seleccionada',
-'revdelete-logentry'          => 'mudouse a visibilidade da revisión para [[$1]]',
+'revdelete-logentry'          => 'mudou a visibilidade dunha revisión de "[[$1]]"',
 'logdelete-logentry'          => 'mudouse a visibilidade do evento para [[$1]]',
 'revdelete-success'           => "'''Configurouse sen problemas a visibilidade da revisión.'''",
 'logdelete-success'           => "'''Configurouse a visibilidade do evento sen problemas.'''",
@@ -867,6 +860,7 @@ Se quere, pode [[:\$1|creala]].",
 'qbsettings-floatingright' => 'Flotante á dereita',
 'changepassword'           => 'Cambiar o contrasinal',
 'skin'                     => 'Aparencia',
+'skin-preview'             => 'Probar',
 'math'                     => 'Fórmulas matemáticas',
 'dateformat'               => 'Formato da data',
 'datedefault'              => 'Ningunha preferencia',
@@ -916,32 +910,25 @@ Se quere, pode [[:\$1|creala]].",
 'files'                    => 'Ficheiros',
 
 # User rights
-'userrights'                       => 'Xestión dos dereitos de usuario', # Not used as normal message but as header for the special page itself
-'userrights-lookup-user'           => 'Administrar os grupos do usuario',
-'userrights-user-editname'         => 'Escriba o nome do usuario:',
-'editusergroup'                    => 'Editar os grupos do usuario',
-'editinguser'                      => "Mudando os dereitos do usuario '''[[User:$1|$1]]''' ([[User talk:$1|{{int:talkpagelinktext}}]] | [[Special:Contributions/$1|{{int:contribslink}}]])",
-'userrights-editusergroup'         => 'Editar os grupos do usuario',
-'saveusergroups'                   => 'Gardar os grupos do usuario',
-'userrights-groupsmember'          => 'Membro de:',
-'userrights-groupsremovable'       => 'Grupos eliminábeis:',
-'userrights-groupsavailable'       => 'Grupos dispoñíbeis:',
-'userrights-groups-help'           => 'Pode cambiar os grupos aos que o usuario pertence:
+'userrights'                  => 'Xestión dos dereitos de usuario', # Not used as normal message but as header for the special page itself
+'userrights-lookup-user'      => 'Administrar os grupos do usuario',
+'userrights-user-editname'    => 'Escriba o nome do usuario:',
+'editusergroup'               => 'Editar os grupos do usuario',
+'editinguser'                 => "Mudando os dereitos do usuario '''[[User:$1|$1]]''' ([[User talk:$1|{{int:talkpagelinktext}}]] | [[Special:Contributions/$1|{{int:contribslink}}]])",
+'userrights-editusergroup'    => 'Editar os grupos do usuario',
+'saveusergroups'              => 'Gardar os grupos do usuario',
+'userrights-groupsmember'     => 'Membro de:',
+'userrights-groups-help'      => 'Pode cambiar os grupos aos que o usuario pertence:
 * Se a caixa ten un sinal (✓) significa que o usuario pertence a ese grupo.
 * Se, pola contra, non o ten, significa que non pertence.
 * Un asterisco (*) indica que non pode eliminar o grupo unha vez que o engadiu, e viceversa.',
-'userrights-reason'                => 'Razón para a modificación:',
-'userrights-available-none'        => 'Non pode mudar a pertenza ao grupo.',
-'userrights-available-add'         => 'Pode engadir calquera usuario a {{PLURAL:$2|este grupo|estes grupos}}: $1.',
-'userrights-available-remove'      => 'Pode eliminar calquera usuario {{PLURAL:$2|deste grupo|destes grupos}}: $1.',
-'userrights-available-add-self'    => 'Pódese sumar vostede mesmo/a a {{PLURAL:$2|este grupo|estes grupos}}: $1.',
-'userrights-available-remove-self' => 'Pódese retirar vostede mesmo/a {{PLURAL:$2|deste grupo|destes grupos}}: $1.',
-'userrights-no-interwiki'          => 'Non dispón de permiso para editar dereitos de usuarios noutros wikis.',
-'userrights-nodatabase'            => 'A base de datos $1 non existe ou non é local.',
-'userrights-nologin'               => 'Ten que [[Special:Userlogin|rexistrarse]] cunta conta de administrador para asignar dereitos de usuario.',
-'userrights-notallowed'            => 'A súa conta non dispón de permiso para asignar dereitos de usuario.',
-'userrights-changeable-col'        => 'Os grupos que pode cambiar',
-'userrights-unchangeable-col'      => 'Os grupos que non pode cambiar',
+'userrights-reason'           => 'Razón para a modificación:',
+'userrights-no-interwiki'     => 'Non dispón de permiso para editar dereitos de usuarios noutros wikis.',
+'userrights-nodatabase'       => 'A base de datos $1 non existe ou non é local.',
+'userrights-nologin'          => 'Ten que [[Special:Userlogin|rexistrarse]] cunta conta de administrador para asignar dereitos de usuario.',
+'userrights-notallowed'       => 'A súa conta non dispón de permiso para asignar dereitos de usuario.',
+'userrights-changeable-col'   => 'Os grupos que pode cambiar',
+'userrights-unchangeable-col' => 'Os grupos que non pode cambiar',
 
 # Groups
 'group'               => 'Grupo:',
@@ -1030,8 +1017,8 @@ Se quere, pode [[:\$1|creala]].",
 'nchanges'                          => '$1 {{PLURAL:$1|cambio|cambios}}',
 'recentchanges'                     => 'Cambios recentes',
 'recentchangestext'                 => 'Sigue, nesta páxina, as modificacións máis recentes no wiki.',
-'recentchanges-feed-description'    => 'Seguir as mudanzas máis recentes deste wiki con esta fonte de noticias.',
-'rcnote'                            => "Abaixo {{PLURAL:$1|móstrase '''1''' cambio|móstranse os últimos '''$1''' cambios}} {{PLURAL:$2|no último día|nos últimos '''$2''' días}} ata as $3.",
+'recentchanges-feed-description'    => 'Siga os cambios máis recentes deste wiki con esta fonte de noticias.',
+'rcnote'                            => "Embaixo {{PLURAL:$1|amósase '''1''' cambio|amósanse os últimos '''$1''' cambios}} {{PLURAL:$2|no último día|nos últimos '''$2''' días}} ata as $5 do $4.",
 'rcnotefrom'                        => "Abaixo amósanse os cambios desde '''$2''' (móstranse ata '''$1''').",
 'rclistfrom'                        => 'Mostrar os cambios novos desde $1',
 'rcshowhideminor'                   => '$1 as edicións pequenas',
@@ -1097,8 +1084,10 @@ Para incluír un ficheiro na páxina, use unha ligazón do seguinte xeito:
 'illegalfilename'             => 'O nome de ficheiro "$1" contén caracteres que non están permitidos nos títulos das páxinas. Por favor cambie o nome do ficheiro e tente cargalo outra vez.',
 'badfilename'                 => 'O nome desta imaxe cambiouse a "$1".',
 'filetype-badmime'            => 'Non se permite enviar ficheiros de tipo MIME "$1".',
-'filetype-unwanted-type'      => "'''\".\$1\"''' é un tipo de arquivo non desexado.  Os tipos de arquivo preferidos son \$2.",
-'filetype-banned-type'        => "'''\".\$1\"''' non é un tipo de ficheiro permitido.  Os tipos de ficheiros permitidos son \$2.",
+'filetype-unwanted-type'      => "'''\".\$1\"''' é un tipo de ficheiro non desexado.
+{{PLURAL:\$3|O tipo de ficheiro preferido é|Os tipos de ficheiro preferidos son}} \$2.",
+'filetype-banned-type'        => "'''\".\$1\"''' non é un tipo de ficheiro permitido.
+{{PLURAL:\$3|O tipo de ficheiro permitido é|Os tipos de ficheiros permitidos son}} \$2.",
 'filetype-missing'            => 'O ficheiro non conta cunha extensión (como ".jpg").',
 'large-file'                  => 'Recoméndase que o tamaño dos ficheiros non supere $1; este ficheiro ocupa $2.',
 'largefileserver'             => 'Este ficheiro é de maior tamaño có permitido pola configuración do servidor.',
@@ -1221,18 +1210,18 @@ Premendo nunha cabeceira da columna cambia a ordenación.',
 # File reversion
 'filerevert'                => 'Desfacer $1',
 'filerevert-legend'         => 'Reverter ficheiro',
-'filerevert-intro'          => '<span class="plainlinks">Vai volver \'\'\'[[Media:$1|$1]]\'\'\' á [$4 versión de $3, $2].</span>',
+'filerevert-intro'          => "Vai volver '''[[Media:$1|$1]]''' á [$4 versión de $3, $2].",
 'filerevert-comment'        => 'Comentario:',
 'filerevert-defaultcomment' => 'Volveuse á versión de $2, $1',
 'filerevert-submit'         => 'Reverter',
-'filerevert-success'        => '<span class="plainlinks">Reverteuse \'\'\'[[Media:$1|$1]]\'\'\' á [$4 versión de $3, $2].</span>',
+'filerevert-success'        => "Reverteuse '''[[Media:$1|$1]]''' á [$4 versión de $3, $2].",
 'filerevert-badversion'     => 'Non existe unha versión local anterior deste ficheiro coa data e hora indicadas.',
 
 # File deletion
 'filedelete'                  => 'Eliminar $1',
 'filedelete-legend'           => 'Eliminar o ficheiro',
 'filedelete-intro'            => "Vai eliminar '''[[Media:$1|$1]]'''.",
-'filedelete-intro-old'        => '<span class="plainlinks">Vai eliminar a versión de \'\'\'[[Media:$1|$1]]\'\'\' de [$4 $3, $2].</span>',
+'filedelete-intro-old'        => "Vai eliminar a versión de '''[[Media:$1|$1]]''' de [$4 $3, $2].",
 'filedelete-comment'          => 'Comentario:',
 'filedelete-submit'           => 'Eliminar',
 'filedelete-success'          => "Eliminouse '''$1'''.",
@@ -1297,8 +1286,10 @@ A lonxitude da [http://www.mediawiki.org/wiki/Manual:Job_queue cola de traballos
 No canto de ligar cos homónimos deben apuntar cara á páxina apropiada.<br />
 Unha páxina trátase como páxina de homónimos cando nela se usa un modelo que está ligado desde a [[MediaWiki:Disambiguationspage|páxina de homónimos]].",
 
-'doubleredirects'     => 'Redireccións dobres',
-'doubleredirectstext' => 'Esta páxina contén as páxinas que redirixen cara a outras páxinas de redirección. Cada ringleira contén ligazóns cara á primeira e segunda redireccións, e tamén á primeira liña da segunda redirección, que é usualmente o artigo "real", á que a primeira redirección debería apuntar.',
+'doubleredirects'            => 'Redireccións dobres',
+'doubleredirectstext'        => 'Esta páxina contén as páxinas que redirixen cara a outras páxinas de redirección. Cada ringleira contén ligazóns cara á primeira e segunda redireccións, e tamén á primeira liña da segunda redirección, que é usualmente o artigo "real", á que a primeira redirección debería apuntar.',
+'double-redirect-fixed-move' => 'A páxina "[[$1]]" foi movida, agora é unha redirección cara a "[[$2]]"',
+'double-redirect-fixer'      => 'Amañador de redireccións',
 
 'brokenredirects'        => 'Redireccións rotas',
 'brokenredirectstext'    => 'Estas redireccións ligan cara a unha páxina que non existe:',
@@ -1419,7 +1410,7 @@ Se quere máis información acerca dos dereitos individuais pode atopala [[{{Med
 'listgrouprights-group'    => 'Grupo',
 'listgrouprights-rights'   => 'Dereitos',
 'listgrouprights-helppage' => 'Help:Dereitos do grupo',
-'listgrouprights-members'  => '(listaxe de membros)',
+'listgrouprights-members'  => '(lista de membros)',
 
 # E-mail user
 'mailnologin'     => 'Non existe enderezo para o envío',
@@ -1440,6 +1431,7 @@ Se quere máis información acerca dos dereitos individuais pode atopala [[{{Med
 'emailccsubject'  => 'Copia da mensaxe para $1: $2',
 'emailsent'       => 'Mensaxe enviada',
 'emailsenttext'   => 'A súa mensaxe de correo electrónico foi enviada.',
+'emailuserfooter' => 'Este correo electrónico foi enviado por $1 a $2 mediante a función "Enviar un correo electrónico a este usuario" de {{SITENAME}}.',
 
 # Watchlist
 'watchlist'            => 'A miña listaxe de vixilancia',
@@ -1518,7 +1510,7 @@ Feedback e axuda:
 'deletepage'                  => 'Borrar a páxina',
 'confirm'                     => 'Confirmar',
 'excontent'                   => "o contido era: '$1'",
-'excontentauthor'             => "O texto puña: '$1' (e o único editor foi '$2')",
+'excontentauthor'             => 'o contido era: "$1" (e o único editor foi "[[Special:Contributions/$2|$2]]")',
 'exbeforeblank'               => "o contido antes do baleiramento era: '$1'",
 'exblank'                     => 'a páxina estaba baleira',
 'delete-confirm'              => 'Borrar "$1"',
@@ -1544,8 +1536,11 @@ No $2 pode ver unha listaxe dos borrados máis recentes.',
 ** Violación de copyright
 ** Vandalismo',
 'delete-edit-reasonlist'      => 'Editar os motivos do borrado',
-'delete-toobig'               => 'Esta páxina conta cun historial longo, de máis de $1 revisións. Restrinxiuse a eliminación destas páxinas para previr problemas de funcionamento accidentais en {{SITENAME}}.',
-'delete-warning-toobig'       => 'Esta páxina conta cun historial de edicións longo, máis de $1 revisións. Se se elimina pódense provocar problemas de funcionamento nas operacións de base de datos de {{SITENAME}}; proceda con coidado.',
+'delete-toobig'               => 'Esta páxina conta cun historial longo, de máis {{PLURAL:$1|dunha revisión|de $1 revisións}}.
+Limitouse a eliminación destas páxinas para previr problemas de funcionamento accidentais en {{SITENAME}}.',
+'delete-warning-toobig'       => 'Esta páxina conta cun historial de edicións longo, de máis {{PLURAL:$1|dunha revisión|de $1 revisións}}.
+Ao eliminala pódense provocar problemas de funcionamento nas operacións da base de datos de {{SITENAME}};
+proceda con coidado.',
 'rollback'                    => 'Desfacer edicións',
 'rollback_short'              => 'Desfacer',
 'rollbacklink'                => 'desfacer',
@@ -1584,7 +1579,7 @@ Velaquí a configuración actual da páxina <strong>$1</strong>:',
 'protect-level-sysop'         => 'Só administradores',
 'protect-summary-cascade'     => 'protección en serie',
 'protect-expiring'            => 'remata $1 (UTC)',
-'protect-cascade'             => 'Protexer as páxinas incluídas nesta páxina (protección en serie)',
+'protect-cascade'             => 'Protexer as páxinas incluídas nesta (protección en serie)',
 'protect-cantedit'            => 'Non pode modificar os niveis de protección desta páxina porque non ten permiso para editala.',
 'restriction-type'            => 'Permiso',
 'restriction-level'           => 'Nivel de protección:',
@@ -1609,6 +1604,7 @@ Velaquí a configuración actual da páxina <strong>$1</strong>:',
 'undeletepagetitle'            => "'''A continuación amósanse as revisións eliminadas de''' \"'''[[:\$1|\$1]]'''\".",
 'viewdeletedpage'              => 'Ver as páxinas borradas',
 'undeletepagetext'             => 'As seguintes páxinas foron borradas pero aínda están no arquivo e poden ser restauradas. O arquivo vai ser limpado periodicamente.',
+'undelete-fieldset-title'      => 'Restaurar as revisións',
 'undeleteextrahelp'            => "Para restaurar a páxina completa deixe todas as caixas sen marcar e prema en '''''Restaurar'''''.
 Para realizar unha recuperación parcial, marque só aquelas caixas que correspondan ás revisións que se queiran recuperar e a continuación prema en '''''Restaurar'''''.
 Premendo en '''''Borrar''''' limpa o campo comentario en todas as caixas.",
@@ -1690,17 +1686,17 @@ $1',
 'whatlinkshere-filters'    => 'Filtros',
 
 # Block/unblock
-'blockip'                     => 'Bloquear usuario',
-'blockip-legend'              => 'Bloquear usuario',
-'blockiptext'                 => 'Use o seguinte formulario para bloquear o acceso de escritura desde un enderezo IP ou para bloquear a un usuario específico.
+'blockip'                         => 'Bloquear usuario',
+'blockip-legend'                  => 'Bloquear usuario',
+'blockiptext'                     => 'Use o seguinte formulario para bloquear o acceso de escritura desde un enderezo IP ou para bloquear a un usuario específico.
 Isto debería facerse só para previr vandalismo, e de acordo coa [[{{MediaWiki:Policy-url}}|política e normas]] vixentes.
 Explique a razón específica do bloqueo (por exemplo, citando as páxinas concretas que sufriron vandalismo).',
-'ipaddress'                   => 'Enderezo IP:',
-'ipadressorusername'          => 'Enderezo IP ou nome do usuario:',
-'ipbexpiry'                   => 'Duración:',
-'ipbreason'                   => 'Razón:',
-'ipbreasonotherlist'          => 'Outro motivo',
-'ipbreason-dropdown'          => '
+'ipaddress'                       => 'Enderezo IP:',
+'ipadressorusername'              => 'Enderezo IP ou nome do usuario:',
+'ipbexpiry'                       => 'Remate:',
+'ipbreason'                       => 'Razón:',
+'ipbreasonotherlist'              => 'Outro motivo',
+'ipbreason-dropdown'              => '
 *Mensaxes de bloqueo comúns
 ** Inserir información falsa
 ** Eliminar o contido de páxinas
@@ -1709,70 +1705,71 @@ Explique a razón específica do bloqueo (por exemplo, citando as páxinas concr
 ** Comportamento intimidatorio/acoso
 ** Abuso de múltiples contas de usuario
 ** Nome de usuario inaceptábel',
-'ipbanononly'                 => 'Bloquear os usuarios anónimos unicamente',
-'ipbcreateaccount'            => 'Previr a creación dunha conta',
-'ipbemailban'                 => 'Impedir que o usuario envíe correos electrónicos',
-'ipbenableautoblock'          => 'Bloquear automaticamente o último enderezo IP utilizado por este usuario, e calquera outro enderezo desde o que intente editar',
-'ipbsubmit'                   => 'Bloquear este usuario',
-'ipbother'                    => 'Outro período de tempo:',
-'ipboptions'                  => '2 horas:2 hours,1 día:1 day,3 días:3 days,1 semana:1 week,2 semanas:2 weeks,1 mes:1 month,3 meses:3 months,6 meses:6 months,1 ano:1 year,para sempre:infinite', # display1:time1,display2:time2,...
-'ipbotheroption'              => 'outra',
-'ipbotherreason'              => 'Outros motivos adicionais:',
-'ipbhidename'                 => 'Agochar nome de usuario no rexistro de bloqueos, na listaxe de bloqueos activos e na listaxe de usuarios',
-'ipbwatchuser'                => 'Vixiar a páxina de usuario e a de conversa deste usuario',
-'badipaddress'                => 'O enderezo IP non é válido',
-'blockipsuccesssub'           => 'Bloqueo con éxito',
-'blockipsuccesstext'          => 'O enderezo IP [[Special:Contributions/$1|$1]] foi bloqueado.<br />
+'ipbanononly'                     => 'Bloquear os usuarios anónimos unicamente',
+'ipbcreateaccount'                => 'Previr a creación dunha conta',
+'ipbemailban'                     => 'Impedir que o usuario envíe correos electrónicos',
+'ipbenableautoblock'              => 'Bloquear automaticamente o último enderezo IP utilizado por este usuario, e calquera outro enderezo desde o que intente editar',
+'ipbsubmit'                       => 'Bloquear este usuario',
+'ipbother'                        => 'Outro período de tempo:',
+'ipboptions'                      => '2 horas:2 hours,1 día:1 day,3 días:3 days,1 semana:1 week,2 semanas:2 weeks,1 mes:1 month,3 meses:3 months,6 meses:6 months,1 ano:1 year,para sempre:infinite', # display1:time1,display2:time2,...
+'ipbotheroption'                  => 'outra',
+'ipbotherreason'                  => 'Outros motivos adicionais:',
+'ipbhidename'                     => 'Agochar nome de usuario no rexistro de bloqueos, na listaxe de bloqueos activos e na listaxe de usuarios',
+'ipbwatchuser'                    => 'Vixiar a páxina de usuario e a de conversa deste usuario',
+'badipaddress'                    => 'O enderezo IP non é válido',
+'blockipsuccesssub'               => 'Bloqueo con éxito',
+'blockipsuccesstext'              => 'O enderezo IP [[Special:Contributions/$1|$1]] foi bloqueado.<br />
 Olle a [[Special:Ipblocklist|listaxe de IP bloqueados]] para revisalo.',
-'ipb-edit-dropdown'           => 'Editar as razóns do bloqueo',
-'ipb-unblock-addr'            => 'Desbloquear $1',
-'ipb-unblock'                 => 'Desbloquear usuario ou enderezo IP',
-'ipb-blocklist-addr'          => 'Ver bloqueos vixentes para $1',
-'ipb-blocklist'               => 'Ver bloqueos vixentes',
-'unblockip'                   => 'Desbloquear usuario',
-'unblockiptext'               => 'Use o seguinte formulario para dar de novo acceso de escritura a un enderezo IP ou usuario que estea bloqueado.',
-'ipusubmit'                   => 'Desbloquear este enderezo',
-'unblocked'                   => '[[User:$1|$1]] foi desbloqueado',
-'unblocked-id'                => 'Eliminouse o bloqueo de $1',
-'ipblocklist'                 => 'Listaxe de enderezos IP e usuarios bloqueados',
-'ipblocklist-legend'          => 'Buscar un usuario bloqueado',
-'ipblocklist-username'        => 'Nome de usuario ou enderezo IP:',
-'ipblocklist-submit'          => 'Procurar',
-'blocklistline'               => '$1, $2 bloqueou a "$3" ($4)',
-'infiniteblock'               => 'para sempre',
-'expiringblock'               => 'remata $1',
-'anononlyblock'               => 'só anón.',
-'noautoblockblock'            => 'autobloqueo desactivado',
-'createaccountblock'          => 'bloqueada a creación de contas',
-'emailblock'                  => 'correo electrónico bloqueado',
-'ipblocklist-empty'           => 'A listaxe de bloqueos está baleira.',
-'ipblocklist-no-results'      => 'Nin o enderezo IP nin o nome de usuario solicitados están bloqueados.',
-'blocklink'                   => 'bloquear',
-'unblocklink'                 => 'desbloquear',
-'contribslink'                => 'contribucións',
-'autoblocker'                 => 'Autobloqueado porque "[[User:$1|$1]]" usou recentemente este enderezo IP. O motivo do bloqueo de $1 é: "$2".',
-'blocklogpage'                => 'Rexistro de bloqueos',
-'blocklogentry'               => 'bloqueou a "[[$1]]" cun tempo de duración de $2 $3',
-'blocklogtext'                => 'Este é o rexistro das accións de bloqueo e desbloqueo de usuarios. Non se listan os enderezos IP bloqueados automaticamente. Para ver a listaxe de bloqueos vixentes revise esta [[Special:Ipblocklist|listaxe]].',
-'unblocklogentry'             => 'desbloqueou a "$1"',
-'block-log-flags-anononly'    => 'só usuarios anónimos',
-'block-log-flags-nocreate'    => 'desactivada a creación de contas de usuario',
-'block-log-flags-noautoblock' => 'bloqueo automático deshabilitado',
-'block-log-flags-noemail'     => 'correo electrónico bloqueado',
-'range_block_disabled'        => 'A funcionalidade de administrador de crear rangos de bloqueos está deshabilitada.',
-'ipb_expiry_invalid'          => 'Tempo de duración non válido.',
-'ipb_expiry_temp'             => 'Os bloqueos a nomes de usuario agochados deberían ser permanentes.',
-'ipb_already_blocked'         => '"$1" xa está bloqueado',
-'ipb_cant_unblock'            => 'Erro: Non se atopa o Block ID $1. Posiblemente xa foi desbloqueado.',
-'ipb_blocked_as_range'        => 'Erro: O enderezo IP $1 non está bloqueado directamente e non se pode desbloquear. Porén, está bloqueado por estar no rango $2, que si se pode desbloquear.',
-'ip_range_invalid'            => 'Rango IP non válido.',
-'blockme'                     => 'Bloquearme',
-'proxyblocker'                => 'Bloqueador de proxy',
-'proxyblocker-disabled'       => 'Esta función está desactivada.',
-'proxyblockreason'            => 'O seu enderezo de IP foi bloqueado porque é un proxy aberto. Por favor contacte co seu fornecedor de acceso a internet ou co seu soporte técnico e informe deste grave problema de seguridade.',
-'proxyblocksuccess'           => 'Feito.',
-'sorbsreason'                 => 'O seu enderezo IP está rexistrado na listaxe DNSBL usada por {{SITENAME}}.',
-'sorbs_create_account_reason' => "O seu enderezo IP está rexistrado como un ''proxy'' aberto na listaxe DNSBL usada por {{SITENAME}}. Polo tanto non pode crear unha conta de acceso",
+'ipb-edit-dropdown'               => 'Editar as razóns do bloqueo',
+'ipb-unblock-addr'                => 'Desbloquear $1',
+'ipb-unblock'                     => 'Desbloquear usuario ou enderezo IP',
+'ipb-blocklist-addr'              => 'Ver bloqueos vixentes para $1',
+'ipb-blocklist'                   => 'Ver bloqueos vixentes',
+'unblockip'                       => 'Desbloquear usuario',
+'unblockiptext'                   => 'Use o seguinte formulario para dar de novo acceso de escritura a un enderezo IP ou usuario que estea bloqueado.',
+'ipusubmit'                       => 'Desbloquear este enderezo',
+'unblocked'                       => '[[User:$1|$1]] foi desbloqueado',
+'unblocked-id'                    => 'Eliminouse o bloqueo de $1',
+'ipblocklist'                     => 'Listaxe de enderezos IP e usuarios bloqueados',
+'ipblocklist-legend'              => 'Buscar un usuario bloqueado',
+'ipblocklist-username'            => 'Nome de usuario ou enderezo IP:',
+'ipblocklist-submit'              => 'Procurar',
+'blocklistline'                   => '$1, $2 bloqueou a "$3" ($4)',
+'infiniteblock'                   => 'para sempre',
+'expiringblock'                   => 'remata $1',
+'anononlyblock'                   => 'só anón.',
+'noautoblockblock'                => 'autobloqueo desactivado',
+'createaccountblock'              => 'bloqueada a creación de contas',
+'emailblock'                      => 'correo electrónico bloqueado',
+'ipblocklist-empty'               => 'A listaxe de bloqueos está baleira.',
+'ipblocklist-no-results'          => 'Nin o enderezo IP nin o nome de usuario solicitados están bloqueados.',
+'blocklink'                       => 'bloquear',
+'unblocklink'                     => 'desbloquear',
+'contribslink'                    => 'contribucións',
+'autoblocker'                     => 'Autobloqueado porque "[[User:$1|$1]]" usou recentemente este enderezo IP. O motivo do bloqueo de $1 é: "$2".',
+'blocklogpage'                    => 'Rexistro de bloqueos',
+'blocklogentry'                   => 'bloqueou a "[[$1]]" cun tempo de duración de $2 $3',
+'blocklogtext'                    => 'Este é o rexistro das accións de bloqueo e desbloqueo de usuarios. Non se listan os enderezos IP bloqueados automaticamente. Para ver a listaxe de bloqueos vixentes revise esta [[Special:Ipblocklist|listaxe]].',
+'unblocklogentry'                 => 'desbloqueou a "$1"',
+'block-log-flags-anononly'        => 'só usuarios anónimos',
+'block-log-flags-nocreate'        => 'desactivada a creación de contas de usuario',
+'block-log-flags-noautoblock'     => 'bloqueo automático deshabilitado',
+'block-log-flags-noemail'         => 'correo electrónico bloqueado',
+'block-log-flags-angry-autoblock' => 'realzou o autobloqueo permitido',
+'range_block_disabled'            => 'A funcionalidade de administrador de crear rangos de bloqueos está deshabilitada.',
+'ipb_expiry_invalid'              => 'Tempo de duración non válido.',
+'ipb_expiry_temp'                 => 'Os bloqueos a nomes de usuario agochados deberían ser permanentes.',
+'ipb_already_blocked'             => '"$1" xa está bloqueado',
+'ipb_cant_unblock'                => 'Erro: Non se atopa o Block ID $1. Posiblemente xa foi desbloqueado.',
+'ipb_blocked_as_range'            => 'Erro: O enderezo IP $1 non está bloqueado directamente e non se pode desbloquear. Porén, está bloqueado por estar no rango $2, que si se pode desbloquear.',
+'ip_range_invalid'                => 'Rango IP non válido.',
+'blockme'                         => 'Bloquearme',
+'proxyblocker'                    => 'Bloqueador de proxy',
+'proxyblocker-disabled'           => 'Esta función está desactivada.',
+'proxyblockreason'                => 'O seu enderezo de IP foi bloqueado porque é un proxy aberto. Por favor contacte co seu fornecedor de acceso a internet ou co seu soporte técnico e informe deste grave problema de seguridade.',
+'proxyblocksuccess'               => 'Feito.',
+'sorbsreason'                     => 'O seu enderezo IP está rexistrado na listaxe DNSBL usada por {{SITENAME}}.',
+'sorbs_create_account_reason'     => "O seu enderezo IP está rexistrado como un ''proxy'' aberto na listaxe DNSBL usada por {{SITENAME}}. Polo tanto non pode crear unha conta de acceso",
 
 # Developer tools
 'lockdb'              => 'Fechar base de datos',
@@ -1813,14 +1810,12 @@ Este cambio nunha páxina popular pode ser drástico e inesperado; por favor, as
 
 Nestes casos, terá que mover ou mesturar a páxina manualmente se o desexa.",
 'movearticle'             => 'Mover esta páxina:',
-'movenologin'             => 'Non está dentro do sistema',
-'movenologintext'         => 'Debe ser un usuario rexistrado e estar [[Special:Userlogin|dentro do sistema]] para mover unha páxina.',
 'movenotallowed'          => 'Non ten permiso para mover páxinas en {{SITENAME}}.',
 'newtitle'                => 'Ao novo título:',
 'move-watch'              => 'Vixiar esta páxina',
 'movepagebtn'             => 'Mover a páxina',
 'pagemovedsub'            => 'O movemento foi un éxito',
-'movepage-moved'          => '<big>\'\'\'"$1" moveuse para "$2"\'\'\'</big>', # The two titles are passed in plain text as $3 and $4 to allow additional goodies in the message.
+'movepage-moved'          => '<big>\'\'\'"$1" foi movida a "$2"\'\'\'</big>', # The two titles are passed in plain text as $3 and $4 to allow additional goodies in the message.
 'articleexists'           => 'Xa existe unha páxina con ese nome, ou o nome que escolleu non é válido.
 Por favor escolla outro nome.',
 'cantmove-titleprotected' => 'Vostede non pode mover a páxina a esta ubicación, porque o novo título foi protexido da creación',
@@ -1849,6 +1844,8 @@ O artigo de destino "[[$1]]" xa existe. Quéreo eliminar para facer sitio para m
 'immobile_namespace'      => 'O título de orixe ou o de destino son dunha clase especial; non poden moverse as páxinas desde ou a ese espazo de nomes.',
 'imagenocrossnamespace'   => 'Non se pode mover o ficheiro a un espazo de nomes que non o admite',
 'imagetypemismatch'       => 'A nova extensión do fiheiro non coincide co seu tipo',
+'imageinvalidfilename'    => 'O nome da imaxe é inválido',
+'fix-double-redirects'    => 'Actualizar calquera redirección que apunte cara ao título orixinal',
 
 # Export
 'export'            => 'Exportar páxinas',
@@ -1957,11 +1954,10 @@ Todas as accións relacionadas coa importación entre wikis poden verse no [[Spe
 'tooltip-n-recentchanges'         => 'A listaxe de modificacións recentes no wiki.',
 'tooltip-n-randompage'            => 'Carregar unha páxina ao chou',
 'tooltip-n-help'                  => 'O lugar para informarse.',
-'tooltip-n-sitesupport'           => 'Apóienos',
 'tooltip-t-whatlinkshere'         => 'Listaxe de todas as páxinas do wiki que ligan cara a aquí',
 'tooltip-t-recentchangeslinked'   => 'Cambios recentes nas páxinas ligadas desde esta',
 'tooltip-feed-rss'                => 'Fonte de noticias RSS para esta páxina',
-'tooltip-feed-atom'               => 'Fonte de noticias atom para esta páxina',
+'tooltip-feed-atom'               => 'Fonte de noticias Atom para esta páxina',
 'tooltip-t-contributions'         => 'Ver a listaxe de contribucións deste usuario',
 'tooltip-t-emailuser'             => 'Enviarlle unha mensaxe a este usuario por correo electrónico',
 'tooltip-t-upload'                => 'Enviar ficheiros',
@@ -2081,7 +2077,7 @@ $1',
 # Special:Newimages
 'newimages'             => 'Galería de imaxes novas',
 'imagelisttext'         => "Abaixo amósase unha listaxe de '''$1''' {{PLURAL:$1|ficheiro|ficheiros}} ordenados $2.",
-'newimages-summary'     => 'Esta páxina especial amosa os ficheiros cargados máis recentemente',
+'newimages-summary'     => 'Esta páxina especial amosa os ficheiros cargados máis recentemente.',
 'showhidebots'          => '($1 os bots)',
 'noimages'              => 'Non hai imaxes para ver.',
 'ilsubmit'              => 'Procurar',
@@ -2102,7 +2098,8 @@ As ligazóns posteriores da mesma liña considéranse excepcións, isto é, páx
 'metadata-help'     => 'Este ficheiro contén información adicional, probabelmente engadida pola cámara dixital ou polo escáner usado para crear ou dixitalizar a imaxe. Se o ficheiro orixinal foi modificado, pode que algúns detalles non se reflictan no ficheiro modificado.',
 'metadata-expand'   => 'Mostrar detalles',
 'metadata-collapse' => 'Agochar detalles',
-'metadata-fields'   => 'Os campos de meta-datos EXIF listados nesta mensaxe incluiranse ao exhibir a páxina da imaxe cando se reduza a táboa dos meta-datos. Outros agocharanse por omisión.
+'metadata-fields'   => 'Os campos de datos meta EXIF listados nesta mensaxe incluiranse ao exhibir a páxina da imaxe cando se reduza a táboa dos datos meta.
+Outros agocharanse por omisión.
 * make
 * model
 * datetimeoriginal
@@ -2463,7 +2460,7 @@ $1',
 
 # Auto-summaries
 'autosumm-blank'   => 'O contido da páxina foi eliminado',
-'autosumm-replace' => "O contido da páxina foi substituído por '$1'",
+'autosumm-replace' => 'O contido da páxina foi substituído por "$1"',
 'autoredircomment' => 'Redirixida a [[$1]]',
 'autosumm-new'     => 'Nova páxina: $1',
 
@@ -2567,5 +2564,9 @@ Introduza o nome do ficheiro sen o prefixo "{{ns:image}}:".',
 'specialpages-group-wiki'        => 'Datos do wiki e ferramentas',
 'specialpages-group-redirects'   => 'Páxinas de redirección especiais',
 'specialpages-group-spam'        => "Ferramentas contra o ''spam''",
+
+# Special:Blankpage
+'blankpage'              => 'Baleirar a páxina',
+'intentionallyblankpage' => 'Esta páxina foi baleirada intencionadamente',
 
 );

@@ -4,14 +4,11 @@
  * @ingroup Language
  * @file
  *
- * @author sco.wikipedia.org editors
  * @author OchAyeTheNoo
- * @author SPQRobin
- * @author Siebrand
  * @author לערי ריינהארט
- * @author Nike
- * @author Malafaya
  * @author Ushanka
+ * @author Malafaya
+ * @author sco.wikipedia.org editors
  */
 
 $messages = array(
@@ -59,8 +56,6 @@ $messages = array(
 'underline-always'  => 'Aye',
 'underline-never'   => 'Niver',
 'underline-default' => 'Brouser defaut',
-
-'skinpreview' => '(First Leuk)',
 
 # Dates
 'sunday'        => 'Sunday',
@@ -206,30 +201,29 @@ $messages = array(
 'jumptosearch'      => 'rake',
 
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
-'aboutsite'         => 'Aboot {{SITENAME}}',
-'aboutpage'         => 'Project:Aboot',
-'bugreports'        => 'Mishanter reports',
-'bugreportspage'    => 'Project:Bug reports',
-'copyright'         => 'Aa text is available unner $1',
-'copyrightpagename' => '{{SITENAME}} copyricht',
-'copyrightpage'     => '{{ns:project}}:Copyrichts',
-'currentevents'     => 'Gaun on the nou',
-'currentevents-url' => 'Project:Gaun on the nou',
-'disclaimers'       => 'Disclamation',
-'disclaimerpage'    => 'Project:General_disclamation',
-'edithelp'          => 'Editin help',
-'edithelppage'      => 'Help:Editin',
-'faq'               => 'ASQ',
-'faqpage'           => 'Project:ASQ',
-'helppage'          => 'Help:Contents',
-'mainpage'          => 'Main Page',
-'policy-url'        => 'Project:Policy',
-'portal'            => 'Commonty yett',
-'portal-url'        => 'Project:Commonty Yett',
-'privacy'           => 'Privacy policy',
-'privacypage'       => 'Project:Privacy policy',
-'sitesupport'       => 'Propines',
-'sitesupport-url'   => 'Project:Site support',
+'aboutsite'            => 'Aboot {{SITENAME}}',
+'aboutpage'            => 'Project:Aboot',
+'bugreports'           => 'Mishanter reports',
+'bugreportspage'       => 'Project:Bug reports',
+'copyright'            => 'Aa text is available unner $1',
+'copyrightpagename'    => '{{SITENAME}} copyricht',
+'copyrightpage'        => '{{ns:project}}:Copyrichts',
+'currentevents'        => 'Gaun on the nou',
+'currentevents-url'    => 'Project:Gaun on the nou',
+'disclaimers'          => 'Disclamation',
+'disclaimerpage'       => 'Project:General_disclamation',
+'edithelp'             => 'Editin help',
+'edithelppage'         => 'Help:Editin',
+'faq'                  => 'ASQ',
+'faqpage'              => 'Project:ASQ',
+'helppage'             => 'Help:Contents',
+'mainpage'             => 'Main Page',
+'mainpage-description' => 'Main Page',
+'policy-url'           => 'Project:Policy',
+'portal'               => 'Commonty yett',
+'portal-url'           => 'Project:Commonty Yett',
+'privacy'              => 'Privacy policy',
+'privacypage'          => 'Project:Privacy policy',
 
 'badaccess'        => 'Permeission mishanter',
 'badaccess-group0' => 'WARNIN: Ye arnae alloued tae dae whit you hae requestit!',
@@ -389,7 +383,8 @@ Yer accoont haes been creatit. Mynd an chynge yer {{SITENAME}} preferences.',
 'nouserspecified'            => 'Ye hae tae merk up a uisername.',
 'wrongpassword'              => 'The password ye entered is wrang. Please gie it anither shot.',
 'wrongpasswordempty'         => 'The password ye entered is blank. Please gie it anither shot.',
-'passwordtooshort'           => 'Yer password is ower short. It maun hae at laest $1 characters.',
+'passwordtooshort'           => 'Yer password is ower short.
+It maun hae at laest $1 characters.',
 'mailmypassword'             => 'E-mail passwaird',
 'passwordremindertitle'      => 'Password reminder frae {{SITENAME}}',
 'passwordremindertext'       => 'Somebodie (maist likely you, frae IP address $1)
@@ -446,7 +441,7 @@ Ye can sling a deifie on this message, if this accoont wis creatit by mistak.',
 'italic_tip'      => 'Italic text',
 'link_sample'     => 'Airtin teitle',
 'link_tip'        => 'Internal airtin',
-'extlink_sample'  => 'http://www.exemplar.com airtin teitle',
+'extlink_sample'  => 'http://www.example.com airtin teitle',
 'extlink_tip'     => 'Airtin tae an outby steid (mynd the http:// prefix)',
 'headline_sample' => 'Heidline text',
 'headline_tip'    => 'Level 2 heidline',
@@ -509,10 +504,6 @@ Yer block ID is $5. Please include this ID in ony argies ye mak.',
 'blockededitsource'         => "The text o '''your edits''' tae '''$1''' is shawn ablo:",
 'whitelistedittitle'        => 'Login needit tae edit',
 'whitelistedittext'         => 'Ye hae tae $1 tae edit pages.',
-'whitelistreadtitle'        => 'Login requirit tae leuk at this',
-'whitelistreadtext'         => 'Ye hae tae [[Special:Userlogin|login]] tae leuk at pages.',
-'whitelistacctitle'         => 'Ye arnae alloued tae mak an accoont',
-'whitelistacctext'          => 'Tae be alloued tae mak accoonts in this wiki ye hae tae [[Special:Userlogin|log in]] an hae the richt leave.',
 'confirmedittitle'          => 'E-mail confirmation needit for tae edit',
 'confirmedittext'           => 'Ye maun confirm yer e-mail address afore editin pages. Please set an validate yer e-mail address throu yer [[Special:Preferences|uiser settins]].',
 'nosuchsectiontitle'        => 'There isnae a section wi that teetle',
@@ -672,6 +663,7 @@ there micht be parteeculars in the [{{fullurl:Special:Log/delete|page={{FULLPAGE
 'prefsnologintext'   => 'Ye maun be [[Special:Userlogin|loggit in]] tae set uiser preferences.',
 'prefsreset'         => 'Preferences haes been reset frae storage.',
 'changepassword'     => 'Chynge password',
+'skin-preview'       => 'First Leuk',
 'math'               => 'Renderin math',
 'datedefault'        => 'Nae preference',
 'datetime'           => 'Date an time',
@@ -726,7 +718,14 @@ there micht be parteeculars in the [{{fullurl:Special:Log/delete|page={{FULLPAGE
 'uploadnologin'               => 'Nae loggit in',
 'uploadnologintext'           => 'Ye maun be [[Special:Userlogin|loggit in]] til uplaid files.',
 'uploaderror'                 => 'Uplaid error',
-'uploadtext'                  => "Uise the form ablo tae uplaid new files; tae keek at or rake throu aareadies uplaidit eimages gang tae the [[Special:Imagelist|leet o uplaidit files]]; uplaids an deletions is recordit in the [[Special:Log|project log]]. Ye maun forbye tick the kist affirmin that ye arna brakkin onie copyrichts bi uplaidin the file. Dab the \"Uplaid\" button tae feinish the uplaid. Tae pit the eimage intae a page, uise an airtin i the form '''<nowiki>[[{{ns:image}}:file.jpg]]</nowiki>''', '''<nowiki>[[{{ns:image}}:file.png|alt text]]</nowiki>''' or '''<nowiki>[[{{ns:media}}:file.ogg]]</nowiki>''' for pyntin strecht tae the file",
+'uploadtext'                  => "Uise the form ablo tae uplaid new files;
+tae keek at or rake throu aareadies uplaidit eimages gang tae the [[Special:Imagelist|leet o uplaidit files]];
+uplaids an deletions is recordit in the [[Special:Log|project log]].
+
+Tae pit the eimage intae a page, uise an airtin i the form
+'''<nowiki>[[</nowiki>{{ns:image}}:file.jpg<nowiki>]]</nowiki>''',
+'''<nowiki>[[</nowiki>{{ns:image}}:file.png|alt text<nowiki>]]</nowiki>''' or
+'''<nowiki>[[</nowiki>{{ns:media}}:file.ogg<nowiki>]]</nowiki>''' for pyntin strecht tae the file",
 'uploadlog'                   => 'uplaid log',
 'uploadlogpage'               => 'Uplaid log',
 'uploadlogpagetext'           => 'Ablo is a leet o the maist recent file uplaids.',
@@ -757,7 +756,7 @@ there micht be parteeculars in the [{{fullurl:Special:Log/delete|page={{FULLPAGE
 
 # Image description page
 'imagelinks'     => 'Eimage airtins',
-'linkstoimage'   => 'The follaein pages airts tae this image:',
+'linkstoimage'   => 'The follaein $1 pages airts tae this image:',
 'nolinkstoimage' => "The'r nae pages airts tae this eimage.",
 'noimage'        => 'Nae file wi this name exists, ye can [$1 uplaid it]',
 
@@ -965,6 +964,7 @@ tae an afore-blockit IP address or uisername.',
 'blocklistline'               => '$1, $2 blockit $3 (expires $4)',
 'anononlyblock'               => 'anon. juist',
 'createaccountblock'          => 'accoont-makkin blockit',
+'contribslink'                => 'contreibs',
 'autoblocker'                 => 'Autaematically blockit syne yer IP address haes been uised recently bi "[[User:$1|$1]]". The raeson gien for $1\'s block is "\'\'$2\'\'"',
 'blocklogentry'               => 'blockit [[$1]] wi an expiry time o $2 $3',
 'blocklogtext'                => 'This is a log o uiser blockin an unblockin actions. Autaematically blockit IP addresses isna leetit. See the [[Special:Ipblocklist|IP block leet]] for the leet o bans and blocks on the gae the nou.',
@@ -990,11 +990,20 @@ tae an afore-blockit IP address or uisername.',
 
 # Move page
 'move-page-legend'        => 'Flit page',
-'movepagetext'            => "Uisin the form ablo will rename a page, flittin aa its history tae the new name. The auld teitle will become a reguidal page tae the new teitle. Airtins tae the auld page teitle willna be chynged; be siccar tae [[Special:Maintenance|check]] for dooble or brucken reguidals. You ar responsible for makkin siccar that airtins continues tae pynt whaur thay ar supposed tae gang. Mynd that the page '''willna''' be flittit gin the'r aareadies a page at the new teitle, unless it is tuim or a reguidal and haes nae past edit history. This means that ye can rename a page back tae whaur it wis juist renamed frae gin ye mak a mistak, an ye canna owerwrite an existin page. <b>WARNIN!</b> This can be a drastic and unexpectit chynge for a popular page; please be siccar ye unnerstaun the consequences o this afore proceedin.",
+'movepagetext'            => "Uisin the form ablo will rename a page, flittin aa its history tae the new name.
+The auld teitle will become a reguidal page tae the new teitle.
+Airtins tae the auld page teitle willna be chynged;
+be siccar tae check for dooble or brucken reguidals.
+You ar responsible for makkin siccar that airtins continues tae pynt whaur thay ar supposed tae gang.
+
+Mynd that the page '''willna''' be flittit gin the'r aareadies a page at the new teitle, unless it is tuim or a reguidal and haes nae past edit history.
+This means that ye can rename a page back tae whaur it wis juist renamed frae gin ye mak a mistak, an ye canna owerwrite an existin page
+
+'''WARNIN!'''
+This can be a drastic and unexpectit chynge for a popular page;
+please be siccar ye unnerstaun the consequences o this afore proceedin.",
 'movepagetalktext'        => "The associate Collogue page, gin onie, will be autaematically flittit alang wi it '''unless:''' *Ye'r flittin the page across namespaces, *A collogue page that isna tuim aareadies exists unner the new name, or *Ye tak the tick oot o the box ablo. In thae cases, ye maun flit or merge the page manually later gin ye hae saicont thochts.",
 'movearticle'             => 'Flit page:',
-'movenologin'             => 'No loggit in',
-'movenologintext'         => 'Ye maun be a registert uiser an [[Special:Userlogin|loggit in]] tae flit a page.',
 'newtitle'                => 'Tae new teitle',
 'movepagebtn'             => 'Flit page',
 'pagemovedsub'            => 'Flittin succeedit',
@@ -1046,6 +1055,7 @@ In the saicont case ye can uise an airtin forbye, for exemplar [[{{ns:special}}:
 'tooltip-pt-preferences'          => 'Ma preferences',
 'tooltip-pt-login'                => "It's a guid idea tae log i, but ye dinna hae tae.",
 'tooltip-search'                  => 'Rake {{SITENAME}}',
+'tooltip-n-mainpage'              => 'Gae tae the Main Page',
 'tooltip-t-contributions'         => "View this uiser's contreibutions",
 'tooltip-minoredit'               => 'Mairk this as a smaa edit',
 'tooltip-save'                    => 'Hain yer chynges',
@@ -1100,8 +1110,7 @@ In the saicont case ye can uise an airtin forbye, for exemplar [[{{ns:special}}:
 'nextdiff'     => 'Gang tae neist diff →',
 
 # Media information
-'mediawarning' => "'''Warnin''': This file micht haud mislushious code; bi executin it yer seestem micht be compromised.
-<hr>",
+'mediawarning' => "'''Warnin''': This file micht haud mislushious code; bi executin it yer seestem micht be compromised.<hr />",
 'imagemaxsize' => 'Limit eimages on eimage description pages tae:',
 
 # Special:Newimages

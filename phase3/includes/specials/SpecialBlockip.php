@@ -246,7 +246,7 @@ class IPBlockForm {
 				<td style='padding-top: 1em'>&nbsp;</td>
 				<td  class='mw-submit' style='padding-top: 1em'>" .
 					Xml::submitButton( wfMsg( 'ipbsubmit' ),
-						array( 'name' => 'wpBlock', 'tabindex' => '12' ) ) . "
+						array( 'name' => 'wpBlock', 'tabindex' => '12', 'accesskey' => 's' ) ) . "
 				</td>
 			</tr>" .
 			Xml::closeElement( 'table' ) .
@@ -339,7 +339,7 @@ class IPBlockForm {
 		if( $expirestr == 'other' )
 			$expirestr = $this->BlockOther;
 
-		if (strlen($expirestr) == 0) {
+		if ((strlen($expirestr) == 0) || (strlen($expirestr) > 50)) {
 			return array('ipb_expiry_invalid');
 		}
 		

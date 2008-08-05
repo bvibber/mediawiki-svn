@@ -29,7 +29,7 @@ class Database {
 	protected $mPHPError = false;
 
 	protected $mServer, $mUser, $mPassword, $mConn = null, $mDBname;
-	protected $mOut, $mOpened = false;
+	protected $mOpened = false;
 
 	protected $mFailFunction;
 	protected $mTablePrefix;
@@ -57,7 +57,7 @@ class Database {
 	 * FALSE means discard output
 	 */
 	function setOutputPage( $out ) {
-		$this->mOut = $out;
+		wfDeprecated( __METHOD__ );
 	}
 
 	/**
@@ -261,7 +261,6 @@ class Database {
 		if ( !isset( $wgOut ) ) {
 			$wgOut = NULL;
 		}
-		$this->mOut =& $wgOut;
 
 		$this->mFailFunction = $failFunction;
 		$this->mFlags = $flags;
@@ -2178,7 +2177,7 @@ class Database {
 				$cmd = $this->replaceVars( $cmd );
 				$res = $this->query( $cmd, __METHOD__ );
 				if ( $resultCallback ) {
-					call_user_func( $resultCallback, $res );
+					call_user_func( $resultCallback, $res, $this );
 				}
 
 				if ( false === $res ) {
@@ -2236,32 +2235,6 @@ class Database {
 	}
 	
 	/**
-	 * Acquire a lock, no-op to be overridden
-	 * by subclasses as needed.
-	 */
-	public function lock( $lockName, $method ) {
-		return true;
-	}
-	/**
-	 * Release a lock, no-op to be overridden
-	 * by subclasses as needed.
-	 */
-	public function unlock( $lockName, $method ) {
-		return true;
-	}
-}
-
-/**
- * Database abstraction object for mySQL
- * Inherit all methods and properties of Database::Database(),
- * except for locking.
- *
- * @ingroup Database
- * @see Database
- */
-class DatabaseMysql extends Database {
-	
-	/**
 	 * Acquire a lock
 	 * 
 	 * Abstracted from Filestore::lock() so child classes can implement for
@@ -2284,7 +2257,6 @@ class DatabaseMysql extends Database {
 			return false;
 		}
 	}
-	
 	/**
 	 * Release a lock.
 	 * 
@@ -2299,6 +2271,17 @@ class DatabaseMysql extends Database {
 		$result = $this->query( "SELECT RELEASE_LOCK($lockName)", $method );
 		$this->freeResult( $result );
 	}
+}
+
+/**
+ * Database abstraction object for mySQL
+ * Inherit all methods and properties of Database::Database()
+ *
+ * @ingroup Database
+ * @see Database
+ */
+class DatabaseMysql extends Database {
+	# Inherit all
 }
 
 /******************************************************************************

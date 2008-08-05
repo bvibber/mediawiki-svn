@@ -31,7 +31,7 @@ require_once( "$IP/includes/SiteConfiguration.php" );
 $wgConf = new SiteConfiguration;
 
 /** MediaWiki version number */
-$wgVersion			= '1.13alpha';
+$wgVersion			= '1.14alpha';
 
 /** Name of the site. It must be changed in LocalSettings.php */
 $wgSitename         = 'MediaWiki';
@@ -161,6 +161,11 @@ $wgMathDirectory    = false; ///< defaults to "{$wgUploadDirectory}/math"
 $wgTmpDirectory     = false; ///< defaults to "{$wgUploadDirectory}/tmp"
 $wgUploadBaseUrl    = "";
 /**@}*/
+
+/**
+ * Default value for chmoding of new directories.
+ */
+$wgDirectoryMode = 0777;
 
 /**
  * New file storage paths; currently used only for deleted files.
@@ -368,8 +373,15 @@ $wgTrivialMimeDetection= false;
 
 /**
  * Additional XML types we can allow via mime-detection.
+ * array = ( 'rootElement' => 'associatedMimeType' )
  */
-$wgAdditionalXMLTypes = array();
+$wgXMLMimeTypes = array(
+		'http://www.w3.org/2000/svg:svg'    			=> 'image/svg+xml',
+		'svg'                               			=> 'image/svg+xml',
+		'http://www.lysator.liu.se/~alla/dia/:diagram' 	=> 'application/x-dia-diagram',
+		'http://www.w3.org/1999/xhtml:html'				=> 'text/html', // application/xhtml+xml?
+		'html'                              			=> 'text/html', // application/xhtml+xml?
+);
 
 /**
  * To set 'pretty' URL paths for actions other than
@@ -535,22 +547,30 @@ $wgDBname           = 'wikidb';
 $wgDBconnection     = '';
 /** Database username */
 $wgDBuser           = 'wikiuser';
-/** Database type
- */
-$wgDBtype           = "mysql";
+/** Database user's password */
+$wgDBpassword       = '';
+/** Database type */
+$wgDBtype           = 'mysql';
+
 /** Search type
  * Leave as null to select the default search engine for the
- * selected database type (eg SearchMySQL4), or set to a class
+ * selected database type (eg SearchMySQL), or set to a class
  * name to override to a custom search engine.
  */
 $wgSearchType	    = null;
+
 /** Table name prefix */
 $wgDBprefix         = '';
 /** MySQL table options to use during installation or update */
-$wgDBTableOptions = 'TYPE=InnoDB';
+$wgDBTableOptions   = 'ENGINE=InnoDB';
+
+/** Mediawiki schema */
+$wgDBmwschema       = 'mediawiki';
+/** Tsearch2 schema */
+$wgDBts2schema      = 'public';
 
 /** To override default SQLite data directory ($docroot/../data) */
-$wgSQLiteDataDir = '';
+$wgSQLiteDataDir    = '';
 
 /**
  * Make all database connections secretly go to localhost. Fool the load balancer
@@ -633,7 +653,7 @@ $wgDBservers		= false;
  * $wgDBserver, etc., so overriding it may cause those globals to be ignored.
  *
  * The LBFactory_Multi class is provided for this purpose, please see
- * includes/LBFactory_Multi.php for configuration information.
+ * includes/db/LBFactory_Multi.php for configuration information.
  */
 $wgLBFactoryConf    = array( 'class' => 'LBFactory_Simple' );
 
@@ -903,9 +923,11 @@ $wgRedirectSources = false;
 
 
 $wgShowIPinHeader	= true; # For non-logged in users
-$wgMaxNameChars		= 255;  # Maximum number of bytes in username
 $wgMaxSigChars		= 255;  # Maximum number of Unicode characters in signature
 $wgMaxArticleSize	= 2048; # Maximum article size in kilobytes
+# Maximum number of bytes in username. You want to run the maintenance
+# script ./maintenancecheckUsernames.php once you have changed this value
+$wgMaxNameChars		= 255;
 
 $wgMaxPPNodeCount = 1000000;  # A complexity limit on template expansion
 
@@ -917,6 +939,11 @@ $wgMaxPPNodeCount = 1000000;  # A complexity limit on template expansion
  */
 $wgMaxTemplateDepth = 40;
 $wgMaxPPExpandDepth = 40;
+
+/**
+ * If true, removes (substitutes) templates in "~~~~" signatures.
+ */
+$wgCleanSignatures = true;
 
 $wgExtraSubtitle	= '';
 $wgSiteSupportPage	= ''; # A page where you users can receive donations
@@ -1274,8 +1301,8 @@ $wgAutopromote = array(
  * // Sysops can disable other sysops in an emergency, and disable bots
  * $wgRemoveGroups['sysop'] = array( 'sysop', 'bot' );
  */
-$wgAddGroups = $wgRemoveGroups = array();
-
+$wgAddGroups = array();
+$wgRemoveGroups = array();
 
 /**
  * A list of available rights, in addition to the ones defined by the core.
@@ -1346,7 +1373,7 @@ $wgCacheEpoch = '20030516000000';
  * to ensure that client-side caches don't keep obsolete copies of global
  * styles.
  */
-$wgStyleVersion = '160';
+$wgStyleVersion = '165';
 
 
 # Server-side caching:
@@ -1434,7 +1461,7 @@ $wgRCChangedSizeThreshold			= -500;
  * view for watched pages with new changes */
 $wgShowUpdatedMarker 				= true;
 
-$wgCookieExpiration = 2592000;
+$wgCookieExpiration = 30*86400;
 
 /** Clock skew or the one-second resolution of time() can occasionally cause cache
  * problems when the user requests two pages within a short period of time. This
@@ -1506,6 +1533,12 @@ $wgCookieSecure = ($wgProto == 'https');
 $wgDisableCookieCheck = false;
 
 /**
+ * Set $wgCookiePrefix to use a custom one. Setting to false sets the default of
+ * using the database name.
+ */
+$wgCookiePrefix = false;
+
+/**
  * Set authentication cookies to HttpOnly to prevent access by JavaScript,
  * in browsers that support this feature. This can mitigates some classes of
  * XSS attack.
@@ -1567,6 +1600,7 @@ $wgJobClasses = array(
 	'html_cache_update' => 'HTMLCacheUpdateJob', // backwards-compatible
 	'sendMail' => 'EmaillingJob',
 	'enotifNotify' => 'EnotifNotifyJob',
+	'fixDoubleRedirect' => 'DoubleRedirectJob',
 );
 
 /**
@@ -1717,6 +1751,11 @@ $wgAntiLockFlags = 0;
  * fall back to the old behaviour (no merging).
  */
 $wgDiff3 = '/usr/bin/diff3';
+
+/**
+ * Path to the GNU diff utility.
+ */
+$wgDiff = '/usr/bin/diff';
 
 /**
  * We can also compress text stored in the 'text' table. If this is set on, new
@@ -2101,6 +2140,32 @@ $wgValidateAllHtml = false;
 
 /** See list of skins and their symbolic names in languages/Language.php */
 $wgDefaultSkin = 'monobook';
+
+/**
+ * Optionally, we can specify a stylesheet to use for media="handheld".
+ * This is recognized by some, but not all, handheld/mobile/PDA browsers.
+ * If left empty, compliant handheld browsers won't pick up the skin
+ * stylesheet, which is specified for 'screen' media.
+ *
+ * Can be a complete URL, base-relative path, or $wgStylePath-relative path.
+ * Try 'chick/main.css' to apply the Chick styles to the MonoBook HTML.
+ *
+ * Will also be switched in when 'handheld=yes' is added to the URL, like
+ * the 'printable=yes' mode for print media.
+ */
+$wgHandheldStyle = false;
+
+/**
+ * If set, 'screen' and 'handheld' media specifiers for stylesheets are
+ * transformed such that they apply to the iPhone/iPod Touch Mobile Safari,
+ * which doesn't recognize 'handheld' but does support media queries on its
+ * screen size.
+ *
+ * Consider only using this if you have a *really good* handheld stylesheet,
+ * as iPhone users won't have any way to disable it and use the "grown-up"
+ * styles instead.
+ */
+$wgHandheldForIPhone = false;
 
 /**
  * Settings added to this array will override the default globals for the user
@@ -2710,6 +2775,7 @@ $wgSpecialPageGroups = array(
 	'Lockdb'                    => 'wiki',
 	'Unlockdb'                  => 'wiki',
 	'Allmessages'               => 'wiki',
+	'Popularpages'              => 'wiki',
 
 	'Specialpages'              => 'other',
 	'Blockme'                   => 'other',
@@ -2758,34 +2824,57 @@ $wgNoFollowLinks = true;
 $wgNoFollowNsExceptions = array();
 
 /**
- * Default robot policy.
- * The default policy is to encourage indexing and following of links.
- * It may be overridden on a per-namespace and/or per-page basis.
+ * Default robot policy.  The default policy is to encourage indexing and fol-
+ * lowing of links.  It may be overridden on a per-namespace and/or per-page
+ * basis.
  */
 $wgDefaultRobotPolicy = 'index,follow';
 
 /**
- * Robot policies per namespaces.
- * The default policy is given above, the array is made of namespace
- * constants as defined in includes/Defines.php
+ * Robot policies per namespaces. The default policy is given above, the array
+ * is made of namespace constants as defined in includes/Defines.php.  You can-
+ * not specify a different default policy for NS_SPECIAL: it is always noindex,
+ * nofollow.  This is because a number of special pages (e.g., ListPages) have
+ * many permutations of options that display the same data under redundant
+ * URLs, so search engine spiders risk getting lost in a maze of twisty special
+ * pages, all alike, and never reaching your actual content.
+ *
  * Example:
  *   $wgNamespaceRobotPolicies = array( NS_TALK => 'noindex' );
  */
 $wgNamespaceRobotPolicies = array();
 
 /**
- * Robot policies per article.
- * These override the per-namespace robot policies.
- * Must be in the form of an array where the key part is a properly
- * canonicalised text form title and the value is a robot policy.
+ * Robot policies per article. These override the per-namespace robot policies.
+ * Must be in the form of an array where the key part is a properly canonical-
+ * ised text form title and the value is a robot policy.
  * Example:
- *   $wgArticleRobotPolicies = array( 'Main Page' => 'noindex' );
+ *   $wgArticleRobotPolicies = array( 'Main Page' => 'noindex,follow',
+ *     'User:Bob' => 'index,follow' );
+ * Example that DOES NOT WORK because the names are not canonical text forms:
+ *   $wgArticleRobotPolicies = array(
+ *     # Underscore, not space!
+ *     'Main_Page' => 'noindex,follow',
+ *     # "Project", not the actual project name!
+ *     'Project:X' => 'index,follow',
+ *     # Needs to be "Abc", not "abc" (unless $wgCapitalLinks is false)!
+ *     'abc' => 'noindex,nofollow'
+ *   );
  */
 $wgArticleRobotPolicies = array();
 
 /**
- * Specifies the minimal length of a user password. If set to
- * 0, empty passwords are allowed.
+ * An array of namespace keys in which the __INDEX__/__NOINDEX__ magic words
+ * will not function, so users can't decide whether pages in that namespace are
+ * indexed by search engines.  If set to null, default to $wgContentNamespaces.
+ * Example:
+ *   $wgExemptFromUserRobotsControl = array( NS_MAIN, NS_TALK, NS_PROJECT );
+ */
+$wgExemptFromUserRobotsControl = null;
+
+/**
+ * Specifies the minimal length of a user password. If set to 0, empty pass-
+ * words are allowed.
  */
 $wgMinimalPasswordLength = 0;
 
@@ -2800,9 +2889,8 @@ $wgUseExternalEditor = true;
 $wgSortSpecialPages = true;
 
 /**
- * Specify the name of a skin that should not be presented in the
- * list of available skins.
- * Use for blacklisting a skin which you do not want to remove
+ * Specify the name of a skin that should not be presented in the list of a-
+ * vailable skins.  Use for blacklisting a skin which you do not want to remove
  * from the .../skins/ directory
  */
 $wgSkipSkin = '';
@@ -2814,7 +2902,8 @@ $wgSkipSkins = array(); # More of the same
 $wgDisabledActions = array();
 
 /**
- * Disable redirects to special pages and interwiki redirects, which use a 302 and have no "redirected from" link
+ * Disable redirects to special pages and interwiki redirects, which use a 302
+ * and have no "redirected from" link.
  */
 $wgDisableHardRedirects = false;
 
@@ -2825,21 +2914,19 @@ $wgEnableSorbs = false;
 $wgSorbsUrl = 'http.dnsbl.sorbs.net.';
 
 /**
- * Proxy whitelist, list of addresses that are assumed to be non-proxy despite what the other
- * methods might say
+ * Proxy whitelist, list of addresses that are assumed to be non-proxy despite
+ * what the other methods might say.
  */
 $wgProxyWhitelist = array();
 
 /**
- * Simple rate limiter options to brake edit floods.
- * Maximum number actions allowed in the given number of seconds;
- * after that the violating client receives HTTP 500 error pages
- * until the period elapses.
+ * Simple rate limiter options to brake edit floods.  Maximum number actions
+ * allowed in the given number of seconds; after that the violating client re-
+ * ceives HTTP 500 error pages until the period elapses.
  *
  * array( 4, 60 ) for a maximum of 4 hits in 60 seconds.
  *
- * This option set is experimental and likely to change.
- * Requires memcached.
+ * This option set is experimental and likely to change. Requires memcached.
  */
 $wgRateLimits = array(
 	'edit' => array(
@@ -3044,6 +3131,7 @@ $wgReservedUsernames = array(
 	'Conversion script', // Used for the old Wikipedia software upgrade
 	'Maintenance script', // Maintenance scripts which perform editing, image import script
 	'Template namespace initialisation script', // Used in 1.2->1.3 upgrade
+	'msg:double-redirect-fixer', // Automatic double redirect fix
 );
 
 /**
@@ -3134,6 +3222,9 @@ $wgEnableWriteAPI = false;
  * Extension modules may override the core modules.
  */
 $wgAPIModules = array();
+$wgAPIMetaModules = array();
+$wgAPIPropModules = array();
+$wgAPIListModules = array();
 
 /**
  * Maximum amount of rows to scan in a DB query in the API
@@ -3183,11 +3274,17 @@ $wgSlaveLagCritical = 30;
  * Parser configuration. Associative array with the following members:
  *
  *  class             The class name
- *  preprocessorClass The preprocessor class, by default it is Preprocessor_Hash.
- *                    Preprocessor_DOM is also available and better tested, but
- *                    it has a dependency of the dom module of PHP.
- *                    It has no effect with Parser_OldPP parser class.
  *
+ *  preprocessorClass The preprocessor class. Two classes are currently available:
+ *                    Preprocessor_Hash, which uses plain PHP arrays for tempoarary
+ *                    storage, and Preprocessor_DOM, which uses the DOM module for
+ *                    temporary storage. Preprocessor_DOM generally uses less memory;
+ *                    the speed of the two is roughly the same.
+ *
+ *                    If this parameter is not given, it uses Preprocessor_DOM if the
+ *                    DOM module is available, otherwise it uses Preprocessor_Hash.
+ *
+ *                    Has no effect on Parser_OldPP.
  *
  * The entire associative array will be passed through to the constructor as
  * the first parameter. Note that only Setup.php can use this variable --
@@ -3198,7 +3295,7 @@ $wgSlaveLagCritical = 30;
  */
 $wgParserConf = array(
 	'class' => 'Parser',
-	'preprocessorClass' => 'Preprocessor_Hash',
+	#'preprocessorClass' => 'Preprocessor_Hash',
 );
 
 /**

@@ -4,14 +4,12 @@
  * @ingroup Language
  * @file
  *
+ * @author NJ
+ * @author SPQRobin
  * @author Rob Church <robchur@gmail.com>
  * @author Steinbach
  * @author Troefkaart
  * @author Adnergje
- * @author NJ
- * @author SPQRobin
- * @author Siebrand
- * @author Jon Harald Søby
  */
 
 $fallback = 'nl';
@@ -86,8 +84,6 @@ $messages = array(
 'underline-always'  => 'Aoltied',
 'underline-never'   => 'Nooit',
 'underline-default' => 'Webbrowser-standard',
-
-'skinpreview' => '(Voevertoônienge)',
 
 # Dates
 'sunday'        => 'zundag',
@@ -266,8 +262,6 @@ $messages = array(
 'portal-url'           => 'Project:Durpsuus',
 'privacy'              => 'Privacybeleid',
 'privacypage'          => 'Project:Privacybeleid',
-'sitesupport'          => 'Donaoties',
-'sitesupport-url'      => 'Project:Financieel biedraehen',
 
 'badaccess'        => 'Fout in toegangsrechten',
 'badaccess-group0' => 'Jie mag de opgevraegde actie nie zelf uutvoere.',
@@ -428,7 +422,7 @@ Kies asjeblieft een aore naem.',
 'yourlanguage'               => 'Taele:',
 'yournick'                   => 'Tekst voe onderteêkenienge:',
 'badsig'                     => 'Ongeldege andteêkenienge; kiek de [[HTML]]-expressies nae.',
-'badsiglength'               => 'Te lange naem; ie mag uut maximaol $1 letters bestae.',
+'badsiglength'               => 'Te lange naem; ie mag uut maximaol $1 {{PLURAL:$1|letter|letters}} bestae.',
 'email'                      => 'E-mail',
 'prefs-help-realname'        => 'Echen naem is opsjoneel, a je dezen opgeef kan deêze naem gebruukt worn om je erkennieng te heven voe je werk.',
 'loginerror'                 => 'Anmeldfout',
@@ -494,7 +488,7 @@ Neheer dit bericht as deêze gebruker zonder joe medeweten is anemikt.',
 'italic_tip'      => 'Schuun',
 'link_sample'     => 'Onderwerp',
 'link_tip'        => 'Interne lienk',
-'extlink_sample'  => 'http://www.voebeeld.com lienktekst',
+'extlink_sample'  => 'http://www.example.com lienktekst',
 'extlink_tip'     => 'Externe lienk (verheet http:// nie)',
 'headline_sample' => 'Deêlonderwerp',
 'headline_tip'    => 'Tussenkopje (oôgste niveau)',
@@ -546,16 +540,13 @@ De opeheven reeën is:
 
 Je kan deêze blokkaode bespreken mie $1 of een aore [[{{MediaWiki:Grouppage-sysop}}|opzichter]].
 Je kan hin gebruuk maeken van de functie 'e-mail deêze gebruker', tenzie a je een heldig e-mailadres ei opeheven in je [[Special:Preferences|vòkeuren]] en 't gebruuk van deêze functie nie is eblokkeerd.
-Je udihe IP-adres is $3 en 't blokkaodenummer is #$5. Vermeld beie hehevens a je erhens over deêze blokkaode wil reaheern.",
+Je blokkaodenummer is #$5.
+Vermeld dat a je erhens over deêze blokkaode wil reaheern.",
 'blockednoreason'           => 'hin reeën opeheven',
 'blockedoriginalsource'     => "De brontekst van '''$1''' staet ieronder:",
 'blockededitsource'         => "D'n tekst van '''joen biedragen''' an '''$1''' staet ieronder:",
 'whitelistedittitle'        => 'Voe bewerken is anmelden verplicht',
 'whitelistedittext'         => "Je mò $1 om pagina's te bewerken.",
-'whitelistreadtitle'        => 'Voe leestoehang is anmelden verplicht',
-'whitelistreadtext'         => "[[Special:Preferences|Mel jen eihen an]] voe leestoehang toet pagina's.",
-'whitelistacctitle'         => "'t Anmaeken van nieuwe gebrukers is nie toehestaen",
-'whitelistacctext'          => 'Je dien [[Special:Userlogin|anemeld]] te zien en de juuste rechen te ène om gebrukers an te maeken in {{SITENAME}}.',
 'confirmedittitle'          => 'E-mailbevestigieng is verplicht voeda je kan bewerken',
 'confirmedittext'           => "Je mò jen e-mailadres bevestihen voe da je kan bewerken.
 Voer jen e-mailadres in en bevestig 't via [[Special:Preferences|je vòkeuren]].",
@@ -569,7 +560,9 @@ Voer jen e-mailadres in en bevestig 't via [[Special:Preferences|je vòkeuren]].
 'newarticle'                => '(Nieuw)',
 'newarticletext'            => "Deêze pagina besti nie. Typ in 't onderstaende veld om de pagina an te maeken (meêr informatie sti op de [[{{MediaWiki:Helppage}}|ulppagina]]).
 Gebruuk de knoppe '''vorige''' in je browser as je ier per ongeluk terecht bin ekomm'n.",
-'anontalkpagetext'          => "----''Dit is de overlegbladzie vò 'n anonieme gebruker die-a gin inlognaem eit of 'm nie gebruukt. Zien/eur IP-adres kan deu meêr as eên gebruker gebruukt ore. A je 'n bericht gekrege è dat-a dudelik nie an joe gericht is, ka je 't beste [[Speciaol:Userlogin|jen eige anmelde]] om zukke verwarrienge in 't vervolg te vòkommen.''",
+'anontalkpagetext'          => "----''Dit is de overlegbladzie vò 'n anonieme gebruker die-a gin inlognaem eit of 'm nie gebruukt.
+Zien/eur IP-adres kan deu meêr as eên gebruker gebruukt ore.
+A je 'n bericht gekrege è dat-a dudelik nie an joe gericht is, ka je 't beste [[Special:Userlogin|jen eige anmelde]] om zukke verwarrienge in 't vervolg te vòkommen.''",
 'noarticletext'             => 'Deêze pagina bevat hin tekst.
 Je kan [[Special:Search/{{PAGENAME}}|ni deêze term zoeken]] in aore pagina\'s of <span class="plainlinks">[{{fullurl:{{FULLPAGENAME}}|action=edit}} deêze pagina bewerken]</span>.',
 'userpage-userdoesnotexist' => 'Je bewerk een gebrukerspagina van een gebruker die a nie besti (gebruker "$1"). Controleer of a je deêze pagina wè wil anmaeken/bewerken.',
@@ -838,6 +831,7 @@ De hehevens over {{SITENAME}} zien meuhlijk nie bie'ewerkt.",
 'qbsettings-floatingright' => 'Rechs zwevend',
 'changepassword'           => 'Wachtwoôrd wiezigen',
 'skin'                     => 'Vurmhevieng',
+'skin-preview'             => 'Voevertoônienge',
 'math'                     => 'Formules',
 'dateformat'               => 'Datumopmaek',
 'datedefault'              => 'Hin vòkeur',
@@ -885,31 +879,24 @@ De hehevens over {{SITENAME}} zien meuhlijk nie bie'ewerkt.",
 'files'                    => "Bestan'n",
 
 # User rights
-'userrights'                       => 'Gebrukersrechenbeheer', # Not used as normal message but as header for the special page itself
-'userrights-lookup-user'           => "Gebrukershroep'n beheern",
-'userrights-user-editname'         => 'Voer een gebrukersnaem in:',
-'editusergroup'                    => "Gebrukershroep'n wiezigen",
-'editinguser'                      => "Bezig mie wiezigen van de gebrukersrechen van gebruker '''[[User:$1|$1]]''' ([[User talk:$1|{{int:talkpagelinktext}}]] | [[Special:Contributions/$1|{{int:contribslink}}]])",
-'userrights-editusergroup'         => "Gebrukershroep'n wiezigen",
-'saveusergroups'                   => "Gebrukershroep'n opslaene",
-'userrights-groupsmember'          => 'Lid van:',
-'userrights-groupsremovable'       => "Verwiederbaere hroep'n:",
-'userrights-groupsavailable'       => "Beschikbaere hroep'n:",
-'userrights-groups-help'           => "Je kan de hroep'n wiezigen wir a deêze gebruker lid van is.
+'userrights'                  => 'Gebrukersrechenbeheer', # Not used as normal message but as header for the special page itself
+'userrights-lookup-user'      => "Gebrukershroep'n beheern",
+'userrights-user-editname'    => 'Voer een gebrukersnaem in:',
+'editusergroup'               => "Gebrukershroep'n wiezigen",
+'editinguser'                 => "Bezig mie wiezigen van de gebrukersrechen van gebruker '''[[User:$1|$1]]''' ([[User talk:$1|{{int:talkpagelinktext}}]] | [[Special:Contributions/$1|{{int:contribslink}}]])",
+'userrights-editusergroup'    => "Gebrukershroep'n wiezigen",
+'saveusergroups'              => "Gebrukershroep'n opslaene",
+'userrights-groupsmember'     => 'Lid van:',
+'userrights-groups-help'      => "Je kan de hroep'n wiezigen wir a deêze gebruker lid van is.
 Een anekruusd vienkvakje beteêken da de gebruker lid is van de hroep.
 Een nie anekruusd vienkvakje beteêken da de gebruker hin lid is van de hroep.",
-'userrights-reason'                => "Reeën voe 't verandern:",
-'userrights-available-none'        => 'Je mag hin gebrukersrechen verandern.',
-'userrights-available-add'         => "Je kan gebrukers toevoehen an deêze {{PLURAL:$2|hroep|hroep'n}}: $1.",
-'userrights-available-remove'      => "Je kan gebrukers verwiederen uut deêze {{PLURAL:$2|hroep|hroep'n}}: $1.",
-'userrights-available-add-self'    => "Je kan jen eihen toevoehen an deze {{PLURAL:$2|hroep|hroep'n}}: $1.",
-'userrights-available-remove-self' => "Je kan jen eihen verwiedern uut deze {{PLURAL:$2|hroep|hroep'n}}: $1.",
-'userrights-no-interwiki'          => "Je ei hin rechen om gebrukersrechen op aore wiki's te wiezigen.",
-'userrights-nodatabase'            => 'Database $1 besti nie of is hin plaetselijke database.',
-'userrights-nologin'               => 'Je mò jen eihen[[Special:Userlogin|anmelden]] mie een gebruker mie de juuste rechen om gebrukersrechen toe te wiezen.',
-'userrights-notallowed'            => 'Je ei hin rechen om gebrukersrechen toe te wiezen.',
-'userrights-changeable-col'        => "Hroep'n die a je kan beheern",
-'userrights-unchangeable-col'      => "Hroep'n die a je nie kan beheern",
+'userrights-reason'           => "Reeën voe 't verandern:",
+'userrights-no-interwiki'     => "Je ei hin rechen om gebrukersrechen op aore wiki's te wiezigen.",
+'userrights-nodatabase'       => 'Database $1 besti nie of is hin plaetselijke database.',
+'userrights-nologin'          => 'Je mò jen eihen[[Special:Userlogin|anmelden]] mie een gebruker mie de juuste rechen om gebrukersrechen toe te wiezen.',
+'userrights-notallowed'       => 'Je ei hin rechen om gebrukersrechen toe te wiezen.',
+'userrights-changeable-col'   => "Hroep'n die a je kan beheern",
+'userrights-unchangeable-col' => "Hroep'n die a je nie kan beheern",
 
 # Groups
 'group'               => 'Hroep:',
@@ -1101,14 +1088,17 @@ De lèste bewerkienge wier gedaen deu [[User:$3|$3]] ([[User talk:$3|Overleggien
 'blockip'                     => 'Blokkeer gebruker',
 'badipaddress'                => 'Ongeldig IP-adres',
 'blockipsuccesssub'           => 'Blokkaode is gelukt.',
-'blockipsuccesstext'          => "[[{{ns:Special}}:Contributions/$1|$1]] is geblokkeerd.
-<br />Ziet de [[{{ns:Special}}:Ipblocklist|IP-blokliest]] vo 'n overzicht van blokkaodes.",
+'blockipsuccesstext'          => "[[Special:Contributions/$1|$1]] is geblokkeerd.<br />
+Ziet de [[Special:Ipblocklist|IP-blokliest]] vo 'n overzicht van blokkaodes.",
 'anononlyblock'               => 'alleêne anon.',
 'blocklink'                   => 'blokkeer',
 'contribslink'                => 'biedraegen',
-'autoblocker'                 => 'Je bin automaotisch geblokkeerd om-at je IP-adres pas gebruukt is deu "[[Gebruker:$1|$1]]". De reje daevò was: "\'\'\'$2\'\'\'"',
+'autoblocker'                 => 'Je bin automaotisch geblokkeerd om-at je IP-adres pas gebruukt is deu "[[User:$1|$1]]".
+De reje daevò was: "$2"',
 'blocklogentry'               => 'ei "[[$1]]" geblokkeerd mee \'n afloôptied van $2 $3',
-'blocklogtext'                => "Dit is 'n logboek van gebrukersblokkaodes en -deblokkeriengen. Automaotisch geblokte ip-adressen stae d'r nie bie. Ziet de [[Speciaol:Ipblocklist|Lieste van ip-blokkeriengen]] vò blokkaodes die op dit moment in werkienge bin.",
+'blocklogtext'                => "Dit is 'n logboek van gebrukersblokkaodes en -deblokkeriengen.
+Automaotisch geblokte ip-adressen stae d'r nie bie.
+Ziet de [[Special:Ipblocklist|Lieste van ip-blokkeriengen]] vò blokkaodes die op dit moment in werkienge bin.",
 'block-log-flags-anononly'    => 'allene anonieme gebrukers',
 'block-log-flags-nocreate'    => 'uutgeslote van anmaeken gebrukersnaemen',
 'block-log-flags-noautoblock' => 'gin autoblokkaode',

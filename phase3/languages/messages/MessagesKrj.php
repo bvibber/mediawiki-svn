@@ -38,8 +38,6 @@ $messages = array(
 'underline-never'   => 'Indi gid',
 'underline-default' => 'Onay nga browser',
 
-'skinpreview' => '(Bilid)',
-
 # Dates
 'sunday'        => 'Domingo',
 'monday'        => 'Lones',
@@ -154,7 +152,6 @@ $messages = array(
 'edithelp'             => 'Panoytoy sa Pag-ilis',
 'mainpage'             => 'Pono nga Pahina',
 'mainpage-description' => 'Pono nga Pahina',
-'sitesupport'          => 'Donasyon',
 
 'badaccess'        => 'Sayup sa lisensya',
 'badaccess-group0' => 'Indi kaw ginpasogtan nga himoon ang lihuk nga ginalaum mo.',
@@ -207,6 +204,7 @@ $messages = array(
 'preview' => 'Bilid',
 
 # Preferences page
+'skin-preview'      => 'Bilid',
 'searchresultshead' => 'Sagap',
 
 # Recent changes

@@ -139,9 +139,9 @@ class SpecialSearch {
 
 		global $wgDisableTextSearch;
 		if ( $wgDisableTextSearch ) {
-			global $wgForwardSearchUrl;
-			if( $wgForwardSearchUrl ) {
-				$url = str_replace( '$1', urlencode( $term ), $wgForwardSearchUrl );
+			global $wgSearchForwardUrl;
+			if( $wgSearchForwardUrl ) {
+				$url = str_replace( '$1', urlencode( $term ), $wgSearchForwardUrl );
 				$wgOut->redirect( $url );
 				return;
 			}
@@ -277,12 +277,14 @@ class SpecialSearch {
 	 */
 	function setupPage( $term ) {
 		global $wgOut;
-		if( !empty( $term ) )
-			$wgOut->setPageTitle( wfMsg( 'searchresults' ) );			
+		if( !empty( $term ) ){
+			$wgOut->setPageTitle( wfMsg( 'searchresults') );
+			$wgOut->setHTMLTitle( wfMsg( 'pagetitle', wfMsg( 'searchresults-title', $term) ) );
+		}			
 		$subtitlemsg = ( Title::newFromText( $term ) ? 'searchsubtitle' : 'searchsubtitleinvalid' );
 		$wgOut->setSubtitle( $wgOut->parse( wfMsg( $subtitlemsg, wfEscapeWikiText($term) ) ) );
 		$wgOut->setArticleRelated( false );
-		$wgOut->setRobotpolicy( 'noindex,nofollow' );
+		$wgOut->setRobotPolicy( 'noindex,nofollow' );
 	}
 
 	/**
@@ -597,10 +599,11 @@ class SpecialSearch {
 		$redirectLabel = Xml::label( wfMsg( 'powersearch-redir' ), 'redirs' );
 		$searchField = Xml::input( 'search', 50, $term, array( 'type' => 'text', 'id' => 'powerSearchText' ) );
 		$searchButton = Xml::submitButton( wfMsg( 'powersearch' ), array( 'name' => 'fulltext' ) ) . "\n";
-
+		$searchTitle = SpecialPage::getTitleFor( 'Search' );
+		
 		$out = Xml::openElement( 'form', array(	'id' => 'powersearch', 'method' => 'get', 'action' => $wgScript ) ) .
 			Xml::fieldset( wfMsg( 'powersearch-legend' ),
-				Xml::hidden( 'title', 'Special:Search' ) .
+				Xml::hidden( 'title', $searchTitle->getPrefixedText() ) .
 				"<p>" .
 				wfMsgExt( 'powersearch-ns', array( 'parseinline' ) ) .
 				"<br />" .
@@ -636,7 +639,8 @@ class SpecialSearch {
 			'method' => 'get',
 			'action' => $wgScript
 		));
-		$out .= Xml::hidden( 'title', 'Special:Search' );
+		$searchTitle = SpecialPage::getTitleFor( 'Search' );
+		$out .= Xml::hidden( 'title', $searchTitle->getPrefixedText() );
 		$out .= Xml::input( 'search', 50, $term, array( 'type' => 'text', 'id' => 'searchText' ) ) . ' ';
 		foreach( SearchEngine::searchableNamespaces() as $ns => $name ) {
 			if( in_array( $ns, $this->namespaces ) ) {

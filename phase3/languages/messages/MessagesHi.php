@@ -9,7 +9,6 @@
  * @author Shyam
  * @author Sunil Mohan
  * @author Aksi great
- * @author Jon Harald Søby
  */
 
 $namespaceNames = array(
@@ -91,8 +90,6 @@ $messages = array(
 'underline-always'  => 'हमेशा',
 'underline-never'   => 'कभीभी नहीं',
 'underline-default' => 'ब्राउज़र डिफ़ॉल्ट',
-
-'skinpreview' => '(झलक)',
 
 # Dates
 'sunday'        => 'रविवार',
@@ -270,8 +267,6 @@ $messages = array(
 'portal-url'           => 'Project:समाज मुखपृष्ठ',
 'privacy'              => 'गोपनीयता नीति',
 'privacypage'          => 'Project:गोपनीयता नीति',
-'sitesupport'          => 'दान',
-'sitesupport-url'      => 'Project:साईट सहाय्य',
 
 'badaccess'        => 'अनुमति त्रुटि',
 'badaccess-group0' => 'जिस क्रिया का अनुरोध आपने किया है उसे संचालित करने की अनुमति आपको नही है।',
@@ -580,10 +575,6 @@ Don't forget to personalize your {{SITENAME}} preferences.",
 'blockededitsource'                => "'''$1''' को '''आपके बदलाव''' का पाठ्य नीचे दर्शाया गया हैं:",
 'whitelistedittitle'               => 'संपादित करनें के लिये लॉग इन करना ज़रूरी हैं',
 'whitelistedittext'                => 'लेख संपादित करने के लियें $1 करें ।',
-'whitelistreadtitle'               => 'पढ़ने के लिये लॉग इन करना ज़रूरी हैं',
-'whitelistreadtext'                => 'लेख पढ़ने के लिये [[Special:Userlogin|लॉग इन]] करना ज़रूरी हैं ।',
-'whitelistacctitle'                => 'आप नया खाता नहीं बना सकतें',
-'whitelistacctext'                 => '{{SITENAME}} पर नया खाता बनाने से पहलें आपने [[Special:Userlogin|लॉग]] इन किया होना और साथ ही उचित अधिकार प्राप्त कर लेना ज़रूरी हैं ।',
 'confirmedittitle'                 => 'संपादित करने के लियें इ-मेल से पुष्टि करना आवश्यक हैं',
 'confirmedittext'                  => 'संपादन करने से पहले आपने अपना इ-मेल पता प्रमाणित कराना आवश्यक हैं ।
 कृपया अपनी [[Special:Preferences|सदस्य वरीयताएं]] में जाकर अपना इ-मेल पता दें और उसे प्रमाणित करें ।',
@@ -882,6 +873,7 @@ Don't forget to personalize your {{SITENAME}} preferences.",
 'qbsettings-floatingright' => 'अस्थिर दाहिनी तरफ़',
 'changepassword'           => 'कूटशब्द बदलें',
 'skin'                     => 'त्वचा',
+'skin-preview'             => 'झलक',
 'math'                     => 'गणित',
 'dateformat'               => 'दिनांक प्रारूप',
 'datedefault'              => 'खा़स पसंद नहीं',
@@ -933,32 +925,25 @@ latex, dvips, gs, और convert के इन्स्टॉलेशन की
 'files'                    => 'फ़ाईलें',
 
 # User rights
-'userrights'                       => 'सदस्य अधिकार व्यवस्थापन', # Not used as normal message but as header for the special page itself
-'userrights-lookup-user'           => 'सदस्य ग्रुपोंका व्यवस्थापन करें',
-'userrights-user-editname'         => 'सदस्यनाम दें:',
-'editusergroup'                    => 'सदस्य ग्रुपका संपादन करें',
-'editinguser'                      => "सदस्य '''[[User:$1|$1]]''' ([[User talk:$1|{{int:talkpagelinktext}}]] | [[Special:Contributions/$1|{{int:contribslink}}]])के सदस्य अधिकारोंमें बदलाव कियें जा रहें हैं।",
-'userrights-editusergroup'         => 'सदस्य ग्रुपोंका संपादन करें',
-'saveusergroups'                   => 'सदस्य ग्रुप संजोयें',
-'userrights-groupsmember'          => 'का सदस्य:',
-'userrights-groupsremovable'       => 'निकालने के लिये ग्रुप्स:',
-'userrights-groupsavailable'       => 'उपलब्ध ग्रुप्स:',
-'userrights-groups-help'           => 'आप इस सदस्य का ग्रुप सदस्यत्व बदल सकतें हैं:
+'userrights'                  => 'सदस्य अधिकार व्यवस्थापन', # Not used as normal message but as header for the special page itself
+'userrights-lookup-user'      => 'सदस्य ग्रुपोंका व्यवस्थापन करें',
+'userrights-user-editname'    => 'सदस्यनाम दें:',
+'editusergroup'               => 'सदस्य ग्रुपका संपादन करें',
+'editinguser'                 => "सदस्य '''[[User:$1|$1]]''' ([[User talk:$1|{{int:talkpagelinktext}}]] | [[Special:Contributions/$1|{{int:contribslink}}]])के सदस्य अधिकारोंमें बदलाव कियें जा रहें हैं।",
+'userrights-editusergroup'    => 'सदस्य ग्रुपोंका संपादन करें',
+'saveusergroups'              => 'सदस्य ग्रुप संजोयें',
+'userrights-groupsmember'     => 'का सदस्य:',
+'userrights-groups-help'      => 'आप इस सदस्य का ग्रुप सदस्यत्व बदल सकतें हैं:
 * एक चुना हुआ बक्सा मतलब सदस्य उस ग्रुपमें हैं।
 * एक ना चुना हुआ बक्सा मतलब सदस्य उस ग्रुपमें नहीं हैं।
 * एक * का मतलब आप एकबार बढाने के बाद ग्रुप निकाल नहीं सकते या फिर निकालने के बाद बढा नहीं सकतें हैं।',
-'userrights-reason'                => 'बदलाव के कारण:',
-'userrights-available-none'        => 'आप शायद ग्रुप सदस्यत्व बदल नहीं सकतें।',
-'userrights-available-add'         => 'आप {{PLURAL:$2|इस ग्रुपमें|इन ग्रुपोंमें}} कोई भी सदस्य को बढ़ा सकतें हैं: $1।',
-'userrights-available-remove'      => 'आप {{PLURAL:$2|इस ग्रुप से|इन ग्रुपों से}} कोईभी सदस्य हटा सकतें हैं: $1।',
-'userrights-available-add-self'    => 'आप अपने आपको {{PLURAL:$2|इस ग्रुप का|इन ग्रुपोंका}} सदस्य बना सकतें हैं: $1।',
-'userrights-available-remove-self' => 'आप अपने आप को {{PLURAL:$2|इस ग्रुप से|इन ग्रुपों से}} हटा सकतें हैं: $1।',
-'userrights-no-interwiki'          => 'अन्य विकियोंपर आपको सदस्य अधिकार बदलने की अनुमति नहीं हैं।',
-'userrights-nodatabase'            => 'डाटाबेस $1 या तो अस्तित्वमें नहीं हैं या फिर स्थानीय नहीं हैं।',
-'userrights-nologin'               => 'सदस्य अधिकार बदलने के लिये आपने प्रबंधक खाते से [[Special:Userlogin|लॉग इन]] किया हुआ होना आवश्यक हैं।',
-'userrights-notallowed'            => 'आपके सदस्य खातेको सदस्य अधिकार बदलनेकी अनुमति नहीं हैं।',
-'userrights-changeable-col'        => 'ग्रुप जिन्हें आप बदल सकतें हैं',
-'userrights-unchangeable-col'      => 'ग्रुप जिन्हें आप नहीं बदल सकते हैं',
+'userrights-reason'           => 'बदलाव के कारण:',
+'userrights-no-interwiki'     => 'अन्य विकियोंपर आपको सदस्य अधिकार बदलने की अनुमति नहीं हैं।',
+'userrights-nodatabase'       => 'डाटाबेस $1 या तो अस्तित्वमें नहीं हैं या फिर स्थानीय नहीं हैं।',
+'userrights-nologin'          => 'सदस्य अधिकार बदलने के लिये आपने प्रबंधक खाते से [[Special:Userlogin|लॉग इन]] किया हुआ होना आवश्यक हैं।',
+'userrights-notallowed'       => 'आपके सदस्य खातेको सदस्य अधिकार बदलनेकी अनुमति नहीं हैं।',
+'userrights-changeable-col'   => 'ग्रुप जिन्हें आप बदल सकतें हैं',
+'userrights-unchangeable-col' => 'ग्रुप जिन्हें आप नहीं बदल सकते हैं',
 
 # Groups
 'group'               => 'ग्रुप:',
@@ -1251,22 +1236,22 @@ PICT # misc.
 # File reversion
 'filerevert'                => '$1 पूर्ववत करें',
 'filerevert-legend'         => 'फ़ाईल पूर्ववत करें',
-'filerevert-intro'          => '<span class="plainlinks">आप \'\'\'[[Media:$1|$1]]\'\'\' के [$3, $2 तक के अवतरण, $4 की तरफ] वापिस भेज रहें हैं।</span>',
+'filerevert-intro'          => "आप '''[[Media:$1|$1]]''' के [$3, $2 तक के अवतरण, $4 की तरफ] वापिस भेज रहें हैं।",
 'filerevert-comment'        => 'टिप्पणी:',
 'filerevert-defaultcomment' => '$2, $1 के अवतरण पूर्ववत कियें',
 'filerevert-submit'         => 'पूर्ववत करें',
-'filerevert-success'        => '<span class="plainlinks">\'\'\'[[Media:$1|$1]]\'\'\' के [$3, $2 तक के अवतरण, $4 की तरफ] वापिस भेज दिये गयें हैं।</span>',
+'filerevert-success'        => "'''[[Media:$1|$1]]''' के [$3, $2 तक के अवतरण, $4 की तरफ] वापिस भेज दिये गयें हैं।",
 'filerevert-badversion'     => 'दिये हुए समयसे मेल खाने वाला, इस फ़ाईलका पुराना अवतरण नहीं हैं।',
 
 # File deletion
 'filedelete'                  => '$1 हटायें',
 'filedelete-legend'           => 'फ़ाइल हटायें',
 'filedelete-intro'            => "आप '''[[Media:$1|$1]]''' हटा रहें हैं।",
-'filedelete-intro-old'        => '<span class="plainlinks">आप \'\'\'[[Media:$1|$1]]\'\'\' के [$4 $3, $2 के अवतरण] हटा रहें हैं।</span>',
+'filedelete-intro-old'        => "आप '''[[Media:$1|$1]]''' के [$4 $3, $2 के अवतरण] हटा रहें हैं।",
 'filedelete-comment'          => 'हटाने का कारण:',
 'filedelete-submit'           => 'हटायें',
 'filedelete-success'          => "'''$1''' को हटा दिया गया हैं।",
-'filedelete-success-old'      => '<span class="plainlinks">\'\'\'[[Media:$1|$1]]\'\'\' के [$4 $3, $2 के अवतरण] हटा दिये गयें हैं।</span>',
+'filedelete-success-old'      => '<span class="plainlinks">\'\'\'[[Media:$1|$1]]\'\'\' के [$3, $2 के अवतरण] हटा दिये गयें हैं।</span>',
 'filedelete-nofile'           => "'''$1''' {{SITENAME}} पर अस्तित्वमें नहीं हैं।",
 'filedelete-nofile-old'       => "दिये हुए विशेशता से मेल खाने वालें '''$1''' के अवतरण नहीं हैं।",
 'filedelete-iscurrent'        => 'आप इस फ़ाईलका सबसे नया अवतरण हटा रहें हैं।
@@ -1433,7 +1418,7 @@ PICT # misc.
 'allpages-bad-ns'   => '{{SITENAME}} में "$1" यह नामस्थान नहीं हैं ।',
 
 # Special:Categories
-'categories'                    => '{{PLURAL:$1|श्रेणि|श्रेणियाँ}}',
+'categories'                    => 'श्रेणियाँ',
 'categoriespagetext'            => 'निम्न श्रेणियाँ विकि मे अस्तित्वमान हैं।',
 'categoriesfrom'                => 'इस शब्दसे शुरू होनेवाली श्रेणीयाँ दर्शायें:',
 'special-categories-sort-count' => 'संख्यानुसार वर्ग दर्शायें',
@@ -1446,7 +1431,7 @@ PICT # misc.
 
 # Special:Listgrouprights
 'listgrouprights'          => 'सदस्य ग्रुप अधिकार',
-'listgrouprights-summary'  => 'नीचे विकिपर बनायें गये ग्रुपोंकी सूची उन ग्रुपोंके सदस्योंको प्राप्त अधिकारोंके साथ दर्शायी गई हैं। हर एक के अधिकार के बारे में अधिक जानकारी [[{{int:Listgrouprights-helppage}}|यहां]] दी गई हैं।',
+'listgrouprights-summary'  => 'नीचे विकिपर बनायें गये ग्रुपोंकी सूची उन ग्रुपोंके सदस्योंको प्राप्त अधिकारोंके साथ दर्शायी गई हैं। हर एक के अधिकार के बारे में अधिक जानकारी [[{{MediaWiki:Listgrouprights-helppage}}|यहां]] दी गई हैं।',
 'listgrouprights-group'    => 'ग्रुप',
 'listgrouprights-rights'   => 'अधिकार',
 'listgrouprights-helppage' => 'Help:ग्रुप अधिकार',
@@ -1867,14 +1852,11 @@ $1 को बाध्य करने का कारण है: "$2"',
 
 इन मामलोंमे आपको स्वयं यह पन्ने जोडने पड़ सकते है ।",
 'movearticle'             => 'पृष्ठ का नाम बदलें',
-'movenologin'             => 'लॉग इन नहीं किया',
-'movenologintext'         => 'लेख स्थानांतरित करने के लिये आपने [[Special:Userlogin|लॉग इन]] किया होना जरूरी हैं।',
 'movenotallowed'          => '{{SITENAME}} पर पृष्ठ स्थानांतरणकी अनुमति आपको नहीं हैं।',
 'newtitle'                => 'नये शीर्षक की ओर:',
 'move-watch'              => 'ध्यान रखें',
 'movepagebtn'             => 'नाम बदलें',
 'pagemovedsub'            => 'नाम बदल दिया गया है',
-'movepage-moved'          => "<big>'''“$1” का नाम बदलकर “$2” कर दिया गया है'''</big>", # The two titles are passed in plain text as $3 and $4 to allow additional goodies in the message.
 'articleexists'           => 'इस नाम का एक पृष्ठ पहले से ही उपस्थित है, अथवा आप ने अमान्य नाम चुना है। कृपया दूसरा नाम चुनें।',
 'cantmove-titleprotected' => 'नया शीर्षक बनाने से रोक होने के कारण, आप इस जगह पर कोई अन्य पन्ना स्थानांतरित नहीं कर सकतें हैं।',
 'talkexists'              => "'''पन्ने का नाम बदल दिया गया है, पर उससे संबंधित वार्ता पृष्ठ नहीं बदला गया है क्योंकि वह पहले से बना हुवा है ।
@@ -2013,7 +1995,6 @@ $1 को बाध्य करने का कारण है: "$2"',
 'tooltip-n-recentchanges'         => 'विकिमें हाल में हुए बदलावोंकी सूची.',
 'tooltip-n-randompage'            => 'किसी एक लेख पर जाएँ',
 'tooltip-n-help'                  => 'ख़ोजने की जगह.',
-'tooltip-n-sitesupport'           => 'हमें सहायता दें',
 'tooltip-t-whatlinkshere'         => 'यहां जुडे सभी विकिपन्नोंकी सूची',
 'tooltip-t-recentchangeslinked'   => 'यहां जुडे हुए सभी पन्नोंमें हुए हाल के बदलाव',
 'tooltip-feed-rss'                => 'इस पन्ने का RSS फ़ीड',

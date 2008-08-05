@@ -981,7 +981,7 @@ class UndeleteForm {
 			}
 			$table =
 				Xml::openElement( 'fieldset' ) .
-				Xml::element( 'legend', null, wfMsg( 'undelete') ).
+				Xml::element( 'legend', null, wfMsg( 'undelete-fieldset-title' ) ).
 				Xml::openElement( 'table', array( 'id' => 'mw-undelete-table' ) ) .
 					"<tr>
 						<td colspan='2'>" .
@@ -1086,10 +1086,7 @@ class UndeleteForm {
 		$userLink = $sk->revUserTools( $rev );
 
 		if(!is_null($size = $row->ar_len)) {
-			if($size == 0)
-				$stxt = wfMsgHtml('historyempty');
-			else
-				$stxt = wfMsgHtml('historysize', $wgLang->formatNum( $size ) );
+			$stxt = $sk->formatRevisionSize( $size );
 		}
 		$comment = $sk->revComment( $rev );
 		$revdlink = '';
@@ -1131,12 +1128,13 @@ class UndeleteForm {
 		}
  		$userLink = $this->getFileUser( $file, $sk );
 		$data =
-			wfMsgHtml( 'widthheight',
+			wfMsg( 'widthheight',
 				$wgLang->formatNum( $row->fa_width ),
 				$wgLang->formatNum( $row->fa_height ) ) .
 			' (' .
-			wfMsgHtml( 'nbytes', $wgLang->formatNum( $row->fa_size ) ) .
+			wfMsg( 'nbytes', $wgLang->formatNum( $row->fa_size ) ) .
 			')';
+		$data = htmlspecialchars( $data );
 		$comment = $this->getFileComment( $file, $sk );
 		$revdlink = '';
 		if( $wgUser->isAllowed( 'deleterevision' ) ) {

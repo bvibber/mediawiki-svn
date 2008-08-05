@@ -197,8 +197,8 @@ class UserrightsPage extends SpecialPage {
 			$user->getUserPage(),
 			$wgRequest->getText( 'user-reason' ),
 			array(
-				$this->makeGroupNameList( $oldGroups ),
-				$this->makeGroupNameList( $newGroups )
+				$this->makeGroupNameListForLog( $oldGroups ),
+				$this->makeGroupNameListForLog( $newGroups )
 			)
 		);
 	}
@@ -288,7 +288,19 @@ class UserrightsPage extends SpecialPage {
 	}
 
 	function makeGroupNameList( $ids ) {
-		return implode( ', ', $ids );
+		if( empty( $ids ) ) {
+			return wfMsgForContent( 'rightsnone' );
+		} else {
+			return implode( ', ', $ids );
+		}
+	}
+
+	function makeGroupNameListForLog( $ids ) {
+		if( empty( $ids ) ) {
+			return '';
+		} else {
+			return $this->makeGroupNameList( $ids );
+		}
 	}
 
 	/**
@@ -337,7 +349,7 @@ class UserrightsPage extends SpecialPage {
 	 * @param $groups    Array:  Array of groups the user is in
 	 */
 	protected function showEditUserGroupsForm( $user, $groups ) {
-		global $wgOut, $wgUser;
+		global $wgOut, $wgUser, $wgLang;
 
 		list( $addable, $removable ) = $this->splitGroups( $groups );
 
@@ -347,7 +359,8 @@ class UserrightsPage extends SpecialPage {
 
 		$grouplist = '';
 		if( count( $list ) > 0 ) {
-			$grouplist = Xml::tags( 'p', null, wfMsgHtml( 'userrights-groupsmember' ) . ' ' . implode( ', ', $list ) );
+			$grouplist = wfMsgHtml( 'userrights-groupsmember' );
+			$grouplist = '<p>' . $grouplist  . ' ' . $wgLang->listToText( $list ) . '</p>';
 		}
 		$wgOut->addHTML(
 			Xml::openElement( 'form', array( 'method' => 'post', 'action' => $this->getTitle()->getLocalURL(), 'name' => 'editGroup', 'id' => 'mw-userrights-form2' ) ) .
@@ -371,7 +384,7 @@ class UserrightsPage extends SpecialPage {
 				<tr>
 					<td></td>
 					<td class='mw-submit'>" .
-						Xml::submitButton( wfMsg( 'saveusergroups' ), array( 'name' => 'saveusergroups' ) ) .
+						Xml::submitButton( wfMsg( 'saveusergroups' ), array( 'name' => 'saveusergroups', 'accesskey' => 's' ) ) .
 					"</td>
 				</tr>" .
 			Xml::closeElement( 'table' ) . "\n" .

@@ -1,39 +1,38 @@
 hooks.txt
 
-This document describes how event hooks work in MediaWiki; how to add
-hooks for an event; and how to run hooks for an event.
+This document describes how event hooks work in MediaWiki; how to add hooks for
+an event; and how to run hooks for an event.
 
 ==Glossary==
 
 event
-     Something that happens with the wiki. For example: a user logs
-     in. A wiki page is saved. A wiki page is deleted. Often there are
-     two events associated with a single action: one before the code
-     is run to make the event happen, and one after. Each event has a
-     name, preferably in CamelCase. For example, 'UserLogin',
-     'ArticleSave', 'ArticleSaveComplete', 'ArticleDelete'.
+     Something that happens with the wiki. For example: a user logs in. A wiki
+     page is saved. A wiki page is deleted. Often there are two events
+     associated with a single action: one before the code is run to make the
+     event happen, and one after. Each event has a name, preferably in
+     CamelCase. For example, 'UserLogin', 'ArticleSave', 'ArticleSaveComplete',
+     'ArticleDelete'.
 
 hook
-     A clump of code and data that should be run when an event
-     happens. This can be either a function and a chunk of data, or an
-     object and a method.
+     A clump of code and data that should be run when an event happens. This can
+     be either a function and a chunk of data, or an object and a method.
      
 hook function
      The function part of a hook.
      
 ==Rationale==
 
-Hooks allow us to decouple optionally-run code from code that is run
-for everyone. It allows MediaWiki hackers, third-party developers and
-local administrators to define code that will be run at certain points
-in the mainline code, and to modify the data run by that mainline
-code. Hooks can keep mainline code simple, and make it easier to
-write extensions. Hooks are a principled alternative to local patches.
+Hooks allow us to decouple optionally-run code from code that is run for
+everyone. It allows MediaWiki hackers, third-party developers and local
+administrators to define code that will be run at certain points in the mainline
+code, and to modify the data run by that mainline code. Hooks can keep mainline
+code simple, and make it easier to write extensions. Hooks are a principled
+alternative to local patches.
 
-Consider, for example, two options in MediaWiki. One reverses the
-order of a title before displaying the article; the other converts the
-title to all uppercase letters. Currently, in MediaWiki code, we
-would handle this as follows (note: not real code, here):
+Consider, for example, two options in MediaWiki. One reverses the order of a
+title before displaying the article; the other converts the title to all
+uppercase letters. Currently, in MediaWiki code, we would handle this as follows
+(note: not real code, here):
 
 	function showAnArticle($article) {
 		global $wgReverseTitle, $wgCapitalizeTitle;
@@ -49,31 +48,30 @@ would handle this as follows (note: not real code, here):
 		# code to actually show the article goes here
 	}
 
-An extension writer, or a local admin, will often add custom code to
-the function -- with or without a global variable. For example,
-someone wanting email notification when an article is shown may add:
+An extension writer, or a local admin, will often add custom code to the
+function -- with or without a global variable. For example, someone wanting
+email notification when an article is shown may add:
 
     function showAnArticle($article) {
-        global $wgReverseTitle, $wgCapitalizeTitle;
+        global $wgReverseTitle, $wgCapitalizeTitle, $wgNotifyArticle;
 	
-	if ($wgReverseTitle) {
-	    wfReverseTitle($article);
-        }
+		if ($wgReverseTitle) {
+			wfReverseTitle($article);
+		}
 	
-	if ($wgCapitalizeTitle) {
-	   wfCapitalizeTitle($article);
-        }
+		if ($wgCapitalizeTitle) {
+			wfCapitalizeTitle($article);
+		}
 
-	# code to actually show the article goes here
+		# code to actually show the article goes here
 	
-	if ($wgNotifyArticle) {
-	   wfNotifyArticleShow($article));
-        }
+		if ($wgNotifyArticle) {
+			wfNotifyArticleShow($article));
+		}
     }
 
-Using a hook-running strategy, we can avoid having all this
-option-specific stuff in our mainline code. Using hooks, the function
-becomes:
+Using a hook-running strategy, we can avoid having all this option-specific
+stuff in our mainline code. Using hooks, the function becomes:
 
 	function showAnArticle($article) {
 
@@ -85,16 +83,15 @@ becomes:
 		}
 	}
 
-We've cleaned up the code here by removing clumps of weird,
-infrequently used code and moving them off somewhere else. It's much
-easier for someone working with this code to see what's _really_ going
-on, and make changes or fix bugs.
+We've cleaned up the code here by removing clumps of weird, infrequently used
+code and moving them off somewhere else. It's much easier for someone working
+with this code to see what's _really_ going on, and make changes or fix bugs.
 
-In addition, we can take all the code that deals with the little-used
-title-reversing options (say) and put it in one place. Instead of
-having little title-reversing if-blocks spread all over the codebase
-in showAnArticle, deleteAnArticle, exportArticle, etc., we can
-concentrate it all in an extension file:
+In addition, we can take all the code that deals with the little-used 
+title-reversing options (say) and put it in one place. Instead of having little
+title-reversing if-blocks spread all over the codebase in showAnArticle,
+deleteAnArticle, exportArticle, etc., we can concentrate it all in an extension
+file:
 
 	function reverseArticleTitle($article) {
 		# ...
@@ -104,8 +101,8 @@ concentrate it all in an extension file:
 		# ...
 	}
 
-The setup function for the extension just has to add its hook
-functions to the appropriate events:
+The setup function for the extension just has to add its hook functions to the
+appropriate events:
 
 	setupTitleReversingExtension() {
 		global $wgHooks;
@@ -115,23 +112,21 @@ functions to the appropriate events:
 		$wgHooks['ArticleExport'][] = 'reverseForExport';
 	}
 
-Having all this code related to the title-reversion option in one
-place means that it's easier to read and understand; you don't have to
-do a grep-find to see where the $wgReverseTitle variable is used, say.
+Having all this code related to the title-reversion option in one place means
+that it's easier to read and understand; you don't have to do a grep-find to see
+where the $wgReverseTitle variable is used, say.
 
-If the code is well enough isolated, it can even be excluded when not
-used -- making for some slight savings in memory and load-up
-performance at runtime. Admins who want to have all the reversed
-titles can add:
+If the code is well enough isolated, it can even be excluded when not used -- 
+making for some slight savings in memory and load-up performance at runtime. 
+Admins who want to have all the reversed titles can add:
 
 	require_once('extensions/ReverseTitle.php');
 
-...to their LocalSettings.php file; those of us who don't want or need
-it can just leave it out.
+...to their LocalSettings.php file; those of us who don't want or need it can
+just leave it out.
 
-The extensions don't even have to be shipped with MediaWiki; they
-could be provided by a third-party developer or written by the admin
-him/herself.
+The extensions don't even have to be shipped with MediaWiki; they could be
+provided by a third-party developer or written by the admin him/herself.
 
 ==Writing hooks==
 
@@ -140,8 +135,8 @@ A hook is a chunk of code run at some particular event. It consists of:
   * a function with some optional accompanying data, or
   * an object with a method and some optional accompanying data.
 
-Hooks are registered by adding them to the global $wgHooks array for a
-given event. All the following are valid ways to define hooks:
+Hooks are registered by adding them to the global $wgHooks array for a given
+event. All the following are valid ways to define hooks:
 
 	$wgHooks['EventName'][] = 'someFunction'; # function, no data
 	$wgHooks['EventName'][] = array('someFunction', $someData);
@@ -152,10 +147,9 @@ given event. All the following are valid ways to define hooks:
 	$wgHooks['EventName'][] = array($object, 'someMethod', $someData);
 	$wgHooks['EventName'][] = array($object); # weird but OK
 
-When an event occurs, the function (or object method) will be called
-with the optional data provided as well as event-specific parameters.
-The above examples would result in the following code being executed
-when 'EventName' happened:
+When an event occurs, the function (or object method) will be called with the
+optional data provided as well as event-specific parameters. The above examples
+would result in the following code being executed when 'EventName' happened:
 
 	# function, no data
 	someFunction($param1, $param2)
@@ -169,31 +163,30 @@ when 'EventName' happened:
 	# object with method and data
 	$object->someMethod($someData, $param1, $param2)
       
-Note that when an object is the hook, and there's no specified method,
-the default method called is 'onEventName'. For different events this
-would be different: 'onArticleSave', 'onUserLogin', etc.
+Note that when an object is the hook, and there's no specified method, the
+default method called is 'onEventName'. For different events this would be
+different: 'onArticleSave', 'onUserLogin', etc.
 
-The extra data is useful if we want to use the same function or object
-for different purposes. For example:
+The extra data is useful if we want to use the same function or object for
+different purposes. For example:
 
 	$wgHooks['ArticleSaveComplete'][] = array('ircNotify', 'TimStarling');
 	$wgHooks['ArticleSaveComplete'][] = array('ircNotify', 'brion');
 
-This code would result in ircNotify being run twice when an article is
-saved: once for 'TimStarling', and once for 'brion'.
+This code would result in ircNotify being run twice when an article is saved:
+once for 'TimStarling', and once for 'brion'.
 
 Hooks can return three possible values:
 
   * true: the hook has operated successfully
-  * "some string": an error occurred; processing should
-    	  stop and the error should be shown to the user
-  * false: the hook has successfully done the work
-    	   necessary and the calling function should skip
+  * "some string": an error occurred; processing should stop and the error
+                   should be shown to the user
+  * false: the hook has successfully done the work necessary and the calling
+           function should skip
 	
-The last result would be for cases where the hook function replaces
-the main functionality. For example, if you wanted to authenticate
-users to a custom system (LDAP, another PHP program, whatever), you
-could do:
+The last result would be for cases where the hook function replaces the main
+functionality. For example, if you wanted to authenticate users to a custom
+system (LDAP, another PHP program, whatever), you could do:
 
 	$wgHooks['UserLogin'][] = array('ldapLogin', $ldapServer);
   
@@ -202,13 +195,13 @@ could do:
 		return false;
 	}
 
-Returning false makes less sense for events where the action is
-complete, and will normally be ignored.
+Returning false makes less sense for events where the action is complete, and
+will normally be ignored.
 
 ==Using hooks==
 
-A calling function or method uses the wfRunHooks() function to run
-the hooks related to a particular event, like so:
+A calling function or method uses the wfRunHooks() function to run the hooks
+related to a particular event, like so:
 
 	class Article { 
 		# ...
@@ -221,22 +214,21 @@ the hooks related to a particular event, like so:
 		}
 	}
 						    
-wfRunHooks() returns true if the calling function should continue
-processing (the hooks ran OK, or there are no hooks to run), or false
-if it shouldn't (an error occurred, or one of the hooks handled the
-action already). Checking the return value matters more for "before"
-hooks than for "complete" hooks.
+wfRunHooks() returns true if the calling function should continue processing
+(the hooks ran OK, or there are no hooks to run), or false if it shouldn't (an
+error occurred, or one of the hooks handled the action already). Checking the
+return value matters more for "before" hooks than for "complete" hooks.
 
 Note that hook parameters are passed in an array; this is a necessary
-inconvenience to make it possible to pass reference values (that can
-be changed) into the hook code. Also note that earlier versions of
-wfRunHooks took a variable number of arguments; the array() calling
-protocol came about after MediaWiki 1.4rc1.
+inconvenience to make it possible to pass reference values (that can be changed)
+into the hook code. Also note that earlier versions of wfRunHooks took a
+variable number of arguments; the array() calling protocol came about after
+MediaWiki 1.4rc1.
 
 ==Events and parameters==
 
-This is a list of known events and parameters; please add to it if
-you're going to add events to the MediaWiki code.
+This is a list of known events and parameters; please add to it if you're going
+to add events to the MediaWiki code.
 
 'AbortAutoblock': Return false to cancel an autoblock.
 $autoblockip: The IP going to be autoblocked.
@@ -280,6 +272,28 @@ if $resultArr was filled.
 $EditPage : the EditPage object
 $text : the new text of the article (has yet to be saved)
 $resultArr : data in this array will be added to the API result
+
+'APIQueryInfoTokens': use this hook to add custom tokens to prop=info.
+Every token has an action, which will be used in the intoken parameter
+and in the output (actiontoken="..."), and a callback function which
+should return the token, or false if the user isn't allowed to obtain
+it. The prototype of the callback function is func($pageid, $title)
+where $pageid is the page ID of the page the token is requested for
+and $title is the associated Title object. In the hook, just add
+your callback to the $tokenFunctions array and return true (returning
+false makes no sense)
+$tokenFunctions: array(action => callback)
+
+'APIQueryRevisionsTokens': use this hook to add custom tokens to prop=revisions.
+Every token has an action, which will be used in the rvtoken parameter
+and in the output (actiontoken="..."), and a callback function which
+should return the token, or false if the user isn't allowed to obtain
+it. The prototype of the callback function is func($pageid, $title, $rev)
+where $pageid is the page ID of the page associated to the revision the
+token is requested for, $title the associated Title object and $rev the
+associated Revision object. In the hook, just add your callback to the
+$tokenFunctions array and return true (returning false makes no sense)
+$tokenFunctions: array(action => callback)
 
 'ArticleAfterFetchContent': after fetching content of an article from the database
 $article: the article (object) being loaded from the database
@@ -381,17 +395,6 @@ $isWatch: (No longer used)
 $section: (No longer used)
 $flags: Flags passed to Article::doEdit()
 $revision: New Revision of the article
-
-'ArticleSaveComplete': after an article is saved
-$article: the article (object) saved
-$user: the user (object) who saved the article
-$text: the new article text
-$summary: the article summary (comment)
-$isminor: minor flag
-$iswatch: watch flag
-$section: section #
-
-wfRunHooks( 'ArticleSaveComplete', array( &$this, &$wgUser, $text, $summary, $flags & EDIT_MINOR, null, null, &$flags, $revision ) );
 
 'ArticleUndelete': When one or more revisions of an article are restored
 $title: Title corresponding to the article restored
@@ -499,6 +502,15 @@ $catpage: CategoryPage instance
 $unpatrolled:  Whether or not we are showing unpatrolled changes.
 $watched:      Whether or not the change is watched by the user.
 
+'ContribsPager::getQueryInfo': Before the contributions query is about to run
+&$pager: Pager object for contributions
+&queryInfo: The query for the contribs Pager
+
+'ContributionsLineEnding': Called before a contributions HTML line is finished
+$page: SpecialPage object for contributions
+$ret: the HTML line
+$row: the DB row for this line
+
 'ContributionsToolLinks': Change tool links above Special:Contributions
 $id: User identifier
 $title: User page title
@@ -520,6 +532,17 @@ $newRev: Revision object of the "new" revision
 'DisplayOldSubtitle': before creating subtitle when browsing old versions of an article
 $article: article (object) being viewed
 $oldid: oldid (int) being viewed
+
+'DoEditSectionLink': Override the HTML generated for section edit links
+$skin: Skin object rendering the UI
+$title: Title object for the title being linked to (may not be the same as
+  $wgTitle, if the section is included from a template)
+$section: The designation of the section being pointed to, to be included in
+  the link, like "&section=$section"
+$tooltip: The default tooltip.  Escape with htmlspecialchars() before using.
+  By default, this is wrapped in the 'editsectionhint' message.
+$result: The HTML to return, prefilled with the default plus whatever other
+  changes earlier hooks have made
 
 'EditFilter': Perform checks on an edit
 $editor: Edit form (see includes/EditPage.php)
@@ -567,18 +590,10 @@ sections.
 &$editpage: The current EditPage object
 &$buttons: Array of edit buttons "Save", "Preview", "Live", and "Diff"
 
-'EditSectionLink': Override the return value of Linker::editSectionLink()
+'EditSectionLink': Do not use, use DoEditSectionLink instead.
 $skin: Skin rendering the UI
 $title: Title being linked to
 $section: Section to link to
-$link: Default link
-$result: Result (alter this to override the generated links)
-
-'EditSectionLinkForOther': Override the return value of Linker::editSectionLinkForOther()
-$skin: Skin rendering the UI
-$title: Title being linked to
-$section: Section to link to
-$hint: Anchor title/tooltip attributes
 $link: Default link
 $result: Result (alter this to override the generated links)
 
@@ -599,10 +614,6 @@ $to: address of receiving user
 $from: address of sending user
 $subject: subject of the mail
 $text: text of the mail
-
-'ExtendJSGlobalVars': called right before Skin::makeVariablesScript is executed
-&$vars: variable (or multiple variables) to be added into the output
-		of Skin::makeVariablesScript
 
 'FetchChangesList': When fetching the ChangesList derivative for a particular user
 &$user: User the list is being fetched for
@@ -702,6 +713,12 @@ $page: ImagePage object
 &$file: File object
 &$displayFile: displayed File object
 
+'InitializeArticleMaybeRedirect': MediaWiki check to see if title is a redirect
+$title: Title object ($wgTitle)
+$request: WebRequest
+$ignoreRedirect: boolean to skip redirect check
+$target: Title/string of redirect target
+
 'InitPreferencesForm': called at the end of PreferencesForm's constructor
 $form: the PreferencesForm
 $request: the web request to initialized from
@@ -739,7 +756,7 @@ $lang: laguage code (string)
 
 'LinkerMakeExternalImage': At the end of Linker::makeExternalImage() just before the return
 &$url: the image url
-&alt: the image's alt text
+&$alt: the image's alt text
 &$img: the new image HTML (if returning false)
 
 'LinkerMakeExternalLink': At the end of Linker::makeExternalLink() just before the return
@@ -804,6 +821,10 @@ $magicWords: array of strings
 'MagicWordwgVariableIDs': When definig new magic words IDs. DEPRECATED: Use LanguageGetMagic hook instead
 $variableIDs: array of strings
 
+'MakeGlobalVariablesScript': called right before Skin::makeVariablesScript is executed   
+&$vars: variable (or multiple variables) to be added into the output   
+		of Skin::makeVariablesScript
+
 'MarkPatrolled': before an edit is marked patrolled
 $rcid: ID of the revision to be marked patrolled
 $user: the user (object) marking the revision as patrolled
@@ -829,6 +850,7 @@ $article: $wgArticle
 $title:   $wgTitle
 $user:    $wgUser
 $request: $wgRequest
+$this:    The $mediawiki object
 
 'MessagesPreLoad': When loading a message from the database
 $title: title of the message (string)
@@ -845,6 +867,18 @@ $article: the article edited
 $rev: the new revision
 $baseID: the revision ID this was based off, if any
 
+'NormalizeMessageKey': Called before the software gets the text of a message
+  (stuff in the MediaWiki: namespace), useful for changing WHAT message gets displayed
+&$key: the message being looked up. Change this to something else to change what message gets displayed (string)
+&$useDB: whether or not to look up the message in the database (bool)
+&$langCode: the language code to get the message for (string) - or -
+  whether to use the content language (true) or site language (false) (bool)
+&$transform: whether or not to expand variables and templates in the message (bool)
+
+'OpenSearchUrls': Called when constructing the OpenSearch description XML.
+Hooks can alter or append to the array of URLs for search & suggestion formats.
+&$urls: array of associative arrays with Url element attributes
+
 'OutputPageBeforeHTML': a page has been processed by the parser and
 the resulting HTML is about to be displayed.  
 $parserOutput: the parserOutput (object) that corresponds to the page 
@@ -853,6 +887,12 @@ $text: the text that will be displayed, in HTML (string)
 'OutputPageParserOutput': after adding a parserOutput to $wgOut
 $out: OutputPage instance (object)
 $parserOutput: parserOutput instance being added in $out
+
+'OutputPageMakeCategoryLinks': links are about to be generated for the page's categories.
+  Implementations should return false if they generate the category links, so the default link generation is skipped.
+$out: OutputPage instance (object)
+$categories: associative array, keys are category names, values are category types ("normal" or "hidden")
+$links: array, intended to hold the result. Must be an associative array with category types as keys and arrays of HTML links as values.
 
 'PageHistoryBeforeList': When a history page list is about to be constructed.
 $article: the article that the history is loading for
@@ -977,7 +1017,13 @@ $form: the PreferencesForm
 $user: the User object to load preferences from
 
 'RevisionInsertComplete': called after a revision is inserted into the DB
-$revision: the Revision
+&$revision: the Revision
+$data: the data stored in old_text.  The meaning depends on $flags: if external
+  is set, it's the URL of the revision text in external storage; otherwise,
+  it's the revision text itself.  In either case, if gzip is set, the revision
+  text is gzipped.
+$flags: a comma-delimited list of strings representing the options used.  May
+  include: utf8 (this will always be set for new revisions); gzip; external.
 
 'SavePreferences': called at the end of PreferencesForm::savePreferences; 
                    returning false prevents the preferences from being saved.
@@ -1014,6 +1060,11 @@ Alter the contents of $siteNotice to add to/alter the sitenotice/anonnotice.
 $skin: Skin object
 &$text: bottomScripts Text
 Append to $text to add additional text/scripts after the stock bottom scripts.
+
+'SkinBuildSidebar': At the end of Skin::buildSidebar()
+$skin: Skin object
+&$bar: Sidebar contents
+Modify $bar to add or modify sidebar portlets.
 
 'SkinSubPageSubtitle': At the beginning of Skin::subPageSubtitle()
 $skin: Skin object
@@ -1136,6 +1187,10 @@ $term: string of search term
 
 'SpecialVersionExtensionTypes': called when generating the extensions credits, use this to change the tables headers
 $extTypes: associative array of extensions types
+
+'TitleArrayFromResult': called when creating an TitleArray object from a database result
+&$titleArray: set this to an object to override the default object returned
+$res: database result used to create the object
 
 'TitleMoveComplete': after moving an article (title)
 $old: old title
@@ -1290,10 +1345,6 @@ $article: article object watched
 
 'wgQueryPages': called when initialising $wgQueryPages, use this to add new query pages to be updated with maintenance/updateSpecialPages.php
 $query: $wgQueryPages itself
-
-'wfMessageCacheReplace': called after sidebar memcached key has been deleted, use this to replace core messages by using an extension
-$title: title of the MediaWiki: message page
-$text: text of the MediaWiki: message page
 
 More hooks might be available but undocumented, you can execute
 ./maintenance/findhooks.php to find hidden one.

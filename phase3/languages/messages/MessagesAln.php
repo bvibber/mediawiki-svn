@@ -6,9 +6,6 @@
  *
  * @author Cradel
  * @author Dardan
- * @author Nike
- * @author M.M.S.
- * @author Siebrand
  */
 
 $fallback = 'sq';
@@ -58,8 +55,6 @@ $messages = array(
 'underline-always'  => 'gjithmonë',
 'underline-never'   => 'kurrë',
 'underline-default' => 'sipas shfletuesit',
-
-'skinpreview' => '(Parapamje)',
 
 # Dates
 'sunday'        => 'E diel',
@@ -231,8 +226,6 @@ $messages = array(
 'portal-url'           => 'Project:Wikiportal',
 'privacy'              => 'Rreth të dhanave vetjake',
 'privacypage'          => 'Project:Politika vetjake',
-'sitesupport'          => 'Dhurime',
-'sitesupport-url'      => 'Project:Dhurime',
 
 'badaccess'        => 'Gabim leje',
 'badaccess-group0' => 'Nuk jeni lejue me e bá kët veprim.',
@@ -381,7 +374,7 @@ Llogaria juej asht hap. Mos harroni me ndryshu parapëlqimet e {{SITENAME}}-s.',
 'italic_tip'      => 'Tekst i pjerrët',
 'link_sample'     => 'Titulli i lidhjes',
 'link_tip'        => 'Lidhje e brendshme',
-'extlink_sample'  => 'http://www.shembull.com Titulli i lidhjes',
+'extlink_sample'  => 'http://www.example.com Titulli i lidhjes',
 'extlink_tip'     => 'Lidhje e jashtme (mos e harro prefiksin http://)',
 'headline_sample' => 'Titull shembull',
 'headline_tip'    => 'Titull i nivelit 2',
@@ -434,6 +427,7 @@ Muneni me [[$1|fillu një artikull]] me kët titull.
 
 # Preferences page
 'mypreferences' => 'Parapëlqimet',
+'skin-preview'  => 'Parapamje',
 
 # Recent changes
 'recentchanges'   => 'Ndryshimet e fundit',
@@ -581,7 +575,6 @@ Muneni me [[$1|fillu një artikull]] me kët titull.
 'tooltip-n-recentchanges'         => 'Lista e ndryshimeve të fundme në projekt',
 'tooltip-n-randompage'            => 'Shikoni një artikull të rastit.',
 'tooltip-n-help'                  => 'Vendi ku muneni me gjetë ndihmë.',
-'tooltip-n-sitesupport'           => 'Përkraheni projektin',
 'tooltip-t-whatlinkshere'         => 'Lista e faqeve qi lidhen te kjo faqe',
 'tooltip-t-upload'                => 'Ngarkoni figura ose skeda tjera',
 'tooltip-t-specialpages'          => 'Lista e krejt faqeve speciale.',

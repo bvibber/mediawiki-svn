@@ -5,9 +5,6 @@
  * @file
  *
  * @author Cgboeree
- * @author Nike
- * @author SPQRobin
- * @author Siebrand
  * @author Malafaya
  */
 
@@ -51,8 +48,6 @@ $messages = array(
 'underline-always'  => 'A tota tempo',
 'underline-never'   => 'A no tempo',
 'underline-default' => 'Surfador costumal',
-
-'skinpreview' => '(Previde)',
 
 # Dates
 'sunday'        => 'soldi',
@@ -219,8 +214,6 @@ $messages = array(
 'portal-url'           => 'Project:Porta comunial',
 'privacy'              => 'Promete de privadia',
 'privacypage'          => 'Project:Promete de privadia',
-'sitesupport'          => 'Donas',
-'sitesupport-url'      => 'Project:Suporta per projeta',
 
 'ok'                  => 'Oce',
 'retrievedfrom'       => 'Retraeda de "$1"',
@@ -311,7 +304,7 @@ Ante alga otra eposta es enviada a la conta, tu va nesesa segue la instruis en l
 'italic_tip'      => 'Testo en leteras italica',
 'link_sample'     => 'Titulo de lia',
 'link_tip'        => 'Lia interna',
-'extlink_sample'  => 'http://www.esemplo.com titulo de lia',
+'extlink_sample'  => 'http://www.example.com titulo de lia',
 'extlink_tip'     => 'Lia esterna (recorda la prefis http://)',
 'headline_sample' => 'Testo de titulo',
 'headline_tip'    => 'Titulo de nivel 2',
@@ -421,6 +414,7 @@ La arcivo de sutraes per esta paje es asi per conveni:",
 # Preferences page
 'preferences'       => 'Preferis',
 'mypreferences'     => 'Me preferis',
+'skin-preview'      => 'Previde',
 'math'              => 'Matematica',
 'saveprefs'         => 'Fisa',
 'retypenew'         => 'Re-entra tu sinia secreta nova:',
@@ -748,7 +742,6 @@ En esta casos, tu va nesesa move o fusa la paje per mano, si desirada.",
 'move-watch'       => 'Oserva esta paje',
 'movepagebtn'      => 'Move paje',
 'pagemovedsub'     => 'La move ia susede',
-'movepage-moved'   => '<big>\'\'\'"$1" ia es moveda a "$2"\'\'\'</big>', # The two titles are passed in plain text as $3 and $4 to allow additional goodies in the message.
 'articleexists'    => 'Un paje con acel nom esiste ja, o la nom ce tu ia eleje no es un nom legal. Per favore, eleje un otra nom.',
 'talkexists'       => "'''La paje se mesma ia es moveda, ma la paje de discutes no pote es moveda, per ce un esiste ja a la titulo nova. Per favore, fusa los per mano'''",
 'movedto'          => 'moveda a',
@@ -800,7 +793,6 @@ En esta casos, tu va nesesa move o fusa la paje per mano, si desirada.",
 'tooltip-n-recentchanges'         => 'La lista de cambias resente en la vici.',
 'tooltip-n-randompage'            => 'Carga un paje acaso',
 'tooltip-n-help'                  => 'La loca per descovre.',
-'tooltip-n-sitesupport'           => 'suporta nos',
 'tooltip-t-whatlinkshere'         => 'Lista de tota pajes de vici ce lia a asi',
 'tooltip-t-contributions'         => 'Vide la lista de contribuis de esta usor',
 'tooltip-t-emailuser'             => 'Envia un eposta a esta usor',

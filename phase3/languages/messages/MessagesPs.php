@@ -5,8 +5,6 @@
  * @file
  *
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
- * @author SPQRobin
- * @author Siebrand
  */
 
 $specialPageAliases = array(
@@ -125,8 +123,6 @@ $messages = array(
 
 'underline-always' => 'تل',
 'underline-never'  => 'هېڅکله',
-
-'skinpreview' => '(مخکتنه)',
 
 # Dates
 'sunday'        => 'اتوار',
@@ -272,6 +268,7 @@ $messages = array(
 'bugreports'           => 'د ستونزو راپورونه',
 'bugreportspage'       => 'Project:د ستونزو راپور',
 'copyright'            => 'دا مېنځپانګه د $1 له مخې ستاسو لاس رسي لپاره دلته ده.',
+'copyrightpagename'    => 'د {{SITENAME}} رښتې',
 'copyrightpage'        => '{{ns:project}}:رښتې',
 'currentevents'        => 'اوسنۍ پېښې',
 'currentevents-url'    => 'Project:اوسنۍ پېښې',
@@ -287,8 +284,6 @@ $messages = array(
 'portal-url'           => 'Project:ټولګړی ورټک',
 'privacy'              => 'د محرميت تګلاره',
 'privacypage'          => 'Project:د محرميت_تګلاره',
-'sitesupport'          => 'بسپنې',
-'sitesupport-url'      => 'Project:د وېبځي ملاتړ',
 
 'badaccess'        => 'د لاسرسۍ تېروتنه',
 'badaccess-group0' => 'تاسو د غوښتل شوې کړنې د ترسره کولو اجازه نه لرۍ.',
@@ -373,7 +368,7 @@ $messages = array(
 'loginproblem'               => '<b>همدې غونډال ته ستاسو په ننوتنه کې يوه ستونزه راپېښه شوه!</b><br />بيا يې وآزمويۍ!',
 'login'                      => 'ننوتل',
 'nav-login-createaccount'    => 'ننوتل / کارن-حساب جوړول',
-'loginprompt'                => 'په {{SITENAME}} کې د ننوتنې لپاره، تاسو بايد خپل د کمپيوټر کوکيز (cookies) <br>چارن کړۍ.',
+'loginprompt'                => 'ددې لپاره چې {{SITENAME}} کې ننوځۍ نو بايد چې ستاسو د کمپيوټر کوکيز (cookies) <br />چارن وي.',
 'userlogin'                  => 'ننوتل / کارن-حساب جوړول',
 'logout'                     => 'وتل',
 'userlogout'                 => 'وتل',
@@ -387,7 +382,7 @@ $messages = array(
 'badretype'                  => 'دا پټنوم چې تاسو ليکلی د پخواني پټنوم سره ورته نه دی.',
 'userexists'                 => 'کوم کارن نوم چې تاسو ورکړی هغه بل چا کارولی. لطفاً يو بل ډول نوم وټاکۍ.',
 'youremail'                  => 'برېښليک *',
-'username'                   => 'کارن نوم:',
+'username'                   => 'کارن-نوم:',
 'uid'                        => 'د کارونکي پېژندنه:',
 'yourrealname'               => 'اصلي نوم:',
 'yourlanguage'               => 'ژبه:',
@@ -405,7 +400,8 @@ $messages = array(
 'nouserspecified'            => 'تاسو ځان ته کوم کارن نوم نه دی ځانګړی کړی.',
 'wrongpassword'              => 'ناسم پټنوم مو ليکلی. لطفاً يو ځل بيا يې وليکۍ.',
 'wrongpasswordempty'         => 'تاسو پټنوم نه دی ليکلی. لطفاً سر له نوي يې وليکۍ.',
-'passwordtooshort'           => 'ستاسو پټنوم ډېر لنډ دی. دا بايد لږ تر لږه $1 توري ولري.',
+'passwordtooshort'           => 'ستاسو پټنوم ناسم دی او يا هم ډېر لنډ دی.
+بايد چې پټنوم مو لږ تر لږه {{PLURAL:$1|1 توری|$1 توري}} ولري او پکار ده چې د پټنوم او کارن-نوم ترمېنځ مو هم توپير وي.',
 'mailmypassword'             => 'پټنوم رابرېښليک کول',
 'passwordremindertitle'      => 'د {{SITENAME}} لپاره نوی لنډمهاله پټنوم',
 'passwordremindertext'       => 'يو چا (کېدای شي چې تاسو، د $1 IP پتې نه)
@@ -485,9 +481,6 @@ $messages = array(
 'blockedoriginalsource'    => "د '''$1''' سرچينې لاندې ښودل شوي:",
 'whitelistedittitle'       => 'که د سمادولو تکل لری نو بايد غونډال ته ورننوځۍ.',
 'whitelistedittext'        => 'ددې لپاره چې سمادول ترسره کړی تاسو بايد $1.',
-'whitelistreadtitle'       => 'د همدغې ليکنې د لوستلو لپاره بايد تاسو غونډال ته ننوځۍ.',
-'whitelistreadtext'        => 'که د پاڼو د لوستلو تکل لری نو بايد غونډال کې [[Special:Userlogin|ننوتنه]] ترسره کړۍ.',
-'whitelistacctitle'        => 'تاسو د کارن نوم جوړولو اجازه نه لرۍ',
 'loginreqtitle'            => 'غونډال کې ننوتنه پکار ده',
 'loginreqlink'             => 'ننوتل',
 'loginreqpagetext'         => 'د نورو مخونو د کتلو لپاره تاسو بايد $1 وکړۍ.',
@@ -557,7 +550,9 @@ $messages = array(
 'history-feed-item-nocomment' => '$1 په $2', # user at time
 
 # Revision deletion
-'rev-delundel' => 'ښکاره کول/ پټول',
+'rev-delundel'    => 'ښکاره کول/ پټول',
+'pagehist'        => 'د مخ پېښليک',
+'revdelete-uname' => 'کارن-نوم',
 
 # Diffs
 'history-title'           => 'د "$1" د پېښليک مخليدنه',
@@ -576,6 +571,7 @@ $messages = array(
 'nextn'                 => 'راتلونکي $1',
 'viewprevnext'          => '($1) ($2) ($3) ښکاره کول',
 'search-suggest'        => 'آيا همدا ستاسو موخه ده: $1',
+'search-relatedarticle' => 'اړونده',
 'searchall'             => 'ټول',
 'powersearch'           => 'پرمختللې پلټنه',
 'powersearch-legend'    => 'پرمختللې پلټنه',
@@ -589,6 +585,7 @@ $messages = array(
 'qbsettings-none'       => 'هېڅ',
 'changepassword'        => 'پټنوم بدلول',
 'skin'                  => 'بڼه',
+'skin-preview'          => 'مخکتنه',
 'math'                  => 'شمېرپوهنه',
 'dateformat'            => 'د نېټې بڼه',
 'datedefault'           => 'هېڅ نه ټاکل',
@@ -618,12 +615,11 @@ $messages = array(
 'files'                 => 'دوتنې',
 
 # User rights
-'userrights-user-editname'   => 'يو کارن نوم وليکۍ:',
-'userrights-editusergroup'   => 'د کاروونکو ډلې سمادول',
-'saveusergroups'             => 'د کارونکي ډلې خوندي کول',
-'userrights-groupsmember'    => 'غړی د:',
-'userrights-groupsavailable' => 'شته ډلې:',
-'userrights-reason'          => 'د بدلون سبب:',
+'userrights-user-editname' => 'يو کارن نوم وليکۍ:',
+'userrights-editusergroup' => 'د کاروونکو ډلې سمادول',
+'saveusergroups'           => 'د کارونکي ډلې خوندي کول',
+'userrights-groupsmember'  => 'غړی د:',
+'userrights-reason'        => 'د بدلون سبب:',
 
 # Groups
 'group'     => 'ډله:',
@@ -677,9 +673,9 @@ $messages = array(
 'uploadtext'            => "د دوتنو د پورته کولو لپاره د لانديني چوکاټ نه کار واخلۍ، که چېرته غواړۍ چې د پخوانيو پورته شوو انځورونو په اړه لټون وکړۍ او يا يې وکتلای شۍ نو بيا د [[Special:Imagelist|پورته شوو دوتنو لړليک]] ته لاړ شی، د پورته شوو دوتنو او ړنګ شوو دوتنو يادښتونه په [[Special:Log/upload|پورته شوي يادښت]] کې کتلای شی.
 
 ددې لپاره چې يوه مخ ته انځور ورواچوی، نو بيا پدې ډول تړن (لېنک) وکاروی
-'''<nowiki>[[Image:File.jpg]]</nowiki>''',
-'''<nowiki>[[Image:File.png|alt text]]</nowiki>''' او يا هم د رسنيزو دوتنو لپاره د راساً تړن (لېنک) چې په دې ډول دی
-'''<nowiki>[[Media:File.ogg]]</nowiki>''' وکاروی.",
+'''<nowiki>[[</nowiki>Image:File.jpg<nowiki>]]</nowiki>''',
+'''<nowiki>[[</nowiki>Image:File.png|alt text<nowiki>]]</nowiki>''' او يا هم د رسنيزو دوتنو لپاره د راساً تړن (لېنک) چې په دې ډول دی
+'''<nowiki>[[</nowiki>Media:File.ogg<nowiki>]]</nowiki>''' وکاروی.",
 'uploadlogpage'         => 'د پورته شويو دوتنو يادښت',
 'uploadlogpagetext'     => 'دا لاندې د نوو پورته شوو دوتنو لړليک دی.',
 'filename'              => 'د دوتنې نوم',
@@ -734,7 +730,7 @@ $messages = array(
 'filehist-filesize'         => 'د دوتنې کچه',
 'filehist-comment'          => 'تبصره',
 'imagelinks'                => 'تړنونه',
-'linkstoimage'              => 'دغه لانديني مخونه د همدې دوتنې سره تړنې لري:',
+'linkstoimage'              => 'دا {{PLURAL:$1|لاندينی مخ|$1 لانديني مخونه}} د همدې دوتنې سره تړنې لري:',
 'nolinkstoimage'            => 'داسې هېڅ کوم مخ نه شته چې د دغې دوتنې سره تړنې ولري.',
 'duplicatesoffile'          => 'دا لاندينۍ {{PLURAL:$1| دوتنه د همدې دوتنې غبرګونې لمېسه ده|$1 دوتنې د همدې دوتنې غبرګونې لمېسې دي}}:',
 'sharedupload'              => 'دا يوه ګډه دوتنه ده او کېدای شي چې په نورو پروژو کې به هم کارېږي.',
@@ -756,6 +752,9 @@ $messages = array(
 'filedelete-success'          => "'''$1''' ړنګ شو.",
 'filedelete-otherreason'      => 'بل/اضافه سبب:',
 'filedelete-reason-otherlist' => 'بل سبب',
+'filedelete-reason-dropdown'  => '*د ړنګولو ټولګړی سبب
+** د رښتو نه غاړه غړونه
+** کټ مټ دوه ګونې دوتنه',
 
 # MIME search
 'mimesearch' => 'MIME پلټنه',
@@ -825,7 +824,7 @@ $messages = array(
 'protectedtitles'         => 'ژغورلي سرليکونه',
 'listusers'               => 'د کارونکو لړليک',
 'newpages'                => 'نوي مخونه',
-'newpages-username'       => 'کارن نوم:',
+'newpages-username'       => 'کارن-نوم:',
 'ancientpages'            => 'تر ټولو زاړه مخونه',
 'move'                    => 'لېږدول',
 'movethispage'            => 'دا مخ ولېږدوه',
@@ -870,7 +869,8 @@ $messages = array(
 'listusers-noresult' => 'هېڅ کوم کارونکی و نه موندل شو.',
 
 # Special:Listgrouprights
-'listgrouprights-group' => 'ډله',
+'listgrouprights-group'   => 'ډله',
+'listgrouprights-members' => '(د غړو لړليک)',
 
 # E-mail user
 'mailnologin'     => 'هېڅ کومه لېږل شوې پته نشته',
@@ -978,8 +978,11 @@ $messages = array(
 
 # Undelete
 'undelete'               => 'ړنګ شوي مخونه کتل',
+'undeletepage'           => 'ړنګ شوي مخونه کتل او بېرته پرځای کول',
 'viewdeletedpage'        => 'ړنګ شوي مخونه کتل',
-'undeletebtn'            => 'بيا پرځای کول',
+'undeletebtn'            => 'بېرته پرځای کول',
+'undeletelink'           => 'بېرته پرځای کول',
+'undeletereset'          => 'بياايښودل',
 'undeletecomment'        => 'تبصره:',
 'undeletedarticle'       => '"[[$1]]" بېرته پرځای شو',
 'undelete-search-box'    => 'ړنګ شوي مخونه لټول',
@@ -1067,8 +1070,6 @@ $messages = array(
 
 نو په هغه وخت کې پکار ده چې د خبرواترو د مخ لېږدونه او د نوي مخ سره د يوځای کولو کړنه په لاسي توګه ترسره کړی.",
 'movearticle'             => 'مخ لېږدول',
-'movenologin'             => 'غونډال کې نه ياست ننوتي',
-'movenologintext'         => 'ددې لپاره چې يو مخ ولېږدوی، نو تاسو بايد يو ثبت شوی کارونکی او غونډال کې [[Special:Userlogin|ننوتي]] اوسۍ.',
 'newtitle'                => 'يو نوي سرليک ته:',
 'move-watch'              => 'همدا مخ کتل',
 'movepagebtn'             => 'مخ لېږدول',
@@ -1136,7 +1137,6 @@ $messages = array(
 'tooltip-n-recentchanges'         => 'په ويکي کې د وروستي بدلونو لړليک.',
 'tooltip-n-randompage'            => 'يو ناټاکلی مخ ښکاره کوي',
 'tooltip-n-help'                  => 'هغه ځای چېرته چې راڅرګندولای شو.',
-'tooltip-n-sitesupport'           => 'زموږ ملاتړ وکړی',
 'tooltip-t-whatlinkshere'         => 'د ويکي د ټولو هغو مخونو لړليک چې دلته تړنې لري',
 'tooltip-t-contributions'         => 'د همدې کارونکي د ونډو لړليک کتل',
 'tooltip-t-emailuser'             => 'همدې کارونکي ته يو برېښليک لېږل',
@@ -1177,12 +1177,15 @@ $messages = array(
 # Media information
 'widthheightpage'      => '$1×$2, $3 {{PLURAL:$3|مخ|مخونه}}',
 'file-info-size'       => '($1 × $2 پېکسل, د دوتنې کچه: $3, MIME بڼه: $4)',
+'file-nohires'         => '<small>تر دې کچې لوړې بېلن نښې نشته.</small>',
 'svg-long-desc'        => '(SVG دوتنه، نومېنلي $1 × $2 پېکسل، د دوتنې کچه: $3)',
 'show-big-image'       => 'بشپړه بېلن نښې',
 'show-big-image-thumb' => '<small>د همدې مخکتنې کچه: $1 × $2 pixels</small>',
 
 # Special:Newimages
 'newimages'             => 'د نوو دوتنو نندارتون',
+'imagelisttext'         => "دلته لاندې د '''$1''' {{PLURAL:$1|دوتنه|دوتنې}} يو لړليک دی چې اوډل شوي $2.",
+'newimages-summary'     => 'هغه دوتنې چې غونډال کې تازه پورته شوي، په همدې ځانګړي مخ کې ښکاري',
 'noimages'              => 'د کتلو لپاره څه نشته.',
 'ilsubmit'              => 'پلټل',
 'bydate'                => 'د نېټې له مخې',
@@ -1214,6 +1217,7 @@ $messages = array(
 
 # EXIF tags
 'exif-imagedescription' => 'د انځور سرليک',
+'exif-model'            => 'د کامرې ماډل',
 'exif-artist'           => 'ليکوال',
 'exif-usercomment'      => 'د کارونکي تبصرې',
 'exif-filesource'       => 'د دوتنې سرچينه',
@@ -1280,7 +1284,10 @@ $1',
 'hideresults'      => 'پايلې پټول',
 
 # Multipage image navigation
-'imgmultigo' => 'ورځه!',
+'imgmultipageprev' => '← پخوانی مخ',
+'imgmultipagenext' => 'راتلونکی مخ →',
+'imgmultigo'       => 'ورځه!',
+'imgmultigoto'     => 'د $1 مخ ته ورځه',
 
 # Table pager
 'ascending_abbrev'         => 'ختند',
@@ -1299,10 +1306,16 @@ $1',
 'autoredircomment' => '[[$1]] ته وګرځولی شو',
 'autosumm-new'     => 'نوی مخ: $1',
 
+# Live preview
+'livepreview-loading' => 'د برسېرېدلو په حال کې...',
+
 # Watchlist editor
+'watchlistedit-noitems'    => 'ستاسو په کتلي لړليک کې هېڅ کوم سرليک نشته.',
 'watchlistedit-raw-title'  => 'خام کتلی لړليک سمادول',
 'watchlistedit-raw-legend' => 'خام کتلی لړليک سمادول',
 'watchlistedit-raw-titles' => 'سرليکونه:',
+'watchlistedit-raw-submit' => 'کتلی لړليک تازه کول',
+'watchlistedit-raw-done'   => 'ستاسو کتلی لړليک تازه شو.',
 
 # Watchlist editing tools
 'watchlisttools-view' => 'اړونده بدلونونه کتل',
@@ -1326,12 +1339,14 @@ $1',
 # Special:Version
 'version'              => 'بڼه', # Not used as normal message but as header for the special page itself
 'version-specialpages' => 'ځانګړي مخونه',
+'version-other'        => 'بل',
 
 # Special:Filepath
 'filepath-page' => 'دوتنه:',
 
 # Special:FileDuplicateSearch
-'fileduplicatesearch-submit' => 'پلټل',
+'fileduplicatesearch-filename' => 'د دوتنې نوم:',
+'fileduplicatesearch-submit'   => 'پلټل',
 
 # Special:SpecialPages
 'specialpages'                 => 'ځانګړي مخونه',

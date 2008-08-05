@@ -6,7 +6,6 @@
  *
  * @author Gadao01
  * @author Jatrobat
- * @author Siebrand
  * @author Magalahi
  */
 
@@ -43,8 +42,6 @@ $messages = array(
 'underline-always'  => 'Kada biahi',
 'underline-never'   => "Ni ngai'an",
 'underline-default' => 'Plantan orihinat ni Browser',
-
-'skinpreview' => "(Na'annok)",
 
 # Dates
 'sunday'        => 'Damenggo',
@@ -210,8 +207,6 @@ $messages = array(
 'portal-url'           => 'Project:Fanhaluman Komunida',
 'privacy'              => 'Areklamenton konfidensia',
 'privacypage'          => 'Project:Areklamenton konfidensia',
-'sitesupport'          => "Nina'i siha",
-'sitesupport-url'      => 'Project:Supotta website',
 
 'badaccess'        => 'Lachi gi petmisu',
 'badaccess-group0' => "Ti siña un cho'gue i aksion ni finaisen-mu.",
@@ -323,7 +318,8 @@ Ayek fan otru na nå'an.",
 'yourlanguage'               => 'Lengguahe:',
 'yournick'                   => 'Fitma:',
 'badsig'                     => 'Ti maolek i fitma raw; chek i HTML tags.',
-'badsiglength'               => "Mampos anakko'-ña i na'an; na'lakadada' $1 ((PLURAL:$1|na simbolo|na simbolo siha)).",
+'badsiglength'               => "Mampos anakko'-ña i na'an;
+na'lakadada' $1 {{PLURAL:$1|na simbolo|na simbolo siha}}.",
 'email'                      => 'E-mail',
 'prefs-help-realname'        => "Ti nesisario i na'an-mu mågahet.
 Yanggen un decidi mamo'lu, ma'usa ha' sempre para muna'i hao ni kreditu ni che'cho'-mu.",
@@ -348,7 +344,7 @@ Chek fan i dineletrea.',
 'wrongpassword'              => "Lachi i password ni tinige'-mu. Pot fabot, chagi fan ta'lo.",
 'wrongpasswordempty'         => "Ti mamo'lu hao password. Pot fabot, chagi fan ta'lo.",
 'passwordtooshort'           => "Lachi pat mampos kadada' iyo-mu password.
-Na'seguro na mas ki $1 letras ha' ya ti parehu ha' yan i na'an-mu ni muna'setbi.",
+Na'seguro na mas ki {{PLURAL:$1|1 na letra|$1 na letras}} ha' ya ti parehu ha' yan i na'an-mu muna'setbi.",
 'mailmypassword'             => "Na'e-mail password",
 'passwordremindertitle'      => 'I nuebu na password temporårio para {{SITENAME}}',
 'passwordremindertext'       => 'Guåha na mamaisen (hågu ha\' buente, ginen i IP $1)
@@ -385,12 +381,13 @@ Ti para u na'hanao ni sigienti na inayek siha.",
 'italic_tip'      => "Tinige' mana'echong",
 'link_sample'     => 'Titulon inachetton',
 'link_tip'        => 'Inachetton sanhalom',
-'extlink_sample'  => 'http://www.ehemplu.com titulon inachetton',
+'extlink_sample'  => 'http://www.example.com titulon inachetton',
 'extlink_tip'     => 'Inachetton sanhiyong (munga mamalefa ni http://)',
 'headline_sample' => "Tinige' i titulo mo'na",
 'headline_tip'    => "Titulon nibet mina'dos",
 'math_sample'     => "Po'lo i fotmula mågi",
 'math_tip'        => 'Fotmulan matematika (LaTeX)',
+'nowiki_tip'      => 'Iknora i estrokturan wiki',
 'image_tip'       => "Mana'halom na atkibu",
 'media_tip'       => 'Inachetton atkibu',
 'sig_tip'         => 'Fitma-mu yan i ora',
@@ -445,10 +442,6 @@ Pot fabot, na'hålom i ID gi todus i finaisen-mu siha.",
 'blockededitsource'                => "Ma'a'annok gi papa' i tinige' '''tinilaika-mu''' gi '''$1''':",
 'whitelistedittitle'               => 'Nesesario malogin para tumulaika',
 'whitelistedittext'                => 'Un nesisita ma$1 para tumulaika påhina.',
-'whitelistreadtitle'               => 'Nesisario malogin para manaitai',
-'whitelistreadtext'                => 'Un nesisita [[Special:Userlogin|lumogin]] para manaitai.',
-'whitelistacctitle'                => "Ti masedi hao mama'tinas kuenta",
-'whitelistacctext'                 => "Ti masedi hao mama'tinas kuenta gi {{SITENAME}}, un nesita [[Special:Userlogin|lumogin]] yan un nesita i petmisu propiu siha.",
 'confirmedittitle'                 => 'Manesita i konfitmasion e-mail para tumulaika',
 'confirmedittext'                  => "Un nesisita un konfotme iyo-mu email åntes di tumulaika påhina.
 Pot fabot po'lo yan konfotme iyo-mu e-mail gi [[Special:Preferences|prifirensia muna'sesetbi]].",
@@ -699,6 +692,7 @@ Fanapunta na fana'an ti gus nuebu i listan-ñiha i guinahan {{SITENAME}}.",
 'qbsettings-floatingright' => "Mamå'ya gi agapa'",
 'changepassword'           => 'Tulaika password',
 'skin'                     => 'Låssas',
+'skin-preview'             => "Na'annok",
 'math'                     => 'Math',
 'dateformat'               => 'Plantiyas fecha',
 'datedefault'              => "Tåya' prifirensia",
@@ -737,15 +731,13 @@ Fanapunta na fana'an ti gus nuebu i listan-ñiha i guinahan {{SITENAME}}.",
 'files'                    => 'Atkibu siha',
 
 # User rights
-'userrights'                 => "Inenkåtgan i direchun muna'sesetbi", # Not used as normal message but as header for the special page itself
-'userrights-lookup-user'     => "Maneha i grupun muna'sesetbi",
-'userrights-user-editname'   => "Po'lo nå'an muna'sesetbi:",
-'editusergroup'              => "Tulaika grupun muna'sesetbi",
-'userrights-editusergroup'   => "Tulaika grupun muna'sesetbi",
-'saveusergroups'             => "Såtba Grupun Muna'sesetbi",
-'userrights-groupsmember'    => 'Miembron:',
-'userrights-groupsremovable' => 'Grupu suhayon',
-'userrights-groupsavailable' => 'Grupu ni manggaige:',
+'userrights'               => "Inenkåtgan i direchun muna'sesetbi", # Not used as normal message but as header for the special page itself
+'userrights-lookup-user'   => "Maneha i grupun muna'sesetbi",
+'userrights-user-editname' => "Po'lo nå'an muna'sesetbi:",
+'editusergroup'            => "Tulaika grupun muna'sesetbi",
+'userrights-editusergroup' => "Tulaika grupun muna'sesetbi",
+'saveusergroups'           => "Såtba Grupun Muna'sesetbi",
+'userrights-groupsmember'  => 'Miembron:',
 
 # Groups
 'group' => 'Grupu:',
@@ -758,7 +750,7 @@ Fanapunta na fana'an ti gus nuebu i listan-ñiha i guinahan {{SITENAME}}.",
 # Recent changes
 'nchanges'        => '$1 {{PLURAL:$1|na tinilaika|na tinilaika siha}}',
 'recentchanges'   => 'Tinilaika siha gi halacha',
-'rcnote'          => "Guåha {{PLURAL:$1|'''1''' na tinilaika|'''$1''' na tinilaika siha}} gi {{PLURAL:$2|diha|'''$2''' dihas}}, ginen $3.",
+'rcnote'          => "Guåha {{PLURAL:$1|'''1''' na tinilaika|'''$1''' na tinilaika siha}} gi {{PLURAL:$2|day|'''$2''' days}}, ginen $5, $4.",
 'rcnotefrom'      => "Gi papa' guåha i tinilaika siha ginen '''$2''' (fa'na'an '''$1''' ma'annok).",
 'rclistfrom'      => "Na'annok i mannuebun tinilaika siha ginen $1",
 'rcshowhideminor' => "$1 na mandikike' na tinilaika siha",
@@ -802,7 +794,7 @@ Fanapunta na fana'an ti gus nuebu i listan-ñiha i guinahan {{SITENAME}}.",
 'filehist-filesize'         => 'Mineddong atkibu',
 'filehist-comment'          => 'Komentu',
 'imagelinks'                => 'Inachetton',
-'linkstoimage'              => 'Umachetton i sigiente na påhina siha yan este na atkibu:',
+'linkstoimage'              => 'Umachetton i sigiente {{PLURAL:$1|na påhina|$1 na påhina siha}} yan este na atkibu:',
 'nolinkstoimage'            => "Tåya' na påhina siha umachetton yan este na atkibu.",
 'sharedupload'              => "Ma'apatte este na atkibu ya buente ha' ma'usa gi otru proyektu siha.",
 'noimage'                   => "Tåya' atkibu mafa'na'an enao, siña un $1.",
@@ -1077,7 +1069,6 @@ Ayek fan otru nå'an-ña.",
 'tooltip-n-recentchanges'         => "I listan ina'go i wiki gi halacha.",
 'tooltip-n-randompage'            => "Ta'yoki guatu maseha håfa na påhina",
 'tooltip-n-help'                  => "Estegue' siña hao kumunprende.",
-'tooltip-n-sitesupport'           => 'Supotta ham',
 'tooltip-t-whatlinkshere'         => "Listan todu i påhinan wiki siha ni ma na'chetton guini",
 'tooltip-t-contributions'         => "Atan i listan kontribusion siha ni este na muna'sesetbi",
 'tooltip-t-emailuser'             => "Na'hanague i muna'sesetbi ni e-mail",
