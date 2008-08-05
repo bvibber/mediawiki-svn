@@ -668,8 +668,7 @@ function mv_get_person_img($person_name){
 			$img = wfLocalFile( $imgTitle );					
 		}																			
 	}else{
-		//assume 'Missing person.jpg' exist 
-		//@@todo put this into the install scripts 
+		//@@todo add Missing person.jpg to install scripts 
 		
 		$imgTitle =  Title::makeTitle(NS_IMAGE, MV_MISSING_PERSON_IMG);
 		$img= wfFindFile($imgTitle);	

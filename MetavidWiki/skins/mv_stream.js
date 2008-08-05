@@ -16,8 +16,6 @@
  * assumes a few utility functions are available from mv_embed: 
  * 	loadExternalJs()
  * 	addLoadEvent()
- * also assumes scriptaculus is included in the mv_embed distribution
- * /skins/mv_embed/scriptaculous
  */
 var org_vid_time_req =null; //store the orginal time req:
 var org_thum_src = null; //stores the original thumbnail src
@@ -267,8 +265,7 @@ function mv_disp_add_mvd(mvdType){
 	}
 	mv_open_edit_mvd=mvdType;
 	sajax_request_type='GET';	
-	time_range = org_vid_src.substr( org_vid_src.indexOf('?t=')+3 );
-	sajax_do_call( "mv_add_disp",[wgTitle, mvdType, time_range], f );
+	sajax_do_call( "mv_add_disp",[wgTitle, mvdType, org_vid_time_req], f );
 	//insert before the first mvd:
 	//if($j('#mv_fd_mvd_new').get(0)){
 	//	$j('#mv_fd_mvd_new').html(global_loading_txt);
@@ -884,8 +881,8 @@ function mv_tool_disp(tool_id){
 	var post_vars=new Object();
 	if(tool_id=='navigate'||tool_id=='export'){
 		//assumes stream name ends with time range
-		time_range = org_vid_src.substr( org_vid_src.indexOf('?t=')+3 );
-		post_vars['time_range']=time_range;
+		//time_range = org_vid_src.substr( org_vid_src.indexOf('?t=')+3 );
+		post_vars['time_range']=org_vid_time_req;
 	}
 	//set tracks from mv var:
 	if(tool_id=='mang_layers'){

@@ -86,13 +86,13 @@
  		/*]]>*/</script>'."\n");
 		
 		//also add prev next paging	 		
-		$this->page_header ='<span class="mv_stream_title">'.
- 			$this->article->mvTitle->getStreamNameText().
+		$this->page_header ='<h1 class="videoHeader">'.
+ 			$this->article->mvTitle->getStreamNameText().' :: '.
  			$this->components['MV_Tools']->stream_paging_links('prev') . 
 				' <span id="mv_stream_time">'.$this->article->mvTitle->getTimeDesc() . '</span>'.
 			$this->components['MV_Tools']->stream_paging_links('next') .
 			wfMsg('mv_of') . seconds2ntp($this->article->mvTitle->getDuration()) .  			
-		'</span>';	
+		'</h1>';	
 		
 		//add export cmml icon
 		$this->page_header.='<span id="cmml_link"/>';

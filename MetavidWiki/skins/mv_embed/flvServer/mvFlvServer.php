@@ -58,7 +58,7 @@ if($time_req==''){
 	}
 	header('Content-type: '.FLASH_VIDEO_CONTENT_TYPE);
 	$flv->playTimeReq($start_sec, $end_sec);
-	//print_r($flv->computeMetaData() );
+	//print_r( );
 	$flv->close();
 	*/
 	$flv = new MyFLV();
@@ -68,8 +68,14 @@ if($time_req==''){
 		die("<pre>The following exception was detected while trying to open a FLV file:\n" . $e->getMessage() . "</pre>");
 	}
 	header('Content-type: '.FLASH_VIDEO_CONTENT_TYPE);
+	//$flv->computeMetaData();	
+	//$start = microtime(true);
+	//$flv->play(633578, 1055803);
 	//$flv->play(331630, 647659);
 	$flv->playTimeReq($start_sec, $end_sec);
+	//$end = microtime(true);
+	//file_put_contents('/tmp/time.log', "<hr/>EXTRACT METADATA PROCESS TOOK " . number_format(($end-$start), 2) . " seconds<br/>");
+	
 	$flv->close();	
 	
 }

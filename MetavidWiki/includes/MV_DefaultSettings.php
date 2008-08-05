@@ -14,7 +14,7 @@ $mvgScriptPath = $wgScriptPath . '/extensions/MetavidWiki';
 ##
 $mvgIP = $IP . '/extensions/MetavidWiki';
   
-//include the global functions & init the extension 
+//include the global functions & register the extension 
 include_once('MV_GlobalFunctions.php');
 
 
@@ -114,7 +114,7 @@ $mvMediaSearchResultsLimit = 100;
 $mvLiveUpdateInterval = 5;
 
 //should be the same resolution as webstream encode.
-$mvDefaultVideoPlaybackRes = '320x240';
+$mvDefaultVideoPlaybackRes = '400x300';
 $mvDefaultSearchVideoPlaybackRes='320x240';
 $mvDefaultVideoIconSize = '80x60';
 

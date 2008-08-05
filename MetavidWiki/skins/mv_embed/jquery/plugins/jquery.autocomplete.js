@@ -232,11 +232,12 @@ jQuery.autocomplete = function(input, options) {
 				top: (pos.y + input.offsetHeight) + "px",
 				left: pos.x + "px"
 			}).show();
-		}else{
+		}else{			
 			$results.show();
 		}
 		if(options.resultContainer){
-			$(options.resultContainer).show();
+			$(options.resultContainer).css({top: (pos.y + input.offsetHeight) + "px",
+				left: (pos.x- parseInt(iWidth)) + "px"}).show();
 		}
 	};
 

@@ -139,6 +139,7 @@ function add_adjust_hooks(mvd_id, track_dur){
 			do_video_time_update($j('#mv_start_hr_'+mvd_id).val(), $j('#mv_end_hr_'+mvd_id).val() );			
 		},
 		resize: function(e,ui) {	
+			base_offset = ntp2seconds( $j('#track_time_start_'+mvd_id).html()); 
 			mv_slider_update_stats(mvd_id);
 		}		
 	});	

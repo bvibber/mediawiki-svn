@@ -47,6 +47,14 @@
 		}
 		return '';
 	}
+	function render_full(){
+		global $wgOut;
+ 		//"<div >" . 		 		
+ 		$wgOut->addHTML("<div id=\"videoContent\">\n"); 				
+ 		//do the implemented html 
+ 		$this->getHTML(); 
+ 		$wgOut->addHTML("</div>\n");
+	}
 	
  }
 ?>

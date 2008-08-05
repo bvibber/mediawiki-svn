@@ -31,19 +31,18 @@ class MyFLV extends FLV {
 			$this->mDuration = $end_time_sec - $start_time_sec;
 		//print "SET metaDuration to:  " . $this->metaDuration . "\n";					
 		//print_r($fullMeta);
-		$meta =& $this->getKeyFrameMetaData();
-		//print_r($meta);
+		$meta =& $this->getKeyFrameMetaData();	
 		//die;
 		$start_byte=$end_byte=null;		
 		if($start_time_sec==0 && $end_time_sec==null)$this->play();
 		$start_time_ms = $start_time_sec*1000;
 		$end_time_ms = ($end_time_sec==null)?null:$end_time_sec*1000;				
 		
-		for($i=0;$i<count($meta['times']);$i++){
+		for($i=0;$i<count($meta['times']);$i++){			
 			//set to the keyframe right before a keyframe of the requested start time
 			if($meta['times'][$i]>=$start_time_ms && $start_byte==null){
 				$start_byte=(isset($meta['times'][$i-1]))?$meta['filepositions'][$i-1]:$meta['filepositions'][$i];
-				if($end_time_ms==null)break;
+				if($end_time_ms==null)break;			
 			}
 			//set to the keyframe right after the keyframe of the end time: 
 			if($end_time_ms!=null){
@@ -52,9 +51,7 @@ class MyFLV extends FLV {
 					break;
 				}				
 			}		
-		}
-		//print " bytes: $start_byte $end_byte "; 
-		//die;
+		}		
 		$this->play($start_byte, $end_byte);		
 	}	
 	function computeMetaData()
@@ -88,8 +85,7 @@ class MyFLV extends FLV {
 	    
 	    	switch ($tag->type)
 	    	{
-	        	case FLV_Tag::TYPE_VIDEO :
-	        	        	
+	        	case FLV_Tag::TYPE_VIDEO :	        	        	
 	           		//Optimization, extract the frametype without analyzing the tag body
 	           		if ((ord($tag->body[0]) >> 4) == FLV_Tag_Video::FRAME_KEYFRAME)
 	           		{
@@ -170,13 +166,15 @@ class MyFLV extends FLV {
 				$this->fullMeta = $this->compMetaData;
 			}else{
 				$this->fullMeta = array_merge( $this->origMetaData, $this->compMetaData );
-			}
-			
-			//save fullMeta to file (fix keyfames)
-			foreach($this->compMetaData['keyframes']['times'] as $inx=>&$ts){
+			}			
+			//free non-merged arrays: 
+			unset($this->origMetaData);
+			unset($this->compMetaData);			
+			//convert floats to int
+			foreach($this->fullMeta['keyframes']['times'] as $inx=>& $ts){
 				$ts = (int)($ts*1000);
-			} 
-			if(!file_put_contents($this->fname . META_DATA_EXT, serialize($this->compMetaData))){
+			} 	
+			if(!file_put_contents($this->fname . META_DATA_EXT, serialize($this->fullMeta))){
 				 throw( new FLV_FileException('Unable to write out cached keyframe output') );
 			}	
 		}				
@@ -203,7 +201,9 @@ class MyFLV extends FLV {
 		echo fread($this->fp, $this->bodyOfs + 4);
 		
 		// output the metadata if available
-		$meta = $this->getSegmentMetaData();		
+		//$meta = $this->getSegmentMetaData();	
+		$meta = $this->getMetaData();
+			
 		if (! empty($meta))
 		{
 			//serialize the metadata as an AMF stream

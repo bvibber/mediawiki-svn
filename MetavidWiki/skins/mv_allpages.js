@@ -80,7 +80,7 @@ function mv_do_mvd_link_rewrite(){
 				if(res){			
 					if(res[5]!='')return ;
 					//skip if res[4] not at end:
-					js_log(res);
+					//js_log(res);
 					i++;
 					if(!gMvd[i])gMvd[i]={};
 					gMvd[i]['url']=res[0];
@@ -198,10 +198,11 @@ function mv_setup_search_ac(){
 							'<div id="suggestionsBot"></div>'+						
 						'</div>');
 	//position the sugestions below the search field:
-	if( $j('#search_field').length!=0){
+	if( $j('#search_field').get(0)!=null){
 		sf_pos = $j('#search_field').offset();
 		sf_pos['top']=sf_pos['top']+40;
 		sf_pos['left']=sf_pos['left']-220;
+		js_log("moved sugest to: " + sf_pos['top'] + ' '+ sf_pos['left']);
 		$j('#suggestions').css(sf_pos);
 	}
 	

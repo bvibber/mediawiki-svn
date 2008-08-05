@@ -309,9 +309,10 @@
 		if($size==''){
 			global $mvDefaultVideoPlaybackRes;
 			$size=$mvDefaultVideoPlaybackRes;
+			list($vWidth, $vHeight) = explode('x',$size);
 		}else{
 			list($vWidth, $vHeight, $na) = MV_StreamImage::getSizeType($size);
-		}
+		}		
 		$vid_id=($vid_id=='')?'':'id="'.$vid_id.'"';			
 		$stream_web_url = $this->getWebStreamURL();
 		$roe_url = 	$this->getROEURL();	

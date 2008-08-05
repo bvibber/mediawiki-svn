@@ -266,7 +266,10 @@ class MV_StreamImage{
 					case 'medium':case '320x240':
 						$width=320;$height=240;
 					break;	
-					case 'large':case '512x384':
+					case '400x300':
+						$width=400;$height=300;
+					break;
+					case 'large':case '512x384': case '480x360':
 						$width=480;$height=360;
 					break;
 					case 'full':case '720x540':

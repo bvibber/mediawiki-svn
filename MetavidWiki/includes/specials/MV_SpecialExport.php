@@ -411,21 +411,12 @@ class MV_SpecialExport {
 		);
 		$this->feed->outHeader();	
 		$MV_Overlay = new MV_Overlay();				
-		//for each search result: 		
-		foreach ($sms->results as $stream_id => & $stream_set) {			
-			$matches = 0;
-			$stream_out = $mvTitle = '';			
-			foreach ($stream_set as & $srange) {				
-				$cat_html = $mvd_out = '';
-				$range_match=0;						
-				foreach ($srange['rows'] as $inx=> & $mvd) {								
-					$matches++;			
-					//get Stream title for mvd match: 
-					$mvTitle = new MV_Title($mvd->wiki_title);
-					$stremTitle = Title::MakeTitle(MV_NS_STREAM, $mvTitle->getStreamName().'/'.$mvTitle->getTimeRequest() );
-					$this->feed->outPutItem($stremTitle, $MV_Overlay->getMVDhtml($mvd, $absolute_links=true));
-				}
-			}
+		//for each search result: 	
+		foreach ($sms->results as $inx => & $mvd) {														
+				//get Stream title for mvd match: 
+				$mvTitle = new MV_Title($mvd->wiki_title);
+				$stremTitle = Title::MakeTitle(MV_NS_STREAM, $mvTitle->getStreamName().'/'.$mvTitle->getTimeRequest() );
+				$this->feed->outPutItem($stremTitle, $MV_Overlay->getMVDhtml($mvd, $absolute_links=true));
 		}
 		$this->feed->outFooter();		
 	}      

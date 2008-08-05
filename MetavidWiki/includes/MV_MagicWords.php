@@ -109,7 +109,7 @@ class MV_MagicWords{
  					}else{
  						$title_span = $mvStream->getStreamName();
  					}
- 					$title_span.=date('F jS, Y');
+ 					$title_span.=date('F jS, Y',$mvStream->date_start_time );
  				}else{
  					$title_span = $mvTitle->getStreamNameText() . $mvTitle->getTimeDesc();	 				
  				} 				 				

@@ -24,7 +24,6 @@ if( is_null($duration) || $duration===false){
 }
 
 //id (set to random if none provided)
-//$id = (isset($_GET['id']))?$_GET['id']:'vid_'.rand('10000000');
 $id= filter_input(INPUT_GET, 'id', FILTER_SANITIZE_STRING);
 if( is_null($id) || $id===false){
 	$id = 'vid_'.rand(0,10000000);
