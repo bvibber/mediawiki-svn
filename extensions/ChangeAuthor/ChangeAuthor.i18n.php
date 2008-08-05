@@ -843,6 +843,13 @@ $messages['mr'] = array(
 	'changeauthor-logpagename'          => 'लेखक बदल सूची',
 );
 
+/** Maltese (Malti)
+ * @author Roderick Mallia
+ */
+$messages['mt'] = array(
+	'changeauthor-comment' => 'Kumment:',
+);
+
 /** Nahuatl (Nahuatl)
  * @author Fluence
  */

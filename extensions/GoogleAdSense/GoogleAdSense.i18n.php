@@ -45,6 +45,13 @@ $messages['nl'] = array(
 	'googleadsense-desc' => 'Voegt [http://www.google.com/adsense?hl=nl Google AdSense] toe aan de sidebar',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ */
+$messages['no'] = array(
+	'googleadsense-desc' => 'Legger til [http://google.com/adsense Google AdSense] til sidepanelet',
+);
+
 /** Occitan (Occitan)
  * @author Cedric31
  */

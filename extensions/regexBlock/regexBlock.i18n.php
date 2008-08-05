@@ -836,6 +836,13 @@ $messages['mr'] = array(
 	'regexblock-view-time'            => '$1 वर',
 );
 
+/** Maltese (Malti)
+ * @author Roderick Mallia
+ */
+$messages['mt'] = array(
+	'regexblock-already-blocked' => '"$1" diġà bblokkjat',
+);
+
 /** Nahuatl (Nahuatl)
  * @author Fluence
  */

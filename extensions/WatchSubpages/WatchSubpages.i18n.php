@@ -116,6 +116,17 @@ Para engadir unha páxina, marque o casilla que está ao seu carón e prema en "
 Para marcar ou deixar de marcar diversas páxinas, só ten que premer na tecla "Maiúsculas", e isto permitiralle seleccionar casillas consecutivas con só facer clic en cada final do rexistro.',
 );
 
+/** Hebrew (עברית)
+ * @author Rotemliss
+ * @author Agbad
+ */
+$messages['he'] = array(
+	'watchsubpages'                      => 'מעקב אחרי דפי המשנה',
+	'watchsubpages-addtitles'            => 'הוספת דפים',
+	'watchsubpages-addtitlestowatchlist' => 'הוספת הדפים לרשימת המעקב',
+	'watchsubpages-desc'                 => '[[Special:WatchSubpages|הוספה מהירה של כל דפי המשנה]] של דף מסוים לרשימת המעקב',
+);
+
 /** Italian (Italiano)
  * @author Darth Kule
  */

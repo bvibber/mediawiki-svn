@@ -27,8 +27,10 @@ $messages['ar'] = array(
  * @author DCLXVI
  */
 $messages['bg'] = array(
-	'stalkerlog-desc'     => 'Добавя [[Special:Log/stalkerlog|дневник]] на потребителските влизания и излизания',
-	'stalkerlog-log-text' => 'Тази страница съдържа дневник на потребителските влизания и излизания.',
+	'stalkerlog-desc'       => 'Добавя [[Special:Log/stalkerlog|дневник]] на потребителските влизания и излизания',
+	'stalkerlog-log-login'  => 'влезе в системата.',
+	'stalkerlog-log-logout' => 'излезе от системата.',
+	'stalkerlog-log-text'   => 'Тази страница съдържа дневник на потребителските влизания и излизания.',
 );
 
 /** German (Deutsch)
@@ -64,6 +66,17 @@ $messages['fr'] = array(
 	'stalkerlog-log-logout' => 'déconnecté.',
 	'stalkerlog-log-type'   => 'Journal d’authentification de l’utilisateur',
 	'stalkerlog-log-text'   => 'Voici un journal des connections et des déconnections de l’utilisateur.',
+);
+
+/** Italian (Italiano)
+ * @author Melos
+ */
+$messages['it'] = array(
+	'stalkerlog-desc'       => 'Aggiunge [[Special:Log/stalkerlog|un registro]] dei login e dei logout degli utenti',
+	'stalkerlog-log-login'  => 'ha effettuato il login.',
+	'stalkerlog-log-logout' => 'ha effettuato il logout.',
+	'stalkerlog-log-type'   => 'Autenticazioni utenti',
+	'stalkerlog-log-text'   => 'Questo è il registro delle azioni di login e logout degli utenti.',
 );
 
 /** Dutch (Nederlands)

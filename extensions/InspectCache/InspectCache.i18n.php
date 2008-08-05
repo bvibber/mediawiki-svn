@@ -132,6 +132,13 @@ $messages['eo'] = array(
 	'inspectcache-list'    => 'Listo',
 );
 
+/** Spanish (Español)
+ * @author Sanbec
+ */
+$messages['es'] = array(
+	'inspectcache-delete' => 'Borrar',
+);
+
 /** French (Français)
  * @author Urhixidur
  * @author Grondin

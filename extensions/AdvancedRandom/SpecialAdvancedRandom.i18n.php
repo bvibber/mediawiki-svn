@@ -217,8 +217,8 @@ $messages['ko'] = array(
  * @author Purodha
  */
 $messages['ksh'] = array(
-	'advancedrandom'      => 'Zofällijje Sigg (Met Extra Möschleschkeite )',
-	'advancedrandom-desc' => 'Deit en zosäzlijje Möschleschkeit för zofällije Sigge en et Wikki, esu dat [[{{#special:AdvancedRandom}}/{{ns:Template}}:Dach/Atikkel]] ene zofällije DaresAtikkel brenge kann, udder [[{{#special:AdvancedRandom}}/{{ns:Template}}:GFDL/Beld]] e zofällesch Beld unger de GFDL.',
+	'advancedrandom'      => 'Zofällijje Sigg (Met Extra Müjjeleschkeite )',
+	'advancedrandom-desc' => 'Deit en zosäzlijje Müjjelischkeit för zofällije Sigge en et Wikki, esu dat [[{{#special:AdvancedRandom}}/{{ns:Template}}:Dach/Atikkel]] ene zofällije DaresAtikkel brenge kann, udder [[{{#special:AdvancedRandom}}/{{ns:Template}}:GFDL/Beld]] e zofällesch Beld unger de GFDL.',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

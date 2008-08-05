@@ -652,6 +652,13 @@ $messages['ms'] = array(
 	'countedits-ok' => 'OK',
 );
 
+/** Maltese (Malti)
+ * @author Roderick Mallia
+ */
+$messages['mt'] = array(
+	'countedits-username' => 'Isem l-utent:',
+);
+
 /** Nahuatl (Nahuatl)
  * @author Fluence
  */

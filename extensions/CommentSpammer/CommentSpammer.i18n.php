@@ -151,6 +151,19 @@ $messages['hu'] = array(
 	'cspammer-log-page'           => 'Tartalomspammer napló',
 );
 
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'commentspammer-save-blocked' => 'Tu adresse IP es un origine suspectate de commentos spam; ergo le pagina non ha essite publicate.
+[[Special:Userlogin|Aperi un session o crea un conto]] pro evitar isto.',
+	'commentspammer-desc'         => 'Rejecta modificationes ab origines de spam de commentos suspectate per un lista nigre in DNS',
+	'commentspammer-log-msg'      => 'modification de [[Special:Contributions/$1|$1]] a [[:$2]].',
+	'commentspammer-log-msg-info' => 'Ultime spam $1 {{PLURAL:$1|die|dies}} retro, nivello de menacia es $2, e codice de offensa es $3. [http://www.projecthoneypot.org/search_ip.php?ip=$4 Vider detalios], o [[Special:Blockip/$4|blocar]].',
+	'cspammerlogpagetext'         => 'Registro de modificationes que ha essite permittite o refusate a base de si le origine esseva un cognoscite spammator de commentos.',
+	'cspammer-log-page'           => 'Registro de spammatores de commentos',
+);
+
 /** Italian (Italiano)
  * @author Darth Kule
  * @author Melos

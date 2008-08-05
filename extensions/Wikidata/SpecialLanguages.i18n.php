@@ -407,7 +407,8 @@ $wdMessages['bcl'] = array(
  * @author EugeneZelenko
  */
 $wdMessages['be-tarask'] = array(
-	'ow_history' => 'Гісторыя',
+	'ow_history'            => 'Гісторыя',
+	'ow_ClassAttributeType' => 'Тып',
 );
 
 /** Bulgarian (Български)
@@ -764,6 +765,7 @@ $wdMessages['el'] = array(
 	'datasearch'                      => 'Βικιδεδομένα: Αναζήτηση δεδομένων',
 	'langman_title'                   => 'Διαχειριστής γλώσσας',
 	'languages'                       => 'Wikidata: Διαχειριστής γλώσσας',
+	'ow_save'                         => 'Σώστε',
 	'ow_uiprefs'                      => 'Βικιδεδομένα',
 	'ow_Annotation'                   => 'Σχολιασμός',
 	'ow_ClassAttributeLevel'          => 'Επίπεδο',
@@ -1442,6 +1444,7 @@ $wdMessages['hu'] = array(
  */
 $wdMessages['ia'] = array(
 	'ow_save'                => 'Immagazinar',
+	'ow_history'             => 'Historia',
 	'ow_none_selected'       => '<Nihil seligite>',
 	'ow_dm_OK'               => 'OK',
 	'ow_Language'            => 'Lingua',

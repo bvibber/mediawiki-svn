@@ -91,6 +91,13 @@ $messages['nl'] = array(
 	'wikitextloggedinout-desc' => 'Twee parserhooks: <tt>&lt;loggedin&gt;</tt> en <tt>&lt;loggedout&gt;</tt> om andere tekst weer te geven afhankelijk van de aanmeldstatus van een gebruiker',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ */
+$messages['no'] = array(
+	'wikitextloggedinout-desc' => "To ''parser hooks'', <tt>&lt;loggedin&gt;</tt> og <tt>&lt;loggedout&gt;</tt> for å vise forskjellig tekst avhengig av brukerens innloggingsstatus",
+);
+
 /** Occitan (Occitan)
  * @author Cedric31
  */

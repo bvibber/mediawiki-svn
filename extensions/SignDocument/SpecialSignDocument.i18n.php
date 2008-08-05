@@ -263,6 +263,7 @@ $messages['bcl'] = array(
  * @author EugeneZelenko
  */
 $messages['be-tarask'] = array(
+	'sign-viewfield-realname'      => 'Імя',
 	'sign-viewfield-reviewcomment' => 'Камэнтар',
 	'sign-review-comment'          => 'Камэнтар',
 );
@@ -342,9 +343,10 @@ $messages['da'] = array(
  * @author Leithian
  */
 $messages['de'] = array(
-	'sign-bday'          => 'Alter:',
-	'sign-email'         => 'E-Mail-Adresse:',
-	'sign-viewfield-age' => 'Alter',
+	'sign-bday'            => 'Alter:',
+	'sign-email'           => 'E-Mail-Adresse:',
+	'sign-viewfield-email' => 'E-Mail',
+	'sign-viewfield-age'   => 'Alter',
 );
 
 /** Greek (Ελληνικά)
@@ -1161,6 +1163,15 @@ $1',
  */
 $messages['ms'] = array(
 	'sign-viewfield-agent' => 'Ejen pengguna',
+);
+
+/** Maltese (Malti)
+ * @author Roderick Mallia
+ */
+$messages['mt'] = array(
+	'sign-viewfield-email'         => 'E-mail',
+	'sign-viewfield-reviewcomment' => 'Kumment',
+	'sign-review-comment'          => 'Kumment',
 );
 
 /** Nahuatl (Nahuatl)

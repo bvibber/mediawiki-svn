@@ -292,11 +292,18 @@ $messages['hu'] = array(
  * @author McDutchie
  */
 $messages['ia'] = array(
-	'chemicalsources'        => 'Fontes chimic',
-	'chemicalsource-desc'    => 'Adde le etiquetta <nowiki><chemform></nowiki>, pro formulas chimic',
-	'chemFunctions_DataList' => 'Infra es un lista de ligamines a sitos que pote fornir informationes super le substantia chimic que tu cerca.<br /><br />
+	'chemicalsources'                  => 'Fontes chimic',
+	'chemicalsource-desc'              => 'Adde le etiquetta <nowiki><chemform></nowiki>, pro formulas chimic',
+	'chemFunctions_ListPage'           => 'Fontes de chimia',
+	'chemFunctions_DataList'           => 'Infra es un lista de ligamines a sitos que pote fornir informationes super le substantia chimic que tu cerca.<br /><br />
 * <a href="http://webbook.nist.gov/cgi/cbook.cgi?ID=$MIXCASNameFormula&amp;Units=SI">Composito $MIXCASNameFormula a NIST</a><br />
 * <a href="http://ptcl.chem.ox.ac.uk/MSDS/">MSDS al Universitate de Oxford (Regno Unite) (non cercabile)</a><br />',
+	'chemFunctions_CAS'                => 'Numero CAS',
+	'chemFunctions_ATCCode'            => 'Codice ATC',
+	'chemFunctions_ECNumber'           => 'Numero EC',
+	'chemFunctions_Formula'            => 'Formula',
+	'chemFunctions_Name'               => 'Nomine IUPAC',
+	'chemFunctions_ChemFormInputError' => 'Chemform: Error de entrata!',
 );
 
 /** Indonesian (Bahasa Indonesia) */

@@ -472,7 +472,8 @@ $messages['mr'] = array(
  * @author Roderick Mallia
  */
 $messages['mt'] = array(
-	'passwordreset-submit' => 'Irrisettja l-password',
+	'passwordreset-username' => 'Isem l-utent',
+	'passwordreset-submit'   => 'Irrisettja l-password',
 );
 
 /** Nahuatl (Nahuatl)

@@ -136,6 +136,13 @@ $messages['eo'] = array(
 	'deletebatch-select-yourself'  => 'vi',
 );
 
+/** Spanish (Español)
+ * @author Sanbec
+ */
+$messages['es'] = array(
+	'deletebatch-button' => 'Borrar',
+);
+
 /** Finnish (Suomi)
  * @author Jack Phoenix
  */

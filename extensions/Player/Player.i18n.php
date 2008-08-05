@@ -439,6 +439,13 @@ $messages['mr'] = array(
 	'player-goto-file'     => 'संचिका',
 );
 
+/** Maltese (Malti)
+ * @author Roderick Mallia
+ */
+$messages['mt'] = array(
+	'player-file' => 'Isem il-fajl',
+);
+
 /** Nahuatl (Nahuatl)
  * @author Fluence
  */

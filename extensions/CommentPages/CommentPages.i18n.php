@@ -110,6 +110,14 @@ $messages['hsb'] = array(
 	'nstab-comments'    => 'Komentar',
 );
 
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'commentpages-desc' => 'Paginas de commentos pro le spatio de nomines principal',
+	'nstab-comments'    => 'Commentario',
+);
+
 /** Icelandic (Íslenska)
  * @author S.Örvarr.S
  */

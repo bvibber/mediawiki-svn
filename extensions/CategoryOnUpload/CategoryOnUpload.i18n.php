@@ -81,9 +81,10 @@ $messages['eo'] = array(
 
 /** Finnish (Suomi)
  * @author Jaakonam
+ * @author Nike
  */
 $messages['fi'] = array(
-	'categoryonupload-desc'  => 'Pyytää käyttäjää valitsemaan luokan tallennettaessa uutta tiedostoa',
+	'categoryonupload-desc'  => 'Pyytää käyttäjää valitsemaan luokan tallennettaessa uutta tiedostoa.',
 	'categoryonupload-label' => 'Luokka:',
 );
 

@@ -147,7 +147,7 @@ $messages['jv'] = array(
  * @author Purodha
  */
 $messages['ksh'] = array(
-	'charinsert-desc' => 'Määt Javascrip Knöppsche mööschlesch för [[MediaWiki:Edittools|Sönderbochstave un frempshprochijje Bochstave enzeföje]].',
+	'charinsert-desc' => 'Määt Javascrip Knöppsche müjjelesch för [[MediaWiki:Edittools|Sönderbochstave un frempshprochijje Bochstave enzeföje]].',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

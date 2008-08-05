@@ -541,6 +541,13 @@ $messages['mr'] = array(
 	'importusers-realname'                => 'खरे नाव',
 );
 
+/** Maltese (Malti)
+ * @author Roderick Mallia
+ */
+$messages['mt'] = array(
+	'importusers-email' => 'e-mail',
+);
+
 /** Nahuatl (Nahuatl)
  * @author Fluence
  */

@@ -1446,6 +1446,7 @@ $messages['ia'] = array(
 	'mv_tool_search'   => 'Cercar',
 	'mv_tool_export'   => 'Exportar',
 	'mv_edit'          => 'Modificar',
+	'mv_history'       => 'Historia',
 );
 
 /** Indonesian (Bahasa Indonesia)
@@ -1882,6 +1883,13 @@ $mvMVDTypeDefaultDisp हा $mvMVDTypeAllAvailable चा सबसेट अ�
 	'mv_mang_layers'                 => 'स्तर व्यवस्थापन',
 	'mv_mang_layers_title'           => 'सद्य स्ट्रीम साठीच्या स्तर-प्रदर्शन प्रणालीचे व्यवस्थापन करा',
 	'mv_protect_source_material'     => 'मूळ स्रोत साहित्य संपादनांपासून सुरक्षित केले',
+);
+
+/** Maltese (Malti)
+ * @author Roderick Mallia
+ */
+$messages['mt'] = array(
+	'mv_tool_export' => 'Esporta',
 );
 
 /** Nahuatl (Nahuatl)

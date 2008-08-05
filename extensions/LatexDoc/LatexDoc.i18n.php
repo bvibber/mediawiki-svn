@@ -220,6 +220,14 @@ $3',
 	'latexdoc-desc'            => 'សំណុំឯកសារ LaTeX',
 );
 
+/** Ripoarisch (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'latexdoc_get_dvi' => 'DVI holle',
+	'latexdoc-desc'    => 'Löht Metmaacher zosamme aan LaTeX Dokumente ändere.',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */

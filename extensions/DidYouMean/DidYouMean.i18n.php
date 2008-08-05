@@ -55,9 +55,10 @@ $messages['eo'] = array(
 
 /** Finnish (Suomi)
  * @author Jaakonam
+ * @author Nike
  */
 $messages['fi'] = array(
-	'didyoumean-desc' => 'Lisää linkin sivuihin, joilla on samankaltainen otsikko',
+	'didyoumean-desc' => 'Lisää linkkejä sivuihin, joilla on samankaltainen otsikko.',
 );
 
 /** French (Français)

@@ -110,6 +110,15 @@ $messages['hsb'] = array(
 	'spl3_nosubpages' => '$1 nima podstrony za lisćinu.',
 );
 
+/** Italian (Italiano)
+ * @author Darth Kule
+ */
+$messages['it'] = array(
+	'spl3-desc'       => 'Crea automaticamente un elenco delle sottopagine della pagina usando il tag <code><nowiki><splist /></nowiki></code>',
+	'spl3_debug'      => "Valore sconosciuto per l'opzione $1.",
+	'spl3_nosubpages' => '$1 non ha sottopagine da elencare.',
+);
+
 /** Javanese (Basa Jawa)
  * @author Meursault2004
  */

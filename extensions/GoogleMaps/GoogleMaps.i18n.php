@@ -556,6 +556,7 @@ $wgGoogleMapsMessages['el'] = array(
 	'gm-search'                => 'Αναζήτηση',
 	'gm-meters'                => 'μέτρα',
 	'gm-miles'                 => 'μίλια',
+	'gm-save-path'             => 'Σώστε',
 	'gm-color-path'            => 'αλλάξτε χρώμα',
 	'gm-line-width'            => 'Πλάτος',
 	'gm-back'                  => 'πίσω',

@@ -227,6 +227,7 @@ $messages['de'] = array(
  */
 $messages['el'] = array(
 	'grouppermissions-comment' => 'Σχόλιο:',
+	'grouppermissions-sp-save' => 'Σώστε',
 );
 
 /** Esperanto (Esperanto)
@@ -540,6 +541,13 @@ $messages['lb'] = array(
 	'right-edit-new'                 => 'Säiten änneren',
 );
 
+/** Maltese (Malti)
+ * @author Roderick Mallia
+ */
+$messages['mt'] = array(
+	'grouppermissions-comment' => 'Kumment:',
+);
+
 /** Nahuatl (Nahuatl)
  * @author Fluence
  */
@@ -617,7 +625,6 @@ $messages['nl'] = array(
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
- * @author Siebrand
  */
 $messages['no'] = array(
 	'grouppermissions'               => 'Behandle grupperettigheter',
@@ -626,6 +633,8 @@ $messages['no'] = array(
 	'grouppermissions-desc'          => 'Behandle grupperettigheter via en [[Special:GroupPermissions|spesialside]]',
 	'grouppermissions-desc2'         => 'Utvidet rettighetssystem',
 	'grouppermissions-desc3'         => 'Tillater egendefinering av innholdsfanene',
+	'grouppermissions-desc4'         => 'Lar brukere legge til ekstra saker i verktøyboksen',
+	'grouppermissions-desc-nsm'      => 'Behandle navnerom via en spesialside',
 	'grouppermissions-header'        => 'Du kan bruke denne siden for å endre rettightene de forskjellige brukergruppene har.',
 	'grouppermissions-search'        => 'Gruppe:',
 	'grouppermissions-dologin'       => 'Logg inn',

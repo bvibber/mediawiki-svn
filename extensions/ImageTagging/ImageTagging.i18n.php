@@ -334,6 +334,13 @@ $messages['haw'] = array(
 	'imagetagging-imghistory' => 'Mo‘olelo',
 );
 
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'imagetagging-imghistory' => 'Historia',
+);
+
 /** Indonesian (Bahasa Indonesia)
  * @author Irwangatot
  * @author Rex

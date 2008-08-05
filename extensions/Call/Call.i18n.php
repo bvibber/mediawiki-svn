@@ -276,9 +276,9 @@ $messages['ia'] = array(
 Pote esser usate in le linea de commandos del navigator o in texto wiki.',
 	'call-text'         => "Le extension Appello expecta un pagina wiki al qual pote eser passate parametros.
 
-Exemplo 1: &nbsp; <tt>[[Special:Call/Mi patrono,parm1=valor1]]</tt><br />
-Exemplo 2: &nbsp; <tt>[[Special:Call/Talk:Mi discussion,parm1=valor1]]</tt><br />
-Exemplo 3: &nbsp; <tt>[[Special:Call/:Mi pagina,parm1=valor1,parm2=valor2]]</tt><br />
+Exemplo 1: &nbsp; <tt>[[Special:Call/My Template,parm1=value1]]</tt><br />
+Exemplo 2: &nbsp; <tt>[[Special:Call/Talk:My Discussion,parm1=value1]]</tt><br />
+Exemplo 3: &nbsp; <tt>[[Special:Call/:My Page,parm1=value1,parm2=value2]]</tt><br />
 Exemplo 4 (adresse URL): &nbsp; <tt>http://midominio/miwiki/index.php?Special:Call/:Mi_pagina,parm1=valor1</tt>
 
 Le <i>extension Appello</i> appellara le pagina date e passara le parametros.<br />

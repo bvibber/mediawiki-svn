@@ -278,6 +278,13 @@ $messages['arz'] = array(
 	'viewapc-display-filename' => 'اسم الملف',
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
+ */
+$messages['be-tarask'] = array(
+	'viewapc-display-type' => 'Тып',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  */
@@ -1529,7 +1536,7 @@ $messages['km'] = array(
  */
 $messages['ksh'] = array(
 	'viewapc'                       => 'Enfomazjohne vum APC',
-	'right-apc'                     => 'All de Möschleschkeite fum [[{{#special:ViewAPC}}]] notze',
+	'right-apc'                     => 'All de Müjjeleschkeite fun de Söndersigg [[{{#special:ViewAPC}}]] notze',
 	'viewapc-apc-not-available'     => 'Kein Cache-Daate ze fenge.
 Der APC es wall nit am Loufe.',
 	'viewapc-clear-confirm'         => 'Wells De dä <i lang="en">cache</i> leddisch maache?',
@@ -1552,7 +1559,7 @@ Der APC es wall nit am Loufe.',
 	'viewapc-display-mem_size'      => 'Ömfang',
 	'viewapc-display-stored-value'  => 'Dä faßjehallde Wäät',
 	'viewapc-display-too-big'       => "''Dä Enhalld eß zoh jruuß för Aanzezeije.''",
-	'viewapc-ls-options-legend'     => 'Möschleschkeite',
+	'viewapc-ls-options-legend'     => 'Müjjelischkeite',
 	'viewapc-ls-options'            => 'Fähnscher: $1, Zoteer noh: $2$3$4, Söke: $5 $6',
 	'viewapc-ls-submit'             => 'Loß Jonn!',
 	'viewapc-ls-header-name'        => 'Name',
@@ -1849,10 +1856,11 @@ $messages['mr'] = array(
 
 /** Maltese (Malti)
  * @author Giangian15
+ * @author Roderick Mallia
  */
 $messages['mt'] = array(
 	'viewapc-display-value'    => 'Valur',
-	'viewapc-display-filename' => 'L-Isem tal-Fajl',
+	'viewapc-display-filename' => 'Isem il-fajl',
 	'viewapc-display-info'     => 'Isem',
 	'viewapc-display-type'     => 'Mudell',
 );

@@ -120,6 +120,7 @@ $messages['bg'] = array(
 	'spamregex-log-2'                => ' на $1',
 	'spamregex-page-title-1'         => 'Блокиране на фрази чрез регулярни изрази',
 	'spamregex-unblock-success'      => 'Успешно разблокиране',
+	'spamregex-unblock-message'      => "Фразата '''$1''' беше отблокирана за редактиране.",
 	'spamregex-page-title-2'         => 'Блокиране на съхранението на фраза посредством регулярни изрази',
 	'spamregex-block-success'        => 'Успешно блокиране',
 	'spamregex-block-message'        => "Фразата '''$1''' беше блокирана.",
@@ -405,6 +406,13 @@ $messages['mr'] = array(
 	'spamregex-summary-log'          => 'आढावा',
 );
 
+/** Maltese (Malti)
+ * @author Roderick Mallia
+ */
+$messages['mt'] = array(
+	'spamregex-already-blocked' => '"$1" diġà bblokkjat',
+);
+
 /** Nahuatl (Nahuatl)
  * @author Fluence
  */
@@ -469,10 +477,12 @@ $messages['nn'] = array(
 $messages['no'] = array(
 	'spamregex'                      => 'SpamRegex',
 	'spamregex-desc'                 => '[[Special:Spamregex|Filtrer ut]] uønskede fraser i redigerte sider, basert på regulære uttrykk',
+	'spamregex-error-unblocking'     => 'Feil ved avblokkering av «$1». Det er nok ikke noe slikt mønster.',
 	'spamregex-summary'              => 'Teksten ble funnet i sidens sammendrag.',
 	'spamregex-intro'                => 'Bruk dette skjemaet for å effektivt blokkere uttrykk fra å bli lagret på sidene. Om teksten inneholder gitt uttrykk, vil endringen ikke bli lagret, og en forklaring vil vises til brukeren som prøvde å lagre siden. Vær obs på at uttrykk ikke bør være for korte eller for vanlige.',
 	'spamregex-page-title'           => 'Blokkering av uønskede uttrykk med regulære uttrykk',
 	'spamregex-currently-blocked'    => "'''Nåværende blokkerte fraser:'''",
+	'spamregex-move'                 => 'Årsaken du skrev inn inneholdt en blokkert frase.',
 	'spamregex-no-currently-blocked' => "'''Det er ingen blokkerte fraser.'''",
 	'spamregex-log-1'                => "* '''$1''' $2 ([{{SERVER}}$3&text=$4 fjern]) lagt til av",
 	'spamregex-log-2'                => ' $1',

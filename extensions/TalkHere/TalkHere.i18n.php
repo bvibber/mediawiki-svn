@@ -397,6 +397,7 @@ De beheerders van deze site dragen geen verantwoordelijkheid voor de inhoud van 
  * @author Jon Harald Søby
  */
 $messages['no'] = array(
+	'talkhere-desc'        => 'Legger til diskusjonssiden på innholdssiden',
 	'talkhere-foottext'    => 'Kommentarene ovenfor ble lagt igjen av besøkende.
 
 Sidens operatører kan ikke ta ansvar for innholdet i slike kommentarer.',

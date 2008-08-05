@@ -115,6 +115,13 @@ $messages['avk'] = array(
 	'usagestatisticsbadstartend' => '<b><i>Tozevlaja</i> ik <i>Tenevlaja</i> !</b>',
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
+ */
+$messages['be-tarask'] = array(
+	'usagestatisticstype' => 'Тып',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  */

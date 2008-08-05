@@ -167,6 +167,13 @@ $messages['de'] = array(
 	'formsaveerrortext'            => 'Es gab einen unbekannten Fehler beim Speichern der Seite „$1“.',
 );
 
+/** Greek (Ελληνικά)
+ * @author Consta
+ */
+$messages['el'] = array(
+	'formsave' => 'Σώστε',
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */
@@ -478,6 +485,7 @@ $messages['nn'] = array(
  * @author Jon Harald Søby
  */
 $messages['no'] = array(
+	'form-desc'                    => 'Et [[Special:Form|skjema]] for å opprette nye sider',
 	'form'                         => 'Skjema',
 	'formnoname'                   => 'Intet skjemanavn',
 	'formnonametext'               => 'Du må angi et skjemanavn, som «Special:Form/Skjemanavn».',

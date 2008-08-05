@@ -501,7 +501,7 @@ $messages['km'] = array(
  */
 $messages['ksh'] = array(
 	'asksql'          => 'SQL-Befäähl',
-	'asksql-desc'     => 'Määt SQL-Befäähle övver en [[Special:Asksql|{{int:specialpage}}]] mööschlesch.',
+	'asksql-desc'     => 'Määt SQL-Befäähle övver en [[Special:Asksql|{{int:specialpage}}]] müjjelesch.',
 	'asksqltext'      => "Met däm Formula onge kanns de tiräk en de Datebank Affrore maache.
 Don einzel Apoßtroffe ('wi di he') öm Zeichekette eröm maache.
 Dat kann der ßööver ööndlesh beschäfftijje, also beß e besje fürseschtesch.",

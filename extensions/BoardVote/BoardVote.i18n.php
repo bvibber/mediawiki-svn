@@ -373,8 +373,10 @@ $1 للبيانات المشفرة.</p>',
 /** Egyptian Spoken Arabic (مصرى)
  * @author Ghaly
  * @author Ramsis1978
+ * @author Ramsis II
  */
 $messages['arz'] = array(
+	'boardvote_novotes'      => 'لسه ما فيش حد صوت',
 	'boardvote_time'         => 'الوقت',
 	'boardvote_user'         => 'يوزر',
 	'boardvote_edits'        => 'التعديلات',
@@ -389,6 +391,7 @@ $messages['arz'] = array(
 	'group-boardvote'        => 'اداريين انتخابات المجلس',
 	'group-boardvote-member' => 'ادارى انتخابات المجلس',
 	'boardvote_welcome'      => "اهلا '''$1'''!",
+	'go_to_board_vote'       => 'انتخابات ويكيميديا بورد 2008',
 	'right-boardvote'        => 'إدارة الانتخابات',
 );
 
@@ -572,7 +575,6 @@ $messages['bcl'] = array(
  * @author EugeneZelenko
  * @author Cesco
  * @author Red Winged Duck
- * @author Siebrand
  */
 $messages['be-tarask'] = array(
 	'boardvote'                => 'Выбары ў Раду павераных фундацыі «Вікімэдыя»',
@@ -608,7 +610,7 @@ $messages['be-tarask'] = array(
 
 <pre>$2</pre>
 
-Зашыфраваны тэкст прыведзены ніжэй. Кожны жадаючы зможа знайсьці яго на старонцы [[Special:Boardvote/dump]].  
+Зашыфраваны тэкст прыведзены ніжэй. Ён будзе паказаны [[Special:Boardvote/dump|публічна]].
 
 <pre>$3</pre>
 
@@ -795,6 +797,8 @@ $messages['bn'] = array(
 	'group-boardvote-member' => 'বোর্ড নির্বাচন প্রশাসক',
 	'grouppage-boardvote'    => '{{ns:project}}:বোর্ড নির্বাচন প্রশাসকগণ',
 	'boardvote_blocked'      => 'দুঃখিত, আপনার নিবন্ধিত উইকিতে আপনাকে বাধা দেওয়া হয়েছে। বাধা প্রাপ্ত ব্যবহারকারীদের ভোট দেওয়ার অনুমোদন নাই।',
+	'boardvote_bot'          => 'আপনার নিবন্ধিত উইকিতে আপনি একটি বট হিসেবে চিহ্নিত আছেন।
+বট অ্যাকাউন্টের ভোট দেওয়ার অনুমতি নাই।',
 	'boardvote_welcome'      => "স্বাগতম '''$1'''!",
 	'go_to_board_vote'       => 'উইকিমিডিয়া বোর্ড নির্বাচন ২০০৮',
 	'boardvote_redirecting'  => 'নিরাপত্তা এবং স্বচ্ছতা বাড়াতে, আমরা ভোট কার্যক্রম অন্য একটি স্বাধীন সার্ভারে চালনা করছি।
@@ -2602,7 +2606,7 @@ Illo ha essite cryptificate con le clave public del Administratores del Election
 
 <pre>$2</pre>
 
-Seque le resultante version cryptificate. Illo essera publicate in [[Special:Boardvote/dump]].
+Seque le resultante version cryptificate. Illo essera [[Special:Boardvote/dump|monstrate publicamente]].
 
 <pre>$3</pre>
 
@@ -3432,13 +3436,13 @@ Jespëchte Metmaacher dörve he nit afshtemme.',
 Als Bot darfß De ävver nit afshtemme.',
 	'boardvote_welcome'        => "Hallo '''$1'''!",
 	'go_to_board_vote'         => 'Wahle för de Förshtänd en de Wikimedia-Shteftong',
-	'boardvote_redirecting'    => 'För de Sesherhëijd_un Dörschseeshtėshkëijt hüjer ze maache,
+	'boardvote_redirecting'    => 'För de Sesherhëijd_un Dörschseeshtėshkëijt hüüter ze maache,
 löüf dat met dä Afshtemmong ob_ennem extra ßööver.
 
 Doh weeß De en 20 Sekonde hen ömjelengk.
 För dä Fall, dat dat nit klapp, jangk noh $1.
 
-Womöschlesh kriß De och en Warnong fun wääje de Sesherhëijt fonn_ennem Zächtifikaat.',
+Künnt sinn, De kriß och en Warnong fun wääje de Sesherhëijt fonn_ennem Zättifikaat.',
 	'right-boardvote'          => 'Wahle för de Shtefftong betreue',
 );
 
@@ -4411,7 +4415,7 @@ Interpretacja głosu będzie taka, że preferujesz każdego z tych, na których 
 <li><a href="http://meta.wikimedia.org/wiki/Board_elections/2008/Candidates" class="external">Kandydaci</a></li>
 <li><a href="http://en.wikipedia.org/wiki/Schulze_method" class="external">Metoda Schulze\'a (opis w języku angielskim)</a></li></ul>',
 	'boardvote_intro_change'   => '<p>W tych wyborach już głosowałeś. Możesz jednak zmienić głos za pomocą poniższego formularza. Określ swoje preferencje. Liczbą o wyższej wartości oznacz kandydata, którego bardziej popierasz, a niższą tego, który mniej Ci odpowiada. Możesz wystawić tą samą notę więcej niż jednemu kandydatowi, możesz również pozostawić kandydata bez oceny.</p>',
-	'boardvote_entered'        => 'Dziękujemy, twój głos został zapisany.
+	'boardvote_entered'        => 'Dziękujemy – Twój głos został zapisany.
 
 Jeśli chcesz, możesz zapisać poniższe informacje. Oto zapis Twojego głosu:
 

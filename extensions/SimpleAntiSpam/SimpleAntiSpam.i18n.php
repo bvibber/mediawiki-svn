@@ -67,6 +67,15 @@ $messages['bg'] = array(
 	'simpleantispam-desc'  => 'Добавя прост формуляр за проерка за спам/роботи',
 );
 
+/** Bengali (বাংলা)
+ * @author Bellayet
+ */
+$messages['bn'] = array(
+	'simpleantispam-label' => "এন্টি-স্প্যাম যাচাই।
+এটা পূরণ করবেন '''না'''!",
+	'simpleantispam-desc'  => 'ফরমগুলো যাচাই করার জন্য একটি স্প্যাম/বট যোগ করুন',
+);
+
 /** Catalan (Català)
  * @author Jordi Roqué
  */

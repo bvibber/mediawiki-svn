@@ -154,11 +154,24 @@ $messages['ar'] = array(
 
 /** Egyptian Spoken Arabic (مصرى)
  * @author Ghaly
+ * @author Ramsis II
  */
 $messages['arz'] = array(
-	'ogg-play'  => 'عرض',
-	'ogg-pause' => ' توقيف مؤقت',
-	'ogg-stop'  => ' توقيف',
+	'ogg-play'                     => 'عرض',
+	'ogg-pause'                    => ' توقيف مؤقت',
+	'ogg-stop'                     => ' توقيف',
+	'ogg-player-videoElement'      => '<video> عنصر',
+	'ogg-player-oggPlugin'         => 'تدخيل ogg',
+	'ogg-player-cortado'           => 'كورتادو (جافا)',
+	'ogg-player-vlc-mozilla'       => 'في إل سي',
+	'ogg-player-vlc-activex'       => 'في إل سي (أكتيف إكس)',
+	'ogg-player-quicktime-mozilla' => 'كويك تايم',
+	'ogg-player-quicktime-activex' => 'كويك تايم (أكتيف إكس)',
+	'ogg-player-thumbnail'         => 'صورة ثابتة بس',
+	'ogg-player-soundthumb'        => 'ما فيش برنامج',
+	'ogg-player-selected'          => '(مختار)',
+	'ogg-use-player'               => 'استخدم البرنامج:',
+	'ogg-more'                     => 'أكتر...',
 );
 
 /** Asturian (Asturianu)

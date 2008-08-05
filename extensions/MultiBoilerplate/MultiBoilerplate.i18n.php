@@ -43,6 +43,13 @@ $messages['bg'] = array(
 	'multiboilerplate-submit' => 'Зареждане',
 );
 
+/** Greek (Ελληνικά)
+ * @author Consta
+ */
+$messages['el'] = array(
+	'multiboilerplate-submit' => 'Φορτώστε',
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */

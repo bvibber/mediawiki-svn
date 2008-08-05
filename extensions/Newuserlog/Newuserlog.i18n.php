@@ -636,12 +636,11 @@ $messages['hy'] = array(
 
 /** Interlingua (Interlingua)
  * @author McDutchie
- * @author Jon Harald Søby
  */
 $messages['ia'] = array(
 	'newuserlogpage'              => 'Registro de creation de usatores',
 	'newuserlogpagetext'          => 'Isto es un registro de creation de usatores.',
-	'newuserlog-desc'             => 'Adde un [[{{ns:special}}:Log/newusers|registro de creation de contos]] a [[{{ns:special}}:Log]]',
+	'newuserlog-desc'             => 'Adde un [[Special:Log/newusers|registro de creation de contos]]',
 	'newuserlog-byemail'          => 'contrasigno inviate per e-mail',
 	'newuserlog-create-entry'     => 'Nove usator',
 	'newuserlog-create2-entry'    => 'creava conto pro $1',
@@ -806,7 +805,6 @@ $messages['ko'] = array(
 
 /** Ripoarisch (Ripoarisch)
  * @author Purodha
- * @author Jon Harald Søby
  */
 $messages['ksh'] = array(
 	'newuserlogpage'              => 'Logbooch för nöü Metmaachere',

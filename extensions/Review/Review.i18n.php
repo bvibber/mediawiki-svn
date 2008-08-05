@@ -689,6 +689,13 @@ $messages['mr'] = array(
 	'review_comment'                                         => 'टिप्पणी',
 );
 
+/** Maltese (Malti)
+ * @author Roderick Mallia
+ */
+$messages['mt'] = array(
+	'review_comment' => 'Kumment',
+);
+
 /** Nahuatl (Nahuatl)
  * @author Fluence
  */

@@ -559,7 +559,7 @@ $messages['hu'] = array(
  */
 $messages['ia'] = array(
 	'bookinfo-header'            => 'Informationes de libros',
-	'bookinfo-desc'              => 'Extende [[Special:Booksources]] con informationes proveniente de un servicio web',
+	'bookinfo-desc'              => 'Extende le [[Special:Booksources|pagina special con fontes de libros]] con informationes proveniente de un servicio web',
 	'bookinfo-result-title'      => 'Titulo:',
 	'bookinfo-result-author'     => 'Autor:',
 	'bookinfo-result-publisher'  => 'Editor:',

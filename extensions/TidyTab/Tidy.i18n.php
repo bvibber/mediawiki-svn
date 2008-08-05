@@ -112,8 +112,9 @@ $messages['nl'] = array(
  * @author Jon Harald Søby
  */
 $messages['no'] = array(
-	'tidy'   => 'Systematiser kode',
-	'untidy' => 'Avsystematiser kode',
+	'tidy-desc' => 'Legger til en fane for systematisering eller avsystematisering (avhengig av $wgUseTidy) som tillater overstyring av den globale innstillingen for HTML-systematisering.',
+	'tidy'      => 'Systematiser kode',
+	'untidy'    => 'Avsystematiser kode',
 );
 
 /** Occitan (Occitan)

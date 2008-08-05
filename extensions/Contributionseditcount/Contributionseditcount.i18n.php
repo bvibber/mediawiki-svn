@@ -105,10 +105,11 @@ $messages['fi'] = array(
 /** French (Français)
  * @author Sherbrooke
  * @author Cedric31
+ * @author Grondin
  */
 $messages['fr'] = array(
 	'contributionseditcount'      => 'Cet utilisateur a {{PLURAL:$1|$1 édition|$1 éditions}}.',
-	'contributionseditcount-desc' => 'Affiche un compteur d’éditions sur la page [[Special:Contributions]]',
+	'contributionseditcount-desc' => 'Affiche un compteur d’éditions sur [[Special:Contributions|la page de contribution de l’utilisateur]]',
 );
 
 /** Galician (Galego)
@@ -126,7 +127,7 @@ $messages['gl'] = array(
  */
 $messages['he'] = array(
 	'contributionseditcount'      => 'משתמש זה ביצע $1 עריכות.',
-	'contributionseditcount-desc' => 'הצגת מונה העריכות ב[[Special:Contributions|דף תרומות המשתמש]]',
+	'contributionseditcount-desc' => 'הצגת מונה עריכות ב[[Special:Contributions|דף תרומות המשתמש]]',
 );
 
 /** Hindi (हिन्दी)

@@ -291,8 +291,10 @@ Bonvolu elekti alian nomon.',
 
 /** Spanish (Español)
  * @author Titoxd
+ * @author Sanbec
  */
 $messages['es'] = array(
+	'blacklistedusername'     => 'Nombre de usuario no permitido',
 	'blacklistedusernametext' => 'El nombre de usuario que has seleccionado está en la [[MediaWiki:Usernameblacklist|lista de nombres no permitidos]]. Por favor, elige otro.',
 );
 
@@ -745,10 +747,11 @@ $messages['km'] = array(
 /** Korean (한국어)
  * @author Klutzy
  * @author ToePeu
+ * @author Albamhandae
  */
 $messages['ko'] = array(
-	'usernameblacklist-desc'          => '정규 표현식을 이용해 특정 사용자 이름을 쓰지 못하도록 하기 위해 [[MediaWiki:Usernameblacklist|사용자 이름 금지 목록]]을 추가',
-	'blacklistedusername'             => '금지된 사용자 이름',
+	'usernameblacklist-desc'          => '정규 표현식을 이용해 특정 계정 이름을 쓰지 못하도록 하기 위해 [[MediaWiki:Usernameblacklist|계정 이름 금지 목록]]을 추가',
+	'blacklistedusername'             => '금지된 계정 이름',
 	'blacklistedusernametext'         => '사용자 이름에 [[MediaWiki:Usernameblacklist|사용이 금지된 문장]]이 들어 있습니다. 다른 이름으로 가입해주세요.',
 	'usernameblacklist'               => '<pre>
 # 이 목록은 가입할 때 사용자 이름에 문제가 있는지를 검사하는 데에 쓰이고,
@@ -759,7 +762,7 @@ $messages['ko'] = array(
 # * Foo
 # * [Bb]ar
 </pre>',
-	'usernameblacklist-invalid-lines' => '사용자 이름 블랙리스트 목록에서 다음 줄이 잘못되었습니다. 저장하기 전에 올바르게 고쳐 주세요:',
+	'usernameblacklist-invalid-lines' => '계정 이름 블랙리스트 목록에서 다음 줄이 잘못되었습니다. 저장하기 전에 올바르게 고쳐 주세요:',
 );
 
 /** Ripoarisch (Ripoarisch)
@@ -884,7 +887,7 @@ Sila pilih nama lain.',
 # * [Dd]ua
 </pre>',
 	'usernameblacklist-invalid-lines' => '{{PLURAL:$1|Baris|Baris-baris}} berikut dalam senarai hitam nama pengguna adalah tidak sah; sila betulkannya sebelum menyimpan:',
-	'right-uboverride'                => 'Atasi senarai hitam nama pengguna',
+	'right-uboverride'                => 'Mengatasi senarai hitam nama pengguna',
 );
 
 /** Low German (Plattdüütsch)

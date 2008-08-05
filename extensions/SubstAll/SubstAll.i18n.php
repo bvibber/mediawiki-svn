@@ -51,6 +51,13 @@ $messages['nl'] = array(
 	'substall-desc' => 'Voegt de tag <nowiki><substall></nowiki> toe die van alle sjablonen wikisyntaxis maakt',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ */
+$messages['no'] = array(
+	'substall-desc' => 'Lager en <nowiki><substall></nowiki>-tagg som utvider alle maler til wikisyntaks',
+);
+
 /** Occitan (Occitan)
  * @author Cedric31
  */

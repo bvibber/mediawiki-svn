@@ -256,6 +256,14 @@ $1',
 	'webstore_no_handler'              => "N'haller ket treuzfurmiñ ar seurt MIME-mañ.",
 );
 
+/** German (Deutsch)
+ * @author Leithian
+ */
+$messages['de'] = array(
+	'webstore_no_file'            => 'Es wurde keine Datei hochgeladen.',
+	'webstore_metadata_not_found' => 'Datei nicht gefunden: $1',
+);
+
 /** Greek (Ελληνικά)
  * @author Consta
  */

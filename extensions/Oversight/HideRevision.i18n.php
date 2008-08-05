@@ -167,7 +167,12 @@ $messages['ar'] = array(
  * @author Ghaly
  */
 $messages['arz'] = array(
-	'hiderevision-status' => 'النسخة $1: $2',
+	'group-oversight'        => 'اوڤرسايترز',
+	'group-oversight-member' => 'اوڤرسايتر',
+	'grouppage-oversight'    => '{{ns:project}}:اوڤرسايت',
+	'hiderevision-status'    => 'النسخة $1: $2',
+	'oversight'              => 'اوڤرسايت',
+	'oversight-view'         => 'التفاصيل',
 );
 
 /** Asturian (Asturianu)
@@ -296,6 +301,7 @@ $messages['bg'] = array(
 $messages['bn'] = array(
 	'hiderevision'                => 'স্থায়ীভাবে সংশোধনগুলি লুকিয়ে রাখা হোক',
 	'hiderevision-desc'           => 'আইনগত কারণ, ইতাদির জন্য ব্যক্তিগত সংশোধনগুলি সব ব্যবহারকারীর কাছ থেকে আড়াল করা হোক।',
+	'right-oversight'             => 'পূর্ববর্তী লুকায়িত পর্যালোচনা দেখাও',
 	'hiderevision-prompt'         => 'যে সংশোধনটি সরিয়ে নিতে হবে তার ক্রমসংখ্যা:',
 	'hiderevision-continue'       => 'অগ্রসর হোন',
 	'hiderevision-text'           => "এটি '''শুধুমাত্র''' নিচের ক্ষেত্রগুলিতে ব্যবহার করা যাবে:
@@ -319,6 +325,7 @@ $messages['bn'] = array(
 	'oversight-log-hiderev'       => '$1 থেকে একটি সম্পাদনা মুছে ফেলা হয়েছে',
 	'oversight'                   => 'ওভারসাইট',
 	'oversight-view'              => 'বিস্তারিত',
+	'oversight-difference'        => '(পূর্ববর্তী বাকী পোর্যালোচনা থেকে ভিন্ন)',
 	'oversight-prev'              => 'সর্বশেষ পূর্ববর্তী পর্যালোচনা',
 	'oversight-hidden'            => 'লুকায়িত সংশোধন',
 );

@@ -931,6 +931,14 @@ $messages['mr'] = array(
 	'crosswikiunblock-local'        => 'स्थानिक अनब्लॉक इथे बदलता येत नाहीत. [[Special:Ipblocklist|{{int:ipblocklist}}]] चा उपयोग करा',
 );
 
+/** Maltese (Malti)
+ * @author Roderick Mallia
+ */
+$messages['mt'] = array(
+	'crosswikiblock-anononly'       => 'Ibblokkja l-utenti anonimi biss',
+	'crosswikiblock-alreadyblocked' => 'L-utent "$3" diġà bblokkjat',
+);
+
 /** Nahuatl (Nahuatl)
  * @author Fluence
  */

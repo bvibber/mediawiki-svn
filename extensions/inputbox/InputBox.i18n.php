@@ -780,9 +780,11 @@ $messages['lt'] = array(
 	'createarticle'  => 'Kurti straipsnį',
 );
 
-/** Latvian (Latviešu) */
+/** Latvian (Latviešu)
+ * @author Xil
+ */
 $messages['lv'] = array(
-	'createarticle' => 'Izveidot rakstu',
+	'createarticle' => 'Izveidot lapu',
 );
 
 /** Macedonian (Македонски)

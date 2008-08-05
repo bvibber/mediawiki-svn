@@ -759,7 +759,7 @@ $messages['ksh'] = array(
 	'linksearch-pat'   => 'Sök noh:',
 	'linksearch-ns'    => 'Appachtemang:',
 	'linksearch-ok'    => 'Sööke',
-	'linksearch-text'  => 'Di Sondersigg hee mäd_et mööschlesch noh Sigge ze söke, woh beshtemmpte Links op Websigge dren enthallde sin.
+	'linksearch-text'  => 'Di Sondersigg hee mäd_et müjjelesch noh Sigge ze söke, woh beshtemmpte Links op Websigge dren enthallde sin.
 
 Beim Söke künnd_Er Shternshe aanjevve för e Shtöckshe fun ennem Name, wo mer nit jenou weiß, wi et heiß udder wat me nit kenne deit, zem Beishpöll esu: <tt>http://*.example.com</tt>
 

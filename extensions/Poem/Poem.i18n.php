@@ -53,6 +53,13 @@ $messages['bg'] = array(
 	'poem-desc' => 'Добавя етикет <tt>&lt;poem&gt;</tt> за форматиране на стихове',
 );
 
+/** Bengali (বাংলা)
+ * @author Bellayet
+ */
+$messages['bn'] = array(
+	'poem-desc' => 'কবিতার ফরমেটিং এর জন্য <tt>&lt;poem&gt;</tt> ট্যাগ যোগ করুন',
+);
+
 /** Czech (Česky)
  * @author Matěj Grabovský
  */

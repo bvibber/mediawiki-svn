@@ -105,6 +105,15 @@ $messages['hsb'] = array(
 	'stalepages-summary' => 'To je lisćina stronow, kotrež njebuchu za {{PLURAL:$1|posledni $1 dźeń|poslednjeju $1 dnjow|posdlednje $1 dny|poslednych $1 dnjow}} změnjene.',
 );
 
+/** Italian (Italiano)
+ * @author Darth Kule
+ */
+$messages['it'] = array(
+	'stalepages'         => 'Pagine non modificate da molto tempo',
+	'stalepages-desc'    => 'Genera un [[Special:Stalepages|elenco di pagine]] che non sono state modificate recentemente',
+	'stalepages-summary' => 'Di seguito sono elencate le pagine che non sono state modificate negli ultimi $1 giorni.',
+);
+
 /** Javanese (Basa Jawa)
  * @author Meursault2004
  */
@@ -177,6 +186,7 @@ $messages['nl'] = array(
  */
 $messages['no'] = array(
 	'stalepages'         => 'Foreldede sider',
+	'stalepages-desc'    => 'Skaper en [[Special:Stalepages|liste over sider]] som ikke har blitt redigert i det siste',
 	'stalepages-summary' => 'Dette er en liste over sider som ikke har blitt redigert på de siste $1 dagene.',
 );
 

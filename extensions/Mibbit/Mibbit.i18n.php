@@ -150,6 +150,20 @@ Aos usuarios anónimos concederáselles un nome automático, que pode ser cambia
 	'right-mibbit'  => 'Autorizado para usar a conversa Mibbit',
 );
 
+/** Hebrew (עברית)
+ * @author Rotemliss
+ * @author Agbad
+ */
+$messages['he'] = array(
+	'mibbit'        => "צ'אט Mibbit",
+	'mibbit-desc'   => 'הוספת [[Special:Mibbit|דף מיוחד]] המאפשר לשוחח בזמן אמת עם משתמשי ויקי אחרים',
+	'mibbit-header' => 'דף מיוחד זה מאפשר לכם לתקשר בזמן אמת עם משתמשים אחרים של הוויקי.
+כדי להתחבר, פשוט לחצו על הכפתור "connect".
+אם אתם מחוברים, השם שלכם ישמש כפרופיל.
+למשתמשים אנונימיים ניתן שם אוטומטי, אבל הוא יכול להשתנות.',
+	'right-mibbit'  => "אפשרות להשתמש בצ'אט Mibbit",
+);
+
 /** Hindi (हिन्दी)
  * @author Kaustubh
  */
@@ -206,10 +220,10 @@ $messages['jv'] = array(
 $messages['ksh'] = array(
 	'mibbit'        => 'Mibbit IRC Chat',
 	'mibbit-desc'   => 'Brenk de [[Special:Mibbit|Mibbit Sondersigg]] wo dröver mer met ander Metmaacher fum Wiki em IRC quatsche kann',
-	'mibbit-header' => "Hee die Sondersigg määt et möschlesch, met ander Metmaacher övver ene Chat zosamme ze Ärbeide.
-Öm en Verbindong opzemaache, klick op dä „Connect“-Link.
-Wann De enjelogg bes, is Dinge Metmaacher-Name ald als Chat-Name vorjeschlage.
-Namelose Medmaacher krijje ene automatisch erfonge Name, ävver beeds kam'mer ändere.",
+	'mibbit-header' => 'Hee die Sondersigg määt et müjjelisch, met ander Metmaacher övver ene <i lang="en">Chat</i> zosamme ze Ärbeide.
+Öm en Verbindong opzemaache, klick op dä <i lang="en">„Connect“</i>-Link.
+Wann De enjelogg bes, is Dinge Metmaacher-Name ald als Dinge <i lang="en">Chat</i>-Name vorjeschlage.
+Namelose Medmaacher krijje ene automatisch erfonge Name, ävver all de beeds kam\'mer ändere.',
 	'right-mibbit'  => 'Dä Mibbit Chat es zojelohße',
 );
 

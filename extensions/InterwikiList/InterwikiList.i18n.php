@@ -72,6 +72,17 @@ $messages['gl'] = array(
 	'interwikilist-target'   => 'Dirección URL obxectivo',
 );
 
+/** Hebrew (עברית)
+ * @author Agbad
+ * @author Rotemliss
+ */
+$messages['he'] = array(
+	'interwikilist'          => 'רשימת בינוויקי',
+	'interwikilist-desc'     => 'הוספת [[Special:Interwikilist|דף מיוחד]] להצגת קישורי הבינוויקי הזמינים',
+	'interwikilist-linkname' => 'קישור בינוויקי',
+	'interwikilist-target'   => 'כתובת יעד',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

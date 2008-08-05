@@ -505,6 +505,7 @@ $messages['km'] = array(
  */
 $messages['ksh'] = array(
 	'scanset_next' => 'Nääks →',
+	'scanset_prev' => '← Vörijje',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

@@ -608,8 +608,10 @@ $messages['eo'] = array(
 	'voctrain_list_of_questions_and_answers'                                                        => 'listo de demandoj kaj respondoj',
 	'voctrain_Answer_s_'                                                                            => 'Respondo(j)',
 	'voctrain_logout'                                                                               => 'Elsaluti',
+	'voctrain_Powered_by'                                                                           => 'Funkcias per',
 	'voctrain_Exercise_complete'                                                                    => 'Ezkerco kompleta',
 	'voctrain_Exercise_terminated'                                                                  => 'Ekzerco estis haltita',
+	'voctrain_Start_a_new_exercise'                                                                 => 'Ekfari novan ekzercon',
 	'voctrain_User_name'                                                                            => 'Salutnomo',
 	'voctrain_Password'                                                                             => 'Pasvorto',
 	'voctrain_Login'                                                                                => 'Ensaluti',
@@ -617,13 +619,19 @@ $messages['eo'] = array(
 	'voctrain_Switch_language'                                                                      => 'Ŝanĝi lingvon',
 	'voctrain_Language'                                                                             => 'Lingvo',
 	'voctrain_Log_in'                                                                               => 'Ensaluti',
+	'voctrain_Omegawiki_vocabulary_trainer'                                                         => 'Omegawiki vortproviza trejnilo',
 	'voctrain_Definitions'                                                                          => 'Difinoj',
 	'voctrain_Could_not_create_new_user'                                                            => 'Ne eblis krei novan uzanton',
+	'voctrain_Type_a_username_and_optional_password_or_try_a_different_username_'                   => 'Entajpu salutnomon kaj nedevigan pasvorton, (aŭ provu malsaman salutnomon)',
+	'voctrain_Vocview'                                                                              => 'Vortproviza vidilo',
+	'voctrain_Dictionary_definitions'                                                               => 'vortaraj_difinoj',
 	'voctrain_Translation'                                                                          => 'Tradukado',
 	'voctrain_unhide_definition'                                                                    => 'malkaŝi difinon',
 	'voctrain_unhide_words'                                                                         => 'malkaŝi vortojn',
 	'voctrain_hiding'                                                                               => 'Kaŝanta',
+	'voctrain_hide_definitions_in_question_language'                                                => 'Kaŝi difinojn en demanda lingvo',
 	'voctrain_hide_words_in_question_language'                                                      => 'Kaŝi vortojn en demanda lingvo',
+	'voctrain_Separate_values_by_commas_to_use_multiple_languages_'                                 => 'Apartigi valutojn de komoj por uzi plurajn lingvojn.',
 );
 
 /** Finnish (Suomi)
@@ -936,7 +944,8 @@ $messages['lb'] = array(
  * @author Roderick Mallia
  */
 $messages['mt'] = array(
-	'voctrain_Language' => 'Lingwa',
+	'voctrain_User_name' => 'Isem l-utent',
+	'voctrain_Language'  => 'Lingwa',
 );
 
 /** Nahuatl (Nahuatl)

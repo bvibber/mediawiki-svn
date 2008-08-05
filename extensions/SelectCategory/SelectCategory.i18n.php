@@ -81,11 +81,12 @@ $messages['eo'] = array(
 
 /** Finnish (Suomi)
  * @author Jaakonam
+ * @author Nike
  */
 $messages['fi'] = array(
 	'selectcategory-title'    => 'Valitse luokat',
 	'selectcategory-desc'     => 'Käyttäjä voi muokatessaan valita jo olemassa olevista luokista sopivan',
-	'selectcategory-subtitle' => 'Painamalla yhtä aikaa Shift-näppäintä ja hiiren vasenta nappia voi valikosta poimia useita peräkkäisiä vaihtoehtoja. Ctrl-näppäintä ja hiiren vasenta nappia yhtä aikaa painamalla voi valita haluamansa vaihtoehdot yksitellen.',
+	'selectcategory-subtitle' => 'Painamalla yhtä aikaa Shift-näppäintä ja hiiren vasenta painiketta voi valikosta poimia useita peräkkäisiä vaihtoehtoja. Ctrl-näppäintä ja hiiren vasenta painiketta yhtä aikaa painamalla voi valita haluamansa vaihtoehdot yksitellen.',
 );
 
 /** French (Français)
@@ -170,7 +171,7 @@ $messages['km'] = array(
  */
 $messages['ksh'] = array(
 	'selectcategory-title'    => 'Saachjruppe ußsöke',
-	'selectcategory-desc'     => 'Määt et mööschlesch, beim Sigge-Ändere uß dä Saachjroppe ußzewähle, di ald beshtonn.',
+	'selectcategory-desc'     => 'Määt et müjjelesch, beim Sigge-Ändere uß dä Saachjroppe ußzewähle, di ald beshtonn.',
 	'selectcategory-subtitle' => 'Ettlije Enndräsch op eijmol ußsöke met „Jrußschreff+Muus“, un nit mieh ußsööke met „Strg+Muus“.',
 );
 

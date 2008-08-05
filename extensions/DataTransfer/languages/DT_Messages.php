@@ -178,6 +178,13 @@ $messages['eo'] = array(
 	'dt_xml_freetext'             => 'Libera Teksto',
 );
 
+/** Spanish (Español)
+ * @author Sanbec
+ */
+$messages['es'] = array(
+	'dt_viewxml_namespaces' => 'Espacios de nombres',
+);
+
 /** French (Français)
  * @author Grondin
  * @author Siebrand
