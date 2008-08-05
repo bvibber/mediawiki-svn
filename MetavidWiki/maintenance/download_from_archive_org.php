@@ -3,8 +3,10 @@ $cur_path = $IP = dirname(__FILE__);
 //include commandLine.inc from the mediaWiki maintance dir: 
 require_once ('../../../maintenance/commandLine.inc');
 
-define('MV_DOWNLOAD_DIR', '/metavid/');
+define('MV_DOWNLOAD_DIR', '/metavid/video_archive/');
 define('MV_ARCHIVE_ORG_DL', 'http://www.archive.org/download/mv_');
+
+define('MV_FLV_LOC', '/var/www/MvFlv.php');
 
 if (count($args) == 0 || isset ($options['help'])) {
 	print "
@@ -37,18 +39,29 @@ function proccess_streams($stream_name='all'){
 			if( filesize($local_fl)!=remotefsize($remote_fl)){
 				echo ' local:'. formatbytes(filesize($local_fl)). 
 						' != remote:' . formatbytes(remotefsize($remote_fl));
+				die();
 			}else{
 				echo ' sizes match: ' . formatbytes(filesize($local_fl)) .'='.
-						formatbytes(remotefsize($remote_fl))."\n";
-					
+						formatbytes(remotefsize($remote_fl))."\n";					
 			}			
 			//make
 			continue;			
 		}else{
 			echo "DL it:";
 			if(!download($remote_fl, $local_fl, $stream->name)){
-				echo 'succesfully grabed '.$remote_fl; 
+				echo 'succesfully grabed '.$remote_fl."\n"; 
 			};
+			echo "gennerating flv metadata\n";
+			//gennerate metadata:
+			include_once(MV_FLV_LOC);
+			$flv = new MyFLV();
+			try {
+				$flv->open( $local_fl );
+			} catch (Exception $e) {
+				die("<pre>The following exception was detected while trying to open a FLV file:\n" . $e->getMessage() . "</pre>");
+			}
+			$flv->getMetaData();
+			echo "done with .meta (" . filesize($local_fl.META_DATA_EXT).") \n";
 		}
 	}
 	
