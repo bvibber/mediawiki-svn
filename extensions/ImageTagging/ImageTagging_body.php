@@ -1,8 +1,9 @@
 <?php
-
 /**
- * @package MediaWiki
- * @subpackage SpecialPage
+ * TaggedImages class 
+ *
+ * @file
+ * @ingroup Extensions
  */
 
 define('TAGGEDIMGS_PER_PAGE', 12);
@@ -14,7 +15,7 @@ define('TAGGEDIMGS_PER_PAGE', 12);
  */
 class TaggedImages extends SpecialPage {
 
-	var $mQuery, $mImages;
+	var $mQuery, $mImages, $mShowFilename;
 
 	/**
 	 * Create a new tagged images object.
@@ -43,7 +44,7 @@ class TaggedImages extends SpecialPage {
 
 		wfProfileIn( __METHOD__ );
 
-		$db =& wfGetDB(DB_SLAVE);
+		$db = wfGetDB(DB_SLAVE);
 
 			$WHERECLAUSE = '';
 			if ($this->mQuery) {
