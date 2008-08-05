@@ -245,6 +245,13 @@ Vol dit veld '''NEET''' in!",
 	'simpleantispam-desc'  => 'Veug ein einvaawdife spem/botcontrole aan formulere',
 );
 
+/** Latvian (Latviešu)
+ * @author Xil
+ */
+$messages['lv'] = array(
+	'simpleantispam' => 'Tevis veiktās izmaiņas ir iedarbināja pretspama mehānismu',
+);
+
 /** Marathi (मराठी)
  * @author Kaustubh
  */

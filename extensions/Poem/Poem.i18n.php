@@ -226,6 +226,13 @@ $messages['lt'] = array(
 	'poem-desc' => 'Prideda <tt>&lt;poema&gt;</tt> tagus poemų formatavimui',
 );
 
+/** Latvian (Latviešu)
+ * @author Xil
+ */
+$messages['lv'] = array(
+	'poem-desc' => 'Pievieno <tt>&lt;poem&gt;</tt> tagu dzejas formatēšanai',
+);
+
 /** Malayalam (മലയാളം)
  * @author Shijualex
  */

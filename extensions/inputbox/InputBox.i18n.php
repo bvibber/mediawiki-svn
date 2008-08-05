@@ -784,7 +784,8 @@ $messages['lt'] = array(
  * @author Xil
  */
 $messages['lv'] = array(
-	'createarticle' => 'Izveidot lapu',
+	'searchfulltext' => 'Meklēt visu tekstu',
+	'createarticle'  => 'Izveidot lapu',
 );
 
 /** Macedonian (Македонски)

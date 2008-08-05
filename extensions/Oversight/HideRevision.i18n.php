@@ -1587,6 +1587,13 @@ $messages['lt'] = array(
 	'oversight-view'             => 'detalės',
 );
 
+/** Latvian (Latviešu)
+ * @author Xil
+ */
+$messages['lv'] = array(
+	'hiderevision-continue' => 'Turpināt',
+);
+
 /** Moksha (Мокшень)
  * @author Kranch
  */

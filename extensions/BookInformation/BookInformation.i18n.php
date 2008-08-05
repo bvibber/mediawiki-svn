@@ -909,10 +909,11 @@ $messages['nds'] = array(
 
 /** Dutch (Nederlands)
  * @author Siebrand
+ * @author SPQRobin
  */
 $messages['nl'] = array(
 	'bookinfo-header'            => 'Boekinformatie',
-	'bookinfo-desc'              => 'Uitbreiding voor de [[Special:Booksources|special pagina Boekinformatie]] met informatie van een webservice',
+	'bookinfo-desc'              => 'Uitbreiding voor de [[Special:Booksources|speciale pagina Boekinformatie]] met informatie van een webservice',
 	'bookinfo-result-title'      => 'Titel:',
 	'bookinfo-result-author'     => 'Auteur:',
 	'bookinfo-result-publisher'  => 'Uitgever:',

@@ -42,6 +42,15 @@ $messages['ar'] = array(
 	'backforth-prev' => 'السابق ($1)',
 );
 
+/** Assamese (অসমীয়া)
+ * @author Rajuonline
+ */
+$messages['as'] = array(
+	'backforth-next' => 'পৰবর্তী',
+	'backforth-desc' => 'পৃষ্ঠাৰ ওপৰত "পৰবর্তী" আৰু "পুর্ববর্তি" সংযোগ দেখুৱাই',
+	'backforth-prev' => 'পুর্ববর্তি',
+);
+
 /** Asturian (Asturianu)
  * @author Esbardu
  */
