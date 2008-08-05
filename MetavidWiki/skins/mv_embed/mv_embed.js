@@ -229,59 +229,15 @@ mediaPlayer.prototype =
     }
 }
 
-var flowPlayer = new mediaPlayer(
-    'flowplayer',
-    ['video/x-flv'],
-    'flash'
-);
-
-var cortadoPlayer = new mediaPlayer(
-    'cortado',
-    ['video/ogg'],
-    'java'
-);
-
-var videoElementPlayer = new mediaPlayer(
-    'videoElement',
-    ['video/ogg'],
-    'native'
-);
-
-var vlcMozillaPlayer = new mediaPlayer(
-    'vlc-mozilla',
-    [],
-    'vlc'
-);
-
-var vlcActiveXPlayer = new mediaPlayer(
-    'vlc-activex',
-    ['video/ogg', 'video/x-flv', 'video/mp4'],
-    'vlc'
-);
-
-var oggPlayPlayer = new mediaPlayer(
-    'oggPlay',
-    ['video/ogg'],
-    'oggplay'
-);
-
-var oggPluginPlayer = new mediaPlayer(
-    'oggPlugin',
-    ['video/ogg'],
-    'generic'
-);
-
-var quicktimeMozillaPlayer = new mediaPlayer(
-    'quicktime-mozilla',
-    ['video/ogg'],
-    'quicktime'
-);
-
-var quicktimeActiveXPlayer = new mediaPlayer(
-    'quicktime-activex',
-    ['video/ogg'],
-    'quicktime'
-);
+var flowPlayer = new mediaPlayer('flowplayer',['video/x-flv'],'flash');
+var cortadoPlayer = new mediaPlayer('cortado',['video/ogg'],'java');
+var videoElementPlayer = new mediaPlayer('videoElement',['video/ogg'],'native');
+var vlcMozillaPlayer = new mediaPlayer('vlc-mozilla',[],'vlc');
+var vlcActiveXPlayer = new mediaPlayer('vlc-activex',['video/ogg', 'video/x-flv', 'video/mp4'],'vlc');
+var oggPlayPlayer = new mediaPlayer('oggPlay',['video/ogg'],'oggplay');
+var oggPluginPlayer = new mediaPlayer('oggPlugin',['video/ogg'],'generic');
+var quicktimeMozillaPlayer = new mediaPlayer('quicktime-mozilla',['video/ogg'],'quicktime');
+var quicktimeActiveXPlayer = new mediaPlayer('quicktime-activex',['video/ogg'],'quicktime');
 
 function mediaPlayers()
 {
@@ -2406,11 +2362,12 @@ function mv_jsdata_cb(response){
 	global_req_cb[response['cb_inx']](response['pay_load']);
 }
 //load external js via dom injection
+//@@todo swich over to jQuery injection
 function loadExternalJs(url){  
    	js_log('load js: '+ url);
     if(window['$j'])
     {
-        js_log('using jQuery');
+        //js_log('using jQuery');
         $j.getScript(url);
     }
     else
