@@ -191,8 +191,7 @@ class MyFLV extends FLV {
 		$meta['keyframes']=array();		
 		//@@todo update all the other metadata to match segment outupt	
 		return $meta;
-	}	
-	
+	}		
 	function play( $from = 0, $play_to=null )
 	{
 		fseek($this->fp, 0);
@@ -201,8 +200,8 @@ class MyFLV extends FLV {
 		echo fread($this->fp, $this->bodyOfs + 4);
 		
 		// output the metadata if available
-		//$meta = $this->getSegmentMetaData();	
-		$meta = $this->getMetaData();
+		$meta = $this->getSegmentMetaData();	
+		//$meta = $this->getMetaData();
 			
 		if (! empty($meta))
 		{

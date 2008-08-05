@@ -8,7 +8,9 @@
  * 
  * called with: mv_flvServer.php?file=myClip.flv&t=0:01:00/0:02:00
  * 
- *   
+ * flash does not like get arguments in media files? so best to use mod-rewrite
+ * something like: 
+ * /flvserver/my_file/start_time/end_time
  */
 define('BASE_LOCAL_CLIP_PATH', '/var/www/flv_clips');
 
@@ -18,12 +20,19 @@ define('FLASH_VIDEO_CONTENT_TYPE', 'video/x-flv');
 define('AUDIO_FRAME_INTERVAL', 3);
 //what to append to the flv file name to store serialized meta tags:
 
-
 if(!function_exists('filter_input')){
 	die('you version of php lacks <b>filter_input()</b> function</br>');
 }
 $file_req = filter_input(INPUT_GET, 'file', FILTER_SANITIZE_STRING);
 $time_req = filter_input(INPUT_GET, 't', FILTER_SANITIZE_STRING);
+
+//try to grab the file from /filename format
+if($file_req==''){
+	if(isset($_SERVER['SCRIPT_URL'])){
+		$pathparts = explode('/',$_SERVER['SCRIPT_URL']);
+		$file_req = $pathparts[count($pathparts)-1];
+	}
+}
 
 //additional filtering to avoid directory traversing:
 $file_req = str_replace(array('../','./'), '', $file_req);
@@ -45,22 +54,10 @@ if($time_req==''){
 		$end_sec	= null;
 		if($start_sec==0)output_full_file($file_loc);
 	}
-	if($start_sec > $end_sec)die('error: requested invalid time range');	
-
+	if($start_sec > $end_sec)die('error: requested invalid time range');
 	//print "DO: $start_sec $end_sec \n";
 	require_once('MvFlv.php');
-	//open up the metavid Flv object: 
-	/*$flv = new MvFLV();
-	try {
-		$flv->open( $file_loc );
-	} catch (Exception $e) {
-		die("<pre>The following exception was detected while trying to open a FLV file:\n" . $e->getMessage() . "</pre>");
-	}
-	header('Content-type: '.FLASH_VIDEO_CONTENT_TYPE);
-	$flv->playTimeReq($start_sec, $end_sec);
-	//print_r( );
-	$flv->close();
-	*/
+	//open up the metavid Flv object: 	
 	$flv = new MyFLV();
 	try {
 		$flv->open( $file_loc );
@@ -70,12 +67,9 @@ if($time_req==''){
 	header('Content-type: '.FLASH_VIDEO_CONTENT_TYPE);
 	//$flv->computeMetaData();	
 	//$start = microtime(true);
-	//$flv->play(633578, 1055803);
-	//$flv->play(331630, 647659);
 	$flv->playTimeReq($start_sec, $end_sec);
 	//$end = microtime(true);
-	//file_put_contents('/tmp/time.log', "<hr/>EXTRACT METADATA PROCESS TOOK " . number_format(($end-$start), 2) . " seconds<br/>");
-	
+	//file_put_contents('/tmp/time.log', "<hr/>EXTRACT METADATA PROCESS TOOK " . number_format(($end-$start), 2) . " seconds<br/>");	
 	$flv->close();	
 	
 }
