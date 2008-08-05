@@ -275,7 +275,7 @@ function fnSelectCategoryCheckConditions ($m_isUpload, &$m_pageObj ) {
 
   $ns = $wgTitle->getNamespace();
   if (array_key_exists ($ns, $wgSelectCategoryNamespaces)) {
-    $enabledForNamespace = true;
+    $enabledForNamespace = $wgSelectCategoryNamespaces[$ns];
   } else {
     $enabledForNamespace = false;
   }
