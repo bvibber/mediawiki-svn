@@ -33,8 +33,6 @@
 function wikidiff3_diff(array $from, array $to, $boundRunningTime=FALSE, $max_NP_before_bound = 800000){
 	wfProfileIn( __METHOD__ );
 
-	$time = microtime(true);
-
 	$m = sizeof($from);
 	$n = sizeof($to);
 
