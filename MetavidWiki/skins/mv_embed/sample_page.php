@@ -45,7 +45,7 @@ $sample_embed[0]['desc']='basic usage with manual controls:<br />'.
 //$sample_embed[1]['desc'] = '<b>RSS</b> a podcast like dynamic feed for "peace"<br />'.
 //		'<iframe width="500" height="200" src="'.$plurl.'">rss feed here</iframe>';
 
-$sample_embed[1]['tag']='<video id="vflash" src="http://www.archive.org/download/mv_senate_proceeding_12-23-07/senate_proceeding_12-23-07.flv"></video>';
+$sample_embed[1]['tag']='<video id="vflash" src="http://www.archive.org/download/mv_senate_proceeding_12-23-07/senate_proceeding_12-23-07.flv" autoplay="true"></video>';
 $sample_embed[1]['desc']='flash video usage with manual controls:<br />'. 
 					'<a href="javascript:document.getElementById(\'vflash\').play();">Play</a> | '.
 					'<a href="javascript:document.getElementById(\'vflash\').stop();">Stop</a> <br />';

@@ -2,19 +2,10 @@ var javaEmbed = {
 	instanceOf:'javaEmbed',
     supports: {'play_head':true, 'play_or_pause':true, 'stop':true, 'fullscreen':true, 'time_display':true, 'volume_control':true},
     getEmbedHTML : function (){    
-    	var controls_html ='';
-    	js_log('embedObj control is: '+this.controls);
-		if(this.controls){
-			controls_html+= this.getControlsHtml('stop');			
-			//if in playlist mode get prev/next and run postEmbedJS():
-			if(this.pc){
-				controls_html+= this.pc.pp.getPLControls();				
-			}
-			//run posEmbed
+		if(this.controls)
 			setTimeout('document.getElementById(\''+this.id+'\').postEmbedJS()', 150);
-		}   						
 		//set a default duration of 30 seconds: cortao should detect duration. 
-		return this.wrapEmebedContainer( this.getEmbedObj() )+ controls_html;   	
+		return this.wrapEmebedContainer( this.getEmbedObj() );
     },    
     getEmbedObj:function(){
     	if(!this.duration)this.duration=30;
@@ -79,7 +70,7 @@ var javaEmbed = {
     	}
     },
     pause:function(){
-    	
+        this.stop();    	
     },
     currentTime:function(){
     	if(typeof this.jce != 'undefined' ){

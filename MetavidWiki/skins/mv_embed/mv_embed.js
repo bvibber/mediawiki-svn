@@ -138,13 +138,7 @@ var mvEmbed = {
 	'$j.ui.slider':'jquery/plugins/ui.slider.js'		
   },
   pc:null, //used to store pointer to parent clip (when in playlist mode) 
-  load_libs:function(callback){
-  	//load css:
-  	if(!styleSheetPresent(mv_embed_path+'mv_embed.css'))
-		loadExternalCss(mv_embed_path+'mv_embed.css');
-  	if(!styleSheetPresent(mv_embed_path+'skin/styles.css'))
-		loadExternalCss(mv_embed_path+'skin/styles.css');
-		
+  load_libs:function(callback){		
   	if(callback)this.load_callback = callback;
  	//two loading stages, first get jQuery
 	var _this = this;
@@ -183,6 +177,12 @@ var mvEmbed = {
   	this.flist.push(fn);  	
   },  
   init: function(){
+    	//load css:
+  	if(!styleSheetPresent(mv_embed_path+'mv_embed.css'))
+		loadExternalCss(mv_embed_path+'mv_embed.css');
+  	if(!styleSheetPresent(mv_embed_path+'skin/styles.css'))
+		loadExternalCss(mv_embed_path+'skin/styles.css');
+
   	//call the callback:
   	if(this.load_callback)this.load_callback();
 	mv_embed();	
@@ -232,7 +232,7 @@ mediaPlayer.prototype =
 var flowPlayer = new mediaPlayer('flowplayer',['video/x-flv'],'flash');
 var cortadoPlayer = new mediaPlayer('cortado',['video/ogg'],'java');
 var videoElementPlayer = new mediaPlayer('videoElement',['video/ogg'],'native');
-var vlcMozillaPlayer = new mediaPlayer('vlc-mozilla',[],'vlc');
+var vlcMozillaPlayer = new mediaPlayer('vlc-mozilla',['video/ogg', 'video/x-flv', 'video/mp4'],'vlc');
 var vlcActiveXPlayer = new mediaPlayer('vlc-activex',['video/ogg', 'video/x-flv', 'video/mp4'],'vlc');
 var oggPlayPlayer = new mediaPlayer('oggPlay',['video/ogg'],'oggplay');
 var oggPluginPlayer = new mediaPlayer('oggPlugin',['video/ogg'],'generic');
@@ -1434,6 +1434,7 @@ embedVideo.prototype = {
 	},
 	init: function(element){
 		this.element_pointer = element;
+
 		//inherit all the default video_attributes
 	    for(var attr in video_attributes){       
 	        if(element.getAttribute(attr)){
@@ -1478,6 +1479,8 @@ embedVideo.prototype = {
 	    */
 		this.inheritEmbedObj();
 		
+        this.thumbnail_disp = true;
+
 	   //js_log('HTML FROM IN OBJECT' + this.getHTML());
 	   //return this object:	   
 	   return this;
@@ -1500,19 +1503,24 @@ embedVideo.prototype = {
 	},	
     doEmbedHTML:function()
     {
+        this.closeDisplayedHTML();
         var embed_code = this.getEmbedHTML();
         js_log(embed_code);
         document.getElementById('mv_embedded_player_'+this.id).innerHTML=embed_code;
         js_log('changed embed code');
 		this.paused = false;
 		this.thumbnail_disp=false;
+        $j("#mv_play_pause_button_"+this.id).attr('class', 'pause_button');
     },
     doThumbnailHTML:function()
     {
+        this.closeDisplayedHTML();
         this.thumbnail_disp = true;
         var embed_code = this.getThumbnailHTML();
         js_log(embed_code);
         document.getElementById('mv_embedded_player_'+this.id).innerHTML=embed_code;
+		this.paused = true;
+        $j("#mv_play_pause_button_"+this.id).attr('class', 'play_button');
     },
     refreshControlsHTML:function()
     {
@@ -1527,7 +1535,7 @@ embedVideo.prototype = {
         // play_pause
         if (this.supports['play_or_pause'])
         {
-            html_code += '<div id="mv_play_pause_button_'+this.id+'" class="pause_button"><a href="javascript:document.getElementById(\''+this.id+'\').play_or_pause();"></a></div>';
+            html_code += '<div id="mv_play_pause_button_'+this.id+'" class="play_button"><a href="javascript:document.getElementById(\''+this.id+'\').play_or_pause();"></a></div>';
             available_width -= 24;
         }
         
@@ -1552,11 +1560,11 @@ embedVideo.prototype = {
         // volume control
         if(this.supports['volume_control'])
         {
-             html_code +=
+             /*html_code +=
                         '		<div class="volume_control">'+
                         '			<div class="volume_knob"></div>'+
                         '		</div>';
-            available_width -= 46;
+            available_width -= 46;*/
             html_code +='<div class="volume_icon"></div>';
             available_width -= 22;
         }
@@ -1842,6 +1850,7 @@ embedVideo.prototype = {
     */
     displayHTML:function(html_code)
     {
+        this.stop();
         //put select list on-top
         //make sure the parent is relatively positioned:
         $j('#'+this.id).css('position', 'relative');
@@ -1997,35 +2006,20 @@ embedVideo.prototype = {
 		js_log('base play or pause');
 		var id = (this.pc!=null)?this.pc.pp.id:this.id;
 		
-		var play_or_pause = document.getElementById('mv_play_or_pause_'+id);
-        var play_pause_button = document.getElementById('mv_play_pause_button_'+id);
-        
-		//check if we are in a playlist: 
-		
-	    if(play_or_pause || play_pause_button){
-	    	//check state and set play or pause
-	    	if(this.paused){
-	    		js_log('do play');
-				//(paused) do play
-				this.play();
-				this.paused=false;
-                if(play_or_pause)
-                    play_or_pause.innerHTML = getTransparentPng(new Object ({id:'mv_pop_btn_'+id,style:'float:left',width:'27', height:'27', border:"0", 
-                            src:mv_embed_path+'images/vid_pause_sm.png' }));
-                if(play_pause_button)
-                    play_pause_button.className='pause_button';
-			}else{
-				js_log('do pause');
-				//(playing) do pause
-				this.pause();
-				this.paused=true;
-                if(play_or_pause)
-                    play_or_pause.innerHTML = getTransparentPng(new Object ({id:'mv_pop_btn_'+id,style:'float:left',width:'27', height:'27', border:"0", 
-                            src:mv_embed_path+'images/vid_play_sm.png' }));
-                if(play_pause_button)
-                    play_pause_button.className='play_button';                
-			}
-	    }
+        //check state and set play or pause
+        if(this.paused){
+            js_log('do play');
+            //(paused) do play
+            this.play();
+            this.paused=false;
+            $j("#mv_play_pause_button_"+this.id).attr('class', 'pause_button');
+        }else{
+            js_log('do pause');
+            //(playing) do pause
+            this.pause();
+            this.paused=true;
+            $j("#mv_play_pause_button_"+this.id).attr('class', 'play_button');
+        }
 	},
 	//called when we play to the end of a stream (load the thumbnail)
 	streamEnd : function(){
@@ -2366,10 +2360,7 @@ function mv_jsdata_cb(response){
 function loadExternalJs(url){  
    	js_log('load js: '+ url);
     if(window['$j'])
-    {
-        //js_log('using jQuery');
         $j.getScript(url);
-    }
     else
     {
     	var e = document.createElement("script");
@@ -2390,7 +2381,7 @@ function styleSheetPresent(url){
     return false;
 }
 function loadExternalCss(url){
-   //js_log('load css: ' + url);
+   js_log('load css: ' + url);
    var e = document.createElement("link");
    e.href = url;
    e.type = "text/css";
