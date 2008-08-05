@@ -23,6 +23,7 @@ class MyFLV extends FLV {
 	//added segment vars:
 	private $fullMeta=null;
 	private $mDuration=null;
+	private $wrapTimeCount=0;
 	
 	function playTimeReq($start_time_sec, $end_time_sec=null){	
 		//print "play 	$start_time_sec to $end_time_sec";		
