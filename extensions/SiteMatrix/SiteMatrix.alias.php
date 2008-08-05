@@ -57,6 +57,11 @@ $aliases['ht'] = array(
 	'SiteMatrix' => array( 'SitMatrix' ),
 );
 
+/** Malay (Bahasa Melayu) */
+$aliases['ms'] = array(
+	'SiteMatrix' => array( 'Wiki_Wikimedia' ),
+);
+
 /** Dutch (Nederlands) */
 $aliases['nl'] = array(
 	'SiteMatrix' => array( 'WebsiteMatrix' ),
