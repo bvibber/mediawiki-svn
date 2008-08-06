@@ -67,6 +67,31 @@ $messages['ar'] = array(
 	'giverollback-page' => '{{ns:help}}:استرجاع',
 );
 
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Meno25
+ */
+$messages['arz'] = array(
+	'giverollback' => 'منح أو سحب صلاحيات الاسترجاع',
+	'giverollback-header' => '\'\'\'بيروقراط محلى يمكن أن يستخدم هذه الصفحة لمنح أو سحب [[Help:Rollback|صلاحيات الاسترجاع]] لحساب مستخدم آخر.\'\'\'<br />هذا يمكن أن يستخدم للسماح لغير الإداريين باسترجاع التخريب سريعا. هذا يجب أن ينفذ بالتوافق مع السياسات المطبقة.',
+	'giverollback-username' => 'اسم المستخدم:',
+	'giverollback-search' => 'اذهب',
+	'giverollback-hasrb' => '[[User:$1|$1]] لديه صلاحيات استرجاع.',
+	'giverollback-norb' => '[[User:$1|$1]] ليس لديه صلاحيات استرجاع.',
+	'giverollback-toonew' => '[[User:$1|$1]] جديد جدا، ولا يمكن إعطاؤه صلاحيات استرجاع.',
+	'giverollback-sysop' => '[[User:$1|$1]] إدارى، ولديه بالفعل سماحات استرجاع.',
+	'giverollback-change' => 'غير الحالة:',
+	'giverollback-grant' => 'منح',
+	'giverollback-revoke' => 'سحب',
+	'giverollback-comment' => 'تعليق:',
+	'giverollback-granted' => '[[User:$1|$1]] لديه الآن صلاحيات استرجاع.',
+	'giverollback-revoked' => '[[User:$1|$1]] لم يعد لديه صلاحيات استرجاع.',
+	'giverollback-logpage' => 'سجل صلاحيات الاسترجاع',
+	'giverollback-logpagetext' => 'هذا سجل بالتغييرات لصلاحيات [[{{MediaWiki:Giverollback-page}}|الاسترجاع]] لغير الإداريين.',
+	'giverollback-logentrygrant' => 'منح صلاحيات استرجاع إلى [[$1]]',
+	'giverollback-logentryrevoke' => 'أزال صلاحيات استرجاع من [[$1]]',
+	'giverollback-page' => '{{ns:help}}:استرجاع',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  */
