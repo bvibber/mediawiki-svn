@@ -39,6 +39,7 @@ struct config {
 	std::string userdir;
 	int max_procs;
 	int max_procs_per_user;
+	int max_q_per_user;
 };
 
 struct configuration_loader {
@@ -65,6 +66,7 @@ private:
 	bool f_userdir(std::vector<std::string> &fields, config &newconf);
 	bool f_max_procs(std::vector<std::string> &fields, config &newconf);
 	bool f_max_procs_per_user(std::vector<std::string> &fields, config &newconf);
+	bool f_max_q_per_user(std::vector<std::string> &fields, config &newconf);
 
 	log4cxx::LoggerPtr	logger;
 };

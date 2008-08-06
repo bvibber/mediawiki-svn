@@ -78,6 +78,7 @@ std::map<std::string, configuration_loader::confline_t>
 		("userdir", boost::bind(&configuration_loader::f_userdir, _1, _2, _3))
 		("max-procs", boost::bind(&configuration_loader::f_max_procs, _1, _2, _3))
 		("max-procs-per-user", boost::bind(&configuration_loader::f_max_procs_per_user, _1, _2, _3))
+		("max-q-per-user", boost::bind(&configuration_loader::f_max_q_per_user, _1, _2, _3))
 	;
 
 bool
@@ -239,6 +240,29 @@ configuration_loader::f_max_procs_per_user(
 	} catch (boost::bad_lexical_cast &e) {
 		LOG4CXX_ERROR(logger,
 			format("\"%s\", line %d: usage: max-procs-per-user <number>\n")
+			% file_ % lineno_);
+		return false;
+	}
+}
+
+bool
+configuration_loader::f_max_q_per_user(
+		std::vector<std::string> &fields,
+		config &newconf)
+{
+	if (fields.size() != 2) {
+		LOG4CXX_ERROR(logger,
+			format("\"%s\", line %d: usage: max-q-per-user <number>\n")
+			% file_ % lineno_);
+		return false;
+	}
+
+	try {
+		newconf.max_q_per_user = boost::lexical_cast<int>(fields[1]);
+		return true;
+	} catch (boost::bad_lexical_cast &e) {
+		LOG4CXX_ERROR(logger,
+			format("\"%s\", line %d: usage: max-q-per-user <number>\n")
 			% file_ % lineno_);
 		return false;
 	}

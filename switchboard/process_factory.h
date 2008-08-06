@@ -102,7 +102,7 @@ private:
 struct process_factory {
 	process_factory(sbcontext& context);
 
-	void	create_from_filename(
+	bool	create_from_filename(
 			std::string const &filename,
 			boost::function<void (processp)>);
 	void	release(processp);

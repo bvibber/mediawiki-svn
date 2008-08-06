@@ -139,10 +139,13 @@ fcgi_cgi::start(boost::function<void (void)> func)
 {
 	LOG4CXX_DEBUG(logger, "requesting process from factory");
 	ref_.lock();
-	context_.factory().create_from_filename(
+	if (!context_.factory().create_from_filename(
 		script_path_,
 		boost::bind(&fcgi_cgi::process_ready, 
-			shared_from_this(), func, _1));
+			shared_from_this(), func, _1)))
+	{
+		throw creation_failure("too many queued processes for users");
+	}
 }
 
 void

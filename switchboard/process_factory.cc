@@ -93,7 +93,7 @@ process_factory::process_released(process_ref const &ref)
 	}
 }
 
-void
+bool
 process_factory::create_from_filename(
 	std::string const &filename,
 	boost::function<void (processp)> func)
@@ -103,6 +103,13 @@ process_factory::create_from_filename(
 	if (lstat(filename.c_str(), &sb) == -1)
 		throw creation_failure("cannot access pathname");
 
+	if (mainconf.max_q_per_user > 0) {
+		waiterlist_t::index<by_uid>::type &idx = waiters_.get<by_uid>();
+		if (idx.count(sb.st_uid) >= mainconf.max_q_per_user) {
+			return false;
+		}
+	}
+		
 	if (mainconf.max_procs > 0 && nactive_ > mainconf.max_procs) {
 		waiter n;
 		n.filename = filename;
@@ -110,7 +117,7 @@ process_factory::create_from_filename(
 		n.uid = sb.st_uid;
 		n.gid = sb.st_gid;
 		waiters_.push_back(n);
-		return;
+		return true;
 	}
 
 	freelist_t::index<by_uid>::type &idx = freelist_.get<by_uid>();
@@ -122,10 +129,11 @@ process_factory::create_from_filename(
 		n.uid = sb.st_uid;
 		n.gid = sb.st_gid;
 		waiters_.push_back(n);
-		return;
+		return true;
 	}
 
 	_do_create_from_filename(filename, func, sb.st_uid, sb.st_gid);
+	return true;
 }
 
 void
