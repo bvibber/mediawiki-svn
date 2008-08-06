@@ -390,7 +390,7 @@ class OggHandler extends MediaHandler {
 	}
 
 	function setHeaders( $out ) {
-		global $wgOggScriptVersion, $wgCortadoJarFile;
+		global $wgOggScriptVersion, $wgCortadoJarFile, $wgServer;
 		if ( $out->hasHeadItem( 'OggHandler' ) ) {
 			return;
 		}
@@ -400,6 +400,7 @@ class OggHandler extends MediaHandler {
 		$msgNames = array( 'ogg-play', 'ogg-pause', 'ogg-stop', 'ogg-no-player',
 			'ogg-player-videoElement', 'ogg-player-oggPlugin', 'ogg-player-cortado', 'ogg-player-vlc-mozilla', 
 			'ogg-player-vlc-activex', 'ogg-player-quicktime-mozilla', 'ogg-player-quicktime-activex',
+			'ogg-player-totem', 'ogg-player-kaffeine', 'ogg-player-kmplayer',
 			'ogg-player-thumbnail', 'ogg-player-selected', 'ogg-use-player', 'ogg-more', 'ogg-download',
 	   		'ogg-desc-link', 'ogg-dismiss', 'ogg-player-soundthumb', 'ogg-no-xiphqt' );
 		$msgValues = array_map( 'wfMsg', $msgNames );
@@ -408,7 +409,7 @@ class OggHandler extends MediaHandler {
 		$scriptPath = self::getMyScriptPath();
 		if( substr( $cortadoUrl, 0, 1 ) != '/'
 			&& substr( $cortadoUrl, 0, 4 ) != 'http' ) {
-			$cortadoUrl = "$scriptPath/$cortadoUrl";
+			$cortadoUrl = "$wgServer$scriptPath/$cortadoUrl";
 		}
 		$encCortadoUrl = Xml::encodeJsVar( $cortadoUrl );
 		$encExtPathUrl = Xml::encodeJsVar( $scriptPath );

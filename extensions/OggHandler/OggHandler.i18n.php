@@ -31,13 +31,16 @@ Please <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_downlo
 QuickTime cannot play Ogg files without this component.
 Please <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">download XiphQT</a> or choose another player.',
 
-	'ogg-player-videoElement' => '<video> element',
-	'ogg-player-oggPlugin' => 'Ogg plugin',
+	'ogg-player-videoElement' => 'Native browser support',
+	'ogg-player-oggPlugin' => 'Browser plugin',
 	'ogg-player-cortado'   => 'Cortado (Java)', # only translate this message to other languages if you have to change it
 	'ogg-player-vlc-mozilla' => 'VLC', # only translate this message to other languages if you have to change it
 	'ogg-player-vlc-activex' => 'VLC (ActiveX)', # only translate this message to other languages if you have to change it
 	'ogg-player-quicktime-mozilla' => 'QuickTime', # only translate this message to other languages if you have to change it
 	'ogg-player-quicktime-activex' => 'QuickTime (ActiveX)', # only translate this message to other languages if you have to change it
+	'ogg-player-totem'     => 'Totem', # only translate this message to other languages if you have to change it
+	'ogg-player-kmplayer'  => 'KMPlayer', # only translate this message to other languages if you have to change it
+	'ogg-player-kaffeine'  => 'Kaffeine', # only translate this message to other languages if you have to change it
 	'ogg-player-thumbnail' => 'Still image only',
 	'ogg-player-soundthumb' => 'No player',
 	'ogg-player-selected'  => '(selected)',
