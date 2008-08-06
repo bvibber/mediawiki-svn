@@ -183,7 +183,9 @@ var wgOggPlayer = {
 		}
 
 		// <video> element
-		if ( typeof HTMLVideoElement == 'object' ) {
+		if ( typeof HTMLVideoElement == 'object' // Firefox, Safari
+				|| typeof HTMLVideoElement == 'function' ) // Opera
+		{
 			this.clientSupports['videoElement'] = true;
 		}
 
@@ -504,26 +506,16 @@ var wgOggPlayer = {
 	},
 
 	'embedVideoElement': function ( elt, params ) {
-		var videoElt = document.createElement('video');
-		videoElt.setAttribute( 'width', params.width );
-		videoElt.setAttribute( 'height', params.height + this.controlsHeightGuess );
-		videoElt.setAttribute( 'src', params.videoUrl );
-		videoElt.setAttribute( 'autoplay', '1' );
-		videoElt.setAttribute( 'controls', '1' );
-		var div = document.createElement( 'div' );
-		div.appendChild( videoElt );
-		elt.appendChild( div );
-
-		// Try to detect implementations that don't support controls
-		// This works for the Opera test build
-		if ( !videoElt.controls ) {
-			div = document.createElement( 'div' );
-			div.appendChild( this.newPlayButton( videoElt ) );
-			div.appendChild( this.newPauseButton( videoElt ) );
-			div.appendChild( this.newStopButton( videoElt ) );
-			elt.appendChild( div );
-			//videoElt.play();
-		}
+		var id = elt.id + "_obj";
+		elt.innerHTML =
+			'<div><video' + 
+				' id=' + this.hq( id ) + 
+				' width=' + this.hq( params.width ) + 
+				' height=' + this.hq( params.height ) + 
+				' src=' + this.hq( params.videoUrl ) +
+				' autoplay="1"' +
+				' controls="1"' +
+				' /></div>';
 	},
 
 	'embedOggPlugin': function ( elt, params, player ) {
