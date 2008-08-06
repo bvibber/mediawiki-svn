@@ -49,7 +49,7 @@ $(PROG): $(OBJS)
 	$(CXX) $(CFLAGS) $(CXXFLAGS) $(LDFLAGS) $(OBJS) -o $(PROG) $(LIBS)
 
 $(SWEXEC): swexec.o
-	$(CC) $(CFLAGS) $(LDFLAGS) swexec.o -o $(SWEXEC)
+	$(CC) $(CFLAGS) $(LDFLAGS) swexec.o -o $(SWEXEC) $(SWEXEC_EXTRA_LIBS)
 
 $(SWKILL): swkill.o
 	$(CC) $(CFLAGS) $(LDFLAGS) swkill.o -o $(SWKILL)

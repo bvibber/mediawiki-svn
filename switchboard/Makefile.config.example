@@ -31,7 +31,10 @@ EXTRA_LDFLAGS	= -L/opt/boost/lib -R /opt/boost/lib
 EXTRA_LIBS=
 
 # For Solaris:
-EXTRA_LIBS+=-lsocket -lnsl
+EXTRA_LIBS+=-lsocket -lnsl -lproject
+
+# swexec needs this for project support on solaris
+SWEXEC_EXTRA_LIBS = -lproject
 
 # install program, /usr/ucb/install for Solaris, otherwise /usr/bin/install
 INSTALL=/usr/ucb/install
