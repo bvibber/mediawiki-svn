@@ -1023,6 +1023,7 @@ $messages['is'] = array(
 /** Italian (Italiano)
  * @author BrokenArrow
  * @author .anaconda
+ * @author Darth Kule
  */
 $messages['it'] = array(
 	'ogg-desc'                => 'Gestore per i file Ogg Theora e Vorbis, con programma di riproduzione in JavaScript',
@@ -1041,8 +1042,8 @@ $messages['it'] = array(
 	'ogg-play-sound'          => 'Riproduci il file sonoro',
 	'ogg-no-player'           => 'Siamo spiacenti, ma non risulta installato alcun software di riproduzione compatibile. Si prega di <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">scaricare un lettore</a> adatto.',
 	'ogg-no-xiphqt'           => 'Non risulta installato il componente XiphQT di QuickTime. Senza tale componente non è possibile la riproduzione di file Ogg con QuickTime. Si prega di <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">scaricare XiphQT</a> o scegliere un altro lettore.',
-	'ogg-player-videoElement' => 'elemento <video>',
-	'ogg-player-oggPlugin'    => 'Plugin ogg',
+	'ogg-player-videoElement' => 'Supporto browser nativo',
+	'ogg-player-oggPlugin'    => 'Plugin browser',
 	'ogg-player-thumbnail'    => 'Solo immagini fisse',
 	'ogg-player-soundthumb'   => 'Nessun lettore',
 	'ogg-player-selected'     => '(selezionato)',
@@ -1551,8 +1552,8 @@ $messages['nl'] = array(
 	'ogg-play-sound'          => 'Geluid afspelen',
 	'ogg-no-player'           => 'Sorry, uw systeem heeft geen van de ondersteunde mediaspelers. Installeer alstublieft <a href="http://www.java.com/nl/download/manual.jsp">Java</a>.',
 	'ogg-no-xiphqt'           => 'Het lijkt erop dat u de component XiphQT voor QuickTime niet hebt. QuickTime kan Ogg-bestanden niet afspelen zonder deze component. Download <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">XiphQT</a> alstublieft of kies een andere speler.',
-	'ogg-player-videoElement' => '<video>-element',
-	'ogg-player-oggPlugin'    => 'Ogg-plugin',
+	'ogg-player-videoElement' => 'Standaardondersteuning in browser',
+	'ogg-player-oggPlugin'    => 'Browserplugin',
 	'ogg-player-thumbnail'    => 'Alleen stilstaand beeld',
 	'ogg-player-soundthumb'   => 'Geen mediaspeler',
 	'ogg-player-selected'     => '(geselecteerd)',

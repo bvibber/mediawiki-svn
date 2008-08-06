@@ -97,9 +97,12 @@ $messages['ext'] = array(
 	'contributionseditcount' => 'Esti usuáriu á hechu $1 eicionis.',
 );
 
-/** Finnish (Suomi) */
+/** Finnish (Suomi)
+ * @author Jaakonam
+ */
 $messages['fi'] = array(
-	'contributionseditcount' => 'Tällä käyttäjällä on $1 muokkausta.',
+	'contributionseditcount'      => 'Tällä käyttäjällä on $1 muokkausta.',
+	'contributionseditcount-desc' => 'Näyttää muokkauslaskurin [[Special:Contributions|käyttäjän muokkaukset]] -sivulla',
 );
 
 /** French (Français)

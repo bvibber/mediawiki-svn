@@ -120,20 +120,32 @@ $messages['de'] = array(
  * @author Yekrats
  */
 $messages['eo'] = array(
-	'deletebatch'                  => 'Forigi aron de paĝoj',
-	'deletebatch-button'           => 'FORIGI',
-	'deletebatch-here'             => '<b>ĉi tie</b>',
-	'deletebatch-caption'          => 'Paĝlisto',
-	'deletebatch-as'               => 'Voki la skripton kiel',
-	'deletebatch-or'               => '<b>AŬ</b>',
-	'deletebatch-page'             => 'Forigotaj paĝoj',
-	'deletebatch-reason'           => 'Kialo por forigo',
-	'deletebatch-processing'       => 'forigante paĝojn',
-	'deletebatch-from-file'        => 'de dosierlisto',
-	'deletebatch-from-form'        => 'de paĝo',
-	'deletebatch-success-subtitle' => 'por $1',
-	'deletebatch-select-script'    => 'skripto por forigi paĝon',
-	'deletebatch-select-yourself'  => 'vi',
+	'deletebatch'                      => 'Forigi aron de paĝoj',
+	'deletebatch-desc'                 => '[[Special:DeleteBatch|Forigi aron de paĝoj]]',
+	'deletebatch-button'               => 'FORIGI',
+	'deletebatch-here'                 => '<b>ĉi tie</b>',
+	'deletebatch-help'                 => 'Por forigi aron de paĝoj. Vi povas aŭ fari unuopan forigon, aŭ forigi paĝojn listitajn en dosiero.
+Selektu uzanton kiu estos montrata en forigadaj protokoloj.
+Alŝutita dosiero enhavu paĝan nomon kaj nedevigan kialon apartigita de signo "|" en ĉiu linio.',
+	'deletebatch-caption'              => 'Paĝlisto',
+	'deletebatch-title'                => 'Forigi aron',
+	'deletebatch-link-back'            => 'Vi povas reiri al la etendilo',
+	'deletebatch-as'                   => 'Voki la skripton kiel',
+	'deletebatch-both-modes'           => 'Bonvolu selekti aŭ unu specifan paĝon aŭ donatan liston de paĝoj.',
+	'deletebatch-or'                   => '<b>AŬ</b>',
+	'deletebatch-page'                 => 'Forigotaj paĝoj',
+	'deletebatch-reason'               => 'Kialo por forigo',
+	'deletebatch-processing'           => 'forigante paĝojn',
+	'deletebatch-from-file'            => 'de dosierlisto',
+	'deletebatch-from-form'            => 'de paĝo',
+	'deletebatch-success-subtitle'     => 'por $1',
+	'deletebatch-omitting-nonexistant' => 'Pasante neekzistan paĝon $1.',
+	'deletebatch-omitting-invalid'     => 'Pasante nevalidan paĝon $1.',
+	'deletebatch-file-bad-format'      => 'La dosiero estu norma teksto',
+	'deletebatch-file-missing'         => 'Ne eblas legi donatan dosieron',
+	'deletebatch-select-script'        => 'skripto por forigi paĝon',
+	'deletebatch-select-yourself'      => 'vi',
+	'deletebatch-no-page'              => 'Bonvolu specifigi almenaŭ unu paĝon por forigi AŬ selekti dosieron enhavantan paĝliston.',
 );
 
 /** Spanish (Español)

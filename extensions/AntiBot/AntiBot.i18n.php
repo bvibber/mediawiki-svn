@@ -143,6 +143,13 @@ $messages['pl'] = array(
 	'antibot-desc' => 'Proste mechanizmy ochrony przed spamującymi i wywołującymi przeciążenie serwera robotami',
 );
 
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Brunoy Anastasiya Seryozhenko
+ */
+$messages['pt-br'] = array(
+	'antibot-desc' => 'Simples painel de controle para checagem de spambots e trigger payloads',
+);
+
 /** Russian (Русский)
  * @author Александр Сигачёв
  */

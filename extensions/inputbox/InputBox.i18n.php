@@ -998,6 +998,19 @@ $messages['pt'] = array(
 	'createarticle'           => 'Criar página',
 );
 
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Brunoy Anastasiya Seryozhenko
+ */
+$messages['pt-br'] = array(
+	'inputbox-desc'           => 'Permite a inclusão de formulários definidos de HTML',
+	'inputbox-error-no-type'  => 'Você não especificou o tipo de inputbox a ser criada.',
+	'inputbox-error-bad-type' => 'A Input box de tipo "$1" não é reconhecida.
+Por favor, especifique "create", "comment", "search" ou "search2".',
+	'tryexact'                => 'Tentar a expressão exata',
+	'searchfulltext'          => 'Pesquisar em todo o texto.',
+	'createarticle'           => 'Criar página.',
+);
+
 /** Quechua (Runa Simi)
  * @author AlimanRuna
  */

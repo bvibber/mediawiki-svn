@@ -956,9 +956,11 @@ $messages['ms'] = array(
 
 /** Maltese (Malti)
  * @author Giangian15
+ * @author Roderick Mallia
  */
 $messages['mt'] = array(
-	'newuserlog-create-entry' => 'Utent ġdid',
+	'newuserlog-create-entry'  => 'Utent ġdid',
+	'newuserlog-create2-entry' => 'ħoloq kont għal $1',
 );
 
 /** Erzya (Эрзянь)

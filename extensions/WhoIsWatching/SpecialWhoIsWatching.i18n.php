@@ -132,6 +132,16 @@ $messages['gl'] = array(
 	'specialwhoiswatchingaddbtn'   => 'Engadir os usuarios seleccionados',
 );
 
+/** Hebrew (עברית)
+ * @author Agbad
+ */
+$messages['he'] = array(
+	'whoiswatching'                => 'מי עוקב אחרי דף הוויקי',
+	'specialwhoiswatchingthepage'  => 'מי עוקב אחרי %s',
+	'specialwhoiswatchingaddusers' => 'הוספת משתמשים למעקב אחרי דף זה',
+	'specialwhoiswatchingaddbtn'   => 'הוספת משתמשים נבחרים',
+);
+
 /** Croatian (Hrvatski)
  * @author Dalibor Bosits
  */

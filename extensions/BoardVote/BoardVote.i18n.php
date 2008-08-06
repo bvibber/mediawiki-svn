@@ -381,15 +381,23 @@ $messages['arz'] = array(
 	'boardvote_user'         => 'يوزر',
 	'boardvote_edits'        => 'التعديلات',
 	'boardvote_days'         => 'الايام',
+	'boardvote_ip'           => 'الاي بي',
 	'boardvote_ua'           => 'وسيط اليوزر',
+	'boardvote_listintro'    => '<p>دي لستة بكل عمليات التصويت اللي اتسجلت لحد دلوقتى.
+$1 للبيانات المتشفرة.</p>',
 	'boardvote_dumplink'     => 'كليك هنا',
 	'boardvote_submit'       => 'موافق',
 	'boardvote_strike'       => 'شطب',
 	'boardvote_unstrike'     => 'احتساب',
+	'boardvote_needadmin'    => 'بس الإداريين بتوع الانتخابات هما اللي ممكن يقومو بالعملية دي.',
+	'boardvote_sitenotice'   => '<a href="{{localurle:Special:Boardvote/vote}}">انتخابات بورد الويكيميديا</a>:
+التصويت مفتوح لحد 22 يونيو',
 	'boardvote_notstarted'   => 'التصويت مابتداش  لسه',
+	'boardvote_closed'       => ' باب التصويت خلاص اتقفل، شوف [http://meta.wikimedia.org/wiki/Board_elections/2008/Results صفحة الانتخابات للنتايج] قريب.',
 	'boardvote_edits_many'   => 'كتير',
 	'group-boardvote'        => 'اداريين انتخابات المجلس',
 	'group-boardvote-member' => 'ادارى انتخابات المجلس',
+	'grouppage-boardvote'    => '{{ns:project}}:إداري انتخابات البورد',
 	'boardvote_welcome'      => "اهلا '''$1'''!",
 	'go_to_board_vote'       => 'انتخابات ويكيميديا بورد 2008',
 	'right-boardvote'        => 'إدارة الانتخابات',
@@ -5270,17 +5278,15 @@ Kami baris ngasumsikeun yén Anjeun leuwih mikaresep sakumna calon anu Anjeun b�
 <li><a href="http://meta.wikimedia.org/wiki/Board_elections/2008/Candidates" class="external">Calon</a></li>
 <li><a href="http://en.wikipedia.org/wiki/Schulze_method" class="external">Metode Schulze</a></li></ul>',
 	'boardvote_intro_change'   => '<p>Anjeun geus milih saméméhna. Sanajan kitu, Anjeun masih bisa ngaganti pilihan Anjeun dina isian ieu. Sumangga bikeun rengking para calon luyu kalawan preferensi Anjeun, di mana peunteun anu leuwih leutik némbongkeun preferensi leuwih luhur ka calon anu dipilih. Anjeun bisa mikeun rengking anu sarua pikeun leuwih ti hiji calon sarta kaci henteu mikeun rengking pikeun calon anu séjén.</p>',
-	'boardvote_entered'        => 'Hatur nuhun, pilihan Anjeun geus dicatet.
-
-Lamun daék, Anjeun bisa nyatet rincian ieu. Catetan sora Anjeun nyaéta:
+	'boardvote_entered'        => 'Hatur nuhun, pilihan Anjeun geus dicatet. Lamun daék, Anjeun bisa nyatet rincian ieu. Catetan sora Anjeun nyaéta:
 
 <pre>$1</pre>
 
-Catetan kasebut geus dienkripsi kalawan konci publik para Administrator Pemilihan:
+Catetan kasebut geus diénkripsi maké konci publik Panitia Pamilihan:
 
 <pre>$2</pre>
 
-Vérsi nukaenkripsi kacantum di handapeun ieu. Hasil kasebut baris ditampilkeun pikeun publik di [[Special:Boardvote/dump]].
+Vérsi nu kaénkripsi aya di handap. Éta hasil baris [[Special:Boardvote/dump|dipidangkeun ka masarakat]].
 
 <pre>$3</pre>
 

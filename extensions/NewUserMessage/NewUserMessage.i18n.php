@@ -78,6 +78,13 @@ $messages['gl'] = array(
 	'newusermessage-desc' => 'Engade unha [[MediaWiki:NewUserMessage|mensaxe]] ás páxinas de conversa dos usuarios novos',
 );
 
+/** Hebrew (עברית)
+ * @author Agbad
+ */
+$messages['he'] = array(
+	'newusermessage-desc' => 'הוספת [[MediaWiki:NewUserMessage|הודעה]] בדפי השיחה של משתמשים חדשים שנוצרו',
+);
+
 /** Hindi (हिन्दी)
  * @author Kaustubh
  */

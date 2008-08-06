@@ -189,6 +189,18 @@ $messages['haw'] = array(
 	'randomincategory-label'   => 'Mahele:',
 );
 
+/** Hebrew (עברית)
+ * @author Agbad
+ */
+$messages['he'] = array(
+	'randomincategory'            => 'דף אקראי בקטגוריה',
+	'randomincategory-desc'       => '[[Special:Randomincategory|דף מיוחד]] לקבלת דף אקראי מקטגוריה',
+	'randomincategory-toolbox'    => 'דף אקראי',
+	'randomincategory-nocategory' => 'הקטגוריה $1 אינה קיימת או שהיא ריקה',
+	'randomincategory-label'      => 'קטגוריה:',
+	'randomincategory-submit'     => 'לך',
+);
+
 /** Hindi (हिन्दी)
  * @author Kaustubh
  */

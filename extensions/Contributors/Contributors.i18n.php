@@ -258,15 +258,18 @@ $messages['ext'] = array(
 /** Finnish (Suomi)
  * @author Cimon Avaro
  * @author Nike
+ * @author Jaakonam
  */
 $messages['fi'] = array(
 	'contributors'             => 'Muokkaajat',
+	'contributors-desc'        => 'Yhteenveto sivua eniten muokanneista käyttäjistä',
 	'contributors-toolbox'     => 'Pääasialliset muokkaajat',
 	'contributors-legend'      => 'Luettele sivun pääasialliset muokkaajat',
 	'contributors-target'      => 'Sivun otsikko',
 	'contributors-submit'      => 'Näytä',
 	'contributors-subtitle'    => 'Sivun $1 pääasialliset muokkaajat',
 	'contributors-others-long' => 'Tätä sivua on muokannut {{PLURAL:$1|yksi muu käyttäjä|$1 muuta käyttäjää}}.',
+	'contributors-nosuchpage'  => 'Sivua $1 ei ole olemassa.',
 );
 
 /** French (Français)

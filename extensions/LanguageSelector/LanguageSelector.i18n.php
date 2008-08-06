@@ -169,6 +169,15 @@ $messages['gv'] = array(
 	'languageselector-setlang' => 'soiaghey',
 );
 
+/** Hebrew (עברית)
+ * @author Agbad
+ */
+$messages['he'] = array(
+	'languageselector'         => 'שפה',
+	'languageselector-desc'    => 'בוחר שפה בכל דף, גם למבקרים',
+	'languageselector-setlang' => 'בחר',
+);
+
 /** Hindi (हिन्दी)
  * @author Kaustubh
  */
