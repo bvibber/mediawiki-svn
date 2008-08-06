@@ -68,6 +68,8 @@ class MyFLV extends FLV {
 		$this->origMetaOfs = 0;
 		$this->origMetaSize = 0;
 		$this->origMetaData = null;
+		$oldTs=0;
+		$this->compMetaData['lasttimestamp']=0;
 		
 		$skipTagTypes = array();
 		while ($tag = $this->getTag( $skipTagTypes ))
@@ -102,18 +104,15 @@ class MyFLV extends FLV {
 						//Processing one video tag is enough               
 	            		array_push( $skipTagTypes, FLV_Tag::TYPE_VIDEO );
 	            	}	            
-	        		break;
-	        	
-	        	case FLV_Tag::TYPE_AUDIO :
-	        	
+	        		break;	        	
+	        	case FLV_Tag::TYPE_AUDIO :	        	
 					//Save audio frame positions when there is no video 
-	        		if (!$flv->hasVideo && $ts - $oldTs > $this->audioFrameGap)
+	        		if ($ts - $oldTs > $this->audioFrameGap)
 	        		{
 		        		$this->compMetaData['keyframes']['filepositions'][] = $this->getTagOffset();
 		        		$this->compMetaData['keyframes']['times'][] = $ts;
 		        		$oldTs = $ts;
-	        		}
-	        	
+	        		}	        	
 	            	if ( !in_array( FLV_Tag::TYPE_AUDIO, $skipTagTypes) )  
 	            	{
 		            	$this->compMetaData['audiocodecid'] = $tag->codec;

@@ -1792,8 +1792,11 @@ embedVideo.prototype = {
 	},
 	getPlayButton:function(id){
 		if(!id)id=this.id;
+		return '<div onclick="$j(\'#'+id+'\').get(0).play()" id="big_play_link_'+id+'" class="large_play_button"></div>';
+		/*;
 		//setup button size
-		var play_btn_height = play_btn_width = 109;
+		var play_btn_height = 
+		var play_btn_width = 109;
 		if(this.width<320){
 			var play_btn_width= play_btn_height = Math.round(this.width/3);
 		}
@@ -1807,9 +1810,9 @@ embedVideo.prototype = {
 				     
 	        //fix for IE<7 and its lack of PNG support:
 		out+=getTransparentPng(new Object ({id:'play_'+id, width:play_btn_width, height:play_btn_height, border:"0", 
-						src:mv_embed_path + 'images/mv_embed_play.png' }));				
+						src:mv_embed_path + '/skin/images/player_big_play_button.png' }));				
 		out+='</a></div>';
-		return out;
+		return out;*/
 	},
 	//display the code to remotely embed this video:
 	hideShowEmbedCode : function(){

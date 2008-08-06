@@ -16,7 +16,9 @@ class MV_MagicWords{
 	var $args = array();
 	
 	//list of valid arguments and their default value:
-	var $params = array ('format'=>'ul_list', 'num_results'=>5, 'time_range'=>'last_week','class'=>'');
+	var $params = array ('format'=>'ul_list', 'num_results'=>5,
+						 'time_range'=>'last_week','class'=>'',
+						 'person'=>'');
 	
 	function __construct($arg_list){	
 		$this->proccessArgs($arg_list);		
@@ -47,10 +49,27 @@ class MV_MagicWords{
 			case 'POPULARCLIPS':
 				return $this->getTopClips(); 
 			break;
+			case 'PERSON_SPEECHES':
+				return $this->getPersonOut();
+			break;
 			default:
 				return "error: unknown mvData function: <b>{$this->magicTypeKey}</b> <br>";
 			break;
 		}
+	}
+	function getPersonOut(){
+		if($this->params['person']!=''){
+			$person_name = $this->params['person'];
+		}else{
+			global $wgTitle;
+			$person_name = $wgTitle->getText();
+		}
+		//run the search and return the results: 
+		//set up data request:
+		$ms = new MV_SpecialMediaSearch();
+		$ms->filters[] = array ( 'a' => 'and', 't' => 'spoken_by','v' =>$person_name );
+		$ms->doSearch();
+		return $ms->getUnifiedResultsHTML($show_sidebar=false);
 	}
 	function getStartTime(){
 	$start_time=0;		

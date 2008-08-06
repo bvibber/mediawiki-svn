@@ -6,7 +6,9 @@ require_once ('../../../maintenance/commandLine.inc');
 define('MV_DOWNLOAD_DIR', '/metavid/video_archive/');
 define('MV_ARCHIVE_ORG_DL', 'http://www.archive.org/download/mv_');
 
-define('MV_FLV_LOC', '/var/www/MvFlv.php');
+
+//for gennerate flv metadata:
+include_once('../skins/mv_embed/flvServer/MvFlv.php');
 
 if (count($args) == 0 || isset ($options['help'])) {
 	print "
@@ -32,28 +34,32 @@ function proccess_streams($stream_name='all'){
 	while($stream = $dbr->fetchObject($result) ){		
 		$local_fl = MV_DOWNLOAD_DIR . $stream->name.'.flv';
 		$remote_fl = MV_ARCHIVE_ORG_DL . $stream->name.'/'.$stream->name.'.flv';
+		
+		if(remotefsize($remote_fl)<100000){
+			print "remote file: $remote_fl < 100k  (skipping) \n";
+			continue;  
+		}
 		//senate_proceeding_08-01-07/senate_proceeding_08-01-07.flv
 		//check local file size matches remote: 
 		if(is_file($local_fl)){
 			print "file $local_fl present";
 			if( filesize($local_fl)!=remotefsize($remote_fl)){
 				echo ' local:'. formatbytes(filesize($local_fl)). 
-						' != remote:' . formatbytes(remotefsize($remote_fl));
-				die();
+						' != remote:' . formatbytes(remotefsize($remote_fl))."\n";
+				echo 'attempting to resume: ' . "\n";
+				curldownload($remote_fl, $local_fl);				
 			}else{
 				echo ' sizes match: ' . formatbytes(filesize($local_fl)) .'='.
 						formatbytes(remotefsize($remote_fl))."\n";					
-			}			
-			//make
-			continue;			
+			}							
 		}else{
-			echo "DL it:";
-			if(!download($remote_fl, $local_fl, $stream->name)){
+			echo "DL it: $remote_fl \n";
+			if(curldownload($remote_fl, $local_fl)){
 				echo 'succesfully grabed '.$remote_fl."\n"; 
-			};
-			echo "gennerating flv metadata\n";
-			//gennerate metadata:
-			include_once(MV_FLV_LOC);
+			};			
+		}
+		if(!is_file($local_fl). META_DATA_EXT){
+			echo "gennerating flv metadata\n";		
 			$flv = new MyFLV();
 			try {
 				$flv->open( $local_fl );
@@ -65,6 +71,20 @@ function proccess_streams($stream_name='all'){
 		}
 	}
 	
+}
+function curldownload($remote_file, $local_file){
+	$pid = simple_run_background("curl -L -C - -o $local_file $remote_file");
+	print "started download with pid: $pid \n";
+	$remote_size = remotefsize($remote_file);
+	$prev_byte=0;
+	while (is_process_running($pid)) {
+		$speed =hr_bytes( (filesize($local_file) - $prev_byte)/10);
+		echo "downloaded (" .hr_bytes(filesize($local_file)).' of '. hr_bytes($remote_size). ") " . $speed. "/s \n";
+		$prev_byte= filesize($local_file);
+		clearstatcache();
+		sleep(10);
+	}
+	return true;
 }
 function download ($file_source, $file_target, $sn){
   // Preparations
@@ -85,7 +105,7 @@ function download ($file_source, $file_target, $sn){
   	}
   	$i++;
     // unable to write to file, possibly because the harddrive has filled up
-    if (fwrite($wh, fread($rh, 1024)) === FALSE) { 
+    if (fwrite($wh, fread($rh, 8192)) === FALSE) { 
     	fclose($rh); fclose($wh); return false; 
     }
   }
@@ -113,7 +133,7 @@ function formatbytes($val, $digits = 4, $mode = "SI", $bB = "B"){ //$mode == "SI
         if($p !== false && $p > $digits) $val = round($val);
         elseif($p !== false) $val = round($val, $digits-$p);
         return round($val, $digits) . " " . $symbols[$i] . $bB;
-  }
+ }
   
     function remotefsize($url) {
         //$sch = parse_url($url, PHP_URL_SCHEME);
@@ -152,6 +172,25 @@ function formatbytes($val, $digits = 4, $mode = "SI", $bB = "B"){ //$mode == "SI
             if ($ftpsize == -1) { return false; }
             return $ftpsize;
         }
-    }
+    }    
+function simple_run_background($command){
+	$PID = shell_exec("nohup $command > /dev/null & echo $!");
+	return $PID;
+}
+//Verifies if a process is running in linux
+function is_process_running($PID){
+	$ProcessState='';
+	exec("ps $PID", $ProcessState);
+	return(count($ProcessState) >= 2);
+}
+function hr_bytes($size) {
+        $a = array("B", "KB", "MB", "GB", "TB", "PB");
+        $pos = 0;        
+        while ($size >= 1024) {
+                $size /= 1024;
+                $pos++;
+        }
+        return round($size,2)." ".$a[$pos];
+}
 
 ?>

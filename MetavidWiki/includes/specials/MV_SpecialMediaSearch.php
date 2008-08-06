@@ -261,6 +261,7 @@ class MV_SpecialMediaSearch extends SpecialPage {
 				), 'filters' => serialize($this->filters)));
 			}
 		}
+				
 		$this->results = $mvIndex->doUnifiedFiltersQuery($this->filters);
 		$this->num = $mvIndex->numResults();
 		$this->numResultsFound = $mvIndex->numResultsFound();
@@ -289,7 +290,7 @@ class MV_SpecialMediaSearch extends SpecialPage {
 	function getResultsCMML() {
 
 	}
-	function getUnifiedResultsHTML() {
+	function getUnifiedResultsHTML($show_sidebar=true) {
 		global $wgUser, $wgStylePath, $wgRequest, $wgContLang;
 		$sk = $wgUser->getSkin();
 
@@ -418,7 +419,7 @@ class MV_SpecialMediaSearch extends SpecialPage {
 		$o .= '</ul>';
 		$o .= '<li class="prevnext">' . $prevnext . '</li>';
 		$o .= '</div>';
-
+		if(!$show_sidebar)return $o;
 		/*search sidebar*/
 		$perSectionCount = 3;
 		$o .= '<div id="searchSideBar">
