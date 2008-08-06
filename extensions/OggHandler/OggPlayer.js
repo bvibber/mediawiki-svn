@@ -605,7 +605,6 @@ var wgOggPlayer = {
 		    '  <param name="autoPlay" value="true"/>' +
 		    '  <param name="showStatus"  value="show"/>' +
 		    '  <param name="showSpeaker" value="false"/>' +
-			'  <param name="debug" value="4"/>' +
 		    '  <param name="statusHeight"  value="' + statusHeight + '"/>' +
 		    '</applet>';
 
