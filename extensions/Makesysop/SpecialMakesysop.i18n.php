@@ -65,6 +65,32 @@ $messages['ar'] = array(
 	'right-makesysop'          => 'جعل المستخدمين مديري نظام أو بيروقراطيين',
 );
 
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Meno25
+ */
+$messages['arz'] = array(
+	'makesysoptitle'           => 'ترقية مستخدم لمدير نظام',
+	'makesysop-desc'           => 'يعطي البيروقراطين القدرة على جعل المستخدمين مديرى نظام أو بيروقراطيين',
+	'makesysoptext'            => 'هذه الاستمارة يتم استخدامها بواسطة البيروقراطيين لتحويل المستخدمين العاديين إلى إداريين. اكتب اسم المستخدم في الصندوق و اضغط الزر لتجعل المستخدم إداريا.',
+	'makesysopname'            => 'اسم المستخدم:',
+	'makesysopsubmit'          => 'اجعل هذا المستخدم مدير نظام',
+	'makesysopok'              => '<b>مستخدم "$1" الآن مدير نظام</b>',
+	'makebureaucratok'         => '<b>مستخدم "$1" الآن بيروقراط</b>',
+	'makesysopfail'            => '<b>المستخدم "$1" لم يمكن ترقيته لمدير نظام. (هل أدخلت الاسم بشكل صحيح؟)</b>',
+	'makesysop-see-userrights' => 'انظر [[Special:Userrights]] للمزيد من الخيارات.',
+	'setbureaucratflag'        => 'ضع علم بيروقراط',
+	'rights'                   => 'صلاحيات:',
+	'set_user_rights'          => 'اضبط صلاحيات مستخدم',
+	'set_rights_fail'          => '<b>لم يتم ضبط الصلاحيات للمستخدم "$1". (هل أدخلت الاسم بصورة صحيحة؟)</b>',
+	'makesysop'                => 'منح مستخدم صلاحيات إدارية',
+	'already_sysop'            => 'هذا المستخدم إدارى بالفعل',
+	'already_bureaucrat'       => 'هذا المستخدم بيروقراط بالفعل',
+	'group-steward'            => 'مضيفون',
+	'group-steward-member'     => 'مضيف',
+	'grouppage-steward'        => '{{ns:project}}:مضيفون',
+	'right-makesysop'          => 'جعل المستخدمين مديري نظام أو بيروقراطيين',
+);
+
 /** Asturian (Asturianu)
  * @author Esbardu
  * @author SPQRobin

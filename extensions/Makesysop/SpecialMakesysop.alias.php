@@ -21,6 +21,13 @@ $aliases['ar'] = array(
     'Makesysop' => array( 'ترقية_مدير_نظام' ),
 );
 
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Meno25
+ */
+$aliases['arz'] = array(
+    'Makesysop' => array( 'ترقية_مدير_نظام' ),
+);
+
 /** Hebrew (עברית)
  * @author Rotem Liss
  */

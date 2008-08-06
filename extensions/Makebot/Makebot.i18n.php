@@ -61,6 +61,31 @@ $messages['ar'] = array(
 	'right-makebot'           => 'منح وسحب أعلام البوت',
 );
 
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Meno25
+ */
+$messages['arz'] = array(
+	'makebot'                 => 'منح أو سحب صلاحية بوت',
+	'makebot-desc'            => 'صفحة خاصة تسمح للبيروقراطيين المحليين بمنح وسحب سماحات البوت',
+	'makebot-header'          => '\'\'\'يمكن للبيروقراط المحلى استخدام هذه الصفحة لإعطاء [[مساعدة:بوت|صلاحية بوت]] لحساب مستخدم آخر.\'\'\'<br />تخفي صلاحية البوت تعديلات المستخدم من صفحة أحدث التغييرات و القوائم المماثلة، و هذا يعتبر مفيدا إلى المستخدمين الذين يقومون بتعديلات آلية. يجب أن يكون هذا تبعا للسياسات المتبعة.',
+	'makebot-username'        => 'اسم المستخدم:',
+	'makebot-search'          => 'اذهب',
+	'makebot-isbot'           => '[[User:$1|$1]] لديه صلاحية بوت.',
+	'makebot-notbot'          => 'لا يملك [[User:$1|$1]] صلاحية بوت.',
+	'makebot-privileged'      => 'يملك [[User:$1|$1]] صلاحية [[Special:Listadmins|إداري أو بيروقراط]]، و لا يمكن منحه صلاحية بوت.',
+	'makebot-change'          => 'تغيير الحالة:',
+	'makebot-grant'           => 'منح',
+	'makebot-revoke'          => 'سحب',
+	'makebot-comment'         => 'تعليق:',
+	'makebot-granted'         => '[[User:$1|$1]] لديه الآن صلاحية بوت.',
+	'makebot-revoked'         => 'فقد [[User:$1|$1]] صلاحية البوت.',
+	'makebot-logpage'         => 'سجل صلاحيات البوت',
+	'makebot-logpagetext'     => 'هذا سجل لتغييرات صلاحية [[{{MediaWiki:Grouppage-bot}}|البوت]].',
+	'makebot-logentrygrant'   => 'منح صلاحية بوت إلى [[$1]]',
+	'makebot-logentryrevoke'  => 'سحب صلاحية بوت من [[$1]]',
+	'right-makebot'           => 'منح وسحب أعلام البوت',
+);
+
 /** Asturian (Asturianu)
  * @author SPQRobin
  */
