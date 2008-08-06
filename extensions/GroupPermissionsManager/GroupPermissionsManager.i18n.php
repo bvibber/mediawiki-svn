@@ -227,7 +227,7 @@ $messages['de'] = array(
  */
 $messages['el'] = array(
 	'grouppermissions-comment' => 'Σχόλιο:',
-	'grouppermissions-sp-save' => 'Σώστε',
+	'grouppermissions-sp-save' => 'Αποθηκεύστε',
 );
 
 /** Esperanto (Esperanto)

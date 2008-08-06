@@ -193,7 +193,6 @@ U sal na hierdie bediener aangestuur word binne 20 sekondes. [$1 Kliek hier] om 
 
 /** Aragonese (Aragonés)
  * @author Juanpabl
- * @author Siebrand
  */
 $messages['an'] = array(
 	'boardvote'                => "Elezión d'o Consello d'Almenistrazión d'a Fundazión Wikimedia",
@@ -217,7 +216,7 @@ fendo serbir o formulario d'abaixo. Siñale por fabor as caxas amán de cada
 candidato que quiera aprebar</p>",
 	'boardvote_entered'        => "Grazias, o suyo boto s'ha rechistrato.
 
-Si lo deseya, puede alzar os siguients detalles. O suyo rechistro de boto ye:
+Si lo deseya, puede rechistrar os siguients detalles. O suyo rechistro de boto ye:
 
 <pre>$1</pre>
 
@@ -225,11 +224,11 @@ S'ha zifrato con a clau publica d'os Almenistradors d'a Elezión:
 
 <pre>$2</pre>
 
-A bersión zifrata resultant ye a que sigue. S'amuestra publicament en [[Special:Boardvote/dump]].
+A bersión zifrata resultant ye a que sigue. [[Special:Boardvote/dump|S'amostrará publicament]].
 
 <pre>$3</pre>
 
-[[Special:Boardvote/entry|Enta zaga]]",
+[[Special:Boardvote/entry|Ir entazaga]]",
 	'boardvote_invalidentered' => "<p><strong>Error</strong>: a preferenzia enta un candidato ha d'esprisar-se como un entero positibo (1, 2, 3, ....), u deixar-se en blanco.</p>",
 	'boardvote_nosession'      => "No s'ha puesto determinar o suyo identificador d'usuario Wikimedia. Por fabor, dentre ta una wiki an que pueda botar y baiga ta <nowiki>[[Special:Boardvote]]</nowiki>. Ta poder botar ha de tener una cuenta con más de $1 contrebuzions antes d'o $2, y aber feito más de $3 ediziones entre $4 y $5.",
 	'boardvote_notloggedin'    => "No ha enzetato garra sesión. Ta poder botar, ha d'aber feito más de $1 contrebuzions antes d'o $2, y más de $3 edizions entre $4 y $5.",
@@ -376,6 +375,13 @@ $1 للبيانات المشفرة.</p>',
  * @author Ramsis II
  */
 $messages['arz'] = array(
+	'boardvote_nosession'    => 'اسم اليوزر بتاعك على الويكيميديا ما قدرناش نعرفه.
+لو سمحت تسجل دخولك على الويكي اللي انت مؤهل فيه للتصويت، و بعدين روح لـ<nowiki>[[Special:Boardvote]]</nowiki>.
+لازم تستعمل حساب عامل على الاقل $1 مشاركة قبل $2،و عامل على الاقل $3 مشاركة بين $4 و$5.',
+	'boardvote_notloggedin'  => 'انت ما سجلتش دخولك.
+علشان تقدر تصوت، لازم تسجل دخولك بحساب عامل على للاقل $1 مشاركة قبل $2, و عامل على الاقل $3 مشاركة بين $4 و $5.',
+	'boardvote_notqualified' => 'انت مش مؤهل انك تصوت في الانتخابات دي.
+لازم تكون على الاقل عملت $1 مشاركة قبل $2،و تكون على الاقل عملت $3 مشاركة بين $4 و  $5.',
 	'boardvote_novotes'      => 'لسه ما فيش حد صوت',
 	'boardvote_time'         => 'الوقت',
 	'boardvote_user'         => 'يوزر',
@@ -398,8 +404,16 @@ $1 للبيانات المتشفرة.</p>',
 	'group-boardvote'        => 'اداريين انتخابات المجلس',
 	'group-boardvote-member' => 'ادارى انتخابات المجلس',
 	'grouppage-boardvote'    => '{{ns:project}}:إداري انتخابات البورد',
+	'boardvote_blocked'      => 'انت اتمنعت في الويكي اللي انت مسجل فيه.
+اليوزرز الممنوعين مش مسموح ليهم يصوتو.',
+	'boardvote_bot'          => 'انتا متعلم عليك انك بوت في الويكي اللى انت مسجل فيه
+حسابات البوت مش مسموح ليها تصوت',
 	'boardvote_welcome'      => "اهلا '''$1'''!",
 	'go_to_board_vote'       => 'انتخابات ويكيميديا بورد 2008',
+	'boardvote_redirecting'  => 'علشان نحسن السرية و الشفافية،احنا بنجري الانتخابات على سيرفر مستقل من بره.
+
+انت ح تتحول للسيرفر دا في خلال 20 سانية.[$1 دوس هنا] للذهاب هناك الآعلشان تروح هناك دلوقتى.
+يمكن يتعرض تحذير امني حوالين رسالة مش ممضي عليها.',
 	'right-boardvote'        => 'إدارة الانتخابات',
 );
 
@@ -2868,8 +2882,8 @@ Non è permesso votare alle utenze con lo status di bot.',
  * @author Broad-Sky
  * @author Kzhr
  * @author Marine-Blue
- * @author Siebrand
  * @author Iwai.masaharu
+ * @author Aotake
  */
 $messages['ja'] = array(
 	'boardvote'              => 'ウィキメディア財団 理事選挙',
@@ -2892,15 +2906,15 @@ $messages['ja'] = array(
 	'boardvote_intro_change' => '<p>あなたは既に投票済みです。投票内容を変更する場合は、以下のフォームをお書きかえください。候補者を、適格であると考える順番に順位付けをしてください（もっとも好ましい候補者により小さい数を付けてください）。同じ数を複数の候補者に与えることもできますし、順位を付けないままにすることもできます。</p>',
 	'boardvote_entered'      => 'ありがとうございます、あなたの投票は正常に記録されました。
 
-あなたが望むなら、以下の詳細を記録しておくとよいでしょう。あなたの投票記録は:
+投票の控えをご希望の方は以下の情報をお手元に控えてください。あなたの投票記録は以下のとおりです。
 
 <pre>$1</pre>
 
-これを、選挙管理委員会の公開鍵を用いて暗号化します:
+この記録は選挙管理委員会の公開鍵を用いて暗号化されています。
 
 <pre>$2</pre>
 
-暗号化された投票データは以下のとおりです。これは[[Special:Boardvote/dump|暗号化された投票データのダンプ]]から一般に公開されます。
+暗号化された投票データは以下のとおりです。このデータが[[Special:Boardvote/dump|一般に公開]]されます。
 
 <pre>$3</pre>
 
@@ -2930,6 +2944,7 @@ $messages['ja'] = array(
 	'group-boardvote-member' => '選挙管理委員',
 	'grouppage-boardvote'    => '{{ns:project}}:選挙管理委員',
 	'boardvote_blocked'      => '申し訳ありません、あなたは登録されているウィキでブロック対象となっています。ブロックされた利用者は投票することができません。',
+	'boardvote_bot'          => 'あなたは登録ウィキにおいてボットフラグを付与されています。ボットアカウントには投票権がありません。',
 	'boardvote_welcome'      => "'''$1'''さん ようこそ!",
 	'go_to_board_vote'       => 'ウィキメディア財団総選挙2008',
 	'boardvote_redirecting'  => 'セキュリティと透明性を確保するため、外部の独立したサーバ上で投票を行っています。

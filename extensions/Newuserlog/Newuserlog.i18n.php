@@ -45,13 +45,11 @@ $messages['am'] = array(
 
 /** Aragonese (Aragonés)
  * @author Juanpabl
- * @author SPQRobin
- * @author Jon Harald Søby
  */
 $messages['an'] = array(
 	'newuserlogpage'              => 'Rechistro de nuebos usuarios',
 	'newuserlogpagetext'          => "Isto ye un rechistro de creyazión d'usuarios.",
-	'newuserlog-desc'             => 'Adibe un [[Special:Log/newusers|rechistro de creyazión de cuentas]] ta [[Special:Log]]',
+	'newuserlog-desc'             => 'Adibe un [[Special:Log/newusers|rechistro de creyazión de cuentas]]',
 	'newuserlog-byemail'          => 'Palabra de paso nimbiata por correu electronico',
 	'newuserlog-create-entry'     => 'Nuebo usuario',
 	'newuserlog-create2-entry'    => "S'ha creyato una cuenta ta $1",

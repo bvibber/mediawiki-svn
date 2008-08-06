@@ -350,6 +350,13 @@ $messages['mr'] = array(
 	'importfreeimages_returntoform'          => "किंवा, तुमच्या शोध निकालांकडे परत जाण्यासाठी <a href='$1'>इथे</a> टिचकी द्या",
 );
 
+/** Maltese (Malti)
+ * @author Roderick Mallia
+ */
+$messages['mt'] = array(
+	'importfreeimages_next' => '$1 li jmiss',
+);
+
 /** Nahuatl (Nahuatl)
  * @author Fluence
  */

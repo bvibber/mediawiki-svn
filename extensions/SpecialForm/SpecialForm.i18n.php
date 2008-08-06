@@ -171,7 +171,7 @@ $messages['de'] = array(
  * @author Consta
  */
 $messages['el'] = array(
-	'formsave' => 'Σώστε',
+	'formsave' => 'Αποθηκεύστε',
 );
 
 /** Esperanto (Esperanto)

@@ -982,6 +982,8 @@ $messages['pms'] = array(
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */
 $messages['ps'] = array(
+	'inputbox-desc'  => 'د پخوا نه د HTML څرګند شويو فورمو کارولو اجازه ورکوي',
+	'tryexact'       => 'کټ مټ انډول يې وآزمويه',
 	'searchfulltext' => 'بشپړ متن پلټل',
 	'createarticle'  => 'نوې ليکنه پيلول',
 );

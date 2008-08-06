@@ -80,9 +80,10 @@ $messages['gl'] = array(
 
 /** Hebrew (עברית)
  * @author Agbad
+ * @author Rotemliss
  */
 $messages['he'] = array(
-	'newusermessage-desc' => 'הוספת [[MediaWiki:NewUserMessage|הודעה]] בדפי השיחה של משתמשים חדשים שנוצרו',
+	'newusermessage-desc' => 'הוספת [[MediaWiki:NewUserMessage|הודעה]] בדפי השיחה של משתמשים חדשים',
 );
 
 /** Hindi (हिन्दी)

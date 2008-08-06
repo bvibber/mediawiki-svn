@@ -134,12 +134,13 @@ $messages['gl'] = array(
 
 /** Hebrew (עברית)
  * @author Agbad
+ * @author Rotemliss
  */
 $messages['he'] = array(
 	'whoiswatching'                => 'מי עוקב אחרי דף הוויקי',
 	'specialwhoiswatchingthepage'  => 'מי עוקב אחרי %s',
 	'specialwhoiswatchingaddusers' => 'הוספת משתמשים למעקב אחרי דף זה',
-	'specialwhoiswatchingaddbtn'   => 'הוספת משתמשים נבחרים',
+	'specialwhoiswatchingaddbtn'   => 'הוספת המשתמשים שנבחרו',
 );
 
 /** Croatian (Hrvatski)

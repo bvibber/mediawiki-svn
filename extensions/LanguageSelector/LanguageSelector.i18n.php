@@ -171,11 +171,12 @@ $messages['gv'] = array(
 
 /** Hebrew (עברית)
  * @author Agbad
+ * @author Rotemliss
  */
 $messages['he'] = array(
 	'languageselector'         => 'שפה',
-	'languageselector-desc'    => 'בוחר שפה בכל דף, גם למבקרים',
-	'languageselector-setlang' => 'בחר',
+	'languageselector-desc'    => 'אפשרות בחירת שפה בכל דף, גם למבקרים',
+	'languageselector-setlang' => 'בחירה',
 );
 
 /** Hindi (हिन्दी)

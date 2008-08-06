@@ -104,8 +104,8 @@ Abría d\'<a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_dow
 	'ogg-no-xiphqt'           => 'No puedo trobar o component XiphQT ta QuickTime.
 QuickTime no puede reproduzir archibos ogg sin este component.
 Puede <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">escargar XiphQT</a> u trigar un atro reproductor.',
-	'ogg-player-videoElement' => 'elemento <video>',
-	'ogg-player-oggPlugin'    => 'Plugin ogg',
+	'ogg-player-videoElement' => "Soporte natibo d'o nabegador",
+	'ogg-player-oggPlugin'    => "Plugin d'o nabegador",
 	'ogg-player-thumbnail'    => 'Nomás imachen fixa',
 	'ogg-player-soundthumb'   => 'Garra reproductor',
 	'ogg-player-selected'     => '(trigato)',
@@ -139,8 +139,8 @@ $messages['ar'] = array(
 	'ogg-no-xiphqt'                => 'لا يبدو أنك تملك مكون XiphQT لكويك تايم.
 كويك تايم لا يمكنه عرض ملفات Ogg بدون هذا المكون.
 من فضلك <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">حمل XiphQT</a> أو اختر برنامجا آخر.',
-	'ogg-player-videoElement'      => '<video> عنصر',
-	'ogg-player-oggPlugin'         => 'إضافة Ogg',
+	'ogg-player-videoElement'      => 'دعم متصفح مدمج',
+	'ogg-player-oggPlugin'         => 'إضافة متصفح',
 	'ogg-player-cortado'           => 'كور تادو (جافا)',
 	'ogg-player-vlc-mozilla'       => 'في إل سي',
 	'ogg-player-vlc-activex'       => 'في إل سي (أكتيف إكس)',
@@ -161,9 +161,11 @@ $messages['ar'] = array(
  * @author Ramsis II
  */
 $messages['arz'] = array(
-	'ogg-play'                     => 'عرض',
+	'ogg-play'                     => 'شغل',
 	'ogg-pause'                    => ' توقيف مؤقت',
 	'ogg-stop'                     => ' توقيف',
+	'ogg-play-video'               => 'شغل الفيديو',
+	'ogg-play-sound'               => 'شغل الصوت',
 	'ogg-player-videoElement'      => '<video> عنصر',
 	'ogg-player-oggPlugin'         => 'تدخيل ogg',
 	'ogg-player-cortado'           => 'كورتادو (جافا)',
@@ -198,8 +200,8 @@ $messages['ast'] = array(
 	'ogg-no-player'           => 'Sentímoslo, el to sistema nun paez tener nengún de los reproductores soportaos. Por favor <a
 href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">descarga un reproductor</a>.',
 	'ogg-no-xiphqt'           => 'Paez que nun tienes el componente XiphQT pa QuickTime. QuickTime nun pue reproducr archivos ogg ensin esti componente. Por favor <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">descarga XiphQT</a> o escueyi otru reproductor.',
-	'ogg-player-videoElement' => 'elementu <video>',
-	'ogg-player-oggPlugin'    => 'Plugin ogg',
+	'ogg-player-videoElement' => 'Soporte nativu del navegador',
+	'ogg-player-oggPlugin'    => 'Plugin del navegador',
 	'ogg-player-thumbnail'    => 'Namái imaxe en pausa',
 	'ogg-player-soundthumb'   => 'Nun hai reproductor',
 	'ogg-player-selected'     => '(seleicionáu)',
@@ -444,8 +446,8 @@ $messages['de'] = array(
 	'ogg-play-sound'          => 'Audio abspielen',
 	'ogg-no-player'           => 'Dein System scheint über keine Abspielsoftware zu verfügen. Bitte installiere <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">eine Abspielsoftware</a>.',
 	'ogg-no-xiphqt'           => 'Dein System scheint nicht über die XiphQT-Komponente für QuickTime zu verfügen. QuickTime kann ohne diese Komponente keine Ogg-Dateien abspielen.Bitte <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">lade XiphQT</a> oder wähle eine andere Abspielsoftware.',
-	'ogg-player-videoElement' => '<video>-Element',
-	'ogg-player-oggPlugin'    => 'Ogg-Plugin',
+	'ogg-player-videoElement' => 'Vorhandene Browserunterstützung',
+	'ogg-player-oggPlugin'    => 'Browser-Plugin',
 	'ogg-player-thumbnail'    => 'Zeige Vorschaubild',
 	'ogg-player-soundthumb'   => 'Kein Player',
 	'ogg-player-selected'     => '(ausgewählt)',
@@ -1488,8 +1490,8 @@ $messages['ms'] = array(
 	'ogg-play-sound'          => 'Main bunyi',
 	'ogg-no-player'           => 'Maaf, sistem anda tidak mempunyai perisian pemain yang disokong. Sila <a href=\\"http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download\\">muat turun sebuah pemain</a>.',
 	'ogg-no-xiphqt'           => 'Anda tidak mempunyai komponen XiphQT untuk QuickTime. QuickTime tidak boleh memainkan fail Ogg tanpa komponen ini. Sila <a href=\\"http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download\\">muat turun XiphQT</a> atau pilih pemain lain.',
-	'ogg-player-videoElement' => 'unsur <video>',
-	'ogg-player-oggPlugin'    => 'Pemalam Ogg',
+	'ogg-player-videoElement' => 'Sokongan dalaman pelayar web',
+	'ogg-player-oggPlugin'    => 'Pemalam untuk pelayar web',
 	'ogg-player-thumbnail'    => 'Imej pegun sahaja',
 	'ogg-player-soundthumb'   => 'Tiada pemain',
 	'ogg-player-selected'     => '(dipilih)',
@@ -1520,8 +1522,8 @@ $messages['nds'] = array(
 	'ogg-play-sound'          => 'Toondatei afspelen',
 	'ogg-no-player'           => 'Süht so ut, as wenn dien Reekner keen passlichen Afspeler hett. Du kannst en <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">Afspeler dalladen</a>.',
 	'ogg-no-xiphqt'           => 'Süht so ut, as wenn dien Reekner de XiphQT-Kumponent för QuickTime nich hett. Ahn dat Ding kann QuickTime keen Ogg-Datein afspelen. Du kannst <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">XiphQT dalladen</a> oder en annern Afspeler utwählen.',
-	'ogg-player-videoElement' => '<video>-Element',
-	'ogg-player-oggPlugin'    => 'Ogg-Plugin',
+	'ogg-player-videoElement' => 'Standard-Ünnerstüttung in’n Browser',
+	'ogg-player-oggPlugin'    => 'Browser-Plugin',
 	'ogg-player-thumbnail'    => 'blot Standbild',
 	'ogg-player-soundthumb'   => 'Keen Afspeler',
 	'ogg-player-selected'     => '(utwählt)',
@@ -1616,8 +1618,8 @@ $messages['no'] = array(
 	'ogg-play-sound'          => 'Spill av lyd',
 	'ogg-no-player'           => 'Beklager, systemet ditt har ingen medieavspillere som støtter filformatet. Vennligst <a href="http://mediawiki.org/wiki/Extension:OggHandler/Client_download">last ned en avspiller</a> som støtter formatet.',
 	'ogg-no-xiphqt'           => 'Du har ingen XiphQT-komponent for QuickTime. QuickTime kan ikke spille Ogg-filer uten denne komponenten. <a href="http://mediawiki.org/wiki/Extension:OggHandler/Client_download">last ned XiphQT</a> eller velg en annen medieavspiller.',
-	'ogg-player-videoElement' => '<video>-element',
-	'ogg-player-oggPlugin'    => 'Ogg-plugin',
+	'ogg-player-videoElement' => 'Innebygd nettleserstøtte',
+	'ogg-player-oggPlugin'    => 'Programtillegg for nettleser',
 	'ogg-player-thumbnail'    => 'Kun stillbilder',
 	'ogg-player-soundthumb'   => 'Ingen medieavspiller',
 	'ogg-player-selected'     => '(valgt)',
@@ -2103,7 +2105,7 @@ $messages['te'] = array(
 	'ogg-desc-link'           => 'ఈ ఫైలు గురించి',
 );
 
-/** Tajik (Cyrillic) (Тоҷикӣ/tojikī (Cyrillic))
+/** Tajik (Cyrillic) (Тоҷикӣ (Cyrillic))
  * @author Ibrahim
  */
 $messages['tg-cyrl'] = array(
@@ -2196,7 +2198,7 @@ $messages['uk'] = array(
 QuickTime не може відтворювати ogg-файли без цього компонента.
 Будь ласка, <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">завантажте XiphQT</a> або оберіть інший програвач.',
 	'ogg-player-videoElement' => 'елемент <video>',
-	'ogg-player-oggPlugin'    => 'Ogg-модуль',
+	'ogg-player-oggPlugin'    => 'Плаґін для браузера',
 	'ogg-player-thumbnail'    => 'Тільки нерухоме зображення',
 	'ogg-player-soundthumb'   => 'Нема програвача',
 	'ogg-player-selected'     => '(обраний)',

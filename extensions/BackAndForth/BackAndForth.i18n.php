@@ -383,6 +383,13 @@ $messages['mr'] = array(
 	'backforth-prev' => 'मागे($1)',
 );
 
+/** Maltese (Malti)
+ * @author Roderick Mallia
+ */
+$messages['mt'] = array(
+	'backforth-prev' => "Ta' qabel ($1)",
+);
+
 /** Nahuatl (Nahuatl)
  * @author Fluence
  */

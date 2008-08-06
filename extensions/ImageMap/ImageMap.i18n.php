@@ -41,6 +41,7 @@ $messages['an'] = array(
 	'imagemap_desc'               => "Premite mapas d'imachens punchables en o client fendo serbir a etiqueta <tt><nowiki><imagemap></nowiki></tt>",
 	'imagemap_no_image'           => "Error: ha d'endicar una imachen a primer ringlera",
 	'imagemap_invalid_image'      => 'Error: a imachen no ye conforme u no esiste',
+	'imagemap_bad_image'          => 'Error: a imachen ye en a lista negra ta ista pachina',
 	'imagemap_no_link'            => "Error: no s'ha trobato garra binclo conforme á la fin d'a ringlera $1",
 	'imagemap_invalid_title'      => "Error: títol no conforme en o binclo d'a ringlera $1",
 	'imagemap_missing_coord'      => "Error: No bi'n ha prous de coordinadas ta definir a forma en a ringlera $1",

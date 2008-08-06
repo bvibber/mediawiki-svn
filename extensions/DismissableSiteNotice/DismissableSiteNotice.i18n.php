@@ -45,6 +45,13 @@ $messages['ar'] = array(
 	'sitenotice-desc'  => 'يسمح للمستخدمين بإغلاق إعلان الموقع',
 );
 
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Ramsis II
+ */
+$messages['arz'] = array(
+	'sitenotice_close' => 'إقفل',
+);
+
 /** Assamese (অসমীয়া)
  * @author Rajuonline
  */

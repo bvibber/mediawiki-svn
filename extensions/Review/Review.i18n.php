@@ -554,6 +554,7 @@ $messages['id'] = array(
  */
 $messages['it'] = array(
 	'review_user_details_link' => '(dettagli)',
+	'review_comment'           => 'Commento',
 );
 
 /** Javanese (Basa Jawa)
