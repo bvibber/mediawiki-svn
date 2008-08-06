@@ -8,7 +8,7 @@ var wgOggPlayer = {
 
 	// List of players in order of preference
 	// Downpreffed VLC because it crashes my browser all the damn time -- TS
-	'players': ['cortado', 'quicktime-mozilla', 'quicktime-activex', 'vlc-mozilla', 'vlc-activex', 'totem', 'kmplayer', 'kaffeine', 'oggPlugin', 'videoElement'],
+	'players': ['cortado', 'quicktime-mozilla', 'quicktime-activex', 'vlc-mozilla', 'vlc-activex', 'totem', 'kmplayer', 'kaffeine', 'mplayerplug-in', 'oggPlugin', 'videoElement'],
 
 	// Client support table
 	'clientSupports': { 'thumbnail' : true },
@@ -22,7 +22,8 @@ var wgOggPlayer = {
 		'oggPlugin': 'application/ogg',
 		'totem': 'application/ogg',
 		'kmplayer': 'application/ogg',
-		'kaffeine': 'application/ogg'
+		'kaffeine': 'application/ogg',
+		'mplayerplug-in': 'application/ogg'
 	},
 
 	'savedThumbs': {},
@@ -31,7 +32,8 @@ var wgOggPlayer = {
 	'defaultMsg' : {
 		'ogg-player-totem': 'Totem',
 		'ogg-player-kmplayer': 'KMPlayer',
-		'ogg-player-kaffeine': 'Kaffeine'
+		'ogg-player-kaffeine': 'Kaffeine',
+		'ogg-player-mplayerplug-in': 'mplayerplug-in'
 	},
 
 	// Configuration from MW
@@ -91,6 +93,7 @@ var wgOggPlayer = {
 			case 'kaffeine':
 			case 'totem':
 			case 'kmplayer':
+			case 'mplayerplug-in':
 				this.embedOggPlugin( elt, params, player );
 				break;
 			case 'vlc-mozilla':
@@ -233,6 +236,11 @@ var wgOggPlayer = {
 			} else if ( pluginFilename.indexOf( 'kaffeineplugin' ) > -1 ) {
 				// Kaffeine
 				player = 'kaffeine';
+			} else if ( pluginName.indexOf( 'mplayerplug-in' ) > -1 ) {
+				player = 'mplayerplug-in';
+			} else if ( pluginFilename.indexOf( 'mplayerplug-in-qt' ) > -1 ) {
+				// MPlayer fake QuickTime
+				player = '';
 			} else if ( pluginName.indexOf( 'QuickTime Plug-in' ) > -1 ) {
 				// Note: Totem and KMPlayer also use this pluginName, which is 
 				// why we check for them first

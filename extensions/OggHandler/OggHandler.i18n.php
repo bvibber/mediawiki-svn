@@ -41,6 +41,7 @@ Please <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_downlo
 	'ogg-player-totem'     => 'Totem', # only translate this message to other languages if you have to change it
 	'ogg-player-kmplayer'  => 'KMPlayer', # only translate this message to other languages if you have to change it
 	'ogg-player-kaffeine'  => 'Kaffeine', # only translate this message to other languages if you have to change it
+	'ogg-player-mplayerplug-in' => 'mplayerplug-in', # only translate this message to other languages if you have to change it
 	'ogg-player-thumbnail' => 'Still image only',
 	'ogg-player-soundthumb' => 'No player',
 	'ogg-player-selected'  => '(selected)',
