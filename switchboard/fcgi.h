@@ -26,6 +26,7 @@ namespace fcgi {
 			params = 4,
 			stdin_ = 5,
 			stdout_ = 6,
+			stderr_ = 7,
 			data = 8,
 			get_values = 9,
 			get_values_result = 10,

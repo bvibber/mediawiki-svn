@@ -20,6 +20,7 @@ using std::strerror;	/* for asio */
 #include	"fcgi_application.h"
 #include	"fcgi_server_connection.h"
 #include	"fcgi_cgi.h"
+#include	"fcgi_response.h"
 
 using asio::ip::tcp;
 using boost::format;
@@ -71,8 +72,31 @@ fcgi_application::record_from_server(fcgi::recordp record)
 			} catch (std::exception &e) {
 				LOG4CXX_DEBUG(logger, format( "error creating fcgi_cgi: %s")
 						% e.what());
-				if (!server_.expired())
+				if (!server_.expired()) {
+					fcgi_response resp(request_id_);
+					resp.add_stdout(boost::io::str(boost::format(
+"Status: 500 Internal server error\r\n"
+"Content-Type: text/html;charset=UTF-8\r\n"
+"\r\n"
+"<html><head><title>switchboard error</title></head>\r\n"
+"<body><p>hi,</p>\r\n"
+"<p>i am the PHP switchboard, and i handle PHP requests (like yours) on this server.\r\n"
+"i'm afraid i was unable to handle your request.  when i tried, the following\r\n"
+"error occurred: <tt>%1%</tt>.</p>\r\n"
+"<p>please try your request again in a few minutes.  if it still doesn't work,\r\n"
+"you should contact the server administrator and inform him of the problem.</p>\r\n"
+"<p>regards,<br> the PHP switchboard.</p>\r\n"
+					) % e.what()));
+					resp.end();
+
+					std::vector<fcgi::record> const &recs = resp.as_vector();
+					for (int i = 0; i < recs.size(); ++i) {
+						server_.lock()->record_to_server(
+							fcgi::recordp(new fcgi::record(recs[i])));
+					}
+
 					server_.lock()->destroy(request_id_);
+				}
 				return;
 			}
 

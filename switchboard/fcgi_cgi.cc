@@ -144,7 +144,7 @@ fcgi_cgi::start(boost::function<void (void)> func)
 		boost::bind(&fcgi_cgi::process_ready, 
 			shared_from_this(), func, _1)))
 	{
-		throw creation_failure("too many queued processes for users");
+		throw creation_failure("too many queued requests for this user");
 	}
 }
 
