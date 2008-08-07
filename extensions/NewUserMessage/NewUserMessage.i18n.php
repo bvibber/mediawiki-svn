@@ -21,21 +21,21 @@ $messages['en'] = array(
  * @author Naudefj
  */
 $messages['af'] = array(
-	'newusermessage-desc' => "Plaas 'n [[Template:NewUserMessage|boodskap]] op alle nuwe gebruikers se besprekingsbladsye",
+	'newusermessage-desc' => "Plaas 'n boodskap op alle nuwe gebruikers se besprekingsbladsye",
 );
 
 /** Arabic (العربية)
  * @author Meno25
  */
 $messages['ar'] = array(
-	'newusermessage-desc' => 'يضيف [[MediaWiki:NewUserMessage|رسالة]] إلى صفحات نقاش المستخدمين الجدد',
+	'newusermessage-desc' => 'يضيف رسالة إلى صفحات نقاش المستخدمين الجدد',
 );
 
 /** Bulgarian (Български)
  * @author DCLXVI
  */
 $messages['bg'] = array(
-	'newusermessage-desc' => 'Добавя [[MediaWiki:NewUserMessage|съобщение]] на беседата на новорегистрираните потребители',
+	'newusermessage-desc' => 'Добавя съобщение на беседата на новорегистрираните потребители',
 );
 
 /** Czech (Česky)
@@ -43,7 +43,7 @@ $messages['bg'] = array(
  * @author Li-sung
  */
 $messages['cs'] = array(
-	'newusermessage-desc' => 'Přidává [[MediaWiki:NewUserMessage|zprávu]] na diskusní stránky nově vytvořených uživatelů',
+	'newusermessage-desc' => 'Přidává zprávu na diskusní stránky nově vytvořených uživatelů',
 );
 
 /** German (Deutsch)
@@ -51,34 +51,35 @@ $messages['cs'] = array(
  */
 $messages['de'] = array(
 	'newusermessage-desc' => 'Fügt eine [[MediaWiki:NewUserMessage|Nachricht]] neu angelegten Benutzerdiskussionsseiten hinzu',
+	'newuseredit-summary' => 'Begrüßt einen neuen Benutzer auf seiner Diskussionsseite mit einer [[{{MediaWiki:Newusermessage-template}}|Willkommensnachricht]]',
 );
 
 /** Lower Sorbian (Dolnoserbski)
  * @author Michawiki
  */
 $messages['dsb'] = array(
-	'newusermessage-desc' => '[[MediaWiki:NewUserMessage|Powěsć]] k nowo napóranym wužywarskim diskusijnym bokam pśidaś',
+	'newusermessage-desc' => 'Powěsć k nowo napóranym wužywarskim diskusijnym bokam pśidaś',
 );
 
 /** Esperanto (Esperanto)
  * @author Yekrats
  */
 $messages['eo'] = array(
-	'newusermessage-desc' => 'Aldonu [[MediaWiki:NewUserMessage|mesaĝon]] al diskuto-paĝo de nove kreita uzanto',
+	'newusermessage-desc' => 'Aldonu mesaĝon al diskuto-paĝo de nove kreita uzanto',
 );
 
 /** French (Français)
  * @author Grondin
  */
 $messages['fr'] = array(
-	'newusermessage-desc' => "Ajoute un [[MediaWiki:NewUserMessage|message]] dans la page de discussion d'un nouvel utilisateur.",
+	'newusermessage-desc' => "Ajoute un message dans la page de discussion d'un nouvel utilisateur.",
 );
 
 /** Galician (Galego)
  * @author Toliño
  */
 $messages['gl'] = array(
-	'newusermessage-desc' => 'Engade unha [[MediaWiki:NewUserMessage|mensaxe]] ás páxinas de conversa dos usuarios novos',
+	'newusermessage-desc' => 'Engade unha mensaxe ás páxinas de conversa dos usuarios novos',
 );
 
 /** Hebrew (עברית)
@@ -86,84 +87,85 @@ $messages['gl'] = array(
  * @author Rotemliss
  */
 $messages['he'] = array(
-	'newusermessage-desc' => 'הוספת [[MediaWiki:NewUserMessage|הודעה]] בדפי השיחה של משתמשים חדשים',
+	'newusermessage-desc' => 'הוספת הודעה בדפי השיחה של משתמשים חדשים',
 );
 
 /** Hindi (हिन्दी)
  * @author Kaustubh
  */
 $messages['hi'] = array(
-	'newusermessage-desc' => 'नये सदस्योंके वार्ता पृष्ठपर एक [[MediaWiki:NewUserMessage|संदेश]] देता हैं',
+	'newusermessage-desc' => 'नये सदस्योंके वार्ता पृष्ठपर एक संदेश देता हैं',
 );
 
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */
 $messages['hsb'] = array(
-	'newusermessage-desc' => '[[MediaWiki:NewUserMessage|Powěsć]] nowo wutworjenym wužiwarskim diskusijnym stronam přidać',
+	'newusermessage-desc' => 'Powěsć nowo wutworjenym wužiwarskim diskusijnym stronam přidać',
 );
 
 /** Indonesian (Bahasa Indonesia)
  * @author Rex
  */
 $messages['id'] = array(
-	'newusermessage-desc' => 'Menambahkan sebuah [[MediaWiki:NewUserMessage|pesan]] di halaman pembicaraan pengguna baru',
+	'newusermessage-desc' => 'Menambahkan sebuah pesan di halaman pembicaraan pengguna baru',
 );
 
 /** Italian (Italiano)
  * @author Darth Kule
  */
 $messages['it'] = array(
-	'newusermessage-desc' => 'Aggiunge un [[MediaWiki:NewUserMessage|messaggio]] nella pagina di discussione di un utente appena registrato',
+	'newusermessage-desc' => 'Aggiunge un messaggio nella pagina di discussione di un utente appena registrato',
+	'newuseredit-summary' => 'Aggiungo [[{{MediaWiki:Newusermessage-template}}|messaggio di benvenuto]] alla pagina di discussione del nuovo utente',
 );
 
 /** Japanese (日本語)
  * @author JtFuruhata
  */
 $messages['ja'] = array(
-	'newusermessage-desc' => '新規登録利用者のトークページに[[MediaWiki:NewUserMessage|メッセージ]]を書き込む',
+	'newusermessage-desc' => '新規登録利用者のトークページにメッセージを書き込む',
 );
 
 /** Khmer (ភាសាខ្មែរ)
  * @author Chhorran
  */
 $messages['km'] = array(
-	'newusermessage-desc' => 'បន្ថែម [[MediaWiki:NewUserMessage|មួយ សារ]] ក្នុង ទំព័រពិភាក្សា របស់ អ្នកប្រើប្រាស់ថ្មី',
+	'newusermessage-desc' => 'បន្ថែម មួយ សារ ក្នុង ទំព័រពិភាក្សា របស់ អ្នកប្រើប្រាស់ថ្មី',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
 $messages['lb'] = array(
-	'newusermessage-desc' => "Ee [[MediaWiki:NewUserMessage|Message]] op d'Diskussiounssäite vun neie Benotzer setzen",
+	'newusermessage-desc' => "Ee Message op d'Diskussiounssäite vun neie Benotzer setzen",
 );
 
 /** Lithuanian (Lietuvių)
  * @author Hugo.arg
  */
 $messages['lt'] = array(
-	'newusermessage-desc' => 'Prideda [[MediaWiki:NewUserMessage|pranešimą]] į naujai sukurtų naudotojų aptarimų puslapius.',
+	'newusermessage-desc' => 'Prideda pranešimą į naujai sukurtų naudotojų aptarimų puslapius.',
 );
 
 /** Malayalam (മലയാളം)
  * @author Shijualex
  */
 $messages['ml'] = array(
-	'newusermessage-desc' => 'പുതിയ ഉപയോക്താക്കളുടെ സം‌വാദം താളില്‍  [[MediaWiki:NewUserMessage|സന്ദേശം]] ചേര്‍ക്കുന്നു.',
+	'newusermessage-desc' => 'പുതിയ ഉപയോക്താക്കളുടെ സം‌വാദം താളില്‍  സന്ദേശം ചേര്‍ക്കുന്നു.',
 );
 
 /** Marathi (मराठी)
  * @author Kaustubh
  */
 $messages['mr'] = array(
-	'newusermessage-desc' => 'नवीन नोंदणी केलेल्या सदस्यांच्या पानावर एक [[MediaWiki:NewUserMessage|संदेश]] वाढविते',
+	'newusermessage-desc' => 'नवीन नोंदणी केलेल्या सदस्यांच्या पानावर एक संदेश वाढविते',
 );
 
 /** Low German (Plattdüütsch)
  * @author Slomox
  */
 $messages['nds'] = array(
-	'newusermessage-desc' => 'Föögt en [[MediaWiki:NewUserMessage|Naricht]] op de Diskuschoonssiet vun nee opstellte Brukers to',
+	'newusermessage-desc' => 'Föögt en Naricht op de Diskuschoonssiet vun nee opstellte Brukers to',
 );
 
 /** Dutch (Nederlands)
@@ -171,48 +173,49 @@ $messages['nds'] = array(
  */
 $messages['nl'] = array(
 	'newusermessage-desc' => 'Voegt een [[MediaWiki:NewUserMessage|bericht]] toe aan de overlegpagina van nieuwe gebruikers',
+	'newuseredit-summary' => '[[{{int:newusermessage-template}}|Welkomstbericht]] toegevoegd aan de overlegpagina van de nieuwe gebruiker',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */
 $messages['no'] = array(
-	'newusermessage-desc' => 'Legger inn en [[MediaWiki:NewUserMessage|beskjed]] på nye brukeres diskusjonssider',
+	'newusermessage-desc' => 'Legger inn en beskjed på nye brukeres diskusjonssider',
 );
 
 /** Occitan (Occitan)
  * @author Cedric31
  */
 $messages['oc'] = array(
-	'newusermessage-desc' => "Apondís un [[MediaWiki:NewUserMessage|messatge]] dins la pagina de discussion d'un utilizaire novèl.",
+	'newusermessage-desc' => "Apondís un messatge dins la pagina de discussion d'un utilizaire novèl.",
 );
 
 /** Portuguese (Português)
  * @author Malafaya
  */
 $messages['pt'] = array(
-	'newusermessage-desc' => 'Adiciona uma [[MediaWiki:NewUserMessage|mensagem]] às páginas de discussão de novos utilizadores',
+	'newusermessage-desc' => 'Adiciona uma mensagem às páginas de discussão de novos utilizadores',
 );
 
 /** Russian (Русский)
  * @author Александр Сигачёв
  */
 $messages['ru'] = array(
-	'newusermessage-desc' => 'Добавляет [[MediaWiki:NewUserMessage|сообщение]] на страницу обсуждения недавно зарегистрированного участника',
+	'newusermessage-desc' => 'Добавляет сообщение на страницу обсуждения недавно зарегистрированного участника',
 );
 
 /** Slovak (Slovenčina)
  * @author Helix84
  */
 $messages['sk'] = array(
-	'newusermessage-desc' => 'Pridáva [[MediaWiki:NewUserMessage|správu]] do novo vytvorených používateľských diskusných stránok',
+	'newusermessage-desc' => 'Pridáva správu do novo vytvorených používateľských diskusných stránok',
 );
 
 /** Sundanese (Basa Sunda)
  * @author Kandar
  */
 $messages['su'] = array(
-	'newusermessage-desc' => 'Kirim [[MediaWiki:NewUserMessage|surat]] ka kaca obrolan pamaké nu kakara dijieun',
+	'newusermessage-desc' => 'Kirim surat ka kaca obrolan pamaké nu kakara dijieun',
 );
 
 /** Swedish (Svenska)
@@ -220,34 +223,34 @@ $messages['su'] = array(
  * @author Lejonel
  */
 $messages['sv'] = array(
-	'newusermessage-desc' => 'Lägger ett [[MediaWiki:NewUserMessage|meddelande]] på nyligen registrerade användares diskussionssidor',
+	'newusermessage-desc' => 'Lägger ett meddelande på nyligen registrerade användares diskussionssidor',
 );
 
 /** Telugu (తెలుగు)
  * @author Veeven
  */
 $messages['te'] = array(
-	'newusermessage-desc' => 'కొత్తగా చేరిన వాడుకరుల చర్చా పేజీలకు ఓ [[MediaWiki:NewUserMessage|సందేశాన్ని]] చేర్చండి',
+	'newusermessage-desc' => 'కొత్తగా చేరిన వాడుకరుల చర్చా పేజీలకు ఓ సందేశాన్ని చేర్చండి',
 );
 
 /** Vèneto (Vèneto)
  * @author Candalua
  */
 $messages['vec'] = array(
-	'newusermessage-desc' => 'Zonta un [[MediaWiki:NewUserMessage|messagio]] a le pagine de discussion dei utenti novi',
+	'newusermessage-desc' => 'Zonta un messagio a le pagine de discussion dei utenti novi',
 );
 
 /** Vietnamese (Tiếng Việt)
  * @author Vinhtantran
  */
 $messages['vi'] = array(
-	'newusermessage-desc' => 'Thêm một [[MediaWiki:NewUserMessage|thông điệp]] gửi vào trang thảo luận của thành viên vừa mở tài khoản',
+	'newusermessage-desc' => 'Thêm một thông điệp gửi vào trang thảo luận của thành viên vừa mở tài khoản',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)
  * @author Alexsh
  */
 $messages['zh-hant'] = array(
-	'newusermessage-desc' => '增加一個[[MediaWiki:NewUserMessage|訊息]]給新創建帳戶的使用者的討論頁。',
+	'newusermessage-desc' => '增加一個訊息給新創建帳戶的使用者的討論頁。',
 );
 
