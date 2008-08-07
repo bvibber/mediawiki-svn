@@ -244,6 +244,9 @@ class MV_SpecialMediaSearch extends SpecialPage {
 		if ($mvEnableSearchDigest && $wgRequest->getVal('tl') != '1') {
 			$dbw = & wfGetDB(DB_WRITE);
 			$dbr = & wfGetDB(DB_READ);
+			//print "DO SEARCH FOR: ". $this->getFilterDesc($query_key = true) . "\n";
+			//print var_dump(debug_backtrace());
+			
 			//@@todo non-blocking insert... is that supported in mysql/php?			
 			$dbw->insert($mvSearchDigestTable, array (
 				'query_key' => $this->getFilterDesc($query_key = true

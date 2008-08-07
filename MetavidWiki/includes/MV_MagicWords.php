@@ -41,7 +41,7 @@ class MV_MagicWords{
 			}
 		}
 	}
-	function renderMagic(){	
+	function renderMagic(){					
 		switch($this->magicTypeKey){
 			case 'TOPSEARCHES':
 				return $this->getTopSearches();		
@@ -49,7 +49,7 @@ class MV_MagicWords{
 			case 'POPULARCLIPS':
 				return $this->getTopClips(); 
 			break;
-			case 'PERSON_SPEECHES':
+			case 'PERSONSPEECHES':
 				return $this->getPersonOut();
 			break;
 			default:
