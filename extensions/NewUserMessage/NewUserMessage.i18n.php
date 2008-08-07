@@ -12,6 +12,11 @@ $messages = array();
  */
 $messages['en'] = array(
 	'newusermessage-desc' => "Adds a [[MediaWiki:NewUserMessage|message]] to newly created user's talk pages",
+	'newuseredit-summary' => 'Adding [[{{MediaWiki:Newusermessage-template}}|welcome message]] to new user\'s talk page',
+
+	// Configuration (should not be translated)
+	'newusermessage-template' => 'MediaWiki:NewUserMessage', # do not translate this message to other languages
+	'newusermessage-editor' => 'MediaWiki default', # do not translate this message to other languages
 );
 
 /** Afrikaans (Afrikaans)
