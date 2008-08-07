@@ -73,6 +73,16 @@ class NewUserMessage {
 		return true;
 	}
 
+	static function createNewUserMessageAutoCreated( $user ) {
+		global $wgNewUserMessageOnAutoCreate;
+
+		if( $wgNewUserMessageOnAutoCreate ) {
+			NewUserMessage::createNewUserMessage( $user );
+		}
+
+		return true;
+	}
+
 	static function onUserGetReservedNames( &$names ) {
 		wfLoadExtensionMessages( 'NewUserMessage' );
 		$names[] = 'msg:newusermessage-editor';
