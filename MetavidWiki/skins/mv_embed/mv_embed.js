@@ -1623,10 +1623,47 @@ embedVideo.prototype = {
 	getHTML : function (){
         var html_code = '';
         html_code = '<div style="width:'+this.width+'px;" class="videoPlayer">';
-
-        html_code += '<div id="mv_embedded_player_'+this.id+'"></div>';
+		html_code += '<div id="mv_embedded_player_'+this.id+'"></div>';
         if(this.controls)
+        {
             html_code += '<div id="mv_embedded_controls_'+this.id+'" class="controls"></div>';
+            var dlLink = 'javascript:$j(\'#'+this.id+'\').get(0).showVideoDownload();';
+			var source_link = 'javascript:$j(\'#'+this.id+'\').get(0).selectPlaybackMethod();';
+            var close_link = '$j(\'#mv_embedded_options_'+this.id+'\').hide();';
+			
+            html_code += '		<div id="mv_embedded_options_'+this.id+'" class="videoOptions">'
++'				<div class="videoOptionsTop"></div>'
++'				<div class="videoOptionsBox">'
+					
++'					<div class="block">'
++'						<h6>Video Options</h6>'
++'					</div>'
+					
++'					<div class="block">'
+
++'<p class="short_match"><a href="'+source_link+'" onClick="'+close_link+'"><span><strong>Stream Selection</strong></span></a></p>'
++'						<p class="short_match"><a href="'+dlLink+'" onClick="'+close_link+'" class="last_match"><span><strong>Download</strong></span></a><p>'
+						
++'					</div>'
+					
++'					<div class="block">'
++'						<h6>Share or Embed</h6>'
++'					</div>'
+
+					
++'					<div class="block embed_code">'
++'						<p class="short_match">'
++'							<textarea name="embed" id="embed">'+this.GetEmbedHTML()+'</textarea>'
++'							<button class="copy_to_clipboard">Copy to Clipboard</button>'
++'						</p>'
++'					</div>											'
+					
++'				</div><!--videoOptionsInner-->'
++'				<div class="videoOptionsBot"></div>'
+
++'			</div><!--videoOptions-->';
+        }
+
         html_code += '</div>';
         js_log(html_code);
         this.innerHTML=html_code;
@@ -1713,8 +1750,37 @@ embedVideo.prototype = {
 	    return thumb_html;
 
     },
+	GetEmbedHTML:function()
+	{
+		var thumbnail = this.media_element.getThumbnailURL();
+
+		var embed_thumb_html;
+		if(thumbnail.substring(0,1)=='/'){
+			eURL = parseUri(mv_embed_path);
+			embed_thumb_html = eURL.protocol + '://' + eURL.host + thumbnail;			
+			//js_log('set from mv_embed_path:'+embed_thumb_html);
+		}else{
+			embed_thumb_html = (thumbnail.indexOf('http://')!=-1)?thumbnail:mv_embed_path + thumbnail;
+		}
+		var embed_code_html = '&lt;script type=&quot;text/javascript&quot; ' +
+					'src=&quot;'+mv_embed_path+'mv_embed.js&quot;&gt;&lt;/script&gt' +
+					'&lt;video ';
+		if(this.roe){
+			embed_code_html+='roe=&quot;'+this.roe+'&quot; &gt;';				
+		}else{
+			embed_code_html+='src=&quot;'+this.src+'&quot; ' + 
+				'thumbnail=&quot;'+embed_thumb_html+'&quot;&gt;';
+		}
+		//close the video tag
+		embed_code_html+='&lt;/video&gt;';
+		
+		return embed_code_html;
+	},
     DoOptionsHTML:function()
     {
+        $j('#mv_embedded_options_'+this.id).toggle();
+        return;
+        
         var thumbnail = this.media_element.getThumbnailURL();
         var thumb_html='';
 	  	 //add plugin config button (don't add for playlists) 
@@ -1764,27 +1830,9 @@ embedVideo.prototype = {
 						src:mv_embed_path + 'images/vid_embed_sm.png' }));
 			thumb_html+='</a></div>';
 			//make link absolute (if it was not already)
-			if(thumbnail.substring(0,1)=='/'){
-				eURL = parseUri(mv_embed_path);
-				embed_thumb_html = eURL.protocol + '://' + eURL.host + thumbnail;			
-				//js_log('set from mv_embed_path:'+embed_thumb_html);
-			}else{
-				embed_thumb_html = (thumbnail.indexOf('http://')!=-1)?thumbnail:mv_embed_path + thumbnail;
-			}
-			var embed_code_html = '&lt;script type=&quot;text/javascript&quot; ' +
-						'src=&quot;'+mv_embed_path+'mv_embed.js&quot;&gt;&lt;/script&gt' +
-						'&lt;video ';
-			if(this.roe){
-				embed_code_html+='roe=&quot;'+this.roe+'&quot; &gt;';				
-			}else{
-				embed_code_html+='src=&quot;'+this.src+'&quot; ' + 
-					'thumbnail=&quot;'+embed_thumb_html+'&quot;&gt;';
-			}
-			//close the video tag
-			embed_code_html+='&lt;/video&gt;';
 			//add the hidden embed code:
 			thumb_html+='<div id="embed_code_'+this.id+'" style="border:solid;border-color:black;overflow:hidden;display:none;position:absolute;bottom:2px;right:'+(right_offset+30)+'px;width:'+(this.width-100)+'px;z-index:1">'+
-				'<input onClick="this.select();" type="text" size="40" length="1024" value="'+embed_code_html+'">'
+				'<input onClick="this.select();" type="text" size="40" length="1024" value="'+this.GetEmbedHTML()+'">'
 				 '</div>';
             thumb_html+='</div>';
 	    }	
@@ -1870,9 +1918,20 @@ embedVideo.prototype = {
             fade_in = false;
             $j('#blackbg_'+sel_id).remove();
         }
+/*					<div id="videoComplete">
+						<div id="videoOptionsComplete">
+							<a href="#" class="email">Share Clip via Email</a>
+							<p>or</p>
+							<a href="#">Embed Clip in Blog or Site</a>
+							<div class="embed_code">
+								<textarea name="embed" id="embed">HTML embed code</textarea>
 
-        //fade in a black bg div ontop of everything
-         var div_code = '<div id="blackbg_'+sel_id+'" ' +
+								<button class="copy_to_clipboard">Copy to Clipboard</button>
+							</div>
+						</div>
+					</div>*/
+/*					
+					var div_code = '<div id="blackbg_'+sel_id+'" ' +
 			 'style="overflow:auto;position:absolute;display:none;z-index:2;background:black;top:0px;left:0px;' +
 				 'height:'+parseInt(height)+'px;width:'+parseInt(width)+'px;">'+
 //       			 '<span class="displayHTML" id="con_vl_'+this.id+'" style="position:absolute;top:20px;left:20px;color:white;">' +
@@ -1880,7 +1939,18 @@ embedVideo.prototype = {
 		    '<a href="#" style="color:white;" onClick="$j(\'#'+sel_id+'\').get(0).closeDisplayedHTML();">close</a></span></div>'+
              html_code +
 //                close_link+'</span>'+
-      		 '</div>';
+      		 '</div>';*/
+
+        //fade in a black bg div ontop of everything
+         var div_code = '<div id="blackbg_'+sel_id+'" class="videoComplete" ' +
+			 'style="height:'+parseInt(height)+'px;width:'+parseInt(width)+'px;">'+
+//       			 '<span class="displayHTML" id="con_vl_'+this.id+'" style="position:absolute;top:20px;left:20px;color:white;">' +
+	  		'<div class="videoOptionsComplete">'+
+			'<div style="border:none;position:absolute;top:2px;right:2px;z-index:13;padding: 12px 19px;"><span>'+
+		    '<a href="#" style="color:white;" onClick="$j(\'#'+sel_id+'\').get(0).closeDisplayedHTML();">close</a></span></div>'+
+             html_code +
+//                close_link+'</span>'+
+      		 '</div></div>';
         $j('#'+sel_id).append(div_code);
         if (fade_in)
             $j('#blackbg_'+sel_id).fadeIn("slow");
