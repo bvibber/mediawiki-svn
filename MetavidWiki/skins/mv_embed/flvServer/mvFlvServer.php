@@ -33,6 +33,7 @@ if($file_req==''){
 		$file_req = $pathparts[count($pathparts)-1];
 	}
 }
+//print $file_req;
 
 //additional filtering to avoid directory traversing:
 $file_req = str_replace(array('../','./'), '', $file_req);

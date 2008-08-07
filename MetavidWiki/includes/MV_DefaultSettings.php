@@ -92,6 +92,7 @@ $mvVideoArchivePaths['mvprime']= 'http://metavid.ucsc.edu/media/';
 $mvVideoArchivePaths['cap1'] = 'http://128.114.20.64/media/';
 
 $mvDefaultVideoQualityKey = 'mv_ogg_low_quality';
+$mvDefaultFlashQualityKey = 'mv_flash_low_quality';
 
 #local path to video archive (if hosted locally)
 $mvLocalVideoLoc = '/metavid/video_archive';
@@ -179,6 +180,18 @@ $wgGroupPermissions['sysop']['mv_edit_stream']=true;
 $wgGroupPermissions['bot']['mv_edit_stream']=true;
 $wgAvailableRights[] = 'mv_delete_mvd';
 $wgAvailableRights[] = 'mv_edit_stream';
+
+$mvMsgContentTypeLookup = array(
+ 		'ao_file_256Kb_MPEG4'	=>'video/mp4',
+ 		'ao_file_64Kb_MPEG4'	=>'video/mp4',
+ 		'ao_file_flash_flv'		=>'video/x-flv',
+ 		'ao_file_MPEG1'			=>'video/mpeg',
+ 		'ao_file_MPEG2'			=>'video/mpeg-2',
+ 		'mv_flash_low_quality'	=>'video/x-flv',
+ 		'mv_ogg_high_quality'	=>'video/ogg',
+ 		'mv_ogg_low_quality'	=>'video/ogg'
+ 	);
+ 	
 ###
 # If you already have custom namespaces on your site, insert
 # $mvNamespaceIndex = ???; in your config before including the settings

@@ -287,9 +287,9 @@
 				'stream_id' => $this->mvStream->id,
 				'file_desc_msg'=>$quality
 			));
-			$streamFile  =$dbr->fetchObject($result);					
+			$streamFile  =$dbr->fetchObject($result);				
 			//make sure we have streamFiles (used to generate the link)				
-			$mvStreamFile = new MV_StreamFile($this->mvStream);
+			$mvStreamFile = new MV_StreamFile($this->mvStream, $streamFile);
 			//if link empty return false:			
 			if($mvStreamFile->getFullURL()=='')return false;			
 			return $mvStreamFile->getFullURL() . $anx_req;
@@ -305,6 +305,7 @@
 		return $roeTitle->getFullURL($query) ;
 	}
 	function getEmbedVideoHtml($vid_id='', $size='', $force_server='', $autoplay=false){
+		global $mvDefaultFlashQualityKey, $mvDefaultVideoQualityKey;
 		$tag='video';
 		if($size==''){
 			global $mvDefaultVideoPlaybackRes;
@@ -314,7 +315,9 @@
 			list($vWidth, $vHeight, $na) = MV_StreamImage::getSizeType($size);
 		}		
 		$vid_id=($vid_id=='')?'':'id="'.$vid_id.'"';			
-		$stream_web_url = $this->getWebStreamURL();
+		$stream_web_url = $this->getWebStreamURL($mvDefaultVideoQualityKey);
+		//print "lookign for q: $mvDefaultFlashQualityKey ";
+		$flash_stream_url = $this->getWebStreamURL($mvDefaultFlashQualityKey);		
 		$roe_url = 	$this->getROEURL();	
 		if($stream_web_url){
 			$o='';		
@@ -324,12 +327,19 @@
 					'</span>';
 			}				
 			$auto_play_attr=($autoplay)?' autoplay="true" ':'';
-			$o.='<'.$tag.' '.$vid_id.' thumbnail="'.$this->getStreamImageURL($size, null, $force_server).'" '.
-				'src="'.$stream_web_url .'" ' .				
+			$o.='<'.$tag.' '.$vid_id.' thumbnail="'.$this->getStreamImageURL($size, null, $force_server).'" '.					
 				'roe="'.$roe_url.'" '.
 				'show_meta_link="false" ' . $auto_play_attr . 
 				'style="width:'.$vWidth.'px;height:'.$vHeight.'px" '.
-				'controls="true" embed_link="true" />';				
+				'controls="true" embed_link="true" >';
+			
+			if($stream_web_url!='')
+				$o.='<source type="'.MV_StreamFile::getTypeForQK($mvDefaultVideoQualityKey).'" src="'.$stream_web_url .'"/>';
+				
+			if($flash_stream_url!='')
+				$o.='<source type="'.MV_StreamFile::getTypeForQK($mvDefaultFlashQualityKey).'" src="'.$flash_stream_url .'"/>';
+				
+			$o.='</video>';								
 			return $o;	
 		}else{
 			return wfMsg('mv_error_stream_missing');
