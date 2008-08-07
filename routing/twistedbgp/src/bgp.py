@@ -646,7 +646,7 @@ class FSM(object):
             
             try:
                 self.delayedCall.cancel()
-            except (AttributeError, error.AlreadyCancelled):
+            except (AttributeError, error.AlreadyCalled, error.AlreadyCancelled):
                 pass
                 
         def reset(self, secondsFromNow):
@@ -1703,6 +1703,9 @@ class BGPPeering(BGPFactory):
         for p in self.inConnections + self.outConnections:
             if p != protocol:
                 p.openCollisionDump()
+        
+        # BGP announcements / UPDATE messages can be sent now
+        self.sendAdvertisements()
                 
     def connectRetryEvent(self, protocol):
         """Called by FSM when we should reattempt to connect."""
@@ -1825,3 +1828,56 @@ class BGPPeering(BGPFactory):
         # Write to all BGPPeering consumers
         for consumer in self.consumers:
             consumer.write(update)
+    
+    def sendAdvertisements(self):
+        """Called when the BGP session is established, and announcements can be sent."""
+        pass
+
+
+class NaiveBGPPeering(BGPPeering):
+    """
+    "Naive" class managing a simple BGP session with very few announced prefixes.
+    Currently even assumes that all prefixes fit in a single BGP UPDATE message.
+    """
+    
+    def __init__(self):
+        BGPPeering.__init__(self)
+        
+        # (advertisements, attributes)
+        self.advertisedSet = (set(), set())
+        self.toAdvertise = (set(), set())
+    
+    def sendAdvertisements(self):
+        """
+        Called when the BGP session has been established and is
+        ready for sending announcements.
+        """
+        
+        self._sendUpdate(self.advertisedSet[0], self.toAdvertise[1], self.toAdvertise[0])
+        
+    def setAdvertisements(self, advertisements, attributes):
+        """
+        Takes a set() of IPPrefixes to advertize, and an AttrSet of
+        attributes that apply to all prefixes. These advertisements
+        will be maintained during session in established state, withdrawing
+        or updating any previous announcements.
+        """
+        
+        self.toAdvertise = (advertisements, attributes)
+        advertisedPrefixes, advertisedAttributes = self.advertisedSet
+        
+        # Calculate changes
+        withdrawals = advertisedPrefixes - advertisements
+        if attributes != advertisedAttributes:
+            # New attributes are different, reannounce all
+            newPrefixes = advertisements
+        else:
+            newPrefixes = advertisements - advertisedPrefixes
+        
+        # Send off
+        self._sendUpdate(withdrawals, attributes, newPrefixes)
+        
+    def _sendUpdate(self, withdrawals, attributes, advertisements):
+        if self.estabProtocol and self.fsm.state == ST_ESTABLISHED:
+            self.estabProtocol.sendUpdate(withdrawals, attributes, advertisements)
+            self.advertisedSet = (advertisements, attributes)

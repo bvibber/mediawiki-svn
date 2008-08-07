@@ -13,9 +13,6 @@ class BGPDebug(object):
         #self.prefixes = radix.Radix()
         self.nlriCount = 0
         self.withdrawnCount = 0
-        
-        # HACK
-        self.advertised = False
 
     def registerProducer(self, producer, streaming):
         self.producer = producer
@@ -35,17 +32,6 @@ class BGPDebug(object):
         print "UPDATE:", withdrawnPrefixes, nlri
         for a in attrSet:
             print a.name, a
-
-
-        # Hack
-        if not self.advertised:
-            advertisements = [bgp.IPPrefix('127.127.127.127/32')]
-            attrSet = bgp.AttributeSet([bgp.OriginAttribute(), bgp.ASPathAttribute([(2, [64600])]), bgp.NextHopAttribute('192.168.255.254')])
-            
-            # Send UPDATE
-            self.producer.estabProtocol.sendUpdate([], attrSet, advertisements)
-            
-            self.advertised = True
 
         # Add internal attribute 'last update'
 #        attrSet.add(bgp.LastUpdateIntAttribute((0, bgp.ATTR_TYPE_INT_LAST_UPDATE, datetime.datetime.now())))
@@ -82,8 +68,12 @@ class BGPDebug(object):
 
 peers = {}
 
-peering = bgp.BGPPeering()
+peering = bgp.NaiveBGPPeering()
 peering.peerAddr = '91.198.174.247'
+
+advertisements = [bgp.IPPrefix('127.127.127.127/32')]
+attrSet = bgp.AttributeSet([bgp.OriginAttribute(), bgp.ASPathAttribute([(2, [64600])]), bgp.NextHopAttribute('192.168.255.254')])
+peering.setAdvertisements(set(advertisements), attrSet)
 
 peers[peering.peerAddr] = peering
 
@@ -107,6 +97,6 @@ for peer in peers.values():
 bgpServer = bgp.BGPServerFactory(peers)
 reactor.listenTCP(1000+bgp.PORT, bgpServer)
 
-for p in peers.itervalues(): p.manualStart()
+for p in peers.itervalues(): p.automaticStart()
 
 reactor.run()
