@@ -9,6 +9,9 @@ if ( !defined('MEDIAWIKI') ) {
  
 class InterwikiList extends SpecialPage {
 	
+	// Privates
+	private $mTitle; // The title for this specialpage
+
 	/**
 	* Constructor
 	*/
@@ -21,21 +24,38 @@ class InterwikiList extends SpecialPage {
 	 * Execute
 	 */
 	public function execute( $par ) {
-		global $wgOut;
+		global $wgOut, $wgRequest;
 		$wgOut->setPagetitle( wfMsg( 'interwikilist' ) );
-		$selfTitle = Title::makeTitle( NS_SPECIAL, 'InterwikiList' );
-		$wgOut->addHTML( $this->getInterwikis() );
+		$this->mTitle = SpecialPage::getTitleFor( 'InterwikiList' );
+		$prefix = $wgRequest->getText( 'iwsearch', $par );
+		$wgOut->addHTML( $this->getInterwikis( $prefix ) );
 	}
 	
 	/** 
 	* Get all Interwiki Links - the heart of the function
+	* @param $prefix string Prefix to search for in list
+	* @return string HTML
 	*/
-	private function getInterwikis() {
+	private function getInterwikis( $prefix = null ) {
+		global $wgScript;
 		$dbr = wfGetDB( DB_SLAVE );
-		
-		$results = $dbr->select( 'interwiki', array( 'iw_prefix', 'iw_url' ) );
-		
-		$text = Xml::openElement( 'table', array( 'id' => 'sv-software' ) ) . "<tr>
+
+		$conds = array();
+		if ( !is_null( $prefix ) ) {
+			$conds[] = "iw_prefix LIKE " . $dbr->addQuotes( $dbr->escapeLike( $prefix ) . "%" );
+		}
+
+		$results = $dbr->select( 'interwiki', array( 'iw_prefix', 'iw_url' ), $conds );
+
+		$text = "<fieldset>\n" . 
+				"<legend>" . wfMsg('interwikilist-filter') . "</legend>\n" .
+				"<form action=\"". $wgScript . "\" method=\"get\" id=\"interwikilist-search\">\n" . 
+				"<input type=\"hidden\" name=\"title\" value=\"" . $this->mTitle->getPrefixedText() . "\">\n" .
+				wfMsg('interwikilist-prefix') . " <input type=\"text\" name=\"iwsearch\" id=\"interwikilist-prefix\"><br />\n" .
+				"<input type=\"submit\" value=\"" . wfMsg('search') . "\">\n" .
+				"</form>\n</fieldset>";
+
+		$text .= "<table id=\"sv-software\"<tr>
 							<th>" . wfMsg( 'interwikilist-linkname' ) . "</th>
 							<th>" . wfMsg( 'interwikilist-target' ) . "</th>
 						</tr>\n";
@@ -48,7 +68,7 @@ class InterwikiList extends SpecialPage {
 		}
 		$text .= "</table>\n";
 		$dbr->freeResult( $results );
-		
+
 		return $text;
 	}
 }

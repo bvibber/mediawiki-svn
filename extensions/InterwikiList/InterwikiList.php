@@ -11,10 +11,10 @@
  * @author Chad Horohoe <innocentkiller@gmail.com>
  * @license http://www.gnu.org/copyleft/gpl.html GNU General Public License 2.0 or later
  */
- 
+
 $wgExtensionCredits['specialpage'][] = array(
         'name'				=> 'Interwiki List',
-		'version'			=> '0.2',
+                'version'			=> '0.3',
         'url'				=> 'http://mediawiki.org/wiki/Extension:InterwikiList',
         'description'		=> 'Adds a [[Special:Interwikilist|special page]] to view available interwiki links',
         'author'			=> '[mailto:innocentkiller@gmail.com Chad Horohoe]',
@@ -25,5 +25,4 @@ $dir = dirname(__FILE__) . '/';
 $wgSpecialPages['InterwikiList'] = 'InterwikiList';
 $wgAutoloadClasses['InterwikiList'] = $dir . 'InterwikiList_body.php';
 $wgExtensionMessagesFiles['InterwikiList'] = $dir . 'InterwikiList.i18n.php';
-$wgExtensionAliasesFiles['InterwikiList'] = $dir . 'InterwikiList.alias.php';
 $wgSpecialPageGroups['InterwikiList'] = 'wiki';
