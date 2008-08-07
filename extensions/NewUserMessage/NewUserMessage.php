@@ -22,6 +22,7 @@ $wgExtensionMessagesFiles['NewUserMessage'] = $dir . 'NewUserMessage.i18n.php';
 $wgAutoloadClasses['NewUserMessage'] = $dir . 'NewUserMessage.class.php';
 
 $wgHooks['AddNewAccount'][] = 'NewUserMessage::createNewUserMessage';
+$wgHooks['UserGetReservedNames'][] = 'NewUserMessage::onUserGetReservedNames';
 
 $wgExtensionCredits['other'][] = array(
 	'name'           => 'NewUserMessage',

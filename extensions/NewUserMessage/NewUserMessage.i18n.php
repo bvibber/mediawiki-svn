@@ -11,19 +11,17 @@ $messages = array();
  * @author [http://www.organicdesign.co.nz/User:Nad Nad]
  */
 $messages['en'] = array(
-	'newusermessage-desc' => "Adds a [[MediaWiki:NewUserMessage|message]] to newly created user's talk pages",
-	'newuseredit-summary' => 'Adding [[{{MediaWiki:Newusermessage-template}}|welcome message]] to new user\'s talk page',
-
-	// Configuration (should not be translated)
-	'newusermessage-template' => 'MediaWiki:NewUserMessage', # do not translate this message to other languages
-	'newusermessage-editor' => 'MediaWiki default', # do not translate this message to other languages
+	'newusermessage-desc' => "Adds a message to newly created user's talk pages",
+	'newuseredit-summary' => 'Adding [[{{int:newusermessage-template}}|welcome message]] to new user\'s talk page',
+	'newusermessage-template' => 'Template:Welcome', // The title of the message template
+	'newusermessage-editor' => 'New user message', // The username used for the edit
 );
 
 /** Afrikaans (Afrikaans)
  * @author Naudefj
  */
 $messages['af'] = array(
-	'newusermessage-desc' => "Plaas 'n [[MediaWiki:NewUserMessage|boodskap]] op alle nuwe gebruikers se besprekingsbladsye",
+	'newusermessage-desc' => "Plaas 'n [[Template:NewUserMessage|boodskap]] op alle nuwe gebruikers se besprekingsbladsye",
 );
 
 /** Arabic (العربية)

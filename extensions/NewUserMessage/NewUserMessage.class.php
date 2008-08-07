@@ -30,24 +30,52 @@ class NewUserMessage {
 			// Need to make the edit on the user talk page in another
 			// user's context. Park the current user object and create
 			// a user object for $editingUser. If that user does not
-			// exist, make the edit as reserved user
-			// "MediaWiki default".
+			// exist, create it.
 			$parkedWgUser = $wgUser;
-			$editingUser = wfMsg( 'newusermessage-editor' );
-			if( User::idFromName( $editingUser ) ) {
-				$wgUser = User::newFromName( $editingUser );
+			$wgUser = User::newFromName( wfMsgForContent( 'newusermessage-editor' ) );
+			if ( !$wgUser->isLoggedIn() ) {
+				$wgUser->addToDatabase();
 			}
-			else
-				$wgUser = User::newFromName( "MediaWiki default" );
 
-			$flags = 0;
-			$messageTemplate = wfMsg( 'newusermessage-template' );
+			$flags = EDIT_NEW;
+			$templateTitleText = wfMsg( 'newusermessage-template' );
+			$templateTitle = Title::newFromText( $templateTitleText );
+			if ( !$templateTitle ) {
+				wfDebug( __METHOD__. ": invalid title in newusermessage-template\n" );
+				return true;
+			}
+			if ( $templateTitle->getNamespace() == NS_TEMPLATE ) {
+				$templateTitleText = $templateTitle->getText();
+			}
 			if ($wgNewUserMinorEdit) $flags = $flags | EDIT_MINOR;
 			if ($wgNewUserSupressRC) $flags = $flags | EDIT_SUPPRESS_RC;
 
-			$article->doEdit('{'.'{'."$messageTemplate|$name}}", wfMsg( 'newuseredit-summary' ), $flags);
+			$dbw = wfGetDB( DB_MASTER );
+			$dbw->begin();
+			$good = true;
+			try {
+				$article->doEdit("{{{$templateTitleText}|$name}}", wfMsgForContent( 'newuseredit-summary' ), $flags);
+			} catch ( DBQueryError $e ) {
+				$good = false;
+			}
+
+			if ( $good ) {
+				// Set newtalk with the right user ID
+				$user->setNewtalk( true );
+				$dbw->commit();
+			} else {
+				// The article was concurrently created
+				wfDebug( __METHOD__. ": the article has already been created despite !\$talk->exists()\n" );
+				$dbw->rollback();
+			}
 			$wgUser = $parkedWgUser;
 		}
+		return true;
+	}
+
+	static function onUserGetReservedNames( &$names ) {
+		wfLoadExtensionMessages( 'NewUserMessage' );
+		$names[] = 'msg:newusermessage-editor';
 		return true;
 	}
 }
