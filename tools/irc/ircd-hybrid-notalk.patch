@@ -1,0 +1,37 @@
+diff -ur ircd-hybrid-7.0.3/modules/core/m_message.c ircd-hybrid-7.0.3-patched/modules/core/m_message.c
+--- ircd-hybrid-7.0.3/modules/core/m_message.c	Wed Jun 16 14:56:02 2004
++++ ircd-hybrid-7.0.3-patched/modules/core/m_message.c	Thu May 05 23:19:36 2005
+@@ -477,13 +477,10 @@
+   }
+ 
+   /* chanops and voiced can flood their own channel with impunity */
+-  if ((result = can_send(vchan, source_p)))
++  /* PATCHED BY TIM STARLING TO DISALLOW MESSAGES FROM NON-OPERS */
++  if (IsOper(client_p))
+   {
+-    if (result == CAN_SEND_OPV ||
+-        !flood_attack_channel(p_or_n, source_p, vchan, chname))
+-    {
+-      sendto_channel_butone(client_p, source_p, vchan, command, ":%s", text);
+-    }
++    sendto_channel_butone(client_p, source_p, vchan, command, ":%s", text);
+   }
+   else
+   {
+diff -ur ircd-hybrid-7.0.3/modules/m_join.c ircd-hybrid-7.0.3-patched/modules/m_join.c
+--- ircd-hybrid-7.0.3/modules/m_join.c	Sun May 08 19:01:54 2005
++++ ircd-hybrid-7.0.3-patched/modules/m_join.c	Sun May 08 19:02:43 2005
+@@ -253,6 +253,13 @@
+ 	}
+       else	/* channel does NOT exist, so create it */
+ 	{
++	  /* PATCH by Tim Starling, disallow channel creation by non-opers */
++	  if (!IsOper(source_p)) {
++	    sendto_one(source_p, form_str(ERR_NOSUCHCHANNEL),
++		       me.name, source_p->name, name);
++	    continue;
++	  }
++
+ 	  if(splitmode && !IsOper(source_p) && (*name != '&') && 
+             (ConfigChannel.no_create_on_split || ConfigChannel.no_join_on_split))
+ 	  {
