@@ -51,7 +51,8 @@ class InterwikiList extends SpecialPage {
 				"<legend>" . wfMsg('interwikilist-filter') . "</legend>\n" .
 				"<form action=\"". $wgScript . "\" method=\"get\" id=\"interwikilist-search\">\n" . 
 				"<input type=\"hidden\" name=\"title\" value=\"" . $this->mTitle->getPrefixedText() . "\">\n" .
-				wfMsg('interwikilist-prefix') . " <input type=\"text\" name=\"iwsearch\" id=\"interwikilist-prefix\"><br />\n" .
+				wfMsg('interwikilist-prefix') . " <input type=\"text\" name=\"iwsearch\" id=\"interwikilist-prefix\" value=\"" . 
+				htmlspecialchars( $prefix ) . "\"><br />\n" .
 				"<input type=\"submit\" value=\"" . wfMsg('search') . "\">\n" .
 				"</form>\n</fieldset>";
 
