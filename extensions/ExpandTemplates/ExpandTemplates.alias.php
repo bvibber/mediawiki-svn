@@ -11,7 +11,7 @@ $aliases = array();
  * @author Jon Harald Søby
  */
 $aliases['en'] = array(
-    'ExpandTemplates' => array( 'ExpandTemplates' ),
+	'ExpandTemplates' => array( 'ExpandTemplates' ),
 );
 
 /** Arabic (العربية)

@@ -11,7 +11,7 @@ $aliases = array();
  * @author Jon Harald Søby
  */
 $aliases['en'] = array(
-    'ImportUsers' => array( 'ImportUsers' ),
+	'ImportUsers' => array( 'ImportUsers' ),
 );
 
 /** Arabic (العربية)
@@ -103,4 +103,3 @@ $aliases['sv'] = array(
 $aliases['th'] = array(
 	'ImportUsers' => array( 'นำเข้าผู้ใช้' ),
 );
-

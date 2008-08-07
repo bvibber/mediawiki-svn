@@ -11,82 +11,81 @@ $aliases = array();
  * @author Nike
  */
 $aliases['en'] = array(
-	'SpecialInvitations' => array( 'Invitations' ),
+	'Invitations' => array( 'Invitations' ),
 );
 
 /** Arabic (العربية)
  * @author Meno25
  */
 $aliases['ar'] = array(
-	'SpecialInvitations' => array( 'دعوات' ),
+	'Invitations' => array( 'دعوات' ),
 );
 
 /** Egyptian Spoken Arabic (مصرى)
  * @author Meno25
  */
 $aliases['arz'] = array(
-	'SpecialInvitations' => array( 'دعوات' ),
+	'Invitations' => array( 'دعوات' ),
 );
 
 /** Finnish (Suomi) */
 $aliases['fi'] = array(
-	'SpecialInvitations' => array( 'Kutsut' ),
+	'Invitations' => array( 'Kutsut' ),
 );
 
 /** Galician (Galego) */
 $aliases['gl'] = array(
-	'SpecialInvitations' => array( 'Invitacións' ),
+	'Invitations' => array( 'Invitacións' ),
 );
 
 /** Hebrew (עברית)
  * @author Rotem Liss
  */
 $aliases['he'] = array(
-	'SpecialInvitations' => array( 'הזמנות' ),
+	'Invitations' => array( 'הזמנות' ),
 );
 
 /** Haitian (Kreyòl ayisyen) */
 $aliases['ht'] = array(
-	'SpecialInvitations' => array( 'Envitasyon' ),
+	'Invitations' => array( 'Envitasyon' ),
 );
 
 /** Hungarian (Magyar) */
 $aliases['hu'] = array(
-	'SpecialInvitations' => array( 'Meghívók' ),
+	'Invitations' => array( 'Meghívók' ),
 );
 
 /** Khmer (ភាសាខ្មែរ) */
 $aliases['km'] = array(
-	'SpecialInvitations' => array( 'ការអញ្ជើញ' ),
+	'Invitations' => array( 'ការអញ្ជើញ' ),
 );
 
 /** Luxembourgish (Lëtzebuergesch) */
 $aliases['lb'] = array(
-	'SpecialInvitations' => array( 'Invitatiounen' ),
+	'Invitations' => array( 'Invitatiounen' ),
 );
 
 /** Malay (Bahasa Melayu) */
 $aliases['ms'] = array(
-	'SpecialInvitations' => array( 'Jemputan' ),
+	'Invitations' => array( 'Jemputan' ),
 );
 
 /** Dutch (Nederlands) */
 $aliases['nl'] = array(
-	'SpecialInvitations' => array( 'Uitnodigingen' ),
+	'Invitations' => array( 'Uitnodigingen' ),
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
 $aliases['no'] = array(
-	'SpecialInvitations' => array( 'Invitasjoner' ),
+	'Invitations' => array( 'Invitasjoner' ),
 );
 
 /** Pashto (پښتو) */
 $aliases['ps'] = array(
-	'SpecialInvitations' => array( 'بلنې' ),
+	'Invitations' => array( 'بلنې' ),
 );
 
 /** Swedish (Svenska) */
 $aliases['sv'] = array(
-	'SpecialInvitations' => array( 'Inbjudningar' ),
+	'Invitations' => array( 'Inbjudningar' ),
 );
-

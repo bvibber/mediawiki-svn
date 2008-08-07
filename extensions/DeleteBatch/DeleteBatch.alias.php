@@ -11,7 +11,7 @@ $aliases = array();
  * @author Jon Harald Søby
  */
 $aliases['en'] = array(
-    'DeleteBatch' => array( 'DeleteBatch' ),
+	'DeleteBatch' => array( 'DeleteBatch' ),
 );
 
 /** Arabic (العربية)

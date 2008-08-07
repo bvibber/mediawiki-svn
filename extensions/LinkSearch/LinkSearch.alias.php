@@ -11,7 +11,7 @@ $aliases = array();
  * @author Jon Harald Søby
  */
 $aliases['en'] = array(
-    'LinkSearch' => array( 'LinkSearch' ),
+	'LinkSearch' => array( 'LinkSearch' ),
 );
 
 /** Arabic (العربية)
@@ -108,4 +108,3 @@ $aliases['pt-br'] = array(
 $aliases['sv'] = array(
 	'LinkSearch' => array( 'Länksökning' ),
 );
-

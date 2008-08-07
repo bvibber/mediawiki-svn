@@ -11,7 +11,7 @@ $aliases = array();
  * @author Jon Harald Søby
  */
 $aliases['en'] = array(
-    'AdvancedRandom' => array( 'AdvancedRandom' ),
+	'AdvancedRandom' => array( 'AdvancedRandom' ),
 );
 
 /** Arabic (العربية)
@@ -56,4 +56,3 @@ $aliases['nl'] = array(
 $aliases['no'] = array(
 	'AdvancedRandom' => array( 'Avansert_tilfeldig_side' ),
 );
-

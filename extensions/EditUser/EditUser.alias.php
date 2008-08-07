@@ -11,7 +11,7 @@ $aliases = array();
  * @author Jon Harald Søby
  */
 $aliases['en'] = array(
-    'EditUser' => array( 'EditUser' ),
+	'EditUser' => array( 'EditUser' ),
 );
 
 /** Arabic (العربية)

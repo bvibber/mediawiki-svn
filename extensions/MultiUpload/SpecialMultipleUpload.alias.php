@@ -11,12 +11,12 @@ $aliases = array();
  * @author Jon Harald Søby
  */
 $aliases['en'] = array(
-    'MultiUpload'            => array('MultiUpload')
+	'MultiUpload'            => array('MultiUpload')
 );
 
 /** Norwegian (Norsk (bokmål))
  * @author Jon Harald Søby
  */
 $aliases['no'] = array(
-    'MultiUpload'            => array('Last_opp_mange_filer')
+	'MultiUpload'            => array('Last_opp_mange_filer')
 );

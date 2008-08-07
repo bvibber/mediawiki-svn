@@ -11,7 +11,7 @@ $aliases = array();
  * @author Jon Harald Søby
  */
 $aliases['en'] = array(
-    'EmailPages' => array( 'EmailPages' ),
+	'EmailPages' => array( 'EmailPages' ),
 );
 
 /** Arabic (العربية)

@@ -11,12 +11,12 @@ $aliases = array();
  * @author Jon Harald Søby
  */
 $aliases['en'] = array(
-    'InterwikiList'            => array('InterwikiList')
+	'InterwikiList' => array('InterwikiList')
 );
 
 /** Norwegian (Norsk (bokmål))
  * @author Jon Harald Søby
  */
 $aliases['no'] = array(
-    'InterwikiList'            => array('Interwikiliste')
+	'InterwikiList' => array('Interwikiliste')
 );

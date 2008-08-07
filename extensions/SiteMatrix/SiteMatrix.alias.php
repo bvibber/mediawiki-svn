@@ -11,7 +11,7 @@ $aliases = array();
  * @author Jon Harald Søby
  */
 $aliases['en'] = array(
-    'SiteMatrix' => array( 'SiteMatrix', 'WikimediaWikis' ),
+	'SiteMatrix' => array( 'SiteMatrix', 'WikimediaWikis' ),
 );
 
 /** Arabic (العربية)
@@ -88,4 +88,3 @@ $aliases['pt-br'] = array(
 $aliases['sv'] = array(
 	'SiteMatrix' => array( 'Lista över Wikimedias wikier' ),
 );
-
