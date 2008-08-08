@@ -34,7 +34,7 @@ $messages['ar'] = array(
 	'stablepages-stable' => 'نسخة مستقرة',
 	'stablepages-text'   => 'بالأسفل قائمة الصفحات المضبوطة يدويا لتعرض النسخة المستقرة كمحتوى الصفحة الافتراضي للمشاهدين.',
 	'stablepages-none'   => 'لا توجد صفحات في هذه القائمة',
-	'stablepages-config' => 'إعدادات',
+	'stablepages-config' => 'ضبط',
 );
 
 /** Southern Balochi (بلوچی مکرانی)
@@ -83,6 +83,13 @@ $messages['de'] = array(
 	'stablepages-text'   => 'Es folgt eine Liste der Seiten, die individuell konfiguriert wurden, damit diese die markierte Version als Standardinhalt für Leser anzeigen.',
 	'stablepages-none'   => 'Diese Liste ist leer.',
 	'stablepages-config' => 'Konfiguration',
+);
+
+/** Greek (Ελληνικά)
+ * @author Consta
+ */
+$messages['el'] = array(
+	'stablepages-none' => 'Δεν υπάρχουν σελίδες σε αυτή την λίστα',
 );
 
 /** Esperanto (Esperanto)
@@ -146,6 +153,14 @@ $messages['hi'] = array(
 	'stablepages-config' => 'कॉन्फिगरेशन',
 );
 
+/** Hungarian (Magyar)
+ * @author Samat
+ */
+$messages['hu'] = array(
+	'stablepages-text'   => 'Ez a lista azokat a lapokat tartalmazza, amiket külön úgy állítottak be, hogy olvasójának alapértelmezettként a stabil változatot mutassa.',
+	'stablepages-config' => 'Beállítások',
+);
+
 /** Indonesian (Bahasa Indonesia)
  * @author Rex
  */
@@ -155,6 +170,16 @@ $messages['id'] = array(
 	'stablepages-text'   => 'Di bawah ini adalah daftar halaman-halaman yang diset secara manual untuk menampilkan versi stabil sebagai tampilan baku isi bagi para pembaca.',
 	'stablepages-none'   => 'Tidak ada halaman di dalam daftar ini',
 	'stablepages-config' => 'Konfigurasi',
+);
+
+/** Italian (Italiano)
+ * @author Darth Kule
+ */
+$messages['it'] = array(
+	'stablepages'        => 'Pagine stabili',
+	'stablepages-stable' => 'versione stabile',
+	'stablepages-none'   => 'Non ci sono pagine in questo elenco',
+	'stablepages-config' => 'Configurazione',
 );
 
 /** Khmer (ភាសាខ្មែរ)
@@ -225,6 +250,7 @@ $messages['nl'] = array(
 $messages['no'] = array(
 	'stablepages'        => 'Stabile sider',
 	'stablepages-stable' => 'stabil versjon',
+	'stablepages-text'   => 'Nedenfor er en liste over sider manuelt innstilt til å vise den stabile versjonen som standardinnhold for lesere.',
 	'stablepages-none'   => 'Det er ingen sider i denne listen',
 	'stablepages-config' => 'Konfigurering',
 );

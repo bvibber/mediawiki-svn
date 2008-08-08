@@ -1,5 +1,22 @@
 <?php
-#(c) Aaron Schulz, Joerg Baach, 2007-2008 GPL
+/*
+ (c) Aaron Schulz, Joerg Baach, 2007-2008 GPL
+ 
+ This program is free software; you can redistribute it and/or modify
+ it under the terms of the GNU General Public License as published by
+ the Free Software Foundation; either version 2 of the License, or
+ (at your option) any later version.
+
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ GNU General Public License for more details.
+
+ You should have received a copy of the GNU General Public License along
+ with this program; if not, write to the Free Software Foundation, Inc.,
+ 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
+ http://www.gnu.org/copyleft/gpl.html
+*/
 
 if( !defined('MEDIAWIKI') ) {
 	echo "FlaggedRevs extension\n";
@@ -20,12 +37,19 @@ if( !defined('FLAGGED_VIS_LATEST') )
 # Pristine -> Quality -> Sighted
 if( !defined('FLAGGED_VIS_PRISTINE') )
 	define('FLAGGED_VIS_PRISTINE',2);
+	
+if( !defined('FR_FOR_UPDATE') )
+	define('FR_FOR_UPDATE',1);
+if( !defined('FR_TEXT') )
+	define('FR_TEXT',2);
 
 $wgExtensionCredits['specialpage'][] = array(
-	'name' => 'Flagged Revisions',
-	'author' => array( 'Aaron Schulz', 'Joerg Baach' ),
-	'version' => '1.091',
-	'url' => 'http://www.mediawiki.org/wiki/Extension:FlaggedRevs',
+	'name'           => 'Flagged Revisions',
+	'author'         => array( 'Aaron Schulz', 'Joerg Baach' ),
+	'version'        => '1.094',
+	'svn-date'       => '$LastChangedDate: 2008-08-08 04:53:04 -0400 (Fri, 08 Aug 2008) $',
+	'svn-revision'   => '$LastChangedRevision: 38863 $',
+	'url'            => 'http://www.mediawiki.org/wiki/Extension:FlaggedRevs',
 	'descriptionmsg' => 'flaggedrevs-desc',
 );
 
@@ -164,18 +188,18 @@ $wgGroupPermissions['autoconfirmed']['autopatrolother'] = true;
 # edits Y (spacing) days apart.
 $wgFlaggedRevsAutopromote = array(
 	'days'	              => 60, # days since registration
-	'edits'	              => 150, # total edit count
+	'edits'	              => 350, # total edit count
 	'excludeDeleted'      => true, # exclude deleted edits from 'edits' count above?
 	'spacing'	          => 3, # spacing of edit intervals
 	'benchmarks'          => 15, # how many edit intervals are needed?
 	'recentContentEdits'  => 10, # $wgContentNamespaces edits in recent changes
-	'totalContentEdits'   => 30, # $wgContentNamespaces edits
+	'totalContentEdits'   => 300, # $wgContentNamespaces edits
 	'uniqueContentPages'  => 10, # $wgContentNamespaces unique pages edited
-	'editComments'        => 5, # how many edit comments used?
+	'editComments'        => 50, # how many edit comments used?
 	'email'	              => true, # user must be emailconfirmed?
 	'userpage'            => true, # user must have a userpage?
 	'userpageBytes'       => 100, # if userpage is needed, what is the min size?
-	'uniqueIPAddress'     => true, # If $wgPutIPinRC is true, users sharing IPs won't be promoted
+	'uniqueIPAddress'     => false, # If $wgPutIPinRC is true, users sharing IPs won't be promoted
 	'neverBlocked'        => true, # Can users that were blocked be promoted?
 	'noSorbsMatches'      => false, # If $wgSorbsUrl is set, do not promote users that match
 );
@@ -213,12 +237,16 @@ $wgFlaggedRevsTalkVisible = true;
 # Users that can use the feedback form.
 $wgGroupPermissions['*']['feedback'] = false;
 
+# Allow readers to rate pages in these namespaces
+$wgFeedbackNamespaces = array( NS_MAIN );
 # Reader feedback tags, positive and negative. [a-zA-Z] tag names only.
 # Each tag has five levels, which 3 being average. The tag names are
 # mapped to their weight. This is used to determine the "worst"/"best" pages.
 $wgFlaggedRevsFeedbackTags = array( 'reliability' => 3, 'completeness' => 2, 'npov' => 2, 'presentation' => 1 );
 # How many days back should the average rating for a page be based on?
 $wgFlaggedRevsFeedbackAge = 7 * 24 * 3600;
+# How long before stats page is updated?
+$wgFlaggedRevsStatsAge = 2 * 3600; // 2 hours
 
 $wgPHPlotDir = dirname(__FILE__) . '/phplot-5.0.5';
 
@@ -226,7 +254,7 @@ $wgPHPlotDir = dirname(__FILE__) . '/phplot-5.0.5';
 #########
 
 # Bump this number every time you change flaggedrevs.css/flaggedrevs.js
-$wgFlaggedRevStyleVersion = 28;
+$wgFlaggedRevStyleVersion = 35;
 
 $wgExtensionFunctions[] = 'efLoadFlaggedRevs';
 
@@ -235,7 +263,7 @@ $langDir = dirname(__FILE__) . '/language/';
 
 $wgAutoloadClasses['FlaggedRevs'] = $dir.'FlaggedRevs.class.php';
 $wgExtensionMessagesFiles['FlaggedRevs'] = $langDir . 'FlaggedRevs.i18n.php';
-$wgExtensionMessagesFiles['FlaggedRevsAliases'] = $langDir . 'FlaggedRevsAliases.i18n.php';
+$wgExtensionAliasesFiles['FlaggedRevs'] = $langDir . 'FlaggedRevs.i18n.alias.php';
 
 # Load general UI
 $wgAutoloadClasses['FlaggedRevsXML'] = $dir . 'FlaggedRevsXML.php';
@@ -292,6 +320,11 @@ $wgSpecialPages['ProblemPages'] = 'ProblemPages';
 $wgAutoloadClasses['ProblemPages'] = $dir . '/specialpages/ProblemPages_body.php';
 $wgExtensionMessagesFiles['ProblemPages'] = $langDir . 'ProblemPages.i18n.php';
 $wgSpecialPageGroups['ProblemPages'] = 'quality';
+# Statistics
+$wgSpecialPages['ValidationStatistics'] = 'ValidationStatistics';
+$wgAutoloadClasses['ValidationStatistics'] = $dir . '/specialpages/ValidationStatistics_body.php';
+$wgExtensionMessagesFiles['ValidationStatistics'] = $langDir . 'ValidationStatistics.i18n.php';
+$wgSpecialPageGroups['ValidationStatistics'] = 'quality';
 
 ######### Hook attachments #########
 # Remove stand-alone patrolling
@@ -368,9 +401,6 @@ $wgHooks['EditPage::showEditForm:initial'][] = 'FlaggedRevs::injectStyleAndJS';
 $wgHooks['PageHistoryBeforeList'][] = 'FlaggedRevs::injectStyleAndJS';
 $wgHooks['BeforePageDisplay'][] = 'FlaggedRevs::InjectStyleForSpecial';
 
-# Set aliases
-$wgHooks['LanguageGetSpecialPageAliases'][] = 'FlaggedRevs::addLocalizedSpecialPageNames';
-
 # File cache
 $wgHooks['IsFileCacheable'][] = 'FlaggedRevs::isFileCacheable';
 
@@ -381,8 +411,7 @@ $wgHooks['ParserTestTables'][] = 'FlaggedRevs::onParserTestTables';
 
 function efLoadFlaggedRevs() {
 	global $wgUseRCPatrol;
-	wfLoadExtensionMessages( 'FlaggedRevs' );
-	wfLoadExtensionMessages( 'FlaggedRevsAliases' );
+	// wfLoadExtensionMessages( 'FlaggedRevs' );
 	# Use RC Patrolling to check for vandalism
 	# When revisions are flagged, they count as patrolled
 	$wgUseRCPatrol = true;
@@ -409,6 +438,11 @@ $wgLogHeaders['stable'] = 'stable-logpagetext';
 $wgLogActions['stable/config'] = 'stable-logentry';
 $wgLogActions['stable/reset'] = 'stable-logentry2';
 
+# AJAX functions
+$wgAjaxExportList[] = 'ReaderFeedback::AjaxReview';
+$wgAjaxExportList[] = 'RevisionReview::AjaxReview';
+
+
 # B/C ...
 $wgLogActions['rights/erevoke']  = 'rights-editor-revoke';
 
@@ -424,12 +458,14 @@ function efFlaggedRevsSchemaUpdates() {
 		$wgExtNewTables[] = array( 'flaggedrevs_promote', "$base/archives/patch-flaggedrevs_promote.sql" );
 		$wgExtNewTables[] = array( 'flaggedpages', "$base/archives/patch-flaggedpages.sql" );
 		$wgExtNewFields[] = array( 'flaggedrevs', 'fr_img_name', "$base/archives/patch-fr_img_name.sql" );
+		$wgExtNewTables[] = array( 'reader_feedback', "$base/archives/patch-reader_feedback.sql" );
 	} else if( $wgDBtype == 'postgres' ) {
 		$wgExtPGNewFields[] = array('flaggedpage_config', 'fpc_expiry', "TIMESTAMPTZ NULL" );
 		$wgExtNewIndexes[] = array('flaggedpage_config', 'fpc_expiry', "$base/postgres/patch-expiry-index.sql" );
 		$wgExtNewTables[] = array( 'flaggedrevs_promote', "$base/postgres/patch-flaggedrevs_promote.sql" );
 		$wgExtNewTables[] = array( 'flaggedpages', "$base/postgres/patch-flaggedpages.sql" );
 		$wgExtNewIndexes[] = array('flaggedrevs', 'key_timestamp', "$base/postgres/patch-fr_img_name.sql" );
+		$wgExtNewTables[] = array( 'reader_feedback', "$base/postgres/patch-reader_feedback.sql" );
 	}
 	return true;
 }

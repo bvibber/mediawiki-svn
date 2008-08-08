@@ -48,10 +48,10 @@ $messages['an'] = array(
  */
 $messages['ar'] = array(
 	'stableversions'        => 'عرض النسخ المستقرة',
-	'stableversions-leg1'   => 'عرض النسخ المراجعة لصفحة',
+	'stableversions-leg1'   => 'عرض المراجعات المراجعة لصفحة',
 	'stableversions-page'   => 'اسم الصفحة',
-	'stableversions-none'   => '[[:$1]] لا يوجد بها نسخ مراجعة.',
-	'stableversions-list'   => 'هذه قائمة بنسخ صفحة [[:$1]] التي تم مراجعتها:',
+	'stableversions-none'   => '[[:$1]] لا يوجد بها مراجعات مراجعة.',
+	'stableversions-list'   => 'هذه قائمة بمراجعات صفحة [[:$1]] التي تمت مراجعتها:',
 	'stableversions-review' => 'تمت مراجعتها في <i>$1</i> بواسطة $2',
 );
 
@@ -195,9 +195,16 @@ $messages['fa'] = array(
 
 /** Finnish (Suomi)
  * @author Crt
+ * @author Jaakonam
+ * @author Nike
  */
 $messages['fi'] = array(
-	'stableversions' => 'Näytä vakaat versiot',
+	'stableversions'        => 'Näytä vakaat versiot',
+	'stableversions-leg1'   => 'Näytä sivun tarkastetut versiot',
+	'stableversions-page'   => 'Sivun nimi',
+	'stableversions-none'   => 'Sivusta "[[:$1]]" ei ole tarkastettuja versioita.',
+	'stableversions-list'   => 'Seuraavassa luettelossa on kaikki sivun [[:$1]] tarkastetut versiot:',
+	'stableversions-review' => '$1 arvioi sivun <i>$1</i>',
 );
 
 /** French (Français)
@@ -223,6 +230,13 @@ $messages['frp'] = array(
 	'stableversions-none'   => '« [[:$1]] » at pas de vèrsions rèvisâs.',
 	'stableversions-list'   => 'La lista que siut contint des vèrsions de « [[:$1]] » qu’ont étâ rèvisâs :',
 	'stableversions-review' => 'Rèvisâ lo <i>$1</i> per $2',
+);
+
+/** Western Frisian (Frysk)
+ * @author Snakesteuben
+ */
+$messages['fy'] = array(
+	'stableversions-page' => 'Sidenamme:',
 );
 
 /** Galician (Galego)
@@ -314,6 +328,18 @@ $messages['id'] = array(
 $messages['is'] = array(
 	'stableversions'      => 'Stöðugar útgáfur',
 	'stableversions-page' => 'Titill síðu:',
+);
+
+/** Italian (Italiano)
+ * @author Darth Kule
+ */
+$messages['it'] = array(
+	'stableversions'        => 'Visualizza versioni stabili',
+	'stableversions-leg1'   => 'Elenco delle versioni revisionate per una pagina',
+	'stableversions-page'   => 'Nome della pagina:',
+	'stableversions-none'   => '"[[:$1]]" non ha versioni revisionate.',
+	'stableversions-list'   => 'Di seguito è riportato un elenco delle versioni di [[:$1]] che sono state revisionate:',
+	'stableversions-review' => 'Revisionata il <i>$1</i> da $2',
 );
 
 /** Japanese (日本語)
@@ -489,7 +515,12 @@ $messages['nn'] = array(
  * @author Jon Harald Søby
  */
 $messages['no'] = array(
-	'stableversions-page' => 'Sidenavn:',
+	'stableversions'        => 'Vis stabile versjoner',
+	'stableversions-leg1'   => 'List anmeldte versjoner av en side',
+	'stableversions-page'   => 'Sidenavn:',
+	'stableversions-none'   => '«[[:$1]]» har ingen anmeldte versjoner.',
+	'stableversions-list'   => 'Følgende er en liste over anmeldte versjoner av [[:$1]]:',
+	'stableversions-review' => 'Anmeldt <i>$1</i> av $2',
 );
 
 /** Northern Sotho (Sesotho sa Leboa)
@@ -507,7 +538,7 @@ $messages['oc'] = array(
 	'stableversions-leg1'   => "Darrièras revisions revistas d'una pagina",
 	'stableversions-page'   => 'Nom de la pagina :',
 	'stableversions-none'   => 'La lista que seguís conten de versions de « [[:$1]] » que son estadas revisadas :',
-	'stableversions-list'   => "Revisada lo ''$1'' per $2",
+	'stableversions-list'   => 'La tièra que seguís conten de versions de « [[:$1]] » que son estadas revisadas :',
 	'stableversions-review' => "Revisada lo ''$1'' per $2",
 );
 

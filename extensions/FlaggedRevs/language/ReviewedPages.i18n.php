@@ -46,7 +46,7 @@ $messages['ar'] = array(
 	'reviewedpages-lev-1' => 'جودة',
 	'reviewedpages-lev-2' => 'مختارة',
 	'reviewedpages-all'   => 'نسخ مراجعة',
-	'reviewedpages-best'  => 'نسخة فائقة',
+	'reviewedpages-best'  => 'مراجعة فائقة',
 );
 
 /** Asturian (Asturianu)
@@ -340,6 +340,15 @@ $messages['is'] = array(
 	'reviewedpages-lev-1' => 'Gæði',
 );
 
+/** Italian (Italiano)
+ * @author Darth Kule
+ */
+$messages['it'] = array(
+	'reviewedpages'      => 'Pagine revisionate',
+	'reviewedpages-none' => 'Non ci sono pagine in questo elenco',
+	'reviewedpages-all'  => 'versioni revisionate',
+);
+
 /** Japanese (日本語)
  * @author JtFuruhata
  */
@@ -511,8 +520,14 @@ $messages['nl'] = array(
  * @author EivindJ
  */
 $messages['no'] = array(
+	'reviewedpages'       => 'Anmeldte sider',
+	'reviewedpages-leg'   => 'Vis sider anmeldt med et visst nivå',
+	'reviewedpages-list'  => 'Følgende sider har blitt anmeldt, og har det angitte nivået',
 	'reviewedpages-none'  => 'Det er ingen sider i denne listen',
+	'reviewedpages-lev-0' => 'Sjekket',
 	'reviewedpages-lev-1' => 'Kvalitet',
+	'reviewedpages-lev-2' => 'Utmerket',
+	'reviewedpages-all'   => 'anmeldte sideversjoner',
 	'reviewedpages-best'  => 'primærversjon',
 );
 

@@ -347,12 +347,16 @@ $messages['hsb'] = array(
 /** Hungarian (Magyar)
  * @author Dani
  * @author KossuthRad
+ * @author Samat
  */
 $messages['hu'] = array(
-	'unreviewedpages'     => 'Ellenőrizetlen lapok',
-	'unreviewed-category' => 'Kategória:',
-	'unreviewed-diff'     => 'Eltérések',
-	'unreviewed-list'     => 'Ez az oldal azokat a lapokat tartalmazza, amelyek még nem lettek ellenőrizve, vagy rendelkeznek új, ellenőrizetlen változatokkal.',
+	'right-unreviewedpages' => 'Ellenőrizetlen lapok listájának megtekintése',
+	'unreviewedpages'       => 'Ellenőrizetlen lapok',
+	'unreviewed-legend'     => 'Nem ellenőrzött tartalmú lapok listája',
+	'unreviewed-category'   => 'Kategória:',
+	'unreviewed-diff'       => 'Eltérések',
+	'unreviewed-list'       => 'Ez az oldal azokat a lapokat tartalmazza, amelyek még nem lettek ellenőrizve, vagy rendelkeznek új, ellenőrizetlen változatokkal.',
+	'unreviewed-none'       => 'Jelenleg nincs ezeknek a feltételeknek megfelelő oldal.',
 );
 
 /** Indonesian (Bahasa Indonesia)
@@ -376,6 +380,21 @@ $messages['id'] = array(
 $messages['is'] = array(
 	'unreviewed-category' => 'Flokkur:',
 	'unreviewed-diff'     => 'Breytingar',
+);
+
+/** Italian (Italiano)
+ * @author Darth Kule
+ * @author Melos
+ */
+$messages['it'] = array(
+	'right-unreviewedpages' => "Visualizza l'elenco delle pagine non revisionate",
+	'unreviewedpages'       => 'Pagine non revisionate',
+	'unreviewed-legend'     => 'Elenco delle pagine non revisionate',
+	'unreviewed-category'   => 'Categoria:',
+	'unreviewed-unwatched'  => '(non osservata)',
+	'unreviewed-watched'    => '(osservata da $2 {{PLURAL:$1|utente|utenti}})',
+	'unreviewed-list'       => 'Di seguito sono riportati gli articoli che non sono stati revisionati.',
+	'unreviewed-none'       => 'Al momento non ci sono pagine che soddisfino i criteri di ricerca.',
 );
 
 /** Japanese (日本語)
@@ -581,7 +600,14 @@ $messages['nn'] = array(
  */
 $messages['no'] = array(
 	'right-unreviewedpages' => 'Vise liste over uanmeldte sider',
+	'unreviewedpages'       => 'Uanmeldte sider',
+	'unreviewed-legend'     => 'List uanmeldte innholdssider',
 	'unreviewed-category'   => 'Kategori:',
+	'unreviewed-diff'       => 'anmeld',
+	'unreviewed-unwatched'  => '(uovervåket)',
+	'unreviewed-watched'    => '($2 overvåkende {{PLURAL:$1|bruker|brukere}})',
+	'unreviewed-list'       => 'Denne siden viser artikler som ikke har blitt anmeldt.',
+	'unreviewed-none'       => 'Det er ingen sider som passer med disse kriteriene',
 );
 
 /** Northern Sotho (Sesotho sa Leboa)

@@ -55,8 +55,8 @@ $messages['an'] = array(
  */
 $messages['ar'] = array(
 	'oldreviewedpages'           => 'صفحات مراجعة قديمة',
-	'oldreviewedpages-legend'    => 'عرض الصفحات المراجعة ذات نسخ غير مراجعة',
-	'oldreviewedpages-list'      => 'هذه الصفحة تعرض الصفحات المراجعة التي لديها تعديلات قيد الانتظار.',
+	'oldreviewedpages-legend'    => 'عرض الصفحات المراجعة ذات المراجعات غير المراجعة',
+	'oldreviewedpages-list'      => 'هذه الصفحة تعرض الصفحات المراجعة التي بها تعديلات قيد الانتظار.',
 	'oldreviewedpages-none'      => 'لا توجد حاليا صفحات تطابق هذه المواصفات',
 	'oldreviewedpages-stable'    => 'منظورة',
 	'oldreviewedpages-quality'   => 'جودة',
@@ -156,6 +156,16 @@ $messages['de'] = array(
 	'oldreviewedpages-watched'   => '(von $2 {{PLURAL:$1|Benutzer|Benutzern}} beobachtet)',
 );
 
+/** Greek (Ελληνικά)
+ * @author Consta
+ */
+$messages['el'] = array(
+	'oldreviewedpages-hours'  => '($1 {{PLURAL:$1|ώρα|ώρες}})',
+	'oldreviewedpages-days'   => '($1 {{PLURAL:$1|ημέρα|ημέρες}})',
+	'oldreviewedpages-recent' => '(λιγότερο από 1 ώρα)',
+	'oldreviewed-category'    => 'Κατηγορία:',
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */
@@ -193,6 +203,22 @@ $messages['fa'] = array(
 	'oldreviewed-diff'           => 'بازبینی',
 	'oldreviewedpages-unwatched' => '(پیگیری نشده)',
 	'oldreviewedpages-watched'   => '(پیگیری شده توسط $2 {{PLURAL:$1|کاربر|کاربر}})',
+);
+
+/** Finnish (Suomi)
+ * @author Jaakonam
+ */
+$messages['fi'] = array(
+	'oldreviewedpages'           => 'Vanhentuneita tarkastettuja sivuja',
+	'oldreviewedpages-legend'    => 'Luettelo tarkastetuista sivuista, joista on tarkastamattomia versioita',
+	'oldreviewedpages-list'      => 'Luettelo tarkastetuista sivuista, joihin on vielä odotettavissa muokkauksia.',
+	'oldreviewedpages-none'      => 'Ehdot täyttäviä sivuja ei ole',
+	'oldreviewedpages-hours'     => '($1 {{PLURAL:$1|tunti|tuntia}})',
+	'oldreviewedpages-days'      => '($1 {{PLURAL:$1|päivä|päivää}})',
+	'oldreviewedpages-recent'    => '(alle 1 tunti)',
+	'oldreviewed-category'       => 'Luokka:',
+	'oldreviewedpages-unwatched' => '(tarkkailematon)',
+	'oldreviewedpages-watched'   => '($2 {{PLURAL:$1|käyttäjä|käyttäjää}} tarkkailee)',
 );
 
 /** French (Français)
@@ -283,6 +309,23 @@ $messages['id'] = array(
 	'oldreviewed-diff'           => 'meninjau',
 	'oldreviewedpages-unwatched' => '(tidak dipantau)',
 	'oldreviewedpages-watched'   => '(dipantau $2 {{PLURAL:$1|pengguna|pengguna}})',
+);
+
+/** Italian (Italiano)
+ * @author Darth Kule
+ * @author Melos
+ */
+$messages['it'] = array(
+	'oldreviewedpages'           => 'Pagine non revisionate di recente',
+	'oldreviewedpages-legend'    => 'Elenco delle pagine revisionate ma con versioni non revisionate',
+	'oldreviewedpages-none'      => 'Al momento non ci sono pagine che soddisfino i criteri di ricerca.',
+	'oldreviewedpages-quality'   => 'qualità',
+	'oldreviewedpages-hours'     => '($1 {{PLURAL:$1|ora|ore}})',
+	'oldreviewedpages-days'      => '($1 {{PLURAL:$1|giorno|giorni}})',
+	'oldreviewedpages-recent'    => "(meno di un'ora)",
+	'oldreviewed-category'       => 'Categoria:',
+	'oldreviewedpages-unwatched' => '(non osservata)',
+	'oldreviewedpages-watched'   => '(osservata da $2 {{PLURAL:$1|utente|utenti}})',
 );
 
 /** Khmer (ភាសាខ្មែរ)
@@ -405,9 +448,22 @@ $messages['nl'] = array(
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author EivindJ
+ * @author Jon Harald Søby
  */
 $messages['no'] = array(
-	'oldreviewed-category' => 'Kategori:',
+	'oldreviewedpages'           => 'Utdaterte anmeldte sider',
+	'oldreviewedpages-legend'    => 'Vis anmeldte sider med uanmeldte sideversjoner',
+	'oldreviewedpages-list'      => 'Denne siden viser anmeldte sider som har ventende redigeringer.',
+	'oldreviewedpages-none'      => 'Det er for tiden ingen sider som passer med disse kriteriene',
+	'oldreviewedpages-stable'    => 'sjekket',
+	'oldreviewedpages-quality'   => 'kvalitet',
+	'oldreviewedpages-hours'     => '($1 {{PLURAL:$1|time|timer}})',
+	'oldreviewedpages-days'      => '($1 {{PLURAL:$1|dag|dager}})',
+	'oldreviewedpages-recent'    => '(under én time)',
+	'oldreviewed-category'       => 'Kategori:',
+	'oldreviewed-diff'           => 'anmeld',
+	'oldreviewedpages-unwatched' => '(ikke overvåket)',
+	'oldreviewedpages-watched'   => '($2 overvåkende {{PLURAL:$1|bruker|brukere}})',
 );
 
 /** Occitan (Occitan)

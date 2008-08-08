@@ -21,7 +21,7 @@ class FlaggedRevs {
 		}
 		foreach( $wgFlaggedRevTags as $tag => $minQL ) {
 			$safeTag = htmlspecialchars($tag);
-			if( strpos($tag,':') || strpos($tag,"\n") || strpos($tag,'\n') || $safeTag !== $tag ) {
+			if( !preg_match('/^[a-zA-Z]{1,20}$/',$tag) || $safeTag !== $tag ) {
 				throw new MWException( 'FlaggedRevs given invalid tag name!' );
 			} else if( intval($minQL) != $minQL ) {
 				throw new MWException( 'FlaggedRevs given invalid tag value!' );
@@ -97,13 +97,40 @@ class FlaggedRevs {
 	}
 	
 	/**
+	 * Should this user see stable versions by default?
+	 * @returns bool
+	 */
+	public static function showStableByDefault() {
+		global $wgFlaggedRevsOverride;
+		return (bool)$wgFlaggedRevsOverride;
+	}
+	
+	/**
+	 * Should this user ignore the site and page default version settings?
+	 * @returns bool
+	 */
+	public static function ignoreDefaultVersion() {
+		global $wgFlaggedRevsExceptions, $wgUser;
+		# Viewer sees current by default (editors, insiders, ect...) ?
+		foreach( $wgFlaggedRevsExceptions as $group ) {
+			if( $group == 'user' ) {
+				if( !$wgUser->isAnon() )
+					return true;
+			} else if( in_array( $group, $wgUser->getGroups() ) ) {
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	/**
 	 * Should tags only be shown for unreviewed content for this user?
 	 * @returns bool
 	 */
 	public static function lowProfileUI() {
 		global $wgUser, $wgFlaggedRevsLowProfile;
 		self::load();
-		return (!$wgUser->getId() && $wgFlaggedRevsLowProfile);
+		return $wgFlaggedRevsLowProfile;
 	}
 	/**
 	 * Should comments be allowed on pages and forms?
@@ -150,7 +177,7 @@ class FlaggedRevs {
 	 */
 	public static function getTagMsg( $tag ) {
 		self::load();
-		return "revreview-$tag";
+		return wfMsgHtml("revreview-$tag");
 	}
 	
 	/**
@@ -538,7 +565,7 @@ class FlaggedRevs {
 			$count = is_integer($val) ? $val : null;
 		}
 		if( is_null($count) ) {
-			$db = $forUpdate ? wfGetDB( DB_MASTER) : wfGetDB( DB_SLAVE );
+			$db = $forUpdate ? wfGetDB( DB_MASTER ) : wfGetDB( DB_SLAVE );
 			$count = $db->selectField( 'revision', 'COUNT(*)',
 				array('rev_page' => $article->getId(), "rev_id > " . intval($revId) ),
 				__METHOD__ );
@@ -552,20 +579,21 @@ class FlaggedRevs {
 	 * @param Article $article
 	 * @param string $tag
 	 * @param bool $forUpdate, use master?
-	 * @return real
+	 * @return array(real,int)
 	 * Get article rating for this tag for the last few days
 	 */
-	function getAverageRating( $article, $tag, $forUpdate=false ) {
+	public static function getAverageRating( $article, $tag, $forUpdate=false ) {
 		global $wgFlaggedRevsFeedbackAge;
 		$cutoff_unixtime = time() - $wgFlaggedRevsFeedbackAge;
 		$cutoff_unixtime = $cutoff_unixtime - ($cutoff_unixtime % 86400);
 		$db = $forUpdate ? wfGetDB( DB_MASTER ) : wfGetDB( DB_SLAVE );
-		$average = $db->selectField( 'reader_feedback_history', 
-			'SUM(rfh_total)/SUM(rfh_count)',
+		$row = $db->selectRow( 'reader_feedback_history', 
+			array('SUM(rfh_total)/SUM(rfh_count) AS ave, SUM(rfh_total) AS count'),
 			array( 'rfh_page_id' => $article->getId(), 'rfh_tag' => $tag,
 				"rfh_date >= {$cutoff_unixtime}" ),
 			__METHOD__ );
-		return $average;
+		$data = $row ? array($row->ave,$row->count) : array(0,0);
+		return $data;
 	}
 	
  	/**
@@ -810,6 +838,22 @@ class FlaggedRevs {
 	}
 	
 	/**
+	* Is this page in rateable namespace?
+	* @param Title, $title
+	* @return bool
+	*/
+	public static function isPageRateable( $title ) {
+		global $wgFeedbackNamespaces, $wgFlaggedRevsWhitelist;
+		# FIXME: Treat NS_MEDIA as NS_IMAGE
+		$ns = ( $title->getNamespace() == NS_MEDIA ) ? NS_IMAGE : $title->getNamespace();
+		# Check whitelist for exempt pages
+		if( in_array( $title->getPrefixedDBKey(), $wgFlaggedRevsWhitelist ) ) {
+			return false;
+		}
+		return ( in_array($ns,$wgFeedbackNamespaces) && !$title->isTalkPage() && $ns != NS_MEDIAWIKI );
+	}
+	
+	/**
 	* Is this page in patrolable namespace?
 	* @param Title, $title
 	* @return bool
@@ -842,26 +886,6 @@ class FlaggedRevs {
 			return array("","");
 		}
 		return array($link,$css);
-	}
-	
-	/**
-	 * Get JS script params for onloading
-	 */
-	public static function getJSTagParams() {
-		# Param to pass to JS function to know if tags are at quality level
-		global $wgFlaggedRevTags;
-		$params = array( 'tags' => (object)$wgFlaggedRevTags );
-		return Xml::encodeJsVar( (object)$params );
-	}
-	
-	/**
-	 * Get JS script params for onloading
-	 */
-	public static function getJSFeedbackParams() {
-		# Param to pass to JS function to know if tags are at quality level
-		global $wgFlaggedRevsFeedbackTags;
-		$params = array( 'tags' => (object)$wgFlaggedRevsFeedbackTags );
-		return Xml::encodeJsVar( (object)$params );
 	}
 	
    	/**
@@ -907,6 +931,29 @@ class FlaggedRevs {
 		return ( $dbw->affectedRows() > 0 );
 	}
 	
+	public static function userAlreadyVoted( $title ) {
+		global $wgUser;
+		$dbw = wfGetDB( DB_MASTER );
+		# Check if user already voted before...
+		if( $wgUser->getId() ) {
+			$userVoted = $dbw->selectField( array('reader_feedback','page'), '1', 
+				array( 'page_namespace' => $title->getNamespace(),
+					'page_title' => $title->getDBKey(),
+					'rfb_rev_id = page_latest', 
+					'rfb_user' => $wgUser->getId() ), 
+				__METHOD__ );
+		} else {
+			$userVoted = $dbw->selectField( array('reader_feedback','page'), '1', 
+				array( 'page_namespace' => $title->getNamespace(),
+					'page_title' => $title->getDBKey(),
+					'rfb_rev_id = page_latest', 
+					'rfb_user' => 0, 
+					'rfb_ip' => wfGetIP() ), 
+				__METHOD__ );
+		}
+		return (bool)$userVoted;
+	}
+	
 	################# Auto-review function #################
 
 	/**
@@ -931,7 +978,7 @@ class FlaggedRevs {
 		$title = $article->getTitle();
 		
 		# Get current stable version ID (for logging)
-		$oldSv = FlaggedRevision::newFromStable( $title, false, true );
+		$oldSv = FlaggedRevision::newFromStable( $title, FR_TEXT | FR_FOR_UPDATE );
 		$oldSvId = $oldSv ? $oldSv->getRevId() : 0;
 		
 		# Rev ID is not put into parser on edit, so do the same here.
@@ -1054,7 +1101,7 @@ class FlaggedRevs {
 
 		# If we know that this is now the new stable version 
 		# (which it probably is), save it to the cache...
-		$sv = FlaggedRevision::newFromStable( $article->getTitle(), false, true );
+		$sv = FlaggedRevision::newFromStable( $article->getTitle(), FR_FOR_UPDATE );
 		if( $sv && $sv->getRevId() == $rev->getId() ) {
 			# Update stable cache
 			self::updatePageCache( $article, $poutput );
@@ -1102,10 +1149,22 @@ class FlaggedRevs {
 		$stylePath = str_replace( '$wgScriptPath', $wgScriptPath, $wgFlaggedRevsStylePath );
 		$rTags = self::getJSTagParams();
 		$fTags = self::getJSFeedbackParams();
-		$frev = $flaggedArticle->getStableRev( true );
+		$frev = $flaggedArticle->getStableRev( FR_TEXT );
 		$stableId = $frev ? $frev->getRevId() : 0;
 		$encCssFile = htmlspecialchars( "$stylePath/flaggedrevs.css?$wgFlaggedRevStyleVersion" );
 		$encJsFile = htmlspecialchars( "$stylePath/flaggedrevs.js?$wgFlaggedRevStyleVersion" );
+
+		$ajaxFeedback = Xml::encodeJsVar( (object) array( 
+			'sendingMsg' => wfMsgHtml('readerfeedback-submitting'), 
+			'sentMsg' => wfMsgHtml('readerfeedback-finished') 
+			)
+		);
+		$ajaxReview = Xml::encodeJsVar( (object) array( 
+			'sendingMsg' => wfMsgHtml('revreview-submitting'), 
+			'sentMsg' => wfMsgHtml('revreview-finished'),
+			'actioncomplete' => wfMsgHtml('actioncomplete')
+			)
+		);
 
 		$head = <<<EOT
 <link rel="stylesheet" type="text/css" media="screen, projection" href="$encCssFile"/>
@@ -1113,6 +1172,8 @@ class FlaggedRevs {
 var wgFlaggedRevsParams = $rTags;
 var wgFlaggedRevsParams2 = $fTags;
 var wgStableRevisionId = $stableId;
+var wgAjaxFeedback = $ajaxFeedback
+var wgAjaxReview = $ajaxReview
 </script>
 <script type="$wgJsMimeType" src="$encJsFile"></script>
 
@@ -1141,6 +1202,26 @@ EOT;
 EOT;
 		$wgOut->addHeadItem( 'FlaggedRevs', $head );
 		return true;
+	}
+	
+	/**
+	 * Get JS script params for onloading
+	 */
+	public static function getJSTagParams() {
+		# Param to pass to JS function to know if tags are at quality level
+		global $wgFlaggedRevTags;
+		$params = array( 'tags' => (object)$wgFlaggedRevTags );
+		return Xml::encodeJsVar( (object)$params );
+	}
+	
+	/**
+	 * Get JS script params for onloading
+	 */
+	public static function getJSFeedbackParams() {
+		# Param to pass to JS function to know if tags are at quality level
+		global $wgFlaggedRevsFeedbackTags;
+		$params = array( 'tags' => (object)$wgFlaggedRevsFeedbackTags );
+		return Xml::encodeJsVar( (object)$params );
 	}
 	
 	/**
@@ -1240,7 +1321,8 @@ EOT;
 		# Check if this page has a stable version by fetching it. Do not
 		# get the fr_text field if we are to use the latest stable template revisions.
 		global $wgUseStableTemplates;
-		$sv = FlaggedRevision::newFromStable( $linksUpdate->mTitle, !$wgUseStableTemplates, true );
+		$flags = $wgUseStableTemplates ? FR_FOR_UPDATE : FR_FOR_UPDATE | FR_TEXT;
+		$sv = FlaggedRevision::newFromStable( $linksUpdate->mTitle, $flags );
 		if( !$sv ) {
 			$dbw = wfGetDB( DB_MASTER );
 			$dbw->delete( 'flaggedpages', 
@@ -1343,9 +1425,9 @@ EOT;
 				__METHOD__ );
 		}
 		# Check cache before doing another DB hit...
-		if( !$id ) {
-			$id = self::getTemplateIdFromCache( $parser->getRevisionId(), $title->getNamespace(), $title->getDBKey() );
-			$id = is_null($id) ? false : $id;
+		$idP = self::getTemplateIdFromCache( $parser->getRevisionId(), $title->getNamespace(), $title->getDBKey() );
+		if( !is_null($idP) && (!$id || $idP > $id) ) {
+			$id = $idP;
 		}
 		# If there is no stable version (or that feature is not enabled), use
 		# the template revision during review time.
@@ -1391,17 +1473,19 @@ EOT;
 		$sha1 = "";
 		global $wgUseStableImages;
 		if( $wgUseStableImages && self::isPageReviewable( $title ) ) {
-			$srev = FlaggedRevision::newFromStable( $title, false, true );
+			$srev = FlaggedRevision::newFromStable( $title, FR_FOR_UPDATE );
 			if( $srev ) {
 				$time = $srev->getFileTimestamp();
 				$sha1 = $srev->getFileSha1();
 			}
 		}
 		# Check cache before doing another DB hit...
-		if( !$time ) {
-			$params = self::getFileVersionFromCache( $parser->getRevisionId(), $title->getDBKey() );
-			if( is_array($params) ) {
-				list($time,$sha1) = $params;
+		$params = self::getFileVersionFromCache( $parser->getRevisionId(), $title->getDBKey() );
+		if( is_array($params) ) {
+			list($timeP,$sha1) = $params;
+			// Take the newest one...
+			if( !$time || $timeP > $time ) {
+				$time = $timeP;
 			}
 		}
 		# If there is no stable version (or that feature is not enabled), use
@@ -1456,17 +1540,19 @@ EOT;
 		$sha1 = "";
 		global $wgUseStableImages;
 		if( $wgUseStableImages && self::isPageReviewable( $nt ) ) {
-			$srev = FlaggedRevision::newFromStable( $nt, false, true );
+			$srev = FlaggedRevision::newFromStable( $nt, FR_FOR_UPDATE );
 			if( $srev ) {
 				$time = $srev->getFileTimestamp();
 				$sha1 = $srev->getFileSha1();
 			}
 		}
 		# Check cache before doing another DB hit...
-		if( !$time ) {
-			$params = self::getFileVersionFromCache( $ig->mRevisionId, $nt->getDBKey() );
-			if( is_array($params) ) {
-				list($time,$sha1) = $params;
+		$params = self::getFileVersionFromCache( $ig->mRevisionId, $nt->getDBKey() );
+		if( is_array($params) ) {
+			list($timeP,$sha1) = $params;
+			// Take the newest one...
+			if( !$time || $timeP > $time ) {
+				$time = $timeP;
 			}
 		}
 		# If there is no stable version (or that feature is not enabled), use
@@ -1610,7 +1696,7 @@ EOT;
 		$flaggedArticle = FlaggedArticle::getTitleInstance( $title );
         if( $wgTitle && $wgTitle->equals( $title ) ) {
             // Cache stable version while we are at it.
-            if( $flaggedArticle->pageOverride() && $flaggedArticle->getStableRev( true ) ) {
+            if( $flaggedArticle->pageOverride() && $flaggedArticle->getStableRev( FR_TEXT ) ) {
                 $result = true;
             }
         } else {
@@ -1625,7 +1711,7 @@ EOT;
 	* When an edit is made by a reviewer, if the current revision is the stable
 	* version, try to automatically review it.
 	*/
-	public static function maybeMakeEditReviewed( $article, $rev, $baseRevID = false ) {
+	public static function maybeMakeEditReviewed( $article, $rev, $baseRevId = false ) {
 		global $wgFlaggedRevsAutoReview, $wgFlaggedRevsAutoReviewNew, $wgRequest;
 		# Get the user
 		$user = User::newFromId( $rev->getUser() );
@@ -1638,22 +1724,40 @@ EOT;
 		}
 		$frev = null;
 		$reviewableNewPage = false;
-		# Get the revision ID the incoming one was based off
-		if( !$baseRevID ) {
-			$baseRevID = $wgRequest->getIntOrNull('baseRevId');
-		}
+		# Avoid extra DB hit and lag issues
+		$title->resetArticleID( $rev->getPage() );
 		# Get what was just the current revision ID
-		$prevRevID = $title->getPreviousRevisionId( $rev->getId(), GAID_FOR_UPDATE );
+		$prevRevId = self::getPreviousRevisionId( $rev );
+		# Get the revision ID the incoming one was based off...
+		if( !$baseRevId && $prevRevId ) {
+			$prevTimestamp = Revision::getTimestampFromId( $prevRevId, $rev->getPage() ); // use PK
+			# Get edit timestamp. Existance already valided by EditPage.php. If 
+			# not present, then it shouldn't be, like null edits.
+			$editTimestamp = $wgRequest->getVal('wpEdittime');
+			# The user just made an edit. The one before that should have
+			# been the current version. If not reflected in wpEdittime, an
+			# edit may have been auto-merged in between, in that case, discard
+			# the baseRevId given from the client...
+			if( !$editTimestamp || $prevTimestamp == $editTimestamp ) {
+				$baseRevId = intval( trim( $wgRequest->getVal('baseRevId') ) );
+			}
+			# If baseRevId not given, assume the previous revision ID.
+			# For auto-merges, this also occurs since the given ID is ignored.
+			# Also for bots that don't submit everything...
+			if( !$baseRevId ) {
+				$baseRevId = $prevRevId;
+			}
+		}
 		// New pages
-		if( !$prevRevID ) {
+		if( !$prevRevId ) {
 			$reviewableNewPage = ( $wgFlaggedRevsAutoReviewNew && $user->isAllowed('review') );
 		// Edits to existing pages
-		} else if( $baseRevID ) {
-			$frev = FlaggedRevision::newFromTitle( $title, $baseRevID, false, true, $rev->getPage() );
+		} else if( $baseRevId ) {
+			$frev = FlaggedRevision::newFromTitle( $title, $baseRevId, FR_FOR_UPDATE );
 			# If the base revision was not reviewed, check if the previous one was.
 			# This should catch null edits as well as normal ones.
 			if( !$frev ) {
-				$frev = FlaggedRevision::newFromTitle( $title, $prevRevID, false, true, $rev->getPage() );
+				$frev = FlaggedRevision::newFromTitle( $title, $prevRevId, FR_FOR_UPDATE );
 			}
 		}
 		# Is this an edit directly to the stable version?
@@ -1667,6 +1771,23 @@ EOT;
 			self::autoReviewEdit( $article, $user, $rev->getText(), $rev, $flags, false );
 		}
 		return true;
+	}
+	
+	/**
+	* As used, this function should be lag safe
+	* @param Revision $revision
+	* @return int
+	*/
+	protected static function getPreviousRevisionID( $revision ) {
+		$db = wfGetDB( DB_MASTER );
+		return $db->selectField( 'revision', 'rev_id',
+			array(
+				'rev_page' => $revision->getPage(),
+				'rev_id < ' . $revision->getId()
+			),
+			__METHOD__,
+			array( 'ORDER BY' => 'rev_id DESC' )
+		);
 	}
 
 	/**
@@ -2049,7 +2170,7 @@ EOT;
 		} else {
 			# Get an instance on the title ($wgTitle) and save to process cache 
 			$flaggedArticle = FlaggedArticle::getTitleInstance( $title );
-			if( $flaggedArticle->pageOverride() && $srev = $flaggedArticle->getStableRev( true ) ) {
+			if( $flaggedArticle->pageOverride() && $srev = $flaggedArticle->getStableRev( FR_TEXT ) ) {
 				$text = $srev->getRevText();
 				$redirect = $flaggedArticle->followRedirectText( $text );
 				if( $redirect ) {
@@ -2073,6 +2194,7 @@ EOT;
 	public static function onBeforePageDisplay( $out ) {
 		$fa = FlaggedArticle::getGlobalInstance();
 		if( $fa && $out->isArticleRelated() ) {
+			$fa->addReviewNotes( $out );
 			$fa->addReviewForm( $out );
 			$fa->addFeedbackForm( $out );
 			$fa->addVisibilityLink( $out );
@@ -2154,32 +2276,16 @@ EOT;
 		return true;
 	}
 	
-	public static function addLocalizedSpecialPageNames( &$extendedSpecialPageAliases, $code ) {
-		wfLoadExtensionMessages( 'FlaggedRevsAliases' );
-		# The localized title of the special page is among the messages of the extension:
-		$specialPages = array( 'QualityOversight', 'ProblemPages', 'UnreviewedPages', 
-			'OldReviewedPages', 'StablePages', 'StableVersions', 'ReviewedPages' );
-		foreach( $specialPages as $specialPage ) {
-			$text = wfMsgExt( strtolower( "$specialPage-alias" ), array( 'escape', 'language' => $code ) );
-			$title = Title::newFromText($text);
-			if( $title ) {
-				$extendedSpecialPageAliases[$specialPage][] = $title->getDBKey();
-			}
-			$extendedSpecialPageAliases[$specialPage][] = $specialPage;
-		}
-		return true;
-	}
-	
 	public static function isFileCacheable( $article ) {
 		$fa = FlaggedArticle::getInstance( $article );
 		# If the stable is the default, and we are viewing it...cache it!
 		if( $fa->showStableByDefault() ) {
-			return ( $fa->pageOverride() && $fa->getStableRev( true ) );
+			return ( $fa->pageOverride() && $fa->getStableRev( FR_TEXT ) );
 		# If the draft is the default, and we are viewing it...cache it!
 		} else {
 			global $wgRequest;
 			# We don't want to cache the pending edit notice though
-			return !( $fa->pageOverride() && $fa->getStableRev( true ) ) && !$wgRequest->getVal('shownotice');
+			return !( $fa->pageOverride() && $fa->getStableRev( FR_TEXT ) ) && !$wgRequest->getVal('shownotice');
 		}
 	}
 
@@ -2190,6 +2296,9 @@ EOT;
 		$tables[] = 'flaggedtemplates';
 		$tables[] = 'flaggedimages';
 		$tables[] = 'flaggedrevs_promote';
+		$tables[] = 'reader_feedback';
+		$tables[] = 'reader_feedback_history';
+		$tables[] = 'reader_feedback_pages';
 		return true;
 	}
 }

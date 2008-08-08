@@ -47,10 +47,14 @@ $messages['bg'] = array(
 	'qualityoversight' => 'Качествен надзор',
 );
 
-/** German (Deutsch) */
+/** German (Deutsch)
+ * @author Raimond Spekking
+ * @author Raymond
+ */
 $messages['de'] = array(
-	'qualityoversight'      => 'Übersicht über geprüfte Versionen',
-	'qualityoversight-list' => 'Diese Seite zeigt die aktuellen Freigaben sowie den Widerruf geprüfter Versionen.',
+	'qualityoversight'        => 'Übersicht über geprüfte Versionen',
+	'qualityoversight-list'   => 'Diese Seite zeigt die aktuellen Freigaben sowie den Widerruf geprüfter Versionen.',
+	'qualityoversight-legend' => 'Suche in Versionsmarkierungen',
 );
 
 /** Esperanto (Esperanto)
@@ -104,6 +108,13 @@ $messages['id'] = array(
 	'qualityoversight-legend' => 'Cari log peninjauan terkini',
 );
 
+/** Italian (Italiano)
+ * @author Darth Kule
+ */
+$messages['it'] = array(
+	'qualityoversight-legend' => 'Cerca i log delle revisioni recenti',
+);
+
 /** Marathi (मराठी)
  * @author Kaustubh
  */
@@ -119,7 +130,7 @@ $messages['mr'] = array(
  */
 $messages['ms'] = array(
 	'qualityoversight'        => 'Kawalan mutu',
-	'qualityoversight-list'   => 'Berikut ialah senarai pengesahan dan pengguguran semakan yang paling terkini.',
+	'qualityoversight-list'   => 'Berikut ialah senarai terkini pengesahan dan pengguguran semakan.',
 	'qualityoversight-legend' => 'Gelintar log pemeriksaan terkini',
 );
 
@@ -132,12 +143,22 @@ $messages['nl'] = array(
 	'qualityoversight-legend' => 'Recente eindredactielogboeken bekijken',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ */
+$messages['no'] = array(
+	'qualityoversight'        => 'Oversikt over kvaliteten',
+	'qualityoversight-list'   => 'Denne siden viser de siste godkjenninger og degraderinger av sideversjoner.',
+	'qualityoversight-legend' => 'Søk logger etter de siste anmeldelsene',
+);
+
 /** Occitan (Occitan)
  * @author Cedric31
  */
 $messages['oc'] = array(
-	'qualityoversight'      => 'Qualitat supervisor',
-	'qualityoversight-list' => 'Aquesta pagina lista las aprobacions recentas de las versions de qualitat tant plan coma lors depreciacions.',
+	'qualityoversight'        => 'Qualitat supervisor',
+	'qualityoversight-list'   => 'Aquesta pagina lista las aprobacions recentas e las depreciacions de las versions.',
+	'qualityoversight-legend' => 'Recercar los jornals de las revisions recentas',
 );
 
 /** Portuguese (Português)
@@ -171,8 +192,9 @@ $messages['sk'] = array(
  * @author Millosh
  */
 $messages['sr-ec'] = array(
-	'qualityoversight'      => 'Надгледање квалитета',
-	'qualityoversight-list' => 'На овој страни се налази списак скоро одобрених квалитетних верија, као и застаревање квалитетних верзија.',
+	'qualityoversight'        => 'Надгледање квалитета',
+	'qualityoversight-list'   => 'На овој страни се налази списак скоро одобрених и потиснутих верзија.',
+	'qualityoversight-legend' => 'Претрага лога скорих прегледа.',
 );
 
 /** Swedish (Svenska)

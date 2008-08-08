@@ -3,8 +3,9 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 	echo "FlaggedRevs extension\n";
 	exit( 1 );
 }
-
 wfLoadExtensionMessages( 'Stabilization' );
+wfLoadExtensionMessages( 'FlaggedRevs' );
+
 class Stabilization extends UnlistedSpecialPage
 {
     function __construct() {
@@ -82,7 +83,7 @@ class Stabilization extends UnlistedSpecialPage
 	function showSettings( $err = null ) {
 		global $wgOut, $wgTitle, $wgUser;
 
-		$wgOut->setRobotpolicy( 'noindex,nofollow' );
+		$wgOut->setRobotPolicy( 'noindex,nofollow' );
 		# Must be a content page
 		if( !FlaggedRevs::isPageReviewable( $this->page ) ) {
 			$wgOut->addHTML( wfMsgExt('stableversions-none', array('parse'), $this->page->getPrefixedText() ) );
@@ -199,6 +200,7 @@ class Stabilization extends UnlistedSpecialPage
 		}
 
 		$dbw = wfGetDB( DB_MASTER );
+		$dbw->begin();
 		# Get current config
 		$row = $dbw->selectRow( 'flaggedpage_config',
 			array( 'fpc_select', 'fpc_override', 'fpc_expiry' ),
@@ -212,8 +214,8 @@ class Stabilization extends UnlistedSpecialPage
 				__METHOD__ );
 			$changed = ($dbw->affectedRows() != 0); // did this do anything?
 		# Otherwise, add a row unless we are just setting it as the site default, or it is the same the current one...
-		} else if( $this->select !=0 || $this->override !=$wgFlaggedRevsOverride ) {
-			if( $row->fpc_select != $this->select || $row->fpc_override != $this->override || $row->fpc_expiry !== $expiry ) {
+		} else if( $this->select !=0 || $this->override != $wgFlaggedRevsOverride ) {
+			if( !$row || $row->fpc_select != $this->select || $row->fpc_override != $this->override || $row->fpc_expiry != $expiry ) {
 				$changed = true;
 				$dbw->replace( 'flaggedpage_config',
 					array( 'PRIMARY' ),
@@ -224,7 +226,6 @@ class Stabilization extends UnlistedSpecialPage
 					__METHOD__ );
 			}
 		}
-
 		# Log if changed
 		# @FIXME: do this better
 		if( $changed ) {
@@ -233,32 +234,47 @@ class Stabilization extends UnlistedSpecialPage
 			$log = new LogPage( 'stable' );
 			# ID, accuracy, depth, style
 			$set = array();
-			$set[] = wfMsg( "stabilization-sel-short" ) . ": " .
-				wfMsg("stabilization-sel-short-{$this->select}");
-			$set[] = wfMsg( "stabilization-def-short" ) . ": " .
-				wfMsg("stabilization-def-short-{$this->override}");
+			$set[] = wfMsgForContent( "stabilization-sel-short" ) . ": " .
+				wfMsgForContent("stabilization-sel-short-{$this->select}");
+			$set[] = wfMsgForContent( "stabilization-def-short" ) . ": " .
+				wfMsgForContent("stabilization-def-short-{$this->override}");
 			$settings = '[' . implode(', ',$set). ']';
 
-			$comment = '';
+			$reason = '';
 			# Append comment with settings (other than for resets)
 			if( !$reset ) {
-				$comment = $this->comment ? "{$this->comment} $settings" : "$settings";
+				$reason = $this->comment ? "{$this->comment} $settings" : "$settings";
 
 				$encodedExpiry = Block::encodeExpiry($expiry, $dbw );
 				if( $encodedExpiry != 'infinity' ) {
 					$expiry_description = ' (' . wfMsgForContent( 'stabilize-expiring',
 						$wgContLang->timeanddate($expiry, false, false) ) . ')';
-					$comment .= "$expiry_description";
+					$reason .= "$expiry_description";
 				}
 			}
 
 			if( $reset ) {
-				$log->addEntry( 'reset', $this->page, $comment );
+				$log->addEntry( 'reset', $this->page, $reason );
+				$type = "stable-logentry2";
 			} else {
-				$log->addEntry( 'config', $this->page, $comment );
+				$log->addEntry( 'config', $this->page, $reason );
+				$type = "stable-logentry";
 			}
-		}
+			$comment = $wgContLang->ucfirst( wfMsgForContent( $type, $this->page->getPrefixedText() ) );
+			if( $reason ) {
+				$comment .= ": $reason";
+			}
 
+			$id = $this->page->getArticleId();
+			$latest = $this->page->getLatestRevID( GAID_FOR_UPDATE );
+			# Insert a null revision
+			$nullRevision = Revision::newNullRevision( $dbw, $id, $comment, true );
+			$nullRevId = $nullRevision->insertOn( $dbw );
+			# Update page record
+			$article = new Article( $this->page );
+			$article->updateRevisionOn( $dbw, $nullRevision, $latest );
+			wfRunHooks( 'NewRevisionFromEditComplete', array($article, $nullRevision, $latest) );
+		}
 		# Update the links tables as the stable version may now be the default page...
 		FlaggedRevs::titleLinksUpdate( $this->page );
 
@@ -267,6 +283,7 @@ class Stabilization extends UnlistedSpecialPage
 		} else {
 			$wgUser->removeWatch( $this->page );
 		}
+		$dbw->commit();
 
 		$wgOut->redirect( $this->page->getFullUrl() );
 
