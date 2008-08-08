@@ -15,13 +15,17 @@ $aliases['en'] = array(
 	'Oversight'    => array( 'Oversight' ),
 );
 
-/** Arabic (العربية) */
+/** Arabic (العربية)
+ * @author Meno25
+ */
 $aliases['ar'] = array(
 	'HideRevision' => array( 'إخفاء_نسخة' ),
 	'Oversight'    => array( 'أوفرسايت' ),
 );
 
-/** Egyptian Spoken Arabic (مصرى) */
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Meno25
+ */
 $aliases['arz'] = array(
 	'HideRevision' => array( 'إخفاء_نسخة' ),
 	'Oversight'    => array( 'أوفرسايت' ),

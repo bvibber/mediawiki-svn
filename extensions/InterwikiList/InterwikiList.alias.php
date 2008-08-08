@@ -14,12 +14,16 @@ $aliases['en'] = array(
 	'InterwikiList' => array('InterwikiList')
 );
 
-/** Arabic (العربية) */
+/** Arabic (العربية)
+ * @author Meno25
+ */
 $aliases['ar'] = array(
 	'InterwikiList' => array( 'قائمة_الإنترويكي' ),
 );
 
-/** Egyptian Spoken Arabic (مصرى) */
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Meno25
+ */
 $aliases['arz'] = array(
 	'InterwikiList' => array( 'قائمة_الإنترويكى' ),
 );

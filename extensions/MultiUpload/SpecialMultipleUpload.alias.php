@@ -14,12 +14,16 @@ $aliases['en'] = array(
 	'MultiUpload'            => array('MultiUpload')
 );
 
-/** Arabic (العربية) */
+/** Arabic (العربية)
+ * @author Meno25
+ */
 $aliases['ar'] = array(
 	'MultiUpload' => array( 'رفع_متعدد' ),
 );
 
-/** Egyptian Spoken Arabic (مصرى) */
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Meno25
+ */
 $aliases['arz'] = array(
 	'MultiUpload' => array( 'رفع_متعدد' ),
 );
