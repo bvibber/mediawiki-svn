@@ -123,6 +123,7 @@ $settings = array(
 		'localization' => array(
 			'wgAmericanDates' => 'bool',
 			'wgDisableLangConversion' => 'bool',
+			'wgDisableTitleConversion' => 'bool',
 			'wgEditEncoding' => 'text',
 			'wgForceUIMsgAsContentMsg' => 'array',
 			'wgInputEncoding' => 'text',
@@ -338,6 +339,7 @@ $settings = array(
 			'wgEnableWriteAPI' => 'bool',
 			'wgFilterCallback' => 'text',
 			'wgImplicitGroups' => 'array',
+			'wgPasswordAttemptThrottle' => 'array',
 			'wgPasswordSalt' => 'bool',
 			'wgReadOnly' => 'text',
 			'wgReadOnlyFile' => 'text',
@@ -603,6 +605,7 @@ $settings = array(
 			'wgFeedCacheTimeout' => 'int',
 			'wgFeedDiffCutoff' => 'int',
 			'wgFeedLimit' => 'int',
+			'wgOverrideSiteFeed' => 'array',
 		),
 	),
 	'copyright' => array(
@@ -753,6 +756,7 @@ $arrayDefs = array(
 	'wgGroupsAddToSelf' => 'group-array',
 	'wgGroupsRemoveFromSelf' => 'group-array',
 	'wgImplicitGroups' => 'simple',
+	'wgPasswordAttemptThrottle' => 'simple',
 	'wgRemoveGroups' => 'group-array',
 	'wgWhitelistRead' => 'simple',
 # Rate limits
@@ -790,6 +794,8 @@ $arrayDefs = array(
 # Users
 	'wgReservedUsernames' => 'simple',
 	'wgBrowserBlackList' => 'simple',
+# Feed
+	'wgOverrideSiteFeed' => 'assoc',
 # Special pages
 	'wgLogActions' => 'assoc',
 	'wgLogActionsHandlers' => 'assoc',
@@ -1133,6 +1139,9 @@ $settingsVersion = array(
 	'wgHandheldStyle' => array( array( '1.14alpha', '>=' ) ),
 	'wgHandheldForIPhone' => array( array( '1.14alpha', '>=' ) ),
 	'wgCleanSignatures' => array( array( '1.14alpha', '>=' ) ),
+	'wgDisableTitleConversion' => array( array( '1.14alpha', '>=' ) ),
+	'wgOverrideSiteFeed' => array( array( '1.14alpha', '>=' ) ),
+	'wgPasswordAttemptThrottle' => array( array( '1.14alpha', '>=' ) ),
 ## Obsolete
 	'wgProfileSampleRate' => array( array( '1.8alpha', '<' ) ),
 	'wgProfilerType' => array( array( '1.8alpha', '<' ) ),

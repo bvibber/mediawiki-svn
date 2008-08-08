@@ -17,7 +17,7 @@ $wgExtensionCredits['specialpage'][] = array(
 	'url' => 'http://www.mediawiki.org/wiki/Extension:Configure',
 	'description' => 'Allow authorised users to configure the wiki by a web-based interface',
 	'descriptionmsg' => 'configure-desc',
-	'version' => '0.6.6',
+	'version' => '0.6.7',
 );
 
 ## Configuration part
@@ -32,7 +32,7 @@ $wgConfigureFilesPath = "$IP/serialized";
  * Allow foreign wiki configuration? either:
  * - true: allow any wiki
  * - false: don't allow any wiki
- * - array: array of allowed wikis (e.g.$wgConfigureWikis = $wgLocalDatabases)
+ * - array: array of allowed wikis (e.g. $wgConfigureWikis = $wgLocalDatabases)
  *
  * Users will need *-interwiki right to edit foreign wiki configuration
  */
