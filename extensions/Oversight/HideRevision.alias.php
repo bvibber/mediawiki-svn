@@ -27,7 +27,7 @@ $aliases['arz'] = array(
 	'Oversight'    => array( 'أوفرسايت' ),
 );
 
-/** German
+/** German (Deutsch)
  * @author Raimond Spekking
  */
 $aliases['de'] = array(

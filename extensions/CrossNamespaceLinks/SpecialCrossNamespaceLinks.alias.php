@@ -72,6 +72,11 @@ $aliases['ms'] = array(
 	'CrossNamespaceLinks' => array( 'Pautan_silang_ruang_nama' ),
 );
 
+/** Low German (Plattdüütsch) */
+$aliases['nds'] = array(
+	'CrossNamespaceLinks' => array( 'Lenken in annere Naamrüüm' ),
+);
+
 /** Dutch (Nederlands) */
 $aliases['nl'] = array(
 	'CrossNamespaceLinks' => array( 'VerwijzingenTussenNaamruimten' ),
