@@ -1038,6 +1038,12 @@ class FSM(object):
         if self.state == ST_IDLE:
             if self.bgpPeering: self.bgpPeering.automaticStart(idleHold=False)
     
+    def updateSent(self):
+        """Called by the protocol instance when it just sent an Update message."""
+        
+        if self.holdTime > 0:
+            self.keepAliveTimer.reset()
+    
     def _errorClose(self):
         """Internal method that closes a connection and returns the state
         to IDLE.
@@ -1143,6 +1149,7 @@ class BGP(protocol.Protocol):
         print "NLRI:", nlri
         
         self.transport.write(self.constructUpdate(withdrawnPrefixes, attributes, nlri))
+        self.fsm.updateSent()
     
     def sendKeepAlive(self):
         """Sends a BGP KeepAlive message to the peer"""
