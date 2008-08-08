@@ -540,6 +540,7 @@ $wgGoogleMapsMessages['diq'] = array(
 $wgGoogleMapsMessages['el'] = array(
 	'gm-balloon-title'         => 'Τίτλος:',
 	'gm-load-map-from-article' => 'Φορτώστε ένα χάρτη από τη σελίδα:',
+	'gm-clip-result'           => 'Προσθήκη στο χάρτη',
 	'gm-no-results'            => 'Συγνώμη, δεν υπάρχουν αποτελέσματα',
 	'gm-searching'             => 'αναζήτηση...',
 	'gm-map'                   => 'Χάρτης',
@@ -557,6 +558,8 @@ $wgGoogleMapsMessages['el'] = array(
 	'gm-meters'                => 'μέτρα',
 	'gm-miles'                 => 'μίλια',
 	'gm-save-path'             => 'Αποθηκεύστε',
+	'gm-edit-path'             => 'προσθήκη σημείων',
+	'gm-show-path'             => 'εμφάνιση σημείων',
 	'gm-color-path'            => 'αλλάξτε χρώμα',
 	'gm-line-width'            => 'Πλάτος',
 	'gm-back'                  => 'πίσω',
@@ -1458,6 +1461,20 @@ $wgGoogleMapsMessages['jv'] = array(
 	'gm-mars'                 => 'Mars',
 );
 
+/** Kazakh (Cyrillic) (Қазақша (Cyrillic))
+ * @author GaiJin
+ */
+$wgGoogleMapsMessages['kk-cyrl'] = array(
+	'gm-zoom-control' => 'Шарлау',
+);
+
+/** Kazakh (Latin) (Қазақша (Latin))
+ * @author GaiJin
+ */
+$wgGoogleMapsMessages['kk-latn'] = array(
+	'gm-zoom-control' => 'Şarlaw',
+);
+
 /** Khmer (ភាសាខ្មែរ)
  * @author គីមស៊្រុន
  * @author Lovekhmer
@@ -1735,17 +1752,18 @@ $wgGoogleMapsMessages['mr'] = array(
 	'gm-mars'                      => 'मंगळ',
 );
 
-/** Nahuatl (Nahuatl)
+/** Nahuatl (Nāhuatl)
  * @author Fluence
  */
 $wgGoogleMapsMessages['nah'] = array(
-	'gm-balloon-title'   => 'Tōcāitl:',
-	'gm-map'             => 'Āmatohtli',
-	'gm-zoom-control'    => 'Ācalpapanōliztli',
-	'gm-no-zoom-control' => 'Ahtlein',
-	'gm-yes'             => 'Quēmah',
-	'gm-no'              => 'Ahmo',
-	'gm-save-path'       => 'Ticpiyāz',
+	'gm-balloon-title'        => 'Tōcāitl:',
+	'gm-balloon-link-article' => 'Tzonhuiliztli inīn zāzanilhuīc (mohuelīti):',
+	'gm-map'                  => 'Āmatohtli',
+	'gm-zoom-control'         => 'Ācalpapanōliztli',
+	'gm-no-zoom-control'      => 'Ahtlein',
+	'gm-yes'                  => 'Quēmah',
+	'gm-no'                   => 'Ahmo',
+	'gm-save-path'            => 'Ticpiyāz',
 );
 
 /** Dutch (Nederlands)

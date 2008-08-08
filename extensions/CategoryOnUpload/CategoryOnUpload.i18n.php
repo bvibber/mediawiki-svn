@@ -25,6 +25,13 @@ $messages['af'] = array(
 	'categoryonupload-label' => 'Kategorie:',
 );
 
+/** Amharic (አማርኛ)
+ * @author Elfalem
+ */
+$messages['am'] = array(
+	'categoryonupload-label' => 'መደብ:',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */

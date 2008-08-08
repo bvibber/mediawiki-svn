@@ -73,6 +73,7 @@ $messages['ar'] = array(
  * @author Esbardu
  */
 $messages['ast'] = array(
+	'usernameblacklist-desc'          => "Añade una [[MediaWiki:Usernameblacklist|llista prieta de nomes d'usuariu]] pa restrinxir la creación de cuentes d'usuariu que concuayen con una o más espresiones regulares",
 	'blacklistedusername'             => "Nome d'usuariu na llista negra",
 	'blacklistedusernametext'         => "El nome d'usuariu qu'escoyisti ta na [[MediaWiki:Usernameblacklist|llista negra de nomes d'usuariu]]. Por favor, escueyi otru nome.",
 	'usernameblacklist'               => "<pre>
@@ -84,6 +85,7 @@ $messages['ast'] = array(
 # * [Bb]ar
 </pre>",
 	'usernameblacklist-invalid-lines' => "{{PLURAL:$1|La siguiente llinia|Les siguientes llinies}} na llista blanca de nomes d'usuariu nun {{PLURAL:$1|ye válida|son válides}}; por favor {{PLURAL:$1|corríxila enantes de guardala:|corríxiles enantes de guardales:}}",
+	'right-uboverride'                => "Inorar la llista prieta de nomes d'usuariu",
 );
 
 /** Kotava (Kotava)
@@ -180,6 +182,7 @@ $messages['br'] = array(
 /** Catalan (Català)
  * @author SMP
  * @author Jordi Roqué
+ * @author Paucabot
  */
 $messages['ca'] = array(
 	'blacklistedusername'             => 'Nom no permès',
@@ -193,6 +196,7 @@ $messages['ca'] = array(
 # * [Pp]rova
 </pre>",
 	'usernameblacklist-invalid-lines' => "{{PLURAL:$1|La següent línia|Les següents línies}} de la llista negra de noms d'usuari no {{PLURAL:$1|és vàlida|són vàlides}}; si us plau, corregiu{{PLURAL:$1|-la|-les}} abans de desar-ho:",
+	'right-uboverride'                => "Invalida la llista negra d'usuaris",
 );
 
 /** Czech (Česky)

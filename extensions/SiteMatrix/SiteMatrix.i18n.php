@@ -901,9 +901,12 @@ $messages['lt'] = array(
 
 /** Latvian (Latviešu)
  * @author לערי ריינהארט
+ * @author Xil
  */
 $messages['lv'] = array(
-	'sitematrix' => 'Visu Wikimedia wiki projektu uzskaitījums',
+	'sitematrix'          => 'Visu Wikimedia wiki projektu uzskaitījums',
+	'sitematrix-language' => 'Valoda',
+	'sitematrix-others'   => 'Citi Wikimedia projekti',
 );
 
 /** Malayalam (മലയാളം)

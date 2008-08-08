@@ -21,6 +21,8 @@ $messages['ar'] = array(
 	'interwikilist-desc'     => 'يضيف [[Special:Interwikilist|صفحة خاصة]] لرؤية وصلات الإنترويكي المتوفرة',
 	'interwikilist-linkname' => 'وصلة الإنترويكي',
 	'interwikilist-target'   => 'المسار المستهدف',
+	'interwikilist-filter'   => 'فلترة القائمة',
+	'interwikilist-prefix'   => 'بادئة الإنترويكي:',
 );
 
 /** Bulgarian (Български)
@@ -62,6 +64,8 @@ $messages['fr'] = array(
 	'interwikilist-desc'     => 'Ajoute une [[Special:Interwikilist|page spéciale]] afin de voir tous les liens interwikis disponibles',
 	'interwikilist-linkname' => 'Lien interwiki',
 	'interwikilist-target'   => 'Adresse concernée',
+	'interwikilist-filter'   => 'Liste du filtre',
+	'interwikilist-prefix'   => 'Préfixe interwiki :',
 );
 
 /** Galician (Galego)
@@ -103,6 +107,8 @@ $messages['it'] = array(
 	'interwikilist-desc'     => 'Aggiunge una [[Special:Interwikilist|pagina speciale]] per visualizzare i collegamenti interwiki disponibili',
 	'interwikilist-linkname' => 'Collegamenti interwiki',
 	'interwikilist-target'   => 'URL di destinazione',
+	'interwikilist-filter'   => 'Elenco filtri',
+	'interwikilist-prefix'   => 'Prefisso interwiki:',
 );
 
 /** Khmer (ភាសាខ្មែរ)
@@ -142,6 +148,8 @@ $messages['nl'] = array(
 	'interwikilist-desc'     => 'Voegt een [[Special:Interwikilist|speciale pagina]] toe om de beschikbare interwikiverwijzingen te bekijken',
 	'interwikilist-linkname' => 'Interwikiverwijzing',
 	'interwikilist-target'   => 'Doel URL',
+	'interwikilist-filter'   => 'Lijst filteren',
+	'interwikilist-prefix'   => 'Interwikivoorvoegsel:',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
@@ -152,6 +160,8 @@ $messages['no'] = array(
 	'interwikilist-desc'     => 'Legger til en [[Special:Interwikilist|spesialside]] for å vise tilgjengelige interwikilenker',
 	'interwikilist-linkname' => 'Interwikilenke',
 	'interwikilist-target'   => 'Måladresse',
+	'interwikilist-filter'   => 'Filtrer liste',
+	'interwikilist-prefix'   => 'Interwikiprefiks:',
 );
 
 /** Occitan (Occitan)

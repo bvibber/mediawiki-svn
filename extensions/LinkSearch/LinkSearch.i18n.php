@@ -97,10 +97,10 @@ $messages['arz'] = array(
 
 /** Asturian (Asturianu)
  * @author Esbardu
- * @author SPQRobin
  */
 $messages['ast'] = array(
 	'linksearch'       => 'Buscar enllaces web',
+	'linksearch-desc'  => '[[Special:Linksearch|Busca páxines con enllaces esternos]] que conceyan con patrones específicos',
 	'linksearch-pat'   => 'Patrón de busca:',
 	'linksearch-ns'    => 'Espaciu de nomes:',
 	'linksearch-ok'    => 'Buscar',
@@ -591,6 +591,7 @@ Protocollos supportate: <tt>$1</tt>',
 
 /** Indonesian (Bahasa Indonesia)
  * @author IvanLanin
+ * @author Rex
  */
 $messages['id'] = array(
 	'linksearch'       => 'Pencarian pranala luar',
@@ -599,7 +600,7 @@ $messages['id'] = array(
 	'linksearch-ns'    => 'Ruang nama:',
 	'linksearch-ok'    => 'Cari',
 	'linksearch-text'  => "Bentuk pencarian ''wildcards'' seperti \"*.wikipedia.org\" dapat digunakan.<br />Protokol yang didukung: <tt>\$1</tt>",
-	'linksearch-line'  => '$1 terpaut dari $2',
+	'linksearch-line'  => '$1 memiliki pranala dari $2',
 	'linksearch-error' => "''Wildcards'' hanya dapat digunakan di bagian awal dari nama host.",
 );
 

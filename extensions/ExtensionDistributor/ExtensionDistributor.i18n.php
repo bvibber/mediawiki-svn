@@ -130,6 +130,7 @@ $messages['bg'] = array(
 
 /** Czech (Česky)
  * @author Matěj Grabovský
+ * @author Mormegil
  */
 $messages['cs'] = array(
 	'extensiondistributor'            => 'Stáhnout rozšíření MediaWiki',
@@ -139,14 +140,14 @@ $messages['cs'] = array(
 	'extdist-no-such-extension'       => 'Rozšíření „$1” neexistuje',
 	'extdist-no-such-version'         => 'Rozšíření „$1” neexistuje ve verzi „$2”',
 	'extdist-choose-extension'        => 'Vyberte, které rozšíření chcete stáhnout:',
-	'extdist-wc-empty'                => 'Nastavená pracvní kopie nemá nemá rozšíření, které je možné distribuovat!',
+	'extdist-wc-empty'                => 'Nastavený adresář s pracovní kopií neobsahuje žádná rozšíření, která by bylo možné distribuovat!',
 	'extdist-submit-extension'        => 'Pokračovat',
 	'extdist-current-version'         => 'Aktuální verze (trunk)',
 	'extdist-choose-version'          => '<big>Stahujete rozšíření <b>$1</b>.</big>
 
-Vyberte vaši verzi MediaWiki.
+Vyberte verzi MediaWiki.
 
-Většina rozšíření funguje na více verzích MediaWiki, takže pokud tu není uvedená vaše verze MediaWiki nebo potřebujete novější verzi rozšíření, pokuste se použít aktuální verzi.',
+Většina rozšíření funguje na více verzích MediaWiki, takže pokud tu vaše verze MediaWiki není uvedena nebo potřebujete nejnovější vlastnosti rozšíření, zkuste použít aktuální verzi.',
 	'extdist-no-versions'             => 'Zvolené rozšíření ($1) není dostupné v žádné verzi!',
 	'extdist-submit-version'          => 'Pokračovat',
 	'extdist-no-remote'               => 'Nepodařilo se kontaktovat vzdáleného klienta Subversion.',
@@ -155,6 +156,27 @@ Většina rozšíření funguje na více verzích MediaWiki, takže pokud tu nen
 	'extdist-svn-error'               => 'Subversion narazil na chybu: <pre>$1</pre>',
 	'extdist-svn-parse-error'         => 'Nebylo možné zpracovat XML z výstupu „svn info”: <pre>$1</pre>',
 	'extdist-tar-error'               => 'Tar sknočil s návratovým kódem $1:',
+	'extdist-created'                 => "Balíček rozšíření <b>$1</b> ve verzi <b>$2</b> pro MediaWiki <b>$3</b> byl vytvořen. Jeho stahování by se mělo automaticky spustit za pět sekund.
+
+Adresa tohoto balíčku je:
+: $4
+Můžete si odtud nyní balíček stáhnout, ale laskavě si tuto adresu nikam neukládejte, protože obsah odkazovaného souboru nebude aktualizován a soubor může být později smazán.
+
+Tento tar si rozbalte do adresáře <tt>extensions</tt>. Na operačních systémech na bázi Unixu například:
+
+<pre>
+tar -xzf $5 -C /var/www/mediawiki/extensions
+</pre>
+
+Na Windows můžete balíček rozbalit pomocí programu [http://www.7-zip.org/ 7-zip].
+
+Pokud vaše wiki běží na vzdáleném serveru, rozbalte si archiv do nějakého dočasného adresáře na lokálním počítači a poté nahrajte '''všechny''' rozbalené soubory do adresáře <tt>extensions</tt> na vzdáleném serveru.
+
+Nezapomeňte, že některá rozšíření vyžadují soubor <tt>ExtensionFunctions.php</tt>, který se nachází na <tt>extensions/ExtensionFunctions.php</tt>, tzn. v adresáři ''nadřazeném'' příslušnému rozšíření. Vytvořený balíček tento soubor obsahuje, po rozbalení se objeví v aktuálním adresáři (<tt>./ExtensionFunctions.php</tt>). Nezapomeňte na vzdálený server nahrát i tento soubor.
+
+Po rozbalení souborů budete muset rozšíření zaregistrovat v souboru <tt>LocalSettings.php</tt>. Podrobnější informace by měla obsahovat dokumentace k rozšíření.
+
+Případné dotazy k tomuto systému distribuce rozšíření můžete klást na stránce [[Extension talk:ExtensionDistributor]].",
 	'extdist-want-more'               => 'Stáhnout jiné rozšíření',
 );
 

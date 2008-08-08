@@ -25,6 +25,13 @@ $messages['ar'] = array(
 	'oai-desc' => 'يوفر واجهة مستودع [http://www.openarchives.org/OAI/openarchivesprotocol.html OAI-PMH]',
 );
 
+/** Asturian (Asturianu)
+ * @author Esbardu
+ */
+$messages['ast'] = array(
+	'oai-desc' => 'Proporciona una interfaz de direutoriu [http://www.openarchives.org/OAI/openarchivesprotocol.html OAI-PMH]',
+);
+
 /** Southern Balochi (بلوچی مکرانی)
  * @author Mostafadaneshvar
  */

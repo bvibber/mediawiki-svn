@@ -78,13 +78,16 @@ $messages['ar'] = array(
 
 /** Egyptian Spoken Arabic (مصرى)
  * @author Ghaly
+ * @author Ramsis II
  */
 $messages['arz'] = array(
-	'inputbox-desc'          => 'يسمح بتضمين أشكال اتش تى ام ال معرفه من الاول',
-	'inputbox-error-no-type' => 'إنت ما حددتش نوع صندوق الإدخال للإنشاء',
-	'tryexact'               => 'دور على عنوان مطابق',
-	'searchfulltext'         => 'دور فى النص كله',
-	'createarticle'          => 'إنشاء صفحة',
+	'inputbox-desc'           => 'يسمح بتضمين أشكال اتش تى ام ال معرفه من الاول',
+	'inputbox-error-no-type'  => 'إنت ما حددتش نوع صندوق الإدخال للإنشاء',
+	'inputbox-error-bad-type' => 'نوع صندوق الإدخال "$1" ما تعرفناش عليه .
+لو سمحت  تحدد "create"، "comment"، "search" أو "search2".',
+	'tryexact'                => 'دور على عنوان مطابق',
+	'searchfulltext'          => 'دور فى النص كله',
+	'createarticle'           => 'إنشاء صفحة',
 );
 
 /** Assamese (অসমীয়া)
@@ -305,7 +308,7 @@ $messages['eo'] = array(
 	'inputbox-error-bad-type' => 'Enigo-kesto "$1" ne estas konata.
 Bonvolu specifigi "krea", "komenta", "serĉa" aŭ "serĉa2".',
 	'tryexact'                => 'Provu ekzaktan trafon',
-	'searchfulltext'          => 'Serĉu plentekste',
+	'searchfulltext'          => 'Serĉi plentekste',
 	'createarticle'           => 'Kreu artikolon',
 );
 

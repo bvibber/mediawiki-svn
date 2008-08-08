@@ -141,8 +141,9 @@ $messages['br'] = array(
  * @author Paucabot
  */
 $messages['ca'] = array(
-	'scanset_next' => 'Següent &gt;',
-	'scanset_prev' => '&lt; Anterior',
+	'scanset_opendir_error' => 'Error: No es pot obrir el directori $1',
+	'scanset_next'          => 'Següent &gt;',
+	'scanset_prev'          => '&lt; Anterior',
 );
 
 /** Czech (Česky)

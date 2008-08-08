@@ -168,6 +168,13 @@ $messages['fr'] = array(
 	'importfreeimages_returntoform'          => "ou, cliquez <a href='$1'>ici</a> pour revenir à votre liste de résultats.",
 );
 
+/** Western Frisian (Frysk)
+ * @author Snakesteuben
+ */
+$messages['fy'] = array(
+	'importfreeimages_owner' => 'Auteur',
+);
+
 /** Galician (Galego)
  * @author Alma
  * @author Xosé

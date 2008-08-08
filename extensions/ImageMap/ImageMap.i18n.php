@@ -76,6 +76,7 @@ $messages['ar'] = array(
 $messages['ast'] = array(
 	'imagemap_no_image'           => 'Error: ha especificase una imaxe na primer llinia',
 	'imagemap_invalid_image'      => 'Error: la imaxe nun ye válida o nun esiste',
+	'imagemap_bad_image'          => "Error: La imaxe ta na llista prieta d'esta páxina",
 	'imagemap_no_link'            => 'Error: atopóse un enllaz non válidu a lo cabero la llinia $1',
 	'imagemap_invalid_title'      => 'Error: títulu non válidu nel enllaz de la llinia $1',
 	'imagemap_missing_coord'      => 'Error: nun hai abondes coordenaes pa formar la figura de la llinia $1',
@@ -171,11 +172,13 @@ $messages['ca'] = array(
 
 /** Czech (Česky)
  * @author Li-sung
+ * @author Mormegil
  */
 $messages['cs'] = array(
 	'imagemap_desc'               => 'Umožňuje vytvoření klikací mapy obrázku na straně klienta pomocí značky <tt><nowiki><imagemap></nowiki></tt>',
 	'imagemap_no_image'           => 'Error: na první řádce musí být určen obrázek',
 	'imagemap_invalid_image'      => 'Error: soubor není platný nebo neexistuje',
+	'imagemap_bad_image'          => 'Chyba: obrázek se nachází na černé listině',
 	'imagemap_no_link'            => 'Error: nebyl nalezen žádný platný odkaz na konci řádku $1',
 	'imagemap_invalid_title'      => 'Error: neplatný název v odkazu na řádku $1',
 	'imagemap_missing_coord'      => 'Error: chybějící souřadnice tvaru na řádku $1',
@@ -493,11 +496,13 @@ $messages['is'] = array(
 /** Italian (Italiano)
  * @author Anyfile
  * @author BrokenArrow
+ * @author Darth Kule
  */
 $messages['it'] = array(
 	'imagemap_desc'               => "Consente di realizzare ''image map'' cliccabili lato client con il tag <tt><nowiki><imagemap></nowiki></tt>",
 	'imagemap_no_image'           => "&lt;imagemap&gt;: si deve specificare un'immagine nella prima riga",
 	'imagemap_invalid_image'      => "&lt;imagemap&gt;: l'immagine non è valida o non esiste",
+	'imagemap_bad_image'          => "Errore: l'immagine si trova nella blacklist per questa pagina",
 	'imagemap_no_link'            => '&lt;imagemap&gt;: non è stato trovato alcun collegamento valido alla fine della riga $1',
 	'imagemap_invalid_title'      => '&lt;imagemap&gt;: titolo del collegamento non valido nella riga $1',
 	'imagemap_missing_coord'      => '&lt;imagemap&gt;: non ci sono abbastanza coordinate per la forma specificata nella riga $1',
@@ -674,6 +679,16 @@ $messages['lt'] = array(
 	'imagemap_invalid_coord'      => 'Error: netinkama koordinatė $1 eilutėje, privalo būti skaičius',
 	'imagemap_invalid_desc'       => 'Error: bloga aprašymo specifikacija, privalo būti viena iš: <tt>$1</tt>',
 	'imagemap_description'        => 'Apie šį paveikslėlį',
+);
+
+/** Latvian (Latviešu)
+ * @author Xil
+ */
+$messages['lv'] = array(
+	'imagemap_no_image'      => 'Kļūda: pirmajā rindiņā jānorāda attēls',
+	'imagemap_invalid_image' => 'Kļūda: attēls nav derīgs vai nepastāv',
+	'imagemap_no_link'       => 'Kļūda: rindiņas $1 beigās netika atrasta derīga saite',
+	'imagemap_description'   => 'Par šo attēlu',
 );
 
 /** Malayalam (മലയാളം)
@@ -931,6 +946,7 @@ $messages['sk'] = array(
 	'imagemap_desc'               => 'Poskytuje klikateľné obrázkové mapy spracúvané na strane klienta pomocou značky <tt><nowiki><imagemap></nowiki></tt>',
 	'imagemap_no_image'           => '&lt;imagemap&gt;: musí mať na prvom riadku uvedený obrázok',
 	'imagemap_invalid_image'      => '&lt;imagemap&gt;: obrázok je neplatný alebo neexistuje',
+	'imagemap_bad_image'          => 'Chyba: obrázok na tejto stránke sa nachádza na čiernej listine',
 	'imagemap_no_link'            => '&lt;imagemap&gt;: na konci riadka $1 nebol nájdený platný odkaz',
 	'imagemap_invalid_title'      => '&lt;imagemap&gt;: neplatný nadpis v odkaze na riadku $1',
 	'imagemap_missing_coord'      => '&lt;imagemap&gt;: nedostatok súradníc na vytvorenie tvaru na riadku $1',

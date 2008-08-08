@@ -213,12 +213,12 @@ $messages['br'] = array(
  * @author Toniher
  * @author SMP
  * @author Jordi Roqué
- * @author Jon Harald Søby
+ * @author Paucabot
  */
 $messages['ca'] = array(
 	'newuserlogpage'              => "Registre de creació de l'usuari",
 	'newuserlogpagetext'          => 'Aquest és un registre de creació de nous usuaris.',
-	'newuserlog-desc'             => 'Afegeix un [[Special:Log/newusers|registre de creació de comptes]] a [[Special:Log]]',
+	'newuserlog-desc'             => 'Afegeix un [[Special:Log/newusers|registre de creació de comptes]]',
 	'newuserlog-byemail'          => 'contrasenya enviada per correu electrònic',
 	'newuserlog-create-entry'     => 'Nou usuari',
 	'newuserlog-create2-entry'    => "s'ha creat un compte per a $1",
@@ -241,12 +241,13 @@ $messages['ce'] = array(
 
 /** Cebuano (Cebuano)
  * @author Abastillas
+ * @author Jordz
  */
 $messages['ceb'] = array(
 	'newuserlogpagetext'       => "Kini mao ang ''log'' sa bag-ong namugnang mga gumagamit.",
-	'newuserlog-byemail'       => "ang pasword gipadala na agi ang ''e-mail''",
+	'newuserlog-byemail'       => "ang pasword gipadala na pinaagi sa ''e-mail''",
 	'newuserlog-create-entry'  => 'Bag-ong gumagamit',
-	'newuserlog-create2-entry' => "nagmiho'g akawnt alang kang $1",
+	'newuserlog-create2-entry' => "naghimo'g akawnt alang kang $1",
 );
 
 /** Crimean Turkish (Latin) (Qırımtatarca (Latin))
@@ -277,12 +278,12 @@ $messages['crh-cyrl'] = array(
  * @author Li-sung
  * @author Martin Kozák
  * @author Danny B.
- * @author Jon Harald Søby
+ * @author Mormegil
  */
 $messages['cs'] = array(
 	'newuserlogpage'              => 'Kniha nových uživatelů',
 	'newuserlogpagetext'          => 'Toto je záznam nově zaregistrovaných uživatelů.',
-	'newuserlog-desc'             => 'Přidává do [[Special:Log|protokolovacích záznamů]] přehled [[Special:Log/newusers|nově zaregistrovaných uživatelů]].',
+	'newuserlog-desc'             => 'Přidává [[Special:Log/newusers|protokol nově zaregistrovaných uživatelů]]',
 	'newuserlog-byemail'          => 'heslo zasláno e-mailem',
 	'newuserlog-create-entry'     => 'Nově založený uživatel',
 	'newuserlog-create2-entry'    => 'založil účet pro $1',
@@ -1170,12 +1171,11 @@ $messages['sah'] = array(
 
 /** Slovak (Slovenčina)
  * @author Helix84
- * @author Jon Harald Søby
  */
 $messages['sk'] = array(
 	'newuserlogpage'              => 'Záznam vytvorených používateľov',
 	'newuserlogpagetext'          => 'Toto je záznam naposledy vytvorených používateľských účtov.',
-	'newuserlog-desc'             => 'Pridáva [[Special:Log/newusers|záznam vytvorených používateľov]] na stránku [[Special:Log]]',
+	'newuserlog-desc'             => 'Pridáva [[Special:Log/newusers|záznam vytvorených účtov]]',
 	'newuserlog-byemail'          => 'heslo poslané emailom',
 	'newuserlog-create-entry'     => 'Nový používateľ',
 	'newuserlog-create2-entry'    => 'Bol vytvorený účet pre $1',

@@ -534,7 +534,8 @@ $messages['frp'] = array(
  * @author Snakesteuben
  */
 $messages['fy'] = array(
-	'badimages-name' => 'Namme:',
+	'badimages-add-btn' => 'Tafoegje',
+	'badimages-name'    => 'Namme:',
 );
 
 /** Gagauz (Gagauz)

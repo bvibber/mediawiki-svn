@@ -60,10 +60,11 @@ $messages['as'] = array(
 );
 
 /** Asturian (Asturianu)
- * @author SPQRobin
+ * @author Esbardu
  */
 $messages['ast'] = array(
 	'sitenotice_close' => 'desaniciar',
+	'sitenotice-desc'  => "Permite a los usuarios zarrar l'anuncia del sitiu",
 );
 
 /** Southern Balochi (بلوچی مکرانی)

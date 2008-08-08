@@ -126,7 +126,7 @@ $messages['ar'] = array(
 ارجع إلى:
 * [[Special:CrosswikiBlock|استمارة المنع]]
 * [[$4]]",
-	'crosswikiunblock-local'        => 'عمليات المنع المحلية غير مدعومة بواسطة هذه الواجهة. استخدم [[Special:Ipblocklist|{{int:ipblocklist}}]]',
+	'crosswikiunblock-local'        => 'عمليات المنع المحلية غير مدعومة بواسطة هذه الواجهة. استخدم [[Special:IPBlockList|{{int:ipblocklist}}]]',
 );
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
@@ -178,7 +178,7 @@ $messages['bg'] = array(
 Връщане към:
 * [[Special:CrosswikiBlock|Формуляра за блокиране]]
 * [[$4]]",
-	'crosswikiunblock-local'        => 'Локалните отблокирания не се поддържат от този интерфейс. Използва се [[Special:Ipblocklist|{{int:ipblocklist}}]]',
+	'crosswikiunblock-local'        => 'Локалните отблокирания не се поддържат от този интерфейс. Използва се [[Special:IPBlockList|{{int:ipblocklist}}]]',
 );
 
 /** Catalan (Català)
@@ -257,7 +257,7 @@ Zurück zu:
 Zurück zu:
 * [[Special:CrosswikiBlock|Sperrformular]]
 * [[$4]]",
-	'crosswikiunblock-local'        => 'Lokale Sperren werden über dieses Interfache nicht unterstützt. Bitte benutze [[Special:Ipblocklist|{{int:ipblocklist}}]].',
+	'crosswikiunblock-local'        => 'Lokale Sperren werden über dieses Interfache nicht unterstützt. Bitte benutze [[Special:IPBlockList|{{int:ipblocklist}}]].',
 );
 
 /** Lower Sorbian (Dolnoserbski)
@@ -302,7 +302,7 @@ Slědk k:
 Slědk k:
 * [[Special:CrosswikiBlock|Blokěrowański formular]]
 * [[$4]]",
-	'crosswikiunblock-local'        => 'Wótpóranja lokalnych blokěrowanjow njepódpěraju se pśez toś ten interfejs. Wužyj [[Special:Ipblocklist|{{int:ipblocklist}}]]',
+	'crosswikiunblock-local'        => 'Wótpóranja lokalnych blokěrowanjow njepódpěraju se pśez toś ten interfejs. Wužyj [[Special:IPBlockList|{{int:ipblocklist}}]]',
 );
 
 /** Greek (Ελληνικά)
@@ -355,7 +355,7 @@ Reen:
 Reen:
 * [[Special:CrosswikiBlock|Forbarpaĝo]]
 * [[$4]]",
-	'crosswikiunblock-local'        => 'Lokaj malforbaroj ne estas subtenataj per ĉi interfaco. Uzu [[Special:Ipblocklist|{{int:ipblocklist}}]]',
+	'crosswikiunblock-local'        => 'Lokaj malforbaroj ne estas subtenataj per ĉi interfaco. Uzu [[Special:IPBlockList|{{int:ipblocklist}}]]',
 );
 
 /** Basque (Euskara)
@@ -435,7 +435,7 @@ Revenir à :
 Revenir vers :
 * [[Special:CrosswikiBlock|Le formulaire de blocage]] ;
 * [[$4]].",
-	'crosswikiunblock-local'        => 'Les blocages en écriture locaux ne sont pas supportés via cette interface. Utilisez [[Special:Ipblocklist|{{int:ipblocklist}}]]',
+	'crosswikiunblock-local'        => 'Les blocages en écriture locaux ne sont pas supportés via cette interface. Utilisez [[Special:IPBlockList|{{int:ipblocklist}}]]',
 );
 
 /** Western Frisian (Frysk)
@@ -492,7 +492,7 @@ Voltar a:
 Voltar a:
 * [[Special:CrosswikiBlock|Formulario de bloqueo]]
 * [[$4]]",
-	'crosswikiunblock-local'        => 'Os desbloqueos locais non están soportados mediante esta interface. Use [[Special:Ipblocklist|{{int:ipblocklist}}]]',
+	'crosswikiunblock-local'        => 'Os desbloqueos locais non están soportados mediante esta interface. Use [[Special:IPBlockList|{{int:ipblocklist}}]]',
 );
 
 /** Manx (Gaelg)
@@ -540,7 +540,7 @@ $messages['hi'] = array(
 	'crosswikiblock-notoken'        => 'गलत एडिट टोकन',
 	'crosswikiblock-alreadyblocked' => 'सदस्य $3 को पहलेसे ब्लॉक किया हुआ हैं।',
 	'crosswikiblock-noblock'        => 'इस सदस्यको ब्लॉक नहीं किया हैं।',
-	'crosswikiunblock-local'        => 'स्थानिक अनब्लॉक यहां पर बदले नहीं जा सकतें। [[Special:Ipblocklist|{{int:ipblocklist}}]] का इस्तेमाल करें',
+	'crosswikiunblock-local'        => 'स्थानिक अनब्लॉक यहां पर बदले नहीं जा सकतें। [[Special:IPBlockList|{{int:ipblocklist}}]] का इस्तेमाल करें',
 );
 
 /** Hiligaynon (Ilonggo)
@@ -593,7 +593,7 @@ Wróćo k:
 Wróćo k:
 * [[Special:CrosswikiBlock|Blokowanski formular]]
 * [[$4]]",
-	'crosswikiunblock-local'        => 'Lokalne blokowanja so přez tutón interfejs njepodpěruja. Wužij [[Special:Ipblocklist|{{int:ipblocklist}}]]',
+	'crosswikiunblock-local'        => 'Lokalne blokowanja so přez tutón interfejs njepodpěruja. Wužij [[Special:IPBlockList|{{int:ipblocklist}}]]',
 );
 
 /** Interlingua (Interlingua)
@@ -671,7 +671,7 @@ Torna a:
 Torna a:
 * [[Special:CrosswikiBlock|Modulo di blocco]]
 * [[$4]]",
-	'crosswikiunblock-local'        => 'Gli sblocchi locali non sono supportati da questa interfaccia. Usare [[Special:Ipblocklist|{{int:ipblocklist}}]]',
+	'crosswikiunblock-local'        => 'Gli sblocchi locali non sono supportati da questa interfaccia. Usare [[Special:IPBlockList|{{int:ipblocklist}}]]',
 );
 
 /** Japanese (日本語)
@@ -716,7 +716,7 @@ $messages['ja'] = array(
 元のページへ戻る:
 * [[Special:CrosswikiBlock|他ウィキの利用者をブロック]]
 * [[$2]]",
-	'crosswikiunblock-local'        => 'このウィキ自身における利用者ブロック解除を、このページでは行えません。[[Special:Ipblocklist|{{int:ipblocklist}}]]を利用してください。',
+	'crosswikiunblock-local'        => 'このウィキ自身における利用者ブロック解除を、このページでは行えません。[[Special:IPBlockList|{{int:ipblocklist}}]]を利用してください。',
 );
 
 /** Javanese (Basa Jawa)
@@ -835,7 +835,7 @@ Zréck op:
 Zréck op:
 * [[Special:CrosswikiBlock|Spär-Formulaire]]
 * [[$4]]",
-	'crosswikiunblock-local'        => 'Op dëser Säit kënne lokal Spären net opgehuewe ginn. Benotzt w.e.g. [[Special:Ipblocklist|{{int:ipblocklist}}]]',
+	'crosswikiunblock-local'        => 'Op dëser Säit kënne lokal Spären net opgehuewe ginn. Benotzt w.e.g. [[Special:IPBlockList|{{int:ipblocklist}}]]',
 );
 
 /** Moksha (Мокшень)
@@ -928,7 +928,7 @@ $messages['mr'] = array(
 परत जा:
 * [[Special:CrosswikiBlock|ब्लॉक अर्ज]]
 * [[$4]]",
-	'crosswikiunblock-local'        => 'स्थानिक अनब्लॉक इथे बदलता येत नाहीत. [[Special:Ipblocklist|{{int:ipblocklist}}]] चा उपयोग करा',
+	'crosswikiunblock-local'        => 'स्थानिक अनब्लॉक इथे बदलता येत नाहीत. [[Special:IPBlockList|{{int:ipblocklist}}]] चा उपयोग करा',
 );
 
 /** Maltese (Malti)
@@ -1002,7 +1002,7 @@ Ga terug naar:
 Teruggaan naar:
 * [[Special:CrosswikiBlock|Blokkeerformulier]]
 * [[$4]]",
-	'crosswikiunblock-local'        => 'Plaatselijke deblokkades worden niet ondersteund door dit formulier. Gebruik daarvoor [[Special:Ipblocklist|{{int:ipblocklist}}]].',
+	'crosswikiunblock-local'        => 'Plaatselijke deblokkades worden niet ondersteund door dit formulier. Gebruik daarvoor [[Special:IPBlockList|{{int:ipblocklist}}]].',
 );
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
@@ -1057,12 +1057,11 @@ Tilbake til:
 Tilbake til:
 * [[Special:CrosswikiBlock|Blokkeringsskjemaet]]
 * [[$4]]",
-	'crosswikiunblock-local'        => 'Lokale blokkeringer støttes ikke via dette grensesnittet. Bruk [[Special:Ipblocklist|{{int:ipblocklist}}]].',
+	'crosswikiunblock-local'        => 'Lokale blokkeringer støttes ikke via dette grensesnittet. Bruk [[Special:IPBlockList|{{int:ipblocklist}}]].',
 );
 
 /** Occitan (Occitan)
  * @author Cedric31
- * @author Siebrand
  */
 $messages['oc'] = array(
 	'crosswikiblock-desc'           => "Permet de blocar d'utilizaires sus d'autres wikis en utilizant [[Special:Crosswikiblock|una pagina especiala]]",
@@ -1104,7 +1103,7 @@ Tornar a :
 Tornar vèrs :
 * [[Special:CrosswikiBlock|Lo formulari de blocatge]] ;
 * [[$4]].",
-	'crosswikiunblock-local'        => 'Los blocatges en escritura locals son pas suportats via aquesta interfàcia. Utilizatz [[Special:Ipblocklist|{{int:ipblocklist}}]]',
+	'crosswikiunblock-local'        => 'Los blocatges en escritura locals son pas suportats via aquesta interfàcia. Utilizatz [[Special:IPBlockList|{{int:ipblocklist}}]]',
 );
 
 /** Polish (Polski)
@@ -1153,7 +1152,7 @@ Wróć do:
 Powrót do:
 * [[Special:CrosswikiBlock|Formularz blokowania]]
 * [[$4]]",
-	'crosswikiunblock-local'        => 'Lokalne odblokowywanie nie jest obsługiwane w tym interfejsie. Użyj [[Special:Ipblocklist|{{int:ipblocklist}}]]',
+	'crosswikiunblock-local'        => 'Lokalne odblokowywanie nie jest obsługiwane w tym interfejsie. Użyj [[Special:IPBlockList|{{int:ipblocklist}}]]',
 );
 
 /** Pashto (پښتو)
@@ -1206,7 +1205,7 @@ Regressar a:
 Voltar para:
 * [[Special:CrosswikiBlock|Formulário de bloqueio]]
 * [[$4]]",
-	'crosswikiunblock-local'        => 'Desbloqueios locais são podem ser efectuados a partir deste interface. Use [[Special:Ipblocklist|{{int:ipblocklist}}]]',
+	'crosswikiunblock-local'        => 'Desbloqueios locais são podem ser efectuados a partir deste interface. Use [[Special:IPBlockList|{{int:ipblocklist}}]]',
 );
 
 /** Romanian (Română)
@@ -1275,7 +1274,7 @@ $messages['ru'] = array(
 Вернуться к:
 * [[Special:CrosswikiBlock|форма блокировки]]
 * [[$4]]",
-	'crosswikiunblock-local'        => 'Локальные блокировки не поддерживаются с помощью этого интерфейса. Используйте [[Special:Ipblocklist|{{int:ipblocklist}}]]',
+	'crosswikiunblock-local'        => 'Локальные блокировки не поддерживаются с помощью этого интерфейса. Используйте [[Special:IPBlockList|{{int:ipblocklist}}]]',
 );
 
 /** Sassaresu (Sassaresu)
@@ -1327,7 +1326,7 @@ Vrátiť sa na:
 Vrátiť sa na:
 * [[Special:CrosswikiBlock|Blokovací formulár]]
 * [[$4]]",
-	'crosswikiunblock-local'        => 'Lokálne blokovania nie sú týmto rozhraním podporované. Použite [[Special:Ipblocklist|{{int:ipblocklist}}]].',
+	'crosswikiunblock-local'        => 'Lokálne blokovania nie sú týmto rozhraním podporované. Použite [[Special:IPBlockList|{{int:ipblocklist}}]].',
 );
 
 /** Serbian Cyrillic ekavian (ћирилица)
@@ -1436,7 +1435,7 @@ Gå tillbaka till:
 Gå tillbaka till:
 * [[Special:CrosswikiBlock|Blockeringsformuläret]]
 * [[$4]]",
-	'crosswikiunblock-local'        => 'Lokala blockeringar kan inte tas bort via det här formuläret. Använd [[Special:Ipblocklist|{{int:ipblocklist}}]] istället.',
+	'crosswikiunblock-local'        => 'Lokala blockeringar kan inte tas bort via det här formuläret. Använd [[Special:IPBlockList|{{int:ipblocklist}}]] istället.',
 );
 
 /** Silesian (Ślůnski)
@@ -1573,7 +1572,7 @@ Quay trở lại:
 Quay trở về:
 * [[Special:CrosswikiBlock|Mẫu cấm]]
 * [[$4]]",
-	'crosswikiunblock-local'        => 'Giao diện này không hỗ trợ bỏ cấm tại wiki này. Hãy dùng [[Special:Ipblocklist|{{int:ipblocklist}}]]',
+	'crosswikiunblock-local'        => 'Giao diện này không hỗ trợ bỏ cấm tại wiki này. Hãy dùng [[Special:IPBlockList|{{int:ipblocklist}}]]',
 );
 
 /** Volapük (Volapük)

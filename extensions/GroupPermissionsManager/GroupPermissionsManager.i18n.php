@@ -222,10 +222,18 @@ $messages['de'] = array(
 	'grouppermissions-sp-header'     => 'Auf dieser Spezialseite kannst du Berechtigungen sortieren und neue Berechtigungen einrichten.',
 );
 
+/** Ewe (Eʋegbe)
+ * @author Natsubee
+ */
+$messages['ee'] = array(
+	'grouppermissions-never' => 'Gbeɖe',
+);
+
 /** Greek (Ελληνικά)
  * @author Consta
  */
 $messages['el'] = array(
+	'grouppermissions-search'  => 'Ομάδα:',
 	'grouppermissions-comment' => 'Σχόλιο:',
 	'grouppermissions-sp-save' => 'Αποθηκεύστε',
 );

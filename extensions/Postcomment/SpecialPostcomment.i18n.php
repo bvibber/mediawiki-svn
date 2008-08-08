@@ -64,6 +64,13 @@ $messages['de'] = array(
 	'postcomment_youareloggedinas' => 'Du bist jetzt als $1 angemeldet.',
 );
 
+/** Greek (Ελληνικά)
+ * @author Consta
+ */
+$messages['el'] = array(
+	'postcomment_notloggedin' => 'Δεν έχετε συνδεθεί.',
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */

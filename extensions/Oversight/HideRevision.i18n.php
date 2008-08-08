@@ -347,6 +347,7 @@ $messages['ca'] = array(
 	'hiderevision'                => 'Oculta aquestes revisions permanentment',
 	'right-oversight'             => 'Vegeu una revisió prèviament amagada',
 	'right-hiderevision'          => 'Revisar i restaurar les versions amagades als administradors',
+	'hiderevision-prompt'         => 'Número de la revisió a suprimir:',
 	'hiderevision-continue'       => 'Continua',
 	'hiderevision-reason'         => 'Motiu (es registrarà de forma privada):',
 	'hiderevision-submit'         => 'Amaga aquestes dades permanentment',
@@ -1476,8 +1477,10 @@ $messages['km'] = array(
 
 /** Korean (한국어)
  * @author Pi.C.Noizecehx
+ * @author Kwj2772
  */
 $messages['ko'] = array(
+	'group-oversight'    => '오버사이트',
 	'right-hiderevision' => '관리자도 보지 못하도록 숨겨진 판의 확인 및 복구',
 );
 

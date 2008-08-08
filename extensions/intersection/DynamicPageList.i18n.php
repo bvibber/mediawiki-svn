@@ -372,6 +372,14 @@ $messages['lt'] = array(
 	'intersection_noincludecats' => 'Error: Jums reikia įtraukti bent vieną kategoriją, arba nurodyti vardų sritį!',
 );
 
+/** Latvian (Latviešu)
+ * @author Xil
+ */
+$messages['lv'] = array(
+	'intersection_toomanycats' => 'Kļūda: pārāk daudz kategoriju!',
+	'intersection_toofewcats'  => 'Kļūda: pārāk maz kategoriju!',
+);
+
 /** Malayalam (മലയാളം)
  * @author Shijualex
  */

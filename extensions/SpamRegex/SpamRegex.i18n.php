@@ -171,7 +171,7 @@ $messages['de'] = array(
  */
 $messages['el'] = array(
 	'spamregex-text'        => '(κείμενο)',
-	'spamregex-summary-log' => '(περίληψη)',
+	'spamregex-summary-log' => '(Περίληψη)',
 );
 
 /** Esperanto (Esperanto)
@@ -325,6 +325,20 @@ $messages['jv'] = array(
 	'spamregex-phrase-block'    => 'Ukara sing diblokir:',
 	'spamregex-text'            => '(Tèks)',
 	'spamregex-summary-log'     => '(Ringkesan)',
+);
+
+/** Kazakh (Cyrillic) (Қазақша (Cyrillic))
+ * @author GaiJin
+ */
+$messages['kk-cyrl'] = array(
+	'spamregex-summary-log' => '(Түйіндемесі)',
+);
+
+/** Kazakh (Latin) (Қазақша (Latin))
+ * @author GaiJin
+ */
+$messages['kk-latn'] = array(
+	'spamregex-summary-log' => '(Tüýindemesi)',
 );
 
 /** Khmer (ភាសាខ្មែរ)

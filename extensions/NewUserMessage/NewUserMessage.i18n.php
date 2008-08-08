@@ -29,6 +29,7 @@ $messages['af'] = array(
  */
 $messages['ar'] = array(
 	'newusermessage-desc' => 'يضيف رسالة إلى صفحات نقاش المستخدمين الجدد',
+	'newuseredit-summary' => 'إضافة [[{{int:newusermessage-template}}|رسالة ترحيب]] إلى صفحة نقاش مستخدم جديد',
 );
 
 /** Bulgarian (Български)
@@ -50,8 +51,8 @@ $messages['cs'] = array(
  * @author Raimond Spekking
  */
 $messages['de'] = array(
-	'newusermessage-desc' => 'Fügt eine [[MediaWiki:NewUserMessage|Nachricht]] neu angelegten Benutzerdiskussionsseiten hinzu',
-	'newuseredit-summary' => 'Begrüßt einen neuen Benutzer auf seiner Diskussionsseite mit einer [[{{MediaWiki:Newusermessage-template}}|Willkommensnachricht]]',
+	'newusermessage-desc' => 'Fügt eine Nachricht neu angelegten Benutzerdiskussionsseiten hinzu',
+	'newuseredit-summary' => 'Begrüßt einen neuen Benutzer auf seiner Diskussionsseite mit einer [[{{int:newusermessage-template}}|Willkommensnachricht]]',
 );
 
 /** Lower Sorbian (Dolnoserbski)
@@ -73,6 +74,7 @@ $messages['eo'] = array(
  */
 $messages['fr'] = array(
 	'newusermessage-desc' => "Ajoute un message dans la page de discussion d'un nouvel utilisateur.",
+	'newuseredit-summary' => 'Ajoute [[{{int:newusermessage-template}}|un message de bienvenue]] dans la page de discussion d’un nouvel utilisateur',
 );
 
 /** Galician (Galego)
@@ -138,6 +140,7 @@ $messages['km'] = array(
  */
 $messages['lb'] = array(
 	'newusermessage-desc' => "Ee Message op d'Diskussiounssäite vun neie Benotzer setzen",
+	'newuseredit-summary' => '[[{{int:newusermessage-template}}|Wëllkommens Message]] op engem neie Benotzer seng Diskussiounssäit derbäisetzen',
 );
 
 /** Lithuanian (Lietuvių)
@@ -181,6 +184,7 @@ $messages['nl'] = array(
  */
 $messages['no'] = array(
 	'newusermessage-desc' => 'Legger inn en beskjed på nye brukeres diskusjonssider',
+	'newuseredit-summary' => 'Legger til en [[{{int:newusermessage-template}}|velkomstbeskjed]] til nye brukeres diskusjonssider',
 );
 
 /** Occitan (Occitan)

@@ -60,6 +60,13 @@ $messages['bn'] = array(
 	'poem-desc' => 'কবিতার ফরমেটিং এর জন্য <tt>&lt;poem&gt;</tt> ট্যাগ যোগ করুন',
 );
 
+/** Catalan (Català)
+ * @author Paucabot
+ */
+$messages['ca'] = array(
+	'poem-desc' => "Afegeix l'etiqueta <tt>&lt;poem&gt;</tt> per al formatatge  de poemes",
+);
+
 /** Czech (Česky)
  * @author Matěj Grabovský
  */

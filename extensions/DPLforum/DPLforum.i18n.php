@@ -80,6 +80,13 @@ $messages['de'] = array(
 	'dplforum-never'  => 'Nie',
 );
 
+/** Ewe (Eʋegbe)
+ * @author Natsubee
+ */
+$messages['ee'] = array(
+	'dplforum-never' => 'Gbeɖe',
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */

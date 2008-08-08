@@ -84,6 +84,13 @@ $messages['de'] = array(
 	'watchsubpages-form'                 => 'Wähle die Seiten aus, die deiner Beobachtungsliste hinzugefügt werden sollen.',
 );
 
+/** Greek (Ελληνικά)
+ * @author Consta
+ */
+$messages['el'] = array(
+	'watchsubpages-addtitles' => 'Προσθήκη σελίδων',
+);
+
 /** French (Français)
  * @author Grondin
  * @author Verdy p

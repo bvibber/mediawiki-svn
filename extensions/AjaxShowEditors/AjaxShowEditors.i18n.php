@@ -191,6 +191,7 @@ $messages['el'] = array(
 	'ajax-se-pending'          => 'εκκρεμή ανανέωση ... (κάντε κλικ σε αυτό το κουτί ή ξεκινήστε την επεξεργασία)',
 	'ajax-se-idling'           => '($1s πριν)',
 	'ajax-se-pagedoesnotexist' => 'η σελίδα δεν υπάρχει',
+	'ajax-se-usernotfound'     => 'Σφάλμα: ο χρήστης δεν βρέθηκε',
 );
 
 /** Esperanto (Esperanto)

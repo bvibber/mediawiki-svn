@@ -97,6 +97,13 @@ $messages['dsb'] = array(
 	'absenteelandlord-desc'   => 'Zastajijo awtomatiski datowu banku wikija, jolic administratory su za wěsty cas njeakitwne.',
 );
 
+/** Greek (Ελληνικά)
+ * @author Consta
+ */
+$messages['el'] = array(
+	'absenteelandlord-reason' => 'Η βάση δεδομένων έχει αυτομάτως κλειδωθεί λόγω αδράνειας από μέρους των διαχειριστών.',
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */

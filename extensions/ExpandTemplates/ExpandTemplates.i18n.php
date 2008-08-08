@@ -99,6 +99,7 @@ $messages['ar'] = array(
  * @author Ghaly
  */
 $messages['arz'] = array(
+	'expandtemplates'                  => 'تكبير القوالب',
 	'expand_templates_input'           => 'النص المدخل:',
 	'expand_templates_output'          => 'النتيجه',
 	'expand_templates_ok'              => 'موافق',
@@ -670,12 +671,13 @@ Illo functiona per appellar le stadio relevante del analysator syntactic a parti
 
 /** Indonesian (Bahasa Indonesia)
  * @author IvanLanin
+ * @author Rex
  */
 $messages['id'] = array(
 	'expandtemplates'                  => 'Pengembangan templat',
 	'expandtemplates-desc'             => '[[Special:ExpandTemplates|Mengembangkan templat, fungsi parser dan variables]] untuk menunjukkan hasil teks wiki dan pratayang halaman hasilnya',
 	'expand_templates_intro'           => 'Halaman istimewa ini menerima teks dan mengembangkan semua templat di dalamnya secara rekursif. Halaman ini juga menerjemahkan semua fungsi parser seperti <nowiki>{{</nowiki>#if:...}}, dan variabel seperti <nowiki>{{</nowiki>CURRENTDAY}}&mdash;bahkan bisa dibilang segala sesuatu yang berada di antara dua tanda kurung. Ini dilakukan dengan memanggil tahapan parser yang sesuai dari MediaWiki.',
-	'expand_templates_title'           => 'Judul konteks, untuk {{PAGENAME}} dll.:',
+	'expand_templates_title'           => 'Judul konteks, untuk {{PAGENAME}} dan lain-lain:',
 	'expand_templates_input'           => 'Teks sumber:',
 	'expand_templates_output'          => 'Hasil',
 	'expand_templates_xml_output'      => 'Hasil XML',
@@ -945,6 +947,13 @@ $messages['lt'] = array(
 	'expand_templates_ok'              => 'Gerai',
 	'expand_templates_remove_comments' => 'Pašalinti komentarus',
 	'expand_templates_preview'         => 'Peržiūra',
+);
+
+/** Latvian (Latviešu)
+ * @author Xil
+ */
+$messages['lv'] = array(
+	'expand_templates_preview' => 'Pirmskats',
 );
 
 /** Malayalam (മലയാളം)

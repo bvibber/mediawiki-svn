@@ -1034,7 +1034,7 @@ Byl zašifrován s použitím veřejného klíče volebních úředníků:
 
 <pre>$2</pre>
 
-Výsledná šifrovaná podoba následuje. Bude veřejně dostupná na stránce [[Special:Boardvote/dump]].
+Výsledná šifrovaná podoba následuje. Bude veřejně dostupná v [[Special:Boardvote/dump|přehledu odevzdaných hlasů]].
 
 <pre>$3</pre>
 
@@ -4940,7 +4940,6 @@ $messages['sah'] = array(
 
 /** Slovak (Slovenčina)
  * @author Helix84
- * @author Siebrand
  */
 $messages['sk'] = array(
 	'boardvote'                => 'Voľby do Správnej rady Wikimedia',
@@ -4974,11 +4973,11 @@ Ak si želáte, môžete si uchovať nasledovné podrobnosti. Váš záznam o hl
 
 <pre>$1</pre>
 
-Bol zakryptovaný verejným kľúčom Správcov volieb:
+Bol zašifrovaný verejným kľúčom Správcov volieb:
 
 <pre>$2</pre>
 
-Nasleduje výsledná zakryptovaná verzia. Zobrazí sa verejne na [[Special:Boardvote/dump]].
+Nasleduje výsledná zašifrovaná verzia. [[Special:Boardvote/dump|Zobrazí sa verejne]].
 
 <pre>$3</pre>
 

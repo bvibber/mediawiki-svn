@@ -47,6 +47,16 @@ $messages['ar'] = array(
 	'simpleantispam-desc'  => 'يضيف اختبار سبام/بوت بسيط للاستمارات',
 );
 
+/** Asturian (Asturianu)
+ * @author Esbardu
+ */
+$messages['ast'] = array(
+	'simpleantispam'       => "La to edición activó'l mecanismu anti-spam",
+	'simpleantispam-label' => "Control anti-spam.
+¡'''NUN''' rellenes esto!",
+	'simpleantispam-desc'  => 'Amiesta al formulariu la comprobación de spam con un bot',
+);
+
 /** Southern Balochi (بلوچی مکرانی)
  * @author Mostafadaneshvar
  */

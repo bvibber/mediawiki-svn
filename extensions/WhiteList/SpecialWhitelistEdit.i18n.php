@@ -299,6 +299,13 @@ $allMessages['diq'] = array(
 	'whitelisttablemodifynone' => 'çino',
 );
 
+/** Ewe (Eʋegbe)
+ * @author Natsubee
+ */
+$allMessages['ee'] = array(
+	'whitelistnever' => 'gbeɖe',
+);
+
 /** Greek (Ελληνικά)
  * @author Consta
  */

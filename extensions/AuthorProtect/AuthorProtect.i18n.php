@@ -45,6 +45,15 @@ $messages['af'] = array(
 	'restriction-level-author' => 'Kan slegs deur outeurs gewysig word',
 );
 
+/** Amharic (አማርኛ)
+ * @author Elfalem
+ */
+$messages['am'] = array(
+	'authorprotect-reason'  => 'ምክኒያት',
+	'authorprotect-success' => 'ቁለፋው ተሳክቷል!',
+	'authorprotect-failure' => 'ቁለፋው አልተሳካም!',
+);
+
 /** Arabic (العربية)
  * @author Alnokta
  * @author Meno25

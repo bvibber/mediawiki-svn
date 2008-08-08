@@ -172,7 +172,8 @@ $messages['de'] = array(
  * @author Consta
  */
 $messages['el'] = array(
-	'importusers-password' => 'κωδικός',
+	'importusers-log-summary' => 'Περίληψη',
+	'importusers-password'    => 'κωδικός',
 );
 
 /** Esperanto (Esperanto)
@@ -423,6 +424,20 @@ $messages['jv'] = array(
 	'importusers-password'                => 'tembung sandhi',
 	'importusers-email'                   => 'e-mail',
 	'importusers-realname'                => 'jeneng asli',
+);
+
+/** Kazakh (Cyrillic) (Қазақша (Cyrillic))
+ * @author GaiJin
+ */
+$messages['kk-cyrl'] = array(
+	'importusers-log-summary' => 'Түйіндемесі',
+);
+
+/** Kazakh (Latin) (Қазақша (Latin))
+ * @author GaiJin
+ */
+$messages['kk-latn'] = array(
+	'importusers-log-summary' => 'Tüýindemesi',
 );
 
 /** Khmer (ភាសាខ្មែរ)

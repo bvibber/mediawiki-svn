@@ -80,6 +80,13 @@ $messages['de'] = array(
 	'piwik-browsers'   => 'Browser',
 );
 
+/** Greek (Ελληνικά)
+ * @author Consta
+ */
+$messages['el'] = array(
+	'piwik-countries' => 'Χώρες',
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */

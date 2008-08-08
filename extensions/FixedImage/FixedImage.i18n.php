@@ -32,6 +32,13 @@ $messages['ar'] = array(
 	'fixedimage-desc' => 'يضيف وسم <tt><nowiki><fundraising></nowiki></tt> كصورة',
 );
 
+/** Asturian (Asturianu)
+ * @author Esbardu
+ */
+$messages['ast'] = array(
+	'fixedimage-desc' => 'Añade la etiqueta <tt><nowiki><fundraising></nowiki></tt> como una imaxe',
+);
+
 /** Southern Balochi (بلوچی مکرانی)
  * @author Mostafadaneshvar
  */

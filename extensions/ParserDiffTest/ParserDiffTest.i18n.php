@@ -86,10 +86,11 @@ $messages['ar'] = array(
  * @author Ghaly
  */
 $messages['arz'] = array(
-	'pdtest_title' => 'عنوان السياق:',
-	'pdtest_text'  => 'النص المدخل:',
-	'pdtest_ok'    => 'موافق',
-	'pdtest_diff'  => 'الفروق',
+	'parserdifftest' => 'اختبار فرق المحلل',
+	'pdtest_title'   => 'عنوان السياق:',
+	'pdtest_text'    => 'النص المدخل:',
+	'pdtest_ok'      => 'موافق',
+	'pdtest_diff'    => 'الفروق',
 );
 
 /** Asturian (Asturianu)

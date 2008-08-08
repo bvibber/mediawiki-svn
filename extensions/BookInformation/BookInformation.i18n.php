@@ -435,6 +435,13 @@ $messages['fur'] = array(
 	'bookinfo-result-year'   => 'An:',
 );
 
+/** Western Frisian (Frysk)
+ * @author Snakesteuben
+ */
+$messages['fy'] = array(
+	'bookinfo-result-author' => 'Auteur:',
+);
+
 /** Galician (Galego)
  * @author Alma
  * @author Xosé
@@ -1140,7 +1147,7 @@ $messages['sah'] = array(
  */
 $messages['sk'] = array(
 	'bookinfo-header'            => 'Informácie o knihách',
-	'bookinfo-desc'              => 'Rozširuje [[Special:Booksources|Knižné zdroje]] o informácie z webovej služby',
+	'bookinfo-desc'              => 'Rozširuje špeciálnu stránku [[Special:Booksources|Knižné zdroje]] o informácie z webovej služby',
 	'bookinfo-result-title'      => 'Názov:',
 	'bookinfo-result-author'     => 'Autor:',
 	'bookinfo-result-publisher'  => 'Vydavateľ:',
@@ -1204,10 +1211,11 @@ $messages['su'] = array(
 /** Swedish (Svenska)
  * @author Sannab
  * @author Lejonel
+ * @author M.M.S.
  */
 $messages['sv'] = array(
 	'bookinfo-header'            => 'Bokinformation',
-	'bookinfo-desc'              => 'Visar ytterligare information från en webbtjänst på [[Special:Booksources]]',
+	'bookinfo-desc'              => 'Utökar [[Special:Booksources|specialsidan med bokkällor]] med information från en webbservice',
 	'bookinfo-result-title'      => 'Titel:',
 	'bookinfo-result-author'     => 'Författare:',
 	'bookinfo-result-publisher'  => 'Utgivare:',

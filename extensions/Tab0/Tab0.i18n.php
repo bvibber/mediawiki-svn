@@ -88,6 +88,13 @@ $messages['id'] = array(
 	'tab0-desc' => 'Menambahkan tab "0" sebagai tombol cepat untuk menyunting bagian atas halaman',
 );
 
+/** Italian (Italiano)
+ * @author Darth Kule
+ */
+$messages['it'] = array(
+	'tab0-desc' => 'Aggiunge il tab "0" che linka alla modifica della prima sezione della pagina',
+);
+
 /** Ripoarisch (Ripoarisch)
  * @author Purodha
  */

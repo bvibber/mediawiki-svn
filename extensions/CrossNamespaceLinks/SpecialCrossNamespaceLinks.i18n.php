@@ -350,7 +350,7 @@ $messages['id'] = array(
 	'crossnamespacelinks'         => 'Pranala lintas ruang nama',
 	'crossnamespacelinks-desc'    => '[[Special:CrossNamespaceLinks|Memberikan daftar pranala lintas ruang nama]] yang seharusnya tak dibolehkan ada di {{SITENAME}}',
 	'crossnamespacelinks-summary' => 'Halaman ini memberikan daftar pranala dari suatu halaman di ruang nama utama ke halaman lain di ruang nama lain (kecuali {{ns:special}}, {{ns:talk}}, {{ns:project}} dan {{ns:template}} namespaces), yang tidak dianjurkan untuk digunakan.',
-	'crossnamespacelinkstext'     => '$1: $2 {{PLURAL:$2|pautan|pautan}} ke $3',
+	'crossnamespacelinkstext'     => '$1: $2 {{PLURAL:$2|pranala|pranala}} ke $3',
 );
 
 /** Ido (Ido)
