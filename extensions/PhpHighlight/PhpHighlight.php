@@ -18,11 +18,6 @@ $wgExtensionCredits['parserhook'][] = array(
 	'description' => 'Adds a <code>&lt;php&gt;</code> tag to use the PHP syntax highlighter',
 );
 
-/**
- * Path to the php executable
- */
-$wgPhpPath = 'php';
-
 if( defined( 'MW_SUPPORTS_PARSERFIRSTCALLINIT' ) )
 	$wgHooks['ParserFirstCallInit'][] = 'efSetPhp';
 else
@@ -42,10 +37,6 @@ function efSetPhp( &$parser ){
  * Call back
  */
 function efRenderPhp( $text ){
-	global $wgPhpPath;
-	$file = tempnam( wfTempDir(), 'highlight-' );
-	file_put_contents( $file, $text );
-	$html = wfShellExec( wfEscapeShellArg($wgPhpPath)." -s ".wfEscapeShellArg($file) );
-	unlink( $file );
+	$html = highlight_string( $text, true );
 	return str_replace( '<br />', "<br />\n", $html );
 }
