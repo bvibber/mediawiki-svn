@@ -88,3 +88,4 @@ $aliases['pt-br'] = array(
 $aliases['sv'] = array(
 	'SiteMatrix' => array( 'Lista över Wikimedias wikier' ),
 );
+

@@ -14,9 +14,25 @@ $aliases['en'] = array(
 	'InterwikiList' => array('InterwikiList')
 );
 
-/** Norwegian (Norsk (bokmål))
+/** Arabic (العربية) */
+$aliases['ar'] = array(
+	'InterwikiList' => array( 'قائمة_الإنترويكي' ),
+);
+
+/** Egyptian Spoken Arabic (مصرى) */
+$aliases['arz'] = array(
+	'InterwikiList' => array( 'قائمة_الإنترويكى' ),
+);
+
+/** Dutch (Nederlands) */
+$aliases['nl'] = array(
+	'InterwikiList' => array( 'Interwikilijst' ),
+);
+
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */
 $aliases['no'] = array(
-	'InterwikiList' => array('Interwikiliste')
+	'InterwikiList' => array( 'Interwikiliste' ),
 );
+

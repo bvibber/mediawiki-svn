@@ -108,3 +108,4 @@ $aliases['pt-br'] = array(
 $aliases['sv'] = array(
 	'LinkSearch' => array( 'Länksökning' ),
 );
+

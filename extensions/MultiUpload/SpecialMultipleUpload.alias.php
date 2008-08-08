@@ -14,9 +14,25 @@ $aliases['en'] = array(
 	'MultiUpload'            => array('MultiUpload')
 );
 
-/** Norwegian (Norsk (bokmål))
+/** Arabic (العربية) */
+$aliases['ar'] = array(
+	'MultiUpload' => array( 'رفع_متعدد' ),
+);
+
+/** Egyptian Spoken Arabic (مصرى) */
+$aliases['arz'] = array(
+	'MultiUpload' => array( 'رفع_متعدد' ),
+);
+
+/** Dutch (Nederlands) */
+$aliases['nl'] = array(
+	'MultiUpload' => array( 'MultiUploaden' ),
+);
+
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */
 $aliases['no'] = array(
-	'MultiUpload'            => array('Last_opp_mange_filer')
+	'MultiUpload' => array( 'Last_opp_mange_filer' ),
 );
+

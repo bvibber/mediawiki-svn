@@ -28,6 +28,11 @@ $aliases['arz'] = array(
 	'DeletedContributions' => array( 'مساهمات_محذوفة' ),
 );
 
+/** Danish (Dansk) */
+$aliases['da'] = array(
+	'DeletedContributions' => array( 'Slettede bidrag' ),
+);
+
 /** German (Deutsch)
  * @author Raimond Spekking
  */

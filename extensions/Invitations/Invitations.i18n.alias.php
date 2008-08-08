@@ -89,3 +89,4 @@ $aliases['ps'] = array(
 $aliases['sv'] = array(
 	'Invitations' => array( 'Inbjudningar' ),
 );
+
