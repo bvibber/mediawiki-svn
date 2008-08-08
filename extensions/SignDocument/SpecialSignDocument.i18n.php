@@ -76,7 +76,7 @@ $1',
 -->[http://www.dnsstuff.com/tools/whois.ch?domain={{urlencode:$1}}&cache=off&email=on WHOIS] • <!--
 -->[http://www.dnsstuff.com/tools/ptr.ch?ip={{urlencode:$1}}&cache=off&email=on RDNS] • <!--
 -->[http://www.robtex.com/rbls/$1.html RBLs] • <!--
--->[[Special:Blockip/$1|block user]] • <!--
+-->[[Special:BlockIP/$1|block user]] • <!--
 -->[{{fullurl:Special:Log/block|page=User:{{urlencode:$1}}}} block log] • <!--
 -->[{{fullurl:Special:CheckUser|ip={{urlencode:$1}}}} checkip])<!--
 --></span>',

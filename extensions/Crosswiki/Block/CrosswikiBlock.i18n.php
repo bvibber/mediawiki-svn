@@ -37,7 +37,7 @@ Return to:
 
 	# Errors and success message
 	'crosswikiblock-nousername'     => 'No username was inputed',
-	'crosswikiblock-local'          => 'Local blocks are not supported via this interface. Use [[Special:Blockip|{{int:blockip}}]]',
+	'crosswikiblock-local'          => 'Local blocks are not supported via this interface. Use [[Special:BlockIP|{{int:blockip}}]]',
 	'crosswikiblock-dbnotfound'     => 'Database $1 does not exist',
 	'crosswikiblock-noname'         => '"$1" is not a valid username.',
 	'crosswikiblock-nouser'         => 'User "$3" is not found.',
@@ -51,7 +51,7 @@ Return to:
 Return to:
 * [[Special:CrosswikiBlock|Block form]]
 * [[$4]]",
-	'crosswikiunblock-local'          => 'Local unblocks are not supported via this interface. Use [[Special:Ipblocklist|{{int:ipblocklist}}]]',
+	'crosswikiunblock-local'          => 'Local unblocks are not supported via this interface. Use [[Special:IPBlockList|{{int:ipblocklist}}]]',
 );
 
 /** Niuean (ko e vagahau Niuē)

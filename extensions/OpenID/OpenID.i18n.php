@@ -88,7 +88,7 @@ If not, try the \"Continue\" button.',
 OpenID lets you log into many different Web sites without using a different password for each.
 (See [http://en.wikipedia.org/wiki/OpenID Wikipedia\'s OpenID article] for more information.)
 
-If you already have an account on {{SITENAME}}, you can [[Special:Userlogin|log in]] with your username and password as usual.
+If you already have an account on {{SITENAME}}, you can [[Special:UserLogin|log in]] with your username and password as usual.
 To use OpenID in the future, you can [[Special:OpenIDConvert|convert your account to OpenID]] after you have logged in normally.
 
 There are many [http://wiki.openid.net/Public_OpenID_providers Public OpenID providers], and you may already have an OpenID-enabled account on another service.
