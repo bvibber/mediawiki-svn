@@ -41,15 +41,25 @@ $smwgShowFactbox=SMW_FACTBOX_HIDDEN;
 		$out='';
 		//set up left hand side timeline
 		$ttl_width = count($this->mvd_tracks)*($this->tl_width);
-		$wgOut->addHTML('<div id="mv_time_line" style="width:'.$ttl_width.'px">' . 
+		/*$wgOut->addHTML('<div id="mv_time_line" style="width:'.$ttl_width.'px">' . 
 					$this->get_video_timeline() .
 				'</div>');
-		$wgOut->addHTML('<div id="mv_fd_mvd_cont" style="left:'.$ttl_width.'px" >');
+		*/
+		//get nav-interface links
+		
+		//$wgOut->addHTML('<div id="mv_fd_mvd_cont" >');
 			$wgOut->addHTML("<div id=\"mv_add_new_mvd\" style=\"display:none;\"></div>");			
 			$this->get_transcript_pages();
-		$wgOut->addHTML("</div>");
+		//$wgOut->addHTML("</div>");
 	}
-
+	function render_full(){
+		global $wgOut;
+ 		//"<div >" . 		 		
+ 		$wgOut->addHTML("<div id=\"selectionsBox\">\n"); 				
+ 		//do the implemented html 
+ 		$this->getHTML(); 
+ 		$wgOut->addHTML("</div>\n");
+	}
 	function render_menu(){
 		$base_title='';
 		//set the base title to the stream name: 
@@ -128,14 +138,14 @@ $smwgShowFactbox=SMW_FACTBOX_HIDDEN;
 		}else{
 			$img_url = MV_StreamImage::getStreamImageURL($mvd_page->stream_id, $mvd_page->start_time, 'medium', true); 
 		}
-		
-		$wgOut->addHTML("<fieldset class=\"mv_fd_mvd\" style=\"background:#".$this->getMvdBgColor($mvd_page)."\" " .
-					"id=\"mv_fd_mvd_{$mvd_page->id}\" name=\"{$mvd_page->wiki_title}\" " .
+		//style=\"background:#".$this->getMvdBgColor($mvd_page)."\" "
+		$wgOut->addHTML("<fieldset class=\"mv_fd_mvd\" id=\"mv_fd_mvd_{$mvd_page->id}\" name=\"{$mvd_page->wiki_title}\" " .
 					"image_url=\"{$img_url}\" >" );
-
-		$wgOut->addHTML("<legend id=\"mv_ld_{$mvd_page->id}\">" .  
+		
+		/*$wgOut->addHTML("<legend id=\"mv_ld_{$mvd_page->id}\">" .  
 				$this->get_mvd_menu($mvd_page) . 
-				"</legend>");			
+				"</legend>");*/			
+		$wgOut->addHTML($this->get_mvd_menu($mvd_page));
 		$wgOut->addHTML("<div id=\"mv_fcontent_{$mvd_page->id}\">");
 		if($content==''){				
 			$this->outputMVD($mvd_page);
@@ -261,7 +271,6 @@ $smwgShowFactbox=SMW_FACTBOX_HIDDEN;
 					return ;				
 				}						
 			}		
-								
 			$parserOutput =  $this->parse_format_text($wikiText, $mvdTitle);
 			
 			//if absolute_links set preg_replace with the server for every relative link:				
@@ -383,17 +392,17 @@ $smwgShowFactbox=SMW_FACTBOX_HIDDEN;
 		
 		//{s:\''.seconds2ntp($mvd_page->start_time).'\',e:\''.seconds2ntp($mvd_page->end_time).'\'}
 		$plink='<a title="'.wfMsg('mv_play').' '.seconds2ntp($mvd_page->start_time) . ' to ' . seconds2ntp($mvd_page->end_time).' " ' .
-				'style="font-weight:bold;color:#000" ' .		
+				'style="text-decoration:none;" ' .		
 				'href="javascript:mv_do_play('.$mvd_page->id.');">' .
-					'<img src="'.$mvgScriptPath.'/skins/images/control_play_blue.png"> '.
+					'<span style="width:44px"><img src="'.$mvgScriptPath.'/skins/images/control_play_blue.png"></span>'.
 					seconds2ntp($mvd_page->start_time) . ' to ' . seconds2ntp($mvd_page->end_time).'</a>';
 		
 		//@@TODO set up conditional display: (view source if not logged on, protect, remove if given permission)  
 		$out.=$plink;
-		$out.="| $elink | $hlink | $dlink ";
+		$out.="- $elink - $hlink - $dlink ";
 		if($wgUser->isAllowed('mv_delete_mvd')){
 			$rlink = '<a title="'.wfMsg('mv_remove_title').'" href="javascript:mv_disp_remove_mvd(\''.$mvd_page->wiki_title.'\', \''.$mvd_page->id.'\')">'.wfMsg('mv_remove').'</a>'; 
-			$out.=' | ' .  $rlink;
+			$out.=' - ' .  $rlink;
 		}
 		return $out;
 	}

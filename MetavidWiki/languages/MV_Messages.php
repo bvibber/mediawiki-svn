@@ -29,7 +29,7 @@ $messages['en'] = array(
 	#add/edit stream text:
 	'mv_stream_meta'                => 'Stream page',
 	'mv_add_stream'                 => 'Metavid Add Stream',
-	'mv_edit_stream'                => 'Metavid Edit Stream',
+	'mv_edit_stream'                => 'Metavid Edit Stream',	
 	'mvexportsearch'                => 'Metavid Export',
 	'mvexportsequence'              => 'Metavid Export Sequence',
 	'mvexportstream'                => 'Metavid Export Stream',
@@ -79,7 +79,7 @@ Or you many want to <a href="$3">Add the stream</a>.',
 	'mv_metavid_live'          => 'Set up live stream',
 	'mv_upload_file'           => 'Upload file',
 	'mv_external_file'         => 'External file',
-	'mv_stream_delete_warning' => 'Deleting this stream will additionally remove $1 pages of metadata',
+	'mv_stream_delete_warning' => 'Deleting this stream will additionally remove $1 pages of metadata',	
 
 	#tools
 	'mv_tool_search'            => 'Search',
@@ -103,7 +103,7 @@ Or you many want to <a href="$3">Add the stream</a>.',
 	'mv_category_matches'		=> 'Category Matches',
 	'mv_bill_matches'			=> 'Bill Matches',
 	'mv_interest_group_matches' => 'Interest Group Matches',	
-
+	'mv_click_to_edit'			=> 'click to edit',
 
 	#mvd types:
 	'ht_en'          => 'Transcript',

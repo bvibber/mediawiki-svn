@@ -89,7 +89,7 @@
 		$this->page_header ='<h1 class="videoHeader">'.
  			$this->article->mvTitle->getStreamNameText().' :: '.
  			$this->components['MV_Tools']->stream_paging_links('prev') . 
-				' <span id="mv_stream_time">'.$this->article->mvTitle->getTimeDesc() . '</span>'.
+				' <span title="'.wfMsg('mv_click_to_edit').'" id="mv_stream_time">'.$this->article->mvTitle->getTimeDesc($span_separated=true) . '</span>'.
 			$this->components['MV_Tools']->stream_paging_links('next') .
 			wfMsg('mv_of') . seconds2ntp($this->article->mvTitle->getDuration()) .  			
 		'</h1>';	

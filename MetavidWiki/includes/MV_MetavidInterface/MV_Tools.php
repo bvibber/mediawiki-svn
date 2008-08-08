@@ -32,6 +32,18 @@
  		}
 		$wgOut->addHTML('</div>');
 	}
+	function render_full(){
+ 		global $wgOut;
+ 		//"<div >" . 		 		
+ 		/*$wgOut->addHTML("<fieldset ".$this->getStyleOverride()." id=\"".get_class($this)."\" >\n" .
+ 					"<legend id=\"mv_leg_".get_class($this)."\">".$this->render_menu()."</legend>\n");
+ 		*/ 				
+ 		//do the implemented html 		
+ 		$wgOut->addHTML('<div id="MV_Tools">');
+ 			$this->getHTML(); 
+ 		$wgOut->addHTML('</div>');
+ 		/*$wgOut->addHTML("</fieldset>\n");*/
+	}
 	/*function getStreamPage(){
 		return ;		
 	}*/	

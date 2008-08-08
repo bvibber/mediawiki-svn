@@ -121,6 +121,42 @@ var mv_init_interface = {
 		//add all the hover hooks:
 		this.addHoverHooks();				
 		
+		//add edit/navigate hook
+		var st_input_mode=false;
+		$j('#mv_stream_time').click(function(){	
+			if(!st_input_mode){
+				var st = $j('#'+this.id+' .mv_start_time').html();
+				var et =  $j('#'+this.id+' .mv_end_time').html();	
+				$j(this).hide();
+				$j(this).after('<form style="display:inline" action="javascript:alert(\'wtf\');" id="td_st_mv_stream_time">' +
+						'<input class="videoHeader" id="mv_td_start_time" size="7" value="'+st+'">'+
+						'<input class="videoHeader" id="mv_td_end_time" size="7" value="'+et+'"> '+
+						'<a href="#" id="mv_td_st_go">go</a> :: '+
+						'<a href="#" id="mv_td_st_cancel">cancel</a></form>');			
+			}
+			if(!st_input_mode)st_input_mode=true;
+			//bind actions for go/cancel
+			function getNavUrl(){
+				return wgArticlePath.replace('$1',wgPageName+'/'+$j('#mv_td_start_time').val()+'/'+$j('#mv_td_end_time').val());
+			}
+			$j('#mv_td_st_go').click(function(){		
+				window.location=getNavUrl();
+				return false;
+			});	
+			$j('#td_st_mv_stream_time input').keypress(function (e) {  
+				if ((e.which && e.which == 13) || (e.keyCode && e.keyCode == 13)) {  		
+					window.location=getNavUrl();
+				}
+			});
+			$j('#mv_td_st_cancel').click(function(){
+				$j('#mv_stream_time').show();
+				$j('#td_st_mv_stream_time').remove();
+				st_input_mode=false;
+				return false;
+			});					
+		});
+		
+		
 		//do any tool specific hooks: 
 		this.tool_key = parseUri(document.URL).queryKey.tool_disp;
 		if(this.tool_key){
@@ -199,7 +235,7 @@ var mv_init_interface = {
 			out:function(){
 				
 			}
-		});
+		});	
 	}, 
 	//delay video updates until we are not playing the clip:
 	delayDoVidMvdUpdate:function(){
@@ -806,7 +842,7 @@ function highlight_fd(mvd_id){
 	$j('#mv_fd_mvd_'+mvd_id).css('border','1px solid #FF0000');
 }
 function de_highlight_fd(mvd_id){
-	$j('#mv_fd_mvd_'+mvd_id).css('border', '1px solid #2F6FAB');
+	$j('#mv_fd_mvd_'+mvd_id).css('border', '1px solid #FFFFFF');
 }
 
 function highlight_tl_ts(mvd_id){

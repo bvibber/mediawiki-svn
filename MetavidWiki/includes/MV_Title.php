@@ -198,9 +198,15 @@
 		return $this->stream_name . '/'.$start_ntp . $end_ntp;
 	}
 
-	function getTimeDesc(){	
+	function getTimeDesc($span_separated=false){	
 		if($this->getStartTime() && $this->getEndTime()){
-			return wfMsg('mv_time_separator', $this->getStartTime(), $this->getEndTime());
+			if($span_separated){
+				return wfMsg('mv_time_separator', 
+					'<span class="mv_start_time">'.$this->getStartTime().'</span>',
+					'<span class="mv_end_time">'.$this->getEndTime()).'</span>';
+			}else{
+				return wfMsg('mv_time_separator', $this->getStartTime(), $this->getEndTime());
+			}
 		}else{
 			return '';
 		}

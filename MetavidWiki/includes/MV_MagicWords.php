@@ -66,7 +66,9 @@ class MV_MagicWords{
 		}
 		//run the search and return the results: 
 		//set up data request:
-		$ms = new MV_SpecialMediaSearch();
+		$ms = new MV_SpecialMediaSearch();		
+		$_REQUEST['limit']=$this->params['num_results'];
+		
 		$ms->filters[] = array ( 'a' => 'and', 't' => 'spoken_by','v' =>$person_name );
 		$ms->doSearch();
 		return $ms->getUnifiedResultsHTML($show_sidebar=false);
