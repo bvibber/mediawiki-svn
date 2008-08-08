@@ -248,14 +248,15 @@ mediaPlayers.prototype =
 {
     players : null,
     preference : null,
-    default_players : null,    
+    default_players : null,
     init : function()
     {
         this.players = new Array();
         this.loadPreferences();
         this.default_players = new Object();
-        this.default_players['video/x-flv']= ['flowplayer','vlc'];
-        this.default_players['video/annodex']=['cortado','vlc'];
+        this.default_players['video/x-flv']= ['flash','vlc'];
+        this.default_players['video/ogg']=['native','vlc','java'];
+		this.default_players['video/mp4']=['vlc'];
     },
     addPlayer : function(player, mime_type)
     {
@@ -277,10 +278,15 @@ mediaPlayers.prototype =
     getMIMETypePlayers : function(mime_type)
     {
         var mime_players = new Array();
-        for (var i in this.players)
-            if (this.players[i].supportsMIMEType(mime_type))
-                mime_players.push(this.players[i]);
-                
+		// @@TODO: optimize this loop
+		if(this.default_players[mime_type])
+			for (var d in this.default_players[mime_type])
+			{
+				var library = this.default_players[mime_type][d];
+				for (var i in this.players)
+					if (this.players[i].library==library && this.players[i].supportsMIMEType(mime_type))
+						mime_players.push(this.players[i]);
+			}
         return mime_players;
     },
     defaultPlayer : function(mime_type)
@@ -292,12 +298,8 @@ mediaPlayers.prototype =
             for(var i in mime_players)
                 if(mime_players[i].id==this.preference[mime_type])
                     return mime_players[i];
-            // otherwise use the hard-coded preference list
-            for(var d in this.default_players)
-                for(var i in mime_players)
-                    if(mime_players[i].id==this.default_players[d])
-                        return mime_players[i];
             // otherwise just return the first compatible player
+			// (it will be chosen according to the default_players list
             return mime_players[0];
         }
         js_log('No default player found for ' + mime_type);
@@ -2010,8 +2012,8 @@ embedVideo.prototype = {
                 var retval = '<img src="'+image_src+'"/>';
                 if(is_not_selected)
                     retval+='<a href="#" onClick="' + source_select_code + 'embedTypes.players.userSelectPlayer(\''+default_player.id+'\',\''+source.getMIMEType()+'\'); return false;">';
-                retval += source.getTitle()+' - ' + default_player.getName() + (is_not_selected?'</a>':'') + ' ';
-                retval += '(<a href="#" onClick=\'$j("#player_select_list_'+index+'").fadeIn("slow");return false;\'>choose player</a>)' + player_code;
+                retval += source.getTitle()+/*' - ' + default_player.getName() +*/ (is_not_selected?'</a>':'') + ' ';
+                retval += /*'(<a href="#" onClick=\'$j("#player_select_list_'+index+'").fadeIn("slow");return false;\'>choose player</a>)' +*/ player_code;
                 return retval;
             }
             else
