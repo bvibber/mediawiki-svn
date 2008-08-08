@@ -221,7 +221,7 @@ $messages['ru'] = array(
  */
 $messages['sk'] = array(
 	'forcepreview'             => 'Uložiť stránku (najprv zobraziť náhľad)',
-	'forcepreview-desc'        => 'Vynútiť náhľad u neprivilegovaných používateľov',
+	'forcepreview-desc'        => 'Vynucuje náhľad u neprivilegovaných používateľov',
 	'right-forcepreviewexempt' => 'Je možné uložiť bez použitia Zobraziť náhľad',
 );
 

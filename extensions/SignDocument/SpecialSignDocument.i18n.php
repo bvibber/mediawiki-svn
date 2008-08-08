@@ -149,7 +149,6 @@ $messages['ang'] = array(
 /** Arabic (العربية)
  * @author Meno25
  * @author ترجمان05
- * @author Siebrand
  */
 $messages['ar'] = array(
 	'signdocument'                    => 'توقيع الوثيقة',
@@ -221,7 +220,7 @@ $1',
 -->[http://www.dnsstuff.com/tools/whois.ch?domain={{urlencode:$1}}&cache=off&email=on WHOIS] • <!--
 -->[http://www.dnsstuff.com/tools/ptr.ch?ip={{urlencode:$1}}&cache=off&email=on RDNS] • <!--
 -->[http://www.robtex.com/rbls/$1.html RBLs] • <!--
--->[[Special:Blockip/$1|منع المستخدم]] • <!--
+-->[[Special:BlockIP/$1|منع المستخدم]] • <!--
 -->[{{fullurl:Special:Log/block|page=User:{{urlencode:$1}}}} سجل المنع] • <!--
 -->[{{fullurl:Special:CheckUser|ip={{urlencode:$1}}}} تدقيق الأيبي])<!--
 --></span>',
@@ -270,7 +269,6 @@ $messages['be-tarask'] = array(
 
 /** Bulgarian (Български)
  * @author DCLXVI
- * @author Siebrand
  */
 $messages['bg'] = array(
 	'sign-selectdoc'               => 'Документ:',
@@ -308,7 +306,7 @@ $messages['bg'] = array(
 -->[http://www.dnsstuff.com/tools/whois.ch?domain={{urlencode:$1}}&cache=off&email=on WHOIS] • <!--
 -->[http://www.dnsstuff.com/tools/ptr.ch?ip={{urlencode:$1}}&cache=off&email=on RDNS] • <!--
 -->[http://www.robtex.com/rbls/$1.html RBLs] • <!--
--->[[Special:Blockip/$1|блокиране]] • <!--
+-->[[Special:BlockIP/$1|блокиране]] • <!--
 -->[{{fullurl:Special:Log/block|page=User:{{urlencode:$1}}}} дневник на блокиранията] • <!--
 -->[{{fullurl:Special:CheckUser|ip={{urlencode:$1}}}} проверка])<!--
 --></span>',
@@ -506,7 +504,7 @@ $1',
 		-->[http://www.dnsstuff.com/tools/whois.ch?domain={{urlencode:$1}}&cache=off&email=on WHOIS] • <!--
 		-->[http://www.dnsstuff.com/tools/ptr.ch?ip={{urlencode:$1}}&cache=off&email=on RDNS] • <!--
 		-->[http://www.robtex.com/rbls/$1.html RBLs] • <!--
-		-->[[Special:Blockip/$1|Bloquer l\'utisateur]] • <!--
+		-->[[Special:BlockIP/$1|Bloquer l\'utisateur]] • <!--
 		-->[{{fullurl:Special:Log/block|page=User:{{urlencode:$1}}}} Journal des blocages] • <!--
 		-->[{{fullurl:Special:CheckUser|ip={{urlencode:$1}}}} Vérification d\'utilisateur])<!--
 		--></span>',
@@ -539,7 +537,6 @@ $messages['fy'] = array(
  * @author Xosé
  * @author Alma
  * @author Toliño
- * @author Siebrand
  */
 $messages['gl'] = array(
 	'signdocument'                    => 'Asine o Documento',
@@ -605,7 +602,7 @@ $1',
 -->[http://www.dnsstuff.com/tools/whois.ch?domain={{urlencode:$1}}&cache=off&email=on WHOIS] • <!--
 -->[http://www.dnsstuff.com/tools/ptr.ch?ip={{urlencode:$1}}&cache=off&email=on RDNS] • <!--
 -->[http://www.robtex.com/rbls/$1.html RBLs] • <!--
--->[[Special:Blockip/$1|bloquear o usuario]] • <!--
+-->[[Special:BlockIP/$1|bloquear o usuario]] • <!--
 -->[{{fullurl:Special:Log/block|page=User:{{urlencode:$1}}}} rexistro de bloqueos] • <!--
 -->[{{fullurl:Special:CheckUser|ip={{urlencode:$1}}}} comprobar IP])<!--
 --></span>',
@@ -671,7 +668,6 @@ $messages['hil'] = array(
 
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
- * @author Siebrand
  */
 $messages['hsb'] = array(
 	'signdocument'                    => 'Dokument podpisać',
@@ -732,15 +728,15 @@ $1',
 	'sign-sigdetails'                 => 'Podrobnosće podpisanja',
 	'sign-emailto'                    => '<a href="mailto:$1">$1</a>',
 	'sign-iptools'                    => '<span class="plainlinksneverexpand"><!--
--->[[User:$1|$1]] ([[User talk:$1|Diskusija]] • <!--
--->[[Special:Contributions/$1|Přinoški]] • <!--
--->[http://www.dnsstuff.com/tools/whois.ch?domain={{urlencode:$1}}&cache=off&email=on WHOIS] • <!--
--->[http://www.dnsstuff.com/tools/ptr.ch?ip={{urlencode:$1}}&cache=off&email=on RDNS] • <!--
--->[http://www.robtex.com/rbls/$1.html RBLs] • <!--
--->[[Special:Blockip/$1|Wužiwarja blokować]] • <!--
--->[{{fullurl:Special:Log/block|page=User:{{urlencode:$1}}}} Protokol blokowanja] • <!--
--->[{{fullurl:Special:CheckUser|ip={{urlencode:$1}}}} checkip])<!--
---></span>',
+		-->[[User:$1|$1]] ([[User talk:$1|Diskusija]] • <!--
+		-->[[Special:Contributions/$1|Přinoški]] • <!--
+		-->[http://www.dnsstuff.com/tools/whois.ch?domain={{urlencode:$1}}&cache=off&email=on WHOIS] • <!--
+		-->[http://www.dnsstuff.com/tools/ptr.ch?ip={{urlencode:$1}}&cache=off&email=on RDNS] • <!--
+		-->[http://www.robtex.com/rbls/$1.html RBLs] • <!--
+		-->[[Special:BlockIP/$1|Wužiwarja blokować]] • <!--
+		-->[{{fullurl:Special:Log/block|page=User:{{urlencode:$1}}}} Protokol blokowanja] • <!--
+		-->[{{fullurl:Special:CheckUser|ip={{urlencode:$1}}}} checkip])<!--
+		--></span>',
 	'sign-viewfield-stricken'         => 'Wušmórnjeny',
 	'sign-viewfield-reviewedby'       => 'Pruwowar',
 	'sign-viewfield-reviewcomment'    => 'Komentar',
@@ -1138,7 +1134,7 @@ $1',
 -->[http://www.dnsstuff.com/tools/whois.ch?domain={{urlencode:$1}}&cache=off&email=on WHOIS] • <!--
 -->[http://www.dnsstuff.com/tools/ptr.ch?ip={{urlencode:$1}}&cache=off&email=on RDNS] • <!--
 -->[http://www.robtex.com/rbls/$1.html RBLs] • <!--
--->[[Special:Blockip/$1|सदस्याला ब्लक करा]] • <!--
+-->[[Special:BlockIP/$1|सदस्याला ब्लक करा]] • <!--
 -->[{{fullurl:Special:Log/block|page=User:{{urlencode:$1}}}} ब्लक नोंदी] • <!--
 -->[{{fullurl:Special:CheckUser|ip={{urlencode:$1}}}} आयपी तपासा])<!--
 --></span>',
@@ -1297,7 +1293,6 @@ $messages['nn'] = array(
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
- * @author Siebrand
  */
 $messages['no'] = array(
 	'signdocument'                    => 'Signer dokument',
@@ -1363,7 +1358,7 @@ $1',
 -->[http://www.dnsstuff.com/tools/whois.ch?domain={{urlencode:$1}}&cache=off&email=on WHOIS] • <!--
 -->[http://www.dnsstuff.com/tools/ptr.ch?ip={{urlencode:$1}}&cache=off&email=on RDNS] • <!--
 -->[http://www.robtex.com/rbls/$1.html RBL-er] • <!--
--->[[Special:Blockip/$1|blokker]] • <!--
+-->[[Special:BlockIP/$1|blokker]] • <!--
 -->[{{fullurl:Special:Log/block|page=User:{{urlencode:$1}}}} blokkeringslogg] • <!--
 -->[{{fullurl:Special:CheckUser|ip={{urlencode:$1}}}} sjekk IP])<!--
 --></span>',
@@ -1464,7 +1459,7 @@ $messages['oc'] = array(
 		-->[http://www.dnsstuff.com/tools/whois.ch?domain={{urlencode:$1}}&cache=off&email=on WHOIS] • <!--
 		-->[http://www.dnsstuff.com/tools/ptr.ch?ip={{urlencode:$1}}&cache=off&email=on RDNS] • <!--
 		-->[http://www.robtex.com/rbls/$1.html RBLs] • <!--
-		-->[[Special:Blockip/$1|block user]] • <!--
+		-->[[Special:BlockIP/$1|block user]] • <!--
 		-->[{{fullurl:Special:Log/block|page=User:{{urlencode:$1}}}} block log] • <!--
 		-->[{{fullurl:Special:CheckUser|ip={{urlencode:$1}}}} checkip])<!--
 		--></span>',
@@ -1545,7 +1540,7 @@ Przeczytaj cały dokument dokładnie i jeśli uznasz, że chcesz go poprzeć, w 
 -->[http://www.dnsstuff.com/tools/whois.ch?domain={{urlencode:$1}}&cache=off&email=on WHOIS] • <!--
 -->[http://www.dnsstuff.com/tools/ptr.ch?ip={{urlencode:$1}}&cache=off&email=on RDNS] • <!--
 -->[http://www.robtex.com/rbls/$1.html RBLs] • <!--
--->[[Special:Blockip/$1|zablokuj]] • <!--
+-->[[Special:BlockIP/$1|zablokuj]] • <!--
 -->[{{fullurl:Special:Log/block|page=User:{{urlencode:$1}}}} blokady] • <!--
 -->[{{fullurl:Special:CheckUser|ip={{urlencode:$1}}}} sprawdź IP])<!--
 --></span>',
@@ -1554,7 +1549,6 @@ Przeczytaj cały dokument dokładnie i jeśli uznasz, że chcesz go poprzeć, w 
 
 /** Piedmontese (Piemontèis)
  * @author Bèrto 'd Sèra
- * @author Siebrand
  */
 $messages['pms'] = array(
 	'signdocument'                    => "Firma digital d'un document",
@@ -1622,7 +1616,7 @@ Ch'a varda che sò dat a sio giust, e che i peulo contatela për verifiché soa 
 -->[[User:$1|$1]] ([[User talk:$1|talk]] • <!--
 -->[[Special:Contributions/$1|contribs]] • <!-- -->[http://www.dnsstuff.com/tools/whois.ch?domain={{urlencode:$1}}&cache=off&email=on WHOIS] • <!-- -->[http://www.dnsstuff.com/tools/ptr.ch?ip={{urlencode:$1}}&cache=off&email=on RDNS] • <!--
 -->[http://www.robtex.com/rbls/$1.html RBLs] • <!--
--->[[Special:Blockip/$1|block user]] • <!--
+-->[[Special:BlockIP/$1|block user]] • <!--
 -->[{{fullurl:Special:Log/block|page=User:{{urlencode:$1}}}} block log] • <!-- -->[{{fullurl:Special:CheckUser|ip={{urlencode:$1}}}} checkip])<!-- --></span>',
 	'sign-viewfield-stricken'         => 'Anulà',
 	'sign-viewfield-reviewedby'       => 'Controlor',
@@ -1816,7 +1810,7 @@ $1',
 -->[http://www.dnsstuff.com/tools/whois.ch?domain={{urlencode:$1}}&cache=off&email=on WHOIS] • <!--
 -->[http://www.dnsstuff.com/tools/ptr.ch?ip={{urlencode:$1}}&cache=off&email=on RDNS] • <!--
 -->[http://www.robtex.com/rbls/$1.html RBLs] • <!--
--->[[Special:Blockip/$1|заблокировать участника]] • <!--
+-->[[Special:BlockIP/$1|заблокировать участника]] • <!--
 -->[{{fullurl:Special:Log/block|page=User:{{urlencode:$1}}}} журнал блокировок] • <!--
 -->[{{fullurl:Special:CheckUser|ip={{urlencode:$1}}}} проверить])<!--
 --></span>',
@@ -1838,7 +1832,6 @@ $1',
 
 /** Slovak (Slovenčina)
  * @author Helix84
- * @author Siebrand
  */
 $messages['sk'] = array(
 	'signdocument'                    => 'Podpísať dokument',
@@ -1904,7 +1897,7 @@ $1',
 -->[http://www.dnsstuff.com/tools/whois.ch?domain={{urlencode:$1}}&cache=off&email=on WHOIS] • <!--
 -->[http://www.dnsstuff.com/tools/ptr.ch?ip={{urlencode:$1}}&cache=off&email=on RDNS] • <!--
 -->[http://www.robtex.com/rbls/$1.html RBLs] • <!--
--->[[Special:Blockip/$1|zablokovať používateľa]] • <!--
+-->[[Special:BlockIP/$1|zablokovať používateľa]] • <!--
 -->[{{fullurl:Special:Log/block|page=User:{{urlencode:$1}}}} záznam blokovaní] • <!--
 -->[{{fullurl:Special:CheckUser|ip={{urlencode:$1}}}} kontrola ip])<!--
 --></span>',
@@ -2014,7 +2007,7 @@ $1',
 -->[http://www.dnsstuff.com/tools/whois.ch?domain={{urlencode:$1}}&cache=off&email=on WHOIS] • <!--
 -->[http://www.dnsstuff.com/tools/ptr.ch?ip={{urlencode:$1}}&cache=off&email=on RDNS] • <!--
 -->[http://www.robtex.com/rbls/$1.html RBLs] • <!--
--->[[Special:Blockip/$1|blockera användare]] • <!--
+-->[[Special:BlockIP/$1|blockera användare]] • <!--
 -->[{{fullurl:Special:Log/block|page=User:{{urlencode:$1}}}} blockerings logg] • <!--
 -->[{{fullurl:Special:CheckUser|ip={{urlencode:$1}}}} kontrollera IP])<!--
 --></span>',
@@ -2214,7 +2207,7 @@ $1',
 -->[http://www.dnsstuff.com/tools/whois.ch?domain={{urlencode:$1}}&cache=off&email=on WHOIS] • <!--
 -->[http://www.dnsstuff.com/tools/ptr.ch?ip={{urlencode:$1}}&cache=off&email=on RDNS] • <!--
 -->[http://www.robtex.com/rbls/$1.html RBLs] • <!--
--->[[Special:Blockip/$1|cấm thành viên]] • <!--
+-->[[Special:BlockIP/$1|cấm thành viên]] • <!--
 -->[{{fullurl:Special:Log/block|page=User:{{urlencode:$1}}}} nhật trình cấm] • <!--
 -->[{{fullurl:Special:CheckUser|ip={{urlencode:$1}}}} kiểm ip])<!--
 --></span>',

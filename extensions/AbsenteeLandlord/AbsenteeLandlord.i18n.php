@@ -344,7 +344,7 @@ $messages['ru'] = array(
  */
 $messages['sk'] = array(
 	'absenteelandlord-reason' => 'Databáza bola automaticky zamknutá z dôvodu neaktivity správcov.',
-	'absenteelandlord-desc'   => 'Automaticky zamyká wiki databázu ak sú všetci správcovia po určitú dobu neaktívny',
+	'absenteelandlord-desc'   => 'Automaticky zamyká wiki databázu ak sú všetci správcovia po určitú dobu neaktívni',
 );
 
 /** Seeltersk (Seeltersk)

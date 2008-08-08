@@ -112,7 +112,7 @@ $messages['ar'] = array(
 * [[Special:CrosswikiBlock|استمارة المنع]]
 * [[$2]]",
 	'crosswikiblock-nousername'     => 'لا اسم مستخدم تم إدخاله',
-	'crosswikiblock-local'          => 'عمليات المنع المحلية غير مدعومة من خلال هذه الواجهة. استخدم [[Special:Blockip|{{int:blockip}}]]',
+	'crosswikiblock-local'          => 'عمليات المنع المحلية غير مدعومة من خلال هذه الواجهة. استخدم [[Special:BlockIP|{{int:blockip}}]]',
 	'crosswikiblock-dbnotfound'     => 'قاعدة البيانات $1 غير موجودة',
 	'crosswikiblock-noname'         => '"$1" ليس اسم مستخدم صحيحا.',
 	'crosswikiblock-nouser'         => 'المستخدم "$3" غير موجود.',
@@ -165,7 +165,7 @@ $messages['bg'] = array(
 * [[Special:CrosswikiBlock|Формуляра за блокиране]]
 * [[$2]]",
 	'crosswikiblock-nousername'     => 'Не беше въведено потребителско име',
-	'crosswikiblock-local'          => 'Локалните блокирания не се поддържат от този интерфейс. Използва се [[Special:Blockip|{{int:blockip}}]]',
+	'crosswikiblock-local'          => 'Локалните блокирания не се поддържат от този интерфейс. Използва се [[Special:BlockIP|{{int:blockip}}]]',
 	'crosswikiblock-dbnotfound'     => 'Не съществува база данни $1',
 	'crosswikiblock-noname'         => '„$1“ не е валидно потребителско име.',
 	'crosswikiblock-nouser'         => 'Не беше намерен потребител „$3“',
@@ -243,7 +243,7 @@ Zurück zu:
 * [[Special:CrosswikiBlock|Sperrformular]]
 * [[$2]]",
 	'crosswikiblock-nousername'     => 'Es wurde kein Benutzername eingegeben',
-	'crosswikiblock-local'          => 'Lokale Sperren werden durch dieses Interface nicht unterstützt. Benutze [[Special:Blockip|{{int:blockip}}]]',
+	'crosswikiblock-local'          => 'Lokale Sperren werden durch dieses Interface nicht unterstützt. Benutze [[Special:BlockIP|{{int:blockip}}]]',
 	'crosswikiblock-dbnotfound'     => 'Datenbank $1 ist nicht vorhanden',
 	'crosswikiblock-noname'         => '„$1“ ist kein gültiger Benutzername.',
 	'crosswikiblock-nouser'         => 'Benutzer „$3“ nicht gefunden.',
@@ -288,7 +288,7 @@ Slědk k:
 * [[Special:CrosswikiBlock|Blokěrowański formular]]
 * [[$2]]",
 	'crosswikiblock-nousername'     => 'Žedne wužywarske mě zapódane',
-	'crosswikiblock-local'          => 'Lokalne blokěrowanja njepódpěraju se pśez toś ten interfejs. Wužyj [[Special:Blockip|{{int:blockip}}]]',
+	'crosswikiblock-local'          => 'Lokalne blokěrowanja njepódpěraju se pśez toś ten interfejs. Wužyj [[Special:BlockIP|{{int:blockip}}]]',
 	'crosswikiblock-dbnotfound'     => 'Datowa banka $1 njeeksistujo',
 	'crosswikiblock-noname'         => '"$1" njejo płaśiwe wužywarske mě.',
 	'crosswikiblock-nouser'         => 'Wužywaŕ "$3" njejo se namakał.',
@@ -341,7 +341,7 @@ Reen:
 * [[Special:CrosswikiBlock|Forbarpaĝo]]
 * [[$2]]",
 	'crosswikiblock-nousername'     => 'Neniu uzanto-nomo estis entajpita',
-	'crosswikiblock-local'          => 'Lokaj forbaroj ne estas subtenataj per ĉi interfaco. Uzu [[Special:Blockip|{{int:blockip}}]]',
+	'crosswikiblock-local'          => 'Lokaj forbaroj ne estas subtenataj per ĉi interfaco. Uzu [[Special:BlockIP|{{int:blockip}}]]',
 	'crosswikiblock-dbnotfound'     => 'Datumbazo $1 ne ekzistas.',
 	'crosswikiblock-noname'         => '"$1" ne estas valida uzanto-nomo.',
 	'crosswikiblock-nouser'         => 'Uzanto "$3" ne estas trovita.',
@@ -421,7 +421,7 @@ Revenir à :
 * [[Special:CrosswikiBlock|Formulaire de blocage]]
 * [[$2]]",
 	'crosswikiblock-nousername'     => "Aucun nom d'utilisateur n'a été indiqué",
-	'crosswikiblock-local'          => 'Les blocages locaux ne sont pas supportés au travers de cette interface. Utilisez [[Special:Blockip|{{int:blockip}}]].',
+	'crosswikiblock-local'          => 'Les blocages locaux ne sont pas supportés au travers de cette interface. Utilisez [[Special:BlockIP|{{int:blockip}}]].',
 	'crosswikiblock-dbnotfound'     => 'La base de données « $1 » n’existe pas',
 	'crosswikiblock-noname'         => '« $1 » n’est pas un nom d’utilisateur valide.',
 	'crosswikiblock-nouser'         => 'L’utilisateur « $3 » est introuvable.',
@@ -478,7 +478,7 @@ Voltar a:
 * [[Special:CrosswikiBlock|Formulario de bloqueo]]
 * [[$2]]",
 	'crosswikiblock-nousername'     => 'Non foi inserido ningún alcume',
-	'crosswikiblock-local'          => 'Os bloqueos locais non están soportados mediante esta interface. Use [[Special:Blockip|{{int:blockip}}]]',
+	'crosswikiblock-local'          => 'Os bloqueos locais non están soportados mediante esta interface. Use [[Special:BlockIP|{{int:blockip}}]]',
 	'crosswikiblock-dbnotfound'     => 'A base de datos $1 non existe',
 	'crosswikiblock-noname'         => '"$1" non é un nome de usuario válido.',
 	'crosswikiblock-nouser'         => 'Non se atopa o usuario "$3".',
@@ -531,7 +531,7 @@ $messages['hi'] = array(
 	'crosswikiunblock-reason'       => 'कारण:',
 	'crosswikiunblock-submit'       => 'इस सदस्य को अनब्लॉक करें',
 	'crosswikiblock-nousername'     => 'सदस्यनाम दिया नहीं',
-	'crosswikiblock-local'          => 'स्थानिक ब्लॉक यहां पर बदले नहीं जा सकतें। [[Special:Blockip|{{int:blockip}}]] का इस्तेमाल करें',
+	'crosswikiblock-local'          => 'स्थानिक ब्लॉक यहां पर बदले नहीं जा सकतें। [[Special:BlockIP|{{int:blockip}}]] का इस्तेमाल करें',
 	'crosswikiblock-dbnotfound'     => 'डाटाबेस $1 उपलब्ध नहीं हैं',
 	'crosswikiblock-noname'         => '"$1" यह वैध सदस्यनाम नहीं हैं।',
 	'crosswikiblock-nouser'         => 'सदस्य "$3" मिला नहीं।',
@@ -579,7 +579,7 @@ Wróćo k:
 * [[Special:CrosswikiBlock|Formular blokowanjow]]
 * [[$2]]",
 	'crosswikiblock-nousername'     => 'Njebu wužiwarske mjeno zapodate',
-	'crosswikiblock-local'          => 'Lokalne blokowanja so přez tutón interfejs njepodpěruja. Wužij [[Special:Blockip|{{int:blockip}}]]',
+	'crosswikiblock-local'          => 'Lokalne blokowanja so přez tutón interfejs njepodpěruja. Wužij [[Special:BlockIP|{{int:blockip}}]]',
 	'crosswikiblock-dbnotfound'     => 'Datowa banka $1 njeeksistuje',
 	'crosswikiblock-noname'         => '"$1" płaćiwe wužiwarske mjeno njeje.',
 	'crosswikiblock-nouser'         => 'Wužiwar "$3" njebu namakany.',
@@ -657,7 +657,7 @@ Torna a:
 * [[Special:CrosswikiBlock|Modulo di blocco]]
 * [[$2]]",
 	'crosswikiblock-nousername'     => 'Non è stato inserito nessun nome utente',
-	'crosswikiblock-local'          => 'I blocchi locali non sono supportati da questa interfaccia. Usare [[Special:Blockip|{{int:blockip}}]]',
+	'crosswikiblock-local'          => 'I blocchi locali non sono supportati da questa interfaccia. Usare [[Special:BlockIP|{{int:blockip}}]]',
 	'crosswikiblock-dbnotfound'     => 'Il database $1 non esiste',
 	'crosswikiblock-noname'         => '"$1" non è un nome utente valido.',
 	'crosswikiblock-nouser'         => 'L\'utente "$3" non è stato trovato.',
@@ -702,7 +702,7 @@ $messages['ja'] = array(
 * [[Special:CrosswikiBlock|他ウィキの利用者をブロック]]
 * [[$2]]",
 	'crosswikiblock-nousername'     => '利用者名が入力されていません',
-	'crosswikiblock-local'          => 'このウィキ自身における利用者ブロックを、このページでは行えません。[[Special:Blockip|{{int:blockip}}]]を利用してください。',
+	'crosswikiblock-local'          => 'このウィキ自身における利用者ブロックを、このページでは行えません。[[Special:BlockIP|{{int:blockip}}]]を利用してください。',
 	'crosswikiblock-dbnotfound'     => 'データベース $1 が存在しません',
 	'crosswikiblock-noname'         => '"$1" は、不正な利用者名です。',
 	'crosswikiblock-nouser'         => '利用者 "$3" が見つかりません。',
@@ -823,7 +823,7 @@ Zréck op:
 * [[Special:CrosswikiBlock|Spärformulaire]]
 * [[$2]]",
 	'crosswikiblock-nousername'     => 'Dir hutt kee Benotzernumm aginn',
-	'crosswikiblock-local'          => 'Op dëser Säit kënne keng lokal Spären ageriicht ginn. Benotzt w.e.g. [[Special:Blockip|{{int:blockip}}]]',
+	'crosswikiblock-local'          => 'Op dëser Säit kënne keng lokal Spären ageriicht ginn. Benotzt w.e.g. [[Special:BlockIP|{{int:blockip}}]]',
 	'crosswikiblock-dbnotfound'     => "D'Datebank $1 gëtt et net.",
 	'crosswikiblock-noname'         => '"$1" ass kee gültege Benotzernumm.',
 	'crosswikiblock-nouser'         => 'De Benotzer "$3" gouf net fonnt.',
@@ -871,7 +871,7 @@ $messages['ml'] = array(
 * [[Special:CrosswikiBlock|തടയല്‍ ഫോം]]
 * [[$2]]",
 	'crosswikiblock-nousername'     => 'ഉപയോക്തൃനാമം ചേര്‍ത്തില്ല',
-	'crosswikiblock-local'          => 'ഈ ഇന്റര്‍ഫേസ് വഴി പ്രാദേശിക തടയല്‍ സാധിക്കില്ല. [[Special:Blockip|{{int:blockip}}]] ഉപയോഗിക്കുക.',
+	'crosswikiblock-local'          => 'ഈ ഇന്റര്‍ഫേസ് വഴി പ്രാദേശിക തടയല്‍ സാധിക്കില്ല. [[Special:BlockIP|{{int:blockip}}]] ഉപയോഗിക്കുക.',
 	'crosswikiblock-dbnotfound'     => '$1 എന്ന ഡാറ്റബേസ് നിലവിലില്ല',
 	'crosswikiblock-noname'         => '"$1" എന്നതു സാധുവായ ഉപയോക്തൃനാമമല്ല.',
 	'crosswikiblock-nouser'         => '"$3" എന്ന ഉപയോക്താവിനെ കണ്ടില്ല.',
@@ -914,7 +914,7 @@ $messages['mr'] = array(
 * [[Special:CrosswikiBlock|ब्लॉक अर्ज]]
 * [[$2]]",
 	'crosswikiblock-nousername'     => 'सदस्यनाव दिलेले नाही',
-	'crosswikiblock-local'          => 'स्थानिक ब्लॉक या ठिकाणी बदलता येत नाहीत. [[Special:Blockip|{{int:blockip}}]] चा वापर करा',
+	'crosswikiblock-local'          => 'स्थानिक ब्लॉक या ठिकाणी बदलता येत नाहीत. [[Special:BlockIP|{{int:blockip}}]] चा वापर करा',
 	'crosswikiblock-dbnotfound'     => 'डाटाबेस $1 उपलब्ध नाही',
 	'crosswikiblock-noname'         => '"$1" हे योग्य सदस्यनाव नाही.',
 	'crosswikiblock-nouser'         => '"$3" नावाचा सदस्य सापडला नाही.',
@@ -988,7 +988,7 @@ Ga terug naar:
 * [[Special:CrosswikiBlock|Blokkadeformulier]]
 * [[$2]]",
 	'crosswikiblock-nousername'     => 'Er werd geen gebruikersnaam opgegeven',
-	'crosswikiblock-local'          => 'Plaatselijke blokkades worden niet ondersteund door dit formulier. Gebruik daarvoor [[Special:Blockip|{{int:blockip}}]].',
+	'crosswikiblock-local'          => 'Plaatselijke blokkades worden niet ondersteund door dit formulier. Gebruik daarvoor [[Special:BlockIP|{{int:blockip}}]].',
 	'crosswikiblock-dbnotfound'     => 'Database $1 bestaat niet',
 	'crosswikiblock-noname'         => '"$1" is geen geldige gebruikersnaam.',
 	'crosswikiblock-nouser'         => 'Gebruiker "$3" is niet gevonden.',
@@ -1043,7 +1043,7 @@ Tilbake til:
 * [[Special:CrosswikiBlock|Blokkeringsskjema]]
 * [[$2]]",
 	'crosswikiblock-nousername'     => 'Ingen brukernavn ble skrevet inn',
-	'crosswikiblock-local'          => 'Lokale blokkeringer støttes ikke av dette grensesnittet. Bruk [[Special:Blockip|{{int:blockip}}]]',
+	'crosswikiblock-local'          => 'Lokale blokkeringer støttes ikke av dette grensesnittet. Bruk [[Special:BlockIP|{{int:blockip}}]]',
 	'crosswikiblock-dbnotfound'     => 'Databasen $1 finnes ikke',
 	'crosswikiblock-noname'         => '«$1» er ikke et gyldig brukernavn.',
 	'crosswikiblock-nouser'         => 'Brukeren «$3» ble ikke funnet.',
@@ -1089,7 +1089,7 @@ Tornar a :
 * [[Special:CrosswikiBlock|Formulari de blocatge]]
 * [[$2]]",
 	'crosswikiblock-nousername'     => "Cap de nom d'utilizaire es pas estat indicat",
-	'crosswikiblock-local'          => 'Los blocatges locals son pas suportats a travèrs aquesta interfàcia. Utilizatz [[Special:Blockip|{{int:blockip}}]].',
+	'crosswikiblock-local'          => 'Los blocatges locals son pas suportats a travèrs aquesta interfàcia. Utilizatz [[Special:BlockIP|{{int:blockip}}]].',
 	'crosswikiblock-dbnotfound'     => 'La banca de donadas « $1 » existís pas',
 	'crosswikiblock-noname'         => '« $1 » es pas un nom d’utilizaire valid.',
 	'crosswikiblock-nouser'         => 'L’utilizaire « $3 » es introbable.',
@@ -1138,7 +1138,7 @@ Wróć do:
 * [[Special:CrosswikiBlock|Strona blokowania]]
 * [[$2]]",
 	'crosswikiblock-nousername'     => 'Nie wprowadzono nazwy użytkownika',
-	'crosswikiblock-local'          => 'Lokalne blokowanie nie jest możliwe przy pomocy tego interfejsu. Użyj strony [[Special:Blockip|blokowania adresów IP]].',
+	'crosswikiblock-local'          => 'Lokalne blokowanie nie jest możliwe przy pomocy tego interfejsu. Użyj strony [[Special:BlockIP|blokowania adresów IP]].',
 	'crosswikiblock-dbnotfound'     => 'Baza $1 nie istnieje',
 	'crosswikiblock-noname'         => '"$1" nie jest poprawną nazwą użytkownika.',
 	'crosswikiblock-nouser'         => 'Nie znaleziono użytkownika "$3".',
@@ -1192,7 +1192,7 @@ Regressar a:
 * [[Special:CrosswikiBlock|Formulário de bloqueio]]
 * [[$2]]",
 	'crosswikiblock-nousername'     => 'Nenhum nome de utilizador foi introduzido',
-	'crosswikiblock-local'          => 'Bloqueios locais não podem ser efectuados a partir deste interface. Use [[Special:Blockip|{{int:blockip}}]]',
+	'crosswikiblock-local'          => 'Bloqueios locais não podem ser efectuados a partir deste interface. Use [[Special:BlockIP|{{int:blockip}}]]',
 	'crosswikiblock-dbnotfound'     => 'A base de dados $1 não existe',
 	'crosswikiblock-noname'         => '"$1" não é um nome de utilizador válido.',
 	'crosswikiblock-nouser'         => 'O utilizador "$3" não foi encontrado.',
@@ -1260,7 +1260,7 @@ $messages['ru'] = array(
 * [[Special:CrosswikiBlock|Форма блокировки]]
 * [[$2]]",
 	'crosswikiblock-nousername'     => 'Не введено имя участника',
-	'crosswikiblock-local'          => 'Локальные блокировки не поддерживаются через этот интерфейс. Используйте [[Special:Blockip|{{int:blockip}}]].',
+	'crosswikiblock-local'          => 'Локальные блокировки не поддерживаются через этот интерфейс. Используйте [[Special:BlockIP|{{int:blockip}}]].',
 	'crosswikiblock-dbnotfound'     => 'База данных $1 не существует',
 	'crosswikiblock-noname'         => '«$1» не является допустимым именем участника.',
 	'crosswikiblock-nouser'         => 'Участник «$3» не найден.',
@@ -1312,7 +1312,7 @@ Vrátiť sa na:
 * [[Special:CrosswikiBlock|Formulár blokovania]]
 * [[$2]]",
 	'crosswikiblock-nousername'     => 'Nebolo zadané používateľské meno',
-	'crosswikiblock-local'          => 'Toto rozhranie nepodporuje lokálne blokovanie. Použite [[Special:Blockip|{{int:blockip}}]].',
+	'crosswikiblock-local'          => 'Toto rozhranie nepodporuje lokálne blokovanie. Použite [[Special:BlockIP|{{int:blockip}}]].',
 	'crosswikiblock-dbnotfound'     => 'Databáza $1 neexistuje',
 	'crosswikiblock-noname'         => '„$1“ nie je platné používateľské meno.',
 	'crosswikiblock-nouser'         => 'Používateľ „$3“ nebol nájdený.',
@@ -1365,7 +1365,7 @@ Tourääch tou:
 * [[Special:CrosswikiBlock|Speerformular]]
 * [[$2]]",
 	'crosswikiblock-nousername'     => 'Der wuude naan Benutsernoome ienroat',
-	'crosswikiblock-local'          => 'Lokoale Speeren wäide truch disse Interface nit unnerstutsed. Benutsje [[Special:Blockip|{{int:blockip}}]]',
+	'crosswikiblock-local'          => 'Lokoale Speeren wäide truch disse Interface nit unnerstutsed. Benutsje [[Special:BlockIP|{{int:blockip}}]]',
 	'crosswikiblock-dbnotfound'     => 'Doatenboank $1 is nit deer',
 	'crosswikiblock-noname'         => '„$1“ is naan gultigen Benutsernoome.',
 	'crosswikiblock-nouser'         => 'Benutser "$3" nit fuunen.',
@@ -1421,7 +1421,7 @@ Gå tillbaka till:
 * [[Special:CrosswikiBlock|Blockeringsformuläret]]
 * [[$2]]",
 	'crosswikiblock-nousername'     => 'Inget användarnamn angavs',
-	'crosswikiblock-local'          => 'Lokala blockeringar kan inte göras från den här sidan. Använd [[Special:Blockip|{{int:blockip}}]] istället.',
+	'crosswikiblock-local'          => 'Lokala blockeringar kan inte göras från den här sidan. Använd [[Special:BlockIP|{{int:blockip}}]] istället.',
 	'crosswikiblock-dbnotfound'     => 'Databasen "$1" existerar inte',
 	'crosswikiblock-noname'         => '"$1" är inte ett giltigt användarnamn.',
 	'crosswikiblock-nouser'         => 'Användaren "$3" hittades inte.',
@@ -1558,7 +1558,7 @@ Quay trở lại:
 * [[Special:CrosswikiBlock|Mẫu cấm]]
 * [[$2]]",
 	'crosswikiblock-nousername'     => 'Chưa nhập tên người dùng',
-	'crosswikiblock-local'          => 'Giao diện này không hỗ trợ cấm tại wiki này. Hãy dùng [[Special:Blockip|{{int:blockip}}]]',
+	'crosswikiblock-local'          => 'Giao diện này không hỗ trợ cấm tại wiki này. Hãy dùng [[Special:BlockIP|{{int:blockip}}]]',
 	'crosswikiblock-dbnotfound'     => 'Cơ sở dữ liệu $1 không tồn tại',
 	'crosswikiblock-noname'         => '“$1” không phải là tên hợp lệ.',
 	'crosswikiblock-nouser'         => 'Không tìm thấy thành viên “$3”.',

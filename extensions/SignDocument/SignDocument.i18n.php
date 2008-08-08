@@ -188,7 +188,7 @@ $messages['ru'] = array(
 $messages['sk'] = array(
 	'signaturelogpage'     => 'Záznam podpisov',
 	'signature-desc'       => 'Umožňuje [[Special:SignDocument|podpisovanie]] dokumentov',
-	'signaturelogpagetext' => 'Toto je záznam všetkých podpisov, ktoré boli pridané do dokumentov prostredníctvom [[Special:SignDocument]].',
+	'signaturelogpagetext' => 'Toto je záznam [[Special:SignDocument|podpisov pridaných do dokumentov]].',
 	'signaturelogentry'    => 'podpísal dokument $1',
 );
 

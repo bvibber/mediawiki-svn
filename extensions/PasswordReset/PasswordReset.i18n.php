@@ -679,7 +679,7 @@ $messages['ru'] = array(
  */
 $messages['sk'] = array(
 	'passwordreset'                    => 'Reset hesla',
-	'passwordreset-desc'               => 'Umožňuje vygenerovanie nového hesla používateľovi. Vyžaduje oprávnenie „passwordreset“.',
+	'passwordreset-desc'               => 'Umožňuje [[Special:Passwordreset|vygenerovanie nového hesla používateľovi]]. Vyžaduje oprávnenie „passwordreset“.',
 	'passwordreset-invalidusername'    => 'Neplatné používateľské meno',
 	'passwordreset-emptyusername'      => 'Nevyplnené používateľské meno',
 	'passwordreset-nopassmatch'        => 'Heslá sa nezhodujú',

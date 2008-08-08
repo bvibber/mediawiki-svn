@@ -631,7 +631,7 @@ $messages['sk'] = array(
 	'formbadpagenametext'          => 'Údaje formulára, ktoré ste zadali tvoria chybný názov stránky - „$1“.',
 	'formrequiredfieldpluralerror' => 'Tento formulár vyžaduje vyplnenie polí $1. Prosím, vyplňte ich.',
 	'formrequiredfielderror'       => 'Tento formulár vyžaduje vyplnenie poľa $1. Prosím, vyplňte ho.',
-	'formsavesummary'              => 'Nová stránka pomocou [[Special:Form/$1]]',
+	'formsavesummary'              => 'Nová stránka pomocou [[Special:Form/$1|formulára $1]]',
 	'formsaveerror'                => 'Chyba pri ukladaní formulára',
 	'formsaveerrortext'            => 'Pri ukladaní formulára sa vyskytla neznáma chyba „$1“.',
 );

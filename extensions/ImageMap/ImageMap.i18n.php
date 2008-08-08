@@ -912,6 +912,7 @@ $messages['ru'] = array(
 	'imagemap_desc'               => 'Позволяет указывать срабатывающие на нажатие карты изображений на стороне клиента с помощью тега <tt><nowiki><imagemap></nowiki></tt>',
 	'imagemap_no_image'           => 'Error: в первой строке должно быть задано изображение',
 	'imagemap_invalid_image'      => 'Error: неверное или отсутствующее изображение',
+	'imagemap_bad_image'          => 'Ошибка. Изображение входит в чёрный список на этой странице.',
 	'imagemap_no_link'            => 'Error: неверная ссылка в конце строки $1',
 	'imagemap_invalid_title'      => 'Error: неверный заголовок ссылки в строке $1',
 	'imagemap_missing_coord'      => 'Error: недостаточно координат для фигуры в строке $1',

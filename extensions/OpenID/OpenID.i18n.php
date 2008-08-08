@@ -197,7 +197,7 @@ $messages['ar'] = array(
 الهوية المفتوحة تسمح لك بتسجيل الدخول إلى مواقع ويب عديدة مختلفة بدون استخدام كلمة سر مختلفة لكل موقع.
 (انظر [http://en.wikipedia.org/wiki/OpenID مقالة الهوية المفتوحة في يويكيبيديا] لمزيد من المعلومات.)
 
-لو أنك لديك بالفعل حساب في {{SITENAME}}، يمكنك [[Special:Userlogin|تسجيل الدخول]] باسم مستخدمك وكلمة السر الخاصة بك كالمعتاد.
+لو أنك لديك بالفعل حساب في {{SITENAME}}، يمكنك [[Special:UserLogin|تسجيل الدخول]] باسم مستخدمك وكلمة السر الخاصة بك كالمعتاد.
 لاستخدام الهوية المفتوحة في المستقبل، يمكنك [[Special:OpenIDConvert|تحويل حسابك إلى الهوية المفتوحة]] بعد تسجيل دخولك بشكل عادي.
 
 يوجد العديد من [http://wiki.openid.net/Public_OpenID_providers موفري الهوية المفتوحة العلنيين]، وربما يكون لديك حسابك بهوية مفتوحة على خدمة أخرى.
@@ -386,7 +386,7 @@ Si tel n’était pas le cas, essayez le bouton « Continuer ».',
 	'openidlogininstructions'       => "{{SITENAME}} supporte le format [http://openid.net/ OpenID] pour une seule signature entre des sites Internet.
 OpenID vous permet de vous connecter sur plusieurs sites différents sans à avoir à utiliser un mot de passe différent pour chacun d’entre eux.
 
-Si vous avez déjà un compte sur {{SITENAME}}, vous pouvez vous [[Special:Userlogin|connecter]] avec votre nom d'utilisateur et son mot de pas comme d’habitude. Pour utiliser OpenID, à l’avenir, vous pouvez [[Special:OpenIDConvert|convertir votre compte en OpenID]] après que vous vous soyez connecté normallement.
+Si vous avez déjà un compte sur {{SITENAME}}, vous pouvez vous [[Special:UserLogin|connecter]] avec votre nom d'utilisateur et son mot de pas comme d’habitude. Pour utiliser OpenID, à l’avenir, vous pouvez [[Special:OpenIDConvert|convertir votre compte en OpenID]] après que vous vous soyez connecté normallement.
 
 Il existe plusieurs [http://wiki.openid.net/Public_OpenID_providers fournisseur d'OpenID publiques], et vous pouvez déjà obtenir un compte OpenID activé sur un autre service.
 
@@ -459,7 +459,7 @@ Se non é así, probe a premer no botón \\"Continuar\\".',
 OpenID permítelle rexistrarse en diferentes sitios web sen usar un contrasinal diferente para cada un.
 (Consulte o [http://en.wikipedia.org/wiki/OpenID artigo sobre o OpenID na Wikipedia en inglés] para máis información.)
 
-Se xa ten unha conta en {{SITENAME}}, pode [[Special:Userlogin|acceder ao sistema]] co seu nome de usuario e contrasinal como o fai habitualmente.
+Se xa ten unha conta en {{SITENAME}}, pode [[Special:UserLogin|acceder ao sistema]] co seu nome de usuario e contrasinal como o fai habitualmente.
 Para usar o OpenID no futuro, pode [[Special:OpenIDConvert|converter a súa conta en OpenID]] tras ter accedido ao sistema como fai normalmente.
 
 Hai moitos [http://wiki.openid.net/Public_OpenID_providers proveedores públicos de OpenID] e xa pode ter unha conta co OpenID permitido noutro servizo.
@@ -635,7 +635,7 @@ Ha ezentúl az OpenID-del akarsz bejelentkezni, [[Special:OpenIDConvert|konvert�
 	'openidlogininstructions'       => "A(z) {{SITENAME}} támogatja az [http://openid.net/ OpenID]-alapú bejelentkezést.
 A OpenID lehetővé teszi, hogy számos különböző weboldalra jelentkezz be úgy, hogy csak egyszer kell megadnod a jelszavadat. (Lásd [http://hu.wikipedia.org/wiki/OpenID a Wikipédia OpenID cikkét] további információkért.)
 
-Ha már regisztráltál korábban, [[Special:Userlogin|bejelentkezhetsz]] a felhasználóneveddel és a jelszavaddal, ahogy eddig is. Ha a továbbiakban OpenID-t akarsz használni, [[Special:OpenIDConvert|állítsd át a felhasználói fiókodat OpenID-re]], miután bejelentkeztél.
+Ha már regisztráltál korábban, [[Special:UserLogin|bejelentkezhetsz]] a felhasználóneveddel és a jelszavaddal, ahogy eddig is. Ha a továbbiakban OpenID-t akarsz használni, [[Special:OpenIDConvert|állítsd át a felhasználói fiókodat OpenID-re]], miután bejelentkeztél.
 
 Számos [http://wiki.openid.net/Public_OpenID_providers nyilvános OpenID szolgáltató] van, lehetséges, hogy van már OpenID-fiókod egy másik weboldalon.
 
@@ -865,7 +865,7 @@ $messages['mr'] = array(
 ओपनID वापरुन तुम्ही एकाच परवलीच्या शब्दाने विविध संकेतस्थळांवर प्रवेश करू शकता.
 (अधिक माहिती साठी [http://en.wikipedia.org/wiki/OpenID विकिपीडिया वरील ओपनID लेख] पहा.)
 
-जर {{SITENAME}} वर अगोदरच तुमचे खाते असेल, तुम्ही नेहमीप्रमाणे तुमचे सदस्यनाव व परवलीचा शब्द वापरून [[Special:Userlogin|प्रवेश करा]].
+जर {{SITENAME}} वर अगोदरच तुमचे खाते असेल, तुम्ही नेहमीप्रमाणे तुमचे सदस्यनाव व परवलीचा शब्द वापरून [[Special:UserLogin|प्रवेश करा]].
 भविष्यात ओपनID वापरण्यासाठी, तुम्ही प्रवेश केल्यानंतर [[Special:OpenIDConvert|तुमचे खाते ओपनID मध्ये बदला]].
 
 अनेक [http://wiki.openid.net/Public_OpenID_providers Public ओपनID वितरक] आहेत, व तुम्ही अगोदरच ओपनID चे खाते उघडले असण्याची शक्यता आहे.
@@ -1105,7 +1105,7 @@ S’èra pas lo cas, ensajatz lo boton « Contunhar ».',
 OpenID vos permet de vos connectar sus maites sits diferents sens aver d'utilizar un senhal diferent per cadun d’entre eles.
 (Vejatz [http://en.wikipedia.org/wiki/OpenID Wikipedia's OpenID article] per mai d'entresenhas.)
 
-S'avètz ja un compte sus {{SITENAME}}, vos podètz [[Special:Userlogin|connectar]] amb vòstre nom d'utilizaire e son senhal coma de costuma. Per utilizar OpenID, a l’avenidor, podètz [[Special:OpenIDConvert|convertir vòstre compte en OpenID]] aprèp vos èsser connectat normalament.
+S'avètz ja un compte sus {{SITENAME}}, vos podètz [[Special:UserLogin|connectar]] amb vòstre nom d'utilizaire e son senhal coma de costuma. Per utilizar OpenID, a l’avenidor, podètz [[Special:OpenIDConvert|convertir vòstre compte en OpenID]] aprèp vos èsser connectat normalament.
 
 Existís maites [http://wiki.openid.net/Public_OpenID_providers provesidors d'OpenID publicas], e podètz ja obténer un compte OpenID activat sus un autre servici.
 
@@ -1273,7 +1273,7 @@ $messages['ru'] = array(
 OpenID позволяет вам заходить на различные веб-сайты без указания разных паролей для них
 (подробнее см. [http://ru.wikipedia.org/wiki/OpenID статью об OpenID в Википедии]).
 
-Если вы уже имеете учётную запись на {{SITENAME}}, вы можете [[Special:Userlogin|войти]] как обычно, используя  ваши имя пользователя и пароль.
+Если вы уже имеете учётную запись на {{SITENAME}}, вы можете [[Special:UserLogin|войти]] как обычно, используя  ваши имя пользователя и пароль.
 Чтобы использовать в дальнейшем OpenID, вы можете [[Special:OpenIDConvert|преобразовать вашу учётную запись в  OpenID]], после того, как вы вошли обычным образом.
 
 Существует множество [http://wiki.openid.net/Public_OpenID_providers общедоступных провайдеров OpenID], возможно, вы уже имеете учётную запись OpenID на другом сайте.
@@ -1346,7 +1346,7 @@ Ak nie, skúste tlačidlo „Pokračovať“.',
 	'openidlogininstructions'       => "{{SITENAME}} podporuje štandard [http://openid.net/ OpenID] na zjednotené prihlasovanie na webstránky.
 OpenID vám umožňuje prihlasovať sa na množstvo rozličných webstránok bez nutnosti používať pre každú odlišné heslo. (Pozri [http://sk.wikipedia.org/wiki/OpenID Článok o OpenID na Wikipédii])
 
-Ak už máte účet na {{GRAMMAR:lokál|{{SITENAME}}}}, môžete sa [[Special:Userlogin|prihlásiť]] pomocou používateľského mena a hesla ako zvyčajne. Ak chcete v budúcnosti používať OpenID, môžete po normálnom prihlásení [[Special:OpenIDConvert|previesť svoj účet na OpenID]].
+Ak už máte účet na {{GRAMMAR:lokál|{{SITENAME}}}}, môžete sa [[Special:UserLogin|prihlásiť]] pomocou používateľského mena a hesla ako zvyčajne. Ak chcete v budúcnosti používať OpenID, môžete po normálnom prihlásení [[Special:OpenIDConvert|previesť svoj účet na OpenID]].
 
 Existuje množstvo [http://wiki.openid.net/Public_OpenID_providers Verejných poskytovateľov OpenID] a možno už máte účet s podporou OpenID u iného poskytovateľa.
 
@@ -1560,7 +1560,7 @@ Nếu không, hãy thử nút \\"Tiếp tục\\".',
 ID Mở cho phép bạn đăng nhập vào nhiều trang web khác nhau mà không phải sử dụng mật khẩu khác nhau tại mỗi trang.
 (Xem [http://en.wikipedia.org/wiki/OpenID bài viết về ID Mở của Wikipedia] để biết thêm chi tiết.)
 
-Nếu bạn đã có một tài khoản tại {{SITENAME}}, bạn có thể [[Special:Userlogin|đăng nhập]] bằng tên người dùng và mật khẩu của bạn như thông thường.
+Nếu bạn đã có một tài khoản tại {{SITENAME}}, bạn có thể [[Special:UserLogin|đăng nhập]] bằng tên người dùng và mật khẩu của bạn như thông thường.
 Để dùng ID Mở vào lần sau, bạn có thể [[Special:OpenIDConvert|chuyển đổi tài khoản của bạn sang ID Mở]] sau khi đã đăng nhập bình thường.
 
 Có nhiều [http://wiki.openid.net/Public_OpenID_providers nhà cung cấp ID Mở Công cộng], và có thể bạn đã có một tài khoản kích hoạt ID Mở tại dịch vụ khác.

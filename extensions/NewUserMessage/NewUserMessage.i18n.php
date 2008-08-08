@@ -213,6 +213,7 @@ $messages['ru'] = array(
  */
 $messages['sk'] = array(
 	'newusermessage-desc' => 'Pridáva správu do novo vytvorených používateľských diskusných stránok',
+	'newuseredit-summary' => 'Pridanie [[{{int:newusermessage-template}}|uvítacej správy]] na diskusnú stránku nových používateľov',
 );
 
 /** Sundanese (Basa Sunda)
@@ -228,6 +229,7 @@ $messages['su'] = array(
  */
 $messages['sv'] = array(
 	'newusermessage-desc' => 'Lägger ett meddelande på nyligen registrerade användares diskussionssidor',
+	'newuseredit-summary' => 'Lägger till ett [[{{int:newusermessage-template}}|välkomstmeddelande]] till nya användares diskussionssidor',
 );
 
 /** Telugu (తెలుగు)

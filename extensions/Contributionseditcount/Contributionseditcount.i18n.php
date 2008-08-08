@@ -373,7 +373,7 @@ $messages['su'] = array(
  */
 $messages['sv'] = array(
 	'contributionseditcount'      => 'Denna användare har gjort $1 redigeringar.',
-	'contributionseditcount-desc' => 'Visar en redigeringsräknare i [[Special:Contributions|listan över användares bidrag]]',
+	'contributionseditcount-desc' => 'Visar en redigeringsräknare på [[Special:Contributions|bidragsöversikten]]',
 );
 
 /** Tamil (தமிழ்)

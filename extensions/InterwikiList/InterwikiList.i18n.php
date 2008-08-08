@@ -192,6 +192,8 @@ $messages['sk'] = array(
 	'interwikilist-desc'     => 'Pridáva [[Special:Interwikilist|špeciálnu stránku]] so zoznamom dostupných interwiki odkazov',
 	'interwikilist-linkname' => 'Interwiki odkaz',
 	'interwikilist-target'   => 'Cieľový URL',
+	'interwikilist-filter'   => 'Zoznam filtrov',
+	'interwikilist-prefix'   => 'Interwiki predpona:',
 );
 
 /** Swedish (Svenska)
@@ -202,6 +204,8 @@ $messages['sv'] = array(
 	'interwikilist-desc'     => 'Lägger till en [[Special:Interwikilist|specialsida]] för att visa tillgängliga interwikilänkar',
 	'interwikilist-linkname' => 'Interwikilänk',
 	'interwikilist-target'   => 'Måladress',
+	'interwikilist-filter'   => 'Filterlista',
+	'interwikilist-prefix'   => 'Interwikiprefix:',
 );
 
 /** Ukrainian (Українська)

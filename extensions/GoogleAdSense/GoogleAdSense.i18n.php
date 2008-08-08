@@ -59,6 +59,13 @@ $messages['oc'] = array(
 	'googleadsense-desc' => 'Apondís [http://www.google.com/adsense Google AdSense] a la barra laterala',
 );
 
+/** Slovak (Slovenčina)
+ * @author Helix84
+ */
+$messages['sk'] = array(
+	'googleadsense-desc' => 'Pridá do postranného panela [http://www.google.com/adsense Google AdSense]',
+);
+
 /** Swedish (Svenska)
  * @author M.M.S.
  */

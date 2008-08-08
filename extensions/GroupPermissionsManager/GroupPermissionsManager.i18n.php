@@ -874,8 +874,6 @@ $messages['ru'] = array(
 
 /** Slovak (Slovenčina)
  * @author Helix84
- * @author Siebrand
- * @author Jon Harald Søby
  */
 $messages['sk'] = array(
 	'grouppermissions'               => 'Spravovať skupinové oprávnenia',
@@ -884,6 +882,8 @@ $messages['sk'] = array(
 	'grouppermissions-desc'          => 'Správa oprávnení skupín prostredníctvom [[Special:GroupPermissions|špeciálnej stránky]]',
 	'grouppermissions-desc2'         => 'Rozšírený systém oprávnení',
 	'grouppermissions-desc3'         => 'Umožňuje prispôsobenie operácií s obsahom (záložiek)',
+	'grouppermissions-desc4'         => 'Umožňuje pridanie ďalších položiek do Panela nástrojov',
+	'grouppermissions-desc-nsm'      => 'Správa menných priestorov prostredníctvom špeciálnej stránky',
 	'grouppermissions-header'        => 'Pomocou tejto stránky môžete zmeniť oprávnenia rozličných skupín používateľov.',
 	'grouppermissions-search'        => 'Skupina:',
 	'grouppermissions-dologin'       => 'Prihlasovacie meno',

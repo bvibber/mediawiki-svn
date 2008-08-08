@@ -718,14 +718,17 @@ $messages['ru'] = array(
 $messages['sk'] = array(
 	'createsigndocument'                 => 'Zapnúť podpisovanie dokumentov',
 	'createsigndoc-head'                 => "Tento formulár slúži na vytvorenie stránky „Podpísať dokument“ pre uvedenú stránku, aby
-ju používatelia mohli podpisovať pomocou [[Special:SignDocument]]. Prosím, uveďte názov
+ju používatelia mohli [[Special:SignDocument|podpisovať]]. Prosím, uveďte názov
 stránky, na ktorej chcete zapnúť digitálne podpisovanie, členovia ktorých skupín ju budú
 môcť podpisovať a, ktoré polia budú viditeľné používateľom a ktoré by mali byť voliteľné,
 minimálny vek, ktorý je požadovaný na podpísanie dokumentu (ak údaj vynecháte, nebude
 vyžiadovaný žiadny minimálny vek) a stručný úvodný text popisujúci dokument a poskytujúci
 používateľom inštrukcie.
 
-<b>Momentálne neexistuje spôsob ako zmazať alebo zmeniť podpisované dokumenty potom, ako boli vytvorené</b> bez použitia priameho prístupu do databázy. Naviac text stránky zobrazený na stránke podpisov bude ''aktuálny'' text stránky, nezávisle na zmenách, ktoré v ňom od dnes nastanú. Prosím, buďte si absolútne istý, že uvádzate všetky polia presne ako by mali byť ''predtým než odošlete formulár''.",
+<b>Momentálne neexistuje spôsob ako zmazať alebo zmeniť podpisované dokumenty potom, ako boli vytvorené</b> bez použitia priameho prístupu do databázy.
+Naviac text stránky zobrazený na stránke podpisov bude ''aktuálny'' text stránky, nezávisle na zmenách, ktoré v ňom od dnes nastanú.
+Prosím, buďte si absolútne istý, že dokument je stabilný, keď ho podpisujete. 
+Tiež si prosím buďte istý, že uvádzate všetky polia presne ako by mali byť ''predtým než odošlete formulár''.",
 	'createsigndoc-pagename'             => 'Stránka:',
 	'createsigndoc-allowedgroup'         => 'Povolená skupina:',
 	'createsigndoc-email'                => 'Emailová adresa:',

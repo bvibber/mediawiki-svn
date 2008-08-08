@@ -112,6 +112,17 @@ $messages['oc'] = array(
 	'stalkerlog-log-text'   => 'Vaquí un jornal de las connexions e de las desconnexions de l’utilizaire.',
 );
 
+/** Slovak (Slovenčina)
+ * @author Helix84
+ */
+$messages['sk'] = array(
+	'stalkerlog-desc'       => 'Pridáva [[Special:Log/stalkerlog|záznam prihlásení a odhlásení]] používateľov',
+	'stalkerlog-log-login'  => 'sa prihlásil.',
+	'stalkerlog-log-logout' => 'sa odhlásil.',
+	'stalkerlog-log-type'   => 'Záznam prihlásení používateľov',
+	'stalkerlog-log-text'   => 'Toto je záznam prihlásení a odhlásení používateľov.',
+);
+
 /** Swedish (Svenska)
  * @author M.M.S.
  */

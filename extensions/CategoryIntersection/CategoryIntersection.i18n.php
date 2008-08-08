@@ -343,7 +343,7 @@ $messages['shi'] = array(
  */
 $messages['sk'] = array(
 	'categoryintersection'               => 'Prienik kategórií',
-	'categoryintersection-desc'          => 'Udržiava tabuľku s haš hodnotami [[Special:CategoryIntersection|prienikov kategórií]] na špeciálnej stránke',
+	'categoryintersection-desc'          => 'Udržiava tabuľku s haš hodnotami [[Special:CategoryIntersection|prienikov kategórií]] v rámci stránky',
 	'categoryintersection-doit'          => 'Zoznam stránok vo všetkých týchto kategóriách',
 	'categoryintersection-maxcategories' => 'Maximálny povolený počet kategórií, ktoré majú prienik je $1.',
 	'categoryintersection-results'       => 'Hľadanie vrátilo $1 {{PLURAL:$1|výsledok|výsledky|výsledkov}}.',
