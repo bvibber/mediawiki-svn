@@ -287,11 +287,11 @@ ul.popularSearches li.last_li, ul.popularClips li.last_li {margin: 0;}
 	margin: 10px 0;	
 	display:block;
 	padding:3px 0px;
-	border-bottom:1px solid #DADADA;
+	/*border-bottom:1px solid #DADADA;*/
 }
 .suggestionsBox ul li{
-border-top:1px solid #DADADA;
-padding:3px 0px 3px 20px;
+	/*border-top:1px solid #DADADA;*/
+	padding:3px 0px 3px 20px;
 }
 .suggestionsBox div.block ul a {text-decoration: none;}
 .suggestionsBox div.block ul li {margin: 7px 0;}
@@ -474,7 +474,7 @@ span.cats {padding-right: 20px;}
 
 
 /*Video page*/
-h1.videoHeader {
+h1.videoHeader,h1.videoHeader{
 	font-size: 18px;
 	font-weight: normal;
 	color: #616161;
@@ -482,8 +482,9 @@ h1.videoHeader {
 	text-align: center;
 }
 
+
 #videoContent {
-	width: 439px;
+	width: 410px;
 	float: left;
 	display: inline;
 }
@@ -529,7 +530,7 @@ h1.videoHeader {
 }
 
 #selectionsBox {
-	width: 453px;
+	width: 490px;
 	height: 517px;
 	overflow: auto;
 	border: 1px solid #c8c8c8;

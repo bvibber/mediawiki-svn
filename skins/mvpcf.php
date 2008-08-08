@@ -417,7 +417,8 @@ class MvpcfTemplate extends QuickTemplate {
 	function close_html(){
 		global $wgScript;	
 		?>
-		<p id="copyInfo">MetaVid is a non-profit project of <a href="http://www.ucsc.edu">UC Santa Cruz</a> and the <a href="http://www.sunlightfoundation.com/">Sunlight Foundation</a>. Learn more <a href="<?php echo $wgScript ?>/about">About MetaVid</a></p>
+		<p id="copyInfo">MetaVid is a non-profit project of <a href="http://www.ucsc.edu">UC Santa Cruz</a> and the <a href="http://www.sunlightfoundation.com/">Sunlight Foundation</a>. Learn more <a href="<?php echo $wgScript ?>/about">About MetaVid</a><br><br><small>The C-SPAN logo and other servicemarks that may be found in video content are the property of their respective trademark holders. None of these trademark holders are affiliated with Metavid</small></p>
+
 		</body>
 		</html>
 		<?php
