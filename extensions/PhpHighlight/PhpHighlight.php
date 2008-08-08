@@ -45,7 +45,7 @@ function efRenderPhp( $text ){
 	global $wgPhpPath;
 	$file = tempnam( wfTempDir(), 'highlight-' );
 	file_put_contents( $file, $text );
-	$html = wfShellExec( "{$wgPhpPath} -s {$file}" );
+	$html = wfShellExec( wfEscapeShellArg($wgPhpPath)." -s ".wfEscapeShellArg($file) );
 	unlink( $file );
 	return str_replace( '<br />', "<br />\n", $html );
 }
