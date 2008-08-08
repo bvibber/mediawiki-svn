@@ -236,15 +236,15 @@ class MV_SpecialMediaSearch extends SpecialPage {
 		}
 		//print "CUR un: " . $this->unified_term_search;
 	}
-	function doSearch() {
+	function doSearch($log_search=true) {
 		global $mvEnableSearchDigest, $mvSearchDigestTable;
 		$mvIndex = new MV_Index();
 		//do search digest
 		global $wgRequest;
-		if ($mvEnableSearchDigest && $wgRequest->getVal('tl') != '1') {
+		if ($mvEnableSearchDigest && $wgRequest->getVal('tl') != '1' && $log_search) {
 			$dbw = & wfGetDB(DB_WRITE);
 			$dbr = & wfGetDB(DB_READ);
-			//print "DO SEARCH FOR: ". $this->getFilterDesc($query_key = true) . "\n";
+			//print "DO SEARCH FOR: ". $this->getFilterDesc($query_key = true) . "\n";			
 			//print var_dump(debug_backtrace());
 			
 			//@@todo non-blocking insert... is that supported in mysql/php?			

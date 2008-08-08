@@ -142,7 +142,7 @@ function mvMagicParserFunction_Magic( &$magicWords, $langCode ) {
         return true;
 }
  
-function mvMagicParserFunction_Render( &$parser ) {
+function mvMagicParserFunction_Render( &$parser ) {				
 		//gennerate arg_list array without parser param
 		$arg_list = array_slice(func_get_args(), 1);
 		$mvMagicWords = new MV_MagicWords($arg_list);

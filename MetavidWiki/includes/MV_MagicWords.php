@@ -57,12 +57,11 @@ class MV_MagicWords{
 			break;
 		}
 	}
-	function getPersonOut(){
+	function getPersonOut(){		
 		if($this->params['person']!=''){
 			$person_name = $this->params['person'];
 		}else{
-			global $wgTitle;
-			$person_name = $wgTitle->getText();
+			return "error: no person provided";
 		}
 		//run the search and return the results: 
 		//set up data request:
@@ -70,7 +69,7 @@ class MV_MagicWords{
 		$_REQUEST['limit']=$this->params['num_results'];
 		
 		$ms->filters[] = array ( 'a' => 'and', 't' => 'spoken_by','v' =>$person_name );
-		$ms->doSearch();
+		$ms->doSearch($log_search=false);
 		return $ms->getUnifiedResultsHTML($show_sidebar=false);
 	}
 	function getStartTime(){
