@@ -62,37 +62,22 @@ class BGPDebug(object):
         except: pass
 
 
-#bgpprot = bgp.BGP(myASN=14907, bgpId=1)
-
-#print [ord(i) for i in bgpprot.constructOpen()]
-
 peers = {}
 
-peering = bgp.NaiveBGPPeering()
-peering.peerAddr = '91.198.174.247'
-
+peering = bgp.NaiveBGPPeering(myASN=64600, peerAddr='91.198.174.247')
 advertisements = [bgp.IPPrefix('127.127.127.127/32')]
 attrSet = bgp.AttributeSet([bgp.OriginAttribute(), bgp.ASPathAttribute([(2, [64600])]), bgp.NextHopAttribute('192.168.255.254')])
 peering.setAdvertisements(set(advertisements), attrSet)
-
 peers[peering.peerAddr] = peering
 
-peering2 = bgp.BGPPeering()
-peering2.peerAddr = '127.0.0.1'
-
+#peering2 = bgp.BGPPeering(myASN=64600, peerAddr='127.0.0.1')
 #peers[peering2.peerAddr] = peering2
 
-peering3 = bgp.BGPPeering()
-peering3.peerAddr = '192.168.37.1'
-
-
+#peering3 = bgp.BGPPeering(myASN=64600, peerAddr='192.168.37.1')
 #peers[peering3.peerAddr] = peering3
 
 for peer in peers.values():
-    peer.myASN = 64600
-    peer.bgpId = 111
     peer.registerConsumer(BGPDebug())
-    
 
 bgpServer = bgp.BGPServerFactory(peers)
 reactor.listenTCP(1000+bgp.PORT, bgpServer)

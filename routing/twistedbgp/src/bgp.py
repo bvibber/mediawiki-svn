@@ -184,7 +184,7 @@ class IPPrefix(object):
     
     def __eq__(self, other):
         # FIXME: masked ips
-        return self.prefixlen == other.prefixlen and self.prefix == other.prefix
+        return isinstance(other, IPPrefix) and self.prefixlen == other.prefixlen and self.prefix == other.prefix
     
     def __ne__(self, other):
         return not self.__eq__(other)
@@ -363,6 +363,10 @@ class ASPathAttribute(Attribute):
             super(ASPathAttribute, self).__init__(None)
             self.optional = False
             self.transitive = True
+            
+            if value and type(value) is list and reduce(lambda r,n: r and type(n) is int, value, True):
+                # Flat sequential path of ASNs
+                value = [(2, value)]
             self.value = value or [(2, [])] # One segment with one AS path sequence
     
     def fromTuple(self, attrTuple):
@@ -393,8 +397,12 @@ class ASPathAttribute(Attribute):
 class NextHopAttribute(Attribute):
     name = 'Next Hop'
     typeCode = ATTR_TYPE_NEXT_HOP
+    
+    ANY = None
 
     def __init__(self, value=None):
+        self.any = False
+        
         if type(value) is tuple:
             super(NextHopAttribute, self).__init__(value)
             self.fromTuple(value)
@@ -402,10 +410,7 @@ class NextHopAttribute(Attribute):
             super(NextHopAttribute, self).__init__(None)
             self.optional = False
             self.transitive = True
-            if value:
-                self.value = IPv4IP(value)
-            else:
-                self.value = IPv4IP('0.0.0.0')
+            self.set(value)
 
     def fromTuple(self, attrTuple):      
         value = attrTuple[2]
@@ -413,14 +418,21 @@ class NextHopAttribute(Attribute):
         if self.optional or not self.transitive:
             raise AttributeException(ERR_MSG_UPDATE_ATTR_FLAGS, attrTuple)
         if len(value) != 4:
-            raise AttributeException(ERR_MSG_UPDATE_ATTR_LEN, attrTuple)
-        if value in (0, 2**32-1):
-            raise AttributeException(ERR_MSG_UPDATE_INVALID_NEXTHOP, attrTuple)
+            raise AttributeException(ERR_MSG_UPDATE_ATTR_LEN, attrTuple)        
         
-        self.value = IPv4IP(value)
+        self.set(value)
     
     def encode(self):
         return struct.pack('!BBB', self.flags(), self.typeCode, len(self.value.packed())) + self.value.packed()
+    
+    def set(self, value):
+        if value:
+            if value in (0, 2**32-1):
+                raise AttributeException(ERR_MSG_UPDATE_INVALID_NEXTHOP, attrTuple)
+            self.value = IPv4IP(value)
+        else:
+            self.value = IPv4IP('0.0.0.0')
+            self.any = True
 
 class MEDAttribute(Attribute):
     name = 'MED'
@@ -1042,7 +1054,7 @@ class FSM(object):
         """Called by the protocol instance when it just sent an Update message."""
         
         if self.holdTime > 0:
-            self.keepAliveTimer.reset()
+            self.keepAliveTimer.reset(self.keepAliveTime)
     
     def _errorClose(self):
         """Internal method that closes a connection and returns the state
@@ -1093,6 +1105,10 @@ class BGP(protocol.Protocol):
         
         # DEBUG
         print "Connection established"
+        
+        # Set the local BGP id from the local IP address if it's not set
+        if self.factory.bgpId is None:
+            self.factory.bgpId = IPv4IP(self.transport.getHost().host).ipToInt()  # FIXME: IPv6
         
         try:
             self.fsm.connectionMade()
@@ -1520,7 +1536,7 @@ class BGPFactory(protocol.Factory):
     def buildProtocol(self, addr):
         """Builds a BGPProtocol instance"""
         
-        assert self.myASN is not None and self.bgpId is not None
+        assert self.myASN is not None
         
         return protocol.Factory.buildProtocol(self, addr)
     
@@ -1538,8 +1554,9 @@ class BGPServerFactory(BGPFactory):
     (factory) instance.
     """
     
-    def __init__(self, peers):
+    def __init__(self, peers, myASN=None):
         self.peers = peers
+        self.myASN = myASN
     
     def buildProtocol(self, addr):
         """Builds a BGPProtocol instance by finding an appropriate
@@ -1563,8 +1580,9 @@ class BGPPeering(BGPFactory):
 
     implements(IBGPPeering, interfaces.IPushProducer)
 
-    def __init__(self):
-        self.peerAddr = None
+    def __init__(self, myASN=None, peerAddr=None):
+        self.myASN = myASN
+        self.peerAddr = peerAddr
         self.peerId = None
         self.fsm = BGPFactory.FSM(self)
         self.inConnections = []
@@ -1847,8 +1865,8 @@ class NaiveBGPPeering(BGPPeering):
     Currently even assumes that all prefixes fit in a single BGP UPDATE message.
     """
     
-    def __init__(self):
-        BGPPeering.__init__(self)
+    def __init__(self, myASN=None, peerAddr=None):
+        BGPPeering.__init__(self, myASN, peerAddr)
         
         # (advertisements, attributes)
         self.advertisedSet = (set(), set())
@@ -1885,6 +1903,10 @@ class NaiveBGPPeering(BGPPeering):
         self._sendUpdate(withdrawals, attributes, newPrefixes)
         
     def _sendUpdate(self, withdrawals, attributes, advertisements):
-        if self.estabProtocol and self.fsm.state == ST_ESTABLISHED:
+        if self.estabProtocol and self.fsm.state == ST_ESTABLISHED and len(withdrawals) + len(advertisements) > 0:
+            # Check if the NextHop attribute needs to be replaced
+            if attributes.nextHop.any:
+                attributes.nextHop.set(self.estabProtocol.transport.getHost().host) # FIXME: IPv6
+            
             self.estabProtocol.sendUpdate(withdrawals, attributes, advertisements)
             self.advertisedSet = (advertisements, attributes)
