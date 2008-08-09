@@ -32,3 +32,8 @@ $aliases['nl'] = array(
 	'ChangeAuthor' => array( 'AuteurWijzigen' ),
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
+$aliases['no'] = array(
+	'ChangeAuthor' => array( 'Endre forfatter' ),
+);
+

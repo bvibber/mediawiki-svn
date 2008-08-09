@@ -86,7 +86,7 @@ $aliases['nl'] = array(
  * @author Jon Harald Søby
  */
 $aliases['no'] = array(
-	'CrossNamespaceLinks' => array( 'Lenker_mellom_navnerom' ),
+	'CrossNamespaceLinks' => array( 'Lenker mellom navnerom' ),
 );
 
 /** Portuguese (Português) */

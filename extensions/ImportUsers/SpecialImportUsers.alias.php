@@ -86,7 +86,7 @@ $aliases['nn'] = array(
  * @author Jon Harald Søby
  */
 $aliases['no'] = array(
-	'ImportUsers' => array( 'Importer_brukere' ),
+	'ImportUsers' => array( 'Importer brukere' ),
 );
 
 /** Pashto (پښتو) */

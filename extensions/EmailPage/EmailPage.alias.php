@@ -55,6 +55,11 @@ $aliases['hu'] = array(
 	'EmailPages' => array( 'Szócikk elküldése e-mailben' ),
 );
 
+/** Luxembourgish (Lëtzebuergesch) */
+$aliases['lb'] = array(
+	'EmailPages' => array( 'E-Mail-Säiten' ),
+);
+
 /** Dutch (Nederlands) */
 $aliases['nl'] = array(
 	'EmailPages' => array( 'PaginaE-mailen', 'PaginaEmailen' ),
@@ -64,7 +69,7 @@ $aliases['nl'] = array(
  * @author Jon Harald Søby
  */
 $aliases['no'] = array(
-	'EmailPages' => array( 'Send_side_som_e-post' ),
+	'EmailPages' => array( 'Send side som e-post' ),
 );
 
 /** Pashto (پښتو) */

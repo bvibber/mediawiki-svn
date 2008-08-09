@@ -37,6 +37,6 @@ $aliases['nl'] = array(
  * @author Jon Harald Søby
  */
 $aliases['no'] = array(
-	'MultiUpload' => array( 'Last_opp_mange_filer' ),
+	'MultiUpload' => array( 'Last opp mange filer' ),
 );
 

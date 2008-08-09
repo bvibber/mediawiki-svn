@@ -21,7 +21,7 @@ $aliases['en'] = array(
  * @author Meno25
  */
 $aliases['ar'] = array(
-	'Configure'  => array( 'ضبط' ),
+	'Configure' => array( 'ضبط' ),
 	'Extensions' => array( 'امتدادات' ),
 	'ViewConfig' => array( 'عرض_الإعدادات' ),
 );
@@ -30,7 +30,7 @@ $aliases['ar'] = array(
  * @author Meno25
  */
 $aliases['arz'] = array(
-	'Configure'  => array( 'ضبط' ),
+	'Configure' => array( 'ضبط' ),
 	'Extensions' => array( 'امتدادات' ),
 	'ViewConfig' => array( 'عرض_الإعدادات' ),
 );
@@ -43,7 +43,7 @@ $aliases['bcc'] = array(
 
 /** Czech (Česky) */
 $aliases['cs'] = array(
-	'Configure'  => array( 'Konfigurace', 'Nastavení' ),
+	'Configure' => array( 'Konfigurace', 'Nastavení' ),
 	'Extensions' => array( 'Rozšíření', 'Dopňky' ),
 	'ViewConfig' => array( 'Zobrazit konfiguraci', 'Zobrazit nastavení' ),
 );
@@ -114,28 +114,28 @@ $aliases['ksh'] = array(
 
 /** Luxembourgish (Lëtzebuergesch) */
 $aliases['lb'] = array(
-	'Configure'  => array( 'Astellen' ),
+	'Configure' => array( 'Astellen' ),
 	'Extensions' => array( 'Erweiderungen' ),
 	'ViewConfig' => array( 'Astellunge weisen' ),
 );
 
 /** Maltese (Malti) */
 $aliases['mt'] = array(
-	'Configure'  => array( 'Konfigurazzjoni' ),
+	'Configure' => array( 'Konfigurazzjoni' ),
 	'Extensions' => array( 'Estensjonijiet' ),
 	'ViewConfig' => array( 'UriKonfig' ),
 );
 
 /** Dutch (Nederlands) */
 $aliases['nl'] = array(
-	'Configure'  => array( 'Instellingen' ),
+	'Configure' => array( 'Instellingen' ),
 	'Extensions' => array( 'Uitbreidingen' ),
 	'ViewConfig' => array( 'InstellingenBekijken' ),
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
 $aliases['no'] = array(
-	'Configure'  => array( 'Konfigurer' ),
+	'Configure' => array( 'Konfigurer' ),
 	'Extensions' => array( 'Utvidelser' ),
 	'ViewConfig' => array( 'Vis konfigurasjon' ),
 );

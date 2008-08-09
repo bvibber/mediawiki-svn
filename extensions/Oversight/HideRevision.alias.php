@@ -20,7 +20,7 @@ $aliases['en'] = array(
  */
 $aliases['ar'] = array(
 	'HideRevision' => array( 'إخفاء_نسخة' ),
-	'Oversight'    => array( 'أوفرسايت' ),
+	'Oversight' => array( 'أوفرسايت' ),
 );
 
 /** Egyptian Spoken Arabic (مصرى)
@@ -28,7 +28,7 @@ $aliases['ar'] = array(
  */
 $aliases['arz'] = array(
 	'HideRevision' => array( 'إخفاء_نسخة' ),
-	'Oversight'    => array( 'أوفرسايت' ),
+	'Oversight' => array( 'أوفرسايت' ),
 );
 
 /** German (Deutsch)
@@ -50,6 +50,11 @@ $aliases['he'] = array(
 /** Dutch (Nederlands) */
 $aliases['nl'] = array(
 	'HideRevision' => array( 'VersieVerbergen', 'BewerkingVerbergen' ),
-	'Oversight'    => array( 'Toezicht' ),
+	'Oversight' => array( 'Toezicht' ),
+);
+
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
+$aliases['no'] = array(
+	'HideRevision' => array( 'Skjul revisjon' ),
 );
 

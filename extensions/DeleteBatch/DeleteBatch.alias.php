@@ -64,7 +64,7 @@ $aliases['nl'] = array(
  * @author Jon Harald Søby
  */
 $aliases['no'] = array(
-	'DeleteBatch' => array( 'Slett_en_serie_sider' ),
+	'DeleteBatch' => array( 'Slett en serie sider' ),
 );
 
 /** Portuguese (Português) */

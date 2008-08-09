@@ -74,7 +74,7 @@ $aliases['nl'] = array(
  * @author Jon Harald Søby
  */
 $aliases['no'] = array(
-	'EditUser' => array( 'Rediger_bruker' ),
+	'EditUser' => array( 'Rediger bruker' ),
 );
 
 /** Swedish (Svenska) */

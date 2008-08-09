@@ -40,3 +40,8 @@ $aliases['nl'] = array(
 	'SpamRegex' => array( 'SpamReguliereExpressie' ),
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
+$aliases['no'] = array(
+	'SpamRegex' => array( 'Regulære uttrykk mot spam' ),
+);
+
