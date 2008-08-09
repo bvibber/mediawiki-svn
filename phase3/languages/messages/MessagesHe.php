@@ -18,8 +18,8 @@ $linkTrail = '/^([a-zא-ת]+)(.*)$/sDu';
 $fallback8bitEncoding = 'windows-1255';
 
 $skinNames = array(
-	'standard'    => 'רגיל',
-	'nostalgia'   => 'נוסטלגי',
+	'standard'    => 'קלאסי',
+	'nostalgia'   => 'נוסטלגיה',
 	'cologneblue' => 'מים כחולים',
 	'monobook'    => 'מונובוק',
 	'myskin'      => 'הרקע שלי',
@@ -272,7 +272,7 @@ $specialPageAliases = array(
 	'Mycontributions'           => array( 'התרומות_שלי' ),
 	'Listadmins'                => array( 'רשימת_מפעילים' ),
 	'Listbots'                  => array( 'רשימת_בוטים' ),
-	'Popularpages'              => array( 'דפים_פופולריים' ),
+	'Popularpages'              => array( 'הדפים_הנצפים_ביותר', 'דפים_פופולריים' ),
 	'Search'                    => array( 'חיפוש' ),
 	'Resetpass'                 => array( 'איפוס_סיסמה' ),
 	'Withoutinterwiki'          => array( 'דפים_ללא_קישורי_שפה' ),
@@ -345,6 +345,7 @@ $messages = array(
 'tog-ccmeonemails'            => 'קבלת העתקים של הודעות דוא"ל הנשלחות ממני למשתמשים אחרים',
 'tog-diffonly'                => 'ביטול הצגת תוכן הדף מתחת להשוואות הגרסאות',
 'tog-showhiddencats'          => 'הצגת קטגוריות מוסתרות',
+'tog-noconvertlink'           => 'ביטול המרת קישורים לכותרות',
 
 'underline-always'  => 'תמיד',
 'underline-never'   => 'אף פעם',
@@ -578,7 +579,7 @@ $messages = array(
 'nosuchspecialpage' => 'אין דף מיוחד בשם זה',
 'nospecialpagetext' => '<big>ביקשתם דף מיוחד שאינו קיים.</big>
 
-ראו גם את [[Special:Specialpages|רשימת הדפים המיוחדים התקינים]].',
+ראו גם את [[Special:SpecialPages|רשימת הדפים המיוחדים התקינים]].',
 
 # General errors
 'error'                => 'שגיאה',
@@ -662,7 +663,7 @@ $messages = array(
 'viewsource'           => 'הצגת מקור',
 'viewsourcefor'        => 'לדף $1',
 'actionthrottled'      => 'הפעולה הוגבלה',
-'actionthrottledtext'  => 'כאמצעי נגד ספאם, אינכם מורשים לבצע פעולה זו פעמים רבות מדי בזמן קצר, ועברתם את ההגבלה הזו. אנא נסו שנית בעוד מספר דקות.',
+'actionthrottledtext'  => 'כאמצעי נגד ספאם, אינכם מורשים לבצע פעולה זו פעמים רבות מדי בזמן קצר. אנא נסו שנית בעוד מספר דקות.',
 'protectedpagetext'    => 'דף זה נעול לעריכה.',
 'viewsourcetext'       => 'באפשרותכם לצפות בטקסט המקור של הדף, ואף להעתיקו:',
 'protectedinterface'   => 'דף זה הוא אחד מסדרת דפים המספקים הודעות מערכת לתוכנה, ונעול לעריכה למפעילי מערכת בלבד כדי למנוע השחתות של ההודעות.',
@@ -682,7 +683,7 @@ $2',
 
 # Login and logout pages
 'logouttitle'                => 'יציאה מהחשבון',
-'logouttext'                 => 'יצאתם זה עתה מהחשבון. באפשרותכם להמשיך ולעשות שימוש ב{{grammar:תחילית|{{SITENAME}}}} באופן אנונימי, או [[Special:Userlogin|לשוב ולהיכנס לאתר]] עם שם משתמש זהה או אחר.',
+'logouttext'                 => 'יצאתם זה עתה מהחשבון. באפשרותכם להמשיך ולעשות שימוש ב{{grammar:תחילית|{{SITENAME}}}} באופן אנונימי, או [[Special:UserLogin|לשוב ולהיכנס לאתר]] עם שם משתמש זהה או אחר.',
 'welcomecreation'            => '== ברוך הבא, $1! ==
 חשבונך נפתח. אל תשכח להתאים את [[Special:Preferences|העדפות המשתמש]] שלך.',
 'loginpagetitle'             => 'כניסת משתמש',
@@ -760,6 +761,7 @@ $2',
 'createaccount-text'         => 'מישהו יצר חשבון בשם $2 ב{{grammar:תחילית|{{SITENAME}}}} ($4), והסיסמה הזמנית של החשבון היא "$3". עליכם להיכנס ולשנות עכשיו את הסיסמה.
 
 באפשרותכם להתעלם מהודעה זו, אם החשבון נוצר בטעות.',
+'login-throttled'            => 'ביצעתם לאחרונה ניסיונות רבים מדי להיכנס לחשבון זה. אנא המתינו לפני שתנסו שנית.',
 'loginlanguagelabel'         => 'שפה: $1',
 
 # Password reset dialog
@@ -818,9 +820,10 @@ $2',
 * פקיעת החסימה: $6
 * החסימה שבוצעה: $7
 
-באפשרותכם ליצור קשר עם $1 או עם כל אחד מ[[Project:מפעיל מערכת|מפעילי המערכת]] האחרים כדי לדון על החסימה.
+באפשרותכם ליצור קשר עם $1 או עם כל אחד מ[[{{MediaWiki:Grouppage-sysop}}|מפעילי המערכת]] האחרים כדי לדון על החסימה.
 אינכם יכולים להשתמש בתכונת "שליחת דואר אלקטרוני למשתמש זה" אם לא ציינתם כתובת דוא"ל תקפה ב[[Special:Preferences|העדפות המשתמש שלכם]] או אם נחסמתם משליחת דוא"ל.
-כתובת ה־IP שלכם היא $3, ומספר החסימה שלכם הוא #$5. אנא ציינו אחת מעובדות אלה (או את שתיהן) בכל פנייה למפעילי המערכת.',
+כתובת ה־IP שלכם היא $3, ומספר החסימה שלכם הוא #$5.
+אנא ציינו את כל הפרטים הללו בכל פנייה למפעילי המערכת.',
 'autoblockedtext'                  => 'כתובת ה־IP שלכם נחסמה באופן אוטומטי כיוון שמשתמש אחר, שנחסם על ידי $1, עשה בה שימוש.
 הסיבה שניתנה לחסימה היא:
 
@@ -828,10 +831,12 @@ $2',
 
 * תחילת החסימה: $8
 * פקיעת החסימה: $6
+* החסימה שבוצעה: $7
 
-באפשרותכם ליצור קשר עם $1 או עם כל אחד מ[[Project:מפעיל מערכת|מפעילי המערכת]] האחרים כדי לדון על החסימה.
+באפשרותכם ליצור קשר עם $1 או עם כל אחד מ[[{{MediaWiki:Grouppage-sysop}}|מפעילי המערכת]] האחרים כדי לדון על החסימה.
 אינכם יכולים להשתמש בתכונת "שליחת דואר אלקטרוני למשתמש זה" אם לא ציינתם כתובת דוא"ל תקפה ב[[Special:Preferences|העדפות המשתמש שלכם]] או אם נחסמתם משליחת דוא"ל.
-מספר החסימה שלכם הוא #$5. אנא ציינו זאת בכל פנייה למפעילי המערכת.',
+כתובת ה־IP שלכם היא $3, ומספר החסימה שלכם הוא #$5.
+אנא ציינו את כל הפרטים הללו בכל פנייה למפעילי המערכת.',
 'blockednoreason'                  => 'לא ניתנה סיבה',
 'blockedoriginalsource'            => "טקסט המקור של '''$1''' מוצג למטה:",
 'blockededitsource'                => "הטקסט של '''העריכות שלך''' לדף '''$1''' מוצג למטה:",
@@ -851,7 +856,7 @@ $2',
 
 אם הגעתם לכאן בטעות, לחצו על מקש ה־'''Back''' בדפדפן שלכם.",
 'anontalkpagetext'                 => "----
-'''זהו דף שיחה של משתמש אנונימי שעדיין לא יצר חשבון במערכת, או שהוא לא משתמש בו. כיוון שכך, אנו צריכים להשתמש בכתובת ה־IP כדי לזהותו. ייתכן שכתובת IP זו תייצג מספר משתמשים. אם אתם משתמשים אנונימיים ומרגישים שקיבלתם הודעות בלתי רלוונטיות, אנא [[Special:Userlogin|היכנסו לחשבון]] או [[Special:Userlogin/signup|הירשמו לאתר]] כדי להימנע מבלבול עתידי עם משתמשים אנונימיים נוספים.'''
+'''זהו דף שיחה של משתמש אנונימי שעדיין לא יצר חשבון במערכת, או שהוא לא משתמש בו. כיוון שכך, אנו צריכים להשתמש בכתובת ה־IP כדי לזהותו. ייתכן שכתובת IP זו תייצג מספר משתמשים. אם אתם משתמשים אנונימיים ומרגישים שקיבלתם הודעות בלתי רלוונטיות, אנא [[Special:UserLogin|היכנסו לחשבון]] או [[Special:UserLogin/signup|הירשמו לאתר]] כדי להימנע מבלבול עתידי עם משתמשים אנונימיים נוספים.'''
 ----",
 'noarticletext'                    => 'אין עדיין טקסט בדף זה. באפשרותכם [[Special:Search/{{PAGENAME}}|לחפש את {{PAGENAME}} באתר]], או [{{fullurl:{{FULLPAGENAME}}|action=edit}} ליצור דף זה].',
 'userpage-userdoesnotexist'        => 'חשבון המשתמש "$1" אינו רשום. אנא בדקו אם ברצונכם ליצור/לערוך דף זה.',
@@ -868,12 +873,12 @@ $2',
 'note'                             => '<strong>הערה:</strong>',
 'previewnote'                      => '<strong>זכרו שזו רק תצוגה מקדימה, והדף עדיין לא נשמר!</strong>',
 'previewconflict'                  => 'תצוגה מקדימה זו מציגה כיצד ייראה הטקסט בחלון העריכה העליון, אם תבחרו לשמור אותו.',
-'session_fail_preview'             => '<strong>מצטערים! לא ניתן לבצע את עריכתכם עקב אובדן קשר עם השרת. אנא נסו שנית. אם זה לא עוזר, אנא [[Special:Userlogout|צאו מהחשבון]] ונסו שנית.</strong>',
+'session_fail_preview'             => '<strong>מצטערים! לא ניתן לבצע את עריכתכם עקב אובדן קשר עם השרת. אנא נסו שנית. אם זה לא עוזר, אנא [[Special:UserLogout|צאו מהחשבון]] ונסו שנית.</strong>',
 'session_fail_preview_html'        => '<strong>מצטערים! לא ניתן לבצע את עריכתם עקב אובדן קשר עם השרת.</strong>
 
 כיוון שבאתר זה אפשרות השימוש ב־HTML מאופשרת, התצוגה המקדימה מוסתרת כדי למנוע התקפות JavaScript.
 
-<strong>אם זהו ניסיון עריכה לגיטימי, אנא נסו שנית. אם זה לא עוזר, נסו [[Special:Userlogout|לצאת מהחשבון]] ולהיכנס אליו שנית.</strong>',
+<strong>אם זהו ניסיון עריכה לגיטימי, אנא נסו שנית. אם זה לא עוזר, נסו [[Special:UserLogout|לצאת מהחשבון]] ולהיכנס אליו שנית.</strong>',
 'token_suffix_mismatch'            => '<strong>עריכתכם נדחתה כיוון שהדפדפן שלכם מחק את תווי הניקוד בסימון העריכה. העריכה נדחתה כדי למנוע בעיות כאלה בטקסט של הדף. ייתכן שזה קרה בגלל שירות פרוקסי אנונימי פגום.</strong>',
 'editing'                          => 'עריכת $1',
 'editingsection'                   => 'עריכת $1 (פסקה)',
@@ -902,7 +907,7 @@ $2',
 'hiddencategories'                 => 'דף זה חבר ב{{PLURAL:$1|קטגוריה מוסתרת אחת|־$1 קטגוריות מוסתרות}}:',
 'edittools'                        => '<!-- הטקסט הנכתב כאן יוצג מתחת לטפסי עריכת דפים והעלאת קבצים, ולפיכך ניתן לכתוב להציג בו תווים קשים לכתיבה, קטעים מוכנים של טקסט ועוד. -->',
 'nocreatetitle'                    => 'יצירת הדפים הוגבלה',
-'nocreatetext'                     => 'אתר זה מגביל את האפשרות ליצור דפים חדשים. באפשרותכם לחזור אחורה ולערוך דף קיים, או [[Special:Userlogin|להיכנס לחשבון]].',
+'nocreatetext'                     => 'אתר זה מגביל את האפשרות ליצור דפים חדשים. באפשרותכם לחזור אחורה ולערוך דף קיים, או [[Special:UserLogin|להיכנס לחשבון]].',
 'nocreate-loggedin'                => 'אינכם מורשים ליצור דפים חדשים באתר זה.',
 'permissionserrors'                => 'שגיאות הרשאה',
 'permissionserrorstext'            => 'אינכם מורשים לבצע פעולה זו, {{PLURAL:$1|מהסיבה הבאה|מהסיבות הבאות}}:',
@@ -915,7 +920,7 @@ $2',
 # Parser/template warnings
 'expensive-parserfunction-warning'        => 'אזהרה: דף זה כולל יותר מדי קריאות למשתנים הגוזלים משאבים.
 
-צריכות להיות פחות מ־$2 קריאות כאלה, אך כרגע יש $1.',
+{{PLURAL:$2|צריכה להיות פחות מקריאה אחת כזאת|צריכות להיות פחות מ־$2 קריאות כאלה}}, אך כרגע יש {{PLURAL:$1|קריאה אחת|$1 קריאות}}.',
 'expensive-parserfunction-category'       => 'דפים עם יותר מדי קריאות למשתנים הגוזלים משאבים',
 'post-expand-template-inclusion-warning'  => 'אזהרה: התבניות המוכללות בדף זה גדולות מדי.
 חלק מהתבניות לא יוכללו.',
@@ -1016,7 +1021,7 @@ $2',
 
 # Suppression log
 'suppressionlog'     => 'יומן הסתרות',
-'suppressionlogtext' => 'להלן רשימת המחיקות והחסימות הכוללות תוכן המוסתר ממפעילי המערכת. ראו את  [[Special:Ipblocklist|רשימת המשתמשים החסומים]] לרשימת החסימות הפעילות כעת.',
+'suppressionlogtext' => 'להלן רשימת המחיקות והחסימות הכוללות תוכן המוסתר ממפעילי המערכת. ראו את  [[Special:IPBlockList|רשימת המשתמשים החסומים]] לרשימת החסימות הפעילות כעת.',
 
 # History merging
 'mergehistory'                     => 'מיזוג גרסאות של דפים',
@@ -1059,7 +1064,7 @@ $2',
 'searchresults'             => 'תוצאות החיפוש',
 'searchresults-title'       => 'תוצאות החיפוש של $1',
 'searchresulttext'          => 'למידע נוסף על חיפוש ב{{grammar:תחילית|{{SITENAME}}}}, עיינו ב[[Project:עזרה|דפי העזרה]].',
-'searchsubtitle'            => 'לחיפוש המונח \'\'\'[[:$1]]\'\'\' ([[Special:Prefixindex/$1|לכל הדפים המתחילים ב"$1"]] | [[Special:Whatlinkshere/$1|לכל הדפים המקשרים ל"$1"]])',
+'searchsubtitle'            => 'לחיפוש המונח \'\'\'[[:$1]]\'\'\' ([[Special:Prefixindex/$1|לכל הדפים המתחילים ב"$1"]] | [[Special:WhatLinksHere/$1|לכל הדפים המקשרים ל"$1"]])',
 'searchsubtitleinvalid'     => "לחיפוש המונח '''$1'''",
 'noexactmatch'              => 'אין דף שכותרתו "$1". באפשרותכם [[:$1|ליצור את הדף]].',
 'noexactmatch-nocreate'     => 'אין דף שכותרתו "$1".',
@@ -1102,7 +1107,7 @@ $2',
 'mypreferences'            => 'ההעדפות שלי',
 'prefs-edits'              => 'מספר עריכות:',
 'prefsnologin'             => 'לא נרשמת באתר',
-'prefsnologintext'         => 'עליכם [[Special:Userlogin|להיכנס לחשבון]] כדי לשנות העדפות משתמש.',
+'prefsnologintext'         => 'עליכם [[Special:UserLogin|להיכנס לחשבון]] כדי לשנות העדפות משתמש.',
 'prefsreset'               => 'ההעדפות שוחזרו למצבן הקודם.',
 'qbsettings'               => 'הגדרות סרגל כלים',
 'qbsettings-none'          => 'ללא',
@@ -1177,7 +1182,7 @@ $2',
 'userrights-reason'           => 'סיבה לשינוי:',
 'userrights-no-interwiki'     => 'אין לכם הרשאה לערוך הרשאות משתמש באתרים אחרים.',
 'userrights-nodatabase'       => 'בסיס הנתונים $1 אינו קיים או אינו מקומי.',
-'userrights-nologin'          => 'עליכם [[Special:Userlogin|להיכנס לחשבון]] עם הרשאות מתאימות כדי לשנות הרשאות של משתמשים.',
+'userrights-nologin'          => 'עליכם [[Special:UserLogin|להיכנס לחשבון]] עם הרשאות מתאימות כדי לשנות הרשאות של משתמשים.',
 'userrights-notallowed'       => 'לחשבון המשתמש שלכם אין הרשאה לשנות הרשאות של משתמשים.',
 'userrights-changeable-col'   => 'קבוצות שבאפשרותכם לשנות',
 'userrights-unchangeable-col' => 'קבוצות שאין באפשרותכם לשנות',
@@ -1296,6 +1301,7 @@ $2',
 # Recent changes linked
 'recentchangeslinked'          => 'שינויים בדפים המקושרים',
 'recentchangeslinked-title'    => 'שינויים בדפים המקושרים לדף $1',
+'recentchangeslinked-backlink' => '→ $1',
 'recentchangeslinked-noresult' => 'לא היו שינויים בדפים המקושרים בתקופה זו.',
 'recentchangeslinked-summary'  => "בדף מיוחד זה רשומים השינויים האחרונים בדפים המקושרים מתוך הדף (או בדפים החברים בקטגוריה).
 דפים ב[[Special:Watchlist|רשימת המעקב שלכם]] מוצגים ב'''הדגשה'''.",
@@ -1308,11 +1314,11 @@ $2',
 'reupload'                    => 'העלאה חוזרת',
 'reuploaddesc'                => 'ביטול ההעלאה וחזרה לטופס העלאת קבצים לשרת',
 'uploadnologin'               => 'לא נכנסתם לאתר',
-'uploadnologintext'           => 'עליכם [[Special:Userlogin|להיכנס לחשבון]] כדי להעלות קבצים.',
+'uploadnologintext'           => 'עליכם [[Special:UserLogin|להיכנס לחשבון]] כדי להעלות קבצים.',
 'upload_directory_missing'    => 'שרת האינטרנט אינו יכול ליצור את תיקיית ההעלאות ($1) החסרה.',
 'upload_directory_read_only'  => 'שרת האינטרנט אינו יכול לכתוב בתיקיית ההעלאות ($1), ולפיכך הוא אינו יכול להעלות את התמונה.',
 'uploaderror'                 => 'שגיאה בהעלאת הקובץ',
-'uploadtext'                  => "השתמשו בטופס להלן כדי להעלות תמונות. כדי לראות או לחפש תמונות שהועלו בעבר אנא פנו ל[[Special:Imagelist|רשימת הקבצים המועלים]], וכמו כן, העלאות (כולל העלאות של גרסה חדשה) מוצגות ב[[Special:Log/upload|יומן ההעלאות]], ומחיקות ב[[Special:Log/delete|יומן המחיקות]].
+'uploadtext'                  => "השתמשו בטופס להלן כדי להעלות תמונות. כדי לראות או לחפש תמונות שהועלו בעבר אנא פנו ל[[Special:ImageList|רשימת הקבצים המועלים]], וכמו כן, העלאות (כולל העלאות של גרסה חדשה) מוצגות ב[[Special:Log/upload|יומן ההעלאות]], ומחיקות ב[[Special:Log/delete|יומן המחיקות]].
 
 כדי לכלול תמונה בדף, השתמשו בקישור באחת הצורות הבאות:
 * '''<tt><nowiki>[[</nowiki>{{ns:image}}<nowiki>:File.jpg]]</nowiki></tt>''' לשימוש בגרסה המלאה של הקובץ
@@ -1416,7 +1422,7 @@ PICT # שונות
 'upload_source_url'  => ' (כתובת URL תקפה ונגישה)',
 'upload_source_file' => ' (קובץ במחשב שלך)',
 
-# Special:Imagelist
+# Special:ImageList
 'imagelist-summary'     => 'דף זה מציג את כל הקבצים שהועלו. כברירת מחדל מוצגים הקבצים האחרונים שהועלו בראש הרשימה. לחיצה על כותרת של עמודה משנה את המיון.',
 'imagelist_search_for'  => 'חיפוש תמונה בשם:',
 'imgfile'               => 'קובץ',
@@ -1441,8 +1447,11 @@ PICT # שונות
 'filehist-comment'               => 'הערה',
 'imagelinks'                     => 'קישורי תמונות',
 'linkstoimage'                   => '{{PLURAL:$1|הדף הבא משתמש|הדפים הבאים משתמשים}} בתמונה זו:',
+'linkstoimage-more'              => 'יותר מ{{PLURAL:$1|דף אחד מקשר|־$1 דפים מקשרים}} לקובץ זה.
+הרשימה הבאה מראה רק את {{PLURAL:$1|הדף הראשון שמקשר|$1 הדפים הראשונים שמקשרים}} לקובץ זה.
+ניתן לצפות ב[[Special:WhatLinksHere/$2|רשימה המלאה]].',
 'nolinkstoimage'                 => 'אין דפים המשתמשים בתמונה זו.',
-'morelinkstoimage'               => 'ראו [[Special:Whatlinkshere/$1|דפים נוספים]] המשתמשים בתמונה זו.',
+'morelinkstoimage'               => 'ראו [[Special:WhatLinksHere/$1|דפים נוספים]] המשתמשים בתמונה זו.',
 'redirectstofile'                => '{{PLURAL:$1|הדף הבא הוא דף הפניה|הדפים הבאים הם דפי הפניה}} לתמונה זו:',
 'duplicatesoffile'               => '{{PLURAL:$1|התמונה הבאה זהה|התמונות הבאות זהות}} לתמונה זו:',
 'sharedupload'                   => 'קובץ זה הוא קובץ משותף וניתן להשתמש בו גם באתרים אחרים.',
@@ -1527,7 +1536,7 @@ PICT # שונות
 אורך [http://www.mediawiki.org/wiki/Manual:Job_queue תור המשימות] הוא '''$7'''.
 
 {{PLURAL:$1|קובץ '''אחד'''|'''$8''' קבצים}} הועלו לאתר עד כה.",
-'userstatstext'          => "{{PLURAL:$1|ישנו [[Special:Listusers|משתמש רשום]] '''אחד'''|ישנם '''$1''' [[Special:Listusers|משתמשים רשומים]] באתר}}, {{PLURAL:$2|ול'''אחד'''|ול־'''$2'''}} (או $4%) מתוכם יש הרשאות $5.",
+'userstatstext'          => "{{PLURAL:$1|ישנו [[Special:ListUsers|משתמש רשום]] '''אחד'''|ישנם '''$1''' [[Special:ListUsers|משתמשים רשומים]] באתר}}, {{PLURAL:$2|ול'''אחד'''|ול־'''$2'''}} (או $4%) מתוכם יש הרשאות $5.",
 'statistics-mostpopular' => 'הדפים הנצפים ביותר',
 
 'disambiguations'      => 'דפי פירושונים',
@@ -1569,7 +1578,7 @@ PICT # שונות
 'uncategorizedtemplates'  => 'תבניות חסרות קטגוריה',
 'unusedcategories'        => 'קטגוריות שאינן בשימוש',
 'unusedimages'            => 'תמונות שאינן בשימוש',
-'popularpages'            => 'דפים פופולריים',
+'popularpages'            => 'הדפים הנצפים ביותר',
 'wantedcategories'        => 'קטגוריות מבוקשות',
 'wantedpages'             => 'דפים מבוקשים',
 'missingfiles'            => 'קבצים חסרים',
@@ -1625,7 +1634,7 @@ PICT # שונות
 'logempty'             => 'אין פריטים תואמים ביומן.',
 'log-title-wildcard'   => 'חיפוש כותרות המתחילות באותיות אלה',
 
-# Special:Allpages
+# Special:AllPages
 'allpages'          => 'כל הדפים',
 'alphaindexline'    => '$1 עד $2',
 'nextpage'          => 'הדף הבא ($1)',
@@ -1648,12 +1657,12 @@ PICT # שונות
 'special-categories-sort-count' => 'סידור לפי מספר חברים',
 'special-categories-sort-abc'   => 'סידור לפי סדר האלף בית',
 
-# Special:Listusers
+# Special:ListUsers
 'listusersfrom'      => 'הצגת משתמשים החל מ:',
 'listusers-submit'   => 'הצגה',
 'listusers-noresult' => 'לא נמצאו משתמשים.',
 
-# Special:Listgrouprights
+# Special:ListGroupRights
 'listgrouprights'                 => 'רשימת הרשאות לקבוצה',
 'listgrouprights-summary'         => 'זוהי רשימה של קבוצות המשתמש המוגדרות באתר זה, עם ההרשאות של כל אחת.
 מידע נוסף על ההרשאות ניתן למצוא [[{{MediaWiki:Listgrouprights-helppage}}|כאן]].',
@@ -1668,7 +1677,7 @@ PICT # שונות
 
 # E-mail user
 'mailnologin'     => 'אין כתובת לשליחה',
-'mailnologintext' => 'עליכם [[Special:Userlogin|להיכנס לחשבון]] ולהגדיר לעצמכם כתובת דואר אלקטרוני תקינה ב[[Special:Preferences|העדפות המשתמש]] שלכם כדי לשלוח דואר למשתמש אחר.',
+'mailnologintext' => 'עליכם [[Special:UserLogin|להיכנס לחשבון]] ולהגדיר לעצמכם כתובת דואר אלקטרוני תקינה ב[[Special:Preferences|העדפות המשתמש]] שלכם כדי לשלוח דואר למשתמש אחר.',
 'emailuser'       => 'שליחת דואר אלקטרוני למשתמש זה',
 'emailpage'       => 'שליחת דואר למשתמש',
 'emailpagetext'   => 'ניתן לשלוח דואר אלקטרוני דרך טופס זה רק למשתמשים שהזינו כתובת דואר אלקטרוני בהעדפותיהם. כתובת הדואר האלקטרוני שהזנתם ב[[Special:Preferences|העדפות המשתמש שלכם]] תופיע ככתובת ממנה נשלחה ההודעה כדי לאפשר תגובה למכתב.',
@@ -1694,11 +1703,11 @@ PICT # שונות
 'nowatchlist'          => 'אין דפים ברשימת המעקב.',
 'watchlistanontext'    => 'עליכם $1 כדי לצפות או לערוך פריטים ברשימת המעקב.',
 'watchnologin'         => 'לא נכנסתם לאתר',
-'watchnologintext'     => 'עליכם [[Special:Userlogin|להיכנס לחשבון]] כדי לערוך את רשימת המעקב.',
+'watchnologintext'     => 'עליכם [[Special:UserLogin|להיכנס לחשבון]] כדי לערוך את רשימת המעקב.',
 'addedwatch'           => 'הדף נוסף לרשימת המעקב',
 'addedwatchtext'       => 'הדף [[:$1]] נוסף ל[[Special:Watchlist|רשימת המעקב]]. שינויים שייערכו בעתיד, בדף זה ובדף השיחה שלו, יוצגו ברשימת המעקב.
 
-בנוסף, הדף יופיע בכתב מודגש ב[[Special:Recentchanges|רשימת השינויים האחרונים]], כדי להקל עליכם את המעקב אחריו.',
+בנוסף, הדף יופיע בכתב מודגש ב[[Special:RecentChanges|רשימת השינויים האחרונים]], כדי להקל עליכם את המעקב אחריו.',
 'removedwatch'         => 'הדף הוסר מרשימת המעקב',
 'removedwatchtext'     => 'הדף [[:$1]] הוסר מ[[Special:Watchlist|רשימת המעקב]].',
 'watch'                => 'מעקב',
@@ -1807,7 +1816,7 @@ $NEWPAGE
 'rollback-success'            => 'שוחזר מעריכה של $1 לעריכה האחרונה של $2',
 'sessionfailure'              => 'נראה שיש בעיה בחיבורכם לאתר. פעולתכם בוטלה כאמצעי זהירות כנגד התחזות לתקשורת ממחשבכם. אנא חיזרו לדף הקודם ונסו שנית.',
 'protectlogpage'              => 'יומן הגנות',
-'protectlogtext'              => 'להלן רשימה של הגנות וביטולי הגנות על דפים. ראו גם את [[Special:Protectedpages|רשימת הדפים המוגנים]] הנוכחית.',
+'protectlogtext'              => 'להלן רשימה של הגנות וביטולי הגנות על דפים. ראו גם את [[Special:ProtectedPages|רשימת הדפים המוגנים]] הנוכחית.',
 'protectedarticle'            => 'הגן על [[$1]]',
 'modifiedarticleprotection'   => 'שינה את רמת ההגנה של [[$1]]',
 'unprotectedarticle'          => 'ביטל את ההגנה על [[$1]]',
@@ -1899,26 +1908,28 @@ $1',
 'blanknamespace' => '(ראשי)',
 
 # Contributions
-'contributions' => 'תרומות המשתמש',
-'mycontris'     => 'התרומות שלי',
-'contribsub2'   => 'עבור $1 ($2)',
-'nocontribs'    => 'לא נמצאו שינויים המתאימים לקריטריונים אלו.',
-'uctop'         => '(אחרון)',
-'month'         => 'עד החודש:',
-'year'          => 'עד השנה:',
+'contributions'       => 'תרומות המשתמש',
+'contributions-title' => 'תרומות של המשתמש $1',
+'mycontris'           => 'התרומות שלי',
+'contribsub2'         => 'עבור $1 ($2)',
+'nocontribs'          => 'לא נמצאו שינויים המתאימים לקריטריונים אלו.',
+'uctop'               => '(אחרון)',
+'month'               => 'עד החודש:',
+'year'                => 'עד השנה:',
 
-'sp-contributions-newbies'     => 'הצגת תרומות של משתמשים חדשים בלבד',
-'sp-contributions-newbies-sub' => 'עבור משתמשים חדשים',
-'sp-contributions-blocklog'    => 'יומן חסימות',
-'sp-contributions-search'      => 'חיפוש תרומות',
-'sp-contributions-username'    => 'שם משתמש או כתובת IP:',
-'sp-contributions-submit'      => 'חיפוש',
+'sp-contributions-newbies'       => 'הצגת תרומות של משתמשים חדשים בלבד',
+'sp-contributions-newbies-sub'   => 'עבור משתמשים חדשים',
+'sp-contributions-newbies-title' => 'תרומות של משתמשים חדשים',
+'sp-contributions-blocklog'      => 'יומן חסימות',
+'sp-contributions-search'        => 'חיפוש תרומות',
+'sp-contributions-username'      => 'שם משתמש או כתובת IP:',
+'sp-contributions-submit'        => 'חיפוש',
 
 # What links here
 'whatlinkshere'            => 'דפים המקושרים לכאן',
 'whatlinkshere-title'      => 'דפים המקשרים לדף $1',
 'whatlinkshere-page'       => 'דף:',
-'linklistsub'              => '(רשימת קישורים)',
+'whatlinkshere-backlink'   => '→ $1',
 'linkshere'                => "הדפים שלהלן מקושרים לדף '''[[:$1]]''':",
 'nolinkshere'              => "אין דפים המקושרים לדף '''[[:$1]]'''.",
 'nolinkshere-ns'           => "אין דפים המקושרים לדף '''[[:$1]]''' במרחב השם שנבחר.",
@@ -1971,7 +1982,7 @@ $1',
 'blockipsuccesssub'               => 'החסימה הושלמה בהצלחה',
 'blockipsuccesstext'              => 'המשתמש [[Special:Contributions/$1|$1]] נחסם.
 
-ראו את [[Special:Ipblocklist|רשימת המשתמשים החסומים]] כדי לצפות בחסימות.',
+ראו את [[Special:IPBlockList|רשימת המשתמשים החסומים]] כדי לצפות בחסימות.',
 'ipb-edit-dropdown'               => 'עריכת סיבות החסימה',
 'ipb-unblock-addr'                => 'הסרת חסימה של $1',
 'ipb-unblock'                     => 'הסרת חסימה של שם משתמש או כתובת IP',
@@ -2003,7 +2014,7 @@ $1',
 'blocklogentry'                   => 'חסם את [[$1]] למשך $2 $3',
 'blocklogtext'                    => 'זהו יומן פעולות החסימה והשחרור של משתמשים. כתובות IP הנחסמות באופן אוטומטי אינן מופיעות.
 
-ראו גם את [[Special:Ipblocklist|רשימת המשתמשים החסומים]] הנוכחית.',
+ראו גם את [[Special:IPBlockList|רשימת המשתמשים החסומים]] הנוכחית.',
 'unblocklogentry'                 => 'שחרר את [[$1]]',
 'block-log-flags-anononly'        => 'משתמשים אנונימיים בלבד',
 'block-log-flags-nocreate'        => 'יצירת חשבונות נחסמה',
@@ -2042,7 +2053,7 @@ $1',
 'unlockdbsuccesssub'  => 'שוחררה הנעילה מבסיס הנתונים',
 'lockdbsuccesstext'   => 'בסיס הנתונים ננעל.
 
-זכרו [[Special:Unlockdb|לשחרר את הנעילה]] לאחר שפעולת התחזוקה הסתיימה.',
+זכרו [[Special:UnlockDB|לשחרר את הנעילה]] לאחר שפעולת התחזוקה הסתיימה.',
 'unlockdbsuccesstext' => 'שוחררה הנעילה של בסיס הנתונים',
 'lockfilenotwritable' => 'קובץ נעילת בסיס הנתונים אינו ניתן לכתיבה. כדי שאפשר יהיה לנעול את בסיס הנתונים או לבטל את נעילתו, שרת האינטרנט צריך לקבל הרשאות לכתוב אליו.',
 'databasenotlocked'   => 'בסיס הנתונים אינו נעול.',
@@ -2095,7 +2106,7 @@ $1',
 'revertmove'              => 'החזרה',
 'delete_and_move'         => 'מחיקה והעברה',
 'delete_and_move_text'    => '== בקשת מחיקה ==
-דף היעד, [[$1]], כבר קיים. האם ברצונכם למחוק אותו כדי לאפשר את ההעברה?',
+דף היעד, [[:$1]], כבר קיים. האם ברצונכם למחוק אותו כדי לאפשר את ההעברה?',
 'delete_and_move_confirm' => 'אישור מחיקת הדף',
 'delete_and_move_reason'  => 'מחיקה על מנת לאפשר העברה',
 'selfmove'                => 'כותרות המקור והיעד זהות; לא ניתן להעביר דף לעצמו.',
@@ -2112,7 +2123,7 @@ $1',
 
 כדי לייצא דפים, הקישו את שמותיהם בתיבת הטקסט שלהלן, כל שם בשורה נפרדת, ובחרו האם לייצא גם את הגרסה הנוכחית וגם את היסטוריית השינויים של הדפים, או רק את הגרסה הנוכחית עם מידע על העריכה האחרונה.
 
-בנוסף, ניתן להשתמש בקישור, כגון [[Special:Export/{{MediaWiki:mainpage}}]] לדף [[{{MediaWiki:mainpage}}]] ללא היסטוריית השינויים שלו.',
+בנוסף, ניתן להשתמש בקישור, כגון [[{{ns:special}}:Export/{{MediaWiki:Mainpage}}]] לדף [[{{MediaWiki:Mainpage}}]] ללא היסטוריית השינויים שלו.',
 'exportcuronly'     => 'כלול רק את הגרסה הנוכחית, ללא כל ההיסטוריה',
 'exportnohistory'   => "----
 '''הערה:''' ייצוא ההיסטוריה המלאה של דפים דרך טופס זה הופסקה עקב בעיות ביצוע.",
@@ -2159,7 +2170,7 @@ $1',
 'importfailed'               => 'הייבוא נכשל: <nowiki>$1</nowiki>',
 'importunknownsource'        => 'סוג ייבוא בלתי ידוע',
 'importcantopen'             => 'פתיחת קובץ הייבוא נכשלה',
-'importbadinterwiki'         => 'קישור אינטרוויקי שגוי',
+'importbadinterwiki'         => 'קישור בינוויקי שגוי',
 'importnotext'               => 'ריק או חסר טקסט',
 'importsuccess'              => 'הייבוא הושלם בהצלחה!',
 'importhistoryconflict'      => 'ישנה התנגשות עם ההיסטוריה הקיימת של הדף (ייתכן שהדף יובא בעבר)',
@@ -2177,7 +2188,7 @@ $1',
 # Import log
 'importlogpage'                    => 'יומן ייבוא',
 'importlogpagetext'                => 'ייבוא מנהלי של דפים (כולל היסטוריית העריכות שלהם) מאתרי ויקי אחרים.',
-'import-logentry-upload'           => 'ייבא את [[$1]] על ידי העלאת קובץ',
+'import-logentry-upload'           => 'ייבא את [[$1]] באמצעות העלאת קובץ',
 'import-logentry-upload-detail'    => '{{PLURAL:$1|גרסה אחת|$1 גרסאות}}',
 'import-logentry-interwiki'        => 'ייבא את $1 בייבוא בין־אתרי',
 'import-logentry-interwiki-detail' => '{{PLURAL:$1|גרסה אחת|$1 גרסאות}} של הדף $2',
@@ -2349,10 +2360,12 @@ $1',
 'show-big-image'       => 'תמונה ברזולוציה גבוהה יותר',
 'show-big-image-thumb' => '<small>גודל התצוגה הזו: $1 × $2 פיקסלים</small>',
 
-# Special:Newimages
+# Special:NewImages
 'newimages'             => 'גלריית תמונות חדשות',
 'imagelisttext'         => 'להלן רשימה של {{PLURAL:$1|תמונה אחת|$1 תמונות}}, ממוינות $2:',
 'newimages-summary'     => 'דף זה מציג את הקבצים האחרונים שהועלו',
+'newimages-legend'      => 'מסנן',
+'newimages-label'       => 'שם הקובץ (או חלק ממנו):',
 'showhidebots'          => '($1 בוטים)',
 'noimages'              => 'אין תמונות.',
 'ilsubmit'              => 'חיפוש',
@@ -2655,7 +2668,7 @@ $1',
 'confirmemail_invalid'     => 'קוד האישור שגוי. ייתכן שפג תוקפו.',
 'confirmemail_needlogin'   => 'עליכם לבצע $1 כדי לאמת את כתובת הדוא"ל שלכם.',
 'confirmemail_success'     => 'כתובת הדוא"ל שלכם אושרה.
-כעת באפשרותכם [[Special:Userlogin|להיכנס לחשבון שלכם]] וליהנות מהאתר.',
+כעת באפשרותכם [[Special:UserLogin|להיכנס לחשבון שלכם]] וליהנות מהאתר.',
 'confirmemail_loggedin'    => 'כתובת הדוא"ל שלכם אושרה כעת.',
 'confirmemail_error'       => 'שגיאה בשמירת קוד האישור.',
 'confirmemail_subject'     => 'קוד אישור דוא"ל מ{{grammar:תחילית|{{SITENAME}}}}',
@@ -2695,7 +2708,7 @@ $1
 'recreate'            => 'יצירה מחדש',
 
 # HTML dump
-'redirectingto' => 'מפנה ל־[[$1]]…',
+'redirectingto' => 'מפנה ל־[[:$1]]…',
 
 # action=purge
 'confirm_purge'        => 'לנקות את המטמון של דף זה?
@@ -2853,7 +2866,7 @@ $1',
 'version-software-product'         => 'תוכנה',
 'version-software-version'         => 'גרסה',
 
-# Special:Filepath
+# Special:FilePath
 'filepath'         => 'נתיב לקובץ',
 'filepath-page'    => 'הקובץ:',
 'filepath-submit'  => 'מציאת הנתיב',
@@ -2891,7 +2904,7 @@ $1',
 'specialpages-group-redirects'   => 'הפניות מדפים מיוחדים',
 'specialpages-group-spam'        => 'כלי ספאם',
 
-# Special:Blankpage
+# Special:BlankPage
 'blankpage'              => 'דף ריק',
 'intentionallyblankpage' => 'דף זה נשאר ריק במכוון',
 

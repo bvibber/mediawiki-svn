@@ -145,7 +145,7 @@ class TagNode extends Node{
 
 	protected $attributes = array();
 
-	function __construct($parent, $qName, array $attributes) {
+	function __construct($parent, $qName, /*array*/ $attributes) {
 		parent::__construct($parent);
 		$this->qName = strtolower($qName);
 		foreach($attributes as $key => $value){
@@ -519,7 +519,7 @@ class ImageNode extends TextNode {
 
 	private $attributes;
 
-	function __construct(TagNode $parent, array $attrs) {
+	function __construct(TagNode $parent, /*array*/ $attrs) {
 		if(!array_key_exists('src',$attrs)){
 			//wfDebug('Image without a source:');
 			foreach($attrs as $key => $value){
@@ -720,7 +720,7 @@ class DomTreeBuilder {
 		//wfDebug(sizeof($this->textNodes) . ' text nodes in document.');
 	}
 
-	public function startElement($parser, $name, array $attributes) {
+	public function startElement($parser, $name, /*array*/ $attributes) {
 		if(!strcasecmp($name, 'body')==0){
 			//wfDebug("Starting $name node.");
 			$this->endWord();
@@ -1172,7 +1172,7 @@ class HTMLDiffer{
 		$output->parse($domdiffer->getBodyNode());
 	}
 
-	private function preProcess(array $differences){
+	private function preProcess(/*array*/ $differences){
 		$newRanges = array();
 
 		$nbDifferences = sizeof($differences);
@@ -1290,7 +1290,7 @@ class AncestorComparator{
 	public $ancestors;
 	public $ancestorsText;
 
-	function __construct(array $ancestors) {
+	function __construct(/*array*/ $ancestors) {
 		$this->ancestors = $ancestors;
 		$this->ancestorsText = array_map(array('TagNode','toDiffLine'), $ancestors);
 	}
@@ -1333,7 +1333,7 @@ class ChangeTextGenerator {
 		$this->factory = new TagToStringFactory();
 	}
 
-	public function getChanged(array $differences) {
+	public function getChanged(/*array*/ $differences) {
 		$txt = new ChangeText(100);
 
 		$rootlistopened = false;
@@ -1932,7 +1932,7 @@ class HTMLOutput{
 		$this->handler->endElement('img');
 	}
 
-	private function addAttributes(Modification $mod, array &$attrs) {
+	private function addAttributes(Modification $mod, /*array*/ &$attrs) {
 		if (is_null($mod->getPrevious())) {
 			$previous = 'first-' . $this->prefix;
 		} else {
@@ -1956,7 +1956,7 @@ class HTMLOutput{
 
 class EchoingContentHandler{
 
-	function startElement($qname, array $arguments){
+	function startElement($qname, /*array*/ $arguments){
 		echo '<'.$qname;
 		foreach($arguments as $key => $value){
 			echo ' '.$key.'="'.$value.'"';
@@ -1982,7 +1982,7 @@ class DelegatingContentHandler{
 		$this->delegate=$delegate;
 	}
 
-	function startElement($qname, array $arguments){
+	function startElement($qname, /*array*/ $arguments){
 		$this->delegate->addHtml('<'.$qname) ;
 		foreach($arguments as $key => $value){
 			$this->delegate->addHtml(' '.$key.'="'.$value.'"');
@@ -1999,5 +1999,3 @@ class DelegatingContentHandler{
 	}
 
 }
-
-?>

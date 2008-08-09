@@ -353,7 +353,7 @@ $messages = array(
 'uploadlogpage' => 'გიმოხარგუაშ რეგისტრაცია',
 'uploadedimage' => 'გეთებაა "[[$1]]"',
 
-# Special:Imagelist
+# Special:ImageList
 'imagelist'      => 'სურათეფიშ ერკებულ',
 'imagelist_name' => 'სახელ',
 
@@ -410,7 +410,7 @@ $messages = array(
 'log'                  => 'ჟურნალეფ',
 'all-logs-page'        => 'ირ ჟურნალ',
 
-# Special:Allpages
+# Special:AllPages
 'allpages'       => 'ირ ხასილა',
 'alphaindexline' => '$1-იშე $2-შა',
 'nextpage'       => 'უკულ ხასილა ($1)',
@@ -486,7 +486,6 @@ $messages = array(
 'whatlinkshere'       => 'სო რე თენა ხასილა წურაფილ',
 'whatlinkshere-title' => 'ხასილეფ, სოდეთ რენა რსხილეფ $1-ს',
 'whatlinkshere-page'  => 'გვერდ:',
-'linklistsub'         => '(რსხილეფ)',
 'linkshere'           => "გეჸვენჯ ხასილეფს ოხოლუ რსხილეფ '''[[:$1]]'''-შენ",
 'nolinkshere'         => "'''[[:$1]]''', თე ხასილას ვარე რსხილ.",
 'isredirect'          => 'გინოწურაფაშ ხასილა',
@@ -516,7 +515,7 @@ $messages = array(
 'movepage-moved'   => '<big>\'\'\'"$1" გინოღალულ რე "$2"\'\'\'</big>', # The two titles are passed in plain text as $3 and $4 to allow additional goodies in the message.
 'movedto'          => 'გინაღალულ რე',
 'movetalk'         => 'აკოხვალამირ სხუნუაშ გინოღალა',
-'1movedto2'        => '[[$1]] გინოღალირიე ხასილაშა [[$2]]',
+'1movedto2'        => '[[:$1]] გინოღალირიე ხასილაშა [[:$2]]',
 'movelogpage'      => 'გინოღალაშ რეგისტრაცია',
 'movereason'       => 'საბაბი',
 'revertmove'       => 'გაუქვება',
@@ -587,7 +586,7 @@ $messages = array(
 'show-big-image'       => 'რსული გარჩევადობა',
 'show-big-image-thumb' => '<small>ზომა ოწმახ ძირაშ დროს: $1 × $2 პიქსელ</small>',
 
-# Special:Newimages
+# Special:NewImages
 'newimages' => 'ახალ სურათეფ',
 
 # Bad image list
@@ -605,7 +604,7 @@ $messages = array(
 
 # External editor support
 'edit-externally'      => 'თე ფაილიშ რედაქტირაფა ბორჯის გიმირინეთ გალენ პროგრამა.',
-'edit-externally-help' => 'რსულ ინფორმაციაშენ ქოძირეთ [http://meta.wikimedia.org/wiki/Help:External_editors ჩადგმიშ ინსტრუქციეფ].',
+'edit-externally-help' => 'რსულ ინფორმაციაშენ ქოძირეთ [http://www.mediawiki.org/wiki/Manual:External_editors ჩადგმიშ ინსტრუქციეფ].',
 
 # 'all' in various places, this might be different for inflected languages
 'watchlistall2' => 'არძა',

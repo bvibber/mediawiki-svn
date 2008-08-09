@@ -1,5 +1,5 @@
 <?php
-/** Simplified Chinese (‪中文(简化字)‬)
+/** Simplified Chinese (‪中文(简体)‬)
  *
  * @ingroup Language
  * @file
@@ -123,6 +123,7 @@ $messages = array(
 'tog-ccmeonemails'            => '把我发送给其他用户的邮件同时发送副本给我自己',
 'tog-diffonly'                => '在比较两个修订版本差异时不显示页面内容',
 'tog-showhiddencats'          => '显示隐藏分类',
+'tog-noconvertlink'           => '不转换链接标题',
 
 'underline-always'  => '总是使用',
 'underline-never'   => '从不使用',
@@ -308,7 +309,7 @@ $messages = array(
 
 'badaccess'        => '权限错误',
 'badaccess-group0' => '您刚才的请求不允许执行。',
-'badaccess-groups' => '您刚才的请求只有$1用户组的用户才能使用。',
+'badaccess-groups' => '您刚才的请求只有{{PLURAL:$2|这个|这些}}用户组的用户才能使用: $1',
 
 'versionrequired'     => '需要MediaWiki $1 版',
 'versionrequiredtext' => '需要版本$1的 MediaWiki 才能使用此页。参见[[Special:Version|版本頁]]。',
@@ -356,7 +357,7 @@ $messages = array(
 'nosuchspecialpage' => '此特殊页面不存在',
 'nospecialpagetext' => "<big>'''您请求的特殊页面无效。'''</big>
 
-[[Special:Specialpages|{{int:specialpages}}]]中载有所有有效特殊页面的列表。",
+[[Special:SpecialPages|{{int:specialpages}}]]中载有所有有效特殊页面的列表。",
 
 # General errors
 'error'                => '错误',
@@ -436,7 +437,7 @@ $2',
 # Login and logout pages
 'logouttitle'                => '退出',
 'logouttext'                 => '<strong>您现在已经退出。</strong><br />
-您可以继续以匿名方式使用{{SITENAME}}，或再次以相同或不同用户身份[[Special:Userlogin|登录]]。
+您可以继续以匿名方式使用{{SITENAME}}，或再次以相同或不同用户身份[[Special:UserLogin|登录]]。
 请注意一些页面可能仍然显示您为登录状态，直到您清空您的浏览器缓存为止。',
 'welcomecreation'            => '== 欢迎, $1! ==
 
@@ -514,6 +515,7 @@ $2',
 'createaccount-text'         => '有人在{{SITENAME}}中利用您的邮箱创建了一个名为 "$2" 的新帐户($4)，密码是 "$3" 。您应该立即登入并更改密码。
 
 如果该账户创建错误的话，您可以忽略此信息。',
+'login-throttled'            => '您已经尝试多次在这个账户的密码上。请稍等多一会再试。',
 'loginlanguagelabel'         => '语言: $1',
 
 # Password reset dialog
@@ -575,7 +577,7 @@ $2',
 你可以联络$1或者其他的[[{{MediaWiki:Grouppage-sysop}}|管理员]]，讨论这次查封。
 除非你已经在你的[[Special:Preferences|帐号参数设置]]中设置了一个有效的电子邮件地址，否则你是不能使用「电邮这位用户」的功能。当设置定了一个有效的电子邮件地址后，这个功能是不会封锁的。
 
-你的IP地址是$3，而该查封ID是 #$5。 请你在所有查询中注明这地址及／或查封ID。",
+你的IP地址是$3，而该查封ID是 #$5。 请在你的查询中注明以上所有的资料。",
 'autoblockedtext'                  => "你的IP地址已经被自动查封，由于先前的另一位用户被$1所查封。
 而查封的原因是：
 
@@ -583,12 +585,13 @@ $2',
 
 * 这次查封的开始时间是：$8
 * 这次查封的到期时间是：$6
+* 对于被查封者：$7
 
 你可以联络$1或者其他的[[{{MediaWiki:Grouppage-sysop}}|管理员]]，讨论这次查封。
 
 除非你已经在你的[[Special:Preferences|帐号参数设置]]中设置了一个有效的电子邮件地址，否则你是不能使用「电邮这位用户」的功能。当设置定了一个有效的电子邮件地址后，这个功能是不会封锁的。
 
-您的查封ID是 #$5。 请你在所有查询中注明这个查封ID。",
+您现时正在使用的 IP 地址是 $3，查封ID是 #$5。 請在你的查詢中註明以上所有的資料。",
 'blockednoreason'                  => '无给出原因',
 'blockedoriginalsource'            => "以下是'''$1'''的源码:",
 'blockededitsource'                => "你对'''$1'''进行'''编辑'''的文字如下:",
@@ -607,7 +610,7 @@ $2',
 'newarticletext'                   => '您进入了一个尚未创建的页面。
 要创建该页面，请在下面的编辑框中输入内容(详情参见[[Help:帮助|帮助]])。
 如果您是不小心来到此页面，直接点击您浏览器中的"返回"按钮返回。',
-'anontalkpagetext'                 => "---- ''这是一个还未建立账户的匿名用户的讨论页, 因此我们只能用IP地址来与他或她联络。该IP地址可能由几名用户共享。如果您是一名匿名用户并认为此页上的评语与您无关，请[[Special:Userlogin/signup|创建新账户]]或[[Special:Userlogin|登录]]以避免在未来与其他匿名用户混淆。''",
+'anontalkpagetext'                 => "---- ''这是一个还未建立账户的匿名用户的讨论页, 因此我们只能用IP地址来与他或她联络。该IP地址可能由几名用户共享。如果您是一名匿名用户并认为此页上的评语与您无关，请[[Special:UserLogin/signup|创建新账户]]或[[Special:UserLogin|登录]]以避免在未来与其他匿名用户混淆。''",
 'noarticletext'                    => '此页目前没有内容，您可以在其它页[[Special:Search/{{PAGENAME}}|搜索此页标题]]或[{{fullurl:{{NAMESPACE}}:{{PAGENAME}}|action=edit}} 编辑此页]。',
 'userpage-userdoesnotexist'        => '用户账户“$1”未曾创建。请在创建／编辑这个页面前先检查一下。',
 'clearyourcache'                   => "'''注意 - 在保存以後, 您必須清除瀏覽器的緩存才能看到所作出的改變。''' '''Mozilla / Firefox / Safari:''' 按著 ''Shift'' 再點擊''刷新''，或按下''Ctrl-F5''或''Ctrl-R''，(在Macintosh上按下''Command-R'')；'''Konqueror:''' 只需點擊 ''刷新''或按下''F5''；'''Opera:''' 在 ''工具→設定'' 中完整地清除它們的緩存；'''Internet Explorer:''' 按著 ''Ctrl'' 再點擊 ''刷新''，或按下 ''Ctrl-F5''。",
@@ -619,12 +622,12 @@ $2',
 'note'                             => '<strong>注意:</strong>',
 'previewnote'                      => '<strong>请记住这只是预览，内容还未保存！</strong>',
 'previewconflict'                  => '这个预览显示了上面文字编辑区中的内容。它将在你选择保存后出现。',
-'session_fail_preview'             => '<strong>抱歉! 我们不能处理你在进程数据丢失时的编辑。请重试！如果再次失败，请[[Special:Userlogout|登出]]后重新登陆。</strong>',
+'session_fail_preview'             => '<strong>抱歉! 我们不能处理你在进程数据丢失时的编辑。请重试！如果再次失败，请[[Special:UserLogout|登出]]后重新登陆。</strong>',
 'session_fail_preview_html'        => "<strong>抱歉! 我们不能处理你在进程数据丢失时的编辑。</strong>
 
 ''由于{{SITENAME}}允许使用原始的 HTML，为了防范 JavaScript 攻击，预览已被隐藏。''
 
-<strong>如果这是一次合法的编辑，请重新进行尝试。如果还不行，请[[Special:Userlogout|退出]]并重新登录。</strong>",
+<strong>如果这是一次合法的编辑，请重新进行尝试。如果还不行，请[[Special:UserLogout|退出]]并重新登录。</strong>",
 'token_suffix_mismatch'            => '<strong>由于您用户端中的编辑令牌毁损了一些标点符号字元，为防止编辑的文字损坏，您的编辑已经被拒绝。
 这种情况通常出现于使用含有很多臭虫、以网络为主的匿名代理服务的时候。</strong>',
 'editing'                          => '正在编辑$1',
@@ -667,7 +670,7 @@ $2',
 'hiddencategories'                 => '这个页面是属于$1个隐藏分类的成员:',
 'edittools'                        => '<!-- 此处的文本将被显示在以下编辑和上传表单中。 -->',
 'nocreatetitle'                    => '创建页面受限',
-'nocreatetext'                     => '{{SITENAME}}限制了创建新页面的功能。你可以返回并编辑已有的页面，或者[[Special:Userlogin|登录或创建新账户]]。',
+'nocreatetext'                     => '{{SITENAME}}限制了创建新页面的功能。你可以返回并编辑已有的页面，或者[[Special:UserLogin|登录或创建新账户]]。',
 'nocreate-loggedin'                => '您在{{SITENAME}}中并无权限去创建新页面。',
 'permissionserrors'                => '权限错误',
 'permissionserrorstext'            => '根据以下的{{PLURAL:$1|原因|原因}}，您并无权限去做以下的动作:',
@@ -680,7 +683,7 @@ $2',
 # Parser/template warnings
 'expensive-parserfunction-warning'        => '警告: 这个页面有太多耗费的语法功能呼叫。
 
-它应该少过$2，现在有$1。',
+它应该少过$2次呼叫，现在有$1次呼叫。',
 'expensive-parserfunction-category'       => '页面中有太多耗费的语法功能呼叫',
 'post-expand-template-inclusion-warning'  => '警告: 包含模板大小过大。
 一些模板将不会包含。',
@@ -785,7 +788,7 @@ $2',
 # Suppression log
 'suppressionlog'     => '废止日志',
 'suppressionlogtext' => '以下是删除以及由操作员牵涉到内容封锁的列表。
-参看[[Special:Ipblocklist|IP封锁名单]]去参看现时进行中的禁止以及封锁之名单。',
+参看[[Special:IPBlockList|IP封锁名单]]去参看现时进行中的禁止以及封锁之名单。',
 
 # History merging
 'mergehistory'                     => '合并页面历史',
@@ -826,7 +829,7 @@ $2',
 'searchresults'             => '搜索结果',
 'searchresults-title'       => '对$1的搜索结果',
 'searchresulttext'          => '有关搜索{{SITENAME}}的更多详情,参见[[{{MediaWiki:Helppage}}|{{int:help}}]]。',
-'searchsubtitle'            => '搜索\'\'\'[[:$1]]\'\'\'([[Special:Prefixindex/$1|所有以 "$1" 开头的页面]] | [[Special:Whatlinkshere/$1|所有链接到 "$1" 的页面]])',
+'searchsubtitle'            => '搜索\'\'\'[[:$1]]\'\'\'([[Special:Prefixindex/$1|所有以 "$1" 开头的页面]] | [[Special:WhatLinksHere/$1|所有链接到 "$1" 的页面]])',
 'searchsubtitleinvalid'     => "搜索'''$1'''",
 'noexactmatch'              => "'''没找到标题为\"\$1\"的页面。''' 您可以[[:\$1|创建此页面]]。",
 'noexactmatch-nocreate'     => "'''没找到标题为\"\$1\"的页面。'''",
@@ -869,7 +872,7 @@ $2',
 'mypreferences'            => '我的参数设置',
 'prefs-edits'              => '编辑数量:',
 'prefsnologin'             => '尚未登录',
-'prefsnologintext'         => '您必须先[[Special:Userlogin|登录]]才能设置个人参数。',
+'prefsnologintext'         => '您必须先[[Special:UserLogin|登录]]才能设置个人参数。',
 'prefsreset'               => '参数已被重新设置。',
 'qbsettings'               => '快速导航条',
 'qbsettings-none'          => '无',
@@ -944,7 +947,7 @@ $2',
 'userrights-reason'           => '更改原因:',
 'userrights-no-interwiki'     => '您并没有权限去编辑在其它wiki上的用户权限。',
 'userrights-nodatabase'       => '数据库$1不存在或并非为本地的。',
-'userrights-nologin'          => '您必须要以操作员帐户[[Special:Userlogin|登入]]之后才可以指定用户权限。',
+'userrights-nologin'          => '您必须要以操作员帐户[[Special:UserLogin|登入]]之后才可以指定用户权限。',
 'userrights-notallowed'       => '您的帐户无权限去指定用户权限。',
 'userrights-changeable-col'   => '您可以更改的组群',
 'userrights-unchangeable-col' => '您不可以更改的组群',
@@ -1074,19 +1077,20 @@ $2',
 'reupload'                    => '重新上传',
 'reuploaddesc'                => '取消上传并返回上传表单',
 'uploadnologin'               => '未登录',
-'uploadnologintext'           => '您必须先[[Special:Userlogin|登录]]才能上传文件。',
+'uploadnologintext'           => '您必须先[[Special:UserLogin|登录]]才能上传文件。',
 'upload_directory_missing'    => '上传目录($1)遗失，不能由网页服务器建立。',
 'upload_directory_read_only'  => '上传目录($1)不存在或无写权限。',
 'uploaderror'                 => '上载错误',
 'uploadtext'                  => "使用下面的表单来上传用在页面内新的文件。
 要查看或搜索以前上传的文件
-可以进入[[Special:Imagelist|文件上传列表]]，
-上传和删除将在[[Special:Log/upload|上传日志]]中记录。
+可以进入[[Special:ImageList|文件上传列表]]，
+（重新）上传将在[[Special:Log/upload|上传日志]]中记录，
+而删除将在[[Special:Log/delete|删除日志]]中记录。
 
-要在页面中加入文件，使用以下其中一种形式的连接:
-* '''<tt><nowiki>[[{{ns:image}}:file.jpg]]</nowiki></tt>'''去用文件的完整版本
-* '''<tt><nowiki>[[{{ns:image}}:file.png|200px|thumb|left|替换文字]]</nowiki></tt>'''去用一个200像素宽，左面盒上有'替换文字'的描述
-* '''<tt><nowiki>[[{{ns:media}}:file.ogg]]</nowiki></tt>'''去直接连接到文件而不显示文件",
+要在页面中加入文件，使用以下形式的连接:
+'''<nowiki>[[</nowiki>{{ns:image}}</nowiki>:file.jpg]]</nowiki>'''，
+'''<nowiki>[[</nowiki>{{ns:image}}</nowiki>:file.png|替换文字]]</nowiki>''' 或
+'''<nowiki>[[</nowiki>{{ns:media}}</nowiki>:file.ogg]]</nowiki>'''。",
 'upload-permitted'            => '准许的文件类型: $1。',
 'upload-preferred'            => '建议的文件类型: $1。',
 'upload-prohibited'           => '禁止的文件类型: $1。',
@@ -1168,7 +1172,7 @@ $2',
 'upload_source_url'  => ' (一个有效的，可公开访问的 URL)',
 'upload_source_file' => ' (在您计算机上的一个文件)',
 
-# Special:Imagelist
+# Special:ImageList
 'imagelist-summary'     => '这个特殊页面显示所有上传过的文件。
 预设中最后上传的文件会显示在这个列表中的最顶处。
 点击一栏的标题去改变这个排列。',
@@ -1195,8 +1199,11 @@ $2',
 'filehist-comment'               => '注解',
 'imagelinks'                     => '链接',
 'linkstoimage'                   => '以下的$1个页面链接到本文件:',
+'linkstoimage-more'              => '多于$1个页面连接到这个文件。
+下面的列表只列示了连去这个文件的最首$1个页面。
+一个[[Special:WhatLinksHere/$2|完整的列表]]可以提供。',
 'nolinkstoimage'                 => '没有页面链接到本文件。',
-'morelinkstoimage'               => '查看连接到这个文件的[[Special:Whatlinkshere/$1|更多连结]]。',
+'morelinkstoimage'               => '查看连接到这个文件的[[Special:WhatLinksHere/$1|更多连结]]。',
 'redirectstofile'                => '以下的$1个文件重新定向到这个文件:',
 'duplicatesoffile'               => '以下的$1个文件是跟这个文件重覆:',
 'sharedupload'                   => '该文件是一个共享上传，它可能在其它项目中被应用。',
@@ -1280,7 +1287,7 @@ $2',
 即每页平均编辑'''\$5'''次，各次编辑后页面的每个版本平均浏览'''\$6'''次。
 
 [http://www.mediawiki.org/wiki/Manual:Job_queue 工作排队]的长度是'''\$7'''。",
-'userstatstext'          => "网站有'''$1'''位注册[[Special:Listusers|用户]]，其中
+'userstatstext'          => "网站有'''$1'''位注册[[Special:ListUsers|用户]]，其中
 '''$2''' (或 '''$4%''') 有$5权限。",
 'statistics-mostpopular' => '浏览最多的页面',
 
@@ -1383,7 +1390,7 @@ Template:消除歧義',
 'logempty'             => '在日志中不存在匹配项。',
 'log-title-wildcard'   => '搜寻以这个文字开始的标题',
 
-# Special:Allpages
+# Special:AllPages
 'allpages'          => '所有页面',
 'alphaindexline'    => '$1到$2',
 'nextpage'          => '下一页($1)',
@@ -1406,12 +1413,12 @@ Template:消除歧義',
 'special-categories-sort-count' => '按数量排列',
 'special-categories-sort-abc'   => '按字母排列',
 
-# Special:Listusers
+# Special:ListUsers
 'listusersfrom'      => '给定显示用户条件:',
 'listusers-submit'   => '显示',
 'listusers-noresult' => '找不到用户。',
 
-# Special:Listgrouprights
+# Special:ListGroupRights
 'listgrouprights'                 => '用户群组权限',
 'listgrouprights-summary'         => '以下面是一个在这个wiki中定义出来的用户权限列表，以及它们的访问权。
 更多有关个别权限的细节可以在[[{{MediaWiki:Listgrouprights-helppage}}|这里]]找到。',
@@ -1419,14 +1426,14 @@ Template:消除歧義',
 'listgrouprights-rights'          => '权限',
 'listgrouprights-helppage'        => 'Help:群组权限',
 'listgrouprights-members'         => '(成员列表)',
-'listgrouprights-addgroup'        => '可以加入的群组: $1',
-'listgrouprights-removegroup'     => '可以移除的群组: $1',
+'listgrouprights-addgroup'        => '可以加入的{{PLURAL:$2|一个|多个}}群组: $1',
+'listgrouprights-removegroup'     => '可以移除的{{PLURAL:$2|一个|多个}}群组: $1',
 'listgrouprights-addgroup-all'    => '可以加入所有群组',
 'listgrouprights-removegroup-all' => '可以移除所有群组',
 
 # E-mail user
 'mailnologin'     => '无电邮地址',
-'mailnologintext' => '您必须先[[Special:Userlogin|登录]]
+'mailnologintext' => '您必须先[[Special:UserLogin|登录]]
 并在[[Special:Preferences|参数设置]]
 中有一个有效的电子邮箱地址才可以向其他用户发邮件。',
 'emailuser'       => '向该用户发邮件',
@@ -1455,11 +1462,11 @@ Template:消除歧義',
 'nowatchlist'          => '您的监视列表为空。',
 'watchlistanontext'    => '请$1以查看或编辑您的监视列表。',
 'watchnologin'         => '未登录',
-'watchnologintext'     => '您必须先[[Special:Userlogin|登录]]才能更改您的监视列表。',
+'watchnologintext'     => '您必须先[[Special:UserLogin|登录]]才能更改您的监视列表。',
 'addedwatch'           => '已添加至监视列表',
 'addedwatchtext'       => "页面\"[[:\$1]]\"已经被加入到您的[[Special:Watchlist|监视列表]]中。
 将来有关此页面及其讨论页的任何修改将会在那里列出，
-而且还会在[[Special:Recentchanges|最近更改]]中
+而且还会在[[Special:RecentChanges|最近更改]]中
 以'''粗体'''形式列出以使起更容易识别。",
 'removedwatch'         => '已停止监视',
 'removedwatchtext'     => '页面"<nowiki>$1</nowiki>"已经从[[Special:Watchlist|您的监视页面]]中移除。',
@@ -1570,10 +1577,10 @@ $NEWPAGE
 'rollback-success'            => '恢复由$1的编辑；更改回$2的最后一个版本。',
 'sessionfailure'              => '似乎在您登录时发生问题，作为一项防范性措施，该动作已经被取消。请单击"后退"再次尝试！',
 'protectlogpage'              => '保护日志',
-'protectlogtext'              => '下面是页面锁定和取消锁定的列表。请参考[[Special:Protectedpages|保护页面列表]]以查看当前进行的页面保护。',
-'protectedarticle'            => '已保护"[[$1]]"',
-'modifiedarticleprotection'   => '已经更改 "[[$1]]" 的保护等级',
-'unprotectedarticle'          => '已取消保护"[[$1]]"',
+'protectlogtext'              => '下面是页面锁定和取消锁定的列表。请参考[[Special:ProtectedPages|保护页面列表]]以查看当前进行的页面保护。',
+'protectedarticle'            => '已保护"[[:$1]]"',
+'modifiedarticleprotection'   => '已经更改 "[[:$1]]" 的保护等级',
+'unprotectedarticle'          => '已取消保护"[[:$1]]"',
 'protect-title'               => '正在更改"$1"的保护等级',
 'protect-legend'              => '确认保护',
 'protectcomment'              => '注解:',
@@ -1663,26 +1670,27 @@ $1',
 'blanknamespace' => '(主)',
 
 # Contributions
-'contributions' => '用户贡献',
-'mycontris'     => '我的贡献',
-'contribsub2'   => '$1的贡献 ($2)',
-'nocontribs'    => '没有找到符合特征的更改。',
-'uctop'         => '(最新修改)',
-'month'         => '从该月份 (或更早):',
-'year'          => '从该年份 (或更早):',
+'contributions'       => '用户贡献',
+'contributions-title' => '$1的用户贡献',
+'mycontris'           => '我的贡献',
+'contribsub2'         => '$1的贡献 ($2)',
+'nocontribs'          => '没有找到符合特征的更改。',
+'uctop'               => '(最新修改)',
+'month'               => '从该月份 (或更早):',
+'year'                => '从该年份 (或更早):',
 
-'sp-contributions-newbies'     => '只显示新创建之用户的贡献',
-'sp-contributions-newbies-sub' => '新手',
-'sp-contributions-blocklog'    => '查封记录',
-'sp-contributions-search'      => '搜寻贡献记录',
-'sp-contributions-username'    => 'IP地址或用户名称：',
-'sp-contributions-submit'      => '搜索',
+'sp-contributions-newbies'       => '只显示新创建之用户的贡献',
+'sp-contributions-newbies-sub'   => '新手',
+'sp-contributions-newbies-title' => '新手的用户贡献',
+'sp-contributions-blocklog'      => '查封记录',
+'sp-contributions-search'        => '搜寻贡献记录',
+'sp-contributions-username'      => 'IP地址或用户名称：',
+'sp-contributions-submit'        => '搜索',
 
 # What links here
 'whatlinkshere'            => '链入页面',
-'whatlinkshere-title'      => '链接到$1的页面',
+'whatlinkshere-title'      => '链接到“$1”的页面',
 'whatlinkshere-page'       => '页面:',
-'linklistsub'              => '(链接列表)',
 'linkshere'                => '以下页面链接到[[:$1]]：',
 'nolinkshere'              => '没有页面链接到[[:$1]]。',
 'nolinkshere-ns'           => '在所选的名字空间内没有页面链接到[[:$1]]。',
@@ -1732,7 +1740,7 @@ $1',
 'badipaddress'                    => 'IP地址不正确。',
 'blockipsuccesssub'               => '查封成功',
 'blockipsuccesstext'              => '[[Special:Contributions/$1|$1]]已经被查封。
-<br />参看[[Special:Ipblocklist|被封IP地址列表]]以复审查封。',
+<br />参看[[Special:IPBlockList|被封IP地址列表]]以复审查封。',
 'ipb-edit-dropdown'               => '编辑查封原因',
 'ipb-unblock-addr'                => '解除封禁$1',
 'ipb-unblock'                     => '解除禁封用户名或IP地址',
@@ -1763,7 +1771,7 @@ $1',
 'blocklogpage'                    => '查封日志',
 'blocklogentry'                   => '[[$1]]已被查封 $3 ，终止时间为$2',
 'blocklogtext'                    => '这是关于用户查封和解封操作的日志。
-被自动查封的IP地址没有被列出。请参看[[Special:Ipblocklist|被封IP地址列表]]。',
+被自动查封的IP地址没有被列出。请参看[[Special:IPBlockList|被封IP地址列表]]。',
 'unblocklogentry'                 => '[[$1]]已被解封',
 'block-log-flags-anononly'        => '仅限匿名用户',
 'block-log-flags-nocreate'        => '禁止此IP/用户建立新帐户',
@@ -1846,8 +1854,8 @@ $1',
 'movepage-page-moved'     => '页面$1已经移动到$2。',
 'movepage-page-unmoved'   => '页面$1不可以移动到$2。',
 'movepage-max-pages'      => '最多有$1个页面已经移动同时不可以自动地再移动更多。',
-'1movedto2'               => '[[$1]]移动到[[$2]]',
-'1movedto2_redir'         => '[[$1]]通过重定向移动到[[$2]]',
+'1movedto2'               => '[[:$1]]移动到[[:$2]]',
+'1movedto2_redir'         => '[[:$1]]通过重定向移动到[[:$2]]',
 'movelogpage'             => '移动日志',
 'movelogpagetext'         => '以下是已经移动的页面列表:',
 'movereason'              => '原因',
@@ -1855,7 +1863,7 @@ $1',
 'delete_and_move'         => '删除并移动',
 'delete_and_move_text'    => '==需要删除==
 
-目标页面"[[$1]]"已经存在。你确认需要删除原页面并以进行移动吗？',
+目标页面"[[:$1]]"已经存在。你确认需要删除原页面并以进行移动吗？',
 'delete_and_move_confirm' => '是的，删除此页面',
 'delete_and_move_reason'  => '删除以便移动',
 'selfmove'                => '原始标题和目标标题相同，不能移动一个页面到它自身。',
@@ -2109,10 +2117,12 @@ $1',
 'show-big-image'       => '完整分辨率',
 'show-big-image-thumb' => '<small>这幅略缩图的分辨率: $1 × $2 像素</small>',
 
-# Special:Newimages
+# Special:NewImages
 'newimages'             => '新建图像画廊',
 'imagelisttext'         => "以下是按$2排列的'''$1'''个文件列表。",
 'newimages-summary'     => '这个特殊页面中显示最后已上传的文件。',
+'newimages-legend'      => '过滤',
+'newimages-label'       => '文件名称（或它的一部份）:',
 'showhidebots'          => '($1机器人)',
 'noimages'              => '无可查看图像。',
 'ilsubmit'              => '搜索',
@@ -2435,7 +2445,7 @@ Variants for Chinese language
 邮件传送员回应: $1',
 'confirmemail_invalid'     => '无效的确认码，该代码可能已经过期。',
 'confirmemail_needlogin'   => '您需要$1以确认您的邮箱地址。',
-'confirmemail_success'     => '您的邮箱已经被确认。您现在可以[[Special:Userlogin|登录]]并使用此网站了。',
+'confirmemail_success'     => '您的邮箱已经被确认。您现在可以[[Special:UserLogin|登录]]并使用此网站了。',
 'confirmemail_loggedin'    => '您的邮箱地址现在已被确认。',
 'confirmemail_error'       => '你的确认过程发生错误。',
 'confirmemail_subject'     => '{{SITENAME}}邮箱地址确认',
@@ -2475,7 +2485,7 @@ $1
 'recreate'            => '重建',
 
 # HTML dump
-'redirectingto' => '重定向到[[$1]]...',
+'redirectingto' => '重定向到[[:$1]]...',
 
 # action=purge
 'confirm_purge'        => '要清除此页面的缓存吗?\\n\\n$1',
@@ -2508,7 +2518,7 @@ $1
 # Auto-summaries
 'autosumm-blank'   => '移除所有页面内容',
 'autosumm-replace' => "正在将页面替换为 '$1'",
-'autoredircomment' => '正在重定向到 [[$1]]',
+'autoredircomment' => '正在重定向到 [[:$1]]',
 'autosumm-new'     => '新页面: $1',
 
 # Size units
@@ -2570,7 +2580,7 @@ $1
 'version-software-product'         => '产品',
 'version-software-version'         => '版本',
 
-# Special:Filepath
+# Special:FilePath
 'filepath'         => '文件路径',
 'filepath-page'    => '文件名:',
 'filepath-submit'  => '查找路径',
@@ -2608,7 +2618,7 @@ $1
 'specialpages-group-redirects'   => '重定向特殊页面',
 'specialpages-group-spam'        => '反垃圾工具',
 
-# Special:Blankpage
+# Special:BlankPage
 'blankpage'              => '空白页面',
 'intentionallyblankpage' => '这个页面是为空白，以用来作测试速度等用途',
 

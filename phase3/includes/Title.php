@@ -296,10 +296,13 @@ class Title {
 	 */
 	public static function newFromRedirect( $text ) {
 		$redir = MagicWord::get( 'redirect' );
-		if( $redir->matchStart( trim($text) ) ) {
+		$text = trim($text);
+		if( $redir->matchStartAndRemove( $text ) ) {
 			// Extract the first link and see if it's usable
+			// Ensure that it really does come directly after #REDIRECT
+			// Some older redirects included a colon, so don't freak about that!
 			$m = array();
-			if( preg_match( '!\[{2}(.*?)(?:\|.*?)?\]{2}!', $text, $m ) ) {
+			if( preg_match( '!^\s*:?\s*\[{2}(.*?)(?:\|.*?)?\]{2}!', $text, $m ) ) {
 				// Strip preceding colon used to "escape" categories, etc.
 				// and URL-decode links
 				if( strpos( $m[1], '%' ) !== false ) {
@@ -1348,7 +1351,7 @@ class Title {
 	}
 
 	public function updateTitleProtection( $create_perm, $reason, $expiry ) {
-		global $wgGroupPermissions,$wgUser,$wgContLang;
+		global $wgUser,$wgContLang;
 
 		if ($create_perm == implode(',',$this->getRestrictions('create'))
 			&& $expiry == $this->mRestrictionsExpiry) {

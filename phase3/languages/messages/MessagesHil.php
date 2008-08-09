@@ -215,7 +215,7 @@ Indi pagkalimti ang pag ilis sang imo mga pagpasulabi sa {{SITENAME}}.',
 # Special:Log
 'log-search-submit' => 'Lakat',
 
-# Special:Allpages
+# Special:AllPages
 'alphaindexline' => '$1 sa $2',
 'allpagessubmit' => 'Sige',
 
@@ -256,7 +256,7 @@ Indi pagkalimti ang pag ilis sang imo mga pagpasulabi sa {{SITENAME}}.',
 'move-watch'       => 'Bantayan ining panid',
 'movepagebtn'      => 'Saylohon ining panid',
 'movedto'          => 'gin saylo sa',
-'1movedto2'        => '[[$1]] gin saylo na sa [[$2]]',
+'1movedto2'        => '[[:$1]] gin saylo na sa [[:$2]]',
 'movereason'       => 'Rason:',
 
 # Namespace 8 related
@@ -285,7 +285,7 @@ Indi pagkalimti ang pag ilis sang imo mga pagpasulabi sa {{SITENAME}}.',
 # Media information
 'show-big-image' => 'Kabilogan nga resolusyon',
 
-# Special:Newimages
+# Special:NewImages
 'ilsubmit' => 'Pangita-a',
 
 # 'all' in various places, this might be different for inflected languages

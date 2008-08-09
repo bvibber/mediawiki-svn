@@ -117,7 +117,7 @@ class Article {
 		$text = $this->getContent();
 		return self::followRedirectText( $text );
 	}
-	
+
 	/**
 	 * Get the Title object this text redirects to
 	 *
@@ -552,9 +552,9 @@ class Article {
 	 */
 	function isRedirect( $text = false ) {
 		if ( $text === false ) {
-			if ( $this->mDataLoaded ) 
+			if ( $this->mDataLoaded )
 				return $this->mIsRedirect;
-			
+
 			// Apparently loadPageData was never called
 			$this->loadContent();
 			$titleObj = Title::newFromRedirect( $this->fetchContent() );
@@ -659,7 +659,7 @@ class Article {
 
 		if ($limit > 0) { $sql .= ' LIMIT '.$limit; }
 		if ($offset > 0) { $sql .= ' OFFSET '.$offset; }
-		
+
 		$sql .= ' '. $this->getSelectOptions();
 
 		$res = $dbr->query($sql, __METHOD__);
@@ -842,7 +842,7 @@ class Article {
 					}
 				}
 			}
-			
+
 			$wgOut->setRevisionId( $this->getRevIdFetched() );
 
 			 // Pages containing custom CSS or JavaScript get special treatment
@@ -892,6 +892,14 @@ class Article {
 		$t = $wgOut->getPageTitle();
 		if( empty( $t ) ) {
 			$wgOut->setPageTitle( $this->mTitle->getPrefixedText() );
+
+			# For the main page, overwrite the <title> element with the con-
+			# tents of 'pagetitle-view-mainpage' instead of the default (if
+			# that's not empty).
+			if( $this->mTitle->equals( Title::newMainPage() ) &&
+			wfMsgForContent( 'pagetitle-view-mainpage' ) !== '' ) {
+				$wgOut->setHTMLTitle( wfMsgForContent( 'pagetitle-view-mainpage' ) );
+			}
 		}
 
 		# check if we're displaying a [[User talk:x.x.x.x]] anonymous talk page
@@ -919,13 +927,13 @@ class Article {
 		$this->viewUpdates();
 		wfProfileOut( __METHOD__ );
 	}
-	
-	/* 
+
+	/*
 	* Should the parser cache be used?
 	*/
 	protected function useParserCache( $oldid ) {
 		global $wgUser, $wgEnableParserCache;
-		
+
 		return $wgEnableParserCache
 			&& intval( $wgUser->getOption( 'stubthreshold' ) ) == 0
 			&& $this->exists()
@@ -933,7 +941,7 @@ class Article {
 			&& !$this->mTitle->isCssOrJsPage()
 			&& !$this->mTitle->isCssJsSubpage();
 	}
-	
+
 	/**
 	 * View redirect
 	 * @param Title $target Title of destination to redirect
@@ -942,11 +950,11 @@ class Article {
 	 */
 	public function viewRedirect( $target, $appendSubtitle = true, $forceKnown = false ) {
 		global $wgParser, $wgOut, $wgContLang, $wgStylePath, $wgUser;
-		
+
 		# Display redirect
 		$imageDir = $wgContLang->isRTL() ? 'rtl' : 'ltr';
 		$imageUrl = $wgStylePath.'/common/images/redirect' . $imageDir . '.png';
-		
+
 		if( $appendSubtitle ) {
 			$wgOut->appendSubtitle( wfMsgHtml( 'redirectpagesub' ) );
 		}
@@ -958,7 +966,7 @@ class Article {
 
 		return '<img src="'.$imageUrl.'" alt="#REDIRECT " />' .
 			'<span class="redirectText">'.$link.'</span>';
-		
+
 	}
 
 	function addTrackbacks() {
@@ -1538,7 +1546,7 @@ class Article {
 
 			# Update the page record with revision data
 			$this->updateRevisionOn( $dbw, $revision, 0 );
-			
+
 			wfRunHooks( 'NewRevisionFromEditComplete', array($this, $revision, false) );
 
 			if( !( $flags & EDIT_SUPPRESS_RC ) ) {
@@ -1901,14 +1909,14 @@ class Article {
 						'page_id' => $id
 					), 'Article::protect'
 				);
-				
+
 				wfRunHooks( 'NewRevisionFromEditComplete', array($this, $nullRevision, $latest) );
 				wfRunHooks( 'ArticleProtectComplete', array( &$this, &$wgUser, $limit, $reason ) );
 
 				# Update the protection log
 				$log = new LogPage( 'protect' );
 				if( $protect ) {
-					$log->addEntry( $modified ? 'modify' : 'protect', $this->mTitle, 
+					$log->addEntry( $modified ? 'modify' : 'protect', $this->mTitle,
 						trim( $reason . " [$updated]$cascade_description$expiry_description" ) );
 				} else {
 					$log->addEntry( 'unprotect', $this->mTitle, $reason );
@@ -2262,9 +2270,9 @@ class Article {
 	function doDelete( $reason, $suppress = false ) {
 		global $wgOut, $wgUser;
 		wfDebug( __METHOD__."\n" );
-		
+
 		$id = $this->getId();
-		
+
 		$error = '';
 
 		if (wfRunHooks('ArticleDelete', array(&$this, &$wgUser, &$reason, &$error))) {
@@ -2539,14 +2547,14 @@ class Article {
 		if( empty( $summary ) ){
 			$summary = wfMsgForContent( 'revertpage' );
 		}
-		
+
 		# Allow the custom summary to use the same args as the default message
 		$args = array(
 			$target->getUserText(), $from, $s->rev_id,
 			$wgLang->timeanddate(wfTimestamp(TS_MW, $s->rev_timestamp), true),
 			$current->getId(), $wgLang->timeanddate($current->getTimestamp())
 		);
-		$summary = wfMsgReplaceArgs( $summary, $args ); 
+		$summary = wfMsgReplaceArgs( $summary, $args );
 
 		# Save
 		$flags = EDIT_UPDATE;
@@ -2634,7 +2642,7 @@ class Article {
 			. $wgUser->getSkin()->userToolLinks( $target->getUser(), $target->getUserText() );
 		$wgOut->addHtml( wfMsgExt( 'rollback-success', array( 'parse', 'replaceafter' ), $old, $new ) );
 		$wgOut->returnToMain( false, $this->mTitle );
-		
+
 		if( !$wgRequest->getBool( 'hidediff', false ) ) {
 			$de = new DifferenceEngine( $this->mTitle, $current->getId(), 'next', false, true );
 			$de->showDiff( '', '' );
@@ -2759,13 +2767,15 @@ class Article {
 			&& !($minoredit && $wgUser->isAllowed('nominornewtalk') ) ) {
 			if (wfRunHooks('ArticleEditUpdateNewTalk', array(&$this)) ) {
 				$other = User::newFromName( $shortTitle );
-				if( is_null( $other ) && User::isIP( $shortTitle ) ) {
+				if ( !$other ) {
+					wfDebug( __METHOD__.": invalid username\n" );
+				} elseif( User::isIP( $shortTitle ) ) {
 					// An anonymous user
-					$other = new User();
-					$other->setName( $shortTitle );
-				}
-				if( $other ) {
 					$other->setNewtalk( true );
+				} elseif( $other->isLoggedIn() ) {
+					$other->setNewtalk( true );
+				} else {
+					wfDebug( __METHOD__. ": don't need to notify a nonexistent user\n" );
 				}
 			}
 		}
@@ -3006,7 +3016,7 @@ class Article {
 		$revision->insertOn( $dbw );
 		$this->updateRevisionOn( $dbw, $revision );
 		$dbw->commit();
-		
+
 		wfRunHooks( 'NewRevisionFromEditComplete', array($this, $revision, false) );
 
 		wfProfileOut( __METHOD__ );

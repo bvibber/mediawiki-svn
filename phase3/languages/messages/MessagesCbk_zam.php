@@ -1,5 +1,5 @@
 <?php
-/** Zamboangueño (Zamboangueño)
+/** Chavacano de Zamboanga (Chavacano de Zamboanga)
  *
  * @ingroup Language
  * @file
@@ -41,7 +41,7 @@ $messages = array(
 # Random page
 'randompage' => 'Pagina Escujido Automatico',
 
-# Special:Allpages
+# Special:AllPages
 'allarticles' => 'Todo maga articulo',
 
 # Watchlist

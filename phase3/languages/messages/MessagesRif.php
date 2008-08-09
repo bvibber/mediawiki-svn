@@ -149,7 +149,6 @@ $messages = array(
 'remembermypassword'      => 'ejj (login) inu deg uselkim a',
 'login'                   => 'Adeff',
 'nav-login-createaccount' => 'Adeff / egg amiḍan',
-'loginprompt'             => 'You must have cookies enabled to [[Special:Userlogin|log in to {{SITENAME}}]].',
 'userlogin'               => 'Adeff / egg amiḍan',
 'logout'                  => 'Ffeɣ',
 'userlogout'              => 'Ffeɣ',
@@ -225,7 +224,7 @@ You are also promising us that you wrote this yourself, or copied it from a publ
 'template-protected'     => '(twaḥḍa)',
 'template-semiprotected' => '(semi-protected)',
 'nocreatetext'           => '{{SITENAME}} war iqqim ca itejja iwdan ad ggen tisebtar timaynutin.
-tzemred addewred ɣar deffar, niɣ [[Special:Userlogin|Adeff niɣ egg amiḍan]].',
+tzemred addewred ɣar deffar, niɣ [[Special:UserLogin|Adeff niɣ egg amiḍan]].',
 
 # History pages
 'viewpagelogs'        => 'Ẓar aɣmis n tsebtert a',
@@ -312,7 +311,7 @@ Tisebtar di [[Special:Watchlist|Tabdart uḥṭṭu inec]] d '''tiqebbuzin'''.",
 'uploadedimage'     => 'itwazdem-d "[[$1]]"',
 'watchthisupload'   => 'Xm tasbtirt a',
 
-# Special:Imagelist
+# Special:ImageList
 'imagelist' => 'Tabdart n ifayluten',
 
 # Image description page
@@ -394,7 +393,7 @@ Tisebtar di [[Special:Watchlist|Tabdart uḥṭṭu inec]] d '''tiqebbuzin'''.",
 'all-logs-page'        => 'Maṛṛa iɣmisen',
 'log-search-submit'    => 'Raḥ ɣa',
 
-# Special:Allpages
+# Special:AllPages
 'allpages'       => 'Maṛṛa Tisebtar',
 'alphaindexline' => '$1 ɣa $2',
 'nextpage'       => 'Tasebtert ẓẓat ($1)',
@@ -406,7 +405,7 @@ Tisebtar di [[Special:Watchlist|Tabdart uḥṭṭu inec]] d '''tiqebbuzin'''.",
 # Special:Categories
 'categories' => 'Taggayin',
 
-# Special:Listusers
+# Special:ListUsers
 'listusers-submit' => 'Smmrad',
 
 # E-mail user
@@ -489,8 +488,7 @@ Aqa (settings) n tsebtert <strong>$1</strong>:',
 
 # What links here
 'whatlinkshere'       => 'Mayn id-izdin (iqnen) da',
-'whatlinkshere-title' => 'Tisebtar id-izdin(iqnen) ɣar $1',
-'linklistsub'         => '(Tabdart n tizdayin)',
+'whatlinkshere-title' => 'Tisebtar id-izdin(iqnen) ɣar "$1"',
 'linkshere'           => "Tasebtert a tzedi(teqqen) ɣa '''[[:$1]]''':",
 'nolinkshere'         => "war tlli ca n tsebtert tqqen-d da '''[[:$1]]'''.",
 'isredirect'          => 'Tasebtert n (redirect)',
@@ -523,7 +521,7 @@ ixdar isem nniḍn.',
 snaqlitent s ufus.'''",
 'movedto'        => 'snaql ɣa',
 'movetalk'       => 'Snaqel Tisebtar n usiwl igg illan akides',
-'1movedto2'      => '[[$1]] twaneql ɣa [[$2]]',
+'1movedto2'      => '[[:$1]] twaneql ɣa [[:$2]]',
 'movelogpage'    => 'Snaql aɣmis',
 'movereason'     => 'Ssebba:',
 'revertmove'     => 'war tegg ca',
@@ -595,7 +593,7 @@ snaqlitent s ufus.'''",
 'show-big-image'       => 'Resolution ameqran',
 'show-big-image-thumb' => '<small>Tiddi n uzar-ascan: $1 × $2 pixel </small>',
 
-# Special:Newimages
+# Special:NewImages
 'newimages' => 'Amewlaf n ifayluten imaynuten',
 'ilsubmit'  => 'Tarzzut',
 
@@ -613,7 +611,7 @@ Any subsequent links on the same line are considered to be exceptions, i.e. page
 
 # External editor support
 'edit-externally'      => 'Ẓreg afaylu a s usnas zi baṛṛa',
-'edit-externally-help' => 'Xemm [http://meta.wikimedia.org/wiki/Help:External_editors setup instructions] i bezzaf n inemiɣsen.',
+'edit-externally-help' => 'Xemm [http://www.mediawiki.org/wiki/Manual:External_editors setup instructions] i bezzaf n inemiɣsen.',
 
 # 'all' in various places, this might be different for inflected languages
 'recentchangesall' => 'maṛṛa',

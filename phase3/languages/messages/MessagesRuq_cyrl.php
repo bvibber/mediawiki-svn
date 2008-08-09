@@ -241,7 +241,7 @@ $3',
 # Book sources
 'booksources' => 'Сурсе де цајрћи',
 
-# Special:Allpages
+# Special:AllPages
 'allpages'       => 'Тоатс пажи',
 'alphaindexline' => '$1 во $2',
 'allarticles'    => 'Тоат пажи',
@@ -276,7 +276,6 @@ $3',
 # What links here
 'whatlinkshere'       => 'Легајтул а це пажу',
 'whatlinkshere-title' => 'Пажус легајтулент а $1',
-'linklistsub'         => '(Листа де легајтул)',
 'nolinkshere'         => "Пажи не легајтент а '''[[:$1]]'''.",
 'istemplate'          => 'викулабе',
 'whatlinkshere-links' => '← легајтулс',

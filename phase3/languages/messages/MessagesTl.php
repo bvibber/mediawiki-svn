@@ -259,7 +259,7 @@ ang gawang itinakda ng URL',
 'nosuchspecialpage' => 'Walang ganoong natatanging pahina',
 'nospecialpagetext' => "<big>'''Humiling ka ng isang natatanging pahina na walang saysay.'''</big>
 
-Isang tala ng mga natatanging pahina na may saysay ay matatagpuan sa [[Special:Specialpages|{{int:specialpages}}]].",
+Isang tala ng mga natatanging pahina na may saysay ay matatagpuan sa [[Special:SpecialPages|{{int:specialpages}}]].",
 
 # General errors
 'error'                => 'Kamalian',
@@ -389,7 +389,7 @@ Nilikha na ang iyong kuwenta. Huwag kalimutang baguhin ang iyong mga kagustuhan 
 'reupload'          => 'Magkarga muli',
 'reuploaddesc'      => 'Bumalik sa pormularyo ng pagkarga',
 'uploadnologin'     => 'Hindi nakalagda',
-'uploadnologintext' => 'Dapat ikaw ay [[Special:Userlogin|nakalagda]]
+'uploadnologintext' => 'Dapat ikaw ay [[Special:UserLogin|nakalagda]]
 upang makapagkarga ng talaksan.',
 'uploaderror'       => 'Kamalian sa pagkarga',
 'watchthisupload'   => 'Bantayan itong pahina',
@@ -436,7 +436,7 @@ upang makapagkarga ng talaksan.',
 'move'              => 'Ilipat',
 'movethispage'      => 'Ilipat itong pahina',
 
-# Special:Allpages
+# Special:AllPages
 'allpages'        => 'Lahat ng pahina',
 'allpages-bad-ns' => 'Wala sa {{SITENAME}} ang ngalan-espasyong "$1".',
 
@@ -537,8 +537,8 @@ Pumili muli ng ibang pangalan.',
 'cantmove-titleprotected' => 'Hindi mo malilipatan ang isang pahina sa lokasyong ito, dahil nakasanggalang sa paglikha ang baong pamagat',
 'movedto'                 => 'inilipat sa',
 'movetalk'                => 'Ilipat ang kaugnay na pahinang usapan',
-'1movedto2'               => 'Ang [[$1]] ay inilipat sa [[$2]]',
-'1movedto2_redir'         => 'Ang [[$1]] ay inilipat sa [[$2]] sa ibabaw ng pangkarga',
+'1movedto2'               => 'Ang [[:$1]] ay inilipat sa [[:$2]]',
+'1movedto2_redir'         => 'Ang [[:$1]] ay inilipat sa [[:$2]] sa ibabaw ng pangkarga',
 'movereason'              => 'Dahilan:',
 'delete_and_move'         => 'Burahin at ilipat',
 'delete_and_move_confirm' => 'Oo, burahin ang pahina',
@@ -594,7 +594,7 @@ Please visit [http://www.mediawiki.org/wiki/Localisation MediaWiki Localisation]
 'show-big-image'       => 'Buong resolusyon',
 'show-big-image-thumb' => '<small>Laki ng itong pribyu: $1 × $2 piksel</small>',
 
-# Special:Newimages
+# Special:NewImages
 'newimages' => 'Galeriya ng mga bagong talaksan',
 
 # External editor support
@@ -605,7 +605,7 @@ Please visit [http://www.mediawiki.org/wiki/Localisation MediaWiki Localisation]
 'recreate'            => 'Likhain muli',
 
 # HTML dump
-'redirectingto' => 'Nagkakarga sa [[$1]]...',
+'redirectingto' => 'Nagkakarga sa [[:$1]]...',
 
 # action=purge
 'confirm_purge' => 'Linisin ang baunan ng pahinang ito?
@@ -620,7 +620,7 @@ $1',
 # Auto-summaries
 'autosumm-blank'   => 'Itinatanggal ang lahat ng nilalaman mula sa pahina',
 'autosumm-replace' => "Ipinapalit ang pahina ng may nilalamang '$1'",
-'autoredircomment' => 'Ikinakarga sa [[$1]]',
+'autoredircomment' => 'Ikinakarga sa [[:$1]]',
 'autosumm-new'     => 'Bagong pahina: $1',
 
 # Live preview
@@ -638,7 +638,7 @@ $1',
 'version-software-product'  => 'Produkto',
 'version-software-version'  => 'Bersyon',
 
-# Special:Filepath
+# Special:FilePath
 'filepath-page' => 'Talaksan:',
 
 # Special:SpecialPages

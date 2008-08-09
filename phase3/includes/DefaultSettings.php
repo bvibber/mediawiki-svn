@@ -861,6 +861,9 @@ $wgCheckSerialized = true;
 /** Whether to enable language variant conversion. */
 $wgDisableLangConversion = false;
 
+/** Whether to enable language variant conversion for links. */
+$wgDisableTitleConversion = false;
+
 /** Default variant code, if false, the default will be the language code */
 $wgDefaultLanguageVariant = false;
 
@@ -2226,6 +2229,7 @@ $wgDefaultUserOptions = array(
 	'watchdefault'            => 0,
 	'watchmoves'              => 0,
 	'watchdeletion'           => 0,
+	'noconvertlink'           => 0,
 );
 
 /** Whether or not to allow and use real name fields. Defaults to true. */
@@ -2385,6 +2389,13 @@ $wgFeedCacheTimeout = 60;
  * pages larger than this size. */
 $wgFeedDiffCutoff = 32768;
 
+/** Override the site's default RSS/ATOM feed for recentchanges that appears on
+ * every page. Some sites might have a different feed they'd like to promote 
+ * instead of the RC feed (maybe like a "Recent New Articles" or "Breaking news" one).
+ * Ex: $wgSiteFeed['format'] = "http://example.com/somefeed.xml"; Format can be one
+ * of either 'rss' or 'atom'.
+ */
+$wgOverrideSiteFeed = array();
 
 /**
  * Additional namespaces. If the namespaces defined in Language.php and
@@ -2468,6 +2479,12 @@ $wgCategoryMagicGallery = true;
  * Paging limit for categories
  */
 $wgCategoryPagingLimit = 200;
+
+/**
+ * Should the default category sortkey be the prefixed title?
+ * Run maintenance/refreshLinks.php after changing this.
+ */
+$wgCategoryPrefixedDefaultSortkey = true;
 
 /**
  * Browser Blacklist for unicode non compliant browsers
@@ -3346,3 +3363,9 @@ $wgSitemapNamespaces = false;
  * ting this variable false.
  */
 $wgUseAutomaticEditSummaries = true;
+
+/**
+ * Limit password attempts to X attempts per Y seconds per IP per account.
+ * Requires memcached.
+ */
+$wgPasswordAttemptThrottle = array( 'count' => 5, 'seconds' => 300 );

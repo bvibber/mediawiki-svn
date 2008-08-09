@@ -211,7 +211,7 @@ $messages = array(
 'uploadbtn' => 'kokumbisa',
 'savefile'  => 'kobómbisa kásá-kásá',
 
-# Special:Imagelist
+# Special:ImageList
 'imagelist_date' => 'Mokɔlɔ',
 
 # File deletion
@@ -239,7 +239,7 @@ $messages = array(
 # Book sources
 'booksources-go' => 'Kɛndɛ́',
 
-# Special:Allpages
+# Special:AllPages
 'allpages'       => 'Nkásá ínsɔ',
 'alphaindexline' => '$1 kina $2',
 'nextpage'       => 'Lokásá ya nsima ($1)',
@@ -331,7 +331,7 @@ $messages = array(
 # Browsing diffs
 'previousdiff' => '← diff ya libosó',
 
-# Special:Newimages
+# Special:NewImages
 'ilsubmit' => 'Boluki',
 
 # EXIF tags
@@ -343,7 +343,7 @@ $messages = array(
 'watchlistall2' => 'nyɔ́nsɔ',
 
 # HTML dump
-'redirectingto' => 'Eyendísí na [[$1]]...',
+'redirectingto' => 'Eyendísí na [[:$1]]...',
 
 # action=purge
 'confirm_purge_button' => 'Nandimi',

@@ -16,7 +16,7 @@
 PROJECT_NAME           = MediaWiki
 PROJECT_NUMBER         = {{CURRENT_VERSION}}
 OUTPUT_DIRECTORY       = {{OUTPUT_DIRECTORY}}
-CREATE_SUBDIRS         = NO
+CREATE_SUBDIRS         = YES
 OUTPUT_LANGUAGE        = English
 BRIEF_MEMBER_DESC      = YES
 REPEAT_BRIEF           = YES
@@ -175,7 +175,7 @@ CHM_FILE               =
 HHC_LOCATION           = 
 GENERATE_CHI           = NO
 BINARY_TOC             = NO
-TOC_EXPAND             = NO
+TOC_EXPAND             = YES
 DISABLE_INDEX          = NO
 ENUM_VALUES_PER_LINE   = 4
 GENERATE_TREEVIEW      = YES
@@ -191,8 +191,8 @@ COMPACT_LATEX          = NO
 PAPER_TYPE             = a4wide
 EXTRA_PACKAGES         = 
 LATEX_HEADER           = 
-PDF_HYPERLINKS         = NO
-USE_PDFLATEX           = NO
+PDF_HYPERLINKS         = YES
+USE_PDFLATEX           = YES
 LATEX_BATCHMODE        = NO
 LATEX_HIDE_INDICES     = NO
 #---------------------------------------------------------------------------
@@ -207,7 +207,7 @@ RTF_EXTENSIONS_FILE    =
 #---------------------------------------------------------------------------
 # configuration options related to the man page output
 #---------------------------------------------------------------------------
-GENERATE_MAN           = YES
+GENERATE_MAN           = NO
 MAN_OUTPUT             = man
 MAN_EXTENSION          = .3
 MAN_LINKS              = NO
@@ -279,15 +279,15 @@ DOT_CLEANUP            = YES
 #---------------------------------------------------------------------------
 SEARCHENGINE           = NO
 
-ALIASES =	"type{1}=<b> \1 </b>:" \
-		"2types{2}=<b> \1 </b> or <b> \2 </b>:" \
-		"3types{3}=<b> \1 </b>, <b> \2 </b>, or <b> \3 </b>:" \
-		"arrayof{2}=<b> Array </b> of \2" \
-		"null=\type{Null}" \
-		"boolean=\type{Boolean}" \
+ALIASES =	"type{1}=<b>\1</b>:" \
+		"twotypes{2}=<b>\1</b> or <b>\2</b>:" \
+		"threetypes{3}=<b>\1</b>, <b>\2</b>, or <b>\3</b>:" \
+		"arrayof{1}=<b>Array</b> of <b>\1</b>:" \
+		"null=Null" \
+		"boolean=Boolean" \
 		"bool=\boolean" \
-		"integer=\type{Integer}" \
+		"integer=Integer" \
 		"int=\integer" \
-		"string=\type{String}" \
+		"string=String" \
 		"str=\string" \
-		"mixed=\type{Mixed}"
+		"mixed=Mixed"

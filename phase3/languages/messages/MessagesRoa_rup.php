@@ -4,7 +4,8 @@
  * @ingroup Language
  * @file
  *
- * @author Hakka (with the help of a native speaker Dumitrachi T. Fundu)
+ * @author Hakka
+ * @author Dumitrachi T. Fundu
  */
 
 $messages = array(
@@ -153,7 +154,7 @@ Isape a vostrã ira adratã. Nu agãrshits s-le alãxits alidzerle-a vostre ti {
 # Special:Log
 'log-search-submit' => 'Du-vã',
 
-# Special:Allpages
+# Special:AllPages
 'allpagessubmit' => 'Du-vã',
 
 # Watchlist
@@ -190,7 +191,7 @@ Isape a vostrã ira adratã. Nu agãrshits s-le alãxits alidzerle-a vostre ti {
 'move-watch'       => 'Mutrits-u frãndzã aistã',
 'movepagebtn'      => 'Tradzets-u frãndzã',
 'movedto'          => 'tradzitã tu',
-'1movedto2'        => '[[$1]] s-trãdzi tu [[$2]]',
+'1movedto2'        => '[[:$1]] s-trãdzi tu [[:$2]]',
 'movereason'       => 'Itia:',
 
 # Namespace 8 related
@@ -201,7 +202,7 @@ Isape a vostrã ira adratã. Nu agãrshits s-le alãxits alidzerle-a vostre ti {
 'tooltip-pt-logout'      => 'Disligats-vã',
 'tooltip-p-logo'         => 'Prota frãndzã',
 
-# Special:Newimages
+# Special:NewImages
 'ilsubmit' => 'Caftã',
 
 # Multipage image navigation

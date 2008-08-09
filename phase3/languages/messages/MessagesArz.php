@@ -6,8 +6,8 @@
  *
  * @author Ramsis II
  * @author Ghaly
- * @author Alnokta
  * @author Meno25
+ * @author Alnokta
  */
 
 $fallback = 'ar';
@@ -534,7 +534,7 @@ $messages = array(
 'nosuchspecialpage' => 'مافيش صفحة خاصة بالاسم ده',
 'nospecialpagetext' => "<big>'''انت طلبت صفحة مخصوصة مش صحيحة.'''</big>
 
-لستة الصفحات المخصوصة الصحيحة ممكن تلاقيها في [[Special:Specialpages]].",
+لستة الصفحات المخصوصة الصحيحة ممكن تلاقيها في [[Special:SpecialPages]].",
 
 # General errors
 'error'                => 'غلطة',
@@ -698,6 +698,7 @@ $2',
 'createaccount-text'         => 'في واحد فتح حساب باسم الايمل بتاعك على {{SITENAME}} ($4) بالاسم "$2"، وبباسورد "$3". لازم تسجل دخولك دلوقتي و تغير الباسورد بتاعتك.
 
 لو سمحت تتجاهل الرسالة دي اذا الحساب دا اتفتحلك بالغلط.',
+'login-throttled'            => 'انت عملت  محاولات كتيره حديثة على كلمة سر الحساب ده . من فضلك استنى قبل المحاولة مرة تانيه.',
 'loginlanguagelabel'         => 'اللغة: $1',
 
 # Password reset dialog
@@ -747,9 +748,7 @@ $2',
 'summary-preview'                  => 'بروفه للملخص',
 'subject-preview'                  => 'بروفة للعنوان\\الموضوع',
 'blockedtitle'                     => 'اليوزر ممنوع',
-'blockedtext'                      => "
-
-<big>'''تم منع اسم اليوزر أو عنوان الااى بى بتاعك .'''</big>
+'blockedtext'                      => "<big>'''تم منع اسم اليوزر أو عنوان الااى بى بتاعك .'''</big>
 
 سبب المنع هو: ''$2''. وقام بالمنع $1.
 
@@ -793,7 +792,7 @@ $2',
 علشان  تبتدى الصفحة ابتدى الكتابه في الصندوق اللى تحت.
 (بص على [[{{MediaWiki:Helppage}}|صفحة المساعده]] علشان معلومات اكتر)
 لو كانت زيارتك للصفحه دى بالخطأ، اضغط على زر ''رجوع'' في متصفح الإنترنت عندك.",
-'anontalkpagetext'                 => "----'' صفحة النقاش دي بتاعة يوزر مجهول لسة ما فتحش لنفسه حساب أو عنده واحد بس ما بيستعملوش. علشان كدا لازم تستعمل رقم الأيبي علشان تتعرف عليه/عليها. العنوان دا ممكن اكتر من واحد يكونو بيستعملوه. لو انت يوزر مجهول و حاسس  ان في تعليقات بتتوجهلك مع انك مالكش دعوة بيها ،من فضلك [[Special:Userlogin|افتحلك حساب أو سجل الدخول]] علشان تتجنب اللخبطة اللي ممكن تحصل في المستقبل مع يوزرز مجهولين تانيين.''",
+'anontalkpagetext'                 => "----'' صفحة النقاش دي بتاعة يوزر مجهول لسة ما فتحش لنفسه حساب أو عنده واحد بس ما بيستعملوش. علشان كدا لازم تستعمل رقم الأيبي علشان تتعرف عليه/عليها. العنوان دا ممكن اكتر من واحد يكونو بيستعملوه. لو انت يوزر مجهول و حاسس  ان في تعليقات بتتوجهلك مع انك مالكش دعوة بيها ،من فضلك [[Special:UserLogin|افتحلك حساب أو سجل الدخول]] علشان تتجنب اللخبطة اللي ممكن تحصل في المستقبل مع يوزرز مجهولين تانيين.''",
 'noarticletext'                    => 'مافيش  دلوقتى اى نص فى  الصفحه دى ، ممكن [[Special:Search/{{PAGENAME}}|تدور على عنوان الصفحه]] في الصفحات التانيه او [{{fullurl:{{FULLPAGENAME}}|action=edit}} تعدل الصفحه دى].',
 'userpage-userdoesnotexist'        => 'حساب اليوزر "$1" مش متسجل. لو سمحت تشوف لو عايز تبتدي/تعدل الصفحة دي.',
 'clearyourcache'                   => "'''ملاحظة - بعد التسييف,  يمكن لازم تفرغ كاش متصفحك لرؤية التغييرات.''' '''موزيللا / فايرفوكس / سافارى:''' دوس على ''Shift'' أثناء ضغط ''Reload,'' أو دوس على أيا من ''Ctrl-F5'' أو ''Ctrl-R'' (''Command-R'' على ماكنتوش); '''كونكرر: '''دوس على ''Reload'' أو دوس على ''F5;'' '''أوبرا:''' فرغ الكاش فى ''Tools → Preferences;'' '''إنترنت إكسبلورر:''' دوس على ''Ctrl'' أثناء ضغط ''Refresh,'' أو دوس على ''Ctrl-F5.''",
@@ -857,7 +856,7 @@ $2',
 'hiddencategories'                 => ' الصفحه دى موجوده فى {{PLURAL:$1|تصنيف مخفى واحد|$1 تصنيف مخفى}}:',
 'nocreatetitle'                    => 'إنشاء الصفحات اتحدد',
 'nocreatetext'                     => '{{SITENAME}} حدد القدره على انشاء صفحات جديده.
-ممكن ترجع وتحرر صفحه موجوده بالفعل، او [[Special:Userlogin|الدخول / فتح حساب]].',
+ممكن ترجع وتحرر صفحه موجوده بالفعل، او [[Special:UserLogin|الدخول / فتح حساب]].',
 'nocreate-loggedin'                => 'انت ما عندك ش صلاحية تعمل صفحات جديدة في {{SITENAME}}.',
 'permissionserrors'                => 'غلطات فى السماح',
 'permissionserrorstext'            => 'ما عندك ش صلاحية تعمل كدا،{{PLURAL:$1|علشان|علشان}}:',
@@ -977,7 +976,7 @@ $2',
 # Suppression log
 'suppressionlog'     => 'سجل الإخفاء',
 'suppressionlogtext' => 'تحت في لستة بعمليات المسح والمنع اللي فيها محتوى مستخبي على الإداريين.
-شوف [[Special:Ipblocklist|للستة المنع]] علشان تشوف عمليات المنع الشغالة دلوقتي .',
+شوف [[Special:IPBlockList|للستة المنع]] علشان تشوف عمليات المنع الشغالة دلوقتي .',
 
 # History merging
 'mergehistory'                     => 'دمج تواريخ الصفحة',
@@ -1063,7 +1062,7 @@ $2',
 'mypreferences'            => 'تفضيلاتى',
 'prefs-edits'              => 'عدد التعديلات:',
 'prefsnologin'             => 'مش متسجل',
-'prefsnologintext'         => 'لازم تكون [[Special:Userlogin|متسجل]] علشان تقدر تعدل تفضيلاتك .',
+'prefsnologintext'         => 'لازم تكون [[Special:UserLogin|متسجل]] علشان تقدر تعدل تفضيلاتك .',
 'prefsreset'               => 'التفضيلات اترجعت تاني زي الأول',
 'qbsettings'               => 'البار السريع',
 'qbsettings-none'          => 'ما في ش',
@@ -1139,7 +1138,7 @@ $2',
 'userrights-reason'           => 'سبب التغيير:',
 'userrights-no-interwiki'     => 'أنت  مش من حقك تعدل صلاحيات اليوزرز على الويكيات التانية.',
 'userrights-nodatabase'       => 'قاعدة البيانات $1  مش موجودة أو مش محلية.',
-'userrights-nologin'          => 'انت لازم [[Special:Userlogin|تسجيل الدخول]] بحساب  مدير لتعديل حقوق اليوزر.',
+'userrights-nologin'          => 'انت لازم [[Special:UserLogin|تسجيل الدخول]] بحساب  مدير لتعديل حقوق اليوزر.',
 'userrights-notallowed'       => 'حسابك  ماعندوش  إذن لتعديل حقوق اليوزر.',
 'userrights-changeable-col'   => 'المجموعات اللي تقدر تغييرها',
 'userrights-unchangeable-col' => 'المجموعات اللى مش ممكن انك تغيرها',
@@ -1269,12 +1268,12 @@ $2',
 'reupload'                    => 'حمل مره تانيه',
 'reuploaddesc'                => 'إلغى التحميل وارجع لاستمارة التحميل',
 'uploadnologin'               => 'ما سجلتش الدخول',
-'uploadnologintext'           => 'لازم تكون [[Special:Userlogin|مسجل الدخول]] علشان تقدر تحمل الملفات.',
+'uploadnologintext'           => 'لازم تكون [[Special:UserLogin|مسجل الدخول]] علشان تقدر تحمل الملفات.',
 'upload_directory_missing'    => 'مجلد التحميل($1) ضايع السيرفير وماقدرش يعمل واحد تاني.',
 'upload_directory_read_only'  => 'مجلد التحميل ($1) مش ممكن الكتابة عليه بواسطة سيرڨر الويب.',
 'uploaderror'                 => 'غلطه فى التحميل',
 'uploadtext'                  => "استخدم الاستمارة لتحميل الملفات.
-لعرض أو البحث ف الملفات المتحملة سابقا، راجع [[Special:Imagelist|قايمة الملفات المتحملة]]، عمليات التحميل والحذف موجودة في [[Special:Log/upload|سجل التحميل]].
+لعرض أو البحث ف الملفات المتحملة سابقا، راجع [[Special:ImageList|قايمة الملفات المتحملة]]، عمليات التحميل والحذف موجودة في [[Special:Log/upload|سجل التحميل]].
 
 علشان تحط صورة في صفحة، استخدم الوصلات في الصيغ التالية:
 '''<nowiki>[[</nowiki>{{ns:image}}<nowiki>:File.jpg]]</nowiki>'''،
@@ -1387,7 +1386,7 @@ PICT # misc.
 'upload_source_url'  => '  (اليوأرإل صحيح وممكن توصل ليه)',
 'upload_source_file' => ' (ملف على الكمبيوتر بتاعك)',
 
-# Special:Imagelist
+# Special:ImageList
 'imagelist-summary'     => 'الصفحة المخصوصة دي بتعرض كل الملفات المتحملة.
 اوتوماتيكي اخر الملفات اللي اتحملت ح تظهر في اللستة من فوق.
 لو دوست على راس العمود الترتيب ح يتغير.',
@@ -1414,8 +1413,11 @@ PICT # misc.
 'filehist-comment'               => 'تعليق',
 'imagelinks'                     => 'وصلات',
 'linkstoimage'                   => '{{PLURAL:$1|الصفحة|ال$1 صفحة}} دى فيها وصله للفايل ده:',
+'linkstoimage-more'              => 'أكتر من $1 {{PLURAL:$1|صفحة تصل|صفحة تصل}} للملف ده .
+القائمة التالية تعرض {{PLURAL:$1|أول وصلة صفحة|أول $1 وصلة صفحة}} للملف ده بس.
+[[Special:WhatLinksHere/$2|قائمة كاملة]] متوفرة.',
 'nolinkstoimage'                 => 'مافيش صفحات بتوصل للفايل ده.',
-'morelinkstoimage'               => 'عرض [[Special:Whatlinkshere/$1|لينكات اكتر]] للملف دا.',
+'morelinkstoimage'               => 'عرض [[Special:WhatLinksHere/$1|لينكات اكتر]] للملف دا.',
 'redirectstofile'                => '{{PLURAL:$1| الملف|ال$1 ملف}} اللي جاي  بيحول للملف دا:',
 'duplicatesoffile'               => '{{PLURAL:$1| الملف|ال$1 ملف اللي بعده}} مكررات للملف دا:',
 'sharedupload'                   => 'الملف ده اتحمل علشان التشارك بين المشاريع وممكن استخدامه في المشاريع التانيه.',
@@ -1504,7 +1506,7 @@ PICT # misc.
 ده يعني '''\$5''' تعديل متوسط لكل صفحة، و '''\$6''' عرض لكل تعديل.
 
 طول [http://www.mediawiki.org/wiki/Manual:Job_queue طابور الشغل] هو '''\$7'''.",
-'userstatstext'          => "في {{PLURAL:$1|[[Special:Listusers|يوزر]] متسجل '''واحد'''|'''$1''' [[Special:Listusers|يوزر]] متسجل}}، منهم '''$2''' (أو '''$4%''') {{PLURAL:$2|عنده|عندهم}} صلاحيات $5.",
+'userstatstext'          => "في {{PLURAL:$1|[[Special:ListUsers|يوزر]] متسجل '''واحد'''|'''$1''' [[Special:ListUsers|يوزر]] متسجل}}، منهم '''$2''' (أو '''$4%''') {{PLURAL:$2|عنده|عندهم}} صلاحيات $5.",
 'statistics-mostpopular' => 'اكتر صفحات اتشافت',
 
 'disambiguations'      => 'صفحات التوضيح',
@@ -1601,7 +1603,7 @@ PICT # misc.
 'logempty'             => 'مافيش  سجلات مطابقة في السجل.',
 'log-title-wildcard'   => 'التدوير على عناوين تبتدي بالنص دا',
 
-# Special:Allpages
+# Special:AllPages
 'allpages'          => 'كل الصفحات',
 'alphaindexline'    => '$1 ل $2',
 'nextpage'          => 'الصفحه اللى بعد كده ($1)',
@@ -1624,12 +1626,12 @@ PICT # misc.
 'special-categories-sort-count' => 'رتب بالعدد',
 'special-categories-sort-abc'   => 'ترتيب ابجدي',
 
-# Special:Listusers
+# Special:ListUsers
 'listusersfrom'      => 'عرض اليوزرز من أول:',
 'listusers-submit'   => 'عرض',
 'listusers-noresult' => 'ما في ش يوزر',
 
-# Special:Listgrouprights
+# Special:ListGroupRights
 'listgrouprights'                 => 'حقوق مجموعات اليوزرز',
 'listgrouprights-summary'         => 'دي لستة بمجموعات اليوزرز المتعرفة في الويكي دا، بالحقوق اللي معاهم.
 ممكن تلاقي معلومات زيادة عن الحقوق بتاعة كل واحد  [[{{MediaWiki:Listgrouprights-helppage}}|هنا]].',
@@ -1644,7 +1646,7 @@ PICT # misc.
 
 # E-mail user
 'mailnologin'     => 'مافيش عنوان نبعت عليه',
-'mailnologintext' => 'لازم تعمل [[Special:Userlogin|تسجيل الدخول]] و تدخل ايميل صحيح في صفحة [[Special:Preferences|التفضيلات]] علشان تقدر تبعت ايميلات لليوزرز التانيين.',
+'mailnologintext' => 'لازم تعمل [[Special:UserLogin|تسجيل الدخول]] و تدخل ايميل صحيح في صفحة [[Special:Preferences|التفضيلات]] علشان تقدر تبعت ايميلات لليوزرز التانيين.',
 'emailuser'       => 'ابعت ايميل لليوزر دا',
 'emailpage'       => 'ابعت ايميل لليوزر ده',
 'emailpagetext'   => 'لو اليوزر دا دخل ايميل صحيح في التفضيلات بتاعته،
@@ -1673,10 +1675,10 @@ PICT # misc.
 'nowatchlist'          => 'مافيش حاجة في لستة مراقبتك.',
 'watchlistanontext'    => 'لو سمحت $1 لعرض أو تعديل الصفحات في لستة مراقبتك.',
 'watchnologin'         => 'مش متسجل',
-'watchnologintext'     => 'لازم تكون [[Special:Userlogin|مسجل الدخول]] علشان تعدل لستة المراقبة بتاعتك.',
+'watchnologintext'     => 'لازم تكون [[Special:UserLogin|مسجل الدخول]] علشان تعدل لستة المراقبة بتاعتك.',
 'addedwatch'           => 'تمت الاضافه للستة الصفحات اللى بتراقبها',
 'addedwatchtext'       => '
-تمت إضافة الصفحه  "$1"  [[Special:Watchlist|للستة الصفحات اللى بتراقبها]] . التعديلات اللى بعد كده ها تتحط على الصفحه دى، وصفحة المناقش الخاصه بها ها تتحط هناك. واسم الصفحة هايظهر  بخط <b>عريض</b> في صفحة [[Special:Recentchanges|أحدث التعديلات]] لتسهيل تحديدها واكتشافها.
+تمت إضافة الصفحه  "$1"  [[Special:Watchlist|للستة الصفحات اللى بتراقبها]] . التعديلات اللى بعد كده ها تتحط على الصفحه دى، وصفحة المناقش الخاصه بها ها تتحط هناك. واسم الصفحة هايظهر  بخط <b>عريض</b> في صفحة [[Special:RecentChanges|أحدث التعديلات]] لتسهيل تحديدها واكتشافها.
 
 علشان تشيل الصفحة من لستة الصفحات اللى بتراقبها، اضغط على "توقف عن المراقبة" فوق.',
 'removedwatch'         => 'اتشالت  من لستة الصفحات اللى بتراقبها',
@@ -1791,10 +1793,10 @@ $NEWPAGE
 لو سمحت دوس على زرار"رجوع" علشان تحمل الصفحة اللي جيت منها مرة تانية، و بعدين حاول تاني.',
 'protectlogpage'              => 'سجل الحمايه',
 'protectlogtext'              => 'تحت في لستة بالصفحات اللي اعملها حماية او اتشالت منها الحماية.
-شوف [[Special:Protectedpages|لستة الصفحات المحمية]] لستة بعمليات حماية الصفحات الشغالة دلوقتي.',
-'protectedarticle'            => 'حمى "[[$1]]"',
-'modifiedarticleprotection'   => 'غير مستوى الحماية ل"[[$1]]"',
-'unprotectedarticle'          => 'شال حماية [[$1]]',
+شوف [[Special:ProtectedPages|لستة الصفحات المحمية]] لستة بعمليات حماية الصفحات الشغالة دلوقتي.',
+'protectedarticle'            => 'حمى "[[:$1]]"',
+'modifiedarticleprotection'   => 'غير مستوى الحماية ل"[[:$1]]"',
+'unprotectedarticle'          => 'شال حماية [[:$1]]',
 'protect-title'               => 'غير مستوى الحماية ل"$1"',
 'protect-legend'              => 'تأكيد الحماية',
 'protectcomment'              => 'تعليق:',
@@ -1890,26 +1892,27 @@ $1',
 'blanknamespace' => '(رئيسى)',
 
 # Contributions
-'contributions' => 'مساهمات اليوزر',
-'mycontris'     => 'تعديلاتى',
-'contribsub2'   => 'لليوزر $1 ($2)',
-'nocontribs'    => 'مالقيناش   تغييرات تطابق المحددات دي.',
-'uctop'         => '(فوق)',
-'month'         => 'من شهر (واللى قبل كده):',
-'year'          => 'من سنة (واللى قبل كده):',
+'contributions'       => 'مساهمات اليوزر',
+'contributions-title' => 'مساهمات اليوزر ل$1',
+'mycontris'           => 'تعديلاتى',
+'contribsub2'         => 'لليوزر $1 ($2)',
+'nocontribs'          => 'مالقيناش   تغييرات تطابق المحددات دي.',
+'uctop'               => '(فوق)',
+'month'               => 'من شهر (واللى قبل كده):',
+'year'                => 'من سنة (واللى قبل كده):',
 
-'sp-contributions-newbies'     => 'عرض مساهمات الحسابات الجديدة بس',
-'sp-contributions-newbies-sub' => 'للحسابات الجديده',
-'sp-contributions-blocklog'    => 'سجل المنع',
-'sp-contributions-search'      => 'دور على مساهمات',
-'sp-contributions-username'    => 'عنوان أيبي أو اسم يوزر:',
-'sp-contributions-submit'      => 'تدوير',
+'sp-contributions-newbies'       => 'عرض مساهمات الحسابات الجديدة بس',
+'sp-contributions-newbies-sub'   => 'للحسابات الجديده',
+'sp-contributions-newbies-title' => 'مساهمات  اليوزر للحسابات الجديدة',
+'sp-contributions-blocklog'      => 'سجل المنع',
+'sp-contributions-search'        => 'دور على مساهمات',
+'sp-contributions-username'      => 'عنوان أيبي أو اسم يوزر:',
+'sp-contributions-submit'        => 'تدوير',
 
 # What links here
 'whatlinkshere'            => 'ايه بيوصل هنا',
-'whatlinkshere-title'      => 'الصفحات اللي بتودي ل $1',
+'whatlinkshere-title'      => 'الصفحات اللي بتودي لـ "$1"',
 'whatlinkshere-page'       => 'الصفحة:',
-'linklistsub'              => '(لسته بالوصلات)',
 'linkshere'                => "الصفحات دى فيها وصله ل '''[[:$1]]''':",
 'nolinkshere'              => "مافيش صفحات بتوصل ل '''[[:$1]]'''.",
 'nolinkshere-ns'           => "مافيش صفحات بتوصل لـ '''[[:$1]]''' في النطاق اللي انت اختارته.",
@@ -1959,7 +1962,7 @@ $1',
 'badipaddress'                    => 'عنوان أيبي مش صحيح',
 'blockipsuccesssub'               => 'المنع حصل بنجاح',
 'blockipsuccesstext'              => 'اتمنع [[Special:Contributions/$1|$1]].<br />
-شوف [[Special:Ipblocklist|لستة منع الأيبي]] علشان تراجع حالات المنع.',
+شوف [[Special:IPBlockList|لستة منع الأيبي]] علشان تراجع حالات المنع.',
 'ipb-edit-dropdown'               => 'عدل أسباب المنع',
 'ipb-unblock-addr'                => 'رفع منع $1',
 'ipb-unblock'                     => 'رفع المنع عن يوزر أو عنوان أيبي',
@@ -1992,7 +1995,7 @@ $1',
 'blocklogentry'                   => 'منع "[[$1]]" لفترةه زمنيه مدتها $2 $3',
 'blocklogtext'                    => 'دا سجل بعمليات المنع ورفع المنع.
 عناوين الأيبي اللي اتمنعت اوتوماتيكي مش معروضة.
-شوف [[Special:Ipblocklist|عناوين الأيبي الممنوعة]] علشان تشوف عمليات المنع الشغالة دلوقتي.',
+شوف [[Special:IPBlockList|عناوين الأيبي الممنوعة]] علشان تشوف عمليات المنع الشغالة دلوقتي.',
 'unblocklogentry'                 => 'رفع منع $1',
 'block-log-flags-anononly'        => 'اليوزرز المجهولين  بس',
 'block-log-flags-nocreate'        => ' فتح الحسابات ممنوع',
@@ -2033,7 +2036,7 @@ $1',
 'lockdbsuccesssub'    => 'نجح قفل قاعدة البيانات',
 'unlockdbsuccesssub'  => 'قفل قاعدة البيانات إتشال.',
 'lockdbsuccesstext'   => 'قاعدة البانات اتقفلت خلاص.<br />
-ماتنساش [[Special:Unlockdb|تشيل القفل]] بعد أعمال الصيانة ما تخلص .',
+ماتنساش [[Special:UnlockDB|تشيل القفل]] بعد أعمال الصيانة ما تخلص .',
 'unlockdbsuccesstext' => 'قاعدة البيانات إتفتحت تانى',
 'lockfilenotwritable' => 'ملف قفل قاعدة البيانات مش ممكن يتكتب عليه.
 علشان تقفل قاعدة البيانات أو تشيل القفل لازم سيرفر الويب يسمح بالكتابة على الملف دا .',
@@ -2078,15 +2081,15 @@ $1',
 'movepage-page-moved'     => 'الصفحة $1 اتنقلت لـ $2.',
 'movepage-page-unmoved'   => 'ماقدرناش ننقل الصفحة $1 لـ $2.',
 'movepage-max-pages'      => 'الحد الأقصى $1 {{PLURAL:$1|صفحة|صفحة}} اتنقل. و مافيش حاجة تاني ح تتنقل اوتوماتيكي.',
-'1movedto2'               => '[[$1]] اتنقلت ل [[$2]]',
-'1movedto2_redir'         => '[[$1]] انقلت لـ[[$2]] فوق التحويلة',
+'1movedto2'               => '[[:$1]] اتنقلت ل [[:$2]]',
+'1movedto2_redir'         => '[[:$1]] انقلت لـ[[:$2]] فوق التحويلة',
 'movelogpage'             => 'سجل النقل',
 'movelogpagetext'         => 'تحت في لستة الصفحات اللي اتنقلت.',
 'movereason'              => 'السبب:',
 'revertmove'              => 'استعاده',
 'delete_and_move'         => 'مسح ونقل',
 'delete_and_move_text'    => '==المسح مطلوب==
-الصفحة الهدف "[[$1]]" موجودة فعلا.
+الصفحة الهدف "[[:$1]]" موجودة فعلا.
 انت عايز تمسحها علشان تقدر تنقلها؟',
 'delete_and_move_confirm' => 'ايوة، امسح الصفحة',
 'delete_and_move_reason'  => 'اتمسحت علشان تسمح للنقل',
@@ -2169,7 +2172,7 @@ $1',
 # Import log
 'importlogpage'                    => 'سجل الاستيراد',
 'importlogpagetext'                => 'استيرادات إدارية لصفحات ليها تاريخ تعديل من مواقع ويكي تانية.',
-'import-logentry-upload'           => 'استورد [[$1]] بواسطة تحميل ملف',
+'import-logentry-upload'           => 'استورد [[:$1]] بواسطة تحميل ملف',
 'import-logentry-upload-detail'    => '$1 {{PLURAL:$1|تعديل واحد|تعديل}}',
 'import-logentry-interwiki'        => 'استيراد ويكى $1',
 'import-logentry-interwiki-detail' => '$1 {{PLURAL:$1|تعديل واحد|تعديل}} من $2',
@@ -2330,10 +2333,12 @@ $1',
 'show-big-image'       => 'الصورة بدقه كامله',
 'show-big-image-thumb' => '<small>حجم البروفه دى: $1 × $2 بكسل</small>',
 
-# Special:Newimages
+# Special:NewImages
 'newimages'             => 'جاليرى الصور الجديده',
 'imagelisttext'         => 'دي لستة بـ$1 {{PLURAL:$1|ملف|ملفات}} مترتبة $2.',
 'newimages-summary'     => 'الصفحةالمخصوصة دي بتعرض آخر الملفات المتحملة',
+'newimages-legend'      => 'اسم الملف',
+'newimages-label'       => 'اسم الملف (او حتة منه):',
 'showhidebots'          => '($1 بوتات)',
 'noimages'              => 'مافيش حاجة للعرض.',
 'ilsubmit'              => 'تدوير',
@@ -2631,7 +2636,7 @@ $1',
 
 # External editor support
 'edit-externally'      => 'استعمل تطبيق من بره علشان تعدل الملف دا',
-'edit-externally-help' => 'بص على [http://meta.wikimedia.org/wiki/Help:External_editors  تعليمات الاعداد] علشان معلومات اكتر.',
+'edit-externally-help' => 'بص على [http://www.mediawiki.org/wiki/Manual:External_editors  تعليمات الاعداد] علشان معلومات اكتر.',
 
 # 'all' in various places, this might be different for inflected languages
 'recentchangesall' => 'الكل',
@@ -2701,7 +2706,7 @@ $1
 'unit-pixel' => 'بيكس',
 
 # HTML dump
-'redirectingto' => 'بتتحول لـ [[$1]]...',
+'redirectingto' => 'بتتحول لـ [[:$1]]...',
 
 # action=purge
 'confirm_purge'        => 'امسح الكاش بتاع الصفحة دي؟
@@ -2717,9 +2722,8 @@ $1',
 'useajaxsearch'    => 'دور بـ أجاكس',
 
 # Separators for various lists, etc.
-'semicolon-separator' => '؛',
-'comma-separator'     => '،',
-'autocomment-prefix'  => '-',
+'semicolon-separator' => '؛&#32;',
+'comma-separator'     => '،&#32;',
 
 # Multipage image navigation
 'imgmultipageprev' => '← الصفحة اللي فاتت',
@@ -2741,7 +2745,7 @@ $1',
 # Auto-summaries
 'autosumm-blank'   => 'مسح كل اللي في الصفحة',
 'autosumm-replace' => "تبديل الصفحة ب'$1'",
-'autoredircomment' => 'تحويل لـ [[$1]]',
+'autoredircomment' => 'تحويل لـ [[:$1]]',
 'autosumm-new'     => 'صفحه جديده: $1',
 
 # Size units
@@ -2818,7 +2822,7 @@ $1',
 'version-software-product'         => 'المنتج',
 'version-software-version'         => 'النسخه',
 
-# Special:Filepath
+# Special:FilePath
 'filepath'         => 'مسار ملف',
 'filepath-page'    => 'الملف:',
 'filepath-submit'  => 'المسار',
@@ -2854,7 +2858,7 @@ $1',
 'specialpages-group-redirects'   => 'صفحات  التحويل الخاصه',
 'specialpages-group-spam'        => 'أدوات السبام',
 
-# Special:Blankpage
+# Special:BlankPage
 'blankpage'              => 'صفحة فاضية',
 'intentionallyblankpage' => 'الصفحة دي متسابة فاضية بالقصد',
 

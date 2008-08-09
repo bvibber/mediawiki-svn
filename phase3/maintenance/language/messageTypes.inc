@@ -150,6 +150,7 @@ $wgIgnoredMessages = array(
 	'fewestrevisions-summary',
 	'missingfiles-summary',
 	'upload-summary',
+	'pagetitle-view-mainpage',
 );
 
 /** Optional messages, which may be translated only if changed in the target language. */
@@ -162,6 +163,7 @@ $wgOptionalMessages = array(
 	'unit-pixel',
 	'userrights-irreversible-marker',
 	'tog-nolangconversion',
+	'tog-noconvertlink',
 	'yourvariant',
 	'variantname-zh-hans',
 	'variantname-zh-hant',
@@ -310,7 +312,8 @@ $wgOptionalMessages = array(
 	'autocomment-prefix',
 	'listgrouprights-right-display',
 	'timezone-utc',
-	'whatlinkshere-barrow',
+	'whatlinkshere-backlink',
+	'recentchangeslinked-backlink',
 );
 
 /** EXIF messages, which may be set as optional in several checks, but are generally mandatory */

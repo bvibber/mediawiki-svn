@@ -3,16 +3,6 @@
  * @defgroup DifferenceEngine DifferenceEngine
  */
 
-global $wgExternalDiffEngine;
-if($wgExternalDiffEngine == 'wikidiff3'){
-	require_once( 'Diff.php' );
-}
-
-global $wgEnableHtmlDiff;
-if($wgEnableHtmlDiff){
-	require_once( 'HtmlDiff.php' );
-}
-
 /**
  * Constant to indicate diff cache compatibility.
  * Bump this when changing the diff formatting in a way that
@@ -334,12 +324,14 @@ CONTROL;
 
 		wfProfileOut( __METHOD__ );
 	}
-	
-	
+
+
 	function renderHtmlDiff() {
-		global $wgOut;
+		global $wgOut, $IP;
 		wfProfileIn( __METHOD__ );
 		
+		require_once( "$IP/includes/HTMLDiff.php" );
+
 		$wgOut->addHTML( "<hr /><h2>HTML Diff</h2>\n" );
 		#add deleted rev tag if needed
 		if( !$this->mNewRev->userCan(Revision::DELETED_TEXT) ) {
@@ -353,11 +345,11 @@ CONTROL;
 		}
 
 		$this->loadText();
-		
+
 		if( is_object( $this->mOldRev ) ) {
 			$wgOut->setRevisionId( $this->mOldRev->getId() );
 		}
-		
+
 		global $wgTitle, $wgParser, $wgTitle;
 		$popts = $wgOut->parserOptions();
 		$oldTidy = $popts->setTidy( TRUE );
@@ -369,11 +361,11 @@ CONTROL;
 		//$wgOut->addParserOutputNoText( $parserOutput );
 		$oldHtml =	$parserOutput->getText();
 		wfRunHooks( 'OutputPageBeforeHTML',array( &$wgOut, &$oldHtml ) );
-		
+
 		if( is_object( $this->mNewRev ) ) {
 			$wgOut->setRevisionId( $this->mNewRev->getId() );
 		}
-		
+
 		$popts = $wgOut->parserOptions();
 		$oldTidy = $popts->setTidy( TRUE );
 
@@ -384,10 +376,10 @@ CONTROL;
 		$wgOut->addParserOutputNoText( $parserOutput );
 		$newHtml =	$parserOutput->getText();
 		wfRunHooks( 'OutputPageBeforeHTML',array( &$wgOut, &$newHtml ) );
-		
+
 		$differ = new HTMLDiffer(new DelegatingContentHandler($wgOut));
 		$differ->htmlDiff($oldHtml, $newHtml);
-		
+
 		wfProfileOut( __METHOD__ );
 	}
 
@@ -1094,12 +1086,12 @@ class _DiffEngine {
 			while ($xi < $n_from && $this->xchanged[$xi]){
 				++$xi;
 			}
-				
+
 			$ystart = $yi;
 			while ($yi < $n_to && $this->ychanged[$yi]){
 				++$yi;
 			}
-				
+
 			if ($xi>$xstart || $yi>$ystart){
 				$ranges[] = new RangeDifference($xstart,$xi,$ystart,$yi);
 			}
@@ -1116,6 +1108,8 @@ class _DiffEngine {
 
 		if($wgExternalDiffEngine == 'wikidiff3'){
 			// wikidiff3
+			global $IP;
+			require_once( "$IP/includes/Diff.php" );
 			list($this->xchanged, $this->ychanged) = wikidiff3_diff($from_lines, $to_lines, TRUE, 100000);
 		}else{
 			// old diff

@@ -485,7 +485,7 @@ $messages = array(
 'nosuchspecialpage' => 'Brak takiej strony specjalnej',
 'nospecialpagetext' => "<big>'''Brak żądanej strony specjalnej.'''</big>
 
-Listę dostępnych stron specjalnych znajdziesz [[Special:Specialpages|tutaj]].",
+Listę dostępnych stron specjalnych znajdziesz [[Special:SpecialPages|tutaj]].",
 
 # General errors
 'error'                => 'Błąd',
@@ -570,7 +570,7 @@ Uzasadnienie blokady: ''$2''.",
 'logouttitle'                => 'Wylogowanie użytkownika',
 'logouttext'                 => '<strong>Zostałeś wylogowany.</strong>
 
-Możesz kontynuować pracę w {{GRAMMAR:MS.lp|{{SITENAME}}}} jako niezarejestrowany użytkownik albo [[Special:Userlogin|zalogować się ponownie]] jako ten sam lub inny użytkownik.
+Możesz kontynuować pracę w {{GRAMMAR:MS.lp|{{SITENAME}}}} jako niezarejestrowany użytkownik albo [[Special:UserLogin|zalogować się ponownie]] jako ten sam lub inny użytkownik.
 Zauważ, że do momentu wyczyszczenia pamięci podręcznej przeglądarki niektóre strony mogą wyglądać tak, jakbyś wciąż był zalogowany.',
 'welcomecreation'            => '== Witaj, $1! ==
 Twoje konto zostało utworzone.
@@ -773,7 +773,7 @@ Jeśli utworzenie nowej strony nie było Twoim zamiarem, wciśnij ''Wstecz'' w s
 'anontalkpagetext'                 => "---- ''To jest strona dyskusji anonimowego użytkownika – takiego, który nie ma jeszcze swojego konta lub nie chce go w tej chwili używać.
 By go identyfikować, używamy adresów IP.
 Jednak adres IP może być współdzielony przez wielu użytkowników.
-Jeśli jesteś anonimowym użytkownikiem i uważasz, że zamieszczone tu komentarze nie są skierowane do Ciebie, [[Special:Userlogin/signup|utwórz konto]] lub [[Special:Userlogin|zaloguj się]] – dzięki temu unikniesz w przyszłości podobnych nieporozumień.''",
+Jeśli jesteś anonimowym użytkownikiem i uważasz, że zamieszczone tu komentarze nie są skierowane do Ciebie, [[Special:UserLogin/signup|utwórz konto]] lub [[Special:UserLogin|zaloguj się]] – dzięki temu unikniesz w przyszłości podobnych nieporozumień.''",
 'noarticletext'                    => 'Brak strony o tym tytule. Możesz [[Special:Search/{{PAGENAME}}|poszukać {{PAGENAME}} na innych stronach]] lub [{{fullurl:{{FULLPAGENAME}}|action=edit}} utworzyć stronę {{FULLPAGENAME}}].',
 'userpage-userdoesnotexist'        => 'Użytkownik „$1” nie jest zarejestrowany. Upewnij się, czy na pewno zamierzałeś utworzyć/zmodyfikować właśnie tę stronę.',
 'clearyourcache'                   => "'''Uwaga:''' Zmiany po zapisaniu nowych ustawień mogą nie być widoczne. Należy wyczyścić zawartość pamięci podręcznej przeglądarki internetowej.
@@ -792,13 +792,13 @@ Strony użytkownika zawierające CSS i JavaScript powinny zaczynać się małą 
 'previewconflict'                  => 'Podgląd odnosi się do tekstu z górnego pola edycji. Tak będzie wyglądać strona, jeśli zdecydujesz się ją zapisać.',
 'session_fail_preview'             => '<strong>Uwaga! Serwer nie może przetworzyć tej edycji z powodu utraty danych sesji.
 Spróbuj jeszcze raz.
-Jeśli to nie pomoże – [[Special:Userlogout|wyloguj się]] i zaloguj ponownie.</strong>',
+Jeśli to nie pomoże – [[Special:UserLogout|wyloguj się]] i zaloguj ponownie.</strong>',
 'session_fail_preview_html'        => "<strong>Uwaga! Serwer nie może przetworzyć tej edycji z powodu utraty danych sesji.</strong>
 
 ''Ponieważ w {{GRAMMAR:MS.lp|{{SITENAME}}}} włączona została opcja „surowy HTML”, podgląd został ukryty w celu zabezpieczenia przed atakami JavaScript.''
 
 <strong>Jeśli jest to uprawniona próba dokonania edycji, spróbuj jeszcze raz.
-Jeśli to nie pomoże – [[Special:Userlogout|wyloguj się]] i zaloguj ponownie.</strong>",
+Jeśli to nie pomoże – [[Special:UserLogout|wyloguj się]] i zaloguj ponownie.</strong>",
 'token_suffix_mismatch'            => '<strong>Twoja edycja została odrzucona, ponieważ twój klient pomieszał znaki interpunkcyjne w żetonie edycyjnym.
 Twoja edycja została odrzucona by zapobiec zniszczeniu tekstu strony.
 Takie problemy zdarzają się w wypadku korzystania z wadliwych anonimowych sieciowych usług proxy.</strong>',
@@ -841,7 +841,7 @@ Zapisując swoją edycję, oświadczasz, że ten tekst jest Twoim dziełem lub p
 'edittools'                        => '<!-- Znajdujący się tutaj tekst zostanie pokazany pod polem edycji i formularzem przesyłania plików. -->',
 'nocreatetitle'                    => 'Ograniczono możliwość tworzenia nowych stron',
 'nocreatetext'                     => 'W {{GRAMMAR:MS.lp|{{SITENAME}}}} ograniczono możliwość tworzenia nowych stron.
-Możesz edytować istniejące strony bądź też [[Special:Userlogin|zalogować się lub utworzyć konto]].',
+Możesz edytować istniejące strony bądź też [[Special:UserLogin|zalogować się lub utworzyć konto]].',
 'nocreate-loggedin'                => 'Nie masz uprawnień do tworzenia stron w {{GRAMMAR:MS.lp|{{SITENAME}}}}.',
 'permissionserrors'                => 'Błędy uprawnień',
 'permissionserrorstext'            => 'Nie masz uprawnień do tego działania z {{PLURAL:$1|następującej przyczyny|następujących przyczyn}}:',
@@ -854,7 +854,7 @@ Poniżej znajduje się rejestr usunięć tej strony:",
 # Parser/template warnings
 'expensive-parserfunction-warning'        => 'Uwaga! Ta strona zawiera zbyt wiele wywołań złożonych obliczeniowo funkcji parsera.
 
-Powinno ich być mniej niż $2, a jest obecnie $1.',
+Powinno być mniej niż $2 {{PLURAL:$2|wywołanie|wywołania|wywołań}}, a obecnie {{PLURAL:$1|jest $1 wywołanie|są $1 wywołania|jest $1 wywołań}}.',
 'expensive-parserfunction-category'       => 'Strony ze zbyt dużą liczbą wywołań trudnych funkcji parsera',
 'post-expand-template-inclusion-warning'  => 'Uwaga: Zbyt duża wielkość wykorzystanych szablonów.
 Niektóre szablony nie zostaną użyte.',
@@ -961,7 +961,7 @@ Inni administratorzy {{GRAMMAR:D.lp|{{SITENAME}}}} nadal będą mieć dostęp do
 # Suppression log
 'suppressionlog'     => 'Rejestr utajniania',
 'suppressionlogtext' => 'Poniżej znajduje się lista usunięć i blokad utajnionych przed administratorami.
-Zobacz [[Special:Ipblocklist|rejestr blokowania adresów IP]], jeśli chcesz sprawdzić aktualne zakazy i blokady.',
+Zobacz [[Special:IPBlockList|rejestr blokowania adresów IP]], jeśli chcesz sprawdzić aktualne zakazy i blokady.',
 
 # History merging
 'mergehistory'                     => 'Scal historię zmian stron',
@@ -1005,7 +1005,7 @@ Użycie linków nawigacyjnych kasuje wybór w kolumnie.',
 'searchresults-title'       => 'Wyniki wyszukiwania „$1”',
 'searchresulttext'          => 'Więcej informacji o przeszukiwaniu {{GRAMMAR:D.lp|{{SITENAME}}}} odnajdziesz na [[{{MediaWiki:Helppage}}|stronach pomocy]].',
 'searchsubtitle'            => "Wyniki dla zapytania '''[[:$1]]''' ([[Special:Prefixindex/$1|strony zaczynające się od „$1”]] |
-[[Special:Whatlinkshere/$1|strony, które linkują do „$1”]])",
+[[Special:WhatLinksHere/$1|strony, które linkują do „$1”]])",
 'searchsubtitleinvalid'     => "Dla zapytania '''$1'''",
 'noexactmatch'              => "'''Brak strony zatytułowanej „$1”.'''
 Możesz [[:$1|utworzyć tę stronę]].",
@@ -1051,7 +1051,7 @@ Jednak informacje o treści {{GRAMMAR:D.lp|{{SITENAME}}}} mogą być w Google ni
 'mypreferences'            => 'preferencje',
 'prefs-edits'              => 'Liczba edycji',
 'prefsnologin'             => 'Nie jesteś zalogowany',
-'prefsnologintext'         => 'Musisz się [[Special:Userlogin|zalogować]] przed zmianą swoich preferencji.',
+'prefsnologintext'         => 'Musisz się [[Special:UserLogin|zalogować]] przed zmianą swoich preferencji.',
 'prefsreset'               => 'Preferencje domyślne zostały odtworzone.',
 'qbsettings'               => 'Pasek szybkiego dostępu',
 'qbsettings-none'          => 'Brak',
@@ -1128,7 +1128,7 @@ Zapoznaj się z math/README w celu konfiguracji.',
 'userrights-reason'           => 'Powód zmiany',
 'userrights-no-interwiki'     => 'Nie masz dostępu do edycji uprawnień na innych wiki.',
 'userrights-nodatabase'       => 'Baza danych $1 nie istnieje lub nie jest lokalna.',
-'userrights-nologin'          => 'Musisz [[Special:Userlogin|zalogować się]] na konto administratora, by nadawać uprawnienia użytkownikom.',
+'userrights-nologin'          => 'Musisz [[Special:UserLogin|zalogować się]] na konto administratora, by nadawać uprawnienia użytkownikom.',
 'userrights-notallowed'       => 'Nie masz dostępu do nadawania uprawnień użytkownikom.',
 'userrights-changeable-col'   => 'Grupy, które możesz wybrać',
 'userrights-unchangeable-col' => 'Grupy, których nie możesz wybrać',
@@ -1258,16 +1258,16 @@ Strony z [[Special:Watchlist|listy obserwowanych]] są '''wytłuszczone'''.",
 'reupload'                    => 'Prześlij ponownie',
 'reuploaddesc'                => 'Przerwij wysyłanie i wróć do formularza wysyłki',
 'uploadnologin'               => 'Nie jesteś zalogowany',
-'uploadnologintext'           => 'Musisz się [[Special:Userlogin|zalogować]] przed przesłaniem plików.',
+'uploadnologintext'           => 'Musisz się [[Special:UserLogin|zalogować]] przed przesłaniem plików.',
 'upload_directory_missing'    => 'Katalog dla przesyłanych plików ($1) nie istnieje i nie może zostać utworzony przez serwer WWW.',
 'upload_directory_read_only'  => 'Serwer nie może zapisywać do katalogu ($1) przeznaczonego na przesyłane pliki.',
 'uploaderror'                 => 'Błąd wysyłania',
 'uploadtext'                  => "Użyj poniższego formularza do przesłania plików.
-Jeśli chcesz przejrzeć lub przeszukać dotychczas przesłane pliki, przejdź do [[Special:Imagelist|listy plików]]. Każde przesłanie jest odnotowane w [[Special:Log/upload|rejestrze przesyłanych plików]].
+Jeśli chcesz przejrzeć lub przeszukać dotychczas przesłane pliki, przejdź do [[Special:ImageList|listy plików]]. Każde przesłanie jest odnotowane w [[Special:Log/upload|rejestrze przesyłanych plików]], a usunięcie w [[Special:Log/delete|rejestrze usuniętych]].
 
 Plik pojawi się na stronie, jeśli użyjesz linku według jednego z następujących wzorów:
-* '''<tt><nowiki>[[</nowiki>{{ns:image}}<nowiki>:Plik.jpg]]</nowiki></tt>''' pokaże pliku w pełnej postaci
-* '''<tt><nowiki>[[</nowiki>{{ns:image}}<nowiki>:Plik.png|200px|thumb|left|podpis grafiki]]</nowiki></tt>''' pokaże szeroką na 200 pikseli miniaturkę umieszczoną na lewym marginesie i otoczoną ramką, z podpisem „podpis grafiki”
+* '''<tt><nowiki>[[</nowiki>{{ns:image}}<nowiki>:Plik.jpg]]</nowiki></tt>''' pokaże plik w pełnej postaci
+* '''<tt><nowiki>[[</nowiki>{{ns:image}}<nowiki>:Plik.png|200px|thumb|left|podpis grafiki]]</nowiki></tt>''' pokaże szeroką na 200 pikseli miniaturkę umieszczoną przy lewym marginesie, otoczoną ramką, z podpisem „podpis grafiki”
 * '''<tt><nowiki>[[</nowiki>{{ns:media}}<nowiki>:Plik.ogg]]</nowiki></tt>''' utworzy bezpośredni link do pliku bez wyświetlania samego pliku",
 'upload-permitted'            => 'Dopuszczalne formaty plików: $1.',
 'upload-preferred'            => 'Zalecane formaty plików: $1.',
@@ -1275,7 +1275,7 @@ Plik pojawi się na stronie, jeśli użyjesz linku według jednego z następują
 'uploadlog'                   => 'rejestr przesyłania plików',
 'uploadlogpage'               => 'Przesłane',
 'uploadlogpagetext'           => 'Lista ostatnio przesłanych plików.
-Przejdź na stronę [[Special:NewImages|Nowe pliki]], by zobaczyć pliki jako miniaturki.',
+Przejdź na stronę [[Special:NewImages|galerii nowych plików]], by zobaczyć pliki jako miniaturki.',
 'filename'                    => 'Nazwa pliku',
 'filedesc'                    => 'Opis',
 'fileuploadsummary'           => 'Opis',
@@ -1379,7 +1379,7 @@ Możesz także spróbować w czasie mniejszego obciążenia serwera.',
 'upload_source_url'  => ' (poprawny, publicznie dostępny adres URL)',
 'upload_source_file' => ' (plik na twoim komputerze)',
 
-# Special:Imagelist
+# Special:ImageList
 'imagelist-summary'     => 'Na tej stronie specjalnej prezentowane są wszystkie pliki przesłane na serwer.
 Domyślnie na górze listy umieszczane są ostatnio przesłane pliki.
 Kliknięcie w nagłówek kolumny zmienia sposób sortowania.',
@@ -1407,7 +1407,7 @@ Kliknięcie w nagłówek kolumny zmienia sposób sortowania.',
 'imagelinks'                     => 'Odnośniki do pliku',
 'linkstoimage'                   => '{{PLURAL:$1|Poniższa strona odwołuje|Następujące strony odwołują}} się do tego pliku:',
 'nolinkstoimage'                 => 'Żadna strona nie odwołuje się do tego pliku.',
-'morelinkstoimage'               => 'Pokaż [[Special:Whatlinkshere/$1|więcej odnośników]] do tego pliku.',
+'morelinkstoimage'               => 'Pokaż [[Special:WhatLinksHere/$1|więcej odnośników]] do tego pliku.',
 'redirectstofile'                => '{{PLURAL:$1|Następujący plik przekierowuje|Następujące pliki przekierowują}} do tego pliku:',
 'duplicatesoffile'               => '{{PLURAL:$1|Następujący plik jest kopią|Następujące pliki są kopiami}} tego pliku:',
 'sharedupload'                   => 'Ten plik znajduje się na wspólnym serwerze plików i może być używany w innych projektach.',
@@ -1591,7 +1591,7 @@ Możesz zawęzić liczbę wyników poprzez wybranie typu rejestru, nazwy użytko
 'logempty'             => 'Brak wpisów w rejestrze.',
 'log-title-wildcard'   => 'Szukaj tytułów zaczynających się od tego tekstu',
 
-# Special:Allpages
+# Special:AllPages
 'allpages'          => 'Wszystkie strony',
 'alphaindexline'    => 'od $1 do $2',
 'nextpage'          => 'Następna strona ($1)',
@@ -1614,27 +1614,27 @@ Możesz zawęzić liczbę wyników poprzez wybranie typu rejestru, nazwy użytko
 'special-categories-sort-count' => 'sortowanie według liczby',
 'special-categories-sort-abc'   => 'sortowanie alfabetyczne',
 
-# Special:Listusers
+# Special:ListUsers
 'listusersfrom'      => 'Pokaż użytkowników zaczynając od',
 'listusers-submit'   => 'Pokaż',
 'listusers-noresult' => 'Nie znaleziono żadnego użytkownika.',
 
-# Special:Listgrouprights
+# Special:ListGroupRights
 'listgrouprights'                 => 'Uprawnienia grup użytkowników',
-'listgrouprights-summary'         => 'Poniżej znajduje się spis zdefiniowanych na tej wiki grup użytkowników, z wyszczególnieniem przydzielonych im praw dostępu.
-Sprawdź stronę z [[{{MediaWiki:Listgrouprights-helppage}}|dodatkowymi informacjami]] o prawach dostępu.',
+'listgrouprights-summary'         => 'Poniżej znajduje się spis zdefiniowanych na tej wiki grup użytkowników, z wyszczególnieniem przydzielonych im uprawnień.
+Sprawdź stronę z [[{{MediaWiki:Listgrouprights-helppage}}|dodatkowymi informacjami]] o uprawnieniach.',
 'listgrouprights-group'           => 'Grupa',
 'listgrouprights-rights'          => 'Uprawnienia',
 'listgrouprights-helppage'        => 'Help:Uprawnienia grup użytkowników',
 'listgrouprights-members'         => '(lista członków grupy)',
-'listgrouprights-addgroup'        => 'Może dodawać grupy: $1',
-'listgrouprights-removegroup'     => 'Może usuwać grupy: $1',
-'listgrouprights-addgroup-all'    => 'Może dodawać wszystkie grupy',
-'listgrouprights-removegroup-all' => 'Może usuwać wszystkie grupy',
+'listgrouprights-addgroup'        => 'Można dodać do {{PLURAL:$2|grupy|grup}}: $1',
+'listgrouprights-removegroup'     => 'Można usunąć z {{PLURAL:$2|grupy|grup}}: $1',
+'listgrouprights-addgroup-all'    => 'Można dodać do każdej grupy',
+'listgrouprights-removegroup-all' => 'Można usunąć ze wszystkich grup',
 
 # E-mail user
 'mailnologin'     => 'Brak adresu',
-'mailnologintext' => 'Musisz się [[Special:Userlogin|zalogować]] i mieć wpisany aktualny adres e-mailowy w swoich [[Special:Preferences|preferencjach]], aby móc wysłać e-mail do innego użytkownika.',
+'mailnologintext' => 'Musisz się [[Special:UserLogin|zalogować]] i mieć wpisany aktualny adres e-mailowy w swoich [[Special:Preferences|preferencjach]], aby móc wysłać e-mail do innego użytkownika.',
 'emailuser'       => 'Wyślij e-mail do tego użytkownika',
 'emailpage'       => 'Wyślij e-mail do użytkownika',
 'emailpagetext'   => 'Poniższy formularz pozwala na wysłanie jednej wiadomości do użytkownika pod warunkiem, że wpisał on poprawny adres e-mail w swoich preferencjach.
@@ -1661,10 +1661,10 @@ Adres e-mailowy, który został przez Ciebie wprowadzony w [[Special:Preferences
 'nowatchlist'          => 'Lista obserwowanych przez Ciebie stron jest pusta.',
 'watchlistanontext'    => '$1, aby obejrzeć lub edytować elementy listy obserwowanych.',
 'watchnologin'         => 'Nie jesteś zalogowany',
-'watchnologintext'     => 'Musisz się [[Special:Userlogin|zalogować]] przed modyfikacją listy obserwowanych artykułów.',
+'watchnologintext'     => 'Musisz się [[Special:UserLogin|zalogować]] przed modyfikacją listy obserwowanych artykułów.',
 'addedwatch'           => 'Dodana do listy obserwowanych',
 'addedwatchtext'       => "Strona „[[:$1|$1]]” została dodana do Twojej [[Special:Watchlist|listy obserwowanych]].
-Każda zmiana treści tej strony lub związanej z nią strony dyskusji zostanie odnotowana na poniższej liście. Dodatkowo nazwa strony zostanie '''wytłuszczona''' na [[Special:Recentchanges|liście ostatnich zmian]], aby ułatwić Ci zauważenie faktu zmiany.",
+Każda zmiana treści tej strony lub związanej z nią strony dyskusji zostanie odnotowana na poniższej liście. Dodatkowo nazwa strony zostanie '''wytłuszczona''' na [[Special:RecentChanges|liście ostatnich zmian]], aby ułatwić Ci zauważenie faktu zmiany.",
 'removedwatch'         => 'Usunięto z listy obserwowanych',
 'removedwatchtext'     => 'Strona „[[:$1]]” została usunięta z Twojej [[Special:Watchlist|listy obserwowanych]].',
 'watch'                => 'Obserwuj',
@@ -1779,10 +1779,10 @@ Polecenie zostało anulowane, aby uniknąć przechwycenia sesji.
 Naciśnij „wstecz” w przeglądarce, przeładuj stronę, po czym ponownie wydaj polecenie.',
 'protectlogpage'              => 'Zabezpieczone',
 'protectlogtext'              => 'Poniżej znajduje się lista blokad założonych i zdjętych z pojedynczych stron.
-Aby przejrzeć listę obecnie działających zabezpieczeń, przejdź na stronę wykazu [[Special:Protectedpages|zabezpieczonych stron]].',
-'protectedarticle'            => 'zabezpieczył [[$1]]',
-'modifiedarticleprotection'   => 'zmienił poziom zabezpieczenia [[$1]]',
-'unprotectedarticle'          => 'odbezpieczył [[$1]]',
+Aby przejrzeć listę obecnie działających zabezpieczeń, przejdź na stronę wykazu [[Special:ProtectedPages|zabezpieczonych stron]].',
+'protectedarticle'            => 'zabezpieczył [[:$1]]',
+'modifiedarticleprotection'   => 'zmienił poziom zabezpieczenia [[:$1]]',
+'unprotectedarticle'          => 'odbezpieczył [[:$1]]',
 'protect-title'               => 'Zmiana poziomu zabezpieczenia „$1”',
 'protect-legend'              => 'Potwierdź zabezpieczenie',
 'protectcomment'              => 'powód zabezpieczenia',
@@ -1898,7 +1898,6 @@ $1',
 'whatlinkshere'            => 'Linkujące',
 'whatlinkshere-title'      => 'Strony linkujące do $1',
 'whatlinkshere-page'       => 'Strona',
-'linklistsub'              => '(Lista linków)',
 'linkshere'                => "Następujące strony odwołują się do '''[[:$1]]''':",
 'nolinkshere'              => "Żadna strona nie odwołuje się do '''[[:$1]]'''.",
 'nolinkshere-ns'           => "Żadna strona nie odwołuje się do '''[[:$1]]''' w wybranej przestrzeni nazw.",
@@ -1949,7 +1948,7 @@ Podaj powód (np. umieszczając nazwy stron, na których dopuszczono się wandal
 'badipaddress'                    => 'Niepoprawny adres IP',
 'blockipsuccesssub'               => 'Zablokowanie powiodło się',
 'blockipsuccesstext'              => 'Użytkownik [[Special:Contributions/$1|$1]] został zablokowany.<br />
-Przejdź do [[Special:Ipblocklist|listy zablokowanych adresów IP]], by przejrzeć blokady.',
+Przejdź do [[Special:IPBlockList|listy zablokowanych adresów IP]], by przejrzeć blokady.',
 'ipb-edit-dropdown'               => 'Edytuj przyczynę blokady',
 'ipb-unblock-addr'                => 'Odblokuj $1',
 'ipb-unblock'                     => 'Odblokuj użytkownika lub adres IP',
@@ -1982,7 +1981,7 @@ Przyczyna blokady $1 to: „$2”',
 'blocklogentry'                   => 'zablokował [[$1]], czas blokady: $2 $3',
 'blocklogtext'                    => 'Poniżej znajduje się lista blokad założonych i zdjętych z poszczególnych adresów IP.
 Na liście nie znajdą się adresy IP, które zablokowano w sposób automatyczny.
-By przejrzeć listę obecnie aktywnych blokad, przejdź na stronę [[Special:Ipblocklist|zablokowanych adresów i użytkowników]].',
+By przejrzeć listę obecnie aktywnych blokad, przejdź na stronę [[Special:IPBlockList|zablokowanych adresów i użytkowników]].',
 'unblocklogentry'                 => 'odblokował $1',
 'block-log-flags-anononly'        => 'tylko anonimowi',
 'block-log-flags-nocreate'        => 'blokada tworzenia konta',
@@ -2021,7 +2020,7 @@ Potwierdź, że to jest zgodne z Twoimi zamiarami, i że odblokujesz bazę danyc
 'lockdbsuccesssub'    => 'Baza danych została pomyślnie zablokowana',
 'unlockdbsuccesssub'  => 'Blokada bazy danych została zdjęta',
 'lockdbsuccesstext'   => 'Baza danych została zablokowana.<br />
-Pamiętaj by [[Special:Unlockdb|zdjąć blokadę]] po zakończeniu działań administracyjnych.',
+Pamiętaj by [[Special:UnlockDB|zdjąć blokadę]] po zakończeniu działań administracyjnych.',
 'unlockdbsuccesstext' => 'Baza danych została odblokowana.',
 'lockfilenotwritable' => 'Nie można zapisać pliku blokady bazy danych.
 Blokowanie i odblokowywanie bazy danych, wymaga by plik mógł być zapisywany przez web serwer.',
@@ -2034,9 +2033,10 @@ Blokowanie i odblokowywanie bazy danych, wymaga by plik mógł być zapisywany p
 Pod starym tytułem zostanie umieszczona strona przekierowująca.
 Możesz automatycznie zaktualizować przekierowania wskazujące na tytuł przed zmianą.
 Jeśli nie wybierzesz tej opcji, upewnij się po przeniesieniu strony, czy nie powstały [[Special:DoubleRedirects|podwójne]] lub [[Special:BrokenRedirects|zerwane przekierowania]].
-Pamiętaj, że to ty odpowiadasz za to, by linki w dalszym ciągu pokazywały tam, gdzie powinny.
+Jesteś odpowiedzialny za to, by linki w dalszym ciągu pokazywały tam, gdzie powinny.
 
-Strona '''nie''' zostanie przeniesiona, jeśli strona o nowej nazwie już istnieje, chyba że jest pusta lub jest przekierowaniem i ma pustą historię edycji. To oznacza, że błędną operację zmiany nazwy można bezpiecznie odwrócić, zmieniając nową nazwę strony na poprzednią, i że nie można nadpisać istniejącej strony.
+Strona '''nie''' zostanie przeniesiona, jeśli strona o nowej nazwie już istnieje, chyba że jest pusta lub jest przekierowaniem i ma pustą historię edycji.
+To oznacza, że błędną operację zmiany nazwy można bezpiecznie odwrócić, zmieniając nową nazwę strony na poprzednią, i że nie można nadpisać istniejącej strony.
 
 '''UWAGA!'''
 Może to być drastyczna lub nieprzewidywalna zmiana w przypadku popularnych stron.
@@ -2065,15 +2065,15 @@ Wybierz inną nazwę.',
 'movepage-page-moved'     => 'Strona $1 została przeniesiona do $2.',
 'movepage-page-unmoved'   => 'Nazwa strony $1 nie może zostać zmieniona na $2.',
 'movepage-max-pages'      => 'Przeniesionych zostało $1 {{PLURAL:$1|strona|strony|stron}}. Większa liczba nie może być przeniesiona automatycznie.',
-'1movedto2'               => 'stronę [[$1]] przeniósł do [[$2]]',
-'1movedto2_redir'         => 'stronę [[$1]] przeniósł do [[$2]] nad przekierowaniem',
+'1movedto2'               => 'stronę [[:$1]] przeniósł do [[:$2]]',
+'1movedto2_redir'         => 'stronę [[:$1]] przeniósł do [[:$2]] nad przekierowaniem',
 'movelogpage'             => 'Przeniesione',
 'movelogpagetext'         => 'Lista stron, które ostatnio zostały przeniesione.',
 'movereason'              => 'Powód',
 'revertmove'              => 'cofnij',
 'delete_and_move'         => 'Usuń i przenieś',
 'delete_and_move_text'    => '== Przeniesienie wymaga usunięcia innej strony ==
-Strona docelowa „[[$1]]” istnieje.
+Strona docelowa „[[:$1]]” istnieje.
 Czy chcesz ją usunąć, by zrobić miejsce dla przenoszonej strony?',
 'delete_and_move_confirm' => 'Tak, usuń stronę',
 'delete_and_move_reason'  => 'Usunięto, by zrobić miejsce dla przenoszonej strony',
@@ -2157,7 +2157,7 @@ Wszystkie operacje importu transwiki są odnotowywane w [[Special:Log/import|rej
 # Import log
 'importlogpage'                    => 'Rejestr importu',
 'importlogpagetext'                => 'Rejestr przeprowadzonych importów stron z innych serwisów wiki.',
-'import-logentry-upload'           => 'zaimportował [[$1]] przez przesłanie pliku',
+'import-logentry-upload'           => 'zaimportował [[:$1]] przez przesłanie pliku',
 'import-logentry-upload-detail'    => '$1 {{PLURAL:$1|wersja|wersje|wersji}}',
 'import-logentry-interwiki'        => 'zaimportował $1 używając transwiki',
 'import-logentry-interwiki-detail' => '$1 {{PLURAL:$1|wersja|wersje|wersji}} z $2',
@@ -2315,7 +2315,7 @@ $1',
 'show-big-image'       => 'Oryginalna rozdzielczość',
 'show-big-image-thumb' => '<small>Rozmiar podglądu: $1 × $2 pikseli</small>',
 
-# Special:Newimages
+# Special:NewImages
 'newimages'             => 'Najnowsze pliki',
 'imagelisttext'         => "Poniżej na {{PLURAL:$1||posortowanej $2}} liście {{PLURAL:$1|znajduje|znajdują|znajduje}} się '''$1''' {{PLURAL:$1|plik|pliki|plików}}.",
 'newimages-summary'     => 'Na tej stronie specjalnej prezentowane są ostatnio przesłane pliki.',
@@ -2603,7 +2603,7 @@ Pozostałe pola zostaną domyślnie ukryte.
 
 # External editor support
 'edit-externally'      => 'Edytuj plik, używając zewnętrznej aplikacji',
-'edit-externally-help' => "Więcej informacji o używaniu [http://meta.wikimedia.org/wiki/Help:External_editors zewnętrznych edytorów] (''ang.'').",
+'edit-externally-help' => "Więcej informacji o używaniu [http://www.mediawiki.org/wiki/Manual:External_editors zewnętrznych edytorów] (''ang.'').",
 
 # 'all' in various places, this might be different for inflected languages
 'recentchangesall' => 'wszystkie',
@@ -2673,7 +2673,7 @@ Czy na pewno chcesz go ponownie utworzyć?",
 'recreate'            => 'Utwórz ponownie',
 
 # HTML dump
-'redirectingto' => 'Przekierowanie do [[$1]]...',
+'redirectingto' => 'Przekierowanie do [[:$1]]...',
 
 # action=purge
 'confirm_purge'        => 'Wyczyścić pamięć podręczną dla tej strony?
@@ -2708,7 +2708,7 @@ $1',
 # Auto-summaries
 'autosumm-blank'   => 'UWAGA! Usunięcie treści (strona pozostała pusta)!',
 'autosumm-replace' => 'UWAGA! Zastąpienie treści hasła bardzo krótkim tekstem: „$1”',
-'autoredircomment' => 'Przekierowanie do [[$1]]',
+'autoredircomment' => 'Przekierowanie do [[:$1]]',
 'autosumm-new'     => 'Nowa strona: $1',
 
 # Size units
@@ -2801,7 +2801,7 @@ Możesz również [[Special:Watchlist/edit|użyć standardowego edytora]].',
 'version-software-product'         => 'Nazwa',
 'version-software-version'         => 'Wersja',
 
-# Special:Filepath
+# Special:FilePath
 'filepath'         => 'Ścieżka do pliku',
 'filepath-page'    => 'Plik',
 'filepath-submit'  => 'Ścieżka',
@@ -2840,7 +2840,7 @@ Wpisz nazwę pliku z pominięciem prefiksu „{{ns:image}}:”.',
 'specialpages-group-redirects'   => 'Specjalne strony przekierowujące',
 'specialpages-group-spam'        => 'Narzędzia walki ze spamem',
 
-# Special:Blankpage
+# Special:BlankPage
 'blankpage'              => 'Pusta strona',
 'intentionallyblankpage' => 'Ta strona umyślnie pozostała pusta',
 

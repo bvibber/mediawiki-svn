@@ -200,7 +200,7 @@ $messages = array(
 'upload'   => 'Чуоза Файл',
 'filename' => 'файл цIе',
 
-# Special:Imagelist
+# Special:ImageList
 'imagelist_name' => 'Файли цІе',
 'imagelist_user' => 'юзер',
 
@@ -219,7 +219,7 @@ $messages = array(
 # Special:Log
 'specialloguserlabel' => 'Юзер:',
 
-# Special:Allpages
+# Special:AllPages
 'allpages'       => 'Массо таптараш',
 'allarticles'    => 'Массо таптараш',
 'allpagessubmit' => 'кхочушде',
@@ -265,7 +265,7 @@ $messages = array(
 
 # Move page
 'movearticle'             => 'цIe хийца таптар',
-'1movedto2'               => '«[[$1]]» хийцина - «[[$2]]»',
+'1movedto2'               => '«[[:$1]]» хийцина - «[[:$2]]»',
 'delete_and_move'         => 'ДІадайа тІаккха цIe хийца',
 'delete_and_move_confirm' => 'ХIаъ, дIадайъа таптар',
 
@@ -283,7 +283,7 @@ $messages = array(
 # Media information
 'show-big-image' => 'Доккха де сурт',
 
-# Special:Newimages
+# Special:NewImages
 'newimages' => 'Керла файлаш галерей',
 
 'exif-scenetype-1' => 'Сурт сфотографировано напрямую',

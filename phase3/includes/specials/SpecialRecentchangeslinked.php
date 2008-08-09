@@ -162,14 +162,19 @@ class SpecialRecentchangeslinked extends SpecialRecentchanges {
 		$extraOpts['submit'] = Xml::submitbutton( wfMsg('allpagessubmit') );
 		return $extraOpts;
 	}
-	
-	function setTopText( &$out, $opts ){}
-	
-	function setBottomText( &$out, $opts ){
+
+	function setTopText( OutputPage $out, FormOptions $opts ) {
+		global $wgUser;
+		$skin = $wgUser->getSkin();
+		if( isset( $this->mTargetTitle ) && is_object( $this->mTargetTitle ) )
+			$out->setSubtitle( wfMsg( 'recentchangeslinked-backlink', $skin->link( $this->mTargetTitle,
+				$this->mTargetTitle->getPrefixedText(), array(), array( 'redirect' => 'no'  ) ) ) );
+	}
+
+	function setBottomText( OutputPage $out, FormOptions $opts ){
 		if( isset( $this->mTargetTitle ) && is_object( $this->mTargetTitle ) ){
 			global $wgUser;
 			$out->setFeedAppendQuery( "target=" . urlencode( $this->mTargetTitle->getPrefixedDBkey() ) );
-			$out->addHTML("&lt; ".$wgUser->getSkin()->makeLinkObj( $this->mTargetTitle, "", "redirect=no" )."<hr />\n");
 		}
 		if( isset( $this->mResultEmpty ) && $this->mResultEmpty ){
 			$out->addWikiMsg( 'recentchangeslinked-noresult' );	

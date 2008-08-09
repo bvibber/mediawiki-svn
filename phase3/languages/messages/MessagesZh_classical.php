@@ -109,6 +109,7 @@ $messages = array(
 'tog-watchlisthideown'        => '不哨己文',
 'tog-watchlisthidebots'       => '不哨僕文',
 'tog-showhiddencats'          => '示隱類',
+'tog-noconvertlink'           => '非轉鍵題',
 
 'underline-always'  => '恆',
 'underline-never'   => '絕',
@@ -293,6 +294,7 @@ $messages = array(
 
 'badaccess'        => '子未逮',
 'badaccess-group0' => '子未逮，歉限之。',
+'badaccess-groups' => '子未逮，歉限之有{{PLURAL:$2|一|多}}：$1',
 
 'versionrequired'     => '惠置$1媒維基',
 'versionrequiredtext' => '惠置$1媒維基，見[[Special:Version|版]]。',
@@ -338,7 +340,7 @@ $messages = array(
 'nosuchspecialpage' => '無此特查',
 'nospecialpagetext' => "'''<big>無此特查。</big>'''
 
-見[[Special:Specialpages|{{int:specialpages}}]]。",
+見[[Special:SpecialPages|{{int:specialpages}}]]。",
 
 # General errors
 'error'                => '有誤',
@@ -405,7 +407,7 @@ $2',
 # Login and logout pages
 'logouttitle'                => '去簿',
 'logouttext'                 => '<strong>子去簿矣</strong><br />
-子可匿名還覽{{SITENAME}}，或[[Special:Userlogin|復登]]同簿、異簿。未清謄本，覽器文舊，且慎之。',
+子可匿名還覽{{SITENAME}}，或[[Special:UserLogin|復登]]同簿、異簿。未清謄本，覽器文舊，且慎之。',
 'welcomecreation'            => '== $1大駕光臨! ==
 子簿增矣，敬更[[Special:Preferences|簿註]]。',
 'loginpagetitle'             => '合符節',
@@ -479,6 +481,7 @@ $2',
 'createaccount-text'         => '有人於{{SITENAME}}用爾之電郵增名為 "$2" 之簿 ($4)，符節為 "$3" 。汝應登，再改符節也。
 
 如簿誤增，爾可略之。',
+'login-throttled'            => '爾多試於此簿之符中。請候再試之。',
 'loginlanguagelabel'         => '語：$1',
 
 # Edit page toolbar
@@ -514,8 +517,20 @@ $2',
 'missingsummary'                   => "''''醒示：'''子未概之，復存則文倍焉。",
 'missingcommenttext'               => '請贊之',
 'blockedtitle'                     => '子見禁',
-'blockedtext'                      => "<big>'''子名、IP見禁。'''</big>禁者$1也，因''$2''故。* 始之時為：$8* 終之時為：$6* 見禁之人：$7存惑可詢$1，或[[{{MediaWiki:Grouppage-sysop}}|有秩]]，[[Special:Preferences|簿註]]無驛則信不遣。另，子IP為$3，其禁號為#$5。詢時切附之。",
-'autoblockedtext'                  => "爾之IP或簿自禁，因簿先用，禁者$1也。因故：:\\'\\'$2\\'\\'* 始之時為：$8* 終之時為：$6存惑可詢$1，或[[{{MediaWiki:Grouppage-sysop}}|有秩]]，[[Special:Preferences|簿註]]無驛則信不遣。另，子禁號為#$5。詢時切附之。",
+'blockedtext'                      => "<big>'''子名、IP見禁。'''</big>禁者$1也，因''$2''故。
+
+* 始之時為：$8
+* 終之時為：$6
+* 見禁之人：$7
+
+存惑可詢$1，或[[{{MediaWiki:Grouppage-sysop}}|有秩]]，[[Special:Preferences|簿註]]無驛則信不遣。另，子IP為$3，其禁號為#$5。詢時切附之。",
+'autoblockedtext'                  => "爾之IP或簿自禁，因簿先用，禁者$1也。因故：:\\'\\'$2\\'\\'
+
+* 始之時為：$8
+* 終之時為：$6
+* 見禁之人：$7
+
+存惑可詢$1，或[[{{MediaWiki:Grouppage-sysop}}|有秩]]，[[Special:Preferences|簿註]]無驛則信不遣。另，子用IP $3，禁號為#$5。詢時切附之。",
 'blockedoriginalsource'            => "'''$1'''本源如下：",
 'blockededitsource'                => "子'''$1纂文'''如下：",
 'whitelistedittitle'               => '登簿以纂',
@@ -530,7 +545,7 @@ $2',
 'newarticle'                       => '撰',
 'newarticletext'                   => '此頁尚缺。欲補，撰於下，有惑見[[{{ns:help}}:Contents|助]]。
 誤入者，返前即可。',
-'anontalkpagetext'                 => "----''此匿論也，為未簿或不簿者設，IP俱錄以辨人焉。然IP不獨，恐生亂象，不喜惠[[Special:Userlogin/signup|增]][[Special:Userlogin|登簿]]遠之。",
+'anontalkpagetext'                 => "----''此匿論也，為未簿或不簿者設，IP俱錄以辨人焉。然IP不獨，恐生亂象，不喜惠[[Special:UserLogin/signup|增]][[Special:UserLogin|登簿]]遠之。",
 'noarticletext'                    => '此頁無文。子可 [[Special:Search/{{PAGENAME}}|尋同題]]，或[{{fullurl:{{FULLPAGENAME}}|action=edit}} 撰新文]。',
 'userpage-userdoesnotexist'        => '"$1"之簿未增也。請建纂本頁前查之。',
 'clearyourcache'                   => "'''註：'''重取頁面，文方新焉。
@@ -545,11 +560,11 @@ $2',
 'updated'                          => '（新）',
 'note'                             => '<strong>註</strong>',
 'previewnote'                      => '<strong>此乃預覽，尚未儲焉。</strong>',
-'session_fail_preview'             => '<strong>歉哉有變，子纂未存焉，惠再之。如復不成，[[Special:Userlogout|重登]]再試也。</strong>',
+'session_fail_preview'             => '<strong>歉哉有變，子纂未存焉，惠再之。如復不成，[[Special:UserLogout|重登]]再試也。</strong>',
 'session_fail_preview_html'        => "<strong>歉哉有變，子纂未存焉</strong>
 
 ''此維基亦合純HTML，除預覽以遠惡JavaScript侵。''
-<strong>纂文若合，惠再之。如復不成，簿[[Special:Userlogout|重登]]焉。</strong>",
+<strong>纂文若合，惠再之。如復不成，簿[[Special:UserLogout|重登]]焉。</strong>",
 'token_suffix_mismatch'            => '<strong>君修見拒，蓋因代理之故，亂事見兮。</strong>',
 'editing'                          => '纂$1',
 'editingsection'                   => '纂節$1',
@@ -576,7 +591,7 @@ $2',
 'template-semiprotected'           => '(半錮)',
 'hiddencategories'                 => '此頁屬隱類之員有$1：',
 'nocreatetitle'                    => '新題謝焉',
-'nocreatetext'                     => '舊題可修，新題謝焉。[[Special:Userlogin|登簿、增簿]]以逮權也。',
+'nocreatetext'                     => '舊題可修，新題謝焉。[[Special:UserLogin|登簿、增簿]]以逮權也。',
 'nocreate-loggedin'                => '子權未逮，新頁謝焉。',
 'permissionserrors'                => '權未逮也',
 'permissionserrorstext'            => '子權未逮，有{{PLURAL:$1|因|因}}如下：',
@@ -587,7 +602,7 @@ $2',
 # Parser/template warnings
 'expensive-parserfunction-warning'        => '警：頁有多貴功呼。
 
-其須少$2，現有$1。',
+其須少$2呼，現有$1呼。',
 'expensive-parserfunction-category'       => '頁有多貴功呼',
 'post-expand-template-inclusion-warning'  => '警：含模過大也。
 一些模板將不會包含。',
@@ -683,7 +698,7 @@ $2',
 # Suppression log
 'suppressionlog'     => '誌廢',
 'suppressionlogtext' => '下乃刪及錮物之列也。
-[[Special:Ipblocklist|IP之錮]]有現之閱。',
+[[Special:IPBlockList|IP之錮]]有現之閱。',
 
 # History merging
 'mergehistory'                     => '併頁之誌',
@@ -725,7 +740,7 @@ $2',
 'searchresults'             => '得尋',
 'searchresults-title'       => '$1得尋',
 'searchresulttext'          => '何索{{SITENAME}}，詳見[[{{MediaWiki:Helppage}}|{{int:help}}]]。',
-'searchsubtitle'            => "'''[[:$1]]'''尋焉（[[Special:Prefixindex/$1|『$1』之全首頁]] | [[Special:Whatlinkshere/$1|『$1』之全取佐]]）",
+'searchsubtitle'            => "'''[[:$1]]'''尋焉（[[Special:Prefixindex/$1|『$1』之全首頁]] | [[Special:WhatLinksHere/$1|『$1』之全取佐]]）",
 'searchsubtitleinvalid'     => "'''$1'''尋焉",
 'noexactmatch'              => "'''無題曰\"\$1\"。'''子可[[:\$1|撰之]]。",
 'noexactmatch-nocreate'     => "'''無題曰\"\$1\"。'''",
@@ -768,7 +783,7 @@ $2',
 'mypreferences'         => '簿註',
 'prefs-edits'           => '數纂：',
 'prefsnologin'          => '未登簿',
-'prefsnologintext'      => '註記須[[Special:Userlogin|登簿]]。',
+'prefsnologintext'      => '註記須[[Special:UserLogin|登簿]]。',
 'prefsreset'            => '簿註歸白',
 'changepassword'        => '易符節',
 'skin'                  => '面版',
@@ -831,7 +846,7 @@ $2',
 'userrights-reason'              => '因：',
 'userrights-no-interwiki'        => '爾無權改他山wiki之簿權也。',
 'userrights-nodatabase'          => '資料庫$1無存或非本地也。',
-'userrights-nologin'             => '爾以有秩乲簿[[Special:Userlogin|登]]後以定簿之權也。',
+'userrights-nologin'             => '爾以有秩乲簿[[Special:UserLogin|登]]後以定簿之權也。',
 'userrights-notallowed'          => '爾之簿無權定簿之權也。',
 'userrights-changeable-col'      => '爾可動之社',
 'userrights-unchangeable-col'    => '爾非動之社',
@@ -957,11 +972,11 @@ $2',
 'reupload'                   => '復獻之',
 'reuploaddesc'               => '消進乃返載獻',
 'uploadnologin'              => '未登簿',
-'uploadnologintext'          => '[[Special:Userlogin|登簿]]始可進獻',
+'uploadnologintext'          => '[[Special:UserLogin|登簿]]始可進獻',
 'upload_directory_missing'   => '目錄$1已失，無建之。',
 'upload_directory_read_only' => '目錄$1禁入，無可獻。',
 'uploaderror'                => '進獻有變',
-'uploadtext'                 => "下表以獻，[[Special:Imagelist|載獻]]覽之。或見[[Special:Log/upload|誌獻]]。
+'uploadtext'                 => "下表以獻，[[Special:ImageList|載獻]]覽之。或見[[Special:Log/upload|誌獻]]與[[Special:Log/delete|誌刪]]。
 欲嵌頁中，是格鏈之其一：
 * '''<tt><nowiki>[[</nowiki>{{ns:image}}:File.jpg]]</tt>'''用此整獻
 * '''<tt><nowiki>[[</nowiki>{{ns:image}}:File.png||200px|thumb|left|名]]</tt>'''以二百像素置左框置『名』
@@ -1010,7 +1025,7 @@ $2',
 
 'license-nopreview' => '（謝草覽）',
 
-# Special:Imagelist
+# Special:ImageList
 'imagelist-summary'     => '此奇頁示檔之全呈也。
 設最後之檔呈示於表頂。
 點題改其列之。',
@@ -1036,8 +1051,11 @@ $2',
 'filehist-comment'               => '註',
 'imagelinks'                     => '圖鏈',
 'linkstoimage'                   => '下頁連本檔有$1：',
+'linkstoimage-more'              => '連檔有多於$1。
+下表示連檔之首$1。
+[[Special:WhatLinksHere/$2|整表]]可供之閱也。',
 'nolinkstoimage'                 => '無頁連本檔也。',
-'morelinkstoimage'               => '閱檔[[Special:Whatlinkshere/$1|接]]。',
+'morelinkstoimage'               => '閱檔[[Special:WhatLinksHere/$1|接]]。',
 'redirectstofile'                => '下檔轉到此檔有$1：',
 'duplicatesoffile'               => '下檔重此檔有$1：',
 'sharedupload'                   => '此檔為共傳，可另項用也。',
@@ -1110,7 +1128,7 @@ $2',
 'sitestatstext'          => "庫藏有頁'''$1'''，除議、釋、芻文、渡與不濟者，有足文$2、獻品'''$8'''。
 自{{SITENAME}}始焉，閱頁'''$3'''，纂文'''$4'''。均之則每頁'''$5'''覽，每文'''$6'''纂。
 [http://www.mediawiki.org/wiki/Manual:Job_queue job queue]長'''$7'''。",
-'userstatstext'          => "有[[Special:Listusers|簿]]者'''$1'''，內'''$2'''人掌$5權，據百分之'''$4'''。",
+'userstatstext'          => "有[[Special:ListUsers|簿]]者'''$1'''，內'''$2'''人掌$5權，據百分之'''$4'''。",
 'statistics-mostpopular' => '燴炙',
 
 'disambiguations'      => '釋義',
@@ -1195,7 +1213,7 @@ $2',
 'logempty'             => '無合誌也。',
 'log-title-wildcard'   => '題以此始者，取之',
 
-# Special:Allpages
+# Special:AllPages
 'allpages'          => '全典',
 'alphaindexline'    => '自$1至$2',
 'nextpage'          => '次頁（$1）',
@@ -1218,12 +1236,12 @@ $2',
 'special-categories-sort-count' => '排數',
 'special-categories-sort-abc'   => '排字',
 
-# Special:Listusers
+# Special:ListUsers
 'listusersfrom'      => '始簿：',
 'listusers-submit'   => '見',
 'listusers-noresult' => '尋無簿。',
 
-# Special:Listgrouprights
+# Special:ListGroupRights
 'listgrouprights'                 => '簿組權',
 'listgrouprights-summary'         => '下乃wiki之簿權表及存取之權也。
 欲知權節，可望[[{{MediaWiki:Listgrouprights-helppage}}|此]]矣。',
@@ -1231,14 +1249,14 @@ $2',
 'listgrouprights-rights'          => '權',
 'listgrouprights-helppage'        => 'Help:組權',
 'listgrouprights-members'         => '（社員表）',
-'listgrouprights-addgroup'        => '加組：$1',
-'listgrouprights-removegroup'     => '除組：$1',
+'listgrouprights-addgroup'        => '加{{PLURAL:$2|一|多}}組：$1',
+'listgrouprights-removegroup'     => '除{{PLURAL:$2|一|多}}組：$1',
 'listgrouprights-addgroup-all'    => '加全組',
 'listgrouprights-removegroup-all' => '除全組',
 
 # E-mail user
 'mailnologin'     => '無驛',
-'mailnologintext' => '[[Special:Userlogin|登簿]]置郵，方可捎書。',
+'mailnologintext' => '[[Special:UserLogin|登簿]]置郵，方可捎書。',
 'emailuser'       => '捎君',
 'emailpage'       => '捎書',
 'emailpagetext'   => '若此君有郵，表下捎焉。署[[Special:Preferences|子簿郵]]以候往返。',
@@ -1264,9 +1282,9 @@ $2',
 'nowatchlist'          => '無哨',
 'watchlistanontext'    => '$1以治哨',
 'watchnologin'         => '未登簿',
-'watchnologintext'     => '[[Special:Userlogin|登簿]]以治哨。',
+'watchnologintext'     => '[[Special:UserLogin|登簿]]以治哨。',
 'addedwatch'           => '派哨',
-'addedwatchtext'       => "\"[[:\$1]]\"哨派矣。後有易、議者可見於[[Special:Watchlist|哨站]]，且'''粗體'''列於[[Special:Recentchanges|近易]]。",
+'addedwatchtext'       => "\"[[:\$1]]\"哨派矣。後有易、議者可見於[[Special:Watchlist|哨站]]，且'''粗體'''列於[[Special:RecentChanges|近易]]。",
 'removedwatch'         => '撤哨',
 'removedwatchtext'     => '"[[:$1]]"[[Special:Watchlist|哨]]撤矣。',
 'watch'                => '派哨',
@@ -1363,10 +1381,10 @@ $NEWPAGE
 'rollback-success'            => '去$1之作，復為$2之本耳。',
 'sessionfailure'              => '登簿有變。為防盜簿，返前重取再為之。',
 'protectlogpage'              => '誌緘',
-'protectlogtext'              => '誌緘如下；近緘見[[Special:Protectedpages|此]] 。',
-'protectedarticle'            => '緘焉"[[$1]]"',
+'protectlogtext'              => '誌緘如下；近緘見[[Special:ProtectedPages|此]] 。',
+'protectedarticle'            => '緘焉"[[:$1]]"',
 'modifiedarticleprotection'   => '令"$1"',
-'unprotectedarticle'          => '啟焉"[[$1]]"',
+'unprotectedarticle'          => '啟焉"[[:$1]]"',
 'protect-title'               => '更"$1"之緘',
 'protect-legend'              => '准緘',
 'protectcomment'              => '贊曰',
@@ -1447,26 +1465,27 @@ $NEWPAGE
 'blanknamespace' => '主',
 
 # Contributions
-'contributions' => '功績',
-'mycontris'     => '吾績',
-'contribsub2'   => '$1勛（$2）',
-'nocontribs'    => '無勛及也。',
-'uctop'         => '(至頂)',
-'month'         => '且不越',
-'year'          => '年不越',
+'contributions'       => '功績',
+'contributions-title' => '$1之功績',
+'mycontris'           => '吾績',
+'contribsub2'         => '$1勛（$2）',
+'nocontribs'          => '無勛及也。',
+'uctop'               => '(至頂)',
+'month'               => '且不越',
+'year'                => '年不越',
 
-'sp-contributions-newbies'     => '惟列新進',
-'sp-contributions-newbies-sub' => '予新進',
-'sp-contributions-blocklog'    => '誌禁',
-'sp-contributions-search'      => '問勛',
-'sp-contributions-username'    => '簿名或IP址',
-'sp-contributions-submit'      => '問',
+'sp-contributions-newbies'       => '惟列新進',
+'sp-contributions-newbies-sub'   => '予新進',
+'sp-contributions-newbies-title' => '新進之功績',
+'sp-contributions-blocklog'      => '誌禁',
+'sp-contributions-search'        => '問勛',
+'sp-contributions-username'      => '簿名或IP址',
+'sp-contributions-submit'        => '問',
 
 # What links here
 'whatlinkshere'            => '取佐',
-'whatlinkshere-title'      => '$1取佐',
+'whatlinkshere-title'      => '「$1」取佐',
 'whatlinkshere-page'       => '題',
-'linklistsub'              => '（列取佐）',
 'linkshere'                => "取佐'''[[:$1]]'''如下：",
 'nolinkshere'              => "無頁取佐'''[[:$1]]'''。",
 'nolinkshere-ns'           => "名冊內無頁取佐'''[[:$1]]'''。",
@@ -1513,7 +1532,7 @@ $NEWPAGE
 'ipbwatchuser'                    => '哨該簿之齋與議',
 'badipaddress'                    => 'IP不格',
 'blockipsuccesssub'               => '禁焉',
-'blockipsuccesstext'              => '[[Special:Contributions/$1|$1]]禁焉。表禁<br />見[[Special:Ipblocklist|此]]。',
+'blockipsuccesstext'              => '[[Special:Contributions/$1|$1]]禁焉。表禁<br />見[[Special:IPBlockList|此]]。',
 'ipb-edit-dropdown'               => '改證',
 'ipb-unblock-addr'                => '赦$1',
 'ipb-unblock'                     => '赦簿、址',
@@ -1543,7 +1562,7 @@ $NEWPAGE
 'autoblocker'                     => '近日$1"$2"；同子IP址，故禁焉。',
 'blocklogpage'                    => '誌禁',
 'blocklogentry'                   => '禁[[$1]]屆$2$3',
-'blocklogtext'                    => '此誌禁赦；自禁不示。見[[Special:Ipblocklist|此]]列今禁者。',
+'blocklogtext'                    => '此誌禁赦；自禁不示。見[[Special:IPBlockList|此]]列今禁者。',
 'unblocklogentry'                 => '$1赦焉',
 'block-log-flags-anononly'        => '惟禁匿',
 'block-log-flags-nocreate'        => '禁增簿',
@@ -1573,7 +1592,7 @@ $NEWPAGE
 'locknoconfirm'       => '未篤焉。',
 'lockdbsuccesssub'    => '庫已閉',
 'unlockdbsuccesssub'  => '庫已開',
-'lockdbsuccesstext'   => '庫閉矣。<br />檢畢切[[Special:Unlockdb|開之]]。',
+'lockdbsuccesstext'   => '庫閉矣。<br />檢畢切[[Special:UnlockDB|開之]]。',
 'unlockdbsuccesstext' => '庫開矣',
 'lockfilenotwritable' => '未准更鎖庫檔。欲開閉之，網頁伺服須得更也。',
 'databasenotlocked'   => '庫未閉焉。',
@@ -1605,8 +1624,8 @@ $NEWPAGE
 'movepage-page-moved'     => '頁$1遷$2矣。',
 'movepage-page-unmoved'   => '頁$1遷$2不成。',
 'movepage-max-pages'      => '上之$1頁遷矣同非自遷之下。',
-'1movedto2'               => '[[$1]]遷至[[$2]]',
-'1movedto2_redir'         => '[[$1]]遷至[[$2]]為渡',
+'1movedto2'               => '[[:$1]]遷至[[:$2]]',
+'1movedto2_redir'         => '[[:$1]]遷至[[:$2]]為渡',
 'movelogpage'             => '誌遷',
 'movelogpagetext'         => '頁遷如下：',
 'movereason'              => '因',
@@ -1614,7 +1633,7 @@ $NEWPAGE
 'delete_and_move'         => '刪遷',
 'delete_and_move_text'    => '==准刪==
 
-往遷"[[$1]]"存，刪之以替乎？',
+往遷"[[:$1]]"存，刪之以替乎？',
 'delete_and_move_confirm' => '刪之',
 'delete_and_move_reason'  => '為遷而刪之',
 'selfmove'                => '鄉遷同源，如未移也。',
@@ -1687,7 +1706,7 @@ $NEWPAGE
 # Import log
 'importlogpage'                    => '誌入',
 'importlogpagetext'                => '秩入匯自他山之審。',
-'import-logentry-upload'           => '[[$1]]上傳而匯',
+'import-logentry-upload'           => '[[:$1]]上傳而匯',
 'import-logentry-upload-detail'    => '有審$1',
 'import-logentry-interwiki'        => '互匯$1',
 'import-logentry-interwiki-detail' => '$1審自$2',
@@ -1849,10 +1868,12 @@ $NEWPAGE
 'show-big-image'       => '全幅',
 'show-big-image-thumb' => '<small>縮圖幅有像素$1矩$2</small>',
 
-# Special:Newimages
+# Special:NewImages
 'newimages'             => '新圖之廊',
 'imagelisttext'         => "下表乃按$2排之的'''$1'''檔。",
 'newimages-summary'     => '此奇頁示最後呈上之檔也。',
+'newimages-legend'      => '濾',
+'newimages-label'       => '名（或其部）：',
 'showhidebots'          => '（$1僕）',
 'noimages'              => '無可見。',
 'ilsubmit'              => '尋檔',
@@ -1935,7 +1956,7 @@ $1
 'recreate'            => '復',
 
 # HTML dump
-'redirectingto' => '渡至[[$1]]…',
+'redirectingto' => '渡至[[:$1]]…',
 
 # action=purge
 'confirm_purge'        => '清謄本？
@@ -1951,8 +1972,9 @@ $1',
 'useajaxsearch'    => '用AJAX尋之',
 
 # Separators for various lists, etc.
-'comma-separator' => '、',
-'colon-separator' => '：',
+'semicolon-separator' => '；',
+'comma-separator'     => '、',
+'colon-separator'     => '：',
 
 # Multipage image navigation
 'imgmultipageprev' => '←前頁',
@@ -1974,7 +1996,7 @@ $1',
 # Auto-summaries
 'autosumm-blank'   => '盡除之',
 'autosumm-replace' => "置為'$1'",
-'autoredircomment' => '渡至[[$1]]',
+'autoredircomment' => '渡至[[:$1]]',
 'autosumm-new'     => '新文：$1',
 
 # Size units
@@ -2036,7 +2058,7 @@ $1',
 'version-software-product'         => '品',
 'version-software-version'         => '版',
 
-# Special:Filepath
+# Special:FilePath
 'filepath'         => '檔路',
 'filepath-page'    => '檔名：',
 'filepath-submit'  => '尋路',
@@ -2074,7 +2096,7 @@ $1',
 'specialpages-group-redirects'   => '轉之特查',
 'specialpages-group-spam'        => '反垃圾之器',
 
-# Special:Blankpage
+# Special:BlankPage
 'blankpage'              => '白頁',
 'intentionallyblankpage' => '此頁為白也，試速之用',
 

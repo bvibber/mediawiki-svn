@@ -283,7 +283,7 @@ $messages = array(
 'nosuchspecialpage' => 'Андый махсус бит юк',
 'nospecialpagetext' => "<big>'''Сез сорый торган махсус бит юк.'''</big>
 
-[[Special:Specialpages|Махсус битләр исемлеге]] кара.",
+[[Special:SpecialPages|Махсус битләр исемлеге]] кара.",
 
 # General errors
 'error'                => 'Хата',
@@ -504,7 +504,7 @@ $2',
 Әгәр сез бу бит ялгышлык белән ачса идегез, гади браузерыгызның '''артка''' кнопкасына басыгыз.",
 'anontalkpagetext'       => "----''Бу хисапланмаган да хисапланган исем белән кергән кулланучы фикер алышу бите.
 Аны билгеләү өчен IP-адрес файдалый.
-Әгәр сез аноним кулланучы һәм сез, сезгә күндерелмәгән хәбәрләр алдыгыз, дип саныйсыз (бер IP-адрес күп кулланучы өчен була ала), зинһар, [[Special:Userlogin|системага керегез]], киләчәктә аңлашмау теләмәсәгез.''",
+Әгәр сез аноним кулланучы һәм сез, сезгә күндерелмәгән хәбәрләр алдыгыз, дип саныйсыз (бер IP-адрес күп кулланучы өчен була ала), зинһар, [[Special:UserLogin|системага керегез]], киләчәктә аңлашмау теләмәсәгез.''",
 'noarticletext'          => "Хәзер бу биттә текст юк. Сез [[Special:Search/{{PAGENAME}}|аның башы башка мәкаләләрдә таба]] яки '''[{{fullurl:{{FULLPAGENAME}}|action=edit}} андый баш белән бит ясый]''' аласыз.",
 'clearyourcache'         => "'''Искәрмә:''' Битне саклаудан соң төзәтмәләр күрү өчен күзәтүчегезнең кэшын буш итегез.
 '''Mozilla / Firefox''': ''Ctrl+Shift+R'', '''Safari''': ''Cmd+Shift+R'', '''IE:''' ''Ctrl+F5'', '''Konqueror''': ''F5'', '''Opera''': ''Tools→Preferences'' сайлагында.",
@@ -577,7 +577,7 @@ $2',
 'mypreferences'         => 'Көйләнмәләрем',
 'prefs-edits'           => 'Үзгәртүләр исәбе:',
 'prefsnologin'          => 'Кермәгәнсез',
-'prefsnologintext'      => 'Кулланучы көйләнмәләрене үзгәртү өчен, сез [[Special:Userlogin|керергә]] тиешсез.',
+'prefsnologintext'      => 'Кулланучы көйләнмәләрене үзгәртү өчен, сез [[Special:UserLogin|керергә]] тиешсез.',
 'qbsettings'            => 'Күчешләр аслыгы',
 'qbsettings-none'       => 'Күрсәтмәскә',
 'changepassword'        => 'Серсүзне алыштырырга',
@@ -662,7 +662,7 @@ $2',
 'uploadlogpage' => 'Йөкләү журналы',
 'uploadedimage' => '«[[$1]]» йөкләнгән',
 
-# Special:Imagelist
+# Special:ImageList
 'imagelist'             => 'Сүрәтләр исемлеге',
 'imagelist_date'        => 'Вакыт',
 'imagelist_name'        => 'Ат',
@@ -757,7 +757,7 @@ $2',
 'log-search-legend'    => 'Журналларны эзләү',
 'log-search-submit'    => 'Башкару',
 
-# Special:Allpages
+# Special:AllPages
 'allpages'       => 'Барлык битләр',
 'alphaindexline' => '$1 дан $2 гача',
 'nextpage'       => 'Чираттагы бит ($1)',
@@ -774,7 +774,7 @@ $2',
 'special-categories-sort-count' => 'исәп буенча тәртипләү',
 'special-categories-sort-abc'   => 'әлифба буенча тәртипләү',
 
-# Special:Listusers
+# Special:ListUsers
 'listusers-submit'   => 'Күрсәтергә',
 'listusers-noresult' => 'Кулланучыларны табылмады.',
 
@@ -838,8 +838,8 @@ $2',
 'deletereasonotherlist'       => 'Башка сәбәп',
 'rollbacklink'                => 'кире кайтару',
 'protectlogpage'              => 'Яклану журналы',
-'protectedarticle'            => '«[[$1]]» якланган',
-'unprotectedarticle'          => '«[[$1]]» инде якланмаган',
+'protectedarticle'            => '«[[:$1]]» якланган',
+'unprotectedarticle'          => '«[[:$1]]» инде якланмаган',
 'protectcomment'              => 'Искәрмә:',
 'protect-unchain'             => 'Битнең күчерү рөхсәте ачарга',
 'protect-text'                => 'Биредә сез <strong><nowiki>$1</nowiki></strong> бите өчен яклау дәрәҗәсене карый һәм үзгәрә аласыз.',
@@ -899,7 +899,6 @@ $2',
 'whatlinkshere'       => 'Бирегә нәрсә сылтый',
 'whatlinkshere-title' => '$1 битенә сылтаган битләр',
 'whatlinkshere-page'  => 'Бит:',
-'linklistsub'         => '(Сылтамалар исемлеге)',
 'linkshere'           => "'''[[:$1]]''' биткә чираттагы битләр сылтый:",
 'nolinkshere'         => "'''[[:$1]]''' битенә башка битләр сылтамыйлар.",
 'isredirect'          => 'җибәрү өчен бит',
@@ -925,7 +924,7 @@ $2',
 'movepage-moved' => "<big>'''«$1» бит «$2» биткә күчкән'''</big>", # The two titles are passed in plain text as $3 and $4 to allow additional goodies in the message.
 'movedto'        => 'күчерергән:',
 'movetalk'       => 'Бәйләнешле фикер алышу битне күчерергә',
-'1movedto2'      => '«[[$1]]» бите «[[$2]]» биткә күчерергән',
+'1movedto2'      => '«[[:$1]]» бите «[[:$2]]» биткә күчерергән',
 'movelogpage'    => 'Күчерү журналы',
 'movereason'     => 'Сәбәп:',
 'revertmove'     => 'кире кайту',
@@ -990,7 +989,7 @@ $2',
 'show-big-image'       => 'Тулы ачыклык',
 'show-big-image-thumb' => '<small>Алдан карау зурлыгы: $1 × $2 нокта</small>',
 
-# Special:Newimages
+# Special:NewImages
 'newimages' => 'Яңа сүрәтләр җыелмасы',
 
 # Metadata

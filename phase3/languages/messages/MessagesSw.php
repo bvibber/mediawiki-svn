@@ -289,7 +289,7 @@ Tafadhali fikiria kuhusu kuvunja ukurasa kwa vipande vifupi.</strong>',
 'templatesusedpreview'   => 'Vigezo vinavyotumiwa katika mandhari haya:',
 'template-protected'     => '(kulindwa)',
 'template-semiprotected' => '(ulindaji kwa kiasi)',
-'nocreatetext'           => '{{SITENAME}} imebana uwezekano kutengeneza kurasa mpya. Unaweza kurudia na kuhariri kurasa zilizomo, au [[Special:Userlogin|ingia au anza akaunti]].',
+'nocreatetext'           => '{{SITENAME}} imebana uwezekano kutengeneza kurasa mpya. Unaweza kurudia na kuhariri kurasa zilizomo, au [[Special:UserLogin|ingia au anza akaunti]].',
 'recreate-deleted-warn'  => "'''Ilani: Unatengeneza tena ukurasa uliofutwa tayari.'''
 
 Fikiria kama inafaa kuendelea kuhariri ukurasa huu.
@@ -380,7 +380,7 @@ Ufunguo: (sasa) = tofauti na toleo la sasa, (kabla) = tofauti na toleo lililotan
 'ignorewarning' => 'Hifadhi bila kujali maonyo yoyote.',
 'uploadedimage' => ' "[[$1]]" imepakiwa',
 
-# Special:Imagelist
+# Special:ImageList
 'imagelist' => 'Orodha ya mafaili',
 
 # Image description page
@@ -469,7 +469,7 @@ Ufunguo: (sasa) = tofauti na toleo la sasa, (kabla) = tofauti na toleo lililotan
 'log'                  => 'Kumbukumbu',
 'all-logs-page'        => 'Kumbukumbu zote',
 
-# Special:Allpages
+# Special:AllPages
 'allpages'       => 'Kurasa zote',
 'alphaindexline' => '$1 hadi $2',
 'nextpage'       => 'Ukurasa ujao ($1)',
@@ -492,7 +492,7 @@ Ufunguo: (sasa) = tofauti na toleo la sasa, (kabla) = tofauti na toleo lililotan
 'addedwatch'           => 'Imeongezwa kwenye maangalizi yako',
 'addedwatchtext'       => "Ukurasa \"[[:\$1]]\" umewekwa kwenye [[Special:Watchlist|maangalizi]] yako.
 Mabadiliko katika ukurasa huo na ukurasa wake wa majadiliano utaonekana hapo,
-na ukurasa utaonyeshwa wenye '''koze''' kwenye [[Special:Recentchanges|orodha ya mabadiliko ya karibuni]]
+na ukurasa utaonyeshwa wenye '''koze''' kwenye [[Special:RecentChanges|orodha ya mabadiliko ya karibuni]]
 ili kukusaidia kutambua.
 
 Ukitaka kufuta ukurasa huo kutoka maangalizi yako baadaye, bonyeza \"Acha kufuatilia\" katika mwamba pembeni.",
@@ -568,7 +568,6 @@ Hivi ni vipimo kwa ukurasa <strong>$1</strong>:',
 # What links here
 'whatlinkshere'       => 'Viungo viungacho ukurasa huu',
 'whatlinkshere-title' => 'Kurasa zilizounganishwa na $1',
-'linklistsub'         => '(Orodha ya viungo)',
 'linkshere'           => "Kurasa zifuatazo zimeunganishwa na '''[[:$1]]''':",
 'nolinkshere'         => "Hakuna kurasa zilizounganishwa na '''[[:$1]]'''.",
 'isredirect'          => 'elekeza ukurasa',
@@ -622,7 +621,7 @@ Chagua jina lengine.',
 'talkexists'       => "'''Ukurasa wenyewe ulisogezwa salama, lakini ukurasa wake wa majadiliano haujasogezwa kwa sababu tayari kuna ukurasa wenye jina lake.  Tafadhali ziunganishe kwa mkono.'''",
 'movedto'          => 'imesogezwa hadi',
 'movetalk'         => 'Sogeza ukurasa wake wa majadiliano',
-'1movedto2'        => '[[$1]] umesogezwa hapa [[$2]]',
+'1movedto2'        => '[[:$1]] umesogezwa hapa [[:$2]]',
 'movelogpage'      => 'Kumbukumbu ya uhamiaji',
 'movereason'       => 'Sababu:',
 'revertmove'       => 'rejesha',
@@ -696,7 +695,7 @@ Chagua jina lengine.',
 'show-big-image'       => 'Ukubwa wa awali',
 'show-big-image-thumb' => '<small>Ukubwa wa hakikisho hili: piseli $1 x $2</small>',
 
-# Special:Newimages
+# Special:NewImages
 'newimages' => 'Mkusanyiko wa faili jipya',
 
 # Bad image list
@@ -722,7 +721,7 @@ likifupishwa. Nyuga zingine zitafichwa kama chaguo-msingi.
 
 # External editor support
 'edit-externally'      => 'Tumia programu ya nje kuhariri faili hii',
-'edit-externally-help' => 'Ona [http://meta.wikimedia.org/wiki/Help:External_editors maelezo (kwa Kiingereza)] kwa maarifa mengine.',
+'edit-externally-help' => 'Ona [http://www.mediawiki.org/wiki/Manual:External_editors maelezo (kwa Kiingereza)] kwa maarifa mengine.',
 
 # 'all' in various places, this might be different for inflected languages
 'watchlistall2' => 'zote',

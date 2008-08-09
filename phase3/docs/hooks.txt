@@ -1078,6 +1078,12 @@ $skin: Skin object
 &$text: bottomScripts Text
 Append to $text to add additional text/scripts after the stock bottom scripts.
 
+'SkinAfterContent': Allows extensions to add text after the page content and
+article metadata.
+&$data: (string) Text to be printed out directly (without parsing)
+This hook should work in all skins. Just set the &$data variable to the text
+you're going to add.
+
 'SkinBuildSidebar': At the end of Skin::buildSidebar()
 $skin: Skin object
 &$bar: Sidebar contents
@@ -1296,6 +1302,9 @@ $user: User object
 
 'UserGetImplicitGroups': Called in User::getImplicitGroups()
 &$groups: List of implicit (automatically-assigned) groups
+
+'UserGetReservedNames': allows to modify $wgReservedUsernames at run time
+*&$reservedUsernames: $wgReservedUsernames
 
 'UserGetRights': Called in User::getRights()
 $user: User to get rights for

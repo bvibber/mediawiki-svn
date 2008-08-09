@@ -1,5 +1,5 @@
 <?php
-/** Bamanankan (Bamanankan)
+/** Bambara (Bamanankan)
  *
  * @ingroup Language
  * @file
@@ -44,7 +44,7 @@ $messages = array(
 'editthispage'   => 'Nyɛ nin yɛlɛma',
 'newpage'        => 'Nyɛ kura',
 'specialpage'    => 'Nyɛ kɛrɛnkɛrɛnnen',
-'talk'           => 'Baro',
+'talk'           => 'Sɔsɔli',
 'toolbox'        => 'Minanw',
 'userpage'       => 'Utilisateur ka nyɛ',
 'imagepage'      => 'Janin ka nyɛ',
@@ -96,7 +96,7 @@ $messages = array(
 'move'         => 'telun',
 'movethispage' => 'Nyɛ telun',
 
-# Special:Allpages
+# Special:AllPages
 'allpages' => 'Nyɛw bɛɛ',
 
 # Special:Categories
@@ -120,7 +120,7 @@ $messages = array(
 # Attribution
 'others' => 'wɛrɛ',
 
-# Special:Newimages
+# Special:NewImages
 'ilsubmit' => 'Nyini',
 
 # Special:SpecialPages

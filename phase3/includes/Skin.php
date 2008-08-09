@@ -60,6 +60,21 @@ class Skin extends Linker {
 		}
 		return $wgValidSkinNames;
 	}
+	
+	/**
+	 * Fetch the list of usable skins in regards to $wgSkipSkins.
+	 * Useful for Special:Preferences and other places where you
+	 * only want to show skins users _can_ use.
+	 * @return array of strings
+	 */
+	public static function getUsableSkins() {
+		global $wgSkipSkins;
+		$usableSkins = self::getSkinNames();
+		foreach ( $wgSkipSkins as $skip ) {
+			unset( $usableSkins[$skip] );
+		}
+		return $usableSkins;
+	}
 
 	/**
 	 * Normalize a skin preference value to a form that can be loaded.
@@ -266,6 +281,9 @@ class Skin extends Linker {
 		$out->out( $this->beforeContent() );
 
 		$out->out( $out->mBodytext . "\n" );
+
+		// See self::afterContentHook() for documentation
+		$out->out ($this->afterContentHook());
 
 		$out->out( $this->afterContent() );
 
@@ -735,6 +753,41 @@ END;
 
 	function getQuickbarCompensator( $rows = 1 ) {
 		return "<td width='152' rowspan='{$rows}'>&nbsp;</td>";
+	}
+
+	/**
+	 * This runs a hook to allow extensions placing their stuff after content
+	 * and article metadata (e.g. categories).
+	 * Note: This function has nothing to do with afterContent().
+	 *
+	 * This hook is placed here in order to allow using the same hook for all
+	 * skins, both the SkinTemplate based ones and the older ones, which directly
+	 * use this class to get their data.
+	 *
+	 * The output of this function gets processed in SkinTemplate::outputPage() for
+	 * the SkinTemplate based skins, all other skins should directly echo it.
+	 *
+	 * Returns an empty string by default, if not changed by any hook function.
+	 */
+	protected function afterContentHook () {
+		$data = "";
+
+		if (wfRunHooks ('SkinAfterContent', array (&$data))) {
+			// adding just some spaces shouldn't toggle the output
+			// of the whole <div/>, so we use trim() here
+			if (trim ($data) != "") {
+				// Doing this here instead of in the skins to
+				// ensure that the div has the same ID in all
+				// skins
+				$data = "<div id='mw-data-after-content'>\n" .
+					"\t$data\n" .
+					"</div>\n";
+			}
+		} else {
+			wfDebug ('Hook SkinAfterContent changed output processing.');
+		}
+
+		return $data;
 	}
 
 	/**

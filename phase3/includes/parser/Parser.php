@@ -279,15 +279,15 @@ class Parser
 	 * Convert wikitext to HTML
 	 * Do not call this function recursively.
 	 *
-	 * @param string $text Text we want to parse
-	 * @param Title &$title A title object
-	 * @param array $options
-	 * @param boolean $linestart
-	 * @param boolean $clearState
-	 * @param int $revid number to pass in {{REVISIONID}}
+	 * @param $text String: text we want to parse
+	 * @param $title A title object
+	 * @param $options ParserOptions
+	 * @param $linestart boolean
+	 * @param $clearState boolean
+	 * @param $revid Int: number to pass in {{REVISIONID}}
 	 * @return ParserOutput a ParserOutput
 	 */
-	public function parse( $text, &$title, $options, $linestart = true, $clearState = true, $revid = null ) {
+	public function parse( $text, Title $title, ParserOptions $options, $linestart = true, $clearState = true, $revid = null ) {
 		/**
 		 * First pass--just handle <nowiki> sections, pass the rest off
 		 * to internalParse() which does all the real work.
@@ -1745,7 +1745,7 @@ class Parser
 			}
 
 			# Self-link checking
-			if( $nt->getFragment() === '' ) {
+			if( $nt->getFragment() === '' && $nt->getNamespace() != NS_SPECIAL ) {
 				if( in_array( $nt->getPrefixedText(), $selflink, true ) ) {
 					$s .= $prefix . $sk->makeSelfLinkObj( $nt, $text, '', $trail );
 					continue;
@@ -2714,7 +2714,7 @@ class Parser
 	function limitationWarn( $limitationType, $current=null, $max=null) {
 		$msgName = $limitationType . '-warning';
 		//does no harm if $current and $max are present but are unnecessary for the message
-		$warning = wfMsg( $msgName, $current, $max); 
+		$warning = wfMsgExt( $msgName, array( 'parsemag', 'escape' ), $current, $max ); 
 		$this->mOutput->addWarning( $warning );
 		$cat = Title::makeTitleSafe( NS_CATEGORY, wfMsgForContent( $limitationType . '-category' ) );
 		if ( $cat ) {
@@ -4831,12 +4831,14 @@ class Parser
 	 * @return string
 	 */
 	public function getDefaultSort() {
+		global $wgCategoryPrefixedDefaultSortkey;
 		if( $this->mDefaultSort !== false ) {
 			return $this->mDefaultSort;
+		} elseif ($this->mTitle->getNamespace() == NS_CATEGORY ||
+			!$wgCategoryPrefixedDefaultSortkey) {
+			return $this->mTitle->getText();
 		} else {
-			return $this->mTitle->getNamespace() == NS_CATEGORY
-					? $this->mTitle->getText()
-					: $this->mTitle->getPrefixedText();
+			return $this->mTitle->getPrefixedText();
 		}
 	}
 

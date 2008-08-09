@@ -33,6 +33,7 @@ class LoginForm {
 	const RESET_PASS = 7;
 	const ABORTED = 8;
 	const CREATE_BLOCKED = 9;
+	const THROTTLED = 10;
 
 	var $mName, $mPassword, $mRetype, $mReturnTo, $mCookieCheck, $mPosted;
 	var $mAction, $mCreateaccount, $mCreateaccountMail, $mMailmypassword;
@@ -372,6 +373,23 @@ class LoginForm {
 		if ( '' == $this->mName ) {
 			return self::NO_NAME;
 		}
+		
+		global $wgPasswordAttemptThrottle;
+		if ( is_array($wgPasswordAttemptThrottle) ) {
+			$key = wfMemcKey( 'password-throttle', wfGetIP(), md5( $this->mName ) );
+			$count = $wgPasswordAttemptThrottle['count'];
+			$period = $wgPasswordAttemptThrottle['seconds'];
+			
+			global $wgMemc;
+			$cur = $wgMemc->get($key);
+			if ( !$cur ) {
+				$wgMemc->add( $key, 1, $period ); // start counter
+			} else if ( $cur < $count ) {
+				$wgMemc->incr($key);
+			} else if ( $cur >= $count ) {
+				return self::THROTTLED;
+			}
+		}
 
 		// Load $wgUser now, and check to see if we're logging in as the same name. 
 		// This is necessary because loading $wgUser (say by calling getName()) calls
@@ -540,6 +558,9 @@ class LoginForm {
 				break;
 			case self::CREATE_BLOCKED:
 				$this->userBlockedMessage();
+				break;
+			case self::THROTTLED:
+				$this->mainLoginForm( wfMsg( 'login-throttled' ) );
 				break;
 			default:
 				throw new MWException( "Unhandled case value" );

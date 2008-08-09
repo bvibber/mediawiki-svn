@@ -513,11 +513,11 @@ class PreferencesForm {
 	function mainPrefsForm( $status , $message = '' ) {
 		global $wgUser, $wgOut, $wgLang, $wgContLang;
 		global $wgAllowRealName, $wgImageLimits, $wgThumbLimits;
-		global $wgDisableLangConversion;
+		global $wgDisableLangConversion, $wgDisableTitleConversion;
 		global $wgEnotifWatchlist, $wgEnotifUserTalk,$wgEnotifMinorEdits;
 		global $wgRCShowWatchingUsers, $wgEnotifRevealEditorAddress;
 		global $wgEnableEmail, $wgEnableUserEmail, $wgEmailAuthentication;
-		global $wgContLanguageCode, $wgDefaultSkin, $wgSkipSkins, $wgAuth;
+		global $wgContLanguageCode, $wgDefaultSkin, $wgAuth;
 		global $wgEmailConfirmToEdit, $wgAjaxSearch, $wgEnableMWSuggest;
 
 		$wgOut->setPageTitle( wfMsg( 'preferences' ) );
@@ -734,6 +734,16 @@ class PreferencesForm {
 					)
 				);
 			}
+			
+			if(count($variantArray) > 1 && !$wgDisableLangConversion && !$wgDisableTitleConversion) {
+				$wgOut->addHtml(
+					Xml::tags( 'tr', null,
+						Xml::tags( 'td', array( 'colspan' => '2' ),
+							$this->getToggle( "noconvertlink" )
+						)
+					)
+				);
+			}
 		}
 
 		# Password
@@ -819,7 +829,7 @@ class PreferencesForm {
 		$previewtext = wfMsg('skin-preview');
 		# Only show members of Skin::getSkinNames() rather than
 		# $skinNames (skins is all skin names from Language.php)
-		$validSkinNames = Skin::getSkinNames();
+		$validSkinNames = Skin::getUsableSkins();
 		# Sort by UI skin name. First though need to update validSkinNames as sometimes
 		# the skinkey & UI skinname differ (e.g. "standard" skinkey is "Classic" in the UI).
 		foreach ($validSkinNames as $skinkey => & $skinname ) {
@@ -829,9 +839,6 @@ class PreferencesForm {
 		}
 		asort($validSkinNames);
 		foreach ($validSkinNames as $skinkey => $sn ) {
-			if ( in_array( $skinkey, $wgSkipSkins ) ) {
-				continue;
-			}
 			$checked = $skinkey == $this->mSkin ? ' checked="checked"' : '';
 
 			$mplink = htmlspecialchars($mptitle->getLocalURL("useskin=$skinkey"));

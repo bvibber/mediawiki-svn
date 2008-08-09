@@ -202,7 +202,7 @@
 	'my' => 'Myanmasa',		# Burmese
 	'myv' => 'Эрзянь',         # Erzya
 	'mzn' => 'مَزِروني',		# Mazanderani
-	'na' => 'Ekakairũ Naoero',		# Nauruan
+	'na' => 'Dorerin Naoero',		# Nauruan
 	'nah' => 'Nāhuatl',		# Nahuatl, en:Wikipedia writes Nahuatlahtolli, while another form is Náhuatl
 	'nan' => 'Bân-lâm-gú', # Min-nan -- (bug 8217) nan instead of zh-min-nan, http://www.sil.org/iso639-3/codes.asp?order=639_3&letter=n
 	'nap' => 'Nnapulitano',	# Neapolitan
@@ -290,7 +290,7 @@
 	'ta' => 'தமிழ்',	# Tamil
 	'te' => 'తెలుగు',	# Telugu
 	'tet' => 'Tetun',	# Tetun
-	'tg' => 'Тоҷикӣ/tojikī',	# Tajiki (falls back to tg-cyrl)
+	'tg' => 'Тоҷикӣ',	# Tajiki (falls back to tg-cyrl)
 	'tg-cyrl' => 'Тоҷикӣ',	# Tajiki (Cyrllic script) (default)
 	'tg-latn' => 'tojikī',	# Tajiki (Latin script)
 	'th' => 'ไทย',	# Thai

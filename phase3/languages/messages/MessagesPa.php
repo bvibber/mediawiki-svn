@@ -268,7 +268,7 @@ $messages = array(
 'nosuchspecialpage' => 'ਕੋਈ ਇੰਝ ਦਾ ਖਾਸ ਪੇਜ ਨਹੀਂ',
 'nospecialpagetext' => "<big>'''ਤੁਸੀਂ ਇੱਕ ਅਵੈਧ ਖਾਸ ਪੇਜ ਦੀ ਮੰਗ ਕੀਤੀ ਹੈ।'''</big>
 
-A list of valid special pages can be found at [[Special:Specialpages]].",
+A list of valid special pages can be found at [[Special:SpecialPages]].",
 
 # General errors
 'error'              => 'ਗਲਤੀ',
@@ -495,7 +495,7 @@ $1 ਘੰਟੇ ਵਿੱਚ। ਨੁਕਸਾਨ ਤੋਂ ਬਚਣ ਲਈ, $
 'mypreferences'         => 'ਮੇਰੀ ਪਸੰਦ',
 'prefs-edits'           => 'ਸੋਧਾਂ ਦੀ ਗਿਣਤੀ:',
 'prefsnologin'          => 'ਲਾਗਇਨ ਨਹੀਂ',
-'prefsnologintext'      => 'ਯੂਜ਼ਰ ਪਸੰਦ ਸੈੱਟ ਕਰਨ ਲਈ ਤੁਹਾਨੂੰ [[Special:Userlogin|logged in]] ਕਰਨਾ ਪਵੇਗਾ।',
+'prefsnologintext'      => 'ਯੂਜ਼ਰ ਪਸੰਦ ਸੈੱਟ ਕਰਨ ਲਈ ਤੁਹਾਨੂੰ [[Special:UserLogin|logged in]] ਕਰਨਾ ਪਵੇਗਾ।',
 'prefsreset'            => 'ਪਸੰਦੀ ਸਟੋਰੇਜ਼ ਤੋਂ ਮੁੜ-ਸੈੱਟ ਕੀਤੀ ਗਈ ਹੈ।',
 'qbsettings'            => 'ਤੁਰੰਤ ਬਾਰ',
 'qbsettings-none'       => 'ਕੋਈ ਨਹੀਂ',
@@ -559,7 +559,7 @@ $1 ਘੰਟੇ ਵਿੱਚ। ਨੁਕਸਾਨ ਤੋਂ ਬਚਣ ਲਈ, $
 'rcshowhidemine'    => '$1 ਮੇਰਾ ਐਡਿਟ',
 'hide'              => 'ਓਹਲੇ',
 'show'              => 'ਵੇਖਾਓ',
-'minoreditletter'   => 'ਮ',
+'minoreditletter'   => 'ਛ',
 'newpageletter'     => 'ਨ',
 'boteditletter'     => 'ਬ',
 'rc_categories_any' => 'ਕੋਈ ਵੀ',
@@ -573,7 +573,7 @@ $1 ਘੰਟੇ ਵਿੱਚ। ਨੁਕਸਾਨ ਤੋਂ ਬਚਣ ਲਈ, $
 'reupload'             => 'ਰੀ-ਅੱਪਲੋਡ',
 'reuploaddesc'         => 'ਅੱਪਲੋਡ ਫਾਰਮ ਉੱਤੇ ਜਾਓ।',
 'uploadnologin'        => 'ਲਾਗਇਨ ਨਹੀਂ ਹੋ',
-'uploadnologintext'    => 'ਤੁਹਾਨੂੰ[[Special:Userlogin|logged in] ਕਰਨਾ ਪਵੇਗਾ]
+'uploadnologintext'    => 'ਤੁਹਾਨੂੰ[[Special:UserLogin|logged in] ਕਰਨਾ ਪਵੇਗਾ]
 to upload files.',
 'uploaderror'          => 'ਅੱਪਲੋਡ ਗਲਤੀ',
 'uploadlog'            => 'ਅੱਪਲੋਡ ਲਾਗ',
@@ -614,7 +614,7 @@ to upload files.',
 'license-nopreview'  => '(ਝਲਕ ਉਪਲੱਬਧ ਨਹੀਂ)',
 'upload_source_file' => ' (ਤੁਹਾਡੇ ਕੰਪਿਊਟਰ ਉੱਤੇ ਇੱਕ ਫਾਇਲ)',
 
-# Special:Imagelist
+# Special:ImageList
 'imgfile'               => 'ਫਾਇਲ',
 'imagelist'             => 'ਫਾਇਲ ਲਿਸਟ',
 'imagelist_date'        => 'ਮਿਤੀ',
@@ -689,7 +689,7 @@ to upload files.',
 'all-logs-page'        => 'ਸਭ ਲਾਗ',
 'log-search-submit'    => 'ਜਾਓ',
 
-# Special:Allpages
+# Special:AllPages
 'allpages'          => 'ਸਭ ਪੇਜ',
 'alphaindexline'    => '$1 ਤੋਂ $2',
 'nextpage'          => 'ਅੱਗੇ ਪੇਜ ($1)',
@@ -704,7 +704,7 @@ to upload files.',
 # Special:Categories
 'categories' => 'ਕੈਟਾਗਰੀਆਂ',
 
-# Special:Listusers
+# Special:ListUsers
 'listusers-submit'   => 'ਵੇਖੋ',
 'listusers-noresult' => 'ਕੋਈ ਯੂਜ਼ਰ ਨਹੀਂ ਲੱਭਿਆ।',
 
@@ -791,7 +791,6 @@ to upload files.',
 'sp-contributions-submit'      => 'ਖੋਜ',
 
 # What links here
-'linklistsub'         => '(ਲਿੰਕਾਂ ਦੀ ਲਿਸਟ)',
 'whatlinkshere-links' => '← ਲਿੰਕ',
 
 # Block/unblock
@@ -919,7 +918,7 @@ to upload files.',
 'show-big-image'       => 'ਪੂਰਾ ਰੈਜ਼ੋਲੇਸ਼ਨ',
 'show-big-image-thumb' => '<small>ਇਹ ਝਲਕ ਦਾ ਆਕਾਰ: $1 × $2 ਪਿਕਸਲ</small>',
 
-# Special:Newimages
+# Special:NewImages
 'newimages' => 'ਨਵੀਆਂ ਫਾਇਲਾਂ ਦੀ ਗੈਲਰੀ',
 'noimages'  => 'ਵੇਖਣ ਲਈ ਕੁਝ ਨਹੀਂ',
 'ilsubmit'  => 'ਖੋਜ',
@@ -992,7 +991,7 @@ to upload files.',
 'recreate' => 'ਮੁੜ-ਬਣਾਓ',
 
 # HTML dump
-'redirectingto' => '[[$1]] ਲਈ ਰੀ-ਡਿਰੈਕਟ ਕੀਤਾ ਜਾ ਰਿਹਾ ਹੈ...',
+'redirectingto' => '[[:$1]] ਲਈ ਰੀ-ਡਿਰੈਕਟ ਕੀਤਾ ਜਾ ਰਿਹਾ ਹੈ...',
 
 # action=purge
 'confirm_purge_button' => 'ਠੀਕ ਹੈ',

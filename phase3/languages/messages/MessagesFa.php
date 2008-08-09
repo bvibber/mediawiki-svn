@@ -4,11 +4,10 @@
  * @ingroup Language
  * @file
  *
- * @author Roozbeh Pournader <roozbeh at gmail.com>
- * @author Huji <huji.huji at gmail.com>
- * @author Gangleri
  * @author Mardetanha
  * @author לערי ריינהארט
+ * @author Roozbeh Pournader <roozbeh at gmail.com>
+ * @author Huji <huji.huji at gmail.com>
  */
 
 $skinNames = array(
@@ -497,7 +496,7 @@ $messages = array(
 
 'badaccess'        => 'خطای دسترسی',
 'badaccess-group0' => 'شما اجازهٔ اجرای عمل درخواسته را ندارید.',
-'badaccess-groups' => 'عملی که درخواسته‌اید منحصر به کاربران یکی از گروههای $1 است.',
+'badaccess-groups' => 'عملی که درخواست کرده‌اید منحصر به کاربران {{PLURAL:$2|این گروه|این گروه‌ها}} است: $1.',
 
 'versionrequired'     => 'نسخهٔ $1 از نرم‌افزار مدیاویکی لازم است',
 'versionrequiredtext' => 'برای دیدن این صفحه به نسخهٔ $1 از نرم‌افزار مدیاویکی نیاز دارید. برای اطلاع از نسخهٔ نرم‌افزار نصب شده در این ویکی به [[Special:Version|این صفحه]] مراجعه کنید.',
@@ -727,6 +726,7 @@ $3
 شما باید وارد سیستم شوید تا گذرواژهٔ خود را تغییر بدهید.
 
 اگر این حساب اشتباهی ساخته شده است، این پیغام را نادیده بگیرید.',
+'login-throttled'            => 'شما به تازگی چندین بار تلاش کرده‌اید که گذرواژهٔ این حساب کاربری را وارد کنید. لطفاً پیش از آن که دوباره تلاش کنید، صبر کنید.',
 'loginlanguagelabel'         => 'زبان: $1',
 
 # Password reset dialog
@@ -804,12 +804,14 @@ $3
 
 * شروع قطع دسترسی: $8
 * پایان قطع دسترسی: $6
+* کاربری که قطع دسترسی‌اش مد نظر بوده: $7
 
 شما می‌توانید با $1 یا یکی دیگر از [[{{MediaWiki:Grouppage-sysop}}|مدیران]] تماس بگیرید، تا در مورد این قطع دسترسی صحبت کنید.
 
 توجه کنید که برای ارسال پست الکترونیکی در ویکی، باید پست الکترونیکی خود را از طریق صفحهٔ [[Special:Preferences|تنظیمات]] فعال کرده باشید، و نیز، باید امکان استفاده از این ویژگی برای شما قطع نباشد.
 
-شماره قطع دسترسی شما $5 است. لطفاً این شماره را در هر درخواستی که در این باره مطرح می‌کنید قید کنید.",
+نشانی اینترنتی فعلی شما $3 است و شماره قطع دسترسی $5 است.
+لطفاً این شماره را در هر درخواستی که در این باره مطرح می‌کنید قید کنید.",
 'blockednoreason'                  => 'دلیلی مشخص نشده‌است',
 'blockedoriginalsource'            => "متن مبدأ '''$1''' در زیر نمایش داده شده است:",
 'blockededitsource'                => "متن '''ویرایش‌های شما''' در '''$1''' در زیر نشان داده شده‌است:",
@@ -900,7 +902,7 @@ $3
 # Parser/template warnings
 'expensive-parserfunction-warning'        => 'هشدار: این صفحه حاوی تعدادی زیادی فراخوانی دستورهای تجزیه‌گر است.
 
-تعداد آن باید از $2 کمتر باشد، و اینک $1 است.',
+تعداد آن‌ها باید کمتر از $2 {{PLURAL:$2|فراخوانی|فراخوانی}} باشد، و اینک {{PLURAL:$1|$1 فراخوانی|$1 فراخوانی}} است.',
 'expensive-parserfunction-category'       => 'صفحه‌هایی که حاوی تعداد زیادی فراخوانی دستورهای تجزیه‌گر هستند',
 'post-expand-template-inclusion-warning'  => 'هشدار: الگو بیش از اندازه بزرگ است.
 برخی الگوها ممکن است شامل نشوند.',
@@ -941,6 +943,7 @@ $3
 'page_last'           => 'واپسین',
 'histlegend'          => 'شرح: (فعلی) = تفاوت با نسخهٔ فعلی،
 (قبلی) = تفاوت با نسخهٔ قبلی، جز = ویرایش جزئی',
+'history-search'      => 'جستجو در تاریخچه',
 'deletedrev'          => '[حذف‌شده]',
 'histfirst'           => 'قدیمی‌ترین',
 'histlast'            => 'جدیدترین',
@@ -1041,6 +1044,7 @@ $3
 
 # Search results
 'searchresults'             => 'نتایج جستجو',
+'searchresults-title'       => 'نتایج جستجو برای $1',
 'searchresulttext'          => 'برای اطلاعات بیشتر دربارهٔ جستجوی {{SITENAME}}، به [[{{ns:project}}:جستجو کردن|جستجوی {{SITENAME}}]] مراجعه کنید.',
 'searchsubtitle'            => '«[[:$1]]» را جُستید',
 'searchsubtitleinvalid'     => 'برای پرس‌وجوی «$1»',
@@ -1385,7 +1389,7 @@ $3
 'upload_source_url'  => '(یک نشانی اینترنتی معتبر و قابل دسترسی برای عموم)',
 'upload_source_file' => '(پرونده‌ای در رایانهٔ شما)',
 
-# Special:Imagelist
+# Special:ImageList
 'imagelist-summary'     => 'این صفحهٔ ویژه تمام پرونده‌های بارگذاری شده را نشان می‌دهد.
 به طور پیش‌فرض آخرین پرونده‌های بازگذاری شده بالاتر نمایش داده می‌شوند.
 کلیک کردن روی عنوان ستون‌ها باعث تغییر ترتیب نمایش پرونده‌ها می‌شود.',
@@ -1412,6 +1416,9 @@ $3
 'filehist-comment'               => 'توضیح',
 'imagelinks'                     => 'پیوند‌های تصویر',
 'linkstoimage'                   => '{{PLURAL:$1|صفحهٔ|صفحه‌های}} زیر به این تصویر پیوند {{PLURAL:$1|دارد|دارند}}:',
+'linkstoimage-more'              => 'بیش از صفحه به این پرونده پیوند {{PLURAL:$1|می‌دهد|می‌دهند}}.
+فهرست زیر تنها {{PLURAL:$1|اولین پیوند|اولین $1 پیوند}} به این صفحه را نشان می‌دهد.
+[[Special:WhatLinksHere/$2|قهرست کامل]] نیز موجود است.',
 'nolinkstoimage'                 => 'هیچ صفحه‌ای به این تصویر پیوند ندارد.',
 'morelinkstoimage'               => '[[Special:Whatlinkshere/$1|پیوندهای دیگر]] به این پرونده را ببینید.',
 'redirectstofile'                => '{{PLURAL:$1|پروندهٔ|پرونده‌های}} زیر به این صفحه تغییر مسیر {{PLURAL:$1|می‌دهد|می‌دهند}}:',
@@ -1598,7 +1605,7 @@ $3
 'logempty'             => 'مورد منطبق با منظور شما در سیاهه یافت نشد.',
 'log-title-wildcard'   => 'صفحه‌هایی را جستجو کن که عنوانشان با این عبارت آغاز می‌شود',
 
-# Special:Allpages
+# Special:AllPages
 'allpages'          => 'همهٔ صفحه‌ها',
 'alphaindexline'    => '$1 تا $2',
 'nextpage'          => 'صفحهٔ بعد ($1)',
@@ -1621,19 +1628,23 @@ $3
 'special-categories-sort-count' => 'مرتب کردن بر اساس تعداد',
 'special-categories-sort-abc'   => 'مرتب کردن الفبایی',
 
-# Special:Listusers
+# Special:ListUsers
 'listusersfrom'      => 'نمایش کاربران با شروع از:',
 'listusers-submit'   => 'نمایش',
 'listusers-noresult' => 'هیچ کاربری یافت نشد.',
 
-# Special:Listgrouprights
-'listgrouprights'          => 'اختیارات گروه‌های کاربری',
-'listgrouprights-summary'  => 'فهرست زیر شامل گروه‌های کاربری تعریف شده در این ویکی و اختیارات داده شده به آن‌ها است.
+# Special:ListGroupRights
+'listgrouprights'                 => 'اختیارات گروه‌های کاربری',
+'listgrouprights-summary'         => 'فهرست زیر شامل گروه‌های کاربری تعریف شده در این ویکی و اختیارات داده شده به آن‌ها است.
 اطلاعات بیشتر در مورد هر یک از اختیارات را در [[{{MediaWiki:Listgrouprights-helppage}}]] بیابید.',
-'listgrouprights-group'    => 'گروه',
-'listgrouprights-rights'   => 'دسترسی‌ها',
-'listgrouprights-helppage' => 'Help:دسترسی‌های گروهی',
-'listgrouprights-members'  => '(فهرست اعضا)',
+'listgrouprights-group'           => 'گروه',
+'listgrouprights-rights'          => 'دسترسی‌ها',
+'listgrouprights-helppage'        => 'Help:دسترسی‌های گروهی',
+'listgrouprights-members'         => '(فهرست اعضا)',
+'listgrouprights-addgroup'        => 'می‌تواند این {{PLURAL:$2|گروه|گروه‌ها}} را اضافه کند: $1',
+'listgrouprights-removegroup'     => 'می‌تواند این {{PLURAL:$2|گروه|گروه‌ها}} را حذف کند: $1',
+'listgrouprights-addgroup-all'    => 'می‌تواند تمام گروه‌ها را اضافه کند',
+'listgrouprights-removegroup-all' => 'می‌تواند تمام گروه‌ها را حذف کند',
 
 # E-mail user
 'mailnologin'     => 'نشانی‌ای از فرستنده وجود ندارد.',
@@ -1882,27 +1893,27 @@ $1',
 'blanknamespace' => '(اصلی)',
 
 # Contributions
-'contributions' => 'مشارکت‌ها',
-'mycontris'     => 'مشارکت‌های من',
-'contribsub2'   => 'برای $1 ($2)',
-'nocontribs'    => 'هیچ تغییری با این مشخصات یافت نشد.',
-'uctop'         => ' (بالا)',
-'month'         => 'در این ماه (و قبل از آن)',
-'year'          => 'در این سال (و قبل از آن)',
+'contributions'       => 'مشارکت‌ها',
+'contributions-title' => 'مشارکت‌های کاربری $1',
+'mycontris'           => 'مشارکت‌های من',
+'contribsub2'         => 'برای $1 ($2)',
+'nocontribs'          => 'هیچ تغییری با این مشخصات یافت نشد.',
+'uctop'               => ' (بالا)',
+'month'               => 'در این ماه (و قبل از آن)',
+'year'                => 'در این سال (و قبل از آن)',
 
-'sp-contributions-newbies'     => 'فقط مشارکت‌های تازه‌واردان نمایش داده شود',
-'sp-contributions-newbies-sub' => 'برای تازه‌کاران',
-'sp-contributions-blocklog'    => 'سیاههٔ بسته‌شدن‌ها',
-'sp-contributions-search'      => 'جستجوی مشارکت‌ها',
-'sp-contributions-username'    => 'نشانی آی‌پی یا نام کاربری:',
-'sp-contributions-submit'      => 'جستجو',
+'sp-contributions-newbies'       => 'فقط مشارکت‌های تازه‌واردان نمایش داده شود',
+'sp-contributions-newbies-sub'   => 'برای تازه‌کاران',
+'sp-contributions-newbies-title' => 'مشارکت‌های کاربری برای حساب‌های تازه‌کار',
+'sp-contributions-blocklog'      => 'سیاههٔ بسته‌شدن‌ها',
+'sp-contributions-search'        => 'جستجوی مشارکت‌ها',
+'sp-contributions-username'      => 'نشانی آی‌پی یا نام کاربری:',
+'sp-contributions-submit'        => 'جستجو',
 
 # What links here
 'whatlinkshere'            => 'پیوندهای به این صفحه',
 'whatlinkshere-title'      => 'صفحه‌هایی که به $1 پیوند دارند',
 'whatlinkshere-page'       => 'صفحه:',
-'whatlinkshere-barrow'     => '&gt;',
-'linklistsub'              => '(فهرست پیوندها)',
 'linkshere'                => "صفحه‌های زیر به '''[[:$1]]''' پیوند دارند:",
 'nolinkshere'              => "هیچ صفحه‌ای به '''[[:$1]]''' پیوند ندارد.",
 'nolinkshere-ns'           => "هیچ صفحه‌ای از فضای نام انتخاب شده به '''[[:$1]]''' پیوند ندارد.",
@@ -2304,10 +2315,12 @@ $1',
 'show-big-image'       => 'تصویر با تفکیک‌پذیری بالاتر',
 'show-big-image-thumb' => '<small>اندازهٔ این پیش‌نمایش: &#8206;$1 × $2 پیکسل</small>',
 
-# Special:Newimages
+# Special:NewImages
 'newimages'             => 'گالری پرونده‌های جدید',
 'imagelisttext'         => 'در زیر فهرست $1 {{PLURAL:$1|تصویری|تصویری}} که $2 مرتب شده است آمده است.',
 'newimages-summary'     => 'این صفحهٔ ویژه آخرین پرونده‌های بارگذاری شده را نمایش می‌دهد',
+'newimages-legend'      => 'پالودن',
+'newimages-label'       => 'نام پرونده (یا قسمتی از آن):',
 'showhidebots'          => '(ویرایش رُبات‌ها $1)',
 'noimages'              => 'چیزی برای دیدن نیست.',
 'ilsubmit'              => 'جستجو',
@@ -2591,7 +2604,7 @@ $1',
 
 # External editor support
 'edit-externally'      => 'ویرایش این پرونده با استفاده از ویرایشگر خارجی',
-'edit-externally-help' => 'برای اطلاعات بیشتر [http://meta.wikimedia.org/wiki/Help:External_editors راهنمایی‌های تنظیمات] ویرایشگر خارجی را ببینید.',
+'edit-externally-help' => 'برای اطلاعات بیشتر [http://www.mediawiki.org/wiki/Manual:External_editors راهنمایی‌های تنظیمات] ویرایشگر خارجی را ببینید.',
 
 # 'all' in various places, this might be different for inflected languages
 'recentchangesall' => 'همه',
@@ -2691,7 +2704,7 @@ $1',
 'useajaxsearch'    => 'از جستجوی مبتنی بر AJAX استفاده کن',
 
 # Separators for various lists, etc.
-'semicolon-separator' => '؛',
+'semicolon-separator' => '؛&#32;',
 'comma-separator'     => '،&#32;',
 
 # Multipage image navigation
@@ -2827,7 +2840,7 @@ $1',
 'version-software-product'         => 'محصول',
 'version-software-version'         => 'نسخه',
 
-# Special:Filepath
+# Special:FilePath
 'filepath'         => 'مسیر پرونده',
 'filepath-page'    => 'پرونده:',
 'filepath-submit'  => 'مسیر',
@@ -2864,7 +2877,7 @@ $1',
 'specialpages-group-redirects'   => 'صفحه‌های ویژهٔ تغییر مسیر دهنده',
 'specialpages-group-spam'        => 'ابزارهای مرتبط با هرزنگاری',
 
-# Special:Blankpage
+# Special:BlankPage
 'blankpage'              => 'صفحهٔ خالی',
 'intentionallyblankpage' => 'این صفحه به طور عمدی خالی گذاشته شده و برای محک زدن سیستم و غیره به کار می‌رود.',
 

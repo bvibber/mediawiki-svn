@@ -384,7 +384,7 @@ $messages = array(
 'uploadbtn'       => 'Tau iha arkivu laran',
 'watchthisupload' => "Hateke pájina ne'e",
 
-# Special:Imagelist
+# Special:ImageList
 'imagelist_name' => 'Naran',
 'imagelist_user' => "Uza-na'in",
 
@@ -411,7 +411,7 @@ $messages = array(
 # Statistics
 'statistics'    => 'Estátistika',
 'sitestats'     => '{{SITENAME}} estátistika',
-'userstatstext' => "Iha ne'e registrar tiha ona '''$1''' {{PLURAL:$1|[[Special:Listusers|uza-na'in]]|[[Special:Listusers|uza-na'in]]}}, '''$2''' (ka '''$4%''') $5.",
+'userstatstext' => "Iha ne'e registrar tiha ona '''$1''' {{PLURAL:$1|[[Special:ListUsers|uza-na'in]]|[[Special:ListUsers|uza-na'in]]}}, '''$2''' (ka '''$4%''') $5.",
 
 'brokenredirects-edit'   => '(edita)',
 'brokenredirects-delete' => '(halakon)',
@@ -436,7 +436,7 @@ $messages = array(
 'specialloguserlabel' => "Uza-na'in:",
 'log-search-submit'   => 'Bá',
 
-# Special:Allpages
+# Special:AllPages
 'allpages'       => 'Pájina hotu',
 'alphaindexline' => "$1 to'o $2",
 'nextpage'       => 'Pájina oinmai ($1)',
@@ -447,10 +447,10 @@ $messages = array(
 # Special:Categories
 'categories' => 'Kategoría',
 
-# Special:Listusers
+# Special:ListUsers
 'listusers-submit' => 'Hatudu',
 
-# Special:Listgrouprights
+# Special:ListGroupRights
 'listgrouprights-group'  => 'Lubu',
 'listgrouprights-rights' => 'Priviléjiu',
 
@@ -492,7 +492,7 @@ $messages = array(
 'dellogpage'                  => 'Lista halakon',
 'deletionlog'                 => 'lista halakon',
 'deletecomment'               => 'Tansá ó halakon:',
-'protectedarticle'            => 'proteje "[[$1]]"',
+'protectedarticle'            => 'proteje "[[:$1]]"',
 'protectcomment'              => 'Komentáriu:',
 'protectexpiry'               => "to'o:",
 'protect-fallback'            => 'Presiza kuana "$1"',
@@ -532,7 +532,6 @@ $messages = array(
 'whatlinkshere'           => "Artigu sira ne'ebé bá iha ne'e",
 'whatlinkshere-title'     => "Pájina sira ne'ebé bá $1",
 'whatlinkshere-page'      => 'Pájina:',
-'linklistsub'             => '(Lista ligasaun nian)',
 'linkshere'               => "Pájina sira ne'e link ba '''[[:$1]]''':",
 'whatlinkshere-prev'      => '{{PLURAL:$1|oinmai|oinmai $1}}',
 'whatlinkshere-next'      => '{{PLURAL:$1|molok|molok $1}}',
@@ -563,7 +562,7 @@ $messages = array(
 'movepagebtn'             => 'Book pájina',
 'movedto'                 => 'book tiha ba',
 'movetalk'                => 'Book pájina diskusaun mós',
-'1movedto2'               => 'book tiha [[$1]] ba [[$2]]',
+'1movedto2'               => 'book tiha [[:$1]] ba [[:$2]]',
 'movelogpage'             => 'Lista book',
 'delete_and_move'         => 'Halakon ho book',
 'delete_and_move_confirm' => 'Sin, halakon pájina',
@@ -607,7 +606,7 @@ $messages = array(
 'previousdiff' => '←Diferensa molok',
 'nextdiff'     => 'Diferensa oinmai→',
 
-# Special:Newimages
+# Special:NewImages
 'showhidebots' => '($1 bot sira)',
 'ilsubmit'     => 'Buka',
 

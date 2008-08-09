@@ -124,7 +124,9 @@ class Linker {
 		if ( $t->isRedirect() ) {
 			# Page is a redirect
 			$colour = 'mw-redirect';
-		} elseif ( $threshold > 0 && $t->getLength() < $threshold && MWNamespace::isContent( $t->getNamespace() ) ) {
+		} elseif ( $threshold > 0 && 
+			   $t->exists() && $t->getLength() < $threshold &&
+			   MWNamespace::isContent( $t->getNamespace() ) ) {
 			# Page is a stub
 			$colour = 'stub';
 		}
@@ -149,14 +151,14 @@ class Linker {
 	 *   the link text.  This is raw HTML and will not be escaped.  If null,
 	 *   defaults to the prefixed text of the Title; or if the Title is just a
 	 *   fragment, the contents of the fragment.
-	 * @param $query         array  The query string to append to the URL
-	 *   you're linking to, in key => value array form.  Query keys and values
-	 *   will be URL-encoded.
 	 * @param $customAttribs array  A key => value array of extra HTML attri-
 	 *   butes, such as title and class.  (href is ignored.)  Classes will be
 	 *   merged with the default classes, while other attributes will replace
 	 *   default attributes.  All passed attribute values will be HTML-escaped.
 	 *   A false attribute value means to suppress that attribute.
+	 * @param $query         array  The query string to append to the URL
+	 *   you're linking to, in key => value array form.  Query keys and values
+	 *   will be URL-encoded.
 	 * @param $options       mixed  String or array of strings:
 	 *     'known': Page is known to exist, so don't check if it does.
 	 *     'broken': Page is known not to exist, so don't check if it does.
@@ -270,7 +272,7 @@ class Linker {
 			} elseif( $target->isContentPage() ) {
 				# Check for stub.
 				$threshold = $wgUser->getOption( 'stubthreshold' );
-				if( $threshold > 0 and $target->getLength() < $threshold ) {
+				if( $threshold > 0 and $target->exists() and $target->getLength() < $threshold ) {
 					$classes[] = 'stub';
 				}
 			}
@@ -325,7 +327,6 @@ class Linker {
 	 *                      the end of the link.
 	 */
 	function makeLink( $title, $text = '', $query = '', $trail = '' ) {
-		wfDeprecated( __METHOD__ );
 		wfProfileIn( __METHOD__ );
 	 	$nt = Title::newFromText( $title );
 		if ( $nt instanceof Title ) {
@@ -353,7 +354,6 @@ class Linker {
 	 *                      the end of the link.
 	 */
 	function makeKnownLink( $title, $text = '', $query = '', $trail = '', $prefix = '',$aprops = '') {
-		wfDeprecated( __METHOD__ );
 		$nt = Title::newFromText( $title );
 		if ( $nt instanceof Title ) {
 			return $this->makeKnownLinkObj( $nt, $text, $query, $trail, $prefix , $aprops );
@@ -377,7 +377,6 @@ class Linker {
 	 *                      the end of the link.
 	 */
 	function makeBrokenLink( $title, $text = '', $query = '', $trail = '' ) {
-		wfDeprecated( __METHOD__ );
 		$nt = Title::newFromText( $title );
 		if ( $nt instanceof Title ) {
 			return $this->makeBrokenLinkObj( $nt, $text, $query, $trail );
@@ -428,7 +427,6 @@ class Linker {
 	 * @param $prefix String: optional prefix. As trail, only before instead of after.
 	 */
 	function makeLinkObj( Title $nt, $text= '', $query = '', $trail = '', $prefix = '' ) {
-		wfDeprecated( __METHOD__ );
 		global $wgUser;
 		wfProfileIn( __METHOD__ );
 
@@ -438,8 +436,7 @@ class Linker {
 			$text = $this->linkText( $nt );
 		}
 
-		$ret = $this->link( $nt, "$prefix$text$inside", array(), $query,
-			'noclasses' ) . $trail;
+		$ret = $this->link( $nt, "$prefix$text$inside", array(), $query ) . $trail;
 
 		wfProfileOut( __METHOD__ );
 		return $ret;
@@ -462,7 +459,6 @@ class Linker {
 	 * @return the a-element
 	 */
 	function makeKnownLinkObj( Title $title, $text = '', $query = '', $trail = '', $prefix = '' , $aprops = '', $style = '' ) {
-		wfDeprecated( __METHOD__ );
 		wfProfileIn( __METHOD__ );
 
 		if ( $text == '' ) {
@@ -495,7 +491,6 @@ class Linker {
 	 *                      the end of the link.
 	 */
 	function makeBrokenLinkObj( Title $title, $text = '', $query = '', $trail = '', $prefix = '' ) {
-		wfDeprecated( __METHOD__ );
 		wfProfileIn( __METHOD__ );
 
 		list( $inside, $trail ) = Linker::splitTrail( $trail );
@@ -542,7 +537,6 @@ class Linker {
 	 *                      the end of the link.
 	 */
 	function makeColouredLinkObj( $nt, $colour, $text = '', $query = '', $trail = '', $prefix = '' ) {
-		wfDeprecated( __METHOD__ );
 		if($colour != ''){
 			$style = $this->getInternalLinkAttributesObj( $nt, $text, $colour );
 		} else $style = '';

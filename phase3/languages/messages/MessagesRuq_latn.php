@@ -241,7 +241,7 @@ $3',
 # Book sources
 'booksources' => 'Surse de cărţi',
 
-# Special:Allpages
+# Special:AllPages
 'allpages'       => 'Toats paži',
 'alphaindexline' => '$1 vo $2',
 'allarticles'    => 'Toats paži',
@@ -276,7 +276,6 @@ $3',
 # What links here
 'whatlinkshere'       => 'Legǎtul a ce pažu',
 'whatlinkshere-title' => 'Paži legǎtulent a $1',
-'linklistsub'         => '(Lista de legătul)',
 'nolinkshere'         => "Paži ne legǎtent a '''[[:$1]]'''.",
 'istemplate'          => 'vikulabe',
 'whatlinkshere-links' => '← legătuls',

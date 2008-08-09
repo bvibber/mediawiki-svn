@@ -12,6 +12,9 @@ require_once dirname(__FILE__) . '/LogPage.php';
 require_once dirname(__FILE__) . '/normal/UtfNormalUtil.php';
 require_once dirname(__FILE__) . '/XmlFunctions.php';
 
+// Hide compatibility functions from Doxygen
+/// @cond
+
 /**
  * Compatibility functions
  *
@@ -87,6 +90,9 @@ if ( !function_exists( 'array_diff_key' ) ) {
 	}
 }
 
+/// @endcond
+
+
 /**
  * Like array_diff( $a, $b ) except that it works with two-dimensional arrays.
  */
@@ -145,16 +151,31 @@ function wfRandom() {
 }
 
 /**
- * We want / and : to be included as literal characters in our title URLs.
+ * We want some things to be included as literal characters in our title URLs
+ * for prettiness, which urlencode encodes by default.  According to RFC 1738,
+ * all of the following should be safe:
+ *
+ * ;:@&=$-_.+!*'(),
+ *
+ * But + is not safe because it's used to indicate a space; &= are only safe in
+ * paths and not in queries (and we don't distinguish here); ' seems kind of
+ * scary; and urlencode() doesn't touch -_. to begin with.  Plus, although /
+ * is reserved, we don't care.  So the list we unescape is:
+ *
+ * ;:@$!*(),/
+ *
  * %2F in the page titles seems to fatally break for some reason.
  *
  * @param $s String:
  * @return string
 */
-function wfUrlencode ( $s ) {
+function wfUrlencode( $s ) {
 	$s = urlencode( $s );
-	$s = preg_replace( '/%3[Aa]/', ':', $s );
-	$s = preg_replace( '/%2[Ff]/', '/', $s );
+	$s = str_ireplace(
+		array( '%3B','%3A','%40','%24','%21','%2A','%28','%29','%2C','%2F' ),
+		array(   ';',  ':',  '@',  '$',  '!',  '*',  '(',  ')',  ',',  '/' ),
+		$s
+	);
 
 	return $s;
 }

@@ -235,9 +235,10 @@ $messages = array(
 'savearticle'    => 'съхранѥ́ниѥ',
 'loginreqlink'   => 'Въниди',
 'newarticle'     => '(но́въ)',
-'clearyourcache' => '<big>НАРОЧИ́ТО:</big> По съхранѥ́нии мо́жєши обити́ своѥго́ съмотри́ла съхра́нъ да ви́дѣлъ би мѣ́нꙑ ⁙ Mozilla ли Firefox ли Safari ли жьмꙑ́и Shift а мꙑ́шиѭ жьми́ Reload и́ли жьми́ Ctrl-Shift-R (Cmd-Shift-R вън Apple Mac) ⁙ IE ли жьмꙑ́и Ctrl а мꙑ́шиѭ жьми́ Refresh и́ли жьми́ Ctrl-F5 ⁙ Konqueror ли жьми́ кро́мѣ Reload и́ли F5 ⁙ О́пєрꙑ по́льꙃєватєльмъ мо́жєть бꙑ́ти ноужда́ пльнѣ пони́чьжити и́хъ съмотри́ла съхра́нъ въ Tools > Preferences',
+'clearyourcache' => '<big>НАРОЧИ́ТО:</big> По съхранѥ́нии мо́жєши обити́ своѥго́ съмотри́ла съхра́нъ да ви́дѣлъ би мѣ́нꙑ ⁙ Mozilla ли Firefox ли Safari ли жьмꙑ́и Shift а мꙑ́шиѭ жьми́ Reload и́ли жьми́ Ctrl-Shift-R (Cmd-Shift-R вън Apple Mac)  ⁙ Konqueror ли жьми́ кро́мѣ Reload и́ли F5 ⁙ О́пєрꙑ по́льꙃєватєльмъ мо́жєть бꙑ́ти ноужда́ пльнѣ пони́чьжити и́хъ съмотри́ла съхра́нъ въ Tools > Preferences ⁙ IE ли жьмꙑ́и Ctrl а мꙑ́шиѭ жьми́ Refresh и́ли жьми́ Ctrl-F5',
 'note'           => '<strong>НАРОЧИ́ТО:</strong>',
 'editing'        => 'исправлѥ́ниѥ: $1',
+'templatesused'  => 'сѥѩ страни́цѧ с҄и обраꙁьци́ по́льꙃоуѭтъ сѧ сѫ́тъ :',
 
 # History pages
 'cur'          => 'нꙑ҃н',
@@ -300,10 +301,12 @@ $messages = array(
 # Upload
 'upload'          => 'положє́ниѥ дѣ́ла',
 'uploadbtn'       => 'положє́ниѥ дѣ́ла',
+'uploadlog'       => 'дѣ́лъ положє́ниꙗ їсторі́ꙗ',
+'uploadlogpage'   => 'дѣ́лъ положє́ниꙗ їсторі́ꙗ',
 'uploadedimage'   => '⁖ [[$1]] ⁖ положє́нъ ѥ́стъ',
 'watchthisupload' => 'си страни́цѧ блюдє́ниѥ',
 
-# Special:Imagelist
+# Special:ImageList
 'imgfile'        => 'дѣ́ло',
 'imagelist_name' => 'и́мѧ',
 'imagelist_user' => 'по́льꙃєватєл҄ь',
@@ -351,9 +354,10 @@ $messages = array(
 
 # Special:Log
 'specialloguserlabel' => 'по́льꙃєватєл҄ь:',
+'log'                 => 'їсторі́ѩ',
 'log-search-submit'   => 'прѣиди́',
 
-# Special:Allpages
+# Special:AllPages
 'allpages'       => 'вьсѩ́ страни́цѧ',
 'alphaindexline' => 'о́тъ $1 до $2',
 'allpagesfrom'   => 'страни́цѧ видѣ́ти хощѫ́ съ начѧ́льнами боу́къвами :',
@@ -369,6 +373,7 @@ $messages = array(
 # Watchlist
 'watchlist'     => 'моꙗ́ блюдє́ниꙗ',
 'mywatchlist'   => 'Моꙗ́ блюдє́ниꙗ',
+'watchlistfor'  => "(по́льꙃєватєлꙗ и́мѧ '''$1''' ѥ́стъ)",
 'watch'         => 'блюдє́ниѥ',
 'watchthispage' => 'си страни́цѧ блюдє́ниѥ',
 'unwatch'       => 'оста́ви блюдє́ниѥ',
@@ -399,7 +404,8 @@ $messages = array(
 'mycontris'     => 'моꙗ́ добродѣꙗ́ниꙗ',
 'uctop'         => '(послѣ́дьнꙗ мѣ́на)',
 
-'sp-contributions-submit' => 'ищи́',
+'sp-contributions-blocklog' => 'ꙁаграждє́ниꙗ їсторі́ꙗ',
+'sp-contributions-submit'   => 'ищи́',
 
 # What links here
 'whatlinkshere'           => 'дос̑ьдє́щьнѩ съвѧ́ꙁи',
@@ -413,6 +419,7 @@ $messages = array(
 'ipblocklist-submit' => 'иска́ниѥ',
 'blocklink'          => 'ꙁагради́',
 'contribslink'       => 'добродѣꙗ́ниꙗ',
+'blocklogpage'       => 'ꙁаграждє́ниꙗ їсторі́ꙗ',
 
 # Move page
 'move-page'        => 'прѣимєнова́ниѥ ⁖ $1 ⁖',
@@ -422,8 +429,8 @@ $messages = array(
 'movepagebtn'      => 'прѣимєнова́ниѥ',
 'movepage-moved'   => "<big>'''⁖ $1 ⁖ нарєчє́нъ ⁖ $2⁖ ѥ́стъ'''</big>", # The two titles are passed in plain text as $3 and $4 to allow additional goodies in the message.
 'movetalk'         => 'си страни́цѧ бєсѣ́дꙑ прѣимєнова́ниѥ',
-'1movedto2'        => '⁖ [[$1]] ⁖ нарєчє́нъ ⁖ [[$2]] ⁖ ѥ́стъ',
-'1movedto2_redir'  => '[[$1]] нарєчє́нъ [[$2]] врьхоу́ прѣнаправлѥ́ниꙗ ѥ́стъ.',
+'1movedto2'        => '⁖ [[:$1]] ⁖ нарєчє́нъ ⁖ [[:$2]] ⁖ ѥ́стъ',
+'1movedto2_redir'  => '[[:$1]] нарєчє́нъ [[:$2]] врьхоу́ прѣнаправлѥ́ниꙗ ѥ́стъ.',
 'movelogpage'      => 'прѣимєнова́ниꙗ їсторі́ꙗ',
 
 # Namespace 8 related
@@ -437,7 +444,7 @@ $messages = array(
 # Media information
 'file-info-size' => '($1 × $2 п҃ѯ · дѣ́ла мѣ́ра : $3 · MIME тѵ́пъ : $4)',
 
-# Special:Newimages
+# Special:NewImages
 'ilsubmit' => 'ищи́',
 
 # EXIF tags
@@ -467,7 +474,7 @@ $messages = array(
 'version-license'          => 'прощє́ниѥ',
 'version-software-version' => 'о́браꙁъ',
 
-# Special:Filepath
+# Special:FilePath
 'filepath-page' => 'дѣ́ло :',
 
 # Special:FileDuplicateSearch

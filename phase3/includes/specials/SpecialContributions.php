@@ -223,8 +223,10 @@ function wfSpecialContributions( $par = null ) {
 	if ( $target != 'newbies' ) {
 		$target = $nt->getText();
 		$wgOut->setSubtitle( contributionsSub( $nt, $id ) );
+		$wgOut->setHTMLTitle( wfMsg( 'pagetitle', wfMsg( 'contributions-title', $target ) ) );
 	} else {
 		$wgOut->setSubtitle( wfMsgHtml( 'sp-contributions-newbies-sub') );
+		$wgOut->setHTMLTitle( wfMsg( 'pagetitle', wfMsg( 'sp-contributions-newbies-title' ) ) );
 	}
 
 	if ( ( $ns = $wgRequest->getVal( 'namespace', null ) ) !== null && $ns !== '' ) {
@@ -232,7 +234,10 @@ function wfSpecialContributions( $par = null ) {
 	} else {
 		$options['namespace'] = '';
 	}
-	if ( $wgUser->isAllowed( 'markbotedit' ) && $wgRequest->getBool( 'bot' ) ) {
+	
+	// Allows reverts to have the bot flag in recent changes. It is just here to
+	// be passed in the form at the top of the page 
+	if ( $wgUser->isAllowed( 'markbotedits' ) && $wgRequest->getBool( 'bot' ) ) {
 		$options['bot'] = '1';
 	}
 

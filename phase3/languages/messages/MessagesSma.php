@@ -294,7 +294,7 @@ Joekedidh värrhtoedimmie sïjse unnebe sektiovneh.</strong>',
 'template-protected'     => '(vaarjeleme)',
 'template-semiprotected' => '(lehkie-vaarjelidh)',
 'nocreatetext'           => '{{SITENAME}} åtna gaertjiedidh nuepieh ahte skaepede orre bielieh.
-Dov dorje värrhtoedimmie gååvnese bielieh, jallh [[Special:Userlogin|logge sïjse jallh skaepede nuhtjien]].',
+Dov dorje värrhtoedimmie gååvnese bielieh, jallh [[Special:UserLogin|logge sïjse jallh skaepede nuhtjien]].',
 
 # History pages
 'viewpagelogs'        => 'Vuesehte loggeh ihke dïhte bielie',
@@ -412,7 +412,7 @@ Dov dorje värrhtoedimmie gååvnese bielieh, jallh [[Special:Userlogin|logge s�
 
 'license' => 'Liseense',
 
-# Special:Imagelist
+# Special:ImageList
 'imagelist_search_for' => 'Ohtsedh ihke guvvie nomme:',
 'imgfile'              => 'guvvie',
 'imagelist'            => 'Guvvie lästoe',
@@ -458,7 +458,7 @@ Dov dorje värrhtoedimmie gååvnese bielieh, jallh [[Special:Userlogin|logge s�
 'statistics'    => 'Statistiike',
 'sitestats'     => '{{SITENAME}} statistiike',
 'userstats'     => 'Nuhtjien statistiike',
-'userstatstext' => "Dïhte {{PLURAL:$1|lea '''1''' registreered [[Special:Listusers|nuhtjien]]|lea '''$1''' registreered [[Special:Listusers|nuhtjienh]]}},  jih
+'userstatstext' => "Dïhte {{PLURAL:$1|lea '''1''' registreered [[Special:ListUsers|nuhtjien]]|lea '''$1''' registreered [[Special:ListUsers|nuhtjienh]]}},  jih
 '''$2''' (jallh '''$4%''') {{PLURAL:$2|åtna|åtnah}} $5 reahkta.",
 
 'disambiguations' => 'Disambirgusjovne bielieh',
@@ -518,7 +518,7 @@ Dov dorje värrhtoedimmie gååvnese bielieh, jallh [[Special:Userlogin|logge s�
 'all-logs-page'        => 'Gaajhke loggeh',
 'log-search-submit'    => 'Vaadtsa',
 
-# Special:Allpages
+# Special:AllPages
 'allpages'       => 'Gaajhke bielieh',
 'alphaindexline' => '$1 ... $2',
 'nextpage'       => 'Minngebe bielie ($1)',
@@ -533,7 +533,7 @@ Dov dorje värrhtoedimmie gååvnese bielieh, jallh [[Special:Userlogin|logge s�
 # Special:Categories
 'categories' => 'Karegorijeh',
 
-# Special:Listusers
+# Special:ListUsers
 'listusers-submit' => 'Vuesehte',
 
 # E-mail user
@@ -640,7 +640,6 @@ Daaletje tjaeleste-vaarjelidh sïjsestäälninge ihke bielie <strong>$1</strong>
 'whatlinkshere'       => 'Bilieh goh lïenghkeh diekie',
 'whatlinkshere-title' => 'Bielieh goh lïenghke gåajkoe $1',
 'whatlinkshere-page'  => 'Bielie:',
-'linklistsub'         => '(Lästoe bijjelen lïenghke)',
 'linkshere'           => "Tjuovvovasj bielie lïenghke gåajkoe '''[[:$1]]''':",
 'nolinkshere'         => "Ijje bielieh lïenghke gåajkoe '''[[:$1]]'''.",
 'isredirect'          => 'bïjre-dirisjovne bielie',
@@ -682,7 +681,7 @@ nome dov åtna veeljeme lea ijje jiiltige.
 Gïemhpes veeljeme jeatjebh nomme.',
 'movedto'          => 'jåhta gåajkoe',
 'movetalk'         => 'Jåhta aaj dïerkestidhbielie, bïjre dïhte gååvnese.',
-'1movedto2'        => '[[$1]] jåhta gåajkoe [[$2]]',
+'1movedto2'        => '[[:$1]] jåhta gåajkoe [[:$2]]',
 'movelogpage'      => 'Jåhta logge',
 'movereason'       => 'Gaavhtan:',
 'revertmove'       => 'jåhta bååstede',
@@ -783,7 +782,7 @@ Gïemhpes veeljeme jeatjebh nomme.',
 'show-big-image'       => 'Dïeves stoerre',
 'show-big-image-thumb' => '<small>Stoerre ihke dïhte vuesiehtidh: $1 × $2 pixel</small>',
 
-# Special:Newimages
+# Special:NewImages
 'newimages' => 'Gallerije dejstie orre baalkah',
 'ilsubmit'  => 'Ohtsedh',
 
@@ -837,7 +836,7 @@ Jeatjebh dajveh lea gaptjedh goh sïejhme, bine vuesehte gåessie taabelle stoer
 
 # External editor support
 'edit-externally'      => 'Värrhtoedimmie dïhte baalka meatan ehksteerne applikasjovne',
-'edit-externally-help' => 'Vuajna [http://meta.wikimedia.org/wiki/Help:External_editors instalasjovne instruksjovne] ihke vielie bïevnesh.',
+'edit-externally-help' => 'Vuajna [http://www.mediawiki.org/wiki/Manual:External_editors instalasjovne instruksjovne] ihke vielie bïevnesh.',
 
 # 'all' in various places, this might be different for inflected languages
 'recentchangesall' => 'gaajhke',
