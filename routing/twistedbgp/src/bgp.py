@@ -95,7 +95,7 @@ class BGPException(Exception):
         self.protocol = protocol
 
 class NotificationSent(BGPException):
-    def __init__(self, protocol, error, suberror, data):
+    def __init__(self, protocol, error, suberror, data=''):
         BGPException.__init__(self, protocol)
         
         self.error = error
@@ -743,6 +743,11 @@ class FSM(object):
         self.dampPeerOscillations = True
         self.idleHoldTime = 30
         self.idleHoldTimer = FSM.BGPTimer(self.idleHoldTimeEvent)
+    
+    def __setattr__(self, name, value):
+        if name == 'state' and value != getattr(self, name):
+            print "State is now:", stateDescr[value]
+        super(FSM, self).__setattr__(name, value)
 
     def manualStart(self):
         """
@@ -764,12 +769,11 @@ class FSM(object):
             for timer in (self.connectRetryTimer, self.holdTimer, self.keepAliveTimer,
                           self.delayOpenTimer, self.idleHoldTimer):
                 timer.cancel()
-            if self.bgpPeering is not None: self.bgpPeering.releaseResources()
-            self._errorClose()
-            self.connectRetryCounter = 0
-            raise NotificationSent(self.protocol, ERR_CEASE, 0)
-            
+            if self.bgpPeering is not None: self.bgpPeering.releaseResources(self.protocol)
+            self._closeConnection()
+            self.connectRetryCounter = 0         
             self.state = ST_IDLE
+            raise NotificationSent(self.protocol, ERR_CEASE, 0)
 
     def automaticStart(self, idleHold=False):
         """
@@ -777,7 +781,7 @@ class FSM(object):
         Returns True or False to indicate BGPPeering whether a connection attempt
         should be initiated.
         """
-        
+                
         if self.state == ST_IDLE:
             if idleHold:
                 self.idleHoldTimer.reset(self.idleHoldTime)
@@ -913,7 +917,8 @@ class FSM(object):
         raise NotificationSent(self.protocol, ERR_MSG_OPEN, suberror, data)
     
     def keepAliveReceived(self):
-        """Should be called when a BGP KeepAlive packet was received
+        """
+        Should be called when a BGP KeepAlive packet was received
         from the peer. (event 26)
         """
         
@@ -930,7 +935,8 @@ class FSM(object):
             self._errorClose()
 
     def versionError(self):
-        """Should be called when a BGP Notification Open Version Error
+        """
+        Should be called when a BGP Notification Open Version Error
         message was received from the peer. (event 24)
         """
         
@@ -945,7 +951,8 @@ class FSM(object):
             self._errorClose()
 
     def notificationReceived(self, error, suberror):
-        """Should be called when a BGP Notification message was
+        """
+        Should be called when a BGP Notification message was
         received from the peer. (events 24, 25)
         """
         
@@ -993,7 +1000,8 @@ class FSM(object):
             raise NotificationSent(self.protocol, ERR_FSM, 0)   
 
     def openCollisionDump(self):
-        """Called when the collision detection algorithm determined
+        """
+        Called when the collision detection algorithm determined
         that the associated connection should be dumped.
         (event 23)
         """
@@ -1038,9 +1046,6 @@ class FSM(object):
     
     def keepAliveEvent(self):
         """Called when the KeepAliveTimer expires. (event 11)"""
-        
-        # DEBUG
-        print "KeepAlive event"
         
         if self.state in (ST_OPENCONFIRM, ST_ESTABLISHED):
             # State OpenConfirm, Established, event 11
@@ -1157,7 +1162,10 @@ class BGP(protocol.Protocol):
         """Called when the associated connection was lost."""
         
         # Don't do anything if we closed the connection explicitly ourselves
-        if self.disconnected: return
+        if self.disconnected:
+            self.deferred.callback(True)
+            self.factory.connectionClosed(self)
+            return
         
         # DEBUG
         print "Connection lost"
@@ -1168,7 +1176,8 @@ class BGP(protocol.Protocol):
             self.deferred.errback(e)
 
     def dataReceived(self, data):
-        """Appends newly received data to the receive buffer, and
+        """
+        Appends newly received data to the receive buffer, and
         then attempts to parse as many BGP messages as possible.
         """
         
@@ -1397,9 +1406,6 @@ class BGP(protocol.Protocol):
         
         self.negotiateHoldTime(holdTime)                
         self.fsm.openReceived()
-        
-        # DEBUG
-        print "State is now:", stateDescr[self.fsm.state]
     
     def updateReceived(self, withdrawnPrefixes, attributes, nlri):
         """Called when a BGP Update message was received."""
@@ -1424,15 +1430,8 @@ class BGP(protocol.Protocol):
         """Called when a BGP KeepAlive message was received.
         """
         
-        assert self.fsm.holdTimer.active()
-        
-        # DEBUG
-        print "KEEPALIVE"
-        
-        self.fsm.keepAliveReceived()
-        
-        # DEBUG
-        print "State is now:", stateDescr[self.fsm.state]
+        assert self.fsm.holdTimer.active()    
+        self.fsm.keepAliveReceived()  
 
     def notificationReceived(self, error, suberror, data=''):
         """Called when a BGP Notification message was received.
@@ -1454,7 +1453,7 @@ class BGP(protocol.Protocol):
         self.fsm.keepAliveTime = self.fsm.holdTime / 3
         
         # DEBUG
-        print "hold time:", self.fsm.holdTime, "keepalive time:", self.fsm.keepAliveTime
+        print "Hold time:", self.fsm.holdTime, "Keepalive time:", self.fsm.keepAliveTime
 
     def collisionDetect(self):
         """Performs collision detection. Outsources to factory class BGPPeering."""
@@ -1536,9 +1535,7 @@ class BGP(protocol.Protocol):
         """Encodes a set of attributes"""
         
         attrData = ""
-        print "Type of attributes:", type(attributes)
         for attr in attributes:
-            print "Now looking at attr:", attr # DEBUG
             if isinstance(attr, Attribute):
                 attrData += attr.encode()
             else:
@@ -1579,12 +1576,12 @@ class BGPFactory(protocol.Factory):
         return protocol.Factory.buildProtocol(self, addr)
     
     def startedConnecting(self, connector):
-        # DEBUG
-        print "Started connecting", connector    
+        """Called when a connection attempt has been initiated."""
+        pass
     
     def clientConnectionLost(self, connector, reason):
         # DEBUG
-        print "Client connection lost", connector, reason        
+        print "Client connection lost", reason        
 
 class BGPServerFactory(BGPFactory):
     """Class managing the server (listening) side of the BGP
@@ -1695,14 +1692,19 @@ class BGPPeering(BGPFactory):
             self.fsm.state = ST_CONNECT
     
     def manualStop(self):
-        """BGP ManualStop event (event 2)"""
+        """BGP ManualStop event (event 2) Returns a DeferredList that will fire once the connection(s) have closed"""
         
-        for c in inConnections + outConnections:
+        deferredList = []
+        for c in self.inConnections + self.outConnections:
             # Catch a possible NotificationSent exception
             try:
+                c.deferred = defer.Deferred()
+                deferredList.append(c.deferred)
                 c.fsm.manualStop()
             except NotificationSent, e:
-                c.deferred.errback(e)
+                pass
+        
+        return defer.DeferredList(deferredList)
     
     def automaticStart(self, idleHold=False):
         """BGP AutomaticStart event (event 3)"""
@@ -1718,15 +1720,14 @@ class BGPPeering(BGPFactory):
         Called by FSM when BGP resources (routes etc.) should be released
         prior to ending a session.
         """
-        
-        print "Releasing resources"
+        pass
     
-    def connectionClosed(self, protocol):
+    def connectionClosed(self, protocol, disconnect=False):
         """
-        Called by FSM when the BGP connection has been closed.
+        Called by FSM or Protocol when the BGP connection has been closed.
         """
         
-        print "Connection closed", protocol
+        print "Connection closed"
         
         if protocol is not None:
             # Connection succeeded previously, protocol exists
@@ -1923,7 +1924,7 @@ class NaiveBGPPeering(BGPPeering):
         Takes a set of Advertisements that will be announced.
         """
         
-        self.toAdvertise = advertisements
+        self.toAdvertise = set(advertisements)
         
         # Calculate changes
         withdrawals = self.advertised - self.toAdvertise
