@@ -29,13 +29,13 @@
  	var $dispVideoPlayerTime=false;
  	//a pointer to the mvStream 
  	var $mvStream = null;
- 	var $wiki_title='';
+ 	var $wiki_title=''; 	
  	//default namespace for mvTitle MV_NS_MVD
  	function __construct($title, $ns=MV_NS_MVD){ 	 		
  		//handle title object	
  		if(is_string($title)){ 			 			 			
  			$title = parent::makeTitle($ns, $title);
- 		}  		 		
+ 		}  		 		 	
  		$this->inheritTitle( $title) ;
  		//its just a plain string generate the parse info
  		$this->wiki_title = $title->getDBKey();

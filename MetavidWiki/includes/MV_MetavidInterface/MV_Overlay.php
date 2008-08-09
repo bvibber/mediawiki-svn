@@ -290,10 +290,22 @@ $smwgShowFactbox=SMW_FACTBOX_HIDDEN;
 		if(is_object($mvdTile))$template_key = $mvdTile->getMvdTypeKey();
 		//$wgOut->addHTML('looking at: ' . strtolower($template_key));
 		
-		//pull up relevant template for given mvd type: 
-		//@@todo convert into automated template_key lookup	
+		//slow... don't use templates.. just hard code here:
+		$img_float =''; 			
 		switch(strtolower($template_key)){
-			case 'ht_en':			
+			case 'ht_en':				
+				/*$smwStore =& smwfGetStore(); 	
+				$title = $mvdTile->getMwTitle();
+				//print "Title: ".$title->getDBKey() . "\n";
+				$smwProps = $smwStore->getProperties($title);
+				//should use SMW to grab semantic prop:				
+				if(isset($smwProps['Spoken_By'])){
+					//get person:
+					$pimg = mv_get_person_img($smwProps['Spoken_By'].'.jpg');					
+					$img_float='<img src="'.$pimg.'">';
+				}*/	
+				
+											
 				global $wgParser, $wgUser, $wgContLang;
 				$templetTitle = Title::makeTitle(NS_TEMPLATE, $template_key );	
 				if($templetTitle->exists()){	
@@ -307,7 +319,7 @@ $smwgShowFactbox=SMW_FACTBOX_HIDDEN;
 					$template_wiki_text.='|BodyText='.$text."\n".
 					'}}';										
 					$text =	$template_wiki_text;					
-				}			
+				}						
 			break;
 			case 'anno_en':											
 			break;
@@ -322,7 +334,8 @@ $smwgShowFactbox=SMW_FACTBOX_HIDDEN;
 		$parserOptions->setTidy(true);
 		$parserOutput = $wgParser->parse( $text , $mvdTile, $parserOptions );
 		$wgOut->addCategoryLinks( $parserOutput->getCategories() );
-		//@@TODO a less ugly hack here: 			
+		//@@TODO a less ugly hack here:
+		$parserOutput->mText = $img_float . $parserOutput->mText;	 			
 		$parserOutput->mText.=	$sk->getCategories();			
 		//empty out the categories (should work) 
 		$wgOut->mCategoryLinks = array();		
@@ -426,7 +439,7 @@ $smwgShowFactbox=SMW_FACTBOX_HIDDEN;
 		return $mvd_page->color;
 	}
 	/*STATIC Functions */ 
-	function get_and_strip_semantic_tags(&$text){
+	function get_and_strip_semantic_tags(&$text, $tags=array()){
 		global $mv_smw_tag_arry;
 		//taken from semantic wiki SMW_Hooks.php function smwfParserHook :
 		$semanticLinkPattern = '(\[\[(([^:][^]]*):[=|:])+((?:[^|\[\]]|\[\[[^]]*\]\]|\[[^]]*\])*)(\|([^]]*))?\]\])';
@@ -618,6 +631,7 @@ $smwgShowFactbox=SMW_FACTBOX_HIDDEN;
 		$wgTitle = Title::newFromText($titleKey, MV_NS_MVD);
 		$Article = new Article($wgTitle);
 		
+		$wpTextbox1 = trim($wpTextbox1);
 		//add all semantic form based attributes/relations to the posted body text
 		$formSemanticText ='';
 		foreach($_POST as $key=>$val){
@@ -627,17 +641,18 @@ $smwgShowFactbox=SMW_FACTBOX_HIDDEN;
 				$swmTitle = Title::newFromText(substr($key, 4), SMW_NS_PROPERTY);
 				if($swmTitle->exists()){																	
 					//make sure the semantic is not empty: 
-					if(trim($val)!=''){
+					if(trim($val)!=''){						
 						//@@todo update for other smw types: 
-						//if($key=='smw_Spoken_By'){
-							$formSemanticText.="[[".$swmTitle->getText().'::'.$val.']]'."\n\n";
-						//}								
+						if($swmTitle->getDBkey()=='Spoken_By'){
+							$wpTextbox1="[[".$swmTitle->getText().'::'.$val.']] '.$wpTextbox1;
+						}else{
+							$wpTextbox1.="\n\n[[".$swmTitle->getText().'::'.$val.']]';								
+						}
 					}				
 				}
 			}			
 		}			
-		//add the text to the end after a line break to not confuse mannual editors
-		$wpTextbox1 = trim($wpTextbox1) ."\n\n". $formSemanticText;
+		//add the text to the end after a line break to not confuse mannual editors		
 		$editPageAjax = new MV_EditPageAjax( $Article);
 		$editPageAjax->mvd_id = $mvd_id;			
 		
