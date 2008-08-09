@@ -240,7 +240,11 @@ class IPv4IP(IPPrefix):
         return ".".join([str(ord(o)) for o in self.prefix])
 
 class Attribute(object):
-    """Base class for all BGP attribute classes"""
+    """
+    Base class for all BGP attribute classes
+    
+    Attribute instances are (meant to be) immutable once initialized.
+    """
     
     typeToClass = {}
     name = 'Attribute'
@@ -410,7 +414,7 @@ class NextHopAttribute(Attribute):
             super(NextHopAttribute, self).__init__(None)
             self.optional = False
             self.transitive = True
-            self.set(value)
+            self._set(value)
 
     def fromTuple(self, attrTuple):      
         value = attrTuple[2]
@@ -425,7 +429,7 @@ class NextHopAttribute(Attribute):
     def encode(self):
         return struct.pack('!BBB', self.flags(), self.typeCode, len(self.value.packed())) + self.value.packed()
     
-    def set(self, value):
+    def _set(self, value):
         if value:
             if value in (0, 2**32-1):
                 raise AttributeException(ERR_MSG_UPDATE_INVALID_NEXTHOP, attrTuple)
@@ -433,6 +437,9 @@ class NextHopAttribute(Attribute):
         else:
             self.value = IPv4IP('0.0.0.0')
             self.any = True
+    
+    # FIXME: Remove this method (violates immutability) and make AttributeSet changes more convenient
+    set = _set
 
 class MEDAttribute(Attribute):
     name = 'MED'
@@ -598,23 +605,25 @@ Attribute.typeToClass = {
     ATTR_TYPE_INT_LAST_UPDATE:   LastUpdateIntAttribute
 }
 
-class AttributeSet(set):
-    """Class that contains a single set of attributes attached to a list of NLRIs"""
-    
-    def __init__(self, attributes):
-        """Expects a sequence of either unparsed attribute tuples, or parsed
+class BaseAttributeSet():
+    """Base class for FrozenAttributeSet and AttributeSet"""
+
+    def _init(self, attributes):
+        """
+        Expects a sequence of either unparsed attribute tuples, or parsed
         Attribute inheritors.
         """
 
         self.origin, self.asPath, self.nextHop = None, None, None
 
-        for a in attributes:
-            if type(a) is tuple:
-                attr = Attribute.fromTuple(a)
-            elif isinstance(a, Attribute):
-                attr = a
-    
-            self.add(attr)
+        workSet = set()
+        for attr in attributes:
+            if type(attr) is tuple:
+                self._add(Attribute.fromTuple(attr), workSet)
+            elif isinstance(attr, Attribute):
+                self._add(attr, workSet)
+            else:
+                raise AttributeError(ERR_MSG_UPDATE_MALFORMED_ATTR_LIST)
         
         # Check whether all mandatory well-known attributes are present
         for attr, typeCode in [(self.origin, ATTR_TYPE_ORIGIN),
@@ -622,13 +631,18 @@ class AttributeSet(set):
                                (self.nextHop, ATTR_TYPE_NEXT_HOP)]:
             if attr is None:
                 raise AttributeError(ERR_MSG_UPDATE_MISSING_WELLKNOWN_ATTR, (0, typeCode, None))
-    
-    def add(self, attr):
-        """Adds attribute attr to the set, raises KeyError if already present"""
+
+        return workSet
+
+    def _add(self, attr, workSet):
+        """Adds attribute attr to the set, raises AttributeError if already present"""
         
         try:
-            super(AttributeSet, self).add(attr)
-            
+            workSet.add(attr)
+        except KeyError:
+            # Attribute was already present
+            raise AttributeError(ERR_MSG_UPDATE_MALFORMED_ATTR_LIST)
+        else:
             # Add direct references for the mandatory well-known attributes
             if type(attr) is OriginAttribute:
                 self.origin = attr
@@ -636,12 +650,36 @@ class AttributeSet(set):
                 self.asPath = attr
             elif type(attr) is NextHopAttribute:
                 self.nextHop = attr
-        except KeyError:
-            # Attribute was already present
-            raise AttributeError(ERR_MSG_UPDATE_MALFORMED_ATTR_LIST)
+        
+class FrozenAttributeSet(BaseAttributeSet, frozenset):
+    """Class that contains a single set of attributes attached to a list of NLRIs"""
 
+    def __init__(self, attributes):
+        super(FrozenAttributeSet, self).__init__(self._init(attributes))
+
+class AttributeSet(BaseAttributeSet, set):
+    """Mutable variant of FrozenAttributeSet"""
+
+    def __init__(self, attributes):
+        super(AttributeSet, self).__init__(self._init(attributes))
+
+    def add(self, attr):
+        self._add(attr, self)
+        
     # FIXME: check/implement other set methods
 
+class Advertisement(object):
+    """
+    Class that represents a single BGP advertisement, consisting of an IP network prefix,
+    BGP attributes and optional extra information
+    """
+    
+    def __init__(self, prefix, attributes=None):
+        self.prefix = prefix
+        self.attributes = attributes or AttributeSet([OriginAttribute(),
+                                                      ASPathAttribute(),
+                                                      NextHopAttribute(NextHopAttribute.ANY)])
+        
 class FSM(object):
     class BGPTimer(object):
         """
@@ -1863,14 +1901,14 @@ class NaiveBGPPeering(BGPPeering):
     """
     "Naive" class managing a simple BGP session with very few announced prefixes.
     Currently even assumes that all prefixes fit in a single BGP UPDATE message.
+    DO NOT USE this for more than a couple prefixes.
     """
     
     def __init__(self, myASN=None, peerAddr=None):
         BGPPeering.__init__(self, myASN, peerAddr)
         
-        # (advertisements, attributes)
-        self.advertisedSet = (set(), set())
-        self.toAdvertise = (set(), set())
+        self.advertised = set()
+        self.toAdvertise = set()
     
     def sendAdvertisements(self):
         """
@@ -1878,35 +1916,50 @@ class NaiveBGPPeering(BGPPeering):
         ready for sending announcements.
         """
         
-        self._sendUpdate(self.advertisedSet[0], self.toAdvertise[1], self.toAdvertise[0])
+        self._sendUpdates(self.advertised, self.toAdvertise)
         
-    def setAdvertisements(self, advertisements, attributes):
+    def setAdvertisements(self, advertisements):
         """
-        Takes a set() of IPPrefixes to advertize, and an AttrSet of
-        attributes that apply to all prefixes. These advertisements
-        will be maintained during session in established state, withdrawing
-        or updating any previous announcements.
+        Takes a set of Advertisements that will be announced.
         """
         
-        self.toAdvertise = (advertisements, attributes)
-        advertisedPrefixes, advertisedAttributes = self.advertisedSet
+        self.toAdvertise = advertisements
         
         # Calculate changes
-        withdrawals = advertisedPrefixes - advertisements
-        if attributes != advertisedAttributes:
-            # New attributes are different, reannounce all
-            newPrefixes = advertisements
-        else:
-            newPrefixes = advertisements - advertisedPrefixes
+        withdrawals = self.advertised - self.toAdvertise
+        updates = self.toAdvertise - self.advertised
         
-        # Send off
-        self._sendUpdate(withdrawals, attributes, newPrefixes)
+        # Try to send
+        self._sendUpdates(withdrawals, updates)
+    
+    def _sendUpdates(self, withdrawals, updates):
+        """
+        Takes a set of withdrawals and a set of updates, sorts them to
+        equal attributes and sends the advertisements if possible.
+        Assumes that self.toAdvertise reflects the advertised state
+        after withdrawals and updates.
+        """
+        
+        # This may have to wait for another time...
+        if not self.estabProtocol or self.fsm.state != ST_ESTABLISHED:
+            return
+        
+        # Map equal attributes to advertisements
+        attributeMap = {}
+        for advertisement in updates:
+            attributeMap.setdefault(advertisement.attributes, set()).add(advertisement)
+    
+        # Send
+        for attributes, advertisementList in attributeMap.iteritems():
+            self._sendUpdate(withdrawals, attributes, advertisementList)
+            withdrawals = set()
+ 
+        self.advertised = self.toAdvertise
         
     def _sendUpdate(self, withdrawals, attributes, advertisements):
-        if self.estabProtocol and self.fsm.state == ST_ESTABLISHED and len(withdrawals) + len(advertisements) > 0:
+        if len(withdrawals) + len(advertisements) > 0:
             # Check if the NextHop attribute needs to be replaced
             if attributes.nextHop.any:
-                attributes.nextHop.set(self.estabProtocol.transport.getHost().host) # FIXME: IPv6
+                attributes.nextHop.set(self.estabProtocol.transport.getHost().host) # FIXME: IPv6 # FIXME: Attributes are meant to be immutable!
             
-            self.estabProtocol.sendUpdate(withdrawals, attributes, advertisements)
-            self.advertisedSet = (advertisements, attributes)
+            self.estabProtocol.sendUpdate([w.prefix for w in withdrawals], attributes, [a.prefix for a in advertisements])

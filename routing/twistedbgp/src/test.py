@@ -65,9 +65,9 @@ class BGPDebug(object):
 peers = {}
 
 peering = bgp.NaiveBGPPeering(myASN=64600, peerAddr='91.198.174.247')
-advertisements = [bgp.IPPrefix('127.127.127.127/32')]
-attrSet = bgp.AttributeSet([bgp.OriginAttribute(), bgp.ASPathAttribute([(2, [64600])]), bgp.NextHopAttribute('192.168.255.254')])
-peering.setAdvertisements(set(advertisements), attrSet)
+attrSet = bgp.FrozenAttributeSet([bgp.OriginAttribute(), bgp.ASPathAttribute([(2, [64600])]), bgp.NextHopAttribute('192.168.255.254')])
+advertisements = set([bgp.Advertisement(bgp.IPPrefix('127.127.127.127/32'), attrSet)])
+peering.setAdvertisements(advertisements)
 peers[peering.peerAddr] = peering
 
 #peering2 = bgp.BGPPeering(myASN=64600, peerAddr='127.0.0.1')
