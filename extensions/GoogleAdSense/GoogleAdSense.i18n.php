@@ -38,8 +38,8 @@ $messages['fr'] = array(
 );
 
 /** Dutch (Nederlands)
- * @author Siebrand Mazeland
  * @author Siebrand
+ * @author Siebrand Mazeland
  */
 $messages['nl'] = array(
 	'googleadsense-desc' => 'Voegt [http://www.google.com/adsense?hl=nl Google AdSense] toe aan de sidebar',

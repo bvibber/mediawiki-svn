@@ -155,8 +155,8 @@ $messages['sk'] = array(
 );
 
 /** Swedish (Svenska)
- * @author M.M.S.
  * @author Lejonel
+ * @author M.M.S.
  */
 $messages['sv'] = array(
 	'editown-desc' => "Användare utan ''editall''-rättigheter kan endast redigera sidor som de själva har skapat",

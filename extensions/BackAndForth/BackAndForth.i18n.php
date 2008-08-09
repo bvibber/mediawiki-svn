@@ -17,6 +17,16 @@ $messages['en'] = array(
 	'backforth-prev' => 'Previous ($1)',
 );
 
+/** Message documentation (Message documentation) */
+$messages['qqq'] = array(
+	'backforth-next' => 'Part of the "Back-And-Forth" extension. A link to the next page shown on the top of every page. The opposite is "[[MediaWiki:Backforth-prev/{{SUBPAGENAME}}|{{int:backforth-prev}}]]".
+
+{{Identical|Next}}',
+	'backforth-prev' => 'Part of the "Back-And-Forth" extension. A link to the previous page shown on the top of every page. The opposite is "[[MediaWiki:Backforth-next/{{SUBPAGENAME}}|{{int:backforth-next}}]]".
+
+{{Identical|Previous}}',
+);
+
 /** Afrikaans (Afrikaans)
  * @author SPQRobin
  */
@@ -25,9 +35,7 @@ $messages['af'] = array(
 	'backforth-prev' => 'Vorige ($1)',
 );
 
-/** Old English (Anglo-Saxon)
- * @author SPQRobin
- */
+/** Old English (Anglo-Saxon) */
 $messages['ang'] = array(
 	'backforth-next' => 'Nīehst ($1)',
 	'backforth-prev' => 'Beforan ($1)',
@@ -77,7 +85,6 @@ $messages['bcl'] = array(
 );
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
- * @author Siebrand
  * @author Jim-by
  */
 $messages['be-tarask'] = array(
@@ -121,9 +128,7 @@ $messages['cs'] = array(
 	'backforth-prev' => 'Předchozí ($1)',
 );
 
-/** Danish (Dansk)
- * @author M.M.S.
- */
+/** Danish (Dansk) */
 $messages['da'] = array(
 	'backforth-next' => 'Næste ($1)',
 );
@@ -172,6 +177,13 @@ $messages['ext'] = array(
 	'backforth-prev' => 'Anteriol ($1)',
 );
 
+/** Persian (فارسی)
+ * @author BlueDevil
+ */
+$messages['fa'] = array(
+	'backforth-next' => ' بعدی ($1)',
+);
+
 /** Finnish (Suomi)
  * @author Crt
  */
@@ -181,8 +193,8 @@ $messages['fi'] = array(
 );
 
 /** French (Français)
- * @author Sherbrooke
  * @author McDutchie
+ * @author Sherbrooke
  */
 $messages['fr'] = array(
 	'backforth-next' => 'Suivant ($1)',
@@ -364,8 +376,8 @@ $messages['lt'] = array(
 );
 
 /** Malayalam (മലയാളം)
- * @author Shijualex
  * @author Jacob.jose
+ * @author Shijualex
  */
 $messages['ml'] = array(
 	'backforth-next' => 'അടുത്ത ($1)',
@@ -374,8 +386,8 @@ $messages['ml'] = array(
 );
 
 /** Marathi (मराठी)
- * @author Mahitgar
  * @author Kaustubh
+ * @author Mahitgar
  */
 $messages['mr'] = array(
 	'backforth-next' => 'पुढे ($1)',
@@ -390,7 +402,7 @@ $messages['mt'] = array(
 	'backforth-prev' => "Ta' qabel ($1)",
 );
 
-/** Nahuatl (Nahuatl)
+/** Nahuatl (Nāhuatl)
  * @author Fluence
  */
 $messages['nah'] = array(
@@ -417,8 +429,8 @@ $messages['nl'] = array(
 );
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
- * @author Jon Harald Søby
  * @author Eirik
+ * @author Jon Harald Søby
  */
 $messages['nn'] = array(
 	'backforth-next' => 'Nest ($1)',
@@ -462,7 +474,7 @@ $messages['pl'] = array(
 	'backforth-prev' => 'Poprzedni ($1)',
 );
 
-/** Piemontèis (Piemontèis)
+/** Piedmontese (Piemontèis)
  * @author Bèrto 'd Sèra
  */
 $messages['pms'] = array(
@@ -582,7 +594,7 @@ $messages['te'] = array(
 	'backforth-prev' => 'గత ($1)',
 );
 
-/** Tajik (Cyrillic) (Тоҷикӣ/tojikī (Cyrillic))
+/** Tajik (Cyrillic) (Тоҷикӣ (Cyrillic))
  * @author Ibrahim
  */
 $messages['tg-cyrl'] = array(

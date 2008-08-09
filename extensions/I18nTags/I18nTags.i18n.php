@@ -165,8 +165,8 @@ $messages['stq'] = array(
 );
 
 /** Swedish (Svenska)
- * @author M.M.S.
  * @author Lejonel
+ * @author M.M.S.
  */
 $messages['sv'] = array(
 	'i18ntags-desc' => 'Ger tillgång till internationaliseringsfunktioner för talformatering, grammatik och plural i alla tillgängliga språk',

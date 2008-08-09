@@ -110,8 +110,8 @@ $messages['ia'] = array(
 );
 
 /** Italian (Italiano)
- * @author Pietrodn
  * @author Darth Kule
+ * @author Pietrodn
  */
 $messages['it'] = array(
 	'ajax-qp-desc' => "Aggiunge dell'AJAX alle pagine di query come [[Special:Shortpages|{{int:shortpages}}]]",
@@ -236,7 +236,7 @@ $messages['sv'] = array(
 	'ajax-qp-desc' => 'Lägger till AJAX-funktioner på vissa specialsidor, som t.ex. [[Special:Shortpages|{{int:shortpages}}]]',
 );
 
-/** Tajik (Cyrillic) (Тоҷикӣ/tojikī (Cyrillic))
+/** Tajik (Cyrillic) (Тоҷикӣ (Cyrillic))
  * @author Ibrahim
  */
 $messages['tg-cyrl'] = array(
@@ -264,23 +264,22 @@ $messages['vi'] = array(
 	'ajax-qp-desc' => 'Thêm một số AJAX vào QueryPages như [[Special:Shortpages|{{int:shortpages}}]]',
 );
 
-/** Cantonese (廣東話)
+/** Yue (粵語)
  * @author Shinjiman
  */
 $messages['yue'] = array(
 	'ajax-qp-desc' => '響一啲查詢頁 (QueryPages) 度加入一啲AJAX好似[[Special:Shortpages]]',
 );
 
-/** Traditional Chinese (正體中文)
+/** Simplified Chinese (‪中文(简体)‬) */
+$messages['zh-hans'] = array(
+	'ajax-qp-desc' => '在查询页面(如[[Special:Shortpages]])加入AJAX',
+);
+
+/** Traditional Chinese (‪中文(繁體)‬)
  * @author Alex S.H. Lin
  */
 $messages['zh-hant'] = array(
 	'ajax-qp-desc' => '在查詢頁面(如[[Special:Shortpages]])加入AJAX',
-);
-/** Simplified Chinese (简体中文)
- * @author Alex S.H. Lin
- */
-$messages['zh-hans'] = array(
-	'ajax-qp-desc' => '在查询页面(如[[Special:Shortpages]])加入AJAX',
 );
 

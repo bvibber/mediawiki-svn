@@ -11,6 +11,13 @@ $messages['en'] = array(
 	'fixedimage-desc' => 'Adds <tt><nowiki><fundraising></nowiki></tt> tag as an image',
 );
 
+/** Message documentation (Message documentation)
+ * @author Purodha
+ */
+$messages['qqq'] = array(
+	'fixedimage-desc' => 'Short description of the FixedImage extension, shown on [[Special:Version]].',
+);
+
 /** Afrikaans (Afrikaans)
  * @author Naudefj
  */
@@ -61,7 +68,7 @@ $messages['bn'] = array(
 );
 
 /** Catalan (Català)
-
+ * @author Paucabot
  */
 $messages['ca'] = array(
 	'fixedimage-desc' => "Afegeix l'etiqueta <tt><nowiki><fundraising></nowiki></tt> com una imatge",
@@ -278,8 +285,8 @@ $messages['sr-ec'] = array(
 );
 
 /** Swedish (Svenska)
- * @author M.M.S.
  * @author Lejonel
+ * @author M.M.S.
  */
 $messages['sv'] = array(
 	'fixedimage-desc' => 'Lägger till taggen <tt><nowiki><fundraising></nowiki></tt> för att visa en bild',

@@ -29,7 +29,7 @@ $2',
  * @author Meno25
  */
 $messages['ar'] = array(
-	'email-desc'   => 'يسمح بمقدمات/خواتيم شخصية للإضافة في البريد الإلكتروني من مستخدم إلى مستخدم.',
+	'email-desc' => 'يسمح بمقدمات/خواتيم شخصية للإضافة في البريد الإلكتروني من مستخدم إلى مستخدم.',
 	'email_footer' => '
 ----------------------------------------------------------------------------
 هذا البريد الإلكتروني تم إرساله إليك من خلال نظام البريد الإلكتروني في {{SITENAME}} بواسطة $1.
@@ -59,7 +59,7 @@ $2',
  * @author Yekrats
  */
 $messages['eo'] = array(
-	'email-desc'   => 'Permesas proprajn subtitolojn/supratitolojn esti aldonata al retpoŝtoj al uzantoj.',
+	'email-desc' => 'Permesas proprajn subtitolojn/supratitolojn esti aldonata al retpoŝtoj al uzantoj.',
 	'email_footer' => '---------------------------------------------------------------------------
 Ĉi retpoŝto estis sendita al vi per la {{SITENAME}} retpoŝta sistemo de $1.
 
@@ -76,7 +76,7 @@ $2',
 
 /** French (Français) */
 $messages['fr'] = array(
-	'email-desc'   => 'Permet l’ajout d’en-têtes ou de pieds de page personnalisés dans les courriels expédiés aux utilisateurs disposant d’une adresse électronique.',
+	'email-desc' => 'Permet l’ajout d’en-têtes ou de pieds de page personnalisés dans les courriels expédiés aux utilisateurs disposant d’une adresse électronique.',
 	'email_footer' => '----------------------------------------------------------------------------
 Ce courrier a vous a été envoyé grâce au systeme de messagerie de {{SITENAME}} par $1.
 
@@ -88,7 +88,7 @@ $2',
  * @author Toliño
  */
 $messages['gl'] = array(
-	'email-desc'   => 'Permítelle ao usuario engadir cabezallos/pés de páxina nos seus correos electrónicos.',
+	'email-desc' => 'Permítelle ao usuario engadir cabezallos/pés de páxina nos seus correos electrónicos.',
 	'email_footer' => '---------------------------------------------------------------------------------------------
 Esta mensaxe foille enviada a través do sistema de correo electrónico de {{SITENAME}} por $1.
 
@@ -99,7 +99,7 @@ $2',
  * @author Kaustubh
  */
 $messages['hi'] = array(
-	'email-desc'   => 'सदस्य इ-मेल में स्वरचित हेडर/फ़ूटर के इस्तेमाल की अनुमति देता हैं।',
+	'email-desc' => 'सदस्य इ-मेल में स्वरचित हेडर/फ़ूटर के इस्तेमाल की अनुमति देता हैं।',
 	'email_footer' => '----------------------------------------------------------------------------
 यह इमेल आपको {{SITENAME}} के इमेल सिस्टीम से $1 ने भेजी हैं।
 
@@ -110,7 +110,7 @@ $2',
  * @author Michawiki
  */
 $messages['hsb'] = array(
-	'email-desc'   => 'Dowola wužiwarjej e-mejlkam swójske hłowowe/nohowe linki přidać',
+	'email-desc' => 'Dowola wužiwarjej e-mejlkam swójske hłowowe/nohowe linki přidać',
 	'email_footer' => '----------------------------------------------------------------------------
 Tuta e-mejl bu ći wot $1 přez e-mejlowy system {{SITENAME}} připósłana.
 
@@ -132,7 +132,7 @@ $2',
  * @author Melos
  */
 $messages['it'] = array(
-	'email-desc'   => 'Permette di aggiungere intestazione e piè di pagina personalizzate alle e-mail inviate agli altri utenti.',
+	'email-desc' => 'Permette di aggiungere intestazione e piè di pagina personalizzate alle e-mail inviate agli altri utenti.',
 	'email_footer' => '----------------------------------------------------------------------------
 Questa e-mail ti è stata inviata attraverso il sistema e-mail di {{SITENAME}} da $1.
 
@@ -153,7 +153,7 @@ $2',
  * @author Robby
  */
 $messages['lb'] = array(
-	'email-desc'   => "Erlaabt et personaliséiert Entêten an Foussnouten an déi E-Mailen dranzesetzen déi un d'Benotzer vun anere Benotzer geschéckt ginn.",
+	'email-desc' => "Erlaabt et personaliséiert Entêten an Foussnouten an déi E-Mailen dranzesetzen déi un d'Benotzer vun anere Benotzer geschéckt ginn.",
 	'email_footer' => '
 ------------------------------------------------------------------------------
 Dës E-Mail gouf iech vun $1 iwwer den E-Mail-System vun {{SITENAME}} geschéckt.
@@ -175,7 +175,7 @@ $2',
  * @author Kaustubh
  */
 $messages['mr'] = array(
-	'email-desc'   => 'सदस्य इमेलमध्ये स्वरचित वरील/खालील मजकूर (header/footer) वापरण्याची परवानगी देतो.',
+	'email-desc' => 'सदस्य इमेलमध्ये स्वरचित वरील/खालील मजकूर (header/footer) वापरण्याची परवानगी देतो.',
 	'email_footer' => '----------------------------------------------------------------------------
 ही इमेल तुम्हाला {{SITENAME}} च्या इमेल सिस्टीम वरुन $1 ने पाठविलेली आहे.
 
@@ -186,7 +186,7 @@ $2',
  * @author Siebrand
  */
 $messages['nl'] = array(
-	'email-desc'   => 'Maakt het toevoegen van aangepaste kop- en voetteksten in e-mails tussen gebruikers mogelijk',
+	'email-desc' => 'Maakt het toevoegen van aangepaste kop- en voetteksten in e-mails tussen gebruikers mogelijk',
 	'email_footer' => '----------------------------------------------------------------------------
 Deze email is naar u verzonden via het {{SITENAME}}-emailsysteem door $1.
 
@@ -194,11 +194,10 @@ $2',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
- * @author Siebrand
  * @author Jon Harald Søby
  */
 $messages['no'] = array(
-	'email-desc'   => 'Gjør at egendefinerte beskjeder kan legges til toppen eller bunnen av brukereres e-poster.',
+	'email-desc' => 'Gjør at egendefinerte beskjeder kan legges til toppen eller bunnen av brukereres e-poster.',
 	'email_footer' => '----------------------------------------------------------------------------
 Denne e-posten har blitt sendt deg fra $1 via {{SITENAME}}s e-postsystem.
 
@@ -209,7 +208,7 @@ $2',
  * @author Cedric31
  */
 $messages['oc'] = array(
-	'email-desc'   => 'Permet l’ajust d’entèstas o de pès de pagina personalizats dins los corrièrs electronics mandats als utilizaires dispausant d’una adreça electronica.',
+	'email-desc' => 'Permet l’ajust d’entèstas o de pès de pagina personalizats dins los corrièrs electronics mandats als utilizaires dispausant d’una adreça electronica.',
 	'email_footer' => '----------------------------------------------------------------------------
 
 Aqueste corrièr vos es estat mandat gràcia al sistèma de messatjariá de {{SITENAME}} per $1. $2',
@@ -220,7 +219,7 @@ Aqueste corrièr vos es estat mandat gràcia al sistèma de messatjariá de {{SI
  * @author Sp5uhe
  */
 $messages['pl'] = array(
-	'email-desc'   => 'Umożliwia dodanie nagłówka i stopki do wiadomości e-mail wysyłanych do użytkowników.',
+	'email-desc' => 'Umożliwia dodanie nagłówka i stopki do wiadomości e-mail wysyłanych do użytkowników.',
 	'email_footer' => '---------------------------------------------------------------------------
 Ta wiadomość została wysłana poprzez system pocztowy {{SITENAME}} przez $1.
 
@@ -241,7 +240,7 @@ $2',
  * @author Malafaya
  */
 $messages['pt'] = array(
-	'email-desc'   => 'Permite que sejam adicionados cabeçalhos/rodapés personalizados aos emails dos utilizadores.',
+	'email-desc' => 'Permite que sejam adicionados cabeçalhos/rodapés personalizados aos emails dos utilizadores.',
 	'email_footer' => '----------------------------------------------------------------------------
 Este email foi enviado pelo sistema de email de {{SITENAME}} por $1.
 
@@ -252,7 +251,7 @@ $2',
  * @author Александр Сигачёв
  */
 $messages['ru'] = array(
-	'email-desc'   => 'Позволяет добавлять пользовательские шапку или окончание к письмам от участника к участнику',
+	'email-desc' => 'Позволяет добавлять пользовательские шапку или окончание к письмам от участника к участнику',
 	'email_footer' => '----------------------------------------------------------------------------
 Это сообщение было отправлено через сайт {{SITENAME}} пользователем $1.
 
@@ -260,11 +259,10 @@ $2',
 );
 
 /** Slovak (Slovenčina)
- * @author Siebrand
  * @author Helix84
  */
 $messages['sk'] = array(
-	'email-desc'   => 'Umožňuje pridávať do emailov používateľom vlastné hlavičky a päty.',
+	'email-desc' => 'Umožňuje pridávať do emailov používateľom vlastné hlavičky a päty.',
 	'email_footer' => '----------------------------------------------------------------------------
 Tento email vám poslal $1 pomocou emailového systému {{GRAMMAR:genitív|{{SITENAME}}}}.
 
@@ -286,7 +284,7 @@ $2',
  * @author M.M.S.
  */
 $messages['sv'] = array(
-	'email-desc'   => 'Gör det möjligt att lägga till egendefinierade meddelanden i toppen eller botten av e-post som användare skickar.',
+	'email-desc' => 'Gör det möjligt att lägga till egendefinierade meddelanden i toppen eller botten av e-post som användare skickar.',
 	'email_footer' => '----------------------------------------------------------------------------
 Detta e-brev har sänts till dig från $1 via e-postsystemet på {{SITENAME}}. 
 
@@ -303,7 +301,7 @@ $messages['te'] = array(
 $2',
 );
 
-/** Tajik (Cyrillic) (Тоҷикӣ/tojikī (Cyrillic))
+/** Tajik (Cyrillic) (Тоҷикӣ (Cyrillic))
  * @author Ibrahim
  */
 $messages['tg-cyrl'] = array(
@@ -316,7 +314,7 @@ $2',
  * @author Vinhtantran
  */
 $messages['vi'] = array(
-	'email-desc'   => 'Cho phép thêm phần đầu/cuối tùy chọn vào thư điện tử người dùng.',
+	'email-desc' => 'Cho phép thêm phần đầu/cuối tùy chọn vào thư điện tử người dùng.',
 	'email_footer' => '----------------------------------------------------------------------------
 E-mail này được gửi đến cho bạn từ hệ thống e-mail của $1.
 

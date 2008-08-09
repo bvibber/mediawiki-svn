@@ -22,11 +22,16 @@ $messages['en'] = array(
 			"<createbox>break=no</createbox>",
 );
 
+/** Message documentation (Message documentation) */
+$messages['qqq'] = array(
+	'createbox-create' => '{{Identical|Create}}',
+);
+
 /** Afrikaans (Afrikaans)
  * @author Naudefj
  */
 $messages['af'] = array(
-	'createbox-desc'   => 'Gespesialiseerde invoerveld vir die skep van nuwe bladsye',
+	'createbox-desc' => 'Gespesialiseerde invoerveld vir die skep van nuwe bladsye',
 	'createbox-create' => 'Skep',
 );
 
@@ -34,7 +39,7 @@ $messages['af'] = array(
  * @author Meno25
  */
 $messages['ar'] = array(
-	'createbox-desc'   => 'صندوق إدخال متخصص لإنشاء الصفحات',
+	'createbox-desc' => 'صندوق إدخال متخصص لإنشاء الصفحات',
 	'createbox-create' => 'إنشاء',
 	'createbox-exists' => "عذرا، \"'''{{FULLPAGENAME}}'''\" موجودة بالفعل.
 
@@ -51,11 +56,11 @@ $messages['bg'] = array(
 );
 
 /** German (Deutsch)
- * @author Revolus
  * @author ChrisiPK
+ * @author Revolus
  */
 $messages['de'] = array(
-	'createbox-desc'   => 'Spezielles Eingabefeld zur Seitenerstellung',
+	'createbox-desc' => 'Spezielles Eingabefeld zur Seitenerstellung',
 	'createbox-create' => 'Erstellen',
 	'createbox-exists' => "„'''{{FULLPAGENAME}}'''“ existiert bereits.
 
@@ -87,7 +92,7 @@ Et voi luoda tätä sivua, mutta voit [{{fullurl:{{FULLPAGENAME}}|action=edit}} 
  * @author Verdy p
  */
 $messages['fr'] = array(
-	'createbox-desc'   => 'Boîte de saisie spécialisée pour la création de page',
+	'createbox-desc' => 'Boîte de saisie spécialisée pour la création de page',
 	'createbox-create' => 'Créer',
 	'createbox-exists' => "Désolé, \"'''{{FULLPAGENAME}}'''\" existe déjà.
 
@@ -100,7 +105,7 @@ Vous ne pouvez pas créer cette page, mais vous pouvez [{{fullurl:{{FULLPAGENAME
  * @author Toliño
  */
 $messages['gl'] = array(
-	'createbox-desc'   => 'Caixa de entrada especializada para a creación de páxinas',
+	'createbox-desc' => 'Caixa de entrada especializada para a creación de páxinas',
 	'createbox-create' => 'Crear',
 	'createbox-exists' => "Sentímolo, \"'''{{FULLPAGENAME}}'''\" xa existe.
 
@@ -113,7 +118,7 @@ Non pode crear esta páxina, pero pode [{{fullurl:{{FULLPAGENAME}}|action=edit}}
  * @author Michawiki
  */
 $messages['hsb'] = array(
-	'createbox-desc'   => 'Specielne zapodatny kašćik za wutworjenje stronow',
+	'createbox-desc' => 'Specielne zapodatny kašćik za wutworjenje stronow',
 	'createbox-create' => 'Wutworić',
 );
 
@@ -128,7 +133,7 @@ $messages['ia'] = array(
  * @author Pietrodn
  */
 $messages['it'] = array(
-	'createbox-desc'   => 'Inputbox specializzato per la creazione di pagine',
+	'createbox-desc' => 'Inputbox specializzato per la creazione di pagine',
 	'createbox-create' => 'Crea',
 	'createbox-exists' => "Scusa, \"'''{{FULLPAGENAME}}'''\" esiste già.
 
@@ -148,7 +153,7 @@ $messages['km'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
-	'createbox-desc'   => 'Spezialiséiert Këscht fir Säiten unzeleeën',
+	'createbox-desc' => 'Spezialiséiert Këscht fir Säiten unzeleeën',
 	'createbox-create' => 'Maachen',
 	'createbox-exists' => "Pardon, \"'''{{FULLPAGENAME}}'''\" gëtt et schonn.
 
@@ -166,7 +171,7 @@ $messages['mr'] = array(
  * @author Chrisportelli
  */
 $messages['mt'] = array(
-	'createbox-desc'   => "''Inputbox'' speċjalizzata għall-ħolqien ta' paġni",
+	'createbox-desc' => "''Inputbox'' speċjalizzata għall-ħolqien ta' paġni",
 	'createbox-create' => 'Oħloq',
 	'createbox-exists' => "Skużana, \"'''{{FULLPAGENAME}}'''\" teżisti diġà.
 
@@ -175,7 +180,7 @@ Ma tistax toħloq din il-paġna, imma tista' [{{fullurl:{{FULLPAGENAME}}|action=
 <createbox>break=no</createbox>",
 );
 
-/** Nahuatl (Nahuatl)
+/** Nahuatl (Nāhuatl)
  * @author Fluence
  */
 $messages['nah'] = array(
@@ -186,7 +191,7 @@ $messages['nah'] = array(
  * @author Siebrand
  */
 $messages['nl'] = array(
-	'createbox-desc'   => "Aangepast invoerveld voor het aanmaken van nieuwe pagina's",
+	'createbox-desc' => "Aangepast invoerveld voor het aanmaken van nieuwe pagina's",
 	'createbox-create' => 'Aanmaken',
 	'createbox-exists' => "\"'''{{FULLPAGENAME}}'''\" bestaat al.
 
@@ -199,7 +204,7 @@ U kunt deze pagina niet aanmaken, maar u kunt deze [{{fullurl:{{FULLPAGENAME}}|a
  * @author Jon Harald Søby
  */
 $messages['no'] = array(
-	'createbox-desc'   => 'Spesialisert tekstboks for sideoppretting',
+	'createbox-desc' => 'Spesialisert tekstboks for sideoppretting',
 	'createbox-create' => 'Opprett',
 	'createbox-exists' => "Beklager, «'''{{FULLPAGENAME}}'''» finnes fra før.
 
@@ -212,7 +217,7 @@ Du kan ikke opprette denne siden, men du kan [{{fullurl:{{FULLPAGENAME}}|action=
  * @author Cedric31
  */
 $messages['oc'] = array(
-	'createbox-desc'   => 'Bóstia de picada especializada per la creacion de pagina',
+	'createbox-desc' => 'Bóstia de picada especializada per la creacion de pagina',
 	'createbox-create' => 'Crear',
 	'createbox-exists' => "O planhèm, \"'''{{FULLPAGENAME}}'''\" existís ja.
 
@@ -222,11 +227,11 @@ Podètz pas crear aquesta pagina, mas la podètz [{{fullurl:{{FULLPAGENAME}}|act
 );
 
 /** Polish (Polski)
- * @author Wpedzich
  * @author Sp5uhe
+ * @author Wpedzich
  */
 $messages['pl'] = array(
-	'createbox-desc'   => 'Specjalizowane pole tekstowe do tworzenia nowych stron',
+	'createbox-desc' => 'Specjalizowane pole tekstowe do tworzenia nowych stron',
 	'createbox-create' => 'Utwórz',
 	'createbox-exists' => "Strona „'''{{FULLPAGENAME}}'''” już istnieje.
 
@@ -260,7 +265,7 @@ $messages['ru'] = array(
  * @author Helix84
  */
 $messages['sk'] = array(
-	'createbox-desc'   => 'Špecializované vstupné pole na vytváranie stránok',
+	'createbox-desc' => 'Špecializované vstupné pole na vytváranie stránok',
 	'createbox-create' => 'Vytvoriť',
 	'createbox-exists' => "Prepáčte, „'''{{FULLPAGENAME}}'''” už existuje.
 
@@ -280,7 +285,7 @@ $messages['su'] = array(
  * @author M.M.S.
  */
 $messages['sv'] = array(
-	'createbox-desc'   => 'Specialiserad formulärbox för sidskapning',
+	'createbox-desc' => 'Specialiserad formulärbox för sidskapning',
 	'createbox-create' => 'Skapa',
 	'createbox-exists' => "Beklagar, \"'''{{FULLPAGENAME}}'''\" existerar redan.
 
@@ -293,7 +298,7 @@ Du kan inte skapa den här sidan, men du kan [{{fullurl:{{FULLPAGENAME}}|action=
  * @author AS
  */
 $messages['uk'] = array(
-	'createbox-desc'   => 'Спеціалізоване поле вводу для створення сторінок',
+	'createbox-desc' => 'Спеціалізоване поле вводу для створення сторінок',
 	'createbox-create' => 'Створити',
 	'createbox-exists' => "Даруйте, \"'''{{FULLPAGENAME}}'''\" вже існує.
 

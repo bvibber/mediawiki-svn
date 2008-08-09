@@ -11,6 +11,13 @@ $messages['en'] = array(
 	'didyoumean-desc' => 'Adds links to pages with "similar" titles',
 );
 
+/** Message documentation (Message documentation)
+ * @author Raymond
+ */
+$messages['qqq'] = array(
+	'didyoumean-desc' => 'Extension description displayed on [[Special:Version]].',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */
@@ -180,7 +187,7 @@ $messages['te'] = array(
 	'didyoumean-desc' => '"ఒకే విధమైన" పేర్లు కలిగిన పేజీలకు లింకులు ఇస్తుంది',
 );
 
-/** Tajik (Cyrillic) (Тоҷикӣ/tojikī (Cyrillic))
+/** Tajik (Cyrillic) (Тоҷикӣ (Cyrillic))
  * @author Ibrahim
  */
 $messages['tg-cyrl'] = array(

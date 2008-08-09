@@ -11,6 +11,13 @@ $messages['en'] = array(
 	'doublewiki-desc' => 'Displays a page and its translation from another wiki on two columns of the same page',
 );
 
+/** Message documentation (Message documentation)
+ * @author Raymond
+ */
+$messages['qqq'] = array(
+	'doublewiki-desc' => 'Extension description displayed on [[Special:Version]]',
+);
+
 /** Aragonese (Aragonés)
  * @author Juanpabl
  */
@@ -320,7 +327,7 @@ $messages['te'] = array(
 	'doublewiki-desc' => 'పేజీని, మరో వికీలో దాని అనువాదాన్ని ఒకే పేజీలో రెండు నిలువు వరుసల్లో చూపించు',
 );
 
-/** Tajik (Cyrillic) (Тоҷикӣ/tojikī (Cyrillic))
+/** Tajik (Cyrillic) (Тоҷикӣ (Cyrillic))
  * @author Ibrahim
  */
 $messages['tg-cyrl'] = array(

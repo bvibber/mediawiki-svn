@@ -14,6 +14,13 @@ $messages['en'] = array(
 	'crowdauthentication-desc' => 'Authentication plugin for Atlassian Crowd',
 );
 
+/** Message documentation (Message documentation)
+ * @author Raymond
+ */
+$messages['qqq'] = array(
+	'crowdauthentication-desc' => 'Extension description displayed on [[Special:Version]]',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */

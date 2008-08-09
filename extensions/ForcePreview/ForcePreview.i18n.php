@@ -15,12 +15,19 @@ $messages['en'] = array(
 	'right-forcepreviewexempt' => 'May save without using Show preview',
 );
 
+/** Message documentation (Message documentation)
+ * @author Meno25
+ */
+$messages['qqq'] = array(
+	'right-forcepreviewexempt' => '{{doc-right}}',
+);
+
 /** Afrikaans (Afrikaans)
  * @author Naudefj
  */
 $messages['af'] = array(
-	'forcepreview'             => 'Stoor bladsy (gebruik eers die voorskou)',
-	'forcepreview-desc'        => 'Forseer voorskou vir gebruikers sonder regte',
+	'forcepreview' => 'Stoor bladsy (gebruik eers die voorskou)',
+	'forcepreview-desc' => 'Forseer voorskou vir gebruikers sonder regte',
 	'right-forcepreviewexempt' => "Mag 'n bladsy stoor sonder voorskou",
 );
 
@@ -28,8 +35,8 @@ $messages['af'] = array(
  * @author Meno25
  */
 $messages['ar'] = array(
-	'forcepreview'             => 'حفظ الصفحة (استخدم عرض مسبق أولا)',
-	'forcepreview-desc'        => 'إجبار المستخدمين غير الموثوقين على العرض المسبق',
+	'forcepreview' => 'حفظ الصفحة (استخدم عرض مسبق أولا)',
+	'forcepreview-desc' => 'إجبار المستخدمين غير الموثوقين على العرض المسبق',
 	'right-forcepreviewexempt' => 'يمكنه الحفظ بدون استخدام العرض المسبق',
 );
 
@@ -37,8 +44,8 @@ $messages['ar'] = array(
  * @author sokai
  */
 $messages['de'] = array(
-	'forcepreview'             => 'Seite speichern (zuerst Vorschau anzeigen)',
-	'forcepreview-desc'        => 'Vorschau für unpriviligierte Benutzer erzwingen',
+	'forcepreview' => 'Seite speichern (zuerst Vorschau anzeigen)',
+	'forcepreview-desc' => 'Vorschau für unpriviligierte Benutzer erzwingen',
 	'right-forcepreviewexempt' => 'Speichern ohne Erzwingung der Vorschau',
 );
 
@@ -46,7 +53,7 @@ $messages['de'] = array(
  * @author Yekrats
  */
 $messages['eo'] = array(
-	'forcepreview'      => 'Konservu paĝon (post rigardanta ĝin)',
+	'forcepreview' => 'Konservu paĝon (post rigardanta ĝin)',
 	'forcepreview-desc' => 'Devigu antaŭrigardon por senrajtajn uzantojn',
 );
 
@@ -54,7 +61,7 @@ $messages['eo'] = array(
  * @author Nike
  */
 $messages['fi'] = array(
-	'forcepreview'      => 'Tallenna sivu (esikatsele ensin)',
+	'forcepreview' => 'Tallenna sivu (esikatsele ensin)',
 	'forcepreview-desc' => 'Pakottaa oikeudettomat käyttäjät käyttämään esikatselua',
 );
 
@@ -63,18 +70,18 @@ $messages['fi'] = array(
  * @author Verdy p
  */
 $messages['fr'] = array(
-	'forcepreview'             => 'Sauvegarde la page (lance en premier la prévisualisation)',
-	'forcepreview-desc'        => "Force la prévisualisation pour les utilisateurs ne disposant d'aucun privilège",
+	'forcepreview' => 'Sauvegarde la page (lance en premier la prévisualisation)',
+	'forcepreview-desc' => "Force la prévisualisation pour les utilisateurs ne disposant d'aucun privilège",
 	'right-forcepreviewexempt' => 'Peut publier sans utiliser la prévisualisation',
 );
 
 /** Galician (Galego)
- * @author Toliño
  * @author Alma
+ * @author Toliño
  */
 $messages['gl'] = array(
-	'forcepreview'             => 'Gardar páxina (usar vista previa)',
-	'forcepreview-desc'        => 'Forzar a vista previa aos usuarios sen privilexios',
+	'forcepreview' => 'Gardar páxina (usar vista previa)',
+	'forcepreview-desc' => 'Forzar a vista previa aos usuarios sen privilexios',
 	'right-forcepreviewexempt' => 'Poder gardar sen usar a vista previa',
 );
 
@@ -82,8 +89,8 @@ $messages['gl'] = array(
  * @author Singularity
  */
 $messages['haw'] = array(
-	'forcepreview'             => 'Mālama i ka ‘ao‘ao (mamua, nānā i ka nāmua)',
-	'forcepreview-desc'        => 'No nā inoa mea ho‘ohana i ‘a‘ole kuleana ‘ia, ha‘akoi i ka nāmua',
+	'forcepreview' => 'Mālama i ka ‘ao‘ao (mamua, nānā i ka nāmua)',
+	'forcepreview-desc' => 'No nā inoa mea ho‘ohana i ‘a‘ole kuleana ‘ia, ha‘akoi i ka nāmua',
 	'right-forcepreviewexempt' => 'Mālama paha me ka nānā ‘ana ‘ole o "Nānā i ka nāmua"',
 );
 
@@ -91,7 +98,7 @@ $messages['haw'] = array(
  * @author Kaustubh
  */
 $messages['hi'] = array(
-	'forcepreview'      => 'लेख संजोयें (पहलें झलक देखें)',
+	'forcepreview' => 'लेख संजोयें (पहलें झलक देखें)',
 	'forcepreview-desc' => 'कम अधिकार होने वाले सदस्योंको जानबूझकर झलक दिखायें',
 );
 
@@ -99,7 +106,7 @@ $messages['hi'] = array(
  * @author Michawiki
  */
 $messages['hsb'] = array(
-	'forcepreview'      => 'Stronu składować (wužij najprjedy přehlad)',
+	'forcepreview' => 'Stronu składować (wužij najprjedy přehlad)',
 	'forcepreview-desc' => 'Přehlad za njewoprawnjenych wužiwarjow wunuzować',
 );
 
@@ -107,8 +114,8 @@ $messages['hsb'] = array(
  * @author Darth Kule
  */
 $messages['it'] = array(
-	'forcepreview'             => "Salva la pagina (usa prima l'anteprima)",
-	'forcepreview-desc'        => "Forza l'uso dell'anteprima per gli utenti che non hanno privilegi sufficienti",
+	'forcepreview' => "Salva la pagina (usa prima l'anteprima)",
+	'forcepreview-desc' => "Forza l'uso dell'anteprima per gli utenti che non hanno privilegi sufficienti",
 	'right-forcepreviewexempt' => 'Può salvare senza usare Visualizza anteprima',
 );
 
@@ -124,8 +131,8 @@ $messages['jv'] = array(
  * @author Lovekhmer
  */
 $messages['km'] = array(
-	'forcepreview'             => 'រក្សាទំព័រទុក(សូមប្រើប្រាស់បង្ហាញការមើលជាមុន)',
-	'forcepreview-desc'        => 'បង្ខំការបង្ហាញការមើលជាមុបសំរាប់អ្នកប្រើប្រាស់ដែលគ្មានសិទ្ធិ',
+	'forcepreview' => 'រក្សាទំព័រទុក(សូមប្រើប្រាស់បង្ហាញការមើលជាមុន)',
+	'forcepreview-desc' => 'បង្ខំការបង្ហាញការមើលជាមុបសំរាប់អ្នកប្រើប្រាស់ដែលគ្មានសិទ្ធិ',
 	'right-forcepreviewexempt' => 'ប្រហែលជារក្សាទុកដោយមិនប្រើការបង្ហាញការមើលជាមុន',
 );
 
@@ -133,8 +140,8 @@ $messages['km'] = array(
  * @author Purodha
  */
 $messages['ksh'] = array(
-	'forcepreview'             => 'De Sigg Avspeichere (Ävver doför donn de Vör-Aansich beloore)',
-	'forcepreview-desc'        => 'Donn dä Metmaacher met winnisch Privvileejie de Vör-Aansich för_em Avspeichere obb_et Ouch dröcke',
+	'forcepreview' => 'De Sigg Avspeichere (Ävver doför donn de Vör-Aansich beloore)',
+	'forcepreview-desc' => 'Donn dä Metmaacher met winnisch Privvileejie de Vör-Aansich för_em Avspeichere obb_et Ouch dröcke',
 	'right-forcepreviewexempt' => 'Darf Avspeichere, oohne doför de Vör-Aansich belooert ze han',
 );
 
@@ -142,8 +149,8 @@ $messages['ksh'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
-	'forcepreview'             => "Säit späicheren (kuckt d'éischt ouni ofzespäicheren)",
-	'forcepreview-desc'        => 'Kucken ouni ofzespäicheren obligatesche maachen fir Benotzer ouni Privilegien',
+	'forcepreview' => "Säit späicheren (kuckt d'éischt ouni ofzespäicheren)",
+	'forcepreview-desc' => 'Kucken ouni ofzespäicheren obligatesche maachen fir Benotzer ouni Privilegien',
 	'right-forcepreviewexempt' => "Späicheren ouni ''Kucken oni ze späicheren'' ze weisen erlaben",
 );
 
@@ -151,8 +158,8 @@ $messages['lb'] = array(
  * @author Shijualex
  */
 $messages['ml'] = array(
-	'forcepreview'             => 'താള്‍ സേവ് ചെയ്യുക (ആദ്യം പ്രിവ്യൂ ഉപയോഗിക്കുക)',
-	'forcepreview-desc'        => 'സാധാരണ ഉപയോക്താക്കള്‍‍ക്കു നിര്‍ബന്ധമായും പ്രിവ്യൂ നടപ്പിലാക്കുക',
+	'forcepreview' => 'താള്‍ സേവ് ചെയ്യുക (ആദ്യം പ്രിവ്യൂ ഉപയോഗിക്കുക)',
+	'forcepreview-desc' => 'സാധാരണ ഉപയോക്താക്കള്‍‍ക്കു നിര്‍ബന്ധമായും പ്രിവ്യൂ നടപ്പിലാക്കുക',
 	'right-forcepreviewexempt' => 'പ്രിവ്യൂ കാണുക എന്ന സം‌വിധാനം ഉപയോഗിക്കാതെ സേവ് ചെയ്യുന്നു',
 );
 
@@ -160,8 +167,8 @@ $messages['ml'] = array(
  * @author Kaustubh
  */
 $messages['mr'] = array(
-	'forcepreview'             => 'पान जतन करा (आधी झलक पहा)',
-	'forcepreview-desc'        => 'कमी अधिकार असणार्‍या सदस्यांसाठी जाणूनबुजून झलक दाखवा',
+	'forcepreview' => 'पान जतन करा (आधी झलक पहा)',
+	'forcepreview-desc' => 'कमी अधिकार असणार्‍या सदस्यांसाठी जाणूनबुजून झलक दाखवा',
 	'right-forcepreviewexempt' => 'झलक पहा चा वापर न करता पाठविता येईल',
 );
 
@@ -169,8 +176,8 @@ $messages['mr'] = array(
  * @author Siebrand
  */
 $messages['nl'] = array(
-	'forcepreview'             => 'Pagina opslaan (de bewerking eerst ter controle weergeven)',
-	'forcepreview-desc'        => 'Bewerkingen voor gebruikers zonder rechten eerst ter controle weergeven',
+	'forcepreview' => 'Pagina opslaan (de bewerking eerst ter controle weergeven)',
+	'forcepreview-desc' => 'Bewerkingen voor gebruikers zonder rechten eerst ter controle weergeven',
 	'right-forcepreviewexempt' => 'Kan een pagina opslaan zonder bewerking ter controle te bekijken',
 );
 
@@ -178,8 +185,8 @@ $messages['nl'] = array(
  * @author Jon Harald Søby
  */
 $messages['no'] = array(
-	'forcepreview'             => 'Lagre side (forhåndsvis først)',
-	'forcepreview-desc'        => 'Tvinger brukere til å forhåndsvise siden dersom de ikke har riktige rettigheter',
+	'forcepreview' => 'Lagre side (forhåndsvis først)',
+	'forcepreview-desc' => 'Tvinger brukere til å forhåndsvise siden dersom de ikke har riktige rettigheter',
 	'right-forcepreviewexempt' => 'Kan lagre uten å måtte se forhåndsvisning først',
 );
 
@@ -187,8 +194,8 @@ $messages['no'] = array(
  * @author Cedric31
  */
 $messages['oc'] = array(
-	'forcepreview'             => 'Salva la pagina (amòda en primièr la previsualizacion)',
-	'forcepreview-desc'        => 'Força la previsualizacion pels utilizaires que dispausan pas de cap privilègi',
+	'forcepreview' => 'Salva la pagina (amòda en primièr la previsualizacion)',
+	'forcepreview-desc' => 'Força la previsualizacion pels utilizaires que dispausan pas de cap privilègi',
 	'right-forcepreviewexempt' => "Pòt èsser salvat sens l'utilizacion de la previsualizacion",
 );
 
@@ -196,7 +203,7 @@ $messages['oc'] = array(
  * @author Sp5uhe
  */
 $messages['pl'] = array(
-	'forcepreview'      => 'Zapisz (najpierw sprawdź Podgląd)',
+	'forcepreview' => 'Zapisz (najpierw sprawdź Podgląd)',
 	'forcepreview-desc' => 'Wymusza na nieuprawnionych użytkownikach użycie podglądu przed zapisaniem strony',
 );
 
@@ -204,7 +211,7 @@ $messages['pl'] = array(
  * @author Malafaya
  */
 $messages['pt'] = array(
-	'forcepreview'      => 'Gravar página (use a previsão primeiro)',
+	'forcepreview' => 'Gravar página (use a previsão primeiro)',
 	'forcepreview-desc' => 'Força previsão para utilizadores sem privilégios',
 );
 
@@ -212,7 +219,7 @@ $messages['pt'] = array(
  * @author Александр Сигачёв
  */
 $messages['ru'] = array(
-	'forcepreview'      => 'Сохранить страницу (сначала используйте предпросмотр)',
+	'forcepreview' => 'Сохранить страницу (сначала используйте предпросмотр)',
 	'forcepreview-desc' => 'Обязательно использование предпросмотра для непривилегированных участников',
 );
 
@@ -220,18 +227,18 @@ $messages['ru'] = array(
  * @author Helix84
  */
 $messages['sk'] = array(
-	'forcepreview'             => 'Uložiť stránku (najprv zobraziť náhľad)',
-	'forcepreview-desc'        => 'Vynucuje náhľad u neprivilegovaných používateľov',
+	'forcepreview' => 'Uložiť stránku (najprv zobraziť náhľad)',
+	'forcepreview-desc' => 'Vynucuje náhľad u neprivilegovaných používateľov',
 	'right-forcepreviewexempt' => 'Je možné uložiť bez použitia Zobraziť náhľad',
 );
 
 /** Swedish (Svenska)
- * @author Lejonel
  * @author Jon Harald Søby
+ * @author Lejonel
  */
 $messages['sv'] = array(
-	'forcepreview'             => 'Spara (förhandsgranska först)',
-	'forcepreview-desc'        => 'Tvingar användare att förhandsgranska om de saknar rätt behörighet',
+	'forcepreview' => 'Spara (förhandsgranska först)',
+	'forcepreview-desc' => 'Tvingar användare att förhandsgranska om de saknar rätt behörighet',
 	'right-forcepreviewexempt' => 'Kan spara utan att visa förhandsgranskning',
 );
 
@@ -242,7 +249,7 @@ $messages['te'] = array(
 	'forcepreview' => 'పేజీని భద్రపరచండి (ముందుగా సరిచూడండి)',
 );
 
-/** Tajik (Cyrillic) (Тоҷикӣ/tojikī (Cyrillic))
+/** Tajik (Cyrillic) (Тоҷикӣ (Cyrillic))
  * @author Ibrahim
  */
 $messages['tg-cyrl'] = array(
@@ -253,10 +260,10 @@ $messages['tg-cyrl'] = array(
  * @author Vinhtantran
  */
 $messages['vi'] = array(
-	'forcepreview'             => '
+	'forcepreview' => '
 
 Lưu trang (sau khi xem thử)',
-	'forcepreview-desc'        => 'Bắt buộc xem thử đối với thành viên không đủ quyền',
+	'forcepreview-desc' => 'Bắt buộc xem thử đối với thành viên không đủ quyền',
 	'right-forcepreviewexempt' => 'Có thể lưu mà không sử dụng Xem trước',
 );
 

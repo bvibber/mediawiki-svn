@@ -9,6 +9,13 @@ $messages['en'] = array(
 	'charinsert-desc' => 'Allows creation of JavaScript box for [[MediaWiki:Edittools|inserting non-standard characters]]',
 );
 
+/** Message documentation (Message documentation)
+ * @author Meno25
+ */
+$messages['qqq'] = array(
+	'charinsert-desc' => 'Short description of the CharInsert extension, shown on [[Special:Version]]. Do not translate or change links.',
+);
+
 /** Afrikaans (Afrikaans)
  * @author Naudefj
  */
@@ -73,8 +80,8 @@ $messages['eo'] = array(
 );
 
 /** French (Français)
- * @author Urhixidur
  * @author Meithal
+ * @author Urhixidur
  */
 $messages['fr'] = array(
 	'charinsert-desc' => 'Permet la création d’une boîte JavaScript pour l’[[MediaWiki:Edittools|insertion de caractères non-standards]]',
@@ -241,7 +248,7 @@ $messages['sv'] = array(
 	'charinsert-desc' => 'Gör det möjligt att infoga [[MediaWiki:Edittools|specialtecken]] i redigeringsrutan med hjälp av JavaScript',
 );
 
-/** Tajik (Cyrillic) (Тоҷикӣ/tojikī (Cyrillic))
+/** Tajik (Cyrillic) (Тоҷикӣ (Cyrillic))
  * @author Ibrahim
  */
 $messages['tg-cyrl'] = array(

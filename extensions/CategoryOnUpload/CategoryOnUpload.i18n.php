@@ -17,11 +17,17 @@ $messages['en'] = array(
 	'categoryonupload-none'  => '-', # Do not translate or duplicate this message to other languages.
 );
 
+/** Message documentation (Message documentation) */
+$messages['qqq'] = array(
+	'categoryonupload-desc' => 'Description on [[Special:Version]] of the CategoryOnUpload extension. See [http://upload.wikimedia.org/wikipedia/mediawiki/5/5c/CategoryOnUpload_Screenshot.png this image] for what it does.',
+	'categoryonupload-label' => '{{identical|Category}}',
+);
+
 /** Afrikaans (Afrikaans)
  * @author Naudefj
  */
 $messages['af'] = array(
-	'categoryonupload-desc'  => "Vra gebruiker om 'n kategorie te kies as 'n lêer opgelaai word",
+	'categoryonupload-desc' => "Vra gebruiker om 'n kategorie te kies as 'n lêer opgelaai word",
 	'categoryonupload-label' => 'Kategorie:',
 );
 
@@ -36,7 +42,7 @@ $messages['am'] = array(
  * @author Meno25
  */
 $messages['ar'] = array(
-	'categoryonupload-desc'  => 'يقترح على المستخدم اختيار تصنيف عند رفع ملف',
+	'categoryonupload-desc' => 'يقترح على المستخدم اختيار تصنيف عند رفع ملف',
 	'categoryonupload-label' => 'التصنيف:',
 );
 
@@ -51,7 +57,7 @@ $messages['be-tarask'] = array(
  * @author DCLXVI
  */
 $messages['bg'] = array(
-	'categoryonupload-desc'  => 'Възможност потребителите да посочват категория при качване на файл',
+	'categoryonupload-desc' => 'Възможност потребителите да посочват категория при качване на файл',
 	'categoryonupload-label' => 'Категория:',
 );
 
@@ -59,7 +65,7 @@ $messages['bg'] = array(
  * @author Raimond Spekking
  */
 $messages['de'] = array(
-	'categoryonupload-desc'  => 'Fragt einen Benutzer beim Hochladen von Dateien nach einer Kategorie',
+	'categoryonupload-desc' => 'Fragt einen Benutzer beim Hochladen von Dateien nach einer Kategorie',
 	'categoryonupload-label' => 'Kategorie:',
 );
 
@@ -67,7 +73,7 @@ $messages['de'] = array(
  * @author Michawiki
  */
 $messages['dsb'] = array(
-	'categoryonupload-desc'  => 'Napomina wužywarja pśi nahraśu dataje kategoriju wubraś',
+	'categoryonupload-desc' => 'Napomina wužywarja pśi nahraśu dataje kategoriju wubraś',
 	'categoryonupload-label' => 'Kategorija:',
 );
 
@@ -82,7 +88,7 @@ $messages['el'] = array(
  * @author Yekrats
  */
 $messages['eo'] = array(
-	'categoryonupload-desc'  => 'Invitas uzanton selekti kategorion kiam alŝutante dosieron',
+	'categoryonupload-desc' => 'Invitas uzanton selekti kategorion kiam alŝutante dosieron',
 	'categoryonupload-label' => 'Kategorio:',
 );
 
@@ -91,7 +97,7 @@ $messages['eo'] = array(
  * @author Nike
  */
 $messages['fi'] = array(
-	'categoryonupload-desc'  => 'Pyytää käyttäjää valitsemaan luokan tallennettaessa uutta tiedostoa.',
+	'categoryonupload-desc' => 'Pyytää käyttäjää valitsemaan luokan tallennettaessa uutta tiedostoa.',
 	'categoryonupload-label' => 'Luokka:',
 );
 
@@ -99,7 +105,7 @@ $messages['fi'] = array(
  * @author IAlex
  */
 $messages['fr'] = array(
-	'categoryonupload-desc'  => "Affiche un sélecteur de catégories lors du téléchargement d'un fichier",
+	'categoryonupload-desc' => "Affiche un sélecteur de catégories lors du téléchargement d'un fichier",
 	'categoryonupload-label' => 'Catégorie :',
 );
 
@@ -107,7 +113,7 @@ $messages['fr'] = array(
  * @author Toliño
  */
 $messages['gl'] = array(
-	'categoryonupload-desc'  => 'Avisa ao usuario de que ten que seleccionar unha categoría para cargar un ficheiro',
+	'categoryonupload-desc' => 'Avisa ao usuario de que ten que seleccionar unha categoría para cargar un ficheiro',
 	'categoryonupload-label' => 'Categoría:',
 );
 
@@ -115,7 +121,7 @@ $messages['gl'] = array(
  * @author Dani
  */
 $messages['hu'] = array(
-	'categoryonupload-desc'  => 'Kötelezővé teszi a szerkesztők számára, hogy kategóriát adjanak meg egy fájl feltöltésénél',
+	'categoryonupload-desc' => 'Kötelezővé teszi a szerkesztők számára, hogy kategóriát adjanak meg egy fájl feltöltésénél',
 	'categoryonupload-label' => 'Kategória:',
 );
 
@@ -123,7 +129,7 @@ $messages['hu'] = array(
  * @author McDutchie
  */
 $messages['ia'] = array(
-	'categoryonupload-desc'  => 'Suggere al usator de seliger un categoria quando se carga un file',
+	'categoryonupload-desc' => 'Suggere al usator de seliger un categoria quando se carga un file',
 	'categoryonupload-label' => 'Categoria:',
 );
 
@@ -131,7 +137,7 @@ $messages['ia'] = array(
  * @author Rex
  */
 $messages['id'] = array(
-	'categoryonupload-desc'  => 'Menampilkan pilihan kategori ketika seorang pengguna akan memuatkan sebuah berkas',
+	'categoryonupload-desc' => 'Menampilkan pilihan kategori ketika seorang pengguna akan memuatkan sebuah berkas',
 	'categoryonupload-label' => 'Kategori:',
 );
 
@@ -139,7 +145,7 @@ $messages['id'] = array(
  * @author Darth Kule
  */
 $messages['it'] = array(
-	'categoryonupload-desc'  => "Suggerisce all'utente di selezionare una categoria per un file durante il suo caricamento",
+	'categoryonupload-desc' => "Suggerisce all'utente di selezionare una categoria per un file durante il suo caricamento",
 	'categoryonupload-label' => 'Categoria:',
 );
 
@@ -154,11 +160,11 @@ $messages['km'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
-	'categoryonupload-desc'  => 'Freet de Benotzer fir beim Eroplueden vu Fichieren eng Kategorie unzeginn',
+	'categoryonupload-desc' => 'Freet de Benotzer fir beim Eroplueden vu Fichieren eng Kategorie unzeginn',
 	'categoryonupload-label' => 'Kategorie:',
 );
 
-/** Nahuatl (Nahuatl)
+/** Nahuatl (Nāhuatl)
  * @author Fluence
  */
 $messages['nah'] = array(
@@ -169,16 +175,16 @@ $messages['nah'] = array(
  * @author Slomox
  */
 $messages['nds'] = array(
-	'categoryonupload-desc'  => 'Fraagt en Bruker bi’t Hoochladen vun Datein na en Kategorie för de Datei',
+	'categoryonupload-desc' => 'Fraagt en Bruker bi’t Hoochladen vun Datein na en Kategorie för de Datei',
 	'categoryonupload-label' => 'Kategorie:',
 );
 
 /** Dutch (Nederlands)
- * @author Siebrand
  * @author SPQRobin
+ * @author Siebrand
  */
 $messages['nl'] = array(
-	'categoryonupload-desc'  => 'Vraagt een gebruiker om een categorie te selecteren bij het uploaden van een bestand',
+	'categoryonupload-desc' => 'Vraagt een gebruiker om een categorie te selecteren bij het uploaden van een bestand',
 	'categoryonupload-label' => 'Categorie:',
 );
 
@@ -186,7 +192,7 @@ $messages['nl'] = array(
  * @author Jon Harald Søby
  */
 $messages['no'] = array(
-	'categoryonupload-desc'  => 'Ber brukere om å velge en kategori når du laster opp filer',
+	'categoryonupload-desc' => 'Ber brukere om å velge en kategori når du laster opp filer',
 	'categoryonupload-label' => 'Kategori:',
 );
 
@@ -194,7 +200,7 @@ $messages['no'] = array(
  * @author Cedric31
  */
 $messages['oc'] = array(
-	'categoryonupload-desc'  => "Aficha un selector de categorias al moment del telecargament d'un fichièr",
+	'categoryonupload-desc' => "Aficha un selector de categorias al moment del telecargament d'un fichièr",
 	'categoryonupload-label' => 'Categoria :',
 );
 
@@ -203,7 +209,7 @@ $messages['oc'] = array(
  * @author Wpedzich
  */
 $messages['pl'] = array(
-	'categoryonupload-desc'  => 'Prosi użytkownika o wybranie kategorii podczas przesyłania pliku',
+	'categoryonupload-desc' => 'Prosi użytkownika o wybranie kategorii podczas przesyłania pliku',
 	'categoryonupload-label' => 'Kategoria',
 );
 
@@ -211,7 +217,7 @@ $messages['pl'] = array(
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */
 $messages['ps'] = array(
-	'categoryonupload-desc'  => 'د دوتنې د پورته کولو پر مهال، يو کارونکی په دې توانوي چې د دوتنې وېشنيزه وټاکي',
+	'categoryonupload-desc' => 'د دوتنې د پورته کولو پر مهال، يو کارونکی په دې توانوي چې د دوتنې وېشنيزه وټاکي',
 	'categoryonupload-label' => 'وېشنيزه:',
 );
 
@@ -226,7 +232,7 @@ $messages['ro'] = array(
  * @author Александр Сигачёв
  */
 $messages['ru'] = array(
-	'categoryonupload-desc'  => 'Позволяет участнику при загрузке файла выбирать категорию',
+	'categoryonupload-desc' => 'Позволяет участнику при загрузке файла выбирать категорию',
 	'categoryonupload-label' => 'Категория:',
 );
 
@@ -234,7 +240,7 @@ $messages['ru'] = array(
  * @author Helix84
  */
 $messages['sk'] = array(
-	'categoryonupload-desc'  => 'Pri nahrávaní súboru vyzve používateľa vybrať kategóriu',
+	'categoryonupload-desc' => 'Pri nahrávaní súboru vyzve používateľa vybrať kategóriu',
 	'categoryonupload-label' => 'Kategória:',
 );
 
@@ -242,7 +248,7 @@ $messages['sk'] = array(
  * @author Irwangatot
  */
 $messages['su'] = array(
-	'categoryonupload-desc'  => 'Mintonkeun pilihan kategori sabot saurang pamaké baris Muatkeun hiji koropak',
+	'categoryonupload-desc' => 'Mintonkeun pilihan kategori sabot saurang pamaké baris Muatkeun hiji koropak',
 	'categoryonupload-label' => 'Kategori:',
 );
 
@@ -250,7 +256,7 @@ $messages['su'] = array(
  * @author M.M.S.
  */
 $messages['sv'] = array(
-	'categoryonupload-desc'  => 'Låter en användare att välja en kategori när den laddar upp en fil',
+	'categoryonupload-desc' => 'Låter en användare att välja en kategori när den laddar upp en fil',
 	'categoryonupload-label' => 'Kategori:',
 );
 
@@ -265,7 +271,7 @@ $messages['te'] = array(
  * @author AS
  */
 $messages['uk'] = array(
-	'categoryonupload-desc'  => 'Дозволяє користувачеві вибрати категорію для завантажуваного файлу',
+	'categoryonupload-desc' => 'Дозволяє користувачеві вибрати категорію для завантажуваного файлу',
 	'categoryonupload-label' => 'Категорія:',
 );
 

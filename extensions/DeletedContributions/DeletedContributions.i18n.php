@@ -12,12 +12,20 @@ $messages['en'] = array(
 	'deletedcontributions-desc' => 'Gives sysops the ability to [[Special:DeletedContributions|browse deleted edits]] of a user',
 );
 
+/** Message documentation (Message documentation)
+ * @author Meno25
+ */
+$messages['qqq'] = array(
+	'deletedcontributions' => 'Title of [[Special:DeletedContributions]] (extension), a special page with a list of edits to pages which were deleted. Only viewable by sysops. The message is also shown as a link on [[Special:Contributions]] to the DeletedContributions special page.',
+	'deletedcontributions-desc' => 'Short description of the Deleted user contributions extension, shown on [[Special:Version]]. Do not translate or change links.',
+);
+
 /** Afrikaans (Afrikaans)
- * @author SPQRobin
  * @author Naudefj
+ * @author SPQRobin
  */
 $messages['af'] = array(
-	'deletedcontributions'      => 'Geskrapte gebruikersbydraes',
+	'deletedcontributions' => 'Geskrapte gebruikersbydraes',
 	'deletedcontributions-desc' => "Laat sysop gebruikers toe om na [[Special:DeletedContributions|verwyderde bydraes]] van 'n gebruiker te kyk",
 );
 
@@ -25,7 +33,7 @@ $messages['af'] = array(
  * @author Juanpabl
  */
 $messages['an'] = array(
-	'deletedcontributions'      => "Contrebuzions d'usuario borratas",
+	'deletedcontributions' => "Contrebuzions d'usuario borratas",
 	'deletedcontributions-desc' => "Premite a os almenistradors [[Special:DeletedContributions|beyer as edizions borratas d'un usuario]]",
 );
 
@@ -33,22 +41,19 @@ $messages['an'] = array(
  * @author Meno25
  */
 $messages['ar'] = array(
-	'deletedcontributions'      => 'مساهمات المستخدم المحذوفة',
+	'deletedcontributions' => 'مساهمات المستخدم المحذوفة',
 	'deletedcontributions-desc' => 'يعطي الإداريين القدرة على [[Special:DeletedContributions|تصفح مساهمات مستخدم ما المحذوفة]]',
 );
 
 /** Asturian (Asturianu)
  * @author Esbardu
- * @author SPQRobin
  */
 $messages['ast'] = array(
-	'deletedcontributions'      => "Contribuciones d'usuariu borraes",
+	'deletedcontributions' => "Contribuciones d'usuariu borraes",
 	'deletedcontributions-desc' => "Da la a los alministradores la capacidá de [[Special:Deletedcontributions|ver les ediciones borraes d'un usuariu]]",
 );
 
-/** Bashkir (Башҡорт)
- * @author SPQRobin
- */
+/** Bashkir (Башҡорт) */
 $messages['ba'] = array(
 	'deletedcontributions' => 'Ҡулланыусыларҙың юйылған өлөшө',
 );
@@ -57,7 +62,7 @@ $messages['ba'] = array(
  * @author Mostafadaneshvar
  */
 $messages['bcc'] = array(
-	'deletedcontributions'      => 'مشارکتان کابر حذف بوتء',
+	'deletedcontributions' => 'مشارکتان کابر حذف بوتء',
 	'deletedcontributions-desc' => 'مدیران توان دنت تا [[Special:DeletedContributions|حذفی اصلاح گردیت]] چه یک کاربریء',
 );
 
@@ -68,28 +73,25 @@ $messages['bcl'] = array(
 	'deletedcontributions' => 'Parâon an mga kontribusyon kan parágamit',
 );
 
-/** Belarusian (Беларуская)
- * @author SPQRobin
- */
+/** Belarusian (Беларуская) */
 $messages['be'] = array(
 	'deletedcontributions' => 'Выдалены ўклад удзельніка',
 );
 
 /** Bulgarian (Български)
  * @author DCLXVI
- * @author SPQRobin
  */
 $messages['bg'] = array(
-	'deletedcontributions'      => 'Изтрити приноси на потребител',
+	'deletedcontributions' => 'Изтрити приноси на потребител',
 	'deletedcontributions-desc' => 'Предоставя на администраторите възможността да [[Special:DeletedContributions|разглеждат изтритите приноси на потребител]]',
 );
 
 /** Bengali (বাংলা)
- * @author Zaheen
  * @author Bellayet
+ * @author Zaheen
  */
 $messages['bn'] = array(
-	'deletedcontributions'      => 'মুছে ফেলা ব্যবহারকারী অবদান',
+	'deletedcontributions' => 'মুছে ফেলা ব্যবহারকারী অবদান',
 	'deletedcontributions-desc' => 'প্রশাসকদের [[Special:DeletedContributions|কোন ব্যবহারকারীর মুছে ফেলা সম্পাদনাগুলি ব্রাউজ করার]] ক্ষমতা দেয়',
 );
 
@@ -97,16 +99,15 @@ $messages['bn'] = array(
  * @author Fulup
  */
 $messages['br'] = array(
-	'deletedcontributions'      => 'Degasadennoù diverket un implijer',
+	'deletedcontributions' => 'Degasadennoù diverket un implijer',
 	'deletedcontributions-desc' => "Reiñ a ra an tu d'ar verourien da [[Special:DeletedContributions|welet degasadennoù diverket]] un implijer bennak",
 );
 
 /** Catalan (Català)
  * @author SMP
- * @author SPQRobin
  */
 $messages['ca'] = array(
-	'deletedcontributions'      => 'Contribucions esborrades',
+	'deletedcontributions' => 'Contribucions esborrades',
 	'deletedcontributions-desc' => "Dóna als administradors l'habilitat de [[Special:DeletedContributions|consultar les edicions eliminades d'un usuari]]",
 );
 
@@ -119,7 +120,7 @@ $messages['cdo'] = array(
  * @author Li-sung
  */
 $messages['cs'] = array(
-	'deletedcontributions'      => 'Smazané editace uživatele',
+	'deletedcontributions' => 'Smazané editace uživatele',
 	'deletedcontributions-desc' => 'Umožňuje správcům [[Special:DeletedContributions|prohlížet smazané editace zadaného uživatele]]',
 );
 
@@ -130,9 +131,7 @@ $messages['cu'] = array(
 	'deletedcontributions' => 'пони́чьжєнꙑ добродѣꙗ́ниꙗ',
 );
 
-/** Welsh (Cymraeg)
- * @author SPQRobin
- */
+/** Welsh (Cymraeg) */
 $messages['cy'] = array(
 	'deletedcontributions' => "Cyfraniadau'r defnyddiwr a ddilëwyd",
 );
@@ -146,7 +145,7 @@ $messages['da'] = array(
  * @author Raimond Spekking
  */
 $messages['de'] = array(
-	'deletedcontributions'      => 'Gelöschte Benutzerbeiträge',
+	'deletedcontributions' => 'Gelöschte Benutzerbeiträge',
 	'deletedcontributions-desc' => 'Gibt Administratoren die Möglichkeit, [[Special:DeletedContributions|gelöschte Benutzerbeiträge]] einzusehen',
 );
 
@@ -154,13 +153,11 @@ $messages['de'] = array(
  * @author Michawiki
  */
 $messages['dsb'] = array(
-	'deletedcontributions'      => 'Wulašowane wužywarske pśinoski',
+	'deletedcontributions' => 'Wulašowane wužywarske pśinoski',
 	'deletedcontributions-desc' => 'Dawa administratoram móžnosć, [[Special:DeletedContributions|wulašowane wužywarske pśinoski]] póglědaś',
 );
 
-/** Greek (Ελληνικά)
- * @author SPQRobin
- */
+/** Greek (Ελληνικά) */
 $messages['el'] = array(
 	'deletedcontributions' => 'Διαγραμμένες συνεισφορές χρήστη',
 );
@@ -169,7 +166,7 @@ $messages['el'] = array(
  * @author Yekrats
  */
 $messages['eo'] = array(
-	'deletedcontributions'      => 'Forigitaj kontribuoj de uzantoj',
+	'deletedcontributions' => 'Forigitaj kontribuoj de uzantoj',
 	'deletedcontributions-desc' => 'Donas al administrantoj la kapablon [[Special:DeletedContributions|rigardi forigitajn redaktojn]] de uzanto',
 );
 
@@ -196,16 +193,16 @@ $messages['ext'] = array(
  * @author Huji
  */
 $messages['fa'] = array(
-	'deletedcontributions'      => 'مشارکت‌های حذف شده',
+	'deletedcontributions' => 'مشارکت‌های حذف شده',
 	'deletedcontributions-desc' => 'به مدیران امکان [[Special:DeletedContributions|مشاهدهٔ ویرایش‌های حذف شدهٔ یک کاربر]] را می‌دهد',
 );
 
 /** Finnish (Suomi)
- * @author Nike
  * @author Crt
+ * @author Nike
  */
 $messages['fi'] = array(
-	'deletedcontributions'      => 'Poistetut muokkaukset',
+	'deletedcontributions' => 'Poistetut muokkaukset',
 	'deletedcontributions-desc' => 'Mahdollistaa [[Special:DeletedContributions|käyttäjien poistettujen muokkausten]] selaamisen ylläpitäjille.',
 );
 
@@ -214,7 +211,7 @@ $messages['fi'] = array(
  * @author Meithal
  */
 $messages['fr'] = array(
-	'deletedcontributions'      => 'Contributions supprimées',
+	'deletedcontributions' => 'Contributions supprimées',
 	'deletedcontributions-desc' => "Donne la possibilité aux administrateurs de [[Special:DeletedContributions|visualiser les contributions supprimées d'un utilisateur]]",
 );
 
@@ -222,7 +219,7 @@ $messages['fr'] = array(
  * @author ChrisPtDe
  */
 $messages['frp'] = array(
-	'deletedcontributions'      => 'Contribucions suprimâs d’un utilisator',
+	'deletedcontributions' => 'Contribucions suprimâs d’un utilisator',
 	'deletedcontributions-desc' => 'Balye la possibilitât ux administrators de [[Special:DeletedContributions|visualisar les contribucions suprimâs d’un utilisator]].',
 );
 
@@ -242,7 +239,7 @@ $messages['ga'] = array(
  * @author Toliño
  */
 $messages['gl'] = array(
-	'deletedcontributions'      => 'Contribucións eliminadas do usuario',
+	'deletedcontributions' => 'Contribucións eliminadas do usuario',
 	'deletedcontributions-desc' => 'Dálles aos administradores a posibilidade de [[Special:DeletedContributions|examinar as edicións eliminadas dun usuario]]',
 );
 
@@ -250,7 +247,7 @@ $messages['gl'] = array(
  * @author Singularity
  */
 $messages['haw'] = array(
-	'deletedcontributions'      => 'Nā ha‘awina o ka inoa mea ho‘ohana i kāpae ‘ia ai',
+	'deletedcontributions' => 'Nā ha‘awina o ka inoa mea ho‘ohana i kāpae ‘ia ai',
 	'deletedcontributions-desc' => 'Hā‘awi keia i nā kahu i ka hiki e nānā i nā ho‘ololi i kāpae ‘ia ai o ka inoa mea ho‘ohana',
 );
 
@@ -258,7 +255,7 @@ $messages['haw'] = array(
  * @author Rotem Liss
  */
 $messages['he'] = array(
-	'deletedcontributions'      => 'תרומות משתמש מחוקות',
+	'deletedcontributions' => 'תרומות משתמש מחוקות',
 	'deletedcontributions-desc' => 'מתן אפשרות למפעילי מערכת [[Special:DeletedContributions|לצפות בעריכות מחוקות]] של משתמש',
 );
 
@@ -266,16 +263,15 @@ $messages['he'] = array(
  * @author Kaustubh
  */
 $messages['hi'] = array(
-	'deletedcontributions'      => 'हटाये गये सदस्य योगदान',
+	'deletedcontributions' => 'हटाये गये सदस्य योगदान',
 	'deletedcontributions-desc' => 'कोई भी [[Special:DeletedContributions|सदस्यके हटाये गये बदलाव]] देखने की अनुमति प्रबंधकोंको देता हैं।',
 );
 
 /** Croatian (Hrvatski)
  * @author Dnik
- * @author SPQRobin
  */
 $messages['hr'] = array(
-	'deletedcontributions'      => 'Obrisani suradnički doprinosi',
+	'deletedcontributions' => 'Obrisani suradnički doprinosi',
 	'deletedcontributions-desc' => 'Daje administratoru mogućnost [[Special:DeletedContributions|pregleda izbrisanih suradničkih uređivanja]]',
 );
 
@@ -283,7 +279,7 @@ $messages['hr'] = array(
  * @author Michawiki
  */
 $messages['hsb'] = array(
-	'deletedcontributions'      => 'wušmórnjene přinoški',
+	'deletedcontributions' => 'wušmórnjene přinoški',
 	'deletedcontributions-desc' => 'Da administratoram móžnosć [[Special:DeletedContributions|wušmórnjene wužiwarske přinoški přehladować]]',
 );
 
@@ -291,7 +287,7 @@ $messages['hsb'] = array(
  * @author Dani
  */
 $messages['hu'] = array(
-	'deletedcontributions'      => 'Törölt szerkesztések',
+	'deletedcontributions' => 'Törölt szerkesztések',
 	'deletedcontributions-desc' => 'Lehetővé teszi az adminisztrátorok számára a [[Special:DeletedContributions|törölt szerkesztések megtekintését]]',
 );
 
@@ -306,7 +302,7 @@ $messages['hy'] = array(
  * @author McDutchie
  */
 $messages['ia'] = array(
-	'deletedcontributions'      => 'Contributiones delite de usatores',
+	'deletedcontributions' => 'Contributiones delite de usatores',
 	'deletedcontributions-desc' => 'Permitte que le admininistratores [[Special:DeletedContributions|visualisa le modificationes delite]] de un usator',
 );
 
@@ -314,7 +310,7 @@ $messages['ia'] = array(
  * @author IvanLanin
  */
 $messages['id'] = array(
-	'deletedcontributions'      => 'Kontribusi yang dihapus',
+	'deletedcontributions' => 'Kontribusi yang dihapus',
 	'deletedcontributions-desc' => 'Memberikan fasilitas bagi pengurus untuk [[Special:DeletedContributions|melihat suntingan yang dihapus dari seorang pengguna]]',
 );
 
@@ -327,20 +323,19 @@ $messages['is'] = array(
 
 /** Italian (Italiano)
  * @author BrokenArrow
- * @author Nemo bis
  * @author Melos
+ * @author Nemo bis
  */
 $messages['it'] = array(
-	'deletedcontributions'      => 'Contributi utente cancellati',
+	'deletedcontributions' => 'Contributi utente cancellati',
 	'deletedcontributions-desc' => 'Fornisce agli amministratori la possibilità di [[Special:DeletedContributions|visualizzare i contributi cancellati di un utente]]',
 );
 
 /** Japanese (日本語)
  * @author JtFuruhata
- * @author SPQRobin
  */
 $messages['ja'] = array(
-	'deletedcontributions'      => '利用者の削除された投稿履歴',
+	'deletedcontributions' => '利用者の削除された投稿履歴',
 	'deletedcontributions-desc' => '{{int:group-sysop}}に[[Special:DeletedContributions|利用者の削除された投稿履歴]]の閲覧機能を提供する',
 );
 
@@ -355,7 +350,7 @@ $messages['jut'] = array(
  * @author Meursault2004
  */
 $messages['jv'] = array(
-	'deletedcontributions'      => 'Kontribusi panganggo sing dibusak',
+	'deletedcontributions' => 'Kontribusi panganggo sing dibusak',
 	'deletedcontributions-desc' => 'Mènèhi opsis fasilitas kanggo mriksa [[Special:DeletedContributions|suntingan sawijining panganggo sing wis dibusak]]',
 );
 
@@ -379,7 +374,7 @@ $messages['kk-latn'] = array(
  * @author Lovekhmer
  */
 $messages['km'] = array(
-	'deletedcontributions'      => 'ប្រវត្តិនៃការលុបការរួមចំនែករបស់អ្នកប្រើប្រាស់',
+	'deletedcontributions' => 'ប្រវត្តិនៃការលុបការរួមចំនែករបស់អ្នកប្រើប្រាស់',
 	'deletedcontributions-desc' => 'ផ្តល់លទ្ធភាពអោយអ្នកថែទាំប្រព័ន្ធ[[Special:DeletedContributions|រាវរកកំណែប្រែបានលុប]]របស់អ្នកប្រើប្រាស់',
 );
 
@@ -387,7 +382,7 @@ $messages['km'] = array(
  * @author ToePeu
  */
 $messages['ko'] = array(
-	'deletedcontributions'      => '삭제된 기여',
+	'deletedcontributions' => '삭제된 기여',
 	'deletedcontributions-desc' => '관리자에게 사용자의 [[특수기능:DeletedContributions|지워진 기여 보기]] 기능 추가',
 );
 
@@ -395,7 +390,7 @@ $messages['ko'] = array(
  * @author Purodha
  */
 $messages['ksh'] = array(
-	'deletedcontributions'      => 'Fottjeschmesse Versione',
+	'deletedcontributions' => 'Fottjeschmesse Versione',
 	'deletedcontributions-desc' => 'Hee könne Wiki-Köbesse de [[Special:DeletedContributions|fottjeschmesse Versione]] beluure.',
 );
 
@@ -403,7 +398,7 @@ $messages['ksh'] = array(
  * @author Bangin
  */
 $messages['ku-latn'] = array(
-	'deletedcontributions'      => 'Guherandinên bikarhênerekî yê jêbirî',
+	'deletedcontributions' => 'Guherandinên bikarhênerekî yê jêbirî',
 	'deletedcontributions-desc' => 'Qebûlbike ku koordinator (admîn) dikaribin di [[Special:DeletedContributions|nivîsarên jêbirî yên bikarhêneran]] da sekin.',
 );
 
@@ -418,7 +413,7 @@ $messages['la'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
-	'deletedcontributions'      => 'Geläschte Kontributiounen',
+	'deletedcontributions' => 'Geläschte Kontributiounen',
 	'deletedcontributions-desc' => "Gëtt den Administrateuren d'Méiglechkeet, [[Special:DeletedContributions|geläschte Kontributioune vun engem Benotzer]] ze kucken.",
 );
 
@@ -426,13 +421,11 @@ $messages['lb'] = array(
  * @author Ooswesthoesbes
  */
 $messages['li'] = array(
-	'deletedcontributions'      => 'Gewisdje gebroekersbiedraag',
+	'deletedcontributions' => 'Gewisdje gebroekersbiedraag',
 	'deletedcontributions-desc' => "Guf sysops de meugelikheid óm [[Special:DeletedContributions|gewisde biedraag van 'ne gebroeker te bekieke]]",
 );
 
-/** Lumbaart (Lumbaart)
- * @author SPQRobin
- */
+/** Lumbaart (Lumbaart) */
 $messages['lmo'] = array(
 	'deletedcontributions' => 'Cuntribüziun scancelaa',
 );
@@ -446,10 +439,9 @@ $messages['loz'] = array(
 
 /** Lithuanian (Lietuvių)
  * @author Hugo.arg
- * @author SPQRobin
  */
 $messages['lt'] = array(
-	'deletedcontributions'      => 'Ištrintas naudotojo indėlis',
+	'deletedcontributions' => 'Ištrintas naudotojo indėlis',
 	'deletedcontributions-desc' => 'Suteikia administratoriams galimybę [[Special:DeletedContributions|parinkti ištrintus naudotojo keitimus]]',
 );
 
@@ -457,13 +449,11 @@ $messages['lt'] = array(
  * @author Yyy
  */
 $messages['lv'] = array(
-	'deletedcontributions'      => 'Izdzēstais lietotāju devums',
+	'deletedcontributions' => 'Izdzēstais lietotāju devums',
 	'deletedcontributions-desc' => 'Dod adminiem iespēju [[Special:DeletedContributions|apskatīties izdzēstās lietotāju izmaiņas]]. (Tās ir visas, visu lietotāju izdarītās izmaiņas lapās, kuras ir tikušas izdzēstas)',
 );
 
-/** Macedonian (Македонски)
- * @author SPQRobin
- */
+/** Macedonian (Македонски) */
 $messages['mk'] = array(
 	'deletedcontributions' => 'Избришани кориснички придонеси',
 );
@@ -472,7 +462,7 @@ $messages['mk'] = array(
  * @author Shijualex
  */
 $messages['ml'] = array(
-	'deletedcontributions'      => 'മായ്ക്കപ്പെട്ട ഉപയോക്തൃസംഭാവനകള്‍',
+	'deletedcontributions' => 'മായ്ക്കപ്പെട്ട ഉപയോക്തൃസംഭാവനകള്‍',
 	'deletedcontributions-desc' => "ഉപയോക്താക്കളുടെ [[Special:DeletedContributions|മായ്ക്കപ്പെട്ട തിരുത്തലുകള്‍ കാണുവാനുള്ള]] സൗകര്യം '''സിസോപ്പിനു''' നല്‍കുക.",
 );
 
@@ -480,16 +470,15 @@ $messages['ml'] = array(
  * @author Kaustubh
  */
 $messages['mr'] = array(
-	'deletedcontributions'      => 'वगळलेली सदस्य संपादने',
+	'deletedcontributions' => 'वगळलेली सदस्य संपादने',
 	'deletedcontributions-desc' => 'एखाद्या [[Special:DeletedContributions|सदस्याची वगळलेली संपादने]] पाहण्याची प्रबंधकांना परवानगी देते.',
 );
 
 /** Malay (Bahasa Melayu)
  * @author Aviator
- * @author SPQRobin
  */
 $messages['ms'] = array(
-	'deletedcontributions'      => 'Sumbangan dihapuskan',
+	'deletedcontributions' => 'Sumbangan dihapuskan',
 	'deletedcontributions-desc' => 'Membolehkan penyelia melihat [[Special:DeletedContributions|suntingan pengguna yang telah dihapuskan]]',
 );
 
@@ -509,7 +498,7 @@ $messages['nds'] = array(
  * @author Siebrand
  */
 $messages['nl'] = array(
-	'deletedcontributions'      => 'Verwijderde gebruikersbijdragen',
+	'deletedcontributions' => 'Verwijderde gebruikersbijdragen',
 	'deletedcontributions-desc' => 'Geeft beheerders de mogelijkheid om [[Special:DeletedContributions|verwijderde bijdragen van een gebruiker te bekijken]]',
 );
 
@@ -517,7 +506,7 @@ $messages['nl'] = array(
  * @author Jon Harald Søby
  */
 $messages['no'] = array(
-	'deletedcontributions'      => 'Slettede brukerbidrag',
+	'deletedcontributions' => 'Slettede brukerbidrag',
 	'deletedcontributions-desc' => 'Gir administratorer muligheten til å [[Special:DeletedContributions|gå over brukeres slettede bidrag]]',
 );
 
@@ -532,13 +521,11 @@ $messages['nso'] = array(
  * @author Cedric31
  */
 $messages['oc'] = array(
-	'deletedcontributions'      => 'Contribucions suprimidas d’un utilizaire',
+	'deletedcontributions' => 'Contribucions suprimidas d’un utilizaire',
 	'deletedcontributions-desc' => "Balha la possibilitat als administrators de [[Special:DeletedContributions|visualizar las contribucions suprimidas d'un utilizaire]]",
 );
 
-/** Pampanga (Kapampangan)
- * @author SPQRobin
- */
+/** Pampanga (Kapampangan) */
 $messages['pam'] = array(
 	'deletedcontributions' => 'Deng ambag da reng talagamit a mebura',
 );
@@ -547,7 +534,7 @@ $messages['pam'] = array(
  * @author Sp5uhe
  */
 $messages['pl'] = array(
-	'deletedcontributions'      => 'Usunięty wkład użytkownika',
+	'deletedcontributions' => 'Usunięty wkład użytkownika',
 	'deletedcontributions-desc' => 'Pozwala administratorom na [[Special:DeletedContributions|przeglądanie usuniętego wkładu użytkowników]]',
 );
 
@@ -562,7 +549,7 @@ $messages['pms'] = array(
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */
 $messages['ps'] = array(
-	'deletedcontributions'      => 'د کارونکي ونډې ړنګې شوې',
+	'deletedcontributions' => 'د کارونکي ونډې ړنګې شوې',
 	'deletedcontributions-desc' => 'يو پازوال په دې توانوي چې د يوه کارونکي [[Special:DeletedContributions|ړنګ شوي سمادېدنې وڅاري]]',
 );
 
@@ -570,7 +557,7 @@ $messages['ps'] = array(
  * @author Malafaya
  */
 $messages['pt'] = array(
-	'deletedcontributions'      => 'Edições eliminadas',
+	'deletedcontributions' => 'Edições eliminadas',
 	'deletedcontributions-desc' => 'Permite aos sysops [[Special:DeletedContributions|visualizar as edições apagadas de um utilizador]]',
 );
 
@@ -581,9 +568,7 @@ $messages['qu'] = array(
 	'deletedcontributions' => 'Qullusqa ruraqpa hukchasqankuna',
 );
 
-/** Romanian (Română)
- * @author SPQRobin
- */
+/** Romanian (Română) */
 $messages['ro'] = array(
 	'deletedcontributions' => 'Contribuţii şterse',
 );
@@ -592,7 +577,7 @@ $messages['ro'] = array(
  * @author Александр Сигачёв
  */
 $messages['ru'] = array(
-	'deletedcontributions'      => 'Удалённый вклад',
+	'deletedcontributions' => 'Удалённый вклад',
 	'deletedcontributions-desc' => 'Даёт администраторам возможность [[Special:DeletedContributions|просматривать удалённый вклад участников]]',
 );
 
@@ -600,7 +585,7 @@ $messages['ru'] = array(
  * @author HalanTul
  */
 $messages['sah'] = array(
-	'deletedcontributions'      => 'Сотуллубут көннөрүү',
+	'deletedcontributions' => 'Сотуллубут көннөрүү',
 	'deletedcontributions-desc' => 'Администраатардарга [[Special:DeletedContributions|кыттааччылар сотуллубут көннөрүүлэрин көрөр]] кыаҕы биэрэр',
 );
 
@@ -608,7 +593,7 @@ $messages['sah'] = array(
  * @author Helix84
  */
 $messages['sk'] = array(
-	'deletedcontributions'      => 'Zmazané príspevky používateľa',
+	'deletedcontributions' => 'Zmazané príspevky používateľa',
 	'deletedcontributions-desc' => 'Dáva správcovi možnosť [[Special:DeletedContributions|prehliadať zmazané príspevky používateľa]]',
 );
 
@@ -618,17 +603,14 @@ $messages['sq'] = array(
 );
 
 /** Serbian Cyrillic ekavian (ћирилица)
- * @author SPQRobin
  * @author Millosh
  */
 $messages['sr-ec'] = array(
-	'deletedcontributions'      => 'Обрисане измене',
+	'deletedcontributions' => 'Обрисане измене',
 	'deletedcontributions-desc' => 'Даје сисопима могућност да [[Special:DeletedContributions|прегледају обрисане измене]] сарадника.',
 );
 
-/** latinica (latinica)
- * @author SPQRobin
- */
+/** latinica (latinica) */
 $messages['sr-el'] = array(
 	'deletedcontributions' => 'Obrisane izmene',
 );
@@ -644,16 +626,16 @@ $messages['srn'] = array(
  * @author Pyt
  */
 $messages['stq'] = array(
-	'deletedcontributions'      => 'Läskede Benutserbiedraage',
+	'deletedcontributions' => 'Läskede Benutserbiedraage',
 	'deletedcontributions-desc' => 'Rakt Administratore ju Muugelkaid, [[Special:DeletedContributions|läskede Benutserbiedraage]] ientoukiekjen',
 );
 
 /** Sundanese (Basa Sunda)
- * @author Kandar
  * @author Irwangatot
+ * @author Kandar
  */
 $messages['su'] = array(
-	'deletedcontributions'      => 'Kontribusi nu dihapus',
+	'deletedcontributions' => 'Kontribusi nu dihapus',
 	'deletedcontributions-desc' => 'Leler kuncén kawenangan [[Special:DeletedContributions|nyungsi éditan nu geus dihapus]] ti hiji pamaké',
 );
 
@@ -661,7 +643,7 @@ $messages['su'] = array(
  * @author Lejonel
  */
 $messages['sv'] = array(
-	'deletedcontributions'      => 'Raderade användarbidrag',
+	'deletedcontributions' => 'Raderade användarbidrag',
 	'deletedcontributions-desc' => 'Ger administratörer möjlighet att [[Special:DeletedContributions|se användares raderade bidrag]]',
 );
 
@@ -669,15 +651,15 @@ $messages['sv'] = array(
  * @author Veeven
  */
 $messages['te'] = array(
-	'deletedcontributions'      => 'తొలగించబడిన సభ్యుని రచనలు',
+	'deletedcontributions' => 'తొలగించబడిన సభ్యుని రచనలు',
 	'deletedcontributions-desc' => 'నిర్వాహకులకు [[Special:DeletedContributions|వాడుకరుల యొక్క తొలగించిన మార్పులను]] చూసే అవకాశం కలిగిస్తుంది',
 );
 
-/** Tajik (Cyrillic) (Тоҷикӣ/tojikī (Cyrillic))
+/** Tajik (Cyrillic) (Тоҷикӣ (Cyrillic))
  * @author Ibrahim
  */
 $messages['tg-cyrl'] = array(
-	'deletedcontributions'      => 'Ҳиссагузориҳои ҳазфшудаи корбар',
+	'deletedcontributions' => 'Ҳиссагузориҳои ҳазфшудаи корбар',
 	'deletedcontributions-desc' => 'Ба мудирон имкони [[Special:DeletedContributions|мушоҳидаи вироишҳои ҳазфшудаи як корбар]]ро медиҳад',
 );
 
@@ -685,13 +667,11 @@ $messages['tg-cyrl'] = array(
  * @author Passawuth
  */
 $messages['th'] = array(
-	'deletedcontributions'      => 'การแก้ไขที่ถูกลบ',
+	'deletedcontributions' => 'การแก้ไขที่ถูกลบ',
 	'deletedcontributions-desc' => 'เฉพาะผู้ดูแลระบบสามารถ[[Special:DeletedContributions|ดูการแก้ไขที่ถูกลบ]]ของผู้ใช้นั้น ๆ',
 );
 
-/** Tonga (faka-Tonga)
- * @author SPQRobin
- */
+/** Tonga (faka-Tonga) */
 $messages['to'] = array(
 	'deletedcontributions' => 'Ngaahi foaki ʻo ha ʻetita kuo tāmateʻi',
 );
@@ -705,7 +685,7 @@ $messages['tr'] = array(
  * @author Ahonc
  */
 $messages['uk'] = array(
-	'deletedcontributions'      => 'Вилучений внесок користувача',
+	'deletedcontributions' => 'Вилучений внесок користувача',
 	'deletedcontributions-desc' => 'Дає адміністраторам можливість [[Special:DeletedContributions|переглядати вилучені редагування]] користувачів',
 );
 
@@ -713,38 +693,36 @@ $messages['uk'] = array(
  * @author Candalua
  */
 $messages['vec'] = array(
-	'deletedcontributions'      => 'Contributi utente scancelà',
+	'deletedcontributions' => 'Contributi utente scancelà',
 	'deletedcontributions-desc' => 'Fornisse ai aministradori la possibilità de [[Special:DeletedContributions|visualizar i contributi scancelà de un utente]]',
 );
 
 /** Vietnamese (Tiếng Việt)
- * @author Vinhtantran
  * @author Minh Nguyen
- * @author SPQRobin
+ * @author Vinhtantran
  */
 $messages['vi'] = array(
-	'deletedcontributions'      => 'Đóng góp đã bị xóa của thành viên',
+	'deletedcontributions' => 'Đóng góp đã bị xóa của thành viên',
 	'deletedcontributions-desc' => 'Cung cấp cho người quản lý khả năng [[Special:DeletedContributions|xem các sửa đổi đã bị xóa của thành viên]]',
 );
 
 /** Volapük (Volapük)
  * @author Smeira
- * @author SPQRobin
  */
 $messages['vo'] = array(
-	'deletedcontributions'      => 'Gebanakeblünots pemoüköl',
+	'deletedcontributions' => 'Gebanakeblünots pemoüköl',
 	'deletedcontributions-desc' => 'Mögükön guvanes ad logön lisedi redakamas pemoüköl gebana seimik',
 );
 
 /** Yue (粵語) */
 $messages['yue'] = array(
-	'deletedcontributions'      => '已經刪除咗嘅用戶貢獻',
+	'deletedcontributions' => '已經刪除咗嘅用戶貢獻',
 	'deletedcontributions-desc' => '畀操作員能力去瀏覽一位用戶[[Special:DeletedContributions|刪除咗嘅用戶編輯]]',
 );
 
 /** Simplified Chinese (‪中文(简体)‬) */
 $messages['zh-hans'] = array(
-	'deletedcontributions'      => '已删除的用户贡献',
+	'deletedcontributions' => '已删除的用户贡献',
 	'deletedcontributions-desc' => '让{{int:group-sysop}}可以浏览用户[[Special:DeletedContributions|被删除的编辑]]',
 );
 
@@ -752,7 +730,7 @@ $messages['zh-hans'] = array(
  * @author Alexsh
  */
 $messages['zh-hant'] = array(
-	'deletedcontributions'      => '已刪除的用戶貢獻',
+	'deletedcontributions' => '已刪除的用戶貢獻',
 	'deletedcontributions-desc' => '讓{{int:group-sysop}}可以瀏覽用戶[[Special:DeletedContributions|被刪除的編輯]]。',
 );
 

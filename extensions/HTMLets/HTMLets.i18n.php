@@ -96,8 +96,8 @@ $messages['sk'] = array(
 );
 
 /** Swedish (Svenska)
- * @author M.M.S.
  * @author Lejonel
+ * @author M.M.S.
  */
 $messages['sv'] = array(
 	'htmlets-desc' => 'Låter dig infoga HTML-kod från filer med hjälp av taggen <tt><nowiki><htmlet></nowiki></tt>',

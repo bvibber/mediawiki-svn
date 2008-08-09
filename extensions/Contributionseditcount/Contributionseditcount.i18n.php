@@ -16,7 +16,7 @@ $messages['en'] = array(
  * @author Meno25
  */
 $messages['ar'] = array(
-	'contributionseditcount'      => 'هذا المستخدم لديه $1 تعديل.',
+	'contributionseditcount' => 'هذا المستخدم لديه $1 تعديل.',
 	'contributionseditcount-desc' => 'يعرض عدد المساهمات في [[Special:Contributions|صفحة مساهمات المستخدم]]',
 );
 
@@ -32,7 +32,7 @@ $messages['bcl'] = array(
  * @author Spiritia
  */
 $messages['bg'] = array(
-	'contributionseditcount'      => 'Този потребител е направил $1 редакции.',
+	'contributionseditcount' => 'Този потребител е направил $1 редакции.',
 	'contributionseditcount-desc' => 'Показва броя редакции на [[Special:Contributions|специална страница]]',
 );
 
@@ -47,7 +47,7 @@ $messages['bn'] = array(
  * @author Jordi Roqué
  */
 $messages['ca'] = array(
-	'contributionseditcount'      => 'Aquest usuari té $1 contribucions.',
+	'contributionseditcount' => 'Aquest usuari té $1 contribucions.',
 	'contributionseditcount-desc' => 'Mostra un recompte de contribucions a [[Special:Contributions]]',
 );
 
@@ -55,7 +55,7 @@ $messages['ca'] = array(
  * @author Matěj Grabovský
  */
 $messages['cs'] = array(
-	'contributionseditcount'      => 'Tento uživatel má {{PLURAL:$1|editaci|editace|editací}}.',
+	'contributionseditcount' => 'Tento uživatel má {{PLURAL:$1|editaci|editace|editací}}.',
 	'contributionseditcount-desc' => 'Zobrazuje počet editací na stránce [[Special:Contributions|Příspěvky uživatele]]',
 );
 
@@ -63,7 +63,7 @@ $messages['cs'] = array(
  * @author Raymond
  */
 $messages['de'] = array(
-	'contributionseditcount'      => 'Dieser Benutzer hat $1 Bearbeitungen.',
+	'contributionseditcount' => 'Dieser Benutzer hat $1 Bearbeitungen.',
 	'contributionseditcount-desc' => 'Zeigt einen Beitragszähler auf der [[Special:Contributions|Beitragsseite des Benutzers]] an',
 );
 
@@ -71,7 +71,7 @@ $messages['de'] = array(
  * @author Michawiki
  */
 $messages['dsb'] = array(
-	'contributionseditcount'      => 'Toś ten wužywaŕ ma $1 {{PLURAL:$1|změnu|změnje|změny|změnow}}.',
+	'contributionseditcount' => 'Toś ten wužywaŕ ma $1 {{PLURAL:$1|změnu|změnje|změny|změnow}}.',
 	'contributionseditcount-desc' => 'Zwobraznujo licak změnow na [[Special:Contributions]]',
 );
 
@@ -86,7 +86,7 @@ $messages['el'] = array(
  * @author Yekrats
  */
 $messages['eo'] = array(
-	'contributionseditcount'      => 'Ĉi uzanto havas $1 redaktojn.',
+	'contributionseditcount' => 'Ĉi uzanto havas $1 redaktojn.',
 	'contributionseditcount-desc' => 'Montras konton de redaktoj en [[Special:Contributions]]',
 );
 
@@ -101,17 +101,17 @@ $messages['ext'] = array(
  * @author Jaakonam
  */
 $messages['fi'] = array(
-	'contributionseditcount'      => 'Tällä käyttäjällä on $1 muokkausta.',
+	'contributionseditcount' => 'Tällä käyttäjällä on $1 muokkausta.',
 	'contributionseditcount-desc' => 'Näyttää muokkauslaskurin [[Special:Contributions|käyttäjän muokkaukset]] -sivulla',
 );
 
 /** French (Français)
- * @author Sherbrooke
  * @author Cedric31
  * @author Grondin
+ * @author Sherbrooke
  */
 $messages['fr'] = array(
-	'contributionseditcount'      => 'Cet utilisateur a {{PLURAL:$1|$1 édition|$1 éditions}}.',
+	'contributionseditcount' => 'Cet utilisateur a {{PLURAL:$1|$1 édition|$1 éditions}}.',
 	'contributionseditcount-desc' => 'Affiche un compteur d’éditions sur [[Special:Contributions|la page de contribution de l’utilisateur]]',
 );
 
@@ -120,7 +120,7 @@ $messages['fr'] = array(
  * @author Xosé
  */
 $messages['gl'] = array(
-	'contributionseditcount'      => 'Este usuario ten $1 edicións.',
+	'contributionseditcount' => 'Este usuario ten $1 edicións.',
 	'contributionseditcount-desc' => 'Mostra a conta de edicións en [[Special:Contributions]]',
 );
 
@@ -129,7 +129,7 @@ $messages['gl'] = array(
  * @author Rotemliss
  */
 $messages['he'] = array(
-	'contributionseditcount'      => 'משתמש זה ביצע $1 עריכות.',
+	'contributionseditcount' => 'משתמש זה ביצע $1 עריכות.',
 	'contributionseditcount-desc' => 'הצגת מונה עריכות ב[[Special:Contributions|דף תרומות המשתמש]]',
 );
 
@@ -137,7 +137,7 @@ $messages['he'] = array(
  * @author Kaustubh
  */
 $messages['hi'] = array(
-	'contributionseditcount'      => 'इस सदस्यके $1 संपादन हैं।',
+	'contributionseditcount' => 'इस सदस्यके $1 संपादन हैं।',
 	'contributionseditcount-desc' => '[[Special:Contributions]] पर संपादन संख्या दर्शाता हैं',
 );
 
@@ -145,7 +145,7 @@ $messages['hi'] = array(
  * @author Michawiki
  */
 $messages['hsb'] = array(
-	'contributionseditcount'      => 'Wužiwar ma $1 {{PLURAL:$1|změnu|změnje|změny|změnow}}.',
+	'contributionseditcount' => 'Wužiwar ma $1 {{PLURAL:$1|změnu|změnje|změny|změnow}}.',
 	'contributionseditcount-desc' => 'Zwobraznja ličbu změnow na [[Special:Contributions]]',
 );
 
@@ -160,7 +160,7 @@ $messages['hu'] = array(
  * @author Rex
  */
 $messages['id'] = array(
-	'contributionseditcount'      => 'Pengguna ini memiliki $1 suntingan.',
+	'contributionseditcount' => 'Pengguna ini memiliki $1 suntingan.',
 	'contributionseditcount-desc' => 'Menampilkan jumlah suntingan di [[Special:Contributions|halaman kontribusi pengguna]]',
 );
 
@@ -168,7 +168,7 @@ $messages['id'] = array(
  * @author S.Örvarr.S
  */
 $messages['is'] = array(
-	'contributionseditcount'      => 'Þessi notandi hefur gert $1 breytingar.',
+	'contributionseditcount' => 'Þessi notandi hefur gert $1 breytingar.',
 	'contributionseditcount-desc' => 'Sýna breytingarfjöld á [[Special:Contributions]]',
 );
 
@@ -177,7 +177,7 @@ $messages['is'] = array(
  * @author Gianfranco
  */
 $messages['it'] = array(
-	'contributionseditcount'      => 'Questo utente ha $1 edit',
+	'contributionseditcount' => 'Questo utente ha $1 edit',
 	'contributionseditcount-desc' => 'Mostra un edit count nella [[Special:Contributions|pagina dei contributi utente]]',
 );
 
@@ -185,7 +185,7 @@ $messages['it'] = array(
  * @author JtFuruhata
  */
 $messages['ja'] = array(
-	'contributionseditcount'      => 'この利用者は、$1回の編集を行いました。',
+	'contributionseditcount' => 'この利用者は、$1回の編集を行いました。',
 	'contributionseditcount-desc' => '[[Special:Contributions|利用者の投稿記録]]で編集回数を表示する',
 );
 
@@ -198,11 +198,11 @@ $messages['jv'] = array(
 
 /** Khmer (ភាសាខ្មែរ)
  * @author Chhorran
- * @author គីមស៊្រុន
  * @author Lovekhmer
+ * @author គីមស៊្រុន
  */
 $messages['km'] = array(
-	'contributionseditcount'      => 'អ្នកប្រើប្រាស់នេះ​មាន $1 កំនែប្រែ។',
+	'contributionseditcount' => 'អ្នកប្រើប្រាស់នេះ​មាន $1 កំនែប្រែ។',
 	'contributionseditcount-desc' => 'បង្ហាញការរាប់កំនែប្រែនៅ[[Special:Contributions|ការរួមចំនែករបស់អ្នកប្រើប្រាស់]]',
 );
 
@@ -210,7 +210,7 @@ $messages['km'] = array(
  * @author Purodha
  */
 $messages['ksh'] = array(
-	'contributionseditcount'      => 'Dä Metmaacher hät $1 Änderunge jemaat.',
+	'contributionseditcount' => 'Dä Metmaacher hät $1 Änderunge jemaat.',
 	'contributionseditcount-desc' => 'Don däm sing Aanzahl Änderunge aam Wiki op de [[Special:Contributions|Sigg met enem Metmaacher sing Beidräsch]] aanzeije.',
 );
 
@@ -218,7 +218,7 @@ $messages['ksh'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
-	'contributionseditcount'      => 'Dëse Benotzer huet $1 Kontributiounen.',
+	'contributionseditcount' => 'Dëse Benotzer huet $1 Kontributiounen.',
 	'contributionseditcount-desc' => 'Weist e Compteur vun den [[Special:Contributions|Ännerungen vun de Benotzer]]',
 );
 
@@ -233,7 +233,7 @@ $messages['lo'] = array(
  * @author Shijualex
  */
 $messages['ml'] = array(
-	'contributionseditcount'      => 'ഈ ഉപയോക്താവിനു $1 തിരുത്തലുകളുണ്ട്.',
+	'contributionseditcount' => 'ഈ ഉപയോക്താവിനു $1 തിരുത്തലുകളുണ്ട്.',
 	'contributionseditcount-desc' => '[[Special:Contributions]]ല്‍ തിരുത്തലുകളുടെ എണ്ണം പ്രദര്‍ശിപ്പിക്കുന്നു',
 );
 
@@ -242,7 +242,7 @@ $messages['ml'] = array(
  * @author Mahitgar
  */
 $messages['mr'] = array(
-	'contributionseditcount'      => 'या संपादकाची $1 संपादने आहेत.',
+	'contributionseditcount' => 'या संपादकाची $1 संपादने आहेत.',
 	'contributionseditcount-desc' => '[[Special:Contributions]] वर संपादन संख्या दर्शविते',
 );
 
@@ -257,7 +257,7 @@ $messages['nds'] = array(
  * @author Siebrand
  */
 $messages['nl'] = array(
-	'contributionseditcount'      => 'Deze gebruiker heeft $1 bewerkingen.',
+	'contributionseditcount' => 'Deze gebruiker heeft $1 bewerkingen.',
 	'contributionseditcount-desc' => 'Geeft een bewerkingsteller weer op [[Special:Contributions|Bijdragen gebruiker]]',
 );
 
@@ -272,7 +272,7 @@ $messages['nn'] = array(
  * @author Jon Harald Søby
  */
 $messages['no'] = array(
-	'contributionseditcount'      => 'Denne brukeren har $1 redigeringer.',
+	'contributionseditcount' => 'Denne brukeren har $1 redigeringer.',
 	'contributionseditcount-desc' => 'Viser en redigeringsteller på [[Special:Contributions|bidragsoversikten]]',
 );
 
@@ -287,16 +287,16 @@ $messages['nso'] = array(
  * @author Cedric31
  */
 $messages['oc'] = array(
-	'contributionseditcount'      => 'Aqueste utilizaire a {{PLURAL:$1|$1 edicion|$1 edicions}}.',
+	'contributionseditcount' => 'Aqueste utilizaire a {{PLURAL:$1|$1 edicion|$1 edicions}}.',
 	'contributionseditcount-desc' => 'Aficha un comptador d’edicions sus la pagina [[Special:Contributions]]',
 );
 
 /** Polish (Polski)
- * @author Wpedzich
  * @author Derbeth
+ * @author Wpedzich
  */
 $messages['pl'] = array(
-	'contributionseditcount'      => 'Ten użytkownik ma $1 edycji.',
+	'contributionseditcount' => 'Ten użytkownik ma $1 edycji.',
 	'contributionseditcount-desc' => 'Wyświetla liczbę edycji na stronie [[Specjalna:Wkład]]',
 );
 
@@ -318,7 +318,7 @@ $messages['ps'] = array(
  * @author Malafaya
  */
 $messages['pt'] = array(
-	'contributionseditcount'      => 'Este utilizador tem $1 edições.',
+	'contributionseditcount' => 'Este utilizador tem $1 edições.',
 	'contributionseditcount-desc' => 'Mostra uma contagem de edições em [[Special:Contributions]]',
 );
 
@@ -333,7 +333,7 @@ $messages['ro'] = array(
  * @author Александр Сигачёв
  */
 $messages['ru'] = array(
-	'contributionseditcount'      => 'Этот участник сделал $1 правок.',
+	'contributionseditcount' => 'Этот участник сделал $1 правок.',
 	'contributionseditcount-desc' => 'Показывает количество правок на странице [[Special:Contributions]]',
 );
 
@@ -348,7 +348,7 @@ $messages['sah'] = array(
  * @author Helix84
  */
 $messages['sk'] = array(
-	'contributionseditcount'      => 'Tento používateľ má $1 úprav.',
+	'contributionseditcount' => 'Tento používateľ má $1 úprav.',
 	'contributionseditcount-desc' => 'Zobrazuje počet úprav na stránke [[Special:Contributions|Príspevky používateľa]]',
 );
 
@@ -363,16 +363,16 @@ $messages['stq'] = array(
  * @author Kandar
  */
 $messages['su'] = array(
-	'contributionseditcount'      => 'Ieu pamaké geus ngédit $1 kali.',
+	'contributionseditcount' => 'Ieu pamaké geus ngédit $1 kali.',
 	'contributionseditcount-desc' => 'Témbongkeun itungan éditan dina [[Special:Contributions]]',
 );
 
 /** Swedish (Svenska)
- * @author M.M.S.
  * @author Lejonel
+ * @author M.M.S.
  */
 $messages['sv'] = array(
-	'contributionseditcount'      => 'Denna användare har gjort $1 redigeringar.',
+	'contributionseditcount' => 'Denna användare har gjort $1 redigeringar.',
 	'contributionseditcount-desc' => 'Visar en redigeringsräknare på [[Special:Contributions|bidragsöversikten]]',
 );
 
@@ -380,7 +380,7 @@ $messages['sv'] = array(
  * @author Trengarasu
  */
 $messages['ta'] = array(
-	'contributionseditcount'      => 'இப்பயன்ர் $1 தொகுப்புக்களைச் செய்துள்ளார்.',
+	'contributionseditcount' => 'இப்பயன்ர் $1 தொகுப்புக்களைச் செய்துள்ளார்.',
 	'contributionseditcount-desc' => '[[Special:Contributions|பயனர் பங்களிப்புகள்]] பக்கத்தில் தொகுப்பு எண்ணிக்கையைக் காட்டும்',
 );
 
@@ -388,11 +388,11 @@ $messages['ta'] = array(
  * @author Veeven
  */
 $messages['te'] = array(
-	'contributionseditcount'      => 'ఈ వాడుకరి $1 మార్పులు చేసారు.',
+	'contributionseditcount' => 'ఈ వాడుకరి $1 మార్పులు చేసారు.',
 	'contributionseditcount-desc' => '[[Special:Contributions]]లో మార్పుల సంఖ్యని చూపిస్తుంది',
 );
 
-/** Tajik (Cyrillic) (Тоҷикӣ/tojikī (Cyrillic))
+/** Tajik (Cyrillic) (Тоҷикӣ (Cyrillic))
  * @author Ibrahim
  */
 $messages['tg-cyrl'] = array(
@@ -410,7 +410,7 @@ $messages['th'] = array(
  * @author Candalua
  */
 $messages['vec'] = array(
-	'contributionseditcount'      => 'Sto utente el gà fato $1 modifiche.',
+	'contributionseditcount' => 'Sto utente el gà fato $1 modifiche.',
 	'contributionseditcount-desc' => 'Mostra un contegio dei contributi su [[Special:Contributions]]',
 );
 
@@ -418,7 +418,7 @@ $messages['vec'] = array(
  * @author Vinhtantran
  */
 $messages['vi'] = array(
-	'contributionseditcount'      => 'Thành viên này có $1 lần sửa đổi.',
+	'contributionseditcount' => 'Thành viên này có $1 lần sửa đổi.',
 	'contributionseditcount-desc' => 'Hiển thị số lần sửa đổi tại [[Special:Contributions]]',
 );
 

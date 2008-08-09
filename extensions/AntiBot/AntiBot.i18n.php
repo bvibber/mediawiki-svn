@@ -14,6 +14,13 @@ $messages['en'] = array(
 	'antibot-desc' => 'Simple framework for spambot checks and trigger payloads',
 );
 
+/** Message documentation (Message documentation)
+ * @author Mormegil
+ */
+$messages['qqq'] = array(
+	'antibot-desc' => 'Description of the [[mw:Extension:AntiBot|AntiBot]] MediaWiki extension (to be displayed at [[Special:Version]])',
+);
+
 /** Afrikaans (Afrikaans)
  * @author Naudefj
  */
@@ -72,8 +79,8 @@ $messages['eo'] = array(
 
 /** French (Français)
  * @author Grondin
- * @author Verdy p
  * @author Louperivois
+ * @author Verdy p
  */
 $messages['fr'] = array(
 	'antibot-desc' => 'Environnement simple de vérification contre les robots spammeurs et les soumissions de contenus à déclenchement conditionnel automatisé',
@@ -129,8 +136,8 @@ $messages['nl'] = array(
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
- * @author Jon Harald Søby
  * @author EivindJ
+ * @author Jon Harald Søby
  */
 $messages['no'] = array(
 	'antibot-desc' => 'Enkel struktur for kontroll av spamroboter',
@@ -214,8 +221,8 @@ $messages['zh-hans'] = array(
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)
- * @author Shinjiman
  * @author Alexsh
+ * @author Shinjiman
  */
 $messages['zh-hant'] = array(
 	'antibot-desc' => '為破壞檢查機器人與觸發負載提供簡易架構',
