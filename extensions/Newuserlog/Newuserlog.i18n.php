@@ -956,10 +956,16 @@ $messages['ms'] = array(
 /** Maltese (Malti)
  * @author Giangian15
  * @author Roderick Mallia
+ * @author Chrisportelli
  */
 $messages['mt'] = array(
-	'newuserlog-create-entry'  => 'Utent ġdid',
-	'newuserlog-create2-entry' => 'ħoloq kont għal $1',
+	'newuserlogpage'              => 'Utenti ġodda',
+	'newuserlogpagetext'          => "Dan hu reġistru tal-kreazzjoni ta' kontijiet ġodda.",
+	'newuserlog-desc'             => "Iżżid [[Special:Log/newusers|reġistru ta' kontijiet kreati]]",
+	'newuserlog-byemail'          => "il-password intbagħtet permezz ta' posta elettronika",
+	'newuserlog-create-entry'     => 'Utent ġdid',
+	'newuserlog-create2-entry'    => 'ħoloq kont għal $1',
+	'newuserlog-autocreate-entry' => 'Kont maħluq awtomatikament',
 );
 
 /** Erzya (Эрзянь)

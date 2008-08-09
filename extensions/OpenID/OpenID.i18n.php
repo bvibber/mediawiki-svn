@@ -736,7 +736,40 @@ $messages['ko'] = array(
  * @author Purodha
  */
 $messages['ksh'] = array(
-	'openidlanguage' => 'Sproch',
+	'openid-desc'                   => 'Hee em Wiki met ener [http://openid.net/ OpenID] enlogge, un angerschwoh mer OpenID kennt met enem Metmaacher-Name fum Wiki enlogge.',
+	'openidlogin'                   => 'Met OpenID enlogge',
+	'openidfinish'                  => 'Et Enlogge met OpenID afschleeße',
+	'openidserver'                  => 'OpenID Server',
+	'openidxrds'                    => 'Yadis-Dattei',
+	'openidconvert'                 => 'OpenID Ömsetzer',
+	'openiderror'                   => 'Fähler beim Pröfe',
+	'openiderrortext'               => 'Ene Fähler es opjetrodde beim Pröfe fun de OpenID URL.',
+	'openidconfigerror'             => 'Fähler en dä Aat, wi OpenID opjesaz es',
+	'openidconfigerrortext'         => 'Dem OpenID sing Enstellung för Date affzelääje es nit en Odenung.
+Beß esu joot un don enem [[Special:Userlist/sysop|Wiki-Köbes]] dofun verzälle.',
+	'openidpermission'              => 'Fähler mem Rääsch en OpenID',
+	'openidpermissiontext'          => 'Met de aanjejovve OpenID darrfs de hee ävver nit enlogge.',
+	'openidcancel'                  => 'Övverpröfung affjebroche',
+	'openidcanceltext'              => 'De Övverpröfung fun dä OpenID URL woht affjebroche.',
+	'openidfailure'                 => 'Övverpröfung jingk donevve',
+	'openidfailuretext'             => 'De Pröfung fun de OpenID URL es donevve jejange.
+Dä Fähler wohr: „$1“',
+	'openidsuccess'                 => 'De Pröfung hät jeflupp',
+	'openidsuccesstext'             => 'De Pröfung fun dä OpenID URL hät jot jejange.',
+	'openidusernameprefix'          => 'OpenID Metmaacher',
+	'openidserverlogininstructions' => 'Donn Ding Passwoot onge enjävve, öm als dä Metmaacher $2 op $3 enzelogge — de Metmaacher-Sigg es $1.',
+	'openidtrustinstructions'       => 'Loor, ov De de Date met $1 deile wells.',
+	'openidallowtrust'              => 'Donn däm $1 zojestonn, däm Metmaacher ze verdraue.',
+	'openidnopolicy'                => 'Die Websait udder dä Server hät nix aanjejovve övver der Schotz fun private Date.',
+	'openidpolicy'                  => 'Loor Der de <a target="_new" href="$1">Räjele för der Schotz fun private Date</a> aan, wann De mieh do drövver wesse wels.',
+	'openidoptional'                => 'Nit nüdesch',
+	'openidrequired'                => 'Nüdesch',
+	'openidnickname'                => 'Spetznam',
+	'openidfullname'                => 'Der janze Name',
+	'openidemail'                   => 'De e-mail Address',
+	'openidlanguage'                => 'Sproch',
+	'openidnotavailable'            => 'Dinge leevste Spetznam, „$1“, es ald beleesch,
+un enen anderen Metmaacher es dä am bruche.',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

@@ -25,6 +25,13 @@ $messages['ar'] = array(
 	'skinperpage-desc' => 'يضيف وسم <tt>&lt;skin&gt;</tt> لاستخدام واجهات مختلفة لكل صفحة',
 );
 
+/** Asturian (Asturianu)
+ * @author Esbardu
+ */
+$messages['ast'] = array(
+	'skinperpage-desc' => 'Añade la etiqueta <tt>&lt;skin&gt;</tt> pa usar pieles distintes per páxina',
+);
+
 /** Southern Balochi (بلوچی مکرانی)
  * @author Mostafadaneshvar
  */

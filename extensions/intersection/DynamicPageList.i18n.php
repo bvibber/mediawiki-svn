@@ -51,6 +51,7 @@ $messages['ar'] = array(
  * @author Esbardu
  */
 $messages['ast'] = array(
+	'intersection-desc'          => 'Amuesa una llista de los elementos más recién que tenga una categoría o una xuntanza de varies categoríes',
 	'intersection_toomanycats'   => 'Error: ¡Demasiaes categoríes!',
 	'intersection_toofewcats'    => 'Error: ¡Demasiaes poques categoríes!',
 	'intersection_noresults'     => 'Error: ¡Nun hai resultaos!',

@@ -28,6 +28,13 @@ $messages['ar'] = array(
 	'titlekey-desc' => 'نهاية اقتراح بحث عنوان البادئة',
 );
 
+/** Asturian (Asturianu)
+ * @author Esbardu
+ */
+$messages['ast'] = array(
+	'titlekey-desc' => 'Suxerencies de busca de prefixos de títulu',
+);
+
 /** Southern Balochi (بلوچی مکرانی)
  * @author Mostafadaneshvar
  */

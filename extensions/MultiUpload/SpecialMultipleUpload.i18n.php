@@ -391,6 +391,19 @@ $messages['mr'] = array(
 	'multiupload-toolbox'              => 'अनेक संचिका चढवा',
 );
 
+/** Maltese (Malti)
+ * @author Chrisportelli
+ */
+$messages['mt'] = array(
+	'multipleupload'                   => "Tella' fajls multimedjali",
+	'multipleupload-desc'              => "Tippermetti lill-utenti biex [[Special:MultipleUpload|itellgħu diversi fajls f'daqqa]]",
+	'multipleupload-ignoreallwarnings' => "Injora '''kull twissija''' u salva xorta waħda l-fajl.",
+	'multipleupload-saveallfiles'      => 'Salva l-fajls kollha',
+	'multipleupload-addresswarnings'   => "Jekk jogħġbok indirizza kwalunkwe twissija qabel ma terġa' ttella' l-fajls.",
+	'multiupload-fileuploaded'         => 'Fajl imtellgħa.',
+	'multiupload-toolbox'              => "Tella' fajls multipli",
+);
+
 /** Nahuatl (Nahuatl)
  * @author Fluence
  */

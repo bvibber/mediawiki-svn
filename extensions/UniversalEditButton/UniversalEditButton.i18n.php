@@ -25,6 +25,13 @@ $messages['ar'] = array(
 	'universaleditbutton-desc' => 'يضيف <code>&lt;وصلة&gt;</code> ترويسة هتمل لدعم امتداد المتصفح زر التعديل العالمي.',
 );
 
+/** Asturian (Asturianu)
+ * @author Esbardu
+ */
+$messages['ast'] = array(
+	'universaleditbutton-desc' => "Añade la cabecera HTML <code>&lt;link&gt;</code> pa soportar el Botón Universal d'Edición de la estensión del navegador",
+);
+
 /** Czech (Česky)
  * @author Danny B.
  */

@@ -727,6 +727,45 @@ $messages['mr'] = array(
 	'youtubeauthsub_jserror_nodesc'      => 'कृपया व्हिडियोची माहिती लिहा.',
 );
 
+/** Maltese (Malti)
+ * @author Chrisportelli
+ * @author Giangian15
+ */
+$messages['mt'] = array(
+	'youtubeauthsub'                     => "Tella' vidjo tal-YouTube",
+	'youtubeauthsub-desc'                => 'Tippermetti lill-utenti biex [[Special:YouTubeAuthSub|itellgħu vidjos]] direttament fuq YouTube',
+	'youtubeauthsub_info'                => "Sabiex itella' vidjo fuq YouTube biex tagħmel użu minnu fuq paġna, imla' l-informazzjoni segwenti:",
+	'youtubeauthsub_title'               => 'Titlu',
+	'youtubeauthsub_description'         => 'Deskrizzjoni',
+	'youtubeauthsub_password'            => 'Password tal-YouTube',
+	'youtubeauthsub_username'            => 'Isem tal-utent tal-YouTube',
+	'youtubeauthsub_keywords'            => 'Kliem ċavetta',
+	'youtubeauthsub_category'            => 'Kategorija',
+	'youtubeauthsub_submit'              => 'Ibgħat',
+	'youtubeauthsub_clickhere'           => 'Agħfas hawn biex tillogja fuq YouTube',
+	'youtubeauthsub_tokenerror'          => "Kien hemm problema biex jinħoloq it-token tal-awtoriżazzjoni, prova tella' il-paġna mill-ġdid.",
+	'youtubeauthsub_success'             => "Prosit!
+Il-Vidjo tiegħek ittella'. 
+Biex tara l-vidjo agħfas <a href='http://www.youtube.com/watch?v=$1'>hawnhekk</a>.
+YouTube jkun irrid ftit żmien sabiex jiproċessa l-vidjo tiegħek, allura jista' jkun li ma jkunx għad. 
+
+Sabiex tinkludi l-vidjo tiegħek fuq paġna tal-wiki, daħħal il-kodiċi segwenti fil-paġna:
+<code>{{&#35;ev:youtube|$1}}</code>",
+	'youtubeauthsub_authsubinstructions' => "Biex ittella' vidjo, hemm bżonn li l-ewwel tidħol fil-kont tiegħek fuq YouTube.",
+	'youtubeauthsub_uploadhere'          => "Tella' l-vidjo tiegħek hawnhekk:",
+	'youtubeauthsub_uploadbutton'        => "Tella'",
+	'youtubeauthsub_code'                => "{{#ev:youtube|$1}}.
+
+Dan il-vidjo jista' jintwera [http://www.youtube.com/watch?v=$1 hawnhekk]",
+	'youtubeauthsub_summary'             => "Il-Vidjo tal-YouTube qiegħed jiġi mtella'",
+	'youtubeauthsub_uploading'           => "Il-vidjo tiegħek qed jittella'.<br />
+Jekk jogħġbok kun pazjenti.",
+	'youtubeauthsub_viewpage'            => "Tista' tara il-vidjo tiegħek [[$1|hawnhekk]].",
+	'youtubeauthsub_jserror_nokeywords'  => 'Jekk jogħġbok daħħal kelma jew aktar kliem ċavetta.',
+	'youtubeauthsub_jserror_notitle'     => 'Jekk jogħġbok daħħal titlu għall-vidjo.',
+	'youtubeauthsub_jserror_nodesc'      => 'Jekk jogħġbok daħħal deskrizzjoni għall-vidjo.',
+);
+
 /** Nahuatl (Nahuatl)
  * @author Fluence
  */

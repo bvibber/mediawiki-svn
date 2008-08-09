@@ -98,6 +98,7 @@ $messages['arz'] = array(
  */
 $messages['ast'] = array(
 	'parserdifftest'      => 'Test de diferencies pal análisis sintáuticu',
+	'pdtest-desc'         => '[[Special:ParserDiffTest|Páxina especial]] pa comparar la salida de dos análisis sintáuticos diferentes',
 	'pdtest_no_target'    => "Nun s'especificó l'oxetivu.",
 	'pdtest_page_missing' => "La páxina especificada nun s'atopó na base de datos.",
 	'pdtest_no_changes'   => 'Nun se deteutaron cambeos.',

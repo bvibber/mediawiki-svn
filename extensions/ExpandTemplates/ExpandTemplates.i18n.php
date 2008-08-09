@@ -124,6 +124,7 @@ $messages['as'] = array(
  */
 $messages['ast'] = array(
 	'expandtemplates'                  => 'Esparder plantíes',
+	'expandtemplates-desc'             => "[[Special:ExpandTemplate|Espande plantíes, funciones d'análisis sintáuticu y variables]] p'amosar wikitestu espandíu y previsualizar páxines renderizaes",
 	'expand_templates_intro'           => "Esta páxina especial ellabora un testu espardiendo toles
 plantíes de forma recursiva. Tamién esparde les funciones d'análisis sintáuticu
 como <nowiki>{{</nowiki>#if:...}}, y variables como

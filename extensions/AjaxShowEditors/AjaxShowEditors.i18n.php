@@ -593,6 +593,8 @@ $messages['nn'] = array(
 	'ajax-se-pending'          => 'Ventar på oppdatering … (klikk på denne boksen eller set i gang med å endre)',
 	'ajax-se-idling'           => '($1 sekund sidan)',
 	'ajax-se-pagedoesnotexist' => 'sida finst ikkje',
+	'ajax-se-userinvalid'      => 'Feil: Ugyldig brukar',
+	'ajax-se-usernotfound'     => 'Feil: Fann ikkje brukaren',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)

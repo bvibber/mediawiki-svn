@@ -164,6 +164,14 @@ $messages['mr'] = array(
 	'newusermessage-desc' => 'नवीन नोंदणी केलेल्या सदस्यांच्या पानावर एक संदेश वाढविते',
 );
 
+/** Maltese (Malti)
+ * @author Chrisportelli
+ */
+$messages['mt'] = array(
+	'newusermessage-desc' => "Iżżid messaġġ fil-paġna ta' diskussjoni ta' utent li għadu kif irreġistra",
+	'newuseredit-summary' => "Iżżid [[{{MediaWiki:Newusermessage-template}}|messaġġ ta' merħba]] fil-paġna ta' diskussjoni tal-utent il-ġdid",
+);
+
 /** Low German (Plattdüütsch)
  * @author Slomox
  */

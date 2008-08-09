@@ -973,10 +973,11 @@ $messages['myv'] = array(
 	'sitematrix-others'   => 'Лия Викимедиянь проекттнэ',
 );
 
-/** Nahuatl (Nahuatl)
+/** Nahuatl (Nāhuatl)
  * @author Fluence
  */
 $messages['nah'] = array(
+	'sitematrix'           => 'Mochīntīn Huiquimedia huiqui',
 	'sitematrix-language'  => 'Tlahtōlli',
 	'sitematrix-sitetotal' => 'Mochīntīn',
 );

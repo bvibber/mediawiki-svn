@@ -146,6 +146,10 @@ $messages['ar'] = array(
 	'ogg-player-vlc-activex'       => 'في إل سي (أكتيف إكس)',
 	'ogg-player-quicktime-mozilla' => 'كويك تايم',
 	'ogg-player-quicktime-activex' => 'كويك تايم (أكتيف إكس)',
+	'ogg-player-totem'             => 'توتيم',
+	'ogg-player-kmplayer'          => 'كيه إم بلاير',
+	'ogg-player-kaffeine'          => 'كافيين',
+	'ogg-player-mplayerplug-in'    => 'إضافة إم بلاير',
 	'ogg-player-thumbnail'         => 'مازال صورة فقط',
 	'ogg-player-soundthumb'        => 'لا برنامج',
 	'ogg-player-selected'          => '(مختار)',
@@ -184,6 +188,7 @@ $messages['arz'] = array(
  * @author Esbardu
  */
 $messages['ast'] = array(
+	'ogg-desc'                => "Remanador d'archivos Ogg Theora y Vorbis, con un reproductor JavaScript",
 	'ogg-short-audio'         => 'Archivu de soníu ogg $1, $2',
 	'ogg-short-video'         => 'Archivu de videu ogg $1, $2',
 	'ogg-short-general'       => 'Archivu multimedia ogg $1, $2',
@@ -2241,8 +2246,8 @@ $messages['vec'] = array(
 	'ogg-play-sound'          => 'Scolta el file',
 	'ogg-no-player'           => 'Semo spiacenti, ma sul to sistema no risulta instalà nissun software de riproduzion conpatibile. Par piaser <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">scàrichete un letor</a> che vaga ben.',
 	'ogg-no-xiphqt'           => 'No risulta mìa instalà el conponente XiphQT de QuickTime. Senza sto conponente no se pode mìa riprodur i file Ogg con QuickTime. Par piaser, <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">scàrichete XiphQT</a> o siegli n\'altro letor.',
-	'ogg-player-videoElement' => 'elemento <video>',
-	'ogg-player-oggPlugin'    => 'Plugin ogg',
+	'ogg-player-videoElement' => 'Suporto browser zà de suo (nativo)',
+	'ogg-player-oggPlugin'    => 'Plugin browser',
 	'ogg-player-thumbnail'    => 'Solo imagini fisse',
 	'ogg-player-soundthumb'   => 'Nissun letor',
 	'ogg-player-selected'     => '(selezionà)',

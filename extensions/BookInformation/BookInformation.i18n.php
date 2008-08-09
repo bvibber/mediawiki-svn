@@ -84,7 +84,7 @@ $messages['ar'] = array(
  */
 $messages['ast'] = array(
 	'bookinfo-header'            => 'Información de llibros',
-	'bookinfo-desc'              => "Esparde [[Special:Booksources]] con información proviniente d'un serviciu web",
+	'bookinfo-desc'              => "Espande la [[Special:Booksources|páxina especial de fontes de llibros]] con información proviniente d'un serviciu web",
 	'bookinfo-result-title'      => 'Títulu:',
 	'bookinfo-result-author'     => 'Autor:',
 	'bookinfo-result-publisher'  => 'Editor:',

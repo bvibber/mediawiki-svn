@@ -52,9 +52,16 @@ $messages['bg'] = array(
 
 /** German (Deutsch)
  * @author Revolus
+ * @author ChrisiPK
  */
 $messages['de'] = array(
+	'createbox-desc'   => 'Spezielles Eingabefeld zur Seitenerstellung',
 	'createbox-create' => 'Erstellen',
+	'createbox-exists' => "„'''{{FULLPAGENAME}}'''“ existiert bereits.
+
+Du kannst diese Seite nicht anlegen, aber du kannst sie [{{fullurl:{{FULLPAGENAME}}|action=edit}} bearbeiten], [{{fullurl:{{FULLPAGENAME}}}} lesen] oder eine andere Seite mithilfe des untenstehenden Eingabefeldes anlegen.
+
+<createbox>break=no</createbox>",
 );
 
 /** Esperanto (Esperanto)

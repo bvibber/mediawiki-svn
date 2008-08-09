@@ -787,8 +787,12 @@ $messages['lt'] = array(
  * @author Xil
  */
 $messages['lv'] = array(
-	'searchfulltext' => 'Meklēt visu tekstu',
-	'createarticle'  => 'Izveidot lapu',
+	'inputbox-error-no-type'  => 'Tu neesi norādījis ievades lauka tipu',
+	'inputbox-error-bad-type' => 'Ievades lauka tips "$1" nav atpazīts.
+Lūdzu norādi "create", "comment", "search" vai "search2".',
+	'tryexact'                => 'Meklēt precīzi',
+	'searchfulltext'          => 'Meklēt visu tekstu',
+	'createarticle'           => 'Izveidot lapu',
 );
 
 /** Macedonian (Македонски)

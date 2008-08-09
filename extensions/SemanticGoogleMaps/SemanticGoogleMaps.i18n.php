@@ -32,6 +32,14 @@ $messages['de'] = array(
 	'semanticgooglemaps-desc'              => 'Bietet die Möglichkeit auf Basis von strukturierten Daten Google Maps in das Wiki einzubinden',
 );
 
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
+$messages['eo'] = array(
+	'semanticgooglemaps_lookupcoordinates' => 'Rigardi koordinatojn',
+	'semanticgooglemaps-desc'              => 'Permesas al uzantoj por aldoni Guglo-Mapojn al vikipaĝojn laŭ strukturaj datenoj.',
+);
+
 /** French (Français)
  * @author Grondin
  */

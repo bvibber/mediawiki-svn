@@ -479,6 +479,17 @@ $messages['mr'] = array(
 	'edituser-exempt'   => 'दिलेला सदस्य संपादित करू शकत नाही',
 );
 
+/** Maltese (Malti)
+ * @author Chrisportelli
+ */
+$messages['mt'] = array(
+	'edituser-desc'     => "Tippermetti lill-utenti bil-privileġġi neċessarji biex jimmodifikaw il-preferenzi ta' utenti oħra",
+	'edituser-username' => 'Isem',
+	'edituser-dosearch' => 'Fittex',
+	'edituser-nouser'   => 'L-utent speċifikat ma jeżistix',
+	'edituser-exempt'   => 'L-utent speċifikat ma jistax jiġi modifikat',
+);
+
 /** Nahuatl (Nahuatl)
  * @author Fluence
  */

@@ -418,9 +418,12 @@ $messages['nl'] = array(
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
  * @author Jon Harald Søby
+ * @author Eirik
  */
 $messages['nn'] = array(
 	'backforth-next' => 'Nest ($1)',
+	'backforth-desc' => 'Legg til lenkjer til «Neste» og «Førre» alfabetiske side på toppen av sider',
+	'backforth-prev' => 'Førre ($1)',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)

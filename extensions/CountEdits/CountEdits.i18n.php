@@ -167,9 +167,11 @@ $messages['da'] = array(
 
 /** German (Deutsch)
  * @author Raymond Spekking
+ * @author ChrisiPK
  */
 $messages['de'] = array(
 	'countedits'              => 'Beitragszähler',
+	'countedits-desc'         => '[[{{ns:special}}:CountEdits|Spezialseite]], die Benutzerbeiträge zählt und eine Top-10-Liste erstellt',
 	'countedits-warning'      => 'Hinweis: Sie beurteilen ein Buch nicht nur nach seinem Umschlag, beurteilen Sie einen Autor daher auch nicht nur nach seinem Beitragszähler.',
 	'countedits-username'     => 'Benutzername:',
 	'countedits-ok'           => 'OK',

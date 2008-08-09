@@ -71,6 +71,7 @@ $messages['ar'] = array(
  * @author Esbardu
  */
 $messages['ast'] = array(
+	'scanset-desc'                      => "Permite ver imáxenes escaniaes de páxine del conxuntu CD/DVD d'Andreas Grosz",
 	'scanset_no_name'                   => 'Error: Tienes qu\'especificar un nome pal scan set, p. ex. &lt;scanset name="EB1911" /&gt;.',
 	'scanset_invalid_name'              => 'Error: Scan set non válidu o ausente.',
 	'scanset_unrecognised_index_format' => "Error: Formatu d'índiz desconocíu",

@@ -167,6 +167,7 @@ $messages['eo'] = array(
 
 /** Spanish (Español)
  * @author Icvav
+ * @author Fluence
  */
 $messages['es'] = array(
 	'crossnamespacelinks'         => 'Enlaces entre diferentes espacios de nombres',
@@ -568,6 +569,13 @@ $messages['ms'] = array(
 	'crossnamespacelinks-desc'    => '[[Special:CrossNamespaceLinks|Menyenaraikan pautan silang ruang nama]] yang tidak sepatutnya wujud di {{SITENAME}}',
 	'crossnamespacelinks-summary' => 'Laman ini menyediakan senarai pautan dari laman di ruang nama utama ke laman di ruang nama lain (kecuali ruang nama {{ns:special}}, {{ns:talk}}, {{ns:project}} dan {{ns:template}}), yang tidak digalakkan.',
 	'crossnamespacelinkstext'     => '$1: $2 pautan ke $3',
+);
+
+/** Nahuatl (Nāhuatl)
+ * @author Fluence
+ */
+$messages['nah'] = array(
+	'crossnamespacelinks' => 'Tzonhuiliztli ahneneuhqui tōcātzalan',
 );
 
 /** Min Nan Chinese (Bân-lâm-gú) */

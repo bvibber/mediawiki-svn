@@ -68,12 +68,14 @@ $messages['ar'] = array(
 	'imagemap_invalid_coord'      => 'خطأ: إحداثي غير صحيح عند السطر $1، يجب أن يكون رقما',
 	'imagemap_invalid_desc'       => 'خطأ: محدد وصف غير صحيح، يجب أن يكون واحدا من: <tt>$1</tt>',
 	'imagemap_description'        => 'حول هذه الصورة',
+	'imagemap_desc_types'         => 'أعلى اليمين, أسفل اليمين, أسفل اليسار, أعلى اليسار, لا شيء',
 );
 
 /** Asturian (Asturianu)
  * @author Esbardu
  */
 $messages['ast'] = array(
+	'imagemap_desc'               => "Permite los mapes d'imaxe clicables per aciu de la etiqueta <tt><nowiki><imagemap></nowiki></tt>",
 	'imagemap_no_image'           => 'Error: ha especificase una imaxe na primer llinia',
 	'imagemap_invalid_image'      => 'Error: la imaxe nun ye válida o nun esiste',
 	'imagemap_bad_image'          => "Error: La imaxe ta na llista prieta d'esta páxina",
