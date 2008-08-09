@@ -39,8 +39,8 @@ abstract class Node{
 
 	public function getParentTree(){
 		if(!is_null($this->parent)){
-			$parentTree = $this->$parent->getParentTree();
-			$parentTree[] = $this->$parent;
+			$parentTree = $this->parent->getParentTree();
+			$parentTree[] = $this->parent;
 			return $parentTree;
 		}else{
 			return array();
@@ -60,7 +60,7 @@ abstract class Node{
 		$result = new LastCommonParentResult();
 
 		$myParents = $this->getParentTree();
-		$otherParents = $other.getParentTree();
+		$otherParents = $other->getParentTree();
 
 		$i = 1;
 		$isSame = true;
@@ -81,19 +81,19 @@ abstract class Node{
 			$result->setSplittingNeeded();
 		} else if (sizeof($myParents) < sizeof($otherParents)) {
 			$result->setIndexInLastCommonParent($myParents[$i - 1]->getIndexOf($this));
-		} else if (sizeof($myParents) > sizeof(otherParents)) {
+		} else if (sizeof($myParents) > sizeof($otherParents)) {
 			// All tags matched but there are tags left in this tree
 			$result->setIndexInLastCommonParent($myParents[$i - 1]->getIndexOf($myParents[$i]));
 			$result->setSplittingNeeded();
 		} else {
 			// All tags matched untill the very last one in both trees
 			// or there were no tags besides the BODY
-			$result->setIndexInLastCommonParent($myParents[$i - 1].getIndexOf($this));
+			$result->setIndexInLastCommonParent($myParents[$i - 1]->getIndexOf($this));
 		}
-		return result;
+		return $result;
 	}
 
-	public function setParent(TagNode $parent) {
+	public function setParent($parent) {
 		$this->parent = $parent;
 	}
 
@@ -102,7 +102,7 @@ abstract class Node{
 	public function inPre() {
 		$tree = $this->getParentTree();
 		foreach ($tree as $ancestor) {
-			if ($ancestor.isPre()) {
+			if ($ancestor->isPre()) {
 				return true;
 			}
 		}
@@ -143,12 +143,14 @@ class TagNode extends Node{
 
 	protected $qName;
 
-	protected $attributes;
+	protected $attributes = array();
 
 	function __construct($parent, $qName, array $attributes) {
 		parent::__construct($parent);
-		$this->qName = $qName;
-		$this->attributes = $attributes;
+		$this->qName = strtolower($qName);
+		foreach($attributes as $key => $value){
+			$this->attributes[strtolower($key)] = $value;
+		}
 	}
 
 	public function addChild(Node $node, $index=-1) {
@@ -191,7 +193,7 @@ class TagNode extends Node{
 	public function isSameTag(TagNode $other) {
 		if (is_null($other))
 		return false;
-		return $this->getOpeningTag() === $other.getOpeningTag();
+		return $this->getOpeningTag() === $other->getOpeningTag();
 	}
 
 	public function getOpeningTag() {
@@ -238,8 +240,8 @@ class TagNode extends Node{
 		if ($parent !== $this) {
 			$part1 = new TagNode(NULL, $this->getQName(), $this->getAttributes());
 			$part2 = new TagNode(NULL, $this->getQName(), $this->getAttributes());
-			$part1.setParent(getParent());
-			$part2.setParent(getParent());
+			$part1->setParent($this->getParent());
+			$part2->setParent($this->getParent());
 
 			$i = 0;
 			$nbChildren = $this->getNbChildren();
@@ -251,16 +253,16 @@ class TagNode extends Node{
 			if ($i < $nbChildren) {
 				if ($includeLeft) {
 					$this->children[$i]->setParent($part1);
-					$part1.addChild($this->children[$i]);
+					$part1->addChild($this->children[$i]);
 				} else {
 					$this->children[$i]->setParent($part2);
-					$part2.addChild($this->children[$i]);
+					$part2->addChild($this->children[$i]);
 				}
 				++$i;
 			}
 			while ($i < $nbChildren) {
 				$this->children[$i]->setParent($part2);
-				$part2.addChild($this->children[$i]);
+				$part2->addChild($this->children[$i]);
 				++$i;
 			}
 			$myindexinparent = $this->parent->getIndexOf($this);
@@ -295,13 +297,13 @@ class TagNode extends Node{
     	'table'=>TRUE,'tbody'=>TRUE,'tr'=>TRUE,'td'=>TRUE,'th'=>TRUE,'br'=>TRUE);
 
 	public static function isBlockLevelName($qName) {
-		return array_key_exists(strtolower($qName), self::$blocks);
+		return array_key_exists(strtolower($qName),self::$blocks);
 	}
 
 	public static function isBlockLevelNode(Node $node) {
 		if(! $node instanceof TagNode)
 		return false;
-		return  self::isBlockLevelName($node->getQName());
+		return self::isBlockLevelName($node->getQName());
 	}
 
 	public function isBlockLevel() {
@@ -357,7 +359,7 @@ class TagNode extends Node{
 			}
 			if ($child->isWhiteAfter()) {
 				$ws = new WhiteSpaceNode(NULL, ' ', $child->getRightMostChild());
-				$ws->setParent(this);
+				$ws->setParent($this);
 				$this->addChild($ws,$i + 1 + ($shift++));
 				$spaceAdded = true;
 			} else {
@@ -381,7 +383,7 @@ class TagNode extends Node{
 	}
 
 	public function isPre() {
-		return strcasecmp($this->getQName(),'pre');
+		return 0 == strcasecmp($this->getQName(),'pre');
 	}
 
 	public static function toDiffLine(TagNode $node){
@@ -398,14 +400,16 @@ class TextNode extends Node{
 
 	private $modification;
 
-	function __construct($parent, String $s) {
+	function __construct($parent, $s) {
 		parent::__construct($parent);
 		$this->modification = new Modification(Modification::NONE);
 		$this->s = $s;
 	}
 
 	public function copyTree() {
-		return new TextNode(NULL,$this->s);
+		$clone = clone $this;
+		$clone->setParent(NULL);
+		return $clone;
 	}
 
 	public function getLeftMostChild() {
@@ -418,7 +422,7 @@ class TextNode extends Node{
 
 	public function getMinimalDeletedSet($id) {
 		if ($this->getModification()->getType() == Modification::REMOVED
-		&& $this->getModification()->getID() == id){
+		&& $this->getModification()->getID() == $id){
 			return array($this);
 		}
 		return array();
@@ -440,6 +444,7 @@ class TextNode extends Node{
 	}
 
 	public function setModification(Modification $m) {
+		//wfDebug("Registered modification for node '$this->s' as ".Modification::typeToString($m->getType()));
 		$this->modification = $m;
 	}
 
@@ -456,8 +461,8 @@ class WhiteSpaceNode extends TextNode {
 
 	function __construct($parent, $s, Node $like = NULL) {
 		parent::__construct($parent, $s);
-		if(!is_null($like)){
-			$newModification = $like->getModification()->copy();
+		if(!is_null($like) && $like instanceof TextNode){
+			$newModification = clone $like->getModification();
 			$newModification->setFirstOfID(false);
 			$this->setModification($newModification);
 		}
@@ -515,7 +520,15 @@ class ImageNode extends TextNode {
 	private $attributes;
 
 	function __construct(TagNode $parent, array $attrs) {
-		parent::__construct($parent, '<img>' . strtolower($attrs['src']) . '</img>');
+		if(!array_key_exists('src',$attrs)){
+			//wfDebug('Image without a source:');
+			foreach($attrs as $key => $value){
+				//wfDebug("$key = $value");
+			}
+			parent::__construct($parent, '<img></img>');
+		}else{
+			parent::__construct($parent, '<img>' . strtolower($attrs['src']) . '</img>');
+		}
 		$this->attributes = $attrs;
 	}
 
@@ -625,20 +638,20 @@ class Modification{
 		return $this->id;
 	}
 
-	public function setPrevious(Modification $m) {
+	public function setPrevious($m) {
 		$this->prevMod = $m;
 	}
 
 	public function getPrevious() {
-		return $prevMod;
+		return $this->prevMod;
 	}
 
-	public function setNext(Modification $m) {
+	public function setNext($m) {
 		$this->nextMod = $m;
 	}
 
 	public function getNext() {
-		return nextMod;
+		return $this->nextMod;
 	}
 
 	private $changes;
@@ -704,39 +717,49 @@ class DomTreeBuilder {
 	 */
 	public function endDocument() {
 		$this->endWord();
+		//wfDebug(sizeof($this->textNodes) . ' text nodes in document.');
 	}
 
 	public function startElement($parser, $name, array $attributes) {
-		$this->endWord();
+		if(!strcasecmp($name, 'body')==0){
+			//wfDebug("Starting $name node.");
+			$this->endWord();
 
-		$newTagNode = new TagNode($this->currentParent, $name, $attributes);
-		$this->currentParent = $newTagNode;
-		$this->lastSibling = NULL;
-		if ($this->whiteSpaceBeforeThis && $newTagNode->isInline()) {
-			$newTagNode->setWhiteBefore(true);
+			$newTagNode = new TagNode($this->currentParent, $name, $attributes);
+			$this->currentParent = $newTagNode;
+			$this->lastSibling = NULL;
+			if ($this->whiteSpaceBeforeThis && $newTagNode->isInline()) {
+				$newTagNode->setWhiteBefore(true);
+			}
+			$this->whiteSpaceBeforeThis = false;
 		}
-		$this->whiteSpaceBeforeThis = false;
 	}
 
 	public function endElement($parser, $name) {
-		if (strcasecmp($name,'img')) {
-			// Insert a dummy leaf for the image
-			$img = new ImageNode($this->currentParent, $this->currentParent->getAttributes());
-			$img->setWhiteBefore($this->whiteSpaceBeforeThis);
-			$this->lastSibling = $img;
-			$this->textNodes[] = $img;
+		if(!strcasecmp($name, 'body')==0){
+			//wfDebug("Ending $name node.");
+			if (0 == strcasecmp($name,'img')) {
+				// Insert a dummy leaf for the image
+				$img = new ImageNode($this->currentParent, $this->currentParent->getAttributes());
+				$img->setWhiteBefore($this->whiteSpaceBeforeThis);
+				$this->lastSibling = $img;
+				$this->textNodes[] = $img;
+			}
+			$this->endWord();
+			if ($this->currentParent->isInline()) {
+				$this->lastSibling = $this->currentParent;
+			} else {
+				$this->lastSibling = NULL;
+			}
+			$this->currentParent = $this->currentParent->getParent();
+			$this->whiteSpaceBeforeThis = false;
+		}else{
+			$this->endDocument();
 		}
-		$this->endWord();
-		if ($this->currentParent->isInline()) {
-			$this->lastSibling = $this->currentParent;
-		} else {
-			$this->lastSibling = NULL;
-		}
-		$this->currentParent = $this->currentParent->getParent();
-		$this->whiteSpaceBeforeThis = false;
 	}
 
 	public function characters($parser, $data){
+		//wfDebug('Parsing '. strlen($data).' characters.');
 		$array = preg_split('//', $data, -1, PREG_SPLIT_NO_EMPTY);
 		foreach($array as $c) {
 			if (self::isDelimiter($c)) {
@@ -847,8 +870,8 @@ class TextNodeDiffer{
 
 		for ($i = $start; $i < $end; ++$i) {
 			$mod = new Modification(Modification::ADDED);
-			$mod->setID($newID);
-			if ($this->lastModified->size() > 0) {
+			$mod->setID($this->newID);
+			if (sizeof($this->lastModified) > 0) {
 				$mod->setPrevious($this->lastModified[0]);
 				if (is_null($this->lastModified[0]->getNext())) {
 					foreach ($this->lastModified as $lastMod) {
@@ -860,9 +883,9 @@ class TextNodeDiffer{
 			$this->textNodes[$i]->setModification($mod);
 		}
 		if ($start < $end) {
-			getTextNode(start)->getModification()->setFirstOfID(true);
+			$this->textNodes[$start]->getModification()->setFirstOfID(true);
 		}
-		++$newID;
+		++$this->newID;
 		$this->lastModified = $nextLastModified;
 	}
 
@@ -888,6 +911,7 @@ class TextNodeDiffer{
 			$result = $acthis->getResult($acother);
 			unset($acthis, $acother);
 
+			$nbLastModified = sizeof($this->lastModified);
 			if ($result->isChanged()) {
 				$mod = new Modification(Modification::CHANGED);
 
@@ -906,7 +930,7 @@ class TextNodeDiffer{
 					}
 				}
 
-				if (sizeof(lastModified) > 0) {
+				if ($nbLastModified > 0) {
 					$mod->setPrevious($this->lastModified[0]);
 					if (is_null($this->lastModified[0]->getNext())) {
 						foreach ($this->lastModified as $lastMod) {
@@ -914,10 +938,10 @@ class TextNodeDiffer{
 						}
 					}
 				}
-				$nextLastModified->add($mod);
+				$nextLastModified[] = $mod;
 
 				$mod->setChanges($result->getChanges());
-				$mod->setID($changedID);
+				$mod->setID($this->changedID);
 
 				$this->textNodes[$i]->setModification($mod);
 				$this->changes = $result->getChanges();
@@ -963,7 +987,7 @@ class TextNodeDiffer{
 					}
 				}
 			}
-			$nextLastModified->add($mod);
+			$nextLastModified[] = $mod;
 
 			// oldTextNodes is used here because we're going to move its deleted
 			// elements
@@ -972,7 +996,9 @@ class TextNodeDiffer{
 		}
 		$this->oldTextNodes[$start]->getModification()->setFirstOfID(true);
 
-		$deletedNodes = $this->oldBodyNode->getMinimalDeletedSet($deletedID);
+		$deletedNodes = $this->oldBodyNode->getMinimalDeletedSet($this->deletedID);
+
+		//wfDebug("Minimal set of deleted nodes of size " . sizeof($deletedNodes));
 
 		// Set prevLeaf to the leaf after which the old HTML needs to be
 		// inserted
@@ -1011,7 +1037,7 @@ class TextNodeDiffer{
 					// The difference is in the parent, so compare them
 					// now THIS is tricky
 					$distancePrev = $deletedNodes[0]->getParent()->getMatchRatio($prevResult->getLastCommonParent());
-					$distanceNext = $deletedNodes[sizeof(deletedNodes) - 1]->getParent()->getMatchRatio($nextResult->getLastCommonParent());
+					$distanceNext = $deletedNodes[sizeof($deletedNodes) - 1]->getParent()->getMatchRatio($nextResult->getLastCommonParent());
 
 					if ($distancePrev <= $distanceNext) {
 						$prevResult->setLastCommonParentDepth($prevResult->getLastCommonParentDepth() + 1);
@@ -1068,10 +1094,16 @@ class TextNodeDiffer{
 }
 
 class HTMLDiffer{
+	
+	private $output;
+	
+	function __construct($output){
+		$this->output = $output;
+	}
 
 	function htmlDiff($from, $to){
 		// Create an XML parser
-		$xml_parser = xml_parser_create();
+		$xml_parser = xml_parser_create('');
 
 		$domfrom = new DomTreeBuilder();
 
@@ -1081,12 +1113,17 @@ class HTMLDiffer{
 		// Set the function to handle blocks of character data
 		xml_set_character_data_handler($xml_parser, array($domfrom,"characters"));
 
-		xml_parse($xml_parser, $from, TRUE);
+		;
+		//wfDebug('Parsing '.strlen($from)." characters worth of HTML");
+		if (!xml_parse($xml_parser, '<body>', FALSE)
+		|| !xml_parse($xml_parser, $from, FALSE)
+		|| !xml_parse($xml_parser, '</body>', TRUE)){
+			wfDebug(sprintf("XML error: %s at line %d",xml_error_string(xml_get_error_code($xml_parser)),xml_get_current_line_number($xml_parser)));
+		}
 		xml_parser_free($xml_parser);
 		unset($from);
-		$domfrom->endDocument();
 
-		$xml_parser = xml_parser_create();
+		$xml_parser = xml_parser_create('');
 
 		$domto = new DomTreeBuilder();
 
@@ -1096,10 +1133,14 @@ class HTMLDiffer{
 		// Set the function to handle blocks of character data
 		xml_set_character_data_handler($xml_parser, array($domto,"characters"));
 
-		xml_parse($xml_parser, $to, TRUE);
+		//wfDebug('Parsing '.strlen($to)." characters worth of HTML");
+		if (!xml_parse($xml_parser, '<body>', FALSE)
+		|| !xml_parse($xml_parser, $to, FALSE)
+		|| !xml_parse($xml_parser, '</body>', TRUE)){
+			wfDebug(sprintf("XML error in HTML diff: %s at line %d",xml_error_string(xml_get_error_code($xml_parser)),xml_get_current_line_number($xml_parser)));
+		}
 		xml_parser_free($xml_parser);
 		unset($to);
-		$domto->endDocument();
 
 		$diffengine = new _DiffEngine();
 		$differences = $this->preProcess($diffengine->diff_range($domfrom->getDiffLines(), $domto->getDiffLines()));
@@ -1115,7 +1156,7 @@ class HTMLDiffer{
 				$currentIndexRight, $d->rightstart);
 			}
 			if ($d->leftlength > 0) {
-				$domdiffer->markAsDeleted($d->leftstart, $d->leftend, $d->rightStart());
+				$domdiffer->markAsDeleted($d->leftstart, $d->leftend, $d->rightstart);
 			}
 			$domdiffer->markAsNew($d->rightstart, $d->rightend);
 
@@ -1127,7 +1168,7 @@ class HTMLDiffer{
 		}
 
 		$domdiffer->expandWhiteSpace();
-		$output = new HTMLOutput('htmldiff');
+		$output = new HTMLOutput('htmldiff', $this->output);
 		$output->parse($domdiffer->getBodyNode());
 	}
 
@@ -1145,7 +1186,7 @@ class HTMLDiffer{
 			$rightLength = $rightEnd - $rightStart;
 
 			while ($i + 1 < $nbDifferences && self::score($leftLength, $differences[$i + 1]->leftlength,
-			$rightLength, $differences[$i + 1]->rightlength) > ($differences[$i + 1]->leftstart - $leftend)) {
+			$rightLength, $differences[$i + 1]->rightlength) > ($differences[$i + 1]->leftstart - $leftEnd)) {
 				$leftEnd = $differences[$i + 1]->leftend;
 				$rightEnd = $differences[$i + 1]->rightend;
 				$leftLength = $leftEnd - $leftStart;
@@ -1187,6 +1228,7 @@ class TextOnlyComparator{
 
 	function _construct(TagNode $tree) {
 		$this->addRecursive($tree);
+		$this->leafs = array_map(array('TextNode','toDiffLine'), $this->leafs);
 	}
 
 	private function addRecursive(TagNode $tree) {
@@ -1197,18 +1239,23 @@ class TextOnlyComparator{
 				$this->leafs[] = $node;
 			}
 		}
-		$this->leafs = array_map(array('TextNode','toDiffLine'), $this->leafs);
 	}
 
 	public function getMatchRatio(TextOnlyComparator $other) {
+		$nbOthers = sizeof($other->leafs);
+		$nbThis = sizeof($this->leafs);
+		if($nbOthers == 0 || $nbThis == 0){
+			return log(0);
+		}
+		
 		$diffengine = new _DiffEngine();
 		$diffengine->diff_local($this->leafs, $other->leafs);
 
-		$distanceThis = array_sum($diffengine>xchanged);
-		$distanceOther = array_sum($diffengine>ychanged);
+		$distanceThis = array_sum($diffengine->xchanged);
+		$distanceOther = array_sum($diffengine->ychanged);
 
-		return ((0.0 + $distanceOther) / sizeof($other->leafs) + (0.0 + $distanceThis)
-		/ sizeof($this->leafs)) / 2.0;
+		return ((0.0 + $distanceOther) / $nbOthers + (0.0 + $distanceThis)
+		/ $nbThis) / 2.0;
 	}
 }
 
@@ -1377,7 +1424,7 @@ class ChangeText {
 	}
 
 	public function addHtml($s) {
-		$this->$txt .= $s;
+		$this->txt .= $s;
 	}
 
 	public function addNewLine() {
@@ -1388,7 +1435,7 @@ class ChangeText {
 		return $this->txt;
 	}
 
-	private function clean(String $s) {
+	private function clean($s) {
 		return htmlspecialchars($s);
 	}
 }
@@ -1449,10 +1496,10 @@ class TagToStringFactory {
 
 	public function create(TagNode $node) {
 		$sem = $this->getChangeSemantic($node->getQName());
-		if (strcasecmp($node->getQName(),'a')){
+		if (0 == strcasecmp($node->getQName(),'a')){
 			return new AnchorToString($node, $sem);
 		}
-		if (strcasecmp($node->getQName(),'img')){
+		if (0 == strcasecmp($node->getQName(),'img')){
 			return new NoContentTagToString($node, $sem);
 		}
 		return new TagToString($node, $sem);
@@ -1475,18 +1522,18 @@ class TagToString {
 
 	protected $sem;
 
-	function __construct(TagNode $node, TagChangeSematic $sem) {
+	function __construct(TagNode $node, $sem) {
 		$this->node = $node;
 		$this->sem = $sem;
 	}
 
 	public function getDescription() {
-		return $this->getString('diff-' . $node->getQName());
+		return $this->getString('diff-' . $this->node->getQName());
 	}
 
 	public function getRemovedDescription(ChangeText $txt) {
 
-		if ($sem == TagToStringFactory::MOVED) {
+		if ($this->sem == TagToStringFactory::MOVED) {
 			$txt->addText($this->getMovedOutOf() . ' ' . strtolower($this->getArticle()) . ' ');
 			$txt->addHtml('<b>');
 			$txt->addText(strtolower($this->getDescription()));
@@ -1502,13 +1549,13 @@ class TagToString {
 			$txt->addHtml('</b>');
 			$txt->addText(' ' . strtolower($this->getRemoved()));
 		}
-		$this->addAttributes($txt, $node->getAttributes());
+		$this->addAttributes($txt, $this->node->getAttributes());
 		$txt->addText('.');
 	}
 
 	public function getAddedDescription(ChangeText $txt) {
 
-		if ($sem == TagToStringFactory::MOVED) {
+		if ($this->sem == TagToStringFactory::MOVED) {
 			$txt->addText($this->getMovedTo() . ' ' . strtolower($this->getArticle()) . ' ');
 			$txt->addHtml('<b>');
 			$txt->addText(strtolower($this->getDescription()));
@@ -1524,7 +1571,7 @@ class TagToString {
 			$txt->addHtml('</b>');
 			$txt->addText(' ' . strtolower($this->getAdded()));
 		}
-		$this->addAttributes($txt, $node->getAttributes());
+		$this->addAttributes($txt, $this->node->getAttributes());
 		$txt->addText('.');
 	}
 
@@ -1583,11 +1630,11 @@ class TagToString {
 	}
 
 	protected function translateArgument($name) {
-		if (strcasecmp($name,'src'))
+		if (0 == strcasecmp($name,'src'))
 		return strtolower($this->getSource());
-		if (strcasecmp($name,'width'))
+		if (0 == strcasecmp($name,'width'))
 		return strtolower($this->getWidth());
-		if (strcasecmp($name,'height'))
+		if (0 == strcasecmp($name,'height'))
 		return strtolower($this->getHeight());
 		return $name;
 	}
@@ -1739,15 +1786,15 @@ class NoContentTagToString extends TagToString {
 class AnchorToString extends TagToString {
 
 	function __construct(TagNode $node, $sem) {
-		super($node, $sem);
+		parent::__construct($node, $sem);
 	}
 
 	protected function addAttributes(ChangeText $txt, array $attributes) {
 		if (array_key_exists('href',$attributes)) {
-			$txt.addText(' ' . strtolower($this->getWithDestination()) . ' ' . $attributes['href']);
+			$txt->addText(' ' . strtolower($this->getWithDestination()) . ' ' . $attributes['href']);
 			unset($attributes['href']);
 		}
-		parent::addAttributes($txt, $newAttrs);
+		parent::addAttributes($txt, $attributes);
 	}
 
 	private function getWithDestination() {
@@ -1764,15 +1811,14 @@ class HTMLOutput{
 	private $prefix;
 	private $handler;
 
-	function __construct($prefix) {
+	function __construct($prefix, $handler) {
 		$this->prefix = $prefix;
-		$this->handler = new ContentHandler('diff');
+		$this->handler = $handler;
 	}
 
 	public function parse(TagNode $node) {
 
-		if (!strcasecmp($node->getQName(),'img')
-		&& !strcascmp($node->getQName(),'body')) {
+		if (0 != strcasecmp($node->getQName(),'img') && 0 != strcasecmp($node->getQName(),'body')) {
 			$this->handler->startElement($node->getQName(), $node->getAttributes());
 		}
 
@@ -1797,20 +1843,13 @@ class HTMLOutput{
 			} else if ($child instanceof TextNode) {
 				$mod = $child->getModification();
 
-				if ($newStarted
-				&& ($mod->getType() != Modification::ADDED || $mod
-				->isFirstOfID())) {
+				if ($newStarted && ($mod->getType() != Modification::ADDED || $mod->isFirstOfID())) {
 					$this->handler->endElement('span');
 					$newStarted = false;
-				} else if ($changeStarted
-				&& ($mod->getType() != Modification::CHANGED
-				|| $mod->getChanges() != $changeTXT || $mod
-				->isFirstOfID())) {
+				} else if ($changeStarted && ($mod->getType() != Modification::CHANGED || $mod->getChanges() != $changeTXT || $mod->isFirstOfID())) {
 					$this->handler->endElement('span');
 					$changeStarted = false;
-				} else if ($remStarted
-				&& ($mod->getType() != Modification::REMOVED || $mod
-				->isFirstOfID())) {
+				} else if ($remStarted && ($mod->getType() != Modification::REMOVED || $mod ->isFirstOfID())) {
 					$this->handler->endElement('span');
 					$remStarted = false;
 				}
@@ -1823,25 +1862,32 @@ class HTMLOutput{
 						$attrs['id'] = 'added-' . $this->prefix . '-' . $mod->getID();
 					}
 					$this->addAttributes($mod, $attrs);
+					$attrs['onclick'] = 'return tipA(constructToolTipA(this));';
 					$this->handler->startElement('span', $attrs);
 					$newStarted = true;
-				} else if (!$changeStarted
-				&& $mod->getType() == Modification::CHANGED) {
+				} else if (!$changeStarted && $mod->getType() == Modification::CHANGED) {
 					$attrs = array('class'=>'diff-html-changed');
 					if ($mod->isFirstOfID()) {
 						$attrs['id'] = 'changed-' . $this->prefix . '-' . $mod->getID();
 					}
 					$this->addAttributes($mod, $attrs);
-					$this->handler->startElement('span', attrs);
+					$attrs['onclick'] = 'return tipC(constructToolTipC(this));';
+					$this->handler->startElement('span', $attrs);
+					
+					//tooltip
+					$this->handler->startElement('span', array('class'=>'tip'));
+					$this->handler->characters($mod->getChanges());
+					$this->handler->endElement('span');
+			
 					$changeStarted = true;
 					$changeTXT = $mod->getChanges();
-				} else if (!$remStarted
-				&& $mod->getType() == Modification::REMOVED) {
+				} else if (!$remStarted && $mod->getType() == Modification::REMOVED) {
 					$attrs = array('class'=>'diff-html-removed');
 					if ($mod->isFirstOfID()) {
 						$attrs['id'] = 'removed-' . $this->prefix . '-' . $mod->getID();
 					}
 					$this->addAttributes($mod, $attrs);
+					$attrs['onclick'] = 'return tipR(constructToolTipR(this));';
 					$this->handler->startElement('span', $attrs);
 					$remStarted = true;
 				}
@@ -1849,7 +1895,7 @@ class HTMLOutput{
 				$chars = $child->getText();
 
 				if ($child instanceof ImageNode) {
-					$this->writeImage(textChild);
+					$this->writeImage($child);
 				} else {
 					$this->handler->characters($chars);
 				}
@@ -1868,8 +1914,8 @@ class HTMLOutput{
 			$remStarted = false;
 		}
 
-		if (!strcasecmp($node->getQName(),'img')
-		&& !strcasecmp($node->getQName(),'body'))
+		if (0 != strcasecmp($node->getQName(),'img')
+		&& 0 != strcasecmp($node->getQName(),'body'))
 		$this->handler->endElement($node->getQName());
 	}
 
@@ -1879,15 +1925,14 @@ class HTMLOutput{
 		$attrs['changeType']='diff-removed-image';
 		else if ($imgNode->getModification()->getType() == Modification::ADDED)
 		$attrs['changeType'] = 'diff-added-image';
+		$attrs['onload'] = 'updateOverlays()';
+		$attrs['onError'] = 'updateOverlays()';
+		$attrs['onAbort'] = 'updateOverlays()';
 		$this->handler->startElement('img', $attrs);
 		$this->handler->endElement('img');
 	}
 
-	private function addAttributes(Modification $mod, array $attrs) {
-		if ($mod->getType() == Modification::CHANGED) {
-			$changes = $mod->getChanges();
-			$attrs['changes'] = $changes;
-		}
+	private function addAttributes(Modification $mod, array &$attrs) {
 		if (is_null($mod->getPrevious())) {
 			$previous = 'first-' . $this->prefix;
 		} else {
@@ -1906,14 +1951,13 @@ class HTMLOutput{
 			. $mod->getNext()->getID();
 		}
 		$attrs['next'] = $next;
-
 	}
 }
 
-class ContentHandler{
+class EchoingContentHandler{
 
 	function startElement($qname, array $arguments){
-		echo "<$qname";
+		echo '<'.$qname;
 		foreach($arguments as $key => $value){
 			echo ' '.$key.'="'.$value.'"';
 		}
@@ -1926,6 +1970,32 @@ class ContentHandler{
 
 	function characters($chars){
 		echo $chars;
+	}
+
+}
+
+class DelegatingContentHandler{
+	
+	private $delegate;
+	
+	function __construct($delegate){
+		$this->delegate=$delegate;
+	}
+
+	function startElement($qname, array $arguments){
+		$this->delegate->addHtml('<'.$qname) ;
+		foreach($arguments as $key => $value){
+			$this->delegate->addHtml(' '.$key.'="'.$value.'"');
+		}
+		$this->delegate->addHtml('>');
+	}
+
+	function endElement($qname){
+		$this->delegate->addHtml('</'.$qname.'>');
+	}
+
+	function characters($chars){
+		$this->delegate->addHtml( $chars );
 	}
 
 }

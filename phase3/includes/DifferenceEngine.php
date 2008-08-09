@@ -2,9 +2,15 @@
 /**
  * @defgroup DifferenceEngine DifferenceEngine
  */
+
 global $wgExternalDiffEngine;
 if($wgExternalDiffEngine == 'wikidiff3'){
 	require_once( 'Diff.php' );
+}
+
+global $wgEnableHtmlDiff;
+if($wgEnableHtmlDiff){
+	require_once( 'HtmlDiff.php' );
 }
 
 /**
@@ -271,8 +277,14 @@ CONTROL;
 
 		$this->showDiff( $oldHeader, $newHeader );
 
-		if ( !$diffOnly )
-		$this->renderNewRevision();
+		if ( !$diffOnly ){
+			global $wgEnableHtmlDiff;
+			if($wgEnableHtmlDiff){
+				$this->renderHtmlDiff();
+			}else{
+				$this->renderNewRevision();
+			}
+		}
 
 		wfProfileOut( __METHOD__ );
 	}
@@ -320,6 +332,62 @@ CONTROL;
 			$wgOut->parserOptions()->setEditSection( $oldEditSectionSetting );
 		}
 
+		wfProfileOut( __METHOD__ );
+	}
+	
+	
+	function renderHtmlDiff() {
+		global $wgOut;
+		wfProfileIn( __METHOD__ );
+		
+		$wgOut->addHTML( "<hr /><h2>HTML Diff</h2>\n" );
+		#add deleted rev tag if needed
+		if( !$this->mNewRev->userCan(Revision::DELETED_TEXT) ) {
+			$wgOut->addWikiMsg( 'rev-deleted-text-permission' );
+		} else if( $this->mNewRev->isDeleted(Revision::DELETED_TEXT) ) {
+			$wgOut->addWikiMsg( 'rev-deleted-text-view' );
+		}
+
+		if( !$this->mNewRev->isCurrent() ) {
+			$oldEditSectionSetting = $wgOut->parserOptions()->setEditSection( false );
+		}
+
+		$this->loadText();
+		
+		if( is_object( $this->mOldRev ) ) {
+			$wgOut->setRevisionId( $this->mOldRev->getId() );
+		}
+		
+		global $wgTitle, $wgParser, $wgTitle;
+		$popts = $wgOut->parserOptions();
+		$oldTidy = $popts->setTidy( TRUE );
+
+		$parserOutput = $wgParser->parse($this->mOldtext, $wgTitle, $popts, TRUE, TRUE, $wgOut->mRevisionId );
+		$popts->setTidy( $oldTidy );
+
+		//only for new?
+		//$wgOut->addParserOutputNoText( $parserOutput );
+		$oldHtml =	$parserOutput->getText();
+		wfRunHooks( 'OutputPageBeforeHTML',array( &$wgOut, &$oldHtml ) );
+		
+		if( is_object( $this->mNewRev ) ) {
+			$wgOut->setRevisionId( $this->mNewRev->getId() );
+		}
+		
+		$popts = $wgOut->parserOptions();
+		$oldTidy = $popts->setTidy( TRUE );
+
+		$parserOutput = $wgParser->parse($this->mNewtext, $wgTitle, $popts, TRUE, TRUE, $wgOut->mRevisionId );
+		$popts->setTidy( $oldTidy );
+
+		//only for new?
+		$wgOut->addParserOutputNoText( $parserOutput );
+		$newHtml =	$parserOutput->getText();
+		wfRunHooks( 'OutputPageBeforeHTML',array( &$wgOut, &$newHtml ) );
+		
+		$differ = new HTMLDiffer(new DelegatingContentHandler($wgOut));
+		$differ->htmlDiff($oldHtml, $newHtml);
+		
 		wfProfileOut( __METHOD__ );
 	}
 
@@ -901,15 +969,15 @@ class _DiffOp_Change extends _DiffOp {
  * ranges that are changed.
  */
 class RangeDifference {
-	
+
 	public $leftstart;
 	public $leftend;
 	public $leftlength;
-	
+
 	public $rightstart;
 	public $rightend;
 	public $rightlength;
-	
+
 	function __construct($leftstart, $leftend, $rightstart, $rightend){
 		$this->leftstart = $leftstart;
 		$this->leftend = $leftend;
@@ -1026,12 +1094,12 @@ class _DiffEngine {
 			while ($xi < $n_from && $this->xchanged[$xi]){
 				++$xi;
 			}
-			
+				
 			$ystart = $yi;
 			while ($yi < $n_to && $this->ychanged[$yi]){
 				++$yi;
 			}
-			
+				
 			if ($xi>$xstart || $yi>$ystart){
 				$ranges[] = new RangeDifference($xstart,$xi,$ystart,$yi);
 			}
