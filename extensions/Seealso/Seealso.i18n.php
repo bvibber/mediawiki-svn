@@ -26,7 +26,7 @@ $messages['af'] = array(
  * @author Meno25
  */
 $messages['ar'] = array(
-	'seealso'      => 'انظر أيضا',
+	'seealso' => 'انظر أيضا',
 	'seealso-desc' => "عناوين 'See also' مترجمة باستخدام الوسم <code><nowiki><seealso></nowiki></code>.",
 );
 
@@ -34,7 +34,7 @@ $messages['ar'] = array(
  * @author EugeneZelenko
  */
 $messages['be-tarask'] = array(
-	'seealso'      => 'Глядзіце таксама',
+	'seealso' => 'Глядзіце таксама',
 	'seealso-desc' => 'Лякалізаваны загаловак «Глядзіце таксама» з дапамогай тэга <code><nowiki><seealso></nowiki></code>',
 );
 
@@ -43,16 +43,15 @@ $messages['be-tarask'] = array(
  * @author Spiritia
  */
 $messages['bg'] = array(
-	'seealso'      => 'Вижте също',
+	'seealso' => 'Вижте също',
 	'seealso-desc' => "Добавя възможност за използване на раздел 'Вижте също' с помощта на етикет <code><nowiki><seealso></nowiki></code>",
 );
 
 /** Breton (Brezhoneg)
- * @author SPQRobin
  * @author Fulup
  */
 $messages['br'] = array(
-	'seealso'      => 'Gwelet ivez',
+	'seealso' => 'Gwelet ivez',
 	'seealso-desc' => "Talbenn 'Gwelet ivez' lec'helaet dre implijout ar valizenn <code><nowiki><seealso></nowiki></code>",
 );
 
@@ -67,7 +66,7 @@ $messages['de'] = array(
  * @author Michawiki
  */
 $messages['dsb'] = array(
-	'seealso'      => 'Glědaj teke',
+	'seealso' => 'Glědaj teke',
 	'seealso-desc' => 'Pśełožone nadpisma "Glědaj teke" z pomocu toflicki <code><nowiki><seealso></nowiki></code>',
 );
 
@@ -82,7 +81,7 @@ $messages['el'] = array(
  * @author Yekrats
  */
 $messages['eo'] = array(
-	'seealso'      => 'Vidu ankaŭ',
+	'seealso' => 'Vidu ankaŭ',
 	'seealso-desc' => "Asimilita 'Vidu ankaŭ' sekcio-titolo uzante la markojn <code><nowiki><seealso></nowiki></code>.",
 );
 
@@ -97,16 +96,16 @@ $messages['fi'] = array(
  * @author Bertrand GRONDIN
  */
 $messages['fr'] = array(
-	'seealso'      => 'Voir aussi',
+	'seealso' => 'Voir aussi',
 	'seealso-desc' => 'En-tête « Voir aussi » utilisée par la balise <code><nowiki><seealso></nowiki></code>',
 );
 
 /** Galician (Galego)
- * @author Toliño
  * @author Alma
+ * @author Toliño
  */
 $messages['gl'] = array(
-	'seealso'      => 'Véxase tamén',
+	'seealso' => 'Véxase tamén',
 	'seealso-desc' => "Cabeceira 'Véxase tamén' localizada empregando a etiqueta <code><nowiki><seealso></nowiki></code>",
 );
 
@@ -121,7 +120,7 @@ $messages['hi'] = array(
  * @author Michawiki
  */
 $messages['hsb'] = array(
-	'seealso'      => 'Hlej tež',
+	'seealso' => 'Hlej tež',
 	'seealso-desc' => "Lokalizowane nadpisma 'Hlej tež' z pomocu taflički <code><nowiki><seealso></nowiki></code>",
 );
 
@@ -143,7 +142,7 @@ $messages['is'] = array(
  * @author Darth Kule
  */
 $messages['it'] = array(
-	'seealso'      => 'Vedi anche',
+	'seealso' => 'Vedi anche',
 	'seealso-desc' => "Intestazioni 'Vedi anche' localizzate usando il tag <code><nowiki><seealso></nowiki></code>",
 );
 
@@ -173,7 +172,7 @@ $messages['km'] = array(
  * @author Purodha
  */
 $messages['ksh'] = array(
-	'seealso'      => 'Loor och hee',
+	'seealso' => 'Loor och hee',
 	'seealso-desc' => 'Övverschreffte en de jeweilije Shprooch met däm zosäzlijje <code><nowiki><seealso></nowiki></code> Befäähl em Wiki.',
 );
 
@@ -181,7 +180,7 @@ $messages['ksh'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
-	'seealso'      => 'Kuckt och',
+	'seealso' => 'Kuckt och',
 	'seealso-desc' => "Iwwerschrëft 'Kuckt och' a Benotzen vum Tag <code><nowiki><seealso></nowiki></code>",
 );
 
@@ -189,7 +188,7 @@ $messages['lb'] = array(
  * @author Ooswesthoesbes
  */
 $messages['li'] = array(
-	'seealso'      => 'Zuug ouch',
+	'seealso' => 'Zuug ouch',
 	'seealso-desc' => "Gelokalisieërdje köpkes 'Zuug ouch' mitte tag <code><nowiki><seealso></nowiki></code>",
 );
 
@@ -211,11 +210,11 @@ $messages['ml'] = array(
  * @author Kaustubh
  */
 $messages['mr'] = array(
-	'seealso'      => 'हे सुद्धा पहा',
+	'seealso' => 'हे सुद्धा पहा',
 	'seealso-desc' => "<code><nowiki><seealso></nowiki></code> खूण वापरून स्थानिक 'हे सुद्धा पहा' शीर्षके",
 );
 
-/** Nahuatl (Nahuatl)
+/** Nahuatl (Nāhuatl)
  * @author Fluence
  */
 $messages['nah'] = array(
@@ -226,7 +225,7 @@ $messages['nah'] = array(
  * @author Siebrand
  */
 $messages['nl'] = array(
-	'seealso'      => 'Zie ook',
+	'seealso' => 'Zie ook',
 	'seealso-desc' => "Gelokaliseerde kopjes 'Zie ook' met de tag <code><nowiki><seealso></nowiki></code>",
 );
 
@@ -234,7 +233,7 @@ $messages['nl'] = array(
  * @author Jon Harald Søby
  */
 $messages['no'] = array(
-	'seealso'      => 'Se også',
+	'seealso' => 'Se også',
 	'seealso-desc' => 'Oversatte «Se også»-overskrifter med bruk av taggen <code><nowiki><seealso></nowiki></code>',
 );
 
@@ -242,7 +241,7 @@ $messages['no'] = array(
  * @author Cedric31
  */
 $messages['oc'] = array(
-	'seealso'      => 'Vejatz tanben',
+	'seealso' => 'Vejatz tanben',
 	'seealso-desc' => 'Entèsta « Vejatz tanben » utilizada per la balisa <code><nowiki><seealso></nowiki></code>',
 );
 
@@ -257,7 +256,7 @@ $messages['pl'] = array(
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */
 $messages['ps'] = array(
-	'seealso'      => 'دا هم وګورۍ',
+	'seealso' => 'دا هم وګورۍ',
 	'seealso-desc' => "د <code><nowiki><داهم وګورۍ></nowiki></code> پټې په کارولو سره د 'دا هم وګورۍ' سرليک ځای پر ځای کېږي.",
 );
 
@@ -272,7 +271,7 @@ $messages['pt'] = array(
  * @author Александр Сигачёв
  */
 $messages['ru'] = array(
-	'seealso'      => 'См. также',
+	'seealso' => 'См. также',
 	'seealso-desc' => 'Локализованный заголовок «См. также» с помощью тега <code><nowiki><seealso></nowiki></code>',
 );
 
@@ -280,7 +279,7 @@ $messages['ru'] = array(
  * @author Helix84
  */
 $messages['sk'] = array(
-	'seealso'      => 'Pozri aj',
+	'seealso' => 'Pozri aj',
 	'seealso-desc' => 'Lokalizované nadpisy „Pozri aj“ pomocou značky <code><nowiki><seealso></nowiki></code>',
 );
 
@@ -300,10 +299,9 @@ $messages['su'] = array(
 
 /** Swedish (Svenska)
  * @author Lejonel
- * @author SPQRobin
  */
 $messages['sv'] = array(
-	'seealso'      => 'Se även',
+	'seealso' => 'Se även',
 	'seealso-desc' => '"Se även"-rubriker på olika språk med hjälp av taggen <code><nowiki><seealso></nowiki></code>',
 );
 
@@ -311,11 +309,11 @@ $messages['sv'] = array(
  * @author Veeven
  */
 $messages['te'] = array(
-	'seealso'      => 'ఇవి కూడా చూడండి',
+	'seealso' => 'ఇవి కూడా చూడండి',
 	'seealso-desc' => "<code><nowiki><seealso></nowiki></code> అనే టాగుని వాడడం ద్వారా స్థానికీకరించిన 'ఇవి కూడా చూడండి' శీర్షికలు",
 );
 
-/** Tajik (Cyrillic) (Тоҷикӣ/tojikī (Cyrillic))
+/** Tajik (Cyrillic) (Тоҷикӣ (Cyrillic))
  * @author Ibrahim
  */
 $messages['tg-cyrl'] = array(
@@ -333,16 +331,16 @@ $messages['th'] = array(
  * @author Candalua
  */
 $messages['vec'] = array(
-	'seealso'      => 'Varda anca',
+	'seealso' => 'Varda anca',
 	'seealso-desc' => "Le intestassion 'See also' le xe localizà doparando el tag <code><nowiki><seealso></nowiki></code>",
 );
 
 /** Vietnamese (Tiếng Việt)
- * @author Vinhtantran
  * @author Minh Nguyen
+ * @author Vinhtantran
  */
 $messages['vi'] = array(
-	'seealso'      => 'Xem thêm',
+	'seealso' => 'Xem thêm',
 	'seealso-desc' => "Địa phương hóa tựa đề 'Xem thêm' sử dụng thẻ <code><nowiki><seealso></nowiki></code>",
 );
 

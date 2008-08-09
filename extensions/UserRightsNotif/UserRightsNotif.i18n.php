@@ -28,7 +28,7 @@ $2",
  */
 $messages['ar'] = array(
 	'userrightsnotifysubject' => 'تغيير مجموعات العضوية في $1',
-	'userrightsnotifybody'    => 'مرحبا $1
+	'userrightsnotifybody' => 'مرحبا $1
 
 هذا لإعلامك أن مجموعات عضويتك في $2 تغيرت بواسطة $3 في $4.
 
@@ -38,7 +38,7 @@ $messages['ar'] = array(
 مع التحية،
 
 $2',
-	'userrightsnotif-desc'    => 'يرسل إشعار بريد إلكتروني إلى المستخدمين على تغييرات الحقوق',
+	'userrightsnotif-desc' => 'يرسل إشعار بريد إلكتروني إلى المستخدمين على تغييرات الحقوق',
 );
 
 /** Bulgarian (Български)
@@ -46,7 +46,7 @@ $2',
  */
 $messages['bg'] = array(
 	'userrightsnotifysubject' => 'Промяна на груповата принадлежност в $1',
-	'userrightsnotifybody'    => 'Здравейте $1,
+	'userrightsnotifybody' => 'Здравейте $1,
 
 С това писмо ви уведомяваме, че вашата групова принадлежност в $2 беше променена от $3 на $4.
 
@@ -56,7 +56,7 @@ $messages['bg'] = array(
 Поздрави,
 
 $2',
-	'userrightsnotif-desc'    => 'Изпраща оповестяване по е-поща при промяна на потребителски права',
+	'userrightsnotif-desc' => 'Изпраща оповестяване по е-поща при промяна на потребителски права',
 );
 
 /** Bengali (বাংলা)
@@ -64,7 +64,7 @@ $2',
  */
 $messages['bn'] = array(
 	'userrightsnotifysubject' => '$1-এ দলের সদস্যপদ পরিবর্তন',
-	'userrightsnotifybody'    => 'প্রিয় $1
+	'userrightsnotifybody' => 'প্রিয় $1
 
 আপনার অবগতির জন্য জানানো যাচ্ছে যে $2-এ আপনার দলীয় সদস্যপদ $3 পরিবর্তন করে $4 করেছেন।
 
@@ -81,7 +81,7 @@ $2',
  */
 $messages['br'] = array(
 	'userrightsnotifysubject' => 'Kemmoù emezeladur e strolladoù implijerien war $1',
-	'userrightsnotifybody'    => "Demat $1
+	'userrightsnotifybody' => "Demat $1
 
 Setu aze ur c'hemenn evit ho kelaouiñ eo bet kemmet hoc'h emezeladur d'ar strolladoù implijerien war $2 gant $3 d'an $4.
 
@@ -98,7 +98,7 @@ $2",
  */
 $messages['ca'] = array(
 	'userrightsnotifysubject' => "Canvi del grup d'usuari a $1",
-	'userrightsnotifybody'    => "Hola $1.
+	'userrightsnotifybody' => "Hola $1.
 
 Us voldríem informar que els vostre grup d'usuari de $2 ha estat canviat per $3 a $4.
 
@@ -115,7 +115,7 @@ $2",
  */
 $messages['de'] = array(
 	'userrightsnotifysubject' => 'Änderung der Gruppenzugehörigkeit vom $1',
-	'userrightsnotifybody'    => 'Hallo $1
+	'userrightsnotifybody' => 'Hallo $1
 
 Dies ist eine Information, dass deine Gruppenzugehörigkeit von $2 durch $3 am $4 geändert wurde.
 
@@ -125,7 +125,7 @@ Entfernt: $6
 Mit freundlichen Grüßen,
 
 $2',
-	'userrightsnotif-desc'    => 'Sendet E-Mail-Benachrichtungen über Rechteänderungen an den Benutzer',
+	'userrightsnotif-desc' => 'Sendet E-Mail-Benachrichtungen über Rechteänderungen an den Benutzer',
 );
 
 /** German (formal address) (Deutsch (Sie-Form))
@@ -149,7 +149,7 @@ $2',
  */
 $messages['dsb'] = array(
 	'userrightsnotifysubject' => 'Změna kupkoweje pśisłušnosći na $1',
-	'userrightsnotifybody'    => 'Halo $1.
+	'userrightsnotifybody' => 'Halo $1.
 
 To jo informacija, až jo se twója kupkowa pśisłušnosć na $2 wót $3 na $4 změniła.
 
@@ -159,7 +159,7 @@ Wótwónoźony: $6
 Z pśijaśelnymi póstrowami,
 
 $2',
-	'userrightsnotif-desc'    => 'Sćele e-mailowe powěźeńki wužywarjam pśi změnjenju pšawow',
+	'userrightsnotif-desc' => 'Sćele e-mailowe powěźeńki wužywarjam pśi změnjenju pšawow',
 );
 
 /** Greek (Ελληνικά)
@@ -167,7 +167,7 @@ $2',
  */
 $messages['el'] = array(
 	'userrightsnotifysubject' => 'Αλλαγή ιδιότητας μέλους στο εγχείρημα $1',
-	'userrightsnotifybody'    => 'Γεια σας, $1
+	'userrightsnotifybody' => 'Γεια σας, $1
 
 Σας ειδοποιούμε ότι οι ιδιότητες μέλους σας στο εγχείρημα $2 αλλάχτηκαν από τον/την $3 στις $4.
 
@@ -177,7 +177,7 @@ $messages['el'] = array(
 Με εκτίμηση,
 
 $2',
-	'userrightsnotif-desc'    => 'Στέλνει ηλεκτρονική ειδοποίηση σε χρήστες μετά από αλλαγή δικαιωμάτων',
+	'userrightsnotif-desc' => 'Στέλνει ηλεκτρονική ειδοποίηση σε χρήστες μετά από αλλαγή δικαιωμάτων',
 );
 
 /** French (Français)
@@ -185,7 +185,7 @@ $2',
  */
 $messages['fr'] = array(
 	'userrightsnotifysubject' => 'Changement d’appartenance à des groupes d’utilisateurs sur $1',
-	'userrightsnotifybody'    => "Bonjour $1,
+	'userrightsnotifybody' => "Bonjour $1,
 
 J’ai l'honneur de vous informer que votre appartenance aux groupes d'utilisateurs sur $2 a été modifiée par $3 le $4.
 
@@ -195,16 +195,16 @@ Retiré : $6
 Cordialement,
 
 $2",
-	'userrightsnotif-desc'    => 'Envoie une notification, par courriel, aux utilisateurs concernés lors de la modification de leurs droits',
+	'userrightsnotif-desc' => 'Envoie une notification, par courriel, aux utilisateurs concernés lors de la modification de leurs droits',
 );
 
 /** Galician (Galego)
- * @author Toliño
  * @author Alma
+ * @author Toliño
  */
 $messages['gl'] = array(
 	'userrightsnotifysubject' => 'Os membros do grupo cambiaron a $1',
-	'userrightsnotifybody'    => 'Ola $1.
+	'userrightsnotifybody' => 'Ola $1.
 
 Isto é para informalo de o grupo ao que pertencía en $2 foi cambiado por $3 ao de $4.
 
@@ -215,7 +215,7 @@ Eliminado: $6
 Un cordial saúdo,
 
 $2',
-	'userrightsnotif-desc'    => 'Envía unha notificación por correo electrónico aos usuarios unha vez que os seus dereitos cambien',
+	'userrightsnotif-desc' => 'Envía unha notificación por correo electrónico aos usuarios unha vez que os seus dereitos cambien',
 );
 
 /** Upper Sorbian (Hornjoserbsce)
@@ -223,7 +223,7 @@ $2',
  */
 $messages['hsb'] = array(
 	'userrightsnotifysubject' => 'Změna skupinoweho čłonstwa na $1',
-	'userrightsnotifybody'    => 'Witaj $1
+	'userrightsnotifybody' => 'Witaj $1
 
 To je informacija, zo twoje skupinowe čłonstwo na $2 bu wot $3 pola $4 změnjene.
 
@@ -233,7 +233,7 @@ Wotstronjeny: $6
 Postrowy,
 
 $2',
-	'userrightsnotif-desc'    => 'Sćele wužiwarjam e-mejlowu powěsće při změnjenju prawow',
+	'userrightsnotif-desc' => 'Sćele wužiwarjam e-mejlowu powěsće při změnjenju prawow',
 );
 
 /** Indonesian (Bahasa Indonesia)
@@ -241,7 +241,7 @@ $2',
  */
 $messages['id'] = array(
 	'userrightsnotifysubject' => 'Perubahan kelompok pengguna pada $1',
-	'userrightsnotifybody'    => 'Halo $1.
+	'userrightsnotifybody' => 'Halo $1.
 
 Kelompok pengguna Anda di $2 telah diubah oleh $3 pada $4.
 
@@ -251,16 +251,16 @@ Pengurangan: $6
 Terima kasih,
 
 $2',
-	'userrightsnotif-desc'    => 'Kirim notifikasi via e-mail ke para pengguna saat ada perubahan hak pengguna',
+	'userrightsnotif-desc' => 'Kirim notifikasi via e-mail ke para pengguna saat ada perubahan hak pengguna',
 );
 
 /** Italian (Italiano)
- * @author Melos
  * @author Darth Kule
+ * @author Melos
  */
 $messages['it'] = array(
 	'userrightsnotifysubject' => 'Cambiato gruppo di appartenenza in $1',
-	'userrightsnotifybody'    => 'Ciao $1.
+	'userrightsnotifybody' => 'Ciao $1.
 
 Ti informiamo che il tuo gruppo di appartenenza su $2 è stato cambiato da $3 il $4
 
@@ -270,7 +270,7 @@ Rimossi: $6
 Cordiali saluti,
 
 $2',
-	'userrightsnotif-desc'    => 'Invia una e-mail di notifica quando vengono cambiati i diritti del gruppo utente di un utente',
+	'userrightsnotif-desc' => 'Invia una e-mail di notifica quando vengono cambiati i diritti del gruppo utente di un utente',
 );
 
 /** Javanese (Basa Jawa)
@@ -285,7 +285,7 @@ $messages['jv'] = array(
  */
 $messages['ksh'] = array(
 	'userrightsnotifysubject' => 'De Medmaacher ier Jroppe woote verändert op $1',
-	'userrightsnotifybody'    => 'Dach $1.
+	'userrightsnotifybody' => 'Dach $1.
 
 Am $4 hät dä Metmaacher $3 Ding Metmaacher-Jroppe
 em Wiki §2 verändert, un hät Dich
@@ -295,7 +295,7 @@ eruß jenomme uß $6.
 Enne schöne Jroß!
 
 $2',
-	'userrightsnotif-desc'    => 'Scheck en E-Mail aan dä Medmaacher, wann em sing Rääschte (övver Metmaacher-Jroppe) verändert woode sin',
+	'userrightsnotif-desc' => 'Scheck en E-Mail aan dä Medmaacher, wann em sing Rääschte (övver Metmaacher-Jroppe) verändert woode sin',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -303,7 +303,7 @@ $2',
  */
 $messages['lb'] = array(
 	'userrightsnotifysubject' => 'Ännerung vun de Memberen vun de Gruppen vum $1',
-	'userrightsnotifybody'    => 'Salut $1
+	'userrightsnotifybody' => 'Salut $1
 
 Heimat gitt Dir informéiert, datt äer Meberschaft am Grupp vun $2 vum $3 den $4 geännert gouf.
 
@@ -313,7 +313,7 @@ Erausgeholl: $6
 Mat beschte Gréiss,
 
 $2',
-	'userrightsnotif-desc'    => 'Schéckt dem Benotzer eng Informatioun per E-mail wa seng Rechter änneren',
+	'userrightsnotif-desc' => 'Schéckt dem Benotzer eng Informatioun per E-mail wa seng Rechter änneren',
 );
 
 /** Malayalam (മലയാളം)
@@ -345,7 +345,7 @@ $messages['mr'] = array(
  */
 $messages['nl'] = array(
 	'userrightsnotifysubject' => 'Groepslidmaatschap is gewijzigd op $1',
-	'userrightsnotifybody'    => 'Hallo $1
+	'userrightsnotifybody' => 'Hallo $1
 
 Dit is om u te informeren dat uw groepslidmaatschap op $2 is gewijzigd door $3 op $4.
 
@@ -355,7 +355,7 @@ Verwijderd: $6
 Vriendelijke groeten,
 
 $2',
-	'userrightsnotif-desc'    => 'Verstuurt e-mails om gebruikers te melden van wijzingen in hun gebruikersrechten',
+	'userrightsnotif-desc' => 'Verstuurt e-mails om gebruikers te melden van wijzingen in hun gebruikersrechten',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
@@ -363,7 +363,7 @@ $2',
  */
 $messages['no'] = array(
 	'userrightsnotifysubject' => 'Endring av gruppemedlemskap på $1',
-	'userrightsnotifybody'    => 'Hei, $1.
+	'userrightsnotifybody' => 'Hei, $1.
 
 Du informeres herved at dine gruppemedlemskap på $2 ble endret av $3 $4.
 
@@ -372,7 +372,7 @@ Fjernet: $6
 
 Hilsen
 $2',
-	'userrightsnotif-desc'    => 'Sender e-postmelding til brukere ved rettighetsendringer',
+	'userrightsnotif-desc' => 'Sender e-postmelding til brukere ved rettighetsendringer',
 );
 
 /** Occitan (Occitan)
@@ -380,8 +380,8 @@ $2',
  */
 $messages['oc'] = array(
 	'userrightsnotifysubject' => 'Cambiament d’apartenéncia a de gropes d’utilizaires sus $1',
-	'userrightsnotifybody'    => "Bonjorn $1, Ai l'onor de vos informar que vòstra apartenéncia als gropes d'utilizaires sus $2 es estada modificada per $3 lo $4. Apondut : $5 Levat : $6 Coralament, $2",
-	'userrightsnotif-desc'    => 'Manda una notificacion, per corrièr electronic, als utilizaires concernits al moment de la modificacion de lors dreches',
+	'userrightsnotifybody' => "Bonjorn $1, Ai l'onor de vos informar que vòstra apartenéncia als gropes d'utilizaires sus $2 es estada modificada per $3 lo $4. Apondut : $5 Levat : $6 Coralament, $2",
+	'userrightsnotif-desc' => 'Manda una notificacion, per corrièr electronic, als utilizaires concernits al moment de la modificacion de lors dreches',
 );
 
 /** Polish (Polski)
@@ -389,7 +389,7 @@ $messages['oc'] = array(
  */
 $messages['pl'] = array(
 	'userrightsnotifysubject' => 'Zmiana członkostwa w grupach w $1',
-	'userrightsnotifybody'    => 'Witaj $1,
+	'userrightsnotifybody' => 'Witaj $1,
 
 informuję, że Twoje członkostwo w grupach w $2 zostało zmienione $4 przez $3.
 
@@ -400,7 +400,7 @@ Usunięto: $6
 Pozdrowienia
 
 $2',
-	'userrightsnotif-desc'    => 'Wyślij informację do użytkowników o zmianach uprawnień',
+	'userrightsnotif-desc' => 'Wyślij informację do użytkowników o zmianach uprawnień',
 );
 
 /** Pashto (پښتو)
@@ -408,7 +408,7 @@ $2',
  */
 $messages['ps'] = array(
 	'userrightsnotifysubject' => 'په $1 باندې د يوې ډلې د غړيتوب بدلون',
-	'userrightsnotifybody'    => '$1 ګرانه/ګرانې سلامونه.
+	'userrightsnotifybody' => '$1 ګرانه/ګرانې سلامونه.
 
 تاسو ته خبر درکول کېږي چې په $2 باندې ستاسو د ډلې غړيتوب، د $3 لخوا په $4 بدلون موندلی.
 
@@ -418,7 +418,7 @@ $messages['ps'] = array(
 په ډېر درنښت،
 
 $2',
-	'userrightsnotif-desc'    => 'د کارونکو په رښتو کې د بدلون سره سم کارونکو ته خبرونکی برېښليک ورلېږل کېږي',
+	'userrightsnotif-desc' => 'د کارونکو په رښتو کې د بدلون سره سم کارونکو ته خبرونکی برېښليک ورلېږل کېږي',
 );
 
 /** Portuguese (Português)
@@ -426,7 +426,7 @@ $2',
  */
 $messages['pt'] = array(
 	'userrightsnotifysubject' => 'Mudança de estatuto de usuário em $1',
-	'userrightsnotifybody'    => 'Olá $1
+	'userrightsnotifybody' => 'Olá $1
 
 Serve esta mensagem para informar que os seu estatuto de usuário foi modificado em $2, de $3 para $4.
 
@@ -436,7 +436,7 @@ Removido: $6
 Os melhores cumprimentos,
 
 $2',
-	'userrightsnotif-desc'    => 'Enviar notificação por email a usuários que sofreram alteração de privilégios',
+	'userrightsnotif-desc' => 'Enviar notificação por email a usuários que sofreram alteração de privilégios',
 );
 
 /** Russian (Русский)
@@ -444,7 +444,7 @@ $2',
  */
 $messages['ru'] = array(
 	'userrightsnotifysubject' => 'Членство в группах было изменено на «$1»',
-	'userrightsnotifybody'    => 'Здравствуйте, $1.
+	'userrightsnotifybody' => 'Здравствуйте, $1.
 
 Это сообщение информирует вас о том, что ваше членство в группах было изменено $3 в $4.
 
@@ -461,7 +461,7 @@ $2',
  */
 $messages['sk'] = array(
 	'userrightsnotifysubject' => 'Zmena členstva $1 v skupine',
-	'userrightsnotifybody'    => 'Dobrý deň, $1
+	'userrightsnotifybody' => 'Dobrý deň, $1
 
 Týmto vás informujeme, že vaše členstvo v skupine $2 bolo zmenené z $3 na $4.
 
@@ -471,7 +471,7 @@ Odstránené: $6
 S pozdravom,
 
 $2',
-	'userrightsnotif-desc'    => 'Posiela upozornenia na emaily používateľom pri zmene oprávnení',
+	'userrightsnotif-desc' => 'Posiela upozornenia na emaily používateľom pri zmene oprávnení',
 );
 
 /** Seeltersk (Seeltersk)
@@ -479,7 +479,7 @@ $2',
  */
 $messages['stq'] = array(
 	'userrightsnotifysubject' => 'Annerenge fon ju Gruppentouheeregaid fon dän $1',
-	'userrightsnotifybody'    => 'Moin $1
+	'userrightsnotifybody' => 'Moin $1
 
 Dit is ne Information, dät dien Gruppentouheeregaid fon $2 truch $3 an n $4 annerd wuude.
 
@@ -496,7 +496,7 @@ $2',
  */
 $messages['su'] = array(
 	'userrightsnotifysubject' => 'Kaanggotaan Grup robah dina $1',
-	'userrightsnotifybody'    => ':Bagéa, $1
+	'userrightsnotifybody' => ':Bagéa, $1
 
 :Kaanggotaan grup anjeun di $2 geus dirobah ku $3 $4.
 
@@ -506,7 +506,7 @@ $messages['su'] = array(
 :Baktos,
 
 :$2',
-	'userrightsnotif-desc'    => 'Kirim surélék ka pamaké ngeunaan parobahan hak ieu.',
+	'userrightsnotif-desc' => 'Kirim surélék ka pamaké ngeunaan parobahan hak ieu.',
 );
 
 /** Swedish (Svenska)
@@ -514,7 +514,7 @@ $messages['su'] = array(
  */
 $messages['sv'] = array(
 	'userrightsnotifysubject' => 'Ändring av gruppmedlemskap på $1',
-	'userrightsnotifybody'    => 'Hej $1,
+	'userrightsnotifybody' => 'Hej $1,
 
 Det här är ett meddelande om att ditt medlemskap i användargrupper på $2 har ändrats av $3 den $4.
 
@@ -524,10 +524,10 @@ Tog bort: $6
 Hälsningar 
 
 $2',
-	'userrightsnotif-desc'    => 'Skickar e-postmeddelanden till användare när deras behörigheter ändras',
+	'userrightsnotif-desc' => 'Skickar e-postmeddelanden till användare när deras behörigheter ändras',
 );
 
-/** Tajik (Cyrillic) (Тоҷикӣ/tojikī (Cyrillic))
+/** Tajik (Cyrillic) (Тоҷикӣ (Cyrillic))
  * @author Ibrahim
  */
 $messages['tg-cyrl'] = array(
@@ -576,7 +576,7 @@ $2',
  */
 $messages['vi'] = array(
 	'userrightsnotifysubject' => 'Nhóm thành viên đã thay đổi vào $1',
-	'userrightsnotifybody'    => 'Xin chào $1
+	'userrightsnotifybody' => 'Xin chào $1
 
 Xin thông báo với bạn rằng nhóm thành viên của bạn tại $2 đã được $3 thay đổi vào $4.
 

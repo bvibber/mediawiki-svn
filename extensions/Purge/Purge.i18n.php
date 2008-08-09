@@ -19,7 +19,7 @@ $messages['en'] = array(
  * @author Meno25
  */
 $messages['ar'] = array(
-	'purge'      => 'إفراغ الكاش',
+	'purge' => 'إفراغ الكاش',
 	'purge-desc' => 'يضيف لسان إفراغ للكاش في كل الصفحات العادية ويتفادى تحقق الكاش للمستخدمين المجهولين مما يسمح بإفراغ الكاش بشكل سريع',
 );
 
@@ -41,7 +41,7 @@ $messages['ca'] = array(
  * @author Raimond Spekking
  */
 $messages['de'] = array(
-	'purge'      => 'Cache leeren',
+	'purge' => 'Cache leeren',
 	'purge-desc' => 'Ergänzt einen „Purge“-Reiter für alle normalen Seiten zur schnellen Cache-Löschung und umgeht die Purge-Prüfung für anonyme Benutzer',
 );
 
@@ -49,7 +49,7 @@ $messages['de'] = array(
  * @author Grondin
  */
 $messages['fr'] = array(
-	'purge'      => 'purger',
+	'purge' => 'purger',
 	'purge-desc' => 'Ajoute un onglet « Purger » sur toutes les pages normales et active sa sélection pour les utilisateurs anonymes pour une purge rapide du cache.',
 );
 
@@ -58,7 +58,7 @@ $messages['fr'] = array(
  * @author Xosé
  */
 $messages['gl'] = array(
-	'purge'      => 'limpar',
+	'purge' => 'limpar',
 	'purge-desc' => 'Engade unha lapela "Purgar" en todas as páxinas normais e salta a comprobación de purgar para os usuarios anónimos, permitindo unha purga rápida da caché',
 );
 
@@ -73,7 +73,7 @@ $messages['hi'] = array(
  * @author Michawiki
  */
 $messages['hsb'] = array(
-	'purge'      => 'wuprózdnić',
+	'purge' => 'wuprózdnić',
 	'purge-desc' => 'Přidawa rajtark "wuprózdnić" za spěšne wurjedźenje pufrowaka na wšěch normalnych stronach a wobeńdźe kontrolu za anonymnych wužiwarjow',
 );
 
@@ -95,7 +95,7 @@ $messages['is'] = array(
  * @author Pietrodn
  */
 $messages['it'] = array(
-	'purge'      => 'purga',
+	'purge' => 'purga',
 	'purge-desc' => 'Aggiunge un tab "purga" su tutte le pagine normali, e bypassa il controllo di purga per gli utenti anonimi permettendo uno svuotamento rapido della cache',
 );
 
@@ -138,11 +138,11 @@ $messages['lt'] = array(
  * @author Kaustubh
  */
 $messages['mr'] = array(
-	'purge'      => 'स्वच्छ करा (purge)',
+	'purge' => 'स्वच्छ करा (purge)',
 	'purge-desc' => 'सर्व साधारण पानांवर एक स्वच्छतेचा टॅब वाढवितो, व अनामिक सदस्यांसाठी पर्ज तपासणी वगळून लवकर सय स्वच्छ करण्याची सुविधा देतो',
 );
 
-/** Nahuatl (Nahuatl)
+/** Nahuatl (Nāhuatl)
  * @author Fluence
  */
 $messages['nah'] = array(
@@ -150,11 +150,11 @@ $messages['nah'] = array(
 );
 
 /** Dutch (Nederlands)
- * @author Siebrand
  * @author SPQRobin
+ * @author Siebrand
  */
 $messages['nl'] = array(
-	'purge'      => 'cache legen',
+	'purge' => 'cache legen',
 	'purge-desc' => 'Voegt een tabblad "purge" toe op alle normale pagina\'s en laat de purgecontrole weg voor anonieme gebruikers zodat de cache snel gepurged kan worden',
 );
 
@@ -162,7 +162,7 @@ $messages['nl'] = array(
  * @author Jon Harald Søby
  */
 $messages['no'] = array(
-	'purge'      => 'gjenoppfrisk',
+	'purge' => 'gjenoppfrisk',
 	'purge-desc' => 'Legger til en fane for gjenoppfrisking på alle vanlige sider, og slår av gjenoppfriskingssjekken for anonyme brukere, hvilket gjør at mellomlageret kan oppdateres raskere',
 );
 
@@ -170,7 +170,7 @@ $messages['no'] = array(
  * @author Cedric31
  */
 $messages['oc'] = array(
-	'purge'      => 'purgar',
+	'purge' => 'purgar',
 	'purge-desc' => "Apondís un onglet « Purgar » sus totas las paginas normalas e activa sa seleccion pels utilizaires anonims per una purga rapida de l'amagatal.",
 );
 
@@ -178,16 +178,16 @@ $messages['oc'] = array(
  * @author Sp5uhe
  */
 $messages['pl'] = array(
-	'purge'      => 'wyczyść',
+	'purge' => 'wyczyść',
 	'purge-desc' => "Dodaje zakładkę '''wyczyść''' dla wszystkich zwykłych stron oraz omija testowanie stanu czyszczenia dla anonimowych użytkowników aby szybko wyczyścić pamięć podręczną",
 );
 
 /** Portuguese (Português)
- * @author Malafaya
  * @author 555
+ * @author Malafaya
  */
 $messages['pt'] = array(
-	'purge'      => 'purgar',
+	'purge' => 'purgar',
 	'purge-desc' => 'Adiciona uma pestana para purgar em todas as páginas normais, e ultrapassa a verificação de purga para utilizadores anónimos, permitindo um purga rápida da cache',
 );
 
@@ -195,7 +195,7 @@ $messages['pt'] = array(
  * @author Александр Сигачёв
  */
 $messages['ru'] = array(
-	'purge'      => 'очистить',
+	'purge' => 'очистить',
 	'purge-desc' => 'Добавляет закладку очистки на все обычные страницы и пропускает проверку очистку для анонимных участник, позволяющую быстро очищать кэш',
 );
 
@@ -203,7 +203,7 @@ $messages['ru'] = array(
  * @author Helix84
  */
 $messages['sk'] = array(
-	'purge'      => 'prečistiť',
+	'purge' => 'prečistiť',
 	'purge-desc' => 'Pridáva záložku „Prečistiť“ na všetky bežné stránky a obchádza kontrolu prečistenia, čím umožňuje anonymným používateľom rýchle prečistenie vyrovnávacej pamäte',
 );
 
@@ -218,7 +218,7 @@ $messages['stq'] = array(
  * @author M.M.S.
  */
 $messages['sv'] = array(
-	'purge'      => 'rensa',
+	'purge' => 'rensa',
 	'purge-desc' => 'Lägger till en flik för rensning på alla vanliga sidor, och slår av rensning för anonyma användare, vilket gör att cachen kan uppdateras snabbare',
 );
 
@@ -248,7 +248,7 @@ $messages['tr'] = array(
  * @author Vinhtantran
  */
 $messages['vi'] = array(
-	'purge'      => 'làm tươi',
+	'purge' => 'làm tươi',
 	'purge-desc' => 'Thêm một tab tẩy bộ đệm tại những trang bình thường, và bỏ qua kiểm tra tẩy đệm cho những thành viên vô danh cho phép tẩy nhanh bộ đệm',
 );
 

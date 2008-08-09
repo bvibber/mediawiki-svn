@@ -15,11 +15,18 @@ $messages['en'] = array(
 	'randomrootpage-desc'     => '[[Special:Randomrootpage|Special page]] which fetches a random root page',
 );
 
+/** Message documentation (Message documentation)
+ * @author Raymond
+ */
+$messages['qqq'] = array(
+	'randomrootpage-desc' => 'Extension description displayed on [[Special:Version]]',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */
 $messages['ar'] = array(
-	'randomrootpage'      => 'صفحة جذر عشوائية',
+	'randomrootpage' => 'صفحة جذر عشوائية',
 	'randomrootpage-desc' => '[[Special:Randomrootpage|صفحة خاصة]] تعرض صفحة جذر عشوائية',
 );
 
@@ -27,7 +34,7 @@ $messages['ar'] = array(
  * @author DCLXVI
  */
 $messages['bg'] = array(
-	'randomrootpage'      => 'Случайна начална страница',
+	'randomrootpage' => 'Случайна начална страница',
 	'randomrootpage-desc' => '[[Special:Randomrootpage|Специална страница]], която извлича случайна начална страница',
 );
 
@@ -35,7 +42,7 @@ $messages['bg'] = array(
  * @author Hojjat (aka Huji)
  */
 $messages['fa'] = array(
-	'randomrootpage'      => 'صفحهٔ تصادفی سرشاخه',
+	'randomrootpage' => 'صفحهٔ تصادفی سرشاخه',
 	'randomrootpage-desc' => '[[Special:Randomrootpage|صفحهٔ ویژه‌ای]] که به طور تصادفی یکی از صفحه‌های سرشاخه را نشان می دهد',
 );
 
@@ -43,7 +50,7 @@ $messages['fa'] = array(
  * @author Meithal
  */
 $messages['fr'] = array(
-	'randomrootpage'      => 'Page racine aléatoire',
+	'randomrootpage' => 'Page racine aléatoire',
 	'randomrootpage-desc' => '[[Special:Randomrootpage|Page spéciale]] qui va chercher une page racine au hasard',
 );
 
@@ -51,7 +58,7 @@ $messages['fr'] = array(
  * @author Toliño
  */
 $messages['gl'] = array(
-	'randomrootpage'      => 'Páxina raíz ao chou',
+	'randomrootpage' => 'Páxina raíz ao chou',
 	'randomrootpage-desc' => '[[Special:Randomrootpage|Páxina especial]] que procura unha páxina raíz ao chou',
 );
 
@@ -66,7 +73,7 @@ $messages['hi'] = array(
  * @author Michawiki
  */
 $messages['hsb'] = array(
-	'randomrootpage'      => 'Připadna korjenjowa strona',
+	'randomrootpage' => 'Připadna korjenjowa strona',
 	'randomrootpage-desc' => '[[Special:Randomrootpage|Specialna strona]], kotraž připadnu korjenjowu stronu zwobraznja',
 );
 
@@ -74,7 +81,7 @@ $messages['hsb'] = array(
  * @author Dani
  */
 $messages['hu'] = array(
-	'randomrootpage'      => 'Véletlen lap a gyökérből',
+	'randomrootpage' => 'Véletlen lap a gyökérből',
 	'randomrootpage-desc' => '[[Special:Randomrootpage|Speciális lap]], amely egy véletlen lapot jelenít meg a gyökérből',
 );
 
@@ -82,7 +89,7 @@ $messages['hu'] = array(
  * @author Kaustubh
  */
 $messages['mr'] = array(
-	'randomrootpage'      => 'अविशिष्ट मूळ पान',
+	'randomrootpage' => 'अविशिष्ट मूळ पान',
 	'randomrootpage-desc' => 'अविशिष्ट मूळ पान मिळविण्यासाठीचे [[Special:Randomrootpage|विशेष पान]]',
 );
 
@@ -90,7 +97,7 @@ $messages['mr'] = array(
  * @author Siebrand
  */
 $messages['nl'] = array(
-	'randomrootpage'      => 'Willekeurige hoofdpagina',
+	'randomrootpage' => 'Willekeurige hoofdpagina',
 	'randomrootpage-desc' => '[[Special:Randomrootpage|Speciale pagina]] die een willekeurige hoofdpagina weergeeft',
 );
 
@@ -98,7 +105,7 @@ $messages['nl'] = array(
  * @author Jon Harald Søby
  */
 $messages['no'] = array(
-	'randomrootpage'      => 'Tilfeldig rotside',
+	'randomrootpage' => 'Tilfeldig rotside',
 	'randomrootpage-desc' => '[[Special:Randomrootpage|Spesialside]] som henter en tilfeldig rotside',
 );
 
@@ -106,7 +113,7 @@ $messages['no'] = array(
  * @author Cedric31
  */
 $messages['oc'] = array(
-	'randomrootpage'      => 'Pagina raiç aleatòria',
+	'randomrootpage' => 'Pagina raiç aleatòria',
 	'randomrootpage-desc' => "[[Special:Randomrootpage|Pagina especiala]] que va quérre una pagina raiç a l'azard",
 );
 
@@ -114,7 +121,7 @@ $messages['oc'] = array(
  * @author Александр Сигачёв
  */
 $messages['ru'] = array(
-	'randomrootpage'      => 'Случайная корневая страница',
+	'randomrootpage' => 'Случайная корневая страница',
 	'randomrootpage-desc' => '[[Special:Randomrootpage|Служебная страница]], выбирающая случайную корневую страницу',
 );
 
@@ -122,7 +129,7 @@ $messages['ru'] = array(
  * @author Helix84
  */
 $messages['sk'] = array(
-	'randomrootpage'      => 'Náhodná koreňová stránka',
+	'randomrootpage' => 'Náhodná koreňová stránka',
 	'randomrootpage-desc' => '[[Special:Randomrootpage|Špeciálna stránka]], ktorá zobrazuje náhodnú koreňovú stránku',
 );
 
@@ -130,11 +137,11 @@ $messages['sk'] = array(
  * @author M.M.S.
  */
 $messages['sv'] = array(
-	'randomrootpage'      => 'Slumprotsida',
+	'randomrootpage' => 'Slumprotsida',
 	'randomrootpage-desc' => '[[Special:Randomrootpage|Specialsida]] som hämtar en slumpmässig rotsida',
 );
 
-/** Tajik (Cyrillic) (Тоҷикӣ/tojikī (Cyrillic))
+/** Tajik (Cyrillic) (Тоҷикӣ (Cyrillic))
  * @author Ibrahim
  */
 $messages['tg-cyrl'] = array(
@@ -145,7 +152,7 @@ $messages['tg-cyrl'] = array(
  * @author Vinhtantran
  */
 $messages['vi'] = array(
-	'randomrootpage'      => 'Trang gốc ngẫu nhiên',
+	'randomrootpage' => 'Trang gốc ngẫu nhiên',
 	'randomrootpage-desc' => '[[Special:Randomrootpage|Trang đặc biệt]] để truy xuất một trang gốc ngẫu nhiên',
 );
 

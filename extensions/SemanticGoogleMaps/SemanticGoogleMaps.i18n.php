@@ -21,7 +21,7 @@ $messages['en'] = array(
  */
 $messages['ar'] = array(
 	'semanticgooglemaps_lookupcoordinates' => 'ابحث عن الإحداثيات',
-	'semanticgooglemaps-desc'              => 'يسمح للمستخدمين بإضافة خرائط جوجل لصفحات الويكي بالاعتماد على بيانات هيكلية',
+	'semanticgooglemaps-desc' => 'يسمح للمستخدمين بإضافة خرائط جوجل لصفحات الويكي بالاعتماد على بيانات هيكلية',
 );
 
 /** German (Deutsch)
@@ -29,7 +29,7 @@ $messages['ar'] = array(
  */
 $messages['de'] = array(
 	'semanticgooglemaps_lookupcoordinates' => 'Koordinaten nachschlagen',
-	'semanticgooglemaps-desc'              => 'Bietet die Möglichkeit auf Basis von strukturierten Daten Google Maps in das Wiki einzubinden',
+	'semanticgooglemaps-desc' => 'Bietet die Möglichkeit auf Basis von strukturierten Daten Google Maps in das Wiki einzubinden',
 );
 
 /** Esperanto (Esperanto)
@@ -37,7 +37,7 @@ $messages['de'] = array(
  */
 $messages['eo'] = array(
 	'semanticgooglemaps_lookupcoordinates' => 'Rigardi koordinatojn',
-	'semanticgooglemaps-desc'              => 'Permesas al uzantoj por aldoni Guglo-Mapojn al vikipaĝojn laŭ strukturaj datenoj.',
+	'semanticgooglemaps-desc' => 'Permesas al uzantoj por aldoni Guglo-Mapojn al vikipaĝojn laŭ strukturaj datenoj.',
 );
 
 /** French (Français)
@@ -45,7 +45,7 @@ $messages['eo'] = array(
  */
 $messages['fr'] = array(
 	'semanticgooglemaps_lookupcoordinates' => 'Estimer les coordonnées',
-	'semanticgooglemaps-desc'              => 'Permet aux utilisateurs d’ajouter Google Maps sur des pages wiki sur la base de données structurées',
+	'semanticgooglemaps-desc' => 'Permet aux utilisateurs d’ajouter Google Maps sur des pages wiki sur la base de données structurées',
 );
 
 /** Galician (Galego)
@@ -53,7 +53,7 @@ $messages['fr'] = array(
  */
 $messages['gl'] = array(
 	'semanticgooglemaps_lookupcoordinates' => 'Ver as coordenadas',
-	'semanticgooglemaps-desc'              => 'Permite aos usuarios engadir Mapas do Google a páxinas do wiki baseándose en datos estruturados',
+	'semanticgooglemaps-desc' => 'Permite aos usuarios engadir Mapas do Google a páxinas do wiki baseándose en datos estruturados',
 );
 
 /** Dutch (Nederlands)
@@ -61,7 +61,7 @@ $messages['gl'] = array(
  */
 $messages['nl'] = array(
 	'semanticgooglemaps_lookupcoordinates' => 'Coördinaten opzoeken',
-	'semanticgooglemaps-desc'              => "Staat gebruikers toe Google Maps toe te voegen aan wikipagina's gebaseerd op basis van gestructureerde gegevens",
+	'semanticgooglemaps-desc' => "Staat gebruikers toe Google Maps toe te voegen aan wikipagina's gebaseerd op basis van gestructureerde gegevens",
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
@@ -69,7 +69,7 @@ $messages['nl'] = array(
  */
 $messages['no'] = array(
 	'semanticgooglemaps_lookupcoordinates' => 'Sjekk koordinater',
-	'semanticgooglemaps-desc'              => 'Lar brukere legge til Google Maps på wikisider, basert på strukturert data',
+	'semanticgooglemaps-desc' => 'Lar brukere legge til Google Maps på wikisider, basert på strukturert data',
 );
 
 /** Occitan (Occitan)
@@ -77,7 +77,7 @@ $messages['no'] = array(
  */
 $messages['oc'] = array(
 	'semanticgooglemaps_lookupcoordinates' => 'Estimar las coordenadas',
-	'semanticgooglemaps-desc'              => 'Permet als utilizaires d’apondre Google Maps sus de paginas wiki sus la banca de donadas estructuradas',
+	'semanticgooglemaps-desc' => 'Permet als utilizaires d’apondre Google Maps sus de paginas wiki sus la banca de donadas estructuradas',
 );
 
 /** Slovak (Slovenčina)
@@ -85,7 +85,7 @@ $messages['oc'] = array(
  */
 $messages['sk'] = array(
 	'semanticgooglemaps_lookupcoordinates' => 'Vyhľadať súradnice',
-	'semanticgooglemaps-desc'              => 'Umožňuje používateľom pridať na wiki stránky Google Maps na základe štruktúrovaných údajov',
+	'semanticgooglemaps-desc' => 'Umožňuje používateľom pridať na wiki stránky Google Maps na základe štruktúrovaných údajov',
 );
 
 /** Swedish (Svenska)
@@ -93,6 +93,6 @@ $messages['sk'] = array(
  */
 $messages['sv'] = array(
 	'semanticgooglemaps_lookupcoordinates' => 'Kolla upp koordinater',
-	'semanticgooglemaps-desc'              => 'Tillåter användare att lägga Google Maps till wikibaserade sidor baserade på strukturerad data',
+	'semanticgooglemaps-desc' => 'Tillåter användare att lägga Google Maps till wikibaserade sidor baserade på strukturerad data',
 );
 

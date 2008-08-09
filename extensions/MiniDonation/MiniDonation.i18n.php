@@ -23,7 +23,7 @@ $messages['an'] = array(
  * @author Meno25
  */
 $messages['ar'] = array(
-	'donationform-desc'   => 'يضيف وسم <tt>&lt;donateform&gt;</tt> لدعم التبرعات من خلال باي بال',
+	'donationform-desc' => 'يضيف وسم <tt>&lt;donateform&gt;</tt> لدعم التبرعات من خلال باي بال',
 	'donationform-submit' => 'تبرع من خلال باي بال',
 );
 
@@ -35,11 +35,11 @@ $messages['bcl'] = array(
 );
 
 /** Bulgarian (Български)
- * @author Spiritia
  * @author DCLXVI
+ * @author Spiritia
  */
 $messages['bg'] = array(
-	'donationform-desc'   => 'Добавя етикет <tt>&lt;donateform&gt;</tt> за дарения чрез PayPal',
+	'donationform-desc' => 'Добавя етикет <tt>&lt;donateform&gt;</tt> за дарения чрез PayPal',
 	'donationform-submit' => 'Направете дарение чрез PayPal',
 );
 
@@ -85,16 +85,16 @@ $messages['fi'] = array(
  * @author Grondin
  */
 $messages['fr'] = array(
-	'donationform-desc'   => 'Ajoute la balise <tt>&lt;donateform&gt;</tt> pour permettre les dons au moyen de PayPal',
+	'donationform-desc' => 'Ajoute la balise <tt>&lt;donateform&gt;</tt> pour permettre les dons au moyen de PayPal',
 	'donationform-submit' => 'Faire un don avec PayPal',
 );
 
 /** Galician (Galego)
- * @author Xosé
  * @author Toliño
+ * @author Xosé
  */
 $messages['gl'] = array(
-	'donationform-desc'   => 'Engade a etiqueta <tt>&lt;donateform&gt;</tt> para soportar as doazóns mediante PayPal',
+	'donationform-desc' => 'Engade a etiqueta <tt>&lt;donateform&gt;</tt> para soportar as doazóns mediante PayPal',
 	'donationform-submit' => 'Doar mediante PayPal',
 );
 
@@ -131,7 +131,7 @@ $messages['id'] = array(
  * @author Darth Kule
  */
 $messages['it'] = array(
-	'donationform-desc'   => 'Aggiunge un tag <tt>&lt;donateform&gt;</tt> per sostenere le donazioni attraverso PayPal',
+	'donationform-desc' => 'Aggiunge un tag <tt>&lt;donateform&gt;</tt> per sostenere le donazioni attraverso PayPal',
 	'donationform-submit' => 'Donazione mediante PayPal',
 );
 
@@ -200,7 +200,7 @@ $messages['mr'] = array(
  * @author Siebrand
  */
 $messages['nl'] = array(
-	'donationform-desc'   => 'Voegt de tag <tt>&lt;donateform&gt;</tt> voor ondersteuning van donaties via PayPal',
+	'donationform-desc' => 'Voegt de tag <tt>&lt;donateform&gt;</tt> voor ondersteuning van donaties via PayPal',
 	'donationform-submit' => 'Via PayPal doneren',
 );
 
@@ -208,7 +208,7 @@ $messages['nl'] = array(
  * @author Jon Harald Søby
  */
 $messages['no'] = array(
-	'donationform-desc'   => 'Legger til taggen <tt>&lt;donateform&gt;</tt> for donasjoner via PayPal',
+	'donationform-desc' => 'Legger til taggen <tt>&lt;donateform&gt;</tt> for donasjoner via PayPal',
 	'donationform-submit' => 'Doner med PayPal',
 );
 
@@ -216,7 +216,7 @@ $messages['no'] = array(
  * @author Cedric31
  */
 $messages['oc'] = array(
-	'donationform-desc'   => "Apondís la balisa <tt>&lt;donateform&gt;</tt> per permetre los dons amb l'ajuda de PayPal",
+	'donationform-desc' => "Apondís la balisa <tt>&lt;donateform&gt;</tt> per permetre los dons amb l'ajuda de PayPal",
 	'donationform-submit' => 'Far un don amb PayPal',
 );
 
@@ -266,7 +266,7 @@ $messages['sdc'] = array(
  * @author Helix84
  */
 $messages['sk'] = array(
-	'donationform-desc'   => 'Pridáva značku <tt>&lt;donateform&gt;</tt> pre podporu platieb prostredníctvom PayPal',
+	'donationform-desc' => 'Pridáva značku <tt>&lt;donateform&gt;</tt> pre podporu platieb prostredníctvom PayPal',
 	'donationform-submit' => 'Darujte pomocou PayPal',
 );
 
@@ -288,11 +288,11 @@ $messages['stq'] = array(
 );
 
 /** Swedish (Svenska)
- * @author M.M.S.
  * @author Boivie
+ * @author M.M.S.
  */
 $messages['sv'] = array(
-	'donationform-desc'   => 'Lägger till en tagg <tt>&lt;donateform&gt;</tt> för donationer via PayPal',
+	'donationform-desc' => 'Lägger till en tagg <tt>&lt;donateform&gt;</tt> för donationer via PayPal',
 	'donationform-submit' => 'Donera via PayPal',
 );
 
@@ -303,7 +303,7 @@ $messages['te'] = array(
 	'donationform-submit' => 'పేపాల్ ద్వారా విరాళమివ్వండి',
 );
 
-/** Tajik (Cyrillic) (Тоҷикӣ/tojikī (Cyrillic))
+/** Tajik (Cyrillic) (Тоҷикӣ (Cyrillic))
  * @author Ibrahim
  */
 $messages['tg-cyrl'] = array(

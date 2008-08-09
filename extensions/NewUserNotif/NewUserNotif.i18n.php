@@ -18,13 +18,24 @@ $messages['en'] = array(
 A new user account, $2, has been created on $3 at $4.",
 );
 
+/** Message documentation (Message documentation) */
+$messages['qqq'] = array(
+	'newusernotifsubj' => 'This message contains the subject line for the email.
+$1 is replaced with the wiki site name.',
+	'newusernotifbody' => "This file contains the body text for the email.
+$1 is replaced with the username of the recipient;
+$2 is replaced with the username of the new user account;
+$3 is replaced with the wiki site;
+$4 is replaced with the time and date of the account's creation.",
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */
 $messages['ar'] = array(
-	'newusernotifsubj'  => 'إخطار مستخدم جديد ل$1',
+	'newusernotifsubj' => 'إخطار مستخدم جديد ل$1',
 	'newusernotif-desc' => 'يرسل إخطار بريد إلكتروني عندما يتم إنشاء حسابات مستخدمين',
-	'newusernotifbody'  => 'مرحبا يا $1،
+	'newusernotifbody' => 'مرحبا يا $1،
 
 حساب مستخدم جديد، $2، تم إنشاؤه على $3 في $4.',
 );
@@ -43,9 +54,9 @@ $2 warzafa favesikpata su zo redur koe $3 ko $4.',
  * @author DCLXVI
  */
 $messages['bg'] = array(
-	'newusernotifsubj'  => 'Съобщение за нов потребител в $1',
+	'newusernotifsubj' => 'Съобщение за нов потребител в $1',
 	'newusernotif-desc' => 'Изпраща оповестяване на електронна поща при създаване на нова потребителска сметка',
-	'newusernotifbody'  => 'Здравейте $1,
+	'newusernotifbody' => 'Здравейте $1,
 
 В $3 беше регистрирана нова потребителска сметка, $2, на $4.',
 );
@@ -54,9 +65,9 @@ $messages['bg'] = array(
  * @author Raimond Spekking
  */
 $messages['de'] = array(
-	'newusernotifsubj'  => 'Benachrichtung für $1 über die Einrichtung eines neuen Benutzerskontos',
+	'newusernotifsubj' => 'Benachrichtung für $1 über die Einrichtung eines neuen Benutzerskontos',
 	'newusernotif-desc' => 'Versendet E-Mail-Benachrichtigungen bei Erstellung neuer Benutzerkonten',
-	'newusernotifbody'  => 'Hallo $1,
+	'newusernotifbody' => 'Hallo $1,
 
 Ein neues Benutzerkonto, $2, wurde am $4 auf $3 angelegt.',
 );
@@ -76,9 +87,9 @@ Nova konto por uzanto, $2, estis kreita je $3 $4.',
  * @author Nike
  */
 $messages['fi'] = array(
-	'newusernotifsubj'  => 'Tiedote sivuston uudelle käyttäjälle $1',
+	'newusernotifsubj' => 'Tiedote sivuston uudelle käyttäjälle $1',
 	'newusernotif-desc' => 'Lähettää sähköpostiviestin, kun käyttäjätunnukset on luotu',
-	'newusernotifbody'  => 'Tervehdys $1,
+	'newusernotifbody' => 'Tervehdys $1,
 
 Uusi käyttäjätunnus $2 on luotu $3 $4.',
 );
@@ -87,9 +98,9 @@ Uusi käyttäjätunnus $2 on luotu $3 $4.',
  * @author Grondin
  */
 $messages['fr'] = array(
-	'newusernotifsubj'  => 'Notification d’un nouvel utilisateur pour $1',
+	'newusernotifsubj' => 'Notification d’un nouvel utilisateur pour $1',
 	'newusernotif-desc' => 'Envoie une notification par courriel quand les comptes utilisateurs sont créés',
-	'newusernotifbody'  => 'Bonjour $1,
+	'newusernotifbody' => 'Bonjour $1,
 
 Un nouveau compte utilisateur, $2, a été créé sur $3 le $4.',
 );
@@ -99,9 +110,9 @@ Un nouveau compte utilisateur, $2, a été créé sur $3 le $4.',
  * @author Toliño
  */
 $messages['gl'] = array(
-	'newusernotifsubj'  => 'Notificación de novo usuario para $1',
+	'newusernotifsubj' => 'Notificación de novo usuario para $1',
 	'newusernotif-desc' => 'Envía unha notificación por correo electrónico cando se crean contas de usuario',
-	'newusernotifbody'  => 'Ola $1,
+	'newusernotifbody' => 'Ola $1,
 
 Unha nova conta de usuario, $2, foi creada sobre $3 en $4.',
 );
@@ -110,9 +121,9 @@ Unha nova conta de usuario, $2, foi creada sobre $3 en $4.',
  * @author Kaustubh
  */
 $messages['hi'] = array(
-	'newusernotifsubj'  => '$1 का नये सदस्योंका निर्देशन',
+	'newusernotifsubj' => '$1 का नये सदस्योंका निर्देशन',
 	'newusernotif-desc' => 'नया खाता खुलने के बाद इ-मेल भेजता हैं',
-	'newusernotifbody'  => 'नमस्कार $1,
+	'newusernotifbody' => 'नमस्कार $1,
 
 $3 पर एक नया सदस्य, $2, $4 को पंजिकृत हुआ हैं।',
 );
@@ -121,9 +132,9 @@ $3 पर एक नया सदस्य, $2, $4 को पंजिकृत 
  * @author Michawiki
  */
 $messages['hsb'] = array(
-	'newusernotifsubj'  => 'Zdźělenka za noweho wužiwarja $1',
+	'newusernotifsubj' => 'Zdźělenka za noweho wužiwarja $1',
 	'newusernotif-desc' => 'Sćele e-mejlowe zdźělenje, hdyž so wužiwarske konta wutworja',
-	'newusernotifbody'  => 'Witaj $1,
+	'newusernotifbody' => 'Witaj $1,
 
 Nowe wužiwarske konto, $2, bu dnja $4 na $3 wutworjene.',
 );
@@ -153,9 +164,9 @@ $3 կայքում ստեղծվել է նոր մասնակցային հաշիվ՝
  * @author Darth Kule
  */
 $messages['it'] = array(
-	'newusernotifsubj'  => 'Notifica nuovo utente per $1',
+	'newusernotifsubj' => 'Notifica nuovo utente per $1',
 	'newusernotif-desc' => 'Invia una e-mail di notifica quando vengono creati nuovi account',
-	'newusernotifbody'  => 'Ciao $1,
+	'newusernotifbody' => 'Ciao $1,
 
 Un nuovo account, $2, è stato creato su $3 il $4.',
 );
@@ -173,9 +184,9 @@ $4、$3上に$2でユーザーアカウントを作成しました。',
  * @author Meursault2004
  */
 $messages['jv'] = array(
-	'newusernotifsubj'  => 'Notifikasi panganggo anyar kanggo $1',
+	'newusernotifsubj' => 'Notifikasi panganggo anyar kanggo $1',
 	'newusernotif-desc' => 'Kirim notifikasi e-mail menawa rékening-rékening panganggo digawé',
-	'newusernotifbody'  => 'Salam $1,
+	'newusernotifbody' => 'Salam $1,
 
 Sawijining rékening panganggo, $2, wis digawé ing $3 jam $4.',
 );
@@ -195,9 +206,9 @@ $messages['km'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
-	'newusernotifsubj'  => 'Informatioun iwwer e neie Benotzer op $1',
+	'newusernotifsubj' => 'Informatioun iwwer e neie Benotzer op $1',
 	'newusernotif-desc' => 'Schéckt eng Informatioun per e-Mail wann e neie Benotzerkont opgemaach gëtt',
-	'newusernotifbody'  => 'Bonjour $1,
+	'newusernotifbody' => 'Bonjour $1,
 
 E neie Benotzerkont, $2, gouf op $3 de(n) $4 opgemaach.',
 );
@@ -206,9 +217,9 @@ E neie Benotzerkont, $2, gouf op $3 de(n) $4 opgemaach.',
  * @author Shijualex
  */
 $messages['ml'] = array(
-	'newusernotifsubj'  => '$1 സം‌രംഭത്തിനു വേണ്ടിയുള്ള ഉപയോക്തൃഅറിയിപ്പ് സംവിധാനം.',
+	'newusernotifsubj' => '$1 സം‌രംഭത്തിനു വേണ്ടിയുള്ള ഉപയോക്തൃഅറിയിപ്പ് സംവിധാനം.',
 	'newusernotif-desc' => 'ഉപഭോക്തൃഅക്കൗണ്ടുകള്‍ ഉണ്ടാക്കി കഴിയുമ്പോള്‍ ഇമെയില്‍ വിജ്ഞാപനം അയക്കുന്നു',
-	'newusernotifbody'  => 'പ്രിയ $1,
+	'newusernotifbody' => 'പ്രിയ $1,
 
 $2 എന്ന ഒരു പുതിയ ഉപയോക്തൃഅക്കൗണ്ട്, $3 സം‌രംഭത്തില്‍ $4നു  സൃഷ്ടിക്കപ്പെട്ടിരിക്കുന്നു.',
 );
@@ -217,21 +228,21 @@ $2 എന്ന ഒരു പുതിയ ഉപയോക്തൃഅക്ക�
  * @author Kaustubh
  */
 $messages['mr'] = array(
-	'newusernotifsubj'  => '$1 साठीचे नवीन सदस्य निर्देशन',
+	'newusernotifsubj' => '$1 साठीचे नवीन सदस्य निर्देशन',
 	'newusernotif-desc' => 'नवीन सदस्य नोंदणी झाल्यानंतर इ-मेल पाठविते',
-	'newusernotifbody'  => 'नमस्कार $1,
+	'newusernotifbody' => 'नमस्कार $1,
 
 $3 वर एक नवीन सदस्य नोंदणी, $2, $4 ला झालेली आहे.',
 );
 
 /** Dutch (Nederlands)
- * @author Siebrand
  * @author SPQRobin
+ * @author Siebrand
  */
 $messages['nl'] = array(
-	'newusernotifsubj'  => 'Melding van een nieuwe gebruiker op $1',
+	'newusernotifsubj' => 'Melding van een nieuwe gebruiker op $1',
 	'newusernotif-desc' => 'Stuurt een e-mail als nieuwe gebruikers worden aangemaakt',
-	'newusernotifbody'  => 'Hallo $1.
+	'newusernotifbody' => 'Hallo $1.
 
 Er is een nieuwe gebruiker $2 aangemaakt om $3 op $4.',
 );
@@ -240,18 +251,18 @@ Er is een nieuwe gebruiker $2 aangemaakt om $3 op $4.',
  * @author Jon Harald Søby
  */
 $messages['no'] = array(
-	'newusernotifsubj'  => 'Beskjed om ny bruker for $1',
+	'newusernotifsubj' => 'Beskjed om ny bruker for $1',
 	'newusernotif-desc' => 'Sender beskjed på e-post når kontoer opprettes',
-	'newusernotifbody'  => 'Hei, $1. En ny brukerkonto, $2, ble opprettet på $3 $4.',
+	'newusernotifbody' => 'Hei, $1. En ny brukerkonto, $2, ble opprettet på $3 $4.',
 );
 
 /** Occitan (Occitan)
  * @author Cedric31
  */
 $messages['oc'] = array(
-	'newusernotifsubj'  => 'Notificacion d’un utilizaire novèl per $1',
+	'newusernotifsubj' => 'Notificacion d’un utilizaire novèl per $1',
 	'newusernotif-desc' => "Manda una notificacion per corrièr electronic quand los comptes d'utilizaires son creats",
-	'newusernotifbody'  => "Adissiatz $1, Un compte novèl d'utilizaire, $2, es estat creat sus $3 lo $4.",
+	'newusernotifbody' => "Adissiatz $1, Un compte novèl d'utilizaire, $2, es estat creat sus $3 lo $4.",
 );
 
 /** Polish (Polski)
@@ -284,9 +295,9 @@ $messages['ps'] = array(
  * @author Malafaya
  */
 $messages['pt'] = array(
-	'newusernotifsubj'  => 'Nova Notificação de Utilizador para $1',
+	'newusernotifsubj' => 'Nova Notificação de Utilizador para $1',
 	'newusernotif-desc' => 'Envia uma notificação por e-mail quando uma conta de utilizador é criada',
-	'newusernotifbody'  => 'Olá, $1,
+	'newusernotifbody' => 'Olá, $1,
 
 Uma nova conta de utilizador, $2, foi criada em $3 em $4.',
 );
@@ -295,9 +306,9 @@ Uma nova conta de utilizador, $2, foi criada em $3 em $4.',
  * @author Александр Сигачёв
  */
 $messages['ru'] = array(
-	'newusernotifsubj'  => 'Уведомление о новом участнике $1',
+	'newusernotifsubj' => 'Уведомление о новом участнике $1',
 	'newusernotif-desc' => 'Отправляет уведомление по электронной почте, когда регистрируется новый участник',
-	'newusernotifbody'  => 'Привет, $1.
+	'newusernotifbody' => 'Привет, $1.
 
 В проекте $3 в $4 была создана новая учётная запись — $2.',
 );
@@ -306,9 +317,9 @@ $messages['ru'] = array(
  * @author Helix84
  */
 $messages['sk'] = array(
-	'newusernotifsubj'  => 'Upozornenie na nových používateľov pre $1',
+	'newusernotifsubj' => 'Upozornenie na nových používateľov pre $1',
 	'newusernotif-desc' => 'Posiela upozornenia emailom pri vytvorení používateľských účtov',
-	'newusernotifbody'  => 'Ahoj $1,
+	'newusernotifbody' => 'Ahoj $1,
 
 $3 na $4 bol vytvorený nový používateľský účet $2.',
 );
@@ -336,9 +347,9 @@ N näi Benutserkonto, $2, wuude ap n $4 ap $3 anlaid.',
  * @author M.M.S.
  */
 $messages['sv'] = array(
-	'newusernotifsubj'  => 'Meddelande om ny användare för $1',
+	'newusernotifsubj' => 'Meddelande om ny användare för $1',
 	'newusernotif-desc' => 'Skickar ett meddelande genom e-post när konton skapas',
-	'newusernotifbody'  => 'Hej $1,
+	'newusernotifbody' => 'Hej $1,
 
 Ett nytt användar konto, $2, har skapats på $3 som $4.',
 );
@@ -362,13 +373,13 @@ $messages['tet'] = array(
 uza-na'in foun, $2, registrar tiha iha $3 iha loron $4.",
 );
 
-/** Tajik (Cyrillic) (Тоҷикӣ/tojikī (Cyrillic))
+/** Tajik (Cyrillic) (Тоҷикӣ (Cyrillic))
  * @author Ibrahim
  */
 $messages['tg-cyrl'] = array(
-	'newusernotifsubj'  => 'Огоҳсозии корбарии ҷадид барои $1',
+	'newusernotifsubj' => 'Огоҳсозии корбарии ҷадид барои $1',
 	'newusernotif-desc' => 'Дар ҳолат эҷод шудани ҳисобҳои корбарӣ паёми огоҳсозӣ тариқи почтаи электронӣ бифирист.',
-	'newusernotifbody'  => 'Салом $1,
+	'newusernotifbody' => 'Салом $1,
 
 Ҳисоби корбарии ҷадид, $2, дар $3 дар $4 эҷод шуд.',
 );
@@ -386,9 +397,9 @@ Yeni kullanıcı hesabı, $2,$3 üzerinde $4'te oluşturuldu.",
  * @author Candalua
  */
 $messages['vec'] = array(
-	'newusernotifsubj'  => 'Nova notifica utente par $1',
+	'newusernotifsubj' => 'Nova notifica utente par $1',
 	'newusernotif-desc' => 'Manda notifica par e-mail quando xe creà un account utente',
-	'newusernotifbody'  => 'Ciao $1,
+	'newusernotifbody' => 'Ciao $1,
 
 Un novo account utente, $2, el xe stà creà su $3 in data $4.',
 );
@@ -397,9 +408,9 @@ Un novo account utente, $2, el xe stà creà su $3 in data $4.',
  * @author Vinhtantran
  */
 $messages['vi'] = array(
-	'newusernotifsubj'  => 'Thông báo thành viên mới cho $1',
+	'newusernotifsubj' => 'Thông báo thành viên mới cho $1',
 	'newusernotif-desc' => 'Gửi thông báo bằng e-mail khi có tài khoản thành viên được tạo',
-	'newusernotifbody'  => 'Xin chào $1,
+	'newusernotifbody' => 'Xin chào $1,
 
 Một tài khoản thành viên mới, $2, đã được tạo ra trên $3 lúc $4.',
 );

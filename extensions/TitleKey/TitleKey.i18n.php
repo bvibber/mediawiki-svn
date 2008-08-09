@@ -14,6 +14,13 @@ $messages['en'] = array(
 	'titlekey-desc' => 'Title prefix search suggestion backend',
 );
 
+/** Message documentation (Message documentation)
+ * @author Mormegil
+ */
+$messages['qqq'] = array(
+	'titlekey-desc' => 'Description of the [[mw:Extension:TitleKey|TitleKey extension]], providing a case-insensitive title prefix search plugin',
+);
+
 /** Aragonese (Aragonés)
  * @author Juanpabl
  */

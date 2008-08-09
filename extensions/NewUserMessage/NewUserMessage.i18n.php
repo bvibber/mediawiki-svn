@@ -40,8 +40,8 @@ $messages['bg'] = array(
 );
 
 /** Czech (Česky)
- * @author Matěj Grabovský
  * @author Li-sung
+ * @author Matěj Grabovský
  */
 $messages['cs'] = array(
 	'newusermessage-desc' => 'Přidává zprávu na diskusní stránky nově vytvořených uživatelů',
@@ -232,8 +232,8 @@ $messages['su'] = array(
 );
 
 /** Swedish (Svenska)
- * @author M.M.S.
  * @author Lejonel
+ * @author M.M.S.
  */
 $messages['sv'] = array(
 	'newusermessage-desc' => 'Lägger ett meddelande på nyligen registrerade användares diskussionssidor',

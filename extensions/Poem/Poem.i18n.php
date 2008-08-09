@@ -11,6 +11,13 @@ $messages['en'] = array(
 	'poem-desc' => 'Adds <tt>&lt;poem&gt;</tt> tag for poem formatting',
 );
 
+/** Message documentation (Message documentation)
+ * @author Raymond
+ */
+$messages['qqq'] = array(
+	'poem-desc' => 'Extension description displayed on [[Special:Version]]',
+);
+
 /** Afrikaans (Afrikaans)
  * @author Naudefj
  */
@@ -352,7 +359,7 @@ $messages['te'] = array(
 	'poem-desc' => 'పద్యాల ఫార్మాటింగుకై <tt>&lt;poem&gt;</tt> అనే టాగుని చేరుస్తుంది',
 );
 
-/** Tajik (Cyrillic) (Тоҷикӣ/tojikī (Cyrillic))
+/** Tajik (Cyrillic) (Тоҷикӣ (Cyrillic))
  * @author Ibrahim
  */
 $messages['tg-cyrl'] = array(

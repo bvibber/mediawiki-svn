@@ -19,15 +19,15 @@ $messages['en'] = array(
  */
 $messages['ar'] = array(
 	'tidy-desc' => 'يضيف لسان تيدي أو أنتيدي (معتمدا على $wgUseTidy) في الصفحات العادية سامحا بتجاوز إعدادات تيدي HTML العامة لرؤية واحدة',
-	'tidy'      => 'ترتيب',
-	'untidy'    => 'لا ترتيب',
+	'tidy' => 'ترتيب',
+	'untidy' => 'لا ترتيب',
 );
 
 /** German (Deutsch)
  * @author Raimond Spekking
  */
 $messages['de'] = array(
-	'tidy'   => 'Ordnen',
+	'tidy' => 'Ordnen',
 	'untidy' => 'Nicht ordnen',
 );
 
@@ -36,8 +36,8 @@ $messages['de'] = array(
  */
 $messages['eo'] = array(
 	'tidy-desc' => "Aldonas langeton 'ordigi' aŭ 'malordigi' (depende de \$wgUseTidy) en normaj paĝoj por anstataŭigi la ĝenerala HTML ordigado por unuopa vido",
-	'tidy'      => 'Ordigi',
-	'untidy'    => 'Malordigi',
+	'tidy' => 'Ordigi',
+	'untidy' => 'Malordigi',
 );
 
 /** French (Français)
@@ -45,8 +45,8 @@ $messages['eo'] = array(
  */
 $messages['fr'] = array(
 	'tidy-desc' => 'Ajoute une tabulation rangée ou non rangée (en fonction de $wgUseTidy) sur des pages normalles qui permets de passer outre les paramètres globaux HTML rangés, pour une vue simple',
-	'tidy'      => 'Classer',
-	'untidy'    => 'Déclasser',
+	'tidy' => 'Classer',
+	'untidy' => 'Déclasser',
 );
 
 /** Galician (Galego)
@@ -55,15 +55,15 @@ $messages['fr'] = array(
  */
 $messages['gl'] = array(
 	'tidy-desc' => 'Engade unha lapela "ordenado" ou "desordenado" (dependendo de $wgUseTidy) en páxinas normais permitindo que se ignoren as configuracións globais de HTML ordenadas para unha vista sinxela',
-	'tidy'      => 'Ordenado',
-	'untidy'    => 'Desordenado',
+	'tidy' => 'Ordenado',
+	'untidy' => 'Desordenado',
 );
 
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */
 $messages['hsb'] = array(
-	'tidy'   => 'Porjadny',
+	'tidy' => 'Porjadny',
 	'untidy' => 'Njeporjadny',
 );
 
@@ -71,7 +71,7 @@ $messages['hsb'] = array(
  * @author Meursault2004
  */
 $messages['jv'] = array(
-	'tidy'   => 'Rapèkna',
+	'tidy' => 'Rapèkna',
 	'untidy' => 'Batal rapèkna',
 );
 
@@ -79,7 +79,7 @@ $messages['jv'] = array(
  * @author គីមស៊្រុន
  */
 $messages['km'] = array(
-	'tidy'   => 'មានសណ្ដាប់ធ្នាប់',
+	'tidy' => 'មានសណ្ដាប់ធ្នាប់',
 	'untidy' => 'គ្មានសណ្ដាប់ធ្នាប់',
 );
 
@@ -87,7 +87,7 @@ $messages['km'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
-	'tidy'   => 'Klasséieren',
+	'tidy' => 'Klasséieren',
 	'untidy' => 'Net klasséieren',
 );
 
@@ -95,7 +95,7 @@ $messages['lb'] = array(
  * @author Mahitgar
  */
 $messages['mr'] = array(
-	'tidy'   => 'नेटके',
+	'tidy' => 'नेटके',
 	'untidy' => 'अव्यवस्थीत',
 );
 
@@ -104,8 +104,8 @@ $messages['mr'] = array(
  */
 $messages['nl'] = array(
 	'tidy-desc' => 'Voegt een tab "tidy" of "untidy" toe (afhankelijk van $wgUseTidy) op normale pagina\'s om de globale instelling voor HTML tidy een ander gedrag te laten vertonen',
-	'tidy'      => 'Opschonen',
-	'untidy'    => 'Opschonen ongedaan maken',
+	'tidy' => 'Opschonen',
+	'untidy' => 'Opschonen ongedaan maken',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
@@ -113,8 +113,8 @@ $messages['nl'] = array(
  */
 $messages['no'] = array(
 	'tidy-desc' => 'Legger til en fane for systematisering eller avsystematisering (avhengig av $wgUseTidy) som tillater overstyring av den globale innstillingen for HTML-systematisering.',
-	'tidy'      => 'Systematiser kode',
-	'untidy'    => 'Avsystematiser kode',
+	'tidy' => 'Systematiser kode',
+	'untidy' => 'Avsystematiser kode',
 );
 
 /** Occitan (Occitan)
@@ -122,15 +122,15 @@ $messages['no'] = array(
  */
 $messages['oc'] = array(
 	'tidy-desc' => 'Apondís una tabulacion triada o pas triada (en foncion de $wgUseTidy) sus de paginas normalas que permet de passar otra los paramètres globals HTML triats, per una vista simpla',
-	'tidy'      => 'Classar',
-	'untidy'    => 'Desclassar',
+	'tidy' => 'Classar',
+	'untidy' => 'Desclassar',
 );
 
 /** Polish (Polski)
  * @author Wpedzich
  */
 $messages['pl'] = array(
-	'tidy'   => 'Uporządkuj',
+	'tidy' => 'Uporządkuj',
 	'untidy' => 'Anuluj uporządkowanie',
 );
 
@@ -138,7 +138,7 @@ $messages['pl'] = array(
  * @author Kaganer
  */
 $messages['ru'] = array(
-	'tidy'   => 'Упорядочить',
+	'tidy' => 'Упорядочить',
 	'untidy' => 'Разупорядочить',
 );
 
@@ -147,33 +147,33 @@ $messages['ru'] = array(
  */
 $messages['sk'] = array(
 	'tidy-desc' => 'Pridáva záložku na formátovanie alebo zrušenie formátovania (v závislosti od premennej $wgUseTidy) na bežné stránky, ktorá má prednosť pred globálnym nastavením formátovania HTML na jediné zobrazenie',
-	'tidy'      => 'Upratať',
-	'untidy'    => 'Zrušiť upratanie',
+	'tidy' => 'Upratať',
+	'untidy' => 'Zrušiť upratanie',
 );
 
 /** Seeltersk (Seeltersk)
  * @author Pyt
  */
 $messages['stq'] = array(
-	'tidy'   => 'Oardenje',
+	'tidy' => 'Oardenje',
 	'untidy' => 'Nit oardenje',
 );
 
 /** Swedish (Svenska)
- * @author M.M.S.
  * @author Boivie
+ * @author M.M.S.
  */
 $messages['sv'] = array(
 	'tidy-desc' => 'Lägger på normala sidor till en tabb med systematisera eller avsystematisera (beroende på $wgUseTidy) som tillåter att vid ett enskilt tillfälle övertrumfa den globala inställningen för HTML-systematisering',
-	'tidy'      => 'Systematisera',
-	'untidy'    => 'Avsystematisera',
+	'tidy' => 'Systematisera',
+	'untidy' => 'Avsystematisera',
 );
 
-/** Tajik (Cyrillic) (Тоҷикӣ/tojikī (Cyrillic))
+/** Tajik (Cyrillic) (Тоҷикӣ (Cyrillic))
  * @author Ibrahim
  */
 $messages['tg-cyrl'] = array(
-	'tidy'   => 'Муратаб',
+	'tidy' => 'Муратаб',
 	'untidy' => 'Номуратаб',
 );
 

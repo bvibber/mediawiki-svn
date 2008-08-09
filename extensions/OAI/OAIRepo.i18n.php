@@ -11,6 +11,13 @@ $messages['en'] = array(
 	'oai-desc' => 'Provides [http://www.openarchives.org/OAI/openarchivesprotocol.html OAI-PMH] repository interface',
 );
 
+/** Message documentation (Message documentation)
+ * @author Meno25
+ */
+$messages['qqq'] = array(
+	'oai-desc' => 'Short description of the OAIRepository extension, shown on [[Special:Version]]. Do not translate or change links.',
+);
+
 /** Aragonese (Aragonés)
  * @author Juanpabl
  */

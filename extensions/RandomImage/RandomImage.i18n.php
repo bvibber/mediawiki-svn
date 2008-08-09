@@ -123,7 +123,7 @@ $messages['sv'] = array(
 	'randomimage-desc' => 'Ger en tillfällig mediafil genom att använda <tt>&lt;randomimage /&gt;</tt>',
 );
 
-/** Tajik (Cyrillic) (Тоҷикӣ/tojikī (Cyrillic))
+/** Tajik (Cyrillic) (Тоҷикӣ (Cyrillic))
  * @author Ibrahim
  */
 $messages['tg-cyrl'] = array(

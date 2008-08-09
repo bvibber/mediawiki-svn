@@ -20,12 +20,19 @@ $messages['en'] = array(
 	'selectcategory-subtitle' => 'Shift-mouse to select multiple contiguous entries, Ctrl-mouse to select non-contiguous entries.',
 );
 
+/** Message documentation (Message documentation)
+ * @author Purodha
+ */
+$messages['qqq'] = array(
+	'selectcategory-desc' => 'Used in [[Special:Version]]',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */
 $messages['ar'] = array(
-	'selectcategory-title'    => 'اختر التصنيفات',
-	'selectcategory-desc'     => 'يسمح للمستخدم بالاختيار من التصنيفات الموجودة عند تعديل صفحة',
+	'selectcategory-title' => 'اختر التصنيفات',
+	'selectcategory-desc' => 'يسمح للمستخدم بالاختيار من التصنيفات الموجودة عند تعديل صفحة',
 	'selectcategory-subtitle' => 'Shift-mouse لاختيار مدخلات متوافقة متعددة، Ctrl-mouse لاختيار مدخلات غير متوافقة.',
 );
 
@@ -37,22 +44,22 @@ $messages['bcl'] = array(
 );
 
 /** Bulgarian (Български)
- * @author Spiritia
  * @author DCLXVI
+ * @author Spiritia
  */
 $messages['bg'] = array(
-	'selectcategory-title'    => 'Избор на категории',
-	'selectcategory-desc'     => 'Позволява на потребителя при редактиране на страница да избира и добавя от съществуващите категории',
+	'selectcategory-title' => 'Избор на категории',
+	'selectcategory-desc' => 'Позволява на потребителя при редактиране на страница да избира и добавя от съществуващите категории',
 	'selectcategory-subtitle' => 'Shift + ляв бутон на мишката за избор на множество последователни записи, Ctrl + ляв бутон на мишката за избор на непоследователни записи.',
 );
 
 /** German (Deutsch)
- * @author Manuel Schneider <manuel.schneider@wikimedia.ch>
  * @author Leithian
+ * @author Manuel Schneider <manuel.schneider@wikimedia.ch>
  */
 $messages['de'] = array(
-	'selectcategory-title'    => 'Kategorien auswählen',
-	'selectcategory-desc'     => 'Ermöglicht es dem Benutzer, beim Bearbeiten einer Seite aus bestehenden Kategorien auszuwählen',
+	'selectcategory-title' => 'Kategorien auswählen',
+	'selectcategory-desc' => 'Ermöglicht es dem Benutzer, beim Bearbeiten einer Seite aus bestehenden Kategorien auszuwählen',
 	'selectcategory-subtitle' => 'Shift-Maus um mehrere nachfolgende Einträge zu (de-)selektieren, Strg-Maus um einzelne Einträge zu (de-)selektieren.',
 );
 
@@ -60,8 +67,8 @@ $messages['de'] = array(
  * @author Michawiki
  */
 $messages['dsb'] = array(
-	'selectcategory-title'    => 'Kategorije wubraś',
-	'selectcategory-desc'     => 'Dowólujo wužywarjeju pśi wobźěłowanju z eksistujucych kategorijow wubraś',
+	'selectcategory-title' => 'Kategorije wubraś',
+	'selectcategory-desc' => 'Dowólujo wužywarjeju pśi wobźěłowanju z eksistujucych kategorijow wubraś',
 	'selectcategory-subtitle' => 'Umsch-myš, aby někotare naslědujuce zapiski wubrał, Strg-myš, aby jadnotliwe zapiski wubrał.',
 );
 
@@ -79,13 +86,22 @@ $messages['eo'] = array(
 	'selectcategory-title' => 'Elektu kategoriojn',
 );
 
+/** Persian (فارسی)
+ * @author Tofighi
+ */
+$messages['fa'] = array(
+	'selectcategory-title' => 'انتخاب رده‌ها',
+	'selectcategory-desc' => 'به کاربر امکان انتخاب از رده‌های موجود را در هنگام ویرایش صفحه می‌دهد',
+	'selectcategory-subtitle' => 'از Shift-mouse برای انتخاب چند مدخل مجاور استفاده کنید،Ctrl-mouse را برای مدخل های غیر مجاور به کار برید.',
+);
+
 /** Finnish (Suomi)
  * @author Jaakonam
  * @author Nike
  */
 $messages['fi'] = array(
-	'selectcategory-title'    => 'Valitse luokat',
-	'selectcategory-desc'     => 'Käyttäjä voi muokatessaan valita jo olemassa olevista luokista sopivan',
+	'selectcategory-title' => 'Valitse luokat',
+	'selectcategory-desc' => 'Käyttäjä voi muokatessaan valita jo olemassa olevista luokista sopivan',
 	'selectcategory-subtitle' => 'Painamalla yhtä aikaa Shift-näppäintä ja hiiren vasenta painiketta voi valikosta poimia useita peräkkäisiä vaihtoehtoja. Ctrl-näppäintä ja hiiren vasenta painiketta yhtä aikaa painamalla voi valita haluamansa vaihtoehdot yksitellen.',
 );
 
@@ -94,18 +110,18 @@ $messages['fi'] = array(
  * @author Sherbrooke
  */
 $messages['fr'] = array(
-	'selectcategory-title'    => 'Choix de catégories',
-	'selectcategory-desc'     => 'Permet à l’utilisateur de sélectionner des catégories existantes lors de l’édition d’une page',
+	'selectcategory-title' => 'Choix de catégories',
+	'selectcategory-desc' => 'Permet à l’utilisateur de sélectionner des catégories existantes lors de l’édition d’une page',
 	'selectcategory-subtitle' => 'Maj+click afin de (dé)sélectionner plusieurs catégories d’affilée, Ctrl+click afin de (dé)sélectionner des catégories individuellement.',
 );
 
 /** Galician (Galego)
- * @author Xosé
  * @author Alma
+ * @author Xosé
  */
 $messages['gl'] = array(
-	'selectcategory-title'    => 'Seleccionar categorías',
-	'selectcategory-desc'     => 'Permite que o usuario seleccione das categorías existentes cando edita unha páxina',
+	'selectcategory-title' => 'Seleccionar categorías',
+	'selectcategory-desc' => 'Permite que o usuario seleccione das categorías existentes cando edita unha páxina',
 	'selectcategory-subtitle' => 'Faga clic co botón de maiúsculas e o rato para seleccionar varias entradas contiguas. Co botón Ctrl e o rato para seleccionar entradas non contiguas.',
 );
 
@@ -113,7 +129,7 @@ $messages['gl'] = array(
  * @author Manuel Schneider <manuel.schneider@wikimedia.ch>
  */
 $messages['gsw'] = array(
-	'selectcategory-title'    => 'Kategori ussueche',
+	'selectcategory-title' => 'Kategori ussueche',
 	'selectcategory-subtitle' => 'Gross-Muus go verschiedeni Iiträg hintrenander go uswähle, Strg-Muus go einzelni Iiträg go uswähle',
 );
 
@@ -128,8 +144,8 @@ $messages['hi'] = array(
  * @author Michawiki
  */
 $messages['hsb'] = array(
-	'selectcategory-title'    => 'Kategorije wubrać',
-	'selectcategory-desc'     => 'Zmóžnja wužiwarjej z eksistowacych kategorijow wubrać, hdyž stronu wobdźěłuje',
+	'selectcategory-title' => 'Kategorije wubrać',
+	'selectcategory-desc' => 'Zmóžnja wužiwarjej z eksistowacych kategorijow wubrać, hdyž stronu wobdźěłuje',
 	'selectcategory-subtitle' => 'Umschalt-Myš, zo bychu so wjacore susodne zapiski wubrali, Strg-myš, zo bychu so njesusodne zapiski wubrali.',
 );
 
@@ -137,16 +153,16 @@ $messages['hsb'] = array(
  * @author Ivan Lanin <ivanlanin@gmail.com>
  */
 $messages['id'] = array(
-	'selectcategory-title'    => 'Pilih kategori',
+	'selectcategory-title' => 'Pilih kategori',
 	'selectcategory-subtitle' => 'Shift-mouse untuk memilih entri yang berurutan, Ctrl-mouse untuk memilih entri yang tidak berurutan.',
 );
 
 /** Italian (Italiano)
- * @author Marius Engler <marius.engler@coop.ch>
  * @author BrokenArrow
+ * @author Marius Engler <marius.engler@coop.ch>
  */
 $messages['it'] = array(
-	'selectcategory-title'    => 'Selezionare le categorie',
+	'selectcategory-title' => 'Selezionare le categorie',
 	'selectcategory-subtitle' => 'Fare clic con il mouse tenendo premuto MAIUSC per selezionare più voci adiacenti o CTRL per selezionare più voci non adiacenti.',
 );
 
@@ -163,15 +179,15 @@ $messages['jv'] = array(
  */
 $messages['km'] = array(
 	'selectcategory-title' => 'ជ្រើសយកចំណាត់ថ្នាក់ក្រុម',
-	'selectcategory-desc'  => 'អនុញ្ញាតិ អ្នកប្រើប្រាស់ អោយជ្រើសយក ពីចំណាត់ក្រុមមានស្រាប់ ពេលកែប្រែ មួយទំព័រ',
+	'selectcategory-desc' => 'អនុញ្ញាតិ អ្នកប្រើប្រាស់ អោយជ្រើសយក ពីចំណាត់ក្រុមមានស្រាប់ ពេលកែប្រែ មួយទំព័រ',
 );
 
 /** Ripoarisch (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(
-	'selectcategory-title'    => 'Saachjruppe ußsöke',
-	'selectcategory-desc'     => 'Määt et müjjelesch, beim Sigge-Ändere uß dä Saachjroppe ußzewähle, di ald beshtonn.',
+	'selectcategory-title' => 'Saachjruppe ußsöke',
+	'selectcategory-desc' => 'Määt et müjjelesch, beim Sigge-Ändere uß dä Saachjroppe ußzewähle, di ald beshtonn.',
 	'selectcategory-subtitle' => 'Ettlije Enndräsch op eijmol ußsöke met „Jrußschreff+Muus“, un nit mieh ußsööke met „Strg+Muus“.',
 );
 
@@ -179,8 +195,8 @@ $messages['ksh'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
-	'selectcategory-title'    => 'Kategorie wielen',
-	'selectcategory-desc'     => "Erlaabt dem Benotzer et fir Kategorien aus enger Lëscht auszewielen wann d'Säit geännert gëtt",
+	'selectcategory-title' => 'Kategorie wielen',
+	'selectcategory-desc' => "Erlaabt dem Benotzer et fir Kategorien aus enger Lëscht auszewielen wann d'Säit geännert gëtt",
 	'selectcategory-subtitle' => 'Shift + Maus fir méi Rubriken hannereneen unzewielen, Ctrl + Maus fir eenzel Rubriken unzewielen',
 );
 
@@ -195,8 +211,8 @@ $messages['ml'] = array(
  * @author Kaustubh
  */
 $messages['mr'] = array(
-	'selectcategory-title'    => 'वर्ग निवडा',
-	'selectcategory-desc'     => 'एखादे पान संपादित करीत असताना सदस्याला वर्ग निवडण्याची सुविधा देते',
+	'selectcategory-title' => 'वर्ग निवडा',
+	'selectcategory-desc' => 'एखादे पान संपादित करीत असताना सदस्याला वर्ग निवडण्याची सुविधा देते',
 	'selectcategory-subtitle' => 'शिफ्ट+माउस एकापुढे एक असलेल्या नोंदी निवडण्यासाठी, कंट्रोल+माउस एका पुढे एक नसलेल्या नोंदी निवडण्यासाठी.',
 );
 
@@ -204,8 +220,8 @@ $messages['mr'] = array(
  * @author Siebrand
  */
 $messages['nl'] = array(
-	'selectcategory-title'    => 'Selecteer categorieën',
-	'selectcategory-desc'     => 'Stelt gebruikers in staat uit bestaande categorieën te kiezen bij het bewerken van een pagina',
+	'selectcategory-title' => 'Selecteer categorieën',
+	'selectcategory-desc' => 'Stelt gebruikers in staat uit bestaande categorieën te kiezen bij het bewerken van een pagina',
 	'selectcategory-subtitle' => 'Shiftklik om meerdere opeenvolgende categorieën te selecteren, Ctrlklik om niet-openvolgende categorieën te selecteren.',
 );
 
@@ -213,8 +229,8 @@ $messages['nl'] = array(
  * @author Jon Harald Søby
  */
 $messages['no'] = array(
-	'selectcategory-title'    => 'Velg kategorier',
-	'selectcategory-desc'     => 'Lar brukeren velge fra eksisterende kategorier når han/hun redigerer en side',
+	'selectcategory-title' => 'Velg kategorier',
+	'selectcategory-desc' => 'Lar brukeren velge fra eksisterende kategorier når han/hun redigerer en side',
 	'selectcategory-subtitle' => 'Shift+klikk for å velge flere sammenhengende alternativer, Ctrl+klikk for å velge ikke-sammenhengende alternativer.',
 );
 
@@ -222,8 +238,8 @@ $messages['no'] = array(
  * @author Cedric31
  */
 $messages['oc'] = array(
-	'selectcategory-title'    => 'Causida de categorias',
-	'selectcategory-desc'     => 'Permet a l’utilizaire de seleccionar de categorias existentas al moment de l’edicion d’una pagina',
+	'selectcategory-title' => 'Causida de categorias',
+	'selectcategory-desc' => 'Permet a l’utilizaire de seleccionar de categorias existentas al moment de l’edicion d’una pagina',
 	'selectcategory-subtitle' => "Maj+click pr'amor de (de)seleccionar mantuna categoria d’arrèu, Ctrl+click pr'amor de (de)seleccionar de categorias individualament.",
 );
 
@@ -231,7 +247,7 @@ $messages['oc'] = array(
  * @author Derbeth
  */
 $messages['pl'] = array(
-	'selectcategory-title'    => 'Wybór kategorii',
+	'selectcategory-title' => 'Wybór kategorii',
 	'selectcategory-subtitle' => 'Shift+przycisk myszy wybiera wiele sąsiednich elementów, Ctrl+przycisk myszy wybiera elementy, które nie są koło siebie',
 );
 
@@ -239,7 +255,7 @@ $messages['pl'] = array(
  * @author Bèrto 'd Sèra
  */
 $messages['pms'] = array(
-	'selectcategory-title'    => 'Selession për categorìe',
+	'selectcategory-title' => 'Selession për categorìe',
 	'selectcategory-subtitle' => "Ch'a dòvra sò rat con la ciav dlë Shift sgnacà për sërne ëd categorìe ch'as ven-o l'un-a dapress a l'àotra, ò pura con ën sgmacand la ciav Ctrl për pieje un-a pr'un-a.",
 );
 
@@ -251,12 +267,12 @@ $messages['ps'] = array(
 );
 
 /** Portuguese (Português)
- * @author Malafaya
  * @author Lijealso
+ * @author Malafaya
  */
 $messages['pt'] = array(
-	'selectcategory-title'    => 'Seleccionar categorias',
-	'selectcategory-desc'     => 'Permitir ao utilizador seleccionar a partir das categorias existentes quando editar uma página',
+	'selectcategory-title' => 'Seleccionar categorias',
+	'selectcategory-desc' => 'Permitir ao utilizador seleccionar a partir das categorias existentes quando editar uma página',
 	'selectcategory-subtitle' => 'Shift-clique para seleccionar múltiplas entradas contíguas, Ctrl-clique para seleccionar entradas não-contíguas.',
 );
 
@@ -264,8 +280,8 @@ $messages['pt'] = array(
  * @author Александр Сигачёв
  */
 $messages['ru'] = array(
-	'selectcategory-title'    => 'Выбор категорий',
-	'selectcategory-desc'     => 'Позволяет участнику выбирать существующие категории при редактировании страницы',
+	'selectcategory-title' => 'Выбор категорий',
+	'selectcategory-desc' => 'Позволяет участнику выбирать существующие категории при редактировании страницы',
 	'selectcategory-subtitle' => 'Щелчёк с клавишей Shift — выбор последовательности элементов, щелчёк с клавишей Ctrl — выбор непоследовательных элементов.',
 );
 
@@ -273,8 +289,8 @@ $messages['ru'] = array(
  * @author Helix84
  */
 $messages['sk'] = array(
-	'selectcategory-title'    => 'Vybrať kategórie',
-	'selectcategory-desc'     => 'Umožňuje používateľovi vybrať z existujúcich kategórií pri úprave stránky',
+	'selectcategory-title' => 'Vybrať kategórie',
+	'selectcategory-desc' => 'Umožňuje používateľovi vybrať z existujúcich kategórií pri úprave stránky',
 	'selectcategory-subtitle' => 'Shift+kliknutie označí súvislú skupinu položiek, ctrl+kliknutie označí jednotlivé nesúvislé položky.',
 );
 
@@ -282,7 +298,7 @@ $messages['sk'] = array(
  * @author Pyt
  */
 $messages['stq'] = array(
-	'selectcategory-title'    => 'Kategorien uutwääle',
+	'selectcategory-title' => 'Kategorien uutwääle',
 	'selectcategory-subtitle' => 'Shift-Muus uum moorere ätterfoulgjende Iendraage tou (de-)selektierjen, Strg-Muus uum eenpelde Iendraage tou (de-)selektierjen.',
 );
 
@@ -290,8 +306,8 @@ $messages['stq'] = array(
  * @author M.M.S.
  */
 $messages['sv'] = array(
-	'selectcategory-title'    => 'Välj kategorier',
-	'selectcategory-desc'     => 'Låter användaren välja från existerande kategorier när hen redigerar en sida',
+	'selectcategory-title' => 'Välj kategorier',
+	'selectcategory-desc' => 'Låter användaren välja från existerande kategorier när hen redigerar en sida',
 	'selectcategory-subtitle' => 'Shift+klick för att välja flera sammanhängande alternativ, Ctrl+klick för att välja ej sammanhängande alternativ.',
 );
 
@@ -313,8 +329,8 @@ $messages['th'] = array(
  * @author Candalua
  */
 $messages['vec'] = array(
-	'selectcategory-title'    => 'Selessiona le categorie',
-	'selectcategory-desc'     => "Permete a l'utente de siegliar tra le categorie esistenti quando el modifica na pagina",
+	'selectcategory-title' => 'Selessiona le categorie',
+	'selectcategory-desc' => "Permete a l'utente de siegliar tra le categorie esistenti quando el modifica na pagina",
 	'selectcategory-subtitle' => 'Struca el boton del mouse tegnendo macà MAIUSC par selessionar più voçi adiacenti o CTRL par selessionar più voçi non adiacenti.',
 );
 
@@ -322,8 +338,8 @@ $messages['vec'] = array(
  * @author Vinhtantran
  */
 $messages['vi'] = array(
-	'selectcategory-title'    => 'Chọn thể loại',
-	'selectcategory-desc'     => 'Cho phép thành viên chọn từ các thể loại đang có khi sửa trang',
+	'selectcategory-title' => 'Chọn thể loại',
+	'selectcategory-desc' => 'Cho phép thành viên chọn từ các thể loại đang có khi sửa trang',
 	'selectcategory-subtitle' => 'Shift-nhấn chuột để chọn nhiều mục kề nhau liên tục, Ctrl-nhấn chuột để chọn các mục không liên tục.',
 );
 
@@ -331,7 +347,7 @@ $messages['vi'] = array(
  * @author Shinjiman
  */
 $messages['yue'] = array(
-	'selectcategory-title'    => '選擇分類',
+	'selectcategory-title' => '選擇分類',
 	'selectcategory-subtitle' => '撳住Shift掣再用個mouse去揀連續嘅項目，撳住Ctrl掣再用個mouse去揀非連續嘅項目。',
 );
 
@@ -339,17 +355,17 @@ $messages['yue'] = array(
  * @author Shinjiman
  */
 $messages['zh-hans'] = array(
-	'selectcategory-title'    => '选择分类',
+	'selectcategory-title' => '选择分类',
 	'selectcategory-subtitle' => '按着Shift键再以鼠标选取连续的项目，按着Ctrl键再以鼠标选取非连续的项目。',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)
- * @author Shinjiman
  * @author Alexsh
+ * @author Shinjiman
  */
 $messages['zh-hant'] = array(
-	'selectcategory-title'    => '選擇分類',
-	'selectcategory-desc'     => '讓使用者可以在編輯頁面時直接選擇已存在的分類',
+	'selectcategory-title' => '選擇分類',
+	'selectcategory-desc' => '讓使用者可以在編輯頁面時直接選擇已存在的分類',
 	'selectcategory-subtitle' => '按著Shift鍵再以滑鼠選取連續的項目，按著Ctrl鍵再以滑鼠選取非連續的項目。',
 );
 
