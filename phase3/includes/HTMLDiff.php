@@ -922,7 +922,7 @@ class TextNodeDiffer{
 						$nextLastModified = array();
 					}
 				} else if (!is_null($result->getChanges()) && $result->getChanges() != $this->changes) {
-					++$changedID;
+					++$this->changedID;
 					$mod->setFirstOfID(true);
 					if (sizeof($nextLastModified) > 0) {
 						$this->lastModified = $nextLastModified;
@@ -1115,7 +1115,7 @@ class HTMLDiffer{
 
 		;
 		//wfDebug('Parsing '.strlen($from)." characters worth of HTML");
-		if (!xml_parse($xml_parser, '<body>', FALSE)
+		if (!xml_parse($xml_parser, '<?xml version="1.0" encoding="UTF-8"?>'.Sanitizer::hackDocType().'<body>', FALSE)
 		|| !xml_parse($xml_parser, $from, FALSE)
 		|| !xml_parse($xml_parser, '</body>', TRUE)){
 			wfDebug(sprintf("XML error: %s at line %d",xml_error_string(xml_get_error_code($xml_parser)),xml_get_current_line_number($xml_parser)));
@@ -1134,7 +1134,7 @@ class HTMLDiffer{
 		xml_set_character_data_handler($xml_parser, array($domto,"characters"));
 
 		//wfDebug('Parsing '.strlen($to)." characters worth of HTML");
-		if (!xml_parse($xml_parser, '<body>', FALSE)
+		if (!xml_parse($xml_parser, '<?xml version="1.0" encoding="UTF-8"?>'.Sanitizer::hackDocType().'<body>', FALSE)
 		|| !xml_parse($xml_parser, $to, FALSE)
 		|| !xml_parse($xml_parser, '</body>', TRUE)){
 			wfDebug(sprintf("XML error in HTML diff: %s at line %d",xml_error_string(xml_get_error_code($xml_parser)),xml_get_current_line_number($xml_parser)));
@@ -1326,15 +1326,14 @@ class ChangeTextGenerator {
 
 	private $factory;
 
-	function __construct(AncestorComparator $new,
-	AncestorComparator $old) {
+	function __construct(AncestorComparator $old, AncestorComparator $new) {
 		$this->new = $new;
 		$this->old = $old;
 		$this->factory = new TagToStringFactory();
 	}
 
 	public function getChanged(/*array*/ $differences) {
-		$txt = new ChangeText(100);
+		$txt = new ChangeText;
 
 		$rootlistopened = false;
 

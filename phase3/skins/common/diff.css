@@ -85,7 +85,7 @@ span.diff-html-added {
 }
 
 span.diff-html-removed {
-  font-size: 90%;
+  font-size: 100%;
   color: black;
   text-decoration: line-through;
   background-color: #fdc6c6; /* light red */
