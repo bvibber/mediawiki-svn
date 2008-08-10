@@ -10,19 +10,19 @@
  */
 
 function efLua_ParserInit() {
-        global $wgParser;
-        $wgParser->setHook( 'lua', 'efLua_Render' );
-        return true;
+	global $wgParser;
+	$wgParser->setHook( 'lua', 'efLua_Render' );
+	return true;
 }
- 
+
 function efLua_FunctionSetup() {
-        global $wgParser;
-        $wgParser->setFunctionHook('luaexpr', 'efLua_RenderExpr');
+	global $wgParser;
+	$wgParser->setFunctionHook('luaexpr', 'efLua_RenderExpr');
 }
 
 function efLua_Magic(&$magicWords, $langCode) {
-        $magicWords['luaexpr'] = array(0, 'luaexpr');
-        return true;
+	$magicWords['luaexpr'] = array(0, 'luaexpr');
+	return true;
 }
 
 function efLua_BeforeTidy(&$parser, &$text) {
@@ -31,28 +31,28 @@ function efLua_BeforeTidy(&$parser, &$text) {
 	}
 	return TRUE;
 }
- 
+
 function efLua_Render($input, $args, &$parser) {
 	$arglist = '';
-        foreach ($args as $key => $value)
-		$arglist .= (preg_replace('/\W/', '', $key) . '=\'' . 
-			     addslashes($parser->recursiveTagParse($value)) . 
-			     '\';');
+	foreach ($args as $key => $value)
+	$arglist .= (preg_replace('/\W/', '', $key) . '=\'' .
+		addslashes($parser->recursiveTagParse($value)) .
+		'\';');
 	if ($arglist) {
 		try {
 			efLua_Eval($arglist);
-		} catch (LuaError $e) {
-			return $e->getMessage();
+			} catch (LuaError $e) {
+				return $e->getMessage();
+			}
 		}
-	}
 
-	try {
-		return $parser->recursiveTagParse(efLua_Eval($input));
-	} catch (LuaError $e) {
-		return $e->getMessage();
-	}
-}
- 
+		try {
+			return $parser->recursiveTagParse(efLua_Eval($input));
+			} catch (LuaError $e) {
+				return $e->getMessage();
+			}
+		}
+
 function efLua_RenderExpr(&$parser, $param1 = FALSE) {
 	if ($param1 == FALSE)
 		return '';
@@ -105,7 +105,7 @@ function efLua_Eval($input) {
 	$wgLua->res = $wgLua->err = NULL;
 
 	$wgLua->evaluate('res, err = wrap(chunk, sandbox, hook)');
-	
+
 	if (($err = $wgLua->_DEAD) || ($err = $wgLua->err)) {
 		if ($err == 'RECURSION_LIMIT') {
 			efLua_CleanupExternal();
@@ -139,15 +139,15 @@ function efLua_Cleanup() {
 
 function efLua_EvalExternal($input) {
 	global $wgLuaExternalInterpreter, $wgLuaProc, $wgLuaPipes,
-	       $wgLuaWrapperFile, $wgLuaMaxLines, $wgLuaMaxCalls, 
-	       $wgLuaMaxTime;
+		$wgLuaWrapperFile, $wgLuaMaxLines, $wgLuaMaxCalls,
+		$wgLuaMaxTime;
 	if (!isset($wgLuaProc)) {
 		$wgLua = TRUE;
 		$luacmd = "$wgLuaExternalInterpreter $wgLuaWrapperFile $wgLuaMaxLines $wgLuaMaxCalls";
-		$wgLuaProc = proc_open($luacmd, 
-				       array(0 => array('pipe', 'r'),
-					     1 => array('pipe', 'w')),
-				       $wgLuaPipes, NULL, NULL);
+		$wgLuaProc = proc_open($luacmd,
+			array(0 => array('pipe', 'r'),
+			1 => array('pipe', 'w')),
+			$wgLuaPipes, NULL, NULL);
 		if (!is_resource($wgLuaProc)) {
 			$wgLuaDefunct = true;
 			throw new LuaError('interp_notfound');
@@ -167,9 +167,9 @@ function efLua_EvalExternal($input) {
 	$write  = NULL;
 	$except = NULL;
 	while (!feof($wgLuaPipes[1])) {
-		if (false === ($num_changed_streams = 
-			       @stream_select($read, $write, $except, 
-					      $wgLuaMaxTime))) {
+		if (false === ($num_changed_streams =
+				@stream_select($read, $write, $except,
+				$wgLuaMaxTime))) {
 			efLua_CleanupExternal();
 			throw new LuaError('overflow_time');
 		}
