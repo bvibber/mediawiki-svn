@@ -12,3 +12,17 @@ $aliases = array();
 $aliases['en'] = array(
 	'Asksql'    => array( 'Asksql' ),
 );
+
+/** Arabic (العربية)
+ * @author Meno25
+ */
+$aliases['ar'] = array(
+	'Asksql'   => array( 'سؤال_إس_كيو_إل' ),
+);
+
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Meno25
+ */
+$aliases['arz'] = array(
+	'Asksql'   => array( 'سؤال_إس_كيو_إل' ),
+);

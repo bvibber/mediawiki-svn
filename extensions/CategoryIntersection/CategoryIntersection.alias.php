@@ -13,8 +13,18 @@ $aliases['en'] = array(
 	'CategoryIntersection'=> array( 'Category intersection', 'CategoryIntersection' ),
 );
 
+/** Arabic (العربية)
+ * @author Meno25
+ */
 $aliases['ar'] = array(
-	'CategoryIntersection'=> array( 'تقاطع تصنيف' ),
+	'CategoryIntersection'   => array( 'تقاطع_تصنيف' ),
+);
+
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Meno25
+ */
+ $aliases['arz'] = array(
+	'CategoryIntersection'   => array( 'تقاطع_تصنيف' ),
 );
 
 $aliases['br'] = array(

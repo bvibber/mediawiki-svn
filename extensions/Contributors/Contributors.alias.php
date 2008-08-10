@@ -12,3 +12,17 @@ $aliases = array();
 $aliases['en'] = array(
 	'Contributors'=> array( 'Contributors' ),
 );
+
+/** Arabic (العربية)
+ * @author Meno25
+ */
+ $aliases['ar'] = array(
+	'Contributors'   => array( 'مساهمون' ),
+);
+
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Meno25
+ */
+ $aliases['arz'] = array(
+	'Contributors'   => array( 'مساهمون' ),
+);
