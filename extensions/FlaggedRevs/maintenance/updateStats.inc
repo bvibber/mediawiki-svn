@@ -1,6 +1,7 @@
 <?php
 
 if( php_sapi_name() != 'cli' ) {
+	print( 'Invalid entry' );
 	die( 1 );
 }
 
@@ -59,9 +60,9 @@ function update_flaggedrevs_stats() {
 		$dbw->replace( 'flaggedrevs_stats',
 			array( 'namespace' ),
 			array( 'namespace' => intval($namespace),
-				'total'    => $ns_total[$namespace],
-				'reviewed' => $ns_reviewed[$namespace],
-				'synced'   => $ns_synced[$namespace] ),
+				'total'    => isset($ns_total[$namespace]) ? $ns_total[$namespace] : 0,
+				'reviewed' => isset($ns_reviewed[$namespace]) ? $ns_reviewed[$namespace] : 0,
+				'synced'   => isset($ns_synced[$namespace]) ? $ns_synced[$namespace] : 0 ),
 			__METHOD__
 		);
 	}
@@ -70,6 +71,7 @@ function update_flaggedrevs_stats() {
 	$key = wfMemcKey( 'flaggedrevs', 'statsUpdated' );
 	$dbCache->set( $key, '1', $wgFlaggedRevsStatsAge );
 	$dbCache->delete( $keySQL );
+	print( "Done updating!\n" );
 }
 
 function createFlaggedRevsStatsTable( $dbw, $flaggedrevs_stats ) {

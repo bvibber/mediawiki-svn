@@ -25,7 +25,7 @@ function update_flaggedrevs( $start = null ) {
 			AND fr_page_id = rev_page AND fr_rev_id = rev_id AND page_id = rev_page";
 		$res = $db->select( array('revision','flaggedrevs','page'),
 			array('fr_rev_id','fr_tags','fr_quality','page_namespace','page_title',
-				'fr_img_name','fr_img_timestamp','fr_img_sha1'), 
+				'fr_img_name','fr_img_timestamp','fr_img_sha1','rev_page'), 
 			$cond, __FUNCTION__ );
 		# Go through and clean up missing items, as well as correct fr_quality...
 		foreach( $res as $row ) {
@@ -47,6 +47,21 @@ function update_flaggedrevs( $start = null ) {
 				$time = $irow ? $irow->fi_img_timestamp : null;
 				$sha1 = $irow ? $irow->fi_img_sha1 : null;
 				$file = $irow ? $row->page_title : null;
+				# Fill in from current if broken
+				if( !$irow ) {
+					$crow = $db->selectRow( 'image',
+						array( 'img_timestamp', 'img_sha1' ),
+						array( 'img_name' => $row->page_title ),
+						__METHOD__ );
+					$time = $crow ? $crow->img_timestamp : null;
+					$sha1 = $crow ? $crow->img_sha1 : null;
+					$file = $crow ? $row->page_title : null;
+				}
+			# Leave it alone if already set
+			} else if( $row->fr_img_name && $row->page_namespace == NS_IMAGE ) {
+				$time = $row->fr_img_timestamp;
+				$sha1 = $row->fr_img_sha1;
+				$file = $row->fr_img_name;
 			}
 			if( $file && ($file != $row->fr_img_name || $time != $row->fr_img_timestamp || $sha1 != $row->fr_img_sha1) ) {
 				$changed++;
@@ -59,7 +74,7 @@ function update_flaggedrevs( $start = null ) {
 					'fr_img_name' => $file,
 					'fr_img_sha1' => $sha1,
 					'fr_img_timestamp' => $time ),
-				array( 'fr_rev_id' => $row->fr_rev_id ),
+				array( 'fr_rev_id' => $row->fr_rev_id, 'fr_page_id' => $row->rev_page ),
 				__FUNCTION__ );
 			$count++;
 		}
