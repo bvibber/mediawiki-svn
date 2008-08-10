@@ -1436,7 +1436,7 @@ class BGP(protocol.Protocol):
         """
         
         # DEBUG
-        print "NOTIFICATION:", error, suberror, " ".split([ord(d) for d in data])
+        print "NOTIFICATION:", error, suberror, [ord(d) for d in data]
         
         self.fsm.notificationReceived(error, suberror)
 
