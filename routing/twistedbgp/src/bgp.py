@@ -1166,7 +1166,7 @@ class BGP(protocol.Protocol):
             return
         
         # DEBUG
-        print "Connection lost"
+        print "Connection lost:", reason.getErrorMessage()
         
         try:
             self.fsm.connectionFailed()
@@ -1436,7 +1436,7 @@ class BGP(protocol.Protocol):
         """
         
         # DEBUG
-        print "NOTIFICATION:", error, suberror, " ".split([chr(d) for d in data])
+        print "NOTIFICATION:", error, suberror, " ".split([ord(d) for d in data])
         
         self.fsm.notificationReceived(error, suberror)
 
@@ -1579,7 +1579,7 @@ class BGPFactory(protocol.Factory):
     
     def clientConnectionLost(self, connector, reason):
         # DEBUG
-        print "Client connection lost", reason        
+        print "Client connection lost:", reason.getErrorMessage()     
 
 class BGPServerFactory(BGPFactory):
     """Class managing the server (listening) side of the BGP
@@ -1670,7 +1670,7 @@ class BGPPeering(BGPFactory):
         """Called when the outgoing connection failed."""
         
         # DEBUG
-        print "Client connection failed", connector, reason
+        print "Client connection failed:", reason.getErrorMessage()
 
         # There is no protocol instance yet at this point.
         # Catch a possible NotificationException
