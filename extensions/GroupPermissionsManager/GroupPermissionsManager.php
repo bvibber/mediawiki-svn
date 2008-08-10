@@ -15,7 +15,7 @@ $wgExtensionCredits['specialpage'][] = array(
 	'name'           => 'GroupPermissions Manager',
 	'author'         => 'Ryan Schmidt',
 	'url'            => 'http://www.mediawiki.org/wiki/Extension:GroupPermissionsManager',
-	'version'        => '3.2.3',
+	'version'        => '3.2.4',
 	'description'    => 'Manage group permissions via a special page',
 	'descriptionmsg' => 'grouppermissions-desc',
 );
@@ -141,42 +141,42 @@ function versionCheck( $ver = '1.12' ) {
 	global $wgVersion;
 	$nvp = explode('.', $ver); //explode it into pieces
 	$cvp = explode('.', $wgVersion); //do the same to $wgVersion
-	if($cvp[0] < $nvp[0])
-		return false;
-	if($cvp[0] > $nvp[0])
-		return true;
+	if($cvp[0] < $nvp[0]) return false;
+	if($cvp[0] > $nvp[0]) return true;
 	//now get the second part, splitting the numbers and other text
 	preg_match('/^([0-9]+)(.*?)$/', $nvp[1], $nm);
 	preg_match('/^([0-9]+)(.*?)$/', $cvp[1], $cm);
-	if($cm[1] < $nm[1])
-		return false;
-	if($cm[1] > $nm[1])
-		return true;
-	//this means that the current version is alpha or a release candidate, so do appropriate checks
+	if($cm[1] < $nm[1]) return false;
+	if($cm[1] > $nm[1]) return true;
+	//this means that the current version is alpha, so do appropriate checks
 	if(!array_key_exists(2, $cvp)) {
-		//checking against a released version, so return false (since alphas and release candidates come before releases)
-		if(array_key_exists(2, $nvp))
-			return false;
+		//checking against a released version, so return false (since alphas come before releases)
+		if(array_key_exists(2, $nvp)) return false;
 		//generic version defined, so as long as it matches, it's fine
-		if($nm[1] == '')
-			return true;
-		//takes care of alphas and release candidates of the same version
-		if($cm[1] == $nm[1])
-			return true;
-		//do a release candidate check
-		preg_match('/^rc([0-9]+)$/', $nm[1], $nrc);
-		preg_match('/^rc([0-9]+)$/', $cm[1], $crc);
-		if($crc[1] >= $nrc[1])
-			return true;
+		if($nm[2] == '') return true;
+		//takes care of alphas
+		if($cm[2] == $nm[2]) return true;
 		return false;
 	}
-	//release checked against generic version or prerelease, return true
-	if(!array_key_exists(2, $nvp))
-		return true;
-	if($cvp[2] < $nvp[2])
+	//release or release candidate checked against generic version or alpha, return true
+	if(!array_key_exists(2, $nvp)) return true;
+	//release candidate check
+	if(preg_match('/([0-9]+)rc([0-9]+)$/', $nvp[2], $nrc)) {
+		//check released version against release candidate
+		if(!preg_match('/([0-9]+)rc([0-9]+)$/', $cvp[2], $crc)) {
+			if($cvp[2] >= $nrc[1]) return true;
+			return false;
+		}
+		if($crc[1] < $nrc[1]) return false;
+		if($crc[1] > $nrc[1]) return true;
+		if($crc[2] >= $nrc[2]) return true;
 		return false;
-	if($cvp[2] > $nvp[2])
-		return true;
+	} elseif(preg_match('/([0-9]+)rc([0-9]+)$/', $cvp[2], $crc)) {
+		//checking release candidate against released version
+		return false;
+	}
+	if($cvp[2] >= $nvp[2]) return true;
+	return false;
 }
 
 //shortcut to save some time in typing

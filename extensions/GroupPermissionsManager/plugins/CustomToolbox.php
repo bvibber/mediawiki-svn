@@ -20,7 +20,7 @@ $wgExtensionCredits['other'][] = array(
 	'name'           => 'Custom Toolbox',
 	'author'         => 'Ryan Schmidt',
 	'url'            => 'http://www.mediawiki.org/wiki/Extension:GroupPermissionsManager',
-	'version'        => '1.0',
+	'version'        => '1.1',
 	'description'    => 'Allows adding additional items to the Toolbox',
 	'descriptionmsg' => 'grouppermissions-desc4',
 );
@@ -28,30 +28,30 @@ $wgExtensionCredits['other'][] = array(
 $wgHooks['SkinTemplateToolboxEnd'][] = 'efGPManagerCustomToolboxAppend';
 
 function efGPManagerCustomToolboxAppend(&$skin) {
-	global $wgOut;
+	global $wgOut, $wgUser;
 	$tb = explode("\n", wfMsg('toolbox_append'));
 	$new = array();
 	foreach($tb as &$nt) {
-		if(strpos('*', $nt) === 0) {
+		if(strpos($nt, '*') === 0) {
 			$nt = trim($nt, '*');
 			$parts = explode('|', $nt);
 			foreach($parts as &$part)
 				$part = trim($part);
-			$href = wfMsgForContent($nt[0]);
-			$text = wfMsgForContent($nt[1]);
-			$perm = array_key_exists(2, $nt) ? $nt[2] : 'read';
+			$href = wfMsgForContent($parts[0]);
+			$text = wfMsgForContent($parts[1]);
+			$perm = array_key_exists(2, $parts) ? $parts[2] : 'read';
 			if(!$wgUser->isAllowed($perm))
 				continue;
-			if(wfEmptyMsg($nt[0], $href))
-				$href = $nt[0];
-			if(wfEmptyMsg($nt[1], $text))
-				$text = $nt[1];
-			$id = Santizer::escapeId($nt[1]);
+			if(wfEmptyMsg($parts[0], $href))
+				$href = $parts[0];
+			if(wfEmptyMsg($parts[1], $text))
+				$text = $parts[1];
+			$id = Sanitizer::escapeId($parts[1]);
 			$new[] = array($href, $text, $id);
 		}
 	}
 	foreach($new as $t) {
-		$wgOut->addHTML('<li id="t-'.$t[2].'"><a href="'.htmlspecialchars($t[0]).'">'.$t[1].'</a></li>');
+		echo '<li id="t-'.$t[2].'"><a href="'.htmlspecialchars($t[0]).'">'.$t[1].'</a></li>';
 	}
 	return true;
 }

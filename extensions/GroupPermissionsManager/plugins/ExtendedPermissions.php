@@ -15,7 +15,7 @@ $wgExtensionCredits['other'][] = array(
 	'name'           => 'Extended Permissions',
 	'author'         => 'Ryan Schmidt',
 	'url'            => 'http://www.mediawiki.org/wiki/Extension:GroupPermissionsManager',
-	'version'        => '1.1',
+	'version'        => '1.2',
 	'description'    => 'Extended permissions system',
 	'descriptionmsg' => 'grouppermissions-desc2',
 );
@@ -82,7 +82,7 @@ function efGPManagerExtendedPermissionsGrant($title, $user, $action, &$result) {
 					}
 				}
 			}
-			if( !$title->isNamespaceProtected() ) {
+			if( $title->isNamespaceProtected() ) {
 				//user can't edit due to namespace protection
 				$result = null;
 				return false;
