@@ -26,7 +26,7 @@ function efLua_Magic(&$magicWords, $langCode) {
 }
 
 function efLua_BeforeTidy(&$parser, &$text) {
-	if (!isset($wgLuaInterp)) {
+	if (!isset($wgLua)) {
 		efLua_Cleanup();
 	}
 	return TRUE;
@@ -35,7 +35,7 @@ function efLua_BeforeTidy(&$parser, &$text) {
 function efLua_Render($input, $args, &$parser) {
 	$arglist = '';
         foreach ($args as $key => $value)
-		$arglist .= (preg_replace('/\W/', '_', $key) . '=\'' . 
+		$arglist .= (preg_replace('/\W/', '', $key) . '=\'' . 
 			     addslashes($parser->recursiveTagParse($value)) . 
 			     '\';');
 	if ($arglist) {
@@ -63,53 +63,95 @@ function efLua_RenderExpr(&$parser, $param1 = FALSE) {
 	}
 }
 
+
+/**
+ * @todo Nearly all of these evaluate() calls should be replaced, as bugs
+ *       in the Lua PECL extension are fixed.
+ */
 function efLua_Eval($input) {
-	global $wgLuaExternalInterpreter, $wgLuaInterpDefunct,
-	       $wgLuaInterp, $wgLuaWrapperFile;
-	if (isset($wgLuaInterpDefunct) && $wgLuaInterpDefunct) {
+	global $wgLuaExternalInterpreter, $wgLuaDefunct,
+		$wgLua, $wgLuaSandbox, $wgLuaWrapperFile,
+		$wgLuaMaxLines, $wgLuaMaxCalls;
+	if (isset($wgLuaDefunct) && $wgLuaDefunct) {
 		return '';
-	} else if (isset($wgLuaExternalInterpreter)) {
+	} else if ($wgLuaExternalInterpreter != FALSE) {
 		return efLua_EvalExternal($input);
 	} else if (!class_exists('lua')) {
-		throw new LuaError('pecl_notfound');
+		$wgLuaDefunct = true;
+		throw new LuaError('extension_notfound');
 	}
 
-	if (!isset($wgLuaInterp)) {
-		$wgLuaInterp = new lua;
+	if (!isset($wgLua)) {
+		$wgLua = new lua;
 		try {
-			$wgLuaInterp->evaluatefile($wgLuaWrapperFile);
-
+			$wgLua->evaluatefile($wgLuaWrapperFile);
+			$wgLua->evaluate("sandbox = make_sandbox()");
+			$wgLua->evaluate("function _die(reason)".
+					 "  _G._DEAD = reason; end");
+			$wgLua->evaluate("hook = make_hook($wgLuaMaxLines, ".
+					 "$wgLuaMaxCalls, _die)");
+			// @todo Especially these ones. :/
 		} catch (Exception $e) {
 			throw new LuaError('error_internal');
 		}
 	}
+
+	$wgLua->input = $input;
+	$wgLua->evaluate('chunk, err = loadstring(input)');
+	if ($err = $wgLua->err) {
+		$err = preg_replace('/^\[.+?\]:(.+?):/', '$1:', $err);
+		throw new LuaError('error', $err);
+	}
+	$wgLua->res = $wgLua->err = NULL;
+
+	$wgLua->evaluate('res, err = wrap(chunk, sandbox, hook)');
+	
+	if (($err = $wgLua->_DEAD) || ($err = $wgLua->err)) {
+		if ($err == 'RECURSION_LIMIT') {
+			efLua_CleanupExternal();
+			throw new LuaError('overflow_recursion');
+		} else if ($err == 'LOC_LIMIT') {
+			efLua_CleanupExternal();
+			throw new LuaError('overflow_loc');
+		} else {
+			$err = preg_replace('/^\[.+?\]:(.+?):/', '$1:', $err);
+			throw new LuaError('error', $err);
+		}
+	}
+
+	$wgLua->evaluate('_OUTPUT = sandbox._OUTPUT'); // ugh, please fix!
+	$out = $wgLua->_OUTPUT;
+	return (trim($out) != '') ? $out : '';
 }
 
 function efLua_Cleanup() {
-	global $wgLuaExternalInterpreter, $wgLuaInterpDefunct, $wgLuaInterp;
-	if (isset($wgLuaInterpDefunct) && $wgLuaInterpDefunct) {
+	global $wgLuaExternalInterpreter, $wgLuaDefunct, $wgLua;
+	if (isset($wgLuaDefunct) && $wgLuaDefunct) {
 		return FALSE;
 	} else if (isset($wgLuaExternalInterpreter)) {
 		return efLua_CleanupExternal();
-	} else if (isset($wgLuaInterp)) {
-		$wgLuaInterpDefunct = TRUE;
+	} else if (isset($wgLua)) {
+		$wgLuaDefunct = TRUE;
+		$wgLua = FALSE;
 		return TRUE;
 	}
 }
 
 function efLua_EvalExternal($input) {
-	global $wgLuaExternalInterpreter, $wgLuaProc, $wgLuaPipes, 
+	global $wgLuaExternalInterpreter, $wgLuaProc, $wgLuaPipes,
 	       $wgLuaWrapperFile, $wgLuaMaxLines, $wgLuaMaxCalls, 
 	       $wgLuaMaxTime;
 	if (!isset($wgLuaProc)) {
-		$wgLuaInterp = TRUE;
+		$wgLua = TRUE;
 		$luacmd = "$wgLuaExternalInterpreter $wgLuaWrapperFile $wgLuaMaxLines $wgLuaMaxCalls";
 		$wgLuaProc = proc_open($luacmd, 
 				       array(0 => array('pipe', 'r'),
 					     1 => array('pipe', 'w')),
 				       $wgLuaPipes, NULL, NULL);
-		if (!is_resource($wgLuaProc))
+		if (!is_resource($wgLuaProc)) {
+			$wgLuaDefunct = true;
 			throw new LuaError('interp_notfound');
+		}
 		stream_set_blocking($wgLuaPipes[0], 0);
 		stream_set_blocking($wgLuaPipes[1], 0);
 		stream_set_write_buffer($wgLuaPipes[0], 0);
@@ -160,14 +202,14 @@ function efLua_EvalExternal($input) {
 }
 
 function efLua_CleanupExternal() {
-	global $wgLuaExternalInterpreter, $wgLuaInterpDefunct,
+	global $wgLuaExternalInterpreter, $wgLuaDefunct,
 	       $wgLuaProc, $wgLuaPipes;
 	if (isset($wgLuaProc)) {
 		fclose($wgLuaPipes[0]);
 		fclose($wgLuaPipes[1]);
 		proc_close($wgLuaProc);
 	}
-	$wgLuaInterpDefunct = TRUE;
+	$wgLuaDefunct = TRUE;
 	return TRUE;
 }
 
