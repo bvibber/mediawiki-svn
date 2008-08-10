@@ -57,11 +57,15 @@
 		global $wgTitle;	
 		//print "cur title: " . $wgTitle->getDBkey() . ' ns: ' . $wgTitle->getNamespace();	
 		//check namespace (seq only show up via <tag> when in mvSequence namespace
+		if( !$wgTitle instanceof Title ) {
+			wfDebugLog( 'mvSeqTag', "wgTitle not instance of Title`" );
+			return true;			
+		}
 		if($wgTitle->getNamespace() == MV_NS_SEQUENCE ){	
 			$marker = MV_SequencePage::doSeqReplace($input, $argv, $parser);
 			return $marker;
 		}
-		return '';
+		return true;
 	}
  	/*
  	 * This method will be called whenever an article is moved so that
