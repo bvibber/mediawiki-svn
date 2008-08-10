@@ -576,13 +576,18 @@ abstract class ConfigurationPage extends SpecialPage {
 	 */
 	protected function injectScriptsAndStyles() {
 		global $wgOut, $wgScriptPath, $wgUseAjax, $wgJsMimeType, $wgConfigureStyleVersion;
-		$wgOut->addLink(
-			array(
-				'rel' => 'stylesheet',
-				'type' => 'text/css',
-				'href' => "{$wgScriptPath}/extensions/Configure/Configure.css?{$wgConfigureStyleVersion}",
-			)
-		);
+		$href = "{$wgScriptPath}/extensions/Configure/Configure.css?{$wgConfigureStyleVersion}";
+		if( is_callable( array( $wgOut, 'addExtensionStyle' ) ) ){
+			$wgOut->addExtensionStyle( $href );
+		} else {
+			$wgOut->addLink(
+				array(
+					'rel' => 'stylesheet',
+					'type' => 'text/css',
+					'href' => $href,
+				)
+			);
+		}
 		if( is_callable( array( 'Xml', 'encodeJsVar' ) ) ){ # 1.9 +
 			$add = Xml::encodeJsVar( wfMsg( 'configure-js-add' ) );
 			$remove = Xml::encodeJsVar( wfMsg( 'configure-js-remove' ) );

@@ -261,6 +261,7 @@ $settings = array(
 		'category' => array(
 			'wgCategoryMagicGallery' => 'bool',
 			'wgCategoryPagingLimit' => 'int',
+			'wgCategoryPrefixedDefaultSortkey' => 'bool',
 			'wgUseCategoryBrowser' => 'bool',
 		),
 	),
@@ -1142,6 +1143,7 @@ $settingsVersion = array(
 	'wgDisableTitleConversion' => array( array( '1.14alpha', '>=' ) ),
 	'wgOverrideSiteFeed' => array( array( '1.14alpha', '>=' ) ),
 	'wgPasswordAttemptThrottle' => array( array( '1.14alpha', '>=' ) ),
+	'wgCategoryPrefixedDefaultSortkey' => array( array( '1.14alpha', '>=' ) ),
 ## Obsolete
 	'wgProfileSampleRate' => array( array( '1.8alpha', '<' ) ),
 	'wgProfilerType' => array( array( '1.8alpha', '<' ) ),
