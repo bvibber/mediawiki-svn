@@ -1116,8 +1116,6 @@ class FSM(object):
         
         self.connectRetryCounter += 1
         self.state = ST_IDLE
-        
-        if self.bgpPeering: self.bgpPeering.connectionClosed(self.protocol)
     
     def _closeConnection(self):
         """Internal method that close the connection if a valid BGP protocol
@@ -1438,7 +1436,7 @@ class BGP(protocol.Protocol):
         """
         
         # DEBUG
-        print "NOTIFICATION:", error, suberror
+        print "NOTIFICATION:", error, suberror, " ".split([chr(d) for d in data])
         
         self.fsm.notificationReceived(error, suberror)
 
