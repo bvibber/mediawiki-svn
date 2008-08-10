@@ -943,8 +943,8 @@ $messages['hu'] = array(
 	'ogg-play-sound' => 'Hang lejátszása',
 	'ogg-no-player' => 'Sajnáljuk, de úgy tűnik, hogy nem rendelkezel a megfelelő lejátszóval. Amennyiben le szeretnéd játszani, <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">tölts le egyet</a>.',
 	'ogg-no-xiphqt' => 'Úgy tűnik, nem rendelkezel a QuickTime-hoz való XiphQT összetevővel. Enélkül a QuickTime nem tudja lejátszani az Ogg fájlokat. A lejátszáshoz tölts le egyet <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">innen</a>, vagy válassz másik lejátszót.',
-	'ogg-player-videoElement' => '<video> elem',
-	'ogg-player-oggPlugin' => 'Ogg beépülő modul',
+	'ogg-player-videoElement' => 'A böngésző támogatja',
+	'ogg-player-oggPlugin' => 'Beépülő modul böngészőhöz',
 	'ogg-player-thumbnail' => 'Csak állókép',
 	'ogg-player-soundthumb' => 'Nincs lejátszó',
 	'ogg-player-selected' => '(kiválasztott)',
@@ -1326,7 +1326,48 @@ $messages['krj'] = array(
  * @author Purodha
  */
 $messages['ksh'] = array(
+	'ogg-desc' => 'En Projamm (<i lang="en">handler</i>) för <i lang="en">Ogg Theora</i> un <i lang="en">Ogg Vorbis</i> Dateie, met enem Javaskrip Afspiller.',
+	'ogg-short-audio' => '<i lang="en">Ogg $1</i> Tondatei, $2',
+	'ogg-short-video' => '<i lang="en">Ogg $1</i> Viddejodatei, $2',
+	'ogg-short-general' => '<i lang="en">Ogg $1</i> Medijedatei, $2',
+	'ogg-long-audio' => '(<i lang="en">Ogg $1</i> Tondatei fum Ömfang $2, $3)',
+	'ogg-long-video' => '(<i lang="en">Ogg $1</i> Viddejodatei fum Ömfang $2 un {{PLURAL:$4|ein Pixel|$4 Pixelle|kei Pixel}} × {{PLURAL:$5|ei Pixel|$4 Pixelle|kei Pixel}}, $3)',
+	'ogg-long-multiplexed' => '(<i lang="en">Ogg</i> jemultipex Ton- un Viddejodatei, fum Ömfang $2 un {{PLURAL:$4|ein Pixel|$4 Pixelle|kei Pixel}} × {{PLURAL:$5|ei Pixel|$4 Pixelle|kei Pixel}}, $3 ennsjesammp)',
+	'ogg-long-general' => '(<i lang="en">Ogg</i> Medijedatei fum Ömfang $2, $3)',
+	'ogg-long-error' => '(ene kapodde <i lang="en">Ogg</i> Datei: $1)',
+	'ogg-play' => 'Loßläje!',
+	'ogg-pause' => 'Aanhallde!',
+	'ogg-stop' => 'Ophüre!',
+	'ogg-play-video' => 'Dun der Viddejo affshpelle',
+	'ogg-play-sound' => 'Dä Ton afshpelle',
+	'ogg-no-player' => 'Deijt mer leid, süüd_esu uß, wi wann Dinge Kompjutor kei
+Affspellprojramm hät, wat mer öngerstoze däte.
+Beß esu joot, un <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">donn e Affspellprojramm erunger lade</a>.',
+	'ogg-no-xiphqt' => 'Deijt mer leid, süüd_esu uß, wi wann Dinge Kompjutor nit
+dat XiphQT Affspellprojrammstöck för <i lang="en">QuickTime</i> hät,
+ävver <i lang="en">QuickTime</i> kann <i lang="en">Ogg</i>-Dateie
+der oohne nit affspelle.
+Beß esu joot, un <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">donn dat XiphQT erunger lade</a>,
+udder sök Der en annder Affspellprojramm uß.',
+	'ogg-player-videoElement' => 'Ongerstözung för Brauser',
+	'ogg-player-oggPlugin' => 'Brauser <i lang="en">Plug-In</i>',
+	'ogg-player-cortado' => 'Cortado (Java)',
+	'ogg-player-vlc-mozilla' => 'VLC',
+	'ogg-player-vlc-activex' => 'VLC (<i lang="en">ActiveX</i>)',
+	'ogg-player-quicktime-mozilla' => '<i lang="en">QuickTime</i>',
+	'ogg-player-quicktime-activex' => '<i lang="en">QuickTime</i> (<i lang="en">ActiveX</i>)',
+	'ogg-player-totem' => 'Totem',
+	'ogg-player-kmplayer' => 'KM<i lang="en">Player</i>',
+	'ogg-player-kaffeine' => '<i lang="en">Kaffeine</i>',
+	'ogg-player-mplayerplug-in' => '<i lang="en">mplayerplug-in</i>',
+	'ogg-player-thumbnail' => 'Bloß e Standbeld',
+	'ogg-player-soundthumb' => 'Kei Affspellprojramm',
+	'ogg-player-selected' => '(Ußjesoht)',
+	'ogg-use-player' => 'Affspellprojramm:',
 	'ogg-more' => 'Enshtelle&nbsp;…',
+	'ogg-dismiss' => 'Zomaache!',
+	'ogg-download' => 'Datei erunger lade',
+	'ogg-desc-link' => 'Övver di Datei',
 );
 
 /** Latin (Latina)

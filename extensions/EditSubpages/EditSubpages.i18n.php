@@ -162,7 +162,7 @@ $messages['mr'] = array(
  */
 $messages['nl'] = array(
 	'editsubpages-desc' => "Geeft beheerders de mogelijkheid een pagina en alle subpagina's van die pagina te deblokkeren voor anoniem bewekren via [[MediaWiki:Unlockedpages]]",
-	'unlockedpages' => "  #<!-- deze regel niet wijzigen --><pre>
+	'unlockedpages' => " #<!-- deze regel niet wijzigen --><pre>
 # Zet pagina's die u wilt vrijgeven hieronder als volgt:
 # * pagename
 # Vrijgegeven pagina's moeten als ongenummerde lijst worden toegevoegd,

@@ -19,10 +19,10 @@ $messages['en'] = array(
 
 /** Message documentation (Message documentation) */
 $messages['qqq'] = array(
-	'backforth-next' => 'Part of the "Back-And-Forth" extension. A link to the next page shown on the top of every page. The opposite is "[[MediaWiki:Backforth-prev/{{SUBPAGENAME}}|{{int:backforth-prev}}]]".
+	'backforth-next' => 'Part of the "Back-And-Forth" extension. A link to the next page shown on the top of every page. The opposite is {{msg|backforth-prev}}.
 
 {{Identical|Next}}',
-	'backforth-prev' => 'Part of the "Back-And-Forth" extension. A link to the previous page shown on the top of every page. The opposite is "[[MediaWiki:Backforth-next/{{SUBPAGENAME}}|{{int:backforth-next}}]]".
+	'backforth-prev' => 'Part of the "Back-And-Forth" extension. A link to the previous page shown on the top of every page. The opposite is {{msg|backforth-next}}.
 
 {{Identical|Previous}}',
 );

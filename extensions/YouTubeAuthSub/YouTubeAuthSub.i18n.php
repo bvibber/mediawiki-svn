@@ -741,7 +741,7 @@ $messages['mr'] = array(
 $messages['mt'] = array(
 	'youtubeauthsub' => "Tella' vidjo tal-YouTube",
 	'youtubeauthsub-desc' => 'Tippermetti lill-utenti biex [[Special:YouTubeAuthSub|itellgħu vidjos]] direttament fuq YouTube',
-	'youtubeauthsub_info' => "Sabiex itella' vidjo fuq YouTube biex tagħmel użu minnu fuq paġna, imla' l-informazzjoni segwenti:",
+	'youtubeauthsub_info' => "Sabiex ittella' vidjo fuq YouTube biex tagħmel użu minnu fuq paġna, imla l-informazzjoni segwenti:",
 	'youtubeauthsub_title' => 'Titlu',
 	'youtubeauthsub_description' => 'Deskrizzjoni',
 	'youtubeauthsub_password' => 'Password tal-YouTube',
@@ -750,11 +750,11 @@ $messages['mt'] = array(
 	'youtubeauthsub_category' => 'Kategorija',
 	'youtubeauthsub_submit' => 'Ibgħat',
 	'youtubeauthsub_clickhere' => 'Agħfas hawn biex tillogja fuq YouTube',
-	'youtubeauthsub_tokenerror' => "Kien hemm problema biex jinħoloq it-token tal-awtoriżazzjoni, prova tella' il-paġna mill-ġdid.",
-	'youtubeauthsub_success' => "Prosit!
-Il-Vidjo tiegħek ittella'. 
-Biex tara l-vidjo agħfas <a href='http://www.youtube.com/watch?v=$1'>hawnhekk</a>.
-YouTube jkun irrid ftit żmien sabiex jiproċessa l-vidjo tiegħek, allura jista' jkun li ma jkunx għad. 
+	'youtubeauthsub_tokenerror' => "Kien hemm problema biex jinħoloq it-token tal-awtorizazzjoni, prova tella' l-paġna mill-ġdid.",
+	'youtubeauthsub_success' => "Prosit!<br/>
+Il-vidjo tiegħek ittella'. 
+Biex tara l-vidjo agħfas <a href='http://www.youtube.com/watch?v=$1'>hawn</a>.
+YouTube ikun irid ftit żmien sabiex jiproċessa l-vidjo tiegħek, allura jista' jkun li ma jkunx għadu lest.
 
 Sabiex tinkludi l-vidjo tiegħek fuq paġna tal-wiki, daħħal il-kodiċi segwenti fil-paġna:
 <code>{{&#35;ev:youtube|$1}}</code>",
@@ -764,7 +764,7 @@ Sabiex tinkludi l-vidjo tiegħek fuq paġna tal-wiki, daħħal il-kodiċi segwen
 	'youtubeauthsub_code' => "{{#ev:youtube|$1}}.
 
 Dan il-vidjo jista' jintwera [http://www.youtube.com/watch?v=$1 hawnhekk]",
-	'youtubeauthsub_summary' => "Il-Vidjo tal-YouTube qiegħed jiġi mtella'",
+	'youtubeauthsub_summary' => "Il-vidjo tal-YouTube qiegħed jiġi mtella'",
 	'youtubeauthsub_uploading' => "Il-vidjo tiegħek qed jittella'.<br />
 Jekk jogħġbok kun pazjenti.",
 	'youtubeauthsub_viewpage' => "Tista' tara il-vidjo tiegħek [[$1|hawnhekk]].",

@@ -162,6 +162,7 @@ $messages['de'] = array(
 	'createsigndoc-email' => 'E-Mail-Adresse:',
 	'createsigndoc-minage' => 'Mindestalter:',
 	'createsigndoc-error-generic' => 'Fehler: $1',
+	'createsigndoc-error-pagenoexist' => 'Fehler: Die Seite [[$1]] existiert nicht.',
 );
 
 /** Greek (Ελληνικά)

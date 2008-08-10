@@ -244,14 +244,15 @@ $messages['hsb'] = array(
 
 /** Hungarian (Magyar)
  * @author Dani
+ * @author Gondnok
  * @author KossuthRad
  */
 $messages['hu'] = array(
 	'intersection-desc' => 'Megjeleníti egy adott kategóriában, vagy kategóriák uniójában lévő legújabb szócikkek listáját',
-	'intersection_toomanycats' => 'Error: Túl sok kategória!',
-	'intersection_toofewcats' => 'Error: Túl kevés kategória!',
-	'intersection_noresults' => 'Error: Nincs eredmény!',
-	'intersection_noincludecats' => 'Error: Tartalmaznod kell legalább egy kategóriát különösképpen a névtérre!',
+	'intersection_toomanycats' => 'Hiba: Túl sok kategória!',
+	'intersection_toofewcats' => 'Hiba: Túl kevés kategória!',
+	'intersection_noresults' => 'Hiba: Nincs eredmény!',
+	'intersection_noincludecats' => 'Hiba: Legalább egy listázandó kategóriát meg kell adnod, vagy pedig egy névteret!',
 );
 
 /** Interlingua (Interlingua)

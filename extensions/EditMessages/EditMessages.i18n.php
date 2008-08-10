@@ -81,6 +81,13 @@ $messages['ar'] = array(
 	'editmsg-patch-success' => 'تم تنفيذ الباتش بنجاح.',
 );
 
+/** Assamese (অসমীয়া)
+ * @author Rajuonline
+ */
+$messages['as'] = array(
+	'editmessages' => 'বার্তা সম্পাদনা',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  */

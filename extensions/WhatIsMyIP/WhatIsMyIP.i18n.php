@@ -124,6 +124,15 @@ $messages['he'] = array(
 	'whatismyip-out' => 'כתובת ה־IP שלך:',
 );
 
+/** Croatian (Hrvatski)
+ * @author Dalibor Bosits
+ */
+$messages['hr'] = array(
+	'whatismyip' => 'Moj IP',
+	'whatismyip-desc' => 'Pokazuje trenutačnu IP adresu suradnika na [[Special:WhatIsMyIP]]',
+	'whatismyip-out' => 'Tvoj IP:',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

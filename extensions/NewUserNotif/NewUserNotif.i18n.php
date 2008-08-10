@@ -370,7 +370,7 @@ $messages['tet'] = array(
 	'newusernotifsubj' => "Mensajen kona-ba uza-na'in foun ba $1",
 	'newusernotifbody' => "Olá $1,
 
-uza-na'in foun, $2, registrar tiha iha $3 iha loron $4.",
+nuza-na'in foun, $2, registrar tiha iha $3 iha loron $4.",
 );
 
 /** Tajik (Cyrillic) (Тоҷикӣ (Cyrillic))

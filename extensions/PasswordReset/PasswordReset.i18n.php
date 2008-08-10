@@ -731,7 +731,7 @@ $messages['su'] = array(
  */
 $messages['sv'] = array(
 	'passwordreset' => 'Lösenordsåterställning',
-	'passwordreset-desc' => "Återställ användarens lösenord - kräver 'passwordreset'-rättigheter",
+	'passwordreset-desc' => "[[Special:Passwordreset|Återställ användarens lösenord]] - kräver 'passwordreset'-rättigheter",
 	'passwordreset-invalidusername' => 'Ogiltigt användarnamn',
 	'passwordreset-emptyusername' => 'Tomt användarnamn',
 	'passwordreset-nopassmatch' => 'Lösenordet matchar inte',

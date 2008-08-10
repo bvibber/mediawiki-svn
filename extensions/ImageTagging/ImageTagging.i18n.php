@@ -136,6 +136,8 @@ $messages['bg'] = array(
 	'imagetagging-article' => 'Страница:',
 	'imagetagging-imghistory' => 'История',
 	'imagetagging-tagcancel-button' => 'Отказване',
+	'imagetagging-imagetag-seemoreimages' => 'Преглеждане на още снимки на „$1“ ($2)',
+	'imagetagging-taggedimages-displaying' => 'Показване на $1 - $2 от $3 снимки на „$4“',
 );
 
 /** Czech (Česky)

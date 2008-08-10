@@ -236,9 +236,10 @@ $messages['zh-hans'] = array(
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)
+ * @author Alexsh
  * @author Shinjiman
  */
 $messages['zh-hant'] = array(
-	'universaleditbutton-desc' => '加入HTML頁首<code>&lt;link&gt;</code>去支援萬用編輯按鈕瀏覽器擴展',
+	'universaleditbutton-desc' => '加入HTML頁首<code>&lt;link&gt;</code>以支援萬用編輯按鈕瀏覽器擴展',
 );
 
