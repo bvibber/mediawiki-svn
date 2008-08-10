@@ -15,14 +15,17 @@ $wgExtensionCredits['parserhook'][] = array(
 	'svn-date'       => '$LastChangedDate$',
 	'svn-revision'   => '$LastChangedRevision$',
 	'url'            => 'http://www.mediawiki.org/wiki/Extension:Lua',
-	'description'    => 'Extends the parser with support for embedded blocks ofLua code',
+	'description'    => 'Extends the parser with support for embedded blocks of Lua code',
 	'descriptionmsg' => 'lua_desc',
 );
 
 $dir = dirname(__FILE__) . '/';
 $wgExtensionMessagesFiles['Lua'] = $dir . 'Lua.i18n.php';
 // convert me to $wgAutoloadClasses
-require_once( $dir . 'Lua_body.php');
+$wgAutoloadClasses['LuaHooks'] = $dir . 'Lua.hooks.php';
+$wgAutoloadClasses['LuaError'] = $dir . 'Lua.wrapper.php';
+$wgAutoloadClasses['LuaWrapper'] = $dir . 'Lua.wrapper.php';
+$wgAutoloadClasses['LuaWrapperExternal'] = $dir . 'Lua.wrapper.php';
 $wgLuaWrapperFile = $dir . 'LuaWrapper.lua';
 
 if (!isset($wgLuaExternalInterpreter))
@@ -38,12 +41,10 @@ if (!isset($wgLuaMaxTime))
 
 # Avoid unstubbing $wgParser on setHook() too early on modern (1.12+) MW versions, as per r35980
 if (defined('MW_SUPPORTS_PARSERFIRSTCALLINIT')) {
-	$wgHooks['ParserFirstCallInit'][] = 'efLua_ParserInit';
+	$wgHooks['ParserFirstCallInit'][] = 'LuaHooks::parserInit';
 } else { // Otherwise do things the old fashioned way
-	$wgExtensionFunctions[] = 'efLua_ParserInit';
+	$wgExtensionFunctions[] = 'LuaHooks::parserInit';
 }
-# Define a setup function
-$wgExtensionFunctions[] = 'efLua_FunctionSetup';
 # Add a hook to initialise the magic word
-$wgHooks['LanguageGetMagic'][] = 'efLua_Magic';
-$wgHooks['ParserBeforeTidy'][] = 'efLua_BeforeTidy';
+$wgHooks['LanguageGetMagic'][] = 'LuaHooks::magic';
+$wgHooks['ParserBeforeTidy'][] = 'LuaHooks::beforeTidy';
