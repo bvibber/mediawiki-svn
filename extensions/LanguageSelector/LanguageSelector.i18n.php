@@ -16,7 +16,10 @@ $messages['en'] = array(
 	'languageselector-setlang' => 'set',
 );
 
-/** Message documentation (Message documentation) */
+/** Message documentation (Message documentation)
+ * @author Jon Harald Søby
+ * @author SPQRobin
+ */
 $messages['qqq'] = array(
 	'languageselector' => 'Part of the "LanguageSelector" extension. You can see it when the wiki administrator has chosen for a language selector in the sidebar, so this message would be the title, like you have "navigation", "search" and "toolbox".
 

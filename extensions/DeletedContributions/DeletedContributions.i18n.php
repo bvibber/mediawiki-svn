@@ -14,6 +14,7 @@ $messages['en'] = array(
 
 /** Message documentation (Message documentation)
  * @author Meno25
+ * @author SPQRobin
  */
 $messages['qqq'] = array(
 	'deletedcontributions' => 'Title of [[Special:DeletedContributions]] (extension), a special page with a list of edits to pages which were deleted. Only viewable by sysops. The message is also shown as a link on [[Special:Contributions]] to the DeletedContributions special page.',

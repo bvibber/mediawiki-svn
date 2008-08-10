@@ -49,7 +49,9 @@ $messages['en'] = array(
 	'review_comment' => "Comment",
 );
 
-/** Message documentation (Message documentation) */
+/** Message documentation (Message documentation)
+ * @author Jon Harald Søby
+ */
 $messages['qqq'] = array(
 	'review_sidebar_title' => '{{Identical|Review}}',
 	'review_total_statistics' => '{{Identical|Total}}',

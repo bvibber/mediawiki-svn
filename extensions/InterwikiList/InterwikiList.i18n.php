@@ -32,7 +32,7 @@ $messages['bg'] = array(
 );
 
 /** German (Deutsch)
- * @author Raymond Spekking
+ * @author Raimond Spekking
  */
 $messages['de'] = array(
 	'interwikilist' => 'Interwiki-Liste',

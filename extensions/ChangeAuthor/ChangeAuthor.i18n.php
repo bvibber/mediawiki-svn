@@ -55,7 +55,9 @@ If this error keeps showing up, the database is probably broken.',
 );
 
 /** Message documentation (Message documentation)
+ * @author Jon Harald Søby
  * @author Meno25
+ * @author Siebrand
  */
 $messages['qqq'] = array(
 	'changeauthor' => 'Name of the special page on [[Special:SpecialPages]]',
@@ -301,7 +303,7 @@ $messages['da'] = array(
 );
 
 /** German (Deutsch)
- * @author Raymond
+ * @author Raimond Spekking
  */
 $messages['de'] = array(
 	'changeauthor' => 'Autor einer Version ändern',

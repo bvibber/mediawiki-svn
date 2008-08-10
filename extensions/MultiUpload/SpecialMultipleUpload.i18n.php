@@ -26,7 +26,9 @@ Inappropriate files will be deleted immediately, see the [[{{MediaWiki:Multipleu
 	'multiupload-toolbox'              => "Upload multiple files",
 );
 
-/** Message documentation (Message documentation) */
+/** Message documentation (Message documentation)
+ * @author Jon Harald Søby
+ */
 $messages['qqq'] = array(
 	'multipleupload' => '{{Identical|Upload files}}',
 );

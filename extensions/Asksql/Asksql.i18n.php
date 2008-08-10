@@ -26,6 +26,7 @@ This can often add considerable load to the server, so please use this function 
 );
 
 /** Message documentation (Message documentation)
+ * @author Jon Harald Søby
  * @author Meno25
  */
 $messages['qqq'] = array(

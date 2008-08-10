@@ -22,7 +22,9 @@ $messages['en'] = array(
 	'postcomment_nopostingtoadd'           => 'No posting to add.',
 );
 
-/** Message documentation (Message documentation) */
+/** Message documentation (Message documentation)
+ * @author Siebrand
+ */
 $messages['qqq'] = array(
 	'postcomment_on' => '"On" as in "On <date>"',
 );

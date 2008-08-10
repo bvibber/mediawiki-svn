@@ -38,7 +38,9 @@ $messages['en'] = array(
 	'grouppage-patroller'    => '{{ns:project}}:Patroller',
 );
 
-/** Message documentation (Message documentation) */
+/** Message documentation (Message documentation)
+ * @author Jon Harald Søby
+ */
 $messages['qqq'] = array(
 	'patrol-revert' => '{{Identical|Revert}}',
 	'patrol-revert-reason' => '{{Identical|Reason}}',

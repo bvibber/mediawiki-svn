@@ -21,6 +21,7 @@ $messages['en'] = array(
 /** Message documentation (Message documentation)
  * @author GerardM
  * @author Meno25
+ * @author SPQRobin
  * @author Titoxd
  */
 $messages['qqq'] = array(
@@ -1130,6 +1131,7 @@ $messages['sah'] = array(
 	'newuserlog-byemail' => 'киирии тыл эл. почтаннан ыытылынна',
 	'newuserlog-create-entry' => 'Саҥа кыттааччы',
 	'newuserlog-create2-entry' => 'саҥа киһи бэлиэтэннэ $1',
+	'newuserlog-autocreate-entry' => 'Кыттааччы аата аптамаатынан оҥоһуллубут',
 );
 
 /** Slovak (Slovenčina)

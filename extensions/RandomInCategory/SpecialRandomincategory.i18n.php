@@ -16,7 +16,10 @@ $messages['en'] = array(
 	'randomincategory-submit'         => 'Go',
 );
 
-/** Message documentation (Message documentation) */
+/** Message documentation (Message documentation)
+ * @author Jon Harald Søby
+ * @author SPQRobin
+ */
 $messages['qqq'] = array(
 	'randomincategory' => 'Part of the "RandomInCategory" extension. This message is the title of the special page [[Special:Randomincategory]].',
 	'randomincategory-toolbox' => 'Part of the "RandomInCategory" extension. This message is shown in the toolbox, but only on category pages. It goes directly to a random page in the category you are viewing. You can also go the the special page [[MediaWiki:Randomincategory/{{SUBPAGENAME}}|Special:Randomincategory]] to enter a category name manually.

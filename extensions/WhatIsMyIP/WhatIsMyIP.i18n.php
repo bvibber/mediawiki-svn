@@ -64,7 +64,7 @@ $messages['de'] = array(
 );
 
 /** German (formal address) (Deutsch (Sie-Form))
- * @author Raymond
+ * @author Raimond Spekking
  */
 $messages['de-formal'] = array(
 	'whatismyip-out' => 'Ihre IP-Adresse:',

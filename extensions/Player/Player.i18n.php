@@ -29,7 +29,9 @@ $messages['en'] = array(
 	'player-goto-file'        => 'file',
 );
 
-/** Message documentation (Message documentation) */
+/** Message documentation (Message documentation)
+ * @author Jon Harald Søby
+ */
 $messages['qqq'] = array(
 	'player' => '{{Identical|Player}}',
 	'player-title' => '{{Identical|Player}}',

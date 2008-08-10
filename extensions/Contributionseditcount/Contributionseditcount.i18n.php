@@ -60,7 +60,7 @@ $messages['cs'] = array(
 );
 
 /** German (Deutsch)
- * @author Raymond
+ * @author Raimond Spekking
  */
 $messages['de'] = array(
 	'contributionseditcount' => 'Dieser Benutzer hat $1 Bearbeitungen.',
@@ -154,6 +154,14 @@ $messages['hsb'] = array(
  */
 $messages['hu'] = array(
 	'contributionseditcount' => 'A felhasználónak $1 szerkesztése van.',
+);
+
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'contributionseditcount' => 'Iste usator ha $1 modificationes.',
+	'contributionseditcount-desc' => 'Monstra un computo de modificationes in le [[Special:Contributions|pagina de contributiones de usator]]',
 );
 
 /** Indonesian (Bahasa Indonesia)

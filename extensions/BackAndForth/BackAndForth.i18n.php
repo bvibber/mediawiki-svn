@@ -17,7 +17,9 @@ $messages['en'] = array(
 	'backforth-prev' => 'Previous ($1)',
 );
 
-/** Message documentation (Message documentation) */
+/** Message documentation (Message documentation)
+ * @author SPQRobin
+ */
 $messages['qqq'] = array(
 	'backforth-next' => 'Part of the "Back-And-Forth" extension. A link to the next page shown on the top of every page. The opposite is {{msg|backforth-prev}}.
 

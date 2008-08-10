@@ -14,7 +14,9 @@ $messages['en'] = array(
         'msfunc_div_zero' => 'Division by zero',
 );
 
-/** Message documentation (Message documentation) */
+/** Message documentation (Message documentation)
+ * @author Jon Harald Søby
+ */
 $messages['qqq'] = array(
 	'msfunc_div_zero' => '{{Identical|Divizion by zero}}',
 );

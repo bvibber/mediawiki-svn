@@ -128,7 +128,9 @@ Please create it or change it to use this extension.',
 
 /** Message documentation (Message documentation)
  * @author Darth Kule
+ * @author Jon Harald Søby
  * @author Meno25
+ * @author Siebrand
  */
 $messages['qqq'] = array(
 	'configure' => 'Name of special page displayed in [[Special:SpecialPages]].',

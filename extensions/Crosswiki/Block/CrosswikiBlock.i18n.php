@@ -54,7 +54,9 @@ Return to:
 	'crosswikiunblock-local'          => 'Local unblocks are not supported via this interface. Use [[Special:IPBlockList|{{int:ipblocklist}}]]',
 );
 
-/** Message documentation (Message documentation) */
+/** Message documentation (Message documentation)
+ * @author Jon Harald Søby
+ */
 $messages['qqq'] = array(
 	'crosswikiblock-expiry' => '{{Identical|Expiry}}',
 	'crosswikiblock-reason' => '{{Identical|Reason}}',

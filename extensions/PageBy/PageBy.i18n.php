@@ -22,7 +22,9 @@ $messages['en'] = array(
 	'pageby-anon'         => '<i>anonymous</i>',
 );
 
-/** Message documentation (Message documentation) */
+/** Message documentation (Message documentation)
+ * @author Jon Harald Søby
+ */
 $messages['qqq'] = array(
 	'pageby-contributors' => '{{Identical|Contributors}}',
 );

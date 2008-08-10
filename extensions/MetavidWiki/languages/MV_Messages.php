@@ -237,7 +237,10 @@ Jump to stream view: $2',
 	'mv_protect_source_material'=> 'Original source material protected from edits'
 );
 
-/** Message documentation (Message documentation) */
+/** Message documentation (Message documentation)
+ * @author Jon Harald Søby
+ * @author Siebrand
+ */
 $messages['qqq'] = array(
 	'mv_user_cant_edit' => '$1 is login link and $2 is cancel link',
 	'mv_label_stream_name' => '{{Identical|Stream name}}',

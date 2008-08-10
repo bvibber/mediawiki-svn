@@ -44,7 +44,7 @@ $messages['ca'] = array(
 );
 
 /** German (Deutsch)
- * @author Raymond
+ * @author Raimond Spekking
  */
 $messages['de'] = array(
 	'mediafunctions-desc' => 'Parserfunktionen zur Ermittlung von Informatioen über Mediendateien',

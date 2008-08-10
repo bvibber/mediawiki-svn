@@ -42,7 +42,9 @@ Caution advised, expressions should not be too short or too common.',
 	'spamregex-summary-log'          => '(Summary)',
 );
 
-/** Message documentation (Message documentation) */
+/** Message documentation (Message documentation)
+ * @author Jon Harald Søby
+ */
 $messages['qqq'] = array(
 	'spamregex-already-blocked' => '{{Identical|$1 is already blocked}}',
 	'spamregex-text' => '{{Identical|Text}}',

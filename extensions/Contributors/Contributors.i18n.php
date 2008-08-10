@@ -25,7 +25,9 @@ $messages['en'] = array(
 	'contributors-nosuchpage'  => 'The page $1 does not exist.',
 );
 
-/** Message documentation (Message documentation) */
+/** Message documentation (Message documentation)
+ * @author Jon Harald Søby
+ */
 $messages['qqq'] = array(
 	'contributors' => '{{Identical|Contributors}}',
 	'contributors-target' => '{{Identical|Title}}',
@@ -392,6 +394,10 @@ $messages['hu'] = array(
  * @author McDutchie
  */
 $messages['ia'] = array(
+	'contributors' => 'Contributores',
+	'contributors-desc' => 'Detalia le contributores principal de un pagina',
+	'contributors-toolbox' => 'Contributores principal',
+	'contributors-legend' => 'Lista le contributores principal de un pagina',
 	'contributors-submit' => 'Revelar',
 );
 

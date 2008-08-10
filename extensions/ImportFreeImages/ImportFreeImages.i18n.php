@@ -26,7 +26,9 @@ To do so, please obtain a API key from  [http://www.flickr.com/services/api/misc
 	'importfreeimages_returntoform'   => 'Or, click <a href=\'$1\'>here</a> to return to your search results',
 );
 
-/** Message documentation (Message documentation) */
+/** Message documentation (Message documentation)
+ * @author Jon Harald Søby
+ */
 $messages['qqq'] = array(
 	'importfreeimages_owner' => '{{Identical|Author}}',
 	'importfreeimages_next' => '{{Identical|Next $1}}',

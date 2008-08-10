@@ -51,7 +51,9 @@ Please fill it in.',
 	'formsaveerrortext'            => 'There was an unknown error saving page \'$1\'.',
 );
 
-/** Message documentation (Message documentation) */
+/** Message documentation (Message documentation)
+ * @author Jon Harald Søby
+ */
 $messages['qqq'] = array(
 	'formsave' => '{{Identical|Save}}',
 );

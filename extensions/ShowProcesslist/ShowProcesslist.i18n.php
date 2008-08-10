@@ -20,7 +20,9 @@ $messages['en'] = array(
 	'showprocesslist-info'    => 'Info',
 );
 
-/** Message documentation (Message documentation) */
+/** Message documentation (Message documentation)
+ * @author Jon Harald Søby
+ */
 $messages['qqq'] = array(
 	'showprocesslist-desc' => 'The text “SHOW FULL PROCESSLIST“ is MySQL syntax, and should stay the way it is even in translations.',
 	'showprocesslist-id' => '{{Identical|ID}}',

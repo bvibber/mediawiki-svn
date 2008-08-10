@@ -50,7 +50,9 @@ $messages['ar'] = array(
 	'spamdifftool_submit_buttom' => 'تنفيذ',
 );
 
-/** Message documentation (Message documentation) */
+/** Message documentation (Message documentation)
+ * @author Jon Harald Søby
+ */
 $messages['qqq'] = array(
 	'spamdifftool_submit_buttom' => '{{Identical|Submit}}',
 );

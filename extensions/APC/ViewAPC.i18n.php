@@ -129,7 +129,9 @@ Newer version $2 is available at http://pecl.php.net/package/APC/$2',
 );
 
 /** Message documentation (Message documentation)
+ * @author Jon Harald Søby
  * @author Meno25
+ * @author Nike
  * @author Purodha
  * @author Sp5uhe
  */
@@ -495,7 +497,7 @@ Novější verze $2 je dostupná na http://pecl.php.net/package/APC/$2.',
  * @author Leithian
  * @author Pill
  * @author Purodha
- * @author Raymond
+ * @author Raimond Spekking
  * @author Revolus
  */
 $messages['de'] = array(

@@ -26,7 +26,9 @@ $messages['en'] = array(
 	'editmsg-patch-success'    => 'Successfully patched.',
 );
 
-/** Message documentation (Message documentation) */
+/** Message documentation (Message documentation)
+ * @author Jon Harald Søby
+ */
 $messages['qqq'] = array(
 	'editmsg-search' => '{{Identical|Search}}',
 );
@@ -320,7 +322,22 @@ $messages['hy'] = array(
  * @author McDutchie
  */
 $messages['ia'] = array(
+	'editmessages-desc' => '[[Special:EditMessages|Modification in web]] de grande numeros de files Messages*.php',
+	'editmessages' => 'Modificar messages',
+	'editmsg-target' => 'Messages de destination:',
 	'editmsg-search' => 'Cercar',
+	'editmsg-show-list' => 'Presentation del valores pro le nomine del message "$1"',
+	'editmsg-get-patch' => 'Generar patch',
+	'editmsg-new-search' => 'Nove recerca',
+	'editmsg-warning-parse1' => '* Nihil corresponde al regex a nomines de message: $1',
+	'editmsg-warning-parse2' => '* Character de citation expectate post sagitta: $1',
+	'editmsg-warning-parse3' => '* Fin del serie de characteres del valor non trovate: $1',
+	'editmsg-warning-file' => '* Errores de lectura de files se incontrava pro le sequente linguas: $1',
+	'editmsg-warning-mismatch' => '* Le texto original non habeva le valor expectate pro le sequente linguas: $1',
+	'editmsg-apply-patch' => 'Applicar patch',
+	'editmsg-no-patch' => 'Impossibile executar le commando "patch"',
+	'editmsg-patch-failed' => 'Le patch falleva con le stato de exito $1',
+	'editmsg-patch-success' => 'Patch applicate con successo.',
 );
 
 /** Italian (Italiano)

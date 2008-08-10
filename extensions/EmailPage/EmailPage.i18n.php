@@ -34,7 +34,9 @@ $messages['en'] = array(
 	'ea-selectcss'        => 'Select a CSS stylesheet',
 );
 
-/** Message documentation (Message documentation) */
+/** Message documentation (Message documentation)
+ * @author Jon Harald Søby
+ */
 $messages['qqq'] = array(
 	'ea-send' => '{{Identical|Send}}',
 );
@@ -83,11 +85,13 @@ $messages['bg'] = array(
 );
 
 /** German (Deutsch)
+ * @author Church of emacs
  * @author Leithian
  */
 $messages['de'] = array(
 	'ea-listrecipients' => '=== {{PLURAL:$1|Empfänger|$1 Empfänger}} ===',
 	'ea-send' => 'Senden!',
+	'ea-selectcss' => 'Wähle ein CSS-Stylesheet aus',
 );
 
 /** Esperanto (Esperanto)

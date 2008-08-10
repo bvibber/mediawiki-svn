@@ -19,7 +19,9 @@ $messages['en'] = array(
 	'dplforum-toomany' => 'DPL Forum: Too many categories!'
 );
 
-/** Message documentation (Message documentation) */
+/** Message documentation (Message documentation)
+ * @author Jon Harald Søby
+ */
 $messages['qqq'] = array(
 	'dplforum-never' => '{{Identical|Never}}',
 );

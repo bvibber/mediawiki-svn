@@ -54,7 +54,9 @@ Please <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_downlo
 
 /** Message documentation (Message documentation)
  * @author BrokenArrow
+ * @author Jon Harald Søby
  * @author Mormegil
+ * @author Siebrand
  */
 $messages['qqq'] = array(
 	'ogg-short-general' => 'File details for generic (non-audio, non-video) Ogg files, short version.
@@ -587,8 +589,8 @@ $messages['fa'] = array(
 	'ogg-play-sound' => 'پخش صوت',
 	'ogg-no-player' => 'متاسفانه دستگاه شما نرم‌افزار پخش‌کنندهٔ مناسب ندارد. لطفاً <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">یک برنامهٔ پخش‌کننده بارگیری کنید</a>.',
 	'ogg-no-xiphqt' => 'به نظر نمی‌سرد که شما جزء XiphQT از برنامهٔ QuickTime را داشته باشید. برنامهٔ QuickTime بدون این جزء توان پخش پرونده‌های Ogg را ندارد. لطفاً <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">XiphQT را بارگیری کنید</a> یا از یک پخش‌کنندهٔ دیگر استفاده کنید.',
-	'ogg-player-videoElement' => 'عنصر <تصویری>',
-	'ogg-player-oggPlugin' => 'افزونهٔ Ogg',
+	'ogg-player-videoElement' => 'پشتیبانی ذاتی مرورگر',
+	'ogg-player-oggPlugin' => 'افزونهٔ مرورگر',
 	'ogg-player-thumbnail' => 'فقط تصاویر ثابت',
 	'ogg-player-soundthumb' => 'فاقد پخش‌کننده',
 	'ogg-player-selected' => '(انتخاب شده)',

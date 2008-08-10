@@ -98,7 +98,9 @@ A security warning about an unsigned certificate may be displayed.',
 );
 
 /** Message documentation (Message documentation)
+ * @author Jon Harald Søby
  * @author Meno25
+ * @author Siebrand
  */
 $messages['qqq'] = array(
 	'boardvote_intro' => 'Used during Wikimedia Board of Trustees election via [[Special:Boardvote]]. This message is rewritten each election and especially the last paragraph should probably not be translated.',

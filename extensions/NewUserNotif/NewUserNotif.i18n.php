@@ -18,7 +18,9 @@ $messages['en'] = array(
 A new user account, $2, has been created on $3 at $4.",
 );
 
-/** Message documentation (Message documentation) */
+/** Message documentation (Message documentation)
+ * @author Siebrand
+ */
 $messages['qqq'] = array(
 	'newusernotifsubj' => 'This message contains the subject line for the email.
 $1 is replaced with the wiki site name.',

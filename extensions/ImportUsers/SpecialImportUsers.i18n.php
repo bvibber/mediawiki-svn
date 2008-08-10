@@ -31,6 +31,7 @@ $messages['en'] = array(
 );
 
 /** Message documentation (Message documentation)
+ * @author Jon Harald Søby
  * @author Kaustubh
  */
 $messages['qqq'] = array(

@@ -26,7 +26,9 @@ $messages['en'] = array(
 	'dt_xml_freetext'             => 'Free Text',
 );
 
-/** Message documentation (Message documentation) */
+/** Message documentation (Message documentation)
+ * @author Jon Harald Søby
+ */
 $messages['qqq'] = array(
 	'dt_viewxml_categories' => '{{Identical|Categories}}',
 	'dt_viewxml_namespaces' => '{{Identical|Namespaces}}',
@@ -244,6 +246,13 @@ $messages['gl'] = array(
 	'dt_xml_title' => 'Título',
 	'dt_xml_id' => 'ID',
 	'dt_xml_freetext' => 'Texto Libre',
+);
+
+/** Gothic (𐌲𐌿𐍄𐌹𐍃𐌺)
+ * @author Jocke Pirat
+ */
+$messages['got'] = array(
+	'dt_xml_namespace' => 'Seidofera',
 );
 
 /** Manx (Gaelg)

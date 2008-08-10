@@ -74,6 +74,7 @@ $messages['en'] = array(
 );
 
 /** Message documentation (Message documentation)
+ * @author Jon Harald Søby
  * @author Meno25
  */
 $messages['qqq'] = array(
@@ -229,7 +230,7 @@ $messages['bg'] = array(
 
 /** German (Deutsch)
  * @author Leithian
- * @author Raymond
+ * @author Raimond Spekking
  */
 $messages['de'] = array(
 	'grouppermissions' => 'Gruppenberechtigungen verwalten',

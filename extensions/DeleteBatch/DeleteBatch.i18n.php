@@ -40,7 +40,9 @@ Uploaded file should contain page name and optional reason separated by a "|" ch
 	'deletebatch-no-page' => 'Please specify at least one page to delete OR choose a file containing page list.',
 );
 
-/** Message documentation (Message documentation) */
+/** Message documentation (Message documentation)
+ * @author Jon Harald Søby
+ */
 $messages['qqq'] = array(
 	'deletebatch-button' => '{{Identical|Delete}}',
 	'deletebatch-reason' => '{{Identical|Reason for deletion}}',
@@ -99,7 +101,6 @@ $messages['bg'] = array(
 
 /** German (Deutsch)
  * @author Leithian
- * @author Raymond
  * @author Revolus
  */
 $messages['de'] = array(

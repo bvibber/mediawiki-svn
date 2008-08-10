@@ -40,7 +40,9 @@ $4",
 	'todo-form-submit'      => 'Submit query',
 );
 
-/** Message documentation (Message documentation) */
+/** Message documentation (Message documentation)
+ * @author Jon Harald Søby
+ */
 $messages['qqq'] = array(
 	'todo-new-queue' => '{{Identical|New}}',
 	'todo-list-for' => '{{Identical|Todo list for}}',

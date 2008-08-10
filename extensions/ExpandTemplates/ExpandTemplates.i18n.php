@@ -26,6 +26,7 @@ It does this by calling the relevant parser stage from MediaWiki itself.',
 );
 
 /** Message documentation (Message documentation)
+ * @author Jon Harald Søby
  * @author Meno25
  */
 $messages['qqq'] = array(

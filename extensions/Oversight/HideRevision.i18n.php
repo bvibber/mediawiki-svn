@@ -64,6 +64,7 @@ Releasing this information can result in permanent loss of Oversight privileges.
 );
 
 /** Message documentation (Message documentation)
+ * @author Jon Harald Søby
  * @author Meno25
  */
 $messages['qqq'] = array(

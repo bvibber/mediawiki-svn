@@ -61,7 +61,7 @@ $messages['da'] = array(
 );
 
 /** German (Deutsch)
- * @author Raymond
+ * @author Raimond Spekking
  */
 $messages['de'] = array(
 	'ajax-qp-desc' => 'Fügt AJAX-Funktionen zu Spezialseiten, wie [[Special:Shortpages|{{int:shortpages}}]], hinzu',

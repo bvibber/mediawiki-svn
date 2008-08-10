@@ -30,7 +30,9 @@ To see your complete Task List go to %s.
 Your friendly %s notification system",
 );
 
-/** Message documentation (Message documentation) */
+/** Message documentation (Message documentation)
+ * @author Jon Harald Søby
+ */
 $messages['qqq'] = array(
 	'tasklistincorrectuser' => '{{Identical|Incorrect username}}',
 	'tasklistbyname' => '{{Identical|Todo list for}}',

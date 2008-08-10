@@ -23,7 +23,7 @@ $messages['ar'] = array(
 );
 
 /** German (Deutsch)
- * @author Raymond
+ * @author Raimond Spekking
  */
 $messages['de'] = array(
 	'signaturelogpage' => 'Unterschrifts-Logbuch',

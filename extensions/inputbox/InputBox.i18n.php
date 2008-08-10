@@ -25,6 +25,7 @@ Please specify "create", "comment", "search" or "search2".',
 
 /** Message documentation (Message documentation)
  * @author Meno25
+ * @author SPQRobin
  */
 $messages['qqq'] = array(
 	'inputbox-desc' => 'Short description of the Inputbox extension, shown on [[Special:Version]].',

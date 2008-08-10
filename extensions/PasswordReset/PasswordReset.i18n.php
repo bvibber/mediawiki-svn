@@ -26,7 +26,9 @@ $messages['en'] = array(
 	'disabledusers-summary'            => 'This is a list of users that have been disabled via PasswordReset.',
 );
 
-/** Message documentation (Message documentation) */
+/** Message documentation (Message documentation)
+ * @author Jon Harald Søby
+ */
 $messages['qqq'] = array(
 	'passwordreset-badtoken' => '{{Identical|Invalid edit token}}',
 	'passwordreset-username' => '{{Identical|Username}}',

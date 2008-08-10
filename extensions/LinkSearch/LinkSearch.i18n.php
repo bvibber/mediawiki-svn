@@ -21,6 +21,7 @@ Supported protocols: <tt>$1</tt>',
 );
 
 /** Message documentation (Message documentation)
+ * @author Jon Harald Søby
  * @author Meno25
  */
 $messages['qqq'] = array(
@@ -251,7 +252,7 @@ $messages['cu'] = array(
 );
 
 /** Danish (Dansk)
- * @author Morten
+ * @author Morten LJ
  */
 $messages['da'] = array(
 	'linksearch' => 'Søg i weblinks',

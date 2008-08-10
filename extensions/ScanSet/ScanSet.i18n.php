@@ -22,7 +22,9 @@ $messages['en'] = array(
 	'scanset_prev'                      => '&lt; Previous',
 );
 
-/** Message documentation (Message documentation) */
+/** Message documentation (Message documentation)
+ * @author Jon Harald Søby
+ */
 $messages['qqq'] = array(
 	'scanset_next' => '{{Identical|Next}}',
 	'scanset_prev' => '{{Identical|Prev}}',

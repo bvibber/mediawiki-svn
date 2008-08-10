@@ -66,7 +66,10 @@ Probably there is no such user.',
 	'regexblock-view-time'            => 'on $1',
 );
 
-/** Message documentation (Message documentation) */
+/** Message documentation (Message documentation)
+ * @author Jon Harald Søby
+ * @author SPQRobin
+ */
 $messages['qqq'] = array(
 	'regexblock-reason-ip' => 'Parameter $1 is <tt>$wgContactLink</tt>, which is by default "<tt><nowiki>[[Special:Contact|contact Wikia]]</nowiki></tt>".',
 	'regexblock-reason-name' => 'Parameter $1 is <tt>$wgContactLink</tt>, which is by default "<tt><nowiki>[[Special:Contact|contact Wikia]]</nowiki></tt>".',

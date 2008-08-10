@@ -15,7 +15,9 @@ $messages['en'] = array(
 	'findspam-notextfound' => 'No contributions found',
 );
 
-/** Message documentation (Message documentation) */
+/** Message documentation (Message documentation)
+ * @author Jon Harald Søby
+ */
 $messages['qqq'] = array(
 	'findspam-ip' => '{{Identical|IP Address}}',
 	'findspam-ok' => '{{Identical|OK}}',

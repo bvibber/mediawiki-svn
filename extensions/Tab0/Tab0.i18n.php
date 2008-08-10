@@ -34,7 +34,7 @@ $messages['cs'] = array(
 );
 
 /** German (Deutsch)
- * @author Raymond
+ * @author Raimond Spekking
  */
 $messages['de'] = array(
 	'tab0-desc' => 'Fügt ein „0“-Tab hinzu, mit dem man den ersten Abschnitt einer Seite bearbeiten kann',

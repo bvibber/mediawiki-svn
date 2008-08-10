@@ -52,7 +52,9 @@ If you have any questions about this extension distribution system, please go to
 		'extdist-want-more' => 'Get another extension',
 );
 
-/** Message documentation (Message documentation) */
+/** Message documentation (Message documentation)
+ * @author Jon Harald Søby
+ */
 $messages['qqq'] = array(
 	'extdist-submit-extension' => '{{Identical|Continue}}',
 	'extdist-submit-version' => '{{Identical|Continue}}',

@@ -80,7 +80,9 @@ $wgGoogleMapsMessages['en'] = array(
 	'gm-mars'                      => 'Mars',
 );
 
-/** Message documentation (Message documentation) */
+/** Message documentation (Message documentation)
+ * @author Jon Harald Søby
+ */
 $wgGoogleMapsMessages['qqq'] = array(
 	'gm-balloon-title' => '{{Identical|Title}}',
 	'gm-remove' => '{{Identical|Remove}}',

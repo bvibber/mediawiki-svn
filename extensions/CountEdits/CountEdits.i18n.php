@@ -25,7 +25,9 @@ Do not judge contributors by their edit count.",
 	'countedits-nocontribs'   => 'There have been no contributions to this wiki.',
 );
 
-/** Message documentation (Message documentation) */
+/** Message documentation (Message documentation)
+ * @author Jon Harald Søby
+ */
 $messages['qqq'] = array(
 	'countedits-username' => '{{Identical|Username}}',
 	'countedits-ok' => '{{Identical|OK}}',
@@ -173,7 +175,7 @@ $messages['da'] = array(
 
 /** German (Deutsch)
  * @author ChrisiPK
- * @author Raymond Spekking
+ * @author Raimond Spekking
  */
 $messages['de'] = array(
 	'countedits' => 'Beitragszähler',

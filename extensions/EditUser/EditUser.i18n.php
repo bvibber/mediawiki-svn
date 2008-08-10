@@ -20,7 +20,9 @@ $messages['en'] = array(
 	'edituser-exempt' => 'The specified user cannot be edited',
 );
 
-/** Message documentation (Message documentation) */
+/** Message documentation (Message documentation)
+ * @author Jon Harald Søby
+ */
 $messages['qqq'] = array(
 	'edituser-username' => '{{Identical|Name}}',
 	'edituser-dosearch' => '{{Identical|Search}}',

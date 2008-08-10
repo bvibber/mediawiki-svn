@@ -46,7 +46,10 @@ Please wait for the existing action to complete.',
 	'tag-logpagetext'						=> 'This is a log of all image tag additions and removals.',
 );
 
-/** Message documentation (Message documentation) */
+/** Message documentation (Message documentation)
+ * @author Jon Harald Søby
+ * @author M.M.S.
+ */
 $messages['qqq'] = array(
 	'imagetagging-article' => '{{Identical/Page}}',
 	'imagetagging-imghistory' => '{{Identical|History}}',

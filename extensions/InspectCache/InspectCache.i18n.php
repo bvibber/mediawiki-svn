@@ -20,7 +20,10 @@ $messages['en'] = array(
 	'inspectcache-list'    => 'List',
 );
 
-/** Message documentation (Message documentation) */
+/** Message documentation (Message documentation)
+ * @author Jon Harald Søby
+ * @author Siebrand
+ */
 $messages['qqq'] = array(
 	'inspectcache-ok' => '{{Identical|OK}}',
 	'inspectcache-delete' => '{{Identical|Delete}}',

@@ -35,7 +35,9 @@ $messages['en'] = array(
 	'badimages-page'           => '{{ns:help}}:Bad image list',
 );
 
-/** Message documentation (Message documentation) */
+/** Message documentation (Message documentation)
+ * @author Jon Harald Søby
+ */
 $messages['qqq'] = array(
 	'badimages' => '{{Identical|Bad image list}}',
 	'badimages-add-btn' => '{{Identical|Add}}',

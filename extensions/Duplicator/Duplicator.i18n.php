@@ -37,7 +37,9 @@ An unknown error occurred.',
 The current limit is $3.',
 );
 
-/** Message documentation (Message documentation) */
+/** Message documentation (Message documentation)
+ * @author Jon Harald Søby
+ */
 $messages['qqq'] = array(
 	'duplicator-options' => '{{Identical|Options}}',
 	'duplicator-source' => '{{Identical|Source}}',

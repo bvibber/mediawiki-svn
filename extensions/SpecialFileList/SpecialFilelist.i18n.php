@@ -18,7 +18,9 @@ $messages['en'] = array(
 	'filelist-image-desc'   => 'desc',
 );
 
-/** Message documentation (Message documentation) */
+/** Message documentation (Message documentation)
+ * @author Jon Harald Søby
+ */
 $messages['qqq'] = array(
 	'filelist' => '{{Identical|File list}}',
 );

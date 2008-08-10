@@ -25,7 +25,9 @@ $messages['en'] = array(
 	'profiling-no-data'      => 'No matching data found.',
 );
 
-/** Message documentation (Message documentation) */
+/** Message documentation (Message documentation)
+ * @author Jon Harald Søby
+ */
 $messages['qqq'] = array(
 	'profiling-ok' => '{{Identical|OK}}',
 	'profiling-data-process' => '{{Identical|Process}}',

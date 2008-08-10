@@ -34,7 +34,9 @@ To test it, please visit [{{SERVER}}{{localurl: Special:SignDocument|doc=$2}} th
 	'createsigndoc-error-alreadycreated' => 'Document signing "$1" already exist.'
 );
 
-/** Message documentation (Message documentation) */
+/** Message documentation (Message documentation)
+ * @author Jon Harald Søby
+ */
 $messages['qqq'] = array(
 	'createsigndoc-pagename' => '{{Identical|Page}}',
 	'createsigndoc-email' => '{{Identical|E-mail address}}',

@@ -35,7 +35,10 @@ $messages['en'] = array(
 	'chemFunctions_SearchExplanation'  => '',
 );
 
-/** Message documentation (Message documentation) */
+/** Message documentation (Message documentation)
+ * @author Jon Harald Søby
+ * @author Siebrand
+ */
 $messages['qqq'] = array(
 	'chemicalsources' => '{{Identical|Chemical sources}}',
 	'chemFunctions_ListPage' => '{{Identical|Chemical sources}}',

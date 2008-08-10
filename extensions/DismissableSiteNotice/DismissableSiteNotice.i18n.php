@@ -13,7 +13,9 @@ $messages['en'] = array(
 	'sitenotice-desc'  => 'Allows users to close the sitenotice',
 );
 
-/** Message documentation (Message documentation) */
+/** Message documentation (Message documentation)
+ * @author SPQRobin
+ */
 $messages['qqq'] = array(
 	'sitenotice_close' => 'Part of the DismissableSiteNotice extension. You can see this on the right side of the [[MediaWiki:Sitenotice|sitenotice]].
 

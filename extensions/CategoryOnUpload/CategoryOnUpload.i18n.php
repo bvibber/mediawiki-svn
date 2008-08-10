@@ -17,7 +17,10 @@ $messages['en'] = array(
 	'categoryonupload-none'  => '-', # Do not translate or duplicate this message to other languages.
 );
 
-/** Message documentation (Message documentation) */
+/** Message documentation (Message documentation)
+ * @author Jon Harald Søby
+ * @author SPQRobin
+ */
 $messages['qqq'] = array(
 	'categoryonupload-desc' => 'Description on [[Special:Version]] of the CategoryOnUpload extension. See [http://upload.wikimedia.org/wikipedia/mediawiki/5/5c/CategoryOnUpload_Screenshot.png this image] for what it does.',
 	'categoryonupload-label' => '{{identical|Category}}',

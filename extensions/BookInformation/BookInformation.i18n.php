@@ -24,7 +24,9 @@ $messages['en'] = array(
 	'bookinfo-provider'          => 'Data provider: $1',
 );
 
-/** Message documentation (Message documentation) */
+/** Message documentation (Message documentation)
+ * @author Jon Harald Søby
+ */
 $messages['qqq'] = array(
 	'bookinfo-result-title' => '{{Identical|Title}}',
 	'bookinfo-result-author' => '{{Identical|Author}}',
