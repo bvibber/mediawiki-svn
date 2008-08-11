@@ -227,7 +227,7 @@ function wfRecurrentParse ($text, $level) {
 
 function beforeTidyHook($parser, $text) {
     global $wgServer, $wgScriptPath, $wgUser;
-    if ($wgUser->getOption ('in-page', 1) == 0 ) return;
+    if ($wgUser->getOption ('in-page', 1) == 0 ) return true;
     $wgScriptPath != "" ? $fixedPath = $wgServer."/".$wgScriptPath : $fixedPath = $wgServer;
     /* stuff changed in MW 1.9.3, the order of elements is different now */
     /* one more interesting thing - determine the maximum depth of the headers
