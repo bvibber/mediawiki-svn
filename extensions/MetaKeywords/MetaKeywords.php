@@ -21,12 +21,17 @@
 //Ideas from http://mediawiki.org/wiki/Extension:Gadgets thanks to Duesentrieb
 //           [[User:Mike Dillon]]
 
-$wgExtensionCredits['other'][] = array( 
-		'name'        => 'MetaKeywords', 
-		'author'      => 'Conrad Irwin', 
-		'url'         => 'http://en.wiktionary.org/wiki/User:Conrad.Irwin/MetaKeywords.php',
-		'description' => 'lets wikis add meta keywords depending on namespace'
+$wgExtensionCredits['other'][] = array(
+	'name'           => 'MetaKeywords',
+	'author'         => '[http://en.wiktionary.org/wiki/User:Conrad.Irwin Conrad Irwin]',
+	'svn-date'       => '$LastChangedDate$',
+	'svn-revision'   => '$LastChangedRevision$',
+	'url'            => 'http://www.mediawiki.org/wiki/Extension:MetaKeywords',
+	'description'    => 'Lets wikis add meta keywords depending on namespace',
+	'descriptionmsg' => 'metakeywords-desc',
 );
+
+$wgExtensionMessagesFiles['MetaKeywords'] = dirname( __FILE__ ) . '/MetaKeywords.i18n.php';
 
 $wgHooks['BeforePageDisplay'][] = 'wfMetaKeywordOutput';
 $wgHooks['ArticleSaveComplete'][] = 'wfMetaKeywordClearCache';
@@ -76,13 +81,13 @@ function wfMetaKeywordInput( $type, $arg = false ){
 	}
 	$opts = array(0);
 
-	if (! wfEmptyMsg( "meta$type", $params ) ) {  
+	if (! wfEmptyMsg( "meta$type", $params ) ) {
 	   $opts = wfMetaKeywordParse($params);
 	}
 	return $opts;
 }
 
-//Parses the syntax, ignores things it doesn't understand
+//Parses the syntax, ignores things it does not understand
 function wfMetaKeywordParse( $params ){
 	global $wgContLang;
 	$lines = preg_split( '/(\r\n|\r|\n)/', $params );
@@ -117,8 +122,8 @@ function wfMetaKeywordClearCache( &$article, &$wgUser, &$text ) {
 			$tt = $title->getText();
 			if( $tt == 'Metakeywords' || $tt == 'Metadescription' ) {
 				$opts = wfMetaKeywordParse( $text );
-			$wgMemc->set($tt.'-opts',$opts,900);
-		}
+				$wgMemc->set($tt.'-opts',$opts,900);
+			}
 		}
 		return true;
 }
