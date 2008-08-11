@@ -80,10 +80,12 @@
 		//process track request:
 		$this->components['MV_Overlay']->procMVDReqSet();				
 		//add in title & tracks var:
+		global $mvgScriptPath;
  		$wgOut->addScript('<script type="text/javascript">/*<![CDATA[*/'." 		
  		var mvTitle = '{$this->article->mvTitle->getWikiTitle()}'; 
- 		var mvTracks = '".$this->components['MV_Overlay']->getMVDReqString(). '\';
- 		/*]]>*/</script>'."\n");
+ 		var mvTracks = '".$this->components['MV_Overlay']->getMVDReqString(). "';
+ 		var mvgScriptPath = '".$mvgScriptPath."';
+ 		/*]]>*/</script>\n");
 		
 		//also add prev next paging	 		
 		$this->page_header ='<h1 class="videoHeader">'.

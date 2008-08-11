@@ -113,8 +113,9 @@ $smwgShowFactbox=SMW_FACTBOX_HIDDEN;
 			}
 		}
 	}
-	/*functions for transcript pages*/
-	//@@TODO OPTIMIZATION: (group article text queries) 
+	/*functions for transcript pages
+	@@TODO OPTIMIZATION: (group article text queries)
+	*/
 	function get_transcript_pages(){
 		global $wgUser, $mvgIP, $wgOut;		
 		$sk = $wgUser->getSkin();
@@ -477,6 +478,7 @@ $smwgShowFactbox=SMW_FACTBOX_HIDDEN;
 			  		$metaData =  $mvTitle->getMetaData();				  	
 				}								
 				foreach($mvMetaDataHelpers[strtolower($mvd_type)] as $prop=>$ac_index){
+					$val='';
 					//normalize the 
 					$prop=str_replace(' ', '_', $prop); 
 					//set existing "value"
@@ -506,9 +508,10 @@ $smwgShowFactbox=SMW_FACTBOX_HIDDEN;
 					//list each category with a little - next to it that removes its respective hidden field.
 					$i=0; 
 					$o.='<tr><td>'.wfMsg('mv_existing_categories').'</td><td>';
+					$o.='<div id="mv_ext_cat_container_'.$mvd_id.'"></div>';
 					foreach($metaData['categories'] as $cat=>$page){
 						$catTitle = Title::newFromText($cat, NS_CATEGORY);
-						$o.='<span id="ext_cat_'.$i.'"><input type="hidden" style="display:none;" name="ext_cat_'.$i.'" class="mv_ext_cat">'.
+						$o.='<span id="ext_cat_'.$i.'"><input value="'. $catTitle->getDBKey().'" type="hidden" style="display:none;" name="ext_cat[]" class="mv_ext_cat">'.
 							$catTitle->getText().
 							'<a  href="#" onclick="$j(\'#ext_cat_'.$i.'\').fadeOut(\'fast\').remove();return false;">
 								<img border="0" src="'.$mvgScriptPath.'/skins/images/delete.png">
@@ -517,7 +520,8 @@ $smwgShowFactbox=SMW_FACTBOX_HIDDEN;
 						$i++;
 					}
 					$o.='</tr>';
-					$o.= "<tr><td><label for=\"category\">".wfMsg('mv_add_category').":</label></td><td><input size=\"40\" class=\"mv_anno_ac_{$mvd_id}\" name=\"category\" type=\"text\">
+					$o.= "<tr><td><label for=\"category\">".wfMsg('mv_add_category').":</label></td><td><input id=\"mv_add_cat_ext_{$mvd_id}\" maxlength=\"255\" size=\"20\" class=\"mv_anno_ac_{$mvd_id}\" name=\"category\" type=\"text\">
+							<img onClick=\"mv_add_category('{$mvd_id}', \$j('#mv_add_cat_ext_{$mvd_id}').val())\" border=\"0\" src=\"{$mvgScriptPath}/skins/images/add.png\">
 							<div class=\"autocomplete\" id=\"category_choices_{$mvd_id}\" style=\"display: none;\"/></td></tr>";
 				}
 				//output a short desc field (the text with striped semantic values)...
@@ -614,7 +618,7 @@ $smwgShowFactbox=SMW_FACTBOX_HIDDEN;
 	
 	/*@@TODO document */
 	function do_edit_submit($titleKey, $mvd_id, $returnEncapsulated=false){
-		global $wgOut, $wgScriptPath, $wgUser, $wgTitle, $wgRequest;			
+		global $wgOut, $wgScriptPath, $wgUser, $wgTitle, $wgRequest, $wgContLang;			
 		
 		if($mvd_id=='new'){
 			$titleKey =substr($_REQUEST['title'],0,strpos($_REQUEST['title'],'/')).
@@ -652,6 +656,11 @@ $smwgShowFactbox=SMW_FACTBOX_HIDDEN;
 				}
 			}			
 		}			
+		//add all categorizations: 
+		$catNStxt = $wgContLang->getNsText(NS_CATEGORY);
+		foreach($_POST['ext_cat'] as $k=>$v){
+			$wpTextbox1.="\n\n[[".$catNStxt.":".$v."]]";
+		}
 		//add the text to the end after a line break to not confuse mannual editors		
 		$editPageAjax = new MV_EditPageAjax( $Article);
 		$editPageAjax->mvd_id = $mvd_id;			
