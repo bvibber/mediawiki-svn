@@ -102,7 +102,13 @@ class LinkSearchPage extends QueryPage {
 	}
 
 	function linkParameters() {
-		return array( 'target' => $this->mProt . $this->mQuery, 'namespace' => $this->mNs );
+		global $wgMiserMode;
+		$params = array();
+		$params['target'] = $this->mProt . $this->mQuery;
+		if( isset( $this->mNs ) && !$wgMiserMode ) {
+			$params['namespace'] = $this->mNs;
+		}
+		return $params;
 	}
 
 	function getSQL() {
