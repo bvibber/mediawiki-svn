@@ -171,7 +171,7 @@ function efGPManagerExtendedPermissionsRevoke($title, $user, $action, &$result) 
 }
 
 //replace right-edit messages with right-edit-new wherever applicable
-function efGPManagerReplaceEditMessage(&$key, &$useDB, &$langCode, &$transform) {
+function efGPManagerReplaceEditMessage(&$key, &$useDB, &$langCode, $transform) {
 	if($key == 'right-edit') {
 		$key = 'right-edit-new';
 		return false; //so it doesn't change load times TOO much
