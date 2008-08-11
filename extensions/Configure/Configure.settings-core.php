@@ -35,6 +35,7 @@ $settings = array(
 			'wgScriptPath' => 'text',
 			'wgServer' => 'text',
 			'wgServerName' => 'text',
+			'wgSQLiteDataDirMode' => 'int',
 			'wgStyleDirectory' => 'text',
 			'wgStylePath' => 'text',
 			'wgStyleSheetPath' => 'text',
@@ -1144,6 +1145,7 @@ $settingsVersion = array(
 	'wgOverrideSiteFeed' => array( array( '1.14alpha', '>=' ) ),
 	'wgPasswordAttemptThrottle' => array( array( '1.14alpha', '>=' ) ),
 	'wgCategoryPrefixedDefaultSortkey' => array( array( '1.14alpha', '>=' ) ),
+	'wgSQLiteDataDirMode' => array( array( '1.14alpha', '>=' ) ),
 ## Obsolete
 	'wgProfileSampleRate' => array( array( '1.8alpha', '<' ) ),
 	'wgProfilerType' => array( array( '1.8alpha', '<' ) ),
