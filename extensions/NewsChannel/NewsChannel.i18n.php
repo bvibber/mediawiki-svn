@@ -10,17 +10,16 @@
 * Extension's home page: http://www.mediawiki.org/wiki/Extension:News_Channel
 *
 * Distributed under GNU General Public License 2.0 or later (http://www.gnu.org/copyleft/gpl.html)
-* Authors:
-* 	English messages: Iaroslav Vassiliev
-* 	Russian messages: Iaroslav Vassiliev
-* 	German messages: Cornelius Sicker
-* 	French messages: Mauro Bornet
 */
 
 $messages = array();
 
-$messages['en'] = array( 
+/** English
+ * @author Iaroslav Vassiliev
+ */
+$messages['en'] = array(
 	'newschannel' => 'News channel',
+	'newschannel-desc' => 'Implements a news channel as a dynamic [[Special:NewsChannel|special page]]',
 	'newschannel_format' => 'Format:',
 	'newschannel_limit' => 'Limit:',
 	'newschannel_include_category' => 'Additional category:',
@@ -28,16 +27,10 @@ $messages['en'] = array(
 	'newschannel_submit_button' => 'Create feed',
 );
 
-$messages['ru'] = array(
-	'newschannel' => 'Канал новостей',
-	'newschannel_format' => 'Формат новостей:',
-	'newschannel_limit' => 'Кол-во последних новостей:',
-	'newschannel_include_category' => 'Дополнительная категория:',
-	'newschannel_exclude_category' => 'Исключить категорию:',
-	'newschannel_submit_button' => 'Вывести',
-);
-
-$messages['de'] = array( 
+/** German (Deutsch)
+ * @author Cornelius Sicker
+ */
+$messages['de'] = array(
 	'newschannel' => 'Nachrichten',
 	'newschannel_format' => 'Format:',
 	'newschannel_limit' => 'Limit:',
@@ -46,7 +39,10 @@ $messages['de'] = array(
 	'newschannel_submit_button' => 'Feed erstellen',
 );
 
-$messages['fr'] = array( 
+/** French (Français)
+ * @author Mauro Bornet
+ */
+$messages['fr'] = array(
 	'newschannel' => 'Chaîne d\'information',
 	'newschannel_format' => 'Format:',
 	'newschannel_limit' => 'Limite:',
@@ -54,4 +50,15 @@ $messages['fr'] = array(
 	'newschannel_exclude_category' => 'Catégorie(s) exclue(s):',
 	'newschannel_submit_button' => 'Créer le flux',
 );
-?>
+
+/** Russian (Русский)
+ * @author Iaroslav Vassiliev
+ */
+$messages['ru'] = array(
+	'newschannel' => 'Канал новостей',
+	'newschannel_format' => 'Формат новостей:',
+	'newschannel_limit' => 'Кол-во последних новостей:',
+	'newschannel_include_category' => 'Дополнительная категория:',
+	'newschannel_exclude_category' => 'Исключить категорию:',
+	'newschannel_submit_button' => 'Вывести',
+);

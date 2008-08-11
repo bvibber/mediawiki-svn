@@ -1,4 +1,5 @@
 <?php
+if (!defined('MEDIAWIKI')) die();
 /**
 * News Channel extension 1.6
 * This MediaWiki extension represents a RSS 2.0/Atom 1.0 news channel for wiki project.
@@ -25,8 +26,6 @@ class NewsChannel extends SpecialPage
 	 * Constructor is used to initialize class member variables and load extension messages.
 	 */
 	function NewsChannel() {
-
-		wfLoadExtensionMessages( 'NewsChannel' );
 		SpecialPage::SpecialPage( 'NewsChannel' );
 	}
 
@@ -38,6 +37,8 @@ class NewsChannel extends SpecialPage
 	 */
 	function execute( $par ) {
 		global $wgRequest, $wgVersion, $wgOut, $wgNewsChannelCategory, $wgNewsChannelDefaultItems;
+
+		wfLoadExtensionMessages( 'NewsChannel' );
 
 		if( version_compare( $wgVersion, '1.8', '<' ) === true ) {
 			$wgOut->showErrorPage( "Error: Upgrade required", "The News Channel extension can't work " .
@@ -141,7 +142,7 @@ class NewsChannel extends SpecialPage
 		$exCatSqlQueryStr = '';
 
 		if ( $subquerySupport == false ) {
-			$sqlQueryStr = 
+			$sqlQueryStr =
 				"SELECT {$catlinksTableName}.cl_from, " .
 					"MIN({$catlinksTableName}.cl_timestamp) AS timestamp, COUNT(*) AS match_count, " .
 					"{$pageTableName}.page_namespace AS ns, {$pageTableName}.page_title AS title, " .
@@ -240,8 +241,8 @@ class NewsChannel extends SpecialPage
 	function formatFeedHeader() {
 		global $wgRequest, $wgServer, $wgContLanguageCode, $wgOut;
 		global $wgNewsChannelTitle, $wgNewsChannelDescription, $wgNewsChannelCopyright,
-			$wgNewsChannelLanguage, $wgNewsChannelLogoImage, $wgNewsChannelUpdateInterval, 
-			$wgNewsChannelEditorName, $wgNewsChannelEditorAddress, $wgNewsChannelWebMasterName, 
+			$wgNewsChannelLanguage, $wgNewsChannelLogoImage, $wgNewsChannelUpdateInterval,
+			$wgNewsChannelEditorName, $wgNewsChannelEditorAddress, $wgNewsChannelWebMasterName,
 			$wgNewsChannelWebMasterAddress;
 
 		if( empty( $wgNewsChannelLanguage ) )
@@ -429,4 +430,3 @@ class NewsChannel extends SpecialPage
 	</form>' . "\n" );
 	}
 }
-?>

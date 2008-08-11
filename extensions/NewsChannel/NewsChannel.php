@@ -13,6 +13,14 @@
 * Distributed under GNU General Public License 2.0 or later (http://www.gnu.org/copyleft/gpl.html)
 */
 
+if ( !defined( 'MEDIAWIKI' ) ) {
+	echo <<<EOT
+To install this extension, put the following line in LocalSettings.php:
+require_once( "\$IP/extensions/NewsChannel/NewsChannel.php" );
+EOT;
+	exit( 1 );
+}
+
 // Set up general channel info here
 
 /** Channel title. */
@@ -21,7 +29,7 @@ $wgNewsChannelTitle = 'MyWikiSite.com IT News';
 $wgNewsChannelDescription = 'The most hot IT news on MyWikiSite.com.';
 /**
 * Channel's language code and optional country subcode, e. g. 'en-US'.
-* Default is language, specified in $wgLanguageCode variable in LocalSettings.php file. 
+* Default is language, specified in $wgLanguageCode variable in LocalSettings.php file.
 */
 $wgNewsChannelLanguage = '';
 /** Copyright text. */
@@ -66,44 +74,20 @@ $wgNewsChannelExportTextOnly = false;
 
 // End of configuration settings
 
-if ( !defined( 'MEDIAWIKI' ) ) {
-	echo <<<EOT
-To install this extension, put the following line in LocalSettings.php:
-require_once( "\$IP/extensions/NewsChannel/NewsChannel.php" );
-EOT;
-	exit( 1 );
-}
-
 $wgExtensionCredits['specialpage'][] = array(
-	'name' => 'News Channel',
-	'version' => 1.6,
-	'author' => 'Iaroslav Vassiliev <codedriller@gmail.com>',
-	'description' => 'This MediaWiki extension represents a news channel for wiki project. ' .
+	'name'           => 'News Channel',
+	'version'        => '2.0',
+	'author'         => '[mailto:codedriller@gmail.com Iaroslav Vassiliev]',
+	'description'    => 'This MediaWiki extension represents a news channel for wiki project. ' .
 		'The channel is implemented as a dynamic [[Special:NewsChannel|special page]].',
-	'url' => 'http://www.mediawiki.org/wiki/Extension:News_Channel'
+	'descriptionmsg' => 'newschannel-desc',
+	'url'            => 'http://www.mediawiki.org/wiki/Extension:News_Channel',
 );
 
-//$wgExtensionFunctions[] = 'wfSetupNewsChannelExtension';
-$wgAutoloadClasses['NewsChannel'] = dirname( __FILE__ ) . '/NewsChannel_body.php';
-$wgExtensionMessagesFiles['NewsChannel'] = dirname( __FILE__ ) . '/NewsChannel.i18n.php';
+$dir = dirname(__FILE__) . '/';
+$wgAutoloadClasses['NewsChannel'] = $dir . 'NewsChannel_body.php';
+$wgAutoloadClasses['LinkNewsChannel'] = $dir . 'NewsChannel.class.php';
+$wgExtensionMessagesFiles['NewsChannel'] = $dir . 'NewsChannel.i18n.php';
+$wgExtensionAliasesFiles['NewsChannel'] = $dir . 'NewsChannel.alias.php';
 $wgSpecialPages['NewsChannel'] = 'NewsChannel';
-$wgHooks['BeforePageDisplay'][] = 'wfLinkNewsChannelExtensionFeeds';
-
-function wfLinkNewsChannelExtensionFeeds() {
-	global $wgOut, $wgNewsChannelTitle;
-
-	$title = Title::newFromText( 'NewsChannel', NS_SPECIAL );
-	$wgOut->addLink( array(
-		'rel' => 'alternate',
-		'type' => 'application/rss+xml',
-		'title' => $wgNewsChannelTitle . ' - RSS 2.0',
-		'href' => $title->getLocalURL( 'format=rss20' ) ) );
-	$wgOut->addLink( array(
-		'rel' => 'alternate',
-		'type' => 'application/atom+xml',
-		'title' => $wgNewsChannelTitle . ' - Atom 1.0',
-		'href' => $title->getLocalURL( 'format=atom10' ) ) );
-
-	return true;
-}
-?>
+$wgHooks['BeforePageDisplay'][] = 'LinkNewsChannel::ExtensionFeeds';
