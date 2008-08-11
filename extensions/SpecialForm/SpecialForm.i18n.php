@@ -37,6 +37,7 @@ $messages['en'] = array(
 	'formtemplatepattern'          => '$1', # Do not translate this message
 	'formtitlepattern'             => 'Add new $1',
 	'formsave'                     => 'Save',
+	'formindexmismatch-title'      => 'Name pattern and template mismatch',
 	'formindexmismatch'            => 'This form has mismatched name patterns and templates starting at index $1.',
 	'formarticleexists'            => 'Page exists',
 	'formarticleexiststext'        => 'The page [[$1]] already exists.',

@@ -38,7 +38,7 @@ class SpecialForm extends SpecialPage {
 
 		# Must have a name, like Special:Form/Nameofform
 		# XXX: instead of an error, show a list of available forms
-		
+
 		if (!$par) {
 			$wgOut->showErrorPage('formnoname', 'formnonametext');
 			return;
@@ -63,7 +63,7 @@ class SpecialForm extends SpecialPage {
 	}
 
 	# Load form-related messages, per special-page guidelines
-	
+
 	function loadMessages() {
 		static $messagesLoaded = false;
 		global $wgMessageCache;
@@ -76,7 +76,7 @@ class SpecialForm extends SpecialPage {
 	}
 
 	# Load and parse a form article from the DB
-	
+
 	function loadForm($name) {
 		$nt = Title::makeTitleSafe(NS_MEDIAWIKI, wfMsgForContent('formpattern', $name));
 
@@ -93,7 +93,7 @@ class SpecialForm extends SpecialPage {
 		$text = $article->getContent(true);
 
 		# Form constructor does the parsing
-		
+
 		return new Form($name, $text);
 	}
 
@@ -118,7 +118,7 @@ class SpecialForm extends SpecialPage {
 							wfCloseElement('div') .
 							wfElement('br'));
 		}
-		
+
 		$wgOut->addHtml(wfOpenElement('form',
 									  array('method' => 'POST',
 											'action' => $self->getLocalURL())));
@@ -132,7 +132,7 @@ class SpecialForm extends SpecialPage {
 			global $recaptcha_public_key; # same as used by Recaptcha plugin
 			$wgOut->addHtml(recaptcha_get_html($recaptcha_public_key));
 		}
-		
+
 		$wgOut->addHtml(wfElement('input', array('type' => 'submit',
 												 'value' => wfMsg('formsave'))));
 
@@ -146,7 +146,7 @@ class SpecialForm extends SpecialPage {
 		# Check recaptcha
 
 		if ($wgUser->getId() == 0 && $wgSpecialFormRecaptcha) {
-			
+
 			require_once('recaptchalib.php');
 			global $recaptcha_private_key; # same as used by Recaptcha plugin
 			$resp = recaptcha_check_answer($recaptcha_private_key,
@@ -159,11 +159,11 @@ class SpecialForm extends SpecialPage {
 				return;
 			}
 		}
-		
+
 		# Check for required fields
 
 		$missedFields = array();
-		
+
 		foreach ($form->fields as $name => $field) {
 			$value = $wgRequest->getText($name);
 			if ($field->isOptionTrue('required') && (is_null($value) || strlen($value) == 0)) {
@@ -172,7 +172,7 @@ class SpecialForm extends SpecialPage {
 		}
 
 		# On error, show the form again with some error text.
-		
+
 		if ($missedFields) {
 			if (count($missedFields) > 1) {
 				$msg = wfMsg('formrequiredfieldpluralerror', $wgLang->listToText($missedFields));
@@ -186,19 +186,19 @@ class SpecialForm extends SpecialPage {
 		# First, we make sure we have all the titles
 
 		$nt = array();
-		
+
 		for ($i = 0; $i < count($form->template); $i++) {
-			
+
 			$namePattern = $form->namePattern[$i];
 			$template = $form->template[$i];
 
 			if (!$namePattern || !$template) {
-				$wgOut->showErrorPage('formindexmismatch', 'formindexmismatchtext', array($i));
+				$wgOut->showErrorPage('formindexmismatch-title', 'formindexmismatch', array($i));
 				return;
 			}
 
 			wfDebug("SpecialForm: for index '$i', namePattern = '$namePattern' and template = '$template'.\n");
-			
+
 			$title = $this->makeTitle($form, $namePattern);
 
 			$nt[$i] = Title::newFromText($title);
@@ -207,7 +207,7 @@ class SpecialForm extends SpecialPage {
 				$wgOut->showErrorPage('formbadpagename', 'formbadpagenametext', array($title));
 				return;
 			}
-		
+
 			if ($nt[$i]->getArticleID() != 0) {
 				$wgOut->showErrorPage('formarticleexists', 'formarticleexists', array($title));
 				return;
@@ -219,7 +219,7 @@ class SpecialForm extends SpecialPage {
 		for ($i = 0; $i < count($form->template); $i++) {
 
 			$template = $form->template[$i];
-			
+
 			$text = "{{subst:$template";
 
 			foreach ($form->fields as $name => $field) {
@@ -233,14 +233,14 @@ class SpecialForm extends SpecialPage {
 				# Just break here; output already sent
 				return;
 			}
-				
+
 			$title = $nt[$i]->GetPrefixedText();
-			
+
 			wfDebug("SpecialForm: saving article with index '$i' and title '$title'\n");
 
 			$article = new Article($nt[$i]);
 
-			  
+
 			if (!$article->doEdit($text, wfMsg('formsavesummary', $form->name), EDIT_NEW)) {
 				$wgOut->showErrorPage('formsaveerror', 'formsaveerrortext', array($title));
 				return; # Don't continue
@@ -248,12 +248,12 @@ class SpecialForm extends SpecialPage {
 		}
 
 		# Redirect to the first article
-		
+
 		if ($nt && $nt[0]) {
 			$wgOut->redirect($nt[0]->getFullURL());
 		}
 	}
-	
+
 	function makeTitle($form, $pattern) {
 		global $wgRequest;
 
@@ -267,7 +267,7 @@ class SpecialForm extends SpecialPage {
 	}
 
 	# Had to crib some checks from EditPage.php, since they're not done in Article.php
-	
+
 	function checkSave($nt, $text) {
 		global $wgSpamRegex, $wgFilterCallback, $wgUser, $wgMaxArticleSize, $wgOut;
 
@@ -275,9 +275,9 @@ class SpecialForm extends SpecialPage {
 		$errortext = "";
 
 		$editPage = new FakeEditPage($nt);
-		
+
 		# FIXME: more specific errors, copied from EditPage.php
-		
+
 		if ($wgSpamRegex && preg_match($wgSpamRegex, $text, $matches)) {
 			$wgOut->showErrorPage('formsaveerror', 'formsaveerrortext');
 			return false;
@@ -306,7 +306,7 @@ class SpecialForm extends SpecialPage {
 			$wgOut->showErrorPage('formsaveerror', 'formsaveerrortext');
 			return false;
 		}
-		
+
 		return true;
 	}
 }
@@ -316,7 +316,7 @@ class SpecialForm extends SpecialPage {
 class FakeEditPage {
 
 	var $mTitle;
-	
+
 	function FakeEditPage(&$nt) {
 		$this->mTitle = $nt;
 	}
@@ -442,7 +442,7 @@ class FormField {
 				(strcasecmp($value, 'true') == 0) ||
 				(strcasecmp($value, '1') == 0));
 	}
-	
+
 	function render($def = NULL) {
 		global $wgOut;
 

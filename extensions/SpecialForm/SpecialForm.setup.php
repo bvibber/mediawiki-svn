@@ -25,7 +25,7 @@ if (!defined('MEDIAWIKI')) {
 	exit( 1 );
 }
 
-define('SPECIALFORM_VERSION', '0.2');
+define('SPECIALFORM_VERSION', '0.3');
 
 $dir = dirname(__FILE__) . '/';
 $wgAutoloadClasses['SpecialForm'] = $dir . '/SpecialForm.body.php'; # Tell MediaWiki to load the extension body.
