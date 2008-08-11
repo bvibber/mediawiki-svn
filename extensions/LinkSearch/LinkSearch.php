@@ -21,5 +21,6 @@ $wgExtensionAliasesFiles['LinkSearch'] = dirname(__FILE__) . '/LinkSearch.alias.
 $wgSpecialPages['Linksearch'] = array( /*class*/ 'LinkSearchSpecialPage',
 	/*name*/ 'Linksearch', /* permission */'', /*listed*/ true,
 	/*function*/ false, /*file*/ false );
+$wgSpecialPageGroups['Linksearch'] = 'redirects';
 $wgAutoloadClasses['LinkSearchPage'] = dirname(__FILE__) . '/LinkSearch_body.php';
 $wgAutoloadClasses['LinkSearchSpecialPage'] = dirname(__FILE__) . '/LinkSearch_body.php';
