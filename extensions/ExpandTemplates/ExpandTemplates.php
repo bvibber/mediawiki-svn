@@ -19,7 +19,7 @@ $wgExtensionCredits['specialpage'][] = array(
 );
 
 $dir = dirname(__FILE__) . '/';
-$wgAutoloadClasses['ExpandTemplates'] = $dir . 'ExpandTemplates_body.php'
+$wgAutoloadClasses['ExpandTemplates'] = $dir . 'ExpandTemplates_body.php';
 $wgExtensionMessagesFiles['ExpandTemplates'] = $dir . 'ExpandTemplates.i18n.php';
 $wgExtensionAliasesFiles['ExpandTemplates'] = $dir . 'ExpandTemplates.alias.php';
 $wgSpecialPages['ExpandTemplates'] = 'ExpandTemplates';
