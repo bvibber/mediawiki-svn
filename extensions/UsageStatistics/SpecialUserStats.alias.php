@@ -12,3 +12,10 @@ $aliases = array();
 $aliases['en'] = array(
 	'UserStats'          => array( 'UserStats', 'SpecialUserStats' ),
 );
+
+/** Dutch (Nederlands)
+ * @author Siebrand
+ */
+$aliases['en'] = array(
+	'UserStats'          => array( 'Gebruikersgegevens' ),
+);
