@@ -98,7 +98,7 @@ class SpecialForm extends SpecialPage {
 	}
 
 	function showForm($form, $errmsg = NULL) {
-		global $wgOut, $wgRequest, $wgParser, $wgTitle;
+		global $wgOut, $wgRequest, $wgParser, $wgTitle, $wgUser, $wgSpecialFormRecaptcha;
 
 		$self = SpecialPage::getTitleFor(wfMsgForContent('form') . '/' . $form->name);
 
@@ -127,6 +127,12 @@ class SpecialForm extends SpecialPage {
 			$wgOut->addHtml($field->render($wgRequest->getText($field->name)) . wfElement('br') . "\n");
 		}
 
+		if ($wgUser->getId() == 0 && $wgSpecialFormRecaptcha) { # Anonymous user, use recaptcha
+			require_once('recaptchalib.php');
+			global $recaptcha_public_key; # same as used by Recaptcha plugin
+			$wgOut->addHtml(recaptcha_get_html($recaptcha_public_key));
+		}
+		
 		$wgOut->addHtml(wfElement('input', array('type' => 'submit',
 												 'value' => wfMsg('formsave'))));
 
@@ -135,7 +141,24 @@ class SpecialForm extends SpecialPage {
 
 	function createArticle($form) {
 
-		global $wgOut, $wgRequest, $wgLang;
+		global $wgOut, $wgRequest, $wgLang, $wgUser, $wgSpecialFormRecaptcha;
+
+		# Check recaptcha
+
+		if ($wgUser->getId() == 0 && $wgSpecialFormRecaptcha) {
+			
+			require_once('recaptchalib.php');
+			global $recaptcha_private_key; # same as used by Recaptcha plugin
+			$resp = recaptcha_check_answer($recaptcha_private_key,
+										   $_SERVER["REMOTE_ADDR"],
+										   $wgRequest->getText("recaptcha_challenge_field"),
+										   $wgRequest->getText("recaptcha_response_field"));
+
+			if (!$resp->is_valid) {
+				$this->showForm($form, wfMsg('formbadrecaptcha'));
+				return;
+			}
+		}
 		
 		# Check for required fields
 

@@ -41,6 +41,7 @@ $messages['en'] = array(
 	'formarticleexists'            => 'Page exists',
 	'formarticleexiststext'        => 'The page [[$1]] already exists.',
 	'formbadpagename'              => 'Bad page name',
+    'formbadrecaptcha'             => 'Incorrect values for reCaptcha. Try again.',
 	'formbadpagenametext'          => 'The form data you entered makes a bad page name, "$1".',
 	'formrequiredfieldpluralerror' => 'The fields $1 are required for this form.
 Please fill them in.',

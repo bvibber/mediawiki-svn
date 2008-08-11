@@ -45,6 +45,10 @@ $wgExtensionCredits['specialpage'][] = array(
 	'descriptionmsg' => 'form-desc',
 );
 
+# Use recaptcha; default to false
+
+$wgSpecialFormRecaptcha = false;
+
 function formLocalizedPageName(&$specialPageArray, $code) {
 	# The localized title of the special page is among the messages of the extension:
 	SpecialForm::loadMessages();
