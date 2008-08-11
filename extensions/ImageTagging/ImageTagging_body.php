@@ -39,7 +39,7 @@ class TaggedImages extends SpecialPage {
 	 * Start doing stuff
 	 * @access public
 	*/
-	function execute() {
+	function execute( $par ) {
 		global $wgDBname, $wgOut;
 
 		wfProfileIn( __METHOD__ );
