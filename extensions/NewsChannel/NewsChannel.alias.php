@@ -20,7 +20,7 @@ $aliases['ar'] = array(
 	'NewsChannel' => array( 'قناة_أخبار' ),
 );
 
- /** Egyptian Spoken Arabic (مصرى)
+/** Egyptian Spoken Arabic (مصرى)
  * @author Meno25
  */
 $aliases['arz'] = array(

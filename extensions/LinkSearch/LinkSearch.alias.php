@@ -62,6 +62,11 @@ $aliases['km'] = array(
 	'LinkSearch' => array( 'ស្វែងរកតំនភ្ជាប់' ),
 );
 
+/** Korean (한국어) */
+$aliases['ko'] = array(
+	'LinkSearch' => array( '링크찾기' ),
+);
+
 /** Latin (Latina) */
 $aliases['la'] = array(
 	'LinkSearch' => array( 'Quaerere nexus externos' ),

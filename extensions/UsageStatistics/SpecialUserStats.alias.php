@@ -17,19 +17,20 @@ $aliases['en'] = array(
  * @author Meno25
  */
 $aliases['ar'] = array(
-	'UserStats'          => array( 'إحصاءات_المستخدم', 'خاص_إحصاءات_المستخدم' ),
+	'UserStats' => array( 'إحصاءات_المستخدم', 'خاص_إحصاءات_المستخدم' ),
 );
 
 /** Egyptian Spoken Arabic (مصرى)
  * @author Meno25
  */
 $aliases['arz'] = array(
-	'UserStats'          => array( 'إحصاءات_المستخدم', 'خاص_إحصاءات_المستخدم' ),
+	'UserStats' => array( 'إحصاءات_المستخدم', 'خاص_إحصاءات_المستخدم' ),
 );
 
 /** Dutch (Nederlands)
  * @author Siebrand
  */
 $aliases['nl'] = array(
-	'UserStats'          => array( 'Gebruikersgegevens' ),
+	'UserStats' => array( 'Gebruikersgegevens' ),
 );
+
