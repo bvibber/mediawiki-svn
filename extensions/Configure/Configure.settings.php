@@ -93,6 +93,7 @@ class ConfigurationSettings {
 		if( ( $this->types & CONF_SETTINGS_EXT ) == CONF_SETTINGS_EXT ){
 			static $extArr;
 			if( !isset( $extArr ) ){
+				$extArr = array();
 				foreach( $this->getAllExtensionsObjects() as $ext ){
 					$name = $ext->getName();
 					if( count( $ext->getSettings() ) )

@@ -331,12 +331,19 @@ $extensions = array(
 	array(
 		'name' => 'Collection',
 		'settings' => array(
+			'wgCollectionStartPage' => 'text',
 			'wgCollectionMWServeURL' => 'text',
 			'wgCollectionMWServeCredentials' => 'text',
 			'wgCommunityCollectionNamespace' => 'int',
 			'wgSharedBaseURL' => 'text',
 			'wgLicenseArticle' => 'text',
 			'wgPDFTemplateBlacklist' => 'text',
+			'wgCollectionTemplateExclusionCategory' => 'text',
+			'wgCollectionFormats' => 'array',
+			'wgCollectionPortletForLoggedInUsersOnly' => 'bool',
+		),
+		'array' => array(
+			'wgCollectionFormats' => 'assoc',
 		),
 		'url' => 'http://www.mediawiki.org/wiki/Extension:Collection',
 	),
@@ -570,8 +577,10 @@ $extensions = array(
 			'wgFlaggedRevsBacklog' => 'int',
 			'wgFlaggedRevsVisible' => 'array',
 			'wgFlaggedRevsTalkVisible' => 'bool',
+			'wgFeedbackNamespaces' => 'array',
 			'wgFlaggedRevsFeedbackTags' => 'array',
 			'wgFlaggedRevsFeedbackAge' => 'int',
+			'wgFlaggedRevsStatsAge' => 'int',
 			'wgPHPlotDir' => 'text',
 		),
 		'array' => array(
@@ -586,6 +595,7 @@ $extensions = array(
 			'wgFlaggedRevsExternalStore' => 'simple',
 			'wgFlaggedRevsLongPending' => 'simple',
 			'wgFlaggedRevsVisible' => 'simple',
+			'wgFeedbackNamespaces' => 'ns-simple',
 			'wgFlaggedRevsFeedbackTags' => 'assoc',
 		),
 		'schema' => true,
