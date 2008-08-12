@@ -9,7 +9,7 @@
  * @email dale@ucsc.edu
  * @url http://metavid.ucsc.edu
  */
- 
+ require_once ('../../../maintenance/commandLine.inc');
 class MV_BillScraper extends MV_BaseScraper{	
 	var $base_url = 'http://www.c-spanarchives.org/congress/';
 	var $base_query = '?q=node/69850';

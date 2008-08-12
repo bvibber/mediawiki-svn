@@ -13,7 +13,7 @@
  /*
   * Templates: 
   */
- 
+ require_once ('../../../maintenance/commandLine.inc');
 //$i=0;
 function do_stream_attr_check($old_stream) {
 	global $i;

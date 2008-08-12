@@ -16,6 +16,7 @@
  /*
  * set up the bot user:
  */
+require_once ('../../../maintenance/commandLine.inc');
 $botUserName = 'MvBot';
 $wgUser = User::newFromName( $botUserName );
 if ( !$wgUser ) {

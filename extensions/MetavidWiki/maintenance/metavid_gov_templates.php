@@ -1,5 +1,5 @@
 <?
-
+require_once ('../../../maintenance/commandLine.inc');
 function upTemplates($force=false){
 /***************************************************
  * Transcripts: 
