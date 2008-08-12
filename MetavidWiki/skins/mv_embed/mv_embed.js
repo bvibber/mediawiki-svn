@@ -1434,6 +1434,22 @@ embedVideo.prototype = {
 	hq : function ( s ) {
 		return '"' + this.hx( s ) + '"';
 	},
+	playerPixelWidth : function()
+	{
+		var player = $j('#mv_embedded_player_'+this.id).get(0);
+		if(player['offsetWidth'])
+			return player.offsetWidth;
+		else
+			return parseInt(this.width.replace('px',''));
+	},
+	playerPixelHeight : function()
+	{
+		var player = $j('#mv_embedded_player_'+this.id).get(0);
+		if(player['offsetHeight'])
+			return player.offsetHeight;
+		else
+			return parseInt(this.height.replace('px',''));
+	},
 	init: function(element){
 		this.element_pointer = element;
 
@@ -1453,8 +1469,8 @@ embedVideo.prototype = {
    	    js_log('continue_src:'+ this['src']);
 
 	    //if style is set override width and height
-	    if(element.style.width)this.width = element.style.width.replace('px','');
-	    if(element.style.height)this.height = element.style.height.replace('px','');
+	    this.width = element.style.width ? element.style.width : "320px";
+	    this.height = element.style.height ? element.style.height : "240px";
 	    //set the plugin id
 	    this.pid = 'pid_' + this.id;
 	         
@@ -1526,20 +1542,13 @@ embedVideo.prototype = {
     },
     refreshControlsHTML:function()
     {
-        var available_width = this.width;
+        var available_width = this.playerPixelWidth();
         var html_code='';
         // borders
         html_code += '<span class="border_left">&nbsp;</span>';
         available_width -= 4;
         html_code += '<span class="border_right">&nbsp;</span>';
         available_width -= 4;
-
-        // play_pause
-        if (this.supports['play_or_pause'])
-        {
-            html_code += '<div id="mv_play_pause_button_'+this.id+'" class="play_button"><a href="javascript:document.getElementById(\''+this.id+'\').play_or_pause();"></a></div>';
-            available_width -= 24;
-        }
         
         // fullscreen
         if(this.supports['fullscreen'])
@@ -1551,6 +1560,18 @@ embedVideo.prototype = {
         // options
         html_code += '<div class="options"><a href="javascript:document.getElementById(\''+this.id+'\').DoOptionsHTML();"></a></div>';
         available_width -= 26;
+
+		options_margin = available_width - 119;
+		if(options_margin<0) options_margin = 0;
+		
+		$j('#mv_embedded_options_'+this.id).css('margin-left',options_margin+'px');
+
+        // play_pause
+        if (this.supports['play_or_pause'])
+        {
+            html_code += '<div id="mv_play_pause_button_'+this.id+'" class="play_button"><a href="javascript:document.getElementById(\''+this.id+'\').play_or_pause();"></a></div>';
+            available_width -= 24;
+        }
         
         // closed captioning
 	  	if(this.media_element.hasStreamOfMIMEType('text/cmml') && this.show_meta_link)
@@ -1624,7 +1645,7 @@ embedVideo.prototype = {
 	},
 	getHTML : function (){
         var html_code = '';
-        html_code = '<div style="width:'+this.width+'px;" class="videoPlayer">';
+        html_code = '<div style="width:'+this.width+';" class="videoPlayer">';
 		html_code += '<div id="mv_embedded_player_'+this.id+'"></div>';
         if(this.controls)
         {
@@ -1682,7 +1703,7 @@ embedVideo.prototype = {
 	*/ 
 	getPluginMissingHTML : function(){	
 		//keep the box width hight:
-		var out = '<div style="width:'+this.width+'px;height:'+this.height+'px">';
+		var out = '<div style="width:'+this.width+';height:'+this.height+'">';
 	    if(this.user_missing_plugin_html){
 	      out+= this.user_missing_plugin_html;
 	    }else{
@@ -1740,8 +1761,8 @@ embedVideo.prototype = {
 
 	    //put it all in the div container dc_id
 	    thumb_html+= '<div id="dc_'+this.id+'" style="position:relative;'+
-	    	' overflow:hidden; top:0px; left:0px; width:'+this.width+'px; height:'+this.height+'px; z-index:0;">'+
-	        '<img width="'+this.width+'" height="'+this.height+'" style="position:relative;width:'+this.width+';height:'+this.height+'"' +
+	    	' overflow:hidden; top:0px; left:0px; width:'+this.playerPixelWidth()+'px; height:'+this.playerPixelHeight()+'px; z-index:0;">'+
+	        '<img width="'+this.playerPixelWidth()+'" height="'+this.playerPixelHeight()+'" style="position:relative;width:'+this.playerPixelWidth()+';height:'+this.playerPixelHeight()+'"' +
 	        ' id="img_thumb_'+this.id+'" src="' + thumbnail + '">';
 
 		js_log("PLAY BUTTON: " + this.play_button);
@@ -1833,7 +1854,7 @@ embedVideo.prototype = {
 			thumb_html+='</a></div>';
 			//make link absolute (if it was not already)
 			//add the hidden embed code:
-			thumb_html+='<div id="embed_code_'+this.id+'" style="border:solid;border-color:black;overflow:hidden;display:none;position:absolute;bottom:2px;right:'+(right_offset+30)+'px;width:'+(this.width-100)+'px;z-index:1">'+
+			thumb_html+='<div id="embed_code_'+this.id+'" style="border:solid;border-color:black;overflow:hidden;display:none;position:absolute;bottom:2px;right:'+(right_offset+30)+'px;width:'+(this.playerPixelWidth()-100)+'px;z-index:1">'+
 				'<input onClick="this.select();" type="text" size="40" length="1024" value="'+this.GetEmbedHTML()+'">'
 				 '</div>';
             thumb_html+='</div>';
@@ -1842,7 +1863,9 @@ embedVideo.prototype = {
 	},
 	getPlayButton:function(id){
 		if(!id)id=this.id;
-		return '<div onclick="$j(\'#'+id+'\').get(0).play()" id="big_play_link_'+id+'" class="large_play_button"></div>';
+		return '<div onclick="$j(\'#'+id+'\').get(0).play()" id="big_play_link_'+id+'" class="large_play_button" '+
+			'style="left:'+((this.playerPixelWidth()-130)/2)+'px;'+
+			'top:'+((this.playerPixelHeight()-96)/2)+'px;"></div>';
 		/*;
 		//setup button size
 		var play_btn_height = 
@@ -1908,8 +1931,8 @@ embedVideo.prototype = {
         //make sure the parent is relatively positioned:
         $j('#'+this.id).css('position', 'relative');
         //set height width (check for playlist container) 
-        var width = (this.pc)?this.pc.pp.width:this.width;
-        var height = (this.pc)?this.pc.pp.height:this.height;
+        var width = (this.pc)?this.pc.pp.width:this.playerPixelWidth();
+        var height = (this.pc)?this.pc.pp.height:this.playerPixelHeight();
         if(width<320)width=320;
         if(height<240)height=240;
 
@@ -2245,7 +2268,7 @@ embedVideo.prototype = {
 	wrapEmebedContainer:function(embed_code){
 		//check if parent clip is set( ie we are in a playlist so name the embed container by playlistID)
 		var id = (this.pc!=null)?this.pc.pp.id:this.id;
-		return '<div id="mv_ebct_'+id+'" style="width:'+this.width+'px;height:'+this.height+'px;">' + 
+		return '<div id="mv_ebct_'+id+'" style="width:'+this.width+';height:'+this.height+';">' + 
 					embed_code + 
 				'</div>';
 	},
@@ -2293,7 +2316,7 @@ embedVideo.prototype = {
 			break;
 			case 'play_head':
 				js_log('set pl: '+id);
-				return '<div class="mv_track" id="slider_'+id+'" style="width:'+this.width+'px;'+ 
+				return '<div class="mv_track" id="slider_'+id+'" style="width:'+this.width+';'+ 
 							'z-index:5;height:4px; background: url('+mv_embed_path+'images/bd-gray.gif) repeat scroll 5px 0px;">'+
 								' <div id="playhead_'+id+'" class="mv_playhead" ' +
 									'style="z-index:5;background-image: url('+mv_embed_path+'images/slider_handle.gif);"></div>' + 						

@@ -188,9 +188,11 @@ width: 100%;
 
 .videoPlayer .large_play_button {
 	background: url(images/player_big_play_button.png) 0 0 no-repeat;
+    display:block;
 	width: 130px;
 	height: 96px;
-	margin: -202px 0 0 154px;
+    margin: auto;
+/*	margin: -202px 0 0 154px;*/
 	position: absolute;
 	z-index: 3;
 	cursor: pointer;
@@ -203,7 +205,7 @@ width: 100%;
 	overflow: hidden;
 	position: absolute;
 	z-index: 2;
-	margin: 0 0 0 230px;
+/*	margin: 0 0 0 230px;*/
 }
 *:first-child+html .videoOptions {margin-top: -20px;}
 .videoOptionsTop {
