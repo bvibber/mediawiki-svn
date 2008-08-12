@@ -382,7 +382,6 @@ class NewsChannel extends SpecialPage
 		</tr>';
 		}
 
-		$wgOut->addWikiText( $msgComment );
 		$wgOut->addHTML( '
 	<form id="newschannel" method="GET" action="' . $msgActionScript . '">
 		<input type="hidden" readonly="readonly" name="title" value="' . $msgPrefixedTitle . '" />
