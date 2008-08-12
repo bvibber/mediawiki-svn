@@ -381,8 +381,7 @@ function mv_add_filter(){
 		$j('#mvs_'+inx).append('<span id="mvs_'+inx+'_tc"></span>');
 		$j('#mvs_'+inx).append( $j("#mv_ref_remove")
 			.clone().css('display', 'inline')
-			.attr({id:'', href:'javascript:mv_remove_filter('+inx+')'}));
-	
+			.attr({id:'', href:'javascript:mv_remove_filter('+inx+')'}));	
 	mv_setup_search();
 	//console.log("new id: " + new_id);	
 	//$j('mv_sel_')

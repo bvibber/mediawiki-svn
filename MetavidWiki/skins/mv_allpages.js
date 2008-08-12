@@ -165,7 +165,9 @@ function mv_toggle_advs(){
 		$j("input[@name$='f[0][v]']").val( $j('#search_field').val() );
 		
 		$j('.advs_basic').fadeOut('fast',function(){
-			$j('.advanced_search_tag').before('<span id="tmp_loading_txt">'+getMsg('loading_txt')+'</span>');
+			if($j('#tmp_loading_txt').length==0){
+				$j('.advanced_search_tag').before('<span id="tmp_loading_txt">'+getMsg('loading_txt')+'</span>');
+			}
 			//check for adv search lib and load: @@todo ../ path is not very graceful
 			mvJsLoader.doLoad({'mv_setup_search':'../mv_search.js'}, function(){
 				$j('#tmp_loading_txt').remove();

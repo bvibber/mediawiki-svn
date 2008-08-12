@@ -816,7 +816,7 @@ class MV_SpecialMediaSearch extends SpecialPage {
 				$filter['a'] = '';
 
 			//output the master selecter per line: 
-			$s .= '<span id="mvs_' . $i . '">';
+			$s .= '<span id="mvs_' . $i . '"><p>';
 			$s .= '&nbsp;&nbsp;';
 			//selctor (don't display if i==0')
 			$s .= $this->selector($i, 'a', $filter['a'], ($i == 0) ? false : true);
@@ -878,9 +878,9 @@ class MV_SpecialMediaSearch extends SpecialPage {
 		$s .= $this->get_ref_person();
 
 		//add link:
-		$s .= '<a href="javascript:mv_add_filter();">' .
+		$s .= '<a style="text-decoration:none;" href="javascript:mv_add_filter();">' .
 		'<img border="0" title="' . wfMsg('mv_add_filter') . '" ' .
-		'src="' . $mvgScriptPath . '/skins/images/cog_add.png"></a> ';
+		'src="' . $mvgScriptPath . '/skins/images/cog_add.png"> '.wfMsg('mv_add_filter').'</a> ';
 
 		/*$s .= '<input id="mv_do_search" type="submit" ' .
 		' value="' . wfMsg('mv_run_search') . '">';*/
