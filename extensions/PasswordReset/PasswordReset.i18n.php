@@ -24,6 +24,7 @@ $messages['en'] = array(
 	'passwordreset-accountdisabled'    => 'Account has been disabled',
 	'disabledusers'                    => 'Disabled users',
 	'disabledusers-summary'            => 'This is a list of users that have been disabled via PasswordReset.',
+	'right-passwordreset'              => 'Reset password of a user ([[Spezial:Passwordreset|special page]])',
 );
 
 /** Message documentation (Message documentation)

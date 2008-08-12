@@ -60,6 +60,7 @@ $messages['en'] = array(
 	'grouppermissions-rug-header'    => 'You may use this page to remove users from unused (deleted) groups.',
 	'grouppermissions-rug-success'   => 'Successfully removed users from unused groups!',
 	'grouppermissions-rug-confirm'   => 'Remove users from unused groups',
+	'right-grouppermissions'         => 'Manage group permissions (special pages: [[Special:GroupPermissions|GroupPermissions]] and [[Special:SortPermissions|SortPermissions]])',
 	'right-viewsource'               => 'View wiki source of protected pages',
 	'right-raw'                      => 'View raw pages',
 	'right-render'                   => 'View rendered pages without navigation',

@@ -36,6 +36,7 @@ $messages['en'] = array(
 	'group-patroller'        => 'Patrollers',
 	'group-patroller-member' => 'patroller',
 	'grouppage-patroller'    => '{{ns:project}}:Patroller',
+	'right-patroller'        => 'Patrol pages',
 );
 
 /** Message documentation (Message documentation)
