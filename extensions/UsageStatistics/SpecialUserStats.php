@@ -31,6 +31,6 @@ $wgGroupPermissions['sysop'][$wgUserStatsGlobalRight] = true;
 
 $dir = dirname(__FILE__) . '/';
 $wgExtensionMessagesFiles['UserStats'] = $dir . '/SpecialUserStats.i18n.php';
-$wgExtensionAliasesFiles['UserStats'] = $dir . 'UserStats.alias.php';
+$wgExtensionAliasesFiles['UserStats'] = $dir . 'SpecialUserStats.alias.php';
 $wgAutoloadClasses['SpecialUserStats'] = $dir . '/SpecialUserStats_body.php';
 $wgSpecialPages['UserStats'] = 'SpecialUserStats';
