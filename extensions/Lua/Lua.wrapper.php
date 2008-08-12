@@ -9,165 +9,193 @@
  * @file
  */
 
+define('LUAWRAPPER', dirname(__FILE__) . '/LuaWrapper.lua');
+
+/**
+ * An exception thrown by LuaWrapper on error; creates a big honking red 
+ * message, which can be output to the page in place of the chunk's output.
+ */
 class LuaError extends Exception {
+	/**
+	 * Create a new LuaWrapper error.
+	 * @param $msg \type{\string} Message from Lua.i18n.php to display
+	 * @param $parameter \type{\string} Optional parameter for that message
+	 */
 	public function __construct($msg, $parameter = ''){
 		wfLoadExtensionMessages( 'Lua' );
 		$this->message = '<strong class="error">' . wfMsgForContent( "lua_$msg", htmlspecialchars( $parameter ) ) . '</strong>';
 	}
 }
 
+/**
+ * Wraps a Lua interpreter in PHP for MediaWiki's use.
+ * Chunks of Lua code are read in as strings, and executed in a single 
+ * sandbox environment.
+ */
 class LuaWrapper {
-	protected $defunct;
+	private $defunct, $lua, $proc, $pipes;
 
-	static function create() {
-		global $wgLuaExternalInterpreter;
-		return $wgLuaExternalInterpreter ? 
-			new LuaWrapperExternal : 
-			new LuaWrapper;
-	}
+	/**
+	 * Creates a new LuaWrapper.
+	 */
+	public function __construct() {
+		global $wgLuaMaxLines, $wgLuaMaxCalls, $wgLuaExternalInterpreter;
 
-	private $lua;
+		# Are we using the Lua PHP extension or an external binary?
+		if (!$wgLuaExternalInterpreter) {
+			# We're using the extension - verify it exists
+			if (!class_exists('lua')) {
+				$this->defunct = TRUE;
+				throw new LuaError('extension_notfound');
+			}
 
-	protected function __construct() {
-		global $wgLuaWrapperFile, $wgLuaMaxLines, $wgLuaMaxCalls;
-		if (!class_exists('lua')) {
-			$this->defunct = TRUE;
-			throw new LuaError('extension_notfound');
-		}
-		$this->lua = new lua;
-		try {
-			$this->lua->evaluatefile($wgLuaWrapperFile);
-			$this->lua->evaluate("sandbox = make_sandbox()");
-			$this->lua->evaluate("function _die(reason) _G._DEAD = reason; end");
-			$this->lua->evaluate("hook = make_hook($wgLuaMaxLines, $wgLuaMaxCalls, _die)");
+			# Create a lua instance, and try to load LUAWRAPPER
+			$this->lua = new lua;
+			try {
+				$this->lua->evaluatefile(LUAWRAPPER);
+				$this->lua->evaluate("wrap = make_wrapper($wgLuaMaxLines, $wgLuaMaxCalls)");
+			} catch (Exception $e) {
+				$this->destroy();
+				throw new LuaError('error_internal');
+			}
+
+			# Ready to go.
 			$this->defunct = FALSE;
-		} catch (Exception $e) {
-			$this->kill();
-			throw new LuaError('error_internal');
+			return TRUE;
+		} else {
+			# We're using an external binary; run LUAWRAPPER
+			# as a Lua script instead of loading it as a library
+			$luacmd = "$wgLuaExternalInterpreter ".LUAWRAPPER." $wgLuaMaxLines $wgLuaMaxCalls";
+			# Create a new process and configure pipes to it
+			$this->proc = proc_open($luacmd,
+						array(0 => array('pipe', 'r'),
+						      1 => array('pipe', 'w')),
+						$this->pipes, NULL, NULL);
+			if (!is_resource($this->proc)) {
+				$this->defunct = TRUE;
+				throw new LuaError('interp_notfound');
+			}
+			stream_set_blocking($this->pipes[0], 0);
+			stream_set_blocking($this->pipes[1], 0);
+			stream_set_write_buffer($this->pipes[0], 0);
+			stream_set_write_buffer($this->pipes[1], 0);
+
+			# Ready to go.
+			$this->defunct = FALSE;
+			return TRUE;
 		}
 	}
 
-	public function run($input) {
+	/**
+	 * Releases this LuaWrapper.
+	 */
+	public function __destruct() {
+		# Call destroy() to do the actual freeing, if necessary
+		if (!$this->defunct)
+			$this->destroy();
+	}
+
+	/**
+	 * Parses and executes a chunk of Lua code. The output of the chunk is 
+	 * returned as a string; if this LuaWrapper has been marked defunct,
+	 * a blank string will be returned instead.
+	 * 
+	 * @param $input \type{\string} Chunk of Lua code to parse and execute
+	 * @return \type{\string} The accumulated output of 
+	 *         print()/io.write()/etc. output by the chunk.
+	 * @throws LuaWrapperError
+	 */
+	public function wrap($input) {
+		global $wgLuaMaxTime;
+
+		# If defunct, just return a blank string
 		if ($this->defunct)
 			return '';
 
-		$this->lua->input = $input;
-		$this->lua->evaluate('chunk, err = loadstring(input)');
-		if ($err = $this->lua->err) {
-			$err = preg_replace('/^\[.+?\]:(.+?):/', '$1:', $err);
-			throw new LuaError('error', $err);
+		# Are we using the Lua PHP extension or an external binary?
+		if (isset($this->lua)) {
+			# We're using the extension; call wrap() through the
+			# lua instance and collect the results.
+			$res = $this->lua->wrap($input);
+			$out = $res[0];
+			$err = $res[1];
+		} else {
+			# We're using an external binary; send the chunk
+			# through the pipe
+			$input = trim(preg_replace('/(?<=\n|^)\.(?=\n|$)/', '. --', $input));
+			fwrite($this->pipes[0], "$input\n.\n");
+			fflush($this->pipes[0]);
+
+			# Wait for a response back on the other pipe
+			$res    = '';
+			$read   = array($this->pipes[1]);
+			$write  = NULL;
+			$except = NULL;
+			while (!feof($this->pipes[1])) {
+				if (false === ($num_changed_streams =
+					       stream_select($read, $write, $except,
+							     $wgLuaMaxTime))) {
+					throw new LuaError('overflow_time');
+				}
+				$line = fgets($this->pipes[1]);
+				if ($line == ".\n")
+					break;
+				$res .= $line;
+			}
+
+			# Parse the response and collect the results
+			if (preg_match('/^\'(.*)\', (true|false)$/s', trim($res), $match) != 1) {
+				$this->destroy();
+				throw new LuaError('error_internal');
+			}
+			$success = ($match[2] == 'true');
+			$out = $success ? $match[1] : '';
+			$err = $success ? NULL      : $match[1];
 		}
-		$this->lua->res = $this->lua->err = NULL;
+		# Either way, the output should now be in $out, and if 
+		# applicable, the error in $err.
 
-		$this->lua->evaluate('res, err = wrap(chunk, sandbox, hook)');
-
-		if (($err = $this->lua->_DEAD) || ($err = $this->lua->err)) {
-			if ($err == 'RECURSION_LIMIT') {
-				$this->kill();
-				throw new LuaError('overflow_recursion');
-			} else if ($err == 'LOC_LIMIT') {
-				$this->kill();
+		# If an error was raised, abort and throw an exception
+		if ($err != NULL) {
+			if (preg_match('/LOC_LIMIT$/', $err)) {
+				$this->destroy();
 				throw new LuaError('overflow_loc');
+			} else if (preg_match('/RECURSION_LIMIT$/', $err)) {
+				$this->destroy();
+				throw new LuaError('overflow_recursion');
 			} else {
 				$err = preg_replace('/^\[.+?\]:(.+?):/', '$1:', $err);
 				throw new LuaError('error', $err);
 			}
 		}
 
-		$this->lua->evaluate('_OUTPUT = sandbox._OUTPUT'); // ugh, please fix!
-		$out = $this->lua->_OUTPUT;
+		# Return the output
 		return (trim($out) != '') ? $out : '';
 	}
 
-	public function kill() {
+	/**
+	 * Destroy the Lua interpreter and mark this LuaWrapper defunct.
+	 * Afterwards, all future calls to wrap() on this object will return 
+	 * a blank string.
+	 */
+	public function destroy() {
+		# If we're already defunct, we're done
 		if ($this->defunct)
 			return FALSE;
-		$this->lua = NULL;
-		$this->defunct = TRUE;
-		return TRUE;
-	}
-}
 
-class LuaWrapperExternal extends LuaWrapper {
-	private $proc, $pipes;
-	protected function __construct() {
-		global $wgLuaExternalInterpreter, $wgLuaWrapperFile,
-			$wgLuaMaxLines, $wgLuaMaxCalls;
-		$luacmd = "$wgLuaExternalInterpreter $wgLuaWrapperFile $wgLuaMaxLines $wgLuaMaxCalls";
-		$this->proc = proc_open($luacmd,
-			array(0 => array('pipe', 'r'),
-			1 => array('pipe', 'w')),
-			$this->pipes, NULL, NULL);
-		if (!is_resource($this->proc)) {
-			$this->defunct = TRUE;
-			throw new LuaError('interp_notfound');
-		}
-		stream_set_blocking($this->pipes[0], 0);
-		stream_set_blocking($this->pipes[1], 0);
-		stream_set_write_buffer($this->pipes[0], 0);
-		stream_set_write_buffer($this->pipes[1], 0);
-		$this->defunct = FALSE;
-	}
-
-	public function run($input) {
-		global $wgLuaMaxTime;
-		if ($this->defunct)
-			return '';
-
-		$input = trim(preg_replace('/(?<=\n|^)\.(?=\n|$)/', '. --', $input));
-		fwrite($this->pipes[0], "$input\n.\n");
-		fflush($this->pipes[0]);
-
-		$res    = '';
-		$read   = array($this->pipes[1]);
-		$write  = NULL;
-		$except = NULL;
-		while (!feof($this->pipes[1])) {
-			if (false === ($num_changed_streams =
-				       @stream_select($read, $write, $except,
-						      $wgLuaMaxTime))) {
-				efLua_CleanupExternal();
-				throw new LuaError('overflow_time');
-			}
-			$line = fgets($this->pipes[1]);
-			if ($line == ".\n")
-				break;
-			$res .= $line;
-		}
-
-		if (preg_match('/^\'(.*)\', (true|false)$/s', trim($res), $match) != 1) {
-			$this->kill();
-			throw new LuaError('error_internal');
-		}
-
-		$out = $match[1];
-		if ($match[2] == 'true') {
-			return (trim($out) != '') ? $out : '';
+		# Destroy the lua instance and/or external process and pipes
+		if (isset($this->lua)) {
+			$this->lua = NULL;
 		} else {
-			if ($out == 'RECURSION_LIMIT') {
-				$this->kill();
-				throw new LuaError('overflow_recursion');
-			} else if ($out == 'LOC_LIMIT') {
-				$this->kill();
-				throw new LuaError('overflow_loc');
-			} else {
-				$out = preg_replace('/^\[.+?\]:(.+?):/', '$1:', $out);
-				throw new LuaError('error', $out);
+			if (isset($this->proc)) {
+				fclose($this->pipes[0]);
+				fclose($this->pipes[1]);
+				proc_close($this->proc);
 			}
 		}
-	}
 
-	public function kill() {
-		if ($this->defunct)
-			return FALSE;
-
-		if (isset($this->proc)) {
-			fclose($this->pipes[0]);
-			fclose($this->pipes[1]);
-			proc_close($this->proc);
-		}
+		# Mark this instance defunct
 		$this->defunct = TRUE;
 		return TRUE;
 	}
 }
-

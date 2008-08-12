@@ -1,17 +1,16 @@
 #!/usr/bin/env lua
 -- Lua parser extensions for MediaWiki - Wrapper for Lua interpreter
---
--- @author Fran Rogers
--- @package MediaWiki
--- @addtogroup Extensions
--- @license See 'COPYING'
--- @file
+-- (c) 2008 Fran Rogers - see 'COPYING' for license
 
+-- Creates a new sandbox environment for scripts to safely run in.
 function make_sandbox()
+  -- Dummy function that returns nil, to quietly replace unsafe functions
   local function dummy(...)
     return nil
   end
 
+  -- Deep-copy an object; optionally replace all its leaf members with the
+  -- value 'override' if it's non-nil
   local function deepcopy(object, override)
     local lookup_table = {}
     local function _copy(object, override)
@@ -33,16 +32,13 @@ function make_sandbox()
     return _copy(object, override)
   end
 
+  -- Our new environment
   local env = {}
 
-    local function _escape(s)
-      s = string.gsub(s, "\\", "\\\\")
-      s = string.gsub(s, "\'", "\\\'")
-      return s
-    end
-
+  -- "_OUTPUT" will accumulate the results of print() and friends
   env._OUTPUT = ""
 
+  -- _OUTPUT wrapper for io.write()
   local function writewrapper(...)
     local out = ""
     for n = 1, select("#", ...) do
@@ -55,6 +51,7 @@ function make_sandbox()
     env._OUTPUT = env._OUTPUT .. out
   end
 
+  -- _OUTPUT wrapper for io.stdout:output()
   local function outputwrapper(file)
     if file == nil then
       local file = {}
@@ -71,6 +68,7 @@ function make_sandbox()
     end
   end
 
+  -- _OUTPUT wrapper for print()
   local function printwrapper(...)
     local out = ""
     for n = 1, select("#", ...) do
@@ -83,6 +81,7 @@ function make_sandbox()
     env._OUTPUT =env._OUTPUT .. out .. "\n"
   end
 
+  -- Safe wrapper for loadstring()
   local oldloadstring = loadstring
   local function safeloadstring(s, chunkname)
     local f, message = oldloadstring(s, chunkname)
@@ -93,6 +92,7 @@ function make_sandbox()
     return f
   end
 
+  -- Populate the sandbox environment
   env.assert = _G.assert
   env.error = _G.error
   env._G = env
@@ -127,61 +127,98 @@ function make_sandbox()
   env.os.difftime = _G.os.difftime
   env.os.time = _G.os.time
 
+  -- Return the new sandbox environment
   return env
 end
 
+-- Creates a new debug hook that aborts with 'error("LOC_LIMIT")' after 
+-- 'maxlines' lines have been passed, or 'error("RECURSION_LIMIT")' after 
+-- 'maxcalls' levels of recursion have been entered.
 function make_hook(maxlines, maxcalls, diefunc)
   local lines = 0
   local calls = 0
   function _hook(event, ...)
-    if event == "call" then
+    if event == "line" then
+      lines = lines + 1
+      if lines > maxlines then
+	error("LOC_LIMIT")
+      end
+    elseif event == "call" then
       calls = calls + 1
       if calls > maxcalls then
-	diefunc("RECURSION_LIMIT")
+	error("RECURSION_LIMIT")
       end
     elseif event == "return" then
       calls = calls - 1
-    elseif event == "line" then
-      lines = lines + 1
-      if lines > maxlines then
-	diefunc("LOC_LIMIT")
-      end
     end
   end
   return _hook
 end
 
-function wrap(chunk, env, hook)
-  local err = nil
-  env._OUTPUT = ""
-  setfenv(chunk, env)
-  debug.sethook(hook, "crl")
-  res = xpcall(chunk, function(s) err = s; end)
-  debug.sethook()
-  return res, err
+-- Creates and returns a function, 'wrap(input)', which reads a string into 
+-- a Lua chunk and executes it in a persistent sandbox environment, returning 
+-- 'output, err' where 'output' is the combined output of print() and friends 
+-- from within the chunk and 'err' is either nil or an error incurred while 
+-- executing the chunk; or halting after 'maxlines' lines or 'maxcalls' levels 
+-- of recursion.
+function make_wrapper(maxlines, maxcalls)
+  -- Create the debug hook and sandbox environment.
+  local hook = make_hook(maxlines, maxcalls)
+  local env = make_sandbox()
+  
+  -- The actual 'wrap()' function.
+  -- All of the above variables will be bound in its closure.
+  function _wrap(chunkstr)
+    local chunk, err, done
+    -- Clear any leftover output from the last call
+    env._OUTPUT = ""
+    err = nil
+    
+    -- Load the string into a chunk; fail on error
+    chunk, err = loadstring(chunkstr)
+    if err ~= nil then
+      return nil, err
+    end
+    
+    -- Set the chunk's environment, enable the debug hook, and execute it
+    setfenv(chunk, env)
+    co = coroutine.create(chunk)
+    debug.sethook(co, hook, "crl")
+    done, err = coroutine.resume(co)
+    
+    if done == true then
+      err = nil
+    end
+    
+    -- Collect and return the results
+    return env._OUTPUT, err
+  end
+  return _wrap
 end
 
-function main()
+-- Listen on stdin for Lua chunks, parse and execute them, and print the 
+-- results of each on stdout.
+function main(arg)
   if #arg ~= 2 then
     io.stderr:write(string.format("usage: %s MAXLINES MAXCALLS\n", arg[0]))
     os.exit(1)
   end
 
+  -- Create a wrapper function, wrap()
+  local wrap = make_wrapper(tonumber(arg[1]), tonumber(arg[2]))
+
+  -- Turn off buffering, and loop through the input
   io.stdout:setvbuf("no")
-  function _die(reason)
-    io.stdout:write("'", reason, "', false\n.\n")
-    os.exit(1)
-  end
-  hook = make_hook(tonumber(arg[1]), tonumber(arg[2]),
-		   _die)
-  local env = make_sandbox()
   while true do
+    -- Read in a chunk
     local chunkstr = ""
     while true do
       local line = io.stdin:read("*l")
       if chunkstr == "" and line == nil then
-	return nil
+	-- On EOF, exit.
+	os.exit(0)
       elseif line == "." or line == nil then
+	-- Finished this chunk; move on to the next step
 	break
       elseif chunkstr ~= "" then
 	chunkstr = chunkstr .. "\n" .. line
@@ -190,24 +227,20 @@ function main()
       end
     end
 
-    local chunk
-    local err
-    chunk, err = loadstring(chunkstr)
+    -- Parse and execute the chunk
+    local res, err
+    res, err = wrap(chunkstr, env, hook)
 
+    -- Write out the results
     if err == nil then
-      local res
-      res, err = wrap(chunk, env, hook)
-    end
-
-    if err == nil then
-      io.stdout:write("'", env._OUTPUT, "', true\n.\n")
+      io.stdout:write("'", res, "', true\n.\n")
     else
       io.stdout:write("'", err, "', false\n.\n")
     end
   end
-  exit(0)
 end
 
+-- If called as a script instead of imported as a library, run main().
 if arg ~= nil then
-  main()
+  main(arg)
 end
