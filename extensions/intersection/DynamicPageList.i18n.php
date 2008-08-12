@@ -481,6 +481,17 @@ $messages['pt'] = array(
 	'intersection_noincludecats' => 'Error: É necessário incluir no mínimo uma categoria ou especificar um espaço nominal!',
 );
 
+/** Romanian (Română)
+ * @author Mihai
+ */
+$messages['ro'] = array(
+	'intersection-desc' => 'Întoarce o lista celor mai recenţi itemi care fac parte dintr-o categorie, sau intersecţia a mai multor categorii',
+	'intersection_toomanycats' => 'Eroare: Prea multe categorii!',
+	'intersection_toofewcats' => 'Eroare: Prea puţine categorii!',
+	'intersection_noresults' => 'Eroare: Niciun rezultat!',
+	'intersection_noincludecats' => 'Eroare: Trebuie să incluzi cel puţin o categorie, sau să specifici un spaţiu de nume!',
+);
+
 /** Russian (Русский)
  * @author Александр Сигачёв
  */

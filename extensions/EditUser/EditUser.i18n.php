@@ -338,7 +338,13 @@ $messages['hy'] = array(
  * @author McDutchie
  */
 $messages['ia'] = array(
+	'edituser-desc' => 'Permitte que usatores con le privilegio necessari modifica le preferentias de altere usatores',
+	'edituser' => 'Modificar usator',
+	'edituser-logout' => 'Clauder le session del usator',
+	'edituser-username' => 'Nomine',
 	'edituser-dosearch' => 'Cercar',
+	'edituser-nouser' => 'Le usator specificate non existe',
+	'edituser-exempt' => 'Le usator specificate non pote esser modificate',
 );
 
 /** Indonesian (Bahasa Indonesia)

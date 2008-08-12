@@ -88,6 +88,7 @@ $messages['ar'] = array(
 	'passwordreset-accountdisabled' => 'الحساب تم تعطيله',
 	'disabledusers' => 'مستخدمون معطلون',
 	'disabledusers-summary' => 'هذه قائمة بالمستخدمين الذين تم تعطيلهم من خلال إعادة ضبط كلمة السر.',
+	'right-passwordreset' => 'إعادة ضبط كلمة سر مستخدم([[Special:Passwordreset|صفحة خاصة]])',
 );
 
 /** Bulgarian (Български)
@@ -144,6 +145,7 @@ $messages['de'] = array(
 	'passwordreset-accountdisabled' => 'Benutzerkonto ist deaktiviert',
 	'disabledusers' => 'Deaktivierte Benutzerkonten',
 	'disabledusers-summary' => 'Dies ist die Liste der deaktivierten Benutzerkonten (via PasswordReset).',
+	'right-passwordreset' => 'Passwort eines Benutzers zurücksetzen ([[Special:Passwordreset|Spezialseite]])',
 );
 
 /** Greek (Ελληνικά)
@@ -203,6 +205,7 @@ $messages['fr'] = array(
 	'passwordreset-accountdisabled' => 'Ce compte a été désactivé.',
 	'disabledusers' => 'Utilisateurs désactivés',
 	'disabledusers-summary' => 'Ceci est la liste des utilisateurs qui ont été désactivés par PasswordReset.',
+	'right-passwordreset' => 'Réinitialise le mot de passe d’un utilisateur ([[Special:Passwordreset|page spéciale]])',
 );
 
 /** Western Frisian (Frysk)
@@ -511,6 +514,7 @@ $messages['nl'] = array(
 	'passwordreset-accountdisabled' => 'Gebruiker is gedeactiveerd',
 	'disabledusers' => 'Gedeactiveerde gebruikers',
 	'disabledusers-summary' => 'Dit is een lijst van gebruikers die zijn gedeactiveerd via PasswordReset',
+	'right-passwordreset' => 'Wachtwoord van een gebruiker opnieuw instellen ([[Special:Passwordreset|speciale pagina]])',
 );
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
@@ -543,6 +547,7 @@ $messages['no'] = array(
 	'passwordreset-accountdisabled' => 'Kontoen er blitt deaktivert',
 	'disabledusers' => 'Deaktiverte kontoer',
 	'disabledusers-summary' => 'Dette er en liste over kontoer som har blitt deaktiverte via passordresetting.',
+	'right-passwordreset' => 'Tilbakestille en brukers passord ([[Special:Passwordreset|spesialside]])',
 );
 
 /** Occitan (Occitan)

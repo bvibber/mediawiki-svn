@@ -168,6 +168,32 @@ $messages['gl'] = array(
 	'ea-selectcss' => 'Seleccionar unha folla de estilo CSS',
 );
 
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'emailpages' => 'Inviar pagina per e-mail',
+	'ea-desc' => 'Inviar le rendition HTML de un pagina a un adresse de e-mail o a un lista de adresses con [http://phpmailer.sourceforge.net phpmailer].',
+	'ea-heading' => '=== Invio del pagina [[$1]] per e-mail ===',
+	'ea-fromgroup' => 'Del gruppo:',
+	'ea-pagesend' => 'Pagina "$1" inviate ab $2',
+	'ea-nopage' => 'Per favor specifica un pagina a inviar, per exemplo "[[Special:EmailPage/{{MediaWiki:Mainpage-url}}]]".',
+	'ea-norecipients' => 'Nulle adresses de e-mail valide trovate!',
+	'ea-listrecipients' => '=== {{PLURAL:$1|Destinatario|$1 destinatarios}} ===',
+	'ea-error' => "'''Error durante le invio de [[$1]]:''' ''$2''",
+	'ea-denied' => 'Permission refusate',
+	'ea-sent' => "Le pagina [[$1]] ha essite inviate con successo a '''$2''' {{PLURAL:$2|destinatario|destinatarios}} per [[User:$3|$3]].",
+	'ea-selectrecipients' => 'Seliger destinatarios',
+	'ea-compose' => 'Componer contento',
+	'ea-selectlist' => "Adde destinatarios como titulos de paginas o adresses de e-mail
+*''separa le entratas con , ; * \\n
+*''le lista pote continer patronos e functiones del analysator syntactic''",
+	'ea-show' => 'Monstrar destinatarios',
+	'ea-send' => 'Inviar!',
+	'ea-subject' => 'Entra un linea de subjecto pro le message de e-mail',
+	'ea-selectcss' => 'Selige un folio de stilos CSS',
+);
+
 /** Khmer (ភាសាខ្មែរ)
  * @author Lovekhmer
  */

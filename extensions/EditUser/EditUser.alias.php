@@ -45,6 +45,11 @@ $aliases['he'] = array(
 	'EditUser' => array( 'עריכת_משתמש' ),
 );
 
+/** Croatian (Hrvatski) */
+$aliases['hr'] = array(
+	'EditUser' => array( 'Uredi_suradnika' ),
+);
+
 /** Haitian (Kreyòl ayisyen) */
 $aliases['ht'] = array(
 	'EditUser' => array( 'EditeItilizatè' ),

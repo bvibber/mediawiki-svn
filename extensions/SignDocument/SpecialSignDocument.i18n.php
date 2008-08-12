@@ -691,6 +691,14 @@ $messages['hil'] = array(
 	'sign-viewfield-email' => 'E-mail',
 );
 
+/** Croatian (Hrvatski)
+ * @author Dalibor Bosits
+ */
+$messages['hr'] = array(
+	'sign-viewfield-reviewcomment' => 'Komentar',
+	'sign-review-comment' => 'Komentar',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

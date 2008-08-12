@@ -312,6 +312,13 @@ $messages['pt'] = array(
 	'advancedrandom-desc' => 'Obtém uma página aleatória a partir de uma página de discussão ou de ligações de uma página de assunto para uma dada página. Pode ser usado como [[Special:AdvancedRandom/Template:Featured/Talk]] para obter um artigo em destaque aleatório ou como [[Special:AdvancedRandom/Template:GFDL/Image]] para obter um ficheiro GFDL aleatório',
 );
 
+/** Romanian (Română)
+ * @author Mihai
+ */
+$messages['ro'] = array(
+	'advancedrandom' => 'Întâmplător avansat',
+);
+
 /** Russian (Русский)
  * @author Ahonc
  * @author Александр Сигачёв

@@ -242,6 +242,15 @@ $messages['ro'] = array(
 	'whatismyip-out' => 'Adresa ta IP:',
 );
 
+/** Russian (Русский)
+ * @author Александр Сигачёв
+ */
+$messages['ru'] = array(
+	'whatismyip' => 'Какой у меня IP',
+	'whatismyip-desc' => 'Показывает текущий IP-адрес пользователя на странице [[Special:WhatIsMyIP]]',
+	'whatismyip-out' => 'Ваш IP:',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

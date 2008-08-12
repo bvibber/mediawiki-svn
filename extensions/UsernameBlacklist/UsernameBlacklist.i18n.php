@@ -504,6 +504,7 @@ $messages['hr'] = array(
 # * [Bb]ar
 </pre>',
 	'usernameblacklist-invalid-lines' => '{{PLURAL:$1|$1 slijedeći redak|Slijedeća $1 retka|Slijedećih $1 redova}} u popisu zabranjenih suradničkih imena {{PLURAL:$1|je nevaljan|su nevaljana|je nevaljano}}; molimo ispravite {{PLURAL:$1|ga|ih|ih}} prije snimanja:',
+	'right-uboverride' => 'Premošćivanje računa na crnom popisu',
 );
 
 /** Upper Sorbian (Hornjoserbsce)

@@ -52,6 +52,11 @@ $aliases['he'] = array(
 	'ExpandTemplates' => array( 'פריסת_תבניות' ),
 );
 
+/** Croatian (Hrvatski) */
+$aliases['hr'] = array(
+	'ExpandTemplates' => array( 'Proširi_predložak' ),
+);
+
 /** Haitian (Kreyòl ayisyen) */
 $aliases['ht'] = array(
 	'ExpandTemplates' => array( 'ExpandTenmpla' ),
@@ -60,6 +65,11 @@ $aliases['ht'] = array(
 /** Hungarian (Magyar) */
 $aliases['hu'] = array(
 	'ExpandTemplates' => array( 'Sablonok kibontása' ),
+);
+
+/** Korean (한국어) */
+$aliases['ko'] = array(
+	'ExpandTemplates' => array( '틀전개' ),
 );
 
 /** Latin (Latina) */

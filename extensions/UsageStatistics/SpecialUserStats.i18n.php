@@ -84,6 +84,7 @@ $messages['ar'] = array(
 	'usagestatistics' => 'إحصاءات الاستخدام',
 	'usagestatistics-desc' => 'يعرض إحصاءات الاستخدام لمستخدم منفرد وللويكي ككل',
 	'usagestatisticsfor' => '<h2>إحصاءات الاستخدام ل[[User:$1|$1]]</h2>',
+	'usagestatisticsforallusers' => '<h2>إحصاءات الاستخدام لكل المستخدمين</h2>',
 	'usagestatisticsinterval' => 'مدة',
 	'usagestatisticstype' => 'نوع',
 	'usagestatisticsstart' => 'تاريخ البدء',
@@ -422,6 +423,28 @@ $messages['gl'] = array(
 	'usagestatistics-editpages' => 'Páxinas das estatísticas $1 do usuario',
 );
 
+/** Hebrew (עברית)
+ * @author Agbad
+ * @author Rotemliss
+ */
+$messages['he'] = array(
+	'specialuserstats' => 'סטטיסטיקות שימוש',
+	'usagestatistics' => 'סטטיסטיקות שימוש',
+	'usagestatisticsfor' => '<h2>סטטיסטיקות שימוש של [[User:$1|$1]]</h2>',
+	'usagestatisticsforallusers' => '<h2>סטטיסטיקות שימוש של כל המשתמשים</h2>',
+	'usagestatisticstype' => 'סוג',
+	'usagestatisticsstart' => 'תאריך התחלה',
+	'usagestatisticsend' => 'תאריך סיום',
+	'usagestatisticssubmit' => 'יצירת סטטיסטיקות',
+	'usagestatisticsnostart' => '* <font color=red>אנא ציינו תאריך התחלה</font>',
+	'usagestatisticsnoend' => '* <font color=red>אנא ציינו תאריך סיום</font>',
+	'usagestatisticsbadstartend' => '<b>תאריך התחלה ו/או תאריך סיום בעייתי!</b>',
+	'usagestatisticsintervalday' => 'יום',
+	'usagestatisticsintervalweek' => 'שבוע',
+	'usagestatisticsintervalmonth' => 'חודש',
+	'usagestatisticscalselect' => 'בחירה',
+);
+
 /** Hindi (हिन्दी)
  * @author Kaustubh
  */
@@ -618,6 +641,7 @@ $messages['nl'] = array(
 	'usagestatistics' => 'Gebruiksstatistieken',
 	'usagestatistics-desc' => 'Individuele en totaalstatistieken van wikigebruik weergeven',
 	'usagestatisticsfor' => '<h2>Gebruikersstatistieken voor [[User:$1|$1]]</h2>',
+	'usagestatisticsforallusers' => '<h2>Gebruiksstatistieken voor alle gebruikers</h2>',
 	'usagestatisticsinterval' => 'Onderbreking',
 	'usagestatisticstype' => 'Type',
 	'usagestatisticsstart' => 'Begindatum',
@@ -665,6 +689,7 @@ $messages['no'] = array(
 	'usagestatistics' => 'Bruksstatistikk',
 	'usagestatistics-desc' => 'Vis statistikk for individuelle brukere og for hele wikien',
 	'usagestatisticsfor' => '<h2>Bruksstatistikk for [[User:$1|$1]]</h2>',
+	'usagestatisticsforallusers' => '<h2>Bruksstatistikk for alle brukere</h2>',
 	'usagestatisticsinterval' => 'Intervall',
 	'usagestatisticstype' => 'Type',
 	'usagestatisticsstart' => 'Starttid',

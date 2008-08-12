@@ -253,16 +253,17 @@ $messages['eo'] = array(
 /** French (Français)
  * @author Grondin
  * @author IAlex
+ * @author McDutchie
  */
 $messages['fr'] = array(
 	'extensiondistributor' => 'Télécharger l’extension Mediawiki',
 	'extdist-desc' => 'Extension pour la distribution des archives photographiques des extensions',
 	'extdist-not-configured' => 'Veuillez configurer $wgExtDistTarDir et $wgExtDistWorkingCopy',
-	'extdist-wc-missing' => 'La répertoire de la copie de travail configurée n’existe pas !',
+	'extdist-wc-missing' => 'La répertoire pour copies de travail configurée n’existe pas !',
 	'extdist-no-such-extension' => 'Aucune extension « $1 »',
 	'extdist-no-such-version' => 'L’extension « $1 » n’existe pas dans la version « $2 ».',
 	'extdist-choose-extension' => 'Sélectionnez l’extension que vous voulez télécharger :',
-	'extdist-wc-empty' => 'Le répertoire de la copie de travail configurée n’a aucune extension distribuable !',
+	'extdist-wc-empty' => 'Le répertoire pour copies de travail configurée n’a aucune extension distribuable !',
 	'extdist-submit-extension' => 'Continuer',
 	'extdist-current-version' => 'Version courante (trunk)',
 	'extdist-choose-version' => '<big>Vous êtes en train de télécharger l’extension <b>$1</b>.</big>
@@ -270,7 +271,7 @@ $messages['fr'] = array(
 Sélectionnez votre version Mediawiki.
 
 La plupart des extensions tourne sur différentes versions de MediaWiki. Aussi, si votre version n’est pas présente ici, ou si vous avez besoin des dernières fonctionnalités de l’extension, essayez d’utiliser la version courante.',
-	'extdist-no-versions' => 'L’extension sélectionnée ($1) est indisponible dans plusieurs versions !',
+	'extdist-no-versions' => "L’extension sélectionnée ($1) n'est disponible dans aucune version !",
 	'extdist-submit-version' => 'Continuer',
 	'extdist-no-remote' => 'Impossible de contacter le client subversion distant.',
 	'extdist-remote-error' => 'Erreur du client subversion distant : <pre>$1</pre>',
@@ -353,19 +354,72 @@ Se ten algunha dúbida ou pregunta acerca do sistema de distribución das extens
 	'extdist-want-more' => 'Obter outra extensión',
 );
 
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'extensiondistributor' => 'Discargar extension MediaWiki',
+	'extdist-desc' => 'Extension pro le distribution de archivos de instantaneos de extensiones',
+	'extdist-not-configured' => 'Per favor configura $wgExtDistTarDir e $wgExtDistWorkingCopy',
+	'extdist-wc-missing' => 'Le directorio pro copias de travalio configurate non existe!',
+	'extdist-no-such-extension' => 'Non existe un extension "$1"',
+	'extdist-no-such-version' => 'Le extension "$1" non existe in le version "$2".',
+	'extdist-choose-extension' => 'Selige le extension a discargar:',
+	'extdist-wc-empty' => 'Le directorio pro copias de travalio configurate non ha extensiones distribuibile!',
+	'extdist-submit-extension' => 'Continuar',
+	'extdist-current-version' => 'Version actual (trunco)',
+	'extdist-choose-version' => '<big>Tu va discargar le extension <b>$1</b>.</big>
+
+Per favor selige tu version de MediaWiki.
+
+Le majoritate del extensiones functiona trans versiones de MediaWiki, ergo si tu version de MediaWiki non es presente, o si tu ha besonio del ultime functionalitate de extensiones, prova usar le version actual.',
+	'extdist-no-versions' => 'Le extension seligite ($1) non es disponibile in alcun version!',
+	'extdist-submit-version' => 'Continuar',
+	'extdist-no-remote' => 'Non pote contactar le cliente Subversion remote.',
+	'extdist-remote-error' => 'Error del cliente Subversion remote: <pre>$1</pre>',
+	'extdist-remote-invalid-response' => 'Responsa invalide del cliente Subversion remote.',
+	'extdist-svn-error' => 'Subversion incontrava un error: <pre>$1</pre>',
+	'extdist-svn-parse-error' => 'Non pote processar le formulario XML ab "svn info": <pre>$1</pre>',
+	'extdist-tar-error' => 'Tar retornava le codice de exito $1:',
+	'extdist-created' => "Un instantaneo del version <b>\$2</b> del extension <b>\$1</b> pro MediaWiki <b>\$3</b> ha essite create.
+Le discargamento debe comenciar automaticamente post 5 secundas.
+
+Le adresse URL de iste instantaneo es:
+:\$4
+Es possibile usar iste adresse pro discargamento immediate verso un servitor, sed per favor non adde lo al lista de favoritos, post que le contento non essera actualisate, e illo pote esser delite plus tarde.
+
+Le archivo tar debe esser extrahite in tu directorio de extensiones. Per exemplo, in un systema de operation de typo Unix:
+
+<pre>
+tar -xzf \$5 -C /var/www/mediawiki/extensions
+</pre>
+
+In Windows, tu pote usar [http://www.7-zip.org/ 7-zip] pro extraher le files.
+
+Si tu wiki es situate in un servitor remote, extrahe le files in un directorio temporari in tu computator local, e postea carga '''tote''' le files extrahite verso le directorio de extensiones in le servitor.
+
+Nota ben que alcun extensiones require un file con nomime ExtensionFunctions.php, situate a  <tt>extensions/ExtensionFunctions.php</tt>, isto es, in le directorio ''superior'' al directorio de iste extension particular. Le instantaneo pro iste extensiones contine iste file como un \"tarbomb\" que se extrahe in ./ExtensionFunctions.php. Non oblidar cargar iste file a tu servitor remote.
+
+Quando tu ha extrahite le files, tu debe registrar le extension in LocalSettings.php. Le documentation del extension deberea continer instructiones super como facer lo.
+
+Si tu ha alcun questiones super iste systema de distribution de extensiones, per favor visita [[Extension talk:ExtensionDistributor]].",
+	'extdist-want-more' => 'Obtener un altere extension',
+);
+
 /** Italian (Italiano)
  * @author Darth Kule
+ * @author McDutchie
  * @author Melos
  */
 $messages['it'] = array(
 	'extensiondistributor' => 'Scarica estensione MediaWiki',
 	'extdist-desc' => 'Estensione per distribuire archivi snapshot delle estensioni',
 	'extdist-not-configured' => 'Configura $wgExtDistTarDir e $wgExtDistWorkingCopy',
-	'extdist-wc-missing' => 'La directory di lavoro della copia configurata non esiste!',
+	'extdist-wc-missing' => 'La directory per copie di lavoro configurata non esiste!',
 	'extdist-no-such-extension' => 'Nessuna estensione "$1"',
 	'extdist-no-such-version' => 'L\'estensione "$1" non esiste nella versione "$2".',
 	'extdist-choose-extension' => 'Seleziona quale estensione intendi scaricare:',
-	'extdist-wc-empty' => 'La directory di lavoro della copia configurata non contiene estensioni distribuibili!',
+	'extdist-wc-empty' => 'La directory per copie di lavoro configurata non contiene estensioni distribuibili!',
 	'extdist-submit-extension' => 'Continua',
 	'extdist-current-version' => 'Versione corrente (trunk)',
 	'extdist-choose-version' => "<big>Stai scaricando l'estensione <b>$1</b>.</big>

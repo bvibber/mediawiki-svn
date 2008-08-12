@@ -64,6 +64,16 @@ $messages['gl'] = array(
 	'right-move-userpages' => 'Mover páxinas de usuario',
 );
 
+/** Hebrew (עברית)
+ * @author Agbad
+ * @author Rotemliss
+ */
+$messages['he'] = array(
+	'nomoveuserpages-desc' => 'מניעה ממשתמשים להעביר דפי משתמש אלא אם יש להם את ההרשאה "move-userpages"',
+	'nomoveuserpages-error' => 'העברת דפי משתמש מבוטלת',
+	'right-move-userpages' => 'העברת דפי משתמש',
+);
+
 /** Italian (Italiano)
  * @author Darth Kule
  */

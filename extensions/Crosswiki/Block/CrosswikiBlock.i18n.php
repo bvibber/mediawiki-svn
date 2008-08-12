@@ -616,14 +616,45 @@ Wróćo k:
  * @author McDutchie
  */
 $messages['ia'] = array(
+	'crosswikiblock-desc' => 'Permitte blocar usatores in altere wikis con un [[Special:Crosswikiblock|pagina special]]',
+	'crosswikiblock' => 'Blocar usator in altere wiki',
+	'crosswikiblock-header' => 'Iste pagina permitte blocar un usator in un altere wiki.
+Per favor verifica que tu ha le permission de ager in iste wiki e que tu actiones sia conforme a tote le politicas.',
+	'crosswikiblock-target' => 'Adresse IP o nomine de usator e wiki de destination:',
 	'crosswikiblock-expiry' => 'Expiration:',
 	'crosswikiblock-reason' => 'Motivo:',
+	'crosswikiblock-submit' => 'Blocar iste usator',
 	'crosswikiblock-anononly' => 'Blocar solmente usatores anonyme',
 	'crosswikiblock-nocreate' => 'Impedir creation de contos',
 	'crosswikiblock-autoblock' => 'Blocar automaticamente le adresse IP usate le plus recentemente per iste usator, e omne IPs successive desde le quales ille/-a prova facer modificationes',
 	'crosswikiblock-noemail' => 'Impedir que le usator invia e-mail',
+	'crosswikiunblock' => 'Disblocar usator in altere wiki',
+	'crosswikiunblock-header' => 'Iste pagina permitte disblocar un usator in un altere wiki.
+Per favor verifica que tu ha le permission de ager in iste wiki e que tu actiones sia conforme a tote le politicas.',
+	'crosswikiunblock-user' => 'Nomine de usator, adresse IP o ID del blocada e wiki de destination:',
 	'crosswikiunblock-reason' => 'Motivo:',
+	'crosswikiunblock-submit' => 'Disblocar iste usator',
+	'crosswikiunblock-success' => "Le usator '''$1''' ha essite disblocate con successo.
+
+Retornar a:
+* [[Special:CrosswikiBlock|Formulario de blocada]]
+* [[$2]]",
+	'crosswikiblock-nousername' => 'Nulle nomine de usator esseva indicate',
+	'crosswikiblock-local' => 'Le blocadas local non es supportate via iste interfacie. Usa [[Special:BlockIP|{{int:blockip}}]]',
+	'crosswikiblock-dbnotfound' => 'Le base de datos $1 non existe',
+	'crosswikiblock-noname' => '"$1" non es un nomine de usator valide.',
+	'crosswikiblock-nouser' => 'Le usator "$3" non es trovate.',
+	'crosswikiblock-noexpiry' => 'Expiration invalide: $1.',
+	'crosswikiblock-noreason' => 'Nulle motivo specificate.',
+	'crosswikiblock-notoken' => 'Indicio de modification invalide.',
 	'crosswikiblock-alreadyblocked' => 'Le usator $3 es ja blocate.',
+	'crosswikiblock-noblock' => 'Iste usator non es blocate.',
+	'crosswikiblock-success' => "Le usator '''$3''' ha essite blocate con successo.
+
+Retornar a:
+* [[Special:CrosswikiBlock|Formulario de blocada]]
+* [[$4]]",
+	'crosswikiunblock-local' => 'Le disblocadas local non es supportate via iste interfacie. Usa [[Special:IPBlockList|{{int:ipblocklist}}]]',
 );
 
 /** Indonesian (Bahasa Indonesia)

@@ -403,8 +403,17 @@ $messages['hy'] = array(
  * @author McDutchie
  */
 $messages['ia'] = array(
+	'countedits' => 'Contar modificationes',
+	'countedits-desc' => '[[Special:CountEdits|Pagina special]] que conta le modificationes de usatores e forni un lista del dece contributores le plus active',
+	'countedits-warning' => "'''Attention:''' Non judica un libro per su copertura.
+Non judica le contributores per le numero de lor modificationes.",
 	'countedits-username' => 'Nomine de usator:',
 	'countedits-ok' => 'OK',
+	'countedits-nosuchuser' => 'Non existe un usator con le nomine $1.',
+	'countedits-resultheader' => 'Resultatos pro $1',
+	'countedits-resulttext' => '$1 ha facite $2 modificationes',
+	'countedits-mostactive' => 'Contributores le plus active',
+	'countedits-nocontribs' => 'Il non ha alcun contribution a iste wiki.',
 );
 
 /** Indonesian (Bahasa Indonesia)

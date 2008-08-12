@@ -278,6 +278,13 @@ $messages['bcc'] = array(
 	'oversight-hidden' => 'پناهین بازبینی',
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
+ */
+$messages['be-tarask'] = array(
+	'hiderevision-status' => 'Вэрсія $1: $2',
+);
+
 /** Bulgarian (Български)
  * @author Borislav
  * @author DCLXVI
@@ -1510,8 +1517,31 @@ $messages['ko'] = array(
  * @author Purodha
  */
 $messages['ksh'] = array(
+	'hiderevision' => 'Versione op Dor versteche',
+	'hiderevision-desc' => 'Verstich bestemmpte Versione, zem Beispill met verkeehte udder unjenehme päsönlesche Enfomazione.',
+	'group-oversight' => 'Verstechere',
+	'group-oversight-member' => 'Verstecher',
+	'grouppage-oversight' => '{{ns:project}}:Versteche',
+	'right-oversight' => 'Beloor en verstoche Version',
 	'right-hiderevision' => 'Versione vun Sigge beloore un zeröck holle, di sujaa för de Wiki-Köbesse verstoche sin',
-	'hiderevision-submit' => 'Důnn_di Väsjohn foshtäshe',
+	'hiderevision-prompt' => 'Nommer fun dä Version zom Versteche:',
+	'hiderevision-continue' => 'Wigger',
+	'hiderevision-text' => "Dat sullt nur en dä Fälle jemaat wäde:
+* Päsönlijje Infomazjone sin verkeeht udder nit för de Öffentleschkeit,
+*: Adresse fun Wunnunge, Telefonnummere, Kontodate, un esu wigger
+
+'''Wä dat Rääsch zom Versteiche ze mißbruch, dä kritt et afjenomme.'''
+
+Verstoche Saache sin denoh nit mieh em Web ze sin,
+ävver dat Versteiche shteit em Logbooch, un mer kann
+et widder retuur maache, falls De enne Fäähler määß.
+Dat moß ene Datebank-Köbes maache.",
+	'hiderevision-reason' => 'Dä Jrund (weed unseeschba faßjehallde):',
+	'hiderevision-submit' => 'Donn di Version versteche',
+	'hiderevision-tab' => 'Version Versteche',
+	'hiderevision-norevisions' => 'Kein Version zom Versteche aanjejovve',
+	'hiderevision-noreason' => 'Do moß ene Jrond för et Versteche aanjevve',
+	'hiderevision-status' => 'Version $1: $2',
 	'oversight-view' => 'Einzelheite',
 );
 

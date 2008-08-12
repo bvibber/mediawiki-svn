@@ -368,7 +368,7 @@ $messages['eml'] = array(
 $messages['eo'] = array(
 	'newuserlogpage' => 'Protokolo de uzanto-kreado',
 	'newuserlogpagetext' => 'Jen protokolo de lastaj kreadoj de uzantoj.',
-	'newuserlog-desc' => 'Aldonas [[Special:Log/newusers|protokolon pri kontkreado]] al [[Special:Log]]',
+	'newuserlog-desc' => 'Aldonas [[Special:Log/newusers|protokolon pri kontkreado]]',
 	'newuserlog-byemail' => 'pasvorto sendita retpoŝte',
 	'newuserlog-create-entry' => 'Nova uzanto',
 	'newuserlog-create2-entry' => 'kreis konton por $1',
@@ -1098,10 +1098,13 @@ $messages['qu'] = array(
 /** Romanian (Română)
  * @author Emily
  * @author KlaudiuMihaila
+ * @author Mihai
  * @author לערי ריינהארט
  */
 $messages['ro'] = array(
 	'newuserlogpage' => 'Jurnal utilizatori noi',
+	'newuserlogpagetext' => 'Acesta este jurnalul creărilor conturilor de utilizator.',
+	'newuserlog-desc' => 'Adaugă un [[Special:Log/newusers|jurnal al creărilor de conturi]]',
 	'newuserlog-byemail' => 'parola trimisă prin e-mail',
 	'newuserlog-create-entry' => 'Utilizator nou',
 	'newuserlog-create2-entry' => 'a deschis cont pentru $1',

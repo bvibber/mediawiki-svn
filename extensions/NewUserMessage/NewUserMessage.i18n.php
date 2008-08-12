@@ -66,7 +66,16 @@ $messages['dsb'] = array(
  * @author Yekrats
  */
 $messages['eo'] = array(
-	'newusermessage-desc' => 'Aldonu mesaĝon al diskuto-paĝo de nove kreita uzanto',
+	'newusermessage-desc' => 'Aldonas mesaĝon al diskuto-paĝo de nove kreita uzanto',
+	'newuseredit-summary' => 'Aldonas [[{{int:newusermessage-template}}|bonvenan mesaĝon]] al diskuto-paĝo de nova uzanto',
+);
+
+/** Spanish (Español)
+ * @author Ascánder
+ */
+$messages['es'] = array(
+	'newusermessage-desc' => 'Agrega un mensaje a la página de discusión de un usuario recién creado',
+	'newuseredit-summary' => 'Agregando el [[{{int:newusermessage-template}}|mensaje de bienvenida]] a la página de usuario del nuevo usuario',
 );
 
 /** French (Français)

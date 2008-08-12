@@ -1363,14 +1363,18 @@ $messages['zh-hans'] = array(
 	'linksearch-error' => '通配符仅可在主机名称的开头使用。',
 );
 
-/** Traditional Chinese (‪中文(繁體)‬) */
+/** Traditional Chinese (‪中文(繁體)‬)
+ * @author Alexsh
+ */
 $messages['zh-hant'] = array(
 	'linksearch' => '搜尋網頁連結',
 	'linksearch-desc' => '配合指定的字[[Special:Linksearch|搜尋含外部連結之頁面]]',
 	'linksearch-pat' => '搜尋網址:',
 	'linksearch-ns' => '名稱空間:',
 	'linksearch-ok' => '搜尋',
-	'linksearch-text' => '可以使用類似"*.wikipedia.org"的萬用字元。',
+	'linksearch-text' => '可以使用類似"*.wikipedia.org"的萬用字元。<br/>
+
+已支援：<tt>$1</tt>',
 	'linksearch-line' => '$1 連自 $2',
 	'linksearch-error' => '萬用字元僅可在主機名稱的開頭使用。',
 );

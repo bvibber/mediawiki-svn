@@ -17,14 +17,14 @@ $aliases['en'] = array(
  * @author Meno25
  */
 $aliases['ar'] = array(
-	'CategoryIntersection'   => array( 'تقاطع_تصنيف' ),
+	'CategoryIntersection' => array( 'تقاطع_تصنيف' ),
 );
 
 /** Egyptian Spoken Arabic (مصرى)
  * @author Meno25
  */
- $aliases['arz'] = array(
-	'CategoryIntersection'   => array( 'تقاطع_تصنيف' ),
+$aliases['arz'] = array(
+	'CategoryIntersection' => array( 'تقاطع_تصنيف' ),
 );
 
 $aliases['br'] = array(
@@ -39,8 +39,9 @@ $aliases['cs'] = array(
 	'CategoryIntersection'=> array( 'Průnik kategorií' ),
 );
 
+/** German (Deutsch) */
 $aliases['de'] = array(
-	'CategoryIntersection'=> array( 'Kategorien-Schnittmenge' ),
+	'CategoryIntersection' => array( 'Kategorien-Schnittmenge' ),
 );
 
 $aliases['dsb'] = array(
@@ -49,10 +50,6 @@ $aliases['dsb'] = array(
 
 $aliases['eo'] = array(
 	'CategoryIntersection'=> array( 'Kategoria Intersekcio' ),
-);
-
-$aliases[''] = array(
-	'CategoryIntersection'=> array( '' ),
 );
 
 $aliases['fr'] = array(
@@ -95,12 +92,14 @@ $aliases['mr'] = array(
 	'CategoryIntersection'=> array( 'वर्ग चौक' ),
 );
 
+/** Dutch (Nederlands) */
 $aliases['nl'] = array(
-	'CategoryIntersection'=> array( 'Categoriedoorsnede' ),
+	'CategoryIntersection' => array( 'Categoriedoorsnede' ),
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
 $aliases['no'] = array(
-	'CategoryIntersection'=> array( 'Kategorisnitt' ),
+	'CategoryIntersection' => array( 'Kategorisnitt' ),
 );
 
 $aliases['oc'] = array(
@@ -154,3 +153,4 @@ $aliases['uk'] = array(
 $aliases['vi'] = array(
 	'CategoryIntersection'=> array( 'Thể loại giao nhau' ),
 );
+

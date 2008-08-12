@@ -57,7 +57,7 @@ $aliases['lb'] = array(
 
 /** Dutch (Nederlands) */
 $aliases['nl'] = array(
-	'Eval' => array( 'Eval' ),
+	'Eval' => array( 'Evalueren' ),
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */

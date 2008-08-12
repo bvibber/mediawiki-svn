@@ -1273,6 +1273,14 @@ $wgGoogleMapsMessages['hil'] = array(
 	'gm-search' => 'Pangita-a',
 );
 
+/** Croatian (Hrvatski)
+ * @author Dalibor Bosits
+ */
+$wgGoogleMapsMessages['hr'] = array(
+	'gm-remove' => 'ukloni',
+	'gm-save-path' => 'Spremi',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

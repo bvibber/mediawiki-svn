@@ -77,6 +77,11 @@ $aliases['hu'] = array(
 	'DeletedContributions' => array( 'Törölt szerkesztések' ),
 );
 
+/** Korean (한국어) */
+$aliases['ko'] = array(
+	'DeletedContributions' => array( '삭제된기여' ),
+);
+
 /** Latin (Latina) */
 $aliases['la'] = array(
 	'DeletedContributions' => array( 'Conlationes deletae', 'Conlationes usoris deletae' ),

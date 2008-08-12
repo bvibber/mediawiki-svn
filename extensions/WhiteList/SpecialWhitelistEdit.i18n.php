@@ -519,6 +519,14 @@ $allMessages['hil'] = array(
 	'whitelisttableedit' => 'Ilisan',
 );
 
+/** Croatian (Hrvatski)
+ * @author Dalibor Bosits
+ */
+$allMessages['hr'] = array(
+	'whitelisttableremove' => 'Ukloni',
+	'whitelistnever' => 'nikad',
+);
+
 /** Hungarian (Magyar)
  * @author Dani
  */
@@ -1044,8 +1052,10 @@ $allMessages['rif'] = array(
 
 /** Romanian (Română)
  * @author KlaudiuMihaila
+ * @author Mihai
  */
 $allMessages['ro'] = array(
+	'whitelisttablemodifynone' => 'Nimic',
 	'whitelisttableedit' => 'Modifică',
 	'whitelisttableremove' => 'Elimină',
 	'whitelistnever' => 'niciodată',

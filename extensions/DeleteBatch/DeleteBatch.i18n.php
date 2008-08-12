@@ -193,9 +193,10 @@ $messages['fi'] = array(
 
 /** French (Français)
  * @author Grondin
+ * @author McDutchie
  */
 $messages['fr'] = array(
-	'deletebatch' => 'Lot de suppression des pages',
+	'deletebatch' => 'Supprimer lot de pages',
 	'deletebatch-desc' => '[[Special:DeleteBatch|Supprime un lot de pages]]',
 	'deletebatch-button' => 'SUPPRIMER',
 	'deletebatch-here' => '<b>ici</b>',
@@ -218,7 +219,7 @@ Un fichier importé pourra contenir un nom de la page et un motif facultatif sé
 	'deletebatch-omitting-invalid' => 'Omission de la page « $1 » incorrecte.',
 	'deletebatch-file-bad-format' => 'Le fichier doit être en texte simple',
 	'deletebatch-file-missing' => 'Impossible de lire le fichier donné',
-	'deletebatch-select-script' => 'supprimer le script de la page',
+	'deletebatch-select-script' => 'script pour supprimer pages',
 	'deletebatch-select-yourself' => 'vous',
 	'deletebatch-no-page' => 'Veuillez indiquer au moins une page à supprimer OU un fichier donné contenant une liste de pages.',
 );
@@ -267,8 +268,32 @@ O ficheiro cargado debería conter o nome da páxina e unha razón opcional sepa
  * @author McDutchie
  */
 $messages['ia'] = array(
+	'deletebatch' => 'Deler lot de paginas',
+	'deletebatch-desc' => '[[Special:DeleteBatch|Deler un lot de paginas]]',
 	'deletebatch-button' => 'Deler',
+	'deletebatch-here' => '<b>hic</b>',
+	'deletebatch-help' => 'Deler un lot de paginas. Tu pote executar un deletion singule, o deler paginas listate in un file.
+Selige un usator que se monstrara in le registro de deletiones.
+Le file cargate debe continer in cata linea un nomine de pagina e un motivo facultative separate per un character "|".',
+	'deletebatch-caption' => 'Lista de paginas',
+	'deletebatch-title' => 'Deler in lot',
+	'deletebatch-link-back' => 'Tu pote retornar al extension',
+	'deletebatch-as' => 'Executar le script como',
+	'deletebatch-both-modes' => 'Per favor selige, o un del paginas specificate, o un lista date de paginas.',
+	'deletebatch-or' => '<b>o</b>',
+	'deletebatch-page' => 'Paginas a deler',
 	'deletebatch-reason' => 'Motivo pro deletion',
+	'deletebatch-processing' => 'deletion de paginas',
+	'deletebatch-from-file' => 'a partir del lista in un file',
+	'deletebatch-from-form' => 'a partir del formulario',
+	'deletebatch-success-subtitle' => 'pro $1',
+	'deletebatch-omitting-nonexistant' => 'Omission del pagina non existente "$1".',
+	'deletebatch-omitting-invalid' => 'Omission del pagina invalide "$1".',
+	'deletebatch-file-bad-format' => 'Le file debe esser in texto simple',
+	'deletebatch-file-missing' => 'Non pote leger le file date',
+	'deletebatch-select-script' => 'script pro deler paginas',
+	'deletebatch-select-yourself' => 'tu',
+	'deletebatch-no-page' => 'Per favor, o specifica al minus un pagina a deler, o selige un file continente un lista de paginas.',
 );
 
 /** Italian (Italiano)

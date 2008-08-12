@@ -851,9 +851,11 @@ QuickTime बिना इस घटक के Ogg files चलने में 
 );
 
 /** Croatian (Hrvatski)
+ * @author Dalibor Bosits
  * @author SpeedyGonsales
  */
 $messages['hr'] = array(
+	'ogg-desc' => 'Poslužitelj za Ogg Theora i Vorbis datoteke, s JavaScript preglednikom',
 	'ogg-short-audio' => 'Ogg $1 zvučna datoteka, $2',
 	'ogg-short-video' => 'Ogg $1 video datoteka, $2',
 	'ogg-short-general' => 'Ogg $1 medijska datoteka, $2',
@@ -869,8 +871,8 @@ $messages['hr'] = array(
 	'ogg-play-sound' => 'Sviraj zvuk',
 	'ogg-no-player' => "Oprostite, izgleda da Vaš operacijski sustav nema instalirane medijske preglednike. Molimo <a href=\"http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download\">instalirajte medijski preglednik (''player'')</a>.",
 	'ogg-no-xiphqt' => "Nemate instaliranu XiphQT komponentu za QuickTime (ili je neispravno instalirana). QuickTime ne može pokretati Ogg datoteke bez ove komponente. Molimo <a href=\"http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download\">instalirajte XiphQT</a> ili izaberite drugi preglednik (''player'').",
-	'ogg-player-videoElement' => '<slikovni> element',
-	'ogg-player-oggPlugin' => 'Ogg plugin',
+	'ogg-player-videoElement' => 'Ugrađena podrška za browser',
+	'ogg-player-oggPlugin' => 'Plugin preglednika',
 	'ogg-player-vlc-activex' => 'VLC (ActiveX kontrola)',
 	'ogg-player-thumbnail' => 'Samo (nepokretne) slike',
 	'ogg-player-soundthumb' => 'Nema preglednika',
@@ -1774,8 +1776,8 @@ $messages['pl'] = array(
 	'ogg-play-sound' => 'Odtwórz dźwięk',
 	'ogg-no-player' => 'W Twoim systemie brak obsługiwanego programu odtwarzacza. <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download/pl">Pobierz i zainstaluj odtwarzacz</a>.',
 	'ogg-no-xiphqt' => 'Brak komponentu XiphQT dla programu QuickTime. QuickTime nie może odtwarzać plików Ogg bez tego komponentu. <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download/pl">Pobierz XiphQT</a> lub użyj innego odtwarzacza.',
-	'ogg-player-videoElement' => 'element <video>',
-	'ogg-player-oggPlugin' => 'wtyczka Ogg',
+	'ogg-player-videoElement' => 'Obsługa bezpośrednio przez przeglądarkę',
+	'ogg-player-oggPlugin' => 'Wtyczka do przeglądarki',
 	'ogg-player-thumbnail' => 'Tylko nieruchomy obraz',
 	'ogg-player-soundthumb' => 'Bez odtwarzacza',
 	'ogg-player-selected' => '(wybrany)',
@@ -1892,6 +1894,7 @@ $messages['qu'] = array(
 
 /** Romanian (Română)
  * @author KlaudiuMihaila
+ * @author Mihai
  */
 $messages['ro'] = array(
 	'ogg-short-audio' => 'Fişier de sunet ogg $1, $2',
@@ -1902,10 +1905,18 @@ $messages['ro'] = array(
 	'ogg-long-multiplexed' => '(Fişier multiplexat audio/video ogg, $1, lungime $2, $4×$5 pixeli, $3)',
 	'ogg-long-general' => '(Fişier media ogg, lungime $2, $3)',
 	'ogg-long-error' => '(Fişier ogg incorect: $1)',
+	'ogg-play' => 'Redă',
 	'ogg-pause' => 'Pauză',
-	'ogg-player-videoElement' => 'element <video>',
-	'ogg-player-oggPlugin' => 'Plugin ogg',
+	'ogg-stop' => 'Stop',
+	'ogg-play-video' => 'Redă video',
+	'ogg-play-sound' => 'Redă sunet',
+	'ogg-no-player' => 'Îmi pare rău, sistemul tău nu pare să aibă vreun program de redare suportat.
+Te rog <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">descarcă un program de redare</a>.',
+	'ogg-player-videoElement' => 'Navigator cu suport nativ',
+	'ogg-player-oggPlugin' => 'Insert navigator',
+	'ogg-player-soundthumb' => 'Niciun program de redare',
 	'ogg-player-selected' => '(selectat)',
+	'ogg-use-player' => 'Foloseşte programul de redare:',
 	'ogg-more' => 'Mai mult…',
 	'ogg-dismiss' => 'Închide',
 	'ogg-download' => 'Descarcă fişier',

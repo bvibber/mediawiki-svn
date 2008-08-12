@@ -53,6 +53,13 @@ $messages['hsb'] = array(
 	'contributorsaddon-desc' => 'Přidawa JavaScriptowe wuskakowanske wokna onMouseOver k wotkazam "Hłowni přinošowarjo"',
 );
 
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'contributorsaddon-desc' => 'Adde pop-ups via onMouseOver in JS al ligamines "Contributores principal"',
+);
+
 /** Japanese (日本語)
  * @author JtFuruhata
  */

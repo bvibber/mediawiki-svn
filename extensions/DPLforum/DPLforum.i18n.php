@@ -146,7 +146,12 @@ $messages['hsb'] = array(
  * @author McDutchie
  */
 $messages['ia'] = array(
+	'dplforum-desc' => 'Extension pro foros basate in DPL',
+	'dplforum-by' => 'per',
+	'dplforum-edited' => '  - Ultime modification',
 	'dplforum-never' => 'Nunquam',
+	'dplforum-toofew' => 'Foro DPL: Non bastante categorias!',
+	'dplforum-toomany' => 'Foro DPL: Troppo de categorias!',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

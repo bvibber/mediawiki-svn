@@ -96,6 +96,13 @@ $messages['hsb'] = array(
 	'didyoumean-desc' => 'Přidawa wotkazy stronam z "podobnymi" titulemi',
 );
 
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'didyoumean-desc' => 'Adde ligamines a paginas con titulos "similar"',
+);
+
 /** Italian (Italiano)
  * @author Darth Kule
  */

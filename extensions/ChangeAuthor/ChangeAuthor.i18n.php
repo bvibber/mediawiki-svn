@@ -558,6 +558,7 @@ $messages['hil'] = array(
 );
 
 /** Croatian (Hrvatski)
+ * @author Dalibor Bosits
  * @author Dnik
  * @author SpeedyGonsales
  */
@@ -567,7 +568,7 @@ $messages['hr'] = array(
 	'changeauthor-search-box' => 'Pretraži inačice',
 	'changeauthor-pagename-or-revid' => 'Ime članka ili oznaka (ID) inačice:',
 	'changeauthor-pagenameform-go' => 'Kreni',
-	'changeauthor-comment' => 'Napomena:',
+	'changeauthor-comment' => 'Komentar:',
 	'changeauthor-changeauthors-multi' => 'Promijeni autora(e)',
 	'changeauthor-explanation-multi' => "Ovaj obrazac omogućava promjenu autora inačica. Jednostavno promijenite jedno iii više korisničkih imena u donjem popisu, dodajte neobaveznu napomenu i pritisnite tipku 'Promijeni autora(e)'.",
 	'changeauthor-changeauthors-single' => 'Promijeni autora',
@@ -1106,14 +1107,19 @@ $messages['rif'] = array(
 
 /** Romanian (Română)
  * @author KlaudiuMihaila
+ * @author Mihai
  */
 $messages['ro'] = array(
+	'changeauthor-pagename-or-revid' => 'Numele paginii sau ID-ul reviziei:',
+	'changeauthor-pagenameform-go' => 'Du-te',
 	'changeauthor-comment' => 'Comentariu:',
 	'changeauthor-changeauthors-multi' => 'Schimbă autorul(ii)',
 	'changeauthor-changeauthors-single' => 'Schimbă autorul',
 	'changeauthor-invalid-username' => 'Nume de utilizator incorect "$1".',
+	'changeauthor-nosuchuser' => 'Nu există utilizatorul "$1".',
 	'changeauthor-revview' => 'Versiunea #$1 din $2',
 	'changeauthor-nosuchtitle' => 'Nu există o pagină numită "$1".',
+	'changeauthor-success' => 'Cererea ta a fost procesată cu succes.',
 );
 
 /** Russian (Русский)

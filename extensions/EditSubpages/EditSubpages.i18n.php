@@ -111,6 +111,22 @@ $messages['gl'] = array(
   #</pre><!-- deixe esta liña como está -->',
 );
 
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'editsubpages-desc' => 'Permitte al administratores de disblocar un pagina e tote su subpaginas pro permitter modificationes anonyme via [[MediaWiki:Unlockedpages]]',
+	'unlockedpages' => ' #<!-- non modificar iste linea --><pre>
+# Insere le paginas que tu vole disbloar infra, in le forma
+# * Nomine de pagina
+# Le paginas debe comenciar con un bolletta pro esser disblocate,
+# tote le resto es considerate como commento.
+# Le nomines del paginas pote esser [[ligamines]] e es sensibile al majusculas e minusculas.
+# In ultra, le paginas de discussion essera automaticamente disblocate con le pagina.
+# Vide http://www.mediawiki.org/wiki/Extension:EditSubpages pro plus info.
+  #</pre><!-- non modificar iste linea -->',
+);
+
 /** Italian (Italiano)
  * @author Darth Kule
  */

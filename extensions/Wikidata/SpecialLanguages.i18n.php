@@ -915,11 +915,13 @@ $wdMessages['es'] = array(
 </ul></p>',
 	'ow_conceptmapping_uitext' => '<p>Ligar los conceptos permite identificar los sentidos definidos en un juego de datos que son idénticos a sentidos definidos en otros juegos de datos.</p>',
 	'ow_conceptmapping_no_action_specified' => 'Sentimos no saber hacer "$1".',
+	'ow_dm_OK' => 'OK',
 	'ow_dm_not_present' => 'Ausente',
 	'ow_dm_not_found' => 'No encontrado en la base de datos o con errores de representación',
 	'ow_mapping_successful' => 'Todos los campos marcados con [OK] fueron enlazados',
 	'ow_mapping_unsuccessful' => 'Deben haber dos sentidos definidos para poder ligarlos.',
 	'ow_will_insert' => 'Insertará el texto siguiente:',
+	'ow_contents_of_mapping' => 'Contenido del mapeo',
 	'ow_available_contexts' => 'Conceptos disponibles',
 	'ow_add_concept_link' => 'Enlazar otros conceptos',
 	'ow_concept_panel' => 'Tablero de conceptos',
@@ -986,6 +988,10 @@ Favor contactar al administrador.',
 	'ow_copy_successful' => '<h2>Copia exitosa</h2>Sus datos han sido copiados exitosamente (Favor verificar de todas formas).',
 	'ow_copy_unsuccessful' => '<h3>Copia fallida</h3> La copia no se realizó.',
 	'ow_no_action_specified' => '<h3>No se especificó ninguna acción</h3> ¿Puede que hayas llegado a esta página directamente? Normalmente, no necesitas venir hasta aquí.',
+	'ow_db_consistency_not_found' => '<h2>Error</h2>
+Hay un problema con la consistencia de esta base de datos, wikidata no puede encontrar datos válidos conectados con este ID de sentido definido.
+Puede que esté perdido.
+Contacta por favor el operador o el administrador del servicio.',
 );
 
 /** Finnish (Suomi)
@@ -1335,6 +1341,13 @@ $wdMessages['hi'] = array(
  */
 $wdMessages['hil'] = array(
 	'ow_history' => 'Saysay',
+);
+
+/** Croatian (Hrvatski)
+ * @author Dalibor Bosits
+ */
+$wdMessages['hr'] = array(
+	'ow_save' => 'Spremi',
 );
 
 /** Upper Sorbian (Hornjoserbsce)

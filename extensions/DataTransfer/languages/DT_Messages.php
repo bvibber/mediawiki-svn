@@ -331,7 +331,19 @@ $messages['hu'] = array(
  * @author McDutchie
  */
 $messages['ia'] = array(
+	'dt-desc' => 'Permitte importar e exportar datos structurate continite in appellos de patronos',
+	'viewxml' => 'Vider XML',
+	'dt_viewxml_docu' => 'Per favor selige inter le sequente categorias e spatios de nomines pro vider in formato XML.',
+	'dt_viewxml_categories' => 'Categorias',
 	'dt_viewxml_namespaces' => 'Spatios de nomines',
+	'dt_viewxml_simplifiedformat' => 'Formato simplificate',
+	'dt_xml_namespace' => 'Spatio de nomines',
+	'dt_xml_page' => 'Pagina',
+	'dt_xml_field' => 'Campo',
+	'dt_xml_name' => 'Nomine',
+	'dt_xml_title' => 'Titulo',
+	'dt_xml_id' => 'ID',
+	'dt_xml_freetext' => 'Texto libere',
 );
 
 /** Indonesian (Bahasa Indonesia)

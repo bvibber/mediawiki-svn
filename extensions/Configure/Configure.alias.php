@@ -88,7 +88,7 @@ $aliases['he'] = array(
 
 /** Croatian (Hrvatski) */
 $aliases['hr'] = array(
-	'Configure'  => array( 'Konfiguracija' ),
+	'Configure' => array( 'Konfiguracija' ),
 	'Extensions' => array( 'Ekstenzije' ),
 	'ViewConfig' => array( 'Vidi_konfiguraciju' ),
 );

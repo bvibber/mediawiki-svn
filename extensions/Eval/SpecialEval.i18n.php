@@ -119,6 +119,18 @@ $messages['hu'] = array(
 	'eval_code' => 'Kód',
 );
 
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'eval' => 'Eval',
+	'eval-desc' => 'Adde [[Special:Eval|un interfacie]] al function <code>eval()</code>',
+	'eval_submit' => 'Evalutar',
+	'eval_escape' => 'Escappar output',
+	'eval_out' => 'Output',
+	'eval_code' => 'Codice',
+);
+
 /** Japanese (日本語)
  * @author JtFuruhata
  */

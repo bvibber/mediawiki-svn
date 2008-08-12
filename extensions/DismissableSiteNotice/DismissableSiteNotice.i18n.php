@@ -529,9 +529,11 @@ $messages['qu'] = array(
 
 /** Romanian (Română)
  * @author KlaudiuMihaila
+ * @author Mihai
  */
 $messages['ro'] = array(
 	'sitenotice_close' => 'ascunde',
+	'sitenotice-desc' => 'Permite utilizatorilor să închidă notificările sitului',
 );
 
 /** Russian (Русский)

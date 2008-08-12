@@ -127,6 +127,7 @@ Tämä sivu voisi myös kaivata apuasi: $1.',
 /** French (Français)
  * @author Grondin
  * @author IAlex
+ * @author McDutchie
  * @author Verdy p
  */
 $messages['fr'] = array(
@@ -141,7 +142,7 @@ Ces pages devraient avoir, aussi, besoin de votre aide : $1.',
 Cette page devrait avoir, aussi, besoin de votre aide : $1.',
 	'editsimilar-thankyou' => 'Merci pour votre contribution, $1 !',
 	'editsimilar-link-disable' => 'paramétrer les préférences',
-	'tog-edit-similar' => 'Activer les suggestions similaires des pages',
+	'tog-edit-similar' => 'Activer les suggestions des pages similaires',
 );
 
 /** Galician (Galego)
@@ -178,6 +179,24 @@ Tuta strona by tež twoju pomoc trjebała: $1.',
 	'editsimilar-thankyou' => 'Dźakujemy so za twój přinošk, $1!',
 	'editsimilar-link-disable' => 'Preferency nastajić',
 	'tog-edit-similar' => 'Namjety za podobne strony zmóžnić',
+);
+
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'editsimilar-desc' => 'Incoragia le usatores a modificar un pagina similar post haber publicate un pagina',
+	'editsimilar-thanks' => 'Gratias pro tu contribution.
+Examina iste paginas connexe: $1.',
+	'editsimilar-thanks-singleresult' => 'Gratias pro tu contribution.
+Examina iste pagina connexe: $1.',
+	'editsimilar-thanks-notsimilar' => 'Gratias pro tu contribution.
+Etiam iste paginas poterea haber beneficio de tu adjuta: $1.',
+	'editsimilar-thanks-notsimilar-singleresult' => 'Gratias pro tu contribution.
+Etiam iste pagina poterea haber beneficio de tu adjuta: $1.',
+	'editsimilar-thankyou' => 'Gratias pro tu contribution, $1!',
+	'editsimilar-link-disable' => 'definir preferentias',
+	'tog-edit-similar' => 'Activar le suggestiones de paginas similar',
 );
 
 /** Italian (Italiano)

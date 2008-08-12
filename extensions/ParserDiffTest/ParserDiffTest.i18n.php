@@ -952,8 +952,12 @@ $messages['pt'] = array(
 
 /** Romanian (Română)
  * @author KlaudiuMihaila
+ * @author Mihai
  */
 $messages['ro'] = array(
+	'pdtest_no_target' => 'Nu a fost specificată destinaţia.',
+	'pdtest_page_missing' => 'Pagina specificată nu a fost găsită în baza de date.',
+	'pdtest_no_changes' => 'Nu au fost detectate schimbări.',
 	'pdtest_ok' => 'OK',
 );
 

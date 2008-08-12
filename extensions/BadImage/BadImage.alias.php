@@ -16,13 +16,19 @@ $aliases['en'] = array(
 /** Arabic (العربية)
  * @author Meno25
  */
- $aliases['ar'] = array(
-	'Badimages'   => array( 'صور_سيئة' ),
+$aliases['ar'] = array(
+	'Badimages' => array( 'صور_سيئة' ),
 );
 
 /** Egyptian Spoken Arabic (مصرى)
  * @author Meno25
  */
 $aliases['arz'] = array(
-	'Badimages'   => array( 'صور_سيئة' ),
+	'Badimages' => array( 'صور_سيئة' ),
 );
+
+/** Dutch (Nederlands) */
+$aliases['nl'] = array(
+	'Badimages' => array( 'ZwarteLijstAfbeeldingen' ),
+);
+

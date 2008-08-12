@@ -162,6 +162,32 @@ $messages['gl'] = array(
 	'errorhandler-trace-line-internal' => '[función interna]: $1',
 );
 
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'errorhandler-desc' => 'Gestor de errores pro MediaWiki',
+	'errorhandler-errors' => 'Errores:',
+	'errorhandler-error-fatal' => 'Error fatal',
+	'errorhandler-error-warning' => 'Advertimento',
+	'errorhandler-error-parse' => 'Error del analysator syntactic',
+	'errorhandler-error-notice' => 'Notitia',
+	'errorhandler-error-core-error' => 'Error de nucleo',
+	'errorhandler-error-core-warning' => 'Advertimento de nucleo',
+	'errorhandler-error-compile-error' => 'Error de compilation',
+	'errorhandler-error-compile-warning' => 'Advertimento de compilation',
+	'errorhandler-error-user-error' => 'Error de usator',
+	'errorhandler-error-user-warning' => 'Advertimento de usator',
+	'errorhandler-error-user-notice' => 'Notitia de usator',
+	'errorhandler-error-strict' => 'Standardes stricte',
+	'errorhandler-error-recoverable' => 'Error fatal attrappabile',
+	'errorhandler-msg-text' => '$1 : $2 in $3 (linea $4)',
+	'errorhandler-msg-html' => '<b>$1</b> : <i>$2</i> in <b>$3</b> (linea <b>$4</b>)',
+	'errorhandler-trace' => 'tracia:',
+	'errorhandler-trace-line' => '$1 (linea $2): $3',
+	'errorhandler-trace-line-internal' => '[function interne]: $1',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */

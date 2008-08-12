@@ -536,9 +536,11 @@ $messages['cu'] = array(
 );
 
 /** German (Deutsch)
+ * @author Church of emacs
  * @author Leithian
  * @author Raimond Spekking
  * @author Revolus
+ * @author W (aka Wuzur)
  */
 $messages['de'] = array(
 	'configure' => 'Konfiguration dieses Wikis',
@@ -547,8 +549,13 @@ $messages['de'] = array(
 	'configure-desc-key' => 'Schlüssel',
 	'configure-desc-ns' => 'Namensräume',
 	'configure-desc-val' => 'Wert',
+	'configure-edit-core' => 'MediaWiki',
+	'configure-edit-ext' => 'Erweiterungen',
+	'configure-ext-doc' => 'Siehe Online-Dokumentation',
 	'configure-ext-schemachange' => "'''Warnung:''' diese Erweiterung benötigt ein Datenbankupdate um korrekt zu funktionieren!",
 	'configure-ext-settings' => 'Einstellungen',
+	'configure-ext-use-extension' => 'Diese Erweiterung verwenden',
+	'configure-ext-use' => 'Benutzen',
 	'configure-summary' => 'Diese Spezialseite ermöglicht dir die Konfiguration dieses Wikis, siehe [http://www.mediawiki.org/wiki/Manual:Configuration_settings Konfigurationsoptionen] für weitere Information.',
 	'configure-btn-save' => 'Einstellungen speichern',
 	'configure-directory-not-writable' => 'Das Verzeichnis, in dem die Konfigurationen gespeichert werden, <tt>$1</tt>, ist nicht beschreibbar. Bitte mache es für PHP beschreibbar, damit diese Erweiterung genutzt werden kann.',

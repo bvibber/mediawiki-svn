@@ -98,6 +98,7 @@ $messages['ar'] = array(
 	'group-patroller' => 'مراجعون',
 	'group-patroller-member' => 'مراجع',
 	'grouppage-patroller' => '{{ns:project}}:مراجع',
+	'right-patroller' => 'مراجعة الصفحات',
 );
 
 /** Bikol Central (Bikol Central)
@@ -175,6 +176,7 @@ $messages['de'] = array(
 	'group-patroller' => 'Kontrolleure',
 	'group-patroller-member' => 'Kontrolleur',
 	'grouppage-patroller' => '{{ns:project}}:Kontrolleur',
+	'right-patroller' => 'Seiten kontrollieren',
 );
 
 /** German (formal address) (Deutsch (Sie-Form))
@@ -240,7 +242,9 @@ $messages['es'] = array(
 	'patrol-resume' => 'Haz click aquí para continuar.',
 );
 
-/** French (Français) */
+/** French (Français)
+ * @author Grondin
+ */
 $messages['fr'] = array(
 	'patrol' => 'Vérification des modifications',
 	'patrol-desc' => 'Interface mettant en valeur le patrouillage collaboratif.',
@@ -264,6 +268,7 @@ $messages['fr'] = array(
 	'group-patroller' => 'Patrouilleurs',
 	'group-patroller-member' => 'Patrouilleur',
 	'grouppage-patroller' => '{{ns:project}}:Patrouilleur',
+	'right-patroller' => 'Pages de patrouille',
 );
 
 /** Western Frisian (Frysk)
@@ -650,6 +655,7 @@ $messages['nl'] = array(
 	'group-patroller' => 'Controleurs',
 	'group-patroller-member' => 'Controleur',
 	'grouppage-patroller' => '{{ns:project}}:Controleur',
+	'right-patroller' => "Pagina's markeren",
 );
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
@@ -685,6 +691,7 @@ $messages['no'] = array(
 	'group-patroller' => 'Patruljører',
 	'group-patroller-member' => 'Patruljør',
 	'grouppage-patroller' => '{{ns:project}}:Patruljør',
+	'right-patroller' => 'Patruljere sider',
 );
 
 /** Occitan (Occitan)

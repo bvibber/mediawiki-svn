@@ -415,6 +415,35 @@ $messages['hu'] = array(
 	'duplicator-toomanyrevisions' => '[[$1]] túl sok ($2) változattal rendelkezik, ezért nem másolható. A jelenlegi határ $3.',
 );
 
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'duplicator' => 'Duplicar un pagina',
+	'duplicator-desc' => 'Crear copias independente de paginas con historias complete de modificationes',
+	'duplicator-toolbox' => 'Duplicar iste pagina',
+	'duplicator-header' => 'Iste pagina permitte le duplication complete de un pagina, creante copias independente de tote le historias.
+Isto es utile pro le bifurcation de paginas, etc.',
+	'duplicator-options' => 'Optiones',
+	'duplicator-source' => 'Origine:',
+	'duplicator-dest' => 'Destination:',
+	'duplicator-dotalk' => 'Duplicar etiam le pagina de discussion (si existe)',
+	'duplicator-submit' => 'Duplicar',
+	'duplicator-summary' => 'Copiate ab [[$1]]',
+	'duplicator-success' => "<big>'''[[$1]] ha essite copiate verso [[$2]].'''</big>",
+	'duplicator-success-revisions' => '$1 {{PLURAL:$1|revision|revisiones}} ha essite copiate.',
+	'duplicator-success-talkcopied' => 'Le pagina de discussion ha equalmente essite copiate.',
+	'duplicator-success-talknotcopied' => 'Le pagina de discussion non poteva esser copiate.',
+	'duplicator-failed' => 'Le pagina non poteva esser duplicate.
+Un error incognite occurreva.',
+	'duplicator-source-invalid' => 'Per favor entra un titulo de origine valide.',
+	'duplicator-source-notexist' => '[[$1]] non existe. Per favor entra le titulo de un pagina existente.',
+	'duplicator-dest-invalid' => 'Per favor entra un titulo de destination valide.',
+	'duplicator-dest-exists' => '[[$1]] existe ja. Per favor entra un titulo de destination non ancora existente.',
+	'duplicator-toomanyrevisions' => '[[$1]] ha troppo de revisiones (i.e. $2) e non pote esser copiate.
+Le limite actual es $3.',
+);
+
 /** Indonesian (Bahasa Indonesia)
  * @author Irwangatot
  * @author Ivan Lanin

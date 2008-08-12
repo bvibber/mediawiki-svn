@@ -119,6 +119,14 @@ $messages['eo'] = array(
 	'absenteelandlord-desc' => 'Aŭtomate ŝlosas la vikian datumbazon se la administrantoj ĉiuj estas daŭre neaktiva.',
 );
 
+/** Spanish (Español)
+ * @author Ascánder
+ */
+$messages['es'] = array(
+	'absenteelandlord-reason' => 'La base de datos fue automáticamente bloqueada debido a inactividad de los administradores.',
+	'absenteelandlord-desc' => 'Auto-bloquea la base de datos del wiki si todos los administradores se mantienen inactivos por un largo período de tiempo',
+);
+
 /** Finnish (Suomi)
  * @author Jaakonam
  */
@@ -183,6 +191,14 @@ $messages['hr'] = array(
 $messages['hsb'] = array(
 	'absenteelandlord-reason' => 'Datowa banka bu awtomatisce zawrjena, dokelž žadyn administrator aktiwny njeje.',
 	'absenteelandlord-desc' => 'Awtomatiske zawrjenja wikijoweje datoweje banki, jeli administratorojo su njeaktiwni za wěstu dobu.',
+);
+
+/** Haitian (Kreyòl ayisyen)
+ * @author Masterches
+ */
+$messages['ht'] = array(
+	'absenteelandlord-reason' => 'Bazdone a fème paske administratè yo pa fè pyès aktivite anndan l.',
+	'absenteelandlord-desc' => 'Bazdone a ap fème poukont li si sysops yo, administratè yo pa fè anyen pandan yon kout tan',
 );
 
 /** Hungarian (Magyar)

@@ -87,10 +87,12 @@ $messages['ar'] = array(
 	'formpattern' => '$1-استمارة',
 	'formtitlepattern' => 'أضف $1 جديدا',
 	'formsave' => 'حفظ',
+	'formindexmismatch-title' => 'نمط الاسم والقالب لا يتطابقان',
 	'formindexmismatch' => 'هذه الاستمارة بها أنماط أسماء وقوالب غير متطابقة بدءا عند الفهرس $1.',
 	'formarticleexists' => 'الصفحة موجودة',
 	'formarticleexiststext' => 'الصفحة [[$1]] موجودة بالفعل.',
 	'formbadpagename' => 'اسم صفحة سيء',
+	'formbadrecaptcha' => 'قيم غير صحيحة لreCaptcha. حاول مرة ثانية.',
 	'formbadpagenametext' => 'بيانات الاستمارة التي أدخلتها تصنع اسم صفحة سيئا، "$1".',
 	'formrequiredfieldpluralerror' => 'الحقول $1 مطلوبة لهذه الاستمارة.
 من فضلك املأها.',
@@ -229,10 +231,12 @@ $messages['fr'] = array(
 	'formpattern' => 'formulaire-$1',
 	'formtitlepattern' => 'Ajouter un(e) $1',
 	'formsave' => 'Sauvegarder',
+	'formindexmismatch-title' => 'Palette de nom et erreur de modèle',
 	'formindexmismatch' => 'Ce formulaire a des patrons et des modèles qui ne correspondent pas à partir de $1.',
 	'formarticleexists' => "L'article existe déjà.",
 	'formarticleexiststext' => "L'article nommé [[$1]] existe déjà.",
 	'formbadpagename' => 'Mauvais nom de page',
+	'formbadrecaptcha' => 'Valeur incorrecte pour reCaptcha. Essayez à nouveau',
 	'formbadpagenametext' => 'Les données saisies forment un mauvais nom de page, « $1 ».',
 	'formrequiredfieldpluralerror' => 'Les champs $1 sont requis dans ce formulaire.',
 	'formrequiredfielderror' => 'Le champ $1 est requis dans ce formulaire.',
@@ -273,6 +277,13 @@ $messages['gl'] = array(
 	'formsavesummary' => 'Nova páxina usando [[Special:Form/$1]]',
 	'formsaveerror' => 'Erro ao gardar o formulario',
 	'formsaveerrortext' => "Houbo un erro descoñecido ao gardar a páxina '$1'.",
+);
+
+/** Croatian (Hrvatski)
+ * @author Dalibor Bosits
+ */
+$messages['hr'] = array(
+	'formsave' => 'Spremi',
 );
 
 /** Upper Sorbian (Hornjoserbsce)
@@ -469,10 +480,13 @@ $messages['nl'] = array(
 	'formpattern' => '$1-form',
 	'formtitlepattern' => 'Voeg nieuw $1 toe',
 	'formsave' => 'Opslaan',
+	'formindexmismatch-title' => 'Naampatroon en sjabloon mismatch',
 	'formindexmismatch' => 'Dit formulier heeft ongekoppelde naampatronen en sjablonen vanaf index $1.',
 	'formarticleexists' => 'Pagina bestaat al',
 	'formarticleexiststext' => 'De pagina [[$1]] bestaat al.',
 	'formbadpagename' => 'Onjuiste paginanaam',
+	'formbadrecaptcha' => 'Incorrecte waarden voor reCaptcha.
+Probeer het opnieuw.',
 	'formbadpagenametext' => 'De formuliergegevens die u hebt opgegeven zorgen voor een onjuiste pagina, "$1".',
 	'formrequiredfieldpluralerror' => 'De velden $1 zijn verplicht voor dit formulier. Vul ze alstublieft in.',
 	'formrequiredfielderror' => 'Het veld $1 is verplicht voor dit formulier. Vul het alstublieft in.',
@@ -501,10 +515,12 @@ $messages['no'] = array(
 	'formpattern' => '$1-skjema',
 	'formtitlepattern' => 'Legger til nytt $1',
 	'formsave' => 'Lagre',
+	'formindexmismatch-title' => 'Navnemønster og malfeil',
 	'formindexmismatch' => 'Dette skjemaet har upassende navnemønstre og maler som starter på indeks $1.',
 	'formarticleexists' => 'Siden eksisterer',
 	'formarticleexiststext' => 'Siden [[$1]] eksisterer allerede.',
 	'formbadpagename' => 'Ugyldig sidenavn',
+	'formbadrecaptcha' => 'Gale verdier fro reCaptcha. Prøv igjen.',
 	'formbadpagenametext' => 'Skjemadataene du skrev inn utgjør et ugyldig sidenavn, «$1».',
 	'formrequiredfieldpluralerror' => 'Feltene $1 er påkrevde for dette skjemaet. Vennligst fyll dem inn.',
 	'formrequiredfielderror' => 'Feltet $1 er påkrevd for dette skjemaet. Vennligst fyll det inn.',

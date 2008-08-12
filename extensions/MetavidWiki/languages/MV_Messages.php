@@ -1253,6 +1253,13 @@ $messages['hil'] = array(
 	'mv_search_and' => 'kag',
 );
 
+/** Croatian (Hrvatski)
+ * @author Dalibor Bosits
+ */
+$messages['hr'] = array(
+	'mv_remove' => 'ukloni',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  * @author Yekrats

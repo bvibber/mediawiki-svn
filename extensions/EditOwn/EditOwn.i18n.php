@@ -63,6 +63,13 @@ $messages['hsb'] = array(
 	'editown-desc' => 'Wužiwarjo, kotřiž nimaja prawo wšo wobdźěłować, móža jenož strony wobdźěłać, kotrež su sami wutworili.',
 );
 
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'editown-desc' => 'Le usatores sin derecto "editall" pote solmente modificar le paginas que illes ha create',
+);
+
 /** Italian (Italiano)
  * @author Darth Kule
  */

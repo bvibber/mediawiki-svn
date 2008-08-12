@@ -608,6 +608,7 @@ $messages['ksh'] = array(
 	'imagemap_desc' => 'Brengk dä Befäähl <tt><nowiki><imagemap></nowiki></tt> en et Wiki, un med em Belldsche, wo mer op Anndeile fun klecke kann, wo dann Lengks henger lijje.',
 	'imagemap_no_image' => 'Do es ene Fääler met <tt><nowiki><imagemap></nowiki></tt> opjefalle: En de eetzte Reih mööt e Beld shtonn.',
 	'imagemap_invalid_image' => 'Do es ene Fääler met <tt><nowiki><imagemap></nowiki></tt> opjefalle: dat Beld jidd_et nit, odder dä Name es verkeeht',
+	'imagemap_bad_image' => 'Do es ene Fääler met <tt><nowiki><imagemap></nowiki></tt> opjefalle: Dat Beld es op dä Sigg nit äloup.',
 	'imagemap_no_link' => 'Do es ene Fääler met <tt><nowiki><imagemap></nowiki></tt> opjefalle: En de {{PLURAL:$1|eetzte|$1-te|nullte}} Reih eß am Engk keine Lengk jefonge woode.',
 	'imagemap_invalid_title' => 'Do es ene Fääler met <tt><nowiki><imagemap></nowiki></tt> opjefalle: Dä Tittel em Lengk en de {{PLURAL:$1|eetzte|$1-te|nullte}} Reih eß verkeeht.',
 	'imagemap_missing_coord' => "Do es ene Fääler met <tt><nowiki><imagemap></nowiki></tt> opjefalle: En dä {{PLURAL:$1|eetzte|$1-te|nullte}} Reih sin nit jenooch Ko'oddinate förr_ene komplätte Ömreß.",
@@ -616,6 +617,7 @@ $messages['ksh'] = array(
 	'imagemap_invalid_coord' => "Do es ene Fääler met <tt><nowiki><imagemap></nowiki></tt> opjefalle: En de {{PLURAL:$1|eetzte|$1-te|nullte}} Reih eß jet verkeeht met de Ko'oddinate. Do mööte luuter Zahle shtonn, es äver nit esu.",
 	'imagemap_invalid_desc' => 'Do es ene Fääler met <tt><nowiki><imagemap></nowiki></tt> opjefalle: Dä Parammeeter „<tt><nowiki>desc</nowiki></tt>“ eß verkeeht aanjejovve. Bruche kanns De nor ein fun dänne hee: <tt>$1</tt>',
 	'imagemap_description' => 'Övver dat Beld hee',
+	'imagemap_desc_types' => 'bovve räähß, unge lengkß, unge lengkß, bovve rääh´, nix',
 );
 
 /** Latin (Latina)

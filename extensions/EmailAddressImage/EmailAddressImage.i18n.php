@@ -78,6 +78,13 @@ $messages['hsb'] = array(
 	'emailaddressimage-desc' => 'Přidawa <tt>&lt;email&gt;</tt>, zo by e-mejlowu adresu jako wobraz zwobrazniło',
 );
 
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'emailaddressimage-desc' => 'Adde <tt>&lt;email&gt;</tt> pro monstrar un adresse de e-mail como imagine',
+);
+
 /** Japanese (日本語)
  * @author JtFuruhata
  */

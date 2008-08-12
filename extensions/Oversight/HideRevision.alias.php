@@ -36,7 +36,7 @@ $aliases['arz'] = array(
  */
 $aliases['de'] = array(
 	'HideRevision' => array( 'HideRevision' ),
-	'Oversight'    => array( 'Oversight' ),
+	'Oversight' => array( 'Oversight' ),
 );
 
 /** Hebrew (עברית)
@@ -45,6 +45,12 @@ $aliases['de'] = array(
 $aliases['he'] = array(
 	'HideRevision' => array( 'הסתרת_גרסה' ),
 	'Oversight'    => array( 'צפייה_בגרסאות_שהוסתרו' ),
+);
+
+/** Croatian (Hrvatski) */
+$aliases['hr'] = array(
+	'HideRevision' => array( 'Sakrij_izmjenu' ),
+	'Oversight' => array( 'Nadzor' ),
 );
 
 /** Dutch (Nederlands) */

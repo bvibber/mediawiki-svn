@@ -187,6 +187,13 @@ $messages['hi'] = array(
 	'simpleantispam-desc' => 'फ़ार्ममें सादी स्पैम/बोट जाँच बढाता हैं',
 );
 
+/** Croatian (Hrvatski)
+ * @author Dalibor Bosits
+ */
+$messages['hr'] = array(
+	'simpleantispam' => 'Vaše uređivanje je pokrenulo anti-spam mehanizam',
+);
+
 /** Hungarian (Magyar)
  * @author Bdamokos
  * @author Dani

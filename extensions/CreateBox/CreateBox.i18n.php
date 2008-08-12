@@ -128,7 +128,13 @@ $messages['hsb'] = array(
  * @author McDutchie
  */
 $messages['ia'] = array(
+	'createbox-desc' => 'Quadro de entrata specialisate pro le creation de paginas',
 	'createbox-create' => 'Crear',
+	'createbox-exists' => "Pardono, \"'''{{FULLPAGENAME}}'''\" existe ja.
+
+Tu non pote crear iste pagina, sed tu pote [{{fullurl:{{FULLPAGENAME}}|action=edit}} modificar lo], [{{fullurl:{{FULLPAGENAME}}}} leger lo], o optar pro crear un altere pagina con le quadro infra.
+
+<createbox>break=no</createbox>",
 );
 
 /** Italian (Italiano)

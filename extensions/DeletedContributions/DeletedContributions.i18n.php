@@ -569,9 +569,12 @@ $messages['qu'] = array(
 	'deletedcontributions' => 'Qullusqa ruraqpa hukchasqankuna',
 );
 
-/** Romanian (Română) */
+/** Romanian (Română)
+ * @author Mihai
+ */
 $messages['ro'] = array(
 	'deletedcontributions' => 'Contribuţii şterse',
+	'deletedcontributions-desc' => 'Acordă administratorilor abilitatea de a [[Special:DeletedContributions|naviga prin modificările şterse]] ale unui utilizator',
 );
 
 /** Russian (Русский)

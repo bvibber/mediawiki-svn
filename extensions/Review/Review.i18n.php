@@ -492,6 +492,13 @@ $messages['hi'] = array(
 	'review_comment' => 'टिप्पणी',
 );
 
+/** Croatian (Hrvatski)
+ * @author Dalibor Bosits
+ */
+$messages['hr'] = array(
+	'review_comment' => 'Komentar',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

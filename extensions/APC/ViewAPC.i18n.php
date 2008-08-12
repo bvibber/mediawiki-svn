@@ -1158,6 +1158,13 @@ $messages['hil'] = array(
 	'viewapc-ls-submit' => 'Sige!',
 );
 
+/** Croatian (Hrvatski)
+ * @author Dalibor Bosits
+ */
+$messages['hr'] = array(
+	'viewapc-ls-submit' => 'Kreni!',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

@@ -149,6 +149,13 @@ $messages['hi'] = array(
 	'poem-desc' => 'कविता लिखने के लिये आवश्यक <tt>&lt;poem&gt;</tt> टॅग देता हैं',
 );
 
+/** Croatian (Hrvatski)
+ * @author Dalibor Bosits
+ */
+$messages['hr'] = array(
+	'poem-desc' => 'Dodaje <tt>&lt;poem&gt;</tt> oznaku za formatiranje pjesama',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */
@@ -315,6 +322,13 @@ $messages['ps'] = array(
  */
 $messages['pt'] = array(
 	'poem-desc' => 'Adiciona a marca <tt>&lt;poem&gt;</tt> para formatação de poemas',
+);
+
+/** Romanian (Română)
+ * @author Mihai
+ */
+$messages['ro'] = array(
+	'poem-desc' => 'Adaugă eticheta <tt>&lt;poem&gt;</tt> pentru formatarea poem',
 );
 
 /** Russian (Русский)

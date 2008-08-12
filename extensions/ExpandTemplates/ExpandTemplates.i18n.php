@@ -590,11 +590,13 @@ $messages['hil'] = array(
 );
 
 /** Croatian (Hrvatski)
+ * @author Dalibor Bosits
  * @author Dnik
  * @author SpeedyGonsales
  */
 $messages['hr'] = array(
 	'expandtemplates' => 'Prikaz sadržaja predložaka',
+	'expandtemplates-desc' => '[[Special:ExpandTemplates|Proširanje predložaka, parserskih funkcija i varijabli]] za prikaz proširenog wikiteksta i pregled prevedene stranice',
 	'expand_templates_intro' => 'Ova posebna stranica omogućuje unos wikiteksta i prikazuje njegov rezultat,
 uključujući i (rekurzivno, tj. potpuno) sve uključene predloške u wikitekstu.
 Prikazuje i rezultate funkcija kao <nowiki>{{</nowiki>#if:...}} i varijabli
@@ -1217,12 +1219,16 @@ $messages['qu'] = array(
 
 /** Romanian (Română)
  * @author KlaudiuMihaila
+ * @author Mihai
  */
 $messages['ro'] = array(
 	'expandtemplates' => 'Expandarea formatelor',
+	'expandtemplates-desc' => '[[Special:ExpandTemplates|Expandează formatele, funcţiile parser şi variabilele]] pentru a vedea expandat textul wiki şi pentru a previzualiza modul de redare a paginii',
 	'expand_templates_output' => 'Rezultat',
+	'expand_templates_xml_output' => 'Ieşire XML',
 	'expand_templates_ok' => 'OK',
 	'expand_templates_remove_comments' => 'Elimină comentarii',
+	'expand_templates_generate_xml' => 'Arată arborele analiză XML',
 	'expand_templates_preview' => 'Previzualizare',
 );
 

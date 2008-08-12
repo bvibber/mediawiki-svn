@@ -27,6 +27,11 @@ $aliases['arz'] = array(
 	'ChangeAuthor' => array( 'تغيير_المؤلف' ),
 );
 
+/** Croatian (Hrvatski) */
+$aliases['hr'] = array(
+	'ChangeAuthor' => array( 'Promjeni_Autora' ),
+);
+
 /** Dutch (Nederlands) */
 $aliases['nl'] = array(
 	'ChangeAuthor' => array( 'AuteurWijzigen' ),

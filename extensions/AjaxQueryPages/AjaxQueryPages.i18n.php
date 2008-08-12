@@ -74,6 +74,13 @@ $messages['dsb'] = array(
 	'ajax-qp-desc' => 'AJAX pśidaś, aby se boki kaž [[Special:Shortpages|{{int:shortpages}}]] wótpšašali',
 );
 
+/** Spanish (Español)
+ * @author Ascánder
+ */
+$messages['es'] = array(
+	'ajax-qp-desc' => 'Agregar AJAX para consultar páginas tales como  [[Special:Shortpages|{{int:shortpages}}]]',
+);
+
 /** French (Français)
  * @author Grondin
  */

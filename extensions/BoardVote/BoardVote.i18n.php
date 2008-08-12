@@ -1777,7 +1777,7 @@ Se on salattu vaalivirkailijoiden julkisella avaimella:
 
 <pre>$2</pre>
 
-Siitä muodostuu seuraava salattu muoto, joka on julkisesti näkyvillä sivulla [[Special:Boardvote/dump]].
+Siitä muodostuu seuraava salattu muoto, joka on [[Special:Boardvote/dump|julkisesti näkyvillä]].
 
 <pre>$3</pre>
 
@@ -3415,7 +3415,7 @@ Wänn_De wellß, donn Der de Ëijnzelhëĳte fun hee shpëijshere. Ding Daate fu
 
 <pre>$1</pre>
 
-Se weede foschlößßeldt jedshpëijshot, me_m [http://ksh.wikipedia.org/wiki/%C3%96ffentlijje_Schl%C3%B6%C3%9F%C3%9Fel öffentlijje Schlößßel] fun däm Lëijder fun dä Affshtemmung. Dä Schlößßel eß:
+Se weede foschlößßeldt jedshpëijshot, me_m [http://ksh.wikipedia.org/wiki/%C3%96ffentlijje_Schl%C3%B6%C3%9F%C3%9Fel öffentlijje Schlößßel] fun däm Baas för de Affshtemmung. Dämm singe öffentlijje Schlößßel eß:
 
 <pre>$2</pre>
 
@@ -4781,6 +4781,7 @@ $messages['rm'] = array(
 
 /** Romanian (Română)
  * @author KlaudiuMihaila
+ * @author Mihai
  */
 $messages['ro'] = array(
 	'boardvote_novotes' => 'Nimeni nu a votat încă.',
@@ -4789,6 +4790,7 @@ $messages['ro'] = array(
 	'boardvote_edits' => 'Modificări',
 	'boardvote_days' => 'Zile',
 	'boardvote_ip' => 'IP',
+	'boardvote_ua' => 'Agent utilizator',
 	'boardvote_listintro' => '<p>Aceasta este o listă a tuturor voturilor înregistrate până acum. $1 pentru datele criptate.</p>',
 	'boardvote_dumplink' => 'Click aici',
 	'boardvote_submit' => 'OK',
@@ -6269,6 +6271,7 @@ $messages['zh-hans'] = array(
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)
+ * @author Alexsh
  * @author Yuyu
  */
 $messages['zh-hant'] = array(
@@ -6306,8 +6309,8 @@ $messages['zh-hant'] = array(
 
 [[Special:Boardvote/entry|返回]]',
 	'boardvote_invalidentered' => '<p><strong>錯誤</strong>：候選人一欄中，你只能填寫正整數 (1、2、3......)或留空。</p>',
-	'boardvote_nosession' => '我不能確定您的維基媒體帳號名稱。請您登入到合乎資格的維基計劃，然後轉到 <nowiki>[[Special:Boardvote]]</nowiki>。您必須用一個帳號，在 $2 以前有 $1 次編輯，而且其首次編輯必須在 $3 以前。',
-	'boardvote_notloggedin' => '您還沒有登錄。要參與投票，您必須在$2之前至少貢獻了$1次以上，而且在$3前作出第一次編輯。',
+	'boardvote_nosession' => '無法確定您的維基媒體帳號名稱。請您登入到合乎資格的維基計劃，然後轉到 <nowiki>[[Special:Boardvote]]</nowiki>。您必須用一個帳號，在 $2 以前有 $1 次編輯，而且其首次編輯必須在 $3 以前。貢獻介於$4與$5。',
+	'boardvote_notloggedin' => '您還沒有登錄。要參與投票，您必須在$2之前至少貢獻了$1次以上，而且在$3前作出第一次編輯。貢獻介於$4與$5。',
 	'boardvote_notqualified' => '對不起，您在$2之前只有$1次貢獻。 您必須至少貢獻了$3次以上才可以參與本次投票。而且，您的第一次編輯是在$4，這需要在$5之前。',
 	'boardvote_novotes' => '目前還沒有人投票。',
 	'boardvote_time' => '時間',

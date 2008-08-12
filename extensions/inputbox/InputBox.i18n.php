@@ -725,7 +725,7 @@ $messages['ko'] = array(
  * @author Purodha
  */
 $messages['ksh'] = array(
-	'inputbox-desc' => 'Bestemmpte HTML-Formulare könne hhe met enjebonge wääde.',
+	'inputbox-desc' => 'Bestemmpte HTML-Formulare könne hee met enjebonge wääde.',
 	'inputbox-error-no-type' => 'Wat för en Zoot Kaste wells De dann han?',
 	'inputbox-error-bad-type' => 'De Zoot „$1“ för et Feld för jet enzejevve kenne mer nit, De moss schunn „create“, „comment“, „search“ oder „search2“ doför aanjevve.',
 	'tryexact' => 'Versök en akkurate Üvvereinstimmung:',
@@ -770,6 +770,13 @@ $messages['li'] = array(
 	'tryexact' => 'Perbeer exacte euvereinkoms',
 	'searchfulltext' => 'Zeuk dèr volledige tèks',
 	'createarticle' => "Maak 'ne pazjena aan",
+);
+
+/** Lingala (Lingála)
+ * @author Moyogo
+ */
+$messages['ln'] = array(
+	'createarticle' => 'Kokela ekakoli',
 );
 
 /** Lao (ລາວ)
@@ -1031,8 +1038,13 @@ $messages['qu'] = array(
 /** Romanian (Română)
  * @author Emily
  * @author Firilacroco
+ * @author Mihai
  */
 $messages['ro'] = array(
+	'inputbox-desc' => 'Permite includerea formelor HTML predefinite',
+	'inputbox-error-no-type' => 'Nu ai specificat ce tip de cutie intrare să fie creată.',
+	'inputbox-error-bad-type' => 'Tipul de cutie intrare "$1" nu este recunoscut.
+Te rog specifică parametrii "create", "comment", "search" sau "search2".',
 	'tryexact' => 'Încearcă varianta exactă',
 	'searchfulltext' => 'Caută textul întreg',
 	'createarticle' => 'Crează articol',

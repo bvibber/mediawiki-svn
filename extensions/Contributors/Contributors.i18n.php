@@ -398,7 +398,13 @@ $messages['ia'] = array(
 	'contributors-desc' => 'Detalia le contributores principal de un pagina',
 	'contributors-toolbox' => 'Contributores principal',
 	'contributors-legend' => 'Lista le contributores principal de un pagina',
+	'contributors-target' => 'Titulo:',
 	'contributors-submit' => 'Revelar',
+	'contributors-subtitle' => 'Contributores principal de $1',
+	'contributors-others-long' => 'Iste pagina ha {{PLURAL:$1|un altere contributor|$1 altere contributores}}.',
+	'contributors-others' => 'e {{PLURAL:$1|un altere|$1 alteres}}',
+	'contributors-badtitle' => 'Titulo invalide.',
+	'contributors-nosuchpage' => 'Le pagina $1 non existe.',
 );
 
 /** Indonesian (Bahasa Indonesia)

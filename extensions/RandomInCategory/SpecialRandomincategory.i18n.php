@@ -238,6 +238,13 @@ $messages['hil'] = array(
 	'randomincategory-submit' => 'Lakat',
 );
 
+/** Croatian (Hrvatski)
+ * @author Dalibor Bosits
+ */
+$messages['hr'] = array(
+	'randomincategory-submit' => 'Kreni',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */
