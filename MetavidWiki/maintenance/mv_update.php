@@ -113,7 +113,7 @@ if($page_id_added){
 			$i=0;
 		}
 		$i++;
-		$j++;					 	
+		$j++;			 	
 	}
 	//now we can drop id and add PRIMARY to mv_page_id
 	print "DROP id COLUMN from $mvIndexTableName ...";	

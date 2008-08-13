@@ -21,39 +21,9 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
 if ( !function_exists( 'extAddSpecialPage' ) ) {
       require_once( dirname(__FILE__) . '/../ExtensionFunctions.php' );
 }
-
+//add language:
 $wgExtensionMessagesFiles['MetavidWiki'] =$mvgIP . '/languages/MV_Messages.php';
 require_once($mvgIP . '/languages/MV_Language.php');
-
-
-//setup autoload classes: 
-$wgAutoloadClasses['MV_Overlay'] = dirname(__FILE__)  . '/MV_MetavidInterface/MV_Overlay.php';
-$wgAutoloadClasses['MV_Component'] = dirname(__FILE__)  . '/MV_MetavidInterface/MV_Component.php';
-
-$wgAutoloadClasses['MV_MetavidInterface']= dirname(__FILE__)  .'/MV_MetavidInterface/MV_MetavidInterface.php';
-$wgAutoloadClasses['MV_SequencePlayer']= dirname(__FILE__)  .'/MV_MetavidInterface/MV_SequencePlayer.php';
-$wgAutoloadClasses['MV_SequenceTools']= dirname(__FILE__)  .'/MV_MetavidInterface/MV_SequenceTools.php';
-$wgAutoloadClasses['MV_SequenceTimeline']= dirname(__FILE__)  .'/MV_MetavidInterface/MV_SequenceTimeline.php';
-$wgAutoloadClasses['MV_VideoPlayer']= dirname(__FILE__)  .'/MV_MetavidInterface/MV_VideoPlayer.php';
-$wgAutoloadClasses['MV_Tools']= dirname(__FILE__)  .'/MV_MetavidInterface/MV_Tools.php';
-$wgAutoloadClasses['MV_EditPageAjax'] = dirname(__FILE__)  .'/MV_MetavidInterface/MV_EditPageAjax.php';
-
-$wgAutoloadClasses['MV_CategoryPage']= dirname(__FILE__)  .'/articlepages/MV_CategoryPage.php';
-$wgAutoloadClasses['MV_SequencePage'] =  dirname(__FILE__)  .'/articlepages/MV_SequencePage.php';
-$wgAutoloadClasses['MV_StreamPage'] = dirname(__FILE__)  .'/articlepages/MV_StreamPage.php';
-$wgAutoloadClasses['MV_EditDataPage'] = $wgAutoloadClasses['MV_DataPage'] =  dirname(__FILE__) . '/articlepages/MV_DataPage.php';
-$wgAutoloadClasses['MV_EditStreamPage']=dirname(__FILE__)  .'/MV_EditStreamPage.php';
-
-
-$wgAutoloadClasses['MV_Title'] = dirname(__FILE__)  . '/MV_Title.php';
-$wgAutoloadClasses['MV_Index'] = dirname(__FILE__)  . '/MV_Index.php';
-$wgAutoloadClasses['MV_ImageGallery']=dirname(__FILE__) . '/MV_ImageGallery.php';
-$wgAutoloadClasses['MV_Image'] = dirname(__FILE__)  . '/MV_Image.php';
-$wgAutoloadClasses['MV_Stream'] =  dirname(__FILE__)  .'/MV_Stream.php';
-$wgAutoloadClasses['MV_StreamFile']=dirname(__FILE__)  . '/MV_StreamFile.php';
-$wgAutoloadClasses['MV_StreamImage'] = dirname(__FILE__)  . '/MV_StreamImage.php';
-$wgAutoloadClasses['MV_ParserCache'] = dirname(__FILE__) . '/MV_ParserCache.php';
-$wgAutoloadClasses['MV_MagicWords'] = dirname(__FILE__) . '/MV_MagicWords.php';
 		
 $markerList = array(); 
 
@@ -70,32 +40,121 @@ function enableMetavid() {
 	$smwgNamespacesWithSemanticLinks[MV_NS_SEQUENCE] = true;
 	$smwgNamespacesWithSemanticLinks[MV_NS_SEQUENCE_TALK] = false;  
 	$smwgNamespacesWithSemanticLinks[MV_NS_MVD] = true;
-	$smwgNamespacesWithSemanticLinks[MV_NS_MVD_TALK] = false;	
+	$smwgNamespacesWithSemanticLinks[MV_NS_MVD_TALK] = false;		
+	
 	return true;
 }
 function mvSetupExtension(){
 	global $mvVersion, $mvNamespace, $mvgIP, $wgHooks, $wgExtensionCredits, $mvMasterStore, 
 	$wgParser, $mvArticlePath, $mvgScriptPath, $wgServer, $wgExtensionFunctions,$markerList,
-	$mvEnableAutoComplete, $mvEnableJSLinkBack, $mvEnableJSMVDrewrite;
+	$mvEnableAutoComplete, $mvEnableJSLinkBack, $mvEnableJSMVDrewrite, $wgAutoloadClasses, $wgSpecialPages;
 	
 
 	mvfInitMessages();
 	//add header for autoComplete if enabled: 
 	if($mvEnableAutoComplete || $mvEnableJSLinkBack || $mvEnableJSMVDrewrite ){
 		mvfAutoAllPageHeader();
-	}
+	}	
+	
+	/********************************
+ 	* Ajax Hooks 
+ 	*********************************/
+	$wgAjaxExportList[] = 'mv_auto_complete_all';
+	$wgAjaxExportList[] = 'mv_auto_complete_person';
+	$wgAjaxExportList[] = 'mv_auto_complete_stream_name';
+	$wgAjaxExportList[] = 'mv_helpers_auto_complete';
+	
+	$wgAjaxExportList[] = 'mv_disp_mvd';
+	
+	$wgAjaxExportList[] = 'mv_add_disp';
+	$wgAjaxExportList[] = 'mv_remove_mvd';
+	$wgAjaxExportList[] = 'mv_disp_remove_mvd';
+	
+	$wgAjaxExportList[] = 'mv_edit_disp';
+	$wgAjaxExportList[] = 'mv_edit_preview';
+	$wgAjaxExportList[] = 'mv_edit_submit';
+	$wgAjaxExportList[] = 'mv_edit_sequence_submit';
+	$wgAjaxExportList[] = 'mv_seqtool_disp';
+	
+	$wgAjaxExportList[] = 'mv_history_disp';
+	$wgAjaxExportList[] = 'mv_adjust_disp';
+	$wgAjaxExportList[] = 'mv_adjust_submit';
+	
+	//search interface exported functions: 
+	$wgAjaxExportList[] = 'mv_expand_wt';
+	$wgAjaxExportList[] = 'mv_pl_wt';
+	$wgAjaxExportList[] = 'mv_submit_remove';
+	$wgAjaxExportList[] = 'mv_tool_disp';
+	$wgAjaxExportList[] = 'mv_date_obj';
+	
+	//media serving 
+	$wgAjaxExportList[] = 'mv_frame_server';
+	
+	/**********************************************/
+	/***** register autoLoad Classes:		  *****/
+	/**********************************************/			
+	//setup autoload classes: 
+	$wgAutoloadClasses['MV_Overlay'] 			= dirname(__FILE__)  . '/MV_MetavidInterface/MV_Overlay.php';
+	$wgAutoloadClasses['MV_Component'] 			= dirname(__FILE__)  . '/MV_MetavidInterface/MV_Component.php';
+	
+	$wgAutoloadClasses['MV_MetavidInterface']	= dirname(__FILE__)  .'/MV_MetavidInterface/MV_MetavidInterface.php';
+	$wgAutoloadClasses['MV_SequencePlayer']		= dirname(__FILE__)  .'/MV_MetavidInterface/MV_SequencePlayer.php';
+	$wgAutoloadClasses['MV_SequenceTools']		= dirname(__FILE__)  .'/MV_MetavidInterface/MV_SequenceTools.php';
+	$wgAutoloadClasses['MV_SequenceTimeline']	= dirname(__FILE__)  .'/MV_MetavidInterface/MV_SequenceTimeline.php';
+	$wgAutoloadClasses['MV_VideoPlayer']		= dirname(__FILE__)  .'/MV_MetavidInterface/MV_VideoPlayer.php';
+	$wgAutoloadClasses['MV_Tools']				= dirname(__FILE__)  .'/MV_MetavidInterface/MV_Tools.php';
+	$wgAutoloadClasses['MV_EditPageAjax'] 		= dirname(__FILE__)  .'/MV_MetavidInterface/MV_EditPageAjax.php';
+	
+	$wgAutoloadClasses['MV_CategoryPage']		= dirname(__FILE__)  .'/articlepages/MV_CategoryPage.php';
+	$wgAutoloadClasses['MV_SequencePage'] 		=  dirname(__FILE__)  .'/articlepages/MV_SequencePage.php';
+	$wgAutoloadClasses['MV_StreamPage'] 		= dirname(__FILE__)  .'/articlepages/MV_StreamPage.php';
+	$wgAutoloadClasses['MV_EditDataPage']	= $wgAutoloadClasses['MV_DataPage'] =  dirname(__FILE__) . '/articlepages/MV_DataPage.php';
+	$wgAutoloadClasses['MV_EditStreamPage']		= dirname(__FILE__)  .'/MV_EditStreamPage.php';
+	
+	
+	$wgAutoloadClasses['MV_Title'] 				= dirname(__FILE__)  . '/MV_Title.php';
+	$wgAutoloadClasses['MV_Index'] 				= dirname(__FILE__)  . '/MV_Index.php';
+	$wgAutoloadClasses['MV_ImageGallery']		= dirname(__FILE__) . '/MV_ImageGallery.php';
+	$wgAutoloadClasses['MV_Image'] 				= dirname(__FILE__)  . '/MV_Image.php';
+	$wgAutoloadClasses['MV_Stream'] 			= dirname(__FILE__)  .'/MV_Stream.php';
+	$wgAutoloadClasses['MV_StreamFile']			= dirname(__FILE__)  . '/MV_StreamFile.php';
+	$wgAutoloadClasses['MV_StreamImage'] 		= dirname(__FILE__)  . '/MV_StreamImage.php';
+	$wgAutoloadClasses['MV_ParserCache'] 		= dirname(__FILE__) . '/MV_ParserCache.php';
+	$wgAutoloadClasses['MV_MagicWords'] 		= dirname(__FILE__) . '/MV_MagicWords.php';
 	
 	/**********************************************/
 	/***** register special pages hooks       *****/
 	/**********************************************/		
-	//@@todo shift over to extAddSpecial page (to avoid loading every time)
-	require_once( dirname(__FILE__) . '/specials/MV_SpecialCRUDStream.php');
-	require_once( dirname(__FILE__) . '/specials/MV_SpecialListStreams.php');
-	require_once( dirname(__FILE__) . '/specials/MV_SpecialExport.php');
+	$wgAutoloadClasses['MV_SpecialCRUDStream'] 	= dirname(__FILE__) . '/specials/MV_SpecialCRUDStream.php';
+	$wgSpecialPages['Mv_Add_Stream']		   	=  array('MV_SpecialCRUDStream');
+	
+	$wgAutoloadClasses['MV_SpecialListStreams']	= dirname(__FILE__) . '/specials/MV_SpecialListStreams.php';
+	$wgSpecialPages['Mv_List_Streams']		   	= array('MV_SpecialListStreams');
+			
+	/* special export views */
+	$wgAutoloadClasses['MV_SpecialExport']		= dirname(__FILE__) . '/specials/MV_SpecialExport.php';
+	
+	$wgAutoloadClasses['MvVideoFeed']			= dirname(__FILE__) . '/specials/MV_SpecialExport.php';
+	$wgAutoloadClasses['MvExportStream']		= dirname(__FILE__) . '/specials/MV_SpecialExport.php';
+	$wgAutoloadClasses['MvExportSequence']		= dirname(__FILE__) . '/specials/MV_SpecialExport.php';
+	$wgAutoloadClasses['MvExportSearch']		= dirname(__FILE__) . '/specials/MV_SpecialExport.php'; 
+	$wgAutoloadClasses['MvExportAsk']			= dirname(__FILE__) . '/specials/MV_SpecialExport.php';
+	
+	$wgSpecialPages['MvVideoFeed']				= array('MvVideoFeed');
+	$wgSpecialPages['MvExportStream']			= array('MvExportStream');
+	$wgSpecialPages['MvExportSequence']			= array('MvExportSequence');
+	$wgSpecialPages['MvExportSearch']			= array('MvExportSearch'); 
+	$wgSpecialPages['MvExportAsk']				= array('MvExportAsk');
+	
+	$wgAutoloadClasses['MV_SpecialMediaSearch']	= dirname(__FILE__) . '/specials/MV_SpecialMediaSearch.php';
+	$wgSpecialPages['Mv_List_Streams']		   	= array('MV_SpecialListStreams');
+			
+	//require_once( dirname(__FILE__) . '/specials/MV_SpecialCRUDStream.php');
+	//require_once( dirname(__FILE__) . '/specials/MV_SpecialListStreams.php');
+	//require_once( dirname(__FILE__) . '/specials/MV_SpecialExport.php');
 	require_once( dirname(__FILE__) . '/specials/MV_SpecialMediaSearch.php');
 	require_once( dirname(__FILE__) . '/specials/MV_SpecialMVAdmin.php');
-
-
+	
 	/**********************************************/
 	/***** register hooks                     *****/
 	/**********************************************/
@@ -148,20 +207,6 @@ function mvMagicParserFunction_Render( &$parser ) {
 		$mvMagicWords = new MV_MagicWords($arg_list);
         return array($mvMagicWords->renderMagic(), 'noparse'=>true, 'isHTML'=>true);
 }
-/*function mvMagicParserFunction_Magic( &$magicWords, $langCode ) {
-        # Add the magic word
-        # The first array element is case sensitive, in this case it is not case sensitive
-        # All remaining elements are synonyms for our parser function
-        $magicWords['example'] = array( 0, 'example' );
-        # unless we return true, other parser functions extensions won't get loaded.
-        return true;
-}
- 
-function mvMagicParserFunction_Render( &$parser, $param1 = '', $param2 = '' ) {
-		$arg_list = func_get_args();	
-        $mvMagic = new MV_MagicWords($arg_list);
-        return $mvMagic->renderMagic();
-}*/
 
 /**********************************************/
 /***** Header modifications               *****/
@@ -170,24 +215,26 @@ function mvMagicParserFunction_Render( &$parser, $param1 = '', $param2 = '' ) {
 	 * header script to be added to all pages: 
 	 * enables linkback and autocomplete for search
 	 */
-	function mvfAutoAllPageHeader(){
-		global $mvgScriptPath, $wgJsMimeType, $wgOut;			
-		/* (moved to on_dom ready)  but here as well*/ 
-		$wgOut->addScript("<script type=\"{$wgJsMimeType}\" src=\"{$mvgScriptPath}/skins/mv_embed/jquery/jquery-1.2.1.js\"></script>");
-		$wgOut->addScript("<script type=\"{$wgJsMimeType}\" src=\"{$mvgScriptPath}/skins/mv_embed/jquery/plugins/jquery.autocomplete.js\"></script>");
-		$wgOut->addScript("<script type=\"{$wgJsMimeType}\" src=\"{$mvgScriptPath}/skins/mv_embed/jquery/plugins/jquery.hoverIntent.js\"></script>");
-		
-		$wgOut->addScript("<script type=\"{$wgJsMimeType}\" src=\"{$mvgScriptPath}/skins/mv_embed/mv_embed.js\"></script>");
-		$wgOut->addScript("<script type=\"{$wgJsMimeType}\" src=\"{$mvgScriptPath}/skins/mv_allpages.js\"></script>");
-		
-		$mvCssUrl = $mvgScriptPath . '/skins/mv_custom.css';
-		$wgOut->addLink(array(
-				'rel'   => 'stylesheet',
-				'type'  => 'text/css',
-				'media' => 'all',
-				'href'  => $mvCssUrl
-		));								
-	}
+function mvfAutoAllPageHeader(){
+	global $mvgScriptPath, $wgJsMimeType, $wgOut;	
+	$mvgScriptPath = htmlspecialchars( $mvgScriptPath );
+	$wgJsMimeType = htmlspecialchars( $wgJsMimeType) ;	
+	/* (moved to on_dom ready)  but here as well*/ 
+	$wgOut->addScript("<script type=\"{$wgJsMimeType}\" src=\"{$mvgScriptPath}/skins/mv_embed/jquery/jquery-1.2.1.js\"></script>");
+	$wgOut->addScript("<script type=\"{$wgJsMimeType}\" src=\"{$mvgScriptPath}/skins/mv_embed/jquery/plugins/jquery.autocomplete.js\"></script>");
+	$wgOut->addScript("<script type=\"{$wgJsMimeType}\" src=\"{$mvgScriptPath}/skins/mv_embed/jquery/plugins/jquery.hoverIntent.js\"></script>");
+	
+	$wgOut->addScript("<script type=\"{$wgJsMimeType}\" src=\"{$mvgScriptPath}/skins/mv_embed/mv_embed.js\"></script>");
+	$wgOut->addScript("<script type=\"{$wgJsMimeType}\" src=\"{$mvgScriptPath}/skins/mv_allpages.js\"></script>");
+	
+	$mvCssUrl = $mvgScriptPath . '/skins/mv_custom.css';
+	$wgOut->addLink(array(
+			'rel'   => 'stylesheet',
+			'type'  => 'text/css',
+			'media' => 'all',
+			'href'  => $mvCssUrl
+	));								
+}
 	/**
 	*  This method is in charge of inserting additional CSS, JScript, and meta tags
 	*  into the html header of each page.  It is called by pages 
@@ -376,39 +423,7 @@ function sffLoadMessagesManually() {
 		$wgMessageCache->addMessages($messages[$key], $key);
 	}
 }
-/*
- * Ajax Hooks 
- */
-$wgAjaxExportList[] = 'mv_auto_complete_all';
-$wgAjaxExportList[] = 'mv_auto_complete_person';
-$wgAjaxExportList[] = 'mv_auto_complete_stream_name';
-$wgAjaxExportList[] = 'mv_helpers_auto_complete';
 
-$wgAjaxExportList[] = 'mv_disp_mvd';
-
-$wgAjaxExportList[] = 'mv_add_disp';
-$wgAjaxExportList[] = 'mv_remove_mvd';
-$wgAjaxExportList[] = 'mv_disp_remove_mvd';
-
-$wgAjaxExportList[] = 'mv_edit_disp';
-$wgAjaxExportList[] = 'mv_edit_preview';
-$wgAjaxExportList[] = 'mv_edit_submit';
-$wgAjaxExportList[] = 'mv_edit_sequence_submit';
-$wgAjaxExportList[] = 'mv_seqtool_disp';
-
-$wgAjaxExportList[] = 'mv_history_disp';
-$wgAjaxExportList[] = 'mv_adjust_disp';
-$wgAjaxExportList[] = 'mv_adjust_submit';
-
-//search interface exported functions: 
-$wgAjaxExportList[] = 'mv_expand_wt';
-$wgAjaxExportList[] = 'mv_pl_wt';
-$wgAjaxExportList[] = 'mv_submit_remove';
-$wgAjaxExportList[] = 'mv_tool_disp';
-$wgAjaxExportList[] = 'mv_date_obj';
-
-//media serving 
-$wgAjaxExportList[] = 'mv_frame_server';
 
 /*
  * Utility functions:

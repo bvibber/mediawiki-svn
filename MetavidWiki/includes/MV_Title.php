@@ -202,8 +202,8 @@
 		if($this->getStartTime() && $this->getEndTime()){
 			if($span_separated){
 				return wfMsg('mv_time_separator', 
-					'<span class="mv_start_time">'.$this->getStartTime().'</span>',
-					'<span class="mv_end_time">'.$this->getEndTime()).'</span>';
+					'<span class="mv_start_time">'.htmlspecialchars($this->getStartTime()).'</span>',
+					'<span class="mv_end_time">'.htmlspecialchars($this->getEndTime())).'</span>';
 			}else{
 				return wfMsg('mv_time_separator', $this->getStartTime(), $this->getEndTime());
 			}

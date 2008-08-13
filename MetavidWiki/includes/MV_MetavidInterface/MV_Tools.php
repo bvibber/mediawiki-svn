@@ -92,7 +92,7 @@
 			case 'search':			
 				$title = Title::newFromText($title_str, MV_NS_STREAM);
 				//render search box
-				$this->innerHTML = '<h3>Search Stream: '. $title_str . '</h3>';
+				$this->innerHTML = '<h3>Search Stream: '. htmlspecialchars($title_str) . '</h3>';
 				$MvSearch = new MV_SpecialMediaSearch();
 				$MvSearch->setupFilters('stream', array('stream_name'=>$title->getDBkey() ));
 				$this->innerHTML.= $MvSearch->dynamicSearchControl();
@@ -150,7 +150,7 @@
 				if($prev_time_end < $mvDefaultStreamViewLength)$prev_time_end =$mvDefaultStreamViewLength;			
 				$newTitle = Title::MakeTitle(MV_NS_STREAM, $mvTitle->getStreamName().'/'.seconds2ntp($prev_time_start).'/'.seconds2ntp($prev_time_end));
 				$prev_link = $sk->makeKnownLinkObj($newTitle,
-								 '<img style="index:5" border="0" src="'.$mvgScriptPath.'/skins/images/results_previous.png">',
+								 '<img style="index:5" border="0" src="'.htmlspecialchars($mvgScriptPath).'/skins/images/results_previous.png">',
 								$this->getStateReq() );			
 			}
 		}
@@ -163,7 +163,7 @@
 				if($next_time_end >  $mvTitle->getDuration())$next_time_end=$mvTitle->getDuration();
 				$newTitle =Title::MakeTitle(MV_NS_STREAM, $mvTitle->getStreamName().'/'.seconds2ntp($next_time_start).'/'.seconds2ntp($next_time_end));
 				$next_link= $sk->makeKnownLinkObj($newTitle, 
-									'<img style="index:5" border="0" src="'.$mvgScriptPath.'/skins/images/results_next.png">',
+									'<img style="index:5" border="0" src="'.htmlspecialchars($mvgScriptPath).'/skins/images/results_next.png">',
 									$this->getStateReq() );
 			}	
 		}	
@@ -180,7 +180,8 @@
 		$out='';
 		$heading=wfMsg('mv_stream_tool_heading') . ':';
 		$out.='<ul>';
-		foreach($this->mv_valid_tools as $tool_id){				 
+		foreach($this->mv_valid_tools as $tool_id){		
+			$tool_id = htmlspecialchars($tool_id);		 
 			$out.='<li><a title="'.wfMsg('mv_tool_'.$tool_id.'_title').
 			'" href="javascript:mv_tool_disp(\''.$tool_id.'\')">' .
 			wfMsg('mv_tool_'.$tool_id) . '</li>'."\n";
@@ -195,18 +196,19 @@
 		//grab the current track set: 	
 		$this->procMVDReqSet();			
 		foreach($mvMVDTypeAllAvailable as $type_key){
+			$type_key = htmlspecialchars($type_key);
 			//@@todo use something better than "title" for type_key description 
 			$checked = (in_array($type_key, $this->mvd_tracks))?' checked':'';
 			$out.='<input type="checkbox" name="option_'.$type_key.'"  id="option_'.$type_key.'" value="'.$type_key.'" '.$checked.'/> '.
 				'<a class="mv_mang_layers" id="a_'.$type_key.'" title="'.wfMsg($type_key.'_desc').'" href="#">'.wfMsg($type_key).'</a><br />';
 		}		
-		$out.='<input id="submit_mang_layers" type="submit" value="'.wfMsg('mv_update_layers').'">';
+		$out.='<input id="submit_mang_layers" type="submit" value="'.htmlspecialchars(wfMsg('mv_update_layers')).'">';
 		return $out;
 	}
 	function get_nav_page($stream_title){
 		global $mvgIP;		
 		//output sliders for stream navigation: 
-		$out = '<h3>'.wfMsg('mv_tool_navigate').' '.ucfirst($stream_title).'</h3>';
+		$out = '<h3>'.wfMsg('mv_tool_navigate').' '.htmlspecialchars(ucfirst($stream_title)).'</h3>';
 		//normalize stream title: 
 		$stream_title = str_replace(' ', '_', strtolower($stream_title));
 		
@@ -221,7 +223,7 @@
 		$out.= $MvOverlay->get_adjust_disp($titleKey, 'nav');
 		$out.='<input type="button" id="mv_go_nav" value="Go">';		
 		//set range: 
-		$this->js_eval = "var end_time = {$duration};";
+		$this->js_eval = 'var end_time = \''.htmlspecialchars($duration).'\';';
 		return $out;
 	}
 	function get_export_page($stream_title){
@@ -247,7 +249,7 @@
 					$width+=2;
 					$height+=30;
 					$top = $height+30+12;
-					return "style=\"top:{$top}px;width:{$width}px;\"";
+					return 'style="top:'.htmlspecialchars($top).'px;width:'.htmlspecialchars($width).'px;"';
 				}	
 			}
 		}

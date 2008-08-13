@@ -478,7 +478,7 @@ function add_mv_helpers_ac(mvd_id){
 					}					
 					//add category and empty input (@@todo make cat_ns multi-lengual friendly 				
 					var cat_ns="Category:"	
-					if($j(input_item).val().indexOf(cat_ns==0)){
+					if($j(input_item).val().indexOf(cat_ns)==0){
 						mv_add_category(mvd_id, $j(input_item).val().substr(cat_ns.length));
 						$j(input_item).val('');
 					}
@@ -502,7 +502,7 @@ function mv_add_category(mvd_id, cat_name){
 	if(cat_name=='')return false;
 	var currentDate = new Date()	
 	var unique_inx = currentDate.getUTCMilliseconds();
-	$j('#mv_ext_cat_container_'+mvd_id).append('<span id="ext_cat_'+unique_inx+'"><input value="'+cat_name+'" type="hidden" style="display:none;" name="ext_cat[]" class="mv_ext_cat">'+
+	$j('#mv_ext_cat_container_'+mvd_id).append('<span id="ext_cat_'+unique_inx+'"><input value="'+cat_name+'" type="hidden" style="display:none;" name="ext_cat_'+unique_inx+'" class="mv_ext_cat">'+
 							cat_name.replace(/_/g," ") +
 							'<a  href="#" onclick="$j(\'#ext_cat_'+unique_inx+'\').fadeOut(\'fast\').remove();return false;">'+
 								'<img border="0" src="'+mvgScriptPath+'/skins/images/delete.png">'+

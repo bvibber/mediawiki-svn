@@ -20,6 +20,7 @@
  
  class MV_EditPageAjax extends EditPage{	
 	 var $adj_html='';
+ 	 var $basic_html='';
  	 
  	 function __construct( $article ) {
 		$this->mArticle =& $article;		
@@ -73,23 +74,23 @@
 		
 		//add in adjust html if present: 
 		$wgOut->addHTML($this->adj_html);				
-
+	
 		//structure layout via tables (@@todo switch to class based css layout)		
 		$wgOut->addHTML('<table style="background: transparent;" width="100%"><tr><td valign="top" width="90">');
 			//output the person selector:
-			if (!isset ($semantic_data['Spoken By']))$semantic_data['Spoken By'] = ''; 		
-			$img = mv_get_person_img($semantic_data['Spoken By']); 
-			$wgOut->addHTML("<img id=\"mv_edit_im_{$this->mvd_id}\" style=\"display: block;margin-left: auto;margin-right: auto;\" src=\"{$img->getURL()}\" width=\"44\">");				
+			if (!isset ($semantic_data['spoken_by']))$semantic_data['spoken_by'] = ''; 		
+			$img = mv_get_person_img($semantic_data['spoken_by']); 
+			$wgOut->addHTML('<img id=\"mv_edit_im_'.htmlspecialchars($this->mvd_id).'" style="display: block;margin-left: auto;margin-right: auto;" src="'.htmlspecialchars($img->getURL()).'" width="44">');				
 				$wgOut->addHTML('<input style="font-size:x-small" 
-						value="'.$semantic_data['Spoken By'].'" 
+						value="'.htmlspecialchars($semantic_data['spoken_by']).'" 
 						name="smw_Spoken_By"
 						onClick="this.value=\'\';" 
-						type="text" id="auto_comp_'.$this->mvd_id.'" size="12" 
+						type="text" id="auto_comp_'.htmlspecialchars($this->mvd_id).'" size="12" 
 						maxlength="125" autocomplete="off"/>');
 				//only add one auto_comp_choices_ per object/request pass
 				if(!isset($this->auto_comp_choices)){
 					$this->auto_comp_choices = true;
-					$wgOut->addHTML('<div id="auto_comp_choices_'.$this->mvd_id.'" class="autocomplete"></div>');
+					$wgOut->addHTML('<div id="auto_comp_choices_'.htmlspecialchars($this->mvd_id).'" class="autocomplete"></div>');
 				}
 		//add container formatting for MV_Overlay
 		$wgOut->addHTML('</td>' .	
@@ -333,7 +334,9 @@
 			$this->showDeletionLog( $wgOut );
 		}
 	}
-	
+	function setBasicHtml($basic_html){
+		$this->basic_html = $basic_html;
+	}
 	function setAdjustHtml($adj_html){
 		$this->adj_html = $adj_html;
 	}
@@ -522,10 +525,24 @@
 
 		#need to parse the preview early so that we know which templates are used,
 		#otherwise users with "show preview after edit box" will get a blank list
+		
 		if ( $this->formtype == 'preview' ) {
 			$previewOutput = $this->getPreviewText();
 		}
 		
+		if ( $wgUser->getOption( 'previewontop' ) ) {
+
+			if ( 'preview' == $this->formtype ) {
+				$this->showPreview( $previewOutput );
+			} else {
+				$wgOut->addHTML( '<div id="wikiPreview_'.htmlspecialchars($this->mvd_id).'"></div>' );
+			}
+
+			if ( 'diff' == $this->formtype ) {
+				$this->showDiff();
+			}
+		}		
+		$wgOut->addHTML($this->basic_html);
 		$wgOut->addHTML('<div style="display:inline" class="mv_advanced_edit"><br>');		
 		
 		//$rows = $wgUser->getIntOption( 'rows' );
@@ -595,20 +612,7 @@
 			if( $wgUser->getOption( 'minordefault' ) ) $this->minoredit = true;
 		}
 
-		$wgOut->addHTML( $this->editFormPageTop );
-
-		if ( $wgUser->getOption( 'previewontop' ) ) {
-
-			if ( 'preview' == $this->formtype ) {
-				$this->showPreview( $previewOutput );
-			} else {
-				$wgOut->addHTML( '<div id="wikiPreview_'.$this->mvd_id.'"></div>' );
-			}
-
-			if ( 'diff' == $this->formtype ) {
-				$this->showDiff();
-			}
-		}
+		$wgOut->addHTML( $this->editFormPageTop );	
 
 		$wgOut->addHTML( $this->editFormTextTop );
 

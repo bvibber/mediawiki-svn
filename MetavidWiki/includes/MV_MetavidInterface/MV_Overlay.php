@@ -67,8 +67,8 @@ $smwgShowFactbox=SMW_FACTBOX_HIDDEN;
 			$base_title = $this->mv_interface->article->mvTitle->getStreamName();
 		}
 		//'<a title="'.wfMsg('mv_search_stream_title').'" href="javascript:mv_tool_disp(\'search\')">'.wfMsg('mv_search_stream').'</a>'
-		return '<a title="'.wfMsg('mv_mang_layers_title').'" href="javascript:mv_tool_disp(\'mang_layers\')">'.wfMsg('mv_mang_layers').'</a>' .
-			' | ' .	'<a title="'.wfMsg('mv_new_ht_en').'" href="javascript:mv_disp_add_mvd(\'ht_en\')">'.wfMsg('mv_new_ht_en').'</a>' . 
+		return '<a title="'.htmlspecialchars(wfMsg('mv_mang_layers_title')).'" href="javascript:mv_tool_disp(\'mang_layers\')">'.wfMsg('mv_mang_layers').'</a>' .
+			' | ' .	'<a title="'.htmlspecialchars(wfMsg('mv_new_ht_en')).'" href="javascript:mv_disp_add_mvd(\'ht_en\')">'.wfMsg('mv_new_ht_en').'</a>' . 
 			' | ' . '<a href="javascript:mv_disp_add_mvd(\'anno_en\')">'.wfMsg('mv_new_anno_en').'</a>';
 	}
 	/* output caption div links */ 
@@ -122,7 +122,7 @@ $smwgShowFactbox=SMW_FACTBOX_HIDDEN;
 		
 		$out='';
 		if(count($this->mvd_pages)==0){
-			$out= 'no mvd rows found';	
+			$out= 'no mvd rows found';
 		}else{			
 			foreach($this->mvd_pages as $mvd_id => $mvd_page){
 				$this->get_fd_mvd_page($mvd_page);	
@@ -140,8 +140,9 @@ $smwgShowFactbox=SMW_FACTBOX_HIDDEN;
 			$img_url = MV_StreamImage::getStreamImageURL($mvd_page->stream_id, $mvd_page->start_time, 'medium', true); 
 		}
 		//style=\"background:#".$this->getMvdBgColor($mvd_page)."\" "
-		$wgOut->addHTML("<fieldset class=\"mv_fd_mvd\" id=\"mv_fd_mvd_{$mvd_page->id}\" name=\"{$mvd_page->wiki_title}\" " .
-					"image_url=\"{$img_url}\" >" );
+		$wgOut->addHTML('<fieldset class="mv_fd_mvd" id="mv_fd_mvd_'.htmlspecialchars($mvd_page->id).'" '.
+					'name="'.htmlspecialchars($mvd_page->wiki_title).'" ' .
+					'image_url="'.htmlspecialchars($img_url).'" >' );
 		
 		/*$wgOut->addHTML("<legend id=\"mv_ld_{$mvd_page->id}\">" .  
 				$this->get_mvd_menu($mvd_page) . 
@@ -291,10 +292,11 @@ $smwgShowFactbox=SMW_FACTBOX_HIDDEN;
 		if(is_object($mvdTile))$template_key = $mvdTile->getMvdTypeKey();
 		//$wgOut->addHTML('looking at: ' . strtolower($template_key));
 		
-		//slow... don't use templates.. just hard code here:
+	
 		$img_float =''; 			
 		switch(strtolower($template_key)){
 			case 'ht_en':				
+				//slow... don't use templates.. just hard code here:
 				/*$smwStore =& smwfGetStore(); 	
 				$title = $mvdTile->getMwTitle();
 				//print "Title: ".$title->getDBKey() . "\n";
@@ -305,8 +307,6 @@ $smwgShowFactbox=SMW_FACTBOX_HIDDEN;
 					$pimg = mv_get_person_img($smwProps['Spoken_By'].'.jpg');					
 					$img_float='<img src="'.$pimg.'">';
 				}*/	
-				
-											
 				global $wgParser, $wgUser, $wgContLang;
 				$templetTitle = Title::makeTitle(NS_TEMPLATE, $template_key );	
 				if($templetTitle->exists()){	
@@ -314,15 +314,21 @@ $smwgShowFactbox=SMW_FACTBOX_HIDDEN;
 					$template_wiki_text = '{{'.$template_key."|\n";		
 					
 					//@@todo lookup with attributes
-					if(isset($smw_attr['Spoken By'])){
-						$template_wiki_text.= '|PersonName='.$smw_attr['Spoken By']."\n";
+					if(isset($smw_attr['spoken_by'])){
+						$template_wiki_text.= '|PersonName='.$smw_attr['spoken_by']."\n";
 					}
 					$template_wiki_text.='|BodyText='.$text."\n".
 					'}}';										
 					$text =	$template_wiki_text;					
 				}						
 			break;
-			case 'anno_en':											
+			case 'anno_en':			
+				$text='';
+				//format anno_en:
+				$smw_attr = $this->get_and_strip_semantic_tags($text);					
+				if(isset($smw_attr['speech_by'])){
+					$text.=wfMsg('mv_speech_by').$smw_attr['speech_by'];
+				}
 			break;
 			default:					
 			break;
@@ -394,7 +400,7 @@ $smwgShowFactbox=SMW_FACTBOX_HIDDEN;
 		$out='';
 		//set up links:
 		$plink = '';
-		$elink = '<a title="'.wfMsg('mv_edit_adjust_title').'" href="javascript:mv_edit_disp(\''.$mvd_page->wiki_title.'\', \''.$mvd_page->id.'\')">'.wfMsg('mv_edit').'</a>';
+		$elink = '<a title="'.htmlspecialchars(wfMsg('mv_edit_adjust_title')).'" href="javascript:mv_edit_disp(\''.htmlspecialchars($mvd_page->wiki_title).'\', \''.htmlspecialchars($mvd_page->id).'\')">'.wfMsg('mv_edit').'</a>';
 		//$alink = '<a title="'.wfMsg('mv_adjust_title').'" href="javascript:mv_adjust_disp(\''.$mvd_page->wiki_title.'\', \''.$mvd_page->id.'\')">'.wfMsg('mv_adjust').'</a>';
 		
 		//print "wiki title: " . $mvd_page->wiki_title;
@@ -405,17 +411,17 @@ $smwgShowFactbox=SMW_FACTBOX_HIDDEN;
 		$dlink = $sk->makeKnownLinkObj($dTitle,  wfMsg('talk') );
 		
 		//{s:\''.seconds2ntp($mvd_page->start_time).'\',e:\''.seconds2ntp($mvd_page->end_time).'\'}
-		$plink='<a title="'.wfMsg('mv_play').' '.seconds2ntp($mvd_page->start_time) . ' to ' . seconds2ntp($mvd_page->end_time).' " ' .
+		$plink='<a title="'.htmlspecialchars(wfMsg('mv_play').' '.seconds2ntp($mvd_page->start_time) . ' to ' . seconds2ntp($mvd_page->end_time)).' " ' .
 				'style="text-decoration:none;" ' .		
-				'href="javascript:mv_do_play('.$mvd_page->id.');">' .
-					'<span style="width:44px"><img src="'.$mvgScriptPath.'/skins/images/control_play_blue.png"></span>'.
-					seconds2ntp($mvd_page->start_time) . ' to ' . seconds2ntp($mvd_page->end_time).'</a>';
+				'href="javascript:mv_do_play('.htmlspecialchars($mvd_page->id).');">' .
+					'<span style="width:44px"><img src="'.htmlspecialchars($mvgScriptPath).'/skins/images/control_play_blue.png"></span>'.
+					htmlspecialchars(seconds2ntp($mvd_page->start_time) . ' to ' . seconds2ntp($mvd_page->end_time)).'</a>';
 		
 		//@@TODO set up conditional display: (view source if not logged on, protect, remove if given permission)  
 		$out.=$plink;
 		$out.="- $elink - $hlink - $dlink ";
 		if($wgUser->isAllowed('mv_delete_mvd')){
-			$rlink = '<a title="'.wfMsg('mv_remove_title').'" href="javascript:mv_disp_remove_mvd(\''.$mvd_page->wiki_title.'\', \''.$mvd_page->id.'\')">'.wfMsg('mv_remove').'</a>'; 
+			$rlink = '<a title="'.htmlspecialchars(wfMsg('mv_remove_title')).'" href="javascript:mv_disp_remove_mvd(\''.htmlspecialchars($mvd_page->wiki_title).'\', \''.htmlspecialchars($mvd_page->id).'\')">'.wfMsg('mv_remove').'</a>'; 
 			$out.=' - ' .  $rlink;
 		}
 		return $out;
@@ -446,7 +452,11 @@ $smwgShowFactbox=SMW_FACTBOX_HIDDEN;
 		$semanticLinkPattern = '(\[\[(([^:][^]]*):[=|:])+((?:[^|\[\]]|\[\[[^]]*\]\]|\[[^]]*\])*)(\|([^]]*))?\]\])';
 		$mv_smw_tag_arry = array();
 		$text = preg_replace_callback($semanticLinkPattern, 'mvParsePropertiesCallback',$text);
-		return $mv_smw_tag_arry;
+		$ret_ary = array();
+		foreach($mv_smw_tag_arry as $k=>$v){
+			$ret_ary[strtolower(str_replace(' ','_',$k))]=$v;
+		}
+		return $ret_ary;
 	}		
 	/*
 	* @@todo in the future dataHelpers could accommodate more.. (but lets avoid recreating the halo semantic mediaWiki extension).). 
@@ -462,11 +472,11 @@ $smwgShowFactbox=SMW_FACTBOX_HIDDEN;
 		$metaData=array('prop'=>array(), 'categories'=>array());
 		//just get msg and basic div layout: \
 		//css layout of forms was F*@#!!! withing me for some reason so yay table :P
-		$o.='<span class="mv_basic_edit"><a href="#" onClick="mv_mvd_advs_toggle('.$mvd_id.');return false;">'.wfMsg('mv_advanced_edit').'</a></span>
-			 <span style="display:none" class="mv_advanced_edit"><a href="#" onClick="mv_mvd_advs_toggle('.$mvd_id.');return false;">'.wfMsg('mv_basic_edit').'</a></span>';
+		$o.='<span class="mv_basic_edit"><a href="#" onClick="mv_mvd_advs_toggle('.htmlspecialchars($mvd_id).');return false;">'.wfMsg('mv_advanced_edit').'</a></span>
+			 <span style="display:none" class="mv_advanced_edit"><a href="#" onClick="mv_mvd_advs_toggle('.htmlspecialchars($mvd_id).');return false;">'.wfMsg('mv_basic_edit').'</a></span>';
 			 
-		$o.='<input type="hidden" id="adv_basic_'.$mvd_id.'" name="adv_basic" value="basic">';
-		$o.='<table class="mv_basic_edit mv_dataHelpers" id="mv_dataHelpers_'.$mvd_id.'">';		
+		$o.='<input type="hidden" id="adv_basic_'.htmlspecialchars($mvd_id).'" name="adv_basic" value="basic">';
+		$o.='<table class="mv_basic_edit mv_dataHelpers" id="mv_dataHelpers_'.htmlspecialchars($mvd_id).'">';		
 			if(isset($mvMetaDataHelpers[strtolower($mvd_type)])){
 				//get existing metadata
 				if($mvd_id!='new' && $mvd_id!='seq'){
@@ -489,29 +499,32 @@ $smwgShowFactbox=SMW_FACTBOX_HIDDEN;
 					$swmTitle = Title::newFromText((string)$prop, SMW_NS_PROPERTY);	
 					$smwImageHTML='';
 					if($swmTitle->exists()){					
-						$help_img =$sk->makeKnownLinkObj($swmTitle, '<img src="'.$mvgScriptPath.'/skins/images/help_icon.png">');
+						$help_img =$sk->makeKnownLinkObj($swmTitle, '<img src="'.htmlspecialchars($mvgScriptPath).'/skins/images/help_icon.png">');
 						//special case for person image: (would be good to generalize but kind of complicated) 
 						if($swmTitle->getText()=='Speech_by'){							
 							$img = mv_get_person_img($val);
-							$smwImageHTML="<img id=\"smw_{$prop}_img\" style=\"display: block;margin-left: auto;margin-right: auto;\" src=\"{$img->getURL()}\" width=\"44\">";
+							$smwImageHTML='<img id="smw_'.htmlspecialchars($prop).'_img" style="display: block;margin-left: auto;margin-right: auto;" src="'.htmlspecialchars($img->getURL()).'" width=\"44\">';
 						}
 																		
-						$o.= "<tr><td><label>".$swmTitle->getText().$help_img.":</label></td><td>{$smwImageHTML}<input class=\"mv_anno_ac_{$mvd_id}\" size=\"40\" name=\"smw_{$prop}\" type=\"text\" value=\"$val\">
-								<div class=\"autocomplete\" id=\"smw_{$prop}_choices_{$mvd_id}\" style=\"display: none;\"/>
-								</td></tr>";						
+						$o.= "<tr><td><label>".htmlspecialchars($swmTitle->getText()).$help_img.
+								':</label></td><td>'.$smwImageHTML.'<input class="mv_anno_ac_'.htmlspecialchars($mvd_id).'" '.
+						 		'size="40" name="smw_'.htmlspecialchars($prop).'" type="text" value="'.htmlspecialchars($val).'"> '.
+								'<div class="autocomplete" id="smw_'.htmlspecialchars($prop).'_choices_'.htmlspecialchars($mvd_id).'" style="display: none;"/>
+								</td></tr>';						
 					}else{
 						print '<span class="error">Error:</span>'.$sk->makeKnownLinkObj($swmTitle, $swmTitle->getText()) . ' does not exist<br>' ;
 					}
 				}
-				
+				$mvgScriptPath = htmlspecialchars($mvgScriptPath);
+				$mvd_id = htmlspecialchars($mvd_id);
 				if($mvMetaCategoryHelper){		
 					//list each category with a little - next to it that removes its respective hidden field.
 					$i=0; 
 					$o.='<tr><td>'.wfMsg('mv_existing_categories').'</td><td>';
-					$o.='<div id="mv_ext_cat_container_'.$mvd_id.'"></div>';
+					$o.='<div id="mv_ext_cat_container_'.htmlspecialchars($mvd_id).'"></div>';
 					foreach($metaData['categories'] as $cat=>$page){
 						$catTitle = Title::newFromText($cat, NS_CATEGORY);
-						$o.='<span id="ext_cat_'.$i.'"><input value="'. $catTitle->getDBKey().'" type="hidden" style="display:none;" name="ext_cat[]" class="mv_ext_cat">'.
+						$o.='<span id="ext_cat_'.htmlspecialchars($i).'"><input value="'. $catTitle->getDBKey().'" type="hidden" style="display:none;" name="ext_cat_'.$i.'" class="mv_ext_cat">'.
 							$catTitle->getText().
 							'<a  href="#" onclick="$j(\'#ext_cat_'.$i.'\').fadeOut(\'fast\').remove();return false;">
 								<img border="0" src="'.$mvgScriptPath.'/skins/images/delete.png">
@@ -519,18 +532,17 @@ $smwgShowFactbox=SMW_FACTBOX_HIDDEN;
 							</span><br>';
 						$i++;
 					}
-					$o.='</tr>';
+					$o.='</tr>';					
 					$o.= "<tr><td><label for=\"category\">".wfMsg('mv_add_category').":</label></td><td><input id=\"mv_add_cat_ext_{$mvd_id}\" maxlength=\"255\" size=\"20\" class=\"mv_anno_ac_{$mvd_id}\" name=\"category\" type=\"text\">
-							<img onClick=\"mv_add_category('{$mvd_id}', \$j('#mv_add_cat_ext_{$mvd_id}').val())\" border=\"0\" src=\"{$mvgScriptPath}/skins/images/add.png\">
+							<img onClick=\"mv_add_category('{$mvd_id}', \$j('#mv_add_cat_ext_{$mvd_id}').val());\$j('#mv_add_cat_ext_{$mvd_id}').val('');\" border=\"0\" src=\"{$mvgScriptPath}/skins/images/add.png\">
 							<div class=\"autocomplete\" id=\"category_choices_{$mvd_id}\" style=\"display: none;\"/></td></tr>";
 				}
 				//output a short desc field (the text with striped semantic values)...
 				$o.='<tr><td>'.wfMsg("mv_basic_text_desc").'</td></td><textarea name="basic_wpTextbox" rows="2" cols="40">';
-				if(isset($metaData['striped_text']))$o.=$metaData['striped_text'];
-				$o.='</textarea></td></tr>';
-				
+				if(isset($metaData['striped_text']))
+					$o.=htmlspecialchars($metaData['striped_text']); 
+				$o.='</textarea></td></tr>';				
 			}				
-			//foreach($mvMetaDataHelpers[
 		$o.='</table>';			
 		return $o;
 	}
@@ -554,7 +566,9 @@ $smwgShowFactbox=SMW_FACTBOX_HIDDEN;
   		  	
 		/*
 		 * @@todo move some of this to CSS
-  		 */
+  		 */		
+		$mvd_id = htmlspecialchars( $mvd_id );
+		$mvgScriptPath = htmlspecialchars( $mvgScriptPath );
 		$out.= ' 
 	<span id="mv_adjust_msg_'.$mvd_id.'"></span> 
 	<table style="background:transparent;position:relative" width="94%" border="0"><tr><td width="40">
@@ -584,11 +598,11 @@ $smwgShowFactbox=SMW_FACTBOX_HIDDEN;
   <br />';
 	
 		$out.='<span style="float:left;"><label class="mv_css_form" for="mv_start_hr_'.$mvd_id.'"><i>'.wfMsg('mv_start_desc').':</i></label> ' . 
-			'<input class="mv_adj_hr" size="8" maxlength="8" value="'.$start_time.'" id="mv_start_hr_'.$mvd_id.'" name="mv_start_hr_'.$mvd_id.'">' .
+			'<input class="mv_adj_hr" size="8" maxlength="8" value="'.htmlspecialchars($start_time).'" id="mv_start_hr_'.$mvd_id.'" name="mv_start_hr_'.$mvd_id.'">' .
 			'</span>';
 		
 		$out.='<span style="float:left;"><label class="mv_css_form" for="mv_end_hr_'.$mvd_id.'"><i>'.wfMsg('mv_end_desc').':</i></label> ' . 
-			'<input class="mv_adj_hr" size="8" maxlength="8" value="'.$end_time.'" id="mv_end_hr_'.$mvd_id.'" name="mv_end_hr_'.$mvd_id.'">' .
+			'<input class="mv_adj_hr" size="8" maxlength="8" value="'.htmlspecialchars($end_time).'" id="mv_end_hr_'.$mvd_id.'" name="mv_end_hr_'.$mvd_id.'">' .
 			'</span>';
 			
 		//output page text (if not "new")
@@ -658,8 +672,10 @@ $smwgShowFactbox=SMW_FACTBOX_HIDDEN;
 		}			
 		//add all categorizations: 
 		$catNStxt = $wgContLang->getNsText(NS_CATEGORY);
-		foreach($_POST['ext_cat'] as $k=>$v){
-			$wpTextbox1.="\n\n[[".$catNStxt.":".$v."]]";
+		foreach($_POST as $k=>$v){
+			if(strpos($k, 'ext_cat_')!==false){
+				$wpTextbox1.="\n[[".$catNStxt.":".$v."]]";
+			}
 		}
 		//add the text to the end after a line break to not confuse mannual editors		
 		$editPageAjax = new MV_EditPageAjax( $Article);
@@ -872,7 +888,7 @@ $smwgShowFactbox=SMW_FACTBOX_HIDDEN;
 		
 		//add custom data helpers if editing annotative layer: 
 		if($mvd_type=='anno_en'){
-			$customPreEditHtml.=$this->get_dataHelpers($titleKey, $mvd_id);
+			$editPageAjax->setBasicHtml($this->get_dataHelpers($titleKey, $mvd_id));
 			//don't display "advanced" edit
 			$editPageAjax->display_advanced_edit='none';
 		}
@@ -931,7 +947,7 @@ $smwgShowFactbox=SMW_FACTBOX_HIDDEN;
 					$width+=2;
 					$height+=30;
 					$left = $width+10+30;
-					return "style=\"left:{$left}px;\"";
+					return 'style=\"left:'.htmlspecialchars($left).'px;"';
 				}	
 			}
 		}

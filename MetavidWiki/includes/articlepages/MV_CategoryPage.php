@@ -12,6 +12,9 @@
  //$wgHooks['CategoryPageView'][] = 'fnMyHook';
  //display all MVD category members as thumbnails... 
  //display link to rss/playlist
+
+if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
+
 class MV_CategoryPage extends CategoryPage{	
  	function closeShowCategory() {
 		global $wgOut, $wgRequest;

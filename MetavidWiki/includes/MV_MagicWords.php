@@ -29,8 +29,12 @@ class MV_MagicWords{
 			if(strpos($arg,'=')===false){
 				//get param via index order (not as reliable as param=value mode)
 				switch($inx){
-					case '0':$this->params['format']=$arg;break;
-					case '1':$this->params['num_results']=$arg;break;
+					case '0':
+						$this->params['format']=$arg;
+					break;
+					case '1':
+						$this->params['num_results']=$arg;
+					break;
 				}
 			}else{
 				list($arg_type, $arg_value) = split('=',$arg);
@@ -138,7 +142,6 @@ class MV_MagicWords{
  							  $title_span, 
  							  'tl=1') . 
  					'</span>';
- 						 				
  				//try to get metadata from anno_en first.
  				//@@todo maybe the following metadata grabbing could be abstracted to a single function in mv_index  			
  				$mvd_result = MV_Index::getMVDInRange(
@@ -148,7 +151,7 @@ class MV_MagicWords{
  								$mvd_type='anno_en',
  								$getText=true,
  								$smw_properties=array('Speech_by', 'Bill'), 
- 								$limit='LIMIT 0,1'
+ 								$limit='1'
  							);
  				if($dbr->numRows($mvd_result)!=0){
  					$mvd_row = $dbr->fetchObject($mvd_result); 	 					
@@ -180,11 +183,9 @@ class MV_MagicWords{
  					 		$coma=', ';
  					 	}
  					 	$o.='</span>';
- 					 }
- 					
+ 					 } 					
  				} 				 		
- 				$o.='</li>';
- 				
+ 				$o.='</li>'; 				
  			}
  			$o.='</ul><div style="clear:both"></div>';
  		}

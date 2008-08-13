@@ -6,7 +6,7 @@ this page serves as a wrapper for the cortado java applet
 */
 //load the http GETS:
 
-
+$video='';
 $error='';
 if(!function_exists('filter_input')){
 	error_out('you version of php lacks <b>filter_input()</b> function</br>');

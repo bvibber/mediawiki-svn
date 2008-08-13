@@ -19,18 +19,40 @@
 if (!defined('MEDIAWIKI')) die();
 
 global $IP, $smwgIP;
-//export types:
-function doExportStream($par = null){$MvSpecialExport = new MV_SpecialExport('stream',$par);}
-function doExportCat($par = null){$MvSpecialExport = new MV_SpecialExport('category',$par);}
-function doExportSeq($par = null){$MvSpecialExport = new MV_SpecialExport('sequence',$par);}
-function doExportSearch($par = null){$MvSpecialExport = new MV_SpecialExport('search',$par);}
-function doExportAsk($par =null){$MvSpecialExport = new MV_SpecialExport('ask',$par);}
-
-SpecialPage::addPage( new SpecialPage('MvVideoFeed','',true,'doExportCat',false) );
-SpecialPage::addPage( new SpecialPage('MvExportStream','',true,'doExportStream',false) );
-SpecialPage::addPage( new SpecialPage('MvExportSequence','',true,'doExportSeq',false) );
-SpecialPage::addPage( new SpecialPage('MvExportSearch','',true,'doExportSearch',false) );
-SpecialPage::addPage( new SpecialPage('MvExportAsk','',true,'doExportAsk',false) );
+//all the special pages handled by this master Special Export (could reactor into individual classes if we want to)
+class MvVideoFeed extends SpecialPage{
+	function __construct(){
+		parent::__construct('MvVideoFeed');
+		$MvSpecialExport = new MV_SpecialExport('category');
+	}
+}
+class MvExportStream extends SpecialPage{
+	function __construct(){
+		parent::__construct('MvExportStream');
+		$MvSpecialExport = new MV_SpecialExport('stream');
+	}
+}
+class MvExportSequence extends SpecialPage{
+	function __construct(){
+		parent::__construct('MvExportSequence');
+		$MvSpecialExport = new MV_SpecialExport('sequence');
+	}
+}
+class MvExportSearch extends SpecialPage{
+	function __construct(){
+		parent::__construct('MvExportSearch');
+		$MvSpecialExport = new MV_SpecialExport('search');
+	}
+}
+class MvExportAsk extends SpecialPage{
+	function __construct(){
+		parent::__construct('MvExportSearch');
+		$MvSpecialExport = new MvExportAsk('ask');
+	}
+}
+function wfSpecialMvExportStream(){
+	return true;
+}
 
 //extend supported feed types:
 $wgFeedClasses['cmml']='CmmlFeed';
@@ -38,7 +60,7 @@ $wgFeedClasses['podcast']='PodcastFeed';
 
 class MV_SpecialExport {
 	var $feed = null;
-	function __construct($export_type, $par){
+	function __construct($export_type, $par=''){
 		$this->export_type=$export_type;	
 		$this->par = $par;	
 		$this->execute();
@@ -52,8 +74,11 @@ class MV_SpecialExport {
 		$error_page = '';
 		switch($this->export_type){
 			case 'stream':
-				$this->stream_name = $wgRequest->getVal('stream_name');				
-				if($this->stream_name=='')$error_page.=wfMsg('edit_stream_missing').", ";
+				$this->stream_name = $wgRequest->getVal('stream_name');
+								
+				if($this->stream_name=='')
+					$error_page.=wfMsg('edit_stream_missing').", ";
+					
 				$this->req_time = $wgRequest->getVal('t');		
 				
 				switch($this->feed_format ){
@@ -102,8 +127,8 @@ class MV_SpecialExport {
 		header('Content-Type: text/xml');
 		$o='<?xml version="1.0" encoding="UTF-8"?>'."\n";
  		$o.='<playlist version="1" xmlns="http://xspf.org/ns/0/">'."\n";
- 		$o.='	<title>'.$seqTitle->getText().'</title>'."\n";
- 		$o.='	<info>'.$seqTitle->getFullURL().'</info>'."\n";
+ 		$o.='	<title>'.htmlentities($seqTitle->getText()).'</title>'."\n";
+ 		$o.='	<info>'.htmlentities($seqTitle->getFullURL()).'</info>'."\n";
  		$o.='	<trackList>'."\n";
  		$seqArticle->parsePlaylist(); 	
  		foreach($seqArticle->clips as $clip){
@@ -174,7 +199,6 @@ class MV_SpecialExport {
 	    xmlns:html="http://www.w3.org/1999/xhtml"
 	    elementFormDefault="qualified"
 	    attributeFormDefault="unqualified">
-
 </xs:schema>
 		 */
 		?>			
@@ -196,7 +220,7 @@ class MV_SpecialExport {
 					'start="npt:'.htmlentities($this->mvTitle->getStartTime()).'"'. 
 					' end="npt:'.htmlentities($this->mvTitle->getEndTime()).'"':'';				
 			?>
-				<mediaSource id="<?php echo htmlentities($file->getNameKey())?>"<?php echo $dAttr?> src="<?php echo $dSrc?>" title="<?php echo htmlentities($file->get_desc())?>" content-type="<?php echo htmlentities($file->getContentType())?>" <?php echo $startendattr?>/>	
+				<mediaSource id="<?php echo htmlentities($file->getNameKey())?>"<?php echo $dAttr?> src="<?php echo htmlentities($dSrc)?>" title="<?php echo htmlentities($file->get_desc())?>" content-type="<?php echo htmlentities($file->getContentType())?>" <?php echo $startendattr?>/>	
 		<?}?>
 	</switch>
 		</track>
@@ -212,7 +236,7 @@ class MV_SpecialExport {
 					//for now make ht_en the default layer		
 					$default_attr = (strtolower($row->mvd_type)=='ht_en')?'default="true"':'';												
 ?>
-				<mediaSource id="<?php echo $row->mvd_type?>" title="<?php echo wfMsg($row->mvd_type)?>" <?php echo $default_attr?> inline="<?php echo $inline?>" lang="en" content-type="text/cmml" src="<?php echo htmlentities($clink)?>">
+				<mediaSource id="<?php echo htmlentities($row->mvd_type)?>" title="<?php echo wfMsg($row->mvd_type)?>" <?php echo $default_attr?> inline="<?php echo htmlentities($inline)?>" lang="en" content-type="text/cmml" src="<?php echo htmlentities($clink)?>">
 <?					//output inline cmml (if requested): 
 					if($inline=='true'){
 						$this->get_stream_cmml(true, $row->mvd_type);
@@ -268,7 +292,7 @@ class MV_SpecialExport {
 			
 				if(!isset($tracks[$mvd->mvd_type]))$tracks[$mvd->mvd_type]='';			
 				$tracks[$mvd->mvd_type].='						
-						<'.$ns.'clip id="mvd_'.$mvd->id.'" start="npt:'.seconds2ntp($mvd->start_time).'" end="npt:'.seconds2ntp($mvd->end_time).'">
+						<'.$ns.'clip id="mvd_'.htmlentities($mvd->id).'" start="npt:'.htmlentities(seconds2ntp($mvd->start_time)).'" end="npt:'.htmlentities(seconds2ntp($mvd->end_time)).'">
 							<'.$ns.'img src="'.htmlentities($streamTitle->getFullStreamImageURL(null, seconds2ntp($mvd->start_time))).'"/>
 							<'.$ns.'body><![CDATA[
 									'.	$MV_Overlay->getMVDhtml($mvd, $absolute_links=true).'
@@ -279,8 +303,10 @@ class MV_SpecialExport {
 		}		
 		if($encap)print '<cmml_set>';
  	    //based on: http://trac.annodex.net/wiki/CmmlChanges
-		foreach($tracks as $role=>$body_string){ ?>
-					<cmml lang="en" id="<?php echo $role?>" role="<?php echo wfMsg($role)?>" xmlns="http://svn.annodex.net/standards/cmml_2_0.dtd">		
+		foreach($tracks as $role=>$body_string){
+			$ns = htmlentities($ns); 
+		?>					
+					<cmml lang="en" id="<?php echo htmlentities($role)?>" role="<?php echo wfMsg($role)?>" xmlns="http://svn.annodex.net/standards/cmml_2_0.dtd">		
 						<<?php echo $ns?>head>
 							<<?php echo $ns?>title><?php echo wfMsg($role)?></<?php echo $ns?>title>	
 							<<?php echo $ns?>meta name="description" content="<?php echo htmlentities(wfMsg($role.'_desc'))?>"></<?php echo $ns?>meta>				
@@ -460,7 +486,7 @@ class mvRSSFeed extends ChannelFeed{
 		}
 		$desc_xml ='<![CDATA[				
 			<center class="mv_rss_view_only">
-				<a href="'.$mStreamTitle->getFullUrl().'"><img src="'.$thumb_ref.'" border="0" /></a>
+				<a href="'.htmlspecialchars($mStreamTitle->getFullUrl()).'"><img src="'.htmlspecialchars($thumb_ref).'" border="0" /></a>
 			</center>
 			<br />'.
 			$desc_html. 

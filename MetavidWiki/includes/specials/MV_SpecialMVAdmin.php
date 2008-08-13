@@ -63,7 +63,8 @@ class MVAdmin extends SpecialPage {
 				ob_start();
 				print "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\"  \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\">\n<html xmlns=\"http://www.w3.org/1999/xhtml\" xml:lang=\"en\" lang=\"en\" dir=\"ltr\">\n<head><meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\" /><title>Setting up Storage for Metavid Wiki</title></head><body>";
 				header( "Content-type: text/html; charset=UTF-8" );
-
+				
+				//@@TODOD broken since not valid entry points for web scripts: 
 				global $botUserName, $valid_attributes, $states_ary;
 				require_once("$mvgIP/maintenance/metavid2mvWiki.inc.php");
 				require_once("$mvgIP/maintenance/maintenance_util.inc.php");

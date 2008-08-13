@@ -94,7 +94,7 @@
 		list($iw, $ih) = 	explode('x',$mvDefaultSearchVideoPlaybackRes);	
 		$wgOut->addHTML('<h3>'.wfMsg('mv_add_clip_by_name').':</h3>' .			
 			'<form id="mv_add_to_seq_form" action="">' .
-			'<div id="mv_seq_manual_embed" style="display:none;position:relative;border:solid thin black;width:'.$iw.'px;height:'.$ih.'px;"> </div><br />'.			 
+			'<div id="mv_seq_manual_embed" style="display:none;position:relative;border:solid thin black;width:'.htmlspecialchars($iw).'px;height:'.htmlspecialchars($ih).'px;"> </div><br />'.			 
 			wfMsg('mv_label_stream_name') . ': <input id="mv_add_stream_name" name="mv_add_stream_name" ' .
 			' size="25" maxlength="65" ' .
 			'value="">');
@@ -150,9 +150,9 @@
 	}
  	function render_menu(){		
 		return
-			'<a title="'.wfMsg('mv_sequence_page_desc').'" href="javascript:mv_seqtool_disp(\'sequence_page\')">'.wfMsg('mv_save_sequence').'</a>' .
-		' | ' .	'<a title="'.wfMsg('mv_sequence_add_manual_desc').'" href="javascript:mv_seqtool_disp(\'add_clips_manual\')">'.wfMsg('mv_sequence_add_manual').'</a>' .
-		' | ' .	'<a title="'.wfMsg('mv_sequence_add_search_desc').'" href="javascript:mv_seqtool_disp(\'add_clips_search\')">'.wfMsg('mv_sequence_add_search').'</a>' ;		
+			'<a title="'.htmlspecialchars(wfMsg('mv_sequence_page_desc')).'" href="javascript:mv_seqtool_disp(\'sequence_page\')">'.wfMsg('mv_save_sequence').'</a>' .
+		' | ' .	'<a title="'.htmlspecialchars(wfMsg('mv_sequence_add_manual_desc')).'" href="javascript:mv_seqtool_disp(\'add_clips_manual\')">'.wfMsg('mv_sequence_add_manual').'</a>' .
+		' | ' .	'<a title="'.htmlspecialchars(wfMsg('mv_sequence_add_search_desc')).'" href="javascript:mv_seqtool_disp(\'add_clips_search\')">'.wfMsg('mv_sequence_add_search').'</a>' ;		
 	}
  }
 ?>

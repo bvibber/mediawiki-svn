@@ -8,7 +8,7 @@
  /*
   * stores all the html for the video player and its associated ajax functions
   */
-  if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
+if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
  class MV_VideoPlayer extends MV_Component{
  	var $name = 'MV_VideoPlayer';  	 	 	
  	function getHTML(){

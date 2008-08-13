@@ -6,6 +6,9 @@ require_once ('../../../maintenance/commandLine.inc');
 define('MV_DOWNLOAD_DIR', '/metavid/video_archive/');
 define('MV_ARCHIVE_ORG_DL', 'http://www.archive.org/download/mv_');
 
+define('ARCHIVE_ORG_SKIP_LIST', '/metavid/ao_skip_list.txt');
+
+define('MV_BASE_MEDIA_SERVER_PATH', 'http://mvbox2.cse.ucsc.edu/mvFlvServer.php/');
 
 //for gennerate flv metadata:
 include_once('../skins/mv_embed/flvServer/MvFlv.php');
@@ -30,12 +33,48 @@ function proccess_streams($stream_name='all'){
 		$sql = "SELECT * FROM `mv_streams` WHERE `name` ={$stream_name}";
 	}
 	$dbr = wfGetDB(DB_READ);
+	$dbw = wfGetDB(DB_WRITE);
 	$result = $dbr->query($sql);
+	$skip_list = unserialize(file_get_contents(ARCHIVE_ORG_SKIP_LIST));
 	while($stream = $dbr->fetchObject($result) ){		
 		$local_fl = MV_DOWNLOAD_DIR . $stream->name.'.flv';
 		$remote_fl = MV_ARCHIVE_ORG_DL . $stream->name.'/'.$stream->name.'.flv';
-		//lets just skip local files for now and try to remove incomplete mannually
 		
+		if(is_file($local_fl). META_DATA_EXT && is_file($local_fl) ){
+			//check db table for updated mv_flash_low_quality ref
+			$sql = " SELECT * FROM `mv_stream_files` WHERE `stream_id`='".$stream->id."' " . 
+				   " AND `file_desc_msg`='mv_flash_low_quality'";
+			$resFcheck = $dbr->query($sql);
+			if($dbr->numRows($resFcheck)==0){
+				//grab duration from mv_ogg_low_quality
+				$sql = " SELECT * FROM `mv_stream_files` WHERE `stream_id`='".$stream->id."' " .
+				 		" AND `file_desc_msg`='mv_ogg_low_quality'";
+				$rdur = $dbr->query($sql);
+				$dur_val =0;
+				if($dbr->numRows($rdur)){
+					$ogg_file = $dbr->fetchObject($rdur);
+					$dur_val = $ogg_file->duration;
+				}				
+				$sql="INSERT INTO `mv_stream_files` 
+						(`id`,`base_offset`,`duration`,`file_desc_msg`,`path_type`,`path`)
+						VALUES('',0,'{$dur_val}','mv_flash_low_quality','','".
+						MV_BASE_MEDIA_SERVER_PATH . $stream->name .".flv');";
+				print "insert {$stream->name}.flv\n";				
+				$dbw->query($sql);
+			}else{
+				$file = $dbr->fetchObject($resFcheck);
+				$sql="UPDATE `mv_stream_files` WHERE `id` = '".$file->id."' 
+				 	SET `path`=".MV_BASE_MEDIA_SERVER_PATH . $stream->name .'.flv';
+				print "update {$stream->name}.flv\n";
+				$dbw->query($sql);				
+			}						
+		}
+		
+		//lets just skip local files for now and try to remove incomplete mannually
+		if(isset($skip_list[$stream->name])){
+			print "skipping:".$stream->name."\n";
+			continue;
+		}
 		
 		//senate_proceeding_08-01-07/senate_proceeding_08-01-07.flv
 		//check local file size matches remote: 
@@ -50,18 +89,19 @@ function proccess_streams($stream_name='all'){
 				echo ' sizes match: ' . hr_bytes(filesize($local_fl)) .'='.
 						hr_bytes(remotefsize($remote_fl))."\n";					
 			}*/							
-		}else{
+		}else{			
 			//check if flash file exists:
 			//$sql ="SELECT * FROM `mv_stream_files` WHERE `stream_id`=" .$stream->id
 			//ao_file_flash_flv
 			
 			if(remotefsize($remote_fl)<100000){
 				print "remote file: $remote_fl < 100k  (skipping) \n";
+				$skip_list[$stream->name]=true;
 				continue;  
 			}
 			echo "DL it: $remote_fl \n";
 			if(curldownload($remote_fl, $local_fl)){
-				echo 'succesfully grabed '.$remote_fl."\n"; 
+				echo 'succesfully grabed '.$remote_fl."\n"; 				
 			};			
 		}
 		if(!is_file($local_fl). META_DATA_EXT){
@@ -75,6 +115,11 @@ function proccess_streams($stream_name='all'){
 			$flv->getMetaData();
 			echo "done with .meta (" . filesize($local_fl.META_DATA_EXT).") \n";
 		}
+		//add to skip list
+		if(is_file($local_fl). META_DATA_EXT && is_file($local_fl) ){
+			$skip_list[$stream->name]=true;
+		}
+		file_put_contents(ARCHIVE_ORG_SKIP_LIST,serialize($skip_list));		
 	}
 	
 }

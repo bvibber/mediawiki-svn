@@ -8,7 +8,7 @@
 */
 
 //NOTE THIS IS DISABLED BY DEFAULT simply comment out the line below to enable; 
-//die('note mv_data_proxy is disabled by default');
+die('note mv_data_proxy is disabled by default');
 if(isset($_POST['url'])){
 	$req_url = $_POST['url'];
 }else{

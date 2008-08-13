@@ -13,15 +13,24 @@
 if (!defined('MEDIAWIKI')) die();
 
 
-function doSpecialListStreams($par = null) {
+/*function doSpecialListStreams($par = null) {
 	list( $limit, $offset ) = wfCheckLimits();
 	$rep = new MV_SpecialListStreams();
 	return $rep->doQuery( $offset, $limit );
 }
-
 SpecialPage::addPage( new SpecialPage('Mv_List_Streams','',true,'doSpecialListStreams',false) );
-
-class MV_SpecialListStreams extends QueryPage {
+*/
+class MV_SpecialListStreams extends SpecialPage {
+	public function __construct() {		
+		parent::__construct('Mv_List_Streams');
+	}
+	function execute() {
+		list( $limit, $offset ) = wfCheckLimits();
+		$rep = new MV_SpecialQueryStreams();
+		return $rep->doQuery( $offset, $limit );
+	}
+}
+class MV_SpecialQueryStreams extends QueryPage {
 
 	function getName() {
 		return "MV_List_Streams";
@@ -78,7 +87,7 @@ class MV_SpecialListStreams extends QueryPage {
 		$result->title = strtoupper($result->title[0]) . substr($result->title, 1);		
 		$img_url = $mvImageArchive . $result->title . '?size=icon&time=0:00:00';
 		$img_url = MV_StreamImage::getStreamImageURL($result->stream_id, '0:00:00', 'icon', true);
-		$img_html = '<img src="'.$img_url . '" width="80" height="60">';
+		$img_html = '<img src="'. htmlspecialchars($img_url) . '" width="80" height="60">';
 		
 				
 		$title = Title::makeTitle( MV_NS_STREAM, $result->title  );

@@ -9,7 +9,7 @@
  * @email dale@ucsc.edu
  * @url http://metavid.ucsc.edu
  */
-class MV_PageHistoryAjax extends PageHistory{
-			 
+ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
+class MV_PageHistoryAjax extends PageHistory{			 
 }
 ?>
