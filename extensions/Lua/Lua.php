@@ -27,8 +27,8 @@ $wgAutoloadClasses['LuaWrapper'] = $dir . 'Lua.wrapper.php';
 
 if (!isset($wgLuaExternalInterpreter))
 	$wgLuaExternalInterpreter = FALSE;
-if (!isset($wgLuaExternalInterpreter))
-	$wgLuaExternalInterpreter = FALSE;
+if (!isset($wgLuaExternalCompiler))
+	$wgLuaExternalCompiler = FALSE;
 if (!isset($wgLuaMaxLines))
 	$wgLuaMaxLines = 1000000;
 if (!isset($wgLuaMaxCalls))

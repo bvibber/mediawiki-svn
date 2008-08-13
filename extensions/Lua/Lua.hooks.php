@@ -64,7 +64,7 @@ class LuaHooks {
 		}
 	}
 	
-	/** Parser function hook for the #luaexpr function*/
+	/** Parser function hook for the #luaexpr function */
 	public static function renderExpr(&$parser, $param1 = FALSE) {
 		global $wgLua;
 		# Create a new LuaWrapper if needed

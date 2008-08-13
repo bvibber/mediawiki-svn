@@ -9,8 +9,6 @@
  * @file
  */
 
-define('LUAWRAPPER', dirname(__FILE__) . '/LuaWrapper.lua');
-
 /**
  * An exception thrown by LuaWrapper on error; creates a big honking red 
  * message, which can be output to the page in place of the chunk's output.
@@ -39,7 +37,24 @@ class LuaWrapper {
 	 * Creates a new LuaWrapper.
 	 */
 	public function __construct() {
-		global $wgLuaMaxLines, $wgLuaMaxCalls, $wgLuaExternalInterpreter;
+		global $wgLuaMaxLines, $wgLuaMaxCalls, 
+		       $wgLuaExternalInterpreter, $wgLuaExternalCompiler;
+
+		# Optionally byte-compile the wrapper library
+		$wrapperLib = dirname(__FILE__) . '/LuaWrapper.lua';
+		$compiledWrapperLib = $wrapperLib.'c';
+		if ($wgLuaExternalCompiler && is_writable(dirname($compiledWrapperLib))) {
+			if (!file_exists($compiledWrapperLib) ||
+			    (filemtime($compiledWrapperLib) < filemtime($wrapperLib))) {
+				exec("$wgLuaExternalCompiler -o $compiledWrapperLib $wrapperLib",
+				     $output, $res);
+				if ($res === 0) {
+					$wrapperLib = $compiledWrapperLib;
+				}
+			} else {
+				$wrapperLib = $compiledWrapperLib;
+			}
+		}
 
 		# Are we using the Lua PHP extension or an external binary?
 		if (!$wgLuaExternalInterpreter) {
@@ -49,10 +64,10 @@ class LuaWrapper {
 				throw new LuaError('extension_notfound');
 			}
 
-			# Create a lua instance, and try to load LUAWRAPPER
+			# Create a lua instance and load the wrapper library
 			$this->lua = new lua;
 			try {
-				$this->lua->evaluatefile(LUAWRAPPER);
+				$this->lua->evaluatefile($wrapperLib);
 				$this->lua->evaluate("wrap = make_wrapper($wgLuaMaxLines, $wgLuaMaxCalls)");
 			} catch (Exception $e) {
 				$this->destroy();
@@ -63,9 +78,9 @@ class LuaWrapper {
 			$this->defunct = FALSE;
 			return TRUE;
 		} else {
-			# We're using an external binary; run LUAWRAPPER
-			# as a Lua script instead of loading it as a library
-			$luacmd = "$wgLuaExternalInterpreter ".LUAWRAPPER." $wgLuaMaxLines $wgLuaMaxCalls";
+			# We're using an external binary; run the wrapper 
+			# library as a shell-script, and it'll start an REPL
+			$luacmd = "$wgLuaExternalInterpreter $wrapperLib $wgLuaMaxLines $wgLuaMaxCalls";
 			# Create a new process and configure pipes to it
 			$this->proc = proc_open($luacmd,
 						array(0 => array('pipe', 'r'),
