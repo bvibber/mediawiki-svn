@@ -21,7 +21,7 @@ class NewUserMessage {
 		$talk = $user->getTalkPage();
 
 		if (!$talk->exists()) {
-			global $wgUser, $wgNewUserMinorEdit, $wgNewUserSupressRC;
+			global $wgUser, $wgNewUserMinorEdit, $wgNewUserSuppressRC;
 
 			wfLoadExtensionMessages( 'NewUserMessage' );
 
@@ -48,25 +48,25 @@ class NewUserMessage {
 				$templateTitleText = $templateTitle->getText();
 			}
 			if ($wgNewUserMinorEdit) $flags = $flags | EDIT_MINOR;
-			if ($wgNewUserSupressRC) $flags = $flags | EDIT_SUPPRESS_RC;
+			if ($wgNewUserSuppressRC) $flags = $flags | EDIT_SUPPRESS_RC;
 
 			$dbw = wfGetDB( DB_MASTER );
 			$dbw->begin();
 			$good = true;
-			
-			$signatures = wfMsgForContent('newusermessage-signatures');
-			if (!wfEmptyMsg('newusermessage-signatures', $signatures)) { 
+
+			$text = "{{{$templateTitleText}|$name}}";
+			$signatures = wfMsgForContent( 'newusermessage-signatures' );
+			if ( !wfEmptyMsg( 'newusermessage-signatures', $signatures ) ) {
 				$pattern = '/^\* ?(.*?)$/m';
-				preg_match_all($pattern, $signatures, $signaturesList, PREG_SET_ORDER);
-				$rand = rand(0, count($signaturesList)-1);
-				$signature = $signaturesList[$rand][1];
+				preg_match_all( $pattern, $signatures, $signatureList, PREG_SET_ORDER );
+				if ( count( $signatureList ) > 0 ) {
+					$rand = rand( 0, count( $signatureList ) - 1 );
+					$signature = $signatureList[$rand][1];
+					$text .= "\n-- {$signature} ~~~~~";
+				}
 			}
 			try {
-				if (!wfEmptyMsg('newusermessage-signatures', $signatures)) {
-					$article->doEdit("{{{$templateTitleText}|$name}}\n--" . $signature . "~~~~~" , wfMsgForContent( 'newuseredit-summary' ), $flags);
-				} else {
-					$article->doEdit("{{{$templateTitleText}|$name}}", wfMsgForContent( 'newuseredit-summary' ), $flags);
-				}
+				$article->doEdit( $text, wfMsgForContent( 'newuseredit-summary' ), $flags );
 			} catch ( DBQueryError $e ) {
 				$good = false;
 			}

@@ -14,7 +14,7 @@ if (!defined('MEDIAWIKI'))
 
 define('NEWUSERMESSAGE_VERSION','2.0, 2008-06-04');
 
-$wgNewUserSupressRC = false;            // Specify whether or not the new user message creation should show up in recent changes
+$wgNewUserSuppressRC = false;            // Specify whether or not the new user message creation should show up in recent changes
 $wgNewUserMinorEdit = true;             // Should the new user message creation be a minor edit?
 $wgNewUserMessageOnAutoCreate = false;  // Should auto creation (CentralAuth) trigger a new user message?
 
