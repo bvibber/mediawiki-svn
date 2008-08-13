@@ -3,7 +3,7 @@
 $uri = $_SERVER['REQUEST_URI'];
 	
 # Is this a thumbnail?
-if ( preg_match('!^(?:http://upload.wikimedia.org)?/([\w-]*)/([\w-]*)/thumb/\w/\w\w/([^/]*)/' . 
+if ( preg_match('!^(?:http://upload.wikimedia.org)?/([\w-]*)/([\w-]*)/thumb(/archive|)/\w/\w\w/([^/]*)/' . 
 	'(page(\d*)-)*(\d*)px-([^/]*)$!', $uri, $matches ) )
 {
 	list( $all, $site, $lang, $filename, $pagefull, $pagenum, $size, $fn2 ) = $matches;
@@ -14,7 +14,7 @@ if ( preg_match('!^(?:http://upload.wikimedia.org)?/([\w-]*)/([\w-]*)/thumb/\w/\
 	if ( $pagenum ) {
 		$params['page'] = $pagenum;
 	}
-} elseif ( preg_match('!^(?:http://upload.wikimedia.org)?/([\w-]*)/([\w-]*)/thumb/\w/\w\w/([^/]*\.(?:(?i)ogg))/' . 
+} elseif ( preg_match('!^(?:http://upload.wikimedia.org)?/([\w-]*)/([\w-]*)/thumb(/archive|)/\w/\w\w/([^/]*\.(?:(?i)ogg))/' . 
 	'(mid|seek(?:=|%3D|%3d)\d+)-([^/]*)$!', $uri, $matches ) ) 
 {
 	list( $all, $site, $lang, $filename, $timeFull, $fn2 ) = $matches;
@@ -187,7 +187,7 @@ print $text;
 curl_close( $ch );
 
 function pathFromUrl( $url ) {
-	if( preg_match( '!^(?:http://upload.wikimedia.org)?/([\w-]*)/([\w-]*)/thumb/(\w)/(\w\w)/([^/]*)/([^/]*)$!',
+	if( preg_match( '!^(?:http://upload.wikimedia.org)?/([\w-]*)/([\w-]*)/thumb(/archive|)/(\w)/(\w\w)/([^/]*)/([^/]*)$!',
 		$url, $matches ) ) {
 		$parts = array_map( 'rawurldecode', $matches );
 		list( $all, $site, $lang, $hash1, $hash2, $filename, $fn2 ) = $parts;
