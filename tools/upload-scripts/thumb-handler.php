@@ -15,7 +15,7 @@ if ( preg_match('!^(?:http://upload.wikimedia.org)?/([\w-]*)/([\w-]*)/thumb(/arc
 		$params['page'] = $pagenum;
 	}
 	if ( $arch ) {
-		$params['arch'] = 1;
+		$params['archive'] = 1;
 	}
 } elseif ( preg_match('!^(?:http://upload.wikimedia.org)?/([\w-]*)/([\w-]*)/thumb(/archive|)/\w/\w\w/([^/]*\.(?:(?i)ogg))/' . 
 	'(mid|seek(?:=|%3D|%3d)\d+)-([^/]*)$!', $uri, $matches ) ) 
@@ -27,7 +27,7 @@ if ( preg_match('!^(?:http://upload.wikimedia.org)?/([\w-]*)/([\w-]*)/thumb(/arc
 		$params['thumbtime'] = $thumbtime;
 	}
 	if ( $arch ) {
-		$params['arch'] = 1;
+		$params['archive'] = 1;
 	}
 } else {
 	# No, display standard 404
