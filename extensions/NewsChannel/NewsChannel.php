@@ -1,6 +1,6 @@
 <?php
 /**
-* News Channel extension 1.6
+* News Channel extension
 * This MediaWiki extension represents a RSS 2.0/Atom 1.0 news channel for wiki project.
 * 	The channel is implemented as a dynamic [[Special:NewsChannel|special page]].
 * 	All pages from specified category (e.g. "Category:News") are considered
@@ -76,7 +76,7 @@ $wgNewsChannelExportTextOnly = false;
 
 $wgExtensionCredits['specialpage'][] = array(
 	'name'           => 'News Channel',
-	'version'        => '2.0',
+	'version'        => '2.1',
 	'author'         => '[mailto:codedriller@gmail.com Iaroslav Vassiliev]',
 	'description'    => 'This MediaWiki extension represents a news channel for wiki project. ' .
 		'The channel is implemented as a dynamic [[Special:NewsChannel|special page]].',

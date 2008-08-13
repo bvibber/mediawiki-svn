@@ -1,7 +1,6 @@
 <?php
-if (!defined('MEDIAWIKI')) die();
 /**
-* News Channel extension 1.6
+* News Channel extension
 * This MediaWiki extension represents a RSS 2.0/Atom 1.0 news channel for wiki project.
 * 	The channel is implemented as a dynamic [[Special:NewsChannel|special page]].
 * 	All pages from specified category (e.g. "Category:News") are considered
@@ -13,6 +12,8 @@ if (!defined('MEDIAWIKI')) die();
 * Copyright (c) Moscow, 2008, Iaroslav Vassiliev  <codedriller@gmail.com>
 * Distributed under GNU General Public License 2.0 or later (http://www.gnu.org/copyleft/gpl.html)
 */
+
+if (!defined('MEDIAWIKI')) die();
 
 /**
  * Class manages Special:NewsChannel page and feed ouput.
@@ -201,10 +202,10 @@ class NewsChannel extends SpecialPage
 			if( strlen( $wgNewsChannelRemoveArticlePrefix ) > 0
 				&& strpos( $title, $wgNewsChannelRemoveArticlePrefix ) === 0)
 					$title = substr( $title, strlen( $wgNewsChannelRemoveArticlePrefix ) );
-			$title = FeedItem::xmlEncode( $title );
+			$title = $this->xmlEncode( $title );
 			$article = new Article( $titleObj, 0 );
 			$content = $this->renderWikiMarkup( $article->getContent() );
-			$link = FeedItem::xmlEncode( $titleObj->getFullURL() );
+			$link = $this->xmlEncode( $titleObj->getFullURL() );
 			if( $this->feedFormat == 'rss20' ) {
 				print "\n" .
 '		<item>
@@ -255,30 +256,30 @@ class NewsChannel extends SpecialPage
 			$output .=
 '<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
 	<channel>
-		<title>' . FeedItem::xmlEncode( $wgNewsChannelTitle ) . '</title>
-		<link>' . FeedItem::xmlEncode( $wgServer ) . '/</link>
-		<description>' . FeedItem::xmlEncode( $wgNewsChannelDescription ) . '</description>
-		<language>' . FeedItem::xmlEncode( $wgNewsChannelLanguage ) . '</language>
-		<copyright>' . FeedItem::xmlEncode( $wgNewsChannelCopyright ) . '</copyright>
+		<title>' . $this->xmlEncode( $wgNewsChannelTitle ) . '</title>
+		<link>' . $this->xmlEncode( $wgServer ) . '/</link>
+		<description>' . $this->xmlEncode( $wgNewsChannelDescription ) . '</description>
+		<language>' . $this->xmlEncode( $wgNewsChannelLanguage ) . '</language>
+		<copyright>' . $this->xmlEncode( $wgNewsChannelCopyright ) . '</copyright>
 		<image>
-			<url>' . FeedItem::xmlEncode( $wgNewsChannelLogoImage ) . '</url>
-			<title>' . FeedItem::xmlEncode( $wgNewsChannelTitle ) . '</title>
-			<link>' . FeedItem::xmlEncode( $wgServer ) . '/</link>
+			<url>' . $this->xmlEncode( $wgNewsChannelLogoImage ) . '</url>
+			<title>' . $this->xmlEncode( $wgNewsChannelTitle ) . '</title>
+			<link>' . $this->xmlEncode( $wgServer ) . '/</link>
 		</image>
 		<lastBuildDate>' . date( DATE_RSS ) . '</lastBuildDate>
-		<generator>News Channel 1.6 (MediaWiki extension)</generator>
+		<generator>News Channel 1.61 (MediaWiki extension)</generator>
 		<docs>http://www.rssboard.org/rss-specification</docs>
-		<ttl>' . FeedItem::xmlEncode( strval ( $wgNewsChannelUpdateInterval ) ) . '</ttl>
-		<atom:link href="' . FeedItem::xmlEncode( $wgRequest->getFullRequestURL() ) .
+		<ttl>' . $this->xmlEncode( strval ( $wgNewsChannelUpdateInterval ) ) . '</ttl>
+		<atom:link href="' . $this->xmlEncode( $wgRequest->getFullRequestURL() ) .
 			'" rel="self" type="application/rss+xml" />';
 			if ($wgNewsChannelEditorAddress != null && $wgNewsChannelEditorAddress != '')
 				$output .=
-'		<managingEditor>' . FeedItem::xmlEncode( $wgNewsChannelEditorAddress ) . ' (' .
-			FeedItem::xmlEncode( $wgNewsChannelEditorName ) . ')</managingEditor>';
+'		<managingEditor>' . $this->xmlEncode( $wgNewsChannelEditorAddress ) . ' (' .
+			$this->xmlEncode( $wgNewsChannelEditorName ) . ')</managingEditor>';
 			if ($wgNewsChannelWebMasterAddress != null && $wgNewsChannelWebMasterAddress != '')
 				$output .=
-'		<webMaster>' . FeedItem::xmlEncode( $wgNewsChannelWebMasterAddress ) . ' (' .
-			FeedItem::xmlEncode( $wgNewsChannelWebMasterName ) . ')</webMaster>';
+'		<webMaster>' . $this->xmlEncode( $wgNewsChannelWebMasterAddress ) . ' (' .
+			$this->xmlEncode( $wgNewsChannelWebMasterName ) . ')</webMaster>';
 		}
 		elseif( $this->feedFormat == 'atom10' ) {
 			header( 'Content-type: application/atom+xml; charset=utf-8' );
@@ -287,21 +288,21 @@ class NewsChannel extends SpecialPage
 				$langCode = substr( $langCode, 0, strrpos( $langCode, '-') );
 			$output .=
 '<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="' . $langCode . '">
-	<title>' . FeedItem::xmlEncode( $wgNewsChannelTitle ) . '</title>
-	<subtitle>' . FeedItem::xmlEncode( $wgNewsChannelDescription ) . '</subtitle>
-	<link href="' . FeedItem::xmlEncode( $wgServer ) . '/" />
-	<id>' . FeedItem::xmlEncode( $wgServer ) . '/</id>
-	<rights>' . FeedItem::xmlEncode( $wgNewsChannelCopyright ) . '</rights>
-	<icon>' . FeedItem::xmlEncode( $wgNewsChannelLogoImage ) . '</icon>
+	<title>' . $this->xmlEncode( $wgNewsChannelTitle ) . '</title>
+	<subtitle>' . $this->xmlEncode( $wgNewsChannelDescription ) . '</subtitle>
+	<link href="' . $this->xmlEncode( $wgServer ) . '/" />
+	<id>' . $this->xmlEncode( $wgServer ) . '/</id>
+	<rights>' . $this->xmlEncode( $wgNewsChannelCopyright ) . '</rights>
+	<icon>' . $this->xmlEncode( $wgNewsChannelLogoImage ) . '</icon>
 	<updated>' . date( DATE_ATOM ) . '</updated>
-	<generator>News Channel 1.6 (MediaWiki extension)</generator>
-	<link href="' . FeedItem::xmlEncode( $wgRequest->getFullRequestURL() ) .
+	<generator>News Channel 1.61 (MediaWiki extension)</generator>
+	<link href="' . $this->xmlEncode( $wgRequest->getFullRequestURL() ) .
 		'" rel="self" type="application/atom+xml" />';
 			if ($wgNewsChannelEditorAddress != null && $wgNewsChannelEditorAddress != '')
 				$output .=
 '	<author>
-		<name>' . FeedItem::xmlEncode( $wgNewsChannelEditorName ) . '</name>
-		<email>' . FeedItem::xmlEncode( $wgNewsChannelEditorAddress ) . '</email>
+		<name>' . $this->xmlEncode( $wgNewsChannelEditorName ) . '</name>
+		<email>' . $this->xmlEncode( $wgNewsChannelEditorAddress ) . '</email>
 	</author>';
 		}
 
@@ -348,8 +349,19 @@ class NewsChannel extends SpecialPage
 		$text = str_replace( " href=\"/", " href=\"{$wgServer}/", $text );
 		$text = str_replace( " href='/", " href='{$wgServer}/", $text );
 
-		$text = FeedItem::xmlEncode( $text );
+		$text = $this->xmlEncode( $text );
 		return $text;
+	}
+
+	/**
+	 * Function prepares text for publication in XML document.
+	 *
+	 * @param string $text Text to make suitable for XML.
+	 */
+	function xmlEncode( $string ) {
+		$string = str_replace( "\r\n", "\n", $string );
+		$string = preg_replace( '/[\x00-\x08\x0b\x0c\x0e-\x1f]/', '', $string );
+		return htmlspecialchars( $string );
 	}
 
 	/**
