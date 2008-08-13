@@ -1,5 +1,7 @@
 <?php
+
 if (!defined('MEDIAWIKI')) die();
+
 /**
  * An extension to that allows users to add Google Maps to wiki pages based
  * on structured data
@@ -8,8 +10,6 @@ if (!defined('MEDIAWIKI')) die();
  *
  * @author Robert Buzink
  * @author Yaron Koren
- * @copyright Copyright © 2008, Robert Buzink
- * @copyright Copyright © 2008, Yaron Koren
  */
 
 # Define a setup function
@@ -26,7 +26,7 @@ function sgmSetup() {
 	// credits
 	$wgExtensionCredits['parserhook'][] = array(
 		'name'            => 'Semantic Google Maps',
-		'version'         => '0.3.2',
+		'version'         => '0.3.3',
 		'author'          => array( 'Robert Buzink', 'Yaron Koren' ),
 		'url'             => 'http://www.mediawiki.org/wiki/Extension:Semantic_Google_Maps',
 		'description'     => 'Allows users to add Google Maps to wiki pages based on structured data',
@@ -207,7 +207,7 @@ END;
 	$text .= <<<END
 	<p>
 		<input size="60" id= "geocode" name="geocode" value="" type="text">
-		<a href="#" onClick="showAddress(document.forms[0].geocode.value); return false">$lookup_coordinates_text</a>
+		<a href="#" onClick="showAddress(document.forms['createbox'].geocode.value); return false">$lookup_coordinates_text</a>
 	</p>
 	<br />
 
