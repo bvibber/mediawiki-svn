@@ -54,18 +54,18 @@ class NewUserMessage {
 			$dbw->begin();
 			$good = true;
 			
-			$signs = wfMsgForContent('newusermessage-signs');
-			if (!wfEmptyMsg('newusermessage-signs', $signs)) { 
-			  $pattern = '/^\* ?(.*?)$/m';
-			  preg_match_all($pattern, $signs, $signsList, PREG_SET_ORDER);
-			  $rand = rand(0, count($signsList)-1);
-			  $sign = $signsList[$rand][1];
+			$signatures = wfMsgForContent('newusermessage-signatures');
+			if (!wfEmptyMsg('newusermessage-signatures', $signatures)) { 
+				$pattern = '/^\* ?(.*?)$/m';
+				preg_match_all($pattern, $signatures, $signaturesList, PREG_SET_ORDER);
+				$rand = rand(0, count($signaturesList)-1);
+				$signature = $signaturesList[$rand][1];
 			}
 			try {
-			  if (!wfEmptyMsg('newusermessage-signs', $signs)) {
-				  $article->doEdit("{{{$templateTitleText}|$name}}\n--" . $sign . "~~~~~" , wfMsgForContent( 'newuseredit-summary' ), $flags);
+				if (!wfEmptyMsg('newusermessage-signatures', $signatures)) {
+					$article->doEdit("{{{$templateTitleText}|$name}}\n--" . $signature . "~~~~~" , wfMsgForContent( 'newuseredit-summary' ), $flags);
 				} else {
-				  $article->doEdit("{{{$templateTitleText}|$name}}", wfMsgForContent( 'newuseredit-summary' ), $flags);
+					$article->doEdit("{{{$templateTitleText}|$name}}", wfMsgForContent( 'newuseredit-summary' ), $flags);
 				}
 			} catch ( DBQueryError $e ) {
 				$good = false;
