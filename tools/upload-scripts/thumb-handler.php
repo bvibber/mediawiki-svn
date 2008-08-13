@@ -6,7 +6,7 @@ $uri = $_SERVER['REQUEST_URI'];
 if ( preg_match('!^(?:http://upload.wikimedia.org)?/([\w-]*)/([\w-]*)/thumb(/archive|)/\w/\w\w/([^/]*)/' . 
 	'(page(\d*)-)*(\d*)px-([^/]*)$!', $uri, $matches ) )
 {
-	list( $all, $site, $lang, $filename, $pagefull, $pagenum, $size, $fn2 ) = $matches;
+	list( $all, $site, $lang, $filename, $arch, $pagefull, $pagenum, $size, $fn2 ) = $matches;
 	$params = array( 
 		'f' => $filename,
 		'width' => $size
@@ -14,14 +14,20 @@ if ( preg_match('!^(?:http://upload.wikimedia.org)?/([\w-]*)/([\w-]*)/thumb(/arc
 	if ( $pagenum ) {
 		$params['page'] = $pagenum;
 	}
+	if ( $arch ) {
+		$params['arch'] = 1;
+	}
 } elseif ( preg_match('!^(?:http://upload.wikimedia.org)?/([\w-]*)/([\w-]*)/thumb(/archive|)/\w/\w\w/([^/]*\.(?:(?i)ogg))/' . 
 	'(mid|seek(?:=|%3D|%3d)\d+)-([^/]*)$!', $uri, $matches ) ) 
 {
-	list( $all, $site, $lang, $filename, $timeFull, $fn2 ) = $matches;
+	list( $all, $site, $lang, $filename, $arch, $timeFull, $fn2 ) = $matches;
 	$params = array( 'f' => $filename );
 	if ( $timeFull != 'mid' ) {
 		list( $seek, $thumbtime ) = explode( '=', urldecode( $timeFull ), 2 );
 		$params['thumbtime'] = $thumbtime;
+	}
+	if ( $arch ) {
+		$params['arch'] = 1;
 	}
 } else {
 	# No, display standard 404
@@ -190,7 +196,7 @@ function pathFromUrl( $url ) {
 	if( preg_match( '!^(?:http://upload.wikimedia.org)?/([\w-]*)/([\w-]*)/thumb(/archive|)/(\w)/(\w\w)/([^/]*)/([^/]*)$!',
 		$url, $matches ) ) {
 		$parts = array_map( 'rawurldecode', $matches );
-		list( $all, $site, $lang, $hash1, $hash2, $filename, $fn2 ) = $parts;
+		list( $all, $site, $lang, $hash1, $arch, $hash2, $filename, $fn2 ) = $parts;
 				
 		$md5 = md5( $filename );
 		if( $hash1 != substr( $md5, 0, 1 ) ) return false;
@@ -206,7 +212,7 @@ function pathFromUrl( $url ) {
 		}
 		
 		if( $good ) {
-			$thumbPath = array( '', 'export', 'upload', $site, $lang, 'thumb', $hash1, $hash2, $filename, $fn2 );
+			$thumbPath = array( '', 'export', 'upload', $site, $lang, 'thumb', $arch, $hash1, $hash2, $filename, $fn2 );
 			if ( !checkPathComponents( $thumbPath ) ) return false;
 			return implode( '/', $thumbPath );
 		}
