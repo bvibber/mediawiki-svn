@@ -13,7 +13,7 @@ $messages = array();
  */
 $messages['en'] = array(
 	'duplicator'                       => 'Duplicate a page',
-	'duplicator-desc'                  => 'Create independent copies of pages with full edit histories',
+	'duplicator-desc'                  => 'Create independent [[Special:Duplicate|copies of pages]] with full edit histories',
 	'duplicator-toolbox'               => 'Duplicate this page',
 	'duplicator-header'                => 'This page allows the complete duplication of a page, creating independent copies of all histories.
 This is useful for page forking, etc.',
@@ -25,7 +25,7 @@ This is useful for page forking, etc.',
 	'duplicator-summary'               => 'Copied from [[$1]]',
 	'duplicator-success'               => "<big>'''[[$1]] was copied to [[$2]].'''</big>",
 	'duplicator-success-revisions'     => '$1 {{PLURAL:$1|revision was|revisions were}} copied.',
-	'duplicator-success-talkcopied'    => 'The discussion page was also copied.',
+	'duplicator-success-talkcopied'    => 'The talk page was also copied.',
 	'duplicator-success-talknotcopied' => 'The talk page could not be copied.',
 	'duplicator-failed'                => 'The page could not be duplicated.
 An unknown error occurred.',
