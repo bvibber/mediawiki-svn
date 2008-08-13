@@ -26,12 +26,13 @@ function printHelp(){
 	echo "Script that find settings that aren't configurable by the extension.\n";
 	echo "\n";
 	echo "Usage:\n";
-	echo "  php findSettings.php [--help|--from-doc]\n";
+	echo "  php findSettings.php [--help|--from-doc [--alpha]]\n";
 	echo "\n";
 	echo "options:\n";
 	echo "--help: display this screen\n";
 	echo "--from-doc: compare with settings from mediawiki.org instead settings\n";
 	echo "            from this extension\n";
+	echo "--alpha: get the alphabetical list of settings\n";
 	echo "\n";
 	exit;
 }
@@ -54,7 +55,12 @@ if( isset( $options['help'] ) )
 
 // Get our settings defs
 if( isset( $options['from-doc'] ) ){
-	$cont = Http::get( 'http://www.mediawiki.org/w/index.php?title=Manual:Configuration_settings&action=raw' );
+	if( isset( $options['alpha'] ) ){
+		$page = "Manual:Configuration_settings_(alphabetical)";
+	} else {
+		$page = "Manual:Configuration_settings";
+	}
+	$cont = Http::get( "http://www.mediawiki.org/w/index.php?title={$page}&action=raw" );
 	$m = array();
 	preg_match_all( '/\[\[[Mm]anual:\$(wg[A-Za-z0-9]+)\|/', $cont, $m );
 	$allSettings = array_unique( $m[1] );
