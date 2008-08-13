@@ -19,7 +19,7 @@
 */
 
 //Ideas from http://mediawiki.org/wiki/Extension:Gadgets thanks to Duesentrieb
-//           [[User:Mike Dillon]]
+//		   [[User:Mike Dillon]]
 
 $wgExtensionCredits['other'][] = array(
 	'name'           => 'MetaKeywords',
@@ -35,54 +35,58 @@ $wgExtensionMessagesFiles['MetaKeywords'] = dirname( __FILE__ ) . '/MetaKeywords
 
 $wgHooks['BeforePageDisplay'][] = 'wfMetaKeywordOutput';
 $wgHooks['ArticleSaveComplete'][] = 'wfMetaKeywordClearCache';
+$wgHooks['ParserFirstCallInit'][] = 'wfMetaKeywordLoadMessages';
+
+//Load messages, seeing as wfLoadExtensionMessages isn't defined when the file is included.
+function wfMetaKeywordLoadMessages ( ){
+	wfLoadExtensionMessages ('MetaKeywords');
+	return true;
+}
 
 //Adds customised keywords after the pagename of the <meta keywords> tag
 function wfMetaKeywordOutput( &$out ){
 	global $wgTitle, $wgMemc;
 	$ns = $wgTitle->getNamespace();
-
+	
 	//Keywords
-	$opts = $wgMemc->get( "Metakeywords-opts" );
+	$opts = $wgMemc->get( "metakeywords-opts" );
 	if($opts === null ){ //Reload if not in cache
 		$opts = wfMetaKeywordInput( 'keywords' );
 	}
 	$pagename = array_shift( $out->mKeywords );
 
-	if( $opts[$ns] ){ //Namespace specific keywords
+	if( array_key_exists( $ns, $opts ) && $opts[$ns] ){ //Namespace specific keywords
 		array_unshift( $out->mKeywords, $opts[$ns]);
-	}elseif( $opts['*'] ){ //Global keywords
+	}elseif( array_key_exists( '*', $opts ) && $opts['*'] ){ //Global keywords
 		array_unshift( $out->mKeywords, $opts['*']);
 	}
 	if( $pagename ){ //No pagename for special pages
 		array_unshift( $out->mKeywords, $pagename );
 	}
 	//Descriptions
-	$opts = $wgMemc->get( "Metadescription-opts" );
+	$opts = $wgMemc->get( "metadescription-opts" );
 
 	if($opts === null ){ //Reload if not in cache
-		$opts = wfMetaKeywordInput( 'description', $pagename );
+		$opts = wfMetaKeywordInput( 'description' );
 	}
-	if( $opts[$ns] ){ //Namespace specific descrption
-		$out->addMeta('description',$opts[$ns]);
-	}elseif( $opts['*'] ){ //Otherwise global description
-		$out->addMeta('description',$opts['*']);
+	if( array_key_exists( $ns, $opts ) && $opts[$ns] ){ //Namespace specific descrption
+		$out->addMeta('description',str_replace("$1", $pagename, $opts[$ns]));
+	}elseif( array_key_exists( '*', $opts ) && $opts['*'] ){ //Otherwise global description
+		$out->addMeta('description', str_replace("$1", $pagename, $opts['*']));
 	}
 	return true;
 }
 
 //Reads [[MediaWiki:Meta$page]]
-function wfMetaKeywordInput( $type, $arg = false ){
+function wfMetaKeywordInput( $type ){
 	global $wgContLang, $wgMemc, $wgDBname;
-
-	if ($arg) {
-		$params = wfMsgForContentNoTrans("meta$type", $arg);
-	} else {
-		$params = wfMsgForContentNoTrans("meta$type");
-	}
+	
+	$params = wfMsgForContentNoTrans("meta$type");
+	
 	$opts = array(0);
 
 	if (! wfEmptyMsg( "meta$type", $params ) ) {
-	   $opts = wfMetaKeywordParse($params);
+		$opts = wfMetaKeywordParse($params);
 	}
 	return $opts;
 }
@@ -91,22 +95,22 @@ function wfMetaKeywordInput( $type, $arg = false ){
 function wfMetaKeywordParse( $params ){
 	global $wgContLang;
 	$lines = preg_split( '/(\r\n|\r|\n)/', $params );
-
+	$opts = array ();
 	foreach( $lines as $l ){
-		if( preg_match( '/^([^\|]+)\|(.+)$/',$l,$m ) ){
+		if( preg_match( '/^\s*([^#\|]*)\s*\|\s*(.*)\s*$/',$l,$m ) ){
+		    $name = trim($m[1]);
 			$ns=false;
-
-			if($m[1] == '(main)'){
+			if($name == '(main)'){
 				$ns=0;
-			}elseif($m[1] == '(all)'){
+			}elseif($name == '(all)'){
 				$ns='*';
-			}elseif(is_numeric($m[1])){ //a namespace number
-				$ns=$m[1];
+			}elseif(is_numeric($name)){ //a namespace number
+				$ns=$name;
 			}else{ //normal namespace name
-				$ns = $wgContLang->getNsIndex($m[1]);
+				$ns = $wgContLang->getNsIndex($name);
 			}
 			if($ns !== false ){
-				$opts[$ns] = $m[2];
+				$opts[$ns] = trim($m[2]);
 			}
 		}
 	}
@@ -120,7 +124,7 @@ function wfMetaKeywordClearCache( &$article, &$wgUser, &$text ) {
 
 		if( $title->getNamespace() == NS_MEDIAWIKI){
 			$tt = $title->getText();
-			if( $tt == 'Metakeywords' || $tt == 'Metadescription' ) {
+			if( $tt == 'metakeywords' || $tt == 'metadescription' ) {
 				$opts = wfMetaKeywordParse( $text );
 				$wgMemc->set($tt.'-opts',$opts,900);
 			}

@@ -8,7 +8,12 @@
 $messages = array();
 
 $messages['en'] = array(
-	'metakeywords-desc' => 'Allows configuration of <tt><nowiki><meta "keywords"></nowiki></tt> and <tt><nowiki><meta "description"></nowiki></tt> tags per namespace',
+	'metakeywords-desc' => 'Allows configuration of <tt><nowiki><meta "keywords"></nowiki></tt> and <tt><nowiki><meta "description"></nowiki></tt> tags per namespace',	
+	'metakeywords' => ' # Add lines to this page in the form "namespace|comma separated,keywords,to,add"
+ # The namespaces identifiers (all) and (main) specify a default for all namespaces and the zeroth namespace respectively.',
+	'metadescription' => ' # Add lines to this page in the form "namespace|description tag to set"
+ # The namespaces identifiers (all) and (main) specify a default for all namespaces and the zeroth namespace respectively.
+ # Any occurences of $1 will be replaced by the current page\'s title.'
 );
 
 /** Arabic (العربية)
