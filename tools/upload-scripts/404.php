@@ -15,24 +15,27 @@ $encUrl = htmlspecialchars( $prot . $serv . $loc );
 header( 'HTTP/1.1 404 Not Found' );
 
 $standard_404=<<<ENDTEXT
-<html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" dir="ltr">
 <head>
-<title>
-Wikimedia page not found: $encUrl
-</title>
-<link rel="shortcut icon" href="/favicon.ico" />
+    <title>Wikimedia page not found: $encUrl</title>
+    <link rel="shortcut icon" href="/favicon.ico" />
+</head>
 <body>
-<h1><a href="http://en.wikipedia.org/wiki/404_error">404 error</a>: File not found</h1>
-The <a href="http://en.wikipedia.org/wiki/Uniform_resource_locator">URL</a>
-you requested was not found. Maybe you would like to look at:
-<P>
-<UL><LI><a href="/">The main page</A>
-    <li><a href="http://download.wikimedia.org">The list of Wikimedia downloads</A>
-</UL>
-<P>
-<hr noshade/>
-<p><i>A project of the <a href="http://wikimediafoundation.org/">Wikimedia
-foundation</a></i>.</p>
+<h1><a href="http://en.wikipedia.org/wiki/HTTP_404">404 error</a>: File not found</h1>
+<p>
+    The <a href="http://en.wikipedia.org/wiki/Uniform_Resource_Locator">URL</a>
+    you requested was not found. Maybe you would like to look at:
+</p>
+<ul>
+    <li><a href="/">The main page</a></li>
+    <li><a href="http://download.wikimedia.org">The list of Wikimedia downloads</a></li>
+</ul>
+<hr noshade="noshade" />
+<p>
+<i>A project of the <a href="http://wikimediafoundation.org/">Wikimedia
+foundation</a></i>.
+</p>
 </body>
 </html>
 ENDTEXT;
