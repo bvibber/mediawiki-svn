@@ -153,9 +153,10 @@ END;
 		// add a marker to the map for each location
 		foreach ($locations as $i => $location) {
 			list($lat, $lon, $title, $label) = $location;
+			$title = str_replace("'", "\'", $title);
 			$label = str_replace("'", "\'", $label);
 			$map_text .=<<<END
-	map.addOverlay(createMarker(new GLatLng($lat, $lon), "$title", '$label'));
+	map.addOverlay(createMarker(new GLatLng($lat, $lon), '$title', '$label'));
 END;
 		}
 
