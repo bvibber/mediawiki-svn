@@ -53,8 +53,20 @@ class NewUserMessage {
 			$dbw = wfGetDB( DB_MASTER );
 			$dbw->begin();
 			$good = true;
+			
+			$signs = wfMsgForContent('newusermessage-signs');
+			if (!wfEmptyMsg('newusermessage-signs', $signs)) { 
+			  $pattern = '/^\* ?(.*?)$/m';
+			  preg_match_all($pattern, $signs, $signsList, PREG_SET_ORDER);
+			  $rand = rand(0, count($signsList)-1);
+			  $sign = $signsList[$rand][1];
+			}
 			try {
-				$article->doEdit("{{{$templateTitleText}|$name}}", wfMsgForContent( 'newuseredit-summary' ), $flags);
+			  if (!wfEmptyMsg('newusermessage-signs', $signs)) {
+				  $article->doEdit("{{{$templateTitleText}|$name}}\n--" . $sign . "~~~~~" , wfMsgForContent( 'newuseredit-summary' ), $flags);
+				} else {
+				  $article->doEdit("{{{$templateTitleText}|$name}}", wfMsgForContent( 'newuseredit-summary' ), $flags);
+				}
 			} catch ( DBQueryError $e ) {
 				$good = false;
 			}
