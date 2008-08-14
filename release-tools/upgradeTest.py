@@ -1,9 +1,10 @@
-import os
+import sys, os
 
 class UpgradeError(Exception): pass
 
 def runCommand(command):
 	print command
+	sys.stdout.flush() # misordering of output observed without this
 	retval = os.system(command)
 	if retval:
 		raise UpgradeError("Nonzero return code (%d)! Aborting." % retval)
@@ -91,6 +92,7 @@ def svnCheckout(branch):
 
 def testUpgrade(dbname, branch):
 	"""Try building an empty database for the given version, then upgrading."""
+	print "\n\nTesting " + branch + "\n--------------------------------------------------------"
 	svnCheckout("trunk")
 	svnCheckout(branch)
 	
