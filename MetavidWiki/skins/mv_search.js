@@ -74,7 +74,7 @@ function mv_setup_search(req_mode){
 			case 'date_range':
 				$j('#mvs_'+inx+'_tc').html(global_loading_txt);
 				var load_js_set = { 'Date.fromString':'jquery/plugins/date.js',
-									'$j.fn.datePicker':'jquery/plugins/mv_setup_searchjquery.datePicker.js'};
+									'$j.fn.datePicker':'jquery/plugins/jquery.datePicker.js'};
 				if(embedTypes.msie6){
 					js_log('using IE v6 need iframe as well');
 					load_js_set['$j.fn.bgIframe'] = 'jquery/plugins/jquery.bgiframe.js';
@@ -370,7 +370,7 @@ function mv_add_filter(){
 	var new_a_id = 'mvsel_a_'+ ($j(".mv_search_select").length-1);
 	var inx = ($j(".mv_search_select").length-1);
 	//this could be cleaned up a bit: 
-	$j("#mv_active_filters").append('<span id="mvs_'+inx+'" >&nbsp;&nbsp;</span>');	
+	$j("#mv_active_filters").append('<br><span id="mvs_'+inx+'" >&nbsp;&nbsp;</span>');	
 		$j('#mvs_'+inx).append( 
 			$j("#mvsel_a_0").clone().attr({id:new_a_id,name:'f['+inx+'][a]'}), 
 			$j("#mvsel_t_0").clone().attr({id:new_t_id,name:'f['+inx+'][t]'}) 

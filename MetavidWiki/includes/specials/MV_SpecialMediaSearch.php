@@ -10,17 +10,17 @@
 if (!defined('MEDIAWIKI'))
 	die();
 
-function doSpecialSearch($par = null) {
-	//list( $limit, $offset ) = wfCheckLimits();
-	$MvSpecialSearch = new MV_SpecialMediaSearch();
-	$MvSpecialSearch->doSearchPage();
+class MediaSearch extends SpecialPage{
+	function __construct(){
+		parent::__construct('MediaSearch');		
+	}
 }
-//metavid search page (only search video media)
-SpecialPage :: addPage(new SpecialPage('MediaSearch', '', true, 'doSpecialSearch', false));
-
-/*
- * adds media results to top of special page: 
- */
+function wfSpecialMediaSearch(){
+	$MV_SpecialMediaSearch = new MV_SpecialMediaSearch();
+	$MV_SpecialMediaSearch->doSearchPage();
+}
+//extends search page
+//@@todo add link to "media search"
 class MV_SpecialSearch extends SpecialPage {
 	function MV_SpecialSearch() {
 		global $wgOut, $wgRequest;
@@ -28,7 +28,7 @@ class MV_SpecialSearch extends SpecialPage {
 		//$MvSpecialSearch = new MV_SpecialMediaSearch();
 		//$MvSpecialSearch->setupFilters();		
 		//$MvSpecialSearch->doSearch();
-		//$wgOut->addHTML($MvSpecialSearch->getResultsHTML());
+		//$wgOut->addHTML($MvSpecialSearch->getResultsHTML());		
 		SpecialPage :: SpecialPage('Search');
 	}
 }
@@ -40,7 +40,7 @@ class MV_SpecialSearch extends SpecialPage {
  * example get request: filter 0, type match, value = wars 
  * ?f[0]['t']=m&f[0]['v']=wars
  */
-class MV_SpecialMediaSearch extends SpecialPage {
+class MV_SpecialMediaSearch {
 	//initial values for selectors ( keys into language as 'mv_search_$val')
 	var $sel_filter_types = array (
 		'match', //full text search
@@ -87,7 +87,7 @@ class MV_SpecialMediaSearch extends SpecialPage {
 			//print $this->getResultsHTML();
 			print $this->getUnifiedResultsHTML();
 			//@@todo cleaner exit
-			exit ();
+			//exit ();
 		} else {
 			//add nessesary js to wgOut: 
 			mvfAddHTMLHeader('search');
@@ -818,7 +818,7 @@ class MV_SpecialMediaSearch extends SpecialPage {
 				$filter['a'] = '';
 
 			//output the master selecter per line: 
-			$s .= '<span id="mvs_' . htmlspecialchars($i) . '">';		
+			$s .= '<br><span id="mvs_' . htmlspecialchars($i) . '">';		
 			$s .= '&nbsp;&nbsp;';
 			//selctor (don't display if i==0')
 			$s .= $this->selector($i, 'a', $filter['a'], ($i == 0) ? false : true);

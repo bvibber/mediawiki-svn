@@ -47,7 +47,7 @@ function enableMetavid() {
 function mvSetupExtension(){
 	global $mvVersion, $mvNamespace, $mvgIP, $wgHooks, $wgExtensionCredits, $mvMasterStore, 
 	$wgParser, $mvArticlePath, $mvgScriptPath, $wgServer, $wgExtensionFunctions,$markerList,
-	$mvEnableAutoComplete, $mvEnableJSLinkBack, $mvEnableJSMVDrewrite, $wgAutoloadClasses, $wgSpecialPages;
+	$wgAjaxExportList,$mvEnableAutoComplete, $mvEnableJSLinkBack, $mvEnableJSMVDrewrite, $wgAutoloadClasses, $wgSpecialPages;
 	
 
 	mvfInitMessages();
@@ -61,6 +61,8 @@ function mvSetupExtension(){
  	*********************************/
 	$wgAjaxExportList[] = 'mv_auto_complete_all';
 	$wgAjaxExportList[] = 'mv_auto_complete_person';
+	
+	
 	$wgAjaxExportList[] = 'mv_auto_complete_stream_name';
 	$wgAjaxExportList[] = 'mv_helpers_auto_complete';
 	
@@ -149,25 +151,31 @@ function mvSetupExtension(){
 	$wgAutoloadClasses['MV_SpecialMediaSearch']	= dirname(__FILE__) . '/specials/MV_SpecialMediaSearch.php';
 	$wgSpecialPages['Mv_List_Streams']		   	= array('MV_SpecialListStreams');
 			
+	$wgAutoloadClasses['MediaSearch'] =			 dirname(__FILE__) .'/specials/MV_SpecialMediaSearch.php';
+	$wgSpecialPages['MediaSearch']				= array('MediaSearch');
+	$wgSpecialPages['MV_SpecialSearch']			= array('MV_SpecialSearch');
+	
+	$wgAutoloadClasses['MV_SpecialMVAdmin']		= dirname(__FILE__) .'/specials/MV_SpecialMVAdmin.php';
+	$wgSpecialPages['MV_SpecialMVAdmin']		= array('MV_SpecialMVAdmin');
 	//require_once( dirname(__FILE__) . '/specials/MV_SpecialCRUDStream.php');
 	//require_once( dirname(__FILE__) . '/specials/MV_SpecialListStreams.php');
 	//require_once( dirname(__FILE__) . '/specials/MV_SpecialExport.php');
-	require_once( dirname(__FILE__) . '/specials/MV_SpecialMediaSearch.php');
-	require_once( dirname(__FILE__) . '/specials/MV_SpecialMVAdmin.php');
+	//require_once( dirname(__FILE__) . '/specials/MV_SpecialMediaSearch.php');
+	//require_once( dirname(__FILE__) . '/specials/MV_SpecialMVAdmin.php');
 	
 	/**********************************************/
 	/***** register hooks                     *****/
 	/**********************************************/
 	require_once($mvgIP . '/includes/MV_Hooks.php');
 	//$wgHooks['ArticleSave'][] = 'mvSaveHook';
-	$wgHooks['ArticleSaveComplete'][] = 'mvSaveHook';
-	$wgHooks['ArticleDelete'][] = 'mvDeleteHook';
-	$wgHooks['ArticleFromTitle'][] = 'mvDoMvPage';			
+	$wgHooks['ArticleSaveComplete'][] 		= 'mvSaveHook';
+	$wgHooks['ArticleDelete'][] 			= 'mvDeleteHook';
+	$wgHooks['ArticleFromTitle'][] 			= 'mvDoMvPage';			
 		
-	$wgHooks['TitleMoveComplete'][]='mvMoveHook';
-	$wgHooks['TitleisValidMove'][]='mvisValidMoveOperation';	
+	$wgHooks['TitleMoveComplete'][]			= 'mvMoveHook';
+	$wgHooks['TitleisValidMove'][]			= 'mvisValidMoveOperation';	
 	
-	$wgHooks['ParserAfterTidy'][]='mvParserAfterTidy';	
+	$wgHooks['ParserAfterTidy'][]			= 'mvParserAfterTidy';	
 	
 	$wgHooks['CustomEditor'][] = 'mvCustomEditor';
 	$wgParser->setHook( 'sequence', 'mvSeqTag' );
