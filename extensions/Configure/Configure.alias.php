@@ -65,7 +65,7 @@ $aliases['fi'] = array(
  * @author IAlex
  */
 $aliases['fr'] = array(
-	'Configure'  => array( 'Configurer' ),
+	'Configure' => array( 'Configurer' ),
 	'Extensions' => array( 'Extensions' ),
 	'ViewConfig' => array( 'Voir la configuration', 'VoirConfiguration' ),
 );
@@ -102,13 +102,13 @@ $aliases['ht'] = array(
 
 /** Indonesian (Bahasa Indonesia) */
 $aliases['id'] = array(
-	'Configure'  => array( 'Konfigurasi' ),
+	'Configure' => array( 'Konfigurasi' ),
 	'ViewConfig' => array( 'Lihatkonfigurasi' ),
 );
 
 /** Ripoarisch (Ripoarisch) */
 $aliases['ksh'] = array(
-	'Configure'  => array( 'Enstellunge', 'Eshtällonge' ),
+	'Configure' => array( 'Enstellunge', 'Eshtällonge' ),
 	'ViewConfig' => array( 'Enstellunge Zeije', 'Eshtällonge Zeije', 'EnstellungeZeije', 'EshtällongeZeije' ),
 );
 

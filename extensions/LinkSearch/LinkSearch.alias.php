@@ -64,7 +64,7 @@ $aliases['km'] = array(
 
 /** Korean (한국어) */
 $aliases['ko'] = array(
-	'LinkSearch' => array( '링크찾기' ),
+	'LinkSearch' => array( '외부링크찾기', '외부링크검색' ),
 );
 
 /** Latin (Latina) */

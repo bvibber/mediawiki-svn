@@ -48,12 +48,14 @@ $aliases['dsb'] = array(
 	'CategoryIntersection'=> array( 'Zhromadna młogosć kategorijow' ),
 );
 
+/** Esperanto (Esperanto) */
 $aliases['eo'] = array(
-	'CategoryIntersection'=> array( 'Kategoria Intersekcio' ),
+	'CategoryIntersection' => array( 'Kategoria Intersekcio' ),
 );
 
+/** French (Français) */
 $aliases['fr'] = array(
-	'CategoryIntersection'=> array( 'Recoupage de catégories' ),
+	'CategoryIntersection' => array( 'Recoupage de catégories' ),
 );
 
 $aliases['gl'] = array(
@@ -80,8 +82,9 @@ $aliases['jv'] = array(
 	'CategoryIntersection'=> array( 'Intersèksi Kategori' ),
 );
 
+/** Ripoarisch (Ripoarisch) */
 $aliases['ksh'] = array(
-	'CategoryIntersection'=> array( 'Jemeinsam Saachjroppe' ),
+	'CategoryIntersection' => array( 'Jemeinsam Saachjroppe' ),
 );
 
 $aliases['lb'] = array(
@@ -118,8 +121,9 @@ $aliases['ro'] = array(
 	'CategoryIntersection'=> array( 'Intersecţia categoriilor' ),
 );
 
+/** Russian (Русский) */
 $aliases['ru'] = array(
-	'CategoryIntersection'=> array( 'Пересечение категорий' ),
+	'CategoryIntersection' => array( 'Пересечение категорий' ),
 );
 
 $aliases['shi'] = array(
