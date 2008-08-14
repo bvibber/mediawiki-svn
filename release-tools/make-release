@@ -225,6 +225,8 @@ def makeRelease(version, branch, dir, prevVersion = None, prevBranch = None):
 	print "Full release notes:"
 	print 'http://svn.wikimedia.org/svnroot/mediawiki/'+branch+'/phase3/RELEASE-NOTES'
 	print
+	print
+	print '**********************************************************************'
 	
 	print 'Download:'
 	print 'http://download.wikimedia.org/mediawiki/' + dir + '/' + package + '.tar.gz'
@@ -254,4 +256,6 @@ def makeRelease(version, branch, dir, prevVersion = None, prevBranch = None):
 		print hashfile(dir+'/'+filename, 'MD5') + '  ' + filename
 	print
 
-main()
+
+if __name__ == '__main__':
+	main()
