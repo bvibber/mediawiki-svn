@@ -141,6 +141,13 @@ $messages['id'] = array(
 	'titlekey-desc' => 'Alat pemrosesan di belakang layar untuk pencarian awalan judul',
 );
 
+/** Italian (Italiano)
+ * @author Pietrodn
+ */
+$messages['it'] = array(
+	'titlekey-desc' => 'Backend dei suggerimenti per la ricerca dei prefissi dei titoli',
+);
+
 /** Japanese (日本語)
  * @author JtFuruhata
  */

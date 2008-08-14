@@ -26,6 +26,13 @@ This page could also use your help: $1.',
 	'tog-edit-similar'                           => 'Enable similar pages suggestions',
 );
 
+/** Message documentation (Message documentation)
+ * @author Purodha
+ */
+$messages['qqq'] = array(
+	'editsimilar-desc' => 'Extension description displayed on [[Special:Version]].',
+);
+
 /** Afrikaans (Afrikaans)
  * @author Naudefj
  */
@@ -222,6 +229,24 @@ Anche questa pagina potrebbe usufruire del tuo aiuto: $1.',
  */
 $messages['km'] = array(
 	'editsimilar-link-disable' => 'កំនត់ចំនង់ចំនូលចិត្ត',
+);
+
+/** Ripoarisch (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'editsimilar-desc' => 'Schläät de Metmaacher vör, en äänlijje Sigg ze beärrbeide, nohdämm se en Sigg afjespeischert han.',
+	'editsimilar-thanks' => 'Danke för Dinge Beidraach.
+Donn och ens op hee di Sigge loore: $1.',
+	'editsimilar-thanks-singleresult' => 'Danke för Dinge Beidraach.
+Donn och ens op hee di Sigg loore: $1.',
+	'editsimilar-thanks-notsimilar' => 'Danke för Dinge Beidraach.
+Hee di Sigge künnte och joot fö Desch sin: $1.',
+	'editsimilar-thanks-notsimilar-singleresult' => 'Danke för Dinge Beidraach.
+Hee di Sigg künnt och joot fö Desch sin: $1.',
+	'editsimilar-thankyou' => 'Danke för Dinge Beidraach, $1.',
+	'editsimilar-link-disable' => 'Enstellunge maache',
+	'tog-edit-similar' => 'Vörschlääsch för äänlijje Sigge aanschallde',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

@@ -94,6 +94,13 @@ $messages['ja'] = array(
 	'crowdauthentication-desc' => 'Atlassian社のCrowdシングルサインオンツールを利用する認証プラグイン',
 );
 
+/** Ripoarisch (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'crowdauthentication-desc' => 'Kann de Aanmeldunge fun <i lang="en">Atlassian Crowd</i> hee em Wiki benoze.',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */

@@ -514,6 +514,16 @@ $messages['km'] = array(
  * @author Purodha
  */
 $messages['ksh'] = array(
+	'scanset-desc' => 'Jeskännte Sigge als Bellder beloore fun däm Andreas Grosz singem Pöngel met CDs udder DVDs.',
+	'scanset_no_name' => 'Fähler em <i lang="en">ScanSet</i> Befäähl: Mer moß ene Name aanjevve, zem Beispöll esu: &lt;scanset name="EB1911" /&gt;.',
+	'scanset_invalid_name' => 'Fähler em <i lang="en">ScanSet</i> Befäähl: Dä Satz es nit do udder nit en Odenung.',
+	'scanset_unrecognised_index_format' => 'Fähler mem <i lang="en">ScanSet</i> Befäähl: Dat Fomaat fun däm Index kenne mer nit.',
+	'scanset_opendir_error' => 'Fähler mem <i lang="en">ScanSet</i> Befäähl: Dat Verzeichneß „$1“ künne mer nit opmaache.',
+	'scanset_no_files' => 'Fähler mem <i lang="en">ScanSet</i> Befäähl: En dämm Verzeichneß sin kein Dateie ze fenge.',
+	'scanset_no_volumes' => 'Fähler mem <i lang="en">ScanSet</i> Befäähl: Kein Verzeichneße fun dä Schief jefonge.',
+	'scanset_missing_index_file' => 'Fähler mem <i lang="en">ScanSet</i> Befäähl: Kunnt de Verzeichnes-Datei „$1“ nit jefonge.',
+	'scanset_index_file_error' => 'Fähler mem <i lang="en">ScanSet</i> Befäähl: Di Verzeichneß-Datei ier Fomaat es kappott en Reih $1.',
+	'scanset_invalid_volume' => 'Fähler mem <i lang="en">ScanSet</i> Befäähl: En onjöltije Schief.',
 	'scanset_next' => 'Nääks →',
 	'scanset_prev' => '← Vörijje',
 );

@@ -1311,12 +1311,38 @@ $messages['km'] = array(
 );
 
 /** Korean (한국어)
+ * @author ITurtle
  * @author ToePeu
  */
 $messages['ko'] = array(
+	'ogg-desc' => 'OGG Theora 및 Vorbis 파일 핸들러와 자바스크립트 플레이어',
+	'ogg-short-audio' => 'Ogg $1 소리 파일, $2',
+	'ogg-short-video' => 'Ogg $1 영상 파일, $2',
+	'ogg-short-general' => 'Ogg $1 미디어 파일, $2',
+	'ogg-long-audio' => '(Ogg $1 소리 파일, 길이 $2, $3)',
+	'ogg-long-video' => '(Ogg $1 영상 파일, 길이 $2, $4×$5 픽셀, $3)',
+	'ogg-long-multiplexed' => '(Ogg 다중 소리/영상 파일, $1, 길이 $2, $4×$5 픽셀, 대략 $3)',
+	'ogg-long-general' => '(Ogg 미디어 파일, 길이 $2, $3)',
+	'ogg-long-error' => '(잘못된 ogg 파일: $1)',
 	'ogg-play' => '재생',
 	'ogg-pause' => '일시정지',
 	'ogg-stop' => '정지',
+	'ogg-play-video' => '영상 재생하기',
+	'ogg-play-sound' => '소리 재생하기',
+	'ogg-no-player' => '죄송합니다. 이 시스템에는 재생을 지원하는 플레이어가 설치되지 않은 것 같습니다. <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">플레이어를 내려받으세요.</a>',
+	'ogg-no-xiphqt' => '퀵타임의 XiphQT 구성 요소가 없는 것 같습니다.
+퀵타임은 이 구성 요소 없이는 Ogg 파일을 재생할 수 없습니다.
+<a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download"> XiphQT를 내려받거나</a> 다른 플레이어를 선택하십시오.',
+	'ogg-player-videoElement' => '기본 브라우저 지원',
+	'ogg-player-oggPlugin' => '브라우저 플러그인',
+	'ogg-player-thumbnail' => '정지 화면만',
+	'ogg-player-soundthumb' => '플레이어 없음',
+	'ogg-player-selected' => '(선택함)',
+	'ogg-use-player' => '사용할 플레이어:',
+	'ogg-more' => '더 보기...',
+	'ogg-dismiss' => '닫기',
+	'ogg-download' => '파일 내려받기',
+	'ogg-desc-link' => '파일 정보',
 );
 
 /** Kinaray-a (Kinaray-a)
@@ -1862,8 +1888,8 @@ $messages['pt'] = array(
 	'ogg-play-sound' => 'Reproduzir som',
 	'ogg-no-player' => 'Lamentamos, mas seu sistema aparenta não ter um player suportado. Por gentileza, <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">faça o download de um player</a>.',
 	'ogg-no-xiphqt' => 'Aparentemente você não tem o componente XiphQT para QuickTime. Não será possível reproduzir ficheiros Ogg pelo QuickTime sem tal componente. Por gentileza, <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">faça o download do XiphQT</a> ou escolha outro reprodutor.',
-	'ogg-player-videoElement' => 'elemento <video>',
-	'ogg-player-oggPlugin' => 'Plugin Ogg',
+	'ogg-player-videoElement' => 'Suporte interno do browser',
+	'ogg-player-oggPlugin' => 'Plugin do browser',
 	'ogg-player-thumbnail' => 'Apenas imagem estática',
 	'ogg-player-soundthumb' => 'Sem player',
 	'ogg-player-selected' => '(selecionado)',
@@ -2349,8 +2375,8 @@ $messages['vi'] = array(
 	'ogg-play-sound' => 'Nghe âm thanh',
 	'ogg-no-player' => 'Rất tiếc, hình như máy tính của bạn cần thêm phần mềm. Xin <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download/vi">tải xuống chương trình chơi nhạc</a>.',
 	'ogg-no-xiphqt' => 'Hình như bạn không có bộ phận XiphQT cho QuickTime, nên QuickTime không thể chơi những tập tin Ogg được. Xin <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download/vi">truyền xuống XiphQT</a> hay chọn một chương trình chơi nhạc khác.',
-	'ogg-player-videoElement' => 'Phần tử <video>',
-	'ogg-player-oggPlugin' => 'Ogg (plugin)',
+	'ogg-player-videoElement' => 'Bộ chơi có sẵn trong trình duyệt',
+	'ogg-player-oggPlugin' => 'Phần bổ trợ trình duyệt',
 	'ogg-player-thumbnail' => 'Chỉ hiển thị hình tĩnh',
 	'ogg-player-soundthumb' => 'Tắt',
 	'ogg-player-selected' => '(được chọn)',

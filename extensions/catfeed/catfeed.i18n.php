@@ -9,11 +9,18 @@ $messages['en'] = array(
 Create in-page version, especially useful for Wikinews.',
 );
 
+/** Message documentation (Message documentation)
+ * @author Purodha
+ */
+$messages['qqq'] = array(
+	'catfeed-desc' => 'Shown in [[Special:Version]]',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */
 $messages['ar'] = array(
-	'catfeed-desc' => 'يستخدم أجزاء من تلقيمات أحدث التغييرات. ينشيء نسخة في الصفحة، مفيد خصوصا لويكي الأخبار.',
+	'catfeed-desc' => 'يستخدم أجزاء من تلقيمات أحدث التغييرات. ينشئ نسخة في الصفحة، مفيد خصوصا لويكي الأخبار.',
 );
 
 /** Bengali (বাংলা)
@@ -89,6 +96,13 @@ Crea versiones pro uso in paginas, specialmente utile pro Wikinews.',
  */
 $messages['ja'] = array(
 	'catfeed-desc' => '最近の更新をフィードします。ページ内バージョンで作成されているため、特にウィキニュースでは便利です。',
+);
+
+/** Ripoarisch (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'catfeed-desc' => 'Bruch Stöcker fum <i lang="en">ecentchanges feeds</i>, määt et en de Sigge, dat es besöngisch joot ze Bruche em Neueschkeitewiki.',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

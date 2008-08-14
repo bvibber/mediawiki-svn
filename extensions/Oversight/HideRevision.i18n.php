@@ -572,10 +572,11 @@ Dono de ĉi tiu informo eble povus rezulti en daŭra malgajno de Kontrolanto-raj
 );
 
 /** Spanish (Español)
+ * @author Sanbec
  * @author Titoxd
  */
 $messages['es'] = array(
-	'right-hiderevision' => 'Revisar y restaurar revisiones escondidas de los Bibliotecarios',
+	'right-hiderevision' => 'Revisar y restaurar revisiones ocultadas por los administradores',
 );
 
 /** Basque (Euskara) */
@@ -1542,7 +1543,26 @@ Dat moß ene Datebank-Köbes maache.",
 	'hiderevision-norevisions' => 'Kein Version zom Versteche aanjejovve',
 	'hiderevision-noreason' => 'Do moß ene Jrond för et Versteche aanjevve',
 	'hiderevision-status' => 'Version $1: $2',
+	'hiderevision-success' => 'Verstoche: arscheveet un fottjenomme.',
+	'hiderevision-error-missing' => 'Nit en de Datebank jefonge.',
+	'hiderevision-error-current' => 'De Version fum letzte Beärbeide kam_mer nit versteche.
+Donn di Änderung et eets zeröck nämme, wann dat esu rechtesch es.',
+	'hiderevision-error-delete' => 'Dat Arschiveere hät nit jeflupp. Woh di Version zefür fottjeschmeßse?',
+	'hiderevision-archive-status' => 'Fottjeschmeße Version fum $1: $2',
+	'oversight-nodiff' => 'Mer künne kein Änderunge eruß krijje, weil mer kein vörijje Version
+fun dä Sigg han. Entweder
+* de Sigg es fottjeschmesse, udder
+* de verstoche Version wohr de eetste Version fun dä Sigg',
+	'oversight-log-hiderev' => 'Han en Version fun „$1“ verstoche',
+	'oversight' => 'Versteche',
 	'oversight-view' => 'Einzelheite',
+	'oversight-difference' => '(Ongerscheed zwesche dä hee un de letzte Version, di noch ze sinn es)',
+	'oversight-prev' => 'De letzte Version doför',
+	'oversight-hidden' => 'Verstoche Version',
+	'oversight-header' => 'He kütt en Leß met Versione, di zeläz op Dor för de Öffentleschkeit
+verstoche wode sin.
+Wä di Enfomazione wigger jitt, weed dat Rääsch se aanzeloore,
+un wat domet zosamme hängk, flöck quitt.',
 );
 
 /** Latin (Latina)

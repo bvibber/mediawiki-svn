@@ -391,11 +391,13 @@ $messages['hi'] = array(
 );
 
 /** Croatian (Hrvatski)
+ * @author Dalibor Bosits
  * @author SpeedyGonsales
  */
 $messages['hr'] = array(
 	'imagemap_no_image' => 'Error: morate navesti ime slike koju rabite u prvom retku',
 	'imagemap_invalid_image' => 'Error: slika ne postoji ili je krivog tipa',
+	'imagemap_bad_image' => 'Greška: slika je na crnom popisu na ovoj stranici',
 	'imagemap_no_link' => 'Error: nema (ispravne) poveznice na kraju retka $1',
 	'imagemap_invalid_title' => 'Error: loš naziv u poveznici u retku $1',
 	'imagemap_missing_coord' => 'Error: nedovoljan broj koordinata za oblik u retku $1',
@@ -1107,6 +1109,7 @@ $messages['vi'] = array(
 	'imagemap_desc' => 'Thêm những bản đồ hình có liên kết dùng thẻ <tt><nowiki><imagemap></nowiki></tt>',
 	'imagemap_no_image' => 'Error: phải đưa tên hình vào dòng đầu tiên',
 	'imagemap_invalid_image' => 'Error: hình không hợp lệ hay không tồn tại',
+	'imagemap_bad_image' => 'Lỗi: cấm nhúng hình đó vào trang này',
 	'imagemap_no_link' => 'Error: không có liên kết hợp lệ ở cuối dòng $1',
 	'imagemap_invalid_title' => 'Error: văn bản liên kết không hợp lệ ở dòng $1',
 	'imagemap_missing_coord' => 'Error: không có đủ tọa độ cho vùng ở dòng $1',

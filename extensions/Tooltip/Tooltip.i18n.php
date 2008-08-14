@@ -58,6 +58,13 @@ $messages['gl'] = array(
 	'tooltip-desc' => 'Engade a etiqueta <tt><nowiki><tooltip></nowiki></tt> e <tt><nowiki>{{#tooltip:}}</nowiki></tt>',
 );
 
+/** Hebrew (עברית)
+ * @author Agbad
+ */
+$messages['he'] = array(
+	'tooltip-desc' => 'הוספת התגיות <tt><nowiki><tooltip></nowiki></tt> ו<tt><nowiki>{{#tooltip:}}</nowiki></tt>',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

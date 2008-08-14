@@ -207,6 +207,23 @@ Os operadores deste sitio non poden asumir a responsabilidade polo contido de di
 	'talkhere-collapse' => 'ocultar editor',
 );
 
+/** Hebrew (עברית)
+ * @author Rotemliss
+ * @author דניאל ב.
+ */
+$messages['he'] = array(
+	'talkhere-desc' => 'הצגת דף השיחה בתוך הדף',
+	'talkhere-foottext' => 'ייתכן שהתגובות לעיל הושארו על ידי מבקרים.
+
+מפעילי אתר זה אינם אחראים על תוכן התגובות.',
+	'talkhere-talkpage' => 'דף שיחה',
+	'talkhere-notalk' => "''(אין תגובות עדיין)''",
+	'talkhere-addcomment' => 'הוספת תגובה',
+	'talkhere-beforeinput' => 'באפשרותכם להוסיף תגובה למטה',
+	'talkhere-loading' => 'העורך בטעינה…',
+	'talkhere-collapse' => 'הסתרת עורך',
+);
+
 /** Croatian (Hrvatski)
  * @author Dnik
  */

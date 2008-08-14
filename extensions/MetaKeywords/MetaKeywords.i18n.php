@@ -16,11 +16,25 @@ $messages['en'] = array(
  # Any occurences of $1 will be replaced by the current page\'s title.'
 );
 
+/** Message documentation (Message documentation)
+ * @author Siebrand
+ */
+$messages['qqq'] = array(
+	'metakeywords' => "Optional message. '''(all)''' and '''(main)''' should not be translated.",
+	'metadescription' => "Optional message. '''(all)''' and '''(main)''' should not be translated.
+* $1 will not be replaced in this message.",
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */
 $messages['ar'] = array(
 	'metakeywords-desc' => 'يسمح بضبط وسوم <tt><nowiki><meta "keywords"></nowiki></tt> و <tt><nowiki><meta "description"></nowiki></tt> لكل نطاق',
+	'metakeywords' => '  # أضف السطور إلى هذه الصفحة بالصيغة "namespace|comma separated,keywords,to,add"
+  # معرفات النطاقات (all) و (main) تحدد افتراضيا لكل النطاقات والنطاق الصفري بالترتيب.',
+	'metadescription' => '  # أضف السطور إلى هذه الصفحة بالصيغة "namespace|description tag to set"
+  # معرفات النطاقات (all) و (main) تحدد افتراضيا لكل النطاقات والنطاق الصفري بالترتيب.
+  # أي وجود ل$1 سيستبدل بعنوان الصفحة الحالي.',
 );
 
 /** French (Français)
@@ -35,6 +49,11 @@ $messages['fr'] = array(
  */
 $messages['nl'] = array(
 	'metakeywords-desc' => 'Maakt het mogelijk om de tags <tt><nowiki><meta "keywords"></nowiki></tt> en <tt><nowiki><meta "description"></nowiki></tt> per naamruimte in te stellen',
+	'metakeywords' => ' # Voeg regels toe aan deze pagina in de vorm "naamruimte|kommagescheiden,trefwoorden"
+ # De naamruimtebenamingen (all) en (main) geven een standaard tag voor respectievelijk alle naamruimten en de hoofdnaamruimte.',
+	'metadescription' => ' # Voeg regels toe aan deze pagina in de vorm "naamruimte|beschrijving van in te stellen tag"
+ # De naamruimtebenamingen (all) en (main) geven een standaard tag voor respectievelijk alle naamruimten en de hoofdnaamruimte.
+ # Het voorkomen van $1 wordt vervangen door de naam van de huidige pagina.',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)

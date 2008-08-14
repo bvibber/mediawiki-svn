@@ -21,6 +21,13 @@ $messages['en'] = array(
 	'cspammer-log-page'           => 'Comment spammer log',
 );
 
+/** Message documentation (Message documentation)
+ * @author Purodha
+ */
+$messages['qqq'] = array(
+	'commentspammer-desc' => 'Shown in [[Special:Version]]',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */
@@ -192,6 +199,20 @@ $messages['jv'] = array(
 	'commentspammer-save-blocked' => 'Alamat IP panjenengan iku dicurigani dienggo ngirim spam, dadi kaca iki ora disimpen.
 Kanggo menggak iki, [[Special:UserLogin|mangga log mlebu utawa nggawé rékening (akun)]].',
 	'commentspammer-log-msg' => 'suntingan saka [[Special:Contributions/$1|$1]] menyang [[:$2]].',
+);
+
+/** Ripoarisch (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'commentspammer-save-blocked' => 'Ding IP-Address es schwer verdäschtesch, dat se enem Kommenta-SPAMmer jehööt.
+Dröm ham mer Ding Änderung nit faßjehallde.
+Don [[Special:Userlogin|enlogge udder Desch aanmellde]] domet dat nit widder passeet.',
+	'commentspammer-desc' => 'Hält Änderunge fun bekannte Kommenta-SPAMmere op, opjrond fun ene „schwaze Leß“ met DNS-Date.',
+	'commentspammer-log-msg' => 'Änderunge fun [[Special:Contributions/$1|$1]] aan dä Sigg „[[:$2]]“.',
+	'commentspammer-log-msg-info' => 'Zoletz jeSPAMt för {{PLURAL:$1|einem Dach|$1 Dare|nit ens einem Daach}}, de Drohstuuf es „$2“, un dä Stüürungs-Kood es „$3“. [http://www.projecthoneypot.org/search_ip.php?ip=$4 Einzeheite aanloore] udder [[Special:Blockip/$4|Metmaacher sperre]].',
+	'cspammerlogpagetext' => 'Leß met de Änderunge, di zojelohße udder verbodde woode sin, weil dä se jemaat hät, ene bekannt Kommenta-SPAMmer wohr.',
+	'cspammer-log-page' => 'Logbooch met Kommenta-SPAMmere',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

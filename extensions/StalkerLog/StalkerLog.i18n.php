@@ -69,14 +69,15 @@ $messages['fr'] = array(
 
 /** Hebrew (עברית)
  * @author Agbad
+ * @author Rotemliss
  * @author דניאל ב.
  */
 $messages['he'] = array(
-	'stalkerlog-desc' => 'הוספת [[Special:Log/stalkerlog|יומן]] למשתמשים שנכנסו ויצאו מחשבונם',
+	'stalkerlog-desc' => 'הוספת [[Special:Log/stalkerlog|יומן]] לכניסות וליציאות מהחשבון',
 	'stalkerlog-log-login' => 'נכנס לחשבון.',
 	'stalkerlog-log-logout' => 'יצא מהחשבון.',
-	'stalkerlog-log-type' => 'יומן אימותי משתמש',
-	'stalkerlog-log-text' => 'זהו יומן של המשתמשים הנכנסים והיוצאים מחשבונם.',
+	'stalkerlog-log-type' => 'יומן הזדהות משתמשים',
+	'stalkerlog-log-text' => 'זהו יומן הכניסות והיציאות מהחשבון.',
 );
 
 /** Italian (Italiano)

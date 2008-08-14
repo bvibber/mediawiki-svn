@@ -2312,21 +2312,27 @@ $messages['hr'] = array(
 	'boardvote_entry' => '* [[Special:Boardvote/vote|Glas]]
 * [[Special:Boardvote/list|Pregled glasova do sada]]
 * [[Special:Boardvote/dump|Kreiraj šifrirani zapis o glasanju]]',
-	'boardvote_intro' => '<p>Dobro došli na druge izbore za Wikimedijin Odbor povjerenika. Glasamo
-za dvije osobe koje će predstavljati zajednicu suradnika na različitim
-projektima Wikimedije. Oni će pomoći odrediti budući smjer kojim će krenuti
-projekti Wikimedije, pojedinačno i kao cjelina, i predstavljati
-<em>Vaše</em> interese i zahtjeve u Odboru povjerenika. Oni će
-odlučivati o načinima za stvaranje prihoda i dodjelu prikupljenog novca.</p>
+	'boardvote_intro' => '<p>Dobro došli na izbore za Wikimedijin Odbor povjerenika 2008. 
+Glasamo za jednu osobu koja će predstavljati zajednicu suradnika na različitim
+projektima Wikimedije. 
+Oni će pomoći odrediti budući smjer kojim će krenuti projekti Wikimedije, pojedinačno i kao cjelina, i predstavljati
+<em>Vaše</em> interese i zahtjeve u Odboru povjerenika. 
+Oni će odlučivati o načinima za stvaranje prihoda i dodjelu prikupljenog novca.</p>
 
 <p>Molimo pažljivo pročitajte izjave kandidata i odgovore na upite prije
-glasanja. Svaki od kandidata je cijenjeni suradnik, koji je dao zamjetno
-vrijeme i trud kako bi od tih projekata napravio pristupačnu okolinu
-posvećenu potrazi i slobodnom dijeljenju ljudskog znanja.</p>
+glasanja. 
+Svaki od kandidata je cijenjeni suradnik, koji je dao zamjetno vrijeme i trud kako bi od tih projekata napravio pristupačnu okolinu posvećenu potrazi i slobodnom dijeljenju ljudskog znanja.</p>
 
-<p>Možete glasati za onoliko kandidata koliko želite. Kandidat s najviše
-glasova za svako mjesto će biti proglašen pobjednikom za to mjesto.
-U slučaju izjednačenog rezultata, održat će se drugi krug izbora.</p>',
+<p>Rangirajte kandidate po svom izboru upisujući broj pored okvira (1 = prvi izabrani, 2 = drugi izabrani, ...)
+Možete dati isti glas za dvoje ili više kandidata i ostaviti kandidate nerangirane.
+Pretpostavlja se da dajete prednost rangiranim kandidatima ispred onih koji nisu rangirani i da ne dajete nikome prednost između nerangiranih kandidata.</p>
+
+<p>Pobjednik izbora će se računati pomoću Schulzove metode. Za više informacija, vidite službenu stranicu za izbore.</p>
+
+<p>Za više informacija, vidi:</p>
+<ul><li><a href="http://meta.wikimedia.org/wiki/Board_elections/2008" class="external">Izbori za odbor 2008.</a></li>
+<li><a href="http://meta.wikimedia.org/wiki/Board_elections/2008/Candidates" class="external">Kandidati</a></li>
+<li><a href="http://en.wikipedia.org/wiki/Schulze_method" class="external">Schulzova metoda</a></li></ul>',
 	'boardvote_intro_change' => '<p>Već ste glasali. Ipak, možete promijeniti vaš glas koristeći donji obrazac. Molimo
 označite rubrike uz svakog kandidata kojeg podržavate.</p>',
 	'boardvote_entered' => 'Hvala, Vaš glas je zabilježen.
@@ -2337,10 +2343,21 @@ Ako želite, možete zabilježiti sljedeće detalje. Zapis vašeg glasanja je:
 
 Šifriran je pomoću javnog ključa administratora Izbora:
 
-<pre>$2</pre>',
-	'boardvote_nosession' => 'Ne mogu odrediti Vaš identifikator (ID) na Wikimediji. Molimo, prijavite se na wiki na kojoj ste kvalificirani, i idite na <nowiki>[[Special:Boardvote]]</nowiki>. Morate koristiti račun s barem $1 doprinosa prije $2, a s prvom izmjenom prije $3.',
-	'boardvote_notloggedin' => 'Niste prijavljeni. Da glasate, trebate koristiti račun s bar $1 doprinosa prije $2, i s prvom izmjenom prije $3.',
-	'boardvote_notqualified' => 'Niste kvalificirani da glasate u ovim izborima. Trebali ste napraviti $3 izmjena prije $2, a Vaša prva izmjena je morala biti prije $5.',
+<pre>$2</pre>
+
+Slijedi rezultat šifrirane verzije. Bit će [[Special:Boardvote/dump|objavljen javno]].
+
+<pre>$3</pre>
+
+[[Special:Boardvote/entry|Nazad]]',
+	'boardvote_invalidentered' => '<p><strong>Greška</strong>: postavke kandidata moraju biti izražene samo u pozitivnim cijelim brojevima (1, 2, 3, ....), ili ostavljeno praznim.</p>',
+	'boardvote_nosession' => 'Vaš identifikacijski broj na Wikimediji ne može biti određen.
+Molimo, prijavite se na wiki na kojoj ste kvalificirani za glasovanje, i idite na <nowiki>[[Special:Boardvote]]</nowiki>. 
+Morate koristiti račun s najmanje $1 izmjena prije $2, i s najmanje $3 izmjena između $4 i $5.',
+	'boardvote_notloggedin' => 'Niste prijavljeni. 
+Da glasate, trebate koristiti račun s bar $1 doprinosa prije $2, i s najmanje $3 izmjena između $4 i $5.',
+	'boardvote_notqualified' => 'Niste kvalificirani da glasate u ovim izborima. 
+Trebali ste napraviti $1 izmjena prije $2, i najmanje $3 izmjena između $4 i $5.',
 	'boardvote_novotes' => 'Nitko još nije glasovao.',
 	'boardvote_time' => 'Vrijeme',
 	'boardvote_user' => 'Suradnik',
@@ -5866,7 +5883,7 @@ Nó đã mã hóa bằng khóa công khai của nhóm Viên chức Bầu cử:
 
 <pre>$2</pre>
 
-Bản mã hóa được tạo ra dưới đây. Nó sẽ được hiển thị công khai trên [[Special:Boardvote/dump]].
+Bản mã hóa được tạo ra dưới đây. Nó sẽ được [[Special:Boardvote/dump|hiển thị công khai]].
 
 <pre>$3</pre>
 

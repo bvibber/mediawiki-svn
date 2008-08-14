@@ -109,6 +109,15 @@ $messages['gl'] = array(
 	'seealso-desc' => "Cabeceira 'Véxase tamén' localizada empregando a etiqueta <code><nowiki><seealso></nowiki></code>",
 );
 
+/** Hebrew (עברית)
+ * @author Rotemliss
+ * @author דניאל ב.
+ */
+$messages['he'] = array(
+	'seealso' => 'ראו גם',
+	'seealso-desc' => 'הצגת כותרות "ראו גם" בשפה המקומית באמצעות התג <code><nowiki><seealso></nowiki></code>',
+);
+
 /** Hindi (हिन्दी)
  * @author Kaustubh
  */

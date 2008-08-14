@@ -28,8 +28,10 @@ $messages['en'] = array(
 
 /** Message documentation (Message documentation)
  * @author Jon Harald Søby
+ * @author Purodha
  */
 $messages['qqq'] = array(
+	'dt-desc' => 'Extension description displayed on [[Special:Version]].',
 	'dt_viewxml_categories' => '{{Identical|Categories}}',
 	'dt_viewxml_namespaces' => '{{Identical|Namespaces}}',
 	'dt_xml_namespace' => '{{Identical|Namespace}}',

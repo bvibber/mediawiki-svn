@@ -159,6 +159,15 @@ $messages['km'] = array(
 	'categoryonupload-label' => 'ចំនាត់ថ្នាក់ក្រុម:',
 );
 
+/** Ripoarisch (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'categoryonupload-desc' => 'Fröhsch de Metmaacher noh de Saachjroppe för en fresch huhjelade Datei.',
+	'categoryonupload-label' => 'Saachjropp:',
+	'categoryonupload-none' => '-',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */

@@ -14,6 +14,13 @@ $messages['en'] = array(
 	'editown-desc' => 'Users without the editall right can only edit pages they have created',
 );
 
+/** Message documentation (Message documentation)
+ * @author Purodha
+ */
+$messages['qqq'] = array(
+	'editown-desc' => 'Extension description displayed on [[Special:Version]].',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */
@@ -82,6 +89,13 @@ $messages['it'] = array(
  */
 $messages['ja'] = array(
 	'editown-desc' => '全編集（editall）権限がない利用者に対し、自分の作成したページ以外は編集できないようにする',
+);
+
+/** Ripoarisch (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'editown-desc' => 'Metmaacher ohne et besönder <i lang="en">editall</i>-Rääsch künne nur Sigge ändere, di se sellver aanjelaat han.',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

@@ -20,9 +20,11 @@ $messages['en'] = array(
 
 /** Message documentation (Message documentation)
  * @author MinuteElectron
+ * @author Purodha
  */
 $messages['qqq'] = array(
-	'categorystepper-desc' => 'Description of the CategoryStepper extension. A "category stepper box" is a box with links to the previous and next page in a given category.',
+	'categorystepper-desc' => 'Description of the CategoryStepper extension. A "category stepper box" is a box with links to the previous and next page in a given category.
+Shown in [[Special:Version]].',
 	'categorystepper-end' => 'The text displayed on the right hand side of a category stepper box if the current page is the last alphabetically in the category that box is for.',
 	'categorystepper-start' => 'The text displayed on the left hand side of a category stepper box if the current page is the first alphabetically in the category that box is for.',
 );
@@ -208,6 +210,15 @@ $messages['jv'] = array(
 $messages['km'] = array(
 	'categorystepper-end' => '(ចុងបញ្ចាប់នៃចំណាត់ថ្នាក់ក្រុម)',
 	'categorystepper-start' => '(ការចាប់ផ្តើមនៃចំណាត់ថ្នាក់ក្រុម)',
+);
+
+/** Ripoarisch (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'categorystepper-desc' => 'Zeich en Käßje met Links öm en Saachjroppe ze bläddee. Dat jeiht vürwääts un röckwääts nohm Alfabeet dorsch de Saachjroppe, woh en Sigg dren es.',
+	'categorystepper-end' => '(de Saachjropp es am Eng)',
+	'categorystepper-start' => '((Aanfang fun de Saachjropp)',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

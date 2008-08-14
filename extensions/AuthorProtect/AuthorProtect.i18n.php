@@ -27,8 +27,10 @@ $messages['en'] = array(
 
 /** Message documentation (Message documentation)
  * @author Darth Kule
+ * @author Purodha
  */
 $messages['qqq'] = array(
+	'authorprotect-desc' => 'Extension description displayed on [[Special:Version]].',
 	'authorprotect-reason' => '{{Identical|Reason}}',
 );
 

@@ -33,6 +33,13 @@ $messages['en'] = array(
 	'errorhandler-trace-line-internal'   => '[internal function]: $1',
 );
 
+/** Message documentation (Message documentation)
+ * @author Purodha
+ */
+$messages['qqq'] = array(
+	'errorhandler-desc' => 'Extension description displayed on [[Special:Version]].',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */
@@ -112,6 +119,7 @@ $messages['eo'] = array(
 
 /** French (Français)
  * @author IAlex
+ * @author McDutchie
  */
 $messages['fr'] = array(
 	'errorhandler-desc' => "Gestionnaire d'erreurs pour MediaWiki",
@@ -127,7 +135,7 @@ $messages['fr'] = array(
 	'errorhandler-error-user-error' => 'Erreur (utilisateur)',
 	'errorhandler-error-user-warning' => 'Avertissement (utilisateur)',
 	'errorhandler-error-user-notice' => 'Notice (utilisateur)',
-	'errorhandler-error-strict' => 'Standarts stricts',
+	'errorhandler-error-strict' => 'Standards stricts',
 	'errorhandler-error-recoverable' => 'Erreur fatale attrapable',
 	'errorhandler-msg-text' => '$1 : $2 dans $3 (ligne $4)',
 	'errorhandler-msg-html' => '<b>$1</b> : <i>$2</i> dans <b>$3</b> (ligne <b>$4</b>)',

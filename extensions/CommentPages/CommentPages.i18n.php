@@ -140,6 +140,14 @@ $messages['jv'] = array(
 	'nstab-comments' => 'Komentar',
 );
 
+/** Ripoarisch (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'commentpages-desc' => 'Kommentare för Sigge em Houp-Appachtemang.',
+	'nstab-comments' => 'Kommenta',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */

@@ -27,9 +27,11 @@ $messages['en'] = array(
 
 /** Message documentation (Message documentation)
  * @author Jon Harald Søby
+ * @author Purodha
  */
 $messages['qqq'] = array(
 	'contributors' => '{{Identical|Contributors}}',
+	'contributors-desc' => 'Shown on [[Special:Version]]',
 	'contributors-target' => '{{Identical|Title}}',
 	'contributors-submit' => '{{Identical|Show}}',
 	'contributors-badtitle' => '{{Identical|Invalid title}}',
@@ -584,7 +586,17 @@ $messages['krj'] = array(
  * @author Purodha
  */
 $messages['ksh'] = array(
+	'contributors' => 'Houpsäschlesche Schriever',
+	'contributors-desc' => 'Mäht en Leß fun de houpsäschlesche Schriever op de Sigge.',
+	'contributors-toolbox' => 'Houpsäschlesche Schriever',
+	'contributors-legend' => 'Zeich de Sigg ier houpsäschlesche Schriever',
+	'contributors-target' => 'Tittel fun dä Sigg:',
 	'contributors-submit' => 'Zeije',
+	'contributors-subtitle' => 'Houpsäschlesche Schriever fun dä Sigg „$1“',
+	'contributors-others-long' => 'Ußerdämm jitt et {{PLURAL:$1|noch eine|noch $1|söns keine}} Schriever aan dä Sigg.',
+	'contributors-others' => 'un {{PLURAL:$1|eine|$1}} andere',
+	'contributors-badtitle' => 'Dä Tittel för di Sigg stemmp nit.',
+	'contributors-nosuchpage' => 'Di Sigg „$1“ jitt et nit.',
 );
 
 /** Kurdish (Latin) (Kurdî / كوردی (Latin))

@@ -102,6 +102,13 @@ $messages['hi'] = array(
 	'oai-desc' => '[http://www.openarchives.org/OAI/openarchivesprotocol.html OAI-PMH] रिपॉजिटरी इंटरफेस देता हैं',
 );
 
+/** Croatian (Hrvatski)
+ * @author Dalibor Bosits
+ */
+$messages['hr'] = array(
+	'oai-desc' => 'Podrška za [http://www.openarchives.org/OAI/openarchivesprotocol.html OAI-PMH] sučelje repozitorija',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

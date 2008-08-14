@@ -229,6 +229,16 @@ $messages['gl'] = array(
 	'backforth-prev' => 'Anterior ($1)',
 );
 
+/** Hebrew (עברית)
+ * @author Rotemliss
+ * @author דניאל ב.
+ */
+$messages['he'] = array(
+	'backforth-next' => 'הבא ($1)',
+	'backforth-desc' => 'הוספת קישורי דפדוף אלפבתי "הבא ו"הקודם" לראש הדפים',
+	'backforth-prev' => 'הקודם ($1)',
+);
+
 /** Hindi (हिन्दी)
  * @author Kaustubh
  */

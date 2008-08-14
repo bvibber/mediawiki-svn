@@ -94,6 +94,15 @@ $messages['gl'] = array(
 	'minnamelength-desc' => 'Forzar unha lonxitude mínima para os nomes de usuario',
 );
 
+/** Hebrew (עברית)
+ * @author Rotemliss
+ * @author דניאל ב.
+ */
+$messages['he'] = array(
+	'minnamelength-error' => 'שם המשתמש שלכם קצר מידי. האורך המינימלי המותר הוא $1.',
+	'minnamelength-desc' => 'קביעת אורך מינימלי לשם משתמש',
+);
+
 /** Hindi (हिन्दी)
  * @author Kaustubh
  */

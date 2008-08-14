@@ -26,8 +26,10 @@ $messages['en'] = array(
 
 /** Message documentation (Message documentation)
  * @author Jon Harald Søby
+ * @author Purodha
  */
 $messages['qqq'] = array(
+	'bookinfo-desc' => 'Extension description displayed on [[Special:Version]].',
 	'bookinfo-result-title' => '{{Identical|Title}}',
 	'bookinfo-result-author' => '{{Identical|Author}}',
 	'bookinfo-result-year' => '{{Identical|Year}}',

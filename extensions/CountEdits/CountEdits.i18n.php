@@ -27,8 +27,10 @@ Do not judge contributors by their edit count.",
 
 /** Message documentation (Message documentation)
  * @author Jon Harald Søby
+ * @author Purodha
  */
 $messages['qqq'] = array(
+	'countedits-desc' => 'Extension description displayed on [[Special:Version]].',
 	'countedits-username' => '{{Identical|Username}}',
 	'countedits-ok' => '{{Identical|OK}}',
 );
@@ -565,6 +567,7 @@ $messages['krj'] = array(
  * @author Purodha
  */
 $messages['ksh'] = array(
+	'countedits-desc' => '[[Special:CountEdits|Sondersigg]] för de Metmaacher ier Beidräsch ze zälle un en „<span lang="en">Top 10</span>“ Leß aanzezeije.',
 	'countedits-username' => 'Metmaacher Name:',
 );
 

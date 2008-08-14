@@ -208,6 +208,13 @@ $messages['pl'] = array(
 	'ajax-qp-desc' => 'Dodaje technologię AJAX do stron zapytań, takich jak [[Special:Shortpages|{{int:shortpages}}]]',
 );
 
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'ajax-qp-desc' => 'د هغه مخونو غوښتنو ته لکه [[Special:Shortpages|{{int:لنډ مخونه}}]] ځينې AJAX ورګډول',
+);
+
 /** Portuguese (Português)
  * @author Malafaya
  */

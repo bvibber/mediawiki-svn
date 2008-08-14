@@ -85,6 +85,14 @@ $messages['hu'] = array(
 	'randomrootpage-desc' => '[[Special:Randomrootpage|Speciális lap]], amely egy véletlen lapot jelenít meg a gyökérből',
 );
 
+/** Ripoarisch (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'randomrootpage' => 'Zofällige Aanfangs-Sigg',
+	'randomrootpage-desc' => '[[Special:Randomrootpage|Söndersigg]], di en zofällige Aanfangs-Sigg jrief.',
+);
+
 /** Marathi (मराठी)
  * @author Kaustubh
  */

@@ -29,6 +29,13 @@ In case of problems you can try <b>Special:Call/DebuG</b>',
 	'call-save-failed' => 'The following text has NOT been saved to page <big>[[$1]]</big> because that page already exists.',
 );
 
+/** Message documentation (Message documentation)
+ * @author Purodha
+ */
+$messages['qqq'] = array(
+	'call-desc' => 'Extension description displayed on [[Special:Version]].',
+);
+
 /** Afrikaans (Afrikaans)
  * @author Naudefj
  */
@@ -41,7 +48,7 @@ $messages['af'] = array(
  */
 $messages['ar'] = array(
 	'call' => 'استدعاء',
-	'call-desc' => 'ينشيء وصلة فائقة لقالب (أو لصفحة ويكي عادية) مع تمرير المحددات. يمكن استخدامها في سطر أوامر المتصفح أو خلال نص الويكي.',
+	'call-desc' => 'ينشئ وصلة فائقة لقالب (أو لصفحة ويكي عادية) مع تمرير المحددات. يمكن استخدامها في سطر أوامر المتصفح أو خلال نص الويكي.',
 	'call-text' => "امتداد الاستدعاء يتوقع صفحة ويكي ومحددات اختيارية لهذه الصفحة كمدخلات.<br /><br />
 مثال 1: &nbsp; <tt>[[Special:Call/My Template,parm1=value1]]</tt><br />
 مثال 2: &nbsp; <tt>[[Special:Call/Talk:My Discussion,parm1=value1]]</tt><br />

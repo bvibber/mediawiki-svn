@@ -76,6 +76,15 @@ $messages['hsb'] = array(
 	'rightfunctions-restcasc' => '$1 (z překrywacych žórłow)',
 );
 
+/** Italian (Italiano)
+ * @author Pietrodn
+ */
+$messages['it'] = array(
+	'rightfunctions-desc' => 'Funzioni del parser basate sui permessi',
+	'rightfunctions-restboth' => '$1 (dalla pagina locale), $2 (da fonti a cascata)',
+	'rightfunctions-restcasc' => '$1 (da fonti a cascata)',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */

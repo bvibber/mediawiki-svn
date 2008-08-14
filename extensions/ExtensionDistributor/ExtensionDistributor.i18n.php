@@ -467,6 +467,15 @@ $messages['km'] = array(
 	'extdist-submit-version' => 'បន្ត',
 );
 
+/** Ripoarisch (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'extensiondistributor' => 'MediaWiki Zosatzprojramm erunger lade',
+	'extdist-desc' => 'Zosazprojramm för Arschive met Zosazprojramme ze verteile.',
+	'extdist-not-configured' => 'Bes esu joot un donn <code>$wgExtDistTarDir</code> un <code>$wgExtDistWorkingCopy</code> setze.',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */

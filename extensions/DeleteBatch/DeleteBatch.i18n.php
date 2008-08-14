@@ -315,6 +315,13 @@ $messages['km'] = array(
 	'deletebatch-select-yourself' => 'អ្នក',
 );
 
+/** Ripoarisch (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'deletebatch-desc' => 'Extension description displayed on [[Special:Version]].',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */

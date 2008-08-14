@@ -24,8 +24,10 @@ $messages['en'] = array(
 
 /** Message documentation (Message documentation)
  * @author Jon Harald Søby
+ * @author Purodha
  */
 $messages['qqq'] = array(
+	'createbox-desc' => 'Extension description displayed on [[Special:Version]].',
 	'createbox-create' => '{{Identical|Create}}',
 );
 
@@ -116,6 +118,19 @@ Non pode crear esta páxina, pero pode [{{fullurl:{{FULLPAGENAME}}|action=edit}}
 <createbox>break=no</createbox>",
 );
 
+/** Hebrew (עברית)
+ * @author Rotemliss
+ */
+$messages['he'] = array(
+	'createbox-desc' => 'תיבת קלט מיוחדת ליצירת דפים',
+	'createbox-create' => 'יצירה',
+	'createbox-exists' => "מצטערים, \"'''{{FULLPAGENAME}}'''\" כבר קיים.
+
+אינכם יכולים ליצור את הדף, אך באפשרותכם [{{fullurl:{{FULLPAGENAME}}|action=edit}} לערוך אותו], [{{fullurl:{{FULLPAGENAME}}}} לקרוא אותו] או ליצור דף אחר באמצעות התיבה למטה.
+
+<createbox>break=no</createbox>",
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */
@@ -155,6 +170,21 @@ Non puoi creare questa pagina, ma puoi [{{fullurl:{{FULLPAGENAME}}|action=edit}}
  */
 $messages['km'] = array(
 	'createbox-create' => 'បង្កើត',
+);
+
+/** Ripoarisch (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'createbox-desc' => 'En spezjell Feld för der Tittel enzejävve för neu Sigge aanzelääje.',
+	'createbox-create' => 'Aanläje!',
+	'createbox-exists' => "De Sigg „'''{{FULLPAGENAME}}'''“ es ald doh.
+
+Do kanns se nit aanläje, ävver Do kanns di Sigg
+[{{fullurl:{{FULLPAGENAME}}|action=edit}} ändere], [{{fullurl:{{FULLPAGENAME}}}} lesse],
+udder en ander Sigg neu aanläje:
+<br />
+<createbox>break=no</createbox>",
 );
 
 /** Luxembourgish (Lëtzebuergesch)

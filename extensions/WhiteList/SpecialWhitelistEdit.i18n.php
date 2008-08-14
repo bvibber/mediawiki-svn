@@ -364,9 +364,11 @@ $allMessages['eo'] = array(
 
 /** Spanish (Español)
  * @author Piolinfax
+ * @author Sanbec
  */
 $allMessages['es'] = array(
 	'whitelisttablemodifyall' => 'Todos',
+	'whitelisttablemodifynone' => 'Ninguno',
 );
 
 /** French (Français)

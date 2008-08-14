@@ -130,10 +130,12 @@ Please create it or change it to use this extension.',
  * @author Darth Kule
  * @author Jon Harald Søby
  * @author Meno25
+ * @author Purodha
  * @author Siebrand
  */
 $messages['qqq'] = array(
 	'configure' => 'Name of special page displayed in [[Special:SpecialPages]].',
+	'configure-desc' => 'Extension description displayed on [[Special:Version]].',
 	'configure-desc-ns' => '{{Identical|Namespaces}}',
 	'configure-desc-val' => '{{Identical|Value}}',
 	'configure-ext-settings' => '{{Identical|Settings}}',
@@ -538,13 +540,14 @@ $messages['cu'] = array(
 /** German (Deutsch)
  * @author Church of emacs
  * @author Leithian
+ * @author Purodha
  * @author Raimond Spekking
  * @author Revolus
  * @author W (aka Wuzur)
  */
 $messages['de'] = array(
 	'configure' => 'Konfiguration dieses Wikis',
-	'configure-desc' => 'Ermögliche berechtigten Benutzern das Wiki über eine webbasierte Oberfläche zu [[Special:Configure|konfigurieren]]',
+	'configure-desc' => 'Ermöglicht berechtigten Benutzern das Wiki über eine webbasierte Oberfläche zu [[Special:Configure|konfigurieren]]',
 	'configure-desc-group' => 'Gruppen',
 	'configure-desc-key' => 'Schlüssel',
 	'configure-desc-ns' => 'Namensräume',
@@ -566,6 +569,7 @@ $messages['de'] = array(
 	'configure-js-prompt-group' => 'Name der Gruppe:',
 	'configure-js-remove' => 'Löschen',
 	'configure-js-remove-row' => 'Diesen Eintrag löschen',
+	'configure-no-diff' => 'Es gibt keinen Unterschied zwischen den ausgewählten Versionen.',
 	'configure-no-directory' => 'Das Verzeichnis zum Speichern der Einstellungen, <tt>$1</tt>, ist nicht vorhanden. Bitte erstelle oder ändere es, um diese Erweiterung nutzen zu können',
 	'configure-no-old' => 'Es ist keine alte Konfigurationsversion vorhanden.',
 	'configure-no-setup' => '<code>efConfigureSetup()</code> muss explizit in deiner LocalSettings.php aufgerufen werden, um diese Erweiterung nutzen zu können.',
@@ -1358,8 +1362,19 @@ $messages['krj'] = array(
  * @author Purodha
  */
 $messages['ksh'] = array(
+	'configure' => 'Enstellunge för et Wiki',
+	'configure-desc' => 'Määt et müjjelesch, dat Metmaacher met dem Rääsch dozo
+[[Special:Configure|Enstellunge för dat Wiki]]
+inger-aktif övver et Web maache künne.',
 	'configure-desc-group' => 'Jroppe',
+	'configure-desc-key' => 'Schlößel',
 	'configure-desc-ns' => 'Appachtemangs',
+	'configure-desc-val' => 'Wäät',
+	'configure-edit-core' => 'MediaWiki',
+	'configure-edit-ext' => 'Projramm-Zosätz (<i lang="en">Extensions</i>)',
+	'configure-ext-doc' => 'Belor de Dokkementazjuhn onlain',
+	'configure-ext-schemachange' => "'''Opjepaß:''' Dat hee bruch en Aanpassung en de Datebank,
+öm öhndlesch ze fungkßjeneere!",
 	'configure-js-remove' => 'Fottschmieße',
 	'configure-section-namespaces' => 'Appachtemangs',
 	'configure-section-specialpages' => 'Sondersigge',

@@ -22,6 +22,13 @@ $messages['en'] = array(
  #</pre><!-- leave this line alone -->',
 );
 
+/** Message documentation (Message documentation)
+ * @author Purodha
+ */
+$messages['qqq'] = array(
+	'editsubpages-desc' => 'Extension description displayed on [[Special:Version]].',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */
@@ -141,6 +148,15 @@ $messages['it'] = array(
 # Inoltre, le pagine di discussione verranno automaticamente sbloccate insieme alla pagina
 # Visita http://www.mediawiki.org/wiki/Extension:EditSubpages per maggiori informazioni
   #</pre><!-- lascia questa linea così com'è -->",
+);
+
+/** Ripoarisch (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'editsubpages-desc' => 'Löht de Wiki-Köbesse en Sigg met all ier Ungersigge
+[[MediaWiki:Unlockedpages|freijevve]] för de namelose
+Metmaacher se ze Ändere.',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

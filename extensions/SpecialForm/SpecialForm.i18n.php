@@ -607,6 +607,7 @@ $messages['pms'] = array(
 /** Portuguese (Português)
  * @author Lijealso
  * @author Malafaya
+ * @author 555
  */
 $messages['pt'] = array(
 	'form' => 'Formulário',
@@ -615,7 +616,7 @@ $messages['pt'] = array(
 	'formarticleexists' => 'Página Existe',
 	'formarticleexiststext' => 'A página [[$1]] já existe.',
 	'formrequiredfieldpluralerror' => 'Os campos $1 são obrigatórios neste formulário. Por favor, preencha-os.',
-	'formsavesummary' => 'Nova página usando [[Special:Form/$1]]',
+	'formsavesummary' => 'Nova página usando [[Special:Form/$1|formulário $1]]',
 	'formsaveerror' => 'Erro ao salvar formulário',
 	'formsaveerrortext' => "Houve um erro desconhecido ao salvar a página '$1'.",
 );

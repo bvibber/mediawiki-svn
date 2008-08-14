@@ -117,6 +117,13 @@ $messages['km'] = array(
 	'didyoumean-desc' => 'បន្ថែម​តំនភ្ជាប់នានា​ទៅកាន់​ទំព័រទាំងឡាយណា​ដែលមានចំនងជើង"ស្រដៀងគ្នា"',
 );
 
+/** Ripoarisch (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'didyoumean-desc' => 'Deit Lengks op Sigge met „ähnlijje“ Tittele dobei.',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */

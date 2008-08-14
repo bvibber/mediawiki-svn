@@ -56,8 +56,10 @@ Return to:
 
 /** Message documentation (Message documentation)
  * @author Jon Harald Søby
+ * @author Purodha
  */
 $messages['qqq'] = array(
+	'crosswikiblock-desc' => 'Extension description displayed on [[Special:Version]].',
 	'crosswikiblock-expiry' => '{{Identical|Expiry}}',
 	'crosswikiblock-reason' => '{{Identical|Reason}}',
 	'crosswikiblock-submit' => '{{Identical|Block this user}}',

@@ -37,9 +37,11 @@ $messages['en'] = array(
 
 /** Message documentation (Message documentation)
  * @author Jon Harald Søby
+ * @author Purodha
  */
 $messages['qqq'] = array(
 	'badimages' => '{{Identical|Bad image list}}',
+	'badimages-desc' => 'Shown in [[Special:Version]]',
 	'badimages-add-btn' => '{{Identical|Add}}',
 	'badimages-name' => '{{Identical|Name}}',
 	'badimages-reason' => '{{Identical|Reason}}',
@@ -615,6 +617,33 @@ $messages['haw'] = array(
 	'badimages-page' => '{{ns:help}}:Papa o nā ki‘i ‘ino',
 );
 
+/** Hebrew (עברית)
+ * @author Rotemliss
+ * @author דניאל ב.
+ */
+$messages['he'] = array(
+	'badimages' => 'רשימת תמונות אסורות',
+	'badimages-desc' => 'הרחבת היכולות של רשימת התמונות האסורות של מדיה ויקי',
+	'badimages-add-btn' => 'הוספה',
+	'badimages-added' => '$1 נוסף לרשימה.',
+	'badimages-count' => "יש {{PLURAL:$1|תמונה '''אחת'''|'''$1''' תמונות}}  ברשימת התמונות האסורות.",
+	'badimages-name' => 'שם:',
+	'badimages-not-added' => 'לא ניתן להוסיף את התמונה.',
+	'badimages-not-removed' => 'לא ניתן להסיר את התמונה',
+	'badimages-reason' => 'סיבה:',
+	'badimages-remove' => '(הסרה)',
+	'badimages-remove-btn' => 'הסרה',
+	'badimages-remove-confirm' => 'אנא אשרו שברצונכם להסיר את $1 מהרשימה:',
+	'badimages-removed' => '$1 הוסר מהרשימה.',
+	'badimages-subheading' => 'פריטים נוכחיים',
+	'badimages-unprivileged' => '(אין לכם הרשאה מתאימה לשנות את הרשימה)',
+	'badimages-log-name' => 'רשימת תמונות אסורות',
+	'badimages-log-header' => 'זה יומן שינויים של [[{{MediaWiki:Badimages-page}}|רשימת התמונות האסורות]].',
+	'badimages-log-add' => 'הוסיף את [[$1]] לרשימת התמונות האסורות',
+	'badimages-log-remove' => 'הסיר את [[$1]] מרשימת התמונות האסורות',
+	'badimages-page' => '{{ns:help}}:רשימת תמונות אסורות',
+);
+
 /** Hindi (हिन्दी)
  * @author Kaustubh
  */
@@ -924,9 +953,26 @@ $messages['km'] = array(
  * @author Purodha
  */
 $messages['ksh'] = array(
+	'badimages' => 'Leß met unjewollte Belder',
+	'badimages-desc' => '<span class="plainlinks">Verjüßert de Müjjescheite fun de Leß met [{{fullurl:Special:ProtectedTitles|namespace=6}} verbodde Belder] em MediaWiki.</span>',
 	'badimages-add-btn' => 'Donn dobei',
+	'badimages-added' => '$1 es en de Leß opjenomme.',
+	'badimages-count' => 'De Leß met verbodde Belder hät {{PLURAL:$1|eine Endraach|$1 Endrääsch|kei Endrääsch|keine Endraach}}.',
 	'badimages-name' => 'Name:',
+	'badimages-not-added' => 'Dat Beld kunnt nit dobei jedonn wäde.',
+	'badimages-not-removed' => 'Dat Beld kunnt nit eruß jenumme wäde.',
 	'badimages-reason' => 'Aanlass:',
+	'badimages-remove' => '(maach fott)',
+	'badimages-remove-btn' => 'Nemm fott!',
+	'badimages-remove-confirm' => 'Bes esu joot un donn noch bestäteje, dat De „$1“ us dä Leß fottnemme wells:',
+	'badimages-removed' => '„$1“ es us dä Leß jenumme.',
+	'badimages-subheading' => 'De Endrääsch zor Zick',
+	'badimages-unprivileged' => '(Do häs nit dat Rääsch, aan dä Leß jet ze ändere)',
+	'badimages-log-name' => 'Leß met de verbodde Belder',
+	'badimages-log-header' => 'Dat Lobooch zeich de Änderunge aan de [[{{MediaWiki:Badimages-page}}|Leß met verbodde Belder]].',
+	'badimages-log-add' => 'hät [[$1]] en de Leß met verbodde Belder opjenumme',
+	'badimages-log-remove' => 'hät [[$1]] uß de Leß met verbodde Belder jenumme',
+	'badimages-page' => '{{ns:help}}:Leß met verbodde Belder',
 );
 
 /** Kurdish (Kurdî / كوردی)
@@ -1298,12 +1344,19 @@ $messages['pms'] = array(
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */
 $messages['ps'] = array(
+	'badimages' => 'د بدو انځورونو لړليک',
+	'badimages-desc' => 'د ميډياويکي د بدو انځورونو د لړليک اسانتياوې غځول',
 	'badimages-add-btn' => 'ورګډول',
+	'badimages-added' => '$1 په لړليک کې ورګډ شو.',
 	'badimages-name' => 'نوم:',
+	'badimages-not-added' => 'دا انځور نه شي ورګډېدلای.',
+	'badimages-not-removed' => 'دا انځور غورځول کېدای نه شي.',
 	'badimages-reason' => 'سبب:',
 	'badimages-remove' => '(غورځول)',
 	'badimages-remove-btn' => 'غورځول',
 	'badimages-subheading' => 'اوسني توکي',
+	'badimages-log-name' => 'د بدو انځورونو لړليک',
+	'badimages-page' => '{{ns:help}}:د بدو انځورونو لړليک',
 );
 
 /** Portuguese (Português)

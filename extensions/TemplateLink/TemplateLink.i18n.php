@@ -117,6 +117,16 @@ $messages['gl'] = array(
 	'templatelink_newtitle' => '$1 (transcluído)',
 );
 
+/** Hebrew (עברית)
+ * @author Rotemliss
+ * @author דניאל ב.
+ */
+$messages['he'] = array(
+	'templatelink' => 'קישור לתבנית',
+	'templatelink_desc' => 'הרחבה זו יכולה להציג תבנית כדף חדש',
+	'templatelink_empty' => 'עליכם לספק פרמטר',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

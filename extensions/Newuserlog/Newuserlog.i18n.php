@@ -1071,11 +1071,12 @@ $messages['ps'] = array(
 
 /** Portuguese (Português)
  * @author Malafaya
+ * @author 555
  */
 $messages['pt'] = array(
 	'newuserlogpage' => 'Registo de criação de utilizadores',
 	'newuserlogpagetext' => 'Este é um registo de novas contas de utilizador',
-	'newuserlog-desc' => 'Adiciona um [[Special:Log/newusers|registo de criação de contas]] a [[Special:Log]]',
+	'newuserlog-desc' => 'Adiciona um [[Special:Log/newusers|registo de criação de contas]]',
 	'newuserlog-byemail' => 'palavra-chave enviada por correio-electrónico',
 	'newuserlog-create-entry' => 'Novo utilizador',
 	'newuserlog-create2-entry' => 'criou conta para $1',
@@ -1342,7 +1343,7 @@ $messages['vec'] = array(
 $messages['vi'] = array(
 	'newuserlogpage' => 'Nhật trình mở tài khoản',
 	'newuserlogpagetext' => 'Đây là danh sách những tài khoản thành viên mở lên gần đây.',
-	'newuserlog-desc' => 'Thêm một [[Special:Log/newusers|nhật trình tạo tài khoản]] vào [[Special:Log|danh sách nhật trình]]',
+	'newuserlog-desc' => 'Thêm một [[Special:Log/newusers|nhật trình tạo tài khoản]]',
 	'newuserlog-byemail' => 'gửi mật khẩu qua thư điện tử',
 	'newuserlog-create-entry' => 'Tài khoản mới',
 	'newuserlog-create2-entry' => 'đã tạo tài khoản mới với tên $1',

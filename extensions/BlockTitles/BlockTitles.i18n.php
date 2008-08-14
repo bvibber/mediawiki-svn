@@ -17,6 +17,13 @@ $messages['en'] = array(
 	'block_title_error'            => 'Sorry, the title of this page is not allowed to be saved.',
 );
 
+/** Message documentation (Message documentation)
+ * @author Purodha
+ */
+$messages['qqq'] = array(
+	'block_title_error-desc' => 'Shown in [[Special:Version]]',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */
@@ -293,6 +300,15 @@ $messages['jv'] = array(
 $messages['km'] = array(
 	'block_title_error_page_title' => 'ចំណងជើង​ត្រូវបាន​រាំងខ្ទប់',
 	'block_title_error' => 'សូមអភ័យទោស! ចំនងជើង​ទំព័រនេះ​មិនត្រូវ​បាន​អនុញ្ញាតអោយរក្សាទុកទេ។',
+);
+
+/** Ripoarisch (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'block_title_error_page_title' => 'Siggetittel Sperre',
+	'block_title_error-desc' => 'Brengk ene einfache Wääsch, öm bestemmpte Name för Sigge beim Afspeichere un beim Aanläje ze verbeede.',
+	'block_title_error' => 'Deit mer leid, ävver en Sigg met dämm Name aanzelääje es verbodde.',
 );
 
 /** Latin (Latina)

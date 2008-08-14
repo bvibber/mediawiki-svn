@@ -39,8 +39,10 @@ The current limit is $3.',
 
 /** Message documentation (Message documentation)
  * @author Jon Harald Søby
+ * @author Purodha
  */
 $messages['qqq'] = array(
+	'duplicator-desc' => 'Extension description displayed on [[Special:Version]].',
 	'duplicator-options' => '{{Identical|Options}}',
 	'duplicator-source' => '{{Identical|Source}}',
 );
@@ -60,7 +62,7 @@ $messages['af'] = array(
  */
 $messages['ar'] = array(
 	'duplicator' => 'استنساخ صفحة',
-	'duplicator-desc' => 'ينشيء نسخا مستقلة من الصفحات بتاريخ التعديلات الكامل',
+	'duplicator-desc' => 'ينشئ [[Special:Duplicate|نسخا مستقلة من الصفحات]] بتاريخ التعديلات الكامل',
 	'duplicator-toolbox' => 'استنسخ هذه الصفحة',
 	'duplicator-header' => 'هذه الصفحة تسمح بالاستنساخ الكامل لصفحة، وإنشاء نسخ مستقلة لكل التواريخ.
 هذا مفيد في استنساخ صفحة، إلى آخره.',
@@ -179,6 +181,7 @@ $messages['da'] = array(
  */
 $messages['de'] = array(
 	'duplicator' => 'Seite duplizieren',
+	'duplicator-desc' => 'Legt unabhängige [[Special:Duplicate|Kopien von Seiten]] an mit ihrer Versionsgeschichte',
 	'duplicator-toolbox' => 'Diese Seite duplizieren',
 	'duplicator-header' => 'Mit dieser Spezialseite können Seiten komplett dupliziert werden. Dabei wird die gesamte Versionsgeschichte übernommen. Dies kann beispielsweise nützlich sein, um eine Seite in Unterseiten aufzuteilen.',
 	'duplicator-options' => 'Optionen',
@@ -477,7 +480,7 @@ $messages['id'] = array(
  */
 $messages['it'] = array(
 	'duplicator' => 'Duplica una pagina',
-	'duplicator-desc' => 'Crea copie indipendenti di pagine con le cronologie complete delle modifiche',
+	'duplicator-desc' => 'Crea [[Special:Duplicate|copie indipendenti di pagine]] con le cronologie complete delle modifiche',
 	'duplicator-toolbox' => 'Duplica questa pagina',
 	'duplicator-header' => "Questa pagina speciale consente la duplicazione completa di una pagina, dando origine a due copie distinte della relativa cronologia. Tale operazione può essere utile per scindere due pagine (''forking''), ecc.",
 	'duplicator-options' => 'Opzioni',
@@ -548,12 +551,17 @@ $messages['km'] = array(
 	'duplicator-source-invalid' => 'សូមផ្តល់មកនូវចំនងជើងប្រភពត្រឹមត្រូវ។',
 );
 
+/** Ripoarisch (Ripoarisch) */
+$messages['ksh'] = array(
+	'duplicator-desc' => 'Määt [[Special:Duplicate|Kopije fun Sigge]] met all ier ahle Versione.',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
 $messages['lb'] = array(
 	'duplicator' => 'En Doublon vun enger Säit maachen',
-	'duplicator-desc' => 'Onofhängeg Kopie vu Säite maachen, mat dem kompletten Historique vun den Ännerungen',
+	'duplicator-desc' => 'Onofhängeg [[Special:Duplicate|Kopie vu Säite]] maachen, mat dem kompletten Historique vun den Ännerungen',
 	'duplicator-toolbox' => 'Een Doublon vun dëser Säit maachen',
 	'duplicator-header' => 'Dës Säit erlaabt et e komplett Duplikat vun enger Säit ze maachen, dobäi gëtt eng onofhängeg Kopie mat dem gesamten Historique ugeluecht. Dëst ass nëtzlech wann een eng Sàit opdeele wëllt, asw.',
 	'duplicator-options' => 'Optiounen',
@@ -644,7 +652,7 @@ $messages['nds'] = array(
  */
 $messages['nl'] = array(
 	'duplicator' => 'Kopieer een pagina',
-	'duplicator-desc' => "Maakt onafhankelijke kopieën van pagina's met een volledige bewerkingsgeschiedenis",
+	'duplicator-desc' => "Onafhankelijke [[Special:Duplicate|kopieën van pagina's]] maken met een volledige bewerkingsgeschiedenis",
 	'duplicator-toolbox' => 'Kopieer deze pagina',
 	'duplicator-header' => 'Deze pagina maakt het mogelijk een pagina volledig te kopiëren, waardoor er onafhankelijke
 kopieën ontstaan met een volledige geschiedenis. Dit is handig voor forks, enzovoort.',
@@ -678,7 +686,7 @@ $messages['nn'] = array(
  */
 $messages['no'] = array(
 	'duplicator' => 'Kopier en side',
-	'duplicator-desc' => 'Opprett uavhengige kopier av sider med full redigeringshistorikk',
+	'duplicator-desc' => 'Opprett uavhengige [[Special:Duplicate|kopier av sider]] med full redigeringshistorikk',
 	'duplicator-toolbox' => 'Kopier denne siden',
 	'duplicator-header' => 'Denne siden muliggjør fullstendig kopiering av en side, med uavhengige kopier av all historikk. Dette er nyttig for oppdeling av sider, etc.',
 	'duplicator-options' => 'Alternativer',

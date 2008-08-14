@@ -16,6 +16,13 @@ $messages['en'] = array(
 	'eval_code'   => 'Code',
 );
 
+/** Message documentation (Message documentation)
+ * @author Purodha
+ */
+$messages['qqq'] = array(
+	'eval-desc' => 'Extension description displayed on [[Special:Version]].',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */
@@ -158,6 +165,16 @@ $messages['jv'] = array(
 $messages['km'] = array(
 	'eval_submit' => 'វាយតំលៃ',
 	'eval_code' => 'កូដ',
+);
+
+/** Ripoarisch (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'eval' => 'Eval',
+	'eval-desc' => 'Deit [[Special:Eval|en Schnettstell]] för de Fungkßjohn <code>eval()</code> dobei.',
+	'eval_submit' => 'Usrechne',
+	'eval_code' => '<i lang="en">Code</i>',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

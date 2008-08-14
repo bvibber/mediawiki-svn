@@ -131,6 +131,18 @@ $messages['gv'] = array(
 	'pageby-anon' => '<i>neuenmyssit</i>',
 );
 
+/** Hebrew (עברית)
+ * @author Rotemliss
+ * @author דניאל ב.
+ */
+$messages['he'] = array(
+	'pageby-desc' => 'הצגת תורמים בתוך דף ויקי באמצעות התג <code><nowiki><pageby></nowiki></code>',
+	'pageby-first' => 'הדף נוצר על ידי $1, $2',
+	'pageby-last' => '<a href="$3">השינוי</a> האחרון בוצע על ידי $1, $2',
+	'pageby-contributors' => 'תורמים:',
+	'pageby-anon' => '<i>אנונימי</i>',
+);
+
 /** Hindi (हिन्दी)
  * @author Kaustubh
  */
