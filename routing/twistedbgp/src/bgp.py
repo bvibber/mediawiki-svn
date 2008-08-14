@@ -397,6 +397,9 @@ class ASPathAttribute(Attribute):
     def encode(self):
         packedPath = "".join([struct.pack('!BB%dH' % len(asPath), segType, len(asPath), *asPath) for segType, asPath in self.value])
         return struct.pack('!BBB', self.flags(), self.typeCode, len(packedPath)) + packedPath
+
+    def __str__(self):
+        return " ".join([" ".join([str(asn) for asn in path]) for type, path in self.value])
         
 class NextHopAttribute(Attribute):
     name = 'Next Hop'
