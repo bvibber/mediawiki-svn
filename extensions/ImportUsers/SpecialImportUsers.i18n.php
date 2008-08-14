@@ -9,7 +9,7 @@ $messages = array();
 
 $messages['en'] = array(
 	'importusers'                         => 'Import users' ,
-	'importusers-desc'                    => 'Imports users in bulk from CSV-file; encoding: UTF-8',
+	'importusers-desc'                    => '[[Special:ImportUsers|Imports users]] in bulk from CSV-file; encoding: UTF-8',
 	'importusers-uploadfile'              => 'Upload file',
 	'importusers-form-caption'            => 'Input CSV-file (UTF-8)' ,
 	'importusers-form-file'               => 'User file format (csv): ',
