@@ -266,7 +266,7 @@ class HideRevisionForm extends SpecialPage {
 		}
 
 		// Remove from "revision"
-		$dbw->delete( 'revision', array( 'rev_id' => $id ), __FUNCTION__ );
+		$dbw->delete( 'revision', array( 'rev_id' => $id ), __METHOD__ );
 
 		// Remove from "recentchanges"
 		// The page ID is used to get us a relatively usable index
@@ -342,7 +342,7 @@ class HideRevisionForm extends SpecialPage {
 				'hidden_on_timestamp' => $dbw->timestamp(),
 				'hidden_reason'       => $this->mReason,
 			),
-			__FUNCTION__,
+			__METHOD__,
 			array( 'IGNORE' ) );
 	}
 }
@@ -358,7 +358,7 @@ class SpecialOversight extends SpecialPage {
 	 * Special page handler function for Special:Oversight
 	 */
 	function execute( $par ) {
-		global $wgRequest, $wgUser, $wgRCMaxAge;
+		global $wgRequest, $wgUser;
 
 		$this->setHeaders();
 
@@ -368,78 +368,94 @@ class SpecialOversight extends SpecialPage {
 		}
 
 		$this->outputHeader();
-
+		$page = $wgRequest->getVal( 'page' );
+		$user = $wgRequest->getVal( 'user' );
 		$revision = $wgRequest->getIntOrNull( 'revision' );
-		if ( $wgRequest->getCheck( 'diff' ) && !is_null( $revision )) {
+		if( $wgRequest->getCheck( 'diff' ) && !is_null( $revision )) {
 			$this->showDiff( $revision);
 		} else if( is_null( $revision ) ) {
-			$this->showList( time() - $wgRCMaxAge );
+			$this->showList( $page, $user );
 		} else {
 			$this->showRevision( $revision );
 		}
 	}
 
-	function showList( $from=null ) {
-		global $wgOut;
-
-		$dbr = wfGetDB( DB_SLAVE );
-
-		$fromTime = $dbr->timestamp( $from );
-		$result = $this->getRevisions( $dbr,
-			array( 'hidden_on_timestamp >= ' . $dbr->addQuotes( $fromTime ) ) );
-
-		$wgOut->addWikiText( wfMsgNoTrans( 'oversight-header' ) );
-		$wgOut->addHtml( '<ul>' );
-		while( $row = $dbr->fetchObject( $result ) ) {
-			$wgOut->addHtml( $this->listRow( $row ) );
+	function showList( $page, $user ) {
+		global $wgOut, $wgScript, $wgTitle;
+		
+		$title = Title::newFromUrl( $page );
+		$u = User::newFromName( $user );
+		$page = $title ? $page : ''; // blank invalid titles
+		
+		$action = htmlspecialchars( $wgScript );
+		$wgOut->addHTML( "<form action=\"$action\" method=\"get\"><fieldset>" );
+		$wgOut->addHTML( '<legend>' . wfMsgHtml('oversight-legend') . '</legend>' );
+		$wgOut->addHTML( Xml::hidden( 'title', $wgTitle->getPrefixedDbKey() ) );
+		$wgOut->addHTML( Xml::inputLabel( wfMsg( 'specialloguserlabel' ), 'user', 'user', 20, $user ) );
+		$wgOut->addHTML( '&nbsp;' );
+		$wgOut->addHTML( Xml::inputLabel( wfMsg( 'speciallogtitlelabel' ), 'page', 'page', 30, $page ) );
+		$wgOut->addHTML( '&nbsp;' . Xml::submitButton( wfMsg( 'allpagessubmit' ) ) );
+		$wgOut->addHTML( '</fieldset></form>' );
+		
+		$pager = new HiddenRevisionsPager( $this, array(), $title, $u );
+		if( $pager->getNumRows() ) {
+			$wgOut->addHTML( wfMsgExt('oversight-header', array('parse') ) );
+			$wgOut->addHTML( $pager->getNavigationBar() );
+			$wgOut->addHTML( $pager->getBody() );
+			$wgOut->addHTML( $pager->getNavigationBar() );
+		} else {
+			$wgOut->addHTML( wfMsgExt('specialpage-empty', array('parse') ) );
 		}
-		$wgOut->addHtml( '</ul>' );
-		$dbr->freeResult( $result );
 	}
 
 	function getRevisions( $db, $condition ) {
 		return $db->select(
 			array( 'hidden', 'user' ),
-			array(
-				'hidden_page as page_id',
-				'hidden_namespace as page_namespace',
-				'hidden_title as page_title',
-
-				'hidden_page as rev_page',
-				'hidden_comment as rev_comment',
-				'hidden_user as rev_user',
-				'hidden_user_text as rev_user_text',
-				'hidden_timestamp as rev_timestamp',
-				'hidden_minor_edit as rev_minor_edit',
-				'hidden_deleted as rev_deleted',
-				'hidden_rev_id as rev_id',
-				'hidden_text_id as rev_text_id',
-
-				'0 as rev_len',
-
-				'hidden_by_user',
-				'hidden_on_timestamp',
-				'hidden_reason',
-
-				'user_name',
-
-				'0 as page_is_new',
-				'0 as rc_id',
-				'1 as rc_patrolled',
-				'0 as rc_old_len',
-				'0 as rc_new_len',
-				'0 as rc_params',
-
-				'NULL AS rc_log_action',
-				'0 AS rc_deleted',
-				'0 AS rc_logid',
-				'NULL AS rc_log_type' ),
+			$this->getSelectFields(),
 			array_merge(
 				$condition,
 				array( 'hidden_by_user=user_id' ) ),
-			__FUNCTION__,
+			__METHOD__,
 			array(
 				'ORDER BY' => 'hidden_on_timestamp DESC' ) );
+	}
+	
+	public function getSelectFields() {
+		return array( 'hidden_page as page_id',
+			'hidden_namespace as page_namespace',
+			'hidden_title as page_title',
+
+			'hidden_page as rev_page',
+			'hidden_comment as rev_comment',
+			'hidden_user as rev_user',
+			'hidden_user_text as rev_user_text',
+			'hidden_timestamp as rev_timestamp',
+			'hidden_minor_edit as rev_minor_edit',
+			'hidden_deleted as rev_deleted',
+			'hidden_rev_id as rev_id',
+			'hidden_text_id as rev_text_id',
+
+			'0 as rev_len',
+
+			'hidden_by_user',
+			'hidden_on_timestamp',
+			'hidden_reason',
+
+			'user_name',
+
+			'0 as page_is_new',
+			'0 as rc_id',
+			'1 as rc_patrolled',
+			'0 as rc_old_len',
+			'0 as rc_new_len',
+			'0 as rc_params',
+
+			'NULL AS rc_log_action',
+			'0 AS rc_deleted',
+			'0 AS rc_logid',
+			'NULL AS rc_log_type',
+			'NULL AS rev_parent_id'
+		);
 	}
 
 	function listRow( $row ) {
@@ -564,5 +580,65 @@ class SpecialOversight extends SpecialPage {
 				"</div>\n" );
 		}
 		$dbr->freeResult( $result );
+	}
+}
+	
+/**
+ * Query to list out stable versions for a page
+ */
+class HiddenRevisionsPager extends ReverseChronologicalPager {
+	public $mForm, $mConds, $namespace, $dbKey, $uid;
+
+	function __construct( $form, $conds = array(), $title = NULL, $user = NULL ) {
+		$this->mForm = $form;
+		$this->mConds = $conds;
+		$this->namespace = $title ? $title->getNamespace() : -1;
+		$this->dbKey = $title ? $title->getDBKey() : null;
+		$this->uid = $user ? $user->getId() : null;
+
+		parent::__construct();
+	}
+
+	function formatRow( $row ) {
+		return $this->mForm->listRow( $row );
+	}
+
+	function getQueryInfo() {
+		$conds = $this->mConds;
+		$conds[] = 'hidden_by_user = user_id';
+		if( $this->namespace >= 0 && $this->dbKey ) {
+			$conds['hidden_namespace'] = $this->namespace;
+			$conds['hidden_title'] = $this->dbKey;
+		}
+		if( !is_null($this->uid) ) {
+			$conds['hidden_by_user'] = $this->uid;
+		}
+		$indexes = array( 'hidden' => array('hidden_on_timestamp','page_title_timestamp','hidden_by_user') );
+		return array(
+			'tables'  => array('hidden','user'),
+			'fields'  => $this->mForm->getSelectFields(),
+			'conds'   => $conds,
+			'options' => array( 'USE INDEX' => $indexes )
+		);
+	}
+
+	function getIndexField() {
+		return 'hidden_on_timestamp';
+	}
+	
+	function getStartBody() {
+		wfProfileIn( __METHOD__ );
+		# Do a link batch query
+		$lb = new LinkBatch();
+		while( $row = $this->mResult->fetchObject() ) {
+			$lb->add( $row->page_namespace, $row->page_title );
+		}
+		$lb->execute();
+		wfProfileOut( __METHOD__ );
+		return '<ul>';
+	}
+	
+	function getEndBody() {
+		return '</ul>';
 	}
 }
