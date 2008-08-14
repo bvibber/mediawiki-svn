@@ -24,11 +24,9 @@ function wfSpecialMediaSearch(){
 class MV_SpecialSearch extends SpecialPage {
 	function MV_SpecialSearch() {
 		global $wgOut, $wgRequest;
-		//mvfAddHTMLHeader('search');
-		//$MvSpecialSearch = new MV_SpecialMediaSearch();
-		//$MvSpecialSearch->setupFilters();		
-		//$MvSpecialSearch->doSearch();
-		//$wgOut->addHTML($MvSpecialSearch->getResultsHTML());		
+		mvfAddHTMLHeader('search');
+		$MvSpecialSearch = new MV_SpecialMediaSearch();
+		$MvSpecialSearch->doSearchPage( $wgRequest->getVal('search') );	
 		SpecialPage :: SpecialPage('Search');
 	}
 }
@@ -130,7 +128,7 @@ class MV_SpecialMediaSearch {
 								<span class=\"advs_basic\" style=\"display:";
 		$o .= ($this->adv_search) ? 'none' : 'inline';
 		$o .= "\">
-									<input type=\"text\" class=\"searchField\" name=\"mv_search\" id=\"search_field\" value=\"{$this->unified_term_search}\"/>										
+									<input type=\"text\" class=\"searchField\" name=\"mv_search\" id=\"searchInput\" value=\"{$this->unified_term_search}\"/>										
 								</span>
 								<span class=\"advs_adv\" id=\"adv_filters\" style=\"display:";
 		$o .= ($this->adv_search) ? 'inline' : 'none';
@@ -517,6 +515,7 @@ class MV_SpecialMediaSearch {
 		}
 		$o .= '</div><!--searchSideBarInner-->
 				</div>';
+		$o.='<div style="clear:both;"></div>';
 		return $o;
 	}
 	function getResultsHTML() {

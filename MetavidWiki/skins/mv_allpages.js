@@ -162,7 +162,7 @@ function mv_toggle_advs(){
 	if($j('#advs').val()=='0'){
 		$j('#advs').val('1');
 		//sync values from basic -> avanced		
-		$j("input[@name$='f[0][v]']").val( $j('#search_field').val() );
+		$j("input[@name$='f[0][v]']").val( $j('#searchInput').val() );
 		
 		$j('.advs_basic').fadeOut('fast',function(){
 			if($j('#tmp_loading_txt').length==0){
@@ -179,7 +179,7 @@ function mv_toggle_advs(){
 	}else{
 		$j('#advs').val('0');
 		//sync values from advanced -> basic
-		$j('#search_field').val( $j("input[@name$='f[0][v]']").val() );
+		$j('#searchInput').val( $j("input[@name$='f[0][v]']").val() );
 		//do style display swap
 		$j('.advs_adv').fadeOut('fast',function(){
 			$j('.advs_basic').fadeIn('fast');
@@ -191,7 +191,7 @@ function mv_setup_search_ac(){
 	var uri = wgScript;
 	//add the person choices div to searchInput
 	//turn off browser baseed autocomplete: 
-	$j('#search_field').attr('autocomplete',"off");
+	$j('#searchInput').attr('autocomplete',"off");
 	
 	//add the sugestions div (abolute positioned so it can be ontop of everything) 	
 	$j('body').prepend('<div id="suggestions" style="position:absolute;display:none;z-index:50;">'+
@@ -201,8 +201,8 @@ function mv_setup_search_ac(){
 							'<div id="suggestionsBot"></div>'+						
 						'</div>');
 	//position the sugestions below the search field:
-	if( $j('#search_field').get(0)!=null){
-		sf_pos = $j('#search_field').offset();
+	if( $j('#searchInput').get(0)!=null){
+		sf_pos = $j('#searchInput').offset();
 		sf_pos['top']=sf_pos['top']+40;
 		sf_pos['left']=sf_pos['left']-220;
 		js_log("moved sugest to: " + sf_pos['top'] + ' '+ sf_pos['left']);
@@ -210,26 +210,26 @@ function mv_setup_search_ac(){
 	}
 	
 	//add hook:
-	$j('#search_field').autocomplete(
+	$j('#searchInput').autocomplete(
 		uri,
 		{
 			autoFill:false,
 			onItemSelect:function(v){		
 				//alert('selected:' + v.innerHTML + ' page:'+$j('#searchInput').val());	
 				//jump to page: 			
-				if($j('#search_field').val()=='do_search'){
+				if($j('#searchInput').val()=='do_search'){
 					qs = v.innerHTML.toLowerCase().indexOf('<b>')+3;
 					qe = v.innerHTML.toLowerCase().indexOf('</b>');
 					//update the search input (incase redirect fails)
-					$j('#search_field').val(v.innerHTML.substring(qs,qe));
+					$j('#searchInput').val(v.innerHTML.substring(qs,qe));
 					window.location=uri+'/'+'Special:MediaSearch?mv_search='+v.innerHTML.substring(qs,qe);
 				}else{
-					window.location =uri+'/'+$j('#search_field').val();
+					window.location =uri+'/'+$j('#searchInput').val();
 				}
 			},
 			formatItem:function(row){
 				if(row[0]=='do_search'){
-					return '<span class="ac_txt">'+row[1].replace('$1',$j('#search_field').val())+'</span>';
+					return '<span class="ac_txt">'+row[1].replace('$1',$j('#searchInput').val())+'</span>';
 				}else if(row[2]=='no_image'){
 					return '<span class="ac_txt">'+row[1]+'</span>';
 				}else{
