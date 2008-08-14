@@ -85,7 +85,7 @@
  		var mvTitle = \''.htmlspecialchars($this->article->mvTitle->getWikiTitle()).'\'; 
  		var mvTracks = \''.htmlspecialchars($this->components['MV_Overlay']->getMVDReqString()). '\';
  		var mvgScriptPath = \''.htmlspecialchars($mvgScriptPath).'\';
- 		/*]]>*/</script>\n');
+ 		/*]]>*/</script>');
 		
 		//also add prev next paging	 		
 		$this->page_header ='<h1 class="videoHeader">'.

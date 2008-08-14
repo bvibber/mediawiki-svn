@@ -1,9 +1,37 @@
-version beta 02
-changes in this release:
+version beta 1.0rc1
+changes features of this release:
 
 
-mv_embed
+= Metavid 1.0rc1 Release Summary = 
 
+== Unified Search == 
+* new unified search model groups and agrgates relavent semantic metadata per search
+* advanced search improvments 
+
+== Mv_embed ==
+* support stream selection, supports flash stream type (Summer of code Sstudent *stjepan*)
+* flash media server added for serving portions of flvs to arbitrary clients. (thanks FLV4PHP) 
+* Also See http://metavid.ucsc.edu/wiki/index.php/Mv_embed
+
+== JQuery 1.2.6 == 
+* updated to latest and greates 
+* Also see http://docs.jquery.com/Release:jQuery_1.2.6
+
+== Updated compatibility to latest metavidWiki version *1.13* ==
+* Also see http://svn.wikimedia.org/svnroot/mediawiki/tags/REL1_13_0RC2/phase3/RELEASE-NOTES
+
+== Updated Compatibility to latest Semantic MediaWiki 1.2 == 
+* faster, lazyloading of all classes, better db structure, + lots more
+* Also See http://semantic-mediawiki.org/wiki/SMW_1.2
+
+== Massive security review (thanks '''tstarling''') ==
+* properly escaped all values outputted to browser and database
+* proper use of database wrapper functions
+* closed some security holes (running older versions of metavid is a bad idea please update now)
+
+
+
+==Old Versions==
 
 version: beta 01
 First Release of the metavidWiki software (nothing too special just gziped the svn) 

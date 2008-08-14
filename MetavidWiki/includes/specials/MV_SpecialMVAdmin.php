@@ -27,11 +27,11 @@ if (!defined('MEDIAWIKI')) die();
 
 class MVAdmin extends SpecialPage {
 
-	/**
+	/*
 	 * Constructor
 	 */
 	public function __construct() {
-		global $wgMessageCache; ///TODO: should these be messages?
+		global $wgMessageCache; ///TODO: should these be messages?		
 		$wgMessageCache->addMessages(array('mvadmin' => 'Admin functions for MetavidWiki'));
 		parent::__construct('MVAdmin', 'delete');
 	}
@@ -51,7 +51,8 @@ class MVAdmin extends SpecialPage {
 			$wgOut->permissionRequired('delete');
 			return;
 		}
-
+		$wgOut->addHTML('web admin install currently dissabled');
+		exit();
 		$wgOut->setPageTitle(wfMsg('mvadmin'));
 
 		/**** Execute actions if any ****/
@@ -112,6 +113,4 @@ class MVAdmin extends SpecialPage {
 		$wgOut->addHTML($html);
 		return true;
 	}
-
 }
-SpecialPage :: addPage(new MVAdmin());

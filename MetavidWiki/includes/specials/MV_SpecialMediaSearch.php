@@ -175,6 +175,7 @@ class MV_SpecialMediaSearch {
 			);
 			$this->unified_term_search = $term;
 			//if not doing advanced search we are done
+			
 			if (!$this->adv_search)
 				return;
 		}
@@ -208,7 +209,10 @@ class MV_SpecialMediaSearch {
 							if ($this->unified_term_search != '')
 								$this->unified_term_search .= ' ';
 							$this->unified_term_search .= $f['v'];
+						}else if($f['t']=='spoken_by'){
+							$this->unified_term_search = $f['v'];
 						}
+						
 					}
 				}
 			} else {
@@ -232,8 +236,7 @@ class MV_SpecialMediaSearch {
 						break;
 				}
 			}
-		}
-		//print "CUR un: " . $this->unified_term_search;
+		}		
 	}
 	function doSearch($log_search=true) {
 		global $mvEnableSearchDigest, $mvSearchDigestTable;
@@ -435,19 +438,21 @@ class MV_SpecialMediaSearch {
 		//look for people matches max of 3
 		$first_block = ' first_block';
 		$matches = 0;
-		$person_out = MV_SpecialMediaSearch :: auto_complete_person($this->unified_term_search, 3, 'person_html', $matches);
+		$person_out_ary=array();
+		$person_out = MV_SpecialMediaSearch :: auto_complete_person($this->unified_term_search, 3, 'person_html', $matches, $person_out_ary);		
 		if ($person_out != '' || count($sideBarLinkBucket['person']) != 0) {
 			//for now don't include({$matches})
 			$o .= "<div class=\"block{$first_block}\">
 								<h6>" . wfMsg('mv_people_results') . "</h6>
 							</div>";
-			$o .= '<div class="block wide_block">' .
-			$person_out;
+			$o .= '<div class="block wide_block">';
+			$o .=  $person_out;
 			if (isset ($sideBarLinkBucket['person'])) {
 				$pAry = & $sideBarLinkBucket['person'];
 				arsort($pAry);
 				$i = 0;
 				foreach ($pAry as $person_name => $count) {
+					if(in_array($person_name,$person_out_ary) )continue;
 					if ($i == $perSectionCount)
 						break;
 					$o .= MV_SpecialMediaSearch :: format_ac_line($person_name, '', '', MV_SpecialMediaSearch :: getPersonImageURL($person_name), $format = 'person_html');
@@ -1061,7 +1066,7 @@ class MV_SpecialMediaSearch {
 		return $out;
 	}
 	/*@@todo cache result for given values*/
-	function auto_complete_person($val, $result_limit = '5', $format = 'ac_line', & $match_count = '') {
+	function auto_complete_person($val, $result_limit = '5', $format = 'ac_line', & $match_count = '',& $person_ary=array()) {
 		$dbr = & wfGetDB(DB_SLAVE);
 		$result = $dbr->select('categorylinks', 'cl_sortkey', array (
 			'cl_to' => 'Person',
@@ -1076,6 +1081,7 @@ class MV_SpecialMediaSearch {
 		$out = '';
 		while ($row = $dbr->fetchObject($result)) {
 			$person_name = $row->cl_sortkey;
+			$person_ary[$person_name]=true;
 			//make sure the person page exists: 
 			$personTitle = Title :: makeTitle(NS_MAIN, $person_name);
 			if ($personTitle->exists()) {

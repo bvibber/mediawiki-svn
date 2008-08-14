@@ -154,7 +154,7 @@ $smwgShowFactbox=SMW_FACTBOX_HIDDEN;
 		}else{
 			$wgOut->addHTML($content);
 		}			
-		$wgOut->addHTML("</div>\n");
+		$wgOut->addHTML("</div>");
 		$wgOut->addHTML("</fieldset>");		
 	}
 	function get_tl_mvd_request($titleKey, $mvd_id){

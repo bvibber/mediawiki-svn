@@ -12,6 +12,7 @@
  * magic words has all parser rewrite keys functions
  * format is {{#mvData:magicTypeKey|format=format|num_results=#}} etc   
  */
+if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
 class MV_MagicWords{
 	var $args = array();
 	
@@ -92,12 +93,16 @@ class MV_MagicWords{
 	//gets the top few clip ranges
 	function getTopClips(){
 		$dbr = & wfGetDB(DB_READ);
-		$result = $dbr->select('mv_clipview_digest', '`query_key`,`stream_id`,`start_time`, `end_time`, COUNT(1) as `hit_count`', 
-				'view_date >=\''.$this->getStartTime().'\'',
-				__METHOD__,
-				array('GROUP BY' => 'query_key', 'ORDER BY'=>'`hit_count` ASC', 
-				 		'LIMIT'=>($this->params['num_results'])) 				 
-			);				
+		$vars = array('query_key','stream_id','start_time','end_time', 'COUNT(1) as hit_count');
+		$conds = array('view_date >='.$dbr->addQuotes($this->getStartTime()));
+		$options = 	array('GROUP BY' => 'query_key', 'ORDER BY'=>'`hit_count` ASC', 
+				 		'LIMIT'=>($this->params['num_results']) );
+		$result = $dbr->select('mv_clipview_digest', 
+					$vars,
+					$conds, 				
+					__METHOD__,
+			 		$options 
+				);				
 		if($dbr->numRows($result)==0){
  			return '';
  		}else{
@@ -125,7 +130,7 @@ class MV_MagicWords{
 	 						 $mvTitle->getTimeDesc().'" src="'.$mvTitle->getStreamImageURL('small').
 	 					'"/>',
  					'tl=1' );
- 				
+ 				$title_span='';
  				if(isset($mvStream->date_start_time)){
  					$parts = split('_',$mvStream->getStreamName());
  					if(count($parts)>=3){
@@ -196,29 +201,50 @@ class MV_MagicWords{
 	function getTopSearches(){
 		$dbr =& wfGetDB(DB_READ);
 		$o='';
+		$options=array();
 		/*$result = $dbr->select('mv_search_digest', '`query_key`, COUNT(1) as `hit_count`', "`time` >= '$start_time' ",
 				 __METHOD__,
 				 array('GROUP BY' => 'query_key', 'ORDER BY `hit_count` ASC', 
 				 		'LIMIT 0,'.$this->params['num_results']) );*/
-		$sql="SELECT `mv_search_digest`.`query_key`, COUNT(1) as `hit_count`, `mv_query_key_lookup`.`filters`
+		/*$sql="SELECT `mv_search_digest`.`query_key`, COUNT(1) as `hit_count`, `mv_query_key_lookup`.`filters`
 			  FROM `mv_search_digest`
 			  LEFT JOIN `mv_query_key_lookup` ON (`mv_search_digest`.`query_key` = `mv_query_key_lookup`.`query_key`)
 			  WHERE `time` >= '{$this->getStartTime()}' GROUP BY `mv_search_digest`.`query_key` 
-			  LIMIT 0, {$this->params[num_results]}";
-		$result = $dbr->query($sql);		
+			  LIMIT 0, {$this->params[num_results]}";*/
+		//$from_tables 
+		$vars = array($dbr->tableName('mv_search_digest').'.query_key',
+					  'COUNT(1) as `hit_count`',
+					  $dbr->tableName('mv_query_key_lookup').'.filters');
+		$from_tables= $dbr->tableName('mv_search_digest').
+						' LEFT JOIN' . $dbr->tableName('mv_query_key_lookup') . 
+							' ON ( '. 
+								$dbr->tableName('mv_search_digest').'.query_key = ' . 
+								$dbr->tableName('mv_query_key_lookup').'.query_key '.
+							' ) ';
+		$conds = '`time` >= ' . $dbr->addQuotes($this->getStartTime());
+							
+		$options['GROUP BY']=$dbr->tableName('mv_search_digest').'.query_key';
+		$options['LIMIT'] = $this->params[num_results];
+		
+		$result = $dbr->select( $from_tables, 
+			$vars,
+			$conds,
+			__METHOD__, 
+			$options);		
+			
 		if($dbr->numRows($result)==0){
  			return '';
  		}else{	 	
  			//@@todo probably should try to abstract out formating.. 
  			//but will need to wait until we have a few more test cases to do a productive abstraction
  			if($this->params['format']=='ul_list'){
- 				$class_attr=($this->params['class']!='')?' class="'.$this->params['class'].'"':'';
+ 				$class_attr=($this->params['class']!='')?' class="' . htmlspecialchars($this->params['class']) . '"':'';
  				$o.='<ul'.$class_attr.'>';				 			 		
  			} 			
  			$mvms=new MV_SpecialMediaSearch();
  			$sTitle=Title::MakeTitle(NS_SPECIAL, 'MediaSearch');
  			while($row = $dbr->fetchObject( $result )){ 	 				
- 				$title_desc = $row->hit_count.' '.wfMsg('mv_date_'.$this->params['time_range']);
+ 				$title_desc = htmlspecialchars($row->hit_count).' '.wfMsg('mv_date_'.$this->params['time_range']);
  				$mvms->loadFiltersFromSerialized($row->filters); 				 	 				
  				$o.='<li><a title="'.$title_desc.'" href="'.$sTitle->escapeLocalURL($mvms->get_httpd_filters_query().'&tl=1'  ).'">'. 
 						$mvms->getFilterDesc($query_key=true) . 

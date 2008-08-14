@@ -14,7 +14,6 @@
   * MvStreamFile handles the mapping of path types to urls & 
   * active record style management of the mv_stream_files table
   */
- 
  class MV_StreamFile{
  	var $stream_id='';
  	var $base_offset='';//base offset from the stream  date_start_time
@@ -70,10 +69,9 @@
  		$dbw->delete($mvStreamFilesTable, array('id'=>$this->id));
  	}
  	function writeStreamFileDB(){
- 		global $mvStreamFilesTable;
  		$dbw = & wfGetDB(DB_WRITE); 	
  		if($this->id==''){
-			$dbw->insert($mvStreamFilesTable, array(
+			$dbw->insert('mv_stream_files', array(
 				'stream_id'=>$this->stream_id,
 				'base_offset'=>$this->base_offset,
 				'duration'=>$this->duration,
@@ -83,7 +81,7 @@
 			), __METHOD__);
  		}else{
  			//update: 
- 			$dbw->update($mvStreamFilesTable, array(				
+ 			$dbw->update('mv_stream_files', array(				
 				'base_offset'=>$this->base_offset,
 				'duration'=>$this->duration,
 				'file_desc_msg'=>$this->file_desc_msg,
@@ -93,10 +91,10 @@
  		}
  	}
  	function getStreamFileDB($quality=null){
-		global $mvDefaultVideoQualityKey, $mvStreamFilesTable;
+		global $mvDefaultVideoQualityKey;
 		if($quality==null)$quality=$mvDefaultVideoQualityKey;
 		$dbr = & wfGetDB(DB_READ);
-		$result = $dbr->select($dbr->tableName($mvStreamFilesTable), array('path'), array (			
+		$result = $dbr->select('mv_stream_files', array('path'), array (			
 			'stream_id' => $this->_parent_stream->getStreamId(),
 			'file_desc_msg'=>$quality
 		));

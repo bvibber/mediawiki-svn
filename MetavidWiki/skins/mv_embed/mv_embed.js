@@ -417,6 +417,7 @@ var embedTypes = {
 	},
 	clientSupports: { 'thumbnail' : true },
  	detect: function() {
+ 		js_log("running detect");
         this.players = new mediaPlayers();
         
 		 // First some browser detection
@@ -1730,16 +1731,18 @@ embedVideo.prototype = {
 		if(quick_switch){
 			$j('#img_thumb_'+this.id).attr('src', src);
 		}else{
+			var _this = this;
 			if(this.thumbnail_disp){
 				$j('#dc_'+this.id).append('<img src="'+src+'" ' +
 					'style="display:none;position:absolute;zindex:2;top:0px;left:0px;" ' +
 					'width="'+this.width+'" height="'+this.height+'" '+
 					'id = "new_img_thumb_'+this.id+'" />');
 				$j('#new_img_thumb_'+this.id).fadeIn("slow", function(){
+						js_log('done fading in: '+src);
 						//once faded in remove org and rename new:
-						$j('#img_thumb_'+this.id).remove();
-						$j('#new_img_thumb_'+this.id).attr('id', 'img_thumb_'+this.id);
-						$j('#img_thumb_'+this.id).css('zIndex','1');
+						$j('#img_thumb_'+_this.id).remove();						
+						$j('#new_img_thumb_'+_this.id).attr('id', 'img_thumb_'+_this.id);
+						$j('#img_thumb_'+_this.id).css('zindex','1');
 				});			
 			}
 		}
@@ -2458,7 +2461,14 @@ function mv_jsdata_cb(response){
 function loadExternalJs(url){  
    	js_log('load js: '+ url);
     if(window['$j'])
-        $j.getScript(url);
+    	//have to use direct ajax call insted of $j.getScript() 
+    	//since you can't send "cache" option to $j.getScript() 
+       $j.ajax({
+			type: "GET",
+			url: url,
+			dataType: 'script',
+			cache: true
+		});
     else
     {
     	var e = document.createElement("script");

@@ -6,7 +6,7 @@
  * for more info visit http:/metavid.ucsc.edu/code
  * 
  */
-define('MV_VERSION','0.1 (pre alpha)');
+define('MV_VERSION','1.0rc1 (pre alpha)');
 
 
 if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
@@ -155,8 +155,8 @@ function mvSetupExtension(){
 	$wgSpecialPages['MediaSearch']				= array('MediaSearch');
 	$wgSpecialPages['MV_SpecialSearch']			= array('MV_SpecialSearch');
 	
-	$wgAutoloadClasses['MV_SpecialMVAdmin']		= dirname(__FILE__) .'/specials/MV_SpecialMVAdmin.php';
-	$wgSpecialPages['MV_SpecialMVAdmin']		= array('MV_SpecialMVAdmin');
+	$wgAutoloadClasses['MVAdmin']				= dirname(__FILE__) .'/specials/MV_SpecialMVAdmin.php';
+	$wgSpecialPages['MVAdmin']					= array('MV_SpecialMVAdmin');
 	//require_once( dirname(__FILE__) . '/specials/MV_SpecialCRUDStream.php');
 	//require_once( dirname(__FILE__) . '/specials/MV_SpecialListStreams.php');
 	//require_once( dirname(__FILE__) . '/specials/MV_SpecialExport.php');
@@ -228,7 +228,7 @@ function mvfAutoAllPageHeader(){
 	$mvgScriptPath = htmlspecialchars( $mvgScriptPath );
 	$wgJsMimeType = htmlspecialchars( $wgJsMimeType) ;	
 	/* (moved to on_dom ready)  but here as well*/ 
-	$wgOut->addScript("<script type=\"{$wgJsMimeType}\" src=\"{$mvgScriptPath}/skins/mv_embed/jquery/jquery-1.2.1.js\"></script>");
+	$wgOut->addScript("<script type=\"{$wgJsMimeType}\" src=\"{$mvgScriptPath}/skins/mv_embed/jquery/jquery-1.2.6.min.js\"></script>");
 	$wgOut->addScript("<script type=\"{$wgJsMimeType}\" src=\"{$mvgScriptPath}/skins/mv_embed/jquery/plugins/jquery.autocomplete.js\"></script>");
 	$wgOut->addScript("<script type=\"{$wgJsMimeType}\" src=\"{$mvgScriptPath}/skins/mv_embed/jquery/plugins/jquery.hoverIntent.js\"></script>");
 	
@@ -265,15 +265,6 @@ function mvfAutoAllPageHeader(){
 				if(!($mvEnableAutoComplete || $mvEnableJSLinkBack ||$mvEnableJSMVDrewrite) ){
 					$wgOut->addScript("<script type=\"{$wgJsMimeType}\" src=\"{$mvgScriptPath}/skins/mv_embed/mv_embed.js\"></script>");
 				}
-			}
-			if($head_set=='search' || $head_set=='sequence'){	
-				//get jquery and autocomplete for seq/search	
-				//already included for all pages to support autoComplete 
-				if(!($mvEnableAutoComplete || $mvEnableJSLinkBack ||$mvEnableJSMVDrewrite) ){
-					$wgOut->addScript("<script type=\"{$wgJsMimeType}\" src=\"{$mvgScriptPath}/skins/mv_embed/jquery/jquery-1.2.1.js\"></script>");
-					$wgOut->addScript("<script type=\"{$wgJsMimeType}\" src=\"{$mvgScriptPath}/skins/mv_embed/jquery/plugins/jquery.autocomplete.js\"></script>");								 
-					$wgOut->addScript("<script type=\"{$wgJsMimeType}\" src=\"{$mvgScriptPath}/skins/mv_embed/jquery/plugins/jquery.hoverIntent.js\"></script>");
-				}							
 			}
 			
 			if($head_set=='search')

@@ -80,7 +80,7 @@
 			//output the person selector:
 			if (!isset ($semantic_data['spoken_by']))$semantic_data['spoken_by'] = ''; 		
 			$img = mv_get_person_img($semantic_data['spoken_by']); 
-			$wgOut->addHTML('<img id=\"mv_edit_im_'.htmlspecialchars($this->mvd_id).'" style="display: block;margin-left: auto;margin-right: auto;" src="'.htmlspecialchars($img->getURL()).'" width="44">');				
+			$wgOut->addHTML('<img id="mv_edit_im_'.htmlspecialchars($this->mvd_id).'" style="display: block;margin-left: auto;margin-right: auto;" src="'.htmlspecialchars($img->getURL()).'" width="44">');				
 				$wgOut->addHTML('<input style="font-size:x-small" 
 						value="'.htmlspecialchars($semantic_data['spoken_by']).'" 
 						name="smw_Spoken_By"

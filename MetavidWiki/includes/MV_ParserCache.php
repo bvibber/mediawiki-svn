@@ -9,6 +9,7 @@
  * @email dale@ucsc.edu
  * @url http://metavid.ucsc.edu
  */
+if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
  //quick hack to shift namespace of inline metavid parse cache 
  //avoids conflicts of inline display with full article display
  class MV_ParserCache extends ParserCache{

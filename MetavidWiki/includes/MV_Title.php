@@ -274,13 +274,11 @@
 	 * web stream is file_desc_msg as: mv_ogg_low_quality
 	 * $mvDefaultVideoQualityKey in MV_Settings.php
 	 * 
-	 * @@todo point to MV_OggSplit (for segmenting the ogg stream)
-	 * (for now using anx)
 	 */	 
 	function getWebStreamURL($quality=null){
 		global $mvStreamFilesTable, $mvVideoArchivePaths, $mvDefaultVideoQualityKey;
 		//@@todo mediawiki path for media (insted of hard link to $mvVideoArchive)
-		//@@todo make sure file exisits
+		//@@todo make sure file exisits		
 		if(!$quality)$quality=$mvDefaultVideoQualityKey;
 		$anx_req='';
 		if( $this->getStartTime()!='' && $this->getEndTime()!=''){
@@ -293,7 +291,10 @@
 				'stream_id' => $this->mvStream->id,
 				'file_desc_msg'=>$quality
 			));
-			$streamFile  =$dbr->fetchObject($result);				
+			if( $dbr->numRows($result)==0)return false;
+			$streamFile  =$dbr->fetchObject($result);	
+						
+			//print_r($streamFile);		
 			//make sure we have streamFiles (used to generate the link)				
 			$mvStreamFile = new MV_StreamFile($this->mvStream, $streamFile);
 			//if link empty return false:			
@@ -307,7 +308,8 @@
 	function getROEURL(){		
 		$roeTitle = Title::newFromText('MvExportStream', NS_SPECIAL);
 		//add the query: 
-		$query = 'feed_format=roe&stream_name='.$this->getStreamName().'&t='.$this->getTimeRequest();
+		$query = 'feed_format=roe&stream_name=' . htmlspecialchars($this->getStreamName()) . 
+					'&t=' . htmlspecialchars( $this->getTimeRequest() );
 		return $roeTitle->getFullURL($query) ;
 	}
 	function getEmbedVideoHtml($vid_id='', $size='', $force_server='', $autoplay=false){
@@ -320,32 +322,41 @@
 		}else{
 			list($vWidth, $vHeight, $na) = MV_StreamImage::getSizeType($size);
 		}		
-		$vid_id=($vid_id=='')?'':'id="'.$vid_id.'"';			
+		
+			
 		$stream_web_url = $this->getWebStreamURL($mvDefaultVideoQualityKey);
 		//print "lookign for q: $mvDefaultFlashQualityKey ";
-		$flash_stream_url = $this->getWebStreamURL($mvDefaultFlashQualityKey);		
+	
+		//print "FOUND: $flash_stream_url";		
 		$roe_url = 	$this->getROEURL();	
 		if($stream_web_url){
 			$o='';		
 			if($this->dispVideoPlayerTime){				
 				$o.='<span id="mv_videoPlayerTime">'.$this->getStartTime().' to '.
-					$this->getEndTime() . 
+						htmlspecialchars( $this->getEndTime() ) . 
 					'</span>';
-			}				
-			$auto_play_attr=($autoplay)?' autoplay="true" ':'';
-			$o.='<'.$tag.' '.$vid_id.' thumbnail="'.$this->getStreamImageURL($size, null, $force_server).'" '.					
+			}							
+			$o.='<'.htmlspecialchars($tag);
+			$o.=($vid_id=='')?'':' id="'.htmlspecialchars($vid_id).'" ';
+			$o.='thumbnail="'.$this->getStreamImageURL($size, null, $force_server).'" '.					
 				'roe="'.$roe_url.'" '.
-				'show_meta_link="false" ' . $auto_play_attr . 
-				'style="width:'.$vWidth.'px;height:'.$vHeight.'px" '.
+				'show_meta_link="false" ';
+			$o.= ($autoplay)?' autoplay="true" ':'';
+			$o.='style="width:'.htmlspecialchars($vWidth).'px;height:'.htmlspecialchars($vHeight).'px" '.
 				'controls="true" embed_link="true" >';
 			
-			if($stream_web_url!='')
-				$o.='<source type="'.MV_StreamFile::getTypeForQK($mvDefaultVideoQualityKey).'" src="'.$stream_web_url .'"/>';
+			if($stream_web_url)
+				$o.='<source type="'.
+					htmlspecialchars(MV_StreamFile::getTypeForQK($mvDefaultVideoQualityKey)) . 
+					'" src="'.$stream_web_url .'"></source>';
+			
+			$flash_stream_url = $this->getWebStreamURL($mvDefaultFlashQualityKey);
+			if($flash_stream_url)
+				$o.='<source type="'.
+					htmlspecialchars(MV_StreamFile::getTypeForQK($mvDefaultFlashQualityKey)) .
+					'" src="'.$flash_stream_url .'"></source>';
 				
-			if($flash_stream_url!='')
-				$o.='<source type="'.MV_StreamFile::getTypeForQK($mvDefaultFlashQualityKey).'" src="'.$flash_stream_url .'"/>';
-				
-			$o.='</video>';								
+			$o.='</video>';					
 			return $o;	
 		}else{
 			return wfMsg('mv_error_stream_missing');
