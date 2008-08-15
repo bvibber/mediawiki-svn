@@ -4,13 +4,13 @@ if( !defined( 'MEDIAWIKI' ) ) {
 	exit( 1 );
 }
 
-class PurgeCache extends SpecialPage {
+class SpecialPurgeCache extends SpecialPage {
 
-	function PurgeCache() {
+	function __construct() {
 		SpecialPage::SpecialPage( 'PurgeCache', 'purgecache' );
 	}
-	
-	function execute() {
+
+	function execute( $par ) {
 		global $wgUser, $wgRequest, $wgOut;
 
 		wfLoadExtensionMessages('PurgeCache');
@@ -29,7 +29,7 @@ class PurgeCache extends SpecialPage {
 			$wgOut->permissionRequired( 'purgecache' );
 		}
 	}
-	
+
 	function makeForm() {
 		$self = $this->getTitle();
 		$form  = wfOpenElement( 'form', array( 'method' => 'post', 'action' => $self->getLocalUrl() ) );

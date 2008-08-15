@@ -8,14 +8,10 @@
  * @author Rob Church <robchur@gmail.com>
  * @licence Public domain
  */
- 
+
 if( !defined( 'MEDIAWIKI' ) ) {
 	echo( "This file is an extension to the MediaWiki software and cannot be used standalone.\n" );
 	exit( 1 );
-}
-
-if ( !function_exists( 'extAddSpecialPage' ) ) {
-	require( dirname(__FILE__) . '/../ExtensionFunctions.php' );
 }
 
 $wgExtensionCredits['specialpage'][] = array(
@@ -28,11 +24,10 @@ $wgExtensionCredits['specialpage'][] = array(
 );
 
 $dir = dirname(__FILE__) . '/';
-extAddSpecialPage( $dir . 'PurgeCache_body.php', 'PurgeCache', 'PurgeCache' );
 $wgExtensionMessagesFiles['PurgeCache'] = $dir . 'PurgeCache.i18n.php';
-
+$wgExtensionAliasesFiles['PurgeCache'] = $dir . 'PurgeCache.alias.php';
+$wgAutoloadClasses['SpecialPurgeCache'] = $dir . 'PurgeCache_body.php';
+$wgSpecialPages['PurgeCache'] = 'SpecialPurgeCache';
 
 $wgAvailableRights[] = 'purgecache';
 $wgGroupPermissions['developer']['purgecache'] = true;
-
-
