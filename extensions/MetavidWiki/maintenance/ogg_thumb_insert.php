@@ -9,7 +9,7 @@
  * @email dale@ucsc.edu
  * @url http://metavid.ucsc.edu
  */
- 
+
  $cur_path = $IP = dirname(__FILE__);
 //include commandLine.inc from the mediaWiki maintance dir: 
 require_once ('../../../maintenance/commandLine.inc');

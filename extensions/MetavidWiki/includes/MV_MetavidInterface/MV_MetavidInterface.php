@@ -80,28 +80,30 @@
 		//process track request:
 		$this->components['MV_Overlay']->procMVDReqSet();				
 		//add in title & tracks var:
- 		$wgOut->addScript('<script type="text/javascript">/*<![CDATA[*/'." 		
- 		var mvTitle = '{$this->article->mvTitle->getWikiTitle()}'; 
- 		var mvTracks = '".$this->components['MV_Overlay']->getMVDReqString(). '\';
- 		/*]]>*/</script>'."\n");
+		global $mvgScriptPath;
+ 		$wgOut->addScript('<script type="text/javascript">/*<![CDATA[*/'.' 		
+ 		var mvTitle = \''.htmlspecialchars($this->article->mvTitle->getWikiTitle()).'\'; 
+ 		var mvTracks = \''.htmlspecialchars($this->components['MV_Overlay']->getMVDReqString()). '\';
+ 		var mvgScriptPath = \''.htmlspecialchars($mvgScriptPath).'\';
+ 		/*]]>*/</script>');
 		
 		//also add prev next paging	 		
-		$this->page_header ='<span class="mv_stream_title">'.
- 			$this->article->mvTitle->getStreamNameText().
+		$this->page_header ='<h1 class="videoHeader">'.
+ 			$this->article->mvTitle->getStreamNameText().' :: '.
  			$this->components['MV_Tools']->stream_paging_links('prev') . 
-				' <span id="mv_stream_time">'.$this->article->mvTitle->getTimeDesc() . '</span>'.
+				' <span title="'.htmlspecialchars(wfMsg('mv_click_to_edit')).'" id="mv_stream_time">'.$this->article->mvTitle->getTimeDesc($span_separated=true) . '</span>'.
 			$this->components['MV_Tools']->stream_paging_links('next') .
 			wfMsg('mv_of') . seconds2ntp($this->article->mvTitle->getDuration()) .  			
-		'</span>';	
+		'</h1>';	
 		
 		//add export cmml icon
 		$this->page_header.='<span id="cmml_link"/>';
 			$sTitle = Title::makeTitle(NS_SPECIAL, 'MvExportStream');	
 			$sk = $wgUser->getSkin();
 			$this->page_header.= $sk->makeKnownLinkObj($sTitle,
-				'<img style="width:28px;height:28px;" src="'.$mvgScriptPath . '/skins/images/Feed-icon_cmml_28x28.png">',
-				'feed_format=roe&stream_name='.$this->article->mvTitle->getStreamName().'&t='.$this->article->mvTitle->getTimeRequest(),
-				'','','title="'.wfMsg('mv_export_cmml').'"');
+				'<img style="width:28px;height:28px;" src="'.htmlspecialchars($mvgScriptPath) . '/skins/images/Feed-icon_cmml_28x28.png">',
+				'feed_format=roe&stream_name='.htmlspecialchars($this->article->mvTitle->getStreamName()).'&t='.htmlspecialchars($this->article->mvTitle->getTimeRequest()),
+				'','','title="'.htmlspecialchars(wfMsg('mv_export_cmml')).'"');
 		$this->page_header.='</span>';		
 		$this->page_title = $this->article->mvTitle->getStreamNameText().' '.$this->article->mvTitle->getTimeDesc();
  	}
@@ -133,11 +135,11 @@
  		$wgOut->setHTMLTitle($this->page_title);
  		
  		if($this->page_header=='')$this->page_header = '<span style="position:relative;top:-12px;font-weight:bold">' . 
- 			$this->page_title . '</span>';
+ 			htmlspecialchars($this->page_title) . '</span>';
  		$wgOut->addHTML($this->page_header); 		 		
  		
  		//@@todo dynamic re-size page_spacer:
- 		$wgOut->addHTML('<div id="mv_page_spacer">');	 
+ 		$wgOut->addHTML('<div id="mv_interface_container">');	 
  		foreach($this->components as $cpKey => &$component){ 			
  			$component->render_full(); 			
  		} 		 	

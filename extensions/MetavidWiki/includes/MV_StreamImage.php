@@ -14,17 +14,7 @@
 
 //two modes -stand alone- and -mediaWiki-
  
-if ( !defined( 'MEDIAWIKI' ) ){
-	die('not an entry point');
-	//*stand alone mode*
-	//need to setup db connection, etc grab the LocalSettings.php  
-	//include_once('../')
-	
-	//get config values etc	
-	//start object and serv image: 	
-	//$MV_OggImage = new MV_OggImage(array('mode'=>'stand_alone'));
-	//$MV_OggImage->doManuallRequest();	
-}
+if ( !defined( 'MEDIAWIKI' ) )die('not an entry point');
 
 //serves up images and does necessary transforms if the file does not exist
 //@@TODO in the future it would be ideal if it was integrated similar to oggHandler
@@ -57,7 +47,9 @@ class MV_StreamImage{
 		
 		//by default return a non-direct link so that javascript can modify the url to get new images
 		if(!$directLink){
-			return $wgScript.'?action=ajax&rs=mv_frame_server&stream_id='.$stream_id.'&t='.$req_time.$req_size_out;
+			return $wgScript.'?action=ajax&rs=mv_frame_server&stream_id=' .
+						htmlspecialchars($stream_id) .
+						'&t=' . htmlspecialchars($req_time) . htmlspecialchars($req_size_out);
 		}
 		$req_time = MV_StreamImage::procRequestTime($stream_id, $req_time);
 		if($req_time==false){			
@@ -73,8 +65,8 @@ class MV_StreamImage{
 				list($im_width, $im_height, $ext) = MV_StreamImage::getSizeType($req_size);
 				$s='_'.$im_width.'x'.$im_height;				
 			}			
-			return $mvWebImgLoc .'/'. MV_StreamImage::getRelativeImagePath($stream_id) .
-				'/'.$req_time.$s.'.'.$ext;
+			return htmlspecialchars($mvWebImgLoc) .'/'. MV_StreamImage::getRelativeImagePath($stream_id) .
+				'/'.htmlspecialchars($req_time).htmlspecialchars($s) . '.' . htmlspecialchars($ext);
 		}else{	
 			//throw 'error finding image';	
 			return MV_StreamImage::getMissingImageURL($req_size);
@@ -88,7 +80,7 @@ class MV_StreamImage{
 		if($req_size)$s='_'.$im_width.'x'.$im_height;	
 		
 		if(MV_StreamImage::getMissingImagePath($req_size, $s, $ext) ){
-			return $mvWebImgLoc .'/images_not_available'.$s.'.'.$ext;
+			return htmlspecialchars($mvWebImgLoc) .'/images_not_available'.$s.'.'.$ext;
 		}
 	}
 	function getMissingImagePath($req_size){		
@@ -98,15 +90,16 @@ class MV_StreamImage{
 		if($req_size)$s='_'.$im_width.'x'.$im_height;	
 		
 		if(is_file($mvLocalImgLoc.'/images_not_available'.$s.'.'.$ext)){
-			return $mvLocalImgLoc.'/images_not_available'.$s.'.'.$ext;
+			return htmlspecialchars($mvLocalImgLoc) . 
+				'/images_not_available' . htmlspecialchars($s) . '.' . htmlspecialchars($ext);
 		}else{
 			//try and generate it;			
 			if(!MV_StreamImage::doTransformImage($mvLocalImgLoc.'/images_not_available.jpg', 
 					$mvLocalImgLoc.'/images_not_available'.$s.'.'.$ext, 
 					$im_width, $im_height, $ext)){		
-				return $mvLocalImgLoc.'/images_not_available.jpg';
+				return htmlspecialchars($mvLocalImgLoc).'/images_not_available.jpg';
 			}else{
-				return $mvLocalImgLoc.'/images_not_available'.$s.'.'.$ext;
+				return htmlspecialchars($mvLocalImgLoc).'/images_not_available'.htmlspecialchars($s).'.'.htmlspecialchars($ext);
 			}
 		}
 	}
@@ -131,7 +124,7 @@ class MV_StreamImage{
 		}
 	}
 	function procRequestTime($stream_id, $req_time){
-		global $mvStreamImageTable, $mvShellOggFrameGrab, $mvImageGranularityRate;
+		global $mvShellOggFrameGrab, $mvImageGranularityRate;
 		if(!$req_time)$req_time='0';
 		if(count(explode(":",$req_time))==3){
 			$req_time = ntp2seconds($req_time);
@@ -143,13 +136,17 @@ class MV_StreamImage{
 		//query the image db to find the closest to req time (while still being in front)
 		$dbr = & wfGetDB(DB_READ);		
 		//if($req_time<$mvImageGranularityRate)$req_time = $mvImageGranularityRate;
-		$select = " `id`, `time`, `time`-'$req_time' as distance ";
-		$cond = " `stream_id`=$stream_id 
+		$vars = " `id`, `time`, `time`-'$req_time' as distance ";
+		$conds = " `stream_id`=".mysql_real_escape_string($stream_id) 
 				AND (`time`-'$req_time')>=0 
-				AND (`time`-'$req_time')<= $mvImageGranularityRate";
+				AND (`time`-'$req_time')<= mysql_real_escape_string($mvImageGranularityRate);
 		$opt['ORDER BY']=' `distance` ASC ';
 		$opt['LIMIT']=1;
-		$res = $dbr->select($mvStreamImageTable, $select, $cond, 'MV_StreamImage::procRequestTime', $opt);
+		$res = $dbr->select('mv_stream_images', 
+				$vars, 
+				$conds, 
+				__METHOD__, 
+				$opt);
 		//print $dbr->lastQuery();
 		//die;
 		if($dbr->numRows($res)==0){
@@ -266,7 +263,10 @@ class MV_StreamImage{
 					case 'medium':case '320x240':
 						$width=320;$height=240;
 					break;	
-					case 'large':case '512x384':
+					case '400x300':
+						$width=400;$height=300;
+					break;
+					case 'large':case '512x384': case '480x360':
 						$width=480;$height=360;
 					break;
 					case 'full':case '720x540':

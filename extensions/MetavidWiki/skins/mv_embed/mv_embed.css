@@ -2,6 +2,18 @@
 	margin-bottom:20px;
 	position:relative;
 }
+.player_select_list {
+    color:white;
+    font-size:10pt;
+/*    display:none;*/
+}
+
+.player_select_list a:visited {
+    color:white;
+}
+.displayHTML a:visited {
+    color:white;
+}
 .mv_playhead {
 	position:absolute;
 	top:0;
@@ -14,6 +26,9 @@
 	font-family:"Times New Roman", Times, serif;
 	font-size:14px;
 	float:left;
+}
+.set_ogg_player_pref{
+	text-align:left;
 }
 
 .inputTrackerInput {

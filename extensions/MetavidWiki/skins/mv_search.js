@@ -1,9 +1,3 @@
-/*search code could theoretically run without mv_embed */
-
-//_global = this;
-//if(typeof $j =='undefined'){
-//	_global['$j'] = jQuery.noConflict();
-//}
 mv_addLoadEvent(mv_pre_setup_search); 	
 
 var maxFilters = 8;
@@ -232,6 +226,18 @@ function add_date_binddings(inx, mvDateInitObj){
 		}
 	);
 }
+function mv_pl(mvd_id){
+	uri = wgServer +((wgServer == null) ? (wgScriptPath + "/index.php") : wgScript);	
+	$j.get(uri, 
+		{action:'ajax',rs:'mv_pl_wt', "rsargs[0]":mvd_id, 'size':'small'},
+		function(data){				
+			//run highlighter on data: 
+			//js_log('set to: '+ data);
+			$j('#mvimg_'+mvd_id).html(data);
+			//rewrite video tag: 
+			rewrite_by_id('vid_'+mvd_id);
+		});
+}
 function mv_ex(mvd_id){
 	uri = wgServer +((wgServer == null) ? (wgScriptPath + "/index.php") : wgScript);	
 	js_log('expand ' + mvd_id);	
@@ -331,6 +337,10 @@ function mv_add_person_ac(inx){
 	//now add the auto complete to mv_person_input_{inx}
 	uri = wgServer +
 	((wgServer == null) ? (wgScriptPath + "/index.php") : wgScript);
+	
+	//pop mv_person_choices_ out to body (to put it on top)
+	$j('#mv_person_choices_'+inx).prependTo("body");
+	
 	$j('#mv_person_input_'+inx).autocomplete(
 		uri,
 		{
@@ -341,7 +351,9 @@ function mv_add_person_ac(inx){
 				$j('#mv_person_img_'+inx).attr('src', $j(v).children('img').attr('src'));
 			},
 			formatItem:function(row){
-				return '<img width="44" src="'+ row[2] + '">'+row[1];
+				//return '<img width="44" src="'+ row[2] + '">'+row[1];
+				return '<img width="44" src="'+ row[2] + '"><span class="ac_img_txt">'+row[1]+'</span>';
+				
 			},
 			matchSubset:0,
 			extraParams:{action:'ajax',rs:'mv_auto_complete_person'},
@@ -358,7 +370,7 @@ function mv_add_filter(){
 	var new_a_id = 'mvsel_a_'+ ($j(".mv_search_select").length-1);
 	var inx = ($j(".mv_search_select").length-1);
 	//this could be cleaned up a bit: 
-	$j("#mv_active_filters").append('<span id="mvs_'+inx+'" >&nbsp;&nbsp;</span>');	
+	$j("#mv_active_filters").append('<br><span id="mvs_'+inx+'" >&nbsp;&nbsp;</span>');	
 		$j('#mvs_'+inx).append( 
 			$j("#mvsel_a_0").clone().attr({id:new_a_id,name:'f['+inx+'][a]'}), 
 			$j("#mvsel_t_0").clone().attr({id:new_t_id,name:'f['+inx+'][t]'}) 
@@ -369,8 +381,7 @@ function mv_add_filter(){
 		$j('#mvs_'+inx).append('<span id="mvs_'+inx+'_tc"></span>');
 		$j('#mvs_'+inx).append( $j("#mv_ref_remove")
 			.clone().css('display', 'inline')
-			.attr({id:'', href:'javascript:mv_remove_filter('+inx+')'}));
-	
+			.attr({id:'', href:'javascript:mv_remove_filter('+inx+')'}));	
 	mv_setup_search();
 	//console.log("new id: " + new_id);	
 	//$j('mv_sel_')
@@ -378,6 +389,8 @@ function mv_add_filter(){
 //remove filter of given inx
 function mv_remove_filter(inx){
 	$j('#mvs_'+inx).remove();
+	//also remove the person input (since we moved it out of mvs) 
+	$j('#mv_person_choices_'+inx).remove();
 }
 
 /*

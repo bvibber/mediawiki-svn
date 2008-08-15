@@ -13,7 +13,7 @@
  /*
   * Templates: 
   */
- require_once ('../../../maintenance/commandLine.inc');
+require_once ('../../../maintenance/commandLine.inc');
 //$i=0;
 function do_stream_attr_check($old_stream) {
 	global $i;
@@ -233,7 +233,7 @@ function do_annotate_speeches($stream, $force){
 	if($mvStream->doesStreamExist()){
 		$dbr =& wfGetDB(DB_SLAVE);
 		//get all meta in range (up 10k) 
-		$mvd_res = MV_Index::getMVDInRange($mvStream->getStreamId(), null, null, 'Ht_en',false, 'Spoken_by', 'LIMIT 0, 10000');		
+		$mvd_res = MV_Index::getMVDInRange($mvStream->getStreamId(), null, null, 'Ht_en',false, 'Spoken_by', '10000');		
 		if(count($dbr->numRows($mvd_res))!=0){
 			$prev_person =''; 			
 			$prev_st=$prev_et=0;

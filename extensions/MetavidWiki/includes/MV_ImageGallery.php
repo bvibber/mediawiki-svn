@@ -9,6 +9,7 @@
  * @email dale@ucsc.edu
  * @url http://metavid.ucsc.edu
  */
+if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
  class MV_ImageGallery extends ImageGallery{
  	private $mAttribs = array();
  	private $contextTitle = false;
@@ -29,7 +30,7 @@
 			$this->mAttribs );
 		$s = Xml::openElement( 'table', $attribs );
 		if( $this->mCaption )
-			$s .= "\n\t<caption>{$this->mCaption}</caption>";
+			$s .= "\n\t<caption>".htmlspecialchars($this->mCaption)."</caption>";
 
 		$params = array( 'width' => $this->mWidths, 'height' => $this->mHeights );
 		$i = 0;
@@ -61,24 +62,23 @@
 				mvfAddHTMLHeader('embed');
 				//print "img url: " . 	$mvTitle->getStreamImageURL();
 				$thumbhtml = "\n\t\t\t".
-					'<div class="thumb" style="padding: 4px 0; width: ' .($this->mWidths+5).'px;">'
+					'<div class="thumb" style="padding: 4px 0; width: ' .htmlspecialchars($this->mWidths+5).'px;">'
 					# Auto-margin centering for block-level elements. Needed now that we have video
 					# handlers since they may emit block-level elements as opposed to simple <img> tags.
 					# ref http://css-discuss.incutio.com/?page=CenteringBlockElement				
-					. '<div style="margin-left: auto; margin-right: auto; width: ' .$this->mWidths.'px;">' 
+					. '<div style="margin-left: auto; margin-right: auto; width: ' .htmlspecialchars($this->mWidths).'px;">' 
 					. $mvTitle->getEmbedVideoHtml('', $vidRes)
 					//. '<img width="'.$this->mWidths.'" src="'.$mvTitle->getStreamImageURL() . '">'
 					. '</div>' .
-						'<span style="clear:both"></div>'.
+						'</div>'.
+						'<div style="clear:both;"></div>'.
 						//@@todo clean up link
 						'<span class="gallerytext" style="float:left">'.
 						$sk->makeKnownLinkObj( $nt, $mvTitle->getStreamNameText().' '. $mvTitle->getTimeDesc() ) .
 						'</span>'.						
-					'</div>';
-					 
+					'</div>';					 
 					$nb = '';
-					$textlink='';				
-						
+					$textlink='';										
 			}else{
 				
 				if( $nt->getNamespace() != NS_IMAGE || !$img ) {
@@ -97,11 +97,11 @@
 					$vpad = floor( ( 1.25*$this->mHeights - $thumb->height ) /2 ) - 2;
 						
 					$thumbhtml = "\n\t\t\t".
-						'<div class="thumb" style="padding: ' . $vpad . 'px 0; width: ' .($this->mWidths+30).'px;">'
+						'<div class="thumb" style="padding: ' . htmlspecialchars($vpad) . 'px 0; width: ' .htmlspecialchars($this->mWidths+30).'px;">'
 						# Auto-margin centering for block-level elements. Needed now that we have video
 						# handlers since they may emit block-level elements as opposed to simple <img> tags.
 						# ref http://css-discuss.incutio.com/?page=CenteringBlockElement
-						. '<div style="margin-left: auto; margin-right: auto; width: ' .$this->mWidths.'px;">'
+						. '<div style="margin-left: auto; margin-right: auto; width: ' .htmlspecialchars($this->mWidths).'px;">'
 						. $thumb->toHtml( array( 'desc-link' => true ) ) . '</div></div>';
 	
 					// Call parser transform hook
@@ -140,7 +140,7 @@
 				"\n\t\t" . '<td><div class="gallerybox" style="width: '.($this->mWidths+10).'px;">'
 					. $thumbhtml
 					. "\n\t\t\t" . '<div class="gallerytext">' . "\n"
-						. $textlink . $text . $nb
+						. $textlink . htmlspecialchars($text) . $nb
 					. "\n\t\t\t</div>"
 				. "\n\t\t</div></td>";
 			if ( $i % $this->mPerRow == $this->mPerRow - 1 ) {

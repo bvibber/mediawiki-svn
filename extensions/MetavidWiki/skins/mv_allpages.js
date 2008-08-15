@@ -15,11 +15,12 @@ function mv_setup_allpage(){
  		mvJsLoader.doLoad(
  			reqLibs, function(){
 	 				//js_log('allpage_ auto and hover check'+mv_setup_allpage_flag);
-					if(!mv_setup_allpage_flag){//have no idea why this gets called twice					   		
+					if(!mv_setup_allpage_flag){					   		
 						mv_setup_search_ac();
-						mv_do_mvd_link_rewrite();						
-						mv_setup_allpage_flag=true; 
-						mv_page_specific_rewrites();					
+						mv_do_mvd_link_rewrite();												
+						mv_page_specific_rewrites();
+						//set the flag:					
+						mv_setup_allpage_flag=true; 				
 					}
 				});
 	});		
@@ -28,6 +29,7 @@ function mv_page_specific_rewrites(){
 	var mvAskTitle = 'Special:MvExportAsk';
 	var rssImg = '<img border="0" src="'+wgScriptPath+'/extensions/MetavidWiki/skins/images/feed-icon-28x28.png"/>';
 	var msg_video_rss = 'video rss';
+	if($j('#NOTITLEHACK').length!=0)$j('.firstHeading').hide();	
 	//add in rss-media feed link if on Special:Ask page
 	if(typeof wgPageName!='undefined'){
 		if(wgPageName=='Special:Ask'){
@@ -52,6 +54,10 @@ function mv_page_specific_rewrites(){
 					msg_video_rss+'" href="'+podLink+'">'+ rssImg + '</a></span>');
 		}
 	}
+	//move the search filter if #msms_form_search_row
+	if($j('#msms_form_search_row').get(0)!=null){
+		$j('#msms_form_search_row').appendTo("#searchHeader");
+	} 
 	//if we have an inline query add a search link
 	$j('.smwtable').each(function(){
 		if($j('#'+this.id+' .smwfooter a').length!=0){
@@ -75,7 +81,7 @@ function mv_do_mvd_link_rewrite(){
 				if(res){			
 					if(res[5]!='')return ;
 					//skip if res[4] not at end:
-					js_log(res);
+					//js_log(res);
 					i++;
 					if(!gMvd[i])gMvd[i]={};
 					gMvd[i]['url']=res[0];
@@ -151,25 +157,58 @@ function mv_cxt(inx){
 		mv_ext(inx);
 	});
 }
+/* toggles advanced search */ 
+function mv_toggle_advs(){		
+	if($j('#advs').val()=='0'){
+		$j('#advs').val('1');
+		//sync values from basic -> avanced		
+		$j("input[@name$='f[0][v]']").val( $j('#searchInput').val() );
+		
+		$j('.advs_basic').fadeOut('fast',function(){
+			if($j('#tmp_loading_txt').length==0){
+				$j('.advanced_search_tag').before('<span id="tmp_loading_txt">'+getMsg('loading_txt')+'</span>');
+			}
+			//check for adv search lib and load: @@todo ../ path is not very graceful
+			mvJsLoader.doLoad({'mv_setup_search':'../mv_search.js'}, function(){
+				$j('#tmp_loading_txt').remove();
+				$j('.advs_adv').fadeIn('fast');	
+				//give some extra room for advanced search: 
+				$j('#frontPageTop').animate({'height':'300px'},'fast');
+			});						
+		});				
+	}else{
+		$j('#advs').val('0');
+		//sync values from advanced -> basic
+		$j('#searchInput').val( $j("input[@name$='f[0][v]']").val() );
+		//do style display swap
+		$j('.advs_adv').fadeOut('fast',function(){
+			$j('.advs_basic').fadeIn('fast');
+			$j('#frontPageTop').animate({'height':'233px'},'fast');
+		});		
+	}
+}
 function mv_setup_search_ac(){
 	var uri = wgScript;
 	//add the person choices div to searchInput
-	var obj = $j('#searchInput').get(0);
-	//base offset: 
-	var curleft=55;
-	var curtop=20;
-	//get pos of searchInput:
-	if (obj.offsetParent) {
-		do {
-			curleft += obj.offsetLeft;
-			curtop += obj.offsetTop;
-		}while (obj = obj.offsetParent);		
-	}
-	//get the search pos: 
-	$j('body').append('<div class="ac_results" id="mv_ac_choices" ' +
-			'style="border:solid black;background:#FFF;position:absolute;left:'+curleft+'px;top:'+curtop+'px;z-index:99;width:300px;display: none;"/>');
 	//turn off browser baseed autocomplete: 
 	$j('#searchInput').attr('autocomplete',"off");
+	
+	//add the sugestions div (abolute positioned so it can be ontop of everything) 	
+	$j('body').prepend('<div id="suggestions" style="position:absolute;display:none;z-index:50;">'+
+							'<div id="suggestionsTop"></div>'+
+								'<div id="suggestionsInner" class="suggestionsBox">'+
+								'</div>'+
+							'<div id="suggestionsBot"></div>'+						
+						'</div>');
+	//position the sugestions below the search field:
+	if( $j('#searchInput').get(0)!=null){
+		sf_pos = $j('#searchInput').offset();
+		sf_pos['top']=sf_pos['top']+40;
+		sf_pos['left']=sf_pos['left']-220;
+		js_log("moved sugest to: " + sf_pos['top'] + ' '+ sf_pos['left']);
+		$j('#suggestions').css(sf_pos);
+	}
+	
 	//add hook:
 	$j('#searchInput').autocomplete(
 		uri,
@@ -183,25 +222,24 @@ function mv_setup_search_ac(){
 					qe = v.innerHTML.toLowerCase().indexOf('</b>');
 					//update the search input (incase redirect fails)
 					$j('#searchInput').val(v.innerHTML.substring(qs,qe));
-					window.location=uri+'/'+'Special:Search?search='+v.innerHTML.substring(qs,qe);
+					window.location=uri+'/'+'Special:MediaSearch?mv_search='+v.innerHTML.substring(qs,qe);
 				}else{
 					window.location =uri+'/'+$j('#searchInput').val();
 				}
 			},
 			formatItem:function(row){
 				if(row[0]=='do_search'){
-					return row[1].replace('$1',$j('#searchInput').val());
+					return '<span class="ac_txt">'+row[1].replace('$1',$j('#searchInput').val())+'</span>';
 				}else if(row[2]=='no_image'){
-					return row[1];
+					return '<span class="ac_txt">'+row[1]+'</span>';
 				}else{
-					return '<img width="44" src="'+ row[2] + '">'+row[1];
+					return '<img width="44" src="'+ row[2] + '"><span class="ac_img_txt">'+row[1]+'</span>';
 				}
 			},
 			matchSubset:0,
 			extraParams:{action:'ajax',rs:'mv_auto_complete_all'},
 			paramName:'rsargs[]',
-			resultElem:'#mv_ac_choices'
+			resultElem:'#suggestionsInner',
+			resultContainer:'#suggestions'							
 		});
-	//var offset = $j('#mv_person_input_'+inx).offset();
-	//$j('#mv_person_choices_'+inx).css('left', offset.left-205);
 }

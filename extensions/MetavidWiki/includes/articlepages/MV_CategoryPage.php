@@ -12,6 +12,9 @@
  //$wgHooks['CategoryPageView'][] = 'fnMyHook';
  //display all MVD category members as thumbnails... 
  //display link to rss/playlist
+
+if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
+
 class MV_CategoryPage extends CategoryPage{	
  	function closeShowCategory() {
 		global $wgOut, $wgRequest;
@@ -116,13 +119,13 @@ class MvCategoryViewer extends CategoryViewer {
 		if( $this->showGallery && ! $this->gallery->isEmpty() ) {
 			$title = Title::MakeTitle(NS_SPECIAL, 'MediaSearch');			
 			$query = 'f[0][t]='.urlencode('category').'&f[0][v]='.$wgTitle->getDBkey();
-			$search_link = $sk->makeKnownLinkObj($title,wfMsg('mv_search_category').":".$wgTitle->getText(), $query);			
-			
+			//don't output the cat link for now: 
+			//$search_link = $sk->makeKnownLinkObj($title,wfMsg('mv_search_category').":".$wgTitle->getText(), $query);			
+			//wfMsg('mv_cat_search_note', $search_link) .
 			return "<div id=\"mw-category-media\">\n" .
 			$s . 
 			'<h2>' . wfMsg( 'category-media-header', htmlspecialchars($this->title->getText()) ) . "</h2>\n" .
-			wfMsgExt( 'category-media-count', array( 'parse' ), $this->gallery->count() ) .
-			wfMsg('mv_cat_search_note', $search_link) . 			
+			wfMsgExt( 'category-media-count', array( 'parse' ), $this->gallery->count() ) .						 	
 			$this->gallery->toHTML() . "\n</div>";
 		} else {
 			return '';

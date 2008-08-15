@@ -34,7 +34,7 @@
  		$wgOut->addHTML(''. 
 	 		'<div style="position:absolute;width:320px;height:270px;" id="mv_video_container">'.
 	 			//'<div style="display:none;" id="mv_inline_pl_txt">'.$article->getSequenceText().'</div>'.
-	 			'<div style="display:none;" id="mv_pl_url">'.$title_url.'</div>'.
+	 			'<div style="display:none;" id="mv_pl_url">'.htmlspecialchars($title_url).'</div>'.
 			'</div>' ."\n");
 	}
  }

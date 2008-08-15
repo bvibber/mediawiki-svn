@@ -12,12 +12,11 @@
  * redirects the user to the sequence interface. 
  */
  //sequence just adds some sequence hooks: 
- 
+if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
+
 define('SEQUENCE_TAG', 'sequence');
- 
 
-
- class MV_SequencePage extends Article{
+class MV_SequencePage extends Article{
  	var $outMode='page';
  	var $clips=array();
  	function __construct($title){  		
@@ -127,7 +126,7 @@ define('SEQUENCE_TAG', 'sequence');
  		}
  		
  		$vidtag = '<div id="file" class="fullImageLink"><playlist';						
-		$vidtag.=' width="400" height="300" src="'.$title_url.'">';
+		$vidtag.=' width="400" height="300" src="'.htmlspecialchars($title_url).'">';
 		$vidtag.='</playlist></div><hr>';
 		
 		$marker = "xx-marker".count($markerList)."-xx";

@@ -9,6 +9,7 @@
  * @email dale@ucsc.edu
  * @url http://metavid.ucsc.edu
  */
+ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
  class MV_StreamMeta extends MV_Component{
  	function getHTML(){
  		global $wgOut;

@@ -38,20 +38,23 @@
  	} 	 	
  	/*put thrown together quickly... could clean up/simplify*/ 
  	function displayEditStreamFiles(){
- 		global $wgOut, $wgTitle,$wgScriptPath,$wgRequest;
+ 		global $wgOut, $wgTitle,$wgScriptPath,$wgRequest, $wgUser;
  		$html='';
  	
 		$streamFiles = $this->mArticle->mvTitle->mvStream->getFileList();				
 		//proccess the requested changes
  		$this->proccessReq($streamFiles);  	
-		if($this->status_error!='')$html.='<span class="error">'.$this->status_error.'</span><br />';
+		if($this->status_error!='')$html.='<span class="error">'.htmlspecialchars($this->status_error).'</span><br />';
 		if($this->status_ok!='')$html.=$this->status_ok . '<br />';		 		
 		
 		if(count($streamFiles)==0){
 			$html.='<b>'.wfMsg('mv_no_stream_files').'</b>';
 		}else{
-			$html.='<form action="'.$wgRequest->getRequestURL().'" method="POST">';
+			$html.='<form action="'.htmlspecialchars($wgRequest->getRequestURL()).'" method="POST">';
 			$html.='<input type="hidden" name="mv_action" value="edit_stream_files">';		
+			
+			$html.='<input type="hidden" name="wpEditToken" value="'.htmlspecialchars($wgUser->editToken()).'"';
+			
 			$html.= '<fieldset><legend>'.wfMsg('mv_file_list').'</legend>' . "\n";	
 			$html.= '<table width="600" border="0">';	
 			$html.='</tr><tr>';
@@ -62,19 +65,19 @@
 				$outHeader=false;			
 			}
 			$html.='<tr><td colspan=4>';
-				$html.='<input type="submit" value="'.wfMsg('mv_save_changes').'">';
+				$html.='<input type="submit" value="'. htmlspecialchars(wfMsg('mv_save_changes')).'">';
 			$html.='</td></tr>';	
 			$html .='</table></fieldset>';
 			$html.='</form>';
 		}
 		//add new stream: 
-		$html.='<form action="'.$wgRequest->getRequestURL().'" method="POST">';	
+		$html.='<form action="'.htmlspecialchars($wgRequest->getRequestURL()).'" method="POST">';	
 		$html.='<input type="hidden" name="mv_action" value="new_stream_file">';
 		$html.= '<fieldset><legend>'.wfMsg('mv_add_stream_file').'</legend>' . "\n";	
 		$html.= '<table width="600" border="0">';	
 		$html.= $this->getStreamFileForm(array('id'=>'new'));			
 			$html.='<tr><td>';
-		$html.='<input type="submit" value="'.wfMsg('mv_add_stream_file').'">';
+		$html.='<input type="submit" value="'.htmlspecialchars(wfMsg('mv_add_stream_file')).'">';
 			$html.='</td></tr>';			
 		$html .='</table></fieldset>';					
 		$html .='</form>';
@@ -83,9 +86,14 @@
  	}
  	function proccessReq(& $streamFiles){
  		global $wgRequest, $wgUser;
+ 		
  		//make sure the user can edit streams:
  		if(!$wgUser->isAllowed('mv_edit_stream'))return ;
- 		 
+ 		
+ 		//confirm the edit token:
+ 		if(!$wgUser->matchEditToken($wgRequest->getVal('wpEditToken')))return ; 		
+ 		
+ 		
  		$this->mv_action = $wgRequest->getVal('mv_action'); 	
  		if($this->mv_action=='new_stream_file'){
  			//@@todo a bit more input scrubbing: 
@@ -148,19 +156,19 @@
 			if($remove_link){
 				global $wgRequest;
 				$html.='<td><a title="'.wfMsg('mv_delete_stream_file').'"' .
-				 ' href="'.$wgRequest->getRequestURL().'&mv_action=rm_stream_file&rid='.$sf['id'].'"><img src="'.$mvgScriptPath.'/skins/images/delete.png"></a></td>';				
+				 ' href="'.$wgRequest->getRequestURL().'&mv_action=rm_stream_file&rid='.htmlspecialchars($sf['id']).'"><img src="'.htmlspecialchars($mvgScriptPath).'/skins/images/delete.png"></a></td>';				
 			}
-			$html.='<td><input type="text" name="sf_'.$sf['id'].'[file_desc_msg]" value="'.$sf['file_desc_msg'].'" maxlength="60" size="20" /></td>';
-			$html.='<td><input type="text" name="sf_'.$sf['id'].'[duration]" value="'.$sf['duration'].'" maxlength="11" size="7" /></td>';					
-			$html.='<td><input type="text" name="sf_'.$sf['id'].'[base_offset]" value="'.$sf['base_offset'].'" maxlength="11" size="7" /></td>';
-			$html.='<td><select name="sf_'.$sf['id'].'[path_type]">';
+			$html.='<td><input type="text" name="sf_'.htmlspecialchars($sf['id']).'[file_desc_msg]" value="'.htmlspecialchars($sf['file_desc_msg']).'" maxlength="60" size="20" /></td>';
+			$html.='<td><input type="text" name="sf_'.htmlspecialchars($sf['id']).'[duration]" value="'.htmlspecialchars($sf['duration']).'" maxlength="11" size="7" /></td>';					
+			$html.='<td><input type="text" name="sf_'.htmlspecialchars($sf['id']).'[base_offset]" value="'.htmlspecialchars($sf['base_offset']).'" maxlength="11" size="7" /></td>';
+			$html.='<td><select name="sf_'.htmlspecialchars($sf['id']).'[path_type]">';
 			$sel=($sf['path_type']=='url_anx')?' selected':'';
 			$html.='<option value="url_anx"'.$sel.'>'.wfMsg('mv_path_type_url_anx').'</option>' .
 			$sel=($sf['path_type']=='wiki_title')?' selected':''; 
 			$html.='<option value="wiki_title"'.$sel.'>'.wfMsg('mv_path_type_wiki_title').'</option>' . 							
 					'</select></td>';																		
-			$html.='<td><input type="text" name="sf_'.$sf['id'].'[path]" value="'.$sf['path'].'" maxlength="250" size="50" />' .
-					'<input type="hidden" name="sf_'.$sf['id'].'[stream_id]" value="'.$sf['stream_id'].'">'.
+			$html.='<td><input type="text" name="sf_'.htmlspecialchars($sf['id']).'[path]" value="'.htmlspecialchars($sf['path']).'" maxlength="250" size="50" />' .
+					'<input type="hidden" name="sf_'.htmlspecialchars($sf['id']).'[stream_id]" value="'.htmlspecialchars($sf['stream_id']).'">'.
 					'</td>';
 		$html.='</tr>';
 		return $html;

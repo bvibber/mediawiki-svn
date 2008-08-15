@@ -6,33 +6,18 @@
 
 var vlcEmbed = { 
 	instanceOf:'vlcEmbed',
+    supports: {'play_head':true, 'play_or_pause':true, 'stop':true, 'fullscreen':true, 'time_display':true, 'volume_control':true},
 	//init vars: 
 	monitorTimerId : 0,
 	prevState : 0,
 	currentTime:0,
+	duration:0,
     userSlide:false,
-    getEmbedHTML : function(){   
-		//setup the interface controls if requested		
-		if(this.controls){
-			/*for the vlc playhead we need scriptaculus/prototype
-			 only the slider uses scriptaculous/prototype code so 
-			as long as you don't set controls to "true" the extra files won't load. */			
-			//try and get the interface 
-			if( this.get_interface_lib(true) ){
-				js_log('interface loaded');
-				controls_html =this.getControlsHtml('all');
-				controls_html+='<div style="clear:both"></div>';
-			}else{
-				//if not present, it's loading
-				return 'loading interface <blink>...</blink>';
-			}		
-		}else{	    	        	
-			controls_html ='';
-		}		
+    getEmbedHTML : function(){
 		//give VLC 150ms to initialize before we start playback 
 		//@@todo should be able to do this as an ready event
 		setTimeout('document.getElementById(\''+this.id+'\').postEmbedJS()', 150);
-	   	return this.wrapEmebedContainer( this.getEmbedObj() ) + controls_html;
+	   	return this.getEmbedObj();
 	},
 	getEmbedObj:function(){
 		return '<object classid="clsid:9BE31822-FDAD-461B-AD51-BE1D1C159921" '+
@@ -60,8 +45,8 @@ var vlcEmbed = {
 	    	this.vlc.style.width=this.width;
 	    	this.vlc.style.height=this.height;       
 	    	this.vlc.playlist.items.clear();
-	    	js_log('play:' + this.src);   
-	    	var itemId = this.vlc.playlist.add(this.src);
+	    	js_log('vlc play:' + this.media_element.selected_source.uri);   
+	    	var itemId = this.vlc.playlist.add(this.media_element.selected_source.uri);
 	    	if( itemId != -1 ){
 	    		//play
 	    		this.vlc.playlist.playItem(itemId);
@@ -143,8 +128,7 @@ var vlcEmbed = {
 		            this.onPause();
 	        	}
 	        	this.prevState = newState;
-		    }
-		    else if( newState == 3 ){
+		    }else if( newState == 3 ){
 		        // current media is playing
 		        this.onPlaying();
 		    }
@@ -177,17 +161,23 @@ var vlcEmbed = {
     },
     liveFeedRoll : 0,
     onPlaying : function(){ 
-        this.mediaLen = this.vlc.input.length;        
-       	//js_log('on playing:'+ this.mediaLen +' time:'+ this.vlc.input.time + ' p:'+this.vlc.input.position);
+    	//update the duration attribute
+    	if(this.duration!=this.vlc.input.length /1000){
+	        this.duration = this.vlc.input.length /1000;   
+    	}     
        	//update the currentTime attribute 
        	this.currentTime =this.vlc.input.time/1000;
-        if( this.mediaLen > 0 || this.vlc.input.time > 0){                     
+        if( this.duration > 0 || this.vlc.input.time > 0){                     
         	///set mediaLen via request Url 
-			if(this.mediaLen==0)      
-				this.mediaLen=this.getDuration();
-			//if we have media lenghth procceed
-			if(this.mediaLen){
-				//as long as the user is not interacting with the playhead update:
+			if(this.duration==0)      
+				this.duration=this.media_element.selected_source.duration;
+			
+			if(!this.start_offset)
+				this.start_offset=this.media_element.selected_source.start_offset;		
+			
+			//if we have media duration procceed
+			if(this.duration){
+			//as long as the user is not interacting with the playhead update:
 				if(! this.userSlide){
 					//js_log('user slide is false' + this.userSlide + '(update)');
 					if(this.vlc.input.position!=0){
@@ -196,12 +186,12 @@ var vlcEmbed = {
 						//set via time:
 						//js_log('set slider:'+(this.vlc.input.time-this.start_offset) + ' / ' + this.mediaLen +
 						//' ='+  (this.vlc.input.time-this.start_offset)/this.mediaLen );
-						this.setSliderValue( (this.vlc.input.time-this.start_offset)/this.mediaLen);
+						this.setSliderValue( ((this.vlc.input.time-this.start_offset)/1000)/this.duration);
 					}  	        
-					this.setStatus(this.getFormatTimeInfo(this.vlc.input.time, this.mediaLen+this.start_offset));
+					this.setStatus(seconds2ntp(this.currentTime) + ' / ' + seconds2ntp(this.duration+this.start_offset) );					
 			   }else{
 			   		//update info to seek to: 
-					this.setStatus('seek to: '	+ seconds2ntp(Math.round( (this.sliderVal*this.mediaLen)/1000) ));
+					this.setStatus('seek to: '	+ seconds2ntp(Math.round( (this.sliderVal*this.duration)) ));
 			   }
 			}
         }else{        	        	
@@ -283,13 +273,6 @@ var vlcEmbed = {
     // get the embed vlc object 
     getVLC : function getVLC(){
     	this.vlc = this.getPluginEmbed();   		
-    },
-    /*
-     * returns current time /
-     */
-    getFormatTimeInfo : function(s,e){
-		return  seconds2ntp(Math.round(s / 1000) )+ 
-            	"/" + seconds2ntp(Math.round(e / 1000) );
-    }
+    },    
 }
 

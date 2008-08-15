@@ -16,9 +16,10 @@
 }
 .mv_fd_mvd{
 	float:left;
-	margin:4px;
 	width:90%;
 	min-width: 350px;
+	border:none;
+	border: 1px solid #FFFFFF;
 }
 .mv_video_time_hr{
  	position:absolute;
@@ -139,7 +140,7 @@ div.autocomplete ul li {
 }
 
 .ac_loading {
-	background : Window url('./images/indicator.gif') right center no-repeat;
+	background : Window url('images/indicator.gif') right center no-repeat;
 }
 
 .ac_over {
@@ -168,13 +169,25 @@ div.autocomplete ul li {
 	position:absolute;left:365px;top:30px;right:15px;bottom:10px;margin:4px;min-width:470px;
 }
 #mv_fd_mvd_cont{
-	position:absolute;top:0px;bottom:30px;right:12px;overflow-x:hidden;overflow-y:auto;
+	position:absolute;top:0px;right:12px;overflow-x:hidden;overflow-y:auto;
 }
 #mv_time_line{
 	position:absolute;background:#DDDDDD;left:0px;height:94%;overflow:hidden;
 }
+#selectionsBox{
+	width: 490px;
+	height: 517px;
+	overflow: auto;
+	border: 1px solid #c8c8c8;
+	margin: 15px 0;
+}
+#videoContent {
+	width: 410px;
+	float: left;
+	display: inline;
+}
 #MV_Tools{
-	position:absolute;width:322px;top:312px;left:10px;bottom:10px;margin:4px;
+	position:absolute;width:400px;top:420px;left:10px;bottom:10px;margin:4px;
 }
 #mv_tool_cont{
 	position:absolute;top:0px;left:0px;right:13px;bottom:30px;overflow:auto;
@@ -376,5 +389,84 @@ input.dp-applied {
 	border:solid black thin;
 }
 
+#resultsArea {
+	width: 630px;
+	float: left;
+	display: inline;
+	margin: 0 0 10px 8px;
+}
 
+ul#metaResults, ul#metaProfile {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	text-align: left;
+	overflow: hidden;
+	height: 100%;
+}
+ul#metaResults li, ul#metaProfile li {
+	display: inline;
+}
+ul#metaResults li a, ul#metaProfile li a {
+	text-decoration: none;
+}
 
+ul#metaResults li.results {font-weight: bold; margin-right: 10px; margin-left:3px;}
+ul#metaResults li.relevant {}
+ul#metaResults li.recent {}
+ul#metaResults li.viewed {margin-right: 10px;}
+ul#metaResults li.rss a {background: url(images/ico_rss.png) top right no-repeat; padding: 0 18px 0 0; color: #df5c01; margin-left:40px}
+ul#metaResults li.subscribe img {vertical-align: bottom; margin-left: 10px;}
+
+ul#metaProfile li.recent_activity {font-weight: bold; font-size: 15px; float: left; display: inline;}
+ul#metaProfile li.rss a {float: right; display: inline; background: url(images/ico_rss.png) top right no-repeat; padding: 0 18px 0 0; color: #df5c01;}
+ul#metaProfile li.subscribe img {vertical-align: bottom; float: right; display: inline; margin-left: 10px;}
+ul#metaResults li.prevnext {margin-left:3px; margin-right:10px;}
+
+#resultsArea ul#results {
+	list-style: none;
+	margin: 20px 0;
+	padding: 0;
+}
+#resultsArea ul#results li.result {
+	margin: 0 0 26px 0;
+	overflow: hidden;
+	height: 100%;
+}
+#resultsArea ul#results li.moreBy {
+	padding: 10px 0 0 173px;
+}
+#resultsArea ul#results li.moreBy a {text-decoration: none; font-weight: bold; font-size: 14px;}
+
+#resultsArea ul#results li.result .vid_img {float: left; display: inline; width:160px;}
+#resultsArea ul#results li.result div.result_description {
+	width: 353px;
+	float: left;
+	display: inline;
+	margin: 0 0 0 15px;
+}
+.suggestionsBox div.block p.people2_match img {width: 44px;padding:5px;}
+#resultsArea ul#results li.result div.result_description p {margin: 0; padding: 8px 0;}
+#resultsArea ul#results li.result div.result_description h4 {margin: 0; padding: 0;}
+#resultsArea ul#results li.result div.result_description a {text-decoration: none;}
+#resultsArea ul#results li.result div.result_meta {float: right; display: inline; color: #7a7979;}
+#resultsArea ul#results li.result div.result_meta span {display: block; font-size: 12px; padding: 2px 0;}
+
+#searchSideBar {
+	width: 253px;
+	float: right;
+	display: inline;
+	overflow: hidden;
+}
+#searchSideBarInner h6 {color: #242424; text-transform: none; padding: 5px 20px 5px 20px; margin: 0;}
+#searchSideBarInner h6.profile {background: #dfebfe; margin: 0px 1px;}
+#suggestions {
+	width: 295px;
+	overflow: hidden;
+	position: absolute;
+	z-index: 2;
+	margin: 0 0 0 230px;
+}
+#suggestionsInner{
+	background:#FFF;
+}

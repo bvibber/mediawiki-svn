@@ -17,17 +17,15 @@
  		parent::__construct($title);
  	}
  	public function view() {
-		global $wgRequest, $wgUser, $wgOut, $wgTitle, $wgJsMimeType, $mvgScriptPath;
-		
-		//include the metavid headers (for embedding video in the page) 
-		mvfAddHTMLHeader('embed');			
+		global $wgRequest, $wgUser, $wgOut, $wgTitle, $wgJsMimeType, $mvgScriptPath;				
 			
 		// copied from CategoryPage ...
 		$diff = $wgRequest->getVal( 'diff' );
 		$diffOnly = $wgRequest->getBool( 'diffonly', $wgUser->getOption( 'diffonly' ) );
-		if ( isset( $diff ) && $diffOnly ) {
+		if ( isset( $diff ) || $diffOnly ) {
 			return Article::view();
-		}
+		}		
+		//include the metavid headers (for embedding video in the page) 		
 		$wgOut->setPageTitle( $this->mvTitle->getTitleDesc() );
 		$wgOut->addHtml($this->mvArticleTop());
 		Article::view();
@@ -82,7 +80,7 @@
 			$wgOut->addHTML( '<strong>' . wfMsg( 'historywarning' ) . ' ' . $skin->historyLink() . '</strong>' );
 		}
 		
-		return $this->confirmDelete( $reason );
+		return $this->confirmDelete( '', $reason );
 	}
 	/*
 	 * function article top 

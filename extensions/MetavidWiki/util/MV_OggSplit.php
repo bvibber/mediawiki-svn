@@ -1,4 +1,5 @@
 <?php
+ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
 /**
  * MV_OggSplit.php
  * 

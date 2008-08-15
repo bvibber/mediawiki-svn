@@ -12,7 +12,6 @@
  * 
  */
 if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
-/*the format to extension mapping*/
 
 /* handles metavid stream config and updates mv_stream table*/
 class MV_Stream {
@@ -59,6 +58,7 @@ class MV_Stream {
 	function setMvTitle(&$mvTitle){
 		$this->mvTitle=$mvTitle;
 	}
+
 	/*connivance function*/
 	function doesStreamExist(){
 		return $this->db_load_stream();

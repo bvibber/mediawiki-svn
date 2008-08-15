@@ -8,7 +8,7 @@
  /*
   * stores all the html for the video player and its associated ajax functions
   */
-  if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
+if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
  class MV_VideoPlayer extends MV_Component{
  	var $name = 'MV_VideoPlayer';  	 	 	
  	function getHTML(){
@@ -46,6 +46,14 @@
 			}
 		}
 		return '';
+	}
+	function render_full(){
+		global $wgOut;
+ 		//"<div >" . 		 		
+ 		$wgOut->addHTML("<div id=\"videoContent\">\n"); 				
+ 		//do the implemented html 
+ 		$this->getHTML(); 
+ 		$wgOut->addHTML("</div>\n");
 	}
 	
  }

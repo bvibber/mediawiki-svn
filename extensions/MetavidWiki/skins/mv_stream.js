@@ -16,10 +16,8 @@
  * assumes a few utility functions are available from mv_embed: 
  * 	loadExternalJs()
  * 	addLoadEvent()
- * also assumes scriptaculus is included in the mv_embed distribution
- * /skins/mv_embed/scriptaculous
  */
-var org_vid_src = null; //stores the original video src 
+var org_vid_time_req =null; //store the orginal time req:
 var org_thum_src = null; //stores the original thumbnail src
 var org_vid_title = null; //stores the original title
 //store the original range request: 
@@ -91,30 +89,30 @@ var mv_init_interface = {
 		//set up the init values for mouse over restore:
 		org_vid_title = $j('#mv_stream_time').html();
 		if(!$j('#embed_vid').get(0)){
-			//no embed video present stop init
+			//no embed video present stop init			
 			return '';
 		}
-		org_vid_src = $j('#embed_vid').get(0).src;
+		org_vid_time_req = $j('#embed_vid').get(0).getTimeReq();
 		org_thum_src = $j('#embed_vid').get(0).thumbnail;
-		//overide play button action to interface control: 		
-		$j('#big_play_link_embed_vid').attr('href', 'javascript:mv_do_play();');
+		
 		//@@TODO override stop function in player:
 		
 		//current range or search parameter	
 		stream_current_context =$j('#mv_stream_time').html();		
-		js_log('set org_vid_src: ' + org_vid_src + "\n" + $j('#embed_vid').attr('src'));						
+		js_log('set org_vid_time_req: ' + org_vid_time_req );						
 
-		ebvid = $j('#embed_vid').get(0);
-		//extend stop button on mv_embed: 
+		ebvid = $j('#embed_vid').get(0);		
 		ebvid['inheritEmbedOverride']=function(){
 			js_log('inheritEmbedOverride');
-			if(typeof ebvid['org_eb_stop']=='undefined'){
-				//js_log("pre stop: " +ebvid['stop'].toString());
+			//overide play button action to interface control: 		
+			$j('#big_play_link_embed_vid').attr('href', 'javascript:mv_do_play();');
+			//extend stop button on mv_embed: 
+			//js_log("pre stop: " +ebvid['stop'].toString() );
+			if(ebvid['stop'].toString()!='function(){mv_do_stop();}'){				
 				ebvid['org_eb_stop'] = ebvid['stop'];
-				ebvid['stop'] = function(){
-					mv_do_stop();
-				}
-			}			
+				ebvid['stop'] = function(){mv_do_stop();}
+			}	
+			//js_log("post stop: " +ebvid['stop'].toString());	
 		}
 		//call stop override 
 		ebvid.inheritEmbedOverride();
@@ -122,6 +120,42 @@ var mv_init_interface = {
 		//js_log('org_eb_stop: '+ ebvid['org_eb_stop'].toString() );
 		//add all the hover hooks:
 		this.addHoverHooks();				
+		
+		//add edit/navigate hook
+		var st_input_mode=false;
+		$j('#mv_stream_time').click(function(){	
+			if(!st_input_mode){
+				var st = $j('#'+this.id+' .mv_start_time').html();
+				var et =  $j('#'+this.id+' .mv_end_time').html();	
+				$j(this).hide();
+				$j(this).after('<form style="display:inline" action="javascript:alert(\'wtf\');" id="td_st_mv_stream_time">' +
+						'<input class="videoHeader" id="mv_td_start_time" size="7" value="'+st+'">'+
+						'<input class="videoHeader" id="mv_td_end_time" size="7" value="'+et+'"> '+
+						'<a href="#" id="mv_td_st_go">go</a> :: '+
+						'<a href="#" id="mv_td_st_cancel">cancel</a></form>');			
+			}
+			if(!st_input_mode)st_input_mode=true;
+			//bind actions for go/cancel
+			function getNavUrl(){
+				return wgArticlePath.replace('$1',wgPageName+'/'+$j('#mv_td_start_time').val()+'/'+$j('#mv_td_end_time').val());
+			}
+			$j('#mv_td_st_go').click(function(){		
+				window.location=getNavUrl();
+				return false;
+			});	
+			$j('#td_st_mv_stream_time input').keypress(function (e) {  
+				if ((e.which && e.which == 13) || (e.keyCode && e.keyCode == 13)) {  		
+					window.location=getNavUrl();
+				}
+			});
+			$j('#mv_td_st_cancel').click(function(){
+				$j('#mv_stream_time').show();
+				$j('#td_st_mv_stream_time').remove();
+				st_input_mode=false;
+				return false;
+			});					
+		});
+		
 		
 		//do any tool specific hooks: 
 		this.tool_key = parseUri(document.URL).queryKey.tool_disp;
@@ -132,6 +166,7 @@ var mv_init_interface = {
 		//unlock the interface updates once everything is setup: 
 		mv_lock_vid_updates=false;		
 		js_log('done with mv_init_inerface');
+		$j('#embed_vid').get(0).stop();
 		this.interfaceLoaded=true;
 	},
 	addHoverHooks:function(selector){
@@ -200,7 +235,7 @@ var mv_init_interface = {
 			out:function(){
 				
 			}
-		});
+		});	
 	}, 
 	//delay video updates until we are not playing the clip:
 	delayDoVidMvdUpdate:function(){
@@ -226,7 +261,8 @@ var mv_init_interface = {
 				//only restore if the cur_mvd = 'base' and interface updates are not locked
 				if(this.cur_mvd_id=='base'){				
 					vid_elm.updateThumbnail(org_thum_src);
-					vid_elm.updateVideoSrc(org_vid_src);
+					vid_elm.updateVideoTimeReq(org_vid_time_req);
+					//vid_elm.updateVideoSrc(org_vid_src);
 					$j('#mv_videoPlayerTime').html(org_vid_title);
 				}
 			}
@@ -265,8 +301,7 @@ function mv_disp_add_mvd(mvdType){
 	}
 	mv_open_edit_mvd=mvdType;
 	sajax_request_type='GET';	
-	time_range = org_vid_src.substr( org_vid_src.indexOf('?t=')+3 );
-	sajax_do_call( "mv_add_disp",[wgTitle, mvdType, time_range], f );
+	sajax_do_call( "mv_add_disp",[wgTitle, mvdType, org_vid_time_req], f );
 	//insert before the first mvd:
 	//if($j('#mv_fd_mvd_new').get(0)){
 	//	$j('#mv_fd_mvd_new').html(global_loading_txt);
@@ -300,13 +335,17 @@ function mv_disp_add_mvd(mvdType){
 	}
 }
 function mv_edit_disp(titleKey, mvd_id){	 
-	if(mv_open_edit_mvd){
+	if(mv_open_edit_mvd && mv_open_edit_mvd!=mvd_id){
 		alert(gMsg['mv_open_edit']);
 		return ;
 	}
+	var title_parts = titleKey.split(':');
+	var mvd_type = title_parts[0].toLowerCase();
+	
 	mv_open_edit_mvd=mvd_id;
 	 //set sajax to do a GET request
 	 sajax_request_type='GET';
+
 	 sajax_do_call( "mv_edit_disp", [titleKey, mvd_id], f );
 	 $j('#mv_fcontent_'+mvd_id).html(global_loading_txt);
 	 //handle the response:
@@ -316,10 +355,23 @@ function mv_edit_disp(titleKey, mvd_id){
 		$j('#mv_fcontent_'+mvd_id).html( result );
 		//add javascript hooks     
 		add_autocomplete(mvd_id);     
-		add_adjust_hooks(mvd_id);            
+		add_adjust_hooks(mvd_id);  
+		
+	
+		//if mvd_type==anno_en          
 		//add buttons			
 		mwSetupToolbar();
 		mwEditButtons = []; //empty edit buttons
+		
+		if(mvd_type=='anno_en'){
+			//add mv_helpers autocompletes
+			add_mv_helpers_ac(mvd_id);
+			if($j('#adv_basic_'+mvd_id).val()=='basic'){
+				$j('.mv_advanced_edit').hide();
+			}else{
+				$j('.mv_basic_edit').hide();
+			}
+		}
 	  }
 }/* interface ajax actions */
 function mv_disp_mvd(titleKey, mvd_id){
@@ -402,20 +454,63 @@ function mv_adjust_preview(mvd_id){
 	//}
 	mv_lock_vid_updates=false;
 }
-
-//update the slider on user input: 
-//@@TODO fix bug in scriptaculus so handles are registered and can use this function:
-/*function mv_update_slider(input, mvd_id){
-	//get seconds from input	
-	var sec = ntp2seconds(input.value);
-	var base_offset = mv_sliders[mvd_id]['base_offset'];
-	var track_dur = 	mv_sliders[mvd_id]['track_dur'];
-	var handle_id = (input.id=='mv_start_hr_'+mvd_id)?'handle1_'+mvd_id:'handle2_'+mvd_id;
-	js_log('set slider:' + handle_id +' '+ ((sec-base_offset)/track_dur));
-	var slider_start=0;
-	var slider_end =((sec-base_offset)/track_dur);
-	mv_sliders[mvd_id].setValue( ((sec-base_offset)/track_dur), handle_id );			
-}*/
+/*
+ * adds autocomplete to semantic forms
+ * with special case for speech by and "categories"
+ * @@todo generalize for all autocompletes
+ */
+function add_mv_helpers_ac(mvd_id){
+	$j('.mv_anno_ac_'+mvd_id).each(function(i, input_item){
+		var prop_name =$j(input_item).attr('name');
+		js_log('add ac for: '+ prop_name);
+		uri = wgServer + ((wgServer == null) ? (wgScriptPath + "/index.php") : wgScript);
+		$j(input_item).autocomplete(
+			uri,
+			{
+				autoFill:true,
+				onItemSelect:function(v){		
+					js_log('selected:' + v.innerHTML + 'fill with' + $j(input_item).val() );
+					//@@todo better way to determin type
+					//js_log("img src: " + $j(v).children('img').attr('src'));
+					//'mv_edit_im_'+mvd_id
+					if($j(v).children('img').length!=0){
+						$j('#smw_Speech_by_img').attr('src', $j(v).children('img').attr('src'));
+					}					
+					//add category and empty input (@@todo make cat_ns multi-lengual friendly 				
+					var cat_ns="Category:"	
+					if($j(input_item).val().indexOf(cat_ns)==0){
+						mv_add_category(mvd_id, $j(input_item).val().substr(cat_ns.length));
+						$j(input_item).val('');
+					}
+				},
+				formatItem:function(row){					
+					if(row[2]=='no_image'){
+						return row[1];
+					}else{
+						return '<img width="44" src="'+ row[2] + '">'+row[1];
+					}
+				},
+				matchSubset:0,
+				extraParams:{action:'ajax',rs:'mv_helpers_auto_complete',prop_name:prop_name},
+				paramName:'rsargs[]',
+				resultElem:'#'+prop_name+'_choices_'+mvd_id
+			});	
+	});
+}
+function mv_add_category(mvd_id, cat_name){
+	js_log("add cat: "+ cat_name);
+	if(cat_name=='')return false;
+	var currentDate = new Date()	
+	var unique_inx = currentDate.getUTCMilliseconds();
+	$j('#mv_ext_cat_container_'+mvd_id).append('<span id="ext_cat_'+unique_inx+'"><input value="'+cat_name+'" type="hidden" style="display:none;" name="ext_cat_'+unique_inx+'" class="mv_ext_cat">'+
+							cat_name.replace(/_/g," ") +
+							'<a  href="#" onclick="$j(\'#ext_cat_'+unique_inx+'\').fadeOut(\'fast\').remove();return false;">'+
+								'<img border="0" src="'+mvgScriptPath+'/skins/images/delete.png">'+
+							'</a></span><br>');
+}
+/*
+ * @@TODO add_autocomplete should be merged with generalized mv_helpers_ac
+ */
 function add_autocomplete(mvd_id){
 		//make sure the target elements exist: 
 		//if(!document.getElementById("auto_comp_"+mvd_id))return ;
@@ -509,8 +604,21 @@ function mv_remove_mvd(titleKey, mvd_id, form){
 	});
 	post_vars['title']=titleKey;
 	post_vars['mvd_id'] = mvd_id;
-	sajax_request_type='POST';
+	
 	var setHtmlId ='#mv_fcontent_'+mvd_id;
+	//@@todo switch over to jquery ajax
+	/*uri = wgServer +
+		((wgServer == null) ? (wgScriptPath + "/index.php") : wgScript) +
+		"?action=ajax&rs=mv_remove_mvd";
+	$j.ajax({
+			url:uri,
+			data:post_vars,
+			error:function(error){}, 
+			success:function(result){}
+		}
+	);	
+	}*/
+	sajax_request_type='POST';
 	mv_sajax_do_call('mv_remove_mvd',args, f, post_vars);	
 	js_log('did request');
 	function f( request ) {		
@@ -594,7 +702,7 @@ function mv_do_ajax_form_submit(mvd_id, edit_action){
 	}	
 
 	$j(setHtmlId).html( global_loading_txt);		
-		
+	//@@todo switch over to jquery ajax
 	mv_sajax_do_call('mv_edit_submit',args, f, post_vars);	
 	//js_log('mv_sajax_do_call ' + fajax +' ' +  args);
 	function f( request ) {
@@ -659,7 +767,7 @@ function mv_do_ajax_form_submit(mvd_id, edit_action){
 	//return false to prevent the form being submitted
 	return false;
 }
-function mv_do_stop(){
+function mv_do_stop(){	
 	$j('#mv_videoPlayerTime').fadeIn('fast');
 	//re-enable interface:
 	mv_lock_vid_updates=false;
@@ -670,6 +778,7 @@ function mv_do_stop(){
 		//hide the controls	thumbnail_disp
 		mv_disp_play_controls(false);
 		js_log('mv_do_stop');
+		//run the original stop:
 		$j('#embed_vid').get(0).org_eb_stop();
 		//re-rewrite the play button: 
 		$j('#big_play_link_embed_vid').attr('href', 'javascript:mv_do_play();');
@@ -719,7 +828,7 @@ function mv_disp_play_controls(disp){
 	if(disp){		
 		//based on the embed type give space for controls: 
 		//@@todo pull pix_offset from players code		
-		switch(embedTypes.getPlayerLib()){
+		/*switch(embedTypes.getPlayerLib()){
 			case 'java':
 			case 'generic':		
 				var pix_offset= 30;
@@ -729,7 +838,9 @@ function mv_disp_play_controls(disp){
 			case 'oggplay':
 				var pix_offset=55;
 			break;
-		}
+		}*/
+		//give room for all players:
+		var pix_offset=55;
 		js_log("set con space: " + org_height_vid_contain+parseInt(pix_offset));
 		$j('#MV_VideoPlayer').css({'height':(org_height_vid_contain+parseInt(pix_offset))+'px'});
 		$j('#MV_StreamMeta,#MV_Tools').css({'top':(org_top_tool_contain+parseInt(pix_offset))+'px'});
@@ -751,7 +862,7 @@ function highlight_fd(mvd_id){
 	$j('#mv_fd_mvd_'+mvd_id).css('border','1px solid #FF0000');
 }
 function de_highlight_fd(mvd_id){
-	$j('#mv_fd_mvd_'+mvd_id).css('border', '1px solid #2F6FAB');
+	$j('#mv_fd_mvd_'+mvd_id).css('border', '1px solid #FFFFFF');
 }
 
 function highlight_tl_ts(mvd_id){
@@ -785,13 +896,7 @@ function do_video_time_update(start_time, end_time, mvd_id)	{
 	if(mv_lock_vid_updates==false){		
 		//update the vid title:	
 		$j('#mv_videoPlayerTime').html( start_time + ' to ' + end_time );
-		if(org_vid_src.indexOf('?')!=-1){
-			var url = org_vid_src.split('?');
-			var new_vid_url = url[0] + '?t=' + start_time+'/'+end_time;
-			//js_log("new vid url:" +new_vid_url);
-			if(new_vid_url!=$j('#embed_vid').attr('src'))
-				$j('#embed_vid').get(0).updateVideoSrc(new_vid_url);
-		}
+		$j('#embed_vid').get(0).updateVideoTime(start_time, end_time);				
 		do_update_thumb(mvd_id, start_time);
 	}
 }
@@ -832,14 +937,15 @@ function mv_tool_disp(tool_id){
 	var post_vars=new Object();
 	if(tool_id=='navigate'||tool_id=='export'){
 		//assumes stream name ends with time range
-		time_range = org_vid_src.substr( org_vid_src.indexOf('?t=')+3 );
-		post_vars['time_range']=time_range;
+		//time_range = org_vid_src.substr( org_vid_src.indexOf('?t=')+3 );
+		post_vars['time_range']=org_vid_time_req;
 	}
 	//set tracks from mv var:
 	if(tool_id=='mang_layers'){
 		post_vars['tracks']=mvTracks;
 	}
 	sajax_request_type='POST';
+	//@@todo switch over to jquery ajax
 	mv_sajax_do_call('mv_tool_disp', [tool_id, wgNamespaceNumber, wgTitle], f, post_vars);
 	function f( request ) {
         result = request.responseText;		 		          
@@ -1001,8 +1107,29 @@ function mv_sajax_do_call(func_name, args, target, post_vars) {
 
 	return true;
 }
-
- 
+/*
+ * togle advanced and simply display of mvd annotation edits
+ */
+function mv_mvd_advs_toggle(mvd_id){
+	js_log('form val:#adv_basic_'+mvd_id+' '+$j('#adv_basic_'+mvd_id).val());
+	if($j('#adv_basic_'+mvd_id).val()=='basic'){
+		js_log('form is currently basic; SET to ADV');
+		//set to advanced	
+		$j('#adv_basic_'+mvd_id).val('advanced');
+		//hide all basic
+		$j('.mv_basic_edit').fadeOut('fast');
+		//show all advanced
+		$j('.mv_advanced_edit').fadeIn('fast');
+	}else{
+		js_log('form is currently advanced; SET to basic');
+		//set to basic
+		$j('#adv_basic_'+mvd_id).val('basic');
+		//hide all advanced
+		$j('.mv_advanced_edit').fadeOut('fast');
+		//show all basic
+		$j('.mv_basic_edit').fadeIn('fast');
+	}
+}
  
 /* custom effects */ 
 /*function add_custom_effects(){

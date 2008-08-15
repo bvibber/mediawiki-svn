@@ -14,7 +14,7 @@ $mvgScriptPath = $wgScriptPath . '/extensions/MetavidWiki';
 ##
 $mvgIP = $IP . '/extensions/MetavidWiki';
   
-//include the global functions & init the extension 
+//include the global functions & register the extension 
 include_once('MV_GlobalFunctions.php');
 
 
@@ -33,8 +33,28 @@ $mvEnableJSMVDrewrite=true;
 ##########################
 # semanticWiki integration options
 ##########################
+//@@todo we should clean this up!... into a semantic maping array or object
 //if you want to include spoken by relation in search results:  
+
+//enable dissable varius digest data collection 
+$mvEnableSearchDigest = true;
+$mvEnableClipViewDigest= true;
+//keeps track of popular pages in given categories over time
+$mvDigestCategories = array('Interst_Group', 'Bill', 'Person');
+
+//metadata helpers for annotative layer (anno_en)
+// 'property'=>category for auto_complete (ALL LOWER CASE)
+$mvMetaDataHelpers = array('anno_en'=>array('Speech_by'=>'person', 'Bill'=>'Bill'));
+//by default categories are handled differently enable or disable below: 
+$mvMetaCategoryHelper=true;
+
+
 $mvSpokenByInSearchResult = true;
+//if you want to include category lookup in search results:
+$mvCategoryInSearchResult = true;
+//if you want to include bill lookup in search results:
+$mvBillInSearchResult = true;
+
 
 #########################
 # metavid paths 
@@ -72,6 +92,7 @@ $mvVideoArchivePaths['mvprime']= 'http://metavid.ucsc.edu/media/';
 $mvVideoArchivePaths['cap1'] = 'http://128.114.20.64/media/';
 
 $mvDefaultVideoQualityKey = 'mv_ogg_low_quality';
+$mvDefaultFlashQualityKey = 'mv_flash_low_quality';
 
 #local path to video archive (if hosted locally)
 $mvLocalVideoLoc = '/metavid/video_archive';
@@ -94,7 +115,7 @@ $mvMediaSearchResultsLimit = 100;
 $mvLiveUpdateInterval = 5;
 
 //should be the same resolution as webstream encode.
-$mvDefaultVideoPlaybackRes = '320x240';
+$mvDefaultVideoPlaybackRes = '400x300';
 $mvDefaultSearchVideoPlaybackRes='320x240';
 $mvDefaultVideoIconSize = '80x60';
 
@@ -124,15 +145,18 @@ define('MV_MISSING_PERSON_IMG','Missing person.jpg');
 ######
 # the metavid table names:
 #######
+//@@todo we should just switch over to mediaWiki db helpers and write in table names 
+//(medaiWiki can then handle table name rewriting) 
 $mvStreamTable 		= 'mv_streams';
 $mvStreamFilesTable	= 'mv_stream_files';
 $mvIndexTableName 	= 'mv_mvd_index';
 $mvStreamImageTable = 'mv_stream_images';
 $mvUrlCacheTable 	= 'mv_url_cache';
+$mvPageDigestTable	= 'mv_page_digest';
+$mvSearchDigestTable= 'mv_search_digest';
 
 //whether to count found results (can take lots of time on big result sets)
 $mvDo_SQL_CALC_FOUND_ROWS = true;
-
 
 #########
 # Stream Types & User Rights
@@ -156,6 +180,18 @@ $wgGroupPermissions['sysop']['mv_edit_stream']=true;
 $wgGroupPermissions['bot']['mv_edit_stream']=true;
 $wgAvailableRights[] = 'mv_delete_mvd';
 $wgAvailableRights[] = 'mv_edit_stream';
+
+$mvMsgContentTypeLookup = array(
+ 		'ao_file_256Kb_MPEG4'	=>'video/mp4',
+ 		'ao_file_64Kb_MPEG4'	=>'video/mp4',
+ 		'ao_file_flash_flv'		=>'video/x-flv',
+ 		'ao_file_MPEG1'			=>'video/mpeg',
+ 		'ao_file_MPEG2'			=>'video/mpeg-2',
+ 		'mv_flash_low_quality'	=>'video/x-flv',
+ 		'mv_ogg_high_quality'	=>'video/ogg',
+ 		'mv_ogg_low_quality'	=>'video/ogg'
+ 	);
+ 	
 ###
 # If you already have custom namespaces on your site, insert
 # $mvNamespaceIndex = ???; in your config before including the settings

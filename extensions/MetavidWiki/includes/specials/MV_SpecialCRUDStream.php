@@ -13,10 +13,11 @@
  
 if (!defined('MEDIAWIKI')) die();
  
-global $IP;
-require_once( "$IP/includes/SpecialPage.php" );
+//not need should autoload
+//global $IP;
+//require_once( "$IP/includes/SpecialPage.php" );
 
-function doSpecialAddStream() {
+/*function doSpecialAddStream() {
 	$MV_SpecialAddStream = new MV_SpecialCRUDStream('add');
 	$MV_SpecialAddStream->execute();
 }
@@ -27,10 +28,12 @@ function doSpecialEditStream(){
 
 SpecialPage::addPage( new SpecialPage('Mv_Add_Stream','',true,'doSpecialAddStream',false) );
 SpecialPage::addPage( new SpecialPage('Mv_Edit_Stream','',true,'doSpecialEditStream',false) );
-
-class MV_SpecialCRUDStream {
-	function __construct($mode){	
-		$this->mode = $mode;
+*/
+/* @@TODO depreciate in favor of oggFile -> stream setup */
+class MV_SpecialCRUDStream extends SpecialPage{
+	function __construct($mode='add'){		
+		parent::__construct('Mv_Add_Stream');		
+		$this->mode='add';	
 	}
 	function execute() {
 		global $wgRequest, $wgOut, $wgUser, $mvStream_name, $mvgIP;   
@@ -102,9 +105,9 @@ class MV_SpecialCRUDStream {
 			}else{
 				$html.= wfMsg('mv_add_stream_docu', $docutitle->getFullURL()) . "\n";
 			}
-			$html.= '<form name="add_stream" action="' . $spectitle->escapeLocalURL() . '" method="post" enctype="multipart/form-data">';
+			$html.= '<form name="add_stream" action="' . htmlspecialchars($spectitle->escapeLocalURL()) . '" method="post" enctype="multipart/form-data">';
 			$html.= '<fieldset><legend>'.wfMsg('mv_add_stream').'</legend>' . "\n" .
-			         '<input type="hidden" name="title" value="' . $spectitle->getPrefixedText() . '"/>' ;
+			         '<input type="hidden" name="title" value="' . htmlspecialchars($spectitle->getPrefixedText()) . '"/>' ;
 			$html.= '<table width="600" border="0">'.
 					'<tr>';
 					
@@ -119,7 +122,7 @@ class MV_SpecialCRUDStream {
 					'<option value="">Select Stream Type</option>'. "\n";				
 			foreach($this->_allowedStreamTypeArray as $type=>$na){
 				$sel= ($type==$this->stream_type)?'selected':'';
-				$html.='<option value="'.$type.'" ' .$sel . '>'.wfMsg('mv_'.$type).'</option>'."\n";
+				$html.='<option value="'.htmlspecialchars($type).'" ' . htmlspecialchars($sel) . '>'.wfMsg('mv_'.$type).'</option>'."\n";
 			}					
 			$html.=	'</select></tr>'."\n";
 			$html.=		'<tr><td valign="top"><i>' .wfMsg('mv_label_stream_desc') .'</i>:</td><td>';
@@ -129,10 +132,10 @@ class MV_SpecialCRUDStream {
 			}else{
 				$token = EDIT_TOKEN_SUFFIX;
 			}
-			$html .= "\n<input type='hidden' value=\"$token\"$docutitle name=\"wpEditToken\" />\n";
+			$html .= "\n<input type='hidden' value=\"$token\" name=\"wpEditToken\" />\n";
 			//output the text area: 
-			$html .= '<textarea tabindex="1" accesskey="," name="stream_desc" id="stream_desc" rows=6 cols=5>'.$this->stream_desc .'</textarea>' . "\n";
-			$html .= '<br /><input type="submit" value="' . wfMsg('mv_add_stream_submit') . "\"/>\n</form>";
+			$html .= '<textarea tabindex="1" accesskey="," name="stream_desc" id="stream_desc" rows=6 cols=40>'.htmlspecialchars($this->stream_desc) .'</textarea>' . "\n";
+			$html .= '<br /><input type="submit" value="' . htmlspecialchars(wfMsg('mv_add_stream_submit')) . "\"/>\n</form>";
 			
 			$html .= '</td></tr></table>';
     		$html .='</fieldset>';
@@ -165,8 +168,8 @@ class MV_SpecialCRUDStream {
 		$html.= '<table width="600" border="0">';	
 		foreach($stream_files as $sf){
 				$html.='<tr>';
-					$html.='<td width="150">'.$sf->getFullURL().'</td>';
-					$html.='<td>'.$sf->get_desc().'</td>';											
+					$html.='<td width="150">'.htmlspecialchars($sf->getFullURL()).'</td>';
+					$html.='<td>'.htmlspecialchars($sf->get_desc()).'</td>';											
 				$html.='</tr>';
 		}
 		$html .='</table></fieldset>';
@@ -198,7 +201,7 @@ class MV_SpecialCRUDStream {
 				if ( $success ) {
 					//stream inserted succesfully report to output				
 					$streamLink = $sk->makeLinkObj( $streamTitle,  $this->stream_name );		
-					$out='stream '.$streamLink.' added';													
+					$out='stream '.htmlspecialchars($streamLink).' added';													
 					 
 				} else {
 					$out=wfMsg('mv_error_stream_insert');
@@ -234,7 +237,7 @@ class MV_SpecialCRUDStream {
 				}
 				
 			}			
-		}
+		}		
 		return $this->_allowedStreamTypeArray;
 	}	
 	

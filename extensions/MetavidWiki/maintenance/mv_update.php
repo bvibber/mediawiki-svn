@@ -6,15 +6,79 @@
 require_once ('../../../maintenance/commandLine.inc');
 
 $dbclass = 'Database' . ucfirst( $wgDBtype ) ;
+
 # Attempt to connect to the database as a privileged user
 # This will vomit up an error if there are permissions problems
+
 $wgDatabase = new $dbclass( $wgDBserver, $wgDBadminuser, $wgDBadminpassword, $wgDBname, 1 );
 
 
 //do mvd_index text removal update:
 //check if mvd_index has text field
 $page_id_added=false; 
-if(!$wgDatabase->fieldExists($mvIndexTableName, 'page_id')){
+
+//install the new search index tables: 
+if(!$wgDatabase->tableExists('mv_search_digest')){
+	echo 'CREATE TABLE mv_search_digest'."\n";
+	$wgDatabase->query('CREATE TABLE IF NOT EXISTS `mv_search_digest` (
+  `id` int(11) NOT NULL auto_increment,
+  `query_key` varchar(128) character set utf8 collate utf8_unicode_ci NOT NULL,
+  `time` int(11) NOT NULL,
+  PRIMARY KEY  (`id`),
+  KEY `query` (`query_key`,`time`)
+) ENGINE=MyISAM');
+}
+if(!$wgDatabase->tableExists('mv_clipview_digest')){
+	echo 'CREATE TABLE mv_clipview_digest'."\n";
+	$wgDatabase->query(" CREATE TABLE IF NOT EXISTS `mv_clipview_digest` (
+  `id` int(11) NOT NULL auto_increment,
+  `query_key` int(33) NOT NULL,
+  `stream_id` int(11) unsigned NOT NULL,
+  `start_time` int(10) unsigned NOT NULL default '0',
+  `end_time` int(10) unsigned NOT NULL,
+  `view_date` int(11) NOT NULL,
+  PRIMARY KEY  (`id`),
+  KEY `stream_id` (`stream_id`,`start_time`,`end_time`,`view_date`),
+  KEY `query_key` (`query_key`)
+) ENGINE=MyISAM ;");
+}
+if(!$wgDatabase->tableExists('mv_query_key_lookup')){
+	echo 'CREATE TABLE mv_query_key_lookup'."\n";
+	$wgDatabase->query("CREATE TABLE IF NOT EXISTS `mv_query_key_lookup` (
+  `query_key` varchar(128) NOT NULL,
+  `filters` text NOT NULL,
+  PRIMARY KEY  (`query_key`)
+) ENGINE=MyISAM ;");
+}
+
+if(!$wgDatabase->fieldExists('mv_mvd_index', 'view_count')){	
+	echo '`mv_mvd_index` ADD `view_count`'."\n";
+	$wgDatabase->query("ALTER TABLE `mv_mvd_index` ADD `view_count` INT( 10 ) UNSIGNED NOT NULL DEFAULT '0' AFTER `end_time`");
+}
+//add view_count index:
+if(!$wgDatabase->indexExists('mv_mvd_index','view_count')){
+	$wgDatabase->query("ALTER TABLE `mv_mvd_index` ADD INDEX ( `view_count` )");  
+}
+/*modify mvd_table index structure for more "cardinality"/faster queries*/
+if($wgDatabase->indexExists('mv_mvd_index','mvd_type')){
+ 	$wgDatabase->query("ALTER TABLE `mv_mvd_index` DROP INDEX `mvd_type`");
+}  
+if($wgDatabase->indexExists('mv_mvd_index','stream_id')){
+	$wgDatabase->query("ALTER TABLE `mv_mvd_index` DROP INDEX `stream_id`");
+}
+if($wgDatabase->indexExists('mv_mvd_index','stream_time_start')){
+	$wgDatabase->query("ALTER TABLE `mv_mvd_index` DROP INDEX `stream_time_start`");
+}
+//add missing indexes:
+if(!$wgDatabase->indexExists('mv_mvd_index','mvd_stream_index')){
+	print "rebuilding mvd index ... this may take \"some time\"\n";
+	$wgDatabase->query(" ALTER TABLE `mv_mvd_index` ADD INDEX `mvd_stream_index` ( `stream_id` , `start_time` , `end_time` )");
+}
+if(!$wgDatabase->indexExists('mv_mvd_index','mvd_type_index')){
+	$wgDatabase->query(" ALTER TABLE `mv_mvd_index` ADD INDEX `mvd_type_index` (`mvd_type`, `stream_id`)");
+}
+
+if(!$wgDatabase->fieldExists($mvIndexTableName, 'mv_page_id')){
 	print "$mvIndexTableName missing `page_id`...adding\n ";
 	$page_id_added=true;
 	//add page_id 
@@ -49,7 +113,7 @@ if($page_id_added){
 			$i=0;
 		}
 		$i++;
-		$j++;					 	
+		$j++;			 	
 	}
 	//now we can drop id and add PRIMARY to mv_page_id
 	print "DROP id COLUMN from $mvIndexTableName ...";	
@@ -59,8 +123,9 @@ if($page_id_added){
 	//now add UNIQUE to mv_mvd_index
 	print "ADD PRIMARY to mv_page_id ..."; 
 	$wgDatabase->query("ALTER TABLE `$mvIndexTableName` ADD PRIMARY KEY(`mv_page_id`)");
-	print "done\n";
-	
+	print "done\n";	
 }
+
+print "done with db tables update check\n";
 
 ?>

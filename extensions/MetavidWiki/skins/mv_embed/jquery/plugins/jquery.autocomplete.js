@@ -232,8 +232,12 @@ jQuery.autocomplete = function(input, options) {
 				top: (pos.y + input.offsetHeight) + "px",
 				left: pos.x + "px"
 			}).show();
-		}else{
+		}else{			
 			$results.show();
+		}
+		if(options.resultContainer){
+			$(options.resultContainer).css({top: (pos.y + input.offsetHeight) + "px",
+				left: (pos.x- parseInt(iWidth)) + "px"}).show();
 		}
 	};
 
@@ -247,6 +251,9 @@ jQuery.autocomplete = function(input, options) {
 		$input.removeClass(options.loadingClass);
 		if ($results.is(":visible")) {
 			$results.hide();
+		}
+		if(options.resultContainer){
+			$(options.resultContainer).hide();
 		}
 		if (options.mustMatch) {
 			var v = $input.val();
@@ -293,6 +300,8 @@ jQuery.autocomplete = function(input, options) {
 
 	function dataToDom(data) {
 		var ul = document.createElement("ul");
+		if(options.ul_class)$(ul).addClass(options.ul_class);
+		
 		var num = data.length;
 
 		// limited results to a max number
@@ -481,7 +490,7 @@ jQuery.fn.autocomplete = function(url, options, data) {
 	options.paramName = options.paramName || 'q';
 	
 	options.inputClass = options.inputClass || "ac_input";
-	options.resultsClass = options.resultsClass || "ac_results";
+	options.resultsClass = options.resultsClass || "ac_results";	
 	options.lineSeparator = options.lineSeparator || "\n";
 	options.cellSeparator = options.cellSeparator || "|";
 	options.minChars = options.minChars || 1;
