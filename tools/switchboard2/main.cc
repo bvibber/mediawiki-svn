@@ -42,7 +42,7 @@
 #include	"version.h"
 #include	"process_factory.h"
 
-	void *	acceptor_thread(void *);
+	extern "C" void *	acceptor_thread(void *);
 
 extern "C" void
 sigexit(int)
@@ -118,7 +118,7 @@ main(int argc, char **argv)
 			struct sockaddr_un addr;
 			int lsnsock;
 			std::memset(&addr, 0, sizeof(addr));
-			strncpy(addr.sun_path, mainconf.listeners[i].host.c_str(), sizeof(addr.sun_path) - 1);
+			std::strncpy(addr.sun_path, mainconf.listeners[i].host.c_str(), sizeof(addr.sun_path) - 1);
 			addr.sun_family = AF_UNIX;
 
 			unlink(addr.sun_path);
@@ -353,7 +353,7 @@ dostat:
 	process_factory::instance().cleanup_thread();
 }
 
-void *
+extern "C" void *
 acceptor_thread(void *arg)
 {
 	int fd = reinterpret_cast<intptr_t>(arg);

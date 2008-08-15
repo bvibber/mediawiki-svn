@@ -113,9 +113,9 @@ process::connect(int socket)
 {
 	LOG4CXX_DEBUG(logger, boost::format("connecting to process socket... %s") % bindpath_);
 	struct sockaddr_un addr;
-	memset(&addr, 0, sizeof(addr));
+	std::memset(&addr, 0, sizeof(addr));
 	addr.sun_family = AF_UNIX;
-	strcpy(addr.sun_path, bindpath_.c_str());
+	std::strcpy(addr.sun_path, bindpath_.c_str());
 
 	return ::connect(socket, (sockaddr *) &addr, sizeof(addr));
 }

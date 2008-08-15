@@ -12,12 +12,15 @@
 #include	<unistd.h>
 
 #include	<cerrno>
+#include	<cstdlib>
+#include	<cstring>
 
 #include	"util.h"
 
 ssize_t
 timed_read(int fd, void *buf, std::size_t nbytes, int timeout)
 {
+	using std::memset;
 	if (timeout > -1) {
 		struct timeval tv;
 		tv.tv_sec = timeout;
@@ -40,6 +43,7 @@ timed_read(int fd, void *buf, std::size_t nbytes, int timeout)
 ssize_t
 timed_write(int fd, void const *buf, std::size_t nbytes, int timeout)
 {
+	using std::memset;
 	if (timeout > -1) {
 		struct timeval tv;
 		tv.tv_sec = timeout;
