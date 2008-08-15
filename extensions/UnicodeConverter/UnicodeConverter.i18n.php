@@ -1,7 +1,7 @@
 <?php
 /**
  * Internationalisation file for extension UnicodeConvertor.
- * Created by Bertrand GRON
+ * Created by Bertrand GRONDIN
  *
  * @addtogroup Extensions
  */
