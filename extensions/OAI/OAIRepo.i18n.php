@@ -9,6 +9,7 @@ $messages = array();
 
 $messages['en'] = array(
 	'oai-desc' => 'Provides [http://www.openarchives.org/OAI/openarchivesprotocol.html OAI-PMH] repository interface',
+	'oairepository' => 'OAI Repository', # only translate this message to other languages if you have to change it
 );
 
 /** Message documentation (Message documentation)

@@ -65,12 +65,11 @@ $wgExtensionCredits['specialpage'][] = array(
 	'descriptionmsg' => 'oai-desc',
 );
 
-/* Set up the repository entry point */
-if ( !function_exists( 'extAddSpecialPage' ) ) {
-	require( dirname(__FILE__) . '/../ExtensionFunctions.php' );
-}
-extAddSpecialPage( dirname(__FILE__) . '/OAIRepo_body.php', 'OAIRepository', 'OAIRepository' );
-$wgExtensionMessagesFiles['OAIRepository'] =  dirname(__FILE__) . '/OAIRepo.i18n.php';
+$dir = dirname(__FILE__) . '/';
+$wgExtensionMessagesFiles['OAIRepository'] = $dir . 'OAIRepo.i18n.php';
+$wgExtensionAliasesFiles['OAIRepository'] = $dir . 'OAIRepo.alias.php';
+$wgAutoloadClasses['SpecialOAIRepository'] = $dir . 'OAIRepo_body.php';
+$wgSpecialPages['OAIRepository'] = 'SpecialOAIRepository';
 
 /* Add update hooks */
 $wgHooks['ArticleSaveComplete'  ][] = 'oaiUpdateSave';
