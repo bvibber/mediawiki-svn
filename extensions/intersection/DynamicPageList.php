@@ -1,6 +1,6 @@
 <?php
 /*
-	
+
  Purpose:       outputs a bulleted list of most recent
                 items residing in a category, or a union
                 of several categories.
@@ -195,6 +195,9 @@ function DynamicPageList( $input ) {
 			case 'lastedit':
 				$sOrderMethod = 'lastedit';
 				break;
+			case 'alphabetical':
+				$sOrderMethod = 'alphabetical';
+				break;
 			case 'categoryadd':
 			default:
 				$sOrderMethod = 'categoryadd';
@@ -331,7 +334,7 @@ function DynamicPageList( $input ) {
 		$sSqlWhere = ' WHERE page_namespace='.$iNamespace.' ';
 	else
 		$sSqlWhere = ' WHERE 1=1 ';
-		
+
 	// Bug 14943 - Allow filtering based on FlaggedRevs stability.
 	// Check if the extension actually exists before changing the query...
 	if( function_exists('efLoadFlaggedRevs') ) {
@@ -341,6 +344,10 @@ function DynamicPageList( $input ) {
 		if( in_array($sStable,$filterSet) || in_array($sQuality,$filterSet) ) {
 			$sSqlSelectFrom .= " LEFT JOIN $flaggedpages ON page_id = fp_page_id";
 		}
+		else if ('alphabetical' == $sOrderMethod) {
+			$sSqlWhere .= ' ORDER BY page_title ';
+		}
+
 		switch( $sStable )
 		{
 			case 'only':
