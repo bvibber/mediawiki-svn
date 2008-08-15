@@ -89,6 +89,7 @@ read_fcgi_record(int fd, fcgi::record *rec, int timeout)
 	ssize_t i;
 
 	if ((i = timed_read(fd, static_cast<void *>(rec), 8, timeout)) < 8) {
+		return false;
 #if 0
 		std::fprintf(stderr, "couldn't read entire record header\n");
 		if (i == -1)
@@ -105,7 +106,6 @@ read_fcgi_record(int fd, fcgi::record *rec, int timeout)
 	if (rec->content_length() > 0) {
 		if (timed_read(fd, &rec->contentData[0], rec->content_length(), timeout) <
 				rec->content_length()) {
-			//std::fprintf(stderr, "couldn't read entire content\n");
 			return false;
 		}
 	}
@@ -113,7 +113,6 @@ read_fcgi_record(int fd, fcgi::record *rec, int timeout)
 	if (rec->padding_length() > 0) {
 		if (timed_read(fd, &rec->paddingData[0], rec->padding_length(), timeout) <
 				rec->padding_length()) {
-			//std::fprintf(stderr, "couldn't read entire padding\n");
 			return false;
 		}
 	}

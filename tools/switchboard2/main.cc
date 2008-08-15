@@ -141,12 +141,15 @@ main(int argc, char **argv)
 				return 1;
 			}
 
-			if (listen(lsnsock, 20) == -1) {
+			if (listen(lsnsock, 50) == -1) {
 				LOG4CXX_ERROR(mainlogger,
 					boost::format("%s cannot listen: %s\n")
 					% mainconf.listeners[i].host % std::strerror(errno));
 				return 1;
 			}
+
+			pthread_t tid;
+			pthread_create(&tid, NULL, acceptor_thread, reinterpret_cast<void *>(lsnsock));
 		} else {
 			int r;
 			struct addrinfo hints, *res, *iter;
@@ -191,7 +194,7 @@ main(int argc, char **argv)
 					return 1;
 				}
 
-				if (listen(lsnsock, 20) == -1) {
+				if (listen(lsnsock, 50) == -1) {
 					LOG4CXX_ERROR(mainlogger,
 						boost::format("[%s]:%s: cannot listen: %s\n")
 						% ahost % aserv % std::strerror(errno));

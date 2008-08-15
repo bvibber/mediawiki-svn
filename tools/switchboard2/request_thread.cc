@@ -167,8 +167,6 @@ request_thread::handle_normal_request(fcgi::record &initial)
 	/*
 	 * Now we should receive at least one params.
 	 */
-	std::vector<unsigned char> paramdata;
-
 	for (;;) {
 		if (!fcgi::read_fcgi_record(fd_, &rec, mainconf.server_timeout))
 			throw errno_exception("error reading params from server");
@@ -183,14 +181,12 @@ request_thread::handle_normal_request(fcgi::record &initial)
 			throw request_exception("request too big");
 		reqsize += rec.content_length();
 
-		paramdata.insert(paramdata.end(), rec.contentData.begin(), rec.contentData.end());
+		paramdata_.insert(paramdata_.end(), rec.contentData.begin(), rec.contentData.end());
 	}
 
 	/*
 	 * And at least one stdin.
 	 */
-	std::vector<unsigned char> stdin_;
-
 	for (;;) {
 		if (!fcgi::read_fcgi_record(fd_, &rec, mainconf.server_timeout))
 			throw errno_exception("error reading params from server");
@@ -211,9 +207,6 @@ request_thread::handle_normal_request(fcgi::record &initial)
 	/*
 	 * Handle the actual request.
 	 */
-	std::map<std::string, std::string> params;
-	fcgi::decode_params(paramdata.begin(), paramdata.end(), std::inserter(params, params.begin()));
-
 #if 0
 	for (std::map<std::string, std::string>::iterator
 			it = params.begin(), end = params.end();
@@ -223,28 +216,40 @@ request_thread::handle_normal_request(fcgi::record &initial)
 	}
 #endif
 
-	if ((cfd_ = socket(AF_UNIX, SOCK_STREAM, 0)) == -1)
-		throw errno_exception("unix socket creation failed");
-
-	fcntl(cfd_, F_SETFD, FD_CLOEXEC);
-	int r = 0, tries = 0;
+	int tries = 0;
 	static int const max_tries = 10;
 
 	do {
-		process_ = process_factory::instance().get_process(params);
-		if ((r = process_->connect(cfd_)) == -1) {
-			int err = errno;
-			process_factory::instance().destroy_process(process_);
-			if (err != ECONNREFUSED) {
-				throw errno_exception("can't create PHP");
-			}
-		} else
-			break;
-	} while (++tries < max_tries);
+		try {
+			if ((cfd_ = socket(AF_UNIX, SOCK_STREAM, 0)) == -1)
+				throw errno_exception("unix socket creation failed");
+			fcntl(cfd_, F_SETFD, FD_CLOEXEC);
+
+			handle_normal_request_child();
+
+			close(cfd_);
+			cfd_ = -1;
+			return;
+		} catch (std::exception &e) {
+			close(cfd_);
+			cfd_ = -1;
+			if (tries++ >= max_tries)
+				throw e;
+		}
+	} while (true);
+}
+
+void
+request_thread::handle_normal_request_child()
+{
+	std::map<std::string, std::string> params;
+	fcgi::decode_params(paramdata_.begin(), paramdata_.end(), std::inserter(params, params.begin()));
+
+	process_ = process_factory::instance().get_process(params);
 	process_releaser p(process_);
 
-	if (r == -1)
-		throw request_exception("can't create PHP (too many tries)");
+	if (process_->connect(cfd_) == -1)
+		throw errno_exception("can't create PHP");
 
 	/*
 	 * Write the request to the child.
@@ -343,9 +348,8 @@ request_thread::handle_normal_request(fcgi::record &initial)
 			break;
 	}
 
-	close(cfd_);
-	cfd_ = -1;
 	//process_factory::instance().release_process(process_);
+	p.release();
 	process_.reset();
 }
 

@@ -76,8 +76,15 @@ struct process_releaser : boost::noncopyable {
 	process_releaser(processp const &proc)
 		: proc_(proc) {}
 
+	void release() {
+		if (proc_)
+			process_factory::instance().release_process(proc_);
+		proc_.reset();
+	}
+
 	~process_releaser() {
-		process_factory::instance().release_process(proc_);
+		if (proc_)
+			process_factory::instance().destroy_process(proc_);
 	}
 
 private:

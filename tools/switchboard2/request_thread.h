@@ -49,6 +49,7 @@ struct request_thread {
 
 private:
 	void handle_normal_request(fcgi::record &);
+	void handle_normal_request_child();
 	void handle_get_values(fcgi::record &);
 
 	int fd_;
@@ -56,6 +57,8 @@ private:
 	int rid_;
 	pthread_t tid_;
 
+	std::vector<unsigned char> stdin_;
+	std::vector<unsigned char> paramdata_;
 	processp process_;
 };
 
