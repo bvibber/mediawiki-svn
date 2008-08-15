@@ -40,6 +40,7 @@
 #include	"request_thread.h"
 #include	"config.h"
 #include	"version.h"
+#include	"process_factory.h"
 
 	void *	acceptor_thread(void *);
 
@@ -344,10 +345,9 @@ dostat:
 	std::signal(SIGTERM, sigexit);
 	std::signal(SIGINT, sigexit);
 	std::signal(SIGPIPE, SIG_IGN);
+	std::signal(SIGCHLD, SIG_IGN);
 
-	int stat;
-	for (;;)
-		wait(&stat);
+	process_factory::instance().cleanup_thread();
 }
 
 void *

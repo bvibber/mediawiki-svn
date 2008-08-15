@@ -18,6 +18,7 @@
 #include	"config.h"
 #include	"util.h"
 
+#if 0
 namespace {
 
 extern "C" void *
@@ -29,6 +30,7 @@ do_start_cleanup_thread(void *arg)
 }
 
 } // anonymous namespace
+#endif
 
 process_factory &
 process_factory::instance()
@@ -40,8 +42,10 @@ process_factory::instance()
 process_factory::process_factory()
 	: id_(0)
 {
+#if 0
 	pthread_t tid;
 	pthread_create(&tid, NULL, do_start_cleanup_thread, this);
+#endif
 }
 
 process_factory::~process_factory()
@@ -222,5 +226,16 @@ process_factory::release_process(processp proc)
 	freelist_.push_back(p);
 	curprocs_--;
 	peruser_[p.uid]--;
-	pthread_cond_signal(&curprocs_cond);
+	pthread_cond_broadcast(&curprocs_cond);
+}
+	
+void
+process_factory::destroy_process(processp proc)
+{
+	uid_t uid = proc->uid();
+
+	lock lck(lock_);
+	curprocs_--;
+	peruser_[uid]--;
+	pthread_cond_broadcast(&curprocs_cond);
 }

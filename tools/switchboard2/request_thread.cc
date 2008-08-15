@@ -233,11 +233,15 @@ request_thread::handle_normal_request(fcgi::record &initial)
 	do {
 		process_ = process_factory::instance().get_process(params);
 		if ((r = process_->connect(cfd_)) == -1) {
-			if (errno != ECONNREFUSED)
+			int err = errno;
+			process_factory::instance().destroy_process(process_);
+			if (err != ECONNREFUSED) {
 				throw errno_exception("can't create PHP");
+			}
 		} else
 			break;
 	} while (++tries < max_tries);
+	process_releaser p(process_);
 
 	if (r == -1)
 		throw request_exception("can't create PHP (too many tries)");
@@ -341,7 +345,7 @@ request_thread::handle_normal_request(fcgi::record &initial)
 
 	close(cfd_);
 	cfd_ = -1;
-	process_factory::instance().release_process(process_);
+	//process_factory::instance().release_process(process_);
 	process_.reset();
 }
 

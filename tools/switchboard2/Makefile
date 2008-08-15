@@ -95,7 +95,8 @@ gccdepend:
 	mv -f Makefile.new Makefile
 
 # Do not delete this line -- make depend requires it
-main.o: main.cc fcgi.h request_thread.h process.h config.h version.h
+main.o: main.cc fcgi.h request_thread.h process.h config.h version.h \
+  process_factory.h
 request_thread.o: request_thread.cc request_thread.h fcgi.h process.h \
   process_factory.h util.h config.h
 fcgi.o: fcgi.cc fcgi.h util.h

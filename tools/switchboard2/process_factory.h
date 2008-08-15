@@ -56,6 +56,7 @@ struct process_factory : boost::noncopyable {
 
 	processp get_process(std::map<std::string, std::string> &params);
 	void release_process(processp proc);
+	void destroy_process(processp proc);
 
 	void cleanup_thread();
 
@@ -69,6 +70,18 @@ private:
 	int curprocs_;
 
 	pthread_cond_t curprocs_cond;
+};
+
+struct process_releaser : boost::noncopyable {
+	process_releaser(processp const &proc)
+		: proc_(proc) {}
+
+	~process_releaser() {
+		process_factory::instance().release_process(proc_);
+	}
+
+private:
+	processp proc_;
 };
 
 #endif	/* !PROCESS_FACTORY_H */
