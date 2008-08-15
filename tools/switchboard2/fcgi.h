@@ -80,8 +80,8 @@ namespace fcgi {
 		}
 
 		void request_id(int n) {
-			requestId1_ = n >> 8;
-			requestId0_ = n & 0xFF;
+			requestId1_ = (unsigned char) (n >> 8);
+			requestId0_ = (unsigned char) (n & 0xFF);
 		}
 	};
 

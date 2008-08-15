@@ -101,7 +101,6 @@ process_factory::get_process(
 
 		std::string s = it->second;
 		struct stat sb;
-		bool err = false;
 
 		while (stat(s.c_str(), &sb) == -1
 			&& errno == ENOTDIR)

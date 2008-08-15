@@ -86,9 +86,7 @@ read_fcgi_record(int fd, fcgi::record *rec, int timeout)
 	 *   padding data	variable
 	 */
 
-	ssize_t i;
-
-	if ((i = timed_read(fd, static_cast<void *>(rec), 8, timeout)) < 8) {
+	if (timed_read(fd, static_cast<void *>(rec), 8, timeout) < 8) {
 		return false;
 #if 0
 		std::fprintf(stderr, "couldn't read entire record header\n");

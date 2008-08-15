@@ -61,7 +61,6 @@ static FILE *log = NULL;
 
 static void err_output(int is_error, const char *fmt, va_list ap)
 {
-#ifdef SB_LOG_EXEC
     time_t timevar;
     struct tm *lt;
 
@@ -88,46 +87,29 @@ static void err_output(int is_error, const char *fmt, va_list ap)
     vfprintf(log, fmt, ap);
 
     fflush(log);
-#endif /* SB_LOG_EXEC */
     return;
 }
 
 static void log_err(const char *fmt,...)
 {
-#ifdef SB_LOG_EXEC
     va_list ap;
 
     va_start(ap, fmt);
     err_output(1, fmt, ap); /* 1 == is_error */
     va_end(ap);
-#endif /* SB_LOG_EXEC */
-    return;
-}
-
-static void log_no_err(const char *fmt,...)
-{
-#ifdef SB_LOG_EXEC
-    va_list ap;
-
-    va_start(ap, fmt);
-    err_output(0, fmt, ap); /* 0 == !is_error */
-    va_end(ap);
-#endif /* SB_LOG_EXEC */
     return;
 }
 
 int main(int argc, char *argv[])
 {
-    char *prog;
     char *target_uname, *target_gname;
-    char *actual_uname, *actual_gname;
+    char *actual_uname;
     uid_t uid;              /* user information          */
     gid_t gid;              /* target group placeholder  */
     pid_t target_pid;
     struct passwd *pw;      /* password entry holder     */
     struct group *gr;       /* group entry holder        */
 
-    prog = argv[0];
     /*
      * Check existence/validity of the UID of the user
      * running this program.  Error out if invalid.
@@ -197,7 +179,6 @@ int main(int argc, char *argv[])
         }
     }
     gid = gr->gr_gid;
-    actual_gname = strdup(gr->gr_name);
 
     /*
      * Save these for later since initgroups will hose the struct

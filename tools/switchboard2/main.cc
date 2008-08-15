@@ -149,7 +149,7 @@ main(int argc, char **argv)
 			}
 
 			pthread_t tid;
-			pthread_create(&tid, NULL, acceptor_thread, reinterpret_cast<void *>(lsnsock));
+			pthread_create(&tid, NULL, acceptor_thread, reinterpret_cast<void *>((intptr_t) lsnsock));
 		} else {
 			int r;
 			struct addrinfo hints, *res, *iter;
@@ -202,7 +202,7 @@ main(int argc, char **argv)
 				}
 
 				pthread_t tid;
-				pthread_create(&tid, NULL, acceptor_thread, reinterpret_cast<void *>(lsnsock));
+				pthread_create(&tid, NULL, acceptor_thread, reinterpret_cast<void *>((intptr_t) lsnsock));
 			}
 
 			freeaddrinfo(res);

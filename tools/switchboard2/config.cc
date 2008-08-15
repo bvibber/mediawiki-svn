@@ -222,7 +222,7 @@ configuration_loader::f_max_procs(
 	try {
 		newconf.max_procs = boost::lexical_cast<int>(fields[1]);
 		return true;
-	} catch (boost::bad_lexical_cast &e) {
+	} catch (boost::bad_lexical_cast &) {
 		LOG4CXX_ERROR(logger,
 			format("\"%s\", line %d: usage: max-procs <number>\n")
 			% file_ % lineno_);
@@ -245,7 +245,7 @@ configuration_loader::f_max_procs_per_user(
 	try {
 		newconf.max_procs_per_user = boost::lexical_cast<int>(fields[1]);
 		return true;
-	} catch (boost::bad_lexical_cast &e) {
+	} catch (boost::bad_lexical_cast &) {
 		LOG4CXX_ERROR(logger,
 			format("\"%s\", line %d: usage: max-procs-per-user <number>\n")
 			% file_ % lineno_);
@@ -268,7 +268,7 @@ configuration_loader::f_max_q_per_user(
 	try {
 		newconf.max_q_per_user = boost::lexical_cast<int>(fields[1]);
 		return true;
-	} catch (boost::bad_lexical_cast &e) {
+	} catch (boost::bad_lexical_cast &) {
 		LOG4CXX_ERROR(logger,
 			format("\"%s\", line %d: usage: max-q-per-user <number>\n")
 			% file_ % lineno_);
@@ -317,7 +317,7 @@ configuration_loader::f_php_timeout(
 	try {
 		newconf.php_timeout = boost::lexical_cast<int>(fields[1]);
 		return true;
-	} catch (boost::bad_lexical_cast &e) {
+	} catch (boost::bad_lexical_cast &) {
 		LOG4CXX_ERROR(logger,
 			format("\"%s\", line %d: usage: php-timeout <number>\n")
 			% file_ % lineno_);
@@ -340,7 +340,7 @@ configuration_loader::f_server_timeout(
 	try {
 		newconf.server_timeout = boost::lexical_cast<int>(fields[1]);
 		return true;
-	} catch (boost::bad_lexical_cast &e) {
+	} catch (boost::bad_lexical_cast &) {
 		LOG4CXX_ERROR(logger,
 			format("\"%s\", line %d: usage: server-timeout <number>\n")
 			% file_ % lineno_);
@@ -363,7 +363,7 @@ configuration_loader::f_max_request_size(
 	try {
 		newconf.max_request_size = boost::lexical_cast<int>(fields[1]);
 		return true;
-	} catch (boost::bad_lexical_cast &e) {
+	} catch (boost::bad_lexical_cast &) {
 		LOG4CXX_ERROR(logger,
 			format("\"%s\", line %d: usage: max-request-size <number>\n")
 			% file_ % lineno_);

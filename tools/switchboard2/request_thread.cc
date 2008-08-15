@@ -32,7 +32,7 @@ do_start_thread(void *arg) {
 	request_thread *req = static_cast<request_thread *>(arg);
 	try {
 		req->start_request();
-	} catch (std::exception &e) {
+	} catch (std::exception &) {
 	}
 
 	delete req;

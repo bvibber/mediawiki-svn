@@ -168,7 +168,6 @@ clean_env(void)
 int
 main(int argc, char *argv[])
 {
-	int userdir = 0;        /* ~userdir flag             */
 	uid_t uid;              /* user information          */
 	gid_t gid;              /* target group placeholder  */
 	char *target_uname;     /* target user name          */
@@ -176,7 +175,6 @@ main(int argc, char *argv[])
 	char *target_homedir;   /* target home directory     */
 	char *actual_uname;     /* actual user name          */
 	char *actual_gname;     /* actual group name         */
-	char *prog;             /* name of this program      */
 	struct passwd *pw;      /* password entry holder     */
 	struct group *gr;       /* group entry holder        */
 #ifdef USE_PROJECTS
@@ -189,7 +187,6 @@ main(int argc, char *argv[])
 	 */
 	clean_env();
 
-	prog = argv[0];
 	/*
 	 * Check existence/validity of the UID of the user
 	 * running this program.  Error out if invalid.
