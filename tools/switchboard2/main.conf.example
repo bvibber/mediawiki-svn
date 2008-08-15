@@ -1,0 +1,44 @@
+# Address to listen for FastCGI requests.  Specify an IP address
+# or a hostname, in which case all IPs the host resolves to will
+# be used.  To listen on all addresses, specify :: (IPv6) or 0.0.0.0
+# (IPv4), but this is probably a bad idea.
+listen localhost 1234
+
+# Override the default location of log.conf.
+logconf /etc/switchboard/mylog.conf
+
+# The location sockets will be placed in.  This should only be
+# readable by switchboard.
+sockdir /var/switchboard/socks
+
+# The web server document root.
+docroot /var/www
+
+# The user public_html directory name.
+userdir public_html
+
+# The maximum total number of PHPs allowed at once.
+max-procs 150
+
+# The maximum number of processes allowed for each user.
+max-procs-per-user 10
+
+# The maximum number of requests that can be queued for a user
+# (because their max-procs-per-user was exceeded) before we
+# start immediately rejecting requests.
+max-q-per-user 10
+
+# 'apache' or 'sjs', depending on the web server type.
+server-type sjs
+
+# How long to wait for each read from PHP before aborting the
+# request (seconds).
+php-timeout 30
+
+# How long to wait for each read from the server before aborting
+# the request (seconds).
+server-timeout 30
+
+# The largest request (stdin + parameters) we will buffer from
+# the server before returning an error (bytes).
+max-request-size 5242880

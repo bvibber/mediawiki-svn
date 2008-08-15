@@ -189,8 +189,8 @@ namespace fcgi {
 		}
 	}
 
-	bool read_fcgi_record(int fd, record *rec);
-	bool write_fcgi_record(int fd, record const &rec);
+	bool read_fcgi_record(int fd, record *rec, int timeout = -1);
+	bool write_fcgi_record(int fd, record const &rec, int timeout = -1);
 
 	void pretty_print_record(std::ostream &strm, record const &rec);
 

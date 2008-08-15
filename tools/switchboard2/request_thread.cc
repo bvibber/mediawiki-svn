@@ -23,6 +23,7 @@
 #include	"fcgi.h"
 #include	"process_factory.h"
 #include	"util.h"
+#include	"config.h"
 
 namespace {
 
@@ -75,7 +76,8 @@ request_thread::start_request()
 	/*
 	 * Start by parsing the request header.
 	 */
-	fcgi::read_fcgi_record(fd_, &rec);
+	if (!fcgi::read_fcgi_record(fd_, &rec, mainconf.server_timeout))
+		throw request_exception("error reading initial record");
 
 	if (rec.version() != 1)
 		throw request_exception("unknown FCGI version");
@@ -111,11 +113,13 @@ request_thread::start_request()
 
 			std::copy(err.begin(), err.end(), std::back_inserter(r.contentData));
 			r.content_length(r.contentData.size());
-			fcgi::write_fcgi_record(fd_, r);
+			if (!fcgi::write_fcgi_record(fd_, r, mainconf.server_timeout))
+				return;
 
 			r.contentData.clear();
 			r.content_length(0);
-			fcgi::write_fcgi_record(fd_, r);
+			if (!fcgi::write_fcgi_record(fd_, r, mainconf.server_timeout))
+				return;
 
 			r.type_ = fcgi::rectype::end_request;
 			r.contentData.resize(8);
@@ -126,7 +130,8 @@ request_thread::start_request()
 			r.contentData[4] = 0;
 			r.content_length(8);
 
-			fcgi::write_fcgi_record(fd_, r);
+			if (!fcgi::write_fcgi_record(fd_, r, mainconf.server_timeout))
+				return;
 		}
 
 		return;
@@ -158,19 +163,26 @@ request_thread::handle_normal_request(fcgi::record &initial)
 		throw request_exception("begin_request had unexpected role");
 	}
 
+	std::size_t reqsize = 0;
+
 	/*
 	 * Now we should receive at least one params.
 	 */
 	std::vector<unsigned char> paramdata;
 
 	for (;;) {
-		fcgi::read_fcgi_record(fd_, &rec);
+		if (!fcgi::read_fcgi_record(fd_, &rec, mainconf.server_timeout))
+			throw request_exception("error reading params from server");
 
 		if (rec.type() != fcgi::rectype::params)
 			throw request_exception("unexpected request type at this point");
 
 		if (rec.content_length() == 0)
 			break;
+
+		if (reqsize + rec.content_length() > mainconf.max_request_size)
+			throw request_exception("request too big");
+		reqsize += rec.content_length();
 
 		paramdata.insert(paramdata.end(), rec.contentData.begin(), rec.contentData.end());
 	}
@@ -181,13 +193,18 @@ request_thread::handle_normal_request(fcgi::record &initial)
 	std::vector<unsigned char> stdin_;
 
 	for (;;) {
-		fcgi::read_fcgi_record(fd_, &rec);
+		if (!fcgi::read_fcgi_record(fd_, &rec, mainconf.server_timeout))
+			throw request_exception("error reading params from server");
 
 		if (rec.type() != fcgi::rectype::stdin_)
 			throw request_exception("unexpected request type at this point");
 
 		if (rec.content_length() == 0)
 			break;
+
+		if (reqsize + rec.content_length() > mainconf.max_request_size)
+			throw request_exception("request too big");
+		reqsize += rec.content_length();
 
 		stdin_.insert(stdin_.end(), rec.contentData.begin(), rec.contentData.end());
 	}
@@ -244,33 +261,65 @@ request_thread::handle_normal_request(fcgi::record &initial)
 	r_begin.contentData[0] = 0;
 	r_begin.contentData[1] = 1;
 	r_begin.contentData[2] = 0;
-	fcgi::write_fcgi_record(cfd_, r_begin);
+	if (!fcgi::write_fcgi_record(cfd_, r_begin, mainconf.php_timeout))
+		throw request_exception("error writing begin request to child");
 
 	std::vector<unsigned char> newparams;
+	std::vector<unsigned char>::iterator dit, dend;
 	fcgi::encode_params(params.begin(), params.end(), std::back_inserter(newparams));
 	r_params.request_id(rid_);
 	r_params.type_ = fcgi::rectype::params;
-	r_params.contentData.swap(newparams);
-	//r_params.contentData.swap(paramdata);
-	r_params.content_length(r_params.contentData.size());
-	fcgi::write_fcgi_record(cfd_, r_params);
 
-	if (!r_params.contentData.empty()) {
-		r_params.contentData.clear();
-		r_params.content_length(0);
-		fcgi::write_fcgi_record(cfd_, r_params);
+	dit = newparams.begin();
+	dend = newparams.end();
+
+	while (dit != dend) {
+		int now = std::min(65535, std::distance(dit, dend));
+		r_params.contentData.resize(now);
+		std::copy(dit, dit + now, r_params.contentData.begin());
+		r_params.content_length(now);
+		if (!fcgi::write_fcgi_record(cfd_, r_params, mainconf.php_timeout))
+			throw request_exception("error writing params to child");
+
+		dit += now;
 	}
 
+	r_params.contentData.clear();
+	r_params.content_length(0);
+	if (!fcgi::write_fcgi_record(cfd_, r_params, mainconf.php_timeout))
+		throw request_exception("error writing end of params to child");
+
+	
 	r_stdin.request_id(rid_);
 	r_stdin.type_ = fcgi::rectype::stdin_;
-	r_stdin.contentData.swap(stdin_);
-	r_stdin.content_length(r_stdin.contentData.size());
-	fcgi::write_fcgi_record(cfd_, r_stdin);
+
+	dit = stdin_.begin();
+	dend = stdin_.end();
+
+	/*
+	 * Only 64K in allowed in one record.
+	 */
+	while (dit != dend) {
+		int now = std::min(65535, std::distance(dit, dend));
+		r_stdin.contentData.resize(now);
+		std::copy(dit, dit + now, r_stdin.contentData.begin());
+		r_stdin.content_length(now);
+		if (!fcgi::write_fcgi_record(cfd_, r_stdin, mainconf.php_timeout))
+			throw request_exception("error writing stdin to child");
+
+		dit += now;
+	}
+
+	r_stdin.contentData.clear();
+	r_stdin.content_length(0);
+	if (!fcgi::write_fcgi_record(cfd_, r_stdin, mainconf.php_timeout))
+		throw request_exception("error writing stdin to child");
 
 	if (!r_stdin.contentData.empty()) {
 		r_stdin.contentData.clear();
 		r_stdin.content_length(0);
-		fcgi::write_fcgi_record(cfd_, r_stdin);
+		if (!fcgi::write_fcgi_record(cfd_, r_stdin, mainconf.php_timeout))
+			throw request_exception("error writing end of stdin to child");
 	}
 
 	/*
@@ -278,13 +327,15 @@ request_thread::handle_normal_request(fcgi::record &initial)
 	 */
 	fcgi::record resp;
 	for (;;) {
-		if (!fcgi::read_fcgi_record(cfd_, &resp))
+		if (!fcgi::read_fcgi_record(cfd_, &resp, mainconf.php_timeout))
 			throw request_exception("couldn't read record from child");
 
 		if (resp.request_id() != rid_)
 			throw request_exception("child sent incorrect request id");
 
-		fcgi::write_fcgi_record(fd_, resp);
+		if (!fcgi::write_fcgi_record(fd_, resp, mainconf.server_timeout))
+			throw request_exception("couldn't write record to server");
+
 		if (resp.type() == fcgi::rectype::end_request)
 			break;
 	}
@@ -326,5 +377,5 @@ request_thread::handle_get_values(fcgi::record &initial)
 	rec.requestId1_ = initial.requestId1_;
 	rec.reserved_ = 0;
 	rec.content_length(rec.contentData.size());
-	fcgi::write_fcgi_record(fd_, rec);
+	fcgi::write_fcgi_record(fd_, rec, mainconf.server_timeout);
 }

@@ -27,6 +27,10 @@ config mainconf;
 config::config()
 	: max_procs(0)
 	, max_procs_per_user(0)
+	, max_q_per_user(0)
+	, php_timeout(30)
+	, server_timeout(30)
+	, max_request_size(1024 * 1024 * 5)
 {
 }
 
@@ -80,6 +84,9 @@ std::map<std::string, configuration_loader::confline_t>
 		("max-procs-per-user",	boost::bind(&configuration_loader::f_max_procs_per_user, _1, _2, _3))
 		("max-q-per-user",	boost::bind(&configuration_loader::f_max_q_per_user, _1, _2, _3))
 		("server-type",		boost::bind(&configuration_loader::f_server_type, _1, _2, _3))
+		("php-timeout",		boost::bind(&configuration_loader::f_php_timeout, _1, _2, _3))
+		("server-timeout",	boost::bind(&configuration_loader::f_server_timeout, _1, _2, _3))
+		("max-request-size",	boost::bind(&configuration_loader::f_max_request_size, _1, _2, _3))
 	;
 
 bool
@@ -293,4 +300,73 @@ configuration_loader::f_server_type(
 	}
 
 	return true;
+}
+
+bool
+configuration_loader::f_php_timeout(
+		std::vector<std::string> &fields,
+		config &newconf)
+{
+	if (fields.size() != 2) {
+		LOG4CXX_ERROR(logger,
+			format("\"%s\", line %d: usage: php-timeout <number>\n")
+			% file_ % lineno_);
+		return false;
+	}
+
+	try {
+		newconf.php_timeout = boost::lexical_cast<int>(fields[1]);
+		return true;
+	} catch (boost::bad_lexical_cast &e) {
+		LOG4CXX_ERROR(logger,
+			format("\"%s\", line %d: usage: php-timeout <number>\n")
+			% file_ % lineno_);
+		return false;
+	}
+}
+
+bool
+configuration_loader::f_server_timeout(
+		std::vector<std::string> &fields,
+		config &newconf)
+{
+	if (fields.size() != 2) {
+		LOG4CXX_ERROR(logger,
+			format("\"%s\", line %d: usage: server-timeout <number>\n")
+			% file_ % lineno_);
+		return false;
+	}
+
+	try {
+		newconf.server_timeout = boost::lexical_cast<int>(fields[1]);
+		return true;
+	} catch (boost::bad_lexical_cast &e) {
+		LOG4CXX_ERROR(logger,
+			format("\"%s\", line %d: usage: server-timeout <number>\n")
+			% file_ % lineno_);
+		return false;
+	}
+}
+
+bool
+configuration_loader::f_max_request_size(
+		std::vector<std::string> &fields,
+		config &newconf)
+{
+	if (fields.size() != 2) {
+		LOG4CXX_ERROR(logger,
+			format("\"%s\", line %d: usage: max-request-size <number>\n")
+			% file_ % lineno_);
+		return false;
+	}
+
+	try {
+		newconf.max_request_size = boost::lexical_cast<int>(fields[1]);
+		return true;
+	} catch (boost::bad_lexical_cast &e) {
+		LOG4CXX_ERROR(logger,
+			format("\"%s\", line %d: usage: max-request-size <number>\n")
+			% file_ % lineno_);
+		return false;
+	}
 }

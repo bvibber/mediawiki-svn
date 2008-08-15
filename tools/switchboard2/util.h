@@ -12,6 +12,7 @@
 
 #include	<deque>
 
+#include	<sys/time.h>
 #include	<pthread.h>
 
 struct lock {
@@ -61,5 +62,8 @@ private:
 	pthread_cond_t	wq_cond;
 	pthread_mutex_t	wq_mutex;
 };
+
+ssize_t timed_read(int, void *, std::size_t, int);
+ssize_t timed_write(int, void const *, std::size_t, int);
 
 #endif	/* !UTIL_H */

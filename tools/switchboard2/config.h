@@ -46,6 +46,9 @@ struct config {
 	int max_procs;
 	int max_procs_per_user;
 	int max_q_per_user;
+	int php_timeout;
+	int server_timeout;
+	std::size_t max_request_size;
 	server_type servtype;
 };
 
@@ -75,6 +78,9 @@ private:
 	bool f_max_procs_per_user(std::vector<std::string> &fields, config &newconf);
 	bool f_max_q_per_user(std::vector<std::string> &fields, config &newconf);
 	bool f_server_type(std::vector<std::string> &fields, config &newconf);
+	bool f_server_timeout(std::vector<std::string> &fields, config &newconf);
+	bool f_php_timeout(std::vector<std::string> &fields, config &newconf);
+	bool f_max_request_size(std::vector<std::string> &fields, config &newconf);
 
 	log4cxx::LoggerPtr	logger;
 };
