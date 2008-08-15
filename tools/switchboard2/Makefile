@@ -29,6 +29,9 @@ SWKILL_FLAGS	= \
 	-DSB_USER=\"$(SB_USER)\"		\
 	-DSB_LOG_EXEC=\"$(SB_LOG_EXEC)\"	\
 
+SWITCHBOARD_FLAGS	= \
+	-DPREFIX=\"$(PREFIX)\"
+
 OBJS=	\
 	main.o				\
 	request_thread.o		\
@@ -38,11 +41,11 @@ OBJS=	\
 	process_factory.o		\
 	util.o				\
 
-PROG=	switchboard
-SWEXEC=	swexec
-SWKILL=	swkill
-
-all: $(PROG) $(SWEXEC) $(SWKILL)
+PROG=		switchboard-bin
+SWEXEC=		swexec
+SWKILL=		swkill
+SWITCHBOARD=	switchboard
+all: $(PROG) $(SWEXEC) $(SWKILL) $(SWITCHBOARD)
 
 $(PROG): $(OBJS)
 	$(CXX) $(CFLAGS) $(CXXFLAGS) $(LDFLAGS) $(OBJS) -o $(PROG) $(LIBS)
@@ -53,6 +56,9 @@ $(SWEXEC): swexec.o
 $(SWKILL): swkill.o
 	$(CC) $(CFLAGS) $(LDFLAGS) swkill.o -o $(SWKILL)
 
+$(SWITCHBOARD): switchboard.o
+	$(CC) $(CFLAGS) $(LDFLAGS) switchboard.o -o $(SWITCHBOARD)
+
 .cc.o:
 	$(CXX) $(CPPFLAGS) $(CXXFLAGS) $(CONFIG_FLAGS) $(INCLUDES) $(CFLAGS) -c $<
 
@@ -62,6 +68,9 @@ swexec.o: swexec.c
 swkill.o: swkill.c
 	$(CC) $(CPPFLAGS) $(SWKILL_FLAGS) $(INCLUDES) $(CFLAGS) -c $<
 
+switchboard.o: switchboard.c
+	$(CC) $(CPPFLAGS) $(SWITCHBOARD_FLAGS) $(INCLUDES) $(CFLAGS) -c $<
+
 install:
 	$(INSTALL) -d -m 0755 $(DESTDIR)$(PREFIX)
 	$(INSTALL) -d -m 0755 $(DESTDIR)$(PREFIX)/lib
@@ -69,6 +78,7 @@ install:
 	$(INSTALL) -d -m 0755 $(DESTDIR)$(PREFIX)/bin
 	$(INSTALL) -d -m 0755 $(DESTDIR)$(CONFDIR)
 	$(INSTALL) -o root -g $(SB_GROUP) -m 0755 switchboard $(DESTDIR)$(PREFIX)/bin
+	$(INSTALL) -o root -g $(SB_GROUP) -m 0755 switchboard-bin $(DESTDIR)$(PREFIX)/lib/switchboard
 	$(INSTALL) -o root -g $(SB_GROUP) -m 04710 $(SWEXEC) $(DESTDIR)$(PREFIX)/lib/switchboard
 	$(INSTALL) -o root -g $(SB_GROUP) -m 04710 $(SWKILL) $(DESTDIR)$(PREFIX)/lib/switchboard
 	$(INSTALL) -o root -g bin -m 0644 log.conf.example $(DESTDIR)$(CONFDIR)
