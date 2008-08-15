@@ -274,7 +274,7 @@ request_thread::handle_normal_request(fcgi::record &initial)
 	dend = newparams.end();
 
 	while (dit != dend) {
-		int now = std::min(65535, std::distance(dit, dend));
+		int now = std::min(65535, (int) std::distance(dit, dend));
 		r_params.contentData.resize(now);
 		std::copy(dit, dit + now, r_params.contentData.begin());
 		r_params.content_length(now);
@@ -300,7 +300,7 @@ request_thread::handle_normal_request(fcgi::record &initial)
 	 * Only 64K in allowed in one record.
 	 */
 	while (dit != dend) {
-		int now = std::min(65535, std::distance(dit, dend));
+		int now = std::min(65535, (int) std::distance(dit, dend));
 		r_stdin.contentData.resize(now);
 		std::copy(dit, dit + now, r_stdin.contentData.begin());
 		r_stdin.content_length(now);
