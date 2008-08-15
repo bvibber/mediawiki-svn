@@ -572,6 +572,12 @@ $wgDBts2schema      = 'public';
 /** To override default SQLite data directory ($docroot/../data) */
 $wgSQLiteDataDir    = '';
 
+/** Default directory mode for SQLite data directory on creation.
+ *  Note that this is different from the default directory mode used
+ *  elsewhere.
+ */
+$wgSQLiteDataDirMode = 0700;
+
 /**
  * Make all database connections secretly go to localhost. Fool the load balancer
  * thinking there is an arbitrarily large cluster of servers to connect to.
@@ -1551,6 +1557,11 @@ $wgCookiePrefix = false;
 $wgCookieHttpOnly = version_compare("5.2", PHP_VERSION, "<");
 
 /**
+ * Allow MediaWiki to set persistent cookies for login, etc.
+ */
+$wgEnablePersistentCookies = true;
+
+/**
  * If the requesting browser matches a regex in this blacklist, we won't
  * send it cookies with HttpOnly mode, even if $wgCookieHttpOnly is on.
  */
@@ -1796,7 +1807,10 @@ $wgMimeTypeBlacklist= array(
 	# Other types that may be interpreted by some servers
 	'text/x-python', 'text/x-perl', 'text/x-bash', 'text/x-sh', 'text/x-csh',
 	# Windows metafile, client-side vulnerability on some systems
-	'application/x-msmetafile'
+	'application/x-msmetafile',
+	# A ZIP file may be a valid Java archive containing an applet which exploits the 
+	# same-origin policy to steal cookies
+	'application/zip',
 );
 
 /** This is a flag to determine whether or not to check file extensions on upload. */

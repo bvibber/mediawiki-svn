@@ -1262,6 +1262,11 @@ string &$error: output: HTML error to show if upload canceled by returning false
 'UploadComplete': Upon completion of a file upload
 $uploadForm: Upload form object. File can be accessed by $uploadForm->mLocalFile.
 
+'User::mailPasswordInternal': before creation and mailing of a user's new temporary password
+$user: the user who sent the message out
+$ip: IP of the user who sent the message out
+$u: the account whose new password will be set
+
 'UserArrayFromResult': called when creating an UserArray object from a database result
 &$userArray: set this to an object to override the default object returned
 $res: database result used to create the object
@@ -1337,6 +1342,18 @@ $oldName: name of the user before logout (string)
 $user  : User object that was changed
 $add   : Array of strings corresponding to groups added
 $remove: Array of strings corresponding to groups removed
+
+'UserrightsChangeableGroups': allows modification of the groups a user may add or remove via Special:UserRights
+$userrights  : UserrightsPage object
+$user        : User object of the current user
+$addergroups : Array of groups that the user is in
+&$groups     : Array of groups that can be added or removed. In format of
+				array( 
+					'add'         => array( addablegroups ), 
+					'remove'      => array( removablegroups ), 
+					'add-self'    => array( addablegroups to self ),
+					'remove-self' => array( removable groups from self )
+				)
 
 'UserRetrieveNewTalks': called when retrieving "You have new messages!" message(s)
 $user: user retrieving new talks messages

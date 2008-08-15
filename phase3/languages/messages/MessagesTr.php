@@ -4,18 +4,18 @@
  * @ingroup Language
  * @file
  *
- * @author Srhat
- * @author Uğur Başak
  * @author Dbl2010
- * @author Karduelis
- * @author Suelnur
  * @author Erkan Yilmaz
- * @author Runningfridgesrule
+ * @author Karduelis
  * @author Katpatuka
  * @author Mach
  * @author Mskyrider
- * @author לערי ריינהארט
  * @author Myildirim2007
+ * @author Runningfridgesrule
+ * @author Srhat
+ * @author Suelnur
+ * @author Uğur Başak
+ * @author לערי ריינהארט
  */
 
 $namespaceNames = array(
@@ -408,8 +408,7 @@ Hesabınız açıldı. {{SITENAME}} tercihlerinizi değiştirmeyi unutmayın.',
 'loginproblem'               => '<b>Kayıt olurken bir problem oldu.</b><br />Tekrar deneyin!',
 'login'                      => 'Oturum aç',
 'nav-login-createaccount'    => 'Oturum aç ya da yeni hesap edin',
-'loginprompt'                => "Dikkat: {{SITENAME}} sitesinde oturum açabilmek için tarayıcınızda çerezlerin (cookies) aktifleştirilmiş olması gerekmektedir.<br />
-Kullanıcı adınız Türkçe karakter, boşluk '''içerebilir'''. Kullanıcı adınıza e-posta adresi '''girmemeniz''' tavsiye edilir.",
+'loginprompt'                => '{{SITENAME}} sitesinde oturum açabilmek için çerezleri etkinleştirmeniz gerekmektedir.',
 'userlogin'                  => 'Oturum aç ya da yeni hesap edin',
 'logout'                     => 'Oturumu kapat',
 'userlogout'                 => 'Oturumu kapat',
@@ -1033,7 +1032,7 @@ Bu dosyanın silme kayıtları kolaylık olması için burada sunulmuştur:",
 'filehist-filesize'              => 'Dosya boyutu',
 'filehist-comment'               => 'Açıklama',
 'imagelinks'                     => 'Kullanıldığı sayfalar',
-'linkstoimage'                   => 'Bu görüntü dosyasına bağlantısı olan sayfalar:',
+'linkstoimage'                   => 'Bu görüntü dosyasına bağlantısı olan {{PLURAL:$1|sayfa|$1 sayfa}}:',
 'nolinkstoimage'                 => 'Bu görüntü dosyasına bağlanan sayfa yok.',
 'sharedupload'                   => 'Bu dosya ortak alana yüklenmiştir ve diğer projelerde de kullanılıyor olabilir.',
 'shareduploadwiki'               => 'Lütfen daha fazla bilgi için $1 sayfasına bakın.',
@@ -1349,9 +1348,9 @@ $2 tarafından değiştirilmiş önceki sürüme geri dönüldü.',
 'protectlogpage'              => 'Koruma kayıtları',
 'protectlogtext'              => 'Korumaya alma/kaldırma ile ilgili değişiklikleri görmektesiniz.
 Daha fazla bilgi için [[Project:Koruma altına alınmış sayfa]] sayfasına bakabilirsiniz.',
-'protectedarticle'            => '"[[:$1]]" koruma altında alındı',
-'modifiedarticleprotection'   => '"[[:$1]]" için koruma düzeyi değiştirildi',
-'unprotectedarticle'          => 'koruma kaldırıldı: "[[:$1]]"',
+'protectedarticle'            => '"[[$1]]" koruma altında alındı',
+'modifiedarticleprotection'   => '"[[$1]]" için koruma düzeyi değiştirildi',
+'unprotectedarticle'          => 'koruma kaldırıldı: "[[$1]]"',
 'protect-title'               => '"$1" için bir koruma seviyesi seçiniz',
 'protect-legend'              => 'Korumayı onayla',
 'protectcomment'              => 'Koruma altına alma nedeni',
@@ -1439,7 +1438,7 @@ $1',
 
 # What links here
 'whatlinkshere'            => 'Sayfaya bağlantılar',
-'whatlinkshere-title'      => '$1 maddesine bağlantısı olan sayfalar',
+'whatlinkshere-title'      => '"$1" maddesine bağlantı veren sayfalar',
 'whatlinkshere-page'       => 'Sayfa:',
 'linkshere'                => "'''[[:$1]]''' sayfasına bağlantısı olan sayfalar:",
 'nolinkshere'              => "'''[[:$1]]''' sayfasına bağlantı yapan sayfa yok.",
@@ -1482,7 +1481,7 @@ $1',
 'ipusubmit'                   => 'Bu adresin engellemesini kaldır',
 'unblocked'                   => '[[User:$1|$1]] - engelleme kaldırıldı',
 'unblocked-id'                => '$1 engeli çıkarıldı',
-'ipblocklist'                 => 'Erişimi durdurulmuş kullanıcılar ve IP adresleri listesi',
+'ipblocklist'                 => 'Engellenmiş IP adresleri ve kullanıcı adları',
 'ipblocklist-legend'          => 'Engellenen kullanıcı ara',
 'ipblocklist-username'        => 'Kullanıcı adı veya IP adresi:',
 'ipblocklist-submit'          => 'Ara',
@@ -1527,11 +1526,9 @@ $1',
 # Move page
 'move-page'               => '$1 taşınıyor',
 'move-page-legend'        => 'İsim değişikliği',
-'movepagetext'            => "Aşağıdaki form kullanılarak sayfanın adı değiştirilir.
-Beraberinde tüm geçmiş kayıtları da yeni isme aktarılır.
+'movepagetext'            => "Aşağıdaki form kullanılarak sayfanın adı değiştirilir.Beraberinde tüm geçmiş kayıtları da yeni isme aktarılır.
 Eski isim yeni isme yönlendirme haline dönüşür.
-Eski başlığa dogru olan bağlantılar olduğu gibi kalır;
-çift veya geçersiz yönlendirmeleri kontrol ediniz.
+Otomatik olarak orijinal başlığa yönlendiren yönlendirmeleri güncelleyebilirsiniz.
 Yapacağınız bu değişikllike tüm bağlantıların olması gerektiği gibi çalıştığından sizin sorumlu olduğunuzu unutmayınız.
 
 Eğer yeni isimde bir isim zaten mevcutsa, isim değişikliği '''yapılmayacaktır''', ancak varolan sayfa içerik olarak boş ise veya sadece yönlendirme ise ve hiç geçmiş hali yoksa isim değişikliği mümkün olacaktır.
@@ -1560,8 +1557,8 @@ Lütfen başka bir isim deneyiniz.',
 'movetalk'                => 'Varsa "tartışma" sayfasını da aktar.',
 'movepage-page-exists'    => '$1 maddesi zaten var olmaktadır, ve otomatikman yeniden yazılamaz.',
 'movepage-page-moved'     => '$1 sayfası $2 sayfasına taşındı.',
-'1movedto2'               => '[[:$1]] sayfasının yeni adı: [[:$2]]',
-'1movedto2_redir'         => '[[:$1]] başlığı [[:$2]] sayfasına yönlendirildi',
+'1movedto2'               => '[[$1]] sayfasının yeni adı: [[$2]]',
+'1movedto2_redir'         => '[[$1]] başlığı [[$2]] sayfasına yönlendirildi',
 'movelogpage'             => 'İsim değişikliği kayıtları',
 'movelogpagetext'         => 'Aşağıda bulunan liste adı değiştirilmiş sayfaları gösterir.',
 'movereason'              => 'Neden:',
@@ -1992,8 +1989,7 @@ Bu onay kodu $4 tarihine kadar geçerli olacak.',
 Sayfayı baştan açmak isityorsanız, lütfen onaylayın.",
 'recreate'            => 'Canlandır',
 
-# HTML dump
-'redirectingto' => 'Yönlendirme [[:$1]]...',
+'unit-pixel' => 'px',
 
 # action=purge
 'confirm_purge'        => 'Sayfa önbelleği temizlensin mi? $1',
@@ -2025,7 +2021,7 @@ Sayfayı baştan açmak isityorsanız, lütfen onaylayın.",
 # Auto-summaries
 'autosumm-blank'   => 'Sayfa boşaltıldı',
 'autosumm-replace' => "Sayfa içeriği '$1' ile değiştiriliyor",
-'autoredircomment' => '[[:$1]] sayfasına yönlendirildi',
+'autoredircomment' => '[[$1]] sayfasına yönlendirildi',
 'autosumm-new'     => 'Yeni sayfa: $1',
 
 # Live preview

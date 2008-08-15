@@ -4,9 +4,9 @@
  * @ingroup Language
  * @file
  *
- * @author Yyy
  * @author Knakts
  * @author Xil
+ * @author Yyy
  * @author לערי ריינהארט
  */
 
@@ -588,6 +588,7 @@ Apzīmējumi:
 "ar pašreizējo" = salīdzināt ar pašreizējo versiju,
 "ar iepriekšējo" = salīdzināt ar iepriekšējo versiju,
 m = maznozīmīgs labojums.',
+'history-search'      => 'Meklēt hronoloģijā',
 'deletedrev'          => '[izdzēsta]',
 'histfirst'           => 'Senākās',
 'histlast'            => 'Jaunākās',
@@ -1326,7 +1327,7 @@ Ja tomēr vēlēsies, tad tev šī diskusiju lapa būs jāpārvieto vai jāapvie
 'movepage-page-exists'    => 'Lapa $1 jau eksistē un to nevar pārrakstīt automātiski.',
 'movepage-page-moved'     => 'Lapa $1 tika pārvietota uz $2.',
 'movepage-page-unmoved'   => 'Lapu $1 nevarēja pārvietot uz $2.',
-'1movedto2'               => '"[[:$1]]" pārdēvēju par "[[:$2]]"',
+'1movedto2'               => '"[[$1]]" pārdēvēju par "[[$2]]"',
 '1movedto2_redir'         => '$1 pārdēvēju par $2, izmantojot pāradresāciju',
 'movelogpage'             => 'Pārvietošanas reģistrs',
 'movelogpagetext'         => 'Lapu pārvietošanas (pārdēvēšanas) reģistrs.',
@@ -1603,9 +1604,6 @@ Si apstiprinajuma koda deriguma termins ir $4.',
 Lūdzu apstiprini, ka tiešām gribi izveidot šo lapu no jauna.",
 'recreate'            => 'Izveidot no jauna',
 
-# HTML dump
-'redirectingto' => 'Pāradresē uz [[:$1]]...',
-
 # action=purge
 'confirm_purge'        => "Iztīrīt šīs lapas kešu (''cache'')?
 
@@ -1634,7 +1632,7 @@ $1",
 # Auto-summaries
 'autosumm-blank'   => 'Nodzēsa lapu pa tīro',
 'autosumm-replace' => "Aizvieto lapas saturu ar '$1'",
-'autoredircomment' => 'Pāradresē uz [[:$1]]',
+'autoredircomment' => 'Pāradresē uz [[$1]]',
 'autosumm-new'     => 'Jauna lapa: $1',
 
 # Live preview

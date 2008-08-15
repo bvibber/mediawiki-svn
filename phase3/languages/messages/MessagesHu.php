@@ -4,14 +4,14 @@
  * @ingroup Language
  * @file
  *
- * @author Dani
- * @author Tgr
- * @author Samat
- * @author Bdamokos
- * @author Cerasus
- * @author Dorgan
  * @author Balasyum
+ * @author Bdamokos
  * @author Bennó
+ * @author Cerasus
+ * @author Dani
+ * @author Dorgan
+ * @author Samat
+ * @author Tgr
  */
 
 $namespaceNames = array(
@@ -1472,7 +1472,7 @@ A teljes lista [[Special:WhatLinksHere/$2|ezen a lapon]] található meg.',
 'filedelete-comment'          => 'Indoklás:',
 'filedelete-submit'           => 'Törlés',
 'filedelete-success'          => "A(z) '''$1''' médiafájlt törölted.",
-'filedelete-success-old'      => '<span class="plainlinks">A(z) \'\'\'[[Media:$1|$1]]\'\'\' fájl, dátum: $3, $2 törlése sikerült.</span>',
+'filedelete-success-old'      => "A(z) '''[[Media:$1|$1]]''' $3, $2-kori változata sikeresen törölve lett.",
 'filedelete-nofile'           => "'''$1''' nevű fájl nem létezik ezen a wikin.",
 'filedelete-nofile-old'       => "A(z) '''$1''' fájlnak nincs a megadott tulajdonságokkal rendelkező archivált változata.",
 'filedelete-otherreason'      => 'Más/további ok:',
@@ -1580,6 +1580,7 @@ Egy oldal egyértelműsítő lapnak számít, ha tartalmazza a [[MediaWiki:Disam
 'deadendpagestext'        => 'Az itt található lapok nem kapcsolódnak hivatkozásokkal ezen wiki más oldalaihoz.',
 'protectedpages'          => 'Védett lapok',
 'protectedpages-indef'    => 'Csak a meghatározatlan idejű védelmek',
+'protectedpages-cascade'  => 'Csak a kaszkádvédelmek',
 'protectedpagestext'      => 'A következő lapok átnevezés vagy szerkesztés ellen védettek',
 'protectedpagesempty'     => 'Jelenleg nincsenek ilyen paraméterekkel védett lapok.',
 'protectedtitles'         => 'Létrehozás ellen védett lapok',
@@ -1810,9 +1811,9 @@ ez a művelet a munkamenet eltérítése miatti óvatosságból megszakadt.
 Kérjük, hogy nyomd meg a "vissza" gombot, és töltsd le újra az oldalt, ahonnan jöttél, majd próbáld újra.',
 'protectlogpage'              => 'Lapvédelmi_napló',
 'protectlogtext'              => 'Ez a lapok lezárásának és megnyitásának listája. A [[Special:ProtectedPages|védett lapok listáján]] megtekintheted a jelenleg is érvényben lévő védelmeket.',
-'protectedarticle'            => 'levédte a(z) [[:$1]] lapot',
-'modifiedarticleprotection'   => 'a védelmi szint a következőre változott: "[[:$1]]"',
-'unprotectedarticle'          => 'eltávolította a védelmet a(z) „[[:$1]]” lapról',
+'protectedarticle'            => 'levédte a(z) [[$1]] lapot',
+'modifiedarticleprotection'   => 'a védelmi szint a következőre változott: "[[$1]]"',
+'unprotectedarticle'          => 'eltávolította a védelmet a(z) „[[$1]]” lapról',
 'protect-title'               => '„$1” levédése',
 'protect-legend'              => 'Levédés megerősítése',
 'protectcomment'              => 'A védelem oka',
@@ -2093,8 +2094,8 @@ Kérlek, válassz egy másik nevet.',
 'movepage-page-moved'     => 'A(z) „$1” nevű lap át lett nevezve „$2” névre.',
 'movepage-page-unmoved'   => 'A(z) „$1” nevű lap nem nevezhető át „$2” névre.',
 'movepage-max-pages'      => '{{PLURAL:$1|Egy|$1}} lapnál több nem nevezhető át automatikusan, így a további lapok a helyükön maradnak.',
-'1movedto2'               => '[[:$1]] lapot átneveztem [[:$2]] névre',
-'1movedto2_redir'         => '[[:$1]] lapot átneveztem [[:$2]] névre (az átirányítást felülírva)',
+'1movedto2'               => '[[$1]] lapot átneveztem [[$2]] névre',
+'1movedto2_redir'         => '[[$1]] lapot átneveztem [[$2]] névre (az átirányítást felülírva)',
 'movelogpage'             => 'Átnevezési napló',
 'movelogpagetext'         => 'Az alábbiakban az átnevezett lapok listája látható.',
 'movereason'              => 'Indoklás',
@@ -2186,7 +2187,7 @@ Valamennyi transwiki importálási művelet az [[Special:Log/import|importálás
 # Import log
 'importlogpage'                    => 'Importnapló',
 'importlogpagetext'                => 'Lapok szerkesztési előzményekkel történő adminisztratív imporálása más wikikből.',
-'import-logentry-upload'           => '[[:$1]] importálása fájlfeltöltéssel kész',
+'import-logentry-upload'           => '[[$1]] importálása fájlfeltöltéssel kész',
 'import-logentry-upload-detail'    => '$1 változat',
 'import-logentry-interwiki'        => '$1 más wikiből áthozva',
 'import-logentry-interwiki-detail' => '$1 változat innen: $2',
@@ -2693,9 +2694,6 @@ $1
 Kérlek erősítsd meg, hogy tényleg újra akarod-e írni a lapot.",
 'recreate'            => 'Újraírás',
 
-# HTML dump
-'redirectingto' => 'Átirányítás a következőre: [[:$1|$1]]...',
-
 # action=purge
 'confirm_purge'        => 'Törlöd az oldal gyorsítótárban (cache) található változatát?
 
@@ -2729,7 +2727,7 @@ $1',
 # Auto-summaries
 'autosumm-blank'   => 'A lap teljes tartalmának eltávolítása',
 'autosumm-replace' => 'A lap tartalmának cseréje erre: $1',
-'autoredircomment' => 'Átirányítás ide: [[:$1]]',
+'autoredircomment' => 'Átirányítás ide: [[$1]]',
 'autosumm-new'     => 'Új oldal, tartalma: „$1”',
 
 # Live preview

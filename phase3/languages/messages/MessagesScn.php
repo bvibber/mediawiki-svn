@@ -4,9 +4,9 @@
  * @ingroup Language
  * @file
  *
- * @author Tonyfroio
  * @author Melos
  * @author Sarvaturi
+ * @author Tonyfroio
  * @author לערי ריינהארט
  */
 
@@ -1465,9 +1465,9 @@ lu sistema nun hà esiquitu lu cumannu mpartitu pi pricauzzioni.
 Pi favuri utilizza lu tastu "\'n arreri" dû tò browser, ricàrrica la pàggina e riprova di novu.',
 'protectlogpage'              => 'Pàggini prutetti',
 'protectlogtext'              => 'Lista di prutezzioni/sprutezzioni dî pàggini. Vidi macari la [[Special:ProtectedPages|lista dî pàggini prutetti]].',
-'protectedarticle'            => 'hà prutettu [[:$1]]',
-'modifiedarticleprotection'   => 'canciàu lu liveddu di prutizzioni di "[[:$1]]"',
-'unprotectedarticle'          => 'hà sprutettu [[:$1]]',
+'protectedarticle'            => 'hà prutettu [[$1]]',
+'modifiedarticleprotection'   => 'canciàu lu liveddu di prutizzioni di "[[$1]]"',
+'unprotectedarticle'          => 'hà sprutettu [[$1]]',
 'protect-title'               => 'Prutezzioni di "$1"',
 'protect-legend'              => 'Cunferma la prutezzioni',
 'protectcomment'              => 'Mutivu dâ prutezzioni',
@@ -1704,8 +1704,8 @@ Nta sti casi, tu hai a spustari o agghiùnciri manuarmenti la pàggina di discus
 'talkexists'              => "'''La pàggina hà statu spustata currettamenti, ma nun hà statu pussìbbili spustari la pàggina di discussioni pirchì nn'esisti già n'àutra cu lu tìtulu novu. Ntigrari manuarmenti li cuntinuti dî dui pàggini.'''",
 'movedto'                 => 'spustata a',
 'movetalk'                => 'Sposta puru la pàggina di discussioni, eventuarmenti.',
-'1movedto2'               => '[[:$1]] spustatu a [[:$2]]',
-'1movedto2_redir'         => '[[:$1]] spustatu a [[:$2]] supra rinnirizzamentu',
+'1movedto2'               => '[[$1]] spustatu a [[$2]]',
+'1movedto2_redir'         => '[[$1]] spustatu a [[$2]] supra rinnirizzamentu',
 'movelogpage'             => 'Spustamenti',
 'movelogpagetext'         => "Chistu è l'alencu dî pàggini spustati.",
 'movereason'              => 'Pi stu mutivu',
@@ -2257,9 +2257,6 @@ Stu còdici di cunferma scadi automaticamenti a li $4.',
 'deletedwhileediting' => "Accura: Sta pàggina hà statu cancillata doppu ch'hai accuminzatu a mudificàrila.",
 'confirmrecreate'     => "L'utenti [[User:$1|$1]] ([[User talk:$1|discussioni]]) hà cancillatu sta pàggina doppu ca hai nizziatu a canciàrila, pi lu siquenti mutivu: ''$2'' Pi favuri, cunferma ca addisìi veramenti criari n'àutra vota sta pàggina.",
 
-# HTML dump
-'redirectingto' => 'Rinnirizzamentu a [[:$1]]...',
-
 # action=purge
 'confirm_purge'        => "S'addisìa puliri la cache di sta pàggina? $1",
 'confirm_purge_button' => 'Cunferma',
@@ -2290,7 +2287,7 @@ Stu còdici di cunferma scadi automaticamenti a li $4.',
 # Auto-summaries
 'autosumm-blank'   => 'Cuntinutu cancillatu',
 'autosumm-replace' => "Pàggina sustituita cu '$1'",
-'autoredircomment' => 'Rinnirizzamentu â pàggina [[:$1]]',
+'autoredircomment' => 'Rinnirizzamentu â pàggina [[$1]]',
 'autosumm-new'     => 'Pàggina nova: $1',
 
 # Live preview

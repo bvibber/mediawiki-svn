@@ -1224,7 +1224,7 @@ Hai disponible una [[Special:WhatLinksHere/$2|llista completa]].",
 'filedelete-comment'          => 'Comentariu:',
 'filedelete-submit'           => 'Borrar',
 'filedelete-success'          => "'''$1''' foi borráu.",
-'filedelete-success-old'      => '<span class="plainlinks">La versión de \'\'\'[[Media:$1|$1]]\'\'\' del $3 a les $2 foi borrada.</span>',
+'filedelete-success-old'      => "Eliminóse la versión de '''[[Media:$1|$1]]''' del $2 a les $3.",
 'filedelete-nofile'           => "'''$1''' nun esiste en {{SITENAME}}.",
 'filedelete-nofile-old'       => "Nun hai nenguna versión archivada de  '''$1''' colos atributos especificaos.",
 'filedelete-otherreason'      => 'Otru motivu/motivu adicional:',
@@ -1561,8 +1561,8 @@ navegador pa cargar otra vuelta la páxina y vuelve a intentalo.',
 'protectlogpage'              => 'Rexistru de proteiciones',
 'protectlogtext'              => 'Esti ye un rexistru de les páxines protexíes y desprotexíes. Consulta la [[Special:ProtectedPages|llista de páxines protexíes]] pa ver les proteiciones actives nestos momentos.',
 'protectedarticle'            => 'protexó $1',
-'modifiedarticleprotection'   => 'camudó\'l nivel de proteición de "[[:$1]]"',
-'unprotectedarticle'          => 'desprotexó "[[:$1]]"',
+'modifiedarticleprotection'   => 'camudó\'l nivel de proteición de "[[$1]]"',
+'unprotectedarticle'          => 'desprotexó "[[$1]]"',
 'protect-title'               => 'Protexendo "$1"',
 'protect-legend'              => 'Confirmar proteición',
 'protectcomment'              => 'Comentariu:',
@@ -1846,8 +1846,8 @@ Nestos casos vas tener que treslladar o fusionar la páxina manualmente.",
 'movepage-page-moved'     => 'Treslladóse la páxina $1 a $2.',
 'movepage-page-unmoved'   => 'Nun se pudo treslladar la páxina $1 a $2.',
 'movepage-max-pages'      => "Treslladóse'l máximu de $1 {{PLURAL:$1|páxina|páxinees}} y nun van treslladase más automáticamente.",
-'1movedto2'               => '[[:$1]] treslladáu a [[:$2]]',
-'1movedto2_redir'         => '[[:$1]] treslladáu a [[:$2]] sobre una redireición',
+'1movedto2'               => '[[$1]] treslladáu a [[$2]]',
+'1movedto2_redir'         => '[[$1]] treslladáu a [[$2]] sobre una redireición',
 'movelogpage'             => 'Rexistru de tresllaos',
 'movelogpagetext'         => 'Esta ye la llista de páxines treslladaes.',
 'movereason'              => 'Motivu:',
@@ -1940,7 +1940,7 @@ Guárdalu nel to ordenador y xúbilu equí.",
 # Import log
 'importlogpage'                    => "Rexistru d'importaciones",
 'importlogpagetext'                => "Importaciones alministrativas de páxines con historial d'ediciones d'otres wikis.",
-'import-logentry-upload'           => "importada [[:$1]] per aciud d'una xuba d'archivu",
+'import-logentry-upload'           => "importada [[$1]] per aciud d'una xuba d'archivu",
 'import-logentry-upload-detail'    => '$1 {{PLURAL:$1|revisión|revisiones}}',
 'import-logentry-interwiki'        => 'treswikificada $1',
 'import-logentry-interwiki-detail' => '$1 {{PLURAL:$1|revisión|revisiones}} dende $2',
@@ -2445,9 +2445,6 @@ $1
 Por favor confirma que daveres quies volver a crear esta páxina.",
 'recreate'            => 'Volver a crear',
 
-# HTML dump
-'redirectingto' => 'Redireicionando a [[:$1]]...',
-
 # action=purge
 'confirm_purge'        => "¿Llimpiar la caché d'esta páxina?
 
@@ -2481,7 +2478,7 @@ $1",
 # Auto-summaries
 'autosumm-blank'   => "Eliminando'l conteníu de la páxina",
 'autosumm-replace' => "Sustituyendo la páxina por '$1'",
-'autoredircomment' => 'Redirixendo a [[:$1]]',
+'autoredircomment' => 'Redirixendo a [[$1]]',
 'autosumm-new'     => 'Páxina nueva: $1',
 
 # Live preview

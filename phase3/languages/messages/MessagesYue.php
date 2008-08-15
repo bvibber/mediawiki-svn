@@ -1,10 +1,9 @@
 <?php
-/** Yue (粵語)
+/** Cantonese (粵語/廣東話)
  *
  * @ingroup Language
  * @file
  *
-
  */
 
 $skinNames = array(
@@ -176,6 +175,8 @@ $messages = array(
 'tog-watchlisthideown'        => '響監視清單度隱藏我嘅編輯',
 'tog-watchlisthidebots'       => '響監視清單度隱藏機械人嘅編輯',
 'tog-watchlisthideminor'      => '響監視清單度隱藏小修改',
+'tog-watchlisthideliu'        => '響監視清單度隱藏登入用戶',
+'tog-watchlisthideanons'      => '響監視清單度隱藏匿名用戶',
 'tog-nolangconversion'        => '唔要用字轉換',
 'tog-ccmeonemails'            => '當我寄電郵畀其他人嗰陣寄返封副本畀我',
 'tog-diffonly'                => '響差異下面唔顯示頁面內容',
@@ -1407,6 +1408,7 @@ Template:搞清楚',
 'deadendpagestext'        => '呢啲頁無連到{{SITENAME}}內嘅任何一頁。',
 'protectedpages'          => '保護頁',
 'protectedpages-indef'    => '只有無期保謢頁',
+'protectedpages-cascade'  => '只有連串保護頁',
 'protectedpagestext'      => '以下嘅頁面係受保頁面，唔能夠移動或編輯',
 'protectedpagesempty'     => '響呢啲參數度，現時無頁面響度保護緊。',
 'protectedtitles'         => '保護咗嘅標題',
@@ -1542,6 +1544,10 @@ Template:搞清楚',
 'watchlist-hide-own'   => '隱藏我嘅編輯',
 'watchlist-show-minor' => '顯示小修改',
 'watchlist-hide-minor' => '隱藏小修改',
+'watchlist-show-anons' => '顯示匿名用戶嘅編輯',
+'watchlist-hide-anons' => '隱藏匿名用戶嘅編輯',
+'watchlist-show-liu'   => '顯示登入咗用戶嘅編輯',
+'watchlist-hide-liu'   => '隱藏登入咗用戶嘅編輯',
 
 # Displayed when you click the "watch" button and it is in the process of watching
 'watching'   => '監視緊...',
@@ -1626,9 +1632,9 @@ wiki: $PAGEEDITOR_WIKI
 'sessionfailure'              => '你嘅登入會話 (session) 好似有啲問題；為咗防止會話劫持，呢個操作已經取消。請撳「返轉頭」然後重新載入你嚟自嘅頁面，然後再試吓啦。',
 'protectlogpage'              => '保護日誌',
 'protectlogtext'              => '下面係一個保護同埋解除保護頁面嘅一覽表。睇吓[[Special:ProtectedPages|保護頁面一覽]]去拎現時進行緊嘅頁面保護一覽。',
-'protectedarticle'            => '已經保護 "[[:$1]]"',
-'modifiedarticleprotection'   => '已經改咗 "[[:$1]]" 嘅保護等級',
-'unprotectedarticle'          => '已經唔再保護 "[[:$1]]"',
+'protectedarticle'            => '已經保護 "[[$1]]"',
+'modifiedarticleprotection'   => '已經改咗 "[[$1]]" 嘅保護等級',
+'unprotectedarticle'          => '已經唔再保護 "[[$1]]"',
 'protect-title'               => '改緊「$1」嘅保護等級',
 'protect-legend'              => '確認保護',
 'protectcomment'              => '註解:',
@@ -1894,8 +1900,8 @@ $1',
 'movepage-page-moved'     => '版$1已經搬到去$2。',
 'movepage-page-unmoved'   => '版$1唔可以搬到去$2。',
 'movepage-max-pages'      => '最多有$1版已經搬咗同時唔可以自動噉再搬更多。',
-'1movedto2'               => '[[:$1]]搬到去[[:$2]]',
-'1movedto2_redir'         => '[[:$1]]通過跳轉搬到去[[:$2]]',
+'1movedto2'               => '[[$1]]搬到去[[$2]]',
+'1movedto2_redir'         => '[[$1]]通過跳轉搬到去[[$2]]',
 'movelogpage'             => '移動日誌',
 'movelogpagetext'         => '以下係搬過嘅頁面清單。',
 'movereason'              => '原因',
@@ -1984,7 +1990,7 @@ $1',
 # Import log
 'importlogpage'                    => '倒入日誌',
 'importlogpagetext'                => '管理員由其它嘅 wiki 倒入頁面同埋佢哋嘅編輯歷史記錄。',
-'import-logentry-upload'           => '由檔案上載倒入咗 [[:$1]]',
+'import-logentry-upload'           => '由檔案上載倒入咗 [[$1]]',
 'import-logentry-upload-detail'    => '$1個修訂',
 'import-logentry-interwiki'        => 'transwiki咗 $1',
 'import-logentry-interwiki-detail' => '由$2嘅$1個修訂',
@@ -2531,9 +2537,6 @@ $1
 請確認你係咪真係想重新整過呢版。",
 'recreate'            => '重新整過',
 
-# HTML dump
-'redirectingto' => '跳轉去[[:$1]]...',
-
 # action=purge
 'confirm_purge'        => '肯定要洗咗呢版個快取版本？
 
@@ -2567,7 +2570,7 @@ $1',
 # Auto-summaries
 'autosumm-blank'   => '移除緊響嗰一版嘅全部內容',
 'autosumm-replace' => "用 '$1' 取代緊嗰一版",
-'autoredircomment' => '跳緊轉到[[:$1]]',
+'autoredircomment' => '跳緊轉到[[$1]]',
 'autosumm-new'     => '新頁： $1',
 
 # Live preview

@@ -341,6 +341,8 @@ $messages = array(
 'tog-watchlisthideown'        => 'הסתרת עריכות שלי ברשימת המעקב',
 'tog-watchlisthidebots'       => 'הסתרת בוטים ברשימת המעקב',
 'tog-watchlisthideminor'      => 'הסתרת עריכות משניות ברשימת המעקב',
+'tog-watchlisthideliu'        => 'הסתרת עריכות של משתמשים רשומים מרשימת המעקב',
+'tog-watchlisthideanons'      => 'הסתרת עריכות של משתמשים אנונימיים מרשימת המעקב',
 'tog-nolangconversion'        => 'ביטול המרת גרסאות שפה',
 'tog-ccmeonemails'            => 'קבלת העתקים של הודעות דוא"ל הנשלחות ממני למשתמשים אחרים',
 'tog-diffonly'                => 'ביטול הצגת תוכן הדף מתחת להשוואות הגרסאות',
@@ -1249,7 +1251,7 @@ $2',
 'right-editprotected'        => 'עריכת דפים מוגנים (ללא הגנה מדורגת)',
 'right-editinterface'        => 'עריכת ממשק המשתמש',
 'right-editusercssjs'        => 'עריכת דפי CSS ו־JS של משתמשים אחרים',
-'right-rollback'             => 'שחזור מהיר של העריכות של המשתמש האחרון שערך דף מסוים',
+'right-rollback'             => 'שחזור מהיר של עריכות המשתמש האחרון שערך דף מסוים',
 'right-markbotedits'         => 'סימון עריכות משוחזרות כעריכות של בוט',
 'right-noratelimit'          => 'עקיפת הגבלת קצב העריכות',
 'right-import'               => 'ייבוא דפים מאתרי ויקי אחרים',
@@ -1471,11 +1473,11 @@ PICT # שונות
 'filerevert'                => 'שחזור $1',
 'filerevert-backlink'       => '→ $1',
 'filerevert-legend'         => 'שחזור קובץ',
-'filerevert-intro'          => '<span class="plainlinks">משחזר את \'\'\'[[Media:$1|$1]]\'\'\' ל[$4 גרסה מ־$3, $2].</span>',
+'filerevert-intro'          => "משחזר את '''[[Media:$1|$1]]''' ל[$4 גרסה מ־$3, $2].",
 'filerevert-comment'        => 'הערה:',
 'filerevert-defaultcomment' => 'שוחזר לגרסה מ־$2, $1',
 'filerevert-submit'         => 'שחזור',
-'filerevert-success'        => '<span class="plainlinks">\'\'\'[[Media:$1|$1]]\'\'\' שוחזרה ל[$4 גרסה מ־$3, $2].</span>',
+'filerevert-success'        => "'''[[Media:$1|$1]]''' שוחזרה ל[$4 גרסה מ־$3, $2].",
 'filerevert-badversion'     => 'אין גרסה מקומית קודמת של הקובץ שהועלתה בתאריך המבוקש.',
 
 # File deletion
@@ -1483,11 +1485,11 @@ PICT # שונות
 'filedelete-backlink'         => '→ $1',
 'filedelete-legend'           => 'מחיקת קובץ',
 'filedelete-intro'            => "מוחק את '''[[Media:$1|$1]]'''.",
-'filedelete-intro-old'        => '<span class="plainlinks">אתם מוחקים את הגרסה של \'\'\'[[Media:$1|$1]]\'\'\' מ־[$4 $3, $2].</span>',
+'filedelete-intro-old'        => "אתם מוחקים את הגרסה של '''[[Media:$1|$1]]''' מ־[$4 $3, $2].",
 'filedelete-comment'          => 'סיבה למחיקה:',
 'filedelete-submit'           => 'מחיקה',
 'filedelete-success'          => "'''$1''' נמחק.",
-'filedelete-success-old'      => '<span class="plainlinks">הגרסה של \'\'\'[[Media:$1|$1]]\'\'\' מ־$3, $2 נמחקה.</span>',
+'filedelete-success-old'      => "הגרסה של '''[[Media:$1|$1]]''' מ־$3, $2 נמחקה.",
 'filedelete-nofile'           => "'''$1''' אינו קיים באתר זה.",
 'filedelete-nofile-old'       => "אין גרסה ישנה של '''$1''' עם התכונות המבוקשות.",
 'filedelete-otherreason'      => 'סיבה נוספת/אחרת:',
@@ -1595,6 +1597,7 @@ PICT # שונות
 'deadendpagestext'        => 'הדפים הבאים אינם מקשרים לדפים אחרים באתר.',
 'protectedpages'          => 'דפים מוגנים',
 'protectedpages-indef'    => 'הגנות לצמיתות בלבד',
+'protectedpages-cascade'  => 'הגנות מדורגות בלבד',
 'protectedpagestext'      => 'הדפים הבאים מוגנים מפני עריכה או העברה:',
 'protectedpagesempty'     => 'אין כרגע דפים מוגנים עם הפרמטרים הללו.',
 'protectedtitles'         => 'כותרות מוגנות',
@@ -1732,6 +1735,10 @@ PICT # שונות
 'watchlist-hide-own'   => 'הסתרת עריכות שלי',
 'watchlist-show-minor' => 'הצגת עריכות משניות',
 'watchlist-hide-minor' => 'הסתרת עריכות משניות',
+'watchlist-show-anons' => 'הצגת עריכות אנונימיות',
+'watchlist-hide-anons' => 'הסתרת עריכות אנונימיות',
+'watchlist-show-liu'   => 'הצגת עריכות של משתמשים רשומים',
+'watchlist-hide-liu'   => 'הסתרת עריכות של משתמשים רשומים',
 
 # Displayed when you click the "watch" button and it is in the process of watching
 'watching'   => 'בהוספה לרשימת המעקב…',
@@ -1993,7 +2000,7 @@ $1',
 'ipusubmit'                       => 'שחרור חסימה',
 'unblocked'                       => 'המשתמש [[User:$1|$1]] שוחרר מחסימתו.',
 'unblocked-id'                    => 'חסימה מספר $1 שוחררה.',
-'ipblocklist'                     => 'רשימת משתמשים חסומים',
+'ipblocklist'                     => 'רשימת כתובות IP ומשתמשים חסומים',
 'ipblocklist-legend'              => 'מציאת משתמש חסום',
 'ipblocklist-username'            => 'שם משתמש או כתובת IP:',
 'ipblocklist-submit'              => 'חיפוש',
@@ -2706,9 +2713,6 @@ $1
 :'''$2'''
 אנא אשרו שאתם אכן רוצים ליצור מחדש את הדף.",
 'recreate'            => 'יצירה מחדש',
-
-# HTML dump
-'redirectingto' => 'מפנה ל־[[:$1]]…',
 
 # action=purge
 'confirm_purge'        => 'לנקות את המטמון של דף זה?

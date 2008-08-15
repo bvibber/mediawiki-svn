@@ -4,13 +4,14 @@
  * @ingroup Language
  * @file
  *
- * @author Lovekhmer
- * @author គីមស៊្រុន
- * @author Chhorran
- * @author T-Rithy
  * @author Bunly
- * @author តឹក ប៊ុនលី
+ * @author Chhorran
+ * @author Kiensvay
+ * @author Lovekhmer
+ * @author T-Rithy
  * @author Ævar Arnfjörð Bjarmason <avarab@gmail.com>
+ * @author គីមស៊្រុន
+ * @author តឹក ប៊ុនលី
  */
 
 $digitTransformTable = array(
@@ -511,7 +512,7 @@ $messages = array(
 
 'badaccess'        => 'កំហុសនៃការអនុញ្ញាត',
 'badaccess-group0' => 'សកម្មភាពដែលអ្នកបានស្នើមិនត្រូវបានអនុញ្ញាតទេ ។',
-'badaccess-groups' => 'មានតែ​អ្នកប្រើប្រាស់​ក្នុងក្រុម១នៃក្រុម $1 ទេ ​ទើបអាចធ្វើសកម្មភាព​ដែលអ្នកបានស្នើ។',
+'badaccess-groups' => 'មានតែ​អ្នកប្រើប្រាស់​ក្នុង{{PLURAL:$2|ក្រុម|ក្រុម១នៃក្រុម}}៖ $1 ទេ ​ទើបអាចធ្វើសកម្មភាព​ដែលអ្នកបានស្នើ។',
 
 'versionrequired'     => 'តំរូវអោយមាន​កំនែ $1 នៃមេឌាវិគី',
 'versionrequiredtext' => 'ត្រូវការកំនែ $1 នៃមេឌាវិគី (MediaWiki) ដើម្បីប្រើប្រាស់ទំព័រនេះ។ សូមមើល [[Special:Version|ទំព័រកំនែ]]។',
@@ -620,7 +621,8 @@ $2',
 '''សំគាល់៖'''ទំព័រមួយចំនួនប្រហែលជានៅតែបង្ហាញលោកអ្នកនៅក្នុងភាពបានឡុកអ៊ីនចូលក្នុងគណនីរបស់លោកអ្នកដដែល។ ប្រសិនបើមានករណីនេះកើតឡើង សូមសំអាត ឃ្លាំងសំងាត់(Cache:ខាច់)នៃកម្មវិធីរុករករបស់លោកអ្នក។",
 'welcomecreation'            => '== សូមស្វាគមន៍ $1! ==
 
-គណនីរបស់អ្នកត្រូវបានបង្កើតហើយ។ កុំភ្លេចផ្លាស់ប្តូរចំនូលចិត្ត{{SITENAME}}របស់អ្នក។',
+គណនីរបស់អ្នកត្រូវបានបង្កើតហើយ។ 
+កុំភ្លេចផ្លាស់ប្តូរ[[Special:Preferences|ចំនូលចិត្ត {{SITENAME}}]]របស់អ្នក។',
 'loginpagetitle'             => 'ការឡុកអ៊ីនរបស់អ្នកប្រើប្រាស់',
 'yourname'                   => 'ឈ្មោះអ្នកប្រើ៖',
 'yourpassword'               => 'ពាក្យសំងាត់៖',
@@ -630,7 +632,7 @@ $2',
 'loginproblem'               => '<b>មានបញ្ហា​ចំពោះការឡុកអ៊ីន​របស់អ្នក។</b><br />សូម​ព្យាយាមឡើងវិញ!',
 'login'                      => 'ឡុកអ៊ីន',
 'nav-login-createaccount'    => 'ឡុកអ៊ីនឬបង្កើតគណនី',
-'loginprompt'                => 'អ្នកត្រូវតែមានcookiesដើម្បីអាចចូលទៅ {{SITENAME}}។',
+'loginprompt'                => 'អ្នកត្រូវតែមាន cookies ដើម្បីអាចឡុកអ៊ីនចូលទៅ {{SITENAME}}។',
 'userlogin'                  => 'ឡុកអ៊ីនឬបង្កើតគណនី',
 'logout'                     => 'ចាកចេញ',
 'userlogout'                 => 'ចាកចេញ',
@@ -1517,7 +1519,7 @@ $2',
 'addedwatch'           => 'បានបន្ថែមទៅបញ្ជីតាមដាន',
 'addedwatchtext'       => "ទំព័រ \"[[:\$1]]\" ត្រូវបានដាក់បញ្ចូលទៅក្នុង​[[Special:Watchlist|បញ្ជីតាមដាន]]របស់លោកអ្នកហើយ ។ រាល់ការផ្លាស់ប្តូរនៃទំព័រនេះ រួមទាំងទំព័រពិភាក្សារបស់វាផងដែរ នឹងត្រូវបានដាក់បញ្ចូលក្នុងបញ្ជីនៅទីនោះ។  ទំព័រនេះនឹងបង្ហាញជា'''អក្សរដិត''' នៅក្នុង [[Special:RecentChanges|បញ្ជីបំលាស់ប្តូរថ្មីៗ]] ងាយស្រួលក្នុងការស្វែងរក។ ប្រសិនបើលោកអ្នកចង់យកវាចេញពី [[Special:Watchlist|បញ្ជីតាមដាន]]របស់លោកអ្នក សូមចុច '''ឈប់តាមដាន''' នៅលើរបារចំហៀងផ្នែកខាងលើ។",
 'removedwatch'         => 'ត្រូវបានដកចេញពីបញ្ជីតាមដាន',
-'removedwatchtext'     => 'ទំព័រ "[[:$1]]" ត្រូវបានដកចេញពីបញ្ជីតាមដានរបស់លោកអ្នកហើយ ។',
+'removedwatchtext'     => 'ទំព័រ "[[:$1]]" ត្រូវបានដកចេញពី[[Special:Watchlist|បញ្ជីតាមដាន]]របស់លោកអ្នកហើយ ។',
 'watch'                => 'តាមដាន',
 'watchthispage'        => 'តាមដានទំព័រនេះ',
 'unwatch'              => 'ឈប់​តាមដាន',
@@ -1611,9 +1613,9 @@ $NEWPAGE
 'editcomment'                 => 'វិចារក្នុងការកែប្រែ៖ "<i>$1</i>"។', # only shown if there is an edit comment
 'revertpage'                  => 'បានត្រលប់កំនែប្រែដោយ[[Special:Contributions/$2|$2]] ([[User talk:$2|Talk]]) ទៅកំនែប្រែចុងក្រោយដោយ [[User:$1|$1]]', # Additional available: $3: revid of the revision reverted to, $4: timestamp of the revision reverted to, $5: revid of the revision reverted from, $6: timestamp of the revision reverted from
 'protectlogpage'              => 'កំនត់ហេតុនៃការការពារ',
-'protectedarticle'            => 'បានការពារ"[[:$1]]"',
-'modifiedarticleprotection'   => 'បានផ្លាស់ប្តូរកំរិតការពារនៃ"[[:$1]]"',
-'unprotectedarticle'          => 'បានឈប់ការពារ៖ "[[:$1]]"',
+'protectedarticle'            => 'បានការពារ"[[$1]]"',
+'modifiedarticleprotection'   => 'បានផ្លាស់ប្តូរកំរិតការពារនៃ"[[$1]]"',
+'unprotectedarticle'          => 'បានឈប់ការពារ៖ "[[$1]]"',
 'protect-title'               => 'ការពារ "$1"',
 'protect-legend'              => 'បញ្ជាក់ទទួលស្គាល់ការការពារ',
 'protectcomment'              => 'យោបល់៖',
@@ -1703,7 +1705,7 @@ $1',
 
 # What links here
 'whatlinkshere'            => 'អ្វី​ដែលភ្ជាប់មកទីនេះ',
-'whatlinkshere-title'      => 'ទំព័រ​តភ្ជាប់​ទៅ $1',
+'whatlinkshere-title'      => 'ទំព័រនានាដែល​តភ្ជាប់​ទៅ "$1"',
 'whatlinkshere-page'       => 'ទំព័រ៖',
 'linkshere'                => "ទំព័រដូចតទៅ​នេះតភ្ជាប់មក '''[[:$1]]''' ៖",
 'nolinkshere'              => "គ្មានទំព័រណាមួយតភ្ជាប់ទៅ '''[[:$1]]''' ទេ។",
@@ -1757,7 +1759,7 @@ $1',
 'ipusubmit'                   => 'លែងរាំងខ្ទប់ អាស័យដ្ឋាន នេះ',
 'unblocked'                   => '[[User:$1|$1]] ត្រូវបានឈប់ហាមឃាត់',
 'unblocked-id'                => '$1 ត្រូវបានឈប់ហាមឃាត់ហើយ',
-'ipblocklist'                 => 'បញ្ជីនៃការរាំងខ្ទប់អ្នកប្រើប្រាស់ / អាសយដ្ឋាន IP',
+'ipblocklist'                 => 'ឈ្មោះអ្នកប្រើប្រាស់ និង អាសយដ្ឋាន IP ដែលត្រូវបានរាំងខ្ទប់',
 'ipblocklist-legend'          => 'រកមើល អ្នកប្រើប្រាស់ ដែលត្រូវបានរាំងខ្ទប់',
 'ipblocklist-username'        => 'ឈ្មោះអ្នកប្រើឬអាសយដ្ឋានIP៖',
 'ipblocklist-submit'          => 'ស្វែងរក',
@@ -1839,8 +1841,8 @@ $1',
 'move-talk-subpages'      => 'ប្តូរទីតាំងគ្រប់ទំព័ររងនៃទំព័រពិភាក្សាប្រសិនបើអាច',
 'movepage-page-moved'     => 'ទំព័រ$1ត្រូវបានប្តូរទីតាំងទៅកាន់$2ហើយ។',
 'movepage-page-unmoved'   => 'ទំព័រ$1មិនអាចប្តូរទីតាំងទៅ$2បានទេ។',
-'1movedto2'               => 'បានប្តូរទីតាំង [[:$1]] ទៅ [[:$2]]',
-'1movedto2_redir'         => 'ទំព័រ [[:$1]] ត្រូវបានប្តូរទីតាំងទៅ [[:$2]] តាមរយៈការបញ្ជូនបន្ត។',
+'1movedto2'               => 'បានប្តូរទីតាំង [[$1]] ទៅ [[$2]]',
+'1movedto2_redir'         => 'ទំព័រ [[$1]] ត្រូវបានប្តូរទីតាំងទៅ [[$2]] តាមរយៈការបញ្ជូនបន្ត។',
 'movelogpage'             => 'កំនត់ហេតុនៃការប្តូរទីតាំង',
 'movelogpagetext'         => 'ខាងក្រោមនេះជាបញ្ជីនៃទំព័រដែលត្រូវបានប្តូរទីតាំង។',
 'movereason'              => 'មូលហេតុ៖',
@@ -1905,7 +1907,7 @@ $1',
 
 # Import log
 'importlogpage'                    => 'កំនត់ហេតុនៃការនាំចូល',
-'import-logentry-upload'           => 'បាននាំចូល [[:$1]] ដោយការផ្ទុកឡើង ឯកសារ',
+'import-logentry-upload'           => 'បាននាំចូល [[$1]] ដោយការផ្ទុកឡើង ឯកសារ',
 'import-logentry-upload-detail'    => '$1 {{PLURAL:$1|កំណែ}}',
 'import-logentry-interwiki'        => 'បាននាំចូល$1ពីវិគីផ្សេងទៀត',
 'import-logentry-interwiki-detail' => '$1 {{PLURAL:$1|កំណែ}} ពី $2',
@@ -2217,9 +2219,6 @@ $5
 សូមអះអាងថាអ្នកពិតជាចង់បង្កើតទំព័រនេះឡើងវិញពិតប្រាកដមែន។",
 'recreate'            => 'បង្កើតឡើងវិញ',
 
-# HTML dump
-'redirectingto' => 'កំពុងប្តូរទិស ទៅ [[:$1]]...',
-
 # action=purge
 'confirm_purge'        => 'សំអាតឃ្លាំងសំងាត់(cache)នៃទំព័រនេះ?
 
@@ -2253,7 +2252,7 @@ $1',
 # Auto-summaries
 'autosumm-blank'   => 'ដកចេញខ្លឹមសារទាំងអស់ពីទំព័រ',
 'autosumm-replace' => "ជំនួសខ្លឹមសារនៃទំព័រដោយ '$1'",
-'autoredircomment' => 'បញ្ជូនបន្តទៅ [[:$1]]',
+'autoredircomment' => 'បញ្ជូនបន្តទៅ [[$1]]',
 'autosumm-new'     => 'ទំព័រថ្មី៖ $1',
 
 # Size units

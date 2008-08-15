@@ -1324,7 +1324,7 @@ Kann angahn, dat dat beter geiht, wenn du dat to en Tiet versöchst, to de op de
 'filedelete-comment'          => 'Kommentar:',
 'filedelete-submit'           => 'Wegsmieten',
 'filedelete-success'          => "'''$1''' wegsmeten.",
-'filedelete-success-old'      => '<span class="plainlinks">De Version vun de Datei \'\'\'„[[Media:$1|$1]]“\'\'\' vun $2, $3 is wegsmeten worrn.</span>',
+'filedelete-success-old'      => "De Version vun de Datei '''„[[Media:$1|$1]]“''' vun $2, $3 is wegsmeten worrn.",
 'filedelete-nofile'           => "'''$1''' gifft dat nich op {{SITENAME}}.",
 'filedelete-nofile-old'       => "Gifft keen Version vun '''„$1“''' in’t Archiv mit disse Egenschoppen.",
 'filedelete-otherreason'      => 'Annern/tosätzlichen Grund:',
@@ -1650,7 +1650,7 @@ Gah een Sied trüch un versöök dat noch wedder.',
 'protectlogpage'              => 'Sietenschuul-Logbook',
 'protectlogtext'              => 'Dit is en List vun de blockten Sieten. Kiek [[Special:ProtectedPages|Schulte Sieten]] för mehr Informatschonen.',
 'protectedarticle'            => 'Siet $1 schuult',
-'modifiedarticleprotection'   => 'Schuul op „[[:$1]]“ sett',
+'modifiedarticleprotection'   => 'Schuul op „[[$1]]“ sett',
 'unprotectedarticle'          => 'Siet $1 freegeven',
 'protect-title'               => 'Sparren vun „$1“',
 'protect-legend'              => 'Sparr bestätigen',
@@ -1819,7 +1819,7 @@ Ok den Grund för dat Blocken indregen.',
 'ipusubmit'                       => 'Disse Adress freegeven',
 'unblocked'                       => '[[User:$1|$1]] freegeven',
 'unblocked-id'                    => 'Sperr $1 freegeven',
-'ipblocklist'                     => 'List vun blockte IP-Adressen',
+'ipblocklist'                     => 'List vun blockte IP-Adressen un Brukernaams',
 'ipblocklist-legend'              => 'Blockten Bruker finnen',
 'ipblocklist-username'            => 'Brukernaam oder IP-Adress:',
 'ipblocklist-submit'              => 'Söken',
@@ -1922,8 +1922,8 @@ Diskuschoonssiet nich, vun wegen dat dat dor al ene Siet mit dissen Titel gifft.
 'movepage-page-moved'     => 'De Siet „$1“ is nu schaven na „$2“.',
 'movepage-page-unmoved'   => 'De Siet „$1“ kunn nich na „$2“ schaven warrn.',
 'movepage-max-pages'      => 'De Maximaltall vun $1 {{PLURAL:$1|Siet|Sieden}} is schaven. All de annern Sieden warrt nich automaatsch schaven.',
-'1movedto2'               => '[[:$1]] is nu na [[:$2]] verschaven.',
-'1movedto2_redir'         => '[[:$1]] is nu na [[:$2]] verschaven un hett den olen Redirect överschreven.',
+'1movedto2'               => '[[$1]] is nu na [[$2]] verschaven.',
+'1movedto2_redir'         => '[[$1]] is nu na [[$2]] verschaven un hett den olen Redirect överschreven.',
 'movelogpage'             => 'Schuuv-Logbook',
 'movelogpagetext'         => 'Dit is ene List vun all schavene Sieden.',
 'movereason'              => 'Grund',
@@ -2006,7 +2006,7 @@ All Transwiki-Import-Akschonen staht later ok in dat [[Special:Log/import|Import
 # Import log
 'importlogpage'                    => 'Import-Logbook',
 'importlogpagetext'                => 'Administrativen Import vun Sieden mit Versionsgeschicht vun annere Wikis.',
-'import-logentry-upload'           => 'hett „[[:$1]]“ ut Datei importeert',
+'import-logentry-upload'           => 'hett „[[$1]]“ ut Datei importeert',
 'import-logentry-upload-detail'    => '{{PLURAL:$1|ene Version|$1 Versionen}}',
 'import-logentry-interwiki'        => 'hett „[[$1]]“ importeert (Transwiki)',
 'import-logentry-interwiki-detail' => '{{PLURAL:$1|ene Version|$1 Versionen}} vun $2',
@@ -2127,9 +2127,10 @@ All Transwiki-Import-Akschonen staht later ok in dat [[Special:Log/import|Import
 'markedaspatrollederror-noautopatrol' => 'Du kannst de Saken, de du sülvst ännert hest, nich as nakeken marken.',
 
 # Patrol log
-'patrol-log-page' => 'Nakiek-Logbook',
-'patrol-log-line' => '$1 vun $2 as nakeken markt $3',
-'patrol-log-auto' => '(automaatsch)',
+'patrol-log-page'   => 'Nakiek-Logbook',
+'patrol-log-header' => 'Dit is dat Patrolleer-Logbook.',
+'patrol-log-line'   => '$1 vun $2 as nakeken markt $3',
+'patrol-log-auto'   => '(automaatsch)',
 
 # Image deletion
 'deletedrevision'                 => 'Löschte ole Version $1',
@@ -2501,9 +2502,6 @@ $1
 Wist du de Siet würklich nee anleggen?",
 'recreate'            => 'wedder nee anleggen',
 
-# HTML dump
-'redirectingto' => 'Redirect sett na [[:$1]]...',
-
 # action=purge
 'confirm_purge'        => 'Den Cache vun disse Siet leddig maken?
 
@@ -2537,7 +2535,7 @@ $1',
 # Auto-summaries
 'autosumm-blank'   => 'Siet leddig maakt',
 'autosumm-replace' => 'Siet leddig maakt un ‚$1‘ rinschreven',
-'autoredircomment' => 'Redirect sett na [[:$1]]',
+'autoredircomment' => 'Redirect sett na [[$1]]',
 'autosumm-new'     => 'Ne’e Siet: ‚$1‘',
 
 # Live preview

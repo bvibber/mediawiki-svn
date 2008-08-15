@@ -1044,8 +1044,8 @@ Chit mî-chông phìn-kiûn phiên-cho '''\$5'''-chhṳ, kok-chhṳ phiên-siá 
 'sessionfailure'              => 'Ngì-ke tên-ngi̍p sṳ-fû yû mun-thì, vi-liáu fòng-chṳ́ sêu-sit pûn làn-chiet, pún-chhṳ chhâu-chok yí-kîn chhí-sêu, chhiáng-on "song-yit-chông" chhùng-sîn chai-ngi̍p.',
 'protectlogpage'              => 'Pó-fu ngit-ki',
 'protectlogtext'              => 'Ha-mien he vùn-chông só-thin lâu chhí-sêu só-thin ke lie̍t-péu. Chhiáng chhâm-kháu [[Special:ProtectedPages|Pó-fu vùn-chông chhîn-tân]] yî-khi̍p kiám-sṳ tông-chhièn chin-hàng ke vùn-chông pó-fu.',
-'protectedarticle'            => 'Yí-kîn pó-fu "[[:$1]]"',
-'unprotectedarticle'          => 'yí-kîn kié-chhù pó-fu "[[:$1]]"',
+'protectedarticle'            => 'Yí-kîn pó-fu "[[$1]]"',
+'unprotectedarticle'          => 'yí-kîn kié-chhù pó-fu "[[$1]]"',
 'protect-title'               => 'Chang-chhai pó-fu "$1"',
 'protect-legend'              => 'Khok-ngin pó-fu',
 'protectcomment'              => 'Pó-fu ke ngièn-yîn',
@@ -1254,8 +1254,8 @@ chhiáng chhai hàng-thung chṳ̂-chhièn siên liáu-kié khì-thâ khó-nèn 
 'talkexists'              => "'''Hong-mien pún-sṳ̂n yì-thung sṳ̀n-kûng, than-he yù-yî sîn phêu-thì hâ yí-kîn yû tui-fa-hong chhùn-chhai, só-yî tui-fa-hong vù-fap yì-thung. Chhiáng sú-kûng ha̍p-phîn lióng-ke hong-mien'''.",
 'movedto'                 => 'yì-thung to',
 'movetalk'                => 'Chhiáng thùng-sṳ̀ yì-thung tui-fa-chông',
-'1movedto2'               => '[[:$1]] yì-thung to [[:$2]]',
-'1movedto2_redir'         => '[[:$1]] theu-ko chhûng-thin-hiong yì-thung to [[:$2]]',
+'1movedto2'               => '[[$1]] yì-thung to [[$2]]',
+'1movedto2_redir'         => '[[$1]] theu-ko chhûng-thin-hiong yì-thung to [[$2]]',
 'movelogpage'             => 'Yì-thung ngit-ki',
 'movelogpagetext'         => 'Yî-ha he yí-kîn yì-thung ke vùn-chông chhîn-tân.',
 'movereason'              => 'Ngièn-yîn',
@@ -1546,9 +1546,6 @@ Kó-yèn ngì *mò-yû* thì-chhut liá-ke chhiáng-khiù,  chhiáng put-yeu ti�
 Chhiáng chhai chhùng-sîn kien-chho vùn-chông chhièn sâm-sṳ̂.",
 'recreate'            => 'Chhùng-kien',
 
-# HTML dump
-'redirectingto' => 'Chhùng-thin-hiong to [[:$1]]...',
-
 # action=purge
 'confirm_purge'        => 'Chhîn-chhù pún-chông chhòng-chhùn？
 
@@ -1580,7 +1577,7 @@ $1',
 # Auto-summaries
 'autosumm-blank'   => 'Chhù-chhîn só-yû ke hong-mien nui-yùng',
 'autosumm-replace' => "Chang-chhai chiông hong-mien thi-von sṳ̀n-vì '$1'",
-'autoredircomment' => 'Chang-chhai chhûng-thin hiong to [[:$1]]',
+'autoredircomment' => 'Chang-chhai chhûng-thin hiong to [[$1]]',
 'autosumm-new'     => 'Sîn hong-mien: $1',
 
 # Size units

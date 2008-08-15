@@ -4,21 +4,21 @@
  * @ingroup Language
  * @file
  *
+ * @author Agurzil
+ * @author Alnokta
+ * @author Chaos
+ * @author Gharbeia
+ * @author Jak
+ * @author Khaledhosny
  * @author Meno25
  * @author Mido
- * @author Alnokta
- * @author OsamaK
- * @author Gharbeia
- * @author Khaledhosny
- * @author Agurzil
  * @author Mimouni
- * @author ترجمان05
- * @author Tarawneh
- * @author Chaos
- * @author לערי ריינהארט
- * @author Jak
- * @author عصام بايزيدي
+ * @author OsamaK
  * @author Oxydo
+ * @author Tarawneh
+ * @author לערי ריינהארט
+ * @author ترجمان05
+ * @author عصام بايزيدي
  */
 
 $linkPrefixExtension = true;
@@ -376,7 +376,7 @@ $imageFiles = array(
 
 $messages = array(
 # User preference toggles
-'tog-underline'               => 'ضع خطًا تحت الوصلات:',
+'tog-underline'               => 'ضع خطا تحت الوصلات:',
 'tog-highlightbroken'         => 'أأظهر الوصلات المعطوبة <a href="" class="new">هكذا</a> (البديل: كهذا<a href="" class="internal">؟</a>).',
 'tog-justify'                 => 'ساوِ الفقرات',
 'tog-hideminor'               => 'أخف التعديلات الطفيفة في أحدث التغييرات',
@@ -1620,7 +1620,7 @@ PICT # misc.
 'filedelete-comment'          => 'السبب للحذف:',
 'filedelete-submit'           => 'حذف',
 'filedelete-success'          => "'''$1''' تم حذفه.",
-'filedelete-success-old'      => '<span class="plainlinks">نسخة \'\'\'[[Media:$1|$1]]\'\'\' بتاريخ $3، $2 تم حذفها.</span>',
+'filedelete-success-old'      => "نسخة '''[[Media:$1|$1]]''' بتاريخ $3، $2 تم حذفها.",
 'filedelete-nofile'           => "'''$1''' غير موجود في {{SITENAME}}.",
 'filedelete-nofile-old'       => "لا توجد نسخة مؤرشفة من '''$1''' بالعناصر المحددة.",
 'filedelete-otherreason'      => 'سبب إضافي/آخر:',
@@ -1735,6 +1735,7 @@ PICT # misc.
 'deadendpagestext'        => 'الصفحات التالية لا تصل إلى صفحات أخرى في {{SITENAME}}.',
 'protectedpages'          => 'صفحات محمية',
 'protectedpages-indef'    => 'عمليات الحماية غير المحددة فقط',
+'protectedpages-cascade'  => 'الحماية المضمنة فقط',
 'protectedpagestext'      => 'الصفحات التالية محمية من النقل أو التعديل',
 'protectedpagesempty'     => 'لا توجد صفحات محمية حاليا بهذه المحددات.',
 'protectedtitles'         => 'عناوين محمية',
@@ -1966,9 +1967,9 @@ $NEWPAGE
 'protectlogpage'              => 'سجل الحماية',
 'protectlogtext'              => 'بالأسفل قائمة بالصفحات التي تمت حمايتها أو إزالة الحماية عنها.
 انظر [[Special:ProtectedPages|قائمة الصفحات المحمية]] لقائمة بعمليات حماية الصفحات المفعلة حاليا.',
-'protectedarticle'            => 'حمى "[[:$1]]"',
-'modifiedarticleprotection'   => 'غير مستوى الحماية ل"[[:$1]]"',
-'unprotectedarticle'          => 'أزال حماية [[:$1]]',
+'protectedarticle'            => 'حمى "[[$1]]"',
+'modifiedarticleprotection'   => 'غير مستوى الحماية ل"[[$1]]"',
+'unprotectedarticle'          => 'أزال حماية [[$1]]',
 'protect-title'               => 'ضبط مستوى الحماية ل"$1"',
 'protect-legend'              => 'تأكيد الحماية',
 'protectcomment'              => 'تعليق:',
@@ -2259,8 +2260,8 @@ $1',
 'movepage-page-moved'     => 'تم نقل الصفحة $1 إلى $2.',
 'movepage-page-unmoved'   => 'لم يمكن نقل الصفحة $1 إلى $2.',
 'movepage-max-pages'      => 'الحد الأقصى $1 {{PLURAL:$1|صفحة|صفحة}} تم نقله ولن يتم نقل المزيد تلقائيا.',
-'1movedto2'               => '[[:$1]] تم نقلها إلى [[:$2]]',
-'1movedto2_redir'         => '[[:$1]] تم نقلها إلى [[:$2]] فوق التحويلة',
+'1movedto2'               => '[[$1]] تم نقلها إلى [[$2]]',
+'1movedto2_redir'         => '[[$1]] تم نقلها إلى [[$2]] فوق التحويلة',
 'movelogpage'             => 'سجل النقل',
 'movelogpagetext'         => 'بالأسفل قائمة بالصفحات التي تم نقلها.',
 'movereason'              => 'السبب:',
@@ -2328,7 +2329,7 @@ $1',
 'importtext'                 => 'من فضلك صدر الملف من الويكي المصدر باستخدام [[Special:Export|أداة الاستيراد]].
 احفظها على حاسوبك ثم ارفعها هنا.',
 'importstart'                => 'استيراد صفحات...',
-'import-revision-count'      => '{{PLURAL:$1|مراجعة واحدة|مراجعة}} $1',
+'import-revision-count'      => '$1 {{PLURAL:$1|مراجعة|مراجعة}}',
 'importnopages'              => 'لا صفحات للاستيراد',
 'importfailed'               => 'فشل الاستيراد: <nowiki>$1</nowiki>',
 'importunknownsource'        => 'نوع مصدر استيراد مجهول',
@@ -2353,7 +2354,7 @@ $1',
 # Import log
 'importlogpage'                    => 'سجل الاستيراد',
 'importlogpagetext'                => 'عمليات الاستيراد الإدارية للصفحات مع تاريخ التعديل من ويكيات أخرى.',
-'import-logentry-upload'           => 'استورد [[:$1]] بواسطة رفع ملف',
+'import-logentry-upload'           => 'استورد [[$1]] بواسطة رفع ملف',
 'import-logentry-upload-detail'    => '$1 {{PLURAL:$1|مراجعة واحدة|مراجعة}}',
 'import-logentry-interwiki'        => 'استورد عبر الويكي $1',
 'import-logentry-interwiki-detail' => '$1 {{PLURAL:$1|مراجعة واحدة|مراجعة}} من $2',
@@ -2917,9 +2918,6 @@ $1
 
 'unit-pixel' => 'بك',
 
-# HTML dump
-'redirectingto' => 'جاري التحويل إلى [[:$1]]...',
-
 # action=purge
 'confirm_purge'        => 'امسح مختزن هذه الصفحة؟
 
@@ -2957,7 +2955,7 @@ $1',
 # Auto-summaries
 'autosumm-blank'   => 'إزالة كل المحتوى من الصفحة',
 'autosumm-replace' => "استبدال الصفحة ب'$1'",
-'autoredircomment' => 'تحويل إلى [[:$1]]',
+'autoredircomment' => 'تحويل إلى [[$1]]',
 'autosumm-new'     => 'صفحة جديدة: $1',
 
 # Size units

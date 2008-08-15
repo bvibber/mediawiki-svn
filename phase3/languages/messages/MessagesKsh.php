@@ -4,8 +4,8 @@
  * @ingroup Language
  * @file
  *
- * @author Purodha
  * @author Caesius noh en Idee vum Manes
+ * @author Purodha
  */
 
 /**
@@ -342,6 +342,7 @@ Dat es och all op Änglesch:
 'versionrequired'     => 'De Version $1 vun MediaWiki Soffwär es nüdich',
 'versionrequiredtext' => 'De Version $1 vun MediaWiki Soffwär es nüdich, öm die Sigg hee bruche ze künne. Süch op [[Special:Version|de Versionssigg]], wat mer hee för ene Soffwärstand han.',
 
+'ok'                      => 'Jot!',
 'retrievedfrom'           => 'Die Sigg hee stamp us „$1“.',
 'youhavenewmessages'      => 'Do häs $1 ($2).',
 'newmessageslink'         => 'neu Metdeilunge op Dinger Klaafsigg',
@@ -499,7 +500,7 @@ Denk dran, Do künnts Der [[Special:Preferences|Ding Enstellunge hee op de {{SIT
 'youremail'                  => 'E-Mail *',
 'username'                   => 'Metmaacher Name:',
 'uid'                        => 'Metmaacher Nommer:',
-'prefs-memberingroups'       => 'Bes en {{PLURAL:$1|de Metmaacherjrupp|<strong>$1</strong> Metmaacherjruppe|keijn Metmaacherjruppe}}',
+'prefs-memberingroups'       => 'Bes en {{PLURAL:$1|de Metmaacherjrupp:|<strong>$1</strong> Metmaacherjruppe:|keijn Metmaacherjruppe.}}',
 'yourrealname'               => 'Dinge richtije Name *',
 'yourlanguage'               => 'Die Sproch, die et Wiki kalle soll:',
 'yourvariant'                => 'Ding Variant',
@@ -639,25 +640,25 @@ Waat e Wielsche, ih dat De et widder versöhks.',
 'summary-preview'                  => 'Vör-Aansich vun „Koot Zosammejefass, Quell“',
 'subject-preview'                  => 'Vör-Aansich vun de Üvverschreff',
 'blockedtitle'                     => 'Dä Metmaacher es jesperrt',
-'blockedtext'                      => '<big>\'\'\'Dinge Metmaacher-Name oder IP Adress es vun „$1“ jesperrt woode.\'\'\'</big>
+'blockedtext'                      => "<big>'''Dinge Metmaacher-Name oder IP Adress es vun „\$1“ jesperrt woode.'''</big>
 
-Als Jrund es enjedrage: „\'\'$2\'\'“
+Als Jrund es enjedrage: „''\$2''“
 
 Do kanns hee em Wiki immer noch lesse. Do sühß ävver di Sigg hee, wann De op rude Links klicks, neu Sigge aanlääje, odder Sigge ändere wells, denn doför bes De jetz jesperrt.
 
-Do kanns met $1 oder enem andere [[{{MediaWiki:Grouppage-sysop}}|Wiki-Köbes]] üvver dat Sperre schwaade, wann De wells.
-Do kanns ävver nor dann „\'\'E-Mail aan dä Metmaacher\'\'“ aanwende, wann De ald en E-Mail Adress en Dinge [[Special:Preferences|Enstellunge]] enjedrage un freijejovve häs un wann et E-mail schecke nit metjesperrt es.
+Do kanns met \$1 oder enem andere [[{{MediaWiki:Grouppage-sysop}}|Wiki-Köbes]] üvver dat Sperre schwaade, wann De wells.
+Do kanns ävver nor dann „''E-Mail aan dä Metmaacher''“ aanwende, wann De ald en E-Mail Adress en Dinge [[Special:Preferences|Enstellunge]] enjedrage un freijejovve häs un wann et E-mail schecke nit metjesperrt es.
 
 Dun en Ding Aanfroge nenne:
-* Dä Wiki-Köbeß, dä jesperrt hät: $1
-* Der Jrond för et Sperre: $2
-* Da wood jesperrt: $8
-* De Sperr soll loufe bes: $6
-* De Nommer vun dä Sperr: #$5
-* Ding IP-Adress is jetz: $3
-* Di Sperr es wäje odde jäje: $7
+* Dä Wiki-Köbeß, dä jesperrt hät: \$1
+* Der Jrond för et Sperre: \$2
+* Da wood jesperrt: \$8
+* De Sperr soll loufe bes: \$6
+* De Nommer vun dä Sperr: #\$5
+* Ding IP-Adress is jetz: \$3
+* Di Sperr es wäje odde jäje: \$7
 
-Do kanns och noch en et <span class="plainlinks">[{{fullurl:Special:IPBlockList|&action=search&limit=&ip=$3}}$5 Logboch met de Sperre ]</span> loore.',
+Do kanns och noch en et <span class=\"plainlinks\">[{{fullurl:Special:IPBlockList|&action=search&limit=&ip=%23}}\$5 Logboch met de Sperre]</span> loore.",
 'autoblockedtext'                  => "<big>'''Ding IP Adress es automattesch jesperrt woode.'''</big>
 <br />
 '''Se wor vun enem Metmaacher jebruch woode, dä vun „\$1“ jesperrt woode es.'''
@@ -678,7 +679,7 @@ Dun en Ding Aanfroge nenne:
 * Ding IP-Adress is jetz: \$3
 * Di Sperr es wäje odde jäje: \$7
 
-Do kanns och noch en et <span class=\"plainlinks\">[{{fullurl:Special:IPBlockList|&action=search&limit=&ip=%23}}\$5 Logboch met de Sperre ]</span> loore.",
+Do kanns och noch en et <span class=\"plainlinks\">[{{fullurl:Special:IPBlockList|&action=search&limit=&ip=%23}}\$5 Logboch met de Sperre]</span> loore.",
 'blockednoreason'                  => 'Keine Aanlass aanjejovve',
 'blockedoriginalsource'            => 'Dä orjenal Wiki Tex vun dä Sigg „<strong>$1</strong>“ steiht hee drunger:',
 'blockededitsource'                => 'Dä Wiki Tex vun <strong>Dinge Änderunge</strong> aan dä Sigg „<strong>$1</strong>“ steiht hee drunger:',
@@ -917,6 +918,8 @@ dem Wiki singe Installation dat anders fassjelaht woode es.',
 'revdelete-submit'            => 'Op de aanjekrützte Version aanwende',
 'revdelete-logentry'          => 'Zojang zo de Versione verändert för „[[$1]]“',
 'logdelete-logentry'          => '„[[$1]]“ verstoche udder widder seeschba jemaat',
+'revdelete-success'           => "'''De Version woot verstoche odder seeschba jemaat.'''",
+'logdelete-success'           => "'''Dä Enndraach em Logboch woot verstoche odder seeschba jemaat.'''",
 'revdel-restore'              => 'Versteische udder Seeschba maache',
 'pagehist'                    => 'Älldere Versione',
 'deletedhist'                 => 'Fottjeschmesse Versione',
@@ -928,8 +931,10 @@ dem Wiki singe Installation dat anders fassjelaht woode es.',
 'revdelete-hid'               => '$1 verstoche',
 'revdelete-unhid'             => '$1 weder seeschbaa jemaat',
 'revdelete-log-message'       => 'hät för {{PLURAL:$1|eij Version|$2 Versione|nix}} $1',
+'logdelete-log-message'       => '$1 för {{PLURAL:$2|eine Endraach|$2 Endräch|keine Endraach}} em Logbooch',
 
 # Suppression log
+'suppressionlog'     => 'Et Logboch fum Versteiche',
 'suppressionlogtext' => 'Hee noh kütt et Logboch fum Versteiche, woh Versione fun Sigge, Zosammefassunge, Quelle, Metmaachername un Metmaacher-Sperre ze fenge sin, di fun de Oure vun de Öffentleschkeit, un och fun de Wiki-Köbesse verstoche woodte, udder widder zeröck op nommaal jebraat woodte.',
 
 # History merging
@@ -1379,6 +1384,9 @@ Velleich probees De et och zo en Zick, wo winnijer loss es.',
 'filehist-comment'               => 'Aanmerkung',
 'imagelinks'                     => 'Jebruch en',
 'linkstoimage'                   => 'Hee {{PLURAL:$1|kütt di Sigg|kumme de Sigge|sin keij Sigge}}, die op die Datei linke dun:',
+'linkstoimage-more'              => 'Mieh wie {{PLURAL:$1|ein Sigg link|$1 Sigge linke|kein Sigg link}} op di Datei.
+De Liß hee dronger zeisch nur {{PLURAL:$1|der eetse Link|de eetste $1 Links|keine Link}} op di Datei.
+Mer ävver han och en [[Special:WhatLinksHere/$2|Komplätte Leß]].',
 'nolinkstoimage'                 => 'Nix link op hee die Datei.',
 'morelinkstoimage'               => 'Belohr Der [[Special:WhatLinksHere/$1|de Links]] op di Datei.',
 'redirectstofile'                => 'Di {{PLURAL:$1|Datei heenoh leid|$1 Dateie leide}} op he di Datei öm:',
@@ -1397,19 +1405,24 @@ Velleich probees De et och zo en Zick, wo winnijer loss es.',
 'imagepage-searchdupe'           => 'Sök noh dubelte Dateie',
 
 # File reversion
-'filerevert'         => '„$1“ zerök holle',
-'filerevert-comment' => 'Jrond:',
-'filerevert-submit'  => 'Zeröcknemme',
+'filerevert'                => '„$1“ zerök holle',
+'filerevert-legend'         => 'Datei zeröck holle',
+'filerevert-intro'          => '<span class="plainlinks">Do bes di Datei \'\'\'[[Media:$1|$1]]\'\'\' op di [$4 Version fum $2 öm $3 Uhr] zeröck aam sätze.</span>',
+'filerevert-comment'        => 'Jrond:',
+'filerevert-defaultcomment' => 'Zerök jesaz op di Version fum $1 öm $3 Uhr',
+'filerevert-submit'         => 'Zeröcknemme',
+'filerevert-success'        => '<span class="plainlinks">Di Dattei \'\'\'[[Media:$1|$1]]\'\'\' es jäz op di [$4 Version fum $2 öm $3 Uhr] zerök jesatz.</span>',
+'filerevert-badversion'     => 'Mer han kei Version fun dä Datei för dä aanjejovve Zickpunk.',
 
 # File deletion
 'filedelete'                  => 'Schmieß „$1“ fott',
 'filedelete-legend'           => 'Schmieß de Datei fott',
 'filedelete-intro'            => "Do beß di Datei '''„[[:Media:$1|$1]]“''' am Fottschmieße.",
-'filedelete-intro-old'        => 'Do schmiiß de Version $4 fum $2 öm $3 Uhr fun dä Datei „[[Media:$1|$1]]“ fott.',
+'filedelete-intro-old'        => '<span class="plainlinks">Do schmiiß de Version [$4 fum $2 öm $3 Uhr] fun dä Datei „[[Media:$1|$1]]“ fott.</span>',
 'filedelete-comment'          => 'Der Jrund för et Fottschmieße:',
 'filedelete-submit'           => 'Fottschmieße',
 'filedelete-success'          => "'''„$1“''' es fottjeschmeße.",
-'filedelete-success-old'      => "Fun dä Datei '''„[[:Media:$1|$1]]“''' es jäz di Version fum $2 öm $3 Uhr fottjeschmeße woode.",
+'filedelete-success-old'      => "Fun dä Datei '''„[[Media:$1|$1]]“''' es jäz di Version fum $2 öm $3 Uhr fottjeschmeße woode.",
 'filedelete-nofile'           => "'''„$1“''' jidd_et nit en de {{SITENAME}}.",
 'filedelete-nofile-old'       => "Fun '''„$1“''' ham_mer kein arschiveete Version met dä Eijeschaffte.",
 'filedelete-otherreason'      => 'Ander Jrund oder Zosätzlich:',
@@ -1553,6 +1566,7 @@ kein Saachjrupp dren ze finge.',
 'nopagetext'              => 'Do häss en Sigg aanjovve, di jidd et jaa nit.',
 'pager-newer-n'           => '{{PLURAL:$1|aller neuerste|neuer $1}}',
 'pager-older-n'           => '{{PLURAL:$1|vörrije|vörrije $1}}',
+'suppress'                => 'Versteiche',
 
 # Book sources
 'booksources'               => 'Böcher',
@@ -1771,9 +1785,9 @@ De Neuste Änderung aan dä Sigg es jetz vun däm Metmaacher „[[User:$3|$3]]�
 'sessionfailure'              => "Et jov wall e technisch Problem met Dingem Login. Dröm ha'mer dat us Vörsich jetz nit jemaht, domet mer nit villeich Ding Änderung däm verkihrte Metmaacher ungerjubele. Jangk zeröck un versök et noch ens.",
 'protectlogpage'              => 'Logboch vum Sigge Schötze',
 'protectlogtext'              => 'Hee es de Liss vun de Sigge, die jeschötz oder frei jejovve woode sin.',
-'protectedarticle'            => 'hät de Sigg „[[:$1]]“ jeschötz',
-'modifiedarticleprotection'   => 'hät dä Schoz för die Sigg „[[:$1]]“ jeändert',
-'unprotectedarticle'          => 'hät der Schotz för die Sigg „[[:$1]]“ opjehovve',
+'protectedarticle'            => 'hät de Sigg „[[$1]]“ jeschötz',
+'modifiedarticleprotection'   => 'hät dä Schoz för die Sigg „[[$1]]“ jeändert',
+'unprotectedarticle'          => 'hät der Schotz för die Sigg „[[$1]]“ opjehovve',
 'protect-title'               => 'Sigge Schotz för „$1“ ändere',
 'protect-legend'              => 'Sigg schötze',
 'protectcomment'              => 'Dä Jrund oder Aanlass för et Schötze',
@@ -1867,20 +1881,22 @@ $1',
 'blanknamespace' => '(Atikkele)',
 
 # Contributions
-'contributions' => 'Däm Metmaacher sing Beidräch',
-'mycontris'     => 'ming Beidräch',
-'contribsub2'   => 'För dä Metmaacher: $1 ($2)',
-'nocontribs'    => 'Mer han kein Änderunge jefonge, en de Logböcher, die do passe däte.',
-'uctop'         => ' (Neuste)',
-'month'         => 'un Moohnt:',
-'year'          => 'Beß Johr:',
+'contributions'       => 'Däm Metmaacher sing Beidräch',
+'contributions-title' => 'Beidräsch fum  $1',
+'mycontris'           => 'ming Beidräch',
+'contribsub2'         => 'För dä Metmaacher: $1 ($2)',
+'nocontribs'          => 'Mer han kein Änderunge jefonge, en de Logböcher, die do passe däte.',
+'uctop'               => ' (Neuste)',
+'month'               => 'un Moohnt:',
+'year'                => 'Beß Johr:',
 
-'sp-contributions-newbies'     => 'Nor neu Metmaacher ier Beidräg zeije',
-'sp-contributions-newbies-sub' => 'För neu Metmaacher',
-'sp-contributions-blocklog'    => 'Logboch met Metmaacher-Sperre',
-'sp-contributions-search'      => 'Söök noh Metmaacher ier Beidräg',
-'sp-contributions-username'    => 'Metmaachername odder IP-Address:',
-'sp-contributions-submit'      => 'Sööke',
+'sp-contributions-newbies'       => 'Nor neu Metmaacher ier Beidräg zeije',
+'sp-contributions-newbies-sub'   => 'För neu Metmaacher',
+'sp-contributions-newbies-title' => 'Neu Metmaacher ier Beidräsch',
+'sp-contributions-blocklog'      => 'Logboch met Metmaacher-Sperre',
+'sp-contributions-search'        => 'Söök noh Metmaacher ier Beidräg',
+'sp-contributions-username'      => 'Metmaachername odder IP-Address:',
+'sp-contributions-submit'        => 'Sööke',
 
 # What links here
 'whatlinkshere'            => 'Wat noh hee link',
@@ -1967,7 +1983,7 @@ un och wann De se ändere wells.',
 'contribslink'                    => 'Beidräch',
 'autoblocker'                     => 'Automatich jesperrt. Ding IP_Adress wood vör kootem vun däm Metmaacher „[[User:$1|$1]]“ jebruch. Dä es jesperrt woode wäje: „<i>$2</i>“',
 'blocklogpage'                    => 'Logboch met Metmaacher-Sperre',
-'blocklogentry'                   => 'hät „[[$1]]“ fö de Zick vun $2 un $3 jesperrt.',
+'blocklogentry'                   => 'hät „[[$1]]“ fö de Zick vun $2 jesperrt. $3',
 'blocklogtext'                    => 'Hee es dat Logboch för et Metmaacher Sperre un Freijevve.
 Automatich jesperrte IP-Adresse sin nit hee, ävver en de [[Special:IPBlockList|{{int:ipblocklist}}]] ze finge.',
 'unblocklogentry'                 => 'Metmaacher „$1“ freijejovve',
@@ -1983,12 +1999,14 @@ Automatich jesperrte IP-Adresse sin nit hee, ävver en de [[Special:IPBlockList|
 'ipb_cant_unblock'                => '<strong>Ene Fähler:</strong> En Sperr met dä Nummer $1 es nit ze finge. Se künnt ald widder freijejovve woode sin.',
 'ipb_blocked_as_range'            => 'Dat jeit nit. De IP-Adress „$1“ es nit tirek jesperrt. Se es ävver en däm jesperrte Bereich „$2“ dren. Die Sperr kam_mer ophevve. Donoh kam_mer och kleiner Aandeile fun däm Bereich widder neu sperre. Di Adress alleins kam_mer ävver nit freijevve.',
 'ip_range_invalid'                => 'Dä Bereich vun IP_Adresse es nit en Oodnung.',
-'proxyblocker'                    => 'Proxy_Blocker',
+'blockme'                         => 'Open_Proxy_Blocker',
+'proxyblocker'                    => 'Open_Proxy_Blocker',
 'proxyblocker-disabled'           => 'Di Funxjon es ußjeschalldt.',
 'proxyblockreason'                => 'Unger Ding IP_Adress läuf ene offe Proxy.
 Dröm kanns De hee em Wiki nix maache.
-Schwaad met Dingem System-Minsch oder Netzwerk-Techniker (ISP Internet Service Provider) un verzäll dänne vun däm Risiko för ehr Secherheit!',
-'proxyblocksuccess'               => 'Fäädich',
+Schwaad met Dingem System-Minsch udder Netzwerk-Techniker udder ISP (<i lang="en">Internet Service Provider</i>)
+un verzäll dänne vun däm ärrje Risiko för de Secherheit fun dänne ehr Rääschnere!',
+'proxyblocksuccess'               => 'Jedonn.',
 'sorbsreason'                     => 'Ding IP-Adress weed en de DNSbl als ene offe Proxy jeliss. Schwaad met Dingem System-Minsch oder Netzwerk-Techniker (ISP Internet Service Provider) drüvver, un verzäll dänne vun däm Risiko för ehr Secherheit!',
 'sorbs_create_account_reason'     => 'Ding IP-Adress weed en de DNSbl als ene offe Proxy jeliss. Dröm kanns De Dich hee em Wiki nit als ene neue Metmaacher aanmelde. Schwaad met Dingem System-Minsch oder Netzwerk-Techniker oder (ISP Internet Service Provider) drüvver, un verzäll dänne vun däm Risiko för ehr Secherheit!',
 
@@ -2051,8 +2069,8 @@ En dänne Fäll, muss De Der dä Enhald vun dä Klaafsigge selvs vörnemme, un e
 'movepage-page-moved'     => 'Di eejemoolijje Sigg „$1“ es jëz op „$2“ ömjenannt.',
 'movepage-page-unmoved'   => 'Mer kůnnte di Sigg „$1“ nit op „$2“ ömnënne.',
 'movepage-max-pages'      => 'Mer han jëtz {{PLURAL:$1|ëijn Sigg|$1 Sigge|kein Sigg}} ömjenanndt. Mieh jeiht nit automatėsch.',
-'1movedto2'               => 'hät de Sigg vun „[[:$1]]“ en „[[:$2]]“ ömjenannt.',
-'1movedto2_redir'         => 'hät de Sigg vun „[[:$1]]“ en „[[:$2]]“ ömjenannt un doför de ahl Ömleitungs-Sigg fottjeschmesse.',
+'1movedto2'               => 'hät de Sigg vun „[[$1]]“ en „[[$2]]“ ömjenannt.',
+'1movedto2_redir'         => 'hät de Sigg vun „[[$1]]“ en „[[$2]]“ ömjenannt un doför de ahl Ömleitungs-Sigg fottjeschmesse.',
 'movelogpage'             => 'Logboch vum Sigge Ömnenne',
 'movelogpagetext'         => 'Hee sin de Neuste ömjenannte Sigge opjeliss, un wä et jedon hät.',
 'movereason'              => 'Aanlass:',
@@ -2144,7 +2162,7 @@ Dat ahle Versione Huhlade es avjeschalt, un es nit müjjelich.',
 # Import log
 'importlogpage'                    => 'Logboch met emporteerte Sigge',
 'importlogpagetext'                => 'Sigge met ehre Versione vun ander Wikis emporteere.',
-'import-logentry-upload'           => '„[[:$1]]“ emporteet fun enne huhjelade Dattei',
+'import-logentry-upload'           => '„[[$1]]“ emporteet fun enne huhjelade Dattei',
 'import-logentry-upload-detail'    => '{{PLURAL:$1|ein Version|$1 Versione|kein Version}} emporteet',
 'import-logentry-interwiki'        => 'hät tirek vum ander Wiki emporteet: „$1“',
 'import-logentry-interwiki-detail' => '{{PLURAL:$1|ein Version|$1 Versione|kein Version}} vun „$2“',
@@ -2215,16 +2233,7 @@ Dat ahle Versione Huhlade es avjeschalt, un es nit müjjelich.',
 'standard.css'    => '/* CSS hee aan dä Stell wirrek nur op de Ovverflääsch "Klassesch" */',
 'nostalgia.css'   => '/* CSS hee aan dä Stell wirrek nur op de Ovverflääsch "Nostaljesch" */',
 'cologneblue.css' => '/* CSS hee aan dä Stell wirrek nur op de Ovverflääsch "Kölsch Blau" */',
-'monobook.css'    => '/* CSS hee aan dä Stell wirrek nur op de Ovverflääsch "Monobook" */
-
-/* Mer welle do kein Kleinboochshtave han */
-.portlet h5,
-.portlet h6,
-#p-personal ul,
-#p-cactions li a
-{
-  text-transform: none;
-}',
+'monobook.css'    => '/* CSS hee aan dä Stell wirrek nur op de Ovverflääsch "Monobook" */',
 'myskin.css'      => '/* CSS hee aan dä Stell wirrek nur op de Ovverflääsch "Ming Skin" */',
 'chick.css'       => '/* CSS hee aan dä Stell wirrek nur op de Ovverflääsch "Höhnsche" */',
 'simple.css'      => '/* CSS hee aan dä Stell wirrek nur op de Ovverflääsch "Eijfach" */',
@@ -2329,6 +2338,8 @@ $1',
 'newimages'             => 'Belder, Tön, uew. als Jalerie',
 'imagelisttext'         => 'Hee küt en Liss vun <strong>$1</strong> Datei{{PLURAL:$1||e}}, zoteet $2.',
 'newimages-summary'     => 'Hee die Sigg zeig die zoletz huhjeladene Belder un Dateie aan.',
+'newimages-legend'      => 'Ußwähle',
+'newimages-label'       => 'Dä Dattei ier Name udder e Stöck dofun:',
 'showhidebots'          => '(Bots $1)',
 'noimages'              => 'Kein Dateie jefunge.',
 'ilsubmit'              => 'Sök',
@@ -2367,10 +2378,15 @@ Donoh kumme, en däsellve Reih, Links op Sigge wo dat Beld trotz dämm jenehm e�
 'exif-photometricinterpretation'   => 'Zosammesetzung fun Pixelle',
 'exif-orientation'                 => 'Ußrechtung fun de Kammera',
 'exif-samplesperpixel'             => 'Aanzahl Färvaandeile',
+'exif-planarconfiguration'         => 'De Ußreschtung udder Zusammestellung fun de Date',
 'exif-ycbcrsubsampling'            => 'Ongerafftastongsroht fun Y bes C',
 'exif-ycbcrpositioning'            => 'Y un C Posizjioneerung',
 'exif-xresolution'                 => 'Oplösung fun Lenks noh Räähß',
 'exif-yresolution'                 => 'Oplösung fun Bovve noh Onge',
+'exif-resolutionunit'              => 'De Moßeinheit för de Oplösung en X- un Y-Reschtong',
+'exif-stripoffsets'                => 'Der Aanfang fun de Date fun däm Beld en dä Dattei',
+'exif-rowsperstrip'                => 'De Aanzahl Reije en jedem Striefe',
+'exif-stripbytecounts'             => 'De Aanzahl Bytes en jedem kompremierte Striefe',
 'exif-jpeginterchangeformat'       => 'Bytes Affshtand zom JPEG SOI',
 'exif-jpeginterchangeformatlength' => 'Bytes aan JPEG-Date',
 'exif-transferfunction'            => 'Övverdrarongsfungxjohn',
@@ -2405,25 +2421,43 @@ Donoh kumme, en däsellve Reih, Links op Sigge wo dat Beld trotz dämm jenehm e�
 'exif-exposureprogram'             => 'Beleeshtungsprojramm',
 'exif-spectralsensitivity'         => 'Emfendleschkeit för et Färvespäktrom',
 'exif-isospeedratings'             => 'Dem Fillem odder Sensor sing Emfindlischkeit (als ISO Wäät)',
+'exif-oecf'                        => 'Dä Leesch-Elletronesche Ömrechnungsfaktor',
 'exif-shutterspeedvalue'           => 'Jeschwendieschkeit fum Verschoß bem Beleeschte',
 'exif-aperturevalue'               => 'De Blend iere Wäät',
 'exif-brightnessvalue'             => 'De Hellishkeit',
+'exif-exposurebiasvalue'           => 'Förjejovve Beleeschtung',
+'exif-maxaperturevalue'            => 'De Jrözte Blend ier Öffnong',
 'exif-subjectdistance'             => 'Affshtand nohm Motif',
+'exif-meteringmode'                => 'De Metood ze Messe',
 'exif-lightsource'                 => 'Leechquell',
 'exif-flash'                       => 'Bletz',
 'exif-focallength'                 => 'De Brennwigde fun de Lenß',
 'exif-subjectarea'                 => 'Em Motiv singe Bereich',
 'exif-flashenergy'                 => 'Dem Bletz sing Ennäjii',
+'exif-spatialfrequencyresponse'    => 'De Kamera ier Winkel-Oplösung fun de Oots-Frequenz',
+'exif-focalplanexresolution'       => 'De Kammera ierem Sensor sing räächs-links-Oplösung',
+'exif-focalplaneyresolution'       => 'De Kammera ierem Sensor sing bovve-unge-Oplösung',
+'exif-focalplaneresolutionunit'    => 'De Oplösung fum Sensor ier Moß-Einheit',
 'exif-subjectlocation'             => 'Dä Plaz fun dämm Motif',
+'exif-exposureindex'               => 'Beleeschtungs-Index',
+'exif-sensingmethod'               => 'De Metood, woh der Kammera ier Sensor met messe deit',
 'exif-filesource'                  => 'Dä Datei ier Quell',
+'exif-scenetype'                   => 'Dä Tüp för de Darstellung udder der Szenopbou',
+'exif-cfapattern'                  => 'CFA-Muster',
+'exif-customrendered'              => 'Däm Maacher sing eije Aat, et Beld ze beärrbeide',
+'exif-exposuremode'                => 'Beleeschtungs-Aat',
 'exif-whitebalance'                => 'Wießaffjleich',
 'exif-digitalzoomratio'            => 'Dijitalzoom',
 'exif-focallengthin35mmfilm'       => 'De Brennwigde op 35 Millimeeter Kleinbeldfillem betrocke',
+'exif-scenecapturetype'            => 'De Aat Opnahm',
+'exif-gaincontrol'                 => 'Aanpassung fun de Hällischkeit',
 'exif-contrast'                    => 'der Kontraß',
 'exif-saturation'                  => 'de Färfsättijung',
-'exif-sharpness'                   => 'de Beldschärf',
+'exif-sharpness'                   => 'De Beldschärf',
+'exif-devicesettingdescription'    => 'Dem Jerät sing Enstellong',
 'exif-subjectdistancerange'        => 'Em Motif singe Affshtandsbereisch',
 'exif-imageuniqueid'               => 'Eindeutije Kännong för dat Beld',
+'exif-gpsversionid'                => 'De Version fum GPS singe Stempel',
 'exif-gpslatituderef'              => 'nöödlesch udder södlesch Breed fum GPS',
 'exif-gpslatitude'                 => 'De Breed om Äädball fum GPS',
 'exif-gpslongituderef'             => 'ösßlesch udder weßlesch Läng fum GPS',
@@ -2469,9 +2503,21 @@ Donoh kumme, en däsellve Reih, Links op Sigge wo dat Beld trotz dämm jenehm e�
 'exif-orientation-7' => 'En Veedelsdriejong jääje der Uhrzeijer un dann links-räähß jespeejelt', # 0th row: right; 0th column: bottom
 'exif-orientation-8' => 'En Veedelsdriejong jääje der Uhrzeijer', # 0th row: left; 0th column: bottom
 
+'exif-planarconfiguration-1' => 'Dat Fomaat es en Stöckscher',
+'exif-planarconfiguration-2' => 'Dat Fomaat es flaach',
+
+'exif-xyresolution-i' => '{{PLURAL:$1|eine Punk|$1 Punkte|keine Punk}} pro Zoll',
+'exif-xyresolution-c' => '{{PLURAL:$1|eine Punk|$1 Punkte|keine Punk}} pro Zenntimeeter',
+
 'exif-componentsconfiguration-0' => 'Jidd_et nit',
 
+'exif-exposureprogram-0' => 'Nit faßjelaat',
 'exif-exposureprogram-1' => 'Vun Hand',
+'exif-exposureprogram-2' => 'Et Standat Projramm',
+'exif-exposureprogram-3' => 'De Automatik noh Zick fun de Öffnung',
+'exif-exposureprogram-4' => 'De Automattik för der Blende-Verschloß',
+'exif-exposureprogram-5' => 'E kreativ Projramm, ußjerescht op en hue Schärfedeefe',
+'exif-exposureprogram-6' => 'E Akßions-Projramm, ußjerescht op en koote Zick för de Beleeschtung',
 'exif-exposureprogram-7' => 'Us de Nöhde en huhkant opjenomme, mem Bleck op Fürre',
 'exif-exposureprogram-8' => 'Landschaff em Querfommaat opjenomme, mem Bleck op der Hengerjrond',
 
@@ -2479,6 +2525,7 @@ Donoh kumme, en däsellve Reih, Links op Sigge wo dat Beld trotz dämm jenehm e�
 
 'exif-meteringmode-0'   => 'Onbikannt',
 'exif-meteringmode-1'   => 'Meddelmääßesch',
+'exif-meteringmode-2'   => 'Op de Medde fum Beld betrocke',
 'exif-meteringmode-3'   => 'Punkmessung',
 'exif-meteringmode-4'   => 'Miehpunkmessung',
 'exif-meteringmode-5'   => 'Muster',
@@ -2487,13 +2534,21 @@ Donoh kumme, en däsellve Reih, Links op Sigge wo dat Beld trotz dämm jenehm e�
 
 'exif-lightsource-0'   => 'Onbikannt',
 'exif-lightsource-1'   => 'Daresleech',
+'exif-lightsource-2'   => 'Leusch fun sellver',
+'exif-lightsource-3'   => 'Jlöh-Lampe-Leesch',
 'exif-lightsource-4'   => 'Bletz',
 'exif-lightsource-9'   => 'Joodt Wedder',
 'exif-lightsource-10'  => 'Wedder met Wolke',
 'exif-lightsource-11'  => 'Schadde',
+'exif-lightsource-12'  => 'Taresleesch — selfs aam leuschte (D 5700–7100 K)',
+'exif-lightsource-13'  => 'Tareswiiß Leesch — selfs aam leuschte (N 4600–5400 K)',
+'exif-lightsource-14'  => 'Kaal Wieß Leesch — selfs aam leuschte (W 3900–4500 K)',
+'exif-lightsource-15'  => 'Wieß Leesch — selfs aam leuschte (WW 3200–3700 K)',
 'exif-lightsource-17'  => 'Standat Leech Tüp A',
 'exif-lightsource-18'  => 'Standat Leech Tüp B',
 'exif-lightsource-19'  => 'Standat Leech Tüp C',
+'exif-lightsource-23'  => 'D50',
+'exif-lightsource-24'  => 'Studio-Kunsleesch noh ISO-Norrem',
 'exif-lightsource-255' => 'Söns en Leechquell',
 
 'exif-focalplaneresolutionunit-2' => 'Zoll',
@@ -2506,12 +2561,30 @@ Donoh kumme, en däsellve Reih, Links op Sigge wo dat Beld trotz dämm jenehm e�
 'exif-sensingmethod-7' => 'Ene trilinejare sequenzjelle Sensor fö Färve',
 'exif-sensingmethod-8' => 'Ene linejare sequenzjelle Sensor fö Färve',
 
+'exif-filesource-3' => 'DSC',
+
+'exif-scenetype-1' => 'Normal — e tirek fotmafeet Beld',
+
+'exif-customrendered-0' => 'Standat — der jewöhnlijje Aflouf',
+'exif-customrendered-1' => 'Eijen — dem Maacher singe Aflouf',
+
+'exif-exposuremode-0' => 'Automattesch Beleeschdt',
+'exif-exposuremode-1' => 'Fun Hand Beleeschtd',
+'exif-exposuremode-2' => 'Beleeshtungsreih',
+
+'exif-whitebalance-0' => 'Automattesche Wiiß-Affjleich',
+'exif-whitebalance-1' => 'Wieß-Affjleisch fun Hand jemaat',
+
 'exif-scenecapturetype-0' => 'Nomaal',
 'exif-scenecapturetype-1' => 'Queerfommaat',
 'exif-scenecapturetype-2' => 'Huhkant',
 'exif-scenecapturetype-3' => 'Et Naakß',
 
 'exif-gaincontrol-0' => 'Nix',
+'exif-gaincontrol-1' => 'E beßje heller',
+'exif-gaincontrol-2' => 'Vill heller',
+'exif-gaincontrol-3' => 'E beßje dungkeler',
+'exif-gaincontrol-4' => 'Vill dungkeler',
 
 'exif-contrast-0' => 'Nomal',
 'exif-contrast-1' => 'Weijsch',
@@ -2531,24 +2604,27 @@ Donoh kumme, en däsellve Reih, Links op Sigge wo dat Beld trotz dämm jenehm e�
 'exif-subjectdistancerange-3' => 'Vun Fähn',
 
 # Pseudotags used for GPSLatitudeRef and GPSDestLatitudeRef
-'exif-gpslatitude-n' => 'Breed nöödlesch',
-'exif-gpslatitude-s' => 'Breed södlesch',
+'exif-gpslatitude-n' => 'Breed nöödlesch noh_m GPS',
+'exif-gpslatitude-s' => 'Breed södlesch noh_m GPS',
 
 # Pseudotags used for GPSLongitudeRef and GPSDestLongitudeRef
-'exif-gpslongitude-e' => 'Läng ößlesch',
-'exif-gpslongitude-w' => 'Läng weßlesch',
+'exif-gpslongitude-e' => 'Läng ößlesch noh_m GPS',
+'exif-gpslongitude-w' => 'Läng weßlesch noh_m GPS',
 
-'exif-gpsmeasuremode-2' => 'Zweidimensjonal Mohß',
-'exif-gpsmeasuremode-3' => 'Dreidimensjonal Mohß',
+'exif-gpsstatus-a' => 'De Messung fum GPS es aam Loufe',
+'exif-gpsstatus-v' => 'Engeropperabilität fun Messunge noh_m GPS',
+
+'exif-gpsmeasuremode-2' => 'Zweidimensjonal Mohß fum GPS',
+'exif-gpsmeasuremode-3' => 'Dreidimensjonal Mohß fum GPS',
 
 # Pseudotags used for GPSSpeedRef and GPSDestDistanceRef
-'exif-gpsspeed-k' => 'Killomeeter en de Shtondt',
-'exif-gpsspeed-m' => 'Miehle en de Shtondt',
-'exif-gpsspeed-n' => 'Knote',
+'exif-gpsspeed-k' => 'Killomeeter en de Shtondt noh_m GPS',
+'exif-gpsspeed-m' => 'Miehle en de Shtondt noh_m GPS',
+'exif-gpsspeed-n' => 'Knote noh_m GPS',
 
 # Pseudotags used for GPSTrackRef, GPSImgDirectionRef and GPSDestBearingRef
-'exif-gpsdirection-t' => 'Wohre Rechtung',
-'exif-gpsdirection-m' => 'Mangneetesche Rechtung',
+'exif-gpsdirection-t' => 'Wohre Rechtung noh_m GPS',
+'exif-gpsdirection-m' => 'Mangneetesche Rechtung noh_m GPS',
 
 # External editor support
 'edit-externally'      => 'Dun de Datei met enem externe Projramm bei Dr om Rechner bearbeide',
@@ -2640,8 +2716,7 @@ Trackbacks för hee di Sigg:<br />
 Wells Do jetz met en neu Version die Sigg widder neu aanläje?',
 'recreate'            => 'Widder neu aanlääje',
 
-# HTML dump
-'redirectingto' => 'Leit öm op: „[[:$1]]“',
+'unit-pixel' => 'px',
 
 # action=purge
 'confirm_purge'        => 'Dä Zweschespeicher för die Sigg fottschmieße?
@@ -2680,11 +2755,14 @@ $1',
 # Auto-summaries
 'autosumm-blank'   => 'Dä janze Enhald vun dä Sigg fottjemaht',
 'autosumm-replace' => "Dä jannze Enhallt fon dä Sigk ußjetuusch: '$1'",
-'autoredircomment' => 'Leit öm op „[[:$1]]“',
+'autoredircomment' => 'Leit öm op „[[$1]]“',
 'autosumm-new'     => 'Neu Sigg: $1',
 
 # Size units
-'size-bytes' => '$1 Bytes',
+'size-bytes'     => '$1 Bytes',
+'size-kilobytes' => '$1 KB',
+'size-megabytes' => '$1 MB',
+'size-gigabytes' => '$1 GB',
 
 # Live preview
 'livepreview-loading' => 'Ben am Lade …',

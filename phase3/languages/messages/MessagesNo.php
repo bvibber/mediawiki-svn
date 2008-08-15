@@ -4,19 +4,19 @@
  * @ingroup Language
  * @file
  *
- * @author Jon Harald Søby
- * @author Kph
- * @author Stigmj
- * @author לערי ריינהארט
- * @author H92
- * @author Eirik
- * @author Jóna Þórunn
- * @author Finnrind
  * @author Boivie
+ * @author Eirik
  * @author EivindJ
- * @author Samuelsen
- * @author Teak
+ * @author Finnrind
+ * @author H92
+ * @author Jon Harald Søby
+ * @author Jóna Þórunn
+ * @author Kph
  * @author Kph-no
+ * @author Samuelsen
+ * @author Stigmj
+ * @author Teak
+ * @author לערי ריינהארט
  */
 
 $skinNames = array(
@@ -1315,7 +1315,7 @@ En [[Special:WhatLinksHere/$2|fullstendig liste]] er tilgjengelig.',
 'filedelete-comment'          => 'Slettingsårsak:',
 'filedelete-submit'           => 'Slett',
 'filedelete-success'          => "'''$1''' ble slettet.",
-'filedelete-success-old'      => '<span class="plainlinks">Versjonen av \'\'\'[[Media:$1|$1]]\'\'\' à $3, $2 ble slettet.</span>',
+'filedelete-success-old'      => "Versjonen av '''[[Media:$1|$1]]''' à $3, $2 ble slettet.",
 'filedelete-nofile'           => "'''$1''' finnes ikke på {{SITENAME}}.",
 'filedelete-nofile-old'       => "Det er ingen arkivert versjon av '''$1''' med de gitte attributtene.",
 'filedelete-otherreason'      => 'Annen/utdypende grunn:',
@@ -1420,6 +1420,7 @@ En side anses om en pekerside om den inneholder en mal som det lenkes til fra [[
 'deadendpagestext'        => 'Følgende sider lenker ikke til andre sider på {{SITENAME}}.',
 'protectedpages'          => 'Låste sider',
 'protectedpages-indef'    => 'Kun beskyttelser på ubestemt tid',
+'protectedpages-cascade'  => 'Kun dypbeskyttelse',
 'protectedpagestext'      => 'Følgende sider er låst for flytting eller redigering',
 'protectedpagesempty'     => 'Ingen sider er for øyeblikket låst med disse paramterne.',
 'protectedtitles'         => 'Beskyttede titler',
@@ -1638,9 +1639,9 @@ Den siste redigeringen ble foretatt av [[User:$3|$3]] ([[User talk:$3|diskusjon]
 'sessionfailure'              => "Det ser ut til å være et problem med innloggingen din, og den ble avbrutt av sikkerhetshensyn. Trykk ''Tilbake'' i nettleseren din, oppdater siden og prøv igjen.",
 'protectlogpage'              => 'Låsingslogg',
 'protectlogtext'              => 'Her er en liste over sider som er blitt beskyttet eller har fått fjernet beskyttelsen. Se [[Special:ProtectedPages|listen over låste sider]] for en liste over nåværende låste sider.',
-'protectedarticle'            => 'låste [[:$1]]',
-'modifiedarticleprotection'   => 'endret beskyttelsesnivå for «[[:$1]]»',
-'unprotectedarticle'          => 'åpnet [[:$1]]',
+'protectedarticle'            => 'låste [[$1]]',
+'modifiedarticleprotection'   => 'endret beskyttelsesnivå for «[[$1]]»',
+'unprotectedarticle'          => 'åpnet [[$1]]',
 'protect-title'               => 'Låser «$1»',
 'protect-legend'              => 'Bekreft låsing',
 'protectcomment'              => 'Kommentar:',
@@ -1905,8 +1906,8 @@ I disse tilfellene er du nødt til å flytte eller flette sammen siden manuelt."
 'movepage-page-moved'     => 'Siden $1 har blitt flyttet til $2.',
 'movepage-page-unmoved'   => 'Siden $1 kunne ikke flyttes til $2.',
 'movepage-max-pages'      => 'Grensen på {{PLURAL:$1|én side|$1 sider}} er nådd; ingen flere sider vil bli flyttet automatisk.',
-'1movedto2'               => '[[:$1]] flyttet til [[:$2]]',
-'1movedto2_redir'         => '[[:$1]] flyttet til [[:$2]] over omdirigeringsside',
+'1movedto2'               => '[[$1]] flyttet til [[$2]]',
+'1movedto2_redir'         => '[[$1]] flyttet til [[$2]] over omdirigeringsside',
 'movelogpage'             => 'Flyttelogg',
 'movelogpagetext'         => 'Her er ei liste over sider som har blitt flyttet.',
 'movereason'              => 'Årsak:',
@@ -1992,7 +1993,7 @@ Besøk [http://translatewiki.net Betawiki] om du ønsker å bidra med oversettel
 # Import log
 'importlogpage'                    => 'Importlogg',
 'importlogpagetext'                => 'Administrativ import av sider med redigeringshistorikk fra andre wikier.',
-'import-logentry-upload'           => 'importerte [[:$1]] ved opplasting',
+'import-logentry-upload'           => 'importerte [[$1]] ved opplasting',
 'import-logentry-upload-detail'    => 'Importerte {{PLURAL:$1|én revisjon|$1 revisjoner}}',
 'import-logentry-interwiki'        => 'transwikiimporterte $1',
 'import-logentry-interwiki-detail' => '{{PLURAL:$1|Én revisjon|$1 revisjoner}} fra $2',
@@ -2512,9 +2513,6 @@ $1
 'confirmrecreate'     => '«[[User:$1|$1]]» ([[User talk:$1|diskusjon]]) slettet siden etter at du begynte å redigere den, med begrunnelsen «$2». Vennligst bekreft at du vil gjenopprette siden.',
 'recreate'            => 'Gjenopprett',
 
-# HTML dump
-'redirectingto' => 'Omdirigerer til [[:$1]]&nbsp;…',
-
 # action=purge
 'confirm_purge'        => "Vil du slette tjenerens mellomlagrede versjon (''cache'') av denne siden? $1",
 'confirm_purge_button' => 'OK',
@@ -2546,7 +2544,7 @@ $1
 # Auto-summaries
 'autosumm-blank'   => 'Tømmer siden',
 'autosumm-replace' => 'Erstatter siden med «$1»',
-'autoredircomment' => 'Omdirigerer til [[:$1]]',
+'autoredircomment' => 'Omdirigerer til [[$1]]',
 'autosumm-new'     => 'Ny side: $1',
 
 # Live preview

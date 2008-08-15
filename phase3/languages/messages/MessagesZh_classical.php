@@ -108,6 +108,12 @@ $messages = array(
 'tog-forceeditsummary'        => '漏概醒之',
 'tog-watchlisthideown'        => '不哨己文',
 'tog-watchlisthidebots'       => '不哨僕文',
+'tog-watchlisthideminor'      => '不哨小纂',
+'tog-watchlisthideliu'        => '不哨有簿',
+'tog-watchlisthideanons'      => '不哨無簿',
+'tog-nolangconversion'        => '非轉',
+'tog-ccmeonemails'            => '傳己之副信',
+'tog-diffonly'                => '異下無示頁',
 'tog-showhiddencats'          => '示隱類',
 'tog-noconvertlink'           => '非轉鍵題',
 
@@ -1180,6 +1186,7 @@ $2',
 'longpages'               => '長言',
 'protectedpages'          => '頁錮',
 'protectedpages-indef'    => '只示無期之錮',
+'protectedpages-cascade'  => '只示連串之錮',
 'listusers'               => '點簿',
 'newpages'                => '新灶',
 'newpages-username'       => '簿名：',
@@ -1309,6 +1316,10 @@ $2',
 'watchlist-hide-own'   => '藏己',
 'watchlist-show-minor' => '見校',
 'watchlist-hide-minor' => '藏校',
+'watchlist-show-anons' => '見匿',
+'watchlist-hide-anons' => '藏匿',
+'watchlist-show-liu'   => '見登',
+'watchlist-hide-liu'   => '藏登',
 
 # Displayed when you click the "watch" button and it is in the process of watching
 'watching'   => '出陣…',
@@ -1382,9 +1393,9 @@ $NEWPAGE
 'sessionfailure'              => '登簿有變。為防盜簿，返前重取再為之。',
 'protectlogpage'              => '誌緘',
 'protectlogtext'              => '誌緘如下；近緘見[[Special:ProtectedPages|此]] 。',
-'protectedarticle'            => '緘焉"[[:$1]]"',
+'protectedarticle'            => '緘焉"[[$1]]"',
 'modifiedarticleprotection'   => '令"$1"',
-'unprotectedarticle'          => '啟焉"[[:$1]]"',
+'unprotectedarticle'          => '啟焉"[[$1]]"',
 'protect-title'               => '更"$1"之緘',
 'protect-legend'              => '准緘',
 'protectcomment'              => '贊曰',
@@ -1624,8 +1635,8 @@ $NEWPAGE
 'movepage-page-moved'     => '頁$1遷$2矣。',
 'movepage-page-unmoved'   => '頁$1遷$2不成。',
 'movepage-max-pages'      => '上之$1頁遷矣同非自遷之下。',
-'1movedto2'               => '[[:$1]]遷至[[:$2]]',
-'1movedto2_redir'         => '[[:$1]]遷至[[:$2]]為渡',
+'1movedto2'               => '[[$1]]遷至[[$2]]',
+'1movedto2_redir'         => '[[$1]]遷至[[$2]]為渡',
 'movelogpage'             => '誌遷',
 'movelogpagetext'         => '頁遷如下：',
 'movereason'              => '因',
@@ -1706,7 +1717,7 @@ $NEWPAGE
 # Import log
 'importlogpage'                    => '誌入',
 'importlogpagetext'                => '秩入匯自他山之審。',
-'import-logentry-upload'           => '[[:$1]]上傳而匯',
+'import-logentry-upload'           => '[[$1]]上傳而匯',
 'import-logentry-upload-detail'    => '有審$1',
 'import-logentry-interwiki'        => '互匯$1',
 'import-logentry-interwiki-detail' => '$1審自$2',
@@ -1955,9 +1966,6 @@ $1
 請爾審視之。",
 'recreate'            => '復',
 
-# HTML dump
-'redirectingto' => '渡至[[:$1]]…',
-
 # action=purge
 'confirm_purge'        => '清謄本？
 
@@ -1996,7 +2004,7 @@ $1',
 # Auto-summaries
 'autosumm-blank'   => '盡除之',
 'autosumm-replace' => "置為'$1'",
-'autoredircomment' => '渡至[[:$1]]',
+'autoredircomment' => '渡至[[$1]]',
 'autosumm-new'     => '新文：$1',
 
 # Size units

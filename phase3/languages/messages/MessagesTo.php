@@ -4,9 +4,9 @@
  * @ingroup Language
  * @file
  *
+ * @author Cbrown1023
  * @author Tauʻolunga
  * @author לערי ריינהארט
- * @author Cbrown1023
  */
 
 $messages = array(
@@ -782,8 +782,8 @@ Ko e fatu fakamuimui naʻe fatu ʻe [[User:$3|$3]] ([[User talk:$3|Alea]]).',
 'editcomment'         => 'Ko e fakamatala fatu naʻe "<i>$1</i>" ia.', # only shown if there is an edit comment
 'protectlogpage'      => 'Tohinoa ʻo e maluʻi',
 'protectlogtext'      => 'ʻOku ʻasi ʻi lalo ha hokohoko ʻo e ngaahi loka mo e taʻeloka fakapeesi.',
-'protectedarticle'    => 'maluʻi: "[[:$1]]"',
-'unprotectedarticle'  => 'taʻemaluʻi "[[:$1]]"',
+'protectedarticle'    => 'maluʻi: "[[$1]]"',
+'unprotectedarticle'  => 'taʻemaluʻi "[[$1]]"',
 'protect-title'       => 'ʻOku maluʻi "$1"',
 'protect-legend'      => 'Fakamoʻoniʻi e maluʻi',
 'protectcomment'      => 'ʻUhingha maʻa e maluʻi',
@@ -907,8 +907,8 @@ Vakai ki he [[Special:Log/delete|hokohoko tāmateʻi]] ki he lekooti ʻo e ngaah
 'talkexists'              => "'''Kuo ola ʻa e ʻunu ʻo e peesi ia, kā naʻe ʻikai ʻunu he peesi alea koeʻuhi ʻoku toe tuʻu ha peesi pehē mo e hingoa foʻou. Kātaki fakataha kinaua faiʻaki ʻa e nima.'''",
 'movedto'                 => 'kuo ʻunu ki he',
 'movetalk'                => 'ʻUnu he peesi alea fekauʻaki',
-'1movedto2'               => 'Kuo ʻunu ʻa e [[:$1]] ki he [[:$2]]',
-'1movedto2_redir'         => 'Kuo ʻunu ʻa e [[:$1]] ki he [[:$2]] ʻi he leʻei',
+'1movedto2'               => 'Kuo ʻunu ʻa e [[$1]] ki he [[$2]]',
+'1movedto2_redir'         => 'Kuo ʻunu ʻa e [[$1]] ki he [[$2]] ʻi he leʻei',
 'movelogpage'             => 'Tohinoa ʻo e ʻunu',
 'movelogpagetext'         => 'Ko e hokohoko ʻo e ngaahi peesi kuo ʻunu',
 'movereason'              => 'ʻUhinga',
@@ -1165,9 +1165,6 @@ Kapau ʻoku ʻikai ko koe, ʻoua ʻe fakaava ia. ʻE mate ʻa e lea fakapulipul�
 Kātaki fakapapauʻi te ke fie toe fatu ʻa e kupu ni.",
 'recreate'            => 'Toe fakatupu',
 
-# HTML dump
-'redirectingto' => 'ʻOku leʻei ki [[:$1]]...',
-
 # action=purge
 'confirm_purge'        => 'Fakaʻatā ko e fafaʻo ʻo e pēsí ni?
 
@@ -1197,7 +1194,7 @@ $1',
 'table_pager_empty'        => 'ʻIkai ha ola',
 
 # Auto-summaries
-'autoredircomment' => 'ʻOku leʻei ki he [[:$1]]',
+'autoredircomment' => 'ʻOku leʻei ki he [[$1]]',
 
 # Watchlist editing tools
 'watchlisttools-view' => 'Sio ki he ngaahi liliu maʻongoʻonga',

@@ -4,21 +4,21 @@
  * @ingroup Language
  * @file
  *
+ * @author Ahonc
+ * @author AlexSm
+ * @author Alexander Sigachov (alexander.sigachov@gmail.com)
+ * @author EugeneZelenko
+ * @author Flrn
+ * @author HalanTul
+ * @author Illusion
+ * @author Innv
+ * @author Kaganer
+ * @author Kalan
+ * @author MaxSem
+ * @author Putnik
+ * @author VasilievVV
  * @author Александр Сигачёв
  * @author לערי ריינהארט
- * @author Ahonc
- * @author Illusion
- * @author VasilievVV
- * @author Kalan
- * @author Flrn
- * @author Putnik
- * @author EugeneZelenko
- * @author Innv
- * @author AlexSm
- * @author HalanTul
- * @author Kaganer
- * @author MaxSem
- * @author Alexander Sigachov (alexander.sigachov@gmail.com)
  */
 
 /*
@@ -996,7 +996,7 @@ $3 указал следующую причину: ''$2''",
 
 # Search results
 'searchresults'             => 'Результаты поиска',
-'searchresults-title'       => 'Результаты поиска для $1',
+'searchresults-title'       => 'Результаты поиска «$1»',
 'searchresulttext'          => 'Для получения более подробной информации о поиске на страницах проекта, см. [[{{MediaWiki:Helppage}}|справочный раздел]].',
 'searchsubtitle'            => 'По запросу «[[:$1]]»',
 'searchsubtitleinvalid'     => 'По запросу «$1»',
@@ -1210,7 +1210,7 @@ $3 указал следующую причину: ''$2''",
 'recentchanges'                     => 'Свежие правки',
 'recentchangestext'                 => 'Ниже в хронологическом порядке перечислены последние изменения на страницах {{grammar:genitive|{{SITENAME}}}}.',
 'recentchanges-feed-description'    => 'Отслеживать последние изменения в вики в этом потоке.',
-'rcnote'                            => "{{PLURAL:$1|Последнее '''$1''' изменение|Последние '''$1''' изменения|Последние '''$1''' изменений}} за '''$2''' {{PLURAL:$2|день|дня|дней}}, на момент времени $5, $4.",
+'rcnote'                            => "{{PLURAL:$1|Последнее '''$1''' изменение|Последние '''$1''' изменения|Последние '''$1''' изменений}} за '''$2''' {{PLURAL:$2|день|дня|дней}}, на момент времени $5 $4.",
 'rcnotefrom'                        => 'Ниже перечислены изменения с <strong>$2</strong> (по <strong>$1</strong>).',
 'rclistfrom'                        => 'Показать изменения с $1.',
 'rcshowhideminor'                   => '$1 малые правки',
@@ -1419,7 +1419,7 @@ PICT # различные
 'filedelete-comment'          => 'Причина удаления:',
 'filedelete-submit'           => 'Удалить',
 'filedelete-success'          => "'''$1''' был удалён.",
-'filedelete-success-old'      => '<span class="plainlinks">Версия \'\'\'[[Media:$1|$1]]\'\'\' от $3, $2 была удалена.</span>',
+'filedelete-success-old'      => "Версия '''[[Media:$1|$1]]''' от $3 $2 была удалена.",
 'filedelete-nofile'           => "'''$1''' не существует на этом сайте.",
 'filedelete-nofile-old'       => "Не существует архивной версии '''$1''' с указанными атрибутами.",
 'filedelete-otherreason'      => 'Другая причина:',
@@ -1753,9 +1753,9 @@ $NEWPAGE
 Пожалуйста, нажмите кнопку «Назад» и перезагрузите страницу, с которой вы пришли.',
 'protectlogpage'              => 'Журнал защиты',
 'protectlogtext'              => 'Ниже приведён журнал установок и снятий защиты со статей. Вы можете также просмотреть [[Special:ProtectedPages|список страниц, которые в данный момент защищены]].',
-'protectedarticle'            => 'защищена страница «[[:$1]]»',
-'modifiedarticleprotection'   => 'изменён уровень защиты страницы «[[:$1]]»',
-'unprotectedarticle'          => 'снята защита со страницы «[[:$1]]»',
+'protectedarticle'            => 'защищена страница «[[$1]]»',
+'modifiedarticleprotection'   => 'изменён уровень защиты страницы «[[$1]]»',
+'unprotectedarticle'          => 'снята защита со страницы «[[$1]]»',
 'protect-title'               => 'Установка уровня защиты для «$1»',
 'protect-legend'              => 'Подтвердите установку защиты страницы',
 'protectcomment'              => 'Причина установки защиты:',
@@ -2037,8 +2037,8 @@ IP-адреса.',
 'movepage-page-moved'     => 'Страница $1 была переименована в $2.',
 'movepage-page-unmoved'   => 'Страница $1 не может быть переименована в $2.',
 'movepage-max-pages'      => '$1 {{PLURAL:$1|страница была переименована|страницы было переименовано|страниц было переименовано}} — это максимум, больше страниц нельзя переименовать автоматически.',
-'1movedto2'               => '«[[:$1]]» переименована в «[[:$2]]»',
-'1movedto2_redir'         => '«[[:$1]]» переименована в «[[:$2]]» поверх перенаправления',
+'1movedto2'               => '«[[$1]]» переименована в «[[$2]]»',
+'1movedto2_redir'         => '«[[$1]]» переименована в «[[$2]]» поверх перенаправления',
 'movelogpage'             => 'Журнал переименований',
 'movelogpagetext'         => 'Ниже представлен список переименованных страниц.',
 'movereason'              => 'Причина',
@@ -2126,7 +2126,7 @@ IP-адреса.',
 # Import log
 'importlogpage'                    => 'Журнал импорта',
 'importlogpagetext'                => 'Импортирование администраторами страниц с историей изменений из других вики.',
-'import-logentry-upload'           => '«[[:$1]]» — импорт из файла',
+'import-logentry-upload'           => '«[[$1]]» — импорт из файла',
 'import-logentry-upload-detail'    => '$1 {{PLURAL:$1|версия|версии|версий}}',
 'import-logentry-interwiki'        => '«$1» — межвики импорт',
 'import-logentry-interwiki-detail' => '$1 {{PLURAL:$1|версия|версии|версий}} из $2',
@@ -2669,9 +2669,6 @@ $1
 
 'unit-pixel' => ' пикс.',
 
-# HTML dump
-'redirectingto' => 'Перенаправление на страницу [[:$1]]…',
-
 # action=purge
 'confirm_purge'        => 'Очистить кеш этой страницы?
 
@@ -2705,7 +2702,7 @@ $1',
 # Auto-summaries
 'autosumm-blank'   => 'Полностью удалено содержимое страницы',
 'autosumm-replace' => 'Содержимое страницы заменено на «$1»',
-'autoredircomment' => 'Перенаправление на [[:$1]]',
+'autoredircomment' => 'Перенаправление на [[$1]]',
 'autosumm-new'     => 'Новая: $1',
 
 # Size units

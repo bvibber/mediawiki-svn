@@ -1184,46 +1184,58 @@ class Linker {
 	 * @todo Document the $local parameter.
 	 */
 	private function formatAutocomments( $comment, $title = null, $local = false ) {
-		$match = array();
-		while (preg_match('!(.*)/\*\s*(.*?)\s*\*/(.*)!', $comment,$match)) {
-			$pre=$match[1];
-			$auto=$match[2];
-			$post=$match[3];
-			$link='';
-			if( $title ) {
-				$section = $auto;
+		// Bah!
+		$this->autocommentTitle = $title;
+		$this->autocommentLocal = $local;
+		$comment = preg_replace_callback(
+			'!(.*?)/\*\s*(.*?)\s*\*/(.*?)!',
+			array( $this, 'formatAutocommentsCallback' ),
+			$comment );
+		unset( $this->autocommentTitle );
+		unset( $this->autocommentLocal );
+		return $comment;
+	}
+	
+	private function formatAutocommentsCallback( $match ) {
+		$title = $this->autocommentTitle;
+		$local = $this->autocommentLocal;
+		
+		$pre=$match[1];
+		$auto=$match[2];
+		$post=$match[3];
+		$link='';
+		if( $title ) {
+			$section = $auto;
 
-				# Generate a valid anchor name from the section title.
-				# Hackish, but should generally work - we strip wiki
-				# syntax, including the magic [[: that is used to
-				# "link rather than show" in case of images and
-				# interlanguage links.
-				$section = str_replace( '[[:', '', $section );
-				$section = str_replace( '[[', '', $section );
-				$section = str_replace( ']]', '', $section );
-				if ( $local ) {
-					$sectionTitle = Title::newFromText( '#' . $section );
-				} else {
-					$sectionTitle = clone( $title );
-					$sectionTitle->mFragment = $section;
-				}
-				$link = $this->link( $sectionTitle,
-					wfMsgForContent( 'sectionlink' ), array(), array(),
-					'noclasses' );
+			# Generate a valid anchor name from the section title.
+			# Hackish, but should generally work - we strip wiki
+			# syntax, including the magic [[: that is used to
+			# "link rather than show" in case of images and
+			# interlanguage links.
+			$section = str_replace( '[[:', '', $section );
+			$section = str_replace( '[[', '', $section );
+			$section = str_replace( ']]', '', $section );
+			if ( $local ) {
+				$sectionTitle = Title::newFromText( '#' . $section );
+			} else {
+				$sectionTitle = clone( $title );
+				$sectionTitle->mFragment = $section;
 			}
-			$auto = $link . $auto;
-			if( $pre ) {
-				# written summary $presep autocomment (summary /* section */)
-				$auto = wfMsgExt( 'autocomment-prefix', array( 'escapenoentities', 'content' ) ) . $auto;
-			}
-			if( $post ) {
-				# autocomment $postsep written summary (/* section */ summary)
-				$auto .= wfMsgExt( 'colon-separator', array( 'escapenoentities', 'content' ) );
-			}
-			$auto = '<span class="autocomment">' . $auto . '</span>';
-			$comment = $pre . $auto . $post;
+			$link = $this->link( $sectionTitle,
+				wfMsgForContent( 'sectionlink' ), array(), array(),
+				'noclasses' );
 		}
-
+		$auto = $link . $auto;
+		if( $pre ) {
+			# written summary $presep autocomment (summary /* section */)
+			$auto = wfMsgExt( 'autocomment-prefix', array( 'escapenoentities', 'content' ) ) . $auto;
+		}
+		if( $post ) {
+			# autocomment $postsep written summary (/* section */ summary)
+			$auto .= wfMsgExt( 'colon-separator', array( 'escapenoentities', 'content' ) );
+		}
+		$auto = '<span class="autocomment">' . $auto . '</span>';
+		$comment = $pre . $auto . $post;
 		return $comment;
 	}
 
@@ -1647,26 +1659,29 @@ class Linker {
 	 * @return string title and accesskey attributes, ready to drop in an
 	 *   element (e.g., ' title="This does something [x]" accesskey="x"').
 	 */
-	public function tooltipAndAccesskey($name) {
-		$fname="Linker::tooltipAndAccesskey";
-		wfProfileIn($fname);
-		$out = '';
+	public function tooltipAndAccesskey( $name ) {
+		wfProfileIn( __METHOD__ );
+		$attribs = array();
 
-		$tooltip = wfMsg('tooltip-'.$name);
-		if (!wfEmptyMsg('tooltip-'.$name, $tooltip) && $tooltip != '-') {
+		$tooltip = wfMsg( "tooltip-$name" );
+		if( !wfEmptyMsg( "tooltip-$name", $tooltip ) && $tooltip != '-' ) {
 			// Compatibility: formerly some tooltips had [alt-.] hardcoded
 			$tooltip = preg_replace( "/ ?\[alt-.\]$/", '', $tooltip );
-			$out .= ' title="'.htmlspecialchars($tooltip);
+			$attribs['title'] = $tooltip;
 		}
-		$accesskey = wfMsg('accesskey-'.$name);
-		if ($accesskey && $accesskey != '-' && !wfEmptyMsg('accesskey-'.$name, $accesskey)) {
-			if ($out) $out .= " [$accesskey]\" accesskey=\"$accesskey\"";
-			else $out .= " title=\"[$accesskey]\" accesskey=\"$accesskey\"";
-		} elseif ($out) {
-			$out .= '"';
+
+		$accesskey = wfMsg( "accesskey-$name" );
+		if( $accesskey && $accesskey != '-' &&
+		!wfEmptyMsg( "accesskey-$name", $accesskey ) ) {
+			if( isset( $attribs['title'] ) ) {
+				$attribs['title'] .= " [$accesskey]";
+			}
+			$attribs['accesskey'] = $accesskey;
 		}
-		wfProfileOut($fname);
-		return $out;
+
+		$ret = Xml::expandAttributes( $attribs );
+		wfProfileOut( __METHOD__ );
+		return $ret;
 	}
 
 	/**
@@ -1675,18 +1690,32 @@ class Linker {
 	 * isn't always, because sometimes the accesskey needs to go on a different
 	 * element than the id, for reverse-compatibility, etc.)
 	 *
-	 * @param string $name Id of the element, minus prefixes.
+	 * @param string $name    Id of the element, minus prefixes.
+	 * @param mixed  $options null or the string 'withaccess' to add an access-
+	 *   key hint
 	 * @return string title attribute, ready to drop in an element
 	 * (e.g., ' title="This does something"').
 	 */
-	public function tooltip($name) {
-		$out = '';
+	public function tooltip( $name, $options = null ) {
+		wfProfileIn( __METHOD__ );
 
-		$tooltip = wfMsg('tooltip-'.$name);
-		if (!wfEmptyMsg('tooltip-'.$name, $tooltip) && $tooltip != '-') {
-			$out = ' title="'.htmlspecialchars($tooltip).'"';
+		$attribs = array();
+
+		$tooltip = wfMsg( "tooltip-$name" );
+		if( !wfEmptyMsg( "tooltip-$name", $tooltip ) && $tooltip != '-' ) {
+			$attribs['title'] = $tooltip;
 		}
 
-		return $out;
+		if( isset( $attribs['title'] ) && $options == 'withaccess' ) {
+			$accesskey = wfMsg( "accesskey-$name" );
+			if( $accesskey && $accesskey != '-' &&
+			!wfEmptyMsg( "accesskey-$name", $accesskey ) ) {
+				$attribs['title'] .= " [$accesskey]";
+			}
+		}
+
+		$ret = Xml::expandAttributes( $attribs );
+		wfProfileOut( __METHOD__ );
+		return $ret;
 	}
 }

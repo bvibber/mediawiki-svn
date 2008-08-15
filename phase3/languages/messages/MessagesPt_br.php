@@ -4,12 +4,12 @@
  * @ingroup Language
  * @file
  *
- * @author 555
- * @author Lijealso
- * @author לערי ריינהארט
- * @author Yves Marques Junqueira
- * @author Rodrigo Calanca Nishino
  * @author LeonardoG
+ * @author Lijealso
+ * @author Rodrigo Calanca Nishino
+ * @author Yves Marques Junqueira
+ * @author לערי ריינהארט
+ * @author 555
  */
 
 $fallback = 'pt'; 
@@ -647,7 +647,8 @@ Você pode contactar $1 ou outro [[{{MediaWiki:Grouppage-sysop}}|administrador]]
 
 Note que não poderá utilizar a funcionalidade "Contactar usuário" se não possuir uma conta neste wiki ({{SITENAME}}) com um endereço de email válido indicado nas suas [[Special:Preferences|preferências de usuário]] e se tiver sido bloqueado de utilizar tal recurso.
 
-O seu endereço de IP atual é $3 e a ID de bloqueio é $5. Por favor, inclua um desses (ou ambos) dados em quaisquer tentativas de esclarecimentos.',
+O seu endereço de IP atual é $3 e a ID de bloqueio é $5.
+Por favor, inclua tais dados em quaisquer tentativas de esclarecimentos.',
 'autoblockedtext'           => 'O seu endereço de IP foi bloqueado de forma automática, uma vez que foi utilizado recentemente por outro usuário, o qual foi bloqueado por $1.
 O motivo apresentado foi:
 
@@ -655,13 +656,14 @@ O motivo apresentado foi:
 
 * Início do bloqueio: $8
 * Expiração do bloqueio: $6
+* Destino do bloqueio: $7
 
 Você pode contactar $1 ou outro [[{{MediaWiki:Grouppage-sysop}}|administrador]] para discutir sobre o bloqueio.
 
-Note que não poderá utilizar a funcionalidade "Contactar usuário" se não possuir uma conta neste wiki ({{SITENAME}}) com um endereço de email válido indicado nas suas [[Special:Preferences|preferências de usuário]] e se tiver sido bloqueado de utilizar tal recurso.
+Note que não poderá utilizar a funcionalidade "Contactar utilizador" se não possuir uma conta neste wiki ({{SITENAME}}) com um endereço de email válido indicado nas suas [[Special:Preferences|preferências de utilizador]] e se tiver sido bloqueado de utilizar tal recurso.
 
-Sua ID de bloqueio é $5.
-Por favor, inclua esse dado em qualquer tentativa de esclarecimentos que for realizar.',
+Seu endereço de IP no momento é $3 e sua ID de bloqueio é #$5.
+Por favor, inclua tais dados em qualquer tentativa de esclarecimentos que for realizar.',
 'blockednoreason'           => 'sem motivo especificado',
 'blockedoriginalsource'     => "O código de '''$1''' é mostrado abaixo:",
 'blockededitsource'         => "O texto das '''suas edições''' em '''$1''' é mostrado abaixo:",
@@ -1320,7 +1322,7 @@ Um clique sobre um cabeçalho de coluna altera a ordenação.',
 'filedelete-comment'          => 'Motivo de eliminação:',
 'filedelete-submit'           => 'Eliminar',
 'filedelete-success'          => "'''$1''' foi eliminado.",
-'filedelete-success-old'      => '<span class="plainlinks">A versão de \'\'\'[[Media:$1|$1]]\'\'\' tal como $3, $2 foi eliminada.</span>',
+'filedelete-success-old'      => "A versão de '''[[Media:$1|$1]]''' tal como $3, $2 foi eliminada.",
 'filedelete-nofile'           => "'''$1''' não existe em {{SITENAME}}.",
 'filedelete-nofile-old'       => "Não há uma versão de '''$1''' em arquivo com os parâmetros especificados.",
 'filedelete-otherreason'      => 'Outro/motivo adicional:',
@@ -1646,9 +1648,9 @@ Experimente usar o botão "Voltar" e atualizar a página de onde veio e tente no
 'protectlogpage'              => 'Registro de proteção',
 'protectlogtext'              => 'Abaixo encontra-se o registro de proteção e desproteção de páginas.
 Veja a [[Special:ProtectedPages|lista de páginas protegidas]] para uma listagem das páginas que se encontram protegidas no momento.',
-'protectedarticle'            => 'protegeu "[[:$1]]"',
-'modifiedarticleprotection'   => 'foi alterado o nível de proteção para "[[:$1]]"',
-'unprotectedarticle'          => 'desprotegeu "[[:$1]]"',
+'protectedarticle'            => 'protegeu "[[$1]]"',
+'modifiedarticleprotection'   => 'foi alterado o nível de proteção para "[[$1]]"',
+'unprotectedarticle'          => 'desprotegeu "[[$1]]"',
 'protect-title'               => 'Protegendo "$1"',
 'protect-legend'              => 'Confirmar proteção',
 'protectcomment'              => 'Motivo de proteção',
@@ -1756,7 +1758,7 @@ $1',
 
 # What links here
 'whatlinkshere'            => 'Páginas afluentes',
-'whatlinkshere-title'      => 'Páginas que apontam para $1',
+'whatlinkshere-title'      => 'Páginas que apontam para "$1"',
 'whatlinkshere-page'       => 'Página:',
 'linkshere'                => "As seguintes páginas possuem ligações para '''[[:$1]]''':",
 'nolinkshere'              => "Não existem ligações para '''[[:$1]]'''.",
@@ -1816,7 +1818,7 @@ Consulte a [[Special:IPBlockList|lista de IPs bloqueados]] para rever os bloquei
 'ipusubmit'                       => 'Desbloquear este usuário',
 'unblocked'                       => '[[User:$1|$1]] foi desbloqueado',
 'unblocked-id'                    => 'O bloqueio de $1 foi removido com sucesso',
-'ipblocklist'                     => 'Lista de IPs e usuários bloqueados',
+'ipblocklist'                     => 'Usuários e endereços de IP bloqueados',
 'ipblocklist-legend'              => 'Procurar por um usuário bloqueado',
 'ipblocklist-username'            => 'Usuário ou endereço de IP:',
 'ipblocklist-submit'              => 'Pesquisar',
@@ -1913,8 +1915,8 @@ Por favor, escolha outro nome.',
 'movepage-page-moved'     => 'A página $1 foi movida para $2',
 'movepage-page-unmoved'   => 'A página $1 não pôde ser movida para $2.',
 'movepage-max-pages'      => 'O limite de $1 {{PLURAL:$1|página movida|páginas movidas}} foi atingido; não será possível mover mais páginas de forma automática.',
-'1movedto2'               => '[[:$1]] foi movido para [[:$2]]',
-'1movedto2_redir'         => '[[:$1]] foi movido para [[:$2]] sob redirecionamento',
+'1movedto2'               => '[[$1]] foi movido para [[$2]]',
+'1movedto2_redir'         => '[[$1]] foi movido para [[$2]] sob redirecionamento',
 'movelogpage'             => 'Registro de movimento',
 'movelogpagetext'         => 'Abaixo encontra-se uma lista de páginas movidas.',
 'movereason'              => 'Motivo:',
@@ -2000,7 +2002,7 @@ Todas as acções de importação transwiki são registradas no [[Special:Log/im
 # Import log
 'importlogpage'                    => 'Registro de importações',
 'importlogpagetext'                => 'Importações administrativas de páginas com a preservação do histórico de edição de outras wikis.',
-'import-logentry-upload'           => 'importou [[:$1]] através de arquivo de importação',
+'import-logentry-upload'           => 'importou [[$1]] através de arquivo de importação',
 'import-logentry-upload-detail'    => '{{PLURAL:$1|uma edição|$1 edições}}',
 'import-logentry-interwiki'        => 'transwiki $1',
 'import-logentry-interwiki-detail' => '{{PLURAL:$1|$1 edição|$1 edições}} de $2',
@@ -2507,9 +2509,6 @@ $1
 Por favor, confirme que realmente deseja recriar esta página.",
 'recreate'            => 'Recriar',
 
-# HTML dump
-'redirectingto' => 'Redirecionando para [[:$1]]...',
-
 # action=purge
 'confirm_purge'        => 'Limpar a memória cache desta página?
 
@@ -2543,7 +2542,7 @@ $1',
 # Auto-summaries
 'autosumm-blank'   => 'Foi removido o conteúdo completo desta página',
 'autosumm-replace' => "Página substituída por '$1'",
-'autoredircomment' => 'Redirecionando para [[:$1]]',
+'autoredircomment' => 'Redirecionando para [[$1]]',
 'autosumm-new'     => 'Nova página: $1',
 
 # Live preview

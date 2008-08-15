@@ -5,6 +5,7 @@
  * @file
  *
  * @author JJohnson
+ * @author Spacebirdy
  * @author Wōdenhelm
  */
 
@@ -488,7 +489,7 @@ Bidde behycge þæt þu bricst þone tramet intō smalrum dǣlum.',
 'rollbackfailed'     => 'Edhwierft misfangen',
 'editcomment'        => 'Sēo ādihtungymbsprǣc wæs: "<i>$1</i>".', # only shown if there is an edit comment
 'revertpage'         => 'Ācierde ādihtunga fram [[Special:Contributions/$2|$2]] ([[User talk:$2|Gesprec]]); wendede on bæc tō ǣrran fadunge fram [[User:$1|$1]]', # Additional available: $3: revid of the revision reverted to, $4: timestamp of the revision reverted to, $5: revid of the revision reverted from, $6: timestamp of the revision reverted from
-'unprotectedarticle' => 'unweardod "[[:$1]]"',
+'unprotectedarticle' => 'unweardod "[[$1]]"',
 'protect-title'      => 'Weardiende "$1"',
 'restriction-type'   => 'Gelēafnes:',
 
@@ -533,7 +534,7 @@ Bidde behycge þæt þu bricst þone tramet intō smalrum dǣlum.',
 ** Uncwēme brūcendnama',
 'ipbsubmit'          => 'Gǣlan þisne brūcend',
 'ipbother'           => 'Ōðeru tīd',
-'ipboptions'         => '1 stund:1 hour, 2 stunda:2 hours,1 dæg:1 day,3 dagas:3 days,1 wucu:1 week,2 wucu:2 wuca,1 mōnaþ:1 month,3 mōnþas:3 months,6 mōnþas:6 months,1 gēar:1 year,unendiendlic:infinite', # display1:time1,display2:time2,...
+'ipboptions'         => '1 stund:1 hour, 2 stunda:2 hours,1 dæg:1 day,3 dagas:3 days,1 wucu:1 week,2 wuca:2 weeks,1 mōnaþ:1 month,3 mōnþas:3 months,6 mōnþas:6 months,1 gēar:1 year,unendiendlic:infinite', # display1:time1,display2:time2,...
 'ipbotheroption'     => 'ōðer',
 'ipbotherreason'     => 'Ōðeru/geīecendlicu racu:',
 'ipblocklist-submit' => 'Sēcan',
@@ -549,8 +550,8 @@ Bidde behycge þæt þu bricst þone tramet intō smalrum dǣlum.',
 naman þu cēas nis andfenge.
 Bidde cēos ōðerne naman.',
 'movedto'         => 'gefered tō',
-'1movedto2'       => '[[:$1]] gefered tō [[:$2]]',
-'1movedto2_redir' => '[[:$1]] gefered tō [[:$2]] ofer edlǣdunge',
+'1movedto2'       => '[[$1]] gefered tō [[$2]]',
+'1movedto2_redir' => '[[$1]] gefered tō [[$2]] ofer edlǣdunge',
 'movereason'      => 'Racu:',
 
 # Namespace 8 related
@@ -670,9 +671,6 @@ Gif þis is *nā* þū, ne folga þisne bend. Þēos āsēðungrūn forealdaþ �
 # Scary transclusion
 'scarytranscludefailed'  => '[Bisenfeccung getrucod for $1; sarig]',
 'scarytranscludetoolong' => '[URL is tō lang; sarig]',
-
-# HTML dump
-'redirectingto' => 'Edlǣdeþ tō [[:$1]]...',
 
 # AJAX search
 'searchnamed' => "Sēcan gewritu genemnodu ''$1''.",

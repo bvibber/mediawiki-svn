@@ -1,5 +1,5 @@
 <?php
-/** Simplified Chinese (‪中文(简体)‬)
+/** Simplified Chinese (‪中文(简化字)‬)
  *
  * @ingroup Language
  * @file
@@ -119,6 +119,8 @@ $messages = array(
 'tog-watchlisthideown'        => '在监视列表中隐藏我的编辑',
 'tog-watchlisthidebots'       => '在监视列表中隐藏机器人的编辑',
 'tog-watchlisthideminor'      => '在监视列表中隐藏微小更改',
+'tog-watchlisthideliu'        => '在监视列表中隐藏登入用户',
+'tog-watchlisthideanons'      => '在监视列表中隐藏匿名用户',
 'tog-nolangconversion'        => '不进行用字转换',
 'tog-ccmeonemails'            => '把我发送给其他用户的邮件同时发送副本给我自己',
 'tog-diffonly'                => '在比较两个修订版本差异时不显示页面内容',
@@ -1351,6 +1353,7 @@ Template:消除歧義',
 'deadendpagestext'        => '以下页面没有链接到{{SITENAME}}中的其它页面。',
 'protectedpages'          => '已保护页面',
 'protectedpages-indef'    => '只有无期之保护页面',
+'protectedpages-cascade'  => '只有连锁之保护页面',
 'protectedpagestext'      => '以下页面已经被保护以防止移移或编辑',
 'protectedpagesempty'     => '在这些参数下没有页面正在保护。',
 'protectedtitles'         => '已保护的标题',
@@ -1492,6 +1495,10 @@ Template:消除歧義',
 'watchlist-hide-own'   => '隐藏我的编辑',
 'watchlist-show-minor' => '显示小编辑',
 'watchlist-hide-minor' => '隐藏小编辑',
+'watchlist-show-anons' => '显示匿名用户的编辑',
+'watchlist-hide-anons' => '隐藏匿名用户的编辑',
+'watchlist-show-liu'   => '显示已登入用户的编辑',
+'watchlist-hide-liu'   => '隐藏已登入用户的编辑',
 
 # Displayed when you click the "watch" button and it is in the process of watching
 'watching'   => '监视……',
@@ -1578,9 +1585,9 @@ $NEWPAGE
 'sessionfailure'              => '似乎在您登录时发生问题，作为一项防范性措施，该动作已经被取消。请单击"后退"再次尝试！',
 'protectlogpage'              => '保护日志',
 'protectlogtext'              => '下面是页面锁定和取消锁定的列表。请参考[[Special:ProtectedPages|保护页面列表]]以查看当前进行的页面保护。',
-'protectedarticle'            => '已保护"[[:$1]]"',
-'modifiedarticleprotection'   => '已经更改 "[[:$1]]" 的保护等级',
-'unprotectedarticle'          => '已取消保护"[[:$1]]"',
+'protectedarticle'            => '已保护"[[$1]]"',
+'modifiedarticleprotection'   => '已经更改 "[[$1]]" 的保护等级',
+'unprotectedarticle'          => '已取消保护"[[$1]]"',
 'protect-title'               => '正在更改"$1"的保护等级',
 'protect-legend'              => '确认保护',
 'protectcomment'              => '注解:',
@@ -1854,8 +1861,8 @@ $1',
 'movepage-page-moved'     => '页面$1已经移动到$2。',
 'movepage-page-unmoved'   => '页面$1不可以移动到$2。',
 'movepage-max-pages'      => '最多有$1个页面已经移动同时不可以自动地再移动更多。',
-'1movedto2'               => '[[:$1]]移动到[[:$2]]',
-'1movedto2_redir'         => '[[:$1]]通过重定向移动到[[:$2]]',
+'1movedto2'               => '[[$1]]移动到[[$2]]',
+'1movedto2_redir'         => '[[$1]]通过重定向移动到[[$2]]',
 'movelogpage'             => '移动日志',
 'movelogpagetext'         => '以下是已经移动的页面列表:',
 'movereason'              => '原因',
@@ -2484,9 +2491,6 @@ $1
 请确认在您重新创建页面前三思。',
 'recreate'            => '重建',
 
-# HTML dump
-'redirectingto' => '重定向到[[:$1]]...',
-
 # action=purge
 'confirm_purge'        => '要清除此页面的缓存吗?\\n\\n$1',
 'confirm_purge_button' => '确定',
@@ -2518,7 +2522,7 @@ $1
 # Auto-summaries
 'autosumm-blank'   => '移除所有页面内容',
 'autosumm-replace' => "正在将页面替换为 '$1'",
-'autoredircomment' => '正在重定向到 [[:$1]]',
+'autoredircomment' => '正在重定向到 [[$1]]',
 'autosumm-new'     => '新页面: $1',
 
 # Size units

@@ -528,6 +528,8 @@ XHTML id names.
 'tog-watchlisthideown'        => 'Hide my edits from the watchlist',
 'tog-watchlisthidebots'       => 'Hide bot edits from the watchlist',
 'tog-watchlisthideminor'      => 'Hide minor edits from the watchlist',
+'tog-watchlisthideliu'        => 'Hide edits by logged in users from the watchlist',
+'tog-watchlisthideanons'      => 'Hide edits by anonymous users from the watchlist',
 'tog-nolangconversion'        => 'Disable variants conversion', # only translate this message to other languages if you have to change it
 'tog-ccmeonemails'            => 'Send me copies of e-mails I send to other users',
 'tog-diffonly'                => 'Do not show page content below diffs',
@@ -1805,7 +1807,7 @@ A [[Special:WhatLinksHere/$2|full list]] is available.',
 'filedelete-comment'          => 'Reason for deletion:',
 'filedelete-submit'           => 'Delete',
 'filedelete-success'          => "'''$1''' has been deleted.",
-'filedelete-success-old'      => '<span class="plainlinks">The version of \'\'\'[[Media:$1|$1]]\'\'\' as of $3, $2 has been deleted.</span>',
+'filedelete-success-old'      => "The version of '''[[Media:$1|$1]]''' as of $3, $2 has been deleted.",
 'filedelete-nofile'           => "'''$1''' does not exist on {{SITENAME}}.",
 'filedelete-nofile-old'       => "There is no archived version of '''$1''' with the specified attributes.",
 'filedelete-otherreason'      => 'Other/additional reason:',
@@ -1945,6 +1947,7 @@ Each row contains links to the first and second redirect, as well as the target 
 'protectedpages'                  => 'Protected pages',
 'protectedpages-indef'            => 'Indefinite protections only',
 'protectedpages-summary'          => '', # do not translate or duplicate this message to other languages
+'protectedpages-cascade'          => 'Cascading protections only',
 'protectedpagestext'              => 'The following pages are protected from moving or editing',
 'protectedpagesempty'             => 'No pages are currently protected with these parameters.',
 'protectedtitles'                 => 'Protected titles',
@@ -2096,6 +2099,10 @@ Future changes to this page and its associated talk page will be listed there, a
 'watchlist-hide-own'   => 'Hide my edits',
 'watchlist-show-minor' => 'Show minor edits',
 'watchlist-hide-minor' => 'Hide minor edits',
+'watchlist-show-anons' => 'Show anonymous edits',
+'watchlist-hide-anons' => 'Hide anonymous edits',
+'watchlist-show-liu'   => 'Show logged-in user edits',
+'watchlist-hide-liu'   => 'Hide logged-in user edits',
 
 # Displayed when you click the "watch" button and it is in the process of watching
 'watching'   => 'Watching...',
@@ -3260,9 +3267,6 @@ Please confirm that you really want to recreate this page.",
 'recreate'            => 'Recreate',
 
 'unit-pixel' => 'px', # only translate this message to other languages if you have to change it
-
-# HTML dump
-'redirectingto' => 'Redirecting to [[:$1]]...',
 
 # action=purge
 'confirm_purge'        => 'Clear the cache of this page?

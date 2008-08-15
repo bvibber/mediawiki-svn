@@ -4,18 +4,18 @@
  * @ingroup Language
  * @file
  *
- * @author Siebrand
- * @author SPQRobin
- * @author GerardM
- * @author Hamaryns
  * @author Annabel
  * @author Effeietsanders
+ * @author Erwin85
+ * @author Extended by Hendrik Maryns <hendrik.maryns@uni-tuebingen.de>, March 2007.
  * @author Galwaygirl
+ * @author GerardM
+ * @author Hamaryns
+ * @author McDutchie
+ * @author SPQRobin
+ * @author Siebrand
  * @author Troefkaart
  * @author לערי ריינהארט
- * @author Erwin85
- * @author McDutchie
- * @author Extended by Hendrik Maryns <hendrik.maryns@uni-tuebingen.de>, March 2007.
  */
 
 $separatorTransformTable = array(',' => '.', '.' => ',' );
@@ -314,6 +314,8 @@ $messages = array(
 'tog-watchlisthideown'        => 'Eigen bewerkingen op mijn volglijst verbergen',
 'tog-watchlisthidebots'       => 'Botbewerkingen op mijn volglijst verbergen',
 'tog-watchlisthideminor'      => 'Kleine bewerkingen op mijn volglijst verbergen',
+'tog-watchlisthideliu'        => 'Bewerkingen van aangemelde gebruikers op mijn volglijst verbergen',
+'tog-watchlisthideanons'      => 'Bewerkingen van anonieme gebruikers op mijn volglijst verbergen',
 'tog-nolangconversion'        => 'Variantomzetting uitschakelen',
 'tog-ccmeonemails'            => 'Mij een kopie zenden van e-mails die ik naar andere gebruikers stuur',
 'tog-diffonly'                => 'Pagina-inhoud onder wijzigingen niet weergeven',
@@ -1035,7 +1037,7 @@ Let op dat het gebruiken van de navigatieverwijzingen deze kolom opnieuw instelt
 'mergehistory-submit'              => 'Versies samenvoegen',
 'mergehistory-empty'               => 'Er zijn geen versies die samengevoegd kunnen worden.',
 'mergehistory-success'             => '$3 {{PLURAL:$3|versie|versies}} van [[:$1]] zijn succesvol samengevoegd naar [[:$2]].',
-'mergehistory-fail'                => 'Kan geen geschiedenis samenvoegen, controleer opnieuw de pagina- en tijdparameters.',
+'mergehistory-fail'                => 'Kan geen geschiedenis samenvoegen, controleer opnieuw de pagina- en tijdinstellingen.',
 'mergehistory-no-source'           => 'Bronpagina $1 bestaat niet.',
 'mergehistory-no-destination'      => 'Bestemmingspagina $1 bestaat niet.',
 'mergehistory-invalid-source'      => 'De bronpagina moet een geldige titel zijn.',
@@ -1497,7 +1499,7 @@ U kunt het $1.',
 'filedelete-comment'          => 'Opmerking:',
 'filedelete-submit'           => 'Verwijderen',
 'filedelete-success'          => "'''$1''' is verwijderd.",
-'filedelete-success-old'      => '<span class="plainlinks">De versie van \'\'\'[[Media:$1|$1]]\'\'\' van $3, $2 is verwijderd.</span>',
+'filedelete-success-old'      => "De versie van '''[[Media:$1|$1]]''' van $3, $2 is verwijderd.",
 'filedelete-nofile'           => "'''$1''' bestaat niet in {{SITENAME}}.",
 'filedelete-nofile-old'       => "Er is geen versie van '''$1''' in het archief met de aangegeven eigenschappen.",
 'filedelete-otherreason'      => 'Andere reden:',
@@ -1608,11 +1610,12 @@ Meestal is de laatste pagina het eigenlijke doel.",
 'deadendpagestext'        => "De onderstaande pagina's verwijzen niet naar andere pagina's in deze wiki.",
 'protectedpages'          => "Beveiligde pagina's",
 'protectedpages-indef'    => 'Alleen blokkades zonder verloopdatum',
+'protectedpages-cascade'  => 'Alleen beveiligingen met de cascade-optie',
 'protectedpagestext'      => "De volgende pagina's zijn beveiligd en kunnen niet bewerkt of hernoemd worden",
-'protectedpagesempty'     => "Er zijn momenteel geen pagina's beveiligd die aan deze parameters voldoen.",
+'protectedpagesempty'     => "Er zijn momenteel geen pagina's beveiligd die aan deze voorwaarden voldoen.",
 'protectedtitles'         => 'Beveiligde titels',
 'protectedtitlestext'     => 'De volgende titels zijn beveiligd en kunnen niet aangemaakt worden',
-'protectedtitlesempty'    => 'Er zijn momenteel geen titels beveiligd die aan deze parameters voldoen.',
+'protectedtitlesempty'    => 'Er zijn momenteel geen paginannamen beveiligd die aan deze voorwaarden voldoen.',
 'listusers'               => 'Gebruikerslijst',
 'newpages'                => "Nieuwe pagina's",
 'newpages-username'       => 'Gebruikersnaam:',
@@ -1746,6 +1749,10 @@ Toekomstige bewerkingen van deze pagina en de bijbehorende overlegpagina worden 
 'watchlist-hide-own'   => 'Mijn bewerkingen verbergen',
 'watchlist-show-minor' => 'Kleine bewerkingen weergeven',
 'watchlist-hide-minor' => 'Kleine bewerkingen verbergen',
+'watchlist-show-anons' => 'Anonieme bewerkingen weergeven',
+'watchlist-hide-anons' => 'Anonieme bewerkingen verbergen',
+'watchlist-show-liu'   => 'Aangemelde bewerkingen weergeven',
+'watchlist-hide-liu'   => 'Aangemelde bewerkingen verbergen',
 
 # Displayed when you click the "watch" button and it is in the process of watching
 'watching'   => 'Bezig met plaatsen op volglijst ...',
@@ -1831,9 +1838,9 @@ De meest recente bewerking is gemaakt door [[User:$3|$3]] ([[User talk:$3|overle
 'sessionfailure'              => 'Er lijkt een probleem te zijn met uw aanmeldsessie. Uw handeling is gestopt uit voorzorg tegen een beveiligingsrisico (dat bestaat uit mogelijke "hijacking" van deze sessie). Ga een pagina terug, laad die pagina opnieuw en probeer het nog eens.',
 'protectlogpage'              => 'Beveiligingslogboek',
 'protectlogtext'              => "Hieronder staan pagina's die recentelijk beveiligd zijn, of waarvan de beveiliging is opgeheven. Zie de [[Special:ProtectedPages|lijst met beveiligde pagina's]] voor alle beveiligde pagina's.",
-'protectedarticle'            => '"[[:$1]]" beveiligd',
-'modifiedarticleprotection'   => 'wijzigde beveiligingsniveau voor "[[:$1]]"',
-'unprotectedarticle'          => 'beveiliging "[[:$1]]" opgeheven',
+'protectedarticle'            => '"[[$1]]" beveiligd',
+'modifiedarticleprotection'   => 'wijzigde beveiligingsniveau voor "[[$1]]"',
+'unprotectedarticle'          => 'beveiliging "[[$1]]" opgeheven',
 'protect-title'               => 'Instellen van beveiligingsniveau voor "$1"',
 'protect-legend'              => 'Beveiliging bevestigen',
 'protectcomment'              => 'Opmerkingen:',
@@ -2104,8 +2111,8 @@ Combineer de overlegpagina's alstublieft handmatig.'''",
 'movepage-page-moved'     => 'De pagina $1 is hernoemd naar $2.',
 'movepage-page-unmoved'   => 'De pagina $1 kon niet hernoemd worden naar $2.',
 'movepage-max-pages'      => "Het maximale aantal automatisch te hernoemen pagina's is bereikt ({{PLURAL:$1|$1|$1}}). De overige pagina's worden niet automatisch hernoemd.",
-'1movedto2'               => '[[:$1]] hernoemd naar [[:$2]]',
-'1movedto2_redir'         => '[[:$1]] hernoemd over de doorverwijzing [[:$2]]',
+'1movedto2'               => '[[$1]] hernoemd naar [[$2]]',
+'1movedto2_redir'         => '[[$1]] hernoemd over de doorverwijzing [[$2]]',
 'movelogpage'             => 'Hernoemingslogboek',
 'movelogpagetext'         => "Hieronder staan hernoemde pagina's.",
 'movereason'              => 'Reden:',
@@ -2194,7 +2201,7 @@ Alle transwiki-importhandelingen worden opgeslagen in het [[Special:Log/import|i
 # Import log
 'importlogpage'                    => 'Importlogboek',
 'importlogpagetext'                => "Administratieve import van pagina's met geschiedenis van andere wiki's.",
-'import-logentry-upload'           => 'importeerde [[:$1]] via een bestandsupload',
+'import-logentry-upload'           => 'importeerde [[$1]] via een bestandsupload',
 'import-logentry-upload-detail'    => '$1 {{PLURAL:$1|versie|versies}}',
 'import-logentry-interwiki'        => 'importeerde $1 via transwiki',
 'import-logentry-interwiki-detail' => '$1 {{PLURAL:$1|versie|versies}} van $2',
@@ -2725,9 +2732,6 @@ $1</div>",
 Bevestig alstublieft dat u de pagina opnieuw wilt aanmaken.",
 'recreate'            => 'Opnieuw aanmaken',
 
-# HTML dump
-'redirectingto' => 'Aan het doorverwijzen naar [[:$1]] ...',
-
 # action=purge
 'confirm_purge'        => 'De cache van deze pagina legen?
 
@@ -2761,7 +2765,7 @@ $1',
 # Auto-summaries
 'autosumm-blank'   => 'Pagina leeggehaald',
 'autosumm-replace' => "Tekst vervangen door '$1'",
-'autoredircomment' => 'Verwijst door naar [[:$1]]',
+'autoredircomment' => 'Verwijst door naar [[$1]]',
 'autosumm-new'     => 'Nieuwe pagina: $1',
 
 # Size units

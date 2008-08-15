@@ -265,6 +265,9 @@ class Skin extends Linker {
 		wfProfileIn( __METHOD__ );
 		$this->initPage( $out );
 
+		// See self::afterContentHook() for documentation
+		$afterContent = $this->afterContentHook();
+
 		$out->out( $out->headElement() );
 
 		$out->out( "\n<body" );
@@ -282,10 +285,9 @@ class Skin extends Linker {
 
 		$out->out( $out->mBodytext . "\n" );
 
-		// See self::afterContentHook() for documentation
-		$out->out ($this->afterContentHook());
-
 		$out->out( $this->afterContent() );
+		
+		$out->out( $afterContent );
 
 		$out->out( $this->bottomScripts() );
 
@@ -434,21 +436,30 @@ class Skin extends Linker {
 			$wgRequest->getVal( 'wpEditToken' ) );
 	}
 
-	# get the user/site-specific stylesheet, SkinTemplate loads via RawPage.php (settings are cached that way)
-	function getUserStylesheet() {
-		global $wgStylePath, $wgRequest, $wgContLang, $wgSquidMaxage, $wgStyleVersion;
+	/**
+	 * Get the site-specific stylesheet, SkinTemplate loads via RawPage.php (settings are cached that way)
+	 */
+	function getSiteStylesheet() {
+		global $wgStylePath, $wgContLang, $wgStyleVersion;
 		$sheet = $this->getStylesheet();
 		$s = "@import \"$wgStylePath/common/shared.css?$wgStyleVersion\";\n";
 		$s .= "@import \"$wgStylePath/common/oldshared.css?$wgStyleVersion\";\n";
 		$s .= "@import \"$wgStylePath/$sheet?$wgStyleVersion\";\n";
-		if($wgContLang->isRTL()) $s .= "@import \"$wgStylePath/common/common_rtl.css?$wgStyleVersion\";\n";
+		if( $wgContLang->isRTL() )
+			$s .= "@import \"$wgStylePath/common/common_rtl.css?$wgStyleVersion\";\n";
+		return "$s\n";
+	}
 
+	/**
+	 * Get the user-specific stylesheet, SkinTemplate loads via RawPage.php (settings are cached that way)
+	 */
+	function getUserStylesheet() {
+		global $wgContLang, $wgSquidMaxage, $wgStyleVersion;
 		$query = "usemsgcache=yes&action=raw&ctype=text/css&smaxage=$wgSquidMaxage";
-		$s .= '@import "' . self::makeNSUrl( 'Common.css', $query, NS_MEDIAWIKI ) . "\";\n" .
-			'@import "' . self::makeNSUrl( ucfirst( $this->getSkinName() . '.css' ), $query, NS_MEDIAWIKI ) . "\";\n";
-
+		$s = '@import "' . self::makeNSUrl( 'Common.css', $query, NS_MEDIAWIKI ) . "\";\n";
+		$s .= '@import "' . self::makeNSUrl( ucfirst( $this->getSkinName() . '.css' ), $query, NS_MEDIAWIKI ) . "\";\n";
 		$s .= $this->doGetUserStyles();
-		return $s."\n";
+		return "$s\n";
 	}
 
 	/**
@@ -478,6 +489,18 @@ class Skin extends Linker {
 		return $s;
 	}
 
+	/**
+	 * Return html code that include site stylesheets
+	 */
+	function getSiteStyles() {
+		$s = "<style type='text/css'>\n";
+		$s .= "/*/*/ /*<![CDATA[*/\n"; # <-- Hide the styles from Netscape 4 without hiding them from IE/Mac
+		$s .= $this->getSiteStylesheet();
+		$s .= "/*]]>*/ /* */\n";
+		$s .= "</style>\n";
+		return $s;
+	}
+	
 	/**
 	 * Return html code that include User stylesheets
 	 */
@@ -567,10 +590,24 @@ END;
 		}
 		$a['onload'] = $wgOut->getOnloadHandler();
 		$a['class'] =
-			'mediawiki ns-'.$wgTitle->getNamespace().
-			' '.($wgContLang->isRTL() ? "rtl" : "ltr").
-			' '.Sanitizer::escapeClass( 'page-'.$wgTitle->getPrefixedText() );
+			'mediawiki' .
+			' '.( $wgContLang->isRTL() ? "rtl" : "ltr" ).
+			' '.$this->getPageClasses( $wgTitle ) .
+			' skin-'. Sanitizer::escapeClass( $this->getSkinName( ) );
 		return $a;
+	}
+	
+	function getPageClasses( $title ) {
+		$numeric = 'ns-'.$title->getNamespace();
+		if( $title->getNamespace() == NS_SPECIAL ) {
+			$type = "ns-special";
+		} elseif( $title->isTalkPage() ) {
+			$type = "ns-talk";
+		} else {
+			$type = "ns-subject";
+		}
+		$name = Sanitizer::escapeClass( 'page-'.$title->getPrefixedText() );
+		return "$numeric $type $name";
 	}
 
 	/**

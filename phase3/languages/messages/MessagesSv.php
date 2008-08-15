@@ -4,21 +4,21 @@
  * @ingroup Language
  * @file
  *
- * @author Lejonel
- * @author Sannab
  * @author Boivie
- * @author M.M.S.
- * @author Habj
- * @author Jon Harald Søby
- * @author לערי ריינהארט
- * @author Lokal Profil
- * @author Steinninn
- * @author Leo Johannes
- * @author Skalman
- * @author Habjchen
  * @author Grillo
+ * @author Habj
+ * @author Habjchen
+ * @author Jon Harald Søby
+ * @author Lejonel
+ * @author Leo Johannes
+ * @author Lokal Profil
+ * @author M.M.S.
  * @author Micke
  * @author S.Örvarr.S
+ * @author Sannab
+ * @author Skalman
+ * @author Steinninn
+ * @author לערי ריינהארט
  */
 
 $skinNames = array(
@@ -669,7 +669,7 @@ Kontrollera stavningen, eller skapa ett nytt konto.',
 'nouserspecified'            => 'Du måste ange ett användarnamn.',
 'wrongpassword'              => 'Lösenordet du angav är felaktigt. Försök igen',
 'wrongpasswordempty'         => 'Lösenordet som angavs var blankt. Var god försök igen.',
-'passwordtooshort'           => 'Ditt lösenord är för kort.
+'passwordtooshort'           => 'Ditt lösenord är ogiltigt eller för kort.
 Det måste innehålla minst $1 tecken och det får inte vara ditt användarnamn.',
 'mailmypassword'             => 'Sänd mig ett nytt lösenord',
 'passwordremindertitle'      => 'Nytt temporärt lösenord från {{SITENAME}}',
@@ -880,7 +880,7 @@ Raderingsloggen för sidan innehåller följande:",
 # Parser/template warnings
 'expensive-parserfunction-warning'        => 'Varning: Denna sida innehåller för många anrop av resurskrävande parserfunktioner.
 
-Antalet anrop får vara högst $2, nu görs $1 anrop.',
+Antalet {{PLURAL:$2|anrop|anrop}} får vara högst $2, nu görs {{PLURAL:$1|$1 anrop|$1 anrop}}.',
 'expensive-parserfunction-category'       => 'Sidor med för många resurskrävande parserfunktioner',
 'post-expand-template-inclusion-warning'  => 'Varning: Den här sidan innehåller för mycket mallinklusioner.
 Några av mallarna kommer inte att inkluderas.',
@@ -923,7 +923,7 @@ Förklaring: (nuvarande) = skillnad mot nuvarande version; (föregående) = skil
 'deletedrev'          => '[raderad]',
 'histfirst'           => 'Första',
 'histlast'            => 'Senaste',
-'historysize'         => '($1 byte)',
+'historysize'         => '({{PLURAL:$1|1 byte|$1 byte}})',
 'historyempty'        => '(tom)',
 
 # Revision feed
@@ -1451,7 +1451,7 @@ Det finns en [[Special:WhatLinksHere/$2|fullständig lista]].',
 'filedelete-comment'          => 'Anledning:',
 'filedelete-submit'           => 'Radera',
 'filedelete-success'          => "'''$1''' har raderats.",
-'filedelete-success-old'      => 'Versionen av [[Media:$1|$1]] från $2 kl. $3 har raderats.',
+'filedelete-success-old'      => "Versionen av '''[[Media:$1|$1]]''' från $2 kl. $3 har raderats.",
 'filedelete-nofile'           => "Filen '''$1''' finns inte på den här webplatsen.",
 'filedelete-nofile-old'       => "Den versionen av '''$1''' kan inte raderas eftersom den inte finns.",
 'filedelete-otherreason'      => 'Annan/ytterligare anledning:',
@@ -1524,7 +1524,7 @@ En sida anses vara en förgreningssida om den inkluderar en mall som länkas til
 'fewestrevisions' => 'Sidor med minst antal ändringar',
 
 # Miscellaneous special pages
-'nbytes'                  => '$1 byte',
+'nbytes'                  => '$1 {{PLURAL:$1|byte|byte}}',
 'ncategories'             => '$1 {{PLURAL:$1|kategori|kategorier}}',
 'nlinks'                  => '$1 {{PLURAL:$1|länk|länkar}}',
 'nmembers'                => '$1 {{PLURAL:$1|medlem|medlemmar}}',
@@ -1556,6 +1556,7 @@ En sida anses vara en förgreningssida om den inkluderar en mall som länkas til
 'deadendpagestext'        => 'Följande sidor saknar länkar till andra sidor på den här wikin.',
 'protectedpages'          => 'Skyddade sidor',
 'protectedpages-indef'    => 'Endast skydd på obestämd tid',
+'protectedpages-cascade'  => 'Endast kaskaderande skrivskydd',
 'protectedpagestext'      => 'Följande sidor är skyddade mot redigering eller flyttning.',
 'protectedpagesempty'     => 'Inga sidor är skyddade under de villkoren.',
 'protectedtitles'         => 'Skyddade titlar',
@@ -1776,8 +1777,8 @@ Sidan ändrades senast av [[User:$3|$3]] ([[User talk:$3|diskussion]] | [[Specia
 'sessionfailure'              => 'Något med din session som inloggad är på tok. Din begärda åtgärd har avbrutits, för att förhindra att någon kapar din session. Klicka på "Tillbaka" i din webbläsare och ladda om den sida du kom ifrån. Försök sedan igen.',
 'protectlogpage'              => 'Skrivskyddslogg',
 'protectlogtext'              => 'Detta är en lista över applicerande och borttagande av skrivskydd.',
-'protectedarticle'            => 'skyddade [[:$1]]',
-'modifiedarticleprotection'   => 'ändrade skyddsnivån för "[[:$1]]"',
+'protectedarticle'            => 'skyddade [[$1]]',
+'modifiedarticleprotection'   => 'ändrade skyddsnivån för "[[$1]]"',
 'unprotectedarticle'          => 'tog bort skydd av $1',
 'protect-title'               => 'Skyddsinställningar för "$1"',
 'protect-legend'              => 'Bekräfta skrivskydd av sida',
@@ -2052,8 +2053,8 @@ Försök att sammanfoga dem manuellt.'''",
 'movepage-page-moved'     => 'Sidan $1 har flyttats till $2.',
 'movepage-page-unmoved'   => 'Sidan $1 kunde inte flyttas till $2.',
 'movepage-max-pages'      => 'Gränsen på $1 {{PLURAL:$1|flyttad sida|flyttade sidor}} har uppnåtts och inga fler sidor kommer att flyttas automatiskt.',
-'1movedto2'               => 'flyttade [[:$1]] till [[:$2]]',
-'1movedto2_redir'         => 'flyttade [[:$1]] till [[:$2]], som var en omdirigeringssida',
+'1movedto2'               => 'flyttade [[$1]] till [[$2]]',
+'1movedto2_redir'         => 'flyttade [[$1]] till [[$2]], som var en omdirigeringssida',
 'movelogpage'             => 'Sidflyttslogg',
 'movelogpagetext'         => 'Listan nedan visar sidor som flyttats.',
 'movereason'              => 'Anledning:',
@@ -2142,7 +2143,7 @@ All överföring mellan wikier (transwiki) listas i  [[Special:Log/import|import
 # Import log
 'importlogpage'                    => 'Importlogg',
 'importlogpagetext'                => 'Administrativa sidimporter med versionshistorik från andra wikier.',
-'import-logentry-upload'           => 'importerade [[:$1]] genom filuppladdning',
+'import-logentry-upload'           => 'importerade [[$1]] genom filuppladdning',
 'import-logentry-upload-detail'    => '$1 {{PLURAL:$1|version|versioner}}',
 'import-logentry-interwiki'        => 'överförde $1 mellan wikier',
 'import-logentry-interwiki-detail' => '$1 {{PLURAL:$1|version|versioner}} från $2',
@@ -2646,9 +2647,6 @@ Denna bekräftelsekod kommer inte att fungera efter $4.',
 Bekräfta att du verkligen vill återskapa sidan.",
 'recreate'            => 'Återskapa',
 
-# HTML dump
-'redirectingto' => 'Omdirigerar till [[:$1]]...',
-
 # action=purge
 'confirm_purge'        => 'Rensa denna sidas cache?
 
@@ -2682,7 +2680,7 @@ $1',
 # Auto-summaries
 'autosumm-blank'   => 'Tar bort sidans innehåll',
 'autosumm-replace' => "Ersätter sidans innehåll med '$1'",
-'autoredircomment' => 'Omdirigerar till [[:$1]]',
+'autoredircomment' => 'Omdirigerar till [[$1]]',
 'autosumm-new'     => 'Ny sida: $1',
 
 # Size units

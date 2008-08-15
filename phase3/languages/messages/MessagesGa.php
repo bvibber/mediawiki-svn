@@ -5,9 +5,9 @@
  * @file
  *
  * @author Alison
+ * @author Kwekubo
  * @author Moilleadóir
  * @author Spacebirdy
- * @author Kwekubo
  * @author לערי ריינהארט
  */
 
@@ -1118,8 +1118,8 @@ d'athúsáid duine eile eagrán níos luaí cheana féin.
 'protectlogpage'              => 'Cuntas_cosanta',
 'protectlogtext'              => 'Seo é liosta de glais a cuireadh ar / baineadh de leathanaigh.
 Féach ar [[Special:ProtectedPages|Leathanach glasáilte]] chun a thuilleadh eolais a fháil.',
-'protectedarticle'            => 'glasáladh "[[:$1]]"',
-'unprotectedarticle'          => 'díghlasáladh "[[:$1]]"',
+'protectedarticle'            => 'glasáladh "[[$1]]"',
+'unprotectedarticle'          => 'díghlasáladh "[[$1]]"',
 'protect-title'               => 'Ag glasáil "$1"',
 'protect-legend'              => 'Cinntigh an glasáil',
 'protectcomment'              => 'Cúis don glasáil',
@@ -1807,9 +1807,6 @@ Rachaidh an cód deimhnithe seo as feidhm ag $4.',
 # Delete conflict
 'recreate' => 'Athchruthaigh',
 
-# HTML dump
-'redirectingto' => 'Ag athdhíriú go [[:$1]]...',
-
 # action=purge
 'confirm_purge'        => 'An bhfuil tú cinnte go dteastaíonn uait taisce an leathanaigh seo a bhánú?
 
@@ -1825,7 +1822,7 @@ $1',
 'imgmultigoto' => 'Téigh go leathanach $1',
 
 # Auto-summaries
-'autoredircomment' => 'Ag athdhíriú go [[:$1]]',
+'autoredircomment' => 'Ag athdhíriú go [[$1]]',
 'autosumm-new'     => 'Leathanach nua: $1',
 
 # Live preview

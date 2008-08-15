@@ -4,10 +4,10 @@
  * @ingroup Language
  * @file
  *
+ * @author Maartenvdbent
  * @author Pyt
  * @author Snakesteuben
  * @author לערי ריינהארט
- * @author Maartenvdbent
  */
 
 $skinNames = array(
@@ -645,7 +645,7 @@ Besykje de side yn lytsere stikken te brekken.</strong>",
 It wie baas en nim de tekst foar letter oer yn in tekstbestân.</strong>',
 'protectedpagewarning'             => '<strong>Waarskôging: Dizze side is beskerme, dat gewoane brûkers dy net bewurkje kinne.</strong>',
 'semiprotectedpagewarning'         => "'''Tink derom:''' dizze side is befeilige en kin allinne troch registrearre brûkers bewurke wurde.",
-'cascadeprotectedwarning'          => "'''Warskoging:''' Dizze side is skoattele sadat allinnich behearders de side wizigje kinne, om't der in ûnderdiel útmakket fan de neikommende siden {{PLURAL:\$1|page|pages}}, dy't skoattele binne mei de \"ûnderlizzende siden\" opsje ynskeakele:",
+'cascadeprotectedwarning'          => "'''Warskôging:''' Dizze side is skoattele sadat allinnich behearders de side wizigje kinne, om't der in ûnderdiel útmakket fan de neikommende {{PLURAL:\$1|side|siden}}, dy't skoattele binne mei de \"ûnderlizzende siden\" opsje ynskeakele:",
 'titleprotectedwarning'            => '<strong>WARSKÔGING: Dizze side is befeilige, dat allinne inkelde brûkers kinne him oanmeitsje.</strong>',
 'templatesused'                    => 'Op dizze side brûkte sjabloanen:',
 'templatesusedpreview'             => 'Yn dit proefbyld sjabloanen:',
@@ -1303,8 +1303,8 @@ De lêste feroaring wie fan [[User:$3|$3]] ([[User talk:$3|Oerlis]]).',
 'protectlogpage'              => 'Befeiligingslochboek',
 'protectlogtext'              => 'Hjirûnder wurdt it skoattele en frijjaan fan siden oanjûn. 
 Sjoch [[Special:ProtectedPages|Skoattele side]] foar mear ynformaasje.',
-'protectedarticle'            => '"[[:$1]]" skoattele',
-'unprotectedarticle'          => 'joech "[[:$1]]" frij',
+'protectedarticle'            => '"[[$1]]" skoattele',
+'unprotectedarticle'          => 'joech "[[$1]]" frij',
 'protect-legend'              => 'Befeiliging befêstigje',
 'protectcomment'              => 'Oanmerkings:',
 'protectexpiry'               => 'Doer:',
@@ -1503,8 +1503,8 @@ Gearfoegje de oerlissiden hânmjittig.",
 'movedto'                 => 'werenamd as',
 'movetalk'                => 'Derby hearrende oerlisside ferskowe',
 'movepage-page-moved'     => 'De side $1 is werneamd nei $2.',
-'1movedto2'               => '[[:$1]] ferskood nei [[:$2]]',
-'1movedto2_redir'         => '[[:$1]] ferskood nei [[:$2]], wat in synonym wie',
+'1movedto2'               => '[[$1]] ferskood nei [[$2]]',
+'1movedto2_redir'         => '[[$1]] ferskood nei [[$2]], wat in synonym wie',
 'movelogpage'             => 'Lochboek fan ferskode siden',
 'movelogpagetext'         => 'Dit is in list fan feroare titels.',
 'movereason'              => 'Reden:',
@@ -1750,13 +1750,10 @@ Dit berjocht jildt oant $4.',
 : ''$2''
 Wolle jo de side wier op 'e nij skriuwe?",
 
-# HTML dump
-'redirectingto' => 'Synonym foar [[:$1]]...',
-
 # Auto-summaries
 'autosumm-blank'   => 'Alle ynhâld fan de side weismiten',
 'autosumm-replace' => "Side ferfong mei '$1'",
-'autoredircomment' => 'Ferwiist troch nei [[:$1]]',
+'autoredircomment' => 'Ferwiist troch nei [[$1]]',
 'autosumm-new'     => 'Nije Side: $1',
 
 # Live preview

@@ -182,7 +182,7 @@ class SkinTemplate extends Skin {
 		}
 
 		$this->usercss =  $this->userjs = $this->userjsprev = false;
-		$this->setupUserCss();
+		$this->setupUserCss( $out->getExtStyle() );
 		$this->setupUserJs( $out->isUserJsAllowed() );
 		$this->titletxt = $this->mTitle->getPrefixedText();
 		wfProfileOut( __METHOD__."-stuff" );
@@ -191,7 +191,8 @@ class SkinTemplate extends Skin {
 		$tpl->set( 'title', $wgOut->getPageTitle() );
 		$tpl->set( 'pagetitle', $wgOut->getHTMLTitle() );
 		$tpl->set( 'displaytitle', $wgOut->mPageLinkTitle );
-		$tpl->set( 'pageclass', Sanitizer::escapeClass( 'page-'.$this->mTitle->getPrefixedText() ) );
+		$tpl->set( 'pageclass', $this->getPageClasses( $this->mTitle ) );
+		$tpl->set( 'skinnameclass', ( "skin-" . Sanitizer::escapeClass( $this->getSkinName ( ) ) ) );
 
 		$nsname = isset( $wgCanonicalNamespaceNames[ $this->mTitle->getNamespace() ] ) ?
 		          $wgCanonicalNamespaceNames[ $this->mTitle->getNamespace() ] :
@@ -253,7 +254,6 @@ class SkinTemplate extends Skin {
 		$tpl->set( 'handheld', $wgRequest->getBool( 'handheld' ) );
 		$tpl->set( 'csslinks', $this->buildCssLinks() );
 		$tpl->setRef( 'loggedin', $this->loggedin );
-		$tpl->set('nsclass', 'ns-'.$this->mTitle->getNamespace());
 		$tpl->set('notspecialpage', $this->mTitle->getNamespace() != NS_SPECIAL);
 		/* XXX currently unused, might get useful later
 		$tpl->set( "editable", ($this->mTitle->getNamespace() != NS_SPECIAL ) );
@@ -966,7 +966,7 @@ class SkinTemplate extends Skin {
 	/**
 	 * @private
 	 */
-	function setupUserCss() {
+	function setupUserCss( $extCSS = array() ) {
 		global $wgRequest, $wgAllowUserCss, $wgUseSiteCss, $wgContLang, $wgSquidMaxage, $wgStylePath, $wgUser;
 
 		wfProfileIn( __METHOD__ );
@@ -981,43 +981,47 @@ class SkinTemplate extends Skin {
 			$siteargs['smaxage'] = '0';
 			$siteargs['ts'] = $wgUser->mTouched;
 		}
+		
+		// Add any extension CSS
+		foreach( $extCSS as $tag ) {
+			$this->addStyle( $tag['href'] );
+		}
 
-		$sitecss = $usercss = '';
 		// If we use the site's dynamic CSS, throw that in, too
 		// Per-site custom styles
-		if( $wgUseSiteCss ) {
+		if ( $wgUseSiteCss ) {
 			$query = wfArrayToCGI( array(
 				'usemsgcache' => 'yes',
 				'ctype' => 'text/css',
 				'smaxage' => $wgSquidMaxage
 			) + $siteargs );
-			# Site settings must override extension css! (bug 15025)
-			$sitecss .= '@import "' . self::makeNSUrl( 'Common.css', $query, NS_MEDIAWIKI) . '";' . "\n";
-			$sitecss .= '@import "' . self::makeNSUrl( ucfirst( $this->skinname ) . '.css', $query, NS_MEDIAWIKI ) . '";' . "\n";
+			$this->addStyle( self::makeNSUrl( 'Common.css', $query, NS_MEDIAWIKI ) );
+			$this->addStyle( self::makeNSUrl( ucfirst( $this->skinname ) . '.css', $query, NS_MEDIAWIKI ),
+				'screen' );
 		}
 
 		// Per-user styles based on preferences
 		$siteargs['gen'] = 'css';
-		if( ( $us = $wgRequest->getVal( 'useskin', '' ) ) !== '' ) {
+		if( ( $us = $wgRequest->getVal( 'useskin', '' ) ) !== '' )
 			$siteargs['useskin'] = $us;
-		}
-		$prefcss = '@import "' . self::makeUrl( '-', wfArrayToCGI( $siteargs ) ) . '";' . "\n";
+		$this->addStyle( self::makeUrl( '-', wfArrayToCGI( $siteargs ) ), 'screen' );
 
 		// Per-user custom style pages
-		if( $wgAllowUserCss && $this->loggedin ) {
+		if ( $wgAllowUserCss && $this->loggedin ) {
 			$action = $wgRequest->getVal('action');
-			# If we're previewing the CSS page, use it
+
+			# if we're previewing the CSS page, use it
 			if( $this->mTitle->isCssSubpage() && $this->userCanPreview( $action ) ) {
 				$previewCss = $wgRequest->getText('wpTextbox1');
-				// @FIXME: properly escape the cdata!
-				$this->usercss = "/*<![CDATA[*/\n" . $sitecss . $prefcss . $usercss . $previewCss . "/*]]>*/";
+
+				/// @fixme properly escape the cdata!
+				$this->usercss = "/*<![CDATA[*/\n" .
+					$previewCss .
+					"/*]]>*/";
 			} else {
-				$usercss .= '@import "' . self::makeUrl($this->userpage .'/'.$this->skinname .'.css',
-								 'action=raw&ctype=text/css') . '";' . "\n";
-				$this->usercss = "/*<![CDATA[*/\n" . $sitecss . $prefcss . $usercss . '/*]]>*/';
+				$this->addStyle( self::makeUrl($this->userpage . '/'.$this->skinname.'.css',
+								 'action=raw&ctype=text/css'), 'screen' );
 			}
-		} else {
-			$this->usercss = "/*<![CDATA[*/\n" . $sitecss . $prefcss . '/*]]>*/';
 		}
 
 		wfProfileOut( __METHOD__ );

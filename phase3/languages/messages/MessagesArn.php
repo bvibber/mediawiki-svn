@@ -4,8 +4,8 @@
  * @ingroup Language
  * @file
  *
- * @author Lin linao
  * @author Clerc
+ * @author Lin linao
  * @author Poquil
  */
 
@@ -94,6 +94,7 @@ $messages = array(
 'create'           => 'Llitun',
 'editthispage'     => 'Wirin tüfachi página',
 'delete'           => 'Ñamümün',
+'deletethispage'   => 'Ñamümün tüfachi pakina',
 'protect'          => 'Elulan ñi wiriael',
 'unprotect'        => 'Elun ñi wiriael',
 'talkpage'         => 'Nütramkafinge tüfachi pakina',
@@ -103,7 +104,7 @@ $messages = array(
 'toolbox'          => 'Küdawpeyüm',
 'userpage'         => 'adkintun página de usuario',
 'projectpage'      => 'adkintun página meta',
-'imagepage'        => 'adkintun página de imagen',
+'imagepage'        => 'adkintun pakina imagen',
 'mediawikipage'    => 'adkintun página de mensaje',
 'templatepage'     => 'adkintun página de plantilla',
 'viewhelppage'     => 'adkintun página de ayuda',
@@ -114,6 +115,7 @@ $messages = array(
 'jumptosearch'     => 'kintu',
 
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
+'edithelp'     => 'Kellü wirin',
 'edithelppage' => 'Help:Chum wiringekey pakina',
 'helppage'     => 'Help:Kellu',
 
@@ -156,10 +158,12 @@ $messages = array(
 'loginlanguagelabel'      => 'Dungun: $1',
 
 # Edit pages
-'subject'    => 'Dungu/üy',
-'newarticle' => '(We)',
-'editing'    => 'Wirimekey $1',
-'yourtext'   => 'Tami wirin',
+'subject'      => 'Dungu/üy',
+'showpreview'  => 'Pen chum müley',
+'loginreqlink' => 'Koni',
+'newarticle'   => '(We)',
+'editing'      => 'Wirimekey $1',
+'yourtext'     => 'Tami wirin',
 
 # History pages
 'page_first'     => 'wünen',
@@ -170,7 +174,8 @@ $messages = array(
 'history-feed-item-nocomment' => '$1 $2 mew', # user at time
 
 # Revision deletion
-'rev-delundel' => 'pengelün/ellkan',
+'rev-delundel'  => 'pengelün/ellkan',
+'revdelete-hid' => 'Ellkan $1',
 
 # Diffs
 'lineno'   => 'Wirin $1:',
@@ -179,7 +184,16 @@ $messages = array(
 # Search results
 'viewprevnext'          => 'Pen ($1) ($2) ($3).',
 'search-interwiki-more' => '(Doy)',
-'powersearch'           => 'Kintu',
+'searchall'             => 'Fill',
+'powersearch'           => 'Kintun',
+'powersearch-field'     => 'Kintun',
+
+# Preferences page
+'prefs-edits'       => 'Rakin Wirin:',
+'prefsnologin'      => 'Mülelay Konün',
+'skin-preview'      => 'Pen chum müley',
+'textboxsize'       => 'Wirin',
+'searchresultshead' => 'Kintun',
 
 # Groups
 'group'       => 'Kisuwen:',
@@ -241,8 +255,9 @@ $messages = array(
 'unwatchthispage' => 'Llaytuwelan',
 
 # Delete/protect/revert
-'protectexpiry'       => 'Afi:',
-'protect-level-sysop' => 'Pu ngünefe müṯen',
+'protectexpiry'           => 'Afi:',
+'protect-level-sysop'     => 'Pu ngünefe müṯen',
+'protect-summary-cascade' => 'Trayengko',
 
 # Restrictions (nouns)
 'restriction-edit' => 'Pepiwelukay',
@@ -264,7 +279,7 @@ $messages = array(
 
 # Move page
 'newtitle'  => 'We üy püle',
-'1movedto2' => '[[:$1]] wiñamngey [[:$2]] püle',
+'1movedto2' => '[[$1]] wiñamngey [[$2]] püle',
 
 # Namespace 8 related
 'allmessagesname' => 'Üy',

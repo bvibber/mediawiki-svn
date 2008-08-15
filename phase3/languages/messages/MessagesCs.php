@@ -4,15 +4,15 @@
  * @ingroup Language
  * @file
  *
- * @author Li-sung
  * @author Danny B.
- * @author Mormegil
- * @author Matěj Grabovský
- * @author לערי ריינהארט
- * @author Reaperman
  * @author Helix84
- * @author Michawiki
+ * @author Li-sung
  * @author Martin Kozák
+ * @author Matěj Grabovský
+ * @author Michawiki
+ * @author Mormegil
+ * @author Reaperman
+ * @author לערי ריינהארט
  */
 
 $fallback8bitEncoding = 'cp1250';
@@ -754,6 +754,7 @@ Heslo: „$3“
 Měli byste se co nejdřív přihlásit a změnit si heslo.
 
 Pokud byl účet vytvořen omylem, považujte tuto zprávu za bezpředmětnou.',
+'login-throttled'            => 'Provedli jste v krátké době příliš mnoho pokusů zadat heslo k tomuto účtu. Počkejte chvíli, než to zkusíte znovu.',
 'loginlanguagelabel'         => 'Jazyk: $1',
 
 # Password reset dialog
@@ -1468,7 +1469,7 @@ Můžete si prohlédnout [[Special:WhatLinksHere/$2|úplný seznam]].',
 'filedelete-comment'          => 'Důvod smazání:',
 'filedelete-submit'           => 'Smazat',
 'filedelete-success'          => "Soubor '''$1''' byl smazán.",
-'filedelete-success-old'      => '<span class="plainlinks">Verze souboru \'\'\'[[Media:$1|$1]]\'\'\' z $3 $2 byla smazána.</span>',
+'filedelete-success-old'      => "Verze souboru '''[[Media:$1|$1]]''' z $3 $2 byla smazána.",
 'filedelete-nofile'           => "Soubor '''$1''' na {{grammar:6sg|{{SITENAME}}}} neexistuje.",
 'filedelete-nofile-old'       => "Neexistuje archivní verze souboru '''$1''' s udávanými atributy.",
 'filedelete-otherreason'      => 'Jiný či další důvod:',
@@ -1572,6 +1573,7 @@ Aktuální délka fronty údržby je '''$7'''.",
 'deadendpagestext'        => 'Následující stránky neodkazují na žádnou jinou stránku {{grammar:2sg|{{SITENAME}}}}.',
 'protectedpages'          => 'Zamčené stránky',
 'protectedpages-indef'    => 'Pouze zámky na neurčito',
+'protectedpages-cascade'  => 'Pouze kaskádové zámky',
 'protectedpagestext'      => 'Následující stránky jsou zamčeny nebo polozamčeny pro editaci nebo přesun:',
 'protectedpagesempty'     => 'Žádná stránka není zamčena s těmito parametry.',
 'protectedtitles'         => 'Zamčené názvy stránek',
@@ -1791,9 +1793,9 @@ vámi požadovaná činnost byla stornována jako prevence před neoprávněným
 Stiskněte tlačítko „zpět“, obnovte stránku, ze které jste přišli a zkuste činnost znovu.',
 'protectlogpage'              => 'Kniha zamčení',
 'protectlogtext'              => 'Níže je uveden seznam všech zamčení a odemčení stránek.',
-'protectedarticle'            => 'zamyká „[[:$1]]“',
-'modifiedarticleprotection'   => 'mění zámek stránky "[[:$1]]"',
-'unprotectedarticle'          => 'odemyká „[[:$1]]“',
+'protectedarticle'            => 'zamyká „[[$1]]“',
+'modifiedarticleprotection'   => 'mění zámek stránky "[[$1]]"',
+'unprotectedarticle'          => 'odemyká „[[$1]]“',
 'protect-title'               => 'Zamyká se „$1“',
 'protect-legend'              => 'Potvrdit zamčení',
 'protectcomment'              => 'Důvod zamčení',
@@ -1960,7 +1962,7 @@ Můžete si prohlédnout [[Special:IPBlockList|seznam zablokovaných uživatelů
 'ipusubmit'                       => 'Odblokovat',
 'unblocked'                       => '[[User:$1|$1]] byl odblokován',
 'unblocked-id'                    => 'Blok $1 byl zrušen',
-'ipblocklist'                     => 'Seznam blokovaných IP adres a uživatelských jmen',
+'ipblocklist'                     => 'Blokované IP adresy a uživatelská jména',
 'ipblocklist-legend'              => 'Hledat zablokovaného uživatele',
 'ipblocklist-username'            => 'Jméno nebo IP adresa:',
 'ipblocklist-submit'              => 'Hledat',
@@ -2046,8 +2048,8 @@ V těchto případech musíte přesunout nebo sloučit stránky manuálně, jest
 'movepage-page-moved'     => 'Stránka $1 byla přesunuta na $2.',
 'movepage-page-unmoved'   => 'Stránka $1 nemůže být přesunuta na $2.',
 'movepage-max-pages'      => '{{PLURAL:$1|Byla přesunuta maximálně povolená jedna stránka|Byly přesunuty maximálně povolené $1 stránky|Bylo přesunuto maximálně povolených $1 stránek}}, více jich už automaticky přesunuto nebude.',
-'1movedto2'               => 'Stránka [[:$1]] přemístěna na stránku [[:$2]]',
-'1movedto2_redir'         => 'Stránka [[:$1]] přemístěna na stránku [[:$2]] s výměnou přesměrování',
+'1movedto2'               => 'Stránka [[$1]] přemístěna na stránku [[$2]]',
+'1movedto2_redir'         => 'Stránka [[$1]] přemístěna na stránku [[$2]] s výměnou přesměrování',
 'movelogpage'             => 'Kniha přesunů',
 'movelogpagetext'         => 'Toto je záznam všech přesunů stránek.',
 'movereason'              => 'Důvod:',
@@ -2067,7 +2069,7 @@ Cílová stránka „[[:$1]]“ již existuje. Přejete si ji smazat pro uvolně
 
 # Export
 'export'            => 'Exportovat stránky',
-'exporttext'        => 'Můžete exportovat text a historii editací některé stránky nebo sady stránek zabalené v XML. Výsledný soubor lze naimportovat do jiné wiki, která běží na software MediaWiki, pomocí stránky [[{{ns:Special}}:Import]].
+'exporttext'        => 'Můžete exportovat text a historii editací některé stránky nebo sady stránek zabalené v XML. Výsledný soubor lze naimportovat do jiné wiki, která běží na software MediaWiki, pomocí [[Special:Import|stránky importů]].
 
 Do níže uvedeného editačního pole zadejte názvy stránek, které chcete exportovat; každý řádek jeden název. Zvolte také, zda se mají exportovat i starší verze stránky včetně informací v historii editací, nebo jen aktuální verze s informací o poslední editaci.
 
@@ -2132,7 +2134,7 @@ V druhém případě můžete také používat přímý odkaz, např. pomocí [[
 # Import log
 'importlogpage'                    => 'Kniha importů',
 'importlogpagetext'                => 'Na této stránce se zobrazují správcovské importy stránek včetně historie editací z jiných wiki.',
-'import-logentry-upload'           => 'naimportoval [[:$1]] načtením souboru',
+'import-logentry-upload'           => 'naimportoval [[$1]] načtením souboru',
 'import-logentry-upload-detail'    => '$1 {{PLURAL:$1|revizi|revize|revizí}}',
 'import-logentry-interwiki'        => 'přenesl $1',
 'import-logentry-interwiki-detail' => '$1 {{PLURAL:$1|revizi|revize|revizí}} z $2',
@@ -2257,9 +2259,10 @@ V druhém případě můžete také používat přímý odkaz, např. pomocí [[
 'markedaspatrollederror-noautopatrol' => 'Nemáte dovoleno označovat vlastní editace jako prověřené.',
 
 # Patrol log
-'patrol-log-page' => 'Kniha prověřených editací',
-'patrol-log-line' => 'označuje revizi $1 stránky $2 za prověřenou $3',
-'patrol-log-auto' => '(automaticky)',
+'patrol-log-page'   => 'Kniha prověřených editací',
+'patrol-log-header' => 'Toto je kniha prověřených verzí.',
+'patrol-log-line'   => 'označuje revizi $1 stránky $2 za prověřenou $3',
+'patrol-log-auto'   => '(automaticky)',
 
 # Image deletion
 'deletedrevision'                 => 'Smazána stará revize $1',
@@ -2642,9 +2645,6 @@ $1
 Opravdu si přejete znovu tuto stránku založit?',
 'recreate'            => 'Znovu založit',
 
-# HTML dump
-'redirectingto' => 'Přesměrovává se na [[:$1]]…',
-
 # action=purge
 'confirm_purge'        => 'Aktualizovat cachovanou verzi této stránky?
 
@@ -2678,7 +2678,7 @@ $1',
 # Auto-summaries
 'autosumm-blank'   => 'Vyprázdnění stránky',
 'autosumm-replace' => 'Obsah stránky nahrazen textem „$1“',
-'autoredircomment' => 'Přesměrování na [[:$1]]',
+'autoredircomment' => 'Přesměrování na [[$1]]',
 'autosumm-new'     => 'Nová stránka: $1',
 
 # Size units
