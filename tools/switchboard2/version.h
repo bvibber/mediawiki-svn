@@ -10,6 +10,6 @@
 #ifndef VERSION_H
 #define VERSION_H
 
-#define SB_VERSION "V-2.0.3"
+#define SB_VERSION "V-2.0.4"
 
 #endif	/* !VERSION_H */

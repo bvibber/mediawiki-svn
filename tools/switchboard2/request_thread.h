@@ -11,6 +11,8 @@
 #define REQUEST_THREAD_H
 
 #include	<stdexcept>
+#include	<cerrno>
+#include	<cstring>
 
 #include	<pthread.h>
 
@@ -20,6 +22,22 @@
 struct request_exception : std::runtime_error {
 	request_exception(char const *what)
 		: std::runtime_error(what) {}
+};
+
+struct errno_exception : request_exception {
+	errno_exception(char const *what, int err = errno)
+		: request_exception(what) {
+			what_ = str(boost::format("%s: %s")
+				% what % std::strerror(err));
+		}
+	~errno_exception() throw() {}
+
+	char const *what() const throw() {
+		return what_.c_str();
+	}
+
+private:
+	std::string what_;
 };
 
 struct request_thread {

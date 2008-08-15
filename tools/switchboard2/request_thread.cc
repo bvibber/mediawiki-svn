@@ -33,7 +33,6 @@ do_start_thread(void *arg) {
 	try {
 		req->start_request();
 	} catch (std::exception &e) {
-		std::fprintf(stderr, "exception handling request: %s\n", e.what());
 	}
 
 	delete req;
@@ -77,7 +76,7 @@ request_thread::start_request()
 	 * Start by parsing the request header.
 	 */
 	if (!fcgi::read_fcgi_record(fd_, &rec, mainconf.server_timeout))
-		throw request_exception("error reading initial record");
+		throw errno_exception("error reading initial record");
 
 	if (rec.version() != 1)
 		throw request_exception("unknown FCGI version");
@@ -172,7 +171,7 @@ request_thread::handle_normal_request(fcgi::record &initial)
 
 	for (;;) {
 		if (!fcgi::read_fcgi_record(fd_, &rec, mainconf.server_timeout))
-			throw request_exception("error reading params from server");
+			throw errno_exception("error reading params from server");
 
 		if (rec.type() != fcgi::rectype::params)
 			throw request_exception("unexpected request type at this point");
@@ -194,7 +193,7 @@ request_thread::handle_normal_request(fcgi::record &initial)
 
 	for (;;) {
 		if (!fcgi::read_fcgi_record(fd_, &rec, mainconf.server_timeout))
-			throw request_exception("error reading params from server");
+			throw errno_exception("error reading params from server");
 
 		if (rec.type() != fcgi::rectype::stdin_)
 			throw request_exception("unexpected request type at this point");
@@ -225,7 +224,7 @@ request_thread::handle_normal_request(fcgi::record &initial)
 #endif
 
 	if ((cfd_ = socket(AF_UNIX, SOCK_STREAM, 0)) == -1)
-		throw request_exception("unix socket creation failed");
+		throw errno_exception("unix socket creation failed");
 
 	fcntl(cfd_, F_SETFD, FD_CLOEXEC);
 	int r = 0, tries = 0;
@@ -235,7 +234,7 @@ request_thread::handle_normal_request(fcgi::record &initial)
 		process_ = process_factory::instance().get_process(params);
 		if ((r = process_->connect(cfd_)) == -1) {
 			if (errno != ECONNREFUSED)
-				throw request_exception("can't create PHP");
+				throw errno_exception("can't create PHP");
 		} else
 			break;
 	} while (++tries < max_tries);
@@ -262,7 +261,7 @@ request_thread::handle_normal_request(fcgi::record &initial)
 	r_begin.contentData[1] = 1;
 	r_begin.contentData[2] = 0;
 	if (!fcgi::write_fcgi_record(cfd_, r_begin, mainconf.php_timeout))
-		throw request_exception("error writing begin request to child");
+		throw errno_exception("error writing begin request to child");
 
 	std::vector<unsigned char> newparams;
 	std::vector<unsigned char>::iterator dit, dend;
@@ -279,7 +278,7 @@ request_thread::handle_normal_request(fcgi::record &initial)
 		std::copy(dit, dit + now, r_params.contentData.begin());
 		r_params.content_length(now);
 		if (!fcgi::write_fcgi_record(cfd_, r_params, mainconf.php_timeout))
-			throw request_exception("error writing params to child");
+			throw errno_exception("error writing params to child");
 
 		dit += now;
 	}
@@ -287,7 +286,7 @@ request_thread::handle_normal_request(fcgi::record &initial)
 	r_params.contentData.clear();
 	r_params.content_length(0);
 	if (!fcgi::write_fcgi_record(cfd_, r_params, mainconf.php_timeout))
-		throw request_exception("error writing end of params to child");
+		throw errno_exception("error writing end of params to child");
 
 	
 	r_stdin.request_id(rid_);
@@ -305,7 +304,7 @@ request_thread::handle_normal_request(fcgi::record &initial)
 		std::copy(dit, dit + now, r_stdin.contentData.begin());
 		r_stdin.content_length(now);
 		if (!fcgi::write_fcgi_record(cfd_, r_stdin, mainconf.php_timeout))
-			throw request_exception("error writing stdin to child");
+			throw errno_exception("error writing stdin to child");
 
 		dit += now;
 	}
@@ -313,13 +312,13 @@ request_thread::handle_normal_request(fcgi::record &initial)
 	r_stdin.contentData.clear();
 	r_stdin.content_length(0);
 	if (!fcgi::write_fcgi_record(cfd_, r_stdin, mainconf.php_timeout))
-		throw request_exception("error writing stdin to child");
+		throw errno_exception("error writing stdin to child");
 
 	if (!r_stdin.contentData.empty()) {
 		r_stdin.contentData.clear();
 		r_stdin.content_length(0);
 		if (!fcgi::write_fcgi_record(cfd_, r_stdin, mainconf.php_timeout))
-			throw request_exception("error writing end of stdin to child");
+			throw errno_exception("error writing end of stdin to child");
 	}
 
 	/*
@@ -328,13 +327,13 @@ request_thread::handle_normal_request(fcgi::record &initial)
 	fcgi::record resp;
 	for (;;) {
 		if (!fcgi::read_fcgi_record(cfd_, &resp, mainconf.php_timeout))
-			throw request_exception("couldn't read record from child");
+			throw errno_exception("couldn't read record from child");
 
 		if (resp.request_id() != rid_)
 			throw request_exception("child sent incorrect request id");
 
 		if (!fcgi::write_fcgi_record(fd_, resp, mainconf.server_timeout))
-			throw request_exception("couldn't write record to server");
+			throw errno_exception("couldn't write record to server");
 
 		if (resp.type() == fcgi::rectype::end_request)
 			break;
