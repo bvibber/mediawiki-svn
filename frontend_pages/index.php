@@ -42,7 +42,7 @@ var wgServer = "<?php echo $wgServer ?>";
 			<div class="logo"><a href="#"><img src="<?php echo $skin_path?>/images/logo.png" alt="Metavid" /></a></div>
 			<p class="tagline">The Open Video archive of the US Congress</p>			
 			<div class="form_search_row">
-				<input type="text" class="searchField" name="search[field]" id="search_field" />
+				<input type="text" class="searchField" name="search[field]" id="searchInput" />
 				<button class="grey_button" type="submit"><span>&nbsp;&nbsp; Video Search &nbsp;&nbsp;</span></button>
 				<a href="#" class="advanced_search_tag">advanced search</a>
 			</div>
