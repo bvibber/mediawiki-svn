@@ -343,6 +343,7 @@ dostat:
 
 	std::signal(SIGTERM, sigexit);
 	std::signal(SIGINT, sigexit);
+	std::signal(SIGPIPE, SIG_IGN);
 
 	int stat;
 	for (;;)
