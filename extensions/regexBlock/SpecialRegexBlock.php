@@ -27,12 +27,12 @@ $wgExtensionCredits['specialpage'][] = array(
 );
 
 /* special page init */
+$wgSpecialPageGroups['Regexblock'] = 'users';
 function wfRegexBlockSetup() {
 	global $IP;
 	if (!wfSimplifiedRegexCheckSharedDB())
 		return;
 	require_once($IP. '/includes/SpecialPage.php');
-	$wgSpecialPageGroups['Regexblock'] = 'users';
 	SpecialPage::addPage(new SpecialPage('Regexblock', 'regexblock', true, 'wfRegexBlockSpecial', false));
 	wfLoadExtensionMessages( 'RegexBlock' );
 }
