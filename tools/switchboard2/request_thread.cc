@@ -17,6 +17,8 @@
 #include	<fcntl.h>
 #include	<pthread.h>
 
+#include	<boost/format.hpp>
+
 #include	"request_thread.h"
 #include	"fcgi.h"
 #include	"process_factory.h"
@@ -24,38 +26,8 @@
 
 namespace {
 
-/*
- * This is the number of idle threads, not total.
- */
-#if 0
-int nthreads;
-pthread_mutex_t nthreads_lock = PTHREAD_MUTEX_INITIALIZER;
-
-work_queue<request_thread *> work;
-#endif
-
 extern "C" void*
 do_start_thread(void *arg) {
-#if 0
-	for (;;) {
-		request_thread *req = work.wait();
-
-		try {
-			req->start_request();
-		} catch (std::exception &e) {
-			std::fprintf(stderr, "exception handling request: %s\n", e.what());
-		}
-
-		delete req;
-
-#if 0
-		pthread_mutex_lock(&nthreads_lock);
-		nthreads++;
-		pthread_mutex_unlock(&nthreads_lock);
-#endif
-		__sync_fetch_and_add(&nthreads, 1);
-	}
-#endif	
 	request_thread *req = static_cast<request_thread *>(arg);
 	try {
 		req->start_request();
@@ -89,21 +61,10 @@ request_thread::~request_thread()
 void
 request_thread::start()
 {
-#if 0
-	pthread_mutex_lock(&nthreads_lock);
-	if (nthreads == 0) {
-#endif
 		pthread_attr_t attr;
 		pthread_attr_init(&attr);
 		pthread_attr_setdetachstate(&attr, PTHREAD_CREATE_DETACHED);
 		pthread_create(&tid_, &attr, &do_start_thread, static_cast<void *>(this));
-#if 0
-	} else
-		nthreads--;
-	pthread_mutex_unlock(&nthreads_lock);
-
-	work.add_work(this);
-#endif
 }
 
 void
@@ -123,7 +84,51 @@ request_thread::start_request()
 
 	switch (rec.type()) {
 	case fcgi::rectype::begin_request:
-		handle_normal_request(rec);
+		try {
+			handle_normal_request(rec);
+		} catch (std::exception &e) {
+			fcgi::record r;
+
+			r.version_ = 1;
+			r.paddingLength_ = 0;
+			r.reserved_ = 0;
+			r.type_ = fcgi::rectype::stdout_;
+			r.request_id(rid_);
+
+			std::string err =
+"Status: HTTP/1.1 500 Internal server error\r\n"
+"Content-Type: text/html\r\n"
+"\r\n"
+"<html><head><title>switchboard error</title></head>\r\n"
+"<body><p>hi,</p>\r\n"
+"<p>i am the PHP switchboard, and i handle PHP requests (like yours) on this server.\r\n"
+"i'm afraid i was unable to handle your request.  when i tried, the following\r\n"
+"error occurred: <tt>%1%</tt>.</p>\r\n"
+"<p>please try your request again in a few minutes.  if it still doesn't work,\r\n"
+"you should contact the server administrator and inform him of the problem.</p>\r\n"
+"<p>regards,<br> the PHP switchboard.</p>\r\n";
+			err = str(boost::format(err) % e.what());
+
+			std::copy(err.begin(), err.end(), std::back_inserter(r.contentData));
+			r.content_length(r.contentData.size());
+			fcgi::write_fcgi_record(fd_, r);
+
+			r.contentData.clear();
+			r.content_length(0);
+			fcgi::write_fcgi_record(fd_, r);
+
+			r.type_ = fcgi::rectype::end_request;
+			r.contentData.resize(8);
+			r.contentData[0] = 0;
+			r.contentData[1] = 0;
+			r.contentData[2] = 0;
+			r.contentData[3] = 0;
+			r.contentData[4] = 0;
+			r.content_length(8);
+
+			fcgi::write_fcgi_record(fd_, r);
+		}
+
 		return;
 
 
