@@ -9,15 +9,14 @@ $wgExtensionCredits['specialpage'][] = array(
 	'name'           => 'ShowProcesslist',
 	'url'            => 'http://www.mediawiki.org/wiki/Extension:Show_Process_List',
 	'author'         => 'Brion VIBBER',
-	'svn-date' => '$LastChangedDate$',
-	'svn-revision' => '$LastChangedRevision$',
+	'svn-date'       => '$LastChangedDate$',
+	'svn-revision'   => '$LastChangedRevision$',
 	'description'    => 'Display the output of SHOW FULL PROCESSLIST',
 	'descriptionmsg' => 'showprocesslist-desc',
 );
 
-if ( !function_exists( 'extAddSpecialPage' ) ) {
-	require( dirname(__FILE__) . '/../ExtensionFunctions.php' );
-}
-extAddSpecialPage( dirname(__FILE__) . '/ShowProcesslist_body.php', 'ShowProcesslist', 'ShowProcesslistPage' );
 $dir = dirname(__FILE__) . '/';
-$wgExtensionMessagesFiles['showprocesslist'] = $dir . 'ShowProcesslist.i18n.php';
+$wgExtensionMessagesFiles['ShowProcesslist'] = $dir . 'ShowProcesslist.i18n.php';
+$wgExtensionAliasesFiles['ShowProcesslist'] = $dir . 'ShowProcesslist.alias.php';
+$wgAutoloadClasses['SpecialShowProcesslist'] = $dir . 'ShowProcesslist_body.php';
+$wgSpecialPages['ShowProcesslist'] = 'SpecialShowProcesslist';
