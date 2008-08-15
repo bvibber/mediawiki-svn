@@ -230,6 +230,11 @@ request_thread::handle_normal_request(fcgi::record &initial)
 			close(cfd_);
 			cfd_ = -1;
 			return;
+		} catch (errno_exception &e) {
+			close(cfd_);
+			cfd_ = -1;
+			if (tries++ >= max_tries || e.err() == ETIMEDOUT)
+				throw e;
 		} catch (std::exception &e) {
 			close(cfd_);
 			cfd_ = -1;

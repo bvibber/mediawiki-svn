@@ -26,7 +26,8 @@ struct request_exception : std::runtime_error {
 
 struct errno_exception : request_exception {
 	errno_exception(char const *what, int err = errno)
-		: request_exception(what) {
+		: request_exception(what)
+		, err_(err) {
 			what_ = str(boost::format("%s: %s")
 				% what % std::strerror(err));
 		}
@@ -36,8 +37,13 @@ struct errno_exception : request_exception {
 		return what_.c_str();
 	}
 
+	int err() const throw() {
+		return err_;
+	}
+
 private:
 	std::string what_;
+	int err_;
 };
 
 struct request_thread {
