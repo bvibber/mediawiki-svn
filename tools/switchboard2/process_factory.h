@@ -12,6 +12,7 @@
 
 #include	<map>
 #include	<string>
+#include	<ctime>
 
 #include	<pthread.h>
 
@@ -29,16 +30,21 @@ namespace mi = boost::multi_index;
 
 struct free_process {
 	uid_t uid;
+	std::time_t released;
 	processp proc;
 };
 
 struct by_uid {};
+struct by_released {};
+
 typedef boost::multi_index_container<
 	free_process,
 	mi::indexed_by<
 		mi::sequenced<>,
 		mi::ordered_non_unique<mi::tag<by_uid>, 
-			mi::member<free_process, uid_t, &free_process::uid> >
+			mi::member<free_process, uid_t, &free_process::uid> >,
+		mi::ordered_non_unique<mi::tag<by_released>,
+			mi::member<free_process, std::time_t, &free_process::released> >
 	>
 > freelist_t;
 
@@ -51,15 +57,17 @@ struct process_factory : boost::noncopyable {
 	processp get_process(std::map<std::string, std::string> &params);
 	void release_process(processp proc);
 
+	void cleanup_thread();
+
 private:
 	int id_;
 	freelist_t freelist_;
 	pthread_mutex_t lock_;
 
 	std::map<uid_t, int> peruser_;
+	std::map<uid_t, int> peruser_waiting_;
 	int curprocs_;
 
-	//pthread_mutex_t curprocs_mtx;
 	pthread_cond_t curprocs_cond;
 };
 

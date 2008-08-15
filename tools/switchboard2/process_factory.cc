@@ -12,9 +12,23 @@
 
 #include	<cerrno>
 
+#include	<boost/lambda/lambda.hpp>
+
 #include	"process_factory.h"
 #include	"config.h"
 #include	"util.h"
+
+namespace {
+
+extern "C" void *
+do_start_cleanup_thread(void *arg)
+{
+	process_factory *pf = static_cast<process_factory *>(arg);
+	pf->cleanup_thread();
+	return NULL;
+}
+
+} // anonymous namespace
 
 process_factory &
 process_factory::instance()
@@ -26,10 +40,32 @@ process_factory::instance()
 process_factory::process_factory()
 	: id_(0)
 {
+	pthread_t tid;
+	pthread_create(&tid, NULL, do_start_cleanup_thread, this);
 }
 
 process_factory::~process_factory()
 {
+}
+
+void
+process_factory::cleanup_thread()
+{
+	for (;;) {
+		sleep(30);
+
+		lock l(lock_);
+
+		std::time_t oldest = std::time(0) - 30;
+
+		freelist_t::index<by_released>::type &idx = freelist_.get<by_released>();
+		std::pair<
+			freelist_t::index<by_released>::type::iterator,
+			freelist_t::index<by_released>::type::iterator>
+			range = idx.range(mi::unbounded, boost::lambda::_1 <= oldest);
+
+		idx.erase(range.first, range.second);
+	}
 }
 
 processp
@@ -140,11 +176,18 @@ process_factory::get_process(
 	/*
 	 * Look for a process in the freelist.
 	 */
-	int mppu = mainconf.max_procs_per_user;
-	int mp = mainconf.max_procs;
+	int &mppu = mainconf.max_procs_per_user;
+	int &mp = mainconf.max_procs;
+	int &mqpu = mainconf.max_q_per_user;
 
-	pthread_mutex_lock(&lock_);
+	lock l(lock_);
 	int &thisuser = peruser_[uid];
+	int &thisq = peruser_waiting_[uid];
+
+	if (mqpu > 0 && thisq > mqpu)
+		throw creation_failure("too many queued processes for user");
+
+	thisq++;
 
 	while ( (mppu > 0 && thisuser >= mppu) ||
 		(mp > 0 && curprocs_ > mp)) 
@@ -154,17 +197,15 @@ process_factory::get_process(
 
 	peruser_[uid]++;
 	curprocs_++;
+	thisq--;
 
 	freelist_t::index<by_uid>::type &idx = freelist_.get<by_uid>();
 	freelist_t::index<by_uid>::type::iterator fit;
 	if ((fit = idx.find(uid)) != idx.end()) {
 		processp p = fit->proc;
 		idx.erase(fit);
-		pthread_mutex_unlock(&lock_);
 		return p;
 	}
-
-	pthread_mutex_unlock(&lock_);
 
 	return processp(new process(uid, gid, strm.str()));
 }
@@ -174,6 +215,7 @@ process_factory::release_process(processp proc)
 {
 	free_process p;
 	p.uid = proc->uid();
+	p.released = std::time(0);
 	p.proc = proc;
 
 	lock lck(lock_);
