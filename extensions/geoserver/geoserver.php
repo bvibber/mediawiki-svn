@@ -12,6 +12,7 @@ $wgExtensionCredits['parserhook']['geoserver'] = array(
         'description' => 'Allows geotagging using the <nowiki><geo></nowiki> tag. Saves geodata in a WFS-T server, e.g. geoserver.',
 );
 
+
 $wgExtensionFunctions[] = "wfGeoserverExtension";
 
 /**
@@ -25,10 +26,8 @@ function wfGeoServerExtension () {
         $wgHooks['ArticleEditUpdatesDeleteFromRecentchanges'][] = 'articleSaveGeo';
 }
 
-$dir = dirname(__FILE__) . '/';
-$wgAutoloadClasses['WFS'] = $dir . 'WFS.php';
-$wgAutoloadClasses['SpecialWikimaps'] = $dir . 'SpecialWikimaps_body.php';
-$wgSpecialPages['Wikimaps'] = 'SpecialWikimaps';
+global $wgAutoloadClasses;
+$wgAutoloadClasses['WFS'] = dirname(__FILE__) . '/WFS.php';
 
 require_once( dirname(__FILE__) . '/SpecialWikimaps.php' );
 /**
@@ -74,7 +73,7 @@ function parseGeo ( $text, $params, &$parser ) {
 		       </script>
 		<div id="wikimaps"><div class="wikimapslabel" >Map</div><div class="wikimapslabel" id="wikimapsfullscreen">Fullscreen</div><br /><div id="map" style="width:300px; height:300px;"></div><div id="selectbox" style="display:none;XXposition: absolute; XXtop:10em; XXleft:10em; width:300px;background:#02048C;color: white; padding-bottom:1px;"><div id="close" style="float:right; background:grey; color:black;font-size:small;margin:1px;padding-left:3px; padding-right:3px;pointer:hand;">X</div><span style="margin-left:3px;">Result</span><div id="selectboxbody" style="background:white; margin:1px; padding:3px; color:black;"></div></div></div>';
 	}
-
+	
 	return  $r;
 }
 
@@ -89,7 +88,7 @@ function articleSaveGeo ( $article ) {
 	$wfs = new WFS( "" );
 
 	if ( $wgTitle->getNamespace() == NS_MAIN ) {
-		$result = $wfs->update( $wgTitle->getDBkey(), $wgTitle->getText(),
+		$result = $wfs->update( $wgTitle->getDBkey(), $wgTitle->getText(), 
 					$GeoserverParameters["type_major"], $GeoserverParameters["type_minor"],
 					$GeoserverParameters["lat"], $GeoserverParameters["lon"],
 					$GeoserverParameters["population"] );
@@ -102,7 +101,7 @@ function exportWikiMapsGlobals() {
 	return '
 	  var wgWikiMapsIcon = "' . $wgWikiMapsIcon .'";
 	  if ( wgFullscreen == undefined ) { var wgFullscreen = false; }' . generateWikiMapsLayersJS();
-}
+} 
 
 function generateWikiMapsLayersJS() {
 	global $wgWikiMapsLayers;
@@ -149,3 +148,8 @@ function generateWikiMapsLayersJS() {
 	} ";
 	return $WMSLayer;
 }
+			
+	
+
+
+?>

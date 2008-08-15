@@ -42,3 +42,4 @@ $wgWikiMapsLayers = array(
                 15 => 'topp:border,topp:wikipedia',
         ) ),
 );
+
