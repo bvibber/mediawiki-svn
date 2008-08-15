@@ -5,16 +5,8 @@
 CC		= cc
 CXX		= CC
 
-### Suffix for Boost library names
-
-# Sun:
-BOOSTTAG	= -sw-mt
-
-# gcc:
-#BOOSTTAG        = -gcc43-mt
-
 ### Compiler flags
-# See the note about -library=stlport8 above.
+# See the note about -library=stlport4 above.
 EXTRA_CFLAGS	= -xO3 -g
 EXTRA_CXXFLAGS	= $(EXTRA_CFLAGS) -library=stlport4
 
