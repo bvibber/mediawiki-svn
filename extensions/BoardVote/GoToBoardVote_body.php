@@ -1,6 +1,7 @@
 <?php
-
-wfBoardVoteInitMessages();
+if (!defined('MEDIAWIKI')) {
+	die( "Not a valid entry point\n" );
+}
 
 class GoToBoardVotePage extends SpecialPage {
 	function __construct() {
@@ -12,12 +13,14 @@ class GoToBoardVotePage extends SpecialPage {
 		global $wgBoardVoteEditCount, $wgBoardVoteRecentEditCount, $wgBoardVoteCountDate;
 		global $wgBoardVoteRecentFirstCountDate, $wgBoardVoteRecentCountDate;
 
+		wfLoadExtensionMessages( 'BoardVote' );
+
 		$this->setHeaders();
 
 		$centralSessionId = '';
 		if ( class_exists( 'CentralAuthUser' ) ) {
 			global $wgCentralAuthCookiePrefix;
-			if ( isset( $wgCentralAuthCookiePrefix ) 
+			if ( isset( $wgCentralAuthCookiePrefix )
 				&& isset( $_COOKIE[$wgCentralAuthCookiePrefix . 'Session'] ) )
 			{
 				$centralSessionId = $_COOKIE[$wgCentralAuthCookiePrefix . 'Session'];
@@ -48,6 +51,5 @@ class GoToBoardVotePage extends SpecialPage {
 				$wgLang->timeanddate( $wgBoardVoteRecentCountDate )
 			) );
 		}
-
 	}
 }

@@ -42,16 +42,13 @@ $dir = dirname(__FILE__) . '/';
 $wgExtensionMessagesFiles['BoardVote'] = $dir . 'BoardVote.i18n.php';
 $wgExtensionAliasesFiles['BoardVote'] = $dir . 'BoardVote.alias.php';
 
-# Register special page
-if ( !function_exists( 'extAddSpecialPage' ) ) {
-	require( dirname(__FILE__) . '/../ExtensionFunctions.php' );
-}
-
 if ( !defined( 'BOARDVOTE_REDIRECT_ONLY' ) ) {
-	extAddSpecialPage( dirname(__FILE__) . '/BoardVote_body.php', 'Boardvote', 'BoardVotePage' );
+	$wgAutoloadClasses['BoardVotePage'] = $dir . 'BoardVote_body.php';
+	$wgSpecialPages['Boardvote'] = 'BoardVotePage';
 	$wgExtensionFunctions[] = 'wfSetupBoardVote';
 } else {
-	extAddSpecialPage( dirname(__FILE__) . '/GoToBoardVote_body.php', 'Boardvote', 'GoToBoardVotePage' );
+	$wgAutoloadClasses['GoToBoardVotePage'] = $dir . 'GoToBoardVote_body.php';
+	$wgSpecialPages['Boardvote'] = 'GoToBoardVotePage';
 }
 
 function wfSetupBoardVote() {
@@ -62,14 +59,4 @@ function wfSetupBoardVote() {
 		global $wgLang;
 		$wgLang = Language::factory( $_SESSION['bvLang'] );
 	}
-}
-
-function wfBoardVoteInitMessages() {
-	static $done = false;
-	if ( $done ) return true;
-
-	$done = true;
-	wfLoadExtensionMessages( 'BoardVote' );
-
-	return true;
 }
