@@ -21,7 +21,7 @@ $wgExtensionFunctions[] = 'scgParserFunctions';
 $wgHooks['LanguageGetMagic'][] = 'scgLanguageGetMagic';
 
 require_once($scgIP . '/includes/SC_ParserFunctions.php');
-require_once($scgIP . '/includes/SC_HistoricalDate.php');
+$wgAutoloadClasses['SCHistoricalDate'] = $scgIP . '/includes/SC_HistoricalDate.php';
 require_once($scgIP . '/languages/SC_Language.php');
 
 $wgExtensionMessagesFiles['SemanticCalendar'] = $scgIP . '/languages/SC_Messages.php';
