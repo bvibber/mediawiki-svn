@@ -19,6 +19,8 @@
 
 #include	<sys/types.h>
 #include	<sys/socket.h>
+#include	<sys/un.h>
+#include	<sys/wait.h>
 
 #include	<netinet/in.h>
 #include	<arpa/inet.h>
@@ -350,7 +352,7 @@ dostat:
 void *
 acceptor_thread(void *arg)
 {
-	int fd = reinterpret_cast<int>(arg);
+	int fd = reinterpret_cast<intptr_t>(arg);
 	int newfd;
 	struct sockaddr addr;
 	socklen_t addrlen = sizeof(addr);
