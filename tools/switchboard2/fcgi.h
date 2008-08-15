@@ -5,7 +5,7 @@
  * freely. This software is provided 'as-is', without any express or implied
  * warranty.
  */
-/* $Id: fcgi.h 38741 2008-08-06 21:00:45Z river $ */
+/* $Id$ */
 
 #ifndef FCGI_H
 #define FCGI_H
