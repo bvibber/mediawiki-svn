@@ -34,5 +34,3 @@ function wfSpecialWikimaps() {
         }
 #	print "<pre>"; print_r( $wgSpecialPages ); print "</pre>";
 }
-?>
-
