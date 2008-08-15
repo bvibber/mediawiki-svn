@@ -1,8 +1,8 @@
 <?
-//eventually should fix to use mediaWiki format 
-//for now just has little scripts for doing database operations 
+//eventually should fix to use mediaWiki format
+//for now just has little scripts for doing database operations
 
-//include commandLine.inc from the mediaWiki maintance dir: 
+//include commandLine.inc from the mediaWiki maintance dir:
 require_once ('../../../maintenance/commandLine.inc');
 
 $dbclass = 'Database' . ucfirst( $wgDBtype ) ;
@@ -15,9 +15,9 @@ $wgDatabase = new $dbclass( $wgDBserver, $wgDBadminuser, $wgDBadminpassword, $wg
 
 //do mvd_index text removal update:
 //check if mvd_index has text field
-$page_id_added=false; 
+$page_id_added=false;
 
-//install the new search index tables: 
+//install the new search index tables:
 if(!$wgDatabase->tableExists('mv_search_digest')){
 	echo 'CREATE TABLE mv_search_digest'."\n";
 	$wgDatabase->query('CREATE TABLE IF NOT EXISTS `mv_search_digest` (
@@ -51,18 +51,18 @@ if(!$wgDatabase->tableExists('mv_query_key_lookup')){
 ) ENGINE=MyISAM ;");
 }
 
-if(!$wgDatabase->fieldExists('mv_mvd_index', 'view_count')){	
+if(!$wgDatabase->fieldExists('mv_mvd_index', 'view_count')){
 	echo '`mv_mvd_index` ADD `view_count`'."\n";
 	$wgDatabase->query("ALTER TABLE `mv_mvd_index` ADD `view_count` INT( 10 ) UNSIGNED NOT NULL DEFAULT '0' AFTER `end_time`");
 }
 //add view_count index:
 if(!$wgDatabase->indexExists('mv_mvd_index','view_count')){
-	$wgDatabase->query("ALTER TABLE `mv_mvd_index` ADD INDEX ( `view_count` )");  
+	$wgDatabase->query("ALTER TABLE `mv_mvd_index` ADD INDEX ( `view_count` )");
 }
 /*modify mvd_table index structure for more "cardinality"/faster queries*/
 if($wgDatabase->indexExists('mv_mvd_index','mvd_type')){
  	$wgDatabase->query("ALTER TABLE `mv_mvd_index` DROP INDEX `mvd_type`");
-}  
+}
 if($wgDatabase->indexExists('mv_mvd_index','stream_id')){
 	$wgDatabase->query("ALTER TABLE `mv_mvd_index` DROP INDEX `stream_id`");
 }
@@ -81,10 +81,10 @@ if(!$wgDatabase->indexExists('mv_mvd_index','mvd_type_index')){
 if(!$wgDatabase->fieldExists($mvIndexTableName, 'mv_page_id')){
 	print "$mvIndexTableName missing `page_id`...adding\n ";
 	$page_id_added=true;
-	//add page_id 
+	//add page_id
 	$wgDatabase->query("ALTER TABLE `$mvIndexTableName` ADD `mv_page_id` INT( 10 ) UNSIGNED NOT NULL AFTER `id`");
 }
-//if we added do lookups 
+//if we added do lookups
 if($page_id_added){
 	$sql = "SELECT SQL_CALC_FOUND_ROWS `id`, `wiki_title` FROM `$mvIndexTableName`";
 	$result = $wgDatabase->query($sql);
@@ -92,7 +92,7 @@ if($page_id_added){
 	$c = $wgDatabase->numRows($result);
 	$i=$j=0;
 	$page_table =  $wgDatabase->tableName( 'page' );
-	while($mvd_row = $wgDatabase->fetchObject( $result )){		
+	while($mvd_row = $wgDatabase->fetchObject( $result )){
 		$sql_pid = "SELECT `page_id` FROM $page_table " .
 			"WHERE `page_title`='{$mvd_row->wiki_title}' " .
 			"AND `page_namespace`=".MV_NS_MVD.' LIMIT 1';
@@ -113,19 +113,17 @@ if($page_id_added){
 			$i=0;
 		}
 		$i++;
-		$j++;			 	
+		$j++;
 	}
 	//now we can drop id and add PRIMARY to mv_page_id
-	print "DROP id COLUMN from $mvIndexTableName ...";	
+	print "DROP id COLUMN from $mvIndexTableName ...";
 	$wgDatabase->query("ALTER TABLE `$mvIndexTableName` DROP PRIMARY KEY, DROP COLUMN `id`, DROP COLUMN `text`");
 	print "done\n";
-	
+
 	//now add UNIQUE to mv_mvd_index
-	print "ADD PRIMARY to mv_page_id ..."; 
+	print "ADD PRIMARY to mv_page_id ...";
 	$wgDatabase->query("ALTER TABLE `$mvIndexTableName` ADD PRIMARY KEY(`mv_page_id`)");
-	print "done\n";	
+	print "done\n";
 }
 
 print "done with db tables update check\n";
-
-?>

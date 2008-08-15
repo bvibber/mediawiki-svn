@@ -42,7 +42,3 @@ class FLV_CorruptedFileException extends FLV_FileException {}
  *
  */
 class FLV_UnknownAMFTypeException extends Exception {}
-
-
-
-?>

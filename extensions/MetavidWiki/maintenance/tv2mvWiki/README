@@ -1,23 +1,23 @@
-This will eventually host the tools for capturing brodcasted content 
+This will eventually host the tools for capturing brodcasted content
 and insertting it into a wiki
 
-presently the script metavid project uses are accesible here: 
+presently the script metavid project uses are accesible here:
 http://slugforge.cse.ucsc.edu/gf/project/metavid/
-but I don't recomend using them not genneraly applicable. 
+but I don't recomend using them not genneraly applicable.
 
 
 
 The genneral flow and machine layout should be as follows:
-note: obvisuly your layout may differ and adjustments may be needed. 
+note: obvisuly your layout may differ and adjustments may be needed.
 
-dependencies: 
+dependencies:
 	metavidWiki
-	ffmpeg2theora 
-	icecast	
+	ffmpeg2theora
+	icecast
 	~Video for Linux~ compatible capture hardware
 
 
-Scripts Run level: 
+Scripts Run level:
 
 ==box_config==
 box_name =(optional if left empty will use IP)
@@ -35,16 +35,16 @@ mv2mvWiki_demon.php
 
 
 ===capture===
-capture_demon.php  
+capture_demon.php
 
 ===transcode===
 transcode_demon.php
 
 
-(media server and mediaWiki server could be the same box) 
+(media server and mediaWiki server could be the same box)
 ===media server===
 ~ shoutcast ~
-mediaServer_demon.php 
+mediaServer_demon.php
 
 ===mediaWiki Server===
 mysql
@@ -53,4 +53,4 @@ mediaWiki_demon.php
 
 
 ===http capture admin===
-(can be run on any server) 
+(can be run on any server)

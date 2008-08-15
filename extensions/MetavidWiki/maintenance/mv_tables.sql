@@ -1,4 +1,4 @@
--- metavid tables 
+-- metavid tables
 --
 -- stores the most recent mysql metavid tables schema dump
 
@@ -93,4 +93,3 @@ CREATE TABLE IF NOT EXISTS `mv_url_cache` (
   UNIQUE KEY `id` (`id`),
   KEY `url` (`url`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 COMMENT='simple url cache (as to not tax external services too much) ' AUTO_INCREMENT=1 ;
-

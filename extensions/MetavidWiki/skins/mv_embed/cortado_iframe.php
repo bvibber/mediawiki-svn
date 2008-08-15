@@ -37,7 +37,7 @@ $height = filter_input(INPUT_GET, 'height', FILTER_SANITIZE_NUMBER_INT);
 //default to video:
 $stream_type = (isset($_GET['stream_type']))?$_GET['stream_type']:'video';
 if($stream_type=='video'){
-	$audio=$video='true';	
+	$audio=$video='true';
 	if(is_null($height) || $height===false)
 		$height = 240;
 }
@@ -45,12 +45,12 @@ if($stream_type=='audio'){
 	$audio='true';
 	$video='false';
 	if(is_null($height) || $height===false)
-		$height = 20;	
+		$height = 20;
 }
 //set the parent domain if provided:
 $parent_domain =  filter_input(INPUT_GET, 'parent_domain', FILTER_SANITIZE_STRING);
 
-//everything good output page: 
+//everything good output page:
 output_page();
 
 function error_out($error=''){
@@ -97,7 +97,7 @@ function output_page($error=''){
 			<param name="bufferSize" value="200" />
 		</applet>
 	<? }else{ ?>
-		<b>Error:</b> <?php echo $error?>	
+		<b>Error:</b> <?php echo $error?>
 	<?
 	}
 	?>
@@ -105,4 +105,3 @@ function output_page($error=''){
 	</html>
 <?
 }
-?>

@@ -6,29 +6,29 @@ $mv_path ='http://' . $_SERVER['SERVER_NAME'] . substr( $_SERVER['REQUEST_URI'],
 "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-	<title>sample mv embed</title>	 
+	<title>sample mv embed</title>
  	<script type="text/javascript" src="mv_embed.js"></script>
 </head>
-<body>	
+<body>
 <h3> Sample Embed</h3>
 The <b>default attributes:</b>:
-<span id="default_attr"> 
+<span id="default_attr">
 </span> <br />
 Your embed type has been detected as: <b><span id="detect_type"></span></b>
 <br />
-Here are some sample embeds:<br /> 
-<? 
-$sample_embed = array(); 
+Here are some sample embeds:<br />
+<?
+$sample_embed = array();
 
-$sample_embed[0]['tag'] = '<video id="vid_4184" 
-thumbnail="http://metavid.ucsc.edu/wiki/index.php?action=ajax&rs=mv_frame_server&stream_name=senate_proceeding_08-01-07&t=0:27:16&size=small" 
-src="http://128.114.20.64/media/senate_proceeding_08-01-07.ogg.anx?t=0:27:16/0:27:32" 
+$sample_embed[0]['tag'] = '<video id="vid_4184"
+thumbnail="http://metavid.ucsc.edu/wiki/index.php?action=ajax&rs=mv_frame_server&stream_name=senate_proceeding_08-01-07&t=0:27:16&size=small"
+src="http://128.114.20.64/media/senate_proceeding_08-01-07.ogg.anx?t=0:27:16/0:27:32"
 roe="http://localhost/mvw-exp/index.php?title=Special:MvExportStream&feed_format=roe&stream_name=senate_proceeding_08-01-07&t=0:27:16/0:27:32"
 show_meta_link="false"  autoplay="false" style="width:160px;height:120px" controls="true" embed_link="true" ></video>';
 $sample_embed[0]['desc']=' auto play test (similar embed syntax to the metavidWiki site)';
 
 /*$sample_embed[0]['tag']='<video id="v0" src="sample.ogg" thumbnail="sample.jpg"></video>';
-$sample_embed[0]['desc']='basic usage with manual controls:<br />'. 
+$sample_embed[0]['desc']='basic usage with manual controls:<br />'.
 					'<a href="javascript:document.getElementById(\'v1\').play();">Play</a> | '.
 					'<a href="javascript:document.getElementById(\'v1\').stop();">Stop</a> <br />';*/
 
@@ -36,7 +36,7 @@ $sample_embed[0]['desc']='basic usage with manual controls:<br />'.
 					//'<b>Exported functions:</b><br />'.
 					//'<a href="javascript:document.getElementById(\'v1\').mute();">Get Time</a> | ';
 //'thumbnail="http://metavid.ucsc.edu/image_media/senate_proceeding_06-20-07_09?t=3:50:27&size=320x240" ' .
-//'src="'.$mv_path.'sample.ogg"/>';		
+//'src="'.$mv_path.'sample.ogg"/>';
 
 //$plurl = 'http://metavid.ucsc.edu/wiki/index.php?title=Special:MvExportSearch&tracks=ht_en%2Canno_en%2Cthomas_en&f%5B0%5D%5Ba%5D=and&f%5B0%5D%5Bt%5D=spoken_by&f%5B0%5D%5Bv%5D=John+Sarbanes';
 //$plurl = 'http://localhost/wiki/index.php?title=Special:MvExportSearch&tracks=ht_en%2Canno_en%2Cthomas_en&f%5B0%5D%5Bt%5D=spoken_by&f%5B0%5D%5Bv%5D=Saxby+Chambliss';
@@ -46,7 +46,7 @@ $sample_embed[0]['desc']='basic usage with manual controls:<br />'.
 //		'<iframe width="500" height="200" src="'.$plurl.'">rss feed here</iframe>';
 
 $sample_embed[1]['tag']='<video id="vflash" src="http://www.archive.org/download/mv_senate_proceeding_12-23-07/senate_proceeding_12-23-07.flv" autoplay="true"></video>';
-$sample_embed[1]['desc']='flash video usage with manual controls:<br />'. 
+$sample_embed[1]['desc']='flash video usage with manual controls:<br />'.
 					'<a href="javascript:document.getElementById(\'vflash\').play();">Play</a> | '.
 					'<a href="javascript:document.getElementById(\'vflash\').stop();">Stop</a> <br />';
 
@@ -60,14 +60,14 @@ $sample_embed[3]['tag'] = '<video style="width:100%; height:100%" roe="http://me
 $sample_embed[3]['desc'] = 'Demo2  of json ROE attribute';
 
 
-//$sample_embed[2]['tag'] = '<video id="v2" controls="true" roe="http://mammoth.dnip.net/mvWiki/index.php?title=Special:MvExportStream&feed_format=roe&stream_name=senate_11-14-05&t=0:42:14/0:42:56"></video>';		
-//$sample_embed[2]['desc'] = 'video with controls and thumbnail';		
- 
+//$sample_embed[2]['tag'] = '<video id="v2" controls="true" roe="http://mammoth.dnip.net/mvWiki/index.php?title=Special:MvExportStream&feed_format=roe&stream_name=senate_11-14-05&t=0:42:14/0:42:56"></video>';
+//$sample_embed[2]['desc'] = 'video with controls and thumbnail';
 
-//playlist tags:  
+
+//playlist tags:
 $sample_embed[4]['tag'] = '<playlist id="playlist1" width="400" height="300"
 src="sample_xspf.xml" controls="true" embed_link="true"/>';
-$sample_embed[4]['desc'] = '<b>xspf</b> static xiph playlist <a href="http://metavid.ucsc.edu/wiki/index.php/Dorganisms">Dorganisms</a> <br /> <iframe width="500" height="200" 
+$sample_embed[4]['desc'] = '<b>xspf</b> static xiph playlist <a href="http://metavid.ucsc.edu/wiki/index.php/Dorganisms">Dorganisms</a> <br /> <iframe width="500" height="200"
 		src="sample_xspf.xml">xiph playlist disp here</iframe>';
 
 $plurl = 'http://metavid.ucsc.edu/overlay/archive_browser/rss_filter_view?filters[0][type]=match&filters[0][val]=peace&start=0&rpp=10';
@@ -76,7 +76,7 @@ src="'.$plurl.'"/>';
 $sample_embed[5]['desc'] = '<b>RSS</b> a podcast like dynamic feed for "peace"<br />'.
 		'<iframe width="500" height="200" src="'.$plurl.'">rss feed here</iframe>';
 
-$plurl ='http://metavid.ucsc.edu/m3u/filters/filter_seq?filters[0][type]=match&filters[0][val]=war&start=0&rpp=10'; 
+$plurl ='http://metavid.ucsc.edu/m3u/filters/filter_seq?filters[0][type]=match&filters[0][val]=war&start=0&rpp=10';
 $sample_embed[6]['tag'] = '<playlist id="warplaylist" src="'.$plurl.'"/>';
 //$sample_embed[6]['desc'] = '<b>m3u</b> dynamic playlist search for "war"<br /> <textarea cols="70" rows="9">'.file_get_contents($plurl).'</textarea>';
 
@@ -86,18 +86,18 @@ $sample_embed[7]['tag'] ='<playlist id="inline_pl">
 |title=Inline Playlist
 |linkback=http://metavid.ucsc.edu/wiki/index.php/Mv_embed
 
-#mvclip special for metavid clips can be refreces with a single key attribute  
+#mvclip special for metavid clips can be refreces with a single key attribute
 |mvClip=senate_proceeding_12-07-06?t=04:46:27/04:46:58
 |image=http://metavid.ucsc.edu/image_media/senate_proceeding_12-07-06?t=04:46:27&size=320x240
-|title=I fancy Pencils 
+|title=I fancy Pencils
 
-#new clips are start with |mvclip or |clip_src (everything after will apply to that clip) 
+#new clips are start with |mvclip or |clip_src (everything after will apply to that clip)
 |mvClip=house_proceeding_02-05-07_00?t=0:02:00/0:02:30
 |image=http://metavid.ucsc.edu/image_media/house_proceeding_02-05-07_00?t=0:02:00&size=320x240
-|desc=budget is like swiss cheese 
+|desc=budget is like swiss cheese
 but smells like limburger
 
-#more verbose arbitrary clip listing: (be mindfull of cross site data policy of java for cortado playback) 
+#more verbose arbitrary clip listing: (be mindfull of cross site data policy of java for cortado playback)
 |srcClip=http://128.114.20.23/media/house_proceeding_04-05-06_3.ogg.anx?t=01:35:47/01:35:58
 |image=http://metavid.ucsc.edu/image_media/house_proceeding_04-05-06_3?t=01:35:47&size=320x240
 |desc=Jeb Hensarling uses the <b>dictionary</b>
@@ -114,9 +114,9 @@ $sample_embed[7]['desc'] = '<b>Inline Playlist:</b> for more info see <a href="h
 ?>
   <table border="1" cellpadding="6" width="600">
   	<? foreach($sample_embed as $key=>$aval){
-  		if($key>3)continue;	
+  		if($key>3)continue;
   	 ?>
-	    <tr>    	
+	    <tr>
 	      <td><?=$aval['tag']?></td>
 	      <td valign="top"><b>Sample Embed <?=$key?></b><br />
 	      <?=$aval['desc']?><br />
@@ -128,7 +128,7 @@ $sample_embed[7]['desc'] = '<b>Inline Playlist:</b> for more info see <a href="h
 	    if ($key==5){
 	    	echo '<tr><td colspan="2"><b>Sample Playlists:</b></td></tr>';
 	    }
-   } ?>  
+   } ?>
   </table>
 	<br /><br />&nbsp;
   </body>

@@ -1,18 +1,18 @@
 <?
 /*
-* a simple proxy for offsite requests 
+* a simple proxy for offsite requests
 * sends back type text/plain
-* 
-* @@todo enhance so the payload is transmitable via javascript object payload 
-* (so that remote use of mv_embed can load remote xml ) 
+*
+* @@todo enhance so the payload is transmitable via javascript object payload
+* (so that remote use of mv_embed can load remote xml )
 */
 
-//NOTE THIS IS DISABLED BY DEFAULT simply comment out the line below to enable; 
+//NOTE THIS IS DISABLED BY DEFAULT simply comment out the line below to enable;
 die('note mv_data_proxy is disabled by default');
 if(isset($_POST['url'])){
 	$req_url = $_POST['url'];
 }else{
-	//try the get object ( and de-htmlentities it) 
+	//try the get object ( and de-htmlentities it)
 	$req_url = $_GET['url'];
 }
 $wrap_function=$callback_index='';
@@ -29,22 +29,22 @@ if(function_exists('curl_init') ){
 	curl_setopt ($ch, CURLOPT_RETURNTRANSFER, true); //if we wanted to look at the content
 	curl_setopt($ch, CURLOPT_URL, $req_url);
 	curl_setopt($ch, CURLOPT_HEADER, 0);
-	$pay_load = curl_exec ($ch);	
+	$pay_load = curl_exec ($ch);
 	$content_type = curl_getinfo($ch, CURLINFO_CONTENT_TYPE);
 	curl_close($ch);
-	//don't send javascript content type: 
+	//don't send javascript content type:
 	if(strpos($content_type, 'javascript')!==false)
-		$content_type='text/plain';			
-}else{ 		
+		$content_type='text/plain';
+}else{
 	//not as clean as using curl
 	$pay_load = file_get_contents($req_url);
 	if(substr($pay_load, 0,5)=='<?xml' || $pay_load($out, 0,4)=='<rss'){
-		$content_type = 'text/xml';	
+		$content_type = 'text/xml';
 	}else{
 		$content_type = 'text/plain';
-	}	
+	}
 }
-//output: 
+//output:
 if($wrap_function==''){
 	header('Content-Type: ' . $content_type);
 	print $pay_load;
@@ -52,11 +52,11 @@ if($wrap_function==''){
 	header('Content-Type: text/javascript');
 	print $wrap_function.'('. PhpArrayToJsObject_Recurse(
 		array(	'req_url'=>$req_url,
-				'cb_inx'=>$callback_index, 
+				'cb_inx'=>$callback_index,
 				'content-type'=>$content_type,
 				'pay_load'=>$pay_load
 			)
-		).');';	
+		).');';
 }
 
 function PhpArrayToJsObject_Recurse($array){
@@ -66,9 +66,9 @@ function PhpArrayToJsObject_Recurse($array){
        if ($array === null)
        {
            return 'null';
-       }      
+       }
        return '"' . javascript_escape($array) . '"';
-   }  
+   }
    // Open this JS object.
    $retVal = "{";
    // Output all key/value pairs as "$key" : $value
@@ -80,20 +80,20 @@ function PhpArrayToJsObject_Recurse($array){
        if (! $first ){
            $retVal .= ', ';
        }
-       $first = false;      
+       $first = false;
        // Quote $key if it's a string.
        if (is_string($key) ){
            $key = '"' . $key . '"';
-       }	         
+       }
        $retVal .= $key . ' : ' . PhpArrayToJsObject_Recurse($value);
-   }   
+   }
    // Close and return the JS object.
    return $retVal . "}";
 }
 function javascript_escape($val){
 	//first strip /r
 	$val = str_replace("\r", '', $val);
-	return str_replace(	array('"', "\n", '{', '}'), 
+	return str_replace(	array('"', "\n", '{', '}'),
 						array('\"', '"'."+\n".'"', '\{', '\}'),
-						$val);	
+						$val);
 }

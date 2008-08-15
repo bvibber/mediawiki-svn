@@ -4,20 +4,20 @@
  *
  * All Metavid Wiki code is Released under the GPL2
  * for more info visit http:/metavid.ucsc.edu/code
- * 
+ *
  * @author Michael Dale
  * @email dale@ucsc.edu
  * @url http://metavid.ucsc.edu
- * 
- * 
+ *
+ *
  * this is the script we will use to migrate the existing metavid db the mv wiki db
  */
 $cur_path = $IP = dirname(__FILE__);
-//include commandLine.inc from the mediaWiki maintance dir: 
+//include commandLine.inc from the mediaWiki maintance dir:
 require_once ('../../../maintenance/commandLine.inc');
 require_once ('metavid2mvWiki.inc.php');
 
-//include util functions: 
+//include util functions:
 require_once('maintenance_util.inc.php');
 /*
  * assume the wiki user has access to the metavid table and that the
@@ -30,7 +30,7 @@ require_once('maintenance_util.inc.php');
 
 Template:Congress Person
 
-<noinclude>Congress Person template simplifies 
+<noinclude>Congress Person template simplifies
 		the structure of articles about Congress People.
 		<pre>{{Congress Person|
 |Full Name=The full name of the Congress person|
@@ -44,21 +44,21 @@ Template:Congress Person
 }}</pre>The order of the fields is not relevant. The template name (Congress Person) should be given as the ''first'' thing on a page.
 </noinclude><includeonly>
 [[Image:{{PAGENAME}}.jpg|left]]
-{{ #if: {{{Full Name}}}| [[Full Name:={{{Full Name}}}| ]] |}} 
-{{ #if: {{{Name OCR}}}| [[Name OCR:={{{Name OCR}}}| ]] |}} 
-{{ #if: {{{GovTrack ID}}}| [[GovTrack ID:={{{GovTrack ID}}}| ]] |}} 
-{{ #if: {{{Open Secrets ID}}}| [[Open Secrets ID:={{{Open Secrets ID}}}| ]] |}} 
-{{ #if: {{{Bio Guide ID}}}| [[Bio Guide ID:={{{Bio Guide ID}}}| ]] |}} 
-{{ #if: {{{Title}}}| [[Title:={{{Title}}}| ]] |}} 
-{{ #if: {{{State}}}| [[State:={{{State}}}| ]] |}} 
-{{ #if: {{{Party}}}| [[Party:={{{Party}}}| ]] |}} 
+{{ #if: {{{Full Name}}}| [[Full Name:={{{Full Name}}}| ]] |}}
+{{ #if: {{{Name OCR}}}| [[Name OCR:={{{Name OCR}}}| ]] |}}
+{{ #if: {{{GovTrack ID}}}| [[GovTrack ID:={{{GovTrack ID}}}| ]] |}}
+{{ #if: {{{Open Secrets ID}}}| [[Open Secrets ID:={{{Open Secrets ID}}}| ]] |}}
+{{ #if: {{{Bio Guide ID}}}| [[Bio Guide ID:={{{Bio Guide ID}}}| ]] |}}
+{{ #if: {{{Title}}}| [[Title:={{{Title}}}| ]] |}}
+{{ #if: {{{State}}}| [[State:={{{State}}}| ]] |}}
+{{ #if: {{{Party}}}| [[Party:={{{Party}}}| ]] |}}
 [[Category:Person]][[Category:Congress Person]]
 </includeonly>
 
 Template:Ht_en
 
 <noinclude>
-This is the default Template for the display of transcript text. 
+This is the default Template for the display of transcript text.
 </noinclude><includeonly>{{ #if:  {{{PersonName|}}} | {{ #ifexist: Image:{{{PersonName}}}.jpg | [[Image:{{{PersonName}}}.jpg|44px|left]]|[[Image:Missing person.jpg|44px|left]]}}[[{{{PersonName}}}]]: |}}{{{BodyText}}}
 </includeonly>
 
@@ -74,25 +74,25 @@ if (count($args) == 0 || isset ($options['help'])) {
 	print<<<EOT
 Load Streams/data from the metavid database
 
-Usage php metavid2mvWiki.php [options] action	
+Usage php metavid2mvWiki.php [options] action
 ie: senate_proceeding_04-11-07
 options:
-		--skipimage will skip image downloading 
+		--skipimage will skip image downloading
 		--skiptext skips text sync
 		--skipfiles skips files
-		--skipSpeechMeta  skips annotation track with Speech By tags for continues Spoken By attr 
+		--skipSpeechMeta  skips annotation track with Speech By tags for continues Spoken By attr
 		--force will force updates (if edited by a human its skiped)
 actions:
-		\$stream_name  will proccess that stream name		
+		\$stream_name  will proccess that stream name
 		'all_in_sync' will insert all streams that are tagged in_sync
-		'all_in_wiki' will run on all streams in the wiki 		
+		'all_in_wiki' will run on all streams in the wiki
 		'all_with_files' will insert all streams with files (and categorize acording to sync status)
 		'all_sync_past_date' --date [mm/dd/yy] all in_sync streams past date (-d option required)
 		[stream_name] will insert all records for the given stream name
-		'people' [person_name] will insert all the people articles optional followed by a person name 	
+		'people' [person_name] will insert all the people articles optional followed by a person name
 		'bill' [bill_key]? ...empty bill key will insert all bills based on gov track subject page
-		'interest' will insert interests (uses people as base so run people first) 
-		'update_templates' will update templates & some semantic properties  
+		'interest' will insert interests (uses people as base so run people first)
+		'update_templates' will update templates & some semantic properties
 		'file_check' checks inserted streams file urls/pointers
 
 EOT;
@@ -102,13 +102,13 @@ EOT;
 /*
  * set up the article set for the given stream/set
  */
-$mvForceUpdate= (isset($options['force']))?true:false;	
+$mvForceUpdate= (isset($options['force']))?true:false;
 
 switch ($args[0]) {
 	case 'all_in_sync' :
 		do_stream_insert('all');
 	break;
-	case 'all_in_wiki':	
+	case 'all_in_wiki':
 		do_stream_insert('all_in_wiki');
 	break;
 	case 'all_with_files':
@@ -119,7 +119,7 @@ switch ($args[0]) {
 		do_stream_insert('all_sync_past_date');
 	break;
 	case 'people' :
-		$force = (isset($options['force']))?true:false;	
+		$force = (isset($options['force']))?true:false;
 		$person_name = (isset($args[1]))?$args[1]:'';
 		do_people_insert('',$person_name, $force);
 	break;
@@ -135,9 +135,9 @@ switch ($args[0]) {
 		include_once('metavid_gov_templates.php');
 		upTemplates($force);
 	break;
-	//by default treat the argument as a stream name: 
+	//by default treat the argument as a stream name:
 	case 'mvd_error_check':
-		
+
 	break;
 	case 'rm_congress_persons':
 		do_rm_congress_persons();
@@ -146,6 +146,3 @@ switch ($args[0]) {
 		do_stream_insert('stream', $args[0]);
 	break;
 }
-
-?>
-	

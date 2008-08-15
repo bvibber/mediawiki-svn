@@ -169,5 +169,3 @@ class FLV {
         return ftell($this->fp) - $this->lastTagSize;
     }
 }
-
-?>
