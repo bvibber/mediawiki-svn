@@ -760,7 +760,7 @@ class DomTreeBuilder {
 
 	public function characters($parser, $data){
 		//wfDebug('Parsing '. strlen($data).' characters.');
-		$array = preg_split('//', $data, -1, PREG_SPLIT_NO_EMPTY);
+		$array = str_split($data);
 		foreach($array as $c) {
 			if (self::isDelimiter($c)) {
 				$this->endWord();
@@ -796,9 +796,6 @@ class DomTreeBuilder {
 	}
 
 	public static function isDelimiter($c) {
-		if (WhiteSpaceNode::isWhiteSpace($c)){
-			return true;
-		}
 		switch ($c) {
 			// Basic Delimiters
 			case '/':
@@ -827,7 +824,7 @@ class DomTreeBuilder {
 			case ':':
 				return true;
 			default:
-				return false;
+				return WhiteSpaceNode::isWhiteSpace($c);
 		}
 	}
 
@@ -1245,7 +1242,7 @@ class TextOnlyComparator{
 		$nbOthers = sizeof($other->leafs);
 		$nbThis = sizeof($this->leafs);
 		if($nbOthers == 0 || $nbThis == 0){
-			return log(0);
+			return -log(0);
 		}
 		
 		$diffengine = new _DiffEngine();
@@ -1537,7 +1534,7 @@ class TagToString {
 			$txt->addHtml('<b>');
 			$txt->addText(strtolower($this->getDescription()));
 			$txt->addHtml('</b>');
-		} else if (sem == TagToStringFactory::STYLE) {
+		} else if ($this->sem == TagToStringFactory::STYLE) {
 			$txt->addHtml('<b>');
 			$txt->addText($this->getDescription());
 			$txt->addHtml('</b>');
@@ -1559,7 +1556,7 @@ class TagToString {
 			$txt->addHtml('<b>');
 			$txt->addText(strtolower($this->getDescription()));
 			$txt->addHtml('</b>');
-		} else if (sem == TagToStringFactory::STYLE) {
+		} else if ($this->sem == TagToStringFactory::STYLE) {
 			$txt->addHtml('<b>');
 			$txt->addText($this->getDescription());
 			$txt->addHtml('</b>');
@@ -1958,7 +1955,7 @@ class EchoingContentHandler{
 	function startElement($qname, /*array*/ $arguments){
 		echo '<'.$qname;
 		foreach($arguments as $key => $value){
-			echo ' '.$key.'="'.$value.'"';
+			echo ' '.$key.'="'.Sanitizer::encodeAttribute($value).'"';
 		}
 		echo '>';
 	}
@@ -1984,7 +1981,7 @@ class DelegatingContentHandler{
 	function startElement($qname, /*array*/ $arguments){
 		$this->delegate->addHtml('<'.$qname) ;
 		foreach($arguments as $key => $value){
-			$this->delegate->addHtml(' '.$key.'="'.$value.'"');
+			$this->delegate->addHtml(' '.$key.'="'. Sanitizer::encodeAttribute($value) .'"');
 		}
 		$this->delegate->addHtml('>');
 	}

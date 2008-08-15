@@ -80,19 +80,16 @@ table.diff td div {
  */
 span.diff-html-added {
   font-size: 100%;
-  color: black;
-  background-color: #ccffcc; /* light green */
+  background-color: #20ff20
 }
 
 span.diff-html-removed {
   font-size: 100%;
-  color: black;
   text-decoration: line-through;
-  background-color: #fdc6c6; /* light red */
+  background-color: #ff2020
 }
 
 span.diff-html-changed {
-  color: black;
   background: url(images/diffunderline.gif) bottom repeat-x;
   *background-color: #c6c6fd; /* light blue */
 }
