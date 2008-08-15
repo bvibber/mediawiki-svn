@@ -46,6 +46,7 @@ $wgExtensionMessagesFiles['SpamRegex'] = $dir . 'SpamRegex.i18n.php';
 $wgExtensionAliasesFiles['SpamRegex'] = $dir . 'SpamRegex.alias.php';
 $wgAutoloadClasses['SpamRegex'] = $dir . 'SpecialSpamRegex.php';
 $wgSpecialPages['SpamRegex'] = 'SpamRegex';
+$wgSpecialPageGroups['SpamRegex'] = 'pagetools';
 
 //New user right
 $wgAvailableRights[] = 'spamregex';

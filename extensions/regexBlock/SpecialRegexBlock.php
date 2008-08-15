@@ -32,6 +32,7 @@ function wfRegexBlockSetup() {
 	if (!wfSimplifiedRegexCheckSharedDB())
 		return;
 	require_once($IP. '/includes/SpecialPage.php');
+	$wgSpecialPageGroups['Regexblock'] = 'users';
 	SpecialPage::addPage(new SpecialPage('Regexblock', 'regexblock', true, 'wfRegexBlockSpecial', false));
 	wfLoadExtensionMessages( 'RegexBlock' );
 }
