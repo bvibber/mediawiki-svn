@@ -74,8 +74,9 @@ class DifferenceEngine {
 	}
 
 	function showDiffPage( $diffOnly = false ) {
-		global $wgUser, $wgOut, $wgUseExternalEditor, $wgUseRCPatrol;
+		global $wgUser, $wgOut, $wgUseExternalEditor, $wgUseRCPatrol, $wgEnableHtmlDiff;
 		wfProfileIn( __METHOD__ );
+
 
 		# If external diffs are enabled both globally and for the user,
 		# we'll use the application/x-external-editor interface to call
@@ -265,17 +266,16 @@ CONTROL;
 			'<div id="mw-diff-ntitle3">' . $newminor . $sk->revComment( $this->mNewRev, !$diffOnly, true ) . $rdel . "</div>" .
 			'<div id="mw-diff-ntitle4">' . $nextlink . $patrol . '</div>';
 
-		$this->showDiff( $oldHeader, $newHeader );
+		if($wgEnableHtmlDiff){
+			$this->renderHtmlDiff();
+		}else{
 
-		if ( !$diffOnly ){
-			global $wgEnableHtmlDiff;
-			if($wgEnableHtmlDiff){
-				$this->renderHtmlDiff();
-			}else{
+			$this->showDiff( $oldHeader, $newHeader );
+
+			if ( !$diffOnly ){
 				$this->renderNewRevision();
 			}
 		}
-
 		wfProfileOut( __METHOD__ );
 	}
 
@@ -329,10 +329,11 @@ CONTROL;
 	function renderHtmlDiff() {
 		global $wgOut, $IP;
 		wfProfileIn( __METHOD__ );
-		
+
+		$this->showDiffStyle();
+
 		require_once( "$IP/includes/HTMLDiff.php" );
 
-		$wgOut->addHTML( "<hr /><h2>HTML Diff</h2>\n" );
 		#add deleted rev tag if needed
 		if( !$this->mNewRev->userCan(Revision::DELETED_TEXT) ) {
 			$wgOut->addWikiMsg( 'rev-deleted-text-permission' );
@@ -1064,10 +1065,6 @@ class _DiffEngine {
 		// Diff and store locally
 		$this->diff_local($from_lines, $to_lines);
 
-		// Merge edits when possible
-		$this->_shift_boundaries($from_lines, $this->xchanged, $this->ychanged);
-		$this->_shift_boundaries($to_lines, $this->ychanged, $this->xchanged);
-
 		// Compute the ranges operations.
 		$n_from = sizeof($from_lines);
 		$n_to = sizeof($to_lines);
@@ -1102,18 +1099,18 @@ class _DiffEngine {
 
 	function diff_local ($from_lines, $to_lines) {
 		global $wgExternalDiffEngine;
-
-		$n_from = sizeof($from_lines);
-		$n_to = sizeof($to_lines);
+		wfProfileIn( __METHOD__);
 
 		if($wgExternalDiffEngine == 'wikidiff3'){
 			// wikidiff3
 			global $IP;
 			require_once( "$IP/includes/Diff.php" );
-			list($this->xchanged, $this->ychanged) = wikidiff3_diff($from_lines, $to_lines, TRUE, 100000);
+			$wikidiff3 = new WikiDiff3();
+			list($this->xchanged, $this->ychanged) = $wikidiff3->diff($from_lines, $to_lines);
 		}else{
 			// old diff
-			wfProfileIn( __METHOD__ ." - basicdiff");
+			$n_from = sizeof($from_lines);
+			$n_to = sizeof($to_lines);
 			$this->xchanged = $this->ychanged = array();
 			$this->xv = $this->yv = array();
 			$this->xind = $this->yind = array();
@@ -1158,8 +1155,8 @@ class _DiffEngine {
 
 			// Find the LCS.
 			$this->_compareseq(0, sizeof($this->xv), 0, sizeof($this->yv));
-			wfProfileOut( __METHOD__ ." - basicdiff");
 		}
+		wfProfileOut( __METHOD__ );
 	}
 
 	/**
@@ -1215,7 +1212,6 @@ class _DiffEngine {
 		$numer = $xlim - $xoff + $nchunks - 1;
 		$x = $xoff;
 		for ($chunk = 0; $chunk < $nchunks; $chunk++) {
-			wfProfileIn( __METHOD__ . "-chunk" );
 			if ($chunk > 0)
 			for ($i = 0; $i <= $this->lcs; $i++)
 			$ymids[$i][$chunk-1] = $this->seq[$i];
@@ -1268,7 +1264,6 @@ class _DiffEngine {
 		if ($end == 0 || $ypos > $this->seq[$end]) {
 			$this->seq[++$this->lcs] = $ypos;
 			$this->in_seq[$ypos] = 1;
-			wfProfileOut( __METHOD__ );
 			return $this->lcs;
 		}
 
