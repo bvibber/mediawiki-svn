@@ -131,7 +131,7 @@ class maparea {
 		}
 		return $out;
 	}
-	
+
 	function map_pos( $lat, $lon )
 	{
 		#
@@ -158,4 +158,3 @@ class maparea {
 		return $out;
 	}
 }
-
