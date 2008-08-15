@@ -33,7 +33,7 @@ $messages['en'] = array(
 	'mvexportsearch'                => 'Metavid export',
 	'mvexportsequence'              => 'Metavid export sequence',
 	'mvexportstream'                => 'Metavid export stream',
-	
+
 	'mv_add_stream_page'            => 'Mv add stream',
 	'mv_edit_strea_docu'            => '<p>Edit stream <b>admin</b><br />for normal user view/edit see $1 page',
 	'mv_add_stream_docu'            => '<p>Add a new Stream with the field below.</p>
@@ -63,8 +63,8 @@ Or you many want to <a href="$3">Add the stream</a>.',
 	'mv_label_stream_name'          => 'Stream name',
 	'mv_label_stream_desc'          => 'Stream description',
 	'add_stream_permission'         => 'You lack permission to add a new stream',
-	'edit_stream_missing'           => 'Missing stream name',	
-	'mv_missing_req_time'           => 'Missing request time', 
+	'edit_stream_missing'           => 'Missing stream name',
+	'mv_missing_req_time'           => 'Missing request time',
 	'mv_missing_cat'                => 'Missing category name',
 	'mv_stream_already_exists'      => 'The stream <a href="$2">$1</a> already exists',
 	'mv_summary_add_stream'         => 'stream added by form',
@@ -79,7 +79,7 @@ Or you many want to <a href="$3">Add the stream</a>.',
 	'mv_metavid_live'          => 'Set up live stream',
 	'mv_upload_file'           => 'Upload file',
 	'mv_external_file'         => 'External file',
-	'mv_stream_delete_warning' => 'Deleting this stream will additionally remove $1 pages of metadata',	
+	'mv_stream_delete_warning' => 'Deleting this stream will additionally remove $1 pages of metadata',
 
 	#tools
 	'mv_tool_search'            => 'Search',
@@ -102,7 +102,7 @@ Or you many want to <a href="$3">Add the stream</a>.',
 	'mv_people_matches'			=> 'People matches',
 	'mv_category_matches'		=> 'Category matches',
 	'mv_bill_matches'			=> 'Bill matches',
-	'mv_interest_group_matches' => 'Interest group matches',	
+	'mv_interest_group_matches' => 'Interest group matches',
 	'mv_click_to_edit'			=> 'click to edit',
 
 	#mvd types:
@@ -131,7 +131,7 @@ $mvMVDTypeDefaultDisp should be a subset of $mvMVDTypeAllAvailable',
 	'mv_list_streams_none' => 'No streams exist',
 
 	#messages for metavid export feed:
-	'mvvideofeed'        => 'Metavid video feed export',	
+	'mvvideofeed'        => 'Metavid video feed export',
 	'mvexportask'		 => 'Semantic video feed export',
 	'video_feed_cat'     => 'Video feed for category:',
 	'mv_cat_search_note' => 'Note: Categories only lists top level categories.
@@ -166,16 +166,16 @@ Jump to stream view: $2',
 	'mv_start_desc'               => 'Start time',
 	'mv_end_desc'                 => 'End time',
 	'mv_of'                       => '&#32;of&#32;',
-	
+
 	'mv_edit_metadata'			  => 'Edit metadata',
 	'mv_advanced_edit'			  => 'Advanced edit',
 	'mv_basic_edit'				  => 'Basic edit',
 	'mv_remove_category'		  => 'Remove category',
 	'mv_existing_categories'	  => 'Existing categories:',
-	'mv_add_category'			  => 'Add a categorization', 
+	'mv_add_category'			  => 'Add a categorization',
 	'mv_basic_text_desc'		  => 'Text description (optional)',
-	
-	
+
+
 	#search
 	'mediasearch'                    => 'Media search',
 	'mv_search_sel_t'                => 'Select search type',
@@ -197,13 +197,13 @@ Jump to stream view: $2',
 	'mv_stream_name'                 => 'stream name',
 	'mv_date_range'                  => 'date range',
 	'mv_date_last_week'				 => 'Last week',
-	
+
 	'mv_category_results'			 => 'Category results',
 	'mv_people_results'				 => 'People results',
 	'mv_bill_results'				 => 'Bill results',
 	'mv_intrest_group_results'		 => 'Interst groups',
-	
-	'mv_most_relevent'				 => 'Most relevent',
+
+	'mv_most_relevant'				 => 'Most relevant',
 	'mv_most_recent'				 => 'Most recent',
 	'mv_most_viewed'				 => 'Most viewed',
 
@@ -437,7 +437,7 @@ $messages['ar'] = array(
 	'thomas_en_desc' => "ترانس سكريبت توماس الرسمي من خدمة تسجيل THOMAS الرسمية.
 وقت المصدر معدل بواسطة C-SPAN's c-spanarchives.org",
 	'mvd_default_mismatch' => 'خطأ في ملف الإعدادات',
-	'mvd_default_mismatch_text' => 'هناك خطأ في ملف إعداداتك. 
+	'mvd_default_mismatch_text' => 'هناك خطأ في ملف إعداداتك.
 $mvMVDTypeDefaultDisp يجب أن تكون جزء من $mvMVDTypeAllAvailable',
 	'mv_data_page_title' => '$1 ل$2 من $3',
 	'mv_time_separator' => '$1 إلى $2',
@@ -3672,4 +3672,3 @@ Nhảy đến cảnh luồng: $2',
 $messages['vo'] = array(
 	'mv_search_category' => 'Klad',
 );
-
