@@ -49,8 +49,20 @@
 
 
 function scgParserFunctions () {
-    global $wgParser;
-    $wgParser->setFunctionHook('semantic_calendar', 'scRenderSemanticCalendar');
+	global $wgHooks, $wgParser;
+	if( defined( 'MW_SUPPORTS_PARSERFIRSTCALLINIT' ) ) {
+		$wgHooks['ParserFirstCallInit'][] = 'scgRegisterParser';
+	} else {
+		if ( class_exists( 'StubObject' ) && !StubObject::isRealObject( $wgParser ) ) {
+			$wgParser->_unstub();
+		}
+		scgRegisterParser( $wgParser );
+	}
+}
+
+function scgRegisterParser( &$parser ) {
+	$parser->setFunctionHook('semantic_calendar', 'scRenderSemanticCalendar');
+	return true;
 }
 
 function scgLanguageGetMagic( &$magicWords, $langCode = "en" ) {
