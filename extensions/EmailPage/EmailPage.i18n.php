@@ -11,7 +11,7 @@ $messages = array();
  * @author Nad
  */
 $messages['en'] = array(
-	'emailpages'          => 'E-mail page',
+	'emailpage'           => 'E-mail page',
 	'ea-desc'             => 'Send rendered HTML page to an e-mail address or list of addresses using [http://phpmailer.sourceforge.net phpmailer].',
 	'ea-heading'          => "=== E-mailing the page [[$1]] ===",
 	'ea-fromgroup'        => 'From group:',
@@ -46,7 +46,7 @@ $messages['qqq'] = array(
  * @author OsamaK
  */
 $messages['ar'] = array(
-	'emailpages' => 'إرسال رسالة للمستخدم',
+	'emailpage' => 'إرسال رسالة للمستخدم',
 	'ea-desc' => 'يرسل صفحة ناتجة ب HTML لعنوان بريد إلكتروني أو قائمة عناوين باستخدام [http://phpmailer.sourceforge.net phpmailer].',
 	'ea-heading' => '=== مراسلة الصفحة [[$1]] ===',
 	'ea-fromgroup' => 'من مجموعة:',
@@ -98,7 +98,7 @@ $messages['de'] = array(
  * @author Yekrats
  */
 $messages['eo'] = array(
-	'emailpages' => 'Retpoŝtigi paĝon',
+	'emailpage' => 'Retpoŝtigi paĝon',
 	'ea-heading' => '=== Retpoŝtigante paĝon [[$1]] ===',
 	'ea-fromgroup' => 'De grupo:',
 	'ea-pagesend' => 'Paĝo "$1" sendita de $2',
@@ -118,7 +118,7 @@ $messages['eo'] = array(
  * @author Grondin
  */
 $messages['fr'] = array(
-	'emailpages' => 'Envoyer l’article par courriel',
+	'emailpage' => 'Envoyer l’article par courriel',
 	'ea-desc' => 'Envoie le rendu d’une page HTML à une adresse électronique où à une liste d’adresses en utilisant [http://phpmailer.sourceforge.net phpmailer]',
 	'ea-heading' => '=== Envoi de la page [[$1]] par courrier électronique ===',
 	'ea-fromgroup' => 'Depuis le groupe :',
@@ -145,7 +145,7 @@ $messages['fr'] = array(
  * @author Toliño
  */
 $messages['gl'] = array(
-	'emailpages' => 'Enviar a páxina por correo electrónico',
+	'emailpage' => 'Enviar a páxina por correo electrónico',
 	'ea-desc' => 'Enviar páxinas HTML renderizadas a un enderezo de correo electrónico (ou a varios correos) usando [http://phpmailer.sourceforge.net phpmailer].',
 	'ea-heading' => '=== Enviando a páxina "[[$1]]" ===',
 	'ea-fromgroup' => 'Desde o grupo:',
@@ -172,7 +172,7 @@ $messages['gl'] = array(
  * @author McDutchie
  */
 $messages['ia'] = array(
-	'emailpages' => 'Inviar pagina per e-mail',
+	'emailpage' => 'Inviar pagina per e-mail',
 	'ea-desc' => 'Inviar le rendition HTML de un pagina a un adresse de e-mail o a un lista de adresses con [http://phpmailer.sourceforge.net phpmailer].',
 	'ea-heading' => '=== Invio del pagina [[$1]] per e-mail ===',
 	'ea-fromgroup' => 'Del gruppo:',
@@ -199,7 +199,7 @@ $messages['ia'] = array(
  * @author Lovekhmer
  */
 $messages['km'] = array(
-	'emailpages' => 'ទំព័រអ៊ីមែល',
+	'emailpage' => 'ទំព័រអ៊ីមែល',
 	'ea-fromgroup' => 'ពីក្រុម:',
 	'ea-pagesend' => 'ទំព័រ"$1"ត្រូវបានបញ្ជូនពី$2',
 	'ea-send' => 'ផ្ញើ!',
@@ -209,7 +209,7 @@ $messages['km'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
-	'emailpages' => 'Säit per Mail schécken',
+	'emailpage' => 'Säit per Mail schécken',
 	'ea-heading' => '=== Säit [[$1]] peer E-Mail verschécken ===',
 	'ea-fromgroup' => 'Vun der Grupp:',
 	'ea-pagesend' => 'D\'Säit "$1" gouf verschéckt vum $2',
@@ -226,7 +226,7 @@ $messages['lb'] = array(
  * @author Shijualex
  */
 $messages['ml'] = array(
-	'emailpages' => 'ഇമെയില്‍ താള്‍',
+	'emailpage' => 'ഇമെയില്‍ താള്‍',
 	'ea-heading' => '=== [[$1]] എന്ന താള്‍ ഇമെയില്‍ ചെയ്യുന്നു ===',
 	'ea-fromgroup' => 'ഗ്രൂപ്പ്:',
 	'ea-pagesend' => '$2 സം‌രംഭത്തില്‍ നിന്നു "$1" എന്ന താള്‍ അയച്ചു',
@@ -247,7 +247,7 @@ $messages['ml'] = array(
  * @author Kaustubh
  */
 $messages['mr'] = array(
-	'emailpages' => 'पान इ-मेल करा',
+	'emailpage' => 'पान इ-मेल करा',
 	'ea-desc' => ' [http://phpmailer.sourceforge.net पीएचपी मेलर] चा वापर करून एखादे पान एखाद्या इ-मेल पत्त्यावर किंवा इ-मेल पत्त्यांच्या यादीवर पाठवा.',
 	'ea-heading' => '=== [[$1]] पान इ-मेल करीत आहे ===',
 	'ea-fromgroup' => 'गटाकडून:',
@@ -274,7 +274,7 @@ $messages['mr'] = array(
  * @author Fluence
  */
 $messages['nah'] = array(
-	'emailpages' => 'E-mail zāzanilli',
+	'emailpage' => 'E-mail zāzanilli',
 	'ea-heading' => '=== E-mailhua in zāzanilli $1 ===',
 );
 
@@ -289,7 +289,7 @@ $messages['nds'] = array(
  * @author Siebrand
  */
 $messages['nl'] = array(
-	'emailpages' => 'Pagina e-mailen',
+	'emailpage' => 'Pagina e-mailen',
 	'ea-desc' => 'Stuur een gerenderde pagina naar een e-mailadres of een lijst van adressen met behulp van [http://phpmailer.sourceforge.net phpmailer].',
 	'ea-heading' => '=== Pagina [[$1]] e-mailen ===',
 	'ea-fromgroup' => 'Van groep:',
@@ -316,7 +316,7 @@ $messages['nl'] = array(
  * @author Jon Harald Søby
  */
 $messages['no'] = array(
-	'emailpages' => 'Send side som e-post',
+	'emailpage' => 'Send side som e-post',
 	'ea-desc' => 'Send HTML-side til en eller flere e-postadresser ved hjelp av [http://phpmailer.sourceforge.net/ phpmailer].',
 	'ea-heading' => '=== Send siden [[$1]] som e-post ===',
 	'ea-fromgroup' => 'Fra gruppe:',
@@ -343,7 +343,7 @@ $messages['no'] = array(
  * @author Cedric31
  */
 $messages['oc'] = array(
-	'emailpages' => 'Mandar l’article per corrièr electronic',
+	'emailpage' => 'Mandar l’article per corrièr electronic',
 	'ea-desc' => 'Manda lo rendut d’una pagina HTML a una adreça electronica o a una tièra d’adreças en utilizant [http://phpmailer.sourceforge.net phpmailer]',
 	'ea-heading' => '=== Mandadís de la pagina [[$1]] per corrièr electronic ===',
 	'ea-fromgroup' => 'Dempuèi lo grop :',
@@ -405,7 +405,7 @@ $messages['ro'] = array(
  * @author Helix84
  */
 $messages['sk'] = array(
-	'emailpages' => 'Poslať stránku emailom',
+	'emailpage' => 'Poslať stránku emailom',
 	'ea-desc' => 'Poslať stránku vo formáte HTML na emailovú adresu alebo zoznam adries pomocou [http://phpmailer.sourceforge.net phpmailer].',
 	'ea-heading' => '=== Poslanie stránky [[$1]] emailom ===',
 	'ea-fromgroup' => 'Zo skupiny:',
@@ -440,7 +440,7 @@ $messages['su'] = array(
  * @author M.M.S.
  */
 $messages['sv'] = array(
-	'emailpages' => 'E-posta sida',
+	'emailpage' => 'E-posta sida',
 	'ea-desc' => 'Skicka en renderad HTML-sida till en e-postadress eller en lista över adresser som använder [http://phpmailer.sourceforge.net phpmailer].',
 	'ea-heading' => '=== E-posta sidan [[$1]] ===',
 	'ea-fromgroup' => 'Från grupp:',
@@ -477,7 +477,7 @@ $messages['te'] = array(
  * @author Vinhtantran
  */
 $messages['vi'] = array(
-	'emailpages' => 'Trang thư điện tử',
+	'emailpage' => 'Trang thư điện tử',
 	'ea-desc' => 'Gửi trang HTML giản lược đến một địa chỉ hoặc danh sách các địa chỉ thư điện tử dùng [http://phpmailer.sourceforge.net phpmailer].',
 	'ea-heading' => '=== Gửi trang [[$1]] ===',
 	'ea-nopage' => 'Xin hãy xác định trang muốn gửi, ví dụ [[Special:EmailPage/{{MediaWiki:Mainpage-url}}]].',
