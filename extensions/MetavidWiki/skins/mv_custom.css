@@ -445,7 +445,7 @@ ul#metaResults li.prevnext {margin-left:3px; margin-right:10px;}
 	display: inline;
 	margin: 0 0 0 15px;
 }
-.suggestionsBox div.block p.people2_match img {width: 44px;padding:5px;}
+.suggestionsBox div.block p.people2_match img {width: 44px;}
 #resultsArea ul#results li.result div.result_description p {margin: 0; padding: 8px 0;}
 #resultsArea ul#results li.result div.result_description h4 {margin: 0; padding: 0;}
 #resultsArea ul#results li.result div.result_description a {text-decoration: none;}

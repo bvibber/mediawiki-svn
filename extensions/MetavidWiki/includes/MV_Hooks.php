@@ -211,10 +211,10 @@ function mv_helpers_auto_complete($val=null){
 	global $mvMetaDataHelpers,$wgRequest;
 	$property = $wgRequest->getVal('prop_name');
 	switch($property){
-		case 'smw_Speech_by':
+		case 'smw_speech_by':		
 			return MV_SpecialMediaSearch::auto_complete_person($val);
 		break;
-		case 'smw_Bill':
+		case 'smw_bill':
 			return MV_SpecialMediaSearch::auto_complete_category('Bill', $val);
 		break;
 		case 'category':

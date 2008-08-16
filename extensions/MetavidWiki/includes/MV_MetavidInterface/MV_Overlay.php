@@ -17,6 +17,7 @@ $smwgShowFactbox=SMW_FACTBOX_HIDDEN;
  	var $req = 'stream_transcripts'; 
  	var $tl_width = '16';
  	var $parserOutput = null;
+ 	var $oddEvenToggle=true;
  	/*structures the component output and call html code generation */
  	function getHTML(){ 	 		
  		switch($this->req){
@@ -139,15 +140,23 @@ $smwgShowFactbox=SMW_FACTBOX_HIDDEN;
 		}else{
 			$img_url = MV_StreamImage::getStreamImageURL($mvd_page->stream_id, $mvd_page->start_time, 'medium', true); 
 		}
+		$oe_class='';
+		if($this->oddEvenToggle){
+			$this->oddEvenToggle=false;
+			$oe_class=' even';
+		}else{
+			$this->oddEvenToggle=true;
+			$oe_class=' odd';
+		}
 		//style=\"background:#".$this->getMvdBgColor($mvd_page)."\" "
-		$wgOut->addHTML('<fieldset class="mv_fd_mvd" id="mv_fd_mvd_'.htmlspecialchars($mvd_page->id).'" '.
+		$wgOut->addHTML('<fieldset class="mv_fd_mvd'.htmlspecialchars($oe_class).'" id="mv_fd_mvd_'.htmlspecialchars($mvd_page->id).'" '.
 					'name="'.htmlspecialchars($mvd_page->wiki_title).'" ' .
 					'image_url="'.htmlspecialchars($img_url).'" >' );
 		
 		/*$wgOut->addHTML("<legend id=\"mv_ld_{$mvd_page->id}\">" .  
 				$this->get_mvd_menu($mvd_page) . 
 				"</legend>");*/			
-		$wgOut->addHTML($this->get_mvd_menu($mvd_page));
+		//$menu_html = $this->get_mvd_menu($mvd_page);
 		$wgOut->addHTML("<div id=\"mv_fcontent_{$mvd_page->id}\">");
 		if($content==''){				
 			$this->outputMVD($mvd_page);
@@ -251,7 +260,8 @@ $smwgShowFactbox=SMW_FACTBOX_HIDDEN;
 		$add_opt = ($absolute_links)?'a':'';
 		$MvParserCache->addToKey($add_opt);
 		
-		$parserOutput = $MvParserCache->get( $mvdArticle, $wgUser );
+		$parserOutput = $MvParserCache->get( $mvdArticle, $wgUser );		
+		
 		if ( $parserOutput !== false ) {
 			//print "js_log('found in cache: with hash: " . $MvParserCache->getKey( $mvdArticle, $wgUser )."');\n";
 			//found in cache output and be done with it: 					
@@ -273,7 +283,7 @@ $smwgShowFactbox=SMW_FACTBOX_HIDDEN;
 					return ;				
 				}						
 			}		
-			$parserOutput =  $this->parse_format_text($wikiText, $mvdTitle);
+			$parserOutput =  $this->parse_format_text($wikiText, $mvdTitle, $mvd_page);
 			
 			//if absolute_links set preg_replace with the server for every relative link:				
 			if($absolute_links==true){
@@ -285,50 +295,60 @@ $smwgShowFactbox=SMW_FACTBOX_HIDDEN;
 			$MvParserCache->save( $parserOutput, $mvdArticle, $wgUser );
 		}										
 	}
-	function parse_format_text(&$text, &$mvdTile){
-		global $wgOut;
+	function parse_format_text(&$text, &$mvdTile, &$mvd_page=''){
+		global $wgOut, $mvgScriptPath;
 		global $wgParser, $wgUser, $wgTitle, $wgContLang;
 		$template_key='';			
-		if(is_object($mvdTile))$template_key = $mvdTile->getMvdTypeKey();
+		if(is_object($mvdTile))
+			$template_key = strtolower($mvdTile->getMvdTypeKey());
 		//$wgOut->addHTML('looking at: ' . strtolower($template_key));
-		
-	
-		$img_float =''; 			
-		switch(strtolower($template_key)){
-			case 'ht_en':				
-				//slow... don't use templates.. just hard code here:
-				/*$smwStore =& smwfGetStore(); 	
-				$title = $mvdTile->getMwTitle();
-				//print "Title: ".$title->getDBKey() . "\n";
-				$smwProps = $smwStore->getProperties($title);
-				//should use SMW to grab semantic prop:				
-				if(isset($smwProps['Spoken_By'])){
-					//get person:
-					$pimg = mv_get_person_img($smwProps['Spoken_By'].'.jpg');					
-					$img_float='<img src="'.$pimg.'">';
-				}*/	
-				global $wgParser, $wgUser, $wgContLang;
-				$templetTitle = Title::makeTitle(NS_TEMPLATE, $template_key );	
-				if($templetTitle->exists()){	
-					$smw_attr = $this->get_and_strip_semantic_tags($text);			
-					$template_wiki_text = '{{'.$template_key."|\n";		
-					
-					//@@todo lookup with attributes
-					if(isset($smw_attr['spoken_by'])){
-						$template_wiki_text.= '|PersonName='.$smw_attr['spoken_by']."\n";
+		$sk = &$wgUser->getSkin();
+		$pre_text_html = $post_text_html=''; 			
+		switch($template_key){					
+			case 'ht_en':
+			case 'anno_en':							
+				$smw_attr = $this->get_and_strip_semantic_tags($text);		
+				foreach($smw_attr as $smw_key=>$smw_attr_val){
+					switch($smw_key){
+						case 'speech_by':
+						case 'spoken_by':							
+							$pTitle = Title::newFromText($smw_attr_val);						
+							$pimg = mv_get_person_img($smw_attr_val);							
+							$pre_text_html.='<p class="mvd_page_image">';
+							
+							if($mvd_page!='')	
+								$pre_text_html.='<a href="javascript:mv_do_play('.htmlspecialchars($mvd_page->id).')">';
+							
+							$pre_text_html.='<img width="44" alt="'.$pTitle->getText().'" '.
+												'src="'.	htmlspecialchars($pimg->getURL() ).'">';											
+							if($mvd_page!='')
+								$pre_text_html.='<img border="0" src="'.htmlspecialchars($mvgScriptPath).'/skins/images/button_play.png">'.'</a>';								
+							$pre_text_html.='</p>';															
+						break;																
+						default:
+							//@@todo we should just use semantic mediaWikis info box with some custom style .
+							$smwKeyTitle=Title::newFromText($smw_key);
+							$valueTitle = Title::newFromText($smw_attr_val);
+							$post_text_html.=$smwKeyTitle->getText(). ' '. $sk->makeLinkObj($valueTitle);
+						break;	
 					}
-					$template_wiki_text.='|BodyText='.$text."\n".
-					'}}';										
-					$text =	$template_wiki_text;					
-				}						
-			break;
-			case 'anno_en':			
-				$text='';
-				//format anno_en:
-				$smw_attr = $this->get_and_strip_semantic_tags($text);					
-				if(isset($smw_attr['speech_by'])){
-					$text.=wfMsg('mv_speech_by').$smw_attr['speech_by'];
+				}			
+				$pre_text_html.='<p class="text">';				
+				if($mvd_page!=''){			
+					$pre_text_html.='<span class="mvd_menu_header">'.$this->get_mvd_menu($mvd_page).'</span>';
 				}
+				$pre_text_html.='<span class="description">';
+				
+				//for ht_en add spoken by add name to start of text: 
+				if( $template_key=='ht_en'){
+					//if we have the person title add them to start of the text output: 
+					if(isset($pTitle)){						
+						//have to prepend it cuz of <p> insertion for first paragraph						
+						$text='[['.$pTitle->getText().']]: '.trim($text);
+					}
+				}
+				
+				$post_text_html.='</span></p>';
 			break;
 			default:					
 			break;
@@ -341,9 +361,10 @@ $smwgShowFactbox=SMW_FACTBOX_HIDDEN;
 		$parserOptions->setTidy(true);
 		$parserOutput = $wgParser->parse( $text , $mvdTile, $parserOptions );
 		$wgOut->addCategoryLinks( $parserOutput->getCategories() );
-		//@@TODO a less ugly hack here:
-		$parserOutput->mText = $img_float . $parserOutput->mText;	 			
-		$parserOutput->mText.=	$sk->getCategories();			
+		
+		$parserOutput->mText.=	$sk->getCategories();		
+		$parserOutput->mText = $pre_text_html . $parserOutput->mText . $post_text_html;	 					
+				
 		//empty out the categories (should work) 
 		$wgOut->mCategoryLinks = array();		
 		$parserOutput->mCategories=null;
@@ -400,7 +421,10 @@ $smwgShowFactbox=SMW_FACTBOX_HIDDEN;
 		$out='';
 		//set up links:
 		$plink = '';
-		$elink = '<a title="'.htmlspecialchars(wfMsg('mv_edit_adjust_title')).'" href="javascript:mv_edit_disp(\''.htmlspecialchars($mvd_page->wiki_title).'\', \''.htmlspecialchars($mvd_page->id).'\')">'.wfMsg('mv_edit').'</a>';
+		$elink = '<a title="'.htmlspecialchars(wfMsg('mv_edit_adjust_title')) .
+				'" href="javascript:mv_edit_disp(\''.htmlspecialchars($mvd_page->wiki_title) .
+				'\', \''.htmlspecialchars($mvd_page->id).'\')">'.wfMsg('mv_edit').'</a>';
+		
 		//$alink = '<a title="'.wfMsg('mv_adjust_title').'" href="javascript:mv_adjust_disp(\''.$mvd_page->wiki_title.'\', \''.$mvd_page->id.'\')">'.wfMsg('mv_adjust').'</a>';
 		
 		//print "wiki title: " . $mvd_page->wiki_title;
@@ -411,19 +435,21 @@ $smwgShowFactbox=SMW_FACTBOX_HIDDEN;
 		$dlink = $sk->makeKnownLinkObj($dTitle,  wfMsg('talk') );
 		
 		//{s:\''.seconds2ntp($mvd_page->start_time).'\',e:\''.seconds2ntp($mvd_page->end_time).'\'}
-		$plink='<a title="'.htmlspecialchars(wfMsg('mv_play').' '.seconds2ntp($mvd_page->start_time) . ' to ' . seconds2ntp($mvd_page->end_time)).' " ' .
+		/*$plink='<a title="'.htmlspecialchars(wfMsg('mv_play').' '.seconds2ntp($mvd_page->start_time) . ' to ' . seconds2ntp($mvd_page->end_time)).' " ' .
 				'style="text-decoration:none;" ' .		
 				'href="javascript:mv_do_play('.htmlspecialchars($mvd_page->id).');">' .
-					'<span style="width:44px"><img src="'.htmlspecialchars($mvgScriptPath).'/skins/images/control_play_blue.png"></span>'.
-					htmlspecialchars(seconds2ntp($mvd_page->start_time) . ' to ' . seconds2ntp($mvd_page->end_time)).'</a>';
-		
+					'<span style="width:44px"><img src="'.htmlspecialchars($mvgScriptPath).'/skins/images/control_play_blue.png"></span>'.'</a>'.
+					htmlspecialchars(seconds2ntp($mvd_page->start_time) . ' to ' . htmlspecialchars(seconds2ntp($mvd_page->end_time)));
+		*/
+		$plink=htmlspecialchars(seconds2ntp($mvd_page->start_time)) . ' to ' . htmlspecialchars(seconds2ntp($mvd_page->end_time));
 		//@@TODO set up conditional display: (view source if not logged on, protect, remove if given permission)  
 		$out.=$plink;
-		$out.="- $elink - $hlink - $dlink ";
+		$out.="( $elink - $hlink - $dlink ";
 		if($wgUser->isAllowed('mv_delete_mvd')){
 			$rlink = '<a title="'.htmlspecialchars(wfMsg('mv_remove_title')).'" href="javascript:mv_disp_remove_mvd(\''.htmlspecialchars($mvd_page->wiki_title).'\', \''.htmlspecialchars($mvd_page->id).'\')">'.wfMsg('mv_remove').'</a>'; 
 			$out.=' - ' .  $rlink;
 		}
+		$out.=" ) ";
 		return $out;
 	}
 	/*
@@ -486,7 +512,8 @@ $smwgShowFactbox=SMW_FACTBOX_HIDDEN;
 			  			return $o;
 			  		}			  		
 			  		$metaData =  $mvTitle->getMetaData();				  	
-				}								
+				}		
+									
 				foreach($mvMetaDataHelpers[strtolower($mvd_type)] as $prop=>$ac_index){
 					$val='';
 					//normalize the 
@@ -494,7 +521,7 @@ $smwgShowFactbox=SMW_FACTBOX_HIDDEN;
 					//set existing "value"
 					if(isset($metaData['prop'][$prop])){
 						$val = $metaData['prop'][$prop];
-					}					
+					}										
 					//make sure the property exists: 
 					$swmTitle = Title::newFromText((string)$prop, SMW_NS_PROPERTY);	
 					$smwImageHTML='';

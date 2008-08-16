@@ -131,7 +131,7 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
 		if($mvd_type!='all'){
 			$mvd_type=(is_object($mvd_type))?get_object_vars($mvd_type):$mvd_type;
 			if(is_array($mvd_type)){
-				$mvd_type_cond = '';
+				$mvd_type_cond = $or='';			
 				foreach($mvd_type as $mtype){
 					//@@todo confirm its a valid mvd_type:
 					$mvd_type_cond.= $or."mvd_type=".$dbr->addQuotes($mtype);
@@ -250,14 +250,16 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
 		$vars_top=	$conds_top= $options_top=array();
 
 		$do_top_range_query = false;
-		$date_range_join=true;
+	
 
 		$dbr =& wfGetDB(DB_SLAVE);
 		//organize the queries (group full-text searches and category/attributes)
 		//if the attribute is not a numerical just add it to the fulltext query
-		//$ftq_match_asql=$last_person_aon=$ftq_match=$ftq=$snq=$toplq_cat=$date_range_join=$date_range_where=$asql=''; //top query and full text query =''
+		$ftq_match_asql=$last_person_aon=$ftq_match=$ftq=$snq=$toplq=$toplq_cat=$date_range_join=$date_range_where=$asql=''; //top query and full text query =''
 		if($filters=='')return array();
 		$ftq_match_asql=$date_cond='';
+		
+		$date_range_join=true;
 
 		//$selOpt = ($mvDo_SQL_CALC_FOUND_ROWS)?'SQL_CALC_FOUND_ROWS':'';
 		if( $mvDo_SQL_CALC_FOUND_ROWS)
@@ -327,8 +329,7 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
 					$toplq_cat.=$dbr->tableName( 'categorylinks').'.cl_to='.$dbr->addQuotes($f['v']);
 					$valid_filter_count++;
 				break;
-				case 'date_range':
-					$date_range_join = true;
+				case 'date_range':					
 					list($month, $day, $year) = explode('/',$f['vs']);
 					$sts = mktime(0,0,0,$month, $day, $year);
 					list($month, $day, $year) = explode('/',$f['ve']);
@@ -381,6 +382,7 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
 					$dbr->tableName('mv_mvd_index').'.stream_id = ' .
 					$dbr->tableName('mv_streams').'.id ) ';
 
+		//print "FROM TABLES:". $from_tables;
 
 		//restrict to streams with valid $mvDefaultVideoQualityKey files:
 		global $mvDefaultVideoQualityKey;

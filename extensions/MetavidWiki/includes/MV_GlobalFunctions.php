@@ -712,7 +712,10 @@ function mvViewPrevNext( $offset, $limit, $link, $query = '', $atend = false ) {
 		$q = "limit={$limit}&offset={$po}";
 		if ( '' != $query ) { $q .= '&'.$query; }
 		$plink = '<a href="' . $title->escapeLocalUrl( $q ) . "\" class=\"mw-prevlink\">{$prev}</a>";
-	} else { $plink = $prev; }
+	} else { 
+		//$plink = $prev;
+		$plink=''; 
+	}
 
 	$no = $offset + $limit;
 	$q = 'limit='.$limit.'&offset='.$no;
@@ -725,7 +728,12 @@ function mvViewPrevNext( $offset, $limit, $link, $query = '', $atend = false ) {
 	}
 	$nums = wfNumLink( $offset, 20, $title, $query ) . ' | ' .
 	  wfNumLink( $offset, 50, $title, $query ) . ' | ' .
-	  wfNumLink( $offset, 100, $title, $query ) ;	  
-	return wfMsg( 'viewprevnext', $plink, $nlink, $nums );
+	  wfNumLink( $offset, 100, $title, $query ) ;
+	  	 
+	if($plink==''){
+		return wfMsg( 'mv_viewnext', $nlink, $nums );
+	}else{
+		return wfMsg( 'viewprevnext', $plink, $nlink, $nums );
+	}
 }
 ?>

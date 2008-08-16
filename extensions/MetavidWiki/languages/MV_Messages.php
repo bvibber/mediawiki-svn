@@ -177,6 +177,7 @@ Jump to stream view: $2',
 
 
 	#search
+	'mv_viewnext'					 => 'View ($1) ($2) ',
 	'mediasearch'                    => 'Media search',
 	'mv_search_sel_t'                => 'Select search type',
 	'mv_video_search'                => 'Video search',
@@ -252,6 +253,10 @@ Jump to stream view: $2',
 	'mv_tool_missing'        => 'tool request ($1) does not exist',
 	'mv_bad_tool_request'    => 'bad tool line should be form: tool_name|tool_display_name',
 	'mv_update_layers'       => 'update layers view',
+
+	'mv_prev_speech'		 => 'Previus Speech :',
+	'mv_next_speech'		 => 'Next Speech:',
+	'mv_navigate_stream'	 => 'Navigate Stream',
 
 	#msg for overlay interface:
 	'mv_search_stream'       => 'Search stream',

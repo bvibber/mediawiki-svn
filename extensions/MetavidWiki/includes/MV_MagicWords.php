@@ -93,6 +93,7 @@ class MV_MagicWords{
 	//gets the top few clip ranges
 	function getTopClips(){
 		$dbr = & wfGetDB(DB_READ);
+		$o='';
 		$vars = array('query_key','stream_id','start_time','end_time', 'COUNT(1) as hit_count');
 		$conds = array('view_date >='.$dbr->addQuotes($this->getStartTime()));
 		$options = 	array('GROUP BY' => 'query_key', 'ORDER BY'=>'`hit_count` ASC', 
@@ -162,7 +163,7 @@ class MV_MagicWords{
  					$mvd_row = $dbr->fetchObject($mvd_result); 	 					
  					if($mvd_row->Speech_by){
  						$ptitle = Title::MakeTitle(NS_MAIN, $mvd_row->Speech_by);
- 						$o.='<span class="keywords">Person:'.
+ 						$o.='<span class="keywords">'.
  								$sk->makeKnownLinkObj($ptitle, $ptitle->getText()).
  							'</span>';
  					}
@@ -224,7 +225,7 @@ class MV_MagicWords{
 		$conds = '`time` >= ' . $dbr->addQuotes($this->getStartTime());
 							
 		$options['GROUP BY']=$dbr->tableName('mv_search_digest').'.query_key';
-		$options['LIMIT'] = $this->params[num_results];
+		$options['LIMIT'] = $this->params['num_results'];
 		
 		$result = $dbr->select( $from_tables, 
 			$vars,

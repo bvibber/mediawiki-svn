@@ -135,7 +135,7 @@ class MV_SpecialMediaSearch {
 		$o .= "\">
 									{$this->list_active_filters()}
 								</span>
-								<button class=\"grey_button\" type=\"submit\"><span>&nbsp;&nbsp; " . wfMsg('mv_video_search') . " &nbsp;&nbsp;</span></button>
+								<input type=\"submit\" value=\"".wfMsg('mv_video_search') ."\">
 								<a href=\"javascript:mv_toggle_advs()\" class=\"advanced_search_tag\">
 									<span class=\"advs_basic\" style=\"display:";
 		$o .= ($this->adv_search) ? 'none' : 'inline';
@@ -296,7 +296,8 @@ class MV_SpecialMediaSearch {
 	function getUnifiedResultsHTML($show_sidebar=true) {
 		global $wgUser, $wgStylePath, $wgRequest, $wgContLang;
 		$sk = $wgUser->getSkin();
-
+		$o='';
+		
 		$o .= '<h5 class="search_results_header">' . $this->getFilterDesc() . '</h5>';
 
 		$o .= '<div id="resultsArea">
@@ -315,15 +316,26 @@ class MV_SpecialMediaSearch {
 			$o .= '<li class="results">' .
 			wfMsg('mv_results_found', $rs, $re, number_format($this->numResultsFound)) .
 			'</li>';
+		}		
+		//check order prefrence:
+		$br='<br>';
+		$enddash='';
+		foreach (array ('relevant','recent','viewed') as $type) {
+			if ($this->order == $type) {
+				$o .= $enddash.'<li class="relevant">'. wfMsg('mv_most_' . $type) . '</li>' ;
+			} else {
+				$q_req = $this->get_httpd_filters_query();
+				if($wgRequest->getVal('limit')!='' || $wgRequest->getVal('order')!='')
+					$q_req.='&'.http_build_query(array('limit'=>$this->limit, 'offset'=>$this->offset));
+				$q_req.='&order='.$type;
+				$o .= $enddash.'<li class="relevant">'.$sk->makeKnownLinkObj(SpecialPage :: getTitleFor('MediaSearch'),
+								wfMsg('mv_most_' . $type), $q_req) . '</li>';
+			}
+			$br='';
+			$enddash=' - ';
 		}
-		$prevnext='';
-		//pagging
-		if ($this->numResultsFound > $this->limit) {
-			$prevnext = mvViewPrevNext($this->offset, $this->limit, SpecialPage :: getTitleFor('MediaSearch'), $this->get_httpd_filters_query(), ($this->num < $this->limit));
-			$o .= '<li class="prevnext">' . $prevnext . '</li>';
-		}
-
-		//make rss link:
+		
+				//make rss link:
 		$sTitle = Title :: MakeTitle(NS_SPECIAL, 'MvExportSearch');
 		$o .= '<li class="rss">';
 		$o .= $sk->makeKnownLinkObj($sTitle, 'RSS', $this->get_httpd_filters_query());
@@ -333,29 +345,23 @@ class MV_SpecialMediaSearch {
 		$o .= '<li class="subscribe"><a href="http://subscribe.getMiro.com/?url1=' .
 		'http%3A%2F%2F' . $_SERVER['HTTP_HOST'] . htmlspecialchars($sTitle->escapeLocalURL($this->get_httpd_filters_query())) . '" ' .
 		'title="Subscribe with Miro"><img src="' . $wgStylePath . '/mvpcf/images/button_subscribe.png" alt="Miro Video Player" border="0" /></a></li>';
-
-		//check order prefrence:
-		$br='<br>';
-		$enddash='';
-		foreach (array ('relevant','recent','viewed') as $type) {
-			if ($this->order == $type) {
-				$o .= $enddash.'<li class="relevant">'.$br . wfMsg('mv_most_' . $type) . '</li>' ;
-			} else {
-				$q_req = $this->get_httpd_filters_query();
-				if($wgRequest->getVal('limit')!='' || $wgRequest->getVal('order')!='')
-					$q_req.='&'.http_build_query(array('limit'=>$this->limit, 'offset'=>$this->offset));
-				$q_req.='&order='.$type;
-				$o .= $enddash.'<li class="relevant">'.$br .$sk->makeKnownLinkObj(SpecialPage :: getTitleFor('MediaSearch'),
-								wfMsg('mv_most_' . $type), $q_req) . '</li>';
-			}
-			$br='';
-			$enddash=' - ';
-		}
+		
+		$prevnext='';
+		//pagging
+		if ($this->numResultsFound > $this->limit) {
+			$prevnext = mvViewPrevNext($this->offset, $this->limit, SpecialPage :: getTitleFor('MediaSearch'), $this->get_httpd_filters_query(), ($this->num < $this->limit));
+			$o .= '<li class="prevnext"><br>' . $prevnext . '</li>';
+		}		
+		
 		$o .= '</ul>';
 
 		//output results:
 		//collect categories and people for sidebarbucket
-		$sideBarLinkBucket = array ();
+		$sideBarLinkBucket = array (
+							'person'=>array(),
+							'category'=>array(),
+							'bill'=>array()
+						);
 		$o .= '	<ul id="results">';
 		foreach ($this->results as $inx => & $mvd) {
 			$mvTitle = new MV_Title($mvd->wiki_title);
@@ -518,7 +524,7 @@ class MV_SpecialMediaSearch {
 		$o.='<div style="clear:both;"></div>';
 		return $o;
 	}
-	function getResultsHTML() {
+	/*function getResultsHTML() {
 		global $mvgIP, $wgOut, $mvgScriptPath, $mvgContLang, $wgUser, $wgParser;
 		$sk = & $wgUser->getSkin();
 		$o = '';
@@ -542,7 +548,7 @@ class MV_SpecialMediaSearch {
 		}
 		//media pagging: (only display if we have num of results > limit
 		$prevnext = mvViewPrevNext($this->offset, $this->limit, SpecialPage :: getTitleFor('MediaSearch'), $this->get_httpd_filters_query(), ($this->num < $this->limit));
-		$o .= "<br /><span id=\"mv_search_pagging\">{$prevnext}</span>\n";
+		//$o .= "<br /><span id=\"mv_search_pagging\">{$prevnext}</span>\n";		
 		//add the rss link:
 		$sTitle = Title :: MakeTitle(NS_SPECIAL, 'MvExportSearch');
 		$o .= '<span style="float:right;">';
@@ -654,21 +660,21 @@ class MV_SpecialMediaSearch {
 					$mvd_out .= '<div id="mvr_' . htmlspecialchars($mvd->id) . '" style="display:none;background:#' . htmlspecialchars($bgcolor) . ';" ></div>';
 				}
 				$stream_out .= $mvd_out;
-				/*if(count($srange['rows'])!=1){
-					$stream_out .= '&nbsp;' . $cat_html . ' In range:' .
-					seconds2ntp($srange['s']) . ' to ' . seconds2ntp($srange['e']) .
-					wfMsg('mv_match_text', count($srange['rows'])).'<br />' . "\n";
-					$stream_out .= $mvd_out;
-				}else{
-					$stream_out .= $mvd_out;
-				}*/
+				//if(count($srange['rows'])!=1){
+				//	$stream_out .= '&nbsp;' . $cat_html . ' In range:' .
+				//	seconds2ntp($srange['s']) . ' to ' . seconds2ntp($srange['e']) .
+				//	wfMsg('mv_match_text', count($srange['rows'])).'<br />' . "\n";
+				//	$stream_out .= $mvd_out;
+				//}else{
+				//	$stream_out .= $mvd_out;
+				//}
 			}
 			$nsary = $mvgContLang->getNamespaces();
 			//output stream name and mach count
-			/*$o.='<br /><img class="mv_stream_play_button" name="'.$nsary[MV_NS_STREAM].':' .
-				$mvTitle->getStreamName() .
-					'" align="left" src="'.$mvgScriptPath.'/skins/mv_embed/images/vid_play_sm.png">';
-			*/
+			//$o.='<br /><img class="mv_stream_play_button" name="'.$nsary[MV_NS_STREAM].':' .
+			//	$mvTitle->getStreamName() .
+			//		'" align="left" src="'.$mvgScriptPath.'/skins/mv_embed/images/vid_play_sm.png">';
+			
 			$o .= '<h3>' . htmlspecialchars($mvTitle->getStreamNameText());
 			$o .= ($matches == 1) ? wfMsg('mv_match_text_one') : wfMsg('mv_match_text', $matches);
 			$o .= '</h3>';
@@ -677,7 +683,7 @@ class MV_SpecialMediaSearch {
 		if ($this->outputContainer)
 			$o .= '</div>';
 		return $o;
-	}
+	}*/
 	function getTerms() {
 		$ret_ary = $cat_ary = array ();
 		foreach ($this->filters as $filter) {
