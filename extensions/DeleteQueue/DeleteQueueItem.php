@@ -147,6 +147,7 @@ class DeleteQueueItem {
 
 		if (!$row) {
 			$this->mQueue = '';
+			$this->mMainLoaded = true;
 			wfDebugLog( 'deletequeue', "Loaded empty DeleteQueue item for article {$this->mArticleID} from DB." );
 			return;
 		}
