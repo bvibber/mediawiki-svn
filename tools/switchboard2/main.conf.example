@@ -42,3 +42,6 @@ server-timeout 30
 # The largest request (stdin + parameters) we will buffer from
 # the server before returning an error (bytes).
 max-request-size 5242880
+
+# Uncomment this to log failed requests.
+#log-request-errors
