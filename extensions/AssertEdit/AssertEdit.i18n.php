@@ -218,10 +218,12 @@ $messages['hi'] = array(
 );
 
 /** Croatian (Hrvatski)
+ * @author Dalibor Bosits
  * @author SpeedyGonsales
  */
 $messages['hr'] = array(
 	'assert_edit_title' => 'Neuspjelo potvrđivanje',
+	'assert_edit_desc' => 'Dodaje potvrđivanje uređivanja za botove.',
 	'assert_edit_message' => 'Specificirano potvrđivanje ($1) nije uspjelo.',
 );
 

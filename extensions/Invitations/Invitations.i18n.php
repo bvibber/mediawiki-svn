@@ -34,6 +34,13 @@ To manage invitations for an individual feature, click on its name.',
 	'invitations-invite-success'            => 'You have successfully invited $1 to use this feature!',
 );
 
+/** Message documentation (Message documentation)
+ * @author Purodha
+ */
+$messages['qqq'] = array(
+	'invitations-desc' => 'Short description of this extension, shown on [[Special:Version]]. Do not translate or change links.',
+);
+
 /** Arabic (العربية)
  * @author Alnokta
  * @author Meno25

@@ -20,9 +20,11 @@ $messages['en'] = array(
 
 /** Message documentation (Message documentation)
  * @author Jon Harald Søby
+ * @author Purodha
  */
 $messages['qqq'] = array(
 	'filelist' => '{{Identical|File list}}',
+	'filelist-desc' => 'Short description of the Filelist extension, shown on [[Special:Version]]. Do not translate or change links.',
 );
 
 /** Amharic (አማርኛ) */
@@ -251,6 +253,13 @@ $messages['km'] = array(
 /** Korean (한국어) */
 $messages['ko'] = array(
 	'filelist-image-desc' => '설명',
+);
+
+/** Ripoarisch (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'filelist-desc' => 'Di [[Special:Filelist|Söndersigg]] zeich huhjelade Dateie.',
 );
 
 /** Latin (Latina)

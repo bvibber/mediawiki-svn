@@ -51,7 +51,7 @@ $messages['ar'] = array(
  */
 $messages['ast'] = array(
 	'deletedcontributions' => "Contribuciones d'usuariu borraes",
-	'deletedcontributions-desc' => "Da la a los alministradores la capacidá de [[Special:Deletedcontributions|ver les ediciones borraes d'un usuariu]]",
+	'deletedcontributions-desc' => "Da la a los alministradores la capacidá de [[Special:DeletedContributions|ver les ediciones borraes]] d'un usuariu",
 );
 
 /** Bashkir (Башҡорт) */
@@ -229,6 +229,13 @@ $messages['frp'] = array(
  */
 $messages['fur'] = array(
 	'deletedcontributions' => 'Contribûts dal utent eliminâts',
+);
+
+/** Western Frisian (Frysk)
+ * @author Snakesteuben
+ */
+$messages['fy'] = array(
+	'deletedcontributions' => 'Wiske meidogger bydragen',
 );
 
 /** Irish (Gaeilge) */

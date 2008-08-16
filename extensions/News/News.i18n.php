@@ -23,6 +23,13 @@ $messages['en'] = array(
 	'newsextension-freshfeed'     => '$1: outputting fresh feed<br />',
 );
 
+/** Message documentation (Message documentation)
+ * @author Purodha
+ */
+$messages['qqq'] = array(
+	'newsextension-desc' => 'Short description of this extension, shown on [[Special:Version]]. Do not translate or change links.',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */
@@ -122,6 +129,17 @@ $messages['it'] = array(
  */
 $messages['km'] = array(
 	'newsextension-desc' => 'បង្ហាញបំលាស់ប្តូរបានសំដៅថ្មីៗលើទំព័រវិគីឬបំរែបំរួល RSS ឬ Atom ។',
+);
+
+/** Ripoarisch (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'newsextension-desc' => 'Zeich en extra ennjeshtallte Leß met {{lcfirst:{{int:Recentchanges}}}} als en Sigg em Wiki udder als en RSS udder Atom <i lang="en">feed</i> aan.',
+	'newsextension-unknownformat' => '$1: unbikannt <i lang="en">feed</i> Fomaat: $2<br />',
+	'newsextension-feednotfound' => '$1: <i lang="en">feed</i> Sigg nit jefonge: $2<br />',
+	'newsextension-feedrequest' => '$1: donn dä <i lang="en">feed</i> Opdraach för $2 affhandelle<br />',
+	'newsextension-checkok' => '$1: HTTP <i lang="en">cache</i> en Odenung, 304 <i lang="en">header</i> jescheck<br />',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

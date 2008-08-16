@@ -77,8 +77,10 @@ Try using the "$3{...}" command.',
 
 /** Message documentation (Message documentation)
  * @author Malafaya
+ * @author Purodha
  */
 $messages['qqq'] = array(
+	'math-desc' => 'Short description of this extension, shown on [[Special:Version]]. Do not translate or change links.',
 	'math_NotEnoughArguments' => 'Parameter $1 can be something like: <tt>\\sqrt</tt>, <tt>\\newcommand</tt> or some other token.',
 );
 
@@ -1230,6 +1232,13 @@ $messages['km'] = array(
 	'math_LatexPackageUnavailable' => 'មិនអាច ទៅជា PNG ព្រោះ គ្មានកញ្ចប់ LaTeX "$1"',
 	'math_MismatchedBeginAndEnd' => 'បញ្ជា "$1" និង "$2" មិនសមគ្នា',
 	'math_UnavailableSymbolFontCombination' => 'និមិត្តសញ្ញា "$1" មិនមាន ក្នុង ក្រមអក្សរ "$2"',
+);
+
+/** Ripoarisch (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'math_UnrecognisedCommand' => 'Dat Kommando „$1“ kenne mer nit.',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

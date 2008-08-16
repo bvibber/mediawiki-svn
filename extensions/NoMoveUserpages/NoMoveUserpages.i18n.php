@@ -15,8 +15,10 @@ $messages['en'] = array (
 
 /** Message documentation (Message documentation)
  * @author Meno25
+ * @author Purodha
  */
 $messages['qqq'] = array(
+	'nomoveuserpages-desc' => 'Short description of this extension, shown on [[Special:Version]]. Do not translate or change links.',
 	'right-move-userpages' => '{{doc-right}}',
 );
 
@@ -89,6 +91,15 @@ $messages['it'] = array(
 $messages['ko'] = array(
 	'nomoveuserpages-desc' => '‘move-userpages’ 권한이 있어야만 사용자 문서를 이동할 수 있도록 설정',
 	'right-move-userpages' => '사용자 문서 이동',
+);
+
+/** Ripoarisch (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'nomoveuserpages-desc' => 'Määt, dat Metmaacher e extra <code>move-userpages</code> Rääsch han möße, öm Metmaacher-Sigge ömnenne ze künne.',
+	'nomoveuserpages-error' => 'Et Metmaacher-Sigge Ömnenne es affjeschalldt.',
+	'right-move-userpages' => 'Metmaacher-Sigg Ömnenne',
 );
 
 /** Latin (Latina)

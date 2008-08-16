@@ -21,9 +21,10 @@ $messages['en'] = array(
 
 /** Message documentation (Message documentation)
  * @author MinuteElectron
+ * @author Purodha
  */
 $messages['qqq'] = array(
-	'multiboilerplate-desc' => 'Description of the MultiBoilerplate extension.',
+	'multiboilerplate-desc' => 'Description of the MultiBoilerplate extension, shown on [[Special:Version]]. Do not translate or change links.',
 	'multiboilerplate-legend' => 'Title of the form used for selecting a boilerplate.',
 	'multiboilerplate-submit' => 'The text displayed on the button that loads the boilerplate into the edit box.
 
@@ -130,6 +131,15 @@ $messages['jv'] = array(
  */
 $messages['km'] = array(
 	'multiboilerplate-submit' => 'ផ្ទុក',
+);
+
+/** Ripoarisch (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'multiboilerplate-desc' => 'Jit däm Schriver en Ußwahl aan extra parat jemaate Vörlare övver däm Finster för et Sigge-Beärrbeide.',
+	'multiboilerplate-legend' => 'Sök en Vörlaach uß',
+	'multiboilerplate-submit' => 'Donn et Enndraare!',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

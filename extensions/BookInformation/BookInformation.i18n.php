@@ -29,7 +29,7 @@ $messages['en'] = array(
  * @author Purodha
  */
 $messages['qqq'] = array(
-	'bookinfo-desc' => 'Extension description displayed on [[Special:Version]].',
+	'bookinfo-desc' => 'Short description of this extension, shown on [[Special:Version]]. Do not translate or change links.',
 	'bookinfo-result-title' => '{{Identical|Title}}',
 	'bookinfo-result-author' => '{{Identical|Author}}',
 	'bookinfo-result-year' => '{{Identical|Year}}',

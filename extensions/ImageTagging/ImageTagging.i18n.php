@@ -49,8 +49,10 @@ Please wait for the existing action to complete.',
 /** Message documentation (Message documentation)
  * @author Jon Harald Søby
  * @author M.M.S.
+ * @author Purodha
  */
 $messages['qqq'] = array(
+	'imagetagging-desc' => 'Short description of this extension, shown on [[Special:Version]]. Do not translate or change links.',
 	'imagetagging-article' => '{{Identical/Page}}',
 	'imagetagging-imghistory' => '{{Identical|History}}',
 	'imagetagging-tagcancel-button' => '{{Identical|Cancel}}',
@@ -376,6 +378,8 @@ $messages['km'] = array(
  * @author Purodha
  */
 $messages['ksh'] = array(
+	'taggedimages' => 'Belder met Links drop',
+	'imagetagging-desc' => 'Määt et müjjelesch, ene Link op en Sigg em Wiki op Aandeile fun enem Beld ze pussizjeneere.',
 	'imagetagging-tagcancel-button' => 'Draanjevve',
 );
 

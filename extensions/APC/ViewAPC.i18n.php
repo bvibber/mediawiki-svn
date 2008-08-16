@@ -136,7 +136,7 @@ Newer version $2 is available at http://pecl.php.net/package/APC/$2',
  * @author Sp5uhe
  */
 $messages['qqq'] = array(
-	'viewapc-desc' => 'This message is shown in [[Special:Version]]',
+	'viewapc-desc' => 'Short description of this extension, shown on [[Special:Version]]. Do not translate or change links.',
 	'right-apc' => '{{doc-right}}',
 	'viewapc-shared-memory-details' => '*$1 is the number of segments
 *$2 is a size of segments in Xbytes

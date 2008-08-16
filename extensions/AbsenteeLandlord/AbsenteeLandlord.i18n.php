@@ -17,7 +17,7 @@ $messages['en'] = array(
  * @author Purodha
  */
 $messages['qqq'] = array(
-	'absenteelandlord-desc' => 'Used in [[Special:Version]]',
+	'absenteelandlord-desc' => 'Short description of this extension, shown on [[Special:Version]]. Do not translate or change links.',
 );
 
 /** Arabic (العربية)
@@ -174,6 +174,14 @@ $messages['he'] = array(
 $messages['hi'] = array(
 	'absenteelandlord-reason' => 'प्रबंधकोंके द्वारा कोई भी कार्य ना किये जानेसे डाटाबेस को अपनेआप ताला लगा दिया गया हैं।',
 	'absenteelandlord-desc' => 'प्रबंधकोंद्वारा कुछ समय तक कोईभी कार्य ना किये जाने पर डाटाबेस को अपनेआप ताला लगा देता हैं',
+);
+
+/** Fiji Hindi (Latin) (Fiji Hindi (Latin))
+ * @author Girmitya
+ */
+$messages['hif-latn'] = array(
+	'absenteelandlord-reason' => 'Database ke band kar dewa gais hia kahe ki sysops logan active nai hai.',
+	'absenteelandlord-desc' => 'Ii wiki ke database ke apne se lock kar dewe hai jab sysops igan kuchh din active nai rahe.',
 );
 
 /** Croatian (Hrvatski)

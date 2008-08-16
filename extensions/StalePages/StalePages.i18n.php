@@ -13,6 +13,13 @@ $messages['en'] = array(
 	'stalepages-summary' => 'This is a list of pages that have not been edited in the last $1 days.',
 );
 
+/** Message documentation (Message documentation)
+ * @author Purodha
+ */
+$messages['qqq'] = array(
+	'stalepages-desc' => 'Short description of the extension, shown on [[Special:Version]]. Do not translate or change links.',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */
@@ -58,6 +65,7 @@ $messages['el'] = array(
  */
 $messages['eo'] = array(
 	'stalepages' => 'Malfreŝaj paĝoj',
+	'stalepages-desc' => 'Generas [[Special:Stalepages|listo de paĝoj]] kiuj ne estis redaktitaj lastatempe.',
 	'stalepages-summary' => 'Jen listo de paĝoj ne redaktitaj dum la lastaj $1 tagoj.',
 );
 
@@ -136,6 +144,7 @@ $messages['km'] = array(
  */
 $messages['ksh'] = array(
 	'stalepages' => 'Ahl Sigge',
+	'stalepages-desc' => 'Määt en [[Special:Stalepages|Leß met Sigge]], di en de letzte Zick nit beärbeit woode sin.',
 	'stalepages-summary' => 'Hee küt en Leß med Sigge, di {{PLURAL:$1|zick ennem Daach|de letzte $1 Daare|hück noch}} nit jeänndert woode sen.',
 );
 

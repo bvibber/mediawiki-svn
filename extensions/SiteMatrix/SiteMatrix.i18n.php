@@ -23,8 +23,10 @@ $messages['en'] = array(
 /** Message documentation (Message documentation)
  * @author Jon Harald Søby
  * @author Meno25
+ * @author Sanbec
  */
 $messages['qqq'] = array(
+	'sitematrix-summary' => 'Text for the Wikimedia sites special page "Special:SiteMatrix"',
 	'sitematrix-desc' => 'Short description of the SiteMatrix extension, shown on [[Special:Version]]. Do not translate or change links.',
 	'sitematrix-language' => '{{Identical|Language}}',
 	'sitematrix-sitetotal' => '{{Identical|Total}}',
@@ -88,8 +90,10 @@ $messages['ar'] = array(
 
 /** Egyptian Spoken Arabic (مصرى)
  * @author Ghaly
+ * @author Ramsis II
  */
 $messages['arz'] = array(
+	'sitematrix-language' => 'اللغه',
 	'sitematrix-total' => "'''اجمالى العدد: $1'''",
 	'sitematrix-sitetotal' => 'المجموع',
 );
@@ -341,10 +345,13 @@ $messages['eo'] = array(
 );
 
 /** Spanish (Español)
+ * @author Sanbec
  * @author לערי ריינהארט
  */
 $messages['es'] = array(
 	'sitematrix' => 'Lista de wikis de Wikimedia',
+	'sitematrix-summary' => 'Esta página especial lista todos los wikis de Wikimedia',
+	'sitematrix-desc' => 'Muestra una [[Special:SiteMatrix|lista de wikis de Wikimedia]]',
 );
 
 /** Estonian (Eesti) */

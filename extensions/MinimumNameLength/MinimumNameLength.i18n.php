@@ -15,6 +15,13 @@ $messages['en'] = array(
 	'minnamelength-desc'  => 'Enforce a minimum username length',
 );
 
+/** Message documentation (Message documentation)
+ * @author Purodha
+ */
+$messages['qqq'] = array(
+	'minnamelength-desc' => 'Short description of this extension, shown on [[Special:Version]]. Do not translate or change links.',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */
@@ -188,6 +195,15 @@ $messages['kk-tr'] = array(
 $messages['km'] = array(
 	'minnamelength-error' => 'ឈ្មោះអ្នកប្រើប្រាស់ របស់អ្នក ខ្លី ពេក។ ប្រវែងអប្បបរិមា គឺ $1 ។',
 	'minnamelength-desc' => 'បង្ខំអោយមាន ប្រវែងឈ្មោះអ្នកប្រើប្រាស់ ជាអប្បបរិមា',
+);
+
+/** Ripoarisch (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'minnamelength-error' => 'Dinge jewönschte Metmaacher-Name es zo koot.
+Dä muß minnstens $1 Bochschtave hann.',
+	'minnamelength-desc' => 'Sorsch för en minnste Läng bei neue Metmaachername',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

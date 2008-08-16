@@ -15,6 +15,13 @@ $messages['en'] = array(
 	'gotocategory-desc' => "Checks search terms against the Category: namespace for Go 'jump to page' functionality",
 );
 
+/** Message documentation (Message documentation)
+ * @author Purodha
+ */
+$messages['qqq'] = array(
+	'gotocategory-desc' => 'Short description of this extension, shown on [[Special:Version]]. Do not translate or change links.',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */
@@ -41,6 +48,13 @@ $messages['fr'] = array(
  */
 $messages['gl'] = array(
 	'gotocategory-desc' => 'Comproba os termos da procura contra o espazo de nomes Categoría: para "Ir" a partir da funcionalidade "saltar a unha páxina"',
+);
+
+/** Ripoarisch (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'gotocategory-desc' => 'Prööf de Bejreffe beim Söke, un wann et Name fun Saachjroppe sin, höp et tirek do hen.',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

@@ -15,6 +15,13 @@ $messages['en'] = array(
 	'substall-hook' => 'substall', // If this isn't localized, it defaults to en.
 );
 
+/** Message documentation (Message documentation)
+ * @author Purodha
+ */
+$messages['qqq'] = array(
+	'substall-desc' => 'Short description of the extension, shown on [[Special:Version]]. Do not translate or change links.',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */
@@ -42,6 +49,14 @@ $messages['eo'] = array(
  */
 $messages['fr'] = array(
 	'substall-desc' => 'Crée une balise <nowiki><substall></nowiki> qui convertit tous les modèles en syntaxe wiki.',
+);
+
+/** Ripoarisch (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'substall-desc' => 'Deit Dä Befäähl <code>&lt;{{int:Substall-hook}}&gt;</code> en et Wiki. Dä expandeet alle Oproofe fun Schablone op en Sigg, un määt Wikitex druß.',
+	'substall-hook' => 'substall',
 );
 
 /** Dutch (Nederlands)

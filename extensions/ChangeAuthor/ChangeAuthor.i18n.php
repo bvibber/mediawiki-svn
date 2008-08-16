@@ -57,11 +57,12 @@ If this error keeps showing up, the database is probably broken.',
 /** Message documentation (Message documentation)
  * @author Jon Harald Søby
  * @author Meno25
+ * @author Purodha
  * @author Siebrand
  */
 $messages['qqq'] = array(
 	'changeauthor' => 'Name of the special page on [[Special:SpecialPages]]',
-	'changeauthor-desc' => 'Extension description displayed on [[Special:Version]]',
+	'changeauthor-desc' => 'Short description of this extension, shown on [[Special:Version]]. Do not translate or change links.',
 	'changeauthor-title' => 'Title of the [[Special:ChangeAuthor]] special page',
 	'changeauthor-search-box' => 'Caption of the fieldset on the revision search form',
 	'changeauthor-pagename-or-revid' => 'Caption of the input box on the revision search form',
@@ -564,6 +565,7 @@ $messages['hil'] = array(
  */
 $messages['hr'] = array(
 	'changeauthor' => 'Promijenite autora inačice',
+	'changeauthor-desc' => 'Omogućava promjenu autora određene izmjene',
 	'changeauthor-title' => 'Promijeni autora inačice',
 	'changeauthor-search-box' => 'Pretraži inačice',
 	'changeauthor-pagename-or-revid' => 'Ime članka ili oznaka (ID) inačice:',

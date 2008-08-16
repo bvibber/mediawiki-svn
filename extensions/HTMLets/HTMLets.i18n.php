@@ -11,6 +11,13 @@ $messages['en'] = array(
 	'htmlets-desc' => 'Lets you inline HTML snippets from files using the <tt><nowiki><htmlet></nowiki></tt> tag',
 );
 
+/** Message documentation (Message documentation)
+ * @author Purodha
+ */
+$messages['qqq'] = array(
+	'htmlets-desc' => 'Short description of this extension, shown on [[Special:Version]]. Do not translate or change links.',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */
@@ -44,6 +51,13 @@ $messages['gl'] = array(
  */
 $messages['hi'] = array(
 	'htmlets-desc' => '<tt><nowiki><htmlet></nowiki></tt> टैग का इस्तेमाल करके फ़ाइलमें इन-लाइन HTML स्निपेट्ट्स डालने की अनुमति देता हैं',
+);
+
+/** Ripoarisch (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'htmlets-desc' => 'Määt Schnibbel fun HTML em Wiki müjjelesch övver der <tt><nowiki><htmlet></nowiki></tt>-Befäähl.',
 );
 
 /** Marathi (मराठी)

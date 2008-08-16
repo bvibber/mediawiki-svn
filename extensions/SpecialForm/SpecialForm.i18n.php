@@ -55,8 +55,10 @@ Please fill it in.',
 
 /** Message documentation (Message documentation)
  * @author Jon Harald Søby
+ * @author Purodha
  */
 $messages['qqq'] = array(
+	'form-desc' => 'Short description of the Form extension, shown on [[Special:Version]]. Do not translate or change links.',
 	'formsave' => '{{Identical|Save}}',
 );
 
@@ -379,6 +381,13 @@ $messages['km'] = array(
 	'formsaveerrortext' => "មានកំហុសមិនស្គាល់មួយក្នុងការរក្សាទុកទំព័រ '$1'។",
 );
 
+/** Ripoarisch (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'form-desc' => 'En [[Special:Form|Schnettstell met Fommulaare]] fö neu Sigge aanzefange.',
+);
+
 /** Latin (Latina)
  * @author SPQRobin
  */
@@ -480,7 +489,7 @@ $messages['nl'] = array(
 	'formpattern' => '$1-form',
 	'formtitlepattern' => 'Voeg nieuw $1 toe',
 	'formsave' => 'Opslaan',
-	'formindexmismatch-title' => 'Naampatroon en sjabloon mismatch',
+	'formindexmismatch-title' => 'Naampatroon- en sjabloonmismatch',
 	'formindexmismatch' => 'Dit formulier heeft ongekoppelde naampatronen en sjablonen vanaf index $1.',
 	'formarticleexists' => 'Pagina bestaat al',
 	'formarticleexiststext' => 'De pagina [[$1]] bestaat al.',
@@ -736,10 +745,12 @@ $messages['sv'] = array(
 	'formpattern' => '$1-formulär',
 	'formtitlepattern' => 'Lägg till ny $1',
 	'formsave' => 'Spara',
+	'formindexmismatch-title' => 'Namnmönster och mallfel',
 	'formindexmismatch' => 'Det här formuläret har opassande namnmönster och mallar som startar på index $1.',
 	'formarticleexists' => 'Sidan existerar',
 	'formarticleexiststext' => 'Sidan [[$1]] finns redan.',
 	'formbadpagename' => 'Dåligt sidnamn',
+	'formbadrecaptcha' => 'Ogiltiga värden från reCaptcha. Pröva igen.',
 	'formbadpagenametext' => 'Formulärdatan du skrev in utgör ett ogiltigt sidnamn, "$1".',
 	'formrequiredfieldpluralerror' => 'Fälten $1 behövs för det här formuläret.
 Var god fyll i dom.',

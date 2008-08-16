@@ -1205,6 +1205,13 @@ $messages['os'] = array(
 	'openidchoosepassword' => 'пароль:',
 );
 
+/** Plautdietsch (Plautdietsch)
+ * @author Slomox
+ */
+$messages['pdt'] = array(
+	'openidchoosepassword' => 'Passwuat:',
+);
+
 /** Polish (Polski)
  * @author Maikking
  * @author Sp5uhe

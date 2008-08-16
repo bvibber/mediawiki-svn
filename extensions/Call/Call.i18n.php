@@ -33,7 +33,7 @@ In case of problems you can try <b>Special:Call/DebuG</b>',
  * @author Purodha
  */
 $messages['qqq'] = array(
-	'call-desc' => 'Extension description displayed on [[Special:Version]].',
+	'call-desc' => 'Short description of this extension, shown on [[Special:Version]]. Do not translate or change links.',
 );
 
 /** Afrikaans (Afrikaans)

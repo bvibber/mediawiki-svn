@@ -12,6 +12,13 @@ $messages['en'] = array(
 				'stalkerlog-log-text'   => 'This is a log of user logins and logouts.',
 );
 
+/** Message documentation (Message documentation)
+ * @author Purodha
+ */
+$messages['qqq'] = array(
+	'stalkerlog-desc' => 'Short description of the extension, shown on [[Special:Version]]. Do not translate or change links.',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */
@@ -89,6 +96,17 @@ $messages['it'] = array(
 	'stalkerlog-log-logout' => 'ha effettuato il logout.',
 	'stalkerlog-log-type' => 'Autenticazioni utenti',
 	'stalkerlog-log-text' => 'Questo è il registro delle azioni di login e logout degli utenti.',
+);
+
+/** Ripoarisch (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'stalkerlog-desc' => 'Brängk e [[Special:Log/stalkerlog|Logboch övver et En- un Ußlogge]] en et Wiki.',
+	'stalkerlog-log-login' => 'hät sesch enjelogg.',
+	'stalkerlog-log-logout' => 'hät sesch ußjelog.',
+	'stalkerlog-log-type' => 'Logboch fum En- un Ußlogge',
+	'stalkerlog-log-text' => 'Hee kütt en Leß met de Momente un de Metmaacher, di sesch enjelogg han un wann se widder ußjelogg han.',
 );
 
 /** Dutch (Nederlands)

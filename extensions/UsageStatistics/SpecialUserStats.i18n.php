@@ -34,11 +34,14 @@ $messages['en'] = array(
 );
 
 /** Message documentation (Message documentation)
+ * @author Jon Harald Søby
  * @author Lejonel
+ * @author Purodha
  */
 $messages['qqq'] = array(
 	'specialuserstats' => '{{Identical|Usage statistics}}',
 	'usagestatistics' => '{{Identical|Usage statistics}}',
+	'usagestatistics-desc' => 'Short description of the extension, shown on [[Special:Version]]. Do not translate or change links.',
 	'usagestatisticstype' => '{{Identical|Type}}',
 	'usagestatisticsintervalmonth' => '{{Identical|Month}}',
 	'usagestatisticsincremental' => 'This message is used on [[Special:SpecialUserStats]] in a dropdown menu to choose to generate incremental statistics.
@@ -454,12 +457,15 @@ $messages['hi'] = array(
 );
 
 /** Croatian (Hrvatski)
+ * @author Dalibor Bosits
  * @author Dnik
  */
 $messages['hr'] = array(
 	'specialuserstats' => 'Statistika upotrebe',
 	'usagestatistics' => 'Statistika upotrebe',
+	'usagestatistics-desc' => 'Pokazuje statistku upotrebe za pojedinog suradnika i cijele wiki',
 	'usagestatisticsfor' => '<h2>Statistika upotrebe za suradnika [[User:$1|$1]]</h2>',
+	'usagestatisticsforallusers' => '<h2>Statistika upotrebe za sve suradnike</h2>',
 	'usagestatisticsinterval' => 'Razdoblje',
 	'usagestatisticstype' => 'Vrsta',
 	'usagestatisticsstart' => 'Početni datum',
@@ -468,6 +474,16 @@ $messages['hr'] = array(
 	'usagestatisticsnostart' => '* <font color=red>Molimo, odaberite početni datum</font>',
 	'usagestatisticsnoend' => '* <font color=red>Molimo, odaberite završni datum</font>',
 	'usagestatisticsbadstartend' => '<b>Nevažeći <i>početni</i> i/ili <i>završni</i> datum!</b>',
+	'usagestatisticsintervalday' => 'Dan',
+	'usagestatisticsintervalweek' => 'Tjedan',
+	'usagestatisticsintervalmonth' => 'Mjesec',
+	'usagestatisticsincremental' => 'Inkrementalno',
+	'usagestatisticsincremental-text' => 'inkrementalno',
+	'usagestatisticscumulative' => 'Kumulativno',
+	'usagestatisticscumulative-text' => 'kumulativno',
+	'usagestatisticscalselect' => 'Odabir',
+	'usagestatistics-editindividual' => 'Statistika uređivanja individualnog suradnika $1',
+	'usagestatistics-editpages' => 'Statistika stranica individualnog suradnika $1',
 );
 
 /** Upper Sorbian (Hornjoserbsce)

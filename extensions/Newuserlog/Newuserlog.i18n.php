@@ -481,6 +481,15 @@ $messages['fur'] = array(
 	'newuserlog-autocreate-entry' => 'Identitât creade in automatic',
 );
 
+/** Western Frisian (Frysk)
+ * @author Snakesteuben
+ */
+$messages['fy'] = array(
+	'newuserlogpage' => 'Ynskriuwingsloch',
+	'newuserlogpagetext' => "Dit is in loch fan meidoggers dy't de lêste tiid ynskreaun binne.",
+	'newuserlog-create-entry' => 'Nije meidogger',
+);
+
 /** Irish (Gaeilge) */
 $messages['ga'] = array(
 	'newuserlog-create-entry' => 'Úsáideoir nua',

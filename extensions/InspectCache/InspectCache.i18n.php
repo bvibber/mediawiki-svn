@@ -22,9 +22,11 @@ $messages['en'] = array(
 
 /** Message documentation (Message documentation)
  * @author Jon Harald Søby
+ * @author Purodha
  * @author Siebrand
  */
 $messages['qqq'] = array(
+	'inspectcache-desc' => 'Short description of this extension, shown on [[Special:Version]]. Do not translate or change links.',
 	'inspectcache-ok' => '{{Identical|OK}}',
 	'inspectcache-delete' => '{{Identical|Delete}}',
 	'inspectcache-list' => 'Text on button to have the keys listing shown.',
@@ -319,7 +321,16 @@ $messages['krj'] = array(
  * @author Purodha
  */
 $messages['ksh'] = array(
-	'inspectcache-delete' => 'Fottschmieße',
+	'inspectcache' => '<i lang="en">Cache</i> beloore',
+	'inspectcache-desc' => 'En eifach Werkzeuch för däm jemeinsamme <i lang="en">cache</i> singe Enhallt ußzelässe.',
+	'inspectcache-ok' => 'OK',
+	'inspectcache-general' => 'Jemeinsame <i lang="en">cache</i>',
+	'inspectcache-parser' => 'Em <i lang="en">Parser</i> singe <i lang="en">cache</i>',
+	'inspectcache-message' => 'Der <i lang="en">cache</i> för Nohreeschte un esu',
+	'inspectcache-get' => 'Holle!',
+	'inspectcache-delete' => 'Fottschmieße!',
+	'inspectcache-deleted' => 'Fottjeschmeße <i lang="en">cache</i>',
+	'inspectcache-list' => 'Opleßte!',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

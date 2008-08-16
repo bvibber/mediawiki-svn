@@ -87,8 +87,9 @@ $aliases['ksh'] = array(
 	'CategoryIntersection' => array( 'Jemeinsam Saachjroppe' ),
 );
 
+/** Luxembourgish (Lëtzebuergesch) */
 $aliases['lb'] = array(
-	'CategoryIntersection'=> array( 'Iwwerschneide vu Kategorien' ),
+	'CategoryIntersection' => array( 'Iwwerschneide vu Kategorien' ),
 );
 
 $aliases['mr'] = array(

@@ -17,9 +17,11 @@ $messages['en'] = array(
 );
 
 /** Message documentation (Message documentation)
+ * @author Purodha
  * @author Siebrand
  */
 $messages['qqq'] = array(
+	'metakeywords-desc' => 'Short description of this extension, shown on [[Special:Version]]. Do not translate or change links.',
 	'metakeywords' => "Optional message. '''(all)''' and '''(main)''' should not be translated.",
 	'metadescription' => "Optional message. '''(all)''' and '''(main)''' should not be translated.
 * $1 will not be replaced in this message.",
@@ -44,6 +46,21 @@ $messages['fr'] = array(
 	'metakeywords-desc' => 'Permet la configuration des balises <tt><nowiki><meta "keywords"></nowiki></tt> et <tt><nowiki><meta "description"></nowiki></tt> par espace de nom',
 );
 
+/** Ripoarisch (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'metakeywords-desc' => 'Määt et müjjelesch <tt><nowiki><meta "keywords"></nowiki></tt> un <tt><nowiki><meta "description"></nowiki></tt> för de Sigge en jeedem Appachtemang extra enzestelle.',
+	'metakeywords' => '# Donn Reije en dä Sigg hee endraare, wo dren steiht:
+# Appachtemang|Schlüsselwööter met Kommas,dozwesche,zom Enndraare
+# De Name (all) un (main) för et Appachtemang jevve en default för
+# all de Appachtemangs, udder de Wääte för dat Houp-Appachtemeng aan.',
+	'metadescription' => '# Donn Reije en dä Sigg hee endraare, wo dren steiht:
+# Appachtemang|Dä Tex fö de description (jede $1 weet dorsch der Siggetittel äsaz)
+# De Name (all) un (main) för et Appachtemang jevve en default för
+# all de Appachtemangs, udder de Wääte för dat Houp-Appachtemeng aan.',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */
@@ -61,5 +78,12 @@ $messages['nl'] = array(
  */
 $messages['no'] = array(
 	'metakeywords-desc' => 'Muliggjør konfigurering av <tt><nowiki><meta "keywords"></nowiki></tt> og <tt><nowiki><meta "description"></nowiki></tt>-tagger per navnerom',
+);
+
+/** Swedish (Svenska)
+ * @author M.M.S.
+ */
+$messages['sv'] = array(
+	'metakeywords-desc' => 'Möjliggör konfigurering av <tt><nowiki><meta "keywords"></nowiki></tt> och <tt><nowiki><meta "description"></nowiki></tt>-taggar per namnrymd',
 );
 

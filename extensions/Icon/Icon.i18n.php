@@ -14,6 +14,13 @@ $messages['en'] = array(
 	'icon-desc'     => 'Allows you to use images as icons and icon links',
 );
 
+/** Message documentation (Message documentation)
+ * @author Purodha
+ */
+$messages['qqq'] = array(
+	'icon-desc' => 'Short description of this extension, shown on [[Special:Version]]. Do not translate or change links.',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  * @author ترجمان05
@@ -135,6 +142,15 @@ $messages['jv'] = array(
  */
 $messages['km'] = array(
 	'icon-badimage' => 'រូបភាពមិនល្អ',
+);
+
+/** Ripoarisch (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'icon-badimage' => 'Verkeeht Beld',
+	'icon-badwidth' => 'Verkeehte Breed',
+	'icon-desc' => 'Määt et müjjelesch, Belder als <i lang="en">icon</i>, un als <i lang="en">icon</i> met enem Lengk, enzesetze.',
 );
 
 /** Latin (Latina)

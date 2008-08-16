@@ -110,6 +110,15 @@ $messages['hsb'] = array(
 	'forcepreview-desc' => 'Přehlad za njewoprawnjenych wužiwarjow wunuzować',
 );
 
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'forcepreview' => 'Immagazinar pagina (face primo un previsualisation)',
+	'forcepreview-desc' => 'Fortia le uso del previsualisation pro usatores non privilegiate',
+	'right-forcepreviewexempt' => 'Pote publicar sin uso de "Monstrar previsualisation"',
+);
+
 /** Italian (Italiano)
  * @author Darth Kule
  */

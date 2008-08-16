@@ -13,7 +13,7 @@ Create in-page version, especially useful for Wikinews.',
  * @author Purodha
  */
 $messages['qqq'] = array(
-	'catfeed-desc' => 'Shown in [[Special:Version]]',
+	'catfeed-desc' => 'Short description of this extension, shown on [[Special:Version]]. Do not translate or change links.',
 );
 
 /** Arabic (العربية)

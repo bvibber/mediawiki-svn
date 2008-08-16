@@ -112,6 +112,13 @@ $messages['hi'] = array(
 	'titlekey-desc' => 'शीर्षक उपपद खोज सजेशन बॅकएन्ड',
 );
 
+/** Croatian (Hrvatski)
+ * @author Dalibor Bosits
+ */
+$messages['hr'] = array(
+	'titlekey-desc' => 'Daje prijedlog traženja po prefiksu',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

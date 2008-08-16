@@ -12,6 +12,13 @@ $messages['en'] = array(
 	'donationform-submit' => 'Donate via PayPal',
 );
 
+/** Message documentation (Message documentation)
+ * @author Purodha
+ */
+$messages['qqq'] = array(
+	'donationform-desc' => 'Short description of this extension, shown on [[Special:Version]]. Do not translate or change links.',
+);
+
 /** Aragonese (Aragonés)
  * @author Juanpabl
  */

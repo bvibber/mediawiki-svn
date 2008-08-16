@@ -26,7 +26,7 @@ $messages['en'] = array(
  * @author Purodha
  */
 $messages['qqq'] = array(
-	'editsubpages-desc' => 'Extension description displayed on [[Special:Version]].',
+	'editsubpages-desc' => 'Short description of this extension, shown on [[Special:Version]]. Do not translate or change links.',
 );
 
 /** Arabic (العربية)

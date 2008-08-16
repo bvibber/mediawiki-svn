@@ -28,9 +28,11 @@ Inappropriate files will be deleted immediately, see the [[{{MediaWiki:Multipleu
 
 /** Message documentation (Message documentation)
  * @author Jon Harald Søby
+ * @author Purodha
  */
 $messages['qqq'] = array(
 	'multipleupload' => '{{Identical|Upload files}}',
+	'multipleupload-desc' => 'Short description of this extension, shown on [[Special:Version]]. Do not translate or change links.',
 );
 
 /** Karelian (Karjala)
@@ -98,6 +100,7 @@ $messages['ch'] = array(
 );
 
 /** German (Deutsch)
+ * @author Purodha
  * @author Raimond Spekking
  */
 $messages['de'] = array(
@@ -105,7 +108,7 @@ $messages['de'] = array(
 	'multipleupload-desc' => 'Erlaubt das [[Special:MultipleUpload|Hochladen mehrerer Dateien]] in einer Aktion',
 	'multipleupload-ignoreallwarnings' => "Ignoriere '''alle Warnungen''' und speichere die Dateien.",
 	'multipleupload-saveallfiles' => 'Alle Dateien speichern',
-	'multipleupload-addresswarnings' => 'Bitte jede Warnung anzeigen vor dem erneuten Hochladen von Dateien.',
+	'multipleupload-addresswarnings' => 'Bitte vor dem erneuten Hochladen dieser Dateien jede Warnung bearbeiten und ausräumen.',
 	'multipleupload-page' => '{{ns:project}}:Löschrichtlinien',
 	'multipleupload-text' => "Gleichzeitiges Hochladen mehrerer Dateien.
 
@@ -341,6 +344,28 @@ $messages['km'] = array(
 	'multipleupload-page' => '{{ns:project}}:គោលការណ៍នៃការលុបឯកសារ',
 	'multiupload-fileuploaded' => 'ឯកសារ ត្រូវបានផ្ទុកឡើង។',
 	'multiupload-toolbox' => 'ផ្ទុកឡើងពហុឯកសារ',
+);
+
+/** Ripoarisch (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'multipleupload' => 'Dateie huhlade',
+	'multipleupload-desc' => 'Määt et müjjelesch, [[Special:MultipleUpload|ettlijje Date op eimol huhzelade]].',
+	'multipleupload-ignoreallwarnings' => "Donn '''alle Warnunge''' övverjonn un hal de Dateie su un esu faß.",
+	'multipleupload-saveallfiles' => 'Alle Dateie afspeichere',
+	'multipleupload-addresswarnings' => 'Bes esu joot un kömmer Desch öm jede Warnung, ih dat De de Dateie norr_en huhlade deis.',
+	'multipleupload-page' => '{{ns:project}}:Dateie Fottschmieße',
+	'multipleupload-text' => "Etlijje Dateie op eimol Huhlade.
+
+Jangk op 'Browse' un donn all de Dateie uswähle, di De huhlade wells.
+Do kannst fun 1 bes $1 Dateie op eimol huhlade.
+
+De kanns och ene '''Dateiname för et Afspeichere''' aanjevve, un ene '''Tex drövver''' metschecke.
+
+Schlääschte Dateie wäde fottjeworfe, noh de [[{{MediaWiki:Multipleupload-page}}|Räjelle]] doför.",
+	'multiupload-fileuploaded' => 'Datei huhjelade.',
+	'multiupload-toolbox' => 'Etlijje Dateie Huhlade',
 );
 
 /** Kurdish (Latin) (Kurdî / كوردی (Latin))

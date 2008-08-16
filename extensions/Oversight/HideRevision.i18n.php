@@ -179,6 +179,7 @@ $messages['ar'] = array(
 	'oversight-hidden' => 'مراجعة مخفية',
 	'oversight-header' => 'بالأسفل قائمة بالمراجعات التي تم إخفاؤها بشكل دائم حديثا عن العامة.
 إفشاء هذه المعلومات يمكن أن ينتج عنه فقد دائم لصلاحيات الأوفرسايت.',
+	'oversight-legend' => 'بحث في سجل إخفاء المراجعات',
 );
 
 /** Egyptian Spoken Arabic (مصرى)
@@ -504,6 +505,7 @@ Sie werden aber protokolliert und können bei einem Fehler durch einen Datenbank
 	'oversight-prev' => 'Letzte vorhergehenden Version',
 	'oversight-hidden' => 'Entfernte Version',
 	'oversight-header' => 'Es folgt die Liste der dauerhaft für die öffentliche Einsicht entfernten Versionen. Die Veröffentlichung dieser Informationen kann den dauerhaften Entzug der Oversight-Rechte bedeuten.',
+	'oversight-legend' => 'Logbuch durchsuchen',
 );
 
 /** German (formal address) (Deutsch (Sie-Form))
@@ -746,6 +748,7 @@ Les articles effacés ne sont plus visibles dans ce système, mais ces suppressi
 	'oversight-prev' => 'Dernière révision précédente',
 	'oversight-hidden' => 'Révision cachée',
 	'oversight-header' => 'Ci-dessous figure la liste des révisions cachées de manière permanente au public. La divulgation de cette information peut avoir comme conséquence la déchéance des privilèges de {{MediaWiki:Oversight}}.',
+	'oversight-legend' => 'Journal des recherches des versions cachées',
 );
 
 /** Franco-Provençal (Arpetan)
@@ -971,13 +974,14 @@ učinite pogrešku.",
 *stranica obrisana
 *ova skrivena promjena je prva promjena',
 	'oversight-log-hiderev' => 'uklonjeno uređivanje $1',
-	'oversight' => "Nadzor (''oversight'')",
+	'oversight' => 'Nadzor',
 	'oversight-view' => 'potankosti',
 	'oversight-difference' => '(razlike prema prethodnim promjenama)',
 	'oversight-prev' => 'Posljednje prethodno uređivanje',
 	'oversight-hidden' => 'Skriveno uređivanje',
 	'oversight-header' => 'Slijedi popis uređivanja nedavno trajno skrivenih od javnosti.
 Objavljivanje ove informacije može prouzročiti trajan gubitak prava nadzora.',
+	'oversight-legend' => 'Pretraživanje evidencije sakrivanja izmjena',
 );
 
 /** Upper Sorbian (Hornjoserbsce)
@@ -1161,6 +1165,7 @@ administrator basis data jika Anda membuat kesalahan.",
 	'oversight-hidden' => 'Revisi disembunyikan',
 	'oversight-header' => 'Di bawah ini adalah daftar revisi yang disembunyikan secara permanen dari umum.
 Menyebarkan informasi ini dapat berakibat kepada hilangnya hak pengawas.',
+	'oversight-legend' => 'Cari log penyembunyian revisi',
 );
 
 /** Ido (Ido)
@@ -1227,6 +1232,7 @@ in caso di errori.",
 	'oversight-hidden' => 'Revisione oscurata',
 	'oversight-header' => 'Qui di seguito viene presentata una lista delle revisioni oscurate in modo permanente ai visitatori del sito.
 La divulgazione di tali informazioni può dar luogo alla rimozione permanente dei diritti di oversight.',
+	'oversight-legend' => 'Cerca i log delle revisioni nascoste',
 );
 
 /** Japanese (日本語)
@@ -1801,6 +1807,7 @@ Item-item yang telah dibuang tidak boleh dilihat oleh sesiapa melalui tapak web 
 	'oversight-hidden' => 'Semakan rahsia',
 	'oversight-header' => 'Berikut ialah senarai terkini bagi semakan yang dirahsiakan daripada pandangan orang ramai.
 Pendedahan maklumat ini boleh mengakibatkan jawatan pengawal ditarik balik.',
+	'oversight-legend' => 'Cari dalam log penyembunyian semakan',
 );
 
 /** Low German (Plattdüütsch)
@@ -1886,6 +1893,7 @@ teruggezet worden door databasebeheerders als u een fout maakt.",
 	'oversight-hidden' => 'Verborgen versie',
 	'oversight-header' => 'Hieronder staat een lijst met versies die permanent verborgen zijn voor iedereen.
 Het vrijgeven van deze informatie kan tot gevolg hebben dat Oversightrechten worden ingenomen.',
+	'oversight-legend' => 'Logboek verborgen versies doorzoeken',
 );
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
@@ -2191,7 +2199,7 @@ $messages['ru'] = array(
 	'group-oversight' => 'Ревизоры',
 	'group-oversight-member' => 'ревизор',
 	'grouppage-oversight' => '{{ns:project}}:Ревизоры',
-	'right-oversight' => 'Просмотр ранее скрытой правки',
+	'right-oversight' => 'просмотр ранее скрытой правки',
 	'right-hiderevision' => 'Просмотр и восстановление скрытых от администраторов правок',
 	'hiderevision-prompt' => 'Номер правки, которую требуется скрыть:',
 	'hiderevision-continue' => 'Продолжить',
@@ -2225,6 +2233,7 @@ $messages['ru'] = array(
 	'oversight-hidden' => 'Скрытая версия',
 	'oversight-header' => 'Ниже приведены правки, которые недавно были скрыты.
 Распространение данной информации может повлечь лишение прав ревизора.',
+	'oversight-legend' => 'Поиск по журналу сокрытия правок',
 );
 
 /** Yakut (Саха тыла)
@@ -2498,23 +2507,23 @@ $messages['sv'] = array(
 	'hiderevision-desc' => 'Döljer enskilda sidversioner från alla användare, t.ex. av juridiska skäl',
 	'group-oversight' => 'Översynare',
 	'group-oversight-member' => 'översynare',
-	'grouppage-oversight' => '{{ns:project}}:Översyn',
+	'grouppage-oversight' => '{{ns:project}}:Översynare',
 	'right-oversight' => 'Visa tidigare dolda versioner',
 	'right-hiderevision' => 'Se och återställa sidversioner som dolts för administratörer',
 	'hiderevision-prompt' => 'Nummer för sidversionen som ska tas bort:',
 	'hiderevision-continue' => 'Fortsätt',
-	'hiderevision-text' => "Översyn ska användas '''endast''' i följande fall:
-* Otillåten peronlig information
+	'hiderevision-text' => "Översyn ska '''endast''' användas i följande fall:
+* Otillåten personlig information
 *: ''hemadresser, telefonnummer, personnummer, och liknande''
 
 '''Missbruk av det här systemet leder till att rättigheterna tas bort.'''
 
-Sidversioner som tagits bort kommer inte att vara synliga för någon genom webplatsen, men raderingarna loggförs och kan återställas manuellt av databasadministratörer ifall du gör något misstag.",
+Sidversioner som tagits bort kommer inte att vara synliga för någon genom webbplatsen, men raderingarna loggförs och kan återställas manuellt av databasadministratörer ifall du gör något misstag.",
 	'hiderevision-reason' => 'Anledning (sparas i en privat logg):',
 	'hiderevision-submit' => 'Dölj informationen permanent',
 	'hiderevision-tab' => 'Dölj version',
 	'hiderevision-norevisions' => 'Ingen sidversion har angivits.',
-	'hiderevision-noreason' => 'Du måste ge en anledning för den här raderingen.',
+	'hiderevision-noreason' => 'Du måste ange en anledning för den här raderingen.',
 	'hiderevision-status' => 'Sidversion $1: $2',
 	'hiderevision-success' => 'Arkivering och radering lyckades.',
 	'hiderevision-error-missing' => 'Hittades inte i databasen.',
@@ -2532,6 +2541,7 @@ Sidversioner som tagits bort kommer inte att vara synliga för någon genom webp
 	'oversight-hidden' => 'Dold version',
 	'oversight-header' => 'Här nedanför visas en lista över sidversioner som nyligen dolts permanent från allmän visning.
 Användare som sprider den här informationen vidare kan få sina översynsrättigheter permanent borttagna.',
+	'oversight-legend' => 'Sök i versionsborttagningsloggen',
 );
 
 /** Silesian (Ślůnski)

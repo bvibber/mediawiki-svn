@@ -534,11 +534,29 @@ $messages['km'] = array(
  * @author Purodha
  */
 $messages['ksh'] = array(
+	'patrol' => 'Patrulleere',
+	'patrol-desc' => 'E besser Ingerface för et [[Special:Patrol|Änderunge Nohlore (Patrullje)]] met Verdeile fun dä Ärbeit.',
 	'patrol-endorse' => 'Jootheiße',
 	'patrol-revert' => 'Zeröck nemme',
 	'patrol-revert-reason' => 'Aanlass:',
 	'patrol-skip' => 'Övverjonn',
 	'patrol-reverting' => 'Zeröck nemme: $1',
+	'patrol-nonefound' => 'Kein zopaß Änderunge för et Nohloore jefonge.',
+	'patrol-endorsed-ok' => 'Di Änderung eß ald nohjeloohrt jewääse.',
+	'patrol-endorsed-failed' => 'Mer kunnte di Änderung nit als „nohjeloort“ makkeere.',
+	'patrol-reverted-ok' => 'De Änderung eß jätz widder retuur jemaat.',
+	'patrol-reverted-failed' => 'Di Änderung kunnte mer nit retuur nämme.',
+	'patrol-skipped-ok' => 'De Änderung weed övverjange.',
+	'patrol-reasons' => '* Bloß ene Kappottmaachwöödijje
+* Ene Neue moot sesch jet ußprobeere
+* Loor noh, op dä Klaafsigg',
+	'patrol-another' => 'Zeisch de nääxte Änderung, wann ein do es.',
+	'patrol-stopped' => 'Do häß Desch entschiede, dat De jetz kei Änderunge mieh nohloore wells. $1',
+	'patrol-resume' => 'Wigger maache!',
+	'group-patroller' => 'Patrullje',
+	'group-patroller-member' => 'Patrullje',
+	'grouppage-patroller' => '{{ns:project}}:Patrullje',
+	'right-patroller' => 'Sigge Nohloore (Patrullje)',
 );
 
 /** Latin (Latina)
@@ -972,6 +990,7 @@ $messages['sv'] = array(
 	'group-patroller' => 'Patrullerare',
 	'group-patroller-member' => 'patrullerare',
 	'grouppage-patroller' => '{{ns:project}}:Patrullerare',
+	'right-patroller' => 'Patrullera sidor',
 );
 
 /** Silesian (Ślůnski)

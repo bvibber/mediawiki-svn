@@ -25,6 +25,13 @@ $messages['en'] = array(
 	'lookupuser_useroptions'       => 'User options:',
 );
 
+/** Message documentation (Message documentation)
+ * @author Purodha
+ */
+$messages['qqq'] = array(
+	'lookupuser-desc' => 'Short description of this extension, shown on [[Special:Version]]. Do not translate or change links.',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */
@@ -203,6 +210,26 @@ $messages['hi'] = array(
 	'lookupuser_useroptions' => 'सदस्य विकल्प:',
 );
 
+/** Croatian (Hrvatski)
+ * @author Dalibor Bosits
+ */
+$messages['hr'] = array(
+	'lookupuser' => 'Pogledaj info suradnika',
+	'lookupuser-desc' => '[[Special:LookupUser|Omogućava gledanje]] informacija o suradniku poput e-mail adrese ili ID broja',
+	'lookupuser_intro' => 'Upišite suradničko ime da biste vidjeli njegove postavke.',
+	'lookupuser_nonexistent' => 'Greška: Suradnik ne postoji',
+	'lookupuser_authenticated' => 'E-mail potvrda: $1',
+	'lookupuser_not_authenticated' => 'nije potvrđen',
+	'lookupuser_id' => 'Suradnički ID-broj: <tt>#$1</tt>',
+	'lookupuser_email' => 'Elektronička pošta: [[Special:Emailuser/$2|$1]]',
+	'lookupuser_no_email' => 'nije upisana',
+	'lookupuser_realname' => 'Pravo ime: $1',
+	'lookupuser_registration' => 'Datum registracije: $1',
+	'lookupuser_no_registration' => 'nije zabilježeno',
+	'lookupuser_touched' => 'Suradnički račun zadnji put korišten: $1',
+	'lookupuser_useroptions' => 'Suradničke postavke:',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */
@@ -295,6 +322,26 @@ $messages['km'] = array(
 	'lookupuser_no_registration' => 'មិនបានកត់ត្រាទុកទេ',
 	'lookupuser_touched' => 'រក្សាទុក អ្នកប្រើប្រាស់ ដែលបានប៉ះ ចុងក្រោយ ៖ $1',
 	'lookupuser_useroptions' => 'ជំរើសនៃអ្នកប្រើប្រាស់ ៖',
+);
+
+/** Ripoarisch (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'lookupuser' => 'Metmaacher-Enfommazjuhne zeije',
+	'lookupuser-desc' => 'Donn [[Special:LookupUser|Enfommazjuhne övver ene Metmaacher]] aanzeije, esu jet wi de <i lang="en">e-mail</i> Address udder Metmacher-Nommer.',
+	'lookupuser_intro' => 'Jiv enem Metmaacher singe Name aan, öm der däm sing Enstellunge zeije ze lohße.',
+	'lookupuser_nonexistent' => 'Fähler, esu ene Metmaacher kenne mer nit',
+	'lookupuser_authenticated' => 'E-mail bestätich: $1',
+	'lookupuser_not_authenticated' => '–unbestätich–',
+	'lookupuser_id' => 'Metmaacher-Nommer: <tt>$1</tt>',
+	'lookupuser_email' => 'E-mail Address: [[Special:Emailuser/$2|$1]]',
+	'lookupuser_no_email' => '–nit&nbsp;aanjejovve–',
+	'lookupuser_realname' => 'Rechteje Name: $1',
+	'lookupuser_registration' => 'Et eets aanjemelldt:',
+	'lookupuser_no_registration' => '–nit&nbsp;faßjehallde–',
+	'lookupuser_touched' => 'Letz Änderung am Metmaacher-Datesatz: $1',
+	'lookupuser_useroptions' => 'Enstellunge:',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

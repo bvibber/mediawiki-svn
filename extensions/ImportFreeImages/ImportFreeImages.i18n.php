@@ -28,8 +28,10 @@ To do so, please obtain a API key from  [http://www.flickr.com/services/api/misc
 
 /** Message documentation (Message documentation)
  * @author Jon Harald Søby
+ * @author Purodha
  */
 $messages['qqq'] = array(
+	'importfreeimages-desc' => 'Short description of this extension, shown on [[Special:Version]]. Do not translate or change links.',
 	'importfreeimages_owner' => '{{Identical|Author}}',
 	'importfreeimages_next' => '{{Identical|Next $1}}',
 );
@@ -315,6 +317,28 @@ $messages['km'] = array(
 	'importfreeimages_filefromflickr' => '$1 ដោយអ្នកប្រើប្រាស់ <b>[$2]</b> ពី flickr។ URL ដើម',
 	'importfreeimages_promptuserforfilename' => 'សូមបញ្ចូល ឈ្មោះឯកសារ គោលដៅ ៖',
 	'importfreeimages_returntoform' => "ឬក៏ចុច<a href='$1'>ទីនេះ</a>ដើម្បីត្រលប់ទៅកាន់លទ្ឋផលស្វែងរករបស់អ្នក",
+);
+
+/** Ripoarisch (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'importfreeimages' => 'Frei Belder Empotteere',
+	'importfreeimages-desc' => '[[Special:ImportFreeImages|Frei Belder Empotteere]] fun [http://www.flickr.com Flickr]',
+	'importfreeimages_description' => "Hee di Sigg määt et müjjelesch, de Bellder met zopass Lizenze fun ''flickr'' tirek in dat Wiki hee ze empotteere.",
+	'importfreeimages_noapikey' => "Et es noch keine ''flickr''-API-Schlößel enshtalleet.
+[http://www.flickr.com/services/api/misc.api_keys.html Jangk Der eine holle],
+un dann donn <code>\$wgFlickrAPIKey</code>
+en <code>ImportFreeImages.php</code> udder
+en <code>LocalSettings.php</code> setze.",
+	'importfreeimages_nophotosfound' => "Kei Fottos jefonge beim Söke noh '$1', do donn et norr_ens versöke.",
+	'importfreeimages_invalidurl' => "Dä URL „$1“ jeit nit op e reschtesch ''flickr'' Beld.",
+	'importfreeimages_owner' => 'Dä Maacher',
+	'importfreeimages_importthis' => 'Donn et empotteere!',
+	'importfreeimages_next' => 'Näx $1',
+	'importfreeimages_filefromflickr' => "$1 vum ''flickr''-Metmaacher <b>[$2]</b> — der ojinaal-URL es—",
+	'importfreeimages_promptuserforfilename' => 'Bes esu joot, un jif ene Dateiname aan, för dat Beld do dronger afzeschpeischere:',
+	'importfreeimages_returntoform' => 'udder <a href="$1">jangk zerök op di Sigg met dä jefonge Bellder</a>.',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

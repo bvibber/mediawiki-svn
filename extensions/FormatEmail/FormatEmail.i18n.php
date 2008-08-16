@@ -16,6 +16,13 @@ This e-mail has been sent to you through the {{SITENAME}} e-mail system by $1.
 $2',
 );
 
+/** Message documentation (Message documentation)
+ * @author Purodha
+ */
+$messages['qqq'] = array(
+	'email-desc' => 'Short description of this extension, shown on [[Special:Version]]. Do not translate or change links.',
+);
+
 /** Afrikaans (Afrikaans)
  * @author Naudefj
  */
@@ -127,6 +134,17 @@ Ezt az üzenetet $1 küldte neked a(z) {{SITENAME}} email-rendszerén keresztül
 $2',
 );
 
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'email-desc' => 'Permitte adder capites/pedes personalisate al messages de e-mail inviate inter usatores.',
+	'email_footer' => '----------------------------------------------------------------------------
+$1 te inviava iste message con le systema de e-mail de {{SITENAME}}.
+
+$2',
+);
+
 /** Italian (Italiano)
  * @author Darth Kule
  * @author Melos
@@ -145,6 +163,17 @@ $2',
 $messages['km'] = array(
 	'email_footer' => '----------------------------------------------------------------------------
 អ៊ីមែលនេះត្រូវបានផ្ញើមកអ្នកដោយ $1 តាមរយៈប្រព័ន្ឋផ្ញើអ៊ីមែលរបស់ {{SITENAME}} ។
+
+$2',
+);
+
+/** Ripoarisch (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'email-desc' => 'Deit extra, sellfs-enstellba Reije am Aanfang un am Engk en de <span lang="en">e-mails</span> zwesche de Metmaacher eren.',
+	'email_footer' => '----------------------------------------------------------------------------
+Di e-mail hee es fum $1 övver de {{SITENAME}} aan Desch jescheck woode.
 
 $2',
 );

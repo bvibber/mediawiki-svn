@@ -191,6 +191,7 @@ $messages['ia'] = array(
 	'ea-show' => 'Monstrar destinatarios',
 	'ea-send' => 'Inviar!',
 	'ea-subject' => 'Entra un linea de subjecto pro le message de e-mail',
+	'ea-header' => 'Adjunger le contento al initio con un message facultative (texto wiki)',
 	'ea-selectcss' => 'Selige un folio de stilos CSS',
 );
 

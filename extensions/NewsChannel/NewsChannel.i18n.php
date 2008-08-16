@@ -27,6 +27,13 @@ $messages['en'] = array(
 	'newschannel_submit_button' => 'Create feed',
 );
 
+/** Message documentation (Message documentation)
+ * @author Purodha
+ */
+$messages['qqq'] = array(
+	'newschannel-desc' => 'Short description of this extension, shown on [[Special:Version]]. Do not translate or change links.',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */
@@ -38,6 +45,16 @@ $messages['ar'] = array(
 	'newschannel_include_category' => 'تصنيف إضافي:',
 	'newschannel_exclude_category' => 'استبعد التصنيف:',
 	'newschannel_submit_button' => 'إنشاء التلقيم',
+);
+
+/** Bulgarian (Български)
+ * @author DCLXVI
+ */
+$messages['bg'] = array(
+	'newschannel_format' => 'Формат:',
+	'newschannel_limit' => 'Лимит:',
+	'newschannel_include_category' => 'Допълнителна категория:',
+	'newschannel_exclude_category' => 'Изключване на категория:',
 );
 
 /** German (Deutsch)
@@ -65,6 +82,19 @@ $messages['fr'] = array(
 	'newschannel_include_category' => 'Catégorie(s) additionnelle(s):',
 	'newschannel_exclude_category' => 'Catégorie(s) exclue(s):',
 	'newschannel_submit_button' => 'Créer le flux',
+);
+
+/** Ripoarisch (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'newschannel' => 'Neueschkeite-Kanaal',
+	'newschannel-desc' => 'Määt ene Neueschkeite-Kanaal als en dünamesch [[Special:NewsChannel|Söndersigg]] op.',
+	'newschannel_format' => 'Fomaat:',
+	'newschannel_limit' => 'Limit:',
+	'newschannel_include_category' => 'Zosätzlijje Saachjropp:',
+	'newschannel_exclude_category' => 'Ußjeschloße Saachjrupp:',
+	'newschannel_submit_button' => 'Kanaal opmaache',
 );
 
 /** Dutch (Nederlands)
@@ -103,5 +133,18 @@ $messages['ru'] = array(
 	'newschannel_include_category' => 'Дополнительная категория:',
 	'newschannel_exclude_category' => 'Исключить категорию:',
 	'newschannel_submit_button' => 'Вывести',
+);
+
+/** Swedish (Svenska)
+ * @author M.M.S.
+ */
+$messages['sv'] = array(
+	'newschannel' => 'Nyhetskanal',
+	'newschannel-desc' => 'Implementerar en nyhetskanal som en dynamisk [[Special:NewsChannel|specialsida]]',
+	'newschannel_format' => 'Format:',
+	'newschannel_limit' => 'Gräns:',
+	'newschannel_include_category' => 'Ytterligare kategori:',
+	'newschannel_exclude_category' => 'Exkluderar kategori:',
+	'newschannel_submit_button' => 'Skapa nyhetskanal',
 );
 

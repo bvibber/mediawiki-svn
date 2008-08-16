@@ -359,6 +359,23 @@ $messages['hi'] = array(
 	'contributors-nosuchpage' => '$1 पन्ना अस्तित्वमें नहीं हैं',
 );
 
+/** Croatian (Hrvatski)
+ * @author Dalibor Bosits
+ */
+$messages['hr'] = array(
+	'contributors' => 'Doprinositelji',
+	'contributors-desc' => 'Radi sažetak glavnih doprinositelja na stranici',
+	'contributors-toolbox' => 'Glavni doprinositelji',
+	'contributors-legend' => 'Popis glavnih doprinositelja stranice',
+	'contributors-target' => 'Naslov:',
+	'contributors-submit' => 'Pokaži',
+	'contributors-subtitle' => 'Glavni doprinositelji za $1',
+	'contributors-others-long' => '{{PLURAL:$1|Jedan preostali doprinositelj|$1 drugih doprinositelja}} za ovu stranicu.',
+	'contributors-others' => 'i {{PLURAL:$1|jedan preostao|$1 drugih}}',
+	'contributors-badtitle' => 'Neispravan naslov.',
+	'contributors-nosuchpage' => 'Stranica $1 ne postoji.',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

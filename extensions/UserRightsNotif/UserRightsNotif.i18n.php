@@ -218,6 +218,22 @@ $2',
 	'userrightsnotif-desc' => 'Envía unha notificación por correo electrónico aos usuarios unha vez que os seus dereitos cambien',
 );
 
+/** Croatian (Hrvatski)
+ * @author Dalibor Bosits
+ */
+$messages['hr'] = array(
+	'userrightsnotifysubject' => 'Promijenjena suradnička prava za $1',
+	'userrightsnotifybody' => 'Pozdrav $1.
+
+Ovo je obavijest o promijeni suradničkih prava za vas koje je promijenio $3 na $4, dana $2.
+
+Dodano: $5
+Uklonjeno: $6
+
+$2',
+	'userrightsnotif-desc' => 'Šalje suradnicima obavijest elektroničkom poštom o promjeni prava',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

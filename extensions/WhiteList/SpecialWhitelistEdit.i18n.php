@@ -351,12 +351,17 @@ $allMessages['eo'] = array(
 	'whitelisttablechangedate' => 'Ŝanĝu Findaton',
 	'whitelisttableremove' => 'Forigi',
 	'whitelistnewtabledate' => 'Findato:',
+	'whitelistnewtableprocess' => 'Procezi',
 	'whitelistnewtablereview' => 'Kontrolu',
 	'whitelistselectrestricted' => '== Selektu Limigitan Salutnomon ==',
 	'whitelistpagelist' => '{{SITENAME}} paĝoj por $1',
 	'whitelistbadtitle' => 'Fuŝa titolo -',
 	'whitelistoverview' => '== Resumo de ŝanĝoj por $1 ==',
+	'whitelistoverviewcd' => "* Ŝanĝante daton al '''$1''' por [[:$2|$2]]",
 	'whitelistrequest' => 'Petu atingon por pliaj paĝoj',
+	'whitelistrequestmsg' => '$1 petis atingon al la jenaj paĝoj:
+
+$2',
 	'whitelistrequestconf' => 'Peto por novaj paĝoj estis sendita al $1',
 	'whitelistnever' => 'neniam',
 	'whitelistnummatches' => '- $1 pafoj',

@@ -395,6 +395,7 @@ $messages['hi'] = array(
  * @author SpeedyGonsales
  */
 $messages['hr'] = array(
+	'imagemap_desc' => 'Omogućava strani klijenta klikabilne slike karata korištenjem <tt><nowiki><imagemap></nowiki></tt> oznake',
 	'imagemap_no_image' => 'Error: morate navesti ime slike koju rabite u prvom retku',
 	'imagemap_invalid_image' => 'Error: slika ne postoji ili je krivog tipa',
 	'imagemap_bad_image' => 'Greška: slika je na crnom popisu na ovoj stranici',

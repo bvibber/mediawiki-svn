@@ -42,6 +42,11 @@ $aliases['he'] = array(
     'BoardVote' => array( 'בחירות_לחבר_הנאמנים' )
 );
 
+/** Luxembourgish (Lëtzebuergesch) */
+$aliases['lb'] = array(
+	'BoardVote' => array( 'Wiel fir de Verwaltungsrot' ),
+);
+
 /** Dutch (Nederlands) */
 $aliases['nl'] = array(
 	'BoardVote' => array( 'Bestuursverkiezing' ),

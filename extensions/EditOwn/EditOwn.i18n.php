@@ -63,6 +63,13 @@ $messages['hi'] = array(
 	'editown-desc' => 'जिन सदस्योंको Editall अधिकार नहीं है वे सिर्फ खुद बनाये पन्ने ही संपादित कर सकतें हैं',
 );
 
+/** Croatian (Hrvatski)
+ * @author Dalibor Bosits
+ */
+$messages['hr'] = array(
+	'editown-desc' => 'Suradnici bez prava editall mogu uređivati samo stranice koje su sami napravili',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

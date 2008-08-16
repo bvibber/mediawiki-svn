@@ -27,6 +27,11 @@ $aliases['arz'] = array(
 	'UserStats' => array( 'إحصاءات_المستخدم', 'خاص_إحصاءات_المستخدم' ),
 );
 
+/** Luxembourgish (Lëtzebuergesch) */
+$aliases['lb'] = array(
+	'UserStats' => array( 'Benotzerstistiken' ),
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

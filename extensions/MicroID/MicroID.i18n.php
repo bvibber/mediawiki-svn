@@ -12,6 +12,13 @@ $messages['en'] = array(
 	'tog-microid' => 'Publish a <a href="http://microid.org/">MicroID</a> to confirm account with external services',
 );
 
+/** Message documentation (Message documentation)
+ * @author Purodha
+ */
+$messages['qqq'] = array(
+	'microid-desc' => 'Short description of this extension, shown on [[Special:Version]]. Do not translate or change links.',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */
@@ -92,6 +99,14 @@ $messages['it'] = array(
  */
 $messages['km'] = array(
 	'tog-microid' => 'ផ្សព្វផ្សាយ <a href="http://microid.org/">MicroID</a> ដើម្បី បញ្ជាក់ទទួលស្គាល់ គណនី និង សេវា ខាងក្រៅ',
+);
+
+/** Ripoarisch (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'microid-desc' => 'Deit en <span lang="en">[http://www.microid.org/ MicroID]</span> en de Metmaacher ier Sigge, öm der Zojang hee met Deenste fun ußerhallef beschtäteje ze künne.',
+	'tog-microid' => 'Donn en <a lann="en" href="http://microid.org/">MicroID</a> veröffentlesche, öm Dinge Name un Zojang hee met Deenste fun ußerhallef beschtäteje ze künne.',
 );
 
 /** Marathi (मराठी)

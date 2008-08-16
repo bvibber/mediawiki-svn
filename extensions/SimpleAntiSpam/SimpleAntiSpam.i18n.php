@@ -192,6 +192,9 @@ $messages['hi'] = array(
  */
 $messages['hr'] = array(
 	'simpleantispam' => 'Vaše uređivanje je pokrenulo anti-spam mehanizam',
+	'simpleantispam-label' => "Anti-spam provjera.
+'''Ne''' ispunjavajte ovo!",
+	'simpleantispam-desc' => 'Dodaje jednostavnu provjeru za spam/bot',
 );
 
 /** Hungarian (Magyar)

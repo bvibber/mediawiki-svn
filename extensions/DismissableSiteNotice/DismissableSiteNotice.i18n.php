@@ -230,6 +230,13 @@ $messages['fur'] = array(
 	'sitenotice-desc' => 'Permet ai utents di sierâ il messaç gjenerâl dal sît',
 );
 
+/** Western Frisian (Frysk)
+ * @author Snakesteuben
+ */
+$messages['fy'] = array(
+	'sitenotice_close' => 'net mear sjen litte',
+);
+
 /** Irish (Gaeilge) */
 $messages['ga'] = array(
 	'sitenotice_close' => 'díbh',

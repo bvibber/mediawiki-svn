@@ -341,7 +341,7 @@ $messages['nl'] = array(
 	'showprocesslist-id' => 'ID',
 	'showprocesslist-user' => 'Gebruiker',
 	'showprocesslist-host' => 'Host',
-	'showprocesslist-db' => 'database',
+	'showprocesslist-db' => 'Database',
 	'showprocesslist-command' => 'Commando',
 	'showprocesslist-time' => 'Tijd',
 	'showprocesslist-state' => 'Status',
@@ -400,6 +400,13 @@ $messages['oc'] = array(
  */
 $messages['os'] = array(
 	'showprocesslist-time' => 'Рæстæг',
+);
+
+/** Plautdietsch (Plautdietsch)
+ * @author Slomox
+ */
+$messages['pdt'] = array(
+	'showprocesslist-user' => 'Brucker',
 );
 
 /** Polish (Polski)

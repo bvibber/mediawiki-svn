@@ -137,6 +137,13 @@ $messages['hi'] = array(
 	'doublewiki-desc' => 'एक लेख और उसका अन्य विकिपर उपलब्ध अनुवाद उसी पन्नेपर दो विभागोंमें दर्शाता हैं',
 );
 
+/** Croatian (Hrvatski)
+ * @author Dalibor Bosits
+ */
+$messages['hr'] = array(
+	'doublewiki-desc' => 'Pokazuje stranicu i njen prijevod s drugog wikija u dva stupca na istoj stranici',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

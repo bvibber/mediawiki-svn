@@ -23,6 +23,13 @@ $3",
 	'latexdoc-desc'    => 'Collaborative editing of LaTeX documents',
 );
 
+/** Message documentation (Message documentation)
+ * @author Purodha
+ */
+$messages['qqq'] = array(
+	'latexdoc_get_pdf' => 'Short description of this extension, shown on [[Special:Version]]. Do not translate or change links.',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */
@@ -224,7 +231,18 @@ $3',
  * @author Purodha
  */
 $messages['ksh'] = array(
+	'latexdoc_no_text' => 'En dä Sigg es keine Tex, do künne mer kei DVI druß maache',
+	'latexdoc_cant_create_dir' => 'Dat Zwescheverzeichnes <code>$1</code> kunnte mer nit aanlääje',
+	'latexdoc_cant_write' => 'Kann en di Dattei <code>$1</code> nit schrieve',
+	'latexdoc_error' => 'LaTeX Fäähler
+
+Kommando: $1
+
+Eruß kohm: $2
+
+$3',
 	'latexdoc_get_dvi' => 'DVI holle',
+	'latexdoc_get_pdf' => 'PDF holle',
 	'latexdoc-desc' => 'Löht Metmaacher zosamme aan LaTeX Dokumente ändere.',
 );
 

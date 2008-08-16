@@ -16,8 +16,10 @@ $messages['en'] = array(
 
 /** Message documentation (Message documentation)
  * @author Jon Harald Søby
+ * @author Purodha
  */
 $messages['qqq'] = array(
+	'msfunc_desc' => 'Short description of this extension, shown on [[Special:Version]]. Do not translate or change links.',
 	'msfunc_div_zero' => '{{Identical|Divizion by zero}}',
 );
 
@@ -202,6 +204,16 @@ $messages['km'] = array(
 	'msfunc_nan' => 'លទ្ធផលមិនមែនជាលេខទេ',
 	'msfunc_inf' => 'លទ្ធផលគឺស្មើនឹងអនន្ត',
 	'msfunc_div_zero' => 'ចែកនឹងសូន្យ',
+);
+
+/** Ripoarisch (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'msfunc_desc' => 'En Sammlung met Funxjohne us de Mathematik un för Statistike ze maache.',
+	'msfunc_nan' => 'Wat erus kütt es kei Zahl',
+	'msfunc_inf' => 'Erus kütt en unendlesch gruße Zahl',
+	'msfunc_div_zero' => 'Dorsch Noll jedeilt',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

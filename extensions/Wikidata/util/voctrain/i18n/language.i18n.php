@@ -1240,6 +1240,13 @@ $messages['oc'] = array(
 	'voctrain_Separate_values_by_commas_to_use_multiple_languages_' => 'Separar las valors per de virgulas per utilizar mantuna lenga.',
 );
 
+/** Plautdietsch (Plautdietsch)
+ * @author Slomox
+ */
+$messages['pdt'] = array(
+	'voctrain_User_name' => 'Bruckernome',
+);
+
 /** Polish (Polski)
  * @author Maikking
  */

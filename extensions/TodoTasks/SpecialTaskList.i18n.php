@@ -32,8 +32,11 @@ Your friendly %s notification system",
 
 /** Message documentation (Message documentation)
  * @author Jon Harald Søby
+ * @author Purodha
  */
 $messages['qqq'] = array(
+	'tasklist-parser-desc' => 'Short description of the extension, shown on [[Special:Version]]. Do not translate or change links.',
+	'tasklist-special-desc' => 'Short description of the extension, shown on [[Special:Version]]. Do not translate or change links.',
 	'tasklistincorrectuser' => '{{Identical|Incorrect username}}',
 	'tasklistbyname' => '{{Identical|Todo list for}}',
 );

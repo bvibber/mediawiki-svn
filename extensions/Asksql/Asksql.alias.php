@@ -27,6 +27,11 @@ $aliases['arz'] = array(
 	'Asksql' => array( 'سؤال_إس_كيو_إل' ),
 );
 
+/** Luxembourgish (Lëtzebuergesch) */
+$aliases['lb'] = array(
+	'Asksql' => array( 'SQL-Ufroen' ),
+);
+
 /** Dutch (Nederlands) */
 $aliases['nl'] = array(
 	'Asksql' => array( 'SQLZoekopdracht' ),

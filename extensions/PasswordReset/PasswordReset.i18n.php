@@ -29,8 +29,10 @@ $messages['en'] = array(
 
 /** Message documentation (Message documentation)
  * @author Jon Harald Søby
+ * @author Purodha
  */
 $messages['qqq'] = array(
+	'passwordreset-desc' => 'Short description of this extension, shown on [[Special:Version]]. Do not translate or change links.',
 	'passwordreset-badtoken' => '{{Identical|Invalid edit token}}',
 	'passwordreset-username' => '{{Identical|Username}}',
 	'passwordreset-newpass' => '{{Identical|New password}}',
@@ -378,6 +380,7 @@ $messages['it'] = array(
 	'passwordreset-accountdisabled' => "L'account è stato dsiabilitato",
 	'disabledusers' => 'Utenti disabilitati',
 	'disabledusers-summary' => 'Questa è la lista degli utenti che sono stati disabilitati con PasswordReset.',
+	'right-passwordreset' => 'Reimposta la password di un utente ([[Special:Passwordreset|pagina speciale]])',
 );
 
 /** Javanese (Basa Jawa)
@@ -410,7 +413,24 @@ $messages['km'] = array(
  * @author Purodha
  */
 $messages['ksh'] = array(
+	'passwordreset' => 'Paßwoot zeröcksetze',
+	'passwordreset-desc' => '[[Special:Passwordreset|Säz enem Metmaache si Paßwoot zeröck]] — bruch et <code>passwordreset</code> Rääsch.',
+	'passwordreset-invalidusername' => 'Dä Metmaacher-Name es verkeeht',
+	'passwordreset-emptyusername' => 'Dä Metmaacher-Name es leddisch',
+	'passwordreset-nopassmatch' => 'De Paßwööter sin unejaal',
+	'passwordreset-badtoken' => 'Dat <i lang="en">edit token</i> es Kappes',
 	'passwordreset-username' => 'Metmaacher Name',
+	'passwordreset-newpass' => 'Neu Paßwoot',
+	'passwordreset-confirmpass' => 'Norr_ens dat Paßwoot',
+	'passwordreset-submit' => 'Paßwoot zeröck setze',
+	'passwordreset-success' => 'Dat Paßwoot för de Metmaacher-Nommer $1 wood zeröck jesatz.',
+	'passwordreset-disableuser' => 'Däm Metmaacher singe Zojang still läje?',
+	'passwordreset-disableuserexplain' => '(Dat setz ene onjölltijje <i lang="en">hash</i> för et Paßwoot — dat määt et Enlogge onmüjjelesch)',
+	'passwordreset-disablesuccess' => 'Däm Metmaacher Nummero $1 singe Zojang es jez stilljelaat.',
+	'passwordreset-accountdisabled' => 'Zojang still jelaat',
+	'disabledusers' => 'Stilljelaate Metmaacher',
+	'disabledusers-summary' => 'Hee es de Leß met (per Paßwoot Zeröcksetze) stilljelaate Metmaacher.',
+	'right-passwordreset' => 'Dat Paßwoot fun enem Metmaacher zeröck setze ([[Special:Passwordreset|Söndersigg]])',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -571,6 +591,13 @@ $messages['oc'] = array(
 	'passwordreset-accountdisabled' => 'Aqueste compte es estat desactivat.',
 	'disabledusers' => 'Utilizaires desactivats',
 	'disabledusers-summary' => 'Aquò es la tièra dels utilizaires que son estats desactivats per PasswordReset.',
+);
+
+/** Plautdietsch (Plautdietsch)
+ * @author Slomox
+ */
+$messages['pdt'] = array(
+	'passwordreset-username' => 'Bruckernome',
 );
 
 /** Polish (Polski)
@@ -755,6 +782,7 @@ $messages['sv'] = array(
 	'passwordreset-accountdisabled' => 'Kontot har avaktiverats',
 	'disabledusers' => 'Invalidisera konton',
 	'disabledusers-summary' => 'Detta är en lista över konton som har blivit invalidiserade via PasswordReset.',
+	'right-passwordreset' => 'Återställ en användares lösenord ([[Special:Passwordreset|specialsida]])',
 );
 
 /** Tamil (தமிழ்)

@@ -24,8 +24,10 @@ $messages['en'] = array(
 
 /** Message documentation (Message documentation)
  * @author McDutchie
+ * @author Purodha
  */
 $messages['qqq'] = array(
+	'lua_desc' => 'Short description of this extension, shown on [[Special:Version]]. Do not translate or change links.',
 	'lua_error_internal' => '{{Identical|Internal error}}',
 );
 
@@ -73,6 +75,20 @@ $messages['ia'] = array(
 	'lua_error_internal' => 'Error interne',
 );
 
+/** Ripoarisch (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'lua_desc' => 'Määt et müjjelesch en Sigge em Wiki Stöcker met [http://www.lua.org/ Lua] Projrämmscher enzeboue.',
+	'lua_error' => 'Fähler em LUA op Reih Nommer $1',
+	'lua_extension_notfound' => 'Der LUA Zosatz es nit reschtesch ennjestellt',
+	'lua_interp_notfound' => 'Der LUA ingerpreeter es nit ze finge',
+	'lua_error_internal' => 'Enne innere Fähler em LUA es opjetrodde',
+	'lua_overflow_recursion' => 'Em LUA es de Jrenß fun de sellf-Oproofe övverschrette woode',
+	'lua_overflow_loc' => 'De jrüüßte müjjelische Aanzahl Reihe met LUA-Projamm-Tex es övverschrette',
+	'lua_overflow_time' => 'Dat LUA Projramm hät zo lang jedooht',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
@@ -107,5 +123,19 @@ $messages['no'] = array(
 	'lua_overflow_recursion' => 'Rekursjonsgrense nådd',
 	'lua_overflow_loc' => 'Maksimalt antall linjer med kode nådd',
 	'lua_overflow_time' => 'Maksimal utførelsestid nådd',
+);
+
+/** Vietnamese (Tiếng Việt)
+ * @author Minh Nguyen
+ */
+$messages['vi'] = array(
+	'lua_desc' => 'Mở rộng bộ phân tích để hỗ trợ các khối mã [http://www.lua.org/ Lua]',
+	'lua_error' => 'Lỗi dòng $1',
+	'lua_extension_notfound' => 'Chưa thiết lập phần mở rộng Lua',
+	'lua_interp_notfound' => 'Không tìm được bộ thông dịch Lua',
+	'lua_error_internal' => 'Lỗi nội bộ',
+	'lua_overflow_recursion' => 'Quá hạn chế đệ quy',
+	'lua_overflow_loc' => 'Quá số dòng mã tối đa',
+	'lua_overflow_time' => 'Quá thời gian chạy tối đa',
 );
 

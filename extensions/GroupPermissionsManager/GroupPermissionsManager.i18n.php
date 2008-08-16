@@ -78,8 +78,10 @@ $messages['en'] = array(
  * @author Dalibor Bosits
  * @author Jon Harald Søby
  * @author Meno25
+ * @author Purodha
  */
 $messages['qqq'] = array(
+	'grouppermissions-desc' => 'Short description of this extension, shown on [[Special:Version]]. Do not translate or change links.',
 	'grouppermissions-search' => '{{Identical|Group}}',
 	'grouppermissions-dologin' => '{{Identical|Log in}}',
 	'grouppermissions-dosearch' => '{{Identical|Go}}',
@@ -607,6 +609,15 @@ $messages['km'] = array(
 	'right-recentchanges' => 'មើលបំលាស់ប្តូរថ្មីៗ',
 	'right-edittalk' => 'កែប្រែទំព័រពិភាក្សា',
 	'right-edit-new' => 'កែប្រែទំព័រ(ដែលមិនមែនជាទំព័រពិភាក្សា)',
+);
+
+/** Ripoarisch (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'grouppermissions' => 'Jroppe-Rääschte Verwallde',
+	'sortpermissions' => 'Rääschte zotteere',
+	'grouppermissions-desc' => 'Donn de Jroppe-Rääschte övver en [[Special:GroupPermissions|Söndersigg]] verwallde.',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

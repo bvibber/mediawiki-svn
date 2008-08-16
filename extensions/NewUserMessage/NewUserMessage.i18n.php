@@ -17,6 +17,13 @@ $messages['en'] = array(
 	'newusermessage-editor' => 'New user message', // The username used for the edit
 );
 
+/** Message documentation (Message documentation)
+ * @author Purodha
+ */
+$messages['qqq'] = array(
+	'newusermessage-desc' => 'Short description of this extension, shown on [[Special:Version]]. Do not translate or change links.',
+);
+
 /** Afrikaans (Afrikaans)
  * @author Naudefj
  */
@@ -142,6 +149,14 @@ $messages['ja'] = array(
  */
 $messages['km'] = array(
 	'newusermessage-desc' => 'បន្ថែម មួយ សារ ក្នុង ទំព័រពិភាក្សា របស់ អ្នកប្រើប្រាស់ថ្មី',
+);
+
+/** Ripoarisch (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'newusermessage-desc' => 'Määt ene Beidraach op neu aanjelaate Metmaacher ier Klaaf-Sigg.',
+	'newuseredit-summary' => 'Donn de neu Metmaachere_ene [[{{int:newusermessage-template}}|Bejröhßungstex]] op ier Klaaf-Sigg.',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

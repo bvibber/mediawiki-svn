@@ -782,7 +782,7 @@ $messages['ss'] = array(
  */
 $messages['sv'] = array(
 	'createsigndocument' => 'Möjliggör dokument signering',
-	'createsigndoc-head' => "Använd detta formulär för att skapa ett \"signaturdokument\" för denna sida, så att användare kan signera det via [[Special:SignDocument]].
+	'createsigndoc-head' => "Använd detta formulär för att skapa ett \"signaturdokument\" för denna sida, så att användare kan [[Special:SignDocument|signera det]].
 Var god ange sidans namn, vilken användargrupp som ska kunna signera det, vilka fält som ska vara synliga för användarna, vilka som ska vara valfria, minimumålder för att kunna signera dokumentet (om detta inte anges, finns det ingen gräns), och en kort introduktionstext som beskriver dokumentet och ger instruktioner till användarna.
 
 <b>Det finns inget sätt att radera eller ändra signaturdokument efter att de har skapats</b> utan direkt databastillgång.

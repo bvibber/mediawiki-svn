@@ -174,6 +174,8 @@ $messages['ksh'] = array(
 	'eval' => 'Eval',
 	'eval-desc' => 'Deit [[Special:Eval|en Schnettstell]] för de Fungkßjohn <code>eval()</code> dobei.',
 	'eval_submit' => 'Usrechne',
+	'eval_escape' => 'Donn <i lang="en">Escapes</i> met ußjävve.',
+	'eval_out' => 'Dat kohm eruß:',
 	'eval_code' => '<i lang="en">Code</i>',
 );
 

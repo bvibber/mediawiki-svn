@@ -305,6 +305,13 @@ $messages['hi'] = array(
 	'povwatch_added' => 'बढाया',
 );
 
+/** Croatian (Hrvatski)
+ * @author Dalibor Bosits
+ */
+$messages['hr'] = array(
+	'povwatch_desc' => 'Ekstenzija za [[Special:PovWatch|stavljanje stranica u popis praćenja]] drugih suradnika',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

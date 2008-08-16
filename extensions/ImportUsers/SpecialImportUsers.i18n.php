@@ -33,8 +33,10 @@ $messages['en'] = array(
 /** Message documentation (Message documentation)
  * @author Jon Harald Søby
  * @author Kaustubh
+ * @author Purodha
  */
 $messages['qqq'] = array(
+	'importusers-desc' => 'Short description of this extension, shown on [[Special:Version]]. Do not translate or change links.',
 	'importusers-uploadfile' => '{{Identical|Upload file}}',
 	'importusers-form-button' => '{{Identical|Import}}',
 	'importusers-log' => '{{Identical|Import log}}',
@@ -91,7 +93,7 @@ $messages['af'] = array(
  */
 $messages['ar'] = array(
 	'importusers' => 'استيراد مستخدمين',
-	'importusers-desc' => 'يستورد المستخدمين في صيغة bulk من ملف CSV؛ التكويد: UTF-8',
+	'importusers-desc' => '[[Special:ImportUsers|يستورد المستخدمين]] بشكل كمي من ملف CSV؛ التكويد: UTF-8',
 	'importusers-uploadfile' => 'رفع ملف',
 	'importusers-form-caption' => 'الناتج ملف CSV (UTF-8)',
 	'importusers-form-file' => 'صيغة ملف المستخدم (csv):',
@@ -164,7 +166,7 @@ $messages['da'] = array(
  */
 $messages['de'] = array(
 	'importusers' => 'Benutzer importieren',
-	'importusers-desc' => 'Importiert Benutzer aus einer CSV-Datei; Codierung: UTF-8',
+	'importusers-desc' => '[[Special:ImportUsers|Importiert Benutzer]] aus einer CSV-Datei; Codierung: UTF-8',
 	'importusers-uploadfile' => 'Datei hochladen',
 	'importusers-form-caption' => 'CSV-Datei (UTF-8)',
 	'importusers-form-file' => 'Benutzerdateiformat (csv):',
@@ -498,6 +500,7 @@ $messages['krj'] = array(
  * @author Purodha
  */
 $messages['ksh'] = array(
+	'importusers-desc' => 'Donn Metmaacher em Knubbel fun en Datei [[Special:ImportUsers|emptotteere]], dat Fommaat es: <code lang="en">text/csv; encoding: UTF-8</code>',
 	'importusers-log-summary-all' => 'All',
 	'importusers-realname' => 'Dinge richtije Name',
 );
@@ -598,7 +601,7 @@ $messages['nah'] = array(
  */
 $messages['nl'] = array(
 	'importusers' => 'Gebruikers importeren',
-	'importusers-desc' => 'Gebruikers in bulk importeren vanuit een CSV-bestand. Codering: UTF-8',
+	'importusers-desc' => '[[Special:ImportUsers|Gebruikers in bulk importeren]] vanuit een CSV-bestand. Codering: UTF-8',
 	'importusers-uploadfile' => 'Bestand uploaden',
 	'importusers-form-caption' => 'Invoerbestand (CSV, UTF-8)',
 	'importusers-form-file' => 'Gebruikersbestandsopmaak (csv):',
@@ -637,7 +640,7 @@ $messages['nn'] = array(
  */
 $messages['no'] = array(
 	'importusers' => 'Importer brukere',
-	'importusers-desc' => 'Importing av brukere fra CSV-fil; tegnkoding: UTF-8',
+	'importusers-desc' => '[[Special:ImportUsers|Importer brukere]] fra CSV-fil; tegnkoding: UTF-8',
 	'importusers-uploadfile' => 'Last opp fil',
 	'importusers-form-caption' => 'Sett inn CSV-fil (UTF-8)',
 	'importusers-form-file' => 'Brukerfilformat (csv):',
@@ -691,6 +694,13 @@ $messages['os'] = array(
 	'importusers-uploadfile' => 'Ног файл сæвæр',
 	'importusers-password' => 'пароль',
 	'importusers-email' => 'эл. посты адрис',
+);
+
+/** Plautdietsch (Plautdietsch)
+ * @author Slomox
+ */
+$messages['pdt'] = array(
+	'importusers-password' => 'Passwuat',
 );
 
 /** Polish (Polski)
@@ -877,7 +887,7 @@ $messages['su'] = array(
  */
 $messages['sv'] = array(
 	'importusers' => 'Importera användare',
-	'importusers-desc' => 'Importera användare från en CSV-fil; teckenkodning: UTF-8',
+	'importusers-desc' => '[[Special:ImportUsers|Importera användare]] från en CSV-fil; teckenkodning: UTF-8',
 	'importusers-uploadfile' => 'Ladda upp fil',
 	'importusers-form-caption' => 'Sätt in CSV-fil (UTF-8)',
 	'importusers-form-file' => 'Användarfilsformat (csv):',

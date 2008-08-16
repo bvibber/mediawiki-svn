@@ -101,7 +101,7 @@ $messages['bcl'] = array(
  * @author Spiritia
  */
 $messages['bg'] = array(
-	'duplicator-desc' => 'Създава независими копия на страниците с оълните им редакционни истории',
+	'duplicator-desc' => 'Създава независими [[Special:Duplicate|копия на страниците]] с пълните им редакционни истории',
 	'duplicator-options' => 'Настройки',
 	'duplicator-source' => 'Източник:',
 	'duplicator-dest' => 'Цел:',
@@ -423,7 +423,7 @@ $messages['hu'] = array(
  */
 $messages['ia'] = array(
 	'duplicator' => 'Duplicar un pagina',
-	'duplicator-desc' => 'Crear copias independente de paginas con historias complete de modificationes',
+	'duplicator-desc' => 'Crear [[Special:Duplicate|copias independente de paginas]] con historias complete de modificationes',
 	'duplicator-toolbox' => 'Duplicar iste pagina',
 	'duplicator-header' => 'Iste pagina permitte le duplication complete de un pagina, creante copias independente de tote le historias.
 Isto es utile pro le bifurcation de paginas, etc.',
@@ -927,7 +927,7 @@ $messages['stq'] = array(
  */
 $messages['sv'] = array(
 	'duplicator' => 'Duplicera en sida',
-	'duplicator-desc' => 'Skapa självständiga kopior av sidor med hela redigeringshistoriker',
+	'duplicator-desc' => 'Skapa självständiga [[Special:Duplicate|kopior av sidor]] med hela redigeringshistoriker',
 	'duplicator-toolbox' => 'Duplicera denna sida',
 	'duplicator-header' => 'Med den här specialsidan är det möjligt att duplicera en sida, och på så sätt skapa två oberoende versioner av hela dess historik. Det kan vara användbart t.ex. om en sida ska delas upp på flera sidor.',
 	'duplicator-options' => 'Alternativ',
@@ -938,7 +938,7 @@ $messages['sv'] = array(
 	'duplicator-summary' => 'Kopierad från [[$1]]',
 	'duplicator-success' => "<big>'''[[$1]] kopierades till [[$2]].'''</big>",
 	'duplicator-success-revisions' => '$1 {{PLURAL:$1|sidversion|sidversioner}} kopierades.',
-	'duplicator-success-talkcopied' => 'Diskussionssidan kopierades också.',
+	'duplicator-success-talkcopied' => 'Diskussionssidan blev också kopierad.',
 	'duplicator-success-talknotcopied' => 'Diskussionssidan kunde inte dupliceras.',
 	'duplicator-failed' => 'Sidan kunde inte dupliceras. Ett okänt fel inträffade.',
 	'duplicator-source-invalid' => 'Du har inte angivit någon giltig källsida.',

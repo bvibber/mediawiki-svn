@@ -188,7 +188,11 @@ $messages['hu'] = array(
  * @author McDutchie
  */
 $messages['ia'] = array(
+	'findspam' => 'Trovar spam',
+	'findspam-desc' => 'Adde un [[Special:FindSpam|pagina special]] que permitte trovar spam recentemente addite',
+	'findspam-ip' => 'Adresse IP:',
 	'findspam-ok' => 'OK',
+	'findspam-notextfound' => 'Nulle contribution trovate',
 );
 
 /** Italian (Italiano)

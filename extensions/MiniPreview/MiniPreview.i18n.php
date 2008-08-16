@@ -21,6 +21,13 @@ $messages['en'] = array(
 * Self',
 );
 
+/** Message documentation (Message documentation)
+ * @author Purodha
+ */
+$messages['qqq'] = array(
+	'minipreview-desc' => 'Short description of this extension, shown on [[Special:Version]]. Do not translate or change links.',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */
@@ -193,6 +200,27 @@ $messages['km'] = array(
 	'minipreview-files_in_gallery' => '$1ឯកសារសរុបក្នុងវិចិត្រសាលនេះ។',
 	'minipreview-no_more_files_here' => 'គ្មានឯកសារបន្ថែមក្នុងទិសនេះទេ។',
 	'minipreview-no_category_gallery' => 'គ្មានចំណាត់ថ្នាក់ក្រុមឬវិចិត្រសាលទេ!',
+);
+
+/** Ripoarisch (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'minipreview-desc' => 'De [[Special:MiniPreview|MiniVöransich]] zeisch bei enem Beld en Püngel klein Belscher als Vöransich fun de Belder in derselve Saachjrupp udder us derselve Sigg.',
+	'minipreview-files_in_category' => '{{PLURAL:$1|Ei Datei es|$1 Dateie sin insejesamp|Kei Datei}} en dä Saachjrupp.',
+	'minipreview-files_in_gallery' => '{{PLURAL:$1|Ei Beld es|$1 Bellder sin insejesamp|Kei Beld}} en dä Jalleri.',
+	'minipreview-no_more_files_here' => 'Kein Dateie mieh en dämm Verzeichnis.',
+	'minipreview-no_category_gallery' => 'Kei Saachjruppe udder Jallerie!',
+	'minipreview-ignore_categories' => 'Dat hee es en Leß met Aanfäng fun Name fun Saachjruppe.
+Di Saachjruppe wäde nit en de MiniVöransich jezeich.
+För e Beispell „<code>* PD-</code>“ deit kei Saachjrupp aazeije,
+di met „<code>PD-</code>“ aafange, als do sin „<code>PD-ahl</code>“
+un „<code>PD-neu</code>“ un esu wigger.
+* GFDL-
+* GFDL
+* CC-
+* PD-
+* Self',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

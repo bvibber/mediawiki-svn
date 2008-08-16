@@ -94,13 +94,19 @@ $messages['ar'] = array(
 
 /** Egyptian Spoken Arabic (مصرى)
  * @author Ghaly
+ * @author Ramsis II
  */
 $messages['arz'] = array(
 	'parserdifftest' => 'اختبار فرق المحلل',
+	'pdtest_no_changes' => 'مافيش تغييرات باينة',
+	'pdtest_time_report' => '<b>$1</b> خد $2 ثانية، <b>$3</b> خد $4 ثانية.',
 	'pdtest_title' => 'عنوان السياق:',
 	'pdtest_text' => 'النص المدخل:',
 	'pdtest_ok' => 'موافق',
+	'pdtest_get_text' => 'هات النص من الصفحة',
 	'pdtest_diff' => 'الفروق',
+	'pdtest_side_by_side' => 'مقارنة الناتج',
+	'pdt_comparing_page' => 'مقارنة ناتج المحلل من [[$1]]',
 );
 
 /** Asturian (Asturianu)

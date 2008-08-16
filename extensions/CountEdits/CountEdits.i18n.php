@@ -341,10 +341,12 @@ $messages['hil'] = array(
 );
 
 /** Croatian (Hrvatski)
+ * @author Dalibor Bosits
  * @author SpeedyGonsales
  */
 $messages['hr'] = array(
 	'countedits' => 'Broj uređivanja',
+	'countedits-desc' => '[[Special:CountEdits|Posebna stranica]] koja broji suradnička uređivanja i daje popis deset suradnika s najviše doprinosa',
 	'countedits-warning' => "'''Upozorenje:''' Ne sudite knjigu po koricama. Ne sudite suradnike po njihovom broju uređivanja.",
 	'countedits-username' => 'Suradničko ime:',
 	'countedits-ok' => 'Prikaži',
@@ -779,6 +781,13 @@ $messages['oc'] = array(
 $messages['os'] = array(
 	'countedits-username' => 'Архайæг:',
 	'countedits-ok' => 'Афтæ уæд!',
+);
+
+/** Plautdietsch (Plautdietsch)
+ * @author Slomox
+ */
+$messages['pdt'] = array(
+	'countedits-username' => 'Bruckernome:',
 );
 
 /** Polish (Polski)

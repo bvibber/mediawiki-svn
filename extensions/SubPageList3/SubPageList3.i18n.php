@@ -37,6 +37,13 @@ $messages['en'] = array(
         'spl3_nosubpages' => '$1 has no subpages to list.',
 );
 
+/** Message documentation (Message documentation)
+ * @author Purodha
+ */
+$messages['qqq'] = array(
+	'spl3-desc' => 'Short description of the extension, shown on [[Special:Version]]. Do not translate or change links.',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  * @author OsamaK
@@ -126,6 +133,15 @@ $messages['jv'] = array(
 	'spl3-desc' => 'Sacara otomatis nggawé daftar subkaca-subkaca sawijining kaca nganggo tag <code><nowiki><splist /></nowiki></code>',
 	'spl3_debug' => 'Bijih kanggo opsi $1 ora dimangertèni.',
 	'spl3_nosubpages' => '$1 ora nduwé subkaca-subkaca sing bisa dituduhaké.',
+);
+
+/** Ripoarisch (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'spl3-desc' => 'Määt automattesch en Leß met Ungersigge met däm <code><nowiki><splist /></nowiki></code>-Befäähl.',
+	'spl3_debug' => 'Ene unbikannte Wäät för „$1“.',
+	'spl3_nosubpages' => 'De Sigg „$1“ hät kei Ungersigge.',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

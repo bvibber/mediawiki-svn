@@ -22,8 +22,10 @@ $messages['en'] = array(
 
 /** Message documentation (Message documentation)
  * @author Masterches
+ * @author Purodha
  */
 $messages['qqq'] = array(
+	'templatelink_desc' => 'Short description of the TemplateLink extension, shown on [[Special:Version]]. Do not translate or change links.',
 	'templatelink_newtitle' => 'A page is transcluded when it is inserted by reference in an other one (a part of the source page will be referenced in the present document and so be included)',
 );
 
@@ -161,6 +163,16 @@ $messages['jv'] = array(
  */
 $messages['km'] = array(
 	'templatelink' => 'តំនភ្ជាប់ទំព័រគំរូ',
+);
+
+/** Ripoarisch (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'templatelink' => 'Short description of the extension, shown on [[Special:Version]]. Do not translate or change links.',
+	'templatelink_desc' => 'Dä Zosatz kann en Schblon als en neu Sigg aanzeije.',
+	'templatelink_empty' => 'Eine Parammeter moß aanjejovve sin.',
+	'templatelink_newtitle' => '$1 (ennjeföösch)',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

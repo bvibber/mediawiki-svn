@@ -14,6 +14,13 @@ $messages['en'] = array(
 	'untidy'    => 'Untidy',
 );
 
+/** Message documentation (Message documentation)
+ * @author Purodha
+ */
+$messages['qqq'] = array(
+	'tidy-desc' => 'Short description of the extension, shown on [[Special:Version]]. Do not translate or change links.',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */
@@ -81,6 +88,15 @@ $messages['jv'] = array(
 $messages['km'] = array(
 	'tidy' => 'មានសណ្ដាប់ធ្នាប់',
 	'untidy' => 'គ្មានសណ្ដាប់ធ្នាប់',
+);
+
+/** Ripoarisch (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'tidy-desc' => 'Föch der „{{int:Tidy}}“ odder „{{int:Untidy}}“ Lengk op Sigge enn, öm de alljemein Enstellung fun <code>$wgUseTidy</code> övverjonn ze künne.',
+	'tidy' => 'HTML oprühme',
+	'untidy' => 'HTML nit oprühme',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

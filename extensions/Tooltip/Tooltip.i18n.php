@@ -9,6 +9,13 @@ $messages['en'] = array (
 	'tooltip-desc' => 'Adds <tt><nowiki><tooltip></nowiki></tt> and <tt><nowiki>{{#tooltip:}}</nowiki></tt> tag'
 );
 
+/** Message documentation (Message documentation)
+ * @author Purodha
+ */
+$messages['qqq'] = array(
+	'tooltip-desc' => 'Short description of the extension, shown on [[Special:Version]]. Do not translate or change links.',
+);
+
 /** Afrikaans (Afrikaans)
  * @author Naudefj
  */
@@ -60,9 +67,10 @@ $messages['gl'] = array(
 
 /** Hebrew (עברית)
  * @author Agbad
+ * @author Rotemliss
  */
 $messages['he'] = array(
-	'tooltip-desc' => 'הוספת התגיות <tt><nowiki><tooltip></nowiki></tt> ו<tt><nowiki>{{#tooltip:}}</nowiki></tt>',
+	'tooltip-desc' => 'הוספת התגיות <tt><nowiki><tooltip></nowiki></tt> ו־<tt><nowiki>{{#tooltip:}}</nowiki></tt>',
 );
 
 /** Upper Sorbian (Hornjoserbsce)
@@ -84,6 +92,13 @@ $messages['it'] = array(
  */
 $messages['jv'] = array(
 	'tooltip-desc' => 'Nambahaké <tt><nowiki><tooltip></nowiki></tt> lan tag <tt><nowiki>{{#tooltip:}}</nowiki></tt>',
+);
+
+/** Ripoarisch (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'tooltip-desc' => 'Deit der <tt><nowiki><tooltip></nowiki></tt> Befäähl un de <tt><nowiki>{{#tooltip:}}</nowiki></tt> Fungxjohn en et Wiki bei.',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
