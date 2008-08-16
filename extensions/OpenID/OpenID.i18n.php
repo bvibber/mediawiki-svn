@@ -38,7 +38,7 @@ $messages['en'] = array(
 	'openiderrortext' => 'An error occured during verification of the OpenID URL.',
 	'openidconfigerror' => 'OpenID configuration error',
 	'openidconfigerrortext' => 'The OpenID storage configuration for this wiki is invalid.
-Please consult this site\'s administrator.',
+Please consult an [[Special:Userlist/sysop|administrator]].',
 	'openidpermission' => 'OpenID permissions error',
 	'openidpermissiontext' => 'The OpenID you provided is not allowed to login to this server.',
 	'openidcancel' => 'Verification cancelled',
