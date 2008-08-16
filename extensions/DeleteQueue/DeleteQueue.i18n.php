@@ -30,7 +30,8 @@ $messages['en'] = array(
 
 	// Speedy deletion
 	'deletequeue-speedy-title' => 'Mark "$1" for speedy deletion',
-	'deletequeue-speedy-text' => "You can use this form to mark the page \"'''$1'''\" for speedy deletion.\n
+	'deletequeue-speedy-text' => "You can use this form to mark the page \"'''$1'''\" for speedy deletion.
+
 An administrator will review this request, and, if it is well-founded, delete the page.
 You must select a reason for deletion from the drop-down list below, and add any other relevant information.",
 	'deletequeue-speedy-reasons' => "-",
@@ -67,9 +68,13 @@ You must select a reason for deletion from the drop-down list below, and add any
 	'deletequeue-queue-deletediscuss' => 'Deletion discussion',
 
 	// Display of status in page body
-	'deletequeue-page-speedy' => "This page has been nominated for speedy deletion. The reason given for this deletion is ''$1''.",
-	'deletequeue-page-prod' => "It has been proposed that this page is deleted. The reason given was ''$1''. If this proposal is uncontested at ''$2'', this page will be deleted.",
-	'deletequeue-page-deletediscuss' => "This page has been proposed for deletion, and that proposal has been contested. The reason given was ''$1'' A discussion is ongoing at [[$3]], which will conclude at ''$2''",
+	'deletequeue-page-speedy' => "This page has been nominated for speedy deletion.
+The reason given for this deletion is ''$1''.",
+	'deletequeue-page-prod' => "It has been proposed that this page is deleted.
+The reason given was ''$1''.If this proposal is uncontested at ''$2'', this page will be deleted.",
+	'deletequeue-page-deletediscuss' => "This page has been proposed for deletion, and that proposal has been contested.
+The reason given was ''$1''.
+A discussion is ongoing at [[$3]], which will conclude at ''$2''",
 
 	// Review
 	//Generic
@@ -89,22 +94,31 @@ You must select a reason for deletion from the drop-down list below, and add any
 	'deletequeue-actiondisabled' => 'The following action is disabled because $1:',
 	'deletequeue-review-badaction' => 'You specified an invalid action',
 	'deletequeue-review-actiondenied' => 'You specified an action which is disabled for this page',
-	"deletequeue-review-objections" => "'''Warning''': The deletion of this page has [{{FULLURL:{{PAGENAME}}|action=delvoteview|votetype=object}} objections]. Please ensure that you have considered these objections before deleting this page.",
+	"deletequeue-review-objections" => "'''Warning''': The deletion of this page has [{{FULLURL:{{PAGENAME}}|action=delvoteview|votetype=object}} objections].
+Please ensure that you have considered these objections before deleting this page.",
 	//Speedy deletion
 	'deletequeue-reviewspeedy-tab' => 'Review speedy deletion',
 	'deletequeue-reviewspeedy-title' => 'Review speedy deletion nomination of "$1"',
-	'deletequeue-reviewspeedy-text' => "You can use this form to review the nomination of \"'''$1'''\" for speedy deletion. Please ensure that this page can be speedily deleted in accordance with policy.",
+	'deletequeue-reviewspeedy-text' => "You can use this form to review the nomination of \"'''$1'''\" for speedy deletion.
+Please ensure that this page can be speedily deleted in accordance with policy.",
 	//Proposed deletion
 	'deletequeue-reviewprod-tab' => 'Review proposed deletion',
 	'deletequeue-reviewprod-title' => 'Review proposed deletion of "$1"',
-	'deletequeue-reviewprod-text' => "You can use this form to review the uncontested nomination of \"'''$1'''\" for deletion. You may contest the deletion of this page by transferring it to the deletion discussion queue.",
+	'deletequeue-reviewprod-text' => "You can use this form to review the uncontested nomination of \"'''$1'''\" for deletion.
+
+You may contest the deletion of this page by transferring it to the deletion discussion queue.",
 	// Discussions
 	'deletequeue-reviewdeletediscuss-tab' => 'Review deletion',
 	'deletequeue-reviewdeletediscuss-title' => "Review deletion discussion for \"$1\"",
-	'deletequeue-reviewdeletediscuss-text' => "You can use this form to review the deletion discussion of \"'''$1'''\". A [{{FULLURL:{{PAGENAME}}|action=delviewvotes}} list] of endorsements and objections of this deletion is available, and the discussion itself can be found at [[$2]]. Please ensure that you make a decision in accordance with the consensus on the discussion.",
+	'deletequeue-reviewdeletediscuss-text' => "You can use this form to review the deletion discussion of \"'''$1'''\".
+
+A [{{FULLURL:{{PAGENAME}}|action=delviewvotes}} list] of endorsements and objections of this deletion is available, and the discussion itself can be found at [[$2]].
+Please ensure that you make a decision in accordance with the consensus on the discussion.",
 
 	// Deletion discussions
-	'deletequeue-deletediscuss-discussionpage' => "This is the discussion page for the deletion of [[$1]]. There are currently $2 {{PLURAL:$2|user|users}} endorsing deletion, and $3 {{PLURAL:$3|user|users}} objecting to deletion. You may [{{FULLURL:$1|action=delvote}} endorse or object] to deletion, or [{{FULLURL:$1|action=delviewvotes}} view all endorsements and objections].",
+	'deletequeue-deletediscuss-discussionpage' => "This is the discussion page for the deletion of [[$1]].
+There are currently $2 {{PLURAL:$2|user|users}} endorsing deletion, and $3 {{PLURAL:$3|user|users}} objecting to deletion.
+You may [{{FULLURL:$1|action=delvote}} endorse or object] to deletion, or [{{FULLURL:$1|action=delviewvotes}} view all endorsements and objections].",
 	'deletequeue-discusscreate-summary' => 'Creating discussion for deletion of [[$1]].',
 	'deletequeue-discusscreate-text' => 'Deletion proposed for the following reason: $2 ~~~~',
 
@@ -116,7 +130,10 @@ You must select a reason for deletion from the drop-down list below, and add any
 	// Endorsement and objection
 	'deletequeue-vote-tab' => 'Endorse/Object to deletion',
 	'deletequeue-vote-title' => 'Endorse or object to deletion of "$1"',
-	'deletequeue-vote-text' => "You may use this form to endorse or object to the deletion of \"'''$1'''\". This action will override any previous endorsements/objections you have given to deletion of this page. You can [{{FULLURL:{{PAGENAME}}|action=delviewvotes}} view] the existing endorsements and objections. The reason given in the nomination for deletion was ''$2''.",
+	'deletequeue-vote-text' => "You may use this form to endorse or object to the deletion of \"'''$1'''\".
+This action will override any previous endorsements/objections you have given to deletion of this page.
+You can [{{FULLURL:{{PAGENAME}}|action=delviewvotes}} view] the existing endorsements and objections.
+The reason given in the nomination for deletion was ''$2''.",
 	'deletequeue-vote-legend' => 'Endorse/Object to deletion',
 	'deletequeue-vote-action' => 'Recommendation:',
 	'deletequeue-vote-endorse' => 'Endorse deletion.',
@@ -125,11 +142,13 @@ You must select a reason for deletion from the drop-down list below, and add any
 	'deletequeue-vote-submit' => 'Submit',
 	'deletequeue-vote-success-endorse' => 'You have successfully endorsed the deletion of this page.',
 	'deletequeue-vote-success-object' => 'You have successfully objected to the deletion of this page.',
-	'deletequeue-vote-requeued' => 'You have successfully objected to the deletion of this page. Due to your objection, the page has been moved to the $1 queue.',
+	'deletequeue-vote-requeued' => 'You have successfully objected to the deletion of this page.
+Due to your objection, the page has been moved to the $1 queue.',
 
 	// View all votes
 	'deletequeue-showvotes' => "Endorsements and objections to deletion of \"$1\"",
-	'deletequeue-showvotes-text' => "Below are the endorsements and objections made to the deletion of the page \"'''$1'''\". You can register your own endorsement of, or objection to this deletion [{{FULLURL:{{PAGENAME}}|action=delvote}} here].",
+	'deletequeue-showvotes-text' => "Below are the endorsements and objections made to the deletion of the page \"'''$1'''\".
+You can register your own endorsement of, or objection to this deletion [{{FULLURL:{{PAGENAME}}|action=delvote}} here].",
 	'deletequeue-showvotes-restrict-endorse' => "Show endorsements only",
 	'deletequeue-showvotes-restrict-object' => "Show objections only",
 	'deletequeue-showvotes-restrict-none' => "Show all endorsements and objections",
