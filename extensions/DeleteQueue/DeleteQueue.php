@@ -13,7 +13,6 @@ if ( ! defined( 'MEDIAWIKI' ) )
  * @license http://www.gnu.org/copyleft/gpl.html GNU General Public License 2.0 or later
  */
 
-$dir = dirname(__FILE__);
 $wgExtensionCredits['other'][] = array(
 	'name'           => 'DeleteQueue',
 	'author'         => 'Andrew Garrett',
@@ -24,19 +23,20 @@ $wgExtensionCredits['other'][] = array(
 	'url'            => 'http://www.mediawiki.org/wiki/Extension:DeleteQueue',
 );
 
-$wgExtensionMessagesFiles['DeleteQueue'] =  "$dir/DeleteQueue.i18n.php";
+$dir = dirname(__FILE__).'/';
+
+$wgExtensionMessagesFiles['DeleteQueue'] = $dir . 'DeleteQueue.i18n.php';
+$wgExtensionAliasesFiles['DeleteQueue'] = $dir . 'DeleteQueue.alias.php';
 
 $wgHooks['SkinTemplateTabs'][] = 'DeleteQueueHooks::onSkinTemplateTabs';
 $wgHooks['UnknownAction'][] = 'DeleteQueueHooks::onUnknownAction';
 $wgHooks['ArticleViewHeader'][] = 'DeleteQueueHooks::onArticleViewHeader';
 
-$p = dirname(__FILE__).'/';
-
-$wgAutoloadClasses['SpecialDeleteQueue'] = $p.'SpecialDeleteQueue.php';
-$wgAutoloadClasses['DeleteQueueHooks'] = $p.'DeleteQueue.hooks.php';
-$wgAutoloadClasses['DeleteQueueInterface'] = $p.'DeleteQueueInterface.php';
-$wgAutoloadClasses['DeleteQueueReviewForm'] = $p.'ReviewForm.php';
-$wgAutoloadClasses['DeleteQueueItem'] = $p."DeleteQueueItem.php";
+$wgAutoloadClasses['SpecialDeleteQueue'] = $dir.'SpecialDeleteQueue.php';
+$wgAutoloadClasses['DeleteQueueHooks'] = $dir.'DeleteQueue.hooks.php';
+$wgAutoloadClasses['DeleteQueueInterface'] = $dir.'DeleteQueueInterface.php';
+$wgAutoloadClasses['DeleteQueueReviewForm'] = $dir.'ReviewForm.php';
+$wgAutoloadClasses['DeleteQueueItem'] = $dir."DeleteQueueItem.php";
 
 $wgAvailableRights[] = 'speedy-nominate';
 $wgAvailableRights[] = 'speedy-review';
