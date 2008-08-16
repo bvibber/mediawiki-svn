@@ -17,6 +17,11 @@
  * or see http://www.gnu.org/
  */
 
+/**
+ * The HTML differ depends on WikiDiff3
+ */
+global $IP;
+require_once( "$IP/includes/Diff.php" );
 
 /**
  * Any element in the DOM tree of an HTML document.
@@ -24,7 +29,7 @@
 abstract class Node{
 
 	protected $parent;
-
+	protected $parentTree;
 
 	function __construct($parent){
 		$this->parent = $parent;
@@ -38,16 +43,18 @@ abstract class Node{
 	}
 
 	public function getParentTree(){
-		if(!is_null($this->parent)){
-			$parentTree = $this->parent->getParentTree();
-			$parentTree[] = $this->parent;
-			return $parentTree;
-		}else{
-			return array();
+		if(!isset($this->parentTree)){
+			if(!is_null($this->parent)){
+				$this->parentTree = $this->parent->getParentTree();
+				$this->parentTree[] = $this->parent;
+			}else{
+				$this->parentTree = array();
+			}
 		}
+		return $this->parentTree;
 	}
 
-	public abstract function getMinimalDeletedSet($id);
+	public abstract function getMinimalDeletedSet($id, &$allDeleted, &$somethingDeleted);
 
 	public function detectIgnorableWhiteSpace(){
 		// no op
@@ -95,6 +102,7 @@ abstract class Node{
 
 	public function setParent($parent) {
 		$this->parent = $parent;
+		unset($this->parentTree);
 	}
 
 	public abstract function copyTree();
@@ -208,25 +216,29 @@ class TagNode extends Node{
 		return '</' . $this->getQName() + '>"';
 	}
 
-	public function getMinimalDeletedSet($id) {
+	public function getMinimalDeletedSet($id, &$allDeleted, &$somethingDeleted) {
 		$nodes = array();
+		if ($this->getNbChildren() == 0){
+			$allDeleted = false;
+			$somethingDeleted = false;
+			return $nodes;
+		}
 
-		if ($this->getNbChildren() == 0)
-		return $nodes;
-
+		$allDeleted = false;
+		$somethingDeleted = false;
 		$hasNotDeletedDescendant = false;
 
 		foreach ($this->children as $child) {
-			$childrenChildren = $child->getMinimalDeletedSet($id);
-			$nodes = array_merge($nodes, $childrenChildren);
-			if (!$hasNotDeletedDescendant
-			&& !(count($childrenChildren) == 1 && $childrenChildren[0]===$child)) {
-				// This child is not entirely deleted
-				$hasNotDeletedDescendant = true;
+			$childrenChildren = $child->getMinimalDeletedSet($id, $allDeleted_local, $somethingDeleted_local);
+			if($somethingDeleted_local){
+				$nodes = array_merge($nodes, $childrenChildren);
+				$somethingDeleted = true;
 			}
+			$hasNotDeletedDescendant |= !$allDeleted_local;
 		}
 		if (!$hasNotDeletedDescendant) {
 			$nodes = array($this);
+			$allDeleted = true;
 		}
 		return $nodes;
 	}
@@ -420,9 +432,11 @@ class TextNode extends Node{
 		return $this;
 	}
 
-	public function getMinimalDeletedSet($id) {
-		if ($this->getModification()->getType() == Modification::REMOVED
-		&& $this->getModification()->getID() == $id){
+	public function getMinimalDeletedSet($id, &$allDeleted, &$somethingDeleted) {
+		if ($this->modification->getType() == Modification::REMOVED
+		&& $this->modification->getID() == $id){
+			$somethingDeleted = true;
+			$allDeleted = true;
 			return array($this);
 		}
 		return array();
@@ -500,10 +514,10 @@ class BodyNode extends TagNode {
 		return $newThis;
 	}
 
-	public function getMinimalDeletedSet($id) {
+	public function getMinimalDeletedSet($id, &$allDeleted, &$somethingDeleted) {
 		$nodes = array();
 		foreach ($this->children as $child) {
-			$childrenChildren = $child->getMinimalDeletedSet($id);
+			$childrenChildren = $child->getMinimalDeletedSet($id,$allDeleted,$somethingDeleted);
 			$nodes = array_merge($nodes, $childrenChildren);
 		}
 		return $nodes;
@@ -758,29 +772,33 @@ class DomTreeBuilder {
 		}
 	}
 
+	public static $regex = '/([\s\.\,\"\\\'\(\)\?\:\;\!\{\}\-\+\*\=\_\[\]\&\|]{1})/';
+	
 	public function characters($parser, $data){
-		//wfDebug('Parsing '. strlen($data).' characters.');
-		$array = str_split($data);
-		foreach($array as $c) {
-			if (self::isDelimiter($c)) {
+		$matches = preg_split(self::$regex,$data,-1,PREG_SPLIT_DELIM_CAPTURE);
+
+		$notInPre = !$this->currentParent->isPre();
+		$max = sizeof($matches)-1;
+
+		foreach($matches as $word){
+			if(preg_match(self::$regex, $word)){
+				//whitespace
 				$this->endWord();
-				if (WhiteSpaceNode::isWhiteSpace($c) && !$this->currentParent->isPre()
-				&& !$this->currentParent->inPre()) {
+				if (WhiteSpaceNode::isWhiteSpace($word) && $notInPre) {
 					if (!is_null($this->lastSibling)){
 						$this->lastSibling->setWhiteAfter(true);
 					}
 					$this->whiteSpaceBeforeThis = true;
 				} else {
-					$textNode = new TextNode($this->currentParent, $c);
+					$textNode = new TextNode($this->currentParent, $word);
 					$textNode->setWhiteBefore($this->whiteSpaceBeforeThis);
 					$this->whiteSpaceBeforeThis = false;
 					$this->lastSibling = $textNode;
 					$this->textNodes[] = $textNode;
 				}
-			} else {
-				$this->newWord .= $c;
+			}else{
+				$this->newWord .= $word;
 			}
-
 		}
 	}
 
@@ -993,7 +1011,9 @@ class TextNodeDiffer{
 		}
 		$this->oldTextNodes[$start]->getModification()->setFirstOfID(true);
 
-		$deletedNodes = $this->oldBodyNode->getMinimalDeletedSet($this->deletedID);
+		$root = $this->oldTextNodes[$start]->getLastCommonParent($this->oldTextNodes[$end-1])->getLastCommonParent();
+
+		$deletedNodes = $root->getMinimalDeletedSet($this->deletedID, $junk1, $junk2);
 
 		//wfDebug("Minimal set of deleted nodes of size " . sizeof($deletedNodes));
 
@@ -1091,14 +1111,15 @@ class TextNodeDiffer{
 }
 
 class HTMLDiffer{
-	
+
 	private $output;
-	
+
 	function __construct($output){
 		$this->output = $output;
 	}
 
 	function htmlDiff($from, $to){
+		wfProfileIn( __METHOD__ );
 		// Create an XML parser
 		$xml_parser = xml_parser_create('');
 
@@ -1110,12 +1131,11 @@ class HTMLDiffer{
 		// Set the function to handle blocks of character data
 		xml_set_character_data_handler($xml_parser, array($domfrom,"characters"));
 
-		;
-		//wfDebug('Parsing '.strlen($from)." characters worth of HTML");
+		//wfDebug('Parsing '.strlen($from)." characters worth of HTML\n");
 		if (!xml_parse($xml_parser, '<?xml version="1.0" encoding="UTF-8"?>'.Sanitizer::hackDocType().'<body>', FALSE)
 		|| !xml_parse($xml_parser, $from, FALSE)
 		|| !xml_parse($xml_parser, '</body>', TRUE)){
-			wfDebug(sprintf("XML error: %s at line %d",xml_error_string(xml_get_error_code($xml_parser)),xml_get_current_line_number($xml_parser)));
+			wfDebug(sprintf("XML error: %s at line %d\n",xml_error_string(xml_get_error_code($xml_parser)),xml_get_current_line_number($xml_parser)));
 		}
 		xml_parser_free($xml_parser);
 		unset($from);
@@ -1130,19 +1150,20 @@ class HTMLDiffer{
 		// Set the function to handle blocks of character data
 		xml_set_character_data_handler($xml_parser, array($domto,"characters"));
 
-		//wfDebug('Parsing '.strlen($to)." characters worth of HTML");
+		//wfDebug('Parsing '.strlen($to)." characters worth of HTML\n");
 		if (!xml_parse($xml_parser, '<?xml version="1.0" encoding="UTF-8"?>'.Sanitizer::hackDocType().'<body>', FALSE)
 		|| !xml_parse($xml_parser, $to, FALSE)
 		|| !xml_parse($xml_parser, '</body>', TRUE)){
-			wfDebug(sprintf("XML error in HTML diff: %s at line %d",xml_error_string(xml_get_error_code($xml_parser)),xml_get_current_line_number($xml_parser)));
+			wfDebug(sprintf("XML error in HTML diff: %s at line %d\n",xml_error_string(xml_get_error_code($xml_parser)),xml_get_current_line_number($xml_parser)));
 		}
 		xml_parser_free($xml_parser);
 		unset($to);
 
-		$diffengine = new _DiffEngine();
+		$diffengine = new WikiDiff3();
 		$differences = $this->preProcess($diffengine->diff_range($domfrom->getDiffLines(), $domto->getDiffLines()));
 		unset($xml_parser,$diffengine);
 
+			
 		$domdiffer = new TextNodeDiffer($domto, $domfrom);
 
 		$currentIndexLeft = 0;
@@ -1163,10 +1184,10 @@ class HTMLDiffer{
 		if ($currentIndexLeft < $domdiffer->lengthOld()) {
 			$domdiffer->handlePossibleChangedPart($currentIndexLeft,$domdiffer->lengthOld(), $currentIndexRight,$domdiffer->lengthNew());
 		}
-
 		$domdiffer->expandWhiteSpace();
 		$output = new HTMLOutput('htmldiff', $this->output);
 		$output->parse($domdiffer->getBodyNode());
+		wfProfileOut( __METHOD__ );
 	}
 
 	private function preProcess(/*array*/ $differences){
@@ -1244,15 +1265,15 @@ class TextOnlyComparator{
 		if($nbOthers == 0 || $nbThis == 0){
 			return -log(0);
 		}
-		
-		$diffengine = new _DiffEngine();
-		$diffengine->diff_local($this->leafs, $other->leafs);
 
-		$distanceThis = array_sum($diffengine->xchanged);
-		$distanceOther = array_sum($diffengine->ychanged);
+		$diffengine = new WikiDiff3(25000,1.35);
+		$diffengine->diff($this->leafs, $other->leafs);
 
-		return ((0.0 + $distanceOther) / $nbOthers + (0.0 + $distanceThis)
-		/ $nbThis) / 2.0;
+		$lcsLength = $diffengine->getLcsLength();
+
+		$distanceThis = $nbThis-$lcsLength;
+
+		return (2.0 - $lcsLength/$nbOthers - $lcsLength/$nbThis) / 2.0;
 	}
 }
 
@@ -1301,7 +1322,7 @@ class AncestorComparator{
 	public function getResult(AncestorComparator $other) {
 		$result = new AncestorComparatorResult();
 
-		$diffengine = new _DiffEngine();
+		$diffengine = new WikiDiff3(10000,1.35);
 		$differences = $diffengine->diff_range($this->ancestorsText, $other->ancestorsText);
 
 		if (sizeof($differences) == 0){
@@ -1528,7 +1549,6 @@ class TagToString {
 	}
 
 	public function getRemovedDescription(ChangeText $txt) {
-
 		if ($this->sem == TagToStringFactory::MOVED) {
 			$txt->addText($this->getMovedOutOf() . ' ' . strtolower($this->getArticle()) . ' ');
 			$txt->addHtml('<b>');
@@ -1550,7 +1570,6 @@ class TagToString {
 	}
 
 	public function getAddedDescription(ChangeText $txt) {
-
 		if ($this->sem == TagToStringFactory::MOVED) {
 			$txt->addText($this->getMovedTo() . ' ' . strtolower($this->getArticle()) . ' ');
 			$txt->addHtml('<b>');
@@ -1869,12 +1888,12 @@ class HTMLOutput{
 					$this->addAttributes($mod, $attrs);
 					$attrs['onclick'] = 'return tipC(constructToolTipC(this));';
 					$this->handler->startElement('span', $attrs);
-					
+
 					//tooltip
 					$this->handler->startElement('span', array('class'=>'tip'));
 					$this->handler->characters($mod->getChanges());
 					$this->handler->endElement('span');
-			
+
 					$changeStarted = true;
 					$changeTXT = $mod->getChanges();
 				} else if (!$remStarted && $mod->getType() == Modification::REMOVED) {
@@ -1971,9 +1990,9 @@ class EchoingContentHandler{
 }
 
 class DelegatingContentHandler{
-	
+
 	private $delegate;
-	
+
 	function __construct($delegate){
 		$this->delegate=$delegate;
 	}
