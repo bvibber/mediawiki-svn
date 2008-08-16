@@ -196,13 +196,35 @@ ul.popularClips li {
 	margin: 0 28px 0 0;
 }
 ul.popularClips li img {display: block;}
-
+ul.popularClips li span{
+	line-height:1.4;
+}
 ul.popularClips li span.title {display: block; font-weight: bold; margin: 3px 0;}
 ul.popularClips li span.description {display: block; margin: 3px 0;}
 ul.popularClips li span.keywords {display: block; margin: 3px 0;}
 
 ul.popularSearches li.last_li, ul.popularClips li.last_li {margin: 0;}
+.mvd_menu_header{
+	text-transform: lowercase;
+}
+.mvd_page_image{
+	float:left;	
+	padding-right:5px;
+}
+.mvd_page_image img{
+	display:block;	
+	margin-top:5px;
+    margin-left: auto;
+    margin-right: auto;
+}
+p.text {float: right; display: inline; width: 360px; margin: 8px 10px 10px 0; padding: 0;}
 
+.mv_fd_mvd{
+	mrgin-top:0px;
+	mrgin-bottom:0px;
+	padding-top:0px;
+	padding-bottom:0px;
+}
 
 /*Ajax search suggestions*/
 #suggestions {
@@ -550,6 +572,10 @@ h1.videoHeader,h1.videoHeader{
 #selectionsBox ul li a {text-decoration: none;}
 #selectionsBox ul li.even {background: white;}
 #selectionsBox ul li.odd {background: #e7f0ff;}
+
+.even {background: white;}
+.odd {background: #e7f0ff;}
+
 #selectionsBox ul li p.images {float: left; display: inline; width: 65px; text-align: center; margin: 10px 10px 10px 0; padding: 0;}
 #selectionsBox ul li p.images img {margin-bottom: 5px;}
 

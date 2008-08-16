@@ -85,10 +85,10 @@ class MvpcfTemplate extends QuickTemplate {
 		<?php $this->get_portlet('p-personal')?>
 		<div id="searchSplash">
 			<div class="logo"><img src="<?php $this->text('stylepath') ?>/<?php $this->text('stylename') ?>/images/logo.png" alt="Metavid" /></div>
-			<p class="tagline">The Open Video archive of the US Congress</p>
+			<p class="tagline">The Open Video archive of the US Congress</p>			
 			<?php $this->get_search_html(); ?>			
 		</div><!--searchSplash-->
-	</div><!--frontPageTop-->	
+	</div><!--frontPageTop-->		
 	<div id="frontPageContent" class="bodyContent">
 		<!-- start content -->
 		<?php $this->html('bodytext') ?>
@@ -370,6 +370,7 @@ class MvpcfTemplate extends QuickTemplate {
 	} // end of execute() method
 
 	function get_head_html(){
+		
 	?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="<?php $this->text('xhtmldefaultnamespace') ?>" <?php 
 	foreach($this->data['xhtmlnamespaces'] as $tag => $ns) {
@@ -378,7 +379,13 @@ class MvpcfTemplate extends QuickTemplate {
 	<head>
 		<meta http-equiv="Content-Type" content="<?php $this->text('mimetype') ?>; charset=<?php $this->text('charset') ?>" />
 		<?php $this->html('headlinks') ?>
-		<title><?php $this->text('pagetitle') ?></title>		
+		<title><?php 
+		global $wgTitle;
+		if($wgTitle->getDbKey()=='Main_Page'){
+			echo 'Metavid - Open Video Archive of the US Congress';
+		}else{
+			echo $this->text('pagetitle');
+		}?></title>		
 		<style type="text/css" media="screen, projection">/*<![CDATA[*/			
 			@import "<?php $this->text('stylepath') ?>/<?php $this->text('stylename') ?>/style.css";
 		/*]]>*/</style>			
