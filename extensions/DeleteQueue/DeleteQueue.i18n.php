@@ -57,6 +57,9 @@ You must select a reason for deletion from the drop-down list below, and add any
 	'right-speedy-review' => 'Review nominations for speedy deletion',
 	'right-prod-nominate' => 'Propose page deletion',
 	'right-prod-review' => 'Review proposed deletion',
+	'right-prod-admin' => 'Close uncontested deletion proposals',
+	'right-deletediscuss-nominate' => 'Start deletion discussions',
+	'right-deletediscuss-review' => 'Close deletion discussions',
 
 	// Queue names
 	'deletequeue-queue-speedy' => 'Speedy deletion',
