@@ -13,7 +13,7 @@ $messages = array();
 $messages['en'] = array(
 	// General
 	'deletequeue-desc' => 'Creates a queue-based system for managing deletion.',
-	
+
 	// Landing page
 	'deletequeue-action' => 'Suggest deletion',
 	'deletequeue-action-title' => "Suggest deletion of \"$1\"",
@@ -27,14 +27,14 @@ $messages['en'] = array(
 
 	// Nomination forms
 	'deletequeue-generic-reasons' => "* Blah\n** Blah blah!\n** Blah blah blah!\n*Moo\n** Mooey pooey!\n** Pooey mooey!",
-	
+
 	// Speedy deletion
 	'deletequeue-speedy-title' => 'Mark "$1" for speedy deletion',
 	'deletequeue-speedy-text' => "You can use this form to mark the page \"'''$1'''\" for speedy deletion.\n
 An administrator will review this request, and, if it is well-founded, delete the page.
 You must select a reason for deletion from the drop-down list below, and add any other relevant information.",
 	'deletequeue-speedy-reasons' => "-",
-	
+
 	// Proposed deletion
 	'deletequeue-prod-title' => "Propose deletion of \"$1\"",
 	'deletequeue-prod-text' => "You can use this form to propose that \"'''$1'''\" is deleted.\n
@@ -45,29 +45,29 @@ You must select a reason for deletion from the drop-down list below, and add any
 	'deletequeue-delnom-otherreason' => 'Other reason',
 	'deletequeue-delnom-extra' => 'Extra information:',
 	'deletequeue-delnom-submit' => 'Submit nomination',
-	
+
 	// Log entries
 	'deletequeue-log-nominate' => "nominated [[$1]] for deletion in the '$2' queue.",
 	'deletequeue-log-rmspeedy' => "declined to speedily delete [[$1]].",
 	'deletequeue-log-requeue' => "transferred [[$1]] to a different deletion queue: from '$2' to '$3'.",
 	'deletequeue-log-dequeue' => "removed [[$1]] from the deletion queue '$2'.",
-	
+
 	// Rights
 	'right-speedy-nominate' => 'Nominate pages for speedy deletion',
 	'right-speedy-review' => 'Review nominations for speedy deletion',
 	'right-prod-nominate' => 'Propose page deletion',
 	'right-prod-review' => 'Review proposed deletion',
-	
+
 	// Queue names
 	'deletequeue-queue-speedy' => 'Speedy deletion',
 	'deletequeue-queue-prod' => 'Proposed deletion',
 	'deletequeue-queue-deletediscuss' => 'Deletion discussion',
-	
+
 	// Display of status in article body
 	'deletequeue-article-speedy' => "This article has been nominated for speedy deletion. The reason given for this deletion is ''$1''.",
 	'deletequeue-article-prod' => "It has been proposed that this article is deleted. The reason given was ''$1''. If this proposal is uncontested at ''$2'', this article will be deleted.",
 	'deletequeue-article-deletediscuss' => "This article has been proposed for deletion, and that proposal has been contested. The reason given was ''$1'' A discussion is ongoing at [[$3]], which will conclude at ''$2''",
-	
+
 	// Review
 	//Generic
 	'deletequeue-notqueued' => 'The page you have selected is currently not queued for deletion',
@@ -99,17 +99,17 @@ You must select a reason for deletion from the drop-down list below, and add any
 	'deletequeue-reviewdeletediscuss-tab' => 'Review deletion',
 	'deletequeue-reviewdeletediscuss-title' => "Review deletion discussion for \"$1\"",
 	'deletequeue-reviewdeletediscuss-text' => "You can use this form to review the deletion discussion of \"$1\". A [{{FULLURL:{{PAGENAME}}|action=delviewvotes}} list] of endorsements and objections of this deletion is available, and the discussion itself can be found at [[$2]]. Please ensure that you make a decision in accordance with the consensus on the discussion.",
-	
+
 	// Deletion discussions
 	'deletequeue-deletediscuss-discussionpage' => "This is the discussion page for the deletion of [[$1]]. There are currently $2 {{PLURAL:$2|user|users}} endorsing deletion, and $3 {{PLURAL:$3|user|users}} objecting to deletion. You may [{{FULLURL:$1|action=delvote}} endorse or object] to deletion, or [{{FULLURL:$1|action=delviewvotes}} view all endorsements and objections].",
 	'deletequeue-discusscreate-summary' => 'Creating discussion for deletion of [[$1]].',
 	'deletequeue-discusscreate-text' => 'Deletion proposed for the following reason: $2 ~~~~',
-	
+
 	// Roles
 	'deletequeue-role-nominator' => 'original nominator for deletion',
 	'deletequeue-role-vote-endorse' => 'endorser of deletion',
 	'deletequeue-role-vote-object' => 'objector to deletion',
-	
+
 	// Endorsement and objection
 	'deletequeue-vote-tab' => 'Endorse/Object to deletion',
 	'deletequeue-vote-title' => 'Endorse or object to deletion of "$1"',
@@ -123,7 +123,7 @@ You must select a reason for deletion from the drop-down list below, and add any
 	'deletequeue-vote-success-endorse' => 'You have successfully endorsed the deletion of this page.',
 	'deletequeue-vote-success-object' => 'You have successfully objected to the deletion of this page.',
 	'deletequeue-vote-requeued' => 'You have successfully objected to the deletion of this page. Due to your objection, the article has been moved to the $1 queue.',
-	
+
 	// View all votes
 	'deletequeue-showvotes' => "Endorsements and objections to deletion of \"$1\"",
 	'deletequeue-showvotes-text' => 'Below are the endorsements and objections made to the deletion of the article "$1". You can register your own endorsement of, or objection to this deletion [{{FULLURL:{{PAGENAME}}|action=delvote}} here].',
@@ -137,7 +137,7 @@ You must select a reason for deletion from the drop-down list below, and add any
 	'deletequeue-showvotes-none' => "There are no endorsements or objections to the deletion of this article.",
 	'deletequeue-showvotes-none-endorse' => "There are no endorsements of the deletion of this article.",
 	'deletequeue-showvotes-none-object' => "There are no objections to the deletion of this article.",
-	
+
 	// List of queued pages
 	'deletequeue' => 'Deletion queue',
 	'deletequeue-list-text' => "This page displays all pages which are in the deletion system.",

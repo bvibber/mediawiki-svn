@@ -14,35 +14,35 @@ class DeleteQueueReviewForm {
 	 */
 	public function submit( ) {
 		global $wgUser,$wgOut,$wgRequest;
-		
+
 		$article = $this->mArticle;
-		
+
 		$token = $wgRequest->getText( 'wpEditToken' );
-		
+
 		if (!$wgUser->matchEditToken( $token )) {
 			return false;
 		}
-		
+
 		// Process the action
 		$action = $wgRequest->getVal( 'wpSpeedyAction' );
 		$processed = true;
 		$dqi = DeleteQueueItem::newFromArticle( $article );
-		
+
 		$lp = new LogPage( 'delete' );
 		$reason = $wgRequest->getText( 'wpReason' );
-		
+
 		// Check the action against the list
 		list($enabledActions) = $this->availableActions();
 		if (!in_array($action,$enabledActions)) {
 			return wfMsg( 'deletequeue-review-actiondenied' );
 		}
-		
+
 		$queue = $dqi->getQueue( );
-		
+
 		// Transaction
 		$dbw = wfGetDB();
 		$dbw->begin();
-		
+
 		switch ($action) {
 			case 'delete':
 				$article->doDelete( $dqi->getQueue() );
@@ -60,12 +60,12 @@ class DeleteQueueReviewForm {
 				break;
 			case 'requeue':
 				$newQueue = $wgRequest->getVal( 'wpSpeedyRequeue' );
-				
+
 				$lp->addEntry( 'requeue', $article->mTitle, $reason, array(wfMsgForContent("deletequeue-queue-$queue"), wfMsgForContent( "deletequeue-queue-{$newQueue}" )) );
-				
+
 				list($reason1,$reason2) = array($wgRequest->getText( 'wpSpeedyNewReason' ), $wgRequest->getText( 'wpSpeedyNewExtra' ) );
 				$newReason = DeleteQueueInterface::formatReason( $reason1, $reason2 );
-				
+
 				$dqi->setQueue( $newQueue, $reason );
 				$processed = false;
 				break;
@@ -74,103 +74,103 @@ class DeleteQueueReviewForm {
 				$dbw->commit();
 				return wfMsg( 'deletequeue-review-badaction' );;
 		}
-		
+
 		if ($processed) {
 			// Delete from the DB
 			$dqi->deQueue( );
-			
+
 			// Redirect to the page
 			$wgOut->redirect( $article->mTitle->getLocalURL() );
-			
+
 			// Commit transaction
 			$dbw->commit();
-			
+
 			return true;
 		}
-		
+
 		$dbw->commit();
-		
+
 		return true;
 	}
-	
+
 	/**
 	 * Process the "Review Speedy" action
 	 * @param $article Article object being reviewed
 	 */
 	public function form( ) {
 		global $wgOut,$wgScript,$wgUser,$wgRequest;
-		
+
 		$article = $this->mArticle;
 		$dqi = DeleteQueueItem::newFromArticle( $article );
 		$queue = $dqi->getQueue();
-		
+
 		if (!$queue) {
 			// Idiot...
 			$wgOut->addWikiMsg( 'deletequeue-notqueued' );
 			return;
 		}
-		
+
 		// Check permissions
 		$editErrors = $article->mTitle->getUserPermissionsErrors( 'edit', $wgUser );
 		$nomErrors = $article->mTitle->getUserPermissionsErrors( "$queue-review", $wgUser );
-		
+
 		if (count(array_merge($editErrors,$nomErrors))) {
 			// Permissions errors.
 			if (count($editErrors)) {
 				$editError = $wgOut->formatPermissionsErrorMessage( $editErrors, 'edit' );
 				$nomErrors[] = array( 'deletequeue-permissions-noedit', $editError );
 			}
-			
+
 			$wgOut->showPermissionsErrorPage( $nomErrors, "$queue-review" );
 			return;
 		}
-		
+
 		list ($enabledActions, $disabledActions) = $this->availableActions();
-		
+
 		$haveRequeueOption = false;
-		
+
 		$shownActions = array_merge( array_keys( $disabledActions ), $enabledActions );
-		
+
 		foreach( $shownActions as $val ) {
 			if (strpos($val,'requeue') == 0) {
 				$haveRequeueOption = true;
 			}
 		}
-		
+
 		if (($error = $this->submit( $article )) === true) {
 			return;
 		}
-		
+
 		$wgOut->setPageTitle( wfMsg( "deletequeue-review$queue-title", $article->mTitle->getPrefixedText() ) );
-		
+
 		$discussionPage = ($queue == 'deletediscuss') ? $dqi->getDiscussionPage()->mTitle->getPrefixedText() : null;
-		
+
 		$wgOut->addWikiMsg( "deletequeue-review$queue-text", $article->mTitle->getPrefixedText(), $discussionPage );
-		
+
 		// Cautions if there's an objection
 		if (count($dqi->mVotesObject)>0) {
 			$wgOut->addWikiMsg( "deletequeue-review-objections", count($dqi->mVotesObject) );
 		}
-		
+
 		if ($error) {
 			$wgOut->addHTML( '<p>'.$error.'</p>' );
 		}
-		
+
 		// Details of nomination
 		$wgOut->addHTML( Xml::openElement( 'fieldset' ) . Xml::element( 'legend', array(), wfMsg( 'deletequeue-review-original' ) ) );
 		$wgOut->addWikitext( $dqi->getReason() );
 		$wgOut->addHTML( Xml::closeElement( 'fieldset' ) );
-		
+
 		$output = '';
-		
+
 		// Give the user options
 		$option_selection = '';
-		
+
 		//// Action radio buttons
 		// Accept the nomination as-is
 		$accept = Xml::radioLabel( wfMsg( 'deletequeue-review-delete' ), 'wpSpeedyAction', 'delete', 'mw-review-accept' );
 		$option_selection .= $this->getActionOrError( 'delete', $accept, null, Xml::tags( 'li', array(), '$1' ) );
-		
+
 		// Accept nomination, but with a different reasoning.
 		$change_option = Xml::radioLabel( wfMsg( 'deletequeue-review-change' ), 'wpSpeedyAction', 'change', 'mw-review-change' );
 		$change_fields = array();
@@ -178,7 +178,7 @@ class DeleteQueueReviewForm {
 		$change_fields['deletequeue-review-newextra'] = Xml::input( 'wpSpeedyNewExtra', 45, '' );
 		$change_option .= Xml::buildForm( $change_fields );
 		$option_selection .= $this->getActionOrError( 'delete', $change_option, wfMsgExt('deletequeue-review-change', array('parse') ), Xml::tags( 'li', array(), '$1' ) );
-		
+
 		// Reject nomination, queue into a different deletion queue.
 		if ($haveRequeueOption) {
 			$requeue_option = Xml::radioLabel( wfMsg( 'deletequeue-review-requeue' ), 'wpSpeedyAction', 'requeue', 'mw-review-requeue' );
@@ -187,56 +187,56 @@ class DeleteQueueReviewForm {
 			foreach( $new_queues as $option ) {
 				$this_queue = Xml::radioLabel( wfMsg( "deletequeue-queue-$option" ), 'wpSpeedyRequeue', $option, "mw-review-requeue-$option" );
 				$disabledMsg = wfMsgExt( "deletequeue-requeuedisabled", array( 'parseinline' ), array( wfMsgNoTrans( "deletequeue-queue-$option" ) ) );
-				
+
 				$requeue_queues .= $this->getActionOrError( "requeue-$option", $this_queue, $disabledMsg, Xml::tags( 'li', array(), '$1' ) );
 			}
 			$requeue_option .= Xml::tags( 'ul', array(), $requeue_queues );
-			
+
 			$requeue_fields = array();
 			$requeue_fields['deletequeue-review-newreason'] = Xml::listDropDown( 'wpSpeedyNewReason', DeleteQueueInterface::getReasonList( 'generic' ), wfMsg("deletequeue-delnom-otherreason") );
 			$requeue_fields['deletequeue-review-newextra'] = Xml::input( 'wpSpeedyNewExtra', 45, '' );
 			$requeue_option .= Xml::buildForm( $requeue_fields );
-			
+
 			$option_selection .= Xml::tags( 'li', array(), $requeue_option );
 		}
-		
+
 		// Reject nomination outright.
 		$dq = Xml::radioLabel( wfMsg( 'deletequeue-review-dequeue' ), 'wpSpeedyAction', 'dequeue', 'mw-review-dequeue' );
 		$option_selection .= $this->getActionOrError( 'dequeue', $dq, null, Xml::tags( 'li', array(), '$1' ) );
-		
+
 		//// Convert to a list.
 		$option_selection = Xml::tags( 'ul', array(), $option_selection );
-		
+
 		$option_selection = Xml::fieldset( wfMsg( 'deletequeue-review-action' ), $option_selection );
-		
+
 		$output .= $option_selection;
-		
+
 		// Reason etc.
 		$fields = array( 'deletequeue-review-reason' => Xml::input( 'wpReason', 45, null ) );
-		
+
 		$output .= Xml::buildForm( $fields, 'deletequeue-review-submit' );
-		
+
 		// Form stuff
 		$output .= Xml::hidden( 'title', $article->mTitle->getPrefixedText() );
 		$output .= Xml::hidden( 'wpEditToken', $wgUser->editToken() );
 		$output .= Xml::hidden( 'action', 'delreview' );
 		$output = Xml::tags( 'form', array( 'action' => $article->mTitle->getLocalURL(), 'method' => 'POST' ), $output );
-		
+
 		$wgOut->addHTML( $output );
-		
+
 		$article->showLogExtract( $wgOut );
 	}
-	
+
 	/** Returns the action given in enabledText, a 'disabled' message, or nothing, depending on the status of the action. */
 	public function getActionOrError($action, $enabledText, $disabledMsg = null, $wrapper = null) {
 		list ($enabled,$disabled) = $this->availableActions();
-		
+
 		if (!$disabledMsg) {
 			$disabledMsg = wfMsgExt("deletequeue-review-$action", array('parseinline'));
 		}
-		
+
 		$data = '';
-		
+
 		if (in_array($action,$enabled)) {
 			$data = $enabledText;
 		} elseif ( in_array( $action, array_keys( $disabled ) ) ) {
@@ -246,14 +246,14 @@ class DeleteQueueReviewForm {
 			$data = $msg;
 		} else {
 		}
-		
+
 		if ($wrapper && $data) {
 			$data = wfMsgReplaceArgs( $wrapper, array($data) );
 		}
-		
+
 		return $data;
 	}
-	
+
 	/**
 	 * Determines which queues can be sent to in review.
 	 * @return Array First element is a simple list of ENABLED queues,
@@ -264,22 +264,22 @@ class DeleteQueueReviewForm {
 		$article = $this->mArticle;
 		$dqi = DeleteQueueItem::newFromArticle( $article );
 		$queue = $dqi->getQueue( );
-		
+
 		if ($user === null) {
 			global $wgUser;
 			$user = $wgUser;
 		}
-		
+
 		$enabled = array();
 		$disabled = array();
-		
+
 		$userRoles = $dqi->getUserRoles( $user );
 		$descriptiveRoles = array_map( array( 'DeleteQueueItem', 'getRoleDescription' ), $userRoles );
 		$descriptiveRolesText = implode( ", ", $descriptiveRoles );
-		
+
 		$enabled[] = 'endorse';
 		$enabled[] = 'object';
-		
+
 		// Speedy deletion
 		if ($queue == 'speedy') {
 			// All are unlocked if user is authed.
@@ -287,10 +287,10 @@ class DeleteQueueReviewForm {
 		} elseif ($queue == 'prod') {
 			// Escalation by anybody
 			$enabled[] = 'requeue-deletediscuss';
-			
+
 			$expiry = $dqi->getExpiry();
 			$hasExpired = (time() > $expiry) ? true : false;
-			
+
 			// Handling of 'delete'
 			if (!$user->isAllowed( 'prod-admin' )) {
 				// Nothing. They don't have the permissions, so just hide the checkboxes.
@@ -303,16 +303,16 @@ class DeleteQueueReviewForm {
 				// An uninvolved admin wants to delete an expired proposed deletion. Kill it.
 				$enabled[] = 'delete';
 			}
-			
+
 			// Handling of 'dequeue'
 			if ($user->isAllowed( 'prod-admin' )) {
 				$enabled[] = 'dequeue';
 			}
 		} elseif ($queue == 'deletediscuss') {
-		
+
 			$expiry = $dqi->getExpiry();
 			$hasExpired = (time() > $expiry) ? true : false;
-			
+
 			if (!$hasExpired) { // Hasn't expired yet, don't let them delete it.
 				$disabled['delete'] = wfMsgExt( 'deletequeue-actiondisabled-notexpired', array( 'parseinline' ) );
 			} elseif (count($userRoles)) {
@@ -322,10 +322,10 @@ class DeleteQueueReviewForm {
 				// An uninvolved admin wants to delete an expired proposed deletion. Kill it.
 				$enabled[] = 'delete';
 			}
-			
+
 			$enabled[] = 'dequeue';
 		}
-		
+
 		return array( $enabled, $disabled );
 	}
 }
