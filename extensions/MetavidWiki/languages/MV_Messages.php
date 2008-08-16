@@ -254,9 +254,9 @@ Jump to stream view: $2',
 	'mv_bad_tool_request'    => 'bad tool line should be form: tool_name|tool_display_name',
 	'mv_update_layers'       => 'update layers view',
 
-	'mv_prev_speech'		 => 'Previus Speech :',
-	'mv_next_speech'		 => 'Next Speech:',
-	'mv_navigate_stream'	 => 'Navigate Stream',
+	'mv_prev_speech'		 => 'Previous speech:',
+	'mv_next_speech'		 => 'Next speech:',
+	'mv_navigate_stream'	 => 'Navigate stream',
 
 	#msg for overlay interface:
 	'mv_search_stream'       => 'Search stream',

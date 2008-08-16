@@ -4,7 +4,7 @@
  *
  * All Metavid Wiki code is Released under the GPL2
  * for more info visit http:/metavid.ucsc.edu/code
- * 
+ *
  * @author Michael Dale
  * @email dale@ucsc.edu
  * @url http://metavid.ucsc.edu
@@ -63,6 +63,4 @@ abstract class MV_Language {
 	function getSpecialPropertyAliases() {
 		return $this->m_SpecialPropertyAliases;
 	}
-
 }
-?>
