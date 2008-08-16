@@ -12,7 +12,7 @@ $messages = array();
  */
 $messages['en'] = array(
 	// General
-	'deletequeue-desc' => 'Creates a queue-based system for managing deletion.',
+	'deletequeue-desc' => 'Creates a [[Special:DeleteQueue|queue-based system for managing deletion]]',
 
 	// Landing page
 	'deletequeue-action' => 'Suggest deletion',
