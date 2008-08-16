@@ -32,7 +32,12 @@ do_start_thread(void *arg) {
 	request_thread *req = static_cast<request_thread *>(arg);
 	try {
 		req->start_request();
-	} catch (std::exception &) {
+	} catch (std::exception &e) {
+		if (mainconf.log_request_errors) {
+			log4cxx::LoggerPtr logger(log4cxx::Logger::getLogger("request_thread"));
+			LOG4CXX_INFO(logger,
+				boost::format("request failed: %s") % e.what());
+		}
 	}
 
 	delete req;
@@ -61,10 +66,10 @@ request_thread::~request_thread()
 void
 request_thread::start()
 {
-		pthread_attr_t attr;
-		pthread_attr_init(&attr);
-		pthread_attr_setdetachstate(&attr, PTHREAD_CREATE_DETACHED);
-		pthread_create(&tid_, &attr, &do_start_thread, static_cast<void *>(this));
+	pthread_attr_t attr;
+	pthread_attr_init(&attr);
+	pthread_attr_setdetachstate(&attr, PTHREAD_CREATE_DETACHED);
+	pthread_create(&tid_, &attr, &do_start_thread, static_cast<void *>(this));
 }
 
 void
@@ -88,6 +93,12 @@ request_thread::start_request()
 		try {
 			handle_normal_request(rec);
 		} catch (std::exception &e) {
+			if (mainconf.log_request_errors) {
+				log4cxx::LoggerPtr logger(log4cxx::Logger::getLogger("request_thread"));
+				LOG4CXX_INFO(logger,
+					boost::format("request failed: %s") % e.what());
+			}
+
 			fcgi::record r;
 
 			r.version_ = 1;

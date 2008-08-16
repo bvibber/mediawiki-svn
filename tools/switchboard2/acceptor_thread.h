@@ -7,9 +7,21 @@
  */
 /* $Id$ */
 
-#ifndef VERSION_H
-#define VERSION_H
+#ifndef ACCEPTOR_THREAD_H
+#define ACCEPTOR_THREAD_H
 
-#define SB_VERSION "V-2.0.9"
+#include	<log4cxx/logger.h>
 
-#endif	/* !VERSION_H */
+struct acceptor_thread {
+	acceptor_thread(int);
+	~acceptor_thread();
+
+	void start();
+	void run();
+
+private:
+	int fd_;
+	log4cxx::LoggerPtr logger;
+};
+
+#endif	/* !ACCEPTOR_THREAD_H */

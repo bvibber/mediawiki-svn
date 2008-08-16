@@ -48,8 +48,9 @@ struct config {
 	int max_q_per_user;
 	int php_timeout;
 	int server_timeout;
-	std::size_t max_request_size;
+	int max_request_size;
 	server_type servtype;
+	bool log_request_errors;
 };
 
 struct configuration_loader {
@@ -81,6 +82,7 @@ private:
 	bool f_server_timeout(std::vector<std::string> &fields, config &newconf);
 	bool f_php_timeout(std::vector<std::string> &fields, config &newconf);
 	bool f_max_request_size(std::vector<std::string> &fields, config &newconf);
+	bool f_log_request_errors(std::vector<std::string> &fields, config &newconf);
 
 	log4cxx::LoggerPtr	logger;
 };

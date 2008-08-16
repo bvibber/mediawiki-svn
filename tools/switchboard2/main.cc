@@ -41,8 +41,7 @@
 #include	"config.h"
 #include	"version.h"
 #include	"process_factory.h"
-
-	extern "C" void *	acceptor_thread(void *);
+#include	"acceptor_thread.h"
 
 extern "C" void
 sigexit(int)
@@ -148,8 +147,8 @@ main(int argc, char **argv)
 				return 1;
 			}
 
-			pthread_t tid;
-			pthread_create(&tid, NULL, acceptor_thread, reinterpret_cast<void *>((intptr_t) lsnsock));
+			acceptor_thread *acc = new acceptor_thread(lsnsock);
+			acc->run();
 		} else {
 			int r;
 			struct addrinfo hints, *res, *iter;
@@ -201,8 +200,8 @@ main(int argc, char **argv)
 					return 1;
 				}
 
-				pthread_t tid;
-				pthread_create(&tid, NULL, acceptor_thread, reinterpret_cast<void *>((intptr_t) lsnsock));
+				acceptor_thread *acc = new acceptor_thread(lsnsock);
+				acc->run();
 			}
 
 			freeaddrinfo(res);
@@ -351,21 +350,4 @@ dostat:
 	std::signal(SIGCHLD, SIG_IGN);
 
 	process_factory::instance().cleanup_thread();
-}
-
-extern "C" void *
-acceptor_thread(void *arg)
-{
-	int fd = reinterpret_cast<intptr_t>(arg);
-	int newfd;
-	struct sockaddr addr;
-	socklen_t addrlen = sizeof(addr);
-
-	while ((newfd = accept(fd, &addr, &addrlen)) != -1) {
-		request_thread *req = new request_thread(newfd);
-		req->start();
-	}
-
-	std::printf("accept failed: %s\n", std::strerror(errno));
-	return NULL;
 }

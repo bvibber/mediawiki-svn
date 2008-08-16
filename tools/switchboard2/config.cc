@@ -31,6 +31,7 @@ config::config()
 	, php_timeout(30)
 	, server_timeout(30)
 	, max_request_size(1024 * 1024 * 5)
+	, log_request_errors(false)
 {
 }
 
@@ -75,18 +76,19 @@ configuration_loader::load(std::string const &filename, config &newconf)
 std::map<std::string, configuration_loader::confline_t>
 	configuration_loader::conflines =
 	boost::assign::map_list_of
-		("listen",		boost::bind(&configuration_loader::f_listen, _1, _2, _3))
+		("listen",		configuration_loader::confline_t(boost::bind(&configuration_loader::f_listen, _1, _2, _3)))
 		("logconf",		boost::bind(&configuration_loader::f_logconf, _1, _2, _3))
 		("sockdir",		boost::bind(&configuration_loader::f_sockdir, _1, _2, _3))
 		("docroot",		boost::bind(&configuration_loader::f_docroot, _1, _2, _3))
 		("userdir",		boost::bind(&configuration_loader::f_userdir, _1, _2, _3))
+		("server-type",		boost::bind(&configuration_loader::f_server_type, _1, _2, _3))
 		("max-procs",		boost::bind(&configuration_loader::f_max_procs, _1, _2, _3))
 		("max-procs-per-user",	boost::bind(&configuration_loader::f_max_procs_per_user, _1, _2, _3))
 		("max-q-per-user",	boost::bind(&configuration_loader::f_max_q_per_user, _1, _2, _3))
-		("server-type",		boost::bind(&configuration_loader::f_server_type, _1, _2, _3))
 		("php-timeout",		boost::bind(&configuration_loader::f_php_timeout, _1, _2, _3))
 		("server-timeout",	boost::bind(&configuration_loader::f_server_timeout, _1, _2, _3))
 		("max-request-size",	boost::bind(&configuration_loader::f_max_request_size, _1, _2, _3))
+		("log-request-errors",	boost::bind(&configuration_loader::f_log_request_errors, _1, _2, _3))
 	;
 
 bool
@@ -369,4 +371,20 @@ configuration_loader::f_max_request_size(
 			% file_ % lineno_);
 		return false;
 	}
+}
+
+bool
+configuration_loader::f_log_request_errors(
+		std::vector<std::string> &fields,
+		config &newconf)
+{
+	if (fields.size() != 1) {
+		LOG4CXX_ERROR(logger,
+			format("\"%s\", line %d: usage: log-request-errors\n")
+			% file_ % lineno_);
+		return false;
+	}
+
+	newconf.log_request_errors = true;
+	return true;
 }

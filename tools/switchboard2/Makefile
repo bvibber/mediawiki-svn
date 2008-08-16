@@ -40,6 +40,7 @@ OBJS=	\
 	config.o			\
 	process_factory.o		\
 	util.o				\
+	acceptor_thread.o		\
 
 PROG=		switchboard-bin
 SWEXEC=		swexec
@@ -106,7 +107,7 @@ gccdepend:
 
 # Do not delete this line -- make depend requires it
 main.o: main.cc fcgi.h request_thread.h process.h config.h version.h \
-  process_factory.h
+  process_factory.h acceptor_thread.h
 request_thread.o: request_thread.cc request_thread.h fcgi.h process.h \
   process_factory.h util.h config.h
 fcgi.o: fcgi.cc fcgi.h util.h
@@ -115,5 +116,7 @@ config.o: config.cc config.h
 process_factory.o: process_factory.cc process_factory.h process.h \
   config.h util.h
 util.o: util.cc util.h
+acceptor_thread.o: acceptor_thread.cc acceptor_thread.h request_thread.h \
+  fcgi.h process.h
 swexec.o: swexec.c
 swkill.o: swkill.c

@@ -16,6 +16,8 @@
 
 #include	<pthread.h>
 
+#include	<boost/format.hpp>
+
 #include	"fcgi.h"
 #include	"process.h"
 
