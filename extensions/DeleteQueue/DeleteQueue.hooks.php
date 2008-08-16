@@ -111,7 +111,7 @@ class DeleteQueueHooks {
 			return true;
 		}
 
-		$options = array("deletequeue-article-$queue");
+		$options = array("deletequeue-page-$queue");
 		$options[] = $dqi->getReason();
 		$expiry = wfTimestamp( TS_UNIX, $dqi->getExpiry() );
 		$options[] = $wgLang->timeanddate( $expiry );
