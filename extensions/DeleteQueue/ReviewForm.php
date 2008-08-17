@@ -287,14 +287,13 @@ class DeleteQueueReviewForm {
 		} elseif ($queue == 'prod') {
 			// Escalation by anybody
 			$enabled[] = 'requeue-deletediscuss';
+			$enabled[] = 'dequeue';
 
 			$expiry = $dqi->getExpiry();
 			$hasExpired = (time() > $expiry) ? true : false;
 
 			// Handling of 'delete'
-			if (!$user->isAllowed( 'prod-admin' )) {
-				// Nothing. They don't have the permissions, so just hide the checkboxes.
-			} elseif (!$hasExpired) { // Hasn't expired yet, don't let them delete it.
+			if (!$hasExpired) { // Hasn't expired yet, don't let them delete it.
 				$disabled['delete'] = wfMsgExt( 'deletequeue-actiondisabled-notexpired', array( 'parseinline' ) );
 			} elseif (count($userRoles)) {
 				// Tell them they're involved.
@@ -302,11 +301,6 @@ class DeleteQueueReviewForm {
 			} else {
 				// An uninvolved admin wants to delete an expired proposed deletion. Kill it.
 				$enabled[] = 'delete';
-			}
-
-			// Handling of 'dequeue'
-			if ($user->isAllowed( 'prod-admin' )) {
-				$enabled[] = 'dequeue';
 			}
 		} elseif ($queue == 'deletediscuss') {
 

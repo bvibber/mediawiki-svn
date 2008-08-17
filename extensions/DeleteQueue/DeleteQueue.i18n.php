@@ -57,8 +57,7 @@ You must select a reason for deletion from the drop-down list below, and add any
 	'right-speedy-nominate' => 'Nominate pages for speedy deletion',
 	'right-speedy-review' => 'Review nominations for speedy deletion',
 	'right-prod-nominate' => 'Propose page deletion',
-	'right-prod-review' => 'Review proposed deletion',
-	'right-prod-admin' => 'Close uncontested deletion proposals',
+	'right-prod-review' => 'Review uncontested deletion proposals',
 	'right-deletediscuss-nominate' => 'Start deletion discussions',
 	'right-deletediscuss-review' => 'Close deletion discussions',
 
@@ -71,7 +70,7 @@ You must select a reason for deletion from the drop-down list below, and add any
 	'deletequeue-page-speedy' => "This page has been nominated for speedy deletion.
 The reason given for this deletion is ''$1''.",
 	'deletequeue-page-prod' => "It has been proposed that this page is deleted.
-The reason given was ''$1''.If this proposal is uncontested at ''$2'', this page will be deleted.",
+The reason given was ''$1''.If this proposal is uncontested at ''$2'', this page will be deleted. You can contest this page's deletion by [{{fullurl:{{fullpagename}}|action=delvote}} objecting to deletion].",
 	'deletequeue-page-deletediscuss' => "This page has been proposed for deletion, and that proposal has been contested.
 The reason given was ''$1''.
 A discussion is ongoing at [[$3]], which will conclude at ''$2''",
@@ -103,9 +102,7 @@ Please ensure that this page can be speedily deleted in accordance with policy."
 	//Proposed deletion
 	'deletequeue-reviewprod-tab' => 'Review proposed deletion',
 	'deletequeue-reviewprod-title' => 'Review proposed deletion of "$1"',
-	'deletequeue-reviewprod-text' => "You can use this form to review the uncontested nomination of \"'''$1'''\" for deletion.
-
-You may contest the deletion of this page by transferring it to the deletion discussion queue.",
+	'deletequeue-reviewprod-text' => "You can use this form to review the uncontested proposal for the deletion of \"'''$1'''\".",
 	// Discussions
 	'deletequeue-reviewdeletediscuss-tab' => 'Review deletion',
 	'deletequeue-reviewdeletediscuss-title' => "Review deletion discussion for \"$1\"",

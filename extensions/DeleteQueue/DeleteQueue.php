@@ -42,7 +42,6 @@ $wgAvailableRights[] = 'speedy-nominate';
 $wgAvailableRights[] = 'speedy-review';
 $wgAvailableRights[] = 'prod-nominate';
 $wgAvailableRights[] = 'prod-review';
-$wgAvailableRights[] = 'prod-admin';
 $wgAvailableRights[] = 'deletediscuss-review';
 $wgAvailableRights[] = 'deletequeue-vote';
 

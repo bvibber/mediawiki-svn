@@ -367,7 +367,7 @@ class DeleteQueueItem {
 			// We need to create the relevant page, etc.
 
 			// Generate new page name.
-			$base = $article->mTitle->getText();
+			$base = $article->mTitle->getPrefixedText();
 			$articleName = $article->mTitle->getPrefixedText();
 
 			$title = Title::makeTitle( NS_DELETION, $base );
