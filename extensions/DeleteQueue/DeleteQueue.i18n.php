@@ -70,7 +70,9 @@ You must select a reason for deletion from the drop-down list below, and add any
 	'deletequeue-page-speedy' => "This page has been nominated for speedy deletion.
 The reason given for this deletion is ''$1''.",
 	'deletequeue-page-prod' => "It has been proposed that this page is deleted.
-The reason given was ''$1''.If this proposal is uncontested at ''$2'', this page will be deleted. You can contest this page's deletion by [{{fullurl:{{fullpagename}}|action=delvote}} objecting to deletion].",
+The reason given was ''$1''.
+If this proposal is uncontested at ''$2'', this page will be deleted.
+You can contest this page's deletion by [{{fullurl:{{fullpagename}}|action=delvote}} objecting to deletion].",
 	'deletequeue-page-deletediscuss' => "This page has been proposed for deletion, and that proposal has been contested.
 The reason given was ''$1''.
 A discussion is ongoing at [[$3]], which will conclude at ''$2''",
