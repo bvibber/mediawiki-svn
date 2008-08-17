@@ -335,7 +335,7 @@ width: 100%;
 	color: white;
 /*	font-size: 22px;*/
     font-size:12px;
-	text-decoration: none;
+	text-decoration: underline;
 }
 .videoComplete .videoOptionsComplete a.email {background: url(images/ico_mail.png) right 0px no-repeat; padding: 0 50px 0 0;}
 

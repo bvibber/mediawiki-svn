@@ -1656,10 +1656,10 @@ embedVideo.prototype = {
             available_width -= 60;
         }
 
-        if(this.supports['play_head'])
+        if(this.supports['play_head'] && (available_width > 18))
         {
             html_code +=
-                    '	<div class="seeker" style="width: ' + (available_width - 20) + 'px;">';
+                    '	<div class="seeker" style="width: ' + (available_width - 18) + 'px;">';
             html_code+=
                     '		<div class="seeker_bar">'+
                     '			<div class="seeker_bar_outer"></div>'+
@@ -2042,7 +2042,8 @@ embedVideo.prototype = {
 			 'style="height:'+parseInt(height)+'px;width:'+parseInt(width)+'px;">'+
 //       			 '<span class="displayHTML" id="con_vl_'+this.id+'" style="position:absolute;top:20px;left:20px;color:white;">' +
 	  		'<div class="videoOptionsComplete">'+
-			'<div style="border:none;position:absolute;top:2px;right:2px;z-index:13;padding: 12px 19px;"><span>'+
+			//@@TODO: this style should go to .css
+			'<div style="width: 247px;border:none;position:absolute;z-index:13;padding: 12px 19px; text-align:right;"><span>'+
 		    '<a href="#" style="color:white;" onClick="$j(\'#'+sel_id+'\').get(0).closeDisplayedHTML();">close</a></span></div>'+
              html_code +
 //                close_link+'</span>'+
