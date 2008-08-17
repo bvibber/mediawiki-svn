@@ -524,10 +524,10 @@ var embedTypes = {
 					}
 				}
 
-				if ( type == 'video/quicktime' ) {
+/*				if ( type == 'video/quicktime' ) {
 					this.players.addPlayer(vlcMozillaPlayer, type);
 					continue;
-				}
+				}*/
    				if(type=='application/x-shockwave-flash'){
 					this.players.addPlayer(flowPlayer);
 					continue;
