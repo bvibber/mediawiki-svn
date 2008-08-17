@@ -34,7 +34,7 @@ $messages['en'] = array(
 	'changeauthor-pagename-or-revid'    => 'Page name or revision ID:',
 	'changeauthor-pagenameform-go'      => 'Go',
 	'changeauthor-comment'              => 'Comment:',
-	'changeauthor-changeauthors-multi'  => 'Change author(s)',
+	'changeauthor-changeauthors-multi'  => 'Change {{PLURAL:$1|author|authors}}',
 	'changeauthor-explanation-multi'    => 'With this form you can change revision authors.
 Simply change one or more usernames in the list below, add a comment (optional) and click the \'Change author(s)\' button.',
 	'changeauthor-changeauthors-single' => 'Change author',
