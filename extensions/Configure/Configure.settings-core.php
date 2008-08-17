@@ -830,7 +830,7 @@ $arrayDefs = array(
 );
 
 /**
- * Values to be used when settings is empty
+ * Value to be used when setting matches empty()
  */
 $emptyValues = array(
 	'wgSharedDB' => null,
