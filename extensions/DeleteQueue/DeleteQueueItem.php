@@ -375,7 +375,7 @@ class DeleteQueueItem {
 
 			// Create the page.
 			$discusspage = new Article( $title );
-			$discusspage->doEdit( wfMsgForContent('deletequeue-discusscreate-text', $base, $reason), wfMsgForContent('deletequeue-discusscreate-summary', $base), EDIT_NEW | EDIT_SUPPRESS_RC );
+			$discusspage->doEdit( wfMsgForContent('deletequeue-discusscreate-text', $base, $reason) . ' ~~~~', wfMsgForContent('deletequeue-discusscreate-summary', $base), EDIT_NEW | EDIT_SUPPRESS_RC );
 
 			$row['dq_discussionpage'] = $discusspage->getId();
 		}

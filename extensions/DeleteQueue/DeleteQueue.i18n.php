@@ -119,7 +119,7 @@ Please ensure that you make a decision in accordance with the consensus on the d
 There are currently $2 {{PLURAL:$2|user|users}} endorsing deletion, and $3 {{PLURAL:$3|user|users}} objecting to deletion.
 You may [{{FULLURL:$1|action=delvote}} endorse or object] to deletion, or [{{FULLURL:$1|action=delviewvotes}} view all endorsements and objections].",
 	'deletequeue-discusscreate-summary' => 'Creating discussion for deletion of [[$1]].',
-	'deletequeue-discusscreate-text' => 'Deletion proposed for the following reason: $2 ~~~~',
+	'deletequeue-discusscreate-text' => 'Deletion proposed for the following reason: $2',
 
 	// Roles
 	'deletequeue-role-nominator' => 'original nominator for deletion',
