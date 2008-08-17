@@ -17,7 +17,7 @@ $wgExtensionCredits['specialpage'][] = array(
 	'url' => 'http://www.mediawiki.org/wiki/Extension:Configure',
 	'description' => 'Allow authorised users to configure the wiki by a web-based interface',
 	'descriptionmsg' => 'configure-desc',
-	'version' => '0.6.12',
+	'version' => '0.6.13',
 );
 
 ## Configuration part
@@ -47,6 +47,7 @@ $wgConfigureWikis = false;
  * - file: main file name, if different that name.php
  * - settings: array of settings mapping setting's name to its type
  * - array: array type for settings
+ * - empty: array of overrides for settings values when they match empty()
  * - schema: put it to true if the extension requires a database schema change
  * - url: url to the documentation page
  */

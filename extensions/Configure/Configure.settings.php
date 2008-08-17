@@ -9,8 +9,8 @@ class ConfigurationSettings {
 	protected $types, $initialized = false;
 	
 	// Core settings
-	protected $settings, $arrayDefs, $editRestricted, $viewRestricted,
-		$notEditableSettings, $settingsVersion;
+	protected $settings, $arrayDefs, $emptyValues, $editRestricted,
+		$viewRestricted, $notEditableSettings, $settingsVersion;
 
 	// Extension settings
 	protected $extensions;
@@ -41,6 +41,7 @@ class ConfigurationSettings {
 		require( dirname( __FILE__ ) . '/Configure.settings-core.php' );
 		$this->settings = $settings;
 		$this->arrayDefs = $arrayDefs;
+		$this->emptyValues = $emptyValues;
 		$this->editRestricted = $editRestricted;
 		$this->viewRestricted = $viewRestricted;
 		$this->notEditableSettings = $notEditableSettings;
@@ -191,6 +192,28 @@ class ConfigurationSettings {
 		if( ( $this->types & CONF_SETTINGS_EXT ) == CONF_SETTINGS_EXT ){
 			foreach( $this->getAllExtensionsObjects() as $ext ){
 				$list  += $ext->getArrayDefs();
+			}
+		}
+		return $list;
+	}
+
+	/**
+	 * Get an array of settings which should have specific values when they're
+	 * empty
+	 *
+	 * @return array
+	 */
+	public function getEmptyValues(){
+		static $list;
+		if( isset( $list ) )
+			return $list;
+		$list = array();
+		if( ( $this->types & CONF_SETTINGS_CORE ) == CONF_SETTINGS_CORE ){
+			$list += $this->emptyValues;
+		}
+		if( ( $this->types & CONF_SETTINGS_EXT ) == CONF_SETTINGS_EXT ){
+			foreach( $this->getAllExtensionsObjects() as $ext ){
+				$list += $ext->getEmptyValues();
 			}
 		}
 		return $list;

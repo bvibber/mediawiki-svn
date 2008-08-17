@@ -35,24 +35,6 @@ class SpecialConfigure extends ConfigurationPage {
 		return CONF_SETTINGS_CORE;	
 	}
 
-	protected function cleanupSetting( $name, $val ){
-		switch( $name ){
-		case 'wgSharedDB':
-		case 'wgLocalMessageCache':
-			if( empty( $val ) )
-				return null;
-			else
-				return $val;
-		case 'wgExternalDiffEngine':
-			if( empty( $val ) )
-				return false;
-			else
-				return $val;
-		default:
-			return $val;
-		}
-	}
-
 	/**
 	 * Helper function for the diff engine
 	 * @param $setting setting name

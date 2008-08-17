@@ -533,7 +533,13 @@ abstract class ConfigurationPage extends SpecialPage {
 	 * @return Mixed
 	 */
 	protected function cleanupSetting( $name, $val ){
-		return $val;
+		static $list = null;
+		if( $list === null )
+			$list = $this->mConfSettings->getEmptyValues();
+		if( isset( $list[$name] ) && empty( $val ) )
+			return $list[$name];
+		else
+			return $val;
 	}
 
 	/**

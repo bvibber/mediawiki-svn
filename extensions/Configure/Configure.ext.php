@@ -8,6 +8,8 @@ if ( !defined( 'MEDIAWIKI' ) ) die();
  */
 class WebExtension {
 	protected $mSettings;
+	protected $mArrays;
+	protected $mEmptyValues;
 	protected $mName;
 	protected $mDbChange;
 	protected $mInputCallback = null;
@@ -20,13 +22,14 @@ class WebExtension {
 	 *
 	 * @param array $conf
 	 */
-	public function __construct( $conf ){
+	public function __construct( /*array*/ $conf ){
 		$this->mName = $conf['name'];
 		$this->mSettings = isset( $conf['settings'] ) ? $conf['settings'] : array();
 		$this->mDbChange = isset( $conf['schema'] ) && $conf['schema'];
 		$this->mDir = isset( $conf['dir'] ) ? $conf['dir'] : $conf['name'];
 		$this->mFile = isset( $conf['file'] ) ? $conf['file'] : $conf['name'] . '.php' ;
 		$this->mArrays = isset( $conf['array'] ) ? $conf['array'] : array();
+		$this->mEmptyValues = isset( $conf['empty'] ) ? $conf['empty'] : array();
 		$this->mDoc = isset( $conf['url'] ) ? $conf['url'] : null;
 	}
 
@@ -58,9 +61,18 @@ class WebExtension {
 	}
 
 	/**
+	 * Get the values to be used when the setting is empty
+	 *
+	 * @return array
+	 */
+	public function getEmptyValues(){
+		return $this->mEmptyValues;
+	}
+
+	/**
 	 * Set a special page object used to generate an input
 	 *
-	 * @param $callback callback
+	 * @param $obj ConfigurationPage object
 	 */
 	public function setPageObj( ConfigurationPage $obj ){
 		$this->mObj = $obj;

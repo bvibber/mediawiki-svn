@@ -830,6 +830,15 @@ $arrayDefs = array(
 );
 
 /**
+ * Values to be used when settings is empty
+ */
+$emptyValues = array(
+	'wgSharedDB' => null,
+	'wgLocalMessageCache' => null,
+	'wgExternalDiffEngine' => false,
+);
+
+/**
  * Settings that can be modified only by users with 'configure-all' right
  */
 $editRestricted = array(
