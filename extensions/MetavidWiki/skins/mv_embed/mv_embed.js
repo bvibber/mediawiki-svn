@@ -121,7 +121,10 @@ var video_attributes = {
     "download_link":true
 };
 
-//the mvEmbed object drives basic loading of libs:
+/*********** INITIALIZATION CODE *************
+ * the mvEmbed object drives basic loading of libs
+ * its load_libs function will be called during initialization
+ *********************************************/
 var mvEmbed = {
   Version: '0.7',
   loaded:false,
@@ -194,11 +197,20 @@ var mvEmbed = {
   }
 }
 
+/**
+  * mediaPlayer represents a media player plugin.
+  * @param {String} id id used for the plugin.
+  * @param {Array<String>} supported_types n array of supported MIME types.
+  * @param {String} library external script containing the plugin interface code. (mv_<library>Embed.js)
+  * @constructor
+  */
 function mediaPlayer(id, supported_types, library)
 {
     this.id=id;
     this.supported_types = supported_types;
     this.library = library;
+	this.loaded = false;
+	this.loading_callbacks = new Array();
     return this;
 }
 
@@ -207,7 +219,9 @@ mediaPlayer.prototype =
     id:null,
     supported_types:null,
     library:null,
-
+	loaded:false,
+	loading_callbacks:null,
+	
     supportsMIMEType : function(type)
     {
         for (var i in this.supported_types)
@@ -226,7 +240,33 @@ mediaPlayer.prototype =
     getLibraryObject : function()
     {
         return this.library+'Embed';
-    }
+    },
+	load : function(callback)
+	{
+		if(this.loaded)
+		{
+			js_log('plugin loaded, processing immediately');
+			callback();
+		}
+		else
+		{
+			js_log('plugin not loaded, queing callback');
+			this.loading_callbacks.push(callback);
+			if(this.loading_callbacks.length==1)
+			{
+				js_log('requesting plugin: ' + mv_embed_path + this.getLibraryFile());
+				var _this = this;
+				$j.getScript(mv_embed_path + _this.getLibraryFile(), function()
+				{
+					js_log(_this.id + ' plugin loaded');
+					_this.loaded = true;
+					for(var i in _this.loading_callbacks)
+						_this.loading_callbacks[i]();
+					_this.loading_callbacks = null;
+				});
+			}
+		}
+	}
 }
 
 var flowPlayer = new mediaPlayer('flowplayer',['video/x-flv'],'flash');
@@ -239,6 +279,11 @@ var oggPluginPlayer = new mediaPlayer('oggPlugin',['video/ogg'],'generic');
 var quicktimeMozillaPlayer = new mediaPlayer('quicktime-mozilla',['video/ogg'],'quicktime');
 var quicktimeActiveXPlayer = new mediaPlayer('quicktime-activex',['video/ogg'],'quicktime');
 
+/**
+  * mediaPlayers is a collection of mediaPlayer objects supported by the client.
+  * It could be merged with embedTypes, since there is one embedTypes per script
+  * and one mediaPlayers per embedTypes.
+  */
 function mediaPlayers()
 {
     this.init();
@@ -322,7 +367,7 @@ mediaPlayers.prototype =
             for(var i in global_ogg_list)
             {
                 var embed = document.getElementById(global_ogg_list[i]);
-                if(embed.media_element.selected_source.mime_type == mime_type)
+                if(embed.media_element.selected_source && (embed.media_element.selected_source.mime_type == mime_type))
                 {
                     embed.selectPlayer(selected_player);
                     js_log('using ' + embed.selected_player.getName() + ' for ' + embed.media_element.selected_source.getTitle());
@@ -391,29 +436,6 @@ var embedTypes = {
 	 init: function(){
 		//detect supported types
 		this.detect();
-/*		if(!this.playerType){
-			for ( var i = 0; i < this.players.length; i++ ) {
-				if ( this.clientSupports[this.players[i]] ) {
-					this.playerType = this.players[i];
-					break;
-				}
-			}
-		}*/
-/*		js_log('selected:' + this.playerType);
-		js_log( this.clientSupports);
-
-		//add the detected plugin playback type to the plugins :
-		if(this.playerType){
-			js_log('player type ok: '+this.getPlayerLib());
-			if( this.getPlayerLib() ){
-				mvEmbed.lib_plugins[this.getPlayerLib()+'Embed']='mv_'+this.getPlayerLib()+'Embed.js';
-			}
-			js_log('set lib: '  +mvEmbed.lib_plugins[this.getPlayerLib()+'Embed']);
-		}*/
-        // set to load all the supported libraries
-        //@@todo... should only load the player type for the current selected plugin...
-        for (var i in this.players.players)
-            mvEmbed.lib_plugins[this.players.players[i].getLibraryObject()]=this.players.players[i].getLibraryFile();
 	},
 	clientSupports: { 'thumbnail' : true },
  	detect: function() {
@@ -528,8 +550,12 @@ var embedTypes = {
 		 return hasObj;
 	 },
 }
-//setup the embed type (cookie preference or javascript detected embed type)
+
+/*********** INITIALIZATION CODE *************
+ * setup the media players
+ *********************************************/
 embedTypes.init();
+
 //load an external JS (similar to jquery .require plugin)
 //but checks for object availability rather than load state
 var mvJsLoader = {
@@ -576,7 +602,10 @@ var mvJsLoader = {
 		 }
 	 }
 }
-//ENTRY POINT when dom ready:
+
+/*********** INITIALIZATION CODE *************
+ * this will get called when DOM is ready
+ *********************************************/
 /* jQuery .ready does not work when jQuery is loaded dynamically
  * for an example of the problem see:1.1.3 working:http://pastie.caboo.se/92588
  * and >= 1.1.4 not working: http://pastie.caboo.se/92595
@@ -630,7 +659,12 @@ function rewrite_by_id(vid_id){
 		}
 	}
 }
-//SET DOM Ready state:
+
+
+/*********** INITIALIZATION CODE *************
+ * set DOM ready callback to init_mv_embed
+ * for Safari, also force load all the libraries.
+ *********************************************/
 // for Mozilla browsers
 if (document.addEventListener && !embedTypes.safari) {
     document.addEventListener("DOMContentLoaded", function(){init_mv_embed()}, false);
@@ -672,6 +706,7 @@ if(embedTypes.safari){
 		init_mv_embed();
 	}
 }
+
 /*
 * Coverts all occurrences of <video> tag into video object
 */
@@ -756,7 +791,7 @@ function do_playlist_functions(){
 }
 
 /*
-* createEmbedVideoElement
+* swapEmbedVideoElement
 * takes a video element as input and swaps it out with
 * an embed video interface based on the video_elements attributes
 */
@@ -1383,7 +1418,7 @@ mediaElement.prototype =
         if(typeof roe_data == 'string')
         {
             var parser=new DOMParser();
-            js_log(roe_data);
+            js_log('ROE data:' + roe_data);
             roe_data=parser.parseFromString(roe_data,"text/xml");
         }
         if(roe_data){
@@ -1406,6 +1441,8 @@ mediaElement.prototype =
 	            }
 	        })
         }
+		else
+			js_log('ROE data empty.');
     }
 };
 
@@ -1482,6 +1519,12 @@ embedVideo.prototype = {
 	    }
 
 		//auto select player based on prefrence or default order
+		if(!this.media_element.selected_source)
+		{
+			js_log('no sources');
+			return this;
+		}
+
         this.selected_player = embedTypes.players.defaultPlayer(this.media_element.selected_source.mime_type);
         if(this.selected_player)
         {
@@ -1491,6 +1534,8 @@ embedVideo.prototype = {
         else
             js_log('no player found for mime type ' + this.media_element.selected_source.mime_type);
 
+        this.thumbnail_disp = true;
+
 	    /*
 	    * @@TODO lazy load plugin types
 	    * override all relevant exported functions with the {embed_type} Object
@@ -1498,17 +1543,15 @@ embedVideo.prototype = {
 	    */
 		this.inheritEmbedObj();
 
-        this.thumbnail_disp = true;
-
-	   //js_log('HTML FROM IN OBJECT' + this.getHTML());
-	   //return this object:
-	   return this;
+		//js_log('HTML FROM IN OBJECT' + this.getHTML());
+		//return this object:
+		return this;
 	},
     selectPlayer:function(player)
     {
+		var _this = this;
         this.selected_player = player;
         this.inheritEmbedObj();
-        this.refreshControlsHTML();
     },
 	getTimeReq:function(){
 		return this.media_element.selected_source.start_ntp+'/'+this.media_element.selected_source.end_ntp;
@@ -1520,16 +1563,29 @@ embedVideo.prototype = {
 	getDurationNTP:function(){
 		return seconds2ntp(this.getDuration()/1000);
 	},
+	getEmbedHTML : function(){
+		return this.wrapEmebedContainer( this.getPluginEmbedHTML() );
+	},
     doEmbedHTML:function()
     {
-        this.closeDisplayedHTML();
-        var embed_code = this.getEmbedHTML();
-        js_log(embed_code);
-        document.getElementById('mv_embedded_player_'+this.id).innerHTML=embed_code;
-        js_log('changed embed code');
-		this.paused = false;
-		this.thumbnail_disp=false;
-        $j("#mv_play_pause_button_"+this.id).attr('class', 'pause_button');
+		var _this = this;
+		this.closeDisplayedHTML();
+
+//		if(!this.selected_player){
+//			return this.getPluginMissingHTML();
+		
+		this.selected_player.load(function()
+		{
+			js_log('performing embed for ' + _this.id);
+			_this = $j('#'+_this.id).get(0);
+			var embed_code = _this.getEmbedHTML();
+			js_log(embed_code);
+			document.getElementById('mv_embedded_player_'+_this.id).innerHTML=embed_code;
+			js_log('changed embed code');
+			_this.paused = false;
+			_this.thumbnail_disp=false;
+			$j("#mv_play_pause_button_"+_this.id).attr('class', 'pause_button');
+		});
     },
     doThumbnailHTML:function()
     {
@@ -1631,18 +1687,26 @@ embedVideo.prototype = {
 		}
         if(!this.supports)
         this.supports = {};
+		
 		//set up the new embedObj
         js_log('embedding with ' + this.selected_player.library);
-		eval('embedObj = ' +this.selected_player.library +'Embed;');
-        for(method in embedObj){
-        	//parent method preservation for local overwritten methods
-        	if(this[method])this['parent_' + method] = this[method];
-            this[method]=embedObj[method];
-
-        }
-        if(this.inheritEmbedOverride){
-        	this.inheritEmbedOverride();
-        }
+		var _this = this;
+		this.selected_player.load(function()
+		{
+			js_log('inheriting embedObj to ' + _this.id);
+			_this = $j('#'+_this.id).get(0);
+			eval('embedObj = ' +_this.selected_player.library +'Embed;');
+			for(method in embedObj){
+				//parent method preservation for local overwritten methods
+				if(_this[method])
+					_this['parent_' + method] = _this[method];
+				_this[method]=embedObj[method];
+			}
+			if(_this.inheritEmbedOverride){
+				_this.inheritEmbedOverride();
+			}
+			_this.refreshControlsHTML();
+		});
 	},
 	getHTML : function (){
         var html_code = '';
@@ -1677,7 +1741,7 @@ embedVideo.prototype = {
 
 +'					<div class="block embed_code">'
 +'						<p class="short_match">'
-+'							<textarea name="embed" id="embed">'+this.GetEmbedHTML()+'</textarea>'
++'							<textarea name="embed" id="embed">'+this.GetEmbeddingHTML()+'</textarea>'
 +'							<button class="copy_to_clipboard">Copy to Clipboard</button>'
 +'						</p>'
 +'					</div>											'
@@ -1691,10 +1755,14 @@ embedVideo.prototype = {
         html_code += '</div>';
         js_log(html_code);
         this.innerHTML=html_code;
-        this.refreshControlsHTML();
+
+        
         //if auto play==true directly embed the plugin
         if(this.autoplay)
+		{
+			js_log('activating autoplay');
             this.doEmbedHTML();
+		}
         else
             //if autoplay=false or render out a thumbnail with link to embed html
             this.doThumbnailHTML();
@@ -1776,7 +1844,7 @@ embedVideo.prototype = {
 	    return thumb_html;
 
     },
-	GetEmbedHTML:function()
+	GetEmbeddingHTML:function()
 	{
 		var thumbnail = this.media_element.getThumbnailURL();
 
@@ -1858,7 +1926,7 @@ embedVideo.prototype = {
 			//make link absolute (if it was not already)
 			//add the hidden embed code:
 			thumb_html+='<div id="embed_code_'+this.id+'" style="border:solid;border-color:black;overflow:hidden;display:none;position:absolute;bottom:2px;right:'+(right_offset+30)+'px;width:'+(this.playerPixelWidth()-100)+'px;z-index:1">'+
-				'<input onClick="this.select();" type="text" size="40" length="1024" value="'+this.GetEmbedHTML()+'">'
+				'<input onClick="this.select();" type="text" size="40" length="1024" value="'+this.GetEmbeddingHTML()+'">'
 				 '</div>';
             thumb_html+='</div>';
 	    }
@@ -2275,14 +2343,6 @@ embedVideo.prototype = {
 					embed_code +
 				'</div>';
 	},
-	getEmbedHTML:function(){
-		//double check we have a player and associated getEmbedObj html
-		if(!this.selected_player){
-			return this.getPluginMissingHTML();
-		}else{
-            return this.wrapEmebedContainer( this.getPluginEmbedHTML() );
-		}
-    },
 	getControlsHtml : function(type){
 		var id = (this.pc)?this.pc.pp.id:this.id;
 		switch(type){
@@ -2460,7 +2520,7 @@ function mv_jsdata_cb(response){
 //@@todo swich over to jQuery injection
 function loadExternalJs(url){
    	js_log('load js: '+ url);
-    if(window['$j'])
+/*    if(window['$j'])
     	//have to use direct ajax call insted of $j.getScript()
     	//since you can't send "cache" option to $j.getScript()
        $j.ajax({
@@ -2469,7 +2529,7 @@ function loadExternalJs(url){
 			dataType: 'script',
 			cache: true
 		});
-    else
+    else*/
     {
     	var e = document.createElement("script");
         e.setAttribute('src', url);
@@ -2478,6 +2538,7 @@ function loadExternalJs(url){
         document.getElementsByTagName("head")[0].appendChild(e);
     }
 }
+
 function styleSheetPresent(url){
     style_elements = document.getElementsByTagName('link');
     if( style_elements.length > 0) {
