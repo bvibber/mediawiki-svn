@@ -232,9 +232,10 @@ class ChangeAuthor extends SpecialPage
 		$retval .= Xml::openElement('fieldset');
 		$retval .= Xml::element('p', array(), wfMsg('changeauthor-explanation-multi'));
 		$retval .= Xml::inputLabel(wfMsg('changeauthor-comment'), 'comment', 'comment', 50);
-		$retval .= Xml::submitButton(wfMsg('changeauthor-changeauthors-multi'));
+		$retval .= Xml::submitButton(wfMsgExt('changeauthor-changeauthors-multi',
+					array('parsemag', 'escape'), count($revs)));
 		if($errMsg != '')
-		{	
+		{
 			$retval .= Xml::openElement('p') . Xml::openElement('b');
 			$retval .= Xml::element('font', array('color' => 'red'), $errMsg);
 			$retval .= Xml::closeElement('b') . Xml::closeElement('p');
