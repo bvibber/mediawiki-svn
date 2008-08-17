@@ -72,7 +72,7 @@ The reason given for this deletion is ''$1''.",
 	'deletequeue-page-prod' => "It has been proposed that this page is deleted.
 The reason given was ''$1''.
 If this proposal is uncontested at ''$2'', this page will be deleted.
-You can contest this page's deletion by [{{fullurl:{{fullpagename}}|action=delvote}} objecting to deletion].",
+You can contest this page's deletion by [{{fullurl:{{FULLPAGENAME}}|action=delvote}} objecting to deletion].",
 	'deletequeue-page-deletediscuss' => "This page has been proposed for deletion, and that proposal has been contested.
 The reason given was ''$1''.
 A discussion is ongoing at [[$3]], which will conclude at ''$2''",
@@ -94,7 +94,7 @@ A discussion is ongoing at [[$3]], which will conclude at ''$2''",
 	'deletequeue-actiondisabled-notexpired' => 'The following action is disabled because the deletion nomination has not yet expired:',
 	'deletequeue-review-badaction' => 'You specified an invalid action',
 	'deletequeue-review-actiondenied' => 'You specified an action which is disabled for this page',
-	"deletequeue-review-objections" => "'''Warning''': The deletion of this page has [{{FULLURL:{{FULLPAGENAME}}|action=delvoteview|votetype=object}} objections].
+	"deletequeue-review-objections" => "'''Warning''': The deletion of this page has [{{fullurl:{{FULLPAGENAME}}|action=delvoteview|votetype=object}} objections].
 Please ensure that you have considered these objections before deleting this page.",
 	//Speedy deletion
 	'deletequeue-reviewspeedy-tab' => 'Review speedy deletion',
@@ -110,13 +110,13 @@ Please ensure that this page can be speedily deleted in accordance with policy."
 	'deletequeue-reviewdeletediscuss-title' => "Review deletion discussion for \"$1\"",
 	'deletequeue-reviewdeletediscuss-text' => "You can use this form to review the deletion discussion of \"'''$1'''\".
 
-A [{{FULLURL:{{FULLPAGENAME}}|action=delviewvotes}} list] of endorsements and objections of this deletion is available, and the discussion itself can be found at [[$2]].
+A [{{fullurl:{{FULLPAGENAME}}|action=delviewvotes}} list] of endorsements and objections of this deletion is available, and the discussion itself can be found at [[$2]].
 Please ensure that you make a decision in accordance with the consensus on the discussion.",
 
 	// Deletion discussions
 	'deletequeue-deletediscuss-discussionpage' => "This is the discussion page for the deletion of [[$1]].
 There are currently $2 {{PLURAL:$2|user|users}} endorsing deletion, and $3 {{PLURAL:$3|user|users}} objecting to deletion.
-You may [{{FULLURL:$1|action=delvote}} endorse or object] to deletion, or [{{FULLURL:$1|action=delviewvotes}} view all endorsements and objections].",
+You may [{{fullurl:$1|action=delvote}} endorse or object] to deletion, or [{{fullurl:$1|action=delviewvotes}} view all endorsements and objections].",
 	'deletequeue-discusscreate-summary' => 'Creating discussion for deletion of [[$1]].',
 	'deletequeue-discusscreate-text' => 'Deletion proposed for the following reason: $2',
 
@@ -130,7 +130,7 @@ You may [{{FULLURL:$1|action=delvote}} endorse or object] to deletion, or [{{FUL
 	'deletequeue-vote-title' => 'Endorse or object to deletion of "$1"',
 	'deletequeue-vote-text' => "You may use this form to endorse or object to the deletion of \"'''$1'''\".
 This action will override any previous endorsements/objections you have given to deletion of this page.
-You can [{{FULLURL:{{FULLPAGENAME}}|action=delviewvotes}} view] the existing endorsements and objections.
+You can [{{fullurl:{{FULLPAGENAME}}|action=delviewvotes}} view] the existing endorsements and objections.
 The reason given in the nomination for deletion was ''$2''.",
 	'deletequeue-vote-legend' => 'Endorse/Object to deletion',
 	'deletequeue-vote-action' => 'Recommendation:',
@@ -146,7 +146,7 @@ Due to your objection, the page has been moved to the $1 queue.',
 	// View all votes
 	'deletequeue-showvotes' => "Endorsements and objections to deletion of \"$1\"",
 	'deletequeue-showvotes-text' => "Below are the endorsements and objections made to the deletion of the page \"'''$1'''\".
-You can register your own endorsement of, or objection to this deletion [{{FULLURL:{{FULLPAGENAME}}|action=delvote}} here].",
+You can register your own endorsement of, or objection to this deletion [{{fullurl:{{FULLPAGENAME}}|action=delvote}} here].",
 	'deletequeue-showvotes-restrict-endorse' => "Show endorsements only",
 	'deletequeue-showvotes-restrict-object' => "Show objections only",
 	'deletequeue-showvotes-restrict-none' => "Show all endorsements and objections",
@@ -245,7 +245,7 @@ Overleg over dit voorstel wordt gevoerd op [[$3]], en loopt af op ''$2''.",
 	'deletequeue-actiondisabled-notexpired' => 'De volgende handeling is uitgeschakeld omdat de verwijdernominatie is nog niet verlopen:',
 	'deletequeue-review-badaction' => 'U hebt een niet-bestaande handeling opgegeven',
 	'deletequeue-review-actiondenied' => 'U hebt een handeling opgegeven die voor deze pagina is uigeschakeld',
-	'deletequeue-review-objections' => "'''Waarschuwing''': er is [{{FULLURL:{{FULLPAGENAME}}|action=delvoteview|votetype=object}} bezwaar] gemaakt tegen de verwijdernominatie voor deze pagina.
+	'deletequeue-review-objections' => "'''Waarschuwing''': er is [{{fullurl:{{FULLPAGENAME}}|action=delvoteview|votetype=object}} bezwaar] gemaakt tegen de verwijdernominatie voor deze pagina.
 Zorg er alstublieft voor dat u deze overweegt voordat u deze pagina verwijdert.",
 	'deletequeue-reviewspeedy-tab' => 'Snelle verwijdering beoordelen',
 	'deletequeue-reviewspeedy-title' => 'De snelle verwijderingsnominatie voor "$1" beoordelen',
@@ -258,11 +258,11 @@ Zorg er alstublieft voor dat u in lijn met het geldende beleid handelt.",
 	'deletequeue-reviewdeletediscuss-title' => "Verwijderoverleg voor \"'''\$1'''\" beoordelen",
 	'deletequeue-reviewdeletediscuss-text' => 'U kunt dit formulier gebruiken om de verwijderingsdiscussie voor "$1" na te kijken.
 
-Een [{{FULLURL:{{FULLPAGENAME}}|action=delviewvotes}} lijst] met ondersteuningen en bezwaren voor deze verwijdering is beschikbaar, en de discussie zelf kunt u terugvinden op [[$2]].
+Een [{{fullurl:{{FULLPAGENAME}}|action=delviewvotes}} lijst] met ondersteuningen en bezwaren voor deze verwijdering is beschikbaar, en de discussie zelf kunt u terugvinden op [[$2]].
 Wees zeker dat u een beslissing maakt in overeenstemming met de consensus van de discussie.',
 	'deletequeue-deletediscuss-discussionpage' => 'Dit is het verwijderoverleg voor [[$1]].
 Er {{PLURAL:$2|is|zijn}} op dit moment {{PLURAL:$2|één gebruiker|$2 gebruikers}} die de verwijdernominatie steunen en {{PLURAL:$3|één gebruiker|$3 gebruikers}} die bezwaart {{PLURAL:$3|heeft|hebben}} tegen de verwijdernominatie.
-U kunt [{{FULLURL:$1|action=delvote}} steun of bezwaar] bij de verwijdernominatie aangeven of [{{FULLURL:$1|action=delviewvotes}} alle steun en bezwaar bekijken].',
+U kunt [{{fullurl:$1|action=delvote}} steun of bezwaar] bij de verwijdernominatie aangeven of [{{fullurl:$1|action=delviewvotes}} alle steun en bezwaar bekijken].',
 	'deletequeue-discusscreate-summary' => 'Bezig met het starten van een discussie voor de verwijdering van [[$1]].',
 	'deletequeue-discusscreate-text' => 'Verwijdering voorgesteld voor de volgende reden: $2',
 	'deletequeue-role-nominator' => 'indiener verwijdervoorstel',
@@ -272,7 +272,7 @@ U kunt [{{FULLURL:$1|action=delvote}} steun of bezwaar] bij de verwijdernominati
 	'deletequeue-vote-title' => 'Bezwaar maken tegen of steun geven aan de verwijdernominatie voor "$1"',
 	'deletequeue-vote-text' => "U kunt dit formulier gebruiken om bezwaar te maken tegen de verwijdernominatie voor \"'''\$1'''\" of deze te steunen.
 Deze handeling komt in de plaats van eventuele eerdere uitspraken van steun of bezwaar bij de verwijdernominatie van deze pagina.
-U kunt [{{FULLURL:{{FULLPAGENAME}}|action=delviewvotes}} alle steun en bezwaar bekijken].
+U kunt [{{fullurl:{{FULLPAGENAME}}|action=delviewvotes}} alle steun en bezwaar bekijken].
 De reden voor de verwijdernominatie is ''\$2''.",
 	'deletequeue-vote-legend' => 'Bezwaar en ondersteuning verwijdervoorstel',
 	'deletequeue-vote-action' => 'Aanbeveling:',
@@ -286,7 +286,7 @@ De reden voor de verwijdernominatie is ''\$2''.",
 Vanwege uw bezwaar, is de pagina verplaatst naar de wachtrij "$1".',
 	'deletequeue-showvotes' => 'Steun en bezwaar bij de verwijdernominatie van "$1"',
 	'deletequeue-showvotes-text' => "Hieronder worden steun en bezwaar bij de verwijdernominatie van de pagin \"'''\$1'''\" weergegeven.
-U kunt ook [{{FULLURL:{{FULLPAGENAME}}|action=delvote}} steun of bezwaar] aangegeven bij deze verwijdernominatie.",
+U kunt ook [{{fullurl:{{FULLPAGENAME}}|action=delvote}} steun of bezwaar] aangegeven bij deze verwijdernominatie.",
 	'deletequeue-showvotes-restrict-endorse' => 'Alleen steun weergeven',
 	'deletequeue-showvotes-restrict-object' => 'Alleen bezwaren weergeven',
 	'deletequeue-showvotes-restrict-none' => 'Alle steun en bezwaar weergeven',
@@ -325,7 +325,7 @@ $messages['sv'] = array(
 	'deletequeue-prod-title' => 'Föreslå radering av "$1"',
 	'deletequeue-delnom-otherreason' => 'Annan anledning',
 	'deletequeue-queue-speedy' => 'Snabbradering',
-	'deletequeue-discusscreate-text' => 'Radering föreslagen på grund av följande anledning: $2 \'\'\'[[User:M.M.S.|<span style="color:red;">M.</span>]][[User_talk:M.M.S.|<span style="color:green;">M.</span>]][[Special:Contributions/M.M.S.|<span style="color:blue;">S.</span>]]\'\'\' 19:22, 16 August 2008 (UTC)',
+	'deletequeue-discusscreate-text' => 'Radering föreslagen på grund av följande anledning: $2',
 	'deletequeue-vote-reason' => 'Kommentarer:',
 	'deletequeue-vote-submit' => 'Skicka',
 	'deletequeue' => 'Raderingskö',
