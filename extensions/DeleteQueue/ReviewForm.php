@@ -232,7 +232,7 @@ class DeleteQueueReviewForm {
 		list ($enabled,$disabled) = $this->availableActions();
 
 		if (!$disabledMsg) {
-			$disabledMsg = wfMsgExt("deletequeue-review-$action", array('parseinline'));
+			$disabledMsg = wfMsgExt("deletequeue-review-$action", array('parse'));
 		}
 
 		$data = '';
@@ -240,7 +240,7 @@ class DeleteQueueReviewForm {
 		if (in_array($action,$enabled)) {
 			$data = $enabledText;
 		} elseif ( in_array( $action, array_keys( $disabled ) ) ) {
-			$msg = wfMsgExt( 'deletequeue-actiondisabled', array( 'parse' ), array( $disabled[$action] ) );
+			$msg = $disabled[$action];
 			$msg .= "\n";
 			$msg .= $disabledMsg;
 			$data = $msg;

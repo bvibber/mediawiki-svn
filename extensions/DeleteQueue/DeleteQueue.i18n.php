@@ -18,15 +18,15 @@ $messages['en'] = array(
 	'deletequeue-action' => 'Suggest deletion',
 	'deletequeue-action-title' => "Suggest deletion of \"$1\"",
 	'deletequeue-action-text' => "{{SITENAME}} has a number of processes for deleting pages:
-*If you believe that this page warrants ''speedy deletion'', you may suggest that [{{fullurl:{{PAGENAME}}|action=delnom|queue=speedy}} here].
-*If this page does not warrant speedy deletion, but ''deletion will likely be uncontroversial'', you should [{{fullurl:{{PAGENAME}}|action=delnom|queue=prod}} propose uncontested deletion].
-*If this page's deletion is ''likely to be contested'', you should [{{fullurl:{{PAGENAME}}|action=delnom|queue=deletediscuss}} open a discussion].",
+*If you believe that this page warrants ''speedy deletion'', you may suggest that [{{fullurl:{{PAGENAME}}|action=delnom&queue=speedy}} here].
+*If this page does not warrant speedy deletion, but ''deletion will likely be uncontroversial'', you should [{{fullurl:{{PAGENAME}}|action=delnom&queue=prod}} propose uncontested deletion].
+*If this page's deletion is ''likely to be contested'', you should [{{fullurl:{{PAGENAME}}|action=delnom&queue=deletediscuss}} open a discussion].",
 
 	// Permissions errors
-	'deletequeue-permissions-noedit' => "You must be able to edit a page to be able to affect its deletion status. $1",
+	'deletequeue-permissions-noedit' => "You must be able to edit a page to be able to affect its deletion status.",
 
 	// Nomination forms
-	'deletequeue-generic-reasons' => "* Blah\n** Blah blah!\n** Blah blah blah!\n*Moo\n** Mooey pooey!\n** Pooey mooey!",
+	'deletequeue-generic-reasons' => "* Generic reasons\n ** Vandalism\n ** Spam\n ** Maintenance\n ** Out of project scope",
 
 	// Speedy deletion
 	'deletequeue-speedy-title' => 'Mark "$1" for speedy deletion',
@@ -89,9 +89,8 @@ A discussion is ongoing at [[$3]], which will conclude at ''$2''",
 	'deletequeue-review-newextra' => 'Extra information:',
 	'deletequeue-review-submit' => 'Save Review',
 	'deletequeue-review-original' => "Reason for nomination",
-	'deletequeue-actiondisabled-involved' => 'You have taken part in this deletion case in the following roles: $1',
-	'deletequeue-actiondisabled-notexpired' => 'the deletion nomination has not yet expired',
-	'deletequeue-actiondisabled' => 'The following action is disabled because $1:',
+	'deletequeue-actiondisabled-involved' => 'The following action is disabled because you have taken part in this deletion case in the roles $1:',
+	'deletequeue-actiondisabled-notexpired' => 'The following action is disabled because the deletion nomination has not yet expired:',
 	'deletequeue-review-badaction' => 'You specified an invalid action',
 	'deletequeue-review-actiondenied' => 'You specified an action which is disabled for this page',
 	"deletequeue-review-objections" => "'''Warning''': The deletion of this page has [{{FULLURL:{{PAGENAME}}|action=delvoteview|votetype=object}} objections].

@@ -19,11 +19,15 @@ class DeleteQueueInterface {
 		if (count(array_merge($editErrors,$nomErrors))) {
 			// Permissions errors.
 			if (count($editErrors)) {
+				// This is a really bad way to do this.
 				$editError = $wgOut->formatPermissionsErrorMessage( $editErrors, 'edit' );
 				$nomErrors[] = array( 'deletequeue-permissions-noedit', $editError );
 			}
 
 			$wgOut->showPermissionsErrorPage( $nomErrors, "{$queue}-nominate" );
+			if (isset($editError)) {
+				$wgOut->addHTML( $editError );
+			}
 			return;
 		}
 
