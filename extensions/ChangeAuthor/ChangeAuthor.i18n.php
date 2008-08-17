@@ -27,6 +27,7 @@ $messages = array();
 
 $messages['en'] = array(
 	'changeauthor'                      => 'Change revision author',
+	'changeauthor-short'                => 'ChangeAuthor',
 	'changeauthor-desc'                 => 'Allows changing a revision\'s author',
 	'changeauthor-title'                => 'Change the author of a revision',
 	'changeauthor-search-box'           => 'Search revisions',
