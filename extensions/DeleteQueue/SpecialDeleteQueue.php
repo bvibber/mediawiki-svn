@@ -7,7 +7,7 @@ class SpecialDeleteQueue extends SpecialPage {
 		parent::__construct( 'DeleteQueue' );
 	}
 
-	public function execute() {
+	public function execute( $par ) {
 		global $wgOut;
 
 		wfLoadExtensionMessages('DeleteQueue');
