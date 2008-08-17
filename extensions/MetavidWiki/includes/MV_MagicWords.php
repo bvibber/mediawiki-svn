@@ -150,17 +150,17 @@ class MV_MagicWords{
  					'</span>';
  				//try to get metadata from anno_en first.
  				//@@todo maybe the following metadata grabbing could be abstracted to a single function in mv_index  			
- 				$mvd_result = MV_Index::getMVDInRange(
+ 				$mvd_rows = MV_Index::getMVDInRange(
  								$row->stream_id, 
  								$row->start_time, 
  								$row->end_time,
  								$mvd_type='anno_en',
  								$getText=true,
  								$smw_properties=array('Speech_by', 'Bill'), 
- 								$limit='1'
+ 								$options=array('limit'=>1)
  							);
- 				if($dbr->numRows($mvd_result)!=0){
- 					$mvd_row = $dbr->fetchObject($mvd_result); 	 					
+ 				if(count($mvd_rows)!=0){
+ 					$mvd_row = current($mvd_rows);				
  					if($mvd_row->Speech_by){
  						$ptitle = Title::MakeTitle(NS_MAIN, $mvd_row->Speech_by);
  						$o.='<span class="keywords">'.

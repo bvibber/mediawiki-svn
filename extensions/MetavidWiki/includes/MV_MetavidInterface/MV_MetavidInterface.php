@@ -72,7 +72,7 @@
 		$this->grabSemanticProp();
 
 		//set up the interface objects:
-		foreach(array('MV_VideoPlayer', 'MV_Overlay','MV_Tools') as $cp_name){
+		foreach(array('MV_VideoPlayer', 'MV_Navigator','MV_Overlay','MV_Tools') as $cp_name){
 			$this->components[$cp_name] = new $cp_name(
 				array('mv_interface'=>&$this)
 			);

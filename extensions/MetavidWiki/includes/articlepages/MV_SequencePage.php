@@ -93,13 +93,14 @@ class MV_SequencePage extends Article{
 				//for now just lookup all ... @@todo future expose diffrent language tracks
 				if($clip['desc']==''){
 					$dbr =& wfGetDB(DB_SLAVE);	
-					$mvd_res = MV_Index::getMVDInRange($streamTitle->getStreamId(),
+					$mvd_rows = MV_Index::getMVDInRange($streamTitle->getStreamId(),
 						$streamTitle->getStartTimeSeconds(), 
 						$streamTitle->getEndTimeSeconds());
-					if(count($dbr->numRows($mvd_res))!=0){ 
+						
+					if(count($mvd_rows)!=0){ 
 						$MV_Overlay = new MV_Overlay();	
 						$wgOut->clearHTML();	
-						while($mvd = $dbr->fetchObject($mvd_res)){
+						foreach($mvd_rows as $mvd){
 							//output a link /line break 														
 							$MV_Overlay->outputMVD($mvd);
 							$wgOut->addHTML('<br>');							

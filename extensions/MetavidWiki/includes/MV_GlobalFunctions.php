@@ -105,6 +105,7 @@ function mvSetupExtension(){
 	$wgAutoloadClasses['MV_SequenceTimeline']	= dirname(__FILE__)  .'/MV_MetavidInterface/MV_SequenceTimeline.php';
 	$wgAutoloadClasses['MV_VideoPlayer']		= dirname(__FILE__)  .'/MV_MetavidInterface/MV_VideoPlayer.php';
 	$wgAutoloadClasses['MV_Tools']				= dirname(__FILE__)  .'/MV_MetavidInterface/MV_Tools.php';
+	$wgAutoloadClasses['MV_Navigator']			= dirname(__FILE__)	 .'/MV_MetavidInterface/MV_Navigator.php';
 	$wgAutoloadClasses['MV_EditPageAjax'] 		= dirname(__FILE__)  .'/MV_MetavidInterface/MV_EditPageAjax.php';
 	
 	$wgAutoloadClasses['MV_CategoryPage']		= dirname(__FILE__)  .'/articlepages/MV_CategoryPage.php';

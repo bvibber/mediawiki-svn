@@ -510,12 +510,12 @@ class MV_BillScraper extends MV_BaseScraper{
 	}
 	function get_aligned_time_title(&$pData, $preFix='Anno_en', $stream){
 		$dbr =& wfGetDB(DB_SLAVE);
-		$mvd_anno_res = MV_Index::getMVDInRange($stream->getStreamId(),
+		$mvd_rows = MV_Index::getMVDInRange($stream->getStreamId(),
 			$pData['wiki_start_time']-120,$pData['wiki_end_time']+120,
 		$mvd_type='Anno_en',$getText=false,$smw_properties='Speech_by');
 
 		$doSpeechInsert=true;
-		while($row = $dbr->fetchObject($mvd_anno_res)){
+		foreach($mvd_rows as $row){
 			if($row->Speech_by){
 				if($row->Speech_by == $pData['Spoken_by']){
 					print "match update existing: $row->Speech_by  == ". $pData['Spoken_by']. "\n";

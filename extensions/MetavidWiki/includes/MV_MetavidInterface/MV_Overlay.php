@@ -102,16 +102,12 @@ $smwgShowFactbox=SMW_FACTBOX_HIDDEN;
 		//global $mvgIP;
 		//require_once($mvgIP . '/includes/MV_Index.php');
 		$dbr =& wfGetDB(DB_SLAVE);	
-		$result = & MV_Index::getMVDInRange($this->mv_interface->article->mvTitle->getStreamId(), 
+		$mvd_rows = & MV_Index::getMVDInRange($this->mv_interface->article->mvTitle->getStreamId(), 
 							$this->mv_interface->article->mvTitle->getStartTimeSeconds(), 
 							$this->mv_interface->article->mvTitle->getEndTimeSeconds(), 
 							$this->mvd_tracks);													
-		if($dbr->numRows($result) == 0){
-			$this->mvd_pages=array();	
-		}else{
-			while($row = $dbr->fetchObject($result)){
-				$this->mvd_pages[$row->id]=$row;
-			}
+		foreach($mvd_rows as $row){
+			$this->mvd_pages[$row->id]=$row;
 		}
 	}
 	/*functions for transcript pages

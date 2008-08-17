@@ -218,14 +218,12 @@ class MV_Stream {
  		if($removeMVDs){ 
  			//delete metadata pages: 
  			//@@todo figure out a way to do this quickly/group sql queries.  
- 			$res = MV_Index::getMVDInRange($this->getStreamId());
- 			if($dbr->numRows($res) != 0){
-				while($row = $dbr->fetchObject($res)){
+ 			$mvd_rows = MV_Index::getMVDInRange($this->getStreamId());
+ 			foreach($mvd_rows as $row){
 					$title = Title::newFromText($row->wiki_title, MV_NS_MVD);			
 					$article = new Article($title);
 					$article->doDelete('parent stream removed');				
-				}
-			}
+			}			
  		} 		
  		return true;
 	}

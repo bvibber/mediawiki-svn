@@ -7,12 +7,71 @@
  */
  class MV_Navigator extends MV_Component{
  	function getHTML(){
+ 		global $wgUser;
+ 		$o='';
+ 		$sk = $wgUser->getSkin();
+ 		$dbr =& wfGetDB(DB_SLAVE);
  		//get all annotative layers
- 		return wfMsg()
+ 		$stream_id = $this->mv_interface->article->mvTitle->getStreamId();
+ 		$stream_name = $this->mv_interface->article->mvTitle->getStreamName();
+ 		$stream_time_req = $this->mv_interface->article->mvTitle->getTimeRequest();
+ 		$start_sec = $this->mv_interface->article->mvTitle->getStartTimeSeconds(); 
+ 		$duration_sec = $this->mv_interface->article->mvTitle->getDuration();
+		$end_sec   = $this->mv_interface->article->mvTitle->getEndTimeSeconds(); 	
+		//print "start $start_sec end:$end_sec \n ";
+		$prev_end ='';
+		foreach(array('prev','next') as $pntype){
+			if($o!='')$o.=' ';
+			if($pntype=='prev'){
+				if($start_sec==0)
+					continue;
+				$qstart = 0;
+				$qend = $start_sec;
+				$orderby = 'end_time ASC';
+			}else if($pntype=='next'){
+				if($prev_end!=''){
+					$qstart = $prev_end+1;
+				}else{
+					$qstart = $end_sec+1;
+				}
+				$qend = $duration_sec;
+				$orderby = 'start_time ASC';
+			}
+			//print "Qstart: $qstart Qend:$qend \n";
+	 		$mvd_rows = MV_Index::getMVDInRange(
+	 								$stream_id, 
+	 								$qstart, 
+	 								$qend,
+	 								$mvd_type='anno_en',
+	 								$getText=false,
+	 								$smw_properties=array('speech_by','bill','category'), 
+	 								$options=array('LIMIT'=>1, 'ORDER BY'=>$orderby)	 							
+	 						);	 
+	 		//print "SHOULD GET $pntype for $stream_time_req";		
+	 		//print_r($mvd_rows);
+	 		//die;
+	 		if(count($mvd_rows)!=0){
+	 			$row = current($mvd_rows);
+	 			$prev_end = $row->end_time;	 		
+	 			$stime_req = seconds2ntp($row->start_time) . '/' . seconds2ntp($row->end_time);
+	 			$streamTitle = Title::newFromText($stream_name .'/'. $stime_req, MV_NS_STREAM);
+	 			if(trim($row->speech_by)!=''){	 					 				
+	 				$o.=wfMsg('mv_'.$pntype.'_speech', $sk->makeKnownLinkObj($streamTitle, $row->speech_by)); 	 	
+	 			}else if(trim($row->bill)!=''){
+	 				$o.=wfMsg('mv_'.$pntype.'_bill', $sk->makeKnownLinkObj($streamTitle, $row->bill));			 			
+	 			}else if(count($row->category)!=0){
+	 				$first_cat =  current($row->category);
+	 				$o.=wfMsg('mv_'.$pntype.'_cat',  $sk->makeKnownLinkObj($streamTitle, $first_cat));
+	 			}
+	 		}	 		
+		}
+		
+ 		return $o;
  	}
  	function render_full(){
+ 		global $wgOut;
  		$wgOut->addHTML('<div id="MV_Navigator">');
- 			$this->getHTML(); 
+ 			$wgOut->addHTML($this->getHTML()); 
  		$wgOut->addHTML('</div>');
  	}
  }

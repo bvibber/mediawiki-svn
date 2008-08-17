@@ -111,9 +111,7 @@
 	function getStartTime(){ return $this->start_time;}
 	function getTimeRequest(){ return $this->start_time.'/'.$this->end_time;}
 	function getEndTime(){ return $this->end_time;}
-	function getMwTitle(){return Title::MakeTitle(MV_NS_MVD, $this->wiki_title);}
-	
-	
+	function getMwTitle(){return Title::MakeTitle(MV_NS_MVD, $this->wiki_title);}	
 	function setStartEndIfEmpty(){		
 		global $mvDefaultStreamViewLength;
 		if($this->start_time==null){
@@ -336,7 +334,7 @@
 						htmlspecialchars( $this->getEndTime() ) . 
 					'</span>';
 			}							
-			$o.='<'.htmlspecialchars($tag);
+			$o.='<'.htmlspecialchars($tag).' ';
 			$o.=($vid_id=='')?'':' id="'.htmlspecialchars($vid_id).'" ';
 			$o.='thumbnail="'.$this->getStreamImageURL($size, null, $force_server).'" '.					
 				'roe="'.$roe_url.'" '.
@@ -356,7 +354,7 @@
 					htmlspecialchars(MV_StreamFile::getTypeForQK($mvDefaultFlashQualityKey)) .
 					'" src="'.$flash_stream_url .'"></source>';
 				
-			$o.='</video>';					
+			$o.='</'.htmlspecialchars($tag).'>';					
 			return $o;	
 		}else{
 			return wfMsg('mv_error_stream_missing');

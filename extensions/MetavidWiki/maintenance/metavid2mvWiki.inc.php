@@ -215,8 +215,8 @@ function do_annotate_speeches($stream, $force){
 		//get wiki stream id:
 		$wikiStream = new MV_Stream(array('name'=>$stream->name));
 		//first remove all bot edited pages:
-		$mvd_res = MV_Index::getMVDInRange($wikiStream->getStreamId(),null,null,'Anno_en');
-		while($row = $dbr->fetchObject($mvd_res)){
+		$mvd_rows = MV_Index::getMVDInRange($wikiStream->getStreamId(),null,null,'Anno_en');
+		foreach($mvd_rows as $row){
 			$title = Title::newFromText($row->wiki_title, MV_NS_MVD);
 			$current = Revision::newFromTitle( $title );
 			if($current->getUserText()==$botUserName){

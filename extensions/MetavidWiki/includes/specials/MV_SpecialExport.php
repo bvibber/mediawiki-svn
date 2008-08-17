@@ -276,7 +276,7 @@ class MV_SpecialExport {
 		$streamTitle = new MV_Title($this->stream_name.'/'.$this->req_time);		
 		$wgTitle = Title::newFromText($this->stream_name.'/'.$this->req_time, MV_NS_STREAM);
 		//do mvd_index query:
-		$mvd_res = MV_Index::getMVDInRange($streamTitle->getStreamId(),
+		$mvd_rows = MV_Index::getMVDInRange($streamTitle->getStreamId(),
 				$streamTitle->getStartTimeSeconds(), 
 				$streamTitle->getEndTimeSeconds(), $tracks);
 		//get the stream stream req 
@@ -285,11 +285,10 @@ class MV_SpecialExport {
 		if(!$inline)print '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>'."\n";		
 		//if(!$inline)print '<!DOCTYPE cmml SYSTEM "http://svn.annodex.net/standards/cmml_2_0.dtd">'."\n";		
 		$tracks=array();
-		if(count($dbr->numRows($mvd_res))!=0){ 
+		if(count($mvd_rows)!=0){ 
 			global $wgOut;
 			$MV_Overlay = new MV_Overlay();				
-			while($mvd = $dbr->fetchObject($mvd_res)){	
-			
+			foreach($mvd_rows as $mvd){				
 				if(!isset($tracks[$mvd->mvd_type]))$tracks[$mvd->mvd_type]='';			
 				$tracks[$mvd->mvd_type].='						
 						<'.$ns.'clip id="mvd_'.htmlentities($mvd->id).'" start="npt:'.htmlentities(seconds2ntp($mvd->start_time)).'" end="npt:'.htmlentities(seconds2ntp($mvd->end_time)).'">

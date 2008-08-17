@@ -98,12 +98,13 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
 	 * getMVDInRange returns the mvd titles that are in the given range
 	 * param list got kind of crazy long... @@todo re-factor int a request object or something cleaner
 	 */
-	function getMVDInRange($stream_id, $start_time=null, $end_time=null, $mvd_type='all',$getText=false,$smw_properties='', $limit='200'){
+	function getMVDInRange($stream_id, $start_time=null, $end_time=null, $mvd_type='all',$getText=false,$smw_properties='', $options=array()){
 		global $mvIndexTableName, $mvDefaultClipLength;
 		$dbr =& wfGetDB(DB_SLAVE);
 		//set up select vars:
-		$conds=$options=$vars=array();
+		$conds=$vars=array();
 		$from_tables ='';
+		$do_cat_lookup=false;
 		//
 		//set mvd_type if empty:
 		if($mvd_type==null)$mvd_type='all';
@@ -112,19 +113,27 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
 		$vars= array('mv_page_id as id', 'mvd_type', 'wiki_title', 'stream_id', 'start_time', 'end_time');
 		//add in base from:
 		$from_tables.= $dbr->tableName('mv_mvd_index');
+		//print_r($smw_properties);		
 		if($smw_properties!=''){
-			if(!isset($options['STRAIGHT_JOIN']))
-				$options['STRAIGHT_JOIN']='';
 			if(!is_array($smw_properties))
-				$smw_properties = explode(',',$smw_properties);
-			foreach($smw_properties as $prop_name){
-				$vars[] = mysql_real_escape_string($prop_name).'.object_title as '.mysql_real_escape_string($prop_name);
-				$from_tables.=' LEFT JOIN '. $dbr->tableName('smw_relations') .
-					' as ' . mysql_real_escape_string($prop_name) .
-					' ON (' . $dbr->tableName('mv_mvd_index') . '.mv_page_id'.
-					' = ' . mysql_real_escape_string($prop_name) . '.subject_id'.
-					' AND '. mysql_real_escape_string($prop_name).'.relation_title'.
-					' = ' . $dbr->addQuotes($prop_name) . ')';
+				$smw_properties = explode(',',$smw_properties);			
+			foreach($smw_properties as $prop_name){		
+				if($prop_name=='category'){
+					$do_cat_lookup=true;
+				}else{					
+					//if(SMW_VERSION >=1.2){
+					//	$getSMWTags=true;
+					//}else{
+						$vars[] = mysql_real_escape_string($prop_name).'.object_title as '.mysql_real_escape_string($prop_name);
+						$from_tables.=' ' . 						
+							' LEFT JOIN '. $dbr->tableName('smw_relations') .
+							' as ' . mysql_real_escape_string($prop_name) .
+							' ON (' . $dbr->tableName('mv_mvd_index') . '.mv_page_id'.
+							' = ' . mysql_real_escape_string($prop_name) . '.subject_id'.
+							' AND '. mysql_real_escape_string($prop_name).'.relation_title'.
+							' = ' . $dbr->addQuotes($prop_name) . ')';		
+					//}	
+				}
 			}
 		}
 		$conds = array('stream_id'=>$stream_id);
@@ -143,15 +152,21 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
 			}
 
 		}
-		if($end_time)
+		//print "Start time: $start_time END TIME: $end_time\n";
+		if($end_time!=null)
 			$conds[]='start_time <= '. $dbr->addQuotes($end_time);
-		if($start_time)
-			$conds[]='end_time >= '. $dbr->addQuotes($start_time);
-
+			
+		if($start_time!=null)
+			$conds[]='end_time >= '. $dbr->addQuotes($start_time);				
+			
 		//add in ordering
-		$options['ORDER BY']= 'start_time ASC';
+		if(!isset($options['ORDER BY']))
+			$options['ORDER BY']= 'start_time ASC';
+			
 		//add in limit
-		$options['LIMIT'] = $limit;
+		if(!isset($options['LIMIT']))
+			$options['LIMIT'] = 200;
+						
 		//run query:
 		$result = $dbr->select( $from_tables,
 			$vars,
@@ -159,10 +174,64 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
 			__METHOD__,
 			$options);
 		//print $dbr->lastQuery();
+			
+		$ret_ary=array();
+		$from_tables=$vars=$options=array();
+		$conds='';
+		$or='';		
+		while($row=$dbr->fetchObject($result)){				
+			$ret_ary[$row->id]=$row;
+			if($do_cat_lookup){
+				if($do_cat_lookup){
+					$conds.=$or . ' cl_from ='.$dbr->addQuotes($row->id); 
+					$or=' OR ';
+				}
+			}
+		}
+		
+		//not very fast:
+		/*if($getSMWTags){
+			foreach($ret_ary as $row){
+				$smwStore =& smwfGetStore();     
+                $rowTitle = Title::newFromText($row->wiki_title, MV_NS_MVD);
+                //print "Title: ".$title->getDBKey() . "\n";
+                $smwProps = $smwStore->getSemanticData($rowTitle);
+               foreach($smwProps as $smwProp){
+               	print "val: " . $smwProp->getValue();
+               }
+			}
+		}*/
+		
+		if($do_cat_lookup){
+			$from_tables = $dbr->tableName('categorylinks');
+			$from_tables.=' LEFT JOIN '.$dbr->tableName('mv_mvd_index').
+						  	' ON ( ' .
+								 $dbr->tableName('categorylinks') . '.cl_from = ' . 
+								 $dbr->tableName('mv_mvd_index'). '.mv_page_id'.
+							' ) ';
+						
+			$vars=array('cl_from','cl_to');			
+			
+			$options['LIMIT'] = 2000; //max avarage 5 categories per page
+			 
+			$result_cat = $dbr->select( $from_tables,
+				$vars,
+				$conds,
+				__METHOD__,
+				$options);
+			//print $dbr->lastQuery($result_cat);
+			//die();		
+			while($cat_row=$dbr->fetchObject($result_cat)){		
+				if(!isset($ret_ary[$cat_row->cl_from]->category))
+					$ret_ary[$cat_row->cl_from]->category=array();						
+				$ret_ary[$cat_row->cl_from]->category[]=$cat_row->cl_to;			
+			}
+		}
+		//print $dbr->lastQuery();
 		//die;
 		//echo $sql;
 		//$result =& $dbr->query( $sql, 'MV_Index:time_index_query');
-		return $result;
+		return $ret_ary;
 	}
 	/*@@todo figure another way to get at this data...this is not a very fast query: */
 	function getMVDTypeInRange($stream_id, $start_time=null, $end_time=null){
