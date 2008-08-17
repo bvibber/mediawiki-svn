@@ -18,9 +18,9 @@ $messages['en'] = array(
 	'deletequeue-action' => 'Suggest deletion',
 	'deletequeue-action-title' => "Suggest deletion of \"$1\"",
 	'deletequeue-action-text' => "{{SITENAME}} has a number of processes for deleting pages:
-*If you believe that this page warrants ''speedy deletion'', you may suggest that [{{fullurl:{{PAGENAME}}|action=delnom&queue=speedy}} here].
-*If this page does not warrant speedy deletion, but ''deletion will likely be uncontroversial'', you should [{{fullurl:{{PAGENAME}}|action=delnom&queue=prod}} propose uncontested deletion].
-*If this page's deletion is ''likely to be contested'', you should [{{fullurl:{{PAGENAME}}|action=delnom&queue=deletediscuss}} open a discussion].",
+*If you believe that this page warrants ''speedy deletion'', you may suggest that [{{fullurl:{{FULLPAGENAME}}|action=delnom&queue=speedy}} here].
+*If this page does not warrant speedy deletion, but ''deletion will likely be uncontroversial'', you should [{{fullurl:{{FULLPAGENAME}}|action=delnom&queue=prod}} propose uncontested deletion].
+*If this page's deletion is ''likely to be contested'', you should [{{fullurl:{{FULLPAGENAME}}|action=delnom&queue=deletediscuss}} open a discussion].",
 
 	// Permissions errors
 	'deletequeue-permissions-noedit' => "You must be able to edit a page to be able to affect its deletion status.",
@@ -93,7 +93,7 @@ A discussion is ongoing at [[$3]], which will conclude at ''$2''",
 	'deletequeue-actiondisabled-notexpired' => 'The following action is disabled because the deletion nomination has not yet expired:',
 	'deletequeue-review-badaction' => 'You specified an invalid action',
 	'deletequeue-review-actiondenied' => 'You specified an action which is disabled for this page',
-	"deletequeue-review-objections" => "'''Warning''': The deletion of this page has [{{FULLURL:{{PAGENAME}}|action=delvoteview|votetype=object}} objections].
+	"deletequeue-review-objections" => "'''Warning''': The deletion of this page has [{{FULLURL:{{FULLPAGENAME}}|action=delvoteview|votetype=object}} objections].
 Please ensure that you have considered these objections before deleting this page.",
 	//Speedy deletion
 	'deletequeue-reviewspeedy-tab' => 'Review speedy deletion',
@@ -111,7 +111,7 @@ You may contest the deletion of this page by transferring it to the deletion dis
 	'deletequeue-reviewdeletediscuss-title' => "Review deletion discussion for \"$1\"",
 	'deletequeue-reviewdeletediscuss-text' => "You can use this form to review the deletion discussion of \"'''$1'''\".
 
-A [{{FULLURL:{{PAGENAME}}|action=delviewvotes}} list] of endorsements and objections of this deletion is available, and the discussion itself can be found at [[$2]].
+A [{{FULLURL:{{FULLPAGENAME}}|action=delviewvotes}} list] of endorsements and objections of this deletion is available, and the discussion itself can be found at [[$2]].
 Please ensure that you make a decision in accordance with the consensus on the discussion.",
 
 	// Deletion discussions
@@ -131,7 +131,7 @@ You may [{{FULLURL:$1|action=delvote}} endorse or object] to deletion, or [{{FUL
 	'deletequeue-vote-title' => 'Endorse or object to deletion of "$1"',
 	'deletequeue-vote-text' => "You may use this form to endorse or object to the deletion of \"'''$1'''\".
 This action will override any previous endorsements/objections you have given to deletion of this page.
-You can [{{FULLURL:{{PAGENAME}}|action=delviewvotes}} view] the existing endorsements and objections.
+You can [{{FULLURL:{{FULLPAGENAME}}|action=delviewvotes}} view] the existing endorsements and objections.
 The reason given in the nomination for deletion was ''$2''.",
 	'deletequeue-vote-legend' => 'Endorse/Object to deletion',
 	'deletequeue-vote-action' => 'Recommendation:',
@@ -147,7 +147,7 @@ Due to your objection, the page has been moved to the $1 queue.',
 	// View all votes
 	'deletequeue-showvotes' => "Endorsements and objections to deletion of \"$1\"",
 	'deletequeue-showvotes-text' => "Below are the endorsements and objections made to the deletion of the page \"'''$1'''\".
-You can register your own endorsement of, or objection to this deletion [{{FULLURL:{{PAGENAME}}|action=delvote}} here].",
+You can register your own endorsement of, or objection to this deletion [{{FULLURL:{{FULLPAGENAME}}|action=delvote}} here].",
 	'deletequeue-showvotes-restrict-endorse' => "Show endorsements only",
 	'deletequeue-showvotes-restrict-object' => "Show objections only",
 	'deletequeue-showvotes-restrict-none' => "Show all endorsements and objections",
