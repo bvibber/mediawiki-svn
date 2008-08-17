@@ -96,7 +96,7 @@ class DeleteQueueInterface {
 		$dbw->begin();
 
 		$log = new LogPage( 'delete' );
-		$log->addEntry( "{$queue}nom", $article->mTitle, $reason );
+		$log->addEntry( "nominate", $article->mTitle, $reason, wfMsgNoTrans( 'deletequeue-queue-'.$queue) );
 
 		// Set in database.
 		$dqi = DeleteQueueItem::newFromArticle( $article );
