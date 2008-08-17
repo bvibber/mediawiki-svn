@@ -104,7 +104,7 @@ class DeleteQueuePager extends ReverseChronologicalPager {
 		global $wgLang;
 
 		if ($dqi->getQueue() == 'deletediscuss') {
-			$discusspage = $dqi->getDiscussionPage()->mTitle;
+			$discusspage = $sk->makeKnownLinkObj( $dqi->getDiscussionPage()->mTitle );
 		} else $discusspage = '';
 
 		if ($row->dq_expiry > $row->dq_timestamp) {
@@ -117,7 +117,7 @@ class DeleteQueuePager extends ReverseChronologicalPager {
 		$tr .= Xml::element( 'td', null, wfMsg( "deletequeue-queue-$queue" ) );
 		$tr .= Xml::tags( 'td', null, $sk->makeKnownLinkObj( $t, wfMsg( 'deletequeue-list-votecount', $dqi->getActiveEndorseCount(), $dqi->getActiveObjectCount() ), 'action=delviewvotes' ) );
 		$tr .= Xml::element( 'td', null, $expirestr );
-		$tr .= Xml::tags( 'td', null, $sk->makeKnownLinkObj( $discusspage ) );
+		$tr .= Xml::tags( 'td', null, $discusspage );
 
 		return Xml::tags( 'tr', null, $tr ) . "\n";
 	}
