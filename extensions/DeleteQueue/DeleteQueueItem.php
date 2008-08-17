@@ -309,6 +309,8 @@ class DeleteQueueItem {
 
 		$dbw = wfGetDB( DB_MASTER );
 		$dbw->replace( 'delete_queue_role', array( array('dqr_case', 'dqr_user', 'dqr_type') ), array( 'dqr_case' => $this->getCaseID(), 'dqr_user' => $user->getId(), 'dqr_user_text' => $user->getName(), 'dqr_type' => $role ), __METHOD__ );
+		
+		$this->purge();
 	}
 
 	/**
@@ -340,6 +342,8 @@ class DeleteQueueItem {
 		$this->addRole( "vote-$action" );
 
 		$dbw->commit();
+		
+		$this->purge();
 	}
 
 	/**
