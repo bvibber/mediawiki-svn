@@ -103,7 +103,7 @@ public class FilterFactory {
 			else if(lang.equals("pt"))
 				snowballName = "Portuguese";
 			else if(lang.equals("ru"))
-				snowballName = "Russian";
+				stemmer = RussianStemFilter.class;
 			else if(lang.equals("es"))
 				snowballName = "Spanish";
 			else if(lang.equals("sv"))
