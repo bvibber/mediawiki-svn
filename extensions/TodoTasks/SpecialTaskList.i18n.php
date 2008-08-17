@@ -105,6 +105,7 @@ $messages['bg'] = array(
 );
 
 /** German (Deutsch)
+ * @author Purodha
  * @author Revolus
  */
 $messages['de'] = array(
@@ -119,7 +120,7 @@ $messages['de'] = array(
 	'tasklistmytasks' => 'Meine Aufgaben',
 	'tasklistbyprojectbad' => "Projekt '''%s''' ist nicht vorhanden. Für eine Liste gültiger Projekt siehe [[MediaWiki:TodoTasksValidProjects]].",
 	'tasklistbyprojname' => "Zugewiesene Aufgaben für '''%s'''",
-	'tasklistchooseproj' => 'Projekt: auswählen:',
+	'tasklistchooseproj' => 'Projekt auswählen:',
 	'tasklistprojdisp' => 'Anzeigen',
 	'tasklistbyname' => '== Aufgabenliste für %s ==',
 	'tasklistnoprojects' => "Fehler: Es sieht so aus, als wenn '''\$wgUseProjects''' aktiviert wäre, aber es wurde keine Seiten [[MediaWiki:TodoTasksValidProjects]] erstellt. Siehe die [http://www.mediawiki.org/wiki/Extension:Todo_Tasks#Step_8 Installationsanweisungen] für weitere Details.",
@@ -303,7 +304,34 @@ $messages['km'] = array(
  * @author Purodha
  */
 $messages['ksh'] = array(
+	'tasklist' => 'Öpjave-Leß',
+	'tasklist-parser-desc' => 'Deit en Fungxjohn <code><nowiki>{{#todo:}}</nowiki></code> em Wiki dobei, öm Opjave verdeile ze künne.',
+	'tasklist-special-desc' => 'Deit en [[Special:TaskList|Opjave-Leß]] als Söndersigg em Wiki dobei.',
+	'tasklistbyproject' => 'Opjave pro Projek',
+	'tasklistunknownproject' => 'Dat Projek kenne mer nit',
+	'tasklistunspecuser' => 'Unklohre Metmaacher-Name',
+	'tasklistincorrectuser' => 'Verkehte Metmaacher-Name',
+	'tasklistemail' => 'Tach %s',
+	'tasklistemailsubject' => '[%s]-Opjave-Leß Änderunge',
+	'tasklistmytasks' => 'Ming Opjave',
+	'tasklistbyprojectbad' => "Dat Projek '''%s''' jit et nit.
+Loor op [[MediaWiki:TodoTasksValidProjects]] noh de Projekte.",
+	'tasklistbyprojname' => "Opjave för '''%s'''",
+	'tasklistchooseproj' => 'Projekt ußwähle:',
+	'tasklistprojdisp' => 'Zeije',
 	'tasklistbyname' => '== Opjaveliss för %s ==',
+	'tasklistnoprojects' => "'''Fähler:''' Et süht us, wi wann De <code>\$wgUseProjects</code>
+aanjeschalldt häts, ävver [[MediaWiki:TodoTasksValidProjects]]
+nit opjesatz häts. Loor Der op de
+[http://www.mediawiki.org/wiki/Extension:Todo_Tasks#Step_8 Aanleidungssigge]
+aan, wi et jenou jemaat weed.",
+	'tasklistemailbody' => ',
+
+Op %s hät Der einer en Opjav zojedeilt.
+
+Ding Opjaveleß kanns De Der op %s aanloore.
+
+Ding fründlesch %s Süstem för Bescheid ze sare.',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

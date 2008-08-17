@@ -480,6 +480,17 @@ $messages['gv'] = array(
 	'bookinfo-result-year' => 'Blein:',
 );
 
+/** Hebrew (עברית)
+ * @author Agbad
+ */
+$messages['he'] = array(
+	'bookinfo-desc' => 'הרחבת [[Special:Booksources|הדף המיוחד משאבי ספרות חיצוניים]] עם מידע משרת האתר',
+	'bookinfo-result-title' => 'כותרת:',
+	'bookinfo-result-author' => 'יוצר:',
+	'bookinfo-result-publisher' => 'מוציא לאור:',
+	'bookinfo-result-year' => 'שנה:',
+);
+
 /** Hindi (हिन्दी)
  * @author Kaustubh
  */

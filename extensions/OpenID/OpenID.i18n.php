@@ -985,7 +985,7 @@ $messages['nl'] = array(
 	'openiderrortext' => 'Er is een fout opgetreden tijdens de verificatie van de OpenID URL.',
 	'openidconfigerror' => 'Fout in de installatie van OpenID',
 	'openidconfigerrortext' => "De instellingen van de opslag van OpenID's voor deze wiki klopt niet.
-Raadpleeg alstublieft de beheerder van de site.",
+Raadpleeg alstublieft een  [[Special:Userlist/sysop|beheerder]].",
 	'openidpermission' => 'Fout in de rechten voor OpenID',
 	'openidpermissiontext' => 'Met de OpenID die u hebt opgegeven kunt u niet aanmelden bij deze server.',
 	'openidcancel' => 'Verificatie geannuleerd',

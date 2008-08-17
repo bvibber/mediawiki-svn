@@ -355,6 +355,22 @@ $messages['km'] = array(
 	'talkhere-collapse' => 'លាក់ឧបករណ៍កែប្រែ',
 );
 
+/** Ripoarisch (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'talkhere-desc' => 'Deit de Klaaf-Sigg en de Sigg',
+	'talkhere-foottext' => 'Bovve de Kommentare sen fun Wiki-Besöker hengerlohße woode.
+
+De Bedriever fun dä Sait hee künne för dänne ier Kommentare iere Ennhalt nit verantwootlesch jemaat wäde.',
+	'talkhere-talkpage' => 'Kommentare un Klaaf',
+	'talkhere-notalk' => "''kein Kommentar, bes jäz.''",
+	'talkhere-addcomment' => 'Kommenta dobei donn',
+	'talkhere-beforeinput' => 'Jiff Dinge Kommenta unge en',
+	'talkhere-loading' => 'Dat Editor-Projramm weed jelade&nbsp;…',
+	'talkhere-collapse' => 'Editor-Projramm versteche',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */

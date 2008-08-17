@@ -77,7 +77,7 @@ $aliases['ms'] = array(
 
 /** Dutch (Nederlands) */
 $aliases['nl'] = array(
-	'ImportUsers' => array( 'GebruikerImporteren' ),
+	'ImportUsers' => array( 'GebruikersImporteren', 'GebruikerImporteren' ),
 );
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)

@@ -1857,6 +1857,13 @@ $wdMessages['krj'] = array(
  * @author Purodha
  */
 $wdMessages['ksh'] = array(
+	'languages' => 'Sproche verwallde för Wikidata.',
+	'ow_save' => 'Afspeichere',
+	'ow_history' => 'Versione',
+	'ow_datasets' => 'Date-Knubbel ußsöke',
+	'ow_noedit_title' => 'De darfs hee nit ändere',
+	'ow_noedit' => 'Do häs kei Jenehmijung, öm em Date-Knubbel „$1“ jet ze ändere.
+Jangk Der de [[{{MediaWiki:Ow editing policy url}}|Räjelle un wat nüdesch es zom Ändere]] beloore.',
 	'ow_Language' => 'Sproch',
 	'ow_LinkAttributeValues' => 'Links',
 );

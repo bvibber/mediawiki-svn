@@ -380,7 +380,16 @@ $messages['km'] = array(
 $messages['ksh'] = array(
 	'taggedimages' => 'Belder met Links drop',
 	'imagetagging-desc' => 'Määt et müjjelesch, ene Link op en Sigg em Wiki op Aandeile fun enem Beld ze pussizjeneere.',
+	'imagetagging-article' => 'Sigg:',
+	'imagetagging-canteditothermessage' => 'Do kanns di Sigg he nit ändere. Entweder häs De nit dat Rääsch dozoh, udder de Sigg es sönsworöm jesperrt.',
+	'imagetagging-imghistory' => 'Versione',
+	'imagetagging-images' => 'Belder',
+	'imagetagging-inthisimage' => 'En dämm Beld: $1',
+	'imagetagging-new' => '<sup><span style="color:red">Neu!</span></sup>',
 	'imagetagging-tagcancel-button' => 'Draanjevve',
+	'imagetagging-imagetag-seemoreimages' => 'Mieh Belder fun „$1“ beloore ($2)',
+	'imagetagging-taggedimages-title' => 'Belder fun „$1“',
+	'imagetagging-taggedimages-displaying' => 'Ben $1 am Zeije – $2 fun $3 Belder en „$4“',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

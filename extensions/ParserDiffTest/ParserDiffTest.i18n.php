@@ -98,6 +98,9 @@ $messages['ar'] = array(
  */
 $messages['arz'] = array(
 	'parserdifftest' => 'اختبار فرق المحلل',
+	'pdtest-desc' => '[[Special:ParserDiffTest|صفحة مخصوصة]] للمقارنة بين الناتج بتاع اتنين محللين مختلفين',
+	'pdtest_no_target' => 'انت ماحددتش اي هدف.',
+	'pdtest_page_missing' => 'مالقيناش الصفحة اللي انت حددتها في قاعدة البيانات',
 	'pdtest_no_changes' => 'مافيش تغييرات باينة',
 	'pdtest_time_report' => '<b>$1</b> خد $2 ثانية، <b>$3</b> خد $4 ثانية.',
 	'pdtest_title' => 'عنوان السياق:',

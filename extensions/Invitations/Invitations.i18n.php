@@ -322,6 +322,37 @@ $messages['km'] = array(
 	'invitations-inviteform-submit' => 'អញ្ជើញ',
 );
 
+/** Ripoarisch (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'invite-logpage' => 'Et Logboch met de Enladunge',
+	'invite-logpagetext' => 'Dat hee es dat Logboch met de Müjjeleschkeite fum Projramm, di op Enladung parat schtonn.',
+	'invite-logentry' => 'hat dä Metmaacher „$1“ för „<i>$2</i>“ ze nozze ennjelade.',
+	'invitations' => 'Ennladunge zoh Projramm-Eijeschaffte Verwallde',
+	'invitations-desc' => 'Määt et jöt met [[Special:Invitations|neu Müjjeleschkeite]] fum Projramm ömzejonn, indämm dat mer se Beschrängk op bestemmpte Metmaacher dorj_e System fun Ennladunge.',
+	'invitations-invitedlist-description' => 'Do häß Zojang zo onge de Eijeschaffte fum Projramm, di Der op Ennladung zur Ferföjung schtonn. Öm Ding Enladung för en beshtemmpte Eijeschaff ze beärrbeide, donn op dä iere Name klecke.',
+	'invitations-invitedlist-none' => 'Do häß be jez kei Ennladung kräje, för en Projramm-Eijeschaff ze noze, di op Ennladung es.',
+	'invitations-invitedlist-item-count' => '({{PLURAL:$1|Ein Ennladung|$1 Ennladunge|kei Ennladung}} sen müjjelesch)',
+	'invitations-pagetitle' => 'Projramm-Eijeschaffte op Ennladung',
+	'invitations-uninvitedlist-description' => 'Do häß keine Zojang zo andere Projramm-Eijeschaffte, di op Ennladung sin.',
+	'invitations-uninvitedlist-none' => 'För der Momang sin kein andere Projramm-Eijeschaffte nor op Ennladung ze han.',
+	'invitations-feature-pagetitle' => 'Ennladunge verwallde - $1',
+	'invitations-feature-access' => 'Zo kanns em Momang „<i>$1</i>“ bruche.',
+	'invitations-feature-numleft' => 'Do häs {{PLURAL:$1|noch <b>ein</b>|noch <b>$1</b>|<b>keine </b>}} fun
+{{PLURAL:$2|Dinge <b>eine</b> Ennladung|Dinge <b>$2</b> Ennladunge|<b>keine</b> Ennladung}}
+övverisch.',
+	'invitations-feature-noneleft' => 'Do häß ald ll Ding müjjelesche Ennladunge verjovve.',
+	'invitations-feature-noneyet' => 'Do hä moch kei Ennladunge zum ußjävve zojedeilt kräje.',
+	'invitations-feature-notallowed' => 'Do häs nit dat Rääsch, för „<i>$1</i>“ ze noze.',
+	'invitations-inviteform-title' => 'Lad ene Metmaacher zom „<i>$1</i>“ noze en.',
+	'invitations-inviteform-username' => 'Dä Metmaacher zum Ennlade',
+	'invitations-inviteform-submit' => 'Ennlade',
+	'invitations-error-baduser' => 'Dä aanjejovve Metmaacher schingk et nit ze jävve.',
+	'invitations-error-alreadyinvited' => 'Dä Metmaacher hät ald en Ennladung, udder och ene ander Zohjang fö di Projramm-Eijeschaff!',
+	'invitations-invite-success' => 'De häs jäz dä Metmaacher „$1“ fö di Projamm-Eijeschaff ennjelade.',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */

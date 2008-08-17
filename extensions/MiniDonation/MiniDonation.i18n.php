@@ -177,6 +177,14 @@ $messages['km'] = array(
 	'donationform-submit' => 'វិភាគទានតាមរយៈ PayPal',
 );
 
+/** Ripoarisch (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'donationform-desc' => 'Deit dä Befäähl <tt>&lt;donateform&gt;</tt> en et Wiki, öm Spende övver <i lang="en">PayPal</i> sammele ze künne.',
+	'donationform-submit' => 'Spende övver <i lang="en">PayPal</i>',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */

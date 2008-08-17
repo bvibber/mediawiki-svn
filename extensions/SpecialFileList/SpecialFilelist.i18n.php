@@ -259,7 +259,11 @@ $messages['ko'] = array(
  * @author Purodha
  */
 $messages['ksh'] = array(
+	'filelist' => 'Dateileß',
 	'filelist-desc' => 'Di [[Special:Filelist|Söndersigg]] zeich huhjelade Dateie.',
+	'filelist-show-list' => 'Zeich en Leß',
+	'filelist-show-gallery' => 'Zeich en Jalleri',
+	'filelist-image-desc' => 'röckwääz zotteet',
 );
 
 /** Latin (Latina)

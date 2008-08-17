@@ -63,6 +63,13 @@ $messages['it'] = array(
 	'navigationpopups-desc' => 'Carica gli script dei popup di navigazione di Lupin in MediaWiki',
 );
 
+/** Ripoarisch (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'navigationpopups-desc' => 'Lädt dem Lupin sing Navvijazjons-Skipte ier <i lang="en">Popup</i>e en et Wiki.',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */

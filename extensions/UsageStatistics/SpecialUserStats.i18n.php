@@ -560,6 +560,13 @@ $messages['km'] = array(
 	'usagestatisticscalselect' => 'ជ្រើសយក',
 );
 
+/** Ripoarisch (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'usagestatistics-desc' => 'Zeich Statistike övver Metmaacher un et janze Wiki.',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */

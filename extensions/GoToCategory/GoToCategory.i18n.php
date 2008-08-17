@@ -50,6 +50,13 @@ $messages['gl'] = array(
 	'gotocategory-desc' => 'Comproba os termos da procura contra o espazo de nomes Categoría: para "Ir" a partir da funcionalidade "saltar a unha páxina"',
 );
 
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'gotocategory-desc' => "Cerca parolas etiam in le spatio de nomines Categoria: a fin de possibilisar le function 'ir al pagina'",
+);
+
 /** Ripoarisch (Ripoarisch)
  * @author Purodha
  */

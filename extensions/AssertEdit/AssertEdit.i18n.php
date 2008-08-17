@@ -42,9 +42,12 @@ $messages['ar'] = array(
 
 /** Egyptian Spoken Arabic (مصرى)
  * @author Ghaly
+ * @author Ramsis II
  */
 $messages['arz'] = array(
 	'assert_edit_title' => 'التأكيد فشل',
+	'assert_edit_desc' => 'بيضيف تأكيدات تعديل بيستعملها البوتات',
+	'assert_edit_message' => 'التأكيد المتحدد ($1) فشل.',
 );
 
 /** Asturian (Asturianu)

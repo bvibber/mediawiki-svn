@@ -84,7 +84,7 @@ $aliases['ms'] = array(
 
 /** Dutch (Nederlands) */
 $aliases['nl'] = array(
-	'LinkSearch' => array( 'VerwijzingenZoeken' ),
+	'LinkSearch' => array( 'VerwijzingenZoeken', 'LinksZoeken' ),
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)

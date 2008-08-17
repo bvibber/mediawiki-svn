@@ -36,6 +36,6 @@ $aliases['lb'] = array(
  * @author Siebrand
  */
 $aliases['nl'] = array(
-	'UserStats' => array( 'Gebruikersgegevens' ),
+	'UserStats' => array( 'Gebruikersgegevens', 'Gebruikersstatistieken' ),
 );
 

@@ -148,3 +148,16 @@ $messages['sv'] = array(
 	'newschannel_submit_button' => 'Skapa nyhetskanal',
 );
 
+/** Vietnamese (Tiếng Việt)
+ * @author Minh Nguyen
+ */
+$messages['vi'] = array(
+	'newschannel' => 'Đài tin tức',
+	'newschannel-desc' => 'Cung cấp đài tin tức tại [[Special:NewsChannel|trang đặc biệt]] động',
+	'newschannel_format' => 'Định dạng:',
+	'newschannel_limit' => 'Hạn chế:',
+	'newschannel_include_category' => 'Thể loại khác:',
+	'newschannel_exclude_category' => 'Trừ thể loại:',
+	'newschannel_submit_button' => 'Tạo feed',
+);
+

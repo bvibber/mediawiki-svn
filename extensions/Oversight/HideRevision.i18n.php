@@ -184,14 +184,49 @@ $messages['ar'] = array(
 
 /** Egyptian Spoken Arabic (مصرى)
  * @author Ghaly
+ * @author Ramsis II
  */
 $messages['arz'] = array(
+	'hiderevision' => 'خبي المراجعات على طول.',
+	'hiderevision-desc' => 'خبي المراجعات الفردية عن كل اليوزرز لاسباب قانونية، الخ.',
 	'group-oversight' => 'اوڤرسايترز',
 	'group-oversight-member' => 'اوڤرسايتر',
 	'grouppage-oversight' => '{{ns:project}}:اوڤرسايت',
+	'right-oversight' => 'عرض مراجعة سابقة متخبية',
+	'right-hiderevision' => 'مراجعة و ترجيع المراجعات المتخبية عن السيسوبات',
+	'hiderevision-prompt' => 'رقم المراجعة للمسح:',
+	'hiderevision-continue' => 'استمر',
+	'hiderevision-text' => "دا لازم يستعمل '''بس''' في الحالات دي:
+* معلومات شخصية مش مناسبة
+*: ''عناوين البيت و ارقام التليفونات, ارقام التامين الاجتماعي, الخ''
+
+'''اساءة استعمال النظام دا حيأدي لفقدانك للمزايا.'''
+
+الحاجات اللي اتشالت مش ح تكون متشافة لاي حد على موقع الويب, بس الحاجات اللي اتمسحت دي ح تتسجل وممكن تترجع تاني   يدوي عن طريق  إداريين قاعدة البيانات لو عملت حاجة غلط .",
+	'hiderevision-reason' => 'السبب (حيتسجل في السجل السري):',
+	'hiderevision-submit' => 'خبي البيانات دي على طول.',
+	'hiderevision-tab' => 'إخفاء المراجعة',
+	'hiderevision-norevisions' => 'مافيش مراجعات متحددة علشان تتمسح.',
+	'hiderevision-noreason' => 'لازم تقول السبب بتاع المسح دا.',
 	'hiderevision-status' => 'النسخة $1: $2',
+	'hiderevision-success' => 'اتأرشفت و اتمسحت بنجاح.',
+	'hiderevision-error-missing' => 'ماتلقاش في قاعدة البيانات.',
+	'hiderevision-error-current' => 'مش ممكن مسح اخر تعديل للصفحة.
+ارجع في التغيير دا الاول.',
+	'hiderevision-error-delete' => 'ماتارشيفتش;هي اتمسحت قبل كدا؟',
+	'hiderevision-archive-status' => 'المراجعة الممسوحة من $1: $2',
+	'oversight-nodiff' => 'مش قادرين نتتبع التغييرات علشان مافيش مراجعات قديمة للصفحة.ودا بسبب:
+*الصفحة دي اتمسحت
+*أو المراجعة المتخبية دي كانت اول مراجعة',
+	'oversight-log-hiderev' => 'شال تعديل واحد من $1',
 	'oversight' => 'اوڤرسايت',
 	'oversight-view' => 'التفاصيل',
+	'oversight-difference' => '(الفرق من المراجعة المتبقية اللي فاتت)',
+	'oversight-prev' => 'اخر مراجعه فاتت',
+	'oversight-hidden' => 'مراجعة متخبية',
+	'oversight-header' => 'تحت في لستة بالتغييرات اللي اتخبت قريب و على طول من العرض العمومي.
+تطليع المعلومات دي بره ممكن يتسبب في سحب صلاحيات الاوفرسايت منك و على طول.',
+	'oversight-legend' => 'دور في سجل تخبية المراجعات',
 );
 
 /** Asturian (Asturianu)
@@ -654,6 +689,7 @@ $messages['fa'] = array(
 	'oversight-hidden' => 'نسخه پنهان شده',
 	'oversight-header' => 'در زیر فهرستی از نسخه‌هایی که به تازگی از دید عموم برای همیشه حذف شده‌اند را می‌بینید.
 منتشر کردن این اطلاعات می‌تواند به از دست دادن همیشگی اختیارات شما بینجامد.',
+	'oversight-legend' => 'جستجو در سیاهه پنهان‌سازی نسخه‌ها',
 );
 
 /** Finnish (Suomi)
@@ -1571,6 +1607,7 @@ fun dä Sigg han. Entweder
 verstoche wode sin.
 Wä di Enfomazione wigger jitt, weed dat Rääsch se aanzeloore,
 un wat domet zosamme hängk, flöck quitt.',
+	'oversight-legend' => 'Sök em Logboch fum Versione Versteche',
 );
 
 /** Latin (Latina)

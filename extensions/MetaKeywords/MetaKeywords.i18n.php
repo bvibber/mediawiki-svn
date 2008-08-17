@@ -87,3 +87,10 @@ $messages['sv'] = array(
 	'metakeywords-desc' => 'Möjliggör konfigurering av <tt><nowiki><meta "keywords"></nowiki></tt> och <tt><nowiki><meta "description"></nowiki></tt>-taggar per namnrymd',
 );
 
+/** Vietnamese (Tiếng Việt)
+ * @author Minh Nguyen
+ */
+$messages['vi'] = array(
+	'metakeywords-desc' => 'Cho phép thiết lập các thẻ <tt><nowiki><meta name="keywords"></nowiki></tt> và <tt><nowiki><meta name="description"></nowiki></tt> tùy không gian tên',
+);
+

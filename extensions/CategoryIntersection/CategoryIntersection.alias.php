@@ -155,7 +155,8 @@ $aliases['uk'] = array(
 	'CategoryIntersection'=> array( 'Перетин категорій' ),
 );
 
+/** Vietnamese (Tiếng Việt) */
 $aliases['vi'] = array(
-	'CategoryIntersection'=> array( 'Thể loại giao nhau' ),
+	'CategoryIntersection' => array( 'Thể loại giao nhau' ),
 );
 
