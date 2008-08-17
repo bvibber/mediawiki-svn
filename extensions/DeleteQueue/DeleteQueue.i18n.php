@@ -75,7 +75,7 @@ If this proposal is uncontested at ''$2'', this page will be deleted.
 You can contest this page's deletion by [{{fullurl:{{FULLPAGENAME}}|action=delvote}} objecting to deletion].",
 	'deletequeue-page-deletediscuss' => "This page has been proposed for deletion, and that proposal has been contested.
 The reason given was ''$1''.
-A discussion is ongoing at [[$3]], which will conclude at ''$2''",
+A discussion is ongoing at [[$3]], which will conclude at ''$2''.",
 
 	// Review
 	//Generic
@@ -94,7 +94,7 @@ A discussion is ongoing at [[$3]], which will conclude at ''$2''",
 	'deletequeue-actiondisabled-notexpired' => 'The following action is disabled because the deletion nomination has not yet expired:',
 	'deletequeue-review-badaction' => 'You specified an invalid action',
 	'deletequeue-review-actiondenied' => 'You specified an action which is disabled for this page',
-	"deletequeue-review-objections" => "'''Warning''': The deletion of this page has [{{fullurl:{{FULLPAGENAME}}|action=delvoteview|votetype=object}} objections].
+	"deletequeue-review-objections" => "'''Warning''': The deletion of this page has [{{fullurl:{{FULLPAGENAME}}|action=delvoteview&votetype=object}} objections].
 Please ensure that you have considered these objections before deleting this page.",
 	//Speedy deletion
 	'deletequeue-reviewspeedy-tab' => 'Review speedy deletion',
@@ -245,7 +245,7 @@ Overleg over dit voorstel wordt gevoerd op [[$3]], en loopt af op ''$2''.",
 	'deletequeue-actiondisabled-notexpired' => 'De volgende handeling is uitgeschakeld omdat de verwijdernominatie is nog niet verlopen:',
 	'deletequeue-review-badaction' => 'U hebt een niet-bestaande handeling opgegeven',
 	'deletequeue-review-actiondenied' => 'U hebt een handeling opgegeven die voor deze pagina is uigeschakeld',
-	'deletequeue-review-objections' => "'''Waarschuwing''': er is [{{fullurl:{{FULLPAGENAME}}|action=delvoteview|votetype=object}} bezwaar] gemaakt tegen de verwijdernominatie voor deze pagina.
+	'deletequeue-review-objections' => "'''Waarschuwing''': er is [{{fullurl:{{FULLPAGENAME}}|action=delvoteview&votetype=object}} bezwaar] gemaakt tegen de verwijdernominatie voor deze pagina.
 Zorg er alstublieft voor dat u deze overweegt voordat u deze pagina verwijdert.",
 	'deletequeue-reviewspeedy-tab' => 'Snelle verwijdering beoordelen',
 	'deletequeue-reviewspeedy-title' => 'De snelle verwijderingsnominatie voor "$1" beoordelen',
