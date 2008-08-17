@@ -1691,11 +1691,12 @@ embedVideo.prototype = {
 		//set up the new embedObj
         js_log('embedding with ' + this.selected_player.library);
 		var _this = this;
+		var _this_selected_player = this.selected_player;
 		this.selected_player.load(function()
 		{
 			js_log('inheriting embedObj to ' + _this.id);
 			_this = $j('#'+_this.id).get(0);
-			eval('embedObj = ' +_this.selected_player.library +'Embed;');
+			eval('embedObj = ' +_this_selected_player.library +'Embed;');
 			for(method in embedObj){
 				//parent method preservation for local overwritten methods
 				if(_this[method])
