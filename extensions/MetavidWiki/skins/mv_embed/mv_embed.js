@@ -728,9 +728,8 @@ function mv_embed(){
             //create and swap in the video interface:
 	   		var videoInterface = new embedVideo(video_elements[i]);
    			//swap:
-	   		if(swapEmbedVideoElement(video_elements[i], videoInterface)){
+	   		if(swapEmbedVideoElement(video_elements[i], videoInterface))
 	   			i--;
-	   		}
         }
     }else{
     	js_log('no <video> elements found');
@@ -796,7 +795,7 @@ function do_playlist_functions(){
 * an embed video interface based on the video_elements attributes
 */
 function swapEmbedVideoElement(video_element, videoInterface){
-	js_log('do swap');
+	js_log('do swap ' + videoInterface.id);
 	embed_video = document.createElement('div');
 	//inherit the video interface
 	for(method in videoInterface){
@@ -820,8 +819,11 @@ function swapEmbedVideoElement(video_element, videoInterface){
 	///js_log('did vI style');
   	//now swap out the video element for the embed_video obj:
   	$j(video_element).after(embed_video).remove();
+	// now that "this" is stable, do more initialization
+	$j('#'+embed_video.id).get(0).more_init();
   	//update HTML
   	$j('#'+embed_video.id).get(0).getHTML();
+
 
     /*var parent_elm = video_element.parentNode;
     parent_elm.removeChild(video_element);
@@ -1517,7 +1519,9 @@ embedVideo.prototype = {
             js_log('innerHTML: ' + element.innerHTML);
 	        this.user_missing_plugin_html=element.innerHTML;
 	    }
-
+	},
+	more_init : function()
+	{
 		//auto select player based on prefrence or default order
 		if(!this.media_element.selected_source)
 		{
@@ -1599,6 +1603,8 @@ embedVideo.prototype = {
     },
     refreshControlsHTML:function()
     {
+		if($j('#mv_embedded_controls_'+this.id).length==0)
+			return;
         var available_width = this.playerPixelWidth();
         var html_code='';
         // borders
@@ -1691,12 +1697,11 @@ embedVideo.prototype = {
 		//set up the new embedObj
         js_log('embedding with ' + this.selected_player.library);
 		var _this = this;
-		var _this_selected_player = this.selected_player;
 		this.selected_player.load(function()
 		{
-			js_log('inheriting embedObj to ' + _this.id);
-			_this = $j('#'+_this.id).get(0);
-			eval('embedObj = ' +_this_selected_player.library +'Embed;');
+			js_log('inheriting '+_this.selected_player.library +'Embed to ' + _this.id + ' ' + $j('#'+_this.id).length);
+			//var _this = $j('#'+_this.id).get(0);
+			eval('embedObj = ' +_this.selected_player.library +'Embed;');
 			for(method in embedObj){
 				//parent method preservation for local overwritten methods
 				if(_this[method])
@@ -1706,6 +1711,7 @@ embedVideo.prototype = {
 			if(_this.inheritEmbedOverride){
 				_this.inheritEmbedOverride();
 			}
+			//update controls if possible
 			_this.refreshControlsHTML();
 		});
 	},
@@ -1767,6 +1773,7 @@ embedVideo.prototype = {
         else
             //if autoplay=false or render out a thumbnail with link to embed html
             this.doThumbnailHTML();
+		this.refreshControlsHTML();
 	},
 	/*
 	* get missing plugin html (check for user included code)
