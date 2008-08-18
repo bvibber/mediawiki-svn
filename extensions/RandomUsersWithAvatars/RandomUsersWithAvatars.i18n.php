@@ -72,9 +72,10 @@ $messages['lb'] = array(
 
 /** Dutch (Nederlands)
  * @author Siebrand
+ * @author Tvdm
  */
 $messages['nl'] = array(
-	'random-users-avatars-title' => 'De gemeenschap ontmoeten',
+	'random-users-avatars-title' => 'Ontmoet de gemeenschap',
 	'random-users-avatars-desc' => 'Voegt de tag <tt>&lt;randomuserswithavatars&gt;</tt> toe om de avatars van willekeurige gebruikers weer te geven',
 );
 

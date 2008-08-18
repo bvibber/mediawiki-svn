@@ -341,10 +341,12 @@ $messages['hi'] = array(
 );
 
 /** Croatian (Hrvatski)
+ * @author Dalibor Bosits
  * @author Dnik
  * @author SpeedyGonsales
  */
 $messages['hr'] = array(
+	'scanset-desc' => "Gledanje slika skeniranih stranica iz Andreas Grosz's CD/DVD setova",
 	'scanset_no_name' => 'SkeniranaKnjiga: Morate zadati naziv skenirane knjige, npr. &lt;scanset name="EB1911" /&gt;.',
 	'scanset_invalid_name' => 'SkeniranaKnjiga: Nevažeća ili nepostojeća skenirana knjiga.',
 	'scanset_unrecognised_index_format' => 'SkeniranaKnjiga: Nepoznat format indeksa',
@@ -637,18 +639,19 @@ $messages['nds'] = array(
 /** Dutch (Nederlands)
  * @author SPQRobin
  * @author Siebrand
+ * @author Tvdm
  */
 $messages['nl'] = array(
 	'scanset-desc' => "Maakt het mogelijk gescande afbeeldingen van de cd's/dvd's van Andreas Grosz te bekijken",
-	'scanset_no_name' => 'Error: u moet een naam voor de scanset opgeven, zoals bijvoorbeeld &lt;scanset name="EB1911" /&gt;.',
-	'scanset_invalid_name' => 'Error: ongeldige of missende scanset',
-	'scanset_unrecognised_index_format' => 'Error: indexopmaak wordt niet herkend',
-	'scanset_opendir_error' => 'Error: fout, can map $1 niet openen',
-	'scanset_no_files' => 'Error: geen bestanden aanwezig in de opgegeven map.',
-	'scanset_no_volumes' => 'Error: geen mappen voor volumen aangetroffen',
-	'scanset_missing_index_file' => 'Error: indexbestand $1 niet aangetroffen',
-	'scanset_index_file_error' => 'Error: fout in opmaak indexbestand in regel $1',
-	'scanset_invalid_volume' => 'Error: ongeldig volumen',
+	'scanset_no_name' => 'Fout: u moet een naam voor de scanset opgeven, zoals bijvoorbeeld &lt;scanset name="EB1911" /&gt;.',
+	'scanset_invalid_name' => 'Fout: ongeldige of missende scanset',
+	'scanset_unrecognised_index_format' => 'Fout: indexopmaak wordt niet herkend',
+	'scanset_opendir_error' => 'Fout: fout, kan map $1 niet openen',
+	'scanset_no_files' => 'Fout: geen bestanden aanwezig in de opgegeven map.',
+	'scanset_no_volumes' => 'Fout: geen mappen voor volumen aangetroffen',
+	'scanset_missing_index_file' => 'Fout: indexbestand $1 niet aangetroffen',
+	'scanset_index_file_error' => 'Fout: fout in opmaak indexbestand in regel $1',
+	'scanset_invalid_volume' => 'Fout: ongeldig volume',
 	'scanset_next' => 'Volgende &gt;',
 	'scanset_prev' => '&lt; Vorige',
 );

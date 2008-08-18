@@ -181,13 +181,14 @@ $messages['it'] = array(
 );
 
 /** Japanese (日本語)
+ * @author Aotake
  * @author JtFuruhata
  */
 $messages['ja'] = array(
 	'commentspammer-save-blocked' => 'あなたのIPアドレスはスパム投稿に用いられているとの疑いがあるため、ページは保存されませんでした。[[Special:UserLogin|ログインまたはアカウントの作成]]を行ってください。',
 	'commentspammer-desc' => 'DNSブラックリストに記載されたコメントスパム投稿容疑IPアドレスからの編集を拒絶する',
 	'commentspammer-log-msg' => '利用者 [[Special:Contributions/$1|$1]] による [[:$2]] の編集',
-	'commentspammer-log-msg-info' => '最後のスパム行為は $1{{PLURAL:$1|日|日}}前 / 脅威レベル $2 / 防御コード $3 / [http://www.projecthoneypot.org/search_ip.php?ip=$4 詳細表示] / [[{{ns:Special}}:Blockip/$4|ブロック状況]]',
+	'commentspammer-log-msg-info' => '最後のスパム行為は $1日前 / 脅威レベル $2 / 防御コード $3 / [http://www.projecthoneypot.org/search_ip.php?ip=$4 詳細表示] / [[{{ns:Special}}:Blockip/$4|ブロック状況]]',
 	'cspammerlogpagetext' => 'この編集履歴は、判明しているコメントスパマーによる投稿の許可/拒否状況を示します。',
 	'cspammer-log-page' => 'スパム投稿ログ',
 );
@@ -252,10 +253,11 @@ $messages['mr'] = array(
 /** Dutch (Nederlands)
  * @author SPQRobin
  * @author Siebrand
+ * @author Tvdm
  */
 $messages['nl'] = array(
 	'commentspammer-save-blocked' => 'Uw IP-adres wordt verdacht van spammen - opslaan is geweigerd. Maak een gebruiker aan om dit te voorkomen.',
-	'commentspammer-desc' => 'Voorkomt bewerkingen van spammers via een DNS blacklist',
+	'commentspammer-desc' => 'Voorkomt bewerkingen van spammers via een DNS-blacklist',
 	'commentspammer-log-msg' => 'bewerking van [[Special:Contributions/$1|$1]] aan [[:$2]].',
 	'commentspammer-log-msg-info' => 'Spamde voor het laatst $1 {{PLURAL:$1|dag|dagen}} geleden. Dreigingsniveau is $2 en de overtredingscode is $3. [http://www.projecthoneypot.org/search_ip.php?ip=$4 Details bekijken] of [[Special:Blockip/$4|blokkeren]].',
 	'cspammerlogpagetext' => 'Logboek met bewerkingen die toegestaan of geweigerd zijn omdat de bron een bekende spammer was.',

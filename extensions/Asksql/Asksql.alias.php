@@ -27,6 +27,11 @@ $aliases['arz'] = array(
 	'Asksql' => array( 'سؤال_إس_كيو_إل' ),
 );
 
+/** Hungarian (Magyar) */
+$aliases['hu'] = array(
+	'Asksql' => array( 'SQL-lekérdezés' ),
+);
+
 /** Luxembourgish (Lëtzebuergesch) */
 $aliases['lb'] = array(
 	'Asksql' => array( 'SQL-Ufroen' ),
@@ -35,5 +40,10 @@ $aliases['lb'] = array(
 /** Dutch (Nederlands) */
 $aliases['nl'] = array(
 	'Asksql' => array( 'SQLZoekopdracht' ),
+);
+
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
+$aliases['no'] = array(
+	'Asksql' => array( 'SQL-spørring' ),
 );
 

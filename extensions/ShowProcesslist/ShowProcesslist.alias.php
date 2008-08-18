@@ -25,3 +25,8 @@ $aliases['nl'] = array(
 	'ShowProcesslist' => array( 'ProceslijstWeergeven' ),
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
+$aliases['no'] = array(
+	'ShowProcesslist' => array( 'Vis prosessliste' ),
+);
+

@@ -483,6 +483,13 @@ $messages['mr'] = array(
 	'todo-form-submit' => 'पृच्छा पाठवा',
 );
 
+/** Maltese (Malti)
+ * @author Roderick Mallia
+ */
+$messages['mt'] = array(
+	'todo-list-cancel' => 'Annulla',
+);
+
 /** Nahuatl (Nāhuatl)
  * @author Fluence
  */
@@ -509,6 +516,7 @@ $messages['nds'] = array(
  * @author GerardM
  * @author SPQRobin
  * @author Siebrand
+ * @author Tvdm
  */
 $messages['nl'] = array(
 	'todo' => 'Takenlijst',
@@ -528,7 +536,7 @@ $4',
 	'todo-unrecognize-type' => 'Onherkend type',
 	'todo-user-invalide' => 'Aan dit actiepunt hangt een gebruiker die een onjuiste naam heeft, niet bestaat, of geen gebruik kan maken van actiepunten.',
 	'todo-item-list' => 'Uw items',
-	'todo-no-item' => 'Geen tedoen-items.',
+	'todo-no-item' => 'Geen te-doen-items.',
 	'todo-invalid-owner' => 'Ongeldige eigenaar voor dit item',
 	'todo-add-queue' => 'Wachtrij toevoegen…',
 	'todo-move-queue' => 'Verplaats naar wachtrij…',
@@ -611,7 +619,7 @@ $messages['oc'] = array(
 	'todo-new-item' => 'Article novèl',
 	'todo-issue-summary' => 'Resumit brèu :',
 	'todo-form-details' => 'Precisions :',
-	'todo-form-email' => 'Per recebre las notificacions per corrièr electronic un còp l’article clausurat, inscrivissètz vòstra adreça dins lo quadre çaijós :',
+	'todo-form-email' => 'Per recebre las notificacions per corrièr electronic un còp l’article clausurat, inscrivètz vòstra adreça dins lo quadre çaijós :',
 	'todo-form-submit' => 'Sometre la requèsta',
 );
 

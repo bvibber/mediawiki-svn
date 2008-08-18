@@ -183,6 +183,7 @@ $messages['mr'] = array(
 /** Dutch (Nederlands)
  * @author SPQRobin
  * @author Siebrand
+ * @author Tvdm
  */
 $messages['nl'] = array(
 	'smoothgallery' => 'SmoothGallery',
@@ -198,7 +199,7 @@ Zorg ervoor dat alle afbeeldingen bestaan.
 De volgende afbeeldingen zijn niet aangetroffen: $1',
 	'smoothgallery-invalid-images' => 'De volgende aangevraagde afbeeldingen hadden een ongeldig type: $1',
 	'smoothgallery-unexpected-error' => 'Er is een onverwachte fout opgetreden. Dien alstublieft een foutrapport in.',
-	'smoothgallery-javascript-disabled' => 'Om deze galerij goed te bekijken dient JavaScript ingeschakeld te zijn.',
+	'smoothgallery-javascript-disabled' => 'JavaScript dient ingeschakeld te zijn om deze galerij goed te kunnen bekijken.',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)

@@ -25,3 +25,8 @@ $aliases['nl'] = array(
 	'PurgeCache' => array( 'CacheLegen' ),
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
+$aliases['no'] = array(
+	'PurgeCache' => array( 'Oppdater mellomlager' ),
+);
+

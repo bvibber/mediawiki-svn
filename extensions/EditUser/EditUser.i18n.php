@@ -306,6 +306,19 @@ $messages['hil'] = array(
 	'edituser-dosearch' => 'Pangita-a',
 );
 
+/** Croatian (Hrvatski)
+ * @author Dalibor Bosits
+ */
+$messages['hr'] = array(
+	'edituser-desc' => 'Omogućava suradnicima s pripadajućim pravom uređivanje postavki drugih suradnika',
+	'edituser' => 'Uredi suradnika',
+	'edituser-logout' => 'Odjavi suradnika',
+	'edituser-username' => 'Ime',
+	'edituser-dosearch' => 'Traži',
+	'edituser-nouser' => 'Traži suradnik ne postoji',
+	'edituser-exempt' => 'Traženi suradnik se ne može uređivati',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

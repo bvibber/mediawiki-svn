@@ -13,8 +13,23 @@ $aliases['en'] = array(
 	'DeleteQueue' => array( 'DeleteQueue' ),
 );
 
+/** Arabic (العربية) */
+$aliases['ar'] = array(
+	'DeleteQueue' => array( 'طابور_الحذف' ),
+);
+
+/** Egyptian Spoken Arabic (مصرى) */
+$aliases['arz'] = array(
+	'DeleteQueue' => array( 'طابور_الحذف' ),
+);
+
 /** Dutch (Nederlands) */
 $aliases['nl'] = array(
 	'DeleteQueue' => array( 'Verwijderingswachtrij', 'Verwijderverzoeken' ),
+);
+
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
+$aliases['no'] = array(
+	'DeleteQueue' => array( 'Slettingskø' ),
 );
 

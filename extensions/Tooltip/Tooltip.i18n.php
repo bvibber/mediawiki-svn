@@ -110,9 +110,10 @@ $messages['lb'] = array(
 
 /** Dutch (Nederlands)
  * @author SPQRobin
+ * @author Tvdm
  */
 $messages['nl'] = array(
-	'tooltip-desc' => 'voegt de tags <nowiki><tooltip></nowiki> en <nowiki>{{#tooltip:}}</nowiki> toe',
+	'tooltip-desc' => 'Voegt de tags <nowiki><tooltip></nowiki> en <nowiki>{{#tooltip:}}</nowiki> toe',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)

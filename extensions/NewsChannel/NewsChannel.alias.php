@@ -32,3 +32,8 @@ $aliases['nl'] = array(
 	'NewsChannel' => array( 'Nieuwskanaal' ),
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
+$aliases['no'] = array(
+	'NewsChannel' => array( 'Nyhetskanal' ),
+);
+

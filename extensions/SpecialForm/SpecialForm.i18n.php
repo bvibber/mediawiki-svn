@@ -134,6 +134,7 @@ $messages['bg'] = array(
 );
 
 /** Czech (Česky)
+ * @author Li-sung
  * @author Matěj Grabovský
  */
 $messages['cs'] = array(
@@ -151,7 +152,7 @@ $messages['cs'] = array(
 	'formbadpagenametext' => "Údaj formuláře, který jste zadali tvoří chybný název stránky - ''$1''.",
 	'formrequiredfieldpluralerror' => 'Tento formulář vyžaduje vyplnění polí $1. Prosím, vyplňte je.',
 	'formrequiredfielderror' => 'Tento formulář vyžaduje vyplnění pole $1. Prosím, vyplňte ho.',
-	'formsavesummary' => 'Nová stránka pomocí [[Special:Form/$1]]',
+	'formsavesummary' => 'Nová stránka pomocí [[Special:Form/$1|formuláře $1]]',
 	'formsaveerror' => 'Chyba při ukládání formuláře',
 	'formsaveerrortext' => "Při ukládání formuláře se vyskytla neznámá chyba: ''$1''.",
 );
@@ -386,6 +387,25 @@ $messages['km'] = array(
  */
 $messages['ksh'] = array(
 	'form-desc' => 'En [[Special:Form|Schnettstell met Fommulaare]] fö neu Sigge aanzefange.',
+	'form' => 'Fommulaa',
+	'formnoname' => 'Keine Name för en Fommulaa',
+	'formnonametext' => 'Do moß ene Name för dat Fommulaa aanjevve, en dä Aat wi „{{ns:Special}}:Form/Fommulaaname“.',
+	'formbadname' => 'Ene verkeehte Name fö dat Fommulaa',
+	'formbadnametext' => 'Mer han kei Fommulaa met dämm Name.',
+	'formpattern' => '$1-Fommulaa',
+	'formtitlepattern' => 'Donn neu $1 dobei',
+	'formsave' => 'Afspeichere',
+	'formindexmismatch' => 'Dat Fommulaa hee hät unejaal fill Namens-Muster un Schablone, aff dä Nommer $1.',
+	'formarticleexists' => 'Die Sigg jitt et ald',
+	'formarticleexiststext' => 'Di Sigg „[[$1]]“ es ald doh.',
+	'formbadpagename' => 'Dat es keine Name för en Sigg',
+	'formbadrecaptcha' => 'Ferkeehte Wäät för e widderhollt Kaptache. Moß De norr_ens versöke.',
+	'formbadpagenametext' => 'Di enjejovve Date fun dämm Fommulaa jevve „[[$1]]“ — dat es enne kapodde Name för en Sigg.',
+	'formrequiredfieldpluralerror' => 'De Felder $1 möße aanjejovve wäde. Donn se ußfölle.',
+	'formrequiredfielderror' => 'Dat Feld $1 moß aanjejovve wäde. Donn et ußfölle.',
+	'formsavesummary' => 'En neu Sigg, di op dämm [[Special:Form/$1|Fommulaa $1]] opbout.',
+	'formsaveerror' => 'Fäähler beim Fommulaa afspeichere',
+	'formsaveerrortext' => 'Mer hatte ene Fähler — de Aat es onbikannt — beim Afspeichere fun de Sigg „$1“.',
 );
 
 /** Latin (Latina)
@@ -478,6 +498,7 @@ $messages['nds'] = array(
 
 /** Dutch (Nederlands)
  * @author Siebrand
+ * @author Tvdm
  */
 $messages['nl'] = array(
 	'form-desc' => "Een [[Special:Form|formulierinterface]] om nieuwe pagina's te starten",
@@ -486,7 +507,7 @@ $messages['nl'] = array(
 	'formnonametext' => 'Geef een formuliernaam op, bijvoorbeeld "Special:Form/Formuliernaam".',
 	'formbadname' => 'Ongeldige formuliernaam',
 	'formbadnametext' => 'Er bestaat geen formulier met die naam.',
-	'formpattern' => '$1-form',
+	'formpattern' => '$1-formulier',
 	'formtitlepattern' => 'Voeg nieuw $1 toe',
 	'formsave' => 'Opslaan',
 	'formindexmismatch-title' => 'Naampatroon- en sjabloonmismatch',

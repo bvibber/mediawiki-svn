@@ -100,6 +100,11 @@ $aliases['ht'] = array(
 	'ViewConfig' => array( 'WèKonfig' ),
 );
 
+/** Hungarian (Magyar) */
+$aliases['hu'] = array(
+	'Extensions' => array( 'Kiegészítők' ),
+);
+
 /** Indonesian (Bahasa Indonesia) */
 $aliases['id'] = array(
 	'Configure' => array( 'Konfigurasi' ),

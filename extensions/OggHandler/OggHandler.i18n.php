@@ -1096,6 +1096,7 @@ $messages['it'] = array(
 );
 
 /** Japanese (日本語)
+ * @author Aotake
  * @author JtFuruhata
  * @author Kahusi
  */
@@ -1116,8 +1117,8 @@ $messages['ja'] = array(
 	'ogg-play-sound' => '音声を再生',
 	'ogg-no-player' => '申し訳ありません、あなたのシステムには対応する再生ソフトウェアがインストールされていないようです。<a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">ここからダウンロードしてください</a>。',
 	'ogg-no-xiphqt' => 'QuickTime用XiphQTコンポーネントがインストールされていないようです。QuickTimeでOggファイルを再生するには、このコンポーネントが必要です。<a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">ここからXiphQTをダウンロードする</a>か、別の再生ソフトをインストールしてください。',
-	'ogg-player-videoElement' => '<video> element',
-	'ogg-player-oggPlugin' => 'Oggプラグイン',
+	'ogg-player-videoElement' => 'ネイティヴ・ブラウザをサポート',
+	'ogg-player-oggPlugin' => 'ブラウザ・プラグイン',
 	'ogg-player-thumbnail' => '静止画像のみ',
 	'ogg-player-soundthumb' => 'プレーヤー無し',
 	'ogg-player-selected' => '(選択)',

@@ -1044,6 +1044,7 @@ $messages['hil'] = array(
  * @author Dalibor Bosits
  */
 $messages['hr'] = array(
+	'configure-js-remove' => 'Izbriši',
 	'configure-section-category' => 'Kategorije',
 );
 

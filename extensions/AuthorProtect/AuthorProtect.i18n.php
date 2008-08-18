@@ -332,6 +332,25 @@ $messages['hi'] = array(
 	'restriction-level-author' => 'लेखक-सुरक्षित',
 );
 
+/** Croatian (Hrvatski)
+ * @author Dalibor Bosits
+ */
+$messages['hr'] = array(
+	'authorprotect' => 'Zaštiti stranicu od ne-autora',
+	'authorprotect-desc' => 'Omogućava autoru stranice zaštiti istu stranicu od drugih suradnika',
+	'authorprotect-notauthor' => 'Vi niste autor ove stranice',
+	'authorprotect-confirm' => 'Promijeni razinu zaštite',
+	'authorprotect-edit' => 'Samo za autore',
+	'authorprotect-move' => 'Samo za autore',
+	'authorprotect-expiry' => 'Trajanje zaštite',
+	'authorprotect-reason' => 'Razlog',
+	'authorprotect-intro' => 'Ovdje možete zaštiti stranicu za sve koji nisu autori',
+	'authorprotect-success' => 'Zaštićivanje uspješno!',
+	'authorprotect-failure' => 'Zaštićivanje neuspješno',
+	'protect-level-author' => 'Zaštiti za ne-autore',
+	'restriction-level-author' => 'Samo za autore',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

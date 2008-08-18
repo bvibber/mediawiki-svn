@@ -9,6 +9,13 @@ $messages['en'] = array(
 	'woopra-desc' => 'Allows for the [http://www.woopra.com/ Woopra Live Tracking Software] to work for your MediaWiki installation',
 );
 
+/** Message documentation (Message documentation)
+ * @author Purodha
+ */
+$messages['qqq'] = array(
+	'woopra-desc' => 'Short description of this extension, shown on [[Special:Version]]. Do not translate or change links.',
+);
+
 /** Afrikaans (Afrikaans)
  * @author Naudefj
  */
@@ -77,6 +84,13 @@ $messages['km'] = array(
 	'woopra-desc' => 'អនុញ្ញាតអោយ [http://www.woopra.com/ Woopra Live Tracking Software] ធ្វើការតំលើងមេឌាវិគី(MediaWiki)របស់អ្នក។',
 );
 
+/** Ripoarisch (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'woopra-desc' => 'Määt et müjjelesch, de <i lang="en">[http://www.woopra.com/ Woopra Live Tracking Software]</i> för de MediaWiki Installazjuhn ärbeide ze lohße.',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
@@ -93,9 +107,10 @@ $messages['mr'] = array(
 
 /** Dutch (Nederlands)
  * @author Siebrand
+ * @author Tvdm
  */
 $messages['nl'] = array(
-	'woopra-desc' => 'Maakt het mogelijk om de [http://www.woopra.com/ Woopra Live Tracking software] te gebruiken voor MediaWiki',
+	'woopra-desc' => 'Maakt het mogelijk om de [http://www.woopra.com/ Woopra Live Tracking-software] te gebruiken voor MediaWiki',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)

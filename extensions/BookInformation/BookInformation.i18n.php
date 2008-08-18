@@ -482,11 +482,12 @@ $messages['gv'] = array(
 
 /** Hebrew (עברית)
  * @author Agbad
+ * @author Rotemliss
  */
 $messages['he'] = array(
-	'bookinfo-desc' => 'הרחבת [[Special:Booksources|הדף המיוחד משאבי ספרות חיצוניים]] עם מידע משרת האתר',
+	'bookinfo-desc' => 'הרחבת [[Special:Booksources|הדף המיוחד משאבי ספרות חיצוניים]] באמצעות מידע משירות אינטרנטי',
 	'bookinfo-result-title' => 'כותרת:',
-	'bookinfo-result-author' => 'יוצר:',
+	'bookinfo-result-author' => 'מחבר:',
 	'bookinfo-result-publisher' => 'מוציא לאור:',
 	'bookinfo-result-year' => 'שנה:',
 );
@@ -663,6 +664,7 @@ $messages['it'] = array(
 );
 
 /** Japanese (日本語)
+ * @author Aotake
  * @author JtFuruhata
  */
 $messages['ja'] = array(

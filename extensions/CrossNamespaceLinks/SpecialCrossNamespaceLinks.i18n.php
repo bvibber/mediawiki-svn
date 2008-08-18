@@ -384,6 +384,7 @@ Sono esclusi i collegamenti verso i namespace {{ns:special}}, {{ns:talk}}, {{ns:
 );
 
 /** Japanese (日本語)
+ * @author Aotake
  * @author JtFuruhata
  */
 $messages['ja'] = array(

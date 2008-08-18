@@ -39,3 +39,8 @@ $aliases['nl'] = array(
 	'UserStats' => array( 'Gebruikersgegevens', 'Gebruikersstatistieken' ),
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
+$aliases['no'] = array(
+	'UserStats' => array( 'Brukerstatistikk' ),
+);
+

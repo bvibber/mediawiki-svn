@@ -37,3 +37,8 @@ $aliases['nl'] = array(
 	'Contributors' => array( 'Bijdragers' ),
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
+$aliases['no'] = array(
+	'Contributors' => array( 'Bidragsytere' ),
+);
+

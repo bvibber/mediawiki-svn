@@ -388,12 +388,13 @@ $messages['bg'] = array(
 );
 
 /** Czech (Česky)
+ * @author Li-sung
  * @author Matěj Grabovský
  */
 $messages['cs'] = array(
 	'viewapc' => 'Informace o APC',
 	'viewapc-desc' => '[[Special:ViewAPC|Zobrazit a spravovat vyrovnávací paměť APC]] pomocí MediaWiki',
-	'right-apc' => 'Použít všechny funkce na Special:ViewAPC',
+	'right-apc' => 'Použít všechny funkce na [[Special:ViewAPC]].',
 	'viewapc-apc-not-available' => 'Nejsou dostupné žádné informace o vyrovnávací paměti.
 Zdá se, že APC neběží.',
 	'viewapc-clear-confirm' => 'Opravdu chcete vyčistit vyrovnávací paměť?',

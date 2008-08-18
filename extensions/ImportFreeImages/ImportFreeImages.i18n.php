@@ -203,7 +203,7 @@ Para facelo, por favor, obteña a clave API [http://www.flickr.com/services/api/
 	'importfreeimages_next' => 'Seguinte $1',
 	'importfreeimages_filefromflickr' => '$1 polo usuario <b>[$2]</b> de flickr. Orixinal URL',
 	'importfreeimages_promptuserforfilename' => 'Introduza un nome de ficheiro de destino:',
-	'importfreeimages_returntoform' => "Ou, prema <a href='$1'>here</a> para voltar á súa procura de resultados",
+	'importfreeimages_returntoform' => "Ou prema <a href='$1'>aquí</a> para voltar á súa procura de resultados",
 );
 
 /** Manx (Gaelg)

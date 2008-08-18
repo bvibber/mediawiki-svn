@@ -691,6 +691,7 @@ $messages['it'] = array(
 );
 
 /** Japanese (日本語)
+ * @author Aotake
  * @author JtFuruhata
  * @author Marine-Blue
  * @author Suisui
@@ -698,7 +699,7 @@ $messages['it'] = array(
 $messages['ja'] = array(
 	'newuserlogpage' => 'アカウント作成記録',
 	'newuserlogpagetext' => '以下は最近作成されたアカウントの一覧です。',
-	'newuserlog-desc' => '[[Special:Log/newusers|アカウント作成記録]]を[[Special:Log|ログ]]に追加する',
+	'newuserlog-desc' => '[[Special:Log/newusers|アカウント作成記録]]を追加する',
 	'newuserlog-byemail' => 'パスワードを電子メールで送信しました',
 	'newuserlog-create-entry' => '新規利用者',
 	'newuserlog-create2-entry' => 'アカウント $1 が作成されました',

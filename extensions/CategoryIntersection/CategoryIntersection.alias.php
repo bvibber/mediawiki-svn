@@ -70,8 +70,9 @@ $aliases['hsb'] = array(
 	'CategoryIntersection'=> array( 'Kategorijowe prěčnišćo' ),
 );
 
+/** Hungarian (Magyar) */
 $aliases['hu'] = array(
-	'CategoryIntersection'=> array( 'Kategóriák metszete' ),
+	'CategoryIntersection' => array( 'Kategóriák metszete' ),
 );
 
 $aliases['ia'] = array(
@@ -106,12 +107,14 @@ $aliases['no'] = array(
 	'CategoryIntersection' => array( 'Kategorisnitt' ),
 );
 
+/** Occitan (Occitan) */
 $aliases['oc'] = array(
-	'CategoryIntersection'=> array( 'Recopatge de categorias' ),
+	'CategoryIntersection' => array( 'Recopatge de categorias' ),
 );
 
+/** Polish (Polski) */
 $aliases['pl'] = array(
-	'CategoryIntersection'=> array( 'Część wspólna kategorii' ),
+	'CategoryIntersection' => array( 'Część wspólna kategorii' ),
 );
 
 $aliases['pt'] = array(

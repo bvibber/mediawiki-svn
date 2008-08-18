@@ -1857,6 +1857,8 @@ $wdMessages['krj'] = array(
  * @author Purodha
  */
 $wdMessages['ksh'] = array(
+	'datasearch' => 'Wikidata: Date söke',
+	'langman_title' => 'Sproche-Verwaldung',
 	'languages' => 'Sproche verwallde för Wikidata.',
 	'ow_save' => 'Afspeichere',
 	'ow_history' => 'Versione',
@@ -1864,8 +1866,63 @@ $wdMessages['ksh'] = array(
 	'ow_noedit_title' => 'De darfs hee nit ändere',
 	'ow_noedit' => 'Do häs kei Jenehmijung, öm em Date-Knubbel „$1“ jet ze ändere.
 Jangk Der de [[{{MediaWiki:Ow editing policy url}}|Räjelle un wat nüdesch es zom Ändere]] beloore.',
+	'ow_uipref_datasets' => 'Standat-Ansich',
+	'ow_uiprefs' => 'Wikidata',
+	'ow_none_selected' => '<Nix ußjewählt>',
+	'ow_conceptmapping_help' => '<p>Müjjelesche Akßjuhne: <ul>
+<li><code>&action=insert&<data_context_prefix>=<defined_id>&... </code> donn en Afbelldung dobei</li>
+<li><code>&action=get&concept=<concept_id> </code> liß en Afbelldung zerök</li>
+<li><code>&action=list_sets </code> jif en Leß met müjjelesche data context prefixes uß, un woh se sesch drop betrecke.</li>
+<li><code>&action=get_associated&dm=<defined_meaning_id>&dc=<dataset_context_prefix> </code> jif all andere defined meanings uß för ein bestemmpte defined meaning en enem Konzep</li>
+<li><code>&action=help </code> Zeich Hülp.</li>
+</ul></p>',
+	'ow_conceptmapping_uitext' => '<p>Met em <i lang="en">Concept Mapping</i> läsch mer faß, wat för en <i lang="en">DefinedMeaning</i> em eine <i lang="en">Dataset</i> desellve sin, wi ander <i lang="en">DefinedMeanings</i> en andere <i lang="en">Datasets</i>.</p>',
+	'ow_conceptmapping_no_action_specified' => 'Deit mer leid, mer weße nit, wie „$1“ don.',
+	'ow_dm_not_present' => 'nit enjejovve',
+	'ow_dm_not_found' => 'nit en de Datebank, udder kappott',
+	'ow_mapping_successful' => 'Alle met [{{int:Ow dm OK}}] makeete Fellder sin zojeoodenet.<br />',
+	'ow_mapping_unsuccessful' => 'Mer möße ald zwei <i lang="en">DefinedMeanings</i> han, ih dat mer se meddenein verlinke kann.',
+	'ow_will_insert' => 'Dat hee weed enjesaz:',
+	'ow_contents_of_mapping' => 'Ennhallde fun de Afbelldung',
+	'ow_available_contexts' => 'Müjjelesche Zosammehäng',
+	'ow_add_concept_link' => 'Ene Link op annder Konzeppte dobei don',
+	'ow_concept_panel' => 'Konzep Schaltfläsch',
+	'ow_dm_badtitle' => 'Di Sigg hee zeich nit op en DefinedMeaning (Konzepp).
+Don ens noh dä Webaddress loore.',
+	'ow_dm_missing' => 'Di Sigg hee zeich op en <i lang="en">DefinedMeaning</i> (Konzepp) wat et nit jit.
+Don ens noh dä Webaddress loore.',
+	'ow_Annotation' => 'Aanmerkung',
+	'ow_ApproximateMeanings' => 'Onjefähr Bedügninge',
+	'ow_ClassAttributeAttribute' => 'Eijeschaff',
+	'ow_ClassAttributeType' => 'Tüp',
+	'ow_Collection' => 'Aansamlung',
+	'ow_DefinedMeaningAttributes' => 'Aanmerkung',
+	'ow_ExactMeanings' => 'Akoraat Bedüggninge',
+	'ow_Expression' => 'Ußdrok',
+	'ow_ExpressionMeanings' => 'Däm Ußdrok sing Bedüggninge',
+	'ow_Expressions' => 'Ußdrök',
+	'ow_GotoSource' => 'Jangk noh de Quell',
 	'ow_Language' => 'Sproch',
+	'ow_LevelAnnotation' => 'Aanmerkung',
+	'ow_OptionAttribute' => 'Eijeschaff',
+	'ow_Spelling' => 'Schriefwieß',
+	'ow_Source' => 'Quell',
+	'ow_Text' => 'Tex',
+	'ow_TranslatedTextAttribute' => 'Eijeschaff',
+	'ow_TranslatedText' => 'Övversäzte Tex',
+	'ow_TranslatedTextAttributeValue' => 'Tex',
+	'ow_TranslatedTextAttributeValues' => 'Övvesazbaa Tex',
+	'ow_LinkAttribute' => 'Eiejeschaff',
 	'ow_LinkAttributeValues' => 'Links',
+	'ow_Property' => 'Eijeschaff',
+	'ow_Value' => 'Wäät',
+	'ow_meaningsoftitle' => 'Bedüggninge fun „$1“',
+	'ow_meaningsofsubtitle' => '<em>Wikilink:</em> [[$1]]',
+	'ow_Permission_denied' => '<h2>Nit Zojelohße</h2>',
+	'ow_copy_no_action_specified' => 'Beß esu joot un donn en Akßjuhn faßlääje',
+	'ow_copy_help' => 'Künnt sinn, mer künn Der spääder ens hellefe.',
+	'ow_copy_unsuccessful' => '<h3>Et Kopeere es donevve jejange</h3>
+Kein Kopie es jemaat woode.',
 );
 
 /** Kurdish (Latin) (Kurdî / كوردی (Latin))
@@ -2192,6 +2249,7 @@ $wdMessages['nds'] = array(
  * @author GerardM
  * @author SPQRobin
  * @author Siebrand
+ * @author Tvdm
  */
 $wdMessages['nl'] = array(
 	'datasearch' => 'Wikidata: Gegevens zoeken',
@@ -2215,8 +2273,8 @@ Zie [[{{MediaWiki:Ow editing policy url}}|ons bewerkingsbeleid]].',
 </ul></p>',
 	'ow_conceptmapping_uitext' => '<p>ConceptMapping maakt het mogelijk om bepaalde betekenissen in meerdere gegevenssets als identiek te markeren.</p>',
 	'ow_conceptmapping_no_action_specified' => 'Sorry, maar ik weet niet hoe ik kan "$1".',
-	'ow_dm_OK' => 'Ok',
-	'ow_dm_not_present' => 'niet ingevoegd',
+	'ow_dm_OK' => 'OK',
+	'ow_dm_not_present' => 'niet ingevoerd',
 	'ow_dm_not_found' => 'niet aangetroffen in de database of verminkt',
 	'ow_mapping_successful' => 'Wat met [OK] gemarkeerd is, is gemapt.<br />',
 	'ow_mapping_unsuccessful' => 'Minstens twee bepaalde betekenissen zijn nodig voordat er gelinkt kan worden.',
@@ -2225,12 +2283,13 @@ Zie [[{{MediaWiki:Ow editing policy url}}|ons bewerkingsbeleid]].',
 	'ow_available_contexts' => 'Beschikbare contexten',
 	'ow_add_concept_link' => 'Link toevoegen aan andere concepten',
 	'ow_concept_panel' => 'Conceptpaneel',
-	'ow_dm_badtitle' => 'Deze pagina wijst niet naar enige BepaaldeBetekenis (concept). Controleer aub het webadres.',
+	'ow_dm_badtitle' => 'Deze pagina wijst niet naar enige BepaaldeBetekenis (concept).
+Controleer het webadres.',
 	'ow_dm_missing' => 'Deze pagina lijkt te wijzen naar een niet-bestaande DefinedMeaning (concept). Controleer alstublieft het webadres.',
 	'ow_AlternativeDefinition' => 'Alternatieve definitie',
 	'ow_AlternativeDefinitions' => 'Alternatieve definities',
 	'ow_Annotation' => 'Annotatie',
-	'ow_ApproximateMeanings' => 'Niet exacte betekenissen',
+	'ow_ApproximateMeanings' => 'Niet-exacte betekenissen',
 	'ow_ClassAttributeAttribute' => 'Attribuut',
 	'ow_ClassAttributes' => 'Klasseattributen',
 	'ow_ClassAttributeLevel' => 'Niveau',
@@ -2277,7 +2336,7 @@ Zie [[{{MediaWiki:Ow editing policy url}}|ons bewerkingsbeleid]].',
 	'ow_Value' => 'Waarde',
 	'ow_meaningsoftitle' => 'Betekenissen van "$1"',
 	'ow_meaningsofsubtitle' => '<em>Wikilink:</em> [[$1]]',
-	'ow_Permission_denied' => '<h2>TOESTEMMING GEWEIGERD</h2>',
+	'ow_Permission_denied' => '<h2>Toestemming geweigerd</h2>',
 	'ow_copy_no_action_specified' => 'Geef alstublieft een handeling aan',
 	'ow_copy_help' => 'Misschien helpen we je ooit.',
 	'ow_please_proved_dmid' => 'Uw invoer mist een "?dmid=<ID>" (dmid=Defined Meaning-ID)<br />Neem alstublieft contact op met een systeembeheerder.',

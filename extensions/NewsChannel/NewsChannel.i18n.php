@@ -47,6 +47,18 @@ $messages['ar'] = array(
 	'newschannel_submit_button' => 'إنشاء التلقيم',
 );
 
+/** Asturian (Asturianu)
+ * @author Esbardu
+ */
+$messages['ast'] = array(
+	'newschannel' => "Canal d'anuncies",
+	'newschannel-desc' => "Implementa una canal d'anuncies como una [[Special:NewsChannel|páxina especial]] dinámica",
+	'newschannel_format' => 'Formatu:',
+	'newschannel_limit' => 'Llímite:',
+	'newschannel_include_category' => 'Categoría adicional:',
+	'newschannel_exclude_category' => 'Escluyir categoría:',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  */

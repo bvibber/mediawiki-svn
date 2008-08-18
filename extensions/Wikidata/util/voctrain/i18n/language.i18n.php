@@ -1032,6 +1032,7 @@ $messages['nap'] = array(
  * @author GerardM
  * @author SPQRobin
  * @author Siebrand
+ * @author Tvdm
  */
 $messages['nl'] = array(
 	'voctrain_Hello_World' => 'HALLO WIKI!',
@@ -1054,7 +1055,7 @@ $messages['nl'] = array(
 	'voctrain_Answers' => 'Antwoorden',
 	'voctrain_start_exercise' => 'oefening starten',
 	'voctrain_collection' => 'collectie',
-	'voctrain_ISO_639_3_format' => 'ISO-639-3 formaat',
+	'voctrain_ISO_639_3_format' => 'ISO 639-3-formaat',
 	'voctrain_There_are_questions_remaining_questions_remaining_out_of_a_total_of_questions_total_' => 'Er zijn nog %questions_remaining vragen over, uit een totaal van %questions_total.',
 	'voctrain_Definition' => 'Definitie',
 	'voctrain_Dictionary_definition_to_help_you' => 'Woordenboekdefinitie om u te helpen',
@@ -1073,7 +1074,7 @@ $messages['nl'] = array(
 	'voctrain_list_of_questions_and_answers' => 'lijst van vragen en antwoorden',
 	'voctrain_Answer_s_' => 'Antwoord(en)',
 	'voctrain_logout' => 'afmelden',
-	'voctrain_Powered_by' => 'Aangedreven door',
+	'voctrain_Powered_by' => 'Mogelijk gemaakt door',
 	'voctrain_Omegawiki' => 'OmegaWiki',
 	'voctrain_Exercise_complete' => 'Oefening voltooid',
 	'voctrain_Exercise_terminated' => 'Oefening afgebroken',
@@ -1085,10 +1086,10 @@ $messages['nl'] = array(
 	'voctrain_Switch_language' => 'Taal wijzigen',
 	'voctrain_Language' => 'Taal',
 	'voctrain_Log_in' => 'Aanmelden',
-	'voctrain_Omegawiki_vocabulary_trainer' => 'OmegaWiki woordenschattrainer',
+	'voctrain_Omegawiki_vocabulary_trainer' => 'OmegaWiki-woordenschattrainer',
 	'voctrain_Definitions' => 'Definities',
 	'voctrain_Could_not_create_new_user' => 'Het was niet mogelijk een nieuwe gebruiker aan te maken',
-	'voctrain_Type_a_username_and_optional_password_or_try_a_different_username_' => 'Geef een gebruikersnaam en wachtwoord in (optineel), of probeer een andere gebruikersnaam',
+	'voctrain_Type_a_username_and_optional_password_or_try_a_different_username_' => 'Geef een gebruikersnaam en wachtwoord in (optineel) of probeer een andere gebruikersnaam',
 	'voctrain_Vocview' => 'Vocabulairebrowser',
 	'voctrain_Dictionary_definitions' => 'woordenboekdefinities',
 	'voctrain_Translation' => 'Vertaling',

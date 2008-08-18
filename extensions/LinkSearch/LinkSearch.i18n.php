@@ -536,7 +536,7 @@ $messages['hil'] = array(
  * @author SpeedyGonsales
  */
 $messages['hr'] = array(
-	'linksearch' => 'Pretraživanje poveznica (s članaka na wikiju)',
+	'linksearch' => 'Pretraživanje vanjskih poveznica',
 	'linksearch-desc' => '[[Special:Linksearch|Pronađi stranice s vanjskim poveznicama]] koje odgovaraju određenom uzorku',
 	'linksearch-pat' => 'Uzorak traženja:',
 	'linksearch-ns' => 'Imenski prostor:',

@@ -182,7 +182,7 @@ $messages['bg'] = array(
 	'changeauthor-search-box' => 'Търсене на редакция',
 	'changeauthor-pagename-or-revid' => 'Име на страница или номер на редакция:',
 	'changeauthor-comment' => 'Коментар:',
-	'changeauthor-changeauthors-multi' => 'Промяна на автор(ите)',
+	'changeauthor-changeauthors-multi' => 'Промяна на {{PLURAL:$1|автора|авторите}}',
 	'changeauthor-explanation-multi' => "Формулярът по-долу служи за промяна на авторите на отделни редакции. Необходимо е да се промени едно или повече потребителско име от списъка по-долу, да се въведе коментар (незадължително) и натисне бутона 'Промяна на автор(ите)'.",
 	'changeauthor-changeauthors-single' => 'Промяна на автора',
 	'changeauthor-explanation-single' => "Формулярът по-долу се използва за промяна на автора на редакция. Необходимо е да се промени потребителското име, да се въведе коментар (незадължително) и да се натисне бутона 'Промяна на автор(ите)'.",
@@ -277,7 +277,7 @@ $messages['cs'] = array(
 	'changeauthor-pagename-or-revid' => 'Název stránky nebo ID revize:',
 	'changeauthor-pagenameform-go' => 'Vykonat',
 	'changeauthor-comment' => 'Komentář:',
-	'changeauthor-changeauthors-multi' => 'Změnit autora (autory)',
+	'changeauthor-changeauthors-multi' => 'Změnit {{plural:$1|autora|autory}}',
 	'changeauthor-explanation-multi' => 'Pomocí tohoto formuláře můžete změnit autora revize stránky. Jednoduše změňte jedno nebo více uživatelských jmen v seznamu níže, přidejte komentář (nepovinné) a klikněte na tlačítko „Změnit autora“.',
 	'changeauthor-changeauthors-single' => 'Změnit autora',
 	'changeauthor-explanation-single' => 'Pomocí tohoto formuláře můžete změnit autora revize stránky. Jednoduše změňte jméno uživatele v seznamu níže, přidejte komentář (nepovinné) a klikněte na tlačítko „Změnit autora“.',
@@ -315,7 +315,7 @@ $messages['de'] = array(
 	'changeauthor-pagename-or-revid' => 'Seitenname oder Versionsnummer:',
 	'changeauthor-pagenameform-go' => 'Suche',
 	'changeauthor-comment' => 'Kommentar:',
-	'changeauthor-changeauthors-multi' => 'Ändere Autor(en)',
+	'changeauthor-changeauthors-multi' => 'Ändere {{PLURAL:$1|Autor|Autoren}}',
 	'changeauthor-explanation-multi' => 'Mit diesem Formular kannst du die Autoren der Versionen ändern. Ändere einfach einen oder mehrerer Autorenname in der Liste, ergänze einen Kommentar (optional) und klicke auf die „Autor ändern“-Schaltfläche',
 	'changeauthor-changeauthors-single' => 'Autor ändern',
 	'changeauthor-explanation-single' => 'Mit diesem Formular kannst du den Autoren einer Version ändern. Ändere einfach den Autorenname in der Liste, ergänze einen Kommentar (optional) und klicke auf die „Autor ändern“-Schaltfläche',
@@ -691,7 +691,7 @@ $messages['it'] = array(
 	'changeauthor-pagename-or-revid' => 'Nome pagina o ID revisione:',
 	'changeauthor-pagenameform-go' => 'Vai',
 	'changeauthor-comment' => 'Commento:',
-	'changeauthor-changeauthors-multi' => 'Modifica autore/i',
+	'changeauthor-changeauthors-multi' => 'Modifica {{PLURAL:$1|autore|autori}}',
 	'changeauthor-explanation-multi' => "Con questo semplice modulo puoi modificare gli autori di revisioni.
 Basta cambiare uno o più nomi utente nell'elenco seguente, aggiungere un commento (se lo ritieni opportuno) e fare clic sul pulsante 'Modifica autore/i'.",
 	'changeauthor-changeauthors-single' => 'Modifica autore',
@@ -711,6 +711,7 @@ Se l'errore dovesse persistere, il database è probabilmente rotto.",
 );
 
 /** Japanese (日本語)
+ * @author Aotake
  * @author JtFuruhata
  */
 $messages['ja'] = array(
@@ -721,7 +722,7 @@ $messages['ja'] = array(
 	'changeauthor-pagename-or-revid' => 'ページ名または特定版ID:',
 	'changeauthor-pagenameform-go' => '検索',
 	'changeauthor-comment' => '編集内容の要約:',
-	'changeauthor-changeauthors-multi' => '変更',
+	'changeauthor-changeauthors-multi' => '$1人の編集者を変更',
 	'changeauthor-explanation-multi' => "このフォームから特定版編集者を変更することができます。一人または複数の利用者名を下のリストから選択し、編集内容の要約を付記し（任意です）、'変更' ボタンを押してください。",
 	'changeauthor-changeauthors-single' => '変更',
 	'changeauthor-explanation-single' => "このフォームから特定版編集者を変更することができます。利用者名を下のリストから選択し、編集内容の要約を付記し（任意です）、'変更' ボタンを押してください。",
@@ -911,7 +912,7 @@ $messages['nl'] = array(
 	'changeauthor-pagename-or-revid' => 'Paginanaam of versienummer:',
 	'changeauthor-pagenameform-go' => 'Gaan',
 	'changeauthor-comment' => 'Toelichting:',
-	'changeauthor-changeauthors-multi' => 'Auteur(s) wijzigen',
+	'changeauthor-changeauthors-multi' => '{{PLURAL:$1|Auteur|Auteurs}} wijzigen',
 	'changeauthor-explanation-multi' => "Met dit formulier kunt u de auteur van een bewerkingsversie wijzigen. Wijzig simpelweg één of meer gebruikersnamen in de lijst hieronder, voeg een toelichting toe (niet verplicht) en klik op de knop 'Auteur(s) wijzigen'.",
 	'changeauthor-changeauthors-single' => 'Auteur wijzigen',
 	'changeauthor-explanation-single' => "Met dit formulier kunt u de auteur van een bewerkingsversie wijzigen. Wijzig simpelweg de gebruikersnaam in het tekstvak hieronder, voeg een toelichting toe (niet verplicht) en klik op de knop 'Auteur wijzigen'.",
@@ -947,7 +948,7 @@ $messages['no'] = array(
 	'changeauthor-pagename-or-revid' => 'Sidenavn eller revisjons-ID:',
 	'changeauthor-pagenameform-go' => 'Gå',
 	'changeauthor-comment' => 'Kommentar:',
-	'changeauthor-changeauthors-multi' => 'Endre opphavsperson(er)',
+	'changeauthor-changeauthors-multi' => 'Endre {{PLURAL:$1|forfatter|forfattere}}',
 	'changeauthor-explanation-multi' => 'Med dette skjemaet kan du endre hvem som angis som opphavspersoner til revisjoner. Bare endre ett eller flere av brukernavnene i listen nedenfor, legg til en (valgfri) kommentar, og klikk knappen «Endre opphavsperson(er)».',
 	'changeauthor-changeauthors-single' => 'Endre opphavsperson',
 	'changeauthor-explanation-single' => 'Med dette skjemaet kan du endre på hvem som angis som opphavspersonen til en revisjon. Bare endre brukernavnet nedenfor, legg til en (valgfri) kommentar, og klikk knappen «Endre opphavsperson».',
@@ -1136,7 +1137,7 @@ $messages['ru'] = array(
 	'changeauthor-pagename-or-revid' => 'Название статьи или идентификатор правки:',
 	'changeauthor-pagenameform-go' => 'Поехали',
 	'changeauthor-comment' => 'Примечание:',
-	'changeauthor-changeauthors-multi' => 'Изменение автора(ов)',
+	'changeauthor-changeauthors-multi' => 'Изменение {{PLURAL:$1|автора|авторов}}',
 	'changeauthor-explanation-multi' => 'С помощью данной формы можно изменить авторов правок. Просто измените ниже одно или несколько имён участников, укажите пояснение (необязательно) и нажмите кнопку «Изменить автора(ов)».',
 	'changeauthor-changeauthors-single' => 'Изменение автора',
 	'changeauthor-explanation-single' => 'С помощью данной формы можно изменить автора правки. Просто измените ниже имя участника, укажите пояснение (необязательно) и нажмите кнопку «Изменить автора».',

@@ -870,6 +870,7 @@ $messages['it'] = array(
 );
 
 /** Japanese (日本語)
+ * @author Aotake
  * @author JtFuruhata
  */
 $messages['ja'] = array(
@@ -877,7 +878,7 @@ $messages['ja'] = array(
 	'badimages-desc' => 'MediaWiki　に「好ましくない画像リスト」機能を追加する',
 	'badimages-add-btn' => '追加',
 	'badimages-added' => '$1 を一覧に追加しました。',
-	'badimages-count' => "この一覧には '''$1''' 個の画像が登録されています。",
+	'badimages-count' => "この問題のある画像一覧には '''$1''' 個の画像が登録されています。",
 	'badimages-name' => '名前:',
 	'badimages-not-added' => '一覧への追加に失敗しました。',
 	'badimages-not-removed' => '一覧からの削除に失敗しました。',

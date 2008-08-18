@@ -212,11 +212,13 @@ $messages['hi'] = array(
 );
 
 /** Croatian (Hrvatski)
+ * @author Dalibor Bosits
  * @author Dnik
  * @author SpeedyGonsales
  */
 $messages['hr'] = array(
 	'block_title_error_page_title' => 'Blokirani naslov',
+	'block_title_error-desc' => 'Omogućava osnovan način za sprečavanje otvaranja i spremanja stranica s određenim nazivom',
 	'block_title_error' => 'Nažalost, naslov ovog članka nije dozvoljeno spremiti.',
 );
 

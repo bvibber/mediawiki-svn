@@ -42,6 +42,11 @@ $aliases['he'] = array(
     'BoardVote' => array( 'בחירות_לחבר_הנאמנים' )
 );
 
+/** Hungarian (Magyar) */
+$aliases['hu'] = array(
+	'BoardVote' => array( 'Kuratóriumválasztás' ),
+);
+
 /** Luxembourgish (Lëtzebuergesch) */
 $aliases['lb'] = array(
 	'BoardVote' => array( 'Wiel fir de Verwaltungsrot' ),
@@ -50,5 +55,10 @@ $aliases['lb'] = array(
 /** Dutch (Nederlands) */
 $aliases['nl'] = array(
 	'BoardVote' => array( 'Bestuursverkiezing' ),
+);
+
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
+$aliases['no'] = array(
+	'BoardVote' => array( 'Styrevalg' ),
 );
 

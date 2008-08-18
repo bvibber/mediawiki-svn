@@ -111,9 +111,10 @@ $messages['lb'] = array(
 
 /** Dutch (Nederlands)
  * @author Siebrand
+ * @author Tvdm
  */
 $messages['nl'] = array(
-	'tab0-desc' => 'Voegt het tabblad "0" toe, dat verwijst naar de bewerkingspagina voor het bovenste deel van die pagina',
+	'tab0-desc' => 'Voegt het tabblad "0" toe dat verwijst naar de bewerkingspagina voor het bovenste deel van die pagina',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)

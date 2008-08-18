@@ -46,6 +46,14 @@ $messages['ar'] = array(
 	'deletedcontributions-desc' => 'يعطي الإداريين القدرة على [[Special:DeletedContributions|تصفح مساهمات مستخدم ما المحذوفة]]',
 );
 
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Ramsis II
+ */
+$messages['arz'] = array(
+	'deletedcontributions' => 'مساهمات اليوزر الممسوحة',
+	'deletedcontributions-desc' => 'بيدي السيسوبات امكانية [[Special:DeletedContributions|تصفح التعديلات الممسوحة]] بتاعة اي يوزر',
+);
+
 /** Asturian (Asturianu)
  * @author Esbardu
  */

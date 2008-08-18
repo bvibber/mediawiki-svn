@@ -27,8 +27,18 @@ $aliases['arz'] = array(
 	'Badimages' => array( 'صور_سيئة' ),
 );
 
+/** Hungarian (Magyar) */
+$aliases['hu'] = array(
+	'Badimages' => array( 'Hibás képek' ),
+);
+
 /** Dutch (Nederlands) */
 $aliases['nl'] = array(
 	'Badimages' => array( 'ZwarteLijstAfbeeldingen' ),
+);
+
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
+$aliases['no'] = array(
+	'Badimages' => array( 'Dårlige bilder' ),
 );
 

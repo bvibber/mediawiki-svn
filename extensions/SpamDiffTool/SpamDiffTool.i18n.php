@@ -391,14 +391,15 @@ $messages['nds'] = array(
 /** Dutch (Nederlands)
  * @author SPQRobin
  * @author Siebrand
+ * @author Tvdm
  */
 $messages['nl'] = array(
-	'spamdifftool' => 'Zwarte Lijst beheren',
+	'spamdifftool' => 'Zwarte lijst tegen spam beheren',
 	'spamdifftool-desc' => 'Maakt het mogelijk nieuwe regels aan de zwarte lijst voor spam toe te voegen op basis van verschillen',
-	'spamdifftool_cantedit' => 'Sorry - u hebt geen rechten om de Zwarte Lijst tegen Spam te bewerken.',
-	'spamdifftool_notext' => "Er is geen tekst om toe te voegen aan de Zwarte Lijst tegen spam. Klik <a href='$1'>hier</a> om door te gaan.",
-	'spamdifftool_confirm' => "Bevestig dat u deze namen aan de Zwarte Lijst tegen spam  wil toevoegen. (Klik <a href='$1' target='new'>hier</a> om een probleem te melden.)",
-	'spamdifftool_summary' => 'Toevoegen aan de Zwarte Lijst tegen spam',
+	'spamdifftool_cantedit' => 'U hebt geen rechten om de zwarte lijst tegen spam te bewerken.',
+	'spamdifftool_notext' => "Er is geen tekst om toe te voegen aan de zwarte lijst tegen spam. Klik <a href='$1'>hier</a> om door te gaan.",
+	'spamdifftool_confirm' => "Bevestig dat u deze namen aan de zwarte lijst tegen spam wil toevoegen (klik <a href='$1' target='new'>hier</a> om een probleem te melden).",
+	'spamdifftool_summary' => 'Toevoegen aan de zwarte lijst tegen spam',
 	'spamdifftool_urls_detected' => "In de bewerking(en) zijn de volgende URL's aangetroffen.
 Welke wilt u toevoegen aan de zwarte lijst voor spam?
 Deze opties gaan van meer beperkend naar minder beperkend.

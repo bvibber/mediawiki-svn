@@ -358,6 +358,7 @@ $messages['mr'] = array(
 
 /** Dutch (Nederlands)
  * @author SPQRobin
+ * @author Tvdm
  */
 $messages['nl'] = array(
 	'userrightsnotifysubject' => 'Groepslidmaatschap is gewijzigd op $1',
@@ -371,7 +372,7 @@ Verwijderd: $6
 Vriendelijke groeten,
 
 $2',
-	'userrightsnotif-desc' => 'Verstuurt e-mails om gebruikers te melden van wijzingen in hun gebruikersrechten',
+	'userrightsnotif-desc' => 'Verstuurt e-mails om wijzingen in de gebruikersrechten te melden aan gebruikers',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)

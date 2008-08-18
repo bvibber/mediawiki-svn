@@ -237,6 +237,13 @@ $messages['hil'] = array(
 	'inspectcache-delete' => 'Panason',
 );
 
+/** Croatian (Hrvatski)
+ * @author Dalibor Bosits
+ */
+$messages['hr'] = array(
+	'inspectcache-delete' => 'Izbriši',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

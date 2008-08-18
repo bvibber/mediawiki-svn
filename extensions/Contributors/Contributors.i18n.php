@@ -479,6 +479,7 @@ $messages['it'] = array(
 );
 
 /** Japanese (日本語)
+ * @author Aotake
  * @author JtFuruhata
  */
 $messages['ja'] = array(
@@ -489,7 +490,7 @@ $messages['ja'] = array(
 	'contributors-target' => 'タイトル:',
 	'contributors-submit' => '表示',
 	'contributors-subtitle' => '$1 への主な投稿者',
-	'contributors-others-long' => 'ほかに $1 名の投稿者がいます。',
+	'contributors-others-long' => 'このページにはほかに $1 名の投稿者がいます。',
 	'contributors-others' => '及びその他 $1 名',
 	'contributors-badtitle' => '不正なページ名です。',
 	'contributors-nosuchpage' => 'ページ $1 は存在しません。',
@@ -899,8 +900,8 @@ $messages['ru'] = array(
 	'contributors-target' => 'Название:',
 	'contributors-submit' => 'Показать',
 	'contributors-subtitle' => 'Основные авторы $1',
-	'contributors-others-long' => 'Кроме указанных, у данной страницы есть ещё $1 авторов.',
-	'contributors-others' => 'и ещё $1 других',
+	'contributors-others-long' => 'Кроме указанных, у данной страницы есть ещё $1 {{PLURAL:$1|автор|автора|авторов}}.',
+	'contributors-others' => 'и ещё $1 {{PLURAL:$1|другой|других|других}}',
 	'contributors-badtitle' => 'Ошибочное название.',
 	'contributors-nosuchpage' => 'Страница «$1» не существует.',
 );

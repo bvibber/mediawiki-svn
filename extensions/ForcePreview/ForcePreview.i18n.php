@@ -102,6 +102,15 @@ $messages['hi'] = array(
 	'forcepreview-desc' => 'कम अधिकार होने वाले सदस्योंको जानबूझकर झलक दिखायें',
 );
 
+/** Croatian (Hrvatski)
+ * @author Dalibor Bosits
+ */
+$messages['hr'] = array(
+	'forcepreview' => 'Spremi stranicu (pogledajte kako će izgledati)',
+	'forcepreview-desc' => "Zahtjeva upotrebu ''prikaži kako će izgledati'' za suradnike bez prava za isključenje",
+	'right-forcepreviewexempt' => "Moguće spremiti stranicu bez upotrebe ''prikaži''",
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

@@ -32,6 +32,11 @@ $aliases['hr'] = array(
 	'ChangeAuthor' => array( 'Promjeni_Autora' ),
 );
 
+/** Hungarian (Magyar) */
+$aliases['hu'] = array(
+	'ChangeAuthor' => array( 'Szerző megváltoztatása' ),
+);
+
 /** Dutch (Nederlands) */
 $aliases['nl'] = array(
 	'ChangeAuthor' => array( 'AuteurWijzigen' ),

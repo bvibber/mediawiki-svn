@@ -406,10 +406,11 @@ $messages['nds'] = array(
 /** Dutch (Nederlands)
  * @author SPQRobin
  * @author Siebrand
+ * @author Tvdm
  */
 $messages['nl'] = array(
 	'tasklist' => 'Takenlijst',
-	'tasklist-parser-desc' => 'voegt de parserfunctie <nowiki>{{#todo:}}</nowiki> toe om taken toe te wijzen',
+	'tasklist-parser-desc' => 'Voegt de parserfunctie <nowiki>{{#todo:}}</nowiki> toe om taken toe te wijzen',
 	'tasklist-special-desc' => 'Voegt een speciale pagina toe om [[Special:TaskList|takentoewijzingen]] na te kijken',
 	'tasklistbyproject' => 'Takenlijst per project',
 	'tasklistunknownproject' => 'Onbekend project',

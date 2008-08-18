@@ -45,6 +45,20 @@ $messages['ar'] = array(
 	'lua_overflow_time' => 'تم الوصول إلى أقصى زمن للتنفيذ',
 );
 
+/** Asturian (Asturianu)
+ * @author Esbardu
+ */
+$messages['ast'] = array(
+	'lua_desc' => "Espande l'análisis sintáuticu con soporte pa bloques incrustaos de códigu [http://www.lua.org/ Lua]",
+	'lua_error' => 'Error na llinia $1',
+	'lua_extension_notfound' => 'Estensión Lua non configurada',
+	'lua_interp_notfound' => 'Intérprete Lua non atopáu',
+	'lua_error_internal' => 'Error internu',
+	'lua_overflow_recursion' => "Algamáu'l llímite de recursión",
+	'lua_overflow_loc' => "Algamáu'l llímite máximu de llinies de códigu",
+	'lua_overflow_time' => "Algamáu'l máximu tiempu d'execución",
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */

@@ -262,6 +262,7 @@ $messages['da'] = array(
 /** German (Deutsch)
  * @author Gnu1742
  * @author Katharina Wolkwitz
+ * @author Purodha
  * @author Revolus
  */
 $messages['de'] = array(
@@ -280,8 +281,9 @@ $messages['de'] = array(
 	'usagestatisticsintervalday' => 'Tag',
 	'usagestatisticsintervalweek' => 'Woche',
 	'usagestatisticsintervalmonth' => 'Monat',
-	'usagestatisticsincremental' => 'Aufsteigend',
+	'usagestatisticsincremental' => 'Inkrementell',
 	'usagestatisticsincremental-text' => 'aufsteigend',
+	'usagestatisticscumulative' => 'Kumulativ',
 );
 
 /** Lower Sorbian (Dolnoserbski)
@@ -564,7 +566,30 @@ $messages['km'] = array(
  * @author Purodha
  */
 $messages['ksh'] = array(
+	'specialuserstats' => 'Statistike fum Metmaache',
+	'usagestatistics' => 'Statistike fum Metmaache',
 	'usagestatistics-desc' => 'Zeich Statistike övver Metmaacher un et janze Wiki.',
+	'usagestatisticsfor' => '<h2>Statistike fum Metmaacher [[User:$1|$1]]</h2>',
+	'usagestatisticsforallusers' => '<h2>Statistike fun alle Metmaacher</h2>',
+	'usagestatisticsinterval' => 'Zick
+<small>(fun/beß)</small>',
+	'usagestatisticstype' => 'Aat ze rääschne',
+	'usagestatisticsstart' => 'Aanfangs-Dattum',
+	'usagestatisticsend' => 'Dattum fun Engk',
+	'usagestatisticssubmit' => 'Statistike ußrääschne',
+	'usagestatisticsnostart' => '* <span style="color:red">Dattum fum Aanfangs aanjevve</span>',
+	'usagestatisticsnoend' => '* <span style="color:red">Dattum fum Engk aanjevve</span>',
+	'usagestatisticsbadstartend' => '<b>Et Dattum fum <i>Aanfang</i> udder <i>Engk</i> es Kappes!</b>',
+	'usagestatisticsintervalday' => 'Dach',
+	'usagestatisticsintervalweek' => 'Woch',
+	'usagestatisticsintervalmonth' => 'Mohnd',
+	'usagestatisticsincremental' => 'schrettwies',
+	'usagestatisticsincremental-text' => 'Schrettwies',
+	'usagestatisticscumulative' => 'jesammt',
+	'usagestatisticscumulative-text' => 'Jesammt',
+	'usagestatisticscalselect' => 'Ußsöke',
+	'usagestatistics-editindividual' => '$1 Änderungs-Statistike fun enem Metmaacher',
+	'usagestatistics-editpages' => '$1 Sigge-Statistike fun enem Metmaacher',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

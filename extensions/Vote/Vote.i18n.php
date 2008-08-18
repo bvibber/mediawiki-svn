@@ -589,17 +589,18 @@ $messages['mr'] = array(
 
 /** Dutch (Nederlands)
  * @author Siebrand
+ * @author Tvdm
  */
 $messages['nl'] = array(
 	'vote' => 'Stemmen',
 	'vote-header' => "U kunt hier stemmen voor '''Alleenheerser over de Wereld'''!",
 	'vote-current' => "Uw huidige stem is voor '''$1'''.",
-	'vote-legend' => 'Stem of wijzig stem',
+	'vote-legend' => 'Stem plaatsen of wijzigen',
 	'vote-caption' => 'Uw keuze:',
 	'vote-choices' => 'joker|The Joker
 penguin|The Penguin
 riddler|Riddler',
-	'vote-submit' => 'Stem',
+	'vote-submit' => 'Stemmen',
 	'vote-registered' => 'Uw stem is opgeslagen.',
 	'vote-view-results' => 'Bekijk resultaten',
 	'vote-results' => 'Resultaten stemming',

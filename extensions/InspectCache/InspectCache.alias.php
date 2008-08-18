@@ -25,3 +25,8 @@ $aliases['nl'] = array(
 	'InspectCache' => array( 'CacheInspecteren' ),
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
+$aliases['no'] = array(
+	'InspectCache' => array( 'Inspiser mellomlager' ),
+);
+

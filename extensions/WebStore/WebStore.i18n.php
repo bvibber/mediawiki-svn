@@ -629,6 +629,7 @@ $messages['nds'] = array(
 
 /** Dutch (Nederlands)
  * @author Siebrand
+ * @author Tvdm
  */
 $messages['nl'] = array(
 	'inplace_access_disabled' => 'Toegang tot deze dienst is uitgeschakeld voor alle clients.',
@@ -659,16 +660,16 @@ $messages['nl'] = array(
 	'webstore_temp_close' => 'Fout bij het sluiten van tijdelijk bestand "$1".',
 	'webstore_temp_lock' => 'Fout bij het locken van tijdelijk bestand "$1".',
 	'webstore_no_archive' => 'Doelbestand bestaat en er is geen archief opgegeven.',
-	'webstore_no_file' => 'Er is geen bestand geuploaded.',
-	'webstore_move_uploaded' => 'Fout bij het verplaatsen van geupload bestand "$1" naar tijdelijke locatie "$2".',
+	'webstore_no_file' => 'Er is geen bestand geüpload.',
+	'webstore_move_uploaded' => 'Fout bij het verplaatsen van geüpload bestand "$1" naar tijdelijke locatie "$2".',
 	'webstore_invalid_zone' => 'Ongeldige zone "$1".',
 	'webstore_no_deleted' => 'Er is geen archiefmap voor verwijderde bestanden gedefinieerd.',
 	'webstore_curl' => 'Fout van cURL: $1',
 	'webstore_404' => 'Bestand niet gevonden.',
 	'webstore_php_warning' => 'PHP-waarschuwing: $1',
-	'webstore_metadata_not_found' => 'Bestand  niet gevonden: $1',
+	'webstore_metadata_not_found' => 'Bestand niet gevonden: $1',
 	'webstore_postfile_not_found' => 'Te posten bestand niet gevonden.',
-	'webstore_scaler_empty_response' => 'De afbeeldingenschaler gaf een leeg antwoord met een 200 antwoordcode. Dit kan te maken hebben met een fatale PHP-fout in de schaler.',
+	'webstore_scaler_empty_response' => 'De afbeeldingenschaler gaf een leeg antwoord met een antwoordcode 200. Dit kan te maken hebben met een fatale PHP-fout in de schaler.',
 	'webstore_invalid_response' => 'Ongeldig antwoord van de server:
 
 $1',

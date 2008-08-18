@@ -222,9 +222,11 @@ $messages['hi'] = array(
 );
 
 /** Croatian (Hrvatski)
+ * @author Dalibor Bosits
  * @author Dnik
  */
 $messages['hr'] = array(
+	'intersection-desc' => 'Omogućava popis najnovijih stranica ili datoteka iz kategorije, ili presjeka nekoliko kategorija',
 	'intersection_toomanycats' => 'Error: Previše kategorija!',
 	'intersection_toofewcats' => 'Error: Premalo kategorija!',
 	'intersection_noresults' => 'Error: Nema rezultata!',

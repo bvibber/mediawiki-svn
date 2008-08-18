@@ -219,7 +219,7 @@ $messages['no'] = array(
  * @author Cedric31
  */
 $messages['oc'] = array(
-	'templatelink' => 'Ligam vèrs modèl',
+	'templatelink' => 'Ligam cap a un modèl',
 	'templatelink_desc' => 'Aquesta extention pòt afichar un modèl coma una pagina novèla',
 	'templatelink_empty' => 'Vos cal picar un paramètre.',
 	'templatelink_newtitle' => '$1 (tranclut)',

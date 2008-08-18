@@ -2012,6 +2012,7 @@ Revisjoner som fjernes vil ikke være tilgjengelige for noen via nettsiden, men 
 	'oversight-prev' => 'Siste forrige revisjon',
 	'oversight-hidden' => 'Skjult revisjon',
 	'oversight-header' => 'Nedenfor er en liste over revisjoner som nylig er blitt skjult fra offentligheten. Å frigi denne informasjonen kan føre til permanent tap av revisjonsslettingsrettigheter.',
+	'oversight-legend' => 'Søk i revisjonsferningsloggen',
 );
 
 /** Occitan (Occitan)
@@ -2364,6 +2365,7 @@ administrátorom databázy v prípade, že spravíte chybu.",
 	'oversight-prev' => 'Posledná predošlá revízia',
 	'oversight-hidden' => 'Skrytá revízia',
 	'oversight-header' => 'Dolu je zoznam revízií, ktoré boli nedávno permanentne skryté pohľadu verejnosti. Šírenie týchto informácií môže mať za dôsledok permanentnú stratu práv Dozrcu (oversight).',
+	'oversight-legend' => 'Hľadať v zázname skrývania revízií',
 );
 
 /** Samoan (Gagana Samoa)

@@ -264,6 +264,38 @@ O ficheiro cargado debería conter o nome da páxina e unha razón opcional sepa
 	'deletebatch-no-page' => 'Por favor, especifique, polo menos, unha páxina para borrar OU escolla un ficheiro que conteña unha lista de páxinas.',
 );
 
+/** Croatian (Hrvatski)
+ * @author Dalibor Bosits
+ */
+$messages['hr'] = array(
+	'deletebatch' => 'Izbriši skupinu stranica',
+	'deletebatch-desc' => '[[Special:DeleteBatch|Izbriši skupinu stranica]]',
+	'deletebatch-button' => 'Izbriši',
+	'deletebatch-here' => '<b>ovdje</b>',
+	'deletebatch-help' => 'Brisanje skupine stranica. Možete izbrisati samo jednu stranicu, ili izbrisati stranice s popisa.
+Odaberite suradnika koje će biti prikazan u evidencijama.
+Postavljena datoteka treba sadržavati nazive stranica, a dodatno razlog odvojen kosom crtom "|", u svakom redu.',
+	'deletebatch-caption' => 'Popis stranica',
+	'deletebatch-title' => 'Skupno brisanje',
+	'deletebatch-link-back' => 'Možete se vratiti nazad na ekstenziju',
+	'deletebatch-as' => 'Pokreni skriptu kao',
+	'deletebatch-both-modes' => 'Molimo vas odaberiti ili jednu određenu stranicu ili popis stranica.',
+	'deletebatch-or' => '<b>ili</b>',
+	'deletebatch-page' => 'Stranice za brisanje',
+	'deletebatch-reason' => 'Razlog za brisanje',
+	'deletebatch-processing' => 'brišem stranice',
+	'deletebatch-from-file' => 's popisa iz datoteke',
+	'deletebatch-from-form' => 'iz obrasca',
+	'deletebatch-success-subtitle' => 'za $1',
+	'deletebatch-omitting-nonexistant' => 'Izostavljanje nepostojeće stranice $1.',
+	'deletebatch-omitting-invalid' => 'Izostavljanje neispravne stranice $1.',
+	'deletebatch-file-bad-format' => 'U datoteci bi trebao biti čisti tekst',
+	'deletebatch-file-missing' => 'Datoteka se ne može pročitati',
+	'deletebatch-select-script' => 'skripta za brisanje',
+	'deletebatch-select-yourself' => 'vi',
+	'deletebatch-no-page' => 'Molimo vas odredite barem jednu stranicu za brisanje ILI odaberite datoteku koja sadrži popis.',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */

@@ -45,8 +45,12 @@ Please be patient.',
 	'youtubeauthsub_jserror_nodesc'      => 'Please enter a description for the video.',
 );
 
-/** Message documentation (Message documentation) */
+/** Message documentation (Message documentation)
+ * @author Jon Harald Søby
+ * @author Purodha
+ */
 $messages['qqq'] = array(
+	'youtubeauthsub-desc' => 'Short description of this extension, shown on [[Special:Version]]. Do not translate or change links.',
 	'youtubeauthsub_title' => '{{Identical|Title}}',
 	'youtubeauthsub_description' => '{{Identical|Description}}',
 	'youtubeauthsub_category' => '{{Identical|Category}}',
@@ -613,6 +617,8 @@ $messages['krj'] = array(
  * @author Purodha
  */
 $messages['ksh'] = array(
+	'youtubeauthsub-desc' => 'Määt et müjjesch, dat Metmaacher ier Viddeos direk noh
+<i lang="en">YouTube</i> [[Special:YouTubeAuthSub|huhlade]].',
 	'youtubeauthsub_submit' => 'Loß Jonn!',
 );
 
@@ -801,6 +807,7 @@ $messages['nds'] = array(
 
 /** Dutch (Nederlands)
  * @author Siebrand
+ * @author Tvdm
  */
 $messages['nl'] = array(
 	'youtubeauthsub' => 'YouTube-video uploaden',
@@ -808,8 +815,8 @@ $messages['nl'] = array(
 	'youtubeauthsub_info' => 'Geef de volgende informatie op om een video naar YouTube te uploaden om die later aan een pagina te kunnen toevoegen:',
 	'youtubeauthsub_title' => 'Naam',
 	'youtubeauthsub_description' => 'Beschrijving',
-	'youtubeauthsub_password' => 'Wachtwoord YouTube',
-	'youtubeauthsub_username' => 'Gebruiker YouTube',
+	'youtubeauthsub_password' => 'YouTube-wachtwoord',
+	'youtubeauthsub_username' => 'YouTube-gebruikersnaam',
 	'youtubeauthsub_keywords' => 'Trefwoorden',
 	'youtubeauthsub_category' => 'Categorie',
 	'youtubeauthsub_submit' => 'Uploaden',
@@ -828,7 +835,7 @@ Voeg de volgende code toe om uw video in een pagina op te nemen:
 	'youtubeauthsub_code' => '{{#ev:youtube|$1}}.
 
 U kunt deze video [http://www.youtube.com/watch?v=$1 hier] bekijken',
-	'youtubeauthsub_summary' => 'Bezig met uploaden van de YouTube video',
+	'youtubeauthsub_summary' => 'Bezig met uploaden van de YouTube-video',
 	'youtubeauthsub_uploading' => 'Uw video wordt geüpload.
 Even geduld alstublieft.',
 	'youtubeauthsub_viewpage' => 'U kunt uw video ook [[$1|hier]] bekijken.',

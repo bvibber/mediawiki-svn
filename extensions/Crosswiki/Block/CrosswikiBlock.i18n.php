@@ -724,6 +724,7 @@ Torna a:
 );
 
 /** Japanese (日本語)
+ * @author Aotake
  * @author JtFuruhata
  */
 $messages['ja'] = array(
@@ -760,11 +761,11 @@ $messages['ja'] = array(
 	'crosswikiblock-notoken' => '編集トークンが不正です。',
 	'crosswikiblock-alreadyblocked' => '利用者 $3 は、既にブロックされています。',
 	'crosswikiblock-noblock' => 'この利用者は、ブロックされていません。',
-	'crosswikiblock-success' => "利用者 '''$1''' をブロックしました。
+	'crosswikiblock-success' => "利用者 '''$3''' をブロックしました。
 
-元のページへ戻る:
-* [[Special:CrosswikiBlock|他ウィキの利用者をブロック]]
-* [[$2]]",
+戻る:
+* [[Special:CrosswikiBlock|ブロックフォーム]]
+* [[$4]]",
 	'crosswikiunblock-local' => 'このウィキ自身における利用者ブロック解除を、このページでは行えません。[[Special:IPBlockList|{{int:ipblocklist}}]]を利用してください。',
 );
 

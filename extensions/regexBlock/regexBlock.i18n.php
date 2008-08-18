@@ -878,6 +878,7 @@ $messages['nah'] = array(
  * @author Meno25
  * @author SPQRobin
  * @author Siebrand
+ * @author Tvdm
  */
 $messages['nl'] = array(
 	'regexblock' => 'RegexBlokkeren',
@@ -906,7 +907,7 @@ $messages['nl'] = array(
 	'regexblock-form-submit-regex' => 'Ongeldige reguliere uitdrukking.',
 	'regexblock-form-submit-expiry' => 'Geef alstublieft een verlooptermijn op.',
 	'regexblock-already-blocked' => '$1 is al geblokkeerd.',
-	'regexblock-stats-title' => 'Regex Block statistieken',
+	'regexblock-stats-title' => 'Regex-blokkeringsstatistieken',
 	'regexblock-stats-username' => 'Voor $1',
 	'regexblock-stats-times' => 'is geblokkeerd op',
 	'regexblock-stats-logging' => 'aangemeld van IP-adres',

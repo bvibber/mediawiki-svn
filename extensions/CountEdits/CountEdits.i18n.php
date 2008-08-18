@@ -465,6 +465,7 @@ $messages['it'] = array(
 );
 
 /** Japanese (日本語)
+ * @author Aotake
  * @author JtFuruhata
  */
 $messages['ja'] = array(
@@ -475,7 +476,7 @@ $messages['ja'] = array(
 	'countedits-ok' => 'OK',
 	'countedits-nosuchuser' => '$1 という名前の利用者は存在しません。',
 	'countedits-resultheader' => '$1 の集計結果',
-	'countedits-resulttext' => '$1 は、これまでに $1回の編集を行いました',
+	'countedits-resulttext' => '$1 は、これまでに $2回の編集を行いました',
 	'countedits-mostactive' => '最も活発な投稿者',
 	'countedits-nocontribs' => 'このウィキにおける投稿記録はありません。',
 );

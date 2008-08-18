@@ -34,3 +34,9 @@ $aliases['nl'] = array(
 	'CreateSignDocument' => array( 'DocumentOndertekenenAanmaken' ),
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
+$aliases['no'] = array(
+	'SignDocument' => array( 'Signer dokument' ),
+	'CreateSignDocument' => array( 'Opprett signaturdokument' ),
+);
+
