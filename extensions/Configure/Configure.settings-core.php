@@ -407,7 +407,6 @@ $settings = array(
 			'wgCookiePrefix' => 'text',
 			'wgCookieSecure' => 'bool',
 			'wgDisableCookieCheck' => 'bool',
-			'wgEnablePersistentCookies' => 'bool',
 			'wgHttpOnlyBlacklist' => 'array',
 			'wgSessionName' => 'text',
 		),
@@ -527,6 +526,7 @@ $settings = array(
 			'wgParserConf' => 'array',
 			'wgParserCacheExpireTime' => 'int',
 			'wgParserTestFiles' => 'array',
+			'wgRestrictDisplayTitle' => 'bool',
 			'wgUseXMLparser' => 'bool',
 		),
 		'html' => array(
@@ -1157,8 +1157,8 @@ $settingsVersion = array(
 	'wgPasswordAttemptThrottle' => array( array( '1.14alpha', '>=' ) ),
 	'wgCategoryPrefixedDefaultSortkey' => array( array( '1.14alpha', '>=' ) ),
 	'wgSQLiteDataDirMode' => array( array( '1.14alpha', '>=' ) ),
-	'wgEnablePersistentCookies' => array( array( '1.14alpha', '>=' ) ),
 	'wgEnableHtmlDiff' => array( array( '1.14alpha', '>=' ) ),
+	'wgRestrictDisplayTitle' => array( array( '1.14alpha', '>=' ) ),
 ## Obsolete
 	'wgProfileSampleRate' => array( array( '1.8alpha', '<' ) ),
 	'wgProfilerType' => array( array( '1.8alpha', '<' ) ),

@@ -1,6 +1,9 @@
 This file lists changes on this extension.
 Localisation updates are done on betawiki and aren't listed here.
 
+0.6.14 - 18 August 2008
+  Removed $wgEnablePersistentCookies, added $wgRestrictDisplayTitle.
+
 0.6.13 - 16 August 2008
   Added "empty" option for $wgConfigureAdditionalExtensions.
 
