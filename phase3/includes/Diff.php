@@ -566,4 +566,3 @@ class RangeDifference {
 		$this->rightlength = $rightend-$rightstart;
 	}
 }
-

@@ -1658,6 +1658,7 @@ U kunt ook kiezen voor specifieke logboeken en filteren op gebruiker en paginana
 'nextpage'          => 'Volgende pagina ($1)',
 'prevpage'          => 'Vorige pagina ($1)',
 'allpagesfrom'      => "Pagina's bekijken vanaf:",
+'allpagesto'        => "Pagina's bekijken tot:",
 'allarticles'       => "Alle pagina's",
 'allinnamespace'    => "Alle pagina's (naamruimte $1)",
 'allnotinnamespace' => "Alle pagina's (niet in naamruimte $1)",
@@ -1670,7 +1671,8 @@ U kunt ook kiezen voor specifieke logboeken en filteren op gebruiker en paginana
 
 # Special:Categories
 'categories'                    => 'Categorieën',
-'categoriespagetext'            => "De volgende categorieën bevatten pagina's of media.",
+'categoriespagetext'            => "De volgende categorieën bevatten pagina's of media.
+[[Special:UnusedCategories|Ongebruikte categorieën]] en [[Special:WantedCategories|niet-bestaande categorieën met verwijzingen]] worden hier niet weergegeven.",
 'categoriesfrom'                => 'Categorieën weergeven vanaf:',
 'special-categories-sort-count' => 'op aantal sorteren',
 'special-categories-sort-abc'   => 'alfabetisch sorteren',
@@ -2432,7 +2434,7 @@ Alle volgende verwijzingen die op dezelfde regel staan, worden behandeld als uit
 'exif-jpeginterchangeformatlength' => 'Bytes JPEG-gegevens',
 'exif-transferfunction'            => 'Transferfunctie',
 'exif-whitepoint'                  => 'Witpuntchromaticiteit',
-'exif-primarychromaticities'       => 'Chromaticities of primaries',
+'exif-primarychromaticities'       => 'Chromaciteit van primaire kleuren',
 'exif-ycbcrcoefficients'           => 'Transformatiematrixcoëfficiënten voor de kleurruimte',
 'exif-referenceblackwhite'         => 'Paar zwart en wit referentiewaarden',
 'exif-datetime'                    => 'Tijdstip laatste bestandswijziging',

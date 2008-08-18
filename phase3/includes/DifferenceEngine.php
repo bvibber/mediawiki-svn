@@ -327,7 +327,7 @@ CONTROL;
 
 
 	function renderHtmlDiff() {
-		global $wgOut, $IP;
+		global $wgOut;
 		wfProfileIn( __METHOD__ );
 
 		$this->showDiffStyle();
@@ -378,7 +378,6 @@ CONTROL;
 
 		unset($parserOutput,$popts);
 
-		require_once( "$IP/includes/HTMLDiff.php" );
 		$differ = new HTMLDiffer(new DelegatingContentHandler($wgOut));
 		$differ->htmlDiff($oldHtml, $newHtml);
 
@@ -1042,8 +1041,6 @@ class _DiffEngine {
 
 		if($wgExternalDiffEngine == 'wikidiff3'){
 			// wikidiff3
-			global $IP;
-			require_once( "$IP/includes/Diff.php" );
 			$wikidiff3 = new WikiDiff3();
 			$wikidiff3->diff($from_lines, $to_lines);
 			$this->xchanged = $wikidiff3->removed;

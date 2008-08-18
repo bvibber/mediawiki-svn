@@ -353,11 +353,11 @@ $messages = array(
 'subcategories'                  => '하위 분류',
 'category-media-header'          => '‘$1’ 분류에 속하는 자료',
 'category-empty'                 => '이 분류에 속하는 문서나 자료가 없습니다.',
-'hidden-categories'              => '{{PLURAL:$1|}}숨겨진 분류',
+'hidden-categories'              => '숨겨진 분류',
 'hidden-category-category'       => '숨겨진 분류', # Name of the category where hidden categories will be listed
 'category-subcat-count'          => '이 분류에는 하위 분류가 $1개 있고, 그 중 $2개를 보여주고 있습니다.',
 'category-subcat-count-limited'  => '이 분류에는 하위 분류가 $1개 있습니다.',
-'category-article-count'         => '이 분류에는 아래 $1개를 포함해 모두 $2개의 문서가 있습니다.',
+'category-article-count'         => '{{PLURAL:$2|이 분류에는 다음의 문서만이 속해 있습니다.|다음은 이 분류에 속하는 $2 개의 문서 중 $1 개입니다.}}',
 'category-article-count-limited' => '이 분류에 $1개의 문서가 속해 있습니다.',
 'category-file-count'            => '이 분류에는 아래 $1개를 포함해 $2개의 파일이 있습니다.',
 'category-file-count-limited'    => '$1개의 파일이 이 분류에 있습니다.',
@@ -1013,13 +1013,16 @@ $1, 또는 [[{{MediaWiki:Grouppage-sysop}}|다른 관리자]]에게 차단에 �
 'right-minoredit'        => '사소한 편집 사용 가능',
 'right-move'             => '문서 이동',
 'right-move-subpages'    => '문서와 하위 문서 이동하기',
+'right-suppressredirect' => '문서 이동시에 옛날 이름에 넘겨주기를 남기지 않음',
 'right-upload'           => '파일 올리기',
 'right-reupload'         => '이미 존재하는 파일 덮어쓰기',
 'right-reupload-own'     => '자신이 이미 올린 파일 덮어쓰기',
 'right-upload_by_url'    => 'URL 주소에서 파일 올리기',
+'right-autoconfirmed'    => '준보호된 문서 편집',
 'right-delete'           => '문서 삭제',
 'right-browsearchive'    => '삭제된 문서 검색',
 'right-suppressrevision' => '관리자도 보지 못하도록 숨겨진 판의 확인 및 복구',
+'right-patrol'           => '다른 사용자의 편집을 검토',
 
 # User rights log
 'rightslog'      => '사용자 권한 기록',
@@ -1099,7 +1102,7 @@ $1, 또는 [[{{MediaWiki:Grouppage-sysop}}|다른 관리자]]에게 차단에 �
 'badfilename'                 => '파일 이름이 ‘$1’(으)로 바뀌었습니다.',
 'filetype-badmime'            => '‘$1’ MIME을 가진 파일은 올릴 수 없습니다.',
 'filetype-unwanted-type'      => "'''\".\$1\"''' 확장자는 추천하지 않습니다. 추천하는 파일 확장자는 \$2입니다.{{PLURAL:\$3||}}",
-'filetype-banned-type'        => "'''\".\$1\"''' 확장자로 파일을 올릴 수 없습니다. 가능한 확장자는 \$2입니다.{{PLURAL:\$3||}}",
+'filetype-banned-type'        => "'''\".\$1\"''' 확장자로 파일을 올릴 수 없습니다. 가능한 확장자는 \$2입니다.",
 'filetype-missing'            => '파일에 확장자(‘.jpg’ 등)가 없습니다.',
 'large-file'                  => '파일 크기는 $1을 넘지 않는 것을 추천합니다. 이 파일의 크기는 $2입니다.',
 'largefileserver'             => '이 파일의 크기가 서버에서 허용된 설정보다 큽니다.',
@@ -1367,7 +1370,11 @@ URL이 맞고 해당 웹사이트가 작동하는지 확인해주세요.',
 'listusers-noresult' => '해당 사용자가 없습니다.',
 
 # Special:ListGroupRights
-'listgrouprights' => '사용자 권한 목록',
+'listgrouprights'                 => '사용자 권한 목록',
+'listgrouprights-addgroup'        => '$1 권한을 부여',
+'listgrouprights-removegroup'     => '$1 권한을 회수',
+'listgrouprights-addgroup-all'    => '모든 권한을 부여',
+'listgrouprights-removegroup-all' => '모든 권한을 회수',
 
 # E-mail user
 'mailnologin'     => '보낼 이메일 주소가 없음',
@@ -1420,6 +1427,10 @@ URL이 맞고 해당 웹사이트가 작동하는지 확인해주세요.',
 'watchlist-hide-own'   => '나의 편집을 숨기기',
 'watchlist-show-minor' => '사소한 편집을 보이기',
 'watchlist-hide-minor' => '사소한 편집을 숨기기',
+'watchlist-show-anons' => '익명 사용자의 편집을 보이기',
+'watchlist-hide-anons' => '익명 사용자의 편집을 숨기기',
+'watchlist-show-liu'   => '로그인한 사용자의 편집을 보이기',
+'watchlist-hide-liu'   => '로그인한 사용자의 편집을 숨기기',
 
 # Displayed when you click the "watch" button and it is in the process of watching
 'watching'   => '주시하는 중...',
@@ -1482,8 +1493,8 @@ $NEWPAGE
 ** 작성자의 요청
 ** 저작권 침해
 ** 잘못된 문서',
-'delete-toobig'               => '이 문서에는 편집 역사가 $1개 있습니다. 편집 역사가 긴 문서를 삭제하면 {{SITENAME}}에 큰 혼란을 줄 수 있기 때문에 삭제할 수 없습니다.{{PLURAL:||}}',
-'delete-warning-toobig'       => '이 문서에는 편집 역사가 $1개 있습니다. 편집 역사가 긴 문서를 삭제하면 {{SITENAME}} 데이터베이스 동작에 큰 영향을 줄 수 있기 때문에, 주의해 주세요.{{PLURAL:||}}',
+'delete-toobig'               => '이 문서에는 편집 역사가 $1개 있습니다. 편집 역사가 긴 문서를 삭제하면 {{SITENAME}}에 큰 혼란을 줄 수 있기 때문에 삭제할 수 없습니다.',
+'delete-warning-toobig'       => '이 문서에는 편집 역사가 $1개 있습니다. 편집 역사가 긴 문서를 삭제하면 {{SITENAME}} 데이터베이스 동작에 큰 영향을 줄 수 있기 때문에, 주의해 주세요.',
 'rollback'                    => '편집 되돌리기',
 'rollback_short'              => '되돌리기',
 'rollbacklink'                => '되돌리기',

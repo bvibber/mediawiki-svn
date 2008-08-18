@@ -1382,7 +1382,7 @@ $wgCacheEpoch = '20030516000000';
  * to ensure that client-side caches don't keep obsolete copies of global
  * styles.
  */
-$wgStyleVersion = '165';
+$wgStyleVersion = '166';
 
 
 # Server-side caching:
@@ -2377,6 +2377,9 @@ $wgMaxTocLevel = 999;
 /** Name of the external diff engine to use */
 $wgExternalDiffEngine = false;
 
+/** Whether to use inline diff */
+$wgEnableHtmlDiff = false;
+
 /** Use RC Patrolling to check for vandalism */
 $wgUseRCPatrol = true;
 
@@ -3152,6 +3155,11 @@ $wgAjaxLicensePreview = true;
  * Allow DISPLAYTITLE to change title display
  */
 $wgAllowDisplayTitle = true;
+
+/**
+ * for consistency, restrict DISPLAYTITLE to titles that normalize to the same canonical DB key 
+ */
+$wgRestrictDisplayTitle = true;
 
 /**
  * Array of usernames which may not be registered or logged in from

@@ -63,7 +63,8 @@ class UserloginTemplate extends QuickTemplate {
 				</select>
 			</td>
 		</tr>
-	<?php } ?>
+	<?php }
+	if( $this->data['canremember'] ) { ?>
 		<tr>
 			<td></td>
 			<td class="mw-input">
@@ -74,10 +75,11 @@ class UserloginTemplate extends QuickTemplate {
 					/> <label for="wpRemember"><?php $this->msg('remembermypassword') ?></label>
 			</td>
 		</tr>
+		<?php } ?>
 		<tr>
 			<td></td>
 			<td class="mw-submit">
-				<input type='submit' name="wpLoginattempt" id="wpLoginattempt" tabindex="5" value="<?php $this->msg('login') ?>" />&nbsp;<?php if( $this->data['useemail'] && $this->data['canreset']) { ?><input type='submit' name="wpMailmypassword" id="wpMailmypassword"
+				<input type='submit' class="mw-loginbutton" name="wpLoginattempt" id="wpLoginattempt" tabindex="5" value="<?php $this->msg('login') ?>" />&nbsp;<?php if( $this->data['useemail'] && $this->data['canreset']) { ?><input type='submit' class="mw-mailmypasswordbutton" name="wpMailmypassword" id="wpMailmypassword"
 					tabindex="6"
 									value="<?php $this->msg('mailmypassword') ?>" />
 				<?php } ?>
@@ -196,6 +198,7 @@ class UsercreateTemplate extends QuickTemplate {
 					</td>
 			<?php } ?>
 		</tr>
+		<?php if( $this->data['canremember'] ) { ?>
 		<tr>
 			<td></td>
 			<td class="mw-input">
@@ -206,7 +209,8 @@ class UsercreateTemplate extends QuickTemplate {
 					/> <label for="wpRemember"><?php $this->msg('remembermypassword') ?></label>
 			</td>
 		</tr>
-<?php
+<?php   }
+
 		$tabIndex = 8;
 		if ( isset( $this->data['extraInput'] ) && is_array( $this->data['extraInput'] ) ) {
 			foreach ( $this->data['extraInput'] as $inputItem ) { ?>

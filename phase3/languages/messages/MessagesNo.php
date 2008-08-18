@@ -199,6 +199,8 @@ $messages = array(
 'tog-watchlisthideown'        => 'Skjul egne endringer fra overvåkningslisten',
 'tog-watchlisthidebots'       => 'Skjul robotendringer fra overvåkningslisten',
 'tog-watchlisthideminor'      => 'Skjul mindre endringer fra overvåkningslisten',
+'tog-watchlisthideliu'        => 'Skjul endringer av innloggede brukere fra overvåkningslisten',
+'tog-watchlisthideanons'      => 'Skjul endringer av anonyme brukere fra overvåkningslisten',
 'tog-nolangconversion'        => 'Slå av variantkonvertering',
 'tog-ccmeonemails'            => 'Send meg kopier av e-poster jeg sender til andre brukere',
 'tog-diffonly'                => 'Ikke vis sideinnhold under differ',
@@ -1465,6 +1467,7 @@ En side anses om en pekerside om den inneholder en mal som det lenkes til fra [[
 'nextpage'          => 'Neste side ($1)',
 'prevpage'          => 'Forrige side ($1)',
 'allpagesfrom'      => 'Vis sider fra og med:',
+'allpagesto'        => 'Vis sider til og med:',
 'allarticles'       => 'Alle sider',
 'allinnamespace'    => 'Alle sider i $1-navnerommet',
 'allnotinnamespace' => 'Alle sider (ikke i $1-navnerommet)',
@@ -1558,6 +1561,10 @@ Hvis du senere vil fjerne siden fra overvåkningslisten, klikk «Avslutt overvå
 'watchlist-hide-own'   => 'Skjul mine redigeringer',
 'watchlist-show-minor' => 'Vis mindre redigeringer',
 'watchlist-hide-minor' => 'Skjul mindre redigeringer',
+'watchlist-show-anons' => 'Vis anonyme endringer',
+'watchlist-hide-anons' => 'Skjul anonyme endringer',
+'watchlist-show-liu'   => 'Vis endringer av innloggede brukere',
+'watchlist-hide-liu'   => 'Skjul endringer av innloggede brukere',
 
 # Displayed when you click the "watch" button and it is in the process of watching
 'watching'   => 'Overvåker…',
