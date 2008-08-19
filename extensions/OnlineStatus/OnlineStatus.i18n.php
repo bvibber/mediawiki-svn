@@ -9,10 +9,14 @@ $messages = array();
 
 $messages['en'] = array(
 	'onlinestatus-desc'             => 'Add a preference to show if the user is currently present or not on the wiki',
+	'onlinestatus-js-anon'          => 'Error: you must be logged in to use this feature',
+	'onlinestatus-js-changed'       => 'Your status has been changed to "$1"',
+	'onlinestatus-js-error'         => 'Impossible to change status, value "$1" is invalid',
 	'onlinestatus-levels'           => '* online
 * offline', // Do not translate this message
 	'onlinestatus-subtitle-offline' => 'This user is currently offline',
 	'onlinestatus-subtitle-online'  => 'This user is currently online',
+	'onlinestatus-tab'              => 'Status',
 	'onlinestatus-toggles-desc'     => 'Your status:',
 	'onlinestatus-toggles-explain'  => 'This allows you to show to other users if you are actually online or not by viewing your user page.',
 	'onlinestatus-toggles-show'     => 'Show online status on my user page',
@@ -156,8 +160,12 @@ $messages['fi'] = array(
  */
 $messages['fr'] = array(
 	'onlinestatus-desc' => "Ajoute une préférence pour montrer si l'utilisateur est présent ou non",
+	'onlinestatus-js-anon' => 'Erreur : vous devez être connecté pour utiliser cette fonctionnalité',
+	'onlinestatus-js-changed' => 'Votre status a été changé à « $1 »',
+	'onlinestatus-js-error' => 'Impossible de changer le statut, la valeur « $1 » est invalide',
 	'onlinestatus-subtitle-offline' => 'Cet utilisateur est actuellement hors ligne',
 	'onlinestatus-subtitle-online' => 'Cet utilisateur est actuellement en ligne',
+	'onlinestatus-tab' => 'Statut',
 	'onlinestatus-toggles-desc' => 'Votre statut&nbsp;:',
 	'onlinestatus-toggles-explain' => 'Ceci permet aux autres utilisateur de savoir si vous êtes actuellement présent en regardant votre page utilisateur.',
 	'onlinestatus-toggles-show' => 'Montrer mon statut sur ma page utilisateur',

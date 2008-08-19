@@ -13,8 +13,8 @@
 
 // Add credit :)
 $wgExtensionCredits['other'][] = array(
-	'svn-date' => '$LastChangedDate$',
-	'svn-revision' => '$LastChangedRevision$',
+	'svn-date'       => '$LastChangedDate$',
+	'svn-revision'   => '$LastChangedRevision$',
 	'name'           => 'OnlineStatus',
 	'author'         => 'Alexandre Emsenhuber',
 	'url'            => 'http://www.mediawiki.org/wiki/Extension:OnlineStatus',
@@ -29,10 +29,55 @@ $wgExtensionCredits['other'][] = array(
  */
 $wgAllowAnyUserOnlineStatusFunction = true;
 
+function efOnlineStatusAjax( $action, $stat = false ){
+	global $wgUser;
+	wfLoadExtensionMessages( 'OnlineStatus' );
+
+	if( $wgUser->isAnon() )
+		return wfMsgHtml( 'onlinestatus-js-anon' );
+
+	switch( $action ){
+	case 'get':
+		$def = $wgUser->getOption( 'online' );
+		$msg = wfMsgForContentNoTrans( 'onlinestatus-levels' );
+		$lines = explode( "\n", $msg );
+		$radios = array();
+		foreach( $lines as $line ){
+			if( substr( $line, 0, 1 ) != '*' )
+				continue;
+			$lev = trim( $line, '* ' );
+			$radios[] = array(
+				$lev,
+				wfMsg( 'onlinestatus-toggle-' . $lev ),
+				$lev == $def
+			);
+		}
+		return json_encode( $radios );
+	case 'set':
+		if( $stat ){
+			$dbw = wfGetDB(DB_MASTER);
+			$dbw->begin();
+			$actual = $wgUser->getOption( 'online' );
+			$wgUser->setOption( 'online', $stat );
+			if( $actual != $stat ){
+				$wgUser->getUserPage()->invalidateCache();
+				$wgUser->getTalkPage()->invalidateCache();
+			}
+			$wgUser->saveSettings();
+			$wgUser->invalidateCache();
+			$dbw->commit();
+			return wfMsgHtml( 'onlinestatus-js-changed', wfMsgHtml( 'onlinestatus-toggle-'.$stat ) );
+		} else {
+			return wfMsgHtml( 'onlinestatus-js-error', $stat );
+		}
+	}
+}
+
 class OnlineStatus {
 
 	static function init(){
-		global $wgExtensionMessagesFiles, $wgExtensionFunctions, $wgHooks, $wgAllowAnyUserOnlineStatusFunction;
+		global $wgExtensionMessagesFiles, $wgExtensionFunctions, $wgHooks, $wgAjaxExportList;
+		global $wgAllowAnyUserOnlineStatusFunction;
 		// Add messages file
 		$wgExtensionMessagesFiles['OnlineStatus'] = dirname( __FILE__ ) . '/OnlineStatus.i18n.php';
 
@@ -60,6 +105,10 @@ class OnlineStatus {
 
 		// User page
 		$wgHooks['BeforePageDisplay'][] = 'OnlineStatus::BeforePageDisplay';
+		$wgHooks['PersonalUrls'][] = 'OnlineStatus::PersonalUrls';
+		
+		// Ajax stuff
+		$wgAjaxExportList[] = 'efOnlineStatusAjax';
 	}
 
 	/**
@@ -241,7 +290,19 @@ class OnlineStatus {
 	 * Hook function for BeforePageDisplay
 	 */
 	static function BeforePageDisplay( &$out ){
-		global $wgTitle, $wgRequest;
+		global $wgTitle, $wgRequest, $wgUser;
+		global $wgUseAjax;
+
+		if( $wgUser->isLoggedIn() && $wgUseAjax ){
+			global $wgScriptPath, $wgJsMimeType;
+			$out->addScript( "<script type=\"{$wgJsMimeType}\" src=\"{$wgScriptPath}/extensions/OnlineStatus/OnlineStatus.js\"></script>" );
+			$out->addLink( array(
+				'rel' => 'stylesheet',
+				'type' => 'text/css',
+				'href' => "{$wgScriptPath}/extensions/OnlineStatus/OnlineStatus.css"
+			) );
+		}
+		
 		if( !in_array( $wgRequest->getVal( 'action', 'view' ), array( 'view', 'purge' ) ) )
 			return true;
 		$status = self::GetUserStatus( $wgTitle, true );
@@ -249,6 +310,30 @@ class OnlineStatus {
 			return true;
 		wfLoadExtensionMessages( 'OnlineStatus' );
 		$out->setSubtitle( wfMsgExt( 'onlinestatus-subtitle-' . $status, array( 'parse' ) ) );
+		
+		return true;
+	}
+
+	/**
+	 * Hook for PersonalUrls
+	 */
+	static function PersonalUrls( &$urls, &$title ){
+		global $wgUser, $wgUseAjax;
+		# Require ajax
+		if( !$wgUser->isLoggedIn() || !$wgUseAjax )
+			return true;
+		$arr = array();
+		foreach( $urls as $key => $val ){
+			if( $key == 'logout' ){
+				wfLoadExtensionMessages( 'OnlineStatus' );
+				$arr['status'] = array(
+					'text' => wfMsgHtml( 'onlinestatus-tab' ),
+					'href' => 'javascript:;',
+				);	
+			}
+			$arr[$key] = $val;
+		}
+		$urls = $arr;
 		return true;
 	}
 }
