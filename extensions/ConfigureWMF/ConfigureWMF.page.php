@@ -65,7 +65,7 @@ class SpecialConfigure extends SpecialPage {
 		$wgOut->addHTML( '<strong id="cfgwmf-attention" style="color: red; font-size: 12pt">' . wfMsgHTML( 'configurewmf-attentionnotice' ) . '</strong>' );
 		$wgOut->addWikiMsg( 'configurewmf-selectsite-help' );
 		$wgOut->addHTML( "<form action='{$wgScript}' method='get'>" );
-		$wgOut->addHTML( '<p>'. Xml::hidden( 'title', $wgTitle->getFullText() ) . '</p><table><tr>' );
+		$wgOut->addHTML( '<p>' . Xml::hidden( 'title', $wgTitle->getFullText() ) . '</p><table><tr>' );
 		$wgOut->addHTML( '<td class="mw-label">' . Xml::label( wfMsg( 'configurewmf-site' ), 'cfg-site' ) . '</td>' );
 		$wgOut->addHTML( '<td class="mw-input">' . Xml::input( 'wiki', false, false, array( 'id' => 'cfg-site' ) ) . '</td>' );
 		$wgOut->addHTML( '</tr><tr><td></td><td class="mw-input">' . Xml::submitButton( wfMsg( 'configurewmf-select' ) ) . '</td>' );
@@ -200,7 +200,7 @@ class SpecialConfigure extends SpecialPage {
 				foreach( $rights as $right ) {
 					$label = wfMsgExt( 'configurewmf-permission', array( 'parseinline' ),
 						User::getRightDescription( $right ), $right );
-					$checkboxes[] = Xml::checkLabel( 
+					$checkboxes[] = Xml::checkLabel(
 						$label,	"{$var}-{$right}", "{$var}-{$right}", @$perms[$right]
 					);
 				}
@@ -227,7 +227,7 @@ class SpecialConfigure extends SpecialPage {
 					$r .= "<li>{$checkbox}</li>\n";
 				}
 				$r .= '</ul>';
-				break;;
+				break;
 		}
 		return $r . '</td></tr>';
 	}
@@ -245,7 +245,7 @@ class SpecialConfigure extends SpecialPage {
 					break;
 				case 'bool':
 					$values[$name] = $wgRequest->getCheck( $name );
-					$logs[] = wfMsgForContent( 'configurewmf-log-' . ($values[$name] ? 'true' : 'false') );
+					$logs[] = wfMsgForContent( 'configurewmf-log-' . ( $values[$name] ? 'true' : 'false' ) );
 					break;
 				case 'stringarray':
 					$values[$name] = array_unique( preg_split( '/\n/', $wgRequest->getVal( $name ), -1, PREG_SPLIT_NO_EMPTY ) );
@@ -254,8 +254,8 @@ class SpecialConfigure extends SpecialPage {
 				case 'logo':
 					global $wgConfigureStdlogo;
 					$input = $wgRequest->getVal( $name );
-					$values[$name] = ($input == 'stdlogo' ? $wgConfigureStdlogo : $wgRequest->getVal( "{$name}Other" ));
-					$logs[] = ($input == 'stdlogo' ? wfMsgForContent( 'configurewmf-log-stdlogo' ) : $wgRequest->getVal( "{$name}Other" ));
+					$values[$name] = ( $input == 'stdlogo' ? $wgConfigureStdlogo : $wgRequest->getVal( "{$name}Other" ) );
+					$logs[] = ( $input == 'stdlogo' ? wfMsgForContent( 'configurewmf-log-stdlogo' ) : $wgRequest->getVal( "{$name}Other" ) );
 					break;
 				case 'groupperms':
 					$groupperms = $wgConfigure->getGroupPermissions( $wiki );
@@ -264,12 +264,12 @@ class SpecialConfigure extends SpecialPage {
 					$rights = User::getAllRights();
 					$changes = array();
 					foreach( $rights as $right ) {
-							if( ((bool)@$perms[$right]) != $wgRequest->getCheck( "{$name}-{$right}" ) ) {
+							if( ( (bool)@$perms[$right] ) != $wgRequest->getCheck( "{$name}-{$right}" ) ) {
 								$changes[$right] = $wgRequest->getCheck( "{$name}-{$right}" );
 							}
 					}
 
-					if( $changes ) {	
+					if( $changes ) {
 						$override = $wgConfigure->getOverride( $config, $wiki );
 						$override = $override && isset( $override->cfg_value['wgGroupPermissions'] ) ? $override->cfg_value['wgGroupPermissions'] : array();
 						if( !isset( $override[$group] ) )

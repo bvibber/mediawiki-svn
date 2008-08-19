@@ -1,7 +1,7 @@
 <?php
 
-if ( !defined( 'MEDIAWIKI' ) ) {
-	exit(1);
+if( !defined( 'MEDIAWIKI' ) ) {
+	exit( 1 );
 }
 
 $wgExtensionCredits['other'][] = array(
@@ -13,10 +13,10 @@ $wgExtensionCredits['other'][] = array(
 	'descriptionmsg' => 'configurewmf-desc',
 );
 
-//Name of the database to store configuration
+// Name of the database to store configuration
 $wgConfigureDatabase = 'wikiconfig';
 
-//Mapping for extensions => variable to enable them
+// Mapping for extensions => variable to enable them
 $wgConfigureExtensions = array(
 	'ProofreadPage' => 'wmgUseProofreadPage',
 	'LabeledTranscludedSections' => 'wmgUseLST',
@@ -25,7 +25,7 @@ $wgConfigureExtensions = array(
 	'Nuke' => 'wmgUseSpecialNuke',
 );
 
-//Available $wgConf tags
+// Available $wgConf tags
 $wgConfigureAvailableTags = array( 'default' );
 
 $wgConfigureStdlogo = '$stdlogo';
@@ -67,7 +67,7 @@ function efLoadDefaultSettings() {
 }
 
 // To be applied on $wgConf->settings
-function efApplyConfiguration( &$settings ) { 
+function efApplyConfiguration( &$settings ) {
 	global $wgConfigure;
 	efLoadConfiguration();
 	$wgConfigure->applyConfiguration( $settings );

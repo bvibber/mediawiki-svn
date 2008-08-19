@@ -49,11 +49,11 @@ class ConfigureWMF {
 		global $IP;
 
 		// No Setup.php yet. Initialise everything by ourselves
-		require_once( $IP.'/includes/ObjectCache.php' );
+		require_once( $IP . '/includes/ObjectCache.php' );
 		$wgMemc = wfGetMainCache();
 
 		// Caching not yet working
-		//$cached = $wgMemc->get( 'configurewmf:data' );
+		// $cached = $wgMemc->get( 'configurewmf:data' );
 		if( $cached ) {
 			$this->overrides = $cached;
 			return;
@@ -71,13 +71,13 @@ class ConfigureWMF {
 
 	public static function getSlaveDB() {
 		global $wgConfigureDatabase;
-		return wfGetLB( $wgConfigureDatabase )->getConnection( DB_SLAVE, 'wikiconfig', 
+		return wfGetLB( $wgConfigureDatabase )->getConnection( DB_SLAVE, 'wikiconfig',
 			$wgConfigureDatabase );
 	}
 
 	public static function getMasterDB() {
 		global $wgConfigureDatabase;
-		return wfGetLB( $wgConfigureDatabase )->getConnection( DB_MASTER, 'wikiconfig', 
+		return wfGetLB( $wgConfigureDatabase )->getConnection( DB_MASTER, 'wikiconfig',
 			$wgConfigureDatabase );
 	}
 
@@ -137,7 +137,7 @@ class ConfigureWMF {
 		foreach( $this->overrides as $override ) {
 			foreach( $override['value'] as $varname => $val ) {
 				if( in_array( $varname, self::$mergable ) ) {
-					//stub
+					// stub
 				} else {
 					$settings[$varname][$override['target']] = $val;
 				}
