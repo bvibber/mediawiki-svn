@@ -112,6 +112,11 @@ var mv_init_interface = {
 				ebvid['org_eb_stop'] = ebvid['stop'];
 				ebvid['stop'] = function(){mv_do_stop();}
 			}
+			if(ebvid['showVideoDownload'].toString!='function(){mv_doShowVideoDownload();}'){
+				ebvid['org_showVideoDownload'] = ebvid['showVideoDownload'];
+				ebvid['showVideoDownload'] = function(){mv_doShowVideoDownload();}
+			}
+			
 			//js_log("post stop: " +ebvid['stop'].toString());
 		}
 		//call stop override
@@ -269,7 +274,11 @@ var mv_init_interface = {
 		}
 	}
 }
-
+function mv_doShowVideoDownload(){
+	//restores orginal state before showing download links: 	
+	mv_init_interface.doRestore();
+	return $j('#embed_vid').get(0).org_showVideoDownload();
+}
 /* the mvdObject
  *
  * eventually a lot of mvd_based functionality should be ported over to this structure.

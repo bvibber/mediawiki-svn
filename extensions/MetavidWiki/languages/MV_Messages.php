@@ -17,6 +17,7 @@ $messages['en'] = array(
 	#stream/files key descriptions:
 	'mv_ogg_low_quality' => 'Web streamable - Ogg Theora 300kbs',
 	'mv_ogg_high_quality' => 'High quality - Ogg Theora 900kbs',
+	'mv_flash_low_quality' => 'Web streamable - Flash video',
 	'mv_archive_org_link' => 'Links into Archive.org mpeg2 originals',
 	'ao_file_64Kb_MPEG4' => 'Archive.org - mpeg4 64kbs',
 	'ao_file_256Kb_MPEG4' => 'Archive.org - mpeg4 256kbs',

@@ -91,8 +91,10 @@ $mvShellOggFrameGrab = '';
 $mvVideoArchivePaths['mvprime']= 'http://metavid.ucsc.edu/media/';
 $mvVideoArchivePaths['cap1'] = 'http://128.114.20.64/media/';
 
+//stream msgKeys that support ?t=start_time/end_time temporal url media serving: 
 $mvDefaultVideoQualityKey = 'mv_ogg_low_quality';
 $mvDefaultFlashQualityKey = 'mv_flash_low_quality';
+$mvDefaultVideoHighQualityKey = 'mv_ogg_high_quality';
 
 #local path to video archive (if hosted locally)
 $mvLocalVideoLoc = '/metavid/video_archive';

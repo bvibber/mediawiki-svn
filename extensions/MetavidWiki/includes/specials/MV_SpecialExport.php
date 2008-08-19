@@ -180,7 +180,8 @@ class MV_SpecialExport {
 	}*/
 	//start high level: 
 	function get_roe_xml($header=true){
-		global $mvDefaultVideoQualityKey, $wgServer;
+		global $wgServer;
+		global $mvDefaultVideoQualityKey, $mvDefaultFlashQualityKey,$mvDefaultVideoHighQualityKey;
 		$dbr =& wfGetDB(DB_SLAVE);		
 	
 		$this->get_row_data();
@@ -213,7 +214,12 @@ class MV_SpecialExport {
 			<switch distinction="quality">
 		<? foreach($this->file_list as $file){ 				
 				$dAttr=($file->getNameKey()==$mvDefaultVideoQualityKey)?' default="true"':'';
-				$dSrc=($file->getPathType()=='url_anx')?$this->mvTitle->getWebStreamURL($file->getNameKey()):$file->getFullURL();
+				$dSrc=($file->getNameKey()	== $mvDefaultVideoQualityKey ||
+						$file->getNameKey()	== $mvDefaultFlashQualityKey ||
+						$file->getNameKey()	== $mvDefaultVideoHighQualityKey )
+					? $this->mvTitle->getWebStreamURL($file->getNameKey())
+					: $file->getFullURL();
+						
 				//if not ogg include start and end times in the attribute: 
 				//@@todo in the future support client side ogg seeking (and don't automaticly put .anx at the end)  
 				$startendattr= (htmlentities($file->getContentType())!='video/ogg')?

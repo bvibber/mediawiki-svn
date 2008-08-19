@@ -3,7 +3,6 @@
 * javascript api: http://www.videolan.org/doc/play-howto/en/ch04.html
 *  assume version > 0.8.5.1
 */
-
 var vlcEmbed = { 
 	instanceOf:'vlcEmbed',
     supports: {'play_head':true, 'play_or_pause':true, 'stop':true, 'fullscreen':true, 'time_display':true, 'volume_control':true},

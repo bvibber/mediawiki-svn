@@ -320,15 +320,16 @@ width: 100%;
 
 /*	margin: -305px 0 0 0; */
 .videoComplete .videoOptionsComplete {
-	background: url(images/player_video_options_bg.png) 0 0 no-repeat;
-	width: 266px;
-	height: 172px;
-	margin: 5px auto;
-	padding: 12px 19px;
-/*	font-size: 14px;*/
-    font-size:10pt;
-  	overflow: auto;
-	color: #7a7a7a;
+	background:transparent url('images/player_video_options_bg.png') no-repeat scroll 0pt;
+	color:#7A7A7A;
+	font-size:10pt;
+	height:158px;
+	left:10%;
+	overflow:auto;
+	padding:19px;
+	position:relative;
+	top:16%;
+	width:283px;
 }
 .videoComplete .videoOptionsComplete p {text-align: center; margin: 3px 0; padding: 0;}
 .videoComplete .videoOptionsComplete a {

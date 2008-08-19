@@ -51,21 +51,22 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
 			}
 			$flash_stream_url = $mvTitle->getWebStreamURL($mvDefaultFlashQualityKey);
 			if($flash_stream_url!=''){		
-				$o.=$coma.' <a href="'.htmlspecialchars($ogg_stream_url).'">
+				$o.=$coma.' <a href="'.htmlspecialchars($flash_stream_url).'">
 					Flash Video
 				</a>';	
 				$coma=', ';
 			}
 			$o.='</span>';			
-			$o.='<span class="download"><a href="javascript:">More Download Options</a></span>'; 
+			$o.='<span class="download"><a href="javascript:$j(\'#'.htmlspecialchars($this->embed_id).'\').get(0).showVideoDownload()">More Download Options</a></span>'; 
 		}
 		$o.='<span class="embed"><a href="javascript:hideShowEmbedCode();">Embed Video</a></span>'.
 				'</p>';
 		//about file: 
+		$talkPage = Title::newFromText('Anno_en:'.strtolower($mvTitle->wiki_title), MV_NS_MVD_TALK);
 		$o.='<p class="about_file">
 					<span class="views">Views:'.htmlspecialchars($mvTitle->getViewCount()).'</span>
 					<span class="duration">Duration: '.htmlspecialchars($mvTitle->getSegmentDurationNTP()).'</span>
-					<span class="comments">na</span>
+					<span class="comments">'.$sk->makeKnownLinkObj($talkPage, wfMsg('talk')).'</span>
 				</p>
 			</div>';
 		return $o;

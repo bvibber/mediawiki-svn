@@ -158,16 +158,19 @@ class MV_MagicWords{
  								$getText=true,
  								$smw_properties=array('Speech_by', 'Bill'), 
  								$options=array('limit'=>1)
- 							);
+ 							); 				
  				if(count($mvd_rows)!=0){
- 					$mvd_row = current($mvd_rows);				
- 					if($mvd_row->Speech_by){
+ 					reset($mvd_rows);
+ 					$mvd_row = current($mvd_rows);
+ 					//print_r($mvd_rows);
+ 					//print "type of: " . gettype($mvd_row);
+ 					if(isset($mvd_row->Speech_by)){
  						$ptitle = Title::MakeTitle(NS_MAIN, $mvd_row->Speech_by);
  						$o.='<span class="keywords">'.
  								$sk->makeKnownLinkObj($ptitle, $ptitle->getText()).
  							'</span>';
  					}
- 					if($mvd_row->Bill){
+ 					if(isset($mvd_row->Bill)){
  						$btitle = Title::MakeTitle(NS_MAIN, $mvd_row->Bill);
  						$o.='<span class="keywords">Bill:'.
  								$sk->makeKnownLinkObj($btitle).'

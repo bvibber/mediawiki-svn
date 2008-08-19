@@ -274,13 +274,19 @@
 	 * 
 	 */	 
 	function getWebStreamURL($quality=null){
-		global $mvStreamFilesTable, $mvVideoArchivePaths, $mvDefaultVideoQualityKey;
+		global $mvStreamFilesTable, $mvVideoArchivePaths;
+		global $mvDefaultVideoQualityKey,$mvDefaultVideoHighQualityKey,$mvDefaultFlashQualityKey;
 		//@@todo mediawiki path for media (insted of hard link to $mvVideoArchive)
 		//@@todo make sure file exisits		
 		if(!$quality)$quality=$mvDefaultVideoQualityKey;
-		$anx_req='';
+		$time_req='';
 		if( $this->getStartTime()!='' && $this->getEndTime()!=''){
-			$anx_req  ='.anx?t='. $this->getStartTime() . '/' . $this->getEndTime();
+			if($quality==$mvDefaultVideoQualityKey || 
+			   $quality==$mvDefaultVideoHighQualityKey){
+				$time_req  ='.anx?t='. $this->getStartTime() . '/' . $this->getEndTime();
+			}else if($quality== $mvDefaultFlashQualityKey){
+				$time_req  ='?t='. $this->getStartTime() . '/' . $this->getEndTime();
+			}
 		}
 		if( $this->doesStreamExist() ){			
 			//@@todo cache this / have a more organized store for StreamFiles in streamTitle
@@ -297,7 +303,7 @@
 			$mvStreamFile = new MV_StreamFile($this->mvStream, $streamFile);
 			//if link empty return false:			
 			if($mvStreamFile->getFullURL()=='')return false;			
-			return $mvStreamFile->getFullURL() . $anx_req;
+			return $mvStreamFile->getFullURL() . $time_req;
 		}else{
 			//@@todo throw ERROR
 			return false;

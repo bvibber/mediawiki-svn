@@ -156,7 +156,11 @@ var mvEmbed = {
   	mvJsLoader.doLoad(this.lib_jquery,function(){
   		//once jQuery is loaded set up no conflict & load plugins:
  		_global['$j'] = jQuery.noConflict();
- 		js_log('jquery loaded');
+ 		//set up ajax to not send dynamic urls for loading scripts
+ 		$j.ajaxSetup({		  
+		  cache: true
+		});
+ 		js_log('jquery loaded'); 		
 		mvJsLoader.doLoad(_this.lib_plugins, function(){
 			js_log('plugins loaded');
 			mvEmbed.libs_loaded=true;
@@ -228,8 +232,7 @@ mediaPlayer.prototype =
     supported_types:null,
     library:null,
 	loaded:false,
-	loading_callbacks:null,
-	
+	loading_callbacks:null,	
     supportsMIMEType : function(type)
     {
         for (var i in this.supported_types)
@@ -240,14 +243,6 @@ mediaPlayer.prototype =
     getName : function()
     {
         return getMsg('ogg-player-' + this.id);
-    },
-    getLibraryFile : function()
-    {
-        return 'mv_'+this.library+'Embed.js';
-    },
-    getLibraryObject : function()
-    {
-        return this.library+'Embed';
     },
 	load : function(callback)
 	{
@@ -262,12 +257,13 @@ mediaPlayer.prototype =
 			this.loading_callbacks.push(callback);
 			if(this.loading_callbacks.length==1)
 			{
-				js_log('requesting plugin: ' + mv_embed_path + this.getLibraryFile());
+				js_log('requesting plugin: ' + mv_embed_path + 'mv_'+this.library+'Embed.js');
 				var _this = this;
-				$j.getScript(mv_embed_path + _this.getLibraryFile(), function()
-				{
+				//swaped for doLoad so that we use cache 
+				// getScript has cache disabled for some reason (probably could be set up at init to cache)  
+				$j.getScript(mv_embed_path + 'mv_'+_this.library+'Embed.js', function(){				
 					js_log(_this.id + ' plugin loaded');
-					_this.loaded = true;
+					_this.loaded = true;					
 					for(var i in _this.loading_callbacks)
 						_this.loading_callbacks[i]();
 					_this.loading_callbacks = null;
@@ -570,19 +566,20 @@ var mvJsLoader = {
 	 libreq:{},
 	 load_time:0,
 	 doLoad:function(libs,callback){
-		 if(libs){this.libs=libs;}else{libs=this.libs;}
+		 this.libs = libs;
 		 this.callback=(callback)?callback:this.callback;
 		 var loading=0;
 		 var i=null;
 		 //js_log("doLoad_ load set to 0 on libs:"+ libs);
 		 for(i in libs){
+		 	 //if(i=='vlcEmbed')alert('got called with '+i+' ' + typeof(vlcEmbed));
 			 //itor the objPath (to avoid 'has no properties' errors)
 			 var objPath = i.split('.');
 			 var cur_path ='';
 			 var cur_load=0;
 			 for(p in objPath){
 				 cur_path = (cur_path=='')?cur_path+objPath[p]:cur_path+'.'+objPath[p];
-				 //js_log("looking at path: "+ cur_path);
+				 //if(i=='vlcEmbed')alert("looking at path: "+ cur_path);
 				 //js_log("eval:  " + eval('typeof ('+cur_path+');'));
 				 if(eval('typeof '+cur_path)=='undefined'){
 					 cur_load = loading=1;
@@ -1107,11 +1104,6 @@ textInterface.prototype = {
 	getMenu:function(){
 		var out='';
 		//add in loading icon:
-		/*
-		out+= '<div class="mv_loading_icon" style="background:url(\''+mv_embed_path+'images/indicator.gif\');display:';
-		out+= (this.roe_xml)? 'none':'inline';
-		out+='"/>';
-		*/
 		var as_checked = (this.autoscroll)?'checked':'';
 		out+= '<div id="mmenu_'+this.pe.id+'" style="background:#AAF;font-size:small;position:absolute;top:0;height:20px;left:0px;right:0px;">' +
 				'<a style="font-color:#000;" title="'+getMsg('close')+'" href="#" onClick="document.getElementById(\''+this.pe.id+'\').closeTextInterface();return false;">'+
@@ -1287,7 +1279,8 @@ mediaSource.prototype =
     */
     detectType:function(uri)
     {
-    	//@@todo if media is on the same server as the javascript we can issue a HEAD request and read the mime type of the media...
+    	//@@todo if media is on the same server as the javascript or we have mv_proxy configured
+    	//we can issue a HEAD request and read the mime type of the media...
     	// (this will detect media mime type independently of the url name)
     	//http://www.jibbering.com/2002/4/httprequest.html (this should be done by extending jquery's ajax objects)
         switch(uri.substr(uri.lastIndexOf('.'),4)){
@@ -1316,6 +1309,7 @@ mediaElement.prototype =
     sources:null,
     /** Playable sources **/
     playable_sources:null,
+    addedROEData:false,
     /** Selected mediaSource element. */
     selected_source:null,
     thumbnail:null,
@@ -1407,13 +1401,22 @@ mediaElement.prototype =
         return mime_type=='video/ogg' || mime_type=='video/annodex' || mime_type=='video/x-flv';
     },
     /** Adds a single mediaSource using the provided element if
-        the element has a 'src' attribute.
+        the element has a 'src' attribute.        
         @param element {element} <video>, <source> or <mediaSource> element.
     */
     tryAddSource:function(element)
     {
         if (!element.hasAttribute('src'))
             return;
+        var new_src = element.getAttribute('src');
+        //make sure an existing element with the same src does not already exist: 
+        js_log("New src: "+new_src);
+        for(i in this.sources){     
+        	js_log('   ext src: '+this.sources[i].getURI());  	       
+        	if(this.sources[i].getURI()==new_src){        		
+        		return false;
+        	}
+        }
         var source = new mediaSource(element);
         this.sources.push(source);
         if(this.isPlayableType(source.mime_type))
@@ -1423,8 +1426,9 @@ mediaElement.prototype =
         @param roe_data ROE data.
     */
     addROE:function(roe_data)
-    {
-        var _this = this;
+    {    	
+    	this.addedROEData=true;
+        var _this = this;        
         if(typeof roe_data == 'string')
         {
             var parser=new DOMParser();
@@ -1452,7 +1456,8 @@ mediaElement.prototype =
 	        })
         }
 		else
-			js_log('ROE data empty.');
+			js_log('ROE data empty.');		
+				
     }
 };
 
@@ -1467,8 +1472,7 @@ var embedVideo = function(element) {
 embedVideo.prototype = {
     /** The mediaElement object containing all mediaSource objects */
     media_element:null,
-	slider:null,
-	roe_xml:null,
+	slider:null,	
 	load_external_data:false,
 	//utility functions for property values:
 	hx : function ( s ) {
@@ -1858,7 +1862,6 @@ embedVideo.prototype = {
 
    	    thumb_html+='</div>';
 	    return thumb_html;
-
     },
 	GetEmbeddingHTML:function()
 	{
@@ -2060,8 +2063,10 @@ embedVideo.prototype = {
 	  		'<div class="videoOptionsComplete">'+
 			//@@TODO: this style should go to .css
 			'<div style="width: 247px;border:none;position:absolute;z-index:13;padding: 12px 19px; text-align:right;"><span>'+
-		    '<a href="#" style="color:white;" onClick="$j(\'#'+sel_id+'\').get(0).closeDisplayedHTML();">close</a></span></div>'+
-             html_code +
+		    '<a href="#" style="color:white;" onClick="$j(\'#'+sel_id+'\').get(0).closeDisplayedHTML();return false;">close</a></span></div>'+
+            '<div id="mv_disp_inner_'+sel_id+'">'+
+            	 html_code 
+           	+'</div>'+
 //                close_link+'</span>'+
       		 '</div></div>';
         $j('#'+sel_id).append(div_code);
@@ -2142,33 +2147,51 @@ embedVideo.prototype = {
 		out+='</blockquote></span>';
 		return out;
 	},
-	showVideoDownload:function(){
-        var select_code=this.getDLlist(function(index, source)
-        {
-            return '<a style="color:white" href="' + source.getURI() +'"> '
-                + source.getTitle()+'</a>';
-        });
-        this.displayHTML(select_code);
+	/*download list is exessivly complicated ... rewrite for clarity: */
+	showVideoDownload:function(){		
+		//load the roe if avaliable (to populate out download options:
+		if(this.roe && this.media_element.addedROEData==false){
+			var _this = this;
+			this.displayHTML(getMsg('loading_txt'));
+			do_request(this.roe, function(data)
+            {
+               _this.media_element.addROE(data);                             
+               $j('#mv_disp_inner_'+_this.id).html(_this.getShowVideoDownload());
+            });	           
+		}else{
+			this.displayHTML(this.getShowVideoDownload());
+		}       
 	},
-	getDLlist:function(transform_function){
-		var out='<b style="color:white;">'+getMsg('download_from')/*+' '+parseUri(this.src).queryKey['t']*/+'</b><br>';
+	getShowVideoDownload:function(){ 
+		var out='<b style="color:white;">'+getMsg('download_from')+'</b><br>';
 		out+='<span style="color:white"><blockquote>';
-		var dl_list=dl_txt_list='';
-		$j.each(this.media_element.getSources(), function(index, source)
-        {
-			var dl_line = '<li>' + transform_function(index, source) + '</li>'+"\n";
-			if(this.getMIMEType()=="video/ogg"){
+		var dl_list='';
+		var dl_txt_list='';
+        $j.each(this.media_element.getSources(), function(index, source){
+        	var dl_line = '<li>' + '<a style="color:white" href="' + source.getURI() +'"> '
+                + source.getTitle()+'</a> '+ '</li>'+"\n";            
+			if(	 source.getURI().indexOf('?t=')!==-1){
                 out+=dl_line;
 			}else if(this.getMIMEType()=="text/cmml"){
 				dl_txt_list+=dl_line;
 			}else{
 				dl_list+=dl_line;
 			}
-		});
-		out+='</blockquote>'+getMsg('download_full')+"<blockquote>"+dl_list+'</blockquote>';
+        });
+        out+='</blockquote>'+getMsg('download_full')+"<blockquote>"+dl_list+'</blockquote>';
 		out+='</blockquote>'+getMsg('download_text')+"<blockquote>"+dl_txt_list+'</blockquote></span>';
-		return out;
+       	return out;
 	},
+	/*getDLlist:function(transform_function){
+		
+		var dl_list=dl_txt_list='';
+		$j.each(this.media_element.getSources(), function(index, source)
+        {
+			
+		});
+		
+		return out;
+	},*/
 	/*
 	*  base embed controls
 	*	the play button calls
@@ -2537,7 +2560,7 @@ function mv_jsdata_cb(response){
 //@@todo swich over to jQuery injection
 function loadExternalJs(url){
    	js_log('load js: '+ url);
-/*    if(window['$j'])
+    if(window['$j'])
     	//have to use direct ajax call insted of $j.getScript()
     	//since you can't send "cache" option to $j.getScript()
        $j.ajax({
@@ -2546,8 +2569,7 @@ function loadExternalJs(url){
 			dataType: 'script',
 			cache: true
 		});
-    else*/
-    {
+    else{
     	var e = document.createElement("script");
         e.setAttribute('src', url);
         e.setAttribute('type',"text/javascript");
