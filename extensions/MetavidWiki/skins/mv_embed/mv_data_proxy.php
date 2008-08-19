@@ -8,7 +8,8 @@
 */
 
 //NOTE THIS IS DISABLED BY DEFAULT simply comment out the line below to enable;
-die('note mv_data_proxy is disabled by default');
+die('note mv_data_proxy is disabled by default, see var mv_data_proxy in mv_embed.js for more info');
+
 if(isset($_POST['url'])){
 	$req_url = $_POST['url'];
 }else{

@@ -104,7 +104,7 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
 		//set up select vars:
 		$conds=$vars=array();
 		$from_tables ='';
-		$do_cat_lookup=false;
+		$do_cat_lookup=$do_smw_lookup=false;
 		//
 		//set mvd_type if empty:
 		if($mvd_type==null)$mvd_type='all';
@@ -113,6 +113,7 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
 		$vars= array('mv_page_id as id', 'mvd_type', 'wiki_title', 'stream_id', 'start_time', 'end_time');
 		//add in base from:
 		$from_tables.= $dbr->tableName('mv_mvd_index');
+		$conds = array('stream_id'=>$stream_id);
 		//print_r($smw_properties);		
 		if($smw_properties!=''){
 			if(!is_array($smw_properties))
@@ -121,9 +122,36 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
 				if($prop_name=='category'){
 					$do_cat_lookup=true;
 				}else{					
-					//if(SMW_VERSION >=1.2){
-					//	$getSMWTags=true;
-					//}else{
+					if(SMW_VERSION >=1.2){								
+						
+						//the following is too slow to use but gennerally works:
+						//has to be rewritten with sub-queries or something more elaborate
+						//for now just do lookup after the fact
+						$do_smw_lookup=true;
+						/*$esc_p = mysql_real_escape_string($prop_name);
+						$vars[] = $esc_p.'.`smw_title` AS `'.
+									$esc_p.'` ';
+						$from_tables.=' ,'.
+							' ' . $dbr->tableName('smw_rels2') . ' as `'.$esc_p.'_rels2`'. 
+							' JOIN `smw_ids` AS `'.$esc_p.'_pname` '. 
+								' ON ( '. 
+								' `'.$esc_p.'_rels2`.`p_id` = `'.$esc_p.'_pname`.`smw_id`
+									AND `'.$esc_p.'_pname`.`smw_title` LIKE CONVERT( _utf8 '.
+											$dbr->addQuotes($esc_p).
+										' USING latin1 ) COLLATE latin1_general_ci '.										
+							' ) ' . 
+							' LEFT JOIN `smw_ids` AS `'.$esc_p.'stext` ' . 
+								' ON ( '.
+								' `'.$esc_p.'_rels2`.`s_id` = `'.$esc_p.'stext`.`smw_id` '.
+								' ) ' . 							
+							'LEFT JOIN `smw_ids` AS `'.mysql_real_escape_string($prop_name).'` '. 
+								' ON ( '.
+								' `'.$esc_p.'_rels2`.`o_id` = `'.mysql_real_escape_string($prop_name).'`.`smw_id`'.  
+								' ) ';
+						$conds[]=' `'.$esc_p.'stext`.`smw_title` = `mv_mvd_index`.`wiki_title` ';
+						break; 		
+						*/	
+					}else{
 						$vars[] = mysql_real_escape_string($prop_name).'.object_title as '.mysql_real_escape_string($prop_name);
 						$from_tables.=' ' . 						
 							' LEFT JOIN '. $dbr->tableName('smw_relations') .
@@ -132,11 +160,10 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
 							' = ' . mysql_real_escape_string($prop_name) . '.subject_id'.
 							' AND '. mysql_real_escape_string($prop_name).'.relation_title'.
 							' = ' . $dbr->addQuotes($prop_name) . ')';		
-					//}	
+					}	
 				}
 			}
-		}
-		$conds = array('stream_id'=>$stream_id);
+		}		
 		if($mvd_type!='all'){
 			$mvd_type=(is_object($mvd_type))?get_object_vars($mvd_type):$mvd_type;
 			if(is_array($mvd_type)){
@@ -174,6 +201,7 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
 			__METHOD__,
 			$options);
 		//print $dbr->lastQuery();
+		//die;
 			
 		$ret_ary=array();
 		$from_tables=$vars=$options=array();
@@ -189,18 +217,25 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
 			}
 		}
 		
-		//not very fast:
-		/*if($getSMWTags){
-			foreach($ret_ary as $row){
-				$smwStore =& smwfGetStore();     
+		//slow epecialy for lots of query results but join Query is crazy complicated for SMW >= 1.2 
+		//(and I have not been able to construct it without hitting exessive number of rows in the EXPLIN) 
+		if($do_smw_lookup){
+			$smwStore =& smwfGetStore();  
+			foreach($ret_ary as & $row){				   
                 $rowTitle = Title::newFromText($row->wiki_title, MV_NS_MVD);
-                //print "Title: ".$title->getDBKey() . "\n";
-                $smwProps = $smwStore->getSemanticData($rowTitle);
-               foreach($smwProps as $smwProp){
-               	print "val: " . $smwProp->getValue();
-               }
+                foreach($smw_properties as $propKey){
+                	$propTitle = Title::newFromText($propKey, SMW_NS_PROPERTY);
+	                $smwProps = $smwStore->getPropertyValues($rowTitle,$propTitle );
+					//just a temp hack .. we need to think about this abstraction a bit...
+					if(count($smwProps)!=0){
+						$v = current($smwProps);
+						$row->$propKey=$v->getXSDValue();
+					}
+                }				
 			}
-		}*/
+		}
+		//print_r($ret_ary);
+		//die;
 		
 		if($do_cat_lookup){
 			$from_tables = $dbr->tableName('categorylinks');

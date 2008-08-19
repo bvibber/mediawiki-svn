@@ -299,12 +299,14 @@ $smwgShowFactbox=SMW_FACTBOX_HIDDEN;
 			$template_key = strtolower($mvdTile->getMvdTypeKey());
 		//$wgOut->addHTML('looking at: ' . strtolower($template_key));
 		$sk = &$wgUser->getSkin();
-		$pre_text_html = $post_text_html=''; 			
+		$pre_text_html = $post_text_html=''; 	
+		$smw_text_html='';		
 		switch($template_key){					
 			case 'ht_en':
 			case 'anno_en':							
 				$smw_attr = $this->get_and_strip_semantic_tags($text);		
 				foreach($smw_attr as $smw_key=>$smw_attr_val){
+					//do special display for given values: 
 					switch($smw_key){
 						case 'speech_by':
 						case 'spoken_by':							
@@ -320,21 +322,20 @@ $smwgShowFactbox=SMW_FACTBOX_HIDDEN;
 							if($mvd_page!='')
 								$pre_text_html.='<img border="0" src="'.htmlspecialchars($mvgScriptPath).'/skins/images/button_play.png">'.'</a>';								
 							$pre_text_html.='</p>';															
-						break;																
-						default:
-							//@@todo we should just use semantic mediaWikis info box with some custom style .
-							$smwKeyTitle=Title::newFromText($smw_key);
-							$valueTitle = Title::newFromText($smw_attr_val);
-							$post_text_html.=$smwKeyTitle->getText(). ' '. $sk->makeLinkObj($valueTitle);
-						break;	
+						break;																						
 					}
+					//@@todo we should just use semantic mediaWikis info box with some custom style .
+					$smwKeyTitle=Title::newFromText($smw_key);
+					$valueTitle = Title::newFromText($smw_attr_val);
+					if($template_key=='anno_en')
+						$smw_text_html.=$smwKeyTitle->getText(). ': '. $sk->makeLinkObj($valueTitle).'<br>';
 				}			
 				$pre_text_html.='<p class="text">';				
 				if($mvd_page!=''){			
 					$pre_text_html.='<span class="mvd_menu_header">'.$this->get_mvd_menu($mvd_page).'</span>';
 				}
-				$pre_text_html.='<span class="description">';
-				
+				$pre_text_html.='<span class="description"><br>';				
+				$pre_text_html.=$smw_text_html;
 				//for ht_en add spoken by add name to start of text: 
 				if( $template_key=='ht_en'){
 					//if we have the person title add them to start of the text output: 
@@ -342,8 +343,7 @@ $smwgShowFactbox=SMW_FACTBOX_HIDDEN;
 						//have to prepend it cuz of <p> insertion for first paragraph						
 						$text='[['.$pTitle->getText().']]: '.trim($text);
 					}
-				}
-				
+				}				
 				$post_text_html.='</span></p>';
 			break;
 			default:					

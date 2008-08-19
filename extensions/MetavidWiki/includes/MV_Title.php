@@ -23,7 +23,7 @@
  	var $start_time=null;
  	var $end_time=null;
  	var $id = null;
-
+	var $view_count=null;
  	
  	var $hasMVDType = false;
  	var $dispVideoPlayerTime=false;
@@ -319,8 +319,7 @@
 			list($vWidth, $vHeight) = explode('x',$size);
 		}else{
 			list($vWidth, $vHeight, $na) = MV_StreamImage::getSizeType($size);
-		}		
-		
+		}				
 			
 		$stream_web_url = $this->getWebStreamURL($mvDefaultVideoQualityKey);
 		//print "lookign for q: $mvDefaultFlashQualityKey ";
@@ -339,7 +338,9 @@
 			$o.='thumbnail="'.$this->getStreamImageURL($size, null, $force_server).'" '.					
 				'roe="'.$roe_url.'" '.
 				'show_meta_link="false" ';
+			
 			$o.= ($autoplay)?' autoplay="true" ':'';
+			
 			$o.='style="width:'.htmlspecialchars($vWidth).'px;height:'.htmlspecialchars($vHeight).'px" '.
 				'controls="true" embed_link="true" >';
 			
@@ -359,6 +360,21 @@
 		}else{
 			return wfMsg('mv_error_stream_missing');
 		}						
+	}
+	function getViewCount(){
+		if($this->view_count==null){
+			$dbr = & wfGetDB(DB_READ);
+			$vars = array('COUNT(1) as hit_count');
+			$conds = array( 'stream_id ='.$dbr->addQuotes($this->getStreamId()), 
+							'start_time >= '. $this->getStartTimeSeconds(), 
+							'end_time <= '. $this->getEndTimeSeconds() );				 		
+			$this->view_count =$dbr->selectField('mv_clipview_digest', 
+						$vars,
+						$conds, 				
+						__METHOD__ 
+					);
+		}
+		return $this->view_count;
 	}
 	function getTitleDesc(){	
 		if($this->type_marker){

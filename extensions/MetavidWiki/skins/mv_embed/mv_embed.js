@@ -30,6 +30,14 @@ var global_req_cb = new Array();//the global request callback array
 var _global = this;
 var mv_init_done=false;
 
+/*
+ * its best if you just require all your external data sources to serve up json data.
+ * mv_proxy is not such a good idea from security standpoint but if you know what your doing
+ * ie mv_data_proxy should not be hosted on domain as with any other web services running...
+ * you can enable it here )  
+*/  
+var MV_ENABLE_DATA_PROXY=false;
+
 //get mv_embed location if it has not been set
 if(!mv_embed_path){
 	getMvEmbedPath();
@@ -2463,7 +2471,7 @@ function mv_addLoadEvent(func) {
 			});
 		}else{
 			//check if MV_embed path matches document.URL then we can use the local proxy:
-			if(parseUri(document.URL).host == parseUri(mv_embed_path).host ){
+			if(parseUri(document.URL).host == parseUri(mv_embed_path).host && MV_ENABLE_DATA_PROXY){
 				js_log('use mv_embed_proxy : ' + parseUri(document.URL).host + ' == '+ parseUri(mv_embed_path).host);
 				//alert("do ajax req:" +req_url);
 				$j.ajax({
@@ -2479,14 +2487,14 @@ function mv_addLoadEvent(func) {
 			}else{
 				//get data via DOM injection of proxy request with callback
 				global_req_cb.push(callback);
-				if(!mv_json_response){
+				if(!mv_json_response && MV_ENABLE_DATA_PROXY){
 					//@@todo should remove this functionality from mv_data_proxy
 					//and require sites serve up data as javascript with a callback
 					req_url  =req_url.replace(/&/g,'__amp__');
 					loadExternalJs(mv_embed_path+'mv_data_proxy.php?url='+req_url+
 						'&cb=mv_jsdata_cb&cb_inx='+(global_req_cb.length-1) );
 				}else{
-					//response type is mv_json_response don't hit mv_data_proxy
+					//response type is mv_json_response or proxy dissabled			
 					loadExternalJs(req_url+'&cb=mv_jsdata_cb&cb_inx='+(global_req_cb.length-1));
 				}
 			}

@@ -47,16 +47,17 @@
 	 								$smw_properties=array('speech_by','bill','category'), 
 	 								$options=array('LIMIT'=>1, 'ORDER BY'=>$orderby)	 							
 	 						);	 
-	 		//print "SHOULD GET $pntype for $stream_time_req";		
-	 		//print_r($mvd_rows);
-	 		//die;
+	 		//print "SHOULD GET $pntype for $stream_time_req";				
+	 		reset($mvd_rows);
 	 		if(count($mvd_rows)!=0){
 	 			$row = current($mvd_rows);
 	 			$prev_end = $row->end_time;	 		
 	 			$stime_req = seconds2ntp($row->start_time) . '/' . seconds2ntp($row->end_time);
 	 			$streamTitle = Title::newFromText($stream_name .'/'. $stime_req, MV_NS_STREAM);
-	 			if(trim($row->speech_by)!=''){	 					 				
-	 				$o.=wfMsg('mv_'.$pntype.'_speech', $sk->makeKnownLinkObj($streamTitle, $row->speech_by)); 	 	
+	 			$tool_tip ='';	 			
+	 			if(trim($row->speech_by)!=''){	 			
+	 				$o.=wfMsg('mv_'.$pntype.'_speech', $sk->makeKnownLinkObj($streamTitle, $row->speech_by));
+	 				$tool_tip.=	 'Speech By: '. $row->speech_by;	
 	 			}else if(trim($row->bill)!=''){
 	 				$o.=wfMsg('mv_'.$pntype.'_bill', $sk->makeKnownLinkObj($streamTitle, $row->bill));			 			
 	 			}else if(count($row->category)!=0){

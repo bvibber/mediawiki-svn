@@ -10,14 +10,65 @@
   */
 if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
  class MV_VideoPlayer extends MV_Component{
- 	var $name = 'MV_VideoPlayer';  	 	 	
+ 	var $name = 'MV_VideoPlayer';
+ 	var $embed_id = 'embed_vid';  	 	 	
  	function getHTML(){
  		global $wgOut; 	
  		if($this->getReqStreamName()!=null){
  			$wgOut->addHTML($this->embed_html());
+ 			//add link helpers
+ 			$wgOut->addHTML($this->link_helpers_html()); 
  		}else{
  			$wgOut->addHTML('no stream selected');
  		}
+	}
+	function link_helpers_html(){
+		global $wgUser;
+		$o='';
+		$sk = & $wgUser->getSkin();
+		$mvTitle= & $this->mv_interface->article->mvTitle;
+		$file_list = $mvTitle->mvStream->getFileList();
+		$o.='<div id="videoMeta">
+				<p class="options">';
+		//get file list: 
+		global $mvDefaultVideoQualityKey, $mvDefaultFlashQualityKey;
+		if(count($file_list)!=0){		
+			$coma='';
+			$o.='<span class="download">Download Segment:';
+			$ogg_stream_url = $mvTitle->getWebStreamURL($mvDefaultVideoQualityKey);
+			if($ogg_stream_url!=''){	
+				$o.=$coma.' <a href="'.htmlspecialchars($ogg_stream_url).'">
+					Web Ogg
+				</a>';
+				$coma=', ';
+			}
+			$ogg_hq_url = $mvTitle->getWebStreamURL('mv_ogg_high_quality');
+			if($ogg_hq_url!=''){	
+				$o.=$coma.' <a href="'.htmlspecialchars($ogg_hq_url).'">
+					High Quality Ogg
+				</a>';
+				$coma=', ';
+			}
+			$flash_stream_url = $mvTitle->getWebStreamURL($mvDefaultFlashQualityKey);
+			if($flash_stream_url!=''){		
+				$o.=$coma.' <a href="'.htmlspecialchars($ogg_stream_url).'">
+					Flash Video
+				</a>';	
+				$coma=', ';
+			}
+			$o.='</span>';			
+			$o.='<span class="download"><a href="javascript:">More Download Options</a></span>'; 
+		}
+		$o.='<span class="embed"><a href="javascript:hideShowEmbedCode();">Embed Video</a></span>'.
+				'</p>';
+		//about file: 
+		$o.='<p class="about_file">
+					<span class="views">Views:'.htmlspecialchars($mvTitle->getViewCount()).'</span>
+					<span class="duration">Duration: '.htmlspecialchars($mvTitle->getSegmentDurationNTP()).'</span>
+					<span class="comments">na</span>
+				</p>
+			</div>';
+		return $o;
 	}
 	function embed_html(){		
 		global $mvDefaultVideoPlaybackRes;
@@ -28,7 +79,7 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
 		$mvTitle->dispVideoPlayerTime=true;			
 		$vid_size = (isset($this->mv_interface->smwProperties['playback_resolution']))?
 					$this->mv_interface->smwProperties['playback_resolution']:'';		
-		return $mvTitle->getEmbedVideoHtml('embed_vid', $vid_size);
+		return $mvTitle->getEmbedVideoHtml($this->embed_id, $vid_size);
 	}
 	function render_menu(){
 		return 'embed video';
