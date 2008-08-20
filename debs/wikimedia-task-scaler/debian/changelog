@@ -1,0 +1,7 @@
+wikimedia-task-scaler (1.0) unstable; urgency=low
+
+  * Initial Release. Moved scaling-related dependencies from
+    wikimedia-task-appserver to here, added dependency for the 
+    new rsvg custom package.
+
+ -- Tim Starling <tstarling@wikimedia.org>  Wed, 20 Aug 2008 16:32:41 +1000
