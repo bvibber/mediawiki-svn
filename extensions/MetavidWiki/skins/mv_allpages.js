@@ -159,22 +159,26 @@ function mv_cxt(inx){
 }
 /* toggles advanced search */
 function mv_toggle_advs(){
+	js_log('called mv_toggle_advs');
 	if($j('#advs').val()=='0'){
 		$j('#advs').val('1');
 		//sync values from basic -> avanced
 		$j("input[@name$='f[0][v]']").val( $j('#searchInput').val() );
-
+		var _fadecalled = false;
 		$j('.advs_basic').fadeOut('fast',function(){
-			if($j('#tmp_loading_txt').length==0){
-				$j('.advanced_search_tag').before('<span id="tmp_loading_txt">'+getMsg('loading_txt')+'</span>');
+			if(!_fadecalled){
+				if($j('#tmp_loading_txt').length==0){
+					$j('.advanced_search_tag').before('<span id="tmp_loading_txt">'+getMsg('loading_txt')+'</span>');
+				}					
+				if(typeof(mv_setup_search)=='undefined'){
+					$j.getScript(mv_embed_path +'../mv_search.js', function(){
+						mv_do_disp_adv_search();
+					});			
+				}else{
+					mv_do_disp_adv_search();
+				}
 			}
-			//check for adv search lib and load: @@todo ../ path is not very graceful
-			mvJsLoader.doLoad({'mv_setup_search':'../mv_search.js'}, function(){
-				$j('#tmp_loading_txt').remove();
-				$j('.advs_adv').fadeIn('fast');
-				//give some extra room for advanced search:
-				$j('#frontPageTop').animate({'height':'300px'},'fast');
-			});
+			_fadecalled=true;
 		});
 	}else{
 		$j('#advs').val('0');
@@ -187,13 +191,31 @@ function mv_toggle_advs(){
 		});
 	}
 }
+function mv_do_disp_adv_search(){
+	$j('#tmp_loading_txt').remove();
+	js_log('should fade in: .advs_adv');
+	$j('.advs_adv').fadeIn('fast', function(){
+		$j(this).css('display', 'inline');
+	});
+	//give some extra room for advanced search:
+	$j('#frontPageTop').animate({'height':'300px'},'fast');
+}
 function mv_setup_search_ac(){
 	var uri = wgScript;
 	//add the person choices div to searchInput
 	//turn off browser baseed autocomplete:
 	$j('#searchInput').attr('autocomplete',"off");
 
-	//add the sugestions div (abolute positioned so it can be ontop of everything)
+	//make sure advs is set
+	if(typeof mvAdvSearch!= 'undefined'){
+		if(mvAdvSearch=='0'){
+			$j('#advs').val('0');
+		}else{
+			$j('#advs').val('1');
+		}
+	}
+	
+	// add the sugestions div (abolute positioned so it can be ontop of everything)
 	$j('body').prepend('<div id="suggestions" style="position:absolute;display:none;z-index:50;">'+
 							'<div id="suggestionsTop"></div>'+
 								'<div id="suggestionsInner" class="suggestionsBox">'+

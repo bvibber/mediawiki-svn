@@ -80,11 +80,15 @@
 		//process track request:
 		$this->components['MV_Overlay']->procMVDReqSet();
 		//add in title & tracks var:
-		global $mvgScriptPath;
+		global $mvgScriptPath, $wgRequest;
+		$advs = $wgRequest->getVal('advs');
+		$advSearch = ($advs == '' || $advs == 0) ? '0' : '1';		
+		
 		$wgOut->addScript('<script type="text/javascript">/*<![CDATA[*/'.'
 		var mvTitle = \''.htmlspecialchars($this->article->mvTitle->getWikiTitle()).'\';
 		var mvTracks = \''.htmlspecialchars($this->components['MV_Overlay']->getMVDReqString()). '\';
 		var mvgScriptPath = \''.htmlspecialchars($mvgScriptPath).'\';
+		var mvAdvSearch =\''.htmlspecialchars($advSearch).'\';
 		/*]]>*/</script>');
 
 		//also add prev next paging

@@ -119,10 +119,11 @@ class MV_SpecialMediaSearch {
 
 			//$wgOut->addHTML($this->getResultsBar());
 			$wgOut->addHTML($this->getUnifiedResultsHTML());
-			
-			$wgOut->addHTML(wfMsg('mv_page_search', $sk->makeKnownLinkObj($title, $this->unified_term_search, http_build_query(array (
-				'search' => $this->unified_term_search
-			)))));
+			if(trim($this->unified_term_search)!=''){
+				$wgOut->addHTML(wfMsg('mv_page_search', $sk->makeKnownLinkObj($title, $this->unified_term_search, http_build_query(array (
+					'search' => $this->unified_term_search
+				)))));
+			}
 		}
 	}
 	function dynamicSearchControl() {
@@ -167,8 +168,7 @@ class MV_SpecialMediaSearch {
 
 		//set advs flag:
 		$advs = $wgRequest->getVal('advs');
-		$this->adv_search = ($advs == '' || $advs == 0) ? false : true;
-
+		$this->adv_search = ($advs == '' || $advs == 0) ? false : true;		
 		//check for unified searchterm:
 		$term = $wgRequest->getVal('mv_search');
 		//set input from search (on normal search page)
@@ -204,7 +204,16 @@ class MV_SpecialMediaSearch {
 							$tp[2]
 						)
 					));
-					break;
+				break;
+				default:
+					//empty filter: 
+					$this->filters = array (
+							array (
+								't' => 'match',
+								'v' => ''
+							)
+						);
+				break;
 			}
 		} else {
 			if (isset ($_GET['f'])) {
@@ -241,7 +250,7 @@ class MV_SpecialMediaSearch {
 								'v' => ''
 							)
 						);
-						break;
+					break;
 				}
 			}
 		}
@@ -442,7 +451,8 @@ class MV_SpecialMediaSearch {
 		}
 		$o .= '</ul>';
 		//add in prev-next at bottom too:
-		$o .= '<li class="prevnext">' . $prevnext . '</li>';
+		if ($this->numResultsFound > $this->limit) 
+			$o .= '<li class="prevnext">' . $prevnext . '</li>';
 		$o .= '</div>';
 		if(!$show_sidebar)return $o;
 		/*search sidebar*/
@@ -850,8 +860,7 @@ class MV_SpecialMediaSearch {
 			$s .= '<span id="mvs_' . htmlspecialchars($i) . '_tc">';
 			switch ($filter['t']) {
 				case 'match' :
-					$s .= $this->text_entry($i, 'v', $filter['v'], 'mv_hl_text',
-						array('onclick'=>'this.value=\'\';'));
+					$s .= $this->text_entry($i, 'v', $filter['v'], 'mv_hl_text');
 				break;
 				case 'bill':
 					$s .= $this->text_entry($i, 'v', $filter['v'], 'mv_hl_text', 

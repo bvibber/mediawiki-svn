@@ -839,7 +839,7 @@ function swapEmbedVideoElement(video_element, videoInterface){
     //now run the getHTML on the new embedVideo Obj:
     embed_video.getHTML();
     */
-    js_log('html set:' + document.getElementById(embed_video.id).innerHTML);
+    //js_log('html set:' + document.getElementById(embed_video.id).innerHTML);
     //store a reference to the id
     //(for single instance plugins that need to keep track of other instances on the page)
     global_ogg_list.push(embed_video.id);
@@ -1039,7 +1039,7 @@ textInterface.prototype = {
 						'<a href="#" onClick="document.getElementById(\''+this.pe.id+'\').textInterface.applyTsSelect();return false;">'+getMsg('close')+'</a>'+
 					'</div>';
 			$j('#metaBox_'+this.pe.id).append(selHTML);
-			js_log('appended: '+ selHTML);
+			//js_log('appended: '+ selHTML);
 		}
 	},
 	applyTsSelect:function(){
@@ -1608,7 +1608,7 @@ embedVideo.prototype = {
         this.closeDisplayedHTML();
         this.thumbnail_disp = true;
         var embed_code = this.getThumbnailHTML();
-        js_log(embed_code);
+        //js_log("embed code: " + embed_code);
         document.getElementById('mv_embedded_player_'+this.id).innerHTML=embed_code;
 		this.paused = true;
         $j("#mv_play_pause_button_"+this.id).attr('class', 'play_button');
@@ -1628,12 +1628,12 @@ embedVideo.prototype = {
         // fullscreen
         if(this.supports['fullscreen'])
         {
-            html_code += '<div class="fullscreen"></div>';
+            html_code += '<div class="fullscreen"><a href="javascript:$j(\'#'+this.id+'\').get(0).fullscreen();"></a></div>';
             available_width -= 20;
         }
 
         // options
-        html_code += '<div class="options"><a href="javascript:document.getElementById(\''+this.id+'\').DoOptionsHTML();"></a></div>';
+        html_code += '<div class="options"><a href="javascript:$j(\'#'+this.id+'\').get(0).DoOptionsHTML();"></a></div>';
         available_width -= 26;
 
 		options_margin = available_width - 119;
@@ -1668,10 +1668,10 @@ embedVideo.prototype = {
         }
 
         // time display
-        if(this.supports['time_display'])
+        if(this.supports['time_display'] && (available_width > 80))
         {
-            html_code += '<div id="mv_time_'+this.id+'" class="time">00:00/00:00</div>';
-            available_width -= 60;
+            html_code += '<div id="mv_time_'+this.id+'" class="time">0:00:00/0:00:00</div>';
+            available_width -= 80;
         }
 
         if(this.supports['play_head'] && (available_width > 18))
@@ -1772,7 +1772,7 @@ embedVideo.prototype = {
         }
 
         html_code += '</div>';
-        js_log(html_code);
+        //js_log(html_code);
         this.innerHTML=html_code;
 
         
@@ -1806,7 +1806,10 @@ embedVideo.prototype = {
 	},
 	//update video time
 	updateVideoTime:function(start_time, end_time){
+		//update media
 		this.media_element.updateSourceTimes(start_time, end_time);
+		//update mv_time
+		$j('#mv_time_'+ this.id).html(start_time+'/'+end_time);
 	},
 	//updates the video src
 	updateVideoSrc : function(src){
