@@ -215,7 +215,7 @@ class OnlineStatus {
 	/**
 	 * Hook function for SavePreferences
 	 */
-	static function SavePreferences( &$prefs, &$user, &$msg, $old = array() ){
+	static function SavePreferences( $prefs, $user, &$msg, $old = array() ){
 		# We need to invalidate caches for these pages, maybe it would be good
 		# to be done for subpages, but it would too expensive
 		if( !is_array( $old ) || empty( $old ) ){
@@ -239,7 +239,7 @@ class OnlineStatus {
 	/**
 	 * Hook function for InitPreferencesForm
 	 */
-	static function InitPreferencesForm( &$prefs, &$request ) {
+	static function InitPreferencesForm( $prefs, $request ) {
 		$prefs->mToggles['online'] = $request->getVal( 'wpOnline' );
 		$prefs->mToggles['showonline'] = $request->getCheck( 'wpOpShowOnline' ) ? 1 : 0;
 		return true;
@@ -248,7 +248,7 @@ class OnlineStatus {
 	/**
 	 * Hook function for ResetPreferences
 	 */
-	static function ResetPreferences( &$prefs, &$user ) {
+	static function ResetPreferences( $prefs, $user ) {
 		$prefs->mToggles['online'] = $user->getOption( 'online' );
 		$prefs->mToggles['showonline'] = $user->getOption( 'showonline' );
 		return true;
@@ -320,7 +320,7 @@ class OnlineStatus {
 	static function PersonalUrls( &$urls, &$title ){
 		global $wgUser, $wgUseAjax;
 		# Require ajax
-		if( !$wgUser->isLoggedIn() || !$wgUseAjax )
+		if( !$wgUser->isLoggedIn() || !$wgUseAjax || $title->isSpecial( 'Preferences' ) )
 			return true;
 		$arr = array();
 		foreach( $urls as $key => $val ){
