@@ -111,7 +111,7 @@ h6 {font-size: 13px; color: #6c6c6c; padding: 5px 5px 0px 0px; text-transform: u
 #footer #p-cactions ul, #footer #p-navigation ul, #footer #p-tb ul, #footer #p-footer ul{
 	text-align: left;
 	line-height: 1.4em;
-	padding: 0 2em 0 3em;
+	padding: 0 2em 0 0em;
 	margin: 0;
 }
 #footer #p-cactions li, #footer #p-navigation li, #footer #p-tb li, #footer #p-footer li{
@@ -169,6 +169,20 @@ a.advanced_search_tag {font-size: 12px; text-decoration: none; margin: 8px; posi
 /* don't display edit links for sections on main page */
 #frontPageContent .editsection{
 	display:none;
+}
+ul.top_nav{
+	list-style: none;	
+	padding: 5px;
+	text-align: left;
+	margin-bottom: 0;
+	width:100%;
+	background:#F1F2FF;
+	border-top: 1px solid #a3c1ee;
+}
+ul.top_nav li{
+	display: inline;
+	font-size: 14px;
+	margin: 0px 35px;
 }
 
 ul.popularSearches {
@@ -729,7 +743,7 @@ h1.videoHeader,h1.videoHeader{
 
 /*Forms*/
 .form_search_row {text-align: center; margin: 20px 0;}
-#searchHeader .form_search_row {text-align: center; margin: 8px 0; background: #dfebfe; border-top: 1px solid #a3c1ee; padding: 20px 0;}
+#searchHeader .form_search_row {text-align: center; margin: 0px 0; background: #dfebfe; padding: 20px 0;}
 input.searchField {
 	width: 223px;
 	height: 21px;

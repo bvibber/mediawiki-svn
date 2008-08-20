@@ -297,11 +297,7 @@ class MvpcfTemplate extends QuickTemplate {
 		$tmp_MediaSearch->setUpFilters();
 		
 		//set approporiate javascript to flag advanced search 	
-		echo $tmp_MediaSearch->dynamicSearchControl();
-			//display page actions if user is logged in and not on main page. 
-			if(!$wgUser->isAnon() && !$this->is_main_page_view  ){
-				$this->get_portlet('p-cactions');
-			}
+		echo $tmp_MediaSearch->dynamicSearchControl();		
 		//output sugestions div... (moved to mv_allpages.js): 
 /*<div id="suggestions" style="display:none;z-index:50;">
 				<div id="suggestionsTop"></div>
@@ -326,11 +322,21 @@ class MvpcfTemplate extends QuickTemplate {
 				<img alt="Metavid" src="<?php $this->text('stylepath') ?>/<?php $this->text('stylename') ?>/images/logo2.png"/>
 				</a>
 				<p class="tagline2">Video archive of the US Congress</p>
-			</div>		
+			</div>			
+	
 	<?php $this->get_search_html(); ?>
-	</div>	
-	<div id="column-content">
+	<?php $this->get_top_nav(); ?>	
+	</div>			
+	
+	<div id="column-content">	
 	<div id="content">
+	<?php
+		global  $wgUser;
+		//display page actions if user is logged in and not on main page. 
+		if(!$wgUser->isAnon() && !$this->is_main_page_view  ){
+			$this->get_portlet('p-cactions');
+		}
+	 ?>
 		<a name="top" id="top"></a>
 		<?php if($this->data['sitenotice']) { ?><div id="siteNotice"><?php $this->html('sitenotice') ?></div><?php } ?>
 		<h1 class="firstHeading"><?php $this->data['displaytitle']!=""?$this->html('title'):$this->text('title') ?></h1>
@@ -368,7 +374,47 @@ class MvpcfTemplate extends QuickTemplate {
 <?php
 	wfRestoreWarnings();
 	} // end of execute() method
-
+	function get_top_nav(){
+		global $wgUser;
+		$sk = $wgUser->getSkin();
+		?>
+		<ul class="top_nav">
+			<li>
+				<?php echo $sk->makeKnownLink('Main Page', 'home') ?>
+			</li>
+			<li>
+				<?php echo $sk->makeKnownLink('Whats New', 'what\'s new') ?>				
+			</li>
+			<li>
+				<?php
+				$cMembers =  Title::newFromText('Congress_Person', NS_CATEGORY);
+				echo $sk->makeKnownLinkObj($cMembers, 'members of congress');
+				?>				
+			</li>
+			<li>
+				<?php
+				$cBills =  Title::newFromText('Bill', NS_CATEGORY);
+				echo $sk->makeKnownLinkObj($cBills, 'bills');
+				?>				
+			</li>
+			<li>				
+				<?php
+				$cHelp = Title::newFromText('Contents', NS_HELP);
+				echo $sk->makeKnownLinkObj($cHelp, 'help');
+				 ?>
+			</li>
+			<li>
+				<?php 
+				$cCat = Title::newFromText('Media Categories', NS_CATEGORY); 
+				echo $sk->makeKnownLink('media categories', 'tags'); 
+				?>
+			</li>
+			<li>
+				<a title="blog" href="/blog">blog</a>
+			</li>
+		</ul>
+		<?php		
+	}
 	function get_head_html(){
 		
 	?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
