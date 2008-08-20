@@ -18,6 +18,7 @@ $smwgShowFactbox=SMW_FACTBOX_HIDDEN;
  	var $tl_width = '16';
  	var $parserOutput = null;
  	var $oddEvenToggle=true;
+ 	var $mvd_pages = array();
  	/*structures the component output and call html code generation */
  	function getHTML(){ 	 		
  		switch($this->req){

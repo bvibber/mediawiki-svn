@@ -905,8 +905,8 @@ class MV_SpecialMediaSearch {
 			if ($i > 0)
 				$s .= '&nbsp; <a href="javascript:mv_remove_filter(' .
 				$i . ');">' .
-				'<img title="' . wfMsg('mv_remove_filter') . '" ' .
-				'src="' . $mvgScriptPath . '/skins/images/cog_delete.png"></a>';
+				' <img title="' . wfMsg('mv_remove_filter') . '" ' .
+					'src="' . $mvgScriptPath . '/skins/images/cog_delete.png"></a>';
 			$s .= '</span>';
 		}
 		$s .= '</div>';
@@ -920,9 +920,9 @@ class MV_SpecialMediaSearch {
 		$s .= $this->get_ref_person();
 
 		//add link:
-		$s .= '<a href="javascript:mv_add_filter();">' .htmlspecialchars( wfMsg('mv_add_filter') ) .' '.
+		$s .= '<a style="text-decoration:none;" href="javascript:mv_add_filter();">'.
 			'<img border="0" title="' . htmlspecialchars( wfMsg('mv_add_filter') ) . '" ' .
-			'src="' . $mvgScriptPath . '/skins/images/cog_add.png"></a> ';
+			'src="' . $mvgScriptPath . '/skins/images/cog_add.png"> '.htmlspecialchars( wfMsg('mv_add_filter') ) .'</a><br><br>';
 
 		/*$s .= '<input id="mv_do_search" type="submit" ' .
 		' value="' . wfMsg('mv_run_search') . '">';*/
