@@ -59,7 +59,7 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
 			$o.='</span>';			
 			$o.='<span class="download"><a href="javascript:$j(\'#'.htmlspecialchars($this->embed_id).'\').get(0).showVideoDownload()">More Download Options</a></span>'; 
 		}
-		$o.='<span class="embed"><a href="javascript:hideShowEmbedCode();">Embed Video</a></span>'.
+		$o.='<span class="embed"><a href="javascript:$j(\'#'.htmlspecialchars($this->embed_id).'\').get(0).hideShowEmbedCode();">Embed Video</a></span>'.
 				'</p>';
 		//about file: 
 		$talkPage = Title::newFromText('Anno_en:'.strtolower($mvTitle->wiki_title), MV_NS_MVD_TALK);

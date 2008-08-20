@@ -55,11 +55,25 @@ $smwgShowFactbox=SMW_FACTBOX_HIDDEN;
 	}
 	function render_full(){
 		global $wgOut;
- 		//"<div >" . 		 		
+ 		//"<div >" . 		 					 	
  		$wgOut->addHTML("<div id=\"selectionsBox\">\n"); 				
- 		//do the implemented html 
- 		$this->getHTML(); 
+	 		$this->getHTML(); 
  		$wgOut->addHTML("</div>\n");
+ 		//add in contorls:
+ 		$wgOut->addHTML($this->render_controls());
+ 		
+	}
+	function render_controls(){
+		return '<div class="layers">	
+				<ul>
+					<li>
+						<a href="javascript:mv_disp_add_mvd(\'anno_en\')">'.wfMsg('mv_new_anno_en').'</a>
+					</li>
+					<li>
+						<a title="'.htmlspecialchars(wfMsg('mv_new_ht_en')).'" href="javascript:mv_disp_add_mvd(\'ht_en\')">'.wfMsg('mv_new_ht_en').'</a> 
+					</li>
+				</ul>
+				</div>';
 	}
 	function render_menu(){
 		$base_title='';

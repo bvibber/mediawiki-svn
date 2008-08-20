@@ -141,7 +141,11 @@
 		//@@todo dynamic re-size page_spacer:
 		$wgOut->addHTML('<div id="mv_interface_container">');
 		foreach($this->components as $cpKey => &$component){
+			if($cpKey=='MV_Navigator')
+				$wgOut->addHTML("<div id=\"videoSideBar\">");
 			$component->render_full();
+			if($cpKey=='MV_Overlay')
+				$wgOut->addHTML("</div>");
 		}
 		$wgOut->addHTML('</div>');
 		//for now output spacers

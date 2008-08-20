@@ -727,14 +727,16 @@ function mvViewPrevNext( $offset, $limit, $link, $query = '', $atend = false ) {
 	} else {
 		$nlink = '<a href="' . $title->escapeLocalUrl( $q ) . "\" class=\"mw-nextlink\">{$next}</a>";
 	}
-	$nums = wfNumLink( $offset, 20, $title, $query ) . ' | ' .
+	/*$nums = wfNumLink( $offset, 20, $title, $query ) . ' | ' .
 	  wfNumLink( $offset, 50, $title, $query ) . ' | ' .
 	  wfNumLink( $offset, 100, $title, $query ) ;
-	  	 
+	  */
+	//hide option to set number of results
+	$nums='';	 
 	if($plink==''){
-		return wfMsg( 'mv_viewnext', $nlink, $nums );
+		return wfMsg( 'mv_viewnext', $nlink );
 	}else{
-		return wfMsg( 'viewprevnext', $plink, $nlink, $nums );
+		return wfMsg( 'mv_viewprevnext', $plink, $nlink );
 	}
 }
 ?>

@@ -57,10 +57,26 @@ class MV_MagicWords{
 			case 'PERSONSPEECHES':
 				return $this->getPersonOut();
 			break;
+			case 'VIDEOBILL':
+				return $this->getBillOut();
+			break;
 			default:
 				return "error: unknown mvData function: <b>{$this->magicTypeKey}</b> <br>";
 			break;
 		}
+	}
+	function getBillOut(){
+		return 'bill results';
+		if($this->params['bill']!=''){
+			$bill_name = $this->params['bill'];
+		}else{
+			return "error: no person provided";
+		}
+		$ms = new MV_SpecialMediaSearch();	
+		$_REQUEST['limit']=$this->params['num_results'];	
+		$ms->filters[] = array ( 'a' => 'and', 't' => 'bill','v' =>$bill_name );
+		$ms->doSearch($log_search=false);
+		return $ms->getUnifiedResultsHTML($show_sidebar=false);
 	}
 	function getPersonOut(){		
 		if($this->params['person']!=''){
@@ -68,11 +84,8 @@ class MV_MagicWords{
 		}else{
 			return "error: no person provided";
 		}
-		//run the search and return the results: 
-		//set up data request:
 		$ms = new MV_SpecialMediaSearch();		
-		$_REQUEST['limit']=$this->params['num_results'];
-		
+		$_REQUEST['limit']=$this->params['num_results'];		
 		$ms->filters[] = array ( 'a' => 'and', 't' => 'spoken_by','v' =>$person_name );
 		$ms->doSearch($log_search=false);
 		return $ms->getUnifiedResultsHTML($show_sidebar=false);

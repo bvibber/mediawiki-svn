@@ -23,10 +23,19 @@ function wfSpecialMediaSearch(){
 //@@todo add link to "media search"
 class MV_SpecialSearch extends SpecialPage {
 	function MV_SpecialSearch() {
-		global $wgOut, $wgRequest;
+		global $wgOut, $wgRequest, $wgUser;
 		mvfAddHTMLHeader('search');
-		$MvSpecialSearch = new MV_SpecialMediaSearch();
-		$MvSpecialSearch->doSearchPage( $wgRequest->getVal('search') );
+		//$MvSpecialSearch = new MV_SpecialMediaSearch();
+		//$MvSpecialSearch->doSearchPage( $wgRequest->getVal('search') );
+		$mediaPage = Title::newFromText('MediaSearch', NS_SPECIAL);
+		$sk = $wgUser->getSkin();		
+		$wgOut->addHTML(wfMsg('mv_do_media_search', 
+				$sk->makeKnownLinkObj($mediaPage,
+						htmlspecialchars($wgRequest->getVal('search')), 
+						'mv_search='.$wgRequest->getVal('search')
+					)
+				)
+			);
 		SpecialPage :: SpecialPage('Search');
 	}
 }
@@ -92,10 +101,7 @@ class MV_SpecialMediaSearch {
 			//add the search placeholder
 			//$wgOut->addWikiText( wfMsg( 'searchresulttext' ) );
 			$sk = $wgUser->getSkin();
-			$title = Title :: MakeTitle(NS_SPECIAL, 'Search');
-			$wgOut->addHTML(wfMsg('mv_page_search', $sk->makeKnownLinkObj($title, $this->unified_term_search, http_build_query(array (
-				'search' => $this->unified_term_search
-			)))));
+			$title = Title :: MakeTitle(NS_SPECIAL, 'Search');			
 
 			//check if the skin already includes the dynamicSearchControl
 			global $wgUser;
@@ -113,6 +119,10 @@ class MV_SpecialMediaSearch {
 
 			//$wgOut->addHTML($this->getResultsBar());
 			$wgOut->addHTML($this->getUnifiedResultsHTML());
+			
+			$wgOut->addHTML(wfMsg('mv_page_search', $sk->makeKnownLinkObj($title, $this->unified_term_search, http_build_query(array (
+				'search' => $this->unified_term_search
+			)))));
 		}
 	}
 	function dynamicSearchControl() {
@@ -298,7 +308,7 @@ class MV_SpecialMediaSearch {
 		$sk = $wgUser->getSkin();
 		$o='';
 		
-		$o .= '<h5 class="search_results_header">' . $this->getFilterDesc() . '</h5>';
+		$o .= '<h5 class="search_results_header">'. wfMsg('mv_results_for',$this->getFilterDesc()).  '</h5>';
 
 		$o .= '<div id="resultsArea">
 						<ul id="metaResults">';
@@ -318,8 +328,28 @@ class MV_SpecialMediaSearch {
 			'</li>';
 		}		
 		//check order prefrence:
+		$prevnext='';
+		//pagging
+		if ($this->numResultsFound > $this->limit) {
+			$prevnext = mvViewPrevNext($this->offset, $this->limit, SpecialPage :: getTitleFor('MediaSearch'), $this->get_httpd_filters_query(), ($this->num < $this->limit));
+			$o .= '<li class="prevnext">' . $prevnext . '</li>';
+		}							
 		$br='<br>';
 		$enddash='';
+	
+		$sTitle = Title :: MakeTitle(NS_SPECIAL, 'MvExportSearch');
+
+		//make miro link:
+		$o .= '<li class="subscribe"><a href="http://subscribe.getMiro.com/?url1=' .
+		'http%3A%2F%2F' . $_SERVER['HTTP_HOST'] . htmlspecialchars($sTitle->escapeLocalURL($this->get_httpd_filters_query())) . '" ' .
+		'title="Subscribe with Miro"><img src="' . $wgStylePath . '/mvpcf/images/button_subscribe.png" alt="Miro Video Player" border="0" /></a></li>';
+		
+		//make rss link:		
+		$o .= '<li class="rss">';
+		$o .= 	$sk->makeKnownLinkObj($sTitle, 'RSS', $this->get_httpd_filters_query());
+		$o .= '</li>';
+
+		$o.='<br>';
 		foreach (array ('relevant','recent','viewed') as $type) {
 			if ($this->order == $type) {
 				$o .= $enddash.'<li class="relevant">'. wfMsg('mv_most_' . $type) . '</li>' ;
@@ -334,24 +364,6 @@ class MV_SpecialMediaSearch {
 			$br='';
 			$enddash=' - ';
 		}
-		
-				//make rss link:
-		$sTitle = Title :: MakeTitle(NS_SPECIAL, 'MvExportSearch');
-		$o .= '<li class="rss">';
-		$o .= $sk->makeKnownLinkObj($sTitle, 'RSS', $this->get_httpd_filters_query());
-		$o .= '</li>';
-
-		//make miro link:
-		$o .= '<li class="subscribe"><a href="http://subscribe.getMiro.com/?url1=' .
-		'http%3A%2F%2F' . $_SERVER['HTTP_HOST'] . htmlspecialchars($sTitle->escapeLocalURL($this->get_httpd_filters_query())) . '" ' .
-		'title="Subscribe with Miro"><img src="' . $wgStylePath . '/mvpcf/images/button_subscribe.png" alt="Miro Video Player" border="0" /></a></li>';
-		
-		$prevnext='';
-		//pagging
-		if ($this->numResultsFound > $this->limit) {
-			$prevnext = mvViewPrevNext($this->offset, $this->limit, SpecialPage :: getTitleFor('MediaSearch'), $this->get_httpd_filters_query(), ($this->num < $this->limit));
-			$o .= '<li class="prevnext"><br>' . $prevnext . '</li>';
-		}		
 		
 		$o .= '</ul>';
 
@@ -926,7 +938,8 @@ class MV_SpecialMediaSearch {
 		foreach ($this->filters as $inx => $f) {
 			if ($inx != 0)
 				$a = ' ' . wfMsg('mv_search_' . $f['a']) . ' ';
-				$o .= ($query_key) ? $a : $a . wfMsg('mv_' . $f['t']) . ' ';
+				if($f['t']!='match') //no desc for text search
+					$o .= ($query_key) ? $a : $a . wfMsg('mv_' . $f['t']) . ' ';
 			if ($f['t'] == 'date_range') { //handle special case of date range:
 				$o .= wfMsg('mv_time_separator', $bo . htmlspecialchars($f['vs']) . $bc, $bo . htmlspecialchars($f['ve']) . $bc);
 			} else {

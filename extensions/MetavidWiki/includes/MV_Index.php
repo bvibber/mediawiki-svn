@@ -224,6 +224,8 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
 			foreach($ret_ary as & $row){				   
                 $rowTitle = Title::newFromText($row->wiki_title, MV_NS_MVD);
                 foreach($smw_properties as $propKey){
+                	//init property: 
+                	$row->$propKey='';
                 	$propTitle = Title::newFromText($propKey, SMW_NS_PROPERTY);
 	                $smwProps = $smwStore->getPropertyValues($rowTitle,$propTitle );
 					//just a temp hack .. we need to think about this abstraction a bit...
