@@ -42,7 +42,7 @@ class OnlineStatus {
 			// Use ParserFirstCallInit if aviable
 			if( defined( 'MW_SUPPORTS_PARSERFIRSTCALLINIT' ) )
 				$wgHooks['ParserFirstCallInit'][] = 'OnlineStatus::ParserFirstCallInit';
-			else 
+			else
 				$wgExtensionFunctions[] = 'OnlineStatus::Setup';
 		}
 
@@ -62,7 +62,7 @@ class OnlineStatus {
 		// User page
 		$wgHooks['BeforePageDisplay'][] = 'OnlineStatus::BeforePageDisplay';
 		$wgHooks['PersonalUrls'][] = 'OnlineStatus::PersonalUrls';
-		
+
 		// Ajax stuff
 		$wgAjaxExportList[] = 'OnlineStatus::Ajax';
 	}
@@ -99,10 +99,10 @@ class OnlineStatus {
 	static function Ajax( $action, $stat = false ){
 		global $wgUser;
 		wfLoadExtensionMessages( 'OnlineStatus' );
-	
+
 		if( $wgUser->isAnon() )
 			return wfMsgHtml( 'onlinestatus-js-anon' );
-	
+
 		switch( $action ){
 		case 'get':
 			$def = $wgUser->getOption( 'online' );
@@ -122,7 +122,7 @@ class OnlineStatus {
 			return json_encode( $radios );
 		case 'set':
 			if( $stat ){
-				$dbw = wfGetDB(DB_MASTER);
+				$dbw = wfGetDB( DB_MASTER );
 				$dbw->begin();
 				$actual = $wgUser->getOption( 'online' );
 				$wgUser->setOption( 'online', $stat );
@@ -305,7 +305,7 @@ class OnlineStatus {
 				'href' => "{$wgScriptPath}/extensions/OnlineStatus/OnlineStatus.css"
 			) );
 		}
-		
+
 		if( !in_array( $wgRequest->getVal( 'action', 'view' ), array( 'view', 'purge' ) ) )
 			return true;
 		$status = self::GetUserStatus( $wgTitle, true );
@@ -313,7 +313,7 @@ class OnlineStatus {
 			return true;
 		wfLoadExtensionMessages( 'OnlineStatus' );
 		$out->setSubtitle( wfMsgExt( 'onlinestatus-subtitle-' . $status, array( 'parse' ) ) );
-		
+
 		return true;
 	}
 
@@ -332,7 +332,7 @@ class OnlineStatus {
 				$arr['status'] = array(
 					'text' => wfMsgHtml( 'onlinestatus-tab' ),
 					'href' => 'javascript:;',
-				);	
+				);
 			}
 			$arr[$key] = $val;
 		}
