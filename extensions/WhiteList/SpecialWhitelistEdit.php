@@ -38,7 +38,7 @@ $wgExtensionCredits['specialpage'][] = array(
 	'descriptionmsg' => 'whitelist-desc',
 	'url'            => 'http://www.mediawiki.org/wiki/Extension:WhiteList',
 );
-
+ 
 # these are the groups and the rights used within this extension
 if( !isset($wgWhiteListRestrictedGroup))
 	$wgWhiteListRestrictedGroup = 'restricted';
