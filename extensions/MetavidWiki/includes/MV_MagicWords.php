@@ -19,7 +19,7 @@ class MV_MagicWords{
 	//list of valid arguments and their default value:
 	var $params = array ('format'=>'ul_list', 'num_results'=>5,
 						 'time_range'=>'last_week','class'=>'',
-						 'person'=>'');
+						 'person'=>'', 'bill'=>'');
 	
 	function __construct($arg_list){	
 		$this->proccessArgs($arg_list);		
@@ -66,7 +66,7 @@ class MV_MagicWords{
 		}
 	}
 	function getBillOut(){
-		return 'bill results';
+		//return 'bill results';
 		if($this->params['bill']!=''){
 			$bill_name = $this->params['bill'];
 		}else{
@@ -169,7 +169,7 @@ class MV_MagicWords{
  								$row->end_time,
  								$mvd_type='anno_en',
  								$getText=true,
- 								$smw_properties=array('Speech_by', 'Bill'), 
+ 								$smw_properties=array('Speech_by', 'Bill', 'category'), 
  								$options=array('limit'=>1)
  							); 				
  				if(count($mvd_rows)!=0){
@@ -178,19 +178,23 @@ class MV_MagicWords{
  					//print_r($mvd_rows);
  					//print "type of: " . gettype($mvd_row);
  					if(isset($mvd_row->Speech_by)){
- 						$ptitle = Title::MakeTitle(NS_MAIN, $mvd_row->Speech_by);
- 						$o.='<span class="keywords">'.
- 								$sk->makeKnownLinkObj($ptitle, $ptitle->getText()).
- 							'</span>';
+ 						if(trim($mvd_row->Speech_by)!=''){
+	 						$ptitle = Title::MakeTitle(NS_MAIN, $mvd_row->Speech_by);
+	 						$o.='<span class="keywords">'.
+	 								$sk->makeKnownLinkObj($ptitle, $ptitle->getText()).
+	 							'</span>';
+ 						}
  					}
  					if(isset($mvd_row->Bill)){
- 						$btitle = Title::MakeTitle(NS_MAIN, $mvd_row->Bill);
- 						$o.='<span class="keywords">Bill:'.
- 								$sk->makeKnownLinkObj($btitle).'
- 							</span>';		
+ 						if(trim($mvd_row->Bill)!=''){
+	 						$btitle = Title::MakeTitle(NS_MAIN, $mvd_row->Bill);
+	 						$o.='<span class="keywords">Bill:'.
+	 								$sk->makeKnownLinkObj($btitle).'
+	 							</span>';		
+ 						}
  					}
  					global $wgContLang;
- 					$mvdNStxt = $wgContLang->getNsText(MV_NS_MVD);
+ 					/*$mvdNStxt = $wgContLang->getNsText(MV_NS_MVD);
  					//grab categories:  		
  					 $cl_res = $dbr->select('categorylinks', 'cl_to', 
  					 				array('cl_sortkey'=>$mvdNStxt.':'.str_replace('_',' ',$mvd_row->wiki_title)),
@@ -205,7 +209,7 @@ class MV_MagicWords{
  					 		$coma=', ';
  					 	}
  					 	$o.='</span>';
- 					 } 					
+ 					 } */					
  				} 				 		
  				$o.='</li>'; 				
  			}

@@ -70,7 +70,7 @@ function mv_setup_search(req_mode){
 				//match text is special cuz it gets highlighted in resutls with class: mv_hl_text
 				$j('#mvs_'+inx+'_tc').html('<input class="mv_search_text mv_hl_text" ' +
 					'size="9"  type="text" name="f['+inx+'][v]" value="" >');
-			break;
+			break;	
 			case 'date_range':
 				$j('#mvs_'+inx+'_tc').html(global_loading_txt);
 				var load_js_set = { 'Date.fromString':'jquery/plugins/date.js',
@@ -97,6 +97,14 @@ function mv_setup_search(req_mode){
 					});
 			  	});
 			break;
+			case 'bill':
+				$j('#mvs_'+inx+'_tc').html('<input onclick="this.value=\'\';" size="35" id="mv_bill_input_' + inx + 
+					'" class="mv_search_text" ' +
+					'size="9"  type="text" name="f['+inx+'][v]" value="" >' + 
+					'<div class="autocomplete" id="mv_bill_choices_'+inx+'" style="display: none;"/>');
+				//add a bill autocomplete:
+				mv_add_bill_ac(inx);
+			break;
 			case 'spoken_by':
 				$j('#mvs_'+inx+'_tc').html( $j('#mv_person')
 					.clone().css('display','inline').attr('id', 'mv_person_'+inx).children().each(function(){
@@ -105,7 +113,7 @@ function mv_setup_search(req_mode){
 						js_log('' + this.id);
 					}));
 				//update the input name:
-				$j('#mv_person_input_'+inx).attr('name', 'f['+inx+'][v]');
+				$j('#mv_person_input_'+inx).attr({'name':'f['+inx+'][v]', 'onclick':'this.value=\'\';'});
 				//for more logical default behavior:
 				//default to OR if any other "spoken by" are present in list else AND
 				var default_sel_inx=0;
@@ -332,6 +340,30 @@ function hl_search_terms(result_selector){
 }*/
 function mv_add_ac(id){
 
+}
+//@@todo should group autocompletes.. 
+// and abstract auto_complete functions from mv_stream.js to mv_common.js
+function mv_add_bill_ac(inx){
+	uri = wgServer + ((wgServer == null) ? (wgScriptPath + "/index.php") : wgScript);
+	js_log('looking for: '+ '#mv_bill_choices_'+inx);
+	$j('#mv_bill_choices_'+inx).prependTo("body");
+	$j('#mv_bill_input_'+inx).autocomplete(
+		uri,
+		{
+			autoFill:true,
+			onItemSelect:function(v){
+				js_log('selected:' + v.innerHTML );
+				//update the image:
+				$j('#mv_person_img_'+inx).attr('src', $j(v).children('img').attr('src'));
+			},
+			matchSubset:0,
+			extraParams:{action:'ajax',rs:'mv_helpers_auto_complete',prop_name:'smw_bill'},
+			paramName:'rsargs[]',
+			resultElem:'#mv_bill_choices_'+inx
+		});
+	$j('#mv_bill_choices_'+inx).css({
+		'left':$j('#mv_bill_input_'+inx).get(0).offsetLeft,
+		'top':$j('#mv_bill_input_'+inx).get(0).offsetTop + $j('#mv_bill_input_'+inx).height()+6 });	
 }
 function mv_add_person_ac(inx){
 	//now add the auto complete to mv_person_input_{inx}

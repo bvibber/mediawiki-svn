@@ -309,13 +309,13 @@ mediaPlayers.prototype =
     },
     addPlayer : function(player, mime_type)
     {
-        js_log('Adding ' + player.id + ' with mime_type ' + mime_type);
+        //js_log('Adding ' + player.id + ' with mime_type ' + mime_type);
         for (var i in this.players)
             if (this.players[i].id==player.id)
             {
                 if(mime_type!=null)
                 {
-                    js_log('adding ' + mime_type + ' support to ' + player.id);
+                    //js_log('adding ' + mime_type + ' support to ' + player.id);
                     this.players[i].supported_types.push(mime_type);
                 }
                 return;

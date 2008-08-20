@@ -64,7 +64,7 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
 		//about file: 
 		$talkPage = Title::newFromText('Anno_en:'.strtolower($mvTitle->wiki_title), MV_NS_MVD_TALK);
 		$o.='<p class="about_file">
-					<span class="views">Views:'.htmlspecialchars($mvTitle->getViewCount()).'</span>
+					<span class="views">Views:'.htmlspecialchars(number_format($mvTitle->getViewCount())).'</span>
 					<span class="duration">Duration: '.htmlspecialchars($mvTitle->getSegmentDurationNTP()).'</span>
 					<span class="comments">'.$sk->makeKnownLinkObj($talkPage, wfMsg('talk')).'</span>
 				</p>

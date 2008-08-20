@@ -536,14 +536,14 @@ $smwgShowFactbox=SMW_FACTBOX_HIDDEN;
 					$swmTitle = Title::newFromText((string)$prop, SMW_NS_PROPERTY);	
 					$smwImageHTML='';
 					if($swmTitle->exists()){					
-						$help_img =$sk->makeKnownLinkObj($swmTitle, '<img src="'.htmlspecialchars($mvgScriptPath).'/skins/images/help_icon.png">');
+						//$help_img =$sk->makeKnownLinkObj($swmTitle, '<img src="'.htmlspecialchars($mvgScriptPath).'/skins/images/help_icon.png">');
 						//special case for person image: (would be good to generalize but kind of complicated) 
 						if($swmTitle->getText()=='Speech_by'){							
 							$img = mv_get_person_img($val);
 							$smwImageHTML='<img id="smw_'.htmlspecialchars($prop).'_img" style="display: block;margin-left: auto;margin-right: auto;" src="'.htmlspecialchars($img->getURL()).'" width=\"44\">';
 						}
 																		
-						$o.= "<tr><td><label>".htmlspecialchars($swmTitle->getText()).$help_img.
+						$o.= "<tr><td><label>".htmlspecialchars($swmTitle->getText()).
 								':</label></td><td>'.$smwImageHTML.'<input class="mv_anno_ac_'.htmlspecialchars($mvd_id).'" '.
 						 		'size="40" name="smw_'.htmlspecialchars($prop).'" type="text" value="'.htmlspecialchars($val).'"> '.
 								'<div class="autocomplete" id="smw_'.htmlspecialchars($prop).'_choices_'.htmlspecialchars($mvd_id).'" style="display: none;"/>

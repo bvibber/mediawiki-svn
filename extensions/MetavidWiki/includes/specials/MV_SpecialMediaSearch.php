@@ -54,6 +54,7 @@ class MV_SpecialMediaSearch {
 		'spoken_by',
 		'category',
 		'date_range', //search in a given date range
+		'bill' //match against a given bill 
 		//not yet active:
 		//'stream_name', //search within a particular stream
 		//'layers'	 //specify a specific meta-layer set
@@ -65,7 +66,6 @@ class MV_SpecialMediaSearch {
 		'and',
 		'or',
 		'not',
-
 	);
 	var $unified_term_search = '';
 	var $adv_search = false;
@@ -822,7 +822,9 @@ class MV_SpecialMediaSearch {
 	function get_httpd_filters_query() {
 		//get all the mvd ns selected:
 		$opt = $this->powerSearchOptions();
-		return http_build_query($opt + array (
+		//also add "order"
+		
+		return http_build_query(array('order'=>$this->order)+ $opt + array (
 			'f' => $this->filters
 		));
 	}
@@ -848,12 +850,17 @@ class MV_SpecialMediaSearch {
 			$s .= '<span id="mvs_' . htmlspecialchars($i) . '_tc">';
 			switch ($filter['t']) {
 				case 'match' :
-					$s .= $this->text_entry($i, 'v', $filter['v'], 'mv_hl_text');
-					break;
+					$s .= $this->text_entry($i, 'v', $filter['v'], 'mv_hl_text',
+						array('onclick'=>'this.value=\'\';'));
+				break;
+				case 'bill':
+					$s .= $this->text_entry($i, 'v', $filter['v'], 'mv_hl_text', 
+						array('onclick'=>'this.value=\'\';','size'=>'35'));
+				break;
 				case 'category' :
 					//$s.=$this->get_ref_ac($i, $filter['v']);
 					$s .= $this->text_entry($i, 'v', $filter['v']);
-					break;
+				break;
 				case 'date_range' :
 					$s .= wfMsg('mv_time_separator', $this->text_entry($i, 'vs', $filter['vs'], 'date-pick_' . $i, array('id'=>'vs_' . $i )),
 													 $this->text_entry($i, 've', $filter['ve'], 'date-pick_' . $i, array('id'=>'ve_' . $i )));
@@ -883,7 +890,7 @@ class MV_SpecialMediaSearch {
 					break;
 				case 'smw_property' :
 
-					break;
+				break;
 			}
 			$s .= '</span>';
 			if ($i > 0)
@@ -904,9 +911,9 @@ class MV_SpecialMediaSearch {
 		$s .= $this->get_ref_person();
 
 		//add link:
-		$s .= '<a href="javascript:mv_add_filter();">' .
-		'<img border="0" title="' . htmlspecialchars( wfMsg('mv_add_filter') ) . '" ' .
-		'src="' . $mvgScriptPath . '/skins/images/cog_add.png"></a> ';
+		$s .= '<a href="javascript:mv_add_filter();">' .htmlspecialchars( wfMsg('mv_add_filter') ) .' '.
+			'<img border="0" title="' . htmlspecialchars( wfMsg('mv_add_filter') ) . '" ' .
+			'src="' . $mvgScriptPath . '/skins/images/cog_add.png"></a> ';
 
 		/*$s .= '<input id="mv_do_search" type="submit" ' .
 		' value="' . wfMsg('mv_run_search') . '">';*/
@@ -1002,11 +1009,13 @@ class MV_SpecialMediaSearch {
 	function text_entry($i, $key, $val = '', $more_class = '', $more_attr = array()) {
 		if ($more_class != '')
 			$more_class = ' ' . $more_class;
+		$default_attr = array('size'=>'9','maxlength'=>'255', 'style'=>"font-size: 12px;");
+		$more_attr = array_merge($default_attr, $more_attr);
 		foreach($more_attr as $k=>$v){
-			$more_attr_out.=' '.htmlspecialchars($k).'="'.$v.'"';
+			$more_attr_out.=' '.htmlspecialchars($k).'="'.htmlspecialchars($v).'"';
 		}
-		$s = '<input ' . $more_attr_out . ' class="mv_search_text' . htmlspecialchars($more_class) . '" style="font-size: 12px;" onchange=""
-								size="9" type="text" name="f[' . htmlspecialchars($i) . '][' . htmlspecialchars($key) . ']" value="' . htmlspecialchars($val) . '">';
+		$s = '<input ' . $more_attr_out . ' class="mv_search_text' . htmlspecialchars($more_class) . '" onchange=""
+				type="text" name="f[' . htmlspecialchars($i) . '][' . htmlspecialchars($key) . ']" value="' . htmlspecialchars($val) . '">';
 		return $s;
 	}
 	/*again here is some possibly metavid congress archive specific stuff:*/

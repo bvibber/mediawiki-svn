@@ -39,9 +39,11 @@
 	 								$qend,
 	 								$mvd_type='anno_en',
 	 								$getText=false,
-	 								$smw_properties=array('speech_by','bill','category'), 
+	 								$smw_properties=array('Speech_by','Bill','category'), 
 	 								$options=array('LIMIT'=>1, 'ORDER BY'=>$orderby)	 							
 	 						);	 
+	 		//print $dbr->lastQuery();
+			//die;
 	 		//print "SHOULD GET $pntype for $stream_time_req";				
 	 		reset($mvd_rows);
 	 		if(count($mvd_rows)!=0){
@@ -51,12 +53,12 @@
 	 			$streamTitle = Title::newFromText($stream_name .'/'. $stime_req, MV_NS_STREAM);
 	 			$tool_tip ='';
 	 			//print_r($row);		 			 	
-	 			if(trim($row->speech_by)!=''){	 			
-	 				$o.=wfMsg('mv_'.$pntype.'_speech', $sk->makeKnownLinkObj($streamTitle, $row->speech_by));
-	 				$tool_tip.=	 'Speech By: '. $row->speech_by;	
-	 			}else if(trim($row->bill)!=''){
-	 				$o.=wfMsg('mv_'.$pntype.'_bill', $sk->makeKnownLinkObj($streamTitle, $row->bill));			 			
-	 			}else if(count($row->category)!=0){
+	 			if(trim($row->Speech_by)!=''){	 			
+	 				$o.=wfMsg('mv_'.$pntype.'_speech', $sk->makeKnownLinkObj($streamTitle, $row->Speech_by));
+	 				//$tool_tip.=	 'Speech By: '. $row->Speech_by;	
+	 			}else if(trim($row->Bill)!=''){
+	 				$o.=wfMsg('mv_'.$pntype.'_bill', $sk->makeKnownLinkObj($streamTitle, $row->Bill));			 			
+	 			}else if(is_array($row->category) && count($row->category)!=0){	 			
 	 				$first_cat =  current($row->category);
 	 				$o.=wfMsg('mv_'.$pntype.'_cat',  $sk->makeKnownLinkObj($streamTitle, $first_cat));
 	 			}

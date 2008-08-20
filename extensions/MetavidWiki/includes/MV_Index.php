@@ -202,7 +202,7 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
 			$options);
 		//print $dbr->lastQuery();
 		//die;
-			
+		if($dbr->numRows($result)==0)return array();
 		$ret_ary=array();
 		$from_tables=$vars=$options=array();
 		$conds='';
@@ -215,30 +215,7 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
 					$or=' OR ';
 				}
 			}
-		}
-		
-		//slow epecialy for lots of query results but join Query is crazy complicated for SMW >= 1.2 
-		//(and I have not been able to construct it without hitting exessive number of rows in the EXPLIN) 
-		if($do_smw_lookup){
-			$smwStore =& smwfGetStore();  
-			foreach($ret_ary as & $row){				   
-                $rowTitle = Title::newFromText($row->wiki_title, MV_NS_MVD);
-                foreach($smw_properties as $propKey){
-                	//init property: 
-                	$row->$propKey='';
-                	$propTitle = Title::newFromText($propKey, SMW_NS_PROPERTY);
-	                $smwProps = $smwStore->getPropertyValues($rowTitle,$propTitle );
-					//just a temp hack .. we need to think about this abstraction a bit...
-					if(count($smwProps)!=0){
-						$v = current($smwProps);
-						$row->$propKey=$v->getXSDValue();
-					}
-                }				
-			}
-		}
-		//print_r($ret_ary);
-		//die;
-		
+		}		
 		if($do_cat_lookup){
 			$from_tables = $dbr->tableName('categorylinks');
 			$from_tables.=' LEFT JOIN '.$dbr->tableName('mv_mvd_index').
@@ -255,15 +232,38 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
 				$vars,
 				$conds,
 				__METHOD__,
-				$options);
-			//print $dbr->lastQuery($result_cat);
-			//die();		
+				$options);			
 			while($cat_row=$dbr->fetchObject($result_cat)){		
 				if(!isset($ret_ary[$cat_row->cl_from]->category))
 					$ret_ary[$cat_row->cl_from]->category=array();						
 				$ret_ary[$cat_row->cl_from]->category[]=$cat_row->cl_to;			
 			}
 		}
+		//slow epecialy for lots of query results but join Query is crazy complicated for SMW >= 1.2 
+		//(and I have not been able to construct it without hitting exessive number of rows in the EXPLIN) 
+		if($do_smw_lookup){
+			$smwStore =& smwfGetStore();  
+			foreach($ret_ary as & $row){				   
+                $rowTitle = Title::newFromText($row->wiki_title, MV_NS_MVD);
+                foreach($smw_properties as $propKey){
+                	if($propKey!='category'){
+	                	//init property: 
+	                	$row->$propKey='';
+	                	$propTitle = Title::newFromText($propKey, SMW_NS_PROPERTY);
+		                $smwProps = $smwStore->getPropertyValues($rowTitle,$propTitle );
+						//just a temp hack .. we need to think about this abstraction a bit...
+						if(count($smwProps)!=0){
+							$v = current($smwProps);
+							$row->$propKey=$v->getXSDValue();
+						}
+                	}
+                }				
+			}
+		}
+		//print_r($ret_ary);
+		//die;
+		
+		
 		//print $dbr->lastQuery();
 		//die;
 		//echo $sql;
@@ -403,6 +403,17 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
 					}
 					//full text based semantic query:
 					$ftq.=' '.$aon.'"spoken by '. mysql_real_escape_string($f['v']).'" ';
+					//table based query:
+					$last_person_aon=$aon;
+					$valid_filter_count++;
+					//$conds[]=
+				break;
+				case 'bill':
+					//skip if empty value:
+					if(trim($f['v'])=='')continue;		
+					$f['v'] = str_replace(array('.','_',':'), ' ', $f['v']);			
+					//full text based semantic query:
+					$ftq.=' '.$aon.'"bill '. mysql_real_escape_string($f['v']).'" ';
 					//table based query:
 					$last_person_aon=$aon;
 					$valid_filter_count++;
@@ -1003,11 +1014,13 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
 						$srange['rows'][]=$row;
 					//grab rows from any other stream segment that fits in new srange:
 					foreach($ret_ary as &$sbrange){
-						if($row->start_time <= $sbrange['s']  && $row->end_time >= $sbrange['e']){
-							foreach($sbrange['rows'] as $sbrow){
-								$srange['rows'][]=$sbrow;
+						if(isset($sbrange['s'])){
+							if($row->start_time <= $sbrange['s']  && $row->end_time >= $sbrange['e']){
+								foreach($sbrange['rows'] as $sbrow){
+									$srange['rows'][]=$sbrow;
+								}
+								unset($sbrange);
 							}
-							unset($sbrange);
 						}
 					}
 					return ;
