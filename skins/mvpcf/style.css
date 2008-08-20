@@ -452,6 +452,9 @@ ul#metaProfile li.rss a {float: right; display: inline; background: url(images/i
 ul#metaProfile li.subscribe img {vertical-align: bottom; float: right; display: inline; margin-left: 10px;}
 ul#metaResults li.prevnext {margin-left:3px; margin-right:10px;}
 
+ul#metaResults li.rss {float:right;}
+ul#metaResults li.subscribe {float:right;}
+
 #resultsArea ul#results {
 	list-style: none;
 	margin: 20px 0;
@@ -513,14 +516,15 @@ h1.videoHeader,h1.videoHeader{
 
 #videoContent #videoMeta {
 	background: #eee;
-	margin: 15px 0;
+	margin: 35px 0;
+	width:380px;
 	padding: 10px;
 	overflow: hidden;
 	height: 100%;
 	color: #353535;
 	font-size: 11px;
 }
-#videoContent #videoMeta p.options {width: 320px; float: left; display: inline; padding: 0; margin: 0;}
+#videoContent #videoMeta p.options {width: 290px; float: left; display: inline; padding: 0; margin: 0;}
 #videoContent #videoMeta p.options a {text-decoration: none;}
 #videoContent #videoMeta p.options span.link {display: block; margin-bottom: 6px;}
 #videoContent #videoMeta p.options span.download {display: block; margin-bottom: 6px;}
@@ -546,7 +550,7 @@ h1.videoHeader,h1.videoHeader{
 
 
 #videoSideBar {
-	width: 457px;
+	width: 495px;
 	float: right;
 	display: inline;
 }
@@ -557,6 +561,11 @@ h1.videoHeader,h1.videoHeader{
 	overflow: auto;
 	border: 1px solid #c8c8c8;
 	margin: 15px 0;
+}
+#MV_Navigator{
+	width: 480px;
+	margin: 0px;
+	overflow: auto;
 }
 
 #selectionsBox ul {

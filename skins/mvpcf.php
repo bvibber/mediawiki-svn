@@ -67,7 +67,7 @@ class MvpcfTemplate extends QuickTemplate {
 		$this->get_head_html();
 
 		if($wgTitle->getNamespace()== NS_MAIN &&
-		   $wgTitle->getDBkey()=='Main_Page' && (
+		   	   $wgTitle->getDBkey()=='Main_Page' && (
 			   $wgRequest->getText( 'action', 'view' )=='view' || 
 			   $wgRequest->getText( 'action', 'view' )=='purge') ){
 			$this->is_main_page_view = true;
@@ -379,10 +379,13 @@ class MvpcfTemplate extends QuickTemplate {
 	<head>
 		<meta http-equiv="Content-Type" content="<?php $this->text('mimetype') ?>; charset=<?php $this->text('charset') ?>" />
 		<?php $this->html('headlinks') ?>
-		<title><?php 
-		global $wgTitle;
+		<title><?php 		
+		global $wgTitle;		
+		if($wgTitle->getNamespace()==MV_NS_STREAM){			
+			echo 'Video: ';
+		}
 		if($wgTitle->getDbKey()=='Main_Page'){
-			echo 'Metavid - Open Video Archive of the US Congress';
+			echo 'Metavid - Open Video Archive of the US Congress';		
 		}else{
 			echo $this->text('pagetitle');
 		}?></title>		
