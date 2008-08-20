@@ -29,50 +29,6 @@ $wgExtensionCredits['other'][] = array(
  */
 $wgAllowAnyUserOnlineStatusFunction = true;
 
-function efOnlineStatusAjax( $action, $stat = false ){
-	global $wgUser;
-	wfLoadExtensionMessages( 'OnlineStatus' );
-
-	if( $wgUser->isAnon() )
-		return wfMsgHtml( 'onlinestatus-js-anon' );
-
-	switch( $action ){
-	case 'get':
-		$def = $wgUser->getOption( 'online' );
-		$msg = wfMsgForContentNoTrans( 'onlinestatus-levels' );
-		$lines = explode( "\n", $msg );
-		$radios = array();
-		foreach( $lines as $line ){
-			if( substr( $line, 0, 1 ) != '*' )
-				continue;
-			$lev = trim( $line, '* ' );
-			$radios[] = array(
-				$lev,
-				wfMsg( 'onlinestatus-toggle-' . $lev ),
-				$lev == $def
-			);
-		}
-		return json_encode( $radios );
-	case 'set':
-		if( $stat ){
-			$dbw = wfGetDB(DB_MASTER);
-			$dbw->begin();
-			$actual = $wgUser->getOption( 'online' );
-			$wgUser->setOption( 'online', $stat );
-			if( $actual != $stat ){
-				$wgUser->getUserPage()->invalidateCache();
-				$wgUser->getTalkPage()->invalidateCache();
-			}
-			$wgUser->saveSettings();
-			$wgUser->invalidateCache();
-			$dbw->commit();
-			return wfMsgHtml( 'onlinestatus-js-changed', wfMsgHtml( 'onlinestatus-toggle-'.$stat ) );
-		} else {
-			return wfMsgHtml( 'onlinestatus-js-error', $stat );
-		}
-	}
-}
-
 class OnlineStatus {
 
 	static function init(){
@@ -108,7 +64,7 @@ class OnlineStatus {
 		$wgHooks['PersonalUrls'][] = 'OnlineStatus::PersonalUrls';
 		
 		// Ajax stuff
-		$wgAjaxExportList[] = 'efOnlineStatusAjax';
+		$wgAjaxExportList[] = 'OnlineStatus::Ajax';
 	}
 
 	/**
@@ -135,6 +91,53 @@ class OnlineStatus {
 		if( $checkShowPref && !$user->getOption( 'showonline' ) )
 			return null;
 		return $user->getOption( 'online' );
+	}
+
+	/**
+	 * Used for ajax requests
+	 */
+	static function Ajax( $action, $stat = false ){
+		global $wgUser;
+		wfLoadExtensionMessages( 'OnlineStatus' );
+	
+		if( $wgUser->isAnon() )
+			return wfMsgHtml( 'onlinestatus-js-anon' );
+	
+		switch( $action ){
+		case 'get':
+			$def = $wgUser->getOption( 'online' );
+			$msg = wfMsgForContentNoTrans( 'onlinestatus-levels' );
+			$lines = explode( "\n", $msg );
+			$radios = array();
+			foreach( $lines as $line ){
+				if( substr( $line, 0, 1 ) != '*' )
+					continue;
+				$lev = trim( $line, '* ' );
+				$radios[] = array(
+					$lev,
+					wfMsg( 'onlinestatus-toggle-' . $lev ),
+					$lev == $def
+				);
+			}
+			return json_encode( $radios );
+		case 'set':
+			if( $stat ){
+				$dbw = wfGetDB(DB_MASTER);
+				$dbw->begin();
+				$actual = $wgUser->getOption( 'online' );
+				$wgUser->setOption( 'online', $stat );
+				if( $actual != $stat ){
+					$wgUser->getUserPage()->invalidateCache();
+					$wgUser->getTalkPage()->invalidateCache();
+				}
+				$wgUser->saveSettings();
+				$wgUser->invalidateCache();
+				$dbw->commit();
+				return wfMsgHtml( 'onlinestatus-js-changed', wfMsgHtml( 'onlinestatus-toggle-'.$stat ) );
+			} else {
+				return wfMsgHtml( 'onlinestatus-js-error', $stat );
+			}
+		}
 	}
 
 	/**

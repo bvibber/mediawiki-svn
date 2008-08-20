@@ -14,7 +14,7 @@ function ShowOnlineToggle(){
 		div.id = 'online-status-js';
 		div.className = 'online-status-js';
 
-		// Taken from skins/mwsuggest.js of core
+		// Taken from skins/common/mwsuggest.js of core
 		// Credit: Robert Stojnić
 		var left = 0;
 		var top = this.offsetHeight;
@@ -32,7 +32,7 @@ function ShowOnlineToggle(){
 		div.style.left = left + "px";
 		div.style.top = top + "px";
 		var table = document.createElement( 'table' );
-		sajax_do_call( 'efOnlineStatusAjax', ['get'], function( x ){
+		sajax_do_call( 'OnlineStatus::Ajax', ['get'], function( x ){
 			if( x.status == 200 ){
 				var resp = x.responseText;
 				// A bit unsafe, but...
@@ -68,7 +68,7 @@ function ShowOnlineToggle(){
 
 function ChangeOnlineStatus(){
 	var status = this.status;
-	sajax_do_call( 'efOnlineStatusAjax', ['set', status], function( x ){
+	sajax_do_call( 'OnlineStatus::Ajax', ['set', status], function( x ){
 		if( x.status == 200 ){
 			var resp = x.responseText;
 			jsMsg( resp, 'watch' );
