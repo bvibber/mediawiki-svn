@@ -1,0 +1,24 @@
+diff -ru librsvg-2.22.2~/rsvg-convert.c librsvg-2.22.2/rsvg-convert.c
+--- librsvg-2.22.2~/rsvg-convert.c	2007-07-01 23:43:44.000000000 +1000
++++ librsvg-2.22.2/rsvg-convert.c	2008-08-20 13:15:06.000000000 +1000
+@@ -178,7 +178,7 @@
+     g_option_context_free (g_option_context);
+ 
+     if (bVersion != 0) {
+-        printf (_("rsvg-convert version %s\n"), VERSION);
++        printf (_("rsvg-convert version %s (Wikimedia)\n"), VERSION);
+         return 0;
+     }
+ 
+diff -ru librsvg-2.22.2~/rsvg.in librsvg-2.22.2/rsvg.in
+--- librsvg-2.22.2~/rsvg.in	2007-04-24 08:45:56.000000000 +1000
++++ librsvg-2.22.2/rsvg.in	2008-08-20 13:14:41.000000000 +1000
+@@ -45,7 +45,7 @@
+     
+     for o, a in opts:
+         if o in ("-v", "--version"):
+-            print "rsvg version %s" % ("@VERSION@")
++            print "rsvg version %s (Wikimedia)" % ("@VERSION@")
+             sys.exit(0)
+         elif o in ("--usage"):
+             usage()

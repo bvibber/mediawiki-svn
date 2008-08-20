@@ -1,0 +1,54 @@
+diff -ru librsvg-2.22.2.orig/rsvg-base-file-util.c librsvg-2.22.2/rsvg-base-file-util.c
+--- librsvg-2.22.2.orig/rsvg-base-file-util.c	2007-04-23 22:45:56.000000000 +0000
++++ librsvg-2.22.2/rsvg-base-file-util.c	2008-07-25 22:02:46.000000000 +0000
+@@ -90,7 +90,7 @@
+     rsvg_return_val_if_fail (file_name != NULL, NULL, error);
+ 
+     base_uri = rsvg_get_base_uri_from_filename (file_name);
+-    f = _rsvg_acquire_xlink_href_resource (file_name, base_uri, error);
++    f = _rsvg_acquire_external_resource (file_name, base_uri, error);
+ 
+     if (f) {
+         handle = rsvg_handle_new ();
+Only in librsvg-2.22.2: rsvg-base-file-util.c~
+Only in librsvg-2.22.2: rsvg-base-file-util.c.orig
+Only in librsvg-2.22.2: rsvg-base-file-util.c.rej
+diff -ru librsvg-2.22.2.orig/rsvg-image.c librsvg-2.22.2/rsvg-image.c
+--- librsvg-2.22.2.orig/rsvg-image.c	2008-03-04 14:04:17.000000000 +0000
++++ librsvg-2.22.2/rsvg-image.c	2008-07-25 22:02:00.000000000 +0000
+@@ -374,6 +374,34 @@
+         arr = rsvg_acquire_vfs_resource (href, base_uri, NULL);
+ #endif
+ 
++	if(!strncmp(href, "data:", 5)) {
++		arr = rsvg_acquire_base64_resource (href, err);
++		return arr;
++	}
++	
++#ifdef ALLOW_EXTERNAL_FILES
++	if(!arr)
++		arr = rsvg_acquire_file_resource (href, base_uri, err);
++
++#ifdef HAVE_GNOME_VFS
++	if(!arr)
++		arr = rsvg_acquire_vfs_resource (href, base_uri, err);
++#endif
++
++#else
++	g_error("_rsvg_acquire_xlink_href_resource called for external resource: %s base: %s\n",
++		href, base_uri);
++#endif
++	return arr;
++}
++
++GByteArray *
++_rsvg_acquire_external_resource (const char *href,
++								   const char *base_uri,
++								   GError **err)
++{
++	GByteArray * arr = NULL;
++
+     return arr;
+ }
+ 
+Only in librsvg-2.22.2: rsvg-image.c.orig
