@@ -406,7 +406,7 @@ class MvpcfTemplate extends QuickTemplate {
 			<li>
 				<?php 
 				$cCat = Title::newFromText('Media Categories', NS_CATEGORY); 
-				echo $sk->makeKnownLink('media categories', 'tags'); 
+				echo $sk->makeKnownLinkObj($cCat, 'browse categories'); 
 				?>
 			</li>
 			<li>
