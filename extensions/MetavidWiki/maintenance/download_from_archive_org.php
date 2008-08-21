@@ -59,6 +59,8 @@ function proccess_streams($stream_name='all'){
 						(`id`,`base_offset`,`duration`,`file_desc_msg`,`path_type`,`path`)
 						VALUES('',0,'{$dur_val}','mv_flash_low_quality','','".
 						MV_BASE_MEDIA_SERVER_PATH . $stream->name .".flv');";
+				echo $sql;
+				die;
 				print "insert {$stream->name}.flv\n";				
 				$dbw->query($sql);
 			}else{

@@ -256,7 +256,7 @@
 	 *
 	 * @return bool
 	 */
-	private function previewOnOpen() {
+	protected function previewOnOpen() {
 		global $wgRequest, $wgUser;
 		if( $wgRequest->getVal( 'preview' ) == 'yes' ) {
 			// Explicit override from request
@@ -277,7 +277,7 @@
 			return false;
 		}
 	}
-	private function showDeletionLog( $out ) {
+	protected function showDeletionLog( $out ) {
 		$title = $this->mTitle;
 		$reader = new LogReader(
 			new FauxRequest(
@@ -300,7 +300,7 @@
 	 *
 	 * @return bool
 	 */
-	private function showCustomIntro() {
+	protected function showCustomIntro() {
 		if( $this->editintro ) {
 			$title = Title::newFromText( $this->editintro );
 			if( $title instanceof Title && $title->exists() && $title->userCanRead() ) {
@@ -323,7 +323,7 @@
 					</textarea>"*/
 		return '</td></tr></table>';
 	}
-	private function showIntro() {
+	protected function showIntro() {
 		global $wgOut, $wgUser;
 		if( !$this->showCustomIntro() && !$this->mTitle->exists() ) {
 			if( $wgUser->isLoggedIn() ) {
