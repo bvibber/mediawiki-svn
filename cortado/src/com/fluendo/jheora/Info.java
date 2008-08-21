@@ -50,16 +50,12 @@ public class Info {
   public long  keyframe_frequency_force;
 
   /* codec_setup_info */
-  int[] QThreshTable = new int[Constants.Q_TABLE_SIZE];
+  short[][][][] dequant_tables = new short[2][3][64][64];       
+  int[] AcScaleFactorTable = new int[Constants.Q_TABLE_SIZE];
   short[] DcScaleFactorTable = new short[Constants.Q_TABLE_SIZE];
   int MaxQMatrixIndex;
   short[] qmats;
-  short[] Y_coeffs = new short[64];
-  short[] U_coeffs = new short[64];
-  short[] V_coeffs = new short[64];
-  short[] Inter_Y_coeffs = new short[64];
-  short[] Inter_U_coeffs = new short[64];
-  short[] Inter_V_coeffs = new short[64];
+  
   HuffEntry[] HuffRoot = new HuffEntry[Huffman.NUM_HUFF_TABLES];
   byte[] LoopFilterLimitValues = new byte[Constants.Q_TABLE_SIZE];
 

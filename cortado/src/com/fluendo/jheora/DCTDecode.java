@@ -105,13 +105,16 @@ public class DCTDecode
     /* Select the appropriate inverse Q matrix and line stride */
     if ( FragmentNumber<(int)pbi.YPlaneFragments ){
       ReconPixelsPerLine = pbi.YStride;
-      dequant_coeffs = pbi.dequant_Y_coeffs;
+      // intra Y
+      dequant_coeffs = pbi.info.dequant_tables[0][0][pbi.frameQIS[0]];
     }else if(FragmentNumber < pbi.YPlaneFragments + pbi.UVPlaneFragments) {
       ReconPixelsPerLine = pbi.UVStride;
-      dequant_coeffs = pbi.dequant_U_coeffs;
+      // intra U
+      dequant_coeffs = pbi.info.dequant_tables[0][1][pbi.frameQIS[0]];
     } else {
       ReconPixelsPerLine = pbi.UVStride;
-      dequant_coeffs = pbi.dequant_V_coeffs;
+      // intra V
+      dequant_coeffs = pbi.info.dequant_tables[0][2][pbi.frameQIS[0]];
     }
 
     /* Set up pointer into the quantisation buffer. */
@@ -174,9 +177,11 @@ public class DCTDecode
 
       /* Select appropriate dequantiser matrix. */
       if ( codingMode == CodingMode.CODE_INTRA )
-        dequant_coeffs = pbi.dequant_Y_coeffs;
+        // intra Y
+        dequant_coeffs = pbi.info.dequant_tables[0][0][pbi.frameQIS[0]];
       else
-        dequant_coeffs = pbi.dequant_Inter_Y_coeffs;
+        // inter Y
+        dequant_coeffs = pbi.info.dequant_tables[1][0][pbi.frameQIS[0]];
     }else{
       ReconPixelsPerLine = pbi.UVStride;
       MvShift = 2;
@@ -186,14 +191,18 @@ public class DCTDecode
       
       if(FragmentNumber < pbi.YPlaneFragments + pbi.UVPlaneFragments) {
         if ( codingMode == CodingMode.CODE_INTRA )
-          dequant_coeffs = pbi.dequant_U_coeffs;
+          // intra U
+          dequant_coeffs = pbi.info.dequant_tables[0][1][pbi.frameQIS[0]];
         else
-          dequant_coeffs = pbi.dequant_Inter_U_coeffs;
+          // inter U
+          dequant_coeffs = pbi.info.dequant_tables[1][1][pbi.frameQIS[0]];
       } else {
         if ( codingMode == CodingMode.CODE_INTRA )
-          dequant_coeffs = pbi.dequant_V_coeffs;
+          // intra V
+          dequant_coeffs = pbi.info.dequant_tables[0][2][pbi.frameQIS[0]];
         else
-          dequant_coeffs = pbi.dequant_Inter_V_coeffs;
+          // inter V
+          dequant_coeffs = pbi.info.dequant_tables[1][2][pbi.frameQIS[0]];
       }
     }
 

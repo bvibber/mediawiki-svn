@@ -136,10 +136,22 @@ public final class Decode {
 
     /* Quality (Q) index */
     DctQMask = (int) opb.readB(6);
+    pbi.frameQIS[0] = DctQMask;
+    pbi.frameNQIS = 1;
 
-    /* spare bit for possible additional Q indicies - should be 0 */
-    opb.readB(1);
-
+    /* look if there are additional frame quality indices */
+    int moreQs = opb.readB(1);
+    if(moreQs > 0) {
+      pbi.frameQIS[1] = (int) opb.readB(6);
+      pbi.frameNQIS = 2;
+        
+      moreQs = opb.readB(1);
+      if(moreQs > 0) {
+        pbi.frameQIS[2] = (int) opb.readB(6);
+        pbi.frameNQIS = 3;
+      }
+    }
+    
     if ( (pbi.FrameType == Constants.BASE_FRAME) ){
       /* Read the type / coding method for the key frame. */
       pbi.KeyFrameType = (byte)opb.readB(1);
@@ -147,7 +159,7 @@ public final class Decode {
     }
 
     /* Set this frame quality value from Q Index */
-    pbi.ThisFrameQualityValue = pbi.QThreshTable[DctQMask];
+    //pbi.ThisFrameQualityValue = pbi.QThreshTable[pbi.frameQ];
 
     /* Read in the updated block map */
     pbi.frArray.quadDecodeDisplayFragments( pbi );
@@ -349,15 +361,51 @@ public final class Decode {
 			   MVect5.y = MVC.extract(opb);
               }
 	      else if ( CodingMethod == CodingMode.CODE_INTER_FOURMV ){
+                  
+                /* Update last MV and prior last mv */
+                PriorLastInterMV.x = LastInterMV.x;
+                PriorLastInterMV.y = LastInterMV.y;
+                
                 /* Extrac the 4 Y MVs */
-                x  = MVect0.x = MVC.extract(opb);
-                y  = MVect0.y = MVC.extract(opb);
-                x += MVect1.x = MVC.extract(opb);
-                y += MVect1.y = MVC.extract(opb);
-                x += MVect2.x = MVC.extract(opb);
-                y += MVect2.y = MVC.extract(opb);
-                x += MVect3.x = MVC.extract(opb);
-                y += MVect3.y = MVC.extract(opb);
+                if(pbi.display_fragments[FragIndex] != 0) {
+                  x  = MVect0.x = MVC.extract(opb);
+                  y  = MVect0.y = MVC.extract(opb);
+                  LastInterMV.x = MVect0.x;
+                  LastInterMV.y = MVect0.y;
+                } else {
+                  x = MVect0.x = 0;
+                  y = MVect0.y = 0;
+                }
+                
+                if(pbi.display_fragments[FragIndex + 1] != 0) {
+                  x += MVect1.x = MVC.extract(opb);
+                  y += MVect1.y = MVC.extract(opb);
+                  LastInterMV.x = MVect1.x;
+                  LastInterMV.y = MVect1.y;
+                } else {
+                  x += MVect1.x = 0;
+                  y += MVect1.y = 0;
+                }
+                
+                if(pbi.display_fragments[FragIndex + pbi.HFragments] != 0) {
+                  x += MVect2.x = MVC.extract(opb);
+                  y += MVect2.y = MVC.extract(opb);
+                  LastInterMV.x = MVect2.x;
+                  LastInterMV.y = MVect2.y;
+                } else {
+                  x += MVect2.x = 0;
+                  y += MVect2.y = 0;
+                }
+                
+                if(pbi.display_fragments[FragIndex + pbi.HFragments + 1] != 0) {
+                  x += MVect3.x = MVC.extract(opb);
+                  y += MVect3.y = MVC.extract(opb);
+                  LastInterMV.x = MVect3.x;
+                  LastInterMV.y = MVect3.y;
+                } else {
+                  x += MVect3.x = 0;
+                  y += MVect3.y = 0;
+                }
                 /* Calculate the U and V plane MVs as the average of the
                    Y plane MVs. */
                 /* First .x component */
@@ -371,11 +419,6 @@ public final class Decode {
                 MVect4.y = y;
                 MVect5.y = y;
 
-                /* Update last MV and prior last mv */
-                PriorLastInterMV.x = LastInterMV.x;
-                PriorLastInterMV.y = LastInterMV.y;
-                LastInterMV.x = MVect3.x;
-                LastInterMV.y = MVect3.y;
               }
 	      else if ( CodingMethod == CodingMode.CODE_INTER_LAST_MV ){
                 /* Use the last coded Inter motion vector. */
@@ -613,6 +656,10 @@ public final class Decode {
     }
   }
   
+  public void decodeBlockLevelQi() {
+      
+  }
+  
   public int loadAndDecode()
   {
     int    loadFrameOK;
@@ -622,13 +669,7 @@ public final class Decode {
   
     if (loadFrameOK != 0){
     //System.out.println("Load: "+loadFrameOK+" "+pbi.ThisFrameQualityValue+" "+pbi.LastFrameQualityValue);
-
-      if ( (pbi.ThisFrameQualityValue != pbi.LastFrameQualityValue) ){
-        /* Initialise DCT tables. */
-        Quant.UpdateQ( pbi, pbi.ThisFrameQualityValue );
-        pbi.LastFrameQualityValue = pbi.ThisFrameQualityValue;
-      }
-  
+ 
       /* Decode the data into the fragment buffer. */
       /* Bail out immediately if a decode error has already been reported. */
       if (pbi.DecoderErrorCode != 0) 

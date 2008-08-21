@@ -2,6 +2,7 @@
  * Copyright (C) 2004 Fluendo S.L.
  *  
  * Written by: 2004 Wim Taymans <wim@fluendo.com>
+ *             2008 Maik Merten <maikmerten@googlemail.com>
  *   
  * Many thanks to 
  *   The Xiph.Org Foundation http://www.xiph.org/
@@ -28,8 +29,7 @@ import com.jcraft.jogg.*;
 
 public class Quant 
 { 
-  private static final int MIN_DEQUANT_VAL       = 2;
-  private static final int IDCT_SCALE_FACTOR     = 2; /* Shift left bits to improve IDCT precision */
+    
   private static int ilog (long v)
   {
     int ret=0;
@@ -41,334 +41,278 @@ public class Quant
     return ret;
   }
 
-  private static int _read_qtable_range(Info ci, Buffer opb, int N) 
-  {
-    int range;
-    int qi = 0;
-
-    opb.readB(ilog(N-1)); /* qi=0 index */
-    while(qi<63) {
-      range = opb.readB(ilog(62-qi)); /* range to next code q matrix */
-      range++;
-      if(range<=0)
-        return Result.BADHEADER;
-      qi+=range;
-      opb.readB(ilog(N-1)); /* next index */
-    }
-  
-    return 0;
-  }
-
   public static int readQTables(Info ci, Buffer opb) {
-    long bits,value;
-    int x,y, N;
-    //System.out.println("Reading Q tables...");
-    /* AC scale table */
-    bits = opb.readB(4); bits++;
-    for(x=0; x<Constants.Q_TABLE_SIZE; x++) {
-      value = opb.readB((int)bits);
-      if(bits<0)return Result.BADHEADER;
-      ci.QThreshTable[x]=(int)value;
-      //System.out.print(value+" ");
+    /* Variable names according to Theora spec where it makes sense.
+     * I *know* this may violate Java coding style rules, but I consider
+     * readability against the Theora spec to be more important */
+      
+    long NBITS,value;
+    int x, bmi, NBMS;
+
+    /* A 2 × 3 array containing the number of quant ranges for a
+       given qti and pli , respectively. This is at most 63. */
+    int[][] NQRS = new int[2][3];
+    
+    /* A 2 × 3 × 63 array of the sizes of each quant range for a
+       given qti and pli , respectively. Only the first NQRS[qti ][pli ]
+       values are used. */
+    int[][][] QRSIZES = new int[2][3][63];
+    
+    /* A 2 × 3 × 64 array of the bmi ’s used for each quant
+       range for a given qti and pli, respectively. Only the first
+       (NQRS[qti ][pli ] + 1) values are used. */
+    int[][][] QRBMIS = new int[2][3][64];
+    
+    int qri, qi, qtj, plj;
+    
+    
+    /* 1. Read a 4-bit unsigned integer. Assign NBITS the value read, plus one. */
+    NBITS = opb.readB(4); NBITS++;
+    
+    /* 2. For each consecutive value of qi from 0 to 63, inclusive:
+          (a) Read an NBITS-bit unsigned integer as ACSCALE[qi ]. */
+    for(x=0; x < 64; x++) {
+      value = opb.readB((int)NBITS);
+      if(NBITS<0) return Result.BADHEADER;
+      ci.AcScaleFactorTable[x]=(int)value;
     }
-    /* DC scale table */
-    bits = opb.readB(4); bits++;
+    
+    /* 3. Read a 4-bit unsigned integer. Assign NBITS the value read, plus one. */
+    NBITS = opb.readB(4); NBITS++;
+    
+    /* 4. For each consecutive value of qi from 0 to 63, inclusive:
+          (a) Read an NBITS-bit unsigned integer as DCSCALE[qi ]. */
     for(x=0; x<Constants.Q_TABLE_SIZE; x++) {
-      value = opb.readB((int)bits);
-      if(bits<0)return Result.BADHEADER;
+      value = opb.readB((int)NBITS);
+      if(NBITS<0) return Result.BADHEADER;
       ci.DcScaleFactorTable[x]=(short)value;
     }
-    /* base matricies */
-    N = opb.readB(9); N++;
-    //System.out.println("  max q matrix index "+N);
     
-    ci.qmats= new short[N*64];
-    ci.MaxQMatrixIndex = N;
-    for(y=0; y<N; y++) {
-      //System.out.println("q matrix "+ y+": ");
+    /* 5. Read a 9-bit unsigned integer. Assign NBMS the value decoded, plus
+       one. NBMS MUST be no greater than 384. */
+    NBMS = opb.readB(9); NBMS++;
+    if(NBMS > 384) {
+      return Result.BADHEADER;
+    }
+    ci.MaxQMatrixIndex = NBMS;
+    
+    /* 6. For each consecutive value of bmi from 0 to (NBMS - 1), inclusive:
+         (a) For each consecutive value of ci from 0 to 63, inclusive:
+             i. Read an 8-bit unsigned integer as BMS[bmi ][ci ]. */
+    
+    ci.qmats= new short[NBMS*64];
+    for(bmi=0; bmi<NBMS; bmi++) {
       for(x=0; x<64; x++) {
         value = opb.readB(8);
-        if(bits<0)return Result.BADHEADER;
-        ci.qmats[(y<<6)+x]=(short)value;
-        //System.out.print(value+" ");
-        //if((x+1)%8==0)System.out.println();
+        if(NBITS<0)return Result.BADHEADER;
+        ci.qmats[(bmi<<6)+x]=(short)value;
       }
-      //System.out.println();
-    }
-    /* table mapping */
-    {
-      int flag, ret;
-      /* intra Y */
-      //System.out.print("\n Intra Y:");
-      if((ret=_read_qtable_range(ci,opb,N))<0) return ret;
-      /* intra U */
-      //System.out.print("\n Intra U:");
-      flag = opb.readB(1);
-      if(flag<0) return Result.BADHEADER;
-      if(flag != 0) {
-        /* explicitly coded */
-        if((ret=_read_qtable_range(ci,opb,N))<0) return ret;
-      } else {
-        /* same as previous */
-        //System.out.print("same as above");
-      }
-      /* intra V */
-      //System.out.print("\n Intra V:");
-      flag = opb.readB(1);
-      if(flag<0) return Result.BADHEADER;
-      if(flag != 0) {
-        /* explicitly coded */
-        if((ret=_read_qtable_range(ci,opb,N))<0) return ret;
-      } else {
-         /* same as previous */
-        //System.out.print("same as above");
-      }
-      /* inter Y */
-      //System.out.print("\n Inter Y:");
-      flag = opb.readB(1);
-      if(flag<0) return Result.BADHEADER;
-      if(flag != 0) {
-        /* explicitly coded */
-        if((ret=_read_qtable_range(ci,opb,N))<0) return ret;
-      } else {
-        flag = opb.readB(1);
-        if(flag<0) return Result.BADHEADER;
-        if(flag != 0) {
-          /* same as corresponding intra */
-          //System.out.print("same as intra");
-        } else {
-          /* same as previous */
-          //System.out.print("same as above");
-        }
-      }
-      /* inter U */
-      //System.out.print("\n Inter U:");
-      flag = opb.readB(1);
-      if(flag<0) return Result.BADHEADER;
-      if(flag != 0) {
-        /* explicitly coded */
-        if((ret=_read_qtable_range(ci,opb,N))<0) return ret;
-      } else {
-        flag = opb.readB(1);
-        if(flag<0) return Result.BADHEADER;
-        if(flag != 0) {
-          /* same as corresponding intra */
-          //System.out.print("same as intra");
-        } else {
-          /* same as previous */
-          //System.out.print("same as above");
-        }
-      }
-      /* inter V */
-      //System.out.print("n Inter V:");
-      flag = opb.readB(1);
-      if(flag<0) return Result.BADHEADER;
-      if(flag != 0) {
-        /* explicitly coded */
-        if((ret=_read_qtable_range(ci,opb,N))<0) return ret;
-      } else {
-        flag = opb.readB(1);
-        if(flag<0) return Result.BADHEADER;
-        if(flag != 0) {
-          /* same as corresponding intra */
-          //System.out.print("same as intra");
-        } else {
-          /* same as previous */
-          //System.out.print("same as above");
-        }
-      }
-      //System.out.println();
     }
     
-    /* ignore the range table and reference the matricies we use */
+    /* 7. For each consecutive value of qti from 0 to 1, inclusive: */
+    for(int qti = 0; qti <= 1; ++qti) {
+      /* (a) For each consecutive value of pli from 0 to 2, inclusive: */
+      for(int pli = 0; pli <= 2; ++pli) {
+        int NEWQR;
+        if(qti > 0 || pli > 0) {
+          /* i. If qti > 0 or pli > 0, read a 1-bit unsigned integer as NEWQR. */
+          NEWQR = opb.readB(1);
+        } else {
+          /* ii. Else, assign NEWQR the value one. */
+          NEWQR = 1;
+        }
+            
+        if(NEWQR == 0) {
+          /* If NEWQR is zero, then we are copying a previously defined set
+             of quant ranges. In that case: */ 
+                
+          int RPQR;
+          if(qti > 0) {
+            /* A. If qti > 0, read a 1-bit unsigned integer as RPQR. */
+            RPQR = opb.readB(1);
+          } else {
+            /* B. Else, assign RPQR the value zero. */
+            RPQR = 0;
+          }
+                
+          if(RPQR == 1) {
+            /* C. If RPQR is one, assign qtj the value (qti - 1) and assign plj
+               the value pli . This selects the set of quant ranges defined
+               for the same color plane as this one, but for the previous
+               quantization type. */
+            qtj = qti - 1;
+            plj = pli;
+          } else {
+            /* D. Else assign qtj the value (3 * qti + pli - 1)//3 and assign plj
+               the value (pli + 2)%3. This selects the most recent set of
+               quant ranges defined. */
+            qtj = (3 * qti + pli - 1) / 3;
+            plj = (pli + 2) % 3;
+          }
+                
+          /* E. Assign NQRS[qti ][pli ] the value NQRS[qtj ][plj ]. */
+          NQRS[qti][pli] = NQRS[qtj][plj];
+                
+          /* F. Assign QRSIZES[qti ][pli ] the values in QRSIZES[qtj ][plj ]. */
+          QRSIZES[qti][pli] = QRSIZES[qtj][plj];
+                
+          /* G. Assign QRBMIS[qti ][pli ] the values in QRBMIS[qtj ][plj ]. */
+          QRBMIS[qti][pli] = QRBMIS[qtj][plj];
+                
+        } else {
+          /* Else, NEWQR is one, which indicates that we are defining a new
+             set of quant ranges. In that case: */ 
+                
+          /*A. Assign qri the value zero. */
+          qri = 0;
+
+          /*B. Assign qi the value zero. */
+          qi = 0;
+                
+          /* C. Read an ilog(NBMS - 1)-bit unsigned integer as
+                QRBMIS[qti ][pli ][qri ]. If this is greater than or equal to
+                NBMS, stop. The stream is undecodable. */
+          QRBMIS[qti][pli][qri] = opb.readB(ilog(NBMS - 1));
+          if(QRBMIS[qti][pli][qri] >= NBMS) {
+            System.out.println("bad header (1)");
+            return Result.BADHEADER;
+          }
+                
+          do {
+            /* D. Read an ilog(62 - qi )-bit unsigned integer. Assign
+                  QRSIZES[qti ][pli ][qri ] the value read, plus one. */
+            QRSIZES[qti][pli][qri] = opb.readB(ilog(62 - qi)) + 1;
+                
+            /* E. Assign qi the value qi + QRSIZES[qti ][pli ][qri ]. */
+            qi = qi + QRSIZES[qti][pli][qri];
+                
+            /* F. Assign qri the value qri + 1. */
+            qri = qri + 1;
+                
+            /* G. Read an ilog(NBMS - 1)-bit unsigned integer as
+                  QRBMIS[qti ][pli ][qri ]. */
+            QRBMIS[qti][pli][qri] = opb.readB(ilog(NBMS - 1));
+                
+            /* H. If qi is less than 63, go back to step 7(a)ivD. */
+          } while(qi < 63);
+                
+            /* I. If qi is greater than 63, stop. The stream is undecodable. */
+            if(qi > 63) {
+              System.out.println("bad header (2): " + qi);
+              return Result.BADHEADER;
+            }
+                
+            /* J. Assign NQRS[qti ][pli ] the value qri . */
+            NQRS[qti][pli] = qri;
+        }
+      }
+    }
     
-    if(N == 3) {
-      System.arraycopy(ci.qmats,    0, ci.Y_coeffs,     0, 64);
-      System.arraycopy(ci.qmats,   64, ci.U_coeffs,    0, 64);
-      System.arraycopy(ci.qmats,   64, ci.V_coeffs,    0, 64);
-      System.arraycopy(ci.qmats, 2*64, ci.Inter_Y_coeffs, 0, 64);
-      System.arraycopy(ci.qmats, 2*64, ci.Inter_U_coeffs, 0, 64);
-      System.arraycopy(ci.qmats, 2*64, ci.Inter_V_coeffs, 0, 64);
-    } else if(N == 6) {
-      System.arraycopy(ci.qmats,    0, ci.Y_coeffs,     0, 64);
-      System.arraycopy(ci.qmats,   64, ci.U_coeffs,    0, 64);
-      System.arraycopy(ci.qmats, 2*64, ci.V_coeffs,    0, 64);
-      System.arraycopy(ci.qmats, 3*64, ci.Inter_Y_coeffs, 0, 64);
-      System.arraycopy(ci.qmats, 4*64, ci.Inter_U_coeffs, 0, 64);
-      System.arraycopy(ci.qmats, 5*64, ci.Inter_V_coeffs, 0, 64);
-    } else return Result.BADHEADER;
+    /* Compute all 384 matrices */
+    for(int coding = 0; coding < 2; ++coding) {
+      for(int plane = 0; plane < 3; ++plane) {
+        for(int quality = 0; quality < 64; ++quality) {
+          short[] scaledmat = compQuantMatrix(ci.AcScaleFactorTable, ci.DcScaleFactorTable, ci.qmats, NQRS, QRSIZES, QRBMIS, coding, plane, quality);
+          for(int coeff = 0; coeff < 64; ++coeff) {
+            int j = Constants.dequant_index[coeff];
+            ci.dequant_tables[coding][plane][quality][coeff] = scaledmat[j];
+          }
+        }
+      }
+    }
   
     return 0;
   }
-
-  static void BuildQuantIndex_Generic(Playback pbi){
-    int i,j;
-
-    /* invert the dequant index into the quant index */
-    for ( i = 0; i < Constants.BLOCK_SIZE; i++ ){
-      j = Constants.dequant_index[i];
-      pbi.quant_index[j] = i;
-    }
-  }
-
-  static void init_dequantizer (Playback pbi,
-                        int scale_factor,
-                        byte  QIndex ){
-    int i, j;
-
-    
-    short[] Y_coeffs;
-    short[] U_coeffs;
-    short[] V_coeffs;
-    short[] Inter_Y_coeffs;
-    short[] Inter_U_coeffs;
-    short[] Inter_V_coeffs;
-    short[] DcScaleFactorTable;
-    short[] UVDcScaleFactorTable;
-
-    Y_coeffs = pbi.Y_coeffs;
-    U_coeffs = pbi.U_coeffs;
-    V_coeffs = pbi.V_coeffs;
-    Inter_Y_coeffs = pbi.Inter_Y_coeffs;
-    Inter_U_coeffs = pbi.Inter_U_coeffs;
-    Inter_V_coeffs = pbi.Inter_V_coeffs;
-    
-    
-    DcScaleFactorTable = pbi.DcScaleFactorTable;
-    UVDcScaleFactorTable = pbi.DcScaleFactorTable;
-
-    /* invert the dequant index into the quant index
-       the dxer has a different order than the cxer. */
-    BuildQuantIndex_Generic(pbi);
-
-    /* Reorder dequantisation coefficients into dct zigzag order. */
-    for ( i = 0; i < Constants.BLOCK_SIZE; i++ ) {
-      j = pbi.quant_index[i];
-      pbi.dequant_Y_coeffs[j] = Y_coeffs[i];
-      pbi.dequant_U_coeffs[j] = U_coeffs[i];
-      pbi.dequant_V_coeffs[j] = V_coeffs[i];
-      pbi.dequant_Inter_Y_coeffs[j] = Inter_Y_coeffs[i];
-      pbi.dequant_Inter_U_coeffs[j] = Inter_U_coeffs[i];
-      pbi.dequant_Inter_V_coeffs[j] = Inter_V_coeffs[i];
-
-    }
-
-    /* Intra Y */
-    pbi.dequant_Y_coeffs[0] = (short)
-      ((DcScaleFactorTable[QIndex] * pbi.dequant_Y_coeffs[0])/100);
-    if ( pbi.dequant_Y_coeffs[0] < MIN_DEQUANT_VAL * 2 )
-      pbi.dequant_Y_coeffs[0] = MIN_DEQUANT_VAL * 2;
-    pbi.dequant_Y_coeffs[0] = (short) 
-      (pbi.dequant_Y_coeffs[0] << IDCT_SCALE_FACTOR);
-
-    /* Intra U */
-    pbi.dequant_U_coeffs[0] = (short)
-      ((UVDcScaleFactorTable[QIndex] * pbi.dequant_U_coeffs[0])/100);
-    if ( pbi.dequant_U_coeffs[0] < MIN_DEQUANT_VAL * 2 )
-      pbi.dequant_U_coeffs[0] = MIN_DEQUANT_VAL * 2;
-    pbi.dequant_U_coeffs[0] = (short)
-      (pbi.dequant_U_coeffs[0] << IDCT_SCALE_FACTOR);
-    
-    /* Intra V */
-    pbi.dequant_V_coeffs[0] = (short)
-      ((UVDcScaleFactorTable[QIndex] * pbi.dequant_V_coeffs[0])/100);
-    if ( pbi.dequant_V_coeffs[0] < MIN_DEQUANT_VAL * 2 )
-      pbi.dequant_V_coeffs[0] = MIN_DEQUANT_VAL * 2;
-    pbi.dequant_V_coeffs[0] = (short)
-      (pbi.dequant_V_coeffs[0] << IDCT_SCALE_FACTOR);
-
-    /* Inter Y */
-    pbi.dequant_Inter_Y_coeffs[0] = (short)
-      ((DcScaleFactorTable[QIndex] * pbi.dequant_Inter_Y_coeffs[0])/100);
-    if ( pbi.dequant_Inter_Y_coeffs[0] < MIN_DEQUANT_VAL * 4 )
-      pbi.dequant_Inter_Y_coeffs[0] = MIN_DEQUANT_VAL * 4;
-    pbi.dequant_Inter_Y_coeffs[0] = (short)
-      (pbi.dequant_Inter_Y_coeffs[0] << IDCT_SCALE_FACTOR);
-
-    /* Inter U */
-    pbi.dequant_Inter_U_coeffs[0] = (short)
-      ((UVDcScaleFactorTable[QIndex] * pbi.dequant_Inter_U_coeffs[0])/100);
-    if ( pbi.dequant_Inter_U_coeffs[0] < MIN_DEQUANT_VAL * 4 )
-      pbi.dequant_Inter_U_coeffs[0] = MIN_DEQUANT_VAL * 4;
-    pbi.dequant_Inter_U_coeffs[0] = (short)
-      (pbi.dequant_Inter_U_coeffs[0] << IDCT_SCALE_FACTOR);
-    
-    /* Inter V */
-    pbi.dequant_Inter_V_coeffs[0] = (short)
-      ((UVDcScaleFactorTable[QIndex] * pbi.dequant_Inter_V_coeffs[0])/100);
-    if ( pbi.dequant_Inter_V_coeffs[0] < MIN_DEQUANT_VAL * 4 )
-      pbi.dequant_Inter_V_coeffs[0] = MIN_DEQUANT_VAL * 4;
-    pbi.dequant_Inter_V_coeffs[0] = (short)
-      (pbi.dequant_Inter_V_coeffs[0] << IDCT_SCALE_FACTOR);
   
-    for ( i = 1; i < 64; i++ ){
-      /* now scale coefficients by required compression factor */
-      pbi.dequant_Y_coeffs[i] = (short)
-        (( scale_factor * pbi.dequant_Y_coeffs[i] ) / 100);
-      if ( pbi.dequant_Y_coeffs[i] < MIN_DEQUANT_VAL )
-        pbi.dequant_Y_coeffs[i] = MIN_DEQUANT_VAL;
-      pbi.dequant_Y_coeffs[i] = (short)
-        (pbi.dequant_Y_coeffs[i] << IDCT_SCALE_FACTOR);
-  
-      pbi.dequant_U_coeffs[i] = (short)
-        (( scale_factor * pbi.dequant_U_coeffs[i] ) / 100);
-      if ( pbi.dequant_U_coeffs[i] < MIN_DEQUANT_VAL )
-        pbi.dequant_U_coeffs[i] = MIN_DEQUANT_VAL;
-      pbi.dequant_U_coeffs[i] = (short)
-        (pbi.dequant_U_coeffs[i] << IDCT_SCALE_FACTOR);
-      
-      pbi.dequant_V_coeffs[i] = (short)
-        (( scale_factor * pbi.dequant_V_coeffs[i] ) / 100);
-      if ( pbi.dequant_V_coeffs[i] < MIN_DEQUANT_VAL )
-        pbi.dequant_V_coeffs[i] = MIN_DEQUANT_VAL;
-      pbi.dequant_V_coeffs[i] = (short)
-        (pbi.dequant_V_coeffs[i] << IDCT_SCALE_FACTOR);
+  static short[] compQuantMatrix(int[] ACSCALE, short[] DCSCALE, short[] BMS, int[][] NQRS, 
+          int[][][] QRSIZES, int[][][] QRBMIS, int qti, int pli, int qi) {
 
-      pbi.dequant_Inter_Y_coeffs[i] = (short)
-        (( scale_factor * pbi.dequant_Inter_Y_coeffs[i] ) / 100);
-      if ( pbi.dequant_Inter_Y_coeffs[i] < (MIN_DEQUANT_VAL * 2) )
-        pbi.dequant_Inter_Y_coeffs[i] = MIN_DEQUANT_VAL * 2;
-      pbi.dequant_Inter_Y_coeffs[i] = (short)
-        (pbi.dequant_Inter_Y_coeffs[i] << IDCT_SCALE_FACTOR);
-
-      pbi.dequant_Inter_U_coeffs[i] = (short)
-        (( scale_factor * pbi.dequant_Inter_U_coeffs[i] ) / 100);
-      if ( pbi.dequant_Inter_U_coeffs[i] < (MIN_DEQUANT_VAL * 2) )
-        pbi.dequant_Inter_U_coeffs[i] = MIN_DEQUANT_VAL * 2;
-      pbi.dequant_Inter_U_coeffs[i] = (short)
-        (pbi.dequant_Inter_U_coeffs[i] << IDCT_SCALE_FACTOR);
-
-      pbi.dequant_Inter_V_coeffs[i] = (short)
-        (( scale_factor * pbi.dequant_Inter_V_coeffs[i] ) / 100);
-      if ( pbi.dequant_Inter_V_coeffs[i] < (MIN_DEQUANT_VAL * 2) )
-        pbi.dequant_Inter_V_coeffs[i] = MIN_DEQUANT_VAL * 2;
-      pbi.dequant_Inter_V_coeffs[i] = (short)
-        (pbi.dequant_Inter_V_coeffs[i] << IDCT_SCALE_FACTOR);
-
-
-    }
-  }
-
-  public static void UpdateQ(Playback pbi, int NewQ ){
-    int qscale;
-
-    /* Do bounds checking. */
-    qscale = NewQ;
-    if ( qscale < pbi.QThreshTable[Constants.Q_TABLE_SIZE-1] )
-      qscale = pbi.QThreshTable[Constants.Q_TABLE_SIZE-1];
-    else if ( qscale > pbi.QThreshTable[0] )
-      qscale = pbi.QThreshTable[0];
-
-    /* Set the inter/intra descision control variables. */
-    pbi.FrameQIndex = Constants.Q_TABLE_SIZE - 1;
-    while ( (int) pbi.FrameQIndex >= 0 ) {
-      if ( (pbi.FrameQIndex == 0) ||
-           ( pbi.QThreshTable[pbi.FrameQIndex] >= NewQ) )
+    /* Variable names according to Theora spec where it makes sense.
+     * I *know* this may violate Java coding style rules, but I consider
+     * readability against the Theora spec to be more important */
+     
+    short[] QMAT = new short[64];
+    int qri, qrj;
+    /* 1. Assign qri the index of a quant range such that
+     \qi \ge \sum_{\qrj=0}^{\qri-1} QRSIZES[\qti][\pli][\qrj],
+     and
+     \qi \le \sum_{\qrj=0}^{\qri} QRSIZES[\qti][\pli][\qrj],
+     */
+    for(qri = 0; qri < 63; ++qri) {
+      int sum1 = 0;
+      for(qrj = 0; qrj < qri; ++qrj) {
+        sum1 += QRSIZES[qti][pli][qrj];
+      }
+          
+      int sum2 = 0;
+      for(qrj = 0; qrj <= qri; ++qrj) {
+        sum2 += QRSIZES[qti][pli][qrj];
+      }
+          
+      if(qi >= sum1 && qi <= sum2)
         break;
-      pbi.FrameQIndex --;
     }
-
-    /* Re-initialise the q tables for forward and reverse transforms. */
-    init_dequantizer (pbi, qscale, (byte)pbi.FrameQIndex );
+      
+    /* 2. Assign QISTART the value
+     \sum_{\qrj=0}^{\qri-1} QRSIZES[\qti][\pli][\qrj].
+    */
+    int QISTART = 0;
+    for(qrj = 0; qrj < qri; ++qrj) {
+      QISTART += QRSIZES[qti][pli][qrj];
+    }
+      
+    /* 3. Assign QIEND the value
+     \sum_{\qrj=0}^{\qri} QRSIZES[\qti][\pli][\qrj].
+    */ 
+    int QIEND = 0;
+    for(qrj = 0; qrj <= qri; ++qrj) {
+      QIEND += QRSIZES[qti][pli][qrj];
+    }
+      
+    /* 4. Assign bmi the value QRBMIS[qti ][pli ][qri ]. */
+    int bmi = QRBMIS[qti][pli][qri];
+      
+    /* 5. Assign bmj the value QRBMIS[qti ][pli ][qri + 1]. */
+    int bmj = QRBMIS[qti][pli][qri + 1];
+      
+    int[] BM = new int[64];
+    int QMIN;
+    /* 6. For each consecutive value of ci from 0 to 63, inclusive: */
+    for(int ci = 0; ci < 64; ++ci) {
+      /* (a) Assign BM[ci ] the value
+              (2 ∗ (QIEND − qi ) ∗ BMS[bmi ][ci ]
+               + 2 ∗ (qi − QISTART) ∗ BMS[bmj ][ci ]
+               + QRSIZES[qti ][pli ][qri ])//(2 ∗ QRSIZES[qti ][pli ][qri ]) */
+      BM[ci] = (2 * (QIEND - qi) * BMS[(bmi<<6) + ci]
+              + 2 * (qi - QISTART) * BMS[(bmj<<6) + ci]
+              + QRSIZES[qti][pli][qri]) / (2 * QRSIZES[qti][pli][qri]);
+          
+      /* (b) Assign QMIN the value given by Table 6.18 according to qti and ci . */
+      if(ci == 0 && qti == 0)
+        QMIN = 16;
+      else if(ci > 0 && qti == 0)
+        QMIN = 8;
+      else if(ci == 0 && qti == 1)
+        QMIN = 32;
+      else 
+        QMIN = 16;
+          
+      int QSCALE;
+      if(ci == 0) {
+        /* (c) If ci equals zero, assign QSCALE the value DCSCALE[qi ]. */
+        QSCALE = DCSCALE[qi];
+      } else {
+        /* (d) Else, assign QSCALE the value ACSCALE[qi ]. */
+        QSCALE = ACSCALE[qi];
+      }
+          
+      /*(e) Assign QMAT[ci ] the value
+        max(QMIN, min((QSCALE ∗ BM[ci ]//100) ∗ 4, 4096)). */
+          
+      QMAT[ci] = (short)Math.max(QMIN, Math.min((QSCALE * BM[ci]/100) * 4,4096));
+    }
+      
+    return QMAT;
   }
+
 }

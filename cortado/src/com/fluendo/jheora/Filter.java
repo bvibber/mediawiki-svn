@@ -145,13 +145,8 @@ public final class Filter
 
     /* Set the limit value for the loop filter based upon the current
        quantizer. */
-    QIndex = Constants.Q_TABLE_SIZE - 1;
-    while ( QIndex >= 0 ) {
-      if ( (QIndex == 0) ||
-           ( pbi.QThreshTable[QIndex] >= pbi.ThisFrameQualityValue) )
-        break;
-      QIndex --;
-    }
+    
+    QIndex = pbi.frameQIS[0];
 
     FLimit = LoopFilterLimits[QIndex];
     if ( FLimit == 0 ) return;

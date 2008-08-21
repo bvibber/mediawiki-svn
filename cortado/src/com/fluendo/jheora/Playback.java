@@ -53,11 +53,15 @@ public class Playback
   int           QualitySetting;
   int           FrameQIndex;            /* Quality specified as a
                                            table index */
-  int           ThisFrameQualityValue;  /* Quality value for this frame  */
-  int           LastFrameQualityValue;  /* Last Frame's Quality */
+  //int           ThisFrameQualityValue;  /* Quality value for this frame  */
+  //int           LastFrameQualityValue;  /* Last Frame's Quality */
   int     	CodedBlockIndex;        /* Number of Coded Blocks */
   int           CodedBlocksThisFrame;   /* Index into coded blocks */
   int           FrameSize;              /* The number of bytes in the frame. */
+  
+  int[]         frameQIS = new int[3];
+  int           frameNQIS; /* number of quality indices this frame uses */
+
 
   /**********************************************************************/
   /* Frame Size & Index Information */
@@ -148,63 +152,21 @@ public class Playback
   FrArray 	frArray = new FrArray();
   Filter 	filter = new Filter();
 
-  int[] 	QThreshTable = new int[Constants.Q_TABLE_SIZE];
-  short[] 	DcScaleFactorTable = new short[Constants.Q_TABLE_SIZE];
-  short[] 	Y_coeffs = new short[64];
-  short[] 	U_coeffs = new short[64];
-  short[] 	V_coeffs = new short[64];
-  short[] 	Inter_Y_coeffs = new short[64];
-  short[] 	Inter_U_coeffs = new short[64];
-  short[] 	Inter_V_coeffs = new short[64];
+  
+  /* quality index for each block */
+  byte[]        blockQ;
 
   /* Dequantiser and rounding tables */
-  short[] 	dequant_InterUV_coeffs;
   int[]   	quant_index = new int[64];
-  int[]   	quant_Y_coeffs = new int[64];
-  int[]    	quant_UV_coeffs = new int[64];
 
   HuffEntry[]   HuffRoot_VP3x = new HuffEntry[Huffman.NUM_HUFF_TABLES];
   int[][] 	HuffCodeArray_VP3x;
   byte[][] 	HuffCodeLengthArray_VP3x;
   byte[]   	ExtraBitLengths_VP3x;
-
-  /* Quantiser and rounding tables */
-  short[]	dequant_Y_coeffs;
-  short[] 	dequant_U_coeffs;
-  short[] 	dequant_V_coeffs;
-  short[] 	dequant_Inter_Y_coeffs;
-  short[] 	dequant_Inter_U_coeffs;
-  short[] 	dequant_Inter_V_coeffs;
-  short[] 	dequant_coeffs;
-
-  public void clearTmpBuffers()
-  {
-    dequant_Y_coeffs = null;
-    dequant_U_coeffs = null;
-    dequant_V_coeffs = null;
-    dequant_Inter_Y_coeffs = null;
-    dequant_Inter_U_coeffs = null;
-    dequant_Inter_V_coeffs = null;
-  }
-
-  private void initTmpBuffers()
-  {
-
-    /* clear any existing info */
-    clearTmpBuffers();
-
-    /* Adjust the position of all of our temporary */
-    dequant_Y_coeffs     = new short[64];
-    dequant_U_coeffs    = new short[64];
-    dequant_V_coeffs    = new short[64];
-    dequant_Inter_Y_coeffs = new short[64];
-    dequant_Inter_U_coeffs = new short[64];
-    dequant_Inter_V_coeffs = new short[64];
-  }
+ 
 
   public void clear()
   {
-    clearTmpBuffers();
     if (opb != null) {
       opb = null;
     }
@@ -225,8 +187,6 @@ public class Playback
   {
     info = ci;
 
-    initTmpBuffers();
-
     DecoderErrorCode = 0;
     KeyFrameType = DCT_KEY_FRAME;
     FramesHaveBeenSkipped = 0;
@@ -234,10 +194,9 @@ public class Playback
     FrInit.InitFrameDetails(this);
 
     keyframe_granule_shift = ilog(ci.keyframe_frequency_force-1);
-    LastFrameQualityValue = 0;
+    //LastFrameQualityValue = 0;
 
     /* Initialise version specific quantiser and in-loop filter values */
-    copyQTables(ci);
     filter.copyFilterTables(ci);
 
     /* Huffman setup */
@@ -304,17 +263,5 @@ public class Playback
     for(i=0; i<Huffman.NUM_HUFF_TABLES; i++){
       HuffRoot_VP3x[i] = ci.HuffRoot[i].copy();
     }
-  }
-
-  public void copyQTables(Info ci) {
-    System.arraycopy(ci.QThreshTable, 0, QThreshTable, 0, Constants.Q_TABLE_SIZE);
-    System.arraycopy(ci.DcScaleFactorTable, 0, DcScaleFactorTable,
-                   0, Constants.Q_TABLE_SIZE);
-    System.arraycopy(ci.Y_coeffs, 0, Y_coeffs, 0, 64);
-    System.arraycopy(ci.U_coeffs, 0, U_coeffs, 0, 64);
-    System.arraycopy(ci.V_coeffs, 0, V_coeffs, 0, 64);
-    System.arraycopy(ci.Inter_Y_coeffs, 0, Inter_Y_coeffs, 0, 64);
-    System.arraycopy(ci.Inter_U_coeffs, 0, Inter_U_coeffs, 0, 64);
-    System.arraycopy(ci.Inter_V_coeffs, 0, Inter_V_coeffs, 0, 64);
   }
 }
