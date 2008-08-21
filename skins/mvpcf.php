@@ -393,7 +393,7 @@ class MvpcfTemplate extends QuickTemplate {
 			</li>
 			<li>
 				<?php
-				$cBills =  Title::newFromText('Bill', NS_CATEGORY);
+				$cBills =  Title::newFromText('Bill', SMW_NS_PROPERTY);
 				echo $sk->makeKnownLinkObj($cBills, 'bills');
 				?>				
 			</li>
