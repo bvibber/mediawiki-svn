@@ -27,7 +27,6 @@ class HTMLCacheUpdate
 {
 	public $mTitle, $mTable, $mPrefix;
 	public $mRowsPerJob, $mRowsPerQuery;
-	public $mResult;
 
 	function __construct( $titleTo, $table ) {
 		global $wgUpdateRowsPerJob, $wgUpdateRowsPerQuery;
@@ -43,7 +42,7 @@ class HTMLCacheUpdate
 		$cond = $this->getToCondition();
 		$dbr = wfGetDB( DB_SLAVE );
 		$res = $dbr->select( $this->getTables(), $this->getFromField(), $cond, __METHOD__ );
-		$this->mResult = $res;
+
 		if ( $dbr->numRows( $res ) != 0 ) {
 			if ( $dbr->numRows( $res ) > $this->mRowsPerJob ) {
 				$this->insertJobs( $res );
@@ -227,7 +226,7 @@ class HTMLCacheUpdateJob extends Job {
 
 		$dbr = wfGetDB( DB_SLAVE );
 		$res = $dbr->select( $tables, $fromField, $conds, __METHOD__ );
-		$update->invalidateIDs( new ResultWrapper( $dbr, $res ) );
+		$update->invalidateIDs( $res );
 
 		return true;
 	}

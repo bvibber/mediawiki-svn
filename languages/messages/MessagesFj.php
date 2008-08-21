@@ -4,7 +4,6 @@
  * @ingroup Language
  * @file
  *
- * @author SPQRobin
  */
 
 $messages = array(
@@ -87,7 +86,6 @@ $messages = array(
 'mainpage'             => 'Tabana levu',
 'mainpage-description' => 'Tabana levu',
 'portal'               => 'Soqosoqo toso',
-'sitesupport'          => 'Soli',
 
 'editsection' => 'Veisautaki',
 'editold'     => 'Veisautaki',
@@ -150,7 +148,7 @@ $messages = array(
 'move'              => 'Toso',
 'movethispage'      => 'Toso na tabana oqo',
 
-# Special:Allpages
+# Special:AllPages
 'allpagessubmit' => 'Lako',
 
 # E-mail user
@@ -191,7 +189,7 @@ $messages = array(
 'tooltip-search'         => 'Vaqaqara {{SITENAME}}',
 'tooltip-p-logo'         => 'Tabana levu',
 
-# Special:Newimages
+# Special:NewImages
 'ilsubmit' => 'Vaqaqara',
 
 # Multipage image navigation

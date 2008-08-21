@@ -62,6 +62,7 @@ class EditPage {
 	var $autoSumm = '';
 	var $hookError = '';
 	var $mPreviewTemplates;
+	var $mBaseRevision = false;
 
 	# Form values
 	var $save = false, $preview = false, $diff = false;
@@ -121,7 +122,7 @@ class EditPage {
 			if ( $this->mTitle->getNamespace() == NS_MEDIAWIKI ) {
 				$wgMessageCache->loadAllMessages();
 				# If this is a system message, get the default text.
-				$text = wfMsgWeirdKey ( $this->mTitle->getText() ) ;
+				$text = wfMsgWeirdKey( $this->mTitle->getText() ) ;
 			} else {
 				# If requested, preload some text.
 				$text = $this->getPreloadedText( $preload );
@@ -211,7 +212,7 @@ class EditPage {
 	 * @param $preload String: the title of the page.
 	 * @return string The contents of the page.
 	 */
-	private function getPreloadedText($preload) {
+	protected function getPreloadedText($preload) {
 		if ( $preload === '' )
 			return '';
 		else {
@@ -369,7 +370,7 @@ class EditPage {
 		wfDebug( __METHOD__.": enter\n" );
 
 		// this is not an article
-		$wgOut->setArticleFlag(false);
+		$wgOut->setArticleFlag( false );
 
 		$this->importFormData( $wgRequest );
 		$this->firsttime = false;
@@ -379,20 +380,28 @@ class EditPage {
 			wfProfileOut( __METHOD__ );
 			return;
 		}
-		
-		$wgOut->addScriptFile( 'edit.js' );
 
 		if( wfReadOnly() ) {
-			$this->readOnlyPage( $this->getContent() );
-			wfProfileOut( __METHOD__ );
-			return;
+			if( $this->save ){
+				// Force preview
+				$this->save = false;
+				$this->preview = true;
+			} elseif( $this->preview || $this->diff ){
+				// A warning will be displayed instead
+			} else {
+				$this->readOnlyPage( $this->getContent() );
+				wfProfileOut( __METHOD__ );
+				return;
+			}
 		}
 
-		$permErrors = $this->mTitle->getUserPermissionsErrors('edit', $wgUser);
+		$wgOut->addScriptFile( 'edit.js' );
+
+		$permErrors = $this->mTitle->getUserPermissionsErrors( 'edit', $wgUser );
 		
 		if( !$this->mTitle->exists() ) {
 			$permErrors = array_merge( $permErrors,
-				wfArrayDiff2( $this->mTitle->getUserPermissionsErrors('create', $wgUser), $permErrors ) );
+				wfArrayDiff2( $this->mTitle->getUserPermissionsErrors( 'create', $wgUser ), $permErrors ) );
 		}
 
 		# Ignore some permissions errors.
@@ -403,15 +412,6 @@ class EditPage {
 			{
 				// Don't worry about blocks when previewing/diffing
 				$remove[] = $error;
-			}
-
-			if ($error[0] == 'readonlytext')
-			{
-				if ($this->edit) {
-					$this->formtype = 'preview';
-				} elseif ($this->save || $this->preview || $this->diff) {
-					$remove[] = $error;
-				}
 			}
 		}
 		$permErrors = wfArrayDiff2( $permErrors, $remove );
@@ -424,7 +424,7 @@ class EditPage {
 		} else {
 			if ( $this->save ) {
 				$this->formtype = 'save';
-			} else if ( $this->preview ) {
+			} else if( $this->preview ) {
 				$this->formtype = 'preview';
 			} else if ( $this->diff ) {
 				$this->formtype = 'diff';
@@ -452,6 +452,25 @@ class EditPage {
 
 		if( $this->mTitle->isTalkPage() ) {
 			$wgOut->addWikiMsg( 'talkpagetext' );
+		}
+
+		# Optional notices on a per-namespace and per-page basis
+		$editnotice_ns   = 'editnotice-'.$this->mTitle->getNamespace();
+		$editnotice_page = $editnotice_ns.'-'.$this->mTitle->getDBkey();
+		if ( !wfEmptyMsg( $editnotice_ns, wfMsgForContent( $editnotice_ns ) ) ) {
+			$wgOut->addWikiText( wfMsgForContent( $editnotice_ns )  );
+		}
+		if ( MWNamespace::hasSubpages( $this->mTitle->getNamespace() ) ) {
+			$parts = explode( '/', $this->mTitle->getDBkey() );
+			$editnotice_base = $editnotice_ns;
+			while ( count( $parts ) > 0 ) {
+				$editnotice_base .= '-'.array_shift( $parts );
+				if ( !wfEmptyMsg( $editnotice_base, wfMsgForContent( $editnotice_base ) ) ) {
+					$wgOut->addWikiText( wfMsgForContent( $editnotice_base )  );
+				}
+			}
+		} else if ( !wfEmptyMsg( $editnotice_page, wfMsgForContent( $editnotice_page ) ) ) {
+			$wgOut->addWikiText( wfMsgForContent( $editnotice_page ) );
 		}
 
 		# Attempt submission here.  This will check for edit conflicts,
@@ -507,7 +526,7 @@ class EditPage {
 	 *
 	 * @return bool
 	 */
-	private function previewOnOpen() {
+	protected function previewOnOpen() {
 		global $wgRequest, $wgUser;
 		if( $wgRequest->getVal( 'preview' ) == 'yes' ) {
 			// Explicit override from request
@@ -659,7 +678,7 @@ class EditPage {
 	/**
 	 * Show all applicable editing introductions
 	 */
-	private function showIntro() {
+	protected function showIntro() {
 		global $wgOut, $wgUser;
 		if( $this->suppressIntro )
 			return;
@@ -692,7 +711,7 @@ class EditPage {
 	 *
 	 * @return bool
 	 */
-	private function showCustomIntro() {
+	protected function showCustomIntro() {
 		if( $this->editintro ) {
 			$title = Title::newFromText( $this->editintro );
 			if( $title instanceof Title && $title->exists() && $title->userCanRead() ) {
@@ -713,7 +732,7 @@ class EditPage {
 	 * @return one of the constants describing the result
 	 */
 	function internalAttemptSave( &$result, $bot = false ) {
-		global $wgSpamRegex, $wgFilterCallback, $wgUser, $wgOut, $wgParser;
+		global $wgFilterCallback, $wgUser, $wgOut, $wgParser;
 		global $wgMaxArticleSize;
 
 		$fname = 'EditPage::attemptSave';
@@ -742,12 +761,15 @@ class EditPage {
 		$this->mMetaData = '' ;
 
 		# Check for spam
-		$matches = array();
-		if ( $wgSpamRegex && preg_match( $wgSpamRegex, $this->textbox1, $matches ) ) {
-			$result['spam'] = $matches[0];
+		$match = self::matchSpamRegex( $this->summary );
+		if( $match === false ) {
+			$match = self::matchSpamRegex( $this->textbox1 );
+		}
+		if( $match !== false ) {
+			$result['spam'] = $match;
 			$ip = wfGetIP();
 			$pdbk = $this->mTitle->getPrefixedDBkey();
-			$match = str_replace( "\n", '', $matches[0] );
+			$match = str_replace( "\n", '', $match );
 			wfDebugLog( 'SpamRegex', "$ip spam regex hit [[$pdbk]]: \"$match\"" );
 			wfProfileOut( "$fname-checks" );
 			wfProfileOut( $fname );
@@ -1002,6 +1024,25 @@ class EditPage {
 		wfProfileOut( $fname );
 		return self::AS_END;
 	}
+	
+	/**
+	 * Check given input text against $wgSpamRegex, and return the text of the first match.
+	 * @return mixed -- matching string or false
+	 */
+	public static function matchSpamRegex( $text ) {
+		global $wgSpamRegex;
+		if( $wgSpamRegex ) {
+			// For back compatibility, $wgSpamRegex may be a single string or an array of regexes.
+			$regexes = (array)$wgSpamRegex;
+			foreach( $regexes as $regex ) {
+				$matches = array();
+				if ( preg_match( $regex, $text, $matches ) ) {
+					return $matches[0];
+				}
+			}
+		}
+		return false;
+	}
 
 	/**
 	 * Initialise form fields in the object
@@ -1041,7 +1082,7 @@ class EditPage {
 
 		wfRunHooks( 'EditPage::showEditForm:initial', array( &$this ) ) ;
 
-		$wgOut->setRobotpolicy( 'noindex,nofollow' );
+		$wgOut->setRobotPolicy( 'noindex,nofollow' );
 
 		# Enabled article-related sidebar, toplinks, etc.
 		$wgOut->setArticleRelated( true );
@@ -1118,9 +1159,9 @@ class EditPage {
 		}
 
 		if( wfReadOnly() ) {
-			$wgOut->addHTML( '<div id="mw-read-only-warning">'.wfMsgWikiHTML( 'readonlywarning' ).'</div>' );
+			$wgOut->wrapWikiMsg( "<div id=\"mw-read-only-warning\">\n$1\n</div>", array( 'readonlywarning', wfReadOnlyReason() ) );
 		} elseif( $wgUser->isAnon() && $this->formtype != 'preview' ) {
-			$wgOut->addHTML( '<div id="mw-anon-edit-warning">'.wfMsgWikiHTML( 'anoneditwarning' ).'</div>' );
+			$wgOut->wrapWikiMsg( '<div id="mw-anon-edit-warning">$1</div>', 'anoneditwarning' );
 		} else {
 			if( $this->isCssJsSubpage && $this->formtype != 'preview' ) {
 				# Check the skin exists
@@ -1143,7 +1184,9 @@ class EditPage {
 				# Then it must be protected based on static groups (regular)
 				$noticeMsg = 'protectedpagewarning';
 			}
+			$wgOut->addHTML( "<div id='mw-edit-$noticeMsg'>\n" );
 			$wgOut->addWikiMsg( $noticeMsg );
+			$wgOut->addHTML( "</div>\n" );
 		}
 		if ( $this->mTitle->isCascadeProtected() ) {
 			# Is this page under cascading protection from some source pages?
@@ -1165,9 +1208,13 @@ class EditPage {
 			$this->kblength = (int)(strlen( $this->textbox1 ) / 1024);
 		}
 		if ( $this->tooBig || $this->kblength > $wgMaxArticleSize ) {
-			$wgOut->addWikiMsg( 'longpageerror', $wgLang->formatNum( $this->kblength ), $wgMaxArticleSize );
+			$wgOut->addHTML( "<div id='mw-edit-longpageerror'>\n" );
+			$wgOut->addWikiMsg( 'longpageerror', $wgLang->formatNum( $this->kblength ), $wgLang->formatNum( $wgMaxArticleSize ) );
+			$wgOut->addHTML( "</div>\n" );
 		} elseif( $this->kblength > 29 ) {
+			$wgOut->addHTML( "<div id='mw-edit-longpagewarning'>\n" );
 			$wgOut->addWikiMsg( 'longpagewarning', $wgLang->formatNum( $this->kblength ) );
+			$wgOut->addHTML( "</div>\n" );
 		}
 
 		#need to parse the preview early so that we know which templates are used,
@@ -1187,8 +1234,9 @@ class EditPage {
 		#if ( "no" == $redirect ) { $q .= "&redirect=no"; }
 		$action = $wgTitle->escapeLocalURL( $q );
 
-		$summary = wfMsg('summary');
-		$subject = wfMsg('subject');
+		$colonSep = wfMsg( 'colon-separator' );
+		$summary = wfMsg( 'summary' ) . $colonSep;
+		$subject = wfMsg( 'subject' ) . $colonSep;
 
 		$cancel = $sk->makeKnownLink( $wgTitle->getPrefixedText(),
 				wfMsgExt('cancel', array('parseinline')) );
@@ -1265,16 +1313,16 @@ class EditPage {
 		$autosumm = $this->autoSumm ? $this->autoSumm : md5( $this->summary );
 		$summaryhiddens .= Xml::hidden( 'wpAutoSummary', $autosumm );
 		if( $this->section == 'new' ) {
-			$commentsubject="<span id='wpSummaryLabel'><label for='wpSummary'>{$subject}:</label></span>\n<input tabindex='1' type='text' value=\"$summarytext\" name='wpSummary' id='wpSummary' maxlength='200' size='60' />{$summaryhiddens}<br />";
+			$commentsubject="<span id='wpSummaryLabel'><label for='wpSummary'>{$subject}</label></span>\n<input tabindex='1' type='text' value=\"$summarytext\" name='wpSummary' id='wpSummary' maxlength='200' size='60' />{$summaryhiddens}<br />";
 			$editsummary = "<div class='editOptions'>\n";
 			global $wgParser;
 			$formattedSummary = wfMsgForContent( 'newsectionsummary', $wgParser->stripSectionName( $this->summary ) );
-			$subjectpreview = $summarytext && $this->preview ? "<div class=\"mw-summary-preview\">".wfMsg('subject-preview').':'.$sk->commentBlock( $formattedSummary, $this->mTitle, true )."</div>\n" : '';
+			$subjectpreview = $summarytext && $this->preview ? "<div class=\"mw-summary-preview\">".wfMsg('subject-preview').$colonSep.$sk->commentBlock( $formattedSummary, $this->mTitle, true )."</div>\n" : '';
 			$summarypreview = '';
 		} else {
 			$commentsubject = '';
-			$editsummary="<div class='editOptions'>\n<span id='wpSummaryLabel'><label for='wpSummary'>{$summary}:</label></span>\n<input tabindex='2' type='text' value=\"$summarytext\" name='wpSummary' id='wpSummary' maxlength='200' size='60' />{$summaryhiddens}<br />";
-			$summarypreview = $summarytext && $this->preview ? "<div class=\"mw-summary-preview\">".wfMsg('summary-preview').':'.$sk->commentBlock( $this->summary, $this->mTitle )."</div>\n" : '';
+			$editsummary="<div class='editOptions'>\n<span id='wpSummaryLabel'><label for='wpSummary'>{$summary}</label></span>\n<input tabindex='2' type='text' value=\"$summarytext\" name='wpSummary' id='wpSummary' maxlength='200' size='60' />{$summaryhiddens}<br />";
+			$summarypreview = $summarytext && $this->preview ? "<div class=\"mw-summary-preview\">".wfMsg('summary-preview').$colonSep.$sk->commentBlock( $this->summary, $this->mTitle )."</div>\n" : '';
 			$subjectpreview = '';
 		}
 
@@ -1448,7 +1496,7 @@ END
 	 *
 	 * @param string $text The HTML to be output for the preview.
 	 */
-	private function showPreview( $text ) {
+	protected function showPreview( $text ) {
 		global $wgOut;
 
 		$wgOut->addHTML( '<div id="wikiPreview">' );
@@ -1515,7 +1563,8 @@ END
 	}
 
 	/**
-	 * @todo document
+	 * Get the rendered text for previewing.
+	 * @return string
 	 */
 	function getPreviewText() {
 		global $wgOut, $wgUser, $wgTitle, $wgParser, $wgLang, $wgContLang;
@@ -1557,6 +1606,8 @@ END
 			$parserOutput = $wgParser->parse( $previewtext , $this->mTitle, $parserOptions );
 			$wgOut->addHTML( $parserOutput->mText );
 			$previewHTML = '';
+		} else if( $rt = Title::newFromRedirect( $this->textbox1 ) ) {
+			$previewHTML = $this->mArticle->viewRedirect( $rt, false );
 		} else {
 			$toparse = $this->textbox1;
 
@@ -1623,7 +1674,7 @@ END
 		} else {
 			$previewfoot = '';
 		}
-
+		
 		wfProfileOut( $fname );
 		return $previewhead . $previewHTML . $previewfoot;
 	}
@@ -1722,8 +1773,7 @@ END
 		$db = wfGetDB( DB_MASTER );
 
 		// This is the revision the editor started from
-		$baseRevision = Revision::loadFromTimestamp(
-			$db, $this->mTitle, $this->edittime );
+		$baseRevision = $this->getBaseRevision();
 		if( is_null( $baseRevision ) ) {
 			wfProfileOut( $fname );
 			return false;
@@ -1799,7 +1849,7 @@ END
 	 * @return string
 	 */
 	static function getEditToolbar() {
-		global $wgStylePath, $wgContLang, $wgJsMimeType;
+		global $wgStylePath, $wgContLang, $wgLang, $wgJsMimeType;
 
 		/**
 		 * toolarray an array of arrays which each include the filename of
@@ -1813,93 +1863,104 @@ END
 		 * sure these keys are not defined on the edit page.
 		 */
 		$toolarray = array(
-			array(	'image'	=> 'button_bold.png',
-				'id'	=> 'mw-editbutton-bold',
-				'open'	=> '\'\'\'',
-				'close'	=> '\'\'\'',
-				'sample'=> wfMsg('bold_sample'),
-				'tip'	=> wfMsg('bold_tip'),
-				'key'	=> 'B'
+			array(
+				'image'  => $wgLang->getImageFile('button-bold'),
+				'id'     => 'mw-editbutton-bold',
+				'open'   => '\'\'\'',
+				'close'  => '\'\'\'',
+				'sample' => wfMsg('bold_sample'),
+				'tip'    => wfMsg('bold_tip'),
+				'key'    => 'B'
 			),
-			array(	'image'	=> 'button_italic.png',
-				'id'	=> 'mw-editbutton-italic',
-				'open'	=> '\'\'',
-				'close'	=> '\'\'',
-				'sample'=> wfMsg('italic_sample'),
-				'tip'	=> wfMsg('italic_tip'),
-				'key'	=> 'I'
+			array(
+				'image'  => $wgLang->getImageFile('button-italic'),
+				'id'     => 'mw-editbutton-italic',
+				'open'   => '\'\'',
+				'close'  => '\'\'',
+				'sample' => wfMsg('italic_sample'),
+				'tip'    => wfMsg('italic_tip'),
+				'key'    => 'I'
 			),
-			array(	'image'	=> 'button_link.png',
-				'id'	=> 'mw-editbutton-link',
-				'open'	=> '[[',
-				'close'	=> ']]',
-				'sample'=> wfMsg('link_sample'),
-				'tip'	=> wfMsg('link_tip'),
-				'key'	=> 'L'
+			array(
+				'image'  => $wgLang->getImageFile('button-link'),
+				'id'     => 'mw-editbutton-link',
+				'open'   => '[[',
+				'close'  => ']]',
+				'sample' => wfMsg('link_sample'),
+				'tip'    => wfMsg('link_tip'),
+				'key'    => 'L'
 			),
-			array(	'image'	=> 'button_extlink.png',
-				'id'	=> 'mw-editbutton-extlink',
-				'open'	=> '[',
-				'close'	=> ']',
-				'sample'=> wfMsg('extlink_sample'),
-				'tip'	=> wfMsg('extlink_tip'),
-				'key'	=> 'X'
+			array(
+				'image'  => $wgLang->getImageFile('button-extlink'),
+				'id'     => 'mw-editbutton-extlink',
+				'open'   => '[',
+				'close'  => ']',
+				'sample' => wfMsg('extlink_sample'),
+				'tip'    => wfMsg('extlink_tip'),
+				'key'    => 'X'
 			),
-			array(	'image'	=> 'button_headline.png',
-				'id'	=> 'mw-editbutton-headline',
-				'open'	=> "\n== ",
-				'close'	=> " ==\n",
-				'sample'=> wfMsg('headline_sample'),
-				'tip'	=> wfMsg('headline_tip'),
-				'key'	=> 'H'
+			array(
+				'image'  => $wgLang->getImageFile('button-headline'),
+				'id'     => 'mw-editbutton-headline',
+				'open'   => "\n== ",
+				'close'  => " ==\n",
+				'sample' => wfMsg('headline_sample'),
+				'tip'    => wfMsg('headline_tip'),
+				'key'    => 'H'
 			),
-			array(	'image'	=> 'button_image.png',
-				'id'	=> 'mw-editbutton-image',
-				'open'	=> '[['.$wgContLang->getNsText(NS_IMAGE).":",
-				'close'	=> ']]',
-				'sample'=> wfMsg('image_sample'),
-				'tip'	=> wfMsg('image_tip'),
-				'key'	=> 'D'
+			array(
+				'image'  => $wgLang->getImageFile('button-image'),
+				'id'     => 'mw-editbutton-image',
+				'open'   => '[['.$wgContLang->getNsText(NS_IMAGE).':',
+				'close'  => ']]',
+				'sample' => wfMsg('image_sample'),
+				'tip'    => wfMsg('image_tip'),
+				'key'    => 'D'
 			),
-			array(	'image'	=> 'button_media.png',
-				'id'	=> 'mw-editbutton-media',
-				'open'	=> '[['.$wgContLang->getNsText(NS_MEDIA).':',
-				'close'	=> ']]',
-				'sample'=> wfMsg('media_sample'),
-				'tip'	=> wfMsg('media_tip'),
-				'key'	=> 'M'
+			array(
+				'image'  => $wgLang->getImageFile('button-media'),
+				'id'     => 'mw-editbutton-media',
+				'open'   => '[['.$wgContLang->getNsText(NS_MEDIA).':',
+				'close'  => ']]',
+				'sample' => wfMsg('media_sample'),
+				'tip'    => wfMsg('media_tip'),
+				'key'    => 'M'
 			),
-			array(	'image'	=> 'button_math.png',
-				'id'	=> 'mw-editbutton-math',
-				'open'	=> "<math>",
-				'close'	=> "</math>",
-				'sample'=> wfMsg('math_sample'),
-				'tip'	=> wfMsg('math_tip'),
-				'key'	=> 'C'
+			array(
+				'image'  => $wgLang->getImageFile('button-math'),
+				'id'     => 'mw-editbutton-math',
+				'open'   => "<math>",
+				'close'  => "</math>",
+				'sample' => wfMsg('math_sample'),
+				'tip'    => wfMsg('math_tip'),
+				'key'    => 'C'
 			),
-			array(	'image'	=> 'button_nowiki.png',
-				'id'	=> 'mw-editbutton-nowiki',
-				'open'	=> "<nowiki>",
-				'close'	=> "</nowiki>",
-				'sample'=> wfMsg('nowiki_sample'),
-				'tip'	=> wfMsg('nowiki_tip'),
-				'key'	=> 'N'
+			array(
+				'image'  => $wgLang->getImageFile('button-nowiki'),
+				'id'     => 'mw-editbutton-nowiki',
+				'open'   => "<nowiki>",
+				'close'  => "</nowiki>",
+				'sample' => wfMsg('nowiki_sample'),
+				'tip'    => wfMsg('nowiki_tip'),
+				'key'    => 'N'
 			),
-			array(	'image'	=> 'button_sig.png',
-				'id'	=> 'mw-editbutton-signature',
-				'open'	=> '--~~~~',
-				'close'	=> '',
-				'sample'=> '',
-				'tip'	=> wfMsg('sig_tip'),
-				'key'	=> 'Y'
+			array(
+				'image'  => $wgLang->getImageFile('button-sig'),
+				'id'     => 'mw-editbutton-signature',
+				'open'   => '--~~~~',
+				'close'  => '',
+				'sample' => '',
+				'tip'    => wfMsg('sig_tip'),
+				'key'    => 'Y'
 			),
-			array(	'image'	=> 'button_hr.png',
-				'id'	=> 'mw-editbutton-hr',
-				'open'	=> "\n----\n",
-				'close'	=> '',
-				'sample'=> '',
-				'tip'	=> wfMsg('hr_tip'),
-				'key'	=> 'R'
+			array(
+				'image'  => $wgLang->getImageFile('button-hr'),
+				'id'     => 'mw-editbutton-hr',
+				'open'   => "\n----\n",
+				'close'  => '',
+				'sample' => '',
+				'tip'    => wfMsg('hr_tip'),
+				'key'    => 'R'
 			)
 		);
 		$toolbar = "<div id='toolbar'>\n";
@@ -1955,7 +2016,7 @@ END
 			);
 			$checkboxes['minor'] =
 				Xml::check( 'wpMinoredit', $checked['minor'], $attribs ) .
-				"&nbsp;<label for='wpMinoredit'".$skin->tooltipAndAccesskey('minoredit').">{$minorLabel}</label>";
+				"&nbsp;<label for='wpMinoredit'".$skin->tooltip('minoredit', 'withaccess').">{$minorLabel}</label>";
 		}
 
 		$watchLabel = wfMsgExt('watchthis', array('parseinline'));
@@ -1968,7 +2029,7 @@ END
 			);
 			$checkboxes['watch'] =
 				Xml::check( 'wpWatchthis', $checked['watch'], $attribs ) .
-				"&nbsp;<label for='wpWatchthis'".$skin->tooltipAndAccesskey('watch').">{$watchLabel}</label>";
+				"&nbsp;<label for='wpWatchthis'".$skin->tooltip('watch', 'withaccess').">{$watchLabel}</label>";
 		}
 		return $checkboxes;
 	}
@@ -2236,7 +2297,7 @@ END
 	 *
 	 * @param OutputPage $out
 	 */
-	private function showDeletionLog( $out ) {
+	protected function showDeletionLog( $out ) {
 		global $wgUser;
 		$loglist = new LogEventsList( $wgUser->getSkin(), $out );
 		$pager = new LogPager( $loglist, 'delete', false, $this->mTitle->getPrefixedText() );
@@ -2319,6 +2380,17 @@ END
 			case self::AS_IMAGE_REDIRECT_LOGGED:
 				$wgOut->permissionRequired( 'upload' );
 				return false;
+		}
+	}
+	
+	function getBaseRevision() {
+		if ($this->mBaseRevision == false) {
+			$db = wfGetDB( DB_MASTER );
+			$baseRevision = Revision::loadFromTimestamp(
+				$db, $this->mTitle, $this->edittime );
+			return $this->mBaseRevision = $baseRevision;
+		} else {
+			return $this->mBaseRevision;
 		}
 	}
 }

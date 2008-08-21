@@ -6,7 +6,7 @@
  */
 class SpecialRecentChanges extends SpecialPage {
 	public function __construct() {
-  		SpecialPage::SpecialPage( 'Recentchanges' );
+  		parent::__construct( 'Recentchanges' );
 		$this->includable( true );
 	}
 
@@ -16,13 +16,14 @@ class SpecialRecentChanges extends SpecialPage {
 	 * @return FormOptions
 	 */
 	public function getDefaultOptions() {
+		global $wgUser;
 		$opts = new FormOptions();
 
-		$opts->add( 'days',  (int)User::getDefaultOption( 'rcdays' ) );
-		$opts->add( 'limit', (int)User::getDefaultOption( 'rclimit' ) );
+		$opts->add( 'days',  (int)$wgUser->getOption( 'rcdays' ) );
+		$opts->add( 'limit', (int)$wgUser->getOption( 'rclimit' ) );
 		$opts->add( 'from', '' );
 
-		$opts->add( 'hideminor',     false );
+		$opts->add( 'hideminor',     (bool)$wgUser->getOption( 'hideminor' ) );
 		$opts->add( 'hidebots',      true  );
 		$opts->add( 'hideanons',     false );
 		$opts->add( 'hideliu',       false );
@@ -34,7 +35,6 @@ class SpecialRecentChanges extends SpecialPage {
 
 		$opts->add( 'categories', '' );
 		$opts->add( 'categories_any', false );
-
 		return $opts;
 	}
 
@@ -44,12 +44,9 @@ class SpecialRecentChanges extends SpecialPage {
 	 * @return FormOptions
 	 */
 	public function setup( $parameters ) {
-		global $wgUser, $wgRequest;
+		global $wgRequest;
 
 		$opts = $this->getDefaultOptions();
-		$opts['days'] = (int)$wgUser->getOption( 'rcdays', $opts['days'] );
-		$opts['limit'] = (int)$wgUser->getOption( 'rclimit', $opts['limit'] );
-		$opts['hideminor'] = $wgUser->getOption( 'hideminor', $opts['hideminor'] );
 		$opts->fetchValuesFromRequest( $wgRequest );
 
 		// Give precedence to subpage syntax
@@ -99,22 +96,19 @@ class SpecialRecentChanges extends SpecialPage {
 		$rows = array();
 		$batch = new LinkBatch;
 		$conds = $this->buildMainQueryConds( $opts );
-		$res = $this->doMainQuery( $conds, $opts );
-		if( $res === false ){
+		$rows = $this->doMainQuery( $conds, $opts );
+		if( $rows === false ){
 			$this->doHeader( $opts );
 			return;
 		}
-		$dbr = wfGetDB( DB_SLAVE );
-		while( $row = $dbr->fetchObject( $res ) ){
-			$rows[] = $row;
+
+		foreach( $rows as $row ) {
 			if ( !$feedFormat ) {
 				// User page and talk links
 				$batch->add( NS_USER, $row->rc_user_text  );
 				$batch->add( NS_USER_TALK, $row->rc_user_text  );
 			}
-
 		}
-		$dbr->freeResult( $res );
 
 		if ( $feedFormat ) {
 			list( $feed, $feedObj ) = $this->getFeedObject( $feedFormat );
@@ -123,7 +117,8 @@ class SpecialRecentChanges extends SpecialPage {
 			$batch->execute();
 			$this->webOutput( $rows, $opts );
 		}
-  	
+
+		$rows->free();
 	}
 
 	/**
@@ -469,7 +464,7 @@ class SpecialRecentChanges extends SpecialPage {
 	 * @param $out OutputPage
 	 * @param $opts FormOptions
 	 */
-	function setTopText( &$out, $opts ){
+	function setTopText( OutputPage $out, FormOptions $opts ){
 		$out->addWikiText( wfMsgForContentNoTrans( 'recentchangestext' ) );
 	}
 
@@ -480,7 +475,7 @@ class SpecialRecentChanges extends SpecialPage {
 	 * @param $out OutputPage
 	 * @param $opts FormOptions
 	 */
-	function setBottomText( &$out, $opts ){}
+	function setBottomText( OutputPage $out, FormOptions $opts ){}
 
 	/**
 	 * Creates the choose namespace selection
@@ -577,8 +572,9 @@ class SpecialRecentChanges extends SpecialPage {
 	function makeOptionsLink( $title, $override, $options, $active = false ) {
 		global $wgUser;
 		$sk = $wgUser->getSkin();
-		return $sk->makeKnownLinkObj( $this->getTitle(), htmlspecialchars( $title ),
-			wfArrayToCGI( $override, $options ), '', '', $active ? 'style="font-weight: bold;"' : '' );
+		$params = wfArrayMerge( $options, $override );
+		return $sk->link( $this->getTitle(), htmlspecialchars( $title ),
+			( $active ? array( 'style'=>'font-weight: bold;' ) : array() ), $params, array( 'known' ) );
 	}
 
 	/**
@@ -599,33 +595,35 @@ class SpecialRecentChanges extends SpecialPage {
 			$note = wfMsgExt( 'rcnote', array( 'parseinline' ),
 				$wgLang->formatNum( $options['limit'] ),
 				$wgLang->formatNum( $options['days'] ),
-				$wgLang->timeAndDate( wfTimestampNow(), true ) );
+				$wgLang->timeAndDate( wfTimestampNow(), true ),
+				$wgLang->date( wfTimestampNow(), true ),
+				$wgLang->time( wfTimestampNow(), true ) );
 
 		# Sort data for display and make sure it's unique after we've added user data.
 		$wgRCLinkLimits[] = $options['limit'];
 		$wgRCLinkDays[] = $options['days'];
-		sort($wgRCLinkLimits);
-		sort($wgRCLinkDays);
-		$wgRCLinkLimits = array_unique($wgRCLinkLimits);
-		$wgRCLinkDays = array_unique($wgRCLinkDays);
+		sort( $wgRCLinkLimits );
+		sort( $wgRCLinkDays );
+		$wgRCLinkLimits = array_unique( $wgRCLinkLimits );
+		$wgRCLinkDays = array_unique( $wgRCLinkDays );
 
 		// limit links
 		foreach( $wgRCLinkLimits as $value ) {
 			$cl[] = $this->makeOptionsLink( $wgLang->formatNum( $value ),
 				array( 'limit' => $value ), $nondefaults, $value == $options['limit'] ) ;
 		}
-		$cl = implode( ' | ', $cl);
+		$cl = implode( ' | ', $cl );
 
 		// day links, reset 'from' to none
 		foreach( $wgRCLinkDays as $value ) {
 			$dl[] = $this->makeOptionsLink( $wgLang->formatNum( $value ),
 				array( 'days' => $value, 'from' => '' ), $nondefaults, $value == $options['days'] ) ;
 		}
-		$dl = implode( ' | ', $dl);
+		$dl = implode( ' | ', $dl );
 
 
 		// show/hide links
-		$showhide = array( wfMsg( 'show' ), wfMsg( 'hide' ));
+		$showhide = array( wfMsg( 'show' ), wfMsg( 'hide' ) );
 		$minorLink = $this->makeOptionsLink( $showhide[1-$options['hideminor']],
 			array( 'hideminor' => 1-$options['hideminor'] ), $nondefaults);
 		$botLink = $this->makeOptionsLink( $showhide[1-$options['hidebots']],
@@ -650,11 +648,11 @@ class SpecialRecentChanges extends SpecialPage {
 
 		// show from this onward link
 		$now = $wgLang->timeanddate( wfTimestampNow(), true );
-		$tl =  $this->makeOptionsLink( $now, array( 'from' => wfTimestampNow()), $nondefaults );
+		$tl =  $this->makeOptionsLink( $now, array( 'from' => wfTimestampNow() ), $nondefaults );
 
-		$rclinks = wfMsgExt( 'rclinks', array( 'parseinline', 'replaceafter'),
+		$rclinks = wfMsgExt( 'rclinks', array( 'parseinline', 'replaceafter' ),
 			$cl, $dl, $hl );
-		$rclistfrom = wfMsgExt( 'rclistfrom', array( 'parseinline', 'replaceafter'), $tl );
+		$rclistfrom = wfMsgExt( 'rclistfrom', array( 'parseinline', 'replaceafter' ), $tl );
 		return "$note<br />$rclinks<br />$rclistfrom";
 	}
 }

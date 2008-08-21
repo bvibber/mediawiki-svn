@@ -830,6 +830,7 @@ class PPFrame_DOM implements PPFrame {
 		if ( is_string( $root ) ) {
 			return $root;
 		}
+		wfProfileIn( __METHOD__ );
 
 		if ( ++$this->parser->mPPNodeCount > $this->parser->mOptions->mMaxPPNodeCount )
 		{
@@ -1005,6 +1006,7 @@ class PPFrame_DOM implements PPFrame {
 					$newIterator = $contextNode->childNodes;
 				}
 			} else {
+				wfProfileOut( __METHOD__ );
 				throw new MWException( __METHOD__.': Invalid parameter type' );
 			}
 
@@ -1028,6 +1030,7 @@ class PPFrame_DOM implements PPFrame {
 			}
 		}
 		--$depth;
+		wfProfileOut( __METHOD__ );
 		return $outStack[0];
 	}
 
@@ -1216,6 +1219,32 @@ class PPTemplateFrame_DOM extends PPFrame_DOM {
 	 */
 	function isEmpty() {
 		return !count( $this->numberedArgs ) && !count( $this->namedArgs );
+	}
+
+	function getArguments() {
+		$arguments = array();
+		foreach ( array_merge(
+				array_keys($this->numberedArgs),
+				array_keys($this->namedArgs)) as $key ) {
+			$arguments[$key] = $this->getArgument($key);
+		}
+		return $arguments;
+	}
+	
+	function getNumberedArguments() {
+		$arguments = array();
+		foreach ( array_keys($this->numberedArgs) as $key ) {
+			$arguments[$key] = $this->getArgument($key);
+		}
+		return $arguments;
+	}
+	
+	function getNamedArguments() {
+		$arguments = array();
+		foreach ( array_keys($this->namedArgs) as $key ) {
+			$arguments[$key] = $this->getArgument($key);
+		}
+		return $arguments;
 	}
 
 	function getNumberedArgument( $index ) {

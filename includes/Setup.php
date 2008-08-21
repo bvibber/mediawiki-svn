@@ -114,6 +114,13 @@ if ( $wgUseSharedUploads ) {
 	}
 }
 
+/**
+ * Workaround for http://bugs.php.net/bug.php?id=45132
+ * escapeshellarg() destroys non-ASCII characters if LANG is not a UTF-8 locale
+ */
+putenv( 'LC_CTYPE=en_US.UTF-8' );
+setlocale( LC_CTYPE, 'en_US.UTF-8' );
+
 if ( !class_exists( 'AutoLoader' ) ) {
 	require_once( "$IP/includes/AutoLoader.php" );
 }
@@ -204,14 +211,16 @@ wfProfileIn( $fname.'-SetupSession' );
 # Set default shared prefix
 if( $wgSharedPrefix === false ) $wgSharedPrefix = $wgDBprefix;
 
-if ( in_array('user', $wgSharedTables) && $wgSharedDB && $wgSharedPrefix ) {
-	$wgCookiePrefix = $wgSharedDB . '_' . $wgSharedPrefix;
-} elseif ( in_array('user', $wgSharedTables) && $wgSharedDB ) {
-	$wgCookiePrefix = $wgSharedDB;
-} elseif ( $wgDBprefix ) {
-	$wgCookiePrefix = $wgDBname . '_' . $wgDBprefix;
-} else {
-	$wgCookiePrefix = $wgDBname;
+if( !$wgCookiePrefix ) {
+	if ( in_array('user', $wgSharedTables) && $wgSharedDB && $wgSharedPrefix ) {
+		$wgCookiePrefix = $wgSharedDB . '_' . $wgSharedPrefix;
+	} elseif ( in_array('user', $wgSharedTables) && $wgSharedDB ) {
+		$wgCookiePrefix = $wgSharedDB;
+	} elseif ( $wgDBprefix ) {
+		$wgCookiePrefix = $wgDBname . '_' . $wgDBprefix;
+	} else {
+		$wgCookiePrefix = $wgDBname;
+	}
 }
 $wgCookiePrefix = strtr($wgCookiePrefix, "=,; +.\"'\\[", "__________");
 
@@ -268,7 +277,6 @@ wfProfileIn( $fname.'-misc2' );
 $wgDeferredUpdateList = array();
 $wgPostCommitUpdateList = array();
 
-if ( $wgAjaxSearch ) $wgAjaxExportList[] = 'wfSajaxSearch';
 if ( $wgAjaxWatch ) $wgAjaxExportList[] = 'wfAjaxWatch';
 if ( $wgAjaxUploadDestCheck ) $wgAjaxExportList[] = 'UploadForm::ajaxGetExistsWarning';
 if( $wgAjaxLicensePreview )

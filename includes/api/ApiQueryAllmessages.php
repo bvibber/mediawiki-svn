@@ -75,7 +75,6 @@ class ApiQueryAllmessages extends ApiQueryBase {
 		//Get all requested messages
 		$messages = array();
 		foreach( $messages_target as $message ) {
-			$message = trim( $message );	//Message list can be formatted like "msg1 | msg2 | msg3", so let's trim() it
 			$messages[$message] = wfMsg( $message );
 		}
 
@@ -109,8 +108,8 @@ class ApiQueryAllmessages extends ApiQueryBase {
 	public function getParamDescription() {
 		return array (
 			'messages' => 'Which messages to output. "*" means all messages',
-			'filter' => 'Return only messages that contains specified string',
-			'lang' => 'Language code',
+			'filter' => 'Return only messages that contain this string',
+			'lang' => 'Return messages in this language',
 		);
 	}
 

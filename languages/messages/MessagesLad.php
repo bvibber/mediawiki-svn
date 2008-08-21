@@ -5,10 +5,9 @@
  * @file
  *
  * @author ILVI
+ * @author Runningfridgesrule
  * @author Taichi
  * @author לערי ריינהארט
- * @author SPQRobin
- * @author Runningfridgesrule
  */
 
 $fallback = 'es';
@@ -158,7 +157,6 @@ $messages = array(
 'portal'               => 'Portal de la komunidád',
 'privacy'              => 'Politika de proteksion de informasiones',
 'privacypage'          => 'Project:Politika de proteksion de informasiones',
-'sitesupport'          => 'Donasiones',
 
 'badaccess' => 'Falta de permesos',
 
@@ -213,7 +211,7 @@ $messages = array(
 'ancientpages' => 'Artikolos mas viejos',
 'move'         => 'Trasladar',
 
-# Special:Allpages
+# Special:AllPages
 'allpages'       => 'Todas las pajinas',
 'alphaindexline' => '$1 a $2',
 'allarticles'    => 'Todos los artikolos',
@@ -279,9 +277,6 @@ $messages = array(
 
 # Delete conflict
 'recreate' => 'Krear de muevo',
-
-# HTML dump
-'redirectingto' => 'Redirijiendo a [[$1]]...',
 
 # action=purge
 'confirm_purge_button' => 'Akseptár',

@@ -773,7 +773,7 @@ class Revision {
 
 		$this->mId = !is_null($rev_id) ? $rev_id : $dbw->insertId();
 		
-		wfRunHooks( 'RevisionInsertComplete', array( &$this ) );
+		wfRunHooks( 'RevisionInsertComplete', array( &$this, $data, $flags ) );
 		
 		wfProfileOut( __METHOD__ );
 		return $this->mId;
@@ -827,7 +827,8 @@ class Revision {
 
 		$text = self::getRevisionText( $row );
 
-		if( $wgRevisionCacheExpiry ) {
+		# No negative caching -- negative hits on text rows may be due to corrupted slave servers
+		if( $wgRevisionCacheExpiry && $text !== false ) {
 			$wgMemc->set( $key, $text, $wgRevisionCacheExpiry );
 		}
 
@@ -917,7 +918,7 @@ class Revision {
 			$dbw = wfGetDB( DB_MASTER );
 			$timestamp = $dbw->selectField( 'revision', 'rev_timestamp', $conds, __METHOD__ );
 		}
-		return $timestamp;
+		return wfTimestamp( TS_MW, $timestamp );
 	}
 
 	/**

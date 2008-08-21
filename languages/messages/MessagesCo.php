@@ -4,8 +4,6 @@
  * @ingroup Language
  * @file
  *
- * @author SPQRobin
- * @author Siebrand
  */
 
 $messages = array(
@@ -124,7 +122,6 @@ $messages = array(
 'portal-url'           => 'Project:Purtone di a cumunità',
 'privacy'              => 'Pulitica pè a riservatezza',
 'privacypage'          => 'Project:Pulitica pè a riservatezza',
-'sitesupport'          => 'Dunazione',
 
 'versionrequired' => 'A version $1 di MediaWiki hè necessaria',
 
@@ -176,7 +173,8 @@ $messages = array(
 # Edit pages
 'savearticle'            => 'Arrighjistrà a pagina',
 'showdiff'               => 'Mustrà i cambiamenti',
-'anoneditwarning'        => "'''Attenzione''': ùn sè micca un utilizatore registratu, oppuru ùn ai fattu a [[Special:Userlogin|cunnessione]]. U to indirizzu IP serà registratu indu a cronolugia di ista pagina.",
+'anoneditwarning'        => "'''Attenzione''': ùn sè micca un utilizatore registratu, oppuru ùn ai fattu a cunnessione.
+U to indirizzu IP serà registratu indu a cronolugia di ista pagina.",
 'loginreqlink'           => 'cunnessione',
 'accmailtitle'           => 'Parulla secreta inviata.',
 'accmailtext'            => 'A parulla secreta per "$1" hè stata inviata à l\'indirizzu $2.',
@@ -267,7 +265,7 @@ $messages = array(
 
 'upload-file-error' => 'Errore internu',
 
-# Special:Imagelist
+# Special:ImageList
 'imgfile'        => 'schedariu',
 'imagelist_date' => 'Data',
 'imagelist_name' => 'Nome',
@@ -304,7 +302,7 @@ $messages = array(
 'speciallogtitlelabel' => 'Titulu:',
 'all-logs-page'        => "Tutte l'azzioni",
 
-# Special:Allpages
+# Special:AllPages
 'allpages'          => 'Tutte e pagine',
 'alphaindexline'    => 'da $1 à $2',
 'allpagesfrom'      => 'Mustrà e pagine à parte da:',
@@ -320,7 +318,7 @@ $messages = array(
 # Special:Categories
 'categories' => 'Categurie',
 
-# Special:Listusers
+# Special:ListUsers
 'listusers-submit' => 'Mustrà',
 
 # E-mail user
@@ -444,7 +442,7 @@ $messages = array(
 # Media information
 'show-big-image' => 'Imagine in alta resoluzione',
 
-# Special:Newimages
+# Special:NewImages
 'showhidebots' => '($1 boti)',
 'noimages'     => 'Nulla da vede.',
 'ilsubmit'     => 'Ricerca',
@@ -495,7 +493,7 @@ $messages = array(
 # Special:Version
 'version' => 'Versione', # Not used as normal message but as header for the special page itself
 
-# Special:Filepath
+# Special:FilePath
 'filepath-page' => 'Schedariu:',
 
 # Special:SpecialPages

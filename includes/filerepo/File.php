@@ -264,7 +264,14 @@ abstract class File {
 	 * Overridden by LocalFile, UnregisteredLocalFile
 	 * STUB
 	 */
-	function getMetadata() { return false; }
+	public function getMetadata() { return false; }
+
+	/**
+	 * Return the bit depth of the file
+	 * Overridden by LocalFile
+	 * STUB
+	 */
+	public function getBitDepth() { return 0; }
 
 	/**
 	 * Return the size of the image file, in bytes
@@ -575,7 +582,7 @@ abstract class File {
 			// Purge. Useful in the event of Core -> Squid connection failure or squid 
 			// purge collisions from elsewhere during failure. Don't keep triggering for 
 			// "thumbs" which have the main image URL though (bug 13776)
-			if ( $wgUseSquid && ($thumb->isError() || $thumb->getUrl() != $this->getURL()) ) {
+			if ( $wgUseSquid && ( !$thumb || $thumb->isError() || $thumb->getUrl() != $this->getURL()) ) {
 				SquidUpdate::purge( array( $thumbUrl ) );
 			}
 		} while (false);
@@ -1069,8 +1076,8 @@ abstract class File {
 		$renderUrl = $this->repo->getDescriptionRenderUrl( $this->getName() );
 		if ( $renderUrl ) {
 			if ( $this->repo->descriptionCacheExpiry > 0 ) {
-				wfDebug("Attempting to get the description from the transwiki cache...");
-				$key = wfMemcKey( 'filedesc', 'url', md5($renderUrl));
+				wfDebug("Attempting to get the description from cache...");
+				$key = wfMemcKey( 'RemoteFileDescription', 'url', md5($renderUrl) );
 				$obj = $wgMemc->get($key);
 				if ($obj) {
 					wfDebug("success!\n");

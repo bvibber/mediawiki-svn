@@ -5,17 +5,9 @@
  * @file
  *
  * @author Wantok
- * @author Niklas Laxström
- * @author לערי ריינהארט
- * @author Siebrand
  * @author Wytukaze
- * @author Wantok
  * @author לערי ריינהארט
- * @author Siebrand
- * @author Wytukaze
  */
-
-
 
 $messages = array(
 # User preference toggles
@@ -46,8 +38,6 @@ $messages = array(
 'tog-watchlisthideown'        => 'Haitim ol senis mi wokim long lukautbuk bilong mi',
 'tog-watchlisthidebots'       => 'Haitim ol senis ol bot i wokim long lukautbuk bilong mi',
 'tog-watchlisthideminor'      => 'Haitim ol liklik senis long lukautbuk bilong mi',
-
-'skinpreview' => '(pes mi senisim, pastaim long raitim)',
 
 # Dates
 'sunday'    => 'Sande',
@@ -103,8 +93,6 @@ $messages = array(
 'mainpage-description' => 'Fran Pes',
 'portal'               => 'Bung ples',
 'portal-url'           => 'Project:Bung ples',
-'sitesupport'          => 'Givim moni',
-'sitesupport-url'      => 'Project:Givim moni',
 
 # Short words for each namespace, by default used in the namespace tab in monobook
 'nstab-main'      => 'Stori',
@@ -141,6 +129,7 @@ Na tu yu tok tru nau olsem yu raitim dispela yu yet, o yu kisim long wanpela hap
 # Preferences page
 'mypreferences'   => 'Ol laik bilong mi',
 'prefs-edits'     => 'Hamas senis:',
+'skin-preview'    => 'pes mi senisim, pastaim long raitim',
 'prefs-rc'        => 'Nupela senis',
 'prefs-watchlist' => 'Lukautbuk',
 
@@ -178,7 +167,7 @@ Na tu yu tok tru nau olsem yu raitim dispela yu yet, o yu kisim long wanpela hap
 'movethispage'            => 'Surikim dispela pes',
 'unusedcategoriestext'    => 'Ol dispela grup istap yet, tasol i no gat wanpela pes o grup i stap insait long ol.',
 
-# Special:Allpages
+# Special:AllPages
 'allpages' => 'Olgeta pes',
 
 # Special:Categories
@@ -191,11 +180,11 @@ Na tu yu tok tru nau olsem yu raitim dispela yu yet, o yu kisim long wanpela hap
 'watchlistfor'         => "(bilong '''$1''')",
 'nowatchlist'          => 'Nogat wanpela samting istap long lukautbuk bilong yu.',
 'watchlistanontext'    => 'Yu mas $1 long lukim o senisim ol samting long lukautbuk bilong yu.',
-'watchnologintext'     => 'Yu mas [[Special:Userlogin|login]] long senisim lukautbuk bilong yu.',
+'watchnologintext'     => 'Yu mas [[Special:UserLogin|login]] long senisim lukautbuk bilong yu.',
 'addedwatch'           => 'Igo insait long lukautbuk',
 'addedwatchtext'       => "Pes \"[[:\$1]]\" igo insait long [[Special:Watchlist|lukautbuk]] bilong yu nau.
 Bai yu lukim ol nupela senis long dispela pes, na pes toktok bilong en, long lukautbuk, 
-na dispela pes bai kamap '''strongpela''' long [[Special:Recentchanges|pes bilong ol nupela senis]]
+na dispela pes bai kamap '''strongpela''' long [[Special:RecentChanges|pes bilong ol nupela senis]]
 na olsem bai isi long lukim em.
 
 Sapos yu laik rausim dispela pes long lukautbuk bilong yu bihain, paitim \"Pinis long lukautim\" taim yu lukim pes.",

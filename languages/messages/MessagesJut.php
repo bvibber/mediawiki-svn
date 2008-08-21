@@ -4,10 +4,8 @@
  * @ingroup Language
  * @file
  *
- * @author Ælsån
  * @author Huslåke
- * @author Siebrand
- * @author M.M.S.
+ * @author Ælsån
  */
 
 $fallback = 'da';
@@ -57,8 +55,6 @@ $messages = array(
 'underline-always'  => 'åltid',
 'underline-never'   => 'åldreg',
 'underline-default' => 'æfter brovserendstellenge',
-
-'skinpreview' => '(Førhåndsvesnenge)',
 
 # Dates
 'sunday'        => 'søndåg',
@@ -225,13 +221,9 @@ $messages = array(
 'portal-url'           => 'Project:Førside før skrebenter',
 'privacy'              => 'Behandlenge åf personlige åplysnenger',
 'privacypage'          => 'Project:Behandlinge åf personlige åplysnenger',
-'sitesupport'          => 'Støtside',
-'sitesupport-url'      => 'Project:Støtside',
 
 'badaccess'        => 'Manglende rettigheder',
 'badaccess-group0' => 'Du harst ekke de nødvendege rettegheder til denne håndlenge.',
-'badaccess-group1' => "Denne håndlenge ken kun udføres åf brugere, søm tilhører'n gruppe „$1“.",
-'badaccess-group2' => 'Denne håndlenge ken kun udføres åf brugere, søm tilhører en åf grupperne „$1“.',
 'badaccess-groups' => 'Denne håndlenge ken kun udføres åf brugere, søm tilhører en åf grupperne „$1“.',
 
 'versionrequired'     => 'Kræver versje $1 åf MediaWiki',
@@ -283,8 +275,12 @@ $messages = array(
 # General errors
 'error'                => 'Fejl',
 'databaseerror'        => 'Databasefejl',
-'dberrortext'          => 'Der er åpstået en syntaksfejl i en databaseførespørgsel. Dette ken være på grund åf en ugyldeg førespørgsel (sæg $5), æller det ken betyde en fejl i\'n softwær. 
-Den seneste førsøĝte databaseførespørgsel var: <blockquote><tt>$1</tt></blockquote> frå\'n funksje "<tt>$2</tt>". 
+'dberrortext'          => 'Der er åpstået en syntaksfejl i en databaseførespørgsel.
+Dette ken være på grund åf en ugyldeg førespørgsel,
+æller det ken betyde en fejl i\'n softwær. 
+Den seneste førsøĝte databaseførespørgsel var:
+<blockquote><tt>$1</tt></blockquote>
+frå\'n funksje "<tt>$2</tt>". 
 MySQL æ returnerede fejl "<tt>$3: $4</tt>".',
 'dberrortextcl'        => 'Der er åpstået en syntaksfejl i en databaseførespørgsel. 
 Den seneste førsøĝte databaseførespørgsel var: "$1" frå\'n funksje "$2". 
@@ -368,7 +364,7 @@ Før en e-mail ken modtages åf andre brugere åf æ {{SITENAME}}-mailfunksje, s
 'italic_tip'      => 'Skyn skrevselenger',
 'link_sample'     => 'Henvesnenge',
 'link_tip'        => 'Ensende henvesnenge',
-'extlink_sample'  => 'http://www.bibillet.jut Skrevselenger på henvesnenge',
+'extlink_sample'  => 'http://www.example.com Skrevselenger på henvesnenge',
 'extlink_tip'     => 'Utsende henvesnenge (husk http:// førgøret)',
 'headline_sample' => 'Skrevselenger til åverskreft',
 'headline_tip'    => 'Skå 2 åverskreft',
@@ -422,7 +418,7 @@ Du lover os hermed, at du selv <strong>har skrevet skrevselenger</strong>, at sk
 'templatesusedpreview'   => 'Følgende skablåner bruges åf denne ertikelførhåndsvesnenge:',
 'template-protected'     => '(skrevebeskyttet)',
 'template-semiprotected' => '(skrevebeskyttet før ekke ånmeldte og nye brugere)',
-'nocreatetext'           => "Æ'n åpdiin har begrænset åprettelse åf nye sider. Bestående sider ken ændres æller [[Special:Userlogin|loĝge på]].",
+'nocreatetext'           => "Æ'n åpdiin har begrænset åprettelse åf nye sider. Bestående sider ken ændres æller [[Special:UserLogin|loĝge på]].",
 'recreate-deleted-warn'  => "'''Advarsel: Du er ve at genskabe en tidligere slettet side.'''
  
 Åvervej det'm er passende at genåprette'n side. De slettede hersenenger før 
@@ -467,6 +463,7 @@ hersenenge, (førge) = førskel til den førge hersenenge, l = lile til mendre �
 # Preferences page
 'preferences'   => 'Endstellenger',
 'mypreferences' => 'Endstellenger',
+'skin-preview'  => 'Førhåndsvesnenge',
 'retypenew'     => 'Gentag ny adgangskode',
 
 'grouppage-sysop' => '{{ns:project}}:Administråtorer',
@@ -508,7 +505,7 @@ hersenenge, (førge) = førskel til den førge hersenenge, l = lile til mendre �
 'uploadlogpage' => 'Åplægnengslog',
 'uploadedimage' => 'Låĝde "[[$1]]" åp',
 
-# Special:Imagelist
+# Special:ImageList
 'imagelist' => 'Billetliste',
 
 # Image description page
@@ -595,12 +592,12 @@ hersenenge, (førge) = førskel til den førge hersenenge, l = lile til mendre �
 'log'                  => 'Loglister',
 'all-logs-page'        => 'Åle loglister',
 
-# Special:Allpages
+# Special:AllPages
 'allpages'       => 'Åle ertikler',
 'alphaindexline' => '$1 til $2',
 'nextpage'       => 'Næste side ($1)',
 'prevpage'       => 'Førge side ($1)',
-'allpagesfrom'   => 'Ves sider startende frå: $1',
+'allpagesfrom'   => 'Ves sider startende frå:',
 'allarticles'    => 'Åle ertikler',
 'allpagessubmit' => 'Ves',
 'allpagesprefix' => 'Ves sider ve førgøret:',
@@ -616,7 +613,7 @@ hersenenge, (førge) = førskel til den førge hersenenge, l = lile til mendre �
 'mywatchlist'          => 'Åvervågnengsliste',
 'watchlistfor'         => "(før '''$1''')",
 'addedwatch'           => 'Tilføjet til din åvervågnengsliste',
-'addedwatchtext'       => "Æ side \"<nowiki>\$1</nowiki>\" er blevet tilføjet til din [[Special:Watchlist|åvervågningsliste]]. Fremtidige ændrenger til denne side og den tilhørende diskusjeside hvil bleve listet der, og æ side hvil fremstå '''fremhævet''' i'n [[Special:Recentchanges|liste ve de seneste ændrenger]] før at gøre det lettere at finde den. Hves du senere hvilst fjerne'n side frå din åvervågningsliste, så klik \"Fjern åvervågnenge\".",
+'addedwatchtext'       => "Æ side \"[[:\$1]]\" er blevet tilføjet til din [[Special:Watchlist|åvervågningsliste]]. Fremtidige ændrenger til denne side og den tilhørende diskusjeside hvil bleve listet der, og æ side hvil fremstå '''fremhævet''' i'n [[Special:RecentChanges|liste ve de seneste ændrenger]] før at gøre det lettere at finde den. Hves du senere hvilst fjerne'n side frå din åvervågningsliste, så klik \"Fjern åvervågnenge\".",
 'removedwatch'         => 'Fjernet frå åvervågnengsliste',
 'removedwatchtext'     => 'Æ side "<nowiki>$1</nowiki>" er blevet fjernet frå din åvervågnengsliste.',
 'watch'                => 'Åvervåg',
@@ -688,7 +685,6 @@ hersenenge, (førge) = førskel til den førge hersenenge, l = lile til mendre �
 # What links here
 'whatlinkshere'       => 'Vat henveser hertil',
 'whatlinkshere-title' => 'Sider der henveser til $1',
-'linklistsub'         => '(Henvesnengsliste)',
 'linkshere'           => "De følgende sider henveser til '''„[[:$1]]“''':",
 'nolinkshere'         => "Engen sider henveser til '''„[[:$1]]“'''.",
 'isredirect'          => 'åmstyrsside',
@@ -778,7 +774,6 @@ navn du harst valgt er ekke gyldegt. Vælg et andet navn.',
 'tooltip-n-recentchanges'         => "Æ liste åver de seneste ændrenger æ'n wiki.",
 'tooltip-n-randompage'            => 'Gå til æ tilfældig ertikel',
 'tooltip-n-help'                  => 'Vordan gør a ...',
-'tooltip-n-sitesupport'           => 'Støt os',
 'tooltip-t-whatlinkshere'         => 'Liste ve ål sider søm henveser hertil',
 'tooltip-t-contributions'         => 'Se denne brugers bidråg',
 'tooltip-t-emailuser'             => 'Send en e-mail til denne bruger',
@@ -808,7 +803,7 @@ navn du harst valgt er ekke gyldegt. Vælg et andet navn.',
 'show-big-image'       => 'Hersenenge i større åpløsnenge',
 'show-big-image-thumb' => '<small>Størrelse åf førhåndsvesnenge: $1 × $2 pixel</small>',
 
-# Special:Newimages
+# Special:NewImages
 'newimages' => 'Liste ve de nyeste billeter',
 
 # Bad image list
@@ -831,7 +826,7 @@ Kun endholtet åf æ liste (lenjer startende ve *) bliver brugt. Den første hen
 
 # External editor support
 'edit-externally'      => "Redigær denne gøret ve'n utsende redigærstøme",
-'edit-externally-help' => 'Se [http://meta.wikimedia.org/wiki/Help:External_editors setup hjælpje] før mære informasje.',
+'edit-externally-help' => 'Se [http://www.mediawiki.org/wiki/Manual:External_editors setup hjælpje] før mære informasje.',
 
 # 'all' in various places, this might be different for inflected languages
 'watchlistall2' => 'åle',

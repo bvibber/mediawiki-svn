@@ -54,6 +54,7 @@ class ApiQueryCategories extends ApiQueryGeneratorBase {
 
 		$params = $this->extractRequestParams();
 		$prop = $params['prop'];
+		$show = array_flip((array)$params['show']);
 
 		$this->addFields(array (
 			'cl_from',
@@ -83,7 +84,30 @@ class ApiQueryCategories extends ApiQueryGeneratorBase {
 			'cl_from' => array_keys($this->getPageSet()->getGoodTitles()),
 			'cl_inline=cat_id'
 		));
-		$this->addOption('ORDER BY', "cl_from, cl_inline");
+		if(!is_null($params['continue'])) {
+			$cont = explode('|', $params['continue']);
+			if(count($cont) != 2)
+				$this->dieUsage("Invalid continue param. You should pass the " .
+					"original value returned by the previous query", "_badcontinue");
+			$clfrom = intval($cont[0]);
+			$clinline = intval($cont[1]);
+			$this->addWhere("cl_from > $clfrom OR ".
+					"(cl_from = $clfrom AND ".
+					"cl_inline >= '$clinline')");
+		}
+		if(isset($show['hidden']) && isset($show['!hidden']))
+			$this->dieUsage("Incorrect parameter - mutually exclusive values may not be supplied", 'show');
+		if(isset($show['hidden']) || isset($show['!hidden']))
+		{
+			$this->addWhere(array(	'cl_inline = cat_title',
+						'cat_hidden' => isset($show['hidden'])));
+		}
+
+		# Don't order by cl_from if it's constant in the WHERE clause
+		if(count($this->getPageSet()->getGoodTitles()) == 1)
+			$this->addOption('ORDER BY', 'cl_inline');
+		else
+			$this->addOption('ORDER BY', "cl_from, cl_inline");
 
 		$db = $this->getDB();
 		$res = $this->select(__METHOD__);
@@ -92,7 +116,15 @@ class ApiQueryCategories extends ApiQueryGeneratorBase {
 
 			$data = array();
 			$lastId = 0;	// database has no ID 0
+			$count = 0;
 			while ($row = $db->fetchObject($res)) {
+				if (++$count > $params['limit']) {
+					// We've reached the one extra which shows that
+					// there are additional pages to be had. Stop here...
+					$this->setContinueEnumParameter('continue', $row->cl_from .
+							'|' . $row->cl_inline);
+					break;
+				}
 				if ($lastId != $row->cl_from) {
 					if($lastId != 0) {
 						$this->addPageSubItems($lastId, $data);
@@ -122,6 +154,14 @@ class ApiQueryCategories extends ApiQueryGeneratorBase {
 			$titles = array();
 			while ($row = $db->fetchObject($res)) {
 				$titles[] = Title :: makeTitle(NS_CATEGORY, $row->cat_title);
+				if (++$count > $params['limit']) {
+					// We've reached the one extra which shows that
+					// there are additional pages to be had. Stop here...
+					$this->setContinueEnumParameter('continue', $row->cl_from .
+							'|' . $row->cl_inline);
+					break;
+				}
+
 			}
 			$resultPageSet->populateFromTitles($titles);
 		}
@@ -137,13 +177,31 @@ class ApiQueryCategories extends ApiQueryGeneratorBase {
 					'sortkey',
 					'timestamp',
 				)
-			)
+			),
+			'show' => array(
+				ApiBase :: PARAM_ISMULTI => true,
+				ApiBase :: PARAM_TYPE => array(
+					'hidden',
+					'!hidden',
+				)
+			),
+			'limit' => array(
+				ApiBase :: PARAM_DFLT => 10,
+				ApiBase :: PARAM_TYPE => 'limit',
+				ApiBase :: PARAM_MIN => 1,
+				ApiBase :: PARAM_MAX => ApiBase :: LIMIT_BIG1,
+				ApiBase :: PARAM_MAX2 => ApiBase :: LIMIT_BIG2
+			),
+			'continue' => null,
 		);
 	}
 
 	public function getParamDescription() {
 		return array (
 			'prop' => 'Which additional properties to get for each category.',
+			'limit' => 'How many categories to return',
+			'show' => 'Which kind of categories to show',
+			'continue' => 'When more results are available, use this to continue',
 		);
 	}
 

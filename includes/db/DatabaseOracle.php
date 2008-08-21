@@ -696,8 +696,8 @@ echo "error!\n";
 		return 0;
 	}
 
-	function setFakeSlaveLag() {}
-	function setFakeMaster() {}
+	function setFakeSlaveLag( $lag ) {}
+	function setFakeMaster( $enabled = true ) {}
 
 	function getDBname() {
 		return $this->mDBname;
@@ -715,6 +715,10 @@ echo "error!\n";
 	}
 	public function unlock( $lockName, $method ) {
 		return true;
+	}
+	
+	public function getSearchEngine() {
+		return "SearchOracle";
 	}
 
 } // end DatabaseOracle class

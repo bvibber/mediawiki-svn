@@ -4,11 +4,8 @@
  * @ingroup Language
  * @file
  *
- * @author Niklas Laxström
- * @author לערי ריינהארט
  * @author Desiphral
- * @author Siebrand
- * @author Jon Harald Søby
+ * @author לערי ריינהארט
  */
 
 $fallback = 'ro';
@@ -138,8 +135,6 @@ $messages = array(
 'portal'               => 'Maladipnasko than',
 'portal-url'           => 'Project:Maladipnasko than',
 'privacy'              => 'Pativyako forovipen',
-'sitesupport'          => 'Denimata',
-'sitesupport-url'      => 'Project:Denimata',
 
 'retrievedfrom'   => 'Lino katar "$1"',
 'editsection'     => 'editisar',
@@ -161,7 +156,7 @@ $messages = array(
 'nstab-category'  => 'Shopni',
 
 # Main script and global functions
-'nospecialpagetext' => 'Manglyas ekh [[Special:Specialpages|uzalutni patrin]] so na arakhel pes kai {{SITENAME}}.',
+'nospecialpagetext' => 'Manglyas ekh [[Special:SpecialPages|uzalutni patrin]] so na arakhel pes kai {{SITENAME}}.',
 
 # General errors
 'wrong_wfQuery_params' => 'Doshalo gin le parametrengo ko wfQuery()<br />I function: $1<br />Query: $2',
@@ -230,11 +225,8 @@ Mishto si te jas kai {{SITENAME}} thai te paruves tiro lav sigo.',
 'showpreview'        => 'Dikh sar avelas i patrin',
 'showlivepreview'    => 'Jivutno angledikhipen',
 'showdiff'           => 'Dikh le paruvimata',
-'whitelistedittitle' => 'Trebul o [[Special:Userlogin|autentifikaripen]] kashte editisares',
-'whitelistedittext'  => 'Trebul te [[Special:Userlogin|autentifikisares]] kashte editisares artikolurya.',
-'whitelistreadtitle' => 'Trebul o autentifikaripen kashte drabares',
-'whitelistreadtext'  => 'Trebul te [[Special:Userlogin|autentifikisares]] kashte drabares artikolurya.',
-'whitelistacctitle'  => 'Chi shai (nai tuke xakaya) te keres konturya',
+'whitelistedittitle' => 'Trebul o autentifikaripen kashte editisares',
+'whitelistedittext'  => 'Trebul te [[Special:UserLogin|autentifikisares]] kashte editisares artikolurya.',
 'accmailtitle'       => 'O nakhavipnasko lav bićhaldo.',
 'accmailtext'        => "O nakhavipnasko lav andar '$1' bićhaldo ko $2.",
 'newarticle'         => '(Nevo)',
@@ -353,7 +345,7 @@ Kana avilyan kathe doshatar, ja palpale.',
 'badfilename' => 'O chitrosko anav sas paruvdo; o nevo anav si "$1".',
 'savefile'    => 'Uxtav file',
 
-# Special:Imagelist
+# Special:ImageList
 'imagelist' => 'Patrinipen le chitrengo',
 
 # Image description page
@@ -381,7 +373,7 @@ Mashkar lende <b>$2</b> si administratorurya (dikh $3).',
 'ancientpages' => 'E puraneder lekha',
 'move'         => 'Ingerdipen',
 
-# Special:Allpages
+# Special:AllPages
 'allpages'       => 'Savore patrya',
 'nextpage'       => 'Anglutni patrin ($1)',
 'allarticles'    => 'Sa le artikolurya',
@@ -398,7 +390,7 @@ Mashkar lende <b>$2</b> si administratorurya (dikh $3).',
 'mywatchlist'      => 'Dikhipnaske lekha',
 'addedwatch'       => 'Thovdi ando patrinipen le patrinyange so arakhav len',
 'addedwatchtext'   => 'I patrin "[[:$1]]" sas thovdi andi tiri lista [[Special:Watchlist|le artikolengi so dikhes len]].
-Le neve paruvimata andar kadale patrya thai andar lenge vakyarimatenge patrya thona kathe, vi dikhena pen le <b>thule semnurenca</b> andi patrin le [[Special:Recentchanges|neve paruvimatenge]].
+Le neve paruvimata andar kadale patrya thai andar lenge vakyarimatenge patrya thona kathe, vi dikhena pen le <b>thule semnurenca</b> andi patrin le [[Special:RecentChanges|neve paruvimatenge]].
 
 Kana kamesa te khoses kadaya patrin andar tiri lista le patryange so arakhes len ker click kai "Na mai arakh" (opre, kana i patrin dikhel pes).',
 'removedwatchtext' => 'I patrin "[[:$1]]" sas khosli katar o patrinipen le dikhipnaske lekhenca (artikolurya).',
@@ -502,7 +494,6 @@ Dikh ando $2 ek patrinipen le palutne butyange khosle.',
 'tooltip-n-recentchanges'       => 'I lista le neve paruvimatenge kerdini andi kadaya wiki.',
 'tooltip-n-randompage'          => 'Ja ki ek aleatori pajina',
 'tooltip-n-help'                => 'O than kai arakhes zhutipen.',
-'tooltip-n-sitesupport'         => 'Zhutisar amen',
 'tooltip-t-whatlinkshere'       => 'I lista sa le wiki pajinenge so aven (si phande) vi kathe',
 'tooltip-t-recentchangeslinked' => 'Neve paruvimata andi kadaya pajina',
 'tooltip-feed-rss'              => 'Kathe te pravares o RSS flukso le kadale pajinyako',
@@ -536,7 +527,7 @@ Dikh ando $2 ek patrinipen le palutne butyange khosle.',
 'previousdiff' => '← Purano ververipen',
 'nextdiff'     => 'Anglutno paruvipen →',
 
-# Special:Newimages
+# Special:NewImages
 'showhidebots' => '($1 boturya)',
 'ilsubmit'     => 'Rod',
 

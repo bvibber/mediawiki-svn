@@ -57,15 +57,17 @@ class Language {
 	var $mMagicExtensions = array(), $mMagicHookDone = false;
 
 	static public $mLocalisationKeys = array( 'fallback', 'namespaceNames',
-		'skinNames', 'mathNames', 
-		'bookstoreList', 'magicWords', 'messages', 'rtl', 'digitTransformTable', 
+		'skinNames', 'mathNames',
+		'bookstoreList', 'magicWords', 'messages', 'rtl', 'digitTransformTable',
 		'separatorTransformTable', 'fallback8bitEncoding', 'linkPrefixExtension',
-		'defaultUserOptionOverrides', 'linkTrail', 'namespaceAliases', 
-		'dateFormats', 'datePreferences', 'datePreferenceMigrationMap', 
-		'defaultDateFormat', 'extraUserToggles', 'specialPageAliases' );
+		'defaultUserOptionOverrides', 'linkTrail', 'namespaceAliases',
+		'dateFormats', 'datePreferences', 'datePreferenceMigrationMap',
+		'defaultDateFormat', 'extraUserToggles', 'specialPageAliases',
+		'imageFiles'
+	);
 
-	static public $mMergeableMapKeys = array( 'messages', 'namespaceNames', 'mathNames', 
-		'dateFormats', 'defaultUserOptionOverrides', 'magicWords' );
+	static public $mMergeableMapKeys = array( 'messages', 'namespaceNames', 'mathNames',
+		'dateFormats', 'defaultUserOptionOverrides', 'magicWords', 'imageFiles' );
 
 	static public $mMergeableListKeys = array( 'extraUserToggles' );
 
@@ -337,6 +339,11 @@ class Language {
 	function getDatePreferenceMigrationMap() {
 		$this->load();
 		return $this->datePreferenceMigrationMap;
+	}
+
+	function getImageFile( $image ) {
+		$this->load();
+		return $this->imageFiles[$image];
 	}
 
 	function getDefaultUserOptionOverrides() {
@@ -904,6 +911,9 @@ class Language {
 	 * (abu-mami@kaluach.net, http://www.kaluach.net), who permitted
 	 * to translate the relevant functions into PHP and release them under
 	 * GNU GPL.
+	 *
+	 * The months are counted from Tishrei = 1. In a leap year, Adar I is 13
+	 * and Adar II is 14. In a non-leap year, Adar is 6.
 	 */
 	private static function tsToHebrew( $ts ) {
 		# Parse date
@@ -1679,7 +1689,9 @@ class Language {
 			} else {
 				# Fall back to English if local list is incomplete
 				$magicWords =& Language::getMagicWords();
-				if ( !isset($magicWords[$mw->mId]) ) { throw new MWException("Magic word not found" ); }
+				if ( !isset($magicWords[$mw->mId]) ) {
+					throw new MWException("Magic word '{$mw->mId}' not found" ); 
+				}
 				$rawEntry = $magicWords[$mw->mId];
 			}
 		}
@@ -1731,14 +1743,14 @@ class Language {
 
 				// Fail fast
 				if ( !file_exists($file) )
-					throw new MWException( 'Aliases file does not exist' );
+					throw new MWException( "Aliases file does not exist: $file" );
 
 				$aliases = array();
 				require($file);
 
 				// Check the availability of aliases
 				if ( !isset($aliases['en']) )
-					throw new MWException( 'Malformed aliases file' );
+					throw new MWException( "Malformed aliases file: $file" );
 
 				// Merge all aliases in fallback chain
 				$code = $this->getCode();

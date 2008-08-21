@@ -25,7 +25,7 @@ class PreferencesForm {
 	var $mRows, $mCols, $mSkin, $mMath, $mDate, $mUserEmail, $mEmailFlag, $mNick;
 	var $mUserLanguage, $mUserVariant;
 	var $mSearch, $mRecent, $mRecentDays, $mHourDiff, $mSearchLines, $mSearchChars, $mAction;
-	var $mReset, $mPosted, $mToggles, $mUseAjaxSearch, $mSearchNs, $mRealName, $mImageSize;
+	var $mReset, $mPosted, $mToggles, $mSearchNs, $mRealName, $mImageSize;
 	var $mUnderline, $mWatchlistEdits;
 
 	/**
@@ -66,7 +66,6 @@ class PreferencesForm {
 		$this->mSuccess = $request->getCheck( 'success' );
 		$this->mWatchlistDays = $request->getVal( 'wpWatchlistDays' );
 		$this->mWatchlistEdits = $request->getVal( 'wpWatchlistEdits' );
-		$this->mUseAjaxSearch = $request->getCheck( 'wpUseAjaxSearch' );
 		$this->mDisableMWSuggest = $request->getCheck( 'wpDisableMWSuggest' );
 
 		$this->mSaveprefs = $request->getCheck( 'wpSaveprefs' ) &&
@@ -289,7 +288,6 @@ class PreferencesForm {
 		$wgUser->setOption( 'thumbsize', $this->mThumbSize );
 		$wgUser->setOption( 'underline', $this->validateInt($this->mUnderline, 0, 2) );
 		$wgUser->setOption( 'watchlistdays', $this->validateFloat( $this->mWatchlistDays, 0, 7 ) );
-		$wgUser->setOption( 'ajaxsearch', $this->mUseAjaxSearch );
 		$wgUser->setOption( 'disablesuggest', $this->mDisableMWSuggest );
 
 		# Set search namespace options
@@ -402,7 +400,6 @@ class PreferencesForm {
 		$this->mWatchlistEdits = $wgUser->getOption( 'wllimit' );
 		$this->mUnderline = $wgUser->getOption( 'underline' );
 		$this->mWatchlistDays = $wgUser->getOption( 'watchlistdays' );
-		$this->mUseAjaxSearch = $wgUser->getBoolOption( 'ajaxsearch' );
 		$this->mDisableMWSuggest = $wgUser->getBoolOption( 'disablesuggest' );
 
 		$togs = User::getToggles();
@@ -511,18 +508,18 @@ class PreferencesForm {
 	 * @access private
 	 */
 	function mainPrefsForm( $status , $message = '' ) {
-		global $wgUser, $wgOut, $wgLang, $wgContLang;
+		global $wgUser, $wgOut, $wgLang, $wgContLang, $wgAuth;
 		global $wgAllowRealName, $wgImageLimits, $wgThumbLimits;
-		global $wgDisableLangConversion;
+		global $wgDisableLangConversion, $wgDisableTitleConversion;
 		global $wgEnotifWatchlist, $wgEnotifUserTalk,$wgEnotifMinorEdits;
 		global $wgRCShowWatchingUsers, $wgEnotifRevealEditorAddress;
 		global $wgEnableEmail, $wgEnableUserEmail, $wgEmailAuthentication;
-		global $wgContLanguageCode, $wgDefaultSkin, $wgSkipSkins, $wgAuth;
-		global $wgEmailConfirmToEdit, $wgAjaxSearch, $wgEnableMWSuggest;
+		global $wgContLanguageCode, $wgDefaultSkin, $wgCookieExpiration;
+		global $wgEmailConfirmToEdit, $wgEnableMWSuggest;
 
 		$wgOut->setPageTitle( wfMsg( 'preferences' ) );
 		$wgOut->setArticleRelated( false );
-		$wgOut->setRobotpolicy( 'noindex,nofollow' );
+		$wgOut->setRobotPolicy( 'noindex,nofollow' );
 		$wgOut->addScriptFile( 'prefs.js' );
 
 		$wgOut->disallowUserJs();  # Prevent hijacked user scripts from sniffing passwords etc.
@@ -552,6 +549,7 @@ class PreferencesForm {
 		$this->mUsedToggles[ 'enotifrevealaddr' ] = true;
 		$this->mUsedToggles[ 'ccmeonemails' ] = true;
 		$this->mUsedToggles[ 'uselivepreview' ] = true;
+		$this->mUsedToggles[ 'noconvertlink' ] = true;
 
 
 		if ( !$this->mEmailFlag ) { $emfc = 'checked="checked"'; }
@@ -625,7 +623,7 @@ class PreferencesForm {
 
 		$userInformationHtml =
 			$this->tableRow( wfMsgHtml( 'username' ), htmlspecialchars( $wgUser->getName() ) ) .
-			$this->tableRow( wfMsgHtml( 'uid' ), htmlspecialchars( $wgUser->getId() ) ) .
+			$this->tableRow( wfMsgHtml( 'uid' ), $wgLang->formatNum( htmlspecialchars( $wgUser->getId() ) ) ).
 
 			$this->tableRow(
 				wfMsgExt( 'prefs-memberingroups', array( 'parseinline' ), count( $userEffectiveGroupsArray ) ),
@@ -635,7 +633,7 @@ class PreferencesForm {
 
 			$this->tableRow(
 				wfMsgHtml( 'prefs-edits' ),
-				$wgLang->formatNum( User::edits( $wgUser->getId() ) )
+				$wgLang->formatNum( $wgUser->getEditCount() )
 			);
 
 		if( wfRunHooks( 'PreferencesUserInformationPanel', array( $this, &$userInformationHtml ) ) ) {
@@ -734,6 +732,16 @@ class PreferencesForm {
 					)
 				);
 			}
+			
+			if(count($variantArray) > 1 && !$wgDisableLangConversion && !$wgDisableTitleConversion) {
+				$wgOut->addHtml(
+					Xml::tags( 'tr', null,
+						Xml::tags( 'td', array( 'colspan' => '2' ),
+							$this->getToggle( "noconvertlink" )
+						)
+					)
+				);
+			}
 		}
 
 		# Password
@@ -751,13 +759,19 @@ class PreferencesForm {
 				$this->tableRow(
 					Xml::label( wfMsg( 'retypenew' ), 'wpRetypePass' ),
 					Xml::password( 'wpRetypePass', 25, $this->mRetypePass, array( 'id' => 'wpRetypePass' ) )
-				) .
-				Xml::tags( 'tr', null,
-					Xml::tags( 'td', array( 'colspan' => '2' ),
-						$this->getToggle( "rememberpassword" )
-					)
 				)
 			);
+			if( $wgCookieExpiration > 0 ){
+				$wgOut->addHTML(
+					Xml::tags( 'tr', null,
+						Xml::tags( 'td', array( 'colspan' => '2' ),
+							$this->getToggle( "rememberpassword" )
+						)
+					)
+				);
+			} else {
+				$this->mUsedToggles['rememberpassword'] = true;
+			}
 		}
 
 		# <FIXME>
@@ -816,10 +830,10 @@ class PreferencesForm {
 		#
 		$wgOut->addHTML( "<fieldset>\n<legend>\n" . wfMsg('skin') . "</legend>\n" );
 		$mptitle = Title::newMainPage();
-		$previewtext = wfMsg('skinpreview');
+		$previewtext = wfMsg('skin-preview');
 		# Only show members of Skin::getSkinNames() rather than
 		# $skinNames (skins is all skin names from Language.php)
-		$validSkinNames = Skin::getSkinNames();
+		$validSkinNames = Skin::getUsableSkins();
 		# Sort by UI skin name. First though need to update validSkinNames as sometimes
 		# the skinkey & UI skinname differ (e.g. "standard" skinkey is "Classic" in the UI).
 		foreach ($validSkinNames as $skinkey => & $skinname ) {
@@ -829,13 +843,10 @@ class PreferencesForm {
 		}
 		asort($validSkinNames);
 		foreach ($validSkinNames as $skinkey => $sn ) {
-			if ( in_array( $skinkey, $wgSkipSkins ) ) {
-				continue;
-			}
 			$checked = $skinkey == $this->mSkin ? ' checked="checked"' : '';
 
 			$mplink = htmlspecialchars($mptitle->getLocalURL("useskin=$skinkey"));
-			$previewlink = "<a target='_blank' href=\"$mplink\">$previewtext</a>";
+			$previewlink = "(<a target='_blank' href=\"$mplink\">$previewtext</a>)";
 			if( $skinkey == $wgDefaultSkin )
 				$sn .= ' (' . wfMsg( 'default' ) . ')';
 			$wgOut->addHTML( "<input type='radio' name='wpSkin' id=\"wpSkin$skinkey\" value=\"$skinkey\"$checked /> <label for=\"wpSkin$skinkey\">{$sn}</label> $previewlink<br />\n" );
@@ -1015,7 +1026,7 @@ class PreferencesForm {
 		$wgOut->addHtml( wfInputLabel( wfMsg( 'prefs-watchlist-edits' ), 'wpWatchlistEdits', 'wpWatchlistEdits', 3, $this->mWatchlistEdits ) );
 		$wgOut->addHtml( '<br /><br />' );
 
-		$wgOut->addHtml( $this->getToggles( array( 'watchlisthideown', 'watchlisthidebots', 'watchlisthideminor' ) ) );
+		$wgOut->addHtml( $this->getToggles( array( 'watchlisthideminor', 'watchlisthidebots', 'watchlisthideown', 'watchlisthideanons', 'watchlisthideliu' ) ) );
 
 		if( $wgUser->isAllowed( 'createpage' ) || $wgUser->isAllowed( 'createtalk' ) )
 			$wgOut->addHtml( $this->getToggle( 'watchcreations' ) );
@@ -1031,11 +1042,6 @@ class PreferencesForm {
 		$wgOut->addHtml( '</fieldset>' );
 
 		# Search
-		$ajaxsearch = $wgAjaxSearch ?
-			$this->addRow(
-				Xml::label( wfMsg( 'useajaxsearch' ), 'wpUseAjaxSearch' ),
-				Xml::check( 'wpUseAjaxSearch', $this->mUseAjaxSearch, array( 'id' => 'wpUseAjaxSearch' ) )
-			) : '';
 		$mwsuggest = $wgEnableMWSuggest ?
 			$this->addRow(
 				Xml::label( wfMsg( 'mwsuggest-disable' ), 'wpDisableMWSuggest' ),
@@ -1049,7 +1055,6 @@ class PreferencesForm {
 			Xml::openElement( 'fieldset' ) .
 			Xml::element( 'legend', null, wfMsg( 'prefs-searchoptions' ) ) .
 			Xml::openElement( 'table' ) .
-			$ajaxsearch .
 			$this->addRow(
 				Xml::label( wfMsg( 'resultsperpage' ), 'wpSearch' ),
 				Xml::input( 'wpSearch', 4, $this->mSearch, array( 'id' => 'wpSearch' ) )

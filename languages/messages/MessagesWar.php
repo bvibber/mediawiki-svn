@@ -6,8 +6,6 @@
  *
  * @author Harvzsf
  * @author לערי ריינהארט
- * @author Siebrand
- * @author Jon Harald Søby
  */
 
 $messages = array(
@@ -139,8 +137,6 @@ $messages = array(
 'policy-url'           => 'Project:Polisiya',
 'portal'               => 'Ganghaan han Komunidad',
 'portal-url'           => 'Project:Ganghaan han Komunidad',
-'sitesupport'          => 'Mga Donasyon',
-'sitesupport-url'      => 'Project:Mga Donasyon',
 
 'badaccess-group0' => 'Diri ka gintutugutan pagbuhat han buruhaton nga imo ginhangyo.',
 
@@ -203,7 +199,7 @@ $messages = array(
 'upload'    => 'Pagkarga hin file',
 'uploadbtn' => 'Igkarga an file',
 
-# Special:Imagelist
+# Special:ImageList
 'imagelist_date' => 'Pitsa',
 'imagelist_name' => 'Ngaran',
 
@@ -235,7 +231,7 @@ $messages = array(
 # Special:Log
 'log-search-submit' => 'Kadto-a',
 
-# Special:Allpages
+# Special:AllPages
 'allpages'       => 'Ngatanan nga mga pakli',
 'allarticles'    => 'Ngatanan nga mga artikulo',
 'allpagesprev'   => 'Naha-una',
@@ -243,7 +239,7 @@ $messages = array(
 'allpagessubmit' => 'Kadto-a',
 
 # Special:Categories
-'categories' => '{{PLURAL:$1|Kategorya|Mga Kategorya}}',
+'categories' => 'Mga Kategorya',
 
 # Watchlist
 'watchlist'     => 'Akon barantayan',
@@ -264,7 +260,7 @@ Kitaa an $2 para hin talaan han mga gibag-ohi nga mga ginpamara.',
 # Block/unblock
 'ipblocklist-submit' => 'Bilnga',
 
-# Special:Newimages
+# Special:NewImages
 'ilsubmit' => 'Bilnga',
 
 # Multipage image navigation

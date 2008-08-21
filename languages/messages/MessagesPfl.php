@@ -30,7 +30,7 @@ $messages = array(
 'personaltools'  => 'Perseenliche Werkzeische',
 'talk'           => 'Gebabbel',
 'toolbox'        => 'Werkzeiche',
-'viewcount'      => 'Die Seid isch bis jetzerd $1 mol uffgerufe worre.',
+'viewcount'      => 'Die Seid isch bis jetzerd {{PLURAL:$1|$1|$1}} mol uffgerufe worre.',
 'jumptosearch'   => 'Suche',
 
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
@@ -42,7 +42,6 @@ $messages = array(
 'mainpage-description' => 'Startseid',
 'portal'               => '{{SITENAME}}-Pordal',
 'privacy'              => 'Dadeschutz',
-'sitesupport'          => 'Spende',
 
 # Short words for each namespace, by default used in the namespace tab in monobook
 'nstab-main'      => 'Adiggel',
@@ -113,7 +112,7 @@ $messages = array(
 # Miscellaneous special pages
 'move' => 'Verschiewe',
 
-# Special:Allpages
+# Special:AllPages
 'allpagessubmit' => 'Zeiche',
 
 # E-mail user
@@ -166,7 +165,7 @@ $messages = array(
 # Special:Import
 'import-interwiki-submit' => 'Impordiere',
 
-# Special:Newimages
+# Special:NewImages
 'ilsubmit' => 'Such',
 
 # 'all' in various places, this might be different for inflected languages

@@ -21,7 +21,7 @@ function wfSpecialRevisiondelete( $par = null ) {
 	# If this is a revision, then we need a target page
 	$page = Title::newFromUrl( $target );
 	if( is_null($page) ) {
-		$wgOut->addWikiText( wfMsgHtml( 'undelete-header' ) );
+		$wgOut->addWikiMsg( 'undelete-header' );
 		return;
 	}
 	# Only one target set at a time please!
@@ -256,7 +256,7 @@ class RevisionDeleteForm {
 		
 		$wgOut->addHtml( "</ul>" );
 
-		$wgOut->addWikiText( wfMsgHtml( 'revdelete-text' ) );
+		$wgOut->addWikiMsg( 'revdelete-text' );
 
 		// Normal sysops can always see what they did, but can't always change it
 		if( !$UserAllowed ) return;
@@ -272,10 +272,10 @@ class RevisionDeleteForm {
 		);
 		if( $this->deleteKey=='oldid' ) {
 			foreach( $revObjs as $rev )
-				$hidden[] = wfHidden( 'oldid[]', $rev->getId() );
+				$hidden[] = Xml::hidden( 'oldid[]', $rev->getId() );
 		} else {
 			foreach( $revObjs as $rev )
-				$hidden[] = wfHidden( 'artimestamp[]', $rev->getTimestamp() );
+				$hidden[] = Xml::hidden( 'artimestamp[]', $rev->getTimestamp() );
 		}
 		$special = SpecialPage::getTitleFor( 'Revisiondelete' );
 		$wgOut->addHtml(
@@ -306,13 +306,15 @@ class RevisionDeleteForm {
 	 * This lets a user set restrictions for archived images
 	 */
 	function showImages() {
-		global $wgOut, $wgUser, $action;
+		// What is $action doing here???
+		global $wgOut, $wgUser, $action, $wgLang;
 
 		$UserAllowed = true;
 
 		$count = ($this->deleteKey=='oldimage') ? count($this->ofiles) : count($this->afiles);
-		$wgOut->addWikiText( wfMsgExt( 'revdelete-selected', array('parsemag'),
-			$this->page->getPrefixedText(), $count ) );
+		$wgOut->addWikiMsg( 'revdelete-selected',
+			$this->page->getPrefixedText(),
+			$wgLang->formatNum($count) );
 
 		$bitfields = 0;
 		$wgOut->addHtml( "<ul>" );
@@ -393,7 +395,7 @@ class RevisionDeleteForm {
 		
 		$wgOut->addHtml( "</ul>" );
 
-		$wgOut->addWikiText( wfMsgHtml( 'revdelete-text' ) );
+		$wgOut->addWikiMsg('revdelete-text' );
 		//Normal sysops can always see what they did, but can't always change it
 		if( !$UserAllowed ) return;
 
@@ -408,17 +410,16 @@ class RevisionDeleteForm {
 		);
 		if( $this->deleteKey=='oldimage' ) {
 			foreach( $this->ofiles as $filename )
-				$hidden[] = wfHidden( 'oldimage[]', $filename );
+				$hidden[] = Xml::hidden( 'oldimage[]', $filename );
 		} else {
 			foreach( $this->afiles as $fileid )
-				$hidden[] = wfHidden( 'fileid[]', $fileid );
+				$hidden[] = Xml::hidden( 'fileid[]', $fileid );
 		}
 		$special = SpecialPage::getTitleFor( 'Revisiondelete' );
 		$wgOut->addHtml(
 			Xml::openElement( 'form', array( 'method' => 'post', 'action' => $special->getLocalUrl( 'action=submit' ), 
 				'id' => 'mw-revdel-form-filerevisions' ) ) .
-			Xml::openElement( 'fieldset' ) .
-			xml::element( 'legend', null,  wfMsg( 'revdelete-legend' ) )
+			Xml::fieldset( wfMsg( 'revdelete-legend' ) )
 		);
 		// FIXME: all items checked for just one file are checked, even if not set for the others
 		foreach( $this->checks as $item ) {
@@ -426,7 +427,7 @@ class RevisionDeleteForm {
 			$wgOut->addHtml( Xml::tags( 'div', null, Xml::checkLabel( wfMsg( $message ), $name, $name, $bitfields & $field ) ) );
 		}
 		foreach( $items as $item ) {
-			$wgOut->addHtml( Xml::tags( 'p', null, $item ) );
+			$wgOut->addHtml( "<p>$item</p>" );
 		}
 		foreach( $hidden as $item ) {
 			$wgOut->addHtml( $item );
@@ -442,10 +443,10 @@ class RevisionDeleteForm {
 	 * This lets a user set restrictions for log items
 	 */
 	function showLogItems() {
-		global $wgOut, $wgUser, $action, $wgMessageCache;
+		global $wgOut, $wgUser, $action, $wgMessageCache, $wgLang;
 
 		$UserAllowed = true;
-		$wgOut->addWikiText( wfMsgExt( 'logdelete-selected', array('parsemag'), count($this->events) ) );
+		$wgOut->addWikiMsg( 'logdelete-selected', $wgLang->formatNum( count($this->events) ) );
 
 		$bitfields = 0;
 		$wgOut->addHtml( "<ul>" );
@@ -508,8 +509,7 @@ class RevisionDeleteForm {
 		$wgOut->addHtml(
 			Xml::openElement( 'form', array( 'method' => 'post', 'action' => $special->getLocalUrl( 'action=submit' ), 
 				'id' => 'mw-revdel-form-logs' ) ) .
-			Xml::openElement( 'fieldset' ) .
-			xml::element( 'legend', null,  wfMsg( 'revdelete-legend' ) )
+			Xml::fieldset( wfMsg( 'revdelete-legend' ) )
 		);
 		// FIXME: all items checked for just on event are checked, even if not set for the others
 		foreach( $this->checks as $item ) {
@@ -517,7 +517,7 @@ class RevisionDeleteForm {
 			$wgOut->addHtml( Xml::tags( 'div', null, Xml::checkLabel( wfMsg( $message ), $name, $name, $bitfields & $field ) ) );
 		}
 		foreach( $items as $item ) {
-			$wgOut->addHtml( Xml::tags( 'p', null, $item ) );
+			$wgOut->addHtml( "<p>$item</p>" );
 		}
 		foreach( $hidden as $item ) {
 			$wgOut->addHtml( $item );
@@ -534,9 +534,9 @@ class RevisionDeleteForm {
 	 * @returns string
 	 */
 	private function historyLine( $rev ) {
-		global $wgContLang;
+		global $wgLang;
 
-		$date = $wgContLang->timeanddate( $rev->getTimestamp() );
+		$date = $wgLang->timeanddate( $rev->getTimestamp() );
 		$difflink = $del = '';
 		// Live revisions
 		if( $this->deleteKey=='oldid' ) {
@@ -570,10 +570,10 @@ class RevisionDeleteForm {
 	 * @returns string
 	 */
 	private function fileLine( $file ) {
-		global $wgContLang, $wgTitle;
+		global $wgLang, $wgTitle;
 
 		$target = $this->page->getPrefixedText();
-		$date = $wgContLang->timeanddate( $file->getTimestamp(), true  );
+		$date = $wgLang->timeanddate( $file->getTimestamp(), true  );
 
 		$del = '';
 		# Hidden files...
@@ -592,10 +592,11 @@ class RevisionDeleteForm {
 			$pageLink = "<a href=\"{$url}\">{$date}</a>";
 		}
 
-		$data = wfMsgHtml( 'widthheight',
-					$wgContLang->formatNum( $file->getWidth() ),
-					$wgContLang->formatNum( $file->getHeight() ) ) .
-			' (' . wfMsgHtml( 'nbytes', $wgContLang->formatNum( $file->getSize() ) ) . ')';
+		$data = wfMsg( 'widthheight',
+					$wgLang->formatNum( $file->getWidth() ),
+					$wgLang->formatNum( $file->getHeight() ) ) .
+			' (' . wfMsgExt( 'nbytes', 'parsemag', $wgLang->formatNum( $file->getSize() ) ) . ')';
+		$data = htmlspecialchars( $data );
 
 		return "<li>$pageLink ".$this->fileUserTools( $file )." $data ".$this->fileComment( $file )."$del</li>";
 	}
@@ -605,10 +606,10 @@ class RevisionDeleteForm {
 	 * @returns string
 	 */
 	private function archivedfileLine( $file ) {
-		global $wgContLang, $wgTitle;
+		global $wgLang, $wgTitle;
 
 		$target = $this->page->getPrefixedText();
-		$date = $wgContLang->timeanddate( $file->getTimestamp(), true  );
+		$date = $wgLang->timeanddate( $file->getTimestamp(), true  );
 
 		$undelete = SpecialPage::getTitleFor( 'Undelete' );
 		$pageLink = $this->skin->makeKnownLinkObj( $undelete, $date, "target=$target&file={$file->getKey()}" );
@@ -618,10 +619,11 @@ class RevisionDeleteForm {
 			$del = ' <tt>' . wfMsgHtml( 'deletedrev' ) . '</tt>';
 		}
 
-		$data = wfMsgHtml( 'widthheight',
-					$wgContLang->formatNum( $file->getWidth() ),
-					$wgContLang->formatNum( $file->getHeight() ) ) .
-			' (' . wfMsgHtml( 'nbytes', $wgContLang->formatNum( $file->getSize() ) ) . ')';
+		$data = wfMsg( 'widthheight',
+					$wgLang->formatNum( $file->getWidth() ),
+					$wgLang->formatNum( $file->getHeight() ) ) .
+			' (' . wfMsgExt( 'nbytes', 'parsemag', $wgLang->formatNum( $file->getSize() ) ) . ')';
+		$data = htmlspecialchars( $data );
 
 		return "<li> $pageLink ".$this->fileUserTools( $file )." $data ".$this->fileComment( $file )."$del</li>";
 	}
@@ -631,9 +633,9 @@ class RevisionDeleteForm {
 	 * @returns string
 	 */
 	private function logLine( $row ) {
-		global $wgContLang;
+		global $wgLang;
 
-		$date = $wgContLang->timeanddate( $row->log_timestamp );
+		$date = $wgLang->timeanddate( $row->log_timestamp );
 		$paramArray = LogPage::extractParams( $row->log_params );
 		$title = Title::makeTitle( $row->log_namespace, $row->log_title );
 
@@ -655,7 +657,7 @@ class RevisionDeleteForm {
 			$userLink = '<span class="history-deleted">' . $userLink . '</span>';
 		}
 		// Comment
-		$comment = $wgContLang->getDirMark() . $this->skin->commentBlock( $row->log_comment );
+		$comment = $wgLang->getDirMark() . $this->skin->commentBlock( $row->log_comment );
 		if( LogEventsList::isDeleted($row,LogPage::DELETED_COMMENT) ) {
 			$comment = '<span class="history-deleted">' . $comment . '</span>';
 		}
@@ -728,19 +730,21 @@ class RevisionDeleteForm {
 	private function success() {
 		global $wgOut;
 
-		$wgOut->setPagetitle( wfMsgHtml( 'actioncomplete' ) );
+		$wgOut->setPagetitle( wfMsg( 'actioncomplete' ) );
+
+		$wrap = '<span class="success">$1</span>';
 
 		if( $this->deleteKey=='logid' ) {
-			$wgOut->addWikiText( Xml::element( 'span', array( 'class' => 'success' ), wfMsg( 'logdelete-success' ) ), false );
+			$wgOut->wrapWikiMsg( $wrap, 'logdelete-success' );
 			$this->showLogItems();
 		} else if( $this->deleteKey=='oldid' || $this->deleteKey=='artimestamp' ) {
-		  	$wgOut->addWikiText( Xml::element( 'span', array( 'class' => 'success' ), wfMsg( 'revdelete-success' ) ), false );
+				$wgOut->wrapWikiMsg( $wrap, 'revdelete-success' );
 		  	$this->showRevs();
 		} else if( $this->deleteKey=='fileid' ) {
-			$wgOut->addWikiText( Xml::element( 'span', array( 'class' => 'success' ), wfMsg( 'revdelete-success' ) ), false );
+			$wgOut->wrapWikiMsg( $wrap, 'revdelete-success' );
 		  	$this->showImages();
 		} else if( $this->deleteKey=='oldimage' ) {
-			$wgOut->addWikiText( Xml::element( 'span', array( 'class' => 'success' ), wfMsg( 'revdelete-success' ) ), false );
+			$wgOut->wrapWikiMsg( $wrap, 'revdelete-success' );
 			$this->showImages();
 		}
 	}

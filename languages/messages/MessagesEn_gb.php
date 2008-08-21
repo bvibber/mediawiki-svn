@@ -1,11 +1,18 @@
 <?php
-/** British English ()
+/** British English (British English)
  *
  * @ingroup Language
  * @file
  *
  * @author Jon Harald Søby
  */
+
+$specialPageAliases = array(
+	'Uncategorizedpages'        => array( 'UncategorisedPages' ),
+	'Uncategorizedcategories'   => array( 'UncategorisedCategories' ),
+	'Uncategorizedimages'       => array( 'UncategorisedImages' ),
+	'Uncategorizedtemplates'    => array( 'UncategorisedTemplates' ),
+);
 
 $messages = array(
 # Main script and global functions

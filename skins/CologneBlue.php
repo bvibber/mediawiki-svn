@@ -96,9 +96,8 @@ class SkinCologneBlue extends Skin {
 		return $s;
 	}
 
-	function doGetUserStyles() {
-		global $wgOut;
-		$s = parent::doGetUserStyles();
+	function reallyGenerateUserStylesheet() {
+		$s = parent::reallyGenerateUserStylesheet();
 		$qb = $this->qbSetting();
 
 		if ( 2 == $qb ) { # Right
@@ -178,6 +177,9 @@ class SkinCologneBlue extends Skin {
 
 		# Use the first heading from the Monobook sidebar as the "browse" section
 		$bar = $this->buildSidebar();
+		unset( $bar['SEARCH'] );
+		unset( $bar['LANGUAGES'] );
+		unset( $bar['TOOLBOX'] );
 		$browseLinks = reset( $bar );
 
 		foreach ( $browseLinks as $link ) {

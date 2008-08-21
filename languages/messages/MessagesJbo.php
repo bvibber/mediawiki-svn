@@ -6,8 +6,6 @@
  *
  * @author Malafaya
  * @author OldakQuill
- * @author OldakQuill
- * @author Malafaya
  */
 
 $messages = array(
@@ -83,7 +81,6 @@ $messages = array(
 'portal'               => 'bende ckupau',
 'portal-url'           => 'Project:bende ckupau',
 'privacy'              => "javni be sera'a lo sivni",
-'sitesupport'          => 'jdini sidju',
 
 # Short words for each namespace, by default used in the namespace tab in monobook
 'nstab-mediawiki' => 'notci',
@@ -132,7 +129,7 @@ $messages = array(
 # Miscellaneous special pages
 'move' => 'stika lo cmene',
 
-# Special:Allpages
+# Special:AllPages
 'allarticles' => 'ro notci',
 
 # Special:Categories
@@ -169,7 +166,7 @@ $messages = array(
 # Tooltip help for the actions
 'tooltip-pt-logout' => "co'u se jaspu",
 
-# Special:Filepath
+# Special:FilePath
 'filepath-page' => 'se datnyvei zoi',
 
 # Special:SpecialPages

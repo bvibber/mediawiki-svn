@@ -97,7 +97,7 @@ class ApiLogin extends ApiBase {
 		}
 
 		$loginForm = new LoginForm($params);
-		switch ($loginForm->authenticateUserData()) {
+		switch ($authRes = $loginForm->authenticateUserData()) {
 			case LoginForm :: SUCCESS :
 				global $wgUser, $wgCookiePrefix;
 
@@ -139,8 +139,11 @@ class ApiLogin extends ApiBase {
 				$result['result'] = 'CreateBlocked';
 				$result['details'] = 'Your IP address is blocked from account creation';
 				break;
+			case LoginForm :: THROTTLED :
+				$result['result'] = 'Throttled';
+				break;
 			default :
-				ApiBase :: dieDebug(__METHOD__, 'Unhandled case value');
+				ApiBase :: dieDebug(__METHOD__, "Unhandled case value: {$authRes}");
 		}
 
 		if ($result['result'] != 'Success' && !isset( $result['details'] ) ) {

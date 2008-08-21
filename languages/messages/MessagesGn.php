@@ -5,8 +5,6 @@
  * @file
  *
  * @author Hugo.arg
- * @author Nike
- * @author Siebrand
  */
 
 $fallback = 'es';
@@ -112,7 +110,6 @@ $messages = array(
 'portal'               => 'Tekohapegua',
 'privacy'              => 'Polítika marandu ñeñangareko rehegua',
 'privacypage'          => 'Project:Polítika marandu ñeñangareko rehegua',
-'sitesupport'          => "Me'ẽ rei",
 
 'newmessageslink'         => 'marandu pyahu',
 'newmessagesdifflink'     => 'Joavy oĩva mokõive jehai paha apytépe',
@@ -201,7 +198,7 @@ Aipórõ, eñeha'ãna emboja'o ne rembiapo, vore michĩvévape.</strong>",
 
 # Revision deletion
 'rev-delundel'       => 'hechauka/toñemi',
-'logdelete-selected' => "Seleccionados $2 eventos de registro para '''$1:'''",
+'logdelete-selected' => 'Seleccionados $2 eventos de registro:',
 
 # Diffs
 'difference' => "(Mba'épe ojaovy oñemyatyrõva'ekue)",
@@ -225,15 +222,14 @@ Aipórõ, eñeha'ãna emboja'o ne rembiapo, vore michĩvévape.</strong>",
 'searchresultshead' => 'Jeheka',
 
 # User rights
-'userrights-lookup-user'     => 'Configurar grupos de usuarios',
-'userrights-user-editname'   => 'Ehaimi peteĩ téra puruháragua:',
-'editusergroup'              => 'Modificar grupos de usuarios',
-'editinguser'                => "Ojehaihína '''[[User:$1|$1]]''' ([[User talk:$1|{{int:talkpagelinktext}}]] | [[Special:Contributions/$1|{{int:contribslink}}]])",
-'userrights-editusergroup'   => 'Modificar grupos de usuarios',
-'saveusergroups'             => 'Guardar grupos de usuarios',
-'userrights-groupsmember'    => 'Pehengue:',
-'userrights-groupsavailable' => 'Grupos disponibles:',
-'userrights-reason'          => 'Motivo para el cambio:',
+'userrights-lookup-user'   => 'Configurar grupos de usuarios',
+'userrights-user-editname' => 'Ehaimi peteĩ téra puruháragua:',
+'editusergroup'            => 'Modificar grupos de usuarios',
+'editinguser'              => "Ojehaihína '''[[User:$1|$1]]''' ([[User talk:$1|{{int:talkpagelinktext}}]] | [[Special:Contributions/$1|{{int:contribslink}}]])",
+'userrights-editusergroup' => 'Modificar grupos de usuarios',
+'saveusergroups'           => 'Guardar grupos de usuarios',
+'userrights-groupsmember'  => 'Pehengue:',
+'userrights-reason'        => 'Motivo para el cambio:',
 
 # Groups
 'group-all' => '(opaite)',
@@ -264,7 +260,7 @@ Reomĩsérõ ta'ãnga peteĩ kuatiaroguépe, eipuru peteĩ joaju:
 '''<nowiki>[[</nowiki>Media<nowiki>:Archivo.ogg]]</nowiki>''' ojoaju hag̃ua hekopete pe jehai'atýre.",
 'filename'   => "Téra jehai'aty",
 
-# Special:Imagelist
+# Special:ImageList
 'imagelist'      => "Ta'ãnga rysýi",
 'imagelist_user' => 'Puruhára',
 
@@ -350,7 +346,7 @@ Reomĩsérõ ta'ãnga peteĩ kuatiaroguépe, eipuru peteĩ joaju:
 # Special:Log
 'log' => 'Ñemboguapypyre',
 
-# Special:Allpages
+# Special:AllPages
 'allpages'          => 'Opaite kuatiarogue',
 'allnotinnamespace' => 'Opaite kuatiarogue (fuera del espacio $1)',
 'allpagesnext'      => 'Upeigua',
@@ -359,7 +355,7 @@ Reomĩsérõ ta'ãnga peteĩ kuatiaroguépe, eipuru peteĩ joaju:
 # Special:Categories
 'categories' => 'Ñemohendakuéra',
 
-# Special:Listusers
+# Special:ListUsers
 'listusers-submit' => 'Hechauka',
 
 # E-mail user
@@ -402,7 +398,6 @@ Reomĩsérõ ta'ãnga peteĩ kuatiaroguépe, eipuru peteĩ joaju:
 'whatlinkshere'       => "Oñembojoajukuaáva ko'ápe",
 'whatlinkshere-title' => 'Kuatiarogue ojoajúva "$1" rehe',
 'whatlinkshere-page'  => 'Kuatiarogue:',
-'linklistsub'         => '(Joajukuéra rysýi)',
 'linkshere'           => "Ko'ã kuatiarogue ojoaju '''[[:$1]]''' rehe:",
 'whatlinkshere-prev'  => 'mboyvegua $1',
 'whatlinkshere-next'  => 'upeigua $1',
@@ -413,7 +408,7 @@ Reomĩsérõ ta'ãnga peteĩ kuatiaroguépe, eipuru peteĩ joaju:
 'ipblocklist-submit' => 'Heka',
 'blocklink'          => 'ejoko',
 'contribslink'       => "mba'emoĩmbyre",
-'blocklogtext'       => 'Esto es un registro de bloqueos y desbloqueos de usuarios. Las direcciones bloqueadas automáticamente no aparecen aquí. Consulte la [[Special:Ipblocklist|IP mbohape rysýi imbotypyréva]] para ver la lista de prohibiciones y bloqueos actualmente vigente.',
+'blocklogtext'       => 'Esto es un registro de bloqueos y desbloqueos de usuarios. Las direcciones bloqueadas automáticamente no aparecen aquí. Consulte la [[Special:IPBlockList|IP mbohape rysýi imbotypyréva]] para ver la lista de prohibiciones y bloqueos actualmente vigente.',
 
 # Move page
 'movearticle'     => 'Guerova kuatiarogue',
@@ -453,7 +448,7 @@ Reomĩsérõ ta'ãnga peteĩ kuatiaroguépe, eipuru peteĩ joaju:
 # Media information
 'file-info' => "(tamaño de jehai'aty: $1; tipo MIME: $2)",
 
-# Special:Newimages
+# Special:NewImages
 'newimages' => "Ta'ãnga pyahu renda",
 'ilsubmit'  => 'Jeheka',
 
@@ -475,7 +470,7 @@ Reomĩsérõ ta'ãnga peteĩ kuatiaroguépe, eipuru peteĩ joaju:
 # Special:Version
 'version' => "Mba'ereko", # Not used as normal message but as header for the special page itself
 
-# Special:Filepath
+# Special:FilePath
 'filepath'        => 'Ruta de archivo',
 'filepath-page'   => 'Archivo:',
 'filepath-submit' => 'Ruta',

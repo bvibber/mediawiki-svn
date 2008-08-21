@@ -4,7 +4,6 @@
  * @ingroup Language
  * @file
  *
- * @author MF-Warburg
  * @author Malafaya
  * @author MF-Warburg
  */
@@ -63,7 +62,6 @@ $messages = array(
 'mainpage-description' => 'Pennfolenn/Penfolen',
 'portal'               => 'Porth kemmynieth',
 'portal-url'           => 'Project:Porth Kemmynieth',
-'sitesupport'          => 'Riansow',
 
 'ok'          => 'Sur',
 'editsection' => 'chanjya',
@@ -116,7 +114,7 @@ $messages = array(
 # Tooltip help for the actions
 'tooltip-pt-preferences' => 'Teythi ow akont',
 
-# Special:Newimages
+# Special:NewImages
 'ilsubmit' => 'Hwilas',
 
 # Special:SpecialPages

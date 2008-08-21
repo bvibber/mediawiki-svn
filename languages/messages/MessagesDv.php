@@ -4,10 +4,9 @@
  * @ingroup Language
  * @file
  *
+ * @author Glacious
  * @author MF-Warburg
  * @author לערי ריינהארט
- * @author Siebrand
- * @author Glacious
  */
 
 $rtl = true;
@@ -112,7 +111,6 @@ $messages = array(
 'mainpage-description' => 'މައި ޞަފްޙާ',
 'portal'               => 'އާންމު ހޮޅުއަށި',
 'privacy'              => 'އަމިއްލަވަންތަ ސިޔާސަތު',
-'sitesupport'          => 'ޚައިރާތުތައް',
 
 'badaccess' => 'ހުއްދައިގެ ކުށެއް',
 
@@ -248,7 +246,7 @@ $messages = array(
 'uploadedfiles'     => 'ފޮނުވިފައިވާ ފައިލުތައް',
 'uploadwarning'     => 'ފައިލުފޮނުއްވުމުގެ ކުރިން ދެވޭ އިންޒާރު',
 
-# Special:Imagelist
+# Special:ImageList
 'imagelist' => 'ފައިލުތަކުގެ ފިހުރިސްތު',
 
 # Image description page
@@ -277,7 +275,7 @@ $messages = array(
 # Book sources
 'booksources' => 'ފޮތްތަކުގެ މަސްދަރުތައް',
 
-# Special:Allpages
+# Special:AllPages
 'allpages'       => 'ހުރިހާ ޞަފްޙާތައް',
 'allarticles'    => 'ހުރިހާ މަޒުމޫނުތައް',
 'allinnamespace' => 'ހުރިހާ ޞަފްޙާތައް (ނުތުގު $1 ގައިވާ)',
@@ -366,7 +364,7 @@ $messages = array(
 'allmessagesdefault' => 'ކުރީގެ މަތަން',
 'allmessagescurrent' => 'މިހާރުގެ މަތަން',
 
-# Special:Newimages
+# Special:NewImages
 'showhidebots' => '($1 ސެއްޓި)',
 'ilsubmit'     => 'ހޯއްދަވާ',
 
@@ -385,9 +383,6 @@ $messages = array(
 
 # E-mail address confirmation
 'confirmemail' => 'އީމޭލު އެޑްރެސް ޔަގީންކުރައްވާ',
-
-# HTML dump
-'redirectingto' => 'މިސްރާބު ކުރެވެނީ [[$1]] އަށް...',
 
 # action=purge
 'confirm_purge_button' => 'ރަނގަޅު',

@@ -6,7 +6,6 @@
  *
  * @author MONARCH79
  * @author Phoebe
- * @author Siebrand
  */
 
 $fallback = 'ru';
@@ -40,7 +39,6 @@ $messages = array(
 'mainpage-description' => 'БетIераб гьумер',
 'portal'               => 'Майдан',
 'portal-url'           => 'Project:Майдан',
-'sitesupport'          => 'Садакъа',
 
 'editsection' => 'хисизабизе',
 
@@ -95,7 +93,7 @@ $messages = array(
 # Special:Log
 'specialloguserlabel' => 'ГIахьалчи:',
 
-# Special:Allpages
+# Special:AllPages
 'allarticles' => 'Киналго макъалаби',
 
 # Watchlist

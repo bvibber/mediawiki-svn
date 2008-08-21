@@ -4,7 +4,6 @@
  * @ingroup Language
  * @file
  *
- * @author SPQRobin
  */
 
 $rtl = true;
@@ -30,7 +29,6 @@ $messages = array(
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'mainpage'             => 'Bash Bet',
 'mainpage-description' => 'Bash Bet',
-'sitesupport'          => 'Iana Toplash',
 
 'editsection' => 'uzgartish',
 'editold'     => 'uzgartish',
@@ -73,7 +71,7 @@ $messages = array(
 # Special:Log
 'log-search-submit' => 'Kuchush',
 
-# Special:Allpages
+# Special:AllPages
 'allpagessubmit' => 'Kuchush',
 
 # Watchlist
@@ -104,7 +102,7 @@ $messages = array(
 'tooltip-search'  => 'Izdash {{SITENAME}}',
 'tooltip-p-logo'  => 'Bash Bet',
 
-# Special:Newimages
+# Special:NewImages
 'ilsubmit' => 'Izdash',
 
 # Trackbacks

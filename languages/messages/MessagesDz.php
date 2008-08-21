@@ -4,10 +4,8 @@
  * @ingroup Language
  * @file
  *
- * @author Tenzin
  * @author CFynn
- * @author Siebrand
- * @author Jon Harald Søby
+ * @author Tenzin
  * @author Ævar Arnfjörð Bjarmason <avarab@gmail.com>
  */
 
@@ -138,8 +136,6 @@ $messages = array(
 'portal-url'           => 'Project:མི་སྡེའི་སྒོ་ར།',
 'privacy'              => 'སྒེར་གསང་སྲིད་བྱུས།',
 'privacypage'          => 'Project:སྒེར་གསང་སྲིད་བྱུས།',
-'sitesupport'          => 'ཕན་འདེབས།',
-'sitesupport-url'      => 'Project:ས་ཁོངས་རྒྱབ་སྐྱོར།',
 
 'retrievedfrom'       => '"$1" ལས་ སླར་འདྲེན་འབད་ཡོདཔ།',
 'youhavenewmessages'  => 'ཁྱོད་ལུ་ $1 ($2) འདུག།',
@@ -272,7 +268,7 @@ $messages = array(
 'template-protected'     => '(ཉེན་སྐྱོབ་འབད་ཡོདཔ།)',
 'template-semiprotected' => '(ཉེན་སྐྱོབ་ཕྱེད་ཀ་འབད་ཡོདཔ་)',
 'nocreatetext'           => '{{SITENAME}} གིས་ ཤོག་ལེབ་གསརཔ་བཟོ་ནི་ལས་ བཀག་དམ་འབད་ཡོདཔ།
-ཁྱོད་ཀྱིས་ ལོག་འགྱོ་ཞིནམ་ལས་ ཡོད་བཞིན་པའི་ཤོག་ལེབ་འདི་ཞུན་དག་འབད་ ཡང་ན་  [[Special:Userlogin|ནང་བསྐྱོད་དང་ ཡངན་ རྩིས་ཐོ་གསརཔ་བཟོ་]].',
+ཁྱོད་ཀྱིས་ ལོག་འགྱོ་ཞིནམ་ལས་ ཡོད་བཞིན་པའི་ཤོག་ལེབ་འདི་ཞུན་དག་འབད་ ཡང་ན་  [[Special:UserLogin|ནང་བསྐྱོད་དང་ ཡངན་ རྩིས་ཐོ་གསརཔ་བཟོ་]].',
 'recreate-deleted-warn'  => "'''ཉེན་བརྡ་: ཁྱོད་ཀྱིས་ ཧ་མ་ལས་བཏོན་བཏང་ཡོད་པའི་ཤོག་ལེབ་ཅིག་ ལོག་གསར་བཟོ་འབདཝ་ཨིན་པས།'''
 
 ཁྱོད་ཀྱིས་ ཤོག་ལེབ་འདི་འཕྲོ་མཐུད་དེ་ཞུན་དག་འབད་ནི་གི་འོས་འབབ་ཡོད་མེད་བལྟ་དགོ།
@@ -360,7 +356,7 @@ $messages = array(
 'uploadlogpage' => 'ལོག་སྐྱེལ་བཙུགས་འབད།',
 'uploadedimage' => '"[[$1]]" སྐྱེལ་བཙུགས་འབད་ཡོདཔ།',
 
-# Special:Imagelist
+# Special:ImageList
 'imagelist' => 'ཡིག་སྣོད་ཐོ་ཡིག།',
 
 # Image description page
@@ -447,7 +443,7 @@ $messages = array(
 'log'                  => 'ལོགསི།',
 'all-logs-page'        => 'ལོག་སི་ཆ་མཉམ།',
 
-# Special:Allpages
+# Special:AllPages
 'allpages'       => 'ཤོག་ལེབ་ག་ར།',
 'alphaindexline' => '$1 ལས་ $2',
 'nextpage'       => 'ཤུལ་མའི་ཤོག་ལེབ་ ($1)',
@@ -469,7 +465,7 @@ $messages = array(
 'watchlistfor'         => "('''$1''' གི་དོན་ལུ་)",
 'addedwatch'           => 'བལྟ་ཞིབ་ཐོ་ཡིག་ལུ་ཁ་སྐོང་རྐྱབ་ཅི།',
 'addedwatchtext'       => "ཤོག་ལེབ་  \"[[:\$1]]\" འདི་ ཁྱོད་རའི་ [[Special:Watchlist|watchlist]] ལུ་ ཁ་སྐོང་བརྐྱབས་ནུག།\\n
-ཤོག་ལེབ་དེ་ལུ་མ་འོངས་བསྒྱུར་བཅོས་དང་ དེ་གི་འབྲེལ་ཡོད་བློ་ཤོག་འདི་ དེ་ཁར་ཐོ་བཀོད་འབད་ནི་དང་ འཇམ་ཏོང་ཏོ་སྦེ་གདམ་ཁ་བརྐྱབ་ཚུགས་ནི་གི་དོན་ལུ་  ཤོག་ལེབ་འདི་ [[Special:Recentchanges|list of recent changes]] ནང་ལུ་ '''མངོན་གསལ་''' སྦེ་འབྱུང་འོང་།",
+ཤོག་ལེབ་དེ་ལུ་མ་འོངས་བསྒྱུར་བཅོས་དང་ དེ་གི་འབྲེལ་ཡོད་བློ་ཤོག་འདི་ དེ་ཁར་ཐོ་བཀོད་འབད་ནི་དང་ འཇམ་ཏོང་ཏོ་སྦེ་གདམ་ཁ་བརྐྱབ་ཚུགས་ནི་གི་དོན་ལུ་  ཤོག་ལེབ་འདི་ [[Special:RecentChanges|list of recent changes]] ནང་ལུ་ '''མངོན་གསལ་''' སྦེ་འབྱུང་འོང་།",
 'removedwatch'         => 'བལྟ་ཞིབ་ཐོ་ཡིག་ནང་ལས་བཏོན་བཀོག་ཡོདཔ།',
 'removedwatchtext'     => 'ཤོག་ལེབ་  "[[:$1]]" འདི་ ཁྱོད་རའི་བལྟ་ཞིབ་ཐོ་ཡིག་ནང་ལས་ བཏོན་བཀོག་ནུག།',
 'watch'                => 'བལྟ་ཞིབ་འབད།',
@@ -543,7 +539,6 @@ $messages = array(
 # What links here
 'whatlinkshere'       => 'ནཱ་ལུ་ ག་ཅི་འབྲེལ་མཐུད་འོང་ནི་མས།',
 'whatlinkshere-title' => '$1 དང་འབྲེལ་མཐུད་ཡོད་པའི་ཤོག་ལེབ།',
-'linklistsub'         => '(འབྲེལ་ལམ་ཐོ་ཡིག།)',
 'linkshere'           => "འོག་གི་ཤོག་ལེབ་ཚུ་ '''[[:$1]]''' ལུ་ འབྲེལ་མཐུད་འབད་ཨིན:",
 'nolinkshere'         => "'''[[:$1]]''' ལུ་ ཤོག་ལེབ་འབྲེལ་མཐུད་མིན་འདུག།",
 'isredirect'          => 'སླར་ལོག་ཤོག་ལེབ།',
@@ -631,7 +626,6 @@ $messages = array(
 'tooltip-n-recentchanges'         => 'ཝི་ཀི་ནང་གི་ཕྲལ་གྱི་བསྒྱུར་བཅོས་ཐོ་ཡིག།',
 'tooltip-n-randompage'            => 'རིམ་བྲལ་ཤོག་ལེབ་ཅིག་ མངོན་གསལ་འབད།',
 'tooltip-n-help'                  => 'འཚོལ་ཞིབ་འབད་སའི་ས་གནས།',
-'tooltip-n-sitesupport'           => 'ང་བཅས་ལུ་རྒྱབ་སྐྱོར་འབད།',
 'tooltip-t-whatlinkshere'         => 'ནཱ་ལུ་ འབྲེལ་མཐུད་འབད་བའི་ཝི་ཀི་ཤོག་ལེབ་ག་ར་གི་ཐོ་ཡིག།',
 'tooltip-t-contributions'         => 'ལག་ལེན་པ་འདི་གི་ཞལ་འདེབས་ཐོ་ཡིག་བལྟ།',
 'tooltip-t-emailuser'             => 'ལག་ལེན་པ་འདི་ལུ་ གློག་འཕྲིན་གཏང་།',
@@ -661,7 +655,7 @@ $messages = array(
 'show-big-image'       => 'ཧུམ་ཆ་གང་།',
 'show-big-image-thumb' => '<small>སྔོན་ལྟའི་ཚད་: $1 × $2 པིག་སེལསི་</small>',
 
-# Special:Newimages
+# Special:NewImages
 'newimages' => 'ཡིག་སྣོད་གསར་པའི་སྟོན་ཁང་།',
 
 # Bad image list
@@ -688,7 +682,7 @@ $messages = array(
 
 # External editor support
 'edit-externally'      => 'ཕྱིའི་གློག་རིམ་ལག་ལེན་འཐབ་ཐོག་ལས་ ཡིག་སྣོད་འདི་ཞུན་དག་འབད།',
-'edit-externally-help' => 'བརྡ་དོན་ཁ་གསལ་གྱི་དོན་ལུ་ [http://meta.wikimedia.org/wiki/Help:External_editors setup instructions] ལུ་ལྟ།',
+'edit-externally-help' => 'བརྡ་དོན་ཁ་གསལ་གྱི་དོན་ལུ་ [http://www.mediawiki.org/wiki/Manual:External_editors setup instructions] ལུ་ལྟ།',
 
 # 'all' in various places, this might be different for inflected languages
 'watchlistall2' => 'ཆ་མཉམ།',

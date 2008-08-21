@@ -5,7 +5,6 @@
  * @file
  *
  * @author לערי ריינהארט
- * @author SPQRobin
  */
 
 $messages = array(
@@ -79,7 +78,6 @@ $messages = array(
 'mainpage-description' => 'Ikhasi Elikhulu',
 'portal'               => 'Umnyango wamgwamanda',
 'portal-url'           => 'Project:Umnyango wamgwamanda',
-'sitesupport'          => 'Izipho',
 
 'newmessageslink'         => 'Imilayezo emisha',
 'youhavenewmessagesmulti' => 'Uyanemilayezo emisha e $1',
@@ -214,7 +212,7 @@ ikhawundi lakho liyadalwa. musa ukukhohlwa ukuguqula amakhethelo a-{{SITENAME}} 
 # Special:Log
 'specialloguserlabel' => 'Umsebenzisi:',
 
-# Special:Allpages
+# Special:AllPages
 'allinnamespace' => 'Onke amakhasi ($1 namespace)',
 'allpagessubmit' => 'Hamba',
 
@@ -269,7 +267,6 @@ ikhawundi lakho liyadalwa. musa ukukhohlwa ukuguqula amakhethelo a-{{SITENAME}} 
 # Move page
 'move-page-legend'        => 'Thuthisa ikhasi',
 'movearticle'             => 'Thuthisa ikhasi',
-'movenologin'             => 'Awungenile',
 'movepagebtn'             => 'Thuthisa ikhasi',
 'movedto'                 => 'Lithuthiselwe e',
 'movereason'              => 'Isizathu',
@@ -297,7 +294,7 @@ ikhawundi lakho liyadalwa. musa ukukhohlwa ukuguqula amakhethelo a-{{SITENAME}} 
 'markaspatrolledtext' => 'Dweba ukuthi lelikhasi liyagadwa',
 'markedaspatrolled'   => 'Dweba ukuthi lelikhasi liyagadwa',
 
-# Special:Newimages
+# Special:NewImages
 'newimages' => 'Uhlelo lwamafayela amasha',
 'noimages'  => 'Awuboni lutho.',
 'ilsubmit'  => 'Sesha',
@@ -348,7 +345,7 @@ ikhawundi lakho liyadalwa. musa ukukhohlwa ukuguqula amakhethelo a-{{SITENAME}} 
 # action=purge
 'confirm_purge_button' => 'Kulungile',
 
-# Special:Filepath
+# Special:FilePath
 'filepath-submit' => 'Indlela',
 
 );

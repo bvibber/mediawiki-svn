@@ -7,7 +7,6 @@
  * @author Макѕе
  * @author Кумулај Маркус
  * @author Приетен тев
- * @author Siebrand
  */
 
 $fallback = 'ro';
@@ -109,8 +108,6 @@ $messages = array(
 'mainpage-description' => 'Pažu principu',
 'privacy'              => 'Politikmus de ližitul',
 'privacypage'          => 'Project:Politikmus de ližitul',
-'sitesupport'          => 'Donacions',
-'sitesupport-url'      => 'Project:Donaţi',
 
 'retrievedfrom'      => 'Aduse de "$1"',
 'youhavenewmessages' => 'Veses $1 ($2).',
@@ -244,7 +241,7 @@ $3',
 # Book sources
 'booksources' => 'Surse de cărţi',
 
-# Special:Allpages
+# Special:AllPages
 'allpages'       => 'Toats paži',
 'alphaindexline' => '$1 vo $2',
 'allarticles'    => 'Toats paži',
@@ -279,7 +276,6 @@ $3',
 # What links here
 'whatlinkshere'       => 'Legǎtul a ce pažu',
 'whatlinkshere-title' => 'Paži legǎtulent a $1',
-'linklistsub'         => '(Lista de legătul)',
 'nolinkshere'         => "Paži ne legǎtent a '''[[:$1]]'''.",
 'istemplate'          => 'vikulabe',
 'whatlinkshere-links' => '← legătuls',
@@ -317,7 +313,6 @@ $3',
 'tooltip-n-recentchanges'   => "Lista des şumbǎrae recentae en l'wiki.",
 'tooltip-n-randompage'      => 'Donare npažu alaetoare',
 'tooltip-n-help'            => 'Ajutor truves isi.',
-'tooltip-n-sitesupport'     => 'Supora-nostre',
 'tooltip-t-whatlinkshere'   => 'Lista tuturor pažinilor wiki care konduc spre această pažină',
 'tooltip-t-contributions'   => "Vu lista de kontribuţi de c'utilizatoru",
 'tooltip-t-upload'          => 'Tremer fişirul',

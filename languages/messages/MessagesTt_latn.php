@@ -4,9 +4,8 @@
  * @ingroup Language
  * @file
  *
- * @author לערי ריינהארט
- * @author Siebrand
  * @author Albert Fazlî
+ * @author לערי ריינהארט
  */
 
 $namespaceNames = array(
@@ -82,8 +81,6 @@ $fallback8bitEncoding = "windows-1254";
 $linkTrail = '/^([a-zäçğıñöşü“»]+)(.*)$/sDu';
 
 $messages = array(
-'skinpreview' => '(Küzläw)',
-
 # Dates
 'sunday'    => 'Yäkşämbe',
 'monday'    => 'Düşämbe',
@@ -202,8 +199,6 @@ $messages = array(
 'mainpage-description' => 'Täwge Bit',
 'portal'               => 'Cämğiät üzäge',
 'portal-url'           => 'Project:Cämğiät Üzäge',
-'sitesupport'          => 'Ximäyäçegä',
-'sitesupport-url'      => 'Project:Ximäyäçegä',
 
 'retrievedfrom'   => 'Bu bitneñ çığanağı: "$1"',
 'newmessageslink' => 'yaña xäbär',
@@ -311,9 +306,6 @@ Anı alğaç monda tağın kerep qara.',
 'showpreview'        => 'Qarap alu...',
 'blockedtitle'       => 'Qullanuçı tíıldı',
 'whitelistedittitle' => 'Üzgärtü öçen, kerü täläp itelä',
-'whitelistreadtitle' => 'Uqu öçen kerü täläp itelä',
-'whitelistreadtext'  => 'Bitlärne uqu öçen, säxifägä isem belän [[Special:Userlogin|keräse]].',
-'whitelistacctitle'  => 'Siña xísap yasaw tíılğan',
 'loginreqtitle'      => 'Kerergä Kiräk',
 'loginreqlink'       => 'keräse',
 'accmailtitle'       => 'Sersüz künderelde.',
@@ -361,6 +353,7 @@ Zínhar, bu bitneñ wağraq kisäklärgä bülü turında uylap qara.",
 'qbsettings'            => 'Tiztirä caylawı',
 'changepassword'        => 'Sersüz üzgärtü',
 'skin'                  => 'Tışlaw',
+'skin-preview'          => 'Küzläw',
 'dateformat'            => 'Waqıt qalıbı',
 'math_failure'          => 'Uqí almadım',
 'math_unknown_error'    => 'tanılmağan xata',
@@ -417,7 +410,7 @@ Zínhar, bu bitneñ wağraq kisäklärgä bülü turında uylap qara.",
 'reupload'          => 'Qabat yökläw',
 'reuploaddesc'      => 'Yökläw bitenä qaytu.',
 'uploadnologin'     => 'Kermädeñ',
-'uploadnologintext' => 'Birem yökläw öçen, säxifägä isem belän [[Special:Userlogin|keräse]].',
+'uploadnologintext' => 'Birem yökläw öçen, säxifägä isem belän [[Special:UserLogin|keräse]].',
 'uploaderror'       => 'Yökläw xatası',
 'uploadlog'         => 'yökläw könlege',
 'uploadlogpage'     => 'Yökläw_könlege',
@@ -437,7 +430,7 @@ Zínhar, bu bitneñ wağraq kisäklärgä bülü turında uylap qara.",
 'uploaddisabled'    => 'Ğafu it, yökläw sünderelgän kileş tora.',
 'uploadcorrupt'     => 'Bu birem yä üze watıq, yä quşımtası yaraqsız. Birem tikşerüdän soñ qabat yöklä zínhar.',
 
-# Special:Imagelist
+# Special:ImageList
 'imgfile'   => 'fayl',
 'imagelist' => 'Räsem tezmäse',
 
@@ -504,7 +497,7 @@ Zínhar, bu bitneñ wağraq kisäklärgä bülü turında uylap qara.",
 'log'           => 'Köndelikler',
 'all-logs-page' => 'Barlıq köndelik',
 
-# Special:Allpages
+# Special:AllPages
 'allpages'     => 'Bar bitlär',
 'nextpage'     => 'Kiläse bit ($1)',
 'prevpage'     => 'Ötken bet ($1)',
@@ -514,7 +507,7 @@ Zínhar, bu bitneñ wağraq kisäklärgä bülü turında uylap qara.",
 'categories'         => 'Cíıntıqlar',
 'categoriespagetext' => "Bu wiki'dä kiläse cíıntıqlar bar.",
 
-# Special:Listusers
+# Special:ListUsers
 'listusers-submit' => 'Körset',
 
 # E-mail user
@@ -534,7 +527,7 @@ Zínhar, bu bitneñ wağraq kisäklärgä bülü turında uylap qara.",
 'mywatchlist'      => 'Saqtezmäm',
 'nowatchlist'      => 'Saqtezmäñdä kertemnär yuq.',
 'watchnologin'     => 'Kermädeñ',
-'watchnologintext' => 'Saqtezmäñ üzgärtü öçen, säxifägä isem belän [[Special:Userlogin|keräse]].',
+'watchnologintext' => 'Saqtezmäñ üzgärtü öçen, säxifägä isem belän [[Special:UserLogin|keräse]].',
 'addedwatch'       => 'Saqtezmägä quşıldı',
 'removedwatch'     => 'Saqtezmädän salındı',
 'removedwatchtext' => '«[[:$1]]» atlı bit saqtezmäñnän töşerelde.',
@@ -591,7 +584,6 @@ Soñğı beterülär $2 bitendä terkälenä.',
 
 # What links here
 'whatlinkshere' => 'Kem bäyle moña',
-'linklistsub'   => '(Läñker tezmäse)',
 'isredirect'    => 'küçerelü bite',
 
 # Block/unblock
@@ -626,7 +618,6 @@ Soñğı beterülär $2 bitendä terkälenä.',
 # Move page
 'move-page-legend' => 'Bit küçerü',
 'movearticle'      => 'Küçeräse bit',
-'movenologin'      => 'Kermädeñ',
 'newtitle'         => 'Yaña başlıq',
 'movepagebtn'      => 'Küçer bitne',
 'pagemovedsub'     => 'Küçerü uñışlı uzdı',
@@ -672,7 +663,6 @@ yä isä saylanğan isem yaraqsız buldı. Başqa isem sayla zínhar.',
 'tooltip-p-logo'             => 'Täwge Bit',
 'tooltip-n-mainpage'         => 'Täwge Bitkä küçü',
 'tooltip-n-randompage'       => 'Berär nindi bit kürsätä',
-'tooltip-n-sitesupport'      => 'Ximäyäçe bul',
 'tooltip-feed-rss'           => 'Bu bitneñ RSS tasması',
 'tooltip-feed-atom'          => 'Bu bitneñ Atom tasması',
 'tooltip-t-specialpages'     => 'Bar maxsus bitlär tezmäse',
@@ -705,7 +695,7 @@ yä isä saylanğan isem yaraqsız buldı. Başqa isem sayla zínhar.',
 # Media information
 'show-big-image' => 'Towlı ölçemi',
 
-# Special:Newimages
+# Special:NewImages
 'ilsubmit' => 'Ezläw',
 'bydate'   => 'waqıt buyınça',
 

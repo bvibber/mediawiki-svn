@@ -627,10 +627,9 @@ class Sanitizer {
 	}
 
 	/**
-	 * Merge two sets of HTML attributes.
-	 * Conflicting items in the second set will override those
-	 * in the first, except for 'class' attributes which will be
-	 * combined.
+	 * Merge two sets of HTML attributes.  Conflicting items in the second set
+	 * will override those in the first, except for 'class' attributes which
+	 * will be combined (if they're both strings).
 	 *
 	 * @todo implement merging for other attributes such as style
 	 * @param array $a
@@ -639,16 +638,12 @@ class Sanitizer {
 	 */
 	static function mergeAttributes( $a, $b ) {
 		$out = array_merge( $a, $b );
-		if( isset( $a['class'] )
-			&& isset( $b['class'] )
-			&& $a['class'] !== $b['class'] ) {
-
-			$out['class'] = implode( ' ',
-				array_unique(
-					preg_split( '/\s+/',
-						$a['class'] . ' ' . $b['class'],
-						-1,
-						PREG_SPLIT_NO_EMPTY ) ) );
+		if( isset( $a['class'] ) && isset( $b['class'] )
+		&& is_string( $a['class'] ) && is_string( $b['class'] )
+		&& $a['class'] !== $b['class'] ) {
+			$classes = preg_split( '/\s+/', "{$a['class']} {$b['class']}",
+				-1, PREG_SPLIT_NO_EMPTY );
+			$out['class'] = implode( ' ', array_unique( $classes ) );
 		}
 		return $out;
 	}
@@ -827,6 +822,22 @@ class Sanitizer {
 	}
 
 	/**
+	 * Given HTML input, escape with htmlspecialchars but un-escape entites.
+	 * This allows (generally harmless) entities like &nbsp; to survive.
+	 *
+	 * @param  string $html String to escape
+	 * @return string Escaped input
+	 */
+	static function escapeHtmlAllowEntities( $html ) {
+		# It seems wise to escape ' as well as ", as a matter of course.  Can't
+		# hurt.
+		$html = htmlspecialchars( $html, ENT_QUOTES );
+		$html = str_replace( '&amp;', '&', $html );
+		$html = Sanitizer::normalizeCharReferences( $html );
+		return $html;
+	}
+
+	/**
 	 * Regex replace callback for armoring links against further processing.
 	 * @param array $matches
 	 * @return string
@@ -844,7 +855,7 @@ class Sanitizer {
 	 * @param string
 	 * @return array
 	 */
-	static function decodeTagAttributes( $text ) {
+	public static function decodeTagAttributes( $text ) {
 		$attribs = array();
 
 		if( trim( $text ) == '' ) {
@@ -1301,7 +1312,7 @@ class Sanitizer {
 		return $out;
 	}
 
-	static function cleanUrl( $url, $hostname=true ) {
+	static function cleanUrl( $url ) {
 		# Normalize any HTML entities in input. They will be
 		# re-escaped by makeExternalLink().
 		$url = Sanitizer::decodeCharReferences( $url );

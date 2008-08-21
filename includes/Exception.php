@@ -137,7 +137,7 @@ class MWException extends Exception {
 		global $wgOut;
 		if ( $this->useOutputPage() ) {
 			$wgOut->setPageTitle( $this->getPageTitle() );
-			$wgOut->setRobotpolicy( "noindex,nofollow" );
+			$wgOut->setRobotPolicy( "noindex,nofollow" );
 			$wgOut->setArticleRelated( false );
 			$wgOut->enableClientCache( false );
 			$wgOut->redirect( '' );
@@ -164,13 +164,13 @@ class MWException extends Exception {
 	 */
 	function report() {
 		global $wgCommandLineMode;
+		$log = $this->getLogMessage();
+		if ( $log ) {
+			wfDebugLog( 'exception', $log );
+		}
 		if ( $wgCommandLineMode ) {
 			fwrite( STDERR, $this->getText() );
 		} else {
-			$log = $this->getLogMessage();
-			if ( $log ) {
-				wfDebugLog( 'exception', $log );
-			}
 			$this->reportHTML();
 		}
 	}

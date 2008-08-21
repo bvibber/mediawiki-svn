@@ -5,11 +5,9 @@
  * @file
  *
  * @author Malangali
- * @author לערי ריינהארט
- * @author Siebrand
- * @author SPQRobin
  * @author Marcos
  * @author Robert Ullmann
+ * @author לערי ריינהארט
  */
 
 $messages = array(
@@ -141,8 +139,6 @@ $messages = array(
 'portal-url'           => 'Project:Jumuia',
 'privacy'              => 'Sera ya faragha',
 'privacypage'          => 'Project:Sera ya faragha',
-'sitesupport'          => 'Michango',
-'sitesupport-url'      => 'Project:Tuunge mkono',
 
 'retrievedfrom'       => 'Rudishwa kutoka "$1"',
 'youhavenewmessages'  => 'Una $1 ($2).',
@@ -184,7 +180,7 @@ $messages = array(
 'loginproblem'            => '<b>Tatizo limetokea wakati ulipojaribu kuingia.</b><br />Jaribu tena!',
 'login'                   => 'Ingia',
 'nav-login-createaccount' => 'Ingia/ sajili akaunti',
-'loginprompt'             => 'Lazima kompyuta yako ipokee [[kuki]] ili uweze kuingia kwenye {{SITENAME}}.',
+'loginprompt'             => 'Lazima kompyuta yako ipokee kuki ili uweze kuingia kwenye {{SITENAME}}.',
 'userlogin'               => 'Ingia/ sajili akaunti',
 'logout'                  => 'Toka',
 'userlogout'              => 'Toka',
@@ -200,7 +196,9 @@ $messages = array(
 'prefs-help-realname'     => 'Jina la kweli si lazima. Ukichagua kutaja jina lako hapa, litatumiwa kuonyesha kwamba ndiyo ulifanya kazi unayochangia.',
 'loginerror'              => 'Kosa la kuingia',
 'nocookiesnew'            => "Umesajiliwa, lakini bado hujaingizwa. {{SITENAME}} inatumia ''kuki'' ili watumiaji waingizwe. Kompyuta yako inazuia ''kuki''. Tafadhali, ondoa kizuizi hicho uingie kwa kutumia jina mpya na neno la siri.",
-'nocookieslogin'          => '{{SITENAME}} inatumia [[kuki]] ili watumiaji waweze kuingia. Kompyuta yako inakataa kupokea kuki. Tafadhali, ondoa kizuizi hicho, baadaye jaribu tena.',
+'nocookieslogin'          => '{{SITENAME}} inatumia kuki ili watumiaji waweze kuingia.
+Kompyuta yako inakataa kupokea kuki.
+Tafadhali, ondoa kizuizi hicho, baadaye jaribu tena.',
 'loginsuccesstitle'       => 'Umefaulu kuingia',
 'loginsuccess'            => "'''Umeingia {{SITENAME}} kama \"\$1\".'''",
 'nosuchuser'              => 'Hakuna mtumiaji mwenye jina "$1". Labda umeandika vibaya, au sajili akaunti mpya.',
@@ -233,7 +231,7 @@ kuthibitisha kwamba wewe ndiyo ni mwenye akaunti.',
 'italic_tip'      => 'Matini ya italiki',
 'link_sample'     => 'Jina la kiungo',
 'link_tip'        => 'Kiungo cha ndani',
-'extlink_sample'  => 'http://www.mfano.com jina la kiungo',
+'extlink_sample'  => 'http://www.example.com jina la kiungo',
 'extlink_tip'     => 'Kiungo cha nje (kumbuka kuanza na http:// )',
 'headline_sample' => 'Matini ya kichwa cha habari',
 'headline_tip'    => 'Kichwa cha habari, saizi 2',
@@ -291,7 +289,7 @@ Tafadhali fikiria kuhusu kuvunja ukurasa kwa vipande vifupi.</strong>',
 'templatesusedpreview'   => 'Vigezo vinavyotumiwa katika mandhari haya:',
 'template-protected'     => '(kulindwa)',
 'template-semiprotected' => '(ulindaji kwa kiasi)',
-'nocreatetext'           => '{{SITENAME}} imebana uwezekano kutengeneza kurasa mpya. Unaweza kurudia na kuhariri kurasa zilizomo, au [[Special:Userlogin|ingia au anza akaunti]].',
+'nocreatetext'           => '{{SITENAME}} imebana uwezekano kutengeneza kurasa mpya. Unaweza kurudia na kuhariri kurasa zilizomo, au [[Special:UserLogin|ingia au anza akaunti]].',
 'recreate-deleted-warn'  => "'''Ilani: Unatengeneza tena ukurasa uliofutwa tayari.'''
 
 Fikiria kama inafaa kuendelea kuhariri ukurasa huu.
@@ -382,7 +380,7 @@ Ufunguo: (sasa) = tofauti na toleo la sasa, (kabla) = tofauti na toleo lililotan
 'ignorewarning' => 'Hifadhi bila kujali maonyo yoyote.',
 'uploadedimage' => ' "[[$1]]" imepakiwa',
 
-# Special:Imagelist
+# Special:ImageList
 'imagelist' => 'Orodha ya mafaili',
 
 # Image description page
@@ -471,7 +469,7 @@ Ufunguo: (sasa) = tofauti na toleo la sasa, (kabla) = tofauti na toleo lililotan
 'log'                  => 'Kumbukumbu',
 'all-logs-page'        => 'Kumbukumbu zote',
 
-# Special:Allpages
+# Special:AllPages
 'allpages'       => 'Kurasa zote',
 'alphaindexline' => '$1 hadi $2',
 'nextpage'       => 'Ukurasa ujao ($1)',
@@ -494,7 +492,7 @@ Ufunguo: (sasa) = tofauti na toleo la sasa, (kabla) = tofauti na toleo lililotan
 'addedwatch'           => 'Imeongezwa kwenye maangalizi yako',
 'addedwatchtext'       => "Ukurasa \"[[:\$1]]\" umewekwa kwenye [[Special:Watchlist|maangalizi]] yako.
 Mabadiliko katika ukurasa huo na ukurasa wake wa majadiliano utaonekana hapo,
-na ukurasa utaonyeshwa wenye '''koze''' kwenye [[Special:Recentchanges|orodha ya mabadiliko ya karibuni]]
+na ukurasa utaonyeshwa wenye '''koze''' kwenye [[Special:RecentChanges|orodha ya mabadiliko ya karibuni]]
 ili kukusaidia kutambua.
 
 Ukitaka kufuta ukurasa huo kutoka maangalizi yako baadaye, bonyeza \"Acha kufuatilia\" katika mwamba pembeni.",
@@ -570,7 +568,6 @@ Hivi ni vipimo kwa ukurasa <strong>$1</strong>:',
 # What links here
 'whatlinkshere'       => 'Viungo viungacho ukurasa huu',
 'whatlinkshere-title' => 'Kurasa zilizounganishwa na $1',
-'linklistsub'         => '(Orodha ya viungo)',
 'linkshere'           => "Kurasa zifuatazo zimeunganishwa na '''[[:$1]]''':",
 'nolinkshere'         => "Hakuna kurasa zilizounganishwa na '''[[:$1]]'''.",
 'isredirect'          => 'elekeza ukurasa',
@@ -666,7 +663,6 @@ Chagua jina lengine.',
 'tooltip-n-recentchanges'         => 'Orodha ya mabadiliko ya hivi karibuni katika Wiki.',
 'tooltip-n-randompage'            => 'Onyesha ukurasa wa bahati',
 'tooltip-n-help'                  => 'Mahali pa kueleweshwa.',
-'tooltip-n-sitesupport'           => 'Tuunge mkono',
 'tooltip-t-whatlinkshere'         => 'Orodha ya kurasa zote za Wiki zilizounganishwa na ukurasa huu',
 'tooltip-t-contributions'         => 'Tazama orodha ya michango kwa mtumiaji huyu',
 'tooltip-t-emailuser'             => 'Mtumie mtumiaji huyu barua pepe',
@@ -699,7 +695,7 @@ Chagua jina lengine.',
 'show-big-image'       => 'Ukubwa wa awali',
 'show-big-image-thumb' => '<small>Ukubwa wa hakikisho hili: piseli $1 x $2</small>',
 
-# Special:Newimages
+# Special:NewImages
 'newimages' => 'Mkusanyiko wa faili jipya',
 
 # Bad image list
@@ -725,7 +721,7 @@ likifupishwa. Nyuga zingine zitafichwa kama chaguo-msingi.
 
 # External editor support
 'edit-externally'      => 'Tumia programu ya nje kuhariri faili hii',
-'edit-externally-help' => 'Ona [http://meta.wikimedia.org/wiki/Help:External_editors maelezo (kwa Kiingereza)] kwa maarifa mengine.',
+'edit-externally-help' => 'Ona [http://www.mediawiki.org/wiki/Manual:External_editors maelezo (kwa Kiingereza)] kwa maarifa mengine.',
 
 # 'all' in various places, this might be different for inflected languages
 'watchlistall2' => 'zote',

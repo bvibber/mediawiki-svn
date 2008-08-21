@@ -4,10 +4,9 @@
  * @ingroup Language
  * @file
  *
+ * @author Felipe Aira
  * @author Sky Harbor
  * @author לערי ריינהארט
- * @author Felipe Aira
- * @author Siebrand
  */
 
 $messages = array(
@@ -53,8 +52,6 @@ $messages = array(
 'underline-always'  => 'Palagi',
 'underline-never'   => 'Hindi magpakailanman',
 'underline-default' => 'Tinakda ng pambasa-basa',
-
-'skinpreview' => '(Pribyu)',
 
 # Dates
 'sunday'        => 'Linggo',
@@ -219,13 +216,9 @@ $messages = array(
 'portal-url'           => 'Project:Puntahan ng pamayanan',
 'privacy'              => 'Patakaran sa paglilihim',
 'privacypage'          => 'Project:Patakaran sa paglilihim',
-'sitesupport'          => 'Donasyon',
-'sitesupport-url'      => 'Project:Donasyon',
 
 'badaccess'        => 'Kamalian sa pahintulot',
 'badaccess-group0' => 'Hindi ka pinahintulutang isagawa hiniling mo.',
-'badaccess-group1' => 'Nakatakda lamang sa mga manggagamit sa pangkat $1 hinihiling mo.',
-'badaccess-group2' => 'Nakatakda lamang sa mga manggagamit sa isa sa mga pangkat $1 hinihiling mo.',
 'badaccess-groups' => 'Nakatakda lamang sa mga manggamit ng isa sa mga pangkat $1 hinihiling mo.',
 
 'versionrequired'     => 'Kinakailangan ang bersyong $1 ng MediaWiki',
@@ -266,7 +259,7 @@ ang gawang itinakda ng URL',
 'nosuchspecialpage' => 'Walang ganoong natatanging pahina',
 'nospecialpagetext' => "<big>'''Humiling ka ng isang natatanging pahina na walang saysay.'''</big>
 
-Isang tala ng mga natatanging pahina na may saysay ay matatagpuan sa [[Special:Specialpages|{{int:specialpages}}]].",
+Isang tala ng mga natatanging pahina na may saysay ay matatagpuan sa [[Special:SpecialPages|{{int:specialpages}}]].",
 
 # General errors
 'error'                => 'Kamalian',
@@ -381,6 +374,7 @@ Nilikha na ang iyong kuwenta. Huwag kalimutang baguhin ang iyong mga kagustuhan 
 # Preferences page
 'preferences'   => 'Mga kagustuhan',
 'mypreferences' => 'Aking mga kagustuhan',
+'skin-preview'  => 'Pribyu',
 
 # Recent changes
 'recentchanges'     => 'Mga huling binago',
@@ -395,7 +389,7 @@ Nilikha na ang iyong kuwenta. Huwag kalimutang baguhin ang iyong mga kagustuhan 
 'reupload'          => 'Magkarga muli',
 'reuploaddesc'      => 'Bumalik sa pormularyo ng pagkarga',
 'uploadnologin'     => 'Hindi nakalagda',
-'uploadnologintext' => 'Dapat ikaw ay [[Special:Userlogin|nakalagda]]
+'uploadnologintext' => 'Dapat ikaw ay [[Special:UserLogin|nakalagda]]
 upang makapagkarga ng talaksan.',
 'uploaderror'       => 'Kamalian sa pagkarga',
 'watchthisupload'   => 'Bantayan itong pahina',
@@ -442,7 +436,7 @@ upang makapagkarga ng talaksan.',
 'move'              => 'Ilipat',
 'movethispage'      => 'Ilipat itong pahina',
 
-# Special:Allpages
+# Special:AllPages
 'allpages'        => 'Lahat ng pahina',
 'allpages-bad-ns' => 'Wala sa {{SITENAME}} ang ngalan-espasyong "$1".',
 
@@ -532,8 +526,6 @@ $1',
 'unlockdb' => 'Buksan ang kalipunan ng datos',
 
 # Move page
-'movenologin'             => 'Hindi nakalagda',
-'movenologintext'         => 'Kailangang ikaw ay isang naka-rehistrong manggagamit at ay [[Special:Userlogin|nakalagda]] upang makapaglipat ng pahina.',
 'movenotallowed'          => 'Wala kang permisong maglipat ng pahina sa {{SITENAME}}.',
 'newtitle'                => 'Sa bagong pamagat:',
 'move-watch'              => 'Bantayan itong pahina',
@@ -602,7 +594,7 @@ Please visit [http://www.mediawiki.org/wiki/Localisation MediaWiki Localisation]
 'show-big-image'       => 'Buong resolusyon',
 'show-big-image-thumb' => '<small>Laki ng itong pribyu: $1 × $2 piksel</small>',
 
-# Special:Newimages
+# Special:NewImages
 'newimages' => 'Galeriya ng mga bagong talaksan',
 
 # External editor support
@@ -611,9 +603,6 @@ Please visit [http://www.mediawiki.org/wiki/Localisation MediaWiki Localisation]
 # Delete conflict
 'deletedwhileediting' => 'Babala: Nabura na ang pahinang ito pagkatapos mong magsimulang magbago!',
 'recreate'            => 'Likhain muli',
-
-# HTML dump
-'redirectingto' => 'Nagkakarga sa [[$1]]...',
 
 # action=purge
 'confirm_purge' => 'Linisin ang baunan ng pahinang ito?
@@ -646,7 +635,7 @@ $1',
 'version-software-product'  => 'Produkto',
 'version-software-version'  => 'Bersyon',
 
-# Special:Filepath
+# Special:FilePath
 'filepath-page' => 'Talaksan:',
 
 # Special:SpecialPages

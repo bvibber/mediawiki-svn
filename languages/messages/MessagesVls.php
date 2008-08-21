@@ -4,10 +4,8 @@
  * @ingroup Language
  * @file
  *
- * @author SPQRobin
- * @author Siebrand
- * @author לערי ריינהארט
  * @author Tbc
+ * @author לערי ריינהארט
  */
 
 $fallback = 'nl';
@@ -97,7 +95,7 @@ $messages = array(
 # Tooltip help for the actions
 'tooltip-n-mainpage' => "Noar 't voorblad goane",
 
-# Special:Newimages
+# Special:NewImages
 'newimages' => 'Nieuwe ofbeeldiengn',
 
 );

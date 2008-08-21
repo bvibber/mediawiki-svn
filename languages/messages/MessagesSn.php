@@ -3,6 +3,8 @@
  *
  * @ingroup Language
  * @file
+ *
+ * @author Hakka
  */
 
 $messages = array(
@@ -68,7 +70,6 @@ $messages = array(
 'mainpage'             => 'Peji Rekutanga',
 'mainpage-description' => 'Peji Rekutanga',
 'portal'               => 'Mukova wegutse',
-'sitesupport'          => 'Zvipo',
 
 'newmessageslink'         => 'mashoko matsva',
 'youhavenewmessagesmulti' => 'Une mashoko matsva pa$1',

@@ -7,7 +7,6 @@
  * @author Макѕе
  * @author Кумулај Маркус
  * @author Приетен тев
- * @author Siebrand
  */
 
 $fallback = 'mk';
@@ -109,8 +108,6 @@ $messages = array(
 'mainpage-description' => 'Пажу принципу',
 'privacy'              => 'Политикмус де лижитул',
 'privacypage'          => 'Project:политикмус де лижитул',
-'sitesupport'          => 'Донационс',
-'sitesupport-url'      => 'Project:Донаћи',
 
 'retrievedfrom'      => 'адусе де "$1"',
 'youhavenewmessages' => 'Весес $1 ($2).',
@@ -244,7 +241,7 @@ $3',
 # Book sources
 'booksources' => 'Сурсе де цајрћи',
 
-# Special:Allpages
+# Special:AllPages
 'allpages'       => 'Тоатс пажи',
 'alphaindexline' => '$1 во $2',
 'allarticles'    => 'Тоат пажи',
@@ -279,7 +276,6 @@ $3',
 # What links here
 'whatlinkshere'       => 'Легајтул а це пажу',
 'whatlinkshere-title' => 'Пажус легајтулент а $1',
-'linklistsub'         => '(Листа де легајтул)',
 'nolinkshere'         => "Пажи не легајтент а '''[[:$1]]'''.",
 'istemplate'          => 'викулабе',
 'whatlinkshere-links' => '← легајтулс',
@@ -317,7 +313,6 @@ $3',
 'tooltip-n-recentchanges'   => 'Листа дес шумбајрае рецентае ен лБики.',
 'tooltip-n-randompage'      => 'Донаре нпажу алаетоаре',
 'tooltip-n-help'            => 'Ајутор трувес иси.',
-'tooltip-n-sitesupport'     => 'Супора-ностре',
 'tooltip-t-whatlinkshere'   => 'Листа тутурор пажинилор вики царе кондуц спре ацестај пажинај',
 'tooltip-t-contributions'   => 'Ву листа де контрибући де цутилизатору',
 'tooltip-t-upload'          => 'Тремер фиширул',

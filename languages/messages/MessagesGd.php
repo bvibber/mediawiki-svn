@@ -4,11 +4,9 @@
  * @ingroup Language
  * @file
  *
- * @author SPQRobin
- * @author לערי ריינהארט
- * @author Sionnach
  * @author Raymond
- * @author Siebrand
+ * @author Sionnach
+ * @author לערי ריינהארט
  */
 
 $messages = array(
@@ -77,7 +75,6 @@ $messages = array(
 'portal'               => 'Doras na Coimhearsnachd',
 'portal-url'           => 'Project:Doras na coimhearsnachd',
 'privacy'              => 'Polasaidh uaigneachd',
-'sitesupport'          => 'Tabhartasan',
 
 'retrievedfrom'   => 'Air tarraing à "$1"',
 'newmessageslink' => 'teachdaireachdan ùra',
@@ -132,29 +129,28 @@ $1",
 'headline_tip'    => 'Ceann-loidhne ìre 2',
 
 # Edit pages
-'summary'           => 'Geàrr-chùnntas',
-'subject'           => 'Cuspair/ceann-loidhne',
-'minoredit'         => 'Seo mùthadh beag',
-'watchthis'         => 'Cùm sùil air an aithris seo',
-'savearticle'       => 'Sàbhail duilleag',
-'preview'           => 'Roi-shealladh',
-'showpreview'       => 'Nochd roi-shealladh',
-'showdiff'          => 'Seall atharrachaidhean',
-'blockedtitle'      => 'Tha an cleachdair air a bhacadh',
-'whitelistacctitle' => 'Chan eil cead agaibh cùnntas a chruthachadh',
-'accmailtitle'      => 'Facal-faire air a chur.',
-'accmailtext'       => "Tha am facal-faire aig '$1' air a chur ri $2.",
-'newarticle'        => '(Ùr)',
-'noarticletext'     => '(Chan eil teacsa anns an duilleig seo a-nis)',
-'updated'           => '(Nua-dheasaichte)',
-'previewnote'       => '<strong>Cuimhnichibh nach e ach roi-shealladh a tha seo, agus chan eil e air a shàbhaladh fhathast!</strong>',
-'editing'           => "A'deasaicheadh $1",
-'editconflict'      => 'Mì-chòrdadh deasachaidh: $1',
-'explainconflict'   => "Tha cuideigin eile air an duilleig seo a mhùthadh o'n thòisich sibh fhèin a dheasaicheadh. Tha am bocsa teacsa shuas a'nochdadh na duilleig mar a tha e an dràsda. Tha na mùthaidhean agaibhse anns a'bhocsa shios. Feumaidh sibh na mùthaidhean agaibh a choimeasgachadh leis an teacsa làithreach. Cha tèid <b>ach an teacsa shuas</b> a shàbhaladh an uair a bhriogas sibh \"Sàbhail duilleag\".<p>",
-'yourtext'          => 'An teacsa agaibh',
-'storedversion'     => 'Lethbhreac taisgte',
-'editingold'        => "<strong>RABHADH: Tha sibh a'deasaicheadh lethbhreac sean-aimsireil na duilleig seo. Ma shàbhalas sibh e, bithidh uile na mùthaidhean dèanta as dèidh an lethbhreac seo air chall.</strong>",
-'yourdiff'          => 'Caochlaidhean',
+'summary'         => 'Geàrr-chùnntas',
+'subject'         => 'Cuspair/ceann-loidhne',
+'minoredit'       => 'Seo mùthadh beag',
+'watchthis'       => 'Cùm sùil air an aithris seo',
+'savearticle'     => 'Sàbhail duilleag',
+'preview'         => 'Roi-shealladh',
+'showpreview'     => 'Nochd roi-shealladh',
+'showdiff'        => 'Seall atharrachaidhean',
+'blockedtitle'    => 'Tha an cleachdair air a bhacadh',
+'accmailtitle'    => 'Facal-faire air a chur.',
+'accmailtext'     => "Tha am facal-faire aig '$1' air a chur ri $2.",
+'newarticle'      => '(Ùr)',
+'noarticletext'   => '(Chan eil teacsa anns an duilleig seo a-nis)',
+'updated'         => '(Nua-dheasaichte)',
+'previewnote'     => '<strong>Cuimhnichibh nach e ach roi-shealladh a tha seo, agus chan eil e air a shàbhaladh fhathast!</strong>',
+'editing'         => "A'deasaicheadh $1",
+'editconflict'    => 'Mì-chòrdadh deasachaidh: $1',
+'explainconflict' => "Tha cuideigin eile air an duilleig seo a mhùthadh o'n thòisich sibh fhèin a dheasaicheadh. Tha am bocsa teacsa shuas a'nochdadh na duilleig mar a tha e an dràsda. Tha na mùthaidhean agaibhse anns a'bhocsa shios. Feumaidh sibh na mùthaidhean agaibh a choimeasgachadh leis an teacsa làithreach. Cha tèid <b>ach an teacsa shuas</b> a shàbhaladh an uair a bhriogas sibh \"Sàbhail duilleag\".<p>",
+'yourtext'        => 'An teacsa agaibh',
+'storedversion'   => 'Lethbhreac taisgte',
+'editingold'      => "<strong>RABHADH: Tha sibh a'deasaicheadh lethbhreac sean-aimsireil na duilleig seo. Ma shàbhalas sibh e, bithidh uile na mùthaidhean dèanta as dèidh an lethbhreac seo air chall.</strong>",
+'yourdiff'        => 'Caochlaidhean',
 
 # History pages
 'nohistory'  => 'Chan eil eachdraidh deasachaidh aig an duilleig seo.',
@@ -174,8 +170,8 @@ $1",
 'prevn'             => '$1 mu dheireadh',
 'nextn'             => 'an ath $1',
 'viewprevnext'      => 'Seall ($1) ($2) ($3).',
-'showingresults'    => "A'nochdadh <b>$1</b> toraidhean gu h-ìosal a'tòiseachadh le #<b>$2</b>.",
-'showingresultsnum' => "A'nochdadh <b>$3</b> toraidhean gu h-ìosal a'tòiseachadh le #<b>$2</b>.",
+'showingresults'    => "A'nochdadh '''$1''' toraidhean gu h-ìosal a'tòiseachadh le #'''$2'''.",
+'showingresultsnum' => "A'nochdadh '''$3''' toraidhean gu h-ìosal a'tòiseachadh le #'''$2'''.",
 'powersearch'       => 'Rannsaich',
 
 # Preferences page
@@ -223,7 +219,7 @@ $1",
 'fileexists'    => 'Tha faidhle leis an ainm seo ann cheana; nach faigh sibh cinnt air <strong><tt>$1</tt></strong> gu bheil sibh ag iarraidh atharrachadh.',
 'savefile'      => 'Sàbhail faidhle',
 
-# Special:Imagelist
+# Special:ImageList
 'imagelist' => 'Liosta nan ìomhaigh',
 
 # Random page
@@ -255,7 +251,7 @@ The [http://www.mediawiki.org/wiki/Manual:Job_queue job queue] length is '''\$7'
 'move'                    => 'Gluais',
 'movethispage'            => 'Caraich an duilleag seo',
 
-# Special:Allpages
+# Special:AllPages
 'allpages' => 'Duilleagan uile',
 'nextpage' => 'An ath dhuilleag ($1)',
 
@@ -274,7 +270,7 @@ The [http://www.mediawiki.org/wiki/Manual:Job_queue job queue] length is '''\$7'
 'watchlist'          => 'Mo fhaire',
 'nowatchlist'        => 'Chan eil altan air ur faire.',
 'addedwatch'         => 'Cuirte ri coimheadlìosta',
-'addedwatchtext'     => "Tha an duilleag \"[[:\$1]]\" cuirte ri [[Special:Watchlist|ur faire]] agaibh.  Ri teachd, bith chuir an àireamh an-sin mùthadhan na duilleag sin agus a'dhuilleag \"Talk\", agus bith a'dhuilleag '''tromte''' anns an [[Special:Recentchanges|lìosta nan mùthadhan ùra]] a dh'fhurasdaich i a sheall.
+'addedwatchtext'     => "Tha an duilleag \"[[:\$1]]\" cuirte ri [[Special:Watchlist|ur faire]] agaibh.  Ri teachd, bith chuir an àireamh an-sin mùthadhan na duilleag sin agus a'dhuilleag \"Talk\", agus bith a'dhuilleag '''tromte''' anns an [[Special:RecentChanges|lìosta nan mùthadhan ùra]] a dh'fhurasdaich i a sheall.
 
 Ma bu toil leibh a dhubh a'dhuilleag as ur faire agaibh nas fadalache, cnap air \"Caisg a' coimhead\" air an taobh-colbh.",
 'watchthispage'      => 'Cùm sùil air an dhuilleag seo',
@@ -321,7 +317,7 @@ Ma bu toil leibh a dhubh a'dhuilleag as ur faire agaibh nas fadalache, cnap air 
 'badipaddress'       => "Chan eil an seòladh IP aig a'cleachdair seo iomchaidh",
 'blockipsuccesssub'  => 'Shoirbhich bacadh',
 'blockipsuccesstext' => "Tha [[Special:Contributions/$1|$1]] air a bhacadh.
-<br />Faic [[Special:Ipblocklist|Liosta nan IP baicte]] na bacaidhean a dh'ath-sgrùdadh.",
+<br />Faic [[Special:IPBlockList|Liosta nan IP baicte]] na bacaidhean a dh'ath-sgrùdadh.",
 'unblockip'          => 'Neo-bhac cleachdair',
 'ipusubmit'          => 'Neo-bhac an seòladh seo',
 'ipblocklist'        => 'Liosta seòlaidhean IP agus ainmean-cleachdair air am bacadh',
@@ -372,7 +368,7 @@ Ma bu toil leibh a dhubh a'dhuilleag as ur faire agaibh nas fadalache, cnap air 
 'infosubtitle' => 'Fiosrachadh air duilleig',
 'numwatchers'  => 'Aireamh luchd-faire: $1',
 
-# Special:Newimages
+# Special:NewImages
 'ilsubmit' => 'Rannsaich',
 'bydate'   => 'air ceann-latha',
 

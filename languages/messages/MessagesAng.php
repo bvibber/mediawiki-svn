@@ -1,13 +1,12 @@
 <?php
-/** Old English (Anglo Saxon)
+/** Old English (Anglo-Saxon)
  *
  * @ingroup Language
  * @file
  *
- * @author SPQRobin
  * @author JJohnson
+ * @author Spacebirdy
  * @author Wōdenhelm
- * @author Siebrand
  */
 
 $messages = array(
@@ -26,8 +25,6 @@ $messages = array(
 
 'underline-always' => 'Ǣfre',
 'underline-never'  => 'Nǣfre',
-
-'skinpreview' => '(Forescēawian)',
 
 # Dates
 'sunday'        => 'Sunnandæġ',
@@ -155,7 +152,6 @@ $messages = array(
 'mainpage-description' => 'Hēafodsīde',
 'portal'               => 'Gemǣnscipe Ingang',
 'portal-url'           => 'Project:Gemǣnscipe Ingang',
-'sitesupport'          => 'Gieldgiefa',
 
 'versionrequired' => 'Fadunge $1 þæs MediaWicis nēodaþ',
 
@@ -248,9 +244,6 @@ Edscēawa þīne wrītunge, oþþe brūc þone form under tō settene nīwne br�
 'showpreview'            => 'Forescēawian',
 'whitelistedittitle'     => 'Inmeldunge behófod tó ádihtenne',
 'whitelistedittext'      => 'Þu scealt $1 tó ádihtenne trametas.',
-'whitelistreadtitle'     => 'Inmeldunge behōfod tō rǣdenne',
-'whitelistacctitle'      => 'Þē nis ālīefed tō settenne hordcleofan',
-'whitelistacctext'       => 'Tō bēonne gelīefed tō settenne hordcleofan in þissum Wici, þu scealt [[Special:Userlogin|inmeldian]] and habban þā gerādlican geþafunga.',
 'loginreqlink'           => 'inmeldian',
 'loginreqpagetext'       => 'Þū scealt $1 tō scēawienne view ōðre trametas.',
 'accmailtitle'           => 'Gelēafnesword gesended.',
@@ -314,6 +307,7 @@ Bidde behycge þæt þu bricst þone tramet intō smalrum dǣlum.',
 'mypreferences'      => 'Mīna foreberunga',
 'prefsnologin'       => 'Ne ingemeldod',
 'skin'               => 'Scynn',
+'skin-preview'       => 'Forescēawian',
 'dateformat'         => 'Tælmearcwīse',
 'datetime'           => 'Tælmearc and tīd',
 'math_unknown_error' => 'ungewiss gemearr',
@@ -369,7 +363,7 @@ Bidde behycge þæt þu bricst þone tramet intō smalrum dǣlum.',
 
 'nolicense' => 'Nǣnne gecorenne',
 
-# Special:Imagelist
+# Special:ImageList
 'imagelist_search_for'  => 'Sēcan biliþnaman:',
 'imagelist'             => 'Biliþgetalu',
 'imagelist_date'        => 'Tælmearc',
@@ -439,7 +433,7 @@ Bidde behycge þæt þu bricst þone tramet intō smalrum dǣlum.',
 'log'                  => 'Cranicas',
 'log-search-submit'    => 'Gān',
 
-# Special:Allpages
+# Special:AllPages
 'allpages'       => 'Trametas',
 'alphaindexline' => '$1 tō $2',
 'nextpage'       => 'Nīehsta tramet ($1)',
@@ -453,7 +447,7 @@ Bidde behycge þæt þu bricst þone tramet intō smalrum dǣlum.',
 'categories'         => 'Floccas',
 'categoriespagetext' => 'Þā folgendan floccas standaþ in þǣm wici.',
 
-# Special:Listusers
+# Special:ListUsers
 'listusers-noresult' => 'Nǣnne brūcend gefundenne.',
 
 # E-mail user
@@ -521,7 +515,6 @@ Bidde behycge þæt þu bricst þone tramet intō smalrum dǣlum.',
 # What links here
 'whatlinkshere'       => 'Hwæt bindaþ hider',
 'whatlinkshere-page'  => 'Tramet:',
-'linklistsub'         => '(Getalu benda)',
 'linkshere'           => 'Þā folgendan trametas bindaþ hider:',
 'nolinkshere'         => 'Nāne trametas bindaþ hider.',
 'isredirect'          => 'edlǣdungtramet',
@@ -541,7 +534,7 @@ Bidde behycge þæt þu bricst þone tramet intō smalrum dǣlum.',
 ** Uncwēme brūcendnama',
 'ipbsubmit'          => 'Gǣlan þisne brūcend',
 'ipbother'           => 'Ōðeru tīd',
-'ipboptions'         => '1 stund:1 hour, 2 stunda:2 hours,1 dæg:1 day,3 dagas:3 days,1 wucu:1 week,2 wucu:2 wuca,1 mōnaþ:1 month,3 mōnþas:3 months,6 mōnþas:6 months,1 gēar:1 year,unendiendlic:infinite', # display1:time1,display2:time2,...
+'ipboptions'         => '1 stund:1 hour, 2 stunda:2 hours,1 dæg:1 day,3 dagas:3 days,1 wucu:1 week,2 wuca:2 weeks,1 mōnaþ:1 month,3 mōnþas:3 months,6 mōnþas:6 months,1 gēar:1 year,unendiendlic:infinite', # display1:time1,display2:time2,...
 'ipbotheroption'     => 'ōðer',
 'ipbotherreason'     => 'Ōðeru/geīecendlicu racu:',
 'ipblocklist-submit' => 'Sēcan',
@@ -602,7 +595,7 @@ Bidde cēos ōðerne naman.',
 'imagemaxsize' => 'Settan biliðu on biliþgemearcungtrametum tō:',
 'thumbsize'    => 'Þumannæglmicelnes:',
 
-# Special:Newimages
+# Special:NewImages
 'imagelisttext' => 'Under is getalu $1 biliða gedæfted $2.',
 'noimages'      => 'Nāht tō sēonne.',
 'ilsubmit'      => 'Sēcan',
@@ -678,9 +671,6 @@ Gif þis is *nā* þū, ne folga þisne bend. Þēos āsēðungrūn forealdaþ �
 # Scary transclusion
 'scarytranscludefailed'  => '[Bisenfeccung getrucod for $1; sarig]',
 'scarytranscludetoolong' => '[URL is tō lang; sarig]',
-
-# HTML dump
-'redirectingto' => 'Edlǣdeþ tō [[$1]]...',
 
 # AJAX search
 'searchnamed' => "Sēcan gewritu genemnodu ''$1''.",

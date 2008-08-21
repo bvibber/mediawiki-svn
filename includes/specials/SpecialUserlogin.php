@@ -33,6 +33,7 @@ class LoginForm {
 	const RESET_PASS = 7;
 	const ABORTED = 8;
 	const CREATE_BLOCKED = 9;
+	const THROTTLED = 10;
 
 	var $mName, $mPassword, $mRetype, $mReturnTo, $mCookieCheck, $mPosted;
 	var $mAction, $mCreateaccount, $mCreateaccountMail, $mMailmypassword;
@@ -130,7 +131,7 @@ class LoginForm {
 		wfRunHooks( 'AddNewAccount', array( $u, true ) );
 
 		$wgOut->setPageTitle( wfMsg( 'accmailtitle' ) );
-		$wgOut->setRobotpolicy( 'noindex,nofollow' );
+		$wgOut->setRobotPolicy( 'noindex,nofollow' );
 		$wgOut->setArticleRelated( false );
 
 		if( WikiError::isError( $result ) ) {
@@ -181,7 +182,7 @@ class LoginForm {
 			$wgUser->setCookies();
 			wfRunHooks( 'AddNewAccount', array( $wgUser ) );
 			if( $this->hasSessionCookie() ) {
-				return $this->successfulLogin( wfMsg( 'welcomecreation', $wgUser->getName() ), false );
+				return $this->successfulLogin( 'welcomecreation', $wgUser->getName(), false );
 			} else {
 				return $this->cookieRedirectCheck( 'new' );
 			}
@@ -372,6 +373,23 @@ class LoginForm {
 		if ( '' == $this->mName ) {
 			return self::NO_NAME;
 		}
+		
+		global $wgPasswordAttemptThrottle;
+		if ( is_array($wgPasswordAttemptThrottle) ) {
+			$key = wfMemcKey( 'password-throttle', wfGetIP(), md5( $this->mName ) );
+			$count = $wgPasswordAttemptThrottle['count'];
+			$period = $wgPasswordAttemptThrottle['seconds'];
+			
+			global $wgMemc;
+			$cur = $wgMemc->get($key);
+			if ( !$cur ) {
+				$wgMemc->add( $key, 1, $period ); // start counter
+			} else if ( $cur < $count ) {
+				$wgMemc->incr($key);
+			} else if ( $cur >= $count ) {
+				return self::THROTTLED;
+			}
+		}
 
 		// Load $wgUser now, and check to see if we're logging in as the same name. 
 		// This is necessary because loading $wgUser (say by calling getName()) calls
@@ -509,7 +527,7 @@ class LoginForm {
 					global $wgLang, $wgRequest;
 					$code = $wgRequest->getVal( 'uselang', $wgUser->getOption( 'language' ) );
 					$wgLang = Language::factory( $code );
-					return $this->successfulLogin( wfMsg( 'loginsuccess', $wgUser->getName() ) );
+					return $this->successfulLogin( 'loginsuccess', $wgUser->getName() );
 				} else {
 					return $this->cookieRedirectCheck( 'login' );
 				}
@@ -540,6 +558,9 @@ class LoginForm {
 				break;
 			case self::CREATE_BLOCKED:
 				$this->userBlockedMessage();
+				break;
+			case self::THROTTLED:
+				$this->mainLoginForm( wfMsg( 'login-throttled' ) );
 				break;
 			default:
 				throw new MWException( "Unhandled case value" );
@@ -619,18 +640,21 @@ class LoginForm {
 	 */
 	function mailPasswordInternal( $u, $throttle = true, $emailTitle = 'passwordremindertitle', $emailText = 'passwordremindertext' ) {
 		global $wgCookiePath, $wgCookieDomain, $wgCookiePrefix, $wgCookieSecure;
-		global $wgServer, $wgScript;
+		global $wgServer, $wgScript, $wgUser;
 
 		if ( '' == $u->getEmail() ) {
 			return new WikiError( wfMsg( 'noemail', $u->getName() ) );
 		}
+		$ip = wfGetIP();
+		if( !$ip ) {
+			return new WikiError( wfMsg( 'badipaddress' ) );
+		}
+		
+		wfRunHooks( 'User::mailPasswordInternal', array(&$wgUser, &$ip, &$u) );
 
 		$np = $u->randomPassword();
 		$u->setNewpassword( $np, $throttle );
 		$u->saveSettings();
-
-		$ip = wfGetIP();
-		if ( '' == $ip ) { $ip = '(Unknown)'; }
 
 		$m = wfMsg( $emailText, $ip, $u->getName(), $np, $wgServer . $wgScript );
 		$result = $u->sendMail( wfMsg( $emailTitle ), $m );
@@ -640,11 +664,12 @@ class LoginForm {
 
 
 	/**
-	 * @param string $msg Message that will be shown on success
+	 * @param string $msg Message key that will be shown on success
+	 * @param $params String: parameters for the above message
 	 * @param bool $auto Toggle auto-redirect to main page; default true
 	 * @private
 	 */
-	function successfulLogin( $msg, $auto = true ) {
+	function successfulLogin( $msg, $params, $auto = true ) {
 		global $wgUser;
 		global $wgOut;
 
@@ -654,9 +679,9 @@ class LoginForm {
 		wfRunHooks('UserLoginComplete', array(&$wgUser, &$injected_html));
 
 		$wgOut->setPageTitle( wfMsg( 'loginsuccesstitle' ) );
-		$wgOut->setRobotpolicy( 'noindex,nofollow' );
+		$wgOut->setRobotPolicy( 'noindex,nofollow' );
 		$wgOut->setArticleRelated( false );
-		$wgOut->addWikiText( $msg );
+		$wgOut->addWikiMsgArray( $msg, $params );
 		$wgOut->addHtml( $injected_html );
 		if ( !empty( $this->mReturnTo ) ) {
 			$wgOut->returnToMain( $auto, $this->mReturnTo );
@@ -670,7 +695,7 @@ class LoginForm {
 		global $wgOut;
 
 		$wgOut->setPageTitle( wfMsg( 'permissionserrors' ) );
-		$wgOut->setRobotpolicy( 'noindex,nofollow' );
+		$wgOut->setRobotPolicy( 'noindex,nofollow' );
 		$wgOut->setArticleRelated( false );
 
 		$wgOut->addWikitext( $wgOut->formatPermissionsErrorMessage( $errors, 'createaccount' ) );
@@ -693,7 +718,7 @@ class LoginForm {
 		# out.
 
 		$wgOut->setPageTitle( wfMsg( 'cantcreateaccounttitle' ) );
-		$wgOut->setRobotpolicy( 'noindex,nofollow' );
+		$wgOut->setRobotPolicy( 'noindex,nofollow' );
 		$wgOut->setArticleRelated( false );
 
 		$ip = wfGetIP();
@@ -713,7 +738,7 @@ class LoginForm {
 	function mainLoginForm( $msg, $msgtype = 'error' ) {
 		global $wgUser, $wgOut, $wgAllowRealName, $wgEnableEmail;
 		global $wgCookiePrefix, $wgAuth, $wgLoginLanguageSelector;
-		global $wgAuth, $wgEmailConfirmToEdit;
+		global $wgAuth, $wgEmailConfirmToEdit, $wgCookieExpiration;
 		
 		$titleObj = SpecialPage::getTitleFor( 'Userlogin' );
 		
@@ -791,6 +816,7 @@ class LoginForm {
 		$template->set( 'useemail', $wgEnableEmail );
 		$template->set( 'emailrequired', $wgEmailConfirmToEdit );
 		$template->set( 'canreset', $wgAuth->allowPasswordChange() );
+		$template->set( 'canremember', ( $wgCookieExpiration > 0 ) );
 		$template->set( 'remember', $wgUser->getOption( 'rememberpassword' ) or $this->mRemember  );
 
 		# Prepare language selection links as needed
@@ -809,7 +835,7 @@ class LoginForm {
 		}
 
 		$wgOut->setPageTitle( wfMsg( 'userlogin' ) );
-		$wgOut->setRobotpolicy( 'noindex,nofollow' );
+		$wgOut->setRobotPolicy( 'noindex,nofollow' );
 		$wgOut->setArticleRelated( false );
 		$wgOut->disallowUserJs();  // just in case...
 		$wgOut->addTemplate( $template );
@@ -870,7 +896,7 @@ class LoginForm {
 				return $this->mainLoginForm( wfMsg( 'error' ) );
 			}
 		} else {
-			return $this->successfulLogin( wfMsgExt( 'loginsuccess', array( 'parseinline' ), $wgUser->getName() ) );
+			return $this->successfulLogin( 'loginsuccess', $wgUser->getName() );
 		}
 	}
 

@@ -4,7 +4,6 @@
  * @ingroup Language
  * @file
  *
- * @author SPQRobin
  */
 
 $messages = array(
@@ -19,7 +18,6 @@ $messages = array(
 'mainpage-description' => 'Page mbu',
 'portal'               => 'Lounge',
 'portal-url'           => 'Project:Lounge',
-'sitesupport-url'      => 'Project:Enemaka ego',
 
 'youhavenewmessagesmulti' => 'Inwere eziohu na $1',
 

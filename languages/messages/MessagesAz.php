@@ -4,7 +4,6 @@
  * @ingroup Language
  * @file
  *
- * @author Siebrand
  * @author לערי ריינהארט
  */
 
@@ -40,8 +39,6 @@ $messages = array(
 
 'underline-always' => 'Həmişə',
 'underline-never'  => 'Həç zaman',
-
-'skinpreview' => '(Sınaq göstərişi)',
 
 # Dates
 'sunday'    => 'Bazar',
@@ -145,7 +142,6 @@ $messages = array(
 'mainpage-description' => 'Ana Səhifə',
 'portal'               => 'Kənd Meydani',
 'portal-url'           => 'Project:Kənd Meydani',
-'sitesupport'          => 'Bağışlar',
 
 'youhavenewmessages' => 'Hal-hazırda $1 var. ($2)',
 'newmessageslink'    => 'yeni mesajlar!',
@@ -221,7 +217,7 @@ $messages = array(
 'italic_tip'      => 'Kursiv mətn',
 'link_sample'     => 'Bağlantı başlığı',
 'link_tip'        => 'Daxili bağlantı',
-'extlink_sample'  => 'http://www.misal.com başlıq',
+'extlink_sample'  => 'http://www.example.com başlıq',
 'extlink_tip'     => 'Xarici səhifə (http:// ekini unutma)',
 'headline_sample' => 'Başlıq metni',
 'headline_tip'    => '2. səviyyə başlıq',
@@ -240,7 +236,6 @@ $messages = array(
 'showdiff'           => 'Dəyişiklikləri göstər',
 'blockedtitle'       => 'İstifadəçi bloklanıb',
 'whitelistedittitle' => 'Redaktə üçün daxil olmalısınız',
-'whitelistreadtitle' => 'Oxumaq üçün daxil olmalısınız',
 'accmailtitle'       => 'Parol göndərildi.',
 'accmailtext'        => '"$1" üçün parol göndərildi bu ünvana : $2.',
 'newarticle'         => '(Yeni)',
@@ -281,6 +276,7 @@ Açıqlama: (hh) = hal-hazırkı versiya ilə olan fərqlər,
 # Preferences page
 'preferences'        => 'Nizamlamalar',
 'changepassword'     => 'Parol dəyiş',
+'skin-preview'       => 'Sınaq göstərişi',
 'math'               => 'Riyaziyyat',
 'dateformat'         => 'Tarix formatı',
 'datedefault'        => 'Tərcih yox',
@@ -340,7 +336,7 @@ Açıqlama: (hh) = hal-hazırkı versiya ilə olan fərqlər,
 'uploadwarning'     => 'Yükləyiş xəbərdarlıqı',
 'savefile'          => 'Faylı qeyd et',
 
-# Special:Imagelist
+# Special:ImageList
 'imagelist' => 'Fayl siyahısı',
 
 # Image description page
@@ -401,7 +397,7 @@ Hal-hazırda [http://www.mediawiki.org/wiki/Manual:Job_queue job queue] sayı: '
 'log'         => 'Loglar',
 'alllogstext' => "Qarşıya yükləmə, silmə, qoruma, bloklama ve sistem operatoru loqlarının birləşdirilmiş göstərməsi. Log növü, istifadəçi adı veya tə'sir edilən səhifəni seçib görüntünü kiçildə bilərsiniz.",
 
-# Special:Allpages
+# Special:AllPages
 'allpages'       => 'Bütün səhifələr',
 'nextpage'       => 'Sonrakı səhifə ($1)',
 'allpagesfrom'   => 'Bu mövqedən başlayan səhifeleri göstər:',
@@ -431,7 +427,7 @@ Hal-hazırda [http://www.mediawiki.org/wiki/Manual:Job_queue job queue] sayı: '
 'mywatchlist'          => 'İzlədiyim səhifələr',
 'watchnologin'         => 'Daxil olmamısınız',
 'addedwatch'           => 'İzləmə siyahısına əlavə edildi.',
-'addedwatchtext'       => '"$1" səhifəsi [[Special:Watchlist|izlədiyiniz səhifələrə]] əlavə edildi. Bu səhifədə və əlaqəli müzakirə səhifəsində olacaq dəyişikliklər orada göstəriləcək və səhifə asanlıqla seçiləbilmək üçün [[Special:Recentchanges|son dəyişikliklər]]-də qalın şriftlərlə görsənəcəkdir.
+'addedwatchtext'       => '"$1" səhifəsi [[Special:Watchlist|izlədiyiniz səhifələrə]] əlavə edildi. Bu səhifədə və əlaqəli müzakirə səhifəsində olacaq dəyişikliklər orada göstəriləcək və səhifə asanlıqla seçiləbilmək üçün [[Special:RecentChanges|son dəyişikliklər]]-də qalın şriftlərlə görsənəcəkdir.
 
 Səhifəni izləmə sıyahınızdan çıxarmaq üçün yan lovhədəki "izləmə" düyməsinə vurun.',
 'removedwatch'         => 'İzləmə siyahısından çıxardılıb',
@@ -446,7 +442,7 @@ Səhifəni izləmə sıyahınızdan çıxarmaq üçün yan lovhədəki "izləmə
 'watchmethod-recent'   => 'yeni dəyişikliklər izlənilən səhifələr üçün yoxlanılır',
 'watchmethod-list'     => 'izlənilən səhifələr yeni dəyişikliklər üçün yoxlanılır',
 'watchlistcontains'    => 'İzləmə siyahınızda $1 səhifə var.',
-'wlnote'               => 'Aşağıdakılar son <b>$2</b> saatdakı son $1 dəyişiklikdir.',
+'wlnote'               => "Aşağıdakılar son '''$2''' saatdakı son $1 dəyişiklikdir.",
 'wlshowlast'           => 'Bunları göstər: son $1 saatı $2 günü $3',
 
 # Delete/protect/revert
@@ -475,7 +471,6 @@ Səhifəni izləmə sıyahınızdan çıxarmaq üçün yan lovhədəki "izləmə
 
 # What links here
 'whatlinkshere' => 'Bu səhifəyə bağlantılar',
-'linklistsub'   => '(Bağlantılar siyahı)',
 
 # Block/unblock
 'blockip'            => 'İstifadəçiyi blokla',
@@ -483,7 +478,7 @@ Səhifəni izləmə sıyahınızdan çıxarmaq üçün yan lovhədəki "izləmə
 'ipbsubmit'          => 'Bu istifadəçiyi əngəllə',
 'badipaddress'       => 'Yanlış IP',
 'blockipsuccesssub'  => 'bloklandi',
-'blockipsuccesstext' => '[[Special:Contributions/$1| $1]]bloklanıb. <br />See[[Special:Ipblocklist|IP blok siyahisi]] bloklanmış IP lər.',
+'blockipsuccesstext' => '[[Special:Contributions/$1| $1]]bloklanıb. <br />See[[Special:IPBlockList|IP blok siyahisi]] bloklanmış IP lər.',
 'ipblocklist'        => 'Əngəllənmiş istifadəçilər siyahı',
 'blocklink'          => 'blokla',
 'contribslink'       => 'Köməklər',
@@ -541,7 +536,6 @@ Səhifəni izləmə sıyahınızdan çıxarmaq üçün yan lovhədəki "izləmə
 'tooltip-n-recentchanges'       => 'Bu Wikidə Son dəyişikliklər siyahəsi.',
 'tooltip-n-randompage'          => 'Bir təsadufi, necə gəldi, məqaləyə baxin',
 'tooltip-n-help'                => 'Yardım almaq üçün.',
-'tooltip-n-sitesupport'         => 'Maddi kömək',
 'tooltip-t-whatlinkshere'       => 'Wikidə bu məqaləyə bağlantilar',
 'tooltip-t-recentchangeslinked' => 'Bu məqaləyə ayid başqa səhifələrdə yeni dəyişikliklər',
 'tooltip-t-contributions'       => 'Bu üzvin redaktə etmiş məqalələr siyahəsi',
@@ -558,7 +552,7 @@ Səhifəni izləmə sıyahınızdan çıxarmaq üçün yan lovhədəki "izləmə
 'imagemaxsize' => 'Limit images on image description pages to:',
 'thumbsize'    => 'Kiçik ölçü:',
 
-# Special:Newimages
+# Special:NewImages
 'newimages' => 'Yeni faylların siyahısı',
 'bydate'    => 'tarixe görə',
 

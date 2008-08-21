@@ -5,7 +5,6 @@
  * @file
  *
  * @author Zanatos
- * @author Siebrand
  */
 
 $fallback = 'ar';
@@ -179,7 +178,7 @@ ikhssak ola kiyi ador tnqilt ɣtamani yadni.
 # Upload
 'upload' => 'sΥlid afaylu',
 
-# Special:Allpages
+# Special:AllPages
 'alphaindexline' => '$1 ar $2',
 
 # Special:Categories
@@ -204,7 +203,6 @@ ikhssak ola kiyi ador tnqilt ɣtamani yadni.
 'tooltip-n-portal'        => "f' usenfar, matzdart atitskrt, maniɣrattaft ɣayli trit",
 'tooltip-n-recentchanges' => 'Umuɣ n yibeddlen imaynuten ɣ l-wiki',
 'tooltip-n-help'          => 'tkhassak lmɛiwna ?achkid sɣid',
-'tooltip-n-sitesupport'   => 'ɛawn anɣ',
 'tooltip-t-upload'        => 'sɣlid ifaylutn',
 'tooltip-t-specialpages'  => 'kolchi tiwriqin tesbtarin',
 

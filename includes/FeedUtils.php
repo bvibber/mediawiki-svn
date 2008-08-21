@@ -59,10 +59,11 @@ class FeedUtils {
 
 		$skin = $wgUser->getSkin();
 		# log enties
-		if( $actiontext ) {
-			$comment = "$actiontext $comment";
-		}
-		$completeText = '<p>' . $skin->formatComment( $comment ) . "</p>\n";
+		$completeText = '<p>' . implode( ' ',
+			array_filter(
+				array(
+					$actiontext,
+					$skin->formatComment( $comment ) ) ) ) . "</p>\n";
 
 		//NOTE: Check permissions for anonymous users, not current user.
 		//      No "privileged" version should end up in the cache.
@@ -74,17 +75,20 @@ class FeedUtils {
 			if( $oldid ) {
 				wfProfileIn( __FUNCTION__."-dodiff" );
 
-				$de = new DifferenceEngine( $title, $oldid, $newid );
 				#$diffText = $de->getDiff( wfMsg( 'revisionasof',
 				#	$wgContLang->timeanddate( $timestamp ) ),
 				#	wfMsg( 'currentrev' ) );
-				$diffText = $de->getDiff(
-					wfMsg( 'previousrevision' ), // hack
-					wfMsg( 'revisionasof',
-						$wgContLang->timeanddate( $timestamp ) ) );
+				
+				// Don't bother generating the diff if we won't be able to show it
+				if ( $wgFeedDiffCutoff > 0 ) {
+					$de = new DifferenceEngine( $title, $oldid, $newid );
+					$diffText = $de->getDiff(
+						wfMsg( 'previousrevision' ), // hack
+						wfMsg( 'revisionasof',
+							$wgContLang->timeanddate( $timestamp ) ) );
+				}
 
-
-				if ( strlen( $diffText ) > $wgFeedDiffCutoff ) {
+				if ( ( strlen( $diffText ) > $wgFeedDiffCutoff ) || ( $wgFeedDiffCutoff <= 0 ) ) {
 					// Omit large diffs
 					$diffLink = $title->escapeFullUrl(
 						'diff=' . $newid .
@@ -92,7 +96,7 @@ class FeedUtils {
 					$diffText = '<a href="' .
 						$diffLink .
 						'">' .
-						htmlspecialchars( wfMsgForContent( 'difference' ) ) .
+						htmlspecialchars( wfMsgForContent( 'showdiff' ) ) .
 						'</a>';
 				} elseif ( $diffText === false ) {
 					// Error in diff engine, probably a missing revision

@@ -1,5 +1,6 @@
 <?php
 /**
+ * This script purges all language messages from memcached
  * @file
  * @ingroup Maintenance
  */
@@ -14,8 +15,8 @@ if( $wgLocalDatabases ) {
 
 foreach( $databases as $db ) {
 	echo "Deleting message cache for {$db}... ";
-	$wgMessageCache->mMemc->delete( "{$db}:messages" );
+	$messageMemc->delete( "{$db}:messages" );
 	if( $wgEnableSidebarCache )
-		$wgMessageCache->mMemc->delete( "{$db}:sidebar" );
+		$messageMemc->delete( "{$db}:sidebar" );
 	echo "Deleted\n";
 }

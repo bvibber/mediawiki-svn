@@ -314,7 +314,7 @@ class EmailNotification {
 	 */
 	function actuallyNotifyOnPageChange($editor, $title, $timestamp, $summary, $minorEdit, $oldid=false) {
 
-		# we use $wgEmergencyContact as sender's address
+		# we use $wgPasswordSender as sender's address
 		global $wgEnotifWatchlist;
 		global $wgEnotifMinorEdits, $wgEnotifUserTalk, $wgShowUpdatedMarker;
 		global $wgEnotifImpersonal;
@@ -347,9 +347,13 @@ class EmailNotification {
 				} elseif ( $targetUser->getId() == $editor->getId() ) {
 					wfDebug( __METHOD__.": user edited their own talk page, no notification sent\n" );
 				} elseif( $targetUser->getOption( 'enotifusertalkpages' ) ) {
-					wfDebug( __METHOD__.": sending talk page update notification\n" );
-					$this->compose( $targetUser );
-					$userTalkId = $targetUser->getId();
+					if( $targetUser->isEmailConfirmed() ) {
+						wfDebug( __METHOD__.": sending talk page update notification\n" );
+						$this->compose( $targetUser );
+						$userTalkId = $targetUser->getId();
+					} else {
+						wfDebug( __METHOD__.": talk page owner doesn't have validated email\n" );
+					}
 				} else {
 					wfDebug( __METHOD__.": talk page owner doesn't want notifications\n" );
 				}
@@ -420,7 +424,7 @@ class EmailNotification {
 	 * @private
 	 */
 	function composeCommonMailtext() {
-		global $wgEmergencyContact, $wgNoReplyAddress;
+		global $wgPasswordSender, $wgNoReplyAddress;
 		global $wgEnotifFromEditor, $wgEnotifRevealEditorAddress;
 		global $wgEnotifImpersonal;
 
@@ -477,7 +481,7 @@ class EmailNotification {
 		# global configuration level.
 		$editor = $this->editor;
 		$name    = $editor->getName();
-		$adminAddress = new MailAddress( $wgEmergencyContact, 'WikiAdmin' );
+		$adminAddress = new MailAddress( $wgPasswordSender, 'WikiAdmin' );
 		$editorAddress = new MailAddress( $editor );
 		if( $wgEnotifRevealEditorAddress
 		    && ( $editor->getEmail() != '' )

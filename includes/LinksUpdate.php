@@ -90,7 +90,7 @@ class LinksUpdate {
 
 	}
 
-	function doIncrementalUpdate() {
+	protected function doIncrementalUpdate() {
 		wfProfileIn( __METHOD__ );
 
 		# Page links
@@ -124,7 +124,7 @@ class LinksUpdate {
 			$this->getTemplateInsertions( $existing ) );
 
 		# Category links
-		$existing = $this->getExistingCategories( );
+		$existing = $this->getExistingCategories();
 		
 		$categoryDeletes = $this->getCategoryDeletions( $existing );
 		
@@ -140,7 +140,6 @@ class LinksUpdate {
 		# We need to do this *after* insertNewCategories to have the catObjects
 		# properly initialized.
 		$this->incrTableUpdate( 'categorylinks', 'cl', $deletionsById, $this->getCategoryInsertions( $existing ) );
-
 
 		# Invalidate all categories which were added, deleted or changed (set symmetric difference)
 		$categoryUpdates = $categoryInserts + $categoryDeletes;
@@ -172,7 +171,7 @@ class LinksUpdate {
 	 * May be slower or faster depending on level of lock contention and write speed of DB
 	 * Also useful where link table corruption needs to be repaired, e.g. in refreshLinks.php
 	 */
-	function doDumbUpdate() {
+	protected function doDumbUpdate() {
 		wfProfileIn( __METHOD__ );
 
 		# Refresh category pages 

@@ -14,6 +14,8 @@ class ZhConverter extends LanguageConverter {
 								$markup=array(),
 								$flags = array(),
 								$manualLevel = array() ) {
+		$this->mDescCodeSep = '：';
+		$this->mDescVarSep = '；';
 		parent::__construct($langobj, $maincode,
 									$variants,
 									$variantfallbacks,
@@ -65,14 +67,6 @@ class ZhConverter extends LanguageConverter {
 	function markNoConversion($text, $noParse = false) {
 		return $text;
 	}
-	
-	/* description of convert code in chinese language*/
-	function getRulesDesc($bidtable,$unidtable){
-		$text=parent::getRulesDesc($bidtable,$unidtable);
-		$text=str_replace(':','：',$text);
-		$text=str_replace(';','；',$text);
-		return $text;
-	}
 
 	function convertCategoryKey( $key ) {
 		return $this->autoConvert( $key, 'zh' );
@@ -98,7 +92,7 @@ class LanguageZh extends LanguageZh_hans {
 			'zh-hant' => array('zh-tw','zh-hk','zh-mo'),
 			'zh-cn'   => array('zh-hans','zh-sg','zh-my'),
 			'zh-sg'   => array('zh-hans','zh-cn','zh-my'),
-			'zh-my'   => array('zh-hant','zh-sg','zh-cn'),
+			'zh-my'   => array('zh-hans','zh-sg','zh-cn'),
 			'zh-tw'   => array('zh-hant','zh-hk','zh-mo'),
 			'zh-hk'   => array('zh-hant','zh-mo','zh-tw'),
 			'zh-mo'   => array('zh-hant','zh-hk','zh-tw'),

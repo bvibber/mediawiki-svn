@@ -1,11 +1,9 @@
 <?php
-/** Eastern Canadian (Latin) (inuktitut)
+/**  ()
  *
  * @ingroup Language
  * @file
  *
- * @author SPQRobin
- * @author M.M.S.
  */
 
 $messages = array(
@@ -94,7 +92,6 @@ $messages = array(
 'portal-url'           => 'Project:qaggiq',
 'privacy'              => 'namminiq pilirivviqauqtunut aulataujut atuagaq, pinasuarniq',
 'privacypage'          => 'Project:namminiq pilirivviqauqtunut aulataujut atuagaq, pinasuarniq',
-'sitesupport'          => 'tunniqkusiat kiinaujait',
 
 'youhavenewmessages'  => 'ilissu pigivaa $1 ($2).',
 'newmessageslink'     => 'pigivuk kiggapaa',
@@ -238,7 +235,7 @@ pigivuq qatannguti uikipitia kiinaujaqutiqarvik isuillingaitjapaa. iqtuu suqusiq
 # Special:Log
 'log-search-submit' => 'aivuk',
 
-# Special:Allpages
+# Special:AllPages
 'allpages'       => 'sunamittuq mappitaq',
 'nextpage'       => 'tagga mappitaq ($1)',
 'allpagesprev'   => 'tunullipaaq',
@@ -334,7 +331,7 @@ pigivuq qatannguti uikipitia kiinaujaqutiqarvik isuillingaitjapaa. iqtuu suqusiq
 'previousdiff' => '← tunullipaaq asiaNngutuq',
 'nextdiff'     => 'tagga asiaNngutuq mappitaq →',
 
-# Special:Newimages
+# Special:NewImages
 'ilsubmit' => 'ivaaqpuq',
 'bydate'   => 'pitaaruttuq inuulirvik',
 
@@ -349,9 +346,6 @@ pigivuq qatannguti uikipitia kiinaujaqutiqarvik isuillingaitjapaa. iqtuu suqusiq
 
 # 'all' in various places, this might be different for inflected languages
 'monthsall' => 'sunamittuq',
-
-# HTML dump
-'redirectingto' => 'qaningani kamagijaq aasit nakit [[$1]]...',
 
 # action=purge
 'confirm_purge_button' => 'akaujuq',

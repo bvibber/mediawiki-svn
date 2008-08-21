@@ -555,7 +555,7 @@ function do_schema_restructuring() {
   			UNIQUE INDEX name_title (page_namespace,page_title),
   			INDEX (page_random),
   			INDEX (page_len)
-			) TYPE=InnoDB", $fname );
+			) ENGINE=InnoDB", $fname );
 		$wgDatabase->query("CREATE TABLE $revision (
   			rev_id int(8) unsigned NOT NULL auto_increment,
   			rev_page int(8) unsigned NOT NULL,
@@ -573,7 +573,7 @@ function do_schema_restructuring() {
   			INDEX page_timestamp (rev_page,rev_timestamp),
   			INDEX user_timestamp (rev_user,rev_timestamp),
   			INDEX usertext_timestamp (rev_user_text,rev_timestamp)
-			) TYPE=InnoDB", $fname );
+			) ENGINE=InnoDB", $fname );
 
 		echo wfTimestamp( TS_DB );
 		echo "......Locking tables.\n";
@@ -1433,12 +1433,12 @@ function do_postgres_updates() {
 		array("archive",       "ar_page_id",           "INTEGER"),
 		array("archive",       "ar_parent_id",         "INTEGER"),
 		array("image",         "img_sha1",             "TEXT NOT NULL DEFAULT ''"),
-		array("ipblocks",      "ipb_anon_only",        "CHAR NOT NULL DEFAULT '0'"),
+		array("ipblocks",      "ipb_anon_only",        "SMALLINT NOT NULL DEFAULT '0'"),
 		array("ipblocks",      "ipb_by_text",          "TEXT NOT NULL DEFAULT ''"),
-		array("ipblocks",      "ipb_block_email",      "CHAR NOT NULL DEFAULT '0'"),
-		array("ipblocks",      "ipb_create_account",   "CHAR NOT NULL DEFAULT '1'"),
+		array("ipblocks",      "ipb_block_email",      "SMALLINT NOT NULL DEFAULT '0'"),
+		array("ipblocks",      "ipb_create_account",   "SMALLINT NOT NULL DEFAULT '1'"),
 		array("ipblocks",      "ipb_deleted",          "SMALLINT NOT NULL DEFAULT 0"),
-		array("ipblocks",      "ipb_enable_autoblock", "CHAR NOT NULL DEFAULT '1'"),
+		array("ipblocks",      "ipb_enable_autoblock", "SMALLINT NOT NULL DEFAULT '1'"),
 		array("filearchive",   "fa_deleted",           "SMALLINT NOT NULL DEFAULT 0"),
 		array("logging",       "log_deleted",          "SMALLINT NOT NULL DEFAULT 0"),
 		array("logging",       "log_id",               "INTEGER NOT NULL PRIMARY KEY DEFAULT nextval('log_log_id_seq')"),
@@ -1515,10 +1515,12 @@ function do_postgres_updates() {
 	);
 
 	$newindexes = array(
-		array("archive",       "archive_user_text", "(ar_user_text)"),
-		array("image",         "img_sha1",          "(img_sha1)"),
-		array("oldimage",      "oi_sha1",           "(oi_sha1)"),
-		array("revision",      "rev_text_id_idx",   "(rev_text_id)"),
+		array("archive",       "archive_user_text",  "(ar_user_text)"),
+		array("image",         "img_sha1",           "(img_sha1)"),
+		array("oldimage",      "oi_sha1",            "(oi_sha1)"),
+		array("revision",      "rev_text_id_idx",    "(rev_text_id)"),
+		array("recentchanges", "rc_timestamp_nobot", "(rc_timestamp) WHERE rc_bot = 0"),
+		array("watchlist",     "wl_user",            "(wl_user)"),
 	);
 
 	$newrules = array(

@@ -4,9 +4,8 @@
  * @ingroup Language
  * @file
  *
- * @author Behzod Saidov <behzodsaidov@gmail.com>
  * @author Abdulla
- * @author Siebrand
+ * @author Behzod Saidov <behzodsaidov@gmail.com>
  */
 
 $fallback8bitEncoding = 'windows-1252';
@@ -177,8 +176,6 @@ $messages = array(
 'portal-url'           => 'Project:Jamoa portali',
 'privacy'              => 'Konfidensiallik siyosati',
 'privacypage'          => 'Project:Konfidensiallik siyosati',
-'sitesupport'          => "Loyihaga ko'mak",
-'sitesupport-url'      => "Project:Loyihaga ko'mak",
 
 'retrievedfrom'       => ' "$1" dan olindi',
 'youhavenewmessages'  => 'Sizga $1 keldi ($2).',
@@ -266,7 +263,9 @@ Sizni $1 chetlashtirdi. Bunga sabab: ''$2''.
 Siz $1 yoki boshqa [[{{MediaWiki:Grouppage-sysop}}|administrator]] bilan bogʻlanib, arz qilishingiz mumkin.
 Sizning hozirgi IP manzilingiz - $3, chetlashtirish raqamingiz - #$5. Arizaga bularni ilova qilishingiz mumkin.",
 'newarticle'             => '(Yangi)',
-'newarticletext'         => "Bu sahifa hali mavjud emas. Sahifani yaratish uchun quyida matn kiritishingiz mumkin (qo'shimcha axborot uchun [[Help:Mundarija|yordam sahifasini]] ko'ring). Agar bu sahifaga xatolik sabab kelgan bo'lsangiz brauzeringizning '''orqaga''' tugmasini bosing.",
+'newarticletext'         => "Bu sahifa hali mavjud emas.
+Sahifani yaratish uchun quyida matn kiritishingiz mumkin (qo'shimcha axborot uchun [[{{MediaWiki:Helppage}}|yordam sahifasini]] ko'ring).
+Agar bu sahifaga xatolik sabab kelgan bo'lsangiz brauzeringizning '''orqaga''' tugmasini bosing.",
 'noarticletext'          => "Bu sahifada hozircha hech qanday matn yo'q. Siz bu sarlavhani boshqa sahifalardan [[Special:Search/{{PAGENAME}}|qidirishingiz]] yoki bu sahifani [{{fullurl:{{FULLPAGENAME}}|action=edit}} tahrirlashingiz] mumkin.",
 'clearyourcache'         => "'''Etibor bering:''' O'zgartirishlaringiz ko'rish uchun, yangi moslamalaringizning saqlashdan keyin, brauser keshini tozalash kerak:<br />
 '''Mozilla / Firefox:''' ''Ctrl+Shift+R'', '''IE:''' ''Ctrl+F5'', '''Safari:''' ''Cmd+Shift+R'', '''Konqueror:''' ''F5'', '''Opera:''' ''Tools → Preferences'' orqali keshni tozalang.",
@@ -286,7 +285,7 @@ Agar sizda shunday muammolar yuzaga kelsa, iltimos, sahifani butunlay emas, qism
 'template-protected'     => '(himoyalangan)',
 'template-semiprotected' => '(yarim-himoyalangan)',
 'nocreatetext'           => 'Ushbu sayt yangi sahifa yaratishni taqiqlagan.
-Ortga qaytib, mavjud sahifani tahrirlashingiz yoki [[Special:Userlogin|tizimga kirishingiz]] mumkin.',
+Ortga qaytib, mavjud sahifani tahrirlashingiz yoki [[Special:UserLogin|tizimga kirishingiz]] mumkin.',
 'recreate-deleted-warn'  => "'''Diqqat: Siz avval yoʻqotilgan sahifani yana yaratmoqchisiz.'''
 
 Bu sahifani yaratishda davom etishdan avval uning nega avval yoʻqotilgani bilan qiziqib koʻring.
@@ -373,7 +372,7 @@ Bu yerda: (joriy) = hozirgi koʻrinish bilan farq,
 'uploadlogpage' => 'Yuklash qaydlari',
 'uploadedimage' => '"[[$1]]" yuklandi',
 
-# Special:Imagelist
+# Special:ImageList
 'imagelist' => 'Fayllar roʻyxati',
 
 # Image description page
@@ -411,7 +410,7 @@ Bularga maqola boʻlmagan \"munozara\" sahifalari, {{SITENAME}} haqidagi, ishora
 Bu bir sahifaga '''\$5''' tahrir va '''\$6''' koʻrish mos kelishini bildiradi.
 
 [http://www.mediawiki.org/wiki/Manual:Job_queue Navbatdagi vazifalar] soni - '''\$7'''.",
-'userstatstext' => "Hozirda {{PLURAL:$1|'''1''' [[Special:Listusers|foydalanuvchi]]|'''$1''' [[Special:Listusers|foydalanuvchi]]}} roʻyxatdan oʻtgan, ulardan '''$2''' nafari (yoki '''$4%''') $5 huquqlariga egadir.",
+'userstatstext' => "Hozirda {{PLURAL:$1|'''1''' [[Special:ListUsers|foydalanuvchi]]|'''$1''' [[Special:ListUsers|foydalanuvchi]]}} roʻyxatdan oʻtgan, ulardan '''$2''' nafari (yoki '''$4%''') $5 huquqlariga egadir.",
 
 'disambiguationspage' => '{{ns:template}}:Disambig',
 
@@ -437,7 +436,7 @@ Bu bir sahifaga '''\$5''' tahrir va '''\$6''' koʻrish mos kelishini bildiradi.
 'all-logs-page'     => 'Barcha qaydlar',
 'log-search-submit' => "O'tish",
 
-# Special:Allpages
+# Special:AllPages
 'allpages'       => 'Barcha sahifalar',
 'alphaindexline' => '$1 dan $2 ga',
 'nextpage'       => 'Keyingi sahifa ($1)',
@@ -461,7 +460,7 @@ Bu bir sahifaga '''\$5''' tahrir va '''\$6''' koʻrish mos kelishini bildiradi.
 'watchlistfor'         => "('''$1''' uchun)",
 'nowatchlist'          => "Kuzatuv ro'yxatingizda hech narsa yo'q.",
 'addedwatch'           => "Kuzatuv ro'yxatiga qo'shildi",
-'addedwatchtext'       => "\"[[:\$1]]\" sahifasi sizning [[Special:Watchlist|kuzatuv ro'yxatingizga]] qo'shildi. Bu sahifada va unga mos munozara sahifasida bo'ladigan kelajakdagi o'zgarishlar bu yerda ro'yxatga olinadi, hamda bu sahifa topish qulay bo'lishi uchun [[Special:Recentchanges|yangi o'zgarishlar ro'yxati]]da '''qalin''' harflar bilan ko'rsatiladi.
+'addedwatchtext'       => "\"[[:\$1]]\" sahifasi sizning [[Special:Watchlist|kuzatuv ro'yxatingizga]] qo'shildi. Bu sahifada va unga mos munozara sahifasida bo'ladigan kelajakdagi o'zgarishlar bu yerda ro'yxatga olinadi, hamda bu sahifa topish qulay bo'lishi uchun [[Special:RecentChanges|yangi o'zgarishlar ro'yxati]]da '''qalin''' harflar bilan ko'rsatiladi.
 
 Agar siz bu sahifani kuzatuv ro'yxatingizdan o'chirmoqchi bo'lsangiz \"Kuzatmaslik\" yozuvini bosing.",
 'removedwatch'         => "Kuzatuv ro'yxatidan o'chirildi",
@@ -512,7 +511,6 @@ Yaqinda sodir etilgan yoʻqotishlar uchun $2ni koʻring.',
 # What links here
 'whatlinkshere'       => "Bu sahifaga bog'langan sahifalar",
 'whatlinkshere-title' => '$1ga bogʻlangan sahifalar',
-'linklistsub'         => "(Bog'lanishlar ro'yxati)",
 'linkshere'           => "Quyidagi sahifalar '''[[:$1]]''' sahifasiga bog'langan:",
 'nolinkshere'         => "'''[[:$1]]''' sahifasiga hech qaysi sahifa bog'lanmagan.",
 'isredirect'          => 'yoʻnaltiruvchi sahifa',
@@ -528,12 +526,13 @@ Yaqinda sodir etilgan yoʻqotishlar uchun $2ni koʻring.',
 'blocklogpage' => 'Chetlashtirish qaydlari',
 
 # Move page
-'movearticle'  => "Sahifani ko'chirish",
-'movepagebtn'  => 'Sahifani koʻchir',
-'pagemovedsub' => 'Koʻchirildi',
-'1movedto2'    => "[[$1]] [[$2]]ga ko'chirildi",
-'movelogpage'  => 'Koʻchirish qaydlari',
-'movereason'   => 'Sabab:',
+'movearticle'    => "Sahifani ko'chirish",
+'movepagebtn'    => 'Sahifani koʻchir',
+'pagemovedsub'   => 'Koʻchirildi',
+'movepage-moved' => '<big>\'\'\'"$1" nomli sahifa "$2" nomli sahifaga koʻchirildi\'\'\'</big>', # The two titles are passed in plain text as $3 and $4 to allow additional goodies in the message.
+'1movedto2'      => "[[$1]] [[$2]]ga ko'chirildi",
+'movelogpage'    => 'Koʻchirish qaydlari',
+'movereason'     => 'Sabab:',
 
 # Thumbnails
 'thumbnail-more' => 'Kattalashtir',
@@ -568,7 +567,6 @@ Yaqinda sodir etilgan yoʻqotishlar uchun $2ni koʻring.',
 'tooltip-n-recentchanges'         => "Yangi o'zgarishlar ro'yxati.",
 'tooltip-n-randompage'            => 'Tasodifiy sahifani yuklash',
 'tooltip-n-help'                  => "O'rganish uchun manzil.",
-'tooltip-n-sitesupport'           => "Bizni qo'llab quvvatlang.",
 'tooltip-t-whatlinkshere'         => "Bu sahifaga bog'langan sahifalar ro'yxati",
 'tooltip-t-recentchangeslinked'   => "Bu sahifa bog'langan sahifalardagi yangi o'zgarishlar",
 'tooltip-feed-rss'                => "Bu sahifa uchun RSS ta'minot",
@@ -608,7 +606,7 @@ Yaqinda sodir etilgan yoʻqotishlar uchun $2ni koʻring.',
 'show-big-image'       => 'Asl hajmdagi tasvir',
 'show-big-image-thumb' => '<small>Ushbu koʻrinish oʻlchamlari: $1 × $2 piksel</small>',
 
-# Special:Newimages
+# Special:NewImages
 'ilsubmit' => 'Qidirish',
 
 # Metadata
@@ -617,7 +615,7 @@ Yaqinda sodir etilgan yoʻqotishlar uchun $2ni koʻring.',
 
 # External editor support
 'edit-externally'      => 'Bu faylni tashqi dasturiy ilovalar yordamida tahrirla',
-'edit-externally-help' => "Batafsil ma'lumotlar uchun [http://meta.wikimedia.org/wiki/Help:External_editors bu yerga] qarang.",
+'edit-externally-help' => "Batafsil ma'lumotlar uchun [http://www.mediawiki.org/wiki/Manual:External_editors bu yerga] qarang.",
 
 # 'all' in various places, this might be different for inflected languages
 'recentchangesall' => 'Barchasi',

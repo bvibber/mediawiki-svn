@@ -4,11 +4,9 @@
  * @ingroup Language
  * @file
  *
+ * @author Chechenka
  * @author Girdi
  * @author Mega programmer
- * @author Chechenka
- * @author SPQRobin
- * @author Siebrand
  */
 
 $fallback = 'ru';
@@ -108,7 +106,6 @@ $messages = array(
 'portal'               => 'Джамаат',
 'portal-url'           => 'Project:Джамаат',
 'privacy'              => 'Конфиденциальнийн политика',
-'sitesupport'          => 'Сайтан сагIа',
 
 'youhavenewmessages'      => 'Хьуна кхечи $1 ($2).',
 'newmessageslink'         => 'Керла кехаташ',
@@ -169,7 +166,9 @@ $messages = array(
 'accmailtitle'    => 'Тешаман дош дахьийтина.',
 'accmailtext'     => '$1ий тешаман дош дахьийтина $2ан.',
 'newarticle'      => '(Kерла)',
-'newarticletext'  => "ХІар тептар хІинца а кхоьллина дац. Керл тептар кхолла лаахь, дІаязде текст лахара кор чохь (см. [[{{MediaWiki:helppage}}|гІо тептар]] еша кхин информацинаш хаар хьам). Хьо кхуза гІалат вал кхаьчнехь, '''тІехьа воьрзу''' кнопку таІ йе хьан браузера тІехь.",
+'newarticletext'  => "ХІар тептар хІинца а кхоьллина дац.
+Керл тептар кхолла лаахь, дІаязде текст лахара кор чохь (см. [[{{MediaWiki:Helppage}}|гІо тептар]] еша кхин информацинаш хаар хьам).
+Хьо кхуза гІалат вал кхаьчнехь, '''тІехьа воьрзу''' кнопку таІ йе хьан браузера тІехь.",
 'editing'         => 'Хийца $1',
 'editingsection'  => 'Хийца $1 (секция)',
 'editingcomment'  => 'Хийца $1 (комментарий)',
@@ -201,7 +200,7 @@ $messages = array(
 'upload'   => 'Чуоза Файл',
 'filename' => 'файл цIе',
 
-# Special:Imagelist
+# Special:ImageList
 'imagelist_name' => 'Файли цІе',
 'imagelist_user' => 'юзер',
 
@@ -220,7 +219,7 @@ $messages = array(
 # Special:Log
 'specialloguserlabel' => 'Юзер:',
 
-# Special:Allpages
+# Special:AllPages
 'allpages'       => 'Массо таптараш',
 'allarticles'    => 'Массо таптараш',
 'allpagessubmit' => 'кхочушде',
@@ -284,7 +283,7 @@ $messages = array(
 # Media information
 'show-big-image' => 'Доккха де сурт',
 
-# Special:Newimages
+# Special:NewImages
 'newimages' => 'Керла файлаш галерей',
 
 'exif-scenetype-1' => 'Сурт сфотографировано напрямую',

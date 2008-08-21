@@ -12,6 +12,9 @@ require_once dirname(__FILE__) . '/LogPage.php';
 require_once dirname(__FILE__) . '/normal/UtfNormalUtil.php';
 require_once dirname(__FILE__) . '/XmlFunctions.php';
 
+// Hide compatibility functions from Doxygen
+/// @cond
+
 /**
  * Compatibility functions
  *
@@ -87,6 +90,9 @@ if ( !function_exists( 'array_diff_key' ) ) {
 	}
 }
 
+/// @endcond
+
+
 /**
  * Like array_diff( $a, $b ) except that it works with two-dimensional arrays.
  */
@@ -145,16 +151,31 @@ function wfRandom() {
 }
 
 /**
- * We want / and : to be included as literal characters in our title URLs.
+ * We want some things to be included as literal characters in our title URLs
+ * for prettiness, which urlencode encodes by default.  According to RFC 1738,
+ * all of the following should be safe:
+ *
+ * ;:@&=$-_.+!*'(),
+ *
+ * But + is not safe because it's used to indicate a space; &= are only safe in
+ * paths and not in queries (and we don't distinguish here); ' seems kind of
+ * scary; and urlencode() doesn't touch -_. to begin with.  Plus, although /
+ * is reserved, we don't care.  So the list we unescape is:
+ *
+ * ;:@$!*(),/
+ *
  * %2F in the page titles seems to fatally break for some reason.
  *
  * @param $s String:
  * @return string
 */
-function wfUrlencode ( $s ) {
+function wfUrlencode( $s ) {
 	$s = urlencode( $s );
-	$s = preg_replace( '/%3[Aa]/', ':', $s );
-	$s = preg_replace( '/%2[Ff]/', '/', $s );
+	$s = str_ireplace(
+		array( '%3B','%3A','%40','%24','%21','%2A','%28','%29','%2C','%2F' ),
+		array(   ';',  ':',  '@',  '$',  '!',  '*',  '(',  ')',  ',',  '/' ),
+		$s
+	);
 
 	return $s;
 }
@@ -320,6 +341,47 @@ function wfReadOnlyReason() {
 }
 
 /**
+ * Return a Language object from $langcode
+ * @param $langcode Mixed: either:
+ *                  - a Language object
+ *                  - code of the language to get the message for, if it is
+ *                    a valid code create a language for that language, if
+ *                    it is a string but not a valid code then make a basic
+ *                    language object
+ *                  - a boolean: if it's false then use the current users
+ *                    language (as a fallback for the old parameter
+ *                    functionality), or if it is true then use the wikis
+ * @return Language object
+ */
+function wfGetLangObj( $langcode = false ){
+	# Identify which language to get or create a language object for.
+	if( $langcode instanceof Language )
+		# Great, we already have the object!
+		return $langcode;
+		
+	global $wgContLang;
+	if( $langcode === $wgContLang->getCode() || $langcode === true )
+		# $langcode is the language code of the wikis content language object.
+		# or it is a boolean and value is true
+		return $wgContLang;
+	
+	global $wgLang;
+	if( $langcode === $wgLang->getCode() || $langcode === false )
+		# $langcode is the language code of user language object.
+		# or it was a boolean and value is false
+		return $wgLang;
+
+	$validCodes = array_keys( Language::getLanguageNames() );
+	if( in_array( $langcode, $validCodes ) )
+		# $langcode corresponds to a valid language.
+		return Language::factory( $langcode );
+
+	# $langcode is a string, but not a valid language code; use content language.
+	wfDebug( 'Invalid language code passed to wfGetLangObj, falling back to content language.' );
+	return $wgContLang;
+}
+
+/**
  * Get a message from anywhere, for the current user language.
  *
  * Use wfMsgForContent() instead if the message should NOT
@@ -458,8 +520,10 @@ function wfMsgWeirdKey ( $key ) {
  * @private
  */
 function wfMsgGetKey( $key, $useDB, $langCode = false, $transform = true ) {
-	global $wgParser, $wgContLang, $wgMessageCache, $wgLang;
+	global $wgContLang, $wgMessageCache;
 
+	wfRunHooks('NormalizeMessageKey', array(&$key, &$useDB, &$langCode, &$transform));
+	
 	# If $wgMessageCache isn't initialised yet, try to return something sensible.
 	if( is_object( $wgMessageCache ) ) {
 		$message = $wgMessageCache->get( $key, $useDB, $langCode );
@@ -467,21 +531,7 @@ function wfMsgGetKey( $key, $useDB, $langCode = false, $transform = true ) {
 			$message = $wgMessageCache->transform( $message );
 		}
 	} else {
-		if( $langCode === true ) {
-			$lang = &$wgContLang;
-		} elseif( $langCode === false ) {
-			$lang = &$wgLang;
-		} else {
-			$validCodes = array_keys( Language::getLanguageNames() );
-			if( in_array( $langCode, $validCodes ) ) {
-				# $langcode corresponds to a valid language.
-				$lang = Language::factory( $langCode );
-			} else {
-				# $langcode is a string, but not a valid language code; use content language.
-				$lang =& $wgContLang;
-				wfDebug( 'Invalid language code passed to wfMsgGetKey, falling back to content language.' );
-			}
-		}
+		$lang = wfGetLangObj( $langCode );
 
 		# MessageCache::get() does this already, Language::getMessage() doesn't
 		# ISSUE: Should we try to handle "message/lang" here too?
@@ -626,9 +676,7 @@ function wfMsgExt( $key, $options ) {
 	if ( in_array('escape', $options) ) {
 		$string = htmlspecialchars ( $string );
 	} elseif ( in_array( 'escapenoentities', $options ) ) {
-		$string = htmlspecialchars( $string );
-		$string = str_replace( '&amp;', '&', $string );
-		$string = Sanitizer::normalizeCharReferences( $string );
+		$string = Sanitizer::escapeHtmlAllowEntities( $string );
 	}
 
 	if( in_array('replaceafter', $options) ) {
@@ -1027,6 +1075,34 @@ function wfArrayToCGI( $array1, $array2 = NULL )
 }
 
 /**
+ * This is the logical opposite of wfArrayToCGI(): it accepts a query string as
+ * its argument and returns the same string in array form.  This allows compa-
+ * tibility with legacy functions that accept raw query strings instead of nice
+ * arrays.  Of course, keys and values are urldecode()d.  Don't try passing in-
+ * valid query strings, or it will explode.
+ *
+ * @param $query string Query string
+ * @return array Array version of input
+ */
+function wfCgiToArray( $query ) {
+	if( isset( $query[0] ) and $query[0] == '?' ) {
+		$query = substr( $query, 1 );
+	}
+	$bits = explode( '&', $query );
+	$ret = array();
+	foreach( $bits as $bit ) {
+		if( $bit === '' ) {
+			continue;
+		}
+		list( $key, $value ) = explode( '=', $bit );
+		$key = urldecode( $key );
+		$value = urldecode( $value );
+		$ret[$key] = $value;
+	}
+	return $ret;
+}
+
+/**
  * Append a query string to an existing URL, which may or may not already
  * have query string parameters already. If so, they will be combined.
  *
@@ -1174,6 +1250,68 @@ function wfMerge( $old, $mine, $yours, &$result ){
 		$conflict = true;
 	}
 	return ! $conflict;
+}
+
+/**
+ * Returns unified plain-text diff of two texts.
+ * Useful for machine processing of diffs.
+ * @param $before string The text before the changes.
+ * @param $after string The text after the changes.
+ * @param $params string Command-line options for the diff command.
+ * @return string Unified diff of $before and $after
+ */
+function wfDiff( $before, $after, $params = '-u' ) {
+	global $wgDiff;
+
+	# This check may also protect against code injection in
+	# case of broken installations.
+	if( !file_exists( $wgDiff ) ){
+		wfDebug( "diff executable not found\n" );
+		$diffs = new Diff( explode( "\n", $before ), explode( "\n", $after ) );
+		$format = new UnifiedDiffFormatter();
+		return $format->format( $diffs );
+	}
+
+	# Make temporary files
+	$td = wfTempDir();
+	$oldtextFile = fopen( $oldtextName = tempnam( $td, 'merge-old-' ), 'w' );
+	$newtextFile = fopen( $newtextName = tempnam( $td, 'merge-your-' ), 'w' );
+
+	fwrite( $oldtextFile, $before ); fclose( $oldtextFile );
+	fwrite( $newtextFile, $after ); fclose( $newtextFile );
+	
+	// Get the diff of the two files
+	$cmd = "$wgDiff " . $params . ' ' .wfEscapeShellArg( $oldtextName, $newtextName );
+	
+	$h = popen( $cmd, 'r' );
+	
+	$diff = '';
+	
+	do {
+		$data = fread( $h, 8192 );
+		if ( strlen( $data ) == 0 ) {
+			break;
+		}
+		$diff .= $data;
+	} while ( true );
+	
+	// Clean up
+	pclose( $h );
+	unlink( $oldtextName );
+	unlink( $newtextName );
+	
+	// Kill the --- and +++ lines. They're not useful.
+	$diff_lines = explode( "\n", $diff );
+	if (strpos( $diff_lines[0], '---' ) === 0) {
+		unset($diff_lines[0]);
+	}
+	if (strpos( $diff_lines[1], '+++' ) === 0) {
+		unset($diff_lines[1]);
+	}
+	
+	$diff = implode( "\n", $diff_lines );
+	
+	return $diff;
 }
 
 /**
@@ -1707,12 +1845,22 @@ function wfTempDir() {
 
 /**
  * Make directory, and make all parent directories if they don't exist
+ * 
+ * @param string $fullDir Full path to directory to create
+ * @param int $mode Chmod value to use, default is $wgDirectoryMode
+ * @return bool
  */
-function wfMkdirParents( $fullDir, $mode = 0777 ) {
+function wfMkdirParents( $fullDir, $mode = null ) {
+	global $wgDirectoryMode;
 	if( strval( $fullDir ) === '' )
 		return true;
 	if( file_exists( $fullDir ) )
 		return true;
+	// If not defined or isn't an int, set to default
+	if ( is_null( $mode ) ) {
+		$mode = $wgDirectoryMode;
+	}
+
 
 	# Go back through the paths to find the first directory that exists
 	$currentDir = $fullDir;
@@ -2552,6 +2700,8 @@ function wfBoolToStr( $value ) {
  * @param string $extensionName Name of extension to load messages from\for.
  * @param string $langcode Language to load messages for, or false for default
  *                         behvaiour (en, content language and user language).
+ * @since r24808 (v1.11) Using this method of loading extension messages will not work
+ * on MediaWiki prior to that
  */
 function wfLoadExtensionMessages( $extensionName, $langcode = false ) {
 	global $wgExtensionMessagesFiles, $wgMessageCache, $wgLang, $wgContLang;
@@ -2682,4 +2832,14 @@ function wfGenerateToken( $salt = '' ) {
  	$salt = serialize($salt);
 
  	return md5( mt_rand( 0, 0x7fffffff ) . $salt );
+}
+
+/**
+ * Replace all invalid characters with -
+ * @param mixed $title Filename to process
+ */
+function wfStripIllegalFilenameChars( $name ) {
+	$name = wfBaseName( $name );
+	$name = preg_replace ( "/[^".Title::legalChars()."]|:/", '-', $name );
+	return $name;
 }

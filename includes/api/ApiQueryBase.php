@@ -326,7 +326,12 @@ abstract class ApiQueryBase extends ApiBase {
 	public function titleToKey($title) {
 		$t = Title::newFromText($title);
 		if(!$t)
+		{
+			# Don't throw an error if we got an empty string
+			if($title == '')
+				return '';
 			$this->dieUsageMsg(array('invalidtitle', $title));
+		}
 		return $t->getDbKey();
 	}
 
@@ -339,33 +344,13 @@ abstract class ApiQueryBase extends ApiBase {
 		$t = Title::newFromDbKey($key);
 		# This really shouldn't happen but we gotta check anyway
 		if(!$t)
+		{
+			# Don't throw an error if we got an empty string
+			if($key == '')
+				return '';
 			$this->dieUsageMsg(array('invalidtitle', $key));
+		}
 		return $t->getPrefixedText();
-	}
-
-	/**
-	 * Check whether the current user requested a certain token and 
-	 * is actually allowed to request it.
-	 * @param array $tokenArr Array of tokens the user requested
-	 * @param string $action Action to check for
-	 * @return bool true if the user requested the token and is allowed to, false otherwise
-	 */
-	public function getTokenFlag($tokenArr, $action) {
-		if ($this->getMain()->getRequest()->getVal('callback') !== null) {
-			// Don't do any session-specific data.
-			return false;
-		}
-		if (in_array($action, $tokenArr)) {
-			global $wgUser;
-			if ($wgUser->isAllowed($action))
-				return true;
-			else
-			{
-				$this->setWarning("Action '$action' is not allowed for the current user");
-				return false;
-			}
-		}
-		return false;
 	}
 
 	/**

@@ -6,7 +6,7 @@
  * @ingroup MaintenanceLanguage
  */
 
-/** Ignored messages, which should be exist only in the English messages file. */
+/** Ignored messages, which should exist only in the English messages file. */
 $wgIgnoredMessages = array(
 	'sidebar',
 	'accesskey-pt-userpage',
@@ -40,7 +40,6 @@ $wgIgnoredMessages = array(
 	'accesskey-n-recentchanges',
 	'accesskey-n-randompage',
 	'accesskey-n-help',
-	'accesskey-n-sitesupport',
 	'accesskey-t-whatlinkshere',
 	'accesskey-t-recentchangeslinked',
 	'accesskey-feed-rss',
@@ -66,6 +65,7 @@ $wgIgnoredMessages = array(
 	'accesskey-preview',
 	'accesskey-diff',
 	'accesskey-compareselectedversions',
+	'accesskey-visualcomparison',
 	'accesskey-watch',
 	'accesskey-upload',
 	'addsection',
@@ -88,7 +88,6 @@ $wgIgnoredMessages = array(
 	'noarticletextanon',
 	'number_of_watching_users_RCview',
 	'pagecategorieslink',
-	'patrol-log-header',
 	'pubmedurl',
 	'randompage-url',
 	'recentchanges-url',
@@ -112,16 +111,6 @@ $wgIgnoredMessages = array(
 	'uploadfooter',
 	'listgrouprights-link',
 	'search-interwiki-custom',
-);
-
-/** Optional messages, which may be translated only if changed in the other language. */
-$wgOptionalMessages = array(
-	'linkprefix',
-	'editsection-brackets',
-	'feed-atom',
-	'feed-rss',
-	'sectionlink',
-	'unit-pixel',
 	'allpages-summary',
 	'booksources-summary',
 	'categories-summary',
@@ -132,7 +121,6 @@ $wgOptionalMessages = array(
 	'preferences-summary',
 	'specialpages-summary',
 	'whatlinkshere-summary',
-	'whatlinkshere-barrow',
 	'listredirects-summary',
 	'uncategorizedpages-summary',
 	'uncategorizedcategories-summary',
@@ -153,7 +141,6 @@ $wgOptionalMessages = array(
 	'ancientpages-summary',
 	'unwatchedpages-summary',
 	'userrights-summary',
-	'userrights-irreversible-marker',
 	'brokenredirects-summary',
 	'deadendpages-summary',
 	'protectedpages-summary',
@@ -164,7 +151,20 @@ $wgOptionalMessages = array(
 	'fewestrevisions-summary',
 	'missingfiles-summary',
 	'upload-summary',
+	'pagetitle-view-mainpage',
+);
+
+/** Optional messages, which may be translated only if changed in the target language. */
+$wgOptionalMessages = array(
+	'linkprefix',
+	'editsection-brackets',
+	'feed-atom',
+	'feed-rss',
+	'sectionlink',
+	'unit-pixel',
+	'userrights-irreversible-marker',
 	'tog-nolangconversion',
+	'tog-noconvertlink',
 	'yourvariant',
 	'variantname-zh-hans',
 	'variantname-zh-hant',
@@ -313,6 +313,8 @@ $wgOptionalMessages = array(
 	'autocomment-prefix',
 	'listgrouprights-right-display',
 	'timezone-utc',
+	'whatlinkshere-backlink',
+	'recentchangeslinked-backlink',
 );
 
 /** EXIF messages, which may be set as optional in several checks, but are generally mandatory */

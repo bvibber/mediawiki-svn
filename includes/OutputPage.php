@@ -6,20 +6,23 @@ if ( ! defined( 'MEDIAWIKI' ) )
  * @todo document
  */
 class OutputPage {
-	var $mMetatags, $mKeywords;
-	var $mLinktags, $mPagetitle, $mBodytext, $mDebugtext;
-	var $mHTMLtitle, $mRobotpolicy, $mIsarticle, $mPrintable;
-	var $mSubtitle, $mRedirect, $mStatusCode;
-	var $mLastModified, $mETag, $mCategoryLinks;
-	var $mScripts, $mLinkColours, $mPageLinkTitle;
+	var $mMetatags = array(), $mKeywords = array(), $mLinktags = array();
+	var $mExtStyles = array();
+	var $mPagetitle = '', $mBodytext = '', $mDebugtext = '';
+	var $mHTMLtitle = '', $mIsarticle = true, $mPrintable = false;
+	var $mSubtitle = '', $mRedirect = '', $mStatusCode;
+	var $mLastModified = '', $mETag = false;
+	var $mCategoryLinks = array(), $mLanguageLinks = array();
+	var $mScripts = '', $mLinkColours, $mPageLinkTitle = '', $mHeadItems = array();
+	var $mTemplateIds = array();
 
 	var $mAllowUserJs;
-	var $mSuppressQuickbar;
-	var $mOnloadHandler;
-	var $mDoNothing;
-	var $mContainsOldMagic, $mContainsNewMagic;
-	var $mIsArticleRelated;
-	protected $mParserOptions; // lazy initialised, use parserOptions()
+	var $mSuppressQuickbar = false;
+	var $mOnloadHandler = '';
+	var $mDoNothing = false;
+	var $mContainsOldMagic = 0, $mContainsNewMagic = 0;
+	var $mIsArticleRelated = true;
+	protected $mParserOptions = null; // lazy initialised, use parserOptions()
 	var $mShowFeedLinks = false;
 	var $mFeedLinksAppendQuery = false;
 	var $mEnableClientCache = true;
@@ -29,6 +32,18 @@ class OutputPage {
 	var $mNoGallery = false;
 	var $mPageTitleActionText = '';
 	var $mParseWarnings = array();
+	var $mSquidMaxage = 0;
+	var $mRevisionId = null;
+
+	/**
+	 * An array of stylesheet filenames (relative from skins path), with options
+	 * for CSS media, IE conditions, and RTL/LTR direction.
+	 * For internal use; add settings in the skin via $this->addStyle()
+	 */
+	var $styles = array();
+
+	private $mIndexPolicy = 'index';
+	private $mFollowPolicy = 'follow';
 
 	/**
 	 * Constructor
@@ -37,25 +52,6 @@ class OutputPage {
 	function __construct() {
 		global $wgAllowUserJs;
 		$this->mAllowUserJs = $wgAllowUserJs;
-		$this->mMetatags = $this->mKeywords = $this->mLinktags = array();
-		$this->mHTMLtitle = $this->mPagetitle = $this->mBodytext =
-		$this->mRedirect = $this->mLastModified =
-		$this->mSubtitle = $this->mDebugtext = $this->mRobotpolicy =
-		$this->mOnloadHandler = $this->mPageLinkTitle = '';
-		$this->mIsArticleRelated = $this->mIsarticle = $this->mPrintable = true;
-		$this->mSuppressQuickbar = $this->mPrintable = false;
-		$this->mLanguageLinks = array();
-		$this->mCategoryLinks = array();
-		$this->mDoNothing = false;
-		$this->mContainsOldMagic = $this->mContainsNewMagic = 0;
-		$this->mParserOptions = null;
-		$this->mSquidMaxage = 0;
-		$this->mScripts = '';
-		$this->mHeadItems = array();
-		$this->mETag = false;
-		$this->mRevisionId = null;
-		$this->mNewSectionLink = false;
-		$this->mTemplateIds = array();
 	}
 
 	public function redirect( $url, $responsecode = '302' ) {
@@ -76,17 +72,23 @@ class OutputPage {
 	 */
 	function setStatusCode( $statusCode ) { $this->mStatusCode = $statusCode; }
 
-	# To add an http-equiv meta tag, precede the name with "http:"
-	function addMeta( $name, $val ) { array_push( $this->mMetatags, array( $name, $val ) ); }
+	/**
+	 * Add a new <meta> tag
+	 * To add an http-equiv meta tag, precede the name with "http:"
+	 *
+	 * @param $name tag name
+	 * @param $val tag value
+	 */
+	function addMeta( $name, $val ) {
+		array_push( $this->mMetatags, array( $name, $val ) );
+	}
+
 	function addKeyword( $text ) { array_push( $this->mKeywords, $text ); }
 	function addScript( $script ) { $this->mScripts .= "\t\t".$script; }
-	function addStyle( $style ) {
-		global $wgStylePath, $wgStyleVersion;
-		$this->addLink(
-				array(
-					'rel' => 'stylesheet',
-					'href' => $wgStylePath . '/' . $style . '?' . $wgStyleVersion,
-					'type' => 'text/css' ) );
+	
+	function addExtensionStyle( $url ) {
+		$linkarr = array( 'rel' => 'stylesheet', 'href' => $url, 'type' => 'text/css' );
+		array_push( $this->mExtStyles, $linkarr );
 	}
 
 	/**
@@ -100,7 +102,6 @@ class OutputPage {
 		} else {
 			$path =  "{$wgStylePath}/common/{$file}";
 		}
-		$encPath = htmlspecialchars( $path );
 		$this->addScript( "<script type=\"{$wgJsMimeType}\" src=\"$path?$wgStyleVersion\"></script>\n" );
 	}
 	
@@ -140,6 +141,11 @@ class OutputPage {
 	function addLink( $linkarr ) {
 		# $linkarr should be an associative array of attributes. We'll escape on output.
 		array_push( $this->mLinktags, $linkarr );
+	}
+	
+	# Get all links added by extensions
+	function getExtStyle() {
+		return $this->mExtStyles;
 	}
 
 	function addMetadataLink( $linkarr ) {
@@ -223,7 +229,61 @@ class OutputPage {
 		}
 	}
 
-	public function setRobotpolicy( $str ) { $this->mRobotpolicy = $str; }
+	/**
+	 * Set the robot policy for the page: <http://www.robotstxt.org/meta.html>
+	 *
+	 * @param $policy string The literal string to output as the contents of
+	 *   the meta tag.  Will be parsed according to the spec and output in
+	 *   standardized form.
+	 * @return null
+	 */
+	public function setRobotPolicy( $policy ) {
+		$policy = explode( ',', $policy );
+		$policy = array_map( 'trim', $policy );
+
+		# The default policy is follow, so if nothing is said explicitly, we
+		# do that.
+		if( in_array( 'nofollow', $policy ) ) {
+			$this->mFollowPolicy = 'nofollow';
+		} else {
+			$this->mFollowPolicy = 'follow';
+		}
+
+		if( in_array( 'noindex', $policy ) ) {
+			$this->mIndexPolicy = 'noindex';
+		} else {
+			$this->mIndexPolicy = 'index';
+		}
+	}
+
+	/**
+	 * Set the index policy for the page, but leave the follow policy un-
+	 * touched.
+	 *
+	 * @param $policy string Either 'index' or 'noindex'.
+	 * @return null
+	 */
+	public function setIndexPolicy( $policy ) {
+		$policy = trim( $policy );
+		if( in_array( $policy, array( 'index', 'noindex' ) ) ) {
+			$this->mIndexPolicy = $policy;
+		}
+	}
+
+	/**
+	 * Set the follow policy for the page, but leave the index policy un-
+	 * touched.
+	 *
+	 * @param $policy string Either 'follow' or 'nofollow'.
+	 * @return null
+	 */
+	public function setFollowPolicy( $policy ) {
+		$policy = trim( $policy );
+		if( in_array( $policy, array( 'follow', 'nofollow' ) ) ) {
+			$this->mFollowPolicy = $policy;
+		}
+	}
+
 	public function setHTMLTitle( $name ) {$this->mHTMLtitle = $name; }
 	public function setPageTitle( $name ) {
 		global $action, $wgContLang;
@@ -341,6 +401,7 @@ class OutputPage {
 	public function disallowUserJs() { $this->mAllowUserJs = false; }
 	public function isUserJsAllowed() { return $this->mAllowUserJs; }
 
+	public function prependHTML( $text ) { $this->mBodytext = $text . $this->mBodytext; }
 	public function addHTML( $text ) { $this->mBodytext .= $text; }
 	public function clearHTML() { $this->mBodytext = ''; }
 	public function getHTML() { return $this->mBodytext; }
@@ -368,6 +429,10 @@ class OutputPage {
 	public function setRevisionId( $revid ) {
 		$val = is_null( $revid ) ? null : intval( $revid );
 		return wfSetVar( $this->mRevisionId, $val );
+	}
+	
+	public function getRevisionId() {
+		return $this->mRevisionId;
 	}
 
 	/**
@@ -416,9 +481,23 @@ class OutputPage {
 	 * @param ParserOutput object &$parserOutput
 	 */
 	public function addParserOutputNoText( &$parserOutput ) {
+		global $wgTitle, $wgExemptFromUserRobotsControl, $wgContentNamespaces;
+
 		$this->mLanguageLinks += $parserOutput->getLanguageLinks();
 		$this->addCategoryLinks( $parserOutput->getCategories() );
 		$this->mNewSectionLink = $parserOutput->getNewSection();
+
+		if( is_null( $wgExemptFromUserRobotsControl ) ) {
+			$bannedNamespaces = $wgContentNamespaces;
+		} else {
+			$bannedNamespaces = $wgExemptFromUserRobotsControl;
+		}
+		if( !in_array( $wgTitle->getNamespace(), $bannedNamespaces ) ) {
+			# FIXME (bug 14900): This overrides $wgArticleRobotPolicies, and it
+			# shouldn't
+			$this->setIndexPolicy( $parserOutput->getIndexPolicy() );
+		}
+
 		$this->addKeywords( $parserOutput );
 		$this->mParseWarnings = $parserOutput->getWarnings();
 		if ( $parserOutput->getCacheTime() == -1 ) {
@@ -688,7 +767,7 @@ class OutputPage {
 		global $wgUser, $wgOutputEncoding, $wgRequest;
 		global $wgContLanguageCode, $wgDebugRedirects, $wgMimeType;
 		global $wgJsMimeType, $wgUseAjax, $wgAjaxSearch, $wgAjaxWatch;
-		global $wgServer, $wgEnableMWSuggest;
+		global $wgEnableMWSuggest;
 
 		if( $this->mDoNothing ){
 			return;
@@ -782,11 +861,6 @@ class OutputPage {
 
 			wfRunHooks( 'AjaxAddScript', array( &$this ) );
 
-			if( $wgAjaxSearch && $wgUser->getBoolOption( 'ajaxsearch' ) ) {
-				$this->addScriptFile( 'ajaxsearch.js' );
-				$this->addScript( "<script type=\"{$wgJsMimeType}\">hookEvent(\"load\", sajax_onload);</script>\n" );
-			}
-
 			if( $wgAjaxWatch && $wgUser->isLoggedIn() ) {
 				$this->addScriptFile( 'ajaxwatch.js' );
 			}
@@ -800,12 +874,8 @@ class OutputPage {
 			$this->addScriptFile( 'rightclickedit.js' );
 		}
 
-
 		# Buffer output; final headers may depend on later processing
 		ob_start();
-
-		# Disable temporary placeholders, so that the skin produces HTML
-		$sk->postParseLinkColour( false );
 
 		$wgRequest->response()->header( "Content-type: $wgMimeType; charset={$wgOutputEncoding}" );
 		$wgRequest->response()->header( 'Content-language: '.$wgContLanguageCode );
@@ -879,7 +949,7 @@ class OutputPage {
 		global $wgUser, $wgContLang, $wgTitle, $wgLang;
 
 		$this->setPageTitle( wfMsg( 'blockedtitle' ) );
-		$this->setRobotpolicy( 'noindex,nofollow' );
+		$this->setRobotPolicy( 'noindex,nofollow' );
 		$this->setArticleRelated( false );
 
 		$name = User::whoIs( $wgUser->blockedBy() );
@@ -945,7 +1015,7 @@ class OutputPage {
 		}
 		$this->setPageTitle( wfMsg( $title ) );
 		$this->setHTMLTitle( wfMsg( 'errorpagetitle' ) );
-		$this->setRobotpolicy( 'noindex,nofollow' );
+		$this->setRobotPolicy( 'noindex,nofollow' );
 		$this->setArticleRelated( false );
 		$this->enableClientCache( false );
 		$this->mRedirect = '';
@@ -971,7 +1041,7 @@ class OutputPage {
 		$wgTitle->getPrefixedText() . "\n";
 		$this->setPageTitle( wfMsg( 'permissionserrors' ) );
 		$this->setHTMLTitle( wfMsg( 'permissionserrors' ) );
-		$this->setRobotpolicy( 'noindex,nofollow' );
+		$this->setRobotPolicy( 'noindex,nofollow' );
 		$this->setArticleRelated( false );
 		$this->enableClientCache( false );
 		$this->mRedirect = '';
@@ -994,7 +1064,7 @@ class OutputPage {
 	public function versionRequired( $version ) {
 		$this->setPageTitle( wfMsg( 'versionrequired', $version ) );
 		$this->setHTMLTitle( wfMsg( 'versionrequired', $version ) );
-		$this->setRobotpolicy( 'noindex,nofollow' );
+		$this->setRobotPolicy( 'noindex,nofollow' );
 		$this->setArticleRelated( false );
 		$this->mBodytext = '';
 
@@ -1008,39 +1078,23 @@ class OutputPage {
 	 * @param string $permission key required
 	 */
 	public function permissionRequired( $permission ) {
-		global $wgGroupPermissions, $wgUser;
+		global $wgUser;
 
 		$this->setPageTitle( wfMsg( 'badaccess' ) );
 		$this->setHTMLTitle( wfMsg( 'errorpagetitle' ) );
-		$this->setRobotpolicy( 'noindex,nofollow' );
+		$this->setRobotPolicy( 'noindex,nofollow' );
 		$this->setArticleRelated( false );
 		$this->mBodytext = '';
 
-		$groups = array();
-		foreach( $wgGroupPermissions as $key => $value ) {
-			if( isset( $value[$permission] ) && $value[$permission] == true ) {
-				$groupName = User::getGroupName( $key );
-				$groupPage = User::getGroupPage( $key );
-				if( $groupPage ) {
-					$skin = $wgUser->getSkin();
-					$groups[] = $skin->makeLinkObj( $groupPage, $groupName );
-				} else {
-					$groups[] = $groupName;
-				}
-			}
+		$groups = array_map( array( 'User', 'makeGroupLinkWiki' ),
+			User::getGroupsWithPermission( $permission ) );
+		if( $groups ) {
+			$this->addWikiMsg( 'badaccess-groups',
+				implode( ', ', $groups ),
+				count( $groups) );
+		} else {
+			$this->addWikiMsg( 'badaccess-group0' );
 		}
-		$n = count( $groups );
-		$groups = implode( ', ', $groups );
-		switch( $n ) {
-			case 0:
-			case 1:
-			case 2:
-				$message = wfMsgHtml( "badaccess-group$n", $groups );
-				break;
-			default:
-				$message = wfMsgHtml( 'badaccess-groups', $groups );
-		}
-		$this->addHtml( $message );
 		$this->returnToMain();
 	}
 
@@ -1148,7 +1202,7 @@ class OutputPage {
 		global $wgUser, $wgTitle;
 		$skin = $wgUser->getSkin();
 
-		$this->setRobotpolicy( 'noindex,nofollow' );
+		$this->setRobotPolicy( 'noindex,nofollow' );
 		$this->setArticleRelated( false );
 
 		// If no reason is given, just supply a default "I can't let you do
@@ -1189,7 +1243,10 @@ class OutputPage {
 			// Show templates used by this article
 			$skin = $wgUser->getSkin();
 			$article = new Article( $wgTitle );
-			$this->addHTML( $skin->formatTemplates( $article->getUsedTemplates() ) );
+			$this->addHTML( "<div class='templatesUsed'>
+{$skin->formatTemplates( $article->getUsedTemplates() )}
+</div>
+" );
 		}
 
 		# If the title doesn't exist, it's fairly pointless to print a return
@@ -1238,7 +1295,7 @@ class OutputPage {
 
 	public function showFatalError( $message ) {
 		$this->setPageTitle( wfMsg( "internalerror" ) );
-		$this->setRobotpolicy( "noindex,nofollow" );
+		$this->setRobotPolicy( "noindex,nofollow" );
 		$this->setArticleRelated( false );
 		$this->enableClientCache( false );
 		$this->mRedirect = '';
@@ -1333,15 +1390,19 @@ class OutputPage {
 	/**
 	 * @return string The doctype, opening <html>, and head element.
 	 */
-	public function headElement() {
+	public function headElement( Skin $sk ) {
 		global $wgDocType, $wgDTD, $wgContLanguageCode, $wgOutputEncoding, $wgMimeType;
 		global $wgXhtmlDefaultNamespace, $wgXhtmlNamespaces;
 		global $wgUser, $wgContLang, $wgUseTrackbacks, $wgTitle, $wgStyleVersion;
 
+		$this->addMeta( "http:Content-type", "$wgMimeType; charset={$wgOutputEncoding}" );
+		$this->addStyle( 'common/wikiprintable.css', 'print' );
+		$sk->setupUserCss( $this );
+
+		$ret = '';
+
 		if( $wgMimeType == 'text/xml' || $wgMimeType == 'application/xhtml+xml' || $wgMimeType == 'application/xml' ) {
-			$ret = "<?xml version=\"1.0\" encoding=\"$wgOutputEncoding\" ?>\n";
-		} else {
-			$ret = '';
+			$ret .= "<?xml version=\"1.0\" encoding=\"$wgOutputEncoding\" ?>\n";
 		}
 
 		$ret .= "<!DOCTYPE html PUBLIC \"$wgDocType\"\n        \"$wgDTD\">\n";
@@ -1356,24 +1417,17 @@ class OutputPage {
 			$ret .= "xmlns:{$tag}=\"{$ns}\" ";
 		}
 		$ret .= "xml:lang=\"$wgContLanguageCode\" lang=\"$wgContLanguageCode\" $rtl>\n";
-		$ret .= "<head>\n<title>" . htmlspecialchars( $this->getHTMLTitle() ) . "</title>\n";
-		$this->addMeta( "http:Content-type", "$wgMimeType; charset={$wgOutputEncoding}" );
-		
-		$ret .= $this->getHeadLinks();
-		global $wgStylePath;
-		if( $this->isPrintable() ) {
-			$media = '';
-		} else {
-			$media = "media='print'";
+		$ret .= "<head>\n<title>" . htmlspecialchars( $this->getHTMLTitle() ) . "</title>\n\t\t";
+		$ret .= implode( "\t\t", array(
+			$this->getHeadLinks(),
+			$this->buildCssLinks(),
+			$sk->getHeadScripts( $this->mAllowUserJs ),
+			$this->mScripts,
+			$this->getHeadItems(),
+		));
+		if( $sk->usercss ){
+			$ret .= "<style type='text/css'>{$sk->usercss}</style>";
 		}
-		$printsheet = htmlspecialchars( "$wgStylePath/common/wikiprintable.css?$wgStyleVersion" );
-		$ret .= "<link rel='stylesheet' type='text/css' $media href='$printsheet' />\n";
-
-		$sk = $wgUser->getSkin();
-		$ret .= $sk->getHeadScripts( $this->mAllowUserJs );
-		$ret .= $this->mScripts;
-		$ret .= $sk->getUserStyles();
-		$ret .= $this->getHeadItems();
 
 		if ($wgUseTrackbacks && $this->isArticleRelated())
 			$ret .= $wgTitle->trackbackRDF();
@@ -1386,8 +1440,8 @@ class OutputPage {
 		global $wgVersion;
 		$this->addMeta( "generator", "MediaWiki $wgVersion" );
 		
-		$p = $this->mRobotpolicy;
-		if( $p !== '' && $p != 'index,follow' ) {
+		$p = "{$this->mIndexPolicy},{$this->mFollowPolicy}";
+		if( $p !== 'index,follow' ) {
 			// http://www.robotstxt.org/wc/meta-user.html
 			// Only show if it's different from the default robots policy
 			$this->addMeta( 'robots', $p );
@@ -1446,12 +1500,23 @@ class OutputPage {
 			# Recent changes feed should appear on every page (except recentchanges, 
 			# that would be redundant). Put it after the per-page feed to avoid 
 			# changing existing behavior. It's still available, probably via a 
-			# menu in your browser.
-
+			# menu in your browser. Some sites might have a different feed they'd
+			# like to promote instead of the RC feed (maybe like a "Recent New Articles"
+			# or "Breaking news" one). For this, we see if $wgOverrideSiteFeed is defined.
+			# If so, use it instead.
+			
+			global $wgOverrideSiteFeed, $wgSitename;
 			$rctitle = SpecialPage::getTitleFor( 'Recentchanges' );
-			if ( $wgTitle->getPrefixedText() != $rctitle->getPrefixedText() ) {
-				global $wgSitename;
-				
+			
+			if ( $wgOverrideSiteFeed ) {
+				foreach ( $wgOverrideSiteFeed as $type => $feedUrl ) { 
+					$tags[] = $this->feedLink (
+						$type,
+						htmlspecialchars( $feedUrl ),
+						wfMsg( "site-{$type}-feed", $wgSitename ) );
+				}
+			}
+			else if ( $wgTitle->getPrefixedText() != $rctitle->getPrefixedText() ) {
 				$tags[] = $this->feedLink(
 					'rss',
 					$rctitle->getFullURL( 'feed=rss' ),
@@ -1497,6 +1562,118 @@ class OutputPage {
 			'type' => "application/$type+xml",
 			'title' => $text,
 			'href' => $url ) );
+	}
+
+	/**
+	 * Add a local or specified stylesheet, with the given media options.
+	 * Meant primarily for internal use...
+	 *
+	 * @param $media -- to specify a media type, 'screen', 'printable', 'handheld' or any.
+	 * @param $conditional -- for IE conditional comments, specifying an IE version
+	 * @param $dir -- set to 'rtl' or 'ltr' for direction-specific sheets
+	 */
+	public function addStyle( $style, $media='', $condition='', $dir='' ) {
+		$options = array();
+		if( $media )
+			$options['media'] = $media;
+		if( $condition )
+			$options['condition'] = $condition;
+		if( $dir )
+			$options['dir'] = $dir;
+		$this->styles[$style] = $options;
+	}
+
+	/**
+	 * Build a set of <link>s for the stylesheets specified in the $this->styles array.
+	 * These will be applied to various media & IE conditionals.
+	 */
+	public function buildCssLinks() {
+		$links = array();
+		foreach( $this->styles as $file => $options ) {
+			$link = $this->styleLink( $file, $options );
+			if( $link )
+				$links[] = $link;
+		}
+
+		return implode( "\n\t\t", $links );
+	}
+
+	protected function styleLink( $style, $options ) {
+		global $wgRequest;
+
+		if( isset( $options['dir'] ) ) {
+			global $wgContLang;
+			$siteDir = $wgContLang->isRTL() ? 'rtl' : 'ltr';
+			if( $siteDir != $options['dir'] )
+				return '';
+		}
+
+		if( isset( $options['media'] ) ) {
+			$media = $this->transformCssMedia( $options['media'] );
+			if( is_null( $media ) ) {
+				return '';
+			}
+		} else {
+			$media = '';
+		}
+
+		if( substr( $style, 0, 1 ) == '/' ||
+			substr( $style, 0, 5 ) == 'http:' ||
+			substr( $style, 0, 6 ) == 'https:' ) {
+			$url = $style;
+		} else {
+			global $wgStylePath, $wgStyleVersion;
+			$url = $wgStylePath . '/' . $style . '?' . $wgStyleVersion;
+		}
+
+		$attribs = array(
+			'rel' => 'stylesheet',
+			'href' => $url,
+			'type' => 'text/css' );
+		if( $media ) {
+			$attribs['media'] = $media;
+		}
+
+		$link = Xml::element( 'link', $attribs );
+
+		if( isset( $options['condition'] ) ) {
+			$condition = htmlspecialchars( $options['condition'] );
+			$link = "<!--[if $condition]>$link<![endif]-->";
+		}
+		return $link;
+	}
+
+	function transformCssMedia( $media ) {
+		global $wgRequest, $wgHandheldForIPhone;
+
+		// Switch in on-screen display for media testing
+		$switches = array(
+			'printable' => 'print',
+			'handheld' => 'handheld',
+		);
+		foreach( $switches as $switch => $targetMedia ) {
+			if( $wgRequest->getBool( $switch ) ) {
+				if( $media == $targetMedia ) {
+					$media = '';
+				} elseif( $media == 'screen' ) {
+					return null;
+				}
+			}
+		}
+
+		// Expand longer media queries as iPhone doesn't grok 'handheld'
+		if( $wgHandheldForIPhone ) {
+			$mediaAliases = array(
+				'screen' => 'screen and (min-device-width: 481px)',
+				'handheld' => 'handheld, only screen and (max-device-width: 480px)',
+			);
+
+			if( isset( $mediaAliases[$media] ) ) {
+				$media = $mediaAliases[$media];
+			}
+		}
+
+		return $media;
 	}
 
 	/**

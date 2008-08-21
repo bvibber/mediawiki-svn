@@ -41,7 +41,7 @@ class Xml {
 	 * Return null if no attributes given.
 	 * @param $attribs Array of attributes for an XML element
 	 */
-	private static function expandAttributes( $attribs ) {
+	public static function expandAttributes( $attribs ) {
 		$out = '';
 		if( is_null( $attribs ) ) {
 			return null;
@@ -674,7 +674,8 @@ class XmlSelect {
 	}
 
 	public function addOption( $name, $value = false ) {
-		$value = $value ? $value : $name;
+		// Stab stab stab
+		$value = ($value !== false) ? $value : $name;
 		$this->options[] = Xml::option( $name, $value, $value === $this->default );
 	}
 

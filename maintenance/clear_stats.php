@@ -1,5 +1,7 @@
 <?php
 /**
+ * This script remove all statistics tracking from memcached
+ * 
  * @file
  * @ingroup Maintenance
  */

@@ -66,8 +66,8 @@ class ImagePage extends Article {
 				// mTitle is not the same as the redirect target so it is 
 				// probably the redirect page itself. Fake the redirect symbol
 				$wgOut->setPageTitle( $this->mTitle->getPrefixedText() );
-				$this->viewRedirect( Title::makeTitle( NS_IMAGE, $this->img->getName() ),
-					/* $appendSubtitle */ true, /* $forceKnown */ true );
+				$wgOut->addHTML( $this->viewRedirect( Title::makeTitle( NS_IMAGE, $this->img->getName() ),
+					/* $appendSubtitle */ true, /* $forceKnown */ true ) );
 				$this->viewUpdates();
 				return;
 			}
@@ -98,7 +98,7 @@ class ImagePage extends Article {
 		} else {
 			# Just need to set the right headers
 			$wgOut->setArticleFlag( true );
-			$wgOut->setRobotpolicy( 'noindex,nofollow' );
+			$wgOut->setRobotPolicy( 'noindex,nofollow' );
 			$wgOut->setPageTitle( $this->mTitle->getPrefixedText() );
 			$this->viewUpdates();
 		}
@@ -118,8 +118,8 @@ class ImagePage extends Article {
 		$this->imageHistory();
 		// TODO: Cleanup the following
 		
-		$wgOut->addHTML( Xml::element( 'h2', 
-			array( 'id' => 'filelinks' ), 
+		$wgOut->addHTML( Xml::element( 'h2',
+			array( 'id' => 'filelinks' ),
 			wfMsg( 'imagelinks' ) ) . "\n" );
 		$this->imageDupes();
 		// TODO: We may want to find local images redirecting to a foreign 
@@ -339,8 +339,10 @@ class ImagePage extends Article {
 						# because of rounding.
 					}
 					$msgbig  = wfMsgHtml( 'show-big-image' );
-					$msgsmall = wfMsgExt( 'show-big-image-thumb',
-						array( 'parseinline' ), $wgLang->formatNum( $width ), $wgLang->formatNum( $height ) );
+					$msgsmall = wfMsgExt( 'show-big-image-thumb', 'parseinline',
+						$wgLang->formatNum( $width ),
+						$wgLang->formatNum( $height )
+					);
 				} else {
 					# Image is small enough to show full size on image page
 					$msgbig = htmlspecialchars( $this->displayImg->getName() );
@@ -596,28 +598,25 @@ EOT
 	 * If the page we've just displayed is in the "Image" namespace,
 	 * we follow it with an upload history of the image and its usage.
 	 */
-	function imageHistory()
-	{
+	function imageHistory() {
 		global $wgOut, $wgUseExternalEditor;
 
 		$this->loadFile();
 		if ( $this->img->exists() ) {
 			$list = new ImageHistoryList( $this );
 			$file = $this->img;
-			$dims = $file->getDimensionsString();
 			$s = $list->beginImageHistoryList();
 			$s .= $list->imageHistoryLine( true, $file );
 			// old image versions
 			$hist = $this->img->getHistory();
 			foreach( $hist as $file ) {
-				$dims = $file->getDimensionsString();
 				$s .= $list->imageHistoryLine( false, $file );
 			}
 			$s .= $list->endImageHistoryList();
 		} else { $s=''; }
 		$wgOut->addHTML( $s );
 
-		$this->img->resetHistory();	// free db resources
+		$this->img->resetHistory(); // free db resources
 
 		# Exist check because we don't want to show this on pages where an image
 		# doesn't exist along with the noimage message, that would suck. -ævar
@@ -627,9 +626,8 @@ EOT
 
 	}
 
-	function imageLinks()
-	{
-		global $wgUser, $wgOut;
+	function imageLinks() {
+		global $wgUser, $wgOut, $wgLang;
 
 		$limit = 100;
 
@@ -649,10 +647,19 @@ EOT
 			$wgOut->addHTML( "</div>\n" );
 			return;
 		}
+		
 		$wgOut->addHTML( "<div id='mw-imagepage-section-linkstoimage'>\n" );
-		$wgOut->addWikiMsg( 'linkstoimage', $count );
-		$wgOut->addHTML( "<ul class='mw-imagepage-linktoimage'>\n" );
+		if ( $count <= $limit - 1 ) {
+			$wgOut->addWikiMsg( 'linkstoimage', $count );
+		} else {
+			// More links than the limit. Add a link to [[Special:Whatlinkshere]]
+			$wgOut->addWikiMsg( 'linkstoimage-more',
+				$wgLang->formatNum( $limit ),
+				$this->mTitle->getPrefixedDBkey()
+			);
+		}
 
+		$wgOut->addHTML( "<ul class='mw-imagepage-linkstoimage'>\n" );
 		$sk = $wgUser->getSkin();
 		$count = 0;
 		while ( $s = $res->fetchObject() ) {
@@ -672,15 +679,16 @@ EOT
 			$wgOut->addWikiMsg( 'morelinkstoimage', $this->mTitle->getPrefixedDBkey() );
 	}
 	
-	function imageRedirects()
-	{
-		global $wgUser, $wgOut;
+	function imageRedirects() {
+		global $wgUser, $wgOut, $wgLang;
 
 		$redirects = $this->getTitle()->getRedirectsHere( NS_IMAGE );
 		if ( count( $redirects ) == 0 ) return;
 
 		$wgOut->addHTML( "<div id='mw-imagepage-section-redirectstofile'>\n" );
-		$wgOut->addWikiMsg( 'redirectstofile', count( $redirects ) );
+		$wgOut->addWikiMsg( 'redirectstofile',
+			$wgLang->formatNum( count( $redirects ) )
+		);
 		$wgOut->addHTML( "<ul class='mw-imagepage-redirectstofile'>\n" );
 
 		$sk = $wgUser->getSkin();
@@ -693,7 +701,7 @@ EOT
 	}
 
 	function imageDupes() {
-		global $wgOut, $wgUser;
+		global $wgOut, $wgUser, $wgLang;
 
 		$this->loadFile();
 
@@ -701,16 +709,19 @@ EOT
 		if ( count( $dupes ) == 0 ) return;
 
 		$wgOut->addHTML( "<div id='mw-imagepage-section-duplicates'>\n" );
-		$wgOut->addWikiMsg( 'duplicatesoffile', count( $dupes ) );
+		$wgOut->addWikiMsg( 'duplicatesoffile',
+			$wgLang->formatNum( count( $dupes ) )
+		);
 		$wgOut->addHTML( "<ul class='mw-imagepage-duplicates'>\n" );
 
 		$sk = $wgUser->getSkin();
 		foreach ( $dupes as $file ) {
 			if ( $file->isLocal() )
 				$link = $sk->makeKnownLinkObj( $file->getTitle(), "" );
-			else
-				$link = $sk->makeExternalLink( $file->getDescriptionUrl(), 
+			else {
+				$link = $sk->makeExternalLink( $file->getDescriptionUrl(),
 					$file->getTitle()->getPrefixedText() );
+			}
 			$wgOut->addHTML( "<li>{$link}</li>\n" );
 		}
 		$wgOut->addHTML( "</ul></div>\n" );
@@ -762,7 +773,7 @@ EOT
 	function showError( $description ) {
 		global $wgOut;
 		$wgOut->setPageTitle( wfMsg( "internalerror" ) );
-		$wgOut->setRobotpolicy( "noindex,nofollow" );
+		$wgOut->setRobotPolicy( "noindex,nofollow" );
 		$wgOut->setArticleRelated( false );
 		$wgOut->enableClientCache( false );
 		$wgOut->addWikiText( $description );
@@ -809,8 +820,8 @@ class ImageHistoryList {
 			. ( $this->current->isLocal() && ($wgUser->isAllowed('delete') || $wgUser->isAllowed('deleterevision') ) ? '<td></td>' : '' )
 			. '<th>' . wfMsgHtml( 'filehist-datetime' ) . '</th>'
 			. '<th>' . wfMsgHtml( 'filehist-dimensions' ) . '</th>'
-			. '<th>' . wfMsgHtml( 'filehist-user' ) . '</th>' 
-			. '<th>' . wfMsgHtml( 'filehist-comment' ) . '</th>' 	 
+			. '<th>' . wfMsgHtml( 'filehist-user' ) . '</th>'
+			. '<th>' . wfMsgHtml( 'filehist-comment' ) . '</th>'
 			. "</tr>\n";
 	}
 

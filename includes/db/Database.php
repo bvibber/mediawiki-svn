@@ -29,7 +29,7 @@ class Database {
 	protected $mPHPError = false;
 
 	protected $mServer, $mUser, $mPassword, $mConn = null, $mDBname;
-	protected $mOut, $mOpened = false;
+	protected $mOpened = false;
 
 	protected $mFailFunction;
 	protected $mTablePrefix;
@@ -57,7 +57,7 @@ class Database {
 	 * FALSE means discard output
 	 */
 	function setOutputPage( $out ) {
-		$this->mOut = $out;
+		wfDeprecated( __METHOD__ );
 	}
 
 	/**
@@ -261,7 +261,6 @@ class Database {
 		if ( !isset( $wgOut ) ) {
 			$wgOut = NULL;
 		}
-		$this->mOut =& $wgOut;
 
 		$this->mFailFunction = $failFunction;
 		$this->mFlags = $flags;
@@ -2178,7 +2177,7 @@ class Database {
 				$cmd = $this->replaceVars( $cmd );
 				$res = $this->query( $cmd, __METHOD__ );
 				if ( $resultCallback ) {
-					call_user_func( $resultCallback, $res );
+					call_user_func( $resultCallback, $res, $this );
 				}
 
 				if ( false === $res ) {
@@ -2271,6 +2270,16 @@ class Database {
 		$lockName = $this->addQuotes( $lockName );
 		$result = $this->query( "SELECT RELEASE_LOCK($lockName)", $method );
 		$this->freeResult( $result );
+	}
+	
+	/**
+	 * Get search engine class. All subclasses of this
+	 * need to implement this if they wish to use searching.
+	 * 
+	 * @return string
+	 */
+	public function getSearchEngine() {
+		return "SearchMySQL";
 	}
 }
 

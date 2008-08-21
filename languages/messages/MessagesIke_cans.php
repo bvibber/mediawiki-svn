@@ -4,10 +4,6 @@
  * @ingroup Language
  * @file
  *
- * @author SPQRobin
- * @author Siebrand
- * @author Max sonnelid
- * @author M.M.S.
  */
 
 $messages = array(
@@ -113,7 +109,6 @@ $messages = array(
 'portal-url'           => 'Project:ᖃᒡᒋᖅ',
 'privacy'              => 'ᓇᒻᒥᓂᖅ ᐱᓕᕆᕝᕕᖃᐅᖅᑐᓄᑦ ᐊᐅᓚᑕᐅᔪᑦ ᐊᑐᐊᒐᖅ, ᐱᓇᓱᐊᕐᓂᖅ',
 'privacypage'          => 'Project:ᓇᒻᒥᓂᖅ ᐱᓕᕆᕝᕕᖃᐅᖅᑐᓄᑦ ᐊᐅᓚᑕᐅᔪᑦ ᐊᑐᐊᒐᖅ, ᐱᓇᓱᐊᕐᓂᖅ',
-'sitesupport'          => 'ᑐᓐᓂᖅᑯᓯᐊᑦ ᑮᓇᐅᔭᐃᑦ',
 
 'youhavenewmessages'  => 'ᐃᓕᔅᓯ ᐱᒋᕚ $1 ($2).',
 'newmessageslink'     => 'ᐱᒋᕗᖅ ᑭᒡᒐᐹ',
@@ -268,7 +263,7 @@ $messages = array(
 # Special:Log
 'log-search-submit' => 'ᐊᐃᕗᖅ',
 
-# Special:Allpages
+# Special:AllPages
 'allpages'       => 'ᓱᓇᒥᑦᑐᖅ ᒪᑉᐱᑕᖅ',
 'nextpage'       => 'ᑕᒡᒐ ᒪᑉᐱᑕᖅ ($1)',
 'allpagesprev'   => 'ᑐᓄᓪᓕᐹᖅ',
@@ -369,7 +364,7 @@ $messages = array(
 'previousdiff' => '← ᑐᓄᓪᓕᐹᖅ ᐊᓯᐊᙳᑐᖅ',
 'nextdiff'     => 'ᑕᒡᒐ ᐊᓯᐊᙳᑐᖅ ᒪᑉᐱᑕᖅ →',
 
-# Special:Newimages
+# Special:NewImages
 'ilsubmit' => 'ᐃᕚᖅᐳᖅ',
 'bydate'   => 'ᐱᑖᕈᑦᑐᖅ ᐃᓅᓕᕐᕕᒃ',
 
@@ -384,9 +379,6 @@ $messages = array(
 
 # 'all' in various places, this might be different for inflected languages
 'monthsall' => 'ᓱᓇᒥᑦᑐᖅ',
-
-# HTML dump
-'redirectingto' => 'ᖃᓂᖓᓂ ᑲᒪᒋᔭᖅ ᐋᓯᑦ ᓇᑭᑦ [[$1]]...',
 
 # action=purge
 'confirm_purge_button' => 'ᐊᑲᐅᔪᖅ',

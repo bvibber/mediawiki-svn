@@ -1,8 +1,10 @@
 <?php
-/** Zhuang (壮语)
+/** Zhuang ((Cuengh))
  *
  * @ingroup Language
  * @file
+ *
+ * @author Hakka
  */
 
 $fallback = 'zh-hans';
@@ -130,7 +132,6 @@ $messages = array(
 # Move page
 'move-page-legend' => 'Caen doengh mae',
 'movearticle'      => 'Caen doengh mae:',
-'movenologin'      => 'Maengx laezhaej',
 'move-watch'       => 'Demq mae-nej',
 'movepagebtn'      => 'Caen doengh mae',
 'movedto'          => 'Caen bei',
@@ -141,7 +142,7 @@ $messages = array(
 'tooltip-pt-preferences' => 'Doenghgaeq gou hae',
 'tooltip-p-logo'         => 'Mae meh',
 
-# Special:Newimages
+# Special:NewImages
 'ilsubmit' => 'Cwmh',
 
 # Multipage image navigation

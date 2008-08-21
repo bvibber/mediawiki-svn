@@ -7,10 +7,7 @@
  * @author CdaMVvWgS
  * @author Belgian man
  * @author Node ue
- * @author SPQRobin
  */
-
-
 
 $messages = array(
 # Dates
@@ -44,7 +41,6 @@ $messages = array(
 'helppage'             => 'Help:Oangan',
 'mainpage'             => 'Bwiema peij',
 'mainpage-description' => 'Bwiema peij',
-'sitesupport'          => 'Eadu a me',
 
 'editsection' => 'Kiwiwid',
 'showtoc'     => 'oduwen',
@@ -92,7 +88,7 @@ $messages = array(
 # Miscellaneous special pages
 'move' => 'Memori',
 
-# Special:Allpages
+# Special:AllPages
 'allpagessubmit' => 'nuwa ko',
 
 # E-mail user
@@ -112,7 +108,7 @@ $messages = array(
 # Contributions
 'contributions' => 'Mana engame totow inne',
 
-# Special:Newimages
+# Special:NewImages
 'ilsubmit' => 'Anani ko',
 
 );

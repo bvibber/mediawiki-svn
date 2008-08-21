@@ -409,7 +409,7 @@ class LogEventsList {
  * @ingroup Pager
  */
 class LogPager extends ReverseChronologicalPager {
-	private $type = '', $user = '', $title = '', $pattern = '', $year = '', $month = '';
+	private $type = '', $user = '', $title = '', $pattern = '';
 	public $mLogEventsList;
 	/**
 	* constructor
@@ -429,14 +429,14 @@ class LogPager extends ReverseChronologicalPager {
 		$this->limitType( $type );
 		$this->limitUser( $user );
 		$this->limitTitle( $title, $pattern );
-		$this->limitDate( $y, $m );
+		$this->getDateCond( $y, $m );
 	}
 
 	function getDefaultQuery() {
 		$query = parent::getDefaultQuery();
 		$query['type'] = $this->type;
-		$query['month'] = $this->month;
-		$query['year'] = $this->year;
+		$query['month'] = $this->mMonth;
+		$query['year'] = $this->mYear;
 		return $query;
 	}
 
@@ -504,6 +504,17 @@ class LogPager extends ReverseChronologicalPager {
 
 		$this->title = $title->getPrefixedText();
 		$ns = $title->getNamespace();
+		# Using the (log_namespace, log_title, log_timestamp) index with a
+		# range scan (LIKE) on the first two parts, instead of simple equality,
+		# makes it unusable for sorting.  Sorted retrieval using another index
+		# would be possible, but then we might have to scan arbitrarily many
+		# nodes of that index. Therefore, we need to avoid this if $wgMiserMode
+		# is on.
+		#
+		# This is not a problem with simple title matches, because then we can
+		# use the page_time index.  That should have no more than a few hundred
+		# log entries for even the busiest pages, so it can be safely scanned
+		# in full to satisfy an impossible condition on user or similar.
 		if( $pattern && !$wgMiserMode ) {
 			# use escapeLike to avoid expensive search patterns like 't%st%'
 			$safetitle = $this->mDb->escapeLike( $title->getDBkey() );
@@ -513,45 +524,6 @@ class LogPager extends ReverseChronologicalPager {
 		} else {
 			$this->mConds['log_namespace'] = $ns;
 			$this->mConds['log_title'] = $title->getDBkey();
-		}
-	}
-
-	/**
-	 * Set the log reader to return only entries from given date.
-	 * @param int $year
-	 * @param int $month
-	 * @private
-	 */
-	function limitDate( $year, $month ) {
-		$year = intval($year);
-		$month = intval($month);
-
-		$this->year = ($year > 0 && $year < 10000) ? $year : '';
-		$this->month = ($month > 0 && $month < 13) ? $month : '';
-
-		if( $this->year || $this->month ) {
-			// Assume this year if only a month is given
-			if( $this->year ) {
-				$year_start = $this->year;
-			} else {
-				$year_start = substr( wfTimestampNow(), 0, 4 );
-				$thisMonth = gmdate( 'n' );
-				if( $this->month > $thisMonth ) {
-					// Future contributions aren't supposed to happen. :)
-					$year_start--;
-				}
-			}
-
-			if( $this->month ) {
-				$month_end = str_pad($this->month + 1, 2, '0', STR_PAD_LEFT);
-				$year_end = $year_start;
-			} else {
-				$month_end = 0;
-				$year_end = $year_start + 1;
-			}
-			$ts_end = str_pad($year_end . $month_end, 14, '0' );
-
-			$this->mOffset = $ts_end;
 		}
 	}
 
@@ -616,11 +588,11 @@ class LogPager extends ReverseChronologicalPager {
 	}
 
 	public function getYear() {
-		return $this->year;
+		return $this->mYear;
 	}
 
 	public function getMonth() {
-		return $this->month;
+		return $this->mMonth;
 	}
 }
 

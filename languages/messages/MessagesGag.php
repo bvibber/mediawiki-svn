@@ -5,7 +5,6 @@
  * @file
  *
  * @author Cuman
- * @author Siebrand
  */
 
 $fallback = 'tr';
@@ -54,8 +53,6 @@ $messages = array(
 'underline-always'  => 'Dayma',
 'underline-never'   => 'Hiç bir zaman',
 'underline-default' => 'Brauzer karar kabletsin',
-
-'skinpreview' => '(Ön siir)',
 
 # Dates
 'sunday'        => 'Pazar',
@@ -224,13 +221,9 @@ $messages = array(
 'portal-url'           => 'Project:Topluluk portalı',
 'privacy'              => 'Saklamaa politikası',
 'privacypage'          => 'Project:Saklamaa politikası',
-'sitesupport'          => 'Baaşişlär',
-'sitesupport-url'      => 'Project:Baaşiş',
 
 'badaccess'        => 'İzin kusurluu',
 'badaccess-group0' => 'Bu işlemi yapmaa kuvediniz yok.',
-'badaccess-group1' => 'O işlem ani yapmaa neetlendiniz sadä var nicä yapılsın $1 gruppasındaki kullanıcılar tarafınnan.',
-'badaccess-group2' => 'O işlem ani yapmaa neetlendiniz, var nicä yapılsın sadä $1 gruppasındaki kullanıcılardan biri tarafınnan.',
 'badaccess-groups' => 'O işlem ani yapmaa neetlendiniz var nicä yapılsın sadä $1 gruppalarınnan birinin kullanıcıları tarafınnan.',
 
 'versionrequired'     => 'MediaWiki-nin $1 versiyası läazım',
@@ -273,7 +266,7 @@ $messages = array(
 'nosuchaction'      => 'Bölä bir işlem yok',
 'nosuchactiontext'  => 'URL tarafınnan tanınan işlem Viki tarafınnan kabledilmedi.',
 'nosuchspecialpage' => 'Bu adda bir maasus sayfa yok',
-'nospecialpagetext' => 'Bir maasus sayfaya girdiniz angısı bulunmêêr. Var olan hepsi maasus sayfaları yakışêr sizä görmää [[Special:Specialpages|{{int:specialpages}}]] sayfasında.',
+'nospecialpagetext' => 'Bir maasus sayfaya girdiniz angısı bulunmêêr. Var olan hepsi maasus sayfaları yakışêr sizä görmää [[Special:SpecialPages|{{int:specialpages}}]] sayfasında.',
 
 # General errors
 'error'              => 'Kusurluk',
@@ -375,7 +368,7 @@ O zamana kadar ani e-maildaki instrukțiyalar yapılmaycêk hem doorulanmaycêk 
 'italic_tip'      => 'İtalik tekst',
 'link_sample'     => 'Sayfanın adı',
 'link_tip'        => 'İç baalantı',
-'extlink_sample'  => '{{SERVER}} adres adı',
+'extlink_sample'  => 'http://www.example.com adres adı',
 'extlink_tip'     => 'Dış baalantı (Unutmayın adresin önüne http:// koymaa)',
 'headline_sample' => 'Başlık teksti',
 'headline_tip'    => '2. düzey başlık',
@@ -445,7 +438,7 @@ Hem siz garantiyada bulunêrsiniz ani eklemäklerin avtorusunuz, yaki onnarı ko
 'template-protected'     => '(korumaa)',
 'template-semiprotected' => '(yarı-korunmaa)',
 'nocreatetext'           => '{{SITENAME}} eni yazılar yaratmaa yasaklandı.
-Sizä yakışêr geeri dönmää hem düzmää var olan yapraa, yaki [[Special:Userlogin|sessiya açmaa yaki esap yaratmaa]].',
+Sizä yakışêr geeri dönmää hem düzmää var olan yapraa, yaki [[Special:UserLogin|sessiya açmaa yaki esap yaratmaa]].',
 'permissionserrors'      => 'İzin yannışları',
 'recreate-deleted-warn'  => "'''Bak: Siz yarattınız o sayfayı angısı ilerdän silindi.'''
 
@@ -509,6 +502,7 @@ Nışannar: (bitki) = şindiki versiyalan aradaki fark,
 # Preferences page
 'preferences'   => 'Seçimner',
 'mypreferences' => 'Seçimnerim',
+'skin-preview'  => 'Ön siir',
 'retypenew'     => 'Eni parolu tekrar girin',
 
 # User rights
@@ -553,7 +547,7 @@ Nışannar: (bitki) = şindiki versiyalan aradaki fark,
 'uploadlogpage' => 'Fayl üklemäk jurnalları',
 'uploadedimage' => 'Üklenen: "[[$1]]"',
 
-# Special:Imagelist
+# Special:ImageList
 'imagelist' => 'Pätret listası',
 
 # Image description page
@@ -640,7 +634,7 @@ Nışannar: (bitki) = şindiki versiyalan aradaki fark,
 'log'                  => 'Jurnallar',
 'all-logs-page'        => 'Hepsi jurnallar',
 
-# Special:Allpages
+# Special:AllPages
 'allpages'       => 'Hepsi sayfalar',
 'alphaindexline' => '$1den $2e',
 'nextpage'       => 'Geeriki sayfa ($1)',
@@ -651,7 +645,7 @@ Nışannar: (bitki) = şindiki versiyalan aradaki fark,
 'allpagesprefix' => 'Gösterin sayfaları angıları çekeder bukvalarlan ani buraya yazdınız:',
 
 # Special:Categories
-'categories' => '{{PLURAL:$1|Kategoriya|Kategoriyalar}}',
+'categories' => 'Kategoriyalar',
 
 # E-mail user
 'emailuser' => 'Gönder bu kullanıcıya bir e-mail',
@@ -665,7 +659,7 @@ Nışannar: (bitki) = şindiki versiyalan aradaki fark,
 
 Gelecektä, bu sayfaya hem ilgili konuşmaa sayfasına yapılacêk diişmäkler burada yazılacêk.
 
-[[Special:Recentchanges|Bitki diişmäkler listası]] başlıı altında yazılacêk kalın bukvalarnan neçin ki kolayca seçilsin.
+[[Special:RecentChanges|Bitki diişmäkler listası]] başlıı altında yazılacêk kalın bukvalarnan neçin ki kolayca seçilsin.
 
 Ne zaman neetlendiniz sayfayı bakmaa listasınnan çıkarmaa tuşlayın "sayfaya bakmaa durgun" baalantısına.',
 'removedwatch'         => 'Bakmaa listanızdan silindi',
@@ -741,7 +735,6 @@ Burada bitki seçimner <strong>$1</strong> yazı diiştirmää deyni:',
 # What links here
 'whatlinkshere'       => 'Baalantılar sayfaa',
 'whatlinkshere-title' => '$1 baalantısı olan sayfalar',
-'linklistsub'         => '(Baalantı listası)',
 'linkshere'           => 'Buraya baalantısı var olan sayfalar:',
 'nolinkshere'         => 'Yok buraya baalanan sayfa.',
 'isredirect'          => 'yönnendirmäk sayfası',
@@ -765,7 +758,7 @@ Burada bitki seçimner <strong>$1</strong> yazı diiştirmää deyni:',
 'movepagetext'     => "Aşaadaki formayı kullanılarak var nicä sayfanın adın diiştirin, onnan bilä hepsi diiştirmää jurnalı eni ada aktarılacêk.
 Eski ad eni ada yönnendirmäk olacêk.
 Eski başlaa baalantılar diişmeycek;
-[[Special:DoubleRedirects|çift]] yaki [[Special:BrokenRedirects|yannış]] yönnendirmäkleri.
+çift yaki yannış yönnendirmäkleri.
 Läazım inanmaa ani baalantılar genä dä gösterer orayı nerä läazım göstersin.
 
 Herliim ilerdän eni adda sayfa vardı, ad diişmää '''yapılmaycêk'''.
@@ -833,7 +826,6 @@ Yalvarêrêz başka bir ad seçmää.',
 'tooltip-n-recentchanges'         => 'Bitki diişmäklär listası angıları Vikidä yapıldı.',
 'tooltip-n-randompage'            => 'Razgele bir yazıya gidin',
 'tooltip-n-help'                  => 'Yardım almaa deyni',
-'tooltip-n-sitesupport'           => 'Material destek',
 'tooltip-t-whatlinkshere'         => 'Başka viki sayfaların listası angıları bu sayfaa baalantı verdi',
 'tooltip-t-contributions'         => 'Kullanıcının katılmak listasını gör',
 'tooltip-t-emailuser'             => 'Bu kullanıcı için e-mail gönder',
@@ -863,7 +855,7 @@ Yalvarêrêz başka bir ad seçmää.',
 'show-big-image'       => 'Taman aydınnık',
 'show-big-image-thumb' => '<small>Ön siir ölçüsü: $1 × $2 piksel</small>',
 
-# Special:Newimages
+# Special:NewImages
 'newimages' => 'Eni pätretler',
 
 # Bad image list
@@ -887,7 +879,7 @@ Sadä listadaki êlementlarä (* nışannan çekedän liniyalar) bakılacêk. Li
 
 # External editor support
 'edit-externally'      => 'Kompyuterinizdäki uygulamaklarlan faylı düz',
-'edit-externally-help' => 'Taa çok bilgi için var nicä bakmaa metadaki [http://meta.wikimedia.org/wiki/Help:External_editors dış uygulama instrumentläri] (angliyça) sayfasına.',
+'edit-externally-help' => 'Taa çok bilgi için var nicä bakmaa metadaki [http://www.mediawiki.org/wiki/Manual:External_editors dış uygulama instrumentläri] (angliyça) sayfasına.',
 
 # 'all' in various places, this might be different for inflected languages
 'watchlistall2' => 'Hepsini göster',

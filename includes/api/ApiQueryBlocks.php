@@ -71,7 +71,7 @@ class ApiQueryBlocks extends ApiQueryBase {
 		if($fld_id)
 			$this->addFields('ipb_id');
 		if($fld_user)
-			$this->addFields(array('ipb_address', 'ipb_user'));
+			$this->addFields(array('ipb_address', 'ipb_user', 'ipb_auto'));
 		if($fld_by)
 		{
 			$this->addTables('user');

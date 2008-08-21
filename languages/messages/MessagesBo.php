@@ -3,6 +3,7 @@
  *
  * @ingroup Language
  * @file
+ *
  */
 
 $digitTransformTable = array(
@@ -71,6 +72,9 @@ $messages = array(
 'nov'           => 'ཟླ་བཅུ་གཅིག་པ།',
 'dec'           => 'ཟླ་བཅུ་གཉིས་པ།',
 
+# Categories related messages
+'subcategories' => 'རིགས་ཕལ་བ།',
+
 'about'          => 'ཨཱབོཨུཏ་',
 'cancel'         => 'དོར་བ།',
 'qbedit'         => 'རྩོམ་སྒྲིག',
@@ -103,7 +107,6 @@ $messages = array(
 'mainpage'             => 'གཙོ་ངོས།',
 'mainpage-description' => 'གཙོ་ངོས།',
 'portal'               => 'ཁོངས་མི་འདུ་ར།',
-'sitesupport'          => 'ཞལ་འདེབས།',
 
 'editsection' => 'རྩོམ་སྒྲིག',
 'editold'     => 'རྩོམ་སྒྲིག',
@@ -185,7 +188,7 @@ $messages = array(
 # Book sources
 'booksources-go' => 'སོང་།',
 
-# Special:Allpages
+# Special:AllPages
 'allpages'       => 'དྲ་ངོས་ཡོངས།',
 'allpagessubmit' => 'སོང་།',
 
@@ -219,7 +222,6 @@ $messages = array(
 
 # Move page
 'movearticle' => 'སྤོར་ངོས།',
-'movenologin' => 'ནང་འཛུལ་བྱས་མེད།',
 'move-watch'  => 'དྲ་ངོས་འདི་ལ་མཉམ་འཇོག་པ།',
 'movereason'  => 'རྒྱུ་མཚན།',
 
@@ -232,7 +234,7 @@ $messages = array(
 'tooltip-ca-move'        => 'ཨཾོབེ༹་ ཐིས་ པགེ་',
 'tooltip-p-logo'         => 'གཙོ་ངོས།',
 
-# Special:Newimages
+# Special:NewImages
 'ilsubmit' => 'འཚོལ།',
 
 # Multipage image navigation

@@ -5,7 +5,6 @@
  * @file
  *
  * @author Jmb
- * @author SPQRobin
  * @author Malafaya
  * @author לערי ריינהארט
  */
@@ -133,7 +132,6 @@ $messages = array(
 'mainpage-description' => 'Principal págine',
 'portal'               => 'Págine del comunité',
 'portal-url'           => 'Project:Págine del comunité',
-'sitesupport'          => 'Donationes',
 
 'youhavenewmessages' => 'Vu have $1 ($2).',
 'newmessageslink'    => 'nov missages',
@@ -250,7 +248,7 @@ Vu posse continuar usar {{SITENAME}} anonimimen, o vu posse aperter un session d
 'filedesc'  => 'Descrition',
 'savefile'  => 'Conservar file',
 
-# Special:Imagelist
+# Special:ImageList
 'imagelist' => 'Liste de images',
 
 # Image description page
@@ -284,7 +282,7 @@ Vu posse continuar usar {{SITENAME}} anonimimen, o vu posse aperter un session d
 'specialloguserlabel'  => 'Usator:',
 'speciallogtitlelabel' => 'Titul:',
 
-# Special:Allpages
+# Special:AllPages
 'allpages'       => 'Omni págines',
 'allarticles'    => 'Omni págines',
 'allpagessubmit' => 'Vade',
@@ -295,7 +293,7 @@ Vu posse continuar usar {{SITENAME}} anonimimen, o vu posse aperter un session d
 # Watchlist
 'watchlist'            => 'Liste de sequet págines',
 'addedwatch'           => 'Adjuntet al liste',
-'addedwatchtext'       => "Li págine ''[[$1]]'' ha esset adjuntet a vor [[Special:Watchlist|liste de sequet págines]]. Li proxim modificationes de ti ci págine e del associat págine de discussion va esser listat ci, e li págine va aperir '''aspessat''' in li [[Special:Recentchanges|liste de recent modificationes]] por esser trovat plu facilmen. Por supresser ti ci págine ex vor liste, ples claccar sur « Ne plu sequer » in li cadre de navigation.",
+'addedwatchtext'       => "Li págine ''[[$1]]'' ha esset adjuntet a vor [[Special:Watchlist|liste de sequet págines]]. Li proxim modificationes de ti ci págine e del associat págine de discussion va esser listat ci, e li págine va aperir '''aspessat''' in li [[Special:RecentChanges|liste de recent modificationes]] por esser trovat plu facilmen. Por supresser ti ci págine ex vor liste, ples claccar sur « Ne plu sequer » in li cadre de navigation.",
 'watch'                => 'Sequer',
 'watchthispage'        => 'Sequer ti págine',
 'watchlist-hide-bots'  => 'Celar modificationes de bot',
@@ -326,7 +324,6 @@ Vu posse continuar usar {{SITENAME}} anonimimen, o vu posse aperter un session d
 
 # Move page
 'movearticle' => 'Moer págine:',
-'movenologin' => 'Vu ne ha intrat',
 'movepagebtn' => 'Moer págine',
 'movedto'     => 'moet a',
 '1movedto2'   => '[[$1]] moet a [[$2]]',
@@ -346,7 +343,7 @@ Vu posse continuar usar {{SITENAME}} anonimimen, o vu posse aperter un session d
 'tooltip-n-mainpage'     => 'Visita li Principal págine',
 'tooltip-t-specialpages' => 'Liste de omni special págines',
 
-# Special:Newimages
+# Special:NewImages
 'newimages' => 'Galerie de nov images',
 
 # 'all' in various places, this might be different for inflected languages

@@ -305,6 +305,22 @@ $detailText
 
 EOL;
 	}
+
+	protected function isEmpty() {
+		$empty = true;
+		foreach( $this->results as $code => $results ) {
+			foreach( $results as $check => $messages ) {
+				if( !empty( $messages ) ) {
+					$empty = false;
+					break;
+				}
+			}
+			if( !$empty ) {
+				break;
+			}
+		}
+		return $empty;
+	}
 }
 
 class CheckExtensionsCLI extends CheckLanguageCLI {
@@ -394,7 +410,7 @@ Parameters:
 	* links: Link the message values (default off).
 	* wikilang: For the links, what is the content language of the wiki to display the output in (default en).
 	* whitelist: Do only the following checks (form: code,code).
-	* blacklist: Don't do the following checks (form: code,code).
+	* blacklist: Do not perform the following checks (form: code,code).
 	* duplicate: Additionally check for messages which are translated the same to English (default off).
 Check codes (ideally, all of them should result 0; all the checks are executed by default (except duplicate and language specific check blacklists in checkLanguage.inc):
 	* untranslated: Messages which are required to translate, but are not translated.
@@ -422,26 +438,28 @@ ENDS;
 
 	protected function checkLanguage( $code ) {
 		foreach( $this->extensions as $extension ) {
-			echo $extension->name() . ":\n";
-
 			$this->L = $extension;
 			$this->results = array();
 			$this->results[$code] = parent::checkLanguage( $code );
 
-			if( $this->level > 0 ) {
-				switch( $this->output ) {
-					case 'plain':
-						$this->outputText();
-						break;
-					case 'wiki':
-						$this->outputWiki();
-						break;
-					default:
-						throw new MWException( "Invalid output type $this->output" );
-				}
-			}
+			if( !$this->isEmpty() ) {
+				echo $extension->name() . ":\n";
 
-			echo "\n";
+				if( $this->level > 0 ) {
+					switch( $this->output ) {
+						case 'plain':
+							$this->outputText();
+							break;
+						case 'wiki':
+							$this->outputWiki();
+							break;
+						default:
+							throw new MWException( "Invalid output type $this->output" );
+					}
+				}
+
+				echo "\n";
+			}
 		}
 	}
 }
@@ -450,7 +468,9 @@ ENDS;
 $checkBlacklist = array(
 #'code'        => array( 'check1', 'check2' ... )
 'gan'          => array( 'plural' ),
+'gn'           => array( 'plural' ),
 'hak'          => array( 'plural' ),
+'hu'           => array( 'plural' ),
 'ja'           => array( 'plural' ), // Does not use plural
 'ka'           => array( 'plural' ),
 'kk-arab'      => array( 'plural' ),
@@ -460,6 +480,7 @@ $checkBlacklist = array(
 'mn'           => array( 'plural' ),
 'ms'           => array( 'plural' ),
 'my'           => array( 'chars' ),  // Uses a lot zwnj
+'sah'          => array( 'plural' ),
 'sq'           => array( 'plural' ),
 'tet'          => array( 'plural' ),
 'th'           => array( 'plural' ),

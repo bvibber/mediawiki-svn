@@ -6,8 +6,6 @@
  *
  * @author Kamizu
  * @author לערי ריינהארט
- * @author SPQRobin
- * @author Siebrand
  */
 
 $messages = array(
@@ -122,7 +120,7 @@ $messages = array(
 'nosuchspecialpage' => 'E página spesial no ta eksistí',
 'nospecialpagetext' => "<big>'''Bo a pidi un página spesial inválido.'''</big>
 
-Bo por haña un lista di tur [[Special:Specialpages|{{int:specialpages}}]].",
+Bo por haña un lista di tur [[Special:SpecialPages|{{int:specialpages}}]].",
 
 # General errors
 'error'         => 'Eror',
@@ -135,8 +133,8 @@ Bo por haña un lista di tur [[Special:Specialpages|{{int:specialpages}}]].",
 
 # Login and logout pages
 'welcomecreation'            => '== Bon bini, $1! ==
-
-Bo kuenta ta trahá. No lubidá di kambia bo [[Special:Preferences|{{SITENAME}} preferensianan]].',
+Bo kuenta ta trahá.
+No lubidá di kambia bo {{SITENAME}} preferensianan.',
 'yourname'                   => 'Nòmber di uzadó',
 'yourpassword'               => 'Kontraseña',
 'yourpasswordagain'          => 'Hinka kontraseña atrobe',
@@ -163,18 +161,16 @@ Bo kuenta ta trahá. No lubidá di kambia bo [[Special:Preferences|{{SITENAME}} 
 
 # Edit pages
 'watchthis'          => 'Observá e página aki',
-'anoneditwarning'    => 'Bo no a [[Special:Userlogin|outentiká bo mes]]. Bo por kambia página libremente, pero tene kuenta ku lo nota bo IP adrès den e historia di kambionan hasí na e página aki.',
+'anoneditwarning'    => 'Bo no a outentiká bo mes.
+Bo por kambia página libremente, pero tene kuenta ku lo nota bo IP adrès den e historia di kambionan hasí na e página aki.',
 'blockedtitle'       => 'Uzadó ta blokiá',
 'whitelistedittitle' => 'Mester outentiká promé pa editá',
-'whitelistreadtitle' => 'Mester outentiká promé pa lesa',
-'whitelistreadtext'  => 'Bo mester [[Special:Userlogin|outentiká bo mes]] pa lesa página.',
-'whitelistacctitle'  => 'Bo no ta pèrmití pa traha un kuenta nobo',
 'confirmedittitle'   => 'Konfirmashon di e-mail eksigí pa editá',
 'confirmedittext'    => 'Bo mester konfirmá bo e-mail adrès promé ku bo editá página. Por fabor duna i validá bo e-mail adrès via bo [[Special:Preferences|preferensianan]].',
 'accmailtitle'       => 'Kontraseña mandá.',
 'accmailtext'        => "E kontraseña pa '$1' tabata mandá pa $2.",
 'newarticle'         => '(Nobo)',
-'anontalkpagetext'   => "----''Esaki ta e página di diskushon pa un uzadó anonimo ku no a traha un kuenta ahinda, òf no sa uza e. Ta pa e rason aki nos tin ku uza IP adrès pa identifiká e persona. Diferente uzadó por uza e IP adrès aki. Si bo ta un uzadó anonimo i ta sinti ku komentario irelevante tabata mandá pa bo, por fabor [[Special:Userlogin|registrá un kuenta nobo òf outentiká bo mes]] pa evitá konfushon den futuro.''",
+'anontalkpagetext'   => "----''Esaki ta e página di diskushon pa un uzadó anonimo ku no a traha un kuenta ahinda, òf no sa uza e. Ta pa e rason aki nos tin ku uza IP adrès pa identifiká e persona. Diferente uzadó por uza e IP adrès aki. Si bo ta un uzadó anonimo i ta sinti ku komentario irelevante tabata mandá pa bo, por fabor [[Special:UserLogin|registrá un kuenta nobo òf outentiká bo mes]] pa evitá konfushon den futuro.''",
 'yourtext'           => 'Bo teksto',
 'yourdiff'           => 'Diferensianan',
 
@@ -232,7 +228,7 @@ Bo kuenta ta trahá. No lubidá di kambia bo [[Special:Preferences|{{SITENAME}} 
 'alllogstext' => 'Esaki ta un bista kombiná di registronan.
 Bo por skohe un tipo di registro tambe, òf filtrá e bista ku un nòmber di uzadó òf un título di un artíkulo.',
 
-# Special:Allpages
+# Special:AllPages
 'allpages'          => 'Tur página',
 'alphaindexline'    => '$1 pa $2',
 'allpagesfrom'      => 'Mustra páginanan kuminsando na:',
@@ -250,7 +246,8 @@ Bo por skohe un tipo di registro tambe, òf filtrá e bista ku un nòmber di uza
 # E-mail user
 'emailuser'       => 'Manda e-mail pa e uzadó aki',
 'emailpage'       => 'Manda e-mail',
-'emailpagetext'   => "E formulario aki lo manda un e-mail pa e uzadò aki. '''Bo e-mail adrès''' (manera ta pará den [[Special:Preferences|bo preferensianan]]) '''lo aparesé''' den e e-mail pa e resipiente por respondé na bo direktamente.",
+'emailpagetext'   => 'E formulario aki lo manda un e-mail pa e uzadò aki.
+Bo e-mail adrès (manera ta pará den bo preferensianan) lo aparesé den e e-mail pa e resipiente por respondé na bo direktamente.',
 'defemailsubject' => 'E-mail di {{SITENAME}}',
 'emailfrom'       => 'Di',
 'emailto'         => 'Pa',
@@ -263,11 +260,11 @@ Bo por skohe un tipo di registro tambe, òf filtrá e bista ku un nòmber di uza
 # Watchlist
 'watchlist'         => 'Mi lista di observashon',
 'nowatchlist'       => 'Bo lista di observashon ta bashí.',
-'watchnologintext'  => 'Bo mester [[Special:Userlogin|outentiká bo mes]] pa modifiká bo lista di observashon.',
+'watchnologintext'  => 'Bo mester [[Special:UserLogin|outentiká bo mes]] pa modifiká bo lista di observashon.',
 'addedwatch'        => 'Añadí na lista di observashon',
 'addedwatchtext'    => "E página \"[[:\$1]]\" tabata añadí na bo [[Special:Watchlist|lista di observashon]].
 Lo lista kambionan hasí na e página aki i su página di diskushon einan,
-i e página lo aparesé '''vet''' den e [[Special:Recentchanges|lista di kambionan resien]] pa
+i e página lo aparesé '''vet''' den e [[Special:RecentChanges|lista di kambionan resien]] pa
 e ta mas fásil pa bo mira.
 
 Si despues bo ke kita e página for di bo lista di observashon, primi \"Stop di observá\" den e menú ariba.",
@@ -305,7 +302,8 @@ Si despues bo ke kita e página for di bo lista di observashon, primi \"Stop di 
 'blockip'            => 'Blokia uzadó',
 'badipaddress'       => 'IP adrès ta inválido',
 'blockipsuccesssub'  => 'Blokeo eksitoso',
-'blockipsuccesstext' => '[[Special:Contributions/$1|$1]] tabata blokiá. <br />Wak e [[Special:Ipblocklist|lista di blokeonan]] pa wak tur blokeo aktivo, òf e [[Special:Log/block|registro di blokeo]] pa blokeonan históriko.',
+'blockipsuccesstext' => '[[Special:Contributions/$1|$1]] tabata blokiá.<br />
+Wak e [[Special:IPBlockList|lista di blokeonan]] pa wak tur blokeo aktivo.',
 'unblockip'          => 'Desblokia uzadó',
 'blocklink'          => 'blokia',
 'unblocklink'        => 'desblokia',
@@ -346,7 +344,10 @@ Por fabor skohe un otro título.',
 
 # E-mail address confirmation
 'confirmemail'           => 'Konfirmá e-mail adrès',
-'confirmemail_text'      => 'Bo mester validá bo e-mail adrès pa uza funkshonnan di e-mail. Primi e boton abou pa manda un e-mail di konfirmashon pa bo e-mail adrès. Ora bo haña e e-mail, bo ta sigui e instrukshonnan aden. Pa kontrolá si bo ta konfirmá kaba, wak [[Special:Preferences|bo preferensianan]].',
+'confirmemail_text'      => 'Bo mester validá bo e-mail adrès pa uza funkshonnan di e-mail.
+Primi e boton abou pa manda un e-mail di konfirmashon pa bo e-mail adrès.
+Ora bo haña e e-mail, bo ta sigui e instrukshonnan aden.
+Pa kontrolá si bo ta konfirmá kaba, wak bo preferensianan.',
 'confirmemail_send'      => 'Manda un kódigo di konfirmashon via e-mail.',
 'confirmemail_sent'      => 'E-mail pa konfirmashon mandá.',
 'confirmemail_invalid'   => 'Kódigo di konfirmashon inválido. Ta posibel ku e kódigo a kaduká.',
