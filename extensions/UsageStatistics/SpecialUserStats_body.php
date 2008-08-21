@@ -83,7 +83,7 @@ class SpecialUserStats extends SpecialPage
         $u = array();
         $sql = "SELECT rev_user_text,rev_timestamp,page_id FROM " .
                $db->tableName('page') . "," . $db->tableName('revision') .
-               " WHERE rev_page=page_id"; # AND (page_id=3763 OR page_id=9517)
+               " WHERE rev_page=page_id"; 
 
         $res = $db->query($sql, __METHOD__);
 
@@ -114,7 +114,9 @@ set key left top
 plot '-' using 1:2 t 'edits' with linesp lt 1 lw 3, '-' using 1:2 t 'pages'  with linesp lt 2 lw 3 axis x1y2
 ";
         $gnuplot_pdata = '';
-        $first = true;
+	$first = true;
+	$e = 0;
+	$p = 0;
         foreach ($u[$user] as $d => $v) {
             $date = '';
             if (preg_match('/^(\d{4})(\d{2})(\d{2})/',$d,$matches))
@@ -161,7 +163,9 @@ set key left top
 plot '-' using 1:2 t 'edits' with linesp lt 1 lw 3, '-' using 1:2 t 'pages'  with linesp lt 2 lw 3 axis x1y2
 ";
         $gnuplot_pdata = '';
-        $first = true;
+	$first = true;
+	$pages = 0;
+	$edits = 0;
         $totals = array();
         foreach ($dates as $d => $v) {
             if ($type == 'incremental') {

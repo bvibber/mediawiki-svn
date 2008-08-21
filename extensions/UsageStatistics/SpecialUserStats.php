@@ -13,7 +13,7 @@ if (!defined('MEDIAWIKI')) die();
 
 $wgExtensionCredits['specialpage'][] = array(
 	'name'           => 'UserStats',
-	'version'        => 'v1.8',
+	'version'        => 'v1.9',
 	'author'         => 'Paul Grinberg',
 	'email'          => 'gri6507 at yahoo dot com',
 	'url'            => 'http://www.mediawiki.org/wiki/Extension:Usage_Statistics',
