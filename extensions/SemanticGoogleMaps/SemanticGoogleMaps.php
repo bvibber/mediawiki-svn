@@ -26,7 +26,7 @@ function sgmSetup() {
 	// credits
 	$wgExtensionCredits['parserhook'][] = array(
 		'name'            => 'Semantic Google Maps',
-		'version'         => '0.3.3',
+		'version'         => '0.3.4',
 		'author'          => array( 'Robert Buzink', 'Yaron Koren' ),
 		'url'             => 'http://www.mediawiki.org/wiki/Extension:Semantic_Google_Maps',
 		'description'     => 'Allows users to add Google Maps to wiki pages based on structured data',
@@ -43,7 +43,13 @@ function sgmSetup() {
 	}
 
 	include_once('SGM_QueryPrinter.php');
-	SMWQueryProcessor::$formats['googlemap'] = 'SGMResultPrinter';
+	// global variable introduced in SMW 1.2.2
+	global $smwgResultFormats;
+	if (isset($smwgResultFormats))
+		$smwgResultFormats['googlemap'] = 'SGMResultPrinter';
+	else
+		SMWQueryProcessor::$formats['googlemap'] = 'SGMResultPrinter';
+
 }
 
 function sgmFunctionMagic( &$magicWords, $langCode ) {
