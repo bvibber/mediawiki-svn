@@ -32,7 +32,7 @@ $aliases['arz'] = array(
  * @author Raimond Spekking
  */
 $aliases['de'] = array(
-	'SiteMatrix' => array( 'SiteMatrix' ),
+	'SiteMatrix' => array( 'Liste der Wikimedia-Wikis' ),
 );
 
 /** Finnish (Suomi) */
@@ -60,6 +60,11 @@ $aliases['ht'] = array(
 /** Malay (Bahasa Melayu) */
 $aliases['ms'] = array(
 	'SiteMatrix' => array( 'Wiki_Wikimedia' ),
+);
+
+/** Nedersaksisch (Nedersaksisch) */
+$aliases['nds-nl'] = array(
+	'SiteMatrix' => array( 'Websteemetrix' ),
 );
 
 /** Dutch (Nederlands) */

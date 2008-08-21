@@ -27,6 +27,11 @@ $aliases['arz'] = array(
 	'NewsChannel' => array( 'قناة_أخبار' ),
 );
 
+/** Nedersaksisch (Nedersaksisch) */
+$aliases['nds-nl'] = array(
+	'NewsChannel' => array( 'Niej_kenaal' ),
+);
+
 /** Dutch (Nederlands) */
 $aliases['nl'] = array(
 	'NewsChannel' => array( 'Nieuwskanaal' ),

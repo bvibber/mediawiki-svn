@@ -97,6 +97,11 @@ $aliases['ms'] = array(
 	'DeletedContributions' => array( 'Sumbangan_dihapuskan' ),
 );
 
+/** Nedersaksisch (Nedersaksisch) */
+$aliases['nds-nl'] = array(
+	'DeletedContributions' => array( 'Vort-ehaolen gebrukersbiedragen' ),
+);
+
 /** Dutch (Nederlands) */
 $aliases['nl'] = array(
 	'DeletedContributions' => array( 'VerwijderdeBijdragen' ),

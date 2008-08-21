@@ -88,7 +88,7 @@ $messages['el'] = array(
  */
 $messages['eo'] = array(
 	'contributionseditcount' => 'Ĉi uzanto havas $1 redaktojn.',
-	'contributionseditcount-desc' => 'Montras konton de redaktoj en [[Special:Contributions]]',
+	'contributionseditcount-desc' => 'Montras nombron de redaktoj en [[Special:Contributions|paĝo pri kontribuoj de uzanto]]',
 );
 
 /** Extremaduran (Estremeñu)
@@ -118,11 +118,12 @@ $messages['fr'] = array(
 
 /** Galician (Galego)
  * @author Alma
+ * @author Toliño
  * @author Xosé
  */
 $messages['gl'] = array(
 	'contributionseditcount' => 'Este usuario ten $1 edicións.',
-	'contributionseditcount-desc' => 'Mostra a conta de edicións en [[Special:Contributions]]',
+	'contributionseditcount-desc' => 'Mostra a conta de edicións na [[Special:Contributions|páxina de contribucións dun usuario]]',
 );
 
 /** Hebrew (עברית)
@@ -298,7 +299,7 @@ $messages['nso'] = array(
  */
 $messages['oc'] = array(
 	'contributionseditcount' => 'Aqueste utilizaire a {{PLURAL:$1|$1 edicion|$1 edicions}}.',
-	'contributionseditcount-desc' => 'Aficha un comptador d’edicions sus la pagina [[Special:Contributions]]',
+	'contributionseditcount-desc' => 'Aficha un comptador d’edicions sus la pagina [[Special:Contributions|la pagina de contribucion de l’utilizaire]]',
 );
 
 /** Polish (Polski)

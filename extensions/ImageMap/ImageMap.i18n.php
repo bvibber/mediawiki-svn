@@ -451,6 +451,7 @@ $messages['ia'] = array(
 	'imagemap_desc' => 'Permitte le mappas de imagines cliccabile al latere del cliente, usante le etiquetta <tt><nowiki><imagemap></nowiki></tt>',
 	'imagemap_no_image' => 'Error: debe specificar un imagine in le prime linea',
 	'imagemap_invalid_image' => 'Error: imagine es invalide o non existe',
+	'imagemap_bad_image' => 'Error: le imagine es in le lista nigre de iste pagina',
 	'imagemap_no_link' => 'Error: necun ligamine valide esseva trovate al fin del linea $1',
 	'imagemap_invalid_title' => 'Error: titulo invalide in ligamine al linea $1',
 	'imagemap_missing_coord' => 'Error: non bastante coordinatas pro le forma al linea $1',
@@ -513,6 +514,7 @@ $messages['it'] = array(
 );
 
 /** Japanese (日本語)
+ * @author Aotake
  * @author JtFuruhata
  * @author Kahusi
  */
@@ -520,6 +522,7 @@ $messages['ja'] = array(
 	'imagemap_desc' => '<tt><nowiki><imagemap></nowiki></tt>タグによるクライアントサイドのクリッカブルマップ機能を有効にする',
 	'imagemap_no_image' => 'Error: 最初の行で画像を指定して下さい。',
 	'imagemap_invalid_image' => 'Error: 画像が無効、又は存在しません。',
+	'imagemap_bad_image' => 'エラー: このページでは画像が排除されています',
 	'imagemap_no_link' => 'Error: 有効なリンクが$1行目の最後に存在しません。',
 	'imagemap_invalid_title' => 'Error: $1行目のリンクのタイトルが無効です。',
 	'imagemap_missing_coord' => 'Error: $1行目にある図形の座標指定が不足しています。',

@@ -27,6 +27,11 @@ $aliases['arz'] = array(
 	'ChangeAuthor' => array( 'تغيير_المؤلف' ),
 );
 
+/** German (Deutsch) */
+$aliases['de'] = array(
+	'ChangeAuthor' => array( 'Autor ändern' ),
+);
+
 /** Croatian (Hrvatski) */
 $aliases['hr'] = array(
 	'ChangeAuthor' => array( 'Promjeni_Autora' ),
@@ -35,6 +40,11 @@ $aliases['hr'] = array(
 /** Hungarian (Magyar) */
 $aliases['hu'] = array(
 	'ChangeAuthor' => array( 'Szerző megváltoztatása' ),
+);
+
+/** Nedersaksisch (Nedersaksisch) */
+$aliases['nds-nl'] = array(
+	'ChangeAuthor' => array( 'Auteur_wiezigen' ),
 );
 
 /** Dutch (Nederlands) */

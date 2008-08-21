@@ -35,7 +35,7 @@ $aliases['arz'] = array(
  * @author Raimond Spekking
  */
 $aliases['de'] = array(
-	'HideRevision' => array( 'HideRevision' ),
+	'HideRevision' => array( 'Version verstecken' ),
 	'Oversight' => array( 'Oversight' ),
 );
 
@@ -51,6 +51,12 @@ $aliases['he'] = array(
 $aliases['hr'] = array(
 	'HideRevision' => array( 'Sakrij_izmjenu' ),
 	'Oversight' => array( 'Nadzor' ),
+);
+
+/** Nedersaksisch (Nedersaksisch) */
+$aliases['nds-nl'] = array(
+	'HideRevision' => array( 'Versie_verbargen' ),
+	'Oversight' => array( 'Toezichte' ),
 );
 
 /** Dutch (Nederlands) */

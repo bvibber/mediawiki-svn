@@ -28,6 +28,12 @@ $aliases['lb'] = array(
 	'SignDocument' => array( 'Dokument ënnerschreiwen' ),
 );
 
+/** Nedersaksisch (Nedersaksisch) */
+$aliases['nds-nl'] = array(
+	'SignDocument' => array( 'Dokement_ondertekenen' ),
+	'CreateSignDocument' => array( 'Dokement_ondertekenen_anmaken' ),
+);
+
 /** Dutch (Nederlands) */
 $aliases['nl'] = array(
 	'SignDocument' => array( 'DocumentOndertekenen' ),

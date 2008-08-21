@@ -37,6 +37,11 @@ $aliases['lb'] = array(
 	'Asksql' => array( 'SQL-Ufroen' ),
 );
 
+/** Nedersaksisch (Nedersaksisch) */
+$aliases['nds-nl'] = array(
+	'Asksql' => array( 'SQL-zeukopdrach' ),
+);
+
 /** Dutch (Nederlands) */
 $aliases['nl'] = array(
 	'Asksql' => array( 'SQLZoekopdracht' ),

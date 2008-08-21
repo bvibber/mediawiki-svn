@@ -273,6 +273,7 @@ $messages['el'] = array(
 $messages['eo'] = array(
 	'vote' => 'Voĉdonu',
 	'vote-submit' => 'Balotu',
+	'vote-results-count' => 'Nombro',
 	'vote-login-link' => 'ensaluti',
 );
 
@@ -514,6 +515,30 @@ $messages['km'] = array(
 	'vote-login' => 'អ្នកត្រូវតែ$1ដើម្បីបោះឆ្នោត។',
 	'vote-login-link' => 'ឡុកអ៊ីន',
 	'vote-invalid-choice' => 'អ្នកត្រូវតែជ្រើសយកជំរើសមួយក្នុងចំនោមជំរើសទាំងឡាយដែលបានផ្ដល់អោយ។',
+);
+
+/** Ripoarisch (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'vote' => 'Affstemme',
+	'vote-header' => "Do kanns hee för der '''Bövverschte en de Welt''' affstemme!",
+	'vote-current' => "Ding Stemm (em Momang) es för '''$1'''.",
+	'vote-legend' => 'Afstemme',
+	'vote-caption' => 'Ding Stemm:',
+	'vote-choices' => 'Quatschkopp|Dä Quatschkopp
+Charly|Dä Pinguiin
+Laachsack|Dä Laachsack',
+	'vote-submit' => 'Afstemme',
+	'vote-registered' => 'Ding Stemm es jezallt.',
+	'vote-view-results' => 'Resultate zeije',
+	'vote-results' => 'Et Äjepnis fun de Affstemmung',
+	'vote-results-choice' => 'Zor Wahl',
+	'vote-results-count' => 'Stemme',
+	'vote-results-none' => 'Et sin bes jez kei Stemme afjejovve woode.',
+	'vote-login' => 'Do moß $1, öm afstemme ze künne.',
+	'vote-login-link' => 'enjelogg sin',
+	'vote-invalid-choice' => 'Do moß ein fun de vörhande Müjjeleschkeite ußwähle.',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

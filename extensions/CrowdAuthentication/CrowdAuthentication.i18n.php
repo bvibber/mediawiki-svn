@@ -15,10 +15,12 @@ $messages['en'] = array(
 );
 
 /** Message documentation (Message documentation)
+ * @author Nike
  * @author Raimond Spekking
  */
 $messages['qqq'] = array(
-	'crowdauthentication-desc' => 'Extension description displayed on [[Special:Version]]',
+	'crowdauthentication-desc' => "Extension description displayed on [[Special:Version]].
+'''''Atlassian Crowd''''' is a proper noun and should not be translated.",
 );
 
 /** Arabic (العربية)

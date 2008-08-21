@@ -633,6 +633,7 @@ $messages['de'] = array(
  */
 $messages['el'] = array(
 	'configure-desc-group' => 'Ομάδες',
+	'configure-ext-settings' => 'Ρυθμίσεις',
 	'configure-js-prompt-group' => 'Εισάγετε το όνομα της νέας ομάδας:',
 	'configure-section-category' => 'Κατηγορίες',
 );
@@ -705,6 +706,7 @@ $messages['eo'] = array(
 	'configure-section-copyright' => 'Kopirajto',
 	'configure-section-misc' => 'Diversaĵoj',
 	'configure-section-mw-extensions' => 'Etendiloj de MediaWiki',
+	'configure-select-wiki' => 'Vikia selektaĵo',
 	'configure-select-wiki-submit' => 'Validigi',
 	'configure-view' => 'Montri',
 	'configure-view-not-allowed' => 'Vi ne estas permesita por vidi ĉi tiun konfiguraĵon',

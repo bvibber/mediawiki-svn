@@ -666,7 +666,7 @@ $messages['no'] = array(
  */
 $messages['oc'] = array(
 	'importusers' => "Importar d'utilizaires",
-	'importusers-desc' => "Impòrta d'utilizaires en blòt dempuèi un fichièr CVS ; encodatge : UTF-8.",
+	'importusers-desc' => "[[Special:ImportUsers|Impòrta d'utilizaires] en blòt dempuèi un fichièr CVS ; encodatge : UTF-8.",
 	'importusers-uploadfile' => 'Importar lo fichièr',
 	'importusers-form-caption' => 'Entratz un fichièr CVS (UTF-8)',
 	'importusers-form-file' => 'Format del fichièr utilizaire (csv) :',
@@ -826,7 +826,7 @@ $messages['shi'] = array(
  */
 $messages['sk'] = array(
 	'importusers' => 'Import používateľov',
-	'importusers-desc' => 'Hromadné importovanie používateľov z CSV súboru; kódovanie: UTF-8',
+	'importusers-desc' => 'Hromadné [[Special:ImportUsers|importovanie používateľov]] z CSV súboru; kódovanie: UTF-8',
 	'importusers-uploadfile' => 'Nahrať súbor',
 	'importusers-form-caption' => 'Vstupný CSV súbor (UTF-8)',
 	'importusers-form-file' => 'Formát súboru (csv):',

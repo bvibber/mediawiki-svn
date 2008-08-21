@@ -47,6 +47,15 @@ $messages['ar'] = array(
 	'languageselector-setlang' => 'ضبط',
 );
 
+/** Asturian (Asturianu)
+ * @author Esbardu
+ */
+$messages['ast'] = array(
+	'languageselector' => 'Llingua',
+	'languageselector-desc' => 'Selector de llingua en cada páxina, tamién pa visitantes',
+	'languageselector-setlang' => 'establecer',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  */

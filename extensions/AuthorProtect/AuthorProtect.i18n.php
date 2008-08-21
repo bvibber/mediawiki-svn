@@ -472,6 +472,25 @@ $messages['km'] = array(
 	'restriction-level-author' => 'ត្រូវបានការពារដោយអ្នកនិពន្ឋ',
 );
 
+/** Ripoarisch (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'authorprotect' => 'Donn di Sigg jäje Änderunge schötze, di nit fun Metschriiver aan dä Sigg kumme',
+	'authorprotect-desc' => 'Määt et müjjelesch, dat ene Schriiver en Sigg jäje Anderlüx Änderunge schötze kann.',
+	'authorprotect-notauthor' => 'Do bes keine Schriiver fun dä Sigg hee',
+	'authorprotect-confirm' => 'Schötze',
+	'authorprotect-edit' => 'Don et Ändere op de Schriiver fun dä Sigg beschränke',
+	'authorprotect-move' => 'Donn et Ömnenne op Schriiver aan dä Sigg beschränke',
+	'authorprotect-expiry' => 'Sperre beß en',
+	'authorprotect-reason' => 'Jrond',
+	'authorprotect-intro' => 'Hee met kanns de di Sigg jäje annder Metmaacher schötze, die kein Schriiver ann er sin',
+	'authorprotect-success' => 'Et Schötze es jelonge!',
+	'authorprotect-failure' => 'Di Sigg kunnt nit jeschötz wäde',
+	'protect-level-author' => 'Schötze jähje Nit-Met-Schriiver aan dä Sigg',
+	'restriction-level-author' => 'Metschriiver-jeschötz',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */

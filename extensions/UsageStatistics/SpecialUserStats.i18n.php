@@ -545,6 +545,7 @@ $messages['jv'] = array(
 
 /** Khmer (ភាសាខ្មែរ)
  * @author Chhorran
+ * @author Lovekhmer
  * @author គីមស៊្រុន
  */
 $messages['km'] = array(
@@ -552,10 +553,11 @@ $messages['km'] = array(
 	'usagestatistics' => 'ស្ថិតិ​នៃ​ការប្រើប្រាស់',
 	'usagestatistics-desc' => 'បង្ហាញ​ស្ថិតិ​អ្នកប្រើប្រាស់​ជាឯកត្តៈបុគ្គល និង ការប្រើប្រាស់វិគីទាំងមូល',
 	'usagestatisticsfor' => '<h2>ស្ថិតិ​នៃ​ការប្រើប្រាស់​របស់ [[User:$1|$1]]</h2>',
+	'usagestatisticsforallusers' => '<h2>ស្ថិតិប្រើប្រាស់សំរាប់គ្រប់អ្នកប្រើប្រាស់ទាំងអស់</h2>',
 	'usagestatisticsinterval' => 'ចន្លោះ',
 	'usagestatisticstype' => 'ប្រភេទ',
-	'usagestatisticsstart' => 'ថ្ងៃខែឆ្នាំ ចាប់ផ្តើម',
-	'usagestatisticsend' => 'ថ្ងៃខែឆ្នាំ បញ្ចប់',
+	'usagestatisticsstart' => 'កាលបរិច្ឆេទចាប់ផ្តើម',
+	'usagestatisticsend' => 'កាលបរិច្ឆេទបញ្ចប់',
 	'usagestatisticsintervalday' => 'ថ្ងៃ',
 	'usagestatisticsintervalweek' => 'សប្តាហ៍',
 	'usagestatisticsintervalmonth' => 'ខែ',
@@ -766,6 +768,7 @@ $messages['oc'] = array(
 	'usagestatistics' => 'Estatisticas Utilizacion',
 	'usagestatistics-desc' => 'Aficha las estatisticas individualas dels utilizaires e mai l’utilizacion sus l’ensemble del wiki.',
 	'usagestatisticsfor' => '<h2>Estatisticas Utilizacion per [[User:$1|$1]]</h2>',
+	'usagestatisticsforallusers' => "<h2>Estatisticas d'utilizacion per totes los utilizaires</h2>",
 	'usagestatisticsinterval' => 'Interval',
 	'usagestatisticstype' => 'Tipe',
 	'usagestatisticsstart' => 'Data de començament',
@@ -875,6 +878,7 @@ $messages['sk'] = array(
 	'usagestatistics' => 'Štatistika používanosti',
 	'usagestatistics-desc' => 'Zobrazenie štatistík jednotlivého používateľa a celej wiki',
 	'usagestatisticsfor' => '<h2>Štatistika používanosti pre používateľa [[User:$1|$1]]</h2>',
+	'usagestatisticsforallusers' => '<h2>Štatistika využitia pre všetkých používateľov</h2>',
 	'usagestatisticsinterval' => 'Interval',
 	'usagestatisticstype' => 'Typ',
 	'usagestatisticsstart' => 'Dátum začiatku',

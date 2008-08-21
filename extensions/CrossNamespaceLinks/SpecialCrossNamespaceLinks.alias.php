@@ -77,6 +77,11 @@ $aliases['nds'] = array(
 	'CrossNamespaceLinks' => array( 'Lenken in annere Naamrüüm' ),
 );
 
+/** Nedersaksisch (Nedersaksisch) */
+$aliases['nds-nl'] = array(
+	'CrossNamespaceLinks' => array( 'Verwiezingen_tussen_naamruumtes' ),
+);
+
 /** Dutch (Nederlands) */
 $aliases['nl'] = array(
 	'CrossNamespaceLinks' => array( 'VerwijzingenTussenNaamruimten' ),

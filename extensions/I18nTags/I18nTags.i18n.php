@@ -19,6 +19,13 @@ $messages['ar'] = array(
 	'i18ntags-desc' => 'يسمح بالوصول إلى وظيفة الترجمة لصيغ الأرقام، قواعد اللغة والجمع في أي لغة متوفرة',
 );
 
+/** Asturian (Asturianu)
+ * @author Esbardu
+ */
+$messages['ast'] = array(
+	'i18ntags-desc' => 'Accede a les funciones i18n pal formatu de númberu, gramática y plurales en cualesquier llingua disponible',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  */
@@ -64,6 +71,13 @@ $messages['hi'] = array(
  */
 $messages['hsb'] = array(
 	'i18ntags-desc' => 'Přistup k funkcijam i18n za formatowanje ličbow, gramatiku a plural w kóždej k dispoziciji stejacej rěči',
+);
+
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'i18ntags-desc' => 'Permitte acceder al functiones i18n pro le formatation de numeros, le grammatica e le plural in qualcunque lingua disponibile',
 );
 
 /** Indonesian (Bahasa Indonesia)

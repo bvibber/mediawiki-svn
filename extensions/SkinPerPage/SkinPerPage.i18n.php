@@ -25,6 +25,13 @@ $messages['ar'] = array(
 	'skinperpage-desc' => 'يضيف وسم <tt>&lt;skin&gt;</tt> لاستخدام واجهات مختلفة لكل صفحة',
 );
 
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Ramsis II
+ */
+$messages['arz'] = array(
+	'skinperpage-desc' => 'بيضيف تاج <tt>&lt;skin&gt;</tt> لاستخدام واجهات مختلفة لكل صفحة',
+);
+
 /** Asturian (Asturianu)
  * @author Esbardu
  */

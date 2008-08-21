@@ -28,6 +28,11 @@ $aliases['arz'] = array(
 	'MultiUpload' => array( 'رفع_متعدد' ),
 );
 
+/** Nedersaksisch (Nedersaksisch) */
+$aliases['nds-nl'] = array(
+	'MultiUpload' => array( 'Meerdere_bestanden_toevoegen' ),
+);
+
 /** Dutch (Nederlands) */
 $aliases['nl'] = array(
 	'MultiUpload' => array( 'MultiUploaden' ),

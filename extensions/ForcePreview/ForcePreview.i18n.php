@@ -40,6 +40,15 @@ $messages['ar'] = array(
 	'right-forcepreviewexempt' => 'يمكنه الحفظ بدون استخدام العرض المسبق',
 );
 
+/** Asturian (Asturianu)
+ * @author Esbardu
+ */
+$messages['ast'] = array(
+	'forcepreview' => 'Guardar páxina (primero previsualízala)',
+	'forcepreview-desc' => 'Fuercia la previsualización pa usuarios ensin privilexos',
+	'right-forcepreviewexempt' => 'Poder guardar ensin amosar previsualización',
+);
+
 /** German (Deutsch)
  * @author sokai
  */

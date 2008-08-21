@@ -25,6 +25,13 @@ $messages['ar'] = array(
 	'universaleditbutton-desc' => 'يضيف <code>&lt;وصلة&gt;</code> ترويسة هتمل لدعم امتداد المتصفح زر التعديل العالمي.',
 );
 
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Ramsis II
+ */
+$messages['arz'] = array(
+	'universaleditbutton-desc' => 'بيضيف HTML هيدير <code>&lt;link&gt;</code> علشان يدعم  زرار التعديل العالمي لامتداد البراوزر',
+);
+
 /** Asturian (Asturianu)
  * @author Esbardu
  */

@@ -23,6 +23,11 @@ $aliases['arz'] = array(
 	'DeleteQueue' => array( 'طابور_الحذف' ),
 );
 
+/** Nedersaksisch (Nedersaksisch) */
+$aliases['nds-nl'] = array(
+	'DeleteQueue' => array( 'Vortdowachrie' ),
+);
+
 /** Dutch (Nederlands) */
 $aliases['nl'] = array(
 	'DeleteQueue' => array( 'Verwijderingswachtrij', 'Verwijderverzoeken' ),

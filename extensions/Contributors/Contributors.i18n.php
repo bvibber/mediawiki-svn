@@ -693,6 +693,13 @@ $messages['mr'] = array(
 	'contributors-nosuchpage' => 'पान $1 अस्तीत्वात नाही.',
 );
 
+/** Maltese (Malti)
+ * @author Chrisportelli
+ */
+$messages['mt'] = array(
+	'contributors' => 'Kontributuri',
+);
+
 /** Nahuatl (Nāhuatl)
  * @author Fluence
  */

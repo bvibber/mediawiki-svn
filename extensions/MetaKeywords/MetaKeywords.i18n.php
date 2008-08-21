@@ -46,6 +46,13 @@ $messages['fr'] = array(
 	'metakeywords-desc' => 'Permet la configuration des balises <tt><nowiki><meta "keywords"></nowiki></tt> et <tt><nowiki><meta "description"></nowiki></tt> par espace de nom',
 );
 
+/** Galician (Galego)
+ * @author Toliño
+ */
+$messages['gl'] = array(
+	'metakeywords-desc' => 'Permite a configuración de <tt><nowiki><meta "keywords"></nowiki></tt> e mais de etiquetas <tt><nowiki><meta "description"></nowiki></tt> por espazo de nomes',
+);
+
 /** Ripoarisch (Ripoarisch)
  * @author Purodha
  */
@@ -78,6 +85,20 @@ $messages['nl'] = array(
  */
 $messages['no'] = array(
 	'metakeywords-desc' => 'Muliggjør konfigurering av <tt><nowiki><meta "keywords"></nowiki></tt> og <tt><nowiki><meta "description"></nowiki></tt>-tagger per navnerom',
+);
+
+/** Occitan (Occitan)
+ * @author Cedric31
+ */
+$messages['oc'] = array(
+	'metakeywords-desc' => 'Permet la configuracion de las balisas <tt><nowiki><meta "keywords"></nowiki></tt> e <tt><nowiki><meta "description"></nowiki></tt> per espaci de nom',
+);
+
+/** Slovak (Slovenčina)
+ * @author Helix84
+ */
+$messages['sk'] = array(
+	'metakeywords-desc' => 'Umožňuje konfiguráciu značiek <tt><nowiki><meta "keywords"></nowiki></tt> a <tt><nowiki><meta "description"></nowiki></tt> v závislosti od menného priestoru',
 );
 
 /** Swedish (Svenska)

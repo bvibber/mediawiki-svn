@@ -224,7 +224,7 @@ $messages['fy'] = array(
  */
 $messages['gl'] = array(
 	'passwordreset' => 'Eliminar o contrasinal',
-	'passwordreset-desc' => 'Restablecer o contrasinal do usuario dun wiki (require privilexios "passwordreset")',
+	'passwordreset-desc' => '[[Special:Passwordreset|Restablecer o contrasinal do usuario dun wiki]] (require privilexios "passwordreset")',
 	'passwordreset-invalidusername' => 'Nome de usuario non válido',
 	'passwordreset-emptyusername' => 'Nome de usuario baleiro',
 	'passwordreset-nopassmatch' => 'Os contrasinais non coinciden',
@@ -591,6 +591,7 @@ $messages['oc'] = array(
 	'passwordreset-accountdisabled' => 'Aqueste compte es estat desactivat.',
 	'disabledusers' => 'Utilizaires desactivats',
 	'disabledusers-summary' => 'Aquò es la tièra dels utilizaires que son estats desactivats per PasswordReset.',
+	'right-passwordreset' => 'Tòrna inicializar lo senhal d’un utilizaire ([[Special:Passwordreset|pagina especiala]])',
 );
 
 /** Plautdietsch (Plautdietsch)
@@ -731,6 +732,7 @@ $messages['sk'] = array(
 	'passwordreset-accountdisabled' => 'Účet bol zablokovaný',
 	'disabledusers' => 'Vypnutí používatelia',
 	'disabledusers-summary' => 'Toto je zoznam používateľov, ktorí boli vypnutí prostredníctvom PasswordReset.',
+	'right-passwordreset' => 'Vygenerovať nové heslo pre používateľa ([[Special:Passwordreset|špeciálna stránka]])',
 );
 
 /** Seeltersk (Seeltersk)

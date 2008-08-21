@@ -218,7 +218,7 @@ $messages['km'] = array(
 $messages['ksh'] = array(
 	'categorystepper-desc' => 'Zeich en Käßje met Links öm en Saachjroppe ze bläddee. Dat jeiht vürwääts un röckwääts nohm Alfabeet dorsch de Saachjroppe, woh en Sigg dren es.',
 	'categorystepper-end' => '(de Saachjropp es am Eng)',
-	'categorystepper-start' => '((Aanfang fun de Saachjropp)',
+	'categorystepper-start' => '(Aanfang fun de Saachjropp)',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

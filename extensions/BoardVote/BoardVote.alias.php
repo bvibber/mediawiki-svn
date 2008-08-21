@@ -52,6 +52,11 @@ $aliases['lb'] = array(
 	'BoardVote' => array( 'Wiel fir de Verwaltungsrot' ),
 );
 
+/** Nedersaksisch (Nedersaksisch) */
+$aliases['nds-nl'] = array(
+	'BoardVote' => array( 'Bestuursverkiezing' ),
+);
+
 /** Dutch (Nederlands) */
 $aliases['nl'] = array(
 	'BoardVote' => array( 'Bestuursverkiezing' ),

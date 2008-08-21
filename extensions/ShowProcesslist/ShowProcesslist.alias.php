@@ -20,6 +20,11 @@ $aliases['arz'] = array(
 	'ShowProcesslist' => array( 'عرض_قائمة_العمل' ),
 );
 
+/** Nedersaksisch (Nedersaksisch) */
+$aliases['nds-nl'] = array(
+	'ShowProcesslist' => array( 'Preceslieste_weergeven' ),
+);
+
 /** Dutch (Nederlands) */
 $aliases['nl'] = array(
 	'ShowProcesslist' => array( 'ProceslijstWeergeven' ),

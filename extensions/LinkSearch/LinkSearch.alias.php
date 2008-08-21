@@ -82,6 +82,11 @@ $aliases['ms'] = array(
 	'LinkSearch' => array( 'Cari_pautan' ),
 );
 
+/** Nedersaksisch (Nedersaksisch) */
+$aliases['nds-nl'] = array(
+	'LinkSearch' => array( 'Verwiezingen_zeuken' ),
+);
+
 /** Dutch (Nederlands) */
 $aliases['nl'] = array(
 	'LinkSearch' => array( 'VerwijzingenZoeken', 'LinksZoeken' ),

@@ -51,6 +51,15 @@ $messages['dsb'] = array(
 	'interwikilist-target' => 'Celowy URL',
 );
 
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
+$messages['eo'] = array(
+	'interwikilist' => 'Intervikia listo',
+	'interwikilist-linkname' => 'Intervikia ligilo',
+	'interwikilist-target' => 'Cela URL-o',
+);
+
 /** French (Français)
  * @author Grondin
  */

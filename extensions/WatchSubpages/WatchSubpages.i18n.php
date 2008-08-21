@@ -23,6 +23,13 @@ To add a page, check the box next to it, and click "Add pages".
 When checking or unchecking multiple pages, holding the shift key allows you to select consecutive checkboxes by clicking each end of the range to be checked.',
 );
 
+/** Message documentation (Message documentation)
+ * @author Purodha
+ */
+$messages['qqq'] = array(
+	'watchsubpages-desc' => 'Short description of this extension, shown on [[Special:Version]]. Do not translate or change links.',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  * @author OsamaK
@@ -37,6 +44,21 @@ $messages['ar'] = array(
 لإضافة صفحة، علم على الصندوق بجوارها، واضغط "إضافة الصفحات".
 
 عند تعليم أو إزالة تعليم صفحات متعددة، الإمساك بمفتاح شيفت يسمح لك باختيار صناديق متتالية بواسطة الضغط على كل نهاية للنطاق المراد تعليمه.',
+);
+
+/** Asturian (Asturianu)
+ * @author Esbardu
+ */
+$messages['ast'] = array(
+	'watchsubpages' => 'Vixilar subpáxines',
+	'watchsubpages-addedtowatchlist' => 'Les siguientes añadiéronse a la to llista de vixilancia.',
+	'watchsubpages-addtitles' => 'Añader páxines',
+	'watchsubpages-addtitlestowatchlist' => 'Añader páxines a la llista de vixilancia',
+	'watchsubpages-desc' => "Añade rápidamente [[Special:WatchSubpages|toles subpáxines]] d'una páxina a la llista de vixilancia",
+	'watchsubpages-form' => "Escueyi embaxo les páxines p'añader a la to llista de vixilancia.
+P'añader una páxina, activa'l caxellu d'al llau y calca n'\"Añader páxines\".
+
+Cuando quieras activar o desactivar múltiples páxines, caltener pulsada la tecla de mayúscules permítete seleicionar elementos consecutivos clicando nel postreru que quieras clicar.",
 );
 
 /** Bulgarian (Български)
@@ -143,6 +165,20 @@ $messages['it'] = array(
 	'watchsubpages-addtitles' => 'Aggiungi pagine',
 	'watchsubpages-addtitlestowatchlist' => 'Aggiungi pagine agli Osservati Speciali',
 	'watchsubpages-desc' => '[[Special:WatchSubpages|Aggiunge rapidamente tutte le sottopagine]] di una pagina agli Osservati Speciali',
+);
+
+/** Ripoarisch (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'watchsubpages' => 'Op Ungersigge oppasse',
+	'watchsubpages-addedtowatchlist' => 'Hee di Sigge sin jetz en Ding Oppassleß opjenumme:',
+	'watchsubpages-addtitles' => 'Sigge dobei donn',
+	'watchsubpages-addtitlestowatchlist' => 'Sigge en de Oppassleß opnemme',
+	'watchsubpages-desc' => 'Ene flöcke Wääsch, all Ungersigge fun ene Sigg en de Oppassless [[Special:WatchSubpages|met opzenämme]].',
+	'watchsubpages-form' => '
+Donn di Sigge ußwähle, di De in Ding Oppassleß opjenumme hann wells.
+Wann de fädesch bes, klickß De op „{{int:watchsubpages-addtitles}}“',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

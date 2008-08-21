@@ -55,6 +55,11 @@ $aliases['lb'] = array(
 	'Eval' => array( 'Bewertung' ),
 );
 
+/** Nedersaksisch (Nedersaksisch) */
+$aliases['nds-nl'] = array(
+	'Eval' => array( 'Evalueren' ),
+);
+
 /** Dutch (Nederlands) */
 $aliases['nl'] = array(
 	'Eval' => array( 'Evalueren' ),

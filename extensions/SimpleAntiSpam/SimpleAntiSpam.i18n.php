@@ -47,6 +47,16 @@ $messages['ar'] = array(
 	'simpleantispam-desc' => 'يضيف اختبار سبام/بوت بسيط للاستمارات',
 );
 
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Ramsis II
+ */
+$messages['arz'] = array(
+	'simpleantispam' => 'تعديلك نشط خاصية الانتي-سبام',
+	'simpleantispam-label' => "اختبار انتي-سبام.
+'''ماتعبيش''' دا!",
+	'simpleantispam-desc' => 'بيضيف اختبار سبام/بوت بسيط للاستمارات',
+);
+
 /** Asturian (Asturianu)
  * @author Esbardu
  */

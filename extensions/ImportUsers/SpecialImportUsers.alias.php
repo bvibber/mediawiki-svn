@@ -75,6 +75,11 @@ $aliases['ms'] = array(
 	'ImportUsers' => array( 'Import_pengguna' ),
 );
 
+/** Nedersaksisch (Nedersaksisch) */
+$aliases['nds-nl'] = array(
+	'ImportUsers' => array( 'Gebrukers_invoeren' ),
+);
+
 /** Dutch (Nederlands) */
 $aliases['nl'] = array(
 	'ImportUsers' => array( 'GebruikersImporteren', 'GebruikerImporteren' ),

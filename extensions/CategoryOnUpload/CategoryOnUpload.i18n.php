@@ -64,6 +64,14 @@ $messages['bg'] = array(
 	'categoryonupload-label' => 'Категория:',
 );
 
+/** Catalan (Català)
+ * @author Toniher
+ */
+$messages['ca'] = array(
+	'categoryonupload-desc' => "Demana a l'usuari seleccionar una categoria en carregar un fitxer",
+	'categoryonupload-label' => 'Categoria:',
+);
+
 /** German (Deutsch)
  * @author Raimond Spekking
  */

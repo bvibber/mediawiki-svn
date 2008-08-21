@@ -698,13 +698,14 @@ $messages['fa'] = array(
 );
 
 /** Finnish (Suomi)
+ * @author Crt
  * @author Jaakonam
  * @author Nike
  */
 $messages['fi'] = array(
 	'viewapc' => 'APC-tiedot',
 	'viewapc-desc' => '[[Special:ViewAPC|Tarkastella ja hallita APC-muistia]] MediaWikillä',
-	'right-apc' => 'Käyttää kaikkia ominaisuuksia sivulla Special:ViewAPC',
+	'right-apc' => 'Käyttää kaikkia ominaisuuksia sivulla [[Special:ViewAPC]]',
 	'viewapc-apc-not-available' => 'Tietoja ei saatavilla.
 APC ei näytä olevan käytössä.',
 	'viewapc-clear-confirm' => 'Haluatko tyhjentää muistin?',
@@ -1164,6 +1165,13 @@ $messages['hil'] = array(
  * @author Dalibor Bosits
  */
 $messages['hr'] = array(
+	'viewapc' => 'APC priopćenje',
+	'viewapc-desc' => '[[Special:ViewAPC|Vidi i uredi APC priručnu memoriju]] s MediaWiki',
+	'right-apc' => 'Korištenje svih mogućnosti u [[Special:ViewAPC]]',
+	'viewapc-apc-not-available' => 'Nema dostupnog priopćenja o priručnoj memoriji.
+APC izgleda nije prisutan.',
+	'viewapc-clear-confirm' => 'Želite očistiti priručnu memoriju?',
+	'viewapc-clear-user-cache' => 'Očisti priručnu memoriju suradnika',
 	'viewapc-ls-submit' => 'Kreni!',
 );
 
@@ -1610,7 +1618,7 @@ $messages['km'] = array(
 $messages['ksh'] = array(
 	'viewapc' => 'Enfomazjohne vum APC',
 	'viewapc-desc' => 'Der <i lang="en">APC cache</i> [[Special:ViewAPC|enstelle un beloore]] em MediaWiki.',
-	'right-apc' => 'All de Müjjeleschkeite fun de Söndersigg [[{{#special:ViewAPC}}]] notze',
+	'right-apc' => 'All de Müjjeleschkeite fun de Söndersigg [[Special:ViewAPC]] notze',
 	'viewapc-apc-not-available' => 'Kein <i lang="en">cache</i>-Daate ze fenge.
 Der APC es wall nit am Loufe.',
 	'viewapc-clear-confirm' => 'Wells De dä <i lang="en">cache</i> leddisch maache?',

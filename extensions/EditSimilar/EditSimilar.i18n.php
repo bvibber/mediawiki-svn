@@ -110,6 +110,8 @@ Toś ten bok by teke twóju pomoc trjebał: $1',
  * @author Yekrats
  */
 $messages['eo'] = array(
+	'editsimilar-thanks' => 'Dankon pro via kontribuo.
+Jen rilataj paĝoj: $1.',
 	'editsimilar-thankyou' => 'Dankon pro via kontribuo, $1!',
 	'editsimilar-link-disable' => 'fari preferojn',
 );

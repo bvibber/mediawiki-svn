@@ -139,6 +139,34 @@ $messages['no'] = array(
 	'lua_overflow_time' => 'Maksimal utførelsestid nådd',
 );
 
+/** Occitan (Occitan)
+ * @author Cedric31
+ */
+$messages['oc'] = array(
+	'lua_desc' => 'Espandís lo parser amb lo supòrt per las plajas compresas del còde [http://www.lua.org/ Lua]',
+	'lua_error' => 'Error dins la linha $1',
+	'lua_extension_notfound' => 'Extension Lua pas configurada',
+	'lua_interp_notfound' => 'Interpretador Lua introbable',
+	'lua_error_internal' => 'Error intèrna',
+	'lua_overflow_recursion' => 'Limit de la recursion atench',
+	'lua_overflow_loc' => 'Nombre maximal de linhas de còde atench',
+	'lua_overflow_time' => 'Durada maximala d’execucion atencha',
+);
+
+/** Slovak (Slovenčina)
+ * @author Helix84
+ */
+$messages['sk'] = array(
+	'lua_desc' => 'Rozširuje syntaktický analyzátor o podporu vložených blokov kódu v jazyku [http://www.lua.org/ Lua]',
+	'lua_error' => 'Chyba na riadku $1',
+	'lua_extension_notfound' => 'Rozšírenie Lua nie je nastavené',
+	'lua_interp_notfound' => 'Nebol nájdený interpreter Lua',
+	'lua_error_internal' => 'Vnútorná chyba',
+	'lua_overflow_recursion' => 'Bol dosiahnutý limit rekurzie',
+	'lua_overflow_loc' => 'Bol dosiahnutý limit počtu riadkov kódu',
+	'lua_overflow_time' => 'Bol dosiahnutý limit času behu',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
  */

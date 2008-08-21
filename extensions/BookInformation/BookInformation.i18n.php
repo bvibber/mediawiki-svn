@@ -318,7 +318,7 @@ $messages['el'] = array(
  */
 $messages['eo'] = array(
 	'bookinfo-header' => 'Libra informo',
-	'bookinfo-desc' => 'Pligrandigas paĝon [[Special:Booksources]] kun informo de Interreta-servo.',
+	'bookinfo-desc' => 'Pligrandigas [[Special:Booksources|paĝon pri libraj fontoj]] kun informo de Interreta-servo.',
 	'bookinfo-result-title' => 'Titolo:',
 	'bookinfo-result-author' => 'Aŭtoro:',
 	'bookinfo-result-publisher' => 'Eldonejo:',
@@ -380,11 +380,12 @@ $messages['fa'] = array(
 );
 
 /** Finnish (Suomi)
+ * @author Crt
  * @author Nike
  */
 $messages['fi'] = array(
 	'bookinfo-header' => 'Kirjan tiedot',
-	'bookinfo-desc' => 'Laajentaa [[Special:Booksources|kirjalähdesivun]] tietoja verkkopalveluista',
+	'bookinfo-desc' => 'Laajentaa [[Special:Booksources|kirjalähdesivun]] tietoja verkkopalveluista.',
 	'bookinfo-result-title' => 'Nimi:',
 	'bookinfo-result-author' => 'Tekijä:',
 	'bookinfo-result-publisher' => 'Kustantaja:',
@@ -453,11 +454,12 @@ $messages['fy'] = array(
 
 /** Galician (Galego)
  * @author Alma
+ * @author Toliño
  * @author Xosé
  */
 $messages['gl'] = array(
 	'bookinfo-header' => 'Información do libro',
-	'bookinfo-desc' => 'Ampliar [[Special:Booksources]] con información dun servizo web',
+	'bookinfo-desc' => 'Amplia a [[Special:Booksources|páxina especial de fontes de libros]] con información dun servizo web',
 	'bookinfo-result-title' => 'Título:',
 	'bookinfo-result-author' => 'Autor:',
 	'bookinfo-result-publisher' => 'Publicación:',

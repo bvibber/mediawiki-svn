@@ -20,6 +20,11 @@ $aliases['arz'] = array(
 	'InspectCache' => array( 'فحص_الكاش' ),
 );
 
+/** Nedersaksisch (Nedersaksisch) */
+$aliases['nds-nl'] = array(
+	'InspectCache' => array( 'Kas_naokieken' ),
+);
+
 /** Dutch (Nederlands) */
 $aliases['nl'] = array(
 	'InspectCache' => array( 'CacheInspecteren' ),

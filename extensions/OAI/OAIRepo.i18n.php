@@ -33,6 +33,13 @@ $messages['ar'] = array(
 	'oai-desc' => 'يوفر واجهة مستودع [http://www.openarchives.org/OAI/openarchivesprotocol.html OAI-PMH]',
 );
 
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Ramsis II
+ */
+$messages['arz'] = array(
+	'oai-desc' => 'بيوفر [http://www.openarchives.org/OAI/openarchivesprotocol.html OAI-PMH] وش المخزن',
+);
+
 /** Asturian (Asturianu)
  * @author Esbardu
  */

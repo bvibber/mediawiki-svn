@@ -738,6 +738,7 @@ $messages['oc'] = array(
 	'group-patroller' => 'Patrolhaires',
 	'group-patroller-member' => 'Patrolhaire',
 	'grouppage-patroller' => '{{ns:project}}:Patrolhaire',
+	'right-patroller' => 'Paginas de patrolha',
 );
 
 /** Polish (Polski)
@@ -899,6 +900,7 @@ $messages['sk'] = array(
 	'group-patroller' => 'Strážcovia',
 	'group-patroller-member' => 'Strážca',
 	'grouppage-patroller' => '{{ns:project}}:Strážca',
+	'right-patroller' => 'Sledovať stránky',
 );
 
 /** Serbian Cyrillic ekavian (ћирилица)

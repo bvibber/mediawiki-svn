@@ -57,6 +57,7 @@ $messages['ast'] = array(
 	'newschannel_limit' => 'Llímite:',
 	'newschannel_include_category' => 'Categoría adicional:',
 	'newschannel_exclude_category' => 'Escluyir categoría:',
+	'newschannel_submit_button' => "Crear fonte d'anuncies",
 );
 
 /** Bulgarian (Български)
@@ -94,6 +95,19 @@ $messages['fr'] = array(
 	'newschannel_include_category' => 'Catégorie(s) additionnelle(s):',
 	'newschannel_exclude_category' => 'Catégorie(s) exclue(s):',
 	'newschannel_submit_button' => 'Créer le flux',
+);
+
+/** Galician (Galego)
+ * @author Toliño
+ */
+$messages['gl'] = array(
+	'newschannel' => 'Canle de novas',
+	'newschannel-desc' => 'Insire unha canle de novas como unha [[Special:NewsChannel|páxina especial]] dinámica',
+	'newschannel_format' => 'Formato:',
+	'newschannel_limit' => 'Límite:',
+	'newschannel_include_category' => 'Categoría adicional:',
+	'newschannel_exclude_category' => 'Excluír a categoría:',
+	'newschannel_submit_button' => 'Crear a fonte de novas',
 );
 
 /** Ripoarisch (Ripoarisch)
@@ -135,6 +149,19 @@ $messages['no'] = array(
 	'newschannel_submit_button' => 'Opprett nyhetskilde',
 );
 
+/** Occitan (Occitan)
+ * @author Cedric31
+ */
+$messages['oc'] = array(
+	'newschannel' => "Cadena d'informacion",
+	'newschannel-desc' => 'Implementa un canal novèl coma una [[Special:NewsChannel|pagina especiala]] dinamica',
+	'newschannel_format' => 'Format :',
+	'newschannel_limit' => 'Limit :',
+	'newschannel_include_category' => 'Categoria(s) addicionala(s) :',
+	'newschannel_exclude_category' => 'Categoria(s) excluida(s) :',
+	'newschannel_submit_button' => 'Crear lo flus',
+);
+
 /** Russian (Русский)
  * @author Iaroslav Vassiliev
  */
@@ -145,6 +172,19 @@ $messages['ru'] = array(
 	'newschannel_include_category' => 'Дополнительная категория:',
 	'newschannel_exclude_category' => 'Исключить категорию:',
 	'newschannel_submit_button' => 'Вывести',
+);
+
+/** Slovak (Slovenčina)
+ * @author Helix84
+ */
+$messages['sk'] = array(
+	'newschannel' => 'Kanál noviniek',
+	'newschannel-desc' => 'Implementuje kanál noviniek ako dynamickú [[Special:NewsChannel|špeciálnu stránku]]',
+	'newschannel_format' => 'Formát:',
+	'newschannel_limit' => 'Obmedzenie:',
+	'newschannel_include_category' => 'Ďalšia kategória:',
+	'newschannel_exclude_category' => 'Okrem kategórie:',
+	'newschannel_submit_button' => 'Vytvoriť kanál',
 );
 
 /** Swedish (Svenska)

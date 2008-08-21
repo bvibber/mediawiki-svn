@@ -245,6 +245,7 @@ Wenn du Fragen zu diesem Erweiterungs-Verteil-System hast, gehe bitte zur Seite 
  */
 $messages['eo'] = array(
 	'extdist-no-such-extension' => 'Etendilo "$1" ne ekzistas',
+	'extdist-choose-extension' => 'Selektu kiun etendilon tiun vi volas alŝuti.',
 	'extdist-submit-extension' => 'Daŭri',
 	'extdist-current-version' => 'Nuna versio (bazo)',
 	'extdist-submit-version' => 'Daŭri',

@@ -45,6 +45,11 @@ $aliases['ht'] = array(
 	'AdvancedRandom' => array( 'RandonmAvanse' ),
 );
 
+/** Nedersaksisch (Nedersaksisch) */
+$aliases['nds-nl'] = array(
+	'AdvancedRandom' => array( 'Uut-ebreid_willekeurig' ),
+);
+
 /** Dutch (Nederlands) */
 $aliases['nl'] = array(
 	'AdvancedRandom' => array( 'UitgebreidWillekeurig' ),

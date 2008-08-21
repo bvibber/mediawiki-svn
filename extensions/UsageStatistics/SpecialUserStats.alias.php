@@ -32,6 +32,11 @@ $aliases['lb'] = array(
 	'UserStats' => array( 'Benotzerstistiken' ),
 );
 
+/** Nedersaksisch (Nedersaksisch) */
+$aliases['nds-nl'] = array(
+	'UserStats' => array( 'Gebrukersgegevens' ),
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

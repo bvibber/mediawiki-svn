@@ -53,6 +53,13 @@ $messages['hi'] = array(
 	'htmlets-desc' => '<tt><nowiki><htmlet></nowiki></tt> टैग का इस्तेमाल करके फ़ाइलमें इन-लाइन HTML स्निपेट्ट्स डालने की अनुमति देता हैं',
 );
 
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'htmlets-desc' => 'Permitte incorporar fragmentos HTML ab files con le etiquetta <tt><nowiki><htmlet></nowiki></tt> tag',
+);
+
 /** Ripoarisch (Ripoarisch)
  * @author Purodha
  */

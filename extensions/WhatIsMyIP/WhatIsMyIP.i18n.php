@@ -156,7 +156,7 @@ $messages['it'] = array(
  */
 $messages['ksh'] = array(
 	'whatismyip' => 'Ming IP_Addrëß',
-	'whatismyip-desc' => 'Zëijsch enem Medmaacher sing IP_Addrëß op [[{{#special:WhatIsMyIP}}]] aan.',
+	'whatismyip-desc' => 'Zëijsch enem Medmaacher sing IP_Addrëß op [[Special:WhatIsMyIP|{{int:whatismyip}}]] aan.',
 	'whatismyip-out' => 'Ding IP_Addrëß eß',
 );
 

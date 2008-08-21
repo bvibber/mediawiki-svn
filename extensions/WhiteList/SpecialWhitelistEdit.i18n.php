@@ -82,8 +82,12 @@ This page is only applicable to restricted users",
 	'whitelistnummatches'         => " - $1 matches",
 );
 
-/** Message documentation (Message documentation) */
+/** Message documentation (Message documentation)
+ * @author Jon Harald Søby
+ * @author Purodha
+ */
 $allMessages['qqq'] = array(
+	'whitelist-desc' => 'Short description of the White List extension, shown on [[Special:Version]]. Do not translate or change links.',
 	'mywhitelistpages' => '{{Identical|My pages}}',
 	'whitelisttablemodifyall' => '{{Identical|All}}',
 	'whitelisttablemodifynone' => '{{Identical|None}}',
@@ -650,8 +654,51 @@ $allMessages['krj'] = array(
  * @author Purodha
  */
 $allMessages['ksh'] = array(
-	'whitelisttablemodifyall' => 'All ändere',
+	'whitelist-desc' => 'De Zohjangs-Rääschte fun beschrängkte Metmaachere Ändere.',
+	'whitelistedit' => '<i lang="en">whitelist</i> Zohjang Ändere',
+	'whitelist' => '<i lang="en">whitelist</i> Sigge',
+	'mywhitelistpages' => 'Ming Sigge',
+	'whitelistfor' => '<center>Aktoelle Enfomazjuhne för <b>$1</b></center>',
+	'whitelisttablemodify' => 'Ändere',
+	'whitelisttablemodifyall' => 'All Ändere',
+	'whitelisttablemodifynone' => 'Nix Ändere',
+	'whitelisttablepage' => 'Sigg em Wiki',
+	'whitelisttabletype' => 'Zohjangs-Aat',
+	'whitelisttableexpires' => 'Läuf us am',
+	'whitelisttablemodby' => 'Zoletz jändert fum',
+	'whitelisttablemodon' => 'Zoletz jändert aam',
 	'whitelisttableedit' => 'Ändere',
+	'whitelisttableview' => 'Aanloore',
+	'whitelisttablenewdate' => 'Neu Dattum:',
+	'whitelisttablechangedate' => 'Ußlouf-Dattum ändere',
+	'whitelisttablesetedit' => 'Beärrbeide',
+	'whitelisttablesetview' => 'Aanlore',
+	'whitelisttableremove' => 'Fottnämme',
+	'whitelistnewpagesfor' => 'Neu Sigge en däm „<b>$1</b>“ sing <i lang="en">whitelist</i> erin don<br />
+Donn entweder <b>*</b> udder <b>%</b> als en Platzhallder nämme för „<i>mer weße nit wi fill, un mer weße nit, wat för Zeiche</i>“',
+	'whitelistnewtabledate' => 'Ußloufdattum:',
+	'whitelistnewtableedit' => 'Beärbeide',
+	'whitelistnewtableview' => 'Aanloore',
+	'whitelistnewtableprocess' => 'Beärbeide',
+	'whitelistnewtablereview' => 'Övverpröfe',
+	'whitelistselectrestricted' => '== Enjeschränkte Metmaacher-Name ußsöke ==',
+	'whitelistpagelist' => '{{SITENAME}} Sigge för $1',
+	'whitelistnocalendar' => '<font color=\'red\' size=3>Dä [http://www.mediawiki.org/wiki/Extension:Usage_Statistics Zosatz <i lang="en">UsageStatistics</i>], weed för der [http://www.mediawiki.org/wiki/Extension:WhiteList Zosatz  <i lang="en">WhiteList</i>] jebruch, eß ävver nit enstalleett, udder wood nit jefonge!</font>',
+	'whitelistbadtitle' => 'Dä Titel paß nit -',
+	'whitelistoverview' => '== Änderunge — Övverseech för $1 ==',
+	'whitelistoverviewcd' => "* Änder dat Dattum för [[:$2|$2]] op '''$1'''",
+	'whitelistoverviewsa' => "* Änder der Zojreff för [[:$2|$2]] op '''$1'''",
+	'whitelistoverviewrm' => '* Dä Zojreff för [[:$1|$1]] flüch eruß',
+	'whitelistoverviewna' => "* Donn [[:\$1|\$1]] en de <i lang=\"en\">whitelist</i> met Zojreff '''\$2''' un Ußlouf-Dattum '''\$3'''",
+	'whitelistrequest' => 'Noh em Zojreff op mieh Sigge froore',
+	'whitelistrequestmsg' => '$1 hät noh em Zohjang jefrooch för de Sigge:
+
+$2',
+	'whitelistrequestconf' => 'De Aanfroch fun wäje dä neu Sigge wood aan dä $1 jescheck',
+	'whitelistnonrestricted' => "Dä Metmaacher '''$1''' es nit beschränk.
+Di Sigg hee is nor för beschränkte Metmaacher ze bruche.",
+	'whitelistnever' => 'nimohls',
+	'whitelistnummatches' => ' - {{PLURAL:$1|ein zopaß Sigg|$1 zopaß Sigge|keine zopaß Sigg}}',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

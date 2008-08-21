@@ -75,6 +75,24 @@ $messages['ar'] = array(
 	'scanset_prev' => '&lt; السابق',
 );
 
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Ramsis II
+ */
+$messages['arz'] = array(
+	'scanset-desc' => 'اعرض صورة الصفحات اللي معمولها سكان من  مجموعات اندرياس جروسز CD/DVD',
+	'scanset_no_name' => 'غلط: لازم تحدد اسم للسكان سيت, مثلا &lt;scanset name="EB1911" /&gt;.',
+	'scanset_invalid_name' => 'غلط:السكان سيت مش صحيحة او ناقصة',
+	'scanset_unrecognised_index_format' => 'غلط:صيغة الفهرس مش معروفة',
+	'scanset_opendir_error' => 'غلط:ماقدرناش نفتح المجلد $1',
+	'scanset_no_files' => 'غلط:مافيش ملفات موجودة في المجلد المتحدد',
+	'scanset_no_volumes' => 'غلط:مجلدات الحجم ماتلقتش',
+	'scanset_missing_index_file' => 'غلط: ملف الفهرس $1 ماتلقاش',
+	'scanset_index_file_error' => 'غلط: غلط في صيغة ملف الفهرس عند السطر $1',
+	'scanset_invalid_volume' => 'غلط: حجم مش صحيح',
+	'scanset_next' => 'الجاي &gt;',
+	'scanset_prev' => '&lt; اللي فات',
+);
+
 /** Asturian (Asturianu)
  * @author Esbardu
  */

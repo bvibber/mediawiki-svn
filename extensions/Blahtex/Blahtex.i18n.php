@@ -1238,6 +1238,7 @@ $messages['km'] = array(
  * @author Purodha
  */
 $messages['ksh'] = array(
+	'math-desc' => 'MathML Ußjaaf för de <code>&lt;math&gt;</code> Befäähle.',
 	'math_UnrecognisedCommand' => 'Dat Kommando „$1“ kenne mer nit.',
 );
 

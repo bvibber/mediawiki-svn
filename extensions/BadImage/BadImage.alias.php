@@ -32,6 +32,11 @@ $aliases['hu'] = array(
 	'Badimages' => array( 'Hibás képek' ),
 );
 
+/** Nedersaksisch (Nedersaksisch) */
+$aliases['nds-nl'] = array(
+	'Badimages' => array( 'Zwarte_lieste_van_ofbeeldingen' ),
+);
+
 /** Dutch (Nederlands) */
 $aliases['nl'] = array(
 	'Badimages' => array( 'ZwarteLijstAfbeeldingen' ),

@@ -325,6 +325,13 @@ $wdMessages['ar'] = array(
 من فضلك اتصل بمشغل أو إداري الخادم.',
 );
 
+/** Asturian (Asturianu)
+ * @author Esbardu
+ */
+$wdMessages['ast'] = array(
+	'ow_Language' => 'Llingua',
+);
+
 /** Kotava (Kotava)
  * @author Sab
  * @author Wikimistusik

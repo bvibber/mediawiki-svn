@@ -32,6 +32,13 @@ $messages['ar'] = array(
 	'doublewiki-desc' => 'يعرض صفحة وترجمتها من ويكي أخرى على عمودين من نفس الصفحة',
 );
 
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Ramsis II
+ */
+$messages['arz'] = array(
+	'doublewiki-desc' => 'بيعرض صفحة و الترجمة بتاعتها من ويكي تانية على عمودين في نفس الصفحة',
+);
+
 /** Asturian (Asturianu)
  * @author Esbardu
  */

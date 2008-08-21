@@ -87,6 +87,11 @@ $aliases['ms'] = array(
 	'ExpandTemplates' => array( 'Kembangkan_templat' ),
 );
 
+/** Nedersaksisch (Nedersaksisch) */
+$aliases['nds-nl'] = array(
+	'ExpandTemplates' => array( 'Sjablonen_substitueren' ),
+);
+
 /** Dutch (Nederlands) */
 $aliases['nl'] = array(
 	'ExpandTemplates' => array( 'SjablonenSubstitueren' ),

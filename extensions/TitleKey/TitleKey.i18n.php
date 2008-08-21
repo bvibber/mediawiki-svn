@@ -35,6 +35,13 @@ $messages['ar'] = array(
 	'titlekey-desc' => 'نهاية اقتراح بحث عنوان البادئة',
 );
 
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Ramsis II
+ */
+$messages['arz'] = array(
+	'titlekey-desc' => 'نهاية اقتراح التدوير على بريفيكس للعنوان',
+);
+
 /** Asturian (Asturianu)
  * @author Esbardu
  */

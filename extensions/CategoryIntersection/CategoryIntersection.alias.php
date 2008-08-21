@@ -35,8 +35,9 @@ $aliases['ca'] = array(
 	'CategoryIntersection'=> array( 'Intersecció de categories' ),
 );
 
+/** Czech (Česky) */
 $aliases['cs'] = array(
-	'CategoryIntersection'=> array( 'Průnik kategorií' ),
+	'CategoryIntersection' => array( 'Průnik kategorií' ),
 );
 
 /** German (Deutsch) */
@@ -58,8 +59,9 @@ $aliases['fr'] = array(
 	'CategoryIntersection' => array( 'Recoupage de catégories' ),
 );
 
+/** Galician (Galego) */
 $aliases['gl'] = array(
-	'CategoryIntersection'=> array( 'Intersección de categorías' ),
+	'CategoryIntersection' => array( 'Intersección de categorías' ),
 );
 
 $aliases['hi'] = array(
@@ -95,6 +97,11 @@ $aliases['lb'] = array(
 
 $aliases['mr'] = array(
 	'CategoryIntersection'=> array( 'वर्ग चौक' ),
+);
+
+/** Nedersaksisch (Nedersaksisch) */
+$aliases['nds-nl'] = array(
+	'CategoryIntersection' => array( 'Kattegeriedeursnee' ),
 );
 
 /** Dutch (Nederlands) */

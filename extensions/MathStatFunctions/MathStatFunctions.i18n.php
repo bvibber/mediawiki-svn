@@ -33,6 +33,16 @@ $messages['ar'] = array(
 	'msfunc_div_zero' => 'القسمة على صفر',
 );
 
+/** Asturian (Asturianu)
+ * @author Esbardu
+ */
+$messages['ast'] = array(
+	'msfunc_desc' => 'Una reciella de funciones matemátiques y estadístiques',
+	'msfunc_nan' => 'El valor resultante nun ye un númberu',
+	'msfunc_inf' => 'El valor resultante ye infinitu',
+	'msfunc_div_zero' => 'Divisón por cero',
+);
+
 /** Bulgarian (Български)
  * @author Spiritia
  */

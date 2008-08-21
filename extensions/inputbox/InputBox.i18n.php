@@ -310,13 +310,13 @@ $messages['el'] = array(
  * @author Yekrats
  */
 $messages['eo'] = array(
-	'inputbox-desc' => 'Permesu enhavon de antaŭdifinitaj HTML-kamparoj',
+	'inputbox-desc' => 'Permesi enhavon de antaŭdifinitaj HTML-kamparoj',
 	'inputbox-error-no-type' => 'Vi ne enigis la specon de enigo-kesto por krei.',
 	'inputbox-error-bad-type' => 'Enigo-kesto "$1" ne estas konata.
 Bonvolu specifigi "krea", "komenta", "serĉa" aŭ "serĉa2".',
 	'tryexact' => 'Provu ekzaktan trafon',
 	'searchfulltext' => 'Serĉi plentekste',
-	'createarticle' => 'Kreu artikolon',
+	'createarticle' => 'Krei artikolon',
 );
 
 /** Spanish (Español)
@@ -989,6 +989,13 @@ $messages['pms'] = array(
 	'tryexact' => 'Sërca che a sia pròpe parej',
 	'searchfulltext' => 'Sërca an tut ël test',
 	'createarticle' => "Crea n'artìcol",
+);
+
+/** Pontic (Ποντιακά)
+ * @author Sinopeus
+ */
+$messages['pnt'] = array(
+	'createarticle' => 'Ποίσον σελίδαν',
 );
 
 /** Pashto (پښتو)

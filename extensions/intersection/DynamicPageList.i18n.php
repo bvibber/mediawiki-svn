@@ -47,6 +47,17 @@ $messages['ar'] = array(
 	'intersection_noincludecats' => 'خطأ: ينبغي أن تضمن تصنيفا واحدا على الأقل، أو تحدد نطاقا!',
 );
 
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Ramsis II
+ */
+$messages['arz'] = array(
+	'intersection-desc' => 'بيطلع لستة مترقمة لاحدث الحاجات الموجودة في تصنيف,او اتحاد اكتر من تصنيف',
+	'intersection_toomanycats' => 'غلط:تصانيف كتيرة خالص!',
+	'intersection_toofewcats' => 'غلط:تصانيف قليلة خالص!',
+	'intersection_noresults' => 'غلط:مافيش نتايج!',
+	'intersection_noincludecats' => 'غلط: لازم تحط تصنيف واحد على الأقل، أو تحدد نطاق!',
+);
+
 /** Asturian (Asturianu)
  * @author Esbardu
  */

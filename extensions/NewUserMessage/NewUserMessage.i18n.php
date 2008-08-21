@@ -224,6 +224,7 @@ $messages['no'] = array(
  */
 $messages['oc'] = array(
 	'newusermessage-desc' => "Apondís un messatge dins la pagina de discussion d'un utilizaire novèl.",
+	'newuseredit-summary' => 'Apondís [[{{int:newusermessage-template}}|un messatge de benvenguda]] dins la pagina de discussion d’un utilizaire novèl',
 );
 
 /** Portuguese (Português)

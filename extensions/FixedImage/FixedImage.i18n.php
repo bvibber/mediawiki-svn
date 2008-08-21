@@ -179,6 +179,13 @@ $messages['it'] = array(
 	'fixedimage-desc' => "Aggiunge il tag <tt><nowiki><fundraising></nowiki></tt> come un'immagine",
 );
 
+/** Japanese (日本語)
+ * @author Aotake
+ */
+$messages['ja'] = array(
+	'fixedimage-desc' => '<tt><nowiki><fundraising></nowiki></tt> のタグを画像として挿入',
+);
+
 /** Ripoarisch (Ripoarisch)
  * @author Purodha
  */

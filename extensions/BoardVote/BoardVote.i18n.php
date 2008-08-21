@@ -1498,7 +1498,7 @@ Ni voĉdonas por unu persono kiu reprezentos la uzantarojn de la diversaj projek
 	'boardvote_intro_change' => '<p>Vi estas jam balotinta. Tamen vi povas ŝanĝi vian baloton per la jena formularo. Bonvolu elekti la kvadratetojn apud la kandidatoj kiujn vi elektas.</p>',
 	'boardvote_entered' => 'Dankon! Via baloto estas registrita.
 
-Se vi deziras, vi povas registri la sekvantajn detalojn. La registraĵo de via baloto estas: 
+Se vi deziras, vi povas registri la jenajn detalojn. La registraĵo de via baloto estas: 
 
 <pre>$1</pre>
 
@@ -1506,7 +1506,7 @@ Se vi deziras, vi povas registri la sekvantajn detalojn. La registraĵo de via b
 
 <pre>$2</pre>
 
-La rezultanta ĉifrita versio sekvas. Ĝi estos publike montrita sur [[Special:Boardvote/dump]]. 
+La rezultanta ĉifrita versio sekvas. Ĝi estos [[Special:Boardvote/dump|publike montrita]]. 
 
 <pre>$3</pre>
 
@@ -2093,7 +2093,7 @@ Foi cifrado coa chave pública dos Administradores das Eleccións:
 
 <pre>$2</pre>
 
-A versión seguinte, sen cifrado, é a que segue. Mostrarase publicamente en [[Special:Boardvote/dump]].
+A versión seguinte, sen cifrado, é a que segue. [[Special:Boardvote/dump|Mostrarase publicamente aquí]].
 
 <pre>$3</pre>
 
@@ -5032,7 +5032,7 @@ oddané zbieraniu a šíreniu ľudského poznania.</p>
 <ul><li><a href="http://meta.wikimedia.org/wiki/Board_elections/2008" class="external">Voľby do Rady 2008</a></li>
 <li><a href="http://meta.wikimedia.org/wiki/Board_elections/2008/Candidates" class="external">Kandidáti</a></li>
 <li><a href="http://en.wikipedia.org/wiki/Schulze_method" class="external">Schulzeho metóda</a></li></ul>',
-	'boardvote_intro_change' => '<p>Už ste hasovali. Môžete však zmeniť svoj hlas vo formulári dolu. Prosím, označte pole pri každom kandidátovi, ktorého schvaľujete.</p>',
+	'boardvote_intro_change' => '<p>Už ste hlasovali. Môžete však zmeniť svoj hlas vo formulári dolu. Prosím, označte pole pri každom kandidátovi, ktorého schvaľujete.</p>',
 	'boardvote_entered' => 'Ďakujeme, váš hlas bol zaznamenaný.
 
 Ak si želáte, môžete si uchovať nasledovné podrobnosti. Váš záznam o hlasovaní je:

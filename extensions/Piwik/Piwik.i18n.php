@@ -39,6 +39,16 @@ $messages['ar'] = array(
 	'piwik-browsers' => 'متصفحات',
 );
 
+/** Asturian (Asturianu)
+ * @author Esbardu
+ */
+$messages['ast'] = array(
+	'piwik-desc' => "Enxerta'l script Piwik nes páxines de Mediawiki pa facer seguimientu y añade [[Special:Piwik|dalgunes estadístiques]]",
+	'piwik-lastvisits' => 'Caberes visites',
+	'piwik-countries' => 'Países',
+	'piwik-browsers' => 'Navegadores',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  */
@@ -137,6 +147,15 @@ $messages['it'] = array(
 	'piwik-lastvisits' => 'Ultime visite',
 	'piwik-countries' => 'Paesi',
 	'piwik-browsers' => 'Browser',
+);
+
+/** Khmer (ភាសាខ្មែរ)
+ * @author Lovekhmer
+ */
+$messages['km'] = array(
+	'piwik-lastvisits' => 'ការចូលទស្សនាចុងក្រោយ',
+	'piwik-countries' => 'ប្រទេស',
+	'piwik-browsers' => 'កម្មវិធីរុករក',
 );
 
 /** Ripoarisch (Ripoarisch)

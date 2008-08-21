@@ -59,7 +59,7 @@ $messages['fr'] = array(
 $messages['gl'] = array(
 	'signaturelogpage' => 'Rexistro de Sinaturas',
 	'signature-desc' => 'Permite [[Special:SignDocument|a fichaxe]] dun documento',
-	'signaturelogpagetext' => 'Este é un rexistro de todas as sinaturas engadidas aos documentos mediante [[Special:SignDocument]].',
+	'signaturelogpagetext' => 'Este é un rexistro de [[Special:SignDocument|todas as sinaturas engadidas aos documentos]].',
 	'signaturelogentry' => 'asinou o documento $1',
 );
 

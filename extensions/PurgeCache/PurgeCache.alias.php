@@ -20,6 +20,16 @@ $aliases['arz'] = array(
 	'PurgeCache' => array( 'إفراغ_الكاش' ),
 );
 
+/** German (Deutsch) */
+$aliases['de'] = array(
+	'PurgeCache' => array( 'Cache leeren' ),
+);
+
+/** Nedersaksisch (Nedersaksisch) */
+$aliases['nds-nl'] = array(
+	'PurgeCache' => array( 'Kas_leegmaken' ),
+);
+
 /** Dutch (Nederlands) */
 $aliases['nl'] = array(
 	'PurgeCache' => array( 'CacheLegen' ),

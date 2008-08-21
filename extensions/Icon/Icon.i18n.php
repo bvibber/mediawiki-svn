@@ -129,6 +129,15 @@ $messages['hu'] = array(
 	'icon-badwidth' => 'Érvénytelen szélesség',
 );
 
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'icon-badimage' => 'Mal imagine',
+	'icon-badwidth' => 'Latitude invalide',
+	'icon-desc' => 'Permitte usar imagines como icones e ligamines in forma de icone',
+);
+
 /** Javanese (Basa Jawa)
  * @author Meursault2004
  */

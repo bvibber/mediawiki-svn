@@ -28,9 +28,19 @@ $aliases['arz'] = array(
 	'InterwikiList' => array( 'قائمة_الإنترويكى' ),
 );
 
+/** German (Deutsch) */
+$aliases['de'] = array(
+	'InterwikiList' => array( 'Interwiki-Liste' ),
+);
+
 /** Korean (한국어) */
 $aliases['ko'] = array(
 	'InterwikiList' => array( '인터위키목록' ),
+);
+
+/** Nedersaksisch (Nedersaksisch) */
+$aliases['nds-nl'] = array(
+	'InterwikiList' => array( 'Interwikilieste' ),
 );
 
 /** Dutch (Nederlands) */

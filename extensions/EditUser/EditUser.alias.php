@@ -28,6 +28,11 @@ $aliases['arz'] = array(
 	'EditUser' => array( 'تعديل_المستخدم' ),
 );
 
+/** German (Deutsch) */
+$aliases['de'] = array(
+	'EditUser' => array( 'Benutzereinstellungen bearbeiten' ),
+);
+
 /** French (Français) */
 $aliases['fr'] = array(
 	'EditUser' => array( 'EditerUtilisateur', 'ÉditerUtilisateur', 'Éditer l’utilisateur' ),
@@ -68,6 +73,11 @@ $aliases['lb'] = array(
 /** Malay (Bahasa Melayu) */
 $aliases['ms'] = array(
 	'EditUser' => array( 'Jumlah_pengguna' ),
+);
+
+/** Nedersaksisch (Nedersaksisch) */
+$aliases['nds-nl'] = array(
+	'EditUser' => array( 'Gebruker_bewarken' ),
 );
 
 /** Dutch (Nederlands) */

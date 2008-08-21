@@ -385,7 +385,7 @@ $messages['eo'] = array(
 	'changeauthor-pagename-or-revid' => 'Paĝnomo aŭ revizia identigo:',
 	'changeauthor-pagenameform-go' => 'Ek!',
 	'changeauthor-comment' => 'Komento:',
-	'changeauthor-changeauthors-multi' => 'Ŝanĝu aŭtoro(j)n',
+	'changeauthor-changeauthors-multi' => 'Ŝanĝi {{PLURAL:$1|aŭtoron|aŭtorojn}}',
 	'changeauthor-explanation-multi' => "Kun ĉi tiu paĝo vi povas ŝanĝi aŭtorojn de revizioj.
 Simple ŝanĝu unu aŭ pliajn salutnomojn en la jena listo, aldonu komenton (nedeviga) kaj klaku la butonon 'Ŝanĝi aŭtoro(j)n'.",
 	'changeauthor-changeauthors-single' => 'Ŝanĝi aŭtoron',
@@ -431,6 +431,7 @@ $messages['fi'] = array(
 /** French (Français)
  * @author Dereckson
  * @author Grondin
+ * @author IAlex
  * @author Sherbrooke
  * @author Urhixidur
  */
@@ -442,7 +443,7 @@ $messages['fr'] = array(
 	'changeauthor-pagename-or-revid' => "Titre de l'article ou numéro de la révision :",
 	'changeauthor-pagenameform-go' => 'Aller',
 	'changeauthor-comment' => 'Commentaire :',
-	'changeauthor-changeauthors-multi' => 'Changer auteur(s)',
+	'changeauthor-changeauthors-multi' => "Changer {{PLURAL:$1|l'auteur|les auteurs}}",
 	'changeauthor-explanation-multi' => "Avec ce formulaire, vous pouvez changer les auteurs des révisions. Modifiez un ou plusieurs noms d'usager dans la liste, ajoutez un commentaire (facultatif) et cliquez le bouton ''Changer auteur(s)''.",
 	'changeauthor-changeauthors-single' => "Changer l'auteur",
 	'changeauthor-explanation-single' => "Avec ce formulaire, vous pouvez changer l'auteur d'une révision. Changez le nom d'auteur ci-dessous, ajoutez un commentaire (facultatif) et cliquez sur le bouton ''Changer l'auteur''.",
@@ -499,7 +500,7 @@ $messages['gl'] = array(
 	'changeauthor-pagename-or-revid' => 'Nome da páxina ou ID da revisión:',
 	'changeauthor-pagenameform-go' => 'Adiante',
 	'changeauthor-comment' => 'Comentario:',
-	'changeauthor-changeauthors-multi' => 'Mudar autor(es)',
+	'changeauthor-changeauthors-multi' => 'Mudar {{PLURAL:$1|o autor|os autores}}',
 	'changeauthor-explanation-multi' => "Con este formulario pode cambiar as revisións dos autores. Simplemente cambie un ou máis dos nomes dos usuarios na listaxe de embaixo, engada un comentario (opcional) e prema no botón de 'Mudar autor(es)'",
 	'changeauthor-changeauthors-single' => 'Cambiar autor',
 	'changeauthor-explanation-single' => "Con este formulario pode cambiar a revisión do autor. Simplemente mude o nome do usuario embaixo, engada un comentario (opcional) e prema o botón de 'Mudar autor'",
@@ -650,7 +651,7 @@ $messages['ia'] = array(
 	'changeauthor-pagename-or-revid' => 'Nomine del pagina o ID del revision:',
 	'changeauthor-pagenameform-go' => 'Ir',
 	'changeauthor-comment' => 'Commento:',
-	'changeauthor-changeauthors-multi' => 'Cambiar autor(es)',
+	'changeauthor-changeauthors-multi' => 'Cambiar {{PLURAL:$1|autor|autores}}',
 	'changeauthor-explanation-multi' => "Con iste formulario tu pote cambiar le autores de revisiones.
 Simplemente modifica un o plus nomines de usator in le lista infra, adde un commento (optional) e clicca le button 'Cambiar autor(es)'.",
 	'changeauthor-changeauthors-single' => 'Cambiar autor',
@@ -988,7 +989,7 @@ $messages['oc'] = array(
 	'changeauthor-pagename-or-revid' => "Títol de l'article o ID de revision :",
 	'changeauthor-pagenameform-go' => 'Anar',
 	'changeauthor-comment' => 'Comentari :',
-	'changeauthor-changeauthors-multi' => 'Cambiar autor(s)',
+	'changeauthor-changeauthors-multi' => 'Cambiar {{PLURAL:$1|autor|autors}}',
 	'changeauthor-explanation-multi' => "Amb aqueste formulari, podètz cambiar los autors de las revisions. Modificat un o mantun nom d'utilizaire dins la lista, apondètz un comentari (facultatiu) e clicatz sul boton ''Cambiar autor(s)''.",
 	'changeauthor-changeauthors-single' => "Cambiar l'autor",
 	'changeauthor-explanation-single' => "Amb aqueste formulari, podètz cambiar l'autor d'una revision. Cambiatz lo nom d'autor çaijós, apondètz un comentari (facultatiu) e clicatz sul boton ''Cambiar l'autor''.",
@@ -1163,7 +1164,7 @@ $messages['sk'] = array(
 	'changeauthor-pagename-or-revid' => 'Názov stránky alebo ID revízie:',
 	'changeauthor-pagenameform-go' => 'Vykonať',
 	'changeauthor-comment' => 'Komentár:',
-	'changeauthor-changeauthors-multi' => 'Zmeniť autora (autorov)',
+	'changeauthor-changeauthors-multi' => 'Zmeniť {{PLURAL:$1|autora|autorov}}',
 	'changeauthor-explanation-multi' => 'Pomocou tohto formulára môžete zmeniť autora revízie stránky. Jednoducho zmeňte jedno alebo viac mien používateľov v zozname nižšie, pridajte komentár (nepovinné) a kliknite na tlačidlo „Zmeniť autora“.',
 	'changeauthor-changeauthors-single' => 'Zmeniť autora',
 	'changeauthor-explanation-single' => 'Pomocou tohto formulára môžete zmeniť autora revízie stránky. Jednoducho zmeňte meno používateľa v zozname nižšie, pridajte komentár (nepovinné) a kliknite na tlačidlo „Zmeniť autora“.',
@@ -1261,7 +1262,7 @@ $messages['sv'] = array(
 	'changeauthor-pagename-or-revid' => 'Sidnamn eller versions-ID:',
 	'changeauthor-pagenameform-go' => 'Gå',
 	'changeauthor-comment' => 'Kommentar:',
-	'changeauthor-changeauthors-multi' => 'Ändra',
+	'changeauthor-changeauthors-multi' => 'Ändra {{PLURAL:$1|författare|författare}}',
 	'changeauthor-explanation-multi' => 'Med hjälp av det här formuläret kan du ändra upphovsmännen för sidversioner. Byt ut ett eller flera av användarnamnen i listan härunder, skriv (om du vill) en kommentar och tryck sedan på knappen "Ändra".',
 	'changeauthor-changeauthors-single' => 'Ändra',
 	'changeauthor-explanation-single' => 'Med hjälp av det här formuläret kan du ändra upphovsmannen för en sidversion. Byt ut användarnamnet härunder, skriv (om du vill) en kommentar och tryck sedan på knappen "Ändra".',

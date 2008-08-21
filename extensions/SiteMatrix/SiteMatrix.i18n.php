@@ -687,17 +687,20 @@ $messages['it'] = array(
 );
 
 /** Japanese (日本語)
+ * @author Aotake
  * @author JtFuruhata
  * @author לערי ריינהארט
  */
 $messages['ja'] = array(
 	'sitematrix' => 'Wikimediaウィキの一覧',
+	'sitematrix-summary' => 'この特別ページではウィキメディアのすべてのウィキを表示しています。',
 	'sitematrix-desc' => '[[Special:SiteMatrix|Wikimediaウィキの一覧]]を表示する',
 	'sitematrix-language' => '言語',
 	'sitematrix-project' => 'プロジェクト名、プロジェクト間リンク、ウィキ間リンク',
 	'sitematrix-others' => 'Wikimedia以外のプロジェクト',
 	'sitematrix-total' => "'''総計: $1'''",
 	'sitematrix-sitetotal' => '合計',
+	'sitematrix-fishbowl' => '編集は制限されています',
 );
 
 /** Jutish (Jysk)

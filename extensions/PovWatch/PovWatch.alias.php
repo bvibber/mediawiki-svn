@@ -20,6 +20,11 @@ $aliases['arz'] = array(
 	'PovWatch' => array( 'مراقبة_وجهة_النظر' ),
 );
 
+/** Nedersaksisch (Nedersaksisch) */
+$aliases['nds-nl'] = array(
+	'PovWatch' => array( 'Staandpuntsvolglieste' ),
+);
+
 /** Dutch (Nederlands) */
 $aliases['nl'] = array(
 	'PovWatch' => array( 'PovVolglijst' ),

@@ -79,6 +79,7 @@ $messages['da'] = array(
  */
 $messages['eo'] = array(
 	'profiling-ok' => 'Ek!',
+	'profiling-data-count' => 'Nombro',
 );
 
 /** French (Français)

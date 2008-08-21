@@ -232,6 +232,7 @@ $messages['da'] = array(
 );
 
 /** German (Deutsch)
+ * @author Purodha
  * @author Revolus
  */
 $messages['de'] = array(
@@ -245,7 +246,7 @@ $messages['de'] = array(
 	'youtubeauthsub_category' => 'Kategorie',
 	'youtubeauthsub_submit' => 'Senden',
 	'youtubeauthsub_clickhere' => 'Hier klicken zum Einloggen bei YouTube',
-	'youtubeauthsub_tokenerror' => 'Fehler beim Erstellen es Authorisierungstoken. Versuche die Seite neu zuladen.',
+	'youtubeauthsub_tokenerror' => 'Fehler beim Erstellen eines Authorisierungstokens. Versuche die Seite neu zuladen.',
 	'youtubeauthsub_success' => "Gratuliere!
 Dein Video wurde hochgeladen.
 Zum schauen klicke <a href='http://www.youtube.com/watch?v=$1'>hier</a>.
@@ -617,9 +618,31 @@ $messages['krj'] = array(
  * @author Purodha
  */
 $messages['ksh'] = array(
+	'youtubeauthsub' => 'Donn Ding <i lang="en">YouTube</i> Viddeo huhlade',
 	'youtubeauthsub-desc' => 'Määt et müjjesch, dat Metmaacher ier Viddeos direk noh
 <i lang="en">YouTube</i> [[Special:YouTubeAuthSub|huhlade]].',
+	'youtubeauthsub_info' => 'Öm ene Viddejo op <i lang="en">YouTube</i> en ene Sigg opnemme ze künne, donn hee di Enfommazjuhne aanjevve:',
+	'youtubeauthsub_title' => 'Tittel',
+	'youtubeauthsub_description' => 'Beschrievung',
+	'youtubeauthsub_password' => 'Ding Passwoot op <i lang="en">YouTube</i>',
+	'youtubeauthsub_username' => 'Dinge Metmaacher-Name op <i lang="en">YouTube</i>',
+	'youtubeauthsub_keywords' => 'Steschwööter op <i lang="en">YouTube</i>',
+	'youtubeauthsub_category' => 'Kattejori op <i lang="en">YouTube</i>',
 	'youtubeauthsub_submit' => 'Loß Jonn!',
+	'youtubeauthsub_clickhere' => 'Kleck för et Enlogge op <i lang="en">YouTube</i>',
+	'youtubeauthsub_authsubinstructions' => 'Öm ene Viddejo huhzelade, moß De eets op <i lang="en">YouTube</i> enjelogg han.',
+	'youtubeauthsub_uploadhere' => 'Don Dinge Viddejo fun huhlade fun:',
+	'youtubeauthsub_uploadbutton' => 'Huhlade',
+	'youtubeauthsub_code' => '{{#ev:youtube|$1}}.
+
+Dä Viddeje kam_mer [http://www.youtube.com/watch?v=$1 hee beloore]',
+	'youtubeauthsub_summary' => 'Ene YouTube Viddejo huhlade',
+	'youtubeauthsub_uploading' => 'Dä Viddejo weet jrad noch huhjelaade.
+Bes jet jedoldesch.',
+	'youtubeauthsub_viewpage' => 'Do kanns Der dä Viddejo och [[$1|hee beloore]].',
+	'youtubeauthsub_jserror_nokeywords' => 'Bes esu joot, jiff mieh Steshwööter aan.',
+	'youtubeauthsub_jserror_notitle' => 'Jeff ene Tittel för dä Viddejo aan.',
+	'youtubeauthsub_jserror_nodesc' => 'Don dä Viddejo winneßtens med enem Satz udder zwei beschrieve, söns weet dat nix, hee.',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

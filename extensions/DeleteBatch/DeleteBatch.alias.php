@@ -55,6 +55,11 @@ $aliases['lb'] = array(
 	'DeleteBatch' => array( 'Läsch-Batch' ),
 );
 
+/** Nedersaksisch (Nedersaksisch) */
+$aliases['nds-nl'] = array(
+	'DeleteBatch' => array( 'Paginareeks_vortdoon' ),
+);
+
 /** Dutch (Nederlands) */
 $aliases['nl'] = array(
 	'DeleteBatch' => array( 'PaginareeksVerwijderen' ),

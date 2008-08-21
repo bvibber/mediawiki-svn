@@ -28,6 +28,11 @@ $aliases['arz'] = array(
 	'Invitations' => array( 'دعوات' ),
 );
 
+/** German (Deutsch) */
+$aliases['de'] = array(
+	'Invitations' => array( 'Einladungen' ),
+);
+
 /** Finnish (Suomi) */
 $aliases['fi'] = array(
 	'Invitations' => array( 'Kutsut' ),
@@ -68,6 +73,11 @@ $aliases['lb'] = array(
 /** Malay (Bahasa Melayu) */
 $aliases['ms'] = array(
 	'Invitations' => array( 'Jemputan' ),
+);
+
+/** Nedersaksisch (Nedersaksisch) */
+$aliases['nds-nl'] = array(
+	'Invitations' => array( 'Uutneudigingen' ),
 );
 
 /** Dutch (Nederlands) */

@@ -48,6 +48,13 @@ $aliases['cs'] = array(
 	'ViewConfig' => array( 'Zobrazit konfiguraci', 'Zobrazit nastavení' ),
 );
 
+/** German (Deutsch) */
+$aliases['de'] = array(
+	'Configure' => array( 'Konfigurieren' ),
+	'Extensions' => array( 'Erweiterungen' ),
+	'ViewConfig' => array( 'Konfiguration betrachten' ),
+);
+
 /** Lower Sorbian (Dolnoserbski) */
 $aliases['dsb'] = array(
 	'Configure'  => array( 'Konfigurěrowaś' ),
@@ -56,7 +63,7 @@ $aliases['dsb'] = array(
 
 /** Finnish (Suomi) */
 $aliases['fi'] = array(
-	'Configure'  => array( 'Wikin asetukset' ),
+	'Configure' => array( 'Wikin asetukset' ),
 	'Extensions' => array( 'Laajennukset' ),
 	'ViewConfig' => array( 'Näytä asetukset' ),
 );
@@ -72,7 +79,7 @@ $aliases['fr'] = array(
 
 /** Galician (Galego) */
 $aliases['gl'] = array(
-	'Configure'  => array( 'Configurar' ),
+	'Configure' => array( 'Configurar' ),
 	'Extensions' => array( 'Extensións' ),
 	'ViewConfig' => array( 'Ver a configuración' ),
 );
@@ -129,6 +136,13 @@ $aliases['mt'] = array(
 	'Configure' => array( 'Konfigurazzjoni' ),
 	'Extensions' => array( 'Estensjonijiet' ),
 	'ViewConfig' => array( 'UriKonfig' ),
+);
+
+/** Nedersaksisch (Nedersaksisch) */
+$aliases['nds-nl'] = array(
+	'Configure' => array( 'Instellingen' ),
+	'Extensions' => array( 'Uutbreidingen' ),
+	'ViewConfig' => array( 'Instellingen_bekieken' ),
 );
 
 /** Dutch (Nederlands) */

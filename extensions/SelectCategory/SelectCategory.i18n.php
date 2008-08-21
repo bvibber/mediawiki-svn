@@ -36,6 +36,15 @@ $messages['ar'] = array(
 	'selectcategory-subtitle' => 'Shift-mouse لاختيار مدخلات متوافقة متعددة، Ctrl-mouse لاختيار مدخلات غير متوافقة.',
 );
 
+/** Asturian (Asturianu)
+ * @author Esbardu
+ */
+$messages['ast'] = array(
+	'selectcategory-title' => 'Selecionar categoríes',
+	'selectcategory-desc' => 'Permite al usuariu seleicionar categoríes esistentes al editar una páxina',
+	'selectcategory-subtitle' => 'Caltén pulsada la tecla de mayúscules pa seleicionar entraes múltiples contigües, o la tecla CTRL pa seleicionar entraes non contigües.',
+);
+
 /** Bikol Central (Bikol Central)
  * @author Filipinayzd
  */

@@ -218,6 +218,13 @@ $messages['ar'] = array(
 ; [http://bloggerindraft.blogspot.com/2008/01/new-feature-blogger-as-openid-provider.html بلوجر], [http://faq.wordpress.com/2007/03/06/what-is-openid/ وورد بريس دوت كوم]، [http://www.livejournal.com/openid/about.bml ليف جورنال]، [http://bradfitz.vox.com/library/post/openid-for-vox.html فوكس] : لو لديك مدونة على أي من هذه الخدمات، أدخل مسار مدونتك في الصندوق بالأعلى. على سبيل المثال، ''<nowiki>http://yourusername.blogspot.com/</nowiki>''، ''<nowiki>http://yourusername.wordpress.com/</nowiki>''، ''<nowiki>http://yourusername.livejournal.com/</nowiki>''، أو ''<nowiki>http://yourusername.vox.com/</nowiki>''.",
 );
 
+/** Asturian (Asturianu)
+ * @author Esbardu
+ */
+$messages['ast'] = array(
+	'openidlanguage' => 'Llingua',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  */
@@ -290,8 +297,38 @@ $messages['da'] = array(
  * @author Leithian
  */
 $messages['de'] = array(
+	'openid-desc' => 'Anmeldung an dieses Wiki mit einer [http://openid.net/ OpenID] und anmelden an anderen Websites, die OpenID unterstützen, mit einem Wiki-Benutzerkonto.',
+	'openidlogin' => 'Anmelden mit OpenID',
+	'openidfinish' => 'OpenID-Anmeldung abschließen',
+	'openidserver' => 'OpenID-Server',
+	'openidxrds' => 'Yadis-Datei',
+	'openidconvert' => 'OpenID-Konverter',
+	'openiderror' => 'Überprüfungsfehler',
+	'openiderrortext' => 'Ein Fehler ist während der Überprüfung der OpenID-URL aufgetreten.',
+	'openidconfigerror' => 'OpenID-Konfigurationsfehler',
+	'openidconfigerrortext' => 'Die OpenID-Speicherkonfiguarion für dieses Wiki ist fehlerhaft.
+Bitte benachrichtige einen [[Special:Userlist/sysop|Administrator]].',
+	'openidpermission' => 'OpenID-Berechtigungsfehler',
+	'openidpermissiontext' => 'Die angegebene OpenID berechtigt nicht zur Anmeldung an diesem Server.',
+	'openidcancel' => 'Überprüfung abgebrochen',
+	'openidcanceltext' => 'Die Überprüfung der OpenID-URL wurde abgebrochen.',
+	'openidfailure' => 'Überprüfungsfehler',
+	'openidfailuretext' => 'Die Überprüfung der OpenID-URL ist fehlgeschlagen. Fehlermeldung: „$1“',
+	'openidsuccess' => 'Überprüfung erfolgreich beendet',
+	'openidsuccesstext' => 'Die Überprüfung der OpenID-URL war erfolgreich.',
+	'openidusernameprefix' => 'OpenID-Benutzer',
+	'openidserverlogininstructions' => 'Gib dein Passwort unten ein, um dich als Benutzer $2 an $3 anzumelden (Benutzerseite $1).',
+	'openidtrustinstructions' => 'Prüfe, ob du Daten mit $1 teilen möchtest.',
+	'openidallowtrust' => 'Erlaube $1, diesem Benutzerkonto zu vertrauen.',
+	'openidnopolicy' => 'Die Seite hat keine Datenschutzrichtlinie angegeben.',
+	'openidpolicy' => 'Prüfe die <a target="_new" href="$1">Datenschutzrichtlinie</a> für weitere Informationen.',
+	'openidoptional' => 'Optional',
+	'openidrequired' => 'Pflicht',
+	'openidnickname' => 'Benutzername',
+	'openidfullname' => 'Vollständiger Name',
 	'openidemail' => 'E-Mail-Adresse:',
 	'openidlanguage' => 'Sprache',
+	'openidnotavailable' => 'Dein bevorzugter Benutzername ($1) wird bereits von einem anderen Benutzer verwendet.',
 	'openidchoosepassword' => 'Passwort:',
 );
 
@@ -420,7 +457,7 @@ $messages['gl'] = array(
 	'openiderrortext' => 'Ocorreu un erro durante a verificación do URL do OpenID.',
 	'openidconfigerror' => 'Erro na configuración do OpenID',
 	'openidconfigerrortext' => 'A configuración do almacenamento no OpenID deste wiki é inválido.
-Por favor, consúlteo co administrador do sitio.',
+Por favor, consúlteo cun [[Special:Userlist/sysop|administrador]] do sitio.',
 	'openidpermission' => 'Erro de permisos OpenID',
 	'openidpermissiontext' => 'O OpenID que proporcionou non ten permitido o acceso a este servidor.',
 	'openidcancel' => 'A verificación foi cancelada',
@@ -1138,7 +1175,7 @@ $messages['oc'] = array(
 	'openiderrortext' => "Una error es intervenguda pendent la verificacion de l'adreça OpenID.",
 	'openidconfigerror' => 'Error de configuracion de OpenID',
 	'openidconfigerrortext' => "L'estocatge de la configuracion OpenID per aqueste wiki es incorrècte.
-Metetz-vos en rapòrt amb l’administrator d'aqueste sit.",
+Metetz-vos en rapòrt amb l’[[Special:Userlist/sysop|administrator]].",
 	'openidpermission' => 'Error de permission OpenID',
 	'openidpermissiontext' => "L’OpenID qu'avètz provesida es pas autorizada a se connectar sus aqueste servidor.",
 	'openidcancel' => 'Verificacion anullada',
@@ -1387,7 +1424,7 @@ $messages['sk'] = array(
 	'openiderrortext' => 'Počas overovania OpenID URL sa vyskytla chyba.',
 	'openidconfigerror' => 'Chyba konfigurácie OpenID',
 	'openidconfigerrortext' => 'Konfigurácia OpenID tejto wiki je neplatná.
-Prosím, poraďte sa so správcom tejto webovej lokality.',
+Prosím, poraďte sa so [[Special:Userlist/sysop|správcom]] tejto webovej lokality.',
 	'openidpermission' => 'Chyba oprávnení OpenID',
 	'openidpermissiontext' => 'OpenID, ktorý ste poskytli, nemá oprávnenie prihlásiť sa k tomuto serveru',
 	'openidcancel' => 'Overovanie bolo zrušené',
@@ -1477,8 +1514,8 @@ $messages['sv'] = array(
 	'openiderror' => 'Bekräftelsefel',
 	'openiderrortext' => 'Ett fel uppstod under bekräftning av OpenID-adressen.',
 	'openidconfigerror' => 'Konfigurationsfel med OpenID',
-	'openidconfigerrortext' => 'Langringkonfigurationen för OpenID på den här wikin är ogiltig.
-Var god konsultera sajtens administratör om problemet.',
+	'openidconfigerrortext' => 'Lagringkonfigurationen för OpenID på den här wikin är ogiltig.
+Var god konsultera en [[Special:Userlist/sysop|administratör]].',
 	'openidpermission' => 'Tillåtelsefel med OpenID',
 	'openidpermissiontext' => 'Du kan inte logga in på den här servern med den OpenID du angedde.',
 	'openidcancel' => 'Bekräftning avbruten',

@@ -273,6 +273,7 @@ manualmente por un alministrador de la base de datos.",
 	'oversight-hidden' => 'Revisión escondida',
 	'oversight-header' => 'Embaxo amuésase una llista de les revisiones escondíes recién permanentemente de la vista pública.
 Esparder esta información pue llevar a la perda permanente de privilexos de supervisión.',
+	'oversight-legend' => 'Buscar el rexistru de les revisiones ocultes',
 );
 
 /** Kotava (Kotava)
@@ -447,13 +448,14 @@ $messages['co'] = array(
  * @author Danny B.
  * @author Li-sung
  * @author Matěj Grabovský
+ * @author Mormegil
  * @author Sp5uhe
  */
 $messages['cs'] = array(
 	'hiderevision' => 'Natrvalo skrýt revize',
 	'hiderevision-desc' => 'Skrývá jednotlivé určené revize všem uživatelům (z právních důvodů apod.)',
 	'group-oversight' => 'Dozorci',
-	'group-oversight-member' => 'Dozorce',
+	'group-oversight-member' => 'dozorce',
 	'grouppage-oversight' => '{{ns:project}}:Dozorci',
 	'right-oversight' => 'Zobrazování dříve skryté revize',
 	'right-hiderevision' => 'Prohlížení a obnovování revizí skrytých před správci',
@@ -2048,6 +2050,7 @@ $messages['oc'] = array(
 	'oversight-prev' => 'Darrièra revision precedenta',
 	'oversight-hidden' => 'Revision amagada',
 	'oversight-header' => "Çaijós, figura la lista de las revisions amagadas de biais permanent al public. La divulgacion d'aquesta entresenha pòt aver coma consequéncia la descasença dels privilègis d’Oversight.",
+	'oversight-legend' => 'Jornal de las recèrcas de las versions amagadas',
 );
 
 /** Pangasinan (Pangasinan) */

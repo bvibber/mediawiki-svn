@@ -39,6 +39,13 @@ $messages['ar'] = array(
 	'poem-desc' => 'يضيف الوسم <tt>&lt;poem&gt;</tt> لصياغة القصيدة',
 );
 
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Ramsis II
+ */
+$messages['arz'] = array(
+	'poem-desc' => 'بيضيف تاج ال <tt>&lt;poem&gt;</tt> لصياغة القصيدة',
+);
+
 /** Asturian (Asturianu)
  * @author Esbardu
  */
