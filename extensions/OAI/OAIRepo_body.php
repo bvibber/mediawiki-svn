@@ -16,7 +16,7 @@ if( !function_exists( 'wfTimestamp2ISO8601' ) ) {
 }
 
 class SpecialOAIRepository extends UnlistedSpecialPage {
-	function OAIRepository() {
+	function __construct() {
 		UnlistedSpecialPage::UnlistedSpecialPage( 'OAIRepository' );
 	}
 

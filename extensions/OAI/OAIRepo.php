@@ -67,7 +67,6 @@ $wgExtensionCredits['specialpage'][] = array(
 
 $dir = dirname(__FILE__) . '/';
 $wgExtensionMessagesFiles['OAIRepository'] = $dir . 'OAIRepo.i18n.php';
-$wgExtensionAliasesFiles['OAIRepository'] = $dir . 'OAIRepo.alias.php';
 $wgAutoloadClasses['SpecialOAIRepository'] = $dir . 'OAIRepo_body.php';
 $wgSpecialPages['OAIRepository'] = 'SpecialOAIRepository';
 
