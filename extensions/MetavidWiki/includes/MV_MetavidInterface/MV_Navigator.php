@@ -54,13 +54,13 @@
 	 			$tool_tip ='';
 	 			//print_r($row);		 			 	
 	 			if(trim($row->Speech_by)!=''){	 			
-	 				$o.=wfMsg('mv_'.$pntype.'_speech', $sk->makeKnownLinkObj($streamTitle, $row->Speech_by));
+	 				$o.=wfMsg('mv_'.$pntype.'_speech', $sk->makeKnownLinkObj($streamTitle, str_replace('_',' ',$row->Speech_by)) );
 	 				//$tool_tip.=	 'Speech By: '. $row->Speech_by;	
 	 			}else if(trim($row->Bill)!=''){
-	 				$o.=wfMsg('mv_'.$pntype.'_bill', $sk->makeKnownLinkObj($streamTitle, $row->Bill));			 			
+	 				$o.=wfMsg('mv_'.$pntype.'_bill', $sk->makeKnownLinkObj($streamTitle, str_replace('_',' ',$row->Bill)) );			 			
 	 			}else if(is_array($row->category) && count($row->category)!=0){	 			
 	 				$first_cat =  current($row->category);
-	 				$o.=wfMsg('mv_'.$pntype.'_cat',  $sk->makeKnownLinkObj($streamTitle, $first_cat));
+	 				$o.=wfMsg('mv_'.$pntype.'_cat',  $sk->makeKnownLinkObj($streamTitle, str_replace('_',' ',$first_cat) ));
 	 			}
 	 		}	 		
 		}

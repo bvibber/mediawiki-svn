@@ -142,14 +142,14 @@ $smwgShowFactbox=SMW_FACTBOX_HIDDEN;
 		}
 	}
 	function get_fd_mvd_page(&$mvd_page, $content=''){
-		global $wgOut;
+		global $wgOut, $mvDefaultVideoPlaybackRes;
 		//print_r($mvd_page);
 		//"<div id=\"mv_ctail_{$mvd_page->id}\" style=\"position:relative\">"
 		if(isset($this->mv_interface->smwProperties['playback_resolution'])){
 			//for now just put in a hack that forces no size adjustment	
 			$img_url = MV_StreamImage::getStreamImageURL($mvd_page->stream_id, $mvd_page->start_time, null, true); 
 		}else{
-			$img_url = MV_StreamImage::getStreamImageURL($mvd_page->stream_id, $mvd_page->start_time, 'medium', true); 
+			$img_url = MV_StreamImage::getStreamImageURL($mvd_page->stream_id, $mvd_page->start_time, $mvDefaultVideoPlaybackRes, true); 
 		}
 		$oe_class='';
 		if($this->oddEvenToggle){
@@ -343,7 +343,7 @@ $smwgShowFactbox=SMW_FACTBOX_HIDDEN;
 					$smwKeyTitle=Title::newFromText($smw_key);
 					$valueTitle = Title::newFromText($smw_attr_val);
 					if($template_key=='anno_en')
-						$smw_text_html.=$smwKeyTitle->getText(). ': '. $sk->makeLinkObj($valueTitle).'<br>';
+						$smw_text_html.=ucwords($smwKeyTitle->getText()). ': '. $sk->makeLinkObj($valueTitle).'<br>';
 				}			
 				$pre_text_html.='<p class="text">';				
 				if($mvd_page!=''){			

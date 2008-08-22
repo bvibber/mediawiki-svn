@@ -55,19 +55,25 @@ function proccess_streams($stream_name='all'){
 					$ogg_file = $dbr->fetchObject($rdur);
 					$dur_val = $ogg_file->duration;
 				}				
-				$sql="INSERT INTO `mv_stream_files` 
-						(`id`,`base_offset`,`duration`,`file_desc_msg`,`path_type`,`path`)
-						VALUES('',0,'{$dur_val}','mv_flash_low_quality','','".
-						MV_BASE_MEDIA_SERVER_PATH . $stream->name .".flv');";
-				echo $sql;
-				die;
+				$dbw->insert('mv_stream_files', 
+									array('stream_id'=>$stream->id,
+										'duration'=>$dur_val,
+										'file_desc_msg'=>'mv_flash_low_quality',
+										'path_type'=>'url_anx',
+										'path'=>MV_BASE_MEDIA_SERVER_PATH . $stream->name .".flv'")
+								 );
+				print $dbw->lastQuery();
+				die;		
 				print "insert {$stream->name}.flv\n";				
-				$dbw->query($sql);
+				//$dbw->query($sql);
 			}else{
 				$file = $dbr->fetchObject($resFcheck);
-				$sql="UPDATE `mv_stream_files` WHERE `id` = '".$file->id."' 
-				 	SET `path`=".MV_BASE_MEDIA_SERVER_PATH . $stream->name .'.flv';
-				print "update {$stream->name}.flv\n";
+				$dbr->update('mv_stream_files', 
+					array('path'=>MV_BASE_MEDIA_SERVER_PATH . $stream->name .'.flv'),
+					array('id'=>$file->id),
+					__METHOD__,
+					array('LIMIT'=>1));		
+
 				$dbw->query($sql);				
 			}						
 		}
