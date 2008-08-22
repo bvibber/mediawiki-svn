@@ -10,12 +10,16 @@ $aliases['en'] = array(
 	'ShowProcesslist' => array( 'ShowProcesslist' ),
 );
 
-/** Arabic (العربية) */
+/** Arabic (العربية)
+ * @author Meno25
+ */
 $aliases['ar'] = array(
 	'ShowProcesslist' => array( 'عرض_قائمة_العمل' ),
 );
 
-/** Egyptian Spoken Arabic (مصرى) */
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Meno25
+ */
 $aliases['arz'] = array(
 	'ShowProcesslist' => array( 'عرض_قائمة_العمل' ),
 );

@@ -10,12 +10,16 @@ $aliases['en'] = array(
 	'InspectCache' => array( 'InspectCache' ),
 );
 
-/** Arabic (العربية) */
+/** Arabic (العربية)
+ * @author Meno25
+ */
 $aliases['ar'] = array(
 	'InspectCache' => array( 'فحص_الكاش' ),
 );
 
-/** Egyptian Spoken Arabic (مصرى) */
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Meno25
+ */
 $aliases['arz'] = array(
 	'InspectCache' => array( 'فحص_الكاش' ),
 );

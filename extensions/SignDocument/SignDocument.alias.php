@@ -11,13 +11,17 @@ $aliases['en'] = array(
 	'CreateSignDocument' => array( 'CreateSignDocument' ),
 );
 
-/** Arabic (العربية) */
+/** Arabic (العربية)
+ * @author Meno25
+ */
 $aliases['ar'] = array(
 	'SignDocument' => array( 'توقيع_الوثيقة' ),
 	'CreateSignDocument' => array( 'إنشاء_توقيع_الوثيقة' ),
 );
 
-/** Egyptian Spoken Arabic (مصرى) */
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Meno25
+ */
 $aliases['arz'] = array(
 	'SignDocument' => array( 'توقيع_الوثيقة' ),
 	'CreateSignDocument' => array( 'إنشاء_توقيع_الوثيقة' ),

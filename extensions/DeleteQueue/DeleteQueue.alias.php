@@ -13,12 +13,16 @@ $aliases['en'] = array(
 	'DeleteQueue' => array( 'DeleteQueue' ),
 );
 
-/** Arabic (العربية) */
+/** Arabic (العربية)
+ * @author Meno25
+ */
 $aliases['ar'] = array(
 	'DeleteQueue' => array( 'طابور_الحذف' ),
 );
 
-/** Egyptian Spoken Arabic (مصرى) */
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Meno25
+ */
 $aliases['arz'] = array(
 	'DeleteQueue' => array( 'طابور_الحذف' ),
 );

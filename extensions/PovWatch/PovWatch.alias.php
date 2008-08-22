@@ -10,12 +10,16 @@ $aliases['en'] = array(
 	'PovWatch' => array( 'PovWatch' ),
 );
 
-/** Arabic (العربية) */
+/** Arabic (العربية)
+ * @author Meno25
+ */
 $aliases['ar'] = array(
 	'PovWatch' => array( 'مراقبة_وجهة_النظر' ),
 );
 
-/** Egyptian Spoken Arabic (مصرى) */
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Meno25
+ */
 $aliases['arz'] = array(
 	'PovWatch' => array( 'مراقبة_وجهة_النظر' ),
 );

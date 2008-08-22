@@ -10,12 +10,16 @@ $aliases['en'] = array(
 	'PurgeCache' => array( 'PurgeCache' ),
 );
 
-/** Arabic (العربية) */
+/** Arabic (العربية)
+ * @author Meno25
+ */
 $aliases['ar'] = array(
 	'PurgeCache' => array( 'إفراغ_الكاش' ),
 );
 
-/** Egyptian Spoken Arabic (مصرى) */
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Meno25
+ */
 $aliases['arz'] = array(
 	'PurgeCache' => array( 'إفراغ_الكاش' ),
 );
