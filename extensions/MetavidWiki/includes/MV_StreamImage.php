@@ -126,27 +126,30 @@ class MV_StreamImage{
 	function procRequestTime($stream_id, $req_time){
 		global $mvShellOggFrameGrab, $mvImageGranularityRate;
 		if(!$req_time)$req_time='0';
-		if(count(explode(":",$req_time))==3){
+
+		if(count(explode(":",$req_time))>=2){
 			$req_time = ntp2seconds($req_time);
 		}else{
 			if(!is_numeric($req_time) && $req_time >= 0 ){
 				throw "error in req time format";
 			}
 		}		
+		//print "REQ time: $req_time\n";
+
 		//query the image db to find the closest to req time (while still being in front)
 		$dbr = & wfGetDB(DB_READ);		
 		//if($req_time<$mvImageGranularityRate)$req_time = $mvImageGranularityRate;
 		$vars = " `id`, `time`, `time`-'$req_time' as distance ";
-		$conds = " `stream_id`=".mysql_real_escape_string($stream_id) 
+		$conds = " `stream_id`=".mysql_real_escape_string($stream_id) ."
 				AND (`time`-'$req_time')>=0 
-				AND (`time`-'$req_time')<= mysql_real_escape_string($mvImageGranularityRate);
+				AND (`time`-'$req_time')<= ".mysql_real_escape_string($mvImageGranularityRate);
 		$opt['ORDER BY']=' `distance` ASC ';
 		$opt['LIMIT']=1;
 		$res = $dbr->select('mv_stream_images', 
 				$vars, 
 				$conds, 
 				__METHOD__, 
-				$opt);
+				$opt);		
 		//print $dbr->lastQuery();
 		//die;
 		if($dbr->numRows($res)==0){
@@ -161,6 +164,9 @@ class MV_StreamImage{
 			$img_row = $dbr->fetchObject($res);
 			$req_time = $img_row->time;
 		}		
+		//print $dbr->lastQuery();
+		//print_r($img_row
+		//die;
 		return $req_time;		 
 	}
 	/*generate the requested image if possible /necessary */

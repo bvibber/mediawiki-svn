@@ -64,9 +64,8 @@
 		}
  	}
  	function deleteStreamFileDB(){
- 		global $mvStreamFilesTable;
  		$dbw = & wfGetDB(DB_WRITE);
- 		$dbw->delete($mvStreamFilesTable, array('id'=>$this->id));
+ 		$dbw->delete('mv_stream_files', array('id'=>$this->id));
  	}
  	function writeStreamFileDB(){
  		$dbw = & wfGetDB(DB_WRITE); 	

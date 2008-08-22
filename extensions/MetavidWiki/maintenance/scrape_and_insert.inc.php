@@ -845,14 +845,13 @@ class MV_BaseScraper{
 	 *
 	 * @@todo handle post vars
 	 */
-	function doRequest($url, $post_vars=array()){
-		global $mvUrlCacheTable;
+	function doRequest($url, $post_vars=array()){		
 		$dbr = wfGetDB( DB_SLAVE );
 		$dbw = wfGetDB( DB_MASTER );
 		//check the cache
 		//$sql = "SELECT * FROM `metavid`.`cache_time_url_text` WHERE `url` LIKE '$url'";
 		//select( $table, $vars, $conds='', $fname = 'Database::select', $options = array() )
-		$res = $dbr->select($mvUrlCacheTable, '*', array('url'=>$url), 'MV_BaseScraper::doRequest');
+		$res = $dbr->select('mv_url_cache', '*', array('url'=>$url), 'MV_BaseScraper::doRequest');
 		//@@todo check date for experation
 		if($res->numRows()==0){
 			echo "do web request: " . $url . "\n";
@@ -866,7 +865,7 @@ class MV_BaseScraper{
 			if($page!=''){
 				//insert back into the db:
 				//function insert( $table, $a, $fname = 'Database::insert', $options = array() )
-				$dbw->insert($mvUrlCacheTable, array('url'=>$url, 'result'=>$page, 'req_time'=>time()));
+				$dbw->insert('mv_url_cache', array('url'=>$url, 'result'=>$page, 'req_time'=>time()));
 				return $page;
 			}
 		}else{

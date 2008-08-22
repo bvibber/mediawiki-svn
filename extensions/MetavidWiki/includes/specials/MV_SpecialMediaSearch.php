@@ -256,7 +256,7 @@ class MV_SpecialMediaSearch {
 		}
 	}
 	function doSearch($log_search=true) {
-		global $mvEnableSearchDigest, $mvSearchDigestTable;
+		global $mvEnableSearchDigest;
 		$mvIndex = new MV_Index();
 		//do search digest
 		global $wgRequest;
@@ -267,7 +267,7 @@ class MV_SpecialMediaSearch {
 			//print var_dump(debug_backtrace());
 
 			//@@todo non-blocking insert... is that supported in mysql/php?
-			$dbw->insert($mvSearchDigestTable, array (
+			$dbw->insert('mv_search_digest', array (
 				'query_key' => $this->getFilterDesc($query_key = true
 			), 'time' => time()), 'Database::searchDigestInsert');
 			//make sure the query key exists and is updated

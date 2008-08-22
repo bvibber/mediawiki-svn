@@ -65,19 +65,17 @@ class MV_Stream {
 	}
 	//removes the stream from the db:
 	function deleteDB(){
-		global $mvStreamTable;
 		$dbw = & wfGetDB(DB_WRITE);
-		$dbw->delete($mvStreamTable, array('id'=>$this->id));
+		$dbw->delete('mv_streams', array('id'=>$this->id));
 	}
-	function db_load_stream() {
-		global $mvStreamTable;
+	function db_load_stream() {		
 		$dbr = & wfGetDB(DB_SLAVE);
 		if($this->name!=''){
-		$result = $dbr->select($dbr->tableName($mvStreamTable), '*', array (
+		$result = $dbr->select($dbr->tableName('mv_streams'), '*', array (
 			'name' => $this->name
 			));
 		}else if($this->id!=''){
-			$result = $dbr->select($dbr->tableName($mvStreamTable), '*', array (
+			$result = $dbr->select($dbr->tableName('mv_streams'), '*', array (
 			'id' => $this->id
 		));
 		}
@@ -106,10 +104,9 @@ class MV_Stream {
 	/*
 	 * @@todo cache this!: 
 	 */
-	function getStreamNameFromId($id){
-		global $mvStreamTable;
+	function getStreamNameFromId($id){		
 		$dbr = & wfGetDB(DB_SLAVE);
-		$result = $dbr->select($dbr->tableName($mvStreamTable), 'name', array (
+		$result = $dbr->select('mv_streams', 'name', array (
 			'id' => $id
 		));
 		if ($dbr->numRows($result) == 0)
@@ -128,9 +125,8 @@ class MV_Stream {
 	 * returns a list of files from the mv_stream_files table
 	 */
 	function getFileList(){
-		global $mvStreamFilesTable;
 		$dbr = & wfGetDB(DB_READ);
-		$result = $dbr->select($dbr->tableName($mvStreamFilesTable), '*', array (
+		$result = $dbr->select('mv_stream_files', '*', array (
 			'stream_id' => $this->getStreamId()
 		));
 		//print_r($result);		
@@ -212,7 +208,6 @@ class MV_Stream {
 	}
 	//removes the stream and assoc meta data. 
 	function removeStream($removeMVDs=true){
- 		global $mvIndexTableName;
  		$dbw =& wfGetDB(DB_WRITE); 		
  		$dbr =& wfGetDB(DB_SLAVE);
  		if($removeMVDs){ 
@@ -228,9 +223,8 @@ class MV_Stream {
  		return true;
 	}
 	function updateStreamDB() {
-		global $mvStreamTable;
 		$dbw = & wfGetDB(DB_WRITE);		 
-		$dbw->update($mvStreamTable, array(
+		$dbw->update('mv_streams', array(
 				'date_start_time'=>$this->date_start_time,
 				'duration'=>$this->duration
 			),

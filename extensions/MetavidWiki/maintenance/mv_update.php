@@ -78,15 +78,15 @@ if(!$wgDatabase->indexExists('mv_mvd_index','mvd_type_index')){
 	$wgDatabase->query(" ALTER TABLE `mv_mvd_index` ADD INDEX `mvd_type_index` (`mvd_type`, `stream_id`)");
 }
 
-if(!$wgDatabase->fieldExists($mvIndexTableName, 'mv_page_id')){
-	print "$mvIndexTableName missing `page_id`...adding\n ";
+if(!$wgDatabase->fieldExists('mv_mvd_index', 'mv_page_id')){
+	print "mv_mvd_index missing `page_id`...adding\n ";
 	$page_id_added=true;
 	//add page_id
-	$wgDatabase->query("ALTER TABLE `$mvIndexTableName` ADD `mv_page_id` INT( 10 ) UNSIGNED NOT NULL AFTER `id`");
+	$wgDatabase->query("ALTER TABLE `mv_mvd_index` ADD `mv_page_id` INT( 10 ) UNSIGNED NOT NULL AFTER `id`");
 }
 //if we added do lookups
 if($page_id_added){
-	$sql = "SELECT SQL_CALC_FOUND_ROWS `id`, `wiki_title` FROM `$mvIndexTableName`";
+	$sql = "SELECT SQL_CALC_FOUND_ROWS `id`, `wiki_title` FROM `mv_mvd_index`";
 	$result = $wgDatabase->query($sql);
 	echo 'updating '.$wgDatabase->numRows($result) . " mvd rows \n";
 	$c = $wgDatabase->numRows($result);
@@ -99,12 +99,12 @@ if($page_id_added){
 		$pid_res = 	$wgDatabase->query($sql_pid);
 		if($wgDatabase->numRows($pid_res)!=0){
 			$pid_row = 	 $wgDatabase->fetchObject($pid_res);
-			$upSql = "UPDATE `$mvIndexTableName` SET `mv_page_id`=$pid_row->page_id " .
+			$upSql = "UPDATE `mv_mvd_index` SET `mv_page_id`=$pid_row->page_id " .
 					"WHERE `id`={$mvd_row->id} LIMIT 1";
 			$wgDatabase->query($upSql);
 		}else{
 			print "ERROR: mvd row:{$mvd_row->wiki_title} missing page (removed)\n ";
-			$wgDatabase->query("DELETE FROM `$mvIndexTableName` WHERE `id`=".$mvd_row->id.' LIMIT 1');
+			$wgDatabase->query("DELETE FROM `mv_mvd_index` WHERE `id`=".$mvd_row->id.' LIMIT 1');
 			//die;
 		}
 		//status updates:
@@ -116,13 +116,13 @@ if($page_id_added){
 		$j++;
 	}
 	//now we can drop id and add PRIMARY to mv_page_id
-	print "DROP id COLUMN from $mvIndexTableName ...";
-	$wgDatabase->query("ALTER TABLE `$mvIndexTableName` DROP PRIMARY KEY, DROP COLUMN `id`, DROP COLUMN `text`");
+	print "DROP id COLUMN from mv_mvd_index ...";
+	$wgDatabase->query("ALTER TABLE `mv_mvd_index` DROP PRIMARY KEY, DROP COLUMN `id`, DROP COLUMN `text`");
 	print "done\n";
 
 	//now add UNIQUE to mv_mvd_index
 	print "ADD PRIMARY to mv_page_id ...";
-	$wgDatabase->query("ALTER TABLE `$mvIndexTableName` ADD PRIMARY KEY(`mv_page_id`)");
+	$wgDatabase->query("ALTER TABLE `mv_mvd_index` ADD PRIMARY KEY(`mv_page_id`)");
 	print "done\n";
 }
 

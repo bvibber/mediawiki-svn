@@ -274,7 +274,7 @@
 	 * 
 	 */	 
 	function getWebStreamURL($quality=null){
-		global $mvStreamFilesTable, $mvVideoArchivePaths;
+		global $mvVideoArchivePaths;
 		global $mvDefaultVideoQualityKey,$mvDefaultVideoHighQualityKey,$mvDefaultFlashQualityKey;
 		//@@todo mediawiki path for media (insted of hard link to $mvVideoArchive)
 		//@@todo make sure file exisits		
@@ -291,7 +291,7 @@
 		if( $this->doesStreamExist() ){			
 			//@@todo cache this / have a more organized store for StreamFiles in streamTitle
 			$dbr = & wfGetDB(DB_READ);
-			$result = $dbr->select($dbr->tableName($mvStreamFilesTable), array('path'), array (			
+			$result = $dbr->select('mv_stream_files', array('path'), array (			
 				'stream_id' => $this->mvStream->id,
 				'file_desc_msg'=>$quality
 			));

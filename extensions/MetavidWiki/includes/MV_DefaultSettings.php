@@ -144,19 +144,6 @@ $mvMVDTypeDefaultDisp =array('ht_en','anno_en');
 define('MV_MISSING_PERSON_IMG','Missing person.jpg');
 
 
-######
-# the metavid table names:
-#######
-//@@todo we should just switch over to mediaWiki db helpers and write in table names 
-//(medaiWiki can then handle table name rewriting) 
-$mvStreamTable 		= 'mv_streams';
-$mvStreamFilesTable	= 'mv_stream_files';
-$mvIndexTableName 	= 'mv_mvd_index';
-$mvStreamImageTable = 'mv_stream_images';
-$mvUrlCacheTable 	= 'mv_url_cache';
-$mvPageDigestTable	= 'mv_page_digest';
-$mvSearchDigestTable= 'mv_search_digest';
-
 //whether to count found results (can take lots of time on big result sets)
 $mvDo_SQL_CALC_FOUND_ROWS = true;
 
@@ -189,11 +176,12 @@ $mvMsgContentTypeLookup = array(
  		'ao_file_flash_flv'		=>'video/x-flv',
  		'ao_file_MPEG1'			=>'video/mpeg',
  		'ao_file_MPEG2'			=>'video/mpeg-2',
+
  		'mv_flash_low_quality'	=>'video/x-flv',
  		'mv_ogg_high_quality'	=>'video/ogg',
  		'mv_ogg_low_quality'	=>'video/ogg'
  	);
- 	
+
 ###
 # If you already have custom namespaces on your site, insert
 # $mvNamespaceIndex = ???; in your config before including the settings

@@ -565,9 +565,9 @@ embedTypes.init();
 var mvJsLoader = {
 	 libreq:{},
 	 load_time:0,
-	 doLoad:function(libs,callback){
-		 this.libs = libs;
+	 doLoad:function(libs,callback){		 
 		 this.callback=(callback)?callback:this.callback;
+		 this.libs = (libs)?libs:this.libs;
 		 var loading=0;
 		 var i=null;
 		 //js_log("doLoad_ load set to 0 on libs:"+ libs);

@@ -45,8 +45,7 @@ class MV_SpecialQueryStreams extends QueryPage {
 	function getPageHeader() {		
 		return '<p>' . wfMsg('mv_list_streams_docu') . "</p><br />\n";
 	}
-	function getSQL() {
-		global $mvStreamTable;
+	function getSQL() {		
 		$dbr =& wfGetDB( DB_SLAVE );
 		//$relations = $dbr->tableName( 'smw_relations' );
 		//$NSrel = SMW_NS_RELATION;
@@ -57,8 +56,7 @@ class MV_SpecialQueryStreams extends QueryPage {
 					relation_title as value,
 					COUNT(*) as count
 					FROM $relations
-					GROUP BY relation_title";*/
-		$mv_streams_table = $dbr->tableName( $mvStreamTable );
+					GROUP BY relation_title";*/		
 		/* @@todo replace with query that displays more info
 		 * such as 
 		 * date modified 
@@ -69,7 +67,7 @@ class MV_SpecialQueryStreams extends QueryPage {
 				`id` as `stream_id`,
 				`name` as title,
 				`name` as value " . 
-				"FROM $mv_streams_table ";
+				"FROM " . $dbr->tableName( 'mv_streams' );
 				
 	}
 	function getOrder() {

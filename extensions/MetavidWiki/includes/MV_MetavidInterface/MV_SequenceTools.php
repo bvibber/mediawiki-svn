@@ -62,10 +62,10 @@
 		$wgOut->addHTML($mvSearch->getResultsHTML());
 	}
 	function auto_complete_stream_name($val){
-		global $mvStreamTable, $mvDefaultSearchVideoPlaybackRes;
+		global $mvDefaultSearchVideoPlaybackRes;
 		$dbr =& wfGetDB(DB_SLAVE);		
 		//check against stream name list: 
-		$result = $dbr->select( $mvStreamTable, array('name','duration'), 
+		$result = $dbr->select( 'mv_streams', array('name','duration'), 
 			array('`name` LIKE \'%'.mysql_escape_string($val).'%\''),
 			__METHOD__,
 			array('LIMIT'=>'5'));
