@@ -74,6 +74,16 @@ $messages['fr'] = array(
 	'stalkerlog-log-text' => 'Voici un journal des connections et des déconnections de l’utilisateur.',
 );
 
+/** Galician (Galego)
+ * @author Toliño
+ */
+$messages['gl'] = array(
+	'stalkerlog-log-login' => 'accedeu ao sistema.',
+	'stalkerlog-log-logout' => 'saíu do sistema.',
+	'stalkerlog-log-type' => 'Rexistro de autenticación de usuario',
+	'stalkerlog-log-text' => 'Este é un rexistro de accesos e saídas do sistema.',
+);
+
 /** Hebrew (עברית)
  * @author Agbad
  * @author Rotemliss

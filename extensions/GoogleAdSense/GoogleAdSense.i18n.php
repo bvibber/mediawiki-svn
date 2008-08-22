@@ -51,6 +51,13 @@ $messages['ia'] = array(
 	'googleadsense-desc' => 'Adde [http://www.google.com/adsense Google AdSense] al barra lateral',
 );
 
+/** Korean (한국어)
+ * @author ToePeu
+ */
+$messages['ko'] = array(
+	'googleadsense-desc' => '[http://www.google.com/adsense 구글 애드센스]를 더함',
+);
+
 /** Ripoarisch (Ripoarisch)
  * @author Purodha
  */

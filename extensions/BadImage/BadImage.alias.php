@@ -27,6 +27,11 @@ $aliases['arz'] = array(
 	'Badimages' => array( 'صور_سيئة' ),
 );
 
+/** German (Deutsch) */
+$aliases['de'] = array(
+	'Badimages' => array( 'Unerwünschte Bilder' ),
+);
+
 /** Hungarian (Magyar) */
 $aliases['hu'] = array(
 	'Badimages' => array( 'Hibás képek' ),

@@ -145,7 +145,7 @@ $messages['ar'] = array(
 	'changeauthor-pagename-or-revid' => 'اسم الصفحة أو رقم المراجعة:',
 	'changeauthor-pagenameform-go' => 'اذهب',
 	'changeauthor-comment' => 'تعليق:',
-	'changeauthor-changeauthors-multi' => 'تغيير المؤلف(ين)',
+	'changeauthor-changeauthors-multi' => 'تغيير {{PLURAL:$1|المؤلف|المؤلفين}}',
 	'changeauthor-explanation-multi' => "باستخدام هذه الاستمارة يمكنك تغيير مؤلفي المراجعات.
 ببساطة غير واحدا أو أكثر من أسماء المستخدمين في القائمة بالأسفل ، أضف تعليقا (اختياري) واضغط على زر 'تغيير المؤلف(ين)'.",
 	'changeauthor-changeauthors-single' => 'تغيير المؤلف',

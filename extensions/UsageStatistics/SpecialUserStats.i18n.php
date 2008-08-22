@@ -408,6 +408,7 @@ $messages['gl'] = array(
 	'usagestatistics' => 'Estatísticas do Uso',
 	'usagestatistics-desc' => 'Amosar as estatíticas de uso do usuario individual e mais as do wiki en xeral',
 	'usagestatisticsfor' => '<h2>Estatísticas de uso para [[User:$1|$1]]</h2>',
+	'usagestatisticsforallusers' => '<h2>Estatísticas de uso para todos os usuarios</h2>',
 	'usagestatisticsinterval' => 'Intervalo',
 	'usagestatisticstype' => 'Clase',
 	'usagestatisticsstart' => 'Data de comezo',

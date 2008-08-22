@@ -27,6 +27,11 @@ $aliases['arz'] = array(
 	'Contributors' => array( 'مساهمون' ),
 );
 
+/** German (Deutsch) */
+$aliases['de'] = array(
+	'Contributors' => array( 'Autoren' ),
+);
+
 /** Croatian (Hrvatski) */
 $aliases['hr'] = array(
 	'Contributors' => array( 'Doprinositelji' ),

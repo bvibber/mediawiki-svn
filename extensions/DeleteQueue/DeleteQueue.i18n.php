@@ -202,10 +202,16 @@ $messages['ar'] = array(
 	'deletequeue-desc' => 'ينشئ [[Special:DeleteQueue|نظاما معتمدا على طابور للتحكم بالحذف]]',
 	'deletequeue-action' => 'اقتراح الحذف',
 	'deletequeue-action-title' => 'اقتراح الحذف ل"$1"',
+	'deletequeue-generic-reasons' => '* أسباب متكررة
+  ** تخريب
+  ** سبام
+  ** صيانة
+  ** خارج نطاق المشروع',
 	'deletequeue-delnom-otherreason' => 'سبب آخر',
 	'deletequeue-delnom-extra' => 'معلومات إضافية:',
 	'deletequeue-delnom-submit' => 'تنفيذ الترشيح',
 	'right-prod-nominate' => 'اقتراح حذف الصفحة',
+	'deletequeue-list-header-discusspage' => 'صفحة نقاش',
 );
 
 /** Bulgarian (Български)
@@ -398,6 +404,7 @@ $messages['eo'] = array(
 /** French (Français)
  * @author Grondin
  * @author IAlex
+ * @author McDutchie
  */
 $messages['fr'] = array(
 	'deletequeue-desc' => 'Crée un [[Special:DeleteQueue|système de queue pour gérer les suppression]]',
@@ -476,7 +483,7 @@ Veuillez vous assurer que cette page peut être supprimée de la sorte en confor
 	'deletequeue-reviewdeletediscuss-text' => "Vous pouvez utiliser ce formulaire pour revoir la discussion concernant la suppression de « ''$1''».
 
 Une [{{FULLURL:{{FULLPAGENAME}}|action=delviewvotes}} liste] des « pour » et des « contre » est disponible, la discussion par elle-même disponible sur [[$2]].
-Veuillez vous assurez que vous ayez pris une décision en conformité du consensus issus de la discussion.",
+Veuillez vous assurer que vous ayez pris une décision en conformité du consensus issus de la discussion.",
 	'deletequeue-deletediscuss-discussionpage' => 'Ceci est la page de discussion concernant la suppression de [[$1]].
 Il y a actuellement $2 {{PLURAL:$2|utilisateur|utilisateurs}} en faveur, et $3 {{PLURAL:$3|utilisateur|utilisateurs}} qui y sont opposés.
 Vous pouvez [{{FULLURL:$1|action=delvote}} appuyez ou refuser] la suppression, ou [{{FULLURL:$1|action=delviewvotes}} voir tous les « pour » et les « contre »].',
@@ -556,10 +563,24 @@ $messages['gl'] = array(
 	'deletequeue-queue-speedy' => 'Eliminación rápida',
 	'deletequeue-queue-prod' => 'Borrado proposto',
 	'deletequeue-queue-deletediscuss' => 'Discusión do borrado',
+	'deletequeue-review-delete' => 'Borrar a páxina.',
 	'deletequeue-review-reason' => 'Comentarios:',
 	'deletequeue-review-newreason' => 'Novo motivo:',
 	'deletequeue-review-newextra' => 'Información adicional:',
+	'deletequeue-review-submit' => 'Gardar a revisión',
+	'deletequeue-review-original' => 'Motivo para a nominación',
+	'deletequeue-review-badaction' => 'Especificou unha acción inválida',
+	'deletequeue-review-actiondenied' => 'Especificou unha acción que foi deshabilitada para esta páxina',
+	'deletequeue-vote-action' => 'Recomentación:',
 	'deletequeue-vote-reason' => 'Comentarios:',
+	'deletequeue-vote-submit' => 'Enviar',
+	'deletequeue-list-status' => 'Status:',
+	'deletequeue-list-search' => 'Procurar',
+	'deletequeue-list-anyqueue' => '(calquera)',
+	'deletequeue-list-votes' => 'Lista de votos',
+	'deletequeue-list-header-page' => 'Páxina',
+	'deletequeue-list-header-expiry' => 'Caducidade',
+	'deletequeue-list-header-discusspage' => 'Páxina de conversa',
 );
 
 /** Interlingua (Interlingua)
@@ -596,6 +617,98 @@ Si, post cinque dies, necuno ha contestate le deletion de iste pagina, illo esse
 	'deletequeue-log-rmspeedy' => 'refusava le deletion rapide de [[$1]].',
 	'deletequeue-log-requeue' => "transfereva [[$1]] a un altere cauda de deletion: ab '$2' verso '$3'.",
 	'deletequeue-log-dequeue' => "removeva [[$1]] del cauda de deletion '$2'.",
+	'right-speedy-nominate' => 'Nominar paginas pro deletion rapide',
+	'right-speedy-review' => 'Revider nominationes pro deletion rapide',
+	'right-prod-nominate' => 'Proponer le deletion de paginas',
+	'right-prod-review' => 'Revider le propositiones de deletion non contestate',
+	'right-deletediscuss-nominate' => 'Comenciar discussiones super deletiones',
+	'right-deletediscuss-review' => 'Clauder discussiones super deletiones',
+	'deletequeue-queue-speedy' => 'Deletion rapide',
+	'deletequeue-queue-prod' => 'Deletion proponite',
+	'deletequeue-queue-deletediscuss' => 'Discussion super le deletion',
+	'deletequeue-page-speedy' => "Iste pagina ha essite nominate pro deletion rapide.
+Le motivo date pro iste deletion es ''$1''.",
+	'deletequeue-page-prod' => "Il ha essite proponite que iste pagina sia delite.
+Le motivo date esseva ''$1''.
+Si iste proposition remane non contestate al ''$2'', le pagina essera delite.
+Tu pote contestar iste deletion per [{{fullurl:{{FULLPAGENAME}}|action=delvote}} facer un objection contra le deletion].",
+	'deletequeue-page-deletediscuss' => "Iste pagina ha essite proponite pro deletion, e iste proposition ha essite contestate.
+Le motivo date esseva ''$1''.
+Un discussion es in curso a [[$3]], le qual se concludera le ''$2''.",
+	'deletequeue-notqueued' => 'Le pagina que tu ha seligite non es in le cauda de deletiones',
+	'deletequeue-review-action' => 'Action a prender:',
+	'deletequeue-review-delete' => 'Deler le pagina.',
+	'deletequeue-review-change' => 'Deler iste pagina, sed con un altere motivo.',
+	'deletequeue-review-requeue' => 'Transferer iste pagina verso le cauda sequente:',
+	'deletequeue-review-dequeue' => 'Facer nihil, e retirar le pagina del cauda de deletiones.',
+	'deletequeue-review-reason' => 'Commentos:',
+	'deletequeue-review-newreason' => 'Nove motivo:',
+	'deletequeue-review-newextra' => 'Informationes supplementari:',
+	'deletequeue-review-submit' => 'Immagazinar revision',
+	'deletequeue-review-original' => 'Motivo pro nomination',
+	'deletequeue-actiondisabled-involved' => 'Le sequente action es disactivate post que tu ha participate in iste caso de deletion in le rolos $1:',
+	'deletequeue-actiondisabled-notexpired' => 'Le sequente action es disactivate proque le nomination del deletion non ha ancora expirate:',
+	'deletequeue-review-badaction' => 'Tu specificava un action invalide',
+	'deletequeue-review-actiondenied' => 'Tu specificava un action que es diactivate pro iste pagina',
+	'deletequeue-review-objections' => "'''Attention''': Le deletion de iste pagina ha
+[{{fullurl:{{FULLPAGENAME}}|action=delvoteview&votetype=object}} objectiones].
+Per favor assecura te que tu ha considerate iste objectiones ante que tu dele iste pagina.",
+	'deletequeue-reviewspeedy-tab' => 'Revider deletion rapide',
+	'deletequeue-reviewspeedy-title' => 'Revider le nomination pro deletion rapide de "$1"',
+	'deletequeue-reviewspeedy-text' => "Tu pote usar iste formulario pro revider le nomination de \"'''\$1'''\" pro deletion rapide.
+Per favor assecura te que iste pagina pote esser delite rapidemente in conformitate con le politicas.",
+	'deletequeue-reviewprod-tab' => 'Revider deletion proponite',
+	'deletequeue-reviewprod-title' => 'Revider deletion proponite de "$1"',
+	'deletequeue-reviewprod-text' => "Tu pote usar iste formulario pro revider le proposition non contestate pro le deletion de \"'''\$1'''\".",
+	'deletequeue-reviewdeletediscuss-tab' => 'Revider deletion',
+	'deletequeue-reviewdeletediscuss-title' => 'Revider le discussion super le deletion de "$1"',
+	'deletequeue-reviewdeletediscuss-text' => "Tu pote usar iste formulario pro revider le discussion super le deletion de \"'''\$1'''\".
+
+Un [{{fullurl:{{FULLPAGENAME}}|action=delviewvotes}} lista] de declarationes pro e contra iste deletion es disponibile, e le discussion mesme se trova a [[\$2]].
+Per favor assecura te que tu face un decision in conformitate con le consenso del discussion.",
+	'deletequeue-deletediscuss-discussionpage' => 'Isto es le pagina de discussion super le deletion de [[$1]].
+Al momento, il ha $2 {{PLURAL:$2|usator|usatores}} qui se ha declarate pro iste deletion, e $3 {{PLURAL:$3|usator|usatores}} contra.
+Tu pote [{{fullurl:$1|action=delvote}} declarar te pro o contra] le deletion, o [{{fullurl:$1|action=delviewvotes}} vider tote le declarationes pro e contra].',
+	'deletequeue-discusscreate-summary' => 'Creation del discussion super le deletion de [[$1]].',
+	'deletequeue-discusscreate-text' => 'Deletion proponite pro le sequente motivo: $2',
+	'deletequeue-role-nominator' => 'nominator original pro deletion',
+	'deletequeue-role-vote-endorse' => 'appoiator del deletion',
+	'deletequeue-role-vote-object' => 'opponente del deletion',
+	'deletequeue-vote-tab' => 'Pro/contra deletion',
+	'deletequeue-vote-title' => 'Declarar se pro o contra le deletion de "$1"',
+	'deletequeue-vote-text' => "Tu pote usar iste formulario pro declarar te pro o contra le deletion de \"'''\$1'''\".
+Iste action ultrapassara omne previe declarationes pro/contra que tu ha date a proposito del deletion de iste pagina.
+Tu pote [{{fullurl:{{FULLPAGENAME}}|action=delviewvotes}} vider] le existente declarationes pro e contra.
+Le motivo indicate in le nomination pro deletion esseva ''\$2''.",
+	'deletequeue-vote-legend' => 'Declarar se pro o contra le deletion',
+	'deletequeue-vote-action' => 'Recommendation:',
+	'deletequeue-vote-endorse' => 'Pro deletion.',
+	'deletequeue-vote-object' => 'Contra deletion.',
+	'deletequeue-vote-reason' => 'Commentos:',
+	'deletequeue-vote-submit' => 'Submitter',
+	'deletequeue-vote-success-endorse' => 'Tu te ha declarate con successo pro le deletion de iste pagina.',
+	'deletequeue-vote-success-object' => 'Tu te ha declarate con successo contra le deletion de iste pagina.',
+	'deletequeue-vote-requeued' => 'Tu te ha declarate con successo contra le deletion de iste pagina.
+A causa de tu objection, le pagina ha essite displaciate verso le cauda $1.',
+	'deletequeue-showvotes' => 'Declarationes pro e contra le deletion de "$1"',
+	'deletequeue-showvotes-text' => "Infra es le declarationes facite pro e contra le deletion del pagina \"'''\$1'''\".
+Tu pote registrar tu proprie declaration pro o contra iste deletion [{{fullurl:{{FULLPAGENAME}}|action=delvote}} hic].",
+	'deletequeue-showvotes-restrict-endorse' => 'Monstrar solmente declarationes pro',
+	'deletequeue-showvotes-restrict-object' => 'Monstrar solmente declarationes contra',
+	'deletequeue-showvotes-restrict-none' => 'Monstrar tote le declarationes',
+	'deletequeue-showvotes-vote-endorse' => "'''Pro''' deletion le $2 a $1",
+	'deletequeue-showvotes-vote-object' => "'''Contra''' deletion le $2 a $1",
+	'deletequeue-showvotes-showingonly-endorse' => 'Se monstra solmente le declarationes pro',
+	'deletequeue-showvotes-showingonly-object' => 'Se monstra solmente le declarationes contra',
+	'deletequeue-showvotes-none' => 'Il ha nulle declarationes pro o contra le deletion de iste pagina.',
+	'deletequeue-showvotes-none-endorse' => 'Il ha nulle declarationes pro le deletion de iste pagina.',
+	'deletequeue-showvotes-none-object' => 'Il ha nulle declarationes contra le deletion de iste pagina.',
+	'deletequeue' => 'Cauda de deletiones',
+	'deletequeue-list-text' => 'Iste pagina monstra tote le paginas que se trova in le systema de deletiones.',
+	'deletequeue-list-search-legend' => 'Cercar paginas',
+	'deletequeue-list-queue' => 'Cauda:',
+	'deletequeue-list-status' => 'Stato:',
+	'deletequeue-list-expired' => 'Monstrar solmente nominationes que require clausura.',
 );
 
 /** Dutch (Nederlands)

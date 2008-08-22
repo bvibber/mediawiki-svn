@@ -180,6 +180,7 @@ $messages['gl'] = array(
 	'onlinestatus-desc' => 'Engade unha preferencia para amosar se o usuario está actualmente conectado ou non no wiki',
 	'onlinestatus-subtitle-offline' => 'Este usuario está actualmente desconectado',
 	'onlinestatus-subtitle-online' => 'Este usuario está actualmente conectado',
+	'onlinestatus-tab' => 'Status',
 	'onlinestatus-toggles-desc' => 'O seu estado:',
 	'onlinestatus-toggles-explain' => 'Isto permítelle ensinar aos demais usuarios se está actualmente conectado ou non vendo a súa páxina de usuario.',
 	'onlinestatus-toggles-show' => 'Amosar o meu estado na miña páxina de usuario',

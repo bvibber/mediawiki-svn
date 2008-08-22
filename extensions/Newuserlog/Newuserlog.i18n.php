@@ -780,6 +780,7 @@ $messages['km'] = array(
 
 /** Korean (한국어)
  * @author Klutzy
+ * @author Kwj2772
  * @author ToePeu
  */
 $messages['ko'] = array(
@@ -788,6 +789,7 @@ $messages['ko'] = array(
 	'newuserlog-desc' => '[[Special:Log/newusers|사용자 등록 기록]]을 [[Special:Log]]에 더함',
 	'newuserlog-byemail' => '이메일로 보낸 암호',
 	'newuserlog-create-entry' => '새 사용자',
+	'newuserlog-create2-entry' => '$1 계정을 새로 만듦',
 	'newuserlog-autocreate-entry' => '계정이 자동으로 만들어졌습니다.',
 );
 

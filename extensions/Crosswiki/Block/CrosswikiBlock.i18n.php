@@ -837,6 +837,15 @@ $messages['km'] = array(
 * [[$4]]",
 );
 
+/** Korean (한국어)
+ * @author Kwj2772
+ */
+$messages['ko'] = array(
+	'crosswikiblock-nocreate' => '계정 생성을 막기',
+	'crosswikiblock-noemail' => '이메일을 보내지 못하도록 막기',
+	'crosswikiblock-alreadyblocked' => '사용자 $3은 이미 차단되었습니다.',
+);
+
 /** Ripoarisch (Ripoarisch)
  * @author Purodha
  */

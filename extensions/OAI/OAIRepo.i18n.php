@@ -31,6 +31,7 @@ $messages['an'] = array(
  */
 $messages['ar'] = array(
 	'oai-desc' => 'يوفر واجهة مستودع [http://www.openarchives.org/OAI/openarchivesprotocol.html OAI-PMH]',
+	'oairepository' => 'مستودع OAI',
 );
 
 /** Egyptian Spoken Arabic (مصرى)

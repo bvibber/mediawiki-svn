@@ -112,7 +112,8 @@ $messages['frp'] = array(
  * @author Xosé
  */
 $messages['gl'] = array(
-	'commentspammer-save-blocked' => 'O seu enderezo IP é sospeitoso de facer comentarios spam, de maneira que non se gardou a páxina. [[Special:UserLogin|Rexístrese ou cree unha conta]] para evitalo.',
+	'commentspammer-save-blocked' => 'O seu enderezo IP é sospeitoso de facer comentarios con spam, de maneira que a páxina non foi gardada.
+[[Special:UserLogin|Rexístrese ou cree unha conta]] para evitalo.',
 	'commentspammer-desc' => 'Rexeita as edicións dos comentarios dos sospeitosos de ser spammers nunha listaxe negra (blacklist) DNS',
 	'commentspammer-log-msg' => 'editar de [[Special:Contributions/$1|$1]] a [[:$2]].',
 	'commentspammer-log-msg-info' => 'Último correo spam $1 {{PLURAL:$1|día|días}} atrás, nivel de ameaza é de $2, e código de delito é de $3. 

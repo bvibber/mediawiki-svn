@@ -629,7 +629,7 @@ $1',
 -->[http://www.robtex.com/rbls/$1.html RBLs] • <!--
 -->[[Special:BlockIP/$1|bloquear o usuario]] • <!--
 -->[{{fullurl:Special:Log/block|page=User:{{urlencode:$1}}}} rexistro de bloqueos] • <!--
--->[{{fullurl:Special:CheckUser|ip={{urlencode:$1}}}} comprobar IP])<!--
+-->[{{fullurl:Special:CheckUser|ip={{urlencode:$1}}}} comprobar o enderezo IP])<!--
 --></span>',
 	'sign-viewfield-stricken' => 'Tachado',
 	'sign-viewfield-reviewedby' => 'Revisor',

@@ -311,7 +311,7 @@ $messages['fy'] = array(
  */
 $messages['gl'] = array(
 	'duplicator' => 'Duplicar unha páxina',
-	'duplicator-desc' => 'Crear copias independentes das páxinas cos historiais completos de edición',
+	'duplicator-desc' => 'Crear [[Special:Duplicate|copias independentes das páxinas]] cos historiais de edición completos',
 	'duplicator-toolbox' => 'Duplicar esta páxina',
 	'duplicator-header' => 'Esta páxina permite a duplicación completa dunha páxina e crea copias independentes
 de todos os historiais. Resulta útil cando se subdivide unha páxina, etc.',

@@ -287,7 +287,7 @@ $messages['fy'] = array(
  */
 $messages['gl'] = array(
 	'importusers' => 'Importar Usuarios',
-	'importusers-desc' => 'Importa usuarios en bloque dende ficheiros CSV; codificación: UTF-8',
+	'importusers-desc' => '[[Special:ImportUsers|Importa usuarios]] en bloque desde ficheiros CSV; codificación: UTF-8',
 	'importusers-uploadfile' => 'Cargar ficheiro',
 	'importusers-form-caption' => 'Ficheiro de entrada CSV (UTF-8)',
 	'importusers-form-file' => 'Formato do ficheiro do usuario (csv):',
