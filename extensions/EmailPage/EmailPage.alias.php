@@ -18,14 +18,14 @@ $aliases['en'] = array(
  * @author Meno25
  */
 $aliases['ar'] = array(
-	'EmailPage' => array( 'مراسلة_الصفحات' ),
+	'EmailPage' => array( 'مراسلة_الصفحة' ),
 );
 
 /** Egyptian Spoken Arabic (مصرى)
  * @author Meno25
  */
 $aliases['arz'] = array(
-	'EmailPage' => array( 'مراسلة_الصفحات' ),
+	'EmailPage' => array( 'مراسلة_الصفحة' ),
 );
 
 /** French (Français) */
