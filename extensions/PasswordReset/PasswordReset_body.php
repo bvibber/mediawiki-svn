@@ -167,7 +167,7 @@ class PasswordReset extends SpecialPage {
 	static function GetBlockedStatus(&$user) {
 		global $wgTitle;
 
-		if ( $wgTitle->isSpecial( 'Userlogin' ) ) {
+		if ( $wgTitle && $wgTitle->isSpecial( 'Userlogin' ) ) {
 			global $wgRequest;
 			if ( $wgRequest->wasPosted() ) {
 				$name = $wgRequest->getText( 'wpName' );
