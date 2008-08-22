@@ -312,7 +312,7 @@
 	function getROEURL(){		
 		$roeTitle = Title::newFromText('MvExportStream', NS_SPECIAL);
 		//add the query: 
-		$query = 'feed_format=roe&stream_name=' . htmlspecialchars($this->getStreamName()) . 
+		$query = 'stream_name=' . htmlspecialchars($this->getStreamName()) . 
 					'&t=' . htmlspecialchars( $this->getTimeRequest() );
 		return $roeTitle->getFullURL($query) ;
 	}

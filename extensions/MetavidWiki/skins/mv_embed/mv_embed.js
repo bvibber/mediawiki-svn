@@ -93,7 +93,7 @@ function getMsg( key ) {
 /**  the base video control JSON object with default attributes
 *    for supported attribute details see README
 */
-var video_attributes = {
+var default_video_attributes = {
     "id":null,
     "class":null,
     "style":null,
@@ -1336,15 +1336,7 @@ mediaElement.prototype =
         $j.each(inner_source_elements, function(inx, inner_source)
         {
             _this.tryAddSource(inner_source);
-        });
-        // Process the provided ROE file... if we don't yet have sources or a thumbnail
-        if(video_element.hasAttribute('roe'))
-        	if(this.sources.length==0 ||this.thumbnail == mv_default_thumb_url ){
-	            do_request(video_element.getAttribute('roe'), function(data)
-	            {
-	                _this.addROE(data);
-	            });
-        	}
+        });      
         // Select the default source
         for (var source in this.playable_sources)
             if(this.playable_sources[source].marked_default)
@@ -1476,6 +1468,7 @@ embedVideo.prototype = {
     media_element:null,
 	slider:null,	
 	load_external_data:false,
+	supports:{},
 	//utility functions for property values:
 	hx : function ( s ) {
 		if ( typeof s != 'String' ) {
@@ -1504,24 +1497,19 @@ embedVideo.prototype = {
 		else
 			return parseInt(this.height.replace('px',''));
 	},
-	init: function(element){
+	init: function(element){		
 		this.element_pointer = element;
 
 		//inherit all the default video_attributes
-	    for(var attr in video_attributes){
+	    for(var attr in default_video_attributes){
 	        if(element.getAttribute(attr)){
 	            this[attr]=element.getAttribute(attr);
 	            //js_log('attr:' + attr + ' val: ' + video_attributes[attr] +" "+'elm_val:' + element.getAttribute(attr) + "\n (set by elm)");
 	        }else{
-	            this[attr]=video_attributes[attr];
+	            this[attr]=default_video_attributes[attr];
 	            //js_log('attr:' + attr + ' val: ' + video_attributes[attr] +" "+ 'elm_val:' + element.getAttribute(attr) + "\n (set by attr)");
 	        }
 	    }
-        // load all of the specified sources
-        this.media_element = new mediaElement(element);
-	    js_log('continue_thumb:'+ this['thumbnail']);
-   	    js_log('continue_src:'+ this['src']);
-
 	    //if style is set override width and height
 	    this.width = element.style.width ? element.style.width : "320px";
 	    this.height = element.style.height ? element.style.height : "240px";
@@ -1529,10 +1517,22 @@ embedVideo.prototype = {
 	    this.pid = 'pid_' + this.id;
 
 	    //grab any innerHTML and set it to missing_plugin_html
-	    if(element.innerHTML!=''){
+	    if(element.innerHTML!='' && video_element.getElementsByTagName('source').length==0){
             js_log('innerHTML: ' + element.innerHTML);
 	        this.user_missing_plugin_html=element.innerHTML;
 	    }
+	    // load all of the specified sources
+        this.media_element = new mediaElement(element);
+	    js_log('continue_thumb:'+ this['thumbnail']);
+   	    js_log('continue_src:'+ this['src']);
+	    // Process the provided ROE file... if we don't yet have sources
+        if(this.roe && this.media_element.sources.length==0 ){
+        	var _this = this;
+            do_request(this.roe, function(data)
+            {
+                _this.media_element.addROE(data);                
+            });
+    	}
 	},
 	more_init : function()
 	{
@@ -2522,6 +2522,10 @@ function mv_addLoadEvent(func) {
 					loadExternalJs(mv_embed_path+'mv_data_proxy.php?url='+req_url+
 						'&cb=mv_jsdata_cb&cb_inx='+(global_req_cb.length-1) );
 				}else{
+					//add json_ to req url
+					if(req_url.indexOf("feed_format=")!=-1)
+						req_url = req_url.replace(/feed_format=/, 'feed_format=json_');
+					js_log('json url: '+ req_url);
 					//response type is mv_json_response or proxy dissabled			
 					loadExternalJs(req_url+'&cb=mv_jsdata_cb&cb_inx='+(global_req_cb.length-1));
 				}
@@ -2565,8 +2569,8 @@ function mv_jsdata_cb(response){
 //@@todo swich over to jQuery injection
 function loadExternalJs(url){
    	js_log('load js: '+ url);
-    if(window['$j'])
-    	$j.getScript(url);
+    //if(window['$j'])
+   //	$j.getScript(url);
     	//have to use direct ajax call insted of $j.getScript()
     	//since you can't send "cache" option to $j.getScript()
        /*$j.ajax({
@@ -2575,13 +2579,13 @@ function loadExternalJs(url){
 			dataType: 'script',
 			cache: true
 		});*/
-    else{
+  //  else{
     	var e = document.createElement("script");
         e.setAttribute('src', url);
         e.setAttribute('type',"text/javascript");
         //e.setAttribute('defer', true);
         document.getElementsByTagName("head")[0].appendChild(e);
-    }
+   // }
 }
 
 function styleSheetPresent(url){
