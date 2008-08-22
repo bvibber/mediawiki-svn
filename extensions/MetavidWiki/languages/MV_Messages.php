@@ -106,7 +106,7 @@ Or you many want to <a href="$3">Add the stream</a>.',
 	'mv_bill_matches' => 'Bill matches',
 	'mv_interest_group_matches' => 'Interest group matches',
 	'mv_click_to_edit' => 'click to edit',
-
+	
 	#mvd types:
 	'ht_en' => 'Transcript',
 	'ht_en_desc' => 'English transcripts.
@@ -138,6 +138,7 @@ $mvMVDTypeDefaultDisp should be a subset of $mvMVDTypeAllAvailable',
 	'video_feed_cat' => 'Video feed for category:',
 	'mv_cat_search_note' => 'Note: Categories only lists top level categories.
 For all metadata in category ranges search for $1',
+	'category-media-count' => '$1 media segments in category',
 
 	# Messages for MV_DataPage
 	'mv_mvd_linkback' => 'Part of stream $1 <br />

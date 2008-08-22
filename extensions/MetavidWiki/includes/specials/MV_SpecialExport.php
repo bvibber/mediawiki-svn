@@ -85,11 +85,10 @@ class MV_SpecialExport {
 					case 'cmml':
 						$this->get_stream_cmml();
 					break;
-					/* disabled for now
-					 * case 'jroe':
+					case 'json_roe':
 						//returns roe stream info in json object for easy DOM injection
 						$this->get_roe_json();
-					break;*/
+					break;
 					case 'roe':
 						$this->get_roe_xml();
 					break;
@@ -164,20 +163,33 @@ class MV_SpecialExport {
 		//get all avaliable files
 		$this->file_list =$this->mvTitle->mvStream->getFileList(); 		
 	}
-	/*function get_roe_json(){
+	function get_roe_json(){		
 		$fname = 'Mv_SpecialExport::get_roe_json';
 		wfProfileIn( $fname );
+		
+		global $wgRequest;
+
+		//get callback index and wrap function:
+		$callback_index=$wgRequest->getVal('cb_inx');
+		$wrap_function=$wgRequest->getVal('cb');
+		
 		$this->get_row_data();		
 		//sucks to do big XML page operations ... 
 		//@@todo cache it..
 		ob_start();
 		$this->get_roe_xml(false);
 		$xml_page = ob_get_clean();
-		include_once('xml2json/xml2json.php');
-		$jsonContents = xml2json::transformXmlStringToJson($xml_page);
-		print $jsonContents;
+		
+		header('Content-Type: text/javascript');
+		print htmlspecialchars($wrap_function).'('. PhpArrayToJsObject_Recurse(
+		array(	'cb_inx'=>htmlspecialchars($callback_index),
+				'content-type'=>'text/xml',
+				'pay_load'=>$xml_page
+			)
+		).');';
+		
 		wfProfileOut($fname);
-	}*/
+	}
 	//start high level: 
 	function get_roe_xml($header=true){
 		global $wgServer;

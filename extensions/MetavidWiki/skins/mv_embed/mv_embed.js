@@ -154,6 +154,7 @@ var mvEmbed = {
  	//two loading stages, first get jQuery
 	var _this = this;
   	mvJsLoader.doLoad(this.lib_jquery,function(){
+  		js_log("type of " + typeof window.jQuery);
   		//once jQuery is loaded set up no conflict & load plugins:
  		_global['$j'] = jQuery.noConflict();
  		//set up ajax to not send dynamic urls for loading scripts
@@ -161,6 +162,7 @@ var mvEmbed = {
 		  cache: true
 		});
  		js_log('jquery loaded'); 		
+ 		
 		mvJsLoader.doLoad(_this.lib_plugins, function(){
 			js_log('plugins loaded');
 			mvEmbed.libs_loaded=true;
@@ -566,12 +568,12 @@ var mvJsLoader = {
 	 libreq:{},
 	 load_time:0,
 	 doLoad:function(libs,callback){		 
-		 this.callback=(callback)?callback:this.callback;
-		 this.libs = (libs)?libs:this.libs;
+		 this.callback=	(callback) ? callback:this.callback;
+		 this.libs = 	(libs) ? libs:this.libs;
 		 var loading=0;
 		 var i=null;
 		 //js_log("doLoad_ load set to 0 on libs:"+ libs);
-		 for(i in libs){
+		 for(i in this.libs){
 		 	 //if(i=='vlcEmbed')alert('got called with '+i+' ' + typeof(vlcEmbed));
 			 //itor the objPath (to avoid 'has no properties' errors)
 			 var objPath = i.split('.');
@@ -592,7 +594,7 @@ var mvJsLoader = {
 		 	 }
 			 if(cur_load==1){
 				 //js_log('missing lib:'+i + ' do load:'+mv_embed_path+libs[i]);
-				 if(!this.libreq[i])loadExternalJs(mv_embed_path + libs[i]);
+				 if(!this.libreq[i])loadExternalJs(mv_embed_path + this.libs[i]);
 				 this.libreq[i]=1;
 			 }
 		 }
@@ -2564,14 +2566,15 @@ function mv_jsdata_cb(response){
 function loadExternalJs(url){
    	js_log('load js: '+ url);
     if(window['$j'])
+    	$j.getScript(url);
     	//have to use direct ajax call insted of $j.getScript()
     	//since you can't send "cache" option to $j.getScript()
-       $j.ajax({
+       /*$j.ajax({
 			type: "GET",
 			url: url,
 			dataType: 'script',
 			cache: true
-		});
+		});*/
     else{
     	var e = document.createElement("script");
         e.setAttribute('src', url);
