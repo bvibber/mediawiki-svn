@@ -1021,7 +1021,6 @@ $notEditableSettings = array(
  */
 $settingsVersion = array(
 # 1.8.0
-	'wgAjaxSearch' => array( array( '1.8alpha', '>=' ) ),
 	'wgAllowCopyUploads' => array( array( '1.8alpha', '>=' ) ),
 	'wgDBmwschema' => array( array( '1.8alpha', '>=' ) ),
 	'wgDBts2schema' => array( array( '1.8alpha', '>=' ) ),
@@ -1172,6 +1171,10 @@ $settingsVersion = array(
 	'wgAlternateMaster' => array( array( '1.13alpha', '<' ) ),
 	'wgLinkCacheMemcached' => array( array( '1.13alpha', '<' ) ),
 ## Both
+	'wgAjaxSearch' => array(
+		array( '1.8alpha', '>=' ),
+		array( '1.14alpha', '<' ),
+	),
 	'wgAlternateMaster' => array(
 		array( '1.10alpha', '>=' ),
 		array( '1.13alpha', '<' ),

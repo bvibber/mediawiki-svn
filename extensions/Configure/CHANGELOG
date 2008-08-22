@@ -1,6 +1,9 @@
 This file lists changes on this extension.
 Localisation updates are done on betawiki and aren't listed here.
 
+0.6.15 - 22 August 2008
+  $wgAjaxSearch is obsolete in 1.14 +
+
 0.6.14 - 18 August 2008
   Removed $wgEnablePersistentCookies, added $wgRestrictDisplayTitle.
 
