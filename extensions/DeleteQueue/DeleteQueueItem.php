@@ -129,7 +129,8 @@ class DeleteQueueItem {
 	 */
 	protected function loadFromCacheObject( $item ) {
 		foreach( self::$mCacheVars as $var ) {
-			$this->$var = $item[$var];
+			if (isset( $item[$var] ))
+				$this->$var = $item[$var];
 		}
 
 		$this->postLoad();
@@ -259,7 +260,8 @@ class DeleteQueueItem {
 		$this->loadAllData();
 		$item = array();
 		foreach( self::$mCacheVars as $var ) {
-			$item[$var] = $this->$var;
+			if ( isset( $this->$var ) )
+				$item[$var] = $this->$var;
 		}
 		return $item;
 	}
