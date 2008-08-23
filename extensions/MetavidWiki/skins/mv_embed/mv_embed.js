@@ -259,11 +259,12 @@ mediaPlayer.prototype =
 			this.loading_callbacks.push(callback);
 			if(this.loading_callbacks.length==1)
 			{
-				js_log('requesting plugin: ' + mv_embed_path + 'mv_'+this.library+'Embed.js');
+				var plugin_path = mv_embed_path + 'embedLibs/mv_'+this.library+'Embed.js';
+				js_log('requesting plugin: ' + plugin_path);
 				var _this = this;
 				//swaped for doLoad so that we use cache 
 				// getScript has cache disabled for some reason (probably could be set up at init to cache)  
-				$j.getScript(mv_embed_path + 'mv_'+_this.library+'Embed.js', function(){				
+				$j.getScript(plugin_path, function(){				
 					js_log(_this.id + ' plugin loaded');
 					_this.loaded = true;					
 					for(var i in _this.loading_callbacks)
@@ -1517,7 +1518,7 @@ embedVideo.prototype = {
 	    this.pid = 'pid_' + this.id;
 
 	    //grab any innerHTML and set it to missing_plugin_html
-	    if(element.innerHTML!='' && video_element.getElementsByTagName('source').length==0){
+	    if(element.innerHTML!='' && element.getElementsByTagName('source').length==0){
             js_log('innerHTML: ' + element.innerHTML);
 	        this.user_missing_plugin_html=element.innerHTML;
 	    }
