@@ -42,6 +42,9 @@ var MV_ENABLE_DATA_PROXY=false;
 if(!mv_embed_path){
 	getMvEmbedPath();
 }
+//here you can add in delay load refrence to test things with delayed load time: 
+
+mv_embed_path = mv_embed_path + 'delay_load.php/'; 
 //the default thumbnail for missing images:
 var mv_default_thumb_url = mv_embed_path + 'images/vid_default_thumb.jpg';
 
@@ -579,9 +582,9 @@ embedTypes.init();
 var mvJsLoader = {
 	 libreq:{},
 	 load_time:0,
-	 doLoad:function(libs,callback){		 
-		 this.callback=	(callback) ? callback:this.callback;
-		 this.libs = 	(libs) ? libs:this.libs;
+	 doLoad:function(libs,callback){		 	 	 
+		 this.callback=	(callback) ? callback:this.callback;		 
+		 this.libs = (libs) ? libs: this.libs;
 		 var loading=0;
 		 var i=null;
 		 //js_log("doLoad_ load set to 0 on libs:"+ libs);
@@ -1529,6 +1532,7 @@ embedVideo.prototype = {
 	    this.pid = 'pid_' + this.id;
 
 	    //grab any innerHTML and set it to missing_plugin_html
+	    //@@todo we should strip source tags instead of checking and skipping
 	    if(element.innerHTML!='' && element.getElementsByTagName('source').length==0){
             js_log('innerHTML: ' + element.innerHTML);
 	        this.user_missing_plugin_html=element.innerHTML;
@@ -1542,12 +1546,17 @@ embedVideo.prototype = {
         	var _this = this;
             do_request(this.roe, function(data)
             {
-                _this.media_element.addROE(data);                
+                _this.media_element.addROE(data);      
+                //do refresh player callback here: 
+                js_log(_this.media_element.sources);
+                _this.more_init();          
             });
     	}
+    	return this;
 	},
 	more_init : function()
-	{
+	{	
+		js_log('f:more_init');
 		//auto select player based on prefrence or default order
 		if(!this.media_element.selected_source)
 		{
@@ -1708,7 +1717,7 @@ embedVideo.prototype = {
         document.getElementById('mv_embedded_controls_'+this.id).innerHTML=html_code;
     },
 	inheritEmbedObj:function(){
-		js_log("inheritEmbedObj");
+		js_log("f: inheritEmbedObj");
 		//@@note: tricky cuz direct overwrite is not so ideal.. since the extended object is already tied to the dom
 		//clear out any non-base embedObj stuff:
 		if(this.instanceOf){
@@ -1722,7 +1731,7 @@ embedVideo.prototype = {
 			}
 		}
         if(!this.supports)
-        this.supports = {};
+       		this.supports = {};
 		
 		//set up the new embedObj
         js_log('embedding with ' + this.selected_player.library);
@@ -1731,6 +1740,8 @@ embedVideo.prototype = {
 		{
 			js_log('inheriting '+_this.selected_player.library +'Embed to ' + _this.id + ' ' + $j('#'+_this.id).length);
 			//var _this = $j('#'+_this.id).get(0);
+			js_log( 'type of ' + _this.selected_player.library +'Embed + ' +
+					eval('typeof '+_this.selected_player.library +'Embed')); 
 			eval('embedObj = ' +_this.selected_player.library +'Embed;');
 			for(method in embedObj){
 				//parent method preservation for local overwritten methods
