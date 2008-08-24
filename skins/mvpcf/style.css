@@ -847,3 +847,8 @@ p#copyInfo a:hover {color: #999;}
 	display:none;
 }
 
+.editsection{
+	float:right;
+	font-size:small;
+	font-weight:400;
+}
