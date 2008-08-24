@@ -106,6 +106,7 @@ $messages['gl'] = array(
  */
 $messages['he'] = array(
 	'newusermessage-desc' => 'הוספת הודעה בדפי השיחה של משתמשים חדשים',
+	'newuseredit-summary' => 'הוספת [[{{int:newusermessage-template}}|הודעת ברוך הבא]] בדפי השיחה של משתמשים חדשים',
 );
 
 /** Hindi (हिन्दी)
