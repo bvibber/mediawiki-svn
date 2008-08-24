@@ -233,6 +233,9 @@ class SimpleSecurity {
 		if (!$title->mRestrictionsLoaded) $title->loadRestrictions();
 		foreach ($title->mRestrictions as $a => $g) if (count($g)) {
 			$this->info['PR'][] = array($a, $g, wfMsg('security-desc-PR'));
+			
+			# Allow rules in protection tab to override those from $wgPageRestrictions
+			if (array_intersect($groups, $g)) $rights[] = $a;
 		}
 
 		# If title is not readable by user, remove the read and move rights
