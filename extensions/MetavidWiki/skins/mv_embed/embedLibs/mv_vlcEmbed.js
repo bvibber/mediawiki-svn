@@ -11,7 +11,7 @@ var vlcEmbed = {
 	prevState : 0,
 	currentTime:0,
 	duration:0,
-    userSlide:false,
+    userSlide:false,    
     getEmbedHTML : function(){
 		//give VLC 150ms to initialize before we start playback 
 		//@@todo should be able to do this as an ready event
@@ -58,10 +58,10 @@ var vlcEmbed = {
 				this.activateSlider();  
 				//start doing status updates every 1/10th of a second
 			    setTimeout('document.getElementById(\''+this.id+'\').monitor()',100);		    		
-			}
+			}							
     	}else{
     		js_log('vlc not ready');
-    		 setTimeout('document.getElementById(\''+this.id+'\').postEmbedJS()',100);	
+    		setTimeout('document.getElementById(\''+this.id+'\').postEmbedJS()',100);	
     	}
     },   
 	doSeek : function(value){
@@ -157,9 +157,10 @@ var vlcEmbed = {
 		//document.getElementById("PlayOrPause").disabled = false;
 		//document.getElementById("Stop").disabled = false;
 		this.onPlaying();
+		
     },
     liveFeedRoll : 0,
-    onPlaying : function(){ 
+    onPlaying : function(){     	    
     	//update the duration attribute
     	if(this.duration!=this.vlc.input.length /1000){
 	        this.duration = this.vlc.input.length /1000;   
@@ -255,7 +256,8 @@ var vlcEmbed = {
 		this.vlc.playlist.togglePause();
     },
     fullscreen : function(){
-		this.vlc.video.toggleFullscreen();
+		if(this.vlc)
+			this.vlc.video.toggleFullscreen();
     },
     /* returns current time in float seconds 
      * as per html5 we should just have an attribute by name of CurrentTime

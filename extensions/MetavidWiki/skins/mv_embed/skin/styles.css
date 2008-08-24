@@ -140,6 +140,7 @@ width: 100%;
 	width: 80px;
 	float: right;
 	display: inline;
+	font-family:arial;
 }
 
 .videoPlayer .seeker {
