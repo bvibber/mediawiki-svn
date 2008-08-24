@@ -236,11 +236,13 @@ class SimpleSecurity {
 		}
 
 		# If title is not readable by user, remove the read and move rights
-		if (!$this->validateTitle($user, $title, $error)) {
-			foreach ($rights as $i => $right) if ($right == 'read' || $right == 'move') unset($rights[$i]);
-			#$this->info['CR'] = array('read', '', '');
-		} elseif ($this->default_read) $wgGroupPermissions['*']['read'] = $this->default_read; # see constructor
-		
+		if (!in_array('sysop', $groups)) {
+			if (!$this->validateTitle($user, $title, $error)) {
+				foreach ($rights as $i => $right) if ($right === 'read' || $right === 'move') unset($rights[$i]);
+				#$this->info['CR'] = array('read', '', '');
+			} elseif ($this->default_read) $wgGroupPermissions['*']['read'] = $this->default_read; # see constructor
+		}
+				
 		return true;
 	}
 
@@ -356,10 +358,8 @@ class SimpleSecurity {
 				foreach ($restriction as $action => $reqgroups) {
 					if (!is_array($reqgroups)) $reqgroups = array($reqgroups);
 					$this->info['LS'][] = array($action, $reqgroups, wfMsg('security-desc-LS', strtolower($type), $data));
-					if (!array_intersect($groups, $reqgroups)) {
-						$tmp = array();
-						foreach ($rights as $a) if ($a !== $action) $tmp[] = $a;
-						$rights = $tmp;
+					if (!in_array('sysop', $groups) && !array_intersect($groups, $reqgroups)) {
+						foreach ($rights as $i => $right) if ($right === $action) unset($rights[$i]);
 						#$this->info['CR'][] = array($action, $reqgroups, wfMsg('security-desc-CR'));
 					}
 				}
