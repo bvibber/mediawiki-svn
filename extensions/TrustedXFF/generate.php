@@ -67,7 +67,7 @@ while ( !feof( $inFile ) ) {
 }
 
 echo count( $names ) . " DNS queries to do...\n";
-foreach ( $names as $i => $nameInfo {
+foreach ( $names as $i => $nameInfo ) {
 	list( $lineNum, $name ) = $nameInfo;
 	$ips = gethostbynamel( $name );
 	if ( $ips === false ) {
@@ -120,14 +120,13 @@ foreach ( $ranges as $i => $range ) {
 		echo "Loss of precision in floating point number, will cause infinite loop.\n";
 		continue;
 	}
-	for ( $i = $startNum; $i <= $endNum; $i++ ) {
-		$hex = base_convert( $i, 10, 16 );
+	for ( $j = $startNum; $j <= $endNum; $j++ ) {
+		$hex = base_convert( $j, 10, 16 );
 		$hex = str_pad( $hex, $suffixLength, '0', STR_PAD_LEFT );
 		dba_insert( $prefix . $hex, '1', $outFile );
 		$numHosts++;
 	}
 	showProgress( $i, count( $ranges ) );
-	printf( "%5.2f%%\r", key( $names ) / count( $names ) * 100 );
 }
 echo "\n";
 
