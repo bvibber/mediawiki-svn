@@ -264,7 +264,7 @@ un rexistro dos "empurróns" ás listaxes de vixilancia recentes está dispoñib
 	'povwatch_push_intro' => 'Use o formulario de embaixo para "empurrar" páxinas ás listaxes de vixilancia dos usuarios subscritos.
 Por favor, sexa coidadoso ao teclear o título: incluso os títulos non existentes poden ser engadidos e non hai forma de eliminar un título unha vez que este foi "empurrado".',
 	'povwatch_title' => 'Título:',
-	'povwatch_comment' => 'Rexistro de comentarios:',
+	'povwatch_comment' => 'Comentario do rexistro:',
 	'povwatch_no_log' => 'Non hai entradas no rexistro.',
 	'povwatch_no_subscribers' => 'Non hai subscritores.',
 	'povwatch_unsubscribe_intro' => 'Está subscrito a PovWatch.

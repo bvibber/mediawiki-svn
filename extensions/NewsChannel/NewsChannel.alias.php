@@ -42,3 +42,8 @@ $aliases['no'] = array(
 	'NewsChannel' => array( 'Nyhetskanal' ),
 );
 
+/** Pashto (پښتو) */
+$aliases['ps'] = array(
+	'NewsChannel' => array( 'خبري کانال' ),
+);
+

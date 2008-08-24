@@ -28,6 +28,13 @@ $messages['bg'] = array(
 	'emailaddressimage-desc' => 'Добавя <tt>&lt;email&gt;</tt> за показване на адреси за е-поща като картинки',
 );
 
+/** Czech (Česky)
+ * @author Li-sung
+ */
+$messages['cs'] = array(
+	'emailaddressimage-desc' => 'Přidává značku <tt>&lt;email&gt;</tt> zajišťující zobrazení e-mailové adresy jako obrázku',
+);
+
 /** Lower Sorbian (Dolnoserbski)
  * @author Michawiki
  */

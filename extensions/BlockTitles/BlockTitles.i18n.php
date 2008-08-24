@@ -414,6 +414,7 @@ $messages['pms'] = array(
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */
 $messages['ps'] = array(
+	'block_title_error_page_title' => 'بنديز خوړلی سرليک',
 	'block_title_error' => 'بخښنه غواړو چې د همدغه مخ د سرليک د خوندي کولو اجازه نشته.',
 );
 

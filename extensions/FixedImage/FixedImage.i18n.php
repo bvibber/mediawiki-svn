@@ -109,6 +109,13 @@ $messages['fa'] = array(
 	'fixedimage-desc' => 'برچسب <tt><nowiki><fundraising></nowiki></tt> را به عنوان تصویر اضافه می‌کند',
 );
 
+/** Finnish (Suomi)
+ * @author Str4nd
+ */
+$messages['fi'] = array(
+	'fixedimage-desc' => 'Lisää <tt><nowiki><fundraising></nowiki></tt>-tagin kuvana.',
+);
+
 /** French (Français)
  * @author Grondin
  */

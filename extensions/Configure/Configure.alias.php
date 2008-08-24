@@ -175,7 +175,7 @@ $aliases['pt-br'] = array(
 
 /** Swedish (Svenska) */
 $aliases['sv'] = array(
-	'Configure'  => array( 'Konfigurera' ),
+	'Configure' => array( 'Konfigurera' ),
 	'Extensions' => array( 'Programtillägg' ),
 	'ViewConfig' => array( 'Visa konfiguration' ),
 );

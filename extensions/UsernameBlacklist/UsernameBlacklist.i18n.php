@@ -362,10 +362,11 @@ $messages['fa'] = array(
 );
 
 /** Finnish (Suomi)
+ * @author Agony
  * @author Nike
  */
 $messages['fi'] = array(
-	'usernameblacklist-desc' => 'Mahdollistaa käyttäjätunnusten luomisen estämisen säännöllisiä lausekkeita tukevan  [[MediaWiki:Usernameblacklist|mustan listan]] avulla.',
+	'usernameblacklist-desc' => 'Mahdollistaa käyttäjätunnusten luomisen estämisen säännöllisiä lausekkeita tukevan  [[MediaWiki:Usernameblacklist|estolistan]] avulla.',
 	'blacklistedusername' => 'Kielletty tunnus',
 	'blacklistedusernametext' => 'Haluamasi tunnus on [[MediaWiki:Usernameblacklist|kiellettyjen tunnusten listalla]]. Valitse toinen nimi.',
 	'usernameblacklist' => '<pre>

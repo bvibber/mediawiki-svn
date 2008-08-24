@@ -304,6 +304,15 @@ $messages['pl'] = array(
 	'specialwhoiswatchingaddbtn' => 'Dodaj wybranych użytkowników',
 );
 
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'whoiswatching' => 'څوک دي چې د ويکي يو مخ ګوري',
+	'specialwhoiswatchingthepage' => 'څوک دی چې %s ګوري',
+	'specialwhoiswatchingaddbtn' => 'ټاکلي کارونکي ورګډول',
+);
+
 /** Portuguese (Português)
  * @author Malafaya
  */

@@ -235,6 +235,7 @@ $messages['bg'] = array(
 );
 
 /** German (Deutsch)
+ * @author ChrisiPK
  * @author Leithian
  * @author Raimond Spekking
  */
@@ -244,6 +245,7 @@ $messages['de'] = array(
 	'removeunusedgroups' => 'Unbenutzte Gruppen entfernen',
 	'grouppermissions-desc' => 'Verwalten von Gruppenberechtigungen über eine [[Special:GroupPermissions|Spezialseite]]',
 	'grouppermissions-desc2' => 'Erweitertes Berechtigungssystem',
+	'grouppermissions-desc3' => 'Ermöglicht die Anpassung der Inhaltsaktionen (Tabs)',
 	'grouppermissions-desc4' => 'Erlaubt das Hinzufügen von zusätzlichen Einträgen zur Werkzeug-Navigationsleiste',
 	'grouppermissions-desc-nsm' => 'Verwalten von Namensräumen über eine Spezialseite',
 	'grouppermissions-header' => 'Mit dieser Spezialseite kannst du die Berechtigungen von Benutzergruppen ändern.',
@@ -259,7 +261,46 @@ $messages['de'] = array(
 	'grouppermissions-comment' => 'Kommentar:',
 	'grouppermissions-addsuccess' => '$1 wurde erfolgreich hinzugefügt',
 	'grouppermissions-deletesuccess' => '$1 wurde erfolgreich gelöscht',
+	'grouppermissions-changesuccess' => 'Berechtigungen für $1 wurden erfolgreich geändert',
+	'grouppermissions-true' => 'Ja',
+	'grouppermissions-false' => 'Nein',
+	'grouppermissions-never' => 'Nie',
+	'grouppermissions-nooldrev' => 'Bei der Archivierung der aktuellen Konfigurationsdatei ist ein Fehler aufgetreten. Es wird kein Archiv angelegt',
+	'grouppermissions-sort-read' => 'Lesen',
+	'grouppermissions-sort-edit' => 'Bearbeiten',
+	'grouppermissions-sort-manage' => 'Verwaltung',
+	'grouppermissions-sort-admin' => 'Administration',
+	'grouppermissions-sort-tech' => 'Technisches',
+	'grouppermissions-sort-misc' => 'Verschiedenes',
+	'grouppermissions-log-add' => 'hat Gruppe „$2“ erstellt',
+	'grouppermissions-log-change' => 'hat die Berechtigungen für Gruppe „$2“ geändert',
+	'grouppermissions-log-delete' => 'hat Gruppe „$2“ gelöscht',
+	'grouppermissions-log-name' => 'Gruppenrechte-Logbuch',
+	'grouppermissions-log-header' => 'Diese Seite zeigt Änderungen an den Berechtigungen der Benutzergruppen an.',
+	'grouppermissions-needjs' => 'Warnung: JavaScript ist in deinem Browser deaktiviert. Einige Funktionen stehen möglicherweise nicht zur Verfügung.',
 	'grouppermissions-sp-header' => 'Auf dieser Spezialseite kannst du Berechtigungen sortieren und neue Berechtigungen einrichten.',
+	'grouppermissions-sp-sort' => 'Berechtigungen sortieren',
+	'grouppermissions-sp-save' => 'Speichern',
+	'grouppermissions-sp-success' => 'Berechtigungen wurden erfolgreich sortiert.',
+	'grouppermissions-sp-addtype' => 'Sortierungslabel hinzufügen',
+	'grouppermissions-sp-addperm' => 'Berechtigung hinzufügen',
+	'grouppermissions-sp-remove' => 'entfernen',
+	'grouppermissions-sp-deltype' => 'Sortierungslabel löschen',
+	'grouppermissions-rug-header' => 'Auf dieser Seite kannst du Benutzer aus unbenutzten (gelöschten) Gruppen entfernen.',
+	'grouppermissions-rug-success' => 'Benutzer wurden erfolgreich aus unbenutzten Gruppen entfernt!',
+	'grouppermissions-rug-confirm' => 'Benutzer aus unbenutzten Gruppen entfernen',
+	'right-grouppermissions' => 'Gruppenrechte verwalten (Spezialseiten: [[Special:GroupPermissions|GroupPermissions]] und [[Special:SortPermissions|SortPermissions]])',
+	'right-viewsource' => 'Wiki-Quelltext von geschützten Seiten ansehen',
+	'right-raw' => 'Rohseiten ansehen',
+	'right-render' => 'Gerenderte Seiten ohne Navigation ansehen',
+	'right-info' => 'Seiteninformationen ansehen',
+	'right-credits' => 'Credits der Seite ansehen',
+	'right-history' => 'Versionsgeschichten ansehen',
+	'right-search' => 'Das Wiki durchsuchen',
+	'right-contributions' => 'Beiträge ansehen',
+	'right-recentchanges' => 'Letzte Änderungen ansehen',
+	'right-edittalk' => 'Diskussionsseiten bearbeiten',
+	'right-edit-new' => 'Seiten bearbeiten (ausgenommen Diskussionsseiten)',
 );
 
 /** Ewe (Eʋegbe)

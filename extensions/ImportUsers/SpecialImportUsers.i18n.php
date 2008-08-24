@@ -666,7 +666,7 @@ $messages['no'] = array(
  */
 $messages['oc'] = array(
 	'importusers' => "Importar d'utilizaires",
-	'importusers-desc' => "[[Special:ImportUsers|Impòrta d'utilizaires] en blòt dempuèi un fichièr CVS ; encodatge : UTF-8.",
+	'importusers-desc' => "[[Special:ImportUsers|Impòrta d'utilizaires]] en blòt dempuèi un fichièr CVS ; encodatge : UTF-8.",
 	'importusers-uploadfile' => 'Importar lo fichièr',
 	'importusers-form-caption' => 'Entratz un fichièr CVS (UTF-8)',
 	'importusers-form-file' => 'Format del fichièr utilizaire (csv) :',

@@ -2833,6 +2833,7 @@ $wdMessages['ps'] = array(
 	'languages' => 'Wikidata: د ژبې سمبالګر',
 	'ow_save' => 'خوندي کول',
 	'ow_history' => 'پېښليک',
+	'ow_uiprefs' => 'ويکيډاټا',
 	'ow_none_selected' => '<هېڅ هم نه دی ټاکل شوی>',
 	'ow_conceptmapping_no_action_specified' => 'بښنه غواړم، زه نه پوهېږم چې څنګه "$1".',
 	'ow_dm_not_present' => 'نه دی ورکړ شوی',

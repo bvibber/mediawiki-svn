@@ -247,6 +247,14 @@ $messages['it'] = array(
 	'simpleantispam-desc' => 'Aggiunge un semplice controllo spam/bot ai moduli',
 );
 
+/** Japanese (日本語)
+ * @author Muttley
+ */
+$messages['ja'] = array(
+	'simpleantispam-label' => "SPAM防止チェックです。
+決してここに値を入力'''しない'''でください。",
+);
+
 /** Ripoarisch (Ripoarisch)
  * @author Purodha
  */

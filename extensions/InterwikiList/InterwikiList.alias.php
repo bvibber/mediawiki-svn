@@ -55,3 +55,8 @@ $aliases['no'] = array(
 	'InterwikiList' => array( 'Interwikiliste' ),
 );
 
+/** Swedish (Svenska) */
+$aliases['sv'] = array(
+	'InterwikiList' => array( 'Interwikilista' ),
+);
+

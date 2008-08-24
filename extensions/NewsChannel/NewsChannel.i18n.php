@@ -123,6 +123,15 @@ $messages['ksh'] = array(
 	'newschannel_submit_button' => 'Kanaal opmaache',
 );
 
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$messages['lb'] = array(
+	'newschannel_format' => 'Format:',
+	'newschannel_limit' => 'Limit:',
+	'newschannel_include_category' => 'Zousätzlech Kategorie:',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */
@@ -160,6 +169,14 @@ $messages['oc'] = array(
 	'newschannel_include_category' => 'Categoria(s) addicionala(s) :',
 	'newschannel_exclude_category' => 'Categoria(s) excluida(s) :',
 	'newschannel_submit_button' => 'Crear lo flus',
+);
+
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'newschannel' => 'خبري کانال',
+	'newschannel_include_category' => 'اضافه وېشنيزه:',
 );
 
 /** Russian (Русский)

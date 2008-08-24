@@ -761,6 +761,7 @@ $messages['ps'] = array(
 	'vote-registered' => 'ستاسو رايه ثبته شوه.',
 	'vote-view-results' => 'پايلې کتل',
 	'vote-results' => 'د رايو پايلې',
+	'vote-login' => 'ددې لپاره چې تاسو رايه ورکړی نو پکار ده چې $1.',
 	'vote-login-link' => 'ننوتل',
 );
 

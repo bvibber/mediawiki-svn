@@ -186,6 +186,13 @@ $messages['it'] = array(
 	'mwsearch-desc' => 'Plugin MWSearch',
 );
 
+/** Japanese (日本語)
+ * @author Muttley
+ */
+$messages['ja'] = array(
+	'mwsearch-desc' => 'MediaWiki検索プラグイン',
+);
+
 /** Javanese (Basa Jawa)
  * @author Meursault2004
  */

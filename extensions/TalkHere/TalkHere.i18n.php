@@ -498,6 +498,8 @@ J'operator d'ës sit-sì a peulo nen pijesse la responsabilità dël contnù dë
  */
 $messages['ps'] = array(
 	'talkhere-talkpage' => 'د خبرواترو مخ',
+	'talkhere-addcomment' => 'تبصره ورګډول',
+	'talkhere-beforeinput' => 'تاسو يوه تبصره لاندې ورګډولای شی',
 );
 
 /** Portuguese (Português)

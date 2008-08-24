@@ -245,6 +245,7 @@ $messages['ext'] = array(
 /** Finnish (Suomi)
  * @author Jaakonam
  * @author Nike
+ * @author Str4nd
  */
 $messages['fi'] = array(
 	'countedits' => 'Muokkausmäärälaskuri',
@@ -253,7 +254,7 @@ $messages['fi'] = array(
 	'countedits-username' => 'Käyttäjä',
 	'countedits-ok' => 'Hae',
 	'countedits-nosuchuser' => 'Käyttäjää $1 ei ole.',
-	'countedits-resultheader' => 'Tulos $1',
+	'countedits-resultheader' => 'Tulos käyttäjälle $1',
 	'countedits-resulttext' => '$1 on tehnyt $2 muokkausta.',
 	'countedits-mostactive' => 'Aktiivisimmat käyttäjät',
 	'countedits-nocontribs' => 'Tätä wikiä ei ole muokattu.',

@@ -146,6 +146,13 @@ $messages['it'] = array(
 	'oai-desc' => "Fornisce un'interfaccia per depositi [http://www.openarchives.org/OAI/openarchivesprotocol.html OAI-PMH]",
 );
 
+/** Japanese (日本語)
+ * @author Muttley
+ */
+$messages['ja'] = array(
+	'oai-desc' => '[http://www.openarchives.org/OAI/openarchivesprotocol.html OAI-PMH] リポジトリ・インターフェースを提供します。',
+);
+
 /** Ripoarisch (Ripoarisch)
  * @author Purodha
  */

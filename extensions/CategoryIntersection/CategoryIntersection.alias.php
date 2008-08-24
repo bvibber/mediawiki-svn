@@ -77,8 +77,9 @@ $aliases['hu'] = array(
 	'CategoryIntersection' => array( 'Kategóriák metszete' ),
 );
 
+/** Interlingua (Interlingua) */
 $aliases['ia'] = array(
-	'CategoryIntersection'=> array( 'Intersection de categorias' ),
+	'CategoryIntersection' => array( 'Intersection de categorias' ),
 );
 
 $aliases['jv'] = array(
@@ -141,8 +142,9 @@ $aliases['shi'] = array(
 	'CategoryIntersection'=> array( 'taqatoɛ n\'omgrd' ),
 );
 
+/** Slovak (Slovenčina) */
 $aliases['sk'] = array(
-	'CategoryIntersection'=> array( 'Prienik kategórií' ),
+	'CategoryIntersection' => array( 'Prienik kategórií' ),
 );
 
 $aliases['stq'] = array(
@@ -153,8 +155,9 @@ $aliases['su'] = array(
 	'CategoryIntersection'=> array( 'Pasampangan kategori' ),
 );
 
+/** Swedish (Svenska) */
 $aliases['sv'] = array(
-	'CategoryIntersection'=> array( 'Kategorisnitt' ),
+	'CategoryIntersection' => array( 'Kategorisnitt' ),
 );
 
 $aliases['te'] = array(

@@ -37,6 +37,13 @@ $messages['bg'] = array(
 	'googleadsense-desc' => 'Добавя [http://www.google.com/adsense Google AdSense] в страничната лента',
 );
 
+/** Finnish (Suomi)
+ * @author Str4nd
+ */
+$messages['fi'] = array(
+	'googleadsense-desc' => 'Lisää [http://www.google.com/adsense Google AdSensen] sivupalkkiin',
+);
+
 /** French (Français)
  * @author Grondin
  */

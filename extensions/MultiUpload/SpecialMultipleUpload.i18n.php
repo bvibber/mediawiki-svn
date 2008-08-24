@@ -540,8 +540,11 @@ Nieprawidłowe pliki będą natychmiast usuwane, zobacz [[{{MediaWiki:Multipleup
  */
 $messages['ps'] = array(
 	'multipleupload' => 'دوتنې پورته کول',
+	'multipleupload-desc' => 'کارونکي په دې توانوي چې [[Special:MultipleUpload|په يو وخت کې ګڼ شمېر دوتنې پورته کړي]]',
 	'multipleupload-ignoreallwarnings' => "'''ټول ګواښونه''' بابېزه وګڼه او په هر ډول چې وي دوتنې خوندي کړه.",
 	'multipleupload-saveallfiles' => 'ټولې دوتنې خوندي کول',
+	'multipleupload-addresswarnings' => 'لطفاً د هر ډول دوتنو د بياپورته کولو دمخه مل ګواښليکونه وګورۍ',
+	'multipleupload-page' => '{{ns:project}}:د دوتنې د ړنګولو تګلاره',
 	'multipleupload-text' => "همدلته په يو وخت کې ګڼ شمېر دوتنې پورته کول.
 
 Choose 'Browse' and select each file you wish to upload.

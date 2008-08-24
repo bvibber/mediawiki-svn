@@ -689,6 +689,7 @@ $messages['it'] = array(
 /** Japanese (日本語)
  * @author Aotake
  * @author JtFuruhata
+ * @author Muttley
  * @author לערי ריינהארט
  */
 $messages['ja'] = array(
@@ -700,6 +701,7 @@ $messages['ja'] = array(
 	'sitematrix-others' => 'Wikimedia以外のプロジェクト',
 	'sitematrix-total' => "'''総計: $1'''",
 	'sitematrix-sitetotal' => '合計',
+	'sitematrix-private' => '非公開',
 	'sitematrix-fishbowl' => '編集は制限されています',
 );
 

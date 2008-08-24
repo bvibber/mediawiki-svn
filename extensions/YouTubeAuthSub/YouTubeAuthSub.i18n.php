@@ -999,6 +999,7 @@ Czekaj.',
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */
 $messages['ps'] = array(
+	'youtubeauthsub' => 'د يوټيوب ويډيو پورته کول',
 	'youtubeauthsub-desc' => 'کارونکي په دې توانوي چې يوټيوب ته راساً [[Special:YouTubeAuthSub|ويډيوګانې پورته کړي]]',
 	'youtubeauthsub_title' => 'سرليک',
 	'youtubeauthsub_description' => 'څرګندونه',
@@ -1006,10 +1007,20 @@ $messages['ps'] = array(
 	'youtubeauthsub_username' => 'د يوټيوب کارن-نوم',
 	'youtubeauthsub_category' => 'وېشنيزه',
 	'youtubeauthsub_clickhere' => 'يوټيوب کې د ننوتلو لپاره دلته وټوکۍ',
+	'youtubeauthsub_success' => "مبارک مو شه!
+ستاسو ويډيو په برياليتوب سره پورته شوه.
+که خپله ويډيو ليدل غواړۍ نو <a href='http://www.youtube.com/watch?v=$1'>دلته وټوکۍ</a>.
+د نوې ويډيو په چمتو کولو کې لږ وخت لږېږي، نو کېدای شي چې ستاسو ويډيو لا تر اوسه نه وي چمتو شوې.
+
+که چېرته د ويکي په يو مخ باندې خپله ويډيو ورټومبل غواړۍ، نو په هماغه مخ کې دغه لاندينی کوډ ورګډ کړی:
+<code>{{&#35;ev:youtube|$1}}</code>",
+	'youtubeauthsub_authsubinstructions' => 'ددې لپاره چې يوه ويډيو پورته کړی، نو تاسو ته پکار ده چې لومړی په يوټيوب کې ننوځۍ.',
 	'youtubeauthsub_uploadhere' => 'خپله ويډيو له دې ځاي نه پورته کړی:',
+	'youtubeauthsub_uploadbutton' => 'پورته کول',
 	'youtubeauthsub_code' => '{{#ev:youtube|$1}}.
 
 همدا ويډيو کولای شی چې [http://www.youtube.com/watch?v=$1 دلته] وګورۍ',
+	'youtubeauthsub_summary' => 'د يوټيوب ويډيو ورپورته کول',
 	'youtubeauthsub_uploading' => 'ستاسو ويډيو د پورته کېدلو په حال کې ده.
 
 لطفاً لږ صبر وکړی.',

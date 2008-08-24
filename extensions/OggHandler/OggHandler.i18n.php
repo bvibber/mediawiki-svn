@@ -186,6 +186,7 @@ $messages['ar'] = array(
  * @author Ramsis II
  */
 $messages['arz'] = array(
+	'ogg-short-general' => 'Ogg $1 ملف ميديا، $2',
 	'ogg-play' => 'شغل',
 	'ogg-pause' => ' توقيف مؤقت',
 	'ogg-stop' => ' توقيف',
@@ -609,6 +610,7 @@ $messages['fa'] = array(
 );
 
 /** Finnish (Suomi)
+ * @author Agony
  * @author Crt
  * @author Nike
  */
@@ -629,8 +631,8 @@ $messages['fi'] = array(
 	'ogg-play-sound' => 'Soita ääni',
 	'ogg-no-player' => 'Järjestelmästäsi ei löytynyt mitään tuetuista soitinohjelmista. Voit ladata sopivan <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">soitinohjelman</a>.',
 	'ogg-no-xiphqt' => 'Tarvittavaa QuickTimen XiphQT-komponenttia ei löytynyt. QuickTime ei voi toistaa Ogg-tiedostoja ilman tätä komponenttia. <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">Lataa XiphQT</a> tai valitse toinen soitin.',
-	'ogg-player-videoElement' => '<video>-elementti',
-	'ogg-player-oggPlugin' => 'Ogg-liitännäinen',
+	'ogg-player-videoElement' => 'Luontainen selaintuki',
+	'ogg-player-oggPlugin' => 'Selainlaajennos',
 	'ogg-player-thumbnail' => 'Pysäytyskuva',
 	'ogg-player-soundthumb' => 'Ei soitinta',
 	'ogg-player-selected' => '(valittu)',

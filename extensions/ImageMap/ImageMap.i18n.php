@@ -282,6 +282,7 @@ $messages['fa'] = array(
 );
 
 /** Finnish (Suomi)
+ * @author Agony
  * @author Nike
  * @author Str4nd
  */
@@ -289,9 +290,14 @@ $messages['fi'] = array(
 	'imagemap_desc' => 'Mahdollistaa napsautettavien kuvakarttojen tekemisen <tt><nowiki><imagemap></nowiki></tt>-elementillä.',
 	'imagemap_no_image' => 'Error: kuva pitää määritellä ensimmäisellä rivillä.',
 	'imagemap_invalid_image' => 'Error: kuva ei kelpaa tai sitä ei ole olemassa',
+	'imagemap_bad_image' => 'Virhe: Kuva kuuluu sivuston estolistalle',
+	'imagemap_no_link' => 'Virhe: rivin $1 lopusta ei löytynyt kelvollista linkkiä',
 	'imagemap_invalid_title' => 'Virhe: kelvoton otsikko linkissä rivillä $1',
+	'imagemap_missing_coord' => 'Virhe: rivin $1 muodolle ei ole määritelty riittävästi koordinaatteja',
+	'imagemap_unrecognised_shape' => 'Virhe: rivin $1 muotoa ei tunnistettu, jokaisen rivin tulee alkaa jollakin seuraavista: default, rect, circle tai poly',
 	'imagemap_no_areas' => 'Error: aluemäärittelyitä pitää olla ainakin yksi.',
 	'imagemap_invalid_coord' => 'Error: kelpaamaton koordinaatti rivillä $1. Koordinaatin täytyy olla numero.',
+	'imagemap_invalid_desc' => 'Virhe: virheellinen kohdemäärittely, kohdemäärittelyn tulee olla yksi seuraavista: <tt>$1</tt>',
 	'imagemap_description' => 'Kuvan tiedot',
 );
 

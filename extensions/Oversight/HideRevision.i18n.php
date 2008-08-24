@@ -706,6 +706,7 @@ $messages['fi'] = array(
 	'group-oversight' => 'häivyttäjät',
 	'group-oversight-member' => 'häivyttäjä',
 	'grouppage-oversight' => '{{ns:project}}:Häivytysoikeudet',
+	'right-oversight' => 'Nähdä häivytetty versio',
 	'right-hiderevision' => 'Tarkastella ja palauttaa ylläpitäjiltä piilotettuja versioita',
 	'hiderevision-prompt' => 'Poistettava versionumero',
 	'hiderevision-continue' => 'Jatka',
@@ -727,11 +728,17 @@ Poistetut kohteet eivät näy kenellekään web-sivuston kautta, mutta kaikki po
 	'hiderevision-error-current' => 'Sivun viimeisintä muokkausta ei voi poistaa. Palauta muutos ensin.',
 	'hiderevision-error-delete' => 'Arkistointi epäonnistui. Kenties se on jo aiemmin poistettu?',
 	'hiderevision-archive-status' => 'Poistettu versio $1: $2',
+	'oversight-nodiff' => 'Muutostenseuranta ei ollut mahdollista koska sivulla ei ole aikaisempaa versiota. Mahdollisia syitä:
+* Sivu on poistettu tai
+* Häivytetty versio oli sivun ensimmäinen versio',
 	'oversight-log-hiderev' => 'poisti muokkauksen sivulta $1',
 	'oversight' => 'Häivytys',
 	'oversight-view' => 'tiedot',
+	'oversight-difference' => '(Ero edelliseen jäljelle jääneeseen versioon)',
+	'oversight-prev' => 'Viimeisin edellinen versio',
 	'oversight-hidden' => 'Piilotettu versio',
 	'oversight-header' => 'Alla on lista pysyvästi piilotetuista versioista, jotka eivät näy julkisesti. Näiden tietojen julkaiseminen voi johtaa tämän työkalun käyttöoikeuksien menetykseen.',
+	'oversight-legend' => 'Etsi häivytyslokista',
 );
 
 /** Faroese (Føroyskt)

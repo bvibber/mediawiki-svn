@@ -202,15 +202,132 @@ $messages['ar'] = array(
 	'deletequeue-desc' => 'ينشئ [[Special:DeleteQueue|نظاما معتمدا على طابور للتحكم بالحذف]]',
 	'deletequeue-action' => 'اقتراح الحذف',
 	'deletequeue-action-title' => 'اقتراح الحذف ل"$1"',
+	'deletequeue-action-text' => "{{SITENAME}} لديه عدد من العمليات لحذف الصفحات:
+*لو أنك تعتقد أن هذه الصفحة تحتاج ''الحذف السريع''، يمكنك أن تقترح هذا هنا [{{fullurl:{{FULLPAGENAME}}|action=delnom&queue=speedy}} هنا].
+*لو أن هذه الصفحة لا تحتاج الحذف السريع، لكن ''الحذف سيكون على الأرجح غير خلافي''، ينبغي عليك أن [{{fullurl:{{FULLPAGENAME}}|action=delnom&queue=prod}} تقترح الحذف].
+*لو أن حذف هذه الصفحة ''على الأرجح سيتم الاعتراض عليه''، ينبغي عليك أن [{{fullurl:{{FULLPAGENAME}}|action=delnom&queue=deletediscuss}} تبدأ نقاشا].",
+	'deletequeue-permissions-noedit' => 'يجب أن تكون قادرا على تعديل الصفحة لتكون قادرا على التاثير على حالة حذفها.',
 	'deletequeue-generic-reasons' => '* أسباب متكررة
   ** تخريب
   ** سبام
   ** صيانة
   ** خارج نطاق المشروع',
+	'deletequeue-speedy-title' => 'علم على "$1" للحذف السريع',
+	'deletequeue-speedy-text' => "أنت يمكنك استخدام هذه الاستمارة للتعليم على الصفحة \"'''\$1'''\" للحذف السريع.
+
+أحد الإداريين سيراجع هذا الطلب، و، لو أن أسبابه قوية، سيحذف الصفحة.
+يجب عليك أن تختار سببا للحذف من قائمة الاختيارات بالأسفل، وتضيف أي معلومات متعلقة أخرى.",
+	'deletequeue-prod-title' => 'اقتراح حذف "$1"',
+	'deletequeue-prod-text' => "أنت يمكنك استخدام هذه الاستمارة لاقتراح حذف \"'''\$1'''\".
+
+لو، بعد خمسة أيام، لا أحد اعترض على حذف هذه الصفحة، سيتم حذفها بعد مراجعة نهائية بواسطة إداري.",
+	'deletequeue-delnom-reason' => 'السبب للترشيح:',
 	'deletequeue-delnom-otherreason' => 'سبب آخر',
 	'deletequeue-delnom-extra' => 'معلومات إضافية:',
 	'deletequeue-delnom-submit' => 'تنفيذ الترشيح',
+	'deletequeue-log-nominate' => "رشح [[$1]] للحذف في طابور '$2'.",
+	'deletequeue-log-rmspeedy' => 'رفض أن يحذف سريعا [[$1]].',
+	'deletequeue-log-requeue' => "نقل [[$1]] إلى طابور حذف مختلف: من '$2' إلى '$3'.",
+	'deletequeue-log-dequeue' => "أزال [[$1]] من طابور الحذف '$2'.",
+	'right-speedy-nominate' => 'ترشيح الصفحات للحذف السريع',
+	'right-speedy-review' => 'مراجعة الترشيحات للحذف السريع',
 	'right-prod-nominate' => 'اقتراح حذف الصفحة',
+	'right-prod-review' => 'مراجعة اقتراحات الحذف غير المعترض عليها',
+	'right-deletediscuss-nominate' => 'بدء نقاشات الحذف',
+	'right-deletediscuss-review' => 'إغلاق نقاشات الحذف',
+	'deletequeue-queue-speedy' => 'حذف سريع',
+	'deletequeue-queue-prod' => 'حذف مقترح',
+	'deletequeue-queue-deletediscuss' => 'نقاش الحذف',
+	'deletequeue-page-speedy' => "هذه الصفحة تم ترشيحها للحذف السريع.
+السبب المعطى لهذا الحذف هو ''$1''.",
+	'deletequeue-page-prod' => "تم اقتراح حذف هذه الصفحة.
+السبب المعطى كان ''$1''.
+لو أن هذا الاقتراح لم يتم الاعتراض عليه في ''$2''، فهذه الصفحة سيتم حذفها.
+يمكنك الاعتراض على حذف هذه الصفحة بواسطة [{{fullurl:{{FULLPAGENAME}}|action=delvote}} الاعتراض على الحذف].",
+	'deletequeue-page-deletediscuss' => "هذه الصفحة تم اقتراحها للحذف، وهذا الاقتراح تم الاعتراض عليه.
+السبب المعطى كان ''$1''.
+يجري نقاش في [[$3]]، سينتهي في ''$2''.",
+	'deletequeue-notqueued' => 'الصفحة التي اخترتها ليست في طابور الحذف حاليا',
+	'deletequeue-review-action' => 'الفعل للعمل:',
+	'deletequeue-review-delete' => 'حذف الصفحة.',
+	'deletequeue-review-change' => 'حذف هذه الصفحة، لكن بسبب مختلف.',
+	'deletequeue-review-requeue' => 'نقل هذه الصفحة إلى الطابور التالي:',
+	'deletequeue-review-dequeue' => 'عدم اتخاذ أي إجراء، وإزالة الصفحة من طابور الحذف.',
+	'deletequeue-review-reason' => 'تعليقات:',
+	'deletequeue-review-newreason' => 'سبب جديد:',
+	'deletequeue-review-newextra' => 'معلومات إضافية:',
+	'deletequeue-review-submit' => 'حفظ المراجعة',
+	'deletequeue-review-original' => 'السبب للترشيح',
+	'deletequeue-actiondisabled-involved' => 'الفعل التالي معطل لأنك قمت بدور في حالة الحذف هذه في الأدوار $1:',
+	'deletequeue-actiondisabled-notexpired' => 'الفعل التالي معطل لأن ترشيح الحذف لم ينته بعد:',
+	'deletequeue-review-badaction' => 'أنت حددت فعلا غير صحيح',
+	'deletequeue-review-actiondenied' => 'أنت حددت فعلا معطلا لهذه الصفحة',
+	'deletequeue-review-objections' => "'''تحذير''': حذف هذه الصفحة لديه [{{fullurl:{{FULLPAGENAME}}|action=delvoteview&votetype=object}} اعتراضات].
+من فضلك تأكد من أنك أخذت هذه الاعتراضات بالاعتبار قبل حذف هذه الصفحة.",
+	'deletequeue-reviewspeedy-tab' => 'مراجعة الحذف السريع',
+	'deletequeue-reviewspeedy-title' => 'مراجعة ترشيح الحذف السريع ل"$1"',
+	'deletequeue-reviewspeedy-text' => "أنت يمكنك استخدام هذه الاستمارة لمراجعة ترشيح \"'''\$1'''\" للحذف السريع.
+من فضلك تأكد من أن هذه الصفحة يمكن حذفها حذفا سريعا بالتوافق مع السياسة.",
+	'deletequeue-reviewprod-tab' => 'مراجعة الحذف المقترح',
+	'deletequeue-reviewprod-title' => 'مراجعة الحذف المقترح ل"$1"',
+	'deletequeue-reviewprod-text' => "أنت يمكنك استخدام هذه الاستمارة لمراجعة ترشيح الحذف غير المعترض عليه ل\"'''\$1'''\".",
+	'deletequeue-reviewdeletediscuss-tab' => 'مراجعة الحذف',
+	'deletequeue-reviewdeletediscuss-title' => 'مراجعة نقاش الحذف ل"$1"',
+	'deletequeue-reviewdeletediscuss-text' => "أنت يمكنك استخدام هذه الاستمارة لمراجعة نقاش الحذف ل\"'''\$1'''\".
+
+[{{fullurl:{{FULLPAGENAME}}|action=delviewvotes}} قائمة] بالتاييدات والاعتراضات على هذا الحذف متوفرة، والنقاش نفسه يمكن العثور عليه في [[\$2]].
+من فضلك تأكد من أنك تتخذ قرارا مع الأخذ في الاعتبار التوافق في النقاش.",
+	'deletequeue-deletediscuss-discussionpage' => 'هذه هي صفحة النقاش لحذف [[$1]].
+يوجد حاليا $2 {{PLURAL:$2|مستخدم يؤيد|مستخدم يؤيد}} الحذف، و $3 {{PLURAL:$3|مستخدم يعارض|مستخدم يعارض}} الحذف.
+يمكنك [{{fullurl:$1|action=delvote}} تأييد أو معارضة] الحذف، أو [{{fullurl:$1|action=delviewvotes}} رؤية كل التأييدات والاعتراضات].',
+	'deletequeue-discusscreate-summary' => 'إنشاء نقاش لحذف [[$1]].',
+	'deletequeue-discusscreate-text' => 'الحذف تم اقتراحه للسبب التالي: $2',
+	'deletequeue-role-nominator' => 'المرشح الأصلي للحذف',
+	'deletequeue-role-vote-endorse' => 'مؤيد للحذف',
+	'deletequeue-role-vote-object' => 'معترض على الحذف',
+	'deletequeue-vote-tab' => 'تأييد/معارضة الحذف',
+	'deletequeue-vote-title' => 'تأييد أو معارضة حذف "$1"',
+	'deletequeue-vote-text' => "أنت يمكنك استخدام هذه الاستمارة لتأييد أو معارضة حذف \"'''\$1'''\".
+هذا الفعل سيلغي أي تأييدات/اعتراضات قمت بها لحذف هذه الصفحة.
+يمكنك [{{fullurl:{{FULLPAGENAME}}|action=delviewvotes}} رؤية] التأييدات والاعتراضات الموجودة.
+السبب المعطى في الترشيح للحذف كان ''\$2''.",
+	'deletequeue-vote-legend' => 'تأييد/معارضة الحذف',
+	'deletequeue-vote-action' => 'توصية:',
+	'deletequeue-vote-endorse' => 'تأييد الحذف.',
+	'deletequeue-vote-object' => 'معارضة الحذف.',
+	'deletequeue-vote-reason' => 'تعليقات:',
+	'deletequeue-vote-submit' => 'تنفيذ',
+	'deletequeue-vote-success-endorse' => 'أنت أيدت بنجاح حذف هذه الصفحة.',
+	'deletequeue-vote-success-object' => 'أنت اعترضت بنجاح على حذف هذه الصفحة.',
+	'deletequeue-vote-requeued' => 'أنت اعترضت بنجاح على حذف هذه الصفحة.
+نتيجة لاعتراضك، الصفحة تم نقلها إلى طابور $1.',
+	'deletequeue-showvotes' => 'التأييدات والاعتراضات على حذف "$1"',
+	'deletequeue-showvotes-text' => "بالأسفل التأييدات والاعتراضات على حذف الصفحة \"'''\$1'''\".
+يمكنك تسجيل تأييدك الخاص، أو اعتراضك على هذا الحذف [{{fullurl:{{FULLPAGENAME}}|action=delvote}} هنا].",
+	'deletequeue-showvotes-restrict-endorse' => 'عرض التأييد فقط',
+	'deletequeue-showvotes-restrict-object' => 'عرض الاعتراضات فقط',
+	'deletequeue-showvotes-restrict-none' => 'عرض كل التأييدات والاعتراضات',
+	'deletequeue-showvotes-vote-endorse' => "'''أيد''' الحذف في $1 $2",
+	'deletequeue-showvotes-vote-object' => "'''عارض''' الحذف في $1 $2",
+	'deletequeue-showvotes-showingonly-endorse' => 'عرض التأييدات فقط',
+	'deletequeue-showvotes-showingonly-object' => 'عرض الاعتراضات فقط',
+	'deletequeue-showvotes-none' => 'لا توجد تأييدات أو اعتراضات لحذف هذه الصفحة.',
+	'deletequeue-showvotes-none-endorse' => 'لا توجد تأييدات لحذف هذه الصفحة.',
+	'deletequeue-showvotes-none-object' => 'لا توجد اعتراضات على حذف هذه الصفحة.',
+	'deletequeue' => 'طابور الحذف',
+	'deletequeue-list-text' => 'هذه الصفحة تعرض كل الصفحات التي هي في نظام الحذف.',
+	'deletequeue-list-search-legend' => 'بحث عن الصفحات',
+	'deletequeue-list-queue' => 'طابور:',
+	'deletequeue-list-status' => 'حالة:',
+	'deletequeue-list-expired' => 'اعرض فقط الترشيحات المحتاجة للإغلاق.',
+	'deletequeue-list-search' => 'بحث',
+	'deletequeue-list-anyqueue' => '(أي)',
+	'deletequeue-list-votes' => 'قائمة الأصوات',
+	'deletequeue-list-votecount' => '$1 {{PLURAL:$1|تأييد|تأييد}}، $2 {{PLURAL:$2|اعتراض|اعتراض}}',
+	'deletequeue-list-header-page' => 'صفحة',
+	'deletequeue-list-header-queue' => 'طابور',
+	'deletequeue-list-header-votes' => 'التأييد والاعتراضات',
+	'deletequeue-list-header-expiry' => 'تاريخ الانتهاء',
 	'deletequeue-list-header-discusspage' => 'صفحة نقاش',
 );
 
@@ -709,6 +826,21 @@ Tu pote registrar tu proprie declaration pro o contra iste deletion [{{fullurl:{
 	'deletequeue-list-queue' => 'Cauda:',
 	'deletequeue-list-status' => 'Stato:',
 	'deletequeue-list-expired' => 'Monstrar solmente nominationes que require clausura.',
+);
+
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$messages['lb'] = array(
+	'deletequeue-action' => 'Läsche virschloen',
+	'deletequeue-action-title' => 'Läsche vu(n) "$1" virschloen',
+	'deletequeue-delnom-otherreason' => 'Anere Grond',
+	'deletequeue-review-delete' => "D'Säit läschen",
+	'deletequeue-review-newreason' => 'Neie Grond:',
+	'deletequeue-vote-reason' => 'Bemierkungen:',
+	'deletequeue-list-search' => 'Sichen',
+	'deletequeue-list-header-page' => 'Säit',
+	'deletequeue-list-header-discusspage' => 'Diskussiounssäit',
 );
 
 /** Dutch (Nederlands)

@@ -326,6 +326,7 @@ $messages['fa'] = array(
  * @author Cimon Avaro
  * @author Crt
  * @author Nike
+ * @author Str4nd
  */
 $messages['fi'] = array(
 	'parserdifftest' => 'Esikäsittelijöiden eroavaisuudet',
@@ -334,6 +335,7 @@ $messages['fi'] = array(
 	'pdtest_page_missing' => 'Kyseistä sivua ei löytynyt tietokannasta.',
 	'pdtest_no_changes' => 'Ei havaittuja muutoksia.',
 	'pdtest_time_report' => '<b>$1</b> kesti $2 sekuntia. <b>$3</b> kesti $4 sekuntia.',
+	'pdtest_title' => 'Sivun otsikko:',
 	'pdtest_text' => 'Tekstisyöte',
 	'pdtest_ok' => 'OK',
 	'pdtest_get_text' => 'Hae teksti sivulta',

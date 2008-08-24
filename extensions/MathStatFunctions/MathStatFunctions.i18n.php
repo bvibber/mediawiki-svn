@@ -308,6 +308,16 @@ $messages['pms'] = array(
 	'msfunc_div_zero' => 'Division për zero',
 );
 
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'msfunc_desc' => 'د شمېرپوهنيزو او شمارنيزو کړنو يوه ټولګه',
+	'msfunc_nan' => 'پايليزه ارزښت يوه شمېره نه ده',
+	'msfunc_inf' => 'پايليزه ارزښت بې پايه دی',
+	'msfunc_div_zero' => 'وېش په صفر',
+);
+
 /** Portuguese (Português)
  * @author Malafaya
  */

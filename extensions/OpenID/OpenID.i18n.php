@@ -157,7 +157,7 @@ $messages['ar'] = array(
 	'openiderrortext' => 'حدث خطأ أثناء التأكد من مسار الهوية المفتوحة.',
 	'openidconfigerror' => 'خطأ ضبط الهوية المفتوحة',
 	'openidconfigerrortext' => 'ضبط تخزين الهوية المفتوحة لهذا الويكي غير صحيح.
-من فضلك استشر إداري هذا الموقع.',
+من فضلك استشر [[Special:Userlist/sysop|إداريا]].',
 	'openidpermission' => 'خطأ سماحات الهوية المفتوحة',
 	'openidpermissiontext' => 'الهوية المفتوحة التي وفرتها غير مسموح لها بتسجيل الدخول إلى هذا الخادم.',
 	'openidcancel' => 'التأكيد تم إلغاؤه',

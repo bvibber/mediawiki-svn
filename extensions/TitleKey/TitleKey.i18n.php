@@ -91,6 +91,13 @@ $messages['fa'] = array(
 	'titlekey-desc' => 'پشتوانه پیشنهاد جستجو بر اساس پیشوند عنوان',
 );
 
+/** Finnish (Suomi)
+ * @author Crt
+ */
+$messages['fi'] = array(
+	'titlekey-desc' => 'Taustajärjestelmä otsikon alkuosaan perustuvan haun ennakoivalle tekstinsyötölle.',
+);
+
 /** French (Français)
  * @author Grondin
  */

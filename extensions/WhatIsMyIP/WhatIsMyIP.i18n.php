@@ -90,9 +90,11 @@ $messages['eo'] = array(
 
 /** Finnish (Suomi)
  * @author Jack Phoenix
+ * @author Str4nd
  */
 $messages['fi'] = array(
 	'whatismyip' => 'Mikä IP-osoitteeni on',
+	'whatismyip-desc' => 'Näyttää käyttäjän nykyisen IP-osoitteen sivulla [[Special:WhatIsMyIP]]',
 	'whatismyip-out' => 'IP-osoitteesi:',
 );
 
