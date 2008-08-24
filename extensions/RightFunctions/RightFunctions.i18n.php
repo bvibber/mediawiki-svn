@@ -10,9 +10,15 @@ $messages = array();
  * @author Ryan Schmidt
  */
 $messages['en'] = array(
-	'rightfunctions-desc'          => 'Permission-based parser functions',
-	'rightfunctions-restboth' => '$1 (from local page), $2 (from cascading sources)',
-	'rightfunctions-restcasc' => '$1 (from cascading sources)',
+	'rightfunctions-desc'  => 'Permission-based parser functions',
+	'rightfunctions-rest1' => '$1 $2', # do not translate this message
+	'rightfunctions-rest2' => '$1 $2$5 $3 $4', # do not translate this message
+	'rightfunctions-rest3' => '$1 $2$7 $3 $4$7 $5 $6', # do not translate this message
+	'rightfunctions-sep'   => ',', # the seperator used in the above two messages, $5 and $7 respectively
+	'rightfunctions-casc'  => '(from cascading sources)',
+	'rightfunctions-local' => '(from local page)',
+	'rightfunctions-ns'    => '(from namespace protection)',
+	
 );
 
 /** Arabic (العربية)
