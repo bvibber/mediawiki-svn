@@ -113,8 +113,9 @@ $messages['mr'] = array(
  */
 $messages['nl'] = array(
 	'rightfunctions-desc' => 'Rechtengebaseerde parserfuncties',
-	'rightfunctions-restboth' => '$1 (van plaatselijke pagina), $2 (van bovengelegen bronnen)',
-	'rightfunctions-restcasc' => '$1 (van bovengelegen bronnen)',
+	'rightfunctions-casc' => '(van cascadebronnen)',
+	'rightfunctions-local' => '(van lokale pagina)',
+	'rightfunctions-ns' => '(van naamruimtebeveiliging)',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)

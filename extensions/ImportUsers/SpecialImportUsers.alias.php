@@ -33,6 +33,11 @@ $aliases['de'] = array(
 	'ImportUsers' => array( 'Benutzer importieren' ),
 );
 
+/** Finnish (Suomi) */
+$aliases['fi'] = array(
+	'ImportUsers' => array( 'Tuo käyttäjiä' ),
+);
+
 /** French (Français) */
 $aliases['fr'] = array(
 	'ImportUsers' => array( 'ImporterUtilisateur' ),

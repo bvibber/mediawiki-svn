@@ -179,9 +179,11 @@ $messages['sv'] = array(
 );
 
 /** Vietnamese (Tiếng Việt)
+ * @author Minh Nguyen
  * @author Vinhtantran
  */
 $messages['vi'] = array(
+	'microid-desc' => 'Thêm [http://www.microid.org/ MicroID] vào các trang cá nhân để xác nhận được nhận dạng tại các dịch vụ ngoài',
 	'tog-microid' => 'Xuất bản một <a href="http://microid.org/">MicroID</a> để xác nhận tài khoản bằng những dịch vụ bên ngoài',
 );
 

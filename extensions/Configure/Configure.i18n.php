@@ -678,6 +678,7 @@ $messages['eo'] = array(
 	'configure-section-zh-conversion' => 'Konvertado al la ĉina lingvo',
 	'configure-section-debug' => 'Sencimigo',
 	'configure-section-site' => 'Agordado de retejo',
+	'configure-section-css-js' => 'CSS kaj JavaScript',
 	'configure-section-namespaces' => 'Nomspacoj',
 	'configure-section-stats' => 'Lokaj statistikoj',
 	'configure-section-skin' => 'Etoso',

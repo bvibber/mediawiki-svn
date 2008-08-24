@@ -24,6 +24,11 @@ $aliases['arz'] = array(
 	'ShowProcesslist' => array( 'عرض_قائمة_العمل' ),
 );
 
+/** Finnish (Suomi) */
+$aliases['fi'] = array(
+	'ShowProcesslist' => array( 'Prosessilistaus' ),
+);
+
 /** Nedersaksisch (Nedersaksisch) */
 $aliases['nds-nl'] = array(
 	'ShowProcesslist' => array( 'Preceslieste_weergeven' ),

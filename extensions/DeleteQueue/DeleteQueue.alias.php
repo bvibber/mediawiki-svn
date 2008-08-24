@@ -27,6 +27,11 @@ $aliases['arz'] = array(
 	'DeleteQueue' => array( 'طابور_الحذف' ),
 );
 
+/** Finnish (Suomi) */
+$aliases['fi'] = array(
+	'DeleteQueue' => array( 'Poistojono' ),
+);
+
 /** Nedersaksisch (Nedersaksisch) */
 $aliases['nds-nl'] = array(
 	'DeleteQueue' => array( 'Vortdowachrie' ),

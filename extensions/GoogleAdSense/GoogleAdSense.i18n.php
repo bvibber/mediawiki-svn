@@ -58,6 +58,13 @@ $messages['ia'] = array(
 	'googleadsense-desc' => 'Adde [http://www.google.com/adsense Google AdSense] al barra lateral',
 );
 
+/** Italian (Italiano)
+ * @author Darth Kule
+ */
+$messages['it'] = array(
+	'googleadsense-desc' => 'Aggiunge [http://www.google.com/adsense Google AdSense] alla sidebar',
+);
+
 /** Korean (한국어)
  * @author ToePeu
  */

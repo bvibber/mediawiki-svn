@@ -128,6 +128,7 @@ $messages['hsb'] = array(
  */
 $messages['id'] = array(
 	'newusermessage-desc' => 'Menambahkan sebuah pesan di halaman pembicaraan pengguna baru',
+	'newuseredit-summary' => 'Menambahkan [[{{int:newusermessage-template}}|pesan selamat datang]] ke halaman pembicaraan seorang pengguna baru',
 );
 
 /** Italian (Italiano)
@@ -281,10 +282,12 @@ $messages['vec'] = array(
 );
 
 /** Vietnamese (Tiếng Việt)
+ * @author Minh Nguyen
  * @author Vinhtantran
  */
 $messages['vi'] = array(
 	'newusermessage-desc' => 'Thêm một thông điệp gửi vào trang thảo luận của thành viên vừa mở tài khoản',
+	'newuseredit-summary' => 'Thêm [[{{int:newusermessage-template}}|thông báo hoan nghênh]] vào trang thảo luận của người dùng mới',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)

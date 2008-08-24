@@ -1366,7 +1366,9 @@ $messages['vi'] = array(
 	'youtubeauthsub_username' => 'Tên hiệu YouTube',
 	'youtubeauthsub_keywords' => 'Từ khóa',
 	'youtubeauthsub_category' => 'Thể loại',
+	'youtubeauthsub_submit' => 'Đăng nhập',
 	'youtubeauthsub_clickhere' => 'Hãy nhấn chuột vào đây để đăng nhập vào YouTube',
+	'youtubeauthsub_tokenerror' => 'Có lỗi khi tạo số hiệu đăng nhập. Hãy thử làm tươi trang.',
 	'youtubeauthsub_success' => 'Chúc mừng bạn đã tải lên video thành công! Để coi video này, hãy nhấn chuột <a href="http://www.youtube.com/watch?v=$1">vào đây</a>. YouTube có thể cần một tí thì giờ để xử lý video của bạn, nên có thể nó chưa sẵn.
 
 Để chèn video này vào một trang wiki, hãy dùng mã sau:

@@ -112,6 +112,8 @@ Toś ten bok by teke twóju pomoc trjebał: $1',
 $messages['eo'] = array(
 	'editsimilar-thanks' => 'Dankon pro via kontribuo.
 Jen rilataj paĝoj: $1.',
+	'editsimilar-thanks-notsimilar' => 'Dankon pro via kontribuo.
+Jen paĝoj kiuj ankaŭ bezonas vian helpon: $1.',
 	'editsimilar-thankyou' => 'Dankon pro via kontribuo, $1!',
 	'editsimilar-link-disable' => 'fari preferojn',
 );

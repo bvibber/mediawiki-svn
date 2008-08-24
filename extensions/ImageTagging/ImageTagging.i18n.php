@@ -207,6 +207,7 @@ $messages['eo'] = array(
 	'imagetagging-imghistory' => 'Historio',
 	'imagetagging-images' => 'bildoj',
 	'imagetagging-inthisimage' => 'En ĉi tiu bildo: $1',
+	'imagetagging-new' => '<sup><span style="color:red">Nova!</span></sup>',
 	'imagetagging-removetag' => 'forigi etikedon',
 	'imagetagging-tag-button' => 'Etikedo',
 	'imagetagging-tagcancel-button' => 'Nuligi',

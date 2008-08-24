@@ -59,6 +59,7 @@ $messages['ar'] = array(
  */
 $messages['bg'] = array(
 	'onlinestatus-desc' => 'Добавя настройка, която показва дали потребителят е на линия или не в уикито',
+	'onlinestatus-js-anon' => 'Грешка: за използване на тази възможност е необходимо влизане в системата',
 	'onlinestatus-subtitle-offline' => 'Този потребител в момента не е на линия',
 	'onlinestatus-subtitle-online' => 'Този потребител в момента е на линия',
 	'onlinestatus-toggles-desc' => 'Вашият статут:',

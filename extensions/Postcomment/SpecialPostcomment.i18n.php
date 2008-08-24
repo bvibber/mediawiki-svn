@@ -419,9 +419,11 @@ $messages['tr'] = array(
 );
 
 /** Vietnamese (Tiếng Việt)
+ * @author Minh Nguyen
  * @author Vinhtantran
  */
 $messages['vi'] = array(
+	'postcomment_desc' => 'Cho phép người dùng nhắn tin thẳng vào trang thảo luận.',
 	'postcomment_discussionprotected' => 'Trang thảo luận này đã được khóa không cho đăng nữa.',
 	'postcomment_notloggedin' => 'Bạn chưa đăng nhập.',
 	'postcomment_youareloggedinas' => 'Bạn đã đăng nhập với tên $1',

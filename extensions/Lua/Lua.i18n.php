@@ -59,6 +59,14 @@ $messages['ast'] = array(
 	'lua_overflow_time' => "Algamáu'l máximu tiempu d'execución",
 );
 
+/** Bulgarian (Български)
+ * @author DCLXVI
+ */
+$messages['bg'] = array(
+	'lua_error' => 'Грешка на ред $1',
+	'lua_error_internal' => 'Вътрешна грешка',
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */

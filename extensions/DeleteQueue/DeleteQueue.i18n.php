@@ -495,8 +495,11 @@ $messages['eo'] = array(
  ** Prizorgado
  ** El la projekta regiono',
 	'deletequeue-speedy-title' => 'Marki "$1" por rapida forigo',
+	'deletequeue-prod-title' => 'Proponi forigon de "$1"',
 	'deletequeue-delnom-otherreason' => 'Alia kialo',
 	'deletequeue-delnom-extra' => 'Plia informo:',
+	'deletequeue-delnom-submit' => 'Sendi peton',
+	'deletequeue-log-rmspeedy' => 'neis rapide forigi [[$1]].',
 	'right-prod-nominate' => 'Proponi forigon de paĝo',
 	'deletequeue-queue-speedy' => 'Rapida forigo',
 	'deletequeue-queue-prod' => 'Proponita forigo',
@@ -509,9 +512,12 @@ $messages['eo'] = array(
 	'deletequeue-review-reason' => 'Komentoj:',
 	'deletequeue-review-newreason' => 'Nova kialo:',
 	'deletequeue-review-newextra' => 'Plia informo:',
+	'deletequeue-review-original' => 'Kialo por peto',
+	'deletequeue-reviewspeedy-tab' => 'Kontroli rapidan forigon',
 	'deletequeue-reviewprod-tab' => 'Kontroli proponitan forigon',
 	'deletequeue-reviewdeletediscuss-tab' => 'Kontroli forigon',
 	'deletequeue-vote-reason' => 'Komentoj:',
+	'deletequeue-list-search-legend' => 'Serĉi paĝojn',
 	'deletequeue-list-status' => 'Statuso:',
 	'deletequeue-list-anyqueue' => '(iu)',
 	'deletequeue-list-votes' => 'Listo de voĉdonoj',
@@ -826,6 +832,9 @@ Tu pote registrar tu proprie declaration pro o contra iste deletion [{{fullurl:{
 	'deletequeue-list-queue' => 'Cauda:',
 	'deletequeue-list-status' => 'Stato:',
 	'deletequeue-list-expired' => 'Monstrar solmente nominationes que require clausura.',
+	'deletequeue-list-search' => 'Cercar',
+	'deletequeue-list-anyqueue' => '(omne)',
+	'deletequeue-list-votes' => 'Lista de votos',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

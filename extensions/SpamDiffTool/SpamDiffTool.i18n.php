@@ -616,6 +616,29 @@ $messages['tg-cyrl'] = array(
 	'spamdifftool_submit_buttom' => 'Ирсол',
 );
 
+/** Vietnamese (Tiếng Việt)
+ * @author Minh Nguyen
+ */
+$messages['vi'] = array(
+	'spamdifftool' => 'Quản lý danh sách đen spam',
+	'spamdifftool-desc' => 'Cung cấp một cách đơn giản để thêm khoản vào danh sách đen spam từ các trang so sánh',
+	'spamdifftool_cantedit' => 'Xin lỗi, bạn không có quyền sửa đổi danh sách đen spam.',
+	'spamdifftool_notext' => "Chưa cho vào văn bản để thêm vào danh sách đen spam. <a href='$1'>Tiếp tục</a>.",
+	'spamdifftool_confirm' => "Hãy xác nhận rằng muốn thêm các khoản này vào danh sách đen spam. (<a href='$1' target='new'>Báo cáo lỗi</a>.)",
+	'spamdifftool_summary' => 'Thêm vào danh sách đen spam',
+	'spamdifftool_urls_detected' => 'Các địa chỉ sau được nhận trong các sửa đổi. Bạn muốn thêm địa chỉ nào vào danh sách đen spam? Các tùy chọn này được xếp theo thứ tự hạn chế nhất đến dễ dãi nhất. Nếu cấm cả tên miền thì sẽ cấm liên kết nào mà dẫn đến phần nào của tên miền đó.
+
+Xin đừng cấm cả tên miền của website chứa tên miền phụ của người khác, như là blogpost.com, geocities.com, v.v.',
+	'spamdifftool_no_urls_detected' => "Không nhận được địa chỉ nào. <a href='$1'>Trở lại</a>.",
+	'spamdifftool_spam_link_text' => 'thêm danh sách spam',
+	'spamdifftool_option_domain' => 'tất cả tên miền',
+	'spamdifftool_option_subdomain' => 'tất cả tên miền phụ',
+	'spamdifftool_option_directory' => 'tên miền phụ và danh mục',
+	'spamdifftool_option_none' => 'không gì',
+	'spamdifftool_block' => 'Cấm:',
+	'spamdifftool_submit_buttom' => 'Cấm',
+);
+
 /** Volapük (Volapük)
  * @author Malafaya
  */

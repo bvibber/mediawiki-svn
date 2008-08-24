@@ -2832,6 +2832,7 @@ Không ai có thể dùng website để xem phiên bản sau khi nó được gi
 	'oversight-hidden' => 'Phiên bản giấu',
 	'oversight-header' => 'Đây là các phiên bản bị giấu luôn khỏi các độc giả.
 Nếu đưa ra thông tin này, bạn sẽ mất vĩnh viễn quyền giám sát.',
+	'oversight-legend' => 'Tìm kiếm trong nhật trình giấu phiên bản',
 );
 
 /** Volapük (Volapük)
