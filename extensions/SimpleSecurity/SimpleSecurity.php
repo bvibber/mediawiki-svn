@@ -26,7 +26,7 @@ $wgSecurityMagicGroup           = "ifgroup";                    # the name for d
 $wgSecurityLogActions           = array('edit', 'download');    # Actions that should be logged
 $wgSecurityUseDBHook            = true;                         # Use the DatabaseFetchHook to validate database access
 $wgSecurityAllowUser            = false;                        # Allow restrictions based on user not just group
-$wgSecurityAllowUnreadableLinks = true;                         # Should links to unreadable pages be allowed? (MW1.7+)
+$wgSecurityAllowUnreadableLinks = false;                        # Should links to unreadable pages be allowed? (MW1.7+)
 $wgSecurityRenderInfo           = true;                         # Renders security information for proctected articles
 
 # Extra actions to allow control over in protection form
@@ -230,11 +230,10 @@ class SimpleSecurity {
 		$this->pageRestrictions($rights, $groups, $title);
 
 		# Add PR (rules from article's protect tab) items to info array
+		# - allows rules in protection tab to override those from $wgPageRestrictions
 		if (!$title->mRestrictionsLoaded) $title->loadRestrictions();
 		foreach ($title->mRestrictions as $a => $g) if (count($g)) {
 			$this->info['PR'][] = array($a, $g, wfMsg('security-desc-PR'));
-			
-			# Allow rules in protection tab to override those from $wgPageRestrictions
 			if (array_intersect($groups, $g)) $rights[] = $a;
 		}
 
