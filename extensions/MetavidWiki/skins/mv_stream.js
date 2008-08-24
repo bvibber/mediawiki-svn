@@ -369,7 +369,7 @@ function mv_edit_disp(titleKey, mvd_id){
 
 		//if mvd_type==anno_en
 		//add buttons
-		mwSetupToolbar();
+		//mwSetupToolbar();
 		mwEditButtons = []; //empty edit buttons
 
 		if(mvd_type=='anno_en'){

@@ -47,7 +47,8 @@ var mv_default_thumb_url = mv_embed_path + 'images/vid_default_thumb.jpg';
 
 if(!gMsg){var gMsg={};}
 //all default msg in [english] should be overwritten by the CMS language msg system.
-gMsg['loading_txt'] ='loading<blink>...</blink>';
+gMsg['loading_txt'] ='loading <blink>...</blink>';
+gMsg['loading_plugin'] ='loading plugin<blink>...</blink>';
 gMsg['select_playback']='Set Playback Preference';
 gMsg['link_back']='Link Back';
 gMsg['error_load_lib']='mv_embed: unable to load required javascript libraries\n'+
@@ -194,7 +195,7 @@ var mvEmbed = {
   	this.flist.push(fn);
   },
   init: function(){
-    	//load css:
+    //load css:
   	if(!styleSheetPresent(mv_embed_path+'mv_embed.css'))
 		loadExternalCss(mv_embed_path+'mv_embed.css');
   	if(!styleSheetPresent(mv_embed_path+'skin/styles.css'))
@@ -203,11 +204,12 @@ var mvEmbed = {
   	//call the callback:
   	if(this.load_callback)this.load_callback();
 	mv_embed();
-		//affter init run any queued functions:
-		//js_log('run queue functions:' + mvEmbed.flist);
-		while (mvEmbed.flist.length){
-			mvEmbed.flist.shift()();
-		}
+	
+	//affter init run any queued functions:
+	//js_log('run queue functions:' + mvEmbed.flist);
+	while (mvEmbed.flist.length){
+		mvEmbed.flist.shift()();
+	}
   }
 }
 
@@ -263,14 +265,23 @@ mediaPlayer.prototype =
 				js_log('requesting plugin: ' + plugin_path);
 				var _this = this;
 				//swaped for doLoad so that we use cache 
-				// getScript has cache disabled for some reason (probably could be set up at init to cache)  
+				// getScript has cache disabled for some reason (probably could be set up at init to cache)
+				
+				//I am getting vlEmebed is not defined like 1/5 or 1/20th the time
+				//the load order should be more defined and ordered via callbacks  
 				$j.getScript(plugin_path, function(){				
 					js_log(_this.id + ' plugin loaded');
 					_this.loaded = true;					
 					for(var i in _this.loading_callbacks)
 						_this.loading_callbacks[i]();
 					_this.loading_callbacks = null;
-				});
+				});				
+				/*eval('var lib = {"'+this.library+'Embed":\'embedLibs/mv_'+this.library+'Embed.js\'}'); 
+				mvJsLoader.doLoad(lib,function(){
+					js_log(_this.id + ' plugin loaded');
+					_this.loaded = true;
+					callback();	
+				});*/
 			}
 		}
 	}
@@ -1499,7 +1510,7 @@ embedVideo.prototype = {
 			return parseInt(this.height.replace('px',''));
 	},
 	init: function(element){		
-		this.element_pointer = element;
+		//this.element_pointer = element;
 
 		//inherit all the default video_attributes
 	    for(var attr in default_video_attributes){
@@ -1545,12 +1556,10 @@ embedVideo.prototype = {
 		}
 
         this.selected_player = embedTypes.players.defaultPlayer(this.media_element.selected_source.mime_type);
-        if(this.selected_player)
-        {
+        if(this.selected_player){
             js_log('selected ' + this.selected_player.getName());
             js_log("PLAYBACK TYPE: "+this.selected_player.library);
-        }
-        else
+        }else
             js_log('no player found for mime type ' + this.media_element.selected_source.mime_type);
 
         this.thumbnail_disp = true;
@@ -1593,18 +1602,24 @@ embedVideo.prototype = {
 //		if(!this.selected_player){
 //			return this.getPluginMissingHTML();
 		
+		//Set "loading" here
+		$j('#mv_embedded_player_'+_this.id).html(''+
+					'<div style="color:black;width:'+this.width+';height:'+this.height+';">' + 
+						getMsg('loading_plugin') + 
+					'</div>'					
+		);
 		this.selected_player.load(function()
 		{
 			js_log('performing embed for ' + _this.id);
 			_this = $j('#'+_this.id).get(0);
-			var embed_code = _this.getEmbedHTML();
-			js_log(embed_code);
-			document.getElementById('mv_embedded_player_'+_this.id).innerHTML=embed_code;
+			//var embed_code = _this.getEmbedHTML();
+			//js_log(embed_code);
+			$j('#mv_embedded_player_'+_this.id).html(embed_code);
 			js_log('changed embed code');
 			_this.paused = false;
 			_this.thumbnail_disp=false;
 			$j("#mv_play_pause_button_"+_this.id).attr('class', 'pause_button');
-		});
+		});		
     },
     doThumbnailHTML:function()
     {
@@ -2184,8 +2199,10 @@ embedVideo.prototype = {
 				dl_list+=dl_line;
 			}
         });
-        out+='</blockquote>'+getMsg('download_full')+"<blockquote>"+dl_list+'</blockquote>';
-		out+='</blockquote>'+getMsg('download_text')+"<blockquote>"+dl_txt_list+'</blockquote></span>';
+        if(dl_list!='')
+        	out+='</blockquote>'+getMsg('download_full')+"<blockquote>"+dl_list+'</blockquote>';
+        if(dl_txt_list!='')
+			out+='</blockquote>'+getMsg('download_text')+"<blockquote>"+dl_txt_list+'</blockquote></span>';
        	return out;
 	},
 	/*getDLlist:function(transform_function){
@@ -2209,7 +2226,7 @@ embedVideo.prototype = {
 			//js_log('rewrite embed');
 			if(!this.selected_player){
 				//this.innerHTML = this.getPluginMissingHTML();
-				//$j('#'+this.id).html(this.getPluginMissingHTML());
+				//$j(this).html(this.getPluginMissingHTML());
 				this.innerHTML = this.getPluginMissingHTML();
 			}else
                 this.doEmbedHTML();
@@ -2381,13 +2398,6 @@ embedVideo.prototype = {
 		var id = (this.pc)?this.pc.pp.id:this.id;
 		//update status:
 		$j('#info_'+id).html(value);
-	},
-	wrapEmebedContainer:function(embed_code){
-		//check if parent clip is set( ie we are in a playlist so name the embed container by playlistID)
-		var id = (this.pc!=null)?this.pc.pp.id:this.id;
-		return '<div id="mv_ebct_'+id+'" style="width:'+this.width+';height:'+this.height+';">' +
-					embed_code +
-				'</div>';
 	},
 	getControlsHtml : function(type){
 		var id = (this.pc)?this.pc.pp.id:this.id;
@@ -2563,15 +2573,19 @@ function mv_jsdata_cb(response){
 				if(xmldata)response['pay_load']=xmldata;
 			}
 		break
+		default:
+			js_log('bad response type' + response['content-type']);
+			return false;
+		break;
 	}
 	global_req_cb[response['cb_inx']](response['pay_load']);
 }
 //load external js via dom injection
 //@@todo swich over to jQuery injection
-function loadExternalJs(url){
+function loadExternalJs(url, callback){
    	js_log('load js: '+ url);
     //if(window['$j'])
-   //	$j.getScript(url);
+   //	$j.getScript(url, callback);
     	//have to use direct ajax call insted of $j.getScript()
     	//since you can't send "cache" option to $j.getScript()
        /*$j.ajax({
