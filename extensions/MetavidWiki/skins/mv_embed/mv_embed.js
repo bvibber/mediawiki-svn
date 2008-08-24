@@ -555,7 +555,7 @@ var embedTypes = {
 			 hasObj = false;
 		 }
 		 return hasObj;
-	 },
+	 }
 }
 
 /*********** INITIALIZATION CODE *************
