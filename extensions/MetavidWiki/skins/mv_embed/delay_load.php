@@ -1,5 +1,5 @@
 <?php
-die('delay load is dissabled by default, should only be used for testing');
+//die('delay load is dissabled by default, should only be used for testing');
 
 sleep(1);
 if(isset($_SERVER['PATH_INFO'])){

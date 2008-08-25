@@ -56,7 +56,7 @@ $sample_embed[2]['desc']='';
 //$sample_embed[1]['tag'] = '<video roe="http://192.168.0.104/mvWiki/index.php?title=Special:MvExportStream&feed_format=roe&stream_name=Senate_proceeding_08-01-07&t=0:00:00/0:05:00">';
 //$sample_embed[1]['desc'] = 'Demo of json ROE attribute';
 
-$sample_embed[3]['tag'] = '<video style="width:100%; height:100%" roe="http://metavid.ucsc.edu/wiki/index.php?title=Special:MvExportStream&feed_format=roe&stream_name=Senate_proceeding_08-01-07&t=0:06:00/0:07:00"></video>';
+$sample_embed[3]['tag'] = '<video style="width:400px;height:300px" roe="http://metavid.ucsc.edu/mvw-exp/index.php?title=Special:MvExportStream&feed_format=roe&stream_name=Senate_proceeding_08-01-07&t=0:06:00/0:07:00"></video>';
 $sample_embed[3]['desc'] = 'Demo2  of json ROE attribute';
 
 
@@ -130,6 +130,6 @@ $sample_embed[7]['desc'] = '<b>Inline Playlist:</b> for more info see <a href="h
 	    }
    } ?>
   </table>
-	<br /><br />&nbsp;
+	<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />&nbsp;
   </body>
 </html>
