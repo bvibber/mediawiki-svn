@@ -10,6 +10,16 @@
  *
  * For details, see http://meta.wikimedia.org/wiki/XFF_project
  */
+
+$wgExtensionCredits['other'][] = array(
+	'name'           => 'TrustedXFF',
+	'svn-date'       => '$LastChangedDate$',
+	'svn-revision'   => '$LastChangedRevision$',
+	'description'    => 'Handling of trusted proxy addresses (XFF)',
+	'descriptionmsg' => 'trustedxff-desc',
+	'author'         => 'Tim Starling'
+);
+$wgExtensionMessagesFiles['TrustedXFF'] = dirname(__FILE__) . '/TrustedXFF.i18n.php';
 $wgTrustedXffFile = dirname(__FILE__).'/trusted-xff.cdb';
 
 /** Hook registration */
