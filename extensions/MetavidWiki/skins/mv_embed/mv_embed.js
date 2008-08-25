@@ -157,7 +157,8 @@ var mvEmbed = {
   lib_plugins:{
 	'$j.fn.offsetParent':'jquery/plugins/jquery.dimensions.js',
 	'$j.ui.mouseInteraction':'jquery/plugins/ui.mouse.js',
-	'$j.ui.slider':'jquery/plugins/ui.slider.js'
+	'$j.ui.slider':'jquery/plugins/ui.slider.js',
+	'$j.timer.global':'jquery/plugins/jquery.timers.js'
   },
   pc:null, //used to store pointer to parent clip (when in playlist mode)
   load_libs:function(callback){
@@ -262,8 +263,8 @@ mediaPlayer.prototype =
 	{
 		if(this.loaded)
 		{
-			js_log('plugin loaded, processing immediately');
-			callback();
+			js_log('plugin loaded, scheduling immediate processing');
+			$j(document).oneTime(1, callback);
 		}
 		else
 		{
@@ -279,14 +280,14 @@ mediaPlayer.prototype =
 				
 				//I am getting vlEmebed is not defined like 1/5 or 1/20th the time
 				//the load order should be more defined and ordered via callbacks  
-				/*$j.getScript(plugin_path, function(){				
+				$j.getScript(plugin_path, function(){				
 					js_log(_this.id + ' plugin loaded');
 					_this.loaded = true;					
 					for(var i in _this.loading_callbacks)
 						_this.loading_callbacks[i]();
 					_this.loading_callbacks = null;
-				});	*/			
-				eval('var lib = {"'+this.library+'Embed":\'embedLibs/mv_'+this.library+'Embed.js\'}'); 
+				});		
+/*				eval('var lib = {"'+this.library+'Embed":\'embedLibs/mv_'+this.library+'Embed.js\'}'); 
 				mvJsLoader.doLoad(lib,function(){
 					js_log(_this.id + ' plugin loaded');
 					_this.loaded = true;
@@ -294,7 +295,7 @@ mediaPlayer.prototype =
 					for(var i in _this.loading_callbacks)
 						_this.loading_callbacks[i]();
 					_this.loading_callbacks = null;
-				});
+				});*/
 			}
 		}
 	}
@@ -877,12 +878,9 @@ function swapEmbedVideoElement(video_element, videoInterface){
   	$j(video_element).after(embed_video).remove();	
   	js_log('did swap');  	  	
   	$j('#'+embed_video.id).get(0).onDOMswap();
-	// now that "embed_video" is stable, do more initialization (if we are ready) 
-	if($j('#'+embed_video.id).get(0).loading_external_data==false){		
+	// now that "embed_video" is stable, do more initialization (if we are ready)
+	if($j('#'+embed_video.id).get(0).loading_external_data==false)
 		$j('#'+embed_video.id).get(0).more_init();
-  		//update HTML
-  		$j('#'+embed_video.id).get(0).getHTML();
-	}
 	
 	//js_log('vid elm:'+ $j(video_element).html() );
 
@@ -1615,6 +1613,7 @@ embedVideo.prototype = {
 		js_log('f:onDOMswap');
 		// Process the provided ROE file... if we don't yet have sources
         if(this.roe && this.media_element.sources.length==0 ){
+			js_log('loading external data');
         	this.loading_external_data=true;
         	var _this = this;              	  
             do_request(this.roe, function(data)
@@ -1622,10 +1621,7 @@ embedVideo.prototype = {
             	//continue      	         	
             	_this.media_element.addROE(data);                                      
                 js_log('added_roe::' + _this.media_element.sources);               
-                _this.more_init(function(){
-                	js_log('getting html for: '+ _this.id);
-                	_this.getHTML()
-                });
+                _this.more_init();
                 js_log('done loading ROE  '+_this.thumbnail_disp )
                 _this.loading_external_data=false;                                             
             });
@@ -1657,6 +1653,9 @@ embedVideo.prototype = {
 	    * place the base functions in parent.{function name}
 	    */
 		this.inheritEmbedObj(ready_callback);
+
+  		//update HTML
+  		$j('#'+embed_video.id).get(0).getHTML();
 
 		//js_log('HTML FROM IN OBJECT' + this.getHTML());
 		//return this object:
@@ -1712,6 +1711,7 @@ embedVideo.prototype = {
 						getMsg('loading_plugin') + 
 					'</div>'					
 		);
+		// schedule embedding
 		this.selected_player.load(function()
 		{
 			js_log('performing embed for ' + _this.id);			
@@ -1722,7 +1722,7 @@ embedVideo.prototype = {
 			_this.paused = false;
 			_this.thumbnail_disp=false;
 			$j("#mv_play_pause_button_"+_this.id).attr('class', 'pause_button');
-		});		
+		});
     },
     doThumbnailHTML:function()
     {
@@ -1742,8 +1742,12 @@ embedVideo.prototype = {
     },
     refreshControlsHTML:function()
     {
+		js_log('refreshing controls HTML');
 		if($j('#mv_embedded_controls_'+this.id).length==0)
+		{
+			js_log('#mv_embedded_controls_'+this.id + ' not present, returning');
 			return;
+		}
         var available_width = this.playerPixelWidth();
         var html_code='';
         // borders
@@ -1858,6 +1862,7 @@ embedVideo.prototype = {
 				
 			if(ready_callback)
 				ready_callback();
+			js_log('plugin load callback complete');
 		});
 	},
 	getHTML : function (){		
@@ -2454,6 +2459,7 @@ embedVideo.prototype = {
 	    	 if (document.embeds && document.embeds[this.pid])
 	        	return  document.embeds[this.pid];
 		}
+		return null;
 	},
 	activateSlider : function(slider_id){
 		var id = (this.pc)?this.pc.pp.id:this.id;
@@ -2793,7 +2799,7 @@ function js_log(string){
      /*
       * IE and non-firebug debug:
       */
-     /*var log_elm = document.getElementById('mv_js_log');
+/*     var log_elm = document.getElementById('mv_js_log');
      if(!log_elm){
      	document.write('<div style="position:absolute;z-index:500;top:0px;left:0px;right:0px;height:150px;"><textarea id="mv_js_log" cols="80" rows="6"></textarea></div>');
      	var log_elm = document.getElementById('mv_js_log');

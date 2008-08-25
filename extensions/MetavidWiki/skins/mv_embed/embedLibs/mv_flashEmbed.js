@@ -1,3 +1,4 @@
+js_log('**** flashEmbed processing');
 /**
  * flashembed 0.25. Adobe Flash embedding script
  *
@@ -369,6 +370,8 @@ var flashEmbed = {
     monitor : function()
     {
     	this.getFLA();
+        if(!this.fla['getTime'])
+            return;
         var time = this.fla.getTime();
         //flash is giving bogus duration get from this        
         var end_ntp = (this.media_element.selected_source.end_ntp)?
