@@ -16,10 +16,9 @@ require_once( '../../../maintenance/commandLine.inc' );
 require_once('maintenance_util.inc.php');
 require_once('scrape_and_insert.inc.php');
 
-
- if ( count( $args ) == 0 || isset( $options['help'] ) ) {
- 	usage();
- }
+if ( count( $args ) == 0 || isset( $options['help'] ) ) {
+	usage();
+}
  function usage(){
  	print  <<<EOT
 

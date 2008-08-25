@@ -258,20 +258,36 @@ class MV_SpecialMediaSearch {
 	function doSearch($log_search=true) {
 		global $mvEnableSearchDigest;
 		$mvIndex = new MV_Index();
-		//do search digest
-		global $wgRequest;
-		if ($mvEnableSearchDigest && $wgRequest->getVal('tl') != '1' && $log_search) {
+		
+		global $wgRequest;		
+
+		$this->results = $mvIndex->doUnifiedFiltersQuery($this->filters);
+		$this->num = $mvIndex->numResults();
+		$this->numResultsFound = $mvIndex->numResultsFound();
+		if (isset ($mvIndex->offset))
+			$this->offset = $mvIndex->offset;
+		if (isset ($mvIndex->limit))
+			$this->limit = $mvIndex->limit;
+		if (isset ($mvIndex->order))
+			$this->order = $mvIndex->order;			
+			
+		//do search digest (if global config, function req and num_results fit criteria)
+		if ($mvEnableSearchDigest && 
+			$wgRequest->getVal('tl') != '1' && 
+			$log_search &&
+			$this->numResultsFound!=0 ) 
+		{
 			$dbw = & wfGetDB(DB_WRITE);
 			$dbr = & wfGetDB(DB_READ);
 			//print "DO SEARCH FOR: ". $this->getFilterDesc($query_key = true) . "\n";
-			//print var_dump(debug_backtrace());
-
+			//print var_dump(debug_backtrace());			
 			//@@todo non-blocking insert... is that supported in mysql/php?
 			$dbw->insert('mv_search_digest', array (
-				'query_key' => $this->getFilterDesc($query_key = true
-			), 'time' => time()), 'Database::searchDigestInsert');
+				'query_key' => $this->getFilterDesc($query_key = true),
+				'time' => time()),
+			 'Database::searchDigestInsert');
 			//make sure the query key exists and is updated
-			//@@todo I think we can do a INSERT IF not found here?
+			//@@todo I think we can do a INSERT IF NOT found here?
 			$res = $dbr->select('mv_query_key_lookup', array (
 				'filters'
 			), array (
@@ -283,16 +299,7 @@ class MV_SpecialMediaSearch {
 				), 'filters' => serialize($this->filters)));
 			}
 		}
-
-		$this->results = $mvIndex->doUnifiedFiltersQuery($this->filters);
-		$this->num = $mvIndex->numResults();
-		$this->numResultsFound = $mvIndex->numResultsFound();
-		if (isset ($mvIndex->offset))
-			$this->offset = $mvIndex->offset;
-		if (isset ($mvIndex->limit))
-			$this->limit = $mvIndex->limit;
-		if (isset ($mvIndex->order))
-			$this->order = $mvIndex->order;
+			
 	}
 	/*list all the meta *layer* types */
 	function powerSearchOptions() {

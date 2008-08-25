@@ -30,6 +30,8 @@ var global_req_cb = new Array();//the global request callback array
 var _global = this;
 var mv_init_done=false;
 
+//this only affects roe based source media files
+
 var debug_global_vid_ref=null;
 /*
  * its best if you just require all your external data sources to serve up json data.
@@ -1474,8 +1476,10 @@ mediaElement.prototype =
         }
         var source = new mediaSource(element);
         this.sources.push(source);
-        if(this.isPlayableType(source.mime_type))
-            this.playable_sources.push(source);
+        //check if we support the mime type and its a url based time segment
+        if(this.isPlayableType(source.mime_type)){        	
+           this.playable_sources.push(source);
+        }
     },
     /** Imports media sources from ROE data.
         @param roe_data ROE data.
@@ -1710,7 +1714,7 @@ embedVideo.prototype = {
         this.thumbnail_disp = true;
         var embed_code = this.getThumbnailHTML();              
         
-        js_log("embed code: " + embed_code);
+        //js_log("embed code: " + embed_code);
         if($j('#mv_embedded_player_'+this.id).length==0)
         	js_log("can't find mv_embedded_player_"+this.id);
         	
@@ -2232,6 +2236,7 @@ embedVideo.prototype = {
         var _this=this;
         var out='<span style="color:white"><blockquote>';
         var _this=this;
+        //js_log('selected src'+ _this.media_element.selected_source.url);
 		$j.each(this.media_element.playable_sources, function(index, source)
         {     		
 	        var default_player = embedTypes.players.defaultPlayer(source.getMIMEType());
@@ -2486,7 +2491,7 @@ embedVideo.prototype = {
 	setStatus:function(value){
 		var id = (this.pc)?this.pc.pp.id:this.id;
 		//update status:
-		$j('#info_'+id).html(value);
+		$j('#mv_time_'+id).html(value);
 	},
 	getControlsHtml : function(type){
 		var id = (this.pc)?this.pc.pp.id:this.id;
@@ -2767,14 +2772,14 @@ function js_log(string){
      /*
       * IE and non-firebug debug:
       */
-     var log_elm = document.getElementById('mv_js_log');
+     /*var log_elm = document.getElementById('mv_js_log');
      if(!log_elm){
      	document.write('<div style="position:absolute;z-index:500;top:0px;left:0px;right:0px;height:150px;"><textarea id="mv_js_log" cols="80" rows="6"></textarea></div>');
      	var log_elm = document.getElementById('mv_js_log');
      }
      if(log_elm){
      	log_elm.value+=string+"\n";
-     }
+     }*/
    }
 }
 function getNextHighestZindex(obj){
