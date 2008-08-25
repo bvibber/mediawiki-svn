@@ -46,7 +46,7 @@ if(!mv_embed_path){
 	getMvEmbedPath();
 }
 //here you can add in delay load refrence to test things with delayed load time: 
-//mv_embed_path = mv_embed_path + 'delay_load.php/'; 
+mv_embed_path = mv_embed_path + 'delay_load.php/'; 
 
 //the default thumbnail for missing images:
 var mv_default_thumb_url = mv_embed_path + 'images/vid_default_thumb.jpg';
@@ -867,6 +867,7 @@ function swapEmbedVideoElement(video_element, videoInterface){
 			}
 		}
 	}
+	js_log('got onDOMswap:'+embed_video.onDOMswap );
 	///js_log('did vI style');  
 	//now swap out the video element for the embed_video obj:  	
   	$j(video_element).after(embed_video).remove();	

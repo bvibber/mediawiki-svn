@@ -332,7 +332,7 @@ var flashEmbed = {
         { config: { autoPlay: true, hideControls: true,
            videoFile: this.media_element.selected_source.uri } });
         js_log('setInterval');
-        this.update_interval = setInterval('document.getElementById(\''+this.id+'\').updateGUI()', 500);
+        this.update_interval = setInterval('document.getElementById(\''+this.id+'\').updateGUI()', 250);
     },
     /* js hooks/controls */
     play : function(){
@@ -353,12 +353,9 @@ var flashEmbed = {
     {
         var time = this.getPluginEmbed().getTime();
         var duration = this.getPluginEmbed().getDuration();
-        document.getElementById('mv_time_'+this.id).innerHTML=
-            seconds2ntp(time, false) + '/' +
-            seconds2ntp(duration, false);
-        var seeker = document.getElementById('mv_seeker_slider_'+this.id);
-        if(seeker != null)
-            seeker.style.marginLeft = (3 + 114 * time / duration) + 'px';
+       	this.setStatus( seconds2ntp(time, false) + '/' + seconds2ntp(duration, false));
+        if($j('#mv_seeker_slider_'+this.id).length!=0)      
+            $j('#mv_seeker_slider_'+this.id).css({'marginLeft':(3 + 114 * time / duration) + 'px'});
     }
 }
 

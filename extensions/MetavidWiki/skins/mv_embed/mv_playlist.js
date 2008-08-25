@@ -76,8 +76,7 @@ mvPlayList.prototype = {
 	    //if style is set override width and height
 	    if(element.style.width)this.width = parseInt(element.style.width.replace('px',''));
 	    if(element.style.height)this.height = parseInt(element.style.height.replace('px',''));
-	    
-	   
+	    	   
 	    //@@todo more attribute value checking: 
 	    
     	//if no src is specified try and use the innerHTML as a sorce type:
