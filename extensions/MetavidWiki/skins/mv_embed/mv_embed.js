@@ -30,7 +30,8 @@ var global_req_cb = new Array();//the global request callback array
 var _global = this;
 var mv_init_done=false;
 
-//this only affects roe based source media files
+//this restricts playable sources to ROE xml media without start end time atttribute
+var mv_restrict_roe_time_source = true;
 
 var debug_global_vid_ref=null;
 /*
@@ -46,7 +47,7 @@ if(!mv_embed_path){
 	getMvEmbedPath();
 }
 //here you can add in delay load refrence to test things with delayed load time: 
-mv_embed_path = mv_embed_path + 'delay_load.php/'; 
+//mv_embed_path = mv_embed_path + 'delay_load.php/'; 
 
 //the default thumbnail for missing images:
 var mv_default_thumb_url = mv_embed_path + 'images/vid_default_thumb.jpg';
@@ -278,19 +279,22 @@ mediaPlayer.prototype =
 				
 				//I am getting vlEmebed is not defined like 1/5 or 1/20th the time
 				//the load order should be more defined and ordered via callbacks  
-				$j.getScript(plugin_path, function(){				
+				/*$j.getScript(plugin_path, function(){				
 					js_log(_this.id + ' plugin loaded');
 					_this.loaded = true;					
 					for(var i in _this.loading_callbacks)
 						_this.loading_callbacks[i]();
 					_this.loading_callbacks = null;
-				});				
-				/*eval('var lib = {"'+this.library+'Embed":\'embedLibs/mv_'+this.library+'Embed.js\'}'); 
+				});	*/			
+				eval('var lib = {"'+this.library+'Embed":\'embedLibs/mv_'+this.library+'Embed.js\'}'); 
 				mvJsLoader.doLoad(lib,function(){
 					js_log(_this.id + ' plugin loaded');
 					_this.loaded = true;
-					callback();	
-				});*/
+					//callback();	
+					for(var i in _this.loading_callbacks)
+						_this.loading_callbacks[i]();
+					_this.loading_callbacks = null;
+				});
 			}
 		}
 	}
@@ -1239,9 +1243,15 @@ mediaSource.prototype =
             parts[1]=parts[1].replace('x-flv', 'flash');
             this.title = parts[1] + ' ' + parts[0];
         }
+        
         if (element.hasAttribute("id"))
             this.id = element.getAttribute("id");
-
+                        
+		//@@todo parse start time format and put into start_ntp
+		if(element.hasAttribute("start"))
+			this.start = element.getAttribute("start");
+		if(element.hasAttribute("end"))
+			this.start = element.getAttribute("end");
         //js_log('Adding mediaSource of type ' + this.mime_type + ' and uri ' + this.uri + ' and title ' + this.title);
         this.parseURLDuration();
     },
@@ -1363,9 +1373,7 @@ function mediaElement(video_element)
 mediaElement.prototype =
 {
     /** The array of mediaSource elements. */
-    sources:null,
-    /** Playable sources **/
-    playable_sources:null,
+    sources:null,    
     addedROEData:false,
     /** Selected mediaSource element. */
     selected_source:null,
@@ -1378,7 +1386,6 @@ mediaElement.prototype =
         var _this = this;
         js_log('Initializing mediaElement...');
         this.sources = new Array();
-        this.playable_sources = new Array();
         this.thumbnail = mv_default_thumb_url;
         // Process the <video> element
         this.tryAddSource(video_element);
@@ -1421,17 +1428,18 @@ mediaElement.prototype =
     	//@@todo read user preference for source
     	
     	// Select the default source
-        for (var source in this.playable_sources){
-            if(this.playable_sources[source].marked_default){
-                this.selected_source = this.playable_sources[source];
+    	var playable_sources = this.getPlayableSources();
+        for (var source in playable_sources){
+            if(playable_sources[source].marked_default){
+                this.selected_source = playable_sources[source];
                 return true;
             }
         }        
         // select streams that start with 'mv_' first source 
         if (!this.selected_source)
         {
-            js_log('autoselecting first source:' + this.playable_sources[0]);
-            this.selected_source = this.playable_sources[0];
+            js_log('autoselecting first source:' + playable_sources[0]);
+            this.selected_source = playable_sources[0];
         }
     },
     /** Returns the thumbnail URL for the media element.
@@ -1476,11 +1484,20 @@ mediaElement.prototype =
         	}
         }
         var source = new mediaSource(element);
-        this.sources.push(source);
-        //check if we support the mime type and its a url based time segment
-        if(this.isPlayableType(source.mime_type)){        	
-           this.playable_sources.push(source);
-        }
+        this.sources.push(source);        
+    },
+    getPlayableSources: function(){
+    	 var playable_sources= new Array();
+    	 for(var i in this.sources){
+    	 	if(this.isPlayableType(this.sources[i].mime_type)){
+    	 		if(mv_restrict_roe_time_source){
+    	 			if(this.sources[i]['start'])
+    	 				continue;	
+    	 		}
+    	 		playable_sources.push(this.sources[i]);
+    	 	}
+    	 }
+    	 return playable_sources;
     },
     /** Imports media sources from ROE data.
         @param roe_data ROE data.
@@ -1787,7 +1804,7 @@ embedVideo.prototype = {
         if(this.supports['play_head'] && (available_width > 18))
         {
             html_code +=
-                    '	<div class="seeker" style="width: ' + (available_width - 18) + 'px;">';
+                    '	<div class="seeker" id="mv_seeker_'+this.id+'" style="width: ' + (available_width - 18) + 'px;">';
             html_code+=
                     '		<div class="seeker_bar">'+
                     '			<div class="seeker_bar_outer"></div>'+
@@ -2238,7 +2255,7 @@ embedVideo.prototype = {
         var out='<span style="color:white"><blockquote>';
         var _this=this;
         //js_log('selected src'+ _this.media_element.selected_source.url);
-		$j.each(this.media_element.playable_sources, function(index, source)
+		$j.each(this.media_element.getPlayableSources(), function(index, source)
         {     		
 	        var default_player = embedTypes.players.defaultPlayer(source.getMIMEType());
 	        var source_select_code = 'document.getElementById(\''+_this.id+'\').closeDisplayedHTML(); document.getElementById(\''+_this.id+'\').media_element.selectSource(\''+index+'\');';
@@ -2255,8 +2272,7 @@ embedVideo.prototype = {
 	                retval+='<a href="#" onClick="' + source_select_code + 'embedTypes.players.userSelectPlayer(\''+default_player.id+'\',\''+source.getMIMEType()+'\'); return false;">';
 	            out += source.getTitle()+/*' - ' + default_player.getName() +*/ (is_not_selected?'</a>':'') + ' ';
 	            out += /*'(<a href="#" onClick=\'$j("#player_select_list_'+index+'").fadeIn("slow");return false;\'>choose player</a>)' +*/ player_code;           
-	        }
-	        else
+	        }else
 	            out+= source.getTitle() + ' - no player available';
         });
         out+='</blockquote></span>';
@@ -2483,10 +2499,12 @@ embedVideo.prototype = {
 	setSliderValue: function(perc){
 		var id = (this.pc)?this.pc.pp.id:this.id;
 		//this.slider.setValue(perc);
-		var cur_slider = $j('#playhead_'+id).width();
-		var offset_perc = 1-(cur_slider / $j('#slider_'+id).width());
-		var val = Math.round( offset_perc* (perc *  $j('#slider_'+id).width() ) );
-		$j('#playhead_'+id).css('left',val);
+		//var cur_slider = $j('#mv_seeker_'+id).width();		
+		//var offset_perc = 1-(cur_slider / $j('#mv_seeker_'+id).width());
+		//offset_perc* 
+		var val = Math.round( perc  * $j('#mv_seeker_'+id).width()  );
+		$j('#mv_seeker_slider_'+id).css('marginLeft',val);
+		js_log('perc in: ' + perc + ' * ' + $j('#mv_seeker_'+id).width() + ' = set to: '+ val);
 		//js_log('op:' + offset_perc + ' *('+perc+' * ' + $j('#slider_'+id).width() + ')');
 	},
 	setStatus:function(value){
@@ -2582,8 +2600,10 @@ function ntp2seconds(ntp){
 		return null;
 	}
 	times = ntp.split(':');
-	if(times.length!=3)
+	if(times.length!=3){
+		js_log('ntp2seconds:not valid ntp:'+ntp);
 		return null;
+	}
 	//return seconds float (ie take seconds float value if present):
 	return parseInt(times[0]*3600)+parseInt(times[1]*60)+parseFloat(times[2]);
 }

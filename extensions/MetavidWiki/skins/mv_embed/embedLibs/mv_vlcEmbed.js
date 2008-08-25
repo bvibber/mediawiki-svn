@@ -56,9 +56,9 @@ var vlcEmbed = {
 			if(this.controls){				
 				//activate the slider: scriptaculus based)
 				this.activateSlider();  
-				//start doing status updates every 1/10th of a second
-			    setTimeout('document.getElementById(\''+this.id+'\').monitor()',100);		    		
-			}							
+				//start doing status updates every 1/10th of a second			   	    		
+			}		
+			setTimeout('$j(\'#'+this.id+'\').get(0).monitor()',100);						
     	}else{
     		js_log('vlc not ready');
     		setTimeout('document.getElementById(\''+this.id+'\').postEmbedJS()',100);	
@@ -184,9 +184,11 @@ var vlcEmbed = {
 						this.setSliderValue(this.vlc.input.position);
 					}else{
 						//set via time:
-						//js_log('set slider:'+(this.vlc.input.time-this.start_offset) + ' / ' + this.mediaLen +
-						//' ='+  (this.vlc.input.time-this.start_offset)/this.mediaLen );
-						this.setSliderValue( ((this.vlc.input.time-this.start_offset)/1000)/this.duration);
+						/*js_log('t:' +(this.vlc.input.time/1000) +' - so:'+this.start_offset+
+							' set slider:' + ((this.vlc.input.time/1000)-this.start_offset) + ' / ' + this.duration +
+							' ='+  ((this.vlc.input.time/1000)-this.start_offset)/this.duration );
+						*/
+						this.setSliderValue( ((this.vlc.input.time/1000) -this.start_offset) / this.duration);
 					}  	        
 					this.setStatus(seconds2ntp(this.currentTime) + ' / ' + seconds2ntp(this.duration+this.start_offset) );					
 			   }else{

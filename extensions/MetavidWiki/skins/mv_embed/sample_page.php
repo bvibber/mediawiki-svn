@@ -50,7 +50,7 @@ $sample_embed[1]['desc']='flash video usage with manual controls:<br />'.
 					'<a href="javascript:document.getElementById(\'vflash\').play();">Play</a> | '.
 					'<a href="javascript:document.getElementById(\'vflash\').stop();">Stop</a> <br />';
 
-$sample_embed[2]['tag']='<video style="width:400px"><source type="video/ogg" src="http://128.114.20.64/media/senate_proceeding_05-15-08.ogg.anx?t=0:00:00/0:20:00" title="annodex ogg"/><source src="http://www.archive.org/download/mv_senate_proceeding_05-15-08/senate_proceeding_05-15-08.flv" title="flash"/></video>';
+$sample_embed[2]['tag']='<video style="width:400px"><source src="http://mvbox2.cse.ucsc.edu/mvFlvServer.php/senate_proceeding_08-01-07.flv?t=0:20:00/0:21:00" title="flash"/></video>';
 $sample_embed[2]['desc']='';
 
 //$sample_embed[1]['tag'] = '<video roe="http://192.168.0.104/mvWiki/index.php?title=Special:MvExportStream&feed_format=roe&stream_name=Senate_proceeding_08-01-07&t=0:00:00/0:05:00">';
@@ -114,7 +114,7 @@ $sample_embed[7]['desc'] = '<b>Inline Playlist:</b> for more info see <a href="h
 ?>
   <table border="1" cellpadding="6" width="600">
   	<? foreach($sample_embed as $key=>$aval){
-  		if($key!=3)continue;
+  		if($key!=2)continue;
   	 ?>
 	    <tr>
 	      <td><?=$aval['tag']?></td>

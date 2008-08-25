@@ -316,6 +316,7 @@ if (typeof jQuery == 'function') {
 
 var flashEmbed = {
 	instanceOf:'flashEmbed',
+	monitorTimerId : 0,
     supports: {'play_head':true, 'play_or_pause':true, 'stop':true, 'fullscreen':true, 'time_display':true, 'volume_control':true},
     getPluginEmbedHTML : function (){
         setTimeout('document.getElementById(\''+this.id+'\').postEmbedJS()', 150);
@@ -326,36 +327,78 @@ var flashEmbed = {
         return '<div class="player" id="FlowPlayerAnnotationHolder_'+this.pid+'"></div>'+"\n";
     },
     postEmbedJS : function()
-    {
-        var clip = flashembed('FlowPlayerAnnotationHolder_'+this.pid,
-        { src: mv_embed_path + 'FlowPlayerDark.swf', width: this.width, height: this.height, id: this.pid},
-        { config: { autoPlay: true, hideControls: true,
-           videoFile: this.media_element.selected_source.uri } });
-        js_log('setInterval');
-        this.update_interval = setInterval('document.getElementById(\''+this.id+'\').updateGUI()', 250);
+    {   
+    	this.getFLA();
+    	if(!this.flv){
+	        var clip = flashembed('FlowPlayerAnnotationHolder_'+this.pid,
+	        { src: mv_embed_path + 'FlowPlayerDark.swf', width: this.width, height: this.height, id: this.pid},
+	        { config: { autoPlay: true, hideControls: true,
+	           videoFile: this.media_element.selected_source.uri } });	        	     
+    	}
+        if(this.fla){
+        	js_log('flash ready:start monitor:');
+       		setTimeout('$j(\'#'+this.id+'\').get(0).monitor()', 250);
+        }else{
+        	js_log('flash not ready');
+    		setTimeout('$j(\'#'+this.id+'\').get(0).postEmbedJS()',100);	
+        }
     },
     /* js hooks/controls */
-    play : function(){
-    	if(this.thumbnail_disp)
+    play : function(){    	
+    	this.getFLA();
+    	if(!this.fla || this.thumbnail_disp)
         {
 	    	//call the parent
     		this.parent_play();
     	}else{
-            this.getPluginEmbed().DoPlay();
+            this.fla.DoPlay();
 			this.paused=false;
+			setTimeout('$j(\'#'+this.id+'\').get(0).monitor()', 250);
     	}
     },
     pause : function()
     {
 		this.getPluginEmbed().Pause();
+		//stop updates: 
+		if( this.monitorTimerId != 0 )
+	    {
+	        clearInterval(this.monitorTimerId);
+	        this.monitorTimerId = 0;
+	    }
     },
-    updateGUI : function()
+    monitor : function()
     {
-        var time = this.getPluginEmbed().getTime();
-        var duration = this.getPluginEmbed().getDuration();
-       	this.setStatus( seconds2ntp(time, false) + '/' + seconds2ntp(duration, false));
-        if($j('#mv_seeker_slider_'+this.id).length!=0)      
-            $j('#mv_seeker_slider_'+this.id).css({'marginLeft':(3 + 114 * time / duration) + 'px'});
+    	this.getFLA();
+        var time = this.fla.getTime();
+        //flash is giving bogus duration get from this        
+        var end_ntp = (this.media_element.selected_source.end_ntp)?
+        			   		this.media_element.selected_source.end_ntp : 
+        			   		seconds2ntp( this.fla.getDuration() );
+		var start_ntp =  (this.media_element.selected_source.start_ntp)?
+        			   		this.media_element.selected_source.start_ntp : 0;       		
+       	this.setStatus( seconds2ntp(time, false) + '/' + end_ntp);      
+		js_log('cur time : ' + (time - ntp2seconds(start_ntp)) + 
+					' / ' + 
+				(ntp2seconds(end_ntp)-ntp2seconds(start_ntp)));
+        this.setSliderValue((time - ntp2seconds(start_ntp)) / (ntp2seconds(end_ntp)-ntp2seconds(start_ntp)) );
+        //do monitor update: 
+	    if( ! this.monitorTimerId ){
+	    	if(document.getElementById(this.id)){
+	        	this.monitorTimerId = setInterval('$j(\'#'+this.id+'\').get(0).monitor()', 250);
+	    	}
+	    }
+    },
+    // get the embed fla object 
+    getFLA : function (){
+    	this.fla = this.getPluginEmbed();   		
+    },
+    onStop: function(){
+    	//stop updates: 
+		if( this.monitorTimerId != 0 )
+	    {
+	        clearInterval(this.monitorTimerId);
+	        this.monitorTimerId = 0;
+	    }
     }
 }
 
