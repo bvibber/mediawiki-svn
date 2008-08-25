@@ -172,19 +172,21 @@ a.advanced_search_tag {font-size: 12px; text-decoration: none; margin: 8px; posi
 }
 ul.top_nav{
 	list-style: none;	
-	padding: 5px;
+	padding: 10px;
 	text-align: left;
 	margin-bottom: 0;
 	width:100%;
 	background:#F1F2FF;
-	border-top: 1px solid #a3c1ee;
+	border-top: 1px solid #a3c1ee;	
 }
 ul.top_nav li{
 	display: inline;
 	font-size: 14px;
 	margin: 0px 30px;
 }
-
+ul.top_nav li a{
+	text-decoration:none;
+}
 ul.popularSearches {
 	list-style: none;
 	margin: 10px 0 30px 0;

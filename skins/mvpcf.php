@@ -398,16 +398,16 @@ class MvpcfTemplate extends QuickTemplate {
 				?>				
 			</li>
 			<li>				
-				<?php
-				$cHelp = Title::newFromText('Contents', NS_HELP);
-				echo $sk->makeKnownLinkObj($cHelp, 'help');
-				 ?>
-			</li>
-			<li>
 				<?php 
 				$cCat = Title::newFromText('Media Categories', NS_CATEGORY); 
 				echo $sk->makeKnownLinkObj($cCat, 'browse categories'); 
 				?>
+			</li>
+			<li>				
+				<?php
+				$cHelp = Title::newFromText('Contents', NS_HELP);
+				echo $sk->makeKnownLinkObj($cHelp, 'help');
+				 ?>
 			</li>
 			<li>
 				<a title="blog" href="/blog">blog</a>
