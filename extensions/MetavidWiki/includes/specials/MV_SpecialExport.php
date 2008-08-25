@@ -226,17 +226,17 @@ class MV_SpecialExport {
 			<switch distinction="quality">
 		<? foreach($this->file_list as $file){ 				
 				$dAttr=($file->getNameKey()==$mvDefaultVideoQualityKey)?' default="true"':'';
-				$dSrc=($file->getNameKey()	== $mvDefaultVideoQualityKey ||
-						$file->getNameKey()	== $mvDefaultFlashQualityKey ||
-						$file->getNameKey()	== $mvDefaultVideoHighQualityKey )
-					? $this->mvTitle->getWebStreamURL($file->getNameKey())
-					: $file->getFullURL();
-						
-				//if not ogg include start and end times in the attribute: 
-				//@@todo in the future support client side ogg seeking (and don't automaticly put .anx at the end)  
-				$startendattr= (htmlentities($file->getContentType())!='video/ogg')?
-					'start="npt:'.htmlentities($this->mvTitle->getStartTime()).'"'. 
-					' end="npt:'.htmlentities($this->mvTitle->getEndTime()).'"':'';				
+				if($file->getNameKey()	== $mvDefaultVideoQualityKey ||
+					$file->getNameKey()	== $mvDefaultFlashQualityKey ||
+					$file->getNameKey()	== $mvDefaultVideoHighQualityKey )
+				{
+					$dSrc=$this->mvTitle->getWebStreamURL($file->getNameKey());
+					$startendattr='';
+				}else{
+					$dSrc=$file->getFullURL();
+					$startendattr='start="npt:'.htmlentities($this->mvTitle->getStartTime()).'"'. 
+					' end="npt:'.htmlentities($this->mvTitle->getEndTime()).'"';
+				}						
 			?>
 				<mediaSource id="<?php echo htmlentities($file->getNameKey())?>"<?php echo $dAttr?> src="<?php echo htmlentities($dSrc)?>" title="<?php echo htmlentities($file->get_desc())?>" content-type="<?php echo htmlentities($file->getContentType())?>" <?php echo $startendattr?>/>	
 		<?}?>

@@ -79,7 +79,7 @@ function proccess_streams($stream_name='all'){
 		}
 		
 		//lets just skip local files for now and try to remove incomplete mannually
-		if(isset($skip_list[$stream->name])){
+		if(isset($skip_list[$stream->name]) ){
 			print "skipping:".$stream->name."\n";
 			continue;
 		}
