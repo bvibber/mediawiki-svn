@@ -2272,9 +2272,9 @@ embedVideo.prototype = {
 	        image_src += '.png';
 	        if (default_player)
 	        {
-	            var retval = '<img src="'+image_src+'"/>';
+	            out += '<img src="'+image_src+'"/>';
 	            if(is_not_selected)
-	                retval+='<a href="#" onClick="' + source_select_code + 'embedTypes.players.userSelectPlayer(\''+default_player.id+'\',\''+source.getMIMEType()+'\'); return false;">';
+	                out+='<a href="#" onClick="' + source_select_code + 'embedTypes.players.userSelectPlayer(\''+default_player.id+'\',\''+source.getMIMEType()+'\'); return false;">';
 	            out += source.getTitle()+/*' - ' + default_player.getName() +*/ (is_not_selected?'</a>':'') + ' ';
 	            out += /*'(<a href="#" onClick=\'$j("#player_select_list_'+index+'").fadeIn("slow");return false;\'>choose player</a>)' +*/ player_code;           
 	        }else
