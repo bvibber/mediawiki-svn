@@ -47,7 +47,7 @@ Simply change the username below, add a comment (optional) and click the \'Chang
 	'changeauthor-weirderror'           => 'A very strange error occurred.
 Please retry your request.
 If this error keeps showing up, the database is probably broken.',
-	'changeauthor-invalidform'          => 'Please use the form provided by Special:ChangeAuthor rather than a custom form.',
+	'changeauthor-invalidform'          => 'Please use the form provided by the [[Special:ChangeAuthor|special page]] rather than a custom form.',
 	'changeauthor-success'              => 'Your request has been processed successfully.',
 	'changeauthor-logentry'             => 'Changed author of $2 of $1 from $3 to $4',
 	'changeauthor-logpagename'          => 'Author change log',
