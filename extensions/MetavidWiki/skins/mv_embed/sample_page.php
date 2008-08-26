@@ -106,6 +106,17 @@ but smells like limburger
 </playlist>';
 $sample_embed[7]['desc'] = '<b>Inline Playlist:</b> for more info see <a href="http://metavid.ucsc.edu/wiki/index.php/Mv_embed">mv_embed wiki</a> page';
 
+//real video sample:
+//
+$smilURL = 'sample_smil.smil.xml';
+$sample_embed[8]['tag']= '<playlist id="smil_pl" src="'.$smilURL.'">';
+$sample_embed[8]['desc']=' <br><b>Crossfading Videos</b><br/><a href="http://service.real.com/help/library/guides/realone/ProductionGuide/HTML/htmfiles/transit.htm">source</a>
+			The first video fades up from green when it starts to play, 
+			and the second video fades down to green when it ends. 
+			When the first video stops and the second video starts, 
+			though, the two videos crossfade into each other'.
+				'<br>'.
+				'<iframe width="500" height="200" src="'.$smilURL.'">rss feed here</iframe>';
 //empty sample embed (to only do one:)
 //$sample_embed = array();
 //$sample_embed[0]['tag']='<sequencer style="width:640px;height:480px;"/>';
@@ -114,7 +125,7 @@ $sample_embed[7]['desc'] = '<b>Inline Playlist:</b> for more info see <a href="h
 ?>
   <table border="1" cellpadding="6" width="600">
   	<? foreach($sample_embed as $key=>$aval){
-  		if($key!=2)continue;
+  		if($key!=8)continue;
   	 ?>
 	    <tr>
 	      <td><?=$aval['tag']?></td>

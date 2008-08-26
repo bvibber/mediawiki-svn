@@ -33,6 +33,9 @@ var mv_init_done=false;
 //this restricts playable sources to ROE xml media without start end time atttribute
 var mv_restrict_roe_time_source = true;
 
+//the default height/width of the vidoe (if no style or width parm provided)
+var mv_default_video_size = '400x300'; 
+
 var debug_global_vid_ref=null;
 /*
  * its best if you just require all your external data sources to serve up json data.
@@ -853,6 +856,8 @@ function do_playlist_functions(){
 function swapEmbedVideoElement(video_element, videoInterface){
 	js_log('do swap ' + videoInterface.id + ' for ' + video_element);
 	embed_video = document.createElement('div');
+	//make sure our div has a hight/width set:
+	$j(embed_video).css({'width':videoInterface.width,'height':videoInterface.height});
 	//inherit the video interface
 	for(method in videoInterface){
 		//string -> boolean:
@@ -871,13 +876,12 @@ function swapEmbedVideoElement(video_element, videoInterface){
 				embed_video[method]=videoInterface[method];
 			}
 		}
-	}
-	js_log('got onDOMswap:'+embed_video.onDOMswap );
+	}	
 	///js_log('did vI style');  
 	//now swap out the video element for the embed_video obj:  	
   	$j(video_element).after(embed_video).remove();	
-  	js_log('did swap');  	  	
-  	$j('#'+embed_video.id).get(0).onDOMswap();
+  	js_log('did swap');    	  
+  	$j('#'+embed_video.id).get(0).on_dom_swap();
 	// now that "embed_video" is stable, do more initialization (if we are ready)
 	if($j('#'+embed_video.id).get(0).loading_external_data==false)
 		$j('#'+embed_video.id).get(0).more_init();
@@ -1600,8 +1604,9 @@ embedVideo.prototype = {
 	        }
 	    }
 	    //if style is set override width and height
-	    this.width = element.style.width ? element.style.width : "320px";
-	    this.height = element.style.height ? element.style.height : "240px";
+	    var dwh = mv_default_video_size.split('x');
+	    this.width = element.style.width ? element.style.width : dwh[0];
+	    this.height = element.style.height ? element.style.height : dwh[1];
 	    //set the plugin id
 	    this.pid = 'pid_' + this.id;
 
@@ -1610,14 +1615,12 @@ embedVideo.prototype = {
 	    if(element.innerHTML!='' && element.getElementsByTagName('source').length==0){
             js_log('innerHTML: ' + element.innerHTML);
 	        this.user_missing_plugin_html=element.innerHTML;
-	    }
-	    js_log('pre media_elm video elm roe:'+  debug_global_vid_ref.getAttribute("roe"));  	
+	    }	      
 	    // load all of the specified sources
-        this.media_element = new mediaElement(element);	    	    
-    	js_log('done with init video elm roe:'+  debug_global_vid_ref.getAttribute("roe"));  	
+        this.media_element = new mediaElement(element);  	
 	},
-	onDOMswap:function(){
-		js_log('f:onDOMswap');
+	on_dom_swap : function(){
+		js_log('f:on_dom_swap');
 		// Process the provided ROE file... if we don't yet have sources
         if(this.roe && this.media_element.sources.length==0 ){
 			js_log('loading external data');
@@ -1714,7 +1717,7 @@ embedVideo.prototype = {
 		
 		//Set "loading" here
 		$j('#mv_embedded_player_'+_this.id).html(''+
-					'<div style="color:black;width:'+this.width+';height:'+this.height+';">' + 
+					'<div style="color:black;width:'+this.width+'px;height:'+this.height+'px;">' + 
 						getMsg('loading_plugin') + 
 					'</div>'					
 		);
@@ -1876,7 +1879,7 @@ embedVideo.prototype = {
 		//check if we have sources avaliable	
 		js_log('f:getHTML');
 		var html_code = '';
-        html_code = '<div style="width:'+this.width+';" class="videoPlayer">';
+        html_code = '<div style="width:'+this.width+'px;" class="videoPlayer">';
 		html_code += '<div id="mv_embedded_player_'+this.id+'"></div>';
         if(this.controls)
         {
@@ -1940,7 +1943,7 @@ embedVideo.prototype = {
 	*/
 	getPluginMissingHTML : function(){
 		//keep the box width hight:
-		var out = '<div style="width:'+this.width+';height:'+this.height+'">';
+		var out = '<div style="width:'+this.width+'px;height:'+this.height+'px">';
 	    if(this.user_missing_plugin_html){
 	      out+= this.user_missing_plugin_html;
 	    }else{
