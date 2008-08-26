@@ -416,7 +416,6 @@ function wfSetupSimpleSecurity() {
 		$wgDBtype = "Secure$wgDBtype";
 		eval("class Database{$wgDBtype} extends Database{$oldType}".' {
 			public function query($sql, $fname = "", $tempIgnore = false) {
-				print $sql;
 				$count = false;
 				$patched = preg_replace_callback("/(?<=SELECT ).+?(?= FROM)/", "SimpleSecurity::patchSQL", $sql, 1, $count);
 				return parent::query($count ? $patched : $sql, $fname, $tempIgnore);
