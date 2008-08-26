@@ -172,11 +172,10 @@ class SimpleSecurity {
 			);
  
 			# Add info-toggle before title and hidden info after title
-			$link = "<a href='javascript:'>".wfMsg('security-info')."</a>";
-			$alt = wfMsg('security-infotoggle');
-			$toggle = "<span id='security-info-toggle' onClick='toggleSecurityInfo()' title='$alt'>$link</span>";
-			$info = "<div id='security-info' style='display:none'>$itext</div>";
-			$text = $toggle.$info.$text;
+			$link = "<a href='javascript:'>".wfMsg('security-info-toggle')."</a>";
+			$link = "<span onClick='toggleSecurityInfo()'>$link</span>";
+			$info = "<div id='security-info-toggle'>".wfMsg('security-info', $link)."</div>\n";
+			$text = "$info<div id='security-info' style='display:none'>$itext</div>\n$text";
 		}
 
 		return true;
@@ -444,8 +443,8 @@ function wfSetupSimpleSecurity() {
 			'security-logpagetext'     => "This is a log of actions blocked by the [[MW:Extension:SimpleSecurity|SimpleSecurity extension]].",
 			'security-logentry'        => "",
 			'badaccess-read'           => "\nWarning: \"$1\" is referred to here, but it can only be viewed by $2.\n",
-			'security-info'            => "Security information",
-			'security-infotoggle'      => "This article exhibits security restrictions. Click this icon for more detail.",
+			'security-info'            => "There are $1 on this article",
+			'security-info-toggle'     => "security restrictions",
 			'security-inforestrict'    => "$1 is restricted to $2",
 			'security-desc-LS'         => "<i>(applies because this article is in the <b>$2 $1</b>)</i>",
 			'security-desc-PR'         => "<i>(set from the <b>protect tab</b>)</i>",
