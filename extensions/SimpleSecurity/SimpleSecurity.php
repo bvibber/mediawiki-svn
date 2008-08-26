@@ -55,14 +55,6 @@ $wgExtensionCredits['parserhook'][] = array(
 	'version'     => SIMPLESECURITY_VERSION
 	);
 
-# Change DB type to our sub-class
-# - this has to be done before extension setup otherwise the LoadBalancer will already exist and be using the old class
-if ($wgSecurityUseDBHook) {
-	$wgDBtype = ucfirst($wgDBtype);
-	$wgSecurityOldDBtype = $wgDBtype;
-	$wgDBtype = "Secure$wgDBtype";
-}
-
 class SimpleSecurity {
 
 	var $guid  = '';
@@ -383,7 +375,13 @@ class SimpleSecurity {
 				}
 			}
 		}
-	}	
+	}
+	
+	# Updates passed LoadBalancer's DB servers to secure class
+	static function updateLB($lb) {
+		$lb->closeAll();
+		foreach ($lb->mServers as $server) $server['type'] = 'Secure'.$server['type'];
+	}
 }
 
 /**
@@ -404,8 +402,19 @@ function wfSetupSimpleSecurity() {
 	# - fetchObject method is overridden to validate row content based on old_id
 	# - the changes to this class are only active for SELECT statements and while not processing security directives
 	if ($wgSecurityUseDBHook) {
-		global $wgDBtype, $wgSecurityOldDBtype;
-		eval("class Database{$wgDBtype} extends Database{$wgSecurityOldDBtype}".' {
+		global $wgDBtype, $wgLoadBalancer;
+
+		# Esnure the LoadBalancer(s) are using the new secure class
+		wfGetDB(DB_SLAVE);
+		if (function_exists('forEachLB')) forEachLB('SimpleSecurity::updateLB');
+		elseif (is_object($wgLoadBalancer)) SimpleSecurity::updateLB($wgLoadBalancer);
+		else die("Can't hook in to Database class!");
+
+		# Create the new secure DB class based on the current one
+		$wgDBtype = ucfirst($wgDBtype);
+		$oldType = $wgDBtype;
+		$wgDBtype = "Secure$wgDBtype";
+		eval("class Database{$wgDBtype} extends Database{$oldType}".' {
 			public function query($sql, $fname = "", $tempIgnore = false) {
 				$count = false;
 				$patched = preg_replace_callback("/(?<=SELECT ).+?(?= FROM)/", "SimpleSecurity::patchSQL", $sql, 1, $count);
