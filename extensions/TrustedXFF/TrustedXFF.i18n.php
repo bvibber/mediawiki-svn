@@ -30,6 +30,13 @@ $messages['de'] = array(
 	'trustedxff-desc' => 'Verarbeitung einer Liste vertrauenswürdiger Proxyadressen ([http://meta.wikimedia.org/wiki/XFF_project XFF-ProjeKt])',
 );
 
+/** Hebrew (עברית)
+ * @author Rotem Liss
+ */
+$messages['he'] = array(
+	'trustedxff-desc' => 'טיפול ברשימה של כתובות פרוקסי אמינות ([http://meta.wikimedia.org/wiki/XFF_project פרויקט ה־XFF])',
+);
+
 /** Indonesian (Bahasa Indonesia)
  * @author Rex
  */
