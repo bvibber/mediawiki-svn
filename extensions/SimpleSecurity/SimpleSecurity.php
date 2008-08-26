@@ -379,8 +379,9 @@ class SimpleSecurity {
 	
 	# Updates passed LoadBalancer's DB servers to secure class
 	static function updateLB(&$lb) {
+		global $wgDBtype;
 		$lb->closeAll();
-		foreach ($lb->mServers as $i => $server) $lb->mServers[$i]['type'] = 'Secure'.$server['type'];
+		foreach ($lb->mServers as $i => $server) $lb->mServers[$i]['type'] = $wgDBtype;
 	}
 }
 
@@ -404,6 +405,11 @@ function wfSetupSimpleSecurity() {
 	if ($wgSecurityUseDBHook) {
 		global $wgDBtype, $wgLoadBalancer;
 
+		# Swicth DB type to new class
+		$wgDBtype = ucfirst($wgDBtype);
+		$oldType = $wgDBtype;
+		$wgDBtype = "Secure$wgDBtype";
+
 		# Esnure the LoadBalancer(s) are using the new secure class
 		wfGetDB(DB_SLAVE);
 		if (function_exists('forEachLB')) forEachLB('SimpleSecurity::updateLB');
@@ -411,9 +417,6 @@ function wfSetupSimpleSecurity() {
 		else die("Can't hook in to Database class!");
 
 		# Create the new secure DB class based on the current one
-		$wgDBtype = ucfirst($wgDBtype);
-		$oldType = $wgDBtype;
-		$wgDBtype = "Secure$wgDBtype";
 		eval("class Database{$wgDBtype} extends Database{$oldType}".' {
 			public function query($sql, $fname = "", $tempIgnore = false) {
 				$count = false;
