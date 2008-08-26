@@ -18,7 +18,7 @@
 
 if (!defined('MEDIAWIKI')) die('Not an entry point.');
 
-define('SIMPLESECURITY_VERSION', '4.2.0, 2008-08-24');
+define('SIMPLESECURITY_VERSION', '4.2.1, 2008-08-26');
 
 # Global security settings
 $wgSecurityMagicIf              = "ifusercan";                  # the name for doing a permission-based conditional
@@ -60,7 +60,7 @@ $wgExtensionCredits['parserhook'][] = array(
 if ($wgSecurityUseDBHook) {
 	$wgDBtype = ucfirst($wgDBtype);
 	$wgSecurityOldDBtype = $wgDBtype;
-	$wgDBtype = "Secure$DBtype";
+	$wgDBtype = "Secure$wgDBtype";
 }
 
 class SimpleSecurity {
