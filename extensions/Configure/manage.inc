@@ -23,7 +23,7 @@ class ConfigurationManager {
 			if( !is_callable( $callback ) )
 				// Ingnore silenty
 				continue;
-			call_user_func_array( $callback, $arg );	
+			call_user_func_array( $callback, array( $arg ) );	
 		}
 	}
 

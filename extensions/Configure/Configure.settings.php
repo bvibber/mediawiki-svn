@@ -186,6 +186,7 @@ class ConfigurationSettings {
 		if( isset( $list ) )
 			return $list;
 		$list = array();
+		$this->loadSettingsDefs();
 		if( ( $this->types & CONF_SETTINGS_CORE ) == CONF_SETTINGS_CORE ){
 			$list += $this->arrayDefs;
 		}

@@ -1,9 +1,3 @@
-!!!!!!!!!! WARNING !!!!!!!!!!
-
-EXTENSION STILL EXPERIMENTAL
-USE IT AT YOUR OWN RISK
-
-!!!!!!!! END WARNING !!!!!!!!
 
 == Installation ==
 
@@ -30,9 +24,10 @@ root path. You can change it in $wgConfigureFilesPath. Don't forget to override
 this variable between the time you include the Configure.php file and the time
 you call efConfigureSetup(), otherwise your changes won't be used.
 
-Note: on MediaWiki < 1.13, serialized directory is publicly viewable, and users
-will be able to see the whole configuration, so PLEASE MAKE IT UNREADABLE BY
-WEB USERS OR CHANGE IT TO A DIRECTORY THAT ISN'T ACCESSIBLE VIA THE WEB.
+Note: on MediaWiki < 1.13 or a web server other than apache, the serialized
+directory is publicly viewable, and users will be able to see the whole
+configuration, so PLEASE MAKE IT UNREADABLE BY WEB USERS OR CHANGE IT TO A
+DIRECTORY THAT ISN'T ACCESSIBLE VIA THE WEB.
 YOU HAVE BEEN WARNED.
 
 == Hints ==
@@ -63,6 +58,5 @@ you can do either:
 
 * Some settings are still uneditable because of their array usage, this will
   need to develop some specific method to change them.
-* Many other things, if i have time :)
 
 See http://www.mediawiki.org/wiki/Extension:Configure for more information.
