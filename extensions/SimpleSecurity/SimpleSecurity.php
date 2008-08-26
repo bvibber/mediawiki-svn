@@ -18,7 +18,7 @@
 
 if (!defined('MEDIAWIKI')) die('Not an entry point.');
 
-define('SIMPLESECURITY_VERSION', '4.2.1, 2008-08-26');
+define('SIMPLESECURITY_VERSION', '4.2.2, 2008-08-26');
 
 # Global security settings
 $wgSecurityMagicIf              = "ifusercan";                  # the name for doing a permission-based conditional
@@ -142,9 +142,9 @@ class SimpleSecurity {
 	 */
 	public function onOutputPageBeforeHTML(&$out, &$text) {
 		global $wgTitle, $wgUser;
-	
+
 		# Render security info if any
-		if (count($this->info)) {
+		if (is_object($wgTitle) && $wgTitle->exists() && count($this->info['LS'])+count($this->info['PR'])) {
 
 			$rights = $wgUser->getRights();
 			$wgTitle->getRestrictions(false);
@@ -216,8 +216,15 @@ class SimpleSecurity {
 			elseif ($wgRequest->getVal('oldtitle')) $title = Title::newFromText($wgRequest->getVal('oldtitle'));
 		} else $title = $wgTitle;
 		if (!is_object($title)) return true; # If still no usable title bail
-		
-		# Process $wgPageRestrictions
+
+		# Validate the title and then put anonymous read right back (see constructor above for details)
+		$valid = $this->validateTitle($user, $title, $error);
+		if ($this->default_read) {
+			$wgGroupPermissions['*']['read'] = true;
+			$rights[] = 'read';
+		}
+
+		# Filter rights by processing $wgPageRestrictions
 		# - also adds LS (rules from local settings) items to info array
 		$this->pageRestrictions($rights, $groups, $title);
 
@@ -230,11 +237,9 @@ class SimpleSecurity {
 		}
 
 		# If title is not readable by user, remove the read and move rights
-		if (!in_array('sysop', $groups)) {
-			if (!$this->validateTitle($user, $title, $error)) {
-				foreach ($rights as $i => $right) if ($right === 'read' || $right === 'move') unset($rights[$i]);
-				#$this->info['CR'] = array('read', '', '');
-			} elseif ($this->default_read) $wgGroupPermissions['*']['read'] = $this->default_read; # see constructor
+		if (!in_array('sysop', $groups) && !$valid) {
+			foreach ($rights as $i => $right) if ($right === 'read' || $right === 'move') unset($rights[$i]);
+			#$this->info['CR'] = array('read', '', '');
 		}
 				
 		return true;
@@ -405,7 +410,7 @@ function wfSetupSimpleSecurity() {
 	if ($wgSecurityUseDBHook) {
 		global $wgDBtype, $wgLoadBalancer;
 
-		# Swicth DB type to new class
+		# Switch DB type to new class
 		$wgDBtype = ucfirst($wgDBtype);
 		$oldType = $wgDBtype;
 		$wgDBtype = "Secure$wgDBtype";
