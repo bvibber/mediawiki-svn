@@ -24,7 +24,7 @@ define('SIMPLESECURITY_VERSION', '4.2.1, 2008-08-26');
 $wgSecurityMagicIf              = "ifusercan";                  # the name for doing a permission-based conditional
 $wgSecurityMagicGroup           = "ifgroup";                    # the name for doing a group-based conditional
 $wgSecurityLogActions           = array('edit', 'download');    # Actions that should be logged
-$wgSecurityUseDBHook            = true;                         # Use the DatabaseFetchHook to validate database access
+$wgSecurityUseDBHook            = false;                        # Use the DatabaseFetchHook to validate database access
 $wgSecurityAllowUser            = false;                        # Allow restrictions based on user not just group
 $wgSecurityAllowUnreadableLinks = false;                        # Should links to unreadable pages be allowed? (MW1.7+)
 $wgSecurityRenderInfo           = true;                         # Renders security information for proctected articles
@@ -378,9 +378,9 @@ class SimpleSecurity {
 	}
 	
 	# Updates passed LoadBalancer's DB servers to secure class
-	static function updateLB($lb) {
+	static function updateLB(&$lb) {
 		$lb->closeAll();
-		foreach ($lb->mServers as $server) $server['type'] = 'Secure'.$server['type'];
+		foreach ($lb->mServers as $i => $server) $lb->mServers[$i]['type'] = 'Secure'.$server['type'];
 	}
 }
 
@@ -416,6 +416,7 @@ function wfSetupSimpleSecurity() {
 		$wgDBtype = "Secure$wgDBtype";
 		eval("class Database{$wgDBtype} extends Database{$oldType}".' {
 			public function query($sql, $fname = "", $tempIgnore = false) {
+				print $sql;
 				$count = false;
 				$patched = preg_replace_callback("/(?<=SELECT ).+?(?= FROM)/", "SimpleSecurity::patchSQL", $sql, 1, $count);
 				return parent::query($count ? $patched : $sql, $fname, $tempIgnore);
