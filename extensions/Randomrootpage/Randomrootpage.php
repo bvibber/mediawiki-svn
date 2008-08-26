@@ -12,7 +12,7 @@ if (!defined('MEDIAWIKI')) die();
 
 $wgExtensionCredits['specialpage'][] = array(
 	'name'           => 'Random root page',
-	'version'        => '1.0',
+	'version'        => '1.1',
 	'author'         => 'Hojjat (aka Huji)',
 	'url'            => 'http://www.mediawiki.org/wiki/Extension:Randomrootpage',
 	'descriptionmsg' => 'randomrootpage-desc',
@@ -24,3 +24,5 @@ $wgSpecialPageGroups['Randomrootpage'] = 'pages';
 $dir = dirname(__FILE__) . '/';
 $wgExtensionMessagesFiles['Randomrootpage'] = $dir . 'Randomrootpage.i18n.php';
 $wgAutoloadClasses['SpecialRandomrootpage'] = $dir . 'Randomrootpage_body.php';
+
+$wgSpecialPageGroups['Randomrootpage'] = 'redirects';
