@@ -1417,8 +1417,15 @@ mediaElement.prototype =
     */
     selectSource:function(index)
     {
-        js_log("selected source " + this.sources[index].getTitle());
-        this.selected_source = this.sources[index];
+    	var playable_sources = this.getPlayableSources();
+    	for(var i in playable_sources){
+    		if(i==index){
+    			this.selected_source = playable_sources[i];
+    			break;
+    		}
+    	}
+    	js_log("selected source " + this.sources[index].getTitle());
+    	
     },
     /** selects the default source via cookie preference, default marked, or by id order
      * */
@@ -2504,13 +2511,13 @@ embedVideo.prototype = {
 	},
 	setSliderValue: function(perc){
 		var id = (this.pc)?this.pc.pp.id:this.id;
-		//this.slider.setValue(perc);
-		//var cur_slider = $j('#mv_seeker_'+id).width();		
-		//var offset_perc = 1-(cur_slider / $j('#mv_seeker_'+id).width());
-		//offset_perc* 
-		var val = Math.round( perc  * $j('#mv_seeker_'+id).width()  );
-		$j('#mv_seeker_slider_'+id).css('marginLeft',val);
-		js_log('perc in: ' + perc + ' * ' + $j('#mv_seeker_'+id).width() + ' = set to: '+ val);
+		//alinment offset: 
+		if(!this.mv_seeker_width)
+			this.mv_seeker_width = $j('#mv_seeker_slider_'+id).width();
+		
+		var val = Math.round( perc  * $j('#mv_seeker_'+id).width() - (this.mv_seeker_width*perc));
+		$j('#mv_seeker_slider_'+id).css('marginLeft', val );
+		//js_log('perc in: ' + perc + ' * ' + $j('#mv_seeker_'+id).width() + ' = set to: '+ val + ' - '+ Math.round(this.mv_seeker_width*perc) );
 		//js_log('op:' + offset_perc + ' *('+perc+' * ' + $j('#slider_'+id).width() + ')');
 	},
 	setStatus:function(value){
