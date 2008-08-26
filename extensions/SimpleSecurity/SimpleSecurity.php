@@ -392,6 +392,9 @@ class SimpleSecurity {
 function wfSetupSimpleSecurity() {
 	global $wgSimpleSecurity, $wgLanguageCode, $wgMessageCache, $wgSecurityUseDBHook;
 
+	# Instantiate the SimpleSecurity singleton now that the environment is prepared
+	$wgSimpleSecurity = new SimpleSecurity();
+
 	# Hooks into Database::query and Database::fetchObject
 	# - this can't be executed from within a method because PHP doesn't like nested class definitions
 	# - it needs an eval because the class statement isn't allowed to contain strings
@@ -415,9 +418,6 @@ function wfSetupSimpleSecurity() {
 			}
 		}');
 	}
-
-	# Instantiate the SimpleSecurity singleton now that the environment is prepared
-	$wgSimpleSecurity = new SimpleSecurity();
 
 	# Add messages
 	if ($wgLanguageCode == 'en') {
