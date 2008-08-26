@@ -149,7 +149,8 @@ $messages['ar'] = array(
 	'changeauthor-explanation-multi' => "باستخدام هذه الاستمارة يمكنك تغيير مؤلفي المراجعات.
 ببساطة غير واحدا أو أكثر من أسماء المستخدمين في القائمة بالأسفل ، أضف تعليقا (اختياري) واضغط على زر 'تغيير المؤلف(ين)'.",
 	'changeauthor-changeauthors-single' => 'تغيير المؤلف',
-	'changeauthor-explanation-single' => "باستخدام هذه الاستمارة يمكنك تغيير مؤلف مراجعة. ببساطة غير اسم اسم المستخدم بالأسفل، أضف تعليقا (اختياري) واضغط على زر 'تغيير المؤلف'.",
+	'changeauthor-explanation-single' => "باستخدام هذه الاستمارة يمكنك تغيير مؤلف مراجعة.
+ببساطة غير اسم اسم المستخدم بالأسفل، أضف تعليقا (اختياري) واضغط على زر 'تغيير المؤلف'.",
 	'changeauthor-invalid-username' => 'اسم مستخدم غير صحيح "$1".',
 	'changeauthor-nosuchuser' => 'لا يوجد مستخدم بالاسم "$1".',
 	'changeauthor-revview' => 'المراجعة #$1 من $2',
@@ -157,7 +158,7 @@ $messages['ar'] = array(
 	'changeauthor-weirderror' => 'حدث خطأ غريب جدا.
 من فضلك حاول القيام بطلبك مرة ثانية.
 لو استمر هذا الخطأ، إذا فقاعدة البيانات على الأرجح مكسورة.',
-	'changeauthor-invalidform' => 'من فضلك استخدم الاستمارة الموفرة بواسطة Special:ChangeAuthor بدلا من استمارة معدلة.',
+	'changeauthor-invalidform' => 'من فضلك استخدم الاستمارة الموفرة بواسطة [[Special:ChangeAuthor|الصفحة الخاصة]] بدلا من استمارة معدلة.',
 	'changeauthor-success' => 'طلبك تمت معالجته بنجاح.',
 	'changeauthor-logentry' => 'غير مؤلف $2 ل$1 من $3 إلى $4',
 	'changeauthor-logpagename' => 'سجل تغيير المؤلفين',
@@ -267,6 +268,7 @@ $messages['ch'] = array(
 );
 
 /** Czech (Česky)
+ * @author Li-sung
  * @author Matěj Grabovský
  */
 $messages['cs'] = array(
@@ -286,7 +288,7 @@ $messages['cs'] = array(
 	'changeauthor-revview' => 'Revize #$1 {{PLURAL:$2|z|ze|z}} $2',
 	'changeauthor-nosuchtitle' => 'Stránka s názvem „$1“ neexistuje.',
 	'changeauthor-weirderror' => 'Vyskytla se velmi zvláštní chyba. Prosím, opakujte váš požadavek. Pokud se tato chyba bude vyskytovat i nadále, databáze je poškozená.',
-	'changeauthor-invalidform' => 'Prosím, použijte formulář Special:ChangeAuthor raději než vlastní formulář.',
+	'changeauthor-invalidform' => 'Prosím, použijte formulář na [[Special:ChangeAuthor|speciální stránce]] spíše než vlastní formulář.',
 	'changeauthor-success' => 'Vaše požadavky byly úspěšně zpracovány.',
 	'changeauthor-logentry' => 'Autor $2 z $1 byl změněn z $3 na $4',
 	'changeauthor-logpagename' => 'Záznam změn autorů',
@@ -324,7 +326,7 @@ $messages['de'] = array(
 	'changeauthor-revview' => 'Version #$1 von $2',
 	'changeauthor-nosuchtitle' => 'Es gibt keine Seite „$1“.',
 	'changeauthor-weirderror' => 'Ein sehr seltener Fehler ist aufgetreten. Bitte wiederhole deine Änderung. Wenn dieser Fehler erneut auftritt, ist vermutlich die Datenbank zerstört.',
-	'changeauthor-invalidform' => 'Bitte benutzer das Formular unter Special:ChangeAuthor.',
+	'changeauthor-invalidform' => 'Bitte benutze das Formular auf der [[Special:ChangeAuthor|Spezialseite]].',
 	'changeauthor-success' => 'Deine Änderung wurde erfolgreich durchgeführt.',
 	'changeauthor-logentry' => 'änderte Autorenname der $2 von $1 von $3 auf $4',
 	'changeauthor-logpagename' => 'Autorenname-Änderungslogbuch',
@@ -705,7 +707,7 @@ Basta cambiare il nome utente seguente, aggiungere un commento (se lo ritieni op
 	'changeauthor-weirderror' => "Si è verificato un errore molto strano.
 Prova a ripetere la richiesta.
 Se l'errore dovesse persistere, il database è probabilmente rotto.",
-	'changeauthor-invalidform' => 'Utilizza il modulo presente nella pagina Special:ChangeAuthor piuttosto che un modulo personalizzato.',
+	'changeauthor-invalidform' => 'Utilizza il modulo presente nella [[Special:ChangeAuthor|pagina speciale]] piuttosto che un modulo personalizzato.',
 	'changeauthor-success' => 'La tua richiesta è stata eseguita con successo.',
 	'changeauthor-logentry' => "Modificato l'autore di $2 di $1 da $3 a $4",
 	'changeauthor-logpagename' => 'Log delle modifiche autori',
@@ -804,7 +806,7 @@ $messages['lb'] = array(
 	'changeauthor-pagename-or-revid' => 'Säitenumm oder Versiounsnummer:',
 	'changeauthor-pagenameform-go' => 'Lass',
 	'changeauthor-comment' => 'Bemierkung:',
-	'changeauthor-changeauthors-multi' => 'Auteur(en) änneren',
+	'changeauthor-changeauthors-multi' => '{{PLURAL:$1|Auteur|Auteuren}} änneren',
 	'changeauthor-explanation-multi' => "mat dësem Formulaire kënnt Dir d'Auteure vun de Versiounen äneren.
 Ännert einfach een oder méi Benotzernimm an der Lëscht ënnedrënner, setzt eng Bemierkung derbäi (fkultativ) a klickt op de Knäppchen 'Auteur änneren'.",
 	'changeauthor-changeauthors-single' => 'Auteur änneren',
@@ -817,7 +819,7 @@ $messages['lb'] = array(
 	'changeauthor-weirderror' => "E seelene Feeler ass geschitt.
 Probéiert w.e.g. nach eng Kéier.
 Wann dëse Feeler sech widderhëlt dann ass d'Datebank waarscheinlech futti.",
-	'changeauthor-invalidform' => 'Benotzt w.e.g. de Formulaire op der Säit Special:ChangeAuthor (éischter wéi een anere Formulaire)',
+	'changeauthor-invalidform' => 'Benotzt w.e.g. de Formulaire op der Säit [[Special:ChangeAuthor|Spezialsäit]] (éischter wéi een anere Formulaire).',
 	'changeauthor-success' => 'Är Ufro gouf duerchgefouert.',
 	'changeauthor-logentry' => 'Den Auteur gouf vun $2 op $1 vum $3 op den $4 geännert',
 	'changeauthor-logpagename' => 'Lëscht vun den Ännerunge vun dësem Auteur',
@@ -924,7 +926,7 @@ $messages['nl'] = array(
 	'changeauthor-weirderror' => 'Er is een erg vreemde fout opgetreden.
 Probeer het alstublieft nogmaals.
 Als u deze foutmelding elke keer weer ziet, is er waarschijnlijk iets mis met de database.',
-	'changeauthor-invalidform' => 'Gebruik alstublieft het formulier van Special:ChangeAuthor, in plaats van een aangepast formulier.',
+	'changeauthor-invalidform' => 'Gebruik alstublieft het formulier van de [[Special:ChangeAuthor|speciale pagina]], in plaats van een aangepast formulier.',
 	'changeauthor-success' => 'Uw verzoek is succesvol verwerkt.',
 	'changeauthor-logentry' => 'Auteur van $2 van $1 gewijzigd van $3 naar $4',
 	'changeauthor-logpagename' => 'Auteurswijzigingenlogboek',
@@ -998,7 +1000,7 @@ $messages['oc'] = array(
 	'changeauthor-revview' => 'Revision #$1 de $2',
 	'changeauthor-nosuchtitle' => 'Pas d\'article intitolat "$1"',
 	'changeauthor-weirderror' => "Una error s'es producha. Ensajatz tornamai. Se aquesta error es apareguda mantun còp, la banca de donadas es probablament corrompuda.",
-	'changeauthor-invalidform' => "Utilizatz lo formulari generit per Special:ChangeAuthor puslèu qu'un formulari personal",
+	'changeauthor-invalidform' => "Utilizatz lo formulari generit per [[Special:ChangeAuthor|la pagina especiala]] puslèu qu'un formulari personal",
 	'changeauthor-success' => 'Vòstra requèsta es estada tractada amb succès.',
 	'changeauthor-logentry' => "Modificacion de l'autor de $2 de $1 dempuèi $3 vèrs $4",
 	'changeauthor-logpagename' => "Jornal dels cambiaments faches per l'autor",
@@ -1173,7 +1175,7 @@ $messages['sk'] = array(
 	'changeauthor-revview' => 'Revízia #$1 z $2',
 	'changeauthor-nosuchtitle' => 'Stránka s názvom „$1“ neexistuje.',
 	'changeauthor-weirderror' => 'Vyskytla sa veľmi zvláštna chyba. Prosím, skúste vašu požiadavku znova. Ak sa táto chyba bude vyskytovať opakovane, databáza je zrejme poškodená.',
-	'changeauthor-invalidform' => 'Prosím, použite formulár Special:ChangeAuthor radšej ako vlastný formulár.',
+	'changeauthor-invalidform' => 'Prosím, použite formulár na [[Special:ChangeAuthor|špeciálnej stránke]] radšej ako vlastný formulár.',
 	'changeauthor-success' => 'Vaša požiadavka bola úspešne spracovaná.',
 	'changeauthor-logentry' => 'Autor $2 z $1 bol zmenený z $3 na $4',
 	'changeauthor-logpagename' => 'Záznam zmien autorov',

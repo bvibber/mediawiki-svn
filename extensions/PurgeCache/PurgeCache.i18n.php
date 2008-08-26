@@ -24,7 +24,7 @@ $messages['ar'] = array(
 	'purgecache-desc' => '[[Special:PurgeCache|صفحة خاصة]] تستخدم لمسح جدول OBJECTCACHE',
 	'purgecache-warning' => 'هذا سيفرغ جداول الكاش.',
 	'purgecache-purged' => 'تم إفراغ الكاش',
-	'purgecache-button' => 'إفراغ',
+	'purgecache-button' => 'إفراغ الكاش',
 );
 
 /** Bulgarian (Български)

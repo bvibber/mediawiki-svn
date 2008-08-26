@@ -76,7 +76,7 @@ $messages['ang'] = array(
  */
 $messages['ar'] = array(
 	'createsigndocument' => 'فعل توقيع الوثيقة',
-	'createsigndoc-head' => "استخدم هذه الوثيقة لإنشاء صفحة 'Sign Document' للصفحة المعطاة، بحيث يمكن للمستخدمين [[Special:SignDocument|توقيعها]].
+	'createsigndoc-head' => "استخدم هذه الاستمارة لإنشاء صفحة 'Sign Document' للصفحة المعطاة، بحيث يمكن للمستخدمين [[Special:SignDocument|توقيعها]].
 من فضلك حدد اسم الصفحة التي تود تفعيل التوقيع الرقمي عليها، أعضاء أي مجموعة مستخدم مسموح لهم بتوقيعها، أي حقول تود أن تكون مرئية للمستخدمين وأي يجب أن تكون اختيارية، عمر أدنى لمستخدمين ليمكن لهم توقيع الوثيقة (لا حد أدنى لو حذفت)؛
 ونص تقديمي مختصر يصف الوثيقة ويوفر التعليمات للمستخدمين.
 
@@ -90,7 +90,7 @@ $messages['ar'] = array(
 	'createsigndoc-allowedgroup' => 'المجموعة المسموحة:',
 	'createsigndoc-email' => 'عنوان البريد الإلكتروني:',
 	'createsigndoc-address' => 'عنوان المنزل:',
-	'createsigndoc-extaddress' => 'المدينة، الولاية، البلد:',
+	'createsigndoc-extaddress' => 'المدينة، الولاية، الدولة:',
 	'createsigndoc-phone' => 'رقم الهاتف:',
 	'createsigndoc-bday' => 'تاريخ الميلاد:',
 	'createsigndoc-minage' => 'العمر الأدنى:',

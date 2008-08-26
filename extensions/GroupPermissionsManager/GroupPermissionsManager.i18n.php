@@ -355,6 +355,7 @@ $messages['eo'] = array(
 	'right-info' => 'Vidi paĝan informon',
 	'right-history' => 'Vidi paĝajn historiojn',
 	'right-search' => 'Serĉi la vikion',
+	'right-contributions' => 'Vidi paĝojn de kontribuoj',
 	'right-edittalk' => 'Redakti diskuto-paĝojn',
 	'right-edit-new' => 'Redaktu paĝojn',
 );

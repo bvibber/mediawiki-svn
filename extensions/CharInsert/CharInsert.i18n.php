@@ -30,6 +30,13 @@ $messages['ar'] = array(
 	'charinsert-desc' => 'يسمح بإنشاء صندوق جافاسكريبت [[MediaWiki:Edittools|لإدخال حروف غير قياسية]]',
 );
 
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Ramsis II
+ */
+$messages['arz'] = array(
+	'charinsert-desc' => 'بيسمح بعمل صندوق JavaScript لـ [[MediaWiki:Edittools|تدخيل حروف مش قياسية]]',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  */
@@ -106,6 +113,13 @@ $messages['he'] = array(
  */
 $messages['hi'] = array(
 	'charinsert-desc' => '[[MediaWiki:Edittools|नॉन-स्टैडेर्ड चिन्ह]] के इस्तेमाल के लिये एक जावास्क्रीप्ट कुंजीफलक बनाता हैं',
+);
+
+/** Croatian (Hrvatski)
+ * @author Dalibor Bosits
+ */
+$messages['hr'] = array(
+	'charinsert-desc' => 'Omogućava stvaranje JavaScript polja za [[MediaWiki:Edittools|umetanje ne-standardnih znakova]]',
 );
 
 /** Upper Sorbian (Hornjoserbsce)

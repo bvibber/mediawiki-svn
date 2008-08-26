@@ -35,6 +35,11 @@ $aliases['arz'] = array(
 	'ViewConfig' => array( 'عرض_الإعدادات' ),
 );
 
+/** Assamese (অসমীয়া) */
+$aliases['as'] = array(
+	'Configure' => array( 'সংৰূপ দে' ),
+);
+
 /** Southern Balochi (بلوچی مکرانی) */
 $aliases['bcc'] = array(
 	'Configure'  => array( 'تنظیم' ),

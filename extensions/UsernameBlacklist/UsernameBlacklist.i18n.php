@@ -657,6 +657,7 @@ $messages['it'] = array(
 
 /** Japanese (日本語)
  * @author JtFuruhata
+ * @author Muttley
  */
 $messages['ja'] = array(
 	'usernameblacklist-desc' => '正規表現の禁止ワードに一つ以上一致する場合は利用者アカウントの作成を制限する[[MediaWiki:Usernameblacklist|利用者名ブラックリスト]]を追加',
@@ -671,6 +672,7 @@ $messages['ja'] = array(
 # * [Bb]ar
 </pre>',
 	'usernameblacklist-invalid-lines' => '以下の{{PLURAL:$1|行|行}}に記載された利用者ブラックリスト{{PLURAL:$1|は|は}}正しく記述できていません。保存する前に{{PLURAL:$1|これ|これら}}を修正してください:',
+	'right-uboverride' => 'ユーザ名ブラックリストの掲載を無視してアカウントを作成する',
 );
 
 /** Jutish (Jysk)

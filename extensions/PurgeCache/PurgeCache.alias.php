@@ -29,6 +29,11 @@ $aliases['de'] = array(
 	'PurgeCache' => array( 'Cache leeren' ),
 );
 
+/** Luxembourgish (Lëtzebuergesch) */
+$aliases['lb'] = array(
+	'PurgeCache' => array( 'Cache eidel maachen' ),
+);
+
 /** Nedersaksisch (Nedersaksisch) */
 $aliases['nds-nl'] = array(
 	'PurgeCache' => array( 'Kas_leegmaken' ),

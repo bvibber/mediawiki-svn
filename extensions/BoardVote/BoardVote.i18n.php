@@ -368,8 +368,8 @@ $messages['ar'] = array(
 يجب أن تستخدم حسابا يمتلك على الأقل $1 مساهمة قبل $2، وقام ب$3 مساهمة على الاقل في الفترة ما بين $4 و $5.',
 	'boardvote_notloggedin' => 'لم تقم بتسجيل الدخول.
 لكي تستطيع التصويت، يجب أن تسجل دخول بواسطة حساب يملك $1 تعديل قبل $2، وأجرى $3 مساهمة بين $4 و $5.',
-	'boardvote_notqualified' => 'حسابك هذا غير مؤهل للتصويت في هذه الانتخابات.
-يجب أن يكون للحساب $1 مساهمة قبل $2، و $3 مساهمة في الفنرة ما بين $4 و $5.',
+	'boardvote_notqualified' => 'أنت غير مؤهل للتصويت في هذه الانتخابات.
+تحتاج إلى أن تكون قمت ب$1 مساهمة قبل $2، وعلى الأقل $3 مساهمة في الفنرة ما بين $4 و $5.',
 	'boardvote_novotes' => 'لم يقم أي شخص بالتصويت بعد.',
 	'boardvote_time' => 'الزمن',
 	'boardvote_user' => 'المستخدم',
@@ -394,7 +394,7 @@ $1 للبيانات المشفرة.</p>',
 	'grouppage-boardvote' => '{{ns:project}}:إداري انتخابات المجلس',
 	'boardvote_blocked' => 'عذرا، لقد تم منعك في الويكي الذي أنت مسجل به.
 المستخدمون الممنوعون غير مسموح لهم بالتصويت.',
-	'boardvote_bot' => 'عذرا، أنت تمتلك علم بوت في الويكي الخاص بك.
+	'boardvote_bot' => 'أنت تمتلك علم بوت في الويكي الخاص بك.
 حسابات البوت غير مسموح لها بالتصويت.',
 	'boardvote_welcome' => "مرحبا '''$1'''!",
 	'go_to_board_vote' => 'انتخابات مجلس ويكيميديا 2008',
@@ -1556,6 +1556,7 @@ Sekureca averto pri nevalida atesto eble estos montrata.',
 /** Spanish (Español)
  * @author Ascánder
  * @author Bengoa
+ * @author Dalton2
  * @author Lin linao
  * @author Titoxd
  */
@@ -1575,21 +1576,21 @@ $messages['es'] = array(
 <ul><li><a href="http://meta.wikimedia.org/wiki/Board_elections/2008" class="external">Election FAQ</a></li>
 <li><a href="http://meta.wikimedia.org/wiki/Board_elections/2008/Candidates" class="external">Candidates</a></li></ul>',
 	'boardvote_intro_change' => '<p>¡Ya votaste! Sin embargo, puedes cambiar tu voto usando el formulario siguiente. Por favor clasifica a los candidatos en tu orden de preferencias; un número más pequeño indica una mayor preferencia para un candidato particular. Puedes dar la misma preferencia a más de un candidato y dejar candidatos sin puntuación.</p>',
-	'boardvote_entered' => 'Gracias, tu voto ha sido registrado.
+	'boardvote_entered' => 'Gracias, se ha registrado tu voto.
 
-Si lo deseas, puedes guardar los siguientes detalles. El registro de tu voto es:
+Si lo deseas, puedes registrar los siguientes detalles. El registro de tu voto es:
 
 <pre>$1</pre>
 
-ha sido codificado con la clave pública de los Administradores de la elección:
+Ha sido cifrado con la clave pública de los Administradores de Elecciones:
 
 <pre>$2</pre>
 
-La versión codificada resultante está a continuación. Será mostrada públicamente al [[Special:Boardvote/dump|Producir un registro codificado de la elección]].
+La versión cifrada resultante se encuentra a continuación. Se [[Special:Boardvote/dump|visualizará públicamente]].
 
 <pre>$3</pre>
 
-[[Special:Boardvote/entry|Regresar]]',
+[[Special:Boardvote/entry|Volver]]',
 	'boardvote_invalidentered' => '<p><strong>Error</strong>: la preferencia hacia un candidato debe expresarse como un entero positivo (1, 2, 3, ....), o dejarse en blanco.</p>',
 	'boardvote_nosession' => 'Tu identificador de usuario Wikimedia no pudo ser determinado.
 Por favor, conéctate en el wiki en el que calificas para votar, y pulsa <nowiki>[[Special:Boardvote]]</nowiki>.
@@ -2954,6 +2955,7 @@ Non è permesso votare alle utenze con lo status di bot.',
  * @author JtFuruhata
  * @author Kzhr
  * @author Marine-Blue
+ * @author Muttley
  */
 $messages['ja'] = array(
 	'boardvote' => 'ウィキメディア財団 理事選挙',
@@ -2989,6 +2991,8 @@ $messages['ja'] = array(
 <pre>$3</pre>
 
 [[Special:Boardvote/entry|戻る]]',
+	'boardvote_invalidentered' => '<p><strong>エラー</strong>: 候補者の選択は、正の整数(1, 2, 3, ....)で表さなくてはなりません。もしくは空欄です。  
+</p>',
 	'boardvote_nosession' => 'ウィキメデイア利用者IDを確認できません。投票資格のあるウィキにログインし、<nowiki>[[Special:Boardvote]]</nowiki>へ進んでください。投票に使うアカウントは、$2以前に$1回を超える編集を行い、かつ$4から$5の期間にかけて$3以上の編集を行ったものである必要があります。',
 	'boardvote_notloggedin' => 'あなたはログインしていません。投票に使うアカウントは、$2以前に$1回を超える編集を行い、かつ$4から$5の期間にかけて$3以上の編集を行ったものである必要があります。',
 	'boardvote_notqualified' => 'あなたには、この選挙の投票資格がありません。
@@ -3022,6 +3026,7 @@ $messages['ja'] = array(
 20秒後に外部サーバへ転送されます。[$1 ここをクリック]するとすぐに投票ページに移動できます。
 
 サーバ証明書のセキュリティに関する警告が表示される場合があります。',
+	'right-boardvote' => '投票を管理する',
 );
 
 /** Jutish (Jysk)
@@ -3393,6 +3398,7 @@ The resulting encrypted version follows. It will be displayed publicly on [[Spec
 
 /** Korean (한국어)
  * @author Ficell
+ * @author Kwj2772
  */
 $messages['ko'] = array(
 	'boardvote' => '위키미디어 이사회 선거',
@@ -3401,6 +3407,7 @@ $messages['ko'] = array(
 * [[Special:Boardvote/list|투표한 날짜의 목록]]
 * [[Special:Boardvote/dump|암호화된 선거 기록의 덤프]]',
 	'boardvote_redirecting' => '보안 및 투명성을 향상시키기 위해, 투표는 독립적으로 관리되는 외부 서버에서 이루어집니다. 20초를 기다리시면 이 외부 서버로 자동으로 연결됩니다. 지금 바로 가시려면 [$1 여기를 누르세요]. 서명되지 않은 인증서에 관한 보안 경고가 나타날 수 있습니다.',
+	'right-boardvote' => '선거 관리',
 );
 
 /** Kinaray-a (Kinaray-a)
@@ -6000,11 +6007,11 @@ Atos pejüfon me kik notidik Guvanas Daväla:
 
 <pre>$2</pre>
 
-Is palisedon fomam pejüföl. Pojonon valikanes su [[Special:Boardvote/dump]].
+Is palisedon fomam pejüföl. [[Special:Boardvote/dump|Pojonon valikanes]].
 
 <pre>$3</pre>
 
-[[Special:Boardvote/entry|Geikön]].',
+[[Special:Boardvote/entry|Geikön]]',
 	'boardvote_nosession' => 'Gebanadientif olik no kanon pafümükön. Nunädolös oli pö vük olik, e logolös eli <nowiki>[[Special:Boardvote]]</nowiki>. Mutol gebön kali labü keblünots pu $1 bü $2, e kela redakam balid äjenon bü $3.',
 	'boardvote_notloggedin' => 'No enunädol oli. Ad vögodön, mutol gebön kali labü keblünots pu $1 bü $2, e kela redakam balid äjenon bü $3.',
 	'boardvote_notqualified' => 'No dalol kompenön pö daväl at. Zesüdos, das ädunol redakamis $3 bü $2, e das redakam balid ola äjenon bü $5.',
@@ -6021,16 +6028,17 @@ Is palisedon fomam pejüföl. Pojonon valikanes su [[Special:Boardvote/dump]].
 	'boardvote_strike' => 'Duliunön',
 	'boardvote_unstrike' => 'Säduliunön',
 	'boardvote_needadmin' => 'Te davälaguvans dalons dunön atosi.',
-	'boardvote_sitenotice' => '<a href="{{localurle:Special:Boardvote/vote}}">Daväl Kipedalefa ela Wikimedia</a>:  Vögodam padälon jü 22 June',
+	'boardvote_sitenotice' => '<a href="{{localurle:Special:Boardvote/vote}}">Daväl Kipedalefa ela Wikimedia</a>:
+Vögodam padälon jü yunul 22',
 	'boardvote_notstarted' => 'Daväl no nog eprimon',
-	'boardvote_closed' => 'Vögodam ya efinikon, logolös [http://meta.wikimedia.org/wiki/Elections_for_the_Board_of_Trustees_of_the_Wikimedia_Foundation%2C_2008/En davälapadi] suno ad getön sekis.',
+	'boardvote_closed' => 'Vögodam ya efinikon, logolös [http://meta.wikimedia.org/wiki/Board_elections/2008/Results davälapadi] suno ad getön sekis.',
 	'boardvote_edits_many' => 'mödik',
 	'group-boardvote' => 'guvans Daväla Kipedalefa',
 	'group-boardvote-member' => 'guvan Daväla Kipedalefa',
 	'grouppage-boardvote' => '{{ns:project}}:guvan Daväla Kipedalefa',
 	'boardvote_blocked' => 'Liedo peblokol in vük olik. Gebans pebloköl no dalons vögodön.',
 	'boardvote_welcome' => "Benokömö, o '''$1'''!",
-	'go_to_board_vote' => 'Daväl Kipedalefa ela Wikimedia (yelü 2007)',
+	'go_to_board_vote' => 'Daväl Kipedalefa ela Wikimedia (yelü 2008)',
 	'boardvote_redirecting' => 'Ad gretükön sefi e dulogamovi, vögodam pajenükon medü dünanünöm plödik nesekidiko pekontrolöl.
 
 Olüodükol lü dünanünöm plödik at pos sekuns 20. [$1 Klikolös is] ad golön usio anu.

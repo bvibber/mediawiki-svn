@@ -130,6 +130,7 @@ $messages['dsb'] = array(
 $messages['eo'] = array(
 	'onlinestatus-subtitle-offline' => 'Ĉi tiu uzanto estas nune nekonektita',
 	'onlinestatus-subtitle-online' => 'Ĉi tiu uzanto estas nune konektita',
+	'onlinestatus-tab' => 'Statuso',
 	'onlinestatus-toggles-desc' => 'Via statuso:',
 	'onlinestatus-toggles-show' => 'Montru retkonektan statuson en mia uzanto-paĝo',
 	'onlinestatus-toggle-offline' => 'Nekonektita',

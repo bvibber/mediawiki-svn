@@ -33,9 +33,19 @@ $aliases['de'] = array(
 	'InterwikiList' => array( 'Interwiki-Liste' ),
 );
 
+/** Finnish (Suomi) */
+$aliases['fi'] = array(
+	'InterwikiList' => array( 'Interwikilista' ),
+);
+
 /** Korean (한국어) */
 $aliases['ko'] = array(
 	'InterwikiList' => array( '인터위키목록' ),
+);
+
+/** Luxembourgish (Lëtzebuergesch) */
+$aliases['lb'] = array(
+	'InterwikiList' => array( 'Interwiki-Lëscht' ),
 );
 
 /** Nedersaksisch (Nedersaksisch) */

@@ -255,6 +255,19 @@ $messages['km'] = array(
 	'watchers_less_than_x' => 'មនុស្ស​តិចជាង $1 នាក់​កំពុងតាមដានទំព័រនេះ។',
 );
 
+/** Ripoarisch (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'watchers' => 'Oppasser',
+	'watchers_link_title' => 'Wä paß op di Sigg op?',
+	'watchers_error_article' => '<b>Fähler:</b> Di Sigg ham_mer nit.',
+	'watchers_header' => 'Metmaacher, di op di Sigg „$1“ oppasse',
+	'watchers_noone_watches' => 'Keiner pass op di Sigg op.',
+	'watchers_x_or_more' => '$1 udder mieh Metmaacher passe op di Sigg op.',
+	'watchers_less_than_x' => 'Winnijer wi $1 Metmaacher passe op die Sigg op.',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */

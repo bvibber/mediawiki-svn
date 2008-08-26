@@ -64,7 +64,7 @@ $aliases['la'] = array(
 
 /** Luxembourgish (Lëtzebuergesch) */
 $aliases['lb'] = array(
-	'CrossNamespaceLinks' => array( 'Sàite mat Linken an aner Nimmraim' ),
+	'CrossNamespaceLinks' => array( 'Säite mat Linken an aner Nimmraim' ),
 );
 
 /** Malay (Bahasa Melayu) */

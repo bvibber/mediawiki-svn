@@ -32,9 +32,19 @@ $aliases['de'] = array(
 	'Badimages' => array( 'Unerwünschte Bilder' ),
 );
 
+/** Finnish (Suomi) */
+$aliases['fi'] = array(
+	'Badimages' => array( 'Arveluttavat kuvat' ),
+);
+
 /** Hungarian (Magyar) */
 $aliases['hu'] = array(
 	'Badimages' => array( 'Hibás képek' ),
+);
+
+/** Luxembourgish (Lëtzebuergesch) */
+$aliases['lb'] = array(
+	'Badimages' => array( 'Net gewënschte Biller' ),
 );
 
 /** Nedersaksisch (Nedersaksisch) */

@@ -72,7 +72,7 @@ $messages['ar'] = array(
 	'countedits' => 'عد التعديلات',
 	'countedits-desc' => '[[Special:CountEdits|صفحة خاصة]] تعد تعديلات المستخدم وتوفر قائمة لأعلى عشر مساهمين',
 	'countedits-warning' => "'''تحذير:''' لا تحكم على كتاب من غلافه.
-لا تحكم على مساهم من خلال عدد مساهماته.",
+لا تحكم على المساهمين بواسطة عدد تعديلاتهم.",
 	'countedits-username' => 'اسم المستخدم:',
 	'countedits-ok' => 'موافق',
 	'countedits-nosuchuser' => 'لا يوجد مستخدم بالاسم $1.',

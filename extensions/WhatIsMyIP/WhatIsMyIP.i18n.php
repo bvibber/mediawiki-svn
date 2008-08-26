@@ -271,3 +271,12 @@ $messages['sv'] = array(
 	'whatismyip-out' => 'Din IP-adress:',
 );
 
+/** Vèneto (Vèneto)
+ * @author Candalua
+ */
+$messages['vec'] = array(
+	'whatismyip' => 'Quale xelo el me IP?',
+	'whatismyip-desc' => "Mostra l'indirisso IP atuale de l'utente in [[Special:WhatIsMyIP]]",
+	'whatismyip-out' => 'El to IP el xe:',
+);
+

@@ -26,6 +26,7 @@ $messages['en'] = array(
 /** Message documentation (Message documentation)
  * @author Jon Harald Søby
  * @author Meno25
+ * @author SPQRobin
  */
 $messages['qqq'] = array(
 	'pdtest-desc' => 'Short description of the Parser Diff Test extension, shown on [[Special:Version]]. Do not translate or change links.',

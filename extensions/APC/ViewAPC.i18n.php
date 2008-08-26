@@ -229,9 +229,9 @@ $messages['ar'] = array(
 	'right-apc' => 'استخدام كل الخواص في [[Special:ViewAPC]]',
 	'viewapc-apc-not-available' => 'لا معلومات اختزان متوفرة.
 يبدو أن APC لا يعمل.',
-	'viewapc-clear-confirm' => 'هل تريد إفراغ الاختزان؟',
-	'viewapc-clear-user-cache' => 'أفرغ اختزان المستخدم',
-	'viewapc-clear-code-cache' => 'أفرغ اختزان opcode',
+	'viewapc-clear-confirm' => 'هل تريد إفراغ الكاش؟',
+	'viewapc-clear-user-cache' => 'أفرغ كاش المستخدم',
+	'viewapc-clear-code-cache' => 'أفرغ كاش opcode',
 	'viewapc-mode-stats' => 'عرض إحصاءات المضيف',
 	'viewapc-mode-system-cache' => 'مدخلات كاش النظام',
 	'viewapc-mode-system-cache-dir' => 'المدخلات لكل مجلد',
@@ -246,8 +246,8 @@ $messages['ar'] = array(
 	'viewapc-start-time' => 'زمن البداية',
 	'viewapc-uptime' => 'زمن العمل',
 	'viewapc-upload-support' => 'دعم رفع الملفات',
-	'viewapc-filecache-info' => 'معلومات اختزان الملفات',
-	'viewapc-usercache-info' => 'معلومات اختزان المستخدم',
+	'viewapc-filecache-info' => 'معلومات كاش الملفات',
+	'viewapc-usercache-info' => 'معلومات كاش المستخدم',
 	'viewapc-cached-files' => 'ملفات مختزنة',
 	'viewapc-cached-files-d' => '$1 {{PLURAL:$1|ملف|ملف}} ($2)',
 	'viewapc-hits' => 'ضربات',
@@ -326,7 +326,7 @@ $messages['ar'] = array(
 	'viewapc-version-old' => 'أنت تشغل نسخة قديمة من APC ($1).
 نسخة جديدة $2 متوفرة في http://pecl.php.net/package/APC/$2',
 	'viewapc-filecache-cleared' => "'''''تم إفراغ اختزان الملفات.'''''",
-	'viewapc-usercache-cleared' => "'''''تم إفراغ اختزان التطبيق.'''''",
+	'viewapc-usercache-cleared' => "'''''تم إفراغ كاش التطبيق.'''''",
 );
 
 /** Egyptian Spoken Arabic (مصرى)
@@ -657,6 +657,8 @@ APC verŝajne ne funkcias.',
 	'viewapc-display-ttl' => 'Findato',
 	'viewapc-display-inode' => 'Indeksnodo',
 	'viewapc-display-type' => 'Speco',
+	'viewapc-display-type-file' => 'Dosiero en kaŝmemoro',
+	'viewapc-display-type-user' => 'Kaŝmemoritaj datenoj de etendilo',
 	'viewapc-display-mtime' => 'Modifita',
 	'viewapc-display-creation_time' => 'Kreita',
 	'viewapc-display-deletion_time' => 'Forigita',

@@ -27,6 +27,11 @@ $aliases['arz'] = array(
 	'CategoryIntersection' => array( 'تقاطع_تصنيف' ),
 );
 
+/** Assamese (অসমীয়া) */
+$aliases['as'] = array(
+	'CategoryIntersection' => array( 'শ্ৰেণী ইণ্টাৰচেকচন্' ),
+);
+
 $aliases['br'] = array(
 	'CategoryIntersection'=> array( 'Kengej rummadoù' ),
 );

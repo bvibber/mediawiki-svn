@@ -630,6 +630,7 @@ $messages['ksh'] = array(
 	'youtubeauthsub_category' => 'Kattejori op <i lang="en">YouTube</i>',
 	'youtubeauthsub_submit' => 'Loß Jonn!',
 	'youtubeauthsub_clickhere' => 'Kleck för et Enlogge op <i lang="en">YouTube</i>',
+	'youtubeauthsub_tokenerror' => 'Mer hatte ene Fähler, un kunnte keine Eimohl-Zohjangsschlößel krijje, dröm versök et ens domet, die Sigg neu opzeroofe udder neu ze laade.',
 	'youtubeauthsub_authsubinstructions' => 'Öm ene Viddejo huhzelade, moß De eets op <i lang="en">YouTube</i> enjelogg han.',
 	'youtubeauthsub_uploadhere' => 'Don Dinge Viddejo fun huhlade fun:',
 	'youtubeauthsub_uploadbutton' => 'Huhlade',

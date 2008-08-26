@@ -35,6 +35,13 @@ $messages['ar'] = array(
 	'antibot-desc' => 'إطار بسيط للتحقق من بوت السبام والأحمال',
 );
 
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Ramsis II
+ */
+$messages['arz'] = array(
+	'antibot-desc' => 'نظام بسيط ل السبام بوت والأحمال',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  */
@@ -100,6 +107,13 @@ $messages['he'] = array(
 	'antibot-desc' => 'מערכת פשוטה לבדיקת בוטים של ספאם',
 );
 
+/** Croatian (Hrvatski)
+ * @author Dalibor Bosits
+ */
+$messages['hr'] = array(
+	'antibot-desc' => 'Jednostavan okvir za provjere spambotova i pokretanje identifikacije',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */
@@ -126,6 +140,13 @@ $messages['ksh'] = array(
  */
 $messages['lb'] = array(
 	'antibot-desc' => 'Einfach Méiglechkeet fir Spambot-Kontrollen an aner Spamaktivitéiten',
+);
+
+/** Malay (Bahasa Melayu)
+ * @author Aviator
+ */
+$messages['ms'] = array(
+	'antibot-desc' => 'Sebuah rangka kerja perisian ringkas untuk pemeriksaan bot spam dan beban picu',
 );
 
 /** Dutch (Nederlands)

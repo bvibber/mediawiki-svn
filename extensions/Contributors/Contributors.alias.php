@@ -37,6 +37,11 @@ $aliases['hr'] = array(
 	'Contributors' => array( 'Doprinositelji' ),
 );
 
+/** Luxembourgish (Lëtzebuergesch) */
+$aliases['lb'] = array(
+	'Contributors' => array( 'Auteuren' ),
+);
+
 /** Nedersaksisch (Nedersaksisch) */
 $aliases['nds-nl'] = array(
 	'Contributors' => array( 'Biedragers' ),

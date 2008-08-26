@@ -154,7 +154,7 @@ $messages['da'] = array(
  * @author Raimond Spekking
  */
 $messages['de'] = array(
-	'deletedcontributions' => 'Gelöschte Benutzerbeiträge',
+	'deletedcontributions' => 'Gelöschte Beiträge',
 	'deletedcontributions-desc' => 'Gibt Administratoren die Möglichkeit, [[Special:DeletedContributions|gelöschte Benutzerbeiträge]] einzusehen',
 );
 

@@ -26,8 +26,9 @@ $messages['en'] = array(
  */
 $messages['ar'] = array(
 	'rightfunctions-desc' => 'دوال محلل تعتمد على السماحات',
-	'rightfunctions-restboth' => '$1 (من الصفحة المحلية)، $2 (من المصادر المضمنة)',
-	'rightfunctions-restcasc' => '$1 (من المصادر المضمنة)',
+	'rightfunctions-casc' => '(من مصادر مضمنة)',
+	'rightfunctions-local' => '(من صفحة محلية)',
+	'rightfunctions-ns' => '(من حماية نطاق)',
 );
 
 /** Bulgarian (Български)
@@ -159,8 +160,9 @@ $messages['ru'] = array(
  */
 $messages['sk'] = array(
 	'rightfunctions-desc' => 'Funkcie syntaktického analyzátora podľa oprávnení',
-	'rightfunctions-restboth' => '$1 (z lokálnej stránky), $2 (kaskádovito zo zdroja)',
-	'rightfunctions-restcasc' => '$1 (kaskádovito zo zdroja)',
+	'rightfunctions-casc' => '(z kaskádových zdrojov)',
+	'rightfunctions-local' => '(z lokálnej stránky)',
+	'rightfunctions-ns' => '(zo zamknutia menného priestoru)',
 );
 
 /** Swedish (Svenska)

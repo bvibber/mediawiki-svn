@@ -119,6 +119,17 @@ $messages['ksh'] = array(
 	'stalkerlog-log-text' => 'Hee kütt en Leß met de Momente un de Metmaacher, di sesch enjelogg han un wann se widder ußjelogg han.',
 );
 
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$messages['lb'] = array(
+	'stalkerlog-desc' => 'Setzt [[Special:Log/stalkerlog|eng Lëscht]] vun den Umeldungen an Ofmeldunge vun de Benotzer derbäi',
+	'stalkerlog-log-login' => 'ugemelt.',
+	'stalkerlog-log-logout' => 'ofgemelt.',
+	'stalkerlog-log-type' => 'Lëscht vun den Authentifizéierungen',
+	'stalkerlog-log-text' => 'Dëst ass eng Lëscht vun den Umellungen an Ofmellungen.',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

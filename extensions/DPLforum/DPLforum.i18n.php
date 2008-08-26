@@ -154,6 +154,16 @@ $messages['ia'] = array(
 	'dplforum-toomany' => 'Foro DPL: Troppo de categorias!',
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author Rex
+ */
+$messages['id'] = array(
+	'dplforum-desc' => 'Ekstensi forum berbasis-DPL',
+	'dplforum-edited' => '  - Terakhir disunting',
+	'dplforum-never' => 'Tidak pernah',
+	'dplforum-toofew' => 'Forum DPL: Terlalu sedikit kategori!',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */

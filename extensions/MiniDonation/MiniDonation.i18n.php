@@ -189,6 +189,7 @@ $messages['ksh'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
+	'donationform-desc' => "Setzt den Tag <tt>&lt;donateform&gt;</tt> derbäi fir Donen iwwer PayPal z'ënnerstetzen",
 	'donationform-submit' => 'Donatiounen iwwer PayPal',
 );
 

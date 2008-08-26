@@ -1410,6 +1410,13 @@ OpenID позволяет вам заходить на различные веб
 ; [http://bloggerindraft.blogspot.com/2008/01/new-feature-blogger-as-openid-provider.html Blogger], [http://faq.wordpress.com/2007/03/06/what-is-openid/ Wordpress.com], [http://www.livejournal.com/openid/about.bml LiveJournal], [http://bradfitz.vox.com/library/post/openid-for-vox.html Vox] : Если вы ведёте блог с помощью одной из этих служб, введите ниже адрес вашего блога. Например, ''<nowiki>http://yourusername.blogspot.com/</nowiki>'', ''<nowiki>http://yourusername.wordpress.com/</nowiki>'', ''<nowiki>http://yourusername.livejournal.com/</nowiki>'', или ''<nowiki>http://yourusername.vox.com/</nowiki>''.",
 );
 
+/** Sinhala (සිංහල)
+ * @author Asiri wiki
+ */
+$messages['si'] = array(
+	'openidlanguage' => 'භාෂාව',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

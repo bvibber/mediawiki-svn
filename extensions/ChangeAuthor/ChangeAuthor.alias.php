@@ -42,6 +42,11 @@ $aliases['hu'] = array(
 	'ChangeAuthor' => array( 'Szerző megváltoztatása' ),
 );
 
+/** Luxembourgish (Lëtzebuergesch) */
+$aliases['lb'] = array(
+	'ChangeAuthor' => array( 'Auteur änneren' ),
+);
+
 /** Nedersaksisch (Nedersaksisch) */
 $aliases['nds-nl'] = array(
 	'ChangeAuthor' => array( 'Auteur_wiezigen' ),

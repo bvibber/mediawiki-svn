@@ -39,6 +39,14 @@ $messages['ar'] = array(
 	'newuseredit-summary' => 'إضافة [[{{int:newusermessage-template}}|رسالة ترحيب]] إلى صفحة نقاش مستخدم جديد',
 );
 
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Ramsis II
+ */
+$messages['arz'] = array(
+	'newusermessage-desc' => 'بيضيف رسالة لصفحات النقاش بتاعة اليوزرز الجداد',
+	'newuseredit-summary' => 'اضافة [[{{int:newusermessage-template}}|رسالة ترحيب]] لصفحة نقاش يوزر جديد',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  */
@@ -85,6 +93,15 @@ $messages['es'] = array(
 	'newuseredit-summary' => 'Agregando el [[{{int:newusermessage-template}}|mensaje de bienvenida]] a la página de usuario del nuevo usuario',
 );
 
+/** Finnish (Suomi)
+ * @author Crt
+ * @author Jaakonam
+ */
+$messages['fi'] = array(
+	'newusermessage-desc' => 'Lisää viestin uuden käyttäjän keskustelusivulle.',
+	'newuseredit-summary' => '[[{{int:newusermessage-template}}|Tervetuloviestin]] lisääminen uuden käyttäjän keskustelusivulle',
+);
+
 /** French (Français)
  * @author Grondin
  */
@@ -114,6 +131,14 @@ $messages['he'] = array(
  */
 $messages['hi'] = array(
 	'newusermessage-desc' => 'नये सदस्योंके वार्ता पृष्ठपर एक संदेश देता हैं',
+);
+
+/** Croatian (Hrvatski)
+ * @author Dalibor Bosits
+ */
+$messages['hr'] = array(
+	'newusermessage-desc' => 'Dodaje poruku na stranicu za razgovor novih suradnika',
+	'newuseredit-summary' => 'Dodajem [[{{int:newusermessage-template}}|dobrodošlicu]] na stranicu za razgovor novog suradnika',
 );
 
 /** Upper Sorbian (Hornjoserbsce)
@@ -190,6 +215,14 @@ $messages['mr'] = array(
 	'newusermessage-desc' => 'नवीन नोंदणी केलेल्या सदस्यांच्या पानावर एक संदेश वाढविते',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Aviator
+ */
+$messages['ms'] = array(
+	'newusermessage-desc' => 'Menambah pesanan di laman perbincangan pengguna baru',
+	'newuseredit-summary' => 'Menambah [[{{int:newusermessage-template}}|ucapan alu-aluan]] di laman perbincangan pengguna baru',
+);
+
 /** Maltese (Malti)
  * @author Chrisportelli
  */
@@ -241,6 +274,7 @@ $messages['pt'] = array(
  */
 $messages['ru'] = array(
 	'newusermessage-desc' => 'Добавляет сообщение на страницу обсуждения недавно зарегистрированного участника',
+	'newuseredit-summary' => 'Добавление [[{{int:newusermessage-template}}|приветствия]] на страницу обсуждения нового участника',
 );
 
 /** Slovak (Slovenčina)

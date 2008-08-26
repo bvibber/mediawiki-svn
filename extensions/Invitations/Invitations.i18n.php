@@ -56,7 +56,7 @@ $messages['ar'] = array(
 	'invitations-invitedlist-none' => 'لم تتم دعوتك لاستخدام أي ميزات بالدعوة-فقط.',
 	'invitations-invitedlist-item-count' => '({{PLURAL:$1|دعوة واحدة|$1 دعوة}} متوفرة)',
 	'invitations-pagetitle' => 'ميزات بالدعوة-فقط',
-	'invitations-uninvitedlist-description' => 'لا توجد لديك صلاحية لهذه الميزات بالدعوة-فقط الأخرى.',
+	'invitations-uninvitedlist-description' => 'لا يوجد لديك وصول إلى ميزات البرنامج بالدعوة فقط الأخرى هذه.',
 	'invitations-uninvitedlist-none' => 'في هذا الوقت، لا مميزات برنامج أخرى محددة بالدعوة فقط.',
 	'invitations-feature-pagetitle' => 'إدارة الدعوات - $1',
 	'invitations-feature-access' => 'لديك حاليا صلاحية استخدام <i>$1</i>.',
@@ -64,11 +64,11 @@ $messages['ar'] = array(
 	'invitations-feature-noneleft' => 'لقد استخدمت كل دعواتك المحصصة لهذه الميزة',
 	'invitations-feature-noneyet' => 'أنت مازالت لم تتلق كمية دعواتك لهذه الميزة.',
 	'invitations-feature-notallowed' => 'لا يوجد لديك صلاحية استخدام <i>$1</i>.',
-	'invitations-inviteform-title' => 'ادعي مستخدم ليستخدم $1',
+	'invitations-inviteform-title' => 'ادع مستخدما ليستخدم $1',
 	'invitations-inviteform-username' => 'المستخدم لتتم دعوته',
 	'invitations-inviteform-submit' => 'دعوة',
 	'invitations-error-baduser' => 'المستخدم الذي حددته لا يبدو أنه موجود.',
-	'invitations-error-alreadyinvited' => 'المستخدم الذي حددته لديه صلاحية لهذه الميزة أصلا!',
+	'invitations-error-alreadyinvited' => 'المستخدم الذي حددته لديه وصول لهذه الميزة أصلا!',
 	'invitations-invite-success' => 'لقد دعوت $1 ليستخدم هذه الميزة بنجاح!',
 );
 

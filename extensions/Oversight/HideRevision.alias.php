@@ -39,6 +39,12 @@ $aliases['de'] = array(
 	'Oversight' => array( 'Oversight' ),
 );
 
+/** Finnish (Suomi) */
+$aliases['fi'] = array(
+	'HideRevision' => array( 'Piilota versio' ),
+	'Oversight' => array( 'Häivytä' ),
+);
+
 /** Hebrew (עברית)
  * @author Rotem Liss
  */
