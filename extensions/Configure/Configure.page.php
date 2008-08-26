@@ -653,8 +653,8 @@ abstract class ConfigurationPage extends SpecialPage {
 		$default = isset( $params['value'] ) ? $params['value'] : $this->getSettingValue( $conf );
 		if( $type == 'text' || $type == 'int' ){
 			if( !$allowed )
-				return '<code>' . htmlspecialchars( $default ) . '</code>';
-			return Xml::element( 'input', array( 'name' => 'wp' . $conf, 'type' => 'text', 'value' => $default ) );
+				return '<code>' . htmlspecialchars( (string)$default ) . '</code>';
+			return Xml::element( 'input', array( 'name' => 'wp' . $conf, 'type' => 'text', 'value' => (string)$default ) );
 		}
 		if( $type == 'bool' ){
 			if( !$allowed )
