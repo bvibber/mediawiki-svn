@@ -30,11 +30,6 @@ $wgSecurityRenderInfo           = true;                         # Renders securi
 $wgEnableParserCache            = false;                        # Currently the extension fails if caching enabled
 
 # Extra actions to allow control over in protection form
-$wgSecurityExtraActions  = array(
-	'read'    => 'Read',
-	'source'  => 'Source',
-	'history' => 'History'
-);
 $wgSecurityExtraActions  = array('read' => 'Read');
 
 # Extra groups available in protection form
@@ -395,7 +390,6 @@ function wfSimpleSecurityDBHook() {
 	$wgDBtype = 'SimpleSecurity';
 	eval("class Database{$wgDBtype} extends Database{$oldDB}".' {
 		public function query($sql, $fname = "", $tempIgnore = false) {
-			#print "<pre>$sql</pre>";
 			$count = false;
 			$patched = preg_replace_callback("/(?<=SELECT ).+?(?= FROM)/", "SimpleSecurity::patchSQL", $sql, 1, $count);
 			return parent::query($count ? $patched : $sql, $fname, $tempIgnore);
