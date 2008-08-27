@@ -286,14 +286,7 @@ mediaPlayer.prototype =
 				//the load order should be more defined and ordered via callbacks  
 				$j.getScript(plugin_path, function(){				
 					js_log(_this.id + ' plugin loaded');
-					$j(document).oneTime(1, function()
-					{
-						js_log(_this.id + 'executing callbacks');
-						_this.loaded = true;
-						for(var i in _this.loading_callbacks)
-							_this.loading_callbacks[i]();
-						_this.loading_callbacks = null;
-					});
+					_this.execute_callbacks();
 				});
 /*				eval('var lib = {"'+this.library+'Embed":\'embedLibs/mv_'+this.library+'Embed.js\'}'); 
 				mvJsLoader.doLoad(lib,function(){
@@ -305,6 +298,28 @@ mediaPlayer.prototype =
 					_this.loading_callbacks = null;
 				});*/
 			}
+		}
+	},
+	execute_callbacks : function()
+	{
+		// make sure the object exists
+		if(eval('typeof '+this.library + 'Embed')!='undefined')
+		{
+			js_log(this.id + ' executing callbacks');
+			this.loaded = true;
+			for(var i in this.loading_callbacks)
+				this.loading_callbacks[i]();
+			this.loading_callbacks = null;
+		}
+		else
+		{
+			js_log(this.id + ' object not present, delay callbacks');
+			// if not, wait a little
+			var _this = this;
+			$j(document).oneTime(25, function()
+			{
+				_this.execute_callbacks();
+			});
 		}
 	}
 }
