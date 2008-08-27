@@ -286,11 +286,15 @@ mediaPlayer.prototype =
 				//the load order should be more defined and ordered via callbacks  
 				$j.getScript(plugin_path, function(){				
 					js_log(_this.id + ' plugin loaded');
-					_this.loaded = true;					
-					for(var i in _this.loading_callbacks)
-						_this.loading_callbacks[i]();
-					_this.loading_callbacks = null;
-				});		
+					$j(document).oneTime(1, function()
+					{
+						js_log(_this.id + 'executing callbacks');
+						_this.loaded = true;
+						for(var i in _this.loading_callbacks)
+							_this.loading_callbacks[i]();
+						_this.loading_callbacks = null;
+					});
+				});
 /*				eval('var lib = {"'+this.library+'Embed":\'embedLibs/mv_'+this.library+'Embed.js\'}'); 
 				mvJsLoader.doLoad(lib,function(){
 					js_log(_this.id + ' plugin loaded');
@@ -1799,7 +1803,9 @@ embedVideo.prototype = {
         // closed captioning
 	  	if(this.media_element.hasStreamOfMIMEType('text/cmml') && this.show_meta_link)
         {
-            html_code += '<div class="closed_captions"></div>';
+			//add in cmml inline dispaly if roe description avaliable
+			//not to be displayed in stream interface.
+            html_code += '<div class="closed_captions"><a href="javascript:$j(\'#'+this.id+'\').get(0).showTextInterface();"></a></div>';
             available_width -= 40;
 	  	}
 
