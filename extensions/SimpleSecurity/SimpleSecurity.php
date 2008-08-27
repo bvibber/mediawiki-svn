@@ -18,7 +18,7 @@
 
 if (!defined('MEDIAWIKI')) die('Not an entry point.');
 
-define('SIMPLESECURITY_VERSION', '4.2.4, 2008-08-27');
+define('SIMPLESECURITY_VERSION', '4.2.5, 2008-08-27');
 
 # Global security settings
 $wgSecurityMagicIf              = "ifusercan";                  # the name for doing a permission-based conditional
@@ -247,7 +247,6 @@ class SimpleSecurity {
 	 * otherwise the title that the old_text is associated with can't be determined
 	 */
 	static function patchSQL($match) {
-		#print "<pre>$match[0]</pre>";
 		if (!preg_match("/old_text/", $match[0])) return $match[0];
 		$fields = str_replace(" ", "", $match[0]);
 		return ($fields == "*" || preg_match("/old_id/", $fields)) ? $fields : "$fields,old_id";
@@ -255,14 +254,15 @@ class SimpleSecurity {
 
 	/**
 	 * Validate the passed database row and replace any invalid content
-	 * - called from DatabaseFetchHook whenever a row contains old_text
+	 * - called from fetchObject hook whenever a row contains old_text
 	 * - old_id is guaranteed to exist due to patchSQL method
+	 * - bails if sysop or $wgSimpleSecurity doesn't exist yet
 	 */
 	static function validateRow(&$row) {
 		global $wgUser, $wgSimpleSecurity;
 
 		$groups = $wgUser->getEffectiveGroups();
-		if (in_array('sysop', $groups)) return;
+		if (!is_object($wgSimpleSecurity) || in_array('sysop', $groups)) return;
 
 		# Obtain a title object from the old_id
 		$dbr   =& wfGetDB(DB_SLAVE);
