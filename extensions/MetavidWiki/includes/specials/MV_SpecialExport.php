@@ -21,9 +21,13 @@ if (!defined('MEDIAWIKI')) die();
 global $IP, $smwgIP;
 //all the special pages handled by this master Special Export (could reactor into individual classes if we want to)
 class MvVideoFeed extends SpecialPage{
-	function __construct(){
+	function __construct(){			
 		parent::__construct('MvVideoFeed');
 		$MvSpecialExport = new MV_SpecialExport('category');
+		
+		if (method_exists('SpecialPage', 'setGroup')) { 
+			parent::setGroup('MvVideoFeed', 'mv_group');	
+		}
 	}
 }
 class MvExportStream extends SpecialPage{
@@ -32,11 +36,27 @@ class MvExportStream extends SpecialPage{
 		$MvSpecialExport = new MV_SpecialExport('stream');
 	}
 }
-class MvExportSequence extends SpecialPage{
+class MvExportSequence extends SpecialPage{	
 	function __construct(){
 		parent::__construct('MvExportSequence');
-		$MvSpecialExport = new MV_SpecialExport('sequence');
+		global $wgRequest;
+		//@@todo replace this ugly hack .. don't know how to get around the missing param atm:
+		$tl = $wgRequest->getVal('title');
+		$par='';
+		if(strpos($tl,'/')!==false){
+			$par = substr($tl, strpos($tl,'/')+1 );
+		}				
+		//print "par: ". $par ;
+		//die;
+		$MvSpecialExport = new MV_SpecialExport('sequence', $par);
+
+		if (method_exists('SpecialPage', 'setGroup')) { 
+			parent::setGroup('MvExportSequence', 'mv_group');	
+		}		
 	}
+}
+function wfSpecialMvExportSequence(){
+	return true;	
 }
 class MvExportSearch extends SpecialPage{
 	function __construct(){
@@ -54,6 +74,7 @@ function wfSpecialMvExportStream(){
 	return true;
 }
 
+
 //extend supported feed types:
 $wgFeedClasses['cmml']='CmmlFeed';
 $wgFeedClasses['podcast']='PodcastFeed';
@@ -63,7 +84,7 @@ class MV_SpecialExport {
 	function __construct($export_type, $par=''){
 		$this->export_type=$export_type;	
 		$this->par = $par;	
-		$this->execute();
+		$this->execute();		
 	}
 	//@@todo think about integration into api.php	
 	function execute() {
@@ -72,6 +93,7 @@ class MV_SpecialExport {
 		//set universal variables: 
 		$this->feed_format = $wgRequest->getVal('feed_format');	
 		$error_page = '';
+		//print "RAN execute with export type: " .$this->export_type;		
 		switch($this->export_type){
 			case 'stream':
 				$this->stream_name = $wgRequest->getVal('stream_name');
@@ -105,9 +127,11 @@ class MV_SpecialExport {
 			case 'search':
 				$this->get_search_feed();
 			break;
-			case 'sequence':			
-				$this->seq_title = $this->par;				
-				$this->get_sequence_xspf();
+			case 'sequence':					
+				if($this->par!=''){
+					$this->seq_title = $this->par;						
+					$this->get_sequence_xspf();
+				}
 			break;			
 			case 'ask':				
 				$this->get_ask_feed();
@@ -119,7 +143,7 @@ class MV_SpecialExport {
 			$wgOut->addHTML($error_page);
 		}	
 	}    
-	function get_sequence_xspf(){		
+	function get_sequence_xspf(){	
 		//get the sequence article and export in xspf format: 		
 		$seqTitle = Title::newFromText($this->seq_title, MV_NS_SEQUENCE);
 		$seqArticle = new MV_SequencePage($seqTitle);	

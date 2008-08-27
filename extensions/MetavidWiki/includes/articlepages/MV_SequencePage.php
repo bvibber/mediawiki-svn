@@ -22,7 +22,9 @@ class MV_SequencePage extends Article{
  	function __construct($title){  		
  		global $wgRequest; 		
  		mvfAddHTMLHeader('sequence');
- 		parent::__construct($title); 		
+ 		if($title!=null){
+ 			parent::__construct($title);
+ 		} 		
  		return $this;
  	}
  	/*function doSeqReplace(&$input, &$argv, &$parser){

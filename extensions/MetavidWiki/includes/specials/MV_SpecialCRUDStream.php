@@ -29,11 +29,14 @@ function doSpecialEditStream(){
 SpecialPage::addPage( new SpecialPage('Mv_Add_Stream','',true,'doSpecialAddStream',false) );
 SpecialPage::addPage( new SpecialPage('Mv_Edit_Stream','',true,'doSpecialEditStream',false) );
 */
+
 /* @@TODO depreciate in favor of oggFile -> stream setup */
 class MV_SpecialCRUDStream extends SpecialPage{
-	function __construct($mode='add'){		
+	function __construct($mode='add'){				
 		parent::__construct('Mv_Add_Stream');		
-		$this->mode='add';	
+		$this->mode='add';
+		//print_r(debug_backtrace());	
+				
 	}
 	function execute() {
 		global $wgRequest, $wgOut, $wgUser, $mvStream_name, $mvgIP;   

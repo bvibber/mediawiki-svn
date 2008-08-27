@@ -22,10 +22,10 @@ Here are some sample embeds:<br />
 $sample_embed = array();
 
 $sample_embed[0]['tag'] = '<video id="vid_4184"
-thumbnail="http://metavid.ucsc.edu/wiki/index.php?action=ajax&rs=mv_frame_server&stream_name=senate_proceeding_08-01-07&t=0:27:16&size=small"
+thumbnail="http://metavid.ucsc.edu/wiki/index.php?action=ajax&rs=mv_frame_server&stream_name=senate_proceeding_08-01-07&t=0:27:16&size=large"
 src="http://128.114.20.64/media/senate_proceeding_08-01-07.ogg.anx?t=0:27:16/0:27:32"
 roe="http://localhost/mvw-exp/index.php?title=Special:MvExportStream&feed_format=roe&stream_name=senate_proceeding_08-01-07&t=0:27:16/0:27:32"
-show_meta_link="false"  autoplay="false" style="width:160px;height:120px" controls="true" embed_link="true" ></video>';
+show_meta_link="false"  autoplay="false" style="width:400px;height:300px" controls="true" embed_link="true" ></video>';
 $sample_embed[0]['desc']=' auto play test (similar embed syntax to the metavidWiki site)';
 
 /*$sample_embed[0]['tag']='<video id="v0" src="sample.ogg" thumbnail="sample.jpg"></video>';
@@ -125,7 +125,7 @@ $sample_embed[8]['desc']=' <br><b>Crossfading Videos</b><br/><a href="http://ser
   <table border="1" cellpadding="6" width="600">
   	<? foreach($sample_embed as $key=>$aval){
   		//$key!=8 
-  		if($key!=2)continue;
+  		if($key!=0)continue;
   	 ?>
 	    <tr>
 	      <td valign="top"><?=$aval['tag']?></td>

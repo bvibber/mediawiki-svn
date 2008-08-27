@@ -46,7 +46,7 @@ var nativeEmbed = {
 		this.currentTime = this.vid.currentTime;
 		
 		if( this.currentTime > 0 ){
-			if(! this.userSlide){
+			if(!this.userSlide){
 				this.setSliderValue(this.currentTime/this.duration );
 				this.setStatus( seconds2ntp(this.currentTime) + '/'+ seconds2ntp(this.duration));
 			}else{
