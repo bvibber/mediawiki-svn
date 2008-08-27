@@ -7,8 +7,9 @@
 * (so that remote use of mv_embed can load remote xml )
 */
 
-//NOTE THIS IS DISABLED BY DEFAULT simply comment out the line below to enable;
-die('note mv_data_proxy is disabled by default, see var mv_data_proxy in mv_embed.js for more info');
+//NOTE THIS IS DISABLED BY DEFAULT FOR A RESON 
+//See var mv_data_proxy in mv_embed.js for more info
+die('note mv_data_proxy is disabled by default');
 
 if(isset($_POST['url'])){
 	$req_url = $_POST['url'];

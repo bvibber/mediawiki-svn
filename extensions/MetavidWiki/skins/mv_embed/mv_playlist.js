@@ -290,8 +290,7 @@ mvPlayList.prototype = {
 				return ;
 			}		
 			$j(this).html('<div id="dc_'+this.id+'" style="border:solid thin;width:'+this.width+'px;' +
-					'height:'+this.height+'px;position:relative;"></div>');
-					
+					'height:'+this.height+'px;position:relative;"></div>');					
 								
 			var plObj=this;
 			//append all embed details 
@@ -1449,12 +1448,19 @@ var xspfPlaylist ={
 var smilPlaylist ={
 	transitions:{},
 	doParse:function(){
+		var _this = this;
 		js_log('do parse smil'+ typeof this.transitions);
 		//@@todo get/parse meta: 
-			
+		var meta_tags = this.data.getElementsByTagName('meta');
+		$j.each(meta_tags, function(i,meta_elm){
+			if(meta_elm.hasAttribute('name') && meta_elm.hasAttribute('content')){
+				if(meta_elm.getAttribute('name')=='title' ){
+					_this.title = meta_elm.getAttribute('content');
+				}
+			}
+		});		
 		//add transition objects: 
-		var transition_tags = this.data.getElementsByTagName('transition');		
-		var _this = this;
+		var transition_tags = this.data.getElementsByTagName('transition');			
 		$j.each(transition_tags, function(i,trans_elm){		
 			if(trans_elm.hasAttribute("id")){
 				_this.transitions[trans_elm.getAttribute("id")]= new transitionObj(trans_elm);
@@ -1463,7 +1469,6 @@ var smilPlaylist ={
 			}
 		});
 		//add seq (latter we will have support than one) 
-		var _this_pl = this;
 		var seq_tags = this.data.getElementsByTagName('seq');
 		$j.each(seq_tags, function(i,seq_elm){
 			var inx = 0;
@@ -1475,8 +1480,8 @@ var smilPlaylist ={
 					//set up basic mvSMILClip send it the mediaElemnt & mvClip init: 
 					var cur_clip = new mvSMILClip(mediaElemnt, 
 								{
-									id:'p_' + _this_pl.id + '_c_'+inx,
-									pp:_this_pl,
+									id:'p_' + _this.id + '_c_'+inx,
+									pp:_this,
 									order:inx
 								}								
 							);
@@ -1484,7 +1489,7 @@ var smilPlaylist ={
 						//set up embed:
 						cur_clip.setUpEmbedObj();
 						//add clip to track: 
-						_this_pl.addCliptoTrack(cur_clip);						
+						_this.addCliptoTrack(cur_clip);						
 						//valid clip up the order inx: 
 						inx++;
 					}				

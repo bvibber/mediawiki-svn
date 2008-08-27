@@ -6,12 +6,19 @@ js_log('**** vlcEmbed processing');
 */
 var vlcEmbed = { 
 	instanceOf:'vlcEmbed',
-    supports: {'play_head':true, 'play_or_pause':true, 'stop':true, 'fullscreen':true, 'time_display':true, 'volume_control':true},
+    supports: {'play_head':true, 
+	    'play_or_pause':true, 
+	    'stop':true, 
+	    'fullscreen':true, 
+	    'time_display':true, 
+	    'volume_control':false,
+	    'overlay':false
+    },
 	//init vars: 
 	monitorTimerId : 0,
 	prevState : 0,
 	currentTime:0,
-	duration:0,
+	duration:0,	
     userSlide:false,    
     getEmbedHTML : function(){
 		//give VLC 150ms to initialize before we start playback 
@@ -92,8 +99,8 @@ var vlcEmbed = {
 	        	   var msgtype = msg.type.toString();
 		           if( (msg.severity == 1) && (msgtype == "input") )
 	        	   {
-	                	js_log( msg.message );
-	            	}
+	               		js_log( msg.message );
+	               }
 	        	}
 		        // clear the log once finished to avoid clogging
 	        	this.vlc.log.messages.clear();
@@ -225,6 +232,7 @@ var vlcEmbed = {
     },
    /* js hooks/controls */
     play : function(){
+    	js_log('f:vlcPlay');
  	   	this.getVLC();
     	if(!this.vlc || this.thumbnail_disp){
 	    	//call the parent
@@ -275,7 +283,7 @@ var vlcEmbed = {
     },
     */
     // get the embed vlc object 
-    getVLC : function getVLC(){
+    getVLC : function(){
     	this.vlc = this.getPluginEmbed();   		
     }
 }

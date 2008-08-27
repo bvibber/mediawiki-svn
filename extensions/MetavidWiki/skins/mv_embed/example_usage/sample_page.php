@@ -61,9 +61,8 @@ $sample_embed[3]['tag'] = '<video style="width:400px;height:300px" roe="http://l
 $sample_embed[3]['desc'] = 'Demo2  of json ROE attribute';
 
 
-//$sample_embed[2]['tag'] = '<video id="v2" controls="true" roe="http://mammoth.dnip.net/mvWiki/index.php?title=Special:MvExportStream&feed_format=roe&stream_name=senate_11-14-05&t=0:42:14/0:42:56"></video>';
-//$sample_embed[2]['desc'] = 'video with controls and thumbnail';
-
+$sample_embed[2]['tag'] = '<video id="v2" controls="true" src="sample_fish.ogg" poster="sample_fish.jpg"></video>';
+$sample_embed[2]['desc'] = 'simple video with controls and thumbnail';
 
 //playlist tags:
 $sample_embed[4]['tag'] = '<playlist id="playlist1" width="400" height="300"
@@ -108,7 +107,6 @@ but smells like limburger
 $sample_embed[7]['desc'] = '<b>Inline Playlist:</b> for more info see <a href="http://metavid.ucsc.edu/wiki/index.php/Mv_embed">mv_embed wiki</a> page';
 
 //real video sample:
-//
 $smilURL = 'sample_smil.smil.xml';
 $sample_embed[8]['tag']= '<playlist id="smil_pl" src="'.$smilURL.'">';
 $sample_embed[8]['desc']=' <br><b>Crossfading Videos</b><br/><a href="http://service.real.com/help/library/guides/realone/ProductionGuide/HTML/htmfiles/transit.htm">source</a>
@@ -126,10 +124,11 @@ $sample_embed[8]['desc']=' <br><b>Crossfading Videos</b><br/><a href="http://ser
 ?>
   <table border="1" cellpadding="6" width="600">
   	<? foreach($sample_embed as $key=>$aval){
-  		if($key!=8 && $key!=3)continue;
+  		//$key!=8 
+  		if($key!=2)continue;
   	 ?>
 	    <tr>
-	      <td><?=$aval['tag']?></td>
+	      <td valign="top"><?=$aval['tag']?></td>
 	      <td valign="top"><b>Sample Embed <?=$key?></b><br />
 	      <?=$aval['desc']?><br />
 	      &lt;-- code used: <br />

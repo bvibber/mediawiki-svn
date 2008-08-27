@@ -318,10 +318,17 @@ if (typeof jQuery == 'function') {
 var flashEmbed = {
 	instanceOf:'flashEmbed',
 	monitorTimerId : 0,
-    supports: {'play_head':true, 'play_or_pause':true, 'stop':true, 'fullscreen':true, 'time_display':true, 'volume_control':true},
-    getPluginEmbedHTML : function (){
+    supports: {'play_head':true, 
+	    'play_or_pause':true,
+	    'stop':true, 
+	    'fullscreen':true, 
+	    'time_display':true, 
+	    'volume_control':true,
+	    'overlay':false
+    },
+    getEmbedHTML : function (){
         setTimeout('document.getElementById(\''+this.id+'\').postEmbedJS()', 150);
-        return this.getEmbedObj();
+        return this.wrapEmebedContainer( this.getEmbedObj() );
     },
     getEmbedObj:function(){
     	if(!this.duration)this.duration=30;
