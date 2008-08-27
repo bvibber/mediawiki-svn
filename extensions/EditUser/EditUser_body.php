@@ -8,7 +8,7 @@ class EditUser extends SpecialPage {
 	var $mRows, $mCols, $mSkin, $mMath, $mDate, $mUserEmail, $mEmailFlag, $mNick;
 	var $mUserLanguage, $mUserVariant;
 	var $mSearch, $mRecent, $mRecentDays, $mHourDiff, $mSearchLines, $mSearchChars, $mAction;
-	var $mReset, $mPosted, $mToggles, $mUseAjaxSearch, $mSearchNs, $mRealName, $mImageSize;
+	var $mReset, $mPosted, $mToggles, $mSearchNs, $mRealName, $mImageSize;
 	var $mUnderline, $mWatchlistEdits;
 
 	public function __construct() {
@@ -50,7 +50,6 @@ class EditUser extends SpecialPage {
 		$this->mSuccess = $request->getCheck( 'success' );
 		$this->mWatchlistDays = $request->getVal( 'wpWatchlistDays' );
 		$this->mWatchlistEdits = $request->getVal( 'wpWatchlistEdits' );
-		$this->mUseAjaxSearch = $request->getCheck( 'wpUseAjaxSearch' );
 
 		$this->mSaveprefs = $request->getCheck( 'wpSaveprefs' ) &&
 			$this->mPosted &&
@@ -288,7 +287,6 @@ class EditUser extends SpecialPage {
 		$this->user->setOption( 'thumbsize', $this->mThumbSize );
 		$this->user->setOption( 'underline', $this->validateInt($this->mUnderline, 0, 2) );
 		$this->user->setOption( 'watchlistdays', $this->validateFloat( $this->mWatchlistDays, 0, 7 ) );
-		$this->user->setOption( 'ajaxsearch', $this->mUseAjaxSearch );
 
 		# Set search namespace options
 		foreach( $this->mSearchNs as $i => $value ) {
@@ -388,7 +386,6 @@ class EditUser extends SpecialPage {
 		$this->mWatchlistEdits = $this->user->getOption( 'wllimit' );
 		$this->mUnderline = $this->user->getOption( 'underline' );
 		$this->mWatchlistDays = $this->user->getOption( 'watchlistdays' );
-		$this->mUseAjaxSearch = $this->user->getBoolOption( 'ajaxsearch' );
 
 		$togs = User::getToggles();
 		foreach ( $togs as $tname ) {
@@ -506,7 +503,7 @@ class EditUser extends SpecialPage {
 		global $wgRCShowWatchingUsers, $wgEnotifRevealEditorAddress;
 		global $wgEnableEmail, $wgEnableUserEmail, $wgEmailAuthentication;
 		global $wgContLanguageCode, $wgDefaultSkin, $wgSkipSkins, $wgAuth;
-		global $wgEmailConfirmToEdit, $wgAjaxSearch;
+		global $wgEmailConfirmToEdit;
 
 		$wgOut->setPageTitle( wfMsg( 'edituser' ) );
 		$wgOut->setArticleRelated( false );
@@ -960,13 +957,7 @@ class EditUser extends SpecialPage {
 		$wgOut->addHtml( '</fieldset>' );
 
 		# Search
-		$ajaxsearch = $wgAjaxSearch ?
-			$this->addRow(
-				wfLabel( wfMsg( 'useajaxsearch' ), 'wpUseAjaxSearch' ),
-				wfCheck( 'wpUseAjaxSearch', $this->mUseAjaxSearch, array( 'id' => 'wpUseAjaxSearch' ) )
-			) : '';
 		$wgOut->addHTML( '<fieldset><legend>' . wfMsg( 'searchresultshead' ) . '</legend><table>' .
-			$ajaxsearch .
 			$this->addRow(
 				wfLabel( wfMsg( 'resultsperpage' ), 'wpSearch' ),
 				wfInput( 'wpSearch', 4, $this->mSearch, array( 'id' => 'wpSearch' ) )

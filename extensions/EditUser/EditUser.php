@@ -9,12 +9,14 @@ if(!defined('MEDIAWIKI')) {
 }
 
 $wgExtensionCredits['specialpage'][] = array(
-	'name' => 'EditUser',
-	'version' => '1.4',
-	'author' => 'Ryan Schmidt',
-	'description' => 'Allows privileged users to edit other users\' preferences',
+	'name'           => 'EditUser',
+	'version'        => '1.4.1',
+	'svn-date'       => '$LastChangedDate$',
+	'svn-revision'   => '$LastChangedRevision$',
+	'author'         => 'Ryan Schmidt',
+	'description'    => 'Allows privileged users to edit other users\' preferences',
 	'descriptionmsg' => 'edituser-desc',
-	'url' => 'http://www.mediawiki.org/wiki/Extension:EditUser',
+	'url'            => 'http://www.mediawiki.org/wiki/Extension:EditUser',
 );
 
 $dir = dirname(__FILE__) . '/';
