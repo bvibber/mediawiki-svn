@@ -1,6 +1,6 @@
 <?php
 
-die("BotQuery is obsolete! For safety, this code is being hard-disabled.");
+die("BotQuery is obsolete! For safety, this code is disabled.");
 
 /**
 * Bot Query extension for MediaWiki 1.7+
