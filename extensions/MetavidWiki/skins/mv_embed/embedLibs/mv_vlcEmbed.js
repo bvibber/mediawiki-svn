@@ -178,7 +178,7 @@ var vlcEmbed = {
         if( this.duration > 0 || this.vlc.input.time > 0){                     
         	///set mediaLen via request Url 
 			if(this.duration==0)      
-				this.duration=this.media_element.selected_source.duration;
+				this.duration=this.getDuration();
 			
 			if(!this.start_offset)
 				this.start_offset=this.media_element.selected_source.start_offset;		

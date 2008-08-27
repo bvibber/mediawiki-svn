@@ -1721,7 +1721,8 @@ embedVideo.prototype = {
 		return this.media_element.selected_source.start_ntp+'/'+this.media_element.selected_source.end_ntp;
 	},
     getDuration:function(){
-        return this.media_element.selected_source.duration;
+        this.duration = this.media_element.selected_source.duration;
+        return this.duration;
     },
   	/* get the duration in ntp format */
 	getDurationNTP:function(){

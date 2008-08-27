@@ -7,7 +7,8 @@ var nativeEmbed = {
 		setTimeout('$j(\'#'+this.id+'\').get(0).postEmbedJS()', 150);
 		//set a default duration of 30 seconds: cortao should detect duration.
 		var embed_code =  this.getEmbedObj();
-		js_log('EMBED CODE: ' + embed_code);
+		js_log('embed code: ' + embed_code);
+		js_log("DURATION: "+ this.getDuration() );
 		return this.wrapEmebedContainer( embed_code);
     },
     getEmbedObj:function(){
@@ -17,14 +18,16 @@ var nativeEmbed = {
 				   	'src="'+this.media_element.selected_source.uri+'" ' +
 				   	'controls="false" ' +
 				   	'oncanplaythrough="$j(\'#'+this.id+'\').get(0).oncanplaythrough();return false;" ' +
-				   	'onloadedmetadata="$j(\'#'+this.id+'\').get(0).onloadedmetadata();return false;" >' +
+				   	'onloadedmetadata="$j(\'#'+this.id+'\').get(0).onloadedmetadata();return false;" ' + 
+				   	'loadedmetadata="$j(\'#'+this.id+'\').get(0).onloadedmetadata();return false;" >' +
 				'</video>';
 	},
 	//@@todo : loading progress
 	postEmbedJS:function(){		
 		this.getVID();
 		if(this.vid){
-			this.vid.load();	
+			this.vid.play();
+			//this.vid.load(); //does not seem to work so well	
 			setTimeout('$j(\'#'+this.id+'\').get(0).monitor()',100);		
 		}else{
 			js_log('could not grab vid obj:' + typeof this.vid);
@@ -33,11 +36,27 @@ var nativeEmbed = {
 	},	
 	monitor : function(){
 		this.getVID(); //make shure we have .vid obj
-		js_log('time loaded: ' + this.vid.TimeRanges() );
-		//update load progress and
+		js_log('time loaded: ' + this.vid.TimeRanges );
+		js_log('current time: '+ this.vid.currentTime  + ' dur: ' + this.duration);
+			
+		//update duration if not set
+		this.duration =(this.vid.duration==0)?this.getDuration():this.vid.duration;
+				
+		//update pointers (should just have a loop): 
+		this.currentTime = this.vid.currentTime;
+		
+		if( this.currentTime > 0 ){
+			if(! this.userSlide){
+				this.setSliderValue(this.currentTime/this.duration );
+				this.setStatus( seconds2ntp(this.currentTime) + '/'+ seconds2ntp(this.duration));
+			}else{
+				this.setStatus('seek to: ' + seconds2ntp(Math.round( (this.sliderVal*this.duration)) ));
+			}
+		}					
+		//update load progress if nessisary 
 		if( ! this.monitorTimerId ){
 	    	if(document.getElementById(this.id)){
-	        	this.monitorTimerId = setInterval('$j(\'#'+this.id+'\').get(0).monitor()', 1000);
+	        	this.monitorTimerId = setInterval('$j(\'#'+this.id+'\').get(0).monitor()', 250);
 	    	}
 	    }
 	},	
@@ -49,20 +68,33 @@ var nativeEmbed = {
 		this.play();
 	},
 	onloadedmetadata: function(){
-		js_log('f:onloadedmetadata get duration');
+		js_log('f:onloadedmetadata get duration: ' +this.vid.duration);
 		//this.
 	},
-	pause : function(){
-		document.getElementById(this.pid).pause();
+	onloadedmetadata: function(){
+		js_log('f:onloadedmetadata metadata ready');
+		//set the clip duration 
+	},
+	pause : function(){		
+		this.vid.pause();
+		//stop updates: 
+		if( this.monitorTimerId != 0 )
+	    {
+	        clearInterval(this.monitorTimerId);
+	        this.monitorTimerId = 0;
+	    }
 	},
 	play:function(){
-		if(!document.getElementById(this.pid) || this.thumbnail_disp){
+		this.getVID();
+		if(!this.vid || this.thumbnail_disp){
 			this.parent_play();
 		}else{
-			document.getElementById(this.pid).play();
+			this.vid.play();
+			//re-start the monitor: 
+			this.vid.monitor();
 		}
 	},
-	 // get the embed vlc object 
+	// get the embed vlc object 
     getVID : function (){
     	this.vid = $j('#'+this.pid).get(0);  		
     }

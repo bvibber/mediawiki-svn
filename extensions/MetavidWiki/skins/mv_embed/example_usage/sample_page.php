@@ -61,7 +61,7 @@ $sample_embed[3]['tag'] = '<video style="width:400px;height:300px" roe="http://l
 $sample_embed[3]['desc'] = 'Demo2  of json ROE attribute';
 
 
-$sample_embed[2]['tag'] = '<video id="v2" controls="true" src="sample_fish.ogg" poster="sample_fish.jpg"></video>';
+$sample_embed[2]['tag'] = '<video id="v2" controls="true" src="sample_fish.ogg?t=0:0:0/0:0:26" poster="sample_fish.jpg"></video>';
 $sample_embed[2]['desc'] = 'simple video with controls and thumbnail';
 
 //playlist tags:
