@@ -18,16 +18,16 @@
 
 if (!defined('MEDIAWIKI')) die('Not an entry point.');
 
-define('SIMPLESECURITY_VERSION', '4.2.2, 2008-08-26');
+define('SIMPLESECURITY_VERSION', '4.2.4, 2008-08-27');
 
 # Global security settings
 $wgSecurityMagicIf              = "ifusercan";                  # the name for doing a permission-based conditional
 $wgSecurityMagicGroup           = "ifgroup";                    # the name for doing a group-based conditional
 $wgSecurityLogActions           = array('edit', 'download');    # Actions that should be logged
-$wgSecurityUseDBHook            = false;                        # Use the DatabaseFetchHook to validate database access
 $wgSecurityAllowUser            = false;                        # Allow restrictions based on user not just group
 $wgSecurityAllowUnreadableLinks = false;                        # Should links to unreadable pages be allowed? (MW1.7+)
 $wgSecurityRenderInfo           = true;                         # Renders security information for proctected articles
+$wgEnableParserCache            = false;                        # Currently the extension fails if caching enabled
 
 # Extra actions to allow control over in protection form
 $wgSecurityExtraActions  = array(
@@ -54,6 +54,10 @@ $wgExtensionCredits['parserhook'][] = array(
 	'url'         => 'http://www.mediawiki.org/wiki/Extension:Simple_Security',
 	'version'     => SIMPLESECURITY_VERSION
 	);
+
+# If the database class already exists, add the DB hook now, otherwise wait until extension setup
+if (!isset($wgSecurityUseDBHook)) $wgSecurityUseDBHook = false;
+if ($wgSecurityUseDBHook && class_exists('Database')) wfSimpleSecurityDBHook();
 
 class SimpleSecurity {
 
@@ -142,7 +146,6 @@ class SimpleSecurity {
 	 */
 	public function onOutputPageBeforeHTML(&$out, &$text) {
 		global $wgTitle, $wgUser;
-
 		# Render security info if any
 		if (is_object($wgTitle) && $wgTitle->exists() && count($this->info['LS'])+count($this->info['PR'])) {
 
@@ -186,7 +189,7 @@ class SimpleSecurity {
 	 */
 	private function unreadableLink($match) {
 		global $wgUser;
-		return $this->validateTitle($wgUser, Title::newFromText($match[1]), $error)
+		return $this->userCanReadTitle($wgUser, Title::newFromText($match[1]), $error)
 			? $match[0] : "<span class=\"unreadable\">$match[2]</span>";
 	}
 
@@ -200,13 +203,8 @@ class SimpleSecurity {
 	public function onUserGetRights(&$user, &$rights) {
 		global $wgGroupPermissions, $wgTitle, $wgRequest, $wgPageRestrictions;
 
-		if (!is_object($wgTitle)) return true; # If no title bail out now
-		$this->info['LS'] = array();           # security info for rules from LocalSettings ($wgPageRestrictions)
-		$this->info['PR'] = array();           # security info for rules from protect tab
-		$this->info['CR'] = array();           # security info for rules which are currently in effect
-		$groups = $user->getEffectiveGroups();
-
 		# Hack to prevent specialpage operations on unreadable pages
+		if (!is_object($wgTitle)) return true;
 		$ns = $wgTitle->getNamespace();
 		if ($ns == NS_SPECIAL) {
 			list($name, $par) = explode('/', $wgTitle->getDBkey(), 2);
@@ -216,16 +214,21 @@ class SimpleSecurity {
 		} else $title = $wgTitle;
 		if (!is_object($title)) return true; # If still no usable title bail
 
-		# Validate the title and then put anonymous read right back (see constructor above for details)
-		$valid = $this->validateTitle($user, $title, $error);
+		$this->info['LS'] = array();           # security info for rules from LocalSettings ($wgPageRestrictions)
+		$this->info['PR'] = array();           # security info for rules from protect tab
+		$this->info['CR'] = array();           # security info for rules which are currently in effect
+		$groups = $user->getEffectiveGroups();
+
+		# Put the anon read right back in $wgGroupPermissions if it was there initially
+		# - it had to be removed because Title::userCanRead short-circuits with it
 		if ($this->default_read) {
 			$wgGroupPermissions['*']['read'] = true;
 			$rights[] = 'read';
 		}
 
-		# Filter rights by processing $wgPageRestrictions
-		# - also adds LS (rules from local settings) items to info array
-		$this->pageRestrictions($rights, $groups, $title);
+		# Filter rights according to $wgPageRestrictions
+		# - also update LS (rules from local settings) items to info array
+		$this->pageRestrictions($rights, $groups, $title, true);
 
 		# Add PR (rules from article's protect tab) items to info array
 		# - allows rules in protection tab to override those from $wgPageRestrictions
@@ -236,7 +239,7 @@ class SimpleSecurity {
 		}
 
 		# If title is not readable by user, remove the read and move rights
-		if (!in_array('sysop', $groups) && !$valid) {
+		if (!in_array('sysop', $groups) && !$this->userCanReadTitle($user, $title, $error)) {
 			foreach ($rights as $i => $right) if ($right === 'read' || $right === 'move') unset($rights[$i]);
 			#$this->info['CR'] = array('read', '', '');
 		}
@@ -249,6 +252,7 @@ class SimpleSecurity {
 	 * otherwise the title that the old_text is associated with can't be determined
 	 */
 	static function patchSQL($match) {
+		#print "<pre>$match[0]</pre>";
 		if (!preg_match("/old_text/", $match[0])) return $match[0];
 		$fields = str_replace(" ", "", $match[0]);
 		return ($fields == "*" || preg_match("/old_id/", $fields)) ? $fields : "$fields,old_id";
@@ -261,6 +265,7 @@ class SimpleSecurity {
 	 */
 	static function validateRow(&$row) {
 		global $wgUser, $wgSimpleSecurity;
+
 		$groups = $wgUser->getEffectiveGroups();
 		if (in_array('sysop', $groups)) return;
 
@@ -271,14 +276,14 @@ class SimpleSecurity {
 		$title = Title::newFromID($rev->rev_page);
 
 		# Replace text content in the passed database row if title unreadable by user
-		if (!$wgSimpleSecurity->validateTitle($wgUser, $title, $error)) $row->old_text = $error;
+		if (!$wgSimpleSecurity->userCanReadTitle($wgUser, $title, $error)) $row->old_text = $error;
 	}
 
 	/**
 	 * Return bool for whether or not passed user has read access to the passed title
 	 * - if there are read restrictions in place for the title, check if user a member of any groups required for read access
 	 */
-	public function validateTitle(&$user, &$title, &$error) {
+	public function userCanReadTitle(&$user, &$title, &$error) {
 		$groups = $user->getEffectiveGroups();
 		if (!is_object($title) || in_array('sysop', $groups)) return true;
 
@@ -289,16 +294,18 @@ class SimpleSecurity {
 			return $this->cache[$key][0];
 		}
 
-		# Determine whether valid and create error message if not
-		$restrictions = $title->getRestrictions('read');
-		if ($valid = (count($restrictions) < 1 || count(array_intersect($restrictions, $groups)) > 0)) $error = '';
-		else {
-			$restrictions = array_map('ucfirst', $restrictions);
-			$error = wfMsg('badaccess-read', $title->getPrefixedText(), $this->groupText($restrictions));
-		}
+		# Determine readability based on $wgPageRestrictions
+		$rights = array('read');
+		$this->pageRestrictions($rights, $groups, $title);
+		$readable = count($rights) > 0;
 
-		$this->cache[$key] = array($valid, $error);
-		return $valid;
+		# If there are title restrictions that prevent reading, they override $wgPageRestrictions readability
+		$whitelist = $title->getRestrictions('read');
+		if (count($whitelist) > 0 && !count(array_intersect($whitelist, $groups)) > 0) $readable = false;
+
+		$error = $readable ? "" : wfMsg('badaccess-read', $title->getPrefixedText());
+		$this->cache[$key] = array($readable, $error);
+		return $readable;
 	}
 
 	/**
@@ -318,7 +325,7 @@ class SimpleSecurity {
 	 * the format of the rules is [type][action] = group(s)
 	 * also adds LS items and currently active LS to info array
 	 */
-	private function pageRestrictions(&$rights, &$groups, &$title) {
+	private function pageRestrictions(&$rights, &$groups, &$title, $updateInfo = false) {
 		global $wgPageRestrictions;
 		$cats = array();
 		foreach ($wgPageRestrictions as $k => $restriction) if (preg_match('/^(.+?):(.*)$/', $k, $m)) {
@@ -355,7 +362,7 @@ class SimpleSecurity {
 			if ($deny) {
 				foreach ($restriction as $action => $reqgroups) {
 					if (!is_array($reqgroups)) $reqgroups = array($reqgroups);
-					$this->info['LS'][] = array($action, $reqgroups, wfMsg('security-desc-LS', strtolower($type), $data));
+					if ($updateInfo) $this->info['LS'][] = array($action, $reqgroups, wfMsg('security-desc-LS', strtolower($type), $data));
 					if (!in_array('sysop', $groups) && !array_intersect($groups, $reqgroups)) {
 						foreach ($rights as $i => $right) if ($right === $action) unset($rights[$i]);
 						#$this->info['CR'][] = array($action, $reqgroups, wfMsg('security-desc-CR'));
@@ -364,29 +371,53 @@ class SimpleSecurity {
 			}
 		}
 	}
-	
-	/**
-	 * (This function is not used)
-	 * Update a rights-list based on passed user and permissions array
-	 */
-	private function mergeRights(&$user, &$rights, &$permissions, $comment = false) {
-		$groups = $user->getEffectiveGroups();
-		foreach ($groups as $group) {
-			if (isset($permissions[$group])) {
-				foreach ($permissions[$group] as $action => $allow) {
-					if ($allow && !in_array($action, $rights)) $rights[] = $action;
-					elseif (!$allow && in_array($action, $rights)) array_splice($rights, array_search($action, $rights), 1);
-				}
-			}
-		}
-	}
-	
+
 	# Updates passed LoadBalancer's DB servers to secure class
 	static function updateLB(&$lb) {
 		global $wgDBtype;
 		$lb->closeAll();
 		foreach ($lb->mServers as $i => $server) $lb->mServers[$i]['type'] = $wgDBtype;
 	}
+}
+
+/**
+ * Hook into Database::query and Database::fetchObject of database instances
+ * - this can't be executed from within a method because PHP doesn't like nested class definitions
+ * - it needs an eval because the class statement isn't allowed to contain strings
+ * - hooks are added in a sub-class of the database type specified in $wgDBtype called DatabaseSecurityXXX
+ * - $wgDBtype is then prepended with 'Security' so that new DB instances are based on the sub-class
+ * - query method is overriden to ensure that old_id field is returned for all queries which read old_text field
+ * - fetchObject method is overridden to validate row content based on old_id
+ * - the changes to this class are only active for SELECT statements and while not processing security directives
+ */
+function wfSimpleSecurityDBHook() {
+	global $wgDBtype, $wgSecurityUseDBHook;
+	$oldDB = ucfirst($wgDBtype);
+	$wgDBtype = 'SimpleSecurity';
+	eval("class Database{$wgDBtype} extends Database{$oldDB}".' {
+		public function query($sql, $fname = "", $tempIgnore = false) {
+			#print "<pre>$sql</pre>";
+			$count = false;
+			$patched = preg_replace_callback("/(?<=SELECT ).+?(?= FROM)/", "SimpleSecurity::patchSQL", $sql, 1, $count);
+			return parent::query($count ? $patched : $sql, $fname, $tempIgnore);
+		}
+		function fetchObject(&$res) {
+			$row = parent::fetchObject($res);
+			if (isset($row->old_text)) SimpleSecurity::validateRow($row);
+			return $row;
+		}
+	}');
+	$wgSecurityUseDBHook = false;
+}
+
+/**
+ * Register magic words
+ */
+function wfSimpleSecurityLanguageGetMagic(&$magicWords, $langCode = 0) {
+	global $wgSecurityMagicIf, $wgSecurityMagicGroup;
+	$magicWords[$wgSecurityMagicIf]    = array($langCode, $wgSecurityMagicIf);
+	$magicWords[$wgSecurityMagicGroup] = array($langCode, $wgSecurityMagicGroup);
+	return true;
 }
 
 /**
@@ -398,41 +429,14 @@ function wfSetupSimpleSecurity() {
 	# Instantiate the SimpleSecurity singleton now that the environment is prepared
 	$wgSimpleSecurity = new SimpleSecurity();
 
-	# Hooks into Database::query and Database::fetchObject
-	# - this can't be executed from within a method because PHP doesn't like nested class definitions
-	# - it needs an eval because the class statement isn't allowed to contain strings
-	# - hooks are added in a sub-class of the database type specified in $wgDBtype called DatabaseSecurityXXX
-	# - $wgDBtype is then prepended with 'Security' so that new DB instances are based on the sub-class
-	# - query method is overriden to ensure that old_id field is returned for all queries which read old_text field
-	# - fetchObject method is overridden to validate row content based on old_id
-	# - the changes to this class are only active for SELECT statements and while not processing security directives
+	# If the DB hook couldn't be set up early, do it now
+	# - but now the LoadBalancer exists and must have its DB types changed
 	if ($wgSecurityUseDBHook) {
-		global $wgDBtype, $wgLoadBalancer;
-
-		# Switch DB type to new class
-		$wgDBtype = ucfirst($wgDBtype);
-		$oldType = $wgDBtype;
-		$wgDBtype = "Secure$wgDBtype";
-
-		# Esnure the LoadBalancer(s) are using the new secure class
-		wfGetDB(DB_SLAVE);
-		if (function_exists('forEachLB')) forEachLB('SimpleSecurity::updateLB');
+		global $wgLoadBalancer;
+		wfSimpleSecurityDBHook();
+		if (function_exists('wfGetLBFactory')) wfGetLBFactory()->forEachLB('SimpleSecurity::updateLB');
 		elseif (is_object($wgLoadBalancer)) SimpleSecurity::updateLB($wgLoadBalancer);
 		else die("Can't hook in to Database class!");
-
-		# Create the new secure DB class based on the current one
-		eval("class Database{$wgDBtype} extends Database{$oldType}".' {
-			public function query($sql, $fname = "", $tempIgnore = false) {
-				$count = false;
-				$patched = preg_replace_callback("/(?<=SELECT ).+?(?= FROM)/", "SimpleSecurity::patchSQL", $sql, 1, $count);
-				return parent::query($count ? $patched : $sql, $fname, $tempIgnore);
-			}
-			function fetchObject(&$res) {
-				$row = parent::fetchObject($res);
-				if (isset($row->old_text)) SimpleSecurity::validateRow($row);
-				return $row;
-			}
-		}');
 	}
 
 	# Add messages
@@ -442,7 +446,7 @@ function wfSetupSimpleSecurity() {
 			'security-logpage'         => "Security log",
 			'security-logpagetext'     => "This is a log of actions blocked by the [[MW:Extension:SimpleSecurity|SimpleSecurity extension]].",
 			'security-logentry'        => "",
-			'badaccess-read'           => "\nWarning: \"$1\" is referred to here, but it can only be viewed by $2.\n",
+			'badaccess-read'           => "\nWarning: \"$1\" is referred to here, but you do not have sufficient permisions to access it.\n",
 			'security-info'            => "There are $1 on this article",
 			'security-info-toggle'     => "security restrictions",
 			'security-inforestrict'    => "$1 is restricted to $2",
@@ -455,12 +459,3 @@ function wfSetupSimpleSecurity() {
 	}
 }
 
-/**
- * Register magic words
- */
-function wfSimpleSecurityLanguageGetMagic(&$magicWords, $langCode = 0) {
-	global $wgSecurityMagicIf, $wgSecurityMagicGroup;
-	$magicWords[$wgSecurityMagicIf]    = array($langCode, $wgSecurityMagicIf);
-	$magicWords[$wgSecurityMagicGroup] = array($langCode, $wgSecurityMagicGroup);
-	return true;
-}
