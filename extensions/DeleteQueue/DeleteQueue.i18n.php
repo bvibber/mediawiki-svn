@@ -717,8 +717,8 @@ $messages['gl'] = array(
  */
 $messages['ia'] = array(
 	'deletequeue-desc' => 'Crea un [[Special:DeleteQueue|systema con caudas pro gerer deletiones]]',
-	'deletequeue-action' => 'Suggere deletion',
-	'deletequeue-action-title' => 'Suggere deletion de "$1"',
+	'deletequeue-action' => 'Suggerer deletion',
+	'deletequeue-action-title' => 'Suggerer deletion de "$1"',
 	'deletequeue-action-text' => "{{SITENAME}} ha plure processos pro deler paginas:
 *Si tu crede que iste pagina merita un ''deletion rapide'', tu pote suggerer lo [{{fullurl:{{FULLPAGENAME}}|action=delnom&queue=speedy}} hic].
 *Si iste pagina non merita un deletion rapide, sed le ''deletion probabilemente non esserea controversial'', tu deberea [{{fullurl:{{FULLPAGENAME}}|action=delnom&queue=prod}} proponer un deletion non contestabile].
@@ -744,8 +744,8 @@ Si, post cinque dies, necuno ha contestate le deletion de iste pagina, illo esse
 	'deletequeue-delnom-submit' => 'Submitter nomination',
 	'deletequeue-log-nominate' => "nominava [[$1]] pro deletion in le cauda '$2'.",
 	'deletequeue-log-rmspeedy' => 'refusava le deletion rapide de [[$1]].',
-	'deletequeue-log-requeue' => "transfereva [[$1]] a un altere cauda de deletion: ab '$2' verso '$3'.",
-	'deletequeue-log-dequeue' => "removeva [[$1]] del cauda de deletion '$2'.",
+	'deletequeue-log-requeue' => "transfereva [[$1]] a un altere cauda de deletiones: ab '$2' verso '$3'.",
+	'deletequeue-log-dequeue' => "removeva [[$1]] del cauda de deletiones '$2'.",
 	'right-speedy-nominate' => 'Nominar paginas pro deletion rapide',
 	'right-speedy-review' => 'Revider nominationes pro deletion rapide',
 	'right-prod-nominate' => 'Proponer le deletion de paginas',
@@ -841,6 +841,12 @@ Tu pote registrar tu proprie declaration pro o contra iste deletion [{{fullurl:{
 	'deletequeue-list-search' => 'Cercar',
 	'deletequeue-list-anyqueue' => '(omne)',
 	'deletequeue-list-votes' => 'Lista de votos',
+	'deletequeue-list-votecount' => '$1 {{PLURAL:$1|pro|pro}}, $2 {{PLURAL:$2|contra|contra}}',
+	'deletequeue-list-header-page' => 'Pagina',
+	'deletequeue-list-header-queue' => 'Cauda',
+	'deletequeue-list-header-votes' => 'Declarationes pro e contra',
+	'deletequeue-list-header-expiry' => 'Expiration',
+	'deletequeue-list-header-discusspage' => 'Pagina de discussion',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

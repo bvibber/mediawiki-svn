@@ -163,6 +163,13 @@ $messages['it'] = array(
 	'skinperpage-desc' => 'Aggiunge il tag <tt>&lt;skin&gt;</tt> per usare differenti skin per pagina',
 );
 
+/** Japanese (日本語)
+ * @author Aotake
+ */
+$messages['ja'] = array(
+	'skinperpage-desc' => 'ページ毎に異なるスキンを使用するために<tt>&lt;skin&gt;</tt>タグを追加',
+);
+
 /** Javanese (Basa Jawa)
  * @author Meursault2004
  */

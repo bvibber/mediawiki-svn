@@ -631,6 +631,19 @@ $messages['ksh'] = array(
 	'youtubeauthsub_submit' => 'Loß Jonn!',
 	'youtubeauthsub_clickhere' => 'Kleck för et Enlogge op <i lang="en">YouTube</i>',
 	'youtubeauthsub_tokenerror' => 'Mer hatte ene Fähler, un kunnte keine Eimohl-Zohjangsschlößel krijje, dröm versök et ens domet, die Sigg neu opzeroofe udder neu ze laade.',
+	'youtubeauthsub_success' => 'Jrattoleere!
+
+Dinge Viddejo es huhjelade.
+
+Öm Dinge Viddejo aanzeloore, donn op
+<a href="http://www.youtube.com/watch?v=$1">YouTube <tt>/watch?v=$1</tt></a>
+jonn. Di bruche do ävver e beßje Zick, öm Dinge Viddejo
+doh opzenämme, dröm künnd et sinn, dat dä noch nit janz
+fäädisch es, em Momänt.
+
+Öm Dinge Viddejo en en Sigg hee em Wiki enzeboue, 
+donn dat wat hee follesch en en Sigg enboue:
+ <code>{{&#35;ev:youtube|$1}}</code>',
 	'youtubeauthsub_authsubinstructions' => 'Öm ene Viddejo huhzelade, moß De eets op <i lang="en">YouTube</i> enjelogg han.',
 	'youtubeauthsub_uploadhere' => 'Don Dinge Viddejo fun huhlade fun:',
 	'youtubeauthsub_uploadbutton' => 'Huhlade',

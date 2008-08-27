@@ -47,6 +47,7 @@ $fallback=array(
 	'uk'  => 'en',
 	'vec' => 'en',
 	'vi'  => 'en',
+	'vo'  => 'en',
 );
 
 # is this language rtl or ltr? assumes ltr as default
@@ -1381,14 +1382,50 @@ $messages['ps'] = array(
  */
 $messages['pt'] = array(
 	'voctrain_Hello_World' => 'OLÁ WIKI!',
+	'voctrain_Permission_Denied' => 'Permissão Negada',
 	'voctrain_try_again_' => 'tentar outra vez?',
+	'voctrain_Action_unknown' => 'Ação desconhecida',
+	'voctrain_I_don_t_know_what_to_do_with_action_' => "Não sei o que fazer com '%action'.",
+	'voctrain_Hello_username_welcome_to_the_omega_language_trainer' => 'Olá, %username, bem-vindo ao treinador de língua omega',
 	'voctrain_continue' => 'continuar',
 	'voctrain_bye' => 'adeus',
+	'voctrain_Set_up_your_exercise' => 'Configure o seu exercício',
+	'voctrain_Number_of_questions' => 'Número de questões',
 	'voctrain_Languages' => 'Línguas',
+	'voctrain_eg_eng_for_English_deu_for_Deutch_German_' => '(ex.: eng para inglês, deu para alemão).',
 	'voctrain_Questions' => 'Perguntas',
 	'voctrain_Answers' => 'Respostas',
+	'voctrain_start_exercise' => 'iniciar exercício',
+	'voctrain_collection' => 'coleção',
+	'voctrain_ISO_639_3_format' => 'Formato ISO-639-3',
+	'voctrain_Definition' => 'Definição',
 	'voctrain_Word' => 'Palavra',
+	'voctrain_submit_answer' => 'submeter resposta',
+	'voctrain_peek' => 'espreitar',
+	'voctrain_skip' => 'saltar',
+	'voctrain_I_know_it_do_not_ask_again' => 'Já sei/não perguntar de novo',
+	'voctrain_abort_exercise' => 'abortar exercício',
+	'voctrain_list_answers' => 'listar respostas',
+	'voctrain_Question' => 'Questão',
+	'voctrain_The_word_to_translate' => 'A palavra a traduzir',
+	'voctrain_Answer' => 'Resposta',
+	'voctrain_one_of' => 'uma de',
+	'voctrain_list_of_questions_and_answers' => 'lista de questões e respostas',
+	'voctrain_Answer_s_' => 'Resposta(s)',
+	'voctrain_Exercise_complete' => 'Exercício completado',
+	'voctrain_Exercise_terminated' => 'Exercício terminado',
+	'voctrain_Start_a_new_exercise' => 'Iniciar um novo exercício',
+	'voctrain_User_name' => 'Nome de utilizador',
+	'voctrain_Password' => 'Palavra-chave',
+	'voctrain_Create_new_user' => 'Criar novo utilizador',
+	'voctrain_Switch_language' => 'Mudar língua',
+	'voctrain_Language' => 'Língua',
 	'voctrain_Omegawiki_vocabulary_trainer' => 'Treinador de vocabulário do Omegawiki',
+	'voctrain_Definitions' => 'Definições',
+	'voctrain_Could_not_create_new_user' => 'Não foi possível criar novo utilizador',
+	'voctrain_Type_a_username_and_optional_password_or_try_a_different_username_' => 'Introduza um nome de utilizador e uma palavra-chave opcional (ou experimente com um nome de utilizador diferente)',
+	'voctrain_Vocview' => 'Visualizador de vocabulário',
+	'voctrain_Translation' => 'Tradução',
 );
 
 /** Tarifit (Tarifit)
@@ -1708,5 +1745,14 @@ $messages['vi'] = array(
 	'voctrain_Definitions' => 'Định nghĩa',
 	'voctrain_Could_not_create_new_user' => 'Không có thể mở tài khoản',
 	'voctrain_Translation' => 'Lời dịch',
+);
+
+/** Volapük (Volapük)
+ * @author Malafaya
+ */
+$messages['vo'] = array(
+	'voctrain_Create_new_user' => 'Jafön gebani nulik',
+	'voctrain_Language' => 'Pük',
+	'voctrain_Translation' => 'Tradutod',
 );
 

@@ -642,6 +642,8 @@ $messages['it'] = array(
 	'removeunusedgroups' => 'Rimuovi gruppi inutilizzati',
 	'grouppermissions-desc' => 'Gestisci permessi di gruppo attraverso una [[Special:GroupPermissions|pagina speciale]]',
 	'grouppermissions-desc2' => 'Sistema dei permessi esteso',
+	'grouppermissions-desc4' => 'Permette di aggiungere elementi aggiuntivi alla Toolbox',
+	'grouppermissions-desc-nsm' => 'Gestisce i namespace attraverso una pagina speciale',
 	'grouppermissions-header' => 'È possibile usare questa pagina per cambiare i permessi sottostanti dei vari gruppi utente.',
 	'grouppermissions-search' => 'Gruppo:',
 	'grouppermissions-dologin' => 'Entra',
@@ -683,6 +685,14 @@ $messages['it'] = array(
 	'grouppermissions-rug-header' => 'È possibile usare questa pagina per rimuovere utenti dai gruppi inutilizzati (cancellati).',
 	'grouppermissions-rug-success' => 'Utenti rimossi con successo dai gruppi inutilizzati!',
 	'grouppermissions-rug-confirm' => 'Rimuovi utenti dai gruppi inutilizzati',
+	'right-grouppermissions' => 'Gestisce i permessi di gruppo (pagine speciali: [[Special:GroupPermissions|Permessi di gruppo]] e [[Special:SortPermissions|Ordina permessi]])',
+	'right-viewsource' => 'Visualizza il sorgente wiki di pagine protette',
+	'right-info' => 'Visualizza le informazioni delle pagine',
+	'right-history' => 'Visualizza le cronologie delle pagine',
+	'right-contributions' => 'Visualizza le pagine dei contributi',
+	'right-recentchanges' => 'Visualizza le ultime modifiche',
+	'right-edittalk' => 'Modifica le pagine di discussione',
+	'right-edit-new' => 'Modifica pagine (che non sono pagine di discussione)',
 );
 
 /** Khmer (ភាសាខ្មែរ)

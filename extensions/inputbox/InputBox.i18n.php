@@ -321,8 +321,11 @@ Bonvolu specifigi "krea", "komenta", "serĉa" aŭ "serĉa2".',
 
 /** Spanish (Español)
  * @author Icvav
+ * @author Muro de Aguas
  */
 $messages['es'] = array(
+	'inputbox-desc' => 'Permite la inclusión de formularios en HTML predefinidos.',
+	'inputbox-error-no-type' => 'No has especificado el tipo de formulario que vas a crear.',
 	'tryexact' => 'Buscar título exacto',
 	'searchfulltext' => 'Buscar por texto completo',
 	'createarticle' => 'Crear artículo',
@@ -1089,6 +1092,11 @@ $messages['sah'] = array(
 /** Sindhi (سنڌي) */
 $messages['sd'] = array(
 	'createarticle' => 'نئون مضمون لکو',
+);
+
+/** Sango (Sängö) */
+$messages['sg'] = array(
+	'createarticle' => 'Sü soura',
 );
 
 /** Sinhala (සිංහල)

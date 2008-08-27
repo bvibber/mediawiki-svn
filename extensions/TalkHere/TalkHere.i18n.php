@@ -102,6 +102,21 @@ $messages['bg'] = array(
 	'talkhere-collapse' => 'скриване на редактора',
 );
 
+/** Catalan (Català)
+ * @author Jordi Roqué
+ */
+$messages['ca'] = array(
+	'talkhere-foottext' => "Els comentaris anteriors poden haver estat escrits per visitants.
+
+Els operadors d'aquest lloc no poden responsabilitzar-se dels continguts d'aquests comentaris.",
+	'talkhere-talkpage' => 'discussió',
+	'talkhere-notalk' => "''(encara sense comentaris)''",
+	'talkhere-addcomment' => '+',
+	'talkhere-beforeinput' => 'Podeu afegir un text a continuació',
+	'talkhere-loading' => 'carregant usuari..',
+	'talkhere-collapse' => 'amagar usuari',
+);
+
 /** German (Deutsch)
  * @author Daniel Kinzler, brightbyte.de
  */

@@ -163,6 +163,7 @@ $messages['fi'] = array(
 
 /** French (Français)
  * @author IAlex
+ * @author Zetud
  */
 $messages['fr'] = array(
 	'onlinestatus-desc' => "Ajoute une préférence pour montrer si l'utilisateur est présent ou non",
@@ -173,7 +174,7 @@ $messages['fr'] = array(
 	'onlinestatus-subtitle-online' => 'Cet utilisateur est actuellement en ligne',
 	'onlinestatus-tab' => 'Statut',
 	'onlinestatus-toggles-desc' => 'Votre statut&nbsp;:',
-	'onlinestatus-toggles-explain' => 'Ceci permet aux autres utilisateur de savoir si vous êtes actuellement présent en regardant votre page utilisateur.',
+	'onlinestatus-toggles-explain' => 'Ceci permet aux autres utilisateurs de savoir si vous êtes actuellement présent en regardant votre page utilisateur.',
 	'onlinestatus-toggles-show' => 'Montrer mon statut sur ma page utilisateur',
 	'onlinestatus-toggle-offline' => 'Absent',
 	'onlinestatus-toggle-online' => 'Présent',

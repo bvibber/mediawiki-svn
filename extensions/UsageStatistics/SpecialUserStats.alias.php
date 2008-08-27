@@ -27,6 +27,11 @@ $aliases['arz'] = array(
 	'UserStats' => array( 'إحصاءات_المستخدم', 'خاص_إحصاءات_المستخدم' ),
 );
 
+/** German (Deutsch) */
+$aliases['de'] = array(
+	'UserStats' => array( 'Benutzerstatistik' ),
+);
+
 /** Luxembourgish (Lëtzebuergesch) */
 $aliases['lb'] = array(
 	'UserStats' => array( 'Benotzerstistiken' ),

@@ -376,13 +376,17 @@ $messages['eo'] = array(
 
 /** Spanish (Español)
  * @author Icvav
+ * @author Muro de Aguas
  * @author Spacebirdy
  */
 $messages['es'] = array(
 	'expandtemplates' => 'Sustituidor de plantillas',
 	'expand_templates_input' => 'Texto a expandir:',
 	'expand_templates_output' => 'Resultado:',
+	'expand_templates_xml_output' => 'Salida XML',
+	'expand_templates_ok' => 'Aceptar',
 	'expand_templates_remove_comments' => 'Eliminar comentarios',
+	'expand_templates_generate_xml' => 'Mostrar el árbol XML.',
 	'expand_templates_preview' => 'Previsualización',
 );
 
@@ -453,12 +457,13 @@ $messages['fo'] = array(
 /** French (Français)
  * @author Grondin
  * @author Sherbrooke
+ * @author Zetud
  */
 $messages['fr'] = array(
 	'expandtemplates' => 'Expansion des modèles',
 	'expandtemplates-desc' => 'Augmente les modèles, les fonctions parseurs et les variables pour visionner les textes wikis étendus et prévisualise les pages ainsi rendues.',
 	'expand_templates_intro' => 'Cette page permet de tester l’expansion de modèles,
-qui sont développés recursivement. Les fonctions et les variables prédéfinies,
+qui sont développés récursivement. Les fonctions et les variables prédéfinies,
 telles que <nowiki>{{</nowiki>#if:...}} et <nowiki>{{</nowiki>CURRENTDAY}} sont aussi développées.',
 	'expand_templates_title' => 'Titre de l’article, utile par exemple si le modèle utilise {{PAGENAME}} :',
 	'expand_templates_input' => 'Entrez votre texte ici :',

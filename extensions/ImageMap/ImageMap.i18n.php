@@ -172,6 +172,11 @@ $messages['ca'] = array(
 	'imagemap_description' => 'Quant a la imatge',
 );
 
+/** Corsican (Corsu) */
+$messages['co'] = array(
+	'imagemap_description' => "À prupositu d'issa imagine",
+);
+
 /** Czech (Česky)
  * @author Li-sung
  * @author Mormegil
@@ -241,6 +246,7 @@ $messages['eo'] = array(
 	'imagemap_desc' => 'Permesas klientflankajn klakeblajn bildmapojn uzante etikedon <tt><nowiki><imagemap></nowiki></tt>',
 	'imagemap_no_image' => 'Error: devas deklari bildon en la unua linio',
 	'imagemap_invalid_image' => 'Error: bildo estas aŭ nevalida aŭ neekzista',
+	'imagemap_bad_image' => 'Eraro: bildo estas nigralistigita en ĉi tiu paĝo',
 	'imagemap_no_link' => 'Error: neniu valida ligilo estis trovita ĉe fino de linio $1',
 	'imagemap_invalid_title' => 'Error: nevalida titolo en ligilo ĉe linio $1',
 	'imagemap_missing_coord' => 'Error: mankas sufiĉaj koordinatoj por formo ĉe linio $1',
@@ -646,6 +652,7 @@ $messages['lb'] = array(
 	'imagemap_desc' => 'Erlaabt et Biller ze benotzen déi een uklicke ka mat Hellëf vum Tag <tt><nowiki><imagemap></nowiki></tt>.',
 	'imagemap_no_image' => 'Feeler: Dir musst an der éischter Linn e Bild uginn',
 	'imagemap_invalid_image' => "Feeler: d'Bild ass ongëltig oder net do",
+	'imagemap_bad_image' => "Feeler: D'Bild steet op der Lëscht vun den onerwënschte Biller",
 	'imagemap_no_link' => 'Feeler: Um Enn vun der Zeil $1 gouf kee gëltege Link fonnt',
 	'imagemap_invalid_title' => 'Feeler: ongëltigen Titel am Link an der Zeil $1',
 	'imagemap_missing_coord' => 'Feeler: Ze wéineg Koordinaten an der Zeil $1 fir den Ëmress',

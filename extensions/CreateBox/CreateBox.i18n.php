@@ -59,6 +59,11 @@ $messages['bg'] = array(
 	'createbox-create' => 'Създаване',
 );
 
+/** Corsican (Corsu) */
+$messages['co'] = array(
+	'createbox-create' => 'Creà',
+);
+
 /** German (Deutsch)
  * @author ChrisiPK
  * @author Revolus

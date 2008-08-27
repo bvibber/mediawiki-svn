@@ -306,6 +306,15 @@ $messages['ro'] = array(
 	'userimages-noimages' => '$1 nu a încărcat imagini.',
 );
 
+/** Russian (Русский)
+ * @author Александр Сигачёв
+ */
+$messages['ru'] = array(
+	'userimages-caption' => 'Изображения, загруженные участником $1',
+	'userimages-noname' => 'Ошибочное имя участника',
+	'userimages-noimages' => 'Участник $1 не загружал изображений.',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

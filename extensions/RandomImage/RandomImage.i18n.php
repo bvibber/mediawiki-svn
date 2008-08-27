@@ -46,6 +46,13 @@ $messages['hsb'] = array(
 	'randomimage-desc' => 'Přidawa tafličku <tt>&lt;randomimage /&gt;</tt> za zwobraznjenje připadneho wobraza',
 );
 
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'randomimage-desc' => 'Forni un selector de media aleatori usante <tt>&lt;randomimage /&gt;</tt>',
+);
+
 /** Italian (Italiano)
  * @author Darth Kule
  */

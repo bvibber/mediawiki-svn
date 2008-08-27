@@ -561,12 +561,19 @@ Bonvolu <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_downl
 );
 
 /** Spanish (Español)
+ * @author Muro de Aguas
  * @author Spacebirdy
  */
 $messages['es'] = array(
+	'ogg-play' => 'Reproducir',
+	'ogg-pause' => 'Pausar',
+	'ogg-stop' => 'Detener',
+	'ogg-play-video' => 'Reproducir vídeo',
+	'ogg-play-sound' => 'Reproducir sonido',
 	'ogg-more' => 'Opciones...',
 	'ogg-dismiss' => 'Cerrar',
 	'ogg-download' => 'Bajar archivo',
+	'ogg-desc-link' => 'Sobre este archivo',
 );
 
 /** Basque (Euskara) */
@@ -991,8 +998,8 @@ Per favor <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_dow
 	'ogg-no-xiphqt' => 'Pare que tu non ha le componente XiphQT pro QuickTime.
 Sin iste componente, QuickTime non sape leger le files Ogg.
 Per favor <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">discarga XiphQT</a> o selige un altere lector.',
-	'ogg-player-videoElement' => 'elemento <video>',
-	'ogg-player-oggPlugin' => 'Plugin Ogg',
+	'ogg-player-videoElement' => 'Supporto native in navigator',
+	'ogg-player-oggPlugin' => 'Plugin pro navigator',
 	'ogg-player-thumbnail' => 'Imagine static solmente',
 	'ogg-player-soundthumb' => 'Necun lector',
 	'ogg-player-selected' => '(seligite)',

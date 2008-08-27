@@ -147,7 +147,9 @@ $messages['el'] = array(
  */
 $messages['eo'] = array(
 	'multipleupload' => 'Alŝuti dosierojn',
+	'multipleupload-desc' => 'Permesas al uzanto [[Special:MultipleUpload|alŝuti plurajn dosierojn samtempe]]',
 	'multipleupload-saveallfiles' => 'Konservu ĉiujn dosierojn',
+	'multipleupload-page' => '{{ns:project}}:Regularo pri dosiera forigado',
 	'multiupload-fileuploaded' => 'Dosiero alŝutita.',
 	'multiupload-toolbox' => 'Alŝuti multe de dosierojn',
 );
@@ -296,6 +298,28 @@ $messages['hu'] = array(
 	'multipleupload-page' => '{{ns:project}}:Fájltörlési irányelvek',
 	'multiupload-fileuploaded' => 'Fájl feltöltve.',
 	'multiupload-toolbox' => 'Több fájl feltöltése',
+);
+
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'multipleupload' => 'Cargar files',
+	'multipleupload-desc' => 'Permitte que le usatores [[Special:MultipleUpload|carga plure files simultaneemente]]',
+	'multipleupload-ignoreallwarnings' => "Ignorar '''tote le advertimentos''' e immagazinar totevia le files.",
+	'multipleupload-saveallfiles' => 'Immagazinar tote le files',
+	'multipleupload-addresswarnings' => 'Per favor remedia omne advertimentos ante de recargar files.',
+	'multipleupload-page' => '{{ns:project}}:Politica pro le deletion de files',
+	'multipleupload-text' => "Carga plure files hic.
+
+Clicca 'Navigar' e selige cata file que tu vole cargar.
+Tu pote cargar inter 1 e $1 files al mesme tempore.
+
+Tu pote entrar optionalmente un '''Nomine de file de destination''' e fornir un '''Summario''' que describe tu file.
+
+Le files inappropriate essera delite immediatemente; vide le [[{{MediaWiki:Multipleupload-page}}|politica pro le deletion de files]].",
+	'multiupload-fileuploaded' => 'File cargate.',
+	'multiupload-toolbox' => 'Cargar plure files',
 );
 
 /** Italian (Italiano)

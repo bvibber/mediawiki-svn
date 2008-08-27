@@ -84,8 +84,14 @@ $messages['bn'] = array(
 	'filelist-image-desc' => 'বিবরণ',
 );
 
-/** Catalan (Català) */
+/** Catalan (Català)
+ * @author Jordi Roqué
+ */
 $messages['ca'] = array(
+	'filelist' => 'Llista de fitxers',
+	'filelist-desc' => '[[Special:Filelist|Pàgina especial]] per a llistar arxius carregats',
+	'filelist-show-list' => 'Mostra la llista',
+	'filelist-show-gallery' => 'Mostra la galeria',
 	'filelist-image-desc' => 'desc',
 );
 

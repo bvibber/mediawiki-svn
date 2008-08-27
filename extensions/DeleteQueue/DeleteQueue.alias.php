@@ -32,6 +32,11 @@ $aliases['fi'] = array(
 	'DeleteQueue' => array( 'Poistojono' ),
 );
 
+/** Erzya (Эрзянь) */
+$aliases['myv'] = array(
+	'DeleteQueue' => array( 'НардамсПуло' ),
+);
+
 /** Nedersaksisch (Nedersaksisch) */
 $aliases['nds-nl'] = array(
 	'DeleteQueue' => array( 'Vortdowachrie' ),

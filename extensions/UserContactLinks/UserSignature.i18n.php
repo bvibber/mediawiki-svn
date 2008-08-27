@@ -12,9 +12,13 @@ $messages['en'] = array(
 	'usercontactlink-desc'    => 'Provides the ability to simply and consistantly add other user names using ^^^user^^^ syntax',
 );
 
-/** Message documentation (Message documentation) */
+/** Message documentation (Message documentation)
+ * @author Jon Harald Søby
+ * @author Purodha
+ */
 $messages['qqq'] = array(
 	'usercontactlink-baduser' => '{{Identical|Incorrect username}}',
+	'usercontactlink-desc' => 'Short description of this extension, shown on [[Special:Version]]. Do not translate or change links.',
 );
 
 /** Faeag Rotuma (Faeag Rotuma)
@@ -118,6 +122,14 @@ $messages['jv'] = array(
  */
 $messages['km'] = array(
 	'usercontactlink-baduser' => 'ឈ្មោះអ្នកប្រើប្រាស់មិនត្រឹមត្រូវទេ',
+);
+
+/** Ripoarisch (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'usercontactlink-baduser' => 'verkeehte Metmaacher-Name',
+	'usercontactlink-desc' => 'Määt et müjjelesch op en einfache un dorschjängeje Aat met ^^^user^^^ anderlüks Metmaacher-Name derbei ze donn.',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

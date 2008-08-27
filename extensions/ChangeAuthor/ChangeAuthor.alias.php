@@ -47,6 +47,11 @@ $aliases['lb'] = array(
 	'ChangeAuthor' => array( 'Auteur änneren' ),
 );
 
+/** Erzya (Эрзянь) */
+$aliases['myv'] = array(
+	'ChangeAuthor' => array( 'ПолавтомсСёрмадыцянть' ),
+);
+
 /** Nedersaksisch (Nedersaksisch) */
 $aliases['nds-nl'] = array(
 	'ChangeAuthor' => array( 'Auteur_wiezigen' ),

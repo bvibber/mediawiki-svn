@@ -64,6 +64,11 @@ $messages['bg'] = array(
 	'showprocesslist-info' => 'Информация',
 );
 
+/** Corsican (Corsu) */
+$messages['co'] = array(
+	'showprocesslist-user' => 'Utilizatore',
+);
+
 /** Church Slavic (Словѣ́ньскъ / ⰔⰎⰑⰂⰡⰐⰠⰔⰍⰟ)
  * @author ОйЛ
  */

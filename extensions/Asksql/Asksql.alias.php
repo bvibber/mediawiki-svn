@@ -27,6 +27,11 @@ $aliases['arz'] = array(
 	'Asksql' => array( 'سؤال_إس_كيو_إل' ),
 );
 
+/** German (Deutsch) */
+$aliases['de'] = array(
+	'Asksql' => array( 'SQL-Abfrage' ),
+);
+
 /** Hungarian (Magyar) */
 $aliases['hu'] = array(
 	'Asksql' => array( 'SQL-lekérdezés' ),

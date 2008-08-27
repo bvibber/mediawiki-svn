@@ -213,6 +213,7 @@ $messages['es'] = array(
 /** French (Français)
  * @author Grondin
  * @author Verdy p
+ * @author Zetud
  */
 $messages['fr'] = array(
 	'invite-logpage' => 'Journal des invitations',
@@ -220,7 +221,7 @@ $messages['fr'] = array(
 	'invite-logentry' => 'a invité $1 à utiliser la fonctionnalité de <i>$2</i>.',
 	'invitations' => 'Gère les invitations des fonctionnalités logicielles',
 	'invitations-desc' => 'Permet [[Special:Invitations|la gestion des nouvelles fonctionnalités]] en les restreignant par une système basé sur l’invitation.',
-	'invitations-invitedlist-description' => "Vous avez l'accès aux caractéristiques suivantes du logiciel d’invite seule. Pour gérer les invitations pour une catactéristique individuelle, cliquez sur son nom.",
+	'invitations-invitedlist-description' => "Vous avez l'accès aux caractéristiques suivantes du logiciel d’invite seule. Pour gérer les invitations pour une caractéristique individuelle, cliquez sur son nom.",
 	'invitations-invitedlist-none' => 'Vous n’avez pas été invité pour utiliser les fonctionnalités du logiciel d’invite seule.',
 	'invitations-invitedlist-item-count' => '({{PLURAL:$1|Une invitation disponible|$1 invitations disponibles}})',
 	'invitations-pagetitle' => 'Fonctionnalités du logiciel d’invite seule',
@@ -237,7 +238,7 @@ $messages['fr'] = array(
 	'invitations-inviteform-submit' => 'Inviter',
 	'invitations-error-baduser' => 'L’utilisateur que vous avez indiqué ne semble pas exister.',
 	'invitations-error-alreadyinvited' => 'L’utilisateur que vous avez indiqué dispose déjà de l’accès à cette fonctionnalité !',
-	'invitations-invite-success' => 'Vous invité $1 avec succès pour utiliser cette fonctionnalité !',
+	'invitations-invite-success' => 'Vous avez invité $1 avec succès pour utiliser cette fonctionnalité !',
 );
 
 /** Galician (Galego)

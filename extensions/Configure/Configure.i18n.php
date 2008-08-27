@@ -1383,6 +1383,7 @@ inger-aktif övver et Web maache künne.',
 	'configure-js-remove' => 'Fottschmieße',
 	'configure-section-namespaces' => 'Appachtemangs',
 	'configure-section-specialpages' => 'Sondersigge',
+	'viewconfig' => 'Dem Wiki sing Enstellunge beloore',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

@@ -539,6 +539,39 @@ $messages['km'] = array(
 	'webstore_no_response' => 'គ្មានចំលើយតប ពី ម៉ាស៊ីនបំរើសេវា',
 );
 
+/** Ripoarisch (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'webstore_path_invalid' => 'Dä Name för di Datei es Kappes.',
+	'webstore_dest_open' => 'Mer künne di Ziel-Datei „$1“ nit opmaache.',
+	'webstore_dest_lock' => 'Mer künne de Ziel-Datei „$1“ nit sperre.',
+	'webstore_dest_mkdir' => 'Mer künne dat Ziel-Verzeichnis „$1“ nit aanläje.',
+	'webstore_archive_lock' => 'Mer künne de Aschiiv-Datei „$1“ nit sperre.',
+	'webstore_archive_mkdir' => 'Mer künne dat Aschiiv-Verzeichnis „$1“ nit aanläje.',
+	'webstore_src_open' => 'Mer künne de Quell-Datei „$1“ nit opmaache.',
+	'webstore_src_close' => 'Mer künne de Quell-Datei „$1“ nit zomaache.',
+	'webstore_src_delete' => 'Mer künne de Quell-Datei „$1“ nit fottmaache.',
+	'webstore_rename' => 'Mer künne de Datei „$1“ nit op „$2“ ömnenne.',
+	'webstore_lock_open' => 'Mer künne de Schotz-Datei „$1“ nit opmaache.',
+	'webstore_lock_close' => 'Mer künne de Schotz-Datei „$1“ nit zomaache.',
+	'webstore_dest_exists' => 'Fähler, de Ziel-Datei „$1“ jidd_et ald.',
+	'webstore_temp_open' => 'Mer künne de Zwesche-Datei „$1“ nit opmaache.',
+	'webstore_temp_copy' => 'Mer künne de Zwesche-Datei „$1“ nit op de Zieldate „$2“ ömkopeere.',
+	'webstore_temp_close' => 'Mer künne de Zwesche-Datei „$1“ nit zomaache.',
+	'webstore_temp_lock' => 'Mer künne de Zwesche-Datei „$1“ nit sperre.',
+	'webstore_no_archive' => 'De Zieldatei es ald do, un en Aschiiv-Datei wohr nit aanjejovve.',
+	'webstore_no_file' => 'Et wwod kei Datei huhjelade.',
+	'webstore_404' => 'Datei nit jefunge.',
+	'webstore_php_warning' => 'PHP Warnung: $1',
+	'webstore_metadata_not_found' => 'Datei nit jefonge: $1',
+	'webstore_invalid_response' => 'En onjöltije Antwoot fum Server:
+
+$1',
+	'webstore_no_response' => 'Kei Antwoot fun Server',
+	'webstore_php_error' => 'Et sin PHP Fähler opjetrodde:',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */

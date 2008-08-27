@@ -37,10 +37,13 @@ $messages['en'] = array(
 
 /** Message documentation (Message documentation)
  * @author Jon Harald Søby
+ * @author Purodha
  * @author Siebrand
  */
 $messages['qqq'] = array(
-	'chemicalsources' => '{{Identical|Chemical sources}}',
+	'chemicalsources' => 'Short description of this extension, shown on [[Special:Version]]. Do not translate or change links.
+
+{{Identical|Chemical sources}}',
 	'chemFunctions_ListPage' => '{{Identical|Chemical sources}}',
 );
 
@@ -401,6 +404,24 @@ $messages['km'] = array(
 	'chemFunctions_ECNumber' => 'លេខ EC',
 	'chemFunctions_Formula' => 'រូបមន្ត',
 	'chemFunctions_Name' => 'ឈ្មោះ IUPAC',
+);
+
+/** Ripoarisch (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'chemicalsources' => 'Schimesche Quelle',
+	'chemicalsource-desc' => 'Brengk dä <code><nowiki><chemform></nowiki></code> Befähl för Formelle us de Schimie en et Wiki.',
+	'chemFunctions_ListPage' => 'Schimesche Quelle',
+	'chemFunctions_DataList' => 'Hee noh kumme Lenks op Sigge, woh mer Enfomazjuhne her krijje kann över der schimesche Shtoff, woh Ühr jrad noh am luure sitt:<br /><br />
+* <a href="http://webbook.nist.gov/cgi/cbook.cgi?ID=$MIXCASNameFormula&amp;Units=SI">Verbendung $MIXCASNameFormula op NIST</a><br />
+* <a href="http://ptcl.chem.ox.ac.uk/MSDS/">MSDS aan de Univäsität fun Oxford (en England) (kammer nit dren söke)</a><br />',
+	'chemFunctions_CAS' => 'CAS Nommer',
+	'chemFunctions_ATCCode' => 'ATCCode',
+	'chemFunctions_ECNumber' => 'ECNumber',
+	'chemFunctions_Formula' => 'Formel',
+	'chemFunctions_Name' => 'IUPAC Name',
+	'chemFunctions_ChemFormInputError' => "'''Chemform:''' Fähler em enjejovve Tex!",
 );
 
 /** Kurdish (Latin) (Kurdî / كوردی (Latin))

@@ -173,9 +173,11 @@ $messages['eo'] = array(
 
 /** Spanish (Español)
  * @author Icvav
+ * @author Muro de Aguas
  */
 $messages['es'] = array(
 	'sitenotice_close' => 'ocultar',
+	'sitenotice-desc' => 'Permite a los usuarios cerrar el mensaje central.',
 );
 
 /** Persian (فارسی)

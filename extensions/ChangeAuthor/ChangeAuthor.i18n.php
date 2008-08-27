@@ -454,7 +454,7 @@ $messages['fr'] = array(
 	'changeauthor-revview' => 'Révision #$1 de $2',
 	'changeauthor-nosuchtitle' => "Il n'existe aucun article intitulé « $1 »",
 	'changeauthor-weirderror' => "Une erreur s'est produite. Prière d'essayer à nouveau. Si cette erreur est apparue à plusieurs reprises, la base de données est probablement corrompue.",
-	'changeauthor-invalidform' => "Prière d'utiliser le formulaire généré par Special:ChangeAuthor plutôt qu'un formulaire personnel",
+	'changeauthor-invalidform' => "Prière d'utiliser le formulaire généré par la [[Special:ChangeAuthor|page spéciale]] plutôt qu'un formulaire personnel",
 	'changeauthor-success' => 'Votre requête a été traitée avec succès.',
 	'changeauthor-logentry' => "Modification de l'auteur de $2 de $1 depuis $3 vers $4",
 	'changeauthor-logpagename' => "Journal des changements faits par l'auteur",
@@ -666,7 +666,7 @@ Simplemente modifica le nomine de usator infra, adde un commento (optional) e cl
 	'changeauthor-weirderror' => 'Un error multo estranie ha occurrite.
 Per favor reprova tu requesta.
 Si iste error persiste, le base de datos es probabilemente defecte.',
-	'changeauthor-invalidform' => 'Per favor usa le formulario providite per Special:ChangeAuthor e non un formulario personalisate.',
+	'changeauthor-invalidform' => 'Per favor usa le formulario providite per le [[Special:ChangeAuthor|pagina special]] e non un formulario personalisate.',
 	'changeauthor-success' => 'Tu requesta ha essite processate con successo.',
 	'changeauthor-logentry' => 'Cambiava le autor del revision $2 del pagina $1 de $3 a $4',
 	'changeauthor-logpagename' => 'Registro de cambiamentos de autores',
@@ -792,6 +792,7 @@ $messages['krj'] = array(
  * @author Purodha
  */
 $messages['ksh'] = array(
+	'changeauthor' => 'Donn do Schriiver fun ene Version ändere',
 	'changeauthor-pagenameform-go' => 'Loß Jonn!',
 );
 
@@ -960,7 +961,7 @@ $messages['no'] = array(
 	'changeauthor-revview' => 'Revisjon #$1 av $2',
 	'changeauthor-nosuchtitle' => 'Det er ingen side ved navn «$1».',
 	'changeauthor-weirderror' => 'En merkelig feil oppsto. Vennligst prøv igjen. Om denne feilen vedvarer er det trolig noe galt med databasen.',
-	'changeauthor-invalidform' => 'Bruk skjemaet på Special:ChangeAuthor i stedet for å bruke et egendefinert skjema.',
+	'changeauthor-invalidform' => 'Bruk skjemaet på [[Special:ChangeAuthor|spesialsiden]] i stedet for å bruke et egendefinert skjema.',
 	'changeauthor-success' => 'Forespørselen har blitt utført.',
 	'changeauthor-logentry' => 'Endret opphavsperson til $2 av $1 fra $3 til $4',
 	'changeauthor-logpagename' => 'Logg for opphavspersonsendringer',
@@ -1273,7 +1274,7 @@ $messages['sv'] = array(
 	'changeauthor-revview' => 'Version #$1 av $2',
 	'changeauthor-nosuchtitle' => 'Det finns ingen sida med namnet "$1".',
 	'changeauthor-weirderror' => 'Ett mycket konstigt fel inträffade. Försök en gång till. Om samma fel upprepas så är databasen förmodligen trasig.',
-	'changeauthor-invalidform' => 'Var vänlig använd formuläret som finns på [[Special:ChangeAuthor]], istället för ett formulär som någon annan skapat.',
+	'changeauthor-invalidform' => 'Var vänlig använd formuläret som finns på [[Special:ChangeAuthor|specialsidan]], istället för ett formulär som någon annan skapat.',
 	'changeauthor-success' => 'Upphovsmansändringen är genomförd.',
 	'changeauthor-logentry' => 'ändrade upphovsman för $2 av $1 från $3 till $4',
 	'changeauthor-logpagename' => 'Upphovsmansändringslogg',

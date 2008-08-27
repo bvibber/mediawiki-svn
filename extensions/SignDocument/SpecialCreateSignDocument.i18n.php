@@ -143,6 +143,11 @@ $messages['ca'] = array(
 	'createsigndoc-hidden' => 'Amagat',
 );
 
+/** Corsican (Corsu) */
+$messages['co'] = array(
+	'createsigndoc-create' => 'Creà',
+);
+
 /** Church Slavic (Словѣ́ньскъ / ⰔⰎⰑⰂⰡⰐⰠⰔⰍⰟ)
  * @author ОйЛ
  */
@@ -345,6 +350,14 @@ $messages['ia'] = array(
 /** Icelandic (Íslenska) */
 $messages['is'] = array(
 	'createsigndoc-pagename' => 'Síða:',
+);
+
+/** Italian (Italiano)
+ * @author Darth Kule
+ */
+$messages['it'] = array(
+	'createsigndoc-optional' => 'Opzionale',
+	'createsigndoc-create' => 'Crea',
 );
 
 /** Javanese (Basa Jawa)

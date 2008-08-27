@@ -109,6 +109,13 @@ $messages['eo'] = array(
 	'poem-desc' => 'Aldonas <tt>&lt;poem&gt;</tt> etikedon por formatado de poezio.',
 );
 
+/** Spanish (Español)
+ * @author Muro de Aguas
+ */
+$messages['es'] = array(
+	'poem-desc' => 'Añade la etiqueta <tt>&lt;poem&gt;</tt> para dar el formato propio de un poema.',
+);
+
 /** Persian (فارسی)
  * @author Huji
  */

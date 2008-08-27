@@ -796,6 +796,24 @@ $messages['km'] = array(
 	'bookinfo-provider' => 'អ្នកផ្គត់ផ្គង់ទិន្នន័យ៖ $1',
 );
 
+/** Ripoarisch (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'bookinfo-header' => 'Enfomazjuhne övver Böhsher.',
+	'bookinfo-desc' => 'Deit de [[Special:Booksources|Söndersigg drövver, woh mer Bööscher herkritt]] öm de Enfomazjuhne fun enem Deens em Web verjrüßere.',
+	'bookinfo-result-title' => 'Tittel:',
+	'bookinfo-result-author' => 'Schriver:',
+	'bookinfo-result-publisher' => 'Verläjer:',
+	'bookinfo-result-year' => 'Johr:',
+	'bookinfo-error-invalidisbn' => 'kapodde ISBN.',
+	'bookinfo-error-nosuchitem' => 'Dat Denge jidd_et nit, udder mer kunnte et nit fenge,',
+	'bookinfo-error-nodriver' => 'Mer kunnte nit mem Zojreff övver de Boch-Ennfomazjuhns-Schnettstell aanfange, dä Driever hät nit metjemaat.',
+	'bookinfo-error-noresponse' => 'Kei Antwoot udder et hät ze lang jedohrt.',
+	'bookinfo-purchase' => 'Dat Boch kammer fum $1 krijje',
+	'bookinfo-provider' => 'De Date hät jelivvert: $1',
+);
+
 /** Latin (Latina)
  * @author SPQRobin
  */

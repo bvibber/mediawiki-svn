@@ -1877,6 +1877,18 @@ $messages['sr-ec'] = array(
  */
 $messages['stq'] = array(
 	'math_noblahtex' => 'Kon nit uutfiere blahtex, ju der ap $1 weese schuul',
+	'math-desc' => 'MathML-Uutgoawe foar &lt;math&gt;-Tags',
+	'math_AmbiguousInfix' => 'An disse Steede is „$1“ moortjuudich.
+Fersäik wiedere swoangene Klammere „{ … }“ ientouföigjen, uum ju Iengoawe eentjuudich tou moakjen.',
+	'math_CannotChangeDirectory' => 'Oarbaidsferteeknis kuud nit wikseld wäide',
+	'math_CannotCreateTexFile' => 'tex-Doatäi kuud nit moaked wäide',
+	'math_CannotRunDvipng' => 'dvipng kuud nit uutfierd wäide',
+	'math_CannotRunLatex' => 'latex kuud nit uutfierd wäide',
+	'math_CannotWritePngDirectory' => 'Dät PNG-Ferteeknis is nit beschrieuwboar',
+	'math_CannotWriteTexFile' => 'Dät waas nit muugelk in ju tex-Doatäi tou schrieuwen',
+	'math_CasesRowTooBig' => 'Dät kon pro Riege fon n "cases"-Blok bloot twäin Iendraage reeke',
+	'math_IllegalCharacter' => 'Uungultich Teeken in ju Iengoawe',
+	'math_IllegalCommandInMathMode' => 'In dän mathematisken Modus is ju Anwiesenge „$1“ nit ferlööwed',
 );
 
 /** Sundanese (Basa Sunda)

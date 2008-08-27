@@ -761,9 +761,13 @@ $messages['sr-ec'] = array(
  * @author Pyt
  */
 $messages['stq'] = array(
+	'ajax-se-desc' => 'Wiest Benutsere, do der apstuuns jusälge Siede beoarbaidje',
 	'ajax-se-title' => 'Wäd apstuuns beoarbaided fon:',
 	'ajax-se-pending' => 'befoarstoundende Aktualisierengen... (klik ap disse Kaste of fang oun mäd ju Beoarbaidenge)',
 	'ajax-se-idling' => '(foar $1 s)',
+	'ajax-se-pagedoesnotexist' => 'Siede bestoant nit',
+	'ajax-se-userinvalid' => 'Failer: Benutser uungultich',
+	'ajax-se-usernotfound' => 'Failer: Benutser wuude nit fuunen',
 );
 
 /** Sundanese (Basa Sunda)

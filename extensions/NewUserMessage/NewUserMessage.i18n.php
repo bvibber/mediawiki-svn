@@ -148,6 +148,14 @@ $messages['hsb'] = array(
 	'newusermessage-desc' => 'Powěsć nowo wutworjenym wužiwarskim diskusijnym stronam přidać',
 );
 
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'newusermessage-desc' => 'Adde un message al paginas de discussion de nove usatores',
+	'newuseredit-summary' => 'Addition de un [[{{int:newusermessage-template}}|message de benvenita]] al pagina de discussion del nove usator',
+);
+
 /** Indonesian (Bahasa Indonesia)
  * @author Rex
  */
@@ -165,10 +173,12 @@ $messages['it'] = array(
 );
 
 /** Japanese (日本語)
+ * @author Aotake
  * @author JtFuruhata
  */
 $messages['ja'] = array(
 	'newusermessage-desc' => '新規登録利用者のトークページにメッセージを書き込む',
+	'newuseredit-summary' => '新規利用者の会話ページに[[{{int:newusermessage-template}}|歓迎のメッセージ]]を記入',
 );
 
 /** Khmer (ភាសាខ្មែរ)

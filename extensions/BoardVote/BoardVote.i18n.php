@@ -1061,6 +1061,7 @@ $messages['ceb'] = array(
 
 /** Corsican (Corsu) */
 $messages['co'] = array(
+	'boardvote_user' => 'Utilizatore',
 	'group-boardvote' => 'Cummissione eletturale',
 	'group-boardvote-member' => 'Cummissariu eletturale',
 	'grouppage-boardvote' => '{{ns:project}}:Cummissarii eletturali',
@@ -4707,15 +4708,15 @@ indica uma alta preferência por um candidato em específico. Você também pode
 candidato, podendo manter os demais candidatos sem pontuação alguma.</p>',
 	'boardvote_entered' => 'Obrigado, o seu voto foi registado.
 
-Se desejar pode guardar os seguintes detalhes. O seu registo de voto é:
+Se desejar, pode guardar os seguintes detalhes. O seu registo de voto é:
 
 <pre>$1</pre>
 
-Seu voto foi encriptado com a chave pública dos Administradores da Eleição:
+O seu voto foi encriptado com a chave pública dos Administradores da Eleição:
 
 <pre>$2</pre>
 
-A versão encripitada resultante se encontra a seguir. Ela será publicada em [[Special:Boardvote/dump]].
+A versão encriptada resultante encontra-se abaixo. Ela será [[Special:Boardvote/dump|apresentada publicamente]].
 
 <pre>$3</pre>
 

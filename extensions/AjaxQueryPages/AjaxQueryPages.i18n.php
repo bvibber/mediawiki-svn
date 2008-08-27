@@ -236,6 +236,13 @@ $messages['sk'] = array(
 	'ajax-qp-desc' => 'Pridáva AJAX na stránky požiadaviek ako [[Special:Shortpages|{{int:shortpages}}]]',
 );
 
+/** Seeltersk (Seeltersk)
+ * @author Pyt
+ */
+$messages['stq'] = array(
+	'ajax-qp-desc' => 'Föiget AJAX-Funktione bietou an Spezialsieden, as [[Special:Shortpages|{{int:shortpages}}]]',
+);
+
 /** Sundanese (Basa Sunda)
  * @author Kandar
  */

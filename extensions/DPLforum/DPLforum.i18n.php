@@ -164,6 +164,13 @@ $messages['id'] = array(
 	'dplforum-toofew' => 'Forum DPL: Terlalu sedikit kategori!',
 );
 
+/** Italian (Italiano)
+ * @author Darth Kule
+ */
+$messages['it'] = array(
+	'dplforum-never' => 'Mai',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */

@@ -11,6 +11,13 @@ $messages['en'] = array(
 	'trustedxff-desc' => 'Handling of a list of trusted proxy addresses ([http://meta.wikimedia.org/wiki/XFF_project XFF project])',
 );
 
+/** Message documentation (Message documentation)
+ * @author Purodha
+ */
+$messages['qqq'] = array(
+	'trustedxff-desc' => 'Short description of the extension, shown on [[Special:Version]]. Do not translate or change links.',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */
@@ -30,6 +37,13 @@ $messages['de'] = array(
 	'trustedxff-desc' => 'Verarbeitung einer Liste vertrauenswürdiger Proxyadressen ([http://meta.wikimedia.org/wiki/XFF_project XFF-ProjeKt])',
 );
 
+/** French (Français)
+ * @author Seb35
+ */
+$messages['fr'] = array(
+	'trustedxff-desc' => 'Gestion d’une liste d’adresses de serveurs mandataires de confiance ([http://meta.wikimedia.org/wiki/XFF_project projet XFF])',
+);
+
 /** Hebrew (עברית)
  * @author Rotem Liss
  */
@@ -37,11 +51,32 @@ $messages['he'] = array(
 	'trustedxff-desc' => 'טיפול ברשימה של כתובות פרוקסי אמינות ([http://meta.wikimedia.org/wiki/XFF_project פרויקט ה־XFF])',
 );
 
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'trustedxff-desc' => 'Gerentia de un lista de adresses de proxy digne de fide ([http://meta.wikimedia.org/wiki/XFF_project projecto XFF])',
+);
+
 /** Indonesian (Bahasa Indonesia)
  * @author Rex
  */
 $messages['id'] = array(
 	'trustedxff-desc' => 'Penanganan daftar alamat proxy terpercaya ([http://meta.wikimedia.org/wiki/XFF_project XFF project])',
+);
+
+/** Italian (Italiano)
+ * @author Darth Kule
+ */
+$messages['it'] = array(
+	'trustedxff-desc' => 'Gestione di un elenco di indirizzi proxy fidati ([http://meta.wikimedia.org/wiki/XFF_project progetto XFF])',
+);
+
+/** Ripoarisch (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'trustedxff-desc' => 'Don en Leß met jode <i lang="en">proxy</i>-Adresse ([http://meta.wikimedia.org/wiki/XFF_project XFF project]) verwallde un noze.',
 );
 
 /** Malay (Bahasa Melayu)
@@ -56,6 +91,13 @@ $messages['ms'] = array(
  */
 $messages['nl'] = array(
 	'trustedxff-desc' => 'Beheert een lijst met adressen van vertrouwde proxyservers ([http://meta.wikimedia.org/wiki/XFF_project XFF-project])',
+);
+
+/** Russian (Русский)
+ * @author Александр Сигачёв
+ */
+$messages['ru'] = array(
+	'trustedxff-desc' => 'Обработка списка доверенных прокси-адресов ([http://meta.wikimedia.org/wiki/XFF_project Проект XFF])',
 );
 
 /** Slovak (Slovenčina)

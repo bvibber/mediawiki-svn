@@ -1161,6 +1161,7 @@ Reverte primo iste modification.',
 	'oversight-hidden' => 'Revision celate',
 	'oversight-header' => 'Infra es un lista de revisiones recentemente celate permanentemente del publico.
 Le divulgation de iste informationes pote resultar in le perdita permanente del privilegios supervisorial.',
+	'oversight-legend' => 'Cercar in registro de celamento de revisiones',
 );
 
 /** Indonesian (Bahasa Indonesia)
@@ -1281,6 +1282,7 @@ La divulgazione di tali informazioni può dar luogo alla rimozione permanente de
 );
 
 /** Japanese (日本語)
+ * @author Aotake
  * @author JtFuruhata
  * @author Kahusi
  * @author Marine-Blue
@@ -1292,6 +1294,7 @@ $messages['ja'] = array(
 	'group-oversight-member' => 'Oversight',
 	'grouppage-oversight' => '{{ns:project}}:Oversight',
 	'right-oversight' => '秘匿前の版を閲覧する',
+	'right-hiderevision' => '管理者から秘匿された版の閲覧・復帰',
 	'hiderevision-prompt' => '秘匿する特定版ID:',
 	'hiderevision-continue' => '続ける',
 	'hiderevision-text' => "これは、'''以下の場合に限って'''使用すべきです：
@@ -1322,6 +1325,7 @@ $messages['ja'] = array(
 	'oversight-prev' => '残存している前の版',
 	'oversight-hidden' => '秘匿された版',
 	'oversight-header' => '下記は、最近非公開となった版の一覧です。ここで得られた情報を漏洩した場合、この閲覧権限を永久に失う事となるでしょう。',
+	'oversight-legend' => '版の秘匿ログの検索',
 );
 
 /** Jutish (Jysk)

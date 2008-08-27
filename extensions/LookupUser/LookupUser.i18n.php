@@ -266,6 +266,26 @@ $messages['hu'] = array(
 	'lookupuser_useroptions' => 'Beállításai:',
 );
 
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'lookupuser' => 'Cercar info de usator',
+	'lookupuser-desc' => '[[Special:LookupUser|Recupera informationes]] super un usator como adresse de e-mail e numero de ID',
+	'lookupuser_intro' => 'Entra un nomine de usator pro vider le preferentias de ille usator.',
+	'lookupuser_nonexistent' => 'Error: Usator non existe',
+	'lookupuser_authenticated' => 'Authentication de e-mail: $1',
+	'lookupuser_not_authenticated' => 'non authenticate',
+	'lookupuser_id' => 'ID del usator: <tt>#$1</tt>',
+	'lookupuser_email' => 'E-mail: [[Special:Emailuser/$2|$1]]',
+	'lookupuser_no_email' => 'non fornite',
+	'lookupuser_realname' => 'Nomine real: $1',
+	'lookupuser_registration' => 'Data de registration: $1',
+	'lookupuser_no_registration' => 'non disponibile',
+	'lookupuser_touched' => 'Ultime alteration del informationes del usator: $1',
+	'lookupuser_useroptions' => 'Optiones del usator:',
+);
+
 /** Italian (Italiano)
  * @author Darth Kule
  */

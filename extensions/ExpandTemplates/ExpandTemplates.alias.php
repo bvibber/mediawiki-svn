@@ -87,6 +87,11 @@ $aliases['ms'] = array(
 	'ExpandTemplates' => array( 'Kembangkan_templat' ),
 );
 
+/** Erzya (Эрзянь) */
+$aliases['myv'] = array(
+	'ExpandTemplates' => array( 'ПоладомсЛопаПарцунт' ),
+);
+
 /** Nedersaksisch (Nedersaksisch) */
 $aliases['nds-nl'] = array(
 	'ExpandTemplates' => array( 'Sjablonen_substitueren' ),

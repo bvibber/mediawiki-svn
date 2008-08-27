@@ -348,6 +348,7 @@ $messages['eo'] = array(
 	'openidlogin' => 'Ensaluti kun OpenID',
 	'openidfinish' => 'Elsaluti kun OpenID',
 	'openidserver' => 'Servilo OpenID',
+	'openidxrds' => 'dosiero Yadis',
 	'openidconvert' => 'OpenID konvertilo',
 	'openidpermission' => 'OpenID rajt-eraro',
 	'openidpermissiontext' => 'La OpenID kiun vi provizis ne estas permesita ensaluti ĉi tiun servilon.',
@@ -366,6 +367,12 @@ vi povas selekti el unu la jenaj opcioj.',
 	'openidchooseauto' => 'Automate generita nomo ($1)',
 	'openidchoosemanual' => 'Nomo de via elekto:',
 	'openidchoosepassword' => 'pasvorto:',
+	'openidconvertsuccess' => 'Sukcese konvertis al OpenID',
+	'openidconvertyourstext' => 'Tio jam estas via OpenID.',
+	'openidconvertothertext' => 'Tio estas OpenID de alia persono.',
+	'openidalreadyloggedin' => "'''Vi jam ensalutis, $1!'''
+
+Se vi volas utiligi OpenID por ensaluti estontece, vi povas [[Special:OpenIDConvert|konverti vian konton por uzi OpenID]].",
 	'openidnousername' => 'Neniu salutnomo estis donita.',
 	'openidbadusername' => 'Fuŝa salutnomo donita.',
 );
@@ -373,9 +380,10 @@ vi povas selekti el unu la jenaj opcioj.',
 /** French (Français)
  * @author Grondin
  * @author IAlex
+ * @author Zetud
  */
 $messages['fr'] = array(
-	'openid-desc' => "Se connecte au wiki avec [http://openid.net/ OpenID] et se connecte à d'autres site internet OpenID avec un wiki utilisant un compte utilisateur.",
+	'openid-desc' => "Se connecte au wiki avec [http://openid.net/ OpenID] et se connecte à d'autres sites internet OpenID avec un wiki utilisant un compte utilisateur.",
 	'openidlogin' => 'Se connecter avec OpenID',
 	'openidfinish' => 'Finir la connection OpenID',
 	'openidserver' => 'Serveur OpenID',
@@ -714,10 +722,72 @@ $messages['is'] = array(
 );
 
 /** Italian (Italiano)
+ * @author Darth Kule
  * @author Nemo bis
  */
 $messages['it'] = array(
+	'openid-desc' => 'Effettua il login alla wiki con [http://openid.net/ OpenID] e agli altri siti web che utilizzano OpenID con un account wiki',
+	'openidlogin' => 'Login con OpenID',
+	'openidfinish' => 'Completa il login OpenID',
+	'openidserver' => 'server OpenID',
+	'openidxrds' => 'file Yadis',
+	'openidconvert' => 'convertitore OpenID',
+	'openiderror' => 'Verifica errori',
+	'openiderrortext' => "Si è verificato un errore durante la verifica dell'URL OpenID.",
+	'openidconfigerror' => 'Errore nella configurazione OpenID',
+	'openidpermission' => 'Errore nei permessi OpenID',
+	'openidpermissiontext' => "Non è stato permesso di effettuare il login a questo server all'OpenID che hai fornito.",
+	'openidcancel' => 'Verifica annullata',
+	'openidcanceltext' => "La verifica dell'URL OpenID è stata annullata.",
+	'openidfailure' => 'Verifica fallita',
+	'openidfailuretext' => 'La verifica dell\'URL OpenID è fallita. Messaggio di errore: "$1"',
+	'openidsuccess' => 'Verifica effettuata',
+	'openidsuccesstext' => "La verifica dell'URL OpenID è stata effettuata con successo.",
+	'openidusernameprefix' => 'Utente OpenID',
+	'openidserverlogininstructions' => 'Inserisci di seguito la tua password per effettuare il login a $3 come utente $2 (pagina utente  $1).',
+	'openidtrustinstructions' => 'Controlla se desideri condividere i dati con $1.',
+	'openidnopolicy' => 'Il sito nono ha specificato una politica relativa alla privacy.',
+	'openidpolicy' => 'Controlla la <a target="_new" href="$1">politica relativa alla privacy</a> per maggiori informazioni.',
+	'openidoptional' => 'Opzionale',
+	'openidrequired' => 'Richiesto',
+	'openidfullname' => 'Nome completo',
+	'openidemail' => 'Indirizzo e-mail',
 	'openidlanguage' => 'Lingua',
+	'openidnotavailable' => 'Il tuo nickname preferito ($1) è già utilizzato da un altro utente.',
+	'openidnotprovided' => 'Il tuo server OpenID non ha fornito un nickname (o perché non ha potuto o perché hai detto di non farlo).',
+	'openidchooseinstructions' => 'Tutti gli utenti hanno bisogno di un nickname;
+puoi sceglierne uno dalle opzioni seguenti.',
+	'openidchoosefull' => 'Il tuo nome completo ($1)',
+	'openidchooseauto' => 'Un nome auto-generato ($1)',
+	'openidchoosemanual' => 'Un nome di tua scelta:',
+	'openidchooseexisting' => 'Un account esistente su questa wiki:',
+	'openidconvertinstructions' => 'Questo modulo ti permette di cambiare il tuo account per usare un URL OpenID.',
+	'openidconvertsuccess' => 'Convertito con successo a OpenID',
+	'openidconvertsuccesstext' => 'Il tuo OpenID è stato convertito con successo a $1.',
+	'openidconvertyourstext' => 'Questo è già il tuo OpenID.',
+	'openidconvertothertext' => "Questo è l'OpenID di qualcun altro.",
+	'openidalreadyloggedin' => "'''Hai già effettuato il login, $1!'''
+
+Se desideri usare OpenID per effettuare il login in futuro, puoi [[Special:OpenIDConvert|convertire il tuo account per utilizzare OpenID]].",
+	'tog-hideopenid' => 'Nascondi il tuo <a href="http://openid.net/">OpenID</a> sulla tua pagina utente, se effettui il login con OpenID.',
+	'openidnousername' => 'Nessun nome utente specificato.',
+	'openidbadusername' => 'Nome utente specificato errato.',
+	'openidautosubmit' => 'Questa pagina include un modulo che dovrebbe essere inviato automaticamente se hai JavaScript attivato. Se non lo è, prova a premere il pulsante \\"Continue\\".',
+	'openidclientonlytext' => 'Non puoi usare gli account di questa wiki come OpenID su un altro sito.',
+	'openidloginlabel' => 'URL OpenID',
+	'openidlogininstructions' => "{{SITENAME}} supporta lo standard [http://openid.net/ OpenID] per il login unico sui siti web.
+OpenID ti permette di registrarti in molti siti web senza utilizzare una password diversa per ciascuno.
+(Leggi la [http://en.wikipedia.org/wiki/OpenID voce di Wikipedia sull'OpenID] per maggiori informazioni.)
+
+Se possiedi già un account su {{SITENAME}}, puoi effettuare il [[Special:UserLogin|login]] con il tuo nome utente e la tua password come al solito.
+Per utilizzare OpenID in futuro, puoi [[Special:OpenIDConvert|convertire il tuo account a OpenID]] dopo che hai effettuato normalmente il login.
+
+Esistono molti [http://wiki.openid.net/Public_OpenID_providers Provider OpenID pubblici], e potresti avere già un account abilitato all'OpenID su un altro servizio.
+
+; Altre wiki : Se possiedi un account su una wiki abilitata all'OpenID, come [http://wikitravel.org/ Wikitravel], [http://www.wikihow.com/ wikiHow], [http://vinismo.com/ Vinismo], [http://aboutus.org/ AboutUs] o [http://kei.ki/ Keiki], puoi effettuare il login a {{SITENAME}} inserendo l<nowiki>'</nowiki>'''URL completo''' della tua pagina utente in quell'altra wiki nel box soprastante. Per esempio, ''<nowiki>http://kei.ki/en/User:Evan</nowiki>''.
+; [http://openid.yahoo.com/ Yahoo!] : Se possiedi un account con Yahoo!, puoi effettuare il login a questo sito inserendo il tuo OpenID Yahoo! nel box soprastante. Gli URL OpenID Yahoo! hanno la forma ''<nowiki>https://me.yahoo.com/yourusername</nowiki>''.
+; [http://dev.aol.com/aol-and-63-million-openids AOL] : Se possiedi un account con [http://www.aol.com/ AOL], come un account [http://www.aim.com/ AIM], puoi effettuare il login a {{SITENAME}} inserendo il tuo OpenID AOL nel box soprastante. Gli URL OpenID AOL hanno la forma ''<nowiki>http://openid.aol.com/yourusername</nowiki>''. Il tuo nome utente dovrebbe essere tutto in carattere minuscolo, senza spazi.
+; [http://bloggerindraft.blogspot.com/2008/01/new-feature-blogger-as-openid-provider.html Blogger], [http://faq.wordpress.com/2007/03/06/what-is-openid/ Wordpress.com], [http://www.livejournal.com/openid/about.bml LiveJournal], [http://bradfitz.vox.com/library/post/openid-for-vox.html Vox] : Se possiedi un blog su uno di questi siti, inserisci l'URL del blog nel box soprastante. Per esempio, ''<nowiki>http://yourusername.blogspot.com/</nowiki>'', ''<nowiki>http://yourusername.wordpress.com/</nowiki>'', ''<nowiki>http://yourusername.livejournal.com/</nowiki>'', or ''<nowiki>http://yourusername.vox.com/</nowiki>''.",
 );
 
 /** Javanese (Basa Jawa)

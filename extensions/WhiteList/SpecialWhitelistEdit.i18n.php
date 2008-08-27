@@ -382,9 +382,10 @@ $allMessages['es'] = array(
 
 /** French (Français)
  * @author Grondin
+ * @author Zetud
  */
 $allMessages['fr'] = array(
-	'whitelist-desc' => 'Modifie les permission d’accès des utilisateurs à pouvoirs restreints',
+	'whitelist-desc' => 'Modifie les permissions d’accès des utilisateurs à pouvoirs restreints',
 	'whitelistedit' => 'Éditeur de la liste blanche des accès',
 	'whitelist' => 'Pages de listes blanches',
 	'mywhitelistpages' => 'Mes pages',
@@ -425,7 +426,7 @@ Utiliser soit le caractère * soit %',
 
 $2',
 	'whitelistrequestconf' => 'Une demande d’accès pour de nouvelles pages a été envoyée à $1',
-	'whitelistnonrestricted' => "L'utilisateur  '''$1''' n’est pas avec des droit restreints.
+	'whitelistnonrestricted' => "L'utilisateur  '''$1''' n’est pas avec des droits restreints.
 Cette page ne s’applique qu’aux utilisateurs disposant de droits restreints.",
 	'whitelistnever' => 'jamais',
 	'whitelistnummatches' => ' - $1 {{PLURAL:$1|occurence|occurences}}',
