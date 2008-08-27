@@ -1,13 +1,14 @@
 <?php
 //sample embed page (this could be plain html its a php script so that we can grab its location)
 $mv_path ='http://' . $_SERVER['SERVER_NAME'] . substr( $_SERVER['REQUEST_URI'], 0, strrpos($_SERVER['REQUEST_URI'], '/')).'/';
+$mv_path = str_replace('example_usage/', '', $mv_path);
 ?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 	<title>sample mv embed</title>
- 	<script type="text/javascript" src="mv_embed.js"></script>
+ 	<script type="text/javascript" src="<?php echo htmlspecialchars($mv_path) ?>mv_embed.js"></script>
 </head>
 <body>
 <h3> Sample Embed</h3>
@@ -56,7 +57,7 @@ $sample_embed[2]['desc']='';
 //$sample_embed[1]['tag'] = '<video roe="http://192.168.0.104/mvWiki/index.php?title=Special:MvExportStream&feed_format=roe&stream_name=Senate_proceeding_08-01-07&t=0:00:00/0:05:00">';
 //$sample_embed[1]['desc'] = 'Demo of json ROE attribute';
 
-$sample_embed[3]['tag'] = '<video style="width:400px;height:300px" roe="http://metavid.ucsc.edu/mvw-exp/index.php?title=Special:MvExportStream&feed_format=roe&stream_name=Senate_proceeding_08-01-07&t=0:06:00/0:07:00"></video>';
+$sample_embed[3]['tag'] = '<video style="width:400px;height:300px" roe="http://localhost/mvw-exp/index.php?title=Special:MvExportStream&feed_format=roe&stream_name=Senate_proceeding_08-01-07&t=0:06:00/0:07:00"></video>';
 $sample_embed[3]['desc'] = 'Demo2  of json ROE attribute';
 
 
@@ -125,7 +126,7 @@ $sample_embed[8]['desc']=' <br><b>Crossfading Videos</b><br/><a href="http://ser
 ?>
   <table border="1" cellpadding="6" width="600">
   	<? foreach($sample_embed as $key=>$aval){
-  		if($key!=8)continue;
+  		if($key!=8 && $key!=3)continue;
   	 ?>
 	    <tr>
 	      <td><?=$aval['tag']?></td>

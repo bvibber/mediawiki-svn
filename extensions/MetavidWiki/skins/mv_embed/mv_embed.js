@@ -140,7 +140,8 @@ var default_video_attributes = {
     "thumbnail":null,
     "linkback":null,
     "embed_link":true,
-    "download_link":true
+    "download_link":true,
+    "type":null 	//the content type of the media 
 };
 
 /*********** INITIALIZATION CODE *************
@@ -1219,6 +1220,8 @@ mediaSource.prototype =
 
     init : function(element)
     {
+    	js_log(element);    	
+    	
         this.uri = element.getAttribute('src');
         if(ogg_chop_links)
             this.uri = this.uri.replace(".anx", '');
@@ -1580,7 +1583,7 @@ embedVideo.prototype = {
 		if(typeof player!='undefined' && player['offsetWidth'])
 			return player.offsetWidth;
 		else
-			return parseInt(this.width.replace('px',''));
+			return parseInt(this.width);
 	},
 	playerPixelHeight : function()
 	{
@@ -1588,7 +1591,7 @@ embedVideo.prototype = {
 		if(typeof player!='undefined' && player['offsetHeight'])
 			return player.offsetHeight;
 		else
-			return parseInt(this.height.replace('px',''));
+			return parseInt(this.height);
 	},
 	init: function(element){		
 		//this.element_pointer = element;
@@ -1713,13 +1716,12 @@ embedVideo.prototype = {
 		this.closeDisplayedHTML();
 
 //		if(!this.selected_player){
-//			return this.getPluginMissingHTML();
-		
+//			return this.getPluginMissingHTML();		
 		//Set "loading" here
 		$j('#mv_embedded_player_'+_this.id).html(''+
-					'<div style="color:black;width:'+this.width+'px;height:'+this.height+'px;">' + 
-						getMsg('loading_plugin') + 
-					'</div>'					
+			'<div style="color:black;width:'+this.width+'px;height:'+this.height+'px;">' + 
+				getMsg('loading_plugin') + 
+			'</div>'					
 		);
 		// schedule embedding
 		this.selected_player.load(function()
@@ -1735,9 +1737,9 @@ embedVideo.prototype = {
 		});
     },
     doThumbnailHTML:function()
-    {
+    {  	
     	js_log('f:doThumbnailHTML');
-    	  js_log('thum disp:'+this.thumbnail_disp);
+    	js_log('thum disp:'+this.thumbnail_disp);
         this.closeDisplayedHTML();
         this.thumbnail_disp = true;
         var embed_code = this.getThumbnailHTML();              
@@ -1750,14 +1752,19 @@ embedVideo.prototype = {
 		this.paused = true;
         $j("#mv_play_pause_button_"+this.id).attr('class', 'play_button');
     },
-    refreshControlsHTML:function()
-    {
-		js_log('refreshing controls HTML');
+    refreshControlsHTML:function(){
+    	js_log('refreshing controls HTML');
 		if($j('#mv_embedded_controls_'+this.id).length==0)
 		{
 			js_log('#mv_embedded_controls_'+this.id + ' not present, returning');
 			return;
+		}else{
+			$j('#mv_embedded_controls_'+this.id).html( this.getControlsHTML() );
 		}
+    },
+    getControlsHTML:function()
+    {    
+    	//var true_id = (this.pc!=null)?this.pc.pp.id:this.id;				
         var available_width = this.playerPixelWidth();
         var html_code='';
         // borders
@@ -1828,7 +1835,7 @@ embedVideo.prototype = {
             html_code+=
                     '	</div><!--seeker-->';
         }
-        document.getElementById('mv_embedded_controls_'+this.id).innerHTML=html_code;
+        return html_code;
     },
 	inheritEmbedObj:function(ready_callback){
 		js_log("f: inheritEmbedObj");
@@ -1877,47 +1884,44 @@ embedVideo.prototype = {
 	},
 	getHTML : function (){		
 		//check if we have sources avaliable	
-		js_log('f:getHTML');
+		js_log('f:getHTML');		
 		var html_code = '';
+		
         html_code = '<div style="width:'+this.width+'px;" class="videoPlayer">';
-		html_code += '<div id="mv_embedded_player_'+this.id+'"></div>';
+		html_code += '<div id="mv_embedded_player_'+this.id+'">' +
+					this.getThumbnailHTML();  
+				'</div>';
+		
         if(this.controls)
         {
-            html_code += '<div id="mv_embedded_controls_'+this.id+'" class="controls"></div>';
+            html_code += '<div id="mv_embedded_controls_'+this.id+'" class="controls">';
+            html_code += this.getControlsHTML();
+            html_code +=	'</div>';
             var dlLink = 'javascript:$j(\'#'+this.id+'\').get(0).showVideoDownload();';
 			var source_link = 'javascript:$j(\'#'+this.id+'\').get(0).selectPlaybackMethod();';
             var close_link = '$j(\'#mv_embedded_options_'+this.id+'\').hide();';
 
-            html_code += '		<div id="mv_embedded_options_'+this.id+'" class="videoOptions">'
+            html_code += '<div id="mv_embedded_options_'+this.id+'" class="videoOptions">'
 +'				<div class="videoOptionsTop"></div>'
 +'				<div class="videoOptionsBox">'
-
 +'					<div class="block">'
 +'						<h6>Video Options</h6>'
 +'					</div>'
-
 +'					<div class="block">'
-
 +'<p class="short_match"><a href="'+source_link+'" onClick="'+close_link+'"><span><strong>Stream Selection</strong></span></a></p>'
 +'						<p class="short_match"><a href="'+dlLink+'" onClick="'+close_link+'" class="last_match"><span><strong>Download</strong></span></a><p>'
-
 +'					</div>'
-
 +'					<div class="block">'
 +'						<h6>Share or Embed</h6>'
 +'					</div>'
-
-
 +'					<div class="block embed_code">'
 +'						<p class="short_match">'
 +'							<textarea name="embed" id="embed">'+this.getEmbeddingHTML()+'</textarea>'
 +'							<button class="copy_to_clipboard">Copy to Clipboard</button>'
 +'						</p>'
 +'					</div>											'
-
 +'				</div><!--videoOptionsInner-->'
 +'				<div class="videoOptionsBot"></div>'
-
 +'			</div><!--videoOptions-->';
         }
 
@@ -1932,11 +1936,6 @@ embedVideo.prototype = {
 			js_log('activating autoplay');
             this.doEmbedHTML();
 		}
-        else{
-            //if autoplay=false or render out a thumbnail with link to embed html
-            this.doThumbnailHTML();
-        }
-		this.refreshControlsHTML();
 	},
 	/*
 	* get missing plugin html (check for user included code)
@@ -2013,7 +2012,7 @@ embedVideo.prototype = {
 		js_log("PLAY BUTTON: " + this.play_button);
 	    if(this.play_button==true)
 		  	thumb_html+=this.getPlayButton();
-
+22
    	    thumb_html+='</div>';
 	    return thumb_html;
     },
@@ -2350,6 +2349,7 @@ embedVideo.prototype = {
 		//check if thumbnail is being displayed and embed html
 		if(this.thumbnail_disp){			
 			if(!this.selected_player){
+				js_log('no selected_player');
 				//this.innerHTML = this.getPluginMissingHTML();
 				//$j(this).html(this.getPluginMissingHTML());
 				$j('#'+this.id).html(this.getPluginMissingHTML());
@@ -2425,7 +2425,8 @@ embedVideo.prototype = {
 		}
 	},
 	//loads in the css and js for the extended interface (controls = true)
-	get_interface_lib : function(doLoad){
+	//depricated
+	/*get_interface_lib : function(doLoad){
 		//var doLoad = (doLoad==null)? true:doLoad;
 		//js_log('get interface:' + doLoad);
 		var loading_interface =false;
@@ -2448,10 +2449,10 @@ embedVideo.prototype = {
 				return true;
 			}else{
 				//non loading request means time has passed so we need to update the innerHTML
-				doEmbedHTML();
+				this.doEmbedHTML();
 			}
 		}
-	},
+	},*/
 	playlistSupport:function(){
 		//by default not supported (implemented in js)
 		return false;
@@ -2527,8 +2528,8 @@ embedVideo.prototype = {
 		var id = (this.pc)?this.pc.pp.id:this.id;
 		//update status:
 		$j('#mv_time_'+id).html(value);
-	},
-	getControlsHtml : function(type){
+	}
+	/*getControlsHtml : function(type){
 		var id = (this.pc)?this.pc.pp.id:this.id;
 		switch(type){
 			case 'all':
@@ -2576,7 +2577,7 @@ embedVideo.prototype = {
 						'</span>';
 			break;
 		}
-	}
+	}*/
 }
 /* returns html for a transparent png (for ie<7)*/
 function getTransparentPng(image){

@@ -120,8 +120,7 @@ mvPlayList.prototype = {
 		this.getHTML();
 	},
 	//run inheritEmbedObj on every clip (we have changed the playback method) 
-	inheritEmbedObj:function(){
-		inheritEmbedObj
+	inheritEmbedObj:function(){		
 		$j.each(this.tracks, function(i,track){	
 			track.inheritEmbedObj();			
 		});
@@ -225,6 +224,7 @@ mvPlayList.prototype = {
 				if(first_line.indexOf('#EXTM3U')!=-1){
 					this.srcType = 'm3u';
 				}else if(first_line.indexOf('<smil')!=-1){
+					//@@todo parse string
 					this.srcType = 'smil';
 				}
 			}
@@ -255,11 +255,11 @@ mvPlayList.prototype = {
 	makeURLAbsolute:function(){		
 		if(this.src){
 			if(this.src.indexOf('://')==-1){
-				if(this.src.charAt(0)=='/'){
-					var purl = parseUri(mv_embed_path);
-					this.src = purl.protocol + purl.host + this.src;
+				var purl = parseUri(document.URL);			
+				if(this.src.charAt(0)=='/'){						
+					this.src = purl.protocol +'://'+ purl.host + this.src;
 				}else{
-					this.src=mv_embed_path + this.src;				
+					this.src= purl.protocol +'://'+ purl.host + purl.directory + this.src;				
 				}
 			}
 		}
@@ -288,7 +288,35 @@ mvPlayList.prototype = {
 			if(this.default_track.getClipCount()==0){
 				$j(this).html('empty playlist');
 				return ;
-			}			
+			}		
+			$j(this).html('<div id="dc_'+this.id+'" style="border:solid thin;width:'+this.width+'px;' +
+					'height:'+this.height+'px;position:relative;"></div>');
+					
+								
+			var plObj=this;
+			//append all embed details 
+			//@@todo move into trackObj
+			$j.each(this.default_track.clips, function(i, clip){
+				$j('#dc_'+plObj.id).append('<div class="clip_container" id="clipDesc_'+clip.id+'" '+
+					'style="display:none;position:absolute;text-align: center;width:'+plObj.width + 'px;'+
+					'height:'+(plObj.height)+'px;'+
+					'top:27px;left:0px"></div>');	
+				//update the embed html: 					
+				clip.embed.height=plObj.height;
+				clip.embed.width=plObj.width;
+				
+				clip.embed.getHTML();												
+				$j(clip.embed).css({ 'position':"absolute",'top':"0px", 'left':"0px"});					
+				if($j('#clipDesc_'+clip.id).get(0)){
+					$j('#clipDesc_'+clip.id).get(0).appendChild(clip.embed);
+				}else{
+					js_log('cound not find: clipDesc_'+clip.id);					
+				}
+			}); 				
+			if(this.cur_clip)
+				$j('#clipDesc_'+this.cur_clip.id).css({display:'inline'});		
+			
+			
 			/*var sh=Math.round(this.height* pl_layout.seq_title);
 			var ay=Math.round(this.height* pl_layout.clip_desc);
 			//var by=Math.round(this.height* pl_layout.nav);
@@ -297,8 +325,7 @@ mvPlayList.prototype = {
 			
 			//empty out the html and insert the container
 			var cheight =(this.sequencer=='true')?this.height+27:this.height;
-			$j(this).html('<div id="dc_'+this.id+'" style="border:solid thin;width:'+this.width+'px;' +
-					'height:'+cheight+'px;position:relative;"></div>');
+			
 
 			//set up the sequence info link if present
 			js_log('linkback: '+ this.linkback);
@@ -319,33 +346,14 @@ mvPlayList.prototype = {
 			//set title to 'Untitled' (if still missing) 
 			if(!this.title)this.title='Untitled';			
 			
-			//append title container: & info /embed links
-			$j('#dc_'+this.id).append('<span id="ptitle_'+this.id+'" style="height:'+sh+'px" class="pl_desc">'+				
-				'</span>'+ pl_info_link + pl_embed_link);
+			
 								
 			this.updateTitle();
 			//check if we are in sequence mode (for seq layout don't display clips)
 			js_log('seq: ' + this.sequencer);
 			if(this.sequencer=='true'){ //string val
 			*/
-				var plObj=this;
-				//append all embed details 
-				//@@todo move into trackObj
-				$j.each(this.default_track.clips, function(i, clip){
-					$j('#dc_'+plObj.id).append('<div class="clip_container" id="clipDesc_'+clip.id+'" '+
-						'style="display:none;position:absolute;text-align: center;width:'+plObj.width + 'px;'+
-						'height:'+(plObj.height)+'px;'+
-						'top:27px;left:0px"></div>');	
-					//update the embed html: 					
-					clip.embed.height=plObj.height;
-					clip.embed.width=Math.round(plObj.height*pl_layout.clip_aspect);
-					clip.embed.getHTML();								
-					$j(clip.embed).css({ 'position':"absolute",'top':"0px", 'left':"0px"});					
-					if($j('#clipDesc_'+clip.id).get(0))
-						$j('#clipDesc_'+clip.id).get(0).appendChild(clip.embed);
-				}); 				
-				if(this.cur_clip)
-					$j('#clipDesc_'+this.cur_clip.id).css({display:'inline'});		
+				
 			/*}else{																													
 				//append all clip descriptions 
 				this.getAllClipDesc();			
@@ -753,22 +761,25 @@ mvClip.prototype = {
 		var init_pl_embed={id:'e_'+this.id,
 			pc:this, //parent clip
 			src:this.src};
-			
+		
 		this.setBaseEmbedDim(init_pl_embed);
 		//always display controls for playlists: 
 		
 		//if in sequence mode hide controls / embed links 		
 		//			init_pl_embed.play_button=false;
-		init_pl_embed.controls=true;	
-		if(this.pp.sequencer=='true'){
-			init_pl_embed.embed_link=null;	
-			init_pl_embed.linkback=null;	
-		}else{						
+		init_pl_embed.controls=false;	
+		//if(this.pp.sequencer=='true'){
+		init_pl_embed.embed_link=null;	
+		init_pl_embed.linkback=null;	
+		//}else{						
 			//set optional values if present
-			if(this.linkback)init_pl_embed.linkback=this.linkback;
-			if(this.pp.embed_link)init_pl_embed.embed_link=true;
-		}
+		//	if(this.linkback)init_pl_embed.linkback=this.linkback;
+		//	if(this.pp.embed_link)init_pl_embed.embed_link=true;
+		//}
 		if(this.img)init_pl_embed['thumbnail']=this.img;
+		
+		if(this.type)init_pl_embed['type'] = this.type;
+		
 		this.embed = new PlMvEmbed(init_pl_embed);		
 		js_log('type of embed:' + typeof(this.embed) + 'seq:' + this.pp.sequencer+' pb:'+ this.embed.play_button);
 	},
@@ -907,8 +918,10 @@ mvClip.prototype = {
 	},
 	setBaseEmbedDim:function(o){
 		if(!o)o=this;
-		o.height=Math.round(pl_layout.clip_desc*this.pp.height)-2;//give it some padding:
-		o.width=Math.round(o.height*pl_layout.clip_aspect)-2;		
+		//o.height=Math.round(pl_layout.clip_desc*this.pp.height)-2;//give it some padding:
+		//o.width=Math.round(o.height*pl_layout.clip_aspect)-2;
+		o.height=	this.pp.height;
+		o.width =	this.pp.width;	
 	},	
 	/*doRestoreEmbed:function(){
 		//set the th and tw for the 
@@ -1495,7 +1508,7 @@ var mv_supported_media_attr = new Array(
 	'transIn',
 	'transOut',
 	'begin',
-	'fill'	
+	'fill'
 );	
 //all the overwritten and new methods for playlist extension of mv_embed
 mvSMILClip.prototype = {	
@@ -1518,6 +1531,11 @@ mvSMILClip.prototype = {
 				_this[attr]=smil_clip_element.getAttribute(attr);
 		})				
 		this['tagName'] =smil_clip_element.tagName;
+		
+		//mv_embed specific property: 
+		if(smil_clip_element.hasAttribute('poster'))
+			this['img'] = smil_clip_element.getAttribute('poster');
+			
 		//check if the transition is a valid id:		
 		return this;		
 	},
@@ -1596,8 +1614,6 @@ trackObj.prototype = {
 	}
 };			
 	
- 
-
 /* utility functions 
  * (could be combined with other stuff) 
  */
