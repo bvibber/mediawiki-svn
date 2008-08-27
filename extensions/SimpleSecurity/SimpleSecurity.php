@@ -374,9 +374,8 @@ class SimpleSecurity {
 
 	# Updates passed LoadBalancer's DB servers to secure class
 	static function updateLB(&$lb) {
-		global $wgDBtype;
 		$lb->closeAll();
-		foreach ($lb->mServers as $i => $server) $lb->mServers[$i]['type'] = $wgDBtype;
+		foreach ($lb->mServers as $i => $server) $lb->mServers[$i]['type'] = 'SimpleSecurity';
 	}
 }
 
@@ -424,7 +423,7 @@ function wfSimpleSecurityLanguageGetMagic(&$magicWords, $langCode = 0) {
  * Called from $wgExtensionFunctions array when initialising extensions
  */
 function wfSetupSimpleSecurity() {
-	global $wgSimpleSecurity, $wgLanguageCode, $wgMessageCache, $wgSecurityUseDBHook;
+	global $wgSimpleSecurity, $wgLanguageCode, $wgMessageCache, $wgSecurityUseDBHook, $wgLoadBalancer;
 
 	# Instantiate the SimpleSecurity singleton now that the environment is prepared
 	$wgSimpleSecurity = new SimpleSecurity();
@@ -432,7 +431,6 @@ function wfSetupSimpleSecurity() {
 	# If the DB hook couldn't be set up early, do it now
 	# - but now the LoadBalancer exists and must have its DB types changed
 	if ($wgSecurityUseDBHook) {
-		global $wgLoadBalancer;
 		wfSimpleSecurityDBHook();
 		if (function_exists('wfGetLBFactory')) wfGetLBFactory()->forEachLB('SimpleSecurity::updateLB');
 		elseif (is_object($wgLoadBalancer)) SimpleSecurity::updateLB($wgLoadBalancer);
