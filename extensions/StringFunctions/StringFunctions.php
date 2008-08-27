@@ -98,7 +98,7 @@
 
 $wgExtensionCredits['parserhook'][] = array(
 'name'         => 'StringFunctions',
-'version'      => '2.0', // Dec 10, 2007
+'version'      => '2.0.1', // Aug 27, 2008
 'description'  => 'Enhances parser with string functions',
 'author'       => array('Ross McClure', 'Juraj Simlovic'),
 'url'          => 'http://www.mediawiki.org/wiki/Extension:StringFunctions',
@@ -147,6 +147,47 @@ function wfStringFunctionsLanguageGetMagic( &$magicWords, $langCode = "en" ) {
 }
 
 class ExtStringFunctions {
+
+    /**
+     * Returns part of the perl regexp pattern that matches a marker.
+     * Unfortunatelly, we are still backward-supporting old versions.
+     */
+    function mwMarkerRE ( &$parser )
+    {
+        if( isset($parser->mMarkerSuffix) )
+            $suffix = preg_quote( $parser->mMarkerSuffix, '/' );
+        else if ( strcmp( MW_PARSER_VERSION, '1.6.1' ) > 0 )
+            $suffix = "QINU\x07";
+        else $suffix = 'QINU';
+
+    	return preg_quote( $parser->mUniqPrefix, '/' ) . '.*?' . $suffix;
+    }
+
+    /**
+     * {{#len:value}}
+     *
+     * Main idea: Count multibytes. Find markers. Substract.
+     */
+    function runLen ( &$parser, $inStr = '' ) {
+
+	$len = mb_strlen ( (string)$inStr );
+
+	$count = preg_match_all (
+		'/' . $this->mwMarkerRE($parser) . '/',
+		(string) $inStr, $matches
+	);
+
+	foreach ($matches[0] as $match)
+		$len -= strlen ($match) - 1;
+
+        return $len;
+    }
+
+
+
+
+
+
     /**
      * Splits the string into its component parts using preg_match_all().
      * $chars is set to the resulting array of multibyte characters.
@@ -154,24 +195,17 @@ class ExtStringFunctions {
      */
     function mwSplit ( &$parser, $str, &$chars ) {
         # Get marker prefix & suffix
-        $prefix = preg_quote( $parser->mUniqPrefix );
+        $prefix = preg_quote( $parser->mUniqPrefix, '/' );
         if( isset($parser->mMarkerSuffix) )
-            $suffix = preg_quote( $parser->mMarkerSuffix );
+            $suffix = preg_quote( $parser->mMarkerSuffix, '/' );
         else if ( strcmp( MW_PARSER_VERSION, '1.6.1' ) > 0 )
-            $suffix = 'QINU\x07';
+            $suffix = "QINU\x07";
         else $suffix = 'QINU';
 
         # Treat strip markers as single multibyte characters
         $count = preg_match_all('/' . $prefix . '.*?' . $suffix . '|./su', $str, $arr);
         $chars = $arr[0];
         return $count;
-    }
-
-    /**
-     * {{#len:value}}
-     */
-    function runLen ( &$parser, $inStr = '' ) {
-        return $this->mwSplit ( $parser, $inStr, $chars );
     }
 
     /**
