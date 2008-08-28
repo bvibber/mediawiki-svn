@@ -30,8 +30,8 @@ $mvMaxContribPerInterest=300;
 $mvMaxForAgainstBills=100;
 
 
- //returns true if person found in the wiki
- $mv_valid_people_cache = array();
+//returns true if person found in the wiki
+$mv_valid_people_cache = array();
 function mv_is_valid_person($person_key){
 	global $mv_valid_people_cache;
 	if(isset($mv_valid_people_cache[$person_key])){

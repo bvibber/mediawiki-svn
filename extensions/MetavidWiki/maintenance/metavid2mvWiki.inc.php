@@ -263,7 +263,7 @@ function do_annotate_speeches($stream, $force){
 									}
 								}
 								if($doSpeechUpdate){
-									$page_txt = 'Speech By: [[Speech by:='.str_replace('_', ' ', $prev_person).']]';
+									$page_txt = '[[Speech by:='.str_replace('_', ' ', $prev_person).']]';
 									$annoTitle = Title::makeTitle(MV_NS_MVD, 'Anno_en:'.$mvStream->getStreamName().'/'.seconds2ntp($prev_st).'/'.seconds2ntp($prev_et));
 									do_update_wiki_page( $annoTitle, $page_txt);
 								}
