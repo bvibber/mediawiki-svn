@@ -21,7 +21,7 @@
 if (!defined('MEDIAWIKI'))                     die('Not an entry point.');
 if (version_compare($wgVersion, '1.11.0') < 0) die('Sorry, this extension requires at least MediaWiki version 1.11.0');
 
-define('SIMPLESECURITY_VERSION', '4.2.7, 2008-08-28');
+define('SIMPLESECURITY_VERSION', '4.2.8, 2008-08-28');
 
 # Global security settings
 $wgSecurityMagicIf              = "ifusercan";                  # the name for doing a permission-based conditional
@@ -73,8 +73,8 @@ class SimpleSecurity {
 			$wgSecurityRenderInfo, $wgSecurityAllowUnreadableLinks;
 
 		# $wgGroupPermissions has to have its default read entry removed because Title::userCanRead checks it directly
-		#if ($this->default_read = (isset($wgGroupPermissions['*']['read']) && $wgGroupPermissions['*']['read']))
-		#	$wgGroupPermissions['*']['read'] = false;
+		if ($this->default_read = (isset($wgGroupPermissions['*']['read']) && $wgGroupPermissions['*']['read']))
+			$wgGroupPermissions['*']['read'] = false;
 
 		# Add our parser-hooks
 		$wgParser->setFunctionHook($wgSecurityMagicIf, array($this, 'ifUserCan'));
@@ -260,13 +260,13 @@ class SimpleSecurity {
 	 * Validate the passed database row and replace any invalid content
 	 * - called from fetchObject hook whenever a row contains old_text
 	 * - old_id is guaranteed to exist due to patchSQL method
-	 * - bails if sysop or $wgSimpleSecurity doesn't exist yet
+	 * - bails if sysop
 	 */
 	static function validateRow(&$row) {
 		global $wgUser, $wgSimpleSecurity;
 
 		$groups = $wgUser->getEffectiveGroups();
-		if (!is_object($wgSimpleSecurity) || in_array('sysop', $groups)) return;
+		if (in_array('sysop', $groups)) return;
 
 		# Obtain a title object from the old_id
 		$dbr   =& wfGetDB(DB_SLAVE);
@@ -382,11 +382,12 @@ class SimpleSecurity {
  * Hook into Database::query and Database::fetchObject of database instances
  * - this can't be executed from within a method because PHP doesn't like nested class definitions
  * - it needs an eval because the class statement isn't allowed to contain strings
- * - hooks are added in a sub-class of the database type specified in $wgDBtype called DatabaseSecurityXXX
- * - $wgDBtype is then prepended with 'Security' so that new DB instances are based on the sub-class
+ * - the hooks aren't called if $wgSimpleSecurity doesn't exist yet
+ * - hooks are added in a sub-class of the database type specified in $wgDBtype called DatabaseSimpleSecurity
+ * - $wgDBtype is changed so that new DB instances are based on the sub-class
  * - query method is overriden to ensure that old_id field is returned for all queries which read old_text field
+ * - only SELECT statements are ever patched
  * - fetchObject method is overridden to validate row content based on old_id
- * - the changes to this class are only active for SELECT statements and while not processing security directives
  */
 function wfSimpleSecurityDBHook() {
 	global $wgDBtype, $wgSecurityUseDBHook;
@@ -394,13 +395,16 @@ function wfSimpleSecurityDBHook() {
 	$wgDBtype = 'SimpleSecurity';
 	eval("class Database{$wgDBtype} extends Database{$oldDB}".' {
 		public function query($sql, $fname = "", $tempIgnore = false) {
+			global $wgSimpleSecurity;
 			$count = false;
-			$patched = preg_replace_callback("/(?<=SELECT ).+?(?= FROM)/", "SimpleSecurity::patchSQL", $sql, 1, $count);
+			if (is_object($wgSimpleSecurity))
+				$patched = preg_replace_callback("/(?<=SELECT ).+?(?= FROM)/", "SimpleSecurity::patchSQL", $sql, 1, $count);
 			return parent::query($count ? $patched : $sql, $fname, $tempIgnore);
 		}
 		function fetchObject(&$res) {
+			global $wgSimpleSecurity;
 			$row = parent::fetchObject($res);
-			if (isset($row->old_text)) SimpleSecurity::validateRow($row);
+			if (is_object($wgSimpleSecurity) && isset($row->old_text)) SimpleSecurity::validateRow($row);
 			return $row;
 		}
 	}');
