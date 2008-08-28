@@ -106,7 +106,7 @@ class SimpleSecurity {
 			if (empty($v)) $v = ucfirst($k);
 			$wgRestrictionLevels[] = $k;
 			$wgMessageCache->addMessages(array( "protect-level-$k" => $v ));
-			$wgGroupPermissions[$k]['not an action'] = true; # Ensure the new groups show up in rights management
+			$wgGroupPermissions[$k]['not_an_action'] = true; # Ensure the new groups show up in rights management
 		}
 	}
 
