@@ -247,11 +247,15 @@ function mv_edit_submit(){
 	$do_adjust = $wgRequest->getVal('do_adjust');		
 	if($do_adjust=='true'){
 		//first edit then move
-		$outputMVD = $MV_Overlay->do_edit_submit($title, $mvd_id);
+		$outputMVD = $MV_Overlay->do_edit_submit($title, $mvd_id, false);
 		//clear the wgOut var: 
-		$wgOut->clearHTML();			
+		$wgOut->clearHTML();		
 		//do move and display output page 			
-		return $MV_Overlay->do_adjust_submit($wgRequest->getVal('titleKey'), $mvd_id, $wgRequest->getVal('newTitle'), $wgRequest->getVal('wgTitle'), $outputMVD);
+		return $MV_Overlay->do_adjust_submit($wgRequest->getVal('titleKey'), 
+					$mvd_id,
+					$wgRequest->getVal('newTitle'), 
+					$wgRequest->getVal('wgTitle'), 
+					$outputMVD);
 	}else{
 		return $MV_Overlay->do_edit_submit($_POST['title'], $_POST['mvd_id']);
 	}

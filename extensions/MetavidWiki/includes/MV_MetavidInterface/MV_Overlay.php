@@ -124,7 +124,7 @@ $smwgShowFactbox=SMW_FACTBOX_HIDDEN;
 		foreach($mvd_rows as $row){
 			$this->mvd_pages[$row->id]=$row;
 		}
-		print_r($mvd_rows);
+		//print_r($mvd_rows);
 	}
 	/*functions for transcript pages
 	@@TODO OPTIMIZATION: (group article text queries)
@@ -277,11 +277,11 @@ $smwgShowFactbox=SMW_FACTBOX_HIDDEN;
 		$parserOutput = $MvParserCache->get( $mvdArticle, $wgUser );		
 		
 		if ( $parserOutput !== false ) {
-			print "js_log('found in cache: with hash: " . $MvParserCache->getKey( $mvdArticle, $wgUser )."');\n";
+			//print "js_log('found in cache: with hash: " . $MvParserCache->getKey( $mvdArticle, $wgUser )."');\n";
 			//found in cache output and be done with it: 					
 			$wgOut->addParserOutput( $parserOutput );
 		}else{
-			print "js_log('not found in cache');\n";
+			//print "js_log('not found in cache');\n";
 			//print "js_log('titleDB: ".$tsTitle->getDBkey() ."');\n";
 			if($mvdTitle->exists()){	
 				//grab the article text:
@@ -429,8 +429,17 @@ $smwgShowFactbox=SMW_FACTBOX_HIDDEN;
 	}
 	/*return transcript menu*/
 	function get_mvd_menu(&$mvd_page){		
-		global $wgUser, $mvgScriptPath;		
+		global $wgUser, $mvgScriptPath, $wgRequest;		
 		$sk = $wgUser->getSkin();
+		
+		//hack to get menu correct... (previsuly menu was not encapulsated) 
+		$do_adjust = $wgRequest->getVal('do_adjust');				
+		if($do_adjust){
+			$tmpMvPage = new MV_Title($wgRequest->getVal('newTitle'));			
+			$mvd_page->wiki_title = $tmpMvPage->wiki_title;
+			$mvd_page->start_time = ntp2seconds($tmpMvPage->start_time);
+			$mvd_page->end_time	  = ntp2seconds($tmpMvPage->end_time);		
+		}		
 		
 		$out='';
 		//set up links:
@@ -672,7 +681,7 @@ $smwgShowFactbox=SMW_FACTBOX_HIDDEN;
 	//}
 	
 	/*@@TODO document */
-	function do_edit_submit($titleKey, $mvd_id, $returnEncapsulated=false){
+	function do_edit_submit($titleKey, $mvd_id, $returnEncapsulated=false, $newTitleKey=''){
 		global $wgOut, $wgScriptPath, $wgUser, $wgTitle, $wgRequest, $wgContLang;			
 		
 		if($mvd_id=='new'){
@@ -729,7 +738,7 @@ $smwgShowFactbox=SMW_FACTBOX_HIDDEN;
 			//$out = $editPageAjax->getPreviewText();
 			//$wgOut->addHTML($out);			
 			$mvTitle = new MV_Title($wgRequest->getVal('title'));
-				
+			
 			$parserOutput = $this->parse_format_text($wpTextbox1, $mvTitle);
 		
 			$wgOut->addParserOutput($parserOutput);		
@@ -745,9 +754,11 @@ $smwgShowFactbox=SMW_FACTBOX_HIDDEN;
 				//get updated mvd_id: 				
 				$dbr =& wfGetDB(DB_SLAVE);
 				$result = & MV_Index::getMVDbyTitle($titleKey, 'mv_page_id');			
-				$mvd_id = $result->id;															
+				$mvd_id = $result->id;			
+				//update title key
+																
 				
-				//purge cache for parent stream 
+				//purge cache for parent stream and MVD
 				MV_MVD::onEdit($this->mvd_pages, $mvd_id);
 				
 				//return Encapsulated (since its a new mvd)
@@ -888,9 +899,9 @@ $smwgShowFactbox=SMW_FACTBOX_HIDDEN;
 			$wgUser->removeWatch( $ot );
 			$wgUser->removeWatch( $nt );
 		}
-		//purge cache of parent stream: 
+		//purge cache of parent stream & mvd_node: 
 		MV_MVD::onEdit($this->mvd_pages, $mvd_id);
-		MV_MVD::onMove($this->mvd_pages, $mvd_id, $newTitle);
+		//MV_MVD::onMove($this->mvd_pages, $mvd_id, $newTitle);
 		//MV_MVD::disableCache($this->mvd_pages, $mvd_id);
 		
 		//$tsTitle = Title::newFromText( $newTitle, MV_NS_MVD);
