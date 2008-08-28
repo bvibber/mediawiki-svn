@@ -5,9 +5,11 @@
  * - Also adds #ifusercan and #ifgroup parser functions for rendering restriction-based content
  *
  * See http://www.mediawiki.org/Extension:Simple_Security for installation and usage details
- * See http://www.organicdesign.co.nz/Extension_talk:SimpleSecurity4.php for development notes and disucssion
- * Version 4.0.0 started 2007-10-11
- * Version 4.1.0 started 2008-06-12 (development funded for a slimmed down functional version)
+ * See http://www.organicdesign.co.nz/Extension_talk:SimpleSecurity.php for development notes and disucssion
+ * 
+ * Version 4.0 started Oct 2007 - new version for modern MediaWiki's using DatabaseFetchHook
+ * Version 4.1 started Jun 2008 - development funded for a slimmed down functional version
+ * Version 4.2 started Aug 2008 - fattened up a bit again - $wgPageRestrictions and security info added in again
  * 
  * @package MediaWiki
  * @subpackage Extensions
@@ -218,7 +220,6 @@ class SimpleSecurity {
 
 		# Put the anon read right back in $wgGroupPermissions if it was there initially
 		# - it had to be removed because Title::userCanRead short-circuits with it
-		print_r($rights);
 		if ($this->default_read) {
 			$wgGroupPermissions['*']['read'] = true;
 			$rights[] = 'read';
