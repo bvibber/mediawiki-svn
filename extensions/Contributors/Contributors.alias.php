@@ -32,6 +32,11 @@ $aliases['de'] = array(
 	'Contributors' => array( 'Autoren' ),
 );
 
+/** French (Français) */
+$aliases['fr'] = array(
+	'Contributors' => array( 'Contributeurs' ),
+);
+
 /** Croatian (Hrvatski) */
 $aliases['hr'] = array(
 	'Contributors' => array( 'Doprinositelji' ),

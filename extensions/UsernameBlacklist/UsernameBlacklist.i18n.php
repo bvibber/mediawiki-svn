@@ -77,23 +77,24 @@ $messages['ar'] = array(
 );
 
 /** Egyptian Spoken Arabic (مصرى)
+ * @author Meno25
  * @author Ramsis II
  */
 $messages['arz'] = array(
-	'usernameblacklist-desc' => 'بيزود [[MediaWiki:Usernameblacklist| البلاك ليست بتاعة اسامي اليوزرز]] علشان يحدد فتح حسابات لليوزر اللي بتطابق واحد او اكتر من التعابير العادية.',
-	'blacklistedusername' => 'اسم اليوزر في البلاك ليست',
-	'blacklistedusernametext' => 'اسم اليوزر اللي اختارته بيطابق [[MediaWiki:Usernameblacklist|لستة اليوزرز اللي في البلاك ليست]].
+	'usernameblacklist-desc' => 'بيزود [[MediaWiki:Usernameblacklist| البلاك ليست بتاعة اسامى اليوزرز]] علشان يحدد فتح حسابات لليوزر اللى بتطابق واحد او اكتر من التعابير العادية.',
+	'blacklistedusername' => 'اسم اليوزر فى البلاك ليست',
+	'blacklistedusernametext' => 'اسم اليوزر اللى اختارته بيطابق [[MediaWiki:Usernameblacklist|لستة اليوزرز اللى فى البلاك ليست]].
 لو سمحت تختار اسم تاني.',
 	'usernameblacklist' => '<pre>
-# المدخلات اللي في الليستة دي ح تستخدم كجزء من تعبير عادي لما
-# منع اليوزرز اللي في البلاك ليست من التسجيل. كل بند لازم يكون جزء من
+# المدخلات اللى فى الليستة دى ح تستخدم كجزء من تعبير عادى لما
+# منع اليوزرز اللى فى البلاك ليست من التسجيل. كل بند لازم يكون جزء من
 # لستة مترقمة, مثلا
 #
 # * Foo
 # * [Bb]ar
 </pre>',
-	'usernameblacklist-invalid-lines' => 'الـ {{PLURAL:$1|خط دا|خطوط دول}}  اللي في البلاك ليست بتاعة اليوزر{{PLURAL:$1|مش صح|مش صح}} ; لو سمحت تصلح{{PLURAL:$1|ـه|هم}} قبل الحفظ:',
-	'right-uboverride' => 'اتجاوز البلاك ليست بتاعة اسامي اليوزرز',
+	'usernameblacklist-invalid-lines' => 'الـ {{PLURAL:$1|خط دا|خطوط دول}}  اللى فى البلاك ليست بتاعة اليوزر{{PLURAL:$1|مش صح|مش صح}} ; لو سمحت تصلح{{PLURAL:$1|ـه|هم}} قبل الحفظ:',
+	'right-uboverride' => 'اتجاوز البلاك ليست بتاعة اسامى اليوزرز',
 );
 
 /** Asturian (Asturianu)

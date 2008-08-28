@@ -42,7 +42,7 @@ $aliases['as'] = array(
 
 /** Southern Balochi (بلوچی مکرانی) */
 $aliases['bcc'] = array(
-	'Configure'  => array( 'تنظیم' ),
+	'Configure' => array( 'تنظیم' ),
 	'ViewConfig' => array( 'چارگ تنظیم' ),
 );
 
@@ -62,7 +62,7 @@ $aliases['de'] = array(
 
 /** Lower Sorbian (Dolnoserbski) */
 $aliases['dsb'] = array(
-	'Configure'  => array( 'Konfigurěrowaś' ),
+	'Configure' => array( 'Konfigurěrowaś' ),
 	'ViewConfig' => array( 'Konfiguraciju pokazaś' ),
 );
 
@@ -107,7 +107,7 @@ $aliases['hr'] = array(
 
 /** Haitian (Kreyòl ayisyen) */
 $aliases['ht'] = array(
-	'Configure'  => array( 'Konfigire' ),
+	'Configure' => array( 'Konfigire' ),
 	'Extensions' => array( 'Extansyon' ),
 	'ViewConfig' => array( 'WèKonfig' ),
 );
@@ -166,14 +166,14 @@ $aliases['no'] = array(
 
 /** Portuguese (Português) */
 $aliases['pt'] = array(
-	'Configure'  => array( 'Configurar' ),
+	'Configure' => array( 'Configurar' ),
 	'Extensions' => array( 'Extenções' ),
 	'ViewConfig' => array( 'Ver configurações', 'Ver configuração' ),
 );
 
 /** Brazilian Portuguese (Português do Brasil) */
 $aliases['pt-br'] = array(
-	'Configure'  => array( 'Configurar' ),
+	'Configure' => array( 'Configurar' ),
 	'Extensions' => array( 'Extenções' ),
 	'ViewConfig' => array( 'Ver configurações', 'Ver configuração' ),
 );

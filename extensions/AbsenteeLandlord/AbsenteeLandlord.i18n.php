@@ -30,11 +30,12 @@ $messages['ar'] = array(
 );
 
 /** Egyptian Spoken Arabic (مصرى)
+ * @author Meno25
  * @author Ramsis II
  */
 $messages['arz'] = array(
-	'absenteelandlord-reason' => 'قاعدة البيانات اتقفلت  أوتوماتيكي علشان الاداريين مش  بيشتغلو',
-	'absenteelandlord-desc' => 'قاعدة بيانات الويكي بتتقفل اوتوماتيكي لو كل الاداريين ما اشتغلو ش لفترة معينة',
+	'absenteelandlord-reason' => 'قاعدة البيانات اتقفلت  أوتوماتيكى علشان الاداريين مش  بيشتغلو',
+	'absenteelandlord-desc' => 'قاعدة بيانات الويكى بتتقفل اوتوماتيكى لو كل الاداريين ما اشتغلوش لفترة معينة',
 );
 
 /** Asturian (Asturianu)
@@ -158,6 +159,14 @@ $messages['fy'] = array(
 $messages['gl'] = array(
 	'absenteelandlord-reason' => 'A base de datos foi fechada automaticamente debido á inactividade por parte dos administradores.',
 	'absenteelandlord-desc' => 'Fecha automaticamente a base de datos wiki se todos os administradores están inactivos durante algún tempo',
+);
+
+/** Hawaiian (Hawai`i)
+ * @author Singularity
+ */
+$messages['haw'] = array(
+	'absenteelandlord-reason' => 'Ua kī aku hana nona iho ‘ia ka hōkeo ‘ikepili no ka mea o ka noho wale o nā kahu.',
+	'absenteelandlord-desc' => 'Inā e noho wale nā kahu no kekahi manawa, e kī aku hana nona iho i ka hōkeo ‘ikepili',
 );
 
 /** Hebrew (עברית)

@@ -37,6 +37,13 @@ $messages['bg'] = array(
 	'googleadsense-desc' => 'Добавя [http://www.google.com/adsense Google AdSense] в страничната лента',
 );
 
+/** German (Deutsch)
+ * @author MichaelFrey
+ */
+$messages['de'] = array(
+	'googleadsense-desc' => 'Fügt [http://www.google.com/adsense Google AdSense] zur Sidebar hinzu',
+);
+
 /** Finnish (Suomi)
  * @author Str4nd
  */

@@ -248,12 +248,14 @@ $messages['it'] = array(
 );
 
 /** Japanese (日本語)
+ * @author Aotake
  * @author Muttley
  */
 $messages['ja'] = array(
 	'simpleantispam' => 'SPAM防止機能が有効になりました',
 	'simpleantispam-label' => "SPAM防止チェックです。
 決してここに値を入力'''しない'''でください。",
+	'simpleantispam-desc' => 'フォームに簡単なスパム・ボットチェックを追加',
 );
 
 /** Ripoarisch (Ripoarisch)

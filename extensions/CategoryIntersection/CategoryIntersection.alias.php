@@ -32,12 +32,14 @@ $aliases['as'] = array(
 	'CategoryIntersection' => array( 'শ্ৰেণী ইণ্টাৰচেকচন্' ),
 );
 
+/** Breton (Brezhoneg) */
 $aliases['br'] = array(
-	'CategoryIntersection'=> array( 'Kengej rummadoù' ),
+	'CategoryIntersection' => array( 'Kengej rummadoù' ),
 );
 
+/** Catalan (Català) */
 $aliases['ca'] = array(
-	'CategoryIntersection'=> array( 'Intersecció de categories' ),
+	'CategoryIntersection' => array( 'Intersecció de categories' ),
 );
 
 /** Czech (Česky) */
@@ -50,8 +52,9 @@ $aliases['de'] = array(
 	'CategoryIntersection' => array( 'Kategorien-Schnittmenge' ),
 );
 
+/** Lower Sorbian (Dolnoserbski) */
 $aliases['dsb'] = array(
-	'CategoryIntersection'=> array( 'Zhromadna młogosć kategorijow' ),
+	'CategoryIntersection' => array( 'Zhromadna młogosć kategorijow' ),
 );
 
 /** Esperanto (Esperanto) */
@@ -69,8 +72,9 @@ $aliases['gl'] = array(
 	'CategoryIntersection' => array( 'Intersección de categorías' ),
 );
 
+/** Hindi (हिन्दी) */
 $aliases['hi'] = array(
-	'CategoryIntersection'=> array( 'श्रेणी इन्टरसेक्शन' ),
+	'CategoryIntersection' => array( 'श्रेणी इन्टरसेक्शन' ),
 );
 
 $aliases['hsb'] = array(
@@ -101,8 +105,9 @@ $aliases['lb'] = array(
 	'CategoryIntersection' => array( 'Iwwerschneide vu Kategorien' ),
 );
 
+/** Marathi (मराठी) */
 $aliases['mr'] = array(
-	'CategoryIntersection'=> array( 'वर्ग चौक' ),
+	'CategoryIntersection' => array( 'वर्ग चौक' ),
 );
 
 /** Nedersaksisch (Nedersaksisch) */
@@ -130,12 +135,14 @@ $aliases['pl'] = array(
 	'CategoryIntersection' => array( 'Część wspólna kategorii' ),
 );
 
+/** Portuguese (Português) */
 $aliases['pt'] = array(
-	'CategoryIntersection'=> array( 'Intersecção de categorias' ),
+	'CategoryIntersection' => array( 'Intersecção de categorias' ),
 );
 
+/** Romanian (Română) */
 $aliases['ro'] = array(
-	'CategoryIntersection'=> array( 'Intersecţia categoriilor' ),
+	'CategoryIntersection' => array( 'Intersecţia categoriilor' ),
 );
 
 /** Russian (Русский) */
@@ -152,12 +159,14 @@ $aliases['sk'] = array(
 	'CategoryIntersection' => array( 'Prienik kategórií' ),
 );
 
+/** Seeltersk (Seeltersk) */
 $aliases['stq'] = array(
-	'CategoryIntersection'=> array( 'Kategorien-Snitboudel' ),
+	'CategoryIntersection' => array( 'Kategorien-Snitboudel' ),
 );
 
+/** Sundanese (Basa Sunda) */
 $aliases['su'] = array(
-	'CategoryIntersection'=> array( 'Pasampangan kategori' ),
+	'CategoryIntersection' => array( 'Pasampangan kategori' ),
 );
 
 /** Swedish (Svenska) */
@@ -165,12 +174,14 @@ $aliases['sv'] = array(
 	'CategoryIntersection' => array( 'Kategorisnitt' ),
 );
 
+/** Telugu (తెలుగు) */
 $aliases['te'] = array(
-	'CategoryIntersection'=> array( 'వర్గం ఖండన' ),
+	'CategoryIntersection' => array( 'వర్గం ఖండన' ),
 );
 
+/** Ukrainian (Українська) */
 $aliases['uk'] = array(
-	'CategoryIntersection'=> array( 'Перетин категорій' ),
+	'CategoryIntersection' => array( 'Перетин категорій' ),
 );
 
 /** Vietnamese (Tiếng Việt) */

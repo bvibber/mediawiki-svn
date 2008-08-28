@@ -378,6 +378,7 @@ $2',
 $allMessages['es'] = array(
 	'whitelisttablemodifyall' => 'Todos',
 	'whitelisttablemodifynone' => 'Ninguno',
+	'whitelisttableedit' => 'Editar',
 );
 
 /** French (Français)

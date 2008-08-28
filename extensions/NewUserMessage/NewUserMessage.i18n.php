@@ -60,6 +60,7 @@ $messages['bg'] = array(
  */
 $messages['cs'] = array(
 	'newusermessage-desc' => 'Přidává zprávu na diskusní stránky nově vytvořených uživatelů',
+	'newuseredit-summary' => 'Přidání [[{{int:newusermessage-template}}|uvítací zprávy]] na diskusní stránku nového uživatele',
 );
 
 /** German (Deutsch)
@@ -323,6 +324,7 @@ $messages['te'] = array(
  */
 $messages['vec'] = array(
 	'newusermessage-desc' => 'Zonta un messagio a le pagine de discussion dei utenti novi',
+	'newuseredit-summary' => "Zonto un [[{{MediaWiki:Newusermessage-template}}|mesajo de benvegnù]] a la pàxena de discussion de 'l novo utente",
 );
 
 /** Vietnamese (Tiếng Việt)

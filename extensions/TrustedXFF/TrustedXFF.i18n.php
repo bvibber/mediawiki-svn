@@ -72,6 +72,13 @@ $messages['it'] = array(
 	'trustedxff-desc' => 'Gestione di un elenco di indirizzi proxy fidati ([http://meta.wikimedia.org/wiki/XFF_project progetto XFF])',
 );
 
+/** Japanese (日本語)
+ * @author Aotake
+ */
+$messages['ja'] = array(
+	'trustedxff-desc' => '信頼できるプロキシアドレス一覧の管理 ([http://meta.wikimedia.org/wiki/XFF_project XFF project])',
+);
+
 /** Ripoarisch (Ripoarisch)
  * @author Purodha
  */
@@ -93,6 +100,13 @@ $messages['nl'] = array(
 	'trustedxff-desc' => 'Beheert een lijst met adressen van vertrouwde proxyservers ([http://meta.wikimedia.org/wiki/XFF_project XFF-project])',
 );
 
+/** Occitan (Occitan)
+ * @author Cedric31
+ */
+$messages['oc'] = array(
+	'trustedxff-desc' => 'Gestion d’una tièra d’adreças de servidors mandataris de fisança ([http://meta.wikimedia.org/wiki/XFF_project projet XFF])',
+);
+
 /** Russian (Русский)
  * @author Александр Сигачёв
  */
@@ -112,5 +126,12 @@ $messages['sk'] = array(
  */
 $messages['sv'] = array(
 	'trustedxff-desc' => 'Behandlar en lista över troliga proxyadresser ([http://meta.wikimedia.org/wiki/XFF_project XFF-projektet])',
+);
+
+/** Vèneto (Vèneto)
+ * @author Candalua
+ */
+$messages['vec'] = array(
+	'trustedxff-desc' => 'Gestion de un elenco de indirissi proxy de cui se pol fidarse ([http://meta.wikimedia.org/wiki/XFF_project progeto XFF])',
 );
 

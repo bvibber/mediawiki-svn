@@ -609,7 +609,7 @@ Provu la lastan version de <a href="http://www.microsoft.com/ie">Interreta Esplo
 	'gm-tab' => 'Langeto',
 	'gm-start-path' => 'komencigu vojon',
 	'gm-trace-area' => 'limdifinu areon',
-	'gm-save-point' => 'konservu & fermu',
+	'gm-save-point' => 'konservi & fermi',
 	'gm-load-map-from-article' => 'Ŝarĝu mapon de la paĝo',
 	'gm-no-maps' => 'Neniuj mapoj en ĉi tiu paĝo ŝarĝi.',
 	'gm-refresh-list' => 'Refreŝigu liston',
@@ -649,7 +649,7 @@ Provu la lastan version de <a href="http://www.microsoft.com/ie">Interreta Esplo
 	'gm-color-path' => 'ŝanĝu koloron',
 	'gm-color-fill' => 'ŝanĝu plenigan koloron',
 	'gm-add-fill' => 'plenigu areon',
-	'gm-remove-fill' => 'forigu plenigon',
+	'gm-remove-fill' => 'forigi plenigon',
 	'gm-fill-color' => 'Pleniga koloro',
 	'gm-line-color' => 'Linia koloro',
 	'gm-opacity' => 'Travidebleco',
@@ -966,6 +966,7 @@ $wgGoogleMapsMessages['fo'] = array(
  * @author Meithal
  * @author Sherbrooke
  * @author Urhixidur
+ * @author Zetud
  */
 $wgGoogleMapsMessages['fr'] = array(
 	'gm-incompatible-browser' => 'Pour voir la carte qui devrait être dans cet espace, utilisez un <a href="http://local.google.com/support/bin/answer.py?answer=16532&amp;topic=1499">navigateur compatible</a>.',
@@ -973,7 +974,7 @@ $wgGoogleMapsMessages['fr'] = array(
 	'gm-no-editor' => 'Malheureusement, votre navigateur ne supporte pas la création interactive de carte. Essayez d’installer la dernière version de <a href="http://www.mozilla.org/products/firefox">Firefox</a> (Windows, Mac, and Linux) ou au pire <a href="http://www.microsoft.com/ie">Internet Explorer</a> (Windows)',
 	'gm-balloon-title' => 'Titre :',
 	'gm-balloon-link-article' => 'Lien vers cette page (optionnel) :',
-	'gm-make-marker' => 'Légende (wiki annotation OK):',
+	'gm-make-marker' => 'Légende (wiki annotation OK) :',
 	'gm-remove' => 'Enlever',
 	'gm-caption' => 'Légende',
 	'gm-tab-title' => "Titre de l'onglet",
@@ -981,7 +982,7 @@ $wgGoogleMapsMessages['fr'] = array(
 	'gm-start-path' => 'Démarrer le trajet',
 	'gm-trace-area' => 'tracer une zone',
 	'gm-save-point' => 'enregistrer et fermer',
-	'gm-load-map-from-article' => "Charger une carte de l'article:",
+	'gm-load-map-from-article' => "Charger une carte de l'article :",
 	'gm-no-maps' => 'Pas de carte dans cet article à charger.',
 	'gm-refresh-list' => 'Mettre à jour la liste',
 	'gm-load-map' => 'Charger la carte',
@@ -1006,7 +1007,7 @@ $wgGoogleMapsMessages['fr'] = array(
 	'gm-no-zoom-control' => 'Non',
 	'gm-yes' => 'Oui',
 	'gm-no' => 'Non',
-	'gm-search-preface' => 'Cliquez sur la carte pour ajouter un point ou pour se déplacer vers une ville, un pays, une adresse ou une entreprise :',
+	'gm-search-preface' => 'Cliquez sur la carte pour ajouter un point ou pour vous déplacer vers une ville, un pays, une adresse ou une entreprise :',
 	'gm-geocode-preface' => 'Cliquez sur la carte pour ajouter un point, ou pour aller vers une ville, un pays ou une adresse :',
 	'gm-no-search-preface' => 'Cliquez sur la carte pour ajouter un point.',
 	'gm-search' => 'Rechercher',

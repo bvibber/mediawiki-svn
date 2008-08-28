@@ -53,8 +53,9 @@ $messages['eo'] = array(
  */
 $messages['fr'] = array(
 	'rightfunctions-desc' => 'Permissions de base des fonctions parseurs',
-	'rightfunctions-restboth' => '$1 (à partir de la page locale), $2 (à partir des sources en cascade)',
-	'rightfunctions-restcasc' => '$1 (à partir des sources en cascade)',
+	'rightfunctions-casc' => '(depuis les sources en cascade)',
+	'rightfunctions-local' => '(depuis une page locale)',
+	'rightfunctions-ns' => '(depuis la protection des espaces de nom)',
 );
 
 /** Galician (Galego)
@@ -133,8 +134,9 @@ $messages['no'] = array(
  */
 $messages['oc'] = array(
 	'rightfunctions-desc' => 'Permissions de basa de las foncions parsaires',
-	'rightfunctions-restboth' => '$1 (a partir de la pagina locala), $2 (a partir de las fonts en cascada)',
-	'rightfunctions-restcasc' => '$1 (a partir de las fonts en cascada)',
+	'rightfunctions-casc' => '(dempuèi las fonts en cascada)',
+	'rightfunctions-local' => '(dempuèi una pagina locala)',
+	'rightfunctions-ns' => '(dempuèi la proteccion dels espacis de nom)',
 );
 
 /** Polish (Polski)
@@ -171,8 +173,7 @@ $messages['sk'] = array(
  */
 $messages['sv'] = array(
 	'rightfunctions-desc' => 'Parserfunktioner som är baserade på användarrättigheter',
-	'rightfunctions-restboth' => '$1 (från lokal sida), $2 (från kaskaderade källor)',
-	'rightfunctions-restcasc' => '$1 (från kaskaderade källor)',
+	'rightfunctions-local' => '(från lokal sida)',
 );
 
 /** Vietnamese (Tiếng Việt)

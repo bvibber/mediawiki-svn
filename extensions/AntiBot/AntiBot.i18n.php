@@ -128,6 +128,13 @@ $messages['id'] = array(
 	'antibot-desc' => 'Kerangka kerja sederhana untuk memeriksa spambot dan alat pemicu',
 );
 
+/** Japanese (日本語)
+ * @author Aotake
+ */
+$messages['ja'] = array(
+	'antibot-desc' => 'スパムボットをチェックする簡単なフレームワークとトリガーのペイロード',
+);
+
 /** Ripoarisch (Ripoarisch)
  * @author Purodha
  */

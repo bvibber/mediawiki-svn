@@ -262,6 +262,15 @@ $messages['sk'] = array(
 	'whatismyip-out' => 'Vaša IP:',
 );
 
+/** Sundanese (Basa Sunda)
+ * @author Irwangatot
+ */
+$messages['su'] = array(
+	'whatismyip' => 'Naon IP kuring',
+	'whatismyip-desc' => 'Tembongkeun alamat IP pamaké ayeuna di [[Special:Whatismyip]]',
+	'whatismyip-out' => 'IP Anjeun :',
+);
+
 /** Swedish (Svenska)
  * @author M.M.S.
  */

@@ -756,9 +756,11 @@ $messages['eo'] = array(
 
 /** Spanish (Español)
  * @author Jatrobat
+ * @author Sanbec
  */
 $messages['es'] = array(
 	'mv_tool_search' => 'Buscar',
+	'mv_edit' => 'Editar',
 );
 
 /** French (Français)

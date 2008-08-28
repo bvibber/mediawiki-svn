@@ -26,10 +26,11 @@ $messages['ar'] = array(
 );
 
 /** Egyptian Spoken Arabic (مصرى)
+ * @author Meno25
  * @author Ramsis II
  */
 $messages['arz'] = array(
-	'universaleditbutton-desc' => 'بيضيف HTML هيدير <code>&lt;link&gt;</code> علشان يدعم  زرار التعديل العالمي لامتداد البراوزر',
+	'universaleditbutton-desc' => 'بيضيف HTML هيدير <code>&lt;link&gt;</code> علشان يدعم  زرار التعديل العالمى لامتداد البراوزر',
 );
 
 /** Asturian (Asturianu)
@@ -128,6 +129,13 @@ $messages['id'] = array(
  */
 $messages['it'] = array(
 	'universaleditbutton-desc' => 'Aggiunge l\'header HTML <code>&lt;link&gt;</code> per supportare l\'estensione del browser "Universal Edit Button browser"',
+);
+
+/** Japanese (日本語)
+ * @author Aotake
+ */
+$messages['ja'] = array(
+	'universaleditbutton-desc' => 'ブラウザのユニバーサル編集ボタン拡張機能をサポートするHTMLヘッダ <code>&lt;link&gt;</code> を追加する',
 );
 
 /** Ripoarisch (Ripoarisch)

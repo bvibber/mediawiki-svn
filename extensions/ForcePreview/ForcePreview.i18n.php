@@ -63,7 +63,7 @@ $messages['de'] = array(
  */
 $messages['eo'] = array(
 	'forcepreview' => 'Konservu paĝon (post rigardanta ĝin)',
-	'forcepreview-desc' => 'Devigu antaŭrigardon por senrajtajn uzantojn',
+	'forcepreview-desc' => 'Devigi antaŭrigardon por senrajtajn uzantojn',
 );
 
 /** Finnish (Suomi)

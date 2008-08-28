@@ -183,6 +183,7 @@ $messages['ar'] = array(
 
 /** Egyptian Spoken Arabic (مصرى)
  * @author Ghaly
+ * @author Meno25
  * @author Ramsis II
  */
 $messages['arz'] = array(
@@ -195,8 +196,8 @@ $messages['arz'] = array(
 	'ogg-player-videoElement' => 'دعم البراوزر الاصلي',
 	'ogg-player-oggPlugin' => 'اضافة براوزر',
 	'ogg-player-cortado' => 'كورتادو (جافا)',
-	'ogg-player-vlc-mozilla' => 'في إل سي',
-	'ogg-player-vlc-activex' => 'في إل سي (أكتيف إكس)',
+	'ogg-player-vlc-mozilla' => 'فى إل سي',
+	'ogg-player-vlc-activex' => 'فى إل سى (أكتيف إكس)',
 	'ogg-player-quicktime-mozilla' => 'كويك تايم',
 	'ogg-player-quicktime-activex' => 'كويك تايم (أكتيف إكس)',
 	'ogg-player-totem' => 'توتيم',

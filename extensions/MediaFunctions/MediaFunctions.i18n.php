@@ -68,6 +68,15 @@ $messages['eo'] = array(
 	'mediafunctions-not-exist' => '"$1" ne ekzistas',
 );
 
+/** Spanish (Español)
+ * @author Sanbec
+ */
+$messages['es'] = array(
+	'mediafunctions-desc' => 'Funciones para obtener información sobre ficheros de imagen y sonido',
+	'mediafunctions-invalid-title' => '«$1» no es un título válido',
+	'mediafunctions-not-exist' => '«$1» no existe',
+);
+
 /** French (Français)
  * @author Grondin
  * @author Sherbrooke

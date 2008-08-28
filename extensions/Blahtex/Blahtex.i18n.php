@@ -1889,6 +1889,54 @@ Fersäik wiedere swoangene Klammere „{ … }“ ientouföigjen, uum ju Iengoaw
 	'math_CasesRowTooBig' => 'Dät kon pro Riege fon n "cases"-Blok bloot twäin Iendraage reeke',
 	'math_IllegalCharacter' => 'Uungultich Teeken in ju Iengoawe',
 	'math_IllegalCommandInMathMode' => 'In dän mathematisken Modus is ju Anwiesenge „$1“ nit ferlööwed',
+	'math_IllegalCommandInMathModeWithHint' => 'In dän mathematiske Modus is ju Anwiesenge „$1“ nit ferlööwed.
+Fielicht maist du „$2“ insteede deerfon ferweende?',
+	'math_IllegalCommandInTextMode' => 'In dän Textmodus is ju Anwiesenge „$1“ nit ferlööwed',
+	'math_IllegalCommandInTextModeWithHint' => 'In dän Textmodus is ju Anwiesenge „$1“ nit ferlööwed.
+Fielicht maist du „$2“ insteede deerfon ferweende?',
+	'math_IllegalDelimiter' => 'Uungultich Tränteeken bääte "$1"',
+	'math_IllegalFinalBackslash' => 'Uungultigen Backslash „\\“ ap Eende fon ju Iengoawe',
+	'math_IllegalNestedFontEncodings' => 'Teekenkodierengsanwiesengen konnen nit schachteld wäide',
+	'math_IllegalRedefinition' => 'Ju Anwiesenge „$1“ wuud al definierd. Du koast se nit uurschrieuwe',
+	'math_InvalidColour' => 'Ju Faawe „$1“ is nit gultich',
+	'math_InvalidUtf8Input' => 'Ju Iengoawe is neen gultige UTF-8-Teekenkätte',
+	'math_LatexFontNotSpecified' => 'Der wuud neen LaTeX-Schriftoard foar „$1” anroat',
+	'math_LatexPackageUnavailable' => 'Ju PNG kuud nit moaked wäide, deeruum dät dät LaTeX-Paket „$1“ nit ferföigboar is',
+	'math_MismatchedBeginAndEnd' => 'Ju eepenjende Anwiesenge „$1“ äntspräkt nit ju sluutende „$2“',
+	'math_MisplacedLimits' => 'Ju Anwiesenge „$1“ kon bloot bääte n mathematisken Operator foarkuume.
+Uurlääs et die „\\mathop“ tou ferweenden.',
+	'math_MissingCommandAfterNewcommand' => 'Failjenden of uungultigen Befeelsnoome ätter "\\newcommand".
+Der mout genau n Befeel definierd wäide;
+hie mout mäd n uumekierden Scheeuwstriek (Backslash) "\\" ounfange un duur bloot alphabetiske Teekene änthoolde.',
+	'math_MissingDelimiter' => 'Failjend Tränteeken bääte „$1“',
+	'math_MissingOpenBraceAfter' => 'Eepenjende Klammer „{“ bääte „$1“ failt',
+	'math_MissingOpenBraceAtEnd' => 'Eepenjende Klammer „{“ ap Eende fon ju Iengoawe failt',
+	'math_MissingOpenBraceBefore' => 'Eepenjende Klammer „{“ foar „$1“ failt',
+	'math_MissingOrIllegalParameterCount' => 'Failjende of uungultige Parametertaal in ju Definition fon „$1“.
+Dät mout ne eenpelde Ziffer twiske iensluutend 1 un 9 weese.',
+	'math_MissingOrIllegalParameterIndex' => 'Failjenden of falsken Parameterindex in ju Definition fon „$1“',
+	'math_NonAsciiInMathMode' => 'Sunnerteekene (Nit-ASCII-Teekene) duuren bloot in dän Textmodus ferwoand wäide. 
+Fersäik do problematiske Teekene in „\\text{…}“ ientousluuten.',
+	'math_NotEnoughArguments' => 'Der wuuden nit genöigend Parametere foar „$1“ uurroat',
+	'math_PngIncompatibleCharacter' => 'PNG mäd dät Teeken $1 kon nit failerfräi generierd wäide',
+	'math_ReservedCommand' => 'Ju Anwiesenge „$1“ is foar ju interne Ferweendenge in blahtex reservierd',
+	'math_SubstackRowTooBig' => 'Pro Riege fon n „substack“-Blok duur et aan Iendraach reeke',
+	'math_TooManyMathmlNodes' => 'Die MathML-Feroarbaidengsboom änthaalt tou fuul Knätte',
+	'math_TooManyTokens' => 'Ju Iengoawe is tou loang',
+	'math_UnavailableSymbolFontCombination' => 'Dät Symbol „$1“ is in ju Schriftoard „$2“ nit foarhounden',
+	'math_UnexpectedNextCell' => 'Ju Anwiesenge „&amp;“ kon bloot twiske in n „\\begin … \\block“-Blok stounde',
+	'math_UnexpectedNextRow' => 'Ju Anwiesenge „\\\\“ kon bloot twiske in n „\\begin … \\block“-Blok stounde',
+	'math_UnmatchedBegin' => '„\\begin“ sunner touheerend „\\end“',
+	'math_UnmatchedCloseBrace' => 'Sluutende Klammer „}” sunner touheerige eepenjende Klammer „{”',
+	'math_UnmatchedEnd' => '„\\end” sunner touheerich „\\begin”',
+	'math_UnmatchedLeft' => '„\\left” sunner touheerich „\\right”',
+	'math_UnmatchedOpenBrace' => 'Eepenjende Klammer „{” sunner touheerige sluutende Klammer „}”',
+	'math_UnmatchedOpenBracket' => 'Eepenjende Klammer „[” sunner touheerige sluutende Klammer „]”',
+	'math_UnmatchedRight' => '„\\right” sunner touheerich „\\left”',
+	'math_UnrecognisedCommand' => 'Uunbekoande Anwiesenge „$1“',
+	'math_WrongFontEncoding' => 'Dät Symbol „$1“ duur in ju Teekenkodierenge „$2“ nit foarkuume',
+	'math_WrongFontEncodingWithHint' => 'Dät Symbol „$1“ duur in ju Teekenkodierenge „$2“ nit foarkuume. 
+Probier ju Anwiesenge „$3{…}“ uut.',
 );
 
 /** Sundanese (Basa Sunda)

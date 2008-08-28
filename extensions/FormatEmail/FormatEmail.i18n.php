@@ -81,11 +81,13 @@ $messages['fa'] = array(
 $2',
 );
 
-/** French (Français) */
+/** French (Français)
+ * @author Zetud
+ */
 $messages['fr'] = array(
 	'email-desc' => 'Permet l’ajout d’en-têtes ou de pieds de page personnalisés dans les courriels expédiés aux utilisateurs disposant d’une adresse électronique.',
 	'email_footer' => '----------------------------------------------------------------------------
-Ce courrier a vous a été envoyé grâce au systeme de messagerie de {{SITENAME}} par $1.
+Ce courrier vous a été envoyé grâce au système de messagerie de {{SITENAME}} par $1.
 
 $2',
 );

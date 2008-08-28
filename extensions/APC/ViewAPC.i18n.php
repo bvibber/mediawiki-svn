@@ -608,6 +608,13 @@ Die neuere Version $2 steht auf http://pecl.php.net/package/APC/$2 zum Download 
 	'viewapc-usercache-cleared' => "'''''Anwendungs-Cache geleert.'''''",
 );
 
+/** German (formal address) (Deutsch (Sie-Form))
+ * @author MichaelFrey
+ */
+$messages['de-formal'] = array(
+	'viewapc-clear-confirm' => 'Möchten Sie den Cache leeren?',
+);
+
 /** Greek (Ελληνικά)
  * @author Consta
  */

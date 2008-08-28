@@ -47,12 +47,13 @@ $messages['ar'] = array(
 );
 
 /** Egyptian Spoken Arabic (مصرى)
+ * @author Meno25
  * @author Ramsis II
  */
 $messages['arz'] = array(
-	'ajax-se-desc' => 'بيبين اليوزرز اللي بيعدلو الصفحة نفسيها',
+	'ajax-se-desc' => 'بيبين اليوزرز اللى بيعدلو الصفحة نفسيها',
 	'ajax-se-title' => 'بيعدل دلوقتي:',
-	'ajax-se-pending' => ' التحديث متعلق ... (دوس على  الصندوق دا أو ابتدي في التحرير)',
+	'ajax-se-pending' => ' التحديث متعلق ... (دوس على  الصندوق دا أو ابتدى فى التحرير)',
 	'ajax-se-idling' => '($1s من)',
 	'ajax-se-pagedoesnotexist' => 'الصفحة مش موجودة',
 	'ajax-se-userinvalid' => 'غلط : اليوزر مش صحيح',

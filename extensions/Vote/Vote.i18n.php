@@ -105,13 +105,14 @@ $messages['ar'] = array(
 );
 
 /** Egyptian Spoken Arabic (مصرى)
+ * @author Meno25
  * @author Ramsis II
  */
 $messages['arz'] = array(
 	'vote' => 'تصويت',
-	'vote-header' => "أنت ممكن هنا تدي صوتك لانتخاب '''أعظم ريس في الدنيا دي كلها'''",
-	'vote-current' => ".'''$1'''انت بتدي صوتك لـ",
-	'vote-legend' => 'ادي صوتك أو عدل فيه',
+	'vote-header' => "أنت ممكن هنا تدى صوتك لانتخاب '''أعظم ريس فى الدنيا دى كلها'''",
+	'vote-current' => ".'''$1'''انت بتدى صوتك لـ",
+	'vote-legend' => 'ادى صوتك أو عدل فيه',
 	'vote-caption' => 'انت اخترت:',
 	'vote-choices' => 'جوكر|الجوكر
 بطريق|البطريق
@@ -122,7 +123,7 @@ $messages['arz'] = array(
 	'vote-results' => 'نتايج التصويت',
 	'vote-results-choice' => 'الاختيار',
 	'vote-results-count' => 'العدد',
-	'vote-results-none' => 'ماحدش ادى صوته في الوقت دا',
+	'vote-results-none' => 'ماحدش ادى صوته فى الوقت دا',
 	'vote-login' => 'لازم تكون $1 علشان تصوت.',
 	'vote-login-link' => 'دخول',
 	'vote-invalid-choice' => 'لازم تختار واحد من الاختيارات  الموجودة',

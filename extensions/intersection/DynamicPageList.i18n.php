@@ -48,10 +48,11 @@ $messages['ar'] = array(
 );
 
 /** Egyptian Spoken Arabic (مصرى)
+ * @author Meno25
  * @author Ramsis II
  */
 $messages['arz'] = array(
-	'intersection-desc' => 'بيطلع لستة مترقمة لاحدث الحاجات الموجودة في تصنيف,او اتحاد اكتر من تصنيف',
+	'intersection-desc' => 'بيطلع لستة مترقمة لاحدث الحاجات الموجودة فى تصنيف,او اتحاد اكتر من تصنيف',
 	'intersection_toomanycats' => 'غلط:تصانيف كتيرة خالص!',
 	'intersection_toofewcats' => 'غلط:تصانيف قليلة خالص!',
 	'intersection_noresults' => 'غلط:مافيش نتايج!',

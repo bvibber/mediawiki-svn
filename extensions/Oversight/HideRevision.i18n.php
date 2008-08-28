@@ -184,11 +184,12 @@ $messages['ar'] = array(
 
 /** Egyptian Spoken Arabic (مصرى)
  * @author Ghaly
+ * @author Meno25
  * @author Ramsis II
  */
 $messages['arz'] = array(
-	'hiderevision' => 'خبي المراجعات على طول.',
-	'hiderevision-desc' => 'خبي المراجعات الفردية عن كل اليوزرز لاسباب قانونية، الخ.',
+	'hiderevision' => 'خبى المراجعات على طول.',
+	'hiderevision-desc' => 'خبى المراجعات الفردية عن كل اليوزرز لاسباب قانونية، الخ.',
 	'group-oversight' => 'اوڤرسايترز',
 	'group-oversight-member' => 'اوڤرسايتر',
 	'grouppage-oversight' => '{{ns:project}}:اوڤرسايت',
@@ -196,37 +197,37 @@ $messages['arz'] = array(
 	'right-hiderevision' => 'مراجعة و ترجيع المراجعات المتخبية عن السيسوبات',
 	'hiderevision-prompt' => 'رقم المراجعة للمسح:',
 	'hiderevision-continue' => 'استمر',
-	'hiderevision-text' => "دا لازم يستعمل '''بس''' في الحالات دي:
+	'hiderevision-text' => "دا لازم يستعمل '''بس''' فى الحالات دي:
 * معلومات شخصية مش مناسبة
 *: ''عناوين البيت و ارقام التليفونات, ارقام التامين الاجتماعي, الخ''
 
-'''اساءة استعمال النظام دا حيأدي لفقدانك للمزايا.'''
+'''اساءة استعمال النظام دا حيأدى لفقدانك للمزايا.'''
 
-الحاجات اللي اتشالت مش ح تكون متشافة لاي حد على موقع الويب, بس الحاجات اللي اتمسحت دي ح تتسجل وممكن تترجع تاني   يدوي عن طريق  إداريين قاعدة البيانات لو عملت حاجة غلط .",
-	'hiderevision-reason' => 'السبب (حيتسجل في السجل السري):',
-	'hiderevision-submit' => 'خبي البيانات دي على طول.',
+الحاجات اللى اتشالت مش ح تكون متشافة لاى حد على موقع الويب, بس الحاجات اللى اتمسحت دى ح تتسجل وممكن تترجع تانى   يدوى عن طريق  إداريين قاعدة البيانات لو عملت حاجة غلط .",
+	'hiderevision-reason' => 'السبب (حيتسجل فى السجل السري):',
+	'hiderevision-submit' => 'خبى البيانات دى على طول.',
 	'hiderevision-tab' => 'إخفاء المراجعة',
 	'hiderevision-norevisions' => 'مافيش مراجعات متحددة علشان تتمسح.',
 	'hiderevision-noreason' => 'لازم تقول السبب بتاع المسح دا.',
 	'hiderevision-status' => 'النسخة $1: $2',
 	'hiderevision-success' => 'اتأرشفت و اتمسحت بنجاح.',
-	'hiderevision-error-missing' => 'ماتلقاش في قاعدة البيانات.',
+	'hiderevision-error-missing' => 'ماتلقاش فى قاعدة البيانات.',
 	'hiderevision-error-current' => 'مش ممكن مسح اخر تعديل للصفحة.
-ارجع في التغيير دا الاول.',
-	'hiderevision-error-delete' => 'ماتارشيفتش;هي اتمسحت قبل كدا؟',
+ارجع فى التغيير دا الاول.',
+	'hiderevision-error-delete' => 'ماتارشيفتش;هى اتمسحت قبل كدا؟',
 	'hiderevision-archive-status' => 'المراجعة الممسوحة من $1: $2',
 	'oversight-nodiff' => 'مش قادرين نتتبع التغييرات علشان مافيش مراجعات قديمة للصفحة.ودا بسبب:
-*الصفحة دي اتمسحت
-*أو المراجعة المتخبية دي كانت اول مراجعة',
+*الصفحة دى اتمسحت
+*أو المراجعة المتخبية دى كانت اول مراجعة',
 	'oversight-log-hiderev' => 'شال تعديل واحد من $1',
 	'oversight' => 'اوڤرسايت',
 	'oversight-view' => 'التفاصيل',
-	'oversight-difference' => '(الفرق من المراجعة المتبقية اللي فاتت)',
+	'oversight-difference' => '(الفرق من المراجعة المتبقية اللى فاتت)',
 	'oversight-prev' => 'اخر مراجعه فاتت',
 	'oversight-hidden' => 'مراجعة متخبية',
-	'oversight-header' => 'تحت في لستة بالتغييرات اللي اتخبت قريب و على طول من العرض العمومي.
-تطليع المعلومات دي بره ممكن يتسبب في سحب صلاحيات الاوفرسايت منك و على طول.',
-	'oversight-legend' => 'دور في سجل تخبية المراجعات',
+	'oversight-header' => 'تحت فى لستة بالتغييرات اللى اتخبت قريب و على طول من العرض العمومي.
+تطليع المعلومات دى بره ممكن يتسبب فى سحب صلاحيات الاوفرسايت منك و على طول.',
+	'oversight-legend' => 'دور فى سجل تخبية المراجعات',
 );
 
 /** Asturian (Asturianu)
@@ -1013,7 +1014,7 @@ učinite pogrešku.",
 	'hiderevision-success' => 'Uspješno arhivirano i obrisano.',
 	'hiderevision-error-missing' => 'Nije nađeno u bazi podataka.',
 	'hiderevision-error-current' => "Ne mogu obrisati posljednje uređivanje stranice. Prvo uklonite tu promjenu (''revert'').",
-	'hiderevision-error-delete' => 'Ne mogu arhivirati; moguće je promjena već bila prethodno obrisana?',
+	'hiderevision-error-delete' => 'Ne mogu arhivirati; promjena je možda prethodno obrisana?',
 	'hiderevision-archive-status' => 'Obrisana uređivanja $1: $2',
 	'oversight-nodiff' => 'Nemoguće praćenje promjena jer nema prethodnih promjena stranice. Ili je:
 *stranica obrisana
@@ -2043,15 +2044,15 @@ $messages['oc'] = array(
 	'hiderevision-continue' => 'Contunhar',
 	'hiderevision-text' => "Aquesta foncionalitat deu èsser utilizada '''unicament''' pels cases seguents : * Entresenha personala inapropriada, *: ''Adreça personala e numèro de telèfon, numèro de seguretat sociala, etc...'' ''' L'abús d'aquesta foncionalitat implicarà la pèrda d'aquestes privilègis.''' Los articles escafats son pas mai visibles dins aqueste sistèma, mas aquestas supressions son jornalizadas e pòdon èsser restauradas manualament per un administrator qu'a un accès dirècte sus la banca de donadas se avètz facha una error.",
 	'hiderevision-reason' => 'Motiu (serà enregistrat separadament) :',
-	'hiderevision-submit' => 'Amagar aquesta donada de biais permanent',
+	'hiderevision-submit' => "Amagar aquesta donada d'un biais permanent",
 	'hiderevision-tab' => 'Amagar la modificacion',
 	'hiderevision-norevisions' => 'Cap de modificacion indicada de suprimir.',
 	'hiderevision-noreason' => "Vos cal indicar la rason precisa d'aquesta supression.",
 	'hiderevision-status' => 'Modificacion $1 : $2',
 	'hiderevision-success' => 'Archivat e suprimit amb succès.',
 	'hiderevision-error-missing' => 'Pas trobat dins la banca de donadas.',
-	'hiderevision-error-current' => 'Pòt pas suprimir la darrièra revision dins una pagina. Fasetz una anullacion d’edicion de per abans.',
-	'hiderevision-error-delete' => 'Pòt pas èsser archivat ; la pagina seriá estada suprimida ?',
+	'hiderevision-error-current' => "Se pòt pas suprimir la darrièra revision dins una pagina. Fasètz una anullacion d'edicion de per abans.",
+	'hiderevision-error-delete' => 'Aquesta pagina pòt pas èsser archivada ; Ja es estat suprimida ?',
 	'hiderevision-archive-status' => 'Modificacion suprimida de $1 : $2',
 	'oversight-nodiff' => 'Impossible de detectar de cambiaments tant que se tròba pas cap de revision anteriora per la pagina. Las rasons pòdon èsser las seguentas : *La pagina es estada suprimida, *La revision amagada èra la tota primièra de la pagina',
 	'oversight-log-hiderev' => 'a suprimit una edicion de $1',
@@ -2789,6 +2790,7 @@ in caso de erori.",
 	'oversight-hidden' => 'Revisione oscurà',
 	'oversight-header' => 'Qua de seguito vien presentà na lista de le revision oscurà in modo permanente ai visitatori del sito.
 La divulgazion di ste informassion la pol conportar la rimozion permanente dei diriti de supervisor.',
+	'oversight-legend' => 'Serca i registri de le revision sconte',
 );
 
 /** Vietnamese (Tiếng Việt)

@@ -32,6 +32,11 @@ $aliases['de'] = array(
 	'ChangeAuthor' => array( 'Autor ändern' ),
 );
 
+/** French (Français) */
+$aliases['fr'] = array(
+	'ChangeAuthor' => array( 'Changer auteur', 'ChangerAuteur' ),
+);
+
 /** Croatian (Hrvatski) */
 $aliases['hr'] = array(
 	'ChangeAuthor' => array( 'Promjeni_Autora' ),

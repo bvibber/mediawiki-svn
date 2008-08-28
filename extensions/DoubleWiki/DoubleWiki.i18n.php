@@ -33,10 +33,11 @@ $messages['ar'] = array(
 );
 
 /** Egyptian Spoken Arabic (مصرى)
+ * @author Meno25
  * @author Ramsis II
  */
 $messages['arz'] = array(
-	'doublewiki-desc' => 'بيعرض صفحة و الترجمة بتاعتها من ويكي تانية على عمودين في نفس الصفحة',
+	'doublewiki-desc' => 'بيعرض صفحة و الترجمة بتاعتها من ويكى تانية على عمودين فى نفس الصفحة',
 );
 
 /** Asturian (Asturianu)

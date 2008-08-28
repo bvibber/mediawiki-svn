@@ -76,21 +76,22 @@ $messages['ar'] = array(
 );
 
 /** Egyptian Spoken Arabic (مصرى)
+ * @author Meno25
  * @author Ramsis II
  */
 $messages['arz'] = array(
-	'scanset-desc' => 'اعرض صورة الصفحات اللي معمولها سكان من  مجموعات اندرياس جروسز CD/DVD',
+	'scanset-desc' => 'اعرض صورة الصفحات اللى معمولها سكان من  مجموعات اندرياس جروسز CD/DVD',
 	'scanset_no_name' => 'غلط: لازم تحدد اسم للسكان سيت, مثلا &lt;scanset name="EB1911" /&gt;.',
 	'scanset_invalid_name' => 'غلط:السكان سيت مش صحيحة او ناقصة',
 	'scanset_unrecognised_index_format' => 'غلط:صيغة الفهرس مش معروفة',
 	'scanset_opendir_error' => 'غلط:ماقدرناش نفتح المجلد $1',
-	'scanset_no_files' => 'غلط:مافيش ملفات موجودة في المجلد المتحدد',
+	'scanset_no_files' => 'غلط:مافيش ملفات موجودة فى المجلد المتحدد',
 	'scanset_no_volumes' => 'غلط:مجلدات الحجم ماتلقتش',
 	'scanset_missing_index_file' => 'غلط: ملف الفهرس $1 ماتلقاش',
-	'scanset_index_file_error' => 'غلط: غلط في صيغة ملف الفهرس عند السطر $1',
+	'scanset_index_file_error' => 'غلط: غلط فى صيغة ملف الفهرس عند السطر $1',
 	'scanset_invalid_volume' => 'غلط: حجم مش صحيح',
-	'scanset_next' => 'الجاي &gt;',
-	'scanset_prev' => '&lt; اللي فات',
+	'scanset_next' => 'الجاى &gt;',
+	'scanset_prev' => '&lt; اللى فات',
 );
 
 /** Asturian (Asturianu)
@@ -555,6 +556,8 @@ $messages['ksh'] = array(
  */
 $messages['lb'] = array(
 	'scanset-desc' => 'Gescannte Säite weise mat den CD/DVD Astellunge vum Andreas Grosz',
+	'scanset_opendir_error' => 'Feeler: De Repertoire $1 kann net opgemaach ginn',
+	'scanset_no_files' => 'Feeler: Et gëtt keng Fichieren an dem Repertoire den Dir uginn hutt.',
 	'scanset_next' => 'Nächst &gt;',
 	'scanset_prev' => '&lt; Vireg',
 );

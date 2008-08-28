@@ -126,7 +126,7 @@ $messages['de-formal'] = array(
  * @author Yekrats
  */
 $messages['eo'] = array(
-	'importfreeimages' => 'Importu Senpagajn Bildojn',
+	'importfreeimages' => 'Importi Senpagajn Bildojn',
 	'importfreeimages-desc' => 'Ebligas fojon [[Special:ImportFreeImages|importi ĝuste permesmarkitajn fotojn]] de [http://www.flickr.com Flickr]',
 	'importfreeimages_description' => 'Ĉi paĝo ebligas al vi serĉi ĝuste permesmarkitajn fotojn de Flickr kaj importi ilin al vian vikion.',
 	'importfreeimages_noapikey' => 'Vi ne konfiguris vian Flickr API-ŝlosilo. Fari tiel, bonvolu akiri API-ŝlosilon de 

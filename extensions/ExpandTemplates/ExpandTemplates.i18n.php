@@ -357,7 +357,7 @@ $messages['el'] = array(
  * @author Yekrats
  */
 $messages['eo'] = array(
-	'expandtemplates' => 'Ampleksigu ŝablonojn',
+	'expandtemplates' => 'Ampleksigi ŝablonojn',
 	'expandtemplates-desc' => '[[Special:ExpandTemplates|Etendas ŝablonojn, sintaksaj funkciojn, kaj variablojn]] montri etenditan vikitekston kaj antaŭvidi faritan paĝon',
 	'expand_templates_intro' => 'Ĉi tiu speciala paĝo traktas tekston kaj ampleksigas ĉiujn ŝablonojn en ĝi rekursie.
 Ĝi ankaŭ ampleksigas sintaksajn funkciojn kiel 
