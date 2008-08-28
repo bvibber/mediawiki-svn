@@ -297,7 +297,7 @@ $smwgShowFactbox=SMW_FACTBOX_HIDDEN;
 					return ;				
 				}						
 			}		
-			$parserOutput =  $this->parse_format_text($wikiText, $mvdTitle, $mvd_page);
+			$parserOutput =  $this->parse_format_text($wikiText, $mvdTitle, $mvd_page, $absolute_links);
 			
 			//if absolute_links set preg_replace with the server for every relative link:				
 			if($absolute_links==true){
@@ -309,7 +309,7 @@ $smwgShowFactbox=SMW_FACTBOX_HIDDEN;
 			$MvParserCache->save( $parserOutput, $mvdArticle, $wgUser );
 		}										
 	}
-	function parse_format_text(&$text, &$mvdTile, &$mvd_page=''){
+	function parse_format_text(&$text, &$mvdTile, &$mvd_page='', $absolute_links=false){
 		global $wgOut, $mvgScriptPath;
 		global $wgParser, $wgUser, $wgTitle, $wgContLang;
 		$template_key='';			
@@ -317,14 +317,18 @@ $smwgShowFactbox=SMW_FACTBOX_HIDDEN;
 			$template_key = strtolower($mvdTile->getMvdTypeKey());
 		//$wgOut->addHTML('looking at: ' . strtolower($template_key));
 		$sk = &$wgUser->getSkin();
-		$pre_text_html = $post_text_html=''; 	
+		$pre_text_html = $post_text_html='';
+		$added_play_link =false;		 
 		$smw_text_html='';		
 		switch($template_key){					
 			case 'ht_en':
-			case 'anno_en':							
+			case 'anno_en':											
+				$play_link_o='<a href="javascript:mv_do_play('.htmlspecialchars($mvd_page->id).')">';  
+				$play_link_img_close='<img border="0" src="'.htmlspecialchars($mvgScriptPath).'/skins/images/button_play.png">'.'</a>';
+					
 				$smw_attr = $this->get_and_strip_semantic_tags($text);		
-				foreach($smw_attr as $smw_key=>$smw_attr_val){
-					//do special display for given values: 
+				foreach($smw_attr as $smw_key=>$smw_attr_val){					
+					//do special display for given values:
 					switch($smw_key){
 						case 'speech_by':
 						case 'spoken_by':							
@@ -332,27 +336,36 @@ $smwgShowFactbox=SMW_FACTBOX_HIDDEN;
 							$pimg = mv_get_person_img($smw_attr_val);							
 							$pre_text_html.='<p class="mvd_page_image">';
 							
-							if($mvd_page!='')	
-								$pre_text_html.='<a href="javascript:mv_do_play('.htmlspecialchars($mvd_page->id).')">';
-							
-							$pre_text_html.='<img width="44" alt="'.$pTitle->getText().'" '.
-												'src="'.	htmlspecialchars($pimg->getURL() ).'">';											
+							if($mvd_page!=''){	
+								$pre_text_html.=$play_link_o;
+								$added_play_link=true;							
+							}
+							$pre_text_html.='<img width="44" alt="' . $pTitle->getText() . '" ' .
+												'src="' . htmlspecialchars($pimg->getURL() ).'">';											
 							if($mvd_page!='')
-								$pre_text_html.='<img border="0" src="'.htmlspecialchars($mvgScriptPath).'/skins/images/button_play.png">'.'</a>';								
+								$pre_text_html.=$play_link_img_close;							
 							$pre_text_html.='</p>';															
 						break;																						
-					}
+					}										
 					//@@todo we should just use semantic mediaWikis info box with some custom style .
 					$smwKeyTitle=Title::newFromText($smw_key);
 					$valueTitle = Title::newFromText($smw_attr_val);
 					if($template_key=='anno_en')
 						$smw_text_html.=ucwords($smwKeyTitle->getText()). ': '. $sk->makeLinkObj($valueTitle).'<br>';
-				}			
+				}		
+					
+				if(!$added_play_link && $mvd_page!=''){
+					$pre_text_html.='<p class="mvd_page_image">'. $play_link_o . $play_link_img_close . '</p>';
+					//print "SHOULD HAVE PUT IN pre_text:$pre_text_html";
+				}
 				$pre_text_html.='<p class="text">';				
 				if($mvd_page!=''){			
 					$pre_text_html.='<span class="mvd_menu_header">'.$this->get_mvd_menu($mvd_page).'</span>';
 				}
-				$pre_text_html.='<span class="description"><br>';				
+				//if absolute links clear out links: 
+				if($absolute_links)
+					$pre_text_html='';
+				$pre_text_html.='<span class="description">';				
 				$pre_text_html.=$smw_text_html;
 				//for ht_en add spoken by add name to start of text: 
 				if( $template_key=='ht_en'){
