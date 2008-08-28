@@ -16,9 +16,10 @@
  * @licence GNU General Public Licence 2.0 or later
  */
 
-if (!defined('MEDIAWIKI')) die('Not an entry point.');
+if (!defined('MEDIAWIKI'))                     die('Not an entry point.');
+if (version_compare($wgVersion, '1.11.0') < 0) die('Sorry, this extension requires at least MediaWiki version 1.11.0');
 
-define('SIMPLESECURITY_VERSION', '4.2.6, 2008-08-28');
+define('SIMPLESECURITY_VERSION', '4.2.7, 2008-08-28');
 
 # Global security settings
 $wgSecurityMagicIf              = "ifusercan";                  # the name for doing a permission-based conditional
@@ -70,8 +71,8 @@ class SimpleSecurity {
 			$wgSecurityRenderInfo, $wgSecurityAllowUnreadableLinks;
 
 		# $wgGroupPermissions has to have its default read entry removed because Title::userCanRead checks it directly
-		if ($this->default_read = (isset($wgGroupPermissions['*']['read']) && $wgGroupPermissions['*']['read']))
-			$wgGroupPermissions['*']['read'] = false;
+		#if ($this->default_read = (isset($wgGroupPermissions['*']['read']) && $wgGroupPermissions['*']['read']))
+		#	$wgGroupPermissions['*']['read'] = false;
 
 		# Add our parser-hooks
 		$wgParser->setFunctionHook($wgSecurityMagicIf, array($this, 'ifUserCan'));
@@ -217,6 +218,7 @@ class SimpleSecurity {
 
 		# Put the anon read right back in $wgGroupPermissions if it was there initially
 		# - it had to be removed because Title::userCanRead short-circuits with it
+		print_r($rights);
 		if ($this->default_read) {
 			$wgGroupPermissions['*']['read'] = true;
 			$rights[] = 'read';
