@@ -443,7 +443,7 @@ mediaPlayers.prototype =
             {
                 var name_value = pairs[i].split('=');
                 this.preference[name_value[0]]=name_value[1];
-                js_log('load preference for ' + name_value[0] + ' to ' + name_value[1]);
+                js_log('load preference for ' + name_value[0] + ' is ' + name_value[1]);
             }
         }
     },
@@ -1587,6 +1587,7 @@ embedVideo.prototype = {
     media_element:null,
 	slider:null,	
 	loading_external_data:false,
+	thumbnail_updating:false,
 	init_with_sources_loadedDone:false,
 	inDOM:false,
 	supports:{},
@@ -2013,17 +2014,19 @@ embedVideo.prototype = {
 			$j('#img_thumb_'+this.id).attr('src', src);
 		}else{
 			var _this = this;
-			if(this.thumbnail_disp){
+			if(this.thumbnail_disp && this.thumbnail_updating==false){
+				this.thumbnail_updating=true;
 				$j('#dc_'+this.id).append('<img src="'+src+'" ' +
 					'style="display:none;position:absolute;zindex:2;top:0px;left:0px;" ' +
 					'width="'+this.width+'" height="'+this.height+'" '+
-					'id = "new_img_thumb_'+this.id+'" />');
+					'id = "new_img_thumb_'+this.id+'" />');					
 				$j('#new_img_thumb_'+this.id).fadeIn("slow", function(){
 						js_log('done fading in: '+src);
 						//once faded in remove org and rename new:
 						$j('#img_thumb_'+_this.id).remove();
 						$j('#new_img_thumb_'+_this.id).attr('id', 'img_thumb_'+_this.id);
 						$j('#img_thumb_'+_this.id).css('zindex','1');
+						this.thumbnail_updating=false;
 				});
 			}
 		}
@@ -2642,15 +2645,14 @@ function getTransparentPng(image){
 /*
 * utility functions:
 */
-function seconds2ntp(sec, use_hours){
+function seconds2ntp(sec){	
 	sec = parseInt(sec);
 	hours = Math.floor(sec/ 3600);
 	minutes = Math.floor((sec/60) % 60);
 	seconds = sec % 60;
-	//if ( hours < 10 ) hours = "0" + hours;
 	if ( minutes < 10 ) minutes = "0" + minutes;
 	if ( seconds < 10 ) seconds = "0" + seconds;
-	return (use_hours?(hours+":"):'')+minutes+":"+seconds;
+	return hours+":"+minutes+":"+seconds;
 }
 /* takes hh:mm:ss input returns number of seconds */
 function ntp2seconds(ntp){

@@ -386,7 +386,7 @@ var flashEmbed = {
         			   		seconds2ntp( this.fla.getDuration() );
 		var start_ntp =  (this.media_element.selected_source.start_ntp)?
         			   		this.media_element.selected_source.start_ntp : 0;       		
-       	this.setStatus( seconds2ntp(time, false) + '/' + end_ntp);      
+       	this.setStatus( seconds2ntp(time) + '/' + end_ntp);      
 		js_log('cur time : ' + (time - ntp2seconds(start_ntp)) + 
 					' / ' + 
 				(ntp2seconds(end_ntp)-ntp2seconds(start_ntp)));

@@ -22,7 +22,7 @@
 	 var $adj_html='';
  	 var $basic_html='';
  	 
- 	 function __construct( $article ) {
+ 	function __construct( $article ) {
 		$this->mArticle =& $article;		
 		$this->mTitle =& $article->mTitle;		
 				

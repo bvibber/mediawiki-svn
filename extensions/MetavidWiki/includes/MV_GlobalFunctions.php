@@ -174,6 +174,15 @@ function mvSetupExtension(){
 	$wgHooks['ArticleFromTitle'][] 			= 'mvDoMvPage';			
 		
 	$wgHooks['TitleMoveComplete'][]			= 'mvMoveHook';
+	
+	//note this hook is not avaliable by default in medaiwiki 
+	//to use this hook you should add this function to moveTo in Title.php:
+ 	/*
+ 	 $err = wfRunHooks('TitleisValidMove', array( &$this, &$nt, &$wgUser, $auth));
+		 if( is_string( $err ) ) {
+			return $err;
+		 }
+	*/ 	
 	$wgHooks['TitleisValidMove'][]			= 'mvisValidMoveOperation';	
 	
 	$wgHooks['ParserAfterTidy'][]			= 'mvParserAfterTidy';	

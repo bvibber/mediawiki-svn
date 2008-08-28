@@ -75,7 +75,7 @@ function mvSeqTag(&$input, &$argv, &$parser){
  	global $mvgIP;
  	//die;
  	//confirm we are in the mvd Namespace & update the wiki_title
- 	if($old_title->getNamespace()==MV_NS_MVD){							 
+ 	if($old_title->getNamespace()==MV_NS_MVD){	 					 
  		MV_Index::update_index_title($old_title->getDBkey() , $new_title->getDBkey()); 			
  	}
 	return true;// always return true, in order not to stop MW's hook processing!

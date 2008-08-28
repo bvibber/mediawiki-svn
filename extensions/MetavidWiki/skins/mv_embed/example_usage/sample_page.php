@@ -21,38 +21,22 @@ Here are some sample embeds:<br />
 <?
 $sample_embed = array();
 
-$sample_embed[0]['tag'] = '<video id="vid_4184"
-thumbnail="http://metavid.ucsc.edu/wiki/index.php?action=ajax&rs=mv_frame_server&stream_name=senate_proceeding_08-01-07&t=0:27:16&size=large"
-src="http://128.114.20.64/media/senate_proceeding_08-01-07.ogg.anx?t=0:27:16/0:27:32"
-roe="http://localhost/mvw-exp/index.php?title=Special:MvExportStream&feed_format=roe&stream_name=senate_proceeding_08-01-07&t=0:27:16/0:27:32"
-show_meta_link="false"  autoplay="false" style="width:400px;height:300px" controls="true" embed_link="true" ></video>';
-$sample_embed[0]['desc']=' auto play test (similar embed syntax to the metavidWiki site)';
+$sample_embed[0]['tag']='<video  id="embed_vid" 
+thumbnail="http://metavid.ucsc.edu/mvw-exp/index.php?action=ajax&rs=mv_frame_server&stream_id=501&t=0:01:32&amp;size=400x300" 
+roe="http://metavid.ucsc.edu/mvw-exp/index.php?title=Special:MvExportStream&stream_name=House_proceeding_01-28-08&t=0:01:32/0:03:20" 
+show_meta_link="false" 
+style="width:400px;height:300px" 
+controls="true" embed_link="true" >
+	<source type="video/ogg" src="http://128.114.20.64/media/house_proceeding_01-28-08.ogg.anx?t=0:01:32/0:03:20"></source>
+	<source type="video/x-flv" src="http://mvbox2.cse.ucsc.edu/mvFlvServer.php/house_proceeding_01-28-08.flv?t=0:01:32/0:03:20"></source>
+</video>';
+$sample_embed[0]['desc']='Sample Similar to metavid usage';
 
-/*$sample_embed[0]['tag']='<video id="v0" src="sample.ogg" thumbnail="sample.jpg"></video>';
-$sample_embed[0]['desc']='basic usage with manual controls:<br />'.
-					'<a href="javascript:document.getElementById(\'v1\').play();">Play</a> | '.
-					'<a href="javascript:document.getElementById(\'v1\').stop();">Stop</a> <br />';*/
-
-
-					//'<b>Exported functions:</b><br />'.
-					//'<a href="javascript:document.getElementById(\'v1\').mute();">Get Time</a> | ';
-//'thumbnail="http://metavid.ucsc.edu/image_media/senate_proceeding_06-20-07_09?t=3:50:27&size=320x240" ' .
-//'src="'.$mv_path.'sample.ogg"/>';
-
-//$plurl = 'http://metavid.ucsc.edu/wiki/index.php?title=Special:MvExportSearch&tracks=ht_en%2Canno_en%2Cthomas_en&f%5B0%5D%5Ba%5D=and&f%5B0%5D%5Bt%5D=spoken_by&f%5B0%5D%5Bv%5D=John+Sarbanes';
-//$plurl = 'http://localhost/wiki/index.php?title=Special:MvExportSearch&tracks=ht_en%2Canno_en%2Cthomas_en&f%5B0%5D%5Bt%5D=spoken_by&f%5B0%5D%5Bv%5D=Saxby+Chambliss';
-//$sample_embed[1]['tag'] = '<playlist id="playlist2"
-//src="'.$plurl.'"/>';
-//$sample_embed[1]['desc'] = '<b>RSS</b> a podcast like dynamic feed for "peace"<br />'.
-//		'<iframe width="500" height="200" src="'.$plurl.'">rss feed here</iframe>';
 
 $sample_embed[1]['tag']='<video id="vflash" src="http://www.archive.org/download/mv_senate_proceeding_12-23-07/senate_proceeding_12-23-07.flv" autoplay="true"></video>';
 $sample_embed[1]['desc']='flash video usage with manual controls:<br />'.
 					'<a href="javascript:document.getElementById(\'vflash\').play();">Play</a> | '.
-					'<a href="javascript:document.getElementById(\'vflash\').stop();">Stop</a> <br />';
-
-$sample_embed[2]['tag']='<video style="width:400px"><source src="http://mvbox2.cse.ucsc.edu/mvFlvServer.php/senate_proceeding_08-01-07.flv?t=0:20:00/0:21:00" title="flash"/></video>';
-$sample_embed[2]['desc']='';
+					'<a href="javascript:document.getElementById(\'vflash\').stop();">Stop</a> <br />';	
 
 //$sample_embed[1]['tag'] = '<video roe="http://192.168.0.104/mvWiki/index.php?title=Special:MvExportStream&feed_format=roe&stream_name=Senate_proceeding_08-01-07&t=0:00:00/0:05:00">';
 //$sample_embed[1]['desc'] = 'Demo of json ROE attribute';
@@ -125,7 +109,7 @@ $sample_embed[8]['desc']=' <br><b>Crossfading Videos</b><br/><a href="http://ser
   <table border="1" cellpadding="6" width="600">
   	<? foreach($sample_embed as $key=>$aval){
   		//$key!=8 
-  		if($key!=0)continue;
+  		if($key!=2)continue;
   	 ?>
 	    <tr>
 	      <td valign="top"><?=$aval['tag']?></td>

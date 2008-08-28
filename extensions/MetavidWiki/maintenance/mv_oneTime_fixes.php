@@ -46,7 +46,7 @@ function strip_speech_by(){
 			$new_text = trim(substr($cur_text, strlen($st)));
 			//print "new text: $new_text\n";
 			if(!$mvDryRun)
-				do_update_wiki_page($mvdTitle, $new_text);
+				do_update_wiki_page($mvdTitle, $new_text, MV_NS_MVD, $force=true);
 		}
 		$inx++;
 	}	

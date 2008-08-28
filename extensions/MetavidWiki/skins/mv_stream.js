@@ -315,13 +315,13 @@ function mv_disp_add_mvd(mvdType){
 	//if($j('#mv_fd_mvd_new').get(0)){
 	//	$j('#mv_fd_mvd_new').html(global_loading_txt);
 	//}else{
-	//	$j('#mv_fd_mvd_cont').prepend('<div id="mv_fd_mvd_new">'+global_loading_txt+'</div>' );
+	//	$j('#selectionsBox').prepend('<div id="mv_fd_mvd_new">'+global_loading_txt+'</div>' );
 	//}
 	$j('#mv_add_new_mvd').css({display:'inline'});
 	$j('#mv_add_new_mvd').html(global_loading_txt);
 
 	//scroll to the new (loading) (top of mvd_cont)
-	$j('#mv_fd_mvd_cont').animate({scrollTop: 0}, 'slow');
+	$j('#selectionsBox').animate({scrollTop: 0}, 'slow');
 	function f( request ) {
 		result= request.responseText;
 		if (request.status != 200){
@@ -554,14 +554,14 @@ function mv_add_new_fd_mvd(titleKey, node_html){
 	//get start time and end time from titleKey:
 	var insertTitle = get_titleObject(titleKey);
 
-	//for each element mv_fd_mvd_cont
+	//for each element selectionsBox
 	var inserted = false;
 	$j('.mv_fd_mvd').each(function(i){
 		if(!inserted){
 			var curTitle = get_titleObject($j(this).attr('name'));
 			if(insertTitle.start_time < curTitle.start_time){
 				$j(this).before(node_html).show("slow");
-				js_log('inserted: ' + insertTitle.start_time + "\n" + node_html);
+				js_log('inserted before: '+curTitle.title +' id:'+insertTitle.start_time + "\n html:" + node_html);
 	   			inserted=true;
 	   			return ;
 			}
@@ -569,8 +569,8 @@ function mv_add_new_fd_mvd(titleKey, node_html){
 	});
 	//add at the end (if not before some other mvd page)
 	if(!inserted){
-		js_log('inserted: ' + insertTitle.start_time + "\n" + node_html);
-		$j('#mv_fd_mvd_cont').append(node_html);
+		js_log('insert to end: ' + insertTitle.start_time + "\n" + node_html);
+		$j('#selectionsBox').append(node_html);
 	}
 }
 
@@ -741,17 +741,22 @@ function mv_do_ajax_form_submit(mvd_id, edit_action){
   			}
 		}
         if(post_vars['do_adjust']){
+        	js_log('do_adjust');
          	//remove and add encapsulated mvd_fd
          	eval(result);
   			if(mv_result['status']=='ok'){
   				//@@could be a (fade but first rename)
+  				js_log('remove: #mv_fd_mvd_'+mvd_id + ' len br:'+ $j('#mv_fd_mvd_'+mvd_id).length);
 				$j('#mv_fd_mvd_'+mvd_id).remove();
   				$j('#mv_tl_mvd_'+mvd_id).remove();
+  				
+				js_log('removed! len br:'+ $j('#mv_fd_mvd_'+mvd_id).length);
+
 
   				//add new mv_time_line element (already has position so place at end)
 				$j('#mv_time_line').append(mv_result['tl_mvd']).show("slow");
 
-				//add new mv_fd_mvd_cont  mvd element (based on start time)
+				//add new selectionsBox  mvd element (based on start time)
 				//(use the titleKey returned from ajax request (in case it got clean or whatever)
 				mv_add_new_fd_mvd(mv_result['titleKey'], mv_result['fd_mvd']);
 
@@ -864,7 +869,7 @@ function scroll_to_pos(mvd_id){
 	if( $j('#mv_fd_mvd_'+mvd_id).get(0)){
 		//do scroll in 1 second
 		//@@todo debug IE issues with scrolling
-		$j('#mv_fd_mvd_cont').animate({scrollTop: $j('#mv_fd_mvd_'+mvd_id).position().top}, 'slow');
+		$j('#selectionsBox').animate({scrollTop: $j('#mv_fd_mvd_'+mvd_id).position().top}, 'slow');
 	}
 }
 function highlight_fd(mvd_id){

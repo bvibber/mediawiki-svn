@@ -741,11 +741,13 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
 				'stream_id'=>$mvTitle->getStreamId(),
 				'start_time'=>$mvTitle->getStartTimeSeconds(),
 				'end_time'=>$mvTitle->getEndTimeSeconds() );
-			//get old row
+			//get old page_id
 			$mvd_row = MV_Index::getMVDbyTitle( $old_title );
 			$dbw =& wfGetDB(DB_WRITE);
 			$dbw->update('mv_mvd_index', $update_ary,
 				array('mv_page_id'=>$mvd_row->mv_page_id));
+			$lq = $dbw->lastQuery();
+			print "js_log(\"sql:$lq \");";
 		}else{
 			//print "NOT VALID MOVE";
 			//@@todo better error handling (tyring to move a MVD data into bad request form)

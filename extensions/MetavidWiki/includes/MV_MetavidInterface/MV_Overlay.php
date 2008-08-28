@@ -49,10 +49,10 @@ $smwgShowFactbox=SMW_FACTBOX_HIDDEN;
 		*/
 		//get nav-interface links
 		
-		//$wgOut->addHTML('<div id="mv_fd_mvd_cont" >');
+		$wgOut->addHTML('<div id="mv_fd_mvd_cont" >');
 			$wgOut->addHTML("<div id=\"mv_add_new_mvd\" style=\"display:none;\"></div>");			
 			$this->get_transcript_pages();
-		//$wgOut->addHTML("</div>");
+		$wgOut->addHTML("</div>");
 	}
 	function render_full(){
 		global $wgOut;
@@ -124,6 +124,7 @@ $smwgShowFactbox=SMW_FACTBOX_HIDDEN;
 		foreach($mvd_rows as $row){
 			$this->mvd_pages[$row->id]=$row;
 		}
+		print_r($mvd_rows);
 	}
 	/*functions for transcript pages
 	@@TODO OPTIMIZATION: (group article text queries)
@@ -269,16 +270,18 @@ $smwgShowFactbox=SMW_FACTBOX_HIDDEN;
 		/*try to pull from cache: seperate out cache for internal links vs external links cache*/		
 		$MvParserCache = & MV_ParserCache::singleton();
 		$add_opt = ($absolute_links)?'a':'';
+		//add the dbKey since I don't know how to easy purge the cache and we are getting cache missmatch
+		$add_opt.=$mvdTitle->getDBkey();
 		$MvParserCache->addToKey($add_opt);
 		
 		$parserOutput = $MvParserCache->get( $mvdArticle, $wgUser );		
 		
 		if ( $parserOutput !== false ) {
-			//print "js_log('found in cache: with hash: " . $MvParserCache->getKey( $mvdArticle, $wgUser )."');\n";
+			print "js_log('found in cache: with hash: " . $MvParserCache->getKey( $mvdArticle, $wgUser )."');\n";
 			//found in cache output and be done with it: 					
 			$wgOut->addParserOutput( $parserOutput );
 		}else{
-			//print "js_log('not found in cache');\n";
+			print "js_log('not found in cache');\n";
 			//print "js_log('titleDB: ".$tsTitle->getDBkey() ."');\n";
 			if($mvdTitle->exists()){	
 				//grab the article text:
@@ -1002,8 +1005,10 @@ class MV_MVD{
 		
 		$stream_name = MV_Stream::getStreamNameFromId($this->mvd_pages[$mvd_id]->stream_id);
 		$streamTitle = Title::newFromText($stream_name, MV_NS_STREAM); 
-		//clear the cache for the parent stream page: 
+		//clear the cache for the parent stream page:
+		//print "clear parent stream: " . $streamTitle ."\n";
 		Article::onArticleEdit($streamTitle);
+
 	}
 	//updates the current version cached version of mvd
 	function onMove(&$mvd_pages_cache, $mvd_id){
