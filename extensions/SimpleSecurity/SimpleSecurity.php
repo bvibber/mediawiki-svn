@@ -18,7 +18,7 @@
 
 if (!defined('MEDIAWIKI')) die('Not an entry point.');
 
-define('SIMPLESECURITY_VERSION', '4.2.5, 2008-08-27');
+define('SIMPLESECURITY_VERSION', '4.2.6, 2008-08-28');
 
 # Global security settings
 $wgSecurityMagicIf              = "ifusercan";                  # the name for doing a permission-based conditional
@@ -200,14 +200,15 @@ class SimpleSecurity {
 
 		# Hack to prevent specialpage operations on unreadable pages
 		if (!is_object($wgTitle)) return true;
-		$ns = $wgTitle->getNamespace();
+		$title = $wgTitle;
+		$ns = $title->getNamespace();
 		if ($ns == NS_SPECIAL) {
-			list($name, $par) = explode('/', $wgTitle->getDBkey(), 2);
+			list($name, $par) = explode('/', $title->getDBkey().'/', 2);
 			if ($par) $title = Title::newFromText($par);
 			elseif ($wgRequest->getVal('target'))   $title = Title::newFromText($wgRequest->getVal('target'));
 			elseif ($wgRequest->getVal('oldtitle')) $title = Title::newFromText($wgRequest->getVal('oldtitle'));
-		} else $title = $wgTitle;
-		if (!is_object($title)) return true; # If still no usable title bail
+		}
+		if (!is_object($title)) return true;   # If still no usable title bail
 
 		$this->info['LS'] = array();           # security info for rules from LocalSettings ($wgPageRestrictions)
 		$this->info['PR'] = array();           # security info for rules from protect tab
