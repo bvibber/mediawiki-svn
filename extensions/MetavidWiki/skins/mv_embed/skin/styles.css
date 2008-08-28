@@ -135,7 +135,7 @@ width: 100%;
 .videoPlayer .time {
 	line-height: 32px;
 	height: 29px;
-	overflow: hidden;
+	overflow: visible;
 	font-size: 11px;
 	width: 80px;
 	float: right;

@@ -12,6 +12,8 @@ var vlcEmbed = {
 	    'fullscreen':true, 
 	    'time_display':true, 
 	    'volume_control':false,
+	    
+	    'playlist_driver':true, //if the object supports playlist functions
 	    'overlay':false
     },
 	//init vars: 
@@ -197,8 +199,9 @@ var vlcEmbed = {
 							' ='+  ((this.vlc.input.time/1000)-this.start_offset)/this.duration );
 						*/
 						this.setSliderValue( ((this.vlc.input.time/1000) -this.start_offset) / this.duration);
-					}  	        
-					this.setStatus(seconds2ntp(this.currentTime) + ' / ' + seconds2ntp(this.duration+this.start_offset) );					
+					}  	    
+					//js_log('set status: '+ seconds2ntp(this.currentTime) + ' e:'+seconds2ntp(this.duration+this.start_offset));    
+					this.setStatus(seconds2ntp(this.currentTime) + '/' + seconds2ntp(this.duration+this.start_offset) );					
 			   }else{
 			   		//update info to seek to: 
 					this.setStatus('seek to: '	+ seconds2ntp(Math.round( (this.sliderVal*this.duration)) ));

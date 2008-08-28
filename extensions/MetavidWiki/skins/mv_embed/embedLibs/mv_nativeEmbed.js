@@ -2,7 +2,16 @@
 var nativeEmbed = {
 	instanceOf:'nativeEmbed',
 	canPlayThrough:false,
-    supports: {'play_head':true, 'play_or_pause':true, 'stop':true, 'fullscreen':true, 'time_display':true, 'volume_control':true},
+    supports: {
+    	'play_head':true, 
+    	'play_or_pause':true,     	
+    	'fullscreen':false, 
+    	'time_display':true, 
+    	'volume_control':true,
+    	
+    	'overlays':true,
+    	'playlist_driver':true //if the object supports playlist functions
+    },
     getEmbedHTML : function (){
 		setTimeout('$j(\'#'+this.id+'\').get(0).postEmbedJS()', 150);
 		//set a default duration of 30 seconds: cortao should detect duration.
@@ -15,6 +24,7 @@ var nativeEmbed = {
 		return '<video " ' +
 					'id="'+this.pid + '" ' +
 					'style="width:'+this.width+'px;height:'+this.height+'px;" ' +
+					'width="'+this.width+'" height="'+this.height+'" '+
 				   	'src="'+this.media_element.selected_source.uri+'" ' +
 				   	'controls="false" ' +
 				   	'oncanplaythrough="$j(\'#'+this.id+'\').get(0).oncanplaythrough();return false;" ' +
@@ -63,8 +73,8 @@ var nativeEmbed = {
 	/*
 	 * native callbacks for the video tag: 
 	 */
-	oncanplaythrough : function(){
-		js_log("f:oncanplaythrough start playback");
+	oncanplaythrough : function(){		
+		js_log("f:oncanplaythrough start playback");			
 		this.play();
 	},
 	onloadedmetadata: function(){
@@ -88,10 +98,10 @@ var nativeEmbed = {
 		this.getVID();
 		if(!this.vid || this.thumbnail_disp){
 			this.parent_play();
-		}else{
+		}else{			
 			this.vid.play();
 			//re-start the monitor: 
-			this.vid.monitor();
+			this.monitor();
 		}
 	},
 	// get the embed vlc object 

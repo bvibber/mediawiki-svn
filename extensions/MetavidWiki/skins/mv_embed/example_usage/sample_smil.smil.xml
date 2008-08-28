@@ -18,13 +18,13 @@
   </head>
   <body>
     <seq>
-      <video src="sample_magnolia.ogg" 
+      <video src="sample_magnolia.ogg?t=0:00:0/0:00:05" 
 		region="video_region" 
 		transIn="fromGreen"
 		begin="2s" 
 		fill="transition" 
 		type="ogg/video" 
-		poster="sample_magnolia.jpg"/>
+		poster="sample_magnolia.jpg?t=0:00:0/0:00:26"/>
 
       <video src="sample_fish.ogg" 
 		region="video_region" 

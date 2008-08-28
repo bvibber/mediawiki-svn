@@ -679,27 +679,8 @@ function init_mv_embed(force){
 	//check if this page does have video or playlist
 	if(document.getElementsByTagName("video").length!=0 ||
 	   document.getElementsByTagName("playlist").length!=0){
-		js_log('we have vids to process');
-		
-		//add loading txt for each video
-		video_elements = document.getElementsByTagName("video");
-		for(var i = 0; i < video_elements.length; i++) { 
-			parent_elm = video_elements[i].parentNode;     
-	        load_div = document.createElement('div');
-	        load_div.setAttribute("id", 'pre_loading_div_'+i);
-	        load_div.innerHTML=getMsg('loading_txt');        
-		    parent_elm.appendChild(load_div);
-		    js_log('load div: '+load_div.innerHTML);
-		}
-	    
-		//if safari we have already foce loadded the libs
-		/*if(embedTypes.safari){
-			js_log('run init for safari');
-			mvEmbed.init();
-		}else{*/
-		//safari >2.0 now supports loading via DOM insert (no need to force load before dom is ready) 
-			mvEmbed.load_libs();
-		//}
+		js_log('we have vids to process');				    		
+		mvEmbed.load_libs();		
 	}else{
 		js_log('no video or playlist on the page... (done)');
 		//run any queued functions:
@@ -793,22 +774,24 @@ function mv_embed(){
         for(var i = 0; i < video_elements.length; i++) {
         	debug_global_vid_ref =video_elements[i];
             //grab id:
-            vid_id = video_elements[i].getAttribute("id");
-           
+            vid_id = video_elements[i].getAttribute("id");           
             //set id if empty:
             if(!vid_id || vid_id==''){
   				video_elements[i].id= 'v'+ global_ogg_list.length;
             }
+            //append loading div: 
+            
+            
             //create and swap in the video interface:             
 	   		var videoInterface = new embedVideo(video_elements[i]);	   		
    			//swap in:
 	   		if(swapEmbedVideoElement(video_elements[i], videoInterface)){
 	   			//remove pre_loading_div_
-	   			$j('#pre_loading_div_'+i).remove();
+	   			$j('#pre_loading_div_'+videoInterface.vid_id).remove();
 	   			i--;	   				   			
 	   		}else{
 	   			//replace loading with failed 
-	   			$j('#pre_loading_div_'+i).html(getMsg('error_swap_vid'));	   		
+	   			$j('#pre_loading_div_'+vid_id).html(getMsg('error_swap_vid'));	   		
 	   		}
         }
     }else{
@@ -859,10 +842,19 @@ function do_playlist_functions(){
 			var pl_id = playlist_elements[i].getAttribute('id');
 			if(!pl_id || pl_id==''){
   				playlist_elements[i].id = 'v'+ global_ogg_list.length;
-            }
+            }        
+			//add loading: 
+			parent_elm = video_elements[i].parentNode;     
+	        load_div = document.createElement('div');
+	        load_div.setAttribute("id", 'pre_loading_div_'+pl_id);
+	        load_div.innerHTML=getMsg('loading_txt');        
+		    parent_elm.appendChild(load_div);
+		    js_log('load div: '+load_div.innerHTML);
+		
 			//create new playlist interface:
 			var playlistInterface = new mvPlayList( playlist_elements[i] );
 			if(swapEmbedVideoElement(playlist_elements[i], playlistInterface) ){
+				$j('#pre_loading_div_'+pl_id);
 				i--;
 			}
 		}
@@ -905,14 +897,12 @@ function swapEmbedVideoElement(video_element, videoInterface){
   	$j('#'+embed_video.id).get(0).on_dom_swap();
 	// now that "embed_video" is stable, do more initialization (if we are ready)
 	if($j('#'+embed_video.id).get(0).loading_external_data==false && 
-	   $j('#'+embed_video.id).get(0).init_with_sources_loadedDone==false){
-		js_log("NOT LOADING ext data jump to init with sources");
+	   	$j('#'+embed_video.id).get(0).init_with_sources_loadedDone==false){
+		//load and set ready state since source are avaliable: 
 		$j('#'+embed_video.id).get(0).init_with_sources_loaded();
 	}
-	//js_log(" isd: "+this.init_with_sources_loadedDone + ' ed:' + )
-	
+	//js_log(" isd: "+this.init_with_sources_loadedDone + ' ed:' + )	
 	//js_log('vid elm:'+ $j(video_element).html() );
-
     /* var parent_elm = video_element.parentNode;
     js_log('remove video elm');
     parent_elm.removeChild(video_element);
@@ -925,8 +915,7 @@ function swapEmbedVideoElement(video_element, videoInterface){
 
     //now run the getHTML on the new embedVideo Obj:
     embed_video.getHTML();
-    */
-    
+    */    
     //js_log('html set:' + document.getElementById(embed_video.id).innerHTML);
     //store a reference to the id
     //(for single instance plugins that need to keep track of other instances on the page)
@@ -966,18 +955,33 @@ textInterface.prototype = {
 		//set the parent embed object:
 		this.pe=parentEmbed;
 		//parse roe if not already done:
-        this.getParseCMML();
-		//start the autoscroll timer:
-		this.setAutoScroll(true);
+        this.getParseCMML();		
 	},
 	//@@todo seperate out data loader & data display
 	getParseCMML:function(){
-		js_log("load cmml");
+		js_log("load cmml from roe: "+ this.pe.roe);
 		//read the current play head time (if embed object is playing)
-
-		//look at avaliable layers and default layer set
-
-		//@@todo use user-language as key to select transcript layer.
+		
+		//if roe not yet loaded do load it: 
+		if(this.pe.roe){
+			if(!this.pe.media_element.addedROEData){
+				js_log("load roe data!");
+				var _this = this;
+				do_request(this.pe.roe, function(data)
+	            {            	            
+	            	//continue      	         	
+	            	_this.pe.media_element.addROE(data);                                      	                                              
+	                _this.getParseCMML_rowReady();                               
+	            });
+			}else{
+				js_log('row data ready (no roe request)');
+				this.getParseCMML_rowReady();
+			}						
+		}else{
+			js_log('no roe data to get text transcript from');
+		}		
+	},
+	getParseCMML_rowReady: function (){
 		_this = this;
 		$j.each(this.pe.media_element.sources, function(inx, n){
 			if(n.mime_type=='text/cmml'){
@@ -1027,8 +1031,8 @@ textInterface.prototype = {
 			$j('#mv_loading_icon').css('display','none');
 			$j.each(data.getElementsByTagName('clip'), function(inx, n){
 				var text_clip = {
-					start:n.getAttribute('start').replace('ntp:', ''),
-					end:n.getAttribute('end').replace('ntp:', ''),
+					start:n.getAttribute('start').replace('npt:', ''),
+					end:n.getAttribute('end').replace('npt:', ''),
 					type_id:track_id,
 					id:n.getAttribute('id')
 				}
@@ -1044,6 +1048,8 @@ textInterface.prototype = {
 			//done loading update availableTracks
 			_this.availableTracks[track_id].loaded=true;
 			_this.availableTracks[track_id].display=true;
+			//start the autoscroll timer:
+			_this.setAutoScroll(true);
 		});
 	},
 	add_merge_text_clip:function(text_clip){
@@ -1080,8 +1086,10 @@ textInterface.prototype = {
 		/*fade out cc button*/
 		$j('#metaButton_'+this.pe.id).fadeOut('fast');
 		/*slide in intefrace container*/
-		if($j('#metaBox_'+this.pe.id).length==0){
-
+		//dont' know how 'px' creeps in here: 
+		this.pe.height = this.pe.height.replace('px', '');
+		
+		if($j('#metaBox_'+this.pe.id).length==0){			
 			//append it to body relative to offset of this.pe
 			var loc = $j(this.pe).position();
 			//js_log('top ' +loc.top + ' left:'+loc.left );
@@ -1585,12 +1593,14 @@ var embedVideo = function(element) {
 embedVideo.prototype = {
     /** The mediaElement object containing all mediaSource objects */
     media_element:null,
-	slider:null,	
+	slider:null,		
+	ready_to_play:false, //should use html5 ready state
 	loading_external_data:false,
 	thumbnail_updating:false,
+	thumbnail_disp:true,
 	init_with_sources_loadedDone:false,
 	inDOM:false,
-	supports:{},
+	supports:{},	
 	//utility functions for property values:
 	hx : function ( s ) {
 		if ( typeof s != 'String' ) {
@@ -1632,6 +1642,7 @@ embedVideo.prototype = {
 	            //js_log('attr:' + attr + ' val: ' + video_attributes[attr] +" "+ 'elm_val:' + element.getAttribute(attr) + "\n (set by attr)");
 	        }
 	    }
+	    js_log("ROE SET: "+ this.roe);
 	    //if style is set override width and height
 	    var dwh = mv_default_video_size.split('x');
 	    this.width = element.style.width ? element.style.width : dwh[0];
@@ -1646,10 +1657,11 @@ embedVideo.prototype = {
 	        this.user_missing_plugin_html=element.innerHTML;
 	    }	      
 	    // load all of the specified sources
-        this.media_element = new mediaElement(element);  	
+        this.media_element = new mediaElement(element);                         	
 	},
-	on_dom_swap : function(){
+	on_dom_swap: function(){
 		js_log('f:on_dom_swap');
+		js_log("ROE SET: "+ this.roe);
 		// Process the provided ROE file... if we don't yet have sources
         if(this.roe && this.media_element.sources.length==0 ){
 			js_log('loading external data');
@@ -1667,7 +1679,7 @@ embedVideo.prototype = {
             });
     	}
 	},
-	init_with_sources_loaded : function(ready_callback)
+	init_with_sources_loaded : function()
 	{	
 		js_log('f:init_with_sources_loaded');
 		//autoseletct the source
@@ -1692,7 +1704,7 @@ embedVideo.prototype = {
 	    * override all relevant exported functions with the {embed_type} Object
 	    * place the base functions in parent.{function name}
 	    */	    
-		this.inheritEmbedObj(ready_callback);
+		this.inheritEmbedObj();
 
   		//update HTML
   		$j('#'+embed_video.id).get(0).getHTML();
@@ -1701,6 +1713,54 @@ embedVideo.prototype = {
 		//return this object:
 		//return this;		
 		this.init_with_sources_loadedDone=true;
+	},
+	inheritEmbedObj:function(ready_callback){
+		js_log("f: inheritEmbedObj");
+		//@@note: tricky cuz direct overwrite is not so ideal.. since the extended object is already tied to the dom
+		//clear out any non-base embedObj stuff:
+		if(this.instanceOf){
+			eval('tmpObj = '+this.instanceOf);
+			for(i in tmpObj){
+				if(this['parent_'+i]){
+					this[i]=this['parent_'+i];
+				}else{
+					this[i]=null;
+				}
+			}
+		}      		
+		//set up the new embedObj
+        js_log('embedding with ' + this.selected_player.library);
+		var _this = this;		
+		this.selected_player.load(function()
+		{
+			js_log('inheriting '+_this.selected_player.library +'Embed to ' + _this.id + ' ' + $j('#'+_this.id).length);
+			//var _this = $j('#'+_this.id).get(0);
+			js_log( 'type of ' + _this.selected_player.library +'Embed + ' +
+					eval('typeof '+_this.selected_player.library +'Embed')); 
+			eval('embedObj = ' +_this.selected_player.library +'Embed;');
+			for(method in embedObj){
+				//parent method preservation for local overwritten methods
+				if(_this[method])
+					_this['parent_' + method] = _this[method];
+				_this[method]=embedObj[method];
+			}
+			if(_this.inheritEmbedOverride){
+				_this.inheritEmbedOverride();
+			}
+			//update controls if possible
+			if(!_this.loading_external_data)
+				_this.refreshControlsHTML();
+				
+			if(ready_callback)
+				ready_callback();
+			js_log('plugin load callback complete');
+			
+			js_log("ROE SET: "+ _this.roe);
+			
+			js_log("READY TO PLAY:"+_this.id);
+			
+			_this.ready_to_play=true;
+		});
 	},
     selectPlayer:function(player)
     {
@@ -1727,7 +1787,7 @@ embedVideo.prototype = {
     },
   	/* get the duration in ntp format */
 	getDurationNTP:function(){
-		return seconds2ntp(this.getDuration()/1000);
+		return seconds2ntp(this.getDuration());
 	},
 	/*
 	 * wrapEmebedContainer
@@ -1809,15 +1869,14 @@ embedVideo.prototype = {
         html_code += '<span class="border_left">&nbsp;</span>';
         available_width -= 4;
         html_code += '<span class="border_right">&nbsp;</span>';
-        available_width -= 4;
-
+        available_width -= 4;        	
+		 
         // fullscreen
         if(this.supports['fullscreen'])
         {
             html_code += '<div class="fullscreen"><a href="javascript:$j(\'#'+this.id+'\').get(0).fullscreen();"></a></div>';
             available_width -= 20;
         }
-
         // options
         html_code += '<div class="options"><a href="javascript:$j(\'#'+this.id+'\').get(0).DoOptionsHTML();"></a></div>';
         available_width -= 26;
@@ -1826,7 +1885,6 @@ embedVideo.prototype = {
 		if(options_margin<0) options_margin = 0;
 
 		$j('#mv_embedded_options_'+this.id).css('margin-left',options_margin+'px');
-
         // play_pause
         if (this.supports['play_or_pause'])
         {
@@ -1835,14 +1893,13 @@ embedVideo.prototype = {
         }
 
         // closed captioning
-	  	if(this.media_element.hasStreamOfMIMEType('text/cmml') && this.show_meta_link)
+	  	if(this.roe && this.show_meta_link)
         {
 			//add in cmml inline dispaly if roe description avaliable
 			//not to be displayed in stream interface.
             html_code += '<div class="closed_captions"><a href="javascript:$j(\'#'+this.id+'\').get(0).showTextInterface();"></a></div>';
             available_width -= 40;
 	  	}
-
         // volume control
         if(this.supports['volume_control'])
         {
@@ -1854,7 +1911,6 @@ embedVideo.prototype = {
             html_code +='<div class="volume_icon"></div>';
             available_width -= 22;
         }
-
         // time display
         if(this.supports['time_display'] && (available_width > 80))
         {         
@@ -1876,57 +1932,14 @@ embedVideo.prototype = {
                     '	</div><!--seeker-->';
         }
         return html_code;
-    },
-	inheritEmbedObj:function(ready_callback){
-		js_log("f: inheritEmbedObj");
-		//@@note: tricky cuz direct overwrite is not so ideal.. since the extended object is already tied to the dom
-		//clear out any non-base embedObj stuff:
-		if(this.instanceOf){
-			eval('tmpObj = '+this.instanceOf);
-			for(i in tmpObj){
-				if(this['parent_'+i]){
-					this[i]=this['parent_'+i];
-				}else{
-					this[i]=null;
-				}
-			}
-		}
-        if(!this.supports)
-       		this.supports = {};
-		
-		//set up the new embedObj
-        js_log('embedding with ' + this.selected_player.library);
-		var _this = this;
-		this.selected_player.load(function()
-		{
-			js_log('inheriting '+_this.selected_player.library +'Embed to ' + _this.id + ' ' + $j('#'+_this.id).length);
-			//var _this = $j('#'+_this.id).get(0);
-			js_log( 'type of ' + _this.selected_player.library +'Embed + ' +
-					eval('typeof '+_this.selected_player.library +'Embed')); 
-			eval('embedObj = ' +_this.selected_player.library +'Embed;');
-			for(method in embedObj){
-				//parent method preservation for local overwritten methods
-				if(_this[method])
-					_this['parent_' + method] = _this[method];
-				_this[method]=embedObj[method];
-			}
-			if(_this.inheritEmbedOverride){
-				_this.inheritEmbedOverride();
-			}
-			//update controls if possible
-			if(!_this.loading_external_data)
-				_this.refreshControlsHTML();
-				
-			if(ready_callback)
-				ready_callback();
-			js_log('plugin load callback complete');
-		});
-	},
+    },	
 	getHTML : function (){		
 		//@@todo check if we have sources avaliable	
-		js_log('f:getHTML');		
-		var html_code = '';
+		js_log('f : getHTML');
 		
+		
+				
+		var html_code = '';		
         html_code = '<div style="width:'+this.width+'px;" class="videoPlayer">';
 		html_code += '<div id="mv_embedded_player_'+this.id+'">' +
 					this.getThumbnailHTML() + 
@@ -1969,7 +1982,7 @@ embedVideo.prototype = {
         html_code += '</div>';
         js_log('should set: '+this.id);
         $j(this).html(html_code);
-        js_log('set this to: ' + $j(this).html() );	
+        //js_log('set this to: ' + $j(this).html() );	
         //alert('stop');
         //if auto play==true directly embed the plugin
         if(this.autoplay)
@@ -2211,7 +2224,9 @@ embedVideo.prototype = {
     */
     displayHTML:function(html_code)
     {
-        this.stop();
+    	if(!this.supports['overlays'])
+        	this.stop();
+        
         //put select list on-top
         //make sure the parent is relatively positioned:
         $j('#'+this.id).css('position', 'relative');
@@ -2228,29 +2243,6 @@ embedVideo.prototype = {
             fade_in = false;
             $j('#blackbg_'+sel_id).remove();
         }
-/*					<div id="videoComplete">
-						<div id="videoOptionsComplete">
-							<a href="#" class="email">Share Clip via Email</a>
-							<p>or</p>
-							<a href="#">Embed Clip in Blog or Site</a>
-							<div class="embed_code">
-								<textarea name="embed" id="embed">HTML embed code</textarea>
-
-								<button class="copy_to_clipboard">Copy to Clipboard</button>
-							</div>
-						</div>
-					</div>*/
-/*
-					var div_code = '<div id="blackbg_'+sel_id+'" ' +
-			 'style="overflow:auto;position:absolute;display:none;z-index:2;background:black;top:0px;left:0px;' +
-				 'height:'+parseInt(height)+'px;width:'+parseInt(width)+'px;">'+
-//       			 '<span class="displayHTML" id="con_vl_'+this.id+'" style="position:absolute;top:20px;left:20px;color:white;">' +
-	  		'<div style="border:none;position:absolute;top:2px;right:2px;z-index:1"><span>'+
-		    '<a href="#" style="color:white;" onClick="$j(\'#'+sel_id+'\').get(0).closeDisplayedHTML();">close</a></span></div>'+
-             html_code +
-//                close_link+'</span>'+
-      		 '</div>';*/
-
         //fade in a black bg div ontop of everything
          var div_code = '<div id="blackbg_'+sel_id+'" class="videoComplete" ' +
 			 'style="height:'+parseInt(height)+'px;width:'+parseInt(width)+'px;">'+
@@ -2436,7 +2428,6 @@ embedVideo.prototype = {
 	pause : function(){
 		return null
 	},
-
 	/*
 	 * base embed stop (should be overwritten by the plugin)
 	 */

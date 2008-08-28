@@ -58,7 +58,7 @@ mvPlayList.prototype = {
 	loading_external_data:true, //load external data by default
 	tracks:{},
 	default_track:null, // the default track to add clips to.
-	init:function(element){
+	init : function(element){
 		js_log('init');				
 		//add default track & default track pointer: 
 		this.tracks[0]= new trackObj;
@@ -145,8 +145,7 @@ mvPlayList.prototype = {
 	   	  	}
         }else{
         	js_log('error: method doParse not found in plObj');		        	
-        }        
-        		
+        }        		
 	},
 	doWhenParseDone:function(){
 		js_log("do when parse done: "+ this.default_track_id + ' len:'+ this.default_track.clips.length);
@@ -289,9 +288,9 @@ mvPlayList.prototype = {
 				$j(this).html('empty playlist');
 				return ;
 			}		
-			$j(this).html('<div id="dc_'+this.id+'" style="border:solid thin;width:'+this.width+'px;' +
+			$j(this).html('<div id="ptitle_'+this.id+'"></div><div id="dc_'+this.id+'" style="border:solid thin;width:'+this.width+'px;' +
 					'height:'+this.height+'px;position:relative;"></div>');					
-								
+			this.updateTitle();
 			var plObj=this;
 			//append all embed details 
 			//@@todo move into trackObj
@@ -347,7 +346,7 @@ mvPlayList.prototype = {
 			
 			
 								
-			this.updateTitle();
+			
 			//check if we are in sequence mode (for seq layout don't display clips)
 			js_log('seq: ' + this.sequencer);
 			if(this.sequencer=='true'){ //string val
@@ -486,7 +485,7 @@ mvPlayList.prototype = {
 		this.cur_clip.embed.pe_postEmbedJS();
 	},
 	//playlist play
-	play:function(){
+	play : function(){
 		var plObj=this;
 		js_log('pl play');
 		//update cur clip based if sequence playhead set: 
@@ -494,13 +493,14 @@ mvPlayList.prototype = {
 		this.start_clip = this.cur_clip;		
 		this.start_clip_src= this.cur_clip.src;
 		//load up the ebmed object with the playlist (if it supports it) 
-		if(this.cur_clip.embed.playlistSupport() ){
+		if(this.cur_clip.embed.suports['playlist_driver'] ){
+			js_log('clip obj supports playlist driver');
 			this.cur_clip.embed.playMovieAt(this.cur_clip.order);
 		}else{
+			js_log('basic play');
 			//play cur_clip			
 			this.cur_clip.embed.play();		
 		}
-
 	},
 	//wrappers for call to pl object to current embed obj
 	play_or_pause:function(){		
@@ -780,7 +780,8 @@ mvClip.prototype = {
 		if(this.type)init_pl_embed['type'] = this.type;
 		
 		this.embed = new PlMvEmbed(init_pl_embed);		
-		js_log('type of embed:' + typeof(this.embed) + 'seq:' + this.pp.sequencer+' pb:'+ this.embed.play_button);
+		
+		js_log('type of embed:' + typeof(this.embed) + ' seq:' + this.pp.sequencer+' pb:'+ this.embed.play_button);
 	},
 	//returns the mvClip representation of the clip ie stream_name?start_time/end_time
 	getMvClip:function(){
@@ -1048,7 +1049,7 @@ PlMvEmbed.prototype = {
 			}
 		}
 		var videoInterface = new embedVideo(ve);	
-		//js_log('created Embed Video');
+		js_log('created Embed Video');
 		//inherit the videoInterface
 		for(method in videoInterface){			
 			if(method!='style'){
@@ -1453,12 +1454,13 @@ var smilPlaylist ={
 		//@@todo get/parse meta: 
 		var meta_tags = this.data.getElementsByTagName('meta');
 		$j.each(meta_tags, function(i,meta_elm){
+			js_log("ON META TAG: "+meta_elm.getAttribute('name'));
 			if(meta_elm.hasAttribute('name') && meta_elm.hasAttribute('content')){
 				if(meta_elm.getAttribute('name')=='title' ){
-					_this.title = meta_elm.getAttribute('content');
+					_this.title = meta_elm.getAttribute('content');					
 				}
 			}
-		});		
+		});				
 		//add transition objects: 
 		var transition_tags = this.data.getElementsByTagName('transition');			
 		$j.each(transition_tags, function(i,trans_elm){		

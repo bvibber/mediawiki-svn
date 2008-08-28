@@ -175,9 +175,6 @@ var oggplayEmbed = {
     	}
     	js_log('this.ogg: '+ this.ogg);
 	},
-	playlistSupport:function(){
-		return true;
-	},
 	playlistPrev:function(){
 		if(this.ogg){
 			this.ogg.playlistPrev();
