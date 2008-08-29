@@ -83,7 +83,10 @@ var vlcEmbed = {
 	        }				
 		//}
 	},
-
+	playMovieAt : function (order){
+		//@@todo add clips to playlist after (order) and then play
+		this.play();
+	},
     /* 
     * updates the status time
     */

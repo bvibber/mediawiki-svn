@@ -786,8 +786,7 @@ function mv_embed(){
 	   		var videoInterface = new embedVideo(video_elements[i]);	   		
    			//swap in:
 	   		if(swapEmbedVideoElement(video_elements[i], videoInterface)){
-	   			//remove pre_loading_div_
-	   			$j('#pre_loading_div_'+videoInterface.vid_id).remove();
+	   			//remove pre_loading_div_	   			
 	   			i--;	   				   			
 	   		}else{
 	   			//replace loading with failed 
@@ -853,8 +852,7 @@ function do_playlist_functions(){
 		
 			//create new playlist interface:
 			var playlistInterface = new mvPlayList( playlist_elements[i] );
-			if(swapEmbedVideoElement(playlist_elements[i], playlistInterface) ){
-				$j('#pre_loading_div_'+pl_id);
+			if(swapEmbedVideoElement(playlist_elements[i], playlistInterface) ){				
 				i--;
 			}
 		}
@@ -895,6 +893,8 @@ function swapEmbedVideoElement(video_element, videoInterface){
   	$j(video_element).after(embed_video).remove();	
   	js_log('did swap');    	  
   	$j('#'+embed_video.id).get(0).on_dom_swap();
+  	//remove loading: 
+  	$j('#pre_loading_div_'+embed_video.id).remove();
 	// now that "embed_video" is stable, do more initialization (if we are ready)
 	if($j('#'+embed_video.id).get(0).loading_external_data==false && 
 	   	$j('#'+embed_video.id).get(0).init_with_sources_loadedDone==false){
@@ -1271,6 +1271,8 @@ mediaSource.prototype =
         else
             this.mime_type = this.detectType(this.uri);
 
+		js_log("MIME TYPE: "+  this.mime_type );
+
         if (element.hasAttribute("title"))
             this.title = element.getAttribute("title");
         else
@@ -1421,7 +1423,7 @@ mediaElement.prototype =
     init:function(video_element)
     {
         var _this = this;
-        js_log('Initializing mediaElement...');
+        js_log('Initializing mediaElement...' + video_element);
         this.sources = new Array();
         this.thumbnail = mv_default_thumb_url;
         // Process the <video> element
@@ -1469,13 +1471,12 @@ mediaElement.prototype =
     /** selects the default source via cookie preference, default marked, or by id order
      * */
     autoSelectSource:function(){ 
-    	//@@todo read user preference for source
-    	
+    	//@@todo read user preference for source    	
     	// Select the default source
-    	var playable_sources = this.getPlayableSources();
+    	var playable_sources = this.getPlayableSources();    	    
         for (var source in playable_sources){
             if(playable_sources[source].marked_default){
-                this.selected_source = playable_sources[source];
+                this.selected_source = playable_sources[source];                
                 return true;
             }
         }        
@@ -1508,7 +1509,7 @@ mediaElement.prototype =
     },
     isPlayableType:function(mime_type)
     {
-        return mime_type=='video/ogg' || mime_type=='video/annodex' || mime_type=='video/x-flv';
+        return mime_type=='video/ogg' || mime_type=='ogg/video' || mime_type=='video/annodex' || mime_type=='video/x-flv';
     },
     /** Adds a single mediaSource using the provided element if
         the element has a 'src' attribute.        
@@ -1516,6 +1517,7 @@ mediaElement.prototype =
     */
     tryAddSource:function(element)
     {
+    	js_log('f:tryAddSource');
         if (!element.hasAttribute('src'))
             return;
         var new_src = element.getAttribute('src');
@@ -1527,20 +1529,23 @@ mediaElement.prototype =
         		return false;
         	}
         }
-        var source = new mediaSource(element);
+        var source = new mediaSource(element);        
         this.sources.push(source);        
+        js_log('pushed source to stack'+ source + 'sl:'+this.sources.length);
     },
     getPlayableSources: function(){
     	 var playable_sources= new Array();
-    	 for(var i in this.sources){
+    	 for(var i in this.sources){    	 	    	 	
     	 	if(this.isPlayableType(this.sources[i].mime_type)){
     	 		if(mv_restrict_roe_time_source){
     	 			if(this.sources[i]['start'])
     	 				continue;	
     	 		}
     	 		playable_sources.push(this.sources[i]);
+    	 	}else{
+    	 		js_log("type "+ this.sources[i].mime_type + 'is not playable');
     	 	}
-    	 }
+    	 }    	 
     	 return playable_sources;
     },
     /** Imports media sources from ROE data.
@@ -1642,7 +1647,7 @@ embedVideo.prototype = {
 	            //js_log('attr:' + attr + ' val: ' + video_attributes[attr] +" "+ 'elm_val:' + element.getAttribute(attr) + "\n (set by attr)");
 	        }
 	    }
-	    js_log("ROE SET: "+ this.roe);
+	    //js_log("ROE SET: "+ this.roe);
 	    //if style is set override width and height
 	    var dwh = mv_default_video_size.split('x');
 	    this.width = element.style.width ? element.style.width : dwh[0];
@@ -1660,8 +1665,7 @@ embedVideo.prototype = {
         this.media_element = new mediaElement(element);                         	
 	},
 	on_dom_swap: function(){
-		js_log('f:on_dom_swap');
-		js_log("ROE SET: "+ this.roe);
+		js_log('f:on_dom_swap');		
 		// Process the provided ROE file... if we don't yet have sources
         if(this.roe && this.media_element.sources.length==0 ){
 			js_log('loading external data');
@@ -1707,7 +1711,7 @@ embedVideo.prototype = {
 		this.inheritEmbedObj();
 
   		//update HTML
-  		$j('#'+embed_video.id).get(0).getHTML();
+  		//$j('#'+embed_video.id).get(0).getHTML();
 
 		//js_log('HTML FROM IN OBJECT' + this.getHTML());
 		//return this object:
@@ -1753,13 +1757,11 @@ embedVideo.prototype = {
 				
 			if(ready_callback)
 				ready_callback();
-			js_log('plugin load callback complete');
+			js_log('plugin load callback complete');					
 			
-			js_log("ROE SET: "+ _this.roe);
-			
-			js_log("READY TO PLAY:"+_this.id);
-			
+			js_log("READY TO PLAY:"+_this.id);			
 			_this.ready_to_play=true;
+			_this.getHTML();
 		});
 	},
     selectPlayer:function(player)
@@ -1935,9 +1937,7 @@ embedVideo.prototype = {
     },	
 	getHTML : function (){		
 		//@@todo check if we have sources avaliable	
-		js_log('f : getHTML');
-		
-		
+		js_log('f : getHTML');			
 				
 		var html_code = '';		
         html_code = '<div style="width:'+this.width+'px;" class="videoPlayer">';
@@ -2099,7 +2099,8 @@ embedVideo.prototype = {
 	},
     DoOptionsHTML:function()
     {
-        $j('#mv_embedded_options_'+this.id).toggle();
+    	var sel_id = (this.pc!=null)?this.pc.pp.id:this.id;
+        $j('#mv_embedded_options_'+sel_id).toggle();
         return;
 
         var thumbnail = this.media_element.getThumbnailURL();
@@ -2840,7 +2841,7 @@ if (typeof DOMParser == "undefined") {
 */
 function js_log(string){
   if( window.console ){
-        console.log(string);
+        console.log(string);        
   }else{
      /*
       * IE and non-firebug debug:
@@ -2854,6 +2855,8 @@ function js_log(string){
      	log_elm.value+=string+"\n";
      }*/
    }
+   //in case of "throw error" type usage
+   return false;
 }
 function getNextHighestZindex(obj){
 	var highestIndex = 0;

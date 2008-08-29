@@ -127,7 +127,7 @@ mvPlayList.prototype = {
 		});
 	},	
 	getPlaylist:function(){		
-		js_log("getPlaylist: " + this.srcType );
+		js_log("f:getPlaylist: " + this.srcType );
 		//@@todo lazy load plLib
 		eval('var plObj = '+this.srcType+'Playlist;');	
    	  	//import methods from the plObj to this
@@ -141,24 +141,25 @@ mvPlayList.prototype = {
 	   	  	if( this.doParse() ){
 	   	  		this.doWhenParseDone();	
 	   	  	}else{
-	   	  		js_log("failed to parse playlist");
+	   	  		js_log("error: failed to parse playlist");
 	   	  		//error or parse needs to do ajax requests	
 	   	  	}
         }else{
-        	js_log('error: method doParse not found in plObj');		        	
+        	js_log('error: method doParse not found in plObj'+ this.srcType);		        	
         }        		
 	},
-	doWhenParseDone:function(){
-				
+	doWhenParseDone:function(){				
+		js_log('f:doWhenParseDone');
 		//do additional int for clips: 
 		var _this = this;
-		_this.clip_ready_count=0;
+		_this.clip_ready_count=0;		
 		for(var i in this.default_track.clips){
 			var clip = 	this.default_track.clips[i];
 			if(clip.embed.ready_to_play){
 				_this.clip_ready_count++;
-				continue;	
+				continue;
 			}
+			js_log('clip sources count: '+ clip.embed.media_element.sources.length);		
 			clip.embed.on_dom_swap();
 			if(clip.embed.loading_external_data==false && 
 	   			clip.embed.init_with_sources_loadedDone==false){
@@ -166,13 +167,17 @@ mvPlayList.prototype = {
 			}					
 		}
 		//@@todo for some plugins we have to conform types of clips
-		// ie vlc can play flash -> ogg -> whatever 
+		// ie vlc can play flash _followed_by_ ogg _followed_by_ whatever 
 		// 		but
 		// native ff 3.1a2 can only play ogg 
 		if(_this.clip_ready_count == this.getClipCount() ){
 			js_log("done initing all clips");
-		}
-		js_log("do Parse done with:" + _this.clip_ready_count );					    	    	
+			this.loading=false;
+			this.getHTML();
+		}else{
+			js_log("only "+ _this.clip_ready_count +" clips done, scheduling callback:");
+			setTimeout('document.getElementById(\''+this.id+'\').doWhenParseDone(false)', 250);
+		}				    	    	
 	},
 	doWhenClipLoadDone:function(){
 		this.loading=false;
@@ -180,32 +185,29 @@ mvPlayList.prototype = {
 	},
 	getPlDuration:function(){
 		//js_log("GET PL DURRATION for : "+ this.tracks[this.default_track_id].clips.length + 'clips');
-		if(!this.pl_duration){
-			durSum=0;
-			$j.each(this.default_track.clips, function(i,clip){	
-				if(clip.embed){			
-					js_log('add : '+ clip.getDuration());
-					durSum+=clip.getDuration();
-				}else{
-					js_log("ERROR: clip " +clip.id + " not ready");
-				}
-			});
-			this.pl_duration=durSum;
-		}
+		durSum=0;
+		$j.each(this.default_track.clips, function(i,clip){	
+			if(clip.embed){			
+				js_log('add : '+ clip.getDuration());
+				durSum+=clip.getDuration();
+			}else{
+				js_log("ERROR: clip " +clip.id + " not ready");
+			}
+		});
+		this.pl_duration=durSum;
+		js_log("return dur: " + this.pl_duration);
 		return this.pl_duration;
 	},
 	getPlDurationNTP:function(){
 		//get duration in ms and return in NTP
-		return seconds2ntp(this.getPlDuration()/1000);
+		return seconds2ntp(this.getPlDuration());
 		//return 'wtf';
 	},
-	//need updates to support json_injection style playlist/smil
 	getDataSource:function(){	
-		js_log("get data source");
+		js_log("f:getDataSource "+ this.src);
 		//determine the type / first is it m3u or xml? 	
 		var pl_parent = this;
 		this.makeURLAbsolute();
-		js_log("src:" + this.src);
 		if(this.src!=null){
 			do_request(this.src, function(data){
 				pl_parent.data=data;
@@ -313,18 +315,22 @@ mvPlayList.prototype = {
 			if(this.default_track.getClipCount()==0){
 				$j(this).html('empty playlist');
 				return ;
-			}		
-			$j(this).html('<div id="ptitle_'+this.id+'"></div><div id="dc_'+this.id+'" style="border:solid thin;width:'+this.width+'px;' +
-					'height:'+this.height+'px;position:relative;"></div>');					
-			this.updateTitle();
+			}					
 			var plObj=this;
-			//append all embed details 
-			//@@todo move into trackObj
+			var title_bar_height=20;
+			var control_height = 29;
+			//setup layout for title and dc_ clip container  
+			$j(this).html('<div id="dc_'+this.id+'" style="width:'+this.width+'px;' +
+					'height:'+(this.height+title_bar_height + control_height)+'px;position:relative;">' +
+					'	<div style="font-size:13px" id="ptitle_'+this.id+'"></div>' +
+					'</div>');					
+			this.updateTitle();
+			//@@todo move into trackObj?		
 			$j.each(this.default_track.clips, function(i, clip){
 				$j('#dc_'+plObj.id).append('<div class="clip_container" id="clipDesc_'+clip.id+'" '+
 					'style="display:none;position:absolute;text-align: center;width:'+plObj.width + 'px;'+
-					'height:'+(plObj.height)+'px;'+
-					'top:27px;left:0px"></div>');	
+					'height:'+(plObj.height )+'px;'+
+					'top:20px;left:0px"></div>');	
 				//update the embed html: 					
 				clip.embed.height=plObj.height;
 				clip.embed.width=plObj.width;
@@ -519,7 +525,8 @@ mvPlayList.prototype = {
 		this.start_clip = this.cur_clip;		
 		this.start_clip_src= this.cur_clip.src;
 		//load up the ebmed object with the playlist (if it supports it) 
-		if(this.cur_clip.embed.suports['playlist_driver'] ){
+		if(this.cur_clip.embed.supports['playlist_driver'] ){
+			//load the playlist into the embed object: 			
 			js_log('clip obj supports playlist driver');
 			this.cur_clip.embed.playMovieAt(this.cur_clip.order);
 		}else{
@@ -638,6 +645,7 @@ mvPlayList.prototype = {
 			if(!this.cur_clip)this.cur_clip=clipObj;
 		}		
 		this.default_track.addClip(clipObj, pos);
+		
 	},
 	swapClipDesc: function(req_clipID, callback){
 		//hide all but the requested
@@ -805,9 +813,12 @@ mvClip.prototype = {
 		
 		if(this.type)init_pl_embed['type'] = this.type;
 		
-		this.embed = new PlMvEmbed(init_pl_embed);		
+		this.embed = new PlMvEmbed(init_pl_embed);
+				
+		js_log('ve src len:'+ this.embed.media_element.sources.length);
+		//js_log('media element:'+ this.embed.media_element.length);
 		
-		js_log('type of embed:' + typeof(this.embed) + ' seq:' + this.pp.sequencer+' pb:'+ this.embed.play_button);
+		//js_log('type of embed:' + typeof(this.embed) + ' seq:' + this.pp.sequencer+' pb:'+ this.embed.play_button);
 	},
 	//returns the mvClip representation of the clip ie stream_name?start_time/end_time
 	getMvClip:function(){
@@ -883,8 +894,8 @@ mvClip.prototype = {
 					});
 				}								
 				//set up the embed object for this clip: 
-				thisClip.setUpEmbedObj();	
-				
+				thisClip.setUpEmbedObj();					
+				js_log('thisClip len:'+ thisClip.embed.media_element.sources.length);
 				//check if we are in callbackmode or clip batch load
 				js_log('callback: '+ callback);
 				if(typeof callback!='undefined'){
@@ -940,6 +951,7 @@ mvClip.prototype = {
 		//return duration if clips already has duration
 		if(this.duration)return this.duration;
 		if(!this.embed)this.setUpEmbedObj();
+		js_log("gDuration:setupEmbed" + this.embed.media_element.sources.length);
 		return this.embed.getDuration();
 	},
 	setBaseEmbedDim:function(o){
@@ -1055,10 +1067,11 @@ var PlMvEmbed=function(vid_init){
 	//extend ve with all this 
 	this.init(vid_init);	
 	for(method in this){
-		if(method!='readyState'){			
+		if(method!='readyState'){					
 			ve[method]= this[method];
 		}
 	}
+	js_log('ve src len:'+ ve.media_element.sources.length);
 	return ve;
 }
 //all the overwritten and new methods for playlist extension of mv_embed
@@ -1075,7 +1088,7 @@ PlMvEmbed.prototype = {
 			}
 		}
 		var videoInterface = new embedVideo(ve);	
-		js_log('created Embed Video');
+		js_log('created Embed Video src len:'+ videoInterface.media_element.sources.length);
 		//inherit the videoInterface
 		for(method in videoInterface){			
 			if(method!='style'){
@@ -1088,6 +1101,7 @@ PlMvEmbed.prototype = {
 			}
 		}
 		//continue init (load sorces) 
+		js_log('this Video src len:'+ this.media_element.sources.length);
 		
 	},
 	stop:function(){
@@ -1103,14 +1117,14 @@ PlMvEmbed.prototype = {
 		this.pe_stop();
 		var pl_height = (plObj.sequencer=='true')?plObj.height+27:plObj.height;
 		//restore control offsets: 		
-		if(this.pc.pp.controls){
+		/*(if(this.pc.pp.controls){
 			$j('#dc_'+plObj.id).animate({
 				height:pl_height
 			},"slow");
-		}		
-		if(plObj.sequencer=='true'){			
+		}*/	
+		//if(plObj.sequencer=='true'){			
 			plEmbed.getHTML();
-		}else{
+		/*}else{
 			//fade in elements
 			$j('#big_play_link_'+this.id+',#lb_'+this.id+',#le_'+this.id+',#seqThumb_'+plObj.id+',#pl_desc_txt_'+this.pc.id).fadeIn("slow");	
 			//animate restor of resize 
@@ -1126,7 +1140,7 @@ PlMvEmbed.prototype = {
 				//$j('#seqThumb_'+plObj.id).css({position:'absolute',bottom:Math.round(this.height* pl_layout.seq_nav)});
 				//$j('#'+plEmbed.id+',#dc_'+plEmbed.id).css({position:'absolute', zindex:0,width:tw,height:th});		
 			});
-		}
+		}*/
 	},
 	play:function(){
 		js_log('pl eb play');
@@ -1139,16 +1153,17 @@ PlMvEmbed.prototype = {
 		}
 		mv_lock_vid_updates=true; 
 		//if we have controls expand dc so we can display them 
-		if(plObj.controls){
+		/*if(plObj.controls){
 			$j('#dc_'+plObj.id).animate({
 				height:(parseInt(plObj.height)+80)
 			},"slow");
-		}
+		}*/
 		js_log('controls: '+plObj.controls);
 		//fade out interface elements
-		$j('#big_play_link_'+this.id+',#seqThumb_'+plObj.id+',#pl_desc_txt_'+this.pc.id).fadeOut("slow");		
+		/*$j('#big_play_link_'+this.id+',#seqThumb_'+plObj.id+',#pl_desc_txt_'+this.pc.id).fadeOut("slow");*/		
 		js_log('got here in play');
-		$j('#'+this.id+',#dc_'+this.id).css({
+		plEmbed.pe_play();			
+		/*$j('#'+this.id+',#dc_'+this.id).css({
 			position:'absolute', zindex:5,
 			width:plObj.width,
 			height:plObj.height
@@ -1161,7 +1176,7 @@ PlMvEmbed.prototype = {
 			plEmbed.height=plObj.height;
 			plEmbed.width=plObj.width;
 			plEmbed.pe_play();						
-		});	
+		});	*/
 	},
 	//do post interface operations
 	postEmbedJS:function(){		
@@ -1263,7 +1278,8 @@ var m3uPlaylist = {
 					//js_log('add url: '+i + ' '+ n);
 					var cur_clip = new mvClip({type:'srcClip',id:'p_'+this_pl.id+'_c_'+inx,pp:this_pl,src:n,order:inx});
 					//setup the embed object 
-					cur_clip.setUpEmbedObj();	
+					cur_clip.setUpEmbedObj();
+					js_log('m3uPlaylist len:'+ thisClip.embed.media_element.sources.length);	
 					this_pl.addCliptoTrack(cur_clip);					
 					inx++;
 				}
@@ -1403,6 +1419,7 @@ var itunesPlaylist = {
 			}
 			//set up the embed object now that all the values have been set
 			cur_clip.setUpEmbedObj();
+			
 			//add the current clip to the clip list
 			this.addCliptoTrack(cur_clip);
 		}
@@ -1498,6 +1515,7 @@ var smilPlaylist ={
 				js_log('skipping transition: (missing id) ' + trans_elm );
 			}
 		});
+		js_log('loaded transitions');		
 		//add seq (latter we will have support than one) 
 		var seq_tags = this.data.getElementsByTagName('seq');
 		$j.each(seq_tags, function(i,seq_elm){
@@ -1516,18 +1534,19 @@ var smilPlaylist ={
 								}								
 							);
 					if(cur_clip){
-						//set up embed:
+						//set up embed:						
 						cur_clip.setUpEmbedObj();
+						js_log('smil cur_clip len:'+ cur_clip.embed.media_element.sources.length);
 						//add clip to track: 
 						_this.addCliptoTrack(cur_clip);						
 						//valid clip up the order inx: 
 						inx++;
 					}				
 				}
-		});
+			});
 			//var cur_clip = new mvClip({type:'srcClip',id:'p_'+this.id+'_c_'+i,pp:this,order:i});	
 		});
-		js_log('loaded transitions');		
+		js_log("done proc seq tags");		
 		return true;
 	}
 }
@@ -1570,7 +1589,16 @@ mvSMILClip.prototype = {
 		//mv_embed specific property: 
 		if(smil_clip_element.hasAttribute('poster'))
 			this['img'] = smil_clip_element.getAttribute('poster');
-			
+		
+		//lookup and assing copies of transitions 
+		// (since transition needs to hold some per-instance state info)		
+		if(this.transIn && this.pp.transitions[this.transIn])			
+			this.transIn =this.pp.transitions[this.transIn].clone();		
+		
+		if(this.transOut && this.pp.transitions[this.transOut])			
+			this.transOut =this.pp.transitions[this.transOut].clone();
+		
+		
 		//check if the transition is a valid id:		
 		return this;		
 	},
@@ -1601,17 +1629,28 @@ var mv_supported_transition_attr = new Array(
 	'dur'
 );
 var transitionObj = function(element) {		
-	return this.init(element);
+	this.init(element);
 };
 transitionObj.prototype = {	
+	animation_done:false,
 	init:function(element){
 		//load supported attributes: 	
 		var _this = this;
 		$j.each(mv_supported_transition_attr, function(i, attr){
 			if(element.getAttribute(attr))
-				this[attr]= element.getAttribute(attr);
-		});		
-	}
+				_this[attr]= element.getAttribute(attr);
+		});				
+		//@@todo proccess duration (for now just srip s) per: 
+		//http://www.w3.org/TR/SMIL3/smil-timing.html#Timing-ClockValueSyntax
+		if(_this.dur)
+			_this.dur = parseInt(_this.dur.replace('s', ''));
+	},
+	clone:function(){
+		var cObj = new this.constructor();
+		for(var i in this)
+			cObj[i]=this[i];				
+		return cObj;
+	}	
 }
 /***************************
  * end SMIL specific code
@@ -1638,6 +1677,7 @@ trackObj.prototype = {
 		js_log('ignored pos: '+ pos);
 		//for now just add to the end: 
 		this.clips.push(clipObj);
+		js_log('addClip cur_clip len:'+ clipObj.embed.media_element.sources.length);		
 	},
 	getClipCount:function(){		
 		return this.clips.length;
