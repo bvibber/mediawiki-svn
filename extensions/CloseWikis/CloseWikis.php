@@ -65,7 +65,7 @@ class CloseWikis {
 	static function getList() {
 		global $wgMemc;
 		$cached = $wgMemc->get( 'closedwikis' );
-		if( is_array( $cached ) ) 
+		if( is_array( $cached ) )
 			return $cached;
 		$list = array();
 		$dbr = self::getSlaveDB();
