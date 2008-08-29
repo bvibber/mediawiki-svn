@@ -13,6 +13,7 @@ $messages = array();
 $messages['en'] = array(
 	'metavid' => 'Metavid page',
 	'mv_missing_stream' => 'Missing stream: $1',
+	'specialpages-group-mv_group'=> 'MetaVidWiki special pages',
 
 	#stream/files key descriptions:
 	'mv_ogg_low_quality' => 'Web streamable - Ogg Theora 300kbs',

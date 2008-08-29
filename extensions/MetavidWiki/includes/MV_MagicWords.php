@@ -85,9 +85,17 @@ class MV_MagicWords{
 			return "error: no person provided";
 		}
 		$ms = new MV_SpecialMediaSearch();		
-		$_REQUEST['limit']=$this->params['num_results'];		
+		$_REQUEST['limit']=$this->params['num_results'];	
+		
+		//set limit by global: 
+		global $mvMediaSearchResultsLimit;
+		$pgsl = $mvMediaSearchResultsLimit;
+		$mvMediaSearchResultsLimit	=$this->params['num_results'];
+		
 		$ms->filters[] = array ( 'a' => 'and', 't' => 'spoken_by','v' =>$person_name );
 		$ms->doSearch($log_search=false);
+		
+		$mvMediaSearchResultsLimit = $pgsl;
 		return $ms->getUnifiedResultsHTML($show_sidebar=false);
 	}
 	function getStartTime(){

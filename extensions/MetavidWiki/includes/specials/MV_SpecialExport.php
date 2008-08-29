@@ -28,17 +28,25 @@ class MvVideoFeed extends SpecialPage{
 		if (method_exists('SpecialPage', 'setGroup')) { 
 			parent::setGroup('MvVideoFeed', 'mv_group');	
 		}
+		
+	
 	}
 }
 class MvExportStream extends SpecialPage{
 	function __construct(){
 		parent::__construct('MvExportStream');
+			
 		$MvSpecialExport = new MV_SpecialExport('stream');
 	}
 }
 class MvExportSequence extends SpecialPage{	
 	function __construct(){
-		parent::__construct('MvExportSequence');
+		parent::__construct('MvExportSequence');	
+		if (method_exists('SpecialPage', 'setGroup')) { 
+			parent::setGroup('MvExportSequence', 'mv_group');	
+		}				
+	}
+	function execute(){
 		global $wgRequest;
 		//@@todo replace this ugly hack .. don't know how to get around the missing param atm:
 		$tl = $wgRequest->getVal('title');
@@ -49,10 +57,6 @@ class MvExportSequence extends SpecialPage{
 		//print "par: ". $par ;
 		//die;
 		$MvSpecialExport = new MV_SpecialExport('sequence', $par);
-
-		if (method_exists('SpecialPage', 'setGroup')) { 
-			parent::setGroup('MvExportSequence', 'mv_group');	
-		}		
 	}
 }
 function wfSpecialMvExportSequence(){
@@ -60,13 +64,19 @@ function wfSpecialMvExportSequence(){
 }
 class MvExportSearch extends SpecialPage{
 	function __construct(){
-		parent::__construct('MvExportSearch');
+		parent::__construct('MvExportSearch');				
+	}
+	function execute(){
 		$MvSpecialExport = new MV_SpecialExport('search');
 	}
+	
 }
 class MvExportAsk extends SpecialPage{
 	function __construct(){
-		parent::__construct('MvExportSearch');
+		parent::__construct('MvExportSearch');				
+
+	}
+	function execute(){
 		$MvSpecialExport = new MvExportAsk('ask');
 	}
 }

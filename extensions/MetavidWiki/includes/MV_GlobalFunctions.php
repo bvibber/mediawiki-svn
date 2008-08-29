@@ -157,7 +157,7 @@ function mvSetupExtension(){
 	$wgSpecialPages['MV_SpecialSearch']			= array('MV_SpecialSearch');
 	
 	$wgAutoloadClasses['MVAdmin']				= dirname(__FILE__) .'/specials/MV_SpecialMVAdmin.php';
-	$wgSpecialPages['MVAdmin']					= array('MV_SpecialMVAdmin');
+	$wgSpecialPages['MVAdmin']					= array('MVAdmin');
 	//require_once( dirname(__FILE__) . '/specials/MV_SpecialCRUDStream.php');
 	//require_once( dirname(__FILE__) . '/specials/MV_SpecialListStreams.php');
 	//require_once( dirname(__FILE__) . '/specials/MV_SpecialExport.php');
@@ -176,7 +176,7 @@ function mvSetupExtension(){
 	$wgHooks['TitleMoveComplete'][]			= 'mvMoveHook';
 	
 	//note this hook is not avaliable by default in medaiwiki 
-	//to use this hook you should add this function to moveTo in Title.php:
+	//to use this hook you should add this function to moveTo() in Title.php:
  	/*
  	 $err = wfRunHooks('TitleisValidMove', array( &$this, &$nt, &$wgUser, $auth));
 		 if( is_string( $err ) ) {
@@ -190,9 +190,6 @@ function mvSetupExtension(){
 	$wgHooks['CustomEditor'][] = 'mvCustomEditor';
 	$wgParser->setHook( 'sequence', 'mvSeqTag' );
 
-	/*$wgHooks['LanguageGetMagic'][]       = 'mvMagicParserFunction_Magic';	
- 	$wgParser->setFunctionHook( 'example', 'mvMagicParserFunction_Render' );	
-	*/
 	$wgParser->setFunctionHook( 'mvData', 'mvMagicParserFunction_Render' );
 	
 	//$wgHooks['BeforePageDisplay'][] = 'mvDoSpecialPage';	
