@@ -20,6 +20,17 @@
  * http://www.gnu.org/copyleft/gpl.html
  */
 
+$wgExtensionCredits['other'][] = array(
+	'name'           => 'OpenSearchXml',
+	'svn-date'       => '$LastChangedDate$',
+	'svn-revision'   => '$LastChangedRevision$',
+	'description'    => 'OpenSearch JSON interface provides for text extracts',
+	'descriptionmsg' => 'opensearchxml-desc',
+	'author'         => 'Brion Vibber'
+);
+
+$wgExtensionMessagesFiles['OpenSearchXml'] = dirname(__FILE__) . '/OpenSearchXml.i18n.php';
+
 $wgAPIModules['opensearch'] = 'ApiOpenSearchXml';
 $wgAutoloadClasses['ApiOpenSearchXml'] =
 	dirname(__FILE__) . '/ApiOpenSearchXml.php';
