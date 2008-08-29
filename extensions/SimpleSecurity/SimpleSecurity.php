@@ -21,7 +21,7 @@
 if (!defined('MEDIAWIKI'))                     die('Not an entry point.');
 if (version_compare($wgVersion, '1.11.0') < 0) die('Sorry, this extension requires at least MediaWiki version 1.11.0');
 
-define('SIMPLESECURITY_VERSION', '4.2.8, 2008-08-28');
+define('SIMPLESECURITY_VERSION', '4.2.9, 2008-08-30');
 
 # Global security settings
 $wgSecurityMagicIf              = "ifusercan";                  # the name for doing a permission-based conditional
@@ -46,7 +46,7 @@ array_unshift($wgExtensionFunctions, 'wfSetupSimpleSecurity');
 
 $wgHooks['LanguageGetMagic'][] = 'wfSimpleSecurityLanguageGetMagic';
 $wgExtensionCredits['parserhook'][] = array(
-	'name'        => "SimpleSecurity",
+	'name'        => 'SimpleSecurity',
 	'author'      => '[http://www.organicdesign.co.nz/User:Nad User:Nad]',
 	'description' => 'Extends the MediaWiki article protection to allow restricting viewing of article content',
 	'url'         => 'http://www.mediawiki.org/wiki/Extension:Simple_Security',
@@ -395,16 +395,13 @@ function wfSimpleSecurityDBHook() {
 	$wgDBtype = 'SimpleSecurity';
 	eval("class Database{$wgDBtype} extends Database{$oldDB}".' {
 		public function query($sql, $fname = "", $tempIgnore = false) {
-			global $wgSimpleSecurity;
 			$count = false;
-			if (is_object($wgSimpleSecurity))
-				$patched = preg_replace_callback("/(?<=SELECT ).+?(?= FROM)/", "SimpleSecurity::patchSQL", $sql, 1, $count);
+			$patched = preg_replace_callback("/(?<=SELECT ).+?(?= FROM)/", array("SimpleSecurity", "patchSQL"), $sql, 1, $count);
 			return parent::query($count ? $patched : $sql, $fname, $tempIgnore);
 		}
 		function fetchObject(&$res) {
-			global $wgSimpleSecurity;
 			$row = parent::fetchObject($res);
-			if (is_object($wgSimpleSecurity) && isset($row->old_text)) SimpleSecurity::validateRow($row);
+			if (isset($row->old_text)) SimpleSecurity::validateRow($row);
 			return $row;
 		}
 	}');
