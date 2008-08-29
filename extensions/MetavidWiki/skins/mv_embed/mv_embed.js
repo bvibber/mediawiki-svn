@@ -844,7 +844,7 @@ function do_playlist_functions(){
   				playlist_elements[i].id = 'v'+ global_ogg_list.length;
             }        
 			//add loading: 
-			parent_elm = video_elements[i].parentNode;     
+			parent_elm = playlist_elements[i].parentNode;     
 	        load_div = document.createElement('div');
 	        load_div.setAttribute("id", 'pre_loading_div_'+pl_id);
 	        load_div.innerHTML=getMsg('loading_txt');        

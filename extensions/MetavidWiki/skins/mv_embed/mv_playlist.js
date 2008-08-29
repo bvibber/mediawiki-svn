@@ -50,6 +50,7 @@ var mvPlayList = function(element) {
 mvPlayList.prototype = {
 	pl_duration:null,
 	update_tl_hook:null,
+	clip_ready_count:0,
 	cur_clip:null,	
 	start_clip:null, 
 	start_clip_src:null,
@@ -148,9 +149,34 @@ mvPlayList.prototype = {
         }        		
 	},
 	doWhenParseDone:function(){
-		js_log("do when parse done: "+ this.default_track_id + ' len:'+ this.default_track.clips.length);
-		this.loading=false;	    	
-	    this.getHTML();	
+				
+		//do additional int for clips: 
+		var _this = this;
+		_this.clip_ready_count=0;
+		for(var i in this.default_track.clips){
+			var clip = 	this.default_track.clips[i];
+			if(clip.embed.ready_to_play){
+				_this.clip_ready_count++;
+				continue;	
+			}
+			clip.embed.on_dom_swap();
+			if(clip.embed.loading_external_data==false && 
+	   			clip.embed.init_with_sources_loadedDone==false){
+					clip.embed.init_with_sources_loaded();
+			}					
+		}
+		//@@todo for some plugins we have to conform types of clips
+		// ie vlc can play flash -> ogg -> whatever 
+		// 		but
+		// native ff 3.1a2 can only play ogg 
+		if(_this.clip_ready_count == this.getClipCount() ){
+			js_log("done initing all clips");
+		}
+		js_log("do Parse done with:" + _this.clip_ready_count );					    	    	
+	},
+	doWhenClipLoadDone:function(){
+		this.loading=false;
+		this.getHTML();
 	},
 	getPlDuration:function(){
 		//js_log("GET PL DURRATION for : "+ this.tracks[this.default_track_id].clips.length + 'clips');
@@ -1061,6 +1087,8 @@ PlMvEmbed.prototype = {
 				}
 			}
 		}
+		//continue init (load sorces) 
+		
 	},
 	stop:function(){
 		//set up connivance pointer to parent playlist
