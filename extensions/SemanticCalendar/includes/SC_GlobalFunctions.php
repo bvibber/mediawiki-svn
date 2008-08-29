@@ -7,7 +7,7 @@
 
 if (!defined('MEDIAWIKI')) die();
 
-define('SC_VERSION','0.2.7');
+define('SC_VERSION','0.2.8');
 
 $wgExtensionCredits['parserhook'][]= array(
 	'name'        => 'Semantic Calendar',
