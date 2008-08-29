@@ -178,8 +178,8 @@ public final class Decode {
     if(pbi.frameNQIS == 1) {
       /*If this frame has only a single qi value, then just set it in all coded
          fragments.*/
-      for(int frag = 0; frag < ncoded_frags; ++frag) {
-          pbi.FragQs[frag] = 0;
+      for(int coded_frag = 0; coded_frag < ncoded_frags; ++coded_frag) {
+          pbi.FragQs[pbi.CodedBlockList[coded_frag]] = 0;
       }
     } else{
       Buffer opb = pbi.opb;
@@ -196,17 +196,17 @@ public final class Decode {
       val = opb.readB(1);
       flag = val;
       run_count = nqi0 = 0;
-      int frag = 0;
-      while(frag < ncoded_frags){
+      int coded_frag = 0;
+      while(coded_frag < ncoded_frags){
         boolean full_run;
         run_count = longRunBitStringDecode();
         full_run = (run_count >= 4129);
         do {
-          pbi.FragQs[frag++] = (byte)flag;
+          pbi.FragQs[pbi.CodedBlockList[coded_frag++]] = (byte)flag;
           if(flag < 1) ++nqi0;
-        } while(--run_count > 0 && frag < ncoded_frags);
+        } while(--run_count > 0 && coded_frag < ncoded_frags);
       
-        if(full_run && frag < ncoded_frags){
+        if(full_run && coded_frag < ncoded_frags){
           val = opb.readB(1);
           flag=(int)val;
         } else {
@@ -219,21 +219,21 @@ public final class Decode {
       /*If we have 3 different qi's for this frame, and there was at least one
          fragment with a non-zero qi, make the second pass.*/
       if(pbi.frameNQIS==3 && nqi0 < ncoded_frags){
-        frag = 0;
+        coded_frag = 0;
         /*Skip qii==0 fragments.*/
-        for(frag = 0; frag < ncoded_frags && pbi.FragQs[frag] == 0; ++frag){}
+        for(coded_frag = 0; coded_frag < ncoded_frags && pbi.FragQs[pbi.CodedBlockList[coded_frag]] == 0; ++coded_frag){}
         val = opb.readB(1);
         flag = val;
-        while(frag < ncoded_frags){
+        while(coded_frag < ncoded_frags){
           boolean full_run;
           run_count = longRunBitStringDecode();
           full_run = run_count >= 4129;
-          for(; frag < ncoded_frags; ++frag){
-            if(pbi.FragQs[frag] == 0) continue;
+          for(; coded_frag < ncoded_frags; ++coded_frag){
+            if(pbi.FragQs[pbi.CodedBlockList[coded_frag]] == 0) continue;
             if(run_count-- <= 0) break;
-            pbi.FragQs[frag] += flag;
+            pbi.FragQs[pbi.CodedBlockList[coded_frag]] += flag;
           }
-          if(full_run && frag < ncoded_frags){
+          if(full_run && coded_frag < ncoded_frags){
             val = opb.readB(1);
             flag = val;
           } else {

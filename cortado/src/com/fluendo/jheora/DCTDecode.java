@@ -102,19 +102,22 @@ public class DCTDecode
     int     ReconPixelIndex;
     short[] dequant_coeffs;
 
+    /* determine which quantizer was specified for this block */
+    int qi = pbi.FragQs[FragmentNumber];
+    
     /* Select the appropriate inverse Q matrix and line stride */
     if ( FragmentNumber<(int)pbi.YPlaneFragments ){
       ReconPixelsPerLine = pbi.YStride;
       // intra Y
-      dequant_coeffs = pbi.info.dequant_tables[0][0][pbi.frameQIS[0]];
+      dequant_coeffs = pbi.info.dequant_tables[0][0][pbi.frameQIS[qi]];
     }else if(FragmentNumber < pbi.YPlaneFragments + pbi.UVPlaneFragments) {
       ReconPixelsPerLine = pbi.UVStride;
       // intra U
-      dequant_coeffs = pbi.info.dequant_tables[0][1][pbi.frameQIS[0]];
+      dequant_coeffs = pbi.info.dequant_tables[0][1][pbi.frameQIS[qi]];
     } else {
       ReconPixelsPerLine = pbi.UVStride;
       // intra V
-      dequant_coeffs = pbi.info.dequant_tables[0][2][pbi.frameQIS[0]];
+      dequant_coeffs = pbi.info.dequant_tables[0][2][pbi.frameQIS[qi]];
     }
 
     /* Set up pointer into the quantisation buffer. */
@@ -160,6 +163,9 @@ public class DCTDecode
                                         pixel is used */
     short[] dequant_coeffs;
     CodingMode codingMode;
+    
+    /* determine which quantizer was specified for this block */
+    int qi = pbi.FragQs[FragmentNumber];
 
     /* Get coding mode for this block */
     if (pbi.getFrameType() == Constants.BASE_FRAME ){
@@ -178,10 +184,10 @@ public class DCTDecode
       /* Select appropriate dequantiser matrix. */
       if ( codingMode == CodingMode.CODE_INTRA )
         // intra Y
-        dequant_coeffs = pbi.info.dequant_tables[0][0][pbi.frameQIS[0]];
+        dequant_coeffs = pbi.info.dequant_tables[0][0][pbi.frameQIS[qi]];
       else
         // inter Y
-        dequant_coeffs = pbi.info.dequant_tables[1][0][pbi.frameQIS[0]];
+        dequant_coeffs = pbi.info.dequant_tables[1][0][pbi.frameQIS[qi]];
     }else{
       ReconPixelsPerLine = pbi.UVStride;
       MvShift = 2;
@@ -192,17 +198,17 @@ public class DCTDecode
       if(FragmentNumber < pbi.YPlaneFragments + pbi.UVPlaneFragments) {
         if ( codingMode == CodingMode.CODE_INTRA )
           // intra U
-          dequant_coeffs = pbi.info.dequant_tables[0][1][pbi.frameQIS[0]];
+          dequant_coeffs = pbi.info.dequant_tables[0][1][pbi.frameQIS[qi]];
         else
           // inter U
-          dequant_coeffs = pbi.info.dequant_tables[1][1][pbi.frameQIS[0]];
+          dequant_coeffs = pbi.info.dequant_tables[1][1][pbi.frameQIS[qi]];
       } else {
         if ( codingMode == CodingMode.CODE_INTRA )
           // intra V
-          dequant_coeffs = pbi.info.dequant_tables[0][2][pbi.frameQIS[0]];
+          dequant_coeffs = pbi.info.dequant_tables[0][2][pbi.frameQIS[qi]];
         else
           // inter V
-          dequant_coeffs = pbi.info.dequant_tables[1][2][pbi.frameQIS[0]];
+          dequant_coeffs = pbi.info.dequant_tables[1][2][pbi.frameQIS[qi]];
       }
     }
 
