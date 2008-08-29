@@ -1,10 +1,14 @@
 This file lists changes on this extension.
 Localisation updates are done on betawiki and aren't listed here.
 
+0.7.1 - 29 August 2008
+  Added $wgPhpCli and $wgLinkHolderBatchSize.
+
 0.7.0 - 26 August 2008
   * Added writePHP.php, a maintenance script that write the configuration in PHP
     code
   * Changed status to beta
+
 
 0.6.15 - 22 August 2008
   $wgAjaxSearch is obsolete in 1.14 +
