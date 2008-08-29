@@ -73,11 +73,10 @@ class MvExportSearch extends SpecialPage{
 }
 class MvExportAsk extends SpecialPage{
 	function __construct(){
-		parent::__construct('MvExportSearch');				
-
+		parent::__construct('MvExportAsk');						
 	}
 	function execute(){
-		$MvSpecialExport = new MvExportAsk('ask');
+		$MvSpecialExport = new MV_SpecialExport('ask');
 	}
 }
 function wfSpecialMvExportStream(){
@@ -376,14 +375,14 @@ class MV_SpecialExport {
 	}
 	//this is dependent on semantic wiki ASK functionality
 	function get_ask_feed(){
-		global $wgSitename, $wgTitle;
+		global $wgSitename, $wgTitle, $wgRequest;
 		//check for semantic wiki: 
 		if(!defined('SMW_VERSION')){
 			return new WikiError( "Export Ask is dependent on semantic media wiki" );
 		}			
 		//bootstrap off of SMWAskPage: 				
-		$SMWAskPage = new SMWAskPage();		
-		$SMWAskPage->extractQueryParameters($this->par);
+		$SMWAskPage = new SMWAskPage();			
+		$SMWAskPage->extractQueryParameters($wgRequest->getVal('q'));
 		
 		//print 'query string: ' . $SMWAskPage->m_querystring . "\n<br>";
 		//print 'm_params: ' . print_r($SMWAskPage->m_params) . "\n<br>";
