@@ -2,6 +2,9 @@
  * Copyright (C) 2004 Fluendo S.L.
  *  
  * Written by: 2004 Wim Taymans <wim@fluendo.com>
+ * 
+ * Parts ported from the new Theora C reference encoder, which was mostly
+ * written by Timothy B. Terriberry
  *   
  * Many thanks to 
  *   The Xiph.Org Foundation http://www.xiph.org/
@@ -125,7 +128,125 @@ public final class Decode {
     FragCoeffs = new byte[pbi.UnitFragments];
     this.pbi = pbi;
   }
+  
+  private int longRunBitStringDecode() {
+    /* lifted from new C Theora reference decoder */
+    int bits;
+    int ret;
+    Buffer opb = pbi.opb;
+    /*Coding scheme:
+         Codeword            Run Length
+       0                       1
+       10x                     2-3
+       110x                    4-5
+       1110xx                  6-9
+       11110xxx                10-17
+       111110xxxx              18-33
+       111111xxxxxxxxxxxx      34-4129*/
 
+    bits = opb.readB(1);
+    if(bits==0)return 1;
+    bits = opb.readB(2);
+    if((bits&2)==0)return 2+(int)bits;
+    else if((bits&1)==0){
+      bits = opb.readB(1);
+      return 4+(int)bits;
+    }
+    bits = opb.readB(3);
+    if((bits&4)==0)return 6+(int)bits;
+    else if((bits&2)==0){
+      ret=10+((bits&1)<<2);
+      bits = opb.readB(2);
+      return ret+(int)bits;
+    }
+    else if((bits&1)==0){
+      bits = opb.readB(4);
+      return 18+(int)bits;
+    }
+    bits = opb.readB(12);
+    return 34+(int)bits;
+  }
+
+  private void decodeBlockLevelQi() {
+    /* lifted from new C Theora reference decoder */
+
+    /* pbi.CodedBlockIndex holds the number of coded blocks despite the
+       suboptimal variable name */
+    int ncoded_frags = pbi.CodedBlockIndex;
+
+    if(ncoded_frags <= 0) return;
+    if(pbi.frameNQIS == 1) {
+      /*If this frame has only a single qi value, then just set it in all coded
+         fragments.*/
+      for(int frag = 0; frag < ncoded_frags; ++frag) {
+          pbi.FragQs[frag] = 0;
+      }
+    } else{
+      Buffer opb = pbi.opb;
+      int val;
+      int  flag;
+      int  nqi0;
+      int  run_count;
+      /*Otherwise, we decode a qi index for each fragment, using two passes of
+        the same binary RLE scheme used for super-block coded bits.
+       The first pass marks each fragment as having a qii of 0 or greater than
+        0, and the second pass (if necessary), distinguishes between a qii of
+        1 and 2.
+       We store the qii of the fragment. */
+      val = opb.readB(1);
+      flag = val;
+      run_count = nqi0 = 0;
+      int frag = 0;
+      while(frag < ncoded_frags){
+        boolean full_run;
+        run_count = longRunBitStringDecode();
+        full_run = (run_count >= 4129);
+        do {
+          pbi.FragQs[frag++] = (byte)flag;
+          if(flag < 1) ++nqi0;
+        } while(--run_count > 0 && frag < ncoded_frags);
+      
+        if(full_run && frag < ncoded_frags){
+          val = opb.readB(1);
+          flag=(int)val;
+        } else {
+          //flag=!flag;
+          flag = (flag != 0) ? 0 : 1;
+        }
+      }
+      /*TODO: run_count should be 0 here.
+        If it's not, we should issue a warning of some kind.*/
+      /*If we have 3 different qi's for this frame, and there was at least one
+         fragment with a non-zero qi, make the second pass.*/
+      if(pbi.frameNQIS==3 && nqi0 < ncoded_frags){
+        frag = 0;
+        /*Skip qii==0 fragments.*/
+        for(frag = 0; frag < ncoded_frags && pbi.FragQs[frag] == 0; ++frag){}
+        val = opb.readB(1);
+        flag = val;
+        while(frag < ncoded_frags){
+          boolean full_run;
+          run_count = longRunBitStringDecode();
+          full_run = run_count >= 4129;
+          for(; frag < ncoded_frags; ++frag){
+            if(pbi.FragQs[frag] == 0) continue;
+            if(run_count-- <= 0) break;
+            pbi.FragQs[frag] += flag;
+          }
+          if(full_run && frag < ncoded_frags){
+            val = opb.readB(1);
+            flag = val;
+          } else {
+            //flag=!flag;
+            flag = (flag != 0) ? 0 : 1;
+          }
+        }
+        /*TODO: run_count should be 0 here.
+          If it's not, we should issue a warning of some kind.*/
+      }
+    }
+  }  
+  
   private int loadFrame()
   {
     int  DctQMask;
@@ -656,10 +777,6 @@ public final class Decode {
     }
   }
   
-  public void decodeBlockLevelQi() {
-      
-  }
-  
   public int loadAndDecode()
   {
     int    loadFrameOK;
@@ -686,7 +803,10 @@ public final class Decode {
 
       /* Unpack and decode the motion vectors. */
       decodeMVectors (pbi.YSBRows, pbi.YSBCols);
-
+      
+      /* Unpack per-block quantizer information */
+      decodeBlockLevelQi();
+      
       /* Unpack and decode the actual video data. */
       unPackVideo();
 

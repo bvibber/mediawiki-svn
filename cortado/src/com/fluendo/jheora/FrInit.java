@@ -168,6 +168,7 @@ public class FrInit {
     for (int i=0; i<pbi.UnitFragments; i++) {
       pbi.FragMVect[i] = new MotionVector();
     }
+    pbi.FragQs = new byte[pbi.UnitFragments];
     pbi.FragCoefEOB = new byte[pbi.UnitFragments];
     pbi.QFragData = new short[pbi.UnitFragments][64];
     pbi.FragCodingMethod = new CodingMode[pbi.UnitFragments];

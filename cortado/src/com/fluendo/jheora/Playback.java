@@ -131,6 +131,7 @@ public class Playback
                                                 within QFragData */
   short[][] 	QFragData;            /* Fragment Coefficients
                                                Array Pointers */
+  byte[]        FragQs;                 /* per block quantizers */
   CodingMode[] 	FragCodingMethod;          /* coding method for the
                                                fragment */
 
