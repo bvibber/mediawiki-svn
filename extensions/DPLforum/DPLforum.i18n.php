@@ -103,6 +103,18 @@ $messages['eo'] = array(
 	'dplforum-never' => 'Neniam',
 );
 
+/** Persian (فارسی)
+ * @author Huji
+ */
+$messages['fa'] = array(
+	'dplforum-desc' => 'افزونهٔ تالار گفتگو مبتنی بر DPL',
+	'dplforum-by' => 'توسط',
+	'dplforum-edited' => '  - آخرین ویرایش',
+	'dplforum-never' => 'هرگز',
+	'dplforum-toofew' => 'تالار گفتگوی DPL: تعداد ناکافی رده‌ها!',
+	'dplforum-toomany' => 'تالار گفتگوی DPL: تعداد بیش از حد رده‌ها!',
+);
+
 /** French (Français)
  * @author Cedric31
  * @author Grondin
@@ -169,6 +181,17 @@ $messages['id'] = array(
  */
 $messages['it'] = array(
 	'dplforum-never' => 'Mai',
+);
+
+/** Khmer (ភាសាខ្មែរ)
+ * @author T-Rithy
+ */
+$messages['km'] = array(
+	'dplforum-by' => 'ដោយ',
+	'dplforum-edited' => 'កែប្រែជាចុងក្រោយ',
+	'dplforum-never' => 'មិនដែល',
+	'dplforum-toofew' => 'ចំនាត់ថ្នាក់ក្រុមតិចតួចណាស់!',
+	'dplforum-toomany' => 'ចំនាត់ថ្នាក់ក្រុមច្រើនណាស់!',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

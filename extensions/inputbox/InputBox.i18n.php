@@ -706,8 +706,10 @@ $messages['kk-latn'] = array(
 /** Khmer (ភាសាខ្មែរ)
  * @author Chhorran
  * @author Lovekhmer
+ * @author T-Rithy
  */
 $messages['km'] = array(
+	'inputbox-error-no-type' => 'អ្នកមិនទាន់បញ្ជាក់ប្រភេទប្រអប់បញ្ចូលដើម្បីបង្កើត។',
 	'searchfulltext' => 'ស្វែងរកពាក្យពេញ',
 	'createarticle' => 'បង្កើតទំព័រ',
 );

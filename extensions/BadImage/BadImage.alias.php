@@ -42,6 +42,11 @@ $aliases['hu'] = array(
 	'Badimages' => array( 'Hibás képek' ),
 );
 
+/** Indonesian (Bahasa Indonesia) */
+$aliases['id'] = array(
+	'Badimages' => array( 'Berkas dilarang' ),
+);
+
 /** Luxembourgish (Lëtzebuergesch) */
 $aliases['lb'] = array(
 	'Badimages' => array( 'Net gewënschte Biller' ),

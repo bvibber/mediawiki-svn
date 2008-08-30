@@ -209,8 +209,10 @@ $messages['jv'] = array(
 /** Khmer (ភាសាខ្មែរ)
  * @author Chhorran
  * @author Lovekhmer
+ * @author គីមស៊្រុន
  */
 $messages['km'] = array(
+	'msfunc_desc' => 'កំរងអនុគមន៍គណិតវិទ្យានិងស្ថិតិ',
 	'msfunc_nan' => 'លទ្ធផលមិនមែនជាលេខទេ',
 	'msfunc_inf' => 'លទ្ធផលគឺស្មើនឹងអនន្ត',
 	'msfunc_div_zero' => 'ចែកនឹងសូន្យ',

@@ -28,6 +28,11 @@ $aliases['arz'] = array(
 	'MultiUpload' => array( 'رفع_متعدد' ),
 );
 
+/** Indonesian (Bahasa Indonesia) */
+$aliases['id'] = array(
+	'MultiUpload' => array( 'Multi unggah' ),
+);
+
 /** Nedersaksisch (Nedersaksisch) */
 $aliases['nds-nl'] = array(
 	'MultiUpload' => array( 'Meerdere_bestanden_toevoegen' ),
@@ -43,5 +48,10 @@ $aliases['nl'] = array(
  */
 $aliases['no'] = array(
 	'MultiUpload' => array( 'Last opp mange filer' ),
+);
+
+/** Swedish (Svenska) */
+$aliases['sv'] = array(
+	'MultiUpload' => array( 'Multiuppladdning' ),
 );
 

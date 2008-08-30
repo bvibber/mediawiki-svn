@@ -154,6 +154,28 @@ $messages['eo'] = array(
 	'multiupload-toolbox' => 'Alŝuti multe de dosierojn',
 );
 
+/** Persian (فارسی)
+ * @author Huji
+ */
+$messages['fa'] = array(
+	'multipleupload' => 'بارگذاری پرونده‌ها',
+	'multipleupload-desc' => 'به کاربران اجازهٔ [[Special:MultipleUpload|بارگذاری چندین پرونده به طور همزمان]] را می‌دهد',
+	'multipleupload-ignoreallwarnings' => "را نادیده بگیر '''تمامی هشدارها''' و پرونده‌ها را در هر حال ذخیره کن.",
+	'multipleupload-saveallfiles' => 'ذخیره کردن تمامی پرونده‌ها',
+	'multipleupload-addresswarnings' => 'لطفاً به تمامی هشدارها قبل از بارگذاری دوبارهٔ پرونده‌ها رسیدگی کنید',
+	'multipleupload-page' => '{{ns:project}}:سیاست حذف تصاویر',
+	'multipleupload-text' => "در این‌جا چندین پرونده بارگذاری کنید.
+
+دکمهٔ 'Browse' را بزنید و پرونده‌هایی که می‌خواهید بارگذاری کنید را انتخاب کنید.
+شما می‌توانید هر بار از ۱ تا $1 پرونده را بارگذاری کنید.
+
+شما می‌توانید یک ''نام مقصد'' به طور اختیاری وارد کنید و یک '''خلاصه''' در توضیح پرونده ارائه کنید.
+
+پرونده‌های نامناسب فوراً حذف خواهند شد، [[{{MediaWiki:Multipleupload-page}}|سیاست حذف تصاویر]] را ببینید.",
+	'multiupload-fileuploaded' => 'پرونده بارگذاری شد.',
+	'multiupload-toolbox' => 'بارگذاری چندین پرونده',
+);
+
 /** Finnish (Suomi)
  * @author Crt
  * @author Jack Phoenix

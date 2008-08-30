@@ -42,17 +42,54 @@ $messages['arz'] = array(
  * @author Raimond Spekking
  */
 $messages['de'] = array(
-	'unicodeconverter'         => 'Unicode-Konverter',
-	'unicodeconverter-desc'    => 'Einfaches Beispiel für eine Spezialseite. [[Special:UnicodeConverter|Eingabe eines Zeichens in UTF-8]], Ausgabe als HTML-Entität zum Gebrauch in einer ISO 8859-1 Webseite',
-	'unicodeconverter-ok'      => 'OK',
-	'unicodeconverter-oldtext' => 'Original Text:',
+	'unicodeconverter' => 'Unicode-Konverter',
+	'unicodeconverter-desc' => 'Einfaches Beispiel für eine Spezialseite. [[Special:UnicodeConverter|Eingabe eines Zeichens in UTF-8]], Ausgabe als HTML-Entität zum Gebrauch in einer ISO 8859-1 Webseite',
+	'unicodeconverter-ok' => 'OK',
+	'unicodeconverter-oldtext' => 'Originaltext:',
 	'unicodeconverter-newtext' => 'Konvertierter Text:',
 );
 
-$messages ['fr'] = array(
+/** French (Français)
+ * @author Zetud
+ */
+$messages['fr'] = array(
 	'unicodeconverter' => 'Convertisseur Unicode',
-	'unicodeconverter-desc' => 'Un simple exemple de mode de page spéciale. Donne une chaîne de caractère au format UTF-8, le convertit en entité HTML pour une page web en ISA 8859-1',
+	'unicodeconverter-desc' => 'Un simple exemple de mode de page spéciale. Donne une chaîne de caractères au format UTF-8, la convertit en entité HTML pour une page web en ISA 8859-1',
 	'unicodeconverter-ok' => 'Convertir',
 	'unicodeconverter-oldtext' => 'Texte d’origine :',
 	'unicodeconverter-newtext' => 'Texte une fois converti :',
 );
+
+/** Khmer (ភាសាខ្មែរ)
+ * @author Lovekhmer
+ * @author គីមស៊្រុន
+ */
+$messages['km'] = array(
+	'unicodeconverter' => 'ប្រដាប់បំលែងយូនីកូដ',
+	'unicodeconverter-ok' => 'យល់ព្រម',
+	'unicodeconverter-oldtext' => 'អត្ថបទដើម៖',
+	'unicodeconverter-newtext' => 'អត្ថបទបំលែងរួច៖',
+);
+
+/** Dutch (Nederlands)
+ * @author Siebrand
+ */
+$messages['nl'] = array(
+	'unicodeconverter' => 'Unicodeconversie',
+	'unicodeconverter-desc' => 'Een simpel voorbeeld van een speciale pagina waarin [[Special:UnicodeConverter|een tekst in UTF-8]] wordt geconverteerd naar HTML-entiteiten die te gebruiken zijn in een ISO 8859-1-webpagina',
+	'unicodeconverter-ok' => 'OK',
+	'unicodeconverter-oldtext' => 'Originele tekst:',
+	'unicodeconverter-newtext' => 'Geconverteerde tekst:',
+);
+
+/** Occitan (Occitan)
+ * @author Cedric31
+ */
+$messages['oc'] = array(
+	'unicodeconverter' => 'Convertidor Unicode',
+	'unicodeconverter-desc' => 'Un simple exemple de mòde de pagina especiala. Balha una cadena de caractèrs al format UTF-8, lo convertís en entitat HTML per una pagina web en ISA 8859-1',
+	'unicodeconverter-ok' => "D'acòrdi",
+	'unicodeconverter-oldtext' => 'Tèxt original :',
+	'unicodeconverter-newtext' => 'Tèxt un còp convertit :',
+);
+

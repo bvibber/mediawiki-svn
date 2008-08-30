@@ -77,7 +77,13 @@ $messages['de'] = array(
  * @author Yekrats
  */
 $messages['eo'] = array(
+	'commentspammer-save-blocked' => 'Via IP-adreso estas suspekta koment-spamisto, do la paĝo ne estis konservita.
+[[Special:Userlogin|Ensaluti aŭ krei konton]] por eviti ĉi tiel.',
+	'commentspammer-desc' => 'Malpermesas redaktojn de suspektaj koment-spamistoj en DNS-nigralisto',
 	'commentspammer-log-msg' => 'redakto de [[Special:Contributions/$1|$1]] al [[:$2]].',
+	'commentspammer-log-msg-info' => 'Laste spamis $1 antaŭ {{PLURAL:$1|tago|tagoj}}, minaca nivelo estas $2, kaj kulpa kodo estas $3.
+[http://www.projecthoneypot.org/search_ip.php?ip=$4 Vidi detalojn], aŭ [[Special:Blockip/$4|forbari]].',
+	'cspammerlogpagetext' => 'Registro de redaktojn kiuj estis permesitaj aŭ malpermesitaj laŭ ĉu la IP-fonto estis konata koment-spamisto.',
 	'cspammer-log-page' => 'Protokolo de komentaj spamistoj',
 );
 

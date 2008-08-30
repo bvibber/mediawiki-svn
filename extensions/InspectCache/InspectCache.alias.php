@@ -29,6 +29,11 @@ $aliases['fr'] = array(
 	'InspectCache' => array( 'InspecterCache' ),
 );
 
+/** Indonesian (Bahasa Indonesia) */
+$aliases['id'] = array(
+	'InspectCache' => array( 'Inspeksi tembolok' ),
+);
+
 /** Nedersaksisch (Nedersaksisch) */
 $aliases['nds-nl'] = array(
 	'InspectCache' => array( 'Kas_naokieken' ),

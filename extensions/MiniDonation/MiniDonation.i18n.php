@@ -66,6 +66,7 @@ $messages['el'] = array(
  * @author Yekrats
  */
 $messages['eo'] = array(
+	'donationform-desc' => 'Aldonas langeton <tt>&lt;donateform&gt;</tt> por subteni donacojn per PayPal',
 	'donationform-submit' => 'Donaci per PayPal',
 );
 

@@ -196,6 +196,15 @@ $messages['ia'] = array(
 	'errorhandler-trace-line-internal' => '[function interne]: $1',
 );
 
+/** Khmer (ភាសាខ្មែរ)
+ * @author Lovekhmer
+ */
+$messages['km'] = array(
+	'errorhandler-errors' => 'កំហុស៖',
+	'errorhandler-error-warning' => 'បំរាម',
+	'errorhandler-trace-line' => '$1 (បន្ទាត់ទី$2): $3',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */

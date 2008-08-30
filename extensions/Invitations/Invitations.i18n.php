@@ -318,9 +318,24 @@ $messages['jv'] = array(
  */
 $messages['km'] = array(
 	'invite-logpage' => 'កំនត់ហេតុនៃការអញ្ជើញ',
+	'invite-logpagetext' => 'នេះជាកំនត់ហេតុនៃអ្នកប្រើប្រាស់ទាំងឡាយដែលបានអញ្ជើញគ្នា​អោយប្រើប្រាស់មុខងារសូហ្វវែរផ្សេងៗ។',
+	'invite-logentry' => 'បានអញ្ជើញ $1 អោយប្រើប្រាស់មុខងារ <i>$2</i>។',
+	'invitations' => 'គ្រប់គ្រងការអញ្ជើញអោយប្រើប្រាស់មុខងារសូហ្វវែរ',
+	'invitations-desc' => 'អនុញ្ញាតអោយ[[Special:Invitations|គ្រប់គ្រងមុខងារថ្មីៗ]]ដោយដាក់កំហិតអោយប្រើប្រាស់សំរាប់តែអ្នកដែលមានលិខិតអញ្ជើញ',
+	'invitations-invitedlist-none' => 'អ្នកមិនត្រូវបានគេអញ្ជើញអោយប្រើប្រាស់មុខងារសូហ្វវែរដែលត្រូវការអោយមានការអញ្ជើញទេ។',
+	'invitations-invitedlist-item-count' => '({{PLURAL:$1|១លិខិតអញ្ជើញ|$1 លិខិតអញ្ជើញ}}នៅសល់)',
+	'invitations-pagetitle' => 'មុខងារសូហ្វវែរសំរាប់តែអ្នកមានលិខិតអញ្ជើញ',
+	'invitations-uninvitedlist-description' => 'អ្នកមិនអាចចូលទៅក្នុងមុខងារសូហ្វវែរសំរាប់តែអ្នកមានលិខិតអញ្ជើញបានទេ។',
+	'invitations-feature-pagetitle' => 'ការគ្រប់គ្រងលិខិតអញ្ជើញ- $1',
+	'invitations-feature-access' => 'បច្ចុប្បន្នអ្នកអាចចូលទៅប្រើ <i>$1</i>បាន។',
+	'invitations-feature-numleft' => 'អ្នកនៅសល់{{PLURAL:$2|១លិខិតអញ្ជើញទៀត|<b>$1</b>លិខិតអញ្ជើញ ក្នុងចំនោម $2 លិខិតអញ្ជើញសរុប}}។',
+	'invitations-feature-notallowed' => 'អ្នកមិនអាចចូលទៅប្រើប្រាស់ <i>$1</i> បានទេ។',
 	'invitations-inviteform-title' => 'អញ្ជើញអ្នកប្រើប្រាស់ម្នាក់អោយប្រើ $1',
 	'invitations-inviteform-username' => 'អ្នកប្រើប្រាស់​ដែលត្រូវអញ្ជើញ',
 	'invitations-inviteform-submit' => 'អញ្ជើញ',
+	'invitations-error-baduser' => 'អ្នកប្រើប្រាស់ដែលអ្នកបានសំដៅ ហាក់ដូចជាមិនមានទេ។',
+	'invitations-error-alreadyinvited' => 'អ្នកប្រើប្រាស់ដែលអ្នកបានសំដៅ មានសិទ្ឋិចូលទៅប្រើប្រាស់មុខងារនេះរួចហើយ!',
+	'invitations-invite-success' => 'អ្នកបានអញ្ជើញ $1 អោយប្រើប្រាស់មុខងារនេះដោយជោគជ័យ!',
 );
 
 /** Ripoarisch (Ripoarisch)

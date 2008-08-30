@@ -50,3 +50,9 @@ $aliases['no'] = array(
 	'CreateSignDocument' => array( 'Opprett signaturdokument' ),
 );
 
+/** Swedish (Svenska) */
+$aliases['sv'] = array(
+	'SignDocument' => array( 'Signera dokument' ),
+	'CreateSignDocument' => array( 'Skapa signeringsdokument' ),
+);
+

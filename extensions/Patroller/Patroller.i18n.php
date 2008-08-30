@@ -528,6 +528,7 @@ $messages['km'] = array(
 	'group-patroller' => 'អ្នកតាមដាន',
 	'group-patroller-member' => 'អ្នកតាមដាន',
 	'grouppage-patroller' => '{{ns:project}}:អ្នកតាមដាន',
+	'right-patroller' => 'ទំព័រតាមដាន',
 );
 
 /** Ripoarisch (Ripoarisch)

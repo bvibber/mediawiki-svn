@@ -57,6 +57,11 @@ $aliases['ht'] = array(
 	'LinkSearch' => array( 'BouskeLyen' ),
 );
 
+/** Indonesian (Bahasa Indonesia) */
+$aliases['id'] = array(
+	'LinkSearch' => array( 'Pencarian pranala' ),
+);
+
 /** Khmer (ភាសាខ្មែរ) */
 $aliases['km'] = array(
 	'LinkSearch' => array( 'ស្វែងរកតំនភ្ជាប់' ),

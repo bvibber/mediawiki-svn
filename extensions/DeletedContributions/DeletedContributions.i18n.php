@@ -47,11 +47,12 @@ $messages['ar'] = array(
 );
 
 /** Egyptian Spoken Arabic (مصرى)
+ * @author Meno25
  * @author Ramsis II
  */
 $messages['arz'] = array(
 	'deletedcontributions' => 'مساهمات اليوزر الممسوحة',
-	'deletedcontributions-desc' => 'بيدي السيسوبات امكانية [[Special:DeletedContributions|تصفح التعديلات الممسوحة]] بتاعة اي يوزر',
+	'deletedcontributions-desc' => 'بيدى السيسوبات امكانية [[Special:DeletedContributions|تصفح التعديلات الممسوحة]] بتاعة اى يوزر',
 );
 
 /** Asturian (Asturianu)
@@ -388,10 +389,11 @@ $messages['kk-latn'] = array(
 /** Khmer (ភាសាខ្មែរ)
  * @author Chhorran
  * @author Lovekhmer
+ * @author គីមស៊្រុន
  */
 $messages['km'] = array(
-	'deletedcontributions' => 'ប្រវត្តិនៃការលុបការរួមចំនែករបស់អ្នកប្រើប្រាស់',
-	'deletedcontributions-desc' => 'ផ្តល់លទ្ធភាពអោយអ្នកថែទាំប្រព័ន្ធ[[Special:DeletedContributions|រាវរកកំណែប្រែបានលុប]]របស់អ្នកប្រើប្រាស់',
+	'deletedcontributions' => 'ការរួមចំនែកដែលត្រូវបានលប់',
+	'deletedcontributions-desc' => 'ផ្តល់លទ្ធភាពអោយអ្នកថែទាំប្រព័ន្ធ[[Special:DeletedContributions|រាវរកកំនែប្រែបានលុប]]របស់អ្នកប្រើប្រាស់',
 );
 
 /** Korean (한국어)

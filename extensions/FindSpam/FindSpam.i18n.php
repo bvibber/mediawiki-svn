@@ -99,9 +99,21 @@ $messages['el'] = array(
  */
 $messages['eo'] = array(
 	'findspam' => 'Trovi spamon',
+	'findspam-desc' => 'Aldonas [[Special:FindSpam|specialan paĝon]] kiu permesas trovi laste aldonitan spamon',
 	'findspam-ip' => 'IP adreson:',
 	'findspam-ok' => 'Ek!',
 	'findspam-notextfound' => 'Neniuj kontribuoj trovitaj',
+);
+
+/** Persian (فارسی)
+ * @author Huji
+ */
+$messages['fa'] = array(
+	'findspam' => 'کشف هرزنگاری',
+	'findspam-desc' => 'یک [[Special:FindSpam|صفحهٔ ویژه]] می‌افزاید که امکان کشف هرزنگاری‌های تازه را فراهم می‌کند',
+	'findspam-ip' => 'نشانی اینترنتی:',
+	'findspam-ok' => 'قبول',
+	'findspam-notextfound' => 'هیچ مشارکتی یافت نشد',
 );
 
 /** Finnish (Suomi)

@@ -369,10 +369,13 @@ $messages['id'] = array(
  * @author Lovekhmer
  */
 $messages['km'] = array(
+	'imagetagging-article' => 'ទំព័រ៖',
 	'imagetagging-imghistory' => 'ប្រវត្តិ',
 	'imagetagging-images' => 'រូបភាព',
 	'imagetagging-inthisimage' => 'ក្នុងរូបភាពនេះ: $1',
+	'imagetagging-tag-button' => 'ប្លាក់',
 	'imagetagging-tagcancel-button' => 'បោះបង់',
+	'imagetagging-addtagsuccess' => 'ប្លាក់ដែលបានដាក់៖',
 );
 
 /** Ripoarisch (Ripoarisch)

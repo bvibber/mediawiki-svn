@@ -250,7 +250,7 @@ $messages['kab'] = array(
  */
 $messages['km'] = array(
 	'filelist' => 'បញ្ជីឯកសារ',
-	'filelist-desc' => 'ទំព័រពិសេសសំរាប់ឯកសារផ្ទុកឡើងនានាដែលបានកត់ទុកក្នុងបញ្ជី',
+	'filelist-desc' => '[[Special:Filelist|ទំព័រពិសេស]]សំរាប់ឯកសារផ្ទុកឡើងនានាដែលបានកត់ទុកក្នុងបញ្ជី',
 	'filelist-show-list' => 'បង្ហាញបញ្ជី',
 	'filelist-show-gallery' => 'បង្ហាញវិចិត្រសាល',
 	'filelist-image-desc' => 'លំដាប់ចុះ',

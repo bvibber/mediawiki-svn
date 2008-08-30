@@ -1610,6 +1610,7 @@ $messages['km'] = array(
 	'viewapc-ls-header-created' => 'ត្រូវបានបង្កើត',
 	'viewapc-ls-header-deleted' => 'ត្រូវបានលប់ចោល',
 	'viewapc-ls-delete' => '[លប់ចោលឥលូវ]',
+	'viewapc-ls-scope-active' => 'សកម្ម',
 	'viewapc-ls-scope-deleted' => 'ត្រូវបានលប់ចោល',
 	'viewapc-ls-scope-both' => 'ទាំង២',
 	'viewapc-ls-sort-size' => 'ទំហំ',

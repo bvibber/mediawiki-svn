@@ -140,6 +140,18 @@ $messages['eo'] = array(
 	'lookupuser_useroptions' => 'Opcioj de uzanto:',
 );
 
+/** Finnish (Suomi)
+ * @author Jaakonam
+ */
+$messages['fi'] = array(
+	'lookupuser' => 'Katso käyttäjän tiedot',
+	'lookupuser_nonexistent' => 'Virhe: Tunnusta ei ole olemassa',
+	'lookupuser_id' => 'Käyttäjätunnus: <tt>#$1</tt>',
+	'lookupuser_email' => 'Sähköposti: [[Special:Emailuser/$2|$1]]',
+	'lookupuser_realname' => 'Oikea nimi: $1',
+	'lookupuser_registration' => 'Rekisteröitymispäivämäärä: $1',
+);
+
 /** French (Français)
  * @author Grondin
  * @author Sherbrooke

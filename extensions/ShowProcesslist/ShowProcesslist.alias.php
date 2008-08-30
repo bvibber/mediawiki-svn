@@ -29,6 +29,11 @@ $aliases['fi'] = array(
 	'ShowProcesslist' => array( 'Prosessilistaus' ),
 );
 
+/** Indonesian (Bahasa Indonesia) */
+$aliases['id'] = array(
+	'ShowProcesslist' => array( 'Daftar proses' ),
+);
+
 /** Nedersaksisch (Nedersaksisch) */
 $aliases['nds-nl'] = array(
 	'ShowProcesslist' => array( 'Preceslieste_weergeven' ),

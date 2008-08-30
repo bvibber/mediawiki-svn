@@ -32,6 +32,11 @@ $aliases['fi'] = array(
 	'NewsChannel' => array( 'Uutiskanava' ),
 );
 
+/** Indonesian (Bahasa Indonesia) */
+$aliases['id'] = array(
+	'NewsChannel' => array( 'Saluran berita' ),
+);
+
 /** Nedersaksisch (Nedersaksisch) */
 $aliases['nds-nl'] = array(
 	'NewsChannel' => array( 'Niej_kenaal' ),
@@ -50,5 +55,10 @@ $aliases['no'] = array(
 /** Pashto (پښتو) */
 $aliases['ps'] = array(
 	'NewsChannel' => array( 'خبري کانال' ),
+);
+
+/** Swedish (Svenska) */
+$aliases['sv'] = array(
+	'NewsChannel' => array( 'Nyhetskanal' ),
 );
 

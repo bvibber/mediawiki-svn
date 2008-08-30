@@ -47,6 +47,11 @@ $aliases['hu'] = array(
 	'BoardVote' => array( 'Kuratóriumválasztás' ),
 );
 
+/** Indonesian (Bahasa Indonesia) */
+$aliases['id'] = array(
+	'BoardVote' => array( 'Pemilihan dewan' ),
+);
+
 /** Luxembourgish (Lëtzebuergesch) */
 $aliases['lb'] = array(
 	'BoardVote' => array( 'Wiel fir de Verwaltungsrot' ),

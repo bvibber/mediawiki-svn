@@ -34,3 +34,8 @@ $aliases['nl'] = array(
 	'PovWatch' => array( 'PovVolglijst' ),
 );
 
+/** Swedish (Svenska) */
+$aliases['sv'] = array(
+	'PovWatch' => array( 'Povövervakning' ),
+);
+

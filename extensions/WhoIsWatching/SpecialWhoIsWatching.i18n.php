@@ -84,12 +84,13 @@ $messages['br'] = array(
 );
 
 /** German (Deutsch)
+ * @author Purodha
  * @author Raimond Spekking
  */
 $messages['de'] = array(
 	'whoiswatching' => 'Wer beobachtet eine Seite',
 	'specialwhoiswatchingthepage' => 'Wer beobachtet %s',
-	'specialwhoiswatchingusage' => 'Diese Spezialseite kann nicht auf sich selber angewendet werden.
+	'specialwhoiswatchingusage' => 'Diese Spezialseite ist nicht auf sich allein gestellt einsetzbar.
 Bitte definiere über die Seite [[MediaWiki:Number_of_watching_users_pageview]] eine Einstiegsseite für diese Spezialseite.',
 	'specialwhoiswatchingaddusers' => 'Füge Benutzer zum Beobachten der Seite hinzu',
 	'specialwhoiswatchingaddbtn' => 'Füge Benutzer hinzu',
@@ -203,6 +204,20 @@ $messages['km'] = array(
 	'specialwhoiswatchingthepage' => 'អ្នកដែលកំពុងតាមដាន %s',
 	'specialwhoiswatchingaddusers' => 'បន្ថែមអ្នកប្រើប្រាស់ ដើម្បីតាមដានទំព័រ',
 	'specialwhoiswatchingaddbtn' => 'បន្ថែមអ្នកប្រើប្រាស់ ដែលបានជ្រើសយក',
+);
+
+/** Ripoarisch (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'whoiswatching' => 'Wä op en Sigg oppass',
+	'specialwhoiswatchingthepage' => 'Wä paß op „%s“ op',
+	'specialwhoiswatchingusage' => 'Die Sigg kann nit för sesch allein jebruch wäde.
+Bes esu joot un donn övver de Sigg
+<i lang="en">[[MediaWiki:Number_of_watching_users_pageview]]</i>
+ene Eijnshtiish för di Söndersigg enreschte.',
+	'specialwhoiswatchingaddusers' => 'Don ene Metmaacher dobei, op di Sigg opzepasse',
+	'specialwhoiswatchingaddbtn' => 'Donn dä makeete Metmaacher dobei',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

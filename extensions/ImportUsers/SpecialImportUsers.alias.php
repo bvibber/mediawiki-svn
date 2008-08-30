@@ -65,6 +65,11 @@ $aliases['hu'] = array(
 	'ImportUsers' => array( 'Szerkesztők importálása' ),
 );
 
+/** Indonesian (Bahasa Indonesia) */
+$aliases['id'] = array(
+	'ImportUsers' => array( 'Impor pengguna' ),
+);
+
 /** Khmer (ភាសាខ្មែរ) */
 $aliases['km'] = array(
 	'ImportUsers' => array( 'នាំចូលអ្នកប្រើប្រាស់' ),

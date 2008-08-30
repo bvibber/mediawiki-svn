@@ -32,9 +32,30 @@ $messages['arz'] = array(
 	'trustedxff-desc' => 'التعامل مع لستة عناوين البروكس الموثوق فيها ([http://meta.wikimedia.org/wiki/XFF_project XFF project])',
 );
 
+/** Czech (Česky)
+ * @author Mormegil
+ */
+$messages['cs'] = array(
+	'trustedxff-desc' => 'Správa seznamu adres důvěryhodných proxy ([http://meta.wikimedia.org/wiki/XFF_project Projekt XFF])',
+);
+
 /** German (Deutsch) */
 $messages['de'] = array(
 	'trustedxff-desc' => 'Verarbeitung einer Liste vertrauenswürdiger Proxyadressen ([http://meta.wikimedia.org/wiki/XFF_project XFF-ProjeKt])',
+);
+
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
+$messages['eo'] = array(
+	'trustedxff-desc' => 'Traktado de listo de fidelaj adresoj de prokuriloj ([http://meta.wikimedia.org/wiki/XFF_project Projekto XFF])',
+);
+
+/** Persian (فارسی)
+ * @author Huji
+ */
+$messages['fa'] = array(
+	'trustedxff-desc' => 'به دست گیری فهرستی از نشانی‌های پروکسی مورد اعتماد ([http://meta.wikimedia.org/wiki/XFF_project پروژه XFF])',
 );
 
 /** French (Français)

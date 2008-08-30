@@ -333,9 +333,11 @@ Bisa dienggo ing baris paréntah panjlajah utawa sajroning tèks wiki.',
 );
 
 /** Khmer (ភាសាខ្មែរ)
+ * @author T-Rithy
  * @author គីមស៊្រុន
  */
 $messages['km'] = array(
+	'call' => 'ហៅ',
 	'call-save-success' => 'អត្ថបទដូចតទៅនេះត្រូវបានរក្សាទុកទៅក្នុងទំព័រ <big>[[$1]]</big>។',
 	'call-save-failed' => 'អត្ថបទដូចតទៅនេះមិនត្រូវបានរក្សាទុកទៅក្នុងទំព័រ <big>[[$1]]</big> ពីព្រោះទំព័រនោះមានរួចហើយ។',
 );

@@ -549,8 +549,8 @@ Bonvolu <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_downl
 	'ogg-no-xiphqt' => 'Ŝajnas ke vi malhavas la XiphQT-komponaĵon por QuickTime. 
 QuickTime ne kapablas aŭdigi sondosierojn sentiu komponaĵo. 
 Bonvolu <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">elŝuti XiphQT</a> aux elektu alian legilon.',
-	'ogg-player-videoElement' => '<video> elemento',
-	'ogg-player-oggPlugin' => 'Ogg-kromprogramo',
+	'ogg-player-videoElement' => 'Fundamenta subteno per retumilo',
+	'ogg-player-oggPlugin' => 'Retumila kromprogramo',
 	'ogg-player-thumbnail' => 'Nur senmova bildo',
 	'ogg-player-soundthumb' => 'Neniu legilo',
 	'ogg-player-selected' => '(elektita)',

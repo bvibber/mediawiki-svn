@@ -340,6 +340,8 @@ $messages['bg'] = array(
 	'deletequeue-review-delete' => 'Изтриване на страницата.',
 	'deletequeue-review-newreason' => 'Нова причина:',
 	'deletequeue-review-newextra' => 'Допълнителна информация:',
+	'deletequeue-vote-reason' => 'Коментари:',
+	'deletequeue-vote-submit' => 'Изпращане',
 	'deletequeue-list-queue' => 'Опашка:',
 	'deletequeue-list-status' => 'Статут:',
 	'deletequeue-list-search' => 'Търсене',
@@ -520,7 +522,14 @@ $messages['eo'] = array(
 	'deletequeue-reviewspeedy-tab' => 'Kontroli rapidan forigon',
 	'deletequeue-reviewprod-tab' => 'Kontroli proponitan forigon',
 	'deletequeue-reviewdeletediscuss-tab' => 'Kontroli forigon',
+	'deletequeue-role-vote-endorse' => 'konsentanto de forigo',
+	'deletequeue-role-vote-object' => 'malkonsentanto de forigo',
+	'deletequeue-vote-tab' => 'Konsenti/Malkonsenti forigon',
+	'deletequeue-vote-legend' => 'Konsenti/Malkonsenti forigon.',
+	'deletequeue-vote-endorse' => 'Konsenti forigon.',
+	'deletequeue-vote-object' => 'Malkonsenti forigon.',
 	'deletequeue-vote-reason' => 'Komentoj:',
+	'deletequeue' => 'Listo de forigoj',
 	'deletequeue-list-search-legend' => 'Serĉi paĝojn',
 	'deletequeue-list-status' => 'Statuso:',
 	'deletequeue-list-search' => 'Serĉi',
@@ -847,6 +856,14 @@ Tu pote registrar tu proprie declaration pro o contra iste deletion [{{fullurl:{
 	'deletequeue-list-header-votes' => 'Declarationes pro e contra',
 	'deletequeue-list-header-expiry' => 'Expiration',
 	'deletequeue-list-header-discusspage' => 'Pagina de discussion',
+);
+
+/** Khmer (ភាសាខ្មែរ)
+ * @author Lovekhmer
+ */
+$messages['km'] = array(
+	'deletequeue-review-newreason' => 'មូលហេតុថ្មី៖',
+	'deletequeue-review-newextra' => 'ពត៌មានបន្ថែម៖',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -1236,6 +1253,15 @@ Podètz enregistrar [{{FULLURL:{{FULLPAGENAME}}|action=delvote}} aicí] vòstra 
 	'deletequeue-list-header-discusspage' => 'Pagina de discussion',
 );
 
+/** Portuguese (Português)
+ * @author Malafaya
+ */
+$messages['pt'] = array(
+	'deletequeue-delnom-otherreason' => 'Outro motivo',
+	'deletequeue-review-newreason' => 'Novo motivo:',
+	'deletequeue-vote-reason' => 'Comentários:',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */
@@ -1383,6 +1409,12 @@ $messages['sv'] = array(
 	'deletequeue-desc' => 'Skapar en [[Special:DeleteQueue|köbaserat system för att hantera raderingar]]',
 	'deletequeue-action' => 'Föreslå radering',
 	'deletequeue-action-title' => 'Föreslå radering av "$1"',
+	'deletequeue-permissions-noedit' => 'Du måste kunna redigera en sida för att kunna påverka dess raderingsstatus.',
+	'deletequeue-generic-reasons' => '* Vanliga anledningar
+  ** Vandalism
+  ** Spam
+  ** Hävdande
+  ** Inte relevant för projektet',
 	'deletequeue-speedy-title' => 'Märk "$1" för snabbradering',
 	'deletequeue-prod-title' => 'Föreslå radering av "$1"',
 	'deletequeue-delnom-reason' => 'Anledning till nominering:',

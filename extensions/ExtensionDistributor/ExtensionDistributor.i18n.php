@@ -464,6 +464,7 @@ Se hai qualche domanda riguardo al sistema di distribuzione di questa estensione
  * @author Lovekhmer
  */
 $messages['km'] = array(
+	'extensiondistributor' => 'ទាញយកផ្នែកបន្ថែមនៃមេឌាវិគី',
 	'extdist-submit-extension' => 'បន្ត',
 	'extdist-submit-version' => 'បន្ត',
 );

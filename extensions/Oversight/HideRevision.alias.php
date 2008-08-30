@@ -59,6 +59,12 @@ $aliases['hr'] = array(
 	'Oversight' => array( 'Nadzor' ),
 );
 
+/** Indonesian (Bahasa Indonesia) */
+$aliases['id'] = array(
+	'HideRevision' => array( 'Sembunyikan revisi' ),
+	'Oversight' => array( 'Pengawas revisi' ),
+);
+
 /** Nedersaksisch (Nedersaksisch) */
 $aliases['nds-nl'] = array(
 	'HideRevision' => array( 'Versie_verbargen' ),

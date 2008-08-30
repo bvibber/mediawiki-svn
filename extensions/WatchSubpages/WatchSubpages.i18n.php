@@ -167,6 +167,16 @@ $messages['it'] = array(
 	'watchsubpages-desc' => '[[Special:WatchSubpages|Aggiunge rapidamente tutte le sottopagine]] di una pagina agli Osservati Speciali',
 );
 
+/** Khmer (ភាសាខ្មែរ)
+ * @author គីមស៊្រុន
+ */
+$messages['km'] = array(
+	'watchsubpages' => 'ទំព័រតាមដានរង',
+	'watchsubpages-addedtowatchlist' => 'ទំព័រដូចតទៅនេះត្រូវបានបន្ថែមទៅក្នុងបញ្ជីតាមដានរបស់អ្នកហើយ។',
+	'watchsubpages-addtitles' => 'បន្ថែមទំព័រ',
+	'watchsubpages-addtitlestowatchlist' => 'បន្ថែមទំព័រទៅបញ្ជីតាមដាន',
+);
+
 /** Ripoarisch (Ripoarisch)
  * @author Purodha
  */

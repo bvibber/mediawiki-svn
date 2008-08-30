@@ -120,7 +120,13 @@ $aliases['hu'] = array(
 /** Indonesian (Bahasa Indonesia) */
 $aliases['id'] = array(
 	'Configure' => array( 'Konfigurasi' ),
-	'ViewConfig' => array( 'Lihatkonfigurasi' ),
+	'Extensions' => array( 'Ekstensi' ),
+	'ViewConfig' => array( 'Lihat konfigurasi', 'Lihatkonfigurasi' ),
+);
+
+/** Khmer (ភាសាខ្មែរ) */
+$aliases['km'] = array(
+	'Extensions' => array( 'ផ្នែកបន្ថែម' ),
 );
 
 /** Ripoarisch (Ripoarisch) */

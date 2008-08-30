@@ -29,9 +29,10 @@ $messages['ar'] = array(
 
 /** Egyptian Spoken Arabic (مصرى)
  * @author Ghaly
+ * @author Meno25
  */
 $messages['arz'] = array(
-	'advancedrandom' => 'عشوائي متقدم',
+	'advancedrandom' => 'عشوائى متقدم',
 );
 
 /** Asturian (Asturianu)

@@ -153,6 +153,15 @@ $messages['it'] = array(
 	'whatismyip-out' => 'Il tuo IP è:',
 );
 
+/** Khmer (ភាសាខ្មែរ)
+ * @author គីមស៊្រុន
+ */
+$messages['km'] = array(
+	'whatismyip' => 'IP របស់ខ្ញុំលេខប៉ុន្មាន',
+	'whatismyip-desc' => 'បង្ហាញអាសយដ្ឋាន IP របស់អ្នកប្រើប្រាស់បច្ចុប្បន្ននៅលើ [[Special:WhatIsMyIP]]',
+	'whatismyip-out' => 'IP របស់អ្នក:',
+);
+
 /** Ripoarisch (Ripoarisch)
  * @author Purodha
  */

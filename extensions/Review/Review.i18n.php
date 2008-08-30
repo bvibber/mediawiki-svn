@@ -342,6 +342,7 @@ $messages['fi'] = array(
  * @author IAlex
  * @author Sherbrooke
  * @author Urhixidur
+ * @author Zetud
  */
 $messages['fr'] = array(
 	'review_sidebar_title' => 'Révision',
@@ -379,8 +380,8 @@ $messages['fr'] = array(
 	'review_statistic_cell' => 'Moyenne : $1 de $2<br />($4 utilisateurs inscrits, $5 anonymes)',
 	'review_version_statistic_cell' => '$1 de $2',
 	'review_version_reviews_link' => '<small>(révisions de version)</small>',
-	'review_concerns_page' => 'Cete révision est à propos de la page « $1 ».',
-	'review_concerns_user' => "C'est à propos des revisions faites par le contributeur « $1 ».",
+	'review_concerns_page' => 'Cette révision est à propos de la page « $1 ».',
+	'review_concerns_user' => "C'est à propos des révisions faites par le contributeur « $1 ».",
 	'review_user_reviews' => '<small>(révisions par ce contributeur)</small>',
 	'review_user_page_list' => 'Le contributeur a révisé les pages suivantes :',
 	'review_user_details_link' => '(détails)',

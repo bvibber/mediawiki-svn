@@ -37,6 +37,13 @@ $messages['bg'] = array(
 	'googleadsense-desc' => 'Добавя [http://www.google.com/adsense Google AdSense] в страничната лента',
 );
 
+/** Czech (Česky)
+ * @author Li-sung
+ */
+$messages['cs'] = array(
+	'googleadsense-desc' => 'Přidává do postranního panelu [http://www.google.com/adsense Google AdSense]',
+);
+
 /** German (Deutsch)
  * @author MichaelFrey
  */
@@ -70,6 +77,13 @@ $messages['ia'] = array(
  */
 $messages['it'] = array(
 	'googleadsense-desc' => 'Aggiunge [http://www.google.com/adsense Google AdSense] alla sidebar',
+);
+
+/** Khmer (ភាសាខ្មែរ)
+ * @author គីមស៊្រុន
+ */
+$messages['km'] = array(
+	'googleadsense-desc' => 'បន្ថែម [http://www.google.com/adsense Google AdSense] ទៅរបារចំហៀង',
 );
 
 /** Korean (한국어)

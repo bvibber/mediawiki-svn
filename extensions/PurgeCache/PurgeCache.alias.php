@@ -29,6 +29,11 @@ $aliases['de'] = array(
 	'PurgeCache' => array( 'Cache leeren' ),
 );
 
+/** Indonesian (Bahasa Indonesia) */
+$aliases['id'] = array(
+	'PurgeCache' => array( 'Pembersihan tembolok' ),
+);
+
 /** Luxembourgish (Lëtzebuergesch) */
 $aliases['lb'] = array(
 	'PurgeCache' => array( 'Cache eidel maachen' ),

@@ -71,6 +71,14 @@ $messages['ar'] = array(
 	'imagemap_desc_types' => 'أعلى اليمين, أسفل اليمين, أسفل اليسار, أعلى اليسار, لا شيء',
 );
 
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Ramsis II
+ */
+$messages['arz'] = array(
+	'imagemap_no_image' => 'غلط: لازم تحدد صورة في السطر الاولاني.',
+	'imagemap_invalid_title' => 'غلط:عنوان مش صحيح في اللينك عند السطر$1',
+);
+
 /** Asturian (Asturianu)
  * @author Esbardu
  */
@@ -890,6 +898,7 @@ $messages['pt'] = array(
 	'imagemap_desc' => 'Permite mapas de imagem clicáveis no lado do cliente usando a "tag" <tt><nowiki><imagemap></nowiki></tt>',
 	'imagemap_no_image' => '&lt;imagemap&gt;: é necessário especificar uma imagem na primeira linha',
 	'imagemap_invalid_image' => '&lt;imagemap&gt;: imagem inválida ou inexistente',
+	'imagemap_bad_image' => 'Erro: a imagem está na lista negra para esta página',
 	'imagemap_no_link' => '&lt;imagemap&gt;: não foi encontrado um link válido ao final da linha $1',
 	'imagemap_invalid_title' => '&lt;imagemap&gt;: título inválido no link da linha $1',
 	'imagemap_missing_coord' => '&lt;imagemap&gt;: coordenadas insuficientes para formar uma figura na linha $1',

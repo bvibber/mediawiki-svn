@@ -1333,6 +1333,7 @@ $messages['km'] = array(
 	'configure-desc-ns' => 'លំហឈ្មោះ',
 	'configure-desc-val' => 'តំលៃ',
 	'configure-edit-core' => 'មេឌាវិគី',
+	'configure-edit-ext' => 'ផ្នែកបន្ថែម',
 	'configure-ext-doc' => 'មើលឯកសារនៅលើបណ្តាញ',
 	'configure-ext-use' => 'ការប្រើប្រាស់',
 	'configure-js-remove' => 'លុប',
@@ -1340,6 +1341,7 @@ $messages['km'] = array(
 	'configure-section-db' => 'មូលដ្ឋានទិន្នន័យ',
 	'configure-section-db-notallowed' => 'អ្នកមិនត្រូវបានអនុញ្ញាតិអោយធ្វើការផ្លាស់ប្ដូរការកំនត់ផ្សេងៗរបស់មូលដ្ឋានទិន្នន័យទេ។',
 	'configure-section-email' => 'អ៊ីមែល',
+	'configure-section-timezone' => 'ល្វែងម៉ោង',
 	'configure-section-namespaces' => 'លំហឈ្មោះ',
 	'configure-section-stats' => 'ស្ថិតិវិបសាយ',
 	'configure-section-skin' => 'សំបក',
@@ -1349,8 +1351,11 @@ $messages['km'] = array(
 	'configure-section-images' => 'រូបភាពនានា',
 	'configure-section-specialpages' => 'ទំព័រពិសេសៗ',
 	'configure-section-recentchanges' => 'បំលាស់ប្ដូរថ្មីៗ',
+	'configure-section-users' => 'អ្នកប្រើប្រាស់',
+	'configure-section-extension' => 'ផ្នែកបន្ថែម',
 	'configure-section-search' => 'ស្វែងរក',
 	'configure-section-copyright' => 'រក្សាសិទ្ឋ',
+	'configure-section-mw-extensions' => 'ផ្នែកបន្ថែមនៃមេឌាវិគី',
 	'configure-view' => 'មើល',
 );
 

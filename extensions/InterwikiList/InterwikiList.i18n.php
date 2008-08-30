@@ -60,6 +60,16 @@ $messages['eo'] = array(
 	'interwikilist-target' => 'Cela URL-o',
 );
 
+/** Finnish (Suomi)
+ * @author Jaakonam
+ */
+$messages['fi'] = array(
+	'interwikilist' => 'Kieltenvälisten linkkien luettelo',
+	'interwikilist-desc' => 'Lisää [[Special:Interwikilist|toimintosivun]] kieltenvälisten linkkien katselua varten',
+	'interwikilist-linkname' => 'Kieltenvälinen linkki',
+	'interwikilist-target' => 'Kohdelinkki',
+);
+
 /** French (Français)
  * @author Grondin
  */

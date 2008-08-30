@@ -42,6 +42,16 @@ $aliases['hr'] = array(
 	'Contributors' => array( 'Doprinositelji' ),
 );
 
+/** Indonesian (Bahasa Indonesia) */
+$aliases['id'] = array(
+	'Contributors' => array( 'Kontributor' ),
+);
+
+/** Khmer (ភាសាខ្មែរ) */
+$aliases['km'] = array(
+	'Contributors' => array( 'អ្នករួមចំនែក' ),
+);
+
 /** Luxembourgish (Lëtzebuergesch) */
 $aliases['lb'] = array(
 	'Contributors' => array( 'Auteuren' ),

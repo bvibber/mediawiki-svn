@@ -84,6 +84,13 @@ $messages['eo'] = array(
 	'antibot-desc' => 'Simpla programaro por kontroli spamrobotojn kaj ĉanajn sendaĵojn',
 );
 
+/** Persian (فارسی)
+ * @author Huji
+ */
+$messages['fa'] = array(
+	'antibot-desc' => 'چارچوب ساده برای بررسی ربات‌های هرزنگار و بار راه‌انداز',
+);
+
 /** French (Français)
  * @author Grondin
  * @author Louperivois

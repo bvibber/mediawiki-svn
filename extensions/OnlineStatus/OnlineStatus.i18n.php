@@ -128,10 +128,15 @@ $messages['dsb'] = array(
  * @author Yekrats
  */
 $messages['eo'] = array(
+	'onlinestatus-desc' => 'Aldonas preferon por montri se la uzanto estas nune ensalutita aŭ ne en la vikio',
+	'onlinestatus-js-anon' => 'Eraro: Vi devas ensaluti por uzi ĉi tiun etendilon',
+	'onlinestatus-js-changed' => 'Via statuso estis ŝanĝita al "$1"',
+	'onlinestatus-js-error' => 'Neeblas ŝanĝi statuson, valuto "$1" estas nevalida',
 	'onlinestatus-subtitle-offline' => 'Ĉi tiu uzanto estas nune nekonektita',
 	'onlinestatus-subtitle-online' => 'Ĉi tiu uzanto estas nune konektita',
 	'onlinestatus-tab' => 'Statuso',
 	'onlinestatus-toggles-desc' => 'Via statuso:',
+	'onlinestatus-toggles-explain' => 'Ĉi tiu permesas al vi montri al aliaj uzantoj se vi estas aktuale retkonektita per vizitante vian uzanto-paĝon.',
 	'onlinestatus-toggles-show' => 'Montru retkonektan statuson en mia uzanto-paĝo',
 	'onlinestatus-toggle-offline' => 'Nekonektita',
 	'onlinestatus-toggle-online' => 'Konektita',

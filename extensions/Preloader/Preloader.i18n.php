@@ -37,9 +37,10 @@ $messages['eo'] = array(
 
 /** French (Français)
  * @author Grondin
+ * @author Zetud
  */
 $messages['fr'] = array(
-	'preloader-desc' => 'Fournis, pour les nouvelles pages, des fenêtres de texte personnalisables par nom d’espace',
+	'preloader-desc' => 'Fournit, pour les nouvelles pages, des fenêtres de texte personnalisables par nom d’espace',
 );
 
 /** Galician (Galego)

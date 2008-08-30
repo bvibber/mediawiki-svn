@@ -119,6 +119,13 @@ $messages['sk'] = array(
 	'wikitextloggedinout-desc' => 'Dva prípojné body syntaktického analyzátora, <tt>&lt;loggedin&gt;</tt> a <tt>&lt;loggedout&gt;</tt> na zobrazenie odlišného textu v závslosti na stave prihlásenia používateľa',
 );
 
+/** Sundanese (Basa Sunda)
+ * @author Irwangatot
+ */
+$messages['su'] = array(
+	'wikitextloggedinout-desc' => 'Dua kait parser, <tt>&lt;loggedin&gt;</tt> sarta <tt>&lt;loggedout&gt;</tt> anu mintonkeun teks anu béda dumasar status log asup pamaké',
+);
+
 /** Swedish (Svenska)
  * @author Boivie
  */

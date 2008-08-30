@@ -297,10 +297,12 @@ $messages['jv'] = array(
 
 /** Khmer (ភាសាខ្មែរ)
  * @author Chhorran
+ * @author T-Rithy
  * @author គីមស៊្រុន
  */
 $messages['km'] = array(
 	'block_title_error_page_title' => 'ចំណងជើង​ត្រូវបាន​រាំងខ្ទប់',
+	'block_title_error-desc' => 'ផ្តល់ជូននូវរបៀបជាមូលដ្ឋានគ្រឹះនៃទំព័រដែលកំពុងការពារ ជាមួយនឹងចំនងជើងជាក់លាក់ពីការរក្សាទុក​ ឫ ការបង្កើត',
 	'block_title_error' => 'សូមអភ័យទោស! ចំនងជើង​ទំព័រនេះ​មិនត្រូវ​បាន​អនុញ្ញាតអោយរក្សាទុកទេ។',
 );
 

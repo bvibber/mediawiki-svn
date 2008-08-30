@@ -51,6 +51,13 @@ $messages['fr'] = array(
 	'substall-desc' => 'Crée une balise <nowiki><substall></nowiki> qui convertit tous les modèles en syntaxe wiki.',
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author Rex
+ */
+$messages['id'] = array(
+	'substall-desc' => 'Membuat sebuah tag <nowiki><substall></nowiki> yang mengembangkan semua templat ke sintaksis wiki',
+);
+
 /** Ripoarisch (Ripoarisch)
  * @author Purodha
  */
@@ -85,6 +92,13 @@ $messages['oc'] = array(
  */
 $messages['sk'] = array(
 	'substall-desc' => 'Vytvorí značku <nowiki><substall></nowiki>, ktorá rozbalí všetky šablóny na wiki syntax.',
+);
+
+/** Sundanese (Basa Sunda)
+ * @author Irwangatot
+ */
+$messages['su'] = array(
+	'substall-desc' => 'Nyieun hiji tag <nowiki><substall></nowiki> anu ngembangkeun kabéh citakan ka sintakwiki',
 );
 
 /** Swedish (Svenska)

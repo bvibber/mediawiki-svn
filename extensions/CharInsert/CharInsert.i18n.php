@@ -86,6 +86,13 @@ $messages['eo'] = array(
 	'charinsert-desc' => 'Permesas kreadon de JavaScript skatolon por [[MediaWiki:Edittools|entajpi nekutimajn signojn]]',
 );
 
+/** Persian (فارسی)
+ * @author Huji
+ */
+$messages['fa'] = array(
+	'charinsert-desc' => 'ایجاد یک جعبه مبتنی بر جاوااسکریپت را برای [[MediaWiki:Edittools|وارد کردن نویسه‌های غیر-استاندارد]] ممکن می‌سازد',
+);
+
 /** French (Français)
  * @author Meithal
  * @author Urhixidur

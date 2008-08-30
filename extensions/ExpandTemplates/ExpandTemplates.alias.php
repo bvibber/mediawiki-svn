@@ -67,6 +67,11 @@ $aliases['hu'] = array(
 	'ExpandTemplates' => array( 'Sablonok kibontása' ),
 );
 
+/** Indonesian (Bahasa Indonesia) */
+$aliases['id'] = array(
+	'ExpandTemplates' => array( 'Kembangkan templat' ),
+);
+
 /** Korean (한국어) */
 $aliases['ko'] = array(
 	'ExpandTemplates' => array( '틀전개' ),

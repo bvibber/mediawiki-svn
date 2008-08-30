@@ -179,6 +179,16 @@ $messages['ps'] = array(
 	'newschannel_include_category' => 'اضافه وېشنيزه:',
 );
 
+/** Portuguese (Português)
+ * @author Malafaya
+ */
+$messages['pt'] = array(
+	'newschannel_format' => 'Formato:',
+	'newschannel_limit' => 'Limite:',
+	'newschannel_include_category' => 'Categoria adicional:',
+	'newschannel_exclude_category' => 'Excluir categoria:',
+);
+
 /** Russian (Русский)
  * @author Iaroslav Vassiliev
  */

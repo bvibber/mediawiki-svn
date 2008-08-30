@@ -178,14 +178,21 @@ $messages['jv'] = array(
 
 /** Khmer (ភាសាខ្មែរ)
  * @author Chhorran
+ * @author គីមស៊្រុន
  */
 $messages['km'] = array(
-	'postcomment_notloggedin' => 'អ្នកមិនបាន ត្រូវពិនិត្យចូល ។',
-	'postcomment_youareloggedinas' => 'អ្នកបានត្រូវ ពិនិត្យចូល ជា $1',
-	'postcomment_addcommentdiscussionpage' => 'បន្ថែម វិចារ របស់អ្នក លើ ទំព័រពិភាក្សា',
-	'postcomment_leavemessagefor' => 'ទំលាក់សារ សំរាប់ $1',
+	'postcomment_desc' => 'អនុញ្ញាតអោយអ្នកប្រើប្រាស់នានា​ដាក់វិចារ​ដោយផ្ទាល់ទៅក្នុងទំព័រពិភាក្សា។',
+	'postcomment_discussionprotected' => 'ទំព័រពិភាក្សានេះត្រូវបានការពារមិនអោយដាក់វិចារបន្ថែមទៀតទេ។',
+	'postcomment_notloggedin' => 'អ្នកមិនទាន់ឡុកអ៊ីនទេ។',
+	'postcomment_youareloggedinas' => 'អ្នកបានឡុកអ៊ីនជា $1',
+	'postcomment_addcommentdiscussionpage' => 'បន្ថែមវិចាររបស់អ្នកលើទំព័រពិភាក្សានេះ',
+	'postcomment_leavemessagefor' => 'ទំលាក់សារសំរាប់ $1',
 	'postcomment_post' => 'ប្រកាស',
-	'postcomment_replyto' => 'ឆ្លើយតប ទៅ $1',
+	'postcomment_on' => 'នៅថ្ងៃទី',
+	'postcomment_said' => 'បាននិយាយថា',
+	'postcomment_invalidrequest' => 'សំនើមិនត្រឹមត្រូវ។',
+	'postcomment_replyto' => 'ឆ្លើយតបទៅ $1',
+	'postcomment_nopostingtoadd' => 'គ្មានប្រកាសសំរាប់បន្ថែមទេ។',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

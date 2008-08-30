@@ -528,15 +528,34 @@ $1',
 /** Khmer (ភាសាខ្មែរ)
  * @author Chhorran
  * @author Lovekhmer
+ * @author គីមស៊្រុន
  */
 $messages['km'] = array(
+	'inplace_access_disabled' => 'ការចូលទៅប្រើប្រាស់សេវាកម្មនេះត្រូវបានបិទចំពោះអតិថិជនទាំងអស់។',
 	'inplace_scaler_not_enough_params' => 'ប៉ារ៉ាម៉ែត្រមិនគ្រប់គ្រាន់។',
+	'inplace_scaler_invalid_image' => 'រូបភាពមិនត្រឹមត្រូវ។ មិនអាចកំនត់ទំហំបាន។',
+	'inplace_scaler_failed' => 'កំហុស១បានកើតឡើងក្នុងពេលកំពុងវាស់ទំហំរូបភាព៖ $1',
 	'webstore_path_invalid' => 'ឈ្មោះឯកសារមិនត្រឹមត្រូវ។',
+	'webstore_dest_open' => 'មិនអាចបើកឯកសារគោលដៅ "$1"ទេ។',
 	'webstore_archive_mkdir' => 'មិនអាច បង្កើត បញ្ជី បណ្ណសារ "$1" ។',
+	'webstore_src_open' => 'មិនអាចបើកឯកសារប្រភព "$1" ទេ។',
+	'webstore_src_close' => 'កំហុសក្នុងការបិទឯកសារប្រភព "$1" ។',
+	'webstore_src_delete' => 'កំហុសក្នុងការលុបចោលឯកសារប្រភព "$1" ។',
+	'webstore_rename' => 'កំហុសក្នុងការប្ដូរឈ្មោះឯកសារ "$1" ទៅជា "$2"។',
+	'webstore_dest_exists' => 'កំហុស! ឯកសារគោលដៅ "$1" មានរួចហើយ។',
+	'webstore_temp_open' => 'កំហុសក្នុងការបើកឯកសារបណ្ដោះអាសន្ន "$1"។',
+	'webstore_temp_copy' => 'កំហុសក្នុងការថតចំលងឯកសារបណ្ដោះអាសន្ន "$1" ទៅកាន់ឯកសារគោលដៅ "$2"។',
+	'webstore_temp_close' => 'កំហុសក្នុងការបិទឯកសារបណ្ដោះអាសន្ន "$1"។',
+	'webstore_temp_lock' => 'កំហុសក្នុងការចាក់សោឯកសារបណ្ដោះអាសន្ន "$1"។',
 	'webstore_no_file' => 'គ្មានឯកសារ ​បានត្រូវផ្ទុកឡើង ។',
+	'webstore_move_uploaded' => 'កំហុសក្នុងការប្ដូរទីតាំងឯកសារដែលបានផ្ទុកឡើង "$1" ទៅកាន់ទីតាំងបណ្ដោះអាសន្ន "$2"។',
+	'webstore_invalid_zone' => 'តំបន់មិនត្រឹមត្រូវ "$1"។',
+	'webstore_curl' => 'កំហុសពី cURL: $1',
 	'webstore_404' => 'រកមិនឃើញឯកសារទេ។',
+	'webstore_php_warning' => 'ការព្រមាន PHP: $1',
 	'webstore_metadata_not_found' => 'រកមិនឃើញ ឯកសារ ៖ $1',
 	'webstore_no_response' => 'គ្មានចំលើយតប ពី ម៉ាស៊ីនបំរើសេវា',
+	'webstore_php_error' => 'មានកំហុស PHP:',
 );
 
 /** Ripoarisch (Ripoarisch)
@@ -570,6 +589,7 @@ $messages['ksh'] = array(
 $1',
 	'webstore_no_response' => 'Kei Antwoot fun Server',
 	'webstore_php_error' => 'Et sin PHP Fähler opjetrodde:',
+	'webstore_no_handler' => 'Kei Projramm för et Ömwandelle för dä <i lang="en">MIME</i> tüp',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

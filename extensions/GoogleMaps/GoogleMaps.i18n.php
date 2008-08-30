@@ -1696,6 +1696,7 @@ $wgGoogleMapsMessages['lb'] = array(
 	'gm-balloon-link-article' => 'Link op dës Säit (fakultativ):',
 	'gm-remove' => 'ewechhuelen',
 	'gm-save-point' => 'Späicheren and zoumaachen',
+	'gm-no-maps' => 'Op dëser Sàit gëtt et keng Kaarten.',
 	'gm-load-map' => 'Kaart lueden',
 	'gm-no-results' => 'Pardon, kee Resultat',
 	'gm-searching' => 'Sich ...',

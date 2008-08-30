@@ -38,6 +38,16 @@ $aliases['fi'] = array(
 	'InterwikiList' => array( 'Interwikilista' ),
 );
 
+/** Indonesian (Bahasa Indonesia) */
+$aliases['id'] = array(
+	'InterwikiList' => array( 'Daftar interwiki' ),
+);
+
+/** Khmer (ភាសាខ្មែរ) */
+$aliases['km'] = array(
+	'InterwikiList' => array( 'បញ្ជីអន្តរវិគី' ),
+);
+
 /** Korean (한국어) */
 $aliases['ko'] = array(
 	'InterwikiList' => array( '인터위키목록' ),

@@ -94,6 +94,14 @@ $messages['es'] = array(
 	'newuseredit-summary' => 'Agregando el [[{{int:newusermessage-template}}|mensaje de bienvenida]] a la página de usuario del nuevo usuario',
 );
 
+/** Persian (فارسی)
+ * @author Huji
+ */
+$messages['fa'] = array(
+	'newusermessage-desc' => 'یک پیغام در صفحهٔ بحث کاربرهای تازه ایجاد شده می‌افزاید',
+	'newuseredit-summary' => 'افزودن [[{{int:newusermessage-template}}|پیغام خوش‌آمد]] به صفحهٔ بحث کاربر تازه',
+);
+
 /** Finnish (Suomi)
  * @author Crt
  * @author Jaakonam
@@ -297,10 +305,12 @@ $messages['sk'] = array(
 );
 
 /** Sundanese (Basa Sunda)
+ * @author Irwangatot
  * @author Kandar
  */
 $messages['su'] = array(
 	'newusermessage-desc' => 'Kirim surat ka kaca obrolan pamaké nu kakara dijieun',
+	'newuseredit-summary' => 'Nambahan [[{{int:newusermessage-template}}|talatah wilujeng sumping]] ka kaca Obrolan saurang pamaké anyar',
 );
 
 /** Swedish (Svenska)

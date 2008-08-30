@@ -32,6 +32,11 @@ $aliases['de'] = array(
 	'UserStats' => array( 'Benutzerstatistik' ),
 );
 
+/** Indonesian (Bahasa Indonesia) */
+$aliases['id'] = array(
+	'UserStats' => array( 'Statistik pengguna' ),
+);
+
 /** Luxembourgish (Lëtzebuergesch) */
 $aliases['lb'] = array(
 	'UserStats' => array( 'Benotzerstistiken' ),

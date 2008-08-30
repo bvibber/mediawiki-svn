@@ -226,6 +226,13 @@ $messages['jv'] = array(
 	'poem-desc' => 'Nambahaké tag <tt>&lt;poem&gt;</tt> tag kanggo formatting tembang utawa puisi',
 );
 
+/** Khmer (ភាសាខ្មែរ)
+ * @author Lovekhmer
+ */
+$messages['km'] = array(
+	'poem-desc' => 'ដាក់ប្លាក <tt>&lt;poem&gt;</tt> សំរាប់ទ្រង់ទ្រាយកំនាព្យ',
+);
+
 /** Korean (한국어)
  * @author ToePeu
  */

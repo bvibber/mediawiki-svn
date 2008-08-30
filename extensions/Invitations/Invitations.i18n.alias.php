@@ -60,6 +60,11 @@ $aliases['hu'] = array(
 	'Invitations' => array( 'Meghívók' ),
 );
 
+/** Indonesian (Bahasa Indonesia) */
+$aliases['id'] = array(
+	'Invitations' => array( 'Undangan' ),
+);
+
 /** Khmer (ភាសាខ្មែរ) */
 $aliases['km'] = array(
 	'Invitations' => array( 'ការអញ្ជើញ' ),

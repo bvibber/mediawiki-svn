@@ -508,7 +508,7 @@ $messages['de'] = array(
 	'hiderevision' => 'Versionen dauerhaft entfernen',
 	'hiderevision-desc' => 'Verbirgt aus juristischen Gründen einzelne Versionen vor allen Benutzern',
 	'group-oversight' => 'Oversighter',
-	'group-oversight-member' => 'Oversighter ',
+	'group-oversight-member' => 'Oversighter',
 	'grouppage-oversight' => '{{ns:project}}:Oversight',
 	'right-oversight' => 'Ansehen einer zuvor verborgenen Version',
 	'right-hiderevision' => 'Ansehen und wiederherstellen von Versionen, die auch vor Administratoren verborgen sind',
@@ -610,6 +610,7 @@ Malfaru ĉi tiun ŝanĝon antaŭe.',
 	'oversight-hidden' => 'Kaŝita revizio',
 	'oversight-header' => 'Jen listo de revizioj laste daŭre kaŝitaj de publika vido.
 Dono de ĉi tiu informo eble povus rezulti en daŭra malgajno de Kontrolanto-rajtoj.',
+	'oversight-legend' => 'Serĉi protokolon pri revizia kaŝado',
 );
 
 /** Spanish (Español)

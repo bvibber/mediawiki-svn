@@ -345,6 +345,17 @@ $messages['stq'] = array(
 N näi Benutserkonto, $2, wuude ap n $4 ap $3 anlaid.',
 );
 
+/** Sundanese (Basa Sunda)
+ * @author Irwangatot
+ */
+$messages['su'] = array(
+	'newusernotifsubj' => "'''Anyar''' ,béja pamaké pikeun $1",
+	'newusernotif-desc' => 'Kirim béja ka surélék sabot pamaké anyar dijieun',
+	'newusernotifbody' => 'Pikeun $1,
+
+Aya pamaké anyar, $2, geus dijieun dina $3 , $4',
+);
+
 /** Swedish (Svenska)
  * @author M.M.S.
  */

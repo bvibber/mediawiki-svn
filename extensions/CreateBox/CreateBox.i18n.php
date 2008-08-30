@@ -172,9 +172,15 @@ Non puoi creare questa pagina, ma puoi [{{fullurl:{{FULLPAGENAME}}|action=edit}}
 
 /** Khmer (ភាសាខ្មែរ)
  * @author Lovekhmer
+ * @author គីមស៊្រុន
  */
 $messages['km'] = array(
 	'createbox-create' => 'បង្កើត',
+	'createbox-exists' => "សូមអភ័យទោស! \"'''{{FULLPAGENAME}}'''\" មានរួចហើយ។
+
+អ្នកមិនអាចបង្កើតទំព័រនេះទេ ប៉ុន្តែអ្នកអាច[{{fullurl:{{FULLPAGENAME}}|action=edit}} កែសំរួល] [{{fullurl:{{FULLPAGENAME}}}} អាន] ឬ បង្កើតទំព័រផ្សេងមួយទៀតដោយប្រើប្រអប់ខាងក្រោម។
+
+<createbox>break=no</createbox>",
 );
 
 /** Ripoarisch (Ripoarisch)

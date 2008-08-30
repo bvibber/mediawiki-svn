@@ -100,10 +100,11 @@ $messages['ar'] = array(
 
 /** Egyptian Spoken Arabic (مصرى)
  * @author Ghaly
+ * @author Meno25
  * @author Ramsis II
  */
 $messages['arz'] = array(
-	'linksearch' => 'دور في لينكات الويب',
+	'linksearch' => 'دور فى لينكات الويب',
 	'linksearch-pat' => 'نظام التدوير:',
 	'linksearch-ns' => 'النطاق:',
 	'linksearch-ok' => 'تدوير',

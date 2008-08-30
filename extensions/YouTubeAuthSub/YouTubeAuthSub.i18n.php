@@ -469,6 +469,13 @@ Kérlek várj türelemmel.',
 	'youtubeauthsub_jserror_nodesc' => 'Kérlek, add meg a videó leírását.',
 );
 
+/** Interlingua (Interlingua)
+ * @author Malafaya
+ */
+$messages['ia'] = array(
+	'youtubeauthsub_title' => 'Titulo',
+);
+
 /** Indonesian (Bahasa Indonesia)
  * @author Rex
  */

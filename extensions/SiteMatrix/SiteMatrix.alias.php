@@ -57,6 +57,11 @@ $aliases['ht'] = array(
 	'SiteMatrix' => array( 'SitMatrix' ),
 );
 
+/** Indonesian (Bahasa Indonesia) */
+$aliases['id'] = array(
+	'SiteMatrix' => array( 'Matriks situs' ),
+);
+
 /** Luxembourgish (Lëtzebuergesch) */
 $aliases['lb'] = array(
 	'SiteMatrix' => array( 'Lëscht vun de Wikimedia-Wikien' ),
