@@ -77,8 +77,9 @@ $aliases['hi'] = array(
 	'CategoryIntersection' => array( 'श्रेणी इन्टरसेक्शन' ),
 );
 
+/** Upper Sorbian (Hornjoserbsce) */
 $aliases['hsb'] = array(
-	'CategoryIntersection'=> array( 'Kategorijowe prěčnišćo' ),
+	'CategoryIntersection' => array( 'Kategorijowe prěčnišćo' ),
 );
 
 /** Hungarian (Magyar) */
@@ -91,8 +92,9 @@ $aliases['ia'] = array(
 	'CategoryIntersection' => array( 'Intersection de categorias' ),
 );
 
+/** Javanese (Basa Jawa) */
 $aliases['jv'] = array(
-	'CategoryIntersection'=> array( 'Intersèksi Kategori' ),
+	'CategoryIntersection' => array( 'Intersèksi Kategori' ),
 );
 
 /** Ripoarisch (Ripoarisch) */
@@ -150,8 +152,9 @@ $aliases['ru'] = array(
 	'CategoryIntersection' => array( 'Пересечение категорий' ),
 );
 
+/** Tachelhit (Tašlḥiyt) */
 $aliases['shi'] = array(
-	'CategoryIntersection'=> array( 'taqatoɛ n\'omgrd' ),
+	'CategoryIntersection' => array( "taqatoɛ n'omgrd" ),
 );
 
 /** Slovak (Slovenčina) */

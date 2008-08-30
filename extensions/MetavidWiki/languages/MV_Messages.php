@@ -358,6 +358,7 @@ $messages['niu'] = array(
 $messages['af'] = array(
 	'mv_tool_search' => 'Soek',
 	'mv_tool_export' => 'Eksporteer',
+	'category-media-count' => 'Daar is {{PLURAL:$1|een lêer|$1 lêers}} in die kategorie.',
 	'mv_play' => 'Speel',
 	'mv_edit' => 'Wysig',
 	'mv_history' => 'Geskiedenis',
@@ -593,6 +594,13 @@ $mvMVDTypeDefaultDisp يجب أن تكون جزء من $mvMVDTypeAllAvailable',
 	'mv_mang_layers' => 'التحكم بالطبقات',
 	'mv_mang_layers_title' => 'التحكم بمجموعة عرض الطبقة للستريم الحالي',
 	'mv_protect_source_material' => 'المادة المصدر الأصلية محمية من التعديلات',
+);
+
+/** Southern Balochi (بلوچی مکرانی)
+ * @author Mostafadaneshvar
+ */
+$messages['bcc'] = array(
+	'category-media-count' => '{{PLURAL:$1|یک فایل هست|هستن $1 فایلانی}} ته ای دسته.',
 );
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
@@ -1193,6 +1201,13 @@ Saltar á vista do fluxo: $2',
 	'mv_protect_source_material' => 'A fonte orixinal do material está protexida fronte ás edicións',
 );
 
+/** Gothic (������������������������������������)
+ * @author Jocke Pirat
+ */
+$messages['got'] = array(
+	'mv_edit' => 'Máidjan',
+);
+
 /** Manx (Gaelg)
  * @author MacTire02
  */
@@ -1621,6 +1636,7 @@ $messages['ia'] = array(
 	'mv_remove_reason' => 'Motivo pro deletion:',
 	'mv_tool_search' => 'Cercar',
 	'mv_tool_export' => 'Exportar',
+	'category-media-count' => 'Il ha {{PLURAL:$1|un file|$1 files}} in iste categoria.',
 	'mv_edit' => 'Modificar',
 	'mv_history' => 'Historia',
 );
@@ -2546,6 +2562,7 @@ $messages['nso'] = array(
 $messages['oc'] = array(
 	'metavid' => 'Pagina metavid',
 	'mv_missing_stream' => 'Flus mancant : $1',
+	'specialpages-group-mv_group' => 'Paginas especialas de MetaVidWiki',
 	'mv_ogg_low_quality' => 'Flus ogg utilizable en linha, alberjat sus metavid',
 	'mv_ogg_high_quality' => 'Flus ogg de nauta qualitat, alberjat sus metavid.',
 	'mv_flash_low_quality' => 'Flus Internet - Flash vidèo',
@@ -3544,6 +3561,7 @@ Hoppa till dataflödesvisning: $2',
 	'mv_viewprevnext' => 'Visa ($1) ($2)',
 	'mediasearch' => 'Media sök',
 	'mv_search_sel_t' => 'Välj sök sätt',
+	'mv_results_for' => 'Resultat för $1',
 	'mv_video_search' => 'Videosökning',
 	'mv_page_search' => 'Gör en wikisidesökning efter $1',
 	'mv_add_filter' => 'Lägg till filter',

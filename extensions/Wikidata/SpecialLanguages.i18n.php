@@ -118,7 +118,9 @@ It might be lost.
 Please contact the server operator or administrator.",
 );
 
-/** Message documentation (Message documentation) */
+/** Message documentation (Message documentation)
+ * @author Jon Harald Søby
+ */
 $wdMessages['qqq'] = array(
 	'ow_save' => '{{Identical|Save}}',
 	'ow_history' => '{{Identical|History}}',
@@ -792,7 +794,6 @@ $wdMessages['de'] = array(
 	'ow_no_action_specified' => '<h3>Es wurde keine Aktion angegeben</h3> Vielleicht kamst du direkt zu dieser Seite?.',
 	'ow_db_consistency_not_found' => '<h2>Fehler</h2>Die Datenbank ist nicht mehr konsistent. Wikidate kann keine gültigen Daten zu der ID finden. Bitte kontaktiere den Server-Administrator.',
 );
-
 
 /** Greek (Ελληνικά)
  * @author Consta

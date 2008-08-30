@@ -299,7 +299,7 @@ Entweder * oder % als Maskenzeichen benutzen",
 	'whitelistselectrestricted' => '== Beschr√§nkter Benutzername selektieren ==',
 	'whitelistpagelist' => '{{SITENAME}} Seiten f√ºr $1',
 	'whitelistnocalendar' => "<font color='red' size=3>[http://www.mediawiki.org/wiki/Extension:Usage_Statistics Die Extension:UsageStatistics], eine Vorraussetzung f√ºr dieses Extension, wurde nicht installiert oder kann nicht gefunden werden!</font>",
-	'whitelistbadtitle' => 'Titel inkompatibel - ',
+	'whitelistbadtitle' => 'Titel inkompatibel -',
 	'whitelistoverview' => '== √Ñnderungs√ºbersicht f√ºr $1 ==',
 	'whitelistoverviewcd' => "* Datum '''($1)''' f√ºr [[:$2|$2]] wird ge√§ndert",
 	'whitelistoverviewsa' => "* Zugriff '''$1''' f√ºr [[:$2|$2]] wird angewendet",
@@ -491,6 +491,13 @@ $2',
 Esta p√°xina s√≥ √© aplicable aos usuarios limitados",
 	'whitelistnever' => 'nunca',
 	'whitelistnummatches' => '  - $1 coincidencias',
+);
+
+/** Gothic (Ì†ÄÌº≤Ì†ÄÌºøÌ†ÄÌΩÑÌ†ÄÌºπÌ†ÄÌΩÉÌ†ÄÌº∫)
+ * @author Jocke Pirat
+ */
+$allMessages['got'] = array(
+	'whitelisttableedit' => 'M√°idjan',
 );
 
 /** Hakka (Hak-k√¢-fa)

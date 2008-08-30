@@ -173,8 +173,8 @@ $messages['fr'] = array(
 	'importfreeimages_owner' => 'Auteur',
 	'importfreeimages_importthis' => 'l’importer',
 	'importfreeimages_next' => ' $1 suivants',
-	'importfreeimages_filefromflickr' => '$1 par l’utilisateur <b>[$2]</b> depuis flickr. URL d’origine ',
-	'importfreeimages_promptuserforfilename' => 'Veuillez indiquer le nom du fichier de destination : ',
+	'importfreeimages_filefromflickr' => '$1 par l’utilisateur <b>[$2]</b> depuis flickr. URL d’origine',
+	'importfreeimages_promptuserforfilename' => 'Veuillez indiquer le nom du fichier de destination :',
 	'importfreeimages_returntoform' => "ou, cliquez <a href='$1'>ici</a> pour revenir à votre liste de résultats.",
 );
 

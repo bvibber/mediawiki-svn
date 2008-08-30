@@ -31,21 +31,11 @@ $messages['ar'] = array(
 	'rightfunctions-ns' => '(من حماية نطاق)',
 );
 
-/** Bulgarian (Български)
- * @author DCLXVI
- */
-$messages['bg'] = array(
-	'rightfunctions-restboth' => '$1 (от локална страница), $2 (от каскадни източници)',
-	'rightfunctions-restcasc' => '$1 (от каскадни източници)',
-);
-
 /** Esperanto (Esperanto)
  * @author Yekrats
  */
 $messages['eo'] = array(
 	'rightfunctions-desc' => 'Rajtecaj funkcioj de sintaksaj analiziloj',
-	'rightfunctions-restboth' => '$1 (de loka paĝo), $2 (de rilataj fontoj)',
-	'rightfunctions-restcasc' => '$1 (de rilataj fontoj)',
 );
 
 /** French (Français)
@@ -63,8 +53,6 @@ $messages['fr'] = array(
  */
 $messages['gl'] = array(
 	'rightfunctions-desc' => 'Permisos baseados nas funcións analíticas',
-	'rightfunctions-restboth' => '$1 (a partir da páxina local), $2 (a partir das fontes en serie)',
-	'rightfunctions-restcasc' => '$1 (a partir das fontes en serie)',
 );
 
 /** Hindi (हिन्दी)
@@ -72,7 +60,6 @@ $messages['gl'] = array(
  */
 $messages['hi'] = array(
 	'rightfunctions-desc' => 'अनुमति-आधारित पार्सर कार्य',
-	'rightfunctions-restcasc' => '$1 (अन्य स्रोतोंसे)',
 );
 
 /** Upper Sorbian (Hornjoserbsce)
@@ -80,8 +67,6 @@ $messages['hi'] = array(
  */
 $messages['hsb'] = array(
 	'rightfunctions-desc' => 'Parserowe funkcije na zakładźe prawow',
-	'rightfunctions-restboth' => '$1 (z lokalneje strony), $2 (z překrywacych žórłow)',
-	'rightfunctions-restcasc' => '$1 (z překrywacych žórłow)',
 );
 
 /** Italian (Italiano)
@@ -89,8 +74,6 @@ $messages['hsb'] = array(
  */
 $messages['it'] = array(
 	'rightfunctions-desc' => 'Funzioni del parser basate sui permessi',
-	'rightfunctions-restboth' => '$1 (dalla pagina locale), $2 (da fonti a cascata)',
-	'rightfunctions-restcasc' => '$1 (da fonti a cascata)',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -105,8 +88,6 @@ $messages['lb'] = array(
  */
 $messages['mr'] = array(
 	'rightfunctions-desc' => 'परवानगी आधारित पार्सर कार्ये',
-	'rightfunctions-restboth' => '$1 (स्थानिक स्रोतांकडून), $2 (इतर स्रोतांकडून)',
-	'rightfunctions-restcasc' => '$1 (इतर स्रोतांकडून)',
 );
 
 /** Dutch (Nederlands)
@@ -125,8 +106,6 @@ $messages['nl'] = array(
  */
 $messages['no'] = array(
 	'rightfunctions-desc' => 'Rettighetsbaserte parserfunksjoner',
-	'rightfunctions-restboth' => '$1 (fra lokal side), $2 (fra arvende kilder)',
-	'rightfunctions-restcasc' => '$1 (fra arvende kilder)',
 );
 
 /** Occitan (Occitan)
@@ -144,8 +123,6 @@ $messages['oc'] = array(
  */
 $messages['pl'] = array(
 	'rightfunctions-desc' => 'Funkcje parsera pracujące na uprawnieniach',
-	'rightfunctions-restboth' => '$1 (z lokalnej strony), $2 (ze źródeł kaskadowych)',
-	'rightfunctions-restcasc' => '$1 (ze źródeł kaskadowych)',
 );
 
 /** Russian (Русский)
@@ -153,8 +130,6 @@ $messages['pl'] = array(
  */
 $messages['ru'] = array(
 	'rightfunctions-desc' => 'Функции парсера на основе разрешений',
-	'rightfunctions-restboth' => '$1 (с локальной страницы), $2 (из каскадных источников)',
-	'rightfunctions-restcasc' => '$1 (из каскадных источников)',
 );
 
 /** Slovak (Slovenčina)
@@ -181,7 +156,5 @@ $messages['sv'] = array(
  */
 $messages['vi'] = array(
 	'rightfunctions-desc' => 'Hàm cú pháp dựa trên sự cấp phép',
-	'rightfunctions-restboth' => '$1 (từ trang cục bộ), $2 (từ các nguồn theo tầng)',
-	'rightfunctions-restcasc' => '$1 (từ các nguồn theo tầng)',
 );
 

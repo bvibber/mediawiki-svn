@@ -65,7 +65,9 @@ $1\n",
 	'webstore_no_handler'       => 'No handler for transforming this MIME type',
 );
 
-/** Message documentation (Message documentation) */
+/** Message documentation (Message documentation)
+ * @author Jon Harald Søby
+ */
 $messages['qqq'] = array(
 	'webstore_404' => '{{Identical|File not found}}',
 );

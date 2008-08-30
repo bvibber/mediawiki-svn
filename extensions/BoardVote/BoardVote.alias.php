@@ -39,7 +39,7 @@ $aliases['de'] = array(
  * @author Rotem Liss
  */
 $aliases['he'] = array(
-    'BoardVote' => array( 'בחירות_לחבר_הנאמנים' )
+	'BoardVote' => array( 'בחירות_לחבר_הנאמנים' ),
 );
 
 /** Hungarian (Magyar) */

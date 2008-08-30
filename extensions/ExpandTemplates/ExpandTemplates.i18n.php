@@ -737,7 +737,7 @@ $messages['ja'] = array(
 	'expand_templates_intro' => '指定したウィキ構文に含まれている全てのテンプレートを再帰的に展開します。
 <nowiki>{{</nowiki>#if:...}} のようなパーサー関数や、<nowiki>{{</nowiki>CURRENTDAY}} のような変数など、<nowiki>{{</nowiki> ～ }} で囲まれているものも展開されます。
 これは、MediaWiki 自身の適切な構文解釈段階で呼び出されます。',
-	'expand_templates_title' => '{{PAGENAME}} 等に使用するページ名: ',
+	'expand_templates_title' => '{{PAGENAME}} 等に使用するページ名:',
 	'expand_templates_input' => '展開するテキスト',
 	'expand_templates_output' => '展開結果',
 	'expand_templates_xml_output' => 'XML出力',

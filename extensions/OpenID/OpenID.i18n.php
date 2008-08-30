@@ -726,6 +726,7 @@ $messages['is'] = array(
 /** Italian (Italiano)
  * @author Darth Kule
  * @author Nemo bis
+ * @author Pietrodn
  */
 $messages['it'] = array(
 	'openid-desc' => 'Effettua il login alla wiki con [http://openid.net/ OpenID] e agli altri siti web che utilizzano OpenID con un account wiki',
@@ -737,6 +738,8 @@ $messages['it'] = array(
 	'openiderror' => 'Verifica errori',
 	'openiderrortext' => "Si è verificato un errore durante la verifica dell'URL OpenID.",
 	'openidconfigerror' => 'Errore nella configurazione OpenID',
+	'openidconfigerrortext' => 'La configurazione della memorizzazione di OpenID per questa wiki non è valida.
+Per favore consulta un [[Special:Userlist/sysop|amministratore]].',
 	'openidpermission' => 'Errore nei permessi OpenID',
 	'openidpermissiontext' => "Non è stato permesso di effettuare il login a questo server all'OpenID che hai fornito.",
 	'openidcancel' => 'Verifica annullata',
@@ -748,10 +751,12 @@ $messages['it'] = array(
 	'openidusernameprefix' => 'Utente OpenID',
 	'openidserverlogininstructions' => 'Inserisci di seguito la tua password per effettuare il login a $3 come utente $2 (pagina utente  $1).',
 	'openidtrustinstructions' => 'Controlla se desideri condividere i dati con $1.',
+	'openidallowtrust' => 'Permetti a $1 di fidarsi di questo account utente.',
 	'openidnopolicy' => 'Il sito nono ha specificato una politica relativa alla privacy.',
 	'openidpolicy' => 'Controlla la <a target="_new" href="$1">politica relativa alla privacy</a> per maggiori informazioni.',
 	'openidoptional' => 'Opzionale',
 	'openidrequired' => 'Richiesto',
+	'openidnickname' => 'Nickname',
 	'openidfullname' => 'Nome completo',
 	'openidemail' => 'Indirizzo e-mail',
 	'openidlanguage' => 'Lingua',
@@ -760,9 +765,11 @@ $messages['it'] = array(
 	'openidchooseinstructions' => 'Tutti gli utenti hanno bisogno di un nickname;
 puoi sceglierne uno dalle opzioni seguenti.',
 	'openidchoosefull' => 'Il tuo nome completo ($1)',
+	'openidchooseurl' => 'Un nome scelto dal tuo OpenID ($1)',
 	'openidchooseauto' => 'Un nome auto-generato ($1)',
 	'openidchoosemanual' => 'Un nome di tua scelta:',
 	'openidchooseexisting' => 'Un account esistente su questa wiki:',
+	'openidchoosepassword' => 'password:',
 	'openidconvertinstructions' => 'Questo modulo ti permette di cambiare il tuo account per usare un URL OpenID.',
 	'openidconvertsuccess' => 'Convertito con successo a OpenID',
 	'openidconvertsuccesstext' => 'Il tuo OpenID è stato convertito con successo a $1.',

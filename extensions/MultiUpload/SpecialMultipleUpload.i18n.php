@@ -346,12 +346,14 @@ Le files inappropriate essera delite immediatemente; vide le [[{{MediaWiki:Multi
 
 /** Italian (Italiano)
  * @author Darth Kule
+ * @author Pietrodn
  */
 $messages['it'] = array(
 	'multipleupload' => 'Carica file multimediali',
 	'multipleupload-desc' => 'Permetti agli utenti di [[Special:MultipleUpload|caricare più file contemporaneamente]]',
 	'multipleupload-ignoreallwarnings' => "Ignora '''tutti gli avvertimenti''' e salva comunque i file.",
 	'multipleupload-saveallfiles' => 'Salva tutti i file',
+	'multipleupload-addresswarnings' => 'Per favore occupati degli avvertimenti prima di ricaricare file.',
 	'multipleupload-page' => '{{ns:project}}:Regole per la cancellazione dei file',
 	'multipleupload-text' => "Carica qui più file insieme.
 

@@ -93,7 +93,7 @@ $aliases['gl'] = array(
  * @author Rotem Liss
  */
 $aliases['he'] = array(
-	'Configure'  => array( 'הגדרות' ),
+	'Configure' => array( 'הגדרות' ),
 	'Extensions' => array( 'הרחבות' ),
 	'ViewConfig' => array( 'הצגת_הגדרות' ),
 );

@@ -1082,8 +1082,8 @@ $messages['ps'] = array(
 );
 
 /** Portuguese (Português)
- * @author Malafaya
  * @author 555
+ * @author Malafaya
  */
 $messages['pt'] = array(
 	'newuserlogpage' => 'Registo de criação de utilizadores',

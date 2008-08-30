@@ -342,6 +342,11 @@ Protocolos soportados: <tt>$1</tt>',
 	'linksearch-error' => 'Los comodines sólo pueden aparecer al principio del nombre de sitio.',
 );
 
+/** Estonian (Eesti) */
+$messages['et'] = array(
+	'linksearch' => 'Otsi välislinke',
+);
+
 /** Basque (Euskara) */
 $messages['eu'] = array(
 	'linksearch' => 'Web loturak bilatu',
@@ -455,6 +460,13 @@ $messages['gl'] = array(
 	'linksearch-text' => 'Extensións como "*.wikipedia.org" poden ser usadas.<br />Protocolos soportados: <tt>$1</tt>',
 	'linksearch-line' => '$1 ligado dende $2',
 	'linksearch-error' => 'Os comodíns só poden aparecer ao principio do nome do servidor.',
+);
+
+/** Gothic (������������������������������������)
+ * @author Jocke Pirat
+ */
+$messages['got'] = array(
+	'linksearch-ns' => 'Seidofera:',
 );
 
 /** Ancient Greek (Ἀρχαία ἑλληνικὴ)
@@ -705,7 +717,7 @@ $messages['kk-arab'] = array(
 	'linksearch-pat' => 'ٸزدەۋ شارتى:',
 	'linksearch-ns' => 'ەسٸم اياسى:',
 	'linksearch-ok' => 'ٸزدەۋ',
-	'linksearch-text' => '«*.wikipedia.org» اتاۋىنا ۇقساستى بٵدەل نىشانداردى قولدانۋعا بولادى. ',
+	'linksearch-text' => '«*.wikipedia.org» اتاۋىنا ۇقساستى بٵدەل نىشانداردى قولدانۋعا بولادى.',
 	'linksearch-line' => '$2 دەگەننەن $1 سٸلتەگەن',
 	'linksearch-error' => 'بٵدەل نىشاندار تەك سەرۆەر جايى اتاۋىنىڭ باستاۋىندا بولۋى مٷمكٸن.',
 );
@@ -716,7 +728,7 @@ $messages['kk-cyrl'] = array(
 	'linksearch-pat' => 'Іздеу шарты:',
 	'linksearch-ns' => 'Есім аясы:',
 	'linksearch-ok' => 'Іздеу',
-	'linksearch-text' => '«*.wikipedia.org» атауына ұқсасты бәдел нышандарды қолдануға болады. ',
+	'linksearch-text' => '«*.wikipedia.org» атауына ұқсасты бәдел нышандарды қолдануға болады.',
 	'linksearch-line' => '$2 дегеннен $1 сілтеген',
 	'linksearch-error' => 'Бәдел нышандар тек сервер жайы атауының бастауында болуы мүмкін.',
 );
@@ -727,7 +739,7 @@ $messages['kk-latn'] = array(
 	'linksearch-pat' => 'İzdew şartı:',
 	'linksearch-ns' => 'Esim ayası:',
 	'linksearch-ok' => 'İzdew',
-	'linksearch-text' => '«*.wikipedia.org» atawına uqsastı bädel nışandardı qoldanwğa boladı. ',
+	'linksearch-text' => '«*.wikipedia.org» atawına uqsastı bädel nışandardı qoldanwğa boladı.',
 	'linksearch-line' => '$2 degennen $1 siltegen',
 	'linksearch-error' => 'Bädel nışandar tek server jaýı atawınıñ bastawında bolwı mümkin.',
 );

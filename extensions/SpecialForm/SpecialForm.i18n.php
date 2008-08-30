@@ -638,9 +638,9 @@ $messages['pms'] = array(
 );
 
 /** Portuguese (Português)
+ * @author 555
  * @author Lijealso
  * @author Malafaya
- * @author 555
  */
 $messages['pt'] = array(
 	'form' => 'Formulário',

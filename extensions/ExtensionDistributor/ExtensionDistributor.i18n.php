@@ -902,8 +902,7 @@ tar -xzf $5 -C /var/www/mediawiki/extensions
 
 響你解壓咗啲檔案之後，你需要響 LocalSettings.php 度註冊番個擴展。個擴展說明講咗點樣可以做到呢樣嘢。
 
-如果你有任何對於呢個擴展發佈系統有問題嘅話，請去[[Extension talk:ExtensionDistributor]]。
-",
+如果你有任何對於呢個擴展發佈系統有問題嘅話，請去[[Extension talk:ExtensionDistributor]]。",
 	'extdist-want-more' => '攞另一個擴展',
 );
 
@@ -955,8 +954,7 @@ tar -xzf $5 -C /var/www/mediawiki/extensions
 
 响您解压缩文件之后，您需要在 LocalSettings.php 中注册该等扩展。该扩展之说明会有指示如何做到它。
 
-如果您有任何对于这个扩展发布系统有问题的话，请去[[Extension talk:ExtensionDistributor]]。
-",
+如果您有任何对于这个扩展发布系统有问题的话，请去[[Extension talk:ExtensionDistributor]]。",
 	'extdist-want-more' => '取另一个扩展',
 );
 
@@ -1008,8 +1006,7 @@ tar -xzf $5 -C /var/www/mediawiki/extensions
 
 響您解壓縮檔案之後，您需要在 LocalSettings.php 中註冊該等擴展。該擴展之說明會有指示如何做到它。
 
-如果您有任何對於這個擴展發佈系統有問題的話，請去[[Extension talk:ExtensionDistributor]]。
-",
+如果您有任何對於這個擴展發佈系統有問題的話，請去[[Extension talk:ExtensionDistributor]]。",
 	'extdist-want-more' => '取另一個擴展',
 );
 

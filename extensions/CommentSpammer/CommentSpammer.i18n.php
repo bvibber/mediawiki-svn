@@ -67,7 +67,7 @@ Vyhněte se tomu tím, že [[Special:UserLogin|se přihlásíte nebo si vytvoř�
 $messages['de'] = array(
 	'commentspammer-save-blocked' => 'Deine IP-Adresse stammt mutmaßlich von einem Kommentar-Spammer. Die Seite wurde nicht gespeichert. [[Special:Userlogin|Melde dich an oder erstelle ein Benutzerkonto]], um diese Warnung zu unterbinden.',
 	'commentspammer-desc' => 'Unterbindet Bearbeitungen durch vermutliche Kommentarspammer auf einer DNS-Blacklist',
-	'commentspammer-log-msg' => 'Bearbeitung von [[Special:Contributions/$1|$1]] für [[:$2]]. ',
+	'commentspammer-log-msg' => 'Bearbeitung von [[Special:Contributions/$1|$1]] für [[:$2]].',
 	'commentspammer-log-msg-info' => 'Letztes Spamming vor $1 {{PLURAL:$1|Tag|Tagen}}, der "threat level" ist $2 und der and "offence code" is $3. [http://www.projecthoneypot.org/search_ip.php?ip=$4 Details ansehen] oder [[Special:Blockip/$4|sperren]].',
 	'cspammerlogpagetext' => 'Liste der Bearbeitungen, die genehmigt oder abgelehnt wurden auf der Basis, ob die Quelle ein bekannter Kommentar-Spammer war.',
 	'cspammer-log-page' => 'Kommentar-Spammer Logbuch',

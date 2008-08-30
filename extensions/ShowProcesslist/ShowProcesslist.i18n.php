@@ -155,6 +155,13 @@ $messages['fr'] = array(
 	'showprocesslist-info' => 'Informations',
 );
 
+/** Western Frisian (Frysk)
+ * @author Snakesteuben
+ */
+$messages['fy'] = array(
+	'showprocesslist-user' => 'Meidogger',
+);
+
 /** Galician (Galego)
  * @author Alma
  * @author Toliño

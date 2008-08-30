@@ -241,7 +241,7 @@ $messages['cu'] = array(
 );
 
 /** Danish (Dansk)
- * @author Morten
+ * @author Morten LJ
  */
 $messages['da'] = array(
 	'bookinfo-header' => 'Boginformation',

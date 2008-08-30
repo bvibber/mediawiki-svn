@@ -885,6 +885,7 @@ $messages['lb'] = array(
 	'deletequeue-vote-action' => 'Rot:',
 	'deletequeue-vote-reason' => 'Bemierkungen:',
 	'deletequeue-list-search-legend' => 'Säite sichen:',
+	'deletequeue-list-status' => 'Status:',
 	'deletequeue-list-search' => 'Sichen',
 	'deletequeue-list-anyqueue' => '(iergendeng)',
 	'deletequeue-list-votes' => 'Lëscht vun de Stëmmen',
@@ -1416,10 +1417,18 @@ $messages['sv'] = array(
   ** Hävdande
   ** Inte relevant för projektet',
 	'deletequeue-speedy-title' => 'Märk "$1" för snabbradering',
+	'deletequeue-speedy-text' => "Du kan använda det här formuläret för att märka sidan \"'''\$1'''\" för snabbradering.
+
+En administratör kommer granska begäran, och om den är rimlig, radera sidan.
+Du måste ange en anledning från listan nedan, och lägga till annan relevant information.",
 	'deletequeue-prod-title' => 'Föreslå radering av "$1"',
+	'deletequeue-prod-text' => "Du kan använda det här formuläret för att föreslå att \"'''\$1'''\" raderas.
+
+Om ingen har några motsättningar mot raderingen inom fem dagar, kommer raderingen granskas av en administratör.",
 	'deletequeue-delnom-reason' => 'Anledning till nominering:',
 	'deletequeue-delnom-otherreason' => 'Annan anledning',
 	'deletequeue-delnom-extra' => 'Extrainformation:',
+	'deletequeue-delnom-submit' => 'Nominera',
 	'deletequeue-queue-speedy' => 'Snabbradering',
 	'deletequeue-queue-prod' => 'Föreslagen radering',
 	'deletequeue-queue-deletediscuss' => 'Raderingsdiskussion',

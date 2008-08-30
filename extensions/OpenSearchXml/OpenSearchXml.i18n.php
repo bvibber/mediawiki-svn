@@ -37,3 +37,10 @@ $messages['nl'] = array(
 	'opensearchxml-desc' => '[http://www.opensearch.org OpenSearch] JSON-interface die tekstextracten levert',
 );
 
+/** Occitan (Occitan)
+ * @author Cedric31
+ */
+$messages['oc'] = array(
+	'opensearchxml-desc' => "Interfàcia JSON per [http://www.opensearch.org OpenSearch] amb d'extraches del tèxt",
+);
+

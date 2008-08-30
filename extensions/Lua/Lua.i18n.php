@@ -90,6 +90,13 @@ $messages['fr'] = array(
 	'lua_overflow_time' => 'Durée maximale d’exécution atteinte',
 );
 
+/** Western Frisian (Frysk)
+ * @author Snakesteuben
+ */
+$messages['fy'] = array(
+	'lua_error_internal' => 'Ynterne fout',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */

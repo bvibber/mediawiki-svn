@@ -513,6 +513,14 @@ Voltar a:
 	'crosswikiunblock-local' => 'Os desbloqueos locais non están soportados mediante esta interface. Use [[Special:IPBlockList|{{int:ipblocklist}}]]',
 );
 
+/** Gothic (𐌲𐌿𐍄𐌹𐍃𐌺)
+ * @author Jocke Pirat
+ */
+$messages['got'] = array(
+	'crosswikiblock-reason' => 'Faírina:',
+	'crosswikiunblock-reason' => 'Faírina:',
+);
+
 /** Manx (Gaelg)
  * @author MacTire02
  */

@@ -308,6 +308,13 @@ $messages['gl'] = array(
 	'grouppage-patroller' => '{{ns:project}}:Patrulleiro',
 );
 
+/** Gothic (𐌲𐌿𐍄𐌹𐍃𐌺)
+ * @author Jocke Pirat
+ */
+$messages['got'] = array(
+	'patrol-revert-reason' => 'Faírina',
+);
+
 /** Manx (Gaelg)
  * @author MacTire02
  */

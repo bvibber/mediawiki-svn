@@ -474,6 +474,7 @@ $wgGoogleMapsMessages['da'] = array(
 );
 
 /** German (Deutsch)
+ * @author Pill
  * @author Raimond Spekking
  * @author [[mw:User:Helge.at]]
  */
@@ -526,8 +527,12 @@ $wgGoogleMapsMessages['de'] = array(
 	'gm-save-path' => 'Speichern',
 	'gm-edit-path' => 'Punkte hinzufügen',
 	'gm-color-path' => 'Farbe ändern',
+	'gm-color-fill' => 'Füllfarbe ändern',
+	'gm-fill-color' => 'Füllfarbe',
+	'gm-line-color' => 'Linienfarbe',
 	'gm-make-map' => 'Karte erstellen',
 	'gm-hide-map' => 'Karte verbergen',
+	'gm-kml-loading' => 'laden …',
 	'gm-earth' => 'Erde',
 	'gm-moon' => 'Mond',
 	'gm-mars' => 'Mars',
@@ -1695,6 +1700,7 @@ $wgGoogleMapsMessages['lb'] = array(
 	'gm-balloon-title' => 'Titel:',
 	'gm-balloon-link-article' => 'Link op dës Säit (fakultativ):',
 	'gm-remove' => 'ewechhuelen',
+	'gm-tab' => 'Onglet',
 	'gm-save-point' => 'Späicheren and zoumaachen',
 	'gm-no-maps' => 'Op dëser Sàit gëtt et keng Kaarten.',
 	'gm-load-map' => 'Kaart lueden',
@@ -1705,6 +1711,7 @@ $wgGoogleMapsMessages['lb'] = array(
 	'gm-clear-all-points' => 'All Punkten ewechhuelen',
 	'gm-width' => 'Breet',
 	'gm-height' => 'Héicht',
+	'gm-scale-control' => 'Maassstab',
 	'gm-overview-control' => 'Iwwersiicht',
 	'gm-zoom-control' => 'Navigatioun',
 	'gm-large' => 'Grouss',
@@ -1714,12 +1721,17 @@ $wgGoogleMapsMessages['lb'] = array(
 	'gm-yes' => 'Jo',
 	'gm-no' => 'Neen',
 	'gm-search' => 'Sichen',
+	'gm-clear-search' => 'Resultater vun der Sich',
 	'gm-meters' => 'Meter',
 	'gm-miles' => 'Meilen',
 	'gm-save-path' => 'Späicheren',
+	'gm-edit-path' => 'Punkten derbäisetzen',
+	'gm-show-path' => 'Punkte weisen',
 	'gm-color-path' => 'Farf änneren',
+	'gm-fill-color' => 'Faarw fir opzefëllen',
 	'gm-line-color' => 'Faarw vum Strich',
 	'gm-line-width' => 'Breed',
+	'gm-make-map' => 'Eng Kaart maachen',
 	'gm-hide-map' => 'Kaart verstoppen',
 	'gm-back' => 'zréck',
 	'gm-kml-include' => 'Externe KML/GeoRSS:',

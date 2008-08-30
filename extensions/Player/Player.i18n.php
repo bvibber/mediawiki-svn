@@ -230,6 +230,13 @@ $messages['gl'] = array(
 	'player-goto-file' => 'ficheiro',
 );
 
+/** Gothic (𐌲𐌿𐍄𐌹𐍃𐌺)
+ * @author Jocke Pirat
+ */
+$messages['got'] = array(
+	'player-goto-file' => 'feilans',
+);
+
 /** Manx (Gaelg)
  * @author MacTire02
  */

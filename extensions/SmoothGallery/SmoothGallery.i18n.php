@@ -190,7 +190,7 @@ $messages['nl'] = array(
 	'smoothgallery-desc' => 'Stelt gebruikers in staat galerijen te maken met aanwezige afbeeldingen. Ondersteunt bijna alle mogelijkheden van SmoothGallery',
 	'smoothgallery-title' => 'SmoothGallery',
 	'smoothgallery-smoothgallerytitle' => 'SmoothGallery: $1',
-	'smoothgallery-error' => '<b>SmoothGallery fout:</b> ',
+	'smoothgallery-error' => '<b>SmoothGallery fout:</b>',
 	'smoothgallery-gallery-not-found' => 'De gevraagde galerij bestaat niet.',
 	'smoothgallery-not-found' => 'Er zijn geen afbeeldingen opgenomen in een galerij.
 Voeg alstublieft tenminste één afbeelding toe.',

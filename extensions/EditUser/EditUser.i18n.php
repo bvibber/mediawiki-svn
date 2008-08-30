@@ -184,6 +184,7 @@ $messages['el'] = array(
  * @author Yekrats
  */
 $messages['eo'] = array(
+	'edituser-desc' => 'Rajtigas privilegiitaj uzantoj redakti preferojn de aliaj uzantoj',
 	'edituser' => 'Redakti Uzanton',
 	'edituser-logout' => 'Elsaluti uzanton',
 	'edituser-username' => 'Nomo',

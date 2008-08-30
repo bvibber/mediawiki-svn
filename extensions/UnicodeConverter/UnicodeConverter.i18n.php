@@ -16,13 +16,20 @@ $messages['en'] = array(
 	'unicodeconverter-newtext' => 'Converted text:',
 );
 
+/** Message documentation (Message documentation)
+ * @author Jon Harald Søby
+ */
+$messages['qqq'] = array(
+	'unicodeconverter-ok' => '{{Identical|OK}}',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */
 $messages['ar'] = array(
-	'unicodeconverter'         => 'محول يونيكود',
-	'unicodeconverter-desc'    => 'مثال بسيط لنموذج صفحة خاصة. [[Special:UnicodeConverter|بإعطاء سلسلة في UTF-8]], فإنها تحولها إلى كيانات HTML مناسبة لصفحة ويب ISO 8859-1',
-	'unicodeconverter-ok'      => 'موافق',
+	'unicodeconverter' => 'محول يونيكود',
+	'unicodeconverter-desc' => 'مثال بسيط لنموذج صفحة خاصة. [[Special:UnicodeConverter|بإعطاء سلسلة في UTF-8]], فإنها تحولها إلى كيانات HTML مناسبة لصفحة ويب ISO 8859-1',
+	'unicodeconverter-ok' => 'موافق',
 	'unicodeconverter-oldtext' => 'النص الأصلي:',
 	'unicodeconverter-newtext' => 'النص المحول:',
 );
@@ -31,9 +38,9 @@ $messages['ar'] = array(
  * @author Meno25
  */
 $messages['arz'] = array(
-	'unicodeconverter'         => 'محول يونيكود',
-	'unicodeconverter-desc'    => 'مثال بسيط لنموذج صفحة خاصة. [[Special:UnicodeConverter|بإعطاء سلسلة في UTF-8]], فإنها تحولها إلى كيانات HTML مناسبة لصفحة ويب ISO 8859-1',
-	'unicodeconverter-ok'      => 'موافق',
+	'unicodeconverter' => 'محول يونيكود',
+	'unicodeconverter-desc' => 'مثال بسيط لنموذج صفحة خاصة. [[Special:UnicodeConverter|بإعطاء سلسلة في UTF-8]], فإنها تحولها إلى كيانات HTML مناسبة لصفحة ويب ISO 8859-1',
+	'unicodeconverter-ok' => 'موافق',
 	'unicodeconverter-oldtext' => 'النص الأصلى:',
 	'unicodeconverter-newtext' => 'النص المحول:',
 );
@@ -82,6 +89,17 @@ $messages['nl'] = array(
 	'unicodeconverter-newtext' => 'Geconverteerde tekst:',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ */
+$messages['no'] = array(
+	'unicodeconverter' => 'Unicode-konvertering',
+	'unicodeconverter-desc' => 'En enkelt eksempel av en spesialsidemodul. Når den blir gitt [[Special:UnicodeConverter|streng i UTF-8]] konverterer den den til HTML-entiteter til bruk på ISO 8859-1-sider.',
+	'unicodeconverter-ok' => 'OK',
+	'unicodeconverter-oldtext' => 'Opprinnelig tekst:',
+	'unicodeconverter-newtext' => 'Konvertert tekst:',
+);
+
 /** Occitan (Occitan)
  * @author Cedric31
  */
@@ -91,5 +109,12 @@ $messages['oc'] = array(
 	'unicodeconverter-ok' => "D'acòrdi",
 	'unicodeconverter-oldtext' => 'Tèxt original :',
 	'unicodeconverter-newtext' => 'Tèxt un còp convertit :',
+);
+
+/** Swedish (Svenska)
+ * @author M.M.S.
+ */
+$messages['sv'] = array(
+	'unicodeconverter' => 'Unicode-konvertering',
 );
 

@@ -353,9 +353,9 @@ $messages['fr'] = array(
 	'regexblock-view-reason' => 'motif : $1',
 	'regexblock-view-reason-default' => 'aucun motif indiqu√©',
 	'regexblock-view-block-infinite' => 'blocage permanent',
-	'regexblock-view-block-temporary' => 'expire le ',
-	'regexblock-view-block-expired' => 'EXPIR√â le ',
-	'regexblock-view-block-by' => 'bloqu√© par ',
+	'regexblock-view-block-temporary' => 'expire le',
+	'regexblock-view-block-expired' => 'EXPIR√â le',
+	'regexblock-view-block-by' => 'bloqu√© par',
 	'regexblock-view-block-unblock' => 'd√©bloquer',
 	'regexblock-view-stats' => '(statistiques)',
 	'regexblock-view-empty' => 'La liste des utilisateurs et des adresses IP bloqu√©s est vide.',
@@ -426,6 +426,13 @@ Isto deber√≠a facerse s√≥ para previr vandalismo, e segundo a pol√≠tica e normas
 	'regexblock-view-stats' => '(estat√≠sticas)',
 	'regexblock-view-empty' => 'A listaxe dos nomes e enderezos bloqueados est√° baleira.',
 	'regexblock-view-time' => 'en $1',
+);
+
+/** Gothic (Ì†ÄÌº≤Ì†ÄÌºøÌ†ÄÌΩÑÌ†ÄÌºπÌ†ÄÌΩÉÌ†ÄÌº∫)
+ * @author Jocke Pirat
+ */
+$messages['got'] = array(
+	'regexblock-form-reason' => 'Fa√≠rina',
 );
 
 /** Manx (Gaelg)

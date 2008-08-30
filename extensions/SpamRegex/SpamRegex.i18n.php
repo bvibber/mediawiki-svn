@@ -208,7 +208,7 @@ $messages['fr'] = array(
 	'spamregex-currently-blocked' => "'''Phrases actuellement bloquées :'''",
 	'spamregex-move' => 'Le motif que vous avez inscrit contenait une phrase bloquée.',
 	'spamregex-no-currently-blocked' => "'''Il n’y a aucune phrase bloquée.'''",
-	'spamregex-log-1' => "* '''$1''' $2 ([{{SERVER}}$3&text=$4 supprimer]) ajouté par ",
+	'spamregex-log-1' => "* '''$1''' $2 ([{{SERVER}}$3&text=$4 supprimer]) ajouté par",
 	'spamregex-log-2' => ' le $1',
 	'spamregex-page-title-1' => 'Blocage d’une phrase utilisant des expressions régulières',
 	'spamregex-unblock-success' => 'Le déblocage a réussi',

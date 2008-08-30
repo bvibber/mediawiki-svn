@@ -50,7 +50,7 @@ $aliases['fi'] = array(
  */
 $aliases['he'] = array(
 	'HideRevision' => array( 'הסתרת_גרסה' ),
-	'Oversight'    => array( 'צפייה_בגרסאות_שהוסתרו' ),
+	'Oversight' => array( 'צפייה_בגרסאות_שהוסתרו' ),
 );
 
 /** Croatian (Hrvatski) */

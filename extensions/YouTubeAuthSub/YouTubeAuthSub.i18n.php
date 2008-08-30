@@ -367,6 +367,7 @@ Soyez patient.',
  * @author Snakesteuben
  */
 $messages['fy'] = array(
+	'youtubeauthsub_description' => 'Beskriuwing',
 	'youtubeauthsub_category' => 'Kategory',
 );
 

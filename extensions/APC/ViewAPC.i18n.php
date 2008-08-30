@@ -1745,6 +1745,7 @@ $messages['lb'] = array(
 	'viewapc-apc-version' => 'APC Versioun',
 	'viewapc-php-version' => 'PHP Versioun',
 	'viewapc-start-time' => 'Ufankszäit',
+	'viewapc-upload-support' => "Ënnerstetzung fir d'Eropluede vu Fichieren",
 	'viewapc-cached-files-d' => '$1 {{PLURAL:$1|Fichier|Fichieren}} ($2)',
 	'viewapc-hits' => 'Treffer',
 	'viewapc-rps' => '$1 Ufroe pro Sekonn',

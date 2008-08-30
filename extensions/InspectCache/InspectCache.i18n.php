@@ -191,6 +191,13 @@ $messages['gl'] = array(
 	'inspectcache-list' => 'Listaxe',
 );
 
+/** Gothic (Ì†ÄÌº≤Ì†ÄÌºøÌ†ÄÌΩÑÌ†ÄÌºπÌ†ÄÌΩÉÌ†ÄÌº∫)
+ * @author Jocke Pirat
+ */
+$messages['got'] = array(
+	'inspectcache-delete' => 'Ta√≠ran',
+);
+
 /** Manx (Gaelg)
  * @author MacTire02
  */

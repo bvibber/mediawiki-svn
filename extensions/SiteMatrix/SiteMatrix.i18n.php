@@ -264,8 +264,8 @@ $messages['cy'] = array(
 );
 
 /** Danish (Dansk)
- * @author Morten LJ
  * @author Jan Friberg
+ * @author Morten LJ
  */
 $messages['da'] = array(
 	'sitematrix' => 'Alle Wikimedias wikier',

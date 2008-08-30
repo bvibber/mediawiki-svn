@@ -1919,9 +1919,9 @@ Pour voter, vous devez utiliser un compte avec au moins $1 {{PLURAL:$1|contribut
 	'boardvote_notqualified' => 'Désolé, mais vous ne répondez pas actuellement aux conditions requises pour voter lors de ce scrutin.
 Il vous est nécessaire d’avoir au moins $1 {{PLURAL:$1|contribution effectuée|contributions effectuées}} avant le $2 et au moins $3 {{PLURAL:$3|contribution effectuée|contributions effectuées}} entre le $4 et le $5.',
 	'boardvote_novotes' => 'Personne n’a encore voté.',
-	'boardvote_time' => 'Heure ',
+	'boardvote_time' => 'Heure',
 	'boardvote_user' => 'Utilisateur',
-	'boardvote_edits' => 'Modifications ',
+	'boardvote_edits' => 'Modifications',
 	'boardvote_days' => 'Jours',
 	'boardvote_ip' => 'IP',
 	'boardvote_ua' => 'Agent utilisateur',
@@ -1935,7 +1935,7 @@ $1 pour les données cryptées.</p>',
 	'boardvote_sitenotice' => '<a href="{{localurle:Special:Boardvote/vote}}">Élection au conseil d’administration de la Wikimedia Foundation</a> : le vote est ouvert jusqu’au 22 juin.',
 	'boardvote_notstarted' => 'Le vote n’est pas encore commencé.',
 	'boardvote_closed' => 'L’élection est désormais terminée. Le résultat est ou sera proclamé sur [http://meta.wikimedia.org/wiki/Board_elections/2008/Results/fr la page dédiée] (fr).',
-	'boardvote_edits_many' => 'plusieurs ',
+	'boardvote_edits_many' => 'plusieurs',
 	'group-boardvote' => 'Membres votants du conseil d’administration',
 	'group-boardvote-member' => 'Membre votant du conseil d’administration',
 	'grouppage-boardvote' => '{{ns:project}}:Membre votant du conseil d’administration',
@@ -2035,6 +2035,13 @@ $messages['fur'] = array(
 	'boardvote_dumplink' => 'Frache culì',
 	'boardvote_submit' => 'Va ben',
 	'boardvote_welcome' => "Benvignût/Benvignude '''$1'''!",
+);
+
+/** Western Frisian (Frysk)
+ * @author Snakesteuben
+ */
+$messages['fy'] = array(
+	'boardvote_user' => 'Meidogger',
 );
 
 /** Irish (Gaeilge)
@@ -4915,7 +4922,7 @@ $messages['ru'] = array(
 Чтобы проголосовать, вы должны быть зарегистрированным участником и сделать не менее $1 правок до $2, и не менее $3 правок с $4 до $5.',
 	'boardvote_notqualified' => 'К сожалению, вы не можете принять участие в этих выборах.
 Чтобы проголосовать, вы должны быть зарегистрированным участником и сделать не менее $1 правок до $2, и не менее $3 правок с $4 до $5.',
-	'boardvote_novotes' => 'Никто ещё не проголосовал. ',
+	'boardvote_novotes' => 'Никто ещё не проголосовал.',
 	'boardvote_time' => 'Время',
 	'boardvote_user' => 'Участник',
 	'boardvote_edits' => 'Число правок',
@@ -5220,8 +5227,7 @@ ovi projekti budu dobrodošlo okruženje sa slobodnom distribucijom ljudskog zna
 
 <p>Za više informacija, pogledajte:</p>
 <ul><li><a href="http://meta.wikimedia.org/wiki/Board_elections/2008" class="external">Najčešće postavljena pitanja izbora</a></li>
-<li><a href="http://meta.wikimedia.org/wiki/Board_elections/2008/Candidates" class="external">Kandidati</a></li></ul>
-',
+<li><a href="http://meta.wikimedia.org/wiki/Board_elections/2008/Candidates" class="external">Kandidati</a></li></ul>',
 	'boardvote_intro_change' => '<p>Glasali ste ranije. Međutim, možete promeniti vaš glas koristeći formular ispod.
 Molimo odaberite kandidate za koje glasate.</p>',
 	'boardvote_entered' => 'Hvala vam, vaš glas je snimljen.
@@ -6282,8 +6288,7 @@ $messages['zh-hans'] = array(
 <p>请留意，你有且只有一票。即便你在多个计划有超过400次编辑，你仍只可投一票。若你要改变投票选择，请在原投票计划处修改。</p>
 <p>更多信息，见：</p>
 <ul><li><a href="http://meta.wikipedia.org/wiki/Election_FAQ_2008" class="external">选举的常见问题解答</a></li>
-<li><a href="http://meta.wikipedia.org/wiki/Election_Candidates_2008" class="external">参选人</a></li></ul>
-',
+<li><a href="http://meta.wikipedia.org/wiki/Election_Candidates_2008" class="external">参选人</a></li></ul>',
 	'boardvote_intro_change' => '<p>你已经参与过投票。但是你还可以在下面修改你的投票。请勾选你所支持的候选人名字的选择框。</p>',
 	'boardvote_entered' => '谢谢您，您的投票已经被记录。
 
@@ -6357,8 +6362,7 @@ $messages['zh-hant'] = array(
 <p>請留意，你有且只有一票。即便你在多個計畫有超過400次編輯，你仍只可投一票。若你要改變投票選擇，請在原投票計畫處修改。</p>
 <p>更多資訊，見：</p>
 <ul><li><a href="http://meta.wikipedia.org/wiki/Election_FAQ_2008" class="external">選舉的常見問題解答</a></li>
-<li><a href="http://meta.wikipedia.org/wiki/Election_Candidates_2008" class="external">參選人</a></li></ul>
-',
+<li><a href="http://meta.wikipedia.org/wiki/Election_Candidates_2008" class="external">參選人</a></li></ul>',
 	'boardvote_intro_change' => '<p>你已經參與過投票。但是你還可以在下面修改你的投票。請勾選你所支持的候選人名字的選擇框。</p>',
 	'boardvote_entered' => '謝謝您，您的投票已經被記錄。
 
