@@ -209,14 +209,25 @@ $messages['km'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
+	'errorhandler-desc' => 'Feelerbehandlung fir Mediawiki',
 	'errorhandler-errors' => 'Feeler:',
 	'errorhandler-error-fatal' => 'Fatale Feeler',
 	'errorhandler-error-warning' => 'Warnung',
 	'errorhandler-error-parse' => 'Parser-Feeler',
 	'errorhandler-error-notice' => 'Notiz',
+	'errorhandler-error-core-error' => 'Déifgréifende Feeler',
+	'errorhandler-error-core-warning' => 'Déifgréifend Warnung',
+	'errorhandler-error-compile-error' => 'Feeler bäim compiléieren',
+	'errorhandler-error-compile-warning' => 'Warnung bäim compiléieren',
 	'errorhandler-error-user-error' => 'Feeler (vum Benotzer)',
 	'errorhandler-error-user-warning' => 'Benotzerwarnung',
+	'errorhandler-error-user-notice' => 'Benotzernotiz',
+	'errorhandler-error-strict' => 'Strikte Standard',
+	'errorhandler-error-recoverable' => 'Erfaassbare fatale Feeler',
 	'errorhandler-msg-text' => '$1 : $2 a(n) $3 (Linn $4)',
+	'errorhandler-msg-html' => '<b>$1</b> : <i>$2</i> a(n) <b>$3</b> (Linn <b>$4</b>)',
+	'errorhandler-trace' => 'Spuer:',
+	'errorhandler-trace-line' => '$1 (Linn $2): $3',
 	'errorhandler-trace-line-internal' => '[intern Fonctioun]: $1',
 );
 

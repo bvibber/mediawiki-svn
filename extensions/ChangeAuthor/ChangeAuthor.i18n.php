@@ -526,6 +526,31 @@ $messages['gv'] = array(
 	'changeauthor-comment' => 'Cohaggloo:',
 );
 
+/** Hebrew (עברית)
+ * @author Agbad
+ * @author Rotemliss
+ */
+$messages['he'] = array(
+	'changeauthor' => 'שינוי כותב של גרסה',
+	'changeauthor-desc' => 'אפשרות לשינוי כותב של גרסה',
+	'changeauthor-title' => 'שינוי הכותב של גרסה',
+	'changeauthor-search-box' => 'חיפוש גרסאות',
+	'changeauthor-pagename-or-revid' => 'שם דף או מספר גרסה:',
+	'changeauthor-pagenameform-go' => 'מעבר',
+	'changeauthor-comment' => 'הערה:',
+	'changeauthor-changeauthors-multi' => 'שינוי {{PLURAL:$1|כותב|כותבים}}',
+	'changeauthor-explanation-multi' => 'באמצעות טופס זה תוכלו לשנות כותבים של גרסאות.
+פשוט שנו שם משתמש אחד או יותר ברשימה שלהלן, הוסיפו הערה (אופציונאלי) ולחצו על הכפתור "שינוי כותב(ים)".',
+	'changeauthor-changeauthors-single' => 'שינוי כותב',
+	'changeauthor-explanation-single' => 'בעזרת טופס זה תוכלו לשנות כותב של גרסה.
+פשוט שנו את שם המשתמש שלהלן, הוסיפו הערה (אופציונאלי) ולחצו על הכפתור "שינוי כותב".',
+	'changeauthor-nosuchuser' => 'אין משתמש בשם "$1".',
+	'changeauthor-revview' => 'גרסה #$1 של $2',
+	'changeauthor-nosuchtitle' => 'אין דף בשם "$1".',
+	'changeauthor-logentry' => 'שינה את הכותב של $2 של $1 מ$3 ל$4',
+	'changeauthor-logpagename' => 'יומן שינויי כותבים',
+);
+
 /** Hindi (हिन्दी)
  * @author Kaustubh
  */

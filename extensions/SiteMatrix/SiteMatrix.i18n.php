@@ -93,9 +93,14 @@ $messages['ar'] = array(
  * @author Ramsis II
  */
 $messages['arz'] = array(
+	'sitematrix' => 'لستة ويكيهات الويكيميديا',
+	'sitematrix-summary' => 'الصفحة المخصوصة دي بتعرض كل ويكيهات الويكيميديا',
 	'sitematrix-language' => 'اللغه',
+	'sitematrix-others' => 'مشاريع ويكيميديا التانية',
 	'sitematrix-total' => "'''اجمالى العدد: $1'''",
 	'sitematrix-sitetotal' => 'المجموع',
+	'sitematrix-private' => 'خصوصي',
+	'sitematrix-fishbowl' => 'التعديل متحدد',
 );
 
 /** Asturian (Asturianu)

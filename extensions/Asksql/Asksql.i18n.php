@@ -257,6 +257,7 @@ $messages['fi'] = array(
 /** French (Français)
  * @author Grondin
  * @author Urhixidur
+ * @author Zetud
  */
 $messages['fr'] = array(
 	'asksql' => 'Requête SQL',
@@ -266,7 +267,7 @@ Utilisez les apostrophes ('comme ceci') pour les chaînes de caractères. Ceci p
 	'sqlislogged' => 'Notez bien que toutes les requêtes sont journalisées.',
 	'sqlquery' => 'Entrez la requête',
 	'querybtn' => 'Soumettre la requête',
-	'selectonly' => 'Seules les requêtes en lecture seulement sont permises.',
+	'selectonly' => 'Seules les requêtes en lecture seule sont permises.',
 	'querysuccessful' => 'La requête a été exécutée avec succès.',
 	'right-asksql' => 'Crée des requêtes SQL',
 );

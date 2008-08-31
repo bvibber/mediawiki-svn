@@ -109,11 +109,14 @@ $messages['ar'] = array(
 
 /** Egyptian Spoken Arabic (مصرى)
  * @author Ghaly
+ * @author Ramsis II
  */
 $messages['arz'] = array(
 	'expandtemplates' => 'تكبير القوالب',
+	'expandtemplates-desc' => '[[Special:ExpandTemplates|بيمدد القوالب, دوال المحلل و المتغيرات]] لعرض نص الويكي المتمدد و بروفة الصفحة الناتجة',
 	'expand_templates_input' => 'النص المدخل:',
 	'expand_templates_output' => 'النتيجه',
+	'expand_templates_xml_output' => 'خرج XML',
 	'expand_templates_ok' => 'موافق',
 	'expand_templates_remove_comments' => 'امسح التعليقات',
 	'expand_templates_preview' => 'بروفه',

@@ -376,7 +376,7 @@ $messages['fa'] = array(
 	'bookinfo-error-nodriver' => 'راه‌انداز مناسب اطلاعات کتاب قابل به کارگیری نیست.',
 	'bookinfo-error-noresponse' => 'پاسخی وجود نداشت یا مهلت درخواست سپری شد.',
 	'bookinfo-purchase' => 'خرید این کتاب از $1',
-	'bookinfo-provider' => 'مهیاکنندهٔ اطلاعات:',
+	'bookinfo-provider' => 'مهیاکنندهٔ اطلاعات: $1',
 );
 
 /** Finnish (Suomi)

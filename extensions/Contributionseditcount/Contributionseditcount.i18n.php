@@ -440,6 +440,13 @@ $messages['vo'] = array(
 	'contributionseditcount' => 'Geban at labon redakamis $1.',
 );
 
+/** Yiddish (ייִדיש)
+ * @author פוילישער
+ */
+$messages['yi'] = array(
+	'contributionseditcount' => 'דער באַניצער האט $1 רעדאַקטירונגען.',
+);
+
 /** Yue (粵語) */
 $messages['yue'] = array(
 	'contributionseditcount' => '呢個用戶有 $1 次編輯。',

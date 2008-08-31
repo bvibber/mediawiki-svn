@@ -1201,7 +1201,7 @@ Saltar Ã¡ vista do fluxo: $2',
 	'mv_protect_source_material' => 'A fonte orixinal do material estÃ¡ protexida fronte Ã¡s ediciÃ³ns',
 );
 
-/** Gothic (í €í¼²í €í¼¿í €í½„í €í¼¹í €í½ƒí €í¼º)
+/** Gothic
  * @author Jocke Pirat
  */
 $messages['got'] = array(
@@ -1845,6 +1845,7 @@ $messages['lb'] = array(
 	'mv_edit_metadata' => 'Meta-DonnÃ©eÃ«n Ã¤nneren',
 	'mv_remove_category' => 'Kategorie ewechhuelen',
 	'mv_existing_categories' => 'Kategorien dÃ©i et gÃ«tt:',
+	'mv_add_category' => 'Eng Kategorie derbÃ¤isetzen',
 	'mv_viewnext' => '($1) weisen',
 	'mv_viewprevnext' => '($1) ($2) weisen',
 	'mv_results_for' => 'Resultater fir $1',
@@ -3187,6 +3188,7 @@ $mvMVDTypeDefaultDisp Ğ´Ğ¾Ğ»Ğ¶ĞµĞ½ Ğ±Ñ‹Ñ‚ÑŒ Ğ¿Ğ¾Ğ´Ğ¼Ğ½Ğ¾Ğ¶ĞµÑÑ‚Ğ²Ğ¾Ğ¼ $mvMVDTyp
 $messages['sk'] = array(
 	'metavid' => 'StrÃ¡nka Metavid',
 	'mv_missing_stream' => 'ChÃ½bajÃºci stream: $1',
+	'specialpages-group-mv_group' => 'Å peciÃ¡lne strÃ¡nky MetaVidWiki',
 	'mv_ogg_low_quality' => 'StreamovateÄ¾nÃ½ ogg theora, hosÅ¥ovanÃ½ na metavid',
 	'mv_ogg_high_quality' => 'Ogg theora vo vysokej kvalite, hosÅ¥ovanÃ½ na metavid',
 	'mv_flash_low_quality' => 'StreamovateÄ¾nÃ© pre web - Flash video',

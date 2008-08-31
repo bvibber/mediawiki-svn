@@ -140,10 +140,13 @@ $messages['eo'] = array(
 );
 
 /** Persian (فارسی)
+ * @author Huji
  * @author Mardetanha
  */
 $messages['fa'] = array(
 	'block_title_error_page_title' => 'عنوان بسته‌شده',
+	'block_title_error-desc' => 'یک راه اساسی برای جلوگیری از ایجاد یا ذخیرهٔ صفحه‌هایی با عنوان‌های خاص فراهم می‌کند',
+	'block_title_error' => 'متاسفیم، عنوان این صفحه مجاز به ذخیره شدن نیست.',
 );
 
 /** Finnish (Suomi)

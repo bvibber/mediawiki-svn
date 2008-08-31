@@ -70,6 +70,17 @@ $messages['br'] = array(
 	'findspam-ok' => 'Mat eo',
 );
 
+/** Czech (Česky)
+ * @author Matěj Grabovský
+ */
+$messages['cs'] = array(
+	'findspam' => 'Najít spam',
+	'findspam-desc' => 'Přidává [[Special:FindSpam|speciální stránku]], která umožňuje najít nedávno přidaný spam',
+	'findspam-ip' => 'IP adresa:',
+	'findspam-ok' => 'OK',
+	'findspam-notextfound' => 'Nebyly nalezeny žádné editace',
+);
+
 /** Danish (Dansk)
  * @author Jon Harald Søby
  */

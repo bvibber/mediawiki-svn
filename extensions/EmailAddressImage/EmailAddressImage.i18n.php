@@ -35,6 +35,11 @@ $messages['cs'] = array(
 	'emailaddressimage-desc' => 'Přidává značku <tt>&lt;email&gt;</tt> zajišťující zobrazení e-mailové adresy jako obrázku',
 );
 
+/** German (Deutsch) */
+$messages['de'] = array(
+	'emailaddressimage-desc' => 'Ergänzt das <tt>&lt;email&gt;</tt>-Tag, um eine E-Mail-Adresse als Bild darzustellen',
+);
+
 /** Lower Sorbian (Dolnoserbski)
  * @author Michawiki
  */

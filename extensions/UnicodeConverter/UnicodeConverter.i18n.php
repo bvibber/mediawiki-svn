@@ -39,7 +39,7 @@ $messages['ar'] = array(
  */
 $messages['arz'] = array(
 	'unicodeconverter' => 'محول يونيكود',
-	'unicodeconverter-desc' => 'مثال بسيط لنموذج صفحة خاصة. [[Special:UnicodeConverter|بإعطاء سلسلة في UTF-8]], فإنها تحولها إلى كيانات HTML مناسبة لصفحة ويب ISO 8859-1',
+	'unicodeconverter-desc' => 'مثال بسيط لنموذج صفحة خاصة. [[Special:UnicodeConverter|بإعطاء سلسلة فى UTF-8]], فإنها تحولها إلى كيانات HTML مناسبة لصفحة ويب ISO 8859-1',
 	'unicodeconverter-ok' => 'موافق',
 	'unicodeconverter-oldtext' => 'النص الأصلى:',
 	'unicodeconverter-newtext' => 'النص المحول:',
@@ -109,6 +109,17 @@ $messages['oc'] = array(
 	'unicodeconverter-ok' => "D'acòrdi",
 	'unicodeconverter-oldtext' => 'Tèxt original :',
 	'unicodeconverter-newtext' => 'Tèxt un còp convertit :',
+);
+
+/** Slovak (Slovenčina)
+ * @author Helix84
+ */
+$messages['sk'] = array(
+	'unicodeconverter' => 'Konverzia Unicode',
+	'unicodeconverter-desc' => 'Jednoduchý príklad modulu špeciálnej stránky. [[Special:UnicodeConverter|Po zadaní reťazca v UTF-8]] ho skonvertuje na HTML entity vhodné na použitie na webstránke v kódovaní ISO 8859-1.',
+	'unicodeconverter-ok' => 'OK',
+	'unicodeconverter-oldtext' => 'Pôvodný text:',
+	'unicodeconverter-newtext' => 'Skonvertovaný text:',
 );
 
 /** Swedish (Svenska)

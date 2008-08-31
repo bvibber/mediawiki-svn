@@ -1395,7 +1395,7 @@ $messages['wa'] = array(
  */
 $messages['yi'] = array(
 	'newuserlogpage' => 'נייע באַניצערס לאָג-בוך',
-	'newuserlogpagetext' => 'דאס איז א לאג פון באַניצער אײַשרײַבונגען',
+	'newuserlogpagetext' => 'דאס איז א לאג פון באַניצערס אײַנשרײַבונגען.',
 	'newuserlog-desc' => 'לייגט צו א  [[Special:Log/newusers|לאג פון קאנטע אײַנשרײַבונגען]] צו [[Special:Log|לאגביכער בלאט]]',
 	'newuserlog-create-entry' => 'נײַער באניצער',
 	'newuserlog-create2-entry' => 'געשאפֿן קאנטע פֿאר $1',

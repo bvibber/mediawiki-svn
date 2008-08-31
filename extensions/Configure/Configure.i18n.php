@@ -2836,6 +2836,13 @@ $messages['vo'] = array(
 	'configure-section-users' => 'Gebans',
 );
 
+/** Yiddish (ייִדיש)
+ * @author פוילישער
+ */
+$messages['yi'] = array(
+	'configure-section-copyright' => 'קאפירעכט',
+);
+
 /** Traditional Chinese (‪中文(繁體)‬)
  * @author Alexsh
  */

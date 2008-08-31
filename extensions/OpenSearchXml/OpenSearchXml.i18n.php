@@ -44,3 +44,10 @@ $messages['oc'] = array(
 	'opensearchxml-desc' => "Interfàcia JSON per [http://www.opensearch.org OpenSearch] amb d'extraches del tèxt",
 );
 
+/** Slovak (Slovenčina)
+ * @author Helix84
+ */
+$messages['sk'] = array(
+	'opensearchxml-desc' => '[http://www.opensearch.org OpenSearch] JSON rozhranie umožňuje úryvky textu',
+);
+

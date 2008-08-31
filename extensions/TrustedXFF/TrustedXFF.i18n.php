@@ -156,3 +156,10 @@ $messages['vec'] = array(
 	'trustedxff-desc' => 'Gestion de un elenco de indirissi proxy de cui se pol fidarse ([http://meta.wikimedia.org/wiki/XFF_project progeto XFF])',
 );
 
+/** Vietnamese (Tiếng Việt)
+ * @author Minh Nguyen
+ */
+$messages['vi'] = array(
+	'trustedxff-desc' => 'Xử lý danh sách các địa chỉ proxy được tin cậy ([http://meta.wikimedia.org/wiki/XFF_project dự án XFF])',
+);
+

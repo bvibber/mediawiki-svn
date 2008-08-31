@@ -141,6 +141,25 @@ $messages['eo'] = array(
 	'importfreeimages_returntoform' => "Aŭ, klaku <a href='$1'>ĉi tien</a> reveni al viaj serĉrezultoj.",
 );
 
+/** Persian (فارسی)
+ * @author Huji
+ */
+$messages['fa'] = array(
+	'importfreeimages' => 'وارد کردن تصاویر آزاد',
+	'importfreeimages-desc' => 'راهی برای [[Special:ImportFreeImages|وارد کردن تصاویر با اجازه‌نامهٔ مناسب]] از [http://www.flickr.com فراهم می‌آورد',
+	'importfreeimages_description' => 'این صفحه به شما اجازه می‌دهد که در فلیکر به دنبال تصاویر با اجازه‌نامهٔ مناسب بگردید و آن‌ها را در ویکی خود وارد کنید.',
+	'importfreeimages_noapikey' => 'شما کلید API فلیکر خود را تنظیم نکرده‌اید.
+برای این کار، لطفاً یک کلید از [http://www.flickr.com/services/api/misc.api_keys.html این‌جا] دریافت کنید و wgFlickrAPIKey را در ImportFreeImages.php تنظیم کنید.',
+	'importfreeimages_nophotosfound' => "صفحه‌ای برای عبارت جستجوی شما ('$1') پیدا نشد، لطفاً دوباره تلاش کنید.",
+	'importfreeimages_invalidurl' => 'نشانی اینترنتی «$1» یک تصویر مجاز فلیکر نیست.',
+	'importfreeimages_owner' => 'خالق',
+	'importfreeimages_importthis' => 'این را وارد کن',
+	'importfreeimages_next' => '$1 بعدی',
+	'importfreeimages_filefromflickr' => '$1 توسط کاربر <b>[$2]</b> از فلیکر. نشانی اینترنتی اصلی',
+	'importfreeimages_promptuserforfilename' => 'لطفاً یک نام مقصد برای پرونده وارد کنید:',
+	'importfreeimages_returntoform' => "یا <a href='$1'>این‌جا</a> کلیک کنید تا به نتایج جستجوی خود باز گردید",
+);
+
 /** Finnish (Suomi)
  * @author Jack Phoenix
  */

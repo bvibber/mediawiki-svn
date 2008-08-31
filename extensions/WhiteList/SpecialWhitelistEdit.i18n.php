@@ -493,7 +493,7 @@ Esta pÃ¡xina sÃ³ Ã© aplicable aos usuarios limitados",
 	'whitelistnummatches' => '  - $1 coincidencias',
 );
 
-/** Gothic (í €í¼²í €í¼¿í €í½„í €í¼¹í €í½ƒí €í¼º)
+/** Gothic
  * @author Jocke Pirat
  */
 $allMessages['got'] = array(

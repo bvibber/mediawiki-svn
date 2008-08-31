@@ -776,7 +776,7 @@ $messages['lb'] = array(
 	'right-search' => 'Op der Wiki sichen',
 	'right-recentchanges' => 'Weis rezent Ännerungen',
 	'right-edittalk' => 'Diskussiounssäiten änneren',
-	'right-edit-new' => 'Säiten änneren',
+	'right-edit-new' => 'Säiten änneren (déi keng Diskussiounssäite sinn)',
 );
 
 /** Maltese (Malti)

@@ -199,6 +199,7 @@ $messages['da'] = array(
  */
 $messages['de'] = array(
 	'contributors' => 'Hauptautoren',
+	'contributors-desc' => 'Zeige die Hauptautoren einer Seite',
 	'contributors-toolbox' => 'Hauptautoren',
 	'contributors-legend' => 'Zeige die Hauptautoren einer Seite',
 	'contributors-target' => 'Seite:',

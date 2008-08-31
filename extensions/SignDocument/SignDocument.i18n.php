@@ -96,7 +96,7 @@ $messages['km'] = array(
 $messages['lb'] = array(
 	'signaturelogpage' => 'Lëscht vun den Ënnerschreften',
 	'signature-desc' => "Aktivéiert d'[[Special:SignDocument|ënnerschreiwen]] vun Dokumenten",
-	'signaturelogpagetext' => "Dëst ass d'Lëscht vun allen Ënnnerschreften déi op dëst Dokument iwwer [[Special:SignDocument]] derbäigesat goufen.",
+	'signaturelogpagetext' => "Dëst ass d'Lëscht vun [[Special:SignDocument|allen Ënnnerschreften déi op dëst Dokument derbäigesat goufen]].",
 	'signaturelogentry' => "huet d'Dokument $1 ënnerschriwwen",
 );
 

@@ -135,6 +135,15 @@ $messages['gl'] = array(
 	'categorystepper-start' => '(Comezo da categoría)',
 );
 
+/** Swiss German (Alemannisch)
+ * @author Hendergassler
+ */
+$messages['gsw'] = array(
+	'categorystepper-desc' => 'Zeigt a kategori füasdret lad, wo erlaübt for un rockwartz zo geht em alfabed, eini oder mehr kategoria esch drena',
+	'categorystepper-end' => "(And fo d'r Kategori)",
+	'categorystepper-start' => "(Afang fo d'r Kategori)",
+);
+
 /** Manx (Gaelg)
  * @author MacTire02
  */

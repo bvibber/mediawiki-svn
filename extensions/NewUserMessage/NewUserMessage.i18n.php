@@ -47,6 +47,14 @@ $messages['arz'] = array(
 	'newuseredit-summary' => 'اضافة [[{{int:newusermessage-template}}|رسالة ترحيب]] لصفحة نقاش يوزر جديد',
 );
 
+/** Asturian (Asturianu)
+ * @author Esbardu
+ */
+$messages['ast'] = array(
+	'newusermessage-desc' => "Añade un mensaxe a les páxines d'alderique d'usuariu creaes recién",
+	'newuseredit-summary' => "Añadiendo [[{{int:newusermessage-template}}|mensaxe de bienvenida]] a la nueva páxina d'alderique d'usuariu",
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  */

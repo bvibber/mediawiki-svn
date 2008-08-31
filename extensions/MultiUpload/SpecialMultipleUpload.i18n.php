@@ -148,8 +148,17 @@ $messages['el'] = array(
 $messages['eo'] = array(
 	'multipleupload' => 'Alŝuti dosierojn',
 	'multipleupload-desc' => 'Permesas al uzanto [[Special:MultipleUpload|alŝuti plurajn dosierojn samtempe]]',
+	'multipleupload-ignoreallwarnings' => "Ignori '''ĉiuj avertoj''' kaj konservi la dosierojn malgraŭ tioj.",
 	'multipleupload-saveallfiles' => 'Konservu ĉiujn dosierojn',
 	'multipleupload-page' => '{{ns:project}}:Regularo pri dosiera forigado',
+	'multipleupload-text' => "Alŝutu plurajn dosierojn ĉi tie.
+
+Selektu 'Foliumi' kaj selektu ĉiun dosieron kiun vi volas alŝuti.
+Vi povas alŝuti de 1 al $1 dosierojn samtempe.
+
+Vi povas eniri nedevigan '''Cela doserionomo''' kaj doni '''Resumo''' priskribante vian dosieron.
+
+Malkonvenaj dosieroj estos tuj forigita. Vidu la [[{{MediaWiki:Multipleupload-page}}|regularo pri forigado de dosieroj]].",
 	'multiupload-fileuploaded' => 'Dosiero alŝutita.',
 	'multiupload-toolbox' => 'Alŝuti multe de dosierojn',
 );

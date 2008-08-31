@@ -492,6 +492,7 @@ administrátorům databáze v případě, že uděláte chybu.",
 	'oversight-prev' => 'Poslední předešlá revize',
 	'oversight-hidden' => 'Skrytá revize',
 	'oversight-header' => 'Níže je seznam revizí, které byly nedávno trvale skryty z veřejné historie. Šíření těchto informací může mít za důsledek trvalou ztrátu práv dozorce (oversight).',
+	'oversight-legend' => 'Hledat v záznamu skrývání revizí',
 );
 
 /** Danish (Dansk)

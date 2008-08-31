@@ -392,7 +392,7 @@ $messages['kk-latn'] = array(
  * @author គីមស៊្រុន
  */
 $messages['km'] = array(
-	'deletedcontributions' => 'ការរួមចំនែកដែលត្រូវបានលប់',
+	'deletedcontributions' => 'ការរួមចំនែកដែលត្រូវបានលុប',
 	'deletedcontributions-desc' => 'ផ្តល់លទ្ធភាពអោយអ្នកថែទាំប្រព័ន្ធ[[Special:DeletedContributions|រាវរកកំនែប្រែបានលុប]]របស់អ្នកប្រើប្រាស់',
 );
 

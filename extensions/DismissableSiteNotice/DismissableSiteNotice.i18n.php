@@ -59,6 +59,7 @@ $messages['ar'] = array(
  */
 $messages['arz'] = array(
 	'sitenotice_close' => 'إقفل',
+	'sitenotice-desc' => 'بيسمح لليوزرز انهم يقفلو اعلانات الموقع',
 );
 
 /** Assamese (অসমীয়া)

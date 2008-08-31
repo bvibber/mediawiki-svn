@@ -404,6 +404,7 @@ $messages['lb'] = array(
 	'imagetagging-imghistory' => 'Versiounen',
 	'imagetagging-images' => 'Biller',
 	'imagetagging-inthisimage' => 'Op dësem Bild: $1',
+	'imagetagging-removetag' => 'Tag ewechhuelen',
 	'imagetagging-tagcancel-button' => 'Zréck',
 	'imagetagging-imagetag-seemoreimages' => 'Kuckt méi Biller vu(n) "$1" ($2)',
 	'imagetagging-taggedimages-title' => 'Biller vun "$1"',

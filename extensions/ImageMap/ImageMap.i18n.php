@@ -72,11 +72,13 @@ $messages['ar'] = array(
 );
 
 /** Egyptian Spoken Arabic (مصرى)
+ * @author Meno25
  * @author Ramsis II
  */
 $messages['arz'] = array(
-	'imagemap_no_image' => 'غلط: لازم تحدد صورة في السطر الاولاني.',
-	'imagemap_invalid_title' => 'غلط:عنوان مش صحيح في اللينك عند السطر$1',
+	'imagemap_no_image' => 'غلط: لازم تحدد صورة فى السطر الاولانى.',
+	'imagemap_invalid_title' => 'غلط:عنوان مش صحيح فى اللينك عند السطر$1',
+	'imagemap_description' => 'عن الصورة دي',
 );
 
 /** Asturian (Asturianu)

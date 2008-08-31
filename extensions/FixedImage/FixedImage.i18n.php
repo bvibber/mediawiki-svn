@@ -39,6 +39,13 @@ $messages['ar'] = array(
 	'fixedimage-desc' => 'يضيف وسم <tt><nowiki><fundraising></nowiki></tt> كصورة',
 );
 
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Ramsis II
+ */
+$messages['arz'] = array(
+	'fixedimage-desc' => 'بيضيف تاج <tt><nowiki><fundraising></nowiki></tt> على هيئة صورة',
+);
+
 /** Asturian (Asturianu)
  * @author Esbardu
  */
@@ -191,6 +198,13 @@ $messages['it'] = array(
  */
 $messages['ja'] = array(
 	'fixedimage-desc' => '<tt><nowiki><fundraising></nowiki></tt> のタグを画像として挿入',
+);
+
+/** Khmer (ភាសាខ្មែរ)
+ * @author Lovekhmer
+ */
+$messages['km'] = array(
+	'fixedimage-desc' => 'ដាក់ប្លាក <tt><nowiki><fundraising></nowiki></tt> ជារូបភាព',
 );
 
 /** Ripoarisch (Ripoarisch)
