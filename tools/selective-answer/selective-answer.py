@@ -109,4 +109,21 @@ def main():
         line = sys.stdin.readline()
 
 if __name__ == '__main__':
+    # We appear to end up with superfluous FDs, including pipes from other
+    # instances, forked from PowerDNS. This can keep us and others from
+    # exiting as the fd never gets closed. Close all fds we don't need.
+    try:
+        import resource
+        maxfds = resource.getrlimit(resource.RLIMIT_NOFILE)[1] + 1
+        # OS-X reports 9223372036854775808. That's a lot of fds to close
+        if maxfds > 1024:
+            maxfds = 1024
+    except:
+        maxfds = 256
+
+    import os
+    for fd in range(3, maxfds):
+        try: os.close(fd)
+        except: pass
+    
     main()
