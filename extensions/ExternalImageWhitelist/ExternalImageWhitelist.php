@@ -15,9 +15,9 @@ $wgExtensionCredits['other'][] = array(
 	'name'           => 'External image whitelist',
 	'author'         => 'Ryan Schmidt',
 	'url'            => 'http://www.mediawiki.org/wiki/Extension:External_image_whitelist',
-	'version'        => '0.1'
+	'version'        => '0.2'
 	'description'    => 'Only allow external (hotlinked) images to be displayed when they match a regex on an on-wiki whitelist',
-	'descriptionmsg' => 'external-image-whitelist',
+	'descriptionmsg' => 'externalimagewhitelist-desc',
 );
 
 $wgExtensionMessagesFiles['Extimgwl'] = 'ExternalImageWhitelist.i18n.php';
@@ -29,13 +29,13 @@ $wgExtImgWlExtensions = array('gif', 'jpg', 'jpeg', 'bmp', 'png', 'svg');
 
 function efExtImgWl(&$url, &$text, &$html) {
 	global $wgAllowExternalImages, $wgExtImgWlExtensions;
-	
+
 	if($wgAllowExternalImages)
 		return true;
 	$ext = implode('|', preg_replace('[^a-zA-Z0-9]', '', $wgExtImgWlExtensions));
 	if(!preg_match('/\.'.$ext.'$/i', $url))
 		return true;
-	$whitelist = explode("\n", wfMsg('external_image_whitelist'));
+	$whitelist = explode("\n", wfMsg('externalimagewhitelist'));
 	foreach($whitelist as $entry) {
 		$entry = trim($entry);
 		if($entry == '')
