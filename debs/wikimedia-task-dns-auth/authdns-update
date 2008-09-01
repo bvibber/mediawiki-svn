@@ -99,7 +99,7 @@ for slave in $NAMESERVERS; do
     done
  
     echo "Updating $slave..."
-    rsync -e ssh --delete -av $POWERDNSDIR/dblist-cnames $POWERDNSDIR/langlist-cnames $POWERDNSDIR/templates $POWERDNSDIR/scenarios $POWERDNSDIR/geomaps $slave:$POWERDNSDIR/
+    rsync -e ssh --delete -av $POWERDNSDIR/dblist-cnames $POWERDNSDIR/langlist-cnames $POWERDNSDIR/participants $POWERDNSDIR/templates $POWERDNSDIR/scenarios $POWERDNSDIR/geomaps $slave:$POWERDNSDIR/
     ssh $slave "$SCRIPTDIR/gen-zones && $SCRIPTDIR/gen-bind.conf && pdns_control reload && pdns_control rediscover"
 done
 

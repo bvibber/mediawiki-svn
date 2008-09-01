@@ -1,3 +1,9 @@
+wikimedia-task-dns-auth (0.08) feisty; urgency=low
+
+  * Add /etc/powerdns/participants to the rsync list
+
+ -- Mark Bergsma <mark@wikimedia.org>  Mon, 01 Sep 2008 16:09:44 +0000
+
 wikimedia-task-dns-auth (0.07) feisty; urgency=low
 
   * Also depend on the pipe backend
