@@ -17,6 +17,6 @@ $messages['en'] = array(
 #Those that match will be displayed as images, otherwise only a link to the image will be shown
 #Lines beginning with # are treated as comments
 
-#Put all regex fragments ABOVE this line. Leave this line exactly as it is</pre>";
-	'externalimagewhitelist-desc' => 'Only allow external (hotlinked) images to be displayed when they match a regex on an on-wiki whitelist';
+#Put all regex fragments ABOVE this line. Leave this line exactly as it is</pre>",
+	'externalimagewhitelist-desc' => 'Only allow external (hotlinked) images to be displayed when they match a regex on an on-wiki whitelist',
 );
