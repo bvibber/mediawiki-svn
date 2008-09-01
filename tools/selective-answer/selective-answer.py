@@ -20,7 +20,7 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 """
 
-import sys
+import sys, stat
 
 ALWAYS, PARTICIPANT, OTHER = range(3)
 
@@ -32,7 +32,6 @@ dnsRecords = {
     # (selectivity, qtype, ttl, content)
     (ALWAYS,      'A',    3600, "91.198.174.3"),
     (PARTICIPANT, 'AAAA', 3600, "2620:0:862:1::80:2"),
-    (PARTICIPANT, 'AAAA', 3600, "2620:0:862:1::80:3"),
     (PARTICIPANT, 'TXT',  3600, "DNS resolver ip %(remoteip)s is listed as a AAAA participant. Please contact ipv6@wikimedia.org if you see any problems."),
     (OTHER,       'TXT',  3600, "DNS resolver ip %(remoteip)s is not listed as a AAAA participant. Please contact ipv6@wikimedia.org if you would like to join in this IPv6 experiment.")
     ]
@@ -66,12 +65,12 @@ def answerRecord(qNameSet, (qName, qClass, qType, qId, remoteIp, localIp), parti
                                      'qtype': qType,
                                      'remoteip': remoteIp,
                                      'localip': localIp
-                                     }
+                                    }
                 print "DATA\t%s\t%s\t%s\t%d\t%d\t%s" % (qName, 'IN', rQType, ttl, int(qId), content)  
 
 def query((qName, qClass, qType, qId, remoteIp, localIp), dnsRecords, participants):
-    if qClass == 'IN' and qName in dnsRecords:
-        answerRecord(dnsRecords[qName], (qName, qClass, qType, qId, remoteIp, localIp), participants)
+    if qClass == 'IN' and qName.lower() in dnsRecords:
+        answerRecord(dnsRecords[qName.lower()], (qName, qClass, qType, qId, remoteIp, localIp), participants)
     print "END"
 
 def axfr(id):
@@ -80,6 +79,7 @@ def axfr(id):
     print "END"
 
 def main():
+    participants, lastMTime = set(), 0
     # Do not use buffering
     line = sys.stdin.readline()
     while line:        
@@ -91,8 +91,7 @@ def main():
                     print "LOG\tUnknown version", words[1]
                     print "FAIL"
                 else:
-                    print "OK\tSelective answer"
-                    participants = loadParticipants(filename)
+                    print "OK\tSelective Answer"
             elif words[0] == "Q":
                 query(words[1:7], dnsRecords, participants)
             elif words[0] == "AXFR":
@@ -100,12 +99,23 @@ def main():
             elif words[0] == "PING":
                 pass    # PowerDNS doesn't seem to do anything with this
             else:
-                raise IndexError
+                raise ValueError
         except IndexError, ValueError:
             print "LOG\tPowerDNS sent an unparseable line: '%s'" % line
             print "FAIL"    # FAIL!
         
-        sys.stdout.flush()        
+        sys.stdout.flush()
+        
+        # Reload the participants file if it has changed
+        try:
+            curMTime = os.stat(filename)[stat.ST_MTIME]
+        except OSError:
+            pass
+        else:
+            if curMTime > lastMTime:
+                participants = loadParticipants(filename)
+                lastMTime = curMTime           
+               
         line = sys.stdin.readline()
 
 if __name__ == '__main__':
