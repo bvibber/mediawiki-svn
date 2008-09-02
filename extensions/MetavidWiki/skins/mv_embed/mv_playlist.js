@@ -183,19 +183,21 @@ mvPlayList.prototype = {
 		this.loading=false;
 		this.getHTML();
 	},
-	getPlDuration:function(){
+	getPlDuration:function(regen){
 		//js_log("GET PL DURRATION for : "+ this.tracks[this.default_track_id].clips.length + 'clips');
+		if(!regen && this.pl_duration)
+			return this.pl_duration;
 		durSum=0;
 		$j.each(this.default_track.clips, function(i,clip){	
 			if(clip.embed){			
-				js_log('add : '+ clip.getDuration());
+				//js_log('add : '+ clip.getDuration());
 				durSum+=clip.getDuration();
 			}else{
 				js_log("ERROR: clip " +clip.id + " not ready");
 			}
 		});
 		this.pl_duration=durSum;
-		js_log("return dur: " + this.pl_duration);
+		//js_log("return dur: " + this.pl_duration);
 		return this.pl_duration;
 	},
 	getPlDurationNTP:function(){
@@ -323,9 +325,8 @@ mvPlayList.prototype = {
 			$j(this).html('<div id="dc_'+this.id+'" style="width:'+this.width+'px;' +
 					'height:'+(this.height+title_bar_height + control_height)+'px;position:relative;">' +
 					'	<div style="font-size:13px" id="ptitle_'+this.id+'"></div>' +
-					'</div>');					
-			this.updateTitle();
-			//@@todo move into trackObj?		
+					'</div>');												
+			
 			$j.each(this.default_track.clips, function(i, clip){
 				$j('#dc_'+plObj.id).append('<div class="clip_container" id="clipDesc_'+clip.id+'" '+
 					'style="display:none;position:absolute;text-align: center;width:'+plObj.width + 'px;'+
@@ -335,19 +336,36 @@ mvPlayList.prototype = {
 				clip.embed.height=plObj.height;
 				clip.embed.width=plObj.width;
 				
-				clip.embed.getHTML();												
+				clip.embed.getHTML();//get the thubnails for everything			
 				$j(clip.embed).css({ 'position':"absolute",'top':"0px", 'left':"0px"});					
 				if($j('#clipDesc_'+clip.id).get(0)){
 					$j('#clipDesc_'+clip.id).get(0).appendChild(clip.embed);
 				}else{
 					js_log('cound not find: clipDesc_'+clip.id);					
-				}
-			}); 				
+				}						
+				
+				//add the controls if we are on the current clip:
+				if(clip.id == plObj.cur_clip.id){
+					js_log("add controls: "+ clip.embed.getControlsHTML() +"\nto:videoPlayer_"+ clip.embed.id);			
+					$j('#videoPlayer_'+clip.embed.id).append(
+						'<div id="mv_embedded_controls_'+plObj.id+'" ' +
+						'style="postion:relative;top:'+(plObj.height+title_bar_height)+'px" ' +
+						'class="controls">' + 
+							 clip.embed.getControlsHTML() +
+						'</div>'
+					);
+				}				
+			}); 	
+						
 			if(this.cur_clip)
-				$j('#clipDesc_'+this.cur_clip.id).css({display:'inline'});		
+				$j('#clipDesc_'+this.cur_clip.id).css({display:'inline'});							 							
+						 			
+							
+			//update the title and status bar
+			this.updateBaseStatus();
 			
 			
-			/*var sh=Math.round(this.height* pl_layout.seq_title);
+			/*va sh=Math.round(this.height* pl_layout.seq_title);
 			var ay=Math.round(this.height* pl_layout.clip_desc);
 			//var by=Math.round(this.height* pl_layout.nav);
 			var cy=Math.round(this.height* pl_layout.seq);		
@@ -409,12 +427,12 @@ mvPlayList.prototype = {
 			//this.innerHTML=out;
 		}
 	},
-	updateTitle:function(){
+	updateBaseStatus:function(){
 		js_log('update title');
 		$j('#ptitle_'+this.id).html(''+
 			'<b>' + this.title + '</b> '+				
-			this.getClipCount()+' clips,<i>'+
-			this.getPlDurationNTP() + '</i>' );
+			this.getClipCount()+' clips, <i>'+
+			this.getPlDurationNTP() + '</i>' );		
 	},
 	/*gets adds hidden desc to the #dc container*/
 	getAllClipDesc : function(){		
@@ -445,8 +463,12 @@ mvPlayList.prototype = {
 		});
 	},
 	getPlayHeadPos: function(prec_done){
-		var	plObj = this;		
-		var track_len = $j('#slider_'+this.id).css('width').replace(/px/, '');
+		var	plObj = this;
+		if($j('#mv_seeker_'+this.id).length==0){
+			//js_log('no playhead so we can\'t get playhead pos' );
+			return 0;
+		}
+		var track_len = $j('#mv_seeker_'+this.id).css('width').replace(/px/, '');
 		//assume the duration is static and present at .duration during playback
 		var clip_perc = this.cur_clip.embed.duration / this.getPlDuration();
 		var perc_offset =time_offset = 0;
@@ -485,7 +507,7 @@ mvPlayList.prototype = {
 	next: function(){		
 		//advance the playhead to the next clip			
 		var next_clip = this.getClip(1);
-		if(this.cur_clip.embed.playlistSupport()){
+		if(this.cur_clip.embed.supports['playlist_driver']){
 			//do next clip action on start_clip embed cuz its the one being displayed: 
 			this.start_clip.embed.playlistNext();
 			this.cur_clip=next_clip;					
@@ -497,7 +519,7 @@ mvPlayList.prototype = {
 	prev: function(){
 		//advance the playhead to the previous clip			
 		var prev_clip = this.getClip(-1);
-		if(this.cur_clip.embed.playlistSupport()){
+		if(this.cur_clip.embed.supports['playlist_driver']){
 			this.start_clip.embed.playlistPrev();
 			this.cur_clip=prev_clip;	
 		}else{			
@@ -829,7 +851,7 @@ mvClip.prototype = {
 	//set src and image & title & desc from metavid source data 
 	getRemoteData:function(callback){
 		var thisClip =this;	
-		//check for mvclip type:	
+		//check for js_log("gDuration:setupEmbed" + this.embed.media_element.sources.length);mvclip type:	
 		if(thisClip.mvclip){
 			thisClip.loading=true;
 			if(!thisClip.mvMetaDataProvider){
@@ -950,8 +972,7 @@ mvClip.prototype = {
 	getDuration:function(){
 		//return duration if clips already has duration
 		if(this.duration)return this.duration;
-		if(!this.embed)this.setUpEmbedObj();
-		js_log("gDuration:setupEmbed" + this.embed.media_element.sources.length);
+		if(!this.embed)this.setUpEmbedObj();		
 		return this.embed.getDuration();
 	},
 	setBaseEmbedDim:function(o){
@@ -1099,6 +1120,9 @@ PlMvEmbed.prototype = {
 					this[method]=videoInterface[method];
 				}
 			}
+			//string -> boolean:
+			if(this[method]=="false")this[method]=false;
+			if(this[method]=="true")this[method]=true;
 		}
 		//continue init (load sorces) 
 		js_log('this Video src len:'+ this.media_element.sources.length);
@@ -1194,44 +1218,12 @@ PlMvEmbed.prototype = {
 	},
 	getPlayButton:function(){
 		return this.pe_getPlayButton(this.pc.pp.id);
-	},
-	//overide getControlsHTML for playlists: 
-	getControlsHtml:function(type){
-		switch(type){
-			case 'all':
-				//get all the normal embed control objects and add playlist specific before info
-				return 	this.getControlsHtml('play_head') +					
-						this.getControlsHtml('play_or_pause') + 
-						this.getControlsHtml('stop') + 
-						this.getControlsHtml('fullscreen') + 											
-						//get playlist specific controls
-						this.pc.pp.getPLControls()+
-						this.getControlsHtml('info_span');
-			break;
-			case 'play_head':
-				this.pc.pp.disp_play_head=true;
-				return this.pe_getControlsHtml(type);
-				//use style for bg (to use paths
-				/*return '<div id="slider_'+this.pc.pp.id+'" class="mv_track" ' +
-						'style="z-index:5;background: url('+mv_embed_path+'images/bd-gray.gif);' +
-						'width:'+(this.width)+'px; height:4px;">'+
-					'<div id="playhead_'+this.pc.pp.id+'" class="mv_playhead" style="' +
-					'z-index:5;background:url(\''+mv_embed_path+'images/slider_handle.gif\');">' +
-						//'<div id="playhead_img_'+this.pc.pp.id+'" style="position:relative;z-index:5;top:0px;left:8px;width:17px;height:21px;' +
-						//	'background:url(\''+mv_embed_path+'images/slider_handle.gif\');"></div>' + 
-					'</div>'+
-				'</div>';*/
-			break;
-			default:
-				return this.pe_getControlsHtml(type);
-			break;
-		}		
-	}, 
+	},	
 	setStatus:function(value){		
 		var plObj = this.pc.pp;	
 		//js_log('set status:'+ value);
-		var pl_value='On clip ' + (plObj.cur_clip.order+1) + ' of ' + plObj.getClipCount() + '<br>';
-		this.pe_setStatus(pl_value + value);
+		var pl_value='On clip ' + (plObj.cur_clip.order+1) + ' of ' + plObj.getClipCount() + '<br>';		
+		this.pe_setStatus(value);
 	},
 	setSliderValue:function(value){		
 		var sliderVal = this.pc.pp.getPlayHeadPos(value);		
@@ -1632,7 +1624,7 @@ var transitionObj = function(element) {
 	this.init(element);
 };
 transitionObj.prototype = {	
-	animation_done:false,
+	animation_state:0, //can be 0=unset, 1=running, 2=done 
 	init:function(element){
 		//load supported attributes: 	
 		var _this = this;

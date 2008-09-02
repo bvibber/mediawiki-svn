@@ -778,9 +778,7 @@ function mv_embed(){
             //set id if empty:
             if(!vid_id || vid_id==''){
   				video_elements[i].id= 'v'+ global_ogg_list.length;
-            }
-            //append loading div: 
-            
+            }            
             
             //create and swap in the video interface:             
 	   		var videoInterface = new embedVideo(video_elements[i]);	   		
@@ -870,10 +868,7 @@ function swapEmbedVideoElement(video_element, videoInterface){
 	//make sure our div has a hight/width set:
 	$j(embed_video).css({'width':videoInterface.width,'height':videoInterface.height});
 	//inherit the video interface
-	for(method in videoInterface){
-		//string -> boolean:
-		if(videoInterface[method]=='false')videoInterface[method]=false;
-		if(videoInterface[method]=='true')videoInterface[method]=true;
+	for(method in videoInterface){	
 		if(method!='readyState'){ //readyState crashes IE
 			if(method=='style'){
 					embed_video.setAttribute('style', videoInterface[method]);
@@ -887,6 +882,9 @@ function swapEmbedVideoElement(video_element, videoInterface){
 				embed_video[method]=videoInterface[method];
 			}
 		}
+		//string -> boolean:
+		if(embed_video[method]=="false")embed_video[method]=false;
+		if(embed_video[method]=="true")embed_video[method]=true;
 	}	
 	///js_log('did vI style');  
 	//now swap out the video element for the embed_video obj:  	
@@ -1864,6 +1862,10 @@ embedVideo.prototype = {
     },
     getControlsHTML:function()
     {    
+    	//check if we are in playlist mode: 
+    	var id = (this.pc)?this.pc.pp.id:this.id;
+    	
+    	js_log('f:getControlsHTML');
     	//var true_id = (this.pc!=null)?this.pc.pp.id:this.id;				
         var available_width = this.playerPixelWidth();
         var html_code='';
@@ -1872,25 +1874,25 @@ embedVideo.prototype = {
         available_width -= 4;
         html_code += '<span class="border_right">&nbsp;</span>';
         available_width -= 4;        	
-		 
+		
         // fullscreen
         if(this.supports['fullscreen'])
         {
-            html_code += '<div class="fullscreen"><a href="javascript:$j(\'#'+this.id+'\').get(0).fullscreen();"></a></div>';
+            html_code += '<div class="fullscreen"><a href="javascript:$j(\'#'+id+'\').get(0).fullscreen();"></a></div>';
             available_width -= 20;
         }
         // options
-        html_code += '<div class="options"><a href="javascript:$j(\'#'+this.id+'\').get(0).DoOptionsHTML();"></a></div>';
+        html_code += '<div class="options"><a href="javascript:$j(\'#'+id+'\').get(0).DoOptionsHTML();"></a></div>';
         available_width -= 26;
-
+        
 		options_margin = available_width - 119;
 		if(options_margin<0) options_margin = 0;
 
-		$j('#mv_embedded_options_'+this.id).css('margin-left',options_margin+'px');
+		$j('#mv_embedded_options_'+id).css('margin-left',options_margin+'px');
         // play_pause
         if (this.supports['play_or_pause'])
         {
-            html_code += '<div id="mv_play_pause_button_'+this.id+'" class="play_button"><a href="javascript:document.getElementById(\''+this.id+'\').play_or_pause();"></a></div>';
+            html_code += '<div id="mv_play_pause_button_'+id+'" class="play_button"><a href="javascript:document.getElementById(\''+this.id+'\').play_or_pause();"></a></div>';
             available_width -= 24;
         }
 
@@ -1899,7 +1901,7 @@ embedVideo.prototype = {
         {
 			//add in cmml inline dispaly if roe description avaliable
 			//not to be displayed in stream interface.
-            html_code += '<div class="closed_captions"><a href="javascript:$j(\'#'+this.id+'\').get(0).showTextInterface();"></a></div>';
+            html_code += '<div class="closed_captions"><a href="javascript:$j(\'#'+id+'\').get(0).showTextInterface();"></a></div>';
             available_width -= 40;
 	  	}
         // volume control
@@ -1915,47 +1917,30 @@ embedVideo.prototype = {
         }
         // time display
         if(this.supports['time_display'] && (available_width > 80))
-        {         
-            html_code += '<div id="mv_time_'+this.id+'" class="time">'+this.getTimeReq()+'</div>';
+        {                 	
+            html_code += '<div id="mv_time_'+id+'" class="time">'+this.getTimeReq()+'</div>';
             available_width -= 80;
         }
 
         if(this.supports['play_head'] && (available_width > 18))
         {
             html_code +=
-                    '	<div class="seeker" id="mv_seeker_'+this.id+'" style="width: ' + (available_width - 18) + 'px;">';
+                    '	<div class="seeker" id="mv_seeker_'+id+'" style="width: ' + (available_width - 18) + 'px;">';
             html_code+=
                     '		<div class="seeker_bar">'+
                     '			<div class="seeker_bar_outer"></div>'+
-                    '			<div id="mv_seeker_slider_'+this.id+'" class="seeker_slider"></div>'+
+                    '			<div id="mv_seeker_slider_'+id+'" class="seeker_slider"></div>'+
                     '			<div class="seeker_bar_close"></div>'+
                     '		</div>';
             html_code+=
                     '	</div><!--seeker-->';
         }
-        return html_code;
-    },	
-	getHTML : function (){		
-		//@@todo check if we have sources avaliable	
-		js_log('f : getHTML');			
-				
-		var html_code = '';		
-        html_code = '<div style="width:'+this.width+'px;" class="videoPlayer">';
-		html_code += '<div id="mv_embedded_player_'+this.id+'">' +
-					this.getThumbnailHTML() + 
-				'</div>';
-		
-        if(this.controls)
-        {
-            html_code += '<div id="mv_embedded_controls_'+this.id+'" class="controls">';
-            html_code += this.getControlsHTML();       
-            html_code +=	'</div>';
-          
-            var dlLink = 'javascript:$j(\'#'+this.id+'\').get(0).showVideoDownload();';
-			var source_link = 'javascript:$j(\'#'+this.id+'\').get(0).selectPlaybackMethod();';
-            var close_link = '$j(\'#mv_embedded_options_'+this.id+'\').hide();';
+        // code for stream selection and displaying embed code: 
+        var dlLink = 'javascript:$j(\'#'+this.id+'\').get(0).showVideoDownload();';
+		var source_link = 'javascript:$j(\'#'+this.id+'\').get(0).selectPlaybackMethod();';
+        var close_link = '$j(\'#mv_embedded_options_'+this.id+'\').hide();';
 
-            html_code += '<div id="mv_embedded_options_'+this.id+'" class="videoOptions">'
+        html_code += '<div id="mv_embedded_options_'+this.id+'" class="videoOptions">'
 +'				<div class="videoOptionsTop"></div>'
 +'				<div class="videoOptionsBox">'
 +'					<div class="block">'
@@ -1977,9 +1962,30 @@ embedVideo.prototype = {
 +'				</div><!--videoOptionsInner-->'
 +'				<div class="videoOptionsBot"></div>'
 +'			</div><!--videoOptions-->';
-        }
-
-        html_code += '</div>';
+        
+        
+        return html_code;
+    },	
+	getHTML : function (){		
+		//@@todo check if we have sources avaliable	
+		js_log('f : getHTML');			
+				
+		var html_code = '';		
+        html_code = '<div id="videoPlayer_'+this.id+'" style="width:'+this.width+'px;" class="videoPlayer">';        
+			html_code += '<div id="mv_embedded_player_'+this.id+'">' +
+							this.getThumbnailHTML() + 
+						'</div>';
+					
+			js_log("mvEmbed:controls "+ typeof this.controls);
+			
+	        if(this.controls)
+	        {
+	        	js_log("f:getHTML:AddControls");
+	            html_code += '<div id="mv_embedded_controls_'+this.id+'" class="controls">';
+	            html_code += this.getControlsHTML();       
+	            html_code +=	'</div>';         
+	        }
+        html_code += '</div>'; //videoPlayer div close        
         js_log('should set: '+this.id);
         $j(this).html(html_code);
         //js_log('set this to: ' + $j(this).html() );	
@@ -2565,56 +2571,7 @@ embedVideo.prototype = {
 		var id = (this.pc)?this.pc.pp.id:this.id;
 		//update status:
 		$j('#mv_time_'+id).html(value);
-	}
-	/*getControlsHtml : function(type){
-		var id = (this.pc)?this.pc.pp.id:this.id;
-		switch(type){
-			case 'all':
-				return 	this.getControlsHtml('play_head') +
-						this.getControlsHtml('play_or_pause') +
-						this.getControlsHtml('stop') +
-						this.getControlsHtml('fullscreen') +
-						this.getControlsHtml('info_span');
-			break;
-			case 'play_or_pause':
-				return '<a id="mv_play_or_pause_'+id+'" title="play_or_pause" href="javascript:document.getElementById(\''+id+'\').play_or_pause();">'+
-					getTransparentPng(new Object ({id:'mv_pop_btn_'+id,style:'float:left',width:'27', height:'27', border:"0",
-						src:mv_embed_path+'images/vid_pause_sm.png' })) +
-					'</a>';
-			break;
-			case 'play':
-				return '<a title="play" href="javascript:document.getElementById(\''+id+'\').play();">'+
-					getTransparentPng(new Object ({id:'mv_play_btn',style:'float:left',width:'27', height:'27', border:"0",
-						src:mv_embed_path+'images/vid_play_sm.png' })) +
-					'</a>';
-			break;
-			case 'stop':
-				return	'<a title="stop" href="javascript:document.getElementById(\''+id+'\').stop();">'+
-					getTransparentPng(new Object ({id:'mv_stop_btn',style:'float:left',width:'27', height:'27', border:"0",
-						src:mv_embed_path+'images/vid_stop_sm.png' })) +
-					'</a>';
-			break;
-			case 'fullscreen':
-				return '<a title="fullscreen" href="javascript:document.getElementById(\''+id+'\').fullscreen();">'+
-					getTransparentPng(new Object ({id:'mv_fs_btn',style:'float:left',width:'27', height:'27', border:"0",
-						src:mv_embed_path+'images/vid_full_screen_sm.png' })) +
-				'</a>';
-			break;
-			case 'play_head':
-				js_log('set pl: '+id);
-				return '<div class="mv_track" id="slider_'+id+'" style="width:'+this.width+';'+
-							'z-index:5;height:4px; background: url('+mv_embed_path+'images/bd-gray.gif) repeat scroll 5px 0px;">'+
-								' <div id="playhead_'+id+'" class="mv_playhead" ' +
-									'style="z-index:5;background-image: url('+mv_embed_path+'images/slider_handle.gif);"></div>' +
-						'</div>';
-			break;
-			case 'info_span':
-				return '<span id="info_cnt_'+id+'" style="float:left">' +
-						' <span id="info_'+id+'" class="mv_status" style="position:relative;top:'+((this.pc)?-10:0)+'px">--</span>'+
-						'</span>';
-			break;
-		}
-	}*/
+	}	
 }
 /* returns html for a transparent png (for ie<7)*/
 function getTransparentPng(image){

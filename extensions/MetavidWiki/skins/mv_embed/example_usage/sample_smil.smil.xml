@@ -1,34 +1,38 @@
 <smil xmlns="http://www.w3.org/2001/SMIL20/Language">
   <head>
     <meta name="title" content="Simple Crossfading Example"/>
+    
     <transition id="fromGreen"
 	type="fade" 
 	subtype="fadeFromColor" 
 	fadeColor="#87CF87" 
-	dur="2s"/>
+	dur="4s"/>
+	
     <transition id="toGreen"
 	type="fade"
 	subtype="fadeToColor"
 	fadeColor="#87CF87" 
-	dur="2s"/>
+	dur="4s"/>
+	
     <transition id="xFade" 
 	type="fade" 
 	subtype="crossfade" 
 	dur="2s"/>
+	
   </head>
   <body>
     <seq>
- 		<video src="sample_fish.ogg?t=0:0:0/0:0:26" 
+ 	<video src="sample_fish.ogg?t=0:0:0/0:0:26" 
 		region="video_region" 
-		transIn="xFade" 
-		transOut="toGreen" 
+		transIn="fromGreen"
 		fill="remove" 
 		type="video/ogg" 
 		poster="sample_fish.jpg"/>
 		
       <video src="sample_magnolia.ogg?t=0:0:0/0:0:05" 
 		region="video_region" 
-		transIn="fromGreen"
+		transIn="xFade" 	
+		transOut="toGreen" 
 		begin="2s" 
 		fill="transition" 
 		type="video/ogg" 

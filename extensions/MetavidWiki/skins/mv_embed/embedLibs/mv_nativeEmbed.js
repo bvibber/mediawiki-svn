@@ -46,8 +46,8 @@ var nativeEmbed = {
 	},	
 	monitor : function(){
 		this.getVID(); //make shure we have .vid obj
-		js_log('time loaded: ' + this.vid.TimeRanges );
-		js_log('current time: '+ this.vid.currentTime  + ' dur: ' + this.duration);
+		//js_log('time loaded: ' + this.vid.TimeRanges );
+		//js_log('current time: '+ this.vid.currentTime  + ' dur: ' + this.duration);
 			
 		//update duration if not set
 		this.duration =(this.vid.duration==0)?this.getDuration():this.vid.duration;
@@ -121,26 +121,36 @@ var nativeEmbed = {
    		if(this.pc){
 			_pClip = this.pc;					
 			if(_pClip.transIn){
-				js_log('transIn exist see if we are in time range');
+				//js_log('transIn exist see if we are in time range');
 				if(_pClip.transIn.dur){
 					//only run if the animation_done is not done yet: 
-					if(!_pClip.transIn.animation_done){ //make sure the animation is not done
-						js_log('transIn duration is: '+ _pClip.transIn.dur);
+					if(!_pClip.transIn.animation_done){ //make sure the animation is not done						
 						if(this.currentTime < _pClip.transIn.dur){
-							var overlay_selector= 'transIn_'+_pClip.id;
-							if( ! $j(overlay_selector).get(0) )
-								$j('mv_ebct_'+this.id).append(''+
-									'<div id="'+overlay_selector+'" ' +
-										'style="position:relative;top:0px;left:0px;' +
-										'height:'+this.height+'px;'+
-										'width:'+this.width+'px;">' +
-									'</div>');							
-							//start transition for remaining time
-							var offSetTime = 0; //future think about what time info we need to send
-							var tran_function = getTransitionFunction(_pClip.transIn,overlay_selector, offSetTime)
+							if(_pClip.transIn.animation_state==0){
+								_pClip.transIn.animation_state=1;//running transition
+								js_log("RUN TRANSITION: ");
+								//@@todo process special case when overlay is subsequent clip 							
+								var overlay_selector_id= 'transIn_'+_pClip.id;
+								if( ! $j('#'+overlay_selector_id).get(0) ){
+									js_log('adding in element: to #mv_ebct_'+_pClip.pp.id + ' oid:' +overlay_selector_id);
+									$j('#mv_ebct_'+_pClip.pp.id).prepend(''+
+										'<div id="'+overlay_selector_id+'" ' +
+											'style="position:absolute;top:0px;left:0px;' +
+											'height:'+this.height+'px;'+
+											'width:'+this.width+'px;' +
+											'opacity:1;'+
+											'z-index:2">' +
+										'</div>');							
+								}
+								js_log('selector element: '+$j('#'+overlay_selector_id).length);
+								//start transition for remaining time
+								var offSetTime = 0; //future think about what time info we need to send
+								//var tran_function = getTransitionFunction(_pClip.transIn,overlay_selector_id, offSetTime)
+								mvTransLib.doTransition(_pClip.transIn, overlay_selector_id, offSetTime )
+							}
 							//special case of cross fading clips:
-							js_log('tran function: '+tran_function);
-							debugger;
+							//js_log('tran function: '+tran_function);		
+							//debugger;					
 						}
 					}							
 				}						
@@ -149,58 +159,96 @@ var nativeEmbed = {
     }
 }
 /*
- * get the transition function 
- * @param tObj transition function
- * @param overlay_selector the div or media element to apply the css sytle to
- * @param (optional) offSetTime how much time has already passed (ie can we run the full transition) 
+ * mvTransLib libary of transitions
+ * a single object called to initiate transition effects can easily be extended in separate js file
+ * (that way a limited feature set "sequence" need not include a _lot_ of js unless necessary )
  */
  /*
  * Smil Transition Effects see:  
  * http://www.w3.org/TR/SMIL3/smil-transitions.html#TransitionEffects-TransitionAttribute
- */			
-function getTransitionFunction(tObj, overlay_selector, offSetTime){
+ */   
+
+ 		
+mvTransLib = {
+	/*
+	 * function doTransition lookups up the transition in the  mvTransLib obj
+	 * 		and intiates the transition if its avaliable 
+	 * @param tObj transition attribute object
+	 * @param offSetTime default value 0 if we need to start rendering from a given time 
+	 */
+	doTransition:function(tObj, overlay_selector_id, offSetTime){
 		if(!tObj.type)
-			return js_log('transition is missing type or type attribute');
-		var _this = this;		
-		//function lookup: 
-		switch(tObj.type){
-			case 'fade':
-				if(!tObj.subtype)
-					return js_log("fade transition is missing sub-type");
-				if(!tObj.dur)
-					return js_log('missing transition duration');							
-					
-				switch(tObj.subtype){
-					case 'fadeFromColor':
-						if(!tObj.fadeColor)
-							return js_log('missing fadeColor');							
-											
-						return function(){
-							//set the initial state
-							$j(overlay_selector).css({
-								'background-color':_tObj.fadeColor
-							});
-							//annimate the transition
-							$j(overlay_selector).animate(
-								{
-		      						"opacity" : "0"
-			    				}, 
-			    				{
-		    						"duration" : ( tObj.dur - offSetTime ) 
-		    					}, 
-		    					'linear',		    				
-		    					function(){ //callback
-		    						tObj.animation_done=true;
-		    					}
-		    				);
-						}
-					break;
-					case 'fadeToColor':
-						
-					break;	
-				}
-			break; // fade type	
-		}
-		//get transition type
+			return js_log('transition is missing type attribute');
 		
+		if(!tObj.type)
+			return js_log('transition is missing subtype attribute');
+		
+		if(!this['type'][tObj.type])
+			return js_log('mvTransLib is missing type: '+tObj.type);
+		
+		if(!this['type'][tObj.type][tObj.subtype])
+			return js_log('mvTransLib is missing subType: '+tObj.subtype);
+		
+		//maybe have a default for this? 
+		if(!tObj.dur)
+			return js_log('missing transition duration');
+							
+		//has type and subype call function with params:  
+		this['type'][tObj.type][tObj.subtype](tObj,overlay_selector_id, offSetTime);						
+					
+	},
+	type:{
+		//types:
+		fade:{
+			fadeFromColor:function(tObj, overlay_selector_id, offSetTime){
+				js_log('f:fadeFromColor: '+overlay_selector_id +' to color: '+ tObj.fadeColor);
+				if(!tObj.fadeColor)
+					return js_log('missing fadeColor');		
+				if($j('#'+overlay_selector_id).get(0).length==0){
+					js_log("ERROR cant find: "+ overlay_selector_id);
+				}	
+				//set the initial state
+				$j('#'+overlay_selector_id).css({
+					'background-color':tObj.fadeColor,
+					'opacity':"1",
+				});
+				/*js_log('do transition annimation for: '+ (tObj.dur - offSetTime)
+						 + ' seconds for: '+$j('#'+overlay_selector_id).get(0) + 
+						 ' current opacity: '+$j('#'+overlay_selector_id).css('opacity') );*/
+			
+				//annimate the trasiion
+				$j('#'+overlay_selector_id).animate(
+					{
+  						"opacity" : "0"
+    				}, 
+    				(( tObj.dur - offSetTime )*1000), //duration value should be stored in ms earlier on. 
+					'linear',		    				
+					function(){ //callback
+						js_log('fade done');
+						tObj.animation_state=2;
+					}
+				);
+			},
+			//depends if transition_in or transition_out
+			crossfade:function(tObj, overlay_selector_id, offSetTime){
+				js_log('f:crossfade: '+overlay_selector_id);
+				//set the initial state
+				$j('#'+overlay_selector_id).css({
+					'opacity':0
+				});
+				$j('#'+overlay_selector_id).animate(
+					{
+  						"opacity" : "0"
+    				}, 
+    				{
+						"duration" : ( tObj.dur - offSetTime ) 
+					}, 
+					'linear',		    				
+					function(){ //callback
+						tObj.animation_done=true;
+					}
+				);
+			}			
+		}							
 	}
+}
