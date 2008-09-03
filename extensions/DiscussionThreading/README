@@ -137,8 +137,8 @@ if( defined( 'MEDIAWIKI' ) ) {
 	require_once( "$IP/extensions/DiscussionThreading/DiscussionThreading.i18n.php" );
 
 	$wgExtensionFunctions[] = 'efDiscussionThreadSetup';
-	$wgExtensionCredits['other'][] = array( 
-						'name' => 'DiscussionThreading', 
+	$wgExtensionCredits['other'][] = array(
+						'name' => 'DiscussionThreading',
 						'author' => 'Jack D. Pond',
 						'url' => 'http://www.mediawiki.org/wiki/Extension:DiscussionThreading',
 						'description' => 'Add Threading to discussion (talk) pages' );
@@ -159,13 +159,13 @@ if( defined( 'MEDIAWIKI' ) ) {
 	$wgHooks['editSectionLinkForOther'][] =  'efDiscussionLink4other';
 	$wgHooks['editSectionLink'][] =  'efDiscussionLink';
 	$wgHooks['AlternateEdit'][] =  'efDiscussionThreadEdit';
-	
+
 
 
 
 	/**
 	 * Initial setup, add .i18n. messages from $IP/extensions/DiscussionThreading.i18n.php
-	*/		
+	*/
 	function efDiscussionThreadSetup() {
 		global $wgMessageCache, $wgDiscussionThreadMessages;
 
@@ -323,12 +323,12 @@ $wgDiscussionThreadMessages['en'] = array(
 	'threadnewsectionhint' => "Start a new thread"
 );
 
-/* Need to add 
+/* Need to add
 	af,br,bs,ca,cs,cy,de,et,eu,fi,fr,ga,gl,he,hr,hsb,id,is,it,ja,kk-kz,kk-tr,kk-cn,kk,lv,nl,
 	no,nn,oc,pt,pt-br,ro,ru,sk,sl,sq,uk,wa,zh-cn,zh-tw,zh-yue,zh-hk,zh-sg
 
 	Would do this by adding a new $wgDiscussionThreadMessages array example:
-	
+
 $wgDiscussionThreadMessages['lang1'] = array(
 	'replysection' => 'lang1 - tag',
 	'replysectionhint' => "lang1 - hint",

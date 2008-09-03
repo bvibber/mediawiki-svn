@@ -5,47 +5,43 @@
  * @addtogroup Extensions
 */
 
-$wgDiscussionThreadMessages = array();
+$messages = array();
 
-$wgDiscussionThreadMessages['en'] = array(
-        'replysection' => 'reply',
-        'replysectionhint' => "Reply to this Posting",
-        'threadnewsection' => 'new',
-        'threadnewsectionhint' => "Start a new thread"
+/** English
+ * @author Jack D. Pond
+ */
+$messages['en'] = array(
+	'discussionthreading-desc' => 'Add threading to talk pages',
+	'discussionthreading-replysection' => 'reply',
+	'discussionthreading-replysectionhint' => "Reply to this posting",
+	'discussionthreading-threadnewsection' => 'new',
+	'discussionthreading-threadnewsectionhint' => "Start a new thread"
 );
-$wgDiscussionThreadMessages['es'] = array(
-        'replysection' => 'respuesta',
-        'replysectionhint' => "Respuesta a este tema",
-        'threadnewsection' => 'nuevo',
-        'threadnewsectionhint' => "Empezar un nuevo tema"
-);
-$wgDiscussionThreadMessages['de'] = array(
-        'replysection' => 'antworten',
-        'replysectionhint' => "Auf diesen Eintrag antworten",
-        'threadnewsection' => 'neu',
-        'threadnewsectionhint' => "Neuen Eintrag erstellen"
-);
-$wgDiscussionThreadMessages['fr'] = array(
-        'replysection' => 'r&eacute;pondre',
-        'replysectionhint' => "R&eacute;pondre � ce commentaire",
-        'threadnewsection' => 'nouveau',
-        'threadnewsectionhint' => "Commencer une nouvelle discussion"
-);
-$wgDiscussionThreadMessages['it'] = array(
-        'replysection' => 'rispondi',
-        'replysectionhint' => "Rispondi a questo messaggio",
-        'threadnewsection' => 'nuovo',
-        'threadnewsectionhint' => "Avvia una nuova discussione"
-);
-/* Need to add 
-	af,br,bs,ca,cs,cy,et,eu,fi,ga,gl,he,hr,hsb,id,is,ja,kk-kz,kk-tr,kk-cn,kk,lv,nl,
-	no,nn,oc,pt,pt-br,ro,ru,sk,sl,sq,uk,wa,zh-cn,zh-tw,zh-yue,zh-hk,zh-sg
 
-	Would do this by adding a new $wgDiscussionThreadMessages array example:
-	
-$wgDiscussionThreadMessages['lang1'] = array(
-	'replysection' => 'lang1tag',
-	'replysectionhint' => "lang1hint",
+$messages['de'] = array(
+	'discussionthreading-replysection' => 'antworten',
+	'discussionthreading-replysectionhint' => "Auf diesen Eintrag antworten",
+	'discussionthreading-threadnewsection' => 'neu',
+	'discussionthreading-threadnewsectionhint' => "Neuen Eintrag erstellen"
 );
-*/
-?>
+
+$messages['es'] = array(
+	'discussionthreading-replysection' => 'respuesta',
+	'discussionthreading-replysectionhint' => "Respuesta a este tema",
+	'discussionthreading-threadnewsection' => 'nuevo',
+	'discussionthreading-threadnewsectionhint' => "Empezar un nuevo tema"
+);
+
+$messages['fr'] = array(
+	'discussionthreading-replysection' => 'répondre',
+	'discussionthreading-replysectionhint' => "Répondre �e commentaire",
+	'discussionthreading-threadnewsection' => 'nouveau',
+	'discussionthreading-threadnewsectionhint' => "Commencer une nouvelle discussion"
+);
+
+$messages['it'] = array(
+	'discussionthreading-replysection' => 'rispondi',
+	'discussionthreading-replysectionhint' => "Rispondi a questo messaggio",
+	'discussionthreading-threadnewsection' => 'nuovo',
+	'discussionthreading-threadnewsectionhint' => "Avvia una nuova discussione"
+);
