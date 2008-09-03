@@ -15,7 +15,7 @@
 
 if (!defined('MEDIAWIKI')) die('Not an entry point.');
 
-define('CATEGORYWATCH_VERSION', '0.1.1, 2008-09-04');
+define('CATEGORYWATCH_VERSION', '0.1.2, 2008-09-04');
 
 $wgCategoryWatchNotifyEditor = true;
 
@@ -152,6 +152,11 @@ class CategoryWatch {
 
 		$dbr->freeResult($res);
 	}
+
+	/**
+	 * Needed in some versions to prevent Special:Version from breaking
+	 */
+	function __toString() { return 'CategoryWatch'; }
 }
 
 function wfSetupCategoryWatch() {
