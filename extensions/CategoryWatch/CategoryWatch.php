@@ -15,18 +15,21 @@
 
 if (!defined('MEDIAWIKI')) die('Not an entry point.');
 
-define('CATEGORYWATCH_VERSION', '0.1.2, 2008-09-04');
+define('CATEGORYWATCH_VERSION', '0.1.3, 2008-09-04');
 
 $wgCategoryWatchNotifyEditor = true;
 
 $wgExtensionFunctions[] = 'wfSetupCategoryWatch';
 $wgExtensionCredits['other'][] = array(
-	'name'        => 'CategoryWatch',
-	'author'      => '[http://www.organicdesign.co.nz/User:Nad User:Nad]',
-	'description' => 'Extends watchlist functionality to include notification about membership changes of watched categories',
-	'url'         => 'http://www.mediawiki.org/wiki/Extension:CategoryWatch',
-	'version'     => CATEGORYWATCH_VERSION
+	'name'           => 'CategoryWatch',
+	'author'         => '[http://www.organicdesign.co.nz/User:Nad User:Nad]',
+	'description'    => 'Extends watchlist functionality to include notification about membership changes of watched categories',
+	'descriptionmsg' => 'categorywatch-desc',
+	'url'            => 'http://www.mediawiki.org/wiki/Extension:CategoryWatch',
+	'version'        => CATEGORYWATCH_VERSION,
 	);
+
+$wgExtensionMessagesFiles['CategoryWatch'] =  dirname(__FILE__) . '/CategoryWatch.i18n.php';
 
 class CategoryWatch {
 
@@ -35,7 +38,7 @@ class CategoryWatch {
 		$wgHooks['ArticleSave'][] = $this;
 		$wgHooks['ArticleSaveComplete'][] = $this;
 	}
-	
+
 	/**
 	 * Get a list of categories before article updated
 	 */
@@ -63,11 +66,11 @@ class CategoryWatch {
 		$res  = $dbr->select($cl, 'cl_to', "cl_from = $id", __METHOD__, array('ORDER BY' => 'cl_sortkey'));
 		while ($row = $dbr->fetchRow($res)) $this->after[] = $row[0];
 		$dbr->freeResult($res);
-		
+
 		# Get list of added and removed cats
 		$add = array_diff($this->after, $this->before);
 		$sub = array_diff($this->before, $this->after);
-		
+
 		# Notify watchers of each cat about the addition or removal of this article
 		if (count($add) > 0 || count($sub) > 0) {
 			$page = $article->getTitle()->getText();
@@ -98,7 +101,7 @@ class CategoryWatch {
 				}
 			}
 		}
-		
+
 		return true;
 	}
 
@@ -160,21 +163,10 @@ class CategoryWatch {
 }
 
 function wfSetupCategoryWatch() {
-	global $wgCategoryWatch, $wgLanguageCode, $wgMessageCache;
+	global $wgCategoryWatch;
 
 	# Instantiate the CategoryWatch singleton now that the environment is prepared
 	$wgCategoryWatch = new CategoryWatch();
 
-	# Add messages
-	if ($wgLanguageCode == 'en') {
-		$wgMessageCache->addMessages(array(
-			'categorywatch-emailbody'    => "Hi $1, you have received this message because you are watching the \"$2\" category. This message is to notify you that at $3 user $4 $5.",
-			'categorywatch-emailsubject' => "Activity involving watched category \"$1\"",
-			'categorywatch-catmovein'    => "moved $1 into category $2 from $3",
-			'categorywatch-catmoveout'   => "moved $1 out of category $2 into $3",
-			'categorywatch-catadd'       => "added $1 to category $2",
-			'categorywatch-catsub'       => "removed $1 from category $2"
-		));
-	}
+	wfLoadExtensionMessages( 'CategoryWatch' );
 }
-
