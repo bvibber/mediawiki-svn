@@ -5,11 +5,11 @@
  *
  * See http://www.mediawiki.org/Extension:CategoryWatch for installation and usage details
  * See http://www.organicdesign.co.nz/Extension_talk:CategoryWatch for development notes and disucssion
- * {{Category:Extensions|CategoryWatch}}{{php}}
+ *
  * @package MediaWiki
  * @subpackage Extensions
  * @author Aran Dunkley [http://www.organicdesign.co.nz/nad User:Nad]
- * @copyright © 2007 Aran Dunkley
+ * @copyright © 2008 Aran Dunkley
  * @licence GNU General Public Licence 2.0 or later
  */
 
