@@ -103,7 +103,7 @@ class ApiOpenSearchXml extends ApiOpenSearch {
 			$item['Description']['*'] = $extract;
 			$item['Url']['*'] = $title->getFullUrl();
 			if( $image ) {
-				$thumb = $image->getThumbnail( 50, 50 );
+				$thumb = $image->getThumbnail( 50, 50, false );
 				$item['Image'] = array(
 					'source' => wfExpandUrl( $thumb->getUrl() ),
 					//alt
