@@ -81,7 +81,7 @@ function wfWatchersExtensionAfterToolbox( &$tpl ) { # Checked for HTML and MySQL
  * The special page
 */
 function wfWatchersExtension() {
-	global $IP, $wgMessageCache;
+	global $IP;
 	wfWatchersAddCache();
 
 	require_once $IP.'/includes/SpecialPage.php';

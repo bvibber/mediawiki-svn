@@ -66,7 +66,6 @@ class SpecialForm extends SpecialPage {
 
 	function loadMessages() {
 		static $messagesLoaded = false;
-		global $wgMessageCache;
 
 		if ( $messagesLoaded ) return true;
 		wfLoadExtensionMessages('SpecialForm');

@@ -40,7 +40,7 @@ function efAbsenteeLandlord_Setup() {
 		$groups = $wgUser->getGroups();
 
 		if( !in_array( 'sysop', $groups ) ) {
-			global $wgReadOnly, $wgMessageCache;
+			global $wgReadOnly;
 
 			#Add Messages (don't need them unless we get here)
 			wfLoadExtensionMessages( 'AbsenteeLandlord' );

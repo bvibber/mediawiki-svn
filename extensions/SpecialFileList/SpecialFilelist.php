@@ -26,7 +26,7 @@ require_once( 'ImageGallery.php' );
 
 function wfSpecialFilelist () {
 	wfLoadExtensionMessages( 'Filelist' );
-	global $IP, $wgMessageCache;
+	global $IP;
 	require_once "$IP/includes/SpecialPage.php";
 	class SpecialFilelist extends SpecialPage {
 

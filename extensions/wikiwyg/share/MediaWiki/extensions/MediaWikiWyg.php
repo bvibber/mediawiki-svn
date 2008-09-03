@@ -52,7 +52,7 @@ function registerWikiwygExtension() {
     global $wgOut, $wgSkin, $jsdir, $cssdir, $wgScriptPath;
     global $wgWikiwygPath, $wgUser, $wgTitle;
     global $wgServer, $wgWikiwygJsPath, $wgWikiwygCssPath, $wgWikiwygImagePath;
-    global $wgRequest, $wgWysiwygEnabled, $wgMessageCache;
+    global $wgRequest, $wgWysiwygEnabled;
     global $wgLang, $wgContLang, $wgEnableAjaxLogin;
 
 	wfLoadExtensionMessages('Wikiwyg');

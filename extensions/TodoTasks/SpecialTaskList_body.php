@@ -2,7 +2,6 @@
 
 function TaskListLoadMessages() {
     static $messagesLoaded = false;
-    global $wgMessageCache;
     if ($messagesLoaded) return;
         $messagesLoaded = true;
 	wfLoadExtensionMessages('TaskList');    
