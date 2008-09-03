@@ -70,7 +70,6 @@ class CategoryWatch {
 		
 		# Notify watchers of each cat about the addition or removal of this article
 		if (count($add) > 0 || count($sub) > 0) {
-			$enotif = new EmailNotification(); # ensure UserMailer class is autoloaded
 			$page = $article->getTitle()->getText();
 			if (count($add) == 1 && count($sub) == 1) {
 				$add = array_shift($add);
@@ -130,13 +129,24 @@ class CategoryWatch {
 					$editor->getName(),
 					$message
 				);
-				UserMailer::send(
-					$to,
-					$from,
-					wfMsg('categorywatch-emailsubject', $page),
-					$body,
-					$replyto
-				);
+				if (function_exists('userMailer')) {
+					userMailer(
+						$to,
+						$from,
+						wfMsg('categorywatch-emailsubject', $page),
+						$body,
+						$replyto
+					);
+				}
+				else {
+					UserMailer::send(
+						$to,
+						$from,
+						wfMsg('categorywatch-emailsubject', $page),
+						$body,
+						$replyto
+					);
+				}
 			}
 		}
 
