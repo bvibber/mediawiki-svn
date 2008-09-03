@@ -15,7 +15,7 @@
 
 if (!defined('MEDIAWIKI')) die('Not an entry point.');
 
-define('CATEGORYWATCH_VERSION', '0.1.0, 2008-09-03');
+define('CATEGORYWATCH_VERSION', '0.1.1, 2008-09-04');
 
 $wgCategoryWatchNotifyEditor = false;
 
@@ -69,31 +69,34 @@ class CategoryWatch {
 		$sub = array_diff($this->before, $this->after);
 		
 		# Notify watchers of each cat about the addition or removal of this article
-		$page = $article->getTitle()->getText();
-		if (count($add) == 1 && count($sub) == 1) {
-			$add = array_shift($add);
-			$sub = array_shift($sub);
+		if (count($add) > 0 || count($sub) > 0) {
+			$enotif = new EmailNotification(); # ensure UserMailer class is autoloaded
+			$page = $article->getTitle()->getText();
+			if (count($add) == 1 && count($sub) == 1) {
+				$add = array_shift($add);
+				$sub = array_shift($sub);
 
-			$title   = Title::newFromText($add, NS_CATEGORY);
-			$message = wfMsg('categorywatch-catmovein', $page, $add, $sub);
-			$this->notifyWatchers($title, $user, $message);
+				$title   = Title::newFromText($add, NS_CATEGORY);
+				$message = wfMsg('categorywatch-catmovein', $page, $add, $sub);
+				$this->notifyWatchers($title, $user, $message);
 
-			$title   = Title::newFromText($sub, NS_CATEGORY);
-			$message = wfMsg('categorywatch-catmoveout', $page, $sub, $add);
-			$this->notifyWatchers($title, $user, $message);
-		}
-		else {
-
-			foreach ($add as $cat) {
-				$title   = Title::newFromText($cat, NS_CATEGORY);
-				$message = wfMsg('categorywatch-catadd', $page, $cat);
+				$title   = Title::newFromText($sub, NS_CATEGORY);
+				$message = wfMsg('categorywatch-catmoveout', $page, $sub, $add);
 				$this->notifyWatchers($title, $user, $message);
 			}
+			else {
 
-			foreach ($sub as $cat) {
-				$title   = Title::newFromText($cat, NS_CATEGORY);
-				$message = wfMsg('categorywatch-catsub', $page, $cat);
-				$this->notifyWatchers($title, $user, $message);
+				foreach ($add as $cat) {
+					$title   = Title::newFromText($cat, NS_CATEGORY);
+					$message = wfMsg('categorywatch-catadd', $page, $cat);
+					$this->notifyWatchers($title, $user, $message);
+				}
+
+				foreach ($sub as $cat) {
+					$title   = Title::newFromText($cat, NS_CATEGORY);
+					$message = wfMsg('categorywatch-catsub', $page, $cat);
+					$this->notifyWatchers($title, $user, $message);
+				}
 			}
 		}
 		
