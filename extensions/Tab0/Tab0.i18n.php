@@ -95,6 +95,13 @@ $messages['it'] = array(
 	'tab0-desc' => 'Aggiunge il tab "0" che linka alla modifica della prima sezione della pagina',
 );
 
+/** Khmer (ភាសាខ្មែរ)
+ * @author Lovekhmer
+ */
+$messages['km'] = array(
+	'tab0-desc' => 'ដាក់បន្ថែមថេប "0" តភ្ជាប់ទៅទំព័រដើម្បីកែប្រែផ្នែកដំបូងគេនៃទំព័រ',
+);
+
 /** Ripoarisch (Ripoarisch)
  * @author Purodha
  */

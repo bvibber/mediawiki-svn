@@ -506,6 +506,17 @@ $messages['tg-cyrl'] = array(
 	'findspam-notextfound' => 'Ҳеҷ ҳиссагузорие ёфт нашуд',
 );
 
+/** Thai (ไทย)
+ * @author Octahedron80
+ */
+$messages['th'] = array(
+	'findspam' => 'ค้นหาสแปม',
+	'findspam-desc' => 'เพิ่ม[[Special:FindSpam|หน้าพิเศษ]]ที่อนุญาตให้ค้นหาสแปมซึ่งเพิ่มเข้ามาเมื่อเร็วๆ นี้',
+	'findspam-ip' => 'หมายเลขไอพี:',
+	'findspam-ok' => 'ตกลง',
+	'findspam-notextfound' => 'ไม่พบเรื่องที่เขียน',
+);
+
 /** Turkish (Türkçe)
  * @author Karduelis
  */

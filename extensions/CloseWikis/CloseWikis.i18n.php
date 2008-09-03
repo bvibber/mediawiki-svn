@@ -100,6 +100,116 @@ $messages['cs'] = array(
 	'right-editclosedwikis' => 'Editování uzavřených wiki',
 );
 
+/** German (Deutsch)
+ * @author ChrisiPK
+ */
+$messages['de'] = array(
+	'closewikis-desc' => 'Ermöglicht das Schließen einzelner Wikis in einer Wikifarm',
+	'closewikis-closed-default' => 'Dieses Wiki ist geschlossen.',
+	'closewikis-page' => 'Wiki schließen.',
+	'closewikis-page-close' => 'Wiki schließen',
+	'closewikis-page-close-wiki' => 'Wiki:',
+	'closewikis-page-close-dreason' => 'Angezeigter Grund:',
+	'closewikis-page-close-reason' => 'Grund, der ins Logbuch eingetragen wird:',
+	'closewikis-page-close-submit' => 'Schließen',
+	'closewikis-page-close-success' => 'Wiki erfolgreich geschlossen.',
+	'closewikis-page-reopen' => 'Wiki wieder öffnen',
+	'closewikis-page-reopen-wiki' => 'Wiki:',
+	'closewikis-page-reopen-reason' => 'Grund:',
+	'closewikis-page-reopen-submit' => 'Wieder öffnen',
+	'closewikis-page-reopen-success' => 'Wiki erfolgreich wieder geöffnet',
+	'closewikis-page-err-nowiki' => 'Ungültiges Wiki angegeben',
+	'closewikis-page-err-closed' => 'Wiki ist bereits geschlossen',
+	'closewikis-page-err-opened' => 'Wiki ist nicht geschlossen',
+	'closewikis-log' => 'Wikischließungs-Logbuch',
+	'closewikis-log-header' => 'Dieses Logbuch zeigt alle Schließungen und Wiederöffnungen von Wikis durch Stewards an.',
+	'closewikis-log-close' => 'schloss $2',
+	'closewikis-log-reopen' => 'öffnete $2 wieder',
+	'right-editclosedwikis' => 'Geschlossene Wikis bearbeiten',
+);
+
+/** French (Français)
+ * @author Grondin
+ */
+$messages['fr'] = array(
+	'closewikis-desc' => 'Permet de clôturer les sites wiki dans ce gestionnaire de wiki',
+	'closewikis-closed-default' => 'Ce wiki est clôturé',
+	'closewikis-page' => 'Clôturer le wiki',
+	'closewikis-page-close' => 'Clôturer le wiki',
+	'closewikis-page-close-wiki' => 'Wiki :',
+	'closewikis-page-close-dreason' => 'Motif (affiché) :',
+	'closewikis-page-close-reason' => 'Motif (connecté) :',
+	'closewikis-page-close-submit' => 'Clôturer',
+	'closewikis-page-close-success' => 'Wiki clôturé avec succès',
+	'closewikis-page-reopen' => 'Réouvrir le wiki',
+	'closewikis-page-reopen-wiki' => 'Wiki :',
+	'closewikis-page-reopen-reason' => 'Motif :',
+	'closewikis-page-reopen-submit' => 'Réouvrir',
+	'closewikis-page-reopen-success' => 'Wiki réouvert avec succès',
+	'closewikis-page-err-nowiki' => 'Le wiki indiqué est incorrect',
+	'closewikis-page-err-closed' => 'Ce wiki est déjà clôturé',
+	'closewikis-page-err-opened' => 'Wiki non clôturé',
+	'closewikis-log' => 'Journal de clôture des wiki',
+	'closewikis-log-header' => 'Voici un journal de tous les fermeture et des réouvertures faits par les stewards',
+	'closewikis-log-close' => 'a clôturé $2',
+	'closewikis-log-reopen' => 'a réouvert $2',
+	'right-editclosedwikis' => 'Modifier les wikis clôturés',
+);
+
+/** Galician (Galego)
+ * @author Toliño
+ */
+$messages['gl'] = array(
+	'closewikis-closed-default' => 'Este wiki está pechado',
+	'closewikis-page' => 'Pechar o wiki',
+	'closewikis-page-close' => 'Pechar o wiki',
+	'closewikis-page-close-wiki' => 'Wiki:',
+	'closewikis-page-close-dreason' => 'Motivo (amosado):',
+	'closewikis-page-close-reason' => 'Motivo (rexistro):',
+	'closewikis-page-close-submit' => 'Pechar',
+	'closewikis-page-close-success' => 'O wiki foi pechado con éxito',
+	'closewikis-page-reopen' => 'Volver abrir o wiki',
+	'closewikis-page-reopen-wiki' => 'Wiki:',
+	'closewikis-page-reopen-reason' => 'Motivo:',
+	'closewikis-page-reopen-submit' => 'Volver abrir',
+	'closewikis-page-reopen-success' => 'O wiki foi aberto de novo con éxito',
+	'closewikis-page-err-nowiki' => 'Especificou un wiki inválido',
+	'closewikis-page-err-closed' => 'O wiki xa está pechado',
+	'closewikis-page-err-opened' => 'O wiki non está pechado',
+	'closewikis-log-close' => 'pechou "$2"',
+	'closewikis-log-reopen' => 'volveu abrir "$2"',
+	'right-editclosedwikis' => 'Editar wikis pechados',
+);
+
+/** Interlingua (Interlingua)
+ * @author Malafaya
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'closewikis-desc' => 'Permitte clauder sitos wiki in fermas de wikis.',
+	'closewikis-closed-default' => 'Iste wiki es claudite',
+	'closewikis-page' => 'Clauder wiki',
+	'closewikis-page-close' => 'Clauder wiki',
+	'closewikis-page-close-wiki' => 'Wiki:',
+	'closewikis-page-close-dreason' => 'Motivo (monstrate):',
+	'closewikis-page-close-reason' => 'Motivo (registrate):',
+	'closewikis-page-close-submit' => 'Clauder',
+	'closewikis-page-close-success' => 'Wiki claudite con successo',
+	'closewikis-page-reopen' => 'Reaperir wiki',
+	'closewikis-page-reopen-wiki' => 'Wiki:',
+	'closewikis-page-reopen-reason' => 'Motivo:',
+	'closewikis-page-reopen-submit' => 'Reaperir',
+	'closewikis-page-reopen-success' => 'Wiki reaperite con successo',
+	'closewikis-page-err-nowiki' => 'Le wiki specificate es invalide',
+	'closewikis-page-err-closed' => 'Iste wiki es ja claudite',
+	'closewikis-page-err-opened' => 'Le wiki non es claudite',
+	'closewikis-log' => 'Registro de clausura de wikis',
+	'closewikis-log-header' => 'Ecce un registro de tote le clausuras e reaperturas de wikis facite per stewards',
+	'closewikis-log-close' => 'claudeva $2',
+	'closewikis-log-reopen' => 'reaperiva $2',
+	'right-editclosedwikis' => 'Modificar wikis claudite',
+);
+
 /** Italian (Italiano)
  * @author Pietrodn
  */

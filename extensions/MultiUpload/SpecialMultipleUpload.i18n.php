@@ -99,6 +99,27 @@ $messages['ch'] = array(
 	'multipleupload' => "Na'kåtga hulu' atkibu",
 );
 
+/** Czech (Česky)
+ * @author Li-sung
+ * @author Matěj Grabovský
+ */
+$messages['cs'] = array(
+	'multipleupload' => 'Nahrát soubory',
+	'multipleupload-desc' => 'Umožňuje uživatelům [[Special:MultipleUpload|nahrávat více souborů najednou]]',
+	'multipleupload-ignoreallwarnings' => "Ignorovat '''všechna upozornění''' a bez ohledu na ně soubor uložit.",
+	'multipleupload-saveallfiles' => 'Uložit všechny soubory',
+	'multipleupload-page' => '{{ns:project}}:Pravidla mazání souborů',
+	'multipleupload-text' => "Zde můžete náhrat více souborů.
+
+Tlačítkem „Procházet“ vyberte každý soubor, který chcete nahrát. Můžete nahrát od 1 do $1 souborů naráz.
+
+Můžete zadat volitelný '''cílový název souboru''' a poskytnout '''shrnutí''' popisující váš soubor.
+
+Nevhodné soubory budou okmažitě smazány, vizte [[{{MediaWiki:Multipleupload-page}}|pravidla mazání souborů]].",
+	'multiupload-fileuploaded' => 'Soubor byl nahrán.',
+	'multiupload-toolbox' => 'Nahrát více souborů',
+);
+
 /** German (Deutsch)
  * @author Purodha
  * @author Raimond Spekking
@@ -150,6 +171,7 @@ $messages['eo'] = array(
 	'multipleupload-desc' => 'Permesas al uzanto [[Special:MultipleUpload|alŝuti plurajn dosierojn samtempe]]',
 	'multipleupload-ignoreallwarnings' => "Ignori '''ĉiuj avertoj''' kaj konservi la dosierojn malgraŭ tioj.",
 	'multipleupload-saveallfiles' => 'Konservu ĉiujn dosierojn',
+	'multipleupload-addresswarnings' => 'Bonvolu trakti iujn avertojn antaŭ realŝutante dosierojn.',
 	'multipleupload-page' => '{{ns:project}}:Regularo pri dosiera forigado',
 	'multipleupload-text' => "Alŝutu plurajn dosierojn ĉi tie.
 
@@ -508,7 +530,7 @@ $messages['nl'] = array(
 	'multipleupload-desc' => 'Laat gebruikers toe om meerdere bestanden [[Special:MultipleUpload|in één keer te uploaden]]',
 	'multipleupload-ignoreallwarnings' => "'''Alle waarschuwingen''' negeren en de bestanden sowieso uploaden.",
 	'multipleupload-saveallfiles' => 'Alle bestanden opslaan',
-	'multipleupload-addresswarnings' => 'Los alstublieft de waarschuwingen op voordat u het opnieuw probeert.',
+	'multipleupload-addresswarnings' => 'Los de waarschuwingen op voordat u het opnieuw probeert.',
 	'multipleupload-page' => '{{ns:project}}:Verwijderingsbeleid van bestanden',
 	'multipleupload-text' => "Hier kunt u verschillende bestanden uploaden.
 

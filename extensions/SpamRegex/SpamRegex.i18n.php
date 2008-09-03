@@ -738,3 +738,10 @@ $messages['vi'] = array(
 	'spamregex-already-blocked' => '“$1” đã bị cấm rồi',
 );
 
+/** Volapük (Volapük)
+ * @author Malafaya
+ */
+$messages['vo'] = array(
+	'spamregex-text' => '(Vödem)',
+);
+

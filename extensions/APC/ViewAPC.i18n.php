@@ -387,6 +387,28 @@ $messages['bg'] = array(
 По-нова версия ($2) е налична на адрес http://pecl.php.net/package/APC/$2',
 );
 
+/** Catalan (Català)
+ * @author Jordi Roqué
+ */
+$messages['ca'] = array(
+	'viewapc-clear-confirm' => 'Voleu esborrar la memòria cau?',
+	'viewapc-clear-user-cache' => "Esborrar la memòria clau de l'usuari",
+	'viewapc-mode-stats' => "Estadístiques de l'ordinador central",
+	'viewapc-rps' => '$1 peticions per segon',
+	'viewapc-info-runtime' => "Informació de temps d'execució",
+	'viewapc-info-memory' => "Diagrames d'estat de l'ordinador central",
+	'viewapc-fragmentation-none' => 'Fragmentació: no fragmentat',
+	'viewapc-display-mem_size' => 'Mida',
+	'viewapc-display-too-big' => "''El contingut és massa gran per a mostrar-lo''",
+	'viewapc-ls-options-legend' => 'Opcions',
+	'viewapc-ls-header-size' => 'Mida',
+	'viewapc-ls-header-accessed' => 'Darrer accés',
+	'viewapc-ls-header-modified' => 'Darrera modificació',
+	'viewapc-ls-sort-size' => 'Mida',
+	'viewapc-ls-nodata' => "''No hi ha dades coincidents''",
+	'viewapc-version-info' => 'Informació de la versió',
+);
+
 /** Czech (Česky)
  * @author Li-sung
  * @author Matěj Grabovský
@@ -1485,8 +1507,11 @@ $messages['io'] = array(
  */
 $messages['it'] = array(
 	'viewapc-display-value' => 'Valore',
+	'viewapc-display-info' => 'Nome',
 	'viewapc-ls-options-legend' => 'Opzioni',
 	'viewapc-ls-submit' => 'Vai!',
+	'viewapc-ls-header-name' => 'Nome',
+	'viewapc-ls-sort-name' => 'Nome',
 );
 
 /** Javanese (Basa Jawa)
@@ -1802,6 +1827,13 @@ Eng méi nei Versioun $2 ass op http://pecl.php.net/package/APC/$2 disponibel.',
 	'viewapc-filecache-cleared' => "'''''Cache vun de Fichieren eidel gemaach.'''''",
 );
 
+/** Lingua Franca Nova (Lingua Franca Nova)
+ * @author Malafaya
+ */
+$messages['lfn'] = array(
+	'viewapc-ls-sort-name' => 'Nom',
+);
+
 /** Limburgish (Limburgs)
  * @author Ooswesthoesbes
  */
@@ -2008,6 +2040,25 @@ $messages['mt'] = array(
 	'viewapc-display-filename' => 'Isem il-fajl',
 	'viewapc-display-info' => 'Isem',
 	'viewapc-display-type' => 'Mudell',
+);
+
+/** Erzya (Эрзянь)
+ * @author Botuzhaleny-sodamo
+ */
+$messages['myv'] = array(
+	'viewapc-display-info' => 'Лемезэ',
+	'viewapc-display-deletion_time' => 'Нардазь',
+	'viewapc-display-mem_size' => 'Покшолмазо',
+	'viewapc-ls-header-name' => 'Лемезэ',
+	'viewapc-ls-header-size' => 'Покшолмазо',
+	'viewapc-ls-header-deleted' => 'Нардазь',
+	'viewapc-ls-scope-deleted' => 'Нардазь',
+	'viewapc-ls-scope-both' => 'Кавтонест',
+	'viewapc-ls-sort-size' => 'Покшолмазо',
+	'viewapc-ls-sort-name' => 'Лемезэ',
+	'viewapc-ls-sort-deleted' => 'Нардазь',
+	'viewapc-ls-limit-none' => 'Весе',
+	'viewapc-version-changelog' => 'Полавтнематнеде журнал',
 );
 
 /** Nahuatl (Nāhuatl)
@@ -3089,6 +3140,13 @@ $messages['te'] = array(
  */
 $messages['tg-cyrl'] = array(
 	'viewapc-display-value' => 'Қимат',
+);
+
+/** Thai (ไทย)
+ * @author Octahedron80
+ */
+$messages['th'] = array(
+	'viewapc-ls-limit-none' => 'ทั้งหมด',
 );
 
 /** Ukrainian (Українська)

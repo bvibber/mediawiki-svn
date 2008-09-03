@@ -2461,9 +2461,9 @@ Witaj k štwórtej wólbje do kuratorija Wikimedija. Wola so třo wužiwarjo, zo
 <li><a href="http://meta.wikimedia.org/wiki/Board_elections/2008/Candidates/hsb" class="external">Kandidaća</a></li></ul>
 </blockquote>',
 	'boardvote_intro_change' => '<p>Sy hižo wothłosował. Ale móžeš swoje wothłosowanje ze slědowacym formularom změnić. Markěruj prošu kašćiki pódla kandidatow, za kotrychž hłosuješ.</p>',
-	'boardvote_entered' => 'Dźakujemy so ći, twój hłós bu zregistrowany.
+	'boardvote_entered' => 'Dźakujemy so, twój hłós bu zregistrowany.
 
-Jeli chceš, móžeš slědowace podrobnosce zapisować. Twoje zregistrowane wothłosowanje je:
+Jeli chceš, móžeš slědowace podrobnosce zregistrować. Twoje zregistrowane wothłosowanje je:
 
 <pre>$1</pre>
 
@@ -2471,7 +2471,7 @@ Bu ze zjawnym klučom wólbnych administratorow zaklučowane:
 
 <pre>$2</pre>
 
-Slěduje nastata zaklučowana wersija. Budźe so na [[Special:Boardvote/dump]] zjawnje zwobraznjeć.
+Slěduje nastata zaklučowana wersija. Budźe so na [[Special:Boardvote/dump|zjawnje zwobraznjeć]].
 
 <pre>$3</pre>
 
@@ -3660,7 +3660,10 @@ $messages['lez'] = array(
  */
 $messages['lfn'] = array(
 	'boardvote_user' => 'Usor',
+	'boardvote_dumplink' => 'Clica asi',
 	'boardvote_submit' => 'Oce',
+	'boardvote_edits_many' => 'multe',
+	'boardvote_welcome' => "Bonveni, '''$1'''!",
 );
 
 /** Limburgish (Limburgs)
@@ -4093,10 +4096,11 @@ Sebuah amaran keselamatan mengenai sijil yang tidak ditandatangani mungkin akan 
 
 /** Erzya (Эрзянь)
  * @author Amdf
+ * @author Botuzhaleny-sodamo
  */
 $messages['myv'] = array(
 	'boardvote_time' => 'Шка',
-	'boardvote_user' => 'Совиця',
+	'boardvote_user' => 'Теиця',
 	'boardvote_days' => 'Чить',
 	'boardvote_ip' => 'IP',
 	'boardvote_submit' => 'ОК',
@@ -4175,7 +4179,7 @@ We kiezen één persoon die de gebruikersgemeenschap vertegenwoordigt in de vers
 Deze persoon bepaalt mede de toekomstige richting van Wikimedia-projecten, individueel en als groep, en behartigt <em>uw</em> belangen en zorgen bij de Board of Trustees.
 Deze persoon beslist ook mede over hoe inkomsten gemaakt kunnen worden en waar het opgehaalde geld aan wordt besteed.</p>
 
-<p>Lees alstublieft de kandidaatstelling en de antwoorden op vragen zorgvuldig voordat u stemt.
+<p>Lees de kandidaatstelling en de antwoorden op vragen zorgvuldig voordat u stemt.
 Iedere kandidaat is een gewaardeerde gebruiker die aanzienlijke hoeveelheden tijd en moeite heeft besteed aan het bouwen van uitnodigende omgevingen die toegewijd zijn aan het nastreven en vrij verspreiden van menselijke kennis.</p>
 
 <p>Geef de kandidaten een aantal punten in het daarvoor bestemde vakje afhankelijk van uw voorkeur (1 = favoriete kandidaat, 2 = tweede keus, ...).
@@ -4191,7 +4195,7 @@ Voor kandidaten die u geen punten geeft wordt aangenomen dat u voor die groep ge
 <li><a href="http://en.wikipedia.org/wiki/Schulze_method" class="external">Schulze-methode</a></li></ul>',
 	'boardvote_intro_change' => '<p>U hebt al gestemd.
 U kunt uw stem wijzigen via het onderstaande formulier.
-Vink alstublieft de vakjes aan naast iedere kandidaat die u steunt aan.</p>',
+Vink de vakjes aan naast iedere kandidaat die u steunt.</p>',
 	'boardvote_entered' => 'Dank u. Uw stem is verwerkt.
 
 Als u wilt kunt u de volgende gegevens bewaren. Uw stem:
@@ -4237,7 +4241,8 @@ Er kan gestemd worden tot 22 juni',
 	'group-boardvote' => 'Boardvote-beheerders',
 	'group-boardvote-member' => 'Boardvote-beheerder',
 	'grouppage-boardvote' => '{{ns:project}}:Boardvote-beheerder',
-	'boardvote_blocked' => 'Sorry, u bent geblokkeerd op uw geregistreerde wiki. Geblokkeerde gebruikers mogen niet stemmen.',
+	'boardvote_blocked' => 'U bent geblokkeerd op uw geregistreerde wiki.
+Geblokkeerde gebruikers mogen niet stemmen.',
 	'boardvote_bot' => 'Deze gebruiker staat geregistreerd als bot. Bots mogen geen stem uitbrengen.',
 	'boardvote_welcome' => "Welkom, '''$1'''!",
 	'go_to_board_vote' => 'Wikimedia Bestuursverkiezing 2008',
@@ -5695,10 +5700,12 @@ $messages['tg-cyrl'] = array(
 );
 
 /** Thai (ไทย)
+ * @author Octahedron80
  * @author Passawuth
  */
 $messages['th'] = array(
 	'boardvote_user' => 'ผู้ใช้',
+	'boardvote_submit' => 'ตกลง',
 );
 
 /** Tonga (faka-Tonga) */

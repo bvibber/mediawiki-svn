@@ -30,6 +30,13 @@ $messages['fr'] = array(
 	'opensearchxml-desc' => 'Interface JSON pour [http://www.opensearch.org OpenSearch] avec des extraits du texte',
 );
 
+/** Galician (Galego)
+ * @author Toliño
+ */
+$messages['gl'] = array(
+	'opensearchxml-desc' => 'A interface que [http://www.opensearch.org OpenSearch] JSON proporciona para extractar textos',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

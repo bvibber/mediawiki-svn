@@ -288,3 +288,10 @@ $messages['vi'] = array(
 	'piwik-browsers' => 'Trình duyệt',
 );
 
+/** Volapük (Volapük)
+ * @author Malafaya
+ */
+$messages['vo'] = array(
+	'piwik-countries' => 'Läns',
+);
+

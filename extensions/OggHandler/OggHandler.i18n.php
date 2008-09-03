@@ -187,12 +187,25 @@ $messages['ar'] = array(
  * @author Ramsis II
  */
 $messages['arz'] = array(
+	'ogg-desc' => 'متحكم لملفات أو جى جى ثيورا و فوربيس، مع بلاير جافاسكريبت',
+	'ogg-short-audio' => 'Ogg $1 ملف صوت، $2',
+	'ogg-short-video' => 'Ogg $1 ملف فيديو, $2',
 	'ogg-short-general' => 'Ogg $1 ملف ميديا، $2',
+	'ogg-long-audio' => '(Ogg $1 ملف صوت، الطول $2، $3)',
+	'ogg-long-video' => '(Ogg $1 ملف فيديو، الطول $2، $4×$5 بكسل، $3)',
+	'ogg-long-multiplexed' => '(ملف Ogg مالتى بليكسد أوديو/فيديو، $1، الطول $2، $4×$5 بكسل، $3 إجمالي)',
+	'ogg-long-general' => '(ملف ميديا Ogg، الطول $2، $3)',
+	'ogg-long-error' => '(ملف ogg مش صحيح: $1)',
 	'ogg-play' => 'شغل',
 	'ogg-pause' => ' توقيف مؤقت',
 	'ogg-stop' => ' توقيف',
 	'ogg-play-video' => 'شغل الفيديو',
 	'ogg-play-sound' => 'شغل الصوت',
+	'ogg-no-player' => 'متاسفين الظاهر أنه ماعندكش برنامج عرض مدعوم.
+لو سمحت تنزل < a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">الجافا</a>.',
+	'ogg-no-xiphqt' => 'الظاهر انه ماعندكش مكون الـ XiphQT لكويك تايم.
+كويك تايم مش ممكن يعرض ملفات Ogg  من غير المكون دا.
+لو سمحت <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">تنزل XiphQT</a> أو تختار برنامج تاني.',
 	'ogg-player-videoElement' => 'دعم البراوزر الاصلي',
 	'ogg-player-oggPlugin' => 'اضافة براوزر',
 	'ogg-player-cortado' => 'كورتادو (جافا)',
@@ -1625,6 +1638,18 @@ $messages['ms'] = array(
 	'ogg-desc-link' => 'Perihal fail ini',
 );
 
+/** Erzya (Эрзянь)
+ * @author Botuzhaleny-sodamo
+ */
+$messages['myv'] = array(
+	'ogg-play' => 'Седык',
+	'ogg-pause' => 'Аштевтик',
+	'ogg-stop' => 'Лоткавтык',
+	'ogg-play-video' => 'Нолдык видеонть',
+	'ogg-play-sound' => 'Нолдык вайгеленть',
+	'ogg-desc-link' => 'Те файладонть',
+);
+
 /** Low German (Plattdüütsch)
  * @author Slomox
  */
@@ -1676,8 +1701,11 @@ $messages['nl'] = array(
 	'ogg-stop' => 'Stop',
 	'ogg-play-video' => 'Video afspelen',
 	'ogg-play-sound' => 'Geluid afspelen',
-	'ogg-no-player' => 'Sorry, uw systeem heeft geen van de ondersteunde mediaspelers. Installeer alstublieft <a href="http://www.java.com/nl/download/manual.jsp">Java</a>.',
-	'ogg-no-xiphqt' => 'Het lijkt erop dat u de component XiphQT voor QuickTime niet hebt. QuickTime kan Ogg-bestanden niet afspelen zonder deze component. Download <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">XiphQT</a> alstublieft of kies een andere speler.',
+	'ogg-no-player' => 'Uw systeem heeft geen van de ondersteunde mediaspelers.
+Installeer <a href="http://www.java.com/nl/download/manual.jsp">Java</a>.',
+	'ogg-no-xiphqt' => 'Het lijkt erop dat u de component XiphQT voor QuickTime niet hebt.
+QuickTime kan Ogg-bestanden niet afspelen zonder deze component.
+Download <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">XiphQT</a> of kies een andere speler.',
 	'ogg-player-videoElement' => 'Standaardondersteuning in browser',
 	'ogg-player-oggPlugin' => 'Browserplugin',
 	'ogg-player-thumbnail' => 'Alleen stilstaand beeld',

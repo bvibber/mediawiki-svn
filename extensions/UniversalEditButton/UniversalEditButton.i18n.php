@@ -194,6 +194,13 @@ $messages['pl'] = array(
 	'universaleditbutton-desc' => 'Dodaje nagłówek HTML <code>&lt;link&gt;</code> umożliwiający działanie rozszerzenia przeglądarki „Universal Edit Button”',
 );
 
+/** Portuguese (Português)
+ * @author Malafaya
+ */
+$messages['pt'] = array(
+	'universaleditbutton-desc' => 'Adiciona o cabeçalho HTML <code>&lt;link&gt;</code> para suportar a extensão de navegador "Universal Edit Button"',
+);
+
 /** Russian (Русский)
  * @author Александр Сигачёв
  */

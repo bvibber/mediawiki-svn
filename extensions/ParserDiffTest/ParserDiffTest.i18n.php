@@ -810,6 +810,13 @@ $messages['ms'] = array(
 	'pdt_comparing_page' => 'Membandingkan output penghurai daripada [[$1]]',
 );
 
+/** Erzya (Эрзянь)
+ * @author Botuzhaleny-sodamo
+ */
+$messages['myv'] = array(
+	'pdtest_diff' => 'Мейсэ явовить',
+);
+
 /** Nahuatl (Nāhuatl)
  * @author Fluence
  */
@@ -1151,6 +1158,13 @@ $messages['tg-cyrl'] = array(
 	'pdtest_diff' => 'Фарқиятҳо',
 	'pdtest_side_by_side' => 'Муқоисаи хуруҷӣ',
 	'pdt_comparing_page' => 'Муқоисаи хуруҷи таҳлилгар аз [[$1]]',
+);
+
+/** Thai (ไทย)
+ * @author Octahedron80
+ */
+$messages['th'] = array(
+	'pdtest_ok' => 'ตกลง',
 );
 
 /** Turkish (Türkçe)

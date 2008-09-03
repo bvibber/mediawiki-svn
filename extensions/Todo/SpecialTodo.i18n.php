@@ -490,6 +490,13 @@ $messages['mt'] = array(
 	'todo-list-cancel' => 'Annulla',
 );
 
+/** Erzya (Эрзянь)
+ * @author Botuzhaleny-sodamo
+ */
+$messages['myv'] = array(
+	'todo-tab' => 'мезе теемс',
+);
+
 /** Nahuatl (Nāhuatl)
  * @author Fluence
  */

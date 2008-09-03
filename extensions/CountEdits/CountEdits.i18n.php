@@ -1056,6 +1056,13 @@ $messages['tg-cyrl'] = array(
 	'countedits-resultheader' => 'Натоиҷ барои $1',
 );
 
+/** Thai (ไทย)
+ * @author Octahedron80
+ */
+$messages['th'] = array(
+	'countedits-ok' => 'ตกลง',
+);
+
 /** Turkish (Türkçe)
  * @author Karduelis
  */

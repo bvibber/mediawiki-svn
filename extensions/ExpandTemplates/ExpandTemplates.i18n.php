@@ -109,16 +109,24 @@ $messages['ar'] = array(
 
 /** Egyptian Spoken Arabic (مصرى)
  * @author Ghaly
+ * @author Meno25
  * @author Ramsis II
  */
 $messages['arz'] = array(
 	'expandtemplates' => 'تكبير القوالب',
-	'expandtemplates-desc' => '[[Special:ExpandTemplates|بيمدد القوالب, دوال المحلل و المتغيرات]] لعرض نص الويكي المتمدد و بروفة الصفحة الناتجة',
+	'expandtemplates-desc' => '[[Special:ExpandTemplates|بيمدد القوالب, دوال المحلل و المتغيرات]] لعرض نص الويكى المتمدد و بروفة الصفحة الناتجة',
+	'expand_templates_intro' => 'الصفحة المخصوصة دى بتاخد بعض النصوص و بتفرد كل القوالب اللى موجودة فيها.
+و كمان بتفرد دوال القوالب زي
+<nowiki>{{</nowiki>#if:…}}, و المتغيرات زي
+<nowiki>{{</nowiki>CURRENTDAY}}&mdash;فى الحقيقة كل حاجة بين قوسين مزدوجين.
+و بتعمل دا عن طريق استعداء المعالج المناسب من الميدياويكى نفسها..',
+	'expand_templates_title' => 'عنوان السياق, لـ {{PAGENAME}} الخ.:',
 	'expand_templates_input' => 'النص المدخل:',
 	'expand_templates_output' => 'النتيجه',
 	'expand_templates_xml_output' => 'خرج XML',
 	'expand_templates_ok' => 'موافق',
 	'expand_templates_remove_comments' => 'امسح التعليقات',
+	'expand_templates_generate_xml' => 'اعرض شجرة XML',
 	'expand_templates_preview' => 'بروفه',
 );
 
@@ -1030,6 +1038,13 @@ $messages['mt'] = array(
 	'expand_templates_ok' => 'OK',
 );
 
+/** Erzya (Эрзянь)
+ * @author Botuzhaleny-sodamo
+ */
+$messages['myv'] = array(
+	'expand_templates_preview' => 'Васнянь неевтезэ',
+);
+
 /** Nahuatl (Nāhuatl)
  * @author Fluence
  */
@@ -1448,6 +1463,13 @@ $messages['tg-cyrl'] = array(
 	'expand_templates_remove_comments' => 'Ҳазфи тавзеҳот',
 	'expand_templates_generate_xml' => 'Намоиши дарахти таҷзеҳи XML',
 	'expand_templates_preview' => 'Пешнамоиш',
+);
+
+/** Thai (ไทย)
+ * @author Octahedron80
+ */
+$messages['th'] = array(
+	'expand_templates_ok' => 'ตกลง',
 );
 
 /** Tonga (faka-Tonga) */

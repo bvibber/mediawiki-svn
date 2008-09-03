@@ -105,10 +105,14 @@ $messages['ar'] = array(
  */
 $messages['arz'] = array(
 	'linksearch' => 'دور فى لينكات الويب',
+	'linksearch-desc' => '[[Special:Linksearch|دور على الصفحات ام لينكات خارجية]] بتطابق انماط نعينة',
 	'linksearch-pat' => 'نظام التدوير:',
 	'linksearch-ns' => 'النطاق:',
 	'linksearch-ok' => 'تدوير',
+	'linksearch-text' => 'الكروت الخاصة زى "*.wikipedia.org" ممكن تستعمل.<br />
+البروتوكولات المدعومة: <tt>$1</tt>',
 	'linksearch-line' => '$1 موصوله من $2',
+	'linksearch-error' => 'الكروت الخاصة ممكن تبان بس  فى بداية اسم المضيف',
 );
 
 /** Asturian (Asturianu)
@@ -462,7 +466,7 @@ $messages['gl'] = array(
 	'linksearch-error' => 'Os comodíns só poden aparecer ao principio do nome do servidor.',
 );
 
-/** Gothic (������������������������������������)
+/** Gothic
  * @author Jocke Pirat
  */
 $messages['got'] = array(
@@ -901,6 +905,13 @@ Protokol yang disokong: <tt>$1</tt>',
 	'linksearch-error' => 'Kad bebas hanya boleh digunakan pada permulaan nama hos.',
 );
 
+/** Erzya (Эрзянь)
+ * @author Botuzhaleny-sodamo
+ */
+$messages['myv'] = array(
+	'linksearch-ns' => 'Лем потмось:',
+);
+
 /** Nahuatl (Nāhuatl)
  * @author Fluence
  */
@@ -1278,10 +1289,11 @@ $messages['tg-cyrl'] = array(
 );
 
 /** Thai (ไทย)
+ * @author Octahedron80
  * @author Passawuth
  */
 $messages['th'] = array(
-	'linksearch-ns' => 'เนมสเปซ :',
+	'linksearch-ns' => 'เนมสเปซ:',
 	'linksearch-ok' => 'ค้นหา',
 );
 

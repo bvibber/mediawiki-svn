@@ -503,10 +503,10 @@ $messages['pt'] = array(
 	'call' => 'Call',
 	'call-desc' => 'Cria uma hiperligação para uma predefinição (ou para uma página wiki normal) com passagem de parâmetros. Pode ser usada na linha de comandos do "browser" ou dentro de texto wiki.',
 	'call-text' => "A extensão Call espera uma página wiki e parâmetros opcionais para essa página como argumentos.<br /><br />
-Exemplo 1: &nbsp; <tt>[[{{ns:special}}:Call/Minha Predefinição,parm1=value1]]</tt><br />
-Exemplo 2: &nbsp; <tt>[[{{ns:special}}:Call/{{ns:talk}}:Minha Discussão,parm1=value1]]</tt><br />
-Exemplo 3: &nbsp; <tt>[[{{ns:special}}:Call/:Minha Página,parm1=value1,parm2=value2]]</tt><br /><br />
-Exemplo 4 (URL de \"browser\"): &nbsp; <tt>http://meudominio/meuwiki/index.php?{{ns:special}}:Call/:Minha Página,parm1=value1</tt><br /><br />
+Exemplo 1: &nbsp; <tt>[[Special:Call/Minha Predefinição,parm1=value1]]</tt><br />
+Exemplo 2: &nbsp; <tt>[[Special:Call/Talk:Minha Discussão,parm1=value1]]</tt><br />
+Exemplo 3: &nbsp; <tt>[[Special:Call/:Minha Página,parm1=value1,parm2=value2]]</tt><br /><br />
+Exemplo 4 (URL de \"browser\"): &nbsp; <tt>http://meudominio/meuwiki/index.php?Special:Call/:Minha Página,parm1=value1</tt><br /><br />
 
 A <i>extensão Call</i> irá realizar uma chamada à página fornecida e passar os parâmetros.<br />Você irá ver o conteúdo da página chamada e o seu título, mas o seu 'tipo' será o de uma página especial,<br />i.e. tal página não poderá ser editada.<br />O conteúdo que verá poderá variar dependendo do valor dos parâmetros que forem passados.<br /><br />
 A <i>extensão Call</i> é útil na construção de aplicações interactivas com MediaWiki.<br />Para um exemplo, veja <a href='http://semeb.com/dpldemo/Template:Catlist'>o GUI DPL</a> ..<br />

@@ -56,6 +56,7 @@ $2',
 
 /** German (Deutsch) */
 $messages['de'] = array(
+	'email-desc' => 'Erlaubt Benutzern persönliche Kopf- und Fusszeilen in der E-Mail Funktion zu verwenden',
 	'email_footer' => '----------------------------------------------------------------------------
 Diese E-Mail wurde dir von $1 über das {{SITENAME}}-E-Mail-System zugesandt.
 

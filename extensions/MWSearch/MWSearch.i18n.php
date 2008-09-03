@@ -39,6 +39,13 @@ $messages['ar'] = array(
 	'mwsearch-desc' => 'إضافة MWSearch',
 );
 
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Ramsis II
+ */
+$messages['arz'] = array(
+	'mwsearch-desc' => 'اضافة MWSearch',
+);
+
 /** Asturian (Asturianu)
  * @author Esbardu
  */

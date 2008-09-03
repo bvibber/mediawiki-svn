@@ -345,36 +345,55 @@ $messages['el'] = array(
  * @author Yekrats
  */
 $messages['eo'] = array(
+	'openid-desc' => 'Ensaluti la vikion kun [http://openid.net/ identigo OpenID], kaj ensaluti aliajn retejon uzantajn OpenID kun vikia uzula konto',
 	'openidlogin' => 'Ensaluti kun OpenID',
 	'openidfinish' => 'Elsaluti kun OpenID',
 	'openidserver' => 'Servilo OpenID',
 	'openidxrds' => 'dosiero Yadis',
 	'openidconvert' => 'OpenID konvertilo',
+	'openiderror' => 'Atestada eraro',
+	'openiderrortext' => 'Eraro okazis dum atestado de la OpenID URL-o.',
+	'openidconfigerror' => 'Konfigurada eraro de OpenID',
 	'openidpermission' => 'OpenID rajt-eraro',
 	'openidpermissiontext' => 'La OpenID kiun vi provizis ne estas permesita ensaluti ĉi tiun servilon.',
+	'openidcancel' => 'Atestado nuliĝis',
+	'openidcanceltext' => 'Atestado de la URL-o OpenID estis nuligita.',
+	'openidfailure' => 'Atestado malsukcesis',
+	'openidfailuretext' => 'Atestado de la URL-o OpenID malsukcesis. Erara mesaĝo: "$1"',
+	'openidsuccess' => 'Atestado sukcesis.',
+	'openidsuccesstext' => 'Atestado de la OpenID URL-o sukcesis.',
 	'openidusernameprefix' => 'OpenID-Uzanto',
+	'openidtrustinstructions' => 'Kontroli se vi volas kunpermesigi datenojn kun $1.',
+	'openidallowtrust' => 'Rajtigi $1 fidi ĉi tiun uzulan konton.',
 	'openidnopolicy' => 'Retejo ne specifigis regularon pri privateco.',
+	'openidpolicy' => 'Kontroli la <a target="_new" href="$1">regularon pri privateco</a> pri plua informo.',
 	'openidoptional' => 'Nedeviga',
 	'openidrequired' => 'Deviga',
 	'openidnickname' => 'Kaŝnomo',
 	'openidfullname' => 'Plena nomo',
 	'openidemail' => 'Retadreso',
 	'openidlanguage' => 'Lingvo',
+	'openidnotavailable' => 'Via preferata kromnomo ($1) jam estas uzata de alia uzanto.',
 	'openidchooseinstructions' => 'Ĉiuj uzantoj bezonas kromnomo;
 vi povas selekti el unu la jenaj opcioj.',
 	'openidchoosefull' => 'Via plena nomo ($1)',
 	'openidchooseurl' => 'Nomo eltenita de via OpenID ($1)',
 	'openidchooseauto' => 'Automate generita nomo ($1)',
 	'openidchoosemanual' => 'Nomo de via elekto:',
+	'openidchooseexisting' => 'Ekzistanta konto en ĉi tiu vikio:',
 	'openidchoosepassword' => 'pasvorto:',
+	'openidconvertinstructions' => 'Ĉi tiu paĝo permesas al vi ŝanĝi vian uzulan konton por uzi URL-on OpenID.',
 	'openidconvertsuccess' => 'Sukcese konvertis al OpenID',
+	'openidconvertsuccesstext' => 'Vi sukcese konvertis vian identigon OpenID al $1.',
 	'openidconvertyourstext' => 'Tio jam estas via OpenID.',
 	'openidconvertothertext' => 'Tio estas OpenID de alia persono.',
 	'openidalreadyloggedin' => "'''Vi jam ensalutis, $1!'''
 
 Se vi volas utiligi OpenID por ensaluti estontece, vi povas [[Special:OpenIDConvert|konverti vian konton por uzi OpenID]].",
+	'tog-hideopenid' => 'Kaŝi viajn identigon <a href="http://openid.net/">OpenID</a> en via uzula paĝo, se vi ensalutas kun OpenID.',
 	'openidnousername' => 'Neniu salutnomo estis donita.',
 	'openidbadusername' => 'Fuŝa salutnomo donita.',
+	'openidloginlabel' => 'URL-o OpenID',
 );
 
 /** French (Français)
@@ -460,7 +479,7 @@ $messages['gl'] = array(
 	'openidfinish' => 'Saír do sistema OpenID',
 	'openidserver' => 'Servidor do OpenID',
 	'openidxrds' => 'Ficheiro Yadis',
-	'openidconvert' => 'Conversor OpenID',
+	'openidconvert' => 'Transformador OpenID',
 	'openiderror' => 'Erro de verificación',
 	'openiderrortext' => 'Ocorreu un erro durante a verificación do URL do OpenID.',
 	'openidconfigerror' => 'Erro na configuración do OpenID',
@@ -1088,6 +1107,13 @@ $messages['mt'] = array(
 	'openidlanguage' => 'Lingwa',
 );
 
+/** Erzya (Эрзянь)
+ * @author Botuzhaleny-sodamo
+ */
+$messages['myv'] = array(
+	'openidchoosepassword' => 'совамо валось:',
+);
+
 /** Nahuatl (Nāhuatl)
  * @author Fluence
  */
@@ -1108,8 +1134,8 @@ $messages['nl'] = array(
 	'openiderror' => 'Verificatiefout',
 	'openiderrortext' => 'Er is een fout opgetreden tijdens de verificatie van de OpenID URL.',
 	'openidconfigerror' => 'Fout in de installatie van OpenID',
-	'openidconfigerrortext' => "De instellingen van de opslag van OpenID's voor deze wiki klopt niet.
-Raadpleeg alstublieft een  [[Special:Userlist/sysop|beheerder]].",
+	'openidconfigerrortext' => "De instellingen van de opslag van OpenID's voor deze wiki kloppen niet.
+Raadpleeg een  [[Special:Userlist/sysop|beheerder]].",
 	'openidpermission' => 'Fout in de rechten voor OpenID',
 	'openidpermissiontext' => 'Met de OpenID die u hebt opgegeven kunt u niet aanmelden bij deze server.',
 	'openidcancel' => 'Verificatie geannuleerd',
@@ -1388,17 +1414,22 @@ $messages['pt'] = array(
 	'openiderror' => 'Erro de verificação',
 	'openidconfigerror' => 'Erro de Configuração do OpenID',
 	'openidpermission' => 'Erro de permissões OpenID',
+	'openidpermissiontext' => 'O OpenID fornecido não está autorizado a autenticar-se neste servidor.',
 	'openidcancel' => 'Verificação cancelada',
 	'openidfailure' => 'Verificação falhou',
 	'openidsuccess' => 'Verificação com sucesso',
 	'openidusernameprefix' => 'UtilizadorOpenID',
 	'openidserverlogininstructions' => 'Introduza a sua palavra-chave abaixo para se autenticar em $3 como utilizador $2 (página de utilizador $1).',
+	'openidtrustinstructions' => 'Verifique se pretender partilhar dados com $1.',
 	'openidnopolicy' => 'O sítio não especificou uma política de privacidade.',
+	'openidpolicy' => 'Consulte a <a target="_new" href="$1">política de privacidade</a> para mais informações.',
 	'openidoptional' => 'Opcional',
 	'openidrequired' => 'Requerido',
+	'openidnickname' => 'Alcunha',
 	'openidfullname' => 'Nome completo',
 	'openidemail' => 'Endereço de e-mail',
 	'openidlanguage' => 'Língua',
+	'openidnotavailable' => 'A sua alcunha preferida ($1) já está em uso por outro utilizador.',
 	'openidchoosefull' => 'O seu nome completo ($1)',
 	'openidchooseauto' => 'Um nome gerado automaticamente ($1)',
 	'openidchoosemanual' => 'Um nome à sua escolha:',
@@ -1408,6 +1439,9 @@ $messages['pt'] = array(
 	'openidconvertsuccesstext' => 'Você converteu com sucesso o seu OpenID para $1.',
 	'openidconvertyourstext' => 'Esse já é o seu OpenID.',
 	'openidconvertothertext' => 'Esse é o OpenID de outra pessoa.',
+	'openidalreadyloggedin' => "'''Você já se encontra autenticado, $1!'''
+
+Se de futuro pretender usar OpenID para se autenticar, pode [[Special:OpenIDConvert|converter a sua conta para usar OpenID]].",
 	'openidnousername' => 'Nenhum nome de utilizador especificado.',
 	'openidbadusername' => 'Nome de utilizador especificado inválido.',
 	'openidclientonlytext' => 'Você pode usar contas deste wiki como OpenIDs noutro sítio.',

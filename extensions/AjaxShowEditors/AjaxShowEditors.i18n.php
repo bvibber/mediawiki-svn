@@ -559,6 +559,15 @@ $messages['ms'] = array(
 	'ajax-se-title' => 'Sedang menyunting:',
 );
 
+/** Erzya (Эрзянь)
+ * @author Botuzhaleny-sodamo
+ */
+$messages['myv'] = array(
+	'ajax-se-pagedoesnotexist' => 'истямо лопа арась',
+	'ajax-se-userinvalid' => 'Ильведевксэсь: теицясь а маштови',
+	'ajax-se-usernotfound' => 'Ильведевксэсь: теицясь а муеви',
+);
+
 /** Nahuatl (Nāhuatl)
  * @author Fluence
  */

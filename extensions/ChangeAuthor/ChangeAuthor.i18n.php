@@ -511,7 +511,7 @@ $messages['gl'] = array(
 	'changeauthor-revview' => 'Revisión nº$1 de $2',
 	'changeauthor-nosuchtitle' => 'Non hai ningunha páxina que se chame "$1".',
 	'changeauthor-weirderror' => 'Produciuse un erro moi estraño. Realice outra vez a consulta. Se este erro sigue aparecendo, probabelmente a base de datos está mal.',
-	'changeauthor-invalidform' => 'Por favor, utilice o formulario fornecido por Especial:ChangeAuthor en vez dun formulario personalizado.',
+	'changeauthor-invalidform' => 'Por favor, utilice o formulario fornecido pola [[Special:ChangeAuthor|páxina especial]] no canto dun formulario personalizado.',
 	'changeauthor-success' => 'A súa petición foi procesada con éxito.',
 	'changeauthor-logentry' => 'Cambie autor de $2 de $1 a $3 de $4',
 	'changeauthor-logpagename' => 'Rexistro dos cambios do autor',
@@ -536,7 +536,7 @@ $messages['he'] = array(
 	'changeauthor-title' => 'שינוי הכותב של גרסה',
 	'changeauthor-search-box' => 'חיפוש גרסאות',
 	'changeauthor-pagename-or-revid' => 'שם דף או מספר גרסה:',
-	'changeauthor-pagenameform-go' => 'מעבר',
+	'changeauthor-pagenameform-go' => 'הצגה',
 	'changeauthor-comment' => 'הערה:',
 	'changeauthor-changeauthors-multi' => 'שינוי {{PLURAL:$1|כותב|כותבים}}',
 	'changeauthor-explanation-multi' => 'באמצעות טופס זה תוכלו לשנות כותבים של גרסאות.
@@ -635,7 +635,7 @@ $messages['hsb'] = array(
 	'changeauthor-revview' => 'Wersija #$1 wot $2',
 	'changeauthor-nosuchtitle' => 'Strona z mjenom "$1" njeeksistuje.',
 	'changeauthor-weirderror' => 'Jara dźiwny zmylk je wustupił. Prošu spytaj swoje požadanje znowa. Jeli so tutón zmylk zaso a zaso jewi, je najskerje datowa banka poškodźena.',
-	'changeauthor-invalidform' => 'Prošu wužij radšo formular z Special:ChangeAuthor hač wužiwarski formular.',
+	'changeauthor-invalidform' => 'Prošu wužij radšo formular z [[Special:ChangeAuthor|specialneje strony]] hač swójski formular.',
 	'changeauthor-success' => 'Waše požadanje je so wuspěšnje wobdźěłało.',
 	'changeauthor-logentry' => 'Změni so awtor wot $2 wot $1 z $3 do $4',
 	'changeauthor-logpagename' => 'Protokol wo změnach awtorow',
@@ -852,6 +852,13 @@ Wann dëse Feeler sech widderhëlt dann ass d'Datebank waarscheinlech futti.",
 	'changeauthor-rev' => 'Versioun $1',
 );
 
+/** Lingua Franca Nova (Lingua Franca Nova)
+ * @author Malafaya
+ */
+$messages['lfn'] = array(
+	'changeauthor-comment' => 'Comenta:',
+);
+
 /** Malayalam (മലയാളം)
  * @author Shijualex
  */
@@ -950,9 +957,9 @@ $messages['nl'] = array(
 	'changeauthor-revview' => 'Bewerkingsnummer $1 van $2',
 	'changeauthor-nosuchtitle' => 'Er is geen pagina "$1".',
 	'changeauthor-weirderror' => 'Er is een erg vreemde fout opgetreden.
-Probeer het alstublieft nogmaals.
+Probeer het nogmaals.
 Als u deze foutmelding elke keer weer ziet, is er waarschijnlijk iets mis met de database.',
-	'changeauthor-invalidform' => 'Gebruik alstublieft het formulier van de [[Special:ChangeAuthor|speciale pagina]], in plaats van een aangepast formulier.',
+	'changeauthor-invalidform' => 'Gebruik het formulier van de [[Special:ChangeAuthor|speciale pagina]], in plaats van een aangepast formulier.',
 	'changeauthor-success' => 'Uw verzoek is succesvol verwerkt.',
 	'changeauthor-logentry' => 'Auteur van $2 van $1 gewijzigd van $3 naar $4',
 	'changeauthor-logpagename' => 'Auteurswijzigingenlogboek',
@@ -1086,7 +1093,7 @@ $messages['pt'] = array(
 	'changeauthor-pagename-or-revid' => 'Nome da página ou ID da revisão:',
 	'changeauthor-pagenameform-go' => 'Ir',
 	'changeauthor-comment' => 'Comentário:',
-	'changeauthor-changeauthors-multi' => 'Alterar autor(es)',
+	'changeauthor-changeauthors-multi' => 'Alterar {{PLURAL:$1|autor|autores}}',
 	'changeauthor-explanation-multi' => "Através deste formulário, pode alterar os autores de revisões. Simplesmente mude um ou mais nomes de utilizador na lista abaixo, adicione um comentário (opcional) e clique no botão 'Alterar autor(es)'.",
 	'changeauthor-changeauthors-single' => 'Alterar autor',
 	'changeauthor-explanation-single' => "Através deste formulário, pode alterar o autor de uma revisão. Simplesmente mude o nome de utilizador abaixo, adicione um comentário (opcional) e clique no botão 'Alterar autor'.",
@@ -1095,7 +1102,7 @@ $messages['pt'] = array(
 	'changeauthor-revview' => 'Revisão #$1 de $2',
 	'changeauthor-nosuchtitle' => 'Não existe nenhuma página chamada "$1".',
 	'changeauthor-weirderror' => 'Ocorreu um erro muito estranho. Por favor, tente o seu pedido de novo. Se este erro persistir, provavelmente a base de dados não está em boas condições.',
-	'changeauthor-invalidform' => 'Por favor, utilize o formulário fornecido em {{ns:special}}:ChangeAuthor em vez de um formulário personalizado.',
+	'changeauthor-invalidform' => 'Por favor, utilize o formulário fornecido pela [[Special:ChangeAuthor|página especial]] em vez de um formulário personalizado.',
 	'changeauthor-success' => 'O seu pedido foi processado com sucesso.',
 	'changeauthor-logentry' => 'Alterado autor de $2 de $1, de $3 para $4',
 	'changeauthor-logpagename' => 'Registo de alterações de autor',
@@ -1444,7 +1451,7 @@ Nếu lỗi này tiếp tục hiện ra, có lẽ cơ sở dữ liệu đã bị
  */
 $messages['vo'] = array(
 	'changeauthor-comment' => 'Küpet:',
-	'changeauthor-changeauthors-multi' => 'Votükön lautani(s)',
+	'changeauthor-changeauthors-multi' => 'Votükön {{PLURAL:$1|lautani|lautanis}}',
 	'changeauthor-changeauthors-single' => 'Votükön lautani',
 );
 

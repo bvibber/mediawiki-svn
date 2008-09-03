@@ -23,10 +23,18 @@ $messages['en'] = array(
 );
 
 /** Message documentation (Message documentation)
+ * @author Darth Kule
  * @author Siebrand
  */
 $messages['qqq'] = array(
-	'postcomment_on' => '"On" as in "On <date>"',
+	'postcomment_desc' => 'Short description of the PostComment extension, shown on [[Special:Version]].',
+	'postcomment_notloggedin' => 'Message displayed under comment form if you are not logged in. For example see http://www.wikihow.com/Discussion:Main-Page',
+	'postcomment_addcommentdiscussionpage' => 'Message displayed before comment form. For example see http://www.wikihow.com/Discussion:Main-Page',
+	'postcomment_leavemessagefor' => 'Message displayed before comment form in user talks.',
+	'postcomment_post' => 'Name of button. For example see http://www.wikihow.com/Discussion:Main-Page',
+	'postcomment_on' => '"On" as in "On <date>". For example see http://www.wikihow.com/Discussion:Main-Page',
+	'postcomment_said' => '<Username> said. For example see http://www.wikihow.com/Discussion:Main-Page',
+	'postcomment_replyto' => '$1 is the user that has posted previous comment. For example see http://www.wikihow.com/Discussion:Main-Page',
 );
 
 /** Arabic (العربية)
@@ -164,6 +172,24 @@ $messages['hsb'] = array(
 	'postcomment_nopostingtoadd' => 'Njeje powěsć, kotraž hodźi so přidać.',
 );
 
+/** Italian (Italiano)
+ * @author Darth Kule
+ */
+$messages['it'] = array(
+	'postcomment_desc' => 'Permette agli utenti di inserire commenti direttamente nelle pagine di discussione.',
+	'postcomment_discussionprotected' => 'Questa pagina di discussione è stata protetta da ulteriori inserimenti.',
+	'postcomment_notloggedin' => 'Non hai effettuato il login.',
+	'postcomment_youareloggedinas' => 'Sei stato connesso con il nome utente di $1',
+	'postcomment_addcommentdiscussionpage' => 'Aggiungi il tuo commento in questa pagina di discussione',
+	'postcomment_leavemessagefor' => 'Lascia un messaggio per $1',
+	'postcomment_post' => 'Inserisci',
+	'postcomment_on' => 'Il',
+	'postcomment_said' => 'ha detto',
+	'postcomment_invalidrequest' => 'Richiesta non valida.',
+	'postcomment_replyto' => 'Rispondi a $1',
+	'postcomment_nopostingtoadd' => 'Nessun post da aggiungere.',
+);
+
 /** Javanese (Basa Jawa)
  * @author Meursault2004
  */
@@ -238,6 +264,13 @@ $messages['mr'] = array(
 	'postcomment_invalidrequest' => 'चुकीची मागणी.',
 	'postcomment_replyto' => '$1 ला उत्तर द्या',
 	'postcomment_nopostingtoadd' => 'वाढविण्यासाठी संदेश नाही.',
+);
+
+/** Erzya (Эрзянь)
+ * @author Botuzhaleny-sodamo
+ */
+$messages['myv'] = array(
+	'postcomment_post' => 'Кучык',
 );
 
 /** Nahuatl (Nāhuatl)

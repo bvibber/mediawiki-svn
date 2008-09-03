@@ -97,6 +97,14 @@ $messages['fy'] = array(
 	'lua_error_internal' => 'Ynterne fout',
 );
 
+/** Galician (Galego)
+ * @author Toliño
+ */
+$messages['gl'] = array(
+	'lua_error' => 'Erro na liña $1',
+	'lua_error_internal' => 'Erro interno',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */

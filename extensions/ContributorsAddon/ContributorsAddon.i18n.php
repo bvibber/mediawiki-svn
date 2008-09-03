@@ -18,6 +18,13 @@ $messages['ar'] = array(
 	'contributorsaddon-desc' => 'يضيف منبثقات JS onMouseOver إلى وصلات "المساهمون الأساسيون"',
 );
 
+/** German (Deutsch)
+ * @author ChrisiPK
+ */
+$messages['de'] = array(
+	'contributorsaddon-desc' => 'Fügt onMouseOver-Popups mittels JavaScript zu den Links der Hauptautoren hinzu',
+);
+
 /** Lower Sorbian (Dolnoserbski)
  * @author Michawiki
  */

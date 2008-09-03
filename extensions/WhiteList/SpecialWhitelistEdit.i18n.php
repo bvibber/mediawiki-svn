@@ -810,6 +810,14 @@ $2',
 	'whitelistnummatches' => ' - $1 जुळण्या',
 );
 
+/** Erzya (Эрзянь)
+ * @author Botuzhaleny-sodamo
+ */
+$allMessages['myv'] = array(
+	'whitelisttablemodifyall' => 'Весе',
+	'whitelisttableremove' => 'Нардык',
+);
+
 /** Nahuatl (Nāhuatl)
  * @author Fluence
  */
@@ -1328,6 +1336,13 @@ $2',
 	'whitelistnummatches' => ' - $1 мутобиқат мекунад',
 );
 
+/** Thai (ไทย)
+ * @author Octahedron80
+ */
+$allMessages['th'] = array(
+	'whitelisttablemodifyall' => 'ทั้งหมด',
+);
+
 /** Turkish (Türkçe)
  * @author Karduelis
  */
@@ -1351,6 +1366,13 @@ $allMessages['vi'] = array(
 	'whitelisttableedit' => 'Sửa',
 	'whitelistbadtitle' => 'Tựa trang sai –',
 	'whitelistnever' => 'không bao giờ',
+);
+
+/** Volapük (Volapük)
+ * @author Malafaya
+ */
+$allMessages['vo'] = array(
+	'whitelisttablemodifynone' => 'Nonik',
 );
 
 /** Taiwan Chinese (‪中文(台灣)‬)

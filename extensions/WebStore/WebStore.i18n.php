@@ -674,6 +674,13 @@ $wgLocalTmpDirectory ची किंमत योग्य अशा डिर�
 	'webstore_php_error' => 'PHP त्रुट्या आलेल्या आहेत:',
 );
 
+/** Erzya (Эрзянь)
+ * @author Botuzhaleny-sodamo
+ */
+$messages['myv'] = array(
+	'webstore_404' => 'Файлась а муеви',
+);
+
 /** Low German (Plattdüütsch)
  * @author Slomox
  */

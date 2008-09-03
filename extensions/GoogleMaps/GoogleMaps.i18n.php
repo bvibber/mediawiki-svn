@@ -445,10 +445,13 @@ $wgGoogleMapsMessages['ch'] = array(
 );
 
 /** Czech (Česky)
+ * @author Li-sung
  * @author Matěj Grabovský
  */
 $wgGoogleMapsMessages['cs'] = array(
+	'gm-incompatible-browser' => 'Abyste mohli vidět mapu, které patří do této oblasti, museli byste použít <a href="http://local.google.com/support/bin/answer.py?answer=16532&amp;topic=1499">kompatibilní webový prohlížeč</a>.',
 	'gm-incompatible-browser-link' => 'Kliknutím sem zobrazíte seznam kompatibilních prohlížečů.',
+	'gm-no-editor' => 'Bohužel váš webový prohlížeč nepodporuje interaktivní možnosti tvorby map. Zkuste nějnovější verzi prohlížeče <a href="http://www.microsoft.com/ie">Internet Explorer</a> (Windows) nebo <a href="http://www.mozilla.org/products/firefox">Mozilla Firefox</a> (Windows, Mac a Linux).',
 	'gm-balloon-title' => 'Nadpis:',
 	'gm-balloon-link-article' => 'Odkaz na tuto stránku (nepovinné):',
 	'gm-make-marker' => 'Nadpis (může být i wikitext):',
@@ -466,10 +469,52 @@ $wgGoogleMapsMessages['cs'] = array(
 	'gm-clip-result' => 'Přidat na mapu',
 	'gm-searching' => 'hledé se…',
 	'gm-map' => 'Mapa',
+	'gm-note' => 'Poznámka: Ujištěte se, že na stránce níže kopírujete to, co chcete uložit předtím, než stisknete „Načíst mapu“, „Uložit“ alebo „Náhled“!',
+	'gm-instructions' => 'Níže je seznam wiki značek, pomocí kterých se dá vytvořit tato mapa.',
+	'gm-are-you-sure' => 'Jste si jistý?',
+	'gm-clear-all-points' => 'Smazat všechny body',
+	'gm-refresh-points' => 'Obnovit body',
 	'gm-width' => 'Šířka',
 	'gm-height' => 'Výška',
 	'gm-scale-control' => 'Měřítko',
 	'gm-overview-control' => 'Přehled',
+	'gm-selector-control' => 'Výběr mapa/satelit',
+	'gm-zoom-control' => 'Navigace',
+	'gm-large' => 'Velká',
+	'gm-medium' => 'Střední',
+	'gm-small' => 'Malá',
+	'gm-no-zoom-control' => 'Žádná',
+	'gm-yes' => 'Ano',
+	'gm-no' => 'Ne',
+	'gm-search-preface' => 'Kliknutím na mapu přidáte bod, skočíte na město, zemi, adresu nebo firmu:',
+	'gm-geocode-preface' => 'Kliknutím na mapu přidáte bod, skočíte na město, zemi nebo adresu:',
+	'gm-no-search-preface' => 'Kliknutím na mapu přidáte bod.',
+	'gm-search' => 'Hledat',
+	'gm-clear-search' => 'smazat výsledky hledání',
+	'gm-meters' => 'metrů',
+	'gm-miles' => 'mil',
+	'gm-editing-path' => 'Kliknutím na mapu přidáte body na této cestě.',
+	'gm-save-path' => 'Uložit',
+	'gm-edit-path' => 'přidat body',
+	'gm-show-path' => 'zobrazit body',
+	'gm-color-path' => 'změnit barvu',
+	'gm-color-fill' => 'změnit barvu výplně',
+	'gm-add-fill' => 'vyplnit oblast',
+	'gm-remove-fill' => 'odstranit výplň',
+	'gm-fill-color' => 'Barva výplně',
+	'gm-line-color' => 'Barva čáry',
+	'gm-opacity' => 'Krytí',
+	'gm-line-width' => 'Šířka',
+	'gm-make-map' => 'vytvořit mapu',
+	'gm-hide-map' => 'skrýt mapu',
+	'gm-back' => 'zpět',
+	'gm-kml-include' => 'Externí KML/GeoRSS:',
+	'gm-kml-include-link' => 'přidat na mapu',
+	'gm-kml-loading' => 'načítá se…',
+	'gm-kml-export' => 'Exportovat tuto mapu jako KML',
+	'gm-earth' => 'Země',
+	'gm-moon' => 'Měsíc',
+	'gm-mars' => 'Mars',
 );
 
 /** Church Slavic (Словѣ́ньскъ / ⰔⰎⰑⰂⰡⰐⰠⰔⰍⰟ)
@@ -1570,8 +1615,71 @@ $wgGoogleMapsMessages['is'] = array(
  * @author Pietrodn
  */
 $wgGoogleMapsMessages['it'] = array(
+	'gm-incompatible-browser' => 'Per vedere la mappa che andrà in questo spazio, avrai bisogno di usare un browser compatibile.',
+	'gm-incompatible-browser-link' => 'Fai clic qui per vedere un elenco di browser compatibili.',
+	'gm-no-editor' => 'Purtroppo il tuo browser non supporta la caratteristica di creazione di mappe interattive. Prova l\'ultima versione di <a href="http://www.microsoft.com/ie">Internet Explorer</a> (Windows) o <a href="http://www.mozilla.org/products/firefox">Firefox</a> (Windows, Mac e Linux).',
+	'gm-balloon-title' => 'Titolo:',
+	'gm-balloon-link-article' => 'Collegamento a questa pagina (opzionale):',
+	'gm-make-marker' => 'Didascalia (wiki mark-up OK):',
+	'gm-remove' => 'rimuovi',
+	'gm-caption' => 'Didascalia',
+	'gm-tab-title' => 'Titolo tab',
+	'gm-start-path' => 'inizia un percorso',
+	'gm-trace-area' => "traccia un'area",
+	'gm-save-point' => 'salva &amp; esci',
+	'gm-load-map-from-article' => 'Carica una mappa dalla pagina:',
+	'gm-no-maps' => 'Nessuna mappa da caricare in questa pagina.',
+	'gm-refresh-list' => 'Aggiorna elenco',
+	'gm-load-map' => 'Carica mappa',
+	'gm-clip-result' => 'Aggiungi a mappa',
+	'gm-no-results' => 'Spiacenti, nessun risultato.',
+	'gm-searching' => 'ricerca in corso…',
+	'gm-map' => 'Mappa',
+	'gm-note' => 'Nota: assicurati di copiare ciò che vuoi salvare nella pagina (di seguito) prima di premere "Carica mappa", "Salva" o "Anteprima"!',
+	'gm-instructions' => 'Di seguito è riportato il mark-up Wiki per creare la mappa soprastante.',
+	'gm-are-you-sure' => 'Sei sicuro?',
+	'gm-clear-all-points' => 'Elimina tutti i punti',
+	'gm-refresh-points' => 'Aggiorna punti',
+	'gm-width' => 'Larghezza',
+	'gm-height' => 'Altezza',
+	'gm-scale-control' => 'Scala',
+	'gm-selector-control' => 'Selettore Mappa/Satellite',
 	'gm-zoom-control' => 'Navigazione',
+	'gm-large' => 'Grande',
+	'gm-medium' => 'Medio',
+	'gm-small' => 'Piccolo',
+	'gm-no-zoom-control' => 'Nessuno',
+	'gm-yes' => 'Sì',
+	'gm-no' => 'No',
+	'gm-search-preface' => 'Fai clic sulla mappa per aggiungere un punto, oppure salta a una città, paese, indirizzo o attività:',
+	'gm-geocode-preface' => 'Fai clic sulla mappa per aggiungere un punto, oppure salta a una città, paese o attività:',
+	'gm-no-search-preface' => 'Fai clic sulla mappa per aggiungere un punto.',
 	'gm-search' => 'Ricerca',
+	'gm-clear-search' => 'elimina i risultati della ricerca',
+	'gm-meters' => 'metri',
+	'gm-miles' => 'miglia',
+	'gm-editing-path' => 'Fai clic sulla mappa per aggiungere altri punti a questo percorso.',
+	'gm-save-path' => 'Salva',
+	'gm-edit-path' => 'aggiungi punti',
+	'gm-show-path' => 'mostra punti',
+	'gm-color-path' => 'cambia colore',
+	'gm-color-fill' => 'cambia colore di riempimento',
+	'gm-add-fill' => 'riempi area',
+	'gm-remove-fill' => 'rimuovi-riempi',
+	'gm-fill-color' => 'Colore di riempimento',
+	'gm-line-color' => 'Colore linea',
+	'gm-opacity' => 'Opacità',
+	'gm-line-width' => 'Larghezza',
+	'gm-make-map' => 'crea una mappa',
+	'gm-hide-map' => 'nascondi mappa',
+	'gm-back' => 'indietro',
+	'gm-kml-include' => 'KML/GeoRSS esterni:',
+	'gm-kml-include-link' => 'aggiungi a mappa',
+	'gm-kml-loading' => 'caricamento in corso…',
+	'gm-kml-export' => 'Esporta questa mappa in KML',
+	'gm-earth' => 'Terra',
+	'gm-moon' => 'Luna',
+	'gm-mars' => 'Marte',
 );
 
 /** Javanese (Basa Jawa)
@@ -1914,6 +2022,25 @@ $wgGoogleMapsMessages['mr'] = array(
 	'gm-earth' => 'पृथ्वी',
 	'gm-moon' => 'चंद्र',
 	'gm-mars' => 'मंगळ',
+);
+
+/** Erzya (Эрзянь)
+ * @author Botuzhaleny-sodamo
+ */
+$wgGoogleMapsMessages['myv'] = array(
+	'gm-remove' => 'нардык',
+	'gm-width' => 'Келезэ',
+	'gm-height' => 'Сэрезэ',
+	'gm-zoom-control' => 'Навигация',
+	'gm-large' => 'Покш',
+	'gm-small' => 'Вишкыне',
+	'gm-search' => 'Вешнэмс',
+	'gm-save-path' => 'Ванстомс',
+	'gm-line-width' => 'Келезэ',
+	'gm-kml-include-link' => 'поладомс картантень',
+	'gm-earth' => 'Мода-мастор',
+	'gm-moon' => 'Ков',
+	'gm-mars' => 'Марс',
 );
 
 /** Nahuatl (Nāhuatl)
@@ -3067,6 +3194,7 @@ $wgGoogleMapsMessages['tg-cyrl'] = array(
 );
 
 /** Thai (ไทย)
+ * @author Octahedron80
  * @author Passawuth
  */
 $wgGoogleMapsMessages['th'] = array(
@@ -3080,8 +3208,8 @@ $wgGoogleMapsMessages['th'] = array(
 	'gm-searching' => 'กำลังค้นหา...',
 	'gm-map' => 'แผนที่',
 	'gm-are-you-sure' => 'คุณแน่ใจหรือ ?',
-	'gm-width' => 'กว้าง',
-	'gm-height' => 'สูง',
+	'gm-width' => 'ความกว้าง',
+	'gm-height' => 'ความสูง',
 	'gm-zoom-control' => 'นำทาง',
 	'gm-large' => 'ใหญ่',
 	'gm-medium' => 'กลาง',
@@ -3093,7 +3221,7 @@ $wgGoogleMapsMessages['th'] = array(
 	'gm-miles' => 'ไมล์',
 	'gm-save-path' => 'บันทึก',
 	'gm-opacity' => 'ความทึบ',
-	'gm-line-width' => 'กว้าง',
+	'gm-line-width' => 'ความกว้าง',
 	'gm-make-map' => 'สร้างแผนที่',
 	'gm-hide-map' => 'ซ่อนแผนที่',
 	'gm-back' => 'กลับ',

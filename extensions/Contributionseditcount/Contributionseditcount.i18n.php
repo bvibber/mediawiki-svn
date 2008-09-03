@@ -330,7 +330,7 @@ $messages['ps'] = array(
  */
 $messages['pt'] = array(
 	'contributionseditcount' => 'Este utilizador tem $1 edições.',
-	'contributionseditcount-desc' => 'Mostra uma contagem de edições em [[Special:Contributions]]',
+	'contributionseditcount-desc' => 'Mostra uma contagem de edições na [[Special:Contributions|página de contribuições do utilizador]]',
 );
 
 /** Romanian (Română)

@@ -383,6 +383,7 @@ $messages['kk-latn'] = array(
  */
 $messages['km'] = array(
 	'sitenotice_close' => 'លាក់',
+	'sitenotice-desc' => 'អនុញ្ញាតអោយអ្នកប្រើប្រាស់បិទសេចក្តីជូនដំណឹងរបស់វិបសាយ',
 );
 
 /** Korean (한국어)

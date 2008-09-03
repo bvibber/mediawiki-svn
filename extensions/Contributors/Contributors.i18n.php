@@ -195,11 +195,12 @@ $messages['da'] = array(
 );
 
 /** German (Deutsch)
+ * @author ChrisiPK
  * @author Raimond Spekking
  */
 $messages['de'] = array(
 	'contributors' => 'Hauptautoren',
-	'contributors-desc' => 'Zeige die Hauptautoren einer Seite',
+	'contributors-desc' => 'Zeigt die Hauptautoren einer Seite',
 	'contributors-toolbox' => 'Hauptautoren',
 	'contributors-legend' => 'Zeige die Hauptautoren einer Seite',
 	'contributors-target' => 'Seite:',
@@ -1136,7 +1137,7 @@ $messages['vo'] = array(
 	'contributors-toolbox' => 'Keblünans cifik',
 	'contributors-target' => 'Tiäd:',
 	'contributors-submit' => 'Jonolöd',
-	'contributors-others' => 'e votik $1',
+	'contributors-others' => 'e votik {{PLURAL:$1|bal|$1}}',
 	'contributors-nosuchpage' => 'Pad: $1 no dabinon.',
 );
 

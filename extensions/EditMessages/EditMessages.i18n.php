@@ -139,6 +139,7 @@ $messages['da'] = array(
 );
 
 /** German (Deutsch)
+ * @author ChrisiPK
  * @author Raimond Spekking
  */
 $messages['de'] = array(
@@ -150,6 +151,7 @@ $messages['de'] = array(
 	'editmsg-get-patch' => 'Erstelle Patch',
 	'editmsg-new-search' => 'Neue Suche',
 	'editmsg-warning-parse1' => '* Regex trifft auf keine Systemnachrichten zu: $1',
+	'editmsg-warning-parse2' => '* Anführungszeichen nach Pfeil erwartet: $1',
 	'editmsg-warning-parse3' => '* Ende der Zeichenkette nicht gefunden: $1',
 	'editmsg-warning-file' => '* Es ist ein Dateilesefehler für die folgenden Sprachen aufgetreten: $1',
 	'editmsg-warning-mismatch' => '* Der Originaltext hat nicht den erwarteten Wert für die folgenden Sprachen: $1',

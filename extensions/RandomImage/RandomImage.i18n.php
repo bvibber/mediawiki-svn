@@ -18,11 +18,25 @@ $messages['ar'] = array(
 	'randomimage-desc' => 'يوفر ميديا عشوائية باستخدام <tt>&lt;randomimage /&gt;</tt>',
 );
 
+/** Czech (Česky)
+ * @author Matěj Grabovský
+ */
+$messages['cs'] = array(
+	'randomimage-desc' => 'Poskytuje náhodný výběr multimediálních souborů pomocí značky <tt>&lt;randomimage /&gt;</tt>',
+);
+
 /** German (Deutsch)
  * @author Raimond Spekking
  */
 $messages['de'] = array(
 	'randomimage-desc' => 'Fügt das <tt>&lt;randomimage /&gt;</tt>-Tag zur Anzeige eines zufälligen Bildes hinzu',
+);
+
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
+$messages['eo'] = array(
+	'randomimage-desc' => 'Donas selektilo de hazarda bildo uzante <tt>&lt;randomimage /&gt;</tt>',
 );
 
 /** French (Français)

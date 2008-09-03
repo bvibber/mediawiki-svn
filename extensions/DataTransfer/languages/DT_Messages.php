@@ -369,6 +369,8 @@ $messages['is'] = array(
 $messages['it'] = array(
 	'dt_viewxml_categories' => 'Categorie',
 	'dt_viewxml_namespaces' => 'Namespace',
+	'dt_xml_name' => 'Nome',
+	'dt_xml_title' => 'Titolo',
 );
 
 /** Japanese (日本語)
@@ -500,6 +502,14 @@ $messages['mr'] = array(
 	'dt_xml_freetext' => 'मुक्त मजकूर',
 );
 
+/** Erzya (Эрзянь)
+ * @author Botuzhaleny-sodamo
+ */
+$messages['myv'] = array(
+	'dt_xml_page' => 'Лопа',
+	'dt_xml_name' => 'Лемезэ',
+);
+
 /** Nahuatl (Nāhuatl)
  * @author Fluence
  */
@@ -525,7 +535,7 @@ $messages['nds'] = array(
 $messages['nl'] = array(
 	'dt-desc' => 'Maakt import en export van gestructureerde gegevens in sjabloonaanroepen mogelijk',
 	'viewxml' => 'XML bekijken',
-	'dt_viewxml_docu' => 'Selecteer alstublieft uit de volgende categorieën en naamruimten om in XML-formaat te bekijken.',
+	'dt_viewxml_docu' => 'Selecteer uit de volgende categorieën en naamruimten om in XML-formaat te bekijken.',
 	'dt_viewxml_categories' => 'Categorieën',
 	'dt_viewxml_namespaces' => 'Naamruimten',
 	'dt_viewxml_simplifiedformat' => 'Vereenvoudigd formaat',
@@ -802,6 +812,14 @@ $messages['tg-cyrl'] = array(
 	'dt_xml_name' => 'Ном',
 	'dt_xml_title' => 'Унвон',
 	'dt_xml_freetext' => 'Матни дилхоҳ',
+);
+
+/** Thai (ไทย)
+ * @author Octahedron80
+ */
+$messages['th'] = array(
+	'dt_viewxml_categories' => 'หมวดหมู่',
+	'dt_xml_namespace' => 'เนมสเปซ',
 );
 
 /** Turkish (Türkçe)

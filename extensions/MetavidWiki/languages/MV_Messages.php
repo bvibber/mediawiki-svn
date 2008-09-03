@@ -701,10 +701,23 @@ $messages['da'] = array(
 );
 
 /** German (Deutsch)
+ * @author DaSch
  * @author Leithian
  */
 $messages['de'] = array(
+	'mv_ogg_high_quality' => 'hohe Qualität - Ogg Theora 900 kbit/s',
+	'mv_add_stream_submit' => 'Stream hinzufügen',
+	'mv_duration_label' => 'Dauer',
+	'mv_save_changes' => 'Änderungen speichern',
 	'mv_upload_file' => 'Datei hochladen',
+	'mv_tool_search' => 'Suche',
+	'mv_click_to_edit' => 'Klicken zum bearbeiten',
+	'mv_time_separator' => '$1 bis $2',
+	'mv_play' => 'Start',
+	'mv_edit' => 'Bearbeiten',
+	'mv_history' => 'Versionen/Autoren',
+	'mv_remove' => 'entfernen',
+	'mv_adjust_preview_stop' => 'Vorschau anhalten',
 	'mv_add_filter' => 'Filter hinzufügen',
 	'mv_category' => 'Kategorie',
 	'mv_remove_filter' => 'Filter entfernen',
@@ -1020,6 +1033,7 @@ $messages['ga'] = array(
 $messages['gl'] = array(
 	'metavid' => 'Páxina Metavid',
 	'mv_missing_stream' => 'Fluxo perdido: $1',
+	'specialpages-group-mv_group' => 'Páxinas especiais de MetaVidWiki',
 	'mv_ogg_low_quality' => 'Fluxo da páxina web - Ogg Theora 300kbs',
 	'mv_ogg_high_quality' => 'Alta calidade - Ogg Theora 900kbs',
 	'mv_archive_org_link' => 'Liga con mpeg2 orixinais de Archive.org',
@@ -1084,11 +1098,13 @@ Ou quizais queira <a href="$3">engadir o fluxo</a>.',
 	'mv_tool_embed_title' => 'Incorporar opcións para o segmento actual solicitado',
 	'mv_tool_overlay' => 'Presentacións do modelo',
 	'mv_tool_overlay_title' => 'Presentacións do modelo baseado en datos meta',
+	'mv_results_found' => 'Resultados en vídeo <b>$1</b> para <b>$2</b> de <b>$3</b>',
 	'mv_tool_mang_layers' => 'Xestionar as capas',
 	'mv_update_layers' => 'actualizar a vista das capas',
 	'mv_watch_clip' => 'Ver o fragmento',
 	'mv_close_clip' => 'Pechar o fragmento',
 	'mv_improve_transcript' => 'Mellorar a transcrición',
+	'mv_click_to_edit' => 'premer para editar',
 	'ht_en' => 'Transcrición',
 	'ht_en_desc' => 'Transcrición en inglés. Este tipo de presentación é para texto falado',
 	'anno_en' => 'Anotacións e Categorías',
@@ -1134,16 +1150,26 @@ Saltar á vista do fluxo: $2',
 	'mv_start_desc' => 'Tempo do comezo',
 	'mv_end_desc' => 'Tempo da fin',
 	'mv_of' => '&#32;de&#32;',
+	'mv_edit_metadata' => 'Editar os metadatos',
+	'mv_advanced_edit' => 'Edición avanzada',
+	'mv_basic_edit' => 'Edición básica',
+	'mv_remove_category' => 'Eliminar a categoría',
+	'mv_existing_categories' => 'Categorías existentes:',
 	'mv_add_category' => 'Engadir unha clasificación',
 	'mv_basic_text_desc' => 'Descrición do texto (opcional)',
 	'mv_viewnext' => 'Ver ($1)',
 	'mv_viewprevnext' => 'Ver ($1) ($2)',
 	'mediasearch' => 'Busca multimedia',
 	'mv_search_sel_t' => 'Seleccionar o tipo de busca',
+	'mv_results_for' => 'Resultados para "$1"',
+	'mv_video_search' => 'Procura de vídeo',
 	'mv_add_filter' => 'Engadir un filtro',
 	'mv_search_match' => 'Procurar un texto',
 	'mv_search_spoken_by' => 'Falado por',
 	'mv_search_categories' => 'Categorías',
+	'mv_search_bills' => 'Factura',
+	'mv_search_bill' => 'Factura',
+	'mv_bill' => 'factura',
 	'mv_search_category' => 'Categoría',
 	'mv_search_smw_property' => 'Propiedades semánticas',
 	'mv_search_smw_property_numeric' => 'Valor semántico numérico',
@@ -1155,6 +1181,10 @@ Saltar á vista do fluxo: $2',
 	'mv_stream_name' => 'nome do fluxo',
 	'mv_date_range' => 'rexistro de data',
 	'mv_date_last_week' => 'Última semana',
+	'mv_category_results' => 'Resultados da categoría',
+	'mv_most_relevant' => 'Máis relevantes',
+	'mv_most_recent' => 'Máis recentes',
+	'mv_most_viewed' => 'Máis vistos',
 	'mv_match' => 'coincidir',
 	'mv_spoken_by' => 'falado por',
 	'mv_category' => 'categoría',
@@ -1860,6 +1890,8 @@ $messages['lb'] = array(
 	'mv_search_and' => 'an',
 	'mv_search_or' => 'oder',
 	'mv_search_not' => 'net',
+	'mv_date_last_week' => 'Lescht Woch',
+	'mv_intrest_group_results' => 'Interessegruppen',
 	'mv_spoken_by' => 'Geschwat vum',
 	'mv_category' => 'Kategorie',
 	'mv_remove_filter' => 'Filter ewechhuelen',
@@ -2107,6 +2139,18 @@ $messages['mt'] = array(
 	'mv_tool_export' => 'Esporta',
 );
 
+/** Erzya (Эрзянь)
+ * @author Botuzhaleny-sodamo
+ */
+$messages['myv'] = array(
+	'mv_remove' => 'нардык',
+	'mv_search_categories' => 'Категорият',
+	'mv_search_category' => 'Категория',
+	'mv_search_and' => 'ды',
+	'mv_search_or' => 'эли',
+	'mv_date_last_week' => 'Йутазь таргосто',
+);
+
 /** Nahuatl (Nāhuatl)
  * @author Fluence
  */
@@ -2140,7 +2184,8 @@ $messages['nl'] = array(
 	'mv_flash_low_quality' => 'Via web te streamen - Flash video',
 	'mv_archive_org_link' => 'Links naar de originele mpeg2 op Archive.org',
 	'ao_file_MPEG2' => 'Archive.org - mpeg2 origineel',
-	'mv_error_stream_missing' => '<span class="error">Fout: Er is geen videobestand gekoppeld aan deze stream.</span><br />Rapporteer dit alstublieft aan de sitebeheerder.',
+	'mv_error_stream_missing' => '<span class="error">Fout: Er is geen videobestand gekoppeld aan deze stream.</span><br />
+Rapporteer dit aan de sitebeheerder.',
 	'mv_stream_meta' => 'Streampagina',
 	'mv_add_stream' => 'Metavid stream toevoegen',
 	'mv_edit_stream' => 'Metavid-stream bewerken',
@@ -3618,6 +3663,8 @@ Hoppa till dataflödesvisning: $2',
 	'mv_stream_tool_heading' => 'Dataflödesverktyg',
 	'mv_tool_missing' => 'verktygsefterfrågning ($1) finns inte',
 	'mv_bad_tool_request' => 'dålig verktygslinje; borde vara i formen: verktygsnamn|visningsnamn',
+	'mv_prev_cat' => 'Föregående kategori: $1',
+	'mv_next_cat' => 'Nästa kategori: $1',
 	'mv_search_stream_title' => 'Sök i det nuvarande dataflödet',
 	'mv_new_ht_en' => 'Ny transkription',
 	'mv_new_anno_en' => 'Ny tagg eller annotering',
@@ -3774,6 +3821,14 @@ $messages['tg-cyrl'] = array(
 	'mv_search_stream' => 'Ҷустуҷӯи ҷараён',
 	'mv_stream_tool_heading' => 'Абзорҳои ҷараён',
 	'mv_new_ht_en' => 'Рӯнавишти ҷадид',
+);
+
+/** Thai (ไทย)
+ * @author Octahedron80
+ */
+$messages['th'] = array(
+	'mv_tool_search' => 'ค้นหา',
+	'mv_search_categories' => 'หมวดหมู่',
 );
 
 /** Turkish (Türkçe)

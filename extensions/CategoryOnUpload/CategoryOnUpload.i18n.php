@@ -128,6 +128,21 @@ $messages['gl'] = array(
 	'categoryonupload-label' => 'Categoría:',
 );
 
+/** Hebrew (עברית)
+ * @author Agbad
+ */
+$messages['he'] = array(
+	'categoryonupload-desc' => 'הבאת משתמש לבחירת קטגוריה בעת העלאת קובץ',
+	'categoryonupload-label' => 'קטגוריה:',
+);
+
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
+$messages['hsb'] = array(
+	'categoryonupload-label' => 'Kategorija:',
+);
+
 /** Hungarian (Magyar)
  * @author Dani
  */

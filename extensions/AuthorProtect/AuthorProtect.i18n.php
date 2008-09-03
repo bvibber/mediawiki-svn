@@ -556,6 +556,13 @@ $messages['mr'] = array(
 	'restriction-level-author' => 'लेखक-सुरक्षित',
 );
 
+/** Erzya (Эрзянь)
+ * @author Botuzhaleny-sodamo
+ */
+$messages['myv'] = array(
+	'authorprotect-reason' => 'Тувтал',
+);
+
 /** Nahuatl (Nāhuatl)
  * @author Fluence
  */

@@ -600,6 +600,7 @@ $wdMessages['br'] = array(
  */
 $wdMessages['ca'] = array(
 	'ow_Language' => 'Idioma',
+	'ow_OptionAttributeOptions' => 'Opcions',
 );
 
 /** Czech (Česky)
@@ -1583,6 +1584,7 @@ $wdMessages['it'] = array(
 	'ow_Language' => 'Lingua',
 	'ow_OptionAttributeOptions' => 'Opzioni',
 	'ow_Value' => 'Valore',
+	'ow_Permission_denied' => '<h2>Permesso negato</h2>',
 );
 
 /** Japanese (日本語)
@@ -2222,6 +2224,32 @@ $wdMessages['mwl'] = array(
 	'ow_Language' => 'Lhéngua',
 );
 
+/** Erzya (Эрзянь)
+ * @author Botuzhaleny-sodamo
+ */
+$wdMessages['myv'] = array(
+	'datasearch' => 'Викидата: Датань вешнэма',
+	'langman_title' => 'Келень кирдий',
+	'languages' => 'Келень кирдий',
+	'ow_save' => 'Ванстомс',
+	'ow_uiprefs' => 'Викидата',
+	'ow_none_selected' => '<Вейкеяк апакКочка>',
+	'ow_dm_not_present' => 'апак совавто',
+	'ow_dm_not_found' => 'датабазасто а муеви эли берянь хвормазо',
+	'ow_Collection' => 'Пурнавкс',
+	'ow_Definition' => 'Чарькодевтема',
+	'ow_DefinedMeaning' => 'АравтоньЧарькодевкс',
+	'ow_DefinedMeaningReference' => 'Аравтонь чарькодевкс',
+	'ow_ExactMeanings' => 'Цяр вравты чарькодевкс',
+	'ow_Language' => 'Кель',
+	'ow_Spelling' => 'Сёрмадома лувозо',
+	'ow_Source' => 'Лисьмапрязо',
+	'ow_Text' => 'Текст',
+	'ow_TranslatedText' => 'Ютавтонь текст',
+	'ow_LinkAttributeValues' => 'Сюлмавома пенеть',
+	'ow_meaningsoftitle' => '"$1" чарькодеви',
+);
+
 /** Nahuatl (Nāhuatl)
  * @author Fluence
  */
@@ -2294,7 +2322,7 @@ Zie [[{{MediaWiki:Ow editing policy url}}|ons bewerkingsbeleid]].',
 <li>&action=help  Zinvolle hulptekst weergeven.</li>
 </ul></p>',
 	'ow_conceptmapping_uitext' => '<p>ConceptMapping maakt het mogelijk om bepaalde betekenissen in meerdere gegevenssets als identiek te markeren.</p>',
-	'ow_conceptmapping_no_action_specified' => 'Sorry, maar ik weet niet hoe ik kan "$1".',
+	'ow_conceptmapping_no_action_specified' => 'Maar ik weet niet hoe ik kan "$1".',
 	'ow_dm_OK' => 'OK',
 	'ow_dm_not_present' => 'niet ingevoerd',
 	'ow_dm_not_found' => 'niet aangetroffen in de database of verminkt',
@@ -3666,11 +3694,14 @@ $wdMessages['tg-cyrl'] = array(
 );
 
 /** Thai (ไทย)
+ * @author Octahedron80
  * @author Passawuth
  */
 $wdMessages['th'] = array(
 	'ow_save' => 'บันทึก',
 	'ow_history' => 'ประวัติ',
+	'ow_dm_OK' => 'ตกลง',
+	'ow_Source' => 'แหล่งที่มา',
 );
 
 /** Turkish (Türkçe)

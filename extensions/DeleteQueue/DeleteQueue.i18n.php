@@ -883,6 +883,8 @@ $messages['lb'] = array(
 	'deletequeue-review-reason' => 'Bemierkungen:',
 	'deletequeue-review-newreason' => 'Neie Grond:',
 	'deletequeue-review-newextra' => 'Zousätzlech Informatioun:',
+	'deletequeue-reviewdeletediscuss-tab' => 'Läschen iwwerpréifen',
+	'deletequeue-discusscreate-text' => "D'Läsche gouf aus dësem Grond virgeschlo: $2",
 	'deletequeue-vote-action' => 'Rot:',
 	'deletequeue-vote-reason' => 'Bemierkungen:',
 	'deletequeue-list-search-legend' => 'Säite sichen:',
@@ -892,6 +894,13 @@ $messages['lb'] = array(
 	'deletequeue-list-votes' => 'Lëscht vun de Stëmmen',
 	'deletequeue-list-header-page' => 'Säit',
 	'deletequeue-list-header-discusspage' => 'Diskussiounssäit',
+);
+
+/** Erzya (Эрзянь)
+ * @author Botuzhaleny-sodamo
+ */
+$messages['myv'] = array(
+	'deletequeue-list-header-page' => 'Лопа',
 );
 
 /** Dutch (Nederlands)
@@ -962,11 +971,11 @@ Overleg over dit voorstel wordt gevoerd op [[$3]], en loopt af op ''$2''.",
 	'deletequeue-review-badaction' => 'U hebt een niet-bestaande handeling opgegeven',
 	'deletequeue-review-actiondenied' => 'U hebt een handeling opgegeven die voor deze pagina is uigeschakeld',
 	'deletequeue-review-objections' => "'''Waarschuwing''': er is [{{FULLURL:{{FULLPAGENAME}}|action=delvoteview|votetype=object}} bezwaar] gemaakt tegen de verwijdernominatie voor deze pagina.
-Zorg er alstublieft voor dat u deze overweegt voordat u deze pagina verwijdert.",
+Zorg er voor dat u deze overweegt voordat u deze pagina verwijdert.",
 	'deletequeue-reviewspeedy-tab' => 'Snelle verwijdering beoordelen',
 	'deletequeue-reviewspeedy-title' => 'De snelle verwijderingsnominatie voor "$1" beoordelen',
 	'deletequeue-reviewspeedy-text' => "U kunt dit formulier gebruiken om de nominatie voor snelle verwijdering van \"'''\$1'''\" te beoordelen.
-Zorg er alstublieft voor dat u in lijn met het geldende beleid handelt.",
+Zorg er voor dat u in lijn met het geldende beleid handelt.",
 	'deletequeue-reviewprod-tab' => 'Voorgestelde verwijdering nakijken',
 	'deletequeue-reviewprod-title' => 'Voorgestelde verwijdering van "$1" nakijken',
 	'deletequeue-reviewprod-text' => "U kunt dit formulier gebruiken om de verwijdernominatie van \"'''\$1'''\" te beoordelen.",
@@ -1260,9 +1269,14 @@ Podètz enregistrar [{{FULLURL:{{FULLPAGENAME}}|action=delvote}} aicí] vòstra 
  * @author Malafaya
  */
 $messages['pt'] = array(
+	'deletequeue-speedy-title' => 'Marcar "$1" para eliminação rápida',
 	'deletequeue-delnom-otherreason' => 'Outro motivo',
+	'deletequeue-review-action' => 'Acção a tomar:',
 	'deletequeue-review-newreason' => 'Novo motivo:',
 	'deletequeue-vote-reason' => 'Comentários:',
+	'deletequeue-vote-submit' => 'Submeter',
+	'deletequeue-list-anyqueue' => '(qualquer)',
+	'deletequeue-list-header-page' => 'Página',
 );
 
 /** Slovak (Slovenčina)
@@ -1454,6 +1468,13 @@ Anledningen som givits för denna radering är ''$1''.",
 	'deletequeue-list-header-queue' => 'Kö',
 	'deletequeue-list-header-expiry' => 'Utgår',
 	'deletequeue-list-header-discusspage' => 'Diskussionssida',
+);
+
+/** Thai (ไทย)
+ * @author Octahedron80
+ */
+$messages['th'] = array(
+	'deletequeue-list-search' => 'ค้นหา',
 );
 
 /** Vietnamese (Tiếng Việt)

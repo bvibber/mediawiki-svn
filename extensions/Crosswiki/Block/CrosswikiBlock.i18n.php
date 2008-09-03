@@ -1009,6 +1009,14 @@ $messages['mt'] = array(
 	'crosswikiblock-alreadyblocked' => 'L-utent "$3" diġà bblokkjat',
 );
 
+/** Erzya (Эрзянь)
+ * @author Botuzhaleny-sodamo
+ */
+$messages['myv'] = array(
+	'crosswikiblock-reason' => 'Тувталось:',
+	'crosswikiunblock-reason' => 'Тувталось:',
+);
+
 /** Nahuatl (Nāhuatl)
  * @author Fluence
  */
@@ -1048,7 +1056,7 @@ Gelieve te controleren of u de juiste rechten hebt op deze wiki en of uw acties 
 	'crosswikiblock-noemail' => 'Het verzenden van e-mails door deze gebruiker voorkomen',
 	'crosswikiunblock' => 'Gebruiker op een andere wiki deblokkeren',
 	'crosswikiunblock-header' => 'Via deze pagina kunt u een gebruiker op een andere wiki deblokkeren.
-Controleer alstublieft of u dit op die wiki mag doen en of u in overeenstemming met het beleid handelt.',
+Controleer of u dit op die wiki mag doen en of u in overeenstemming met het beleid handelt.',
 	'crosswikiunblock-user' => 'Gebruiker, IP-adres of blokkadenummer en bestemmingswiki:',
 	'crosswikiunblock-reason' => 'Reden:',
 	'crosswikiunblock-submit' => 'Gebruiker deblokkeren',

@@ -80,6 +80,25 @@ $messages['bg'] = array(
 	'importfreeimages_returntoform' => "Или щракнете <a href='$1'>тук</a> за да се върнете към резултати от търсенето си",
 );
 
+/** Czech (Česky)
+ * @author Li-sung
+ * @author Matěj Grabovský
+ */
+$messages['cs'] = array(
+	'importfreeimages' => 'Importovat svobodné obrázky',
+	'importfreeimages-desc' => 'Umožňuje [[Special:ImportFreeImages|imprtování obrázků se správnou licencí]] z [http://www.flickr.com Flickru]',
+	'importfreeimages_description' => 'Tato stránka vám umožní importovat správně licencované obrázky z Flickru na vaši wiki',
+	'importfreeimages_noapikey' => 'Nenastavili jste API klíč Flickru. Uděláte tak po získání API klíče [http://www.flickr.com/services/api/misc.api_keys.html odtud] a nastavením proměnné <tt>$wgFlickrAPIKey</tt> v ImportFreeImages.php.',
+	'importfreeimages_nophotosfound' => 'Nebyly nalezeny žádné obrázky odpovídající vašim kritériím „$1“. Prosím, zkuste to znovu.',
+	'importfreeimages_invalidurl' => '„$1“ není platný obrázek na Flickru.',
+	'importfreeimages_owner' => 'Autor',
+	'importfreeimages_importthis' => 'importovat toto',
+	'importfreeimages_next' => 'Dalších $1',
+	'importfreeimages_filefromflickr' => '$1 od uživatele <b>[$2]</b> z Flickru. Původní URL',
+	'importfreeimages_promptuserforfilename' => 'Prosím, zadejte název cílového souboru:',
+	'importfreeimages_returntoform' => "Nebo se vraťte na <a href='$1'>výsledky vašeho vyhledávání</a>",
+);
+
 /** Church Slavic (Словѣ́ньскъ / ⰔⰎⰑⰂⰡⰐⰠⰔⰍⰟ)
  * @author ОйЛ
  */

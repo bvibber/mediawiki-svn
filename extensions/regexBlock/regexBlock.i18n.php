@@ -428,7 +428,7 @@ Isto deberÃ­a facerse sÃ³ para previr vandalismo, e segundo a polÃ­tica e normas
 	'regexblock-view-time' => 'en $1',
 );
 
-/** Gothic (í €í¼²í €í¼¿í €í½„í €í¼¹í €í½ƒí €í¼º)
+/** Gothic
  * @author Jocke Pirat
  */
 $messages['got'] = array(
@@ -871,6 +871,14 @@ $messages['mt'] = array(
 	'regexblock-already-blocked' => '"$1" diÄ¡Ã  bblokkjat',
 );
 
+/** Erzya (Ð­Ñ€Ð·ÑÐ½ÑŒ)
+ * @author Botuzhaleny-sodamo
+ */
+$messages['myv'] = array(
+	'regexblock-form-reason' => 'Ð¢ÑƒÐ²Ñ‚Ð°Ð»Ð¾ÑÑŒ:',
+	'regexblock-view-all' => 'Ð’ÐµÑÐµ',
+);
+
 /** Nahuatl (NÄhuatl)
  * @author Fluence
  */
@@ -912,7 +920,7 @@ $messages['nl'] = array(
 	'regexblock-block-success' => 'Het blokkeren is gelukt',
 	'regexblock-form-submit-empty' => 'Geef een gebruikersnaam of een IP-adres om te blokkeren.',
 	'regexblock-form-submit-regex' => 'Ongeldige reguliere uitdrukking.',
-	'regexblock-form-submit-expiry' => 'Geef alstublieft een verlooptermijn op.',
+	'regexblock-form-submit-expiry' => 'Geef een verlooptermijn op.',
 	'regexblock-already-blocked' => '$1 is al geblokkeerd.',
 	'regexblock-stats-title' => 'Regex-blokkeringsstatistieken',
 	'regexblock-stats-username' => 'Voor $1',
@@ -1475,6 +1483,13 @@ $messages['tg-cyrl'] = array(
 	'regexblock-view-time' => 'Ð´Ð°Ñ€ $1',
 );
 
+/** Thai (à¹„à¸—à¸¢)
+ * @author Octahedron80
+ */
+$messages['th'] = array(
+	'regexblock-view-all' => 'à¸—à¸±à¹‰à¸‡à¸«à¸¡à¸”',
+);
+
 /** Turkish (TÃ¼rkÃ§e)
  * @author Suelnur
  */
@@ -1551,5 +1566,6 @@ CÃ³ thá»ƒ khÃ´ng cÃ³ thÃ nh viÃªn nÃ o nhÆ° váº­y.',
 $messages['vo'] = array(
 	'regexblock-form-reason' => 'Kod:',
 	'regexblock-view-all' => 'Valik',
+	'regexblock-view-reason' => 'kod: $1',
 );
 

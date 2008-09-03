@@ -190,6 +190,9 @@ $messages['fr'] = array(
  */
 $messages['gl'] = array(
 	'onlinestatus-desc' => 'Engade unha preferencia para amosar se o usuario está actualmente conectado ou non no wiki',
+	'onlinestatus-js-anon' => 'Erro: debe acceder ao sistema para usar esta característica',
+	'onlinestatus-js-changed' => 'O seu status foi cambiado a "$1"',
+	'onlinestatus-js-error' => 'É imposible cambiar o status; o valor "$1" é inválido',
 	'onlinestatus-subtitle-offline' => 'Este usuario está actualmente desconectado',
 	'onlinestatus-subtitle-online' => 'Este usuario está actualmente conectado',
 	'onlinestatus-tab' => 'Status',
@@ -231,8 +234,12 @@ $messages['hr'] = array(
  */
 $messages['hsb'] = array(
 	'onlinestatus-desc' => 'Preferencu přidać, zo by so pokazało, hač wužiwar je tuchwilu we wikiju přitomny abo nic',
+	'onlinestatus-js-anon' => 'Zmylk: Dyrbiš přizjawjeny być, zo by tutu funkciju wužiwał',
+	'onlinestatus-js-changed' => 'Twój status je so do "$1" změnił',
+	'onlinestatus-js-error' => 'Njemóžno status změnić, hódnota "$1" je njepłaćiwa',
 	'onlinestatus-subtitle-offline' => 'Tutón wužiwar je tuchwilu offline',
 	'onlinestatus-subtitle-online' => 'Tutón wužiwar je tuchwilu online',
+	'onlinestatus-tab' => 'Status',
 	'onlinestatus-toggles-desc' => 'Twój status:',
 	'onlinestatus-toggles-explain' => 'Tute nastajenje ći dowoluje druhim wužiwarjam na twojej wužiwarskej stronje pokazać, zo sy tuchwilu online abo nic.',
 	'onlinestatus-toggles-show' => 'Status online na mojej wužiwarskej stronje pokazać',

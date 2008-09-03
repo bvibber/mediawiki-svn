@@ -534,7 +534,7 @@ $messages['hr'] = array(
  */
 $messages['hsb'] = array(
 	'bookinfo-header' => 'Informacije wo knihach',
-	'bookinfo-desc' => 'Rozšěrja [[Special:Booksources]] z informacijemi z websłužby',
+	'bookinfo-desc' => 'Rozšěrja [[Special:Booksources|specialnu stronu z knižnych žórłow]] přez informacije z websłužby',
 	'bookinfo-result-title' => 'Titul:',
 	'bookinfo-result-author' => 'Awtor:',
 	'bookinfo-result-publisher' => 'Nakładnistwo:',
@@ -1107,7 +1107,7 @@ $messages['ps'] = array(
  */
 $messages['pt'] = array(
 	'bookinfo-header' => 'Informação de livro',
-	'bookinfo-desc' => 'Expande [[Special:Booksources]] com informação proveniente de um web service',
+	'bookinfo-desc' => 'Expande a [[Special:Booksources|página especial de fontes de livros]] com informação proveniente de um web service',
 	'bookinfo-result-title' => 'Título:',
 	'bookinfo-result-author' => 'Autor:',
 	'bookinfo-result-publisher' => 'Editora:',

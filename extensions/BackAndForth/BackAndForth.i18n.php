@@ -414,6 +414,13 @@ $messages['mt'] = array(
 	'backforth-prev' => "Ta' qabel ($1)",
 );
 
+/** Erzya (Эрзянь)
+ * @author Botuzhaleny-sodamo
+ */
+$messages['myv'] = array(
+	'backforth-next' => 'Седе мейлень ($1)',
+);
+
 /** Nahuatl (Nāhuatl)
  * @author Fluence
  */

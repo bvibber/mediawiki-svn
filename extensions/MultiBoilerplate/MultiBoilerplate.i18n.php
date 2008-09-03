@@ -242,6 +242,13 @@ $messages['sv'] = array(
 	'multiboilerplate-submit' => 'Ladda',
 );
 
+/** Thai (ไทย)
+ * @author Octahedron80
+ */
+$messages['th'] = array(
+	'multiboilerplate-submit' => 'โหลด',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Vinhtantran
  */

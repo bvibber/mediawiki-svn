@@ -20,9 +20,11 @@ $messages['en'] = array(
 );
 
 /** Message documentation (Message documentation)
+ * @author Darth Kule
  * @author Jon Harald Søby
  */
 $messages['qqq'] = array(
+	'dplforum-desc' => 'Short description of the DPLforum extension, shown on [[Special:Version]].',
 	'dplforum-never' => '{{Identical|Never}}',
 );
 
@@ -98,9 +100,12 @@ $messages['ee'] = array(
  * @author Yekrats
  */
 $messages['eo'] = array(
+	'dplforum-desc' => 'DPL-bazita foruma etendilo',
 	'dplforum-by' => 'de',
 	'dplforum-edited' => '  - Laste redaktita',
 	'dplforum-never' => 'Neniam',
+	'dplforum-toofew' => 'DPL-Forumo: Tro malmultaj kategorioj!',
+	'dplforum-toomany' => 'DPL-Forumo: Tro multaj da kategorioj!',
 );
 
 /** Persian (فارسی)
@@ -180,7 +185,12 @@ $messages['id'] = array(
  * @author Darth Kule
  */
 $messages['it'] = array(
+	'dplforum-desc' => 'Estensione forum basata su DPL',
+	'dplforum-by' => 'da',
+	'dplforum-edited' => '  - Modificato ultima volta',
 	'dplforum-never' => 'Mai',
+	'dplforum-toofew' => 'DPL Forum: Troppo poche categorie!',
+	'dplforum-toomany' => 'DPL Forum: Troppe categorie!',
 );
 
 /** Khmer (ភាសាខ្មែរ)

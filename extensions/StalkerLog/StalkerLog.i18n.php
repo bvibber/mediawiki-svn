@@ -78,6 +78,7 @@ $messages['fr'] = array(
  * @author Toliño
  */
 $messages['gl'] = array(
+	'stalkerlog-desc' => 'Engade [[Special:Log/stalkerlog|un rexistro]] de accesos e saídas do sistema',
 	'stalkerlog-log-login' => 'accedeu ao sistema.',
 	'stalkerlog-log-logout' => 'saíu do sistema.',
 	'stalkerlog-log-type' => 'Rexistro de autenticación de usuario',
@@ -128,6 +129,15 @@ $messages['lb'] = array(
 	'stalkerlog-log-logout' => 'ofgemelt.',
 	'stalkerlog-log-type' => 'Lëscht vun den Authentifizéierungen',
 	'stalkerlog-log-text' => 'Dëst ass eng Lëscht vun den Umellungen an Ofmellungen.',
+);
+
+/** Erzya (Эрзянь)
+ * @author Botuzhaleny-sodamo
+ */
+$messages['myv'] = array(
+	'stalkerlog-log-login' => 'совазь.',
+	'stalkerlog-log-logout' => 'лисезь.',
+	'stalkerlog-log-text' => 'Тесэ тешкставить теицянть совамонзо-лисеманзо.',
 );
 
 /** Dutch (Nederlands)

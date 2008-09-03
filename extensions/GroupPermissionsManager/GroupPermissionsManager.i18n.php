@@ -700,9 +700,11 @@ $messages['it'] = array(
  */
 $messages['km'] = array(
 	'removeunusedgroups' => 'ដកហូតក្រុមដែលមិនត្រូវបានប្រើប្រាស់',
+	'grouppermissions-desc-nsm' => 'គ្រប់គ្រងលំហឈ្មោះតាមរយៈទំព័រពិសេស',
 	'grouppermissions-search' => 'ក្រុម:',
 	'grouppermissions-dologin' => 'ឡុកអ៊ីន',
 	'grouppermissions-dosearch' => 'ទៅ',
+	'grouppermissions-searchlabel' => 'ស្វែងរកសំរាប់ក្រុម',
 	'grouppermissions-deletelabel' => 'លុបក្រុម',
 	'grouppermissions-change' => 'ប្តូរក្រុមសមាជិកភាព',
 	'grouppermissions-add' => 'បន្ថែមក្រុម',
@@ -715,7 +717,9 @@ $messages['km'] = array(
 	'grouppermissions-never' => 'មិនដែល',
 	'grouppermissions-sort-edit' => 'ការកែប្រែ',
 	'grouppermissions-sort-manage' => 'ការគ្រប់គ្រង',
+	'grouppermissions-sort-admin' => 'អភិបាលកិច្ច',
 	'grouppermissions-log-add' => 'បានបន្ថែមក្រុម"$2"',
+	'grouppermissions-log-change' => 'បានផ្លាស់ប្តូរការអនុញ្ញាតសំរាប់ក្រុម"$2"',
 	'grouppermissions-log-delete' => 'បានលុបក្រុម"$2"',
 	'grouppermissions-sp-save' => 'រក្សាទុក',
 	'grouppermissions-sp-remove' => 'ដកហូត',
@@ -786,6 +790,14 @@ $messages['mt'] = array(
 	'grouppermissions-comment' => 'Kumment:',
 );
 
+/** Erzya (Эрзянь)
+ * @author Botuzhaleny-sodamo
+ */
+$messages['myv'] = array(
+	'grouppermissions-true' => 'Виде',
+	'grouppermissions-sp-remove' => 'нардык',
+);
+
 /** Nahuatl (Nāhuatl)
  * @author Fluence
  */
@@ -813,7 +825,8 @@ $messages['nl'] = array(
 	'grouppermissions-dosearch' => 'OK',
 	'grouppermissions-searchlabel' => 'Naar groep zoeken',
 	'grouppermissions-deletelabel' => 'Groep verwijderen',
-	'grouppermissions-error' => 'Er is een onbekende fout opgetreden. Klik alstublieft op de knop "vorige pagina" in uw browser en probeer het nog een keer',
+	'grouppermissions-error' => 'Er is een onbekende fout opgetreden.
+Klik op de knop "vorige pagina" in uw browser en probeer het nog een keer',
 	'grouppermissions-change' => 'Groepsrechten wijzigen',
 	'grouppermissions-add' => 'Groep toevoegen',
 	'grouppermissions-delete' => 'Groep verwijderen',
@@ -1048,6 +1061,13 @@ $messages['ps'] = array(
 	'grouppermissions-false' => 'ناسم',
 	'grouppermissions-never' => 'هېڅکله',
 	'grouppermissions-sp-save' => 'خوندي کول',
+);
+
+/** Portuguese (Português)
+ * @author Malafaya
+ */
+$messages['pt'] = array(
+	'grouppermissions-search' => 'Grupo:',
 );
 
 /** Tarifit (Tarifit)

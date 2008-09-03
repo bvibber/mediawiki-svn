@@ -26,10 +26,13 @@ $fallback=array(
 	'ia'  => 'en',
 	'id'  => 'en',
 	'it'  => 'en',
+	'ka'  => 'en',
 	'km'  => 'en',
 	'ksh' => 'en',
 	'lb'  => 'en',
+	'lfn' => 'en',
 	'mhr' => 'en',
+	'myv' => 'en',
 	'nah' => 'en',
 	'nap' => 'en',
 	'nl'  => 'en',
@@ -881,6 +884,17 @@ $messages['it'] = array(
 	'voctrain_User_name' => 'Nome utente',
 );
 
+/** Georgian (ქართული)
+ * @author Malafaya
+ */
+$messages['ka'] = array(
+	'voctrain_bye' => 'ნახვამდის',
+	'voctrain_Languages' => 'ენები',
+	'voctrain_Password' => 'პაროლი',
+	'voctrain_Language' => 'ენა',
+	'voctrain_Translation' => 'თარგმანი',
+);
+
 /** Khmer (ភាសាខ្មែរ)
  * @author Lovekhmer
  * @author គីមស៊្រុន
@@ -1058,12 +1072,58 @@ $messages['lb'] = array(
 	'voctrain_hiding' => 'Verstoppen',
 );
 
+/** Lingua Franca Nova (Lingua Franca Nova)
+ * @author Malafaya
+ */
+$messages['lfn'] = array(
+	'voctrain_Hello_World' => 'ALO WIKI!',
+	'voctrain_bye' => 'adio',
+	'voctrain_Number_of_questions' => 'Numero de demandas',
+	'voctrain_Languages' => 'Linguas',
+	'voctrain_Questions' => 'Demandas',
+	'voctrain_Answers' => 'Respondes',
+	'voctrain_collection' => 'colie',
+	'voctrain_Word' => 'Parola',
+	'voctrain_Answer' => 'Responde',
+	'voctrain_Answer_s_' => 'Responde(s)',
+	'voctrain_Language' => 'Lingua',
+	'voctrain_Translation' => 'Tradui',
+);
+
 /** Maltese (Malti)
  * @author Roderick Mallia
  */
 $messages['mt'] = array(
 	'voctrain_User_name' => 'Isem l-utent',
 	'voctrain_Language' => 'Lingwa',
+);
+
+/** Erzya (Эрзянь)
+ * @author Botuzhaleny-sodamo
+ */
+$messages['myv'] = array(
+	'voctrain_Hello_World' => 'ШУМБРАТ ВИКИ!',
+	'voctrain_try_again_' => 'варчамс одов?',
+	'voctrain_User_added' => 'Теицясь поладозь',
+	'voctrain_continue' => 'сыргак седе тов',
+	'voctrain_bye' => 'шумбрынестэ',
+	'voctrain_Number_of_questions' => 'Зяро кевкстнематнеде',
+	'voctrain_Languages' => 'Кельтне',
+	'voctrain_Questions' => 'Кевкстнемат',
+	'voctrain_Answers' => 'Кевкстемань пандомат',
+	'voctrain_collection' => 'пурнавкс',
+	'voctrain_Word' => 'Вал',
+	'voctrain_submit_answer' => 'пандомс кевкстеманть',
+	'voctrain_peek' => 'варштамс',
+	'voctrain_skip' => 'ютамс вакска',
+	'voctrain_Question' => 'Кевкстема',
+	'voctrain_Answer' => 'Кевкстемань пандома',
+	'voctrain_logout' => 'лисеме',
+	'voctrain_Omegawiki' => 'Омегавики',
+	'voctrain_Create_new_user' => 'Шкамс-теемс од теиця',
+	'voctrain_Language' => 'Кель',
+	'voctrain_Log_in' => 'Совамо',
+	'voctrain_Translation' => 'Ютавтома',
 );
 
 /** Nahuatl (Nāhuatl)

@@ -375,7 +375,7 @@ $messages['nds'] = array(
 $messages['nl'] = array(
 	'block_title_error_page_title' => 'Geblokkeerde paginanaam',
 	'block_title_error-desc' => "Biedt een basisfunctionaliteit om pagina's met bepaalde paginanamen niet te kunnen opslaan of aanmaken",
-	'block_title_error' => 'Sorry, het is niet toegestaan een pagina met deze naam op te slaan.',
+	'block_title_error' => 'Het is niet toegestaan een pagina met deze naam op te slaan.',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)

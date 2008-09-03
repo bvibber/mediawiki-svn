@@ -90,12 +90,15 @@ $messages['ar'] = array(
 
 /** Egyptian Spoken Arabic (مصرى)
  * @author Ghaly
+ * @author Meno25
  * @author Ramsis II
  */
 $messages['arz'] = array(
 	'sitematrix' => 'لستة ويكيهات الويكيميديا',
-	'sitematrix-summary' => 'الصفحة المخصوصة دي بتعرض كل ويكيهات الويكيميديا',
+	'sitematrix-summary' => 'الصفحة المخصوصة دى بتعرض كل ويكيهات ويكيميديا',
+	'sitematrix-desc' => 'بيعرض [[Special:SiteMatrix|لستة ويكيهات الويكيميديا]]',
 	'sitematrix-language' => 'اللغه',
+	'sitematrix-project' => 'اسم المشروع،لينك المشروع الداخلية و لينك الانترويكي',
 	'sitematrix-others' => 'مشاريع ويكيميديا التانية',
 	'sitematrix-total' => "'''اجمالى العدد: $1'''",
 	'sitematrix-sitetotal' => 'المجموع',
@@ -487,7 +490,7 @@ $messages['gl'] = array(
 	'sitematrix-desc' => 'Mostra unha [[Special:SiteMatrix|listaxe dos wikis de Wikimedia]]',
 	'sitematrix-language' => 'Linguaxe',
 	'sitematrix-project' => 'Nome do proxecto, ligazón entre proxectos e ligazón entre wikis',
-	'sitematrix-others' => 'Outros proxectos de Wikimedia',
+	'sitematrix-others' => 'Outros proxectos da Wikimedia',
 	'sitematrix-total' => "'''Suma total: $1'''",
 	'sitematrix-sitetotal' => 'Total',
 	'sitematrix-private' => 'privado',

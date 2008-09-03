@@ -369,6 +369,7 @@ $messages['id'] = array(
  * @author Lovekhmer
  */
 $messages['km'] = array(
+	'imagetagging-addimagetag' => 'ដាក់ប្លាកអោយរូបភាពនេះ',
 	'imagetagging-article' => 'ទំព័រ៖',
 	'imagetagging-imghistory' => 'ប្រវត្តិ',
 	'imagetagging-images' => 'រូបភាព',
@@ -478,6 +479,14 @@ $messages['mt'] = array(
 	'imagetagging-tagcancel-button' => 'Annulla',
 );
 
+/** Erzya (Эрзянь)
+ * @author Botuzhaleny-sodamo
+ */
+$messages['myv'] = array(
+	'imagetagging-article' => 'Лопась:',
+	'imagetagging-images' => 'неевтть',
+);
+
 /** Nahuatl (Nāhuatl)
  * @author Fluence
  */
@@ -516,7 +525,7 @@ $messages['nl'] = array(
 Dat kan zijn omdat u aangemeld moet zijn om afbeeldingen te annoteren.
 Wilt u nu aanmelden?',
 	'imagetagging-oneactionatatimemessage' => 'Er kan maar een handeling tegelijkertijd plaatsvinden.
-Wacht alstublieft totdat de huidige handeling is voltooid.',
+Wacht totdat de huidige handeling is voltooid.',
 	'imagetagging-oneuniquetagmessage' => 'Deze afbeelding heeft al een annotatie met deze naam.',
 	'imagetagging-imagetag-seemoreimages' => 'Meer afbeeldingen bekijken van "$1" ($2)',
 	'imagetagging-taggedimages-title' => 'Afbeeldingen van "$1"',

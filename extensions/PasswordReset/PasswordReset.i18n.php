@@ -240,6 +240,7 @@ $messages['gl'] = array(
 	'passwordreset-accountdisabled' => 'A conta foi desabilitada',
 	'disabledusers' => 'Usuarios desabilitados',
 	'disabledusers-summary' => 'Esta é unha listaxe dos usuarios que foron deshabilitados por medio de PasswordReset.',
+	'right-passwordreset' => 'Cambiar o usuario dun usuario ([[Special:Passwordreset|páxina especial]])',
 );
 
 /** Manx (Gaelg)
@@ -503,6 +504,16 @@ $messages['mr'] = array(
 $messages['mt'] = array(
 	'passwordreset-username' => 'Isem l-utent',
 	'passwordreset-submit' => 'Irrisettja l-password',
+);
+
+/** Erzya (Эрзянь)
+ * @author Botuzhaleny-sodamo
+ */
+$messages['myv'] = array(
+	'passwordreset-invalidusername' => 'Амаштовикс теицянь лемесь',
+	'passwordreset-username' => 'Теицянь лем',
+	'passwordreset-confirmpass' => 'Кемекстык совамо валонть',
+	'passwordreset-submit' => 'Полавтык совамо валонть',
 );
 
 /** Nahuatl (Nāhuatl)

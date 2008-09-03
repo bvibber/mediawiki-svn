@@ -76,9 +76,19 @@ $messages['ar'] = array(
  * @author Ramsis II
  */
 $messages['arz'] = array(
+	'imagemap_desc' => 'بيسمح بخرايط صور قابلة للضغط عليها من طرف العميل باستخدام تاج <tt><nowiki><imagemap></nowiki></tt>',
 	'imagemap_no_image' => 'غلط: لازم تحدد صورة فى السطر الاولانى.',
+	'imagemap_invalid_image' => 'غلط:الصورة مش صحيحة او مش موجودة',
+	'imagemap_bad_image' => 'غلط: الصورة فى البلاك ليست بتاعة الصفحة دى',
+	'imagemap_no_link' => '$1 غلط:مفيش لينك شغالة فى اخر السطر',
 	'imagemap_invalid_title' => 'غلط:عنوان مش صحيح فى اللينك عند السطر$1',
+	'imagemap_missing_coord' => 'غلط: إحداثيات مش كافية للشكل عند السطر $1',
+	'imagemap_unrecognised_shape' => 'غلط:شكل مش معروف عند السطر$1، كل سطر لازم يبتدى بواحد من دول: default, rect, circle او poly',
+	'imagemap_no_areas' => 'غلط: على الاقل محدد مساحة واحد لازم يتقدم',
+	'imagemap_invalid_coord' => 'غلط:احداثى مش صحيح عند السطر $1, لازم يكون رقم',
+	'imagemap_invalid_desc' => 'غلط: محدد وصف مش صحيح, لازم يكون واحد من دول: <tt>$1</tt>',
 	'imagemap_description' => 'عن الصورة دي',
+	'imagemap_desc_types' => 'اليمين من فوق،اليمين من تحت،الشمال من تحت،الشمال من فوق، ولا حاجة',
 );
 
 /** Asturian (Asturianu)

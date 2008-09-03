@@ -496,6 +496,13 @@ $messages['tet'] = array(
 	'profiling-ok' => 'OK',
 );
 
+/** Thai (ไทย)
+ * @author Octahedron80
+ */
+$messages['th'] = array(
+	'profiling-ok' => 'ตกลง',
+);
+
 /** Turkish (Türkçe)
  * @author Karduelis
  */

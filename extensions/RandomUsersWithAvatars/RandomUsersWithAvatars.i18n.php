@@ -62,6 +62,14 @@ $messages['gl'] = array(
 	'random-users-avatars-desc' => 'Engade a etiqueta <tt>&lt;randomuserswithavatars&gt;</tt> para amosar os avatares dos usuarios elixidos ao chou',
 );
 
+/** Khmer (ភាសាខ្មែរ)
+ * @author Lovekhmer
+ */
+$messages['km'] = array(
+	'random-users-avatars-title' => 'ជួបជាមួយនឹងសហគមន៍',
+	'random-users-avatars-desc' => 'ដាក់បន្ថែមប្លាក<tt>&lt;randomuserswithavatars&gt;</tt>ដើម្បីបង្ហាញអាវ៉ាតារស៍ដោយចៃដន្យដែលអ្នកប្រើប្រាស់បានជ្រើសរើសយក',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */

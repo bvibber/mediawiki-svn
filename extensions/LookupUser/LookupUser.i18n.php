@@ -69,6 +69,26 @@ $messages['bg'] = array(
 	'lookupuser_useroptions' => 'Потребителски настройки:',
 );
 
+/** Czech (Česky)
+ * @author Matěj Grabovský
+ */
+$messages['cs'] = array(
+	'lookupuser' => 'Vyhledat informace o uživateli',
+	'lookupuser-desc' => '[[Special:LookupUser|Získání informací]] o uživateli jako e-mailová adresa a ID',
+	'lookupuser_intro' => 'Zadejte uživatelské jméno uživatele, kterého nastavení chcete zobrazit.',
+	'lookupuser_nonexistent' => 'Chyba: Uživatel neexistuje',
+	'lookupuser_authenticated' => 'Ověření e-mailu: $1',
+	'lookupuser_not_authenticated' => 'neověřený',
+	'lookupuser_id' => 'ID uživatele: <tt>#$1</tt>',
+	'lookupuser_email' => 'E-mail: [[Special:Emailuser/$2|$1]]',
+	'lookupuser_no_email' => 'nebyl poskytnut',
+	'lookupuser_realname' => 'Skutečné jméno: $1',
+	'lookupuser_registration' => 'Datum registrace: $1',
+	'lookupuser_no_registration' => 'nebyl zaznamenán',
+	'lookupuser_touched' => 'Poslední záznam uživatele: $1',
+	'lookupuser_useroptions' => 'Nastavení uživatele:',
+);
+
 /** German (Deutsch) */
 $messages['de'] = array(
 	'lookupuser' => 'Benutzerinformationen einsehen',

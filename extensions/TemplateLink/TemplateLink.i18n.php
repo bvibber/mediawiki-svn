@@ -92,6 +92,7 @@ $messages['el'] = array(
  */
 $messages['eo'] = array(
 	'templatelink' => 'Ŝablona Ligilo',
+	'templatelink_desc' => 'Ĉi tiu etendilo povas montri ŝablonon kiel novan paĝon',
 	'templatelink_empty' => 'Vi devas enigi parametron.',
 	'templatelink_newtitle' => '$1 (transinkluzivita)',
 );
@@ -194,6 +195,16 @@ $messages['mr'] = array(
 	'templatelink' => 'साचे दुवा',
 	'templatelink_empty' => 'तुम्ही एक पॅरॅमीटर देणे आवश्यक आहे.',
 	'templatelink_newtitle' => '$1 (आंतरन्यास)',
+);
+
+/** Erzya (Эрзянь)
+ * @author Botuzhaleny-sodamo
+ */
+$messages['myv'] = array(
+	'templatelink' => 'Лопа парцун сюлмавома пе',
+	'templatelink_desc' => 'Ули мелеть, те келейгавтомасонть лопа панцунось невтеви кода од лопа',
+	'templatelink_empty' => 'Тонть пельде эряви параметра.',
+	'templatelink_newtitle' => '$1 (сюлмавома пе вельде совавтозь)',
 );
 
 /** Dutch (Nederlands)

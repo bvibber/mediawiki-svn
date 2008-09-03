@@ -469,6 +469,16 @@ $messages['mt'] = array(
 	'player-file' => 'Isem il-fajl',
 );
 
+/** Erzya (Эрзянь)
+ * @author Botuzhaleny-sodamo
+ */
+$messages['myv'] = array(
+	'player-file' => 'Файланть лемезэ',
+	'player-invalid-title' => 'амаштовикс коняксось',
+	'player-goto-page' => 'Лопа',
+	'player-goto-file' => 'файла',
+);
+
 /** Nahuatl (Nāhuatl)
  * @author Fluence
  */
@@ -764,6 +774,7 @@ $messages['tg-cyrl'] = array(
 $messages['tr'] = array(
 	'player-file' => 'Dosya adı',
 	'player-goto-page' => 'Sayfa',
+	'player-goto-file' => 'Dosya',
 );
 
 /** Vèneto (Vèneto)

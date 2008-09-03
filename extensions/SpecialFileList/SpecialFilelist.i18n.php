@@ -549,3 +549,10 @@ $messages['vi'] = array(
 	'filelist-image-desc' => 'miêu tả',
 );
 
+/** Volapük (Volapük)
+ * @author Malafaya
+ */
+$messages['vo'] = array(
+	'filelist' => 'Ragivalised',
+);
+

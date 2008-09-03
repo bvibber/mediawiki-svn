@@ -278,6 +278,7 @@ $messages['it'] = array(
 Fai clic <a href='$1'>qui</a> per continuare.",
 	'spamdifftool_confirm' => "Conferma che hai intenzione di aggiungere questi valori alla spam blacklist.
 (Fai clic <a href='$1' target='new'>qui</a> per segnalare un problema.)",
+	'spamdifftool_summary' => 'Aggiungo alla spam blacklist',
 	'spamdifftool_urls_detected' => "I seguenti URL sono stai rilevai nelle modifiche, quale vorresti aggiungere alla spam blacklist?
 Queste opzioni sono ordinate dalla più restrittiva alla meno restrittiva, bloccare l'intero dominio bloccherà tutti i collegamenti diretti a qualcosa proveniente da quel dominio.
 

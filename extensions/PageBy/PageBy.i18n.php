@@ -211,6 +211,7 @@ $messages['jv'] = array(
  * @author Lovekhmer
  */
 $messages['km'] = array(
+	'pageby-desc' => 'បង្ហាញអ្នកចូលរួមចំនែកក្នុងបន្ទាត់នៅលើទំព័រវិគីដោយប្រើប្រាស់ប្លាក<code><nowiki><pageby></nowiki></code>',
 	'pageby-first' => 'ទំព័រត្រូវបានបង្កើតឡើងដោយ $1, $2',
 	'pageby-last' => '<a href="$3">បានកែ</a>ចុងក្រោយ $1, $2',
 	'pageby-contributors' => 'អ្នករួមចំណែក៖',

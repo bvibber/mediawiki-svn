@@ -34,8 +34,11 @@ $messages['bg'] = array(
 	'tog-microid' => 'Публикува <a href="http://microid.org/">MicroID</a> за потвърждаване на сметката с външни услуги',
 );
 
-/** German (Deutsch) */
+/** German (Deutsch)
+ * @author MichaelFrey
+ */
 $messages['de'] = array(
+	'microid-desc' => 'Fügt eine [http://www.microid.org/ MicroID] auf Benutzerseiten ein, um einen Account mit einem externen Dienst zu bestätigen.',
 	'tog-microid' => 'Veröffentliche eine <a href="http://microid.org/">MicroID</a>, um das Benutzerkonto durch einen externen Servive zu bestätigen.',
 );
 
@@ -152,6 +155,7 @@ $messages['oc'] = array(
  * @author Malafaya
  */
 $messages['pt'] = array(
+	'microid-desc' => 'Adiciona um [http://www.microid.org/ MicroID] às páginas de utilizador para confirmar a conta com serviços externos',
 	'tog-microid' => 'Publique um <a href="http://microid.org/">MicroID</a> para confirmar conta com serviços externos',
 );
 

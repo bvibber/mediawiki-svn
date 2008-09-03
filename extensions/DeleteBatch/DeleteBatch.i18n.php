@@ -518,6 +518,14 @@ Przesyłany plik powinien zawierać nazwę strony i powód usunięcia w jednej l
 	'deletebatch-no-page' => 'Wybierz pojedynczą stronę do usunięcia ALBO wybierz plik zawierający listę stron.',
 );
 
+/** Portuguese (Português)
+ * @author Malafaya
+ */
+$messages['pt'] = array(
+	'deletebatch-here' => '<b>aqui</b>',
+	'deletebatch-caption' => 'Lista de páginas',
+);
+
 /** Romanian (Română)
  * @author KlaudiuMihaila
  */

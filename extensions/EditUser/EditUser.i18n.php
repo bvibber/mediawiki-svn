@@ -514,6 +514,13 @@ $messages['mt'] = array(
 	'edituser-exempt' => 'L-utent speċifikat ma jistax jiġi modifikat',
 );
 
+/** Erzya (Эрзянь)
+ * @author Botuzhaleny-sodamo
+ */
+$messages['myv'] = array(
+	'edituser-username' => 'Лемезэ',
+);
+
 /** Nahuatl (Nāhuatl)
  * @author Fluence
  */
@@ -731,6 +738,13 @@ $messages['tg-cyrl'] = array(
 	'edituser-dosearch' => 'Ҷустуҷӯ',
 	'edituser-nouser' => 'Корбари мушаххасшуда вуҷуд надорад',
 	'edituser-exempt' => 'Корбари мушаххасшударо наметавон вироиш кард',
+);
+
+/** Thai (ไทย)
+ * @author Octahedron80
+ */
+$messages['th'] = array(
+	'edituser-dosearch' => 'ค้นหา',
 );
 
 /** Vietnamese (Tiếng Việt)

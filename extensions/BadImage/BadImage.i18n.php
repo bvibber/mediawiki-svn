@@ -718,7 +718,7 @@ $messages['hsb'] = array(
 	'badimages-desc' => 'Móžnosće lisćiny njepožadanych wobrazow w MediaWiki rozšěrić',
 	'badimages-add-btn' => 'Přidać',
 	'badimages-added' => '$1 bu k lisćinje přidaty.',
-	'badimages-count' => "Lisćina njewitanych wobrazow '''$1''' zapiskow wobsahuje.",
+	'badimages-count' => "Lisćina njewitanych wobrazow '''$1''' {{PLURAL:$1|zapisk|zapiskaj|zapiski|zapiskow}} wobsahuje.",
 	'badimages-name' => 'Mjeno:',
 	'badimages-not-added' => 'Wobraz njeda so přidać.',
 	'badimages-not-removed' => 'Wobraz njeda so wotstronić.',
@@ -1149,6 +1149,16 @@ $messages['mt'] = array(
 	'badimages-log-name' => "Lista ta' stampi ħżiena",
 );
 
+/** Erzya (Эрзянь)
+ * @author Botuzhaleny-sodamo
+ */
+$messages['myv'] = array(
+	'badimages-name' => 'Лемезэ:',
+	'badimages-reason' => 'Тувталось:',
+	'badimages-remove' => '(нардык)',
+	'badimages-remove-btn' => 'Нардык',
+);
+
 /** Nahuatl (Nāhuatl)
  * @author Fluence
  */
@@ -1200,7 +1210,7 @@ $messages['nl'] = array(
 	'badimages-reason' => 'Reden:',
 	'badimages-remove' => '(verwijderen)',
 	'badimages-remove-btn' => 'Verwijderen',
-	'badimages-remove-confirm' => 'Bevestig alstublieft dat u $1 uit de lijst wilt verwijderen:',
+	'badimages-remove-confirm' => 'Bevestig dat u $1 uit de lijst wilt verwijderen:',
 	'badimages-removed' => '$1 is uit de lijst verwijderd.',
 	'badimages-subheading' => 'Huidige inhoud',
 	'badimages-unprivileged' => '(U hebt niet de juiste rol om de lijst te kunnen wijzigen)',
@@ -1849,7 +1859,7 @@ $messages['vi'] = array(
 $messages['vo'] = array(
 	'badimages' => 'Lised magodas badik',
 	'badimages-add-btn' => 'Läükön',
-	'badimages-count' => "Dabinons magods '''$1''' in lised magodas badik.",
+	'badimages-count' => "{{PLURAL:$1|Dabinon magod|Dabinons magods}} '''$1''' in lised magodas badik.",
 	'badimages-name' => 'Nem:',
 	'badimages-reason' => 'Kod:',
 	'badimages-log-name' => 'Lised magodas badik',

@@ -287,10 +287,10 @@ $messages['gl'] = array(
 	'patrol' => 'Patrullar edicións',
 	'patrol-desc' => 'Realzado da interface de patrulla coa parte que toca da cantidade de traballo',
 	'patrol-endorse' => 'Apoiar',
-	'patrol-revert' => 'Desfacer',
+	'patrol-revert' => 'Reverter',
 	'patrol-revert-reason' => 'Motivo:',
 	'patrol-skip' => 'Saltar',
-	'patrol-reverting' => 'A desfacer: $1',
+	'patrol-reverting' => 'Revertendo: $1',
 	'patrol-nonefound' => 'Non se atoparon edicións adecuadas para patrullar.',
 	'patrol-endorsed-ok' => 'Marcouse esta edición como patrullada.',
 	'patrol-endorsed-failed' => 'Non se puido marcar a edición como patrullada.',
@@ -306,6 +306,7 @@ $messages['gl'] = array(
 	'group-patroller' => 'Patrulleiros',
 	'group-patroller-member' => 'Patrulleiro',
 	'grouppage-patroller' => '{{ns:project}}:Patrulleiro',
+	'right-patroller' => 'Patrullar páxinas',
 );
 
 /** Gothic (𐌲𐌿𐍄𐌹𐍃𐌺)
@@ -645,6 +646,14 @@ $messages['mr'] = array(
 	'group-patroller' => 'निरीक्षक',
 	'group-patroller-member' => 'निरीक्षक',
 	'grouppage-patroller' => '{{ns:project}}:निरीक्षक',
+);
+
+/** Erzya (Эрзянь)
+ * @author Botuzhaleny-sodamo
+ */
+$messages['myv'] = array(
+	'patrol-revert-reason' => 'Тувталось:',
+	'patrol-skip' => 'Ютык вакска',
 );
 
 /** Nahuatl (Nāhuatl)
@@ -1075,10 +1084,12 @@ $messages['vi'] = array(
 );
 
 /** Volapük (Volapük)
+ * @author Malafaya
  * @author Smeira
  */
 $messages['vo'] = array(
 	'patrol-revert' => 'Sädunön',
+	'patrol-revert-reason' => 'Kod:',
 );
 
 /** Yue (粵語)

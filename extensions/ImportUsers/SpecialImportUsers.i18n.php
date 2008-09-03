@@ -583,6 +583,14 @@ $messages['mt'] = array(
 	'importusers-email' => 'e-mail',
 );
 
+/** Erzya (Эрзянь)
+ * @author Botuzhaleny-sodamo
+ */
+$messages['myv'] = array(
+	'importusers-log-summary-all' => 'Весе',
+	'importusers-password' => 'совамо вал',
+);
+
 /** Nahuatl (Nāhuatl)
  * @author Fluence
  */
@@ -958,6 +966,13 @@ $messages['tg-cyrl'] = array(
 	'importusers-password' => 'гузарвожа',
 	'importusers-email' => 'почтаи электронӣ',
 	'importusers-realname' => 'номи аслӣ',
+);
+
+/** Thai (ไทย)
+ * @author Octahedron80
+ */
+$messages['th'] = array(
+	'importusers-log-summary-all' => 'ทั้งหมด',
 );
 
 /** Vietnamese (Tiếng Việt)

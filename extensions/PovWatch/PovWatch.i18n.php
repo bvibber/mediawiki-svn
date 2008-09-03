@@ -359,6 +359,13 @@ $messages['ia'] = array(
 	'povwatch_comment' => 'Commento pro registro:',
 );
 
+/** Italian (Italiano)
+ * @author Darth Kule
+ */
+$messages['it'] = array(
+	'povwatch_title' => 'Titolo:',
+);
+
 /** Javanese (Basa Jawa)
  * @author Meursault2004
  */

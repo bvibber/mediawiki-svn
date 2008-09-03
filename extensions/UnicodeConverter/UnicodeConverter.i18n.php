@@ -67,6 +67,17 @@ $messages['fr'] = array(
 	'unicodeconverter-newtext' => 'Texte une fois converti :',
 );
 
+/** Galician (Galego)
+ * @author Toliño
+ */
+$messages['gl'] = array(
+	'unicodeconverter' => 'Transformador de unicode',
+	'unicodeconverter-desc' => 'Un exemplo sinxelo do módulo dunha páxina especial. [[Special:UnicodeConverter|Dándolle unha corda en UTF-8]] convértea en entidades adecuadas en HTML para unha páxina web ISO 8859-1',
+	'unicodeconverter-ok' => 'De acordo',
+	'unicodeconverter-oldtext' => 'Texto orixinal:',
+	'unicodeconverter-newtext' => 'Texto transformado:',
+);
+
 /** Khmer (ភាសាខ្មែរ)
  * @author Lovekhmer
  * @author គីមស៊្រុន
@@ -76,6 +87,13 @@ $messages['km'] = array(
 	'unicodeconverter-ok' => 'យល់ព្រម',
 	'unicodeconverter-oldtext' => 'អត្ថបទដើម៖',
 	'unicodeconverter-newtext' => 'អត្ថបទបំលែងរួច៖',
+);
+
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$messages['lb'] = array(
+	'unicodeconverter-oldtext' => 'Originaltext:',
 );
 
 /** Dutch (Nederlands)
@@ -127,5 +145,15 @@ $messages['sk'] = array(
  */
 $messages['sv'] = array(
 	'unicodeconverter' => 'Unicode-konvertering',
+	'unicodeconverter-ok' => 'OK',
+	'unicodeconverter-oldtext' => 'Orginaltext:',
+	'unicodeconverter-newtext' => 'Konverterad text:',
+);
+
+/** Thai (ไทย)
+ * @author Octahedron80
+ */
+$messages['th'] = array(
+	'unicodeconverter-ok' => 'ตกลง',
 );
 

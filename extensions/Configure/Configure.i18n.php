@@ -538,6 +538,7 @@ $messages['cu'] = array(
 );
 
 /** German (Deutsch)
+ * @author ChrisiPK
  * @author Church of emacs
  * @author Leithian
  * @author Purodha
@@ -582,15 +583,21 @@ $messages['de'] = array(
 	'configure-section-paths' => 'Pfade',
 	'configure-section-db' => 'Datenbanken',
 	'configure-section-db-notallowed' => 'Du hast keine Berechtigung, die Datenbankeinstellungen zu ändern.',
+	'configure-section-load-balancing' => 'Lastverteilung',
+	'configure-section-mysql' => 'MySQL-Einstellungen',
+	'configure-section-postgres' => 'PostgreSQL-Einstellungen',
+	'configure-section-sqlite' => 'SQLite-Einstellungen',
 	'configure-section-email' => 'E-Mail',
 	'configure-section-enotif' => 'E-Mail Benachrichtigung',
 	'configure-section-localization' => 'Lokalisierung',
 	'configure-section-timezone' => 'Zeitzone',
+	'configure-section-zh-conversion' => 'Chinesisch-Konvertierung',
 	'configure-section-debug' => 'Debugging',
 	'configure-section-profiling' => 'Profiling',
 	'configure-section-site' => 'Site-Anpassung',
 	'configure-section-css-js' => 'CSS und JavaScript',
 	'configure-section-namespaces' => 'Namensräume',
+	'configure-section-stats' => 'Website-Statistiken',
 	'configure-section-skin' => 'Skins',
 	'configure-section-category' => 'Kategorien',
 	'configure-section-cache' => 'Cache',
@@ -598,6 +605,7 @@ $messages['de'] = array(
 	'configure-section-messagecache' => 'Systemnachrichten-Cache',
 	'configure-section-access' => 'Zugriff',
 	'configure-section-groups' => 'Gruppen',
+	'configure-section-groups-notallowed' => 'Du hast keine Berechtigung, die Gruppen-Einstellungen zu bearbeiten.',
 	'configure-section-block' => 'Sperren',
 	'configure-section-rates' => 'Limitierungen',
 	'configure-section-proxy' => 'Proxies',
@@ -615,17 +623,38 @@ $messages['de'] = array(
 	'configure-section-feed' => 'Feed',
 	'configure-section-job' => 'Jobs',
 	'configure-section-extension' => 'Erweiterungen',
+	'configure-section-search' => 'Suchen',
 	'configure-section-copyright' => 'Copyright',
 	'configure-section-htcp' => 'HTCP multicast',
 	'configure-section-misc' => 'Verschiedenes',
 	'configure-section-mw-extensions' => 'MediaWiki-Erweiterung',
+	'configure-select-wiki' => 'Wiki-Auswahl',
+	'configure-select-wiki-available' => 'Erlaubte Werte: $1',
+	'configure-select-wiki-desc' => 'Wähle das Wiki aus, dessen Einstellungen du bearbeiten möchtest.',
 	'configure-select-wiki-submit' => 'Validieren',
 	'configure-setting-not-available' => 'Diese Einstellung ist in dieser Version von MediaWiki nicht verfügbar',
+	'configure-transwiki-not-in-range' => 'Das gewünschte Wiki, $1, ist kein erlaubter Wert ($2).',
+	'configure-view' => 'Ansehen',
 	'configure-view-not-allowed' => 'Es ist dir nicht gestattet diese Einstellung einzusehen',
 	'extensions' => 'Erweiterungen konfigurieren',
 	'right-configure' => 'Wiki einrichten',
 	'right-configure-all' => 'Alle Einstellungen im Wiki vornehmen',
+	'right-configure-interwiki' => 'Einstellungen fremder Wikis bearbeiten',
 	'right-extensions' => 'Erweiterungen konfigurieren',
+	'right-extensions-all' => 'Erweiterte Extensions-Einstellungen',
+	'right-extensions-interwiki' => 'Extensions-Einstellungen fremder Wikis bearbeiten',
+	'right-viewconfig' => 'Wiki-Einstellungen ansehen',
+	'right-viewconfig-all' => 'Alle Wiki-Einstellungen ansehen',
+	'right-viewconfig-interwiki' => 'Einstellungen fremder Wikis ansehen',
+	'viewconfig' => 'Wiki-Einstellungen ansehen',
+);
+
+/** German (formal address) (Deutsch (Sie-Form))
+ * @author ChrisiPK
+ */
+$messages['de-formal'] = array(
+	'configure-section-groups-notallowed' => 'Sie haben keine Berechtigung, die Gruppen-Einstellungen zu bearbeiten.',
+	'configure-select-wiki-desc' => 'Wählen Sie das Wiki aus, dessen Einstellungen Sie bearbeiten möchten.',
 );
 
 /** Greek (Ελληνικά)
@@ -1342,6 +1371,7 @@ $messages['km'] = array(
 	'configure-section-db-notallowed' => 'អ្នកមិនត្រូវបានអនុញ្ញាតិអោយធ្វើការផ្លាស់ប្ដូរការកំនត់ផ្សេងៗរបស់មូលដ្ឋានទិន្នន័យទេ។',
 	'configure-section-email' => 'អ៊ីមែល',
 	'configure-section-timezone' => 'ល្វែងម៉ោង',
+	'configure-section-css-js' => 'CSS និង JavaScript',
 	'configure-section-namespaces' => 'លំហឈ្មោះ',
 	'configure-section-stats' => 'ស្ថិតិវិបសាយ',
 	'configure-section-skin' => 'សំបក',
@@ -1705,7 +1735,7 @@ $messages['nl'] = array(
 	'configure-summary' => 'Via deze special pagina kunt u instellingen maken voor deze wiki. Zie [http://www.mediawiki.org/wiki/Manual:Configuration_settings Instellingen] voor meer informatie.',
 	'configure-btn-save' => 'Instellingen opslaan',
 	'configure-directory-not-writable' => 'In de map waarin de instellingen worden opgeslagen, <tt>$1</tt>, kan niet geschreven worden.
-Zorg er alstublieft voor dat PHP in de map kan schrijven om deze extensie te gebruiken.',
+Zorg er voor dat PHP in de map kan schrijven om deze extensie te gebruiken.',
 	'configure-edit-old' => 'Waarschuwing: u bent een <strong>oude</strong> versie van de instellingen aan het bewerken.',
 	'configure-error' => 'De instellingen konden niet worden opgeslagen',
 	'configure-js-add' => 'Nieuwe regel toevoegen',
@@ -1715,7 +1745,7 @@ Zorg er alstublieft voor dat PHP in de map kan schrijven om deze extensie te geb
 	'configure-js-remove-row' => 'Deze regel verwijderen',
 	'configure-no-diff' => 'Er is geen verschil tussen de aangegeven versies.',
 	'configure-no-directory' => 'De map waarin de instellingen moeten worden opgeslagen (<tt>$1</tt>) bestaat niet.
-Maak die map alstublieft aan, of verander de instelling voordat u deze extensie kunt gebruiken.',
+Maak die map aan, of verander de instelling voordat u deze extensie kunt gebruiken.',
 	'configure-no-old' => 'Er zijn geen oude versies van de instellingen.',
 	'configure-no-setup' => 'Om deze extensie te gebruiken, moet u <code>efConfigureSetup()</code> expliciet aanroepen in het bestand LocalSettings.php.',
 	'configure-no-transwiki' => "U mag geen instellingen in andere wiki's veranderen",
@@ -2679,6 +2709,14 @@ $messages['te'] = array(
 	'configure-setting-not-available' => 'ఈ మీడియావికీ సంచికలో ఆ అమరిక అందుబాటులో  లేదు',
 	'configure-view' => 'చూడండి',
 	'configure-view-not-allowed' => 'ఈ అమరికని చూడడానికి మీకు అనుమతి లేదు',
+);
+
+/** Thai (ไทย)
+ * @author Octahedron80
+ */
+$messages['th'] = array(
+	'configure-section-category' => 'หมวดหมู่',
+	'configure-section-search' => 'ค้นหา',
 );
 
 /** Turkish (Türkçe)

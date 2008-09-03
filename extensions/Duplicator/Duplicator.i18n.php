@@ -546,8 +546,8 @@ $messages['jv'] = array(
  */
 $messages['km'] = array(
 	'duplicator-options' => 'ជំរើសនានា',
-	'duplicator-source' => 'ប្រភព ៖',
-	'duplicator-dest' => 'គោលដៅ ៖',
+	'duplicator-source' => 'ប្រភព៖',
+	'duplicator-dest' => 'គោលដៅ៖',
 	'duplicator-summary' => 'បានចំលងពី [[$1]]',
 	'duplicator-source-invalid' => 'សូមផ្តល់មកនូវចំនងជើងប្រភពត្រឹមត្រូវ។',
 );
@@ -668,10 +668,12 @@ kopieën ontstaan met een volledige geschiedenis. Dit is handig voor forks, enzo
 	'duplicator-success-talkcopied' => 'De overlegpagina is ook gekopieerd.',
 	'duplicator-success-talknotcopied' => 'De overlegpagina kon niet gekopieerd worden.',
 	'duplicator-failed' => 'De pagina kon niet gekopieerd worden. Er is een onbekende fout opgetreden.',
-	'duplicator-source-invalid' => 'Geef alstublieft een geldige bronpagina op.',
-	'duplicator-source-notexist' => '[[$1]] bestaat niet. Geef alstublieft een pagina op die bestaat.',
-	'duplicator-dest-invalid' => 'Geef alstublieft een geldige doelpagina op.',
-	'duplicator-dest-exists' => '[[$1]] bestaat al. Geeft alstublieft een doelpagina op die niet bestaat.',
+	'duplicator-source-invalid' => 'Geef een geldige bronpagina op.',
+	'duplicator-source-notexist' => '[[$1]] bestaat niet.
+Geef een pagina op die bestaat.',
+	'duplicator-dest-invalid' => 'Geef een geldige doelpagina op.',
+	'duplicator-dest-exists' => '[[$1]] bestaat al.
+Geeft een doelpagina op die niet bestaat.',
 	'duplicator-toomanyrevisions' => '[[$1]] heeft te veel versies ($2) en kan niet gekopieerd worden. De huidige limiet is $3.',
 );
 
@@ -809,7 +811,7 @@ $messages['ps'] = array(
  */
 $messages['pt'] = array(
 	'duplicator' => 'Duplicar uma página',
-	'duplicator-desc' => 'Criar cópias independentes de páginas com histórico completo de edições',
+	'duplicator-desc' => 'Criar [[Special:Duplicate|cópias independentes de páginas]] com histórico completo de edições',
 	'duplicator-toolbox' => 'Duplicar esta página',
 	'duplicator-header' => 'Esta página permite a duplicação completa de uma página de conteúdo, criando cópias independentes de todo o seu histórico. Isto é útil para separar versões de páginas, etc.',
 	'duplicator-options' => 'Opções',
@@ -994,6 +996,13 @@ $messages['tg-cyrl'] = array(
 	'duplicator-dest-invalid' => 'Лутфан унвони мақсади мӯътабареро пешкаш кунед.',
 	'duplicator-toomanyrevisions' => '[[$1]] хеле зиёд ($2) нусхаҳо дорад ва қобили нусхабардорӣ нест.
 Маҳдудияти кунунӣ $3 аст.',
+);
+
+/** Thai (ไทย)
+ * @author Octahedron80
+ */
+$messages['th'] = array(
+	'duplicator-source' => 'แหล่งที่มา:',
 );
 
 /** Turkish (Türkçe)

@@ -121,9 +121,10 @@ $messages['fi'] = array(
 
 /** French (Français)
  * @author Grondin
+ * @author Louperivois
  */
 $messages['fr'] = array(
-	'newusermessage-desc' => "Ajoute un message dans la page de discussion d'un nouvel utilisateur.",
+	'newusermessage-desc' => "Ajoute un message dans la page de discussion d'un nouvel utilisateur",
 	'newuseredit-summary' => 'Ajoute [[{{int:newusermessage-template}}|un message de bienvenue]] dans la page de discussion d’un nouvel utilisateur',
 );
 
@@ -132,6 +133,7 @@ $messages['fr'] = array(
  */
 $messages['gl'] = array(
 	'newusermessage-desc' => 'Engade unha mensaxe ás páxinas de conversa dos usuarios novos',
+	'newuseredit-summary' => 'Engadindo [[{{int:newusermessage-template}}|unha mensaxe de benvida]] ás páxinas dos usuarios novos',
 );
 
 /** Hebrew (עברית)
@@ -200,9 +202,11 @@ $messages['ja'] = array(
 
 /** Khmer (ភាសាខ្មែរ)
  * @author Chhorran
+ * @author Lovekhmer
  */
 $messages['km'] = array(
 	'newusermessage-desc' => 'បន្ថែម មួយ សារ ក្នុង ទំព័រពិភាក្សា របស់ អ្នកប្រើប្រាស់ថ្មី',
+	'newuseredit-summary' => 'បញ្ចូល[[{{int:newusermessage-template}}|សារស្វាគមន៍]]ទៅក្នុងទំព័រពិភាក្សារបស់អ្នកប្រើប្រាស់',
 );
 
 /** Ripoarisch (Ripoarisch)
@@ -294,6 +298,7 @@ $messages['oc'] = array(
  */
 $messages['pt'] = array(
 	'newusermessage-desc' => 'Adiciona uma mensagem às páginas de discussão de novos utilizadores',
+	'newuseredit-summary' => 'Adicionado [[{{int:newusermessage-template}}|mensagem de boas-vindas]] à página de discussão do novo utilizador',
 );
 
 /** Russian (Русский)

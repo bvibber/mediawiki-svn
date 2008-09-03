@@ -191,7 +191,7 @@ $messages['gl'] = array(
 	'inspectcache-list' => 'Listaxe',
 );
 
-/** Gothic (Ì†ÄÌº≤Ì†ÄÌºøÌ†ÄÌΩÑÌ†ÄÌºπÌ†ÄÌΩÉÌ†ÄÌº∫)
+/** Gothic
  * @author Jocke Pirat
  */
 $messages['got'] = array(
@@ -642,6 +642,13 @@ $messages['tet'] = array(
 $messages['tg-cyrl'] = array(
 	'inspectcache-delete' => '“≤–∞—Ñ–∑',
 	'inspectcache-list' => '–§–µ“≥—Ä–∏—Å—Ç',
+);
+
+/** Thai (‡πÑ‡∏ó‡∏¢)
+ * @author Octahedron80
+ */
+$messages['th'] = array(
+	'inspectcache-ok' => '‡∏ï‡∏Å‡∏•‡∏á',
 );
 
 /** Ukrainian (–£–∫—Ä–∞—ó–Ω—Å—å–∫–∞)

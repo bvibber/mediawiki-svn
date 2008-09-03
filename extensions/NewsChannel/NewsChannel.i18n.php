@@ -240,3 +240,10 @@ $messages['vi'] = array(
 	'newschannel_submit_button' => 'Tạo feed',
 );
 
+/** Volapük (Volapük)
+ * @author Malafaya
+ */
+$messages['vo'] = array(
+	'newschannel_limit' => 'Mied:',
+);
+

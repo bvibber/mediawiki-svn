@@ -337,6 +337,13 @@ $messages['ms'] = array(
 	'showprocesslist-time' => 'Masa',
 );
 
+/** Erzya (Эрзянь)
+ * @author Botuzhaleny-sodamo
+ */
+$messages['myv'] = array(
+	'showprocesslist-user' => 'Теиця',
+);
+
 /** Nahuatl (Nāhuatl)
  * @author Fluence
  */

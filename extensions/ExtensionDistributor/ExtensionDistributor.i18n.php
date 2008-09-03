@@ -543,7 +543,7 @@ $messages['lb'] = array(
 $messages['nl'] = array(
 	'extensiondistributor' => 'MediaWiki-uitbreiding downloaden',
 	'extdist-desc' => 'Uitbreiding voor het distribueren van uitbreidingen',
-	'extdist-not-configured' => 'Maak alstublieft de instellingen voor $wgExtDistTarDir en $wgExtDistWorkingCopy',
+	'extdist-not-configured' => 'Maak de instellingen voor $wgExtDistTarDir en $wgExtDistWorkingCopy',
 	'extdist-wc-missing' => 'De instelde werkmap bestaat niet!',
 	'extdist-no-such-extension' => 'De uitbreiding "$1" bestaat niet',
 	'extdist-no-such-version' => 'De uitbreiding "$1" bestaat niet in de versie "$2".',
@@ -568,7 +568,7 @@ De meeste uitbreidingen werken met meerdere versies van MediaWiki, dus als uw ve
 
 De URL voor de snapshot is:
 :$4
-Deze verwijzing kan gebruikt worden door het direct downloaden van de server, maar maak alstublieft geen bladwijzers aan, omdat de inhoud bijgewerkt kan worden, of de snapshot op een later moment verwijderd kan worden.
+Deze verwijzing kan gebruikt worden door het direct downloaden van de server, maar maak geen bladwijzers aan, omdat de inhoud bijgewerkt kan worden, of de snapshot op een later moment verwijderd kan worden.
 
 Pak het tararchief uit in uw map "extensions/". Op een UNIX-achtig besturingssysteem gaat dat als volgt:
 
@@ -701,6 +701,13 @@ $messages['pl'] = array(
 	'extdist-submit-extension' => 'Kontynuuj',
 	'extdist-no-versions' => 'Wybrane rozszerzenie „$1” nie jest dostępne w żadnej wersji oprogramowania!',
 	'extdist-submit-version' => 'Kontynuuj',
+);
+
+/** Portuguese (Português)
+ * @author Malafaya
+ */
+$messages['pt'] = array(
+	'extdist-submit-version' => 'Continuar',
 );
 
 /** Romanian (Română)

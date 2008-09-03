@@ -324,6 +324,19 @@ $messages['pl'] = array(
 	'errorhandler-trace-line' => '$1 (linia $2): $3',
 );
 
+/** Portuguese (Português)
+ * @author Malafaya
+ */
+$messages['pt'] = array(
+	'errorhandler-errors' => 'Erros:',
+	'errorhandler-error-fatal' => 'Erro fatal',
+	'errorhandler-error-warning' => 'Aviso',
+	'errorhandler-msg-text' => '$1 : $2 em $3 (linha $4)',
+	'errorhandler-msg-html' => '<b>$1</b> : <i>$2</i> em <b>$3</b> (linha <b>$4</b>)',
+	'errorhandler-trace-line' => '$1 (linha $2): $3',
+	'errorhandler-trace-line-internal' => '[função interna]: $1',
+);
+
 /** Romanian (Română)
  * @author KlaudiuMihaila
  */

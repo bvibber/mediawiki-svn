@@ -50,11 +50,12 @@ $messages['ast'] = array(
 );
 
 /** German (Deutsch)
+ * @author ChrisiPK
  * @author sokai
  */
 $messages['de'] = array(
 	'forcepreview' => 'Seite speichern (zuerst Vorschau anzeigen)',
-	'forcepreview-desc' => 'Vorschau für unpriviligierte Benutzer erzwingen',
+	'forcepreview-desc' => 'Vorschau für unprivilegierte Benutzer erzwingen',
 	'right-forcepreviewexempt' => 'Speichern ohne Erzwingung der Vorschau',
 );
 
@@ -64,6 +65,7 @@ $messages['de'] = array(
 $messages['eo'] = array(
 	'forcepreview' => 'Konservu paĝon (post rigardanta ĝin)',
 	'forcepreview-desc' => 'Devigi antaŭrigardon por senrajtajn uzantojn',
+	'right-forcepreviewexempt' => 'Povas konservi sen uzante Antaŭvidon',
 );
 
 /** Finnish (Suomi)

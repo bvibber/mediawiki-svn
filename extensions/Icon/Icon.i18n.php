@@ -203,6 +203,13 @@ $messages['mr'] = array(
 	'icon-desc' => 'आयकॉन व आयकॉन दुवा म्हणून चित्र वापरण्याची परवानगी देते',
 );
 
+/** Erzya (Эрзянь)
+ * @author Botuzhaleny-sodamo
+ */
+$messages['myv'] = array(
+	'icon-badwidth' => 'Амаштовикс келе',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

@@ -343,6 +343,7 @@ $messages['bg'] = array(
  * @author Jordi Roqué
  */
 $messages['ca'] = array(
+	'sign-viewfield-options' => 'Opcions',
 	'sign-viewfield-reviewcomment' => 'Comentari',
 	'sign-review-comment' => 'Comentari',
 );
@@ -835,6 +836,8 @@ $messages['is'] = array(
  * @author Darth Kule
  */
 $messages['it'] = array(
+	'sign-realname' => 'Nome:',
+	'sign-viewfield-realname' => 'Nome',
 	'sign-viewfield-ip' => 'Indirizzo IP',
 	'sign-viewfield-email' => 'Indirizzo e-mail',
 	'sign-viewfield-options' => 'Opzioni',
@@ -1201,6 +1204,14 @@ $messages['mt'] = array(
 	'sign-review-comment' => 'Kumment',
 );
 
+/** Erzya (Эрзянь)
+ * @author Botuzhaleny-sodamo
+ */
+$messages['myv'] = array(
+	'sign-realname' => 'Леметь:',
+	'sign-viewfield-realname' => 'Леметь',
+);
+
 /** Nahuatl (Nāhuatl)
  * @author Fluence
  */
@@ -1216,10 +1227,10 @@ $messages['nah'] = array(
  */
 $messages['nl'] = array(
 	'signdocument' => 'Document ondertekenen',
-	'sign-nodocselected' => 'Selecteer alstublieft het document dat u wilt ondertekenen.',
+	'sign-nodocselected' => 'Selecteer het document dat u wilt ondertekenen.',
 	'sign-selectdoc' => 'Document:',
-	'sign-docheader' => '<div class="noarticletext">Gebruik dit formulier alstublieft om het document "[[$1]]" te ondertekenen, dat hieronder wordt weergeven.
-Lees alstublieft het hele document en als u het wilt steunen vul dan alstublieft de verplichte velden in om het te ondertekenen.</div>',
+	'sign-docheader' => '<div class="noarticletext">Gebruik dit formulier om het document "[[$1]]" te ondertekenen, dat hieronder wordt weergeven.
+Lees het hele document en als u het wilt steunen vul dan de verplichte velden in om het te ondertekenen.</div>',
 	'sign-error-nosuchdoc' => 'Het opgegeven document ($1) bestaat niet.',
 	'sign-realname' => 'Naam:',
 	'sign-address' => 'Straat:',
@@ -2159,6 +2170,13 @@ $messages['tg-cyrl'] = array(
 	'sign-viewfield-options' => 'Ихтиёрот',
 	'sign-viewfield-reviewcomment' => 'Тавзеҳот',
 	'sign-review-comment' => 'Тавзеҳ',
+);
+
+/** Thai (ไทย)
+ * @author Octahedron80
+ */
+$messages['th'] = array(
+	'sign-viewfield-ip' => 'หมายเลขไอพี',
 );
 
 /** Vietnamese (Tiếng Việt)
