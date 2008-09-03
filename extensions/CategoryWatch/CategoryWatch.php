@@ -17,7 +17,7 @@ if (!defined('MEDIAWIKI')) die('Not an entry point.');
 
 define('CATEGORYWATCH_VERSION', '0.1.1, 2008-09-04');
 
-$wgCategoryWatchNotifyEditor = false;
+$wgCategoryWatchNotifyEditor = true;
 
 $wgExtensionFunctions[] = 'wfSetupCategoryWatch';
 $wgExtensionCredits['other'][] = array(
