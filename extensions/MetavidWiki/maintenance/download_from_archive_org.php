@@ -10,6 +10,8 @@ define('ARCHIVE_ORG_SKIP_LIST', '/metavid/ao_skip_list.txt');
 
 define('MV_BASE_MEDIA_SERVER_PATH', 'http://mvbox2.cse.ucsc.edu/mvFlvServer.php/');
 
+define('META_DATA_EXT', '.meta');
+
 //for gennerate flv metadata:
 include_once('../skins/mv_embed/flvServer/MvFlv.php');
 
