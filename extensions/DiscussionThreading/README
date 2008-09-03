@@ -1,0 +1,368 @@
+'''Title: ''' Modify Discussion Functionality to be more threadlike
+
+'''Description:'''
+
+[[Extension:DiscussionThreading|See formal extension description]]
+
+The thread-like nature of discussions is highly valuable. This extension is a quasi threading adaption for the discussion feature that does the following:
+
+# Adds a <nowiki>[new]</nowiki> link onto the header that creates a new comment on the page when used.
+# Adds a <nowiki>[reply]</nowiki> link onto the header that creates a reply to that section.
+# Automatically adds a signature in at the top of the section - preferably in the header bar to show up in TOC
+# Enters the discussion page in the add comment mode (and automatic signature) when new discussion page made
+
+This requires adding 2 new hooks to Linker.php - which requires manual patching.  The extension itself includes multiple hooks and the initial setup.
+
+== Installation Instructions ==
+
+Will absolutely not work below 1.6.0, requires features added with that release.
+
+The "reply" feature requires a new parameter passed to the EditPage.  This parameter is "replyto=yes" when the user is replying to a previous post.
+
+You can apply this extension either by downloading and copying the files into your wiki, or by manual processes below.  The referenced packages have the files necessary to implement without editing patches, but only for the following versions.  :
+
+* REL1_10
+* REL1_9_3
+
+If you do not have one of these versions, you must [[Extension:DiscussionThread_Article#Manual_Patching_and_Installation | manually patch]].
+
+=== Download and Install Instructions ===
+
+You can download the extension and already patched files from:
+
+* [http://wiki.montcopa.org/PublicDownloads/DiscussionThreading.zip Windows Zip Package]
+* [http://wiki.montcopa.org/PublicDownloads/DiscussionThreading.tar TAR Package]
+
+# Create a new directory extensions/DiscussionThreading
+# Copy the files DiscussionThreading.php and DiscussionThreading.i18n.php into extensions/DiscussionThreading
+# Select the appropriate Release Directory ('''NOTE: DO NOT USE THESE UNLESS YOU HAVE THE EXACT RELEASE''') and perform ONLY ONE of the following two steps:
+## Apply the patch file to your existing includes/linker.php file
+## Copy the included linker.php file into your includes directory, overwriting the existing version (Note:  If you have applied other patches to this file they will be overwritten).
+# Patch localsettings.php by adding the following near other require_once or at the end before the close statement:
+<pre>require_once("$IP/extensions/DiscussionThreading/DiscussionThreading.php");</pre>
+
+If you have executed this properly, you will have the following:
+
+* DiscussionThreading.php and DiscussionThreading.i18n.php moved into $IP/extensions/DiscussionThreading/DiscussionThreading.php
+* Either patched Linker.php or the loaded Linker.php from the EXACT distribution downloaded release in $IP/includes/
+* extensions/DiscussionThreading/DiscussionThreading.php executed from localsettings.php
+
+=== Manual Patching and Installation ===
+Details are below, but these are required steps:
+
+# Create a new directory extensions/DiscussionThreading
+# Create a new file extensions/DiscussionThreading/DiscussionThreading.php and copy and paste the below code
+# Create a new file extensions/DiscussionThreading/DiscussionThreading.i18n.php and copy and paste the below code
+# Patch Linker.php according to below instructions
+# Patch localsettings.php by adding the following near other require_once or at the end before the close statement:
+<pre>require_once("$IP/extensions/DiscussionThreading/DiscussionThreading.php");</pre>
+
+There is something very funky about flushing the PHP compiled cache.  I was only able to get the changes made in the Linker.php file to take effect by going to a discussion page while I was logged on as an administrator on the patched server and using a browser local to that machine (press the + tab).  Somehow, this caused the .php files to recompile and activate for everyone.
+
+== Patches Required ==
+
+To do this, have to patch the following (instructions are for 1.10.0, future or past releases will, of course vary with line numbers and locations):
+
+===Patches to Linker.php===
+
+====Modified linker.php editSectionLinkForOther (line 985 in REL1_10) ====
+<pre>
+	public function editSectionLinkForOther( $title, $section ) {
+		global $wgContLang;
+
+		$title = Title::newFromText( $title );
+		$editurl = '&section='.$section;
+		$url = $this->makeKnownLinkObj( $title, wfMsg('editsection'), 'action=edit'.$editurl );
+### Modifications Here
+###		return "<span class=\"editsection\">[".$url."]</span>";
+		$result = null;
+		wfRunHooks( 'editSectionLinkForOther', array( &$this, $title, $section , $url, &$result) );
+		if ( $result == null ) {
+			return "<span class=\"editsection\">[".$url."]</span>";
+		} else {
+			return ($result);
+		}
+###
+	}
+</pre>
+====Modified linker.php editSectionLink (line 1004 in REL1_10) ====
+<pre>
+	public function editSectionLink( $nt, $section, $hint='' ) {
+		global $wgContLang;
+
+		$editurl = '&section='.$section;
+		$hint = ( $hint=='' ) ? '' : ' title="' . wfMsgHtml( 'editsectionhint', htmlspecialchars( $hint ) ) . '"';
+		$url = $this->makeKnownLinkObj( $nt, wfMsg('editsection'), 'action=edit'.$editurl, '', '', '',  $hint );
+### Modifications Here
+###		return "<span class=\"editsection\">[".$url."]</span>";
+		$result = null;
+		wfRunHooks( 'editSectionLink', array( &$this, $nt, $section, $hint='', $url , &$result) );
+		if ( $result == null ) {
+			return "<span class=\"editsection\">[".$url."]</span>";
+		} else {
+			return ($result);
+		}
+###
+	}
+</pre>
+
+== DiscussionThreading Extension ==
+
+extensions/DiscussionThreading.php
+
+This extension implements a discussion threading process.  This threading will only be seen on the talk pages, unless explicity invoked in the command line.
+
+It adds a <nowiki>[reply]</nowiki> link on the header line.  Each time a new posting is entered or a posting is replied to, the comment will automatically be tagged (and appear in the TOC too).  Of course direct editing can occur, but this really makes it a lot easier to organize discussions in a threading view that most are familiar with.
+
+To do:
+# get someone who knows regex to clean up the parsing of the subject line
+# Assess to see if there's an easier way to do this
+
+<pre>
+<?php
+
+/**
+ * Extension to provide discussion threading similar to a listserv archive
+ *
+ * @author Jack D. Pond <jack.pond@psitex.com>
+ * @addtogroup Extensions
+ * @copyright © 2007 Jack D. pond
+ * @licence GNU General Public Licence 2.0 or later
+ */
+
+if( defined( 'MEDIAWIKI' ) ) {
+
+
+# Internationalisation file
+	require_once( "$IP/extensions/DiscussionThreading/DiscussionThreading.i18n.php" );
+
+	$wgExtensionFunctions[] = 'efDiscussionThreadSetup';
+	$wgExtensionCredits['other'][] = array( 
+						'name' => 'DiscussionThreading', 
+						'author' => 'Jack D. Pond',
+						'url' => 'http://www.mediawiki.org/wiki/Extension:DiscussionThreading',
+						'description' => 'Add Threading to discussion (talk) pages' );
+
+	/**
+	 * Set up hooks for discussion threading
+	 *
+	 * @param $wgSectionThreadingOn global logical variable to activate threading
+	 */
+
+
+	global $wgSectionThreadingOn;
+	$wgSectionThreadingOn = True;
+
+	$wgHooks['EditPage::showEditForm:initial'][] =  'efDiscussionThread';
+	$wgHooks['EditPage::attemptSave'][] = 'efStampReply';
+	$wgHooks['EditPage::showEditForm:initial'][] =  'efDiscussionThreadEdit';
+	$wgHooks['editSectionLinkForOther'][] =  'efDiscussionLink4other';
+	$wgHooks['editSectionLink'][] =  'efDiscussionLink';
+	$wgHooks['AlternateEdit'][] =  'efDiscussionThreadEdit';
+	
+
+
+
+	/**
+	 * Initial setup, add .i18n. messages from $IP/extensions/DiscussionThreading.i18n.php
+	*/		
+	function efDiscussionThreadSetup() {
+		global $wgMessageCache, $wgDiscussionThreadMessages;
+
+		foreach( $wgDiscussionThreadMessages as $lang => $messages )
+			$wgMessageCache->addMessages( $messages, $lang );
+	}
+	/**
+	 * This function creates a linkobject for the editSectionLinkForOther function in linker
+	 *
+	 * @param $callobj Article object.
+	 * @param $title Title object.
+	 * @param $section Integer: section number.
+	 * @param $hint Link String: title, or default if omitted or empty
+	 * @param $url Link String: for edit url
+	 * @param $result String: Returns the section [new][edit][reply] html if in a talk page - otherwise whatever came in with
+	 * @return  true
+	 */
+
+	function efDiscussionLink4other ($callobj, $title, $section , $url , &$result)
+	{
+		if($wgSectionThreadingOn && $title->isTalkPage() ) {
+			$commenturl = '&section='.$section.'&replyto=yes';
+			$curl = $callobj->makeKnownLinkObj( $title, wfMsg('replysection'), 'action=edit'.$commenturl );
+			$newthreadurl = '&section=new';
+			$nurl = $callobj->makeKnownLinkObj( $nt, wfMsg('threadnewsection'), 'action=edit'.$newthreadurl );
+			$result =  "<span class=\"editsection\">[".$nurl."][".$url."][".$curl."]</span>";
+		}
+		return (true);
+	}
+
+	/**
+	 * This function creates a linkobject for the editSectionLink function in linker
+	 *
+	 * @param $callobj Article object.
+	 * @param $nt Title object.
+	 * @param $section Integer: section number.
+	 * @param $hint Link String: title, or default if omitted or empty
+	 * @param $url Link String: for edit url
+	 * @param $result String: Returns the section [new][edit][reply] html  if in a talk page - otherwise whatever came in with
+	 * @return  true
+	 */
+
+	function efDiscussionLink ($callobj, $nt, $section, $hint='', $url , &$result)
+	{
+		global $wgSectionThreadingOn;
+		if($wgSectionThreadingOn && $nt->isTalkPage() ) {
+			$commenturl = '&section='.$section.'&replyto=yes';
+			$hint = ( $hint=='' ) ? '' : ' title="' . wfMsgHtml( 'replysectionhint', htmlspecialchars( $hint ) ) . '"';
+			$curl = $callobj->makeKnownLinkObj( $nt, wfMsg('replysection'), 'action=edit'.$commenturl, '', '', '',  $hint );
+			$newthreadurl = '&section=new';
+			$hint = ( $hint=='' ) ? '' : ' title="' . wfMsgHtml( 'threadnewsectionhint', htmlspecialchars( $hint ) ) . '"';
+			$nurl = $callobj->makeKnownLinkObj( $nt, wfMsg('threadnewsection'), 'action=edit'.$newthreadurl, '', '', '',  $hint );
+			$result =  "<span class=\"editsection\">[".$nurl."][".$url."][".$curl."]</span>";
+		}
+		return (true);
+	}
+
+	/**
+	 * This function is a hook used to test to see if empty, if so, start a comment
+	 *
+	 * @param $efform form object.
+	 * @return  true
+	 */
+
+
+	function efDiscussionThreadEdit ($efform) {
+		global $wgRequest;
+		$efform->replytosection = '';
+		$efform->replyadded = false;
+		$efform->replytosection = $wgRequest->getVal( 'replyto' );
+		if( !$efform->mTitle->exists() ) {
+			if($wgSectionThreadingOn && $efform->mTitle->isTalkPage() ) {
+				$efform->section = 'new';
+			}
+		}
+		return (true);
+	}
+
+	/**
+	 * Create a new header, one level below the 'replyto' header, add re: to front and tag it with user information
+	 *
+	 * @param $efform Form Object before display
+	 * @return  true
+	 */
+
+	function efDiscussionThread($efform){
+		global $wgSectionThreadingOn;
+		$wgSectionThreadingOn = isset($wgSectionThreadingOn) ? $wgSectionThreadingOn : false;
+		if ( $efform->replytosection != '' && $wgSectionThreadingOn  && !$efform->replyadded) {
+			if ($efform->replytosection != '') {
+				$text = $efform->textbox1;
+				$matches = array();
+				preg_match( "/^(=+)(.+)\\1/mi",
+					$efform->textbox1,
+					$matches );
+				if( !empty( $matches[2] ) ) {
+					preg_match( "/.*(-+)\\1/mi",$matches[2],$matchsign);
+					if (!empty($matchsign[0]) ){
+						$text = $text."\n\n".$matches[1]."=Re: ".trim($matchsign[0])." ~~~~".$matches[1]."=";
+					} else {
+						$text = $text."\n\n".$matches[1]."=Re: ".trim($matches[2])." -- ~~~~".$matches[1]."=";
+					}
+				} else {
+					$text = $text." -- ~~~~<br>\n\n";
+				}
+				$efform->replyadded = true;
+				$efform->textbox1 = $text;
+			}
+			return (true);
+		}
+		return (true);
+	}
+	/**
+	 * When the new header is created from summary in new (+) add comment, just stamp the header as created
+	 *
+	 * @param $efform Form Object before display
+	 * @return  true
+	 */
+
+	function efStampReply($efform){
+		global $wgSectionThreadingOn;
+		$wgSectionThreadingOn = isset($wgSectionThreadingOn) ? $wgSectionThreadingOn : false;
+		if ( $efform->section == "new" && $wgSectionThreadingOn  && !$efform->replyadded) {
+			$efform->summary = $efform->summary." -- ~~~~";
+		}
+		return(true);
+	}
+}
+?>
+</pre>
+
+== Internationalisation file  DiscussionThreading.i18n.php ==
+
+I was only completely comfortable with the english translations - looking to others to help me put the correct language translations in.
+
+I would deeply appreciate your help here.
+
+Load into file (in extension DiscussionThreading.i18n.php)
+
+<pre>
+
+<?php
+/**
+ * Internationalisation file for DiscussionThreading extension.
+ *
+ * @addtogroup Extensions
+*/
+
+$wgDiscussionThreadMessages = array();
+
+$wgDiscussionThreadMessages['en'] = array(
+	'replysection' => 'reply',
+	'replysectionhint' => "Reply to this Posting",
+	'threadnewsection' => 'new',
+	'threadnewsectionhint' => "Start a new thread"
+);
+
+/* Need to add 
+	af,br,bs,ca,cs,cy,de,et,eu,fi,fr,ga,gl,he,hr,hsb,id,is,it,ja,kk-kz,kk-tr,kk-cn,kk,lv,nl,
+	no,nn,oc,pt,pt-br,ro,ru,sk,sl,sq,uk,wa,zh-cn,zh-tw,zh-yue,zh-hk,zh-sg
+
+	Would do this by adding a new $wgDiscussionThreadMessages array example:
+	
+$wgDiscussionThreadMessages['lang1'] = array(
+	'replysection' => 'lang1 - tag',
+	'replysectionhint' => "lang1 - hint",
+	'threadnewsection' => 'lang1 - new',
+	'threadnewsectionhint' => "'lang1 - Start a new thread"
+);
+*/
+?>
+</pre>
+
+Would add new languages with a new array per, using this array schema for each language:
+
+<pre>
+$wgDiscussionThreadMessages['lang1'] = array(
+	'replysection' => 'lang1 - tag',
+	'replysectionhint' => "lang1 - hint",
+	'threadnewsection' => 'lang1 - new',
+	'threadnewsectionhint' => "'lang1 - Start a new thread"
+);
+</pre>
+
+== Indenting Headers ==
+
+If you are really serious about threading, you can indent headers by modifying the corresponding CSS file (eg. skins/monobook/main.css).  To modify all headers (talk or regular article), you can add a 'padding-left: <small>''x''</small>em;' into each of the headers 3-6.  Eg.:
+
+h3 { font-size: 132%; padding-left: <span style="color: red">1em</span>;}<br>
+h3 .editsection { font-size: 76%; font-weight: normal; }<br>
+h4 { font-size: 116%; padding-left: <span style="color: red">2em</span>;}<br>
+h4 .editsection { font-size: 86%; font-weight: normal; }<br>
+h5 { font-size: 100%; padding-left: <span style="color: red">3em</span>;}<br>
+h5 .editsection { font-weight: normal; }<br>
+h6 { font-size: 80%; padding-left: <span style="color: red">4em</span>; }<br>
+h6 .editsection { font-size: 125%; font-weight: normal; }<br>
+
+
+<noinclude>[[Category:Extensions]]</noinclude>
+[[category:Uncategorized extension]]
