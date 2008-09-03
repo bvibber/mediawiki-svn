@@ -17,27 +17,27 @@
     <transition id="xFade" 
 	type="fade" 
 	subtype="crossfade" 
-	dur="2s"/>
+	dur="4s"/>
 	
   </head>
   <body>
     <seq>
- 	<video src="sample_fish.ogg?t=0:0:0/0:0:26" 
+ 	<video src="sample_fish.ogg?t=0:0:0/0:0:25" 
 		region="video_region" 
-		transIn="fromGreen"
-		fill="remove" 
-		type="video/ogg" 
+		transIn="fromGreen"	
+		transOut="xFade" 	
+		type="video/ogg" 	
+		fill="transition"
+		dur="10s"
 		poster="sample_fish.jpg"/>
 		
       <video src="sample_magnolia.ogg?t=0:0:0/0:0:05" 
 		region="video_region" 
 		transIn="xFade" 	
-		transOut="toGreen" 
-		begin="2s" 
+		transOut="toGreen" 		
 		fill="transition" 
 		type="video/ogg" 
-		poster="sample_magnolia.jpg"/>
-     
+		poster="sample_magnolia.jpg"/>     
     </seq>
   </body>
 </smil>

@@ -1917,8 +1917,8 @@ embedVideo.prototype = {
         }
         // time display
         if(this.supports['time_display'] && (available_width > 80))
-        {                 	
-            html_code += '<div id="mv_time_'+id+'" class="time">'+this.getTimeReq()+'</div>';
+        {                 	        	
+            html_code += '<div id="mv_time_'+id+'" class="time">'+this.getDurationNTP()+'</div>';
             available_width -= 80;
         }
 
@@ -2070,8 +2070,7 @@ embedVideo.prototype = {
 	    	' overflow:hidden; top:0px; left:0px; width:'+this.playerPixelWidth()+'px; height:'+this.playerPixelHeight()+'px; z-index:0;">'+
 	        '<img width="'+this.playerPixelWidth()+'" height="'+this.playerPixelHeight()+'" style="position:relative;width:'+this.playerPixelWidth()+';height:'+this.playerPixelHeight()+'"' +
 	        ' id="img_thumb_'+this.id+'" src="' + thumbnail + '">';
-
-		js_log("PLAY BUTTON: " + this.play_button);
+		
 	    if(this.play_button==true)
 		  	thumb_html+=this.getPlayButton();
    	    thumb_html+='</div>';

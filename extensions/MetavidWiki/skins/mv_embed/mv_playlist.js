@@ -335,6 +335,8 @@ mvPlayList.prototype = {
 				//update the embed html: 					
 				clip.embed.height=plObj.height;
 				clip.embed.width=plObj.width;
+				if(clip.id != plObj.cur_clip.id)
+					clip.embed.play_button=false;
 				
 				clip.embed.getHTML();//get the thubnails for everything			
 				$j(clip.embed).css({ 'position':"absolute",'top':"0px", 'left':"0px"});					
@@ -342,11 +344,10 @@ mvPlayList.prototype = {
 					$j('#clipDesc_'+clip.id).get(0).appendChild(clip.embed);
 				}else{
 					js_log('cound not find: clipDesc_'+clip.id);					
-				}						
-				
+				}										
 				//add the controls if we are on the current clip:
 				if(clip.id == plObj.cur_clip.id){
-					js_log("add controls: "+ clip.embed.getControlsHTML() +"\nto:videoPlayer_"+ clip.embed.id);			
+					//js_log("add controls: "+ clip.embed.getControlsHTML() +"\nto:videoPlayer_"+ clip.embed.id);			
 					$j('#videoPlayer_'+clip.embed.id).append(
 						'<div id="mv_embedded_controls_'+plObj.id+'" ' +
 						'style="postion:relative;top:'+(plObj.height+title_bar_height)+'px" ' +
@@ -354,7 +355,7 @@ mvPlayList.prototype = {
 							 clip.embed.getControlsHTML() +
 						'</div>'
 					);
-				}				
+				}			
 			}); 	
 						
 			if(this.cur_clip)
@@ -507,10 +508,19 @@ mvPlayList.prototype = {
 	next: function(){		
 		//advance the playhead to the next clip			
 		var next_clip = this.getClip(1);
-		if(this.cur_clip.embed.supports['playlist_driver']){
+		if(this.cur_clip.embed.supports['playlist_driver']){ //where the plugin is just feed a playlist
 			//do next clip action on start_clip embed cuz its the one being displayed: 
 			this.start_clip.embed.playlistNext();
 			this.cur_clip=next_clip;					
+		}else if(this.cur_clip.embed.supports['playlist_swap_loader']){
+			//where the plugin supports pre_loading future clips and manage that in javascript
+			//pause current clip
+			this.cur_clip.embed.pause;
+			//do swap:
+			$j('#clipDesc_'+this.cur_clip.id).hide();
+			this.cur_clip=next_clip;
+			$j('#clipDesc_'+this.cur_clip.id).show();
+			this.cur_clip.embed.play();			
 		}else{
 			js_log('do next');								
 			this.switchPlayingClip(next_clip);
@@ -522,8 +532,17 @@ mvPlayList.prototype = {
 		if(this.cur_clip.embed.supports['playlist_driver']){
 			this.start_clip.embed.playlistPrev();
 			this.cur_clip=prev_clip;	
+		}else if(this.cur_clip.embed.supports['playlist_swap_loader']){
+			//where the plugin supports pre_loading future clips and manage that in javascript
+			//pause current clip
+			this.cur_clip.embed.pause;
+			//do swap:
+			$j('#clipDesc_'+this.cur_clip.id).hide();
+			this.cur_clip=prev_clip;
+			$j('#clipDesc_'+this.cur_clip.id).show();
+			this.cur_clip.embed.play();			
 		}else{			
-			js_log('do prev');										
+			js_log('do prev hard embed swap');										
 			this.switchPlayingClip(prev_clip);
 		}		
 	},
@@ -640,11 +659,13 @@ mvPlayList.prototype = {
 	},
 	//returns a clip. If offset is out of bound returns first or last clip
 	getClip: function(clip_offset){		
-		if(!clip_offset)clip_offset=0;		
-		//idorate through clips for this.cur_clipID (more complicated to allow for id of clips
+		if(!clip_offset)clip_offset=0;	
+					
 		var cov = this.cur_clip.order + clip_offset;
 		var cmax = this.getClipCount()-1;
 		//js_log('cov:'+cov +' cmax:'+ cmax);
+		
+		//force first or last clip if offset is outOfBounds 
 		if( cov >= 0 && cov <= cmax ){
 			return this.default_track.clips[cov]
 		}else{
@@ -1554,7 +1575,8 @@ var mv_supported_media_attr = new Array(
 	'transIn',
 	'transOut',
 	'begin',
-	'fill'
+	'fill',
+	'dur'
 );	
 //all the overwritten and new methods for playlist extension of mv_embed
 mvSMILClip.prototype = {	
@@ -1590,7 +1612,9 @@ mvSMILClip.prototype = {
 		if(this.transOut && this.pp.transitions[this.transOut])			
 			this.transOut =this.pp.transitions[this.transOut].clone();
 		
-		
+		//parse duration: 
+		if(this.dur)
+			this.dur = smilParseTime(this.dur);
 		//check if the transition is a valid id:		
 		return this;		
 	},
@@ -1625,6 +1649,7 @@ var transitionObj = function(element) {
 };
 transitionObj.prototype = {	
 	animation_state:0, //can be 0=unset, 1=running, 2=done 
+	dur:2, //default duration of 2	
 	init:function(element){
 		//load supported attributes: 	
 		var _this = this;
@@ -1635,7 +1660,7 @@ transitionObj.prototype = {
 		//@@todo proccess duration (for now just srip s) per: 
 		//http://www.w3.org/TR/SMIL3/smil-timing.html#Timing-ClockValueSyntax
 		if(_this.dur)
-			_this.dur = parseInt(_this.dur.replace('s', ''));
+			_this.dur = smilParseTime(_this.dur);
 	},
 	clone:function(){
 		var cObj = new this.constructor();
@@ -1643,6 +1668,18 @@ transitionObj.prototype = {
 			cObj[i]=this[i];				
 		return cObj;
 	}	
+}
+/*
+ * takes an input 
+ * @time_str input time string 
+ * returns time in seconds 
+ * 
+ * @@todo proccess duration (for now just srip s) per: 
+ * http://www.w3.org/TR/SMIL3/smil-timing.html#Timing-ClockValueSyntax
+ * (probably have to use a Time object to fully support the smil spec
+ */
+function smilParseTime(time_str){
+	return parseInt(time_str.replace('s', ''));
 }
 /***************************
  * end SMIL specific code
