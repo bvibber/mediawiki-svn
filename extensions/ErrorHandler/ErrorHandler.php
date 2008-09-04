@@ -23,7 +23,7 @@ $wgExtensionCredits['other'][] = array(
 /**
  * Types of errors to show
  */
-$wgErrorHandlerReport = E_ALL | E_STRICT;
+$wgErrorHandlerReport = ( E_ALL | E_STRICT ) & ~4096 /* E_RECOVERABLE_ERROR */;
 
 /**
  * Whether to show the backtrace when an error occurs
@@ -95,14 +95,14 @@ function efErrorHandler( $errType, $errMsg, $errFile, $errLine, $errVars ){
 		E_USER_WARNING       => 'user-warning',
 		E_USER_NOTICE        => 'user-notice',
 		E_STRICT             => 'strict',
-		E_RECOVERABLE_ERROR  => 'recoverable',
+		4096                 => 'recoverable',     // E_RECOVERABLE_ERROR
+		8192                 => 'deprecated',      // E_DEPRECATED
+		16384                => 'user-deprecated', // E_USER_DEPRECATED
 	);
 
-	if( !( $errType & $wgErrorHandlerReport ) )
-		return true;
-
-	if( !$wgErrorHandlerAlwaysReport && !( error_reporting() & $errType ) )
-		return true;
+	if( !( $errType & $wgErrorHandlerReport ) ||
+		( !$wgErrorHandlerAlwaysReport && !( error_reporting() & $errType ) ) )
+		return false;
 
 	$trace = array();
 	// Show the backtrace
@@ -182,7 +182,7 @@ function efErrorHandler( $errType, $errMsg, $errFile, $errLine, $errVars ){
 		error_log( $errText, 3, $wgErrorHandlerLog );
 	}
 
-	if ( $wgCommandLineMode ){
+	if( $wgCommandLineMode ){
 		echo $errText;
 	} else {
 		if( $wgErrorHandlerOutputDone )
@@ -190,8 +190,7 @@ function efErrorHandler( $errType, $errMsg, $errFile, $errLine, $errVars ){
 		else
 			$wgErrorHandlerErrors[] = $err;
 	}
-
-    return true;
+	return true;
 }
 
 /**
