@@ -452,6 +452,13 @@ $messages['jv'] = array(
 	'restriction-level-author' => 'Direksa-pangripta',
 );
 
+/** Georgian (ქართული)
+ * @author Malafaya
+ */
+$messages['ka'] = array(
+	'authorprotect-reason' => 'მიზეზი',
+);
+
 /** Khmer (ភាសាខ្មែរ)
  * @author Lovekhmer
  * @author គីមស៊្រុន

@@ -755,7 +755,7 @@ $messages['ps'] = array(
  */
 $messages['pt'] = array(
 	'importusers' => 'Importar Utilizadores',
-	'importusers-desc' => 'Importa utilizadores em bloco de um ficheiro CSV; codificação: UTF-8',
+	'importusers-desc' => '[[Special:ImportUsers|Importa utilizadores]] em bloco de um ficheiro CSV; codificação: UTF-8',
 	'importusers-uploadfile' => 'Carregar ficheiro',
 	'importusers-form-caption' => 'Ficheiro CSV de entrada (UTF-8)',
 	'importusers-form-file' => 'Formato do ficheiro de utilizadores (csv):',
@@ -972,6 +972,7 @@ $messages['tg-cyrl'] = array(
  * @author Octahedron80
  */
 $messages['th'] = array(
+	'importusers-form-button' => 'นำเข้า',
 	'importusers-log-summary-all' => 'ทั้งหมด',
 );
 

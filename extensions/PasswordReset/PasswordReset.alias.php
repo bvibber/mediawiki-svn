@@ -13,3 +13,10 @@ $aliases['en'] = array(
 	'PasswordReset' => array( 'PasswordReset' ),
 	'Disabledusers' => array( 'DisabledUsers', 'Disabledusers' ),
 );
+
+/** Dutch (Nederlands) */
+$aliases['nl'] = array(
+	'PasswordReset' => array( 'WachtwoordOpnieuwInstellen' ),
+	'Disabledusers' => array( 'UitgeschakeldeGebruikers' ),
+);
+

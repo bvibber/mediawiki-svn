@@ -130,6 +130,7 @@ $messages['de'] = array(
 
 /** French (Français)
  * @author Grondin
+ * @author Zetud
  */
 $messages['fr'] = array(
 	'closewikis-desc' => 'Permet de clôturer les sites wiki dans ce gestionnaire de wiki',
@@ -150,7 +151,7 @@ $messages['fr'] = array(
 	'closewikis-page-err-closed' => 'Ce wiki est déjà clôturé',
 	'closewikis-page-err-opened' => 'Wiki non clôturé',
 	'closewikis-log' => 'Journal de clôture des wiki',
-	'closewikis-log-header' => 'Voici un journal de tous les fermeture et des réouvertures faits par les stewards',
+	'closewikis-log-header' => 'Voici un journal de toutes les fermetures et réouvertures de wiki faites par les stewards',
 	'closewikis-log-close' => 'a clôturé $2',
 	'closewikis-log-reopen' => 'a réouvert $2',
 	'right-editclosedwikis' => 'Modifier les wikis clôturés',
@@ -160,6 +161,7 @@ $messages['fr'] = array(
  * @author Toliño
  */
 $messages['gl'] = array(
+	'closewikis-desc' => 'Permite pechar wikis nas granxas wiki',
 	'closewikis-closed-default' => 'Este wiki está pechado',
 	'closewikis-page' => 'Pechar o wiki',
 	'closewikis-page-close' => 'Pechar o wiki',
@@ -176,6 +178,8 @@ $messages['gl'] = array(
 	'closewikis-page-err-nowiki' => 'Especificou un wiki inválido',
 	'closewikis-page-err-closed' => 'O wiki xa está pechado',
 	'closewikis-page-err-opened' => 'O wiki non está pechado',
+	'closewikis-log' => 'Rexistro de peches de wikis',
+	'closewikis-log-header' => 'Aquí hai un rexistro de todos os peches e reaperturas de wikis feitos polos stewards',
 	'closewikis-log-close' => 'pechou "$2"',
 	'closewikis-log-reopen' => 'volveu abrir "$2"',
 	'right-editclosedwikis' => 'Editar wikis pechados',
@@ -301,6 +305,17 @@ $messages['nl'] = array(
 $messages['oc'] = array(
 	'closewikis-page-reopen-wiki' => 'Wiki :',
 	'closewikis-page-reopen-reason' => 'Motiu :',
+);
+
+/** Romanian (Română)
+ * @author KlaudiuMihaila
+ */
+$messages['ro'] = array(
+	'closewikis-page-close-submit' => 'Închide',
+	'closewikis-page-reopen' => 'Redeschide wiki',
+	'closewikis-page-reopen-wiki' => 'Wiki:',
+	'closewikis-page-reopen-reason' => 'Motiv:',
+	'closewikis-page-reopen-submit' => 'Redeschide',
 );
 
 /** Slovak (Slovenčina)

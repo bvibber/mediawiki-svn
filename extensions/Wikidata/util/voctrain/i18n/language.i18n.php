@@ -1616,6 +1616,7 @@ $messages['rif'] = array(
  */
 $messages['ro'] = array(
 	'voctrain_continue' => 'continuă',
+	'voctrain_collection' => 'colecţie',
 	'voctrain_User_name' => 'Nume de utilizator',
 	'voctrain_Login' => 'Autentificare',
 	'voctrain_Language' => 'Limbă',

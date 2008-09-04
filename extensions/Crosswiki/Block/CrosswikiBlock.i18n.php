@@ -802,6 +802,14 @@ Bali menyang:
 * [[$4]]",
 );
 
+/** Georgian (ქართული)
+ * @author Malafaya
+ */
+$messages['ka'] = array(
+	'crosswikiblock-reason' => 'მიზეზი:',
+	'crosswikiunblock-reason' => 'მიზეზი:',
+);
+
 /** Khmer (ភាសាខ្មែរ)
  * @author Chhorran
  * @author Lovekhmer

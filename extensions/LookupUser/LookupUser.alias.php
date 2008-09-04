@@ -12,3 +12,9 @@ $aliases = array();
 $aliases['en'] = array(
 	'LookupUser' => array( 'LookupUser' ),
 );
+
+/** Dutch (Nederlands) */
+$aliases['nl'] = array(
+	'LookupUser' => array( 'GebruikerOpzoeken' ),
+);
+

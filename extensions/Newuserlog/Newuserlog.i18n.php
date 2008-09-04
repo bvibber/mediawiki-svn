@@ -303,6 +303,7 @@ $messages['cs'] = array(
 $messages['cu'] = array(
 	'newuserlogpage' => 'но́въ мѣ́стъ сътворѥ́ниꙗ їсторі́ꙗ',
 	'newuserlog-create-entry' => 'но́въ по́льꙃєватєл҄ь',
+	'newuserlog-autocreate-entry' => 'по́льꙃєватєлꙗ мѣ́сто аѵтомати́чьно сътворєно́ ѥ́стъ',
 );
 
 /** Danish (Dansk)

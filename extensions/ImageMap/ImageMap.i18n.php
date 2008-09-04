@@ -372,6 +372,7 @@ $messages['gl'] = array(
 	'imagemap_desc' => 'Permite mapas de imaxe nos que se poden facer clic usando a etiqueta <tt><nowiki><imagemap></nowiki></tt>',
 	'imagemap_no_image' => 'Erro: debe especificar unha imaxe na primeira liña',
 	'imagemap_invalid_image' => 'Erro: a imaxe non é válida ou non existe',
+	'imagemap_bad_image' => 'Erro: a imaxe atópase na lista negra desta páxina',
 	'imagemap_no_link' => 'Erro: foi atopada unha ligazón non válida ao final da liña $1',
 	'imagemap_invalid_title' => 'Erro: título non válido na ligazón na liña $1',
 	'imagemap_missing_coord' => 'Erro: non abondan as coordenadas para crear un polígono, na liña $1',

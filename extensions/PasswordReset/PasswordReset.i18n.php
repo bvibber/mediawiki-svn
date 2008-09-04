@@ -672,7 +672,7 @@ $messages['ps'] = array(
  */
 $messages['pt'] = array(
 	'passwordreset' => 'Repor Palavra-Chave',
-	'passwordreset-desc' => "Repõe palavras-chaves de utilizadores do wiki - requer privilégios 'passwordreset'",
+	'passwordreset-desc' => "[[Special:Passwordreset|Repõe palavras-chaves de utilizadores do wiki]] - requer privilégios 'passwordreset'",
 	'passwordreset-invalidusername' => 'Nome de Utilizador Inválido',
 	'passwordreset-emptyusername' => 'Nome de Utilizador Vazio',
 	'passwordreset-nopassmatch' => 'Palavras-Chave não coincidem',

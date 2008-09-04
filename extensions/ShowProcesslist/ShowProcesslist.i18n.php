@@ -174,7 +174,7 @@ $messages['gl'] = array(
 	'showprocesslist-host' => 'Host',
 	'showprocesslist-db' => 'base de datos',
 	'showprocesslist-command' => 'Comando',
-	'showprocesslist-time' => 'Tempo',
+	'showprocesslist-time' => 'Hora',
 	'showprocesslist-state' => 'Estado',
 	'showprocesslist-info' => 'Información',
 );

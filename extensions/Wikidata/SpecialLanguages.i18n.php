@@ -1581,6 +1581,7 @@ $wdMessages['is'] = array(
  * @author Nemo bis
  */
 $wdMessages['it'] = array(
+	'ow_history' => 'Cronologia',
 	'ow_Language' => 'Lingua',
 	'ow_OptionAttributeOptions' => 'Opzioni',
 	'ow_Value' => 'Valore',
@@ -3028,6 +3029,7 @@ $wdMessages['ro'] = array(
 	'ow_history' => 'Istoric',
 	'ow_dm_OK' => 'OK',
 	'ow_ClassAttributeType' => 'Tip',
+	'ow_Collection' => 'Colecţie',
 	'ow_Language' => 'Limbă',
 	'ow_OptionAttributeOptions' => 'Opţiuni',
 	'ow_Source' => 'Sursă',

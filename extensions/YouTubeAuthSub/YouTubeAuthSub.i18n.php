@@ -311,6 +311,14 @@ $messages['eo'] = array(
 	'youtubeauthsub_category' => 'Kategorio',
 	'youtubeauthsub_submit' => 'Ek',
 	'youtubeauthsub_clickhere' => 'Klaku ĉi tien por ensaluti YouTube-on',
+	'youtubeauthsub_success' => "Gratulon! Via video estas alŝutita.
+Por spekti vian videon, klaku <a href='http://www.youtube.com/watch?v=$1'>ĉi tien</a>.
+YouTube povas bezoni iom da tempo procezi vian videon, do eble ĝi ne pretas ĵus nun.
+
+Por inkluzivi vian videon en paĝo en la vikio, enmeti la jenan kodon en paĝon: 
+<code>{{&#35;ev:youtube|$1}}</code>",
+	'youtubeauthsub_authsubinstructions' => 'Por alŝuti videon, vi estos devigita ensaluti retejon YouTube.',
+	'youtubeauthsub_uploadhere' => 'Alŝuti vian videon de ĉi tie:',
 	'youtubeauthsub_uploadbutton' => 'Alŝuti',
 	'youtubeauthsub_code' => '{{#ev:youtube|$1}}.
 

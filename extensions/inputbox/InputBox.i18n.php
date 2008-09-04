@@ -166,6 +166,9 @@ $messages['be-tarask'] = array(
  */
 $messages['bg'] = array(
 	'inputbox-desc' => 'Позволява вмъкването на HTML формуляри.',
+	'inputbox-error-no-type' => 'Не се посочили типа на кутията за вход, която да бъде създадена.',
+	'inputbox-error-bad-type' => 'Неразпознат тип „$1“ на кутията за вход.
+Моля, посочете „create“, „comment“, „search“ или „search2“.',
 	'tryexact' => 'Пълно и точно съвпадение',
 	'searchfulltext' => 'Претърсване на целия текст',
 	'createarticle' => 'Създаване',
@@ -1179,6 +1182,7 @@ $messages['stq'] = array(
  * @author Irwangatot
  */
 $messages['su'] = array(
+	'tryexact' => 'Coba jeung anu cocog',
 	'searchfulltext' => 'Sungsi dina téks lengkap',
 	'createarticle' => 'Jieun artikel',
 );

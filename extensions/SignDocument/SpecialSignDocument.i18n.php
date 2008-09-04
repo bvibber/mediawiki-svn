@@ -900,6 +900,13 @@ $messages['jv'] = array(
 	'sign-uniquequery-similaremail' => 'E-mail sing mèmper',
 );
 
+/** Georgian (ქართული)
+ * @author Malafaya
+ */
+$messages['ka'] = array(
+	'sign-realname' => 'სახელი:',
+);
+
 /** Khmer (ភាសាខ្មែរ)
  * @author Chhorran
  * @author Lovekhmer
@@ -1716,6 +1723,7 @@ $messages['ps'] = array(
  * @author Malafaya
  */
 $messages['pt'] = array(
+	'signdocument' => 'Assinar documento',
 	'sign-selectdoc' => 'Documento:',
 	'sign-error-nosuchdoc' => 'O documento que requisitou ($1) não existe.',
 	'sign-realname' => 'Nome:',

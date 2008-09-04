@@ -132,9 +132,11 @@ $messages['bcc'] = array(
 
 /** Bulgarian (Български)
  * @author DCLXVI
+ * @author Spiritia
  */
 $messages['bg'] = array(
 	'scanset_opendir_error' => 'Error: Грешка, не може да бъде отворена директория $1',
+	'scanset_no_files' => 'Грешка: В указаната директория няма налични файлове.',
 	'scanset_next' => 'Следващи &gt;',
 	'scanset_prev' => '&lt; Предишни',
 );

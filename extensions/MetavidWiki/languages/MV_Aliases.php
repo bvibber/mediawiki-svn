@@ -22,3 +22,18 @@ $aliases['en'] = array(
 	'MV_SpecialSearch' => array( 'MV_SpecialSearch' ),
 	'MvVideoFeed' => array( 'MvVideoFeed' ),
 );
+
+/** Dutch (Nederlands) */
+$aliases['nl'] = array(
+	'MediaSearch' => array( 'MediaZoeken' ),
+	'Mv_Add_Stream' => array( 'MvStreamToevoegen' ),
+	'MVAdmin' => array( 'MvBeheer' ),
+	'MvExportAsk' => array( 'MvVraagExporteren' ),
+	'MvExportSearch' => array( 'MvZoekopdrachtExporteren' ),
+	'MvExportSequence' => array( 'MvSequentieExporteren' ),
+	'MvExportStream' => array( 'MvStreamExporteren' ),
+	'Mv_List_Streams' => array( 'MvStreamsBekijken' ),
+	'MV_SpecialSearch' => array( 'MvZoekenSpeciaal' ),
+	'MvVideoFeed' => array( 'MvVideofeed' ),
+);
+

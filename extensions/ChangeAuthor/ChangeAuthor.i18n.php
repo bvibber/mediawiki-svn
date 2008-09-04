@@ -1153,7 +1153,7 @@ $messages['ro'] = array(
 	'changeauthor-pagename-or-revid' => 'Numele paginii sau ID-ul reviziei:',
 	'changeauthor-pagenameform-go' => 'Du-te',
 	'changeauthor-comment' => 'Comentariu:',
-	'changeauthor-changeauthors-multi' => 'Schimbă autorul(ii)',
+	'changeauthor-changeauthors-multi' => 'Schimbă {{PLURAL:$1|autorul|autorii}}',
 	'changeauthor-changeauthors-single' => 'Schimbă autorul',
 	'changeauthor-invalid-username' => 'Nume de utilizator incorect "$1".',
 	'changeauthor-nosuchuser' => 'Nu există utilizatorul "$1".',
@@ -1421,13 +1421,13 @@ $messages['vec'] = array(
  */
 $messages['vi'] = array(
 	'changeauthor' => 'Đổi tác giả của phiên bản',
-	'changeauthor-desc' => 'Chi phép thay đổi tác giả của một phiên bản',
+	'changeauthor-desc' => 'Cho phép thay đổi tác giả của một phiên bản',
 	'changeauthor-title' => 'Đổi tác giả của một phiên bản',
 	'changeauthor-search-box' => 'Tìm kiếm phiên bản',
 	'changeauthor-pagename-or-revid' => 'Tên trang hay số phiên bản:',
 	'changeauthor-pagenameform-go' => 'Tìm kiếm',
 	'changeauthor-comment' => 'Lý do:',
-	'changeauthor-changeauthors-multi' => 'Đổi tác giả',
+	'changeauthor-changeauthors-multi' => 'Đổi {{PLURAL:$1||}}tác giả',
 	'changeauthor-explanation-multi' => "Với mẫu này bạn có thể thay đổi tác giả phiên bản.
 Chỉ cần thay đổi một hoặc nhiều tên người dùng trong danh sách phía dưới, thêm một lời chú thích (tùy chọn) và nhấn nút 'Đổi tác giả'.",
 	'changeauthor-changeauthors-single' => 'Đổi tác giả',
@@ -1440,7 +1440,7 @@ Chỉ cần thay đổi tên người dùng ở dưới, thêm một chú thích
 	'changeauthor-weirderror' => 'Có lỗi lạ xuất hiện.
 Xin hãy thử yêu cầu lại.
 Nếu lỗi này tiếp tục hiện ra, có lẽ cơ sở dữ liệu đã bị tổn hại.',
-	'changeauthor-invalidform' => 'Xin hãy dùng mẫu tại Special:ChangeAuthor chứ đừng dùng mẫu tự tạo.',
+	'changeauthor-invalidform' => 'Xin hãy dùng mẫu tại [[Special:ChangeAuthor|trang đặc biệt]] chứ đừng dùng mẫu tự tạo.',
 	'changeauthor-success' => 'Yêu cầu của bạn đã được thực hiện xong.',
 	'changeauthor-logentry' => 'Đã đổi tác giả của phiên bản $2 của trang $1 từ $3 thành $4',
 	'changeauthor-logpagename' => 'Nhật trình thay đổi tác giả',

@@ -878,7 +878,7 @@ administrador das bases de datos no caso de que vostede cometa un erro.",
 	'hiderevision-error-missing' => 'Non se atopou na base de datos.',
 	'hiderevision-error-current' => 'Non se puido eliminar a última edición dunha páxina. Desfaga esta modificación primeiro.',
 	'hiderevision-error-delete' => 'Non se puido arquivar; foi eliminada con anterioridade?',
-	'hiderevision-archive-status' => 'Eliminouse a revisión de $1: $2',
+	'hiderevision-archive-status' => 'Revisión eliminada de "$1": $2',
 	'oversight-nodiff' => 'Foi imposíbel seguir as modificacións xa que non existe actualmente unha revisión anterior desta páxina. Pode que:
 *Se eliminase a páxina
 *Esta revisión agochada sexa a primeira revisión',
@@ -890,6 +890,7 @@ administrador das bases de datos no caso de que vostede cometa un erro.",
 	'oversight-hidden' => 'Revisión agochada',
 	'oversight-header' => 'Embaixo amósase unha listaxe recente das revisións ocultas permanentemente á opinión pública.
 Á liberación desta información pode resultar na perda permanente dos privilexios de Supervisión.',
+	'oversight-legend' => 'Rexistro de procura de revisións agochadas',
 );
 
 /** Hebrew (עברית)

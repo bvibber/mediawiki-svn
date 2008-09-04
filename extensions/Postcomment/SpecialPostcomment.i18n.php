@@ -92,6 +92,7 @@ $messages['el'] = array(
 $messages['eo'] = array(
 	'postcomment_notloggedin' => 'Vi ne estas ensalutita.',
 	'postcomment_youareloggedinas' => 'Vi estas ensalutita kiel $1',
+	'postcomment_addcommentdiscussionpage' => 'Aldonu vian komenton en ĉi tiu diskuto-paĝo',
 	'postcomment_leavemessagefor' => 'Lasi mesaĝon por $1',
 	'postcomment_on' => 'Je',
 	'postcomment_said' => 'diris',

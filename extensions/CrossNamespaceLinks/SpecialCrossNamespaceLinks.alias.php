@@ -47,6 +47,11 @@ $aliases['he'] = array(
 	'CrossNamespaceLinks' => array( 'קישורים מדפי תוכן למרחבי שם אחרים' ),
 );
 
+/** Croatian (Hrvatski) */
+$aliases['hr'] = array(
+	'CrossNamespaceLinks' => array( 'Poveznice_među_prostorima' ),
+);
+
 /** Haitian (Kreyòl ayisyen) */
 $aliases['ht'] = array(
 	'CrossNamespaceLinks' => array( 'KwazeNonespasLyen' ),

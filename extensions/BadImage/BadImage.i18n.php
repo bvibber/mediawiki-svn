@@ -929,6 +929,13 @@ $messages['jv'] = array(
 	'badimages-page' => '{{ns:help}}:Daftar gambar ala',
 );
 
+/** Georgian (ქართული)
+ * @author Malafaya
+ */
+$messages['ka'] = array(
+	'badimages-reason' => 'მიზეზი:',
+);
+
 /** Khmer (ភាសាខ្មែរ)
  * @author Chhorran
  * @author Lovekhmer

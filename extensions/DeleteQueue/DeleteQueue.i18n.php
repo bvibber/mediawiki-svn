@@ -680,6 +680,8 @@ Vous pouvez enregistrer [{{FULLURL:{{FULLPAGENAME}}|action=delvote}} ici] votre 
  * @author Toliño
  */
 $messages['gl'] = array(
+	'deletequeue-action' => 'Suxestionar o borrado',
+	'deletequeue-action-title' => 'Suxestionar o borrado de "$1"',
 	'deletequeue-generic-reasons' => '* Razóns xenéricas
   ** Vandalismo
   ** Spam
@@ -701,6 +703,7 @@ $messages['gl'] = array(
 	'deletequeue-queue-speedy' => 'Eliminación rápida',
 	'deletequeue-queue-prod' => 'Borrado proposto',
 	'deletequeue-queue-deletediscuss' => 'Discusión do borrado',
+	'deletequeue-review-action' => 'Acción que levar a cabo:',
 	'deletequeue-review-delete' => 'Borrar a páxina.',
 	'deletequeue-review-reason' => 'Comentarios:',
 	'deletequeue-review-newreason' => 'Novo motivo:',
@@ -709,9 +712,15 @@ $messages['gl'] = array(
 	'deletequeue-review-original' => 'Motivo para a nominación',
 	'deletequeue-review-badaction' => 'Especificou unha acción inválida',
 	'deletequeue-review-actiondenied' => 'Especificou unha acción que foi deshabilitada para esta páxina',
+	'deletequeue-reviewprod-text' => "Pode usar este formulario para revisar a proposta de eliminación non respostada de \"'''\$1'''\".",
+	'deletequeue-reviewdeletediscuss-tab' => 'Revisar o borrado',
+	'deletequeue-reviewdeletediscuss-title' => 'Revisar a conversa de borrado de "$1"',
+	'deletequeue-discusscreate-summary' => 'Creando a conversa para a eliminación de "[[$1]]".',
+	'deletequeue-discusscreate-text' => 'Propoñeuse esta eliminación pola seguinte razón: $2',
 	'deletequeue-vote-action' => 'Recomentación:',
 	'deletequeue-vote-reason' => 'Comentarios:',
 	'deletequeue-vote-submit' => 'Enviar',
+	'deletequeue-list-search-legend' => 'Procurar páxinas',
 	'deletequeue-list-status' => 'Status:',
 	'deletequeue-list-search' => 'Procurar',
 	'deletequeue-list-anyqueue' => '(calquera)',
@@ -1421,6 +1430,7 @@ Môžete [{{fullurl:{{FULLPAGENAME}}|action=delvote}} pridať] svoju vlastnú po
 /** Swedish (Svenska)
  * @author Leo Johannes
  * @author M.M.S.
+ * @author StefanB
  */
 $messages['sv'] = array(
 	'deletequeue-desc' => 'Skapar en [[Special:DeleteQueue|köbaserat system för att hantera raderingar]]',
@@ -1430,7 +1440,7 @@ $messages['sv'] = array(
 	'deletequeue-generic-reasons' => '* Vanliga anledningar
   ** Vandalism
   ** Spam
-  ** Hävdande
+  ** Maintenance
   ** Inte relevant för projektet',
 	'deletequeue-speedy-title' => 'Märk "$1" för snabbradering',
 	'deletequeue-speedy-text' => "Du kan använda det här formuläret för att märka sidan \"'''\$1'''\" för snabbradering.

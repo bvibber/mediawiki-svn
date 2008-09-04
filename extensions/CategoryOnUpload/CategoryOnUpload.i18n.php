@@ -312,8 +312,10 @@ $messages['uk'] = array(
 
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
+ * @author Vinhtantran
  */
 $messages['vi'] = array(
+	'categoryonupload-desc' => 'Yêu cầu người dùng chọn một thể loại khi tải tập tin',
 	'categoryonupload-label' => 'Thể loại:',
 );
 

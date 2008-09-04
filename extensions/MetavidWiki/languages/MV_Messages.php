@@ -1698,6 +1698,7 @@ $messages['it'] = array(
 	'mv_tool_search' => 'Ricerca',
 	'mv_play' => 'Riproduci',
 	'mv_edit' => 'Modifica',
+	'mv_history' => 'Cronologia',
 	'mv_search_category' => 'Categoria',
 	'mv_category' => 'categoria',
 );
@@ -2920,7 +2921,7 @@ $messages['pt'] = array(
 	'mv_path_type_wiki_title' => 'título wiki da media',
 	'mv_path_type_label' => 'tipo de caminho',
 	'mv_base_offset_label' => 'desvio da base',
-	'mv_duration_label' => 'duração',
+	'mv_duration_label' => 'Duração',
 	'mv_file_desc_label' => 'msg de desc da stream',
 	'mv_delete_stream_file' => 'eliminar referência a ficheiro de stream',
 	'mv_save_changes' => 'Salvar alterações',

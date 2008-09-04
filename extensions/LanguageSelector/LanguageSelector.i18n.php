@@ -260,6 +260,7 @@ $messages['is'] = array(
  */
 $messages['it'] = array(
 	'languageselector' => 'Lingua',
+	'languageselector-desc' => 'Selettore della lingua in tutte le pagine, anche per gli ospiti',
 	'languageselector-setlang' => 'imposta',
 );
 

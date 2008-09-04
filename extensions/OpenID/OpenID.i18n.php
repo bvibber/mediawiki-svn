@@ -967,10 +967,12 @@ Et jitt en jruuße Zahl [http://wiki.openid.net/Public_OpenID_providers <span la
  * @author Robby
  */
 $messages['lb'] = array(
+	'openidlogin' => 'Umellen mat OpenID',
 	'openidxrds' => 'Yadis Fichier',
 	'openiderror' => 'Feeler bäi der Iwwerpréifung',
 	'openidsuccess' => 'Iwwerpréifung huet geklappt',
 	'openidusernameprefix' => 'OpenIDBenotzer',
+	'openidserverlogininstructions' => 'Gitt ärt Passwuert hei ënnendrënner an, fir iech als Benotzer $2 op $3 unzemellen (Benotzersäit $1).',
 	'openidtrustinstructions' => 'Klickt un wann Dir Donnéeën mat $1 deele wellt.',
 	'openidallowtrust' => 'Erlaabt $1 fir dësem Benotzerkont ze vertrauen.',
 	'openidoptional' => 'Facultatif',

@@ -1601,6 +1601,14 @@ Vèrsi sing luwih anyar $2 iku wis ana ing http://pecl.php.net/package/APC/$2',
 	'viewapc-usercache-cleared' => "'''''Cache aplikasi dikosongaké.'''''",
 );
 
+/** Georgian (ქართული)
+ * @author Malafaya
+ */
+$messages['ka'] = array(
+	'viewapc-cached-files-d' => '$1 ფაილი ($2)',
+	'viewapc-ls-sort-name' => 'სახელი',
+);
+
 /** Khmer (ភាសាខ្មែរ)
  * @author Lovekhmer
  * @author គីមស៊្រុន

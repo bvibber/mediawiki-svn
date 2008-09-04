@@ -45,6 +45,11 @@ $aliases['he'] = array(
 	'DeleteBatch' => array( 'מחיקת_קבוצה' ),
 );
 
+/** Croatian (Hrvatski) */
+$aliases['hr'] = array(
+	'DeleteBatch' => array( 'Skupno_brisanje' ),
+);
+
 /** Haitian (Kreyòl ayisyen) */
 $aliases['ht'] = array(
 	'DeleteBatch' => array( 'SiprimeLo' ),

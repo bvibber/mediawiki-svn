@@ -365,6 +365,13 @@ $messages['id'] = array(
 	'imagetagging-tagcancel-button' => 'Batalkan',
 );
 
+/** Italian (Italiano)
+ * @author Darth Kule
+ */
+$messages['it'] = array(
+	'imagetagging-imghistory' => 'Cronologia',
+);
+
 /** Khmer (ភាសាខ្មែរ)
  * @author Lovekhmer
  */

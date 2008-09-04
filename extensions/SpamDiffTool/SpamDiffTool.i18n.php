@@ -172,6 +172,13 @@ $messages['el'] = array(
  */
 $messages['eo'] = array(
 	'spamdifftool' => 'Kontrolu spaman nigraliston',
+	'spamdifftool_cantedit' => 'Bedaŭrinde - vi ne havas permeson por redakti la spaman nigraliston.',
+	'spamdifftool_no_urls_detected' => "Neniuj URL-oj estis detektitaj.
+Klaku <a href='$1'>ĉi tie</a> por reveni.",
+	'spamdifftool_spam_link_text' => 'aldoni al spamon',
+	'spamdifftool_option_domain' => 'ĉiuj de ĉi tiu domajno',
+	'spamdifftool_option_subdomain' => 'ĉiuj de ĉi tiu subdomajno',
+	'spamdifftool_option_directory' => 'ĉi tiu subdomajno kaj dosierujo',
 	'spamdifftool_option_none' => 'nenio',
 	'spamdifftool_block' => 'Forbaru:',
 	'spamdifftool_submit_buttom' => 'Ek',

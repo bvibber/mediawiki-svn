@@ -521,6 +521,13 @@ $messages['jv'] = array(
 * Delengen kaca dhiskusi',
 );
 
+/** Georgian (ქართული)
+ * @author Malafaya
+ */
+$messages['ka'] = array(
+	'patrol-revert-reason' => 'მიზეზი:',
+);
+
 /** Khmer (ភាសាខ្មែរ)
  * @author Chhorran
  * @author Lovekhmer

@@ -327,8 +327,10 @@ $messages['be-tarask'] = array(
 /** Bulgarian (Български)
  * @author Borislav
  * @author DCLXVI
+ * @author Spiritia
  */
 $messages['bg'] = array(
+	'ogg-desc' => 'Приложение за файлове тип Ogg Theora и Vorbis, с плейър на JavaScript',
 	'ogg-short-audio' => 'Ogg $1 звуков файл, $2',
 	'ogg-short-video' => 'Ogg $1 видео файл, $2',
 	'ogg-long-audio' => '(Ogg $1 звуков файл, продължителност $2, $3)',
@@ -337,10 +339,12 @@ $messages['bg'] = array(
 	'ogg-play' => 'Пускане',
 	'ogg-pause' => 'Пауза',
 	'ogg-stop' => 'Спиране',
+	'ogg-play-video' => 'Пускане на видео',
+	'ogg-play-sound' => 'Пускане на звук',
 	'ogg-no-player' => 'Съжаляваме, но на вашия компютър изглежда няма някой от поддържаните плейъри.
 Моля <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">изтеглете си плейър</a>.',
-	'ogg-player-videoElement' => 'елемент <video>',
-	'ogg-player-oggPlugin' => 'Плъгин за Ogg',
+	'ogg-player-videoElement' => 'Локална поддръжка от браузъра',
+	'ogg-player-oggPlugin' => 'Плъгин към браузъра',
 	'ogg-player-thumbnail' => 'Само неподвижни изображения',
 	'ogg-player-soundthumb' => 'Няма плеър',
 	'ogg-player-selected' => '(избран)',

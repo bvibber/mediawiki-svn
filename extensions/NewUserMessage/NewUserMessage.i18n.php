@@ -57,9 +57,11 @@ $messages['ast'] = array(
 
 /** Bulgarian (Български)
  * @author DCLXVI
+ * @author Spiritia
  */
 $messages['bg'] = array(
 	'newusermessage-desc' => 'Добавя съобщение на беседата на новорегистрираните потребители',
+	'newuseredit-summary' => 'Добавяне на [[{{int:newusermessage-template}}|приветствие]] на дискусионната страница на нов потребител',
 );
 
 /** Czech (Česky)
