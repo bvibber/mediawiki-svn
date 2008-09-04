@@ -76,10 +76,10 @@ class SimpleSecurity {
 		if ($this->default_read = (isset($wgGroupPermissions['*']['read']) && $wgGroupPermissions['*']['read']))
 			$wgGroupPermissions['*']['read'] = false;
 
-		# Add our parser-hooks
-		$wgParser->setFunctionHook($wgSecurityMagicIf, array($this, 'ifUserCan'));
-		$wgParser->setFunctionHook($wgSecurityMagicGroup, array($this, 'ifGroup'));
+		# Add our hooks
 		$wgHooks['UserGetRights'][] = $this;
+		if ($wgSecurityMagicIf)    $wgParser->setFunctionHook($wgSecurityMagicIf,    array($this, 'ifUserCan'));
+		if ($wgSecurityMagicGroup) $wgParser->setFunctionHook($wgSecurityMagicGroup, array($this, 'ifGroup'));
 		if ($wgSecurityAllowUnreadableLinks) $wgHooks['BeforePageDisplay'][] = $this;
 		if ($wgSecurityRenderInfo)           $wgHooks['OutputPageBeforeHTML'][] = $this;
 
