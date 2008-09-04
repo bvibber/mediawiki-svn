@@ -22,6 +22,7 @@ build-stamp: $(QUILT_STAMPFN)
 	dh_testdir
 
 	MagickDocumentPath="/usr/share/doc/imagemagick" ./configure \
+	--with-quantum-depth=8 \
 	--prefix=/usr \
 	--mandir=\$${prefix}/share/man \
 	--infodir=\$${prefix}/share/info \

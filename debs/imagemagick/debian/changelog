@@ -1,3 +1,9 @@
+imagemagick (7:6.3.7.9.dfsg1-q8-1) hardy; urgency=low
+
+  * Wikimedia private build --with-quantum-depth=8
+
+ -- Tim Starling <tstarling@wikimedia.org>  Thu, 04 Sep 2008 21:52:33 +1000
+
 imagemagick (7:6.3.7.9.dfsg1-2ubuntu1) hardy; urgency=low
 
   * Merge from debian unstable, remaining changes:
