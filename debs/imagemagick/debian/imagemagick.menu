@@ -1,0 +1,2 @@
+?package(imagemagick):needs="X11" section="Applications/Graphics"\
+  title="ImageMagick" command="/usr/bin/display logo:" hints="Images"
