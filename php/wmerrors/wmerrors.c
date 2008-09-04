@@ -106,7 +106,9 @@ void wmerrors_cb(int type, const char *error_filename, const uint error_lineno, 
 	TSRMLS_FETCH();
 	
 	if ( !WMERRORS_G(enabled)
-			|| (type != E_ERROR && type != E_CORE_ERROR && type != E_COMPILE_ERROR && type != E_USER_ERROR)
+			|| (type == E_RECOVERABLE_ERROR && PG(error_handling) == EH_THROW && !EG(exception))
+			|| (type != E_ERROR && type != E_CORE_ERROR && type != E_COMPILE_ERROR 
+			      && type != E_USER_ERROR && type != E_RECOVERABLE_ERROR)
 			|| strncmp(sapi_module.name, "apache", 6)
 			|| WMERRORS_G(recursion_guard))
 	{
