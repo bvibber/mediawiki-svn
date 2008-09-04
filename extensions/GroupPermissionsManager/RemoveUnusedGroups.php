@@ -25,7 +25,7 @@ class RemoveUnusedGroups extends SpecialPage {
 			return;
 		}
 		
-		loadMessages();
+		wfLoadExtensionMessages('GroupPermissions');
 		$this->setHeaders();
 		$wgOut->addWikiText( wfMsg( 'grouppermissions-rug-header' ) );
 		if($wgRequest->wasPosted()) {

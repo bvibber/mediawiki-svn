@@ -15,7 +15,7 @@ $wgExtensionCredits['specialpage'][] = array(
 	'name'           => 'GroupPermissions Manager',
 	'author'         => 'Ryan Schmidt',
 	'url'            => 'http://www.mediawiki.org/wiki/Extension:GroupPermissionsManager',
-	'version'        => '3.2.4',
+	'version'        => '3.2.5',
 	'description'    => 'Manage group permissions via a special page',
 	'descriptionmsg' => 'grouppermissions-desc',
 );
@@ -28,6 +28,7 @@ $wgSpecialPages['RemoveUnusedGroups'] = 'RemoveUnusedGroups';
 $wgSpecialPages['SortPermissions'] = 'SortPermissions';
 #$wgSpecialPages['NamespaceManager'] = 'NamespaceManager';
 $wgExtensionMessagesFiles['GroupPermissions'] = dirname(__FILE__) . '/GetMessages.php';
+$wgExtensionAliasesFiles['GroupPermissions'] = $dir . 'GroupPermissions.alias.php';
 
 $wgLogTypes[] = 'gpmanager';
 $wgLogActions['gpmanager/add'] = 'grouppermissions-log-add';
@@ -177,10 +178,4 @@ function versionCheck( $ver = '1.12' ) {
 	}
 	if($cvp[2] >= $nvp[2]) return true;
 	return false;
-}
-
-//shortcut to save some time in typing
-function loadMessages() {
-	wfLoadExtensionMessages('GroupPermissions');
-	return true;
 }

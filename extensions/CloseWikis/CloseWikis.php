@@ -33,6 +33,7 @@ $wgExtensionCredits['other'][] = array(
 
 $dir = dirname( __FILE__ );
 $wgExtensionMessagesFiles['CloseWikis'] =  "$dir/CloseWikis.i18n.php";
+$wgExtensionAliasesFiles['CloseWikis'] = "$dir/CloseWikis.alias.php";
 $wgHooks['getUserPermissionsErrors'][] = "CloseWikis::userCan";
 
 $wgGroupPermissions['steward']['closewikis'] = true;

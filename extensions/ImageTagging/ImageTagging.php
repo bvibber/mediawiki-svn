@@ -16,7 +16,7 @@ $wgExtensionFunctions[] = 'wfImageTagPageSetup';
 $wgExtensionCredits['other'][] = array(
 	'name'           => 'Image Tagging',
 	'author'         => 'Wikia, Inc. (Tristan Harris, Tomasz Klim)',
-	'version'        => '1.0',
+	'version'        => '1.1',
 	'url'            => 'http://www.mediawiki.org/wiki/Extension:ImageTagging',
 	'description'    => 'Lets a user select regions of an embedded image and associate a page with that region',
 	'descriptionmsg' => 'imagetagging-desc',
@@ -29,6 +29,7 @@ $wgHooks['ArticleFromTitle'][] = 'wfArticleFromTitle';
 $dir = dirname(__FILE__) . '/';
 $wgAutoloadClasses['TaggedImages'] = $dir . 'ImageTagging_body.php';
 $wgExtensionMessagesFiles['ImageTagging'] = $dir . 'ImageTagging.i18n.php';
+$wgExtensionAliasesFiles['ImageTagging'] = $dir . 'ImageTagging.alias.php';
 $wgSpecialPages['TaggedImages'] = 'TaggedImages';
 
 /********************

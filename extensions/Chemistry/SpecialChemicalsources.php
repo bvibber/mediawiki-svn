@@ -46,4 +46,5 @@ $wgExtensionCredits['specialpage'][] = array(
 $dir = dirname(__FILE__) . '/';
 $wgAutoloadClasses['SpecialChemicalsources'] = $dir . 'SpecialChemicalsources_body.php';
 $wgExtensionMessagesFiles['SpecialChemicalsources'] = $dir . 'ChemFunctions.i18n.php';
+$wgExtensionAliasesFiles['ChemicalSources'] = $dir . 'ChemicalSources.alias.php';
 $wgSpecialPages['ChemicalSources'] = 'SpecialChemicalsources';

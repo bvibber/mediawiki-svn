@@ -14,10 +14,11 @@ $wgGroupPermissions['sysop']['findspam'] = true;
 
 $wgSpecialPages['FindSpam'] = 'FindSpamPage';
 $wgSpecialPageGroups['FindSpam'] = 'spam';
-$wgAutoloadClasses['FindSpamPage'] = dirname(__FILE__) . '/FindSpam_body.php';
 
 $dir = dirname(__FILE__) . '/';
+$wgAutoloadClasses['FindSpamPage'] = $dir . 'FindSpam_body.php';
 $wgExtensionMessagesFiles['FindSpam'] = $dir . 'FindSpam.i18n.php';
+$wgExtensionAliasesFiles['FindSpam'] = $dir . 'FindSpam.alias.php';
 
 $wgExtensionCredits['specialpage'][] = array(
 	'name' => 'FindSpam',

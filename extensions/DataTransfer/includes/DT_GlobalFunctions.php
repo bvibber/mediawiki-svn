@@ -30,6 +30,7 @@ $wgAutoloadClasses['DTViewXML'] = $dtgIP . '/specials/DT_ViewXML.php';
 
 require_once($dtgIP . '/languages/DT_Language.php');
 $wgExtensionMessagesFiles['DataTransfer'] = $dtgIP . '/languages/DT_Messages.php';
+$wgExtensionAliasesFiles['DataTransfer'] = $dtgIP . '/languages/DT_Aliases.php';
 
 /**********************************************/
 /***** language settings                  *****/

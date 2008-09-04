@@ -11,7 +11,7 @@ if (!defined('MEDIAWIKI')) die();
 
 $wgExtensionCredits['specialpage'][] = array(
 	'name'           => 'Apc',
-	'version'        => '2008-07-19',
+	'version'        => '2008-09-04',
 	'author'         => 'Niklas Laxström',
 	'descriptionmsg' => 'viewapc-desc',
 );
@@ -25,6 +25,7 @@ $wgAutoloadClasses['APCHostMode'] = $dir . 'APCHostMode.php';
 $wgAutoloadClasses['APCCacheMode'] = $dir . 'APCCacheMode.php';
 
 $wgExtensionMessagesFiles['ViewAPC'] = $dir . 'ViewAPC.i18n.php';
+$wgExtensionAliasesFiles['ViewAPC'] = $dir . 'ViewAPC.alias.php';
 $wgSpecialPages['ViewAPC'] = 'SpecialAPC';
 $wgSpecialPageGroups['ViewAPC'] = 'wiki';
 

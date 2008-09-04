@@ -21,6 +21,7 @@ $wgExtensionCredits['specialpage'][] = array(
 
 $dir = dirname(__FILE__) . '/';
 $wgExtensionMessagesFiles['CountEdits'] = $dir . 'CountEdits.i18n.php';
+$wgExtensionAliasesFiles['CountEdits'] = $dir . 'CountEdits.alias.php';
 $wgAutoloadClasses['SpecialCountEdits'] = $dir . 'CountEdits.page.php';
 $wgSpecialPages['CountEdits'] = 'SpecialCountEdits';
 

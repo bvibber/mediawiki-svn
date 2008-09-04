@@ -40,7 +40,9 @@ $wgExtensionCredits['specialpage'][] = array(
 	'url'            => 'http://www.mediawiki.org/wiki/Extension:ImportFreeImages',
 );
 
-$wgExtensionMessagesFiles['ImportFreeImages'] = dirname(__FILE__) . '/ImportFreeImages.i18n.php';
+$dir = dirname(__FILE__) . '/';
+$wgExtensionMessagesFiles['ImportFreeImages'] = $dir . 'ImportFreeImages.i18n.php';
+$wgExtensionAliasesFiles['ImportFreeImages'] = $dir . 'ImportFreeImages.alias.php';
 $wgSpecialPages['ImportFreeImages'] = array( 'SpecialPage', 'ImportFreeImages' );
 
 # Note: we can't delay message loading currently, since we don't override SpecialPage::execute(),
