@@ -1,6 +1,6 @@
 <?php
 /**
- * Simple Security extension
+ * SimpleSecurity extension
  * - Extends the MediaWiki article protection to allow restricting viewing of article content
  * - Also adds #ifusercan and #ifgroup parser functions for rendering restriction-based content
  *
@@ -21,7 +21,7 @@
 if (!defined('MEDIAWIKI'))                     die('Not an entry point.');
 if (version_compare($wgVersion, '1.11.0') < 0) die('Sorry, this extension requires at least MediaWiki version 1.11.0');
 
-define('SIMPLESECURITY_VERSION', '4.2.9, 2008-08-30');
+define('SIMPLESECURITY_VERSION', '4.2.11, 2008-09-05');
 
 # Global security settings
 $wgSecurityMagicIf              = "ifusercan";                  # the name for doing a permission-based conditional
@@ -49,7 +49,7 @@ $wgExtensionCredits['parserhook'][] = array(
 	'name'        => 'SimpleSecurity',
 	'author'      => '[http://www.organicdesign.co.nz/User:Nad User:Nad]',
 	'description' => 'Extends the MediaWiki article protection to allow restricting viewing of article content',
-	'url'         => 'http://www.mediawiki.org/wiki/Extension:Simple_Security',
+	'url'         => 'http://www.mediawiki.org/wiki/Extension:SimpleSecurity',
 	'version'     => SIMPLESECURITY_VERSION
 	);
 
@@ -262,8 +262,8 @@ class SimpleSecurity {
 	 * - old_id is guaranteed to exist due to patchSQL method
 	 * - bails if sysop
 	 */
-	static function validateRow(&$row) {
-		global $wgUser, $wgSimpleSecurity;
+	public function validateRow(&$row) {
+		global $wgUser;
 
 		$groups = $wgUser->getEffectiveGroups();
 		if (in_array('sysop', $groups)) return;
@@ -275,7 +275,7 @@ class SimpleSecurity {
 		$title = Title::newFromID($rev->rev_page);
 
 		# Replace text content in the passed database row if title unreadable by user
-		if (!$wgSimpleSecurity->userCanReadTitle($wgUser, $title, $error)) $row->old_text = $error;
+		if (!$this->userCanReadTitle($wgUser, $title, $error)) $row->old_text = $error;
 	}
 
 	/**
@@ -395,13 +395,16 @@ function wfSimpleSecurityDBHook() {
 	$wgDBtype = 'SimpleSecurity';
 	eval("class Database{$wgDBtype} extends Database{$oldDB}".' {
 		public function query($sql, $fname = "", $tempIgnore = false) {
+			global $wgSimpleSecurity;
 			$count = false;
-			$patched = preg_replace_callback("/(?<=SELECT ).+?(?= FROM)/", array("SimpleSecurity", "patchSQL"), $sql, 1, $count);
+			if (is_object($wgSimpleSecurity))
+				$patched = preg_replace_callback("/(?<=SELECT ).+?(?= FROM)/", array("SimpleSecurity", "patchSQL"), $sql, 1, $count);
 			return parent::query($count ? $patched : $sql, $fname, $tempIgnore);
 		}
 		function fetchObject(&$res) {
+			global $wgSimpleSecurity;
 			$row = parent::fetchObject($res);
-			if (isset($row->old_text)) SimpleSecurity::validateRow($row);
+			if (is_object($wgSimpleSecurity) && isset($row->old_text)) $wgSimpleSecurity->validateRow($row);
 			return $row;
 		}
 	}');
