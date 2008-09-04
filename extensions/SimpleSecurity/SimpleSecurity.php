@@ -264,7 +264,6 @@ class SimpleSecurity {
 	 */
 	public function validateRow(&$row) {
 		global $wgUser;
-
 		$groups = $wgUser->getEffectiveGroups();
 		if (in_array('sysop', $groups)) return;
 
@@ -434,7 +433,7 @@ function wfSetupSimpleSecurity() {
 	# - but now the LoadBalancer exists and must have its DB types changed
 	if ($wgSecurityUseDBHook) {
 		wfSimpleSecurityDBHook();
-		if (function_exists('wfGetLBFactory')) wfGetLBFactory()->forEachLB('SimpleSecurity::updateLB');
+		if (function_exists('wfGetLBFactory')) wfGetLBFactory()->forEachLB(array('SimpleSecurity', 'updateLB'));
 		elseif (is_object($wgLoadBalancer)) SimpleSecurity::updateLB($wgLoadBalancer);
 		else die("Can't hook in to Database class!");
 	}
