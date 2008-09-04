@@ -15,12 +15,13 @@ $wgExtensionCredits['specialpage'][] = array(
 	'author'         => 'Tim Laqua',
 	'description'    => "Resets Wiki user's passwords - requires 'passwordreset' privileges",
 	'descriptionmsg' => 'passwordreset-desc',
-	'version'        => '1.6'
+	'version'        => '1.7'
 );
 
+$dir = dirname(__FILE__) . '/';
 // Autoload Classes
-$wgAutoloadClasses['PasswordReset'] = dirname(__FILE__) . '/PasswordReset_body.php';
-$wgAutoloadClasses['Disabledusers'] = dirname(__FILE__) . '/PasswordReset_Disabledusers.php';
+$wgAutoloadClasses['PasswordReset'] = $dir . 'PasswordReset_body.php';
+$wgAutoloadClasses['Disabledusers'] = $dir . 'PasswordReset_Disabledusers.php';
 
 // Special Pages
 $wgSpecialPages['PasswordReset'] = 'PasswordReset';
@@ -29,7 +30,8 @@ $wgSpecialPageGroups['PasswordReset'] = 'users';
 $wgSpecialPageGroups['Disabledusers'] = 'users';
 
 // Messages
-$wgExtensionMessagesFiles['PasswordReset'] = dirname( __FILE__ ) . '/PasswordReset.i18n.php';
+$wgExtensionMessagesFiles['PasswordReset'] = $dir . 'PasswordReset.i18n.php';
+$wgExtensionAliasesFiles['PasswordReset'] = $dir . 'PasswordReset.alias.php';
 
 // Hooks
 $wgHooks['GetBlockedStatus'][] = 'PasswordReset::GetBlockedStatus';

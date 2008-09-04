@@ -25,6 +25,7 @@ $wgExtensionCredits['specialpage'][] = array(
 
 $dir = dirname(__FILE__) . '/';
 $wgExtensionMessagesFiles['LookupUser'] = $dir . 'LookupUser.i18n.php';
+$wgExtensionAliasesFiles['LookupUser'] = $dir . 'LookupUser.alias.php';
 
 $wgSpecialPages['LookupUser'] = 'LookupUserPage';
 $wgAvailableRights[] = 'lookupuser';
@@ -53,7 +54,7 @@ function wfSetupLookupUser() {
 				$this->displayRestrictionError();
 				return;
 			}
-			
+
 			if ( $subpage ) {
 				$target = $subpage;
 			} else {
@@ -132,5 +133,4 @@ EOT
 			}
 		}
 	}
-
 }

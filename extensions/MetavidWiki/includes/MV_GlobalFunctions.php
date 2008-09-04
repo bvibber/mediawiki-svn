@@ -24,7 +24,10 @@ if ( !function_exists( 'extAddSpecialPage' ) ) {
 //add language:
 $wgExtensionMessagesFiles['MetavidWiki'] =$mvgIP . '/languages/MV_Messages.php';
 require_once($mvgIP . '/languages/MV_Language.php');
-		
+
+// Register special page aliases file
+$wgExtensionAliasesFiles['MetavidWiki'] = $mvgIP . '/languages/MV_Aliases.php';
+
 $markerList = array(); 
 
 //don't override special search page: (requires ExtensionFunctions.php)
