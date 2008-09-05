@@ -1,3 +1,9 @@
+wikimedia-task-appserver (1.24) hardy; urgency=low
+
+  * Split off the image scaler task to a separate virtual package.
+
+ -- Tim Starling <tstarling@wikimedia.org>  Fri, 05 Sep 2008 12:47:30 +1000
+
 wikimedia-task-appserver (1.23) feisty; urgency=low
 
   * Added LoadModule for autoindex, dir and setenvif. Removed some <IfModule>
