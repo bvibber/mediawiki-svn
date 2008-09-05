@@ -10,12 +10,16 @@ class HideRevisionForm extends SpecialPage {
 	}
 
 	function execute( $par ) {
-		global $wgUser, $wgRequest;
+		global $wgUser, $wgRequest, $wgOut;
 
 		$this->setHeaders();
 
 		if( !$this->userCanExecute( $wgUser ) ){
 			$this->displayRestrictionError();
+			return;
+		}
+		if( $wgUser->isBlocked( false ) ) {
+			$wgOut->blockedPage();
 			return;
 		}
 
