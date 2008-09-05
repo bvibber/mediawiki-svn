@@ -30,7 +30,10 @@ var pl_layout = {
 	clip_aspect:1.33,  // 4/3 video aspect ratio
 	seq:.25,		   	  //display clip thumbnails 
 	seq_thumb:.25,	 //size for thumbnails (same as seq by default) 
-	seq_nav:0	//for a nav bar at the base (currently disabled)
+	seq_nav:0,	//for a nav bar at the base (currently disabled)
+	//some pl_layout info:
+	title_bar_height:20,
+	control_height:29
 }
 //globals:
 var mv_lock_vid_updates=false;
@@ -81,8 +84,8 @@ mvPlayList.prototype = {
 		
 	    //if style is set override width and height
 	    if(element.style.width)this.width = parseInt(element.style.width.replace('px',''));
-	    if(element.style.height)this.height = parseInt(element.style.height.replace('px',''));
-	    	   
+	    if(element.style.height)this.height = parseInt(element.style.height.replace('px',''));	    	   	    
+	    
 	    //@@todo more attribute value checking: 
 	    
     	//if no src is specified try and use the innerHTML as a sorce type:
@@ -126,6 +129,32 @@ mvPlayList.prototype = {
 			track.inheritEmbedObj();			
 		});
 	},	
+	doOptionsHTML:function(){
+		//grab "options" use current clip:
+		this.cur_clip.embed.doOptionsHTML();
+	},
+	selectPlaybackMethod:function(){
+		this.cur_clip.embed.selectPlaybackMethod();
+	},
+	closeDisplayedHTML:function(){
+		this.cur_clip.embed.closeDisplayedHTML();
+	},
+	showVideoDownload:function(){
+		this.cur_clip.embed.showVideoDownload();
+	},
+	showEmbedCode:function(){
+		var embed_code = '&lt;script type=&quot;text/javascript&quot; '+
+						'src=&quot;'+mv_embed_path+'mv_embed.js&quot;&gt;&lt;/script&gt '+"\n" + 
+						'&lt;playlist id=&quot;'+this.id+'&quot; ';
+						if(this.src){
+							embed_code+='src=&quot;'+this.src+'&quot; /&gt;';
+						}else{
+							embed_code+='&gt;'+"\n";
+							embed_code+= this.data.htmlEntities();
+							embed_code+='&lt;playlist/&gt;';
+						}
+		this.cur_clip.embed.showEmbedCode(embed_code);
+	},
 	getPlaylist:function(){		
 		js_log("f:getPlaylist: " + this.srcType );
 		//@@todo lazy load plLib
@@ -318,15 +347,30 @@ mvPlayList.prototype = {
 				$j(this).html('empty playlist');
 				return ;
 			}					
-			var plObj=this;
-			var title_bar_height=20;
-			var control_height = 29;
+			var plObj=this;			
 			//setup layout for title and dc_ clip container  
 			$j(this).html('<div id="dc_'+this.id+'" style="width:'+this.width+'px;' +
-					'height:'+(this.height+title_bar_height + control_height)+'px;position:relative;">' +
+					'height:'+(this.height+pl_layout.title_bar_height + pl_layout.control_height)+'px;position:relative;">' +
 					'	<div style="font-size:13px" id="ptitle_'+this.id+'"></div>' +
 					'</div>');												
 			
+			//add the playlist controls:			
+			$j('#dc_'+plObj.id).append(
+				'<div class="videoPlayer" style="position:absolute;top:'+(plObj.height+pl_layout.title_bar_height)+'px">' +
+					'<div id="mv_embedded_controls_'+plObj.id+'" ' +
+						'style="postion:relative;top:'+(plObj.height+pl_layout.title_bar_height)+'px;' +
+							'width:'+plObj.width+'px" ' +
+						'class="controls">' + 
+						 plObj.getControlsHTML() +
+					'</div>'+
+				'</div>'
+			);
+			//add the play button:						
+		  	$j('#dc_'+plObj.id).append(
+		  		this.cur_clip.embed.getPlayButton()
+		  	);
+			
+				
 			$j.each(this.default_track.clips, function(i, clip){
 				$j('#dc_'+plObj.id).append('<div class="clip_container" id="clipDesc_'+clip.id+'" '+
 					'style="display:none;position:absolute;text-align: center;width:'+plObj.width + 'px;'+
@@ -334,9 +378,8 @@ mvPlayList.prototype = {
 					'top:20px;left:0px"></div>');	
 				//update the embed html: 					
 				clip.embed.height=plObj.height;
-				clip.embed.width=plObj.width;
-				if(clip.id != plObj.cur_clip.id)
-					clip.embed.play_button=false;
+				clip.embed.width=plObj.width;				
+				clip.embed.play_button=false;
 				
 				clip.embed.getHTML();//get the thubnails for everything			
 				$j(clip.embed).css({ 'position':"absolute",'top':"0px", 'left':"0px"});					
@@ -344,88 +387,14 @@ mvPlayList.prototype = {
 					$j('#clipDesc_'+clip.id).get(0).appendChild(clip.embed);
 				}else{
 					js_log('cound not find: clipDesc_'+clip.id);					
-				}										
-				//add the controls if we are on the current clip:
-				if(clip.id == plObj.cur_clip.id){
-					//js_log("add controls: "+ clip.embed.getControlsHTML() +"\nto:videoPlayer_"+ clip.embed.id);			
-					$j('#videoPlayer_'+clip.embed.id).append(
-						'<div id="mv_embedded_controls_'+plObj.id+'" ' +
-						'style="postion:relative;top:'+(plObj.height+title_bar_height)+'px" ' +
-						'class="controls">' + 
-							 clip.embed.getControlsHTML() +
-						'</div>'
-					);
-				}			
+				}																
 			}); 	
 						
 			if(this.cur_clip)
-				$j('#clipDesc_'+this.cur_clip.id).css({display:'inline'});							 							
-						 			
+				$j('#clipDesc_'+this.cur_clip.id).css({display:'inline'});						 	
 							
 			//update the title and status bar
-			this.updateBaseStatus();
-			
-			
-			/*va sh=Math.round(this.height* pl_layout.seq_title);
-			var ay=Math.round(this.height* pl_layout.clip_desc);
-			//var by=Math.round(this.height* pl_layout.nav);
-			var cy=Math.round(this.height* pl_layout.seq);		
-			var sy=Math.round(this.height* pl_layout.seq_nav);	
-			
-			//empty out the html and insert the container
-			var cheight =(this.sequencer=='true')?this.height+27:this.height;
-			
-
-			//set up the sequence info link if present
-			js_log('linkback: '+ this.linkback);
-			var pl_info_link = (this.linkback)?	 
-				'<span style="position:absolute;right:0px;top:0px">'+
-			     '<a title="playlist linkback" target="_new" href="'+this.linkback+'">'+
-			     getTransparentPng({id:'link_'+this.id, width:"27", height:"27", border:"0", 
-					src:mv_embed_path + 'images/vid_info_sm.png' })+'</a></span>':'';
-			var rp=0;
-			if(pl_info_link!='')rp=30;
-			var pl_embed_link = (this.embed_link)?
-				'<span style="position:absolute;right:'+rp+'px;top:0px">'+
-			     '<a id="a_eblink_'+this.id+'" title="Embed Playlist Code" ' +
-			     'onclick="document.getElementById(\''+this.id+'\').showEmbedLink();return false;" href="#">'+
-			     getTransparentPng({id:'eblink_'+this.id, width:"27", height:"27", border:"0", 
-					src:mv_embed_path + 'images/vid_embed_sm.png' })+'</a></span>':'';
-			
-			//set title to 'Untitled' (if still missing) 
-			if(!this.title)this.title='Untitled';			
-			
-			
-								
-			
-			//check if we are in sequence mode (for seq layout don't display clips)
-			js_log('seq: ' + this.sequencer);
-			if(this.sequencer=='true'){ //string val
-			*/
-				
-			/*}else{																													
-				//append all clip descriptions 
-				this.getAllClipDesc();			
-				//display the first clip
-				$j('#clipDesc_'+this.cur_clip.id).css({display:'inline'});			
-				$j('#dc_'+this.id).append('<div id="seqThumb_'+this.id+'" ' +
-					'style="white-space:nowrap;position:absolute;width:'+this.width+'px;'+
-					'height:'+cy + 'px;'+
-					'bottom:'+Math.round(this.height* pl_layout.seq_nav)+'px;left:0px;'+
-					'overflow-x:auto;overflow-y:hidden;"></div>');
-				//append seq thumbnails
-				this.getSeqThumb();
-			}*/
-			//append the playhead (for highlighting current sequence) 
-			//this.getPlayHead();
-			
-			//add the default background image xiph_logo_lg_transparent.png
-			//out+='<div id="'
-			//js_log('set:'+ this.id+' to: ' + out);
-			//this.this_elm = 
-			//this_elm = document.getElementById(this.id);
-			//this_elm.innerHTML=out;
-			//this.innerHTML=out;
+			this.updateBaseStatus();									
 		}
 	},
 	updateBaseStatus:function(){
@@ -433,7 +402,7 @@ mvPlayList.prototype = {
 		$j('#ptitle_'+this.id).html(''+
 			'<b>' + this.title + '</b> '+				
 			this.getClipCount()+' clips, <i>'+
-			this.getPlDurationNTP() + '</i>' );		
+			this.getPlDurationNTP() + '</i>' );				
 	},
 	/*gets adds hidden desc to the #dc container*/
 	getAllClipDesc : function(){		
@@ -514,8 +483,8 @@ mvPlayList.prototype = {
 			this.cur_clip=next_clip;					
 		}else if(this.cur_clip.embed.supports['playlist_swap_loader']){
 			//where the plugin supports pre_loading future clips and manage that in javascript
-			//pause current clip
-			this.cur_clip.embed.pause;
+			//stop current clip
+			this.cur_clip.embed.stop();
 			//do swap:
 			$j('#clipDesc_'+this.cur_clip.id).hide();
 			this.cur_clip=next_clip;
@@ -561,27 +530,34 @@ mvPlayList.prototype = {
 	play : function(){
 		var plObj=this;
 		js_log('pl play');
+		//hide the playlist play button: 
+		$j('#big_play_link_'+this.id).hide();
 		//update cur clip based if sequence playhead set: 
-			
+		var d = new Date();
+		this.clockStartTime = d.getTime();
+		
+		js_log('pl_true_start_time:'+ this.pl_true_start_time);
+		
 		this.start_clip = this.cur_clip;		
 		this.start_clip_src= this.cur_clip.src;
 		//load up the ebmed object with the playlist (if it supports it) 
 		if(this.cur_clip.embed.supports['playlist_driver'] ){
 			//load the playlist into the embed object: 			
 			js_log('clip obj supports playlist driver');
+			//start up playlist driver:
 			this.cur_clip.embed.playMovieAt(this.cur_clip.order);
 		}else{
 			js_log('basic play');
 			//play cur_clip			
 			this.cur_clip.embed.play();		
 		}
-	},
+	},	
 	//wrappers for call to pl object to current embed obj
 	play_or_pause:function(){		
-		this.start_clip.embed.play_or_pause();
+		this.cur_clip.embed.play_or_pause();
 	},
 	fullscreen:function(){
-		this.start_clip.embed.fullscreen();
+		this.cur_clip.embed.fullscreen();
 	},
 	//playlist stops playback for the current clip (and resets state for start clips)
 	stop:function(){
@@ -605,6 +581,14 @@ mvPlayList.prototype = {
 		//do an animated stop of the current clip
 		this.cur_clip.embed.stop();
 	},
+	//gets playlist controls large control height for sporting 
+	//next prev button and more status display
+	getControlsHTML:function(){
+		//get controls from current clip  (add some playlist specific controls:  		
+		this.cur_clip.embed.supports['prev_next']=true;
+		this.cur_clip.embed.supports['options_in_body']=true;
+		return ctrlBuilder.getControls(this.cur_clip.embed);
+	},	
 	//ads colors/dividers between tracks
 	colorPlayHead: function(){
 		//total duration:		
@@ -716,54 +700,7 @@ mvPlayList.prototype = {
 						callback();
 			});		
 		}
-	},
-	//display the embed code
-	showEmbedLink: function(){
-		//js_log('do show embed link');		
-		var topOffset = (pl_layout.seq_title*this.height)-2;
-		//make sure the parent is relativly positioned:
-		$j('#'+this.id).css('position', 'relative');
-		//fade in a black bg div ontop of everything
-		var embed_code = '<div id="blackbg_'+this.id+'" ' +
-			'style="position:absolute;display:none;z-index:2;background:black;top:'+topOffset+'px;left:0px;' +
-			'height:'+parseInt(this.height-topOffset+2)+'px;width:'+parseInt(this.width+2)+'px;">' +
-				'<span style="position:relative;top:20px;left:20px">' +
-					'<b style="color:white">Playlist Embed Code:</b><br>'+
-					'<textarea onClick="this.select();" style="width:'+parseInt(this.width*.75)+'px" rows="4" cols="30">'+
-						'&lt;script type=&quot;text/javascript&quot; '+
-						'src=&quot;'+mv_embed_path+'mv_embed.js&quot;&gt;&lt;/script&gt '+"\n" + 
-						'&lt;playlist id=&quot;'+this.id+'&quot; ';
-						if(this.src){
-							embed_code+='src=&quot;'+this.src+'&quot; /&gt;';
-						}else{
-							embed_code+='&gt;'+"\n";
-							embed_code+= this.data.htmlEntities();
-							embed_code+='&lt;playlist/&gt;';
-						}						
-					embed_code+='</textarea><br>'+
-					'<a href="#" style="color:white" onClick="document.getElementById(\''+this.id+'\').closeEmbedLink();return false;">close</a>'+
-				'</span>'+
-			'</div>';
-		js_log("append to:"+ this.id  + ' c:'+embed_code);
-		$j('#'+this.id).append(embed_code);
-		$j('#blackbg_'+this.id).fadeIn("slow");
-		//update the embed link to close		
-		var dp	='document.getElementById(\''+this.id+'\')';
-		$j('#a_eblink_'+this.id).get(0).setAttribute('onclick',dp+'.closeEmbedLink();return false;');		
-		//js_log('update onclick:'+$j('#a_eblink_'+this.id).get(0).getAttribute('onclick')) ;
-		return false; //onclick action return false
-	},
-	closeEmbedLink:function(){
-		js_log('close embed link');
-		plObj = this;
-		$j('#blackbg_'+this.id).fadeOut("slow", function(){
-			$j('#blackbg_'+plObj.id).remove();
-		}); 
-		//update the embed link to open
-		var dp	='document.getElementById(\''+this.id+'\')';
-		$j('#a_eblink_'+this.id).get(0).setAttribute('onclick', dp+'.showEmbedLink();return false;');
-		return false;//onclick action return false
-	},
+	},	
 	getPLControls: function(){
 		js_log('getPL cont');
 		return 	'<a id="mv_prev_link_'+this.id+'" title="Previus Clip" onclick="document.getElementById(\''+this.id+'\').prev();return false;" href="#">'+
@@ -1500,6 +1437,11 @@ var xspfPlaylist ={
 /*****************************
  * SMIL CODE (should be put into another js file / lazy_loaded)
  *****************************/
+/*playlist driver extensions to the playlist object*/
+mvPlayList.prototype.monitor = function(){
+	
+}
+
 
 //smile based extension of <video> tag: 
 //region="video_region" transIn="fromGreen" begin="2s"
@@ -1574,7 +1516,6 @@ var mv_supported_media_attr = new Array(
 	'region',
 	'transIn',
 	'transOut',
-	'begin',
 	'fill',
 	'dur'
 );	
@@ -1612,9 +1553,10 @@ mvSMILClip.prototype = {
 		if(this.transOut && this.pp.transitions[this.transOut])			
 			this.transOut =this.pp.transitions[this.transOut].clone();
 		
-		//parse duration: 
+		//parse duration / begin times: 
 		if(this.dur)
-			this.dur = smilParseTime(this.dur);
+			this.dur = smilParseTime(this.dur);			
+						
 		//check if the transition is a valid id:		
 		return this;		
 	},

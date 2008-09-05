@@ -29,15 +29,13 @@
 		type="video/ogg" 	
 		fill="transition"
 		dur="10s"
-		poster="sample_fish.jpg"/>
-		
-      <video src="sample_magnolia.ogg?t=0:0:0/0:0:05" 
-		region="video_region" 
-		transIn="xFade" 	
-		transOut="toGreen" 		
+		poster="sample_fish.jpg"/>	
+	
+    <video src="sample_eclipse.ogg?t=0:0:0/0:0:06" 
+		region="video_region" 				
 		fill="transition" 
 		type="video/ogg" 
-		poster="sample_magnolia.jpg"/>     
+		poster="sample_eclipse.jpg"/>     
     </seq>
   </body>
 </smil>

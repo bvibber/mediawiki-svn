@@ -25,11 +25,11 @@ var nativeEmbed = {
 					'id="'+this.pid + '" ' +
 					'style="width:'+this.width+'px;height:'+this.height+'px;" ' +
 					'width="'+this.width+'" height="'+this.height+'" '+
-				   	'src="'+this.media_element.selected_source.uri+'" ' +
-				   	'controls="false" ' +
+				   	'src="'+this.media_element.selected_source.uri+'" ' +				   	
 				   	'oncanplaythrough="$j(\'#'+this.id+'\').get(0).oncanplaythrough();return false;" ' +
 				   	'onloadedmetadata="$j(\'#'+this.id+'\').get(0).onloadedmetadata();return false;" ' + 
-				   	'loadedmetadata="$j(\'#'+this.id+'\').get(0).onloadedmetadata();return false;" >' +
+				   	'loadedmetadata="$j(\'#'+this.id+'\').get(0).onloadedmetadata();return false;" ' +
+				   	'onended="$j(\'#'+this.id+'\').get(0).onended();return false;" >' +
 				'</video>';
 	},
 	//@@todo : loading progress
@@ -49,24 +49,39 @@ var nativeEmbed = {
 		//js_log('time loaded: ' + this.vid.TimeRanges );
 		//js_log('current time: '+ this.vid.currentTime  + ' dur: ' + this.duration);
 		
-		//update duration if not set		
-		this.duration =(this.vid.duration==0)?this.getDuration():this.vid.duration;
+		//update duration if not set (for now trust the getDuration more than this.vid.duration		
+		this.duration =(this.getDuration())?this.getDuration():this.vid.duration;
 				
 		//update currentTime
 		this.currentTime = this.vid.currentTime;
 		
+		//update the start offset:
+		if(!this.start_offset)
+			this.start_offset=this.media_element.selected_source.start_offset;	
+		
 		//does smili based actions
 		this.doSmilActions();
-		
+		//if in playlist mode make sure we are the "current_clip"
+		if(this.pc){
+			if(this.pc.pp.cur_clip.embed.id!=this.id){
+				js_log("no status updates for "+this.id + ' not current clip');				
+				return ;
+			}
+		}
 		if( this.currentTime > 0 ){
 			if(!this.userSlide){
-				this.setSliderValue(this.currentTime/this.duration );
-				this.setStatus( seconds2ntp(this.currentTime) + '/'+ seconds2ntp(this.duration));
+				if(this.currentTime > this.duration){//we are likely viewing a annodex stream add in offset
+					this.setSliderValue((this.currentTime-this.start_offset)/this.duration);			
+					this.setStatus( seconds2ntp(this.currentTime) + '/'+ seconds2ntp(this.start_offset+this.duration ));		
+				}else{
+					this.setSliderValue(this.currentTime/this.duration );
+					this.setStatus( seconds2ntp(this.currentTime) + '/'+ seconds2ntp(this.duration ));
+				}				
 			}else{
 				this.setStatus('seek to: ' + seconds2ntp(Math.round( (this.sliderVal*this.duration)) ));
 			}
 		}					
-		//update load progress if nessisary 
+		//update load progress if nessisary f
 		if( ! this.monitorTimerId ){
 	    	if(document.getElementById(this.id)){
 	        	this.monitorTimerId = setInterval('$j(\'#'+this.id+'\').get(0).monitor()', 250);
@@ -88,14 +103,24 @@ var nativeEmbed = {
 		js_log('f:onloadedmetadata metadata ready');
 		//set the clip duration 
 	},
-	pause : function(){		
-		this.vid.pause();
-		//stop updates: 
+	onended:function(){
+		//clip "ended" 
+		js_log('f:onended ');
+		//stop monitor
+		this.stopMonitor();
+		this.stop();
+	},
+	stopMonitor:function(){
 		if( this.monitorTimerId != 0 )
 	    {
 	        clearInterval(this.monitorTimerId);
 	        this.monitorTimerId = 0;
 	    }
+	},
+	pause : function(){		
+		this.vid.pause();
+		//stop updates: 
+		this.stopMonitor();
 	},
 	play:function(){
 		this.getVID();
@@ -127,9 +152,10 @@ var nativeEmbed = {
 				_pClip.dur = this.duration; 
 			
 			//check for duration actions / clip freze mode
-			if(_pClip.dur <= this.currentTime ){
+			if(_pClip.dur <= this.currentTime  && _pClip.order != _pClip.pp.getClipCount()-1 ){
 				//force next clip
-				js_log('smil dur: '+_pClip.dur + ' <= curTime: ' + this.currentTime + ' go to next clip');
+				js_log('order:' +_pClip.order + ' != count:' + (_pClip.pp.getClipCount()-1) +
+					' smil dur: '+_pClip.dur + ' <= curTime: ' + this.currentTime + ' go to next clip..');
 				_pClip.pp.next();
 			}
 			
@@ -161,7 +187,7 @@ var nativeEmbed = {
 					}
 				}
 			}*/
-			js_log("check for transOut: ct:"+this.currentTime + ' not >  dur:'+_pClip.dur+'-'+'cdur:'+  _pClip.transOut.dur +' = '+ (_pClip.dur - _pClip.transOut.dur));
+			//js_log("check for transOut: ct:"+this.currentTime + ' not >  dur:'+_pClip.dur+'-'+'cdur:'+  _pClip.transOut.dur +' = '+ (_pClip.dur - _pClip.transOut.dur));
 			if(_pClip.transOut){				
 				if(this.currentTime > (_pClip.dur - _pClip.transOut.dur) ){					
 					if(_pClip.transOut.animation_state==0){
@@ -169,11 +195,16 @@ var nativeEmbed = {
 						_pClip.transOut.animation_state=1;//running transition
 						if(_pClip.transOut.subtype=='crossfade'){
 							//make sure the "next" clip is visiable
-							var next_pClip = _pClip.pp.getClip(1);	
-							$j('#clipDesc_'+next_pClip.id).show();
-							var overlay_selector_id = 'clipDesc_'+_pClip.id;
+							var next_pClip = _pClip.pp.getClip(1);
+							//start playing the clip	
+							next_pClip.embed.play();							
+							//alert('opacity: '+$j('#clipDesc_'+next_pClip.id).css('opacity'));
+							var overlay_selector_id = 'clipDesc_'+next_pClip.id;
+							js_log("do transOUT for: "+overlay_selector_id);
 							mvTransLib.doTransition(_pClip.transOut, overlay_selector_id, offSetTime );
 						}
+					}else if(_pClip.transOut.animation_state==2){
+						this.stop();
 					}
 				}
 			}
@@ -235,14 +266,14 @@ var nativeEmbed = {
  * Smil Transition Effects see:  
  * http://www.w3.org/TR/SMIL3/smil-transitions.html#TransitionEffects-TransitionAttribute
  */    		
-mvTransLib = {
+var mvTransLib = {
 	/*
 	 * function doTransition lookups up the transition in the  mvTransLib obj
 	 * 		and intiates the transition if its avaliable 
 	 * @param tObj transition attribute object
 	 * @param offSetTime default value 0 if we need to start rendering from a given time 
 	 */
-	doTransition:function(tObj, overlay_selector_id, offSetTime){
+	doTransition:function(tObj, overlay_selector_id, offSetTime){		
 		if(!tObj.type)
 			return js_log('transition is missing type attribute');
 		
@@ -256,8 +287,7 @@ mvTransLib = {
 			return js_log('mvTransLib does not support subType: '+tObj.subtype);				
 							
 		//has type and subype call function with params:  
-		this['type'][tObj.type][tObj.subtype](tObj,overlay_selector_id, offSetTime);						
-					
+		this['type'][tObj.type][tObj.subtype](tObj,overlay_selector_id, offSetTime);					
 	},
 	type:{
 		//types:
@@ -294,20 +324,25 @@ mvTransLib = {
 			//corssFade
 			crossfade:function(tObj, overlay_selector_id, offSetTime){
 				js_log('f:crossfade: '+overlay_selector_id);
-				//set the initial state
-				$j('#'+overlay_selector_id).css({
-					'opacity':0
-				});
+				if($j('#'+overlay_selector_id).length==0)
+					js_log("ERROR overlay selector not found: "+overlay_selector_id);
+				
+				//set the initial state show the zero opacity animiation
+				$j('#'+overlay_selector_id).css({'opacity':0}).show();
+				
+				/*js_log("should have set "+overlay_selector_id +"to zero is: "+
+					$j('#'+overlay_selector_id).css('opacity') + ' should annimate for'+
+					(( tObj.dur - offSetTime )*1000) );*/
+				
 				$j('#'+overlay_selector_id).animate(
 					{
-  						"opacity" : "0"
+  						"opacity" : "1"
     				}, 
-    				{
-						"duration" : ( tObj.dur - offSetTime ) 
-					}, 
+    				(( tObj.dur - offSetTime )*1000),					
 					'linear',		    				
 					function(){ //callback
-						tObj.animation_done=true;
+						js_log("animated opacity done");
+						tObj.animation_state=2;						
 					}
 				);
 			}			

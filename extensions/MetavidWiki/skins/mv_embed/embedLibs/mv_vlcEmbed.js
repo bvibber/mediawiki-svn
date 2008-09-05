@@ -169,8 +169,7 @@ var vlcEmbed = {
     	//document.getElementById("PlayOrPause").value = "Pause";
 		//document.getElementById("PlayOrPause").disabled = false;
 		//document.getElementById("Stop").disabled = false;
-		this.onPlaying();
-		
+		this.onPlaying();		
     },
     liveFeedRoll : 0,
     onPlaying : function(){     	    

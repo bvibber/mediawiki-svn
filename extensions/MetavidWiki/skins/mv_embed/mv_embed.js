@@ -99,7 +99,7 @@ gMsg['improve_transcript']='Improve Transcript';
 //@@todo integrate msg serving into CMS
 function getMsg( key ) {
 	 if ( key in gMsg ) {
-	 	return gMsg[key];
+	 	return gMsg[key];getCont
 	 } else{
 	 	return '[' + key + ']';
 	 }
@@ -479,6 +479,125 @@ var setCookie = function ( name, value, expiry, path, domain, secure ) {
 
 /*parseUri class:*/
 var parseUri=function(d){var o=parseUri.options,value=o.parser[o.strictMode?"strict":"loose"].exec(d);for(var i=0,uri={};i<14;i++){uri[o.key[i]]=value[i]||""}uri[o.q.name]={};uri[o.key[12]].replace(o.q.parser,function(a,b,c){if(b)uri[o.q.name][b]=c});return uri};parseUri.options={strictMode:false,key:["source","protocol","authority","userInfo","user","password","host","port","relative","path","directory","file","query","anchor"],q:{name:"queryKey",parser:/(?:^|&)([^&=]*)=?([^&]*)/g},parser:{strict:/^(?:([^:\/?#]+):)?(?:\/\/((?:(([^:@]*):?([^:@]*))?@)?([^:\/?#]*)(?::(\d*))?))?((((?:[^?#\/]*\/)*)([^?#]*))(?:\?([^#]*))?(?:#(.*))?)/,loose:/^(?:(?![^:@]+:[^:@\/]*@)([^:\/?#.]+):)?(?:\/\/)?((?:(([^:@]*):?([^:@]*))?@)?([^:\/?#]*)(?::(\d*))?)(((\/(?:[^?#](?![^?#\/]*\.[^?#\/.]+(?:[?#]|$)))*\/?)?([^?#\/]*))(?:\?([^#]*))?(?:#(.*))?)/}};
+
+/* 
+ * controlsBuilder:
+ * 
+ */
+var ctrlBuilder = {
+	getControls:function(embedObj){	
+		js_log('f:controlsBuilder');		
+    	ctrlBuilder.id = (embedObj.pc)?embedObj.pc.pp.id:embedObj.id;
+    	ctrlBuilder.avaliable_width=embedObj.playerPixelWidth();
+    	//make pointer to the embedObj
+    	ctrlBuilder.embedObj =embedObj;
+    	//build local support var
+    	ctrlBuilder.suports ={
+    			'options':true,     			
+    			'borders':true   			
+    		};
+    	for(i in embedObj.supports)
+    		ctrlBuilder.suports[i] = embedObj.supports[i];
+    	//special case vars: 
+    	if(embedObj.roe && embedObj.show_meta_link)
+    		ctrlBuilder.suports['closed_captions']=true;   
+    		
+    	//append options to body (if not already there) 		
+		if($j('#mv_embedded_options_'+ctrlBuilder.id).length==0)
+			$j('body').append(ctrlBuilder.components['mv_embedded_options'].o());		
+		    		
+    	var o='';    
+    	for(i in ctrlBuilder.components){
+    		if(ctrlBuilder.suports[i]){
+    			if(ctrlBuilder.avaliable_width > ctrlBuilder.components[i].w){
+    				o+=ctrlBuilder.components[i].o();
+    				ctrlBuilder.avaliable_width -= ctrlBuilder.components[i].w;
+    			}else{
+    				js_log('not enough space for control component:'+i);
+    			}
+    		}
+    	}
+    	return o;
+	},
+	components:{
+		'borders':{
+			'w':8,
+			'o':function(){
+				return	'<span class="border_left">&nbsp;</span>'+
+						'<span class="border_right">&nbsp;</span>';
+			}
+		},
+		'fullscreen':{
+			'w':20,
+			'o':function(){
+				return '<div class="fullscreen"><a href="javascript:$j(\'#'+ctrlBuilder.id+'\').get(0).fullscreen();"></a></div>'
+			}
+		},
+		'options':{
+			'w':26,
+			'o':function(){
+				return '<div id="options_button_'+ctrlBuilder.id+'" class="options"><a href="javascript:$j(\'#'+ctrlBuilder.id+'\').get(0).doOptionsHTML();"></a></div>';			 			
+			}
+		},
+		'mv_embedded_options':{
+			'w':0,
+			'o':function(){
+				return '<div id="mv_embedded_options_'+ctrlBuilder.id+'" class="videoOptions">'
++'				<div class="videoOptionsTop"></div>'
++'				<div class="videoOptionsBox">'
++'					<div class="block">'
++'						<h6>Video Options</h6>'
++'					</div>'
++'					<div class="block">'
++'						<p class="short_match"><a href="javascript:$j(\'#'+ctrlBuilder.id+'\').get(0).selectPlaybackMethod();" onClick="$j(\'#mv_embedded_options_'+ctrlBuilder.id+'\').hide();"><span><strong>Stream Selection</strong></span></a></p>'
++'						<p class="short_match"><a href="javascript:$j(\'#'+ctrlBuilder.id+'\').get(0).showVideoDownload();" onClick="$j(\'#mv_embedded_options_'+ctrlBuilder.id+'\').hide();" ><span><strong>Download</strong></span></a></p>'
++'						<p class="short_match"><a href="javascript:$j(\'#'+ctrlBuilder.id+'\').get(0).showEmbedCode();" onClick="$j(\'#mv_embedded_options_'+ctrlBuilder.id+'\').hide();" ><span><strong>Share or Embed</strong></span></a></p>'
++'					</div>'
++'				</div><!--videoOptionsInner-->'
++'				<div class="videoOptionsBot"></div>'
++'			</div><!--videoOptions-->';
+			}
+		},
+		'play_or_pause':{
+			'w':24,
+			'o':function(){
+				return '<div id="mv_play_pause_button_'+ctrlBuilder.id+'" class="play_button"><a href="javascript:document.getElementById(\''+ctrlBuilder.id+'\').play_or_pause();"></a></div>'
+			}
+		},
+		'closed_captions':{
+			'w':40,
+			'o':function(){
+				return '<div class="closed_captions"><a href="javascript:$j(\'#'+ctrlBuilder.id+'\').get(0).showTextInterface();"></a></div>'
+			}			
+		},
+		'volume_control':{
+			'w':22,
+			'o':function(){
+				return '<div class="volume_icon"></div>'
+			}
+		},
+		'time_display':{
+			'w':80,
+			'o':function(){
+				return '<div id="mv_time_'+ctrlBuilder.id+'" class="time">'+ctrlBuilder.embedObj.getTimeReq()+'</div>'
+			}
+		},
+		'play_head':{
+			'w':0, //special case (takes up remaning space) 
+			'o':function(){
+				return '<div class="seeker" id="mv_seeker_'+ctrlBuilder.id+'" style="width: ' + (ctrlBuilder.avaliable_width - 18) + 'px;">'+           
+                    '		<div class="seeker_bar">'+
+                    '			<div class="seeker_bar_outer"></div>'+
+                    '			<div id="mv_seeker_slider_'+ctrlBuilder.id+'" class="seeker_slider"></div>'+
+                    '			<div class="seeker_bar_close"></div>'+
+                    '		</div>'+            
+                    '	</div><!--seeker-->'
+			}
+		}	    	                            
+	}    
+}
+
+
 
 js_log("mv embed path:"+ mv_embed_path);
 /*
@@ -1858,113 +1977,11 @@ embedVideo.prototype = {
 			return;
 		}else{
 			$j('#mv_embedded_controls_'+this.id).html( this.getControlsHTML() );
-		}
+		}		
     },
     getControlsHTML:function()
-    {    
-    	//check if we are in playlist mode: 
-    	var id = (this.pc)?this.pc.pp.id:this.id;
-    	
-    	js_log('f:getControlsHTML');
-    	//var true_id = (this.pc!=null)?this.pc.pp.id:this.id;				
-        var available_width = this.playerPixelWidth();
-        var html_code='';
-        // borders
-        html_code += '<span class="border_left">&nbsp;</span>';
-        available_width -= 4;
-        html_code += '<span class="border_right">&nbsp;</span>';
-        available_width -= 4;        	
-		
-        // fullscreen
-        if(this.supports['fullscreen'])
-        {
-            html_code += '<div class="fullscreen"><a href="javascript:$j(\'#'+id+'\').get(0).fullscreen();"></a></div>';
-            available_width -= 20;
-        }
-        // options
-        html_code += '<div class="options"><a href="javascript:$j(\'#'+id+'\').get(0).DoOptionsHTML();"></a></div>';
-        available_width -= 26;
-        
-		options_margin = available_width - 119;
-		if(options_margin<0) options_margin = 0;
-
-		$j('#mv_embedded_options_'+id).css('margin-left',options_margin+'px');
-        // play_pause
-        if (this.supports['play_or_pause'])
-        {
-            html_code += '<div id="mv_play_pause_button_'+id+'" class="play_button"><a href="javascript:document.getElementById(\''+this.id+'\').play_or_pause();"></a></div>';
-            available_width -= 24;
-        }
-
-        // closed captioning
-	  	if(this.roe && this.show_meta_link)
-        {
-			//add in cmml inline dispaly if roe description avaliable
-			//not to be displayed in stream interface.
-            html_code += '<div class="closed_captions"><a href="javascript:$j(\'#'+id+'\').get(0).showTextInterface();"></a></div>';
-            available_width -= 40;
-	  	}
-        // volume control
-        if(this.supports['volume_control'])
-        {
-             /*html_code +=
-                        '		<div class="volume_control">'+
-                        '			<div class="volume_knob"></div>'+
-                        '		</div>';
-            available_width -= 46;*/
-            html_code +='<div class="volume_icon"></div>';
-            available_width -= 22;
-        }
-        // time display
-        if(this.supports['time_display'] && (available_width > 80))
-        {                 	        	
-            html_code += '<div id="mv_time_'+id+'" class="time">'+this.getDurationNTP()+'</div>';
-            available_width -= 80;
-        }
-
-        if(this.supports['play_head'] && (available_width > 18))
-        {
-            html_code +=
-                    '	<div class="seeker" id="mv_seeker_'+id+'" style="width: ' + (available_width - 18) + 'px;">';
-            html_code+=
-                    '		<div class="seeker_bar">'+
-                    '			<div class="seeker_bar_outer"></div>'+
-                    '			<div id="mv_seeker_slider_'+id+'" class="seeker_slider"></div>'+
-                    '			<div class="seeker_bar_close"></div>'+
-                    '		</div>';
-            html_code+=
-                    '	</div><!--seeker-->';
-        }
-        // code for stream selection and displaying embed code: 
-        var dlLink = 'javascript:$j(\'#'+this.id+'\').get(0).showVideoDownload();';
-		var source_link = 'javascript:$j(\'#'+this.id+'\').get(0).selectPlaybackMethod();';
-        var close_link = '$j(\'#mv_embedded_options_'+this.id+'\').hide();';
-
-        html_code += '<div id="mv_embedded_options_'+this.id+'" class="videoOptions">'
-+'				<div class="videoOptionsTop"></div>'
-+'				<div class="videoOptionsBox">'
-+'					<div class="block">'
-+'						<h6>Video Options</h6>'
-+'					</div>'
-+'					<div class="block">'
-+'<p class="short_match"><a href="'+source_link+'" onClick="'+close_link+'"><span><strong>Stream Selection</strong></span></a></p>'
-+'						<p class="short_match"><a href="'+dlLink+'" onClick="'+close_link+'" class="last_match"><span><strong>Download</strong></span></a><p>'
-+'					</div>'
-+'					<div class="block">'
-+'						<h6>Share or Embed</h6>'
-+'					</div>'
-+'					<div class="block embed_code">'
-+'						<p class="short_match">'
-+'							<textarea name="embed" id="embed">'+this.getEmbeddingHTML()+'</textarea>'
-+'							<button class="copy_to_clipboard">Copy to Clipboard</button>'
-+'						</p>'
-+'					</div>											'
-+'				</div><!--videoOptionsInner-->'
-+'				<div class="videoOptionsBot"></div>'
-+'			</div><!--videoOptions-->';
-        
-        
-        return html_code;
+    {        	
+    	return ctrlBuilder.getControls(this);
     },	
 	getHTML : function (){		
 		//@@todo check if we have sources avaliable	
@@ -1981,13 +1998,13 @@ embedVideo.prototype = {
 	        if(this.controls)
 	        {
 	        	js_log("f:getHTML:AddControls");
-	            html_code += '<div id="mv_embedded_controls_'+this.id+'" class="controls">';
+	            html_code +='<div id="mv_embedded_controls_'+this.id+'" class="controls" style="width:'+this.width+'px">';
 	            html_code += this.getControlsHTML();       
-	            html_code +=	'</div>';         
+	            html_code +='</div>';         
 	        }
         html_code += '</div>'; //videoPlayer div close        
         js_log('should set: '+this.id);
-        $j(this).html(html_code);
+        $j(this).html(html_code);                
         //js_log('set this to: ' + $j(this).html() );	
         //alert('stop');
         //if auto play==true directly embed the plugin
@@ -2102,13 +2119,17 @@ embedVideo.prototype = {
 
 		return embed_code_html;
 	},
-    DoOptionsHTML:function()
+    doOptionsHTML:function()
     {
     	var sel_id = (this.pc!=null)?this.pc.pp.id:this.id;
-        $j('#mv_embedded_options_'+sel_id).toggle();
+    	var pos = $j('#options_button_'+sel_id).offset();
+    	pos['top']=pos['top']+24;
+		pos['left']=pos['left']-124;
+		js_log('pos of options button: t:'+pos['top']+' l:'+ pos['left']);
+        $j('#mv_embedded_options_'+sel_id).css(pos).toggle();
         return;
 
-        var thumbnail = this.media_element.getThumbnailURL();
+        /*var thumbnail = this.media_element.getThumbnailURL();
         var thumb_html='';
 	  	 //add plugin config button (don't add for playlists)
 	  	 if(!this.pc){
@@ -2118,6 +2139,7 @@ embedVideo.prototype = {
 				 '</a>'+
 			 '</div>';
 	  	 }
+	  	 * */
 
 	  	//add in cmml inline dispaly if roe description avaliable
 	  	//not to be displayed in stream interface.
@@ -2130,15 +2152,16 @@ embedVideo.prototype = {
 	  	}*/
 
 	    //add link back if requested
-	    if(this.linkback){
+	    /*if(this.linkback){
 	    	thumb_html+='<div style="border:none;position:absolute;bottom:2px;right:2px;z-index:1">'+
 		     '<a title="'+getMsg('clip_linkback')+'" target="_new" href="'+this.linkback+'">';
 		    thumb_html+=getTransparentPng({id:'lb_'+this.id, width:"27", height:"27", border:"0",
 						src:mv_embed_path + 'images/vid_info_sm.png' });
 			thumb_html+='</div>';
 	    }
+	    * */
 	    //add direct download link if option:
-	    if(this.download_link){
+	    /*if(this.download_link){
 	    	//check for roe attribute (extened download options)
 	    	var dlLink = (this.media_element.sources.length>1)?'javascript:document.getElementById(\''+this.id+'\').showVideoDownload();':this.media_element.sources[0].uri;
 	    	thumb_html+='<div style="border:none;position:absolute;bottom:2px;left:2px;z-index:1">'+
@@ -2147,11 +2170,12 @@ embedVideo.prototype = {
 						src:mv_embed_path + 'images/vid_download_sm.png' });
 			thumb_html+='</div>';
 	    }
+	    */
 	    //add in embed link (if requested)
-	    if(this.embed_link){
+	    /*if(this.embed_link){
 	    	var right_offset = (this.linkback)?32:0;
 			thumb_html+='<div style="border:none;position:absolute;bottom:2px;right:'+right_offset+'px;z-index:1">'+
-		     '<a title="Embed Clip Code" href="javascript:document.getElementById(\''+this.id+'\').hideShowEmbedCode();">';
+		     '<a title="Embed Clip Code" href="javascript:document.getElementById(\''+this.id+'\').showEmbedCode();">';
 
 			thumb_html+=getTransparentPng(new Object ({id:'le_'+this.id, width:"27", height:"27", border:"0",
 						src:mv_embed_path + 'images/vid_embed_sm.png' }));
@@ -2162,8 +2186,8 @@ embedVideo.prototype = {
 				'<input onClick="this.select();" type="text" size="40" length="1024" value="'+this.getEmbeddingHTML()+'">'
 				 '</div>';
             thumb_html+='</div>';
-	    }
-	    this.displayHTML(thumb_html);
+	    }*/
+	    //this.displayHTML(thumb_html);
 	},
 	getPlayButton:function(id){
 		if(!id)id=this.id;
@@ -2192,22 +2216,27 @@ embedVideo.prototype = {
 		return out;*/
 	},
 	//display the code to remotely embed this video:
-	hideShowEmbedCode : function(){
-		if($j('#embed_code_'+this.id).css('display')=='none'){
-			$j('#embed_code_'+this.id).fadeIn("slow");
-		}else{
-			$j('#embed_code_'+this.id).fadeOut("slow", function(){
-				$j('#embed_code_'+this.id).css('display', 'none');
-			});
-		}
-		/* this should work but does not! :(
-		$j('#embed_code_'+this.id).toggle(function(){
-			$j(this).fadeIn("slow");
-		},function(){
-			$j(this).fadeOut("slow");
-		} );
-		*
-		*/
+	showEmbedCode : function(embed_code){
+		if(!embed_code)
+			embed_code = this.getEmbeddingHTML();
+			
+		this.displayHTML('<a class="email" href="#">Share Clip via Email</a> '+
+			'<p>or</p> '+
+			'<a href="#">Embed Clip in Blog or Site</a> '+
+			'<div class="embed_code"> '+
+				'<textarea onClick="this.select();" id="embedding_user_html_'+this.id+'" name="embed">' +
+					embed_code+
+				'</textarea> '+
+				'<button onClick="$j(\'#'+this.id+'\').get(0).copyText(); return false;" class="copy_to_clipboard">Copy to Clipboard</button> '+
+			'</div> '+
+		'</div>');
+	},
+	copyText:function(){
+	  $j('#embedding_user_html_'+this.id).focus().select();	   	 
+	  if(document.selection){  	
+		  CopiedTxt = document.selection.createRange();	
+		  CopiedTxt.execCommand("Copy");
+	  }
 	},
 	showTextInterface:function(){
 		//check if textObj present:
@@ -2230,19 +2259,22 @@ embedVideo.prototype = {
     */
     displayHTML:function(html_code)
     {
+    	var sel_id = (this.pc!=null)?this.pc.pp.id:this.id;
+    	
     	if(!this.supports['overlays'])
         	this.stop();
         
         //put select list on-top
         //make sure the parent is relatively positioned:
-        $j('#'+this.id).css('position', 'relative');
+        $j('#'+sel_id).css('position', 'relative');
         //set height width (check for playlist container)
         var width = (this.pc)?this.pc.pp.width:this.playerPixelWidth();
         var height = (this.pc)?this.pc.pp.height:this.playerPixelHeight();
-        if(width<320)width=320;
-        if(height<240)height=240;
+        
+        if(this.pc)
+        	height+=(pl_layout.title_bar_height + pl_layout.control_height);
 
-        var sel_id = (this.pc!=null)?this.pc.pp.id:this.id;
+      
         var fade_in = true;
         if($j('#blackbg_'+sel_id).length!=0)
         {
@@ -2262,7 +2294,7 @@ embedVideo.prototype = {
            	+'</div>'+
 //                close_link+'</span>'+
       		 '</div></div>';
-        $j('#'+sel_id).append(div_code);
+        $j('#'+sel_id).prepend(div_code);
         if (fade_in)
             $j('#blackbg_'+sel_id).fadeIn("slow");
         else
@@ -2305,14 +2337,17 @@ embedVideo.prototype = {
 		 return select_html;
 	},
     selectPlaybackMethod:function(){
-        var _this=this;
+    	//get id (in case where we have a parent container)
+        var this_id = (this.pc!=null)?this.pc.pp.id:this.id;
+        
+        var _this=this;               
         var out='<span style="color:white"><blockquote>';
         var _this=this;
         //js_log('selected src'+ _this.media_element.selected_source.url);
 		$j.each(this.media_element.getPlayableSources(), function(index, source)
         {     		
 	        var default_player = embedTypes.players.defaultPlayer(source.getMIMEType());
-	        var source_select_code = 'document.getElementById(\''+_this.id+'\').closeDisplayedHTML(); document.getElementById(\''+_this.id+'\').media_element.selectSource(\''+index+'\');';
+	        var source_select_code = '$j(\'#'+this_id+'\').closeDisplayedHTML(); $j(\''+_this.id+'\').media_element.selectSource(\''+index+'\');';
 	        var player_code = _this.getPlayerSelectList(source.getMIMEType(), index, source_select_code);
 	        var is_not_selected = (source != _this.media_element.selected_source);
 	        var image_src = mv_embed_path+'/images/stream/';
@@ -2438,7 +2473,7 @@ embedVideo.prototype = {
 	 * base embed stop (should be overwritten by the plugin)
 	 */
 	stop: function(){
-		js_log('base stop');
+		js_log('base stop:'+this.id);
 		//check if thumbnail is being displayed in which case do nothing
 		if(this.thumbnail_disp){
 			//already in stooped state
@@ -2572,6 +2607,7 @@ embedVideo.prototype = {
 		$j('#mv_time_'+id).html(value);
 	}	
 }
+
 /* returns html for a transparent png (for ie<7)*/
 function getTransparentPng(image){
 	if(!image.style)image.style='';
@@ -2620,7 +2656,7 @@ function ntp2seconds(ntp){
 function mv_addLoadEvent(func) {
 	mvEmbed.addLoadEvent(func);
 }
- function do_request(req_url, callback, mv_json_response){
+function do_request(req_url, callback, mv_json_response){
  	js_log('do request: ' + req_url);
 		if( parseUri(document.URL).host == parseUri(req_url).host){
 			//no proxy at all do a direct request:

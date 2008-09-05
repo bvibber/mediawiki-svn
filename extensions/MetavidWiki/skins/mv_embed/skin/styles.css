@@ -36,8 +36,7 @@
 	height: 305px;
 }
 .videoPlayer .controls {
-	height: 29px;
-	width: 100%;
+	height: 29px;	
 	background: #454545;
 }
 .videoPlayer .controlInnerSmall {
@@ -187,7 +186,7 @@ width: 100%;
 	cursor: pointer;
 }
 
-.videoPlayer .large_play_button {
+.large_play_button {
 	background: url(images/player_big_play_button.png) 0 0 no-repeat;
     display:block;
 	width: 130px;
@@ -221,6 +220,7 @@ width: 100%;
 	padding: 0px 11px 0 4px;
 	position: relative;
 	overflow: hidden;
+	color:#6C6C6C;
 	z-index: 3;
 	background: url(images/player_options_bg.png) 0 0 repeat-y;
 }
@@ -316,6 +316,7 @@ width: 100%;
     top:0px;
     left:0px;
 	z-index: 10;
+	font-size:16px;
 	overflow: hidden;
 }
 
@@ -339,7 +340,12 @@ width: 100%;
     font-size:12px;
 	text-decoration: underline;
 }
-.videoComplete .videoOptionsComplete a.email {background: url(images/ico_mail.png) right 0px no-repeat; padding: 0 50px 0 0;}
+
+.videoComplete .videoOptionsComplete a.email {
+	font-size:16px;
+	background: url(images/ico_mail.png) right 0px no-repeat; 
+	padding: 0 50px 0 0;
+}
 
 .videoComplete div.embed_code textarea {
 	margin: 8px 0 8px 0;

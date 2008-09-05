@@ -485,7 +485,7 @@ $smwgShowFactbox=SMW_FACTBOX_HIDDEN;
 			$rlink = '<a title="'.htmlspecialchars(wfMsg('mv_remove_title')).'" href="javascript:mv_disp_remove_mvd(\''.htmlspecialchars($mvd_page->wiki_title).'\', \''.htmlspecialchars($mvd_page->id).'\')">'.wfMsg('mv_remove').'</a>'; 
 			$out.=' - ' .  $rlink;
 		}
-		$out.=" ) ";
+		$out.=" )<br> ";
 		return $out;
 	}
 	/*

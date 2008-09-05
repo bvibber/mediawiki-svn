@@ -6,7 +6,7 @@
  * for more info visit http:/metavid.ucsc.edu/code
  * 
  */
-define('MV_VERSION','1.0rc1 (pre alpha)');
+define('MV_VERSION','1.0');
 
 
 if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
@@ -114,7 +114,7 @@ function mvSetupExtension(){
 	$wgAutoloadClasses['MV_CategoryPage']		= dirname(__FILE__)  .'/articlepages/MV_CategoryPage.php';
 	$wgAutoloadClasses['MV_SequencePage'] 		=  dirname(__FILE__)  .'/articlepages/MV_SequencePage.php';
 	$wgAutoloadClasses['MV_StreamPage'] 		= dirname(__FILE__)  .'/articlepages/MV_StreamPage.php';
-	$wgAutoloadClasses['MV_EditDataPage']	= $wgAutoloadClasses['MV_DataPage'] =  dirname(__FILE__) . '/articlepages/MV_DataPage.php';
+	$wgAutoloadClasses['MV_EditDataPage']		= $wgAutoloadClasses['MV_DataPage'] =  dirname(__FILE__) . '/articlepages/MV_DataPage.php';
 	$wgAutoloadClasses['MV_EditStreamPage']		= dirname(__FILE__)  .'/MV_EditStreamPage.php';
 	
 	
