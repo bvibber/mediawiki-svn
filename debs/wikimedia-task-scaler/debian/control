@@ -9,7 +9,7 @@ Package: wikimedia-task-scaler
 Architecture: all
 Depends: wikimedia-task-appserver, 
  imagemagick,
- ffmpeg-still,
+ ffmpeg,
  librsvg2-bin,
  djvulibre-bin,
  language-support-fonts-am,
