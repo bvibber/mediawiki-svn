@@ -37,11 +37,13 @@ case "$1" in
 	;;
     remove)
        	removemount /mnt/upload3
+		removemount /mnt/upload4
        	removemount /mnt/math
        	;;
 
     upgrade|failed-upgrade|abort-install|abort-upgrade|disappear)
        removemount /mnt/upload3
+		removemount /mnt/upload4
        removemount /mnt/math
         ;;
 

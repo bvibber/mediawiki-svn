@@ -1,3 +1,9 @@
+wikimedia-task-appserver (1.25) hardy; urgency=low
+
+  * Added /mnt/upload4 to the NFS mount list
+
+ -- Tim Starling <tstarling@wikimedia.org>  Fri, 05 Sep 2008 13:11:12 +1000
+
 wikimedia-task-appserver (1.24) hardy; urgency=low
 
   * Split off the image scaler task to a separate virtual package.
