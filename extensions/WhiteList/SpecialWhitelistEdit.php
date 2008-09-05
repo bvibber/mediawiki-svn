@@ -31,14 +31,14 @@ if (!defined('MEDIAWIKI')) die();
 
 $wgExtensionCredits['specialpage'][] = array(
 	'name'           => 'WhiteListEdit',
-	'version'        => 'v0.9.0',
+	'version'        => 'v0.10.0',
 	'author'         => array('Paul Grinberg', 'Mike Sullivan'),
 	'email'          => 'gri6507 at yahoo dot com, ms-mediawiki AT umich DOT edu',
 	'description'    => 'Edit the access permissions of restricted users',
 	'descriptionmsg' => 'whitelist-desc',
 	'url'            => 'http://www.mediawiki.org/wiki/Extension:WhiteList',
 );
- 
+
 # these are the groups and the rights used within this extension
 if( !isset($wgWhiteListRestrictedGroup))
 	$wgWhiteListRestrictedGroup = 'restricted';
@@ -97,6 +97,7 @@ require_once($dir. 'WhitelistAuth.php');
 
 $wgExtensionMessagesFiles['WhitelistEdit'] = $dir . 'SpecialWhitelistEdit.i18n.php';
 $wgExtensionMessagesFiles['Whitelist']     = $dir . 'SpecialWhitelistEdit.i18n.php';
+$wgExtensionAliasesFiles['Whitelist'] = $dir . 'SpecialWhitelistEdit.alias.php';
 $wgAutoloadClasses['WhitelistEdit']        = $dir . 'SpecialWhitelistEdit_body.php';
 $wgAutoloadClasses['Whitelist']            = $dir . 'SpecialWhitelistEdit_body.php';
 $wgSpecialPages['WhitelistEdit']           = 'WhitelistEdit';

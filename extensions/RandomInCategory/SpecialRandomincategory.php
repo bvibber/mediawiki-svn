@@ -21,7 +21,9 @@ $wgExtensionCredits['specialpage'][] = array(
 	'descriptionmsg' => 'randomincategory-desc',
 );
 
-$wgExtensionMessagesFiles['RandomInCategory'] = dirname(__FILE__) . '/SpecialRandomincategory.i18n.php';
+$dir = dirname(__FILE__) . '/';
+$wgExtensionMessagesFiles['RandomInCategory'] = $dir . 'SpecialRandomincategory.i18n.php';
+$wgExtensionAliasesFiles['RandomInCategory'] = $dir . 'SpecialRandomincategory.alias.php';
 
 $wgSpecialPages['Randomincategory'] = 'RandomPageInCategory';
-$wgAutoloadClasses['RandomPageInCategory'] = dirname( __FILE__ ) . '/SpecialRandomincategory.body.php';
+$wgAutoloadClasses['RandomPageInCategory'] = $dir . 'SpecialRandomincategory.body.php';

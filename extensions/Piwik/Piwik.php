@@ -1,6 +1,6 @@
 <?php
 /**
- * Parser hook extension to add a <randomimage> tag
+ * Inserts Piwik script into MediaWiki pages for tracking and adds some stats
  *
  * @addtogroup Extensions
  * @author Isb1009 <isb1009 at gmail dot com>
@@ -83,21 +83,8 @@ PIWIK;
 $dir = dirname(__FILE__) . '/';
 $wgAutoloadClasses['Piwik'] = $dir . 'Piwik_specialpage.php'; # Tell MediaWiki to load the extension body.
 $wgExtensionMessagesFiles['Piwik'] = $dir . 'Piwik.i18n.php';
+$wgExtensionAliasesFiles['Piwik'] = $dir . 'Piwik.alias.php';
 $wgSpecialPages['Piwik'] = 'Piwik'; # Let MediaWiki know about your new special page.
-$wgHooks['LanguageGetSpecialPageAliases'][] = 'Piwik'; # Add any aliases for the special page.
-
-function Piwik(&$specialPageArray, $code) {
-  # The localized title of the special page is among the messages of the extension:
-
-  wfLoadExtensionMessages('Piwik');
-  $text = wfMsg('piwik');
-
-  # Convert from title in text form to DBKey and put it into the alias array:
-  $title = Title::newFromText($text);
-  $specialPageArray['Piwik'][] = $title->getDBKey();
-
-  return true;
-}
 
 ///Alias for efAddPiwik - backwards compatibility.
 function addPiwik() { return efAddPiwik(); }

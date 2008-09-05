@@ -30,11 +30,12 @@ require_once('XmlFunctions.php');
 class SpecialForm extends SpecialPage {
 	function SpecialForm() {
 		SpecialPage::SpecialPage("Form");
-		self::loadMessages();
 	}
 
 	function execute( $par ) {
 		global $wgRequest, $wgOut;
+
+		wfLoadExtensionMessages( 'Form' );
 
 		# Must have a name, like Special:Form/Nameofform
 		# XXX: instead of an error, show a list of available forms
@@ -60,18 +61,6 @@ class SpecialForm extends SpecialPage {
 			# GET (HEAD?) is to show the form
 			$this->showForm($form);
 		}
-	}
-
-	# Load form-related messages, per special-page guidelines
-
-	function loadMessages() {
-		static $messagesLoaded = false;
-
-		if ( $messagesLoaded ) return true;
-		wfLoadExtensionMessages('SpecialForm');
-		$messagesLoaded = true;
-
-		return true;
 	}
 
 	# Load and parse a form article from the DB

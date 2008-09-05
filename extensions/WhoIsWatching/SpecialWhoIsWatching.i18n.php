@@ -8,12 +8,13 @@
 $messages = array();
 
 $messages['en'] = array(
-	'whoiswatching'                => 'Who is watching a wiki page',
-	'specialwhoiswatchingthepage'  => 'Who is watching %s',
-	'specialwhoiswatchingusage'    => 'This special page cannot be used on its own.
+	'whoiswatching' => 'Who is watching a wiki page',
+	'whoiswatching-desc' => 'Provides a listing of usernames watching a wiki page',
+	'specialwhoiswatchingthepage' => 'Who is watching %s',
+	'specialwhoiswatchingusage' => 'This special page cannot be used on its own.
 Please use the page [[MediaWiki:Number_of_watching_users_pageview]] to define an entry point to this special page.',
 	'specialwhoiswatchingaddusers' => 'Add users to watch the page',
-	'specialwhoiswatchingaddbtn'   => 'Add selected Users',
+	'specialwhoiswatchingaddbtn' => 'Add selected users',
 );
 
 /** Arabic (العربية)

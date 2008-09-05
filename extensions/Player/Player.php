@@ -30,6 +30,7 @@ $wgHooks['OutputPageParserOutput'][] = 'playerParserOutput';
 
 $dir = dirname(__FILE__) . '/';
 $wgExtensionMessagesFiles['Player'] = $dir . 'Player.i18n.php';
+$wgExtensionAliasesFiles['Player'] = $dir . 'Player.alias.php';
 $wgAutoloadClasses['Player'] = $dir . 'PlayerClass.php';
 $wgAutoloadClasses['SpecialPlayer'] = $dir . 'SpecialPlayer.php';
 $wgSpecialPages['Player'] = 'SpecialPlayer';

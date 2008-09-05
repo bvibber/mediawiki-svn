@@ -15,15 +15,17 @@ $wgAvailableRights[] = 'refreshspecial';
 $wgGroupPermissions['staff']['refreshspecial'] = true;
 
 $wgExtensionCredits['specialpage'][] = array(
-	'name' => 'Refresh Special',
-	'author' => 'Bartek Łapiński',
-	'version' => '1.0',
-	'url' => 'http://www.mediawiki.org/wiki/Extension:RefreshSpecial',
-	'description' => 'Allows manual special page refresh of special pages'
+	'name'           => 'Refresh Special',
+	'author'         => 'Bartek Łapiński',
+	'version'        => '1.1',
+	'url'            => 'http://www.mediawiki.org/wiki/Extension:RefreshSpecial',
+	'description'    => 'Allows manual special page refresh of special pages'
+	'descriptionmsg' => 'refreshspecial-desc',
 );
 
 $dir = dirname(__FILE__) . '/';
 $wgExtensionMessagesFiles['RefreshSpecial'] = $dir . 'RefreshSpecial.i18n.php';
+$wgExtensionAliasesFiles['RefreshSpecial'] = $dir . 'RefreshSpecial.alias.php';
 $wgAutoloadClasses['RefreshSpecial'] = $dir. 'RefreshSpecial.body.php';
 $wgSpecialPages['RefreshSpecial'] = 'RefreshSpecial';
 

@@ -14,7 +14,7 @@ $wgHooks['BeforePageDisplay'][] = 'wfWhosOnline_update_data';
 
 $wgExtensionCredits['other'][] = array(
 	'name' => 'WhosOnline',
-	'version' => '1.2',
+	'version' => '1.3',
 	'author' => 'Maciej Brencz',
 	'description' => 'Creates list of logged-in & anons currently online',
 	'descriptionmsg' => 'whosonline-desc',
@@ -24,6 +24,7 @@ $wgExtensionCredits['other'][] = array(
 $dir = dirname(__FILE__) . '/';
 $wgAutoloadClasses['SpecialWhosOnline'] = $dir . 'WhosOnlineSpecialPage.php';
 $wgExtensionMessagesFiles['WhosOnline'] = $dir . 'WhosOnline.i18n.php';
+$wgExtensionAliasesFiles['WhosOnline'] = $dir . 'WhosOnline.alias.php';
 $wgSpecialPages['WhosOnline'] = 'SpecialWhosOnline';
 
 // update online data

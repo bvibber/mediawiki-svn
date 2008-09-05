@@ -21,6 +21,7 @@ $wgExtensionCredits['specialpage'][] = array(
 
 $dir = dirname(__FILE__) . '/';
 $wgExtensionMessagesFiles['ProfileMonitor'] = $dir . 'ProfileMonitor.i18n.php';
+$wgExtensionAliasesFiles['ProfileMonitor'] = $dir . 'ProfileMonitor.alias.php';
 $wgAutoloadClasses['ProfileMonitor'] = $dir . 'ProfileMonitor.class.php';
 $wgSpecialPages['Profiling'] = 'ProfileMonitor';
 

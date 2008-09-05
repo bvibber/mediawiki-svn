@@ -12,7 +12,8 @@ $messages = array();
  */
 $messages['en'] = array (
 	'refreshspecial' => 'Refresh special pages',
-	'refreshspecial-title' => 'Refresh Special Pages',
+	'refreshspecial-desc' => 'Allows [[Special:RefreshSpecial|manual special page refresh]] of special pages',
+	'refreshspecial-title' => 'Refresh special pages',
 	'refreshspecial-help' =>  'This special page provides means to manually refresh special pages. When you have chosen all pages that you want to refresh, click on the Refresh button below to make it go. Warning: the refresh may take a while on larger wikis.',
 	'refreshspecial-button' => 'Refresh selected',
 	'refreshspecial-fail' => 'Please check at least one special page to refresh.',
@@ -22,15 +23,15 @@ $messages['en'] = array (
 	'refreshspecial-choice' => 'refreshing special pages',
 	'refreshspecial-js-disabled' => '(<i>You cannot select all pages when JavaScript is disabled</i>)',
 	'refreshspecial-select-all-pages' => ' select all pages ',
-	'refreshspecial-link-back' => 'Get back to extension ',
+	'refreshspecial-link-back' => 'Go back to extension ',
 	'refreshspecial-here' => '<b>here</b>',
-	'refreshspecial-none-selected' => 'You haven\'t selected any special pages. Reverting to default selection.',
-	'refreshspecial-db-error' => 'FAILED: database error',
+	'refreshspecial-none-selected' => 'You have not selected any special pages. Reverting to default selection.',
+	'refreshspecial-db-error' => 'Failed: database error',
 	'refreshspecial-no-page' => 'No such special page',
 	'refreshspecial-slave-lagged' => 'Slave lagged, waiting...',
 	'refreshspecial-reconnected' => 'Reconnected.',
 	'refreshspecial-reconnecting' => 'Connection failed, reconnecting in 10 seconds...',
-	'refreshspecial-total-display' => '<br />Refreshed $1 pages totalling $2 rows in time $3 (complete time of the script run is $4)',
+	'refreshspecial-total-display' => '<br />Refreshed $1 pages totaling $2 rows in time $3 (complete time of the script run is $4)',
 );
 
 /** Finnish (Suomi)

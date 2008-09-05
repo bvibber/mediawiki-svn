@@ -27,5 +27,6 @@ $wgExtensionCredits['specialpage'][] = array(
 
 $dir = dirname(__FILE__) . '/';
 $wgExtensionMessagesFiles['WatchSubpages'] = $dir . 'WatchSubpages.i18n.php';
+$wgExtensionAliasesFiles['WatchSubpages'] = $dir . 'WatchSubpages.alias.php';
 $wgAutoloadClasses['WatchSubpages'] = $dir . 'WatchSubpages_body.php';
 $wgSpecialPages['WatchSubpages'] = 'WatchSubpages';
