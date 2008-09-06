@@ -26,6 +26,17 @@ $messages['ar'] = array(
 	'acct_creation_global_soft_throttle_hit-desc' => 'حد إنشاء المستخدم',
 );
 
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Meno25
+ */
+$messages['arz'] = array(
+	'acct_creation_global_soft_throttle_hit' => 'إنشاء الحسابات تم تعليقه تلقائيا لعدة لحظات نتيجة لوجود عدد كبير غير معتاد من محاولات الدخول الحديثة.
+من فضلك انتظر عدة دقائق وحاول مرة ثانية.',
+	'acct_creation_global_hard_throttle_hit' => "إنشاء الحسابات تم تعليقه لعدة ثوانى لتقليل هجوم التسجيل.
+من فضلك انتظر لحظة واضغط 'reload' فى متصفحك لإعادة التنفيذ.",
+	'acct_creation_global_soft_throttle_hit-desc' => 'حد إنشاء المستخدم',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  */

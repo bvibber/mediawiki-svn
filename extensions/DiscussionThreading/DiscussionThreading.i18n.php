@@ -29,6 +29,17 @@ $messages['ar'] = array(
 	'discussionthreading-threadnewsectionhint' => 'بدء مجموعة رسائل جديدة',
 );
 
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Meno25
+ */
+$messages['arz'] = array(
+	'discussionthreading-desc' => 'يضيف مجموعات الرسائل إلى صفحات النقاش',
+	'discussionthreading-replysection' => 'رد',
+	'discussionthreading-replysectionhint' => 'رد على هذه الرسالة',
+	'discussionthreading-threadnewsection' => 'جديد',
+	'discussionthreading-threadnewsectionhint' => 'بدء مجموعة رسائل جديدة',
+);
+
 $messages['de'] = array(
 	'discussionthreading-replysection' => 'antworten',
 	'discussionthreading-replysectionhint' => "Auf diesen Eintrag antworten",
@@ -43,11 +54,15 @@ $messages['es'] = array(
 	'discussionthreading-threadnewsectionhint' => "Empezar un nuevo tema"
 );
 
+/** French (Français)
+ * @author Grondin
+ */
 $messages['fr'] = array(
+	'discussionthreading-desc' => 'Ajoute un fil de discussion dans les pages de discussion',
 	'discussionthreading-replysection' => 'répondre',
-	'discussionthreading-replysectionhint' => "Répondre �e commentaire",
+	'discussionthreading-replysectionhint' => 'Répondre �e commentaire',
 	'discussionthreading-threadnewsection' => 'nouveau',
-	'discussionthreading-threadnewsectionhint' => "Commencer une nouvelle discussion"
+	'discussionthreading-threadnewsectionhint' => 'Commencer une nouvelle discussion',
 );
 
 /** Irish (Gaeilge)
@@ -69,6 +84,17 @@ $messages['gl'] = array(
 	'discussionthreading-replysectionhint' => 'Respostar esta publicación',
 	'discussionthreading-threadnewsection' => 'novo',
 	'discussionthreading-threadnewsectionhint' => 'Comezar un novo fío de conversa',
+);
+
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'discussionthreading-desc' => 'Adde un organisation in filos al paginas de discussion',
+	'discussionthreading-replysection' => 'responder',
+	'discussionthreading-replysectionhint' => 'Responder a iste commento',
+	'discussionthreading-threadnewsection' => 'nove',
+	'discussionthreading-threadnewsectionhint' => 'Initiar un nove filo',
 );
 
 $messages['it'] = array(
@@ -98,6 +124,17 @@ $messages['nl'] = array(
 	'discussionthreading-replysectionhint' => 'Deze opmerking beantwoorden',
 	'discussionthreading-threadnewsection' => 'nieuw',
 	'discussionthreading-threadnewsectionhint' => 'Nieuwe thread starten',
+);
+
+/** Occitan (Occitan)
+ * @author Cedric31
+ */
+$messages['oc'] = array(
+	'discussionthreading-desc' => 'Apondre un fial de discussion dins las paginas de discussion',
+	'discussionthreading-replysection' => 'respondre',
+	'discussionthreading-replysectionhint' => 'Respondre al comentari',
+	'discussionthreading-threadnewsection' => 'novèl',
+	'discussionthreading-threadnewsectionhint' => 'Començar una discussion novèla',
 );
 
 /** Slovak (Slovenčina)

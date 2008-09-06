@@ -80,6 +80,23 @@ $messages['ar'] = array(
 	'contributors-nosuchpage' => 'الصفحة $1 غير موجودة.',
 );
 
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Meno25
+ */
+$messages['arz'] = array(
+	'contributors' => 'المساهمون',
+	'contributors-desc' => 'يلخص المساهمين الأساسيين لصفحة',
+	'contributors-toolbox' => 'المساهمون الأساسيون',
+	'contributors-legend' => 'اعرض المساهمين الأساسيين لصفحة',
+	'contributors-target' => 'العنوان:',
+	'contributors-submit' => 'اعرض',
+	'contributors-subtitle' => 'المساهمون الأساسيون للمقالة $1',
+	'contributors-others-long' => 'هناك {{PLURAL:$1|مساهم واحد آخر| $1 مساهم آخر}} لهذه الصفحة.',
+	'contributors-others' => 'و {{PLURAL:$1|واحد آخر|$1 آخرون}}',
+	'contributors-badtitle' => 'عنوان غير صحيح.',
+	'contributors-nosuchpage' => 'الصفحة $1 غير موجودة.',
+);
+
 /** Kotava (Kotava)
  * @author Wikimistusik
  */

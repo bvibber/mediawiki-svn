@@ -47,6 +47,19 @@ $messages['ar'] = array(
 	'newschannel_submit_button' => 'إنشاء التلقيم',
 );
 
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Meno25
+ */
+$messages['arz'] = array(
+	'newschannel' => 'قناة أخبار',
+	'newschannel-desc' => 'يطبق قناة أخبار [[Special:NewsChannel|كصفحة خاصة]] ديناميكية',
+	'newschannel_format' => 'الصيغة:',
+	'newschannel_limit' => 'الحد:',
+	'newschannel_include_category' => 'تصنيف إضافي:',
+	'newschannel_exclude_category' => 'استبعد التصنيف:',
+	'newschannel_submit_button' => 'إنشاء التلقيم',
+);
+
 /** Asturian (Asturianu)
  * @author Esbardu
  */

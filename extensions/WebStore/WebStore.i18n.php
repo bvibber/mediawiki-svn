@@ -135,6 +135,60 @@ $1',
 	'webstore_no_handler' => 'لا وسيلة لتحويل نوع MIME هذا',
 );
 
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Meno25
+ */
+$messages['arz'] = array(
+	'inplace_access_disabled' => 'الدخول إلى هذه الخدمة تم تعطيله لكل العملاء.',
+	'inplace_access_denied' => 'هذه الخدمة مقيدة بواسطة أيبى عميل.',
+	'inplace_scaler_no_temp' => 'لا مجلد مؤقت صحيح.
+ضبط $wgLocalTmpDirectory لمجلد قابل للكتابة.',
+	'inplace_scaler_not_enough_params' => 'لا محددات كافية.',
+	'inplace_scaler_invalid_image' => 'صورة غير صحيحة، لم يمكن تحديد الحجم.',
+	'inplace_scaler_failed' => 'حدث خطأ أثناء وزن الصورة: $1',
+	'inplace_scaler_no_handler' => 'لا وسيلة لتحويل نوع MIME هذا',
+	'inplace_scaler_no_output' => 'لا ملف تحويل خارج تم إنتاجه.',
+	'inplace_scaler_zero_size' => 'التحويل أنتج ملف خروج حجمه صفر.',
+	'webstore_access' => 'هذه الخدمة مقيدة بواسطة أيبى عميل.',
+	'webstore_path_invalid' => 'اسم الملف كان غير صحيح.',
+	'webstore_dest_open' => 'غير قادر على فتح الملف الهدف "$1".',
+	'webstore_dest_lock' => 'فشل فى الغلق على ملف الوجهة "$1".',
+	'webstore_dest_mkdir' => 'غير قادر على إنشاء مجلد الوجهة "$1".',
+	'webstore_archive_lock' => 'فشل فى الغلق على ملف الأرشيف "$1".',
+	'webstore_archive_mkdir' => 'غير قادر على إنشاء مجلد الأرشيف "$1".',
+	'webstore_src_open' => 'غير قادر على فتح ملف المصدر "$1".',
+	'webstore_src_close' => 'خطأ أثناء إغلاق ملف المصدر "$1".',
+	'webstore_src_delete' => 'خطأ أثناء حذف ملف المصدر "$1".',
+	'webstore_rename' => 'خطأ أثناء إعادة تسمية الملف "$1" إلى "$2".',
+	'webstore_lock_open' => 'خطأ أثناء فتح غلق الملف "$1".',
+	'webstore_lock_close' => 'خطأ أثناء إغلاق غلق الملف "$1".',
+	'webstore_dest_exists' => 'خطأ، ملف الوجهة "$1" موجود.',
+	'webstore_temp_open' => 'خطأ أثناء فتح الملف المؤقت "$1".',
+	'webstore_temp_copy' => 'خطأ أثناء نسخ الملف المؤقت "$1" لملف الوجهة "$2".',
+	'webstore_temp_close' => 'خطأ أثناء إغلاق الملف المؤقت "$1".',
+	'webstore_temp_lock' => 'خطأ غلق الملف المؤقت "$1".',
+	'webstore_no_archive' => 'ملف الوجهة موجود ولم يتم إعطاء أرشيف.',
+	'webstore_no_file' => 'لم يتم رفع أى ملف.',
+	'webstore_move_uploaded' => 'خطأ أثناء نقل الملف المرفوع "$1" إلى الموقع المؤقت "$2".',
+	'webstore_invalid_zone' => 'منطقة غير صحيحة "$1".',
+	'webstore_no_deleted' => 'لم يتم تعريف مجلد أرشيف للملفات المحذوفة.',
+	'webstore_curl' => 'خطأ من cURL: $1',
+	'webstore_404' => 'لم يتم إيجاد الملف.',
+	'webstore_php_warning' => 'تحذير PHP: $1',
+	'webstore_metadata_not_found' => 'الملف غير موجود: $1',
+	'webstore_postfile_not_found' => 'الملف للإرسال غير موجود.',
+	'webstore_scaler_empty_response' => 'وازن الصورة أعطى ردا فارغا مع 200 كود رد. هذا يمكن أن يكون نتيجة خطأ PHP قاتل فى الوازن.',
+	'webstore_invalid_response' => 'رد غير صحيح من الخادم:
+
+$1',
+	'webstore_no_response' => 'لا رد من الخادم',
+	'webstore_backend_error' => 'خطأ من خادم التخزين:
+
+$1',
+	'webstore_php_error' => 'حدثت أخطاء PHP:',
+	'webstore_no_handler' => 'لا وسيلة لتحويل نوع MIME هذا',
+);
+
 /** Bikol Central (Bikol Central)
  * @author Filipinayzd
  */

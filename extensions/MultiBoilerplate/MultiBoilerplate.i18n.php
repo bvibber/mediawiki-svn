@@ -48,6 +48,15 @@ $messages['ar'] = array(
 	'multiboilerplate-submit' => 'تحميل',
 );
 
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Meno25
+ */
+$messages['arz'] = array(
+	'multiboilerplate-desc' => 'يسمح لقالب أن يختار من صندوق منسدل موجود فوق استمارة التعديل أثناء تعديل الصفحات',
+	'multiboilerplate-legend' => 'اختر طبق البويلر',
+	'multiboilerplate-submit' => 'تحميل',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  */

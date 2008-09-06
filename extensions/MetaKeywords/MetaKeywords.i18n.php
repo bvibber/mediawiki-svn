@@ -39,6 +39,18 @@ $messages['ar'] = array(
   # أي وجود ل$1 سيستبدل بعنوان الصفحة الحالي.',
 );
 
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Meno25
+ */
+$messages['arz'] = array(
+	'metakeywords-desc' => 'يسمح بضبط وسوم <tt><nowiki><meta "keywords"></nowiki></tt> و <tt><nowiki><meta "description"></nowiki></tt> لكل نطاق',
+	'metakeywords' => '  # أضف السطور إلى هذه الصفحة بالصيغة "namespace|comma separated,keywords,to,add"
+  # معرفات النطاقات (all) و (main) تحدد افتراضيا لكل النطاقات والنطاق الصفرى بالترتيب.',
+	'metadescription' => '  # أضف السطور إلى هذه الصفحة بالصيغة "namespace|description tag to set"
+  # معرفات النطاقات (all) و (main) تحدد افتراضيا لكل النطاقات والنطاق الصفرى بالترتيب.
+  # أى وجود ل$1 سيستبدل بعنوان الصفحة الحالي.',
+);
+
 /** French (Français)
  * @author Grondin
  */

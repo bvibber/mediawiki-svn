@@ -32,11 +32,23 @@ $messages['qqq'] = array(
  * @author Meno25
  */
 $messages['ar'] = array(
-	'commentspammer-save-blocked' => 'عنوان الأيبي الخاص بك هو معلق سبام مشتبه، لذا لم يتم حفظ الصفحة. [[Special:UserLogin|ادخل أو سجل حسابا]] لتجنب هذا.',
+	'commentspammer-save-blocked' => 'عنوان الأيبي الخاص بك هو معلق سبام مشتبه، لذا لم يتم حفظ الصفحة. [[Special:Userlogin|ادخل أو سجل حسابا]] لتجنب هذا.',
 	'commentspammer-desc' => 'يرفض التعديلات من معلقي السبام المشتبه فيهم على قائمة DNS سوداء',
 	'commentspammer-log-msg' => 'تعديل من [[Special:Contributions/$1|$1]] ل[[:$2]].',
 	'commentspammer-log-msg-info' => 'آخر سبام منذ $1 {{PLURAL:$1|يوم|يوم}} ، مستوى التهديد هو $2، وكود الإساءة هو $3. [http://www.projecthoneypot.org/search_ip.php?ip=$4 عرض التفاصيل]، أو [[Special:Blockip/$4|منع]].',
 	'cspammerlogpagetext' => 'سجل التعديلات التي تم السماح بها أو رفضها بناء على ما إذا كان المصدر معلق سبام معروف.',
+	'cspammer-log-page' => 'سجل تعليق السبام',
+);
+
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Meno25
+ */
+$messages['arz'] = array(
+	'commentspammer-save-blocked' => 'عنوان الأيبى الخاص بك هو معلق سبام مشتبه، لذا لم يتم حفظ الصفحة. [[Special:UserLogin|ادخل أو سجل حسابا]] لتجنب هذا.',
+	'commentspammer-desc' => 'يرفض التعديلات من معلقى السبام المشتبه فيهم على قائمة DNS سوداء',
+	'commentspammer-log-msg' => 'تعديل من [[Special:Contributions/$1|$1]] ل[[:$2]].',
+	'commentspammer-log-msg-info' => 'آخر سبام منذ $1 {{PLURAL:$1|يوم|يوم}} ، مستوى التهديد هو $2، وكود الإساءة هو $3. [http://www.projecthoneypot.org/search_ip.php?ip=$4 عرض التفاصيل]، أو [[Special:Blockip/$4|منع]].',
+	'cspammerlogpagetext' => 'سجل التعديلات التى تم السماح بها أو رفضها بناء على ما إذا كان المصدر معلق سبام معروف.',
 	'cspammer-log-page' => 'سجل تعليق السبام',
 );
 
@@ -314,7 +326,7 @@ $messages['pl'] = array(
  */
 $messages['pt'] = array(
 	'commentspammer-save-blocked' => 'O seu endereço IP é um suspeito "spammer" de comentários, consequentemente a página não foi guardada.
-[[Special:UserLogin|Autentique-se ou crie uma conta]] para evitar isto.',
+[[Special:Userlogin|Autentique-se ou crie uma conta]] para evitar isto.',
 	'commentspammer-desc' => 'Rejeita edições de suspeitos "spammers" de comentários numa lista negra de DNS',
 	'commentspammer-log-msg' => 'edição de [[Special:Contributions/$1|$1]] a [[:$2]].',
 	'commentspammer-log-msg-info' => 'Último "spam" $1 {{PLURAL:$1|dia|dias}} atrás, nível de ameaça é $2, e código de ofensa é $3. [http://www.projecthoneypot.org/search_ip.php?ip=$4 Ver detalhes], ou [[Special:Blockip/$4|bloquear]].',

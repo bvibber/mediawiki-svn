@@ -39,6 +39,16 @@ $messages['ar'] = array(
 	'templatelink_newtitle' => '$1 (مضمنة)',
 );
 
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Meno25
+ */
+$messages['arz'] = array(
+	'templatelink' => 'وصلة قالب',
+	'templatelink_desc' => 'هذا الامتداد يمكن أن يعرض قالبا كصفحة جديدة',
+	'templatelink_empty' => 'يجب عليك توفير محدد.',
+	'templatelink_newtitle' => '$1 (مضمنة)',
+);
+
 /** Kotava (Kotava)
  * @author Wikimistusik
  */

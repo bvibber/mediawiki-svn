@@ -43,6 +43,14 @@ $messages['ar'] = array(
 	'usercontactlink-desc' => 'يوفر القدرة على تبسيط وإضافة أسماء المستخدمين الآخرين باستخدام صياغة ^^^user^^^',
 );
 
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Meno25
+ */
+$messages['arz'] = array(
+	'usercontactlink-baduser' => 'اسم مستخدم غير صحيح',
+	'usercontactlink-desc' => 'يوفر القدرة على تبسيط وإضافة أسماء المستخدمين الآخرين باستخدام صياغة ^^^user^^^',
+);
+
 /** Kotava (Kotava)
  * @author Wikimistusik
  */

@@ -49,6 +49,25 @@ $3',
 	'latexdoc-desc' => 'تعديل تعاوني لوثائق لا تك',
 );
 
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Meno25
+ */
+$messages['arz'] = array(
+	'latexdoc_no_text' => 'الصفحة لا تحتوى على نص، لم يمكن توليد DVI',
+	'latexdoc_cant_create_dir' => 'لم يمكن إنشاء المجلد المؤقت $1',
+	'latexdoc_cant_write' => 'لم يمكن الكتابة للملف $1',
+	'latexdoc_error' => 'خطأ لاتك
+
+الأمر: $1
+
+الخرج: $2
+
+$3',
+	'latexdoc_get_dvi' => 'احصل على DVI',
+	'latexdoc_get_pdf' => 'احصل على PDF',
+	'latexdoc-desc' => 'تعديل تعاونى لوثائق لا تك',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  * @author Spiritia
@@ -187,6 +206,24 @@ Kimenet: $2
 $3',
 	'latexdoc_get_dvi' => 'DVI letöltése',
 	'latexdoc_get_pdf' => 'PDF letöltése',
+);
+
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'latexdoc_cant_create_dir' => 'Non pote crear le directorio temporari $1',
+	'latexdoc_cant_write' => 'Non pote scriber in file $1',
+	'latexdoc_error' => 'Error de LaTeX
+
+Commando: $1
+
+Resultato: $2
+
+$3',
+	'latexdoc_get_dvi' => 'Obtener DVI',
+	'latexdoc_get_pdf' => 'Obtener PDF',
+	'latexdoc-desc' => 'Modification collaborative de documentos LaTeX',
 );
 
 /** Javanese (Basa Jawa)

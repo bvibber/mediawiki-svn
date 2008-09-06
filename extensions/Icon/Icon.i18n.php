@@ -31,6 +31,15 @@ $messages['ar'] = array(
 	'icon-desc' => 'يسمح لك باستخدام الصور كأيقونات ووصلات أيقونة',
 );
 
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Meno25
+ */
+$messages['arz'] = array(
+	'icon-badimage' => 'صورة سيئة',
+	'icon-badwidth' => 'عرض سيىء',
+	'icon-desc' => 'يسمح لك باستخدام الصور كأيقونات ووصلات أيقونة',
+);
+
 /** Kotava (Kotava)
  * @author Wikimistusik
  */

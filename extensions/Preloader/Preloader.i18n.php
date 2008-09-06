@@ -21,6 +21,13 @@ $messages['ar'] = array(
 	'preloader-desc' => 'يوفر نص بويلربلات مخصص لكل نطاق للصفحات الجديدة',
 );
 
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Meno25
+ */
+$messages['arz'] = array(
+	'preloader-desc' => 'يوفر نص بويلربلات مخصص لكل نطاق للصفحات الجديدة',
+);
+
 /** German (Deutsch)
  * @author Raimond Spekking
  */

@@ -49,6 +49,18 @@ $messages['ar'] = array(
 	'dplforum-toomany' => 'منتدى DPL: تصنيفات كثيرة جدا!',
 );
 
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Meno25
+ */
+$messages['arz'] = array(
+	'dplforum-desc' => 'امتداد منتدى معتمد على DPL',
+	'dplforum-by' => 'بواسطة',
+	'dplforum-edited' => '  - آخر تعديل',
+	'dplforum-never' => 'أبدا',
+	'dplforum-toofew' => 'منتدى DPL: تصنيفات قليلة جدا!',
+	'dplforum-toomany' => 'منتدى DPL: تصنيفات كثيرة جدا!',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  */

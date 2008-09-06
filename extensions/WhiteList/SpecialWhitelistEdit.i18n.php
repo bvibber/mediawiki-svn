@@ -190,6 +190,57 @@ $2',
 	'whitelistnummatches' => '  - $1 مطابقة',
 );
 
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Meno25
+ */
+$allMessages['arz'] = array(
+	'whitelist-desc' => 'عدل سماحات الوصول للمستخدمين المحددين',
+	'whitelistedit' => 'محرر وصول القائمة البيضاء',
+	'whitelist' => 'صفحات القائمة البيضاء',
+	'mywhitelistpages' => 'صفحاتي',
+	'whitelistfor' => '<center>المعلومات الحالية ل<b>$1</b></center>',
+	'whitelisttablemodify' => 'تعديل',
+	'whitelisttablemodifyall' => 'الكل',
+	'whitelisttablemodifynone' => 'لا شيء',
+	'whitelisttablepage' => 'صفحة ويكي',
+	'whitelisttabletype' => 'نوع الدخول',
+	'whitelisttableexpires' => 'ينتهى في',
+	'whitelisttablemodby' => 'آخر تعديل بواسطة',
+	'whitelisttablemodon' => 'آخر تعديل في',
+	'whitelisttableedit' => 'عدل',
+	'whitelisttableview' => 'عرض',
+	'whitelisttablenewdate' => 'تاريخ جديد:',
+	'whitelisttablechangedate' => 'تغيير تاريخ الانتهاء',
+	'whitelisttablesetedit' => 'ضبط للتعديل',
+	'whitelisttablesetview' => 'ضبط للعرض',
+	'whitelisttableremove' => 'إزالة',
+	'whitelistnewpagesfor' => 'أضف صفحات جديدة إلى <b>$1</b القائمة البيضاء ل<br />
+استخدم إما * أو % كحرف خاص',
+	'whitelistnewtabledate' => 'تاريخ الانتهاء:',
+	'whitelistnewtableedit' => 'ضبط للتعديل',
+	'whitelistnewtableview' => 'ضبط للعرض',
+	'whitelistnewtableprocess' => 'عملية',
+	'whitelistnewtablereview' => 'مراجعة',
+	'whitelistselectrestricted' => '== اختر اسم المستخدم المحدد ==',
+	'whitelistpagelist' => 'صفحات {{SITENAME}} ل$1',
+	'whitelistnocalendar' => "<font color='red' size=3>يبدو أن [http://www.mediawiki.org/wiki/Extension:Usage_Statistics Extension:UsageStatistics]، متطلب لهذه الامتداد، لم يتم تركيبه بشكل صحيح!</font>",
+	'whitelistbadtitle' => 'عنوان سيء -',
+	'whitelistoverview' => '== مراجعة التغييرات ل$1 ==',
+	'whitelistoverviewcd' => "* تغيير التاريخ إلى '''$1''' ل[[:$2|$2]]",
+	'whitelistoverviewsa' => "* ضبط الدخول إلى '''$1''' ل[[:$2|$2]]",
+	'whitelistoverviewrm' => '* إزالة الوصول إلى [[:$1|$1]]',
+	'whitelistoverviewna' => "* إضافة [[:$1|$1]] إلى القائمة البيضاء بوصول '''$2''' و '''$3''' تاريخ انتهاء",
+	'whitelistrequest' => 'طلب السماح لمزيد من الصفحات',
+	'whitelistrequestmsg' => '$1 طلب الوصول إلى الصفحات التالية:
+
+$2',
+	'whitelistrequestconf' => 'الطلب للصفحات الجديدة تم إرساله إلى $1',
+	'whitelistnonrestricted' => "المستخدم '''$1''' ليس مستخدما محددا.
+هذه الصفحة مطبقة فقط على المستخدمين المحددين",
+	'whitelistnever' => 'أبدا',
+	'whitelistnummatches' => '  - $1 مطابقة',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  */
@@ -372,13 +423,39 @@ $2',
 );
 
 /** Spanish (Español)
+ * @author Antur
  * @author Piolinfax
  * @author Sanbec
  */
 $allMessages['es'] = array(
+	'whitelist-desc' => 'Editar los permisos de acceso de usuarios restringidos',
+	'mywhitelistpages' => 'Mis páginas',
+	'whitelistfor' => '<center>Informacion actual para <b>$1</b></center>',
+	'whitelisttablemodify' => 'Modifica',
 	'whitelisttablemodifyall' => 'Todos',
 	'whitelisttablemodifynone' => 'Ninguno',
+	'whitelisttablepage' => 'Página wiki',
+	'whitelisttabletype' => 'Tipo de acceso',
+	'whitelisttableexpires' => 'Expira el',
+	'whitelisttablemodby' => 'Última modificación realizada por',
+	'whitelisttablemodon' => 'Última modificación realizada el',
 	'whitelisttableedit' => 'Editar',
+	'whitelisttablenewdate' => 'Nueva fecha:',
+	'whitelisttableremove' => 'Borrar',
+	'whitelistnewtableedit' => 'Establecer en modo edición',
+	'whitelistnewtableview' => 'Establecer en modo visualización',
+	'whitelistnewtablereview' => 'Revisión',
+	'whitelistnocalendar' => "<font color='red' size=3>Aparentemente la [http://www.mediawiki.org/wiki/Extension:Usage_Statistics Extension:UsageStatistics], requisito necesario para esta extensión, no ha sido instalada correctamente!</font>",
+	'whitelistbadtitle' => 'Título erróneo -',
+	'whitelistoverview' => '== Resumen de cambios para $1 ==',
+	'whitelistoverviewna' => "* Agregando [[:$1|$1]] a la lista con acceso '''$2''' y fecha de expiración '''$3'''",
+	'whitelistrequest' => 'Solicitar acceso a más páginas',
+	'whitelistrequestmsg' => '$1 solicitó acceso a las páginas siguientes: 
+
+$2',
+	'whitelistrequestconf' => 'La solicitud de nuevas páginas fue enviada a $1',
+	'whitelistnever' => 'nunca',
+	'whitelistnummatches' => '  - $1 coincidencias.',
 );
 
 /** French (Français)

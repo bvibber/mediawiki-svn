@@ -40,11 +40,12 @@ $messages['ar'] = array(
 );
 
 /** Egyptian Spoken Arabic (مصرى)
+ * @author Meno25
  * @author Ramsis II
  */
 $messages['arz'] = array(
 	'newusermessage-desc' => 'بيضيف رسالة لصفحات النقاش بتاعة اليوزرز الجداد',
-	'newuseredit-summary' => 'اضافة [[{{int:newusermessage-template}}|رسالة ترحيب]] لصفحة نقاش يوزر جديد',
+	'newuseredit-summary' => 'إضافة [[{{int:newusermessage-template}}|رسالة ترحيب]] إلى صفحة نقاش مستخدم جديد',
 );
 
 /** Asturian (Asturianu)
@@ -130,6 +131,13 @@ $messages['fr'] = array(
 	'newuseredit-summary' => 'Ajoute [[{{int:newusermessage-template}}|un message de bienvenue]] dans la page de discussion d’un nouvel utilisateur',
 );
 
+/** Friulian (Furlan)
+ * @author Klenje
+ */
+$messages['fur'] = array(
+	'newusermessage-desc' => 'Zonte un messaç inte pagjine di discussion di un utent apene regjistrât',
+);
+
 /** Galician (Galego)
  * @author Toliño
  */
@@ -190,7 +198,7 @@ $messages['id'] = array(
  */
 $messages['it'] = array(
 	'newusermessage-desc' => 'Aggiunge un messaggio nella pagina di discussione di un utente appena registrato',
-	'newuseredit-summary' => 'Aggiungo [[{{MediaWiki:Newusermessage-template}}|messaggio di benvenuto]] alla pagina di discussione del nuovo utente',
+	'newuseredit-summary' => 'Aggiungo [[{{int:newusermessage-template}}|messaggio di benvenuto]] alla pagina di discussione del nuovo utente',
 );
 
 /** Japanese (日本語)

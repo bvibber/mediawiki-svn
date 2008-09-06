@@ -102,6 +102,45 @@ $messages['ar'] = array(
 	'right-povwatch_user' => 'إضافة صفحات إلى قوائم مراقبة مستخدمين آخرين',
 );
 
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Meno25
+ */
+$messages['arz'] = array(
+	'povwatch' => 'مراقبة بى أو في',
+	'povwatch_desc' => 'امتداد [[Special:PovWatch|لدفع الصفحات إلى قوائم مراقبة]] المستخدمين الآخرين',
+	'povwatch_no_session' => 'خطأ: لم يمكن تنفيذ الاستمارة نتيجة فقد فى بيانات الجلسة.',
+	'povwatch_not_allowed_push' => 'أنت لست إدارى مراقبة بى أو في، لا يمكنك دفع صفحات إلى قوائم مراقبة.',
+	'povwatch_already_subscribed' => 'أنت مشترك بالفعل فى مراقبة بى أو في',
+	'povwatch_subscribed' => 'أنت الآن مشترك فى مراقبة بى أو في',
+	'povwatch_not_subscribed' => 'أنت غير مشترك فى مراقبة بى أو في، لذا فلا يمكنك إلغاء الاشتراك.',
+	'povwatch_unsubscribed' => 'أنت الآن ألغيت الاشتراك فى مراقبة بى أو في',
+	'povwatch_invalid_title' => 'العنوان المحدد كان غير صحيح',
+	'povwatch_pushed' => '[[$1]] تم دفعها بنجاح إلى $2 قائمة مراقبة مستخدم',
+	'povwatch_intro' => 'مراقبة بى أو فى هى خدمة تسمح بإضافة صفحات معينة إلى قوائم مراقبة الإداريين المشتركين.
+
+السجل بعمليات دفع قوائم المراقبة الحديثة متوفر فى [[Special:PovWatch/log]].',
+	'povwatch_subscriber_list' => '[[Special:PovWatch/subscribers|قائمة المشتركين]] متوفرة.',
+	'povwatch_subscriber_list_intro' => '<strong>قائمة المشتركين</strong>',
+	'povwatch_not_allowed_subscribers' => 'أنت غير مسموح لك برؤية قائمة المشتركين فى مراقبة بى أو في.',
+	'povwatch_unknown_subpage' => 'صفحة فرعية غير معروفة.',
+	'povwatch_push' => 'دفع',
+	'povwatch_push_intro' => 'استخدم الاستمارة بالأسفل لدفع صفحات إلى قوائم مراقبة المستخدمين المشتركين.
+من فضلك كن حذرا عند كتابة العنوان: حتى العناوين غير الموجودة يمكن إضافتها، ولا توجد طريقة لإزالة عنوان ما متى تم دفعه.',
+	'povwatch_title' => 'العنوان:',
+	'povwatch_comment' => 'تعليق السجل',
+	'povwatch_no_log' => 'لا توجد مدخلات سجل.',
+	'povwatch_no_subscribers' => 'لا يوجد مشتركون.',
+	'povwatch_unsubscribe_intro' => 'أنت مشترك فى مراقبة بى أو في.
+اضغط الزر بالأسفل لإلغاء الاشتراك.',
+	'povwatch_unsubscribe' => 'إنهاء الاشتراك',
+	'povwatch_subscribe_intro' => 'أنت غير مشترك فى مراقبة بى أو في.
+اضغط الزر بالأسفل للاشتراك.',
+	'povwatch_subscribe' => 'اشتراك',
+	'povwatch_added' => 'تمت الإضافة',
+	'right-povwatch_admin' => 'إدارة صلاحيات المستخدم لإضافة الصفحات إلى قوائم مراقبة المستخدمين الآخرين',
+	'right-povwatch_user' => 'إضافة صفحات إلى قوائم مراقبة مستخدمين آخرين',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  */

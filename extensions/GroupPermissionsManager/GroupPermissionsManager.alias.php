@@ -37,6 +37,13 @@ $aliases['hr'] = array(
 	'SortPermissions' => array( 'Raspored_prava' ),
 );
 
+/** Luxembourgish (Lëtzebuergesch) */
+$aliases['lb'] = array(
+	'GroupPermissions' => array( 'Grupperechter' ),
+	'RemoveUnusedGroups' => array( 'Onbenotzte Gruppen ewechhuelen' ),
+	'SortPermissions' => array( 'Rechter sortéieren' ),
+);
+
 /** Dutch (Nederlands) */
 $aliases['nl'] = array(
 	'GroupPermissions' => array( 'Groepsrechten' ),

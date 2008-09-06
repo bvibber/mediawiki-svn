@@ -29,6 +29,15 @@ $messages['ar'] = array(
 	'stalepages-summary' => 'هذه قائمة بالصفحات التي لم يتم تعديلها في آخر $1 يوم.',
 );
 
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Meno25
+ */
+$messages['arz'] = array(
+	'stalepages' => 'صفحات متجمدة',
+	'stalepages-desc' => 'يولد [[Special:Stalepages|قائمة بالصفحات]] التى لم يتم تعديلها مؤخرا',
+	'stalepages-summary' => 'هذه قائمة بالصفحات التى لم يتم تعديلها فى آخر $1 يوم.',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  * @author Spiritia

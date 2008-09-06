@@ -30,6 +30,17 @@ $messages['ar'] = array(
 	'stalkerlog-log-text' => 'هذا سجل بعمليات تسجيل الدخول والخروج للمستخدمين.',
 );
 
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Meno25
+ */
+$messages['arz'] = array(
+	'stalkerlog-desc' => 'يضيف مدخلة إلى [[Special:Log]] عندما يقوم شخص ما بتسجيل الدخول أو الخروج',
+	'stalkerlog-log-login' => 'مسجل الدخول.',
+	'stalkerlog-log-logout' => 'مسجل الخروج.',
+	'stalkerlog-log-type' => 'سجل تسجيل المستخدمين',
+	'stalkerlog-log-text' => 'هذا سجل بعمليات تسجيل الدخول والخروج للمستخدمين.',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  */

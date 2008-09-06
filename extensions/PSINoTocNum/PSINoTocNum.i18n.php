@@ -14,6 +14,13 @@ $messages['ar'] = array(
 	'psinotocnum-desc' => 'كلمة سحرية جديدة "<nowiki>__</nowiki>NOTOCNUM<nowiki>__</nowiki>"',
 );
 
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Meno25
+ */
+$messages['arz'] = array(
+	'psinotocnum-desc' => 'كلمة سحرية جديدة "<nowiki>__</nowiki>NOTOCNUM<nowiki>__</nowiki>"',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  */

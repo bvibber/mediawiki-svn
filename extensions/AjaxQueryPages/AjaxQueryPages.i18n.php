@@ -25,6 +25,13 @@ $messages['ar'] = array(
 	'ajax-qp-desc' => 'أضف بعض الأجاكس إلى صفحات الاستعلام مثل [[Special:Shortpages|{{int:shortpages}}]]',
 );
 
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Meno25
+ */
+$messages['arz'] = array(
+	'ajax-qp-desc' => 'أضف بعض الأجاكس إلى صفحات الاستعلام مثل [[Special:Shortpages|{{int:shortpages}}]]',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  */

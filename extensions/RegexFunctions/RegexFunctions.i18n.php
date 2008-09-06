@@ -18,6 +18,13 @@ $messages['ar'] = array(
 	'regexfunctions-desc' => 'دوال محلل تعبيرات منتظمة',
 );
 
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Meno25
+ */
+$messages['arz'] = array(
+	'regexfunctions-desc' => 'دوال محلل تعبيرات منتظمة',
+);
+
 /** French (Français)
  * @author Grondin
  */

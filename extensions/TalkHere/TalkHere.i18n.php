@@ -55,6 +55,22 @@ $messages['ar'] = array(
 	'talkhere-collapse' => 'إخفاء المحرر',
 );
 
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Meno25
+ */
+$messages['arz'] = array(
+	'talkhere-desc' => 'يضع صفحة النقاش فى الصفحة',
+	'talkhere-foottext' => 'التعليقات بالأعلى ربما تكون قد تركها زائرون.
+
+مديرو هذا الموقع لا يمكن أن يتحملوا المسؤولية لمحتوى هذه التعليقات.',
+	'talkhere-talkpage' => 'صفحة نقاش',
+	'talkhere-notalk' => "''(لا تعليقات بعد)''",
+	'talkhere-addcomment' => 'أضف تعليقا',
+	'talkhere-beforeinput' => 'يمكنك إضافة تعليق بالأسفل',
+	'talkhere-loading' => 'جارى تحميل المحرر...',
+	'talkhere-collapse' => 'إخفاء المحرر',
+);
+
 /** Kotava (Kotava)
  * @author Wikimistusik
  */

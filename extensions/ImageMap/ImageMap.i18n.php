@@ -682,6 +682,7 @@ $messages['lb'] = array(
 	'imagemap_invalid_coord' => 'Feeler: Ongëlteg Koordinaten an der Zeil $1: et sinn nëmmen Zuelen erlaabt',
 	'imagemap_invalid_desc' => 'Feeler: Ongëltegen „desc“-Parameter, méiglech sinn: <tt>$1</tt>',
 	'imagemap_description' => 'Iwwert dëst Bild',
+	'imagemap_desc_types' => 'uewe-riets, ënne-riets, ënne-lénks, uewe-lénks, keen',
 );
 
 /** Limburgish (Limburgs)

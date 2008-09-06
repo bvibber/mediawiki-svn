@@ -163,6 +163,75 @@ $messages['ar'] = array(
 حاول استخدام أمر "$3{...}".',
 );
 
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Meno25
+ */
+$messages['arz'] = array(
+	'math_noblahtex' => 'لم يمكن تنفيذ بلاه تك، والتى ينبغى أن تكون فى $1',
+	'math-desc' => 'خرج MathML لوسوم &lt;math&gt;',
+	'math_AmbiguousInfix' => 'وضع غير مريح ل"$1".
+حاول استخدام أقواس إضافية "{ ... }" للتوضيح',
+	'math_CannotChangeDirectory' => 'لا يمكن تغيير مجلد العمل',
+	'math_CannotCreateTexFile' => 'لا يمكن إنشاء ملف تك',
+	'math_CannotRunDvipng' => 'لا يمكن تنفيذ dvipng',
+	'math_CannotRunLatex' => 'لا يمكن تشغيل لاتك',
+	'math_CannotWritePngDirectory' => 'لا يمكن الكتابة لمجلد PNG الخرج',
+	'math_CannotWriteTexFile' => 'لا يمكن الكتابة إلى ملف تك',
+	'math_CasesRowTooBig' => 'يمكن فقط أن تكون هناك مدخلتان فى كل صف فى منع "حالات"',
+	'math_DoubleSubscript' => 'صادف سكريبتين فرعيين مرتبطين بنفس القاعدة (فقط واحد مسموح به)',
+	'math_DoubleSuperscript' => 'صادف سكريبتين أعلى مرتبطين بنفس القاعدة (فقط واحد مسموح به)',
+	'math_IllegalCharacter' => 'حرف غير قانونى فى المدخل',
+	'math_IllegalCommandInMathMode' => 'الأمر "$1" غير قانونى فى نمط الرياضيات',
+	'math_IllegalCommandInMathModeWithHint' => 'الأمر "$1" غير قانونى فى نمط الرياضيات
+ربما قصدت استخدام "$2" بدلا منه؟',
+	'math_IllegalCommandInTextMode' => 'الأمر "$1" غير قانونى فى نمط النص',
+	'math_IllegalCommandInTextModeWithHint' => 'الأمر "$1" غير قانونى فى نمط النص
+ربما كنت تقصد استخدام "$2" بدلا منه؟',
+	'math_IllegalDelimiter' => 'delimiter غير قانونى يتبع "$1"',
+	'math_IllegalFinalBackslash' => 'فاصلة غير قانونية "\\" فى نهاية المدخل',
+	'math_IllegalNestedFontEncodings' => 'أوامر تكويد الخط لا ينبغى أن تكون نستد',
+	'math_IllegalRedefinition' => 'الأمر "$1" تم تعريفه بالفعل؛ لا يمكنك إعادة تعريفه',
+	'math_InvalidColour' => 'اللون "$1" غير صحيح',
+	'math_InvalidUtf8Input' => 'النص المدخل ليس UTF-8 صحيحا',
+	'math_LatexFontNotSpecified' => 'لا خط لاتك تم تحديده ل"$1"',
+	'math_LatexPackageUnavailable' => 'غير قادر على عرض PNG لأن رزمة لاتك "$1" غير متوفرة',
+	'math_MismatchedBeginAndEnd' => 'الأمران "$1" و "$2" لا يتطابقان',
+	'math_MisplacedLimits' => 'الأمر "$1" يمكن أن يظهر فقط بعد عامل رياضيات.
+فكر فى استخدام "\\mathop".',
+	'math_MissingCommandAfterNewcommand' => 'اسم أمر جديد مفقود أو غير قانونى بعد "\\newcommand".
+يجب أن يكون هناك أمر واحد معرف بالضبط؛
+يجب أن يبدأ بباك سلاش "\\" ويحتوى فقط على حروف أبجدية.',
+	'math_MissingDelimiter' => 'delimiter مفقود بعد "$1"',
+	'math_MissingOpenBraceAfter' => 'قوس مفتوح مفقود "{" بعد "$1"',
+	'math_MissingOpenBraceAtEnd' => 'قوس مفتوح مفقود "{" فى نهاية المدخل',
+	'math_MissingOpenBraceBefore' => 'قوس مفتوح مفقود "{" قبل "$1"',
+	'math_MissingOrIllegalParameterCount' => 'عدد محددات مفقود أو غير قانونى "$1".
+يجب أن يكون رقما وحيدا بين 1 و 9 حصريا.',
+	'math_MissingOrIllegalParameterIndex' => 'محدد فهرس مفقود أو غير قانونى فى تعريف "$1"',
+	'math_NonAsciiInMathMode' => 'الحروف التى ليست ASCII يمكن أن تستخدم فقط فى نمط النص
+حاول إحاطة الحروف المشكلة فى "\\text{...}".',
+	'math_NotEnoughArguments' => 'لا محددات كافية تم توفيرها ل"$1"',
+	'math_PngIncompatibleCharacter' => 'غير قادر على توليد PNG يحتوى على الحرف $1 بطريقة صحيحة',
+	'math_ReservedCommand' => 'الأمر "$1" محفوظ للاستخدام الداخلى بواسطة بلاه تك',
+	'math_SubstackRowTooBig' => 'يمكن أن يكون هناك مدخلة واحدة فى كل صف من منع "سبستاك"',
+	'math_TooManyMathmlNodes' => 'توجد عقد كثيرة جدا فى شجرة MathML',
+	'math_TooManyTokens' => 'المدخل طويل جدا',
+	'math_UnavailableSymbolFontCombination' => 'الرمز "$1" غير متوفر فى الخط "$2"',
+	'math_UnexpectedNextCell' => 'الأمر "&" يمكن أن يظهر فقط بداخل منع "\\begin ... \\end"',
+	'math_UnexpectedNextRow' => 'الأمر "\\\\" يمكن أن يظهر فقط بداخل منع "\\begin ... \\end"',
+	'math_UnmatchedBegin' => 'صادف "\\begin" بدون "\\end" مطابقة',
+	'math_UnmatchedCloseBrace' => 'صادف قوسا مغلقا "}" بدون قوس مفتوح مطابق "{"',
+	'math_UnmatchedEnd' => 'صادف "\\end" بدون "\\begin" مطابقة',
+	'math_UnmatchedLeft' => 'صادف "\\left" بدون "\\right" مطابقة',
+	'math_UnmatchedOpenBrace' => 'صادف قوسا مفتوحا "{" بدون قوس مغلق مطابق "}"',
+	'math_UnmatchedOpenBracket' => 'صادف قوسا مفتوحا "[" بدون قوس مغلق مطابق "]"',
+	'math_UnmatchedRight' => 'صادف "\\right" بدون "\\left" مطابقة',
+	'math_UnrecognisedCommand' => 'أمر غير متعرف عليه "$1"',
+	'math_WrongFontEncoding' => 'الرمز "$1" ربما لا يظهر فى تكويد الخط "$2"',
+	'math_WrongFontEncodingWithHint' => 'الرمز "$1" ربما لا يظهر فى تكويد الخط "$2".
+حاول استخدام أمر "$3{...}".',
+);
+
 /** Kotava (Kotava)
  * @author Wikimistusik
  */

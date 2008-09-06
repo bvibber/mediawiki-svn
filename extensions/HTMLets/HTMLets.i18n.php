@@ -25,6 +25,13 @@ $messages['ar'] = array(
 	'htmlets-desc' => 'يسمح لك باستخدام صيغ HTML من الملفات باستخدام وسم <tt><nowiki><htmlet></nowiki></tt>',
 );
 
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Meno25
+ */
+$messages['arz'] = array(
+	'htmlets-desc' => 'يسمح لك باستخدام صيغ HTML من الملفات باستخدام وسم <tt><nowiki><htmlet></nowiki></tt>',
+);
+
 /** German (Deutsch)
  * @author Raimond Spekking
  */

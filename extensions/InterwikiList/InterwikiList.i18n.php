@@ -21,6 +21,16 @@ $messages['ar'] = array(
 	'interwikilist-target' => 'المسار المستهدف',
 );
 
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Meno25
+ */
+$messages['arz'] = array(
+	'interwikilist' => 'قائمة الإنترويكي',
+	'interwikilist-desc' => 'يضيف [[Special:Interwikilist|صفحة خاصة]] لرؤية وصلات الإنترويكى المتوفرة',
+	'interwikilist-linkname' => 'وصلة الإنترويكي',
+	'interwikilist-target' => 'المسار المستهدف',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  */
@@ -109,6 +119,16 @@ $messages['hsb'] = array(
 	'interwikilist-desc' => 'Přidawa [[Special:Interwikilist|specialnu stronu]], zo bychu so k dispoziciji stejace interwikijowe wotkazy pokazali.',
 	'interwikilist-linkname' => 'Interwikijowy wotkaz',
 	'interwikilist-target' => 'Cilowy URL',
+);
+
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'interwikilist' => 'Lista interwiki',
+	'interwikilist-desc' => 'Adde un [[Special:Interwikilist|pagina special]] pro vider ligamines interwiki existente',
+	'interwikilist-linkname' => 'Ligamine interwiki',
+	'interwikilist-target' => 'Adresse URL de destination',
 );
 
 /** Italian (Italiano)

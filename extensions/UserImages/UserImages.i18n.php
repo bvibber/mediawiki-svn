@@ -37,6 +37,15 @@ $messages['ar'] = array(
 	'userimages-noimages' => 'ليس لدى $1 صور مرفوعة.',
 );
 
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Meno25
+ */
+$messages['arz'] = array(
+	'userimages-caption' => 'الصور المرفوعة بواسطة $1',
+	'userimages-noname' => 'اسم مستخدم غير صحيح أو لم يتم توفير واحد.',
+	'userimages-noimages' => 'ليس لدى $1 صور مرفوعة.',
+);
+
 /** Asturian (Asturianu)
  * @author Esbardu
  */

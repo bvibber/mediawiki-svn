@@ -30,6 +30,13 @@ $messages['ar'] = array(
 	'crowdauthentication-desc' => 'إضافة تأكيد لحشد الأتلاسيان',
 );
 
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Meno25
+ */
+$messages['arz'] = array(
+	'crowdauthentication-desc' => 'إضافة تأكيد لحشد الأتلاسيان',
+);
+
 /** Czech (Česky)
  * @author Matěj Grabovský
  */

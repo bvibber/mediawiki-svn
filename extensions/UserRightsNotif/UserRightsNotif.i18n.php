@@ -41,6 +41,24 @@ $2',
 	'userrightsnotif-desc' => 'يرسل إشعار بريد إلكتروني إلى المستخدمين على تغييرات الحقوق',
 );
 
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Meno25
+ */
+$messages['arz'] = array(
+	'userrightsnotifysubject' => 'تغيير مجموعات العضوية فى $1',
+	'userrightsnotifybody' => 'مرحبا $1
+
+هذا لإعلامك أن مجموعات عضويتك فى $2 تغيرت بواسطة $3 فى $4.
+
+أضاف: $5
+أزال: $6
+
+مع التحية،
+
+$2',
+	'userrightsnotif-desc' => 'يرسل إشعار بريد إلكترونى إلى المستخدمين على تغييرات الحقوق',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  */
@@ -178,6 +196,25 @@ $messages['el'] = array(
 
 $2',
 	'userrightsnotif-desc' => 'Στέλνει ηλεκτρονική ειδοποίηση σε χρήστες μετά από αλλαγή δικαιωμάτων',
+);
+
+/** Spanish (Español)
+ * @author Antur
+ */
+$messages['es'] = array(
+	'userrightsnotifysubject' => 'Grupo de usuario modificado en $1',
+	'userrightsnotifybody' => 'Hola $1.
+
+Por la presente le informo que sus derechos de usuario en $2 fueron modificados por $3 y $4.
+
+Agregado: $5
+
+Removido: $6
+
+Cordialmente,
+
+$2',
+	'userrightsnotif-desc' => 'Enviar notificación por correo electrónico a usuarios cuyos derechos se han modificado',
 );
 
 /** French (Français)

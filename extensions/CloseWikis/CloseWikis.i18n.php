@@ -72,6 +72,34 @@ $messages['ar'] = array(
 	'right-editclosedwikis' => 'تعديل الويكيات المغلقة',
 );
 
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Meno25
+ */
+$messages['arz'] = array(
+	'closewikis-desc' => 'يسمح بغلق مواقع الويكى فى مزارع الويكي',
+	'closewikis-closed-default' => 'هذا الويكى مغلق',
+	'closewikis-page' => 'إغلاق الويكي',
+	'closewikis-page-close' => 'إغلاق الويكي',
+	'closewikis-page-close-wiki' => 'الويكي:',
+	'closewikis-page-close-dreason' => 'السبب (المعروض):',
+	'closewikis-page-close-reason' => 'السبب (المسجل):',
+	'closewikis-page-close-submit' => 'إغلاق',
+	'closewikis-page-close-success' => 'الويكى تم إغلاقه بنجاح',
+	'closewikis-page-reopen' => 'إعادة فتح الويكي',
+	'closewikis-page-reopen-wiki' => 'الويكي:',
+	'closewikis-page-reopen-reason' => 'السبب:',
+	'closewikis-page-reopen-submit' => 'إعادة فتح',
+	'closewikis-page-reopen-success' => 'الويكى تمت إعادة فتحه بنجاح',
+	'closewikis-page-err-nowiki' => 'ويكى غير صحيح تم تحديده',
+	'closewikis-page-err-closed' => 'الويكى مغلق بالفعل',
+	'closewikis-page-err-opened' => 'الويكى ليس مغلقا',
+	'closewikis-log' => 'سجل إغلاق الويكيات',
+	'closewikis-log-header' => 'هنا يوجد سجل بكل عمليات إغلاق وإعادة فتح الويكيات بواسطة المضيفين',
+	'closewikis-log-close' => 'أغلق $2',
+	'closewikis-log-reopen' => 'أعاد فتح $2',
+	'right-editclosedwikis' => 'تعديل الويكيات المغلقة',
+);
+
 /** Czech (Česky)
  * @author Li-sung
  */
@@ -139,7 +167,7 @@ $messages['fr'] = array(
 	'closewikis-page-close' => 'Clôturer le wiki',
 	'closewikis-page-close-wiki' => 'Wiki :',
 	'closewikis-page-close-dreason' => 'Motif (affiché) :',
-	'closewikis-page-close-reason' => 'Motif (connecté) :',
+	'closewikis-page-close-reason' => 'Motif (enregistré) :',
 	'closewikis-page-close-submit' => 'Clôturer',
 	'closewikis-page-close-success' => 'Wiki clôturé avec succès',
 	'closewikis-page-reopen' => 'Réouvrir le wiki',
@@ -303,8 +331,28 @@ $messages['nl'] = array(
  * @author Cedric31
  */
 $messages['oc'] = array(
+	'closewikis-desc' => 'Permet de clausurar los sits wiki dins aqueste gestionari de wiki',
+	'closewikis-closed-default' => 'Aqueste wiki es claus',
+	'closewikis-page' => 'Clausar lo wiki',
+	'closewikis-page-close' => 'Clausurar lo wiki',
+	'closewikis-page-close-wiki' => 'Wiki :',
+	'closewikis-page-close-dreason' => 'Motiu (afichat) :',
+	'closewikis-page-close-reason' => 'Motiu (enregistrat) :',
+	'closewikis-page-close-submit' => 'Clausurar',
+	'closewikis-page-close-success' => 'Wiki claus amb succès',
+	'closewikis-page-reopen' => 'Tornar dobrir lo wiki',
 	'closewikis-page-reopen-wiki' => 'Wiki :',
 	'closewikis-page-reopen-reason' => 'Motiu :',
+	'closewikis-page-reopen-submit' => 'Tornar dobrir',
+	'closewikis-page-reopen-success' => 'Lo wiki es estat redobert amb succès',
+	'closewikis-page-err-nowiki' => 'Lo wiki indicat es incorrècte',
+	'closewikis-page-err-closed' => 'Aqueste wiki ja es estat clausurat',
+	'closewikis-page-err-opened' => 'Wiki pas clausurat',
+	'closewikis-log' => 'Jornal de clausura dels wiki',
+	'closewikis-log-header' => 'Vaquí un jornal de totas las tampaduras e redoberturas de wiki fachas pels stewards',
+	'closewikis-log-close' => 'a clausurat $2',
+	'closewikis-log-reopen' => 'a redobert $2',
+	'right-editclosedwikis' => 'Modificar los wikis clausurats',
 );
 
 /** Romanian (Română)

@@ -33,6 +33,15 @@ $messages['ar'] = array(
 	'block_title_error' => 'عذرا، عنوان هذه الصفحة غير مسموح بحفظه.',
 );
 
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Meno25
+ */
+$messages['arz'] = array(
+	'block_title_error_page_title' => 'عنوان ممنوع',
+	'block_title_error-desc' => 'يوفر طريقة أساسية لمنع الصفحات بعناوين معينة من الحفظ أو الإنشاء',
+	'block_title_error' => 'عذرا، عنوان هذه الصفحة غير مسموح بحفظه.',
+);
+
 /** Asturian (Asturianu)
  * @author Esbardu
  */

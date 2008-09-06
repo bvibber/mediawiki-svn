@@ -52,6 +52,26 @@ $messages['ar'] = array(
 	'lookupuser_useroptions' => 'خيارات المستخدم:',
 );
 
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Meno25
+ */
+$messages['arz'] = array(
+	'lookupuser' => 'ابحث عن معلومات المستخدم',
+	'lookupuser-desc' => '[[Special:LookupUser|يعرض معلومات]] عن المستخدم مثل عنوان البريد الإلكترونى والرقم',
+	'lookupuser_intro' => 'أدخل اسم مستخدم لرؤية تفضيلات هذا المستخدم.',
+	'lookupuser_nonexistent' => 'المستخدم غير موجود',
+	'lookupuser_authenticated' => 'تأكيد البريد الإلكتروني: $1',
+	'lookupuser_not_authenticated' => 'غير مرخص',
+	'lookupuser_id' => 'رقم المستخدم: <tt>#$1</tt>',
+	'lookupuser_email' => 'البريد الإلكتروني: [[Special:Emailuser/$2|$1]]',
+	'lookupuser_no_email' => 'غير موفر',
+	'lookupuser_realname' => 'الاسم الحقيقي: $1',
+	'lookupuser_registration' => 'تاريخ التسجيل: $1',
+	'lookupuser_no_registration' => 'غير مسجل',
+	'lookupuser_touched' => 'سجل المستخدم تم تعديله آخر مرة في: $1',
+	'lookupuser_useroptions' => 'خيارات المستخدم:',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  */

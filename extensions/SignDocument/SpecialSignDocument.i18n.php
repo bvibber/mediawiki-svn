@@ -265,6 +265,99 @@ $1',
 	'sign-uniquequery-1signed2' => '[{{SERVER}}{{localurl: Special:SignDocument|doc=$4&viewsigs&detail=$3}} $1] وقع [{{SERVER}}{{localurl: Special:SignDocument|doc=$4&viewsigs}} $2].',
 );
 
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Meno25
+ */
+$messages['arz'] = array(
+	'signdocument' => 'توقيع الوثيقة',
+	'sign-nodocselected' => 'من فضلك اختر الوثيقة التى تود توقيعها.',
+	'sign-selectdoc' => 'وثيقة:',
+	'sign-docheader' => '<div class="noarticletext">من فضلك استخدم هذه الاستمارة لتوقيع الوثيقة "[[$1]]," المعروضة بالأسفل.
+من فضلك اقرأ الوثيقة كلها، وإذا كنت تود التعبير عن تأييدك لها، من فضلك املأ الحقول المطلوبة لتوقعها.</div>',
+	'sign-error-nosuchdoc' => 'الوثيقة التى طلبتها ($1) غير موجودة.',
+	'sign-realname' => 'الاسم:',
+	'sign-address' => 'عنوان الشارع:',
+	'sign-city' => 'المدينة:',
+	'sign-state' => 'الولاية:',
+	'sign-zip' => 'كود الرقم البريدي:',
+	'sign-country' => 'البلد:',
+	'sign-phone' => 'رقم الهاتف:',
+	'sign-bday' => 'العمر:',
+	'sign-email' => 'عنوان البريد الإلكتروني:',
+	'sign-indicates-req' => '<small><i><font color="red">*</font> يشير إلى حقل مطلوب.</i></small>',
+	'sign-hide-note' => '<small><i><font color="red">**</font> ملاحظة: المعلومات غير المعروضة ستظل مرئية للمديرين.</i></small>',
+	'sign-list-anonymous' => 'عرض كمجهول',
+	'sign-list-hideaddress' => 'لا تعرض العنوان',
+	'sign-list-hideextaddress' => 'لا تعرض المدينة، الولاية، الرقم البريدي، أو البلد',
+	'sign-list-hidephone' => 'لا تعرض الهاتف',
+	'sign-list-hidebday' => 'لا تعرض العمر',
+	'sign-list-hideemail' => 'لا تعرض البريد الإلكتروني',
+	'sign-submit' => 'توقيع الوثيقة',
+	'sign-information' => '<div class="noarticletext">شكرا لك لقضائك وقتا فى قراءة هذه الوثيقة.
+لو أنك تتفق معها، من فضلك عبر عن تأييدك بواسطة ملأ الحقول المطلوبة بالأسفل وضغط "توقيع الوثيقة."
+من فضلك تأكد من أن معلوماتك الشخصية صحيحة وأننا نملك وسيلة للاتصال بك للتأكد من هويتك.
+لاحظ أن عنوان الأيبى الخاص بك ومعلومات التعريف الأخرى سيتم تسجيلها بواسطة هذه الاستمارة وسيتم استخدامها بواسطة المديرين لتحجيم التوقيعات المكررة وتأكيد صحة معلوماتك الشخصية.
+بما أن استخدام البروكسيهات المجهولة والمفتوحة يمنع قدرتنا على أداء هذه المهمة، التوقيعات من هذه البروكسيهات على الأرجح لن يتم احتسابها.
+لو أنك موصول حاليا بواسطة خادم بروكسي، من فضلك اقطع التوصيل منه واستخدم اتصالا قياسيا أثناء التوقيع.</div>
+
+$1',
+	'sig-success' => 'لقد وقعت الوثيقة بنجاح.',
+	'sign-view-selectfields' => '<b>الحقول للعرض:</b>',
+	'sign-viewfield-entryid' => 'رقم المدخلة',
+	'sign-viewfield-timestamp' => 'طابع الزمن',
+	'sign-viewfield-realname' => 'اسم',
+	'sign-viewfield-address' => 'عنوان',
+	'sign-viewfield-city' => 'مدينة',
+	'sign-viewfield-state' => 'ولاية',
+	'sign-viewfield-country' => 'بلد',
+	'sign-viewfield-zip' => 'الرقم البريدي',
+	'sign-viewfield-ip' => 'عنوان الأيبي',
+	'sign-viewfield-agent' => 'وكيل المستخدم',
+	'sign-viewfield-phone' => 'هاتف',
+	'sign-viewfield-email' => 'بريد إلكتروني',
+	'sign-viewfield-age' => 'عمر',
+	'sign-viewfield-options' => 'اختيارات',
+	'sign-viewsigs-intro' => 'معروض بالأسفل التوقيعات المسجلة ل<span class="plainlinks">[{{SERVER}}{{localurl: Special:SignDocument|doc=$2}} $1]</span>.',
+	'sign-sigadmin-currentlyopen' => 'التوقيع مفعل حاليا لهذه الوثيقة.',
+	'sign-sigadmin-close' => 'عطل التوقيع',
+	'sign-sigadmin-currentlyclosed' => 'التوقيع معطل حاليا لهذه الوثيقة.',
+	'sign-sigadmin-open' => 'فعل التوقيع',
+	'sign-signatures' => 'توقيعات',
+	'sign-sigadmin-closesuccess' => 'تم تعطيل التوقيع بنجاح.',
+	'sign-sigadmin-opensuccess' => 'تم تفعيل التوقيع بنجاح.',
+	'sign-viewsignatures' => 'عرض التوقيعات',
+	'sign-closed' => 'مغلق',
+	'sign-error-closed' => 'توقيع هذه الوثيقة معطل حاليا.',
+	'sig-anonymous' => '<i>مجهول</i>',
+	'sig-private' => '<i>خاص</i>',
+	'sign-sigdetails' => 'تفاصيل التوقيع',
+	'sign-emailto' => '<a href="mailto:$1">$1</a>',
+	'sign-iptools' => '<span class="plainlinksneverexpand"><!--
+-->[[User:$1|$1]] ([[User talk:$1|نقاش]] • <!--
+-->[[Special:Contributions/$1|مساهمات]] • <!--
+-->[http://www.dnsstuff.com/tools/whois.ch?domain={{urlencode:$1}}&cache=off&email=on WHOIS] • <!--
+-->[http://www.dnsstuff.com/tools/ptr.ch?ip={{urlencode:$1}}&cache=off&email=on RDNS] • <!--
+-->[http://www.robtex.com/rbls/$1.html RBLs] • <!--
+-->[[Special:BlockIP/$1|منع المستخدم]] • <!--
+-->[{{fullurl:Special:Log/block|page=User:{{urlencode:$1}}}} سجل المنع] • <!--
+-->[{{fullurl:Special:CheckUser|ip={{urlencode:$1}}}} تدقيق الأيبي])<!--
+--></span>',
+	'sign-viewfield-stricken' => 'مشطوب',
+	'sign-viewfield-reviewedby' => 'مراجع',
+	'sign-viewfield-reviewcomment' => 'تعليق',
+	'sign-detail-uniquequery' => 'كيانات مشابهة',
+	'sign-detail-uniquequery-run' => 'تنفيذ الاستعلام',
+	'sign-detail-strike' => 'شطب التوقيع',
+	'sign-reviewsig' => 'راجع التوقيع',
+	'sign-review-comment' => 'تعليق',
+	'sign-submitreview' => 'تنفيذ المراجعة',
+	'sign-uniquequery-similarname' => 'اسم مشابه',
+	'sign-uniquequery-similaraddress' => 'عنوان مشابه',
+	'sign-uniquequery-similarphone' => 'هاتف مشابه',
+	'sign-uniquequery-similaremail' => 'بريد إلكترونى مشابه',
+	'sign-uniquequery-1signed2' => '[{{SERVER}}{{localurl: Special:SignDocument|doc=$4&viewsigs&detail=$3}} $1] وقع [{{SERVER}}{{localurl: Special:SignDocument|doc=$4&viewsigs}} $2].',
+);
+
 /** Bikol Central (Bikol Central)
  * @author Filipinayzd
  */

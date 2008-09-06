@@ -39,6 +39,17 @@ $messages['ar'] = array(
 	'piwik-browsers' => 'متصفحات',
 );
 
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Meno25
+ */
+$messages['arz'] = array(
+	'piwik-desc' => 'يدرج سكريبت بيويك إلى صفحات ميدياويكى للتتبع ويضيف [[Special:Piwik|بعض الإحصاءات]]',
+	'piwik' => 'بيويك',
+	'piwik-lastvisits' => 'آخر زيارات',
+	'piwik-countries' => 'دول',
+	'piwik-browsers' => 'متصفحات',
+);
+
 /** Asturian (Asturianu)
  * @author Esbardu
  */

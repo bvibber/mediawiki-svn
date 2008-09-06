@@ -93,6 +93,30 @@ $messages['ar'] = array(
 	'right-passwordreset' => 'إعادة ضبط كلمة سر مستخدم([[Special:Passwordreset|صفحة خاصة]])',
 );
 
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Meno25
+ */
+$messages['arz'] = array(
+	'passwordreset' => 'تمت إعادة ضبط كلمة السر',
+	'passwordreset-desc' => "[[Special:Passwordreset|يعيد ضبط كلمات سر مستخدم ويكي]] - يحتاج إلى صلاحيات 'passwordreset'",
+	'passwordreset-invalidusername' => 'اسم مستخدم غير صحيح',
+	'passwordreset-emptyusername' => 'اسم مستخدم فارغ',
+	'passwordreset-nopassmatch' => 'كلمات السر لا تتطابق',
+	'passwordreset-badtoken' => 'نص تعديل غير صحيح',
+	'passwordreset-username' => 'اسم مستخدم',
+	'passwordreset-newpass' => 'كلمة سر جديدة',
+	'passwordreset-confirmpass' => 'أكد كلمة السر',
+	'passwordreset-submit' => 'أعد ضبط كلمة السر',
+	'passwordreset-success' => 'كلمة السر تم ضبطها ل user_id: $1',
+	'passwordreset-disableuser' => 'عطل حساب المستخدم؟',
+	'passwordreset-disableuserexplain' => '(يضبط هاش كلمة سر غير صحيح - المستخدم لا يمكنه الدخول)',
+	'passwordreset-disablesuccess' => 'حساب المستخدم تم تعطيله (رقم_المستخدم: $1)',
+	'passwordreset-accountdisabled' => 'الحساب تم تعطيله',
+	'disabledusers' => 'مستخدمون معطلون',
+	'disabledusers-summary' => 'هذه قائمة بالمستخدمين الذين تم تعطيلهم من خلال إعادة ضبط كلمة السر.',
+	'right-passwordreset' => 'إعادة ضبط كلمة سر مستخدم([[Special:Passwordreset|صفحة خاصة]])',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  */

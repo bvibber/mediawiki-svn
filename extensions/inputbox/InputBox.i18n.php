@@ -212,6 +212,10 @@ Spisait "create", "comment", "search" pe "search2".',
  */
 $messages['ca'] = array(
 	'inputbox-desc' => 'Permet la inclusió de formularis HTML predefinits',
+	'inputbox-error-no-type' => "No heu especificat el tipus de quadre d'entrada per crear.",
+	'inputbox-error-bad-type' => "No es reconeix el tipus de quadre d'entrada «$1».
+
+Especifiqueu-hi «create», «comment», «search« o «search2».",
 	'tryexact' => 'Prova una coincidència exacta',
 	'searchfulltext' => 'Cerca un text sencer',
 	'createarticle' => 'Crea una pàgina',

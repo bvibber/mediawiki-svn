@@ -127,6 +127,44 @@ $messages['ar'] = array(
 	'tag-logpagetext' => 'هذا سجل بكل عمليات إضافة وإزالة وسم الصور.',
 );
 
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Meno25
+ */
+$messages['arz'] = array(
+	'taggedimages' => 'صور موسومة',
+	'imagetagging-desc' => 'يسمح للمستخدم باختيار مناطق من صورة مضمنة ومصاحبة صفحة مع هذه المنطقة',
+	'imagetagging-addimagetag' => 'وسم هذه الصورة',
+	'imagetagging-article' => 'صفحة:',
+	'imagetagging-articletotag' => 'صفحة للوسم',
+	'imagetagging-canteditothermessage' => 'أنت لا يمكنك تعديل هذه الصفحة، إما لأنك لا تمتلك الصلاحية لفعل هذا أو لأن الصفحة محمية لأسباب أخرى.',
+	'imagetagging-imghistory' => 'تاريخ',
+	'imagetagging-images' => 'صور',
+	'imagetagging-inthisimage' => 'فى هذه الصورة: $1',
+	'imagetagging-logentry' => 'أزال الوسم للصفحة [[$1]] بواسطة $2',
+	'imagetagging-log-tagged' => 'الصورة [[$1|$2]] تم وسمها للصفحة [[$3]] بواسطة $4',
+	'imagetagging-new' => '<sup><span style="color:red">جديد!</span></sup>',
+	'imagetagging-removetag' => 'إزالة وسم',
+	'imagetagging-done-button' => 'تم الوسم',
+	'imagetagging-tag-button' => 'وسم',
+	'imagetagging-tagcancel-button' => 'إلغاء',
+	'imagetagging-tagging-instructions' => 'اضغط على الأشخاص أو الأشياء فى الصورة لوسمهم.',
+	'imagetagging-addingtag' => 'إضافة وسم...',
+	'imagetagging-removingtag' => 'إزالة وسم...',
+	'imagetagging-addtagsuccess' => 'تمت إضافة الوسم.',
+	'imagetagging-removetagsuccess' => 'تمت إزالة الوسم.',
+	'imagetagging-canteditneedloginmessage' => 'أنت لا يمكنك تعديل هذه الصفحة.
+ربما يكون ذلك بسبب أنك تحتاج إلى تسجيل الدخول لوسم الصور.
+هل تريد تسجيل الدخول الآن؟',
+	'imagetagging-oneactionatatimemessage' => 'فقط فعل وسم واحد مسموح به كل مرة.
+من فضلك انتظر الفعل الموجود ليكتمل.',
+	'imagetagging-oneuniquetagmessage' => 'هذه الصورة لديها بالفعل وسم بهذا الاسم.',
+	'imagetagging-imagetag-seemoreimages' => 'راجع المزيد من صور "$1" ($2)',
+	'imagetagging-taggedimages-title' => 'صور "$1"',
+	'imagetagging-taggedimages-displaying' => 'عرض $1 - $2 من $3 صورة ل"$4"',
+	'tag-logpagename' => 'سجل الوسم',
+	'tag-logpagetext' => 'هذا سجل بكل عمليات إضافة وإزالة وسم الصور.',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  */
@@ -258,6 +296,7 @@ Ole hyvä ja odota olemassaolevan tapahtuman päättymistä.',
 /** French (Français)
  * @author Cedric31
  * @author Grondin
+ * @author McDutchie
  * @author Verdy p
  */
 $messages['fr'] = array(
@@ -291,7 +330,7 @@ Veuillez attendre la fin de l’action en cours.',
 	'imagetagging-imagetag-seemoreimages' => 'Voir plus d’images de « $1 » ($2)',
 	'imagetagging-taggedimages-title' => 'Images de « $1 »',
 	'imagetagging-taggedimages-displaying' => 'Affichage des images $1 – $2 sur $3 de « $4 »',
-	'tag-logpagename' => 'Balisage du journal',
+	'tag-logpagename' => 'Journal du balisage',
 	'tag-logpagetext' => 'Ceci est le journal de tous les ajouts et de toutes les suppressions des balises d’image.',
 );
 
@@ -353,7 +392,38 @@ $messages['haw'] = array(
  * @author McDutchie
  */
 $messages['ia'] = array(
+	'taggedimages' => 'Imagines etiquettate',
+	'imagetagging-desc' => 'Permitte que un usator selige regiones de un imagine incastrate e associa un pagina con ille region',
+	'imagetagging-addimagetag' => 'Etiquettar iste imagine',
+	'imagetagging-article' => 'Pagina:',
+	'imagetagging-articletotag' => 'Le pagina a etiquettar',
+	'imagetagging-canteditothermessage' => 'Tu non pote modificar iste pagina, o proque tu non ha le derectos de facer lo, o proque le pagina es serrate pro altere motivos.',
 	'imagetagging-imghistory' => 'Historia',
+	'imagetagging-images' => 'imagines',
+	'imagetagging-inthisimage' => 'In iste imagine: $1',
+	'imagetagging-logentry' => 'Removeva le etiquetta del pagina [[$1]] per $2',
+	'imagetagging-log-tagged' => 'Le imagine [[$1|$2]] esseva etiquettate al pagina [[$3]] per $4',
+	'imagetagging-new' => '<sup><span style="color:red">Nove!</span></sup>',
+	'imagetagging-removetag' => 'remover etiquetta',
+	'imagetagging-done-button' => 'Etiquettage complete',
+	'imagetagging-tag-button' => 'Etiquetta',
+	'imagetagging-tagcancel-button' => 'Cancellar',
+	'imagetagging-tagging-instructions' => 'Clicca super personas o objectos in le imagine pro etiquettar los.',
+	'imagetagging-addingtag' => 'Addition de etiquetta in curso…',
+	'imagetagging-removingtag' => 'Elimination de etiquetta in curso…',
+	'imagetagging-addtagsuccess' => 'Etiquetta addite.',
+	'imagetagging-removetagsuccess' => 'Etiquetta removite.',
+	'imagetagging-canteditneedloginmessage' => 'Tu non pote modificar iste pagina.
+Es possibile que tu debe aperir un session pro poter etiquettar le imagines.
+Esque tu vole aperir un session ora?',
+	'imagetagging-oneactionatatimemessage' => 'Solmente un action de etiquettage es permittite a un vice.
+Per favor attende le completion del action in curso.',
+	'imagetagging-oneuniquetagmessage' => 'Iste imagine ha ja un etiquetta con iste nomine.',
+	'imagetagging-imagetag-seemoreimages' => 'Vide plus imagines de "$1" ($2)',
+	'imagetagging-taggedimages-title' => 'Imagines de "$1"',
+	'imagetagging-taggedimages-displaying' => 'Visualisation de $1 - $2 de $3 imagines de "$4"',
+	'tag-logpagename' => 'Registro de etiquettages',
+	'tag-logpagetext' => 'Isto es un registro de tote le additiones e remotiones de etiquettas de imagines.',
 );
 
 /** Indonesian (Bahasa Indonesia)

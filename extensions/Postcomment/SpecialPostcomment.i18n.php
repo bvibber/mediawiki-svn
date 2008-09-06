@@ -55,6 +55,24 @@ $messages['ar'] = array(
 	'postcomment_nopostingtoadd' => 'لا رسالة للإضافة.',
 );
 
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Meno25
+ */
+$messages['arz'] = array(
+	'postcomment_desc' => 'يسمح للمستخدمين بإرسال التعليقات مباشرة إلى صفحات النقاش.',
+	'postcomment_discussionprotected' => 'صفحة النقاش تمت حمايتها من رسائل أخرى.',
+	'postcomment_notloggedin' => 'أنت غير مسجل الدخول.',
+	'postcomment_youareloggedinas' => 'أنت مسجل الدخول باسم $1',
+	'postcomment_addcommentdiscussionpage' => 'أضف تعليقك فى صفحة النقاش هذه',
+	'postcomment_leavemessagefor' => 'اترك رسالة ل$1',
+	'postcomment_post' => 'إرسال',
+	'postcomment_on' => 'على',
+	'postcomment_said' => 'قال',
+	'postcomment_invalidrequest' => 'طلب غير صحيح.',
+	'postcomment_replyto' => 'رد على $1',
+	'postcomment_nopostingtoadd' => 'لا رسالة للإضافة.',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  * @author Spiritia
@@ -70,6 +88,16 @@ $messages['bg'] = array(
 	'postcomment_invalidrequest' => 'Невалидна заявка.',
 	'postcomment_replyto' => 'Отговор до $1',
 	'postcomment_nopostingtoadd' => 'Няма коментар за добавяне.',
+);
+
+/** Czech (Česky)
+ * @author Matěj Grabovský
+ */
+$messages['cs'] = array(
+	'postcomment_post' => 'Poslat',
+	'postcomment_on' => '&nbsp;',
+	'postcomment_said' => 'řekl',
+	'postcomment_invalidrequest' => 'Neplatný požadavek.',
 );
 
 /** German (Deutsch)

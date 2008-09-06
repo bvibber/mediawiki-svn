@@ -108,6 +108,35 @@ $messages['ar'] = array(
 	'usagestatistics-editpages' => 'إحصاءات صفحات المستخدم المنفرد $1',
 );
 
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Meno25
+ */
+$messages['arz'] = array(
+	'specialuserstats' => 'إحصاءات الاستخدام',
+	'usagestatistics' => 'إحصاءات الاستخدام',
+	'usagestatistics-desc' => 'يعرض إحصاءات الاستخدام لمستخدم منفرد وللويكى ككل',
+	'usagestatisticsfor' => '<h2>إحصاءات الاستخدام ل[[User:$1|$1]]</h2>',
+	'usagestatisticsforallusers' => '<h2>إحصاءات الاستخدام لكل المستخدمين</h2>',
+	'usagestatisticsinterval' => 'مدة',
+	'usagestatisticstype' => 'نوع',
+	'usagestatisticsstart' => 'تاريخ البدء',
+	'usagestatisticsend' => 'تاريخ الانتهاء',
+	'usagestatisticssubmit' => 'توليد الإحصاءات',
+	'usagestatisticsnostart' => '* <font color=red>من فضلك حدد تاريخا للبدء</font>',
+	'usagestatisticsnoend' => '* <font color=red>من فضلك حدد تاريخا للانتهاء</font>',
+	'usagestatisticsbadstartend' => '<b>تاريخ <i>بدء</i> و/أو <i>انتهاء</i> سيء!</b>',
+	'usagestatisticsintervalday' => 'يوم',
+	'usagestatisticsintervalweek' => 'أسبوع',
+	'usagestatisticsintervalmonth' => 'شهر',
+	'usagestatisticsincremental' => 'تزايدي',
+	'usagestatisticsincremental-text' => 'تزايدي',
+	'usagestatisticscumulative' => 'تراكمي',
+	'usagestatisticscumulative-text' => 'تراكمي',
+	'usagestatisticscalselect' => 'اختيار',
+	'usagestatistics-editindividual' => 'إحصاءات تعديلات المستخدم المنفرد $1',
+	'usagestatistics-editpages' => 'إحصاءات صفحات المستخدم المنفرد $1',
+);
+
 /** Asturian (Asturianu)
  * @author Esbardu
  */

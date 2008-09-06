@@ -22,6 +22,16 @@ $messages['ar'] = array(
 	'signaturelogentry' => 'وقع الوثيقة $1',
 );
 
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Meno25
+ */
+$messages['arz'] = array(
+	'signaturelogpage' => 'سجل التوقيع',
+	'signature-desc' => 'يفعل [[Special:SignDocument|توقيع]] الوثيقة',
+	'signaturelogpagetext' => 'هذا سجل [[Special:SignDocument|بكل التوقيعات التى أضيفت إلى الوثائق]].',
+	'signaturelogentry' => 'وقع الوثيقة $1',
+);
+
 /** German (Deutsch)
  * @author Raimond Spekking
  */
@@ -39,6 +49,16 @@ $messages['dsb'] = array(
 	'signature-desc' => 'Zmóžnja [[Special:SignDocument|pódpisanje]] dokumentow',
 	'signaturelogpagetext' => 'Toś to jo protokol pódpisow za dokumenty, kótarež buchu pśez [[Special:SignDocument]] pśidane.',
 	'signaturelogentry' => 'jo dokument $1 pódpisał.',
+);
+
+/** Greek (Ελληνικά)
+ * @author Dead3y3
+ */
+$messages['el'] = array(
+	'signaturelogpage' => 'Αρχείο καταγραφής υπογραφών',
+	'signature-desc' => 'Ενεργοποιεί την [[Special:SignDocument|υπογραφή]] εγγράφων',
+	'signaturelogpagetext' => 'Αυτό είναι ένα αρχείο καταγραφής [[Special:SignDocument|όλων των υπογραφών που προστέθηκαν σε έγγραφα]].',
+	'signaturelogentry' => 'υπέγραψε το έγγραφο $1',
 );
 
 /** French (Français)

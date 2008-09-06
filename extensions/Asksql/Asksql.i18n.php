@@ -59,6 +59,23 @@ $messages['ar'] = array(
 	'right-asksql' => 'نفذ استعلامات إس كيو إل',
 );
 
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Meno25
+ */
+$messages['arz'] = array(
+	'asksql' => 'استعلام SQL',
+	'asksql-desc' => 'عمل استعلام SQL من خلال [[Special:Asksql|صفحة خاصة]]',
+	'asksqltext' => "استخدم الاستمارة بالأسفل لعمل استعلام مباشر لقاعدة البيانات.
+استخدم علامات مفردة ('مثل هذه') لتحديد حدود السلاسل.
+هذا عادة يضيف عبئا كبيرا للخادم، لذا من فضلك استخدم هذه الخاصية بقلة.",
+	'sqlislogged' => 'من فضلك لاحظ أن كل الاستعلامات مسجلة.',
+	'sqlquery' => 'أدخل الاستعلام',
+	'querybtn' => 'تنفيذ الاستعلام',
+	'selectonly' => 'فقط استعلامات القراءة فقط مسموحة.',
+	'querysuccessful' => 'الاستعلام ناجح',
+	'right-asksql' => 'نفذ استعلامات إس كيو إل',
+);
+
 /** Asturian (Asturianu)
  * @author Esbardu
  */
@@ -216,6 +233,7 @@ Die Abfragen können die Server sehr stark belasten, deshalb nutzen Sie die Funk
  */
 $messages['el'] = array(
 	'asksql' => 'ερώτημα SQL',
+	'asksql-desc' => 'Πραγματοποιήστε ερωτήματα SQL μέσω μιας [[Special:Asksql|ειδικής σελίδας]]',
 	'asksqltext' => "Χρησιμοποιήστε τη φόρμα παρακάτω για να κάνετε ένα ευθύ ερώτημα στη βάση δεδομένων.
 Χρησιμοποιήστε απλά εισαγωγικά ('όπως αυτά') για να οριοθετήσετε string literals.
 Αυτό μπορεί συχνά να προσθέσει σημαντικό φορτίο στον εξυπηρετητή, οπότε παρακαλώ χρησιμοποιήστε φειδωλά αυτή τη λειτουργία.",
@@ -224,6 +242,7 @@ $messages['el'] = array(
 	'querybtn' => 'Αποστολή ερωτήματος',
 	'selectonly' => 'Μόνο ερωτήματα τύπου «μόνο για ανάγνωση» επιτρέπονται.',
 	'querysuccessful' => 'Ερώτημα επιτυχές',
+	'right-asksql' => 'Κάντε ερωτήματα SQL',
 );
 
 /** Esperanto (Esperanto)

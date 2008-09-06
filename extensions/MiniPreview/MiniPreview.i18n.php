@@ -46,6 +46,24 @@ $messages['ar'] = array(
 * Self',
 );
 
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Meno25
+ */
+$messages['arz'] = array(
+	'minipreview-desc' => 'العرض المصغر يعرض، بجانب صورة، عروضا مسبقة صغيرة للميديا الأخرى فى نفس التصنيفات أو المعروضة فى نفس الصفحات',
+	'minipreview-files_in_category' => '$1 ملف فى هذا التصنيف.',
+	'minipreview-files_in_gallery' => '$1 ملف فى هذا المعرض.',
+	'minipreview-no_more_files_here' => 'لا ملفات أخرى فى هذا الاتجاه.',
+	'minipreview-no_category_gallery' => 'لا تصنيفات أو معارض!',
+	'minipreview-ignore_categories' => 'التالى قائمة بأسماء التصنيفات أو بدايات الأسماء. هذه التصنيفات لن يتم عرضها بواسطة العرض المصغر. على سبيل المثال، "* PD-" لن تعرض كل التصنيفات
+التى تبدأ ب "PD-"، مثل "PD-old".
+* GFDL-
+* GFDL
+* CC-
+* PD-
+* Self',
+);
+
 /** Bikol Central (Bikol Central)
  * @author Filipinayzd
  */

@@ -82,6 +82,23 @@ $messages['ar'] = array(
 	'countedits-nocontribs' => 'لا يوجد مساهمون في هذه الويكي.',
 );
 
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Meno25
+ */
+$messages['arz'] = array(
+	'countedits' => 'عد التعديلات',
+	'countedits-desc' => '[[Special:CountEdits|صفحة خاصة]] تعد تعديلات المستخدم وتوفر قائمة لأعلى عشر مساهمين',
+	'countedits-warning' => "'''تحذير:''' لا تحكم على كتاب من غلافه.
+لا تحكم على المساهمين بواسطة عدد تعديلاتهم.",
+	'countedits-username' => 'اسم المستخدم:',
+	'countedits-ok' => 'موافق',
+	'countedits-nosuchuser' => 'لا يوجد مستخدم بالاسم $1.',
+	'countedits-resultheader' => 'النتائج ل $1',
+	'countedits-resulttext' => '$1 لديه $2 مساهمة',
+	'countedits-mostactive' => 'أكثر المساهمين نشاطا',
+	'countedits-nocontribs' => 'لا يوجد مساهمون فى هذه الويكي.',
+);
+
 /** Kotava (Kotava)
  * @author Wikimistusik
  */

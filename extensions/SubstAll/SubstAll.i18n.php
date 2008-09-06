@@ -30,6 +30,14 @@ $messages['ar'] = array(
 	'substall-hook' => 'نسخ_الكل',
 );
 
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Meno25
+ */
+$messages['arz'] = array(
+	'substall-desc' => 'ينشئ وسم <nowiki><substall></nowiki> الذى يمد كل القوالب إلى صياغة ويكي',
+	'substall-hook' => 'نسخ_الكل',
+);
+
 /** German (Deutsch)
  * @author Revolus
  */

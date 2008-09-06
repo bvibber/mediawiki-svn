@@ -21,6 +21,13 @@ $messages['ar'] = array(
 	'emailaddressimage-desc' => 'يضيف <tt>&lt;email&gt;</tt> لعرض عنوان بريد إلكتروني كصورة',
 );
 
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Meno25
+ */
+$messages['arz'] = array(
+	'emailaddressimage-desc' => 'يضيف <tt>&lt;email&gt;</tt> لعرض عنوان بريد إلكترونى كصورة',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  */

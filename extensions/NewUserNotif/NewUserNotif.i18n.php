@@ -42,6 +42,17 @@ $messages['ar'] = array(
 حساب مستخدم جديد، $2، تم إنشاؤه على $3 في $4.',
 );
 
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Meno25
+ */
+$messages['arz'] = array(
+	'newusernotifsubj' => 'إخطار مستخدم جديد ل$1',
+	'newusernotif-desc' => 'يرسل إخطار بريد إلكترونى عندما يتم إنشاء حسابات مستخدمين',
+	'newusernotifbody' => 'مرحبا يا $1،
+
+حساب مستخدم جديد، $2، تم إنشاؤه على $3 فى $4.',
+);
+
 /** Kotava (Kotava)
  * @author Wikimistusik
  */

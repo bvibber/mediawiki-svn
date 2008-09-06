@@ -83,6 +83,25 @@ $messages['ar'] = array(
 	'restriction-level-author' => 'حماية المؤلف',
 );
 
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Meno25
+ */
+$messages['arz'] = array(
+	'authorprotect' => 'احمى الصفحة من غير المؤلفون',
+	'authorprotect-desc' => 'يسمح لمؤلف الصفحة بأن يحميها من المستخدمين الآخرين',
+	'authorprotect-notauthor' => 'أنت لست مؤلف هذه الصفحة',
+	'authorprotect-confirm' => 'تغيير مستويات الحماية',
+	'authorprotect-edit' => 'احصر التعديل للمؤلفين',
+	'authorprotect-move' => 'احصر النقل للمؤلفين',
+	'authorprotect-expiry' => 'تاريخ الانتهاء',
+	'authorprotect-reason' => 'السبب',
+	'authorprotect-intro' => 'استخدم هذه الاستمارة لتقفل هذه الصفحة عن غير المؤلفين',
+	'authorprotect-success' => 'نجحت الحماية!',
+	'authorprotect-failure' => 'فشلت الحماية',
+	'protect-level-author' => 'احمى من غير المؤلفين',
+	'restriction-level-author' => 'حماية المؤلف',
+);
+
 /** Kotava (Kotava)
  * @author Wikimistusik
  */

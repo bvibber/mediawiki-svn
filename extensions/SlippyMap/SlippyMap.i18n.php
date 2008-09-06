@@ -91,6 +91,39 @@ $messages['ar'] = array(
 	'slippymap_resetview' => 'إعادة ضبط الرؤية',
 );
 
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Meno25
+ */
+$messages['arz'] = array(
+	'slippymap_desc' => 'يسمح باستخدام وسم <tt><nowiki>&lt;slippymap&gt;</nowiki></tt> لعرض خريطة OpenLayers لزقة. الخرائط من [http://openstreetmap.org openstreetmap.org]',
+	'slippymap_latmissing' => 'قيمة lat مفقودة (للارتفاع).',
+	'slippymap_lonmissing' => 'قيمة lon مفقودة (لخط الطول).',
+	'slippymap_zoommissing' => 'قيمة z مفقودة (لمستوى التقريب).',
+	'slippymap_longdepreciated' => "من فضلك استخدم 'lon' بدلا من 'long' (المحدد تمت إعادة تسميته).",
+	'slippymap_widthnan' => "قيمة العرض (w) '%1' ليست رقما صحيحا",
+	'slippymap_heightnan' => "قيمة الارتفاع (h) '%1' ليست رقما صحيحا",
+	'slippymap_zoomnan' => "قيمة التقريب (z) '%1' ليست رقما صحيحا",
+	'slippymap_latnan' => "قيمة خط العرض (lat) '%1' ليست رقما صحيحا",
+	'slippymap_lonnan' => "قيمة خط الطول (lon) '%1' ليست رقما صحيحا",
+	'slippymap_widthbig' => 'قيمة العرض (w) لا يمكن أن تكون أكبر من 1000',
+	'slippymap_widthsmall' => 'قيمة العرض (w) لا يمكن أن تكون أصغر من 100',
+	'slippymap_heightbig' => 'قيمة الارتفاع (h) لا يمكن أن تكون أكبر من 1000',
+	'slippymap_heightsmall' => 'قيمة الارتفاع (h) لا يمكن أن تكون أقل من 100',
+	'slippymap_latbig' => 'قيمة دائرة العرض (lat) لا يمكن أن تكون أكبر من 90',
+	'slippymap_latsmall' => 'قيمة دائرة العرض (lat) لا يمكن أن تكون أقل من -90',
+	'slippymap_lonbig' => 'قيمة خط الطول (lon) لا يمكن أن تكون أكبر من 180',
+	'slippymap_lonsmall' => 'قيمة خط الطول (lon) لا يمكن أن تكون أقل من -180',
+	'slippymap_zoomsmall' => 'قيمة التقريب (z) لا يمكن أن تكون أقل من صفر',
+	'slippymap_zoom18' => "قيمة التقريب (z) لا يمكن أن تكون أكبر من 17. لاحظ أن امتداد الميدياويكى هذا يخطف إلى طبقة OpenStreetMap 'osmarender' والتى لا تذهب أبعد من مستوى التقريب 17. طبقة Mapnik المتوفرة فى openstreetmap.org، تذهب إلى مستوى تقريب 18",
+	'slippymap_zoombig' => 'قيمة التقريب (z) لا يمكن أن تكون أكبر من 17.',
+	'slippymap_invalidlayer' => "قيمة 'طبقة' غير صحيحة '%1'",
+	'slippymap_maperror' => 'خطأ فى الخريطة:',
+	'slippymap_osmtext' => 'انظر هذه الخريطة فى OpenStreetMap.org',
+	'slippymap_code' => 'كود الويكى لعرض الخريطة هذا:',
+	'slippymap_button_code' => 'الحصول على كود ويكي',
+	'slippymap_resetview' => 'إعادة ضبط الرؤية',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  */

@@ -35,6 +35,16 @@ $messages['ar'] = array(
 	'sc_gotomonth' => 'اذهب إلى شهر',
 );
 
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Meno25
+ */
+$messages['arz'] = array(
+	'sc_previousmonth' => 'الشهر السابق',
+	'sc_nextmonth' => 'الشهر التالي',
+	'sc_today' => 'اليوم',
+	'sc_gotomonth' => 'اذهب إلى شهر',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  */

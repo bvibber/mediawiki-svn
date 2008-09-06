@@ -29,6 +29,13 @@ $messages['ar'] = array(
 	'gotocategory-desc' => "يتحقق من مدخلات البحث في نطاق Category: لوظيفة اذهب 'اقفز إلى الصفحة'",
 );
 
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Meno25
+ */
+$messages['arz'] = array(
+	'gotocategory-desc' => "يتحقق من مدخلات البحث فى نطاق Category: لوظيفة اذهب 'اقفز إلى الصفحة'",
+);
+
 /** German (Deutsch)
  * @author Raimond Spekking
  */

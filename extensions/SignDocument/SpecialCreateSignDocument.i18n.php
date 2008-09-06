@@ -105,6 +105,40 @@ $messages['ar'] = array(
 	'createsigndoc-error-alreadycreated' => 'توقيع الوثيقة "$1" موجود بالفعل.',
 );
 
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Meno25
+ */
+$messages['arz'] = array(
+	'createsigndocument' => 'فعل توقيع الوثيقة',
+	'createsigndoc-head' => "استخدم هذه الاستمارة لإنشاء صفحة 'Sign Document' للصفحة المعطاة، بحيث يمكن للمستخدمين [[Special:SignDocument|توقيعها]].
+من فضلك حدد اسم الصفحة التى تود تفعيل التوقيع الرقمى عليها، أعضاء أى مجموعة مستخدم مسموح لهم بتوقيعها، أى حقول تود أن تكون مرئية للمستخدمين وأى يجب أن تكون اختيارية، عمر أدنى لمستخدمين ليمكن لهم توقيع الوثيقة (لا حد أدنى لو حذفت)؛
+ونص تقديمى مختصر يصف الوثيقة ويوفر التعليمات للمستخدمين.
+
+<b>لا توجد حاليا أية طريقة لحذف أو تعديل توقيعات الوثائق بعد
+إنشائها</b> بدون دخول قاعدة البيانات مباشرة.
+إضافة إلى ذلك، نص الصفحة 
+المعروض فى صفحة التوقيع سيكون النص ''الحالي'' للصفحة، بغض النظر عن
+التغييرات بها بعد اليوم.
+من فضلك كن متأكدا تماما من أن الوثيقة وصلت لنقطة ثبات للتوقيع، ومن فضلك أيضا تأكد أنك حددت كل الحقول تماما كما يجب أن تكون، ''قبل تنفيذ هذه الاستمارة''.",
+	'createsigndoc-pagename' => 'صفحة:',
+	'createsigndoc-allowedgroup' => 'المجموعة المسموحة:',
+	'createsigndoc-email' => 'عنوان البريد الإلكتروني:',
+	'createsigndoc-address' => 'عنوان المنزل:',
+	'createsigndoc-extaddress' => 'المدينة، الولاية، الدولة:',
+	'createsigndoc-phone' => 'رقم الهاتف:',
+	'createsigndoc-bday' => 'تاريخ الميلاد:',
+	'createsigndoc-minage' => 'العمر الأدنى:',
+	'createsigndoc-introtext' => 'مقدمة:',
+	'createsigndoc-hidden' => 'مخفية',
+	'createsigndoc-optional' => 'اختياري',
+	'createsigndoc-create' => 'إنشاء',
+	'createsigndoc-error-generic' => 'خطأ: $1',
+	'createsigndoc-error-pagenoexist' => 'خطأ: الصفحة [[$1]] غير موجودة.',
+	'createsigndoc-success' => 'توقيع الوثيقة تم تفعيله بنجاح على [[$1]].
+لاختباره، من فضلك زر [{{SERVER}}{{localurl: Special:SignDocument|doc=$2}} هذه الصفحة].',
+	'createsigndoc-error-alreadycreated' => 'توقيع الوثيقة "$1" موجود بالفعل.',
+);
+
 /** Bikol Central (Bikol Central)
  * @author Filipinayzd
  */

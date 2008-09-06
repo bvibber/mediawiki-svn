@@ -30,6 +30,14 @@ $messages['ar'] = array(
 	'randomrootpage-desc' => '[[Special:Randomrootpage|صفحة خاصة]] تعرض صفحة جذر عشوائية',
 );
 
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Meno25
+ */
+$messages['arz'] = array(
+	'randomrootpage' => 'صفحة جذر عشوائية',
+	'randomrootpage-desc' => '[[Special:Randomrootpage|صفحة خاصة]] تعرض صفحة جذر عشوائية',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  */

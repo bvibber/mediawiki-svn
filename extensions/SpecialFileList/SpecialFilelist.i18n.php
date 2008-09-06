@@ -48,6 +48,17 @@ $messages['ar'] = array(
 	'filelist-image-desc' => 'وصف',
 );
 
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Meno25
+ */
+$messages['arz'] = array(
+	'filelist' => 'قائمة الملف',
+	'filelist-desc' => '[[Special:Filelist|صفحة خاصة]] لعرض الملفات المرفوعة',
+	'filelist-show-list' => 'عرض القائمة',
+	'filelist-show-gallery' => 'عرض المعرض',
+	'filelist-image-desc' => 'وصف',
+);
+
 /** Asturian (Asturianu) */
 $messages['ast'] = array(
 	'filelist-image-desc' => 'desc',

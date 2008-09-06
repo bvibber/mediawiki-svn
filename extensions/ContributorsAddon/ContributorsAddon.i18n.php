@@ -18,6 +18,13 @@ $messages['ar'] = array(
 	'contributorsaddon-desc' => 'يضيف منبثقات JS onMouseOver إلى وصلات "المساهمون الأساسيون"',
 );
 
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Meno25
+ */
+$messages['arz'] = array(
+	'contributorsaddon-desc' => 'يضيف منبثقات JS onMouseOver إلى وصلات "المساهمون الأساسيون"',
+);
+
 /** German (Deutsch)
  * @author ChrisiPK
  */

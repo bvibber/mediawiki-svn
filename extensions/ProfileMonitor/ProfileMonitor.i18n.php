@@ -60,6 +60,23 @@ $messages['ar'] = array(
 	'profiling-no-data' => 'لم يتم إيجاد بيانات مطابقة.',
 );
 
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Meno25
+ */
+$messages['arz'] = array(
+	'profiling' => 'معالجة البيانات',
+	'profiling-desc' => '[[Special:Profiling|صفحة خاصة]] للبحث والتحقق من بيانات الملف',
+	'profiling-process' => 'معالجة العملية:',
+	'profiling-wildcard' => 'استخدم كارتا خاصا',
+	'profiling-ok' => 'موافق',
+	'profiling-data' => 'معالجة البيانات ل`$1`',
+	'profiling-data-process' => 'عملية',
+	'profiling-data-count' => 'عداد',
+	'profiling-data-time' => 'الزمن (الكل)',
+	'profiling-data-average' => 'الزمن (متوسط)',
+	'profiling-no-data' => 'لم يتم إيجاد بيانات مطابقة.',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  */

@@ -87,7 +87,7 @@ $messages['an'] = array(
  */
 $messages['ar'] = array(
 	'spamregex' => 'تعبير منتظم لسبام',
-	'spamregex-desc' => '[[Special:Spamregex|فلتر]] العبارات غير المرغوب فيها في الصفحات المعدلة، بالاعتماد على التعبيرات المنتظمة',
+	'spamregex-desc' => '[[Special:SpamRegex|فلتر]] العبارات غير المرغوب فيها في الصفحات المعدلة، بالاعتماد على التعبيرات المنتظمة',
 	'spamregex-error-unblocking' => 'خطأ رفع منع "$1". على الأرجح لا يوجد نمط كهذا.',
 	'spamregex-summary' => 'النص تم العثور عليه في ملخص الصفحة.',
 	'spamregex-intro' => 'استخدم هذه الاستمارة لمنع تعبيرات من الحفظ في نص صفحة بكفاءة.
@@ -112,6 +112,41 @@ $messages['ar'] = array(
 	'spamregex-phrase-block' => 'العبارة للمنع:',
 	'spamregex-phrase-block-text' => 'منع عبارة في نص صفحة',
 	'spamregex-phrase-block-summary' => 'منع عبارة في ملخص',
+	'spamregex-block-submit' => 'منع&nbsp;هذه&nbsp;العبارة',
+	'spamregex-text' => '(نص)',
+	'spamregex-summary-log' => '(ملخص)',
+);
+
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Meno25
+ */
+$messages['arz'] = array(
+	'spamregex' => 'تعبير منتظم لسبام',
+	'spamregex-desc' => '[[Special:Spamregex|فلتر]] العبارات غير المرغوب فيها فى الصفحات المعدلة، بالاعتماد على التعبيرات المنتظمة',
+	'spamregex-error-unblocking' => 'خطأ رفع منع "$1". على الأرجح لا يوجد نمط كهذا.',
+	'spamregex-summary' => 'النص تم العثور عليه فى ملخص الصفحة.',
+	'spamregex-intro' => 'استخدم هذه الاستمارة لمنع تعبيرات من الحفظ فى نص صفحة بكفاءة.
+لو أن النص يحتوى على التعبير المعطى، لن يتم حفظ التغيير وسيتم عرض تفسير للمستخدم الذى حاول حفظ الصفحة.
+ينصح بالحذر، التعبيرات لا ينبغى أن تكون قصيرة جدا أو شائعة جدا.',
+	'spamregex-page-title' => 'منع تعبير منتظم لسبام التعبيرات غير المرغوب فيها',
+	'spamregex-currently-blocked' => "'''العبارات الممنوعة حاليا:'''",
+	'spamregex-move' => 'السبب الذى أدخلته يحتوى على عبارة ممنوعة.',
+	'spamregex-no-currently-blocked' => "'''لا توجد عبارات ممنوعة.'''",
+	'spamregex-log-1' => "* '''$1''' $2 ([{{SERVER}}$3&text=$4 إزالة]) تمت إضافتها بواسطة",
+	'spamregex-log-2' => ' فى $1',
+	'spamregex-page-title-1' => 'منع عبارة باستخدام التعبيرات المنتظمة',
+	'spamregex-unblock-success' => 'رفع المنع نجح',
+	'spamregex-unblock-message' => "العبارة '''$1''' تم رفع المنع عنها ضد التحرير.",
+	'spamregex-page-title-2' => 'منع العبارات من الحفظ باستخدام التعبيرات المنتظمة',
+	'spamregex-block-success' => 'المنع نجح',
+	'spamregex-block-message' => "العبارة '''$1''' تم منعها.",
+	'spamregex-warning-1' => 'أعط عبارة للمنع.',
+	'spamregex-error-1' => 'تعبير منتظم غير صحيح.',
+	'spamregex-warning-2' => 'من فضلك علم على نمط منع واحد على الأقل.',
+	'spamregex-already-blocked' => '"$1" ممنوعة بالفعل',
+	'spamregex-phrase-block' => 'العبارة للمنع:',
+	'spamregex-phrase-block-text' => 'منع عبارة فى نص صفحة',
+	'spamregex-phrase-block-summary' => 'منع عبارة فى ملخص',
 	'spamregex-block-submit' => 'منع&nbsp;هذه&nbsp;العبارة',
 	'spamregex-text' => '(نص)',
 	'spamregex-summary-log' => '(ملخص)',

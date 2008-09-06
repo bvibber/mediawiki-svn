@@ -45,6 +45,20 @@ $messages['ar'] = array(
 	'lua_overflow_time' => 'تم الوصول إلى أقصى زمن للتنفيذ',
 );
 
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Meno25
+ */
+$messages['arz'] = array(
+	'lua_desc' => 'يمدد المحلل بدعم لقطع مضمنة من كود [http://www.lua.org/ Lua]',
+	'lua_error' => 'خطأ فى السطر $1',
+	'lua_extension_notfound' => 'امتداد لوا ليس مضبوطا',
+	'lua_interp_notfound' => 'مفسر لوا لم يتم العثور عليه',
+	'lua_error_internal' => 'خطأ داخلي',
+	'lua_overflow_recursion' => 'تم الوصول إلى حد التكرار',
+	'lua_overflow_loc' => 'تم الوصول إلى الحد الأقصى لسطور الكود',
+	'lua_overflow_time' => 'تم الوصول إلى أقصى زمن للتنفيذ',
+);
+
 /** Asturian (Asturianu)
  * @author Esbardu
  */

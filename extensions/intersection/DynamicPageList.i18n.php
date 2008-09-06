@@ -82,8 +82,10 @@ $messages['bcc'] = array(
 
 /** Bulgarian (Български)
  * @author DCLXVI
+ * @author Spiritia
  */
 $messages['bg'] = array(
+	'intersection-desc' => 'Извежда списък на най-скорошните записи в дадена категория или сечение на няколко категории',
 	'intersection_toomanycats' => 'Error: Твърде много категории!',
 	'intersection_toofewcats' => 'Error: Твърде малко категории!',
 	'intersection_noresults' => 'Error: Няма резултати!',

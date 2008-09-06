@@ -35,6 +35,18 @@ $messages['ar'] = array(
 	'eval_code' => 'كود',
 );
 
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Meno25
+ */
+$messages['arz'] = array(
+	'eval' => 'تقييم',
+	'eval-desc' => 'يضيف [[Special:Eval|واجهة]] لوظيفة <code>eval()</code>',
+	'eval_submit' => 'تقييم',
+	'eval_escape' => 'خرج الهروب',
+	'eval_out' => 'خرج',
+	'eval_code' => 'كود',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  */

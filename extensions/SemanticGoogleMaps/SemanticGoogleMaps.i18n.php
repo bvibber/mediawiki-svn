@@ -24,6 +24,14 @@ $messages['ar'] = array(
 	'semanticgooglemaps-desc' => 'يسمح للمستخدمين بإضافة خرائط جوجل لصفحات الويكي بالاعتماد على بيانات هيكلية',
 );
 
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Meno25
+ */
+$messages['arz'] = array(
+	'semanticgooglemaps_lookupcoordinates' => 'ابحث عن الإحداثيات',
+	'semanticgooglemaps-desc' => 'يسمح للمستخدمين بإضافة خرائط جوجل لصفحات الويكى بالاعتماد على بيانات هيكلية',
+);
+
 /** German (Deutsch)
  * @author DaSch
  */

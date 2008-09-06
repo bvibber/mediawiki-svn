@@ -108,6 +108,32 @@ $messages['ar'] = array(
 	'badimages-page' => '{{ns:help}}:قائمة الصور السيئة',
 );
 
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Meno25
+ */
+$messages['arz'] = array(
+	'badimages' => 'قائمة الصور السيئة',
+	'badimages-desc' => 'يمد قدرات قائمة الصور السيئة لميدياويكي',
+	'badimages-add-btn' => 'إضافة',
+	'badimages-added' => '$1 تمت إضافتها للقائمة.',
+	'badimages-count' => "{{PLURAL:$1|توجد|توجد}} '''$1''' {{PLURAL:$1|صورة|صورة}} فى قائمة الصور السيئة.",
+	'badimages-name' => 'الاسم:',
+	'badimages-not-added' => 'لا يمكن إضافة الصورة.',
+	'badimages-not-removed' => 'لا يمكن إزالة الصورة.',
+	'badimages-reason' => 'السبب:',
+	'badimages-remove' => '(إزالة)',
+	'badimages-remove-btn' => 'إزالة',
+	'badimages-remove-confirm' => 'من فضلك أكد أنك تريد إزالة $1 من القائمة:',
+	'badimages-removed' => '$1 تمت إزالتها من القائمة.',
+	'badimages-subheading' => 'المدخلات الحالية',
+	'badimages-unprivileged' => '(لا تمتلك السماح الكافى لتعديل القائمة)',
+	'badimages-log-name' => 'قائمة الصور السيئة',
+	'badimages-log-header' => 'هذا سجل بالتغييرات ل [[{{MediaWiki:Badimages-page}}|قائمة الصور السيئة]].',
+	'badimages-log-add' => 'أضاف [[$1]] إلى قائمة الصور السيئة',
+	'badimages-log-remove' => 'أزال [[$1]] من قائمة الصور السيئة',
+	'badimages-page' => '{{ns:help}}:قائمة الصور السيئة',
+);
+
 /** Asturian (Asturianu)
  * @author Esbardu
  */

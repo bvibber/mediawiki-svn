@@ -19,6 +19,13 @@ $messages['ar'] = array(
 	'i18ntags-desc' => 'يسمح بالوصول إلى وظيفة الترجمة لصيغ الأرقام، قواعد اللغة والجمع في أي لغة متوفرة',
 );
 
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Meno25
+ */
+$messages['arz'] = array(
+	'i18ntags-desc' => 'يسمح بالوصول إلى وظيفة الترجمة لصيغ الأرقام، قواعد اللغة والجمع فى أى لغة متوفرة',
+);
+
 /** Asturian (Asturianu)
  * @author Esbardu
  */

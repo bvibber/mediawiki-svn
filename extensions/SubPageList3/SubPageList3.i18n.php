@@ -54,6 +54,15 @@ $messages['ar'] = array(
 	'spl3_nosubpages' => '$1 لا تمتلك أي صفحات فرعية لوضعها في قائمة.',
 );
 
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Meno25
+ */
+$messages['arz'] = array(
+	'spl3-desc' => 'تلقائيا ينشئ قائمة بالصفحات الفرعية لصفحة باستخدام الوسم <code><nowiki><splist /></nowiki></code>',
+	'spl3_debug' => 'قيمة غير معروفة للخيار $1.',
+	'spl3_nosubpages' => '$1 لا تمتلك أى صفحات فرعية لوضعها فى قائمة.',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  */

@@ -80,6 +80,24 @@ $messages['ar'] = array(
 	'chemFunctions_ChemFormInputError' => 'Chemform: خطأ إدخال!',
 );
 
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Meno25
+ */
+$messages['arz'] = array(
+	'chemicalsources' => 'مصادر كيميائية',
+	'chemicalsource-desc' => 'يضيف الوسم <nowiki><chemform></nowiki>، للصيغ الكيميائية',
+	'chemFunctions_ListPage' => 'مصادر كيميائية',
+	'chemFunctions_DataList' => 'بالأسفل قائمة بوصلات إلى مواقع قد تحتوى على معلومات عن المادة الكيميائية التى تبحث عنها.<br /><br />
+* <a href="http://webbook.nist.gov/cgi/cbook.cgi?ID=$MIXCASNameFormula&amp;Units=SI">Compound $MIXCASNameFormula at NIST</a><br />
+* <a href="http://ptcl.chem.ox.ac.uk/MSDS/">MSDS فى جامعة أكسفورد (UK) (غير قابل للبحث)</a><br />',
+	'chemFunctions_CAS' => 'رقم CAS',
+	'chemFunctions_ATCCode' => 'كود ATC',
+	'chemFunctions_ECNumber' => 'رقم EC',
+	'chemFunctions_Formula' => 'الصيغة',
+	'chemFunctions_Name' => 'اسم IUPAC',
+	'chemFunctions_ChemFormInputError' => 'Chemform: خطأ إدخال!',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  */

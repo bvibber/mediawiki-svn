@@ -52,6 +52,15 @@ $messages['ar'] = array(
 	'backforth-prev' => 'السابق ($1)',
 );
 
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Meno25
+ */
+$messages['arz'] = array(
+	'backforth-next' => 'التالى ($1)',
+	'backforth-desc' => 'يضيف وصلات "التالي" و "السابق" الأبجدية لأعلى الصفحات',
+	'backforth-prev' => 'السابق ($1)',
+);
+
 /** Assamese (অসমীয়া)
  * @author Rajuonline
  */

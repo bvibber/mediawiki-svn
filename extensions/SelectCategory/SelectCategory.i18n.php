@@ -36,6 +36,15 @@ $messages['ar'] = array(
 	'selectcategory-subtitle' => 'Shift-mouse لاختيار مدخلات متوافقة متعددة، Ctrl-mouse لاختيار مدخلات غير متوافقة.',
 );
 
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Meno25
+ */
+$messages['arz'] = array(
+	'selectcategory-title' => 'اختر التصنيفات',
+	'selectcategory-desc' => 'يسمح للمستخدم بالاختيار من التصنيفات الموجودة عند تعديل صفحة',
+	'selectcategory-subtitle' => 'Shift-mouse لاختيار مدخلات متوافقة متعددة، Ctrl-mouse لاختيار مدخلات غير متوافقة.',
+);
+
 /** Asturian (Asturianu)
  * @author Esbardu
  */

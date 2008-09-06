@@ -33,6 +33,16 @@ $messages['ar'] = array(
 	'msfunc_div_zero' => 'القسمة على صفر',
 );
 
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Meno25
+ */
+$messages['arz'] = array(
+	'msfunc_desc' => 'مجموعة من الدوال الرياضية والإحصائية',
+	'msfunc_nan' => 'القيمة الناتجة ليست رقما',
+	'msfunc_inf' => 'القيمة الناتجة هى المالانهاية',
+	'msfunc_div_zero' => 'القسمة على صفر',
+);
+
 /** Asturian (Asturianu)
  * @author Esbardu
  */

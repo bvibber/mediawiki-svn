@@ -64,10 +64,24 @@ $messages['ar'] = array(
 );
 
 /** Egyptian Spoken Arabic (مصرى)
+ * @author Meno25
  * @author Ramsis II
  */
 $messages['arz'] = array(
-	'call' => 'نادي',
+	'call' => 'نادى',
+	'call-desc' => 'ينشئ وصلة فائقة لقالب (أو لصفحة ويكى عادية) مع تمرير المحددات. يمكن استخدامها فى سطر أوامر المتصفح أو خلال نص الويكي.',
+	'call-text' => "امتداد الاستدعاء يتوقع صفحة ويكى ومحددات اختيارية لهذه الصفحة كمدخلات.<br /><br />
+مثال 1: &nbsp; <tt>[[Special:Call/My Template,parm1=value1]]</tt><br />
+مثال 2: &nbsp; <tt>[[Special:Call/Talk:My Discussion,parm1=value1]]</tt><br />
+مثال 3: &nbsp; <tt>[[Special:Call/:My Page,parm1=value1,parm2=value2]]</tt><br /><br />
+مثال 4 (مسار متصفح): &nbsp; <tt>http://mydomain/mywiki/index.php?Special:Call/:My Page,parm1=value1</tt><br /><br />
+
+<i>امتداد الاستدعاء</i> سيستدعى الصفحة المعطاة ويمرر المحددات.<br />سترى محتويات الصفحة المستدعاة وعنوانها ولكن 'نوعها' سيكون ذلك الخاص بصفحة خاصة،<br />أى أن صفحة مثل هذه لا يمكن تعديلها.<br />المحتويات التى تراها ربما تتغير على حسب قيمة المحددات التى مررتها.<br /><br />
+<i>امتداد الاستدعاء</i> مفيد فى بناء تطبيقات تفاعلية مع الميدياويكي.<br />لمثال انظر <a href='http://semeb.com/dpldemo/Template:Catlist'>DPL GUI</a> ..<br />
+فى حالة وجود مشكلات يمكنك محاولة <b>Special:Call/DebuG</b>",
+	'call-save' => "ناتج هذا الاستدعاء سيتم حفظه فى صفحة اسمها ''$1''.",
+	'call-save-success' => 'النص التالى تم حفظه لصفحة <big>[[$1]]</big> .',
+	'call-save-failed' => 'النص التالى لم يتم حفظه لصفحة <big>[[$1]]</big> لأن هذه الصفحة موجودة بالفعل.',
 );
 
 /** Bulgarian (Български)

@@ -18,6 +18,13 @@ $messages['ar'] = array(
 	'opensearchxml-desc' => 'واجهة JSON [http://www.opensearch.org أوبن سيرش] موفرة لمستخلصات النصوص',
 );
 
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Meno25
+ */
+$messages['arz'] = array(
+	'opensearchxml-desc' => 'واجهة JSON [http://www.opensearch.org أوبن سيرش] موفرة لمستخلصات النصوص',
+);
+
 /** German (Deutsch) */
 $messages['de'] = array(
 	'opensearchxml-desc' => '[http://www.opensearch.org OpenSearch]-JSON-Schnittstelle für Textauszüge',

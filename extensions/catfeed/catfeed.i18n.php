@@ -23,6 +23,13 @@ $messages['ar'] = array(
 	'catfeed-desc' => 'يستخدم أجزاء من تلقيمات أحدث التغييرات. ينشئ نسخة في الصفحة، مفيد خصوصا لويكي الأخبار.',
 );
 
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Meno25
+ */
+$messages['arz'] = array(
+	'catfeed-desc' => 'يستخدم أجزاء من تلقيمات أحدث التغييرات. ينشئ نسخة فى الصفحة، مفيد خصوصا لويكى الأخبار.',
+);
+
 /** Bengali (বাংলা)
  * @author Zaheen
  */

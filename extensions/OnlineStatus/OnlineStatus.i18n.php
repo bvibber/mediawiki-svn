@@ -54,6 +54,24 @@ $messages['ar'] = array(
 	'onlinestatus-toggle-online' => 'متصل',
 );
 
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Meno25
+ */
+$messages['arz'] = array(
+	'onlinestatus-desc' => 'يضيف تفضيلا لعرض ما إذا كان المستخدم موجود حاليا أم لا على الويكي',
+	'onlinestatus-js-anon' => 'خطأ: يجب أن تكون مسجل الدخول لاستخدام هذه الميزة',
+	'onlinestatus-js-changed' => 'حالتك تم تغييرها إلى "$1"',
+	'onlinestatus-js-error' => 'مستحيل أن يتم تغيير الحالة، القيمة "$1" غير صحيحة',
+	'onlinestatus-subtitle-offline' => 'هذا المستخدم غير متصل حاليا',
+	'onlinestatus-subtitle-online' => 'هذا المستخدم متصل حاليا',
+	'onlinestatus-tab' => 'حالة',
+	'onlinestatus-toggles-desc' => 'حالتك:',
+	'onlinestatus-toggles-explain' => 'هذا يسمح لك بالعرض للمستخدمين الآخرين إذا ما كنت موجودا أم لا بواسطة رؤية صفحة مستخدمك.',
+	'onlinestatus-toggles-show' => 'اعرض حالتى على الإنترنت على صفحة مستخدمي',
+	'onlinestatus-toggle-offline' => 'غير متصل',
+	'onlinestatus-toggle-online' => 'متصل',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  */

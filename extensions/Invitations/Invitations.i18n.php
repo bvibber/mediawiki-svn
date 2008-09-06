@@ -72,6 +72,36 @@ $messages['ar'] = array(
 	'invitations-invite-success' => 'لقد دعوت $1 ليستخدم هذه الميزة بنجاح!',
 );
 
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Meno25
+ */
+$messages['arz'] = array(
+	'invite-logpage' => 'سجل الدعوات',
+	'invite-logpagetext' => 'هذا سجل بالمستخدمين الداعين بعضهم البعض لاستخدام مميزات البرنامج المختلفة.',
+	'invite-logentry' => 'دعا $1 لاستخدام خاصية <i>$2</i>.',
+	'invitations' => 'أدر الدعوات لميزات البرنامج',
+	'invitations-desc' => 'يسصمح [[Special:Invitations|بالتحكم فى المميزات الجديدة]] بواسطة تحديدهم لنظام معتمد على الدعوات',
+	'invitations-invitedlist-description' => 'لديك سماح إلى مميزات الدعوة فقط للبرنامج التالية.
+للتحكم بالدعوات لميزة مفردة، اضغط على اسمها.',
+	'invitations-invitedlist-none' => 'لم تتم دعوتك لاستخدام أى ميزات بالدعوة-فقط.',
+	'invitations-invitedlist-item-count' => '({{PLURAL:$1|دعوة واحدة|$1 دعوة}} متوفرة)',
+	'invitations-pagetitle' => 'ميزات بالدعوة-فقط',
+	'invitations-uninvitedlist-description' => 'لا يوجد لديك وصول إلى ميزات البرنامج بالدعوة فقط الأخرى هذه.',
+	'invitations-uninvitedlist-none' => 'فى هذا الوقت، لا مميزات برنامج أخرى محددة بالدعوة فقط.',
+	'invitations-feature-pagetitle' => 'إدارة الدعوات - $1',
+	'invitations-feature-access' => 'لديك حاليا صلاحية استخدام <i>$1</i>.',
+	'invitations-feature-numleft' => 'أنت مازال لديك {{PLURAL:$2|دعوة واحدة باقية|<b>$1</b> من دعواتك ال$2 باقية}}.',
+	'invitations-feature-noneleft' => 'لقد استخدمت كل دعواتك المحصصة لهذه الميزة',
+	'invitations-feature-noneyet' => 'أنت مازالت لم تتلق كمية دعواتك لهذه الميزة.',
+	'invitations-feature-notallowed' => 'لا يوجد لديك صلاحية استخدام <i>$1</i>.',
+	'invitations-inviteform-title' => 'ادع مستخدما ليستخدم $1',
+	'invitations-inviteform-username' => 'المستخدم لتتم دعوته',
+	'invitations-inviteform-submit' => 'دعوة',
+	'invitations-error-baduser' => 'المستخدم الذى حددته لا يبدو أنه موجود.',
+	'invitations-error-alreadyinvited' => 'المستخدم الذى حددته لديه وصول لهذه الميزة أصلا!',
+	'invitations-invite-success' => 'لقد دعوت $1 ليستخدم هذه الميزة بنجاح!',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  */
@@ -295,6 +325,36 @@ $messages['hi'] = array(
 	'invitations-error-baduser' => 'आपने दिया हुआ सदस्य अस्तित्वमें नहीं हैं।',
 	'invitations-error-alreadyinvited' => 'आपने दिये हुए सदस्य को यह फीचर का इस्तेमाल करने की पहले से अनुमति हैं!',
 	'invitations-invite-success' => 'आपने $1 को यह फीचर इस्तेमाल करने के लिये आमंत्रित किया!',
+);
+
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'invite-logpage' => 'Registro de invitationes',
+	'invite-logpagetext' => 'Isto es un registro del usatores invitante alteros a usar varie functiones del software.',
+	'invite-logentry' => 'invitava $1 a usar le function <i>$2</i>.',
+	'invitations' => 'Gerer invitationes a functiones del software',
+	'invitations-desc' => 'Permitte le [[Special:Invitations|gerentia de nove functiones]] per restringer los con un systema a base de invitationes',
+	'invitations-invitedlist-description' => 'Tu ha accesso al sequente functiones de software restringite al invitatos.
+Pro gerer le invitationes a un function particular, clicca super le nomine de illo.',
+	'invitations-invitedlist-none' => 'Tu non ha essite invitate a usar alcun functiones del software restringite a invitatos.',
+	'invitations-invitedlist-item-count' => '({{PLURAL:$1|Un invitation|$1 invitationes}} disponibile)',
+	'invitations-pagetitle' => 'Functiones del software restringite a invitatos',
+	'invitations-uninvitedlist-description' => 'Tu non ha accesso a iste altere functiones del software restringite al invitatos.',
+	'invitations-uninvitedlist-none' => 'A iste tempore, nulle altere functiones del software es restringite al invitatos.',
+	'invitations-feature-pagetitle' => 'Gestion de invitationes - $1',
+	'invitations-feature-access' => 'Tu ha ora accesso pro usar <i>$1</i>.',
+	'invitations-feature-numleft' => 'Te resta ancora {{PLURAL:$2|un invitation|<b>$1</b> de tu $2 invitationes}}.',
+	'invitations-feature-noneleft' => 'Tu ha usate tote tu quota de invitationes pro iste function',
+	'invitations-feature-noneyet' => 'Tu non ha ancora recipite tu quota de invitationes pro iste function.',
+	'invitations-feature-notallowed' => 'Tu non ha accesso pro usar <i>$1</i>.',
+	'invitations-inviteform-title' => 'Invitar un usator a usar $1',
+	'invitations-inviteform-username' => 'Usator a invitar',
+	'invitations-inviteform-submit' => 'Invitar',
+	'invitations-error-baduser' => 'Le usator que tu specificava non pare exister.',
+	'invitations-error-alreadyinvited' => 'Le usator que tu specificava dispone ja de accesso a iste function!',
+	'invitations-invite-success' => 'Tu ha invitate $1 a usar iste function con successo!',
 );
 
 /** Javanese (Basa Jawa)

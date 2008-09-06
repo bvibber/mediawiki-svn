@@ -23,6 +23,34 @@ $aliases['en'] = array(
 	'MvVideoFeed' => array( 'MvVideoFeed' ),
 );
 
+/** Arabic (العربية) */
+$aliases['ar'] = array(
+	'MediaSearch' => array( 'بحث_ميديا' ),
+	'Mv_Add_Stream' => array( 'إضافة_ستريم_مف' ),
+	'MVAdmin' => array( 'إداري_مف' ),
+	'MvExportAsk' => array( 'تصدير_سؤال_مف' ),
+	'MvExportSearch' => array( 'تصدير_بحث_مف' ),
+	'MvExportSequence' => array( 'تصدير_تتابع_مف' ),
+	'MvExportStream' => array( 'تصدير_ستريم_مف' ),
+	'Mv_List_Streams' => array( 'عرض_ستريمات_مف' ),
+	'MV_SpecialSearch' => array( 'بحث_خاص_مف' ),
+	'MvVideoFeed' => array( 'تلقيم_فيديو_مف' ),
+);
+
+/** Egyptian Spoken Arabic (مصرى) */
+$aliases['arz'] = array(
+	'MediaSearch' => array( 'بحث_ميديا' ),
+	'Mv_Add_Stream' => array( 'إضافة_ستريم_مف' ),
+	'MVAdmin' => array( 'إدارى_مف' ),
+	'MvExportAsk' => array( 'تصدير_سؤال_مف' ),
+	'MvExportSearch' => array( 'تصدير_بحث_مف' ),
+	'MvExportSequence' => array( 'تصدير_تتابع_مف' ),
+	'MvExportStream' => array( 'تصدير_ستريم_مف' ),
+	'Mv_List_Streams' => array( 'عرض_ستريمات_مف' ),
+	'MV_SpecialSearch' => array( 'بحث_خاص_مف' ),
+	'MvVideoFeed' => array( 'تلقيم_فيديو_مف' ),
+);
+
 /** Dutch (Nederlands) */
 $aliases['nl'] = array(
 	'MediaSearch' => array( 'MediaZoeken' ),

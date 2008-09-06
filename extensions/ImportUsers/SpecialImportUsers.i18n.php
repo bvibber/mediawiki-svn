@@ -114,6 +114,32 @@ $messages['ar'] = array(
 	'importusers-realname' => 'الاسم الحقيقي',
 );
 
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Meno25
+ */
+$messages['arz'] = array(
+	'importusers' => 'استيراد مستخدمين',
+	'importusers-desc' => '[[Special:ImportUsers|يستورد المستخدمين]] بشكل كمى من ملف CSV؛ التكويد: UTF-8',
+	'importusers-uploadfile' => 'رفع ملف',
+	'importusers-form-caption' => 'الناتج ملف CSV (UTF-8)',
+	'importusers-form-file' => 'صيغة ملف المستخدم (csv):',
+	'importusers-form-replace-present' => 'استبدل المستخدمين الموجودين',
+	'importusers-form-button' => 'استيراد',
+	'importusers-user-added' => 'المستخدم <b>%s</b> تمت إضافته.',
+	'importusers-user-present-update' => 'المستخدم <b>%s</b> موجود بالفعل. تم التحديث.',
+	'importusers-user-present-not-update' => 'المستخدم <b>%s</b> موجود بالفعل. لم يتم التحديث.',
+	'importusers-user-invalid-format' => 'بيانات المستخدم فى السطر #%s لها صيغة غير صحيحة أو فارغة. تم تجاهلها.',
+	'importusers-log' => 'استيراد السجل',
+	'importusers-log-summary' => 'ملخص',
+	'importusers-log-summary-all' => 'الكل',
+	'importusers-log-summary-added' => 'تمت الإضافة',
+	'importusers-log-summary-updated' => 'تم التحديث',
+	'importusers-login-name' => 'اسم الدخول',
+	'importusers-password' => 'كلمة السر',
+	'importusers-email' => 'البريد الإلكتروني',
+	'importusers-realname' => 'الاسم الحقيقي',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  */
@@ -398,11 +424,26 @@ $messages['hsb'] = array(
  * @author McDutchie
  */
 $messages['ia'] = array(
+	'importusers' => 'Importar usatores',
+	'importusers-desc' => '[[Special:ImportUsers|Importa usatores]] in bloco ab un file CSV; codification: UTF-8',
+	'importusers-uploadfile' => 'Cargar file',
+	'importusers-form-caption' => 'File CSV de entrata (UTF-8)',
+	'importusers-form-file' => 'Formato del file de usatores (CSV):',
+	'importusers-form-replace-present' => 'Reimplaciar le usatores existente',
 	'importusers-form-button' => 'Importar',
+	'importusers-user-added' => 'Le usator <b>%s</b> ha essite addite.',
+	'importusers-user-present-update' => 'Le usator <b>%s</b> existe ja. Actualisate.',
+	'importusers-user-present-not-update' => 'Le usator <b>%s</b> existe ja. Non actualisate.',
+	'importusers-user-invalid-format' => 'Le datos de usator in le linea #%s ha un formato invalide o es vacue. Omittite.',
+	'importusers-log' => 'Registro de importationes',
 	'importusers-log-summary' => 'Summario',
 	'importusers-log-summary-all' => 'Totes',
+	'importusers-log-summary-added' => 'Addite',
+	'importusers-log-summary-updated' => 'Actualisate',
+	'importusers-login-name' => 'Nomine de conto',
 	'importusers-password' => 'contrasigno',
 	'importusers-email' => 'e-mail',
+	'importusers-realname' => 'nomine real',
 );
 
 /** Indonesian (Bahasa Indonesia)

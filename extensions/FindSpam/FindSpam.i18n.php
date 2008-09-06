@@ -41,6 +41,17 @@ $messages['ar'] = array(
 	'findspam-notextfound' => 'لم يتم العثور على مساهمات',
 );
 
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Meno25
+ */
+$messages['arz'] = array(
+	'findspam' => 'إيجاد السبام',
+	'findspam-desc' => 'يضيف [[Special:FindSpam|صفحة خاصة]] تسمح بإيجاد السبام المضاف حديثا',
+	'findspam-ip' => 'عنوان الأيبي:',
+	'findspam-ok' => 'موافق',
+	'findspam-notextfound' => 'لم يتم العثور على مساهمات',
+);
+
 /** Asturian (Asturianu)
  * @author Esbardu
  */
@@ -244,6 +255,7 @@ $messages['jv'] = array(
  * @author Lovekhmer
  */
 $messages['km'] = array(
+	'findspam' => 'ស្វែងរកស្ពែម',
 	'findspam-ip' => 'អាសយដ្ឋាន IP ៖',
 	'findspam-ok' => 'យល់ព្រម',
 	'findspam-notextfound' => 'ការរួមចំនែកមិនត្រូវបានរកមិនឃើញទេ',

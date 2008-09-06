@@ -85,6 +85,36 @@ $messages['ar'] = array(
 نظام إخطار %s الصديق',
 );
 
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Meno25
+ */
+$messages['arz'] = array(
+	'tasklist' => 'قائمة المهام',
+	'tasklist-parser-desc' => 'يضيف دالة محلل <nowiki>{{#todo:}}</nowiki> لتولية المهام',
+	'tasklist-special-desc' => 'يضيف صفحة خاصة لمراجعة [[Special:TaskList|توليات المهام]]',
+	'tasklistbyproject' => 'قائمة المهام حسب المشروع',
+	'tasklistunknownproject' => 'مشروع غير معروف',
+	'tasklistunspecuser' => 'مستخدم غير محدد',
+	'tasklistincorrectuser' => 'اسم مستخدم غير صحيح',
+	'tasklistemail' => 'عزيزى %s',
+	'tasklistemailsubject' => 'التغيير فى قائمة مهام [%s]',
+	'tasklistmytasks' => 'مهامي',
+	'tasklistbyprojectbad' => "المشروع '''%s''' ليس مشروعا صحيحا.
+لقائمة بالمشاريع الصحيحة، انظر [[MediaWiki:TodoTasksValidProjects]].",
+	'tasklistbyprojname' => "المهام الموكلة ل'''%s'''",
+	'tasklistchooseproj' => 'اختر المشروع:',
+	'tasklistprojdisp' => 'عرض',
+	'tasklistbyname' => '== قائمة العمل ل%s ==',
+	'tasklistnoprojects' => "خطأ: يبدو أنك فعلت '''\$wgUseProjects'''، لكن لم تنشيء [[MediaWiki:TodoTasksValidProjects]]. انظر [http://www.mediawiki.org/wiki/Extension:Todo_Tasks#Step_8 تعليمات التنصيب] لمزيد من التفاصيل.",
+	'tasklistemailbody' => '،
+
+شخص ما أضاف مهمة جديدة لك فى %s.
+
+لرؤية قائمة مهامك الكاملة اذهب إلى %s.
+
+نظام إخطار %s الصديق',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  */

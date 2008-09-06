@@ -62,6 +62,25 @@ $messages['ar'] = array(
 	'importfreeimages_returntoform' => "أو، اضغط <a href='$1'>هنا</a> للعودة إلى نتائج بحثك",
 );
 
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Meno25
+ */
+$messages['arz'] = array(
+	'importfreeimages' => 'استيراد صور حرة',
+	'importfreeimages-desc' => 'يوفر طريقة [[Special:ImportFreeImages|لاستيراد صور مرخصة بشكل سليم]] من [http://www.flickr.com فليكر]',
+	'importfreeimages_description' => 'هذه الصفحة تسمح لك بالبحث فى الصور المرخصة جيدا من فليكر واستيرادها إلى الويكى الخاص بك.',
+	'importfreeimages_noapikey' => 'لم تقم بضبط مفتاح API فليكر الخاص بك.
+لفعل هذا، من فضلك احصل على مفتاح API من  [http://www.flickr.com/services/api/misc.api_keys.html هنا] واضبط wgFlickrAPIKey فى ImportFreeImages.php.',
+	'importfreeimages_nophotosfound' => "لا صور تم العثور عليها لمدخلة البحث الخاصة بك '$1'، من فضلك حاول مرة ثانية.",
+	'importfreeimages_invalidurl' => 'المسار "$1" ليس صورة فليكر صحيحة.',
+	'importfreeimages_owner' => 'المؤلف',
+	'importfreeimages_importthis' => 'استورد هذا',
+	'importfreeimages_next' => '$1 التالي',
+	'importfreeimages_filefromflickr' => '$1 بواسطة المستخدم <b>[$2]</b> من فليكر. المسار الأصلي',
+	'importfreeimages_promptuserforfilename' => 'من فضلك أدخل اسما لتخزين الملف به:',
+	'importfreeimages_returntoform' => "أو، اضغط <a href='$1'>هنا</a> للعودة إلى نتائج بحثك",
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  * @author Spiritia

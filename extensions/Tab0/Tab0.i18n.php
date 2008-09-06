@@ -18,6 +18,13 @@ $messages['ar'] = array(
 	'tab0-desc' => 'يضيف اللسان "0"، موصولا إلى صفحة التعديل لأول قسم من الصفحة',
 );
 
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Meno25
+ */
+$messages['arz'] = array(
+	'tab0-desc' => 'يضيف اللسان "0"، موصولا إلى صفحة التعديل لأول قسم من الصفحة',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  */

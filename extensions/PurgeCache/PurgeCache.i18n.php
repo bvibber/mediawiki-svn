@@ -27,6 +27,17 @@ $messages['ar'] = array(
 	'purgecache-button' => 'إفراغ الكاش',
 );
 
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Meno25
+ */
+$messages['arz'] = array(
+	'purgecache' => 'إفراغ الكاش',
+	'purgecache-desc' => '[[Special:PurgeCache|صفحة خاصة]] تستخدم لمسح جدول OBJECTCACHE',
+	'purgecache-warning' => 'هذا سيفرغ جداول الكاش.',
+	'purgecache-purged' => 'تم إفراغ الكاش',
+	'purgecache-button' => 'إفراغ الكاش',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  */

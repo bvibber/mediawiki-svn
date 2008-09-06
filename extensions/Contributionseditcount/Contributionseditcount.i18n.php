@@ -20,6 +20,14 @@ $messages['ar'] = array(
 	'contributionseditcount-desc' => 'يعرض عدد المساهمات في [[Special:Contributions|صفحة مساهمات المستخدم]]',
 );
 
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Meno25
+ */
+$messages['arz'] = array(
+	'contributionseditcount' => 'هذا المستخدم لديه $1 تعديل.',
+	'contributionseditcount-desc' => 'يعرض عدد المساهمات فى [[Special:Contributions|صفحة مساهمات المستخدم]]',
+);
+
 /** Bikol Central (Bikol Central)
  * @author Filipinayzd
  */

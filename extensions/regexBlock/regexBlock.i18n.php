@@ -185,6 +185,68 @@ $messages['ar'] = array(
 	'regexblock-view-time' => 'في $1',
 );
 
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Meno25
+ */
+$messages['arz'] = array(
+	'regexblock' => 'تعبير منتظم لمنع',
+	'regexblock-desc' => 'امتداد يستخدم لمنع أسماء المستخدمين وعناوين الأيبى باستخدام تعبيرات منتظمة. يحتوى على ميكانيكية المنع و [[Special:Regexblock|صفحة خاصة]] لإضافة/التحكم بعمليات المنع',
+	'regexblock-special-desc' => 'منع مستخدم بديل (بواسطة الاسم المعطى، باستخدام تعبيرات منتظمة)',
+	'regexblock-stat-desc' => 'يعرض [[Special:Regexblockstats|إحصاءات المنع]] لامتداد المنع بالتعبيرات المنتظمة',
+	'regexblock-page-title' => 'منع الاسم بواسطة تعبير منتظم',
+	'regexblockstats' => 'إحصاءات تعبيرات المنع المنتظمة',
+	'regexblock-reason-ip' => 'عنوان الأيبى هذا ممنوع نتيجة للتخريب أو إساءة أخرى بواسطتك أو بواسطة شخص يشارك فى عنوان الأيبى الخاص بك.
+لو كنت تعتقد أن هذا خطأ، من فضلك $1',
+	'regexblock-reason-name' => 'اسم المستخدم هذا ممنوع من التحرير نتيجة للتخريب أو إساءة أخرى.
+لو كنت تعتقد أن هذا خطأ، من فضلك $1',
+	'regexblock-reason-regex' => 'اسم المستخدم هذا ممنوع من التحرير نتيجة للتخريب أو إساءة أخرى بواسطة مستخدم باسم مشابه.
+من فضلك أنشيء اسم مستخدم بديل أو $1 حول المشكلة',
+	'regexblock-help' => 'استخدم الاستمارة بالأسفل لمنع التحرير من عنوان أيبى أو اسم مستخدم محدد.
+هذا ينبغى أن يتم فقط لمنع التخريب، وبالتوافق مع السياسة.
+\'\'هذه الصفحة ستسمح لك بمنع حتى المستخدمين غير الموجودين، وستمنع أيضا المستخدمين بأسماء مشابهة للمعطاة،أى أن "Test" سيتم منعها بالإضافة إلى "Test 2"إلى آخره.
+يمكنك أيضا منع عناوين أيبى كاملة، مما يعنى أنه لا أحد مسجلا للدخول منها سيمكنه تعديل الصفحات.
+ملاحظة: عناوين الأيبى الجزئية سيتم معاملتها بواسطة أسماء مستخدمين فى تحديد المنع.
+لو لم يتم تحديد سبب، سيتم استخدام سبب افتراضى تلقائي.\'\'',
+	'regexblock-page-title-1' => 'منع عنوان باستخدام تعبيرات منتظمة',
+	'regexblock-unblock-success' => 'رفع المنع نجح',
+	'regexblock-unblock-log' => "اسم المستخدم أو عنوان الأيبى '''$1''' تم رفع المنع عنه.",
+	'regexblock-unblock-error' => 'خطأ أثناء رفع المنع عن $1.
+على الأرجح لا يوجد مستخدم بهذا الاسم.',
+	'regexblock-form-username' => 'عنوان الأيبى أو اسم المستخدم:',
+	'regexblock-form-reason' => 'السبب:',
+	'regexblock-form-expiry' => 'الانتهاء:',
+	'regexblock-form-match' => 'تطابق تام',
+	'regexblock-form-account-block' => 'منع إنشاء الحسابات الجديدة',
+	'regexblock-form-submit' => 'منع هذا المستخدم',
+	'regexblock-block-log' => "اسم المستخدم أو عنوان الأيبى '''$1''' تم منعه.",
+	'regexblock-block-success' => 'المنع نجح',
+	'regexblock-form-submit-empty' => 'أعط اسم مستخدم أو عنوان أيبى للمنع.',
+	'regexblock-form-submit-regex' => 'تعبير منتظم غير صحيح.',
+	'regexblock-form-submit-expiry' => 'من فضلك حدد تاريخ انتهاء.',
+	'regexblock-already-blocked' => '$1 ممنوع بالفعل.',
+	'regexblock-stats-title' => 'إحصاءات تعبيرات المنع المنتظمة',
+	'regexblock-stats-username' => 'ل$1',
+	'regexblock-stats-times' => 'تم منعه في',
+	'regexblock-stats-logging' => 'دخول من العنوان',
+	'regexblock-currently-blocked' => 'العناوين الممنوعة حاليا:',
+	'regexblock-view-blocked' => 'عرض الممنوع بواسطة:',
+	'regexblock-view-all' => 'الكل',
+	'regexblock-view-go' => 'اذهب',
+	'regexblock-view-match' => '(تطابق تام)',
+	'regexblock-view-regex' => '(تطابق تعبير منتظم)',
+	'regexblock-view-account' => '(منع إنشاء حساب)',
+	'regexblock-view-reason' => 'السبب: $1',
+	'regexblock-view-reason-default' => 'سبب تلقائي',
+	'regexblock-view-block-infinite' => 'منع دائم',
+	'regexblock-view-block-temporary' => 'ينتهى في',
+	'regexblock-view-block-expired' => 'انتهى في',
+	'regexblock-view-block-by' => 'ممنوع بواسطة',
+	'regexblock-view-block-unblock' => 'رفع المنع',
+	'regexblock-view-stats' => '(إحصاءات)',
+	'regexblock-view-empty' => 'قائمة الأسماء والعناوين الممنوعة فارغة.',
+	'regexblock-view-time' => 'فى $1',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  */

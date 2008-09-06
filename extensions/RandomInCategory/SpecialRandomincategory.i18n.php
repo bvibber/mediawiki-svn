@@ -70,6 +70,18 @@ $messages['ar'] = array(
 	'randomincategory-submit' => 'اذهب',
 );
 
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Meno25
+ */
+$messages['arz'] = array(
+	'randomincategory' => 'صفحة عشوائية فى التصنيف',
+	'randomincategory-desc' => '[[Special:Randomincategory|صفحة خاصة]] للحصول على صفحة عشوائية فى تصنيف',
+	'randomincategory-toolbox' => 'صفحة عشوائية',
+	'randomincategory-nocategory' => 'التصنيف $1 غير موجود أو فارغ',
+	'randomincategory-label' => 'التصنيف:',
+	'randomincategory-submit' => 'اذهب',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  */

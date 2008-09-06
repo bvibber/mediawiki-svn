@@ -18,6 +18,13 @@ $messages['ar'] = array(
 	'randomimage-desc' => 'يوفر ميديا عشوائية باستخدام <tt>&lt;randomimage /&gt;</tt>',
 );
 
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Meno25
+ */
+$messages['arz'] = array(
+	'randomimage-desc' => 'يوفر ميديا عشوائية باستخدام <tt>&lt;randomimage /&gt;</tt>',
+);
+
 /** Czech (Česky)
  * @author Matěj Grabovský
  */

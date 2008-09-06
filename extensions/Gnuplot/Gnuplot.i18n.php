@@ -18,6 +18,13 @@ $messages['ar'] = array(
 	'gnuplot-desc' => 'يضيف الوسم <code><nowiki><gnuplot></nowiki></code> لاستخدام جنو بلوت',
 );
 
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Meno25
+ */
+$messages['arz'] = array(
+	'gnuplot-desc' => 'يضيف الوسم <code><nowiki><gnuplot></nowiki></code> لاستخدام جنو بلوت',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  */

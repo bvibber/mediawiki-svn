@@ -536,6 +536,13 @@ Faino chamando a etapa de análise correspondente do propio MediaWiki.',
 	'expand_templates_preview' => 'Vista previa',
 );
 
+/** Swiss German (Alemannisch)
+ * @author J. 'mach' wust
+ */
+$messages['gsw'] = array(
+	'expand_templates_preview' => 'Vorschou',
+);
+
 /** Gujarati (ગુજરાતી) */
 $messages['gu'] = array(
 	'expand_templates_output' => 'પરિણામ:',

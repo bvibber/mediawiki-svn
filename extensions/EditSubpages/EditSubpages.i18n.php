@@ -45,6 +45,22 @@ $messages['ar'] = array(
   #</pre><!-- اترك هذا السطر بمفرده -->',
 );
 
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Meno25
+ */
+$messages['arz'] = array(
+	'editsubpages-desc' => 'يسمح لمديرى النظام بإزالة غلق صفحة وكل الصفحات الفرعية لهذه الصفحة للتعديل المجهول من خلال [[MediaWiki:Unlockedpages]]',
+	'unlockedpages' => '  #<!-- اترك هذا السطر بمفرده --><pre>
+# ضع الصفحات التى تريد رفع غلقها بالأسفل
+# * اسم الصفحة
+# الصفحات المرفوع غلقها يجب أن تبدأ برصاصة ليتم احتسابها،
+# كل شيء آخر يتم اعتباره تعليق
+# اسم الصفحة ربما يكون [[وصلات]] وهو حساس لحالة الحروف
+# أيضا، صفحات النقاش سيتم رفع غلقها تلقائيا مع الصفحة
+# انظر http://www.mediawiki.org/wiki/Extension:EditSubpages لمزيد من المعلومات
+  #</pre><!-- اترك هذا السطر بمفرده -->',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  */
@@ -262,7 +278,7 @@ $messages['pt'] = array(
 	'editsubpages-desc' => 'Permite a administradores desbloquearem uma página e todas as suas subpáginas para edição anónima através de [[MediaWiki:Unlockedpages]]',
 	'unlockedpages' => "  #<!-- deixe esta linha como está --><pre>
 # Coloque páginas que pretende desbloquear abaixo, usando
-# * nome da página
+# * Nome da página
 # Páginas desbloqueadas devem começar com uma 'bala' (*) para serem consideradas,
 # tudo o resto é considerado um comentário
 # Os nomes de páginas podem ser [[ligações]] e são sensíveis à capitalização

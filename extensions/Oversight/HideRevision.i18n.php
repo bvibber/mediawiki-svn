@@ -541,7 +541,7 @@ Sie werden aber protokolliert und können bei einem Fehler durch einen Datenbank
 	'oversight' => 'Oversight',
 	'oversight-view' => 'Details',
 	'oversight-difference' => '(Unterschied zur vorhergehenden, verbleibenden Version)',
-	'oversight-prev' => 'Letzte vorhergehenden Version',
+	'oversight-prev' => 'Letzte vorhergehende Version',
 	'oversight-hidden' => 'Entfernte Version',
 	'oversight-header' => 'Es folgt die Liste der dauerhaft für die öffentliche Einsicht entfernten Versionen. Die Veröffentlichung dieser Informationen kann den dauerhaften Entzug der Oversight-Rechte bedeuten.',
 	'oversight-legend' => 'Logbuch durchsuchen',
@@ -841,6 +841,7 @@ Los articllos èfaciês sont pas més visiblos dens ceti sistèmo, mas celes sup
  * @author Klenje
  */
 $messages['fur'] = array(
+	'hiderevision-status' => 'Revision $1: $2',
 	'oversight-view' => 'detais',
 );
 

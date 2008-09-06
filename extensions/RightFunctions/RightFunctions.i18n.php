@@ -31,6 +31,16 @@ $messages['ar'] = array(
 	'rightfunctions-ns' => '(من حماية نطاق)',
 );
 
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Meno25
+ */
+$messages['arz'] = array(
+	'rightfunctions-desc' => 'دوال محلل تعتمد على السماحات',
+	'rightfunctions-casc' => '(من مصادر مضمنة)',
+	'rightfunctions-local' => '(من صفحة محلية)',
+	'rightfunctions-ns' => '(من حماية نطاق)',
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */
@@ -81,6 +91,13 @@ $messages['hsb'] = array(
  */
 $messages['it'] = array(
 	'rightfunctions-desc' => 'Funzioni del parser basate sui permessi',
+);
+
+/** Khmer (ភាសាខ្មែរ)
+ * @author Lovekhmer
+ */
+$messages['km'] = array(
+	'rightfunctions-ns' => '(ពីការការពារលំហឈ្មោះ)',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

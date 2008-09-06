@@ -30,6 +30,14 @@ $messages['ar'] = array(
 	'minnamelength-desc' => 'يجبر على طول أدنى لاسم المستخدم',
 );
 
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Meno25
+ */
+$messages['arz'] = array(
+	'minnamelength-error' => 'اسم المستخدم قصير للغاية. أقل طول مسموح به هو $1.',
+	'minnamelength-desc' => 'يجبر على طول أدنى لاسم المستخدم',
+);
+
 /** Bikol Central (Bikol Central)
  * @author Filipinayzd
  */

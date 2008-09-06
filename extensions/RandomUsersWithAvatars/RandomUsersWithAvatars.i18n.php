@@ -23,6 +23,14 @@ $messages['ar'] = array(
 	'random-users-avatars-desc' => 'يضيف وسم <tt>&lt;randomuserswithavatars&gt;</tt> لعرض أفاترات مستخدمين مختارين عشوائيا',
 );
 
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Meno25
+ */
+$messages['arz'] = array(
+	'random-users-avatars-title' => 'مقابلة المجتمع',
+	'random-users-avatars-desc' => 'يضيف وسم <tt>&lt;randomuserswithavatars&gt;</tt> لعرض أفاترات مستخدمين مختارين عشوائيا',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  */

@@ -147,6 +147,51 @@ $messages['ar'] = array(
 	'crosswikiunblock-local' => 'عمليات المنع المحلية غير مدعومة بواسطة هذه الواجهة. استخدم [[Special:IPBlockList|{{int:ipblocklist}}]]',
 );
 
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Meno25
+ */
+$messages['arz'] = array(
+	'crosswikiblock-desc' => 'يسمح بمنع المستخدمين فى ويكيات أخرى باستخدام [[Special:Crosswikiblock|صفحة خاصة]]',
+	'crosswikiblock' => 'منع مستخدم فى ويكى آخر',
+	'crosswikiblock-header' => 'هذه الصفحة تسمح بمنع المستخدمين فى ويكى آخر.
+من فضلك تحقق لو كان مسموحا لك بالعمل فى هذه الويكى وأفعالك تطابق كل السياسات.',
+	'crosswikiblock-target' => 'عنوان الأيبى أو اسم المستخدم والويكى المستهدف:',
+	'crosswikiblock-expiry' => 'الانتهاء:',
+	'crosswikiblock-reason' => 'السبب:',
+	'crosswikiblock-submit' => 'منع هذا المستخدم',
+	'crosswikiblock-anononly' => 'امنع المستخدمين المجهولين فقط',
+	'crosswikiblock-nocreate' => 'امنع إنشاء الحسابات',
+	'crosswikiblock-autoblock' => 'تلقائيا امنع آخر عنوان أيبى تم استخدامه بواسطة هذا المستخدم، وأى أيبيهات لاحقة يحاول التعديل منها',
+	'crosswikiblock-noemail' => 'امنع المستخدم من إرسال بريد إلكتروني',
+	'crosswikiunblock' => 'رفع المنع عن مستخدم فى ويكى أخرى',
+	'crosswikiunblock-header' => 'هذه الصفحة تسمح برفع المنع عن مستخدم فى ويكى أخرى.
+من فضلك تحقق من أنه مسموح لك بالعمل على هذه الويكى وأن أفعالك تطابق كل السياسات.',
+	'crosswikiunblock-user' => 'اسم المستخدم، عنوان الأيبى أو رقم المنع والويكى المستهدفة:',
+	'crosswikiunblock-reason' => 'السبب:',
+	'crosswikiunblock-submit' => 'رفع المنع عن هذا المستخدم',
+	'crosswikiunblock-success' => "المستخدم '''$1''' تم رفع المنع عنه بنجاح.
+
+ارجع إلى:
+* [[Special:CrosswikiBlock|استمارة المنع]]
+* [[$2]]",
+	'crosswikiblock-nousername' => 'لا اسم مستخدم تم إدخاله',
+	'crosswikiblock-local' => 'عمليات المنع المحلية غير مدعومة من خلال هذه الواجهة. استخدم [[Special:BlockIP|{{int:blockip}}]]',
+	'crosswikiblock-dbnotfound' => 'قاعدة البيانات $1 غير موجودة',
+	'crosswikiblock-noname' => '"$1" ليس اسم مستخدم صحيحا.',
+	'crosswikiblock-nouser' => 'المستخدم "$3" غير موجود.',
+	'crosswikiblock-noexpiry' => 'تاريخ انتهاء غير صحيح: $1.',
+	'crosswikiblock-noreason' => 'لا سبب تم تحديده.',
+	'crosswikiblock-notoken' => 'نص تعديل غير صحيح.',
+	'crosswikiblock-alreadyblocked' => 'المستخدم $3 ممنوع بالفعل.',
+	'crosswikiblock-noblock' => 'هذا المستخدم ليس ممنوعا.',
+	'crosswikiblock-success' => "المستخدم '''$3''' تم منعه بنجاح.
+
+ارجع إلى:
+* [[Special:CrosswikiBlock|استمارة المنع]]
+* [[$4]]",
+	'crosswikiunblock-local' => 'عمليات المنع المحلية غير مدعومة بواسطة هذه الواجهة. استخدم [[Special:IPBlockList|{{int:ipblocklist}}]]',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  */

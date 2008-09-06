@@ -105,6 +105,35 @@ $messages['ar'] = array(
 	'formsaveerrortext' => "حدث خطأ غير معروف أثناء حفظ الاستمارة '$1'.",
 );
 
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Meno25
+ */
+$messages['arz'] = array(
+	'form-desc' => '[[Special:Form|واجهة استمارة]] لبدء الصفحات الجديدة',
+	'form' => 'استمارة',
+	'formnoname' => 'لا اسم استمارة',
+	'formnonametext' => 'يجب أن توفر اسم استمارة، مثل "Special:Form/Nameofform".',
+	'formbadname' => 'اسم استمارة سيء',
+	'formbadnametext' => 'لا توجد استمارة بهذا الاسم.',
+	'formpattern' => '$1-استمارة',
+	'formtitlepattern' => 'أضف $1 جديدا',
+	'formsave' => 'حفظ',
+	'formindexmismatch-title' => 'نمط الاسم والقالب لا يتطابقان',
+	'formindexmismatch' => 'هذه الاستمارة بها أنماط أسماء وقوالب غير متطابقة بدءا عند الفهرس $1.',
+	'formarticleexists' => 'الصفحة موجودة',
+	'formarticleexiststext' => 'الصفحة [[$1]] موجودة بالفعل.',
+	'formbadpagename' => 'اسم صفحة سيء',
+	'formbadrecaptcha' => 'قيم غير صحيحة لreCaptcha. حاول مرة ثانية.',
+	'formbadpagenametext' => 'بيانات الاستمارة التى أدخلتها تصنع اسم صفحة سيئا، "$1".',
+	'formrequiredfieldpluralerror' => 'الحقول $1 مطلوبة لهذه الاستمارة.
+من فضلك املأها.',
+	'formrequiredfielderror' => 'الحقل $1 مطلوب لهذه الاستمارة.
+من فضلك املأه.',
+	'formsavesummary' => 'صفحة جديدة باستخدام [[Special:Form/$1|الاستمارة $1]]',
+	'formsaveerror' => 'خطأ فى حفظ الاستمارة',
+	'formsaveerrortext' => "حدث خطأ غير معروف أثناء حفظ الاستمارة '$1'.",
+);
+
 /** Bikol Central (Bikol Central)
  * @author Filipinayzd
  */

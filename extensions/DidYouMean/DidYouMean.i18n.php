@@ -25,6 +25,13 @@ $messages['ar'] = array(
 	'didyoumean-desc' => 'يضيف وصلات إلى صفحات بعناوين "مشابهة"',
 );
 
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Meno25
+ */
+$messages['arz'] = array(
+	'didyoumean-desc' => 'يضيف وصلات إلى صفحات بعناوين "مشابهة"',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  */

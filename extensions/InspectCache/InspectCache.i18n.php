@@ -70,6 +70,22 @@ $messages['ar'] = array(
 	'inspectcache-list' => 'عرض',
 );
 
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Meno25
+ */
+$messages['arz'] = array(
+	'inspectcache' => 'افحص الكاش',
+	'inspectcache-desc' => 'أداة تصليح بسيطة لفحص محتويات الكاش المشترك',
+	'inspectcache-ok' => 'موافق',
+	'inspectcache-general' => 'الكاش العام',
+	'inspectcache-parser' => 'كاش المحلل',
+	'inspectcache-message' => 'كاش الرسائل',
+	'inspectcache-get' => 'تنفيذ',
+	'inspectcache-delete' => 'حذف',
+	'inspectcache-deleted' => 'الكاش المحذوف',
+	'inspectcache-list' => 'عرض',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  */
@@ -287,8 +303,16 @@ $messages['hu'] = array(
  * @author McDutchie
  */
 $messages['ia'] = array(
+	'inspectcache' => 'Inspectar cache',
+	'inspectcache-desc' => 'Un simple instrumento correctional pro inspectar le contento del cache commun',
 	'inspectcache-ok' => 'OK',
+	'inspectcache-general' => 'Cache general',
+	'inspectcache-parser' => 'Cache del analysator syntactic',
+	'inspectcache-message' => 'Cache de messages',
+	'inspectcache-get' => 'Obtener',
 	'inspectcache-delete' => 'Deler',
+	'inspectcache-deleted' => 'Cache delite',
+	'inspectcache-list' => 'Listar',
 );
 
 /** Italian (Italiano)

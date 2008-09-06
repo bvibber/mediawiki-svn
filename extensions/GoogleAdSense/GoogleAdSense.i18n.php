@@ -30,6 +30,13 @@ $messages['ar'] = array(
 	'googleadsense-desc' => 'يضيف [http://www.google.com/adsense جوجل أدسنس] إلى الشريط الجانبي',
 );
 
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Meno25
+ */
+$messages['arz'] = array(
+	'googleadsense-desc' => 'يضيف [http://www.google.com/adsense جوجل أدسنس] إلى الشريط الجانبي',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  */
@@ -133,5 +140,12 @@ $messages['sk'] = array(
  */
 $messages['sv'] = array(
 	'googleadsense-desc' => 'Lägger till [http://www.google.com/adsense Google AdSense] till sidpanelen',
+);
+
+/** Vietnamese (Tiếng Việt)
+ * @author Vinhtantran
+ */
+$messages['vi'] = array(
+	'googleadsense-desc' => 'Thêm [http://www.google.com/adsense Google AdSense] vào thanh bên',
 );
 

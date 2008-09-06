@@ -218,6 +218,81 @@ $messages['ar'] = array(
 ; [http://bloggerindraft.blogspot.com/2008/01/new-feature-blogger-as-openid-provider.html بلوجر], [http://faq.wordpress.com/2007/03/06/what-is-openid/ وورد بريس دوت كوم]، [http://www.livejournal.com/openid/about.bml ليف جورنال]، [http://bradfitz.vox.com/library/post/openid-for-vox.html فوكس] : لو لديك مدونة على أي من هذه الخدمات، أدخل مسار مدونتك في الصندوق بالأعلى. على سبيل المثال، ''<nowiki>http://yourusername.blogspot.com/</nowiki>''، ''<nowiki>http://yourusername.wordpress.com/</nowiki>''، ''<nowiki>http://yourusername.livejournal.com/</nowiki>''، أو ''<nowiki>http://yourusername.vox.com/</nowiki>''.",
 );
 
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Meno25
+ */
+$messages['arz'] = array(
+	'openid-desc' => 'سجل الدخول للويكى [http://openid.net/ بهوية مفتوحة]، وسجل الدخول لمواقع ويب أخرى تعرف الهوية المفتوحة بحساب مستخدم ويكي',
+	'openidlogin' => 'تسجيل الدخول بالهوية المفتوحة',
+	'openidfinish' => 'إنهاء دخول الهوية المفتوحة',
+	'openidserver' => 'خادم الهوية المفتوحة',
+	'openidxrds' => 'ملف ياديس',
+	'openidconvert' => 'محول الهوية المفتوحة',
+	'openiderror' => 'خطأ تأكيد',
+	'openiderrortext' => 'حدث خطأ أثناء التأكد من مسار الهوية المفتوحة.',
+	'openidconfigerror' => 'خطأ ضبط الهوية المفتوحة',
+	'openidconfigerrortext' => 'ضبط تخزين الهوية المفتوحة لهذا الويكى غير صحيح.
+من فضلك استشر [[Special:Userlist/sysop|إداريا]].',
+	'openidpermission' => 'خطأ سماحات الهوية المفتوحة',
+	'openidpermissiontext' => 'الهوية المفتوحة التى وفرتها غير مسموح لها بتسجيل الدخول إلى هذا الخادم.',
+	'openidcancel' => 'التأكيد تم إلغاؤه',
+	'openidcanceltext' => 'التحقق من مسار الهوية المفتوحة تم إلغاؤه.',
+	'openidfailure' => 'التأكيد فشل',
+	'openidfailuretext' => 'التحقق من مسار الهوية المفتوحة فشل. رسالة خطأ: "$1"',
+	'openidsuccess' => 'التأكيد نجح',
+	'openidsuccesstext' => 'التحقق من مسار الهوية المفتوحة نجح.',
+	'openidusernameprefix' => 'مستخدم الهوية المفتوحة',
+	'openidserverlogininstructions' => 'أدخل كلمة سرك بالأسفل لتسجيل الدخول إلى $3 كمستخدم $2 (صفحة مستخدم $1).',
+	'openidtrustinstructions' => 'تأكد مما إذا كنت ترغب فى مشاركة البيانات مع $1.',
+	'openidallowtrust' => 'السماح ل$1 بالوثوق بحساب هذا المستخدم.',
+	'openidnopolicy' => 'الموقع لا يمتلك سياسة محددة للخصوصية.',
+	'openidpolicy' => 'تحقق من <a target="_new" href="$1">سياسة الخصوصية</a> لمزيد من المعلومات.',
+	'openidoptional' => 'اختياري',
+	'openidrequired' => 'مطلوب',
+	'openidnickname' => 'اللقب',
+	'openidfullname' => 'الاسم الكامل',
+	'openidemail' => 'عنوان البريد الإلكتروني',
+	'openidlanguage' => 'اللغة',
+	'openidnotavailable' => 'لقبك المفضل ($1) قيد الاستخدام بالفعل بواسطة مستخدم آخر.',
+	'openidnotprovided' => 'خادم هويتك المفتوحة لم يوفر لقبا (إما لأنه لا يستطيع، أو لأنك أخبرته ألا يفعل).',
+	'openidchooseinstructions' => 'كل المستخدمين يحتاجون إلى لقب؛
+يمكنك أن تختار واحدا من الخيارات بالأسفل.',
+	'openidchoosefull' => 'اسمك الكامل ($1)',
+	'openidchooseurl' => 'اسم مختار من هويتك المفتوحة ($1)',
+	'openidchooseauto' => 'اسم مولد تلقائيا ($1)',
+	'openidchoosemanual' => 'اسم من اختيارك:',
+	'openidchooseexisting' => 'حساب موجود فى هذه الويكي:',
+	'openidchoosepassword' => 'كلمة السر:',
+	'openidconvertinstructions' => 'هذه الإستمارة تسمح لك بتغيير حساب مستخدمك ليستعمل مسار هوية مفتوحة.',
+	'openidconvertsuccess' => 'تم التحول بنجاح إلى الهوية المفتوحة',
+	'openidconvertsuccesstext' => 'أنت حولت بنجاح هويتك المفتوحة إلى $1.',
+	'openidconvertyourstext' => 'هذه بالفعل هويتك المفتوحة.',
+	'openidconvertothertext' => 'هذه هى الهوية المفتوحة لشخص آخر.',
+	'openidalreadyloggedin' => "'''أنت مسجل الدخول بالفعل، $1!'''
+
+لو كنت تريد استخدام الهوية المفتوحة لتسجيل الدخول فى المستقبل، يمكنك [[Special:OpenIDConvert|تحويل حسابك لاستخدام الهوية المفتوحة]].",
+	'tog-hideopenid' => 'أخف هويتك <a href="http://openid.net/">هويتك المفتوحة</a> على صفحتك الشخصية، لو سجلت الدخول بالهوية المفتوحة.',
+	'openidnousername' => 'لا اسم مستخدم تم تحديده.',
+	'openidbadusername' => 'اسم المستخدم المحدد سيء.',
+	'openidautosubmit' => 'هذه الصفحة تحتوى على إستمارة ينبغى أن يتم إرسالها تلقائيا لو أنك لديك الجافاسكريبت مفعلة.
+لو لا، جرب زر \\"Continue\\".',
+	'openidclientonlytext' => 'أنت لا يمكنك استخدام الحسابات من هذا الويكى كهوية مفتوحة على موقع آخر.',
+	'openidloginlabel' => 'مسار الهوية المفتوحة',
+	'openidlogininstructions' => "{{SITENAME}} تدعم معيار [http://openid.net/ الهوية المفتوحة] للدخول الفردى بين مواقع الويب.
+الهوية المفتوحة تسمح لك بتسجيل الدخول إلى مواقع ويب عديدة مختلفة بدون استخدام كلمة سر مختلفة لكل موقع.
+(انظر [http://en.wikipedia.org/wiki/OpenID مقالة الهوية المفتوحة فى يويكيبيديا] لمزيد من المعلومات.)
+
+لو أنك لديك بالفعل حساب فى {{SITENAME}}، يمكنك [[Special:UserLogin|تسجيل الدخول]] باسم مستخدمك وكلمة السر الخاصة بك كالمعتاد.
+لاستخدام الهوية المفتوحة فى المستقبل، يمكنك [[Special:OpenIDConvert|تحويل حسابك إلى الهوية المفتوحة]] بعد تسجيل دخولك بشكل عادي.
+
+يوجد العديد من [http://wiki.openid.net/Public_OpenID_providers موفرى الهوية المفتوحة العلنيين]، وربما يكون لديك حسابك بهوية مفتوحة على خدمة أخرى.
+
+; الويكيات الأخرى : لو أنك لديك حساب على ويكى مفعل الهوية المفتوحة، مثل [http://wikitravel.org/ ويكى ترافيل]، [http://www.wikihow.com/ ويكى هاو]، [http://vinismo.com/ فينيزمو]، [http://aboutus.org/ أبوت أس] أو [http://kei.ki/ كيكي]، يمكنك تسجيل الدخول إلى {{SITENAME}} بواسطة إدخال '''المسار الكامل''' لصفحة مستخدمك على هذا الويكى الآخر فى الصندوق بالأعلى. على سبيل المثال، ''<nowiki>http://kei.ki/en/User:Evan</nowiki>''.
+; [http://openid.yahoo.com/ ياهو!] : إذا لديك حساب مع ياهو!، يمكنك تسجيل الدخول إلى هذا الموقع بواسطة إدخال هويتك المفتوحة الموفرة بواسطة ياهو! فى الصندوق بالأعلى. مسارات هوية ياهو! المفتوحة تأخذ الصيغة ''<nowiki>https://me.yahoo.com/yourusername</nowiki>''.
+; [http://dev.aol.com/aol-and-63-million-openids إيه أو إل] : لو لديك حساب مع [http://www.aol.com/ إيه أو إل]، مثل حساب [http://www.aim.com/ إيه أى إم]، يمكنك تسجيل الدخول إلى {{SITENAME}} بواسطة إدخال هويتك المفتوحة الموفرة بواسطة AOL فى الصندوق بالأعلى. مسارات هوية AOL المفتوحة تأخذ الصيغة ''<nowiki>http://openid.aol.com/yourusername</nowiki>''. اسم مستخدمك ينبغى أن يكون كله حروفا صغيرة، لا مسافات.
+; [http://bloggerindraft.blogspot.com/2008/01/new-feature-blogger-as-openid-provider.html بلوجر], [http://faq.wordpress.com/2007/03/06/what-is-openid/ وورد بريس دوت كوم]، [http://www.livejournal.com/openid/about.bml ليف جورنال]، [http://bradfitz.vox.com/library/post/openid-for-vox.html فوكس] : لو لديك مدونة على أى من هذه الخدمات، أدخل مسار مدونتك فى الصندوق بالأعلى. على سبيل المثال، ''<nowiki>http://yourusername.blogspot.com/</nowiki>''، ''<nowiki>http://yourusername.wordpress.com/</nowiki>''، ''<nowiki>http://yourusername.livejournal.com/</nowiki>''، أو ''<nowiki>http://yourusername.vox.com/</nowiki>''.",
+);
+
 /** Asturian (Asturianu)
  * @author Esbardu
  */
@@ -275,6 +350,32 @@ $messages['bg'] = array(
 Ако не е, можете да използвате бутона \\"Продължаване\\".',
 	'openidclientonlytext' => 'Не можете да използвате сметки от това уики като OpenID за друг сайт.',
 	'openidloginlabel' => 'OpenID Адрес',
+);
+
+/** Czech (Česky)
+ * @author Matěj Grabovský
+ */
+$messages['cs'] = array(
+	'openidlogin' => 'Přihlásit se pomocí OpenID',
+	'openidfinish' => 'Dokončit přihlášení pomocí OpenID',
+	'openidserver' => 'OpenID server',
+	'openidxrds' => 'Soubor Yadis',
+	'openidconvert' => 'OpenID konvertor',
+	'openiderror' => 'Chyba při ověřování',
+	'openiderrortext' => 'Při ověřování URL OpenID se vyskytla chyba.',
+	'openidconfigerror' => 'Chyba konfigurace OpenID',
+	'openidcanceltext' => 'Ověřování URL OpenID bylo zrušeno.',
+	'openidfailure' => 'Ověřování zrušeno',
+	'openidfailuretext' => 'Ověřování URL OpenID selhalo. Chybová zpráva: „$1“',
+	'openidsuccess' => 'Ověřování bylo úspěšné',
+	'openidsuccesstext' => 'Ověření URL OpenID bylo úspěšné.',
+	'openidusernameprefix' => 'Uživatel OpenID',
+	'openidoptional' => 'Volitelné',
+	'openidrequired' => 'Požadované',
+	'openidnickname' => 'Přezdívka',
+	'openidfullname' => 'Celé jméno',
+	'openidemail' => 'E-mailová adresa:',
+	'openidlanguage' => 'Jazyk',
 );
 
 /** Church Slavic (Словѣ́ньскъ / ⰔⰎⰑⰂⰡⰐⰠⰔⰍⰟ)

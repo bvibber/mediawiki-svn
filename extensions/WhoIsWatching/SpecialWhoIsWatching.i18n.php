@@ -22,6 +22,20 @@ Please use the page [[MediaWiki:Number_of_watching_users_pageview]] to define an
  */
 $messages['ar'] = array(
 	'whoiswatching' => 'من يراقب صفحة ويكي',
+	'whoiswatching-desc' => 'يوفر قائمة بأسماء المستخدمين الذين يراقبون صفحة ويكي',
+	'specialwhoiswatchingthepage' => 'من يراقب %s',
+	'specialwhoiswatchingusage' => 'هذه الصفحة الخاصة لا يمكن استخدامها بمفردها.
+من فضلك استخدم الصفحة [[MediaWiki:Number_of_watching_users_pageview]] لتعريف نقطة مدخل إلى هذه الصفحة الخاصة.',
+	'specialwhoiswatchingaddusers' => 'أضف مستخدمين لمراقبة الصفحة',
+	'specialwhoiswatchingaddbtn' => 'أضف مستخدمين مختارين',
+);
+
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Meno25
+ */
+$messages['arz'] = array(
+	'whoiswatching' => 'من يراقب صفحة ويكي',
+	'whoiswatching-desc' => 'يوفر قائمة بأسماء المستخدمين الذين يراقبون صفحة ويكي',
 	'specialwhoiswatchingthepage' => 'من يراقب %s',
 	'specialwhoiswatchingusage' => 'هذه الصفحة الخاصة لا يمكن استخدامها بمفردها.
 من فضلك استخدم الصفحة [[MediaWiki:Number_of_watching_users_pageview]] لتعريف نقطة مدخل إلى هذه الصفحة الخاصة.',
@@ -115,6 +129,7 @@ $messages['eo'] = array(
  */
 $messages['fr'] = array(
 	'whoiswatching' => 'Utilisateurs regardant une page du wiki',
+	'whoiswatching-desc' => 'Fournit une liste des utilisateurs visionnant une page wiki',
 	'specialwhoiswatchingthepage' => 'Utilisateurs regardant %s',
 	'specialwhoiswatchingusage' => "Cette page spéciale ne peut être utilisée seule. Passez par [[MediaWiki:Number_of_watching_users_pageview]] pour définir un point d'entrée vers cette page spéciale.",
 	'specialwhoiswatchingaddusers' => 'Ajouter les utilisateurs pour voir la page',
@@ -268,6 +283,7 @@ $messages['mr'] = array(
  */
 $messages['nl'] = array(
 	'whoiswatching' => 'Wie volgen een pagina',
+	'whoiswatching-desc' => 'Levert een lijst met gebruikers die een wikipagina op hun volglijst hebben',
 	'specialwhoiswatchingthepage' => 'Wie volgen %s',
 	'specialwhoiswatchingusage' => 'Deze speciale pagina kan niet alleenstaand gebruikt worden. Gebruik de pagina [[MediaWiki:Number_of_watching_users_pageview]] om een ingangspunt voor deze speciale pagina te bepalen.',
 	'specialwhoiswatchingaddusers' => 'Deze pagina op de volglijst van gebruikers toevoegen',
@@ -302,6 +318,7 @@ $messages['no'] = array(
  */
 $messages['oc'] = array(
 	'whoiswatching' => 'Utilizaires agachant una pagina del wiki',
+	'whoiswatching-desc' => 'Provesís una lista dels utilizaires que visionan una pagina wiki',
 	'specialwhoiswatchingthepage' => 'Utilizaires agachant %s',
 	'specialwhoiswatchingusage' => "Aquesta pagina especiala pòt pas èsser utilizada sola. Passatz per [[MediaWiki:Number_of_watching_users_pageview]] per definir un punt d'entrada vèrs aquesta pagina especiala.",
 	'specialwhoiswatchingaddusers' => 'Apondre los utilizaires per veire la pagina',

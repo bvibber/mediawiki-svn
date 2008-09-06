@@ -47,6 +47,15 @@ $messages['ar'] = array(
 	'languageselector-setlang' => 'ضبط',
 );
 
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Meno25
+ */
+$messages['arz'] = array(
+	'languageselector' => 'اللغة',
+	'languageselector-desc' => 'اختيار اللغة فى كل صفحة، أيضا للزائرين',
+	'languageselector-setlang' => 'ضبط',
+);
+
 /** Asturian (Asturianu)
  * @author Esbardu
  */
@@ -228,9 +237,12 @@ $messages['hu'] = array(
 
 /** Interlingua (Interlingua)
  * @author Malafaya
+ * @author McDutchie
  */
 $messages['ia'] = array(
 	'languageselector' => 'Lingua',
+	'languageselector-desc' => 'Selector de lingua in omne pagina, etiam pro visitatores',
+	'languageselector-setlang' => 'seliger',
 );
 
 /** Indonesian (Bahasa Indonesia)

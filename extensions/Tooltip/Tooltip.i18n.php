@@ -30,6 +30,13 @@ $messages['ar'] = array(
 	'tooltip-desc' => 'يضيف وسم <tt><nowiki><tooltip></nowiki></tt> و <tt><nowiki>{{#tooltip:}}</nowiki></tt>',
 );
 
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Meno25
+ */
+$messages['arz'] = array(
+	'tooltip-desc' => 'يضيف وسم <tt><nowiki><tooltip></nowiki></tt> و <tt><nowiki>{{#tooltip:}}</nowiki></tt>',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  */

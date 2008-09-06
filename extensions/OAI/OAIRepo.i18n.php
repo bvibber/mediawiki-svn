@@ -35,10 +35,12 @@ $messages['ar'] = array(
 );
 
 /** Egyptian Spoken Arabic (مصرى)
+ * @author Meno25
  * @author Ramsis II
  */
 $messages['arz'] = array(
 	'oai-desc' => 'بيوفر [http://www.openarchives.org/OAI/openarchivesprotocol.html OAI-PMH] وش المخزن',
+	'oairepository' => 'مستودع OAI',
 );
 
 /** Asturian (Asturianu)

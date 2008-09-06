@@ -35,6 +35,35 @@ $messages['ar'] = array(
 	'categorywatch-catsub' => 'ازال $1 من التصنيف $2',
 );
 
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Meno25
+ */
+$messages['arz'] = array(
+	'categorywatch-desc' => 'يمدد وظيفة قائمة المراقبة لتشمل الإخطارات حول تغييرات العضوية للتصنيفات المراقبة',
+	'categorywatch-emailbody' => 'مرحبا $1، أنت تلقيت هذه الرسالة لأنك تراقب التصنيف "$2".
+هذه الرسالة لإخطارك أنه فى $3 المستخدم $4 $5.',
+	'categorywatch-emailsubject' => 'النشاط الذى يشمل التصنيف المراقب "$1"',
+	'categorywatch-catmovein' => 'نقل $1 إلى التصنيف $2 من $3',
+	'categorywatch-catmoveout' => 'نقل $1 من التصنيف $2 إلى $3',
+	'categorywatch-catadd' => 'أضاف $1 إلى التصنيف $2',
+	'categorywatch-catsub' => 'ازال $1 من التصنيف $2',
+);
+
+/** French (Français)
+ * @author Grondin
+ * @author Zetud
+ */
+$messages['fr'] = array(
+	'categorywatch-desc' => 'Étend la fonctionnalité de la liste de suivi pour inclure la notification des modifications des membres des catégories suivies.',
+	'categorywatch-emailbody' => 'Salut $1, vous avez reçu ce message parce que vous êtes en train de suivre la catégorie « $2 ».
+Ce message est destiné à vous informer que le $3 l’utilisateur $4 $5.',
+	'categorywatch-emailsubject' => 'Activité comprenant la catégorie suivie « $1 »',
+	'categorywatch-catmovein' => 'a déplacé $1 dans la catégorie $2 depuis $3',
+	'categorywatch-catmoveout' => 'a déplacé $1 de la catégorie $2 vers $3',
+	'categorywatch-catadd' => 'a ajouté $1 dans la catégorie $2',
+	'categorywatch-catsub' => 'a retiré $1 de la catégorie $2',
+);
+
 /** Galician (Galego)
  * @author Toliño
  */
@@ -46,6 +75,20 @@ Esta mensaxe serve para notificarlle que en $3 o usuario $4 $5.',
 	'categorywatch-catmoveout' => 'moveu $1 desde a categoría $2 á $3',
 	'categorywatch-catadd' => 'engadiu $1 á categoría $2',
 	'categorywatch-catsub' => 'eliminou $1 da categoría $2',
+);
+
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'categorywatch-desc' => 'Extende le functionalitate del observatorio con le notification del modificationes in paginas que pertine al categorias observate',
+	'categorywatch-emailbody' => 'Salute $1, tu ha recipite iste message proque tu observa le categoria "$2".
+Iste message es pro notificar te que, le $3, le usator $4 $5.',
+	'categorywatch-emailsubject' => 'Activitate involvente le categoria observate "$1"',
+	'categorywatch-catmovein' => 'displaciava $1 in categoria $2 ex $3',
+	'categorywatch-catmoveout' => 'displaciava $1 ex le categoria $2 in $3',
+	'categorywatch-catadd' => 'addeva $1 al categoria $2',
+	'categorywatch-catsub' => 'retirava $1 del categoria $2',
 );
 
 /** Italian (Italiano)
@@ -90,6 +133,20 @@ Hierbij ontvangt u de melding dat gebruiker $4 om $3 $5.',
 	'categorywatch-catsub' => 'heeft $1 uit categorie $2 verwijderd',
 );
 
+/** Occitan (Occitan)
+ * @author Cedric31
+ */
+$messages['oc'] = array(
+	'categorywatch-desc' => 'Espandís la foncionalitat de la lista de seguit per enclure la notificacion de las modificacions dels membres de las categorias seguidas.',
+	'categorywatch-emailbody' => 'Adiu $1, avètz recebut aqueste messatge perque sètz a seguir la categoria « $2 ».
+Aqueste messatge es destinat a vos far saber que lo $3 l’utilizaire $4 $5.',
+	'categorywatch-emailsubject' => 'Activitat comprenent la categoria seguida « $1 »',
+	'categorywatch-catmovein' => 'a desplaçat $1 dins la categoria $2 dempuèi $3',
+	'categorywatch-catmoveout' => 'a desplaçat $1 de la categoria $2 cap a $3',
+	'categorywatch-catadd' => 'a apondut $1 dins la categoria $2',
+	'categorywatch-catsub' => 'a levat $1 de la categoria $2',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */
@@ -102,6 +159,20 @@ Toto je oznam, že $3 používateľ $4 $5.',
 	'categorywatch-catmoveout' => 'presunul $1 z kategórie $2 do $3',
 	'categorywatch-catadd' => 'pridal $1 do kategórie $2',
 	'categorywatch-catsub' => 'odstránil $1 z kategórie $2',
+);
+
+/** Swedish (Svenska)
+ * @author Boivie
+ */
+$messages['sv'] = array(
+	'categorywatch-desc' => 'Utökar bevakningslistans funktion för att även meddela om ändringar av innehållet i bevakade kategorier',
+	'categorywatch-emailbody' => 'Hej $1, du har fått det här meddelandet för att du bevakar kategorin "$2".
+Detta meddelande meddelar dig att $3 användare $4 $5.',
+	'categorywatch-emailsubject' => 'Aktivitet i bevakad kategori "$1"',
+	'categorywatch-catmovein' => 'flyttade $1 till kategori $2 från $3',
+	'categorywatch-catmoveout' => 'flyttade $1 från kategori $2 till $3',
+	'categorywatch-catadd' => 'la till $1 i kategori $2',
+	'categorywatch-catsub' => 'tog bort $1 från kategori $2',
 );
 
 /** Vietnamese (Tiếng Việt)

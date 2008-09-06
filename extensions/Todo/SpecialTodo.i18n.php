@@ -124,6 +124,41 @@ $4',
 	'todo-form-submit' => 'تنفيذ الاستعلام',
 );
 
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Meno25
+ */
+$messages['arz'] = array(
+	'todo' => 'قائمة للعمل',
+	'todo-desc' => 'امتداد [[Special:Todo|قائمة للعمل]] شخصية تجريبي',
+	'todo-tab' => 'للعمل',
+	'todo-new-queue' => 'جديد',
+	'todo-mail-subject' => 'المدخلة المكملة فى قائمة $1 للعمل',
+	'todo-mail-body' => 'أنت طلبت تأكيدا بالبريد الإلكترونى حول إكمال مدخلة أنت أضفتها إلى قائمة $1 للعمل.
+
+المدخلة: $2
+المنفذة: $3
+
+هذه المدخلة تم التعليم عليها كمكملة، مع هذا التعليق:
+$4',
+	'todo-invalid-item' => 'مدخلة مفقودة أو غير صحيحة',
+	'todo-update-else-item' => 'محاولة تحديث مدخلات شخص آخر',
+	'todo-unrecognize-type' => 'نوع غير متعرف عليه',
+	'todo-user-invalide' => 'للعمل معطاة مستخدم غير صحيح، مفقود، أو لا يمكن إضافته للعمل.',
+	'todo-item-list' => 'مدخلاتك',
+	'todo-no-item' => 'لا مدخلات للعمل.',
+	'todo-invalid-owner' => 'مالك غير صحيح لهذه المدخلة',
+	'todo-add-queue' => 'أضف الطابور...',
+	'todo-move-queue' => 'انقل إلى الطابور...',
+	'todo-list-for' => 'قائمة للعمل ل',
+	'todo-list-change' => 'تغيير',
+	'todo-list-cancel' => 'إلغاء',
+	'todo-new-item' => 'مدخلة جديدة',
+	'todo-issue-summary' => 'ملخص القضية:',
+	'todo-form-details' => 'التفاصيل:',
+	'todo-form-email' => 'لاستقبال إخطار بواسطة البريد الإلكترونى عندما يتم إغلاق المدخلة، اكتب عنوانك هنا:',
+	'todo-form-submit' => 'تنفيذ الاستعلام',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  */
@@ -272,6 +307,13 @@ $4',
 	'todo-form-details' => 'Detalles:',
 	'todo-form-email' => 'Para recibir unha notificación por correo electrónico cando o artigo esté pechado, teclee o seu enderezo aquí:',
 	'todo-form-submit' => 'Presentar Consulta',
+);
+
+/** Swiss German (Alemannisch)
+ * @author J. 'mach' wust
+ */
+$messages['gsw'] = array(
+	'todo-new-queue' => 'Nöu',
 );
 
 /** Hindi (हिन्दी)

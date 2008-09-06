@@ -16,6 +16,13 @@ $messages['ar'] = array(
 	'breadcrumbs-desc' => 'يعرض مسار المستخدمين خلال الويكي.',
 );
 
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Meno25
+ */
+$messages['arz'] = array(
+	'breadcrumbs-desc' => 'يعرض مسار المستخدمين خلال الويكي.',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  */

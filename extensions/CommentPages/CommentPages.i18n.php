@@ -22,6 +22,14 @@ $messages['ar'] = array(
 	'nstab-comments' => 'تعليق',
 );
 
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Meno25
+ */
+$messages['arz'] = array(
+	'commentpages-desc' => 'صفحات تعليق للنطاق الرئيسي',
+	'nstab-comments' => 'تعليق',
+);
+
 /** Kotava (Kotava)
  * @author Wikimistusik
  */

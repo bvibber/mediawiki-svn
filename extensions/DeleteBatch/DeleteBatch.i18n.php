@@ -81,6 +81,38 @@ $messages['ar'] = array(
 	'deletebatch-no-page' => 'من فضلك اختر على الأقل صفحة واحدة للحذف أو اختر ملفا يحتوي على قائمة الصفحات.',
 );
 
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Meno25
+ */
+$messages['arz'] = array(
+	'deletebatch' => 'حذف باتش من الصفحات',
+	'deletebatch-desc' => '[[Special:DeleteBatch|حذف باتش من الصفحات]]',
+	'deletebatch-button' => 'حذف',
+	'deletebatch-here' => '<b>هنا</b>',
+	'deletebatch-help' => 'حذف باتش من الصفحات. يمكنك إما عمل عملية حذف واحدة، أو حذف الصفحات المرتبة فى ملف.
+اختر مستخدما ليتم عرضه فى سجلات الحذف.
+الملف المرفوع ينبغى أن يحتوى على اسم الصفحة وسبب اختيارى مفصولين بواسطة حرف "|" فى كل سطر.',
+	'deletebatch-caption' => 'قائمة الصفحات',
+	'deletebatch-title' => 'حذف الباتش',
+	'deletebatch-link-back' => 'يمكنك العودة إلى الامتداد',
+	'deletebatch-as' => 'تشغيل السكريبت ك',
+	'deletebatch-both-modes' => 'من فضلك اختر إما صفحة واحدة أو قائمة معطاة من الصفحات.',
+	'deletebatch-or' => '<b>أو</b>',
+	'deletebatch-page' => 'الصفحات للحذف',
+	'deletebatch-reason' => 'سبب الحذف',
+	'deletebatch-processing' => 'جارى حذف الصفحات',
+	'deletebatch-from-file' => 'من قائمة ملف',
+	'deletebatch-from-form' => 'من استمارة',
+	'deletebatch-success-subtitle' => 'ل$1',
+	'deletebatch-omitting-nonexistant' => 'إزالة صفحة غير موجودة $1.',
+	'deletebatch-omitting-invalid' => 'إزالة صفحة غير صحيحة $1.',
+	'deletebatch-file-bad-format' => 'الملف ينبغى أن يكون نصا خالصا',
+	'deletebatch-file-missing' => 'غير قادر على قراءة الملف المعطى',
+	'deletebatch-select-script' => 'سكريبت حذف الصفحات',
+	'deletebatch-select-yourself' => 'أنت',
+	'deletebatch-no-page' => 'من فضلك اختر على الأقل صفحة واحدة للحذف أو اختر ملفا يحتوى على قائمة الصفحات.',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  */

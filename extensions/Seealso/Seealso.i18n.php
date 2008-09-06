@@ -30,6 +30,14 @@ $messages['ar'] = array(
 	'seealso-desc' => "عناوين 'See also' مترجمة باستخدام الوسم <code><nowiki><seealso></nowiki></code>.",
 );
 
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Meno25
+ */
+$messages['arz'] = array(
+	'seealso' => 'انظر أيضا',
+	'seealso-desc' => "عناوين 'See also' مترجمة باستخدام الوسم <code><nowiki><seealso></nowiki></code>.",
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  */

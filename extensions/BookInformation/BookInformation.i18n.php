@@ -90,6 +90,24 @@ $messages['ar'] = array(
 	'bookinfo-provider' => 'مزود البيانات: $1',
 );
 
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Meno25
+ */
+$messages['arz'] = array(
+	'bookinfo-header' => 'معلومات كتاب',
+	'bookinfo-desc' => 'يمد [[Special:Booksources|صفحة مصادر الكتب الخاصة]] بمعلومات من خدمة ويب',
+	'bookinfo-result-title' => 'العنوان:',
+	'bookinfo-result-author' => 'المؤلف:',
+	'bookinfo-result-publisher' => 'الناشر:',
+	'bookinfo-result-year' => 'السنة:',
+	'bookinfo-error-invalidisbn' => 'ردمك غير صحيح تم إدخاله.',
+	'bookinfo-error-nosuchitem' => 'المدخل غير موجود أو لم يمكن العثور عليه.',
+	'bookinfo-error-nodriver' => 'غير قادر على بدأ درايفر معلومات كتاب مناسب.',
+	'bookinfo-error-noresponse' => 'لا رد أو الطلب انتهت فترته.',
+	'bookinfo-purchase' => 'اشتر هذا الكتاب من $1',
+	'bookinfo-provider' => 'مزود البيانات: $1',
+);
+
 /** Asturian (Asturianu)
  * @author Esbardu
  */

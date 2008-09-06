@@ -30,6 +30,15 @@ $messages['ar'] = array(
 	'untidy' => 'لا ترتيب',
 );
 
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Meno25
+ */
+$messages['arz'] = array(
+	'tidy-desc' => 'يضيف لسان تيدى أو أنتيدى (معتمدا على $wgUseTidy) فى الصفحات العادية سامحا بتجاوز إعدادات تيدى HTML العامة لرؤية واحدة',
+	'tidy' => 'ترتيب',
+	'untidy' => 'لا ترتيب',
+);
+
 /** German (Deutsch)
  * @author Raimond Spekking
  */
@@ -49,9 +58,10 @@ $messages['eo'] = array(
 
 /** French (Français)
  * @author Grondin
+ * @author Zetud
  */
 $messages['fr'] = array(
-	'tidy-desc' => 'Ajoute une tabulation rangée ou non rangée (en fonction de $wgUseTidy) sur des pages normalles qui permets de passer outre les paramètres globaux HTML rangés, pour une vue simple',
+	'tidy-desc' => 'Ajoute une tabulation rangée ou non rangée (en fonction de $wgUseTidy) sur des pages normales, ce qui permet de passer outre les paramètres globaux HTML rangés, pour une vue simple',
 	'tidy' => 'Classer',
 	'untidy' => 'Déclasser',
 );

@@ -28,6 +28,13 @@ $messages['ar'] = array(
 	'editown-desc' => 'المستخدمون بدون الصلاحية editall يمكنهم تعديل الصفحات التي قاموا بإنشائها فقط',
 );
 
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Meno25
+ */
+$messages['arz'] = array(
+	'editown-desc' => 'المستخدمون بدون الصلاحية editall يمكنهم تعديل الصفحات التى قاموا بإنشائها فقط',
+);
+
 /** German (Deutsch)
  * @author ChrisiPK
  */

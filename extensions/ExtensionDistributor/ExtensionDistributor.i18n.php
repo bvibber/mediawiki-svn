@@ -112,6 +112,57 @@ tar -xzf $5 -C /var/www/mediawiki/extensions
 	'extdist-want-more' => 'الحصول على امتداد آخر',
 );
 
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Meno25
+ */
+$messages['arz'] = array(
+	'extensiondistributor' => 'تنزيل امتداد ميدياويكي',
+	'extdist-desc' => 'امتداد لتوزيع أرشيفات ملتقطة للامتدادات',
+	'extdist-not-configured' => 'من فضلك اضبط $wgExtDistTarDir و $wgExtDistWorkingCopy',
+	'extdist-wc-missing' => 'مجلد نسخة العمل المحدد غير موجود!',
+	'extdist-no-such-extension' => 'لا امتداد كهذا "$1"',
+	'extdist-no-such-version' => 'الامتداد "$1" لا يوجد فى النسخة "$2".',
+	'extdist-choose-extension' => 'اختر أى امتدات تريد تنزيله:',
+	'extdist-wc-empty' => 'مجلد نسخة العمل المضبوط ليس به امتدادات قابلة للتوزيع!',
+	'extdist-submit-extension' => 'استمر',
+	'extdist-current-version' => 'النسخة الحالية (جذع)',
+	'extdist-choose-version' => '<big>أنت تقوم بتنزيل امتداد <b>$1</b>.</big>
+
+اختر نسخة ميدياويكى الخاصة بك.
+
+معظم الامتدادات تعمل خلال نسخ متعددة من ميدياويكي، لذا إذا كانت نسخة ميدياويكى الخاصة بك ليست هنا، أو لو كانت لديك حاجة لأحدث خواص الامتداد، حاول استخدام النسخة الحالية.',
+	'extdist-no-versions' => 'الامتداد المختار ($1) غير متوفر فى أى نسخة!',
+	'extdist-submit-version' => 'استمرار',
+	'extdist-no-remote' => 'غير قادر على الاتصال بعميل سب فيرجن البعيد.',
+	'extdist-remote-error' => 'خطأ من عميل سب فيرجن البعيد: <pre>$1</pre>',
+	'extdist-remote-invalid-response' => 'رد غير صحيح من عميل سب فيرجن البعيد.',
+	'extdist-svn-error' => 'سب فيرجن صادف خطأ: <pre>$1</pre>',
+	'extdist-svn-parse-error' => 'غير قادر على معالجة XML من "svn info": <pre>$1</pre>',
+	'extdist-tar-error' => 'تار أرجع كود خروج $1:',
+	'extdist-created' => "لقطة من النسخة <b>$2</b> من الامتداد <b>$1</b> لميدياويكى <b>$3</b> تم إنشاؤها. تحميلك ينبغى أن يبدأ تلقائيا خلال 5 ثوان.  
+
+المسار لهذه اللقطة هو:
+:$4
+ربما يستخدم للتحميل الفورى لخادم، لكن من فضلك لا تستخدمه كمفضلة، حيث أن المحتويات لن يتم تحديثها، وربما يتم حذفها فى وقت لاحق.
+
+أرشيف التار ينبغى أن يتم استخراجه إلى مجلد امتداداتك. على سبيل المثال، على نظام تشغيل شبيه بيونكس:
+
+<pre>
+tar -xzf $5 -C /var/www/mediawiki/extensions
+</pre>
+
+على ويندوز، يمكنك استخدام [http://www.7-zip.org/ 7-زيب] لاستخراج الملفات.
+
+لو أن الويكى الخاص بك على خادم بعيد، استخرج الملفات إلى مجلد مؤقت على حاسوبك المحلي، ثم ارفع '''كل''' الملفات المستخرجة إلى مجلد الامتدادات على الخادم.
+
+لاحظ أن بعض الامتدادات تحتاج إلى ملف يسمى ExtensionFunctions.php، موجود فى <tt>extensions/ExtensionFunctions.php</tt>، هذا, فى المجلد ''الأب'' لمجلد الامتدادات المحدد هذا. اللقطة لهذه الامتدادات تحتوى على هذا الملف كتار بومب، يتم استخراجها إلى ./ExtensionFunctions.php. لا تتجاهل رفع هذا الملف إلى خادمك البعيد.
+
+بعد استخراجك للملفات، ستحتاج إلى تسجيل الامتداد فى LocalSettings.php. وثائق الامتداد ينبغى أن تحتوى على التعليمات عن كيفية عمل هذا.
+
+لو كانت لديك أية أسئلة حول نظام توزيع الامتدادات هذا، من فضلك اذهب إلى [[Extension talk:ExtensionDistributor]].",
+	'extdist-want-more' => 'الحصول على امتداد آخر',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  */
@@ -436,7 +487,7 @@ Molte estensioni funzionano su più versioni di MediaWiki, quindi se la tua vers
 	'extdist-svn-error' => 'Subversion ha incontrato un errore: <pre>$1</pre>',
 	'extdist-svn-parse-error' => 'Impossibile elaborare l\'XML da "svn info": <pre>$1</pre>',
 	'extdist-tar-error' => 'Tar ha restituito il seguente exitcode $1:',
-	'extdist-created' => "Un'istantanea della versione <b>$2</b> dell'estensione per MediaWiki <b>$3</b> è stata creata. Il tuo download dovrebbe partire automaticamente fra 5 secondi.
+	'extdist-created' => "Un'istantanea della versione <b>$2</b> dell'estensione <b>$1</b> per MediaWiki <b>$3</b> è stata creata. Il tuo download dovrebbe partire automaticamente fra 5 secondi.
 
 L'URL per questa istantanea è: 
 :$4
@@ -458,6 +509,56 @@ Dopo che hai estratto i file, avrai bisogno di registrare l'estensione in LocalS
 
 Se hai qualche domanda riguardo al sistema di distribuzione di questa estensione vedi [[Extension talk:ExtensionDistributor]].",
 	'extdist-want-more' => "Prendi un'altra estensione",
+);
+
+/** Japanese (日本語)
+ * @author Marine-Blue
+ */
+$messages['ja'] = array(
+	'extensiondistributor' => 'MediaWiki 拡張機能のダウンロード',
+	'extdist-not-configured' => '$wgExtDistTarDirと$wgExtDistWorkingCopyの設定を行ってください',
+	'extdist-wc-missing' => '指定されたコピー用ディレクトリが存在しません!',
+	'extdist-no-such-extension' => '"$1"という拡張機能は存在しません',
+	'extdist-no-such-version' => '拡張機能 "$1" に "$2" というバージョンは存在しません。',
+	'extdist-choose-extension' => 'ダウンロードしたい拡張機能を選択してください:',
+	'extdist-wc-empty' => '指定されたコピー先ディレクトリにダウンロードする拡張機能が存在しません!',
+	'extdist-submit-extension' => '続行',
+	'extdist-current-version' => '現在のバージョン (trunk)',
+	'extdist-choose-version' => '<big>拡張機能 <b>$1</b> をダウンロードしようとしています。</big>
+
+あなたが利用しているMediaWikiのバージョンを選択してください。
+
+多くの拡張機能は複数のバージョンで利用できますが、あなたの使用しているMediaWikiのバージョンが下記にない場合、最新版にアップデートする必要があります。',
+	'extdist-no-versions' => '選択された拡張機能($1)は全てのバージョンで利用できません!',
+	'extdist-submit-version' => '選択',
+	'extdist-no-remote' => 'subversionクライアントと接続できませんでした。',
+	'extdist-remote-error' => 'subversionクライアントがエラーを返しました: <pre>$1</pre>',
+	'extdist-remote-invalid-response' => 'subversionクライアントが無効なレスポンスを返しました。',
+	'extdist-svn-error' => 'Subversionでエラーが発生しました: <pre>$1</pre>',
+	'extdist-svn-parse-error' => 'XMLへの変換処理が正しく行われませんでした: <pre>$1</pre>',
+	'extdist-tar-error' => 'tarが終了コード $1 を返しました:',
+	'extdist-created' => "MediaWiki $3 の拡張機能 <b>$1</b> バージョン <b>$2</b>  をコピーしたスナップショットが作成されました。5 秒後、自動的にダウンロードが開始されます。
+
+このスナップショットのURLは次の通りです:
+:$4
+今すぐダウンロードするようにして、このアドレスをブックマークしないようにしてください。コンテンツのアップデートに対応できません。また、ファイルは数日後に削除されます。
+
+unix系のOSなどでtarアーカイブは下記のディレクトリへ自動的に解凍されます。
+
+<pre>
+tar -xzf $5 -C /var/www/mediawiki/extensions
+</pre>
+
+Windowsをご利用の場合は[http://www.7-zip.org/ 7-zip]がファイルの解凍に利用できます。
+
+wikiをサーバーに設置している場合、解凍して生成された'''全ての'''ファイルをサーバー上の拡張機能ディレクトリへアップロードする必要があります。
+
+なお、いくつかの拡張機能は<tt>extensions/ExtensionFunctions.php</tt>にあるExtensionFunctions.phpが必要です。使用する拡張機能のディレクトリの''親ディレクトリ''へこのファイルをコピーしてください。これら拡張機能のスナップショットのファイルは(tarbombとして)./ExtensionFunctions.phpへ展開される可能性のあるファイルが含まれています。このような場合は無視してファイルをアップロードするようなことは控えてください。
+
+ファイルを全て展開したら、拡張機能をLocalSettings.phpへ登録する必要があります。具体的な作業手順は各拡張機能のドキュメントで解説されています。
+
+この拡張機能のダウンロードシステムに何か御質問がありましたら、[[Extension talk:ExtensionDistributor]]までよろしくお願いします。",
+	'extdist-want-more' => '他の拡張機能を入手',
 );
 
 /** Khmer (ភាសាខ្មែរ)

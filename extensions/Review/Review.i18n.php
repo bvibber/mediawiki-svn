@@ -122,6 +122,51 @@ $messages['ar'] = array(
 	'review_comment' => 'تعليق',
 );
 
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Meno25
+ */
+$messages['arz'] = array(
+	'review_sidebar_title' => 'مراجعة',
+	'review-desc' => 'خاصية [[Special:Review|التحقق]] المشهورة.',
+	'review_topics' => "# التالى هو قائمة المواضيع والنطاقات لامتداد المراجعة.
+# كل موضوع معرف بواسطة سطر من خمس قيم، مفصولة بواسطة ':' (كل السطور الأخرى سيتم تجاهلها).
+# الترتيب هو: مفتاح رقمى (>0)، اسم، أقصى نطاق (>1؛ 2=نعم/لا)، معنى أقل قيمة (مثال، 'سيء')، معنى أعلى قيمة (مثال، 'جيد').
+1:الجودة:5:سيء:جيد
+2:مستعد ل 1.0:2:لا:نعم",
+	'review_topic_page' => 'مراجعة المواضيع',
+	'review_sidebar_explanation' => "الصندوق فى أقصى اليسار دائما يعنى 'لا رأي'.",
+	'review_save' => 'خزن المراجعة',
+	'review_your_review' => 'مراجعتك لهذه الصفحة/المراجعة:',
+	'review_sidebar_you_have_other_reviews_for_this_article' => "لقد راجعت بالفعل نسخا أخرى من هذه الصفحة. تقييماتك الأخرى ستدمج إلى هذه المراجعة حيث اخترت 'لا رأي'.",
+	'review_page_link' => 'مراجعة الإحصاءات',
+	'review_sidebar_final' => 'لبيانات مراجعة رؤية هذه الصفحة، انظر $1',
+	'review_for_page' => 'المراجعة للصفحة "$1"',
+	'review_for_user' => 'المراجعة للمستخدم "$1"',
+	'review_error' => 'هناك شيء ما خطأ!',
+	'review_no_reviews_for_page' => 'لا توجد حاليا مراجعات ل"$1".',
+	'review_total_statistics' => 'الإجمالي',
+	'review_statistics_left_corner' => 'المراجعة',
+	'review_version_link' => 'المراجعة #$1',
+	'review_statistic_cell' => 'المتوسط: $1 من $2<br />($4 مستخدم، $5 مجهول)',
+	'review_version_statistic_cell' => '$1 من $2',
+	'review_version_reviews_link' => '<small>(مراجعات النسخة)</small>',
+	'review_concerns_page' => 'هذه المراجعة هى حول الصفحة "$1".',
+	'review_concerns_user' => 'هذا حول المراجعات بواسطة المستخدم "$1".',
+	'review_user_reviews' => '<small>(المراجعات بواسطة هذا المستخدم)</small>',
+	'review_user_page_list' => 'المستخدم راجع الصفحات التالية:',
+	'review_user_details_link' => '(تفاصيل)',
+	'review_do_merge' => 'ادمج مراجعاتى للمراجعات الأخرى لهذه الصفحة إلى هذه المراجعة',
+	'review_has_been_stored' => "<span id='review_has_been_stored'>مراجعتك تم تخزينها!</span>",
+	'revision_review_this_page_version_link' => 'مراجعة هذه النسخة من الصفحة.',
+	'review_page_review' => 'مراجعة صفحة "$1"',
+	'review_blocked' => 'أنت ممنوع، اذهب بعيدا.',
+	'review_wrong_namespace' => 'الصفحات فى هذا النطاق لا يمكن مراجعتها!',
+	'review_topic' => 'الموضوع',
+	'review_no_opinion' => 'لا رأي',
+	'review_rating' => 'التقييم',
+	'review_comment' => 'تعليق',
+);
+
 /** Asturian (Asturianu)
  * @author Esbardu
  */

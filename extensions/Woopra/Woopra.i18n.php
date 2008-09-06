@@ -30,6 +30,13 @@ $messages['ar'] = array(
 	'woopra-desc' => 'يسمح ل[http://www.woopra.com/ برنامج وبرا للتتبع الحي] بالعمل لنسخة ميدياويكي الخاصة بك',
 );
 
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Meno25
+ */
+$messages['arz'] = array(
+	'woopra-desc' => 'يسمح ل[http://www.woopra.com/ برنامج وبرا للتتبع الحي] بالعمل لنسخة ميدياويكى الخاصة بك',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  */

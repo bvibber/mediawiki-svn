@@ -49,6 +49,14 @@ $messages['ar'] = array(
 	'categoryonupload-label' => 'التصنيف:',
 );
 
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Meno25
+ */
+$messages['arz'] = array(
+	'categoryonupload-desc' => 'يقترح على المستخدم اختيار تصنيف عند رفع ملف',
+	'categoryonupload-label' => 'التصنيف:',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  */
@@ -130,9 +138,10 @@ $messages['gl'] = array(
 
 /** Hebrew (עברית)
  * @author Agbad
+ * @author Rotemliss
  */
 $messages['he'] = array(
-	'categoryonupload-desc' => 'הבאת משתמש לבחירת קטגוריה בעת העלאת קובץ',
+	'categoryonupload-desc' => 'הצעה למשתמש לבחור קטגוריה בעת העלאת קובץ',
 	'categoryonupload-label' => 'קטגוריה:',
 );
 

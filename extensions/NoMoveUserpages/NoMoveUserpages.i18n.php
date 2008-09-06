@@ -31,6 +31,15 @@ $messages['ar'] = array(
 	'right-move-userpages' => 'نقل صفحات المستخدمين',
 );
 
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Meno25
+ */
+$messages['arz'] = array(
+	'nomoveuserpages-desc' => 'يمنع المستخدمين من نقل صفحات المستخدمين إلا لو لديهم صلاحية "move-userpages"',
+	'nomoveuserpages-error' => 'نقل صفحات المستخدمين تم تعطيله',
+	'right-move-userpages' => 'نقل صفحات المستخدمين',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  */

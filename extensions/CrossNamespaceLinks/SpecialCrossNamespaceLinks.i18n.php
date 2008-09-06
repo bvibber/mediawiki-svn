@@ -60,7 +60,7 @@ $messages['arz'] = array(
 	'crossnamespacelinks' => 'لينكات بين النطاقات',
 	'crossnamespacelinks-desc' => '[[Special:CrossNamespaceLinks|بيعرض لستة اللينكات بين النطاقات]] و اللى مش لازم تكون فى {{SITENAME}}',
 	'crossnamespacelinks-summary' => 'الصفحة دى بتوفر لستة للينكات من صفحة موجودة فى النطاق الرئيسى لصفحة فى نطاق تانى (ماعدا {{ns:special}}, {{ns:talk}}, {{ns:project}}, و {{ns:template}} namespaces),و اللى ما بينصحش باستعمالها.',
-	'crossnamespacelinkstext' => '$1: $2 {{PLURAL:$2|لينك|لينكات}} لـ $3',
+	'crossnamespacelinkstext' => '$1: $2 {{PLURAL:$2|وصلة|وصلات}} ل $3',
 );
 
 /** Asturian (Asturianu)

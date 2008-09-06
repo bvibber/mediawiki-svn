@@ -65,6 +65,11 @@ $aliases['id'] = array(
 	'Oversight' => array( 'Pengawas revisi' ),
 );
 
+/** Luxembourgish (Lëtzebuergesch) */
+$aliases['lb'] = array(
+	'HideRevision' => array( 'Versioun verstoppen' ),
+);
+
 /** Nedersaksisch (Nedersaksisch) */
 $aliases['nds-nl'] = array(
 	'HideRevision' => array( 'Versie_verbargen' ),

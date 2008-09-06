@@ -35,6 +35,15 @@ $messages['ar'] = array(
 	'whatismyip-out' => 'الأيبي الخاص بك:',
 );
 
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Meno25
+ */
+$messages['arz'] = array(
+	'whatismyip' => 'ما هو الأيبى الخاص بي',
+	'whatismyip-desc' => 'يظهر عنوان أيبى المستخدم الحالى فى [[Special:WhatIsMyIP|صفحة خاصة]]',
+	'whatismyip-out' => 'الأيبى الخاص بك:',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  */
@@ -77,6 +86,15 @@ $messages['dsb'] = array(
 	'whatismyip' => 'Což jo mója IP-adresa',
 	'whatismyip-desc' => 'Pokazujo aktualnu IP-adresu wužywarja na [[Special:WhatIsMyIP]]',
 	'whatismyip-out' => 'Twója IP:',
+);
+
+/** Greek (Ελληνικά)
+ * @author Dead3y3
+ */
+$messages['el'] = array(
+	'whatismyip' => 'Ποια είναι η IP μου',
+	'whatismyip-desc' => 'Εμφανίζει την τρέχουσα διεύθυνση IP του χρήστη στο [[Special:WhatIsMyIP]]',
+	'whatismyip-out' => 'Η διεύθυνση IP σας:',
 );
 
 /** Esperanto (Esperanto)

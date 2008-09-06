@@ -59,6 +59,19 @@ $messages['ar'] = array(
 	'watchers_less_than_x' => 'أقل من $1 يراقبون هذه الصفحة.',
 );
 
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Meno25
+ */
+$messages['arz'] = array(
+	'watchers' => 'المراقبون',
+	'watchers_link_title' => 'من يراقب هذه الصفحة؟',
+	'watchers_error_article' => '<b>خطأ:</b> الصفحة غير موجودة.',
+	'watchers_header' => 'الناس الذين يراقبون "$1"',
+	'watchers_noone_watches' => 'لا أحد يراقب هذه الصفحة.',
+	'watchers_x_or_more' => '$1 أو أكثر يراقبون هذه الصفحة.',
+	'watchers_less_than_x' => 'أقل من $1 يراقبون هذه الصفحة.',
+);
+
 /** Asturian (Asturianu)
  * @author Esbardu
  */

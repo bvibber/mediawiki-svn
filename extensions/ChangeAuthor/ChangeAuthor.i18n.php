@@ -165,6 +165,37 @@ $messages['ar'] = array(
 	'changeauthor-rev' => 'ن$1',
 );
 
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Meno25
+ */
+$messages['arz'] = array(
+	'changeauthor' => 'تغيير مؤلف المراجعة',
+	'changeauthor-desc' => 'يسمح بتغيير مؤلف مراجعة',
+	'changeauthor-title' => 'تغيير مؤلف مراجعة',
+	'changeauthor-search-box' => 'بحث فى المراجعات',
+	'changeauthor-pagename-or-revid' => 'اسم الصفحة أو رقم المراجعة:',
+	'changeauthor-pagenameform-go' => 'اذهب',
+	'changeauthor-comment' => 'تعليق:',
+	'changeauthor-changeauthors-multi' => 'تغيير {{PLURAL:$1|المؤلف|المؤلفين}}',
+	'changeauthor-explanation-multi' => "باستخدام هذه الاستمارة يمكنك تغيير مؤلفى المراجعات.
+ببساطة غير واحدا أو أكثر من أسماء المستخدمين فى القائمة بالأسفل ، أضف تعليقا (اختياري) واضغط على زر 'تغيير المؤلف(ين)'.",
+	'changeauthor-changeauthors-single' => 'تغيير المؤلف',
+	'changeauthor-explanation-single' => "باستخدام هذه الاستمارة يمكنك تغيير مؤلف مراجعة.
+ببساطة غير اسم اسم المستخدم بالأسفل، أضف تعليقا (اختياري) واضغط على زر 'تغيير المؤلف'.",
+	'changeauthor-invalid-username' => 'اسم مستخدم غير صحيح "$1".',
+	'changeauthor-nosuchuser' => 'لا يوجد مستخدم بالاسم "$1".',
+	'changeauthor-revview' => 'المراجعة #$1 من $2',
+	'changeauthor-nosuchtitle' => 'لا توجد صفحة بالاسم "$1".',
+	'changeauthor-weirderror' => 'حدث خطأ غريب جدا.
+من فضلك حاول القيام بطلبك مرة ثانية.
+لو استمر هذا الخطأ، إذا فقاعدة البيانات على الأرجح مكسورة.',
+	'changeauthor-invalidform' => 'من فضلك استخدم الاستمارة الموفرة بواسطة [[Special:ChangeAuthor|الصفحة الخاصة]] بدلا من استمارة معدلة.',
+	'changeauthor-success' => 'طلبك تمت معالجته بنجاح.',
+	'changeauthor-logentry' => 'غير مؤلف $2 ل$1 من $3 إلى $4',
+	'changeauthor-logpagename' => 'سجل تغيير المؤلفين',
+	'changeauthor-rev' => 'ن$1',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  */
@@ -796,7 +827,7 @@ Yèn kaluputan iki tetep dumadi manèh, tegesé basis data iki mbok-menawa rusak
 $messages['km'] = array(
 	'changeauthor-pagenameform-go' => 'ទៅ',
 	'changeauthor-comment' => 'យោបល់៖',
-	'changeauthor-changeauthors-multi' => 'ផ្លាស់ប្តូរអ្នកនិពន្ធ',
+	'changeauthor-changeauthors-multi' => 'ផ្លាស់ប្តូរ$1អ្នកនិពន្ធ',
 	'changeauthor-changeauthors-single' => 'ផ្លាស់ប្តូរ អ្នកនិពន្ធ',
 	'changeauthor-invalid-username' => 'ឈ្មោះ​អ្នកប្រើប្រាស់ "$1" គ្មានសុពលភាព។',
 	'changeauthor-nosuchuser' => 'មិនមានអ្នកប្រើប្រាស់ឈ្មោះ "$1" ទេ។',

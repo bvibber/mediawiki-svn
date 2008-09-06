@@ -27,6 +27,15 @@ $messages['ar'] = array(
 	'mediafunctions-not-exist' => '"$1" غير موجود',
 );
 
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Meno25
+ */
+$messages['arz'] = array(
+	'mediafunctions-desc' => 'دوال محلل للحصول على معلومات حول ملفات الميديا',
+	'mediafunctions-invalid-title' => '"$1" ليس عنوانا صحيحا',
+	'mediafunctions-not-exist' => '"$1" غير موجود',
+);
+
 /** Bulgarian (Български)
  * @author Spiritia
  */

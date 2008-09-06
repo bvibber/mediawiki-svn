@@ -70,6 +70,27 @@ $messages['ar'] = array(
 	'multiupload-toolbox' => 'رفع ملفات متعددة',
 );
 
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Meno25
+ */
+$messages['arz'] = array(
+	'multipleupload' => 'رفع الملفات',
+	'multipleupload-desc' => 'يسمح للمستخدمين [[Special:MultipleUpload|برفع عدة ملفات فى وقت واحد]]',
+	'multipleupload-ignoreallwarnings' => "تجاهل '''كل التحذيرات''' واحفظ الملفات على أية حال.",
+	'multipleupload-saveallfiles' => 'حفظ كل الملفات',
+	'multipleupload-addresswarnings' => 'من فضلك صحح أية تحذيرات قبل إعادة رفع الملفات.',
+	'multipleupload-page' => '{{ns:project}}:سياسة حذف الصور',
+	'multipleupload-text' => "ارفع ملفات متعددة هنا.
+
+اختر 'Browse' واختر كل ملف تود رفعه. يمكنك رفع من 1 إلى $1 ملف فى المرة.
+
+يمكنك إدخال '''اسم ملف الوجهة''' اختياريا وتوفير '''ملخص''' يصف صورتك.
+
+الصور غير الملائمة سيتم حذفها فورا، انظر [[{{MediaWiki:Multipleupload-page}}|سياسة حذف الصور]].",
+	'multiupload-fileuploaded' => 'تم رفع الملف.',
+	'multiupload-toolbox' => 'رفع ملفات متعددة',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  * @author Spiritia
@@ -108,6 +129,7 @@ $messages['cs'] = array(
 	'multipleupload-desc' => 'Umožňuje uživatelům [[Special:MultipleUpload|nahrávat více souborů najednou]]',
 	'multipleupload-ignoreallwarnings' => "Ignorovat '''všechna upozornění''' a bez ohledu na ně soubor uložit.",
 	'multipleupload-saveallfiles' => 'Uložit všechny soubory',
+	'multipleupload-addresswarnings' => 'Prosím, předtím, než znovu nahrajete soubory, napravte všechny chyby.',
 	'multipleupload-page' => '{{ns:project}}:Pravidla mazání souborů',
 	'multipleupload-text' => "Zde můžete náhrat více souborů.
 

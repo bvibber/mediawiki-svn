@@ -76,6 +76,19 @@ $messages['ar'] = array(
 	'edituser-exempt' => 'المستخدم المحدد لا يمكن تعديله',
 );
 
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Meno25
+ */
+$messages['arz'] = array(
+	'edituser-desc' => 'يسمح للمستخدمين ذوى الصلاحية بتعديل تفضيلات المستخدمين الآخرين',
+	'edituser' => 'تعديل مستخدم',
+	'edituser-logout' => 'تسجيل خروج المستخدم',
+	'edituser-username' => 'اسم',
+	'edituser-dosearch' => 'بحث',
+	'edituser-nouser' => 'المستخدم المحدد غير موجود',
+	'edituser-exempt' => 'المستخدم المحدد لا يمكن تعديله',
+);
+
 /** Kotava (Kotava)
  * @author Wikimistusik
  */

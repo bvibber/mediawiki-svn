@@ -23,6 +23,13 @@ $messages['ar'] = array(
 	'navigationpopups-desc' => 'يحمل منبثقات سكريبتات إبحار لوبين في ميدياويكي',
 );
 
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Meno25
+ */
+$messages['arz'] = array(
+	'navigationpopups-desc' => 'يحمل منبثقات سكريبتات إبحار لوبين فى ميدياويكي',
+);
+
 /** Catalan (Català)
  * @author SMP
  */

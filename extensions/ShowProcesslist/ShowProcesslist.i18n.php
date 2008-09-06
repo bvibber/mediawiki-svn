@@ -53,6 +53,22 @@ $messages['ar'] = array(
 	'showprocesslist-info' => 'معلومات',
 );
 
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Meno25
+ */
+$messages['arz'] = array(
+	'showprocesslist' => 'عرض قائمة العمل',
+	'showprocesslist-desc' => 'يعرض ناتج [[Special:ShowProcesslist|SHOW FULL PROCESSLIST]]',
+	'showprocesslist-id' => 'رقم',
+	'showprocesslist-user' => 'مستخدم',
+	'showprocesslist-host' => 'مضيف',
+	'showprocesslist-db' => 'دى بي',
+	'showprocesslist-command' => 'أمر',
+	'showprocesslist-time' => 'زمن',
+	'showprocesslist-state' => 'حالة',
+	'showprocesslist-info' => 'معلومات',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  */

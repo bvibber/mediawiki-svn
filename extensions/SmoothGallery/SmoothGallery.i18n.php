@@ -57,6 +57,28 @@ $messages['ar'] = array(
 	'smoothgallery-javascript-disabled' => 'الجافاسكريبت مطلوب لرؤية هذا المعرض جيدا.',
 );
 
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Meno25
+ */
+$messages['arz'] = array(
+	'smoothgallery' => 'معرض ناعم',
+	'smoothgallery-desc' => 'يسمح للمستخدمين بإنشاء معارض بالصور التى تم رفعها.
+يسمح بمعظم خيارات المعرض الناعم',
+	'smoothgallery-title' => 'معرض ناعم',
+	'smoothgallery-smoothgallerytitle' => 'معرض ناعم: $1',
+	'smoothgallery-error' => '<b>خطأ فى المعرض الناعم:</b>',
+	'smoothgallery-gallery-not-found' => 'المعرض المطلوب غير موجود.',
+	'smoothgallery-not-found' => 'لا صور تمت إضافتها للمعرض.
+من فضلك أضف صورة واحدة على الأقل.',
+	'smoothgallery-no-images' => 'لم يتم العثور على صور فى هذا المعرض.
+تأكد من أن كل الصور المطلوبة موجودة.
+الصور التالية لم يتم العثور عليها: $1',
+	'smoothgallery-invalid-images' => 'الصور المطلوبة التالية كانت من نوع غير صحيح: $1',
+	'smoothgallery-unexpected-error' => 'حدث خطأ غير متوقع.
+من فضلك أبلغ عن هذا الخطأ.',
+	'smoothgallery-javascript-disabled' => 'الجافاسكريبت مطلوب لرؤية هذا المعرض جيدا.',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  */

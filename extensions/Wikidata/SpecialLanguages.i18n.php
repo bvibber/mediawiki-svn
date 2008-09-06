@@ -327,6 +327,117 @@ $wdMessages['ar'] = array(
 من فضلك اتصل بمشغل أو إداري الخادم.',
 );
 
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Meno25
+ */
+$wdMessages['arz'] = array(
+	'datasearch' => 'ويكى داتا: بحث البيانات',
+	'langman_title' => 'مدير اللغة',
+	'languages' => 'ويكى داتا: مدير اللغة',
+	'ow_save' => 'حفظ',
+	'ow_history' => 'تاريخ',
+	'ow_datasets' => 'اختيار مجموعة البيانات',
+	'ow_noedit_title' => 'لا سماح للتعديل',
+	'ow_noedit' => 'أنت غير مسموح لك بتعديل الصفحات فى مجموعة البيانات "$1".
+من فضلك انظر [[{{MediaWiki:Ow editing policy url}}|سياسة التحرير الخاصة بنا]].',
+	'ow_uipref_datasets' => 'عرض افتراضي',
+	'ow_uiprefs' => 'ويكى داتا',
+	'ow_none_selected' => '<لا شيء تم اختياره>',
+	'ow_conceptmapping_help' => '<p>الأفعال الممكنة: <ul>
+<li>&action=insert&<data_context_prefix>=<defined_id>&...  إدراج رابطة</li>
+<li>&action=get&concept=<concept_id>  قراءة رابطة</li>
+<li>&action=list_sets عرض قائمة لبوادىء سياقات البيانات الممكنة وما الذى تشير إليه.</li>
+<li>&action=get_associated&dm=<defined_meaning_id>&dc=<dataset_context_prefix> لمعنى معرف واحد فى مبدأ، يعرض الآخرون كلهم</li>
+<li>&action=help  عرض مساعدة مفيدة.</li>
+</ul></p>',
+	'ow_conceptmapping_uitext' => '<p>ربط المبدأ يسمح لك بتعرف أى معنى معرف فى مجموعة بيانات مطابق لمعانى معرفة فى مجموعات بيانات أخرى.</p>',
+	'ow_conceptmapping_no_action_specified' => 'عذرا، أنا لا أعرف كيف "$1".',
+	'ow_dm_OK' => 'موافق',
+	'ow_dm_not_present' => 'غير مدخل',
+	'ow_dm_not_found' => 'غير موجود فى قاعدة البيانات أو لم يتم عمله بطريقة صحيحة',
+	'ow_mapping_successful' => 'ربط كل الحقول المعلمة ب [OK]<br />',
+	'ow_mapping_unsuccessful' => 'أحتاج إلى معنيين معرفين قبل أن أستطيع وصلهما.',
+	'ow_will_insert' => 'سيدرج التالي:',
+	'ow_contents_of_mapping' => 'محتويات الربط',
+	'ow_available_contexts' => 'السياقات المتوفرة',
+	'ow_add_concept_link' => 'أضف وصلة إلى مبادىء أخرى',
+	'ow_concept_panel' => 'لوحة المبدأ',
+	'ow_dm_badtitle' => 'هذه الصفحة لا تشير إلى أى معنى معرف (مبدأ).
+من فضلك تحقق من عنوان الويب.',
+	'ow_dm_missing' => 'هذه الصفحة على ما يبدو تشير إلى معنى معرف غير موجود (مبدأ).
+من فضلك تحقق من عنوان الويب.',
+	'ow_AlternativeDefinition' => 'تعريف بديل',
+	'ow_AlternativeDefinitions' => 'تعريفات بديلة',
+	'ow_Annotation' => 'هامش',
+	'ow_ApproximateMeanings' => 'معانى تقريبية',
+	'ow_ClassAttributeAttribute' => 'نسب',
+	'ow_ClassAttributes' => 'نسب الرتبة',
+	'ow_ClassAttributeLevel' => 'مستوى',
+	'ow_ClassAttributeType' => 'نوع',
+	'ow_ClassMembership' => 'عضوية الرتبة',
+	'ow_Collection' => 'مجموعة',
+	'ow_CollectionMembership' => 'عضوية المجموعة',
+	'ow_Definition' => 'تعريف',
+	'ow_DefinedMeaningAttributes' => 'هامش',
+	'ow_DefinedMeaning' => 'معنى معرف',
+	'ow_DefinedMeaningReference' => 'معنى معرف',
+	'ow_ExactMeanings' => 'معانى مطابقة',
+	'ow_Expression' => 'تعبير',
+	'ow_ExpressionMeanings' => 'معانى التعبير',
+	'ow_Expressions' => 'تعبيرات',
+	'ow_IdenticalMeaning' => 'معنى مطابق؟',
+	'ow_IncomingRelations' => 'علاقات داخلة',
+	'ow_GotoSource' => 'اذهب إلى المصدر',
+	'ow_Language' => 'اللغة',
+	'ow_LevelAnnotation' => 'هامش',
+	'ow_OptionAttribute' => 'خاصية',
+	'ow_OptionAttributeOption' => 'خيار',
+	'ow_OptionAttributeOptions' => 'خيارات',
+	'ow_OptionAttributeValues' => 'قيم الخيار',
+	'ow_OtherDefinedMeaning' => 'معنى معرف آخر',
+	'ow_PopupAnnotation' => 'هامش',
+	'ow_Relations' => 'علاقات',
+	'ow_RelationType' => 'نوع العلاقة',
+	'ow_Spelling' => 'إملاء',
+	'ow_Synonyms' => 'متقاربات',
+	'ow_SynonymsAndTranslations' => 'متقاربات وترجمات',
+	'ow_Source' => 'مصدر',
+	'ow_SourceIdentifier' => 'معرف المصدر',
+	'ow_TextAttribute' => 'خاصية',
+	'ow_Text' => 'نص',
+	'ow_TextAttributeValues' => 'نصوص صريحة',
+	'ow_TranslatedTextAttribute' => 'خاصية',
+	'ow_TranslatedText' => 'نص مترجم',
+	'ow_TranslatedTextAttributeValue' => 'نص',
+	'ow_TranslatedTextAttributeValues' => 'نصوص قابلة للترجمة',
+	'ow_LinkAttribute' => 'خاصية',
+	'ow_LinkAttributeValues' => 'وصلات',
+	'ow_Property' => 'خاصية',
+	'ow_Value' => 'قيمة',
+	'ow_meaningsoftitle' => 'معانى "$1"',
+	'ow_meaningsofsubtitle' => '<em>وصلة ويكي:</em> [[$1]]',
+	'ow_Permission_denied' => '<h2>السماح مرفوض</h2>',
+	'ow_copy_no_action_specified' => 'من فضلك حدد فعلا',
+	'ow_copy_help' => 'يوما ما، ربما نساعدك.',
+	'ow_please_proved_dmid' => 'على ما يبدو دخلك يفقد ?dmid=<something>  (dmid=رقم المعنى المعرف)<br />
+من فضلك اتصل بإدارى خادم.',
+	'ow_please_proved_dc1' => 'على ما يبدو دخلك يفقد ?dc1=<something>  (dc1=سياق مجموعة البيانات 1، مجموعة البيانات للنسخ منها)<br />
+من فضلك اتصل بإدارى خادم.',
+	'ow_please_proved_dc2' => 'على ما يبدو فدخلك يفقد ?dc2=<something>  (dc2=سياق مجموعة البيانات 2، مجموعة البيانات للنسخ منها)<br />
+من فضلك اتصل بإدارى خادم.',
+	'ow_copy_successful' => '<h2>النسخ نجح</h2>
+بياناتك يبدو أنها قد تم نسخها بنجاح.
+لا تنس أن تتحقق ثانية للتأكد!',
+	'ow_copy_unsuccessful' => '<h3>النسخ لم ينجح</h3>
+لم تحدث أية عملية نسخ.',
+	'ow_no_action_specified' => '<h3>لا فعل تم تحديده</h3>
+ربما أتيت إلى هذه الصفحة مباشرة؟ عادة أنت لا تحتاج إلى أن تكون هنا.',
+	'ow_db_consistency_not_found' => '<h2>خطأ</h2>
+توجد مشكلة فى ثبات قاعدة البيانات، ويكى داتا لا يمكنها العثور على بيانات صحيحة تتصل برقم المعنى المعرف هذا.
+ربما يكون قد ضاع.
+من فضلك اتصل بمشغل أو إدارى الخادم.',
+);
+
 /** Asturian (Asturianu)
  * @author Esbardu
  */

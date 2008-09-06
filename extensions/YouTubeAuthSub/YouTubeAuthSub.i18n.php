@@ -116,6 +116,44 @@ $messages['ar'] = array(
 	'youtubeauthsub_jserror_nodesc' => 'رجاءً أدخل وصفا للفيديو.',
 );
 
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Meno25
+ */
+$messages['arz'] = array(
+	'youtubeauthsub' => 'رفع فيديو يوتيوب',
+	'youtubeauthsub-desc' => 'السماح للمستخدمين [[Special:YouTubeAuthSub|بتحميل الفيديو]] مباشرة إلى يوتيوب',
+	'youtubeauthsub_info' => 'لرفع فيديو إلى يوتيوب لتضمينه فى صفحة، املأ المعلومات التالية:',
+	'youtubeauthsub_title' => 'عنوان',
+	'youtubeauthsub_description' => 'وصف',
+	'youtubeauthsub_password' => 'كلمة سر يوتيوب',
+	'youtubeauthsub_username' => 'اسم مستخدم يوتيوب',
+	'youtubeauthsub_keywords' => 'كلمات مفتاحية',
+	'youtubeauthsub_category' => 'تصنيف',
+	'youtubeauthsub_submit' => 'تنفيذ',
+	'youtubeauthsub_clickhere' => 'أنقر هنا لتسجيل الدخول لليوتيوب',
+	'youtubeauthsub_tokenerror' => 'خطأ توليد توكين السماح، حاول التحديث.',
+	'youtubeauthsub_success' => "تهانينا!
+الفيديو الخص بك تم رفعه.
+لرؤية الفيديو الخاص بك اضغط <a href='http://www.youtube.com/watch?v=$1'>هنا</a>.
+يوتيوب ربما يحتاج إلى بعض الوقت لمعالجة الفيديو الخاص بك، لذا ربما لا يكون جاهزا بعد.
+
+لتضمين الفيديو الخاص بك فى صفحة على الويكي، أدخل الكود التالى فى صفحة:
+<code>{{&#35;ev:youtube|$1}}</code>",
+	'youtubeauthsub_authsubinstructions' => 'لرفع فيديو، سيتعين عليك تسجيل الدخول أولا إلى يوتيوب.',
+	'youtubeauthsub_uploadhere' => 'رفع مقاطع الفيديو الخاصة بك من هنا:',
+	'youtubeauthsub_uploadbutton' => 'رفع',
+	'youtubeauthsub_code' => '{{#ev:youtube|$1}}.
+
+هذا الفيديو يمكن رؤيته [http://www.youtube.com/watch?v=$1 هنا]',
+	'youtubeauthsub_summary' => 'رفع فيديو يوتيوب',
+	'youtubeauthsub_uploading' => 'الفيديو الخاص بك يتم رفعه.
+من فضلك كن صبورا.',
+	'youtubeauthsub_viewpage' => 'كخيار آخر، يمكنك رؤية الفيديو الخاص بك [[$1|هنا]].',
+	'youtubeauthsub_jserror_nokeywords' => 'رجاءً أدخل كلمة مفتاحية أو أكثر.',
+	'youtubeauthsub_jserror_notitle' => 'رجاءً أدخل عنوانا للفيديو.',
+	'youtubeauthsub_jserror_nodesc' => 'رجاءً أدخل وصفا للفيديو.',
+);
+
 /** Southern Balochi (بلوچی مکرانی)
  * @author Mostafadaneshvar
  */
@@ -220,6 +258,16 @@ Un tamm pasianted mar plij.',
 $messages['ca'] = array(
 	'youtubeauthsub_title' => 'Títol',
 	'youtubeauthsub_category' => 'Categoria',
+);
+
+/** Czech (Česky)
+ * @author Matěj Grabovský
+ */
+$messages['cs'] = array(
+	'youtubeauthsub' => 'Nahrát YouTube video',
+	'youtubeauthsub_uploadhere' => 'Nahrajte svoje video odtud:',
+	'youtubeauthsub_uploadbutton' => 'Nahrát',
+	'youtubeauthsub_summary' => 'Nahrává se YouTube video',
 );
 
 /** Danish (Dansk)

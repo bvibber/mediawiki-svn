@@ -21,6 +21,13 @@ $messages['ar'] = array(
 	'pnghandler-desc' => 'يغير حجم PNG باستخدام pngds',
 );
 
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Meno25
+ */
+$messages['arz'] = array(
+	'pnghandler-desc' => 'يغير حجم PNG باستخدام pngds',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  */

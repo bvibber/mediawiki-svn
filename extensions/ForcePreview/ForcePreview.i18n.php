@@ -40,6 +40,15 @@ $messages['ar'] = array(
 	'right-forcepreviewexempt' => 'يمكنه الحفظ بدون استخدام العرض المسبق',
 );
 
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Meno25
+ */
+$messages['arz'] = array(
+	'forcepreview' => 'حفظ الصفحة (استخدم عرض مسبق أولا)',
+	'forcepreview-desc' => 'إجبار المستخدمين غير الموثوقين على العرض المسبق',
+	'right-forcepreviewexempt' => 'يمكنه الحفظ بدون استخدام العرض المسبق',
+);
+
 /** Asturian (Asturianu)
  * @author Esbardu
  */

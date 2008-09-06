@@ -46,6 +46,15 @@ $messages['ar'] = array(
 	'categorystepper-start' => '(بداية التصنيف)',
 );
 
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Meno25
+ */
+$messages['arz'] = array(
+	'categorystepper-desc' => 'يعرض صندوق تصنيف فى الصفحات الموجودة فى مجموعة من التصنيفات مما يسمح بالإبحار للأمام والخلف أبجديا خلال تصنيف أو أكثر موجود بصفحة.',
+	'categorystepper-end' => '(نهاية التصنيف)',
+	'categorystepper-start' => '(بداية التصنيف)',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  */

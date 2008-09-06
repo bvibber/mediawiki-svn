@@ -98,6 +98,33 @@ $messages['ar'] = array(
 	'spamdifftool_submit_buttom' => 'تنفيذ',
 );
 
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Meno25
+ */
+$messages['arz'] = array(
+	'spamdifftool' => 'التحكم فى قائمة السبام السوداء',
+	'spamdifftool-desc' => 'يوفر طريقة أساسية لإضافة مدخلات جديدة للقائمة السوداء للسبام من صفحات الفرق',
+	'spamdifftool_cantedit' => 'عذرا - أنت لا تمتلك الصلاحية لتعديل قائمة السبام السوداء.',
+	'spamdifftool_notext' => "لا يوجد نص لإضافته إلى قائمة السبام السوداء.
+اضغط <a href='$1'>هنا</a> للمتابعة.",
+	'spamdifftool_confirm' => "أكد أنك تريد إضافة هذه المدخلات إلى قائمة السبام السوداء.
+(اضغط <a href='$1' target='new'>هنا</a> للإبلاغ عن مشكلة.)",
+	'spamdifftool_summary' => 'إضافة إلى قائمة السبام السوداء',
+	'spamdifftool_urls_detected' => 'المسارات التالية تم التعرف عليها فى التعديل(ات)، أيها تود إضافتها إلى قائمة السبام السوداء؟
+هذه الخيارات مرتبة من الأكثر منعا إلى الأقل منعا، منع النطاق بأكمله سيمنع كل الوصلات لأى شيء من هذا النطاق.
+
+تأكد من عدم منع كل النطاقات التى تستضيف حسابات مستخدمين، مثل blogpost.com، geocities.com، إلى آخره.',
+	'spamdifftool_no_urls_detected' => "لم يتم التعرف على أية مسارات.
+اضغط <a href='$1'>هنا</a> للعودة.",
+	'spamdifftool_spam_link_text' => 'أضف إلى السبام',
+	'spamdifftool_option_domain' => 'الكل من هذا النطاق',
+	'spamdifftool_option_subdomain' => 'الكل من هذا النطاق الفرعي',
+	'spamdifftool_option_directory' => 'هذا النطاق الفرعى والمجلد',
+	'spamdifftool_option_none' => 'لا شيء',
+	'spamdifftool_block' => 'منع:',
+	'spamdifftool_submit_buttom' => 'تنفيذ',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  * @author Spiritia
@@ -127,6 +154,15 @@ $messages['bn'] = array(
 	'spamdifftool_cantedit' => 'দুঃখিত - আপনার স্প্যাম কালোতালিকা সম্পাদনা করার অধিকার নেই।',
 	'spamdifftool_notext' => "স্প্যাম কালোতালিকায় যোগ করার জন্য কোন টেক্সট নেই। <a href='$1'>এখানে</a> ক্লিক করে অগ্রসর হোন।",
 	'spamdifftool_confirm' => "স্প্যাম কালোতালিকায় এই ভুক্তিগুলি যোগ করার ব্যাপারটি নিশ্চিত করুন। (সমস্যা হলে <a href='$1' target='new'>এখানে</a> ক্লিক করুন।)",
+);
+
+/** Czech (Česky)
+ * @author Matěj Grabovský
+ */
+$messages['cs'] = array(
+	'spamdifftool_option_none' => 'nic',
+	'spamdifftool_block' => 'Blokovat:',
+	'spamdifftool_submit_buttom' => 'Odeslat',
 );
 
 /** Welsh (Cymraeg)

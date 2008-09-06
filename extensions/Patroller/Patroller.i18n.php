@@ -101,6 +101,35 @@ $messages['ar'] = array(
 	'right-patroller' => 'مراجعة الصفحات',
 );
 
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Meno25
+ */
+$messages['arz'] = array(
+	'patrol' => 'تعديلات مراجعة',
+	'patrol-desc' => 'واجهة مراجعة محسنة مع تشارك ضغط العمل',
+	'patrol-endorse' => 'تأكيد',
+	'patrol-revert' => 'استرجاع',
+	'patrol-revert-reason' => 'السبب:',
+	'patrol-skip' => 'تجاهل',
+	'patrol-reverting' => 'استرجاع: $1',
+	'patrol-nonefound' => 'لم يتم العثور على تعديلات مناسبة للمراجعة.',
+	'patrol-endorsed-ok' => 'تم تعليم التعديل كمراجع.',
+	'patrol-endorsed-failed' => 'هذا التعديل لم يمكن تعليمه كمراجع.',
+	'patrol-reverted-ok' => 'التعديل تم استرجاعه.',
+	'patrol-reverted-failed' => 'لم يمكن استرجاع التعديل.',
+	'patrol-skipped-ok' => 'تجاهل التعديل.',
+	'patrol-reasons' => '* تخريب بسيط
+* تجربة مستخدم جديد
+* انظر صفحة النقاش',
+	'patrol-another' => 'اعرض تعديلا آخر، إن أمكن.',
+	'patrol-stopped' => 'لقد اخترت عدم مراجعة تعديل آخر. $1',
+	'patrol-resume' => 'اضغط هنا للمتابعة.',
+	'group-patroller' => 'مراجعون',
+	'group-patroller-member' => 'مراجع',
+	'grouppage-patroller' => '{{ns:project}}:مراجع',
+	'right-patroller' => 'مراجعة الصفحات',
+);
+
 /** Bikol Central (Bikol Central)
  * @author Filipinayzd
  */

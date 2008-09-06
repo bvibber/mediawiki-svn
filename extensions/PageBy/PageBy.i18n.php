@@ -50,6 +50,17 @@ $messages['ar'] = array(
 	'pageby-anon' => '<i>مجهول</i>',
 );
 
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Meno25
+ */
+$messages['arz'] = array(
+	'pageby-desc' => 'يعرض المساهمين فى صفحة ويكى متجاورين باستخدام الوسم <code><nowiki><pageby></nowiki></code>',
+	'pageby-first' => 'الصفحة تم إنشاؤها بواسطة $1، $2',
+	'pageby-last' => 'تم <a href="$3">تعديلها</a> آخر مرة بواسطة $1، $2',
+	'pageby-contributors' => 'مساهمون:',
+	'pageby-anon' => '<i>مجهول</i>',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  */

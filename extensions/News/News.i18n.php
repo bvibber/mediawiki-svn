@@ -51,6 +51,27 @@ $messages['ar'] = array(
 	'newsextension-freshfeed' => '$1: ينتج تلقيما جديدا<br />',
 );
 
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Meno25
+ */
+$messages['arz'] = array(
+	'newsextension-desc' => 'يعرض أحدث تغييرات معدلة فى صفحات الويكى أو كتلقيم آر إس إس أو أتوم.',
+	'newsextension-unknownformat' => '$1: صيغة تلقيم غير معروفة : $2<br />',
+	'newsextension-feednotfound' => '$1: صفحة التلقيم غير موجودة : $2<br />',
+	'newsextension-feedrequest' => '$1: معالجة طلب التلقيم ل $2<br />',
+	'newsextension-checkok' => '$1: كاش HTTP على ما يرام، رأس 304 تم إرسالها</br >',
+	'newsextension-checkok1' => '$1: جارى التحقق الكاش على ما يرام:  IMS $2 vs. $3 التى تم تغييرها<br />',
+	'newsextension-gotcached' => '$1: ($2? "حصلت على كاش" : "لا كاش")<br />',
+	'newsextension-purge' => '$1: إفراغ الكاش، تجاهل الكاش<br />',
+	'newsextension-loggin' => '$1: تم تسجيل الدخول، يتم تجاهل الكاش<br />',
+	'newsextension-outputting' => '$1: ينتج نسخة كاش ($2): $3 < {$4}<br />',
+	'newsextension-stale' => '$1: تم العثور على نسخة كاش قديمة ($2): $3 >= {$4}<br />',
+	'newsextension-nofoundonpage' => '$1: لا تلقيم تم العثور عليه فى الصفحة: $2<br / >',
+	'newsextension-renderedfeed' => '$1: أنتج التلقيم<br />',
+	'newsextension-cachingfeed' => '$1: تخبئة التلقيم ($2)<br / >',
+	'newsextension-freshfeed' => '$1: ينتج تلقيما جديدا<br />',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца)) */
 $messages['be-tarask'] = array(
 	'newsextension-desc' => 'Паказаць налады апошніх зьменаў як старонкі вікі ці у выглядзе RSS ці Atom',
@@ -148,6 +169,7 @@ $messages['ksh'] = array(
 $messages['lb'] = array(
 	'newsextension-desc' => 'Weist déi spezifesch rezent Ännerungen op enger wiki-Säit oder als RSS oder Atom Lëscht',
 	'newsextension-unknownformat' => '$1: onbekannte Feed Format: $2<br />',
+	'newsextension-loggin' => '$1: ageloggt, Cache ignoréiert<br />',
 );
 
 /** Marathi (मराठी)

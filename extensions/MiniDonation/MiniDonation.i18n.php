@@ -34,6 +34,14 @@ $messages['ar'] = array(
 	'donationform-submit' => 'تبرع من خلال باي بال',
 );
 
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Meno25
+ */
+$messages['arz'] = array(
+	'donationform-desc' => 'يضيف وسم <tt>&lt;donateform&gt;</tt> لدعم التبرعات من خلال باى بال',
+	'donationform-submit' => 'تبرع من خلال باى بال',
+);
+
 /** Bikol Central (Bikol Central)
  * @author Filipinayzd
  */
