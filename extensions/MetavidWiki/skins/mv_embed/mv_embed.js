@@ -2347,7 +2347,7 @@ embedVideo.prototype = {
 		$j.each(this.media_element.getPlayableSources(), function(index, source)
         {     		
 	        var default_player = embedTypes.players.defaultPlayer(source.getMIMEType());
-	        var source_select_code = '$j(\'#'+this_id+'\').closeDisplayedHTML(); $j(\''+_this.id+'\').media_element.selectSource(\''+index+'\');';
+	        var source_select_code = '$j(\'#'+this_id+'\').get(0).closeDisplayedHTML(); $j(\''+_this.id+'\').media_element.selectSource(\''+index+'\');';
 	        var player_code = _this.getPlayerSelectList(source.getMIMEType(), index, source_select_code);
 	        var is_not_selected = (source != _this.media_element.selected_source);
 	        var image_src = mv_embed_path+'/images/stream/';

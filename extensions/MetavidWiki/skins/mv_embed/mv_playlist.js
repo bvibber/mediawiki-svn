@@ -58,6 +58,7 @@ mvPlayList.prototype = {
 	start_clip:null, 
 	start_clip_src:null,
 	disp_play_head:null,
+	userSlide:false,
 	loading:true,
 	loading_external_data:true, //load external data by default
 	tracks:{},
@@ -216,16 +217,18 @@ mvPlayList.prototype = {
 		//js_log("GET PL DURRATION for : "+ this.tracks[this.default_track_id].clips.length + 'clips');
 		if(!regen && this.pl_duration)
 			return this.pl_duration;
-		durSum=0;
+						
+		durSum=0;		
 		$j.each(this.default_track.clips, function(i,clip){	
 			if(clip.embed){			
-				//js_log('add : '+ clip.getDuration());
+				js_log('plDUR:add : '+ clip.getDuration());
+				clip.dur_offset=durSum;
 				durSum+=clip.getDuration();
 			}else{
 				js_log("ERROR: clip " +clip.id + " not ready");
 			}
 		});
-		this.pl_duration=durSum;
+		this.pl_duration=durSum;		
 		//js_log("return dur: " + this.pl_duration);
 		return this.pl_duration;
 	},
@@ -389,7 +392,6 @@ mvPlayList.prototype = {
 					js_log('cound not find: clipDesc_'+clip.id);					
 				}																
 			}); 	
-						
 			if(this.cur_clip)
 				$j('#clipDesc_'+this.cur_clip.id).css({display:'inline'});						 	
 							
@@ -402,7 +404,9 @@ mvPlayList.prototype = {
 		$j('#ptitle_'+this.id).html(''+
 			'<b>' + this.title + '</b> '+				
 			this.getClipCount()+' clips, <i>'+
-			this.getPlDurationNTP() + '</i>' );				
+			this.getPlDurationNTP() + '</i>' );		
+		//update status:
+		this.cur_clip.embed.setStatus('0:0:00/'+this.getPlDurationNTP());				
 	},
 	/*gets adds hidden desc to the #dc container*/
 	getAllClipDesc : function(){		
@@ -527,26 +531,33 @@ mvPlayList.prototype = {
 		this.cur_clip.embed.pe_postEmbedJS();
 	},
 	//playlist play
-	play : function(){
+	play: function(){
 		var plObj=this;
 		js_log('pl play');
 		//hide the playlist play button: 
-		$j('#big_play_link_'+this.id).hide();
-		//update cur clip based if sequence playhead set: 
-		var d = new Date();
-		this.clockStartTime = d.getTime();
-		
-		js_log('pl_true_start_time:'+ this.pl_true_start_time);
+		$j('#big_play_link_'+this.id).hide();				
 		
 		this.start_clip = this.cur_clip;		
 		this.start_clip_src= this.cur_clip.src;
-		//load up the ebmed object with the playlist (if it supports it) 
-		if(this.cur_clip.embed.supports['playlist_driver'] ){
-			//load the playlist into the embed object: 			
-			js_log('clip obj supports playlist driver');
-			//start up playlist driver:
+		 
+		if(this.cur_clip.embed.supports['playlist_swap_loader'] ){
+			//navtive support:
+			// * pre-loads clips
+			// * mv_playlist smil extension, mannages transitions animations overlays etc. 			
+			js_log('clip obj supports playlist swap_loader (ie playlist controlled playback)');
+			//update cur clip based if sequence playhead set: 
+			var d = new Date();
+			this.clockStartTime = d.getTime();
+			this.monitor();
+		
+			//@@todo pre-load each clip: 
+			this.cur_clip.embed.play();			
+		}else if(this.cur_clip.embed.supports['playlist_driver']){				
+			js_log('playlist_driver');
+			//embedObject is feed the playlist info directly and mannages next/prev
 			this.cur_clip.embed.playMovieAt(this.cur_clip.order);
 		}else{
+			//not much playlist support just play the first clip:
 			js_log('basic play');
 			//play cur_clip			
 			this.cur_clip.embed.play();		
@@ -1179,9 +1190,15 @@ PlMvEmbed.prototype = {
 	},	
 	setStatus:function(value){		
 		var plObj = this.pc.pp;	
-		//js_log('set status:'+ value);
-		var pl_value='On clip ' + (plObj.cur_clip.order+1) + ' of ' + plObj.getClipCount() + '<br>';		
-		this.pe_setStatus(value);
+		//only update status if playlist driver otherwise ignore and let master playlist update
+		if(this.supports['playlist_driver']){		
+			//js_log('set status:'+ value);
+			var pl_value='On clip ' + (plObj.cur_clip.order+1) + ' of ' + plObj.getClipCount() + '<br>';		
+			this.pe_setStatus(value);
+		}else{									
+			//js_log("set time via base offset:"+base_dur + ' curTime:'+plObj.cur_clip.embed.currentTime)				
+			this.pe_setStatus(seconds2ntp(plObj.cur_clip.dur_offset + plObj.cur_clip.embed.currentTime) + '/'+ plObj.getPlDurationNTP());
+		}
 	},
 	setSliderValue:function(value){		
 		var sliderVal = this.pc.pp.getPlayHeadPos(value);		
@@ -1435,14 +1452,244 @@ var xspfPlaylist ={
 	}
 }
 /*****************************
- * SMIL CODE (should be put into another js file / lazy_loaded)
+ * SMIL CODE (could be put into another js file / lazy_loaded for improved basic playlist performace / modularity)
  *****************************/
 /*playlist driver extensions to the playlist object*/
-mvPlayList.prototype.monitor = function(){
+mvPlayList.prototype.monitor = function(){	
+	//js_log('pl:monitor');
+	var ct = new Date();		
+	//js_log('mvPlayList:monitor trueTime: '+ ( (ct.getTime() - this.clockStartTime )/1000));	
+
+	//status updates are hanndled by children clips ... playlist just mannages smil actions
+	this.doSmilActions();
 	
+	if( ! this.smil_monitorTimerId ){
+    	if(document.getElementById(this.id)){
+        	this.smil_monitorTimerId = setInterval('$j(\'#'+this.id+'\').get(0).monitor()', 250);
+    	}
+    }
+}
+/*
+ * getOverlaySelectorHTML
+ * appends a div to curent clip if not already there 
+ * @returns string 'overlay_selector_id'  
+ */
+mvPlayList.prototype.getOverlaySelector = function(_pClip, pre_var){	
+		var overlay_selector_id= pre_var+_pClip.id; 	
+		js_log('f:getOverlaySelector: '+overlay_selector_id);
+		if( ! $j('#'+overlay_selector_id).get(0) ){																											
+			$j('#videoPlayer_'+_pClip.embed.id).prepend(''+
+				'<div id="'+overlay_selector_id+'" ' +
+					'style="position:absolute;top:0px;left:0px;' +
+					'height:'+this.height+'px;'+
+					'width:'+this.width+'px;' +					
+					'z-index:2">' +
+				'</div>');
+		}		
+	return overlay_selector_id;	
+}
+//handles the rendering of overlays loaind of future clips (if nessesary)
+//@@todo could be lazy loaded if nessesary 
+mvPlayList.prototype.doSmilActions = function(){ 		
+	//js_log('f:doSmilActions');
+	var offSetTime = 0; //offset time should let us start a transition later on if we have to. 
+	_pClip = this.cur_clip;	
+	
+	//@@todo move some of this out of this loop
+	if(!_pClip.dur)
+		_pClip.dur = this.duration; 
+	
+	//check for duration actions / clip freze mode
+	if(_pClip.dur <= _pClip.embed.currentTime  && _pClip.order != _pClip.pp.getClipCount()-1 ){
+		//force next clip
+		js_log('order:' +_pClip.order + ' != count:' + (_pClip.pp.getClipCount()-1) +
+			' smil dur: '+_pClip.dur + ' <= curTime: ' + _pClip.embed.currentTime + ' go to next clip..');
+		_pClip.pp.next();
+	}
+	
+	if(_pClip.dur >= _pClip.embed.currentTime ){
+		//@@todo freeze on onClipStop
+	}
+	
+	if(_pClip.begin){
+		//@@todo do freeze until begin time
+	}
+	//@@todo could maybe generalize transIn with trasOut into one "flow" with a few scattered if statements	
+	//update/setup all transitions (will render current transition state) 
+	if(_pClip.transIn){		
+		//make sure we are in range: 
+		if(_pClip.embed.currentTime < _pClip.transIn.dur){
+			//make sure we have not already started the clip
+			if(_pClip.transIn.animation_state==0){				
+				_pClip.transIn.start_time =0;//start time is zero since we are transIn effect 						
+										
+				//setup overlay_selector_id			
+				if(_pClip.transIn.subtype=='crossfade'){					
+					var prev_pClip = _pClip.pp.getClip(-1);	
+					if(prev_pClip.id == this.cur_clip.id)
+						js_log('Error: transIn crossfade without previus media asset');
+																									
+					_pClip.transIn.overlay_selector_id = 'clipDesc_'+prev_pClip.id;
+				}else{
+					_pClip.transIn.overlay_selector_id =this.getOverlaySelector(_pClip, 'transIn_');																
+				}				
+						
+				js_log('selector element: '+$j('#'+_pClip.transIn.overlay_selector_id).length);	
+				
+				
+				//start running the transition animation (will stop once pClip time > transition duration	
+				js_log("ABOUT TO RUN transIn");
+				js_log("cid: "+_pClip.transIn.pClip.id);	
+				_pClip.transIn.run_animation();				
+			}		
+		}
+	}	
+	if(_pClip.transOut){			
+		//make sure we are in range: 	
+		if(_pClip.embed.currentTime >= (_pClip.dur - _pClip.transOut.dur) ){	
+			//make sure we have not already started the clip				
+			if(_pClip.transOut.animation_state==0){				
+				_pClip.transOut.start_time =(_pClip.getDuration()-_pClip.transOut.dur) ;//start time is clip.dur - transOut.dr 	
+								
+				//setup overlay_selector_id			
+				if(_pClip.transOut.subtype=='crossfade'){
+					//@@ check that next clip is not current
+					var next_pClip = _pClip.pp.getClip(1);
+					if(next_pClip.id == this.cur_clip.id)
+						js_log('Error: transOut crossfade without subquent asset');
+						
+					//start playing the next clip	
+					next_pClip.embed.play();							
+					_pClip.transOut.overlay_selector_id = 'clipDesc_'+next_pClip.id;					
+					//mvTransLib.doTransition(_pClip.transOut, overlay_selector_id, pClip);
+					
+					//start running the transition animation (will stop once pClip stops
+					js_log("ABOUT TO RUN transOut ANI: "+_pClip.transIn.pClip.id);			
+					_pClip.transOut.run_animation();	
+				}
+			}
+		}
+	}
+	
+
+	//check future clip for transitions (assume we are the current clip) 
+	/*var next_pClip = _pClip.pp.getClip(1);			
+	if(next_pClip.id!=_pClip.id){ //make sure we are not transitioning to the current clip
+		if(next_pClip.transIn){
+			if(next_pClip.transIn.subtype=='crossfade'){					
+				//apply the effect to the end of "this"
+				if(this.currentTime > (this.duration - next_pClip.transIn.dur) ){
+					js_log("do clip: cross fade now: "+(this.duration - next_pClip.transIn.dur) );
+					if(!_pClip['trans_corssfadeOut']){
+						//make new trans_corssfadeOut (special for cross fade)
+						_pClip['trans_corssfadeOut']=_pClip.pp.transitions[next_pClip.transIn.id].clone();
+						_pClip.trans_corssfadeOut.cfout=true;
+					}						
+					var overlay_selector_id = 'clipDesc_'+_pClip.id;			
+					mvTransLib.doTransition(_pClip.trans_corssfadeOut, overlay_selector_id, offSetTime )																		
+				}
+				
+			}
+		}
+	}*/
+	//js_log("check for transOut: ct:"+this.currentTime + ' not >  dur:'+_pClip.dur+'-'+'cdur:'+  _pClip.transOut.dur +' = '+ (_pClip.dur - _pClip.transOut.dur));
+	/*
+											
+	}*/					
 }
 
-
+/*
+ * mvTransLib libary of transitions
+ * a single object called to initiate transition effects can easily be extended in separate js file
+ * (that way a limited feature set "sequence" need not include a _lot_ of js unless necessary )
+ * 
+ * Smil Transition Effects see:  
+ * http://www.w3.org/TR/SMIL3/smil-transitions.html#TransitionEffects-TransitionAttribute
+ */    		
+var mvTransLib = {
+	/*
+	 * function doTransition lookups up the transition in the  mvTransLib obj
+	 * 		and intiates the transition if its avaliable 
+	 * @param tObj transition attribute object
+	 * @param offSetTime default value 0 if we need to start rendering from a given time 
+	 */
+	doInitTransition:function(tObj){		
+		if(!tObj.type)
+			return js_log('transition is missing type attribute');
+		
+		if(!tObj.subtype)
+			return js_log('transition is missing subtype attribute');
+		
+		if(!this['type'][tObj.type])
+			return js_log('mvTransLib does not support type: '+tObj.type);
+		
+		if(!this['type'][tObj.type][tObj.subtype])
+			return js_log('mvTransLib does not support subType: '+tObj.subtype);				
+							
+		//has type and subype call function with params: 
+		this['type'][tObj.type][tObj.subtype].init(tObj);					
+	},
+	doUpdate:function(tObj, percent){
+		this['type'][tObj.type][tObj.subtype].u(tObj,percent);
+	},
+	type:{
+		//types:
+		fade:{
+			fadeFromColor:{
+				"init":function(tObj){										
+					js_log('f:fadeFromColor: '+tObj.overlay_selector_id +' to color: '+ tObj.fadeColor);
+					if(!tObj.fadeColor)
+						return js_log('missing fadeColor');		
+					if($j('#'+tObj.overlay_selector_id).get(0).length==0){
+						js_log("ERROR cant find: "+ tObj.overlay_selector_id);
+					}	
+					//set the initial state
+					$j('#'+tObj.overlay_selector_id).css({
+						'background-color':tObj.fadeColor,
+						'opacity':"1",
+					});
+				},
+				'u':function(tObj, percent){
+					//fade from color invert the percent
+					var percent = 1- percent;
+					$j('#'+tObj.overlay_selector_id).css({
+						"opacity" : percent
+					});
+				}
+			},
+			//corssFade
+			crossfade:{
+				"init":function(tObj, overlay_selector_id, offSetTime){
+					js_log('f:crossfade: '+overlay_selector_id);
+					if($j('#'+overlay_selector_id).length==0)
+						js_log("ERROR overlay selector not found: "+overlay_selector_id);
+					
+					//set the initial state show the zero opacity animiation
+					$j('#'+overlay_selector_id).css({'opacity':0}).show();
+					
+					/*js_log("should have set "+overlay_selector_id +"to zero is: "+
+						$j('#'+overlay_selector_id).css('opacity') + ' should annimate for'+
+						(( tObj.dur - offSetTime )*1000) );*/
+					
+					$j('#'+overlay_selector_id).animate(
+						{
+	  						"opacity" : "1"
+	    				}, 
+	    				(( tObj.dur - offSetTime )*1000),					
+						'linear',		    				
+						function(){ //callback
+							js_log("animated opacity done");
+							tObj.animation_state=2;						
+						}
+					);
+				},
+				'u':function(tObj, percentage){
+					
+				}
+			}			
+		}							
+	}
+}
 //smile based extension of <video> tag: 
 //region="video_region" transIn="fromGreen" begin="2s"
 //http://www.w3.org/TR/2007/WD-SMIL3-20070713/smil-extended-media-object.html#edef-ref
@@ -1547,18 +1794,37 @@ mvSMILClip.prototype = {
 		
 		//lookup and assing copies of transitions 
 		// (since transition needs to hold some per-instance state info)		
-		if(this.transIn && this.pp.transitions[this.transIn])			
-			this.transIn =this.pp.transitions[this.transIn].clone();		
+		if(this.transIn && this.pp.transitions[this.transIn]){			
+			this.transIn =this.pp.transitions[this.transIn].clone();
+			this.transIn.pClip = _this;
+			js_log("PCLIP:"+ this.transIn.pClip.id);
+			this.transIn.transAttrType='transIn';
+		}		
 		
-		if(this.transOut && this.pp.transitions[this.transOut])			
+		if(this.transOut && this.pp.transitions[this.transOut]){		
 			this.transOut =this.pp.transitions[this.transOut].clone();
-		
+			this.transOut.pClip = _this;
+			js_log("PCLIP:"+ this.transIn.pClip.id);
+			this.transOut.transAttrType='transOut';
+		}		
 		//parse duration / begin times: 
 		if(this.dur)
-			this.dur = smilParseTime(this.dur);			
+			this.dur = smilParseTime(this.dur);					
 						
 		//check if the transition is a valid id:		
 		return this;		
+	},
+	/*
+	 * getDuration
+	 * @returns duration in int
+	 */
+	getDuration:function(){
+		//check for smil dur: 
+		if(this.dur)
+			return this.dur;
+		//else get the duration from the embed clip: 
+		if(this.embed.getDuration())
+			return this.embed.getDuration();				
 	},
 	setUpEmbedObj:function(){
 		js_log('set up embed for smil based clip');
@@ -1586,10 +1852,16 @@ var mv_supported_transition_attr = new Array(
 	'fadeColor',
 	'dur'
 );
+
+var MV_ANIMATION_CB_RATE = 34;
 var transitionObj = function(element) {		
 	this.init(element);
 };
 transitionObj.prototype = {	
+	transAttrType:null, //transIn or transOut
+	overlay_selector_id:null,
+	pClip:null,
+	timerId:null,
 	animation_state:0, //can be 0=unset, 1=running, 2=done 
 	dur:2, //default duration of 2	
 	init:function(element){
@@ -1603,6 +1875,53 @@ transitionObj.prototype = {
 		//http://www.w3.org/TR/SMIL3/smil-timing.html#Timing-ClockValueSyntax
 		if(_this.dur)
 			_this.dur = smilParseTime(_this.dur);
+	},
+	/*
+	 * the main animation loop called every MV_ANIMATION_CB_RATE or 34ms ~around 30frames per second~
+	 */
+	run_animation:function(){
+		//js_log('f:run_animation');	
+		
+		if(this.prev_curtime!=this.pClip.embed.currentTime){	
+			this.prev_curtime =	this.pClip.embed.currentTime;
+			this.interValCount=0;
+		}
+		
+		//start_time =assinged by doSmilActions
+		//base_cur_time = pClip.embed.currentTime;
+		//dur = assinged by attribute
+		
+		if(this.animation_state==0){
+			mvTransLib.doInitTransition(this);
+			this.animation_state=1;
+		}
+		var percentage =   (this.pClip.embed.currentTime + ((this.interValCount*MV_ANIMATION_CB_RATE)/1000)  - this.start_time) / this.dur;
+		
+		/*js_log('percentage = ct:'+this.pClip.embed.currentTime + ' + ic:'+this.interValCount +' * cb'+MV_ANIMATION_CB_RATE +
+			' - st'+this.start_time + ' / ' + this.dur + ' = ' + percentage );
+		*/
+		
+		if(percentage >= 1){
+			this.animation_state=2;
+			js_log("transition done");
+			return true;
+		}
+		//js_log('cur percentage: '+percentage);
+		//update state based on curent time + cur_time_offset (for now just use pClip.embed.currentTime)
+		mvTransLib.doUpdate(this, percentage);
+		
+		
+		this.interValCount++;
+		//setInterval in we are still in running state 
+		if(this.animation_state==1){
+			if(!this.timerId){
+				this.timerId = setInterval('document.getElementById(\''+this.pClip.pp.id+'\').cur_clip.'+this.transAttrType+'.run_animation()',
+						 MV_ANIMATION_CB_RATE);
+			}
+		}else{
+			clearInterval(this.timerId);
+		}
+		return true;
 	},
 	clone:function(){
 		var cObj = new this.constructor();
