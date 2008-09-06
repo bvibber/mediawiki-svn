@@ -21,7 +21,7 @@
 if (!defined('MEDIAWIKI'))                     die('Not an entry point.');
 if (version_compare($wgVersion, '1.11.0') < 0) die('Sorry, this extension requires at least MediaWiki version 1.11.0');
 
-define('SIMPLESECURITY_VERSION', '4.2.11, 2008-09-05');
+define('SIMPLESECURITY_VERSION', '4.2.12, 2008-09-06');
 
 # Global security settings
 $wgSecurityMagicIf              = "ifusercan";                  # the name for doing a permission-based conditional
@@ -102,11 +102,15 @@ class SimpleSecurity {
 			#$wgGroupPermissions['sysop'][$k] = true; # Ensure sysops have the right to perform this extra action
 		}
 		
+		# Ensure the new groups show up in rights management
+		# - note that 1.13 does a strange check in the ProtectionForm::buildSelector
+		#   $wgUser->isAllowed($key) where $key is an item from $wgRestrictionLevels
+		#   this requires that we treat the extra groups as an action and make sure its allowed by the user
 		foreach ($wgSecurityExtraGroups as $k => $v) {
 			if (empty($v)) $v = ucfirst($k);
 			$wgRestrictionLevels[] = $k;
 			$wgMessageCache->addMessages(array( "protect-level-$k" => $v ));
-			$wgGroupPermissions[$k]['not_an_action'] = true; # Ensure the new groups show up in rights management
+			$wgGroupPermissions[$k][$k] = true;
 		}
 	}
 
