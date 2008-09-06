@@ -2908,6 +2908,7 @@ $messages['yue'] = array(
 	'oversight-hidden' => '收埋修訂',
 	'oversight-header' => '下面係一個之前永久收埋，唔畀公眾睇嘅修訂清單。
 發放呢啲資料可以導致永久損失監督嘅權限。',
+	'oversight-legend'     => '搵修訂隱藏日誌',
 );
 
 /** Simplified Chinese (‪中文(简体)‬)
@@ -2951,6 +2952,7 @@ $messages['zh-hans'] = array(
 	'oversight-prev' => '最后一个之前的修订版本',
 	'oversight-hidden' => '隐藏修订',
 	'oversight-header' => '以下列示的是已经永久隐藏的修订版本。请注意！泄漏这些讯息将会永远丧失{{int:Oversight}}权限！',
+	'oversight-legend'     => '搜寻修订隐藏日志',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)
@@ -2994,5 +2996,6 @@ $messages['zh-hant'] = array(
 	'oversight-prev' => '最後一個之前的修訂版本',
 	'oversight-hidden' => '隱藏修訂',
 	'oversight-header' => '以下列示的是已經永久隱藏的修訂版本。請注意！洩漏這些訊息將會永遠喪失{{int:Oversight}}權限！',
+	'oversight-legend'     => '搜尋修訂隱藏日誌',
 );
 
