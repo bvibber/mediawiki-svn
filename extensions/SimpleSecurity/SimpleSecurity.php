@@ -21,7 +21,7 @@
 if (!defined('MEDIAWIKI'))                     die('Not an entry point.');
 if (version_compare($wgVersion, '1.11.0') < 0) die('Sorry, this extension requires at least MediaWiki version 1.11.0');
 
-define('SIMPLESECURITY_VERSION', '4.2.12, 2008-09-06');
+define('SIMPLESECURITY_VERSION', '4.2.13, 2008-09-07');
 
 # Global security settings
 $wgSecurityMagicIf              = "ifusercan";                  # the name for doing a permission-based conditional
@@ -52,6 +52,9 @@ $wgExtensionCredits['parserhook'][] = array(
 	'url'         => 'http://www.mediawiki.org/wiki/Extension:SimpleSecurity',
 	'version'     => SIMPLESECURITY_VERSION
 	);
+
+# SearchEngine is based on $wgDBtype so must be set before it gets changed to DatabaseSimpleSecurity
+SimpleSecurity::fixSearchType();
 
 # If the database class already exists, add the DB hook now, otherwise wait until extension setup
 if (!isset($wgSecurityUseDBHook)) $wgSecurityUseDBHook = false;
@@ -374,10 +377,24 @@ class SimpleSecurity {
 		}
 	}
 
-	# Updates passed LoadBalancer's DB servers to secure class
+	/**
+	 * Updates passed LoadBalancer's DB servers to secure class
+	 */
 	static function updateLB(&$lb) {
 		$lb->closeAll();
 		foreach ($lb->mServers as $i => $server) $lb->mServers[$i]['type'] = 'SimpleSecurity';
+	}
+
+	/**
+	 * Hack to ensure proper search class is used
+	 */
+	static function fixSearchType() {
+		global $wgDBtype, $wgSearchType;
+		if ($wgSearchType) return;
+		elseif ($wgDBtype == 'mysql')    $wgSearchType = 'SearchMySQL4';
+		elseif ($wgDBtype == 'postgres') $wgSearchType = 'SearchPostgres';
+		elseif ($wgDBtype == 'oracle')   $wgSearchType = 'SearchOracle';
+		else                             $wgSearchType = 'SearchEngineDummy';
 	}
 }
 
@@ -428,7 +445,7 @@ function wfSimpleSecurityLanguageGetMagic(&$magicWords, $langCode = 0) {
  * Called from $wgExtensionFunctions array when initialising extensions
  */
 function wfSetupSimpleSecurity() {
-	global $wgSimpleSecurity, $wgLanguageCode, $wgMessageCache, $wgSecurityUseDBHook, $wgLoadBalancer;
+	global $wgSimpleSecurity, $wgLanguageCode, $wgMessageCache, $wgSecurityUseDBHook,  $wgLoadBalancer;
 
 	# Instantiate the SimpleSecurity singleton now that the environment is prepared
 	$wgSimpleSecurity = new SimpleSecurity();
