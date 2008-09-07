@@ -88,6 +88,31 @@ $messages['arz'] = array(
 	'refreshspecial-total-display' => '<br />حدث $1 صفحة بإجمالى $2 صف فى وقت $3 (الزمن الإجمالى لعمل السكريبت هو $4)',
 );
 
+/** Finnish (Suomi)
+ * @author Jack Phoenix
+ */
+$messages['fi'] = array(
+	'refreshspecial' => 'Päivitä toimintosivuja',
+	'refreshspecial-title' => 'Päivitä toimintosivuja',
+	'refreshspecial-help' =>  'Tämä toimintosivu tarjoaa keinoja päivittää toimintosivuja manuaalisesti. Kun olet valinnut kaikki sivut, jotka haluat päivittää, napsauta "Päivitä"-nappia alapuolella päivittääksesi valitut. Varoitus: päivittäminen saattaa kestää jonkin aikaa isommissa wikeissä.',
+	'refreshspecial-button' => 'Päivitä valitut',
+	'refreshspecial-fail' => 'Valitse ainakin yksi päivitettävä toimintosivu.',
+	'refreshspecial-refreshing' => 'päivitetään toimintosivuja',
+	'refreshspecial-skipped' => 'halpa, ohitettu',
+	'refreshspecial-success-subtitle' => 'päivitetään toimintosivuja',
+	'refreshspecial-choice' => 'päivitetään toimintosivuja',
+	'refreshspecial-js-disabled' => '(<i>Et voi valita kaikkia sivuja kun JavaScript on pois käytöstä</i>)',
+	'refreshspecial-select-all-pages' => ' valitse kaikki sivut ',
+	'refreshspecial-link-back' => 'Palaa lisäosaan ',
+	'refreshspecial-here' => '<b>täällä</b>',
+	'refreshspecial-none-selected' => 'Et ole valinnut yhtään toimintosivua. Palataan oletusasetuksiin.',
+	'refreshspecial-db-error' => 'EPÄONNISTUI: tietokantavirhe',
+	'refreshspecial-no-page' => 'Kyseistä toimintosivua ei ole',
+	'refreshspecial-reconnected' => 'Yhdistetty uudelleen.',
+	'refreshspecial-reconnecting' => 'Yhteys epäonnistui, yritetään uudelleen 10 sekunnin kuluttua...',
+	'refreshspecial-total-display' => '<br />Päivitettiin $1 sivua; yhteensä $2 riviä ajassa $3 (yhteensä skriptin suorittamiseen meni aikaa $4)',
+);
+
 /** French (Français)
  * @author Grondin
  */
