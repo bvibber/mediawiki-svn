@@ -12,7 +12,7 @@ $messages = array();
  */
 $messages['en'] = array(
 	'commentspammer-save-blocked' => 'Your IP address is a suspected comment spammer, so the page has not been saved.
-[[Special:Userlogin|Log in or create an account]] to avoid this.',
+[[Special:UserLogin|Log in or create an account]] to avoid this.',
 	'commentspammer-desc'         => 'Rejects edits from suspected comment spammers on a DNS blacklist',
 	'commentspammer-log-msg'      => 'edit from [[Special:Contributions/$1|$1]] to [[:$2]]. ',
 	'commentspammer-log-msg-info' => 'Last spammed $1 {{PLURAL:$1|day|days}} ago, threat level is $2, and offence code is $3.
