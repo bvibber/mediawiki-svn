@@ -55,9 +55,12 @@ class OnlineStatus {
 		$wgHooks['InitPreferencesForm'][] = 'OnlineStatus::InitPreferencesForm';
 		$wgHooks['PreferencesUserInformationPanel'][] = 'OnlineStatus::PreferencesUserInformationPanel';
 		$wgHooks['ResetPreferences'][] = 'OnlineStatus::ResetPreferences';
+		$wgHooks['SavePreferences'][] = 'OnlineStatus::SavePreferences';
 
 		// User hook
-		$wgHooks['SavePreferences'][] = 'OnlineStatus::SavePreferences';
+		$wgHooks['UserToggles'][] = 'OnlineStatus::UserToggles';
+		$wgHooks['UserLoginComplete'][] = 'OnlineStatus::UserLoginComplete';
+		$wgHooks['UserLogoutComplete'][] = 'OnlineStatus::UserLogoutComplete';
 
 		// User page
 		$wgHooks['BeforePageDisplay'][] = 'OnlineStatus::BeforePageDisplay';
@@ -287,6 +290,42 @@ class OnlineStatus {
 			wfMsgExt( 'onlinestatus-toggles-explain', array( 'parse' ) )
 		);
 		return true;
+	}
+
+	/**
+	 * Hook for UserToggles
+	 */
+	static function UserToggles( &$toggles ){
+		$toggles[] = 'onlineOnLogin';
+		$toggles[] = 'offlineOnLogout';
+		return true;	
+	}
+
+	/**
+	 * Hook for UserLoginComplete
+	 */
+	static function UserLoginComplete( $user ){
+		if( $user->getOption( 'offlineOnLogout' ) ){
+			$user->setOption( 'online', 'online' );
+			$user->saveSettings();
+		}
+		return true;	
+	}
+
+	/**
+	 * Hook for UserLoginComplete
+	 */
+	static function UserLogoutComplete( &$newUser, &$injected_html, $oldName = null ){
+		if( $oldName === null )
+			return true;
+		$oldUser = User::newFromName( $oldName );
+		if( !$oldUser instanceof User )
+			return true;
+		if( $oldUser->getOption( 'offlineOnLogout' ) ){
+			$oldUser->setOption( 'online', 'offline' );
+			$oldUser->saveSettings();
+		}
+		return true;	
 	}
 
 	/**

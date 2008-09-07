@@ -22,6 +22,8 @@ $messages['en'] = array(
 	'onlinestatus-toggles-show'     => 'Show online status on my user page',
 	'onlinestatus-toggle-offline'   => 'Offline',
 	'onlinestatus-toggle-online'    => 'Online',
+	'tog-onlineOnLogin'             => 'Change my status to online when logging-in',
+	'tog-offlineOnLogout'           => 'Change my status to offline when logging-out',
 );
 
 /** Afrikaans (Afrikaans)
@@ -201,6 +203,8 @@ $messages['fr'] = array(
 	'onlinestatus-toggles-show' => 'Montrer mon statut sur ma page utilisateur',
 	'onlinestatus-toggle-offline' => 'Absent',
 	'onlinestatus-toggle-online' => 'Présent',
+	'tog-onlineOnLogin' => 'Changer mon statut à en ligne quand je me connecte',
+	'tog-offlineOnLogout' => 'Changer mon statut à hors ligne quand je me déconnecte',
 );
 
 /** Galician (Galego)
