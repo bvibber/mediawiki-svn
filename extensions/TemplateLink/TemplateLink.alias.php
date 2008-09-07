@@ -10,12 +10,16 @@ $aliases['en'] = array(
 	'TemplateLink' => array( 'TemplateLink' ),
 );
 
-/** Arabic (العربية) */
+/** Arabic (العربية)
+ * @author Meno25
+ */
 $aliases['ar'] = array(
 	'TemplateLink' => array( 'وصلة_قالب' ),
 );
 
-/** Egyptian Spoken Arabic (مصرى) */
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Meno25
+ */
 $aliases['arz'] = array(
 	'TemplateLink' => array( 'وصلة_قالب' ),
 );

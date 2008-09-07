@@ -13,12 +13,16 @@ $aliases['en'] = array(
 	'Piwik' => array( 'Piwik' ),
 );
 
-/** Arabic (العربية) */
+/** Arabic (العربية)
+ * @author Meno25
+ */
 $aliases['ar'] = array(
 	'Piwik' => array( 'بيويك' ),
 );
 
-/** Egyptian Spoken Arabic (مصرى) */
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Meno25
+ */
 $aliases['arz'] = array(
 	'Piwik' => array( 'بيويك' ),
 );

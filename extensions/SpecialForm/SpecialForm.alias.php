@@ -10,12 +10,16 @@ $aliases['en'] = array(
 	'Form' => array( 'Form' ),
 );
 
-/** Arabic (العربية) */
+/** Arabic (العربية)
+ * @author Meno25
+ */
 $aliases['ar'] = array(
 	'Form' => array( 'استمارة' ),
 );
 
-/** Egyptian Spoken Arabic (مصرى) */
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Meno25
+ */
 $aliases['arz'] = array(
 	'Form' => array( 'استمارة' ),
 );

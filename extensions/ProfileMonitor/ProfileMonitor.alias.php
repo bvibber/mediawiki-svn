@@ -10,12 +10,16 @@ $aliases['en'] = array(
 	'ProfileMonitor' => array( 'ProfileMonitor' ),
 );
 
-/** Arabic (العربية) */
+/** Arabic (العربية)
+ * @author Meno25
+ */
 $aliases['ar'] = array(
 	'ProfileMonitor' => array( 'مراقب_الملف' ),
 );
 
-/** Egyptian Spoken Arabic (مصرى) */
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Meno25
+ */
 $aliases['arz'] = array(
 	'ProfileMonitor' => array( 'مراقب_الملف' ),
 );

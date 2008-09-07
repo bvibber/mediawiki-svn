@@ -10,12 +10,16 @@ $aliases['en'] = array(
 	'WhosOnline' => array( 'WhosOnline' ),
 );
 
-/** Arabic (العربية) */
+/** Arabic (العربية)
+ * @author Meno25
+ */
 $aliases['ar'] = array(
 	'WhosOnline' => array( 'من_موجود' ),
 );
 
-/** Egyptian Spoken Arabic (مصرى) */
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Meno25
+ */
 $aliases['arz'] = array(
 	'WhosOnline' => array( 'من_موجود' ),
 );

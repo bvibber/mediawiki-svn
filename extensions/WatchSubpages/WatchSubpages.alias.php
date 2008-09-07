@@ -10,12 +10,16 @@ $aliases['en'] = array(
 	'WatchSubpages' => array( 'WatchSubpages' ),
 );
 
-/** Arabic (العربية) */
+/** Arabic (العربية)
+ * @author Meno25
+ */
 $aliases['ar'] = array(
 	'WatchSubpages' => array( 'مراقبة_الصفحات_الفرعية' ),
 );
 
-/** Egyptian Spoken Arabic (مصرى) */
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Meno25
+ */
 $aliases['arz'] = array(
 	'WatchSubpages' => array( 'مراقبة_الصفحات_الفرعية' ),
 );

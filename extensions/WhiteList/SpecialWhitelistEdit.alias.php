@@ -11,13 +11,17 @@ $aliases['en'] = array(
 	'WhitelistEdit' => array( 'WhitelistEdit' ),
 );
 
-/** Arabic (العربية) */
+/** Arabic (العربية)
+ * @author Meno25
+ */
 $aliases['ar'] = array(
 	'WhiteList' => array( 'قائمة_بيضاء' ),
 	'WhitelistEdit' => array( 'تعديل_القائمة_البيضاء' ),
 );
 
-/** Egyptian Spoken Arabic (مصرى) */
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Meno25
+ */
 $aliases['arz'] = array(
 	'WhiteList' => array( 'قائمة_بيضاء' ),
 	'WhitelistEdit' => array( 'تعديل_القائمة_البيضاء' ),

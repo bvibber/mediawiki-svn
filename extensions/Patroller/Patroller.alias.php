@@ -13,12 +13,16 @@ $aliases['en'] = array(
 	'Patroller' => array( 'Patroller' ),
 );
 
-/** Arabic (العربية) */
+/** Arabic (العربية)
+ * @author Meno25
+ */
 $aliases['ar'] = array(
 	'Patroller' => array( 'مراجع' ),
 );
 
-/** Egyptian Spoken Arabic (مصرى) */
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Meno25
+ */
 $aliases['arz'] = array(
 	'Patroller' => array( 'مراجع' ),
 );

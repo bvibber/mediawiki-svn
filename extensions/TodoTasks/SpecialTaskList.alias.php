@@ -11,13 +11,17 @@ $aliases['en'] = array(
 	'TaskListByProject' => array( 'TaskListByProject' ),
 );
 
-/** Arabic (العربية) */
+/** Arabic (العربية)
+ * @author Meno25
+ */
 $aliases['ar'] = array(
 	'TaskList' => array( 'قائمة_المهام' ),
 	'TaskListByProject' => array( 'قائمة_المهام_حسب_المشروع' ),
 );
 
-/** Egyptian Spoken Arabic (مصرى) */
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Meno25
+ */
 $aliases['arz'] = array(
 	'TaskList' => array( 'قائمة_المهام' ),
 	'TaskListByProject' => array( 'قائمة_المهام_حسب_المشروع' ),

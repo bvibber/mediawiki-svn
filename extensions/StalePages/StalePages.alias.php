@@ -10,12 +10,16 @@ $aliases['en'] = array(
 	'StalePages' => array( 'StalePages' ),
 );
 
-/** Arabic (العربية) */
+/** Arabic (العربية)
+ * @author Meno25
+ */
 $aliases['ar'] = array(
 	'StalePages' => array( 'صفحات_ميتة' ),
 );
 
-/** Egyptian Spoken Arabic (مصرى) */
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Meno25
+ */
 $aliases['arz'] = array(
 	'StalePages' => array( 'صفحات_ميتة' ),
 );

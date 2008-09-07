@@ -10,12 +10,16 @@ $aliases['en'] = array(
 	'RefreshSpecial' => array( 'RefreshSpecial' ),
 );
 
-/** Arabic (العربية) */
+/** Arabic (العربية)
+ * @author Meno25
+ */
 $aliases['ar'] = array(
 	'RefreshSpecial' => array( 'تحديث_خاص' ),
 );
 
-/** Egyptian Spoken Arabic (مصرى) */
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Meno25
+ */
 $aliases['arz'] = array(
 	'RefreshSpecial' => array( 'تحديث_خاص' ),
 );
