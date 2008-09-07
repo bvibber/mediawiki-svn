@@ -13,12 +13,16 @@ $aliases['en'] = array(
 	'ViewXML' => array( 'ViewXML' ),
 );
 
-/** Arabic (العربية) */
+/** Arabic (العربية)
+ * @author Meno25
+ */
 $aliases['ar'] = array(
 	'ViewXML' => array( 'عرض_إكس_إم_إل' ),
 );
 
-/** Egyptian Spoken Arabic (مصرى) */
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Meno25
+ */
 $aliases['arz'] = array(
 	'ViewXML' => array( 'عرض_إكس_إم_إل' ),
 );

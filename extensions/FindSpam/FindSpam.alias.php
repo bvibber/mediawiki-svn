@@ -13,12 +13,16 @@ $aliases['en'] = array(
 	'FindSpam' => array( 'FindSpam' ),
 );
 
-/** Arabic (العربية) */
+/** Arabic (العربية)
+ * @author Meno25
+ */
 $aliases['ar'] = array(
 	'FindSpam' => array( 'إيجاد_السبام' ),
 );
 
-/** Egyptian Spoken Arabic (مصرى) */
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Meno25
+ */
 $aliases['arz'] = array(
 	'FindSpam' => array( 'إيجاد_السبام' ),
 );

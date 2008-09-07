@@ -13,12 +13,16 @@ $aliases['en'] = array(
 	'CloseWiki' => array( 'CloseWiki' ),
 );
 
-/** Arabic (العربية) */
+/** Arabic (العربية)
+ * @author Meno25
+ */
 $aliases['ar'] = array(
 	'CloseWiki' => array( 'إغلاق_الويكي' ),
 );
 
-/** Egyptian Spoken Arabic (مصرى) */
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Meno25
+ */
 $aliases['arz'] = array(
 	'CloseWiki' => array( 'إغلاق_الويكى' ),
 );

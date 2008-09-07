@@ -23,7 +23,9 @@ $aliases['en'] = array(
 	'MvVideoFeed' => array( 'MvVideoFeed' ),
 );
 
-/** Arabic (العربية) */
+/** Arabic (العربية)
+ * @author Meno25
+ */
 $aliases['ar'] = array(
 	'MediaSearch' => array( 'بحث_ميديا' ),
 	'Mv_Add_Stream' => array( 'إضافة_ستريم_مف' ),
@@ -37,7 +39,9 @@ $aliases['ar'] = array(
 	'MvVideoFeed' => array( 'تلقيم_فيديو_مف' ),
 );
 
-/** Egyptian Spoken Arabic (مصرى) */
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Meno25
+ */
 $aliases['arz'] = array(
 	'MediaSearch' => array( 'بحث_ميديا' ),
 	'Mv_Add_Stream' => array( 'إضافة_ستريم_مف' ),

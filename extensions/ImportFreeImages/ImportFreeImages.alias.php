@@ -13,12 +13,16 @@ $aliases['en'] = array(
 	'ImportFreeImages' => array( 'ImportFreeImages' ),
 );
 
-/** Arabic (العربية) */
+/** Arabic (العربية)
+ * @author Meno25
+ */
 $aliases['ar'] = array(
 	'ImportFreeImages' => array( 'استيراد_صور_حرة' ),
 );
 
-/** Egyptian Spoken Arabic (مصرى) */
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Meno25
+ */
 $aliases['arz'] = array(
 	'ImportFreeImages' => array( 'استيراد_صور_حرة' ),
 );

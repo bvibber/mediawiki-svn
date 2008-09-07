@@ -14,13 +14,17 @@ $aliases['en'] = array(
 	'Disabledusers' => array( 'DisabledUsers', 'Disabledusers' ),
 );
 
-/** Arabic (العربية) */
+/** Arabic (العربية)
+ * @author Meno25
+ */
 $aliases['ar'] = array(
 	'PasswordReset' => array( 'إعادة_ضبط_كلمة_السر' ),
 	'Disabledusers' => array( 'مستخدمون_معطلون' ),
 );
 
-/** Egyptian Spoken Arabic (مصرى) */
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Meno25
+ */
 $aliases['arz'] = array(
 	'PasswordReset' => array( 'إعادة_ضبط_كلمة_السر' ),
 	'Disabledusers' => array( 'مستخدمون_معطلون' ),

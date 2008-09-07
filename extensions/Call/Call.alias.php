@@ -13,12 +13,16 @@ $aliases['en'] = array(
 	'Call' => array( 'Call' ),
 );
 
-/** Arabic (العربية) */
+/** Arabic (العربية)
+ * @author Meno25
+ */
 $aliases['ar'] = array(
 	'Call' => array( 'استدعاء' ),
 );
 
-/** Egyptian Spoken Arabic (مصرى) */
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Meno25
+ */
 $aliases['arz'] = array(
 	'Call' => array( 'استدعاء' ),
 );

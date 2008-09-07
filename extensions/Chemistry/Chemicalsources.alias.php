@@ -13,12 +13,16 @@ $aliases['en'] = array(
 	'ChemicalSources' => array( 'ChemicalSources' ),
 );
 
-/** Arabic (العربية) */
+/** Arabic (العربية)
+ * @author Meno25
+ */
 $aliases['ar'] = array(
 	'ChemicalSources' => array( 'مصادر_كيميائية' ),
 );
 
-/** Egyptian Spoken Arabic (مصرى) */
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Meno25
+ */
 $aliases['arz'] = array(
 	'ChemicalSources' => array( 'مصادر_كيميائية' ),
 );

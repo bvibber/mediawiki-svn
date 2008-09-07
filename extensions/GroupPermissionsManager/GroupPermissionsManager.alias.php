@@ -16,14 +16,18 @@ $aliases['en'] = array(
 	'SortPermissions' => array( 'SortPermissions' ),
 );
 
-/** Arabic (العربية) */
+/** Arabic (العربية)
+ * @author Meno25
+ */
 $aliases['ar'] = array(
 	'GroupPermissions' => array( 'سماحات_المجموعة' ),
 	'RemoveUnusedGroups' => array( 'إزالة_المجموعات_غير_المستخدمة' ),
 	'SortPermissions' => array( 'ترتيب_السماحات' ),
 );
 
-/** Egyptian Spoken Arabic (مصرى) */
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Meno25
+ */
 $aliases['arz'] = array(
 	'GroupPermissions' => array( 'سماحات_المجموعة' ),
 	'RemoveUnusedGroups' => array( 'إزالة_المجموعات_غير_المستخدمة' ),

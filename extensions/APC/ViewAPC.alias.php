@@ -13,12 +13,16 @@ $aliases['en'] = array(
 	'ViewAPC' => array( 'ViewAPC' ),
 );
 
-/** Arabic (العربية) */
+/** Arabic (العربية)
+ * @author Meno25
+ */
 $aliases['ar'] = array(
 	'ViewAPC' => array( 'عرض_إيه_بي_سي' ),
 );
 
-/** Egyptian Spoken Arabic (مصرى) */
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Meno25
+ */
 $aliases['arz'] = array(
 	'ViewAPC' => array( 'عرض_إيه_بى_سى' ),
 );
