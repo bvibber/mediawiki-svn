@@ -212,7 +212,4 @@ public class Configuration {
 		verbose = v;		
 	}
 	
-	public String getLibraryPath(){
-		return getString("MWConfig","lib","./lib");
-	}
 }

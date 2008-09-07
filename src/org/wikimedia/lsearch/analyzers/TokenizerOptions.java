@@ -35,10 +35,19 @@ public class TokenizerOptions {
 		this.exactCase = exactCase;
 	}
 	
+	/** options we use for content indexing */
+	public static class ContentOptions extends TokenizerOptions {
+		public ContentOptions(boolean exactCase){
+			super(exactCase);
+			this.noCaseDetection = true;
+		}
+	}
+	
 	public static class NoRelocation extends TokenizerOptions {	
 		public NoRelocation(boolean exactCase){
 			super(exactCase);
 			this.relocationParsing = false;
+			this.noCaseDetection = true;
 		}
 	}
 	

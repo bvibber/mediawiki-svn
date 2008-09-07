@@ -15,4 +15,7 @@ public interface ArticleInfo {
 	
 	/** How old the indexed page is in days (relative to now) */
 	public float daysOld(int docid) throws IOException;
+	
+	/** Get namespace of article */
+	public short namespace(int docid) throws IOException;
 }

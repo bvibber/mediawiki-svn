@@ -19,14 +19,16 @@ public class ArticleQueryWrap extends CustomBoostQuery {
 	ArticleInfo article;
 	ArticleScaling scale;	
 	AggregateInfo rank;
+	ArticleNamespaceScaling nsScaling;
 	/** scale coeff for subpages */
 	final float SUBPAGE = 0.5f;
 	
-	public ArticleQueryWrap(Query subQuery, ArticleInfo article, ArticleScaling scale, AggregateInfo rank) {
+	public ArticleQueryWrap(Query subQuery, ArticleInfo article, ArticleScaling scale, AggregateInfo rank, ArticleNamespaceScaling nsScaling) {
 		super(subQuery);
 		this.article = article;
 		this.scale = scale;
 		this.rank = rank;
+		this.nsScaling = nsScaling;
 	}
 	
 	@Override
@@ -39,7 +41,11 @@ public class ArticleQueryWrap extends CustomBoostQuery {
 		if(rank != null)
 			r = rank.rank(doc);
 		
-		return sub * r * scale.score(subQueryScore,article.daysOld(doc));		
+		float ns = 1;
+		if(nsScaling != null)
+			ns = nsScaling.scaleNamespace(article.namespace(doc));
+		
+		return sub * r * ns * scale.score(subQueryScore,article.daysOld(doc));		
 	}
 	
 	@Override
@@ -47,12 +53,14 @@ public class ArticleQueryWrap extends CustomBoostQuery {
 		Explanation sub = new Explanation(article.isSubpage(doc)? SUBPAGE : 1, "subpage");
 		Explanation scl = new Explanation(scale.score(subQueryExpl.getValue(),article.daysOld(doc)),scale.explain(subQueryExpl.getValue(),article.daysOld(doc))+" (age scalling for "+article.daysOld(doc)+" days)");
 		Explanation ran = new Explanation(rank==null? 1 : rank.rank(doc), "additional rank");
+		Explanation ns = new Explanation(nsScaling==null? 1 : nsScaling.scaleNamespace(article.namespace(doc)), "additional rank (namespace="+article.namespace(doc)+")");
 		
-		Explanation exp = new Explanation( sub.getValue()*scl.getValue()*ran.getValue(), "article-scaled score, transformation of:");
+		Explanation exp = new Explanation( sub.getValue()*scl.getValue()*ran.getValue()*ns.getValue(), "article-scaled score, transformation of:");
 		exp.addDetail(subQueryExpl);
 		exp.addDetail(sub);
 		exp.addDetail(scl);
 		exp.addDetail(ran);
+		exp.addDetail(ns);
 		return exp;
 	}
 	

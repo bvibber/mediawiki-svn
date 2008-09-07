@@ -2,6 +2,8 @@ package org.wikimedia.lsearch.util;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.net.URL;
 import java.text.MessageFormat;
 import java.util.Collection;
@@ -436,18 +438,17 @@ public class Localization {
 		if(interwiki != null)
 			return;
 		interwiki = new HashSet<String>();
-		String lib = Configuration.open().getString("MWConfig","lib","./lib");
-		String path = lib+"/interwiki.map";
+		InputStream in = Localization.class.getResourceAsStream("/interwiki.map");
 		try{
-			BufferedReader r = new BufferedReader(new FileReader(path));
+			BufferedReader r = new BufferedReader(new InputStreamReader(in));
 			String line;
 			while((line = r.readLine()) != null){
 				interwiki.add(line.trim());
 			}
-			log.debug("Read interwiki map from "+path);
+			log.debug("Read interwiki map from jar file");
 			r.close();
 		} catch(Exception e){
-			log.warn("Cannot read interwiki map from "+path);
+			log.warn("Cannot read interwiki map from jar file");
 		}
 	}
 	

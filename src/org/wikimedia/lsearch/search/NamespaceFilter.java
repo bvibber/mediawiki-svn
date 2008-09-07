@@ -62,7 +62,7 @@ public class NamespaceFilter implements Serializable {
 		if (namespaces != null && !namespaces.equals("")) {
 			String[] bits = namespaces.split(",");
 			for (int i = 0; i < bits.length; i++) {
-				included.set(Integer.parseInt(bits[i]));
+				included.set(Integer.parseInt(bits[i].trim()));
 			}
 		}
 	}
@@ -116,6 +116,10 @@ public class NamespaceFilter implements Serializable {
 	
 	public boolean contains(int namespace){
 		return included.get(namespace);
+	}
+	
+	public boolean contains(String namespace){
+		return included.get(Integer.parseInt(namespace));
 	}
 	
 	public BitSet getIncluded() {

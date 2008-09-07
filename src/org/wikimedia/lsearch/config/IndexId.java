@@ -9,6 +9,7 @@ import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
 import org.apache.log4j.Logger;
+import org.apache.lucene.search.ArticleNamespaceScaling;
 import org.wikimedia.lsearch.analyzers.FilterFactory;
 import org.wikimedia.lsearch.search.NamespaceFilter;
 import org.wikimedia.lsearch.search.SearcherCache;
@@ -139,6 +140,9 @@ public class IndexId {
 	/** filter set to true for namespaces with subpages */
 	protected NamespaceFilter nsWithSubpages = null;
 	
+	/** namespaces with content (from initialise settings) */
+	protected NamespaceFilter contentNamespaces = null;
+	
 	/** If we should be using additional global rank for scores */
 	protected Boolean useAdditionalRank = null;
 	
@@ -154,6 +158,9 @@ public class IndexId {
 
 	/** locks used to serialize transactions on different transaction paths */
 	protected Hashtable<Transaction,Lock> transactionLocks = new Hashtable<Transaction,Lock>();
+	
+	/** Namespace boost mapping */
+	protected ArticleNamespaceScaling namespaceScaling = null;
 
 	/**
 	 * Get index Id object given it's string representation, the actual object
@@ -883,6 +890,15 @@ public class IndexId {
 		}		
 		return defaultNs;		
 	}
+
+	/** Content namespaces */
+	public NamespaceFilter getContentNamespaces(){
+		if(contentNamespaces == null){
+			contentNamespaces = GlobalConfiguration.getInstance().getContentNamespaces(this);
+		}		
+		return contentNamespaces;		
+	}
+	
 	
 	/** Get namespaces where subpages are enabled */
 	public NamespaceFilter getNamespacesWithSubpages(){
@@ -942,6 +958,13 @@ public class IndexId {
 	/** Get transaction lock for a transaction type */
 	public Lock getTransactionLock(Transaction trans) {
 		return transactionLocks.get(trans);
+	}
+	
+	/** Namespace boost for various namespaces */
+	public ArticleNamespaceScaling getNamespaceScaling(){
+		if(namespaceScaling == null)
+			namespaceScaling = GlobalConfiguration.getInstance().getNamespaceScaling(getDBname());
+		return namespaceScaling;
 	}
 
 }

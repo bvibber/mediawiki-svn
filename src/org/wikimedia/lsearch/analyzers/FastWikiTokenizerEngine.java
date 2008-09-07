@@ -315,12 +315,16 @@ public class FastWikiTokenizerEngine {
 			exact.setPositionIncrement(gap);
 			if(gap != 1)
 				gap = 1; // reset token gap
-			if(!options.noCaseDetection){
+			if(!options.noCaseDetection){	
 				if(allUpperCase)
 					exact.setType("upper");
 				else if(titleCase)
 					exact.setType("titlecase");
 			}
+			// detect hyphenation (takes presedence over case detection)
+			if(cur+1<textLength && text[cur]=='-' && (Character.isLetterOrDigit(text[cur+1]) || decomposer.isCombiningChar(text[cur+1])))
+				exact.setType("with_hyphen");
+			
 			addToTokens(exact);
 			
 			// extra uppercase token, prevent exact-matches for titles
@@ -1086,9 +1090,10 @@ public class FastWikiTokenizerEngine {
 						}
 						continue;
 					} else{ // external link
-						if(validateExternalLink()){
+						// NOTE: we will parse all URLs! 
+						/* if(validateExternalLink()){
 							state = ParserState.EXTERNAL_URL;
-						}
+						} */
 						continue;
 					}
 				case '{':

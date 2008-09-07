@@ -27,7 +27,7 @@ import org.wikimedia.lsearch.highlight.HighlightResult;
 import org.wikimedia.lsearch.index.IndexUpdateRecord;
 import org.wikimedia.lsearch.search.HighlightPack;
 import org.wikimedia.lsearch.search.NamespaceFilter;
-import org.wikimedia.lsearch.search.NamespaceFilterWrapper;
+import org.wikimedia.lsearch.search.FilterWrapper;
 import org.wikimedia.lsearch.search.SearcherCache;
 import org.wikimedia.lsearch.search.SuffixFilterWrapper;
 import org.wikimedia.lsearch.search.SuffixNamespaceWrapper;
@@ -186,7 +186,7 @@ public class RMIMessengerClient {
 		}
 	}
 	
-	public HighlightPack searchPart(IndexId iid, String searchterm, Query query, NamespaceFilterWrapper filter, int offset, int limit, boolean explain, String host){
+	public HighlightPack searchPart(IndexId iid, String searchterm, Query query, FilterWrapper filter, int offset, int limit, boolean explain, String host){
 		try {
 			RMIMessenger r = messengerFromCache(host);
 			log.debug("Calling searchPart("+iid+",("+query+"),"+offset+","+limit+") on "+host);

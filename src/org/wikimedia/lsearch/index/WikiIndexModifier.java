@@ -49,6 +49,7 @@ import org.wikimedia.lsearch.analyzers.FieldNameFactory;
 import org.wikimedia.lsearch.analyzers.FilterFactory;
 import org.wikimedia.lsearch.analyzers.KeywordsAnalyzer;
 import org.wikimedia.lsearch.analyzers.LanguageAnalyzer;
+import org.wikimedia.lsearch.analyzers.LimitTokenFilter;
 import org.wikimedia.lsearch.analyzers.RelatedAnalyzer;
 import org.wikimedia.lsearch.analyzers.ReusableLanguageAnalyzer;
 import org.wikimedia.lsearch.analyzers.StopWords;
@@ -103,6 +104,9 @@ public class WikiIndexModifier {
 	
 	/** By how much should be anchor text score by scaled (in alttitle) */
 	static public final float ANCHOR_SCALE = 0.1f;
+	
+	/** How many tokens are counted as "beginning of article" */
+	static public final int BEGIN_LIMIT = 500;
 
 	/** Simple implementation of batch addition and deletion */
 	class SimpleIndexModifier {
@@ -688,6 +692,8 @@ public class WikiIndexModifier {
 		
 		// tranform record so that unnecessary stuff is deleted, e.g. some redirects
 		transformArticleForIndexing(article);
+		
+		NamespaceFilter contentNamespaces = iid.getContentNamespaces();
 				
 		// page_id from database, used to look up and replace entries on index updates
 		doc.add(new Field("key", article.getIndexKey(), Field.Store.YES, Field.Index.UN_TOKENIZED));
@@ -698,15 +704,17 @@ public class WikiIndexModifier {
 		// raw rank value
 		doc.add(new Field("rank",Integer.toString(article.getRank()),
 				Field.Store.YES, Field.Index.NO));
-		
+				
 		// redirect namespace
 		if(article.isRedirect()){
 			doc.add(new Field("redirect_namespace",Integer.toString(article.getRedirectTargetNamespace()),
 					Field.Store.NO, Field.Index.UN_TOKENIZED));
 		}
 
-		// related
-		makeRelated(doc,"related",article,iid,stopWords,analyzer);
+		if(contentNamespaces.contains(article.getNamespace())){
+			// related
+			makeRelated(doc,"related",article,iid,stopWords,analyzer);
+		}
 		
 		// date
 		SimpleDateFormat isoDate = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'");
@@ -714,6 +722,11 @@ public class WikiIndexModifier {
 		doc.add(new Field("date",isoDate.format(article.getDate()),Store.YES,Index.NO));
 		
 		float rankBoost = transformRank(article.getRank());
+		
+		// prefix title for prefix: searches
+		Field prefix = new Field("prefix", article.getNsTitleKey().toLowerCase(), Field.Store.NO, Field.Index.UN_TOKENIZED);				 
+		prefix.setBoost(rankBoost);
+		doc.add(prefix);
 
 		// add both title and redirects to content, so queries that match part of title and content won't fail
 		String contents = article.getContents();
@@ -727,28 +740,27 @@ public class WikiIndexModifier {
 			String anchoredContents = contents +"\n\n"+serializeAnchors(article.getAnchorRank(),bs.isExactCase());
 			
 			// tokenize the article to fill in pre-analyzed fields
-			TokenizerOptions options = new TokenizerOptions(bs.isExactCase());
+			TokenizerOptions options = new TokenizerOptions.ContentOptions(bs.isExactCase());
 			if(filters.isSpellCheck())
 				options = new TokenizerOptions.SpellCheck();
 			WikiTokenizer tokenizer = new WikiTokenizer(anchoredContents,iid,options);
 			tokenizer.tokenize();
 			
 			// title
-			Field title = new Field(fields.title(), article.getTitle(),Field.Store.YES, Field.Index.TOKENIZED);				 
+			Field title = new Field(fields.title(), article.getTitle(), Field.Store.YES, Field.Index.TOKENIZED);				 
 			title.setBoost(rankBoost);
 			doc.add(title);
 			
-			// contents 
-			doc.add(new Field(fields.contents(),
-					new LanguageAnalyzer(filters,tokenizer).tokenStream(fields.contents(),"")));
+			Analyzer contentAnalyzer = new LanguageAnalyzer(filters,tokenizer);
 			
-			if(bs.getFilters().hasStemmer()){
-				// stemtitle
-				Field stemtitle = new Field(fields.stemtitle(), article.getTitle(),Field.Store.NO, Field.Index.TOKENIZED);				
-				stemtitle.setBoost(rankBoost);
-				doc.add(stemtitle);
+			// contents 
+			doc.add(new Field(fields.contents(),contentAnalyzer.tokenStream(fields.contents(),"")));
+			
+			if(contentNamespaces.contains(article.getNamespace())){
+				// article beginnings
+				doc.add(new Field(fields.begin(),new LimitTokenFilter(contentAnalyzer.tokenStream(fields.begin(),""),BEGIN_LIMIT)));
 			}
-
+			
 			// altititle
 			makeAlttitle(doc,fields.alttitle(),article,iid,stopWords,tokenizer,analyzer,fields.isExactCase());
 			

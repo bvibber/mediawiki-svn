@@ -7,6 +7,7 @@ import java.util.Collections;
 import java.util.HashSet;
 import java.util.Hashtable;
 import java.util.Set;
+import java.util.zip.GZIPInputStream;
 
 import org.apache.log4j.Logger;
 import org.apache.lucene.analysis.SimpleAnalyzer;
@@ -177,9 +178,9 @@ public class Warmup {
 		String lang = iid.getLangCode();
 		FieldBuilder.BuilderSet b = new FieldBuilder(iid).getBuilder();
 		WikiQueryParser parser = new WikiQueryParser(b.getFields().contents(),"0",Analyzers.getSearcherAnalyzer(iid,false),b,WikiQueryParser.NamespacePolicy.IGNORE,null);
-		Terms terms = getTermsForLang(lang);
 		
 		try{	
+			Terms terms = getTermsForLang(lang);
 			for(int i=0; i < count ; i++){
 				Query q = parser.parse(terms.next());
 				Hits hits = is.search(q);
@@ -201,13 +202,12 @@ public class Warmup {
 		}		
 	}
 
-	/** Get database of example search terms for language */
-	protected static Terms getTermsForLang(String lang) {
-		String lib = Configuration.open().getLibraryPath();
+	/** Get database of example search terms for language 
+	 * @throws IOException */
+	protected static Terms getTermsForLang(String lang) throws IOException {
 		if("en".equals(lang) || "de".equals(lang) || "es".equals(lang) || "fr".equals(lang) || "it".equals(lang) || "pt".equals(lang)){
 			if( !langTerms.contains(lang) )
-				langTerms.put(lang,new WordTerms(lib+Configuration.PATH_SEP+"dict"+Configuration.PATH_SEP+"terms-"+lang+".txt.gz"));
-			
+				langTerms.put(lang,new WordTerms(new GZIPInputStream(Warmup.class.getResourceAsStream("/dict/terms-"+lang+".txt.gz"))));
 			return langTerms.get(lang);
 		} else
 			return new SampleTerms();		
@@ -221,7 +221,7 @@ public class Warmup {
 		for(NamespaceFilter filter : filters){
 			try {
 				is.search(new TermQuery(new Term("contents","wikipedia")),
-						new NamespaceFilterWrapper(filter));
+						new FilterWrapper(filter));
 			} catch (IOException e) {
 				log.warn("I/O error while preloading filter for "+iid+" for filter "+filter+" : "+e.getMessage());
 			}
@@ -234,7 +234,7 @@ public class Warmup {
 			FieldBuilder.BuilderSet b = new FieldBuilder(iid).getBuilder();
 			WikiQueryParser parser = new WikiQueryParser(b.getFields().contents(),"0",Analyzers.getSearcherAnalyzer(iid,false),b,WikiQueryParser.NamespacePolicy.IGNORE,null);
 			Query q = parser.parse("wikimedia foundation");
-			is.search(q,new NamespaceFilterWrapper(new NamespaceFilter("0")));
+			is.search(q,new FilterWrapper(new NamespaceFilter("0")));
 		} catch (IOException e) {
 			log.error("Error warming up local IndexSearcherMul for "+iid);
 		}

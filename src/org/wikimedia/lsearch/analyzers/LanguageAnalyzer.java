@@ -68,7 +68,7 @@ public class LanguageAnalyzer extends Analyzer {
 		else
 			return out;
 	}
-
+	
 	/** Filter the tokens via the custom filter. For instance, to delete
 	 * stop words, or in Thai to tokenize words properly. 
 	 */

@@ -1,9 +1,12 @@
 package org.wikimedia.lsearch.util;
 
 import java.io.BufferedReader;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.BitSet;
 
 import org.apache.log4j.Logger;
@@ -46,10 +49,11 @@ public class UnicodeDecomposer {
 		return decomposition[ch];
 	}
 	
-	protected UnicodeDecomposer(String path){
-		initFromFile(path);
+	protected UnicodeDecomposer(String resource){
+		initFromResource(resource);
 		log.debug("Loaded unicode decomposer");
 	}
+	
 	
 	public boolean isCombiningChar(char ch){
 		return combining[ch];
@@ -62,21 +66,16 @@ public class UnicodeDecomposer {
 	 */
 	synchronized public static UnicodeDecomposer getInstance(){
 		if(instance == null){
-			String lib = Configuration.open().getString("MWConfig","lib","./lib");
-			instance = new UnicodeDecomposer(lib+"/UnicodeData.txt");
+			instance = new UnicodeDecomposer("/UnicodeData.txt");
 		}
 		
 		return instance;
 	}
 		
-	/**
-	 * Read unicode data from the UnicodeData.txt file
-	 * @param path
-	 */
-	protected void initFromFile(String path){
+	protected void initFromResource(String resource){
 		BitSet letters = new BitSet(65536);
 		try {
-			BufferedReader in = new BufferedReader(new FileReader(path));
+			BufferedReader in = new BufferedReader(new InputStreamReader(UnicodeDecomposer.class.getResourceAsStream(resource)));
 			String line;
 			char ch,chd;
 			int chVal;
@@ -108,7 +107,7 @@ public class UnicodeDecomposer {
 			}
 			
 			// second pass, make the decomposition table
-			in = new BufferedReader(new FileReader(path));
+			in = new BufferedReader(new InputStreamReader(UnicodeDecomposer.class.getResourceAsStream(resource)));
 			while((line = in.readLine()) != null){
 				String[] parts = line.split(";");
 				chVal =  Integer.parseInt(parts[0],16);
@@ -148,15 +147,12 @@ public class UnicodeDecomposer {
 				}					
 			}
 			in.close();
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-			log.error("Cannot find file "+path);
 		} catch (IOException e) {
 			e.printStackTrace();
-			log.error("Error reading unicode data file from "+path);
+			log.error("Error reading unicode data file from resource : "+e.getMessage());
 		} catch (Exception e){
 			e.printStackTrace();
-			log.error("Error in unicode data file at "+path+" : "+e.getMessage());
+			log.error("Error in unicode data file : "+e.getMessage());
 		}
 	}
 

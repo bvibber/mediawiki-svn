@@ -23,4 +23,8 @@ public class ArticleInfoImpl implements ArticleInfo, Serializable {
 		return src.daysOld(docid);
 	}
 
+	public short namespace(int docid) throws IOException {
+		return src.namespace(docid);
+	}
+
 }

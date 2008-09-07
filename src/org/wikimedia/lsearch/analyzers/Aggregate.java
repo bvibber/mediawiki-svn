@@ -69,7 +69,7 @@ public class Aggregate {
 	private ArrayList<Token> toTokenArray(TokenStream stream) throws IOException {
 		ArrayList<Token> tt = new ArrayList<Token>();
 		Token t = null;
-		while( (t = stream.next()) != null){
+		while( (t = stream.next()) != null && tt.size() < 0xff-1){
 			tt.add(t);
 		}
 		return tt;
@@ -113,6 +113,9 @@ public class Aggregate {
 		
 		for(int i=0;i<items.size();i++){
 			Aggregate ag = items.get(i);
+			assert ag.length() < 0xff;
+			assert ag.noAliasLength() < 0xff;
+			assert ag.getNoStopWordsLength() < 0xff;
 			buf[i*8] = (byte)(ag.noAliasLength() & 0xff);
 			buf[i*8+1] = (byte)(ag.getNoStopWordsLength() & 0xff);
 			int boost = Float.floatToIntBits(ag.boost()); 

@@ -234,16 +234,18 @@ public class PHPParser {
 		Pattern db = Pattern.compile("[\"'](.*?)[\"']\\s*=>\\s*array\\s*\\((.*?)\\)",flags);
 		Pattern entry = Pattern.compile("(-?[0-9A-Z_]+)\\s*=>\\s*([01true])",flags);
 		String t = fetchArray(text,"'wgNamespacesToBeSearchedDefault'");
-		Matcher md = db.matcher(t);
-		while(md.find()){
-			String dbname = md.group(1);
-			NamespaceFilter nsf = new NamespaceFilter();
-			Matcher me = entry.matcher(md.group(2));
-			while(me.find()){
-				if(!me.group(2).equals("0"))
-					nsf.set(parseNamespace(me.group(1)));
+		if(t != null && t.length()>0){
+			Matcher md = db.matcher(t);
+			while(md.find()){
+				String dbname = md.group(1);
+				NamespaceFilter nsf = new NamespaceFilter();
+				Matcher me = entry.matcher(md.group(2));
+				while(me.find()){
+					if(!me.group(2).equals("0"))
+						nsf.set(parseNamespace(me.group(1)));
+				}
+				ret.put(dbname,nsf);
 			}
-			ret.put(dbname,nsf);
 		}
 		return ret;
 	}
@@ -257,16 +259,18 @@ public class PHPParser {
 		Pattern db = Pattern.compile("[\"'](.*?)[\"']\\s*=>\\s*array\\s*\\((.*?)\\)",flags);
 		Pattern entry = Pattern.compile("(-?[0-9A-Z_]+)\\s*=>\\s*([01true])",flags);
 		String t = fetchArray(text,"'wgNamespacesWithSubpages'");
-		Matcher md = db.matcher(t);
-		while(md.find()){
-			String dbname = md.group(1);
-			NamespaceFilter nsf = new NamespaceFilter();
-			Matcher me = entry.matcher(md.group(2));
-			while(me.find()){
-				if(!me.group(2).equals("0"))
-					nsf.set(parseNamespace(me.group(1)));
+		if(t != null && t.length() > 0){
+			Matcher md = db.matcher(t);
+			while(md.find()){
+				String dbname = md.group(1);
+				NamespaceFilter nsf = new NamespaceFilter();
+				Matcher me = entry.matcher(md.group(2));
+				while(me.find()){
+					if(!me.group(2).equals("0"))
+						nsf.set(parseNamespace(me.group(1)));
+				}
+				ret.put(dbname,nsf);
 			}
-			ret.put(dbname,nsf);
 		}
 		return ret;
 	}
@@ -304,15 +308,17 @@ public class PHPParser {
 		Pattern db = Pattern.compile("[\"'](.*?)[\"']\\s*=>\\s*array\\s*\\((.*?)\\)",flags);
 		Pattern entry = Pattern.compile("(-?[0-9]+)\\s*=>\\s*[\"'](.*?)[\"']",flags);
 		String t = fetchArray(text,"'wgExtraNamespaces'");
-		Matcher md = db.matcher(t);
-		while(md.find()){
-			String dbname = md.group(1);
-			Hashtable<Integer,String> extra = new Hashtable<Integer,String>();
-			Matcher me = entry.matcher(md.group(2));
-			while(me.find()){
-				extra.put(Integer.parseInt(me.group(1)),me.group(2));
+		if(t != null && t.length() > 0){
+			Matcher md = db.matcher(t);
+			while(md.find()){
+				String dbname = md.group(1);
+				Hashtable<Integer,String> extra = new Hashtable<Integer,String>();
+				Matcher me = entry.matcher(md.group(2));
+				while(me.find()){
+					extra.put(Integer.parseInt(me.group(1)),me.group(2));
+				}
+				ret.put(dbname,extra);
 			}
-			ret.put(dbname,extra);
 		}
 		return ret;
 	}
@@ -343,6 +349,23 @@ public class PHPParser {
 				comment = true;
 		}
 		return null;
+	}
+	
+	/** Get wgContentNamespaces from InitialiseSettings */
+	public Hashtable<String,NamespaceFilter> getContentNamespaces(String text){
+		text = text.replaceAll("(#.*)",""); // strip comments
+		Hashtable<String,NamespaceFilter> contNs = new Hashtable<String,NamespaceFilter>();
+		
+		int flags = Pattern.CASE_INSENSITIVE | Pattern.DOTALL;
+		String t = fetchArray(text,"'wgContentNamespaces'");
+		if(t != null && t.length()>0){
+			Pattern entry = Pattern.compile("[\"'](.*?)[\"']\\s*=>\\s*array\\s*\\(\\s*(.*?)\\s*\\)",flags);
+			Matcher me = entry.matcher(t);
+			while(me.find()){
+				contNs.put(me.group(1),new NamespaceFilter(me.group(2).trim()));				
+			}
+		}
+		return contNs;
 	}
 	
 	public String readFile(String path){
@@ -411,6 +434,7 @@ public class PHPParser {
 		System.out.println(p.getMetaNamespaceTalk(initset));
 		System.out.println(p.getExtraNamespaces(initset));
 		System.out.println(p.getNamespacesWithSubpages(initset));
+		System.out.println(p.getContentNamespaces(initset));
 		
 	}
 }

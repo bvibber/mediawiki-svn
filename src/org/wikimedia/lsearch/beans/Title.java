@@ -1,5 +1,8 @@
 package org.wikimedia.lsearch.beans;
 
+import org.wikimedia.lsearch.config.IndexId;
+import org.wikimedia.lsearch.util.Localization;
+
 /** Wiki article title */
 public class Title implements java.io.Serializable {
     public int namespace;
@@ -117,6 +120,22 @@ public class Title implements java.io.Serializable {
      */
     public String getNamespaceAsString(){
    	 return Integer.toString(namespace);
+    }
+
+    /**
+     * Make Wikipedia:Contents from 4:Contents using localisation. This function could be a
+     * synchronization bottleneck and should not be used in highly concurrent environment. 
+     * 
+     * @param key
+     * @return
+     */
+    public static String textualFromKey(String key, IndexId iid) {
+   	 int sc = key.indexOf(':');
+   	 String nsName = Localization.getNamespaceText(iid.getLangCode(),Integer.parseInt(key.substring(0,sc)),iid.getDBname());
+   	 if(nsName.equals("")) // main ns
+   		 return key.substring(sc+1);
+   	 else
+   		 return nsName + key.substring(sc);
     }
 
 }

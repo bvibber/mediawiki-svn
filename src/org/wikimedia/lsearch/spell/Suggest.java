@@ -41,7 +41,7 @@ import org.wikimedia.lsearch.ranks.ObjectCache;
 import org.wikimedia.lsearch.ranks.StringList;
 import org.wikimedia.lsearch.ranks.StringList.LookupSet;
 import org.wikimedia.lsearch.search.NamespaceFilter;
-import org.wikimedia.lsearch.search.NamespaceFilterWrapper;
+import org.wikimedia.lsearch.search.FilterWrapper;
 import org.wikimedia.lsearch.search.SearcherCache;
 import org.wikimedia.lsearch.spell.api.NgramIndexer;
 import org.wikimedia.lsearch.spell.dist.DoubleMetaphone;

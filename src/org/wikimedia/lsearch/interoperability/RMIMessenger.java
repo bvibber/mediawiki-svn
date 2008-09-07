@@ -19,7 +19,7 @@ import org.wikimedia.lsearch.highlight.HighlightResult;
 import org.wikimedia.lsearch.index.IndexUpdateRecord;
 import org.wikimedia.lsearch.search.HighlightPack;
 import org.wikimedia.lsearch.search.NamespaceFilter;
-import org.wikimedia.lsearch.search.NamespaceFilterWrapper;
+import org.wikimedia.lsearch.search.FilterWrapper;
 import org.wikimedia.lsearch.search.SuffixFilterWrapper;
 import org.wikimedia.lsearch.search.SuffixNamespaceWrapper;
 import org.wikimedia.lsearch.search.SearcherCache.SearcherPoolStatus;
@@ -83,7 +83,7 @@ public interface RMIMessenger extends Remote {
 	 * @param limit
 	 * @throws RemoteException
 	 */
-	public HighlightPack searchPart(String dbrole, String searchterm, Query query, NamespaceFilterWrapper filter, int offset, int limit, boolean explain) throws RemoteException;
+	public HighlightPack searchPart(String dbrole, String searchterm, Query query, FilterWrapper filter, int offset, int limit, boolean explain) throws RemoteException;
 	
 	/**
 	 * Returns index queue size. Needed for incremental updater, so it doesn't overload the indexer. 

@@ -113,6 +113,9 @@ public class Analyzers {
 					getReusableTitleIndexAnalyzer(filters.getNoStemmerFilterFactory(),exactCase));
 			analyzer.addAnalyzer(fields.sections(),
 					getReusableTitleIndexAnalyzer(filters.getNoStemmerFilterFactory(),exactCase));
+			
+			// for testing
+			analyzer.addAnalyzer(fields.contents(), new ReusableLanguageAnalyzer(filters,new TokenizerOptions.ContentOptions(exactCase)));
 		}
 		
 		return analyzer;

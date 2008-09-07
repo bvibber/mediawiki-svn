@@ -507,6 +507,8 @@ public class Links {
 			sum += r;
 		// FIXME: numInLinks is document count, while anchors are counted in combined occurance/doc count form
 		map.put(Title.titleFromKey(key),numInLinks);
+		if(!key.startsWith("0:"))
+			map.put(Title.textualFromKey(key,iid),numInLinks);
 		return map;
 	}
 	

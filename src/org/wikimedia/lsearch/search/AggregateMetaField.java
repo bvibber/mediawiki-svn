@@ -69,7 +69,9 @@ public class AggregateMetaField {
 	public static AggregateMetaFieldSource getCachedSource(IndexReader reader, String field) {
 		synchronized(lock){
 			// this will produce exception if stuff is not properly cached at index deployment
-			return cache.get(reader.directory()).get(field);
+			AggregateMetaFieldSource src = cache.get(reader.directory()).get(field);
+			assert src.reader.directory() == reader.directory();
+			return src;
 		}
 	}
 
@@ -211,10 +213,10 @@ public class AggregateMetaField {
 		private void throwException(int docid, int position, int lastValid){
 			try {
 				// first try to give more detailed error
-				throw new ArrayIndexOutOfBoundsException("Requestion position "+position+" on field "+field+" for "+docid+" ["+reader.document(docid).get("namespace")+":"+reader.document(docid).get("title")+"], but last valid index is "+lastValid);
+				throw new ArrayIndexOutOfBoundsException("Requested position "+position+" on field "+field+" for "+docid+" ["+reader.document(docid).get("namespace")+":"+reader.document(docid).get("title")+"], but last valid index is "+lastValid+" on "+reader.directory());
 			} catch (IOException e) {
 				e.printStackTrace();
-				throw new ArrayIndexOutOfBoundsException("Requestion position "+position+" on field "+field+" unavailable");
+				throw new ArrayIndexOutOfBoundsException("Requested position "+position+" on field "+field+" unavailable"+" on "+reader.directory());
 			}			
 		}
 		

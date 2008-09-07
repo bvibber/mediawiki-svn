@@ -8,6 +8,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 
+import org.apache.lucene.analysis.KStemFilter;
 import org.apache.lucene.analysis.Token;
 import org.apache.lucene.analysis.TokenFilter;
 import org.apache.lucene.analysis.TokenStream;
@@ -86,7 +87,8 @@ public class FilterFactory {
 			useStemmer = true;
 			// figure out stemmer
 			if(lang.equals("en"))
-				snowballName = "English";
+				stemmer = KStemFilter.class;
+				//snowballName = "English";
 			//stemmer = PorterStemFilter.class; // 2x faster but less accurate
 			else if(lang.equals("da"))
 				snowballName = "Danish";
@@ -129,6 +131,11 @@ public class FilterFactory {
 			usingCJK = true;
 		} else 
 			useLangFilter = false;
+		
+		// add aliases like anti-aliasing -> antialiasing
+		addAdditionalFilter(HyphenFilter.class);
+		// add acronym aliases, e.g. a.n.t. -> ant
+		addAdditionalFilter(AcronymFilter.class);
 		
 		// additional filters
 		if(type == Type.SPELL_CHECK)

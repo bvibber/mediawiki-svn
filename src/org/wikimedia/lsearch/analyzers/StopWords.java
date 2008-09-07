@@ -1,8 +1,10 @@
 package org.wikimedia.lsearch.analyzers;
 
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FilenameFilter;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -110,20 +112,13 @@ public class StopWords {
 		synchronized(cachePredefined){
 			try{
 				long start = System.currentTimeMillis();
-				String path = Configuration.open().getLibraryPath()+Configuration.PATH_SEP+"dict"+Configuration.PATH_SEP;
-				File dir = new File(path);
-				File[] files = dir.listFiles(new FilenameFilter(){
-					public boolean accept(File dir, String name) {
-						if(name.startsWith("stopwords"))
-							return true;
-						return false;
-					}			
-				});
-				for(File f : files){
-					String name = f.getName();
+				BufferedReader list = new BufferedReader(new InputStreamReader(StopWords.class.getResourceAsStream("/dict/stopwords-list.txt")));
+				String line = null;
+				while((line = list.readLine()) != null){
+					String name = line.trim();
 					if(name.indexOf('-') != -1){
 						String lang = name.substring(name.indexOf('-')+1,name.indexOf('.'));
-						ArrayList<String> words = WordTerms.loadWordFreq(f.getAbsolutePath());
+						ArrayList<String> words = WordTerms.loadWordFreq(StopWords.class.getResourceAsStream("/dict/"+name));
 						HashSet<String> set = new HashSet<String>();
 						for(String w : words){
 							set.add(w);

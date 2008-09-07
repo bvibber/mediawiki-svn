@@ -17,6 +17,7 @@ import org.apache.lucene.analysis.Token;
 import org.apache.lucene.analysis.TokenStream;
 import org.apache.lucene.index.Term;
 import org.apache.lucene.search.AggregateInfo;
+import org.apache.lucene.search.ArticleNamespaceScaling;
 import org.apache.lucene.search.ArticleQueryWrap;
 import org.apache.lucene.search.ArticleScaling;
 import org.apache.lucene.search.BooleanClause;
@@ -37,8 +38,10 @@ import org.wikimedia.lsearch.config.IndexId.AgeScaling;
 import org.wikimedia.lsearch.search.AggregateInfoImpl;
 import org.wikimedia.lsearch.search.ArticleInfoImpl;
 import org.wikimedia.lsearch.search.Fuzzy;
+import org.wikimedia.lsearch.search.MatchAllTitlesQuery;
 import org.wikimedia.lsearch.search.NamespaceFilter;
 import org.wikimedia.lsearch.search.Wildcards;
+import org.wikimedia.lsearch.util.Localization;
 
 /**
  * Parser for wiki query syntax
@@ -66,11 +69,7 @@ public class WikiQueryParser {
 	private TokenStream tokenStream; 
 	private ArrayList<Token> tokens; // tokens from analysis
 	protected ParsedWords parsedWords;
-	/* protected ArrayList<String> words, wordsFromParser, wordsClean;
-	protected ArrayList<ArrayList<String>> expandedWordsFromParser; // with all aliases, wildcards and fuzzy stuff
-	protected ArrayList<ArrayList<String>> expandedWordsContents, expandedWordsTitle;
-	protected ArrayList<ArrayList<Float>> expandedBoostContents, expandedBoostTitle, expandedBoostFromParser;
-	protected ArrayList<ExpandedType> expandedTypes, expandedTypesFromParser; */
+	protected String prefixFilter;
 	protected enum ExpandedType { WORD, WILDCARD, FUZZY, PHRASE };
 	protected Term[] highlightTerms = null;
 	
@@ -1140,6 +1139,46 @@ public class WikiQueryParser {
 		}
 	}
 	
+	/**
+	 * Extract prefix: field from the query and put it into prefixFilter
+	 * variable for later retrieval
+	 * 
+	 * @param queryText
+	 * @return
+	 */
+	public String extractPrefixFilter(String queryText){
+		prefixFilter = null;
+		int start = 0;
+		while(start < queryText.length()){
+			int end = indexOf(queryText,'"',start); // begin of phrase
+			int inx = queryText.indexOf("prefix:"); 
+			if(inx >=0 && inx < end){
+				prefixFilter = queryText.substring(inx+"prefix:".length());
+				if(prefixFilter.startsWith("[") && prefixFilter.contains("]:")){
+					// convert from [2]:query to 2:query form
+					prefixFilter = prefixFilter.replace("[","").replace("]:",":");
+				}
+					
+				return queryText.substring(0,inx);
+			}
+			start = end+1;
+			if(start < queryText.length()){
+				// skip phrase
+				start = indexOf(queryText,'"',start) + 1;
+			}
+		}
+		return queryText;
+	}
+	
+	/** Like string.indexOf but return end of string instead of -1 when needle is not found */
+	protected int indexOf(String string, char needle, int start){
+		int inx = string.indexOf(needle,start);
+		if(inx == -1)
+			return string.length();
+		else
+			return inx;
+	}
+	
 	public boolean isDisableTitleAliases() {
 		return disableTitleAliases;
 	}
@@ -1160,7 +1199,7 @@ public class WikiQueryParser {
 	
 	/** Init parsing, call this function to parse text */ 
 	private Query startParsing(){
-		reset();
+		reset();		
 		return parseClause(0);
 	}
 	
@@ -1171,6 +1210,9 @@ public class WikiQueryParser {
 	 * @return
 	 */
 	public Query parseRaw(String queryText){
+		queryText = extractPrefixFilter(queryText);
+		if(queryText.trim().length()==0 && hasPrefixFilter())
+			return new MatchAllTitlesQuery(fields.title());
 		queryLength = queryText.length(); 
 		text = queryText.toCharArray();
 		
@@ -1263,22 +1305,7 @@ public class WikiQueryParser {
 		full.add(additional,Occur.SHOULD); */
 		
 		// redirect match (when redirect is not contained in contents or title)
-		Query redirectMatch =  makeAlttitleForRedirectsMulti(makeFirstAndSingular(words),20,1f);
-		/* if(hasWildcards() || hasFuzzy()){
-			Query redirectsMulti = makeAlttitleForRedirectsMulti(expandedWordsTitle,expandedBoostTitle,expandedTypes,20,1f);
-			if(redirectsMulti != null)
-				full.add(redirectsMulti,Occur.SHOULD);
-		} else{
-			Query redirects = makeAlttitleForRedirects(words,20,1);
-			if(redirects != null)
-				full.add(redirects,Occur.SHOULD);
-			if(singularWords != null){
-				Query redirectsSing = makeAlttitleForRedirects(singularWords,20,0.8f);
-				if(redirectsSing != null)
-					full.add(redirectsSing,Occur.SHOULD);
-			}		
-		} */
-		
+		Query redirectMatch =  makeAlttitleForRedirectsMulti(makeFirstAndSingular(words),20,1f);		
 		
 		/* BooleanQuery wrap = new BooleanQuery(true);
 		wrap.add(bq,Occur.MUST);
@@ -1307,8 +1334,9 @@ public class WikiQueryParser {
 			
 		}
 		// additional rank
-		AggregateInfo rank = iid.useAdditionalRank()? new AggregateInfoImpl() :  null; 
-		return new ArticleQueryWrap(full,new ArticleInfoImpl(),scale,rank);
+		AggregateInfo rank = iid.useAdditionalRank()? new AggregateInfoImpl() :  null;
+		ArticleNamespaceScaling nsScale = iid.getNamespaceScaling();
+		return new ArticleQueryWrap(full,new ArticleInfoImpl(),scale,rank,nsScale);
 			
 	}
 	
@@ -1512,7 +1540,7 @@ public class WikiQueryParser {
 		Query main = null;
 		
 		// all words as entered into the query
-		Query phrase = makePositionalMulti(noStopWords,fields.contents(),new PositionalOptions.Sloppy(),MAINPHRASE_SLOP,1); 
+		Query phrase = makePositionalMulti(noStopWords,fields.begin(),new PositionalOptions.Sloppy(),MAINPHRASE_SLOP,1); 
 		
 		Query sections = makeSectionsQuery(noStopWords,SECTIONS_BOOST);
 		// wordnet synonyms
@@ -1526,7 +1554,7 @@ public class WikiQueryParser {
 			if(wordnet != null){
 				for(ArrayList<String> wnwords : wordnet){
 					if(!allStopWords(wnwords))
-						combined.add(makePositional(wnwords,fields.contents(),new PositionalOptions.Sloppy(),MAINPHRASE_SLOP,1),Occur.SHOULD);
+						combined.add(makePositional(wnwords,fields.begin(),new PositionalOptions.Sloppy(),MAINPHRASE_SLOP,1),Occur.SHOULD);
 				}
 			}
 		}
@@ -1875,6 +1903,15 @@ public class WikiQueryParser {
 
 	public ArrayList<String> getWordsClean() {
 		return cleanupWords(parsedWords.extractFirst());
+	}
+	
+	public boolean hasPrefixFilter(){
+		return prefixFilter != null && prefixFilter.length()>0;
+	}
+	
+	/** Gets the raw prefix text, e.g. project:npov */
+	public String getPrefixFilter(){
+		return prefixFilter;
 	}
 
 

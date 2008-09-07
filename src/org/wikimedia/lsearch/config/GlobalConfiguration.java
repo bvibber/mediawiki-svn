@@ -30,6 +30,8 @@ import java.util.Map.Entry;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import org.apache.lucene.search.ArticleNamespaceScaling;
+import org.apache.lucene.search.ArticleScaling;
 import org.wikimedia.lsearch.config.IndexId.AgeScaling;
 import org.wikimedia.lsearch.search.NamespaceFilter;
 import org.wikimedia.lsearch.util.Localization;
@@ -82,6 +84,12 @@ public class GlobalConfiguration {
 	protected Hashtable<String,String> suffixIwMap = new Hashtable<String,String>();
 	/** wgNamespacesWithSubpage from InitialiseSettings, dbname -> nsf */
 	protected Hashtable<String,NamespaceFilter> wgNamespacesWithSubpages= null;
+	/** wgContentNamespaces from InitialiseSettings, dbname -> nsf */
+	protected Hashtable<String,NamespaceFilter> wgContentNamespaces= null;
+	/** commons wiki dbrole (from globalProperties) */
+	protected String commonsWiki = null;
+	/** dbname -> namespace scaling */
+	protected Hashtable<String,ArticleNamespaceScaling> namespaceBoost = new Hashtable<String,ArticleNamespaceScaling>();
 	
 	/** info about this host */
 	protected static InetAddress myHost;
@@ -115,6 +123,10 @@ public class GlobalConfiguration {
 	
 	/** Wether to report warnings and info */
 	protected static boolean verbose = true;
+	
+	/** Sections in lsearch-config.conf */
+	protected static enum Section { DATABASE, INDEX, SEARCH, INDEXPATH, NAMESPACE_PREFIX, OAI, DATABASE_GROUP, NAMESPACE_BOOST };
+
 
 	/**
 	 * Use this function to override the hosts IP address which 
@@ -373,27 +385,19 @@ public class GlobalConfiguration {
 	 */
 	protected void read(BufferedReader in, String indexpath) throws IOException{
 		String line="";		
-		int section = -1; 
+		Section section = null; 
 		Pattern roleRegexp = Pattern.compile("\\((.*?)\\)");
 		int lineNum = 0;
-		// sections
-		final int DATABASE = 0;
-		final int INDEX = 1;
-		final int SEARCH = 2;
-		final int INDEXPATH = 3;
-		final int NAMESPACE_PREFIX = 4;
-		final int OAI = 5;
-		final int DATABASE_GROUP = 6;
-		
+		// sections	
 		int searchGroupNum = -1;
 		
 		init();
 		this.indexPath = indexpath;
 		
 		while((line = in.readLine()) != null){
-			lineNum ++;		
-			if(line.startsWith("#")) // comment, skip
-				continue; 
+			lineNum ++;
+			// strip comments
+			line = line.replaceFirst("#.*","");
 			
 			if(line.trim().equals(""))
 				continue; 
@@ -423,6 +427,7 @@ public class GlobalConfiguration {
 					this.ageScalingWeak = getArrayProperty("AgeScaling.weak");
 					this.additionalRank = getArrayProperty("AdditionalRank.suffix");
 					this.useSmartInterwiki = globalProperties.getProperty("Database.smartInterwiki","false").equalsIgnoreCase("true");
+					this.commonsWiki = globalProperties.getProperty("Commons.wiki");
 					// try reading intialisesettings
 					String initset = globalProperties.getProperty("WMF.InitialiseSettings");
 					if(initset != null)
@@ -435,24 +440,26 @@ public class GlobalConfiguration {
 				}
 				
 				if(s.equalsIgnoreCase("database"))
-					section = DATABASE;
+					section = Section.DATABASE;
 				else if(s.equalsIgnoreCase("index"))
-					section = INDEX;
+					section = Section.INDEX;
 				else if(s.equalsIgnoreCase("search-group")){
-					section = SEARCH;
+					section = Section.SEARCH;
 					searchGroupNum++;
 				} else if(s.equalsIgnoreCase("index-path"))
-					section = INDEXPATH;
+					section = Section.INDEXPATH;
 				else if(s.equalsIgnoreCase("namespace-prefix"))
-					section = NAMESPACE_PREFIX;
+					section = Section.NAMESPACE_PREFIX;
 				else if(s.equalsIgnoreCase("oai"))
-					section = OAI;
-				else if(s.equals("database-group"))
-					section = DATABASE_GROUP;
-			} else if(section==-1 && !line.trim().equals("")){
+					section = Section.OAI;
+				else if(s.equalsIgnoreCase("database-group"))
+					section = Section.DATABASE_GROUP;
+				else if(s.equalsIgnoreCase("namespace-boost"))
+					section = Section.NAMESPACE_BOOST;
+			} else if(section==null && !line.trim().equals("")){
 				if(verbose)
 					System.out.println("Ignoring a line up to first section heading...");
-			} else if(section == DATABASE || section == DATABASE_GROUP){
+			} else if(section == Section.DATABASE || section == Section.DATABASE_GROUP){
 				String[] parts = splitBySemicolon(line,lineNum);
 				if(parts == null) continue;				
 				String[] dbs = parts[0].split(",");
@@ -463,19 +470,19 @@ public class GlobalConfiguration {
 				while(matcher.find()){
 					processDBRole(dbs,matcher.group(1));					
 				}
-			} else if(section == SEARCH){
+			} else if(section == Section.SEARCH){
 				String[] parts = splitBySemicolon(line,lineNum);
 				if(parts == null) continue;
 				String host = parts[0].trim();
 				
 				processSearchRoles( host, parts[1], searchGroupNum);
-			} else if(section == INDEX){
+			} else if(section == Section.INDEX){
 				String[] parts = splitBySemicolon(line,lineNum);
 				if(parts == null) continue;
 				String host = parts[0].trim();
 				
 				processIndexRoles(host,parts[1]);
-			} else if(section == INDEXPATH){
+			} else if(section == Section.INDEXPATH){
 				String[] parts = splitBySemicolon(line,lineNum);
 				if(parts == null) continue;
 				String host = parts[0].trim();
@@ -484,7 +491,7 @@ public class GlobalConfiguration {
 				if(indexRsyncPath.get(host)!=null && verbose)
 					System.out.println("Warning: repeated path definition for host "+host+" on line "+lineNum+", overwriting old.");
 				indexRsyncPath.put(host,path);
-			} else if(section == NAMESPACE_PREFIX){
+			} else if(section == Section.NAMESPACE_PREFIX){
 				String[] parts = splitBySemicolon(line,lineNum);
 				if(parts == null) continue;
 				String prefix = parts[0].trim();
@@ -494,13 +501,20 @@ public class GlobalConfiguration {
 					namespacePrefixAll = prefix;
 				else
 					namespacePrefix.put(prefix,new NamespaceFilter(filter));				
-			} else if(section == OAI){
+			} else if(section == Section.OAI){
 				String[] parts = splitBySemicolon(line,lineNum);
 				if(parts == null) continue;
 				String suffix = parts[0].trim();
 				String url = parts[1].trim();				
 				
 				oaiRepo.put(suffix,url);
+			} else if(section == Section.NAMESPACE_BOOST){
+				String[] parts = splitBySemicolon(line,lineNum);
+				if(parts == null) continue;				
+				String[] dbs = parts[0].split(",");
+				for(int i=0;i<dbs.length;i++) 
+					dbs[i]=dbs[i].trim();
+				processNamespaceBoost(dbs,parts[1]);
 			}
 		}
 		if( !checkIntegrity() ){
@@ -524,6 +538,22 @@ public class GlobalConfiguration {
 		in.close();
 	}
 	
+	protected void processNamespaceBoost(String[] dbs, String def) {
+		Pattern mapRegexp = Pattern.compile("\\((.*?)\\)");
+		HashMap<Integer,Float> map = new HashMap<Integer,Float>();
+		
+		Matcher matcher = mapRegexp.matcher(def);
+		while(matcher.find()){
+			String[] parts = matcher.group(1).split(",");
+			int ns = Integer.parseInt(parts[0].trim());
+			float boost = Float.parseFloat(parts[1].trim());
+			map.put(ns,boost);
+		}
+		ArticleNamespaceScaling ans = new ArticleNamespaceScaling(map);
+		for(String db : dbs)
+			namespaceBoost.put(db,ans);
+	}
+
 	/**
 	 * A bit hackish: read InitialiseSettings which we know have a certain
 	 * format to avoid maintaining two copies for config files (one in php
@@ -539,9 +569,10 @@ public class GlobalConfiguration {
 			wgServer = parser.getServer(text);
 			wgDefaultSearch = parser.getDefaultSearch(text);
 			wgNamespacesWithSubpages = parser.getNamespacesWithSubpages(text);
+			wgContentNamespaces = parser.getContentNamespaces(text);
 			Localization.readDBLocalizations(text);
-		} catch (IOException e) {
-			System.out.println("Error: Cannot read InitialiseSettings.php from url "+initset+" : "+e.getMessage());
+		} catch (Exception e) {
+			System.out.println("Error reading InitialiseSettings.php from url "+initset+" : "+e.getMessage());
 		}	
 	}
 
@@ -1472,6 +1503,19 @@ public class GlobalConfiguration {
 		return new NamespaceFilter(0);
 	}
 	
+	public NamespaceFilter getContentNamespaces(IndexId iid){
+		return getContentNamespaces(iid.getDBname());
+	}
+	public NamespaceFilter getContentNamespaces(String dbname){
+		if(wgContentNamespaces != null){
+			if(wgContentNamespaces.containsKey(dbname))
+				return wgContentNamespaces.get(dbname);
+			else if(wgContentNamespaces.containsKey("default"))
+				return wgContentNamespaces.get("default");
+		}
+		return new NamespaceFilter(0);
+	}
+	
 	public NamespaceFilter getNamespacesWithSubpages(String dbname){
 		if(wgNamespacesWithSubpages != null){
 			if(wgNamespacesWithSubpages.containsKey(dbname))
@@ -1482,10 +1526,25 @@ public class GlobalConfiguration {
 		return new NamespaceFilter(2);
 	}
 	
+	public ArticleNamespaceScaling getNamespaceScaling(String dbname){
+		if(namespaceBoost.contains(dbname))
+			return namespaceBoost.get(dbname);
+		else if(namespaceBoost.containsKey("<default>"))
+			return namespaceBoost.get("<default>");
+		else
+			return new ArticleNamespaceScaling(new HashMap<Integer,Float>());
+	}
 	
-
 	public HashSet<String> getSmartInterwikiCodes() {
 		return smartInterwikiCodes;
+	}
+	
+	public boolean hasCommonsWiki(){
+		return commonsWiki != null;
+	}
+	
+	public IndexId getCommonsWiki(){
+		return IndexId.get(commonsWiki);
 	}
 	
 

@@ -63,6 +63,7 @@ public class ArticleMeta {
 	public static class ArticleMetaSource implements CacheBuilder {
 		protected boolean[] subpage = null;
 		protected float[] daysOld = null;
+		protected short[] namespace = null;
 		protected IndexReader reader = null;
 		protected boolean finishedCaching = false;
 		protected SimpleDateFormat isoDate;
@@ -73,6 +74,7 @@ public class ArticleMeta {
 		public void init() {
 			subpage = new boolean[reader.maxDoc()];
 			daysOld = new float[reader.maxDoc()];
+			namespace = new short[reader.maxDoc()];
 			
 			synchronized (cachingInProgress) {
 				cachingInProgress.put(reader.directory(),true);
@@ -87,6 +89,7 @@ public class ArticleMeta {
 					Document d = reader.document(i);
 					subpage[i] = resolveSubpage(d);	
 					daysOld[i] = resolveDaysOld(d);
+					namespace[i] = resolveNamespace(d); 
 			} catch(Exception e){
 				String ext = "";
 				if(doc != null)
@@ -120,6 +123,17 @@ public class ArticleMeta {
 					return true;
 			}
 			return false;
+		}
+		
+		/** Get article namespace 
+		 * @throws IOException 
+		 * @throws CorruptIndexException */
+		protected final short resolveNamespace(Document d) throws IOException{			
+			String ns = d.get("namespace");
+			if(ns == null)
+				return 0;
+			else
+				return Short.parseShort(ns);
 		}
 		/** Calculate how old the indexed article is */
 		protected final float resolveDaysOld(Document d) throws IOException {
@@ -169,6 +183,13 @@ public class ArticleMeta {
 				return resolveDaysOld(reader.document(docid));
 			
 			return daysOld[docid];
+		}
+		
+		public short namespace(int docid) throws IOException {
+			if(!finishedCaching)
+				return resolveNamespace(reader.document(docid));
+			
+			return namespace[docid];
 		}
 
 		

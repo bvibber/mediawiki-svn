@@ -84,10 +84,15 @@ public class WikiSearcher extends Searcher implements SearchableMul {
 	}
 	
 	/** New object from cache */
-	public WikiSearcher(IndexId iid) throws IOException {
+	public WikiSearcher(IndexId iid, IndexId commonsWiki) throws IOException {
 		cache = SearcherCache.getInstance();
-				
-		if(iid.isSingle()){ // is always local 
+
+		if(commonsWiki != null){
+			// make multi searcher with all parts + commons wiki
+			ArrayList<IndexId> parts = iid.getPhysicalIndexIds();
+			parts.add(commonsWiki);
+			searcher = ms = makeMultiSearcher(parts);
+		} else if(iid.isSingle()){ // is always local 
 			searcher = cache.getLocalSearcher(iid);
 			searcherParts.put(iid.toString(),searcher);
 		} else {

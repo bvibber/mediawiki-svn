@@ -22,6 +22,7 @@ import org.apache.lucene.index.TermDocs;
 import org.apache.lucene.index.TermEnum;
 import org.apache.lucene.queryParser.ParseException;
 import org.apache.lucene.search.Query;
+import org.apache.lucene.search.QueryFilter;
 import org.apache.lucene.search.Searchable;
 import org.apache.lucene.search.SearchableMul;
 import org.apache.lucene.search.Searcher;
@@ -197,7 +198,7 @@ public class SearchEngine {
 		FieldBuilder.BuilderSet bs = new FieldBuilder(iid).getBuilder();
 		HashSet<String> stopWords = StopWords.getPredefinedSet(iid);
 		WikiQueryParser parser = new WikiQueryParser(bs.getFields().contents(),nsf,analyzer,bs,NamespacePolicy.IGNORE,stopWords);
-		NamespaceFilterWrapper nsfw = new NamespaceFilterWrapper(nsf);
+		FilterWrapper nsfw = new FilterWrapper(nsf);
 		SearchResults res = new SearchResults();
 		res.setSuccess(true);
 		suggest(iid,searchterm,parser,res,0,nsfw);
@@ -242,6 +243,22 @@ public class SearchEngine {
 		
 		return "0:" + title;		
 	}
+	
+	/** Get key, but also capitalize first letter of title if not an exact-case wiki */
+	protected String getKeyExact(String title, IndexId iid){
+		return capitalizeNsTitle(getKey(title,iid),iid);
+		
+	}
+	
+	/** Capitalize first letter in ns:title key, e.g. 2:rob -> 2:Rob */
+	protected String capitalizeNsTitle(String key, IndexId iid){
+		if( !iid.isExactCase() ){
+			int sc = key.indexOf(':')+1;
+			key = key.substring(0,sc)+key.substring(sc,sc+1).toUpperCase()+( (sc+1<key.length())? key.substring(sc+1) : "");
+		}
+		return key;
+	}
+	
 	/** Get a valid namespace prefix, e.g. User from User:Moin */ 
 	protected String getNamespace(String title, IndexId iid){
 		title = title.replace('_',' ');
@@ -504,7 +521,7 @@ public class SearchEngine {
 	}
 
 	/** Search mainpart or restpart of the split index */
-	public HighlightPack searchPart(IndexId iid, String searchterm, Query q, NamespaceFilterWrapper filter, int offset, int limit, boolean explain){
+	public HighlightPack searchPart(IndexId iid, String searchterm, Query q, FilterWrapper filter, int offset, int limit, boolean explain){
 		if( ! (iid.isMainsplit() || iid.isNssplit()))
 			return null;
 		try {			
@@ -512,13 +529,13 @@ public class SearchEngine {
 			IndexSearcherMul searcher;
 			long searchStart = System.currentTimeMillis();
 			searcher = cache.getLocalSearcher(iid);
-			NamespaceFilterWrapper localfilter = filter;
+			FilterWrapper localfilter = filter;
 			if(iid.isMainsplit() && iid.isMainPart())
-				localfilter = null;
+				localfilter.setNamespaceFilter(null);
 			else if(iid.isNssplit() && !iid.isLogical() && iid.getNamespaceSet().size()==1 && !iid.getNamespaceSet().contains("<default>"))
-				localfilter = null;
-			if(localfilter != null)
-				log.info("Using local filter: "+localfilter);
+				localfilter.setNamespaceFilter(null);
+			if(localfilter.getNamespaceFilter() != null)
+				log.info("Using namespace filter: "+localfilter);
 			TopDocs hits = searcher.search(q,localfilter,offset+limit);
 			SearchResults res = makeSearchResults(searcher,hits,offset,limit,iid,searchterm,q,searchStart,explain);
 			HighlightPack pack = new HighlightPack(res);
@@ -550,7 +567,7 @@ public class SearchEngine {
 		HashSet<String> stopWords = StopWords.getPredefinedSet(iid);
 		WikiQueryParser parser = new WikiQueryParser(bs.getFields().contents(),nsDefault,analyzer,bs,NamespacePolicy.IGNORE,stopWords);
 		HashSet<NamespaceFilter> fields = parser.getFieldNamespaces(searchterm);
-		NamespaceFilterWrapper nsfw = null;
+		FilterWrapper nsfw = new FilterWrapper();
 		Query q = null;
 		SearchResults res = null;
 		long searchStart = System.currentTimeMillis();
@@ -560,16 +577,30 @@ public class SearchEngine {
 		// if search is over one field, try to use filters
 		if(fields.size()==1){
 			if(fields.contains(new NamespaceFilter())){
-				nsfw = new NamespaceFilterWrapper(new NamespaceFilter());  // empty filter: "all" keyword
+				nsfw.setNamespaceFilter(new NamespaceFilter());  // empty filter: "all" keyword
 				searchAll = true;
 			} else if(!fields.contains(nsDefault)){ 
 				// use the specified prefix in the query (if it can be cached)
 				NamespaceFilter f = fields.toArray(new NamespaceFilter[] {})[0];
 				if(f.cardinality()==1 || NamespaceCache.isComposable(f))
-					nsfw = new NamespaceFilterWrapper(f);
+					nsfw.setNamespaceFilter(f);
 			// use default filter if it's cached or composable of cached entries
 			} else if(cachedFilters.containsValue(nsDefault) || NamespaceCache.isComposable(nsDefault))
-				nsfw = new NamespaceFilterWrapper(nsDefault);
+				nsfw.setNamespaceFilter(nsDefault);
+		}
+		
+		parser.extractPrefixFilter(searchterm);
+		if(parser.hasPrefixFilter()){
+			// set additional prefix filter, and tune namespace filter to search only the specified namespace
+			String key = parser.getPrefixFilter().toLowerCase();
+			nsfw.addFilter(new PrefixFilter(key));
+			nsfw.setNamespaceFilter(new NamespaceFilter(key.substring(0,key.indexOf(':'))));
+		}
+		
+		// if we are searching over image or image_search include commons wiki into multi searcher
+		IndexId commonsWiki = null;
+		if(nsfw.hasNamespaceFilter() && global.hasCommonsWiki() && nsfw.getNamespaceFilter().contains(6)){
+			commonsWiki = global.getCommonsWiki();
 		}
 		
 		WikiSearcher searcher = null;
@@ -578,12 +609,12 @@ public class SearchEngine {
 			
 			TopDocs hits=null;
 			// see if we can search only part of the index
-			if(nsfw!=null && !nsfw.getFilter().isAll() && (iid.isMainsplit() || iid.isNssplit())){
+			if(nsfw.hasNamespaceFilter() && !nsfw.getNamespaceFilter().isAll() && (iid.isMainsplit() || iid.isNssplit())){
 				HashSet<IndexId> parts = new HashSet<IndexId>();
-				for(NamespaceFilter f : nsfw.getFilter().decompose()){
+				for(NamespaceFilter f : nsfw.getNamespaceFilter().decompose()){
 					parts.add(iid.getPartByNamespace(f.getNamespace()));										
-				}				
-				if(parts.size() == 1){
+				}			
+				if(parts.size() == 1 && commonsWiki == null){
 					IndexId piid = parts.iterator().next();
 					if(!piid.isFurtherSubdivided()){
 						// search on single index part
@@ -618,12 +649,14 @@ public class SearchEngine {
 					else
 						expanded.add(p);
 				}
-				log.info("Making searcher for "+expanded);
+				if(commonsWiki != null)
+					expanded.add(commonsWiki);
+				log.info("Making searcher for "+expanded);				
 				searcher = new WikiSearcher(expanded);
 			
 			}
 			if(searcher == null)
-				searcher = new WikiSearcher(iid);
+				searcher = new WikiSearcher(iid, commonsWiki);
 			// normal search
 			try{
 				// query 
@@ -684,11 +717,11 @@ public class SearchEngine {
 	}
 
 	/** "Did you mean.." engine, use highlight results (if any) to refine suggestions, call after all other results are already obtained */
-	protected void suggest(IndexId iid, String searchterm, WikiQueryParser parser, SearchResults res, int offset, NamespaceFilterWrapper nsfw) {
+	protected void suggest(IndexId iid, String searchterm, WikiQueryParser parser, SearchResults res, int offset, FilterWrapper nsfw) {
 		if(offset == 0 && iid.hasSpell()){
 			if(res.isFoundAllInTitle())
 				return;
-			if(nsfw == null)
+			if(!nsfw.hasNamespaceFilter())
 				return; // query on many overlapping namespaces, won't try to spellcheck to not mess things up
 			// suggest !
 			res.setSuggest(null);
@@ -701,13 +734,13 @@ public class SearchEngine {
 			if(host == null)
 				return; // no available 
 			Suggest.ExtraInfo info = new Suggest.ExtraInfo(res.getPhrases(),res.getFoundInContext(),res.getFoundInTitles(),res.getFirstHitRank(),res.isFoundAllInAltTitle());
-			SuggestQuery sq = messenger.suggest(host,iid.toString(),searchterm,tokens,info,nsfw.getFilter());
+			SuggestQuery sq = messenger.suggest(host,iid.toString(),searchterm,tokens,info,nsfw.getNamespaceFilter());
 			res.setSuggest(sq);	
 			res.addInfo("suggest",formatHost(host));
 		}
 	}
 		
-	protected Query parseQuery(String searchterm, WikiQueryParser parser, IndexId iid, boolean raw, NamespaceFilterWrapper nsfw, boolean searchAll, Wildcards wildcards) throws ParseException {
+	protected Query parseQuery(String searchterm, WikiQueryParser parser, IndexId iid, boolean raw, FilterWrapper nsfw, boolean searchAll, Wildcards wildcards) throws ParseException {
 		Query q = null;
 		Fuzzy fuzzy = null;
 		if(iid.hasSpell()){
@@ -719,14 +752,14 @@ public class SearchEngine {
 			// do minimal parsing, make a raw query
 			parser.setNamespacePolicy(WikiQueryParser.NamespacePolicy.LEAVE);
 			q = parser.parseRaw(searchterm);
-		} else if(nsfw == null){
+		} else if(!nsfw.hasNamespaceFilter()){
 			if(searchAll)
 				q = parser.parse(searchterm,new ParsingOptions(NamespacePolicy.IGNORE,wildcards,fuzzy));
 			else
 				q = parser.parse(searchterm,new ParsingOptions(NamespacePolicy.REWRITE,wildcards,fuzzy));				
 		} else{
 			q = parser.parse(searchterm,new ParsingOptions(NamespacePolicy.IGNORE,wildcards,fuzzy));
-			log.info("Using NamespaceFilterWrapper "+nsfw);
+			log.info("Using FilterWrapper "+nsfw);
 		}
 		return q;
 	}
@@ -740,7 +773,7 @@ public class SearchEngine {
 	
 	/** Fetch related interwiki titles 
 	 * @throws IOException */
-	protected void fetchTitles(SearchResults res, String searchterm, NamespaceFilterWrapper nsfw, IndexId iid, WikiQueryParser parser, int offset, int iwoffset, int iwlimit, boolean explain){
+	protected void fetchTitles(SearchResults res, String searchterm, FilterWrapper nsfw, IndexId iid, WikiQueryParser parser, int offset, int iwoffset, int iwlimit, boolean explain){
 		if(!iid.hasTitlesIndex())
 			return;
 		if(offset != 0)
@@ -749,9 +782,7 @@ public class SearchEngine {
 			IndexId titles = iid.getTitlesIndex();
 			IndexId main = titles.getDB();
 			SuffixFilter sf = null;
-			NamespaceFilter nsf = null;
-			if(nsfw != null)
-				nsf = nsfw.getFilter();
+			NamespaceFilter nsf = nsfw.getNamespaceFilter();
 
 			ArrayList<String> words = parser.getWordsClean();
 			Query q = parser.parseForTitles(searchterm);
@@ -790,7 +821,7 @@ public class SearchEngine {
 
 			// otherwise, we need to search all parts of the index
 			long searchStart = System.currentTimeMillis();
-			WikiSearcher searcher = new WikiSearcher(main);
+			WikiSearcher searcher = new WikiSearcher(main,null);
 			sf = new SuffixFilter(iid.getTitlesSuffix());
 			SuffixNamespaceWrapper wrap = new SuffixNamespaceWrapper(new SuffixNamespaceFilter(nsf,sf,iid,main));
 

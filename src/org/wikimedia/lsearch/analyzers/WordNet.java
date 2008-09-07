@@ -136,19 +136,12 @@ public class WordNet {
 	
 	protected static void loadWordNet(){		
 		long start = System.currentTimeMillis();
-		String path = Configuration.open().getLibraryPath() + Configuration.PATH_SEP + "dict" + Configuration.PATH_SEP + "wordnet-en.txt.gz";
 		try{
-			BufferedReader in;
-			if(path.endsWith(".gz"))
-				in = new BufferedReader(
-						new InputStreamReader(
-								new GZIPInputStream(
-										new FileInputStream(path))));
-			else 
-				in = new BufferedReader(
-						new InputStreamReader(
-								new FileInputStream(path)));
-			
+			BufferedReader in = new BufferedReader(
+					new InputStreamReader(
+							new GZIPInputStream(
+									WordNet.class.getResourceAsStream("/dict/wordnet-en.txt.gz"))));
+
 			String line="";
 			searchTree.initRoot();
 			while((line = in.readLine())!=null){

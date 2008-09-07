@@ -3,6 +3,7 @@ package org.wikimedia.lsearch.search;
 import java.io.IOException;
 import java.io.Serializable;
 
+import org.apache.log4j.Logger;
 import org.apache.lucene.index.CorruptIndexException;
 import org.apache.lucene.index.IndexReader;
 import org.apache.lucene.search.AggregateInfo;
@@ -19,6 +20,7 @@ import org.wikimedia.lsearch.search.AggregateMetaField.AggregateMetaFieldSource;
  *
  */
 public class AggregateInfoImpl implements AggregateInfo, Serializable  {
+	private static final Logger log = Logger.getLogger(AggregateInfoImpl.class);
 	protected transient AggregateMetaFieldSource src = null;
 	protected boolean hasRankingData = false;
 	protected String field = null;
@@ -36,19 +38,39 @@ public class AggregateInfoImpl implements AggregateInfo, Serializable  {
 	}
 	
 	public int length(int docid, int pos) throws IOException {
-		return src.getLength(docid,getSlot(pos));
+		try{
+			return src.getLength(docid,getSlot(pos));
+		} catch(ArrayIndexOutOfBoundsException e){
+			log.warn("Exception occured on pos="+pos);
+			throw e;
+		}
 	}
 	
 	public float boost(int docid, int pos) throws IOException {
-		return src.getBoost(docid,getSlot(pos));
+		try{
+			return src.getBoost(docid,getSlot(pos));
+		} catch(ArrayIndexOutOfBoundsException e){
+			log.warn("Exception occured on pos="+pos);
+			throw e;
+		}
 	}
 
 	public int lengthNoStopWords(int docid, int pos) throws IOException {
-		return src.getLengthNoStopWords(docid,getSlot(pos));
+		try{
+			return src.getLengthNoStopWords(docid,getSlot(pos));
+		} catch(ArrayIndexOutOfBoundsException e){
+			log.warn("Exception occured on pos="+pos);
+			throw e;
+		}
 	}
 	
 	public int lengthComplete(int docid, int pos) throws IOException {
-		return src.getLengthComplete(docid,getSlot(pos));
+		try{
+			return src.getLengthComplete(docid,getSlot(pos));
+		} catch(ArrayIndexOutOfBoundsException e){
+			log.warn("Exception occured on pos="+pos);
+			throw e;
+		}
 	}
 	
 	public float rank(int docid) throws IOException {
@@ -67,7 +89,12 @@ public class AggregateInfoImpl implements AggregateInfo, Serializable  {
 	}
 	
 	public Flags flags(int docid, int pos) throws IOException {
-		return src.getFlags(docid,getSlot(pos));
+		try{
+			return src.getFlags(docid,getSlot(pos));
+		} catch(ArrayIndexOutOfBoundsException e){
+			log.warn("Exception occured on pos="+pos);
+			throw e;
+		}
 	}
 	
 	/** Provides ranking information */

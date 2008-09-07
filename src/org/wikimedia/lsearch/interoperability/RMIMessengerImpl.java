@@ -25,7 +25,7 @@ import org.wikimedia.lsearch.index.IndexThread;
 import org.wikimedia.lsearch.index.IndexUpdateRecord;
 import org.wikimedia.lsearch.search.HighlightPack;
 import org.wikimedia.lsearch.search.NamespaceFilter;
-import org.wikimedia.lsearch.search.NamespaceFilterWrapper;
+import org.wikimedia.lsearch.search.FilterWrapper;
 import org.wikimedia.lsearch.search.NetworkStatusThread;
 import org.wikimedia.lsearch.search.SearchEngine;
 import org.wikimedia.lsearch.search.SearcherCache;
@@ -99,7 +99,7 @@ public class RMIMessengerImpl implements RMIMessenger {
 	}
 
 	// inherit javadoc
-	public HighlightPack searchPart(String dbrole, String searchterm, Query query, NamespaceFilterWrapper filter, int offset, int limit, boolean explain) throws RemoteException {
+	public HighlightPack searchPart(String dbrole, String searchterm, Query query, FilterWrapper filter, int offset, int limit, boolean explain) throws RemoteException {
 		log.debug("Received request searchMainPart("+dbrole+","+query+","+offset+","+limit+")");
 		return new SearchEngine().searchPart(IndexId.get(dbrole),searchterm,query,filter,offset,limit,explain);
 	}
