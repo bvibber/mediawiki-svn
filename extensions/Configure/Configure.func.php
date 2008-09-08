@@ -108,3 +108,14 @@ function efConfigureLoadAliases( &$spAliases, $code ){
 	} while( $code = Language::getFallbackFor( $code ) );
 	return true;
 }
+
+/**
+ * Add custom rights defined in $wgRestrictionLevels
+ * Note that this only works on 1.13+
+ */
+function efConfigureGetAllRights( &$rights ){
+	global $wgRestrictionLevels;
+	$newrights = array_diff( $wgRestrictionLevels, array( '', 'sysop' ) ); // Pseudo rights
+	$rights = array_unique( array_merge( $rights, $newrights ) );
+	return true;	
+}

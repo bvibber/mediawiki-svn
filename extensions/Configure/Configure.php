@@ -17,7 +17,7 @@ $wgExtensionCredits['specialpage'][] = array(
 	'url' => 'http://www.mediawiki.org/wiki/Extension:Configure',
 	'description' => 'Allow authorised users to configure the wiki by a web-based interface',
 	'descriptionmsg' => 'configure-desc',
-	'version' => '0.7.2',
+	'version' => '0.7.3',
 );
 
 ## Configuration part
@@ -132,6 +132,9 @@ if( isset( $wgExtensionAliasesFiles ) && is_array( $wgExtensionAliasesFiles ) ){
 	# And for 1.10 and 1.9 :)
 	$wgHooks['LangugeGetSpecialPageAliases'][] = 'efConfigureLoadAliases';
 }
+
+## Add custom rights defined in $wgRestrictionLevels
+$wgHooks['UserGetAllRights'][] = 'efConfigureGetAllRights';
 
 ## Adding the new special pages...
 ## Common code
