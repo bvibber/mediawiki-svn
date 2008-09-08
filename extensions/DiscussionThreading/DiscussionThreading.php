@@ -5,6 +5,7 @@
  * @author Jack D. Pond <jack.pond@psitex.com>
  * @addtogroup Extensions
  * @copyright  2007 Jack D. pond
+ * @url http://www.mediawiki.org/wiki/Manual:Extensions
  * @licence GNU General Public Licence 2.0 or later
  */
 
@@ -16,8 +17,8 @@ $wgExtensionMessagesFiles['DiscussionThreading'] =  dirname(__FILE__) . '/Discus
 $wgExtensionFunctions[] = 'efDiscussionThreadSetup';
 $wgExtensionCredits['other'][] = array(
 	'name' => 'DiscussionThreading',
-	'author' => 'Jack D. Pond',
-	'version' => '1.2',
+	'author' => 'Jack D. Pond, Daniel Brice',
+	'version' => '1.3',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:DiscussionThreading',
 	'description' => 'Add Threading to discussion (talk) pages',
 	'descriptionmsg' => 'discussionthreading-desc',
@@ -39,10 +40,16 @@ $wgHooks['EditSectionLink'][] =  'efDiscussionLink';
 $wgHooks['AlternateEdit'][] =  'efDiscussionThreadEdit';
 
 /**
- * Initial setup, add .i18n. messages from $IP/extensions/DiscussionThreading.i18n.php
+ * Initial setup, add .i18n. messages from $IP/extensions/DiscussionThreading/DiscussionThreading.i18n.php
 */
 function efDiscussionThreadSetup() {
-	wfLoadExtensionMessages( 'DiscussionThreading' );
+	global $wgVersion;
+	$xversion = explode(".",$wgVersion);
+	if ($xversion[0] <= "1" && $xversion[1] <= "11") {
+		global $wgMessageCache, $messages;
+		foreach( $messages as $lang => $LangMsg )
+			$wgMessageCache->addMessages( $LangMsg, $lang );
+	} else wfLoadExtensionMessages( 'DiscussionThreading' );
 }
 
 /**
@@ -140,6 +147,29 @@ function efDiscussionThread($efform){
 			} else {
 				$text = $text." -- ~~~~<br>\n\n";
 			}
+		   // Add an appropriate number of colons (:) to indent the body.
+		   // Include replace me text, so the user knows where to reply
+		   $replaceMeText = " Replace this text with your reply";
+		   $text .= "\n\n".str_repeat(":",strlen($matches[1])-1).$replaceMeText;
+		   // Insert javascript hook that will select the replace me text
+		   global $wgOut;
+		   $wgOut->addScript("<script type=\"text/javascript\">
+			 function efDiscussionThread(){
+			   var ctrl = document.editform.wpTextbox1;
+			   if (ctrl.setSelectionRange) {
+				 ctrl.focus();
+				 var end = ctrl.value.length;
+				 ctrl.setSelectionRange(end-".strlen($replaceMeText).",end-1);
+				 ctrl.scrollTop = ctrl.scrollHeight;                               
+			   } else if (ctrl.createTextRange) {
+				 var range = ctrl.createTextRange();
+				 range.collapse(false);
+				 range.moveStart('character', -".strlen($replaceMeText).");
+				 range.select();
+			   }
+			 }
+			 addOnloadHook(efDiscussionThread);
+			 </script>");
 			$efform->replyadded = true;
 			$efform->textbox1 = $text;
 		}
