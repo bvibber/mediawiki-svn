@@ -12,7 +12,7 @@ $messages = array();
  */
 $messages['en'] = array(
 	'emailpage'           => 'E-mail page',
-	'ea-desc'             => 'Send rendered HTML page to an e-mail address or list of addresses using [http://phpmailer.sourceforge.net phpmailer].',
+	'ea-desc'             => 'Send rendered HTML page to an e-mail address or list of addresses using [http://phpmailer.sourceforge.net phpmailer]',
 	'ea-heading'          => "=== E-mailing the page [[$1]] ===",
 	'ea-fromgroup'        => 'From group:',
 	'ea-pagesend'         => 'Page "$1" sent from $2',
