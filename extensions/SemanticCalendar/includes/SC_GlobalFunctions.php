@@ -10,11 +10,12 @@ if (!defined('MEDIAWIKI')) die();
 define('SC_VERSION','0.2.8');
 
 $wgExtensionCredits['parserhook'][]= array(
-	'name'        => 'Semantic Calendar',
-	'version'     => SC_VERSION,
-	'author'      => 'Yaron Koren',
-	'url'         => 'http://www.mediawiki.org/wiki/Extension:Semantic_Calendar',
-	'description' =>  'A calendar that displays semantic date information',
+	'name'           => 'Semantic Calendar',
+	'version'        => SC_VERSION,
+	'author'         => 'Yaron Koren',
+	'url'            => 'http://www.mediawiki.org/wiki/Extension:Semantic_Calendar',
+	'description'    =>  'A calendar that displays semantic date information',
+	'descriptionmsg' =>  'sc_desc',
 );
 
 $wgExtensionFunctions[] = 'scgParserFunctions';

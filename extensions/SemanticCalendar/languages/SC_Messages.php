@@ -12,8 +12,9 @@ $messages = array();
  */
 $messages['en'] = array(
 	// user messages
-        'sc_previousmonth' => 'Previous month',
-        'sc_nextmonth'     => 'Next month',
+	'sc_desc'          => 'A calendar that displays semantic date information',
+	'sc_previousmonth' => 'Previous month',
+	'sc_nextmonth'     => 'Next month',
 	'sc_today'         => 'Today',
 	'sc_gotomonth'     => 'Go to month',
 );
