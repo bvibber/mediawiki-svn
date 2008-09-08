@@ -1,5 +1,5 @@
 Uniwiki.CustomToolbar = {
-	
+
 	/* other plugins may add more buttons here,
 	 * which will automatically be included */
 	Buttons: {
@@ -46,9 +46,9 @@ Uniwiki.CustomToolbar = {
 				* where to add the image back into the page
 				* (the name of the textarea will always match
 				* the id of the section) */
-				if (textarea.name == "wpTextbox1") var section = textarea.name; 
-				else var section = textarea.name.replace(/\D/g, ''); 	
-									 
+				if (textarea.name == "wpTextbox1") var section = textarea.name;
+				else var section = textarea.name.replace(/\D/g, '');
+
 				/* open the upload form in a popup window
  				 * (this shold be moved to an iframe) */
 				popup = open(
@@ -74,9 +74,9 @@ Uniwiki.CustomToolbar = {
 				* where to add the image back into the page
 				* (the name of the textarea will always match
 				* the id of the section) */
-				if (textarea.name == "wpTextbox1") var section = textarea.name; 
-				else var section = textarea.name.replace(/\D/g, ''); 	
-									 
+				if (textarea.name == "wpTextbox1") var section = textarea.name;
+				else var section = textarea.name.replace(/\D/g, '');
+
 				/* open the upload form in a popup window
  				 * (this shold be moved to an iframe) */
 				popup = open(
@@ -112,7 +112,7 @@ Uniwiki.CustomToolbar = {
 			'key':      "n",
 			'open':     "<nowiki>",
 			'close':    "</nowiki>",
-			'sample':   wfMsg('ct_nowiki_sample'), 
+			'sample':   wfMsg('ct_nowiki_sample'),
 			'tip':      [wfMsg('ct_nowiki_tip_ins'), wfMsg('ct_nowiki_tip_wrap')],
 			'caption':  wfMsg('ct_nowiki_caption'),
 			'advanced': true
@@ -121,7 +121,7 @@ Uniwiki.CustomToolbar = {
 			'key':      "-",
 			'open':     "\n----\n",
 			'close':    "",
-			'sample':   "", 
+			'sample':   "",
 			'tip':      wfMsg('ct_horizontal_tip'),
 			'caption':  wfMsg('ct_horizontal_caption'),
 			'advanced': true
@@ -141,7 +141,7 @@ Uniwiki.CustomToolbar = {
 		elements.each (function (txta) {
 			var wrapper = new Element ("div", { 'class': "editor-wrap" });
 			var toolbar = new Element ("div", { 'class': "toolbar" });
-			
+
 			// create and append the buttons
 			buttons.each (function (button,name) {
 
@@ -191,17 +191,17 @@ Uniwiki.CustomToolbar = {
 						});
 					} else if(button.tip)
 						div.title = button.tip + suffix;
-					
+
 					/* if this button has a hotkey, then store it in the div,
 					 * so we can iterate them later on, in txta.keypress */
 					if (button.key) div.store('key', button.key);
 				}
 			});
-			
+
 			wrapper.inject(txta, "before");
 			toolbar.inject(wrapper);
 			txta.inject(wrapper);
-			
+
 			/* when a key is pressed, check the hotkeys of
 			 * each button, and trigger one if relevent
 			 * (eg, ctrl+b = bold) */
@@ -268,4 +268,3 @@ window.addEvent('domready', function() {
 	Uniwiki.CustomToolbar.attach($$(".generic-editor textarea.editor"));
 	Uniwiki.CustomToolbar.attach($$("#wpTextbox1"), true);
 });
-

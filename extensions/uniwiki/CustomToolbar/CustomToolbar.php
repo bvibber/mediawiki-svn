@@ -1,22 +1,22 @@
 <?php
 # Copyright (C) 2008 Mark Johnston and Adam Mckaig
-# 
+#
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
-# the Free Software Foundation; either version 3 of the License, or 
+# the Free Software Foundation; either version 3 of the License, or
 # (at your option) any later version.
-# 
+#
 # This program is distributed in the hope that it will be useful,
 # but WITHOUT ANY WARRANTY; without even the implied warranty of
 # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 # GNU General Public License for more details.
-# 
+#
 # You should have received a copy of the GNU General Public License along
 # with this program; if not, write to the Free Software Foundation, Inc.,
 # 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 #
 # http://www.gnu.org/licenses/gpl-3.0.html
- 
+
 if (!defined('MEDIAWIKI'))
 	die();
 
@@ -88,7 +88,7 @@ function CustomToolbar_addAssets(&$out) {
 	$out->addScript("<script type='text/javascript' src='$path/CustomToolbar.js'></script>\n");
 	$out->addScript("<style type='text/css'>@import '$path/style.css';</style>\n");
 	return true;
-	
+
 }
 
 $wgExtensionFunctions[] = 'wfCustomToolbarUploadForm';
@@ -114,7 +114,7 @@ if ($wgVersion == '1.13.0') {
     require_once('includes/SpecialUpload.php');
 }
 class CustomToolbarUploadForm extends UploadForm {
-	/* Some code poached from Travis Derouin's <travis@wikihow.com> 
+	/* Some code poached from Travis Derouin's <travis@wikihow.com>
 	 * UploadPopup extension
 	 */
 	var $mType, $mSection, $mCaption;
@@ -125,14 +125,14 @@ class CustomToolbarUploadForm extends UploadForm {
 		$this->mSection = $request->getVal('section');
 		UploadForm::UploadForm(&$request);
 	}
-	
+
 	function execute() {
 		// override MW's UploadForm with only the bits we want
 		global $wgOut, $wgStylePath;
 		$wgOut->setArticleBodyOnly(true);
-		$wgOut->addHTML(" 
+		$wgOut->addHTML("
  			<html>
-                <head>  
+                <head>
                     <title>". wfMsg('ct_upload', $this->mType) . " </title>
                 </head>
             	<body>");
@@ -142,7 +142,7 @@ class CustomToolbarUploadForm extends UploadForm {
 				</body>
         	</html>");
 	}
-	
+
 	function mainUploadForm( $msg = '') {
 		global $wgOut, $wgScriptPath, $wgStylePath;
 		if ( '' != $msg ) {
@@ -164,7 +164,7 @@ class CustomToolbarUploadForm extends UploadForm {
 		$action = $titleObj->escapeLocalURL();
 
 		$encDestFile = htmlspecialchars( $this->mDestFile );
-		
+
 		$icon_path = "{$wgScriptPath}/extensions/uniwiki/CustomToolbar/images/numbers/";
 		/* The following form contains a strange hack for passing the section index id
 		 * through the upload function so we know where to insert the file tag.
@@ -180,7 +180,7 @@ class CustomToolbarUploadForm extends UploadForm {
 							<td align='left'><img src='{$icon_path}1.png' alt='1.' />
 								<label for='wpUploadFile'>{$source_filename}:</label></td>
 							<td align='left'>
-								<input type='file' name='wpUploadFile' id='wpUploadFile' " 
+								<input type='file' name='wpUploadFile' id='wpUploadFile' "
 								. ($this->mDestFile?"":"onchange=\"opener.Uniwiki.CustomToolbar.fillDestFilename(document.getElementById('wpUploadFile').value, document.getElementById('wpDestFile') )\" ") . "size='40' />
 							</td>
 						</tr>
@@ -207,10 +207,10 @@ class CustomToolbarUploadForm extends UploadForm {
 				</form>
 		");
 	}
-	
+
 	function showSuccess(&$file) {
 		global $wgOut, $ct_uploadable_images, $ct_uploadable_attachments;
-				
+
 		//styles copied from monobook/main.css
 		//modified to not float the whole preview to the right
 		$wgOut->addHTML("
@@ -265,9 +265,9 @@ class CustomToolbarUploadForm extends UploadForm {
 		}
 		</style>
 		");
-		$wgOut->redirect(''); 
+		$wgOut->redirect('');
 		$wgOut->addHTML("<h2>" . wfMsg('ct_success') . "</h2>");
-		
+
 		//make wiki markup for the file
 		$ext = explode('.', $file->mDestName );
 		$extension = $ext[count( $ext ) - 1];
@@ -277,7 +277,7 @@ class CustomToolbarUploadForm extends UploadForm {
 		elseif (in_array($extension, $ct_uploadable_attachments )){
         	$file_link = '[[' . 'Media:' . $file->mDestName . '|' . $file->mCaption . ']]';
 		}
-		
+
 		$titleObj = Title::makeTitle( NS_SPECIAL, 'CustomToolbarUpload' );
 		//insert the wiki markup in the appropriate section
 		//or the classic-mode textarea if we are in classic-mode
@@ -294,7 +294,7 @@ class CustomToolbarUploadForm extends UploadForm {
 						{$insertion};
 					</script>
 	        ");
-		
+
 		//show a thumbnail of the image as it will appear on the page
 		$wgOut->addWikiText($file_link);
 		$wgOut->addHTML("
@@ -302,14 +302,14 @@ class CustomToolbarUploadForm extends UploadForm {
 				</div>
         ");
 		/* The UploadComplete hook is placed before the usual MW redirection
-		 * that follows a successful upload, so in order to show our success 
+		 * that follows a successful upload, so in order to show our success
 		 * page and insert the markup, we dump this output and kill the process
 		 * to avoid redirection to the file's page.
 		 */
 		print($wgOut->output());
 		exit;
 	}
-	
+
 	//XX TODO make a prettier error page
 	//function showError() {
 	//}

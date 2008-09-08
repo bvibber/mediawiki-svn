@@ -2,7 +2,6 @@
  * http://www.mediawiki.org/wiki/Extension:Uniwiki_Generic_Edit_Page
  * http://www.gnu.org/licenses/gpl-3.0.txt */
 
-
 Uniwiki.GenericEditPage = {
 
 	/* store the instance of the Mootools sortable
@@ -15,7 +14,7 @@ Uniwiki.GenericEditPage = {
 	 * sliding around */
 	sections_sorting: true,
 
-	
+
 	/* to switch between modes (generic and classic),
 	 * we must (effectively) click preview (to re-
 	 * combine the wiki markup server-side), and
@@ -24,7 +23,7 @@ Uniwiki.GenericEditPage = {
 		/* picked up by the combineBeforeSave hook
 		 * in GenericEditor.php to set the new mode */
 		$("switch-mode").value = 1;
-		
+
 		/* simulate a click on "preview" by setting
 		 * a faux input field with the same name */
 		$("wpFakePreview").name  = "wpPreview";
@@ -38,7 +37,7 @@ Uniwiki.GenericEditPage = {
 	editor: function () {
 		return $$(".generic-editor")[0];
 	},
-	
+
 	/* util function to trigger a click event
 	 * upon receiving an [ENTER] key press (for
 	 * the add [cat | section] boxes, initially */
@@ -79,7 +78,7 @@ Uniwiki.GenericEditPage = {
 
 
 	Events: {
-		
+
 		// == SYNCHRONISE SIDEBAR WITH EDITABLE TITLES ==
 		section_title_change: function() {
 			$$(".generic-editor input.section-title").
@@ -101,7 +100,7 @@ Uniwiki.GenericEditPage = {
 			 * have to do insert any wiki markup, because the combine-
 			 * BeforeSave function in GenericEditPage.php will do it */
 			acat_btn.addEvent( "click", function(e) {
-				
+
 				// abort if no category name was entered
 				var cat_name = acat_fld.value.trim();
 				if (cat_name == "") return true;
@@ -111,7 +110,7 @@ Uniwiki.GenericEditPage = {
 				var already_exists = false;
 				$$("#category-box input[type=checkbox]").each (function(obj) {
 					if (obj.name == "category-" + cat_name) {
-						
+
 						/* ensure that the category is checked,
 						 * and highlight it to notify the user */
 						already_exists = true;
@@ -123,13 +122,13 @@ Uniwiki.GenericEditPage = {
 
 				// abort if the new cat name already exists
 				if (already_exists) return true;
-				
+
 				/* if no category by this name already exists,
 				 * then we will add a new checkbox (to be found
 				 * by the server-side combineBeforeSave function) */
 				var f_id = "category-" + cat_name;
 				var div = new Element ("div").appendText(" ");
-				
+
 				// create the new checkbox
 				var input = new Element ("input", {
 					'id':      f_id,
@@ -137,20 +136,20 @@ Uniwiki.GenericEditPage = {
 					'type':    "checkbox",
 					'checked': "checked"
 				}).inject(div);
-				
+
 				// create the label
 				var label = new Element ("label", { 'for': f_id })
 					.appendText (cat_name).inject (div);
-				
+
 				/* insert the new category before the add
 				 * form and flash it, to notify the user */
 				div.inject (acat_btn.getParent(), "before");
 				div.highlight();
-				
+
 				/* clear the new category name field */
 				acat_fld.value = "";
 			});
-			
+
 			/* catch the ENTER key in the category name box,
 			 * to prevent the entire edit form from submitting
 			 * (redirect it to the click event, above) */
@@ -173,7 +172,7 @@ Uniwiki.GenericEditPage = {
 
 				var already_exists = false;
 				$$("#section-box input[type=checkbox]").each (function(obj) {
-					
+
 					/* fetch the NAME of this checkbox, via its label
 					 * (section checkboxes are only identified by index) */
 					var labels = obj.getParent().getElements('label');
@@ -196,14 +195,14 @@ Uniwiki.GenericEditPage = {
 				if (already_exists) return true;
 
 				/* we're creating a new section; index
-				 * it one higher than the current maximum */ 
+				 * it one higher than the current maximum */
 				sect_index++;
-				
+
 				var div = new Element ("div", {
 					'id':    "sect-" + sect_index,
 					'class': "section-box"
 				});
-				
+
 				// create the checkbox
 				var f_name = "enable-" + sect_index;
 				var f_id   = "fm-" + f_name;
@@ -217,11 +216,11 @@ Uniwiki.GenericEditPage = {
 				/* add a single space between the checkbox
 				 * and label, to match existing sections */
 				div.appendText(" ");
-				
+
 				// create the label
 				var label = new Element ("label", { 'for': f_id })
 					.appendText (sect_name).inject (div);
-			
+
 				/* insert the new section div (in sidebar) into the
 				 * sortables container, and hook up the event handlers
 				 * to make it play nice with the other sections */
@@ -229,7 +228,7 @@ Uniwiki.GenericEditPage = {
 				var sortables = Uniwiki.GenericEditPage.sections_sortables;
 				if (sortables) sortables.addItems (div);
 				div.highlight();
-				
+
 				// create and inject the real section into the editor
 				var klass = "section sect-" + (sect_index+1) + " in-use";
 				var div   = new Element ("div",      { 'id': "section-" + sect_index, 'class': klass });
@@ -244,15 +243,15 @@ Uniwiki.GenericEditPage = {
 				 * this section */
 				if (Uniwiki.CustomToolbar)
 					Uniwiki.CustomToolbar.attach (txta);
-				
+
 				/* hide the instructions box, now that we
 				 * have at least one section in the editor */
 				Uniwiki.GenericEditPage.update_instructions_box();
-				
+
 				// clear the "new section name" field
 				asect_fld.value = "";
 			});
-			
+
 			Uniwiki.GenericEditPage.bind_enter_to_click (asect_fld, asect_btn);
 		},
 
@@ -264,7 +263,7 @@ Uniwiki.GenericEditPage = {
 			// == HANDLE SECTION-IN-USE CHECKBOXES ==
 			var evt_type = Browser.Engine.trident ? 'click' : 'change';
 			sortables.addEvent(evt_type, function(e) {
-				
+
 				// don't mess with things that aren't checkboxes
 				if ($(e.target).get('tag') != 'input') return true;
 
@@ -288,7 +287,7 @@ Uniwiki.GenericEditPage = {
 
 			// we will need this all over the place
 			var editor = Uniwiki.GenericEditPage.editor();
-			
+
 			// check that this document has a sortable sections box
 			var sortables = $$("#section-box .sortables")[0];
 			if (!sortables) return true;
@@ -300,14 +299,14 @@ Uniwiki.GenericEditPage = {
 			 * because mootools waits for mousedown THEN mousemove to trigger; which
 			 * is quite confusing for end-users */
 			sortables.addEvent ("mousedown", function(e) {
-				
+
 				// don't highlight anything if sorting is suspended
 				if (!Uniwiki.GenericEditPage.sections_sorting)
 					return false;
 
 				var t = $(e.target);
 				var tag = t.get("tag");
-				
+
 				/* do nothing for input (checkbox), as not to interfere
 				 * with their normal behaviour. otherwise, highlight
 				 * the section box (entire row) */
@@ -324,12 +323,12 @@ Uniwiki.GenericEditPage = {
 					dragger.retrieve ("tween").cancel();
 					dragger.store ("tween", null);
 				}
-			
+
 				// set css hooks to make dragging visible
 				dragger.setStyle ("background-color", "#ff8");
 				dragger.getParent().addClass ("dragging");
 				dragger.addClass ("dragging");
-				
+
 				/* watch the whole document for mouseup, because the
 				 * cursor may no longer be in the sortables box */
 				var evt = function() {
@@ -363,7 +362,7 @@ Uniwiki.GenericEditPage = {
 			Uniwiki.GenericEditPage.sections_sortables =
 			new Sortables(sortables, {
 				onComplete: function(obj) {
-					
+
 					// fetch the section we are moving
 					var sect_id = obj.id.replace(/\D/g, "");
 					var section = $("section-" + sect_id);
@@ -377,7 +376,7 @@ Uniwiki.GenericEditPage = {
 					// skip this whole thing is the position has not changed
 					if (!section || (newIndex == oldIndex))
 						return true;
-					
+
 					/* disable sorting and sizing until all of the
 					 * re-ordering and sliding around is done */
 					Uniwiki.GenericEditPage.sections_sortables.detach();
@@ -387,7 +386,7 @@ Uniwiki.GenericEditPage = {
 					var stage = 1;
 					var slider = new Fx.Slide (section, {
 						onComplete: function() {
-							
+
 							// 1 = SLIDE OUT EVENT
 							if (stage==1) {
 								stage = 2;
@@ -397,7 +396,7 @@ Uniwiki.GenericEditPage = {
 								/* the div that is actually moving is
 								 * intermediate (inserted by MooTools) */
 								var moving = section.getParent();
-								
+
 								/* newIndex offset is always +2, to skip the first (anonymous)
 								 * introduction section and the instruction box. both are inside
 								 * the generic editor (even if they shouldn't be) */
@@ -430,10 +429,10 @@ Uniwiki.GenericEditPage = {
 								 * condition in IE6, which i don't have time to debug */
 								moving.inject(anchor, rel);
 								(function () { slider.slideIn(); }).delay(100);
-							
+
 							// 2 = SLIDE IN EVENT
 							} else if (stage==2) {
-								
+
 								/* get rid of intermediate element,
 								 * and don't re-call this event. this
 								 * breaks encapsulation, and is a hack :( */
@@ -499,4 +498,3 @@ Uniwiki.GenericEditPage = {
 		}
 	} // Events
 };
-

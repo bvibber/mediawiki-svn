@@ -6,7 +6,6 @@
 if (!defined('MEDIAWIKI'))
 	die();
 
-
 $wgExtensionCredits['other'][] = array(
 	'name'        => "MooTools12core",
 	'author'      => "Merrick Schaefer, Mark Johnston, Evan Wheeler and Adam Mckaig (at UNICEF)",
@@ -21,4 +20,3 @@ function UW_MooTools12core_addJS($out) {
 	$out->addScript("<script type='text/javascript' src='$src'></script>");
 	return true;
 }
-

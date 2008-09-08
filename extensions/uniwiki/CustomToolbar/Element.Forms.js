@@ -7,7 +7,7 @@ License:
 */
 Element.implement({
 	tidy: function(){
-		try {	
+		try {
 			this.set('value', this.get('value').tidy());
 		}catch(e){dbug.log('element.tidy error: %o', e);}
 	},
@@ -97,15 +97,14 @@ Element.implement({
 			var selStart = start + options.before.length;
 			if($pick(select, true)) this.selectRange(selStart, selStart + text.length);
 			else this.setCaretPosition(selStart + text.length);
-		}	
+		}
 		return this;
 	}
 });
 
-
 Element.Properties.inputValue = {
- 
-    get: function(){
+
+	get: function(){
 			 switch(this.get('tag')) {
 			 	case 'select':
 					vals = this.getSelected().map(function(op){ return $pick(op.get('value'),op.get('text')) });
@@ -116,9 +115,9 @@ Element.Properties.inputValue = {
 			 	default:
 					return this.get('value');
 			 }
-    },
- 
-    set: function(value){
+	},
+
+	set: function(value){
 			switch(this.get('tag')){
 				case 'select':
 					this.getElements('option').each(function(op){
@@ -134,8 +133,8 @@ Element.Properties.inputValue = {
 					this.set('value', value);
 			}
 			return this;
-    },
-		
+	},
+
 		erase: function() {
 			switch(this.get('tag')) {
 				case 'select':
@@ -153,5 +152,4 @@ Element.Properties.inputValue = {
 			}
 			return this;
 		}
-
 };

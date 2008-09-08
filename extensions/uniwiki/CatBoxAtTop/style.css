@@ -2,7 +2,6 @@
  * http://www.mediawiki.org/wiki/Extension:Uniwiki_Category_Box_at_Top
  * http://www.gnu.org/licenses/gpl-3.0.txt */
 
-
 /* hide the table of contents
  * THIS IS A TEMPORARY HACK! */
 #bodyContent #toc {
@@ -19,34 +18,33 @@
 	border-left: 1em solid #fff;
 }
 
-	#catbox div {
-		border: 1px solid #aaa;
-		background: #fff;
-	}
+#catbox div {
+	border: 1px solid #aaa;
+	background: #fff;
+}
 
-		#catbox h5 {
-			text-align: center;
-			padding: 0.25em 1em;
-			border-bottom: 1px solid #aaa;
-			background: #eee;
-			margin-bottom: 0;
-		}
-		
-		#catbox ul {
-			margin: 0;
-			padding: 0.25em 0.5em;
-		}
+#catbox h5 {
+	text-align: center;
+	padding: 0.25em 1em;
+	border-bottom: 1px solid #aaa;
+	background: #eee;
+	margin-bottom: 0;
+}
 
-		#catbox li {
-			margin: 0;
-			display: block;
-			line-height: 1.8;
-			list-style-image: none;
-		}
+#catbox ul {
+	margin: 0;
+	padding: 0.25em 0.5em;
+}
 
-			/*#catbox li a {
-				display: block;
-				padding: 0.25em 0.5em;
-				border-bottom: 1px solid #eee;
-			}*/
+#catbox li {
+	margin: 0;
+	display: block;
+	line-height: 1.8;
+	list-style-image: none;
+}
 
+/*#catbox li a {
+	display: block;
+	padding: 0.25em 0.5em;
+	border-bottom: 1px solid #eee;
+}*/

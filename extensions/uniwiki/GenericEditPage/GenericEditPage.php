@@ -2,10 +2,9 @@
 /* vim: noet ts=4 sw=4
  * http://www.mediawiki.org/wiki/Extension:Uniwiki_Generic_Edit_Page
  * http://www.gnu.org/licenses/gpl-3.0.txt */
- 
+
 if (!defined('MEDIAWIKI'))
 	die();
-
 
 /* ---- CREDITS ---- */
 
@@ -14,7 +13,6 @@ $wgExtensionCredits['other'][] = array(
 	'author'      => "Merrick Schaefer, Mark Johnston, Evan Wheeler and Adam Mckaig (at UNICEF)",
 	'description' => "Suppliments the edit page with something more usable"
 );
-
 
 /* ---- CONFIGURABLE OPTIONS ---- */
 
@@ -63,15 +61,15 @@ $wgAjaxExportList[] = "UW_GenericEditPage_emailSuggestion";
 function UW_GenericEditPage_emailSuggestion ($category) {
 	global $wgSuggestCategoryRecipient, $wgEmergencyContact, $wgSitename, $wgUser;
 	require_once ("UserMailer.php");
-	
+
 	$from = new MailAddress ($wgEmergencyContact);
 	$to   = new MailAddress ($wgSuggestCategoryRecipient);
 	$subj = wfMsg ("gep_emailsubject", $wgSitename, $category);
 	$body = wfMsg ("gep_emailbody", $wgUser->getName(), $category, $wgSitename);
-	
+
 	// attempt to send the notification
 	$result = userMailer ($to, $from, $subj, $body);
-	
+
 	/* send a message back to the client, to let them
 	 * know if the suggestion was successfully sent (or not) */
 	return WikiError::isError ($result)
@@ -86,10 +84,10 @@ function UW_GenericEditPage_extractLayout (&$text) {
 	$re = "/\n*<layout\s+name=\"(.+)\"\s+\/>/";
 	preg_match_all ($re, $text, $matches);
 	$text = preg_replace ($re, "", $text);
-	
+
 	/* if no layout tag was found, this
 	 * function does nothing useful */
-	if (!$matches[1][0]) return array(); 
+	if (!$matches[1][0]) return array();
 
 	/* get the wiki markup (containing the
 	 * directives) from this page's layout */
@@ -102,7 +100,7 @@ function UW_GenericEditPage_extractLayout (&$text) {
 	// and the second for the untitled first section
 	$layout[] = array ("name" => $matches[1][0]);
 	$layout[] = array();
-	
+
 	// ignore (delete) the categories on the layout
 	$layout_text = preg_replace ("/\[\[category:(.+?)\]\]/i", "", $layout_text);
 
@@ -112,7 +110,7 @@ function UW_GenericEditPage_extractLayout (&$text) {
 	// build an array with the layout section attributes
 	for ($i= 0; $i < count ($nodes); $i++) {
 		$value = trim ($nodes[$i]);
-		
+
 		/* is this block of text a header?
 		 * update the 'current section' flag ($title), so
 		 * all following directives are dropped in to it */
@@ -131,7 +129,7 @@ function UW_GenericEditPage_extractLayout (&$text) {
 			preg_match_all ($re, $value, $matches);
 			foreach ($matches[1] as $attribute)
 				$layout[$section_num][$attribute] = true;
-			
+
 			// add the remaining stuff as text
 			$value = preg_replace ($re, "", $value);
 			$layout[$section_num]['text'] = trim($value);
@@ -145,40 +143,40 @@ function UW_GenericEditPage_extractCategoriesIntoBox(&$text) {
 	global $wgDBprefix, $wgAddCategory, $wgSuggestCategory, $wgRequest,
 	       $wgEmergencyContact, $wgUseCategoryPage, $wgCategoryPage;
 	$out = "";
-	
+
 	/* build an array of the categories, either from a page
 	 * or from all available categories in the wiki */
 	$categories = array();
 	if ($wgUseCategoryPage) {
-		
+
 		// from the specified page
 		$revision = Revision::newFromTitle (Title::newFromDBKey ($wgCategoryPage));
 		$results = $revision ? split ("\n", $revision->getText()) : array();
 		foreach ($results as $result) {
-			if (trim($result) != '') 
-				$categories[] = Title::newFromText (trim ($result))->getDBkey(); 
+			if (trim($result) != '')
+				$categories[] = Title::newFromText (trim ($result))->getDBkey();
 		}
 	} else {
-		
+
 		// all the categories
 		$db = wfGetDB (DB_MASTER);
 		$results = $db->resultObject ($db->query(
 			"select distinct cl_to from {$wgDBprefix}categorylinks order by cl_to"));
-		
+
 		while ($result = $results->next())
 			$categories[] = $result->cl_to;
 	}
-	
+
 	// extract the categories on this page
 	$regex = "/\[\[category:(.+?)(?:\|.*)?\]\]/i";
 	preg_match_all ($regex, strtolower($text), $matches);
 	$text = preg_replace ($regex, "", $text);
-	
+
 	// an array of the categories on the page (in db form)
 	$on_page = array();
 	foreach ($matches[1] as $cat)
 		$on_page[] = strtolower (Title::newFromText ($cat)->getDBkey());
-		
+
 	/* add any categories that may have been passed with the
 	 * GET request as if they started out on the page */
 	$data = $wgRequest->data;
@@ -186,20 +184,20 @@ function UW_GenericEditPage_extractCategoriesIntoBox(&$text) {
 		if ($key == 'category') {
 			$category = substr ($value, 9); // value = category-categoryname
 			$on_page[] = strtolower ($category);
-			if (!in_array ($category, $categories)) 
+			if (!in_array ($category, $categories))
 				$categories[] = $category;
 		}
 	}
 
-	/* add checkboxes for the categories, 
+	/* add checkboxes for the categories,
 	 * with ones from the page already checked */
 	$out .= "<div id='category-box'><h3>".wfMsg ('gep_categories')."</h3>";
 	foreach ($categories as $category) {
 		$fm_id = "category-$category";
 		$caption = Title::newFromDBkey ($category)->getText();
-		$checked = in_array (strtolower ($category), $on_page) 
+		$checked = in_array (strtolower ($category), $on_page)
 			? "checked='checked'" : '';
-		
+
 		$out .= "
 			<div>
 				<input type='checkbox' name='$fm_id' id='$fm_id' $checked/>
@@ -207,7 +205,7 @@ function UW_GenericEditPage_extractCategoriesIntoBox(&$text) {
 			</div>
 		";
 	}
-	
+
 	// add a text field to add new categories
 	if ($wgAddCategory) {
 		$out .= "
@@ -222,8 +220,8 @@ function UW_GenericEditPage_extractCategoriesIntoBox(&$text) {
 			</script>
 		";
 	}
-	
-	/* add a text field to suggest a category 
+
+	/* add a text field to suggest a category
 	 * as email to $wgEmergencyContact */
 	if ($wgSuggestCategory) {
 		$out .= "
@@ -241,7 +239,7 @@ function UW_GenericEditPage_extractCategoriesIntoBox(&$text) {
 					var cat_name = field.value.trim();
 					if (cat_name != '') {
 						sajax_do_call ('emailSuggestion', [cat_name], function (msg) {
-							
+
 							/* got response from the server, append it after the
 							 * suggest form (so subsequent suggestions are injected
 							 * ABOVE existing suggetions before they're removed) */
@@ -249,7 +247,7 @@ function UW_GenericEditPage_extractCategoriesIntoBox(&$text) {
 								.injectAfter ('fm-suggest-cat-button', 'after')
 								.appendText (msg.responseText)
 								.highlight();
-							
+
 							/* fade out and destroy the notification within
 							 * a timely manner, to keep the DOM tidy */
 							(function() {  n.fade()     }).delay(6000);
@@ -314,7 +312,7 @@ function UW_GenericEditPage_renderSectionBox ($sections) {
 	$out .= "
 			</div>
 	";
-	
+
 	if ($wgAddSection) {
 		$out .= "
 			<div class='add'>
@@ -328,7 +326,7 @@ function UW_GenericEditPage_renderSectionBox ($sections) {
 			</script>
 		";
 	}
-	
+
 	$out .= "
 		</div>
 		<script type='text/javascript'>
@@ -344,17 +342,17 @@ $wgHooks['EditPage::showEditForm:fields'][]  = 'UW_GenericEditPage_displayEditPa
 function UW_GenericEditPage_displayEditPage ($editor, $out) {
 	global $wgHooks, $wgParser, $wgTitle, $wgRequest, $wgUser, $wgCategoryBox, $wgSectionBox, $wgRequireCategory;
 	global $wgGenericEditPageClass, $wgSwitchMode, $wgGenericEditPageWhiteList;
-	
+
 	// disable this whole thing on conflict and comment pages
 	if ($editor->section == "new" || $editor->isConflict)
 		return true;
-	
+
 	// get the article text (as wiki markup)
 	$text = trim ($editor->safeUnicodeOutput ($editor->textbox1));
-	
+
 	// see if we have a link to a layout
 	$layout = UW_GenericEditPage_extractLayout ($text);
-	
+
 	/* remove the categories, to be added as
 	 * checkboxes later (after the edit form) */
 	if ($wgCategoryBox) {
@@ -369,14 +367,14 @@ function UW_GenericEditPage_displayEditPage ($editor, $out) {
 	// add css hooks only to the edit page
 	$wgHooks['SkinTemplateSetupPageCss'][] = 'UW_GenericEditPage_editPageCss';
 	$wgHooks['SkinTemplateOutputPageBeforeExec'][] = 'UW_GenericEditPage_addCssHookGenEd';
-	
+
 
 	/* the current contents of the page we are
 	 * editing will be broken up into $page(and
 	 * combined with $layout, later on) */
 	$page = array();
 	$title = "";
-	
+
 	/* always create a space for the first un-named
 	 * section, even if it is not used */
 	$page[] = array();
@@ -384,14 +382,14 @@ function UW_GenericEditPage_displayEditPage ($editor, $out) {
 	for ($i = 0; $i < count ($nodes); $i++) {
 		$value = trim ($nodes[$i]);
 		$this_section = count ($page) - 1;
-		
+
 		// is this block of text a header?
 		$node_is_title = preg_match ('/^(==?)\s*(.+?)\s*\\1$/i', $value, $matches);
 
 		/* for titles, create a new element in the
 		 * page array, to store the title and text */
 		if ($node_is_title) {
-			
+
 			// extract header level and title
 			$level = strlen ($matches[1]);
 			$title = htmlspecialchars ($matches[2]);
@@ -402,30 +400,30 @@ function UW_GenericEditPage_displayEditPage ($editor, $out) {
 				'level'  => $level,
 				'in-use' => true
 			);
-			
+
 		/* not header -> plain text (store in
 		/ * the previous section, with title) */
 		} else {
 			$page[$this_section]['text'] = $value;
 		}
-		
+
 		/* fetch the meta-data for new sections, or
 		 * the un-named first section. this is done
 		 * here (not when merging) because meta-data
 		 * can ONLY come from the layout (not the page) */
 		if ($node_is_title or $i==0) {
-			
+
 			/* now check if any meta-data exists for this
 			 * section in the layout for this page
 			 * (ignore the first two sections)
 			 * j = 0:  page meta-data
 			 * j = 1:  special first section */
-			for ($j = 1; $j < count ($layout); $j++) { 
+			for ($j = 1; $j < count ($layout); $j++) {
 				if ($layout[$j]['title'] == $title) {
 					// we found a corresponding section in the layout
 					// so we copy all the associated meta-data
 					foreach ($layout[$j] as $k => $v) {
-						
+
 						// don't overwrite the page text!
 						if ($k != "text") $page[count ($page)-1][$k] = $v;
 					}
@@ -433,11 +431,11 @@ function UW_GenericEditPage_displayEditPage ($editor, $out) {
 			}
 		}
 	}
-	
+
 	/* the results of the
 	 * layout + page merge */
 	$result = array();
-	
+
 	/* special case: if the first (un-named) section has text in the layout,
 	 * but not in the page, copy it. otherwise, use the page text (even if empty) */
 	$result[] = ($layout[0]['text'] && !$page[0]['text']) ? $layout[0] : $page[0];
@@ -461,10 +459,10 @@ function UW_GenericEditPage_displayEditPage ($editor, $out) {
 			$result[] = $page[$found_at];
 		}
 	}
-	
+
 	// now put in the stuff that is not in the layout, but IS in the page
 	for ($i = 1; $i < count ($page); $i++) {
-		
+
 		// if this section is already in the result,
 		// then skip to the next page section
 		for ($j=0; $j<count ($result); $j++) {
@@ -477,14 +475,14 @@ function UW_GenericEditPage_displayEditPage ($editor, $out) {
 		 * of the section BEFORE this section, which
 		 * we will insert after */
 		$insert_at = null;
-		
+
 		for ($j=0; $j<count ($result); $j++) {
 			if ($result[$j]['title'] == $page[$i-1]['title']) {
 				$insert_at = $j+1;
 				break;
 			}
 		}
-	
+
 		if ($insert_at===null) $result[] = $page[$i];
 		else                    array_splice ($result, $insert_at, 0, array($page[$i]));
 	}
@@ -498,7 +496,7 @@ function UW_GenericEditPage_displayEditPage ($editor, $out) {
 			break;
 		}
 	}
-	
+
 	// use the default (untitled) section if there is nothing else
 	if (!$any_in_use) {
 		$result[0]['in-use'] = true;
@@ -532,7 +530,7 @@ function UW_GenericEditPage_displayEditPage ($editor, $out) {
 					value: '".wfMsg ('gep_genericmode')."'
 				}).inject($('content'));
 	");
-	
+
 	/* only enforce the categorization of pages in the
 	 * main namespace, using the generic edit page */
 	if ($wgRequireCategory && ($wgTitle->getNamespace() == NS_MAIN)) {
@@ -540,11 +538,11 @@ function UW_GenericEditPage_displayEditPage ($editor, $out) {
 				/* when the form is submitted, check that one or
 				 * more categories were selected, or alert */
 				$('editform').addEvent ('submit', function (e) {
-					
+
 					// only enforce when in generic mode
 					if (!document.body.hasClass ('edit-generic'))
 						return true;
-					
+
 					/* iterate the category checkboxes, and count
 					 * how many of them are 'ticked' */
 					var checked = 0;
@@ -603,7 +601,7 @@ function UW_GenericEditPage_displayEditPage ($editor, $out) {
 		 * not it is currently in use. titles
 		 * without text are kind of useless */
 		if ($result[$i]['lock-text']) {
-			
+
 			/* render the wiki markup into HTML, the old-school
 			 * way which actually works, unlike recursiveTagParse() */
 			$text = $wgParser->parse ($result[$i]['text'], $wgTitle, new ParserOptions)->getText();
@@ -681,7 +679,7 @@ function UW_GenericEditPage_displayEditPage ($editor, $out) {
 	}
 
 
-	// also attach our generic editor stylesheet 
+	// also attach our generic editor stylesheet
 	function UW_GenericEditPage_editPageCss (&$out) {
 		global $wgScriptPath;
 		$out .= "@import '$wgScriptPath/extensions/uniwiki/GenericEditPage/style.css';\n";
@@ -694,7 +692,7 @@ $wgHooks['EditPage::showEditForm:initial'][] = 'UW_GenericEditPage_combineBefore
 function UW_GenericEditPage_combineBeforeSave (&$editpage_Obj) {
 	global $wgRequest, $wgSwitchMode;
 	$data = $wgRequest->data;
-	
+
 	/* if this request was triggered by the user
 	 * pressing the "switch mode" button, then
 	 * set a global to do some jiggery-pokery
@@ -706,7 +704,7 @@ function UW_GenericEditPage_combineBeforeSave (&$editpage_Obj) {
 	 * then this function does nothing! */
 	if ($data['edit-mode'] != "generic")
 		return true;
-	
+
 	/* otherwise, clear the textbox and rebuild it
 	 * from the generic input POST data */
 	$editpage_Obj->textbox1 = '';
@@ -715,14 +713,14 @@ function UW_GenericEditPage_combineBeforeSave (&$editpage_Obj) {
 	$directives = array();
 	foreach ($data as $key => $value) {
 		if (trim ($value) != '') {
-			
+
 			if (substr($key, 0, 6) == 'title-') {
 				$index = intval (substr($key, 6));
-				
+
 				/* only add this section if it is enabled,
 				 * by checking the associated checkbox */
 				if (isset ($data["enable-$index"])) {
-				
+
 					/* got a title -> add it back as a header,
 					 * by fetching the level from field "level-N" */
 					$level = isset ($data["level-$index"]) ? $data["level-$index"] : 2;
@@ -746,14 +744,14 @@ function UW_GenericEditPage_combineBeforeSave (&$editpage_Obj) {
 			}
 		}
 	}
-	
+
 	/* put the section titles and text
 	 * back into the default textbox */
 	foreach (array_keys ($nodes) as $k) {
 		if ($nodes[$k]['title']) $editpage_Obj->textbox1 .= $nodes[$k]['title'];
 		if ($nodes[$k]['text'])  $editpage_Obj->textbox1 .= $nodes[$k]['text'];
 	}
-	
+
 	// then add back the categories
 	if (count ($categories) != 0) {
 		sort ($categories);
@@ -769,4 +767,3 @@ function UW_GenericEditPage_combineBeforeSave (&$editpage_Obj) {
 
 	return true;
 }
-

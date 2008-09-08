@@ -6,7 +6,6 @@
 if (!defined("MEDIAWIKI"))
 	die();
 
-
 /* ---- CREDITS ---- */
 
 $wgExtensionCredits['other'][] = array(
@@ -14,7 +13,6 @@ $wgExtensionCredits['other'][] = array(
 	'author'      => "Merrick Schaefer, Mark Johnston, Evan Wheeler and Adam Mckaig (at UNICEF)",
 	'description' => "Adds a category box to the top right of articles"
 );
-
 
 /* ---- HOOKS ---- */
 
@@ -27,23 +25,24 @@ function UW_CatBoxAtTop_CSS (&$out) {
 }
 
 $wgHooks['OutputPageBeforeHTML'][] = "UW_CatBoxAtTop_Rejig";
-function UW_CatBoxAtTop_Rejig (&$out, &$text) {	
+function UW_CatBoxAtTop_Rejig (&$out, &$text) {
 	global $wgVersion;
 
-    // no categories = no box
+	// no categories = no box
 	if (!$out->mCategoryLinks)
 		return true;
-	
-    /* add a category box to the top of the output,
+
+	/* add a category box to the top of the output,
 	 * to be dropped into the top right via CSS */
 	$catbox = "<div id=\"catbox\"><div>\n";
 	$catbox .= "<h5>Categories</h5><ul>\n";
-    $catlinks = array();
-    if ($wgVersion == '1.13.0') {
-        $catlinks = $out->mCategoryLinks['normal'];
-    } else {
-        $catlinks = $out->mCategoryLinks;
-    }
+	$catlinks = array();
+	if ($wgVersion == '1.13.0') {
+		$catlinks = $out->mCategoryLinks['normal'];
+	} else {
+		$catlinks = $out->mCategoryLinks;
+	}
+
 	foreach ($catlinks as $cat)
 		$catbox .= "<li>$cat</li>\n";
 	$catbox .= "</ul></div></div>\n";
@@ -51,4 +50,3 @@ function UW_CatBoxAtTop_Rejig (&$out, &$text) {
 	$text = $catbox.$text;
 	return true;
 }
-

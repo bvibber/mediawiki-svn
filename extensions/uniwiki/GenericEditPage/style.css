@@ -2,54 +2,53 @@
  * http://www.mediawiki.org/wiki/Extension:Uniwiki_Generic_Edit_Page
  * http://www.gnu.org/licenses/gpl-3.0.txt */
 
-
 #editform {
 	position: relative;
-	
+
 	/* mootools sortables requires relative elements to
 	 * have "layout", to correctly calculate dimensions
 	 * see: http://dev.mootools.net/changeset/1499 */
 	zoom: 1;
 }
 
-	.generic-editor .instructions {
-		border: 1px solid #ccc;
-		background: #eee;
-		line-height: 6em;
-		font-size: 200%;
-		text-align: center;
-		display: none;
-	}
+.generic-editor .instructions {
+	border: 1px solid #ccc;
+	background: #eee;
+	line-height: 6em;
+	font-size: 200%;
+	text-align: center;
+	display: none;
+}
 
-	.generic-editor.show-instructions .instructions {
-		display: block; }
+.generic-editor.show-instructions .instructions {
+	display: block; }
 
-	.generic-editor input,
-	.generic-editor h2 {
-		font-size: 160%;
-		width: 40%;
-	}
+.generic-editor input,
+.generic-editor h2 {
+	font-size: 160%;
+	width: 40%;
+}
 
-	.generic-editor .in-use {
-		padding-bottom: 2em;
-	}
+.generic-editor .in-use {
+	padding-bottom: 2em;
+}
 
-	#bodyContent .generic-editor h2 {
-		margin-bottom: 3px;
-		padding-top: 0;
-		width: auto;
-	}
+#bodyContent .generic-editor h2 {
+	margin-bottom: 3px;
+	padding-top: 0;
+	width: auto;
+}
 
-	.generic-editor .not-in-use {
-		display: none;
-	}
+.generic-editor .not-in-use {
+	display: none;
+}
 
-	.generic-editor textarea {
-		height: 12em;
-	}
+.generic-editor textarea {
+	height: 12em;
+}
 
-	.generic-editor .locked-text {
-	}
+.generic-editor .locked-text {
+}
 
 /* hide a lot of mediawiki junk at the
  * top of the edit form when it generic mode */
@@ -84,84 +83,84 @@ body.edit-generic div#mw-recreate-deleted-warn {
 body.edit-generic.with-sidebar #editform {
 	padding-right: 17em; }
 
-	/* hide the sidebar as default */
-	#sidebar {
-		position: absolute;
-		display: none;
-		right: 0;
-		top: 0;
-		width: 15em;
-		background: #fff;
-	}
-	
-		/* only make it visible in generic mode */
-		body.edit-generic #sidebar {
-			display: block; }
-		
-		#section-box .sortables div,
-		#category-box div {
-			margin-bottom: 1px;
-			padding: 1px;
-		}
+/* hide the sidebar as default */
+#sidebar {
+	position: absolute;
+	display: none;
+	right: 0;
+	top: 0;
+	width: 15em;
+	background: #fff;
+}
 
-		/* hack to hide the crazy mootools temporary div (spawned
-		 * when dragging starts), to prevent the scrollbar jumping */
-		#section-box .sortables div             { display: none; }
-		#section-box .sortables div.section-box { display: block; }
+/* only make it visible in generic mode */
+body.edit-generic #sidebar {
+	display: block; }
 
-		/* disabled/required sections */
-		#section-box .disabled {
-			color: #888;
-		}
-		
-		/* something is draggable, use the hand */
-		#section-box .sortables div,
-		#section-box .sortables label {
-			cursor: pointer;
-		}
+#section-box .sortables div,
+#category-box div {
+	margin-bottom: 1px;
+	padding: 1px;
+}
 
-		/* something is currently being dragged,
-		 * so use the 'grabbing hand' cursor
-		 * (the whole box, to avoid flickering) */
-		#section-box .sortables.dragging,
-		#section-box .sortables.dragging div,
-		#section-box .sortables.dragging label {
-			cursor: move !important;
-		}
+/* hack to hide the crazy mootools temporary div (spawned
+ * when dragging starts), to prevent the scrollbar jumping */
+#section-box .sortables div             { display: none; }
+#section-box .sortables div.section-box { display: block; }
 
-		/* sidebar contains both category-box
-		 * and section-box */
-		#section-box .add,
-		#category-box,
-		#category-box .add,
-		#category-box .suggest {
-			border-top: 1px dotted #ccc;
-			margin: 1em 0 0 0;
-			padding: 1em 0 0 0;
-		}
-			#category-box .add #fm-add-cat,
-			#category-box .suggest #fm-suggest-cat { clear: both; }
-			#fm-add-cat, #fm-add-sect { width: 10em; }
-			#fm-suggest-cat { width: 8em; }
-			
-			#category-box .add #fm-add-cat-button,
-			#category-box .suggest #fm-suggest-cat-button {
-				margin-top: 0.5em; }
-			
-			/* the ajax response box */
-			#category-box .suggest div {
-				margin-top: 1em; }
-		
-		#sidebar h3,
-		#section-box .add label,
-		#category-box .add label,
-		#category-box .suggest label {
-			padding: 0;
-			margin: 0;
-			font-size: 100%;
-			font-weight: bold;
-			padding-bottom: 0.5em;
-		}
+/* disabled/required sections */
+#section-box .disabled {
+	color: #888;
+}
+
+/* something is draggable, use the hand */
+#section-box .sortables div,
+#section-box .sortables label {
+	cursor: pointer;
+}
+
+/* something is currently being dragged,
+ * so use the 'grabbing hand' cursor
+ * (the whole box, to avoid flickering) */
+#section-box .sortables.dragging,
+#section-box .sortables.dragging div,
+#section-box .sortables.dragging label {
+	cursor: move !important;
+}
+
+/* sidebar contains both category-box
+ * and section-box */
+#section-box .add,
+#category-box,
+#category-box .add,
+#category-box .suggest {
+	border-top: 1px dotted #ccc;
+	margin: 1em 0 0 0;
+	padding: 1em 0 0 0;
+}
+	#category-box .add #fm-add-cat,
+	#category-box .suggest #fm-suggest-cat { clear: both; }
+	#fm-add-cat, #fm-add-sect { width: 10em; }
+	#fm-suggest-cat { width: 8em; }
+
+	#category-box .add #fm-add-cat-button,
+	#category-box .suggest #fm-suggest-cat-button {
+		margin-top: 0.5em; }
+
+	/* the ajax response box */
+	#category-box .suggest div {
+		margin-top: 1em; }
+
+#sidebar h3,
+#section-box .add label,
+#category-box .add label,
+#category-box .suggest label {
+	padding: 0;
+	margin: 0;
+	font-size: 100%;
+	font-weight: bold;
+	padding-bottom: 0.5em;
+}
 
 .edit-classic .generic-editor,
 .edit-generic #toolbar,
@@ -190,4 +189,3 @@ body.switching-mode #wikiPreview,
 body.switching-mode #catlinks {
 	display: none;
 }
-

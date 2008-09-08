@@ -2,13 +2,11 @@
 /* vim: noet ts=4 sw=4
  * http://www.mediawiki.org/wiki/Extension:Uniwiki_Authors
  * http://www.gnu.org/licenses/gpl-3.0.txt */
- 
+
 if (!defined("MEDIAWIKI"))
 	die();
 
-
 /* ---- CREDITS ---- */
-
 $wgExtensionCredits['other'][] = array(
 	'name'        => "Authors",
 	'author'      => "Merrick Schaefer, Mark Johnston, Evan Wheeler and Adam Mckaig (at UNICEF)",
@@ -16,7 +14,6 @@ $wgExtensionCredits['other'][] = array(
 );
 
 /* ---- INTERNATIONALIZATION ---- */
-
 require_once ("Authors.i18n.php");
 $wgExtensionFunctions[] = "UW_Authors_i18n";
 
@@ -28,26 +25,23 @@ function UW_Authors_i18n() {
 }
 
 /* ---- CONFIGURABLE OPTIONS ---- */
-
 $wgShowAuthorsNamespaces = array (NS_MAIN);
 $wgShowAuthors = true;
 
-
 /* ---- HOOKS ---- */
-
 $wgHooks['OutputPageBeforeHTML'][] = "UW_Authors_List";
 function UW_Authors_List (&$out, &$text) {
 	global $wgTitle, $wgRequest, $wgShowAuthorsNamespaces, $wgShowAuthors;
-	
+
 	/* do nothing if the option is disabled
 	 * (but why would the extension be enabled?) */
 	if (!wgShowAuthors)
 		return true;
-	
+
 	// only build authors on namespaces in $wgShowAuthorsNamespaces
 	if (!in_array ($wgTitle->getNamespace(), $wgShowAuthorsNamespaces))
 		return true;
-	
+
 	/* get the contribs from the database (don't use the default
 	 * MediaWiki one since it ignores the current user) */
 	$article = new Article ($wgTitle);
@@ -61,23 +55,23 @@ function UW_Authors_List (&$out, &$text) {
 		WHERE rev_page = {$article->getID()}
 		GROUP BY rev_user, rev_user_text, user_real_name
 		ORDER BY timestamp DESC";
-	
+
 	$results = $db->query ($sql, __METHOD__);
 	while ($line = $db->fetchObject ($results)) {
 		$contribs[] = array(
-			$line->rev_user, 
-			$line->rev_user_text, 
+			$line->rev_user,
+			$line->rev_user_text,
 			$line->user_real_name
 		);
 	}
 
 	$db->freeResult ($results);
-	
-	
+
+
 	// return if there are no authors
 	if (sizeof ($results) <= 0)
 		return true;
-	
+
 	// now build a sensible authors display in HTML
 	require_once ("includes/Credits.php");
 	$authors = "\n<div class='authors'>".
@@ -88,10 +82,10 @@ function UW_Authors_List (&$out, &$text) {
 		$id       = $author[0];
 		$username = $author[1];
 		$realname = $author[2];
-		
+
 		if ($id != "0") { // user with an id
 			$author_link = $realname
-				? creditLink($username, $realname) 
+				? creditLink($username, $realname)
 				: creditLink($username);
 			$authors .= "<li>$author_link</li>";
 		} else { // anonymous
@@ -102,8 +96,7 @@ function UW_Authors_List (&$out, &$text) {
 	if ($anons > 0)
 		$authors .= "<li>" . wfMsg('authors_anonymous') . "</li>";
 	$authors .= "</ul></div>";
-	
+
 	$text .= $authors;
 	return true;
 }
-

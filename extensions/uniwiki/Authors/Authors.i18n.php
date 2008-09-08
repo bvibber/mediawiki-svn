@@ -9,5 +9,5 @@ $wgAuthorsMessages = array();
 
 $wgAuthorsMessages['en'] = array(
 	'authors_authors' => "Authors",
-	'authors_anonymous'  => "Anonymous"
+	'authors_anonymous'  => "Anonymous",
 );

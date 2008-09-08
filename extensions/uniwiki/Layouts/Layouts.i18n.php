@@ -6,7 +6,6 @@
 if (!defined("MEDIAWIKI"))
 	die();
 
-
 $wgLayoutsMessages = array();
 $wgLayoutsMessages['en'] = array(
 	'layouts_title'          => "Create a page",
@@ -47,4 +46,3 @@ $wgLayoutsMessages['pt-br'] = array(
         'layouts_unknown'        => "DESCONHECIDO",
         'layouts_tagline'        => "Esta página foi gerada pelo layout <strong>$1</strong>."
 );
-

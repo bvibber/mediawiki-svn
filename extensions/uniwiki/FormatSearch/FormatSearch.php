@@ -5,7 +5,6 @@
 if (!defined("MEDIAWIKI"))
 	die();
 
-
 /* ---- CREDITS ---- */
 
 $wgExtensionCredits['other'][] = array(
@@ -13,7 +12,6 @@ $wgExtensionCredits['other'][] = array(
 	'author'      => "Merrick Schaefer, Mark Johnston, Evan Wheeler and Adam Mckaig (at UNICEF)",
 	'description' => "Minor changes to clean up the search results page"
 );
-
 
 /* ---- HOOKS ---- */
 

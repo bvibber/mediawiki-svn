@@ -2,10 +2,9 @@
 /* vim: noet ts=4 sw=4
  * http://www.mediawiki.org/wiki/Extension:Uniwiki_Layouts
  * http://www.gnu.org/licenses/gpl-3.0.txt */
- 
+
 if (!defined('MEDIAWIKI'))
 	die();
-
 
 /* ---- CREDITS ---- */
 
@@ -83,32 +82,32 @@ function UW_Layouts_maybeRedirectToLayout($article, $user) {
 	 * in the middle of switching modes */
 	if ($wgRequest->data['switch-mode'])
 		return true;
-	
+
 	/* if this page is new,
 	 * no layout variable is in the query string,
 	 * and the page is in a namespace that is using the extension
 	 * and we are not submitting the form (either saving OR preview) */
-	if ($article->fetchContent()===false                
-	&& ($wgRequest->getVal ("layout")===NULL)            
+	if ($article->fetchContent()===false
+	&& ($wgRequest->getVal ("layout")===NULL)
 	&& in_array ($article->mTitle->getNamespace(), $wgLayoutWhiteList)
 	&& ($wgRequest->getVal("action") != "submit"))
 
 		// redirect to the "pick a layout" page!
 		$wgOut->redirect($article->mTitle->getInternalUrl ("action=layout"));
-	
+
 	return true;
 }
 
 $wgHooks['UnknownAction'][] = "UW_Layouts_checkActionIsLayout";
 function UW_Layouts_checkActionIsLayout($action, $article) {
-	global $wgOut, $wgDBprefix, $wgLayoutCategories, $wgLayoutUseCategoryPage, 
+	global $wgOut, $wgDBprefix, $wgLayoutCategories, $wgLayoutUseCategoryPage,
 		$wgNoLayoutOption, $wgLayoutCategoryPage, $wgContLang,
 		$wgLayoutCategoryNSWhiteList;
-	
+
 	// not layout = do nothing
 	if ($action!="layout")
 		return true;
-	
+
 	/* if this page already exists, or
 	 * is a discussion page, redirect
 	 * to the regular edit page */
@@ -117,7 +116,7 @@ function UW_Layouts_checkActionIsLayout($action, $article) {
 		$wgOut->redirect($article->mTitle->getInternalUrl ("action=edit"));
 		return false;
 	}
-	
+
 	// pluck out the bits that we need from mTitle
 	$title = $article->mTitle->getPrefixedText();
 	$url   = $article->mTitle->getInternalUrl();
@@ -125,13 +124,13 @@ function UW_Layouts_checkActionIsLayout($action, $article) {
 	$namespace = $article->mTitle->getNamespace();
 
 	$wgOut->setPageTitle (wfMsg ("layouts_title"));
-	
+
 	/* fetch all articles/pages in the NS_LAYOUT namespace
 	 * by directly querying the database. mediawiki doesn't
 	 * provide any OO way of doing this :( */
 	$db = wfGetDB(DB_MASTER);
 	$layouts = $db->resultObject ($db->query ("select * from {$wgDBprefix}page where page_namespace=".NS_LAYOUT." order by page_title"));
-	
+
 	$wgOut->addHTML (wfMsg ("layouts_chooselayout", $title)."
 		<form action='$url' method='get'>
 			<input type='hidden' name='title' value='$name' />
@@ -150,17 +149,17 @@ function UW_Layouts_checkActionIsLayout($action, $article) {
 		$text = $revision->getText();
 		$lines = explode ("\n", $text);
 		$namespaces = array();
-		
+
 		// add this layout to the choices by default
 		$add = true;
-		
+
 		/* go through the layout text and see if it has an @namespace
 		 * restriction, if so only add the layout as a choice if we find
 		 * the namespace of this page in the layout text */
 		foreach ($lines as $line) {
 			if (preg_match ("/^@namespace(.+?)$/m", $line, $matches)) {
 				$namespaces = explode (" ", trim($matches[1]));
-				$add = in_array ($wgContLang->getNsText ($namespace), $namespaces) || 
+				$add = in_array ($wgContLang->getNsText ($namespace), $namespaces) ||
 					$namespace == NS_MAIN && in_array ("Main", $namespaces);
 			}
 		}
@@ -189,32 +188,32 @@ function UW_Layouts_checkActionIsLayout($action, $article) {
 		");
 	}
 	$wgOut->addHTML("<br/>");
-	
+
 	/* check to see if we are allowing categories on the layout page
 	 * and if so then, either grab all the categories, or get them from
 	 * the designated page (do this for pages in the whitelisted namespaces) */
 	if ($wgLayoutCategories && in_array($namespace, $wgLayoutCategoryNSWhiteList)) {
 		$categories = array();
-		
+
 		/* get the categories from the page if desired,
 		 * otherwise grab them from the db */
 		if ($wgLayoutUseCategoryPage) {
 			$revision = Revision::newFromTitle(Title::newFromDBKey($wgLayoutCategoryPage));
 			$results = $revision ? split("\n", $revision->getText()) : array();
 			foreach ($results as $result) {
-				if (trim ($result) != '') 
-					$categories[] = Title::newFromText(trim($result))->getDBkey(); 
+				if (trim ($result) != '')
+					$categories[] = Title::newFromText(trim($result))->getDBkey();
 			}
 		} else {
 			// todo: implement this later...
 		}
-		
+
 		// add radio buttons for the categories
 		$default = true;
 		$title = $article->mTitle->getPrefixedText();
 		$wgOut->addHTML("<div id='category-box'>".wfMsg ("layouts_choosecategory", $title));
 		foreach ($categories as $category) {
-			$checked = $default ? "checked='checked'" : ""; 
+			$checked = $default ? "checked='checked'" : "";
 			$default = false;
 			$fm_id = "category-$category";
 			$caption = Title::newFromDBkey ($category)->getText();
@@ -227,10 +226,10 @@ function UW_Layouts_checkActionIsLayout($action, $article) {
 		}
 		$wgOut->addHTML ("</div><br/>");
 	}
-	
+
 	$wgOut->addHTML ("<input type='submit' value='".wfMsg('layouts_continue')."' />");
 	$wgOut->addHTML ("</form>");
-	
+
 	return false;
 }
 
@@ -244,31 +243,31 @@ function UW_Layouts_Css (&$out) {
 $wgHooks['EditFormPreloadText'][] = "UW_Layouts_preFillTextBox";
 function UW_Layouts_preFillTextBox (&$text, $title) {
 	global $wgRequest, $wgAddLayoutLink;
-	
+
 	/* fetch the layout from the query string,
 	 * or abort this hook if it is missing */
 	$layout_slug = $wgRequest->getVal ("layout");
 	if ($layout_slug === NULL)
 		return true;
-	
+
 	// fetch the layout object
 	$layout_title = Title::newFromURL ("Layout:".$layout_slug);
 	$layout_article = new Article ($layout_title);
-	
+
 	/* if the layout article exists, pre-fill the textarea with its
 	 * wiki text. if it doesn't exist, do nothing (no error) */
 	if (($layout_text = $layout_article->fetchContent()) !== false) {
-		
+
 		/* break the layout text into sections by splitting
 		 * at header level =one= or ==two==, and iterate */
 		$nodes = preg_split ("/^(==?[^=].*)$/mi", $layout_text, -1, PREG_SPLIT_DELIM_CAPTURE);
 		for ($i=0; $i<count($nodes); $i++) {
-			
+
 			/* if the next node is OPTIONAL, then skip over it
 			 * (it will be included if using GenericEditor) */
 			if (preg_match ("/^@optional$/m", $nodes[$i+1])) {
 				$i++;
-			
+
 			/* not an optional section, or
 			 * text that hasn't been skipped */
 			} else {
@@ -281,7 +280,6 @@ function UW_Layouts_preFillTextBox (&$text, $title) {
 
 	if ($wgAddLayoutLink && $layout_slug != 'none')
 		$text .= "\n\n<layout name=\"$layout_slug\" />";
-	
+
 	return true;
 }
-

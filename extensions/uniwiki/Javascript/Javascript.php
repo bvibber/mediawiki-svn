@@ -6,13 +6,11 @@
 if (!defined('MEDIAWIKI'))
 	die();
 
-
 $wgExtensionCredits['other'][] = array(
 	'name'        => "Uniwiki Javascript",
 	'author'      => "Merrick Schaefer, Mark Johnston, Evan Wheeler and Adam Mckaig (at UNICEF)",
 	'description' => "Adds uniwiki.js to each page (which currently just provides lightweight i18n support in Javascript), and serves as a placeholder for future Javascript code shared between Uniwiki extensions"
 );
-
 
 $wgHooks['BeforePageDisplay'][] = "UW_Javascript_addJS";
 function UW_Javascript_addJS($out) {
@@ -21,4 +19,3 @@ function UW_Javascript_addJS($out) {
 	$out->addScript ("<script type='text/javascript' src='$src'></script>");
 	return true;
 }
-

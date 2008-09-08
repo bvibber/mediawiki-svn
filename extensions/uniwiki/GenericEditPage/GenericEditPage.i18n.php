@@ -6,7 +6,6 @@
 if (!defined("MEDIAWIKI"))
 	die();
 
-
 $wgGenericEditPageMessages = array();
 $wgGenericEditPageMessages['en'] = array(
 	'gep_emailsubject'          => "[$1] Category suggestion: $2",
@@ -87,4 +86,3 @@ $wgGenericEditPageMessages['pt-br'] = array(
 	'gep_nosectioninstructions' => "Não há seções nesta página. Use as ferramentas à direita para incluir algumas seções.",
 	'gep_nocategories'          => "Selecione, no mínimo, uma categoria antes de salvar"
 );
-

@@ -13,4 +13,3 @@ require_once(\"\$uw/Layouts/Layouts.php\");
 require_once(\"\$uw/Authors/Authors.php\");
 require_once(\"\$uw/CustomToolbar/CustomToolbar.php\");
 require_once(\"\$uw/CreatePage/CreatePage.php\");
-

@@ -10,5 +10,5 @@ $wgFormatChangesMessages = array();
 $wgFormatChangesMessages['en'] = array(
 	'fc_anonymous' => "Anonymous",
 	'fc_createdby' => "created by",
-	'fc_editedby'  => "edited by"
+	'fc_editedby'  => "edited by",
 );

@@ -17,16 +17,15 @@ div.layout-name strong {
 	padding: 0pt 0.8em 0.3em 0.5em;
 }
 
-	#p-search form {
-		padding: 5px;
-	}
+#p-search form {
+	padding: 5px;
+}
 
-	#searchInput {
-		width: 10em;
-		margin-bottom: 4px;
-	}
-	
-	/* hide the "GO" button, but leave
-	 * it accessible by hitting ENTER */
-	#searchGoButton { display: none; }
+#searchInput {
+	width: 10em;
+	margin-bottom: 4px;
+}
 
+/* hide the "GO" button, but leave
+ * it accessible by hitting ENTER */
+#searchGoButton { display: none; }

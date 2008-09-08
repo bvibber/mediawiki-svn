@@ -2,10 +2,9 @@
 /* vim: noet ts=4 sw=4
  * http://www.mediawiki.org/wiki/Extension:Uniwiki_CSS_Hooks
  * http://www.gnu.org/licenses/gpl-3.0.txt */
- 
+
 if (!defined("MEDIAWIKI"))
 	die();
-
 
 /* ---- CREDITS ---- */
 
@@ -15,7 +14,6 @@ $wgExtensionCredits['other'][] = array(
 	'description' => "Add some CSS hooks to the HTML output of articles, for better styling"
 );
 
-
 /* ---- HOOKS ---- */
 
 $wgHooks['OutputPageBeforeHTML'][] = 'UW_CssHooks_AddHooks';
@@ -24,7 +22,7 @@ function UW_CssHooks_AddHooks (&$out, &$text) {
 
 	// break the page into sections via their <h2>s
 	$sections = preg_split ("/(<a name=\".+?\"><\/a><h2>.+?<\/h2>)/",
-	                        $text, -1, PREG_SPLIT_DELIM_CAPTURE);
+		$text, -1, PREG_SPLIT_DELIM_CAPTURE);
 
 	// remove the first empty section
 	if ($sections[0] == "")
@@ -34,7 +32,7 @@ function UW_CssHooks_AddHooks (&$out, &$text) {
 	$output = '';
 	$div_open = false;
 	for ($i=0; $i<count ($sections); $i++) {
-		
+
 		/* is this block of text a header? (check for mw-headline
 		 * to only include actual section headers, and dodge toc) */
 		if (substr ($sections[$i], 0, 7) == "<a name") {
@@ -48,7 +46,7 @@ function UW_CssHooks_AddHooks (&$out, &$text) {
 				$div_open = true;
 			}
 		}
-		
+
 		// re-add the original text
 		$output .= $sections[$i];
 
@@ -56,8 +54,7 @@ function UW_CssHooks_AddHooks (&$out, &$text) {
 		if (($i==count ($sections)-1) && $div_open)
 			$output .= "</div>";
 	}
-	
+
 	$text = $output;
 	return true;
 }
-

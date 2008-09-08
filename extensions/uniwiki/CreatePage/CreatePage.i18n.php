@@ -47,4 +47,3 @@ $wgCreatePageMessages['pt-br'] = array(
 	'createpage_tryagain'     => "Não - Eu quero criar uma nova página com outro título.",
 	'createpage_editexisting' => "Sim - Eu quero editar a página existente."
 );
-

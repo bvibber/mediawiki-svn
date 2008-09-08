@@ -6,7 +6,6 @@
 if (!defined("MEDIAWIKI"))
 	die();
 
-
 $wgAutoCreateCategoryPagesMessages = array();
 $wgAutoCreateCategoryPagesMessages['en'] = array(
 	'accp_stub'      => "This is a category page.  It lists all of the pages in category \"$1\" as well as all subcategories of category \"$1\" if any exist.",
@@ -27,4 +26,3 @@ $wgAutoCreateCategoryPagesMessages['pt-br'] = array(
 	'accp_stub'      => "Esta Ã© uma pÃ¡gina de categoria.  Ela lista todas as pÃ¡ginas da categoria \"$1\", bem como todas as subcategorias da categoria \"$1\", se existirem.",
 	'accp_createdby' => "Gerada automaticamente pela extensÃ£o AutoCreateCategoryPag."
 );
-
