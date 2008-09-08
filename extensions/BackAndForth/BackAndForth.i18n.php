@@ -180,6 +180,15 @@ $messages['eo'] = array(
 	'backforth-prev' => 'Antaŭa ($1)',
 );
 
+/** Spanish (Español)
+ * @author Antur
+ */
+$messages['es'] = array(
+	'backforth-next' => 'Siguiente ($1)',
+	'backforth-desc' => 'Agrega "Siguiente" y "Anterior" al inicio de las páginas para explorar alfabeticamente',
+	'backforth-prev' => 'Anterior ($1)',
+);
+
 /** Extremaduran (Estremeñu)
  * @author Better
  */

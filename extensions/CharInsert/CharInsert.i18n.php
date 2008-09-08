@@ -171,6 +171,13 @@ $messages['jv'] = array(
 	'charinsert-desc' => 'Marengaké digawéné kothak JavaScript kanggo [[MediaWiki:Edittools|nyisipaké karakter non-standar]]',
 );
 
+/** Khmer (ភាសាខ្មែរ)
+ * @author Lovekhmer
+ */
+$messages['km'] = array(
+	'charinsert-desc' => 'អនុញ្ញាតអោយមានការបង្កើតប្រអ​ប់ JavaScript សំរាប់[[MediaWiki:Edittools|ការដាក់បញ្ចូលតួរអក្សរមិនមានលក្ខណៈស្តង់ដារ]]',
+);
+
 /** Ripoarisch (Ripoarisch)
  * @author Purodha
  */

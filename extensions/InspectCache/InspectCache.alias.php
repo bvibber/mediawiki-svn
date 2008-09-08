@@ -24,6 +24,11 @@ $aliases['arz'] = array(
 	'InspectCache' => array( 'فحص_الكاش' ),
 );
 
+/** Finnish (Suomi) */
+$aliases['fi'] = array(
+	'InspectCache' => array( 'Tutki välimuistia' ),
+);
+
 /** French (Français) */
 $aliases['fr'] = array(
 	'InspectCache' => array( 'InspecterCache' ),

@@ -333,6 +333,24 @@ $messages['jv'] = array(
 	'userrightsnotifysubject' => 'Kaanggotan grup diganti ing $1',
 );
 
+/** Khmer (ភាសាខ្មែរ)
+ * @author Lovekhmer
+ */
+$messages['km'] = array(
+	'userrightsnotifysubject' => 'ការផ្លាស់ប្តូរក្រុមសមាជិកភាពនៅលើ $1',
+	'userrightsnotifybody' => 'ជំរាប់សួរ $1 ។
+
+នេះជាសេចក្តីជូនដំណឹងដល់អ្នកដោយក្រុមសមាជិកភាពរបស់អ្នកនៅលើ $2 ត្រូវបានផ្លាស់ប្តូរដោយ $3 នៅ $4 ។
+
+បានដាក់បន្ថែម: $5
+បានដកហូត: $6
+
+ដោយសេចក្តីគោរពរាប់អាន
+
+$2',
+	'userrightsnotif-desc' => 'ផ្ញើអ៊ីមែលជូនដំណឹងទៅកាន់អ្នកប្រើប្រាស់នៅពេលផ្លាស់ប្តូរសិទ្ធិ',
+);
+
 /** Ripoarisch (Ripoarisch)
  * @author Purodha
  */

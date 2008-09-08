@@ -27,6 +27,12 @@ $aliases['arz'] = array(
 	'TaskListByProject' => array( 'قائمة_المهام_حسب_المشروع' ),
 );
 
+/** Finnish (Suomi) */
+$aliases['fi'] = array(
+	'TaskList' => array( 'Tehtävälista' ),
+	'TaskListByProject' => array( 'Projektin tehtävälista' ),
+);
+
 /** Dutch (Nederlands) */
 $aliases['nl'] = array(
 	'TaskList' => array( 'Takenlijst' ),

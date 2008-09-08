@@ -77,6 +77,13 @@ $messages['it'] = array(
 	'pnghandler-desc' => 'Ridimensiona file PNG usando pngds',
 );
 
+/** Khmer (ភាសាខ្មែរ)
+ * @author Lovekhmer
+ */
+$messages['km'] = array(
+	'pnghandler-desc' => 'ប្តូរទំហំ PNGs ដោយប្រើ pngds',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */

@@ -430,7 +430,29 @@ Bitte benachrichtige einen [[Special:Userlist/sysop|Administrator]].',
 	'openidemail' => 'E-Mail-Adresse:',
 	'openidlanguage' => 'Sprache',
 	'openidnotavailable' => 'Dein bevorzugter Benutzername ($1) wird bereits von einem anderen Benutzer verwendet.',
+	'openidnotprovided' => 'Dein OpenID-Server unterstützt keine Nicknamen (entweder, weil er es nicht kann, oder weil du es ihm nicht erlaubst hast).',
+	'openidchooseinstructions' => 'Alle Benutzer benötigen einen Benutzernamen;
+du kannst einen aus der untenstehenden Liste auswählen.',
+	'openidchoosefull' => 'Dein vollständiger Name ($1)',
+	'openidchooseurl' => 'Ein Name aus deiner OpenID ($1)',
+	'openidchooseauto' => 'Ein automatisch erzeugter Name ($1)',
+	'openidchoosemanual' => 'Ein Name deiner Wahl:',
+	'openidchooseexisting' => 'Ein existierendes Benutzerkonto in diesem Wiki:',
 	'openidchoosepassword' => 'Passwort:',
+	'openidconvertinstructions' => 'Mit diesem Formular kannst du dein Benutzerkonto zur Benutzung einer OpenID-URL freigeben.',
+	'openidconvertsuccess' => 'Erfolgreich nach OpenID konvertiert',
+	'openidconvertsuccesstext' => 'Du hast die Konvertierung deiner OpenID nach $1 erfolgreich durchgeführt.',
+	'openidconvertyourstext' => 'Dies ist bereits deine OpenID.',
+	'openidconvertothertext' => 'Dies ist die OpenID von jemand anderem.',
+	'openidalreadyloggedin' => "'''Du bist bereits angemeldet, $1!'''
+
+Wenn du OpenID für künftige Anmeldevorgänge nutzen möchtest, kannst du [[Special:OpenIDConvert|dein Benutzerkonto nach OpenID konvertieren]].",
+	'tog-hideopenid' => 'Verstecke deine <a href="http://openid.net/">OpenID</a> auf deiner Benutzerseite, wenn du dich mit OpenID anmeldest.',
+	'openidnousername' => 'Kein Benutzername angegeben.',
+	'openidbadusername' => 'Falscher Benutzername angegeben.',
+	'openidautosubmit' => 'Diese Seite enthält ein Formular, das automatisch übertragen wird, wenn JavaSkript aktiviert ist. Falls nicht, klicke bitte auf „Weiter“.',
+	'openidclientonlytext' => 'Du kannst keine Benutzerkonten aus diesem Wiki als OpenID für andere Seiten verwenden.',
+	'openidloginlabel' => 'OpenID-URL',
 );
 
 /** Greek (Ελληνικά)

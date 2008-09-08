@@ -27,6 +27,11 @@ $aliases['arz'] = array(
 	'UserStats' => array( 'إحصاءات_المستخدم', 'خاص_إحصاءات_المستخدم' ),
 );
 
+/** Assamese (অসমীয়া) */
+$aliases['as'] = array(
+	'UserStats' => array( 'সদস্য পৰিসংখ্যা', 'বিশেষ সদস্য পৰিসংখ্যা' ),
+);
+
 /** German (Deutsch) */
 $aliases['de'] = array(
 	'UserStats' => array( 'Benutzerstatistik' ),

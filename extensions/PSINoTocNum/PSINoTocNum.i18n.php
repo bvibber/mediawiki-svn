@@ -82,6 +82,13 @@ $messages['it'] = array(
 	'psinotocnum-desc' => 'Nuova parola magica "<nowiki>__</nowiki>NOTOCNUM<nowiki>__</nowiki>"',
 );
 
+/** Khmer (ភាសាខ្មែរ)
+ * @author Lovekhmer
+ */
+$messages['km'] = array(
+	'psinotocnum-desc' => 'ពាក្យទិព្វថ្មី "<nowiki>__</nowiki>NOTOCNUM<nowiki>__</nowiki>"',
+);
+
 /** Ripoarisch (Ripoarisch)
  * @author Purodha
  */

@@ -231,11 +231,12 @@ $messages['eo'] = array(
 
 /** French (Français)
  * @author Grondin
+ * @author Meno25
  * @author Urhixidur
  */
 $messages['fr'] = array(
 	'spamregex' => 'Expressions régulières de pourriels',
-	'spamregex-desc' => '[[Special:Spamregex|Filtre]], dans les pages, les phrases ou mots indésirables, basé sur des expressions régulières',
+	'spamregex-desc' => '[[Special:SpamRegex|Filtre]], dans les pages, les phrases ou mots indésirables, basé sur des expressions régulières',
 	'spamregex-error-unblocking' => 'Erreur de déblocage de « $1 ». Il n’y a pas probablement aucun modèle.',
 	'spamregex-summary' => 'Le texte en question a été détecté dans le commentaire de la page.',
 	'spamregex-intro' => 'Utilisez ce formulaire pour bloquer effectivement les expressions pouvant être sauvegardées dans une page texte. Si le texte contient les expressions définies, les changements ne pourront être sauvegardés et un motif explicatif sera affiché à l’utilisateur qui a voulu sauvegarder la page. Il est important de prendre en considération que les expressions ne devront être ni trop longues ni trop courantes.',
@@ -396,7 +397,7 @@ $messages['km'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
-	'spamregex-summary' => 'Dësen Test gouf am Resumé vun der Säit fonnt',
+	'spamregex-summary' => 'Dësen Text gouf am Resumé vun der Säit fonnt',
 	'spamregex-currently-blocked' => "'''Sätz déi elo gespaart sinn:'''",
 	'spamregex-no-currently-blocked' => "'''Et gëtt keng gespaarte Sätz.'''",
 	'spamregex-log-1' => "* '''$1''' $2 ([{{SERVER}}$3&text=$4 ewech huelen]) derbäigest vum",

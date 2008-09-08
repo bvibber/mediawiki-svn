@@ -724,6 +724,7 @@ $allMessages['km'] = array(
 	'whitelisttablechangedate' => 'ផ្លាស់ប្តូរកាលបរិច្ឆេទផុតកំណត់',
 	'whitelisttableremove' => 'ដកចេញ',
 	'whitelistnewtabledate' => 'កាលបរិច្ឆេទផុតកំណត់៖',
+	'whitelistpagelist' => 'ទំព័រ{{SITENAME}}សំរាប់ $1',
 	'whitelistbadtitle' => 'ចំនងជើងមិនត្រឹមត្រូវ -',
 	'whitelistnever' => 'មិនដែល',
 );

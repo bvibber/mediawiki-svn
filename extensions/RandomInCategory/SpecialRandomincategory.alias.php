@@ -20,6 +20,11 @@ $aliases['arz'] = array(
 	'RandomInCategory' => array( 'عشوائى_فى_تصنيف' ),
 );
 
+/** Finnish (Suomi) */
+$aliases['fi'] = array(
+	'RandomInCategory' => array( 'Satunnainen sivu luokasta' ),
+);
+
 /** Dutch (Nederlands) */
 $aliases['nl'] = array(
 	'RandomInCategory' => array( 'WillekeurigeUitCategorie' ),

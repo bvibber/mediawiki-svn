@@ -156,6 +156,13 @@ $messages['lb'] = array(
 	'antibot-desc' => 'Einfach Méiglechkeet fir Spambot-Kontrollen an aner Spamaktivitéiten',
 );
 
+/** Malayalam (മലയാളം)
+ * @author Jyothis
+ */
+$messages['ml'] = array(
+	'antibot-desc' => 'സ്പാം ബോട്ടിനെ പരിശോധിക്കാനും പേലോഡ് ട്രിഗര്‍ ചെയ്യാനുമുള്ള ലളിതമായ ചട്ടക്കൂട്',
+);
+
 /** Malay (Bahasa Melayu)
  * @author Aviator
  */

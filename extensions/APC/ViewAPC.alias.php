@@ -27,6 +27,11 @@ $aliases['arz'] = array(
 	'ViewAPC' => array( 'عرض_إيه_بى_سى' ),
 );
 
+/** Finnish (Suomi) */
+$aliases['fi'] = array(
+	'ViewAPC' => array( 'APC-tiedot' ),
+);
+
 /** Dutch (Nederlands) */
 $aliases['nl'] = array(
 	'ViewAPC' => array( 'APCBekijken' ),

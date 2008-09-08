@@ -100,6 +100,24 @@ $messages['arz'] = array(
 	'right-editclosedwikis' => 'تعديل الويكيات المغلقة',
 );
 
+/** Bulgarian (Български)
+ * @author DCLXVI
+ */
+$messages['bg'] = array(
+	'closewikis-closed-default' => 'Това уики е затворено',
+	'closewikis-page' => 'Затваряне на уикито',
+	'closewikis-page-close' => 'Затваряне на уикито',
+	'closewikis-page-close-wiki' => 'Уики:',
+	'closewikis-page-close-dreason' => 'Причина (публична):',
+	'closewikis-page-close-submit' => 'Затваряне',
+	'closewikis-page-close-success' => 'Уикито беше затворено успешно',
+	'closewikis-page-reopen-wiki' => 'Уики:',
+	'closewikis-page-reopen-reason' => 'Причина:',
+	'closewikis-page-err-nowiki' => 'Посоченото уики е невалидно',
+	'closewikis-page-err-closed' => 'Уикито вече беше затворено',
+	'closewikis-page-err-opened' => 'Уикито не беше затворено',
+);
+
 /** Czech (Česky)
  * @author Li-sung
  */

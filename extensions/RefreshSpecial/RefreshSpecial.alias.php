@@ -24,6 +24,11 @@ $aliases['arz'] = array(
 	'RefreshSpecial' => array( 'تحديث_خاص' ),
 );
 
+/** Finnish (Suomi) */
+$aliases['fi'] = array(
+	'RefreshSpecial' => array( 'Toimintosivun päivitys' ),
+);
+
 /** Dutch (Nederlands) */
 $aliases['nl'] = array(
 	'RefreshSpecial' => array( 'SpeciaalVerversen' ),

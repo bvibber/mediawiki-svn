@@ -27,6 +27,11 @@ $aliases['arz'] = array(
 	'ChangeAuthor' => array( 'تغيير_المؤلف' ),
 );
 
+/** Assamese (অসমীয়া) */
+$aliases['as'] = array(
+	'ChangeAuthor' => array( 'লিখক সলাওঁক' ),
+);
+
 /** German (Deutsch) */
 $aliases['de'] = array(
 	'ChangeAuthor' => array( 'Autor ändern' ),

@@ -434,6 +434,19 @@ $messages['eo'] = array(
 	'badimages-page' => '{{ns:help}}:Listo de nevalidaj bildoj',
 );
 
+/** Spanish (Español)
+ * @author Antur
+ */
+$messages['es'] = array(
+	'badimages-add-btn' => 'Agregar',
+	'badimages-name' => 'Nombre:',
+	'badimages-reason' => 'Motivo:',
+	'badimages-remove' => '(borrar)',
+	'badimages-remove-btn' => 'Borrar',
+	'badimages-remove-confirm' => 'Por favor, confirme que desea quitar $1 de la lista:',
+	'badimages-removed' => '$1 ha sido borrado de la lista.',
+);
+
 /** Extremaduran (Estremeñu)
  * @author Better
  */

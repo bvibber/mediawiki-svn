@@ -93,6 +93,13 @@ $messages['jv'] = array(
 	'gnuplot-desc' => 'Nambahaké tag <code><nowiki><gnuplot></nowiki></code> kanggo nrapaké Gnuplot',
 );
 
+/** Khmer (ភាសាខ្មែរ)
+ * @author Lovekhmer
+ */
+$messages['km'] = array(
+	'gnuplot-desc' => 'ដាក់បន្ថែមប្លាក<code><nowiki><gnuplot></nowiki></code>ដើម្បីប្រើប្រាស់ Gnuplot',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */

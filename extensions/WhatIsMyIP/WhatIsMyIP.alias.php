@@ -24,6 +24,11 @@ $aliases['arz'] = array(
 	'WhatIsMyIP' => array( 'ما_هو_الأيبى_خاصتى' ),
 );
 
+/** Finnish (Suomi) */
+$aliases['fi'] = array(
+	'WhatIsMyIP' => array( 'Oma IP-osoite' ),
+);
+
 /** Dutch (Nederlands) */
 $aliases['nl'] = array(
 	'WhatIsMyIP' => array( 'WatIsMijnIPAdres' ),

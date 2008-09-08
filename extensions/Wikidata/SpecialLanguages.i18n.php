@@ -602,6 +602,8 @@ $wdMessages['bg'] = array(
 	'ow_Permission_denied' => '<h2>ДОСТЪПЪТ Е ОТКАЗАН</h2>',
 	'ow_copy_no_action_specified' => 'Необходимо е да се посочи действие',
 	'ow_copy_successful' => '<h2>Копирането беше успешно</h2>Данните изглежда са копирани успешно. Уверите, че това наистина е така!',
+	'ow_copy_unsuccessful' => '<h3>Копирането беше неуспешно</h3>
+Не беше извършено копиране.',
 	'ow_no_action_specified' => '<h3>Не е посочено действие</h3> Вероятно сте попаднали тук директно? Обикновено не се налага да идвате тук.',
 );
 
@@ -1608,8 +1610,17 @@ $wdMessages['ia'] = array(
 	'ow_history' => 'Historia',
 	'ow_none_selected' => '<Nihil seligite>',
 	'ow_dm_OK' => 'OK',
+	'ow_ClassAttributeType' => 'Typo',
+	'ow_Collection' => 'Collection',
 	'ow_Language' => 'Lingua',
+	'ow_OptionAttributeOption' => 'Option',
+	'ow_OptionAttributeOptions' => 'Optiones',
+	'ow_Spelling' => 'Orthographia',
+	'ow_Synonyms' => 'Synonimos',
+	'ow_Text' => 'Texto',
+	'ow_TranslatedTextAttributeValue' => 'Texto',
 	'ow_LinkAttributeValues' => 'Ligamines',
+	'ow_meaningsoftitle' => 'Significatos de "$1"',
 );
 
 /** Indonesian (Bahasa Indonesia)

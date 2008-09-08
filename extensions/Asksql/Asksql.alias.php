@@ -32,6 +32,11 @@ $aliases['de'] = array(
 	'Asksql' => array( 'SQL-Abfrage' ),
 );
 
+/** Finnish (Suomi) */
+$aliases['fi'] = array(
+	'Asksql' => array( 'SQL-kysely' ),
+);
+
 /** Hungarian (Magyar) */
 $aliases['hu'] = array(
 	'Asksql' => array( 'SQL-lekérdezés' ),

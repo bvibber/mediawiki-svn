@@ -27,6 +27,11 @@ $aliases['arz'] = array(
 	'ChemicalSources' => array( 'مصادر_كيميائية' ),
 );
 
+/** Assamese (অসমীয়া) */
+$aliases['as'] = array(
+	'ChemicalSources' => array( 'ৰাসায়নিক উৎসসমূহ' ),
+);
+
 /** Dutch (Nederlands) */
 $aliases['nl'] = array(
 	'ChemicalSources' => array( 'ScheikundigeBronnen' ),

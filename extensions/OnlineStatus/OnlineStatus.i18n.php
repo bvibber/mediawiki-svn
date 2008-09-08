@@ -54,6 +54,8 @@ $messages['ar'] = array(
 	'onlinestatus-toggles-show' => 'اعرض حالتي على الإنترنت على صفحة مستخدمي',
 	'onlinestatus-toggle-offline' => 'غير متصل',
 	'onlinestatus-toggle-online' => 'متصل',
+	'tog-onlineOnLogin' => 'غير حالتي إلى موجود عند تسجيل الدخول',
+	'tog-offlineOnLogout' => 'غير حالتي إلى غير موجود عند تسجيل الخروج',
 );
 
 /** Egyptian Spoken Arabic (مصرى)
@@ -72,6 +74,8 @@ $messages['arz'] = array(
 	'onlinestatus-toggles-show' => 'اعرض حالتى على الإنترنت على صفحة مستخدمي',
 	'onlinestatus-toggle-offline' => 'غير متصل',
 	'onlinestatus-toggle-online' => 'متصل',
+	'tog-onlineOnLogin' => 'غير حالتى إلى موجود عند تسجيل الدخول',
+	'tog-offlineOnLogout' => 'غير حالتى إلى غير موجود عند تسجيل الخروج',
 );
 
 /** Bulgarian (Български)
@@ -121,13 +125,19 @@ $messages['cs'] = array(
  */
 $messages['de'] = array(
 	'onlinestatus-desc' => 'Ergänzt eine Option zur Anzeige des Online-Status in den persönlichen Einstellungen',
+	'onlinestatus-js-anon' => 'Fehler: Du musst angemeldet sein, um diese Funktion nutzen zu können',
+	'onlinestatus-js-changed' => 'Dein Status wurde in „$1“ geändert',
+	'onlinestatus-js-error' => 'Statusänderung nicht möglich, der Wert „$1“ ist ungültig',
 	'onlinestatus-subtitle-offline' => 'Dieser Benutzer ist gegenwärtig offline',
 	'onlinestatus-subtitle-online' => 'Dieser Benutzer ist gegenwärtig online',
+	'onlinestatus-tab' => 'Status',
 	'onlinestatus-toggles-desc' => 'Dein Status:',
 	'onlinestatus-toggles-explain' => 'Diese Einstellung ermöglicht dir, anderen Benutzern auf deiner Benutzerseite zu zeigen, ob du online oder offline bist.',
 	'onlinestatus-toggles-show' => 'Zeige Onlinestatus auf meiner Benutzerseite',
 	'onlinestatus-toggle-offline' => 'Offline',
 	'onlinestatus-toggle-online' => 'Online',
+	'tog-onlineOnLogin' => 'Status auf online ändern, sobald ich mich anmelde',
+	'tog-offlineOnLogout' => 'Status auf offline ändern, wenn ich mich abmelde',
 );
 
 /** Lower Sorbian (Dolnoserbski)
@@ -361,6 +371,8 @@ $messages['nl'] = array(
 	'onlinestatus-toggles-show' => 'Onlinestatus weergeven op mijn gebruikerspagina',
 	'onlinestatus-toggle-offline' => 'Offline',
 	'onlinestatus-toggle-online' => 'Online',
+	'tog-onlineOnLogin' => 'Mijn status naar online wijzigen als ik me aanmeld',
+	'tog-offlineOnLogout' => 'Mijn status naar offline wijzigen als ik me afmeld',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
@@ -471,6 +483,8 @@ $messages['sk'] = array(
 	'onlinestatus-toggles-show' => 'Zobrazovať stav pripojenia na mojej používateľskej stránke',
 	'onlinestatus-toggle-offline' => 'Odpojený',
 	'onlinestatus-toggle-online' => 'Pripojený',
+	'tog-onlineOnLogin' => 'Zmeniť môj stav na online počas prihlasovania',
+	'tog-offlineOnLogout' => 'Zmeniť môj stav na offline počas odhlasovania',
 );
 
 /** Swedish (Svenska)

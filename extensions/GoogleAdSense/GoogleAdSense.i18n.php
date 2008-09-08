@@ -72,6 +72,13 @@ $messages['fr'] = array(
 	'googleadsense-desc' => 'Ajoute [http://www.google.com/adsense Google AdSense] à la barre latérale',
 );
 
+/** Galician (Galego)
+ * @author Toliño
+ */
+$messages['gl'] = array(
+	'googleadsense-desc' => 'Engade [http://www.google.com/adsense Google AdSense] á barra lateral',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */

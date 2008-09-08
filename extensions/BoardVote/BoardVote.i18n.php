@@ -2477,8 +2477,8 @@ Slěduje nastata zaklučowana wersija. Budźe so na [[Special:Boardvote/dump|zja
 
 [[Special:Boardvote/entry|Wróćo]]',
 	'boardvote_invalidentered' => '<p><strong>Zmylk</strong> Porjad kandidatow dyrbi so přez pozitiwnu cyłu ličbu zwuraznić (1, 2, 3, ...) abo wostaj kašćiki prózdne.</p>',
-	'boardvote_nosession' => 'Twój wužiwarski ID za Wikimediju njehodźi so zwěsćić. Prošu přizjew so w tym wikiju, w kotrymž sy za wólbu pušćeny a dźi tam k <nowiki>[[Special:Boardvote]]</nowiki>. Zo by wolić móhł, dyrbiš wužiwarske konto měć, kotrež znajmjeńša $1 přinoškow před $2 pokazuje, přeni přinošk dyrbi před $3 być.',
-	'boardvote_notloggedin' => 'Njejsy so přizjewił. Zo by wohthłosować móhł, dyrbiš přizjewjeny być a wužiwarske konto wužiwać, z kotrymž sy znajmjeńša $1 změnow před $2 činił a hdźež prěnja změna je před $3.',
+	'boardvote_nosession' => 'Twój wužiwarski ID za Wikimediju njehodźi so zwěsćić. Prošu přizjew so w tym wikiju, w kotrymž sy za wólbu dopušćeny a dźi tam k <nowiki>[[Special:Boardvote]]</nowiki>. Dyrbiš wužiwarske konto ze znajmjeńša $1 {{PLURAL:$1|přinoškom|přinoškomaj|přinoškami|přinoškami}} před $2 wužiwać a znajmjeńša $3 {{PLURAL:$3|přinošk|přinoškaj|přinoški|přinoškow}} mjez $4 a $5 dodać.',
+	'boardvote_notloggedin' => 'Njejsy so přizjewił. Zo by móhł hłosować, dyrbiš wužiwarske konto ze znajmjeńša $1 {{PLURAL:$1|přinoškom|přinoškomaj|přinoškami|přinoškami}} před $2 wužiwać a znajmjeńša $3 {{PLURAL:$3|přinošk|přinoškaj|přinoški|přinoškow}} mjez $4 a $5 dodać.',
 	'boardvote_notqualified' => 'Njejsy woprawnjeny so na tutej wólbje wobdźělić. Dyrbiš $3 změnow před $2 činić a twoja prěnja změna dyrbi před $5 być.',
 	'boardvote_novotes' => 'Dotal nichtó njeje hłosował.',
 	'boardvote_time' => 'Čas',

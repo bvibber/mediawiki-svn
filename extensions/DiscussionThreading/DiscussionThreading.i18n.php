@@ -40,6 +40,13 @@ $messages['arz'] = array(
 	'discussionthreading-threadnewsectionhint' => 'بدء مجموعة رسائل جديدة',
 );
 
+/** Bulgarian (Български)
+ * @author DCLXVI
+ */
+$messages['bg'] = array(
+	'discussionthreading-replysection' => 'отговаряне',
+);
+
 $messages['de'] = array(
 	'discussionthreading-replysection' => 'antworten',
 	'discussionthreading-replysectionhint' => "Auf diesen Eintrag antworten",

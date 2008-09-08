@@ -362,6 +362,7 @@ $messages['pt'] = array(
  */
 $messages['sk'] = array(
 	'whoiswatching' => 'Kto sleduje wiki stránku',
+	'whoiswatching-desc' => 'Poskytuje zoznam používateľov, ktorí sledujú túto wiki stránku',
 	'specialwhoiswatchingthepage' => 'Kto sleduje %s',
 	'specialwhoiswatchingusage' => 'Túto špeciálnu stránku nie je možné používať samostatne. Prosím, použite [[MediaWiki:Number_of_watching_users_pageview]] na definovanie vstupného bodu na túto stránku.',
 	'specialwhoiswatchingaddusers' => 'Pridať používateľov sledujúcich stránku',

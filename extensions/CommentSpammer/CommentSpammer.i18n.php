@@ -275,7 +275,8 @@ $messages['mr'] = array(
  * @author Tvdm
  */
 $messages['nl'] = array(
-	'commentspammer-save-blocked' => 'Uw IP-adres wordt verdacht van spammen - opslaan is geweigerd. Maak een gebruiker aan om dit te voorkomen.',
+	'commentspammer-save-blocked' => 'Uw IP-adres wordt verdacht van spammen - opslaan is geweigerd.
+[Special:UserLogin|Maak een gebruiker aan of meld u aan]] om dit te voorkomen.',
 	'commentspammer-desc' => 'Voorkomt bewerkingen van spammers via een DNS-blacklist',
 	'commentspammer-log-msg' => 'bewerking van [[Special:Contributions/$1|$1]] aan [[:$2]].',
 	'commentspammer-log-msg-info' => 'Spamde voor het laatst $1 {{PLURAL:$1|dag|dagen}} geleden. Dreigingsniveau is $2 en de overtredingscode is $3. [http://www.projecthoneypot.org/search_ip.php?ip=$4 Details bekijken] of [[Special:Blockip/$4|blokkeren]].',

@@ -177,6 +177,13 @@ $messages['jv'] = array(
 	'skinperpage-desc' => 'Tambahna tag <tt>&lt;skin&gt;</tt> kanggo nganggo kulit-kulit sing séjé-séjé per kaca',
 );
 
+/** Khmer (ភាសាខ្មែរ)
+ * @author Lovekhmer
+ */
+$messages['km'] = array(
+	'skinperpage-desc' => 'ដាក់បន្ថែមប្លាក<tt>&lt;skin&gt;</tt>ដើម្បីប្រើប្រាស់សំបកផ្សេងៗក្នុងទំព័រ',
+);
+
 /** Ripoarisch (Ripoarisch)
  * @author Purodha
  */

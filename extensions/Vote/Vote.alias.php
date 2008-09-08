@@ -24,6 +24,16 @@ $aliases['arz'] = array(
 	'Vote' => array( 'تصويت' ),
 );
 
+/** Assamese (অসমীয়া) */
+$aliases['as'] = array(
+	'Vote' => array( 'ভোট' ),
+);
+
+/** Finnish (Suomi) */
+$aliases['fi'] = array(
+	'Vote' => array( 'Äänestys' ),
+);
+
 /** Dutch (Nederlands) */
 $aliases['nl'] = array(
 	'Vote' => array( 'Stemmen' ),
