@@ -8,7 +8,7 @@ $mv_path = str_replace('example_usage/', '', $mv_path);
 <html>
 <head>
 	<title>sample mv embed</title>
- 	<script type="text/javascript" src="<?php echo htmlspecialchars($mv_path) ?>mv_embed.js"></script>
+ 	<script type="text/javascript" src="<?php echo htmlspecialchars($mv_path) ?>mv_embed.js?<?php echo time()?>"></script>
 </head>
 <body>
 <h3> Sample Embed</h3>
@@ -107,8 +107,8 @@ $sample_embed[8]['desc']=' <br><b>Crossfading Videos</b><br/><a href="http://ser
 ?>
   <table border="1" cellpadding="6" width="600">
   	<? foreach($sample_embed as $key=>$aval){
-  		//$key!=8 
-  		if($key!=0 && $key!=3)continue;
+  		//$key!=8 && $key!=3
+  		if($key!=0 )continue;
   	 ?>
 	    <tr>
 	      <td valign="top"><?=$aval['tag']?></td>

@@ -112,6 +112,10 @@ var mv_init_interface = {
 				ebvid['org_eb_stop'] = ebvid['stop'];
 				ebvid['stop'] = function(){mv_do_stop();}
 			}
+			if(ebvid['play_or_pause'].toString()!='function(){mv_play_or_pause();}'){
+				ebvid['org_eb_play_or_pause'] = ebvid['play_or_pause'];
+				ebvid['play_or_pause'] = function(){mv_play_or_pause();}
+			}
 			if(ebvid['showVideoDownload'].toString!='function(){mv_doShowVideoDownload();}'){
 				ebvid['org_showVideoDownload'] = ebvid['showVideoDownload'];
 				ebvid['showVideoDownload'] = function(){mv_doShowVideoDownload();}
@@ -781,6 +785,11 @@ function mv_do_ajax_form_submit(mvd_id, edit_action){
 	//return false to prevent the form being submitted
 	return false;
 }
+function mv_play_or_pause(){
+	 //issue a stop since we want mouse_overs to work 
+	 if(!this.paused)
+	 	mv_do_stop();
+}
 function mv_do_stop(){
 	$j('#mv_videoPlayerTime').fadeIn('fast');
 	//re-enable interface:
@@ -867,10 +876,11 @@ function mv_disp_play_controls(disp){
 
 function scroll_to_pos(mvd_id){
 	if( $j('#mv_fd_mvd_'+mvd_id).get(0)){
-		//do scroll in 1 second
+		js_log(' flat offsetTOp:: '+ $j('#mv_fd_mvd_'+mvd_id).get(0).offsetTop +
+		' mv_get off:'+top_offset);
 		//@@todo debug IE issues with scrolling
-		$j('#selectionsBox').animate({scrollTop: $j('#mv_fd_mvd_'+mvd_id).position().top}, 'slow');
-	}
+		$j('#selectionsBox').animate({scrollTop: ($j('#mv_fd_mvd_'+mvd_id).get(0).offsetTop-40)}, 'slow');
+	}	
 }
 function highlight_fd(mvd_id){
 	$j('#mv_fd_mvd_'+mvd_id).css('border','1px solid #FF0000');

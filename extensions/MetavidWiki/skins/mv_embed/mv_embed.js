@@ -7,9 +7,6 @@
  *
  * @url http://metavid.ucsc.edu
  *
- * portions sampled from the vlc browser interface:
- * http://people.videolan.org/~damienf/plugin-0.8.6.html *
- *
  * parseUri:
  * http://stevenlevithan.com/demo/parseuri/js/
  *
@@ -17,6 +14,7 @@
  * (in cases where media will be hosted in a different place than the embbeding page)
  *
  */
+var MV_EMBED_VERSION = '1.0';
 var mv_embed_path = null;
 //whether or not to load java from an iframe.
 //note: this is necessary for remote embedding because of java security model)
@@ -150,7 +148,7 @@ var default_video_attributes = {
  * its load_libs function will be called during initialization
  *********************************************/
 var mvEmbed = {
-  Version: '0.7',
+  Version: MV_EMBED_VERSION,
   loaded:false,
   load_time:0,
   flist:Array(),
@@ -485,6 +483,7 @@ var parseUri=function(d){var o=parseUri.options,value=o.parser[o.strictMode?"str
  * 
  */
 var ctrlBuilder = {
+	height:29,
 	getControls:function(embedObj){	
 		js_log('f:controlsBuilder');		
     	ctrlBuilder.id = (embedObj.pc)?embedObj.pc.pp.id:embedObj.id;
@@ -637,15 +636,18 @@ var embedTypes = {
 
 		 // ActiveX plugins
 		 if(this.msie){
+		 	 // check for flash		 
+		 	  if ( this.testActiveX( 'ShockwaveFlash.ShockwaveFlash'))
+		 	  	this.players.addPlayer(flowPlayer);
 			 // VLC
 			 if ( this.testActiveX( 'VideoLAN.VLCPlugin.2' ) )
 			 	this.players.addPlayer(vlcActiveXPlayer);
 			 // Java
 			 if ( javaEnabled && this.testActiveX( 'JavaWebStart.isInstalled' ) )
 			 	this.players.addPlayer(cortadoPlayer);
-			 //temporary disable QuickTime check
+			 // quicktime
 			 if ( this.testActiveX( 'QuickTimeCheckObject.QuickTimeCheck.1' ) )
-			 	this.players.addPlayer(quicktimeActiveXPlayer);
+			 	this.players.addPlayer(quicktimeActiveXPlayer);			 
 		 }
 
 		 // <video> element (should not need to be attached to the dom to test)(
@@ -985,6 +987,7 @@ function swapEmbedVideoElement(video_element, videoInterface){
 	js_log('do swap ' + videoInterface.id + ' for ' + video_element);
 	embed_video = document.createElement('div');
 	//make sure our div has a hight/width set:
+		
 	$j(embed_video).css({'width':videoInterface.width,'height':videoInterface.height});
 	//inherit the video interface
 	for(method in videoInterface){	
@@ -1086,7 +1089,7 @@ textInterface.prototype = {
 				var _this = this;
 				do_request(this.pe.roe, function(data)
 	            {            	            
-	            	//continue      	         	
+	            	//continue         	
 	            	_this.pe.media_element.addROE(data);                                      	                                              
 	                _this.getParseCMML_rowReady();                               
 	            });
@@ -1371,7 +1374,7 @@ mediaSource.prototype =
     {
     	js_log(element);    	
     	
-        this.uri = element.getAttribute('src');
+        this.uri = $j(element).attr('src');
         if(ogg_chop_links)
             this.uri = this.uri.replace(".anx", '');
         this.marked_default = false;
@@ -1381,17 +1384,17 @@ mediaSource.prototype =
         if (tag == 'video')
             this.marked_default = true;
 
-        if (element.hasAttribute('type'))
-            this.mime_type = element.getAttribute('type');
-        else if (element.hasAttribute('content-type'))
-            this.mime_type = element.getAttribute('content-type');
+        if ($j(element).attr('type'))
+            this.mime_type = $j(element).attr('type');
+        else if ($j(element).attr('content-type'))
+            this.mime_type = $j(element).attr('content-type');
         else
             this.mime_type = this.detectType(this.uri);
 
 		js_log("MIME TYPE: "+  this.mime_type );
 
-        if (element.hasAttribute("title"))
-            this.title = element.getAttribute("title");
+        if ($j(element).attr("title"))
+            this.title = $j(element).attr("title");
         else
         {
             var parts = this.mime_type.split("/",2);
@@ -1400,14 +1403,14 @@ mediaSource.prototype =
             this.title = parts[1] + ' ' + parts[0];
         }
         
-        if (element.hasAttribute("id"))
-            this.id = element.getAttribute("id");
+        if ($j(element).attr("id"))
+            this.id = $j(element).attr("id");
                         
 		//@@todo parse start time format and put into start_ntp
-		if(element.hasAttribute("start"))
-			this.start = element.getAttribute("start");
-		if(element.hasAttribute("end"))
-			this.start = element.getAttribute("end");
+		if($j(element).attr("start"))
+			this.start = $j(element).attr("start");
+		if($j(element).attr("end"))
+			this.start = $j(element).attr("end");
         //js_log('Adding mediaSource of type ' + this.mime_type + ' and uri ' + this.uri + ' and title ' + this.title);
         this.parseURLDuration();
     },
@@ -1416,8 +1419,8 @@ mediaSource.prototype =
      *  @param {String} end_time in NTP format
      */
     updateSrcTime:function(start_ntp, end_ntp){
-    	js_log("UPDATE src time: "+ start_ntp+'/'+ end_ntp);
-    	js_log("pre uri:" + this.uri);
+    	js_log("f:updateSrcTime: "+ start_ntp+'/'+ end_ntp);
+    	//js_log("pre uri:" + this.uri);
     	//if we have time we can use:
     	if(this.start_ntp!=null){
     		var index_time_val = false;
@@ -1431,7 +1434,9 @@ mediaSource.prototype =
 	        	this.uri = this.uri.substring(0, this.uri.indexOf(index_time_val) ) + index_time_val + start_ntp + '/'+end_ntp + end_req_string;
 	        }
     	}
-	  	js_log("post uri:" + this.uri);
+    	//update the duration
+    	this.parseURLDuration();
+	  	//js_log("post uri:" + this.uri);
     },
     /** MIME type accessor function.
         @return the MIME type of the source.
@@ -1545,14 +1550,19 @@ mediaElement.prototype =
         this.thumbnail = mv_default_thumb_url;
         // Process the <video> element
         this.tryAddSource(video_element);
-        if(video_element.hasAttribute('thumbnail'))
-            this.thumbnail=video_element.getAttribute('thumbnail');
-        if(video_element.hasAttribute('poster'))
-            this.thumbnail=video_element.getAttribute('poster');
-        // Process all inner <source> elements
-        var inner_source_elements = video_element.getElementsByTagName('source');
-        $j.each(inner_source_elements, function(inx, inner_source)
+        js_log('done trying to add src from base element');
+        
+        if($j(video_element).attr('thumbnail'))
+            this.thumbnail=$j(video_element).attr('thumbnail');
+            
+        if($j(video_element).attr('poster'))
+            this.thumbnail=$j(video_element).attr('poster');
+            
+        // Process all inner <source> elements    
+        js_log("inner sorce count: " + video_element.getElementsByTagName('source').length );
+        $j.each(video_element.getElementsByTagName('source'), function(inx, inner_source)
         {
+        	js_log(' on inner source: '+i + ' obj: '+ inner_source);
             _this.tryAddSource(inner_source);
         });              
     },  
@@ -1575,6 +1585,7 @@ mediaElement.prototype =
     */
     selectSource:function(index)
     {
+    	js_log('f:selectSource:'+index);
     	var playable_sources = this.getPlayableSources();
     	for(var i in playable_sources){
     		if(i==index){
@@ -1634,14 +1645,14 @@ mediaElement.prototype =
     */
     tryAddSource:function(element)
     {
-    	js_log('f:tryAddSource');
-        if (!element.hasAttribute('src'))
-            return;
-        var new_src = element.getAttribute('src');
-        //make sure an existing element with the same src does not already exist: 
-        //js_log("New src: "+new_src);
-        for(i in this.sources){     
-        	//js_log('   ext src: '+this.sources[i].getURI());  	       
+    	js_log('f:tryAddSource');    	
+        if (! $j(element).attr("src")){
+        	js_log("element has no src");
+            return false;
+        }
+        var new_src = $j(element).attr('src');
+        //make sure an existing element with the same src does not already exist:         
+        for(i in this.sources){    
         	if(this.sources[i].getURI()==new_src){        		
         		return false;
         	}
@@ -1685,16 +1696,16 @@ mediaElement.prototype =
 	        });
 	        //set the thumbnail:
 			$j.each(roe_data.getElementsByTagName('img'), function(inx, n){
-	            if(n.getAttribute("id")=="stream_thumb"){
-	                js_log('roe:set thumb to '+n.getAttribute("src"));
-	                _this['thumbnail'] = n.getAttribute("src");
+	            if($j(n).attr("id")=="stream_thumb"){
+	                js_log('roe:set thumb to '+$j(n).attr("src"));
+	                _this['thumbnail'] =$j(n).attr("src");
 	            }
 	        })
 	        //set the linkback:
 			$j.each(roe_data.getElementsByTagName('link'), function(inx, n){
-	            if(n.getAttribute('id')=='html_linkback'){
-	                js_log('roe:set linkback to '+n.getAttribute("href"));
-	                _this['linkback'] = n.getAttribute('href');
+	            if($j(n).attr('id')=='html_linkback'){
+	                js_log('roe:set linkback to '+$j(n).attr("href"));
+	                _this['linkback'] = $j(n).attr('href');
 	            }
 	        })
         }
@@ -2000,7 +2011,10 @@ embedVideo.prototype = {
 	        	js_log("f:getHTML:AddControls");
 	            html_code +='<div id="mv_embedded_controls_'+this.id+'" class="controls" style="width:'+this.width+'px">';
 	            html_code += this.getControlsHTML();       
-	            html_code +='</div>';         
+	            html_code +='</div>';      
+	            //block out some space by encapulating the top level div 
+	            $j(this).wrap('<div style="width:'+parseInt(this.width)+'px;height:'
+	            		+(parseInt(this.height)+ctrlBuilder.height)+'px"></div>');    	            
 	        }
         html_code += '</div>'; //videoPlayer div close        
         js_log('should set: '+this.id);
@@ -2050,20 +2064,28 @@ embedVideo.prototype = {
 			$j('#img_thumb_'+this.id).attr('src', src);
 		}else{
 			var _this = this;
-			if(this.thumbnail_disp && this.thumbnail_updating==false){
+			
+			//if still animating remove new_img_thumb_
+			if(this.thumbnail_updating==true)
+				$j('#new_img_thumb_'+this.id).stop().remove();
+			
+			if(this.thumbnail_disp){
 				this.thumbnail_updating=true;
 				$j('#dc_'+this.id).append('<img src="'+src+'" ' +
 					'style="display:none;position:absolute;zindex:2;top:0px;left:0px;" ' +
 					'width="'+this.width+'" height="'+this.height+'" '+
-					'id = "new_img_thumb_'+this.id+'" />');					
-				$j('#new_img_thumb_'+this.id).fadeIn("slow", function(){
-						js_log('done fading in: '+src);
+					'id = "new_img_thumb_'+this.id+'" />');			
+				//js_log('appended: new_img_thumb_');		
+				$j('#new_img_thumb_'+this.id).fadeIn("slow", function(){						
 						//once faded in remove org and rename new:
 						$j('#img_thumb_'+_this.id).remove();
 						$j('#new_img_thumb_'+_this.id).attr('id', 'img_thumb_'+_this.id);
 						$j('#img_thumb_'+_this.id).css('zindex','1');
-						this.thumbnail_updating=false;
+						_this.thumbnail_updating=false;						
+						//js_log("done fadding in "+ $j('#img_thumb_'+_this.id).attr("src"));
 				});
+			}else{
+				//do a quick switch
 			}
 		}
 	},
@@ -2125,69 +2147,9 @@ embedVideo.prototype = {
     	var pos = $j('#options_button_'+sel_id).offset();
     	pos['top']=pos['top']+24;
 		pos['left']=pos['left']-124;
-		js_log('pos of options button: t:'+pos['top']+' l:'+ pos['left']);
+		//js_log('pos of options button: t:'+pos['top']+' l:'+ pos['left']);
         $j('#mv_embedded_options_'+sel_id).css(pos).toggle();
         return;
-
-        /*var thumbnail = this.media_element.getThumbnailURL();
-        var thumb_html='';
-	  	 //add plugin config button (don't add for playlists)
-	  	 if(!this.pc){
-			 thumb_html+='<div style="border:none;position:absolute;top:2px;left:2px;z-index:99;width:28px;height:28px;">' +
-				 '<a title="'+getMsg('select_playback')+'" href="#" onClick="document.getElementById(\''+this.id+'\').selectPlaybackMethod();return false;">'+
-				 	getTransparentPng({id:'plug_'+this.id,width:'27',height:'27',src:mv_embed_path + 'images/vid_plugin_edit_sm.png'})+
-				 '</a>'+
-			 '</div>';
-	  	 }
-	  	 * */
-
-	  	//add in cmml inline dispaly if roe description avaliable
-	  	//not to be displayed in stream interface.
-/*	  	if(this.media_element.hasStreamOfMIMEType('text/cmml') && this.show_meta_link){
-	  		thumb_html+='<div style="border:none;position:absolute;top:2px;right:2px;z-index:1">'+
-		     '<a title="'+getMsg('select_transcript_set')+'" href="javascript:$j(\'#'+this.id+'\').get(0).showTextInterface();">';
-		    thumb_html+=getTransparentPng({id:'metaButton_'+this.id, width:"40", height:"27", border:"0",
-						src:mv_embed_path + 'images/cc_meta_sm.png' });
-			thumb_html+='</div>';
-	  	}*/
-
-	    //add link back if requested
-	    /*if(this.linkback){
-	    	thumb_html+='<div style="border:none;position:absolute;bottom:2px;right:2px;z-index:1">'+
-		     '<a title="'+getMsg('clip_linkback')+'" target="_new" href="'+this.linkback+'">';
-		    thumb_html+=getTransparentPng({id:'lb_'+this.id, width:"27", height:"27", border:"0",
-						src:mv_embed_path + 'images/vid_info_sm.png' });
-			thumb_html+='</div>';
-	    }
-	    * */
-	    //add direct download link if option:
-	    /*if(this.download_link){
-	    	//check for roe attribute (extened download options)
-	    	var dlLink = (this.media_element.sources.length>1)?'javascript:document.getElementById(\''+this.id+'\').showVideoDownload();':this.media_element.sources[0].uri;
-	    	thumb_html+='<div style="border:none;position:absolute;bottom:2px;left:2px;z-index:1">'+
-		     '<a title="'+getMsg('download_clip')+'" href="'+dlLink+'">';
-		    thumb_html+=getTransparentPng({id:'lb_'+this.id, width:"27", height:"27", border:"0",
-						src:mv_embed_path + 'images/vid_download_sm.png' });
-			thumb_html+='</div>';
-	    }
-	    */
-	    //add in embed link (if requested)
-	    /*if(this.embed_link){
-	    	var right_offset = (this.linkback)?32:0;
-			thumb_html+='<div style="border:none;position:absolute;bottom:2px;right:'+right_offset+'px;z-index:1">'+
-		     '<a title="Embed Clip Code" href="javascript:document.getElementById(\''+this.id+'\').showEmbedCode();">';
-
-			thumb_html+=getTransparentPng(new Object ({id:'le_'+this.id, width:"27", height:"27", border:"0",
-						src:mv_embed_path + 'images/vid_embed_sm.png' }));
-			thumb_html+='</a></div>';
-			//make link absolute (if it was not already)
-			//add the hidden embed code:
-			thumb_html+='<div id="embed_code_'+this.id+'" style="border:solid;border-color:black;overflow:hidden;display:none;position:absolute;bottom:2px;right:'+(right_offset+30)+'px;width:'+(this.playerPixelWidth()-100)+'px;z-index:1">'+
-				'<input onClick="this.select();" type="text" size="40" length="1024" value="'+this.getEmbeddingHTML()+'">'
-				 '</div>';
-            thumb_html+='</div>';
-	    }*/
-	    //this.displayHTML(thumb_html);
 	},
 	getPlayButton:function(id){
 		if(!id)id=this.id;
@@ -2219,17 +2181,20 @@ embedVideo.prototype = {
 	showEmbedCode : function(embed_code){
 		if(!embed_code)
 			embed_code = this.getEmbeddingHTML();
-			
-		this.displayHTML('<a class="email" href="#">Share Clip via Email</a> '+
-			'<p>or</p> '+
-			'<a href="#">Embed Clip in Blog or Site</a> '+
+		var o='';
+		if(this.linkback){
+			o+='<a class="email" href="'+this.linkback+'">Share Clip via Link</a> '+
+			'<p>or</p> ';
+		}
+		o+='<span style="color:#FFF;font-size:14px;">Embed Clip in Blog or Site</span>'+
 			'<div class="embed_code"> '+
 				'<textarea onClick="this.select();" id="embedding_user_html_'+this.id+'" name="embed">' +
 					embed_code+
 				'</textarea> '+
 				'<button onClick="$j(\'#'+this.id+'\').get(0).copyText(); return false;" class="copy_to_clipboard">Copy to Clipboard</button> '+
 			'</div> '+
-		'</div>');
+		'</div>';
+		this.displayHTML(o);
 	},
 	copyText:function(){
 	  $j('#embedding_user_html_'+this.id).focus().select();	   	 
@@ -2287,8 +2252,9 @@ embedVideo.prototype = {
 //       			 '<span class="displayHTML" id="con_vl_'+this.id+'" style="position:absolute;top:20px;left:20px;color:white;">' +
 	  		'<div class="videoOptionsComplete">'+
 			//@@TODO: this style should go to .css
-			'<div style="width: 247px;border:none;position:absolute;z-index:13;padding: 12px 19px; text-align:right;"><span>'+
-		    '<a href="#" style="color:white;" onClick="$j(\'#'+sel_id+'\').get(0).closeDisplayedHTML();return false;">close</a></span></div>'+
+			'<span style="float:right;margin-right:10px">' +			
+		    		'<a href="#" style="color:white;" onClick="$j(\'#'+sel_id+'\').get(0).closeDisplayedHTML();return false;">close</a>' +
+		    '</span>'+
             '<div id="mv_disp_inner_'+sel_id+'">'+
             	 html_code 
            	+'</div>'+
@@ -2336,7 +2302,7 @@ embedVideo.prototype = {
          js_log(select_html);
 		 return select_html;
 	},
-    selectPlaybackMethod:function(){
+    selectPlaybackMethod:function(){    	
     	//get id (in case where we have a parent container)
         var this_id = (this.pc!=null)?this.pc.pp.id:this.id;
         
@@ -2347,7 +2313,7 @@ embedVideo.prototype = {
 		$j.each(this.media_element.getPlayableSources(), function(index, source)
         {     		
 	        var default_player = embedTypes.players.defaultPlayer(source.getMIMEType());
-	        var source_select_code = '$j(\'#'+this_id+'\').get(0).closeDisplayedHTML(); $j(\''+_this.id+'\').media_element.selectSource(\''+index+'\');';
+	        var source_select_code = '$j(\'#'+this_id+'\').get(0).closeDisplayedHTML(); $j(\'#'+_this.id+'\').get(0).media_element.selectSource(\''+index+'\');';
 	        var player_code = _this.getPlayerSelectList(source.getMIMEType(), index, source_select_code);
 	        var is_not_selected = (source != _this.media_element.selected_source);
 	        var image_src = mv_embed_path+'/images/stream/';
@@ -2838,14 +2804,14 @@ function js_log(string){
      /*
       * IE and non-firebug debug:
       */
-/*     var log_elm = document.getElementById('mv_js_log');
+     var log_elm = document.getElementById('mv_js_log');
      if(!log_elm){
      	document.write('<div style="position:absolute;z-index:500;top:0px;left:0px;right:0px;height:150px;"><textarea id="mv_js_log" cols="80" rows="6"></textarea></div>');
      	var log_elm = document.getElementById('mv_js_log');
      }
      if(log_elm){
      	log_elm.value+=string+"\n";
-     }*/
+     }
    }
    //in case of "throw error" type usage
    return false;

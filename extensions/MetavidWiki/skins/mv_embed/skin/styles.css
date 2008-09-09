@@ -38,6 +38,7 @@
 .videoPlayer .controls {
 	height: 29px;	
 	background: #454545;
+	display:block;
 }
 .videoPlayer .controlInnerSmall {
 /*	width: 430px;*/
