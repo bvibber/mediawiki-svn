@@ -70,7 +70,7 @@ class ImageMap {
 				if ( wfIsBadImage( $imageTitle->getDBkey() , $parser->mTitle ) ) {
 					return self::error( 'imagemap_bad_image' );
 				}
-				$imageHTML = $parser->makeImage( $imageTitle, $options );
+				$imageHTML = $parser->makeImage( $imageTitle, htmlspecialchars($options) );
 				$parser->mOutput->addImage( $imageTitle->getDBkey() );
 
 				$domDoc = new DOMDocument();
