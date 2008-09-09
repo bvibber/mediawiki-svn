@@ -81,20 +81,24 @@ class MvpcfTemplate extends QuickTemplate {
 		global $wgScript; 
 		?>	
 	<body id="frontPage">
-	<div id="frontPageTop">
-		<?php $this->get_portlet('p-personal')?>
+	<div id="frontPageTop">			
+		<?php $this->get_portlet('p-personal')?>		
 		<div id="searchSplash">
 			<div class="logo"><img src="<?php $this->text('stylepath') ?>/<?php $this->text('stylename') ?>/images/logo.png" alt="Metavid" /></div>
 			<p class="tagline">The Open Video archive of the US Congress</p>			
 			<?php $this->get_search_html(); ?>			
-		</div><!--searchSplash-->
-	</div><!--frontPageTop-->		
+		</div><!--searchSplash-->	
+		
+		<div style="position:relative;top:10px"><?php $this->get_top_nav() ?></div>		
+	</div><!--frontPageTop-->
+			
 	<div id="frontPageContent" class="bodyContent">
 		<!-- start content -->
 		<?php $this->html('bodytext') ?>
 		<?php if($this->data['catlinks']) { ?><div id="catlinks"><?php       $this->html('catlinks') ?></div><?php } ?>
 		<!-- end content -->
 		<div class="visualClear"></div>
+			
 		<?php echo $this->get_portlets()?>
 	</div>	 
 	<?php
@@ -397,12 +401,12 @@ class MvpcfTemplate extends QuickTemplate {
 				echo $sk->makeKnownLinkObj($cBills, 'bills');
 				?>				
 			</li>
-			<li>				
+			<li>
 				<?php 
 				$cCat = Title::newFromText('Media Categories', NS_CATEGORY); 
 				echo $sk->makeKnownLinkObj($cCat, 'browse categories'); 
 				?>
-			</li>
+			</li>	
 			<li>				
 				<?php
 				$cHelp = Title::newFromText('Contents', NS_HELP);
