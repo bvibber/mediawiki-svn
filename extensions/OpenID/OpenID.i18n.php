@@ -38,7 +38,7 @@ $messages['en'] = array(
 	'openiderrortext' => 'An error occured during verification of the OpenID URL.',
 	'openidconfigerror' => 'OpenID configuration error',
 	'openidconfigerrortext' => 'The OpenID storage configuration for this wiki is invalid.
-Please consult an [[Special:Userlist/sysop|administrator]].',
+Please consult an [[Special:ListUsers/sysop|administrator]].',
 	'openidpermission' => 'OpenID permissions error',
 	'openidpermissiontext' => 'The OpenID you provided is not allowed to login to this server.',
 	'openidcancel' => 'Verification cancelled',
@@ -157,7 +157,7 @@ $messages['ar'] = array(
 	'openiderrortext' => 'حدث خطأ أثناء التأكد من مسار الهوية المفتوحة.',
 	'openidconfigerror' => 'خطأ ضبط الهوية المفتوحة',
 	'openidconfigerrortext' => 'ضبط تخزين الهوية المفتوحة لهذا الويكي غير صحيح.
-من فضلك استشر [[Special:Userlist/sysop|إداريا]].',
+من فضلك استشر [[Special:ListUsers/sysop|إداريا]].',
 	'openidpermission' => 'خطأ سماحات الهوية المفتوحة',
 	'openidpermissiontext' => 'الهوية المفتوحة التي وفرتها غير مسموح لها بتسجيل الدخول إلى هذا الخادم.',
 	'openidcancel' => 'التأكيد تم إلغاؤه',
@@ -232,7 +232,7 @@ $messages['arz'] = array(
 	'openiderrortext' => 'حدث خطأ أثناء التأكد من مسار الهوية المفتوحة.',
 	'openidconfigerror' => 'خطأ ضبط الهوية المفتوحة',
 	'openidconfigerrortext' => 'ضبط تخزين الهوية المفتوحة لهذا الويكى غير صحيح.
-من فضلك استشر [[Special:Userlist/sysop|إداريا]].',
+من فضلك استشر [[Special:ListUsers/sysop|إداريا]].',
 	'openidpermission' => 'خطأ سماحات الهوية المفتوحة',
 	'openidpermissiontext' => 'الهوية المفتوحة التى وفرتها غير مسموح لها بتسجيل الدخول إلى هذا الخادم.',
 	'openidcancel' => 'التأكيد تم إلغاؤه',
@@ -408,7 +408,7 @@ $messages['de'] = array(
 	'openiderrortext' => 'Ein Fehler ist während der Überprüfung der OpenID-URL aufgetreten.',
 	'openidconfigerror' => 'OpenID-Konfigurationsfehler',
 	'openidconfigerrortext' => 'Die OpenID-Speicherkonfiguarion für dieses Wiki ist fehlerhaft.
-Bitte benachrichtige einen [[Special:Userlist/sysop|Administrator]].',
+Bitte benachrichtige einen [[Special:ListUsers/sysop|Administrator]].',
 	'openidpermission' => 'OpenID-Berechtigungsfehler',
 	'openidpermissiontext' => 'Die angegebene OpenID berechtigt nicht zur Anmeldung an diesem Server.',
 	'openidcancel' => 'Überprüfung abgebrochen',
@@ -535,7 +535,7 @@ $messages['fr'] = array(
 	'openiderrortext' => "Une erreur est intervenue pendant la vérification de l'adresse OpenID.",
 	'openidconfigerror' => 'Erreur de configuration de OpenID',
 	'openidconfigerrortext' => 'Le stockage de la configuration OpenID pour ce wiki est incorrecte.
-Veuillez vous mettre en rapport avec un [[Special:Userlist/sysop|administrateur]] de ce site.',
+Veuillez vous mettre en rapport avec un [[Special:ListUsers/sysop|administrateur]] de ce site.',
 	'openidpermission' => 'Erreur de permission OpenID',
 	'openidpermissiontext' => 'L’OpenID que vous avez fournie n’est pas autorisée à se connecter sur ce serveur.',
 	'openidcancel' => 'Vérification annulée',
@@ -607,7 +607,7 @@ $messages['gl'] = array(
 	'openiderrortext' => 'Ocorreu un erro durante a verificación do URL do OpenID.',
 	'openidconfigerror' => 'Erro na configuración do OpenID',
 	'openidconfigerrortext' => 'A configuración do almacenamento no OpenID deste wiki é inválido.
-Por favor, consúlteo cun [[Special:Userlist/sysop|administrador]] do sitio.',
+Por favor, consúlteo cun [[Special:ListUsers/sysop|administrador]] do sitio.',
 	'openidpermission' => 'Erro de permisos OpenID',
 	'openidpermissiontext' => 'O OpenID que proporcionou non ten permitido o acceso a este servidor.',
 	'openidcancel' => 'A verificación foi cancelada',
@@ -881,7 +881,7 @@ $messages['it'] = array(
 	'openiderrortext' => "Si è verificato un errore durante la verifica dell'URL OpenID.",
 	'openidconfigerror' => 'Errore nella configurazione OpenID',
 	'openidconfigerrortext' => 'La configurazione della memorizzazione di OpenID per questa wiki non è valida.
-Per favore consulta un [[Special:Userlist/sysop|amministratore]].',
+Per favore consulta un [[Special:ListUsers/sysop|amministratore]].',
 	'openidpermission' => 'Errore nei permessi OpenID',
 	'openidpermissiontext' => "Non è stato permesso di effettuare il login a questo server all'OpenID che hai fornito.",
 	'openidcancel' => 'Verifica annullata',
@@ -1022,7 +1022,7 @@ $messages['ksh'] = array(
 	'openiderrortext' => 'Ene Fähler es opjetrodde beim Pröfe fun de OpenID URL.',
 	'openidconfigerror' => 'Fähler en dä Aat, wi OpenID opjesaz es',
 	'openidconfigerrortext' => 'Dem OpenID sing Enstellung för Date affzelääje es nit en Odenung.
-Beß esu joot un don enem [[Special:Userlist/sysop|Wiki-Köbes]] dofun verzälle.',
+Beß esu joot un don enem [[Special:ListUsers/sysop|Wiki-Köbes]] dofun verzälle.',
 	'openidpermission' => 'Fähler mem Rääsch en OpenID',
 	'openidpermissiontext' => 'Met de aanjejovve OpenID darrfs de hee ävver nit enlogge.',
 	'openidcancel' => 'Övverpröfung affjebroche',
@@ -1260,7 +1260,7 @@ $messages['nl'] = array(
 	'openiderrortext' => 'Er is een fout opgetreden tijdens de verificatie van de OpenID URL.',
 	'openidconfigerror' => 'Fout in de installatie van OpenID',
 	'openidconfigerrortext' => "De instellingen van de opslag van OpenID's voor deze wiki kloppen niet.
-Raadpleeg een  [[Special:Userlist/sysop|beheerder]].",
+Raadpleeg een  [[Special:ListUsers/sysop|beheerder]].",
 	'openidpermission' => 'Fout in de rechten voor OpenID',
 	'openidpermissiontext' => 'Met de OpenID die u hebt opgegeven kunt u niet aanmelden bij deze server.',
 	'openidcancel' => 'Verificatie geannuleerd',
@@ -1343,7 +1343,7 @@ $messages['no'] = array(
 	'openiderrortext' => 'En feil oppsto under bekrefting av OpenID-adressen.',
 	'openidconfigerror' => 'Oppsettsfeil med OpenID',
 	'openidconfigerrortext' => 'Lagringsoppsettet for OpenID på denne wikien er ugyldig.
-Vennligst kontakt en [[Special:Listusers/sysop|administrator]].',
+Vennligst kontakt en [[Special:ListUsers/sysop|administrator]].',
 	'openidpermission' => 'Tillatelsesfeil med OpenID',
 	'openidpermissiontext' => 'Du kan ikke logge inn på denne tjeneren med OpenID-en du oppga.',
 	'openidcancel' => 'Bekreftelse avbrutt',
@@ -1413,7 +1413,7 @@ $messages['oc'] = array(
 	'openiderrortext' => "Una error es intervenguda pendent la verificacion de l'adreça OpenID.",
 	'openidconfigerror' => 'Error de configuracion de OpenID',
 	'openidconfigerrortext' => "L'estocatge de la configuracion OpenID per aqueste wiki es incorrècte.
-Metetz-vos en rapòrt amb l’[[Special:Userlist/sysop|administrator]].",
+Metetz-vos en rapòrt amb l’[[Special:ListUsers/sysop|administrator]].",
 	'openidpermission' => 'Error de permission OpenID',
 	'openidpermissiontext' => "L’OpenID qu'avètz provesida es pas autorizada a se connectar sus aqueste servidor.",
 	'openidcancel' => 'Verificacion anullada',
@@ -1677,7 +1677,7 @@ $messages['sk'] = array(
 	'openiderrortext' => 'Počas overovania OpenID URL sa vyskytla chyba.',
 	'openidconfigerror' => 'Chyba konfigurácie OpenID',
 	'openidconfigerrortext' => 'Konfigurácia OpenID tejto wiki je neplatná.
-Prosím, poraďte sa so [[Special:Userlist/sysop|správcom]] tejto webovej lokality.',
+Prosím, poraďte sa so [[Special:ListUsers/sysop|správcom]] tejto webovej lokality.',
 	'openidpermission' => 'Chyba oprávnení OpenID',
 	'openidpermissiontext' => 'OpenID, ktorý ste poskytli, nemá oprávnenie prihlásiť sa k tomuto serveru',
 	'openidcancel' => 'Overovanie bolo zrušené',
@@ -1768,7 +1768,7 @@ $messages['sv'] = array(
 	'openiderrortext' => 'Ett fel uppstod under bekräftning av OpenID-adressen.',
 	'openidconfigerror' => 'Konfigurationsfel med OpenID',
 	'openidconfigerrortext' => 'Lagringkonfigurationen för OpenID på den här wikin är ogiltig.
-Var god konsultera en [[Special:Userlist/sysop|administratör]].',
+Var god konsultera en [[Special:ListUsers/sysop|administratör]].',
 	'openidpermission' => 'Tillåtelsefel med OpenID',
 	'openidpermissiontext' => 'Du kan inte logga in på den här servern med den OpenID du angedde.',
 	'openidcancel' => 'Bekräftning avbruten',
@@ -1889,7 +1889,7 @@ $messages['vi'] = array(
 	'openiderror' => 'Lỗi thẩm tra',
 	'openiderrortext' => 'Có lỗi khi thẩm tra địa chỉ OpenID.',
 	'openidconfigerror' => 'Lỗi thiết lập OpenID',
-	'openidconfigerrortext' => 'Phần giữ thông tin OpenID cho wiki này không hợp lệ. Xin hãy liên lạc với [[Special:Userlist/sysop|quản lý viên]].',
+	'openidconfigerrortext' => 'Phần giữ thông tin OpenID cho wiki này không hợp lệ. Xin hãy liên lạc với [[Special:ListUsers/sysop|quản lý viên]].',
 	'openidpermission' => 'Lỗi quyền OpenID',
 	'openidpermissiontext' => 'Địa chỉ OpenID của bạn không được phép đăng nhập vào dịch vụ này.',
 	'openidcancel' => 'Đã hủy bỏ thẩm tra',
