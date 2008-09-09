@@ -230,6 +230,7 @@ ul.popularSearches li.last_li, ul.popularClips li.last_li {margin: 0;}
 .mvd_page_image{
 	float:left;	
 	padding-right:5px;
+	width:50px;
 }
 .mvd_page_image img{
 	display:block;	

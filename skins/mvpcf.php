@@ -78,8 +78,8 @@ class MvpcfTemplate extends QuickTemplate {
 		$this->close_html();
 	}
 	function get_splash_page_html(){
-		global $wgScript; 
-		?>	
+		global $wgScript;
+		?>	 
 	<body id="frontPage">
 	<div id="frontPageTop">			
 		<?php $this->get_portlet('p-personal')?>		
@@ -89,7 +89,7 @@ class MvpcfTemplate extends QuickTemplate {
 			<?php $this->get_search_html(); ?>			
 		</div><!--searchSplash-->	
 		
-		<div style="position:relative;top:10px"><?php $this->get_top_nav() ?></div>		
+		<div style="position:absolute;width:100%;bottom:0px"><?php $this->get_top_nav() ?></div>		
 	</div><!--frontPageTop-->
 			
 	<div id="frontPageContent" class="bodyContent">
