@@ -1,4 +1,5 @@
 <?php
+if (!defined('MEDIAWIKI')) die();
 /**
  * MwRdf.php -- RDF framework for MediaWiki
  * Copyright 2005,2006 Evan Prodromou <evan@wikitravel.org>
@@ -22,72 +23,68 @@
  * @package MediaWiki
  * @subpackage Extensions
  */
-if (defined('MEDIAWIKI')) {
 
-    class MwRdf_CreativeCommons_Modeler extends MwRdf_Modeler {
+class MwRdf_CreativeCommons_Modeler extends MwRdf_Modeler {
 
-        public function getName() { return 'cc'; }
+	public function getName() { return 'cc'; }
 
-        public function build() {
-		    global $wgRightsUrl;
-            $rdf = MwRdf::Vocabulary( 'rdf' );
-            $cc = MwRdf::Vocabulary( 'cc' );
-            $model = MwRdf::Model();
+	public function build() {
+		global $wgRightsUrl;
+		$rdf = MwRdf::Vocabulary( 'rdf' );
+		$cc = MwRdf::Vocabulary( 'cc' );
+		$model = MwRdf::Model();
 
-            $tr = $this->Agent->titleResource();
-            $model->addStatement( MwRdf::Statement( 
-                    $tr, $rdf->a, $cc->Work ) );
+		$tr = $this->Agent->titleResource();
+		$model->addStatement( MwRdf::Statement(
+		$tr, $rdf->a, $cc->Work ) );
 
-            if ( ! isset( $wgRightsUrl ) ) return $model;
-			$lr = MwRdf::UriNode( $wgRightsUrl );
-            $model->addStatement( MwRdf::Statement( 
-                    $tr, $cc->license, $lr ) );
-            $model->addStatement( MwRdf::Statement( 
-                    $lr, $rdf->a, $cc->License ) );
+		if ( ! isset( $wgRightsUrl ) ) return $model;
+		$lr = MwRdf::UriNode( $wgRightsUrl );
+		$model->addStatement( MwRdf::Statement(
+		$tr, $cc->license, $lr ) );
+		$model->addStatement( MwRdf::Statement(
+		$lr, $rdf->a, $cc->License ) );
 
-            $terms = MwRdf::GetCcTerms( $wgRightsUrl );
-            if ( ! isset( $terms ) ) return $model;
+		$terms = MwRdf::GetCcTerms( $wgRightsUrl );
+		if ( ! isset( $terms ) ) return $model;
 
-            foreach ($terms as $term) {
-                switch ($term) {
-                 case 're':
-                     $model->addStatement( MwRdf::Statement(
-                             $lr, $cc->permits, $cc->Reproduction));
-                     break;
-                 case 'di':
-                     $model->addStatement( MwRdf::Statement(
-                              $lr, $cc->permits, $cc->Distribution));
-                     break;
-                 case 'de':
-                     $model->addStatement( MwRdf::Statement(
-                            $lr, $cc->permits, $cc->DerivativeWorks));
-                    break;
-                 case 'nc':
-                     $model->addStatement( MwRdf::Statement(
-                            $lr, $cc->prohibits, $cc->CommercialUse));
-                     break;
-                 case 'no':
-                     $model->addStatement( MwRdf::Statement(
-                            $lr, $cc->requires, $cc->Notice));
-                     break;
-                 case 'by':
-                     $model->addStatement( MwRdf::Statement(
-                            $lr, $cc->requires, $cc->Attribution));
-                     break;
-                 case 'sa':
-                     $model->addStatement( MwRdf::Statement(
-                             $lr, $cc->requires, $cc->ShareAlike));
-                     break;
-                 case 'sc':
-                     $model->addStatement( MwRdf::Statement(
-                             $lr, $cc->requires, $cc->SourceCode));
-                     break;
-                }
-            }
+		foreach ($terms as $term) {
+			switch ($term) {
+				case 're':
+					$model->addStatement( MwRdf::Statement(
+					$lr, $cc->permits, $cc->Reproduction));
+					break;
+				case 'di':
+					$model->addStatement( MwRdf::Statement(
+					$lr, $cc->permits, $cc->Distribution));
+					break;
+				case 'de':
+					$model->addStatement( MwRdf::Statement(
+					$lr, $cc->permits, $cc->DerivativeWorks));
+					break;
+				case 'nc':
+					$model->addStatement( MwRdf::Statement(
+					$lr, $cc->prohibits, $cc->CommercialUse));
+					break;
+				case 'no':
+					$model->addStatement( MwRdf::Statement(
+					$lr, $cc->requires, $cc->Notice));
+					break;
+				case 'by':
+					$model->addStatement( MwRdf::Statement(
+					$lr, $cc->requires, $cc->Attribution));
+					break;
+				case 'sa':
+					$model->addStatement( MwRdf::Statement(
+					$lr, $cc->requires, $cc->ShareAlike));
+					break;
+				case 'sc':
+					$model->addStatement( MwRdf::Statement(
+					$lr, $cc->requires, $cc->SourceCode));
+					break;
+			}
+		}
 
-            return $model;
-        }
-    }
-
+		return $model;
+	}
 }
-

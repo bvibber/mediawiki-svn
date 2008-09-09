@@ -1,4 +1,5 @@
 <?php
+if (!defined('MEDIAWIKI')) die();
 /**
  * MwRdf.php -- RDF framework for MediaWiki
  * Copyright 2005,2006 Evan Prodromou <evan@wikitravel.org>
@@ -27,39 +28,39 @@ require_once( 'Vocabulary.php' );
 
 class MwRdf_Vocabulary_Test extends PHPUnit_Framework_TestCase {
 
-    public function testNamespaceInheritance() {
-        $ns = 'http://example.com/test/';
-        $this->assertEquals( $ns, TestVocabularyClass::NAMESPACE );
-        $this->assertEquals( $ns, TestVocabularyClass::getNS() );
+	public function testNamespaceInheritance() {
+		$ns = 'http://example.com/test/';
+		$this->assertEquals( $ns, TestVocabularyClass::NAMESPACE );
+		$this->assertEquals( $ns, TestVocabularyClass::getNS() );
 
-        $ns = "http://www.w3.org/1999/02/22-rdf-syntax-ns#";
-        $this->assertEquals( $ns, MwRdf_Vocabulary_Rdf::NAMESPACE );
-        $this->assertEquals( $ns, MwRdf_Vocabulary_Rdf::getNS() );
+		$ns = "http://www.w3.org/1999/02/22-rdf-syntax-ns#";
+		$this->assertEquals( $ns, MwRdf_Vocabulary_Rdf::NAMESPACE );
+		$this->assertEquals( $ns, MwRdf_Vocabulary_Rdf::getNS() );
 
-        $ns = "http://www.w3.org/2000/01/rdf-schema#";
-        $this->assertEquals( $ns, MwRdf_Vocabulary_RdfSchema::NAMESPACE );
-        $this->assertEquals( $ns, MwRdf_Vocabulary_RdfSchema::getNS() );
+		$ns = "http://www.w3.org/2000/01/rdf-schema#";
+		$this->assertEquals( $ns, MwRdf_Vocabulary_RdfSchema::NAMESPACE );
+		$this->assertEquals( $ns, MwRdf_Vocabulary_RdfSchema::getNS() );
 
-        $ns = 'http://web.resource.org/cc/';
-        $this->assertEquals( $ns, MwRdf_Vocabulary_CreativeCommons::NAMESPACE );
-        $this->assertEquals( $ns, MwRdf_Vocabulary_CreativeCommons::getNS() );
+		$ns = 'http://web.resource.org/cc/';
+		$this->assertEquals( $ns, MwRdf_Vocabulary_CreativeCommons::NAMESPACE );
+		$this->assertEquals( $ns, MwRdf_Vocabulary_CreativeCommons::getNS() );
 
-        $ns = "http://purl.org/dc/elements/1.1/";
-        $this->assertEquals( $ns, MwRdf_Vocabulary_DCMES::NAMESPACE );
-        $this->assertEquals( $ns, MwRdf_Vocabulary_DCMES::getNS() );
-    }
-
+		$ns = "http://purl.org/dc/elements/1.1/";
+		$this->assertEquals( $ns, MwRdf_Vocabulary_DCMES::NAMESPACE );
+		$this->assertEquals( $ns, MwRdf_Vocabulary_DCMES::getNS() );
+	}
 }
 
 class TestVocabularyClass extends MwRdf_Vocabulary {
 
-    const NAMESPACE = 'http://example.com/test/';
-    public function getNS() { return self::NAMESPACE; }
+	const NAMESPACE = 'http://example.com/test/';
 
-    public $Right;
-    public $Left;
-    public $Under;
-    public $Over;
+	public function getNS() {
+		return self::NAMESPACE;
+	}
 
+	public $Right;
+	public $Left;
+	public $Under;
+	public $Over;
 }
-

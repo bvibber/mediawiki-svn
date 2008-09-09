@@ -1,4 +1,5 @@
 <?php
+if (!defined('MEDIAWIKI')) die();
 /**
  * MwRdf.php -- RDF framework for MediaWiki
  * Copyright 2005,2006 Evan Prodromou <evan@wikitravel.org>
@@ -22,49 +23,45 @@
  * @package MediaWiki
  * @subpackage Extensions
  */
-if (defined('MEDIAWIKI')) {
 
-    abstract class MwRdf_Modeler implements MwRdf_ModelMaker {
+abstract class MwRdf_Modeler implements MwRdf_ModelMaker {
 
-        public $Agent;
+	public $Agent;
 
-        public function __construct( $modeling_agent ) {
-            $this->Agent = $modeling_agent;
-        }
+	public function __construct( $modeling_agent ) {
+		$this->Agent = $modeling_agent;
+	}
 
-        public function isDefault() { return false; }
+	public function isDefault() { return false; }
 
-        public function getName() {}
+	public function getName() {}
 
-        public function build() {}
+	public function build() {}
 
-        public function store() {
-            $model = $this->build();
-            $context = $this->Agent->getContextNode( $this->getName() );
-            $store = MwRdf::StoredModel();
-            $stream = librdf_model_as_stream( $model->getModel() ); 
-            librdf_model_context_add_statements( 
-                    $store->getModel(), 
-                    $context->getNode(),
-                    $stream );
-            librdf_free_stream( $stream );
-            return true;
-        }
+	public function store() {
+		$model = $this->build();
+		$context = $this->Agent->getContextNode( $this->getName() );
+		$store = MwRdf::StoredModel();
+		$stream = librdf_model_as_stream( $model->getModel() );
+		librdf_model_context_add_statements(
+		$store->getModel(),
+		$context->getNode(),
+		$stream );
+		librdf_free_stream( $stream );
+		return true;
+	}
 
-        public function retrieve() {
-            $sm = MwRdf::StoredModel();
-            $model = MwRdf::Model();
-            $context = $this->Agent->getContextNode( $this->getName() );
-            $stream = librdf_model_context_as_stream( 
-                    $sm->getModel(), $context->getNode() );
-            librdf_model_add_statements( $model->getModel(), $stream );
-            librdf_free_stream( $stream );
-            $sm->rewind();
-            return $model;
-        }
+	public function retrieve() {
+		$sm = MwRdf::StoredModel();
+		$model = MwRdf::Model();
+		$context = $this->Agent->getContextNode( $this->getName() );
+		$stream = librdf_model_context_as_stream(
+		$sm->getModel(), $context->getNode() );
+		librdf_model_add_statements( $model->getModel(), $stream );
+		librdf_free_stream( $stream );
+		$sm->rewind();
+		return $model;
+	}
 
-        public function getQueryString() { return null; }
-
-    }
-
+	public function getQueryString() { return null; }
 }

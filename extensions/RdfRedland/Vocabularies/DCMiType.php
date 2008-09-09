@@ -1,4 +1,5 @@
 <?php
+if (!defined('MEDIAWIKI')) die();
 /**
  * MwRdf.php -- RDF framework for MediaWiki
  * Copyright 2005,2006 Evan Prodromou <evan@wikitravel.org>
@@ -22,25 +23,25 @@
  * @package MediaWiki
  * @subpackage Extensions
  */
-if (defined('MEDIAWIKI')) {
 
+class MwRdf_Vocabulary_DCMiType extends MwRdf_Vocabulary {
 
-    class MwRdf_Vocabulary_DCMiType extends MwRdf_Vocabulary {
+	const NAMESPACE = "http://purl.org/dc/dcmitype/";
 
-        const NAMESPACE = "http://purl.org/dc/dcmitype/";
-        public function getNS() { return self::NAMESPACE; }
+	public function getNS() {
+		return self::NAMESPACE;
+	}
 
-        public $Collection;
-        public $Dataset;
-        public $Event;
-        public $Image;
-        public $InteractiveResource;
-        public $MovingImage;
-        public $Service;
-        public $Software;
-        public $Sound;
-        public $StillImage;
-        public $Text;
-        
-    }
+	public $Collection;
+	public $Dataset;
+	public $Event;
+	public $Image;
+	public $InteractiveResource;
+	public $MovingImage;
+	public $Service;
+	public $Software;
+	public $Sound;
+	public $StillImage;
+	public $Text;
+
 }

@@ -2064,4 +2064,3 @@
     dc:date "2005-07-12T09:26:14Z"^^dc:W3CDTF;
     dc:language "en"^^dc:ISO639-2;
     dcterms:isVersionOf <http://wikitravel.org/en/Lausanne> .
-

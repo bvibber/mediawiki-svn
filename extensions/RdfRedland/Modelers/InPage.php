@@ -1,4 +1,5 @@
 <?php
+if (!defined('MEDIAWIKI')) die();
 /**
  * MwRdf.php -- RDF framework for MediaWiki
  * Copyright 2005,2006 Evan Prodromou <evan@wikitravel.org>
@@ -22,45 +23,42 @@
  * @package MediaWiki
  * @subpackage Extensions
  */
-if (defined('MEDIAWIKI')) {
 
-    require_once( 'includes/Parser.php' );
+require_once( 'includes/Parser.php' );
 
-    class MwRdf_InPage_Modeler extends MwRdf_Modeler {
+class MwRdf_InPage_Modeler extends MwRdf_Modeler {
 
-        public function getName() { return 'inpage'; }
+	public function getName() { return 'inpage'; }
 
-        public function build() {
-            $article = $this->Agent->getArticle();
-            $text = $article->getContent(true);
-            # Strip comments and <nowiki>
-            $text = preg_replace("/<!--.*?-->/s", "", $text);
-            $text = preg_replace("@<nowiki>.*?</nowiki>@s", "", $text);
-            # change template usage to substitution; note that this is WRONG
-            #$tchars = Title::legalChars();
-            #$text = preg_replace("/(?<!{){{([$tchars]+)(\|.*?)?}}(?!})/", "{{subst:$1$2}}", $text);
-            $parser = new Parser();
-            # so the magic variables work out right
-            $parser->mOptions = new ParserOptions();
-            $parser->mTitle = $this->Agent->getTitle();
-            $parser->mOutputType = OT_WIKI;
-            $parser->initialiseVariables();
-            $parser->clearState();
-            $text = $parser->replaceVariables($text);
-            preg_match_all("@<rdf>(.*?)</rdf>@s", $text, $matches, PREG_PATTERN_ORDER);
-            $content = $matches[1];
-            $rdf = implode(' ', array_values($content));
-            $model = MwRdf::Model();
-            if (strlen($rdf) > 0) {
-                $parser->mOutputType = OT_HTML;
-                $rdf = $parser->replaceVariables($rdf);
-                $turtle_parser = MwRdf::Parser('turtle');
-                $base_uri = $this->Agent->getTitle()->getFullUrl();
-                $prelude = MwRdf::getNamespacePrelude();
-                $model->loadStatementsFromString( $turtle_parser, $prelude . $rdf );
-            }
-            return $model;
-        }
-
-    }
+	public function build() {
+		$article = $this->Agent->getArticle();
+		$text = $article->getContent(true);
+		# Strip comments and <nowiki>
+		$text = preg_replace("/<!--.*?-->/s", "", $text);
+		$text = preg_replace("@<nowiki>.*?</nowiki>@s", "", $text);
+		# change template usage to substitution; note that this is WRONG
+		#$tchars = Title::legalChars();
+		#$text = preg_replace("/(?<!{){{([$tchars]+)(\|.*?)?}}(?!})/", "{{subst:$1$2}}", $text);
+		$parser = new Parser();
+		# so the magic variables work out right
+		$parser->mOptions = new ParserOptions();
+		$parser->mTitle = $this->Agent->getTitle();
+		$parser->mOutputType = OT_WIKI;
+		$parser->initialiseVariables();
+		$parser->clearState();
+		$text = $parser->replaceVariables($text);
+		preg_match_all("@<rdf>(.*?)</rdf>@s", $text, $matches, PREG_PATTERN_ORDER);
+		$content = $matches[1];
+		$rdf = implode(' ', array_values($content));
+		$model = MwRdf::Model();
+		if (strlen($rdf) > 0) {
+			$parser->mOutputType = OT_HTML;
+			$rdf = $parser->replaceVariables($rdf);
+			$turtle_parser = MwRdf::Parser('turtle');
+			$base_uri = $this->Agent->getTitle()->getFullUrl();
+			$prelude = MwRdf::getNamespacePrelude();
+			$model->loadStatementsFromString( $turtle_parser, $prelude . $rdf );
+		}
+		return $model;
+	}
 }

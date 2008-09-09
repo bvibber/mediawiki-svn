@@ -1,4 +1,5 @@
 <?php
+if (!defined('MEDIAWIKI')) die();
 /**
  * MwRdf.php -- RDF framework for MediaWiki
  * Copyright 2005,2006 Evan Prodromou <evan@wikitravel.org>
@@ -22,43 +23,42 @@
  * @package MediaWiki
  * @subpackage Extensions
  */
-if (defined('MEDIAWIKI')) {
 
-    /*
-     *  This describes and implents the Creative Commons RDF
-     *  vocabulary, and serves as an example vocabulary. Use it thusly:
-     * 
-     *    $cc = new MwRdf_Vocabulary_CreativeCommons;
-     *    $licence = $cc->License;
-     */
-    class MwRdf_Vocabulary_CreativeCommons extends MwRdf_Vocabulary {
+/*
+ *  This describes and implents the Creative Commons RDF
+ *  vocabulary, and serves as an example vocabulary. Use it thusly:
+ *
+ *    $cc = new MwRdf_Vocabulary_CreativeCommons;
+ *    $licence = $cc->License;
+*/
+class MwRdf_Vocabulary_CreativeCommons extends MwRdf_Vocabulary {
 
-        // base uri
-        const NAMESPACE = "http://web.resource.org/cc/";
-        public function getNS() { return self::NAMESPACE; }
+	// base uri
+	const NAMESPACE = "http://web.resource.org/cc/";
 
-        // Terms
-        public $Work; 
-        public $Agent; 
-        public $License; 
-        public $Permission;
-        public $Requirement; 
-        public $Prohibition; 
-        public $PublicDomain;
-        public $Reproduction; 
-        public $Distribution; 
-        public $DerivativeWorks;
-        public $Notice; 
-        public $Attribution; 
-        public $ShareAlike; 
-        public $SourceCode;
-        public $CommercialUse; 
-        public $license; 
-        public $permits; 
-        public $requires;
-        public $prohibits; 
-        public $derivativeWork;
+	public function getNS() {
+		return self::NAMESPACE;
+	}
 
-    }
-
+	// Terms
+	public $Work;
+	public $Agent;
+	public $License;
+	public $Permission;
+	public $Requirement;
+	public $Prohibition;
+	public $PublicDomain;
+	public $Reproduction;
+	public $Distribution;
+	public $DerivativeWorks;
+	public $Notice;
+	public $Attribution;
+	public $ShareAlike;
+	public $SourceCode;
+	public $CommercialUse;
+	public $license;
+	public $permits;
+	public $requires;
+	public $prohibits;
+	public $derivativeWork;
 }

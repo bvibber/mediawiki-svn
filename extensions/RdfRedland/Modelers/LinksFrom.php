@@ -1,4 +1,5 @@
 <?php
+if (!defined('MEDIAWIKI')) die();
 /**
  * MwRdf.php -- RDF framework for MediaWiki
  * Copyright 2005,2006 Evan Prodromou <evan@wikitravel.org>
@@ -22,33 +23,34 @@
  * @package MediaWiki
  * @subpackage Extensions
  */
-if (defined('MEDIAWIKI')) {
 
-    class MwRdf_LinksFrom_Modeler extends MwRdf_Modeler {
+class MwRdf_LinksFrom_Modeler extends MwRdf_Modeler {
 
-        public function getName() { return 'linksfrom'; }
+	public function getName() {
+		return 'linksfrom';
+	}
 
-        public function isDefault() { return 'true'; }
+	public function isDefault() {
+		return 'true';
+	}
 
-        public function build() {
-            $dcterms = MwRdf::Vocabulary( 'dcterms' );
-            $model = MwRdf::Model();
-            $tr = $this->Agent->titleResource();
-            $dbr =& wfGetDB(DB_SLAVE);
-            $res = $dbr->select( 'pagelinks',
-                                array('pl_namespace', 'pl_title'),
-                                array('pl_from = ' . $this->Agent->getTitle()->getArticleID()),
-                                'MwRdfLinksFrom',
-                                array('ORDER BY' => 'pl_namespace, pl_title'));
-            while ($res && $row = $dbr->fetchObject($res)) {
-                $lt = Title::makeTitle($row->pl_namespace, $row->pl_title);
-                $ltmf = MwRdf::ModelingAgent( $lt );
-                $model->addStatement( MwRdf::Statement(
-                        $tr, $dcterms->references, $ltmf->titleResource() ) );
-            }
-            $dbr->freeResult($res);
-            return $model;
-        }
-    }
-
+	public function build() {
+		$dcterms = MwRdf::Vocabulary( 'dcterms' );
+		$model = MwRdf::Model();
+		$tr = $this->Agent->titleResource();
+		$dbr =& wfGetDB(DB_SLAVE);
+		$res = $dbr->select( 'pagelinks',
+			array('pl_namespace', 'pl_title'),
+			array('pl_from = ' . $this->Agent->getTitle()->getArticleID()),
+			'MwRdfLinksFrom',
+			array('ORDER BY' => 'pl_namespace, pl_title'));
+		while ($res && $row = $dbr->fetchObject($res)) {
+			$lt = Title::makeTitle($row->pl_namespace, $row->pl_title);
+			$ltmf = MwRdf::ModelingAgent( $lt );
+			$model->addStatement( MwRdf::Statement(
+			$tr, $dcterms->references, $ltmf->titleResource() ) );
+		}
+		$dbr->freeResult($res);
+		return $model;
+	}
 }

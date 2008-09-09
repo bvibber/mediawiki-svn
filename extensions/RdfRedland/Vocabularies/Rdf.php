@@ -1,4 +1,5 @@
 <?php
+if (!defined('MEDIAWIKI')) die();
 /**
  * MwRdf.php -- RDF framework for MediaWiki
  * Copyright 2005,2006 Evan Prodromou <evan@wikitravel.org>
@@ -22,50 +23,45 @@
  * @package MediaWiki
  * @subpackage Extensions
  */
-if (defined('MEDIAWIKI')) {
+class MwRdf_Vocabulary_Rdf extends MwRdf_Vocabulary {
 
-    class MwRdf_Vocabulary_Rdf extends MwRdf_Vocabulary {
+	//base uri
+	const NAMESPACE = "http://www.w3.org/1999/02/22-rdf-syntax-ns#";
+	public function getNS() { return self::NAMESPACE; }
 
-        //base uri
-        const NAMESPACE = "http://www.w3.org/1999/02/22-rdf-syntax-ns#";
-        public function getNS() { return self::NAMESPACE; }
+	// Terms
+	public $Alt;
+	public $Bag;
+	public $Property;
+	public $Seq;
+	public $Statement;
+	public $List;
+	public $nil;
+	public $type;
+	public $rest;
+	public $first;
+	public $subject;
+	public $predicate;
+	public $object;
+	public $Description;
+	public $ID;
+	public $about;
+	public $aboutEach;
+	public $aboutEachPrefix;
+	public $bagID;
+	public $resource;
+	public $parseType;
+	public $Literal;
+	public $Resource;
+	public $li;
+	public $nodeID;
+	public $datatype;
+	public $seeAlso;
+	public $a;
 
-        // Terms
-        public $Alt;
-        public $Bag;
-        public $Property;
-        public $Seq;
-        public $Statement;
-        public $List;
-        public $nil;
-        public $type;
-        public $rest;
-        public $first;
-        public $subject;
-        public $predicate;
-        public $object;
-        public $Description;
-        public $ID;
-        public $about;
-        public $aboutEach;
-        public $aboutEachPrefix;
-        public $bagID;
-        public $resource;
-        public $parseType;
-        public $Literal;
-        public $Resource;
-        public $li;
-        public $nodeID;
-        public $datatype;
-        public $seeAlso;
-        public $a;
-
-        // a special alias to be reassigned to type
-        public function __construct() {
-            parent::__construct();
-            $this->a = $this->type;
-        }
-
-    }
-
+	// a special alias to be reassigned to type
+	public function __construct() {
+		parent::__construct();
+		$this->a = $this->type;
+	}
 }

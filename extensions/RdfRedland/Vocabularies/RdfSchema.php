@@ -1,4 +1,5 @@
 <?php
+if (!defined('MEDIAWIKI')) die();
 /**
  * MwRdf.php -- RDF framework for MediaWiki
  * Copyright 2005,2006 Evan Prodromou <evan@wikitravel.org>
@@ -22,30 +23,28 @@
  * @package MediaWiki
  * @subpackage Extensions
  */
-if (defined('MEDIAWIKI')) {
 
-    class MwRdf_Vocabulary_RdfSchema extends MwRdf_Vocabulary {
+class MwRdf_Vocabulary_RdfSchema extends MwRdf_Vocabulary {
 
-        //base uri
-        const NAMESPACE = "http://www.w3.org/2000/01/rdf-schema#";
-        public function getNS() { return self::NAMESPACE; }
+	//base uri
+	const NAMESPACE = "http://www.w3.org/2000/01/rdf-schema#";
+	public function getNS() { return self::NAMESPACE; }
 
-        // Terms
-        public $Resource;
-        public $Literal;
-        public $Class;
-        public $Datatype;
-        public $Container;
-        public $ContainerMembershipProperty;
-        public $subClassOf;
-        public $subPropertyOf;
-        public $domain;
-        public $range;
-        public $label;
-        public $comment;
-        public $member;
-        public $seeAlso;
-        public $isDefinedBy;
+	// Terms
+	public $Resource;
+	public $Literal;
+	public $Class;
+	public $Datatype;
+	public $Container;
+	public $ContainerMembershipProperty;
+	public $subClassOf;
+	public $subPropertyOf;
+	public $domain;
+	public $range;
+	public $label;
+	public $comment;
+	public $member;
+	public $seeAlso;
+	public $isDefinedBy;
 
-    }
 }

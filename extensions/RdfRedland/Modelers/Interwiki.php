@@ -1,4 +1,5 @@
 <?php
+if (!defined('MEDIAWIKI')) die();
 /**
  * MwRdf.php -- RDF framework for MediaWiki
  * Copyright 2005,2006 Evan Prodromou <evan@wikitravel.org>
@@ -22,67 +23,64 @@
  * @package MediaWiki
  * @subpackage Extensions
  */
-if (defined('MEDIAWIKI')) {
 
-    class MwRdf_Interwiki_Modeler extends MwRdf_Modeler {
+class MwRdf_Interwiki_Modeler extends MwRdf_Modeler {
 
-        public function getName() { return 'interwiki'; }
+	public function getName() {
+		return 'interwiki';
+	}
 
-        public function build() {
-            global $wgContLang;
+	public function build() {
+		global $wgContLang;
 
-            $dc = MwRdf::Vocabulary( 'dc' );
-            $dcterms = MwRdf::Vocabulary( 'dcterms' );
-            $rdfs = MwRdf::Vocabulary( 'rdfs' );
+		$dc = MwRdf::Vocabulary( 'dc' );
+		$dcterms = MwRdf::Vocabulary( 'dcterms' );
+		$rdfs = MwRdf::Vocabulary( 'rdfs' );
 
-            $model = MwRdf::Model();
-            $tr = $this->Agent->titleResource();
-            $article = $this->Agent->getArticle();
-            $text = $article->getContent( true );
+		$model = MwRdf::Model();
+		$tr = $this->Agent->titleResource();
+		$article = $this->Agent->getArticle();
+		$text = $article->getContent( true );
 
-            $parser = new Parser();
-            $parser->mOptions = new ParserOptions();
-            $parser->mTitle = $this;
-            $parser->initialiseVariables();
-            $parser->clearState();
-            $tags = array( 'nowiki' );
-            $m = array();
-            $text = $parser->extractTagsAndParams( $tags, $text, $m );
+		$parser = new Parser();
+		$parser->mOptions = new ParserOptions();
+		$parser->mTitle = $this;
+		$parser->initialiseVariables();
+		$parser->clearState();
+		$tags = array( 'nowiki' );
+		$m = array();
+		$text = $parser->extractTagsAndParams( $tags, $text, $m );
 
-            # XXX: maybe it would actually be better to do this at another 
-            # stage after the parser has already identified interwiki and 
-            # lang links
-            # Find prefixed links
-            preg_match_all( "/\[\[([^|\]]+:[^|\]]+)(\|.*)?\]\]/", $text, $m );
-            if ( ! isset( $m[0] ) ) 
-                    return $model; // nothing found so nevermind
+		# XXX: maybe it would actually be better to do this at another
+		# stage after the parser has already identified interwiki and
+		# lang links
+		# Find prefixed links
+		preg_match_all( "/\[\[([^|\]]+:[^|\]]+)(\|.*)?\]\]/", $text, $m );
+		if ( ! isset( $m[0] ) )
+		return $model; // nothing found so nevermind
 
-			foreach ($m[1] as $linktext) {
-				$iwlink = Title::newFromText( $linktext );
-				if ( isset( $iwlink ) ) {
-					$pfx = $iwlink->getInterwiki();
-					if ( strlen( $pfx ) > 0 ) {
-                        $iwlinkmf = MwRdf::ModelingAgent( $iwlink );
-						$iwr = $iwlinkmf->titleResource();
-						# XXX: Wikitravel uses some 4+ prefixes for sister site links
-						if ( $wgContLang->getLanguageName( $pfx ) && strlen( $pfx ) < 4) {
-                            $model->addStatement( 
-                                    MwRdf::Statement( $tr, $dcterms->hasVersion, $iwr ) );
-                            $model->addStatement( 
-                                    MwRdf::Statement( $iwr, $dc->language,
-													  MwRdf::Language( $pfx ) ) );
-						} else {
-							# XXX: Express the "sister site" relationship better
-                            $model->addStatement( MwRdf::Statement( 
-                                    $tr, $rdfs->seeAlso, $iwr));
-						}
+		foreach ($m[1] as $linktext) {
+			$iwlink = Title::newFromText( $linktext );
+			if ( isset( $iwlink ) ) {
+				$pfx = $iwlink->getInterwiki();
+				if ( strlen( $pfx ) > 0 ) {
+					$iwlinkmf = MwRdf::ModelingAgent( $iwlink );
+					$iwr = $iwlinkmf->titleResource();
+					# XXX: Wikitravel uses some 4+ prefixes for sister site links
+					if ( $wgContLang->getLanguageName( $pfx ) && strlen( $pfx ) < 4) {
+						$model->addStatement(
+						MwRdf::Statement( $tr, $dcterms->hasVersion, $iwr ) );
+						$model->addStatement(
+						MwRdf::Statement( $iwr, $dc->language,
+						MwRdf::Language( $pfx ) ) );
+					} else {
+						# XXX: Express the "sister site" relationship better
+						$model->addStatement( MwRdf::Statement(
+						$tr, $rdfs->seeAlso, $iwr));
 					}
 				}
 			}
-            return $model;
-
-        }
-
-    }
-
+		}
+		return $model;
+	}
 }

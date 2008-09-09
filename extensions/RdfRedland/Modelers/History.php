@@ -22,47 +22,44 @@
  * @package MediaWiki
  * @subpackage Extensions
  */
-if (defined('MEDIAWIKI')) {
-    class MwRdf_History_Modeler extends MwRdf_Modeler {
 
-        public function getName() { return 'history'; }
+class MwRdf_History_Modeler extends MwRdf_Modeler {
 
-        public function build() {
-            global $wgContLanguageCode;
-            $dc = MwRdf::Vocabulary( 'dc' );
-            $dcterms = MwRdf::Vocabulary( 'dcterms' );
-            $model = MwRdf::Model();
-            $tr = $this->Agent->titleResource();
-            $dbr =& wfGetDB( DB_SLAVE );
-            $res = $dbr->select( array('page', 'revision'),
-                                 array('rev_id', 'rev_timestamp', 'rev_user', 'rev_user_text'),
-                                 array('page_namespace = ' . $this->Agent->getTitle()->getNamespace(),
-                                       'page_title = ' . $dbr->addQuotes( $this->Agent->getTitle()->getDBkey() ),
-                                       'rev_page = page_id',
-                                       'rev_id != page_latest'),
-                                 'MwRdfHistory',
-                                 array('ORDER BY' => 'rev_timestamp DESC'));
-            while ($res && $row = $dbr->fetchObject($res)) {
-                $url = $this->Agent->getTitle()->getFullURL('oldid=' . $row->rev_id);
-                $ur = MwRdf::UriNode( $url );
-                $model->addStatement( MwRdf::Statement(
-                        $tr, $dcterms->hasVersion, $ur ) );
-                $model->addStatement( MwRdf::Statement(
-                        $ur, $dcterms->isVersionOf, $tr ) );
-                $model->addStatement( MwRdf::Statement(
-                        $ur, $dc->language, MwRdf::Language( $wgContLanguageCode ) ) );
-                $realname = ($row->rev_user == 0) ? null : User::whoIsReal($row->rev_user);
-                $pr = MwRdf::PersonToResource( 
-                        $row->rev_user, $row->rev_user_text, $realname );
-                $model->addStatement( MwRdf::Statement(
-                        $ur, $dc->creator, $pr ) );
-                $model->addStatement( MwRdf::Statement(
-                        $ur, $dc->date, MwRdf::TimestampResource( $row->rev_timestamp ) ) );
-            }
-            $dbr->freeResult($res);
-            return $model;
-        }
+	public function getName() { return 'history'; }
 
-    }
-
+	public function build() {
+		global $wgContLanguageCode;
+		$dc = MwRdf::Vocabulary( 'dc' );
+		$dcterms = MwRdf::Vocabulary( 'dcterms' );
+		$model = MwRdf::Model();
+		$tr = $this->Agent->titleResource();
+		$dbr =& wfGetDB( DB_SLAVE );
+		$res = $dbr->select( array('page', 'revision'),
+		array('rev_id', 'rev_timestamp', 'rev_user', 'rev_user_text'),
+		array('page_namespace = ' . $this->Agent->getTitle()->getNamespace(),
+			'page_title = ' . $dbr->addQuotes( $this->Agent->getTitle()->getDBkey() ),
+			'rev_page = page_id',
+			'rev_id != page_latest'),
+		'MwRdfHistory',
+		array('ORDER BY' => 'rev_timestamp DESC'));
+		while ($res && $row = $dbr->fetchObject($res)) {
+			$url = $this->Agent->getTitle()->getFullURL('oldid=' . $row->rev_id);
+			$ur = MwRdf::UriNode( $url );
+			$model->addStatement( MwRdf::Statement(
+			$tr, $dcterms->hasVersion, $ur ) );
+			$model->addStatement( MwRdf::Statement(
+			$ur, $dcterms->isVersionOf, $tr ) );
+			$model->addStatement( MwRdf::Statement(
+			$ur, $dc->language, MwRdf::Language( $wgContLanguageCode ) ) );
+			$realname = ($row->rev_user == 0) ? null : User::whoIsReal($row->rev_user);
+			$pr = MwRdf::PersonToResource(
+			$row->rev_user, $row->rev_user_text, $realname );
+			$model->addStatement( MwRdf::Statement(
+			$ur, $dc->creator, $pr ) );
+			$model->addStatement( MwRdf::Statement(
+			$ur, $dc->date, MwRdf::TimestampResource( $row->rev_timestamp ) ) );
+		}
+		$dbr->freeResult($res);
+		return $model;
+	}
 }

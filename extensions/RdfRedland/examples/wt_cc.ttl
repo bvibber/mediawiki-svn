@@ -36,4 +36,3 @@
 
 <http://wikitravel.org/en/Talk:Lausanne>
     dc:subject <http://wikitravel.org/en/Lausanne> .
-

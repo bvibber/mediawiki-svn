@@ -59,4 +59,3 @@
 
 <http://wikitravel.org/upload/shared//4/41/Dotm-icon.png>
     dc:type <http://purl.org/dc/dcmitype/Image> .
-

@@ -1,4 +1,5 @@
 <?php
+if (!defined('MEDIAWIKI')) die();
 /**
  * MwRdf.php -- RDF framework for MediaWiki
  * Copyright 2005,2006 Evan Prodromou <evan@wikitravel.org>
@@ -25,64 +26,64 @@
 
 class TotallyFakeDatabase {
 
-    private static $pagelinks = array(
-            array( 'pl_namespace' => '',     'pl_title' => 'Link1' ),
-            array( 'pl_namespace' => 'User', 'pl_title' => 'Page1' ),
-            array( 'pl_namespace' => '',     'pl_title' => 'Link2' ),
-            array( 'pl_namespace' => 'User', 'pl_title' => 'Page2' )
-        );
+	private static $pagelinks = array(
+		array( 'pl_namespace' => '',     'pl_title' => 'Link1' ),
+		array( 'pl_namespace' => 'User', 'pl_title' => 'Page1' ),
+		array( 'pl_namespace' => '',     'pl_title' => 'Link2' ),
+		array( 'pl_namespace' => 'User', 'pl_title' => 'Page2' )
+	);
 
-    private static $imagelinks = array(
-            array( 'il_to' => 'Some_image.png' )
-        );
+	private static $imagelinks = array(
+		array( 'il_to' => 'Some_image.png' )
+	);
 
-    // array('rev_id', 'rev_timestamp', 'rev_user', 'rev_user_text'),
-    private static $page_revision = array(
-            array('rev_id' => 0, 'rev_timestamp' => 1, 'rev_user' => 0, 'rev_user_text' => null)
-        );
+	// array('rev_id', 'rev_timestamp', 'rev_user', 'rev_user_text'),
+	private static $page_revision = array(
+		array('rev_id' => 0, 'rev_timestamp' => 1, 'rev_user' => 0, 'rev_user_text' => null)
+	);
 
-    private $cols;
-    private $count;
+	private $cols;
+	private $count;
 
-    public function __construct() {
-        $this->count = 0;
-    }
+	public function __construct() {
+		$this->count = 0;
+	}
 
-    public function select( $table, $cols, $where_clause, $fname = null, $options = array() ) {
-        $this->cols = $cols;
-        if ( "$table" == "Array" ) 
-                $table = join( " ", $table );
-        switch ( $table ) {
-        case 'pagelinks' :
-            return self::$pagelinks;
-            break;
-        case 'imagelinks' : 
-            return self::$imagelinks;
-            break;
-        case 'page revision' : 
-            return self::$page_revision;
-            break;
-        default :
-            throw new Exception( "Table '$table' not found" );
-        }
-    }
+	public function select( $table, $cols, $where_clause, $fname = null, $options = array() ) {
+		$this->cols = $cols;
+		if ( "$table" == "Array" )
+		$table = join( " ", $table );
+		switch ( $table ) {
+			case 'pagelinks' :
+				return self::$pagelinks;
+				break;
+			case 'imagelinks' :
+				return self::$imagelinks;
+				break;
+			case 'page revision' :
+				return self::$page_revision;
+				break;
+			default :
+				throw new Exception( "Table '$table' not found" );
+		}
+	}
 
-    public function fetchObject( $res ) {
-        if ( ! isset( $res[$this->count] ) ) return false;
-        $obj = new Row();
-        foreach ( $this->cols as $attr ) {
-            $obj->$attr = $res[$this->count][$attr];
-        }
-        $this->count++;
-        return $obj;
-    }
+	public function fetchObject( $res ) {
+		if ( ! isset( $res[$this->count] ) ) return false;
+		$obj = new Row();
+		foreach ( $this->cols as $attr ) {
+			$obj->$attr = $res[$this->count][$attr];
+		}
+		$this->count++;
+		return $obj;
+	}
 
-    public function freeResult( $res ) {
-        $this->count = 0;
-    }
+	public function freeResult( $res ) {
+		$this->count = 0;
+	}
 
-    public function addQuotes() {
-    }
+	public function addQuotes() {
+	}
 
 }
 

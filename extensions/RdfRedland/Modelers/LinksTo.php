@@ -1,4 +1,5 @@
 <?php
+if (!defined('MEDIAWIKI')) die();
 /**
  * MwRdf.php -- RDF framework for MediaWiki
  * Copyright 2005,2006 Evan Prodromou <evan@wikitravel.org>
@@ -22,20 +23,18 @@
  * @package MediaWiki
  * @subpackage Extensions
  */
-if (defined('MEDIAWIKI')) {
 
-    class MwRdf_LinksTo_Modeler extends MwRdf_QueryModeler {
+class MwRdf_LinksTo_Modeler extends MwRdf_QueryModeler {
 
-        public function getName() { return 'linksto'; }
+	public function getName() {
+		return 'linksto';
+	}
 
-        public function getQueryString() {
-            $url = $this->Agent->getTitle()->getFullUrl();
-            $ns = MwRdf::Vocabulary( 'dcterms' )->getNS();
-            return "PREFIX dcterms: <$ns>
-                    CONSTRUCT { <$url> dcterms:isReferencedBy ?x } 
-                    WHERE { ?x dcterms:references <$url> } ";
-        }
-
-    }
-
+	public function getQueryString() {
+		$url = $this->Agent->getTitle()->getFullUrl();
+		$ns = MwRdf::Vocabulary( 'dcterms' )->getNS();
+		return "PREFIX dcterms: <$ns>
+			CONSTRUCT { <$url> dcterms:isReferencedBy ?x }
+			WHERE { ?x dcterms:references <$url> } ";
+	}
 }

@@ -1,4 +1,5 @@
 <?php
+if (!defined('MEDIAWIKI')) die();
 /**
  * MwRdf.php -- RDF framework for MediaWiki
  * Copyright 2005,2006 Evan Prodromou <evan@wikitravel.org>
@@ -23,17 +24,16 @@
  * @subpackage Extensions
  */
 
-
 class Namespace {
 
-    public static function isTalk( $namespace ) {
-        switch ( $namespace ) {
-        case "Talk" :
-            return true;
-        case "User_talk" :
-            return true;
-        default :
-            return false;
-        }
-    }
+	public static function isTalk( $namespace ) {
+		switch ( $namespace ) {
+			case "Talk" :
+				return true;
+			case "User_talk" :
+				return true;
+			default :
+				return false;
+		}
+	}
 }

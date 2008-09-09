@@ -1,4 +1,5 @@
 <?php
+if (!defined('MEDIAWIKI')) die();
 /**
  * MwRdf.php -- RDF framework for MediaWiki
  * Copyright 2005,2006 Evan Prodromou <evan@wikitravel.org>
@@ -28,131 +29,129 @@ define( "NS_TALK", "Talk" );
 
 class Title {
 
-    private static $IwPrefixes = array(
-            'en' => "http://example.com/wiki/en/",
-            'fr' => "http://example.com/wiki/fr/",
-            'de' => "http://example.com/wiki/de/",
-            'wp' => "http://en.wikipedia.org/"
-        );
+	private static $IwPrefixes = array(
+	'en' => "http://example.com/wiki/en/",
+	'fr' => "http://example.com/wiki/fr/",
+	'de' => "http://example.com/wiki/de/",
+	'wp' => "http://en.wikipedia.org/"
+	);
 
-    private $parentCategories = array();
-    private $text;
-    private $namespace;
-    private $interwiki;
-    private $interwiki_url;
-    private $exists = true;
+	private $parentCategories = array();
+	private $text;
+	private $namespace;
+	private $interwiki;
+	private $interwiki_url;
+	private $exists = true;
 
-    public static function legalChars() {
-        return " %!\"$&'()*,\\-.\\/0-9:;=?@A-Z\\\\^_`a-z~\\x80-\\xFF+";
-    }
+	public static function legalChars() {
+		return " %!\"$&'()*,\\-.\\/0-9:;=?@A-Z\\\\^_`a-z~\\x80-\\xFF+";
+	}
 
-    public static function newFromText( $text) {
-        if ( ! $text ) return null;
-        $text = str_replace( '_', ' ', $text);
-        return new Title( $text );
-    }
+	public static function newFromText( $text) {
+		if ( ! $text ) return null;
+		$text = str_replace( '_', ' ', $text);
+		return new Title( $text );
+	}
 
-    public static function makeTitle( $ns, $text ) {
-        return new Title( "$ns:$text" );
-    }
+	public static function makeTitle( $ns, $text ) {
+		return new Title( "$ns:$text" );
+	}
 
-    public function __construct( $text ) {
-        $tokens = split( ':', $text );
-        if ( count( $tokens ) == 1 ) {
-            $this->text = $tokens[0];
-            $this->namespace = '';
-        } else {
-            $prefix = array_shift( $tokens );
-            if ( isset( self::$IwPrefixes[$prefix] ) ) {
-                $this->interwiki = $prefix;
-                $this->interwiki_url = self::$IwPrefixes[$prefix];
-            } else {
-                $this->namespace = $prefix;
-            }
-            $this->text = join( ':', $tokens );
-        }
-    }
+	public function __construct( $text ) {
+		$tokens = split( ':', $text );
+		if ( count( $tokens ) == 1 ) {
+			$this->text = $tokens[0];
+			$this->namespace = '';
+		} else {
+			$prefix = array_shift( $tokens );
+			if ( isset( self::$IwPrefixes[$prefix] ) ) {
+				$this->interwiki = $prefix;
+				$this->interwiki_url = self::$IwPrefixes[$prefix];
+			} else {
+				$this->namespace = $prefix;
+			}
+			$this->text = join( ':', $tokens );
+		}
+	}
 
-    public function getText() {
-        return $this->text;
-    }
+	public function getText() {
+		return $this->text;
+	}
 
-    public function setText( $text ) {
-        $this->text = $text;
-    }
+	public function setText( $text ) {
+		$this->text = $text;
+	}
 
-    public function getInterwiki() {
-        return $this->interwiki;
-    }
+	public function getInterwiki() {
+		return $this->interwiki;
+	}
 
-    public function setExists( $bool ) {
-        $this->exists = $bool;
-    }
+	public function setExists( $bool ) {
+		$this->exists = $bool;
+	}
 
-    public function getParentCategories() {
-        return array_flip( $this->parentCategories );
-    }
+	public function getParentCategories() {
+		return array_flip( $this->parentCategories );
+	}
 
-    public function setParentCategories( $cats ) {
-        $this->parentCategories = $cats;
-    }
+	public function setParentCategories( $cats ) {
+		$this->parentCategories = $cats;
+	}
 
-    public function exists() {
-        return $this->exists;
-    }
+	public function exists() {
+		return $this->exists;
+	}
 
-    public function getNamespace() {
-        return $this->namespace;
-    }
+	public function getNamespace() {
+		return $this->namespace;
+	}
 
-    public function setNamespace( $ns ) {
-        $this->namespace = $ns;
-    }
+	public function setNamespace( $ns ) {
+		$this->namespace = $ns;
+	}
 
-    public function getDBKey() {
+	public function getDBKey() {
 		$t = preg_replace( '/[ _]+/', '_', $this->text );
 		return trim( $t, '_' );
-    }
+	}
 
-    public function getPrefixedDbKey() {
-        if ( $this->namespace ) {
-            return $this->namespace . ":" . $this->getDBKey();
-        } else {
-            return $this->getDBKey();
-        }
-    }
+	public function getPrefixedDbKey() {
+		if ( $this->namespace ) {
+			return $this->namespace . ":" . $this->getDBKey();
+		} else {
+			return $this->getDBKey();
+		}
+	}
 
-    public function getArticleId() {
-        return $this->exists ? 1 : 0;
-    }
+	public function getArticleId() {
+		return $this->exists ? 1 : 0;
+	}
 
-    public function getPrefixedText() {
-        return $this->namespace . ':' . $this->text;
-    }
+	public function getPrefixedText() {
+		return $this->namespace . ':' . $this->text;
+	}
 
-    public function getFullUrl( $query = null ) {
-        if ( $this->interwiki ) {
-            $url = $this->interwiki_url . $this->getPrefixedDbKey();
-        } else {
-            $url = "http://example.com/wiki/" . $this->getPrefixedDbKey();
-            if ( $query ) $url .= "?$query";
-        }
-        return  $url;
-    }
+	public function getFullUrl( $query = null ) {
+		if ( $this->interwiki ) {
+			$url = $this->interwiki_url . $this->getPrefixedDbKey();
+		} else {
+			$url = "http://example.com/wiki/" . $this->getPrefixedDbKey();
+			if ( $query ) $url .= "?$query";
+		}
+		return  $url;
+	}
 
-    public function getTalkPage() {
-        $talk_page = clone( $this );
-        if ( $this->getNamespace() == "" ) {
-            $talk_page->setNamespace( "Talk" );
-        } elseif ( $this->getNamespace() == "User" ) {
-            $talk_page->setNamespace( "User_talk" );
-        }
-        return $talk_page;
-    }
+	public function getTalkPage() {
+		$talk_page = clone( $this );
+		if ( $this->getNamespace() == "" ) {
+			$talk_page->setNamespace( "Talk" );
+		} elseif ( $this->getNamespace() == "User" ) {
+			$talk_page->setNamespace( "User_talk" );
+		}
+		return $talk_page;
+	}
 
-    public function getSubjectPage() {
-        return self::newFromText( $this->getText() );
-    }
-
+	public function getSubjectPage() {
+		return self::newFromText( $this->getText() );
+	}
 }
-

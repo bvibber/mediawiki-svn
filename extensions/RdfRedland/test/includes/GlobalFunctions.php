@@ -1,4 +1,5 @@
 <?php
+if (!defined('MEDIAWIKI')) die();
 
 require_once( 'includes/ContLang.php' );
 require_once( 'includes/MockDatabase.php' );
@@ -18,7 +19,7 @@ function wfAcceptToPrefs( $accept, $def = '*/*' ) {
 	$parts = explode( ',', $accept );
 
 	foreach( $parts as $part ) {
-        $part = trim( $part );
+		$part = trim( $part );
 		# FIXME: doesn't deal with params like 'text/html; level=1'
 		@list( $value, $qpart ) = explode( ';', $part );
 		if( !isset( $qpart ) ) {
@@ -30,7 +31,6 @@ function wfAcceptToPrefs( $accept, $def = '*/*' ) {
 
 	return $prefs;
 }
-
 
 /**
  * This function takes two arrays as input, and returns a CGI-style string, e.g.
@@ -54,7 +54,6 @@ function wfArrayToCGI( $array1, $array2 = NULL )
 	}
 	return $cgi;
 }
-
 
 /**
  * Get a message from anywhere, for the current user language.
@@ -128,8 +127,7 @@ function wfTimestamp($outputtype=TS_UNIX,$ts=0) {
 		$uts = 0;
 	}
 
-
- 	switch($outputtype) {
+	switch($outputtype) {
 		case TS_UNIX:
 			return $uts;
 		case TS_MW:
@@ -188,10 +186,10 @@ function wfViewPrevNext( $offset, $limit, $link, $query = '', $atend = false ) {
 		$nlink = '<a href="' . $title->escapeLocalUrl( $q ) . "\">{$next}</a>";
 	}
 	$nums = wfNumLink( $offset, 20, $title, $query ) . ' | ' .
-	  wfNumLink( $offset, 50, $title, $query ) . ' | ' .
-	  wfNumLink( $offset, 100, $title, $query ) . ' | ' .
-	  wfNumLink( $offset, 250, $title, $query ) . ' | ' .
-	  wfNumLink( $offset, 500, $title, $query );
+		wfNumLink( $offset, 50, $title, $query ) . ' | ' .
+		wfNumLink( $offset, 100, $title, $query ) . ' | ' .
+		wfNumLink( $offset, 250, $title, $query ) . ' | ' .
+		wfNumLink( $offset, 500, $title, $query );
 
 	return wfMsg( 'viewprevnext', $plink, $nlink, $nums );
 }
@@ -245,7 +243,6 @@ function wfNegotiateType( $cprefs, $sprefs ) {
 	return $besttype;
 }
 
-
 /**
  * Checks if a given MIME type matches any of the keys in the given
  * array. Basic wildcards are accepted in the array keys.
@@ -273,14 +270,12 @@ function mimeTypeMatch( $type, $avail ) {
 	}
 }
 
-
 /**
  * Provide a simple HTTP error.
  */
 function wfHttpError( $code, $label, $desc ) {
     throw new Exception( "$code: $label, $desc" );
 }
-
 
 /**
  * Really get a message
@@ -296,7 +291,6 @@ function wfMsgReal( $key, $args, $useDB = true, $forContent=false, $transform = 
 	$message = wfMsgReplaceArgs( $message, $args );
 	return $message;
 }
-
 
 /**
  * Fetch a message string value, but don't replace any keys yet.
@@ -343,7 +337,6 @@ function wfMsgGetKey( $key, $useDB, $forContent = false, $transform = true ) {
 
 	return $message;
 }
-
 
 /**
  * Reference-counted warning suppression
@@ -405,5 +398,5 @@ function wfMsgReplaceArgs( $message, $args ) {
 }
 
 function wfGetDB ( $type ) {
-    return new TotallyFakeDatabase();
+	return new TotallyFakeDatabase();
 }

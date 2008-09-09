@@ -1,4 +1,5 @@
 <?php
+if (!defined('MEDIAWIKI')) die();
 /**
  * MwRdf.php -- RDF framework for MediaWiki
  * Copyright 2005,2006 Evan Prodromou <evan@wikitravel.org>
@@ -25,91 +26,92 @@
 
 require_once( 'includes/Namespace.php' );
 
-if (defined('MEDIAWIKI')) {
-    class MwRdf_DCmes_Modeler extends MwRdf_Modeler {
+class MwRdf_DCmes_Modeler extends MwRdf_Modeler {
 
-        public function getName() { return 'dcmes'; }
+	public function getName() {
+		return 'dcmes';
+	}
 
-        public function isDefault() { return 'true'; }
+	public function isDefault() {
+		return 'true';
+	}
 
-        public function build() {
-            global $wgSitename, $wgContLanguageCode;
+	public function build() {
+		global $wgSitename, $wgContLanguageCode;
 
-            $article = $this->Agent->getArticle();
-            $model = MwRdf::Model();
+		$article = $this->Agent->getArticle();
+		$model = MwRdf::Model();
 
-            $rdf    = MwRdf::Vocabulary( 'rdf' );
-            $dc     = MwRdf::Vocabulary( 'dc' );
-            $dctype = MwRdf::Vocabulary( 'dctype' );
+		$rdf    = MwRdf::Vocabulary( 'rdf' );
+		$dc     = MwRdf::Vocabulary( 'dc' );
+		$dctype = MwRdf::Vocabulary( 'dctype' );
 
-            $artres = $this->Agent->titleResource();
+		$artres = $this->Agent->titleResource();
 
-            $model->addStatement( MwRdf::Statement( 
-                        $artres, 
-                        $dc->title, 
-                        MwRdf::LiteralNode( $this->Agent->getTitle()->getText() ) ) );
-            $model->addStatement( MwRdf::Statement(
-                        $artres, 
-                        $dc->publisher, 
-                        MwRdf::PageOrString( wfMsg( 'aboutpage' ), $wgSitename ) ));
-            $model->addStatement( MwRdf::Statement(
-                        $artres, 
-                        $dc->language,
-                        MwRdf::Language( $wgContLanguageCode ) ) );
-            $model->addStatement( MwRdf::Statement(
-                        $artres, 
-                        $dc->type,
-                        $dctype->Text ) );
-            $model->addStatement( MwRdf::Statement(
-                        $artres, 
-                        $dc->format,
-                        MwRdf::MediaType( 'text/html' ) ) );
-            if ( $this->Agent->getTimestampResource() ) {
-                $model->addStatement( MwRdf::Statement(
-                            $artres, 
-                            $dc->date,
-                            $this->Agent->getTimestampResource() ) );
-            }
+		$model->addStatement( MwRdf::Statement(
+		$artres,
+		$dc->title,
+			MwRdf::LiteralNode( $this->Agent->getTitle()->getText() ) ) );
+		$model->addStatement( MwRdf::Statement(
+		$artres,
+		$dc->publisher,
+			MwRdf::PageOrString( wfMsg( 'aboutpage' ), $wgSitename ) ));
+		$model->addStatement( MwRdf::Statement(
+		$artres,
+		$dc->language,
+			MwRdf::Language( $wgContLanguageCode ) ) );
+		$model->addStatement( MwRdf::Statement(
+		$artres,
+		$dc->type,
+		$dctype->Text ) );
+		$model->addStatement( MwRdf::Statement(
+		$artres,
+		$dc->format,
+			MwRdf::MediaType( 'text/html' ) ) );
 
-            if ( Namespace::isTalk( $this->Agent->getTitle()->getNamespace() ) ) {
-                $model->addStatement( MwRdf::Statement(
-                            $artres, 
-                            $dc->subject,
-                            $this->Agent->subjectResource() ) );
-            } else {
-                $talk = MwRdf::ModelingAgent( $this->Agent->getTitle()->getTalkPage() );
-                $model->addStatement( MwRdf::Statement(
-                            $talk->titleResource(),
-                            $dc->subject, 
-                            $artres ) );
-            }
+		if ( $this->Agent->getTimestampResource() ) {
+			$model->addStatement( MwRdf::Statement(
+			$artres,
+			$dc->date,
+			$this->Agent->getTimestampResource() ) );
+		}
 
-            # 'Creator' is responsible for this version
-            $creator = MwRdf::PersonToResource( $article->getUser() );
-            $model->addStatement( MwRdf::Statement( 
-                        $artres, $dc->creator, $creator));
+		if ( Namespace::isTalk( $this->Agent->getTitle()->getNamespace() ) ) {
+			$model->addStatement( MwRdf::Statement(
+			$artres,
+			$dc->subject,
+			$this->Agent->subjectResource() ) );
+		} else {
+			$talk = MwRdf::ModelingAgent( $this->Agent->getTitle()->getTalkPage() );
+			$model->addStatement( MwRdf::Statement(
+			$talk->titleResource(),
+			$dc->subject,
+			$artres ) );
+		}
 
-            # 'Contributors' are all other version authors
-            $contributors = $article->getContributors();
-            foreach ($contributors as $user_parts) {
-                $contributor = MwRdf::PersonToResource( 
-                        $user_parts[0], $user_parts[1], $user_parts[2]);
-                $model->addStatement( MwRdf::Statement(
-                            $artres, $dc->contributor, $contributor));
-            }
+		# 'Creator' is responsible for this version
+		$creator = MwRdf::PersonToResource( $article->getUser() );
+		$model->addStatement( MwRdf::Statement(
+		$artres, $dc->creator, $creator));
 
-            # Rights notification
-            global $wgRightsPage, $wgRightsUrl, $wgRightsText;
+		# 'Contributors' are all other version authors
+		$contributors = $article->getContributors();
+		foreach ($contributors as $user_parts) {
+			$contributor = MwRdf::PersonToResource(
+			$user_parts[0], $user_parts[1], $user_parts[2]);
+			$model->addStatement( MwRdf::Statement(
+			$artres, $dc->contributor, $contributor));
+		}
 
-            $rights = MwRdf::RightsResource();
-            if ( $rights ) {
-                $model->addStatement( MwRdf::Statement( 
-                        $artres, $dc->rights, $rights));
-            }
+		# Rights notification
+		global $wgRightsPage, $wgRightsUrl, $wgRightsText;
 
-            return $model;
-        }
+		$rights = MwRdf::RightsResource();
+		if ( $rights ) {
+			$model->addStatement( MwRdf::Statement(
+			$artres, $dc->rights, $rights));
+		}
 
-    }
-
+		return $model;
+	}
 }

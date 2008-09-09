@@ -31,4 +31,3 @@
 
 <http://wikitravel.org/pt/Lausanne>
     dc:language "pt"^^dc:ISO639-2 .
-

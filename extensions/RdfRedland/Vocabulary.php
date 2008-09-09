@@ -1,4 +1,5 @@
 <?php
+if (!defined('MEDIAWIKI')) die();
 /**
  * MwRdf.php -- RDF framework for MediaWiki
  * Copyright 2005,2006 Evan Prodromou <evan@wikitravel.org>
@@ -22,35 +23,33 @@
  * @package MediaWiki
  * @subpackage Extensions
  */
-if (defined('MEDIAWIKI')) {
 
+/*
+ * A (mostly) abstract class which provides a little syntactic sugar
+ * for defining vocabularies. To define a vocabulary using this
+ * interface simply declare a base URI as the constant NAMESPACE, then
+ * add terms for each of the vocabulary's terms.  Just make sure that
+ * the term name exactly matches the term text.
+ */
+abstract class MwRdf_Vocabulary {
 
-    /*
-     * A (mostly) abstract class which provides a little syntactic sugar
-     * for defining vocabularies. To define a vocabulary using this
-     * interface simply declare a base URI as the constant NAMESPACE, then 
-     * add terms for each of the vocabulary's terms.  Just make sure that
-     * the term name exactly matches the term text.
-     */
-    abstract class MwRdf_Vocabulary {
+	const NAMESPACE = '';
 
-        const NAMESPACE = '';
-        public function getNS() { self::NAMESPACE; }
+	public function getNS() {
+		self::NAMESPACE;
+	}
 
-        public function __construct() {
-            foreach ( $this as $key => $value ) {
-                $this->$key = MwRdf::UriNode( $this->getNS(). $key );
-            }
-        }
+	public function __construct() {
+		foreach ( $this as $key => $value ) {
+			$this->$key = MwRdf::UriNode( $this->getNS(). $key );
+		}
+	}
 
-        public function listTerms() {
-            $list = array();
-            foreach( $this as $key => $value ) {
-                $list[] = $key;
-            }
-            return $list;
-        }
-
-    }
-
+	public function listTerms() {
+		$list = array();
+		foreach( $this as $key => $value ) {
+			$list[] = $key;
+		}
+		return $list;
+	}
 }

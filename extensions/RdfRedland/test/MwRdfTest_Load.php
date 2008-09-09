@@ -1,4 +1,5 @@
 <?php
+if (!defined('MEDIAWIKI')) die();
 /**
  * MwRdf.php -- RDF framework for MediaWiki
  * Copyright 2005,2006 Evan Prodromou <evan@wikitravel.org>
@@ -25,68 +26,66 @@
 
 class MwRdf_Load_Test extends PHPUnit_Framework_TestCase {
 
-    public $title;
+	public $title;
 
-    public function setUp() {
-        MwRdf::$store_options = MwRdf::$store_options . ',new=yes';
-        $pagename = MwRdfTest::$username . '/Special page test page';
-        $wikitext = <<<EOT
-<rdf>
-@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-@prefix dc: <http://purl.org/dc/elements/1.1/> .
-@prefix ex: <http://example.org/stuff/1.0/> .
+	public function setUp() {
+		MwRdf::$store_options = MwRdf::$store_options . ',new=yes';
+		$pagename = MwRdfTest::$username . '/Special page test page';
+		$wikitext = <<<EOT
+		<rdf>
+		@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+		@prefix dc: <http://purl.org/dc/elements/1.1/> .
+		@prefix ex: <http://example.org/stuff/1.0/> .
 
-<http://www.w3.org/TR/rdf-syntax-grammar>
-  dc:title "RDF/XML Syntax Specification (Revised)" ;
-  ex:editor [
-    ex:fullname "Dave Beckett";
-    ex:homePage <http://purl.org/net/dajobe/>
-  ] .
-</rdf>
+		<http://www.w3.org/TR/rdf-syntax-grammar>
+		dc:title "RDF/XML Syntax Specification (Revised)" ;
+		ex:editor [
+		ex:fullname "Dave Beckett";
+		ex:homePage <http://purl.org/net/dajobe/>
+		] .
+		</rdf>
 
-[[Main Page]]
+		[[Main Page]]
 
-[[category:Test]] [[category:Rdf]]
+		[[category:Test]] [[category:Rdf]]
 
-EOT;
-        MwRdf_ModelingAgent_Test::setPageText( $pagename, $wikitext );
-        $this->title = Title::newFromText( $pagename, NS_USER );
-    }
+		EOT;
+		MwRdf_ModelingAgent_Test::setPageText( $pagename, $wikitext );
+		$this->title = Title::newFromText( $pagename, NS_USER );
+	}
 
-    public function testLoad() {
-        $agent = MwRdf::ModelingAgent( $this->title );
-        for ( $i = 0; $i < 10000; $i++ ) {
-            $model = $agent->retrieveModel( 'inpage' );
-            $this->assertType( 'object', $model );
-            $this->assertTrue( $model instanceof LibRDF_Model );
-            $statement = MwRdf::Statement( 
-                    MwRdf::UriNode( 'http://www.w3.org/TR/rdf-syntax-grammar' ),
-                    MwRdf::UriNode( 'http://purl.org/dc/elements/1.1/title' ),
-                    MwRdf::LiteralNode( 'RDF/XML Syntax Specification (Revised)' ) );
-            $this->assertTrue( $model->hasStatement( $statement ) );
-            $statements = $model->findStatements(
-                    MwRdf::UriNode( 'http://www.w3.org/TR/rdf-syntax-grammar' ),
-                    MwRdf::UriNode( 'http://example.org/stuff/1.0/editor' ),
-                    null );
-            $this->assertType( 'object', $statements );
-            $this->assertTrue( $statements instanceof LibRDF_StreamIterator );
-            $statement = $statements->current();
-            $this->assertTrue( $statement instanceof LibRdf_Statement );
-            $editor = $statement->getObject();
-            $this->assertTrue( $editor instanceof LibRdf_BlankNode );
-            $statement = MwRdf::Statement(
-                    $editor,
-                    MwRdf::UriNode( 'http://example.org/stuff/1.0/fullname' ),
-                    MwRdf::LiteralNode( "Dave Beckett" ) );
-            $this->assertTrue( $model->hasStatement( $statement ) );
-            $statement = MwRdf::Statement(
-                    $editor,
-                    MwRdf::UriNode( 'http://example.org/stuff/1.0/homePage' ),
-                    MwRdf::UriNode( 'http://purl.org/net/dajobe/' ) );
-            $this->assertTrue( $model->hasStatement( $statement ) );
-            $model->rewind();
-        }
-    }
-
+	public function testLoad() {
+		$agent = MwRdf::ModelingAgent( $this->title );
+		for ( $i = 0; $i < 10000; $i++ ) {
+			$model = $agent->retrieveModel( 'inpage' );
+			$this->assertType( 'object', $model );
+			$this->assertTrue( $model instanceof LibRDF_Model );
+			$statement = MwRdf::Statement(
+			MwRdf::UriNode( 'http://www.w3.org/TR/rdf-syntax-grammar' ),
+			MwRdf::UriNode( 'http://purl.org/dc/elements/1.1/title' ),
+			MwRdf::LiteralNode( 'RDF/XML Syntax Specification (Revised)' ) );
+			$this->assertTrue( $model->hasStatement( $statement ) );
+			$statements = $model->findStatements(
+			MwRdf::UriNode( 'http://www.w3.org/TR/rdf-syntax-grammar' ),
+			MwRdf::UriNode( 'http://example.org/stuff/1.0/editor' ),
+			null );
+			$this->assertType( 'object', $statements );
+			$this->assertTrue( $statements instanceof LibRDF_StreamIterator );
+			$statement = $statements->current();
+			$this->assertTrue( $statement instanceof LibRdf_Statement );
+			$editor = $statement->getObject();
+			$this->assertTrue( $editor instanceof LibRdf_BlankNode );
+			$statement = MwRdf::Statement(
+			$editor,
+			MwRdf::UriNode( 'http://example.org/stuff/1.0/fullname' ),
+			MwRdf::LiteralNode( "Dave Beckett" ) );
+			$this->assertTrue( $model->hasStatement( $statement ) );
+			$statement = MwRdf::Statement(
+			$editor,
+			MwRdf::UriNode( 'http://example.org/stuff/1.0/homePage' ),
+			MwRdf::UriNode( 'http://purl.org/net/dajobe/' ) );
+			$this->assertTrue( $model->hasStatement( $statement ) );
+			$model->rewind();
+		}
+	}
 }
-

@@ -3,8 +3,12 @@ if &cp | set nocp | endif
 let s:cpo_save=&cpo
 set cpo&vim
 map! <S-Insert> <MiddleMouse>
-map  \1\2:e! %
-nmap ,sh ggI#!/bin/sh:w:!chmod a+x %:e!
+map  \1\2
+:e! %
+nmap ,sh ggI#!/bin/sh:w
+:!chmod a+x %
+
+:e!
 vmap ,- c--<Left>"`<l
 nmap ,- viw,-
 vmap ,< c<><Left>"`<l
@@ -26,11 +30,13 @@ vmap <silent> \c <Plug>VisualTraditionalj
 nmap <silent> \x <Plug>Traditional
 nmap <silent> \c <Plug>Traditionalj
 map \2 :!newsbody -qs -n % -p aspell check \%f
-map \1 :w! 
+map \1 :w!
 vmap ]% ]%m'gv``
 vmap a% [%v]%
 nmap gx <Plug>NetrwBrowseX
-vnoremap p :let current_reg = @"gvc=current_reg
+vnoremap p :let current_reg = @"
+gvc=current_reg
+
 nnoremap <silent> <Plug>NetrwBrowseX :call netrw#NetBrowseX(expand("<cWORD>"),0)
 noremap <Plug>VisualFirstLine :call EnhancedCommentify('', 'first',				    line("'<"), line("'>"))
 noremap <Plug>VisualTraditional :call EnhancedCommentify('', 'guess',				    line("'<"), line("'>"))

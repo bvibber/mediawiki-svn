@@ -28,9 +28,9 @@ define('MEDIAWIKI',true);
 
 $IP = realpath( dirname( __FILE__ ) . '/../..' );
 if ( $argv[1] ) {
-    require_once( $argv[1] );
+	require_once( $argv[1] );
 } else {
-    require_once( "$IP/LocalSettings.php" );
+	require_once( "$IP/LocalSettings.php" );
 }
 
 $start = 0;
@@ -44,45 +44,46 @@ $wgCommandLineMode = true;
 $page_count = get_total_number_of_articles();
 
 if ( $page_count < $start ) {
-    fwrite( STDOUT, "-1" );
-    exit(1);
+	fwrite( STDOUT, "-1" );
+	exit(1);
 }
-
 
 MwRdf::Setup();
 
 $dbr =& wfGetDB( DB_SLAVE );
 $res = $dbr->query( "
-            SELECT page_id, 
-                   page_title, 
-                   page_namespace, 
-                   page_is_redirect
-              FROM page 
-          ORDER BY page_id 
-             LIMIT 200 
-            OFFSET $start" );
-while ( $s = $dbr->fetchObject( $res ) ) {
-    if ( $s->page_is_redirect ) continue;
+	SELECT page_id,
+	page_title,
+	page_namespace,
+	page_is_redirect
+	FROM page
+	ORDER BY page_id
+	LIMIT 200
+	OFFSET $start" );
 
-    $title = Title::makeTitle( $s->page_namespace, $s->page_title );
-    if ( ! $title ) continue;
-    $agent = MwRdf::ModelingAgent( $title );
-    fwrite( STDERR, $s->page_id . ": " . $title->getPrefixedDbKey() );
-    $agent->storeAllModels();
-    $agent = null;
-    $title = null;
-    fwrite( STDERR, "\n" );
+while ( $s = $dbr->fetchObject( $res ) ) {
+	if ( $s->page_is_redirect ) continue;
+
+	$title = Title::makeTitle( $s->page_namespace, $s->page_title );
+	if ( ! $title )
+		continue;
+
+	$agent = MwRdf::ModelingAgent( $title );
+	fwrite( STDERR, $s->page_id . ": " . $title->getPrefixedDbKey() );
+	$agent->storeAllModels();
+	$agent = null;
+	$title = null;
+	fwrite( STDERR, "\n" );
 }
 
 fwrite( STDOUT, $start + 200 );
 
 function get_total_number_of_articles() {
-    $dbr =& wfGetDB( DB_SLAVE );
+	$dbr =& wfGetDB( DB_SLAVE );
 
-    # get the total number of articles
-    $page = $dbr->tableName( 'page' );
-    $res = $dbr->query( "select count( page_id ) as page_count from $page;" );
-    $s = $dbr->fetchObject( $res );
-    return $s->page_count;
+	# get the total number of articles
+	$page = $dbr->tableName( 'page' );
+	$res = $dbr->query( "select count( page_id ) as page_count from $page;" );
+	$s = $dbr->fetchObject( $res );
+	return $s->page_count;
 }
-

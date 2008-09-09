@@ -1,4 +1,5 @@
 <?php
+if (!defined('MEDIAWIKI')) die();
 /**
  * MwRdf.php -- RDF framework for MediaWiki
  * Copyright 2005,2006 Evan Prodromou <evan@wikitravel.org>
@@ -22,21 +23,18 @@
  * @package MediaWiki
  * @subpackage Extensions
  */
-if (defined('MEDIAWIKI')) {
 
-    interface RdfQueryPageInterface {
-        public function setListoutput( $bool );
-        public function getName();
-        public function getTitle();
-        public function getQuery();
-        public function getQueryLanguage();
-        public function sortDescending();
-        public function getOrder();
-        public function isExpensive();
-        public function isCached();
-        public function isSyndicated();
-        public function formatResult( $skin, $result );
-        public function preprocessResults( $res );
-    }
-
+interface RdfQueryPageInterface {
+	public function setListoutput( $bool );
+	public function getName();
+	public function getTitle();
+	public function getQuery();
+	public function getQueryLanguage();
+	public function sortDescending();
+	public function getOrder();
+	public function isExpensive();
+	public function isCached();
+	public function isSyndicated();
+	public function formatResult( $skin, $result );
+	public function preprocessResults( $res );
 }

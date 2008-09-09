@@ -1,4 +1,5 @@
 <?php
+if (!defined('MEDIAWIKI')) die();
 /**
  * MwRdf.php -- RDF framework for MediaWiki
  * Copyright 2005,2006 Evan Prodromou <evan@wikitravel.org>
@@ -22,41 +23,37 @@
  * @package MediaWiki
  * @subpackage Extensions
  */
-if (defined('MEDIAWIKI')) {
 
-    require_once( "ModelMakerInterface.php");
+require_once( "ModelMakerInterface.php");
 
-    abstract class MwRdf_QueryModeler implements MwRdf_ModelMaker {
+abstract class MwRdf_QueryModeler implements MwRdf_ModelMaker {
 
-        public $Agent;
+	public $Agent;
 
-        public function __construct( $modeling_agent ) {
-            $this->Agent = $modeling_agent;
-        }
+	public function __construct( $modeling_agent ) {
+		$this->Agent = $modeling_agent;
+	}
 
-        public function isDefault() { return false; }
+	public function isDefault() { return false; }
 
-        public function getName() {}
+	public function getName() {}
 
-        public function getQueryString() {}
+	public function getQueryString() {}
 
-        public function build() {}
+	public function build() {}
 
-        public function store() {}
+	public function store() {}
 
-        public function retrieve() {
-            $base_uri = $this->Agent->getTitle()->getFullUrl();
-            $query = MwRdf::Query( $this->getQueryString(), 
-                                   $base_uri, 'sparql' );
-            $store = MwRdf::StoredModel();
-            $res = $query->execute( $store );
-            $model = MwRdf::Model();
-            foreach ( $res as $statement ) {
-                $model->addStatement( $statement );
-            }
-            return $model;
-        }
-
-    }
-
+	public function retrieve() {
+		$base_uri = $this->Agent->getTitle()->getFullUrl();
+		$query = MwRdf::Query( $this->getQueryString(),
+		$base_uri, 'sparql' );
+		$store = MwRdf::StoredModel();
+		$res = $query->execute( $store );
+		$model = MwRdf::Model();
+		foreach ( $res as $statement ) {
+			$model->addStatement( $statement );
+		}
+		return $model;
+	}
 }

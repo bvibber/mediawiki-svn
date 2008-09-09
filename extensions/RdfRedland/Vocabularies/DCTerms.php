@@ -1,4 +1,5 @@
 <?php
+if (!defined('MEDIAWIKI')) die();
 /**
  * MwRdf.php -- RDF framework for MediaWiki
  * Copyright 2005,2006 Evan Prodromou <evan@wikitravel.org>
@@ -22,49 +23,45 @@
  * @package MediaWiki
  * @subpackage Extensions
  */
-if (defined('MEDIAWIKI')) {
 
+class MwRdf_Vocabulary_DCTerms extends MwRdf_Vocabulary {
 
-    class MwRdf_Vocabulary_DCTerms extends MwRdf_Vocabulary {
+	const NAMESPACE = "http://purl.org/dc/terms/";
+	public function getNS() { return self::NAMESPACE; }
 
-        const NAMESPACE = "http://purl.org/dc/terms/";
-        public function getNS() { return self::NAMESPACE; }
-
-        public $abstract;
-        public $accessRights;
-        public $alternative;
-        public $audience;
-        public $available;
-        public $bibliographicCitation;
-        public $conformsTo;
-        public $created;
-        public $dateAccepted;
-        public $dateCopyrighted;
-        public $dateSubmitted;
-        public $educationLevel;
-        public $extent;
-        public $hasFormat;
-        public $hasPart;
-        public $hasVersion;
-        public $isFormatOf;
-        public $isPartOf;
-        public $isReferencedBy;
-        public $isReplacedBy;
-        public $isRequiredBy;
-        public $issued;
-        public $isVersionOf;
-        public $license;
-        public $mediator;
-        public $medium;
-        public $modified;
-        public $references;
-        public $replaces;
-        public $requires;
-        public $rightsHolder;
-        public $spatial;
-        public $tableOfContents;
-        public $temporal;
-        public $valid;
-        
-    }
+	public $abstract;
+	public $accessRights;
+	public $alternative;
+	public $audience;
+	public $available;
+	public $bibliographicCitation;
+	public $conformsTo;
+	public $created;
+	public $dateAccepted;
+	public $dateCopyrighted;
+	public $dateSubmitted;
+	public $educationLevel;
+	public $extent;
+	public $hasFormat;
+	public $hasPart;
+	public $hasVersion;
+	public $isFormatOf;
+	public $isPartOf;
+	public $isReferencedBy;
+	public $isReplacedBy;
+	public $isRequiredBy;
+	public $issued;
+	public $isVersionOf;
+	public $license;
+	public $mediator;
+	public $medium;
+	public $modified;
+	public $references;
+	public $replaces;
+	public $requires;
+	public $rightsHolder;
+	public $spatial;
+	public $tableOfContents;
+	public $temporal;
+	public $valid;
 }

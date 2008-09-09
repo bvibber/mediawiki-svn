@@ -18,4 +18,3 @@
 
 <http://wikitravel.org/en/Lausanne>
     dc:subject <http://wikitravel.org/en/Category:Star_articles> .
-

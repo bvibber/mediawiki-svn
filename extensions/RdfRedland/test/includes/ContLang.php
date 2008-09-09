@@ -1,4 +1,5 @@
 <?php
+if (!defined('MEDIAWIKI')) die();
 /**
  * MwRdf.php -- RDF framework for MediaWiki
  * Copyright 2005,2006 Evan Prodromou <evan@wikitravel.org>
@@ -22,30 +23,24 @@
  * @package MediaWiki
  * @subpackage Extensions
  */
-if (defined('MEDIAWIKI')) {
 
-    class Language {
+class Language {
 
-        public static $Langs = array(
-                'en' => 'English',
-                'fr' => 'français',
-                'de' => 'Deutche'
-            );
+	public static $Langs = array(
+		'en' => 'English',
+		'fr' => 'français',
+		'de' => 'Deutche'
+	);
 
-        public function getLanguageName( $name ) {
-            if ( isset( self::$Langs[$name] ) ) {
-                return self::$Langs[$name];
-            } else {
-                return false;
-            }
-        }
+	public function getLanguageName( $name ) {
+		if ( isset( self::$Langs[$name] ) ) {
+			return self::$Langs[$name];
+		} else {
+			return false;
+		}
+	}
 
-        public function getMessage( $key ) {
-            return ''; # FIXME
-        }
-
-    }
-
+	public function getMessage( $key ) {
+		return ''; # FIXME
+	}
 }
-
-

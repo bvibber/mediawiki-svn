@@ -1,4 +1,5 @@
 <?php
+if (!defined('MEDIAWIKI')) die();
 /**
  * MwRdf.php -- RDF framework for MediaWiki
  * Copyright 2005,2006 Evan Prodromou <evan@wikitravel.org>
@@ -24,71 +25,68 @@
  */
 
 /*
- * This is a mock of the MediaWiki Article class which implements only 
- * those methods which are used by MwRdf and the various Model Makers.  
- * Various set accessors are also implemented to allow construction of mock 
+ * This is a mock of the MediaWiki Article class which implements only
+ * those methods which are used by MwRdf and the various Model Makers.
+ * Various set accessors are also implemented to allow construction of mock
  * Article objects.
  */
 class Article {
 
-    private $contributors = array();
-    private $user;
-    private $time;
-    private $content;
-    private $title;
+	private $contributors = array();
+	private $user;
+	private $time;
+	private $content;
+	private $title;
 
-    public function __construct( $title ) {
-        $this->title = $title;
-        switch ( $title->getPrefixedDBKey() ) {
-        case 'Modeling_test_article' :
-            $this->user = MwRdfTest::createUserWithRealName();
-            $this->content = MwRdfTest::InPageWikitext();
-            $this->time = 1; // 1 January 1970, 1 second after midnight UTC
-            break;
-        default :
-            $this->time = 1; // 1 January 1970, 1 second after midnight UTC
-        }
-    }
+	public function __construct( $title ) {
+		$this->title = $title;
+		switch ( $title->getPrefixedDBKey() ) {
+			case 'Modeling_test_article' :
+				$this->user = MwRdfTest::createUserWithRealName();
+				$this->content = MwRdfTest::InPageWikitext();
+				$this->time = 1; // 1 January 1970, 1 second after midnight UTC
+				break;
+			default :
+				$this->time = 1; // 1 January 1970, 1 second after midnight UTC
+		}
+	}
 
-    public function Article( $title ) {
-        $this->__construct( $title );
-    }
+	public function Article( $title ) {
+		$this->__construct( $title );
+	}
 
-    public function getContent() {
-        return $this->content;
-    }
+	public function getContent() {
+		return $this->content;
+	}
 
-    public function setContent( $text ) {
-        $this->content = $text;
-    }
+	public function setContent( $text ) {
+		$this->content = $text;
+	}
 
-    public function getTitle() { 
-        return $this->title; 
-    }
+	public function getTitle() {
+		return $this->title;
+	}
 
-    public function getContributors() {
-        return $this->contributors;
-    }
+	public function getContributors() {
+		return $this->contributors;
+	}
 
-    public function addContributor( $user ) {
-        $this->contributors[] = array( $user->getId(), 
-                                 $user->getName(), 
-                                 $user->getRealName() );
-    }
+	public function addContributor( $user ) {
+		$this->contributors[] = array( $user->getId(),
+		$user->getName(),
+		$user->getRealName() );
+	}
 
-    public function getUser() {
-        if ( $this->user ) return $this->user->getId();
-        return 0;
-    }
+	public function getUser() {
+		if ( $this->user ) return $this->user->getId();
+		return 0;
+	}
 
-    public function setUser( $user ) {
-        $this->user = $user;
-    }
+	public function setUser( $user ) {
+		$this->user = $user;
+	}
 
-    public function getTimestamp() {
-        return $this->time;
-    }
-
-
+	public function getTimestamp() {
+		return $this->time;
+	}
 }
-

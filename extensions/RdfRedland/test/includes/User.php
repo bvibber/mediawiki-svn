@@ -1,4 +1,5 @@
 <?php
+if (!defined('MEDIAWIKI')) die();
 /**
  * MwRdf.php -- RDF framework for MediaWiki
  * Copyright 2005,2006 Evan Prodromou <evan@wikitravel.org>
@@ -25,100 +26,99 @@
 
 class User {
 
-    private static $Map = array(
-            0 => array( null, null, false ),
-            1 => array( "TestUserWithoutRealName", null, true ),
-            2 => array( "TestUserWithRealName", "Real Name", true ),
-            3 => array( "TestUserWithoutRealNameOrPage", null, false )
-        );
+	private static $Map = array(
+		0 => array( null, null, false ),
+		1 => array( "TestUserWithoutRealName", null, true ),
+		2 => array( "TestUserWithRealName", "Real Name", true ),
+		3 => array( "TestUserWithoutRealNameOrPage", null, false )
+	);
 
-    private $name;
-    private $id;
-    private $realName;
-    private $hasPage;
+	private $name;
+	private $id;
+	private $realName;
+	private $hasPage;
 
-    public function __construct( $id, $name = null ) {
-        if ( $name ) $this->name = $name;
-        if ( $id ) $this->id = $id;
-        foreach ( self::$Map as $key => $vals ) {
-            if ( $id && $id == $key ) {
-                $this->name = $vals[0];
-                $this->realName = $vals[1];
-                $this->hasPage = $vals[2];
-            } elseif ( $name && $name == $vals[0] ) {
-                $this->id = $key;
-                $this->realName = $vals[1];
-                $this->hasPage = $vals[2];
-            }
-        }
-    }
+	public function __construct( $id, $name = null ) {
+		if ( $name ) $this->name = $name;
+		if ( $id ) $this->id = $id;
+		foreach ( self::$Map as $key => $vals ) {
+			if ( $id && $id == $key ) {
+				$this->name = $vals[0];
+				$this->realName = $vals[1];
+				$this->hasPage = $vals[2];
+			} elseif ( $name && $name == $vals[0] ) {
+				$this->id = $key;
+				$this->realName = $vals[1];
+				$this->hasPage = $vals[2];
+			}
+		}
+	}
 
-    public static function newFromName( $name ) {
-        return new User( null, $name );
-    }
+	public static function newFromName( $name ) {
+		return new User( null, $name );
+	}
 
-    public static function whoIsReal( $id ) {
-        $vals = self::$Map[$id];
-        return $vals[1];
-    }
+	public static function whoIsReal( $id ) {
+		$vals = self::$Map[$id];
+		return $vals[1];
+	}
 
-    public static function whoIs( $id ) {
-        $vals = self::$Map[$id];
-        return $vals[0];
-    }
+	public static function whoIs( $id ) {
+		$vals = self::$Map[$id];
+		return $vals[0];
+	}
 
-    function getId() {
-        return $this->id;
-    }
+	function getId() {
+		return $this->id;
+	}
 
-    function addToDatabase() { return; }
+	function addToDatabase() { return; }
 
-    function setRealName( $text ) {
-        $this->realName = $text;
-    }
+	function setRealName( $text ) {
+		$this->realName = $text;
+	}
 
 	function saveSettings() { return; }
 
-    function getName() {
-        return $this->name;
-    }
+	function getName() {
+		return $this->name;
+	}
 
-    function getRealName() {
-        return $this->realName;
-    }
+	function getRealName() {
+		return $this->realName;
+	}
 
-    function getUserPage() {
-        if ( $this->id == 0 ) return;
-        if ( $this->name ) {
-            $title = Title::newFromText( $this->name );
-        } else {
-            $title = Title::newFromText( '208.77.188.166' );
-        }
-        $title->setNamespace( "User" );
-        $title->setExists( $this->hasPage );
-        return $title;
-    }
+	function getUserPage() {
+		if ( $this->id == 0 ) return;
+		if ( $this->name ) {
+			$title = Title::newFromText( $this->name );
+		} else {
+			$title = Title::newFromText( '208.77.188.166' );
+		}
+		$title->setNamespace( "User" );
+		$title->setExists( $this->hasPage );
+		return $title;
+	}
 
-    public function getSkin() {
-        return new TestSkin();
-    }
-
+	public function getSkin() {
+		return new TestSkin();
+	}
 }
 
 class TestSkin {
 
-    public function makeSpecialUrl( $page ) {
-        $title = Title::newFromText( $page, NS_SPECIAL );
-        return $title->getFullURL();
-    }
+	public function makeSpecialUrl( $page ) {
+		$title = Title::newFromText( $page, NS_SPECIAL );
+		return $title->getFullURL();
+	}
 
 	function makeLinkObj( $nt, $text= '', $query = '', $trail = '', $prefix = '' ) {
 		global $wgUser;
-        if ( ! is_object($nt) )
-                    throw new Exception( "The title argument must be a title" );
-        $url = $nt->getFullUrl();
-        if ( ! $text ) $text = $nt->getPrefixedText();
-        return "<a href='$url'>$text</a>";
-    }
+		if ( ! is_object($nt) )
+			throw new Exception( "The title argument must be a title" );
+		$url = $nt->getFullUrl();
+		if ( ! $text ) $text = $nt->getPrefixedText();
 
+		return "<a href='$url'>$text</a>";
+	}
 }

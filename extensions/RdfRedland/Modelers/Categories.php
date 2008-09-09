@@ -1,4 +1,5 @@
 <?php
+if (!defined('MEDIAWIKI')) die();
 /**
  * MwRdf.php -- RDF framework for MediaWiki
  * Copyright 2005,2006 Evan Prodromou <evan@wikitravel.org>
@@ -22,31 +23,30 @@
  * @package MediaWiki
  * @subpackage Extensions
  */
-if (defined('MEDIAWIKI')) {
 
-    class MwRdf_Categories_Modeler extends MwRdf_Modeler {
+class MwRdf_Categories_Modeler extends MwRdf_Modeler {
 
-        public function getName() { return 'categories'; }
+	public function getName() {
+		return 'categories';
+	}
 
-        public function isDefault() { return 'true'; }
+	public function isDefault() {
+		return 'true';
+	}
 
-        public function build() {
-            $dc = MwRdf::Vocabulary( 'dc' );
-            $model = MwRdf::Model();
-            $ar = $this->Agent->titleResource();
-            $categories = $this->Agent->getTitle()->getParentCategories();
-            if ( is_array( $categories ) ) {
-                foreach ( array_keys($categories) as $category ) {
-                    $catmf = MwRdf::ModelingAgent( Title::newFromText( $category ) );
-                    $model->addStatement( MwRdf::Statement(
-                            $ar, $dc->subject, $catmf->titleResource() ) );
+	public function build() {
+		$dc = MwRdf::Vocabulary( 'dc' );
+		$model = MwRdf::Model();
+		$ar = $this->Agent->titleResource();
+		$categories = $this->Agent->getTitle()->getParentCategories();
+		if ( is_array( $categories ) ) {
+			foreach ( array_keys($categories) as $category ) {
+				$catmf = MwRdf::ModelingAgent( Title::newFromText( $category ) );
+				$model->addStatement( MwRdf::Statement(
+				$ar, $dc->subject, $catmf->titleResource() ) );
 
-                }
-            }
-            return $model;
-        }
-
-    }
-
+			}
+		}
+		return $model;
+	}
 }
-
