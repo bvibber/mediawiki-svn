@@ -70,32 +70,8 @@ class ImageMap {
 				if ( wfIsBadImage( $imageTitle->getDBkey() , $parser->mTitle ) ) {
 					return self::error( 'imagemap_bad_image' );
 				}
-				// Parse the options so we can use links and the like in the caption, code adapted from Cite extension
-				if ( method_exists( $parser, 'recursiveTagParse' ) ) {
-					// New fast method
-					$parsedoptions = $parser->recursiveTagParse( Sanitizer::escapeHtmlAllowEntities($options) );
-				} else {
-					// Old method
-					$ret = $parser->parse(
-						Sanitizer::escapeHtmlAllowEntities($options),
-						$parser->mTitle,
-						$parser->mOptions,
-						// Avoid whitespace buildup
-						false,
-						false
-					);
-					$text = $ret->getText();
-					global $wgUseTidy;
-					if ( ! $wgUseTidy )
-						$parsedoptions = $text;
-					else {
-						$text = preg_replace( '~^<p>\s*~', '', $text );
-						$text = preg_replace( '~\s*</p>\s*~', '', $text );
-						$text = preg_replace( '~\n$~', '', $text );
-						
-						$parsedoptions =  $text;
-					}
-				}
+				// Parse the options so we can use links and the like in the caption
+				$parsedoptions = $parser->recursiveTagParse( Sanitizer::escapeHtmlAllowEntities($options) );
 				$imageHTML = $parser->makeImage( $imageTitle, $parsedoptions );
 				$parser->mOutput->addImage( $imageTitle->getDBkey() );
 
