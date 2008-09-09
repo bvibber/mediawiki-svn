@@ -2804,14 +2804,14 @@ function js_log(string){
      /*
       * IE and non-firebug debug:
       */
-     var log_elm = document.getElementById('mv_js_log');
+     /*var log_elm = document.getElementById('mv_js_log');
      if(!log_elm){
      	document.write('<div style="position:absolute;z-index:500;top:0px;left:0px;right:0px;height:150px;"><textarea id="mv_js_log" cols="80" rows="6"></textarea></div>');
      	var log_elm = document.getElementById('mv_js_log');
      }
      if(log_elm){
      	log_elm.value+=string+"\n";
-     }
+     }*/
    }
    //in case of "throw error" type usage
    return false;

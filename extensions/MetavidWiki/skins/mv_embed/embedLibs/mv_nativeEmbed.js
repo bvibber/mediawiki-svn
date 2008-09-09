@@ -64,8 +64,10 @@ var nativeEmbed = {
 			this.start_offset=this.media_element.selected_source.start_offset;	
 		
 		//don't update status if we are not the current clip
-		if(this.pc.pp.cur_clip.id != this.pc.id)
-			return true;
+		if(this.pc){
+			if(this.pc.pp.cur_clip.id != this.pc.id)
+				return true;
+		}
 		
 		//only update the interface if controls have been included:	
 		if( this.currentTime > 0 ){
