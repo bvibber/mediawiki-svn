@@ -77,7 +77,10 @@ abstract class ConfigurationPage extends SpecialPage {
 			}
 			$this->mWiki = $wiki;
 		} else {
-			$this->mWiki = $wgConf->getWiki();
+			if( $wgConf instanceof WebConfiguration )
+				$this->mWiki = $wgConf->getWiki();
+			else
+				$this->mWiki = 'default';
 		}
 
 		$this->outputHeader();
@@ -860,7 +863,7 @@ abstract class ConfigurationPage extends SpecialPage {
 					( isset( $default[$ns] ) ? implode( "\n", (array)$default[$ns] ) : '' ) .
 					Xml::closeElement( 'textarea' ) . "<br/>\n";
 				else 
-					$text .= "<pre>" . ( isset( $default[$ns] ) ? htmlspecialchars( implode( "\n", $default[$ns] ) ) : '' ) . "\n</pre>";
+					$text .= "<pre>" . ( isset( $default[$ns] ) ? htmlspecialchars( implode( "\n",(array)$default[$ns] ) ) : '' ) . "\n</pre>";
 				$text .= '</td></tr>';
 			}
 			$text .= '</table>';
