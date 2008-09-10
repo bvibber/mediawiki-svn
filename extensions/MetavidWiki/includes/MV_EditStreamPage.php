@@ -53,7 +53,7 @@
 			$html.='<form action="'.htmlspecialchars($wgRequest->getRequestURL()).'" method="POST">';
 			$html.='<input type="hidden" name="mv_action" value="edit_stream_files">';		
 			
-			$html.='<input type="hidden" name="wpEditToken" value="'.htmlspecialchars($wgUser->editToken()).'"';
+			$html.='<input type="hidden" name="wpEditToken" value="'.htmlspecialchars($wgUser->editToken()).'"/>';
 			
 			$html.= '<fieldset><legend>'.wfMsg('mv_file_list').'</legend>' . "\n";	
 			$html.= '<table width="600" border="0">';	
@@ -72,7 +72,8 @@
 		}
 		//add new stream: 
 		$html.='<form action="'.htmlspecialchars($wgRequest->getRequestURL()).'" method="POST">';	
-		$html.='<input type="hidden" name="mv_action" value="new_stream_file">';
+		$html.='<input type="hidden" name="mv_action" value="new_stream_file" >';
+		$html.='<input type="hidden" name="wpEditToken" value="'.htmlspecialchars($wgUser->editToken()).'" >';
 		$html.= '<fieldset><legend>'.wfMsg('mv_add_stream_file').'</legend>' . "\n";	
 		$html.= '<table width="600" border="0">';	
 		$html.= $this->getStreamFileForm(array('id'=>'new'));			
@@ -87,11 +88,18 @@
  	function proccessReq(& $streamFiles){
  		global $wgRequest, $wgUser;
  		
+	 		
  		//make sure the user can edit streams:
- 		if(!$wgUser->isAllowed('mv_edit_stream'))return ;
+ 		if(!$wgUser->isAllowed('mv_edit_stream')){
+ 			$this->status_error = wfMsg('add_stream_permission');
+ 			return;
+ 		}
  		
  		//confirm the edit token:
- 		if(!$wgUser->matchEditToken($wgRequest->getVal('wpEditToken')))return ; 		
+ 		if(!$wgUser->matchEditToken($wgRequest->getVal('wpEditToken'))){
+ 			$this->status_error =wfMsg('token_suffix_mismatch');
+ 			return ; 		
+ 		}
  		
  		
  		$this->mv_action = $wgRequest->getVal('mv_action'); 	
