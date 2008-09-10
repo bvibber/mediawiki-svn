@@ -141,11 +141,12 @@ $messages['fr'] = array(
  * @author Toliño
  */
 $messages['gl'] = array(
-	'whoiswatching' => 'Quen está vixiando a páxina wiki',
+	'whoiswatching' => 'Quen está vixiando unha páxina do wiki',
+	'whoiswatching-desc' => 'Proporciona unha lista de nomes de usuario que vixian unha páxina do wiki',
 	'specialwhoiswatchingthepage' => 'Quen está vixiando %s',
 	'specialwhoiswatchingusage' => 'Esta páxina especial non pode ser usada deste xeito. Use esta páxina
 [[MediaWiki:Number_of_watching_users_pageview]] para definir un punto de entrada a esta páxina especial.',
-	'specialwhoiswatchingaddusers' => 'Engadir usuarios para vixiar a páxina',
+	'specialwhoiswatchingaddusers' => 'Engadir os usuarios para vixiar a páxina',
 	'specialwhoiswatchingaddbtn' => 'Engadir os usuarios seleccionados',
 );
 

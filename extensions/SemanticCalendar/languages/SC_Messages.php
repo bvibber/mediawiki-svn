@@ -30,6 +30,7 @@ $messages['af'] = array(
  * @author Meno25
  */
 $messages['ar'] = array(
+	'sc_desc' => 'نتيجة تعرض معلومات تاريخ سيمانتيك',
 	'sc_previousmonth' => 'الشهر السابق',
 	'sc_nextmonth' => 'الشهر التالي',
 	'sc_today' => 'اليوم',
@@ -40,6 +41,7 @@ $messages['ar'] = array(
  * @author Meno25
  */
 $messages['arz'] = array(
+	'sc_desc' => 'نتيجة تعرض معلومات تاريخ سيمانتيك',
 	'sc_previousmonth' => 'الشهر السابق',
 	'sc_nextmonth' => 'الشهر التالي',
 	'sc_today' => 'اليوم',
@@ -109,6 +111,7 @@ $messages['fa'] = array(
  * @author Urhixidur
  */
 $messages['fr'] = array(
+	'sc_desc' => 'Un calendrier qui affiche les informations de date sémantique',
 	'sc_previousmonth' => 'Mois précédent',
 	'sc_nextmonth' => 'Mois suivant',
 	'sc_today' => "Aujourd'hui",
@@ -117,8 +120,10 @@ $messages['fr'] = array(
 
 /** Galician (Galego)
  * @author Alma
+ * @author Toliño
  */
 $messages['gl'] = array(
+	'sc_desc' => 'Un calendario que amosa datos da información semántica',
 	'sc_previousmonth' => 'Mes anterior',
 	'sc_nextmonth' => 'Mes seguinte',
 	'sc_today' => 'Hoxe',
@@ -258,6 +263,7 @@ $messages['mr'] = array(
  * @author Siebrand
  */
 $messages['nl'] = array(
+	'sc_desc' => 'Een kalender die semantische datuminformatie weergeeft',
 	'sc_previousmonth' => 'Vorige maand',
 	'sc_nextmonth' => 'Volgende maand',
 	'sc_today' => 'Vandaag',
@@ -288,6 +294,7 @@ $messages['no'] = array(
  * @author Cedric31
  */
 $messages['oc'] = array(
+	'sc_desc' => "Un calendièr qu'aficha las entresenhas de data semantica",
 	'sc_previousmonth' => 'Mes precedent',
 	'sc_nextmonth' => 'Mes seguent',
 	'sc_today' => 'Uèi',
@@ -338,6 +345,7 @@ $messages['ru'] = array(
  * @author Helix84
  */
 $messages['sk'] = array(
+	'sc_desc' => 'Kalendár zobrazujúci sémantické dátumové informácie',
 	'sc_previousmonth' => 'Predošlý mesiac',
 	'sc_nextmonth' => 'Ďalší mesiac',
 	'sc_today' => 'Dnes',

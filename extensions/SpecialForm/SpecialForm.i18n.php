@@ -303,6 +303,7 @@ $messages['gl'] = array(
 	'formarticleexists' => 'A páxina Existe',
 	'formarticleexiststext' => 'A páxina [[$1]] xa existe.',
 	'formbadpagename' => 'Nome de Páxina incorrecto',
+	'formbadrecaptcha' => 'Valores incorrectos na reCaptcha. Inténteo de novo.',
 	'formbadpagenametext' => 'O formulario de datos que vostede introduciu fixo un nome de páxina incorrecto, "$1".',
 	'formrequiredfieldpluralerror' => 'Os campos $1 son requiridos para este formulario. Por favor, énchaos.',
 	'formrequiredfielderror' => 'O campo $1 é requerido para este formulario. Énchao.',
@@ -338,7 +339,7 @@ $messages['hsb'] = array(
 	'formbadpagenametext' => 'Zapodate formularne daty tworja njedowolene mjeno strony: "$1".',
 	'formrequiredfieldpluralerror' => 'Pola $1 su trěbne pola. Prošu wupjelń je.',
 	'formrequiredfielderror' => 'Polo $1 je trěbne polo. Prošu wupjelń je.',
-	'formsavesummary' => 'Nowy nastawk, kotryž na [[Special:Form/$1]] bazěruje.',
+	'formsavesummary' => 'Nowa strona, kotraž [[Special:Form/formular $1]] wužiwa.',
 	'formsaveerror' => 'Zmylk při składowanju formulara',
 	'formsaveerrortext' => 'Bě njeznaty zmylk při składowanju nastawka "$1".',
 );

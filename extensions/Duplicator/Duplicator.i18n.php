@@ -401,7 +401,7 @@ $messages['hi'] = array(
  */
 $messages['hsb'] = array(
 	'duplicator' => 'Nastawk duplicěrować',
-	'duplicator-desc' => 'Njewotwisne kopije stronow z dospołnymi wersijowymi stawiznami wutworić',
+	'duplicator-desc' => 'Njewotwisne [[Special:Duplicate|kopije stronow]] z dospołnymi wersijowymi stawiznami wutworić',
 	'duplicator-toolbox' => 'Tutón nastawk duplicěrować',
 	'duplicator-header' => 'Z tutej specialnej stronu móžeš strony dospołnje duplicěrować. Při tym přewozmu so cyle stawizny strony. To móže z wužitkom być, hdyž ma so na pr. strona do wjacorych nastawkow rozdźělić.',
 	'duplicator-options' => 'Opcije',

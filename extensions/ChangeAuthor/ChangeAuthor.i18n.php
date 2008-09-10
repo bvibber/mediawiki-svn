@@ -375,7 +375,7 @@ $messages['dsb'] = array(
 	'changeauthor-pagename-or-revid' => 'Mě boka abo ID wersije:',
 	'changeauthor-pagenameform-go' => 'Pytaś',
 	'changeauthor-comment' => 'Komentar:',
-	'changeauthor-changeauthors-multi' => 'Awtorow změniś',
+	'changeauthor-changeauthors-multi' => '{{PLURAL:$1|Awtora|Awtorowu|Awtorow|Awtorow}} změniś',
 	'changeauthor-explanation-multi' => 'Z toś tym formularom móžoš awtorow wersijow změniś.
 Změń jadnorje jadne wužywarske mě abo někotare wužywarske mjenja ze slědujuceje lisćiny, pśidaj komentar (opcionalny) a klikni na tłocašk  "Awtorow změniś".',
 	'changeauthor-changeauthors-single' => 'Awtora změniś',
@@ -1411,6 +1411,7 @@ $messages['tr'] = array(
 );
 
 /** Ukrainian (Українська)
+ * @author AS
  * @author Ahonc
  */
 $messages['uk'] = array(
@@ -1421,7 +1422,7 @@ $messages['uk'] = array(
 	'changeauthor-pagename-or-revid' => 'Назва статті або ідентифікатор редагування:',
 	'changeauthor-pagenameform-go' => 'Уперед',
 	'changeauthor-comment' => 'Коментар:',
-	'changeauthor-changeauthors-multi' => 'Змінити автора(ів)',
+	'changeauthor-changeauthors-multi' => 'Змінити {{PLURAL:$1|автора|авторів}}',
 	'changeauthor-explanation-multi' => "За допомогою цієї форми можна змінити авторів редагувань.
 Просто змініть нижче одне або кілька імен користувачів, зазначте пояснення (необов'язково) і натисніть кнопку «Змінити автора(ів)».",
 	'changeauthor-changeauthors-single' => 'Змінити автора',

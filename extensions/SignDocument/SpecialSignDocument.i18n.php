@@ -1391,14 +1391,14 @@ $1',
 	'sign-sigdetails' => 'Ondertekeningsdetails',
 	'sign-emailto' => '<a href="mailto:$1">$1</a>',
 	'sign-iptools' => '<span class="plainlinksneverexpand"><!--
--->[[User:$1|$1]] ([[User talk:$1|ovelreg]] • <!--
+-->[[User:$1|$1]] ([[User talk:$1|overleg]] • <!--
 -->[[Special:Contributions/$1|bijdragen]] • <!--
 -->[http://www.dnsstuff.com/tools/whois.ch?domain={{urlencode:$1}}&cache=off&email=on WHOIS] • <!--
 -->[http://www.dnsstuff.com/tools/ptr.ch?ip={{urlencode:$1}}&cache=off&email=on RDNS] • <!--
 -->[http://www.robtex.com/rbls/$1.html RBL\'s] • <!--
--->[[Special:Blockip/$1|blokkeer gebruiker]] • <!--
--->[{{fullurl:Special:Log/block|page=User:{{urlencode:$1}}}} blokkerlogboek] • <!--
--->[{{fullurl:Special:CheckUser|ip={{urlencode:$1}}}} IP controleren])<!--
+-->[[Special:BlockIP/$1|gebruiker blokkeren]] • <!--
+-->[{{fullurl:Special:Log/block|page=User:{{urlencode:$1}}}} blokkeerlogboek] • <!--
+-->[{{fullurl:Special:CheckUser|ip={{urlencode:$1}}}} IP-adres controleren])<!--
 --></span>',
 	'sign-viewfield-stricken' => 'Doorgehaald',
 	'sign-viewfield-reviewedby' => 'Controleur',

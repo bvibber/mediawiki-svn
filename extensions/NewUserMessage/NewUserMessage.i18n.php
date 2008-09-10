@@ -283,7 +283,7 @@ $messages['nds'] = array(
  * @author Siebrand
  */
 $messages['nl'] = array(
-	'newusermessage-desc' => 'Voegt een [[MediaWiki:NewUserMessage|bericht]] toe aan de overlegpagina van nieuwe gebruikers',
+	'newusermessage-desc' => 'Voegt een bericht toe aan de overlegpagina van nieuwe gebruikers',
 	'newuseredit-summary' => '[[{{int:newusermessage-template}}|Welkomstbericht]] toegevoegd aan de overlegpagina van de nieuwe gebruiker',
 );
 
@@ -350,6 +350,14 @@ $messages['sv'] = array(
  */
 $messages['te'] = array(
 	'newusermessage-desc' => 'కొత్తగా చేరిన వాడుకరుల చర్చా పేజీలకు ఓ సందేశాన్ని చేర్చండి',
+);
+
+/** Ukrainian (Українська)
+ * @author AS
+ */
+$messages['uk'] = array(
+	'newusermessage-desc' => 'Додає повідомлення на сторінку обговорення новоствореного користувача',
+	'newuseredit-summary' => 'Додавання [[{{int:newusermessage-template}}|привітання]] на сторінку обговорення нового користувача',
 );
 
 /** Vèneto (Vèneto)

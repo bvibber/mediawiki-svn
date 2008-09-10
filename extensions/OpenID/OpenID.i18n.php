@@ -1889,7 +1889,8 @@ $messages['vi'] = array(
 	'openiderror' => 'Lỗi thẩm tra',
 	'openiderrortext' => 'Có lỗi khi thẩm tra địa chỉ OpenID.',
 	'openidconfigerror' => 'Lỗi thiết lập OpenID',
-	'openidconfigerrortext' => 'Phần giữ thông tin OpenID cho wiki này không hợp lệ. Xin hãy liên lạc với [[Special:ListUsers/sysop|quản lý viên]].',
+	'openidconfigerrortext' => 'Cấu hình nơi lưu trữ OpenID cho wiki này không hợp lệ.
+Xin hãy liên lạc với [[Special:ListUsers/sysop|quản lý viên]].',
 	'openidpermission' => 'Lỗi quyền OpenID',
 	'openidpermissiontext' => 'Địa chỉ OpenID của bạn không được phép đăng nhập vào dịch vụ này.',
 	'openidcancel' => 'Đã hủy bỏ thẩm tra',

@@ -145,13 +145,23 @@ $messages['fr'] = array(
  * @author Toliño
  */
 $messages['gl'] = array(
+	'refreshspecial' => 'Refrescar a páxina especial',
+	'refreshspecial-desc' => 'Permite [[Special:RefreshSpecial|refrescar páxinas especiais manualmente]]',
+	'refreshspecial-title' => 'Refrescar as páxinas especiais',
 	'refreshspecial-button' => 'Actualizar o seleccionado',
+	'refreshspecial-fail' => 'Por favor, comprobe polo menos unha páxina especial para refrescar.',
 	'refreshspecial-refreshing' => 'actualizando as páxinas especiais',
 	'refreshspecial-success-subtitle' => 'actualizando as páxinas especiais',
 	'refreshspecial-choice' => 'actualizando as páxinas especiais',
+	'refreshspecial-js-disabled' => '(<i>Non pode seleccionar todas as páxinas cando o JavaScript está deshabilitado</i>)',
 	'refreshspecial-select-all-pages' => '  seleccionar todas as páxinas',
 	'refreshspecial-link-back' => 'Voltar á extensión',
 	'refreshspecial-here' => '<b>aquí</b>',
+	'refreshspecial-none-selected' => 'Non seleccionou ningunha páxina especial. Revertendo á selección por defecto.',
+	'refreshspecial-db-error' => 'Fallou: erro da base de datos',
+	'refreshspecial-no-page' => 'Non existe tal páxina especial',
+	'refreshspecial-reconnected' => 'Reconectado.',
+	'refreshspecial-reconnecting' => 'Fallou a conexión, reconectando en 10 segundos...',
 );
 
 /** Italian (Italiano)
@@ -195,9 +205,11 @@ $messages['lb'] = array(
 	'refreshspecial-select-all-pages' => 'all Säiten auswielen',
 	'refreshspecial-link-back' => "Zréck op d'Erweiderung",
 	'refreshspecial-here' => '<b>hei</b>',
+	'refreshspecial-none-selected' => "Dir hutt keng Spezialssäiten ausgewielt. Zrèck op d'Astellung 'par défaut'",
 	'refreshspecial-db-error' => 'Et geet net: Feeler vun der Datebank',
 	'refreshspecial-no-page' => 'Et gëtt keng esou Spezialsäit',
 	'refreshspecial-reconnected' => 'Nees verbonn',
+	'refreshspecial-reconnecting' => "D'Verbindung koum net zustan, nei Verbindung an 10 Sekonnen ...",
 	'refreshspecial-total-display' => "<br />$1 Säite mat am Ganzen $2 Reien an $3 (Dauer) (d'Gesamtzäit déi de Script brauch ass $4)",
 );
 

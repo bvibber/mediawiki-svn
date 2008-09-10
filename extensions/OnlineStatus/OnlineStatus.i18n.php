@@ -233,6 +233,8 @@ $messages['gl'] = array(
 	'onlinestatus-toggles-show' => 'Amosar o meu estado na miña páxina de usuario',
 	'onlinestatus-toggle-offline' => 'Desconectado',
 	'onlinestatus-toggle-online' => 'Conectado',
+	'tog-onlineOnLogin' => 'Cambiar o meu status a "conectado" cando acceda ao sistema',
+	'tog-offlineOnLogout' => 'Cambiar o meu status a "desconectado" cando saia do sistema',
 );
 
 /** Hindi (हिन्दी)
@@ -409,6 +411,8 @@ $messages['oc'] = array(
 	'onlinestatus-toggles-show' => "Mostrar mon estatut sus ma pagina d'utilizaire",
 	'onlinestatus-toggle-offline' => 'Absent',
 	'onlinestatus-toggle-online' => 'Present',
+	'tog-onlineOnLogin' => 'Cambiar mon estatut a en linha quand me connècti',
+	'tog-offlineOnLogout' => 'Cambiar mon estatut a fòra linha quand me desconnècti',
 );
 
 /** Polish (Polski)

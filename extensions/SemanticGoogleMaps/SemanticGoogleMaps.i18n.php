@@ -16,6 +16,14 @@ $messages['en'] = array(
 	'semanticgooglemaps-desc'              => 'Allows users to add Google Maps to wiki pages based on structured data',
 );
 
+/** Afrikaans (Afrikaans)
+ * @author Naudefj
+ */
+$messages['af'] = array(
+	'semanticgooglemaps_lookupcoordinates' => 'Soek koördinate op',
+	'semanticgooglemaps-desc' => 'Laat gebruikers toe om Google Maps by wiki bladsye te voeg op grond van gestruktureerde gegewens',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */

@@ -490,6 +490,13 @@ $messages['gl'] = array(
 	'bookinfo-provider' => 'Fornecedor de datos: $1',
 );
 
+/** Swiss German (Alemannisch)
+ * @author J. 'mach' wust
+ */
+$messages['gsw'] = array(
+	'bookinfo-result-title' => 'Titel:',
+);
+
 /** Manx (Gaelg)
  * @author MacTire02
  */

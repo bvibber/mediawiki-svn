@@ -526,7 +526,7 @@ Por favor, comprobe se ten permiso para actuar neste wiki que se as súas acció
 	'crosswikiblock-reason' => 'Razón:',
 	'crosswikiblock-submit' => 'Bloquear este usuario',
 	'crosswikiblock-anononly' => 'Bloquear só usuarios anónimos',
-	'crosswikiblock-nocreate' => 'Impedir a creación de contas',
+	'crosswikiblock-nocreate' => 'Previr a creación de contas',
 	'crosswikiblock-autoblock' => 'Bloquear automaticamente o último enderezo IP utilizado por este usuario, e calquera outro enderezo desde o que intente editar',
 	'crosswikiblock-noemail' => 'Advertir ao usuario do envío de correo electrónico',
 	'crosswikiunblock' => 'Desbloquear este usuario noutro wiki',

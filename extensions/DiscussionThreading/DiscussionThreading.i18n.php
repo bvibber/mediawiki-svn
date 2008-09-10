@@ -87,6 +87,7 @@ $messages['ga'] = array(
  * @author Toliño
  */
 $messages['gl'] = array(
+	'discussionthreading-desc' => 'Engadir o encadeamento ás páxinas de conversa',
 	'discussionthreading-replysection' => 'respostar',
 	'discussionthreading-replysectionhint' => 'Respostar esta publicación',
 	'discussionthreading-threadnewsection' => 'novo',

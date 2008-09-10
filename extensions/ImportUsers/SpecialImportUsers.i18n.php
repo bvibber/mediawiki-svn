@@ -399,7 +399,7 @@ $messages['hil'] = array(
  */
 $messages['hsb'] = array(
 	'importusers' => 'Wužiwarjow importować',
-	'importusers-desc' => 'Wužiwarjow we wulkich mnóstwach z CSV-dataje importować; kodowanje: UTF-8',
+	'importusers-desc' => '[[Special:ImportUsers|Importuje wužiwarjow]] z CSV-dataje; kodowanje: UTF-8',
 	'importusers-uploadfile' => 'Dataju nahrać',
 	'importusers-form-caption' => 'CSV-dataju (UTF-8) zapodać',
 	'importusers-form-file' => 'Format wužiwarskeje dataje (csv):',

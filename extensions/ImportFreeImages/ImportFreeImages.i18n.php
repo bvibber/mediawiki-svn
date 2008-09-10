@@ -184,7 +184,7 @@ $messages['eo'] = array(
  */
 $messages['fa'] = array(
 	'importfreeimages' => 'وارد کردن تصاویر آزاد',
-	'importfreeimages-desc' => 'راهی برای [[Special:ImportFreeImages|وارد کردن تصاویر با اجازه‌نامهٔ مناسب]] از [http://www.flickr.com فراهم می‌آورد',
+	'importfreeimages-desc' => 'راهی برای [[Special:ImportFreeImages|وارد کردن تصاویر با اجازه‌نامهٔ مناسب]] از [http://www.flickr.com فلیکر] فراهم می‌آورد',
 	'importfreeimages_description' => 'این صفحه به شما اجازه می‌دهد که در فلیکر به دنبال تصاویر با اجازه‌نامهٔ مناسب بگردید و آن‌ها را در ویکی خود وارد کنید.',
 	'importfreeimages_noapikey' => 'شما کلید API فلیکر خود را تنظیم نکرده‌اید.
 برای این کار، لطفاً یک کلید از [http://www.flickr.com/services/api/misc.api_keys.html این‌جا] دریافت کنید و wgFlickrAPIKey را در ImportFreeImages.php تنظیم کنید.',

@@ -276,6 +276,13 @@ $messages['got'] = array(
 	'dt_xml_namespace' => 'Seidofera',
 );
 
+/** Swiss German (Alemannisch)
+ * @author J. 'mach' wust
+ */
+$messages['gsw'] = array(
+	'dt_xml_title' => 'Titel',
+);
+
 /** Manx (Gaelg)
  * @author MacTire02
  */

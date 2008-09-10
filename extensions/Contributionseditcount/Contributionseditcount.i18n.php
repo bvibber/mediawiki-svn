@@ -156,7 +156,7 @@ $messages['hi'] = array(
  */
 $messages['hsb'] = array(
 	'contributionseditcount' => 'Wužiwar ma $1 {{PLURAL:$1|změnu|změnje|změny|změnow}}.',
-	'contributionseditcount-desc' => 'Zwobraznja ličbu změnow na [[Special:Contributions]]',
+	'contributionseditcount-desc' => 'Zwobraznja ličbnik změnow na [[Special:Contributions|stronje přinoškow wužiwarja]]',
 );
 
 /** Hungarian (Magyar)

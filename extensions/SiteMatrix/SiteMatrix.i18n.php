@@ -803,6 +803,7 @@ $messages['km'] = array(
 
 /** Korean (한국어)
  * @author Klutzy
+ * @author Kwj2772
  * @author ToePeu
  * @author לערי ריינהארט
  */
@@ -813,6 +814,8 @@ $messages['ko'] = array(
 	'sitematrix-language' => '언어',
 	'sitematrix-project' => '프로젝트 이름, 각 프로젝트 간의 인터위키',
 	'sitematrix-others' => '다른 위키미디어 프로젝트 목록',
+	'sitematrix-total' => "'''총 합계: $1'''",
+	'sitematrix-fishbowl' => '편집이 제한됨',
 );
 
 /** Ripoarisch (Ripoarisch)

@@ -345,6 +345,14 @@ $messages['dsb'] = array(
 	'newuserlog-autocreate-entry' => 'Wužywarske konto bu awtomatiski napórane',
 );
 
+/** Ewe (Eʋegbe)
+ * @author Natsubee
+ */
+$messages['ee'] = array(
+	'newuserlog-create-entry' => 'Nuŋlɔla yeye',
+	'newuserlog-create2-entry' => 'woŋlɔ ŋkɔ na $1',
+);
+
 /** Greek (Ελληνικά)
  * @author MF-Warburg
  * @author ZaDiak
@@ -583,7 +591,7 @@ $messages['hr'] = array(
 $messages['hsb'] = array(
 	'newuserlogpage' => 'Protokol nowych wužiwarjow',
 	'newuserlogpagetext' => 'To je protokol wutworjenja nowych wužiwarskich kontow.',
-	'newuserlog-desc' => 'Přidawa [[Special:Log/newusers|protokol wo nowych kontach]] k [[Special:Log]]',
+	'newuserlog-desc' => 'Přidawa [[Special:Log/newusers|protokol wo nowych kontach]]',
 	'newuserlog-byemail' => 'Hesło z e-mejlku pósłane',
 	'newuserlog-create-entry' => 'Nowy wužiwar',
 	'newuserlog-create2-entry' => 'Konto za wužiwarja $1 wutworjene',

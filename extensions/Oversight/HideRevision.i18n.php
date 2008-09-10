@@ -873,7 +873,7 @@ administrador das bases de datos no caso de que vostede cometa un erro.",
 	'hiderevision-submit' => 'Agochar estes datos permanentemente',
 	'hiderevision-tab' => 'Agochar revisión',
 	'hiderevision-norevisions' => 'Non se especificaron revisións para eliminar.',
-	'hiderevision-noreason' => 'Ten que describir o motivo desta eliminación.',
+	'hiderevision-noreason' => 'Debe describir o motivo para esta eliminación.',
 	'hiderevision-status' => 'Revisión $1: $2',
 	'hiderevision-success' => 'Arquivada e eliminada sen problemas.',
 	'hiderevision-error-missing' => 'Non se atopou na base de datos.',
@@ -1573,6 +1573,7 @@ $messages['km'] = array(
  */
 $messages['ko'] = array(
 	'group-oversight' => '오버사이트',
+	'group-oversight-member' => '오버사이트',
 	'right-hiderevision' => '관리자도 보지 못하도록 숨겨진 판의 확인 및 복구',
 );
 

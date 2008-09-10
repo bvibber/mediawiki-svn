@@ -91,8 +91,8 @@ $messages['af'] = array(
 	'ogg-stop' => 'Stop',
 	'ogg-play-video' => 'Speel video',
 	'ogg-play-sound' => 'Speel geluid',
-	'ogg-player-videoElement' => '<video>-element',
-	'ogg-player-oggPlugin' => 'Ogg-plugin',
+	'ogg-player-videoElement' => 'Standaardondersteuning in webblaaier',
+	'ogg-player-oggPlugin' => 'Webblaaier-plugin',
 	'ogg-player-soundthumb' => 'Geen mediaspeler',
 	'ogg-player-selected' => '(geselekteer)',
 	'ogg-use-player' => 'Gebruik speler:',
@@ -2344,6 +2344,7 @@ $messages['ts'] = array(
 );
 
 /** Ukrainian (Українська)
+ * @author AS
  * @author Ahonc
  */
 $messages['uk'] = array(
@@ -2365,7 +2366,7 @@ $messages['uk'] = array(
 	'ogg-no-xiphqt' => 'Відсутній компонент XiphQT для QuickTime.
 QuickTime не може відтворювати ogg-файли без цього компонента.
 Будь ласка, <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">завантажте XiphQT</a> або оберіть інший програвач.',
-	'ogg-player-videoElement' => 'елемент <video>',
+	'ogg-player-videoElement' => 'Рідна підтримка веб-оглядача',
 	'ogg-player-oggPlugin' => 'Плаґін для браузера',
 	'ogg-player-thumbnail' => 'Тільки нерухоме зображення',
 	'ogg-player-soundthumb' => 'Нема програвача',

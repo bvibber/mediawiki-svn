@@ -54,6 +54,13 @@ $messages['bcc'] = array(
 	'doublewiki-desc' => 'پیشداریت یک صفحه ای و آیی ترجمه یا چه یک دگه ویکیء ته دو ستون یک صفحه ای',
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author Red Winged Duck
+ */
+$messages['be-tarask'] = array(
+	'doublewiki-desc' => 'Паказвае старонку і яе пераклад зь іншай вікі ў выглядзе двух слупкоў',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  */

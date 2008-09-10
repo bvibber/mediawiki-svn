@@ -32,7 +32,8 @@ $messages['qqq'] = array(
  * @author Meno25
  */
 $messages['ar'] = array(
-	'commentspammer-save-blocked' => 'عنوان الأيبي الخاص بك هو معلق سبام مشتبه، لذا لم يتم حفظ الصفحة. [[Special:Userlogin|ادخل أو سجل حسابا]] لتجنب هذا.',
+	'commentspammer-save-blocked' => 'عنوان الأيبي الخاص بك هو معلق سبام مشتبه، لذا لم يتم حفظ الصفحة.
+[[Special:UserLogin|ادخل أو سجل حسابا]] لتجنب هذا.',
 	'commentspammer-desc' => 'يرفض التعديلات من معلقي السبام المشتبه فيهم على قائمة DNS سوداء',
 	'commentspammer-log-msg' => 'تعديل من [[Special:Contributions/$1|$1]] ل[[:$2]].',
 	'commentspammer-log-msg-info' => 'آخر سبام منذ $1 {{PLURAL:$1|يوم|يوم}} ، مستوى التهديد هو $2، وكود الإساءة هو $3. [http://www.projecthoneypot.org/search_ip.php?ip=$4 عرض التفاصيل]، أو [[Special:Blockip/$4|منع]].',
@@ -276,7 +277,7 @@ $messages['mr'] = array(
  */
 $messages['nl'] = array(
 	'commentspammer-save-blocked' => 'Uw IP-adres wordt verdacht van spammen - opslaan is geweigerd.
-[Special:UserLogin|Maak een gebruiker aan of meld u aan]] om dit te voorkomen.',
+[[Special:UserLogin|Maak een gebruiker aan of meld u aan]] om dit te voorkomen.',
 	'commentspammer-desc' => 'Voorkomt bewerkingen van spammers via een DNS-blacklist',
 	'commentspammer-log-msg' => 'bewerking van [[Special:Contributions/$1|$1]] aan [[:$2]].',
 	'commentspammer-log-msg-info' => 'Spamde voor het laatst $1 {{PLURAL:$1|dag|dagen}} geleden. Dreigingsniveau is $2 en de overtredingscode is $3. [http://www.projecthoneypot.org/search_ip.php?ip=$4 Details bekijken] of [[Special:Blockip/$4|blokkeren]].',

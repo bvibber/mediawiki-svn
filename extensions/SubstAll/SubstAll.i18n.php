@@ -59,6 +59,13 @@ $messages['fr'] = array(
 	'substall-desc' => 'Crée une balise <nowiki><substall></nowiki> qui convertit tous les modèles en syntaxe wiki.',
 );
 
+/** Galician (Galego)
+ * @author Toliño
+ */
+$messages['gl'] = array(
+	'substall-desc' => 'Crea unha etiqueta <nowiki><substall></nowiki> que expande todos os modelos en sintaxe wiki',
+);
+
 /** Indonesian (Bahasa Indonesia)
  * @author Rex
  */

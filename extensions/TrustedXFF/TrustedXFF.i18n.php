@@ -128,6 +128,13 @@ $messages['nl'] = array(
 	'trustedxff-desc' => 'Beheert een lijst met adressen van vertrouwde proxyservers ([http://meta.wikimedia.org/wiki/XFF_project XFF-project])',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ */
+$messages['no'] = array(
+	'trustedxff-desc' => 'Behandling av en liste over pålitelige proxyadresser ([http://meta.wikimedia.org/wiki/XFF_project XFF-prosjektet])',
+);
+
 /** Occitan (Occitan)
  * @author Cedric31
  */
@@ -154,6 +161,13 @@ $messages['sk'] = array(
  */
 $messages['sv'] = array(
 	'trustedxff-desc' => 'Behandlar en lista över troliga proxyadresser ([http://meta.wikimedia.org/wiki/XFF_project XFF-projektet])',
+);
+
+/** Ukrainian (Українська)
+ * @author AS
+ */
+$messages['uk'] = array(
+	'trustedxff-desc' => 'Обробка списку довірених проксі-адрес ([http://meta.wikimedia.org/wiki/XFF_project Проект XFF])',
 );
 
 /** Vèneto (Vèneto)

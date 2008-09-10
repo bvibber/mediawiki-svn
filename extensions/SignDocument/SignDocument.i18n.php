@@ -89,7 +89,7 @@ $messages['gl'] = array(
 $messages['hsb'] = array(
 	'signaturelogpage' => 'Proatokol podpisow',
 	'signature-desc' => 'Zmóžnja [[Special:SignDocument|podpisowanje]] dokumenta',
-	'signaturelogpagetext' => 'Tio estas protokol wšěch podpisow, kotrež buchu přez [[Special:SignDocument]] dokumentam přidate.',
+	'signaturelogpagetext' => 'To je protokol [[Special:SignDocument|wšěch podpisow]], kotrež buchu dokumentam přidate.',
 	'signaturelogentry' => 'je dokument $1 podpisał',
 );
 

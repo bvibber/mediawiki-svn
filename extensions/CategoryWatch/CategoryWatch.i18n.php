@@ -68,6 +68,7 @@ Ce message est destiné à vous informer que le $3 l’utilisateur $4 $5.',
  * @author Toliño
  */
 $messages['gl'] = array(
+	'categorywatch-desc' => 'Extende unha función da lista de vixilancia para incluír notificación acerca dos cambios no número de membros e as categorías vixiadas',
 	'categorywatch-emailbody' => 'Ola $1, recibiu esta mensaxe porque está a vixiar a categoría chamada "$2".
 Esta mensaxe serve para notificarlle que en $3 o usuario $4 $5.',
 	'categorywatch-emailsubject' => 'Actividade que envolve a categoría vixiada chamada "$1"',

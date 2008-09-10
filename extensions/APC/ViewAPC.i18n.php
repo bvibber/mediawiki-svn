@@ -2142,6 +2142,13 @@ $messages['mr'] = array(
 	'viewapc-usercache-cleared' => "'''''प्रणाली सय रिकामी केली.'''''",
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Emrrans
+ */
+$messages['ms'] = array(
+	'viewapc' => 'Maklumat APC',
+);
+
 /** Maltese (Malti)
  * @author Giangian15
  * @author Roderick Mallia

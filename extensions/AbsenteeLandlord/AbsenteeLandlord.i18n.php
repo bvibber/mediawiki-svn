@@ -300,6 +300,14 @@ $messages['li'] = array(
 	'absenteelandlord-desc' => "Sluut de database automatisch wen de behieërders allemaol gedurendje 'ne bepaoldje tied inactief zeen",
 );
 
+/** Lumbaart (Lumbaart)
+ * @author Sprüngli
+ */
+$messages['lmo'] = array(
+	'absenteelandlord-reason' => "La basa de data a l'é staida automatigament blocada per l'inativitaa da la part di administradour",
+	'absenteelandlord-desc' => 'Auto-bloca la basa de data deò wiki se cas che i administradour i en inativ per vargun temp',
+);
+
 /** Malayalam (മലയാളം)
  * @author Shijualex
  */

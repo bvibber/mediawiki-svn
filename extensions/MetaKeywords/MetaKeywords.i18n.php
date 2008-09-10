@@ -27,6 +27,13 @@ $messages['qqq'] = array(
 * $1 will not be replaced in this message.",
 );
 
+/** Afrikaans (Afrikaans)
+ * @author Naudefj
+ */
+$messages['af'] = array(
+	'metakeywords-desc' => 'Maak dit moontlik om die <tt><nowiki><meta "keywords"></nowiki></tt> en <tt><nowiki><meta "description"></nowiki></tt> etikette per naamruimte te kan stel',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */

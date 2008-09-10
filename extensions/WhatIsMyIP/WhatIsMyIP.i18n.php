@@ -307,6 +307,15 @@ $messages['sv'] = array(
 	'whatismyip-out' => 'Din IP-adress:',
 );
 
+/** Ukrainian (Українська)
+ * @author AS
+ */
+$messages['uk'] = array(
+	'whatismyip' => 'Яка моя IP',
+	'whatismyip-desc' => 'Показує поточну IP-адресу користувача на [[Special:WhatIsMyIP]]',
+	'whatismyip-out' => 'Ваша IP-адреса:',
+);
+
 /** Vèneto (Vèneto)
  * @author Candalua
  */

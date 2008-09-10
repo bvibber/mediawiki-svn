@@ -2479,7 +2479,7 @@ Slěduje nastata zaklučowana wersija. Budźe so na [[Special:Boardvote/dump|zja
 	'boardvote_invalidentered' => '<p><strong>Zmylk</strong> Porjad kandidatow dyrbi so přez pozitiwnu cyłu ličbu zwuraznić (1, 2, 3, ...) abo wostaj kašćiki prózdne.</p>',
 	'boardvote_nosession' => 'Twój wužiwarski ID za Wikimediju njehodźi so zwěsćić. Prošu přizjew so w tym wikiju, w kotrymž sy za wólbu dopušćeny a dźi tam k <nowiki>[[Special:Boardvote]]</nowiki>. Dyrbiš wužiwarske konto ze znajmjeńša $1 {{PLURAL:$1|přinoškom|přinoškomaj|přinoškami|přinoškami}} před $2 wužiwać a znajmjeńša $3 {{PLURAL:$3|přinošk|přinoškaj|přinoški|přinoškow}} mjez $4 a $5 dodać.',
 	'boardvote_notloggedin' => 'Njejsy so přizjewił. Zo by móhł hłosować, dyrbiš wužiwarske konto ze znajmjeńša $1 {{PLURAL:$1|přinoškom|přinoškomaj|přinoškami|přinoškami}} před $2 wužiwać a znajmjeńša $3 {{PLURAL:$3|přinošk|přinoškaj|přinoški|přinoškow}} mjez $4 a $5 dodać.',
-	'boardvote_notqualified' => 'Njejsy woprawnjeny so na tutej wólbje wobdźělić. Dyrbiš $3 změnow před $2 činić a twoja prěnja změna dyrbi před $5 być.',
+	'boardvote_notqualified' => 'Njejsy woprawnjeny so na tutej wólbje wobdźělić. Dyrbiš znajmjeńša $1 {{PLURAL:$1|změnu|změnje|změny|změnow}} před $2 činić a znajmjeńša $3 {{PLURAL:$3|změnu|změnje|změny|změnow}} mjez $4 a $5.',
 	'boardvote_novotes' => 'Dotal nichtó njeje hłosował.',
 	'boardvote_time' => 'Čas',
 	'boardvote_user' => 'Wužiwar',
@@ -3415,6 +3415,7 @@ $messages['ko'] = array(
 	'boardvote_entry' => '* [[Special:Boardvote/vote|투표]]
 * [[Special:Boardvote/list|투표한 날짜의 목록]]
 * [[Special:Boardvote/dump|암호화된 선거 기록의 덤프]]',
+	'boardvote_welcome' => "'''$1'''님 환영합니다!",
 	'boardvote_redirecting' => '보안 및 투명성을 향상시키기 위해, 투표는 독립적으로 관리되는 외부 서버에서 이루어집니다. 20초를 기다리시면 이 외부 서버로 자동으로 연결됩니다. 지금 바로 가시려면 [$1 여기를 누르세요]. 서명되지 않은 인증서에 관한 보안 경고가 나타날 수 있습니다.',
 	'right-boardvote' => '선거 관리',
 );

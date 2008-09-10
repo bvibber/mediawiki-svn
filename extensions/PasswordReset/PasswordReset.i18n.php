@@ -309,7 +309,7 @@ $messages['hil'] = array(
  */
 $messages['hsb'] = array(
 	'passwordreset' => 'Hesło wróćo stajić',
-	'passwordreset-desc' => "Staja wužiwarske hesła wróćo - wužaduje prawa 'passwordreset'",
+	'passwordreset-desc' => "[[Special:Passwordreset|Staja wužiwarske hesła wróćo]] - wužaduje prawa 'passwordreset'",
 	'passwordreset-invalidusername' => 'Njepłaćiwe wužiwarske mjeno',
 	'passwordreset-emptyusername' => 'Žane wužiwarske mjeno',
 	'passwordreset-nopassmatch' => 'Hesle njerunatej so',

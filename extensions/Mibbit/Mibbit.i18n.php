@@ -276,6 +276,13 @@ $messages['mr'] = array(
 	'right-mibbit' => 'मीब्बीट गप्पा-टप्पा वापरण्याची परवानगी',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Emrrans
+ */
+$messages['ms'] = array(
+	'mibbit' => 'Borak',
+);
+
 /** Dutch (Nederlands)
  * @author SPQRobin
  * @author Siebrand

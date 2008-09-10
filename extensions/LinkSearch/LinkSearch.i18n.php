@@ -767,6 +767,7 @@ $messages['km'] = array(
 $messages['ko'] = array(
 	'linksearch' => '웹 링크 찾기',
 	'linksearch-pat' => '검색 패턴:',
+	'linksearch-ns' => '이름공간:',
 	'linksearch-ok' => '검색',
 );
 

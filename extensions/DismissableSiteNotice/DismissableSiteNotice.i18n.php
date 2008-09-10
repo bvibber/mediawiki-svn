@@ -685,10 +685,11 @@ $messages['vec'] = array(
 
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
+ * @author Vinhtantran
  */
 $messages['vi'] = array(
-	'sitenotice_close' => 'giấu',
-	'sitenotice-desc' => 'Để người dùng đóng thông báo ở đầu các trang',
+	'sitenotice_close' => 'bỏ qua',
+	'sitenotice-desc' => 'Cho phép người dùng đóng thông báo ở đầu các trang',
 );
 
 /** Volapük (Volapük)

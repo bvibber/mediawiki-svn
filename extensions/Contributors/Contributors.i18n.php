@@ -345,6 +345,13 @@ $messages['gl'] = array(
 	'contributors-nosuchpage' => 'Non existe a páxina $1.',
 );
 
+/** Swiss German (Alemannisch)
+ * @author J. 'mach' wust
+ */
+$messages['gsw'] = array(
+	'contributors-target' => 'Syte:',
+);
+
 /** Manx (Gaelg)
  * @author MacTire02
  */
@@ -1106,6 +1113,7 @@ $messages['tt-cyrl'] = array(
 );
 
 /** Ukrainian (Українська)
+ * @author AS
  * @author Ahonc
  */
 $messages['uk'] = array(
@@ -1116,8 +1124,8 @@ $messages['uk'] = array(
 	'contributors-target' => 'Назва:',
 	'contributors-submit' => 'Показати',
 	'contributors-subtitle' => 'Основні автори $1',
-	'contributors-others-long' => 'Окрім зазначених, у цієї сторінки є ще $1 авторів.',
-	'contributors-others' => 'і ще $1 інших',
+	'contributors-others-long' => 'Окрім зазначених, у цієї сторінки є ще $1 {{PLURAL:$1|автор|автори|авторів}}.',
+	'contributors-others' => 'і ще $1 {{PLURAL:$1|інший|інших}}',
 	'contributors-badtitle' => 'Помилкова назва.',
 	'contributors-nosuchpage' => 'Сторінка «$1» не існує.',
 );
