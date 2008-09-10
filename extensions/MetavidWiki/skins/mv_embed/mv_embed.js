@@ -184,27 +184,7 @@ var mvEmbed = {
 			mvEmbed.init();
 		});
   	});
-  },
-  userSetPlayerType:function(player){
-  	//callback to the embedType obj to set the cookie/pref:
-  	embedTypes.userSetPlayerType(player);
-  	//fade out all pref windows and remove:
-  	$j('.set_ogg_player_pref').fadeOut('slow',function(){
-  			$j(this).remove();
-  	});
-  	//@@todo temporarily disable playback or set all to loading...
-	//request the new player library:
-/*	var plugins={};
-	plugins[embedTypes.getPlayerLib()+'Embed']='mv_'+embedTypes.getPlayerLib()+'Embed.js';
-  	mvJsLoader.doLoad(plugins, function(){
-  		js_log("done loading: " + embedTypes.getPlayerLib());
-  		//re-rewrite all the video objects on the page:
-	  	for(i in global_ogg_list){
-	  		js_log('selector: '+'#'+global_ogg_list[i]);
-	  		$j('#'+global_ogg_list[i]).get(0).inheritEmbedObj();
-	  	}
-  	})*/
-  },
+  },  
   addLoadEvent:function(fn){
   	this.flist.push(fn);
   },
@@ -376,8 +356,7 @@ mediaPlayers.prototype =
     },
     getMIMETypePlayers : function(mime_type)
     {
-        var mime_players = new Array();
-		// @@TODO: optimize this loop
+        var mime_players = new Array();	
 		if(this.default_players[mime_type])
 			for (var d in this.default_players[mime_type])
 			{
@@ -403,6 +382,10 @@ mediaPlayers.prototype =
         }
         js_log('No default player found for ' + mime_type);
         return null;
+    },
+    userSelectFormat : function (mime_format){
+    	 this.preference['format_prefrence'] = mime_format;
+    	 this.savePreferences();
     },
     userSelectPlayer : function(player_id, mime_type)
     {
@@ -1418,7 +1401,7 @@ mediaSource.prototype =
      *  @param {String} start_time in NTP format
      *  @param {String} end_time in NTP format
      */
-    updateSrcTime:function(start_ntp, end_ntp){
+    updateSrcTime:function (start_ntp, end_ntp){
     	js_log("f:updateSrcTime: "+ start_ntp+'/'+ end_ntp);
     	//js_log("pre uri:" + this.uri);
     	//if we have time we can use:
@@ -1590,6 +1573,8 @@ mediaElement.prototype =
     	for(var i in playable_sources){
     		if(i==index){
     			this.selected_source = playable_sources[i];
+    			//update the user prefrence: 
+    			embedTypes.players.userSelectFormat(playable_sources[i].mime_type);
     			break;
     		}
     	}
@@ -1599,16 +1584,45 @@ mediaElement.prototype =
     /** selects the default source via cookie preference, default marked, or by id order
      * */
     autoSelectSource:function(){ 
+    	js_log('f:autoSelectSource');
     	//@@todo read user preference for source    	
     	// Select the default source
-    	var playable_sources = this.getPlayableSources();    	    
+    	var playable_sources = this.getPlayableSources();  
+    	var flash_flag=ogg_flag=false;  	    
         for (var source in playable_sources){
+        	var mime_type =playable_sources[source].mime_type;
             if(playable_sources[source].marked_default){
                 this.selected_source = playable_sources[source];                
                 return true;
             }
-        }        
-        // select streams that start with 'mv_' first source 
+            //set via prefrence
+            if(embedTypes.players.preference['format_prefrence']==mime_type){
+            	 js_log('set via prefrence: '+playable_sources[source].mime_type);
+            	 this.selected_source = playable_sources[source];        
+            }                                	                        
+        }    
+        //set Ogg via player support:
+        for(var source in playable_sources){
+        	var mime_type =playable_sources[source].mime_type;
+       		//set source via player                 
+            if(mime_type=='video/ogg' || mime_type=='ogg/video' || mime_type=='video/annodex'){
+            	for(i in embedTypes.players){
+	        		var player = embedTypes.players[i];
+	        		if(player.library=='vlc' || player.library=='native'){
+	        			js_log('setting ogg via order')
+	        			this.selected_source = playable_sources[source];    
+	        		}
+	        	}
+            }
+        }
+        //set Flash via player support
+        for(var source in playable_sources){    
+        	var mime_type =playable_sources[source].mime_type;        
+            if(mime_type=='video/x-flv'){
+            	this.selected_source = playable_sources[source];
+            }            	        
+        }
+        //select first source        
         if (!this.selected_source)
         {
             js_log('autoselecting first source:' + playable_sources[0]);

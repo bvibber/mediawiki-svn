@@ -402,6 +402,14 @@ var flashEmbed = {
     getFLA : function (){
     	this.fla = this.getPluginEmbed();   		
     },
+    stop : function(){    	
+    	if (this.monitorTimerId != 0 )
+	    {
+	        clearInterval(this.monitorTimerId);
+	        this.monitorTimerId = 0;
+	    }
+    	this.parent_stop();
+    },
     onStop: function(){
     	//stop updates: 
 		if( this.monitorTimerId != 0 )

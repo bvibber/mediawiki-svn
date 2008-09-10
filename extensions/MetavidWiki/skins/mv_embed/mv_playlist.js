@@ -490,9 +490,14 @@ mvPlayList.prototype = {
 			//stop current clip
 			this.cur_clip.embed.stop();
 			//do swap:
-			$j('#clipDesc_'+this.cur_clip.id).hide();
+			//if transition done (animation_state==2) hide: 
+			if(this.cur_clip.transOut.animation_state==2)
+				$j('#clipDesc_'+this.cur_clip.id).hide();
 			this.cur_clip=next_clip;
-			$j('#clipDesc_'+this.cur_clip.id).show();
+			//if not already vissable show	
+			if(!$j('#clipDesc_'+this.cur_clip.id).is(':visible')) 
+				$j('#clipDesc_'+this.cur_clip.id).show();
+				
 			this.cur_clip.embed.play();			
 		}else{
 			js_log('do next');								
