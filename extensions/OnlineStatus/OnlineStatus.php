@@ -143,7 +143,6 @@ class OnlineStatus {
 
 	/**
 	 * Extension function
-	 * Only called if $wgAllowAnyUserOnlineStatusFunction is true
 	 */
 	static function Setup() {
 		global $wgParser;
@@ -152,7 +151,6 @@ class OnlineStatus {
 
 	/**
 	 * Hook for ParserFirstCallInit
-	 * Only called if $wgAllowAnyUserOnlineStatusFunction is true
 	 */
 	static function ParserFirstCallInit( $parser ){
 		global $wgAllowAnyUserOnlineStatusFunction;
