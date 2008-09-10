@@ -33,18 +33,16 @@ class OnlineStatus {
 
 	static function init(){
 		global $wgExtensionMessagesFiles, $wgExtensionFunctions, $wgHooks, $wgAjaxExportList;
-		global $wgAllowAnyUserOnlineStatusFunction;
+
 		// Add messages file
 		$wgExtensionMessagesFiles['OnlineStatus'] = dirname( __FILE__ ) . '/OnlineStatus.i18n.php';
 
-		if( $wgAllowAnyUserOnlineStatusFunction ){
-			// Hooks for the Parser
-			// Use ParserFirstCallInit if aviable
-			if( defined( 'MW_SUPPORTS_PARSERFIRSTCALLINIT' ) )
-				$wgHooks['ParserFirstCallInit'][] = 'OnlineStatus::ParserFirstCallInit';
-			else
-				$wgExtensionFunctions[] = 'OnlineStatus::Setup';
-		}
+		// Hooks for the Parser
+		// Use ParserFirstCallInit if aviable
+		if( defined( 'MW_SUPPORTS_PARSERFIRSTCALLINIT' ) )
+			$wgHooks['ParserFirstCallInit'][] = 'OnlineStatus::ParserFirstCallInit';
+		else
+			$wgExtensionFunctions[] = 'OnlineStatus::Setup';
 
 		// Magic words hooks
 		$wgHooks['MagicWordwgVariableIDs'][] = 'OnlineStatus::MagicWordVariable';
@@ -149,16 +147,17 @@ class OnlineStatus {
 	 */
 	static function Setup() {
 		global $wgParser;
-		$wgParser->setFunctionHook( 'anyuseronlinestatus', array( __CLASS__, 'ParserHookCallback' ) );
-		return true;
+		self::ParserFirstCallInit( $wgParser );
 	}
 
 	/**
 	 * Hook for ParserFirstCallInit
 	 * Only called if $wgAllowAnyUserOnlineStatusFunction is true
 	 */
-	static function ParserFirstCallInit( &$parser ){
-		$parser->setFunctionHook( 'anyuseronlinestatus', array( __CLASS__, 'ParserHookCallback' ) );
+	static function ParserFirstCallInit( $parser ){
+		global $wgAllowAnyUserOnlineStatusFunction;
+		if( $wgAllowAnyUserOnlineStatusFunction )
+			$parser->setFunctionHook( 'anyuseronlinestatus', array( __CLASS__, 'ParserHookCallback' ) );
 		return true;
 	}
 
