@@ -11,7 +11,7 @@ $messages = array();
  * @author Mark Jaroski
  */
 $messages['en'] = array(
-	'othersites' => 'other sites',
+	'othersites' => 'Other sites',
 	'othersites-desc' => 'Moves interwiki links other than language links in their own portlet',
 );
 
@@ -35,7 +35,7 @@ $messages['arz'] = array(
  * @author Grondin
  */
 $messages['fr'] = array(
-	'othersites' => 'autres sites',
+	'othersites' => 'Autres sites',
 	'othersites-desc' => "Déplace les autre liens interwiki que les autres liens liés à la lanque de leurs propres composants d'interface.",
 );
 
@@ -43,14 +43,14 @@ $messages['fr'] = array(
  * @author Toliño
  */
 $messages['gl'] = array(
-	'othersites' => 'outros sitios',
+	'othersites' => 'Outros sitios',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
 $messages['lb'] = array(
-	'othersites' => 'aner Siten',
+	'othersites' => 'Aner Siten',
 	'othersites-desc' => 'Réckelt interwiki-Linken déi keng Sproochlinke sinn an hir eege Këscht',
 );
 
@@ -58,7 +58,7 @@ $messages['lb'] = array(
  * @author Siebrand
  */
 $messages['nl'] = array(
-	'othersites' => 'andere sites',
+	'othersites' => 'Andere sites',
 	'othersites-desc' => 'Verplaatst interwikiverwijzingen anders dan taalverwijzingen naar een eigen portlet',
 );
 
@@ -66,7 +66,7 @@ $messages['nl'] = array(
  * @author Cedric31
  */
 $messages['oc'] = array(
-	'othersites' => 'autres sits',
+	'othersites' => 'Autres sits',
 	'othersites-desc' => "Deplaça los ligams interwiki autres que los ligams ligats a la lenga de lors compausants d'interfàcia pròpris.",
 );
 
@@ -74,7 +74,7 @@ $messages['oc'] = array(
  * @author Helix84
  */
 $messages['sk'] = array(
-	'othersites' => 'iné stránky',
+	'othersites' => 'Iné stránky',
 	'othersites-desc' => 'Presunie interwiki odkazy okrem odkazov na iné jazyky do ich vlastných portletov.',
 );
 
@@ -82,7 +82,7 @@ $messages['sk'] = array(
  * @author Vinhtantran
  */
 $messages['vi'] = array(
-	'othersites' => 'các trang mạng khác',
+	'othersites' => 'Các trang mạng khác',
 	'othersites-desc' => 'Di chuyển các liên kết liên wiki chứ không di chuyển liên kết ngôn ngữ trong chính portley của nó',
 );
 
