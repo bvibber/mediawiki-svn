@@ -22,6 +22,7 @@ class MV_MagicWords{
 						 'person'=>'', 'bill'=>'');
 	
 	function __construct($arg_list){	
+		//print_r($arg_list);
 		$this->proccessArgs($arg_list);		
 	}
 	function proccessArgs($arg_list){

@@ -313,7 +313,8 @@
 		$roeTitle = Title::newFromText('MvExportStream', NS_SPECIAL);
 		//add the query: 
 		$query = 'stream_name=' . htmlspecialchars($this->getStreamName()) . 
-					'&t=' . htmlspecialchars( $this->getTimeRequest() );
+					'&t=' . htmlspecialchars( $this->getTimeRequest() .
+					'&feed_format=roe');
 		return $roeTitle->getFullURL($query) ;
 	}
 	function getEmbedVideoHtml($vid_id='', $size='', $force_server='', $autoplay=false){
@@ -334,11 +335,11 @@
 		$roe_url = 	$this->getROEURL();	
 		if($stream_web_url){
 			$o='';		
-			if($this->dispVideoPlayerTime){				
+			/*if($this->dispVideoPlayerTime){				
 				$o.='<span id="mv_videoPlayerTime">'.$this->getStartTime().' to '.
 						htmlspecialchars( $this->getEndTime() ) . 
 					'</span>';
-			}							
+			}*/							
 			$o.='<'.htmlspecialchars($tag).' ';
 			$o.=($vid_id=='')?'':' id="'.htmlspecialchars($vid_id).'" ';
 			$o.='thumbnail="'.$this->getStreamImageURL($size, null, $force_server).'" '.					

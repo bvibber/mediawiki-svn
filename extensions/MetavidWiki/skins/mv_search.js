@@ -10,7 +10,7 @@ function mv_pre_setup_search(req_mode){
 	});
 }
 function mv_setup_search(req_mode){
-	js_log('mv_setup_search: '+  req_mode);
+	js_log('f:mv_setup_search: ');
 	add_highlight_function();
 	//look for existing auto completes:
 	for(i=0;i<maxFilters;i++){

@@ -383,10 +383,11 @@ $smwgShowFactbox=SMW_FACTBOX_HIDDEN;
 		//now add the text with categories if present:
 		$sk =& $wgUser->getSkin();
 		//run via parser to add in Category info: 
-		$parserOptions = ParserOptions::newFromUser( $wgUser );
+		//$parserOptions = ParserOptions::newFromUser( $wgUser );
+		$parserOptions = new ParserOptions();
 		$parserOptions->setEditSection( false );
 		$parserOptions->setTidy(true);
-		$parserOutput = $wgParser->parse( $text , $mvdTile, $parserOptions );
+		$parserOutput = $wgParser->parse( $text , $mvdTile, $parserOptions, true, true );
 		$wgOut->addCategoryLinks( $parserOutput->getCategories() );
 		
 		$parserOutput->mText.=	$sk->getCategories();		
@@ -769,7 +770,7 @@ $smwgShowFactbox=SMW_FACTBOX_HIDDEN;
 				$result = & MV_Index::getMVDbyTitle($titleKey, 'mv_page_id');			
 				$mvd_id = $result->id;			
 				//update title key
-																
+																			
 				
 				//purge cache for parent stream and MVD
 				MV_MVD::onEdit($this->mvd_pages, $mvd_id);
@@ -1025,14 +1026,14 @@ class MV_MVD{
 	/*actions for mvd page edits */
 	function onEdit(&$mvd_pages_cache, $mvd_id){
 		//force update local mvd_page_cache from db: 				
-		$mvd_pages_cache[$mvd_id] = MV_Index::getMVDbyId($mvd_id);			
+		$mvd_pages_cache[$mvd_id] = MV_Index::getMVDbyId($mvd_id);					
 		
 		$stream_name = MV_Stream::getStreamNameFromId($this->mvd_pages[$mvd_id]->stream_id);
 		$streamTitle = Title::newFromText($stream_name, MV_NS_STREAM); 
 		//clear the cache for the parent stream page:
 		//print "clear parent stream: " . $streamTitle ."\n";
-		Article::onArticleEdit($streamTitle);
-
+		Article::onArticleEdit($streamTitle);				
+	
 	}
 	//updates the current version cached version of mvd
 	function onMove(&$mvd_pages_cache, $mvd_id){

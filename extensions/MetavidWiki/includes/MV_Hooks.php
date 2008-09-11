@@ -249,7 +249,7 @@ function mv_edit_submit(){
 		//first edit then move
 		$outputMVD = $MV_Overlay->do_edit_submit($title, $mvd_id, false);
 		//clear the wgOut var: 
-		$wgOut->clearHTML();		
+		$wgOut->clearHTML();			
 		//do move and display output page 			
 		return $MV_Overlay->do_adjust_submit($wgRequest->getVal('titleKey'), 
 					$mvd_id,

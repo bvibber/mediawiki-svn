@@ -34,7 +34,7 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
 		global $mvDefaultVideoQualityKey, $mvDefaultFlashQualityKey;
 		if(count($file_list)!=0){		
 			$coma='';
-			$o.='<span class="download">Download Segment:';
+			/*$o.='<span class="download">Download Segment:';
 			$ogg_stream_url = $mvTitle->getWebStreamURL($mvDefaultVideoQualityKey);
 			if($ogg_stream_url!=''){	
 				$o.=$coma.' <a href="'.htmlspecialchars($ogg_stream_url).'">
@@ -56,10 +56,10 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
 				</a>';	
 				$coma=', ';
 			}
-			$o.='</span>';			
-			$o.='<span class="download"><a href="javascript:$j(\'#'.htmlspecialchars($this->embed_id).'\').get(0).showVideoDownload()">More Download Options</a></span>'; 
+			$o.='</span>';*/			
+			$o.='<span class="download"><a href="javascript:$j(\'#'.htmlspecialchars($this->embed_id).'\').get(0).showVideoDownload()">Download Options</a></span>'; 
 		}
-		$o.='<span class="embed"><a href="javascript:$j(\'#'.htmlspecialchars($this->embed_id).'\').get(0).hideShowEmbedCode();">Embed Video</a></span>'.
+		$o.='<span class="embed"><a href="javascript:$j(\'#'.htmlspecialchars($this->embed_id).'\').get(0).showEmbedCode();">Embed Video</a></span>'.
 				'</p>';
 		//about file: 
 		$talkPage = Title::newFromText('Anno_en:'.strtolower($mvTitle->wiki_title), MV_NS_MVD_TALK);
@@ -79,8 +79,12 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
 		
 		$mvTitle->dispVideoPlayerTime=true;			
 		$vid_size = (isset($this->mv_interface->smwProperties['playback_resolution']))?
-					$this->mv_interface->smwProperties['playback_resolution']:'';		
-		return $mvTitle->getEmbedVideoHtml($this->embed_id, $vid_size);
+					$this->mv_interface->smwProperties['playback_resolution']:$mvDefaultVideoPlaybackRes;
+		list($width, $height )= explode('x',$vid_size);		
+		//wrap the video container to prevent moving html on the page:			
+		return '<div id="wtf" style="display:block;width:'.$width.'px;height:'.$height.'px">'.
+					$mvTitle->getEmbedVideoHtml($this->embed_id, $vid_size).
+			'</div>';
 	}
 	function render_menu(){
 		return 'embed video';

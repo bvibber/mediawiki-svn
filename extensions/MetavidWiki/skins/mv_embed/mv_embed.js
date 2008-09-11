@@ -14,6 +14,7 @@
  * (in cases where media will be hosted in a different place than the embbeding page)
  *
  */
+
 var MV_EMBED_VERSION = '1.0';
 var mv_embed_path = null;
 //whether or not to load java from an iframe.
@@ -43,6 +44,9 @@ var debug_global_vid_ref=null;
  * you can enable it here (also you have to uncomment mv_data_proxy die(); line)  
 */  
 var MV_ENABLE_DATA_PROXY=false;
+
+/*parseUri class:*/
+var parseUri=function(d){var o=parseUri.options,value=o.parser[o.strictMode?"strict":"loose"].exec(d);for(var i=0,uri={};i<14;i++){uri[o.key[i]]=value[i]||""}uri[o.q.name]={};uri[o.key[12]].replace(o.q.parser,function(a,b,c){if(b)uri[o.q.name][b]=c});return uri};parseUri.options={strictMode:false,key:["source","protocol","authority","userInfo","user","password","host","port","relative","path","directory","file","query","anchor"],q:{name:"queryKey",parser:/(?:^|&)([^&=]*)=?([^&]*)/g},parser:{strict:/^(?:([^:\/?#]+):)?(?:\/\/((?:(([^:@]*):?([^:@]*))?@)?([^:\/?#]*)(?::(\d*))?))?((((?:[^?#\/]*\/)*)([^?#]*))(?:\?([^#]*))?(?:#(.*))?)/,loose:/^(?:(?![^:@]+:[^:@\/]*@)([^:\/?#.]+):)?(?:\/\/)?((?:(([^:@]*):?([^:@]*))?@)?([^:\/?#]*)(?::(\d*))?)(((\/(?:[^?#](?![^?#\/]*\.[^?#\/.]+(?:[?#]|$)))*\/?)?([^?#\/]*))(?:\?([^#]*))?(?:#(.*))?)/}};
 
 //get mv_embed location if it has not been set
 if(!mv_embed_path){
@@ -121,7 +125,8 @@ var default_video_attributes = {
     "start":0,
     "end":null,
     "controls":true,
-
+	"muted":false,
+	
     //roe url (for xml based metadata)
     "roe":null,
     //if roe includes metadata tracks we can expose a link to metadata
@@ -223,7 +228,6 @@ function mediaPlayer(id, supported_types, library)
 	this.loading_callbacks = new Array();
     return this;
 }
-
 mediaPlayer.prototype =
 {
     id:null,
@@ -458,9 +462,6 @@ var setCookie = function ( name, value, expiry, path, domain, secure ) {
      (secure ? "; secure" : "");
 }
 
-/*parseUri class:*/
-var parseUri=function(d){var o=parseUri.options,value=o.parser[o.strictMode?"strict":"loose"].exec(d);for(var i=0,uri={};i<14;i++){uri[o.key[i]]=value[i]||""}uri[o.q.name]={};uri[o.key[12]].replace(o.q.parser,function(a,b,c){if(b)uri[o.q.name][b]=c});return uri};parseUri.options={strictMode:false,key:["source","protocol","authority","userInfo","user","password","host","port","relative","path","directory","file","query","anchor"],q:{name:"queryKey",parser:/(?:^|&)([^&=]*)=?([^&]*)/g},parser:{strict:/^(?:([^:\/?#]+):)?(?:\/\/((?:(([^:@]*):?([^:@]*))?@)?([^:\/?#]*)(?::(\d*))?))?((((?:[^?#\/]*\/)*)([^?#]*))(?:\?([^#]*))?(?:#(.*))?)/,loose:/^(?:(?![^:@]+:[^:@\/]*@)([^:\/?#.]+):)?(?:\/\/)?((?:(([^:@]*):?([^:@]*))?@)?([^:\/?#]*)(?::(\d*))?)(((\/(?:[^?#](?![^?#\/]*\.[^?#\/.]+(?:[?#]|$)))*\/?)?([^?#\/]*))(?:\?([^#]*))?(?:#(.*))?)/}};
-
 /* 
  * controlsBuilder:
  * 
@@ -555,7 +556,7 @@ var ctrlBuilder = {
 		'volume_control':{
 			'w':22,
 			'o':function(){
-				return '<div class="volume_icon"></div>'
+				return '<div class="volume_icon"><a href="javascript:$j(\'#'+ctrlBuilder.id+'\').get(0).toggleMute();"></a></div>'
 			}
 		},
 		'time_display':{
@@ -711,11 +712,6 @@ var embedTypes = {
 	 }	 
 }
 
-/*********** INITIALIZATION CODE *************
- * setup the media players
- *********************************************/
-embedTypes.init();
-
 //load an external JS (similar to jquery .require plugin)
 //but checks for object availability rather than load state
 var mvJsLoader = {
@@ -783,7 +779,10 @@ function init_mv_embed(force){
 	//check if this page does have video or playlist
 	if(document.getElementsByTagName("video").length!=0 ||
 	   document.getElementsByTagName("playlist").length!=0){
-		js_log('we have vids to process');				    		
+		js_log('we have vids to process');
+		//set up embedTypes		
+		embedTypes.init();
+		//load libaries		    		
 		mvEmbed.load_libs();		
 	}else{
 		js_log('no video or playlist on the page... (done)');
@@ -878,7 +877,7 @@ function mv_embed(){
         for(var i = 0; i < video_elements.length; i++) {
         	debug_global_vid_ref =video_elements[i];
             //grab id:
-            vid_id = video_elements[i].getAttribute("id");           
+            vid_id = $j(video_elements[i]).attr("id");           
             //set id if empty:
             if(!vid_id || vid_id==''){
   				video_elements[i].id= 'v'+ global_ogg_list.length;
@@ -896,7 +895,7 @@ function mv_embed(){
 	   		}
         }
     }else{
-    	js_log('no <video> elements found');
+    	js_log('f:mv_embed no more <video> elements found');
     }
     //if there are no playlist elements do not load the playlist-js
     playlist_elements = document.getElementsByTagName("playlist");
@@ -940,7 +939,7 @@ function do_playlist_functions(){
 		playlist_elements = document.getElementsByTagName("playlist");
 		js_log('loded pl js ' +playlist_elements.length );
 		for(var i = 0; i < playlist_elements.length; i++) {
-			var pl_id = playlist_elements[i].getAttribute('id');
+			var pl_id = $j(playlist_elements[i]).attr('id');
 			if(!pl_id || pl_id==''){
   				playlist_elements[i].id = 'v'+ global_ogg_list.length;
             }        
@@ -994,7 +993,7 @@ function swapEmbedVideoElement(video_element, videoInterface){
 	///js_log('did vI style');  
 	//now swap out the video element for the embed_video obj:  	
   	$j(video_element).after(embed_video).remove();	
-  	js_log('did swap');    	  
+  	//js_log('did swap');    	  
   	$j('#'+embed_video.id).get(0).on_dom_swap();
   	//remove loading: 
   	$j('#pre_loading_div_'+embed_video.id).remove();
@@ -1518,11 +1517,11 @@ mediaElement.prototype =
 {
     /** The array of mediaSource elements. */
     sources:null,    
-    addedROEData:false,
+    addedROEData:false,    
     /** Selected mediaSource element. */
     selected_source:null,
     thumbnail:null,
-    linkback:null,
+    linkback:null,    
 
     /** @private */
     init:function(video_element)
@@ -1532,8 +1531,8 @@ mediaElement.prototype =
         this.sources = new Array();
         this.thumbnail = mv_default_thumb_url;
         // Process the <video> element
-        this.tryAddSource(video_element);
-        js_log('done trying to add src from base element');
+        if($j(video_element).attr("src"))
+        	this.tryAddSource(video_element);        	  
         
         if($j(video_element).attr('thumbnail'))
             this.thumbnail=$j(video_element).attr('thumbnail');
@@ -1542,10 +1541,10 @@ mediaElement.prototype =
             this.thumbnail=$j(video_element).attr('poster');
             
         // Process all inner <source> elements    
-        js_log("inner sorce count: " + video_element.getElementsByTagName('source').length );
+        //js_log("inner sorce count: " + video_element.getElementsByTagName('source').length );
         $j.each(video_element.getElementsByTagName('source'), function(inx, inner_source)
         {
-        	js_log(' on inner source: '+i + ' obj: '+ inner_source);
+        	//js_log(' on inner source: '+i + ' obj: '+ inner_source);
             _this.tryAddSource(inner_source);
         });              
     },  
@@ -1595,7 +1594,7 @@ mediaElement.prototype =
                 this.selected_source = playable_sources[source];                
                 return true;
             }
-            //set via prefrence
+            //set via user-preference
             if(embedTypes.players.preference['format_prefrence']==mime_type){
             	 js_log('set via prefrence: '+playable_sources[source].mime_type);
             	 this.selected_source = playable_sources[source];        
@@ -1603,11 +1602,12 @@ mediaElement.prototype =
         }    
         //set Ogg via player support:
         for(var source in playable_sources){
-        	var mime_type =playable_sources[source].mime_type;
+        	var mime_type =playable_sources[source].mime_type;        	
        		//set source via player                 
             if(mime_type=='video/ogg' || mime_type=='ogg/video' || mime_type=='video/annodex'){
-            	for(i in embedTypes.players){
+            	for(var i in embedTypes.players){
 	        		var player = embedTypes.players[i];
+	        		//debugger;
 	        		if(player.library=='vlc' || player.library=='native'){
 	        			js_log('setting ogg via order')
 	        			this.selected_source = playable_sources[source];    
@@ -1616,12 +1616,15 @@ mediaElement.prototype =
             }
         }
         //set Flash via player support
-        for(var source in playable_sources){    
-        	var mime_type =playable_sources[source].mime_type;        
-            if(mime_type=='video/x-flv'){
-            	this.selected_source = playable_sources[source];
-            }            	        
-        }
+        if (!this.selected_source){
+	        for(var source in playable_sources){    
+	        	var mime_type =playable_sources[source].mime_type;        
+	            if(mime_type=='video/x-flv'){
+	            	js_log('seeting flash by player prefrence')
+	            	this.selected_source = playable_sources[source];
+	            }            	        
+	        }
+    	}
         //select first source        
         if (!this.selected_source)
         {
@@ -1659,9 +1662,9 @@ mediaElement.prototype =
     */
     tryAddSource:function(element)
     {
-    	js_log('f:tryAddSource');    	
+    	js_log('f:tryAddSource:'+ $j(element).attr("src"));    	
         if (! $j(element).attr("src")){
-        	js_log("element has no src");
+        	//js_log("element has no src");
             return false;
         }
         var new_src = $j(element).attr('src');
@@ -1673,7 +1676,7 @@ mediaElement.prototype =
         }
         var source = new mediaSource(element);        
         this.sources.push(source);        
-        js_log('pushed source to stack'+ source + 'sl:'+this.sources.length);
+        //js_log('pushed source to stack'+ source + 'sl:'+this.sources.length);
     },
     getPlayableSources: function(){
     	 var playable_sources= new Array();
@@ -1978,6 +1981,24 @@ embedVideo.prototype = {
 			$j("#mv_play_pause_button_"+_this.id).attr('class', 'pause_button');
 		});
     },
+    onClipDone:function(){
+    	//stop the clip (load the thumbnail etc) 
+    	this.stop();
+    	var _this = this;
+    	//now load roe if nessesary and showNextPrevLinks
+    	if(this.roe && this.media_element.addedROEData==false){
+    		do_request(this.roe, function(data)
+            {            	                        	      	         
+            	_this.media_element.addROE(data);
+            	_this.showNextPrevLinks();
+            });    
+    	}else{
+    		this.showNextPrevLinks();
+    	}
+    },
+    showNextPrevLinks:function(){
+    	
+    },
     doThumbnailHTML:function()
     {  	
     	js_log('f:doThumbnailHTML');
@@ -2014,12 +2035,12 @@ embedVideo.prototype = {
 				
 		var html_code = '';		
         html_code = '<div id="videoPlayer_'+this.id+'" style="width:'+this.width+'px;" class="videoPlayer">';        
-			html_code += '<div id="mv_embedded_player_'+this.id+'">' +
+			html_code += '<div style="width:'+parseInt(this.width)+'px;height:'+parseInt(this.height)+'px;"  id="mv_embedded_player_'+this.id+'">' +
 							this.getThumbnailHTML() + 
 						'</div>';
 					
 			js_log("mvEmbed:controls "+ typeof this.controls);
-			
+						
 	        if(this.controls)
 	        {
 	        	js_log("f:getHTML:AddControls");
@@ -2350,6 +2371,7 @@ embedVideo.prototype = {
 	/*download list is exessivly complicated ... rewrite for clarity: */
 	showVideoDownload:function(){		
 		//load the roe if avaliable (to populate out download options:
+		js_log('f:showVideoDownload '+ this.roe + ' ' + this.media_element.addedROEData);
 		if(this.roe && this.media_element.addedROEData==false){
 			var _this = this;
 			this.displayHTML(getMsg('loading_txt'));
@@ -2414,6 +2436,14 @@ embedVideo.prototype = {
 			//the plugin is already being displayed
 			js_log("we are already playing" );
 		}
+	},
+	toggleMute:function(){
+		if(this.muted){
+			this.muted=false;
+		}else{
+			this.muted=true;
+		}
+		//update audio icon: 
 	},
 	play_or_pause : function(){
 		js_log('base play or pause');
@@ -2651,8 +2681,7 @@ function do_request(req_url, callback, mv_json_response){
 		}else{			
 			//check if MV_embed path matches document.URL then we can use the local proxy:
 			if(parseUri(document.URL).host == parseUri(mv_embed_path).host && MV_ENABLE_DATA_PROXY){
-				js_log('use mv_embed_proxy : ' + parseUri(document.URL).host + ' == '+ parseUri(mv_embed_path).host);
-				//alert("do ajax req:" +req_url);
+				js_log('use mv_embed_proxy : ' + parseUri(document.URL).host + ' == '+ parseUri(mv_embed_path).host);				
 				$j.ajax({
 					type: "POST",
 					url:mv_embed_path + 'mv_data_proxy.php',
@@ -2764,19 +2793,18 @@ function loadExternalCss(url){
 /*
  * sets the global mv_embed path based on the scripts location
  */
-function getMvEmbedPath(){
+function getMvEmbedPath(){	
 	js_elements = document.getElementsByTagName("script");
 	for(var i=0;i<js_elements.length; i++){
 		var mstr = js_elements[i].src.indexOf('mv_embed.js');
 		if( mstr !=-1){
 			mv_embed_path = js_elements[i].src.substr(0,mstr);
 		}
-	}
-	//js_log('found mv_embed:'+ mv_embed_path +' '+ mv_embed_path.indexOf('://'));
+	}		
 	//absolute the url (if relative) (if we don't have mv_embed path)
 	if(mv_embed_path.indexOf('://')==-1){
-		//js_log('url: ' + document.URL);
-		var pURL = parseUri(document.URL);
+		var doc_url =  document.URL;			
+		var pURL = parseUri(doc_url);		
 		if(mv_embed_path.charAt(0)=='/'){
 			mv_embed_path = pURL.protocol + '://' + pURL.authority + mv_embed_path;
 		}else{
@@ -2784,10 +2812,10 @@ function getMvEmbedPath(){
 			if(mv_embed_path==''){
 				mv_embed_path = pURL.protocol + '://' + pURL.authority + pURL.directory + mv_embed_path;
 			}
-		}
+		}		
 	}else{
 		js_log('already absolute');
-	}
+	}	 
 }
 if (typeof DOMParser == "undefined") {
    DOMParser = function () {}
@@ -2818,7 +2846,7 @@ function js_log(string){
      /*
       * IE and non-firebug debug:
       */
-     /*var log_elm = document.getElementById('mv_js_log');
+    /*var log_elm = document.getElementById('mv_js_log');
      if(!log_elm){
      	document.write('<div style="position:absolute;z-index:500;top:0px;left:0px;right:0px;height:150px;"><textarea id="mv_js_log" cols="80" rows="6"></textarea></div>');
      	var log_elm = document.getElementById('mv_js_log');

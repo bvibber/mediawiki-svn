@@ -25,7 +25,7 @@ class MyFLV extends FLV {
 	private $mDuration=null;
 	private $wrapTimeCount=0;
 
-	function playTimeReq($start_time_sec, $end_time_sec=null){
+	function getByteTimeReq($start_time_sec, $end_time_sec=null){
 		//print "play 	$start_time_sec to $end_time_sec";
 		//@@todo cache byte offsets in memcache if avaliable
 		if( $end_time_sec)
@@ -53,7 +53,7 @@ class MyFLV extends FLV {
 				}
 			}
 		}
-		$this->play($start_byte, $end_byte);
+		return array($start_byte, $end_byte);
 	}
 	function computeMetaData()
 	{
@@ -85,7 +85,6 @@ class MyFLV extends FLV {
 	    		//print "set end time to $ts \n";
 		    	$this->compMetaData['lasttimestamp'] = $ts;
 	    	}
-
 	    	switch ($tag->type)
 	    	{
 	        	case FLV_Tag::TYPE_VIDEO :
@@ -123,9 +122,7 @@ class MyFLV extends FLV {
 						//Processing one audio tag is enough
 	            		array_push( $skipTagTypes, FLV_Tag::TYPE_AUDIO );
 	            	}
-
-	        		break;
-
+	        	break;
 	        	case FLV_Tag::TYPE_DATA :
 	            	if ($tag->name == 'onMetaData')
 	            	{
@@ -133,7 +130,7 @@ class MyFLV extends FLV {
 	            		$this->origMetaSize = $tag->size + self::TAG_HEADER_SIZE;
 	            		$this->origMetaData = $tag->value;
 	            	}
-	        		break;
+	        	break;
 	    	}
 
 	    	//Does this actually help with memory allocation?

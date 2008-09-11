@@ -175,7 +175,7 @@ var mv_init_interface = {
 		//unlock the interface updates once everything is setup:
 		mv_lock_vid_updates=false;
 		js_log('done with mv_init_inerface');
-		$j('#embed_vid').get(0).stop();
+		//$j('#embed_vid').get(0).stop();
 		this.interfaceLoaded=true;
 	},
 	addHoverHooks:function(selector){
@@ -787,7 +787,8 @@ function mv_do_ajax_form_submit(mvd_id, edit_action){
 }
 function mv_play_or_pause(){
 	 //issue a stop since we want mouse_overs to work 
-	 if(!this.paused)
+	 var ebvid = $j('#embed_vid').get(0);
+	 if(!ebvid.paused)
 	 	mv_do_stop();
 }
 function mv_do_stop(){
@@ -875,9 +876,7 @@ function mv_disp_play_controls(disp){
 }
 
 function scroll_to_pos(mvd_id){
-	if( $j('#mv_fd_mvd_'+mvd_id).get(0)){
-		js_log(' flat offsetTOp:: '+ $j('#mv_fd_mvd_'+mvd_id).get(0).offsetTop +
-		' mv_get off:'+top_offset);
+	if( $j('#mv_fd_mvd_'+mvd_id).get(0)){		
 		//@@todo debug IE issues with scrolling
 		$j('#selectionsBox').animate({scrollTop: ($j('#mv_fd_mvd_'+mvd_id).get(0).offsetTop-40)}, 'slow');
 	}	

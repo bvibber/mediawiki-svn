@@ -28,13 +28,13 @@ $time_req = filter_input(INPUT_GET, 't', FILTER_SANITIZE_STRING);
 
 //try to grab the file from /filename format
 if($file_req==''){
-	if(isset($_SERVER['SCRIPT_URL'])){
-		$pathparts = explode('/',$_SERVER['SCRIPT_URL']);
-		$file_req = $pathparts[count($pathparts)-1];
+	if(isset($_SERVER['PHP_SELF'])){
+		$pathparts = explode('/',$_SERVER['PHP_SELF']);
+		$file_req = (strpos($pathparts[count($pathparts)-1], '?')!==false)?
+				substr($pathparts[count($pathparts)-1],0, strpos($pathparts[count($pathparts)-1],'?')):
+				$pathparts[count($pathparts)-1];
 	}
 }
-//print $file_req;
-
 //additional filtering to avoid directory traversing:
 $file_req = str_replace(array('../','./'), '', $file_req);
 if($file_req=='')die('error: missing file name');
@@ -68,7 +68,13 @@ if($time_req==''){
 	header('Content-type: '.FLASH_VIDEO_CONTENT_TYPE);
 	//$flv->computeMetaData();
 	//$start = microtime(true);
-	$flv->playTimeReq($start_sec, $end_sec);
+	list($start_byte, $end_byte) = $flv->getByteTimeReq($start_sec, $end_sec);
+	
+	//print "start $start_byte, $end_byte cl:" . ($end_byte-$start_byte);
+	//die;
+	header('Content-Length: '. ($end_byte-$start_byte));
+	
+	$flv->play($start_byte, $end_byte);
 	//$end = microtime(true);
 	//file_put_contents('/tmp/time.log', "<hr/>EXTRACT METADATA PROCESS TOOK " . number_format(($end-$start), 2) . " seconds<br/>");
 	$flv->close();

@@ -224,7 +224,11 @@
 		# and redundantly check for locked database, blocked IPs, etc.
 		# that edit() already checked just in case someone tries to sneak
 		# in the back door with a hand-edited submission URL.
-
+		
+		//set up commit transaction 
+		//$dbw = wfGetDB( DB_MASTER );
+		//$dbw->begin();	
+		
 		if ( 'save' == $this->formtype ) {
 			if ( !$this->attemptSave() ) {
 				wfProfileOut( "$fname-business-end" );
@@ -232,7 +236,9 @@
 				return;
 			}
 		}
-
+		
+		//$dbw->immediateCommit();
+		
 		# First time through: get contents, set time for conflict
 		# checking, etc.
 		if ( 'initial' == $this->formtype || $this->firsttime ) {
@@ -348,7 +354,7 @@
 				unset($wgHooks['EditFilter'][$k]);
 			}
 		}
-		parent::internalAttemptSave( $result, $bot = false );
+		return parent::internalAttemptSave( $result, $bot = false );
 	}	
 	function showEditForm( $formCallback=null ) {
 		global $wgOut, $wgUser, $wgLang, $wgContLang, $wgMaxArticleSize;

@@ -215,7 +215,8 @@ function mvSetupExtension(){
 $wgHooks['LanguageGetMagic'][]       = 'mvMagicParserFunction_Magic';
  
 function mvMagicParserFunction_Magic( &$magicWords, $langCode ) {        
-        $magicWords['mvData'] = array( 0, 'mvData' );        
+        $magicWords['mvData'] = array( 0, 'mvData' );      
+        $magicWords['mvEmbed'] = array( 0, 'mvEmbed'); 
         return true;
 }
  
@@ -241,8 +242,8 @@ function mvfAutoAllPageHeader(){
 	$wgOut->addScript("<script type=\"{$wgJsMimeType}\" src=\"{$mvgScriptPath}/skins/mv_embed/jquery/jquery-1.2.6.min.js\"></script>");
 	$wgOut->addScript("<script type=\"{$wgJsMimeType}\" src=\"{$mvgScriptPath}/skins/mv_embed/jquery/plugins/jquery.autocomplete.js\"></script>");
 	$wgOut->addScript("<script type=\"{$wgJsMimeType}\" src=\"{$mvgScriptPath}/skins/mv_embed/jquery/plugins/jquery.hoverIntent.js\"></script>");
-	
-	$wgOut->addScript("<script type=\"{$wgJsMimeType}\" src=\"{$mvgScriptPath}/skins/mv_embed/mv_embed.js\"></script>");
+		
+	$wgOut->addScript("<script type=\"{$wgJsMimeType}\" src=\"{$mvgScriptPath}/skins/mv_embed/mv_embed.js?".time."\"></script>");
 	$wgOut->addScript("<script type=\"{$wgJsMimeType}\" src=\"{$mvgScriptPath}/skins/mv_allpages.js\"></script>");
 	$wgOut->addScript("<script type=\"{$wgJsMimeType}\" src=\"{$mvgScriptPath}/skins/mv_search.js\"></script>");
 	

@@ -8,7 +8,7 @@ $mv_path = str_replace('example_usage/', '', $mv_path);
 <html>
 <head>
 	<title>sample mv embed</title>
- 	<script type="text/javascript" src="<?php echo htmlspecialchars($mv_path) ?>mv_embed.js?<?php echo time()?>"></script>
+ 	<script type="text/javascript" src="../mv_embed.js?<?php echo time()?>"></script>
 </head>
 <body>
 <h3> Sample Embed</h3>
