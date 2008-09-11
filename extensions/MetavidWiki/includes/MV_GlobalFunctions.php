@@ -638,12 +638,27 @@ function mvDoMetavidStreamPage(&$title, &$article){
 					'view_date'	=>time()
 				)
 			);
+			//compensate for $mvDefaultClipRange around clips
+			global $mvDefaultClipRange;
+			$start_time = ($mvTitle->getStartTimeSeconds()+$mvDefaultClipRange < 0 )?0:
+							($mvTitle->getStartTimeSeconds()+$mvDefaultClipRange);
+
+			$end_time = ($mvTitle->getEndTimeSeconds()-$mvDefaultClipRange > $mvTitle->getDuration() )?0:
+							($mvTitle->getEndTimeSeconds()-$mvDefaultClipRange);
 			//also increment the mvd_page if we find a match:
+			$dbw->update('mv_mvd_index', array('`view_count`=`view_count`+1'),
+							array(	'stream_id'=>$mvTitle->getStreamId(), 
+									'start_time'=>$start_time,
+									'end_time'	=>$end_time
+							));
+			//print $dbw->lastQuery();		
+			//also update the mvd_page if directly requested: 
 			$dbw->update('mv_mvd_index', array('`view_count`=`view_count`+1'),
 							array(	'stream_id'=>$mvTitle->getStreamId(), 
 									'start_time'=>$mvTitle->getStartTimeSeconds(),
 									'end_time'	=>$mvTitle->getEndTimeSeconds()
-							));			
+							));		
+			//print $dbw->lastQuery();		
 		}				
 		//@@todo check if the requested title is already just the stream name:		 	
 		$streamTitle = Title::newFromText( $mvTitle->getStreamName(), MV_NS_STREAM);

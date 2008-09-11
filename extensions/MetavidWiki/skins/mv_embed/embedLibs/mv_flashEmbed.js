@@ -154,7 +154,7 @@ var flashEmbed = {
         }
         
         
-        //flash is giving ogus duration get from this        
+        //flash is giving bogus duration get from this        
         var end_ntp = (this.media_element.selected_source.end_ntp)?
         			   		this.media_element.selected_source.end_ntp : 
         			   		seconds2ntp( this.fla.getDuration() );
@@ -258,7 +258,7 @@ function onClipDone(clip)
     
     if( ! embed.startedTimedPlayback){
     	js_log('clip done before timed playback started .. not good...re-issuing play in .250 seconds');
-    	setTimeout('$j(\''+embed.id+'\').get(0).play()', 250);
+    	setTimeout('$j(\'#'+embed.id+'\').get(0).play()', 250);
     }else{
     	js_log('clip done and '+ embed.startedTimedPlayback);
 	    embed.setStatus("Clip Done...");

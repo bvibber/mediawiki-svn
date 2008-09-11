@@ -321,6 +321,7 @@ class MV_SpecialMediaSearch {
 	}
 	function getUnifiedResultsHTML($show_sidebar=true) {
 		global $wgUser, $wgStylePath, $wgRequest, $wgContLang;
+		global $mvDefaultClipRange;
 		$sk = $wgUser->getSkin();
 		$o='';
 		
@@ -430,7 +431,7 @@ class MV_SpecialMediaSearch {
 				}
 			}
 			//link directly to the current range:
-			$mvStreamTitle = Title :: MakeTitle(MV_NS_STREAM, $mvTitle->getNearStreamName($extra_range = '0'));
+			$mvStreamTitle = Title :: MakeTitle(MV_NS_STREAM, $mvTitle->getNearStreamName($mvDefaultClipRange));
 			//$mvTitle->getStreamName() .'/'.$mvTitle->getStartTime() .'/'. $mvTitle->getEndTime() );
 			$mvd_text = $mvd->text;
 
