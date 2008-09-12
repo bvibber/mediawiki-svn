@@ -21,7 +21,7 @@
 if (!defined('MEDIAWIKI'))                     die('Not an entry point.');
 if (version_compare($wgVersion, '1.11.0') < 0) die('Sorry, this extension requires at least MediaWiki version 1.11.0');
 
-define('SIMPLESECURITY_VERSION', '4.2.13, 2008-09-07');
+define('SIMPLESECURITY_VERSION', '4.2.14, 2008-09-12');
 
 # Global security settings
 $wgSecurityMagicIf              = "ifusercan";                  # the name for doing a permission-based conditional
@@ -387,6 +387,8 @@ class SimpleSecurity {
 
 	/**
 	 * Hack to ensure proper search class is used
+	 * - $wgDBtype determines search class unless already defined in $wgSearchType
+	 * - just copied method from SearchEngine::create()
 	 */
 	static function fixSearchType() {
 		global $wgDBtype, $wgSearchType;
@@ -410,10 +412,11 @@ class SimpleSecurity {
  * - fetchObject method is overridden to validate row content based on old_id
  */
 function wfSimpleSecurityDBHook() {
-	global $wgDBtype, $wgSecurityUseDBHook;
-	$oldDB = ucfirst($wgDBtype);
+	global $wgDBtype, $wgSecurityUseDBHook, $wgOldDBtype;
+	$wgOldDBtype = $wgDBtype;
+	$oldClass = ucfirst($wgDBtype);
 	$wgDBtype = 'SimpleSecurity';
-	eval("class Database{$wgDBtype} extends Database{$oldDB}".' {
+	eval("class Database{$wgDBtype} extends Database{$oldClass}".' {
 		public function query($sql, $fname = "", $tempIgnore = false) {
 			global $wgSimpleSecurity;
 			$count = false;
@@ -445,7 +448,7 @@ function wfSimpleSecurityLanguageGetMagic(&$magicWords, $langCode = 0) {
  * Called from $wgExtensionFunctions array when initialising extensions
  */
 function wfSetupSimpleSecurity() {
-	global $wgSimpleSecurity, $wgLanguageCode, $wgMessageCache, $wgSecurityUseDBHook,  $wgLoadBalancer;
+	global $wgSimpleSecurity, $wgLanguageCode, $wgMessageCache, $wgSecurityUseDBHook,  $wgLoadBalancer, $wgDBtype, $wgOldDBtype;
 
 	# Instantiate the SimpleSecurity singleton now that the environment is prepared
 	$wgSimpleSecurity = new SimpleSecurity();
@@ -458,6 +461,11 @@ function wfSetupSimpleSecurity() {
 		elseif (is_object($wgLoadBalancer)) SimpleSecurity::updateLB($wgLoadBalancer);
 		else die("Can't hook in to Database class!");
 	}
+
+	# Request a DB connection to ensure the LoadBalancer is initialised,
+	# then change back to old DBtype since it won't be used for making connections again
+	wfGetDB();
+	$wgDBtype = $wgOldDBtype;
 
 	# Add messages
 	if ($wgLanguageCode == 'en') {
