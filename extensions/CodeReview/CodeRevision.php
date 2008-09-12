@@ -66,7 +66,7 @@ class CodeRevision {
 		}
 	}
 	
-	function newFromRange( CodeRepository $repo ) {
+	static function newFromRange( CodeRepository $repo ) {
 		$dbr = wfGetDB( DB_SLAVE );
 		$result = $dbr->select( 'code_rev',
 			array(
