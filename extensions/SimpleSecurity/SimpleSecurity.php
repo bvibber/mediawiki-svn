@@ -54,6 +54,7 @@ $wgExtensionCredits['parserhook'][] = array(
 	);
 
 # SearchEngine is based on $wgDBtype so must be set before it gets changed to DatabaseSimpleSecurity
+# - this may be paranoid now since $wgDBtype is changed back after LoadBalancer has initialised
 SimpleSecurity::fixSearchType();
 
 # If the database class already exists, add the DB hook now, otherwise wait until extension setup
@@ -463,7 +464,8 @@ function wfSetupSimpleSecurity() {
 	}
 
 	# Request a DB connection to ensure the LoadBalancer is initialised,
-	# then change back to old DBtype since it won't be used for making connections again
+	# then change back to old DBtype since it won't be used for making connections again but can affect other operations
+	# such as $wgContLang->stripForSearch which is called by SearchMySQL::parseQuery
 	wfGetDB();
 	$wgDBtype = $wgOldDBtype;
 
