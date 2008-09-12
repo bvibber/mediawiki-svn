@@ -795,6 +795,15 @@ $messages['ro'] = array(
 	'vote-login-link' => 'autentificare',
 );
 
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'vote' => 'Vote',
+	'vote-header' => "Tu puè vutà pe 'u '''Signore Supreme d'u Munne''' aqquà!",
+	'vote-current' => "'U vote tuje l'è date a '''$1'''.",
+);
+
 /** Russian (Русский)
  * @author Innv
  * @author Александр Сигачёв

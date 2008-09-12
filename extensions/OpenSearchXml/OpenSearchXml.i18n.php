@@ -51,6 +51,13 @@ $messages['nl'] = array(
 	'opensearchxml-desc' => '[http://www.opensearch.org OpenSearch] JSON-interface die tekstextracten levert',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ */
+$messages['no'] = array(
+	'opensearchxml-desc' => 'Grensesnitt for [http://opensearch.org/ OpenSearch]',
+);
+
 /** Occitan (Occitan)
  * @author Cedric31
  */

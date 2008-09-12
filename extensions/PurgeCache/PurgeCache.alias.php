@@ -29,6 +29,11 @@ $aliases['de'] = array(
 	'PurgeCache' => array( 'Cache leeren' ),
 );
 
+/** French (Français) */
+$aliases['fr'] = array(
+	'PurgeCache' => array( 'Purger le cache', 'Purger cache', 'PurgerLeCache', 'PurgerCache' ),
+);
+
 /** Indonesian (Bahasa Indonesia) */
 $aliases['id'] = array(
 	'PurgeCache' => array( 'Pembersihan tembolok' ),

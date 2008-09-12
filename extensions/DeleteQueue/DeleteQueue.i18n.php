@@ -626,6 +626,7 @@ Du kannst deine eigene Befürwortung oder Ablehnung der Löschung [{{fullurl:{{F
  * @author Yekrats
  */
 $messages['eo'] = array(
+	'deletequeue-action' => 'Sugesti forigon',
 	'deletequeue-action-title' => 'Sugesti forigon de "$1"',
 	'deletequeue-generic-reasons' => '*Ĝeneralaj kialoj
  ** Vandalismo
@@ -634,6 +635,7 @@ $messages['eo'] = array(
  ** El la projekta regiono',
 	'deletequeue-speedy-title' => 'Marki "$1" por rapida forigo',
 	'deletequeue-prod-title' => 'Proponi forigon de "$1"',
+	'deletequeue-delnom-reason' => 'Kialo por kandidateco:',
 	'deletequeue-delnom-otherreason' => 'Alia kialo',
 	'deletequeue-delnom-extra' => 'Plia informo:',
 	'deletequeue-delnom-submit' => 'Sendi peton',
@@ -819,6 +821,10 @@ $messages['gl'] = array(
 	'deletequeue-desc' => 'Crea un [[Special:DeleteQueue|sitema baseado na cola para xestionar as eliminacións]]',
 	'deletequeue-action' => 'Suxestionar o borrado',
 	'deletequeue-action-title' => 'Suxestionar o borrado de "$1"',
+	'deletequeue-action-text' => "{{SITENAME}} ten un número de procesos para borrar páxinas:
+*Se cre que esta páxina posúe motivos xustificados para a súa ''eliminación rápida'', pode propoñelo [{{fullurl:{{FULLPAGENAME}}|action=delnom&queue=speedy}} aquí].
+*Se non os ten, pero a ''eliminación será probablemente sen controversia'', debería [{{fullurl:{{FULLPAGENAME}}|action=delnom&queue=prod}} propor un borrado non contestado].
+*Se esta páxina de eliminación ''será probablemente contestada'', debería [{{fullurl:{{FULLPAGENAME}}|action=delnom&queue=deletediscuss}} abrir unha conversa].",
 	'deletequeue-permissions-noedit' => 'Debe ser capaz de editar unha páxina para poder afectar o seu status de borrado.',
 	'deletequeue-generic-reasons' => '* Razóns xenéricas
   ** Vandalismo
@@ -826,7 +832,14 @@ $messages['gl'] = array(
   ** Mantemento
   ** Fóra dos límites do proxecto',
 	'deletequeue-speedy-title' => 'Marcar "$1" para o seu borrado rápido',
+	'deletequeue-speedy-text' => "Pode usar este formulario para marcar a páxina \"'''\$1'''\" para a súa eliminación rápida.
+
+Un administrador revisará esta solicitude, e, se ten fundamentos, borrará a páxina.
+Debe seleccionar un motivo para a eliminación da lista da caixa despregable de embaixo, e engadir calquera outra información relevante.",
 	'deletequeue-prod-title' => 'Propor a eliminación de "$1"',
+	'deletequeue-prod-text' => "Pode usar este formulario para propor \"'''\$1'''\" para a súa eliminación.
+
+Se despois de cinco días ninguén dá contestación nesta páxina, será borrada tras unha revisión final feita por un administrador.",
 	'deletequeue-delnom-reason' => 'Razón para a nominación:',
 	'deletequeue-delnom-otherreason' => 'Outro motivo',
 	'deletequeue-delnom-extra' => 'Información adicional:',
@@ -846,6 +859,13 @@ $messages['gl'] = array(
 	'deletequeue-queue-deletediscuss' => 'Discusión do borrado',
 	'deletequeue-page-speedy' => "Esta páxina foi nominada para a súa eliminación rápida.
 O motivo dado para este borrado é ''$1''.",
+	'deletequeue-page-prod' => "Propoñeuse que esta páxina fose borrada.
+A razón dada foi ''$1''.
+Se esta proposta non recibe resposta en ''$2'', esta páxina será borrada.
+Pode votar na páxina de eliminación [{{fullurl:{{FULLPAGENAME}}|action=delvote}} obxectando].",
+	'deletequeue-page-deletediscuss' => "Esta páxina foi proposta para a súa eliminación e esa proposta foi contestada.
+A razón dada foi ''\$1''.
+Unha conversa está en curso en \"[[\$3]]\", que concluirá o ''\$2''.",
 	'deletequeue-notqueued' => 'A páxina que seleccionou non está na cola de eliminación actualmente',
 	'deletequeue-review-action' => 'Acción que levar a cabo:',
 	'deletequeue-review-delete' => 'Borrar a páxina.',
@@ -857,15 +877,28 @@ O motivo dado para este borrado é ''$1''.",
 	'deletequeue-review-newextra' => 'Información adicional:',
 	'deletequeue-review-submit' => 'Gardar a revisión',
 	'deletequeue-review-original' => 'Motivo para a nominación',
+	'deletequeue-actiondisabled-involved' => 'A seguinte acción está deshabilitada porque formou parte neste caso de borrado no papel de $1:',
+	'deletequeue-actiondisabled-notexpired' => 'A seguinte acción está deshabilitada porque a nominación para o seu borrado aínda non caducou:',
 	'deletequeue-review-badaction' => 'Especificou unha acción inválida',
 	'deletequeue-review-actiondenied' => 'Especificou unha acción que foi deshabilitada para esta páxina',
+	'deletequeue-review-objections' => "'''Aviso:''' a eliminación desta páxina ten [{{fullurl:{{FULLPAGENAME}}|action=delvoteview&votetype=object}} obxeccións].
+Por favor, asegúrese que considerou estas obxeccións antes de borrar a páxina.",
 	'deletequeue-reviewspeedy-tab' => 'Revisar a eliminación rápida',
 	'deletequeue-reviewspeedy-title' => 'Revisar a nominación da eliminación rápida de "$1"',
+	'deletequeue-reviewspeedy-text' => "Pode usar este formulario para revisar a nominación de \"'''\$1'''\" para a súa eliminación.
+Por favor, asegúrese que esta páxina pode ser borrada rapidamente de acordo coa política.",
 	'deletequeue-reviewprod-tab' => 'Revisar a proposta de eliminación',
 	'deletequeue-reviewprod-title' => 'Revisar a proposta de eliminación de "$1"',
 	'deletequeue-reviewprod-text' => "Pode usar este formulario para revisar a proposta de eliminación non respostada de \"'''\$1'''\".",
 	'deletequeue-reviewdeletediscuss-tab' => 'Revisar o borrado',
 	'deletequeue-reviewdeletediscuss-title' => 'Revisar a conversa de borrado de "$1"',
+	'deletequeue-reviewdeletediscuss-text' => 'Pode usar este formulario para revisar a conversa de borrado de "\'\'\'$1\'\'\'".
+
+Está dispoñible, unha [{{fullurl:{{FULLPAGENAME}}|action=delviewvotes}} lista] cos apoios e obxeccións desta eliminación, e a conversa pode ser atopada en "[[$2]]".
+Por favor, asegúrese de que toma a decisión de acordo co consenso.',
+	'deletequeue-deletediscuss-discussionpage' => 'Esta é a páxina de conversa para a eliminación de "[[$1]]".
+Actualmente hai $2 {{PLURAL:$2|usuario|usuarios}} que {{PLURAL:$2|apoia|apoian}} a eliminación, e $3 que {{PLURAL:$2|pon obxeccións|poñen obxeccións}}.
+Pode [{{fullurl:$1|action=delvote}} apoiar ou obxectar] ou [{{fullurl:$1|action=delviewvotes}} ver todos os apoios e obxeccións].',
 	'deletequeue-discusscreate-summary' => 'Creando a conversa para a eliminación de "[[$1]]".',
 	'deletequeue-discusscreate-text' => 'Propoñeuse esta eliminación pola seguinte razón: $2',
 	'deletequeue-role-nominator' => 'nominador orixinal da eliminación',
@@ -873,6 +906,10 @@ O motivo dado para este borrado é ''$1''.",
 	'deletequeue-role-vote-object' => 'obxector da eliminación',
 	'deletequeue-vote-tab' => 'Apoiar a/Obxectar na eliminación',
 	'deletequeue-vote-title' => 'Apoiar a/Obxectar na eliminación de "$1"',
+	'deletequeue-vote-text' => "Pode usar este formulario para apoiar ou obxectar na páxina de eliminación de \"'''\$1'''\".
+Esta acción ignorará calquera apoio/obxección anterior que teña dado na eliminación desta páxina.
+Pode [{{fullurl:{{FULLPAGENAME}}|action=delviewvotes}} ver] os apoios e obxeccións existentes.
+O motivo dado na nominación para a eliminación foi ''\$2''.",
 	'deletequeue-vote-legend' => 'Apoiar a/Obxectar na eliminación',
 	'deletequeue-vote-action' => 'Recomentación:',
 	'deletequeue-vote-endorse' => 'Apoiar a eliminación.',
@@ -881,7 +918,11 @@ O motivo dado para este borrado é ''$1''.",
 	'deletequeue-vote-submit' => 'Enviar',
 	'deletequeue-vote-success-endorse' => 'Apoiou con éxito a eliminación desta páxina.',
 	'deletequeue-vote-success-object' => 'Obxectou con éxito a eliminación desta páxina.',
+	'deletequeue-vote-requeued' => 'Obxectou con éxito na eliminación desta páxina.
+Debido á súa obxección, a páxina foi movida á cola "$1".',
 	'deletequeue-showvotes' => 'Apoios e obxeccións da eliminación de "$1"',
+	'deletequeue-showvotes-text' => "Embaixo están os apoios e obxección feitos na páxina de eliminación de \"'''\$1'''\".
+Pode rexistrar o seu propio apoio ou obxección na páxina da eliminación: [{{fullurl:{{FULLPAGENAME}}|action=delvote}} aquí].",
 	'deletequeue-showvotes-restrict-endorse' => 'Amosar só os apoios',
 	'deletequeue-showvotes-restrict-object' => 'Amosar só as obxeccións',
 	'deletequeue-showvotes-restrict-none' => 'Amosar todos os apoios e obxeccións',

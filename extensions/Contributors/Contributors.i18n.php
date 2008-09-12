@@ -1125,7 +1125,7 @@ $messages['uk'] = array(
 	'contributors-submit' => 'Показати',
 	'contributors-subtitle' => 'Основні автори $1',
 	'contributors-others-long' => 'Окрім зазначених, у цієї сторінки є ще $1 {{PLURAL:$1|автор|автори|авторів}}.',
-	'contributors-others' => 'і ще $1 {{PLURAL:$1|інший|інших}}',
+	'contributors-others' => 'і ще $1 {{PLURAL:$1|інший|інших|інших}}',
 	'contributors-badtitle' => 'Помилкова назва.',
 	'contributors-nosuchpage' => 'Сторінка «$1» не існує.',
 );

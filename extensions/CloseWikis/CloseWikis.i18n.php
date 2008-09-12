@@ -174,6 +174,27 @@ $messages['de'] = array(
 	'right-editclosedwikis' => 'Geschlossene Wikis bearbeiten',
 );
 
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
+$messages['eo'] = array(
+	'closewikis-page' => 'Fermi vikion',
+	'closewikis-page-close' => 'Fermi vikion',
+	'closewikis-page-close-wiki' => 'Vikio:',
+	'closewikis-page-close-reason' => 'Kialo (protokolota):',
+	'closewikis-page-close-submit' => 'Fermi',
+	'closewikis-page-close-success' => 'Vikio estis sukcese fermita',
+	'closewikis-page-reopen' => 'Remalfermi vikion',
+	'closewikis-page-reopen-wiki' => 'Vikio:',
+	'closewikis-page-reopen-reason' => 'Kialo:',
+	'closewikis-page-reopen-submit' => 'Remalfermi',
+	'closewikis-page-reopen-success' => 'Vikio estis sukcese remalfermita',
+	'closewikis-page-err-nowiki' => 'Nevalida vikio estis specifita',
+	'closewikis-log-close' => 'fermis $2',
+	'closewikis-log-reopen' => 'remalfermis $2',
+	'right-editclosedwikis' => 'Redakti fermitajn vikiojn',
+);
+
 /** French (Français)
  * @author Grondin
  * @author Zetud
@@ -343,6 +364,34 @@ $messages['nl'] = array(
 	'closewikis-log-close' => 'heeft $2 gesloten',
 	'closewikis-log-reopen' => 'heeft $2 heropend',
 	'right-editclosedwikis' => 'Gesloten wikis bewerken',
+);
+
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ */
+$messages['no'] = array(
+	'closewikis-desc' => 'Tillater stenging av wikier i wikisamlinger',
+	'closewikis-closed-default' => 'Denne wikien er stengt',
+	'closewikis-page' => 'Steng wiki',
+	'closewikis-page-close' => 'Steng wiki',
+	'closewikis-page-close-wiki' => 'Wiki:',
+	'closewikis-page-close-dreason' => 'Årsak (vises):',
+	'closewikis-page-close-reason' => 'Årsak (logges):',
+	'closewikis-page-close-submit' => 'Steng',
+	'closewikis-page-close-success' => 'Wiki stengt',
+	'closewikis-page-reopen' => 'Åpne wiki',
+	'closewikis-page-reopen-wiki' => 'Wiki:',
+	'closewikis-page-reopen-reason' => 'Årsak:',
+	'closewikis-page-reopen-submit' => 'Åpne',
+	'closewikis-page-reopen-success' => 'Wiki åpnet',
+	'closewikis-page-err-nowiki' => 'Ugyldig wiki oppgitt',
+	'closewikis-page-err-closed' => 'Wikien er allerede stengt',
+	'closewikis-page-err-opened' => 'Wikien er ikke stengt',
+	'closewikis-log' => 'Logg for stenging av wikier',
+	'closewikis-log-header' => 'Her er en logg over alle wikistenginger og -åpninger gjort av forvaltere',
+	'closewikis-log-close' => 'stengte $2',
+	'closewikis-log-reopen' => 'åpnet $2',
+	'right-editclosedwikis' => 'Redigere stengte wikier',
 );
 
 /** Occitan (Occitan)

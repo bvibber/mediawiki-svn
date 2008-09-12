@@ -142,6 +142,13 @@ $messages['oc'] = array(
 	'trustedxff-desc' => 'Gestion d’una tièra d’adreças de servidors mandataris de fisança ([http://meta.wikimedia.org/wiki/XFF_project projet XFF])',
 );
 
+/** Polish (Polski)
+ * @author Derbeth
+ */
+$messages['pl'] = array(
+	'trustedxff-desc' => 'Obsługa listy zaufanych adresów proxy ([http://meta.wikimedia.org/wiki/XFF_project Projekt XFF])',
+);
+
 /** Russian (Русский)
  * @author Александр Сигачёв
  */

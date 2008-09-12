@@ -713,6 +713,23 @@ Această opţiune încarcă de obicei serverul, deci vă rugăm să o folosiţi 
 	'right-asksql' => 'Efectuează interogări SQL',
 );
 
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'asksql' => "'nderrogazione de l'SQL",
+	'asksql-desc' => "Fà le 'nderrogaziune SQL da [[Special:Asksql|pàgene speciele]]",
+	'asksqltext' => "Ause 'u form de sotte pe fà 'na 'nderrogazione derette a l'archivie
+Ause le apice singhele ('accussì') pe delimità le stringhe letterele.
+Chìste operazziune ponne purtà 'nu careche pesande sus a 'u server, no ne fà assaje.",
+	'sqlislogged' => "Fa attenzione ca tutte le 'nderrogaziune sonde registrate.",
+	'sqlquery' => "Scrive 'na 'nderrogazione",
+	'querybtn' => "Lange 'na 'nderrogazione",
+	'selectonly' => "Puè fà sulamende 'nderrogaziune pe leggere",
+	'querysuccessful' => "'Nderrogazione eseguite, tutte a poste",
+	'right-asksql' => "Puè fa 'nderrogaziune SQL",
+);
+
 /** Russian (Русский)
  * @author Ahonc
  * @author Александр Сигачёв

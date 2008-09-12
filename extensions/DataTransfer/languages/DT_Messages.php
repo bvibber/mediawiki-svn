@@ -168,6 +168,7 @@ $messages['da'] = array(
 
 /** German (Deutsch)
  * @author Krabina
+ * @author Revolus
  */
 $messages['de'] = array(
 	'dt-desc' => 'Ermöglicht den Import und Export von strukturierten Daten, die in Aufrufen von Vorlagen verwendet werden.',
@@ -181,6 +182,7 @@ $messages['de'] = array(
 	'dt_xml_field' => 'Feld',
 	'dt_xml_name' => 'Name',
 	'dt_xml_title' => 'Titel',
+	'dt_xml_id' => 'ID',
 	'dt_xml_freetext' => 'Freier Text',
 );
 

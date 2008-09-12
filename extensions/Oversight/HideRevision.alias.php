@@ -45,6 +45,12 @@ $aliases['fi'] = array(
 	'Oversight' => array( 'Häivytä' ),
 );
 
+/** French (Français) */
+$aliases['fr'] = array(
+	'HideRevision' => array( 'Masquer revision', 'MasquerRevision' ),
+	'Oversight' => array( 'Superviser' ),
+);
+
 /** Hebrew (עברית)
  * @author Rotem Liss
  */

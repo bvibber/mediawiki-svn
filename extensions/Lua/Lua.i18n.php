@@ -81,6 +81,16 @@ $messages['bg'] = array(
 	'lua_error_internal' => 'Вътрешна грешка',
 );
 
+/** German (Deutsch)
+ * @author Leithian
+ * @author Revolus
+ */
+$messages['de'] = array(
+	'lua_error' => 'Fehler in Zeile $1',
+	'lua_error_internal' => 'Interner Fehler',
+	'lua_overflow_recursion' => 'Maximale Anzahl von Rekursionen erreicht',
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */
@@ -115,8 +125,14 @@ $messages['fy'] = array(
  * @author Toliño
  */
 $messages['gl'] = array(
+	'lua_desc' => 'Extende as funcións analíticas con apoio para bloques embebidos de código [http://www.lua.org/ Lua]',
 	'lua_error' => 'Erro na liña $1',
+	'lua_extension_notfound' => 'Non está configurada a extensión Lua',
+	'lua_interp_notfound' => 'Non se atopou o intérprete Lua',
 	'lua_error_internal' => 'Erro interno',
+	'lua_overflow_recursion' => 'Alcanzouse o límite do recurso',
+	'lua_overflow_loc' => 'Alcanzáronse os límites das liñas de código',
+	'lua_overflow_time' => 'Alcanzouse o tempo máximo de execución',
 );
 
 /** Interlingua (Interlingua)

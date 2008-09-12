@@ -284,6 +284,7 @@ $messages['da'] = array(
  * @author Revolus
  */
 $messages['de'] = array(
+	'youtubeauthsub' => 'YouTube-Video hochladen',
 	'youtubeauthsub-desc' => 'Ermöglicht es Benutzern, Videos direkt zu YouTube [[Special:YouTubeAuthSub|hochzuladen]]',
 	'youtubeauthsub_info' => 'Um ein Video zu YouTube hochzuladen, um es anschließend auf einer Seite einzubetten, musst du folgende Felder ausfüllen:',
 	'youtubeauthsub_title' => 'Titel',
@@ -308,6 +309,7 @@ Um das Video auf einer Seite einzubetten, füge folgenden Text ein:
 	'youtubeauthsub_code' => '{{#ev:youtube|$1}}.
 
 Dieses Video kann [http://www.youtube.com/watch?v=$1 hier] angeschaut werden.',
+	'youtubeauthsub_summary' => 'Lade YouTube-Video hoch',
 	'youtubeauthsub_uploading' => 'Dein Video wird gerade hochgeladen.
 Bitte habe Geduld.',
 	'youtubeauthsub_viewpage' => 'Alternativ kann du das Video [[$1|hier]] anschauen.',

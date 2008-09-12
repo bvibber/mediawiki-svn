@@ -429,6 +429,13 @@ $messages['ro'] = array(
 	'findspam-ok' => 'OK',
 );
 
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'findspam-ok' => 'OK',
+);
+
 /** Russian (Русский)
  * @author Александр Сигачёв
  */

@@ -309,9 +309,10 @@ $messages['sv'] = array(
 
 /** Ukrainian (Українська)
  * @author AS
+ * @author Ahonc
  */
 $messages['uk'] = array(
-	'whatismyip' => 'Яка моя IP',
+	'whatismyip' => 'Яка моя IP-адреса',
 	'whatismyip-desc' => 'Показує поточну IP-адресу користувача на [[Special:WhatIsMyIP]]',
 	'whatismyip-out' => 'Ваша IP-адреса:',
 );

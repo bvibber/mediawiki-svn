@@ -1071,6 +1071,7 @@ $messages['oc'] = array(
 );
 
 /** Polish (Polski)
+ * @author Derbeth
  * @author Equadus
  * @author McMonster
  * @author Sp5uhe
@@ -1084,7 +1085,7 @@ $messages['pl'] = array(
 	'changeauthor-pagename-or-revid' => 'Nazwa strony lub ID wersji:',
 	'changeauthor-pagenameform-go' => 'Dalej',
 	'changeauthor-comment' => 'Powód zmiany autora:',
-	'changeauthor-changeauthors-multi' => 'Zmień autorów',
+	'changeauthor-changeauthors-multi' => 'Zmień {{PLURAL:$1|autora|autorów}}',
 	'changeauthor-explanation-multi' => "Tutaj możesz zmienić autora wersji artykułu.
 Zmień jedną lub wiele nazw użytkowników na poniższej liście, dodaj komentarz (opcjonalny) i wciśnij przycisk 'Zmień autorów'.",
 	'changeauthor-changeauthors-single' => 'Zmień autora',

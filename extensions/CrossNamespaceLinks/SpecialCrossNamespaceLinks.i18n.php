@@ -471,11 +471,12 @@ $messages['kn'] = array(
 );
 
 /** Korean (한국어)
+ * @author Ficell
  * @author ToePeu
  */
 $messages['ko'] = array(
 	'crossnamespacelinks' => '이름공간 사이의 연결 목록',
-	'crossnamespacelinks-desc' => '{{SITENAME}}에 있으면 안되는 [[특수기능:CrossNamespaceLinks|다른 이름공간을 가리키는 문서 목록]]',
+	'crossnamespacelinks-desc' => '{{SITENAME}}에 있으면 안되는 [[Special:CrossNamespaceLinks|이름공간을 넘나드는 문서 목록]]',
 	'crossnamespacelinks-summary' => '주 이름공간에서 {{ns:special}}, {{ns:talk}}, {{ns:project}}, {{ns:template}} 외의 다른 이름공간을 가리키는 문서의 목록입니다.
 이렇게 다른 이름공간을 가리키는 것은 권장하지 않습니다.',
 	'crossnamespacelinkstext' => '$1: $3 이름공간을 가리키는 $2개의 링크',

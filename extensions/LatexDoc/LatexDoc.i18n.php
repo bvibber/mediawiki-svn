@@ -89,10 +89,18 @@ $3',
 
 /** German (Deutsch)
  * @author Leithian
+ * @author Revolus
  */
 $messages['de'] = array(
 	'latexdoc_no_text' => 'Seite enthält keinen Text, DVI kann nicht generiert werden',
 	'latexdoc_cant_create_dir' => 'Temporäres Verzeichnis $1 kann nicht erstellt werden',
+	'latexdoc_error' => 'LaTeX-Fehler
+
+Aufruf: $1
+
+Ausgabe: $2
+
+$3',
 );
 
 /** Esperanto (Esperanto)

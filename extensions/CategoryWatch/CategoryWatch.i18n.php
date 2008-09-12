@@ -49,6 +49,16 @@ $messages['arz'] = array(
 	'categorywatch-catsub' => 'ازال $1 من التصنيف $2',
 );
 
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
+$messages['eo'] = array(
+	'categorywatch-catmovein' => 'movis $1 en kategorion $2 de $3',
+	'categorywatch-catmoveout' => 'movis $1 el kategorio $2 en $3',
+	'categorywatch-catadd' => 'aldonis $1 al kategorio $2',
+	'categorywatch-catsub' => 'eligis $1 de kategorio $2',
+);
+
 /** French (Français)
  * @author Grondin
  * @author Zetud
@@ -132,6 +142,20 @@ Hierbij ontvangt u de melding dat gebruiker $4 om $3 $5.',
 	'categorywatch-catmoveout' => 'heeft $1 van categorie $2 naar $3 verplaatst',
 	'categorywatch-catadd' => 'heeft $1 aan categorie $2 toegevoegd',
 	'categorywatch-catsub' => 'heeft $1 uit categorie $2 verwijderd',
+);
+
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ */
+$messages['no'] = array(
+	'categorywatch-desc' => 'Utvider overvåkningslistens funsjonalitet til å også omfatte innholdet i kategorier',
+	'categorywatch-emailbody' => 'Hei, $1. Du mottar denne beskjeden fordi du overvåker kategorier kategorien «$2».
+Du mottar denne beskjeden fordi $4 $5 $3.',
+	'categorywatch-emailsubject' => 'Aktivitet i den overvåkede kategorien «$1»',
+	'categorywatch-catmovein' => 'flyttet $1 til kategorien $2 fra $3',
+	'categorywatch-catmoveout' => 'flyttet $1 fra kategorien $2 til $3',
+	'categorywatch-catadd' => 'la til $1 i kategori $2',
+	'categorywatch-catsub' => 'fjernet $1 fra kategori $2',
 );
 
 /** Occitan (Occitan)

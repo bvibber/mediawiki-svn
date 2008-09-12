@@ -604,6 +604,7 @@ $messages['cs'] = array(
 );
 
 /** German (Deutsch)
+ * @author Revolus
  * @author SabineCretella
  */
 $messages['de'] = array(
@@ -613,6 +614,35 @@ $messages['de'] = array(
 	'voctrain_Action_unknown' => 'Unbekannte Aktion',
 	'voctrain_I_don_t_know_what_to_do_with_action_' => "Ich weiss nicht, was ich mit '%action' anfangen soll.",
 	'voctrain_User_added' => 'Anwender hinzugefügt',
+	'voctrain_continue' => 'fortfahren',
+	'voctrain_bye' => 'tschüs',
+	'voctrain_Set_up_your_exercise' => 'Übung einrichten',
+	'voctrain_Languages' => 'Sprachen',
+	'voctrain_eg_eng_for_English_deu_for_Deutch_German_' => '(z.&nbsp;B. eng für Englisch, deu für Deutsch)',
+	'voctrain_Questions' => 'Fragen',
+	'voctrain_Answers' => 'Antworten',
+	'voctrain_collection' => 'Sammlung',
+	'voctrain_ISO_639_3_format' => 'ISO-639-3-Format',
+	'voctrain_Definition' => 'Definition',
+	'voctrain_Word' => 'Wort',
+	'voctrain_skip' => 'überspringen',
+	'voctrain_abort_exercise' => 'Übung abbrechen',
+	'voctrain_list_answers' => 'Antworten anzeigen',
+	'voctrain_Question' => 'Frage',
+	'voctrain_The_word_to_translate' => 'Zu übersetzendes Wort',
+	'voctrain_Answer' => 'Antwort',
+	'voctrain_list_of_questions_and_answers' => 'Liste der Fragen und Antworten',
+	'voctrain_Answer_s_' => 'Antwort(en)',
+	'voctrain_logout' => 'abmelden',
+	'voctrain_Omegawiki' => 'Omegawiki',
+	'voctrain_Exercise_complete' => 'Übung abgeschlossen',
+	'voctrain_Exercise_terminated' => 'Übung abgebrochen',
+	'voctrain_User_name' => 'Benutzername',
+	'voctrain_Password' => 'Passwort',
+	'voctrain_Switch_language' => 'Sprache wechseln',
+	'voctrain_Language' => 'Sprache',
+	'voctrain_Definitions' => 'Definitionen',
+	'voctrain_Translation' => 'Übersetzung',
 );
 
 /** Greek (Ελληνικά)

@@ -54,6 +54,14 @@ $messages['de'] = array(
 	'discussionthreading-threadnewsectionhint' => "Neuen Eintrag erstellen"
 );
 
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
+$messages['eo'] = array(
+	'discussionthreading-threadnewsection' => 'nova',
+	'discussionthreading-threadnewsectionhint' => 'Fari novan fadenon',
+);
+
 $messages['es'] = array(
 	'discussionthreading-replysection' => 'respuesta',
 	'discussionthreading-replysectionhint' => "Respuesta a este tema",

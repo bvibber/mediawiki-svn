@@ -27,6 +27,11 @@ $aliases['arz'] = array(
 	'Call' => array( 'استدعاء' ),
 );
 
+/** French (Français) */
+$aliases['fr'] = array(
+	'Call' => array( 'Appeler', 'Appels', 'Appel' ),
+);
+
 /** Dutch (Nederlands) */
 $aliases['nl'] = array(
 	'Call' => array( 'Aanroepen' ),

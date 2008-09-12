@@ -935,6 +935,7 @@ $messages['oc'] = array(
 );
 
 /** Polish (Polski)
+ * @author Derbeth
  * @author Sp5uhe
  */
 $messages['pl'] = array(
@@ -961,7 +962,7 @@ $messages['pl'] = array(
 	'review_user_details_link' => '(szczegóły)',
 	'review_do_merge' => 'Połącz moją recenzję z innymi recenzjami tej strony',
 	'review_has_been_stored' => "<span id='review_has_been_stored'>Twoja recenzja została zapisana!</span>",
-	'revision_review_this_page_version_link' => 'Recenzuj tą wersję strony.',
+	'revision_review_this_page_version_link' => 'Recenzuj tę wersję strony.',
 	'review_page_review' => 'Recenzja strony „$1”',
 	'review_blocked' => 'Zostałeś zablokowany.',
 	'review_wrong_namespace' => 'Strony w tej przestrzeni nazw nie mogą być recenzowane!',

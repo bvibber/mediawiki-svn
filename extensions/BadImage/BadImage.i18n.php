@@ -1481,6 +1481,13 @@ $messages['ro'] = array(
 	'badimages-unprivileged' => '(Nu aveţi drepturi suficiente pentru modificarea listei)',
 );
 
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'badimages-name' => 'Nome:',
+);
+
 /** Russian (Русский)
  * @author Ahonc
  * @author Александр Сигачёв

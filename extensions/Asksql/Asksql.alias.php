@@ -37,6 +37,11 @@ $aliases['fi'] = array(
 	'Asksql' => array( 'SQL-kysely' ),
 );
 
+/** French (Français) */
+$aliases['fr'] = array(
+	'Asksql' => array( 'Requête SQL', 'Requete SQL', 'RequêteSQL', 'RequeteSQL' ),
+);
+
 /** Hungarian (Magyar) */
 $aliases['hu'] = array(
 	'Asksql' => array( 'SQL-lekérdezés' ),

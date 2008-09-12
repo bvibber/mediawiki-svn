@@ -102,9 +102,16 @@ $messages['cs'] = array(
 
 /** German (Deutsch)
  * @author Leithian
+ * @author Revolus
  */
 $messages['de'] = array(
+	'postcomment_notloggedin' => 'Du bist nicht angemeldet.',
 	'postcomment_youareloggedinas' => 'Du bist jetzt als $1 angemeldet.',
+	'postcomment_leavemessagefor' => '$1 eine Nachricht hinterlassen',
+	'postcomment_post' => 'Senden',
+	'postcomment_on' => 'Am',
+	'postcomment_said' => 'schrieb',
+	'postcomment_replyto' => 'Antwort auf $1',
 );
 
 /** Greek (Ελληνικά)

@@ -303,6 +303,14 @@ $messages['oc'] = array(
 	'newuseredit-summary' => 'Apondís [[{{int:newusermessage-template}}|un messatge de benvenguda]] dins la pagina de discussion d’un utilizaire novèl',
 );
 
+/** Polish (Polski)
+ * @author Derbeth
+ */
+$messages['pl'] = array(
+	'newusermessage-desc' => 'Dodaje wiadomość do strony dyskusji nowego użytkownika',
+	'newuseredit-summary' => 'Dodanie [[{{int:newusermessage-template}}|wiadomości powitalnej]] do strony dyskusji nowego użytkownika',
+);
+
 /** Portuguese (Português)
  * @author Malafaya
  */

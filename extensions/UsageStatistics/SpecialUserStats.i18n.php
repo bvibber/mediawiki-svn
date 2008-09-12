@@ -890,6 +890,21 @@ $messages['ro'] = array(
 	'usagestatisticstype' => 'Tip',
 );
 
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'specialuserstats' => "Statisteche d'use",
+	'usagestatistics' => "Statisteche d'use",
+	'usagestatisticsinterval' => 'Intervalle',
+	'usagestatisticstype' => 'Tipe',
+	'usagestatisticsintervalday' => 'Sciúrne',
+	'usagestatisticsintervalweek' => 'Sumáne',
+	'usagestatisticsintervalmonth' => 'Mese',
+	'usagestatistics-editindividual' => "Statisteche sus a le cangiaminde de l'utende $1",
+	'usagestatistics-editpages' => "Statisteche sus a le pàggene de l'utende $1",
+);
+
 /** Russian (Русский)
  * @author Innv
  * @author Александр Сигачёв

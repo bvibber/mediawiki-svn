@@ -64,6 +64,13 @@ $messages['bg'] = array(
 	'multiboilerplate-submit' => 'Зареждане',
 );
 
+/** German (Deutsch)
+ * @author Revolus
+ */
+$messages['de'] = array(
+	'multiboilerplate-submit' => 'Laden',
+);
+
 /** Greek (Ελληνικά)
  * @author Consta
  */

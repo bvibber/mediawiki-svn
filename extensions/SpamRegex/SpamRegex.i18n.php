@@ -279,12 +279,14 @@ $messages['fy'] = array(
 $messages['gl'] = array(
 	'spamregex' => 'SpamRegex',
 	'spamregex-desc' => '[[Special:SpamRegex|Filtro]] de frases non desexadas nas páxinas editadas, baseado en expresións regulares',
+	'spamregex-error-unblocking' => 'Erro ao desbloquear "$1". Probablemente non hai tal patrón.',
 	'spamregex-summary' => 'O texto foi atopado no resumo da páxina.',
 	'spamregex-intro' => 'Use este formulario para bloquear de maneira efectiva expresións para que non se poidan gardar no texto dunha páxina.
 Se o texto contén a expresión dada, o cambio non poderá ser gardado e unha explicación será amosada ao usuario que intentou gardar a páxina.
 Teña en conta que as expresións non deberían ser moi curtas ou moi comúns.',
 	'spamregex-page-title' => 'Bloqueo spam regex de expresións non desexadas',
 	'spamregex-currently-blocked' => "'''Frases actualmente bloqueadas:'''",
+	'spamregex-move' => 'O motivo que inseriu contén unha frase bloqueada.',
 	'spamregex-no-currently-blocked' => "'''Non hai frases bloqueadas.'''",
 	'spamregex-log-1' => "* '''$1''' $2 ([{{SERVER}}$3&text=$4 eliminar]) engadido por",
 	'spamregex-log-2' => 'en $1',
@@ -388,8 +390,11 @@ $messages['kk-latn'] = array(
 
 /** Khmer (ភាសាខ្មែរ)
  * @author Chhorran
+ * @author Lovekhmer
  */
 $messages['km'] = array(
+	'spamregex-block-success' => 'ហាមឃាត់ដោយជោគជ័យ',
+	'spamregex-text' => '(ឃ្លា)',
 	'spamregex-summary-log' => '(សេចក្តីសង្ខេប)',
 );
 

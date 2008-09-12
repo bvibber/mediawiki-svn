@@ -24,6 +24,11 @@ $aliases['arz'] = array(
 	'Form' => array( 'استمارة' ),
 );
 
+/** Indonesian (Bahasa Indonesia) */
+$aliases['id'] = array(
+	'Form' => array( 'Formulir' ),
+);
+
 /** Dutch (Nederlands) */
 $aliases['nl'] = array(
 	'Form' => array( 'Formulier' ),

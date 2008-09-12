@@ -615,6 +615,7 @@ $wgGoogleMapsMessages['da'] = array(
 /** German (Deutsch)
  * @author Pill
  * @author Raimond Spekking
+ * @author Revolus
  * @author [[mw:User:Helge.at]]
  */
 $wgGoogleMapsMessages['de'] = array(
@@ -669,9 +670,12 @@ $wgGoogleMapsMessages['de'] = array(
 	'gm-color-fill' => 'Füllfarbe ändern',
 	'gm-fill-color' => 'Füllfarbe',
 	'gm-line-color' => 'Linienfarbe',
+	'gm-line-width' => 'Breite',
 	'gm-make-map' => 'Karte erstellen',
 	'gm-hide-map' => 'Karte verbergen',
+	'gm-back' => 'zurück',
 	'gm-kml-loading' => 'laden …',
+	'gm-kml-export' => 'Karte nach KML exportieren',
 	'gm-earth' => 'Erde',
 	'gm-moon' => 'Mond',
 	'gm-mars' => 'Mars',
@@ -2501,6 +2505,7 @@ Subukan me ing pekabayung bersion ning <a href="http://www.microsoft.com/ie">Int
 );
 
 /** Polish (Polski)
+ * @author Derbeth
  * @author Dodek
  * @author Masti
  * @author McMonster
@@ -2571,7 +2576,7 @@ Spróbuj użyć najnowszej wersji <a href="http://www.microsoft.com/ie">Internet
 	'gm-kml-include' => 'Zewnętrzny KML/GeoRSS',
 	'gm-kml-include-link' => 'dodaj do mapy',
 	'gm-kml-loading' => 'ładowanie...',
-	'gm-kml-export' => 'Eksportuj tą mapę w formacie KML',
+	'gm-kml-export' => 'Eksportuj tę mapę w formacie KML',
 	'gm-earth' => 'Ziemia',
 	'gm-moon' => 'Księżyc',
 	'gm-mars' => 'Mars',
@@ -2722,6 +2727,14 @@ $wgGoogleMapsMessages['ro'] = array(
 	'gm-earth' => 'Pământ',
 	'gm-moon' => 'Luna',
 	'gm-mars' => 'Marte',
+);
+
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$wgGoogleMapsMessages['roa-tara'] = array(
+	'gm-yes' => 'Sine',
+	'gm-no' => 'None',
 );
 
 /** Russian (Русский)

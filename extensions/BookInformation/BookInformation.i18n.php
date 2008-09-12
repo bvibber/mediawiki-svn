@@ -1091,7 +1091,7 @@ $messages['pl'] = array(
 	'bookinfo-error-nosuchitem' => 'Pozycja nie istnieje lub nie mogła zostać odnaleziona.',
 	'bookinfo-error-nodriver' => 'Nie udało się zainicjować odpowiedniego sterownika Book Information.',
 	'bookinfo-error-noresponse' => 'Brak odpowiedzi lub przekroczony dopuszczalny czas odpowiedzi.',
-	'bookinfo-purchase' => 'Kup tą książkę w $1',
+	'bookinfo-purchase' => 'Kup tę książkę w $1',
 	'bookinfo-provider' => 'Źródło informacji: $1',
 );
 

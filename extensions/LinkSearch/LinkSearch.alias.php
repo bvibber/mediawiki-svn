@@ -40,6 +40,11 @@ $aliases['fi'] = array(
 	'LinkSearch' => array( 'Linkkihaku' ),
 );
 
+/** French (Français) */
+$aliases['fr'] = array(
+	'LinkSearch' => array( 'Recherche de liens' ),
+);
+
 /** Hebrew (עברית)
  * @author Rotem Liss
  */

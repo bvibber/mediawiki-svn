@@ -461,7 +461,7 @@ $messages['fr'] = array(
 	'newuserlog-desc' => 'Ajoute un [[Special:Log/newusers|journal des créations de comptes]]',
 	'newuserlog-byemail' => 'mot de passe envoyé par courriel',
 	'newuserlog-create-entry' => 'Nouvel utilisateur',
-	'newuserlog-create2-entry' => 'compte créé pour $1',
+	'newuserlog-create2-entry' => 'a créé le compte $1',
 	'newuserlog-autocreate-entry' => 'Compte créé automatiquement',
 );
 

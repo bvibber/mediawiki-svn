@@ -1868,6 +1868,7 @@ $messages['fo'] = array(
 /** French (Français)
  * @author Grondin
  * @author Guérin Nicolas
+ * @author IAlex
  * @author Lejonel
  * @author Sherbrooke
  * @author Verdy p
@@ -1936,9 +1937,9 @@ $1 pour les données cryptées.</p>',
 	'boardvote_notstarted' => 'Le vote n’est pas encore commencé.',
 	'boardvote_closed' => 'L’élection est désormais terminée. Le résultat est ou sera proclamé sur [http://meta.wikimedia.org/wiki/Board_elections/2008/Results/fr la page dédiée] (fr).',
 	'boardvote_edits_many' => 'plusieurs',
-	'group-boardvote' => 'Membres votants du conseil d’administration',
+	'group-boardvote' => 'Administrateurs des élections du conseil d’administration',
 	'group-boardvote-member' => 'Membre votant du conseil d’administration',
-	'grouppage-boardvote' => '{{ns:project}}:Membre votant du conseil d’administration',
+	'grouppage-boardvote' => '{{ns:project}}:Administrateurs des élections du board',
 	'boardvote_blocked' => 'Désolé, mais vous avez été bloqué sur votre wiki d’origine. Les utilisateurs bloqués ne peuvent pas voter.',
 	'boardvote_bot' => "Désolé, vous avez le statut de ''Bot'' sur le wiki où vous êtes enregistré.
 Les comptes de ''Bot'' ne sont pas autorisés à voter.",

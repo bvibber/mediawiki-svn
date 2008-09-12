@@ -29,6 +29,11 @@ $aliases['fi'] = array(
 	'WhatIsMyIP' => array( 'Oma IP-osoite' ),
 );
 
+/** French (Français) */
+$aliases['fr'] = array(
+	'WhatIsMyIP' => array( 'Quelle est mon IP', 'QuelleEstMonIP' ),
+);
+
 /** Dutch (Nederlands) */
 $aliases['nl'] = array(
 	'WhatIsMyIP' => array( 'WatIsMijnIPAdres' ),

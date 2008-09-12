@@ -34,6 +34,16 @@ $aliases['fi'] = array(
 	'Vote' => array( 'Äänestys' ),
 );
 
+/** French (Français) */
+$aliases['fr'] = array(
+	'Vote' => array( 'Voter' ),
+);
+
+/** Indonesian (Bahasa Indonesia) */
+$aliases['id'] = array(
+	'Vote' => array( 'Beri suara' ),
+);
+
 /** Dutch (Nederlands) */
 $aliases['nl'] = array(
 	'Vote' => array( 'Stemmen' ),

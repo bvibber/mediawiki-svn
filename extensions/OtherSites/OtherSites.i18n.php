@@ -31,19 +31,28 @@ $messages['arz'] = array(
 	'othersites-desc' => 'ينقل وصلات الإنترويكى غير وصلات اللغة إلى مكانها الخاص',
 );
 
+/** German (Deutsch)
+ * @author Revolus
+ */
+$messages['de'] = array(
+	'othersites' => 'andere Seiten',
+);
+
 /** French (Français)
  * @author Grondin
+ * @author Zetud
  */
 $messages['fr'] = array(
-	'othersites' => 'Autres sites',
-	'othersites-desc' => "Déplace les autre liens interwiki que les autres liens liés à la lanque de leurs propres composants d'interface.",
+	'othersites' => 'autres sites',
+	'othersites-desc' => "Déplace les liens interwiki autres que les liens liés à la langue vers leurs propres composants d'interface.",
 );
 
 /** Galician (Galego)
  * @author Toliño
  */
 $messages['gl'] = array(
-	'othersites' => 'Outros sitios',
+	'othersites' => 'outros sitios',
+	'othersites-desc' => 'Move as ligazóns interwiki diferentes ás ligazóns á lingua no seu propio portal',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -60,6 +69,14 @@ $messages['lb'] = array(
 $messages['nl'] = array(
 	'othersites' => 'Andere sites',
 	'othersites-desc' => 'Verplaatst interwikiverwijzingen anders dan taalverwijzingen naar een eigen portlet',
+);
+
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ */
+$messages['no'] = array(
+	'othersites' => 'andre sider',
+	'othersites-desc' => 'Flytter interwikilenker som ikke er andre språk til sin egen boks',
 );
 
 /** Occitan (Occitan)

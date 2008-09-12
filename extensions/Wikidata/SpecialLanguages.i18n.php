@@ -161,6 +161,7 @@ $wdMessages['krl'] = array(
  */
 $wdMessages['mhr'] = array(
 	'ow_save' => 'Аралаш',
+	'ow_history' => 'Историй',
 	'ow_LinkAttributeValues' => 'Ссылке-влак',
 );
 

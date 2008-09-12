@@ -70,6 +70,7 @@ $messages['rtm'] = array(
  */
 $messages['mhr'] = array(
 	'imagetagging-article' => 'Лаштык:',
+	'imagetagging-imghistory' => 'Историй',
 	'imagetagging-tagcancel-button' => 'Чараш',
 );
 
