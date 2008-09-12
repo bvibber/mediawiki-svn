@@ -9,12 +9,12 @@ class SpecialRepoAdmin extends SpecialPage {
 	function execute( $subpage ) {
 		global $wgRequest, $wgUser;
 		$this->setHeaders();
-/*
+
 		if( !$this->userCanExecute( $wgUser ) ){
 			$this->displayRestrictionError();
 			return;	
 		}
-*/
+
 		$repo = $wgRequest->getVal( 'repo', $subpage );
 		if( $repo == '' ) {
 			$view = new RepoAdminListView( $this );
