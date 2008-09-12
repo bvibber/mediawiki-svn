@@ -81,7 +81,13 @@ class SubversionPecl extends SubversionAdaptor {
  */
 class SubversionShell extends SubversionAdaptor {
 	function getFile( $path, $rev=null ) {
-		return svn_cat( $this->mRepo . $path, $rev );
+		if( $rev )
+			$path .= "@$rev";
+		$command = sprintf(
+			"svn cat %s",
+			wfEscapeShellArg( $this->mRepo . $path ) );
+
+		return wfShellExec( $command );
 	}
 	
 	function getDiff( $path, $rev1, $rev2 ) {

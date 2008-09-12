@@ -21,7 +21,7 @@ for( $start = 1; $start < $lastRev; $start += $chunkSize ) {
 		$codeRev->save();
 		
 		printf( "%d %s %s (%0.1f revs/sec)\n",
-			$codeRev->mRev,
+			$codeRev->mId,
 			wfTimestamp( TS_DB, $codeRev->mTimestamp ),
 			$codeRev->mAuthor,
 			$revSpeed );
