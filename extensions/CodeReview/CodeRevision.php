@@ -1,9 +1,9 @@
 <?php
 
 class CodeRevision {
-	static function newFromSvn( $data ) {
+	static function newFromSvn( CodeRepository $repo, $data ) {
 		$rev = new CodeRevision();
-		$rev->mRepo = 1; // hack
+		$rev->mRepo = $repo->getId();
 		$rev->mId = $data['rev'];
 		$rev->mAuthor = $data['author'];
 		$rev->mTimestamp = wfTimestamp( TS_MW, strtotime( $data['date'] ) );
@@ -66,27 +66,13 @@ class CodeRevision {
 		}
 	}
 	
-	static function newFromRange( CodeRepository $repo ) {
+	function getModifiedPaths(){
 		$dbr = wfGetDB( DB_SLAVE );
-		$result = $dbr->select( 'code_rev',
-			array(
-				'cr_repo_id',
-				'cr_id',
-				'cr_author',
-				'cr_timestamp',
-				'cr_message' ),
-			array(
-				'cr_repo_id' => $repo->getId(),
-			),
-			__METHOD__,
-			array(
-				'ORDER BY' => 'cr_id DESC',
-				'LIMIT' => 25 ) );
-		$out = array();
-		foreach( $result as $row ) {
-			$out[] = self::newFromRow( $row );
-		}
-		$result->free();
-		return $out;
+		return $dbr->select(
+			'code_paths',
+			array( 'cp_path', 'cp_action' ),
+			array( 'cp_repo_id' => $this->mRepo, 'cp_rev_id' => $this->mId ),
+			__METHOD__
+		);
 	}
 }

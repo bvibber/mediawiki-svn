@@ -1,5 +1,69 @@
 <?php
+/**
+ * Internationalisation file for extension CodeReview.
+ *
+ * @file
+ * @ingroup Extensions
+ */
+
+$messages = array();
 
 $messages['en'] = array(
-'code' => 'Code Review',
+	'code' => 'Code Review',
+	'code-no-repo' => 'No repository configured!',
+	'code-field-id' => 'Revision',
+	'code-field-author' => 'Author',
+	'code-field-message' => 'Comment',
+	'code-field-timestamp' => 'Date',
+	'code-rev-author' => 'Author:',
+	'code-rev-message' => 'Comment:',
+	'code-rev-repo' => 'Repository:',
+	'code-rev-rev' => 'Revision:',
+	'code-rev-rev-viewvc' => 'on ViewVC',
+	'code-rev-paths' => 'Modified paths:',
+	'code-rev-modified-a' => 'added',
+	'code-rev-modified-c' => 'copied',
+	'code-rev-modified-d' => 'deleted',
+	'code-rev-modified-m' => 'modified',
+	
+	'repoadmin' => 'Repository Administration',
+	'repoadmin-new-legend' => 'Create a new repository',
+	'repoadmin-new-label' => 'Repository name:',
+	'repoadmin-new-button' => 'Create',
+	'repoadmin-edit-legend' => 'Modification of repository "$1"',
+	'repoadmin-edit-path' => 'Repository path:',
+	'repoadmin-edit-bug' => 'Bugzilla path:',
+	'repoadmin-edit-view' => 'ViewVC path:',
+	'repoadmin-edit-button' => 'OK',
+	'repoadmin-edit-sucess' => 'The repository "$1" has been sucessfully modified.',
+);
+
+$messages['fr'] = array(
+	'code' => 'Vérification du code',
+	'code-no-repo' => 'Pas de dépôt configuré !',
+	'code-field-id' => 'Révision',
+	'code-field-author' => 'Auteur',
+	'code-field-message' => 'Commentaire',
+	'code-field-timestamp' => 'Date',
+	'code-rev-author' => 'Auteur :',
+	'code-rev-message' => 'Commentaire :',
+	'code-rev-repo' => 'Dépôt :',
+	'code-rev-rev' => 'Révision :',
+	'code-rev-rev-viewvc' => 'sur ViewVC',
+	'code-rev-paths' => 'Fichiers/dossiers modifiés :',
+	'code-rev-modified-a' => 'ajouté',
+	'code-rev-modified-c' => 'copié',
+	'code-rev-modified-d' => 'supprimé',
+	'code-rev-modified-m' => 'modifié',
+
+	'repoadmin' => 'Administration des dépôts',
+	'repoadmin-new-legend' => 'Créer un nouveau dépôt',
+	'repoadmin-new-label' => 'Nom du dépôt:',
+	'repoadmin-new-button' => 'Créer',
+	'repoadmin-edit-legend' => 'Modification du dépôt "$1"',
+	'repoadmin-edit-path' => 'Chemin du dépôt :',
+	'repoadmin-edit-bug' => 'Chemin de Bugzilla :',
+	'repoadmin-edit-view' => 'Chemin de ViewVC :',
+	'repoadmin-edit-button' => 'Valider',
+	'repoadmin-edit-sucess' => 'Le dépôt "$1" a été modifié avec succès.',
 );

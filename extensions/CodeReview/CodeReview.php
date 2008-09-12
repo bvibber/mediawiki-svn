@@ -28,8 +28,12 @@ $dir = dirname( __FILE__ );
 $wgAutoloadClasses['CodeRepository'] = "$dir/CodeRepository.php";
 $wgAutoloadClasses['CodeRevision'] = "$dir/CodeRevision.php";
 $wgAutoloadClasses['SpecialCode'] = "$dir/SpecialCode.php";
+$wgAutoloadClasses['SpecialRepoAdmin'] = "$dir/SpecialRepoAdmin.php";
 $wgAutoloadClasses['SubversionAdaptor'] = "$dir/Subversion.php";
 
 $wgExtensionMessagesFiles['CodeReview'] = "$dir/CodeReview.i18n.php";
 
+$wgAvailableRights[] = 'repoadmin';
+
 $wgSpecialPages['Code'] = 'SpecialCode';
+$wgSpecialPages['RepoAdmin'] = 'SpecialRepoAdmin';

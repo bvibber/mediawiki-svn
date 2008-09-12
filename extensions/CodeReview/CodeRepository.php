@@ -30,13 +30,31 @@ class CodeRepository {
 		$repo->mBugzilla = $row->repo_bugzilla;
 		return $repo;
 	}
-	
+
+	static function getRepoList(){
+		$dbr = wfGetDB( DB_SLAVE );
+		$res = $dbr->select( 'code_repo', '*', array(), __METHOD__ );
+		$repos = array();
+		foreach( $res as $row ){
+			$repos[] = self::newFromRow( $row );
+		}
+		return $repos;
+	}
+
 	function getId() {
 		return intval( $this->mId );
 	}
 	
 	function getName() {
 		return $this->mName;
+	}
+	
+	function getPath(){
+		return $this->mPath;
+	}
+	
+	function getViewVcBase(){
+		return $this->mViewVc;
 	}
 	
 	/**
@@ -50,14 +68,35 @@ class CodeRepository {
 		return false;
 	}
 	
+	function getLastStoredRev(){
+		$dbr = wfGetDB( DB_SLAVE );
+		$row = $dbr->selectField(
+			'code_rev',
+			'MAX(cr_id)',
+			array(
+				'cr_repo_id' => $this->getId(),
+			),
+			__METHOD__
+		);
+		return intval( $row );	
+	}
+	
 	/**
 	 * Load a particular revision out of the DB
 	 */
 	function getRevision( $id ) {
-		throw new MWException( 'barf' );
-	}
-	
-	function getRevisionRange() {
-		return CodeRevision::newFromRange( $this );
+		$dbr = wfGetDB( DB_SLAVE );
+		$row = $dbr->selectRow(
+			'code_rev',
+			'*',
+			array(
+				'cr_id' => $id,
+				'cr_repo_id' => $this->getId(),
+			),
+			__METHOD__
+		);
+		if( !$row )
+			throw new MWException( 'barf' );
+		return CodeRevision::newFromRow( $row );
 	}
 }
