@@ -825,7 +825,7 @@ $arrayDefs = array(
 	'wgExtensionCredits' => 'array',
 	'wgExtensionFunctions' => 'simple',
 	'wgExtensionMessagesFiles' => 'assoc',
-	'wgExternalStores' => 'array',
+	'wgExternalStores' => 'simple',
 	'wgSpecialPageCacheUpdates' => 'array',
 	'wgSpecialPages' => 'assoc',
 # Misc
