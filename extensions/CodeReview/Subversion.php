@@ -1,8 +1,9 @@
 <?php
+if (!defined('MEDIAWIKI')) die();
 
 abstract class SubversionAdaptor {
 	protected $mRepo;
-	
+
 	public static function newFromRepo( $repo ) {
 		if( function_exists( 'svn_log' ) ) {
 			return new SubversionPecl( $repo );
@@ -10,15 +11,15 @@ abstract class SubversionAdaptor {
 			return new SubversionShell( $repo );
 		}
 	}
-	
+
 	function __construct( $repo ) {
 		$this->mRepo = $repo;
 	}
-	
+
 	abstract function getFile( $path, $rev=null );
-	
+
 	abstract function getDiff( $path, $rev1, $rev2 );
-	
+
 	/*
 	  array of array(
 		'rev' => 123,
@@ -34,7 +35,7 @@ abstract class SubversionAdaptor {
 		)
 	  */
 	abstract function getLog( $path, $startRev=null, $endRev=null );
-	
+
 	protected function _rev( $rev, $default ) {
 		if( $rev === null ) {
 			return $default;
@@ -52,12 +53,12 @@ class SubversionPecl extends SubversionAdaptor {
 	function getFile( $path, $rev=null ) {
 		return svn_cat( $this->mRepo . $path, $rev );
 	}
-	
+
 	function getDiff( $path, $rev1, $rev2 ) {
 		list( $fout, $ferr ) = svn_diff(
 			$this->mRepo . $path, $rev1,
 			$this->mRepo . $path, $rev2 );
-		
+
 		// We have to read out the file descriptors. :P
 		$out = '';
 		while( !feof( $fout ) ) {
@@ -65,10 +66,10 @@ class SubversionPecl extends SubversionAdaptor {
 		}
 		fclose( $fout );
 		fclose( $ferr );
-		
+
 		return $out;
 	}
-	
+
 	function getLog( $path, $startRev=null, $endRev=null ) {
 		return svn_log( $this->mRepo . $path,
 			$this->_rev( $startRev, SVN_REVISION_INTIAL ),
@@ -89,27 +90,27 @@ class SubversionShell extends SubversionAdaptor {
 
 		return wfShellExec( $command );
 	}
-	
+
 	function getDiff( $path, $rev1, $rev2 ) {
 		$command = sprintf(
 			"svn diff -r%d:%d %s",
 			intval( $rev1 ),
 			intval( $rev2 ),
 			wfEscapeShellArg( $this->mRepo . $path ) );
-		
+
 		return wfShellExec( $command );
 	}
-	
+
 	function getLog( $path, $startRev=null, $endRev=null ) {
 		$command = sprintf(
 			"svn log -v -r%s:%s --non-interactive %s",
 			wfEscapeShellArg( $this->_rev( $startRev, 'BASE' ) ),
 			wfEscapeShellArg( $this->_rev( $endRev, 'HEAD' ) ),
 			wfEscapeShellArg( $this->mRepo . $path ) );
-		
+
 		$lines = explode( "\n", wfShellExec( $command ) );
 		$out = array();
-		
+
 		$divider = str_repeat( '-', 72 );
 		$formats = array(
 			'rev' => '/^r(\d+)$/',
@@ -120,7 +121,7 @@ class SubversionShell extends SubversionAdaptor {
 		$state = "start";
 		foreach( $lines as $line ) {
 			$line = rtrim( $line );
-			
+
 			switch( $state ) {
 			case "start":
 				if( $line == $divider ) {
@@ -189,7 +190,7 @@ class SubversionShell extends SubversionAdaptor {
 				throw new MWException( "Invalid state '$state'" );
 			}
 		}
-		
+
 		return $out;
 	}
 }

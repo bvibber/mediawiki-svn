@@ -32,10 +32,10 @@ for( $start = $lastStoredRev + 1; $start < $lastRev; $start += $chunkSize ) {
 		$revCount++;
 		$delta = microtime( true ) - $startTime;
 		$revSpeed = $revCount / $delta;
-		
+
 		$codeRev = CodeRevision::newFromSvn( $repo, $data );
 		$codeRev->save();
-		
+
 		printf( "%d %s %s (%0.1f revs/sec)\n",
 			$codeRev->mId,
 			wfTimestamp( TS_DB, $codeRev->mTimestamp ),

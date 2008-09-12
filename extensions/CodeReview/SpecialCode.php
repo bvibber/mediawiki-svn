@@ -1,15 +1,18 @@
 <?php
+if (!defined('MEDIAWIKI')) die();
 
 class SpecialCode extends SpecialPage {
 	function __construct() {
-		wfLoadExtensionMessages( 'CodeReview' );
 		parent::__construct( 'Code' );
 	}
 
 	function execute( $subpage ) {
 		global $wgOut, $wgRequest, $wgUser;
+
+		wfLoadExtensionMessages( 'CodeReview' );
+
 		$this->setHeaders();
-		
+
 		if( $subpage == '' ) {
 			$view = new CodeRepoListView();
 		} else {
@@ -62,19 +65,19 @@ abstract class CodeView {
 			$link = htmlspecialchars( $author );
 		return $userLinks[$author] = $link;
 	}
-	
+
 	function formatMessage( $value ){
 		$value = nl2br( htmlspecialchars( $value ) );
 		$value = preg_replace_callback( '/\(bug (\d+)\)/', array( $this, 'messageBugLink' ), $value );
 		return "<code>$value</code>";
 	}
-	
+
 	function messageBugLink( $arr ){
 		$bugNo = $arr[1];
 		$url = $this->mRepo->getBugPath( $bugNo );
 		return "(<a href=\"$url\" title=\"bug $bugNo\">bug $bugNo</a>)";
 	}
-	
+
 	function messageFragment( $value ) {
 		global $wgLang;
 		$message = trim( $value );
@@ -89,7 +92,7 @@ abstract class CodeView {
 class CodeRepoListView {
 
 	function __construct() {}
-	
+
 	function execute() {
 		global $wgOut;
 		$repos = CodeRepository::getRepoList();
@@ -111,7 +114,7 @@ class CodeRevisionListView extends CodeView {
 	function __construct( $repoName ) {
 		$this->mRepo = CodeRepository::newFromName( $repoName );
 	}
-	
+
 	function execute() {
 		global $wgOut;
 		$pager = new SvnRevTablePager( $this );
@@ -121,28 +124,28 @@ class CodeRevisionListView extends CodeView {
 
 // Pager for CodeRevisionListView
 class SvnRevTablePager extends TablePager {
-	
+
 	function __construct( CodeRevisionListView $view ){
 		$this->mView = $view;
 		$this->mRepo = $view->mRepo;
 		$this->mDefaultDirection = true;
 		parent::__construct();
 	}
-	
+
 	function isFieldSortable( $field ){
 		return $field == 'cr_id';
 	}
-	
+
 	function getDefaultSort(){ return 'cr_id'; }
-	
+
 	function getQueryInfo(){
 		return array(
 			'tables' => array( 'code_rev' ),
 			'fields' => array_keys( $this->getFieldNames() ),
 			'conds' => array( 'cr_repo_id' => $this->mRepo->getId() ),
-		);	
+		);
 	}
-	
+
 	function getFieldNames(){
 		return array(
 			'cr_id' => wfMsg( 'code-field-id' ),
@@ -151,7 +154,7 @@ class SvnRevTablePager extends TablePager {
 			'cr_timestamp' => wfMsg( 'code-field-timestamp' ),
 		);
 	}
-	
+
 	function formatValue( $name, $value ){
 		global $wgUser, $wgLang;
 		switch( $name ){
@@ -167,20 +170,20 @@ class SvnRevTablePager extends TablePager {
 			return $wgLang->timeanddate( $value );
 		}
 	}
-	
+
 	function getTitle(){
-		return SpecialPage::getTitleFor( 'Code', $this->mRepo->getName() );	
+		return SpecialPage::getTitleFor( 'Code', $this->mRepo->getName() );
 	}
 }
 
 // Special:Code/MediaWiki/40696
 class CodeRevisionView extends CodeView {
-	
+
 	function __construct( $repoName, $rev ){
 		$this->mRepo = CodeRepository::newFromName( $repoName );
 		$this->mRev = $this->mRepo->getRevision( intval( $rev ) );
 	}
-	
+
 	function execute(){
 		global $wgOut, $wgUser;
 		$repoLink = $wgUser->getSkin()->link( SpecialPage::getTitleFor( 'Code', $this->mRepo->getName() ), htmlspecialchars( $this->mRepo->getName() ) );

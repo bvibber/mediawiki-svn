@@ -1,4 +1,5 @@
 <?php
+if (!defined('MEDIAWIKI')) die();
 
 class CodeRepository {
 	public static function newFromName( $name ) {
@@ -13,14 +14,14 @@ class CodeRepository {
 				'repo_bugzilla' ),
 			array( 'repo_name' => $name ),
 			__METHOD__ );
-		
+
 		if( $row ) {
 			return self::newFromRow( $row );
 		} else {
 			return null;
 		}
 	}
-	
+
 	static function newFromRow( $row ) {
 		$repo = new CodeRepository();
 		$repo->mId = $row->repo_id;
@@ -44,19 +45,19 @@ class CodeRepository {
 	function getId() {
 		return intval( $this->mId );
 	}
-	
+
 	function getName() {
 		return $this->mName;
 	}
-	
+
 	function getPath(){
 		return $this->mPath;
 	}
-	
+
 	function getViewVcBase(){
 		return $this->mViewVc;
 	}
-	
+
 	/**
 	 * Return a bug URL or false.
 	 */
@@ -67,7 +68,7 @@ class CodeRepository {
 		}
 		return false;
 	}
-	
+
 	function getLastStoredRev(){
 		$dbr = wfGetDB( DB_SLAVE );
 		$row = $dbr->selectField(
@@ -78,9 +79,9 @@ class CodeRepository {
 			),
 			__METHOD__
 		);
-		return intval( $row );	
+		return intval( $row );
 	}
-	
+
 	/**
 	 * Load a particular revision out of the DB
 	 */

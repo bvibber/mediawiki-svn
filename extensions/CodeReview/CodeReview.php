@@ -1,5 +1,5 @@
 <?php
-
+if (!defined('MEDIAWIKI')) die();
 /**
  * Copyright (c) 2008 Brion Vibber <brion@pobox.com>
  * GPLv2
@@ -16,22 +16,20 @@ What do I need out of SVN?
 4) get list of affected files
 5) get diffs
 
-
-
 http://pecl.php.net/package/svn
 
 */
 
+$dir = dirname(__FILE__) . '/';
 
-$dir = dirname( __FILE__ );
+$wgAutoloadClasses['CodeRepository'] = $dir . 'CodeRepository.php';
+$wgAutoloadClasses['CodeRevision'] = $dir . 'CodeRevision.php';
+$wgAutoloadClasses['SpecialCode'] = $dir . 'SpecialCode.php';
+$wgAutoloadClasses['SpecialRepoAdmin'] = $dir . 'SpecialRepoAdmin.php';
+$wgAutoloadClasses['SubversionAdaptor'] = $dir . 'Subversion.php';
 
-$wgAutoloadClasses['CodeRepository'] = "$dir/CodeRepository.php";
-$wgAutoloadClasses['CodeRevision'] = "$dir/CodeRevision.php";
-$wgAutoloadClasses['SpecialCode'] = "$dir/SpecialCode.php";
-$wgAutoloadClasses['SpecialRepoAdmin'] = "$dir/SpecialRepoAdmin.php";
-$wgAutoloadClasses['SubversionAdaptor'] = "$dir/Subversion.php";
-
-$wgExtensionMessagesFiles['CodeReview'] = "$dir/CodeReview.i18n.php";
+$wgExtensionMessagesFiles['CodeReview'] = $dir . 'CodeReview.i18n.php';
+$wgExtensionAliasesFiles['CodeReview'] = $dir . 'CodeReview.alias.php';
 
 $wgAvailableRights[] = 'repoadmin';
 

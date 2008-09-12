@@ -25,7 +25,7 @@ $messages['en'] = array(
 	'code-rev-modified-c' => 'copied',
 	'code-rev-modified-d' => 'deleted',
 	'code-rev-modified-m' => 'modified',
-	
+
 	'repoadmin' => 'Repository Administration',
 	'repoadmin-new-legend' => 'Create a new repository',
 	'repoadmin-new-label' => 'Repository name:',

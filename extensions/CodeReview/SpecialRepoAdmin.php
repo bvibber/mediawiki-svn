@@ -1,18 +1,20 @@
 <?php
+if (!defined('MEDIAWIKI')) die();
 
 class SpecialRepoAdmin extends SpecialPage {
 	function __construct() {
-		wfLoadExtensionMessages( 'CodeReview' );
 		parent::__construct( 'RepoAdmin', 'repoadmin' );
 	}
 
 	function execute( $subpage ) {
 		global $wgRequest, $wgUser;
+
+		wfLoadExtensionMessages( 'CodeReview' );
 		$this->setHeaders();
 
 		if( !$this->userCanExecute( $wgUser ) ){
 			$this->displayRestrictionError();
-			return;	
+			return;
 		}
 
 		$repo = $wgRequest->getVal( 'repo', $subpage );
