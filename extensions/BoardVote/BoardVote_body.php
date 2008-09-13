@@ -334,7 +334,7 @@ class BoardVotePage extends UnlistedSpecialPage {
 		global $wgOut, $wgLang;
 		global $wgBoardVoteEditCount, $wgBoardVoteRecentEditCount, $wgBoardVoteCountDate;
 		global $wgBoardVoteRecentFirstCountDate, $wgBoardVoteRecentCountDate;
-		$wgOut->addWikiText( wfMsg( 'boardvote_notqualified', array( 'parsemag' ), $wgBoardVoteEditCount,
+		$wgOut->addWikiText( wfMsgExt( 'boardvote_notqualified', array( 'parsemag' ), $wgBoardVoteEditCount,
 			$wgLang->timeanddate( $wgBoardVoteCountDate ), $wgBoardVoteRecentEditCount,
 			$wgLang->timeanddate( $wgBoardVoteRecentFirstCountDate ),
 			$wgLang->timeanddate( $wgBoardVoteRecentCountDate )
