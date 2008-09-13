@@ -68,14 +68,14 @@ abstract class CodeView {
 
 	function formatMessage( $value ){
 		$value = nl2br( htmlspecialchars( $value ) );
-		$value = preg_replace_callback( '/\(bug (\d+)\)/', array( $this, 'messageBugLink' ), $value );
+		$value = preg_replace_callback( '/\bbug (\d+)\b/', array( $this, 'messageBugLink' ), $value );
 		return "<code>$value</code>";
 	}
 
 	function messageBugLink( $arr ){
 		$bugNo = $arr[1];
 		$url = $this->mRepo->getBugPath( $bugNo );
-		return "(<a href=\"$url\" title=\"bug $bugNo\">bug $bugNo</a>)";
+		return "<a href=\"$url\" title=\"bug $bugNo\">bug $bugNo</a>";
 	}
 
 	function messageFragment( $value ) {
