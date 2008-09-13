@@ -45,7 +45,7 @@ class GoToBoardVotePage extends SpecialPage {
 			$wgOut->addWikiText( wfMsg( "boardvote_redirecting", $url ) );
 			$wgOut->addMeta( 'http:Refresh', '20;url=' . htmlspecialchars( $url ) );
 		} else {
-			$wgOut->addWikiText( wfMsg( "boardvote_notloggedin", $wgBoardVoteEditCount,
+			$wgOut->addWikiText( wfMsgExt( 'boardvote_notloggedin', array( 'parsemag' ), $wgBoardVoteEditCount,
 				$wgLang->timeanddate( $wgBoardVoteCountDate ), $wgBoardVoteRecentEditCount,
 				$wgLang->timeanddate( $wgBoardVoteRecentFirstCountDate ),
 				$wgLang->timeanddate( $wgBoardVoteRecentCountDate )

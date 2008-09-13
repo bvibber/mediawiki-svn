@@ -323,18 +323,18 @@ class BoardVotePage extends UnlistedSpecialPage {
 		global $wgOut, $wgLang;
 		global $wgBoardVoteEditCount, $wgBoardVoteRecentEditCount, $wgBoardVoteCountDate;
 		global $wgBoardVoteRecentFirstCountDate, $wgBoardVoteRecentCountDate;
-		$wgOut->addWikiText( wfMsg( "boardvote_nosession", $wgBoardVoteEditCount,
+		$wgOut->addWikiText( wfMsgExt( 'boardvote_nosession', array( 'parsemag' ), $wgBoardVoteEditCount,
 			$wgLang->timeanddate( $wgBoardVoteCountDate ), $wgBoardVoteRecentEditCount,
 			$wgLang->timeanddate( $wgBoardVoteRecentFirstCountDate ),
 			$wgLang->timeanddate( $wgBoardVoteRecentCountDate )
-	   	) );
+		) );
 	}
 
 	function notQualified() {
 		global $wgOut, $wgLang;
 		global $wgBoardVoteEditCount, $wgBoardVoteRecentEditCount, $wgBoardVoteCountDate;
 		global $wgBoardVoteRecentFirstCountDate, $wgBoardVoteRecentCountDate;
-		$wgOut->addWikiText( wfMsg( "boardvote_notqualified", $wgBoardVoteEditCount,
+		$wgOut->addWikiText( wfMsg( 'boardvote_notqualified', array( 'parsemag' ), $wgBoardVoteEditCount,
 			$wgLang->timeanddate( $wgBoardVoteCountDate ), $wgBoardVoteRecentEditCount,
 			$wgLang->timeanddate( $wgBoardVoteRecentFirstCountDate ),
 			$wgLang->timeanddate( $wgBoardVoteRecentCountDate )

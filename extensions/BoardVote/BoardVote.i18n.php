@@ -55,11 +55,11 @@ The resulting encrypted version follows. It will be [[Special:Boardvote/dump|dis
 left empty.</p>",
 	'boardvote_nosession'     => "Your Wikimedia user ID could not be determined.
 Please log in to the wiki where you are qualified to vote, and go to <nowiki>[[Special:Boardvote]]</nowiki>.
-You must use an account with at least $1 contributions before $2, and have made at least $3 contributions between $4 and $5.",
+You must use an account with at least $1 {{PLURAL:$1|contribution|contributions}} before $2, and have made at least $3 {{PLURAL:$3|contribution|contributions}} between $4 and $5.",
 	'boardvote_notloggedin'   => "You are not logged in.
-To vote, you must use an account with at least $1 contributions before $2, and have made at least $3 contributions between $4 and $5.",
+To vote, you must use an account with at least $1 {{PLURAL:$1|contribution|contributions}} before $2, and have made at least $3 {{PLURAL:$3|contribution|contributions}} between $4 and $5.",
 	'boardvote_notqualified'  => "You are not qualified to vote in this election.
-You need to have made at least $1 contributions before $2, and have made at least $3 contributions between $4 and $5.",
+You need to have made at least $1 {{PLURAL:$1|contribution|contributions}} before $2, and have made at least $3 {{PLURAL:$3|contribution|contributions}} between $4 and $5.",
 	'boardvote_novotes'       => "Nobody has voted yet.",
 	'boardvote_time'          => "Time",
 	'boardvote_user'          => "User",
