@@ -12,7 +12,7 @@ var javaEmbed = {
 		if(mv_java_iframe){
 			//make sure iframe and embed path match (java security model)
 			var iframe_src='';
-            var src = this.media_element.selected_source.uri;
+            var src = this.media_element.selected_source.getURI();
 			//if the src is relative add in current_url as path:
 			if(src[0]=='/'){
 				js_log('java: media relative path');
@@ -45,7 +45,7 @@ var javaEmbed = {
 			// (media must be on the same server or applet must be signed)
 			return ''+
 			'<applet id="'+this.pid+'" code="com.fluendo.player.Cortado.class" archive="cortado-ovt-stripped_r34336.jar" width="'+this.width+'" height="'+this.height+'">	'+ "\n"+
-				'<param name="url" value="'+this.media_element.selected_source.uri+'" /> ' + "\n"+
+				'<param name="url" value="'+this.media_element.selected_source.src+'" /> ' + "\n"+
 				'<param name="local" value="false"/>'+ "\n"+
 				'<param name="keepaspect" value="true" />'+ "\n"+
 				'<param name="video" value="true" />'+"\n"+

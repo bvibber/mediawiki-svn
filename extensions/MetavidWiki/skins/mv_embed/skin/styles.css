@@ -70,20 +70,24 @@
 	display: inline;
     background: url(images/player_button_play.png) 2px 0 no-repeat;
 }
-
-.videoPlayer a {
-display: block;
-height: 100%;
-width: 100%;
+.controls a{
+	display: block;
+	height: 100%;
+	width: 100%;
 }
-
 .videoPlayer .volume_icon {
 	float: right;
 	display: inline;
 	width: 22px;
 	height: 29px;
 	padding: 0 0 0 0;
+	
+}
+.volume_on {	
 	background: url(images/player_volume_tag.png) 0 8px no-repeat;
+}
+.volume_off{
+	background: url(images/player_volume_tag_off.png) 0 8px no-repeat;
 }
 
 .videoPlayer .volume_control {

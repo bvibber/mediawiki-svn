@@ -21,9 +21,9 @@ var flashEmbed = {
     	'play_head':true, 
 	    'play_or_pause':true,
 	    'stop':true, 
-	    'fullscreen':true, 
+	    //'fullscreen':true, 
 	    'time_display':true, 
-	    'volume_control':true,
+	    //'volume_control':true,
 	    'overlay':false
     },
     flashParams : {
@@ -60,7 +60,8 @@ var flashEmbed = {
 	    this.flashParams.height = this.height;
 	    this.flashParams.id		= this.pid;
 	   
-	    this.flashVars.config.videoFile =  this.media_element.selected_source.uri; 
+	   	js_log('set flash videoFile: '+ this.media_element.selected_source.getURI(this.seek_time_sec) );
+	    this.flashVars.config.videoFile = this.media_element.selected_source.getURI(this.seek_time_sec); 
 	    
 	    if(this.muted)
 	    	 this.flashVars.config.initialVolumePercentage=0;
@@ -127,6 +128,17 @@ var flashEmbed = {
 			setTimeout('$j(\'#'+this.id+'\').get(0).monitor()', 250);
     	}
     },
+    toggleMute: function(){
+    	parent_toggleMute();
+    	this.getFLA();
+    	if(this.fla){
+	    	if(this.muted){
+	    		
+	    	}else{
+	    		
+	    	}
+    	}
+    },
     pause : function()
     {
     	this.getFLA();
@@ -148,24 +160,25 @@ var flashEmbed = {
                         
         this.currentTime = this.fla.getTime();              
         
-        if(this.currentTime > 0 ){
+        if(this.currentTime > 1 && !this.startedTimedPlayback){
         	this.startedTimedPlayback=true;
         	js_log("time is "+ this.currentTime + " started playback");        	
-        }
+        }        
         
         
-        //flash is giving bogus duration get from this        
+        //flash is giving bogus duration get from this (if available)      
         var end_ntp = (this.media_element.selected_source.end_ntp)?
         			   		this.media_element.selected_source.end_ntp : 
         			   		seconds2ntp( this.fla.getDuration() );
 		var start_ntp =  (this.media_element.selected_source.start_ntp)?
         			   		this.media_element.selected_source.start_ntp : 0;
-        			   		       		
-        if((this.currentTime - ntp2seconds(start_ntp))<0){
-        	this.setStatus('buffering...');
-        }else{        			   		       		
-	       	this.setStatus( seconds2ntp(this.currentTime) + '/' + end_ntp);      		
-	        this.setSliderValue((time - ntp2seconds(start_ntp)) / (ntp2seconds(end_ntp)-ntp2seconds(start_ntp)) );
+        if(!this.userSlide){			   		       		
+	        if((this.currentTime - ntp2seconds(start_ntp))<0){
+	        	this.setStatus('buffering...');
+	        }else{        			   		       		
+		       	this.setStatus( seconds2ntp(this.currentTime) + '/' + end_ntp);      		
+		        this.setSliderValue((this.currentTime - ntp2seconds(start_ntp)) / (ntp2seconds(end_ntp)-ntp2seconds(start_ntp)) );
+	        }
         }
         //do monitor update: 
 	    if( ! this.monitorTimerId ){
@@ -173,15 +186,24 @@ var flashEmbed = {
 	        	this.monitorTimerId = setInterval('$j(\'#'+this.id+'\').get(0).monitor()', 250);
 	    	}
 	    }
-	    js_log('cur perc loaded: ' + this.fla.getPercentLoaded() + 
-	    		' cur time : ' + (time - ntp2seconds(start_ntp)) +' / ' +(ntp2seconds(end_ntp)-ntp2seconds(start_ntp)));
+	    
+	    //super hackery  to see if we have "probably" reached the end of playback: 
+        if(this.prevTime==this.currentTime && (this.currentTime > (ntp2seconds(end_ntp)-1)) ){
+        	js_log('probablly reached end of stream: '+this.currentTime);
+        	this.onClipDone();         	     
+        }
+	   
+	    this.prevTime = this.currentTime;
+	    
+	    //js_log('cur perc loaded: ' + this.fla.getPercentLoaded() +' cur time : ' + (this.currentTime - ntp2seconds(start_ntp)) +' / ' +(ntp2seconds(end_ntp)-ntp2seconds(start_ntp)));
     },
     // get the embed fla object 
     getFLA : function (){
     	this.fla = this.getPluginEmbed();   		
     },
     stop : function(){    
-    	js_log('f:flashEmbed:stop');	
+    	js_log('f:flashEmbed:stop');
+    	this.startedTimedPlayback=false;	
     	if (this.monitorTimerId != 0 )
 	    {
 	        clearInterval(this.monitorTimerId);
@@ -196,6 +218,20 @@ var flashEmbed = {
 	    {
 	        clearInterval(this.monitorTimerId);
 	        this.monitorTimerId = 0;
+	    }
+    },
+    onClipDone: function(){    	    
+    	js_log('f:flash:onClipDone');    	
+	    if( ! this.startedTimedPlayback){
+	    	js_log('clip done before timed playback started .. not good. (ignoring) ');
+	    	//setTimeout('$j(\'#'+embed.id+'\').get(0).play()', 250);
+	    }else{
+	    	js_log('clip done and '+ this.startedTimedPlayback);
+	    	//stop the clip if its not stoped already: 
+    		this.stop();
+		    this.setStatus("Clip Done...");
+			//run the onClip done action: 
+		    this.parent_onClipDone();
 	    }
     }
 }
@@ -237,7 +273,7 @@ function locateFlashEmbed(clip)
     for(var i in global_ogg_list)
     {
         var embed = document.getElementById(global_ogg_list[i]);
-        if(embed.media_element.selected_source.uri.match(clip.fileName))
+        if(embed.media_element.selected_source.src.match(clip.fileName))
         {
             //js_log('found flash embed');
             return embed;
@@ -248,46 +284,41 @@ function locateFlashEmbed(clip)
 /* flowplayer callbacks */
 function onFlowPlayerReady()
 {
-    js_log('onFlowPlayerReady');
+    js_log('f:flash_CB:onFlowPlayerReady');
 }
 
 function onClipDone(clip)
 {	
+	js_log('f:flash_CB:onClipDone');
     var embed = locateFlashEmbed(clip);
-    js_log('f:onClipDone:'+embed.id + ' embed time: '+ embed.time);
-    
-    if( ! embed.startedTimedPlayback){
-    	js_log('clip done before timed playback started .. not good...re-issuing play in .250 seconds');
-    	setTimeout('$j(\'#'+embed.id+'\').get(0).play()', 250);
-    }else{
-    	js_log('clip done and '+ embed.startedTimedPlayback);
-	    embed.setStatus("Clip Done...");
-	    //stop the 
-	    embed.onClipDone();
-    }
+	embed.onClipDone();
 }
 
 function onLoadBegin(clip)
 {
     var embed = locateFlashEmbed(clip);
+    js_log('f:flash_CB:onLoadBegin');
     embed.setStatus("Loading Begun...");
 }
 
 function onPlay(clip)
 {
     var embed = locateFlashEmbed(clip);
+     js_log('f:flash_CB:onPlay');
     embed.setStatus("Playing...");
 }
 
 function onStop(clip)
 {
     var embed = locateFlashEmbed(clip);
+    js_log('f:flash_CB:onStop');
     embed.setStatus("Stopped...");
 }
 
 function onPause(clip)
 {
     var embed = locateFlashEmbed(clip);
+    js_log('f:flash_CB:onPause');
     embed.pause();
     embed.setStatus("Paused...");
 }
@@ -295,11 +326,13 @@ function onPause(clip)
 function onResume(clip)
 {
     var embed = locateFlashEmbed(clip);
+    js_log('f:flash_CB:onResume');
     embed.setStatus("Resumed...");
 }
 
 function onStartBuffering(clip)
 {
     var embed = locateFlashEmbed(clip);
+    js_log('f:flash_CB:onStartBuffering');
     embed.setStatus("Buffering Started...");
 }

@@ -1,5 +1,5 @@
-/** @fileoverview
- * ~mv_embed~
+/*
+ * ~mv_embed version 1.0~
  * for details see: http://metavid.ucsc.edu/wiki/index.php/Mv_embed
  *
  * All Metavid Wiki code is Released under the GPL2
@@ -96,6 +96,12 @@ gMsg['select_transcript_set']='Select Transcripts';
 gMsg['auto_scroll']='auto scroll';
 gMsg['close']='close';
 gMsg['improve_transcript']='Improve Transcript';
+
+gMsg['next_clip_msg']='Play Next Clip';
+gMsg['prev_clip_msg']='Play Previus Clip';
+gMsg['current_clip_msg']='Continue Playing this Clip';
+
+gMsg['seek_to']='Seek to';
 
 //grabs from the globalMsg obj
 //@@todo integrate msg serving into CMS
@@ -556,7 +562,7 @@ var ctrlBuilder = {
 		'volume_control':{
 			'w':22,
 			'o':function(){
-				return '<div class="volume_icon"><a href="javascript:$j(\'#'+ctrlBuilder.id+'\').get(0).toggleMute();"></a></div>'
+				return '<div id="volume_icon_'+ctrlBuilder.id+'" class="volume_icon"><a href="javascript:$j(\'#'+ctrlBuilder.id+'\').get(0).toggleMute();"></a></div>'
 			}
 		},
 		'time_display':{
@@ -1088,7 +1094,7 @@ textInterface.prototype = {
 		$j.each(this.pe.media_element.sources, function(inx, n){
 			if(n.mime_type=='text/cmml'){
 				_this.availableTracks[n.id] = {
-					src:n.uri,
+					src:n.src,
 					title:n.title,
 					loaded:false,
 					display:false
@@ -1356,9 +1362,9 @@ mediaSource.prototype =
     {
     	js_log(element);    	
     	
-        this.uri = $j(element).attr('src');
+        this.src = $j(element).attr('src');
         if(ogg_chop_links)
-            this.uri = this.uri.replace(".anx", '');
+            this.src = this.src.replace(".anx", '');
         this.marked_default = false;
 
         var tag = element.tagName.toLowerCase();
@@ -1371,7 +1377,7 @@ mediaSource.prototype =
         else if ($j(element).attr('content-type'))
             this.mime_type = $j(element).attr('content-type');
         else
-            this.mime_type = this.detectType(this.uri);
+            this.mime_type = this.detectType(this.src);
 
 		js_log("MIME TYPE: "+  this.mime_type );
 
@@ -1393,7 +1399,7 @@ mediaSource.prototype =
 			this.start = $j(element).attr("start");
 		if($j(element).attr("end"))
 			this.start = $j(element).attr("end");
-        //js_log('Adding mediaSource of type ' + this.mime_type + ' and uri ' + this.uri + ' and title ' + this.title);
+        //js_log('Adding mediaSource of type ' + this.mime_type + ' and uri ' + this.src + ' and title ' + this.title);
         this.parseURLDuration();
     },
     /** updates the src time and start & end
@@ -1402,23 +1408,23 @@ mediaSource.prototype =
      */
     updateSrcTime:function (start_ntp, end_ntp){
     	js_log("f:updateSrcTime: "+ start_ntp+'/'+ end_ntp);
-    	//js_log("pre uri:" + this.uri);
+    	//js_log("pre uri:" + this.src);
     	//if we have time we can use:
     	if(this.start_ntp!=null){
     		var index_time_val = false;
     		var time_req_delimitator = '';
-	        if(this.uri.indexOf('?t=')!=-1)index_time_val='?t=';
-	        if(this.uri.indexOf('&t=')!=-1)index_time_val='&t=';
+	        if(this.src.indexOf('?t=')!=-1)index_time_val='?t=';
+	        if(this.src.indexOf('&t=')!=-1)index_time_val='&t=';
 	        if(index_time_val){
-	        	var end_req_string = (this.uri.indexOf('&', this.uri.indexOf(index_time_val)+3)==-1)?
+	        	var end_req_string = (this.src.indexOf('&', this.src.indexOf(index_time_val)+3)==-1)?
 	     					'':
-			    			this.uri.indexOf('&', this.uri.indexOf(index_time_val));
-	        	this.uri = this.uri.substring(0, this.uri.indexOf(index_time_val) ) + index_time_val + start_ntp + '/'+end_ntp + end_req_string;
+			    			this.src.indexOf('&', this.src.indexOf(index_time_val));
+	        	this.src = this.src.substring(0, this.src.indexOf(index_time_val) ) + index_time_val + start_ntp + '/'+end_ntp + end_req_string;
 	        }
     	}
     	//update the duration
     	this.parseURLDuration();
-	  	//js_log("post uri:" + this.uri);
+	  	//js_log("post uri:" + this.src);
     },
     /** MIME type accessor function.
         @return the MIME type of the source.
@@ -1429,12 +1435,22 @@ mediaSource.prototype =
         return this.mime_type;
     },
     /** URI accessor function.
+     * 	@param int seek_time_sec (used to adjust the URI for players that can't do local seeks well on given media types) 
         @return the URI of the source.
         @type String
     */
-    getURI : function()
+    getURI : function(seek_time_sec)
     {
-        return this.uri;
+    	if(!seek_time_sec)
+       		return this.src;
+		       		
+       	pSrc = parseUri(this.src);
+       	var new_url = pSrc.protocol +'://'+ pSrc.host + pSrc.path +'?';       	
+       	for(i in pSrc.queryKey){
+       		new_url +=(i=='t')?'t=' + seconds2ntp(seek_time_sec) +'/'+ this.end_ntp +'&' :
+    									 i+'='+ pSrc.queryKey[i]+'&';    	
+       	}
+       	return new_url;
     },
     /** Title accessor function.
         @return the title of the source.
@@ -1458,23 +1474,22 @@ mediaSource.prototype =
 	 * supports media_url?t=ntp_start/ntp_end url request format
      */
     parseURLDuration : function(){
-        js_log('f:parseURLDuration() for:' + this.uri);
+        js_log('f:parseURLDuration() for:' + this.src);
         var index_time_val = false;
-        if(this.uri.indexOf('?t=')!=-1)index_time_val='?t=';
-        if(this.uri.indexOf('&t=')!=-1)index_time_val='&t=';
+        if(this.src.indexOf('?t=')!=-1)index_time_val='?t=';
+        if(this.src.indexOf('&t=')!=-1)index_time_val='&t=';
         if(index_time_val){
-            var end_index = (this.uri.indexOf('&', this.uri.indexOf(index_time_val)+3)==-1)?
-	     					this.uri.length:
-			    			this.uri.indexOf('&', this.uri.indexOf(index_time_val));
-			this.start_ntp = this.uri.substring(
-	   				this.uri.indexOf(index_time_val)+index_time_val.length,
-		    		this.uri.indexOf('/', this.uri.indexOf(index_time_val) ));
-		    this.end_ntp = this.uri.substring(
-		    		this.uri.indexOf('/', this.uri.indexOf(index_time_val))+1, end_index);
+            var end_index = (this.src.indexOf('&', this.src.indexOf(index_time_val)+3)==-1)?
+	     					this.src.length:
+			    			this.src.indexOf('&', this.src.indexOf(index_time_val));
+			this.start_ntp = this.src.substring(
+	   				this.src.indexOf(index_time_val)+index_time_val.length,
+		    		this.src.indexOf('/', this.src.indexOf(index_time_val) ));
+		    this.end_ntp = this.src.substring(
+		    		this.src.indexOf('/', this.src.indexOf(index_time_val))+1, end_index);
 		    this.start_offset = ntp2seconds(this.start_ntp);
 	   		this.duration = ntp2seconds( this.end_ntp ) - this.start_offset;
-		    //keep values in float seconds
-		    this.start_offset =  this.start_offset
+	   		
 		    this.duration = this.duration;
         }else{
 	     	//else normal media request (can't predict the duration without the plugin reading it)
@@ -1750,6 +1765,11 @@ embedVideo.prototype = {
 	thumbnail_disp:true,
 	init_with_sources_loadedDone:false,
 	inDOM:false,
+	//for onClip done stuff: 
+	anno_data_cache:null,
+	seek_time_sec:0,
+	base_seeker_slider_offset:null,
+	onClipDone_disp:false,
 	supports:{},	
 	//utility functions for property values:
 	hx : function ( s ) {
@@ -1906,6 +1926,7 @@ embedVideo.prototype = {
 			
 			js_log("READY TO PLAY:"+_this.id);			
 			_this.ready_to_play=true;
+			_this.getDuration();
 			_this.getHTML();
 		});
 	},
@@ -1927,7 +1948,7 @@ embedVideo.prototype = {
 		if(!this.media_element.selected_source.start_ntp)
 			return default_time_req;		
 		return this.media_element.selected_source.start_ntp+'/'+this.media_element.selected_source.end_ntp;
-	},
+	},	
     getDuration:function(){
         this.duration = this.media_element.selected_source.duration;
         return this.duration;
@@ -1981,23 +2002,188 @@ embedVideo.prototype = {
 			$j("#mv_play_pause_button_"+_this.id).attr('class', 'pause_button');
 		});
     },
+    /* todo abstract out onClipDone chain of functions and merge with textInterface */
     onClipDone:function(){
     	//stop the clip (load the thumbnail etc) 
     	this.stop();
     	var _this = this;
-    	//now load roe if nessesary and showNextPrevLinks
+    	
+    	//if the clip resolution is < 320 don't do fancy onClipDone stuff 
+    	if(this.width<300){
+    		return ;
+    	}
+    	this.onClipDone_disp=true;
+    	$j('#img_thumb_'+this.id).css('zindex',1);
+    	$j('#big_play_link_'+this.id).hide();
+    	//add the liks_info_div black back 
+    	$j('#dc_'+this.id).append('<div id="liks_info_'+this.id+'" ' +
+	    			'style="width:' +parseInt(parseInt(this.width)/2)+'px;'+	    
+	    			'height:'+ parseInt(parseInt(this.height)) +'px;'+
+	    			'position:absolute;top:10px;'+    			
+	    			'width: '+parseInt( ((parseInt(this.width)/2)-15) ) + 'px;'+
+	    			'left:'+ parseInt( ((parseInt(this.width)/2)+15) ) +'px;">'+	    			
+    			'</div>' +
+    			'<div id="black_back_'+this.id+'" ' +
+	    			'style="z-index:-2;position:absolute;background:#000;' +
+	    			'top:0px;left:0px;width:'+parseInt(this.width)+'px;' +
+	    			'height:'+parseInt(this.height)+'px;">' +
+	    		'</div>');    	
+    	
+    	//start animation (make thumb small in uper left add in div for "loading"    	    
+    	$j('#img_thumb_'+this.id).animate({    			
+    			width:parseInt(parseInt(_this.width)/2),
+    			height:parseInt(parseInt(_this.height)/2),
+    			top:20,
+    			left:10
+    		},
+    		1000, 
+    		function(){
+    			//animation done.. add "loading" to div if empty    	
+    			if($j('#liks_info_'+_this.id).html()==''){
+    				$j('#liks_info_'+_this.id).html(getMsg('loading_txt'));
+    			}		
+    		}
+    	)       	 	   
+    	//now load roe if nessesaryand showNextPrevLinks
     	if(this.roe && this.media_element.addedROEData==false){
     		do_request(this.roe, function(data)
             {            	                        	      	         
             	_this.media_element.addROE(data);
-            	_this.showNextPrevLinks();
+            	_this.getNextPrevLinks();
             });    
     	}else{
-    		this.showNextPrevLinks();
+    		this.getNextPrevLinks();
     	}
     },
+    //@@todo we should merge getNextPrevLinks with textInterface .. there is repeated code between them. 
+    getNextPrevLinks:function(){
+    	js_log('f:getNextPrevLinks');
+    	var anno_track_url = null;
+    	var _this = this; 
+    	//check for annoative track
+    	$j.each(this.media_element.sources, function(inx, n){    		
+			if(n.mime_type=='text/cmml'){
+				if( n.id == 'Anno_en'){
+					anno_track_url = n.src;
+				}
+			}
+    	});
+    	if(anno_track_url){
+    		js_log('found annotative track'+ anno_track_url);
+    		//zero out seconds (should improve cache hit rate and generally expands metadata search)
+    		//@@todo this could be repalced with a regExp
+    		var annoURL = parseUri(anno_track_url);
+    		var times = annoURL.queryKey['t'].split('/');      		
+    		var stime_parts = times[0].split(':');   
+    		var etime_parts = times[0].split(':');         				
+    		//zero out the hour:
+    		var new_start = stime_parts[0]+':'+'0:0';
+    		//zero out the end sec
+    		var new_end   = (etime_parts[0]== stime_parts[0])? (etime_parts[0]+1)+':0:0' :etime_parts[0]+':0:0';
+    		 		
+    		var etime_parts = times[1].split(':');
+    		
+    		var new_anno_track_url = annoURL.protocol +'://'+ annoURL.host + annoURL.path +'?';
+    		for(i in annoURL.queryKey){
+    			new_anno_track_url +=(i=='t')?'t='+new_start+'/'+new_end +'&' :
+    									 i+'='+ annoURL.queryKey[i]+'&';    					    		
+    		}    		
+    		var request_key = new_start+'/'+new_end;
+    		//check the anno_data cache: 
+    		//@@todo search cache see if current is in range.  
+    		if(this.anno_data_cache){
+    			js_log('anno data found in cache: '+request_key);
+    			this.showNextPrevLinks();
+    		}else{    			    			
+	    		do_request(new_anno_track_url, function(cmml_data){
+	    			js_log('raw response: '+ cmml_data);
+				    if(typeof cmml_data == 'string')
+			        {
+			            var parser=new DOMParser();
+			            js_log('Parse CMML data:' + cmml_data);
+			            cmml_data=parser.parseFromString(cmml_data,"text/xml");
+			        }
+	    			//init anno_data_cache
+	    			if(!_this.anno_data_cache)
+	    				_this.anno_data_cache={};	    			
+	    			//grab all metadata and put it into the anno_data_cache: 	    			
+	    			$j.each(cmml_data.getElementsByTagName('clip'), function(inx, clip){
+	    				_this.anno_data_cache[ $j(clip).attr("id") ]={
+	    						'start_time_sec':ntp2seconds($j(clip).attr("start").replace('npt:','')),
+	    						'end_time_sec':ntp2seconds($j(clip).attr("end").replace('npt:','')),
+	    						'time_req':$j(clip).attr("start").replace('npt:','')+'/'+$j(clip).attr("end").replace('npt:','')
+	    					};
+	    				//grab all its meta
+	    				_this.anno_data_cache[ $j(clip).attr("id") ]['meta']={};
+	    				$j.each(clip.getElementsByTagName('meta'),function(imx, meta){	    					
+	    					//js_log('adding meta: '+ $j(meta).attr("name")+ ' = '+ $j(meta).attr("content"));
+	    					_this.anno_data_cache[$j(clip).attr("id")]['meta'][$j(meta).attr("name")]=$j(meta).attr("content");
+	    				});
+	    			});
+	    			_this.showNextPrevLinks();	    			
+	    		});
+    		}
+    	}else{
+    		js_log('no annotative track found');
+    	}
+    	//query current request time +|- 60s to get prev next speech links. 
+    },
     showNextPrevLinks:function(){
+    	//int requested links: 
+    	var link = {
+    		'prev':'',
+    		'current':'',
+    		'next':''
+    	}    	
+    	var curTime = this.getTimeReq().split('/');
     	
+    	var s_sec = ntp2seconds(curTime[0]);
+    	var e_sec = ntp2seconds(curTime[1]); 
+    	
+    	//now we have all the data in anno_data_cache
+    	for(var clip_id in this.anno_data_cache){  
+		 	var clip =  this.anno_data_cache[clip_id];
+		 	//js_log('on clip:'+ clip_id);
+		 	//set prev_link (if cur_link is still empty)
+			if(s_sec < clip.start_time_sec && link.current=='') 
+				link.prev = clip_id;
+				
+			//clip is encapsulated by the current clip add current link:
+			if(s_sec > clip.start_time_sec && e_sec < clip.end_time_sec )
+				link.current = clip_id;
+						
+			if(e_sec <  clip.start_time_sec && link.next=='')
+				link.next = clip_id;
+    	}   
+    	var html='';   
+    	for(var link_type in link){
+    		var link_id = link[link_type];    		
+    		if(link_id!=''){
+    			var clip = this.anno_data_cache[link_id];
+    			
+    			var title_msg='';
+				for(var j in clip['meta']){
+					title_msg+=j.replace(/_/g,' ') +': ' +clip['meta'][j].replace(/_/g,' ') +" \n";
+				}    	
+				var time_req = 	clip.time_req;	
+				if(link_type=='current') //if current start from end of current clip play to end of current meta: 				
+					time_req = curTime[1]+ '/' + seconds2ntp(clip.end_time_sec);
+				
+	    		html+='<p><a href="#" title="' +title_msg + '" '+	    				 
+	    				'onClick="$j(\'#'+this.id+'\').get(0).playByTimeReq(\''+ 
+	    					time_req + '\'); return false; ">' +
+	    	 		getMsg(link_type+'_clip_msg') + 	    	 	
+	    		'</a></p>';
+    		}    	    				
+    	}
+    	//js_log("should set html:"+ html);
+    	$j('#liks_info_'+this.id).html(html);
+    },
+    playByTimeReq: function(time_req){
+    	js_log('f:playByTimeReq: '+time_req );
+    	this.stop();
+    	this.updateVideoTimeReq(time_req);
+    	this.play();    	
     },
     doThumbnailHTML:function()
     {  	
@@ -2032,7 +2218,7 @@ embedVideo.prototype = {
 	getHTML : function (){		
 		//@@todo check if we have sources avaliable	
 		js_log('f : getHTML');			
-				
+		var _this = this; 				
 		var html_code = '';		
         html_code = '<div id="videoPlayer_'+this.id+'" style="width:'+this.width+'px;" class="videoPlayer">';        
 			html_code += '<div style="width:'+parseInt(this.width)+'px;height:'+parseInt(this.height)+'px;"  id="mv_embedded_player_'+this.id+'">' +
@@ -2053,7 +2239,44 @@ embedVideo.prototype = {
 	        }
         html_code += '</div>'; //videoPlayer div close        
         js_log('should set: '+this.id);
-        $j(this).html(html_code);                
+        $j(this).html(html_code);      
+        
+        if(!_this.base_seeker_slider_offset)
+        	_this.base_seeker_slider_offset = $j('#mv_seeker_slider_'+_this.id).get(0).offsetLeft;
+        	
+        _this.start_time_sec = ntp2seconds(_this.getTimeReq().split('/')[0]);
+        
+        js_log('start sec: '+_this.start_time_sec + ' base offset: '+_this.base_seeker_slider_offset);
+        
+        //buid dragable hook here:
+        $j('#mv_seeker_slider_'+this.id).draggable({
+        	containment:'parent',
+        	axis:'x',
+        	opacity:.6,
+        	start:function(e, ui){
+        		_this.userSlide=true;
+        		js_log("started draging set userSlide"+_this.userSlide)
+        	},
+        	drag:function(e, ui){
+        		//@@todo get the -14 number from the skin somehow
+        		var perc = (($j('#mv_seeker_slider_'+_this.id).get(0).offsetLeft-_this.base_seeker_slider_offset)
+						/
+					($j('#mv_seeker_'+_this.id).width()-14));   
+					 													
+				this.jump_time = seconds2ntp(parseInt(_this.duration*perc)+ _this.start_time_sec);	
+				js_log('perc:' + perc + ' * ' + _this.duration + ' jt:'+  this.jump_time);
+				_this.setStatus( getMsg('seek_to')+' '+this.jump_time );    						
+        	},
+        	stop:function(e, ui){
+        		_this.userSlide=false;
+        		js_log('do jump to: '+this.jump_time)
+        		//reset slider				
+        		_this.seek_time_sec=ntp2seconds(this.jump_time);
+        		_this.stop();
+        		_this.play();
+        	}
+        });
+                  
         //js_log('set this to: ' + $j(this).html() );	
         //alert('stop');
         //if auto play==true directly embed the plugin
@@ -2085,7 +2308,11 @@ embedVideo.prototype = {
 		//update media
 		this.media_element.updateSourceTimes(start_time, end_time);
 		//update mv_time
-		$j('#mv_time_'+ this.id).html(start_time+'/'+end_time);
+		this.setStatus(start_time+'/'+end_time);
+		//reset slider
+		this.setSliderValue(0);
+		//reset seek_offset:
+		this.seek_time_sec=0;
 	},
 	//updates the video src
 	updateVideoSrc : function(src){
@@ -2430,20 +2657,23 @@ embedVideo.prototype = {
 				//this.innerHTML = this.getPluginMissingHTML();
 				//$j(this).html(this.getPluginMissingHTML());
 				$j('#'+this.id).html(this.getPluginMissingHTML());
-			}else
+			}else{
                 this.doEmbedHTML();
+                this.onClipDone_disp=false;
+			}
 		}else{
 			//the plugin is already being displayed
 			js_log("we are already playing" );
 		}
 	},
-	toggleMute:function(){
+	toggleMute:function(){		
 		if(this.muted){
 			this.muted=false;
+			$j('#volume_icon_'+this.id).removeClass('volume_off').addClass('volume_on');
 		}else{
 			this.muted=true;
+			$j('#volume_icon_'+this.id).removeClass('volume_on').addClass('volume_off');
 		}
-		//update audio icon: 
 	},
 	play_or_pause : function(){
 		js_log('base play or pause');
@@ -2469,7 +2699,7 @@ embedVideo.prototype = {
 		//if we are not in playlist mode stop:
 		if(!this.pc){
 			this.stop();
-		}
+		}		
 	},
 	/*
 	 * base embed pause
@@ -2491,6 +2721,7 @@ embedVideo.prototype = {
 		}else{
 			//rewrite the html to thumbnail disp
 			this.doThumbnailHTML();
+			this.setSliderValue(0);
 		}
         if(this.update_interval)
         {
@@ -2580,25 +2811,7 @@ embedVideo.prototype = {
 		});
 		//if(!slider_id)slider_id=this.id;
 		//get a pointer to this id (as this in onSlide context is not "this")
-		/*var parent_id = this.id;	*/
-		/*this.slider = new Control.Slider('playhead_'+this.id, 'track_'+this.id,{
-			sliderValue:0,
-			onSlide:function(v){
-				if(! thisVid.userSlide){
-					//user slide clip:
-					thisVid.userSlide=true;
-					js_log('user slide: ' + thisVid.userSlide);
-				}
-			},
-			onChange:function(v){
-				if(thisVid.userSlide==true){
-					//seek to a given position:
-					js_log('this.userSlide seek to: ' + v);
-					thisVid.doSeek(v);
-					thisVid.userSlide=false;
-				}
-			}
-		});*/
+		/*var parent_id = this.id;	*/	
 	},
 	setSliderValue: function(perc){
 		var id = (this.pc)?this.pc.pp.id:this.id;
@@ -2606,8 +2819,10 @@ embedVideo.prototype = {
 		if(!this.mv_seeker_width)
 			this.mv_seeker_width = $j('#mv_seeker_slider_'+id).width();
 		
+		js_log('currentTime:'+ this.currentTime);
+		
 		var val = Math.round( perc  * $j('#mv_seeker_'+id).width() - (this.mv_seeker_width*perc));
-		$j('#mv_seeker_slider_'+id).css('marginLeft', val );
+		$j('#mv_seeker_slider_'+id).css('left', (val+41)+'px' );
 		//js_log('perc in: ' + perc + ' * ' + $j('#mv_seeker_'+id).width() + ' = set to: '+ val + ' - '+ Math.round(this.mv_seeker_width*perc) );
 		//js_log('op:' + offset_perc + ' *('+perc+' * ' + $j('#slider_'+id).width() + ')');
 	},

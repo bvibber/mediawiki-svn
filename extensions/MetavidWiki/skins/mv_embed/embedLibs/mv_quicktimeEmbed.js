@@ -42,7 +42,7 @@ var quicktimeEmbed = {
 			"<param name='SCALE' value='Aspect'/>" + 
 			"<param name='AUTOPLAY' value='True'/>" +
 			"<param name='src' value=" + mv_embed_path + 'null_file.mov' +  "/>" +
-			"<param name='QTSRC' value=" + this.src + "/>" +
+			"<param name='QTSRC' value=" + this.media_element.selected_source.getURI(this.seek_time_sec) + "/>" +
 			"</object></div>";		
     },
     makeQuickTimePollFunction : function ( ) {

@@ -29,7 +29,7 @@ var oggplayEmbed = {
 	getEmbedObj:function(){
 		return '<embed type="application/liboggplay" ' +
 						'id="'+this.pid + '" ' + 
-					   	'src="'+this.src+'" '+
+					   	'src="'+this.media_element.selected_source.getURI(this.seek_time_sec)+'" '+
 						'width="'+this.width+'" height="'+this.height+'">' + 
 				'</embed>';
 	},

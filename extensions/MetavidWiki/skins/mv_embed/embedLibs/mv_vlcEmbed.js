@@ -54,8 +54,9 @@ var vlcEmbed = {
 	    	this.vlc.style.width=this.width;
 	    	this.vlc.style.height=this.height;       
 	    	this.vlc.playlist.items.clear();
-	    	js_log('vlc play:' + this.media_element.selected_source.uri);   
-	    	var itemId = this.vlc.playlist.add(this.media_element.selected_source.uri);
+	    	//@@todo if client supports seeking no need to send seek_offset to URI
+	    	js_log('vlc play:' + this.media_element.selected_source.getURI(this.seek_time_sec));   
+	    	var itemId = this.vlc.playlist.add( this.media_element.selected_source.getURI(this.seek_time_sec) );
 	    	if( itemId != -1 ){
 	    		//play
 	    		this.vlc.playlist.playItem(itemId);
@@ -117,7 +118,7 @@ var vlcEmbed = {
 	        	    // current media has stopped 
 		            this.onStop();
 		            //assume we reached the end: (since it was not a js call to stop) 
-   		        	this.streamEnd();
+   		        	this.onClipDone();
 	        	}
 		        else if( newState == 1 )
 	        	{
@@ -173,26 +174,25 @@ var vlcEmbed = {
     },
     liveFeedRoll : 0,
     onPlaying : function(){     	    
-    	//update the duration attribute
-    	if(this.duration!=this.vlc.input.length /1000){
+    	//for now trust the duration from url over vlc input.length
+    	this.duration = (this.getDuration())?this.getDuration():this.vlc.input.length /1000;
+    	/*if(this.duration!=this.vlc.input.length /1000){
 	        this.duration = this.vlc.input.length /1000;   
-    	}     
+    	}*/     
        	//update the currentTime attribute 
-       	this.currentTime =this.vlc.input.time/1000;
-        if( this.duration > 0 || this.vlc.input.time > 0){                     
-        	///set mediaLen via request Url 
-			if(this.duration==0)      
-				this.duration=this.getDuration();
-			
-			if(!this.start_offset)
-				this.start_offset=this.media_element.selected_source.start_offset;		
+       	this.currentTime =this.vlc.input.time/1000;       	
+        if( this.duration > 0 || this.vlc.input.time > 0){                             				     					
+			this.start_offset=this.media_element.selected_source.start_offset;		
 			
 			//if we have media duration procceed
 			if(this.duration){
 			//as long as the user is not interacting with the playhead update:
-				if(! this.userSlide){
-					//js_log('user slide is false' + this.userSlide + '(update)');
-					if(this.vlc.input.position!=0){
+				if(! this.userSlide){									
+					//slider pos is not accurate with flash: 
+					if(this.vlc.input.position!=0 && this.media_element.selected_source.mime_type!='video/x-flv'){
+						/*js_log(' set slider via input.position: ' + 
+							this.media_element.selected_source.mime_type + ' pos:'+ this.vlc.input.position);
+						*/
 						this.setSliderValue(this.vlc.input.position);
 					}else{
 						//set via time:
@@ -204,9 +204,6 @@ var vlcEmbed = {
 					}  	    
 					//js_log('set status: '+ seconds2ntp(this.currentTime) + ' e:'+seconds2ntp(this.duration+this.start_offset));    
 					this.setStatus(seconds2ntp(this.currentTime) + '/' + seconds2ntp(this.duration+this.start_offset) );					
-			   }else{
-			   		//update info to seek to: 
-					this.setStatus('seek to: '	+ seconds2ntp(Math.round( (this.sliderVal*this.duration)) ));
 			   }
 			}
         }else{        	        	
@@ -272,8 +269,10 @@ var vlcEmbed = {
 		this.vlc.playlist.togglePause();
     },
     fullscreen : function(){
-		if(this.vlc)
-			this.vlc.video.toggleFullscreen();
+		if(this.vlc){
+			if(this.vlc.video)
+				this.vlc.video.toggleFullscreen();
+		}
     },
     /* returns current time in float seconds 
      * as per html5 we should just have an attribute by name of CurrentTime

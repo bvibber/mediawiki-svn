@@ -28,7 +28,7 @@ var nativeEmbed = {
 					'id="'+this.pid + '" ' +
 					'style="width:'+this.width+'px;height:'+this.height+'px;" ' +
 					'width="'+this.width+'" height="'+this.height+'" '+
-				   	'src="'+this.media_element.selected_source.uri+'" ' +				   	
+				   	'src="' + this.media_element.selected_source.getURI(this.seek_time_sec) + '" ' +				   	
 				   	'oncanplaythrough="$j(\'#'+this.id+'\').get(0).oncanplaythrough();return false;" ' +
 				   	'onloadedmetadata="$j(\'#'+this.id+'\').get(0).onloadedmetadata();return false;" ' + 
 				   	'loadedmetadata="$j(\'#'+this.id+'\').get(0).onloadedmetadata();return false;" ' +

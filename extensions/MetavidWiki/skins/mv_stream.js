@@ -214,11 +214,14 @@ var mv_init_interface = {
 		});
 	},
 	mvdOver:function(mvd_id){
-		js_log('do mv_fdOver ' + mvd_id );
-		if($j('#embed_vid').get(0).isPlaying()){
-			this.delay_cur_mvd_id= mvd_id;
-			setTimeout("mv_init_interface.delayDoVidMvdUpdate()", 250);
-		}else{
+		js_log('f:mvdOver' + mvd_id );
+		var vid_elm = $j('#embed_vid').get(0);
+		if( vid_elm.isPlaying() ){
+			if(!vid_elm.onClipDone_disp){
+				this.delay_cur_mvd_id= mvd_id;
+				setTimeout("mv_init_interface.delayDoVidMvdUpdate()", 250);
+			}
+		}else{					
 			this.cur_mvd_id=this.delay_cur_mvd_id=mvd_id;
 			do_video_mvd_update(mvd_id);
 		}
@@ -231,11 +234,9 @@ var mv_init_interface = {
 		de_highlight_tl_ts(mvd_id);
 		de_highlight_fd(mvd_id);
 		js_log('calling interface restore: ');
-		//give an additional 500ms (so if we jump from one mvd_id to another we don't restore original so quickly)
-		//dont restore:
-		//setTimeout("mv_init_interface.doRestore()", 500);
+		setTimeout('mv_init_interface.doRestore()',500);				
 		//activiate over on time restore
-		$j('#mv_stream_time').hoverIntent({
+		/*$j('#mv_stream_time').hoverIntent({
 			interval:200, //polling interval
 			timeout:200, //delay before onMouseOut
 			over:function(){
@@ -244,35 +245,40 @@ var mv_init_interface = {
 			out:function(){
 
 			}
-		});
+		});*/
 	},
-	//delay video updates until we are not playing the clip:
+	//delay video updates until we are not playing the clip and clipEnd is not displayed
 	delayDoVidMvdUpdate:function(){
 		if($j('#embed_vid').get(0).isPlaying()){
 			setTimeout("mv_init_interface.delayDoVidMvdUpdate()", 250);
 		}else{
-			if(this.cur_mvd_id!=this.delay_cur_mvd_id){
-				this.cur_mvd_id = this.delay_cur_mvd_id;
-				do_video_mvd_update(this.cur_mvd_id);
+			//only restore if the onClipDone_disp is false
+			if( !$j('#embed_vid').get(0).onClipDone_disp){
+				if(this.cur_mvd_id!=this.delay_cur_mvd_id){
+					this.cur_mvd_id = this.delay_cur_mvd_id;
+					do_video_mvd_update(this.cur_mvd_id);
+				}
 			}
 		}
 	},
 	/* based on a a mvd_id update the video thumbnail to the correct location
-	 * if scriptaculus is loaded fade between images
 	 */
 	doRestore:function(){
 		var vid_elm = $j('#embed_vid').get(0);
 		if(vid_elm){
-			if( vid_elm.isPlaying() ){
-				//js_log('vid elm is playing delay restore:')
-				setTimeout("mv_init_interface.doRestore()", 500);
+			if( vid_elm.isPlaying()){
+				//js_log('vid elm is playing delay restore:')						
+					setTimeout("mv_init_interface.doRestore()", 500);				
 			}else{
-				//only restore if the cur_mvd = 'base' and interface updates are not locked
-				if(this.cur_mvd_id=='base'){
-					vid_elm.updateThumbnail(org_thum_src);
-					vid_elm.updateVideoTimeReq(org_vid_time_req);
-					//vid_elm.updateVideoSrc(org_vid_src);
-					$j('#mv_videoPlayerTime').html(org_vid_title);
+				//only restore if onClipDone_disp is false
+				if(!vid_elm.onClipDone_disp){
+					//only restore if the cur_mvd = 'base' and interface updates are not locked
+					if(this.cur_mvd_id=='base'){
+						vid_elm.updateThumbnail(org_thum_src);
+						vid_elm.updateVideoTimeReq(org_vid_time_req);
+						//vid_elm.updateVideoSrc(org_vid_src);
+						$j('#mv_videoPlayerTime').html(org_vid_title);
+					}
 				}
 			}
 		}
@@ -788,8 +794,12 @@ function mv_do_ajax_form_submit(mvd_id, edit_action){
 function mv_play_or_pause(){
 	 //issue a stop since we want mouse_overs to work 
 	 var ebvid = $j('#embed_vid').get(0);
-	 if(!ebvid.paused)
+	 if(!ebvid.paused){
 	 	mv_do_stop();
+	 	ebvid.pauseed=true;
+	 }else{	 	
+	 	mv_do_play();	 	
+	 }
 }
 function mv_do_stop(){
 	$j('#mv_videoPlayerTime').fadeIn('fast');
@@ -912,6 +922,8 @@ function do_video_mvd_update(mvd_id){
 		//get the current thumbnail
 		var vid_elm = document.getElementById('embed_vid');
 		if(!vid_elm)return '';
+		//make the play button visable again (if its hidden) : 
+		$j('#big_play_link_embed_vid').show();
 		do_video_time_update(time_ary[1], time_ary[2],mvd_id);
 	}
 }
@@ -927,8 +939,8 @@ function do_update_thumb(mvd_id, start_time){
 	//set via mvd
 	if(mvd_id){
 		if($j('#mv_fd_mvd_'+mvd_id).attr('image_url')!=$j('#embed_vid').get(0).thumbnail){
-				$j('#embed_vid').get(0).updateThumbnail($j('#mv_fd_mvd_'+mvd_id).attr('image_url'));
-				return ;
+			$j('#embed_vid').get(0).updateThumbnail($j('#mv_fd_mvd_'+mvd_id).attr('image_url'));
+			return ;
 		}
 	}
 	//else set via org_thum_src
