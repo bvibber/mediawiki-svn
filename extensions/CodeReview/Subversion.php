@@ -128,7 +128,8 @@ class SubversionShell extends SubversionAdaptor {
 					$state = "revdata";
 					break;
 				} else {
-					throw new MWException( "Unexpected start line: $line" );
+					return $out;
+					#throw new MWException( "Unexpected start line: $line" );
 				}
 			case "revdata":
 				if( $line == "" ) {
