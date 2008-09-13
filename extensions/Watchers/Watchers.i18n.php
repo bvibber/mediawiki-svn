@@ -8,13 +8,14 @@
 $messages = array();
 
 $messages['en'] = array(
-	'watchers'               => 'Watchers',
-	'watchers_link_title'    => 'Who watches this page?',
-	'watchers_error_article' => '<b>Error:</b> Page does not exist.',
-	'watchers_header'        => 'People who are watching "$1"',
-	'watchers_noone_watches' => 'Noone watches this page.',
-	'watchers_x_or_more'     => '$1 or more people are watching this page.',
-	'watchers_less_than_x'   => 'Less than $1 people watch this page.',
+	'watchers' => 'Watchers',
+	'watchers-desc' => 'Shows [[Special:Watchers|which users have a page on their watchlist]]',
+	'watchers_link_title' => 'Who watches this page?',
+	'watchers_error_article' => "'''Error:''' Page does not exist.",
+	'watchers_header' => '{{PLURAL:$2|User who is|Users who are}} watching "$1"',
+	'watchers_noone_watches' => 'No one watches this page.',
+	'watchers_x_or_more' => '$1 or more {{PLURAL:$1|users|users}} have this page on their watchlist.',
+	'watchers_less_than_x' => 'Fewer than $1 {{PLURAL:$1|users|users}} have this page on their watchlist.',
 );
 
 /** Message documentation (Message documentation)
