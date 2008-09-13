@@ -148,7 +148,7 @@ function efMiniPreviewShow ( &$imagePage, &$output )  {
 			$html .= wfOpenElement( 'div', array(
 				'style' => "width:{$wgMiniPreviewThumbnailSize}px;height:{$wgMiniPreviewThumbnailSize}px;",
 				'class' => 'MiniPreview_count' ));
-			$html .= wfMsg ( 'minipreview-files_in_'.$mode , array("<b>".$p->image_count."</b>") );
+			$html .= wfMsgExt( 'minipreview-files_in_'.$mode , array( 'parsemag' ), $p->image_count );
 			$html .= wfCloseElement ( "div" ) ;
 			$html .= wfCloseElement ( "td" ) ;
 			$html .= wfCloseElement ( "tr" ) ;
