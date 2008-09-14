@@ -2,7 +2,7 @@
 
 class LinkSearchSpecialPage extends SpecialPage {
 	public function __construct() {
-		parent::__construct( 'Linksearch' );
+		parent::__construct( 'LinkSearch' );
 	}
 
 	function execute( $par ) {
@@ -75,9 +75,9 @@ class LinkSearchPage extends QueryPage {
 	}
 
 	function getName() {
-		return 'Linksearch';
+		return 'LinkSearch';
 	}
-	
+
 	/**
 	 * Disable RSS/Atom feeds
 	 */
@@ -125,7 +125,7 @@ class LinkSearchPage extends QueryPage {
 		$encSQL = '';
 		if ( isset ($this->mNs) && !$wgMiserMode )
 			$encSQL = 'AND page_namespace=' . $dbr->addQuotes( $this->mNs );
-		
+
 		$use_index = $dbr->useIndexClause( $clause );
 		return
 			"SELECT
