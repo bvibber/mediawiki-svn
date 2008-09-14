@@ -3,6 +3,7 @@ Section: unknown
 Priority: optional
 Maintainer: River Tarnell <river@wikimedia.org>
 Standards-Version: 3.6.2
+Build-Depends: debhelper (>= 4.0.0)
 
 Package: wikimedia-task-appserver
 Architecture: all

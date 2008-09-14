@@ -54,6 +54,9 @@ install: build
 	install -m 0644 php.ini $(DESTDIR)/usr/share/php5/php.ini-dist
 	install -m 0400 sudoers $(DESTDIR)/etc/
 
+	install -d -m 0750 $(DESTDIR)/var/lib/pybal-check/.ssh
+	install -m 0640 authorized_keys $(DESTDIR)/var/lib/pybal-check/.ssh/authorized_keys
+
 # Build architecture-independent files here.
 binary-indep: build install
 # We have nothing to do by default.

@@ -56,6 +56,8 @@ case "$1" in
 		fi
 	fi
 
+        chown pybal-check:pybal-check /var/lib/pybal-check/.ssh/authorized_keys
+
         checkmount amane:/export/upload /mnt/upload3
         checkmount amane:/export/math /mnt/math
 		checkmount storage1.wikimedia.org:/export/upload /mnt/upload4

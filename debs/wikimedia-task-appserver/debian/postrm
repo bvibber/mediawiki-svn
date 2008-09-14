@@ -29,6 +29,10 @@ removemount() {
 
 case "$1" in
     purge)
+        # Remove PyBal check user account
+        deluser pybal-check
+	rm -rf /var/lib/pybal-check
+
         dpkg-divert --package wikimedia-task-appserver --rename --remove /etc/apache2/apache2.conf
         dpkg-divert --package wikimedia-task-appserver --rename --remove /etc/php5/apache2/php.ini
 	dpkg-divert --package wikimedia-task-appserver --rename --remove /usr/share/php5/php.ini-dist
@@ -36,16 +40,16 @@ case "$1" in
         dpkg-divert --package wikimedia-task-appserver --rename --remove /etc/apache2/envvars
 	;;
     remove)
-       	removemount /mnt/upload3
-		removemount /mnt/upload4
-       	removemount /mnt/math
+        removemount /mnt/upload3
+        removemount /mnt/upload4
+        removemount /mnt/math
        	;;
 
     upgrade|failed-upgrade|abort-install|abort-upgrade|disappear)
        removemount /mnt/upload3
-		removemount /mnt/upload4
+       removemount /mnt/upload4
        removemount /mnt/math
-        ;;
+       ;;
 
     *)
         echo "postrm called with unknown argument \`$1'" >&2

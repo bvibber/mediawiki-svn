@@ -1,3 +1,10 @@
+wikimedia-task-appserver (1.26) hardy; urgency=low
+
+  * Add account setup for PyBal SSH checking
+  * Add debhelper to the build dependencies
+
+ -- Mark Bergsma <mark@wikimedia.org>  Sun, 14 Sep 2008 15:42:44 +0000
+
 wikimedia-task-appserver (1.25) hardy; urgency=low
 
   * Added /mnt/upload4 to the NFS mount list

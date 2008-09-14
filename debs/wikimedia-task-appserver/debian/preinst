@@ -27,9 +27,17 @@ case "$1" in
 			--divert /etc/sudoers.default /etc/sudoers
 	dpkg-divert --package wikimedia-task-appserver --add --rename \
 			--divert /etc/apache2/envvars.default /etc/apache2/envvars
+	
+	# Create user for the PyBal checks
+	adduser --system --home /var/lib/pybal-check --group --disabled-password --shell /bin/sh pybal-check
     ;;
 
-    upgrade|abort-upgrade)
+    upgrade)
+        # Create user for the PyBal checks
+        adduser --system --home /var/lib/pybal-check --group --disabled-password --shell /bin/sh pybal-check
+    ;;
+
+    abort-upgrade)
     ;;
 
     *)
