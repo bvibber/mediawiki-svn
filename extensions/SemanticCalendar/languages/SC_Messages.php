@@ -284,6 +284,7 @@ $messages['nn'] = array(
  * @author Jon Harald Søby
  */
 $messages['no'] = array(
+	'sc_desc' => 'En kalender som viser semantisk datoinformasjon',
 	'sc_previousmonth' => 'Forrige måned',
 	'sc_nextmonth' => 'Neste måned',
 	'sc_today' => 'I dag',

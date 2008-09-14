@@ -245,6 +245,7 @@ $messages['eo'] = array(
 	'group-patroller' => 'Patrolantoj',
 	'group-patroller-member' => 'Patrolanto',
 	'grouppage-patroller' => '{{ns:project}}:Patrolanto',
+	'right-patroller' => 'Patroli paĝojn',
 );
 
 /** Spanish (Español)

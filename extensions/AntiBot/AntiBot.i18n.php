@@ -241,6 +241,13 @@ $messages['uk'] = array(
 	'antibot-desc' => 'Просте середовище для виявлення спамботів та роботів, що викликають зайве навантаження сервера',
 );
 
+/** Vèneto (Vèneto)
+ * @author Candalua
+ */
+$messages['vec'] = array(
+	'antibot-desc' => 'Un semplice framework par el controlo dei spambot e par el payload dei trigger',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Vinhtantran
  */

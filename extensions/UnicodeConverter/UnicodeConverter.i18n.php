@@ -56,6 +56,16 @@ $messages['de'] = array(
 	'unicodeconverter-newtext' => 'Konvertierter Text:',
 );
 
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
+$messages['eo'] = array(
+	'unicodeconverter' => 'Unikoda konvertilo',
+	'unicodeconverter-ok' => 'Ek',
+	'unicodeconverter-oldtext' => 'Originala teksto:',
+	'unicodeconverter-newtext' => 'Konvertita teksto:',
+);
+
 /** French (Français)
  * @author Zetud
  */
@@ -127,6 +137,13 @@ $messages['oc'] = array(
 	'unicodeconverter-ok' => "D'acòrdi",
 	'unicodeconverter-oldtext' => 'Tèxt original :',
 	'unicodeconverter-newtext' => 'Tèxt un còp convertit :',
+);
+
+/** Polish (Polski)
+ * @author Jwitos
+ */
+$messages['pl'] = array(
+	'unicodeconverter-ok' => 'OK',
 );
 
 /** Slovak (Slovenčina)

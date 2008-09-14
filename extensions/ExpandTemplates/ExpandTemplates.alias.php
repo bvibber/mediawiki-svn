@@ -35,6 +35,11 @@ $aliases['de'] = array(
 	'ExpandTemplates' => array( 'Vorlagen expandieren' ),
 );
 
+/** Greek (Ελληνικά) */
+$aliases['el'] = array(
+	'ExpandTemplates' => array( 'ΕπέκτασηΠροτύπων' ),
+);
+
 /** Finnish (Suomi) */
 $aliases['fi'] = array(
 	'ExpandTemplates' => array( 'Mallineiden laajennus' ),
@@ -70,6 +75,11 @@ $aliases['hu'] = array(
 /** Indonesian (Bahasa Indonesia) */
 $aliases['id'] = array(
 	'ExpandTemplates' => array( 'Kembangkan templat' ),
+);
+
+/** Italian (Italiano) */
+$aliases['it'] = array(
+	'ExpandTemplates' => array( 'EspandiTemplate' ),
 );
 
 /** Korean (한국어) */

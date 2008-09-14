@@ -79,6 +79,13 @@ $messages['he'] = array(
 	'trustedxff-desc' => 'טיפול ברשימה של כתובות פרוקסי אמינות ([http://meta.wikimedia.org/wiki/XFF_project פרויקט ה־XFF])',
 );
 
+/** Croatian (Hrvatski)
+ * @author Dalibor Bosits
+ */
+$messages['hr'] = array(
+	'trustedxff-desc' => 'Omogućava stvaranje popisa odobrenih proxy adresa ([http://meta.wikimedia.org/wiki/XFF_project XFF projekt])',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */

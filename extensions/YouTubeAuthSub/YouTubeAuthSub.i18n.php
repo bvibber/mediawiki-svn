@@ -1151,7 +1151,30 @@ $messages['ru'] = array(
 	'youtubeauthsub_info' => 'Чтобы загрузить видео на YouTube и вставить его на страницу, заполните следующие поля:',
 	'youtubeauthsub_title' => 'Заголовок',
 	'youtubeauthsub_description' => 'Описание',
+	'youtubeauthsub_password' => 'Пароль на YouTube',
+	'youtubeauthsub_username' => 'Имя пользователя на YouTube',
+	'youtubeauthsub_keywords' => 'Ключевые слова',
 	'youtubeauthsub_category' => 'Категория',
+	'youtubeauthsub_submit' => 'Отправить',
+	'youtubeauthsub_clickhere' => 'Нажмите здесь, чтобы войти в YouTube',
+	'youtubeauthsub_tokenerror' => 'ошибка создания токена авторизации, попробуйте обновить страницу.',
+	'youtubeauthsub_success' => "Поздравляем!
+Ваше видео загружено.
+Чтобы просмотреть ваше видео нажмите <a href='http://www.youtube.com/watch?v=$1'>здесь</a>.
+YouTube, возможно, будет некоторое время обрабатывать ваше видео, поэтому оно может быть недоступно прямо сейчас.
+
+Чтобы добавить ваше видео на вики-стреницу, вставьте на страницу следующий код:
+<code>{{&#35;ev:youtube|$1}}</code>",
+	'youtubeauthsub_authsubinstructions' => 'Чтобы загрузить видео, вам необходимо сначала зайти/зарегистрироваться в YouTube.',
+	'youtubeauthsub_uploadhere' => 'Загрузить ваше видео отсюда:',
+	'youtubeauthsub_uploadbutton' => 'Загрузить',
+	'youtubeauthsub_code' => '{{#ev:youtube|$1}}.
+
+Это видео может быть просмотрено [http://www.youtube.com/watch?v=$1 здесь]',
+	'youtubeauthsub_summary' => 'Загрузка видео YouTube',
+	'youtubeauthsub_uploading' => 'Ваше видео загружается.
+Пожалуйста, подождите.',
+	'youtubeauthsub_viewpage' => 'Вы также можете просмотреть видео [[$1|здесь]].',
 	'youtubeauthsub_jserror_nokeywords' => 'Пожалуйста, введите одно или несколько ключевых слов.',
 	'youtubeauthsub_jserror_notitle' => 'Пожалуйста, введите заголовок видео.',
 	'youtubeauthsub_jserror_nodesc' => 'Пожалуйста, введите описание видео.',

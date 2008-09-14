@@ -174,6 +174,7 @@ $messages['eo'] = array(
 	'tasklistemail' => 'Kara %j',
 	'tasklistmytasks' => 'Miaj taskoj',
 	'tasklistchooseproj' => 'Selektu Projekton:',
+	'tasklistprojdisp' => 'Montri',
 );
 
 /** French (Français)

@@ -422,6 +422,13 @@ $messages['oc'] = array(
 	'right-editclosedwikis' => 'Modificar los wikis clausurats',
 );
 
+/** Polish (Polski)
+ * @author Jwitos
+ */
+$messages['pl'] = array(
+	'closewikis-page-close-submit' => 'Zamknij',
+);
+
 /** Romanian (Română)
  * @author KlaudiuMihaila
  */

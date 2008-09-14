@@ -30,6 +30,12 @@ $aliases['arz'] = array(
 	'Disabledusers' => array( 'مستخدمون_معطلون' ),
 );
 
+/** German (Deutsch) */
+$aliases['de'] = array(
+	'PasswordReset' => array( 'Passwort zurücksetzen' ),
+	'Disabledusers' => array( 'Deaktivierte Benutzer' ),
+);
+
 /** Luxembourgish (Lëtzebuergesch) */
 $aliases['lb'] = array(
 	'PasswordReset' => array( 'Passwuert zrécksetzen' ),

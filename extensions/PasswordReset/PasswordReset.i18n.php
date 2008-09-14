@@ -204,6 +204,7 @@ $messages['eo'] = array(
 	'passwordreset-success' => 'Pasvorto estis restarigita por user_id: $1',
 	'passwordreset-disableuser' => 'Ĉu ja malebligu konton de uzanto?',
 	'passwordreset-disablesuccess' => 'Konto de uzanto estis malebligita (uzanto-identigo: $1)',
+	'passwordreset-accountdisabled' => 'Konto estis malŝaltita',
 	'disabledusers' => 'Malebligitaj uzantoj',
 );
 

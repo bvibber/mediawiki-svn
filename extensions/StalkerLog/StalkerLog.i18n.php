@@ -184,6 +184,14 @@ $messages['oc'] = array(
 	'stalkerlog-log-text' => 'Vaquí un jornal de las connexions e de las desconnexions de l’utilizaire.',
 );
 
+/** Polish (Polski)
+ * @author Jwitos
+ */
+$messages['pl'] = array(
+	'stalkerlog-log-login' => 'zalogowano.',
+	'stalkerlog-log-logout' => 'wylogowano.',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

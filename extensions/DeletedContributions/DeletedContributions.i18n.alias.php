@@ -40,6 +40,11 @@ $aliases['de'] = array(
 	'DeletedContributions' => array( 'Gelöschte Beiträge' ),
 );
 
+/** Greek (Ελληνικά) */
+$aliases['el'] = array(
+	'DeletedContributions' => array( 'ΔιαγραμμένεςΣυνεισφορές' ),
+);
+
 /** Finnish (Suomi) */
 $aliases['fi'] = array(
 	'DeletedContributions' => array( 'Poistetut muokkaukset' ),

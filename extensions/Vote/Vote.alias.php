@@ -49,3 +49,8 @@ $aliases['nl'] = array(
 	'Vote' => array( 'Stemmen' ),
 );
 
+/** Albanian (Shqip) */
+$aliases['sq'] = array(
+	'Vote' => array( 'Voto' ),
+);
+

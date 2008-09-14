@@ -38,6 +38,13 @@ $messages['de'] = array(
 	'othersites' => 'andere Seiten',
 );
 
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
+$messages['eo'] = array(
+	'othersites' => 'Aliaj retejoj',
+);
+
 /** French (Français)
  * @author Grondin
  * @author Zetud

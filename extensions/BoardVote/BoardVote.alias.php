@@ -35,6 +35,11 @@ $aliases['de'] = array(
 	'BoardVote' => array( 'Kuratoriumswahl' ),
 );
 
+/** Greek (Ελληνικά) */
+$aliases['el'] = array(
+	'BoardVote' => array( 'ΕκλογέςΣυμβουλίου' ),
+);
+
 /** Hebrew (עברית)
  * @author Rotem Liss
  */

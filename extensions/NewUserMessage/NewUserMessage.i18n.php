@@ -78,7 +78,7 @@ $messages['cs'] = array(
  * @author Raimond Spekking
  */
 $messages['de'] = array(
-	'newusermessage-desc' => 'Fügt eine Nachricht neu angelegten Benutzerdiskussionsseiten hinzu',
+	'newusermessage-desc' => 'Fügt eine Nachricht auf der Benutzerdiskussionsseiten neu angemeldeter Benutzer hinzu',
 	'newuseredit-summary' => 'Begrüßt einen neuen Benutzer auf seiner Diskussionsseite mit einer [[{{int:newusermessage-template}}|Willkommensnachricht]]',
 );
 

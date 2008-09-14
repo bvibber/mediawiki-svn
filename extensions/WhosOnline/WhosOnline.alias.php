@@ -24,6 +24,11 @@ $aliases['arz'] = array(
 	'WhosOnline' => array( 'من_موجود' ),
 );
 
+/** German (Deutsch) */
+$aliases['de'] = array(
+	'WhosOnline' => array( 'Wer ist online' ),
+);
+
 /** French (Français) */
 $aliases['fr'] = array(
 	'WhosOnline' => array( 'Qui est en ligne', 'QuiEstEnLigne' ),

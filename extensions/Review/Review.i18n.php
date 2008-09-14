@@ -317,6 +317,7 @@ $messages['el'] = array(
 $messages['eo'] = array(
 	'review_sidebar_title' => 'Kontrolu',
 	'review_page_link' => 'rigardu statistikojn',
+	'review_for_user' => 'Kontrolo por uzanto "$1"',
 	'review_error' => 'Io fuŝas!',
 	'review_total_statistics' => 'Tuto',
 	'review_statistics_left_corner' => 'Revizio',

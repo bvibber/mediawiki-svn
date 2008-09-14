@@ -142,6 +142,16 @@ $messages['nl'] = array(
 	'discussionthreading-threadnewsectionhint' => 'Nieuwe thread starten',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ */
+$messages['no'] = array(
+	'discussionthreading-replysection' => 'svar',
+	'discussionthreading-replysectionhint' => 'Svar på denne posten',
+	'discussionthreading-threadnewsection' => 'ny',
+	'discussionthreading-threadnewsectionhint' => 'Start en ny tråd',
+);
+
 /** Occitan (Occitan)
  * @author Cedric31
  */

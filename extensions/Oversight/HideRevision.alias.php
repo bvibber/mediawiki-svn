@@ -36,7 +36,7 @@ $aliases['arz'] = array(
  */
 $aliases['de'] = array(
 	'HideRevision' => array( 'Version verstecken' ),
-	'Oversight' => array( 'Oversight' ),
+	'Oversight' => array( 'Oversight-Logbuch' ),
 );
 
 /** Finnish (Suomi) */

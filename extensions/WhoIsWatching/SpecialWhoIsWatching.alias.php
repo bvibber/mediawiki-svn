@@ -20,6 +20,11 @@ $aliases['arz'] = array(
 	'WhoIsWatching' => array( 'من_يراقب' ),
 );
 
+/** German (Deutsch) */
+$aliases['de'] = array(
+	'WhoIsWatching' => array( 'Wer beobachtet' ),
+);
+
 /** Dutch (Nederlands) */
 $aliases['nl'] = array(
 	'WhoIsWatching' => array( 'WieVolgt' ),

@@ -77,3 +77,8 @@ $aliases['no'] = array(
 	'ChangeAuthor' => array( 'Endre forfatter' ),
 );
 
+/** Albanian (Shqip) */
+$aliases['sq'] = array(
+	'ChangeAuthor' => array( 'NdërroAutor' ),
+);
+

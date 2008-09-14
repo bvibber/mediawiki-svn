@@ -1154,7 +1154,7 @@ $messages['fr'] = array(
 	'mv_advanced_edit' => 'Modification avancée',
 	'mv_basic_edit' => 'Modification de base',
 	'mv_remove_category' => 'Enlever la catégorie',
-	'mv_existing_categories' => 'Catégories existantes :',
+	'mv_existing_categories' => 'Catégories :',
 	'mv_add_category' => 'Ajouter une catégorisation',
 	'mv_basic_text_desc' => 'Description du texte (facultatif)',
 	'mv_viewnext' => 'Voir ($1)',
@@ -3080,6 +3080,7 @@ $messages['os'] = array(
 );
 
 /** Polish (Polski)
+ * @author Jwitos
  * @author Maikking
  * @author McMonster
  * @author Sp5uhe
@@ -3108,6 +3109,8 @@ $messages['pl'] = array(
 	'mv_search_category' => 'Kategoria',
 	'mv_search_and' => 'i',
 	'mv_search_or' => 'lub',
+	'mv_date_last_week' => 'Ostatni tydzień',
+	'mv_most_viewed' => 'Najczęściej oglądane',
 	'mv_category' => 'kategoria',
 	'mv_match_text' => '~  $1 trafień',
 	'mv_match_text_one' => '~ 1 trafienie',
@@ -3613,7 +3616,7 @@ Alebo môžete <a href="$3">Pridať stream</a>.',
 	'mv_advanced_edit' => 'Rozšírené úpravy',
 	'mv_basic_edit' => 'Základné úpravy',
 	'mv_remove_category' => 'Odstrániť kategóriu',
-	'mv_existing_categories' => 'Existujúce kategórie:',
+	'mv_existing_categories' => 'kategórie:',
 	'mv_add_category' => 'Pridať kategorizáciu',
 	'mv_basic_text_desc' => 'Textový popis (nepovinné)',
 	'mv_viewnext' => 'Zobraziť ($1)',

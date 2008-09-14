@@ -33,8 +33,8 @@ $messages['qqq'] = array(
  */
 $messages['ar'] = array(
 	'minipreview-desc' => 'العرض المصغر يعرض، بجانب صورة، عروضا مسبقة صغيرة للميديا الأخرى في نفس التصنيفات أو المعروضة في نفس الصفحات',
-	'minipreview-files_in_category' => '$1 ملف في هذا التصنيف.',
-	'minipreview-files_in_gallery' => '$1 ملف في هذا المعرض.',
+	'minipreview-files_in_category' => "'''$1''' {{PLURAL:$1|ملف|ملف}} إجمالي في هذا التصنيف.",
+	'minipreview-files_in_gallery' => "'''$1''' {{PLURAL:$1|ملف|ملف}} إجمالي في هذا المعرض.",
 	'minipreview-no_more_files_here' => 'لا ملفات أخرى في هذا الاتجاه.',
 	'minipreview-no_category_gallery' => 'لا تصنيفات أو معارض!',
 	'minipreview-ignore_categories' => 'التالي قائمة بأسماء التصنيفات أو بدايات الأسماء. هذه التصنيفات لن يتم عرضها بواسطة العرض المصغر. على سبيل المثال، "* PD-" لن تعرض كل التصنيفات
@@ -51,8 +51,8 @@ $messages['ar'] = array(
  */
 $messages['arz'] = array(
 	'minipreview-desc' => 'العرض المصغر يعرض، بجانب صورة، عروضا مسبقة صغيرة للميديا الأخرى فى نفس التصنيفات أو المعروضة فى نفس الصفحات',
-	'minipreview-files_in_category' => '$1 ملف فى هذا التصنيف.',
-	'minipreview-files_in_gallery' => '$1 ملف فى هذا المعرض.',
+	'minipreview-files_in_category' => "'''$1''' {{PLURAL:$1|ملف|ملف}} إجمالى فى هذا التصنيف.",
+	'minipreview-files_in_gallery' => "'''$1''' {{PLURAL:$1|ملف|ملف}} إجمالى في هذا المعرض.",
 	'minipreview-no_more_files_here' => 'لا ملفات أخرى فى هذا الاتجاه.',
 	'minipreview-no_category_gallery' => 'لا تصنيفات أو معارض!',
 	'minipreview-ignore_categories' => 'التالى قائمة بأسماء التصنيفات أو بدايات الأسماء. هذه التصنيفات لن يتم عرضها بواسطة العرض المصغر. على سبيل المثال، "* PD-" لن تعرض كل التصنيفات
@@ -77,8 +77,8 @@ $messages['bcl'] = array(
  * @author Spiritia
  */
 $messages['bg'] = array(
-	'minipreview-files_in_category' => 'Общо $1 файла в тази категория.',
-	'minipreview-files_in_gallery' => 'Общо $1 файла в тази галерия.',
+	'minipreview-files_in_category' => "Общо '''$1''' {{PLURAL:$1|файл|файла}} в тази категория.",
+	'minipreview-files_in_gallery' => 'Общо $1 {{PLURAL:$1|файл|файла}} в тази галерия.',
 	'minipreview-no_more_files_here' => 'Няма повече файлове при търсене в тази посока.',
 	'minipreview-no_category_gallery' => 'Няма категории или галерии!',
 );
@@ -126,8 +126,8 @@ $messages['fr'] = array(
  */
 $messages['gl'] = array(
 	'minipreview-desc' => 'Amosa unha pequena vista previa, ao lado dunha imaxe, doutros ficheiros multimedia na mesma categoría ou amosados na mesma páxina',
-	'minipreview-files_in_category' => '$1 ficheiros en total nesta categoría.',
-	'minipreview-files_in_gallery' => '$1 ficheiros en total nesta galería.',
+	'minipreview-files_in_category' => "Hai un total {{PLURAL:$1|dun ficheiro|de '''$1''' ficheiros}} nesta categoría.",
+	'minipreview-files_in_gallery' => "Hai un total {{PLURAL:$1|dun ficheiro|de '''$1''' ficheiros}} nesta galería.",
 	'minipreview-no_more_files_here' => 'Non hai máis ficheiros nesta dirección.',
 	'minipreview-no_category_gallery' => 'Non hai categorías ou galerías!',
 	'minipreview-ignore_categories' => 'A seguinte é unha listaxe dos nomes das categorías ou comezos dos nomes. Estas categorías non se amosarán por MiniPreview. Por exemplo, "* PD-" non se amosarán todas as categorías que comecen por "PD-", como "PD-old".
@@ -188,8 +188,8 @@ karaktersorozattal kezdődő kategóriát, így a „Közkincs-régi”-t sem.
  */
 $messages['it'] = array(
 	'minipreview-desc' => "MiniPreview mostra, affianco a un'immagine, piccole anteprima di file multimediali nella stessa categoria o mostrati nella stessa pagina",
-	'minipreview-files_in_category' => '$1 file totali in questa categoria.',
-	'minipreview-files_in_gallery' => '$1 file totali in questa galleria.',
+	'minipreview-files_in_category' => "'''$1''' {{PLURAL:$1|file|file totali}} in questa categoria.",
+	'minipreview-files_in_gallery' => "'''$1''' {{PLURAL:$1|file|file totali}} in questa galleria.",
 	'minipreview-no_more_files_here' => 'Nessun altro file in questa direzione.',
 	'minipreview-no_category_gallery' => 'Nessuna categoria o galleria!',
 	'minipreview-ignore_categories' => 'Di seguito è riportato un elenco di nomi di categorie o inizi di nomi. Queste categorie non verranno mostrate da MiniPreview. Per esempio, "* PD-" non mostrerà tutte le categorie che cominciano con "PD-", come "PD-old".
@@ -214,8 +214,8 @@ $messages['jv'] = array(
  * @author Lovekhmer
  */
 $messages['km'] = array(
-	'minipreview-files_in_category' => '$1ឯកសារសរុបក្នុងចំណាត់ថា្នក់ក្រុមនេះ។',
-	'minipreview-files_in_gallery' => '$1ឯកសារសរុបក្នុងវិចិត្រសាលនេះ។',
+	'minipreview-files_in_category' => 'មានឯកសារសរុបចំនួន$1ក្នុងចំនាត់ថា្នក់ក្រុមនេះ។',
+	'minipreview-files_in_gallery' => 'មានឯកសារសរុបចំនួន$1ក្នុងវិចិត្រសាលនេះ។',
 	'minipreview-no_more_files_here' => 'គ្មានឯកសារបន្ថែមក្នុងទិសនេះទេ។',
 	'minipreview-no_category_gallery' => 'គ្មានចំណាត់ថ្នាក់ក្រុមឬវិចិត្រសាលទេ!',
 );
@@ -289,8 +289,8 @@ $messages['mr'] = array(
  */
 $messages['nl'] = array(
 	'minipreview-desc' => 'MiniPreview geeft thumbnails weer van andere media in dezelfde categorie of op dezelfde pagina naast media',
-	'minipreview-files_in_category' => 'In totaal bevinden zich $1 bestanden in deze categorie.',
-	'minipreview-files_in_gallery' => 'In totaal bevinden zich $1 bestanden in deze galerij.',
+	'minipreview-files_in_category' => 'In totaal {{PLURAL:$1|bevindt zich $1 bestand|bevinden zich $1 bestanden}} in deze categorie.',
+	'minipreview-files_in_gallery' => 'In totaal {{PLURAL:$1|bevindt zich $1 bestand|bevinden zich $1 bestanden}} in deze galerij.',
 	'minipreview-no_more_files_here' => 'Er zijn geen bestanden meer in deze richting.',
 	'minipreview-no_category_gallery' => 'Geen categorieën of galerijen!',
 	'minipreview-ignore_categories' => 'Hieronder staat een lijst met (het begin van) categorienamen.

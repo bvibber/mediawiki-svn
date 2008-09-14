@@ -88,6 +88,13 @@ $messages['arz'] = array(
 	'refreshspecial-total-display' => '<br />حدث $1 صفحة بإجمالى $2 صف فى وقت $3 (الزمن الإجمالى لعمل السكريبت هو $4)',
 );
 
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
+$messages['eo'] = array(
+	'refreshspecial-select-all-pages' => ' selekti ĉiujn paĝojn',
+);
+
 /** Finnish (Suomi)
  * @author Jack Phoenix
  */
@@ -275,6 +282,13 @@ $messages['oc'] = array(
 	'refreshspecial-reconnected' => 'Reconnectat.',
 	'refreshspecial-reconnecting' => 'Fracàs de la connexion, reconnexion dins 10 segondas…',
 	'refreshspecial-total-display' => "<br />$1 {{PLURAL:$1|pagina actualizada|paginas actualizadas}} totalizant $2 {{PLURAL:$2|linha|linhas}} sus una durada de $3 (la durada completa de l’accion de l'escript es de $4)",
+);
+
+/** Polish (Polski)
+ * @author Jwitos
+ */
+$messages['pl'] = array(
+	'refreshspecial-here' => '<b>tutaj</b>',
 );
 
 /** Portuguese (Português)

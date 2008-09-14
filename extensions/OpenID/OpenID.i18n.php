@@ -1594,8 +1594,8 @@ $messages['ru'] = array(
 	'openiderror' => 'Ошибка проверки полномочий',
 	'openiderrortext' => 'Во время проверки адреса OpenID произошла ошибка.',
 	'openidconfigerror' => 'Ошибка настройки OpenID',
-	'openidconfigerrortext' => 'Настройка хранения OpenID для этой вики ошибочна.
-Пожалуйста, обратитесь к администратору сайта.',
+	'openidconfigerrortext' => 'Настройка храненилища OpenID для этой вики ошибочна.
+Пожалуйста, обратитесь к [[Special:ListUsers/sysop|администратору сайта]].',
 	'openidpermission' => 'Ошибка прав доступа OpenID',
 	'openidpermissiontext' => 'Указанный OpenID не позволяет войти на этот сервер.',
 	'openidcancel' => 'Проверка отменена',

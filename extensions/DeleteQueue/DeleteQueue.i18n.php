@@ -177,6 +177,7 @@ You can register your own endorsement of, or objection to this deletion [{{fullu
 );
 
 /** Message documentation (Message documentation)
+ * @author Darth Kule
  * @author Jon Harald Søby
  * @author Siebrand
  */
@@ -185,9 +186,16 @@ $messages['qqq'] = array(
 	'deletequeue-generic-reasons' => 'Delete reasons in a dropdown menu. Lines prepended with "*" are a category separator. Lines prepended with "**" can be used as a reason. Please do not add additional reasons. This should be customised on wikis where the extension is actually being used.',
 	'deletequeue-delnom-otherreason' => '{{Identical|Other reason}}',
 	'deletequeue-delnom-extra' => '{{Identical|Extra information}}',
+	'right-speedy-nominate' => '{{doc-right}}',
+	'right-speedy-review' => '{{doc-right}}',
+	'right-prod-nominate' => '{{doc-right}}',
+	'right-prod-review' => '{{doc-right}}',
+	'right-deletediscuss-nominate' => '{{doc-right}}',
+	'right-deletediscuss-review' => '{{doc-right}}',
 	'deletequeue-review-reason' => '{{Identical|Comments}}',
 	'deletequeue-review-newextra' => '{{Identical|Extra information}}',
 	'deletequeue-vote-reason' => '{{Identical|Comments}}',
+	'deletequeue-vote-submit' => '{{Identical|Submit}}',
 	'deletequeue-list-queue' => '{{Identical|Queue}}',
 	'deletequeue-list-search' => '{{Identical|Search}}',
 	'deletequeue-list-header-page' => '{{Identical|Page}}',
@@ -472,10 +480,12 @@ $messages['arz'] = array(
  */
 $messages['bg'] = array(
 	'deletequeue-speedy-title' => 'Отбелязване на „$1“ за бързо изтриване',
+	'deletequeue-delnom-reason' => 'Причина за номинирането:',
 	'deletequeue-delnom-otherreason' => 'Друга причина',
 	'deletequeue-review-delete' => 'Изтриване на страницата.',
 	'deletequeue-review-newreason' => 'Нова причина:',
 	'deletequeue-review-newextra' => 'Допълнителна информация:',
+	'deletequeue-review-original' => 'Причина за номинирането',
 	'deletequeue-vote-reason' => 'Коментари:',
 	'deletequeue-vote-submit' => 'Изпращане',
 	'deletequeue-list-queue' => 'Опашка:',
@@ -1087,6 +1097,123 @@ Tu pote registrar tu proprie declaration pro o contra iste deletion [{{fullurl:{
 	'deletequeue-list-header-discusspage' => 'Pagina de discussion',
 );
 
+/** Italian (Italiano)
+ * @author Darth Kule
+ */
+$messages['it'] = array(
+	'deletequeue-desc' => 'Crea un [[Special:DeleteQueue|sistema per gestire le cancellazioni basato su code]]',
+	'deletequeue-action' => 'Proponi cancellazione',
+	'deletequeue-action-title' => 'Proponi la cancellazione di "$1"',
+	'deletequeue-action-text' => "{{SITENAME}} ha una serie di processi per la cancellazione delle pagine:
+*Se si crede che questa pagina debba essere ''cancellata immediatamente'', lo si può suggerire [{{fullurl:{{FULLPAGENAME}}|action=delnom&queue=speedy}} qui].
+*Se questa pagina non può essere cancellata immediatamente ma la sua ''cancellazione sarà probabilmente incontroversa'', dovrebbe essere [{{fullurl:{{FULLPAGENAME}}|action=delnom&queue=prod}} proposta per la cancellazione].
+*Se la cancellazione di questa pagina è ''probabilmente discutibile'', si dovrebbe [{{fullurl:{{FULLPAGENAME}}|action=delnom&queue=deletediscuss}} aprire una discussione].",
+	'deletequeue-permissions-noedit' => 'Si deve essere in grado di modificare una pagina per modificarne lo stato di cancellazione.',
+	'deletequeue-generic-reasons' => '*Motivazioni generiche
+** Vandalismo
+** Spam
+** Manutenzione
+** Al di fuori degli scopi del progetto',
+	'deletequeue-speedy-title' => 'Segnala "$1" per la cancellazione immediata',
+	'deletequeue-speedy-text' => "È possibile utilizzare questo modulo per segnalare la pagina \"'''\$1'''\" per la cancellazione immediata.
+
+Un amministratore controllerà questa richiesta e, se fondata, cancellerà la pagina. È necessario selezionare una motivazione di cancellazione dal menù a tendina e aggiungere qualsiasi altra informazione importante.",
+	'deletequeue-prod-title' => 'Proponi cancellazione di "$1"',
+	'deletequeue-prod-text' => "È possibile proporre la cancellazione di \"'''\$1'''\".
+
+Se, dopo cinque giorni, non ci sono state opposizioni alla cancellazione della pagina, sarà cancellata dopo la verifica finale da parte di un amministratore.",
+	'deletequeue-delnom-reason' => 'Motivazioni per la segnalazione:',
+	'deletequeue-delnom-otherreason' => 'Altra motivazione',
+	'deletequeue-delnom-extra' => 'Informazioni aggiuntive:',
+	'deletequeue-delnom-submit' => 'Invia segnalazione',
+	'deletequeue-log-nominate' => "ha segnalato [[$1]] per la cancellazione nella coda '$2'.",
+	'deletequeue-log-rmspeedy' => 'ha respinto la cancellazione immediata di [[$1]].',
+	'deletequeue-log-requeue' => "ha spostato [[$1]] in una differente coda di cancellazione: da '$2' a '$3'.",
+	'deletequeue-log-dequeue' => "ha rimosso [[$1]] dalla coda '$2' delle cancellazioni.",
+	'right-speedy-nominate' => 'Segnala pagine per la cancellazione immediata',
+	'right-speedy-review' => 'Controlla le segnalazioni di cancellazioni immediate',
+	'right-prod-nominate' => 'Propone una pagina per la cancellazione',
+	'right-prod-review' => 'Controlla le proposte di cancellazione non contestate',
+	'right-deletediscuss-nominate' => 'Inizia le discussioni sulla cancellazione',
+	'right-deletediscuss-review' => 'Chiude le discussioni sulla cancellazione',
+	'deletequeue-queue-speedy' => 'Cancellazione immediata',
+	'deletequeue-queue-prod' => 'Cancellazione proposta',
+	'deletequeue-queue-deletediscuss' => 'Discussione sulla cancellazione',
+	'deletequeue-page-speedy' => "Questa pagina è stata segnalata per la cancellazione immediata. La motivazione fornita per questa cancellazione è ''$1''.",
+	'deletequeue-page-prod' => "Questa pagina è stata proposta per la cancellazione. La motivazione fornita è ''$1''. Se questa proposta non avrà opposizioni il ''$2'', questa pagina sarà cancellata. È possibile contestare questa cancellazione [{{fullurl:{{FULLPAGENAME}}|action=delvote}} opponendosi a essa].",
+	'deletequeue-page-deletediscuss' => "Questa pagina è stata proposta per la cancellazione e la proposta è stata contestata. La motivazione fornita è ''$1''. La discussione si sta tenendo in [[$3]] e si concluderà il ''$2''.",
+	'deletequeue-notqueued' => 'La pagina che è stata selezionata non è al momento in coda per la cancellazione',
+	'deletequeue-review-action' => 'Azione da effettuare:',
+	'deletequeue-review-delete' => 'Cancella la pagina.',
+	'deletequeue-review-change' => 'Cancella questa pagina, ma con una motivazione diversa.',
+	'deletequeue-review-requeue' => 'Sposta questa pagina nella coda seguente:',
+	'deletequeue-review-dequeue' => 'Non effettuare azioni e rimuovi la pagina dalla coda di cancellazione.',
+	'deletequeue-review-reason' => 'Commenti:',
+	'deletequeue-review-newreason' => 'Nuova motivazione:',
+	'deletequeue-review-newextra' => 'Informazioni aggiuntive:',
+	'deletequeue-review-submit' => 'Salva verifica',
+	'deletequeue-review-original' => 'Motivazioni per la segnalazione',
+	'deletequeue-actiondisabled-involved' => "L'azione seguente è stata disattivata perché hai preso parte in questo caso di cancellazione nei ruoli di: $1",
+	'deletequeue-actiondisabled-notexpired' => "L'azione seguente è stata disattivata perché la segnalazione della cancellazione non è ancora scaduta:",
+	'deletequeue-review-badaction' => "È stata specificata un'azione non valida",
+	'deletequeue-review-actiondenied' => "È stata specificata un'azione che è disattivata per questa pagina",
+	'deletequeue-review-objections' => "'''Attenzione''': La cancellazione di questa pagina ha delle [{{fullurl:{{FULLPAGENAME}}|action=delvoteview&votetype=object}} opposizioni]. Assicurarsi di aver considerato queste opposizioni prima di cancellare la pagina.",
+	'deletequeue-reviewspeedy-tab' => 'Verifica cancellazione immediata',
+	'deletequeue-reviewspeedy-title' => 'Verifica la segnalazione della cancellazione immediata di "$1"',
+	'deletequeue-reviewspeedy-text' => "È possibile utilizzare questo modulo per verificare la segnalazione della cancellazione immediata di \"'''\$1'''\". Assicurarsi che questa pagina possa essere cancellata immediatamente secondo le policy.",
+	'deletequeue-reviewprod-tab' => 'Verifica cancellazione proposta',
+	'deletequeue-reviewprod-title' => 'Verifica la proposta di cancellazione cancellazione di "$1"',
+	'deletequeue-reviewprod-text' => "È possibile utilizzare questo modulo per controllare la proposta di cancellazione non contestata di \"'''\$1'''\".",
+	'deletequeue-reviewdeletediscuss-tab' => 'Controlla cancellazione',
+	'deletequeue-reviewdeletediscuss-title' => 'Controlla la discussione sulla cancellazione di "$1"',
+	'deletequeue-reviewdeletediscuss-text' => "È possibile utilizzare questo modulo per controllare la discussione sulla cancellazione di \"'''\$1'''\".
+
+È disponibile un [{{fullurl:{{FULLPAGENAME}}|action=delviewvotes}} elenco] dei supporti e delle opposizioni a questa cancellazione e la discussione può essere trovata a [[\$2]]. Assicurarsi di prendere una decisione in base al consenso raggiunto nella discussione.",
+	'deletequeue-deletediscuss-discussionpage' => 'Questa è la pagina di discussione per la cancellazione di [[$1]]. Ci sono al momento $2 {{PLURAL:$2|utente che supporta|utenti che supportano}} la cancellazione e $3 {{PLURAL:$3|utente che si oppone|utenti che si oppongono}} a essa. È possibile [{{fullurl:$1|action=delvote}} supportare oppure opporsi] alla cancellazione o [{{fullurl:$1|action=delviewvotes}} visualizzare tutti i supporti e le opposizioni].',
+	'deletequeue-discusscreate-summary' => 'Creazione della discussione sulla cancellazione di [[$1]].',
+	'deletequeue-discusscreate-text' => 'Cancellazione proposta per il seguente motivo: $2',
+	'deletequeue-role-nominator' => 'proponente della cancellazione',
+	'deletequeue-role-vote-endorse' => 'supporti alla cancellazione',
+	'deletequeue-role-vote-object' => 'opposizioni alla cancellazione',
+	'deletequeue-vote-tab' => 'Supporta/Opponiti alla cancellazione',
+	'deletequeue-vote-title' => 'Supporto o opposizione alla cancellazione di "$1"',
+	'deletequeue-vote-text' => "È possibile utilizzare questo modulo per sostenere oppure opporsi alla cancellazione di \"'''\$1'''\". Questa azione sostituirà qualsiasi supporto o opposizione precedentemente dati alla cancellazione di questa pagina. È possibile [{{fullurl:{{FULLPAGENAME}}|action=delviewvotes}} visualizzare] i supporti e le opposizioni già presenti. La motivazione fornita per la segnalazione di cancellazione è ''\$2''.",
+	'deletequeue-vote-legend' => 'Supporta/Opponiti alla cancellazione',
+	'deletequeue-vote-action' => 'Raccomandazioni:',
+	'deletequeue-vote-endorse' => 'Supporta cancellazione.',
+	'deletequeue-vote-object' => 'Opponiti alla cancellazione.',
+	'deletequeue-vote-reason' => 'Commenti:',
+	'deletequeue-vote-submit' => 'Invia',
+	'deletequeue-vote-success-endorse' => 'Hai supportato con successo la cancellazione di questa pagina.',
+	'deletequeue-vote-success-object' => 'Ti sei opposto con successo alla cancellazione di questa pagina.',
+	'deletequeue-vote-requeued' => 'Ti sei opposto con successo alla cancellazione di questa pagina. A causa della tua opposizione la pagina è stata spostata nella coda $1.',
+	'deletequeue-showvotes' => 'Supporti e opposizioni alla cancellazione di "$1"',
+	'deletequeue-showvotes-text' => "Di seguito sono elencati i supporti e le opposizioni alla cancellazione della pagina \"'''\$1'''\". È possibile registrare il proprio supporto o la propria opposizione a questa cancellazione  [{{fullurl:{{FULLPAGENAME}}|action=delvote}} qui].",
+	'deletequeue-showvotes-restrict-endorse' => 'Mostra solo i supporti',
+	'deletequeue-showvotes-restrict-object' => 'Mostra solo le opposizioni',
+	'deletequeue-showvotes-restrict-none' => 'Mostra tutti i supporti e le opposizioni',
+	'deletequeue-showvotes-vote-endorse' => "Cancellazione '''supportata''' il $2 alle $1",
+	'deletequeue-showvotes-vote-object' => "'''Opposizione''' alla cancellazione il $2 alle $1",
+	'deletequeue-showvotes-none' => 'Non ci sono supporti o opposizioni alla cancellazione di questa pagina.',
+	'deletequeue-showvotes-none-endorse' => 'Non ci sono supporti alla cancellazione di questa pagina.',
+	'deletequeue-showvotes-none-object' => 'Non ci sono opposizioni alla cancellazione di questa pagina.',
+	'deletequeue' => 'Coda di cancellazione',
+	'deletequeue-list-text' => 'Di seguito sono mostrate tutte le pagine che si trovano nel sistema di cancellazione.',
+	'deletequeue-list-search-legend' => 'Cerca pagine',
+	'deletequeue-list-queue' => 'Coda:',
+	'deletequeue-list-status' => 'Stato:',
+	'deletequeue-list-expired' => 'Mostra solo le segnalazioni che richiedono di essere chiuse.',
+	'deletequeue-list-search' => 'Ricerca',
+	'deletequeue-list-anyqueue' => '(alcuni)',
+	'deletequeue-list-votes' => 'Elenco dei voti',
+	'deletequeue-list-votecount' => '$1 {{PLURAL:$1|supporto|supporti}}, $2 {{PLURAL:$2|opposizione|opposizioni}}',
+	'deletequeue-list-header-page' => 'Pagina',
+	'deletequeue-list-header-queue' => 'Coda',
+	'deletequeue-list-header-votes' => 'Supporti e opposizioni',
+	'deletequeue-list-header-expiry' => 'Scadenza',
+	'deletequeue-list-header-discusspage' => 'Pagina di discussione',
+);
+
 /** Khmer (ភាសាខ្មែរ)
  * @author Lovekhmer
  */
@@ -1497,6 +1624,13 @@ Podètz enregistrar [{{FULLURL:{{FULLPAGENAME}}|action=delvote}} aicí] vòstra 
 	'deletequeue-list-header-votes' => 'Acòrdis e refuses',
 	'deletequeue-list-header-expiry' => 'Expiracion',
 	'deletequeue-list-header-discusspage' => 'Pagina de discussion',
+);
+
+/** Polish (Polski)
+ * @author Jwitos
+ */
+$messages['pl'] = array(
+	'deletequeue-list-header-page' => 'Strona',
 );
 
 /** Portuguese (Português)

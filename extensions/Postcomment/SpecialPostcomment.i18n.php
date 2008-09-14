@@ -411,6 +411,7 @@ $messages['pt'] = array(
  * @author Александр Сигачёв
  */
 $messages['ru'] = array(
+	'postcomment_desc' => 'Позволяет участникам отправлять комментарии сразу на страницы обсуждения.',
 	'postcomment_discussionprotected' => 'Страница обсуждения была защищена от размещения новых сообщений',
 	'postcomment_notloggedin' => 'Вы не представились системе',
 	'postcomment_youareloggedinas' => 'Вы вошли как $1',

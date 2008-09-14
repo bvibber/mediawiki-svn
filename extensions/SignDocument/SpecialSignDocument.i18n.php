@@ -533,6 +533,10 @@ $messages['eo'] = array(
 	'sign-viewfield-reviewcomment' => 'Komento',
 	'sign-review-comment' => 'Komento',
 	'sign-submitreview' => 'Aldoni kontrolon',
+	'sign-uniquequery-similarname' => 'Simila nomo',
+	'sign-uniquequery-similaraddress' => 'Simila adreso',
+	'sign-uniquequery-similarphone' => 'Simila nombro de telefono',
+	'sign-uniquequery-similaremail' => 'Simila retadreso',
 );
 
 /** Extremaduran (Estremeñu)

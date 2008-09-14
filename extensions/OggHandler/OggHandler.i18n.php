@@ -2024,7 +2024,7 @@ $messages['ru'] = array(
 	'ogg-play-sound' => 'Воспроизвести звук',
 	'ogg-no-player' => 'Извините, ваша система не имеет необходимого программного обеспечение для воспроизведения файлов. Пожалуйста, <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">скачайте проигрыватель</a>.',
 	'ogg-no-xiphqt' => 'Отсутствует компонент XiphQT для QuickTime. QuickTime не может воспроизвести файл Ogg без этого компонента. Пожалуйста, <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">скачайте XiphQT</a> или выберите другой проигрыватель.',
-	'ogg-player-videoElement' => ' элемент <video>',
+	'ogg-player-videoElement' => 'Встроенная поддержка браузером',
 	'ogg-player-oggPlugin' => 'Ogg модуль',
 	'ogg-player-thumbnail' => 'Только неподвижное изображение',
 	'ogg-player-soundthumb' => 'Нет проигрывателя',
