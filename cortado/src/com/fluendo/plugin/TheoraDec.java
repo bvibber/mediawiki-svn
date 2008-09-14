@@ -209,10 +209,7 @@ public class TheoraDec extends Element implements OggPayload
 	if (!needKeyframe) {
 	  try{
             if (ts.decodePacketin(op) != 0) {
-              buf.free();
-              Debug.log(Debug.ERROR, "Error Decoding Theora.");
-	      postMessage (Message.newError (this, "Error decoding Theora"));
-              return ERROR;
+              Debug.log(Debug.ERROR, "Bad Theora packet. Most likely not fatal, hoping for better luck next packet.");
             }
             if (ts.decodeYUVout(yuv) != 0) {
               buf.free();

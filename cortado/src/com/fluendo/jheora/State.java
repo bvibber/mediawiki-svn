@@ -71,7 +71,14 @@ public class State
     ret = pbi.opb.readB(1);
 
     if (ret==0) {
-      ret=dec.loadAndDecode();
+      try {
+        ret=dec.loadAndDecode();
+      } catch(Exception e) {
+        /* If lock onto the bitstream is lost all sort of Exceptions can occur.
+         * The bitstream damage may be local, so the next packet may be okay. */
+        e.printStackTrace();
+        return Result.BADPACKET;  
+      }
 
       if(ret != 0)
         return (int) ret;
