@@ -25,9 +25,10 @@ $lastRev = 45000;
 
 $startTime = microtime( true );
 $revCount = 0;
+$start = $lastStoredRev + 1;
 
 echo "Syncing repo {$args[0]} from r$lastStoredRev to HEAD...\n";
-for( $start = $lastStoredRev + 1; $start < $lastRev; $start += $chunkSize ) {
+while( $start <= $lastRev ) {
 	$log = $svn->getLog( '', $start, $start + $chunkSize - 1 );
 	if( empty($log) ) {
 		# Repo seems to give a blank when max rev is invalid, which 
@@ -36,8 +37,9 @@ for( $start = $lastStoredRev + 1; $start < $lastRev; $start += $chunkSize ) {
 		if( $chunkSize <= 1 ) {
 			die(); // done!
 		}
-		$start = max( $lastStoredRev + 1, $start - $chunkSize ); // Go back!
-		$chunkSize = max( 1, floor($chunkSize/3) );
+		$chunkSize = max( 1, floor($chunkSize/4) );
+	} else {
+		$start += $chunkSize;
 	}
 	foreach( $log as $data ) {
 		$revCount++;
