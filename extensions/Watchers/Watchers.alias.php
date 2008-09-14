@@ -14,7 +14,7 @@ $aliases['en'] = array(
 	'Watchers' => array( 'Watchers' ),
 );
 
-/** English
+/** Dutch
  * @author Siebrand
  */
 $aliases['nl'] = array(
