@@ -1,3 +1,9 @@
+wikimedia-task-appserver (1.27) hardy; urgency=low
+
+  * chown the entire .ssh directory, or ssh refuses entry
+
+ -- Mark Bergsma <mark@wikimedia.org>  Sun, 14 Sep 2008 16:11:12 +0000
+
 wikimedia-task-appserver (1.26) hardy; urgency=low
 
   * Add account setup for PyBal SSH checking
