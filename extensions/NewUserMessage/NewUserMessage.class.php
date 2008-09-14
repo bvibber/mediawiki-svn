@@ -21,7 +21,7 @@ class NewUserMessage {
 		$talk = $user->getTalkPage();
 
 		if (!$talk->exists()) {
-			global $wgUser, $wgNewUserMinorEdit, $wgNewUserSuppressRC;
+			global $wgUser, $wgNewUserMinorEdit;
 
 			wfLoadExtensionMessages( 'NewUserMessage' );
 
@@ -37,7 +37,7 @@ class NewUserMessage {
 				$wgUser->addToDatabase();
 			}
 
-			$flags = EDIT_NEW;
+			$flags = EDIT_NEW | EDIT_SUPPRESS_RC;
 			$templateTitleText = wfMsg( 'newusermessage-template' );
 			$templateTitle = Title::newFromText( $templateTitleText );
 			if ( !$templateTitle ) {
@@ -48,7 +48,6 @@ class NewUserMessage {
 				$templateTitleText = $templateTitle->getText();
 			}
 			if ($wgNewUserMinorEdit) $flags = $flags | EDIT_MINOR;
-			if ($wgNewUserSuppressRC) $flags = $flags | EDIT_SUPPRESS_RC;
 
 			$dbw = wfGetDB( DB_MASTER );
 			$dbw->begin();
