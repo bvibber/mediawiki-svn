@@ -24,8 +24,6 @@ $wgHooks['SkinTemplateContentActions'][] = 'efGPManagerCustomTabs';
 $wgHooks['SkinTemplateTabs'][] = 'efGPManagerGetSkin';
 $wgHooks['SkinTemplateBuildContentActionUrlsAfterSpecialPage'][] = 'efGPManagerGetSkin';
 
-$wgGPManagerShowEditTab = false; //whether to always show the edit tab even though the user may not be able to read the resulting page.
-
 $egSkinObj = '';
 
 function efGPManagerCustomTabs(&$ca) {

@@ -19,16 +19,23 @@ $wgExtensionCredits['specialpage'][] = array(
 	'description'    => 'Manage group permissions via a special page',
 	'descriptionmsg' => 'grouppermissions-desc',
 );
+
+###Config Variables. Change these in your LocalSettings.php file
+##Core
+$wgGPManagerForceVersion = false; //whether to force versionCheck() to always return true. Set this only if you hacked the MediaWiki core and added in those hooks/functions
+$wgGPManagerRUGconfirm = true; //whether to show a confirmation button on Special:RemoveUnusedGroups or just execute immediately upon access
+##CustomTabs plugin
+$wgGPManagerShowEditTab = false; //whether to always show the edit tab even though the user may not be able to read the resulting page
+###End Config Variables.
+
 $wgAutoloadClasses['GroupPermissions'] = dirname(__FILE__) . '/GroupPermissionsManager_body.php';
 $wgAutoloadClasses['RemoveUnusedGroups'] = dirname(__FILE__) . '/RemoveUnusedGroups.php';
 $wgAutoloadClasses['SortPermissions'] = dirname(__FILE__) . '/SortPermissions.php';
-#$wgAutoloadClasses['NamespaceManager'] = dirname(__FILE__) . '/NamespaceManager.php';
 $wgSpecialPages['GroupPermissions'] = 'GroupPermissions';
 $wgSpecialPages['RemoveUnusedGroups'] = 'RemoveUnusedGroups';
 $wgSpecialPages['SortPermissions'] = 'SortPermissions';
-#$wgSpecialPages['NamespaceManager'] = 'NamespaceManager';
 $wgExtensionMessagesFiles['GroupPermissions'] = dirname(__FILE__) . '/GetMessages.php';
-$wgExtensionAliasesFiles['GroupPermissions'] = $dir . 'GroupPermissions.alias.php';
+$wgExtensionAliasesFiles['GroupPermissions'] = $dir . 'GroupPermissionsManager.alias.php';
 
 $wgLogTypes[] = 'gpmanager';
 $wgLogActions['gpmanager/add'] = 'grouppermissions-log-add';
@@ -44,7 +51,6 @@ $wgSpecialPageGroups['SortPermissions'] = 'wiki';
 ##Permission required to use the 'GroupPermissions' and 'SortPermissions' special page
 ##By default all bureaucrats can
 $wgGroupPermissions['bureaucrat']['grouppermissions'] = true;
-#$wgGroupPermissions['bureaucrat']['nsmanager'] = true;
 ##Uncomment this if you want to make a separate group that can access the page as well
 #$wgGroupPermissions['grouppermissions']['grouppermissions'] = true;
 ##'RemoveUnusedGroups' requires the 'userrights' permission, also given to bureaucrats by default
@@ -139,7 +145,9 @@ function addScriptFile( $file ) {
 //checks if the version of MediaWiki being run is greater than or equal to the given version
 //for compatibility checking, defaults to 1.12, since that's the minimum version needed for this extension
 function versionCheck( $ver = '1.12' ) {
-	global $wgVersion;
+	global $wgVersion, $wgGPManagerForceVersion;
+	if($wgGPManagerForceVersion)
+		return true;
 	$nvp = explode('.', $ver); //explode it into pieces
 	$cvp = explode('.', $wgVersion); //do the same to $wgVersion
 	if($cvp[0] < $nvp[0]) return false;
