@@ -30,7 +30,7 @@ checkmount() {
         echo "Adding $mnt mount..." >&2
         echo >>/etc/fstab \
             "$dev  $mnt nfs     bg,soft,udp,rsize=8192,wsize=8192,timeo=14,intr,nfsvers=3  0 0"
-        mount $mnt
+        mount $mnt || true
     }
 }
 

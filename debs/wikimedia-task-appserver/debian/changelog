@@ -1,3 +1,10 @@
+wikimedia-task-appserver (1.28) hardy; urgency=low
+
+  * Allow mounting to fail in postinst; unmounting is allowed to fail in prerm
+    as well.
+
+ -- Mark Bergsma <mark@wikimedia.org>  Sun, 14 Sep 2008 17:03:04 +0000
+
 wikimedia-task-appserver (1.27) hardy; urgency=low
 
   * chown the entire .ssh directory, or ssh refuses entry
