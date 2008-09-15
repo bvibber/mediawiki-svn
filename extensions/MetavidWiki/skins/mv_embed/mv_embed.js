@@ -1065,7 +1065,7 @@ textInterface.prototype = {
 		//parse roe if not already done:
         this.getParseCMML();		
 	},
-	//@@todo seperate out data loader & data display
+	//@@todo separate out data loader & data display
 	getParseCMML:function(){
 		js_log("load cmml from roe: "+ this.pe.roe);
 		//read the current play head time (if embed object is playing)
