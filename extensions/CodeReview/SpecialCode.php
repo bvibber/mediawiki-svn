@@ -244,7 +244,7 @@ class CodeRevisionView extends CodeView {
 <tr><td valign="top">' . wfMsgHtml( 'code-rev-paths' ) . '</td><td valign="top">' . $paths . '</td></tr>
 </table>';
 		$html .=
-			"<h2>Diff</h2>" .
+			"<h2>" . wfMsgHtml( 'code-rev-diff' ) . "</h2>" .
 			"<div class='mw-codereview-diff'>" .
 			$this->formatDiff() .
 			"</div>";
@@ -308,7 +308,7 @@ class CodeRevisionView extends CodeView {
 		global $wgOut, $wgLang;
 		return '<div class="mw-codereview-comment">' .
 			'<div class="mw-codereview-comment-meta">' .
-			'Comment by ' .
+			wfMsgHtml( 'code-rev-comment-by' ) . ' ' .
 			$this->mSkin->userLink( $comment->user, $comment->userText ) .
 			$this->mSkin->userToolLinks( $comment->user, $comment->userText ) .
 			' ' .
@@ -335,9 +335,9 @@ class CodeRevisionView extends CodeView {
 			Xml::textArea( 'wpTextbox1', '' ) .
 			'</div>' .
 			'<div>' .
-			Xml::submitButton( 'Submit comment', array( 'name' => 'wpSave' ) ) .
+			Xml::submitButton( wfMsg( 'code-rev-comment-submit' ), array( 'name' => 'wpSave' ) ) .
 			' ' .
-			Xml::submitButton( 'Preview', array( 'name' => 'wpPreview' ) ) .
+			Xml::submitButton( wfMsg( 'code-rev-comment-preview' ), array( 'name' => 'wpPreview' ) ) .
 			'</div>' .
 			'</div>' .
 			'</form>';
