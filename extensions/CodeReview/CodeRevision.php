@@ -76,4 +76,70 @@ class CodeRevision {
 			__METHOD__
 		);
 	}
+	
+	function saveComment( $text, $review, $parent=null ) {
+		global $wgUser;
+		$ts = wfTimestamp( TS_MW );
+		$sortkey = $this->threadedSortkey( $parent, $ts );
+		
+		$dbw = wfGetDB( DB_SLAVE );
+		$dbw->insert( 'code_comment',
+			array(
+				'cc_repo_id' => $this->mRepo,
+				'cc_rev_id' => $this->mId,
+				'cc_text' => $text,
+				'cc_parent' => $parent,
+				'cc_user' => $wgUser->getId(),
+				'cc_user_text' => $wgUser->getName(),
+				'cc_timestamp' => $dbw->timestamp( $ts ),
+				'cc_review' => $review,
+				'cc_sortkey' => $sortkey ),
+			__METHOD__ );
+	}
+	
+	protected function threadedSortKey( $parent, $ts ) {
+		if( $parent ) {
+			// We construct a threaded sort key by concatenating the timestamps
+			// of all our parent comments
+			$dbw = wfGetDB( DB_SLAVE );
+			$parentKey = $dbw->selectRow( 'code_comment',
+				array( 'cc_sortkey' ),
+				array( 'cc_id' => $parent ),
+				__METHOD__ );
+			if( $parentKey ) {
+				return $parentKey . ',' . $ts;
+			} else {
+				// hmmmm
+				throw new MWException( 'Invalid parent submission' );
+			}
+		} else {
+			return $ts;
+		}
+	}
+	
+	function getComments() {
+		$dbr = wfGetDB( DB_SLAVE );
+		$result = $dbr->select( 'code_comment',
+			array(
+				'cc_id',
+				'cc_text',
+				'cc_parent',
+				'cc_user',
+				'cc_user_text',
+				'cc_timestamp',
+				'cc_review' ),
+			array(
+				'cc_repo_id' => $this->mRepo,
+				'cc_rev_id' => $this->mId ),
+			__METHOD__,
+			array(
+				'ORDER BY' => 'cc_sortkey' ) );
+		
+		$comments = array();
+		foreach( $result as $row ) {
+			$comments[] = new CodeComment( $this, $row );
+		}
+		$result->free();
+		return $comments;
+	}
 }

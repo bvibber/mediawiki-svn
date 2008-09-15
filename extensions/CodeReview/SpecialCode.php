@@ -7,11 +7,12 @@ class SpecialCode extends SpecialPage {
 	}
 
 	function execute( $subpage ) {
-		global $wgOut, $wgRequest, $wgUser;
+		global $wgOut, $wgRequest, $wgUser, $wgScriptPath;
 
 		wfLoadExtensionMessages( 'CodeReview' );
 
 		$this->setHeaders();
+		$wgOut->addStyle( "$wgScriptPath/extensions/CodeReview/codereview.css" );
 
 		if( $subpage == '' ) {
 			$view = new CodeRepoListView();
@@ -214,6 +215,9 @@ class CodeRevisionView extends CodeView {
 			$view->execute();
 			return;
 		}
+		
+		$this->checkPostings();
+		
 		$repoLink = $wgUser->getSkin()->link( SpecialPage::getTitleFor( 'Code', $this->mRepo->getName() ), 
 			htmlspecialchars( $this->mRepo->getName() ) );
 		$rev = $this->mRev->getId();
@@ -240,10 +244,33 @@ class CodeRevisionView extends CodeView {
 <tr><td valign="top">' . wfMsgHtml( 'code-rev-paths' ) . '</td><td valign="top">' . $paths . '</td></tr>
 </table>';
 		$html .=
+			"<h2>Diff</h2>" .
 			"<div class='mw-codereview-diff'>" .
 			$this->formatDiff() .
 			"</div>";
+		
+		$html .=
+			"<h2>Comments</h2>" .
+			$this->formatComments();
 		$wgOut->addHtml( $html );
+	}
+	
+	function checkPostings() {
+		global $wgRequest, $wgUser;
+		if( $wgRequest->wasPosted()
+			&& $wgUser->matchEditToken( $wgRequest->getVal( 'wpEditToken' ) ) ) {
+			// Look for a posting...
+			$text = $wgRequest->getText( 'wpTextbox1' );
+			$parent = $wgRequest->getIntOrNull( 'wpParent' );
+			$review = $wgRequest->getInt( 'wpReview' );
+			$isPreview = $wgRequest->getCheck( 'wpCommentPreview' );
+			if( $isPreview ) {
+				// NYI
+			} else {
+				$this->mRev->saveComment( $text, $review, $parent );
+				// fixme -- won't show up in slave load
+			}
+		}
 	}
 	
 	function formatPathLine( $path, $action ) {
@@ -265,5 +292,54 @@ class CodeRevisionView extends CodeView {
 	function formatDiff() {
 		$diff = $this->mRepo->getDiff( $this->mRev->getId() );
 		return "<pre>" . htmlspecialchars( $diff ) . "</pre>";
+	}
+	
+	function formatComments() {
+		return "<div class='mw-codereview-comments'>" .
+			implode( "\n",
+				array_map(
+					array( $this, 'formatComment' ),
+					$this->mRev->getComments() ) ) .
+			$this->postCommentForm() .
+			"</div>";
+	}
+	
+	function formatComment( $comment ) {
+		global $wgOut, $wgLang;
+		return '<div class="mw-codereview-comment">' .
+			'<div class="mw-codereview-comment-meta">' .
+			'Comment by ' .
+			$this->mSkin->userLink( $comment->user, $comment->userText ) .
+			$this->mSkin->userToolLinks( $comment->user, $comment->userText ) .
+			' ' .
+			$wgLang->timeanddate( $comment->timestamp ) .
+			'</div>' .
+			'<div class="mw-codereview-comment-text">' .
+			$wgOut->parse( $comment->text ) .
+			'</div>' .
+			'</div>';
+	}
+	
+	function postCommentForm( $parent=null ) {
+		global $wgUser;
+		return '<div class="mw-codereview-post-comment">' .
+			Xml::openElement( 'form',
+				array(
+					'action' => '', // fixme
+					'method' => 'post' ) ) .
+			Xml::hidden( 'wpEditToken', $wgUser->editToken() ) .
+			Xml::hidden( 'wpCodeRepo', $this->mRepo->getName() ) .
+			Xml::hidden( 'wpCodeRev', $this->mRev->getId() ) .
+			($parent ? Xml::hidden( 'wpCodeParent', $parent ) : '') .
+			'<div>' .
+			Xml::textArea( 'wpTextbox1', '' ) .
+			'</div>' .
+			'<div>' .
+			Xml::submitButton( 'Submit comment', array( 'name' => 'wpSave' ) ) .
+			' ' .
+			Xml::submitButton( 'Preview', array( 'name' => 'wpPreview' ) ) .
+			'</div>' .
+			'</div>' .
+			'</form>';
 	}
 }

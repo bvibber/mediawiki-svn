@@ -1,0 +1,15 @@
+.mw-codereview-comment {
+	border: solid 1px #aaaab3;
+	padding: 0px;
+	background: #eee;
+	margin-bottom: 8px;
+}
+
+.mw-codereview-comment-meta {
+	padding: 4px 8px;
+}
+
+.mw-codereview-comment-text {
+	background: white;
+	padding: 16px;
+}
