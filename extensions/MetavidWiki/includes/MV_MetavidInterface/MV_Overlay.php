@@ -267,7 +267,7 @@ $smwgShowFactbox=SMW_FACTBOX_HIDDEN;
 		//use the cache by default: 
 		//$usepCache = (isset($mvd_page->usePcache))?$mvd_page->usePcache:true;
 		
-		/*try to pull from cache: seperate out cache for internal links vs external links cache*/		
+		/*try to pull from cache: separate out cache for internal links vs external links cache*/		
 		$MvParserCache = & MV_ParserCache::singleton();
 		$add_opt = ($absolute_links)?'a':'';
 		//add the dbKey since I don't know how to easy purge the cache and we are getting cache missmatch

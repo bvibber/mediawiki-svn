@@ -118,7 +118,7 @@ $sample_embed[8]['desc']=' <br><b>Crossfading Videos</b><br/><a href="http://ser
 	     <pre> <?= htmlentities($aval['tag'])?></pre>
 	      </td>
 	    </tr>
-	    <? //oput a seperator between video and playlist
+	    <? //oput a separator between video and playlist
 	    if ($key==5){
 	    	echo '<tr><td colspan="2"><b>Sample Playlists:</b></td></tr>';
 	    }

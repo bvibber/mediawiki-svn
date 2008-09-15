@@ -132,7 +132,7 @@ class GeoParam {
 	 */
 	function get_coor() {
 		if ($i = strpos($this->pieces[0],';')) {
-			/* two values seperated by a semicolon */
+			/* two values separated by a semicolon */
 			$this->coor = array(
 				'latdeg' => substr($this->pieces[0],0,$i),
 				'londeg' => substr($this->pieces[0],$i+1),

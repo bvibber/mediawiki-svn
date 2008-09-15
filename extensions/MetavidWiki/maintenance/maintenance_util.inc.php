@@ -122,7 +122,7 @@ function do_update_wiki_page($wgTitle, $wikiText, $ns = null, $forceUpdate=false
 			print "remove article";
 			$wgArticle->doDeleteArticle( 'bad title' );
 		}
-		//some how mvdIndex and mvd pages got out of sync do a seperate check for the mvd:
+		//some how mvdIndex and mvd pages got out of sync do a separate check for the mvd:
 		if(MV_Index::getMVDbyTitle($wgArticle->mTitle->getDBkey())!=null){
 			print ', rm mvd';
 			MV_Index::remove_by_wiki_title($wgArticle->mTitle->getDBkey());

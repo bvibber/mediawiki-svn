@@ -76,7 +76,7 @@ To disable read-only mode, just type empty string.',
 * If you want to enable import from English Wikibooks on Polish Wikibooks, you have to add "en" to the list
 * If you want to enable import from English Wikipedia on Polish Wikibooks, you have to add "w:en" to the list
 * If you want to enable import from Incubator on Polish Wikibooks, you have to add "incubator" to the list
-Each import source should be placed on a seperate line.',
+Each import source should be placed on a separate line.',
 	'configurewmf-help-enotif'               => 'Here you can enable or disable email notification. Note that it may serioursly affect performance
 and therefore must not be enabled on large wikis.',
 	'configurewmf-help-blockcfg'             => 'Here you can enable or disable user talk editing for blocked users.',
