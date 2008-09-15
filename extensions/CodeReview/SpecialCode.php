@@ -25,6 +25,11 @@ class SpecialCode extends SpecialPage {
 			case 2:
 				$view = new CodeRevisionView( $params[0], $params[1] );
 				break;
+			case 4:
+				if( $params[2] == 'reply' ) {
+					$view = new CodeRevisionView( $params[0], $params[1], $params[3] );
+					break;
+				}
 			default:
 				throw new MWException( "Unexpected number of parameters" );
 			}
@@ -237,10 +242,11 @@ class SvnRevTablePager extends TablePager {
 // Special:Code/MediaWiki/40696
 class CodeRevisionView extends CodeView {
 
-	function __construct( $repoName, $rev ){
+	function __construct( $repoName, $rev, $replyTarget=null ){
 		parent::__construct();
 		$this->mRepo = CodeRepository::newFromName( $repoName );
 		$this->mRev = $this->mRepo ? $this->mRepo->getRevision( intval( $rev ) ) : null;
+		$this->mReplyTarget = $replyTarget;
 	}
 
 	function execute(){
@@ -333,29 +339,61 @@ class CodeRevisionView extends CodeView {
 		return "<div class='mw-codereview-comments'>" .
 			implode( "\n",
 				array_map(
-					array( $this, 'formatComment' ),
+					array( $this, 'formatCommentInline' ),
 					$this->mRev->getComments() ) ) .
 			$this->postCommentForm() .
 			"</div>";
 	}
 
-	function formatComment( $comment ) {
+	function formatCommentInline( $comment ) {
+		if( $comment->id == $this->mReplyTarget ) {
+			return $this->formatComment( $comment,
+				$this->postCommentForm( $comment->id ) );
+		} else {
+			return $this->formatComment( $comment );
+		}
+	}
+	
+	function formatComment( $comment, $replyForm='' ) {
 		global $wgOut, $wgLang;
 		$linker = new CodeCommentLinkerWiki( $this->mRepo );
-		return '<div class="mw-codereview-comment">' .
+		return Xml::openElement( 'div',
+			array(
+				'class' => 'mw-codereview-comment',
+				'id' => 'c' . intval( $comment->id ),
+				'style' => $this->commentStyle( $comment ) ) ) .
 			'<div class="mw-codereview-comment-meta">' .
 			wfMsgHtml( 'code-rev-comment-by' ) . ' ' .
 			$this->mSkin->userLink( $comment->user, $comment->userText ) .
 			$this->mSkin->userToolLinks( $comment->user, $comment->userText ) .
 			' ' .
 			$wgLang->timeanddate( $comment->timestamp ) .
+			' ' .
+			$this->commentReplyLink( $comment->id ) .
 			'</div>' .
 			'<div class="mw-codereview-comment-text">' .
 			$wgOut->parse( $linker->link( $comment->text ) ) .
 			'</div>' .
+			$replyForm .
 			'</div>';
 	}
 
+	function commentStyle( $comment ) {
+		$depth = $comment->threadDepth();
+		$margin = ($depth - 1) * 48;
+		return "margin-left: ${margin}px";
+	}
+	
+	function commentReplyLink( $id ) {
+		$repo = $this->mRepo->getName();
+		$rev = $this->mRev->getId();
+		$self = SpecialPage::getTitleFor( 'Code', "$repo/$rev/reply/$id" );
+		$self->setFragment( "#c$id" );
+		return '[' .
+			$this->mSkin->link( $self, wfMsg( 'codereview-reply-link' ) ) .
+			']';
+	}
+	
 	function postCommentForm( $parent=null ) {
 		global $wgUser;
 		return '<div class="mw-codereview-post-comment">' .
@@ -364,9 +402,7 @@ class CodeRevisionView extends CodeView {
 					'action' => '', // fixme
 					'method' => 'post' ) ) .
 			Xml::hidden( 'wpEditToken', $wgUser->editToken() ) .
-			Xml::hidden( 'wpCodeRepo', $this->mRepo->getName() ) .
-			Xml::hidden( 'wpCodeRev', $this->mRev->getId() ) .
-			($parent ? Xml::hidden( 'wpCodeParent', $parent ) : '') .
+			($parent ? Xml::hidden( 'wpParent', $parent ) : '') .
 			'<div>' .
 			Xml::textArea( 'wpTextbox1', '' ) .
 			'</div>' .

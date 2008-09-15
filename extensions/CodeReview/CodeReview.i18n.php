@@ -30,6 +30,8 @@ $messages['en'] = array(
 	'code-rev-comment-submit' => 'Submit comment',
 	'code-rev-comment-preview' => 'Preview',
 	'code-rev-diff' => 'Diff',
+	
+	'codereview-reply-link' => 'reply',
 
 	'repoadmin' => 'Repository Administration',
 	'repoadmin-new-legend' => 'Create a new repository',

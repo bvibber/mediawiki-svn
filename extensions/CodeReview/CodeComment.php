@@ -10,5 +10,11 @@ class CodeComment {
 		$this->userText = $row->cc_user_text;
 		$this->timestamp = wfTimestamp( TS_MW, $row->cc_timestamp );
 		$this->review = $row->cc_review;
+		$this->sortkey = $row->cc_sortkey;
+	}
+	
+	function threadDepth() {
+		$timestamps = explode( ",", $this->sortkey );
+		return count( $timestamps );
 	}
 }

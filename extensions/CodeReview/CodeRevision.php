@@ -102,8 +102,8 @@ class CodeRevision {
 			// We construct a threaded sort key by concatenating the timestamps
 			// of all our parent comments
 			$dbw = wfGetDB( DB_SLAVE );
-			$parentKey = $dbw->selectRow( 'code_comment',
-				array( 'cc_sortkey' ),
+			$parentKey = $dbw->selectField( 'code_comment',
+				'cc_sortkey',
 				array( 'cc_id' => $parent ),
 				__METHOD__ );
 			if( $parentKey ) {
@@ -127,7 +127,8 @@ class CodeRevision {
 				'cc_user',
 				'cc_user_text',
 				'cc_timestamp',
-				'cc_review' ),
+				'cc_review',
+				'cc_sortkey' ),
 			array(
 				'cc_repo_id' => $this->mRepo,
 				'cc_rev_id' => $this->mId ),

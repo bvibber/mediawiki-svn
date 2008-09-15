@@ -13,3 +13,8 @@
 	background: white;
 	padding: 16px;
 }
+
+.mw-codereview-comment .mw-codereview-post-comment {
+	padding: 16px;
+	padding-left: 48px;
+}
