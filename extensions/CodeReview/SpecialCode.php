@@ -71,28 +71,10 @@ abstract class CodeView {
 		return $userLinks[$author] = $link;
 	}
 
-	function formatMessage( $value ){
-		$value = nl2br( htmlspecialchars( $value ) );
-		$value = preg_replace_callback( '/\br(\d+)\b/', array( $this, 'messageRevLink' ), $value );
-		$value = preg_replace_callback( '/\bbug #?(\d+)\b/i', array( $this, 'messageBugLink' ), $value );
-		return $value;
-	}
-
-	function messageBugLink( $arr ){
-		$text = $arr[0];
-		$bugNo = intval( $arr[1] );
-		$url = $this->mRepo->getBugPath( $bugNo );
-		return $this->mSkin->makeExternalLink( $url, $text );
-	}
-	
-	function messageRevLink( $matches ) {
-		$text = $matches[0];
-		$rev = intval( $matches[1] );
-		
-		$repo = $this->mRepo->getName();
-		$title = SpecialPage::getTitleFor( 'Code', "$repo/$rev" );
-		
-		return $this->mSkin->link( $title, $text );
+	function formatMessage( $text ){
+		$text = nl2br( htmlspecialchars( $text ) );
+		$linker = new CodeCommentLinkerHtml( $this->mRepo );
+		return $linker->link( $text );
 	}
 
 	function messageFragment( $value ) {
@@ -102,6 +84,59 @@ abstract class CodeView {
 		$first = $lines[0];
 		$trimmed = $wgLang->truncate( $first, 60, '...' );
 		return $this->formatMessage( $trimmed );
+	}
+}
+
+class CodeCommentLinker {
+	function __construct( $repo ) {
+		global $wgUser;
+		$this->mSkin = $wgUser->getSkin();
+		$this->mRepo = $repo;
+	}
+	
+	function link( $text ) {
+		$text = preg_replace_callback( '/\br(\d+)\b/', array( $this, 'messageRevLink' ), $text );
+		$text = preg_replace_callback( '/\bbug #?(\d+)\b/i', array( $this, 'messageBugLink' ), $text );
+		return $text;
+	}
+
+	function messageBugLink( $arr ){
+		$text = $arr[0];
+		$bugNo = intval( $arr[1] );
+		$url = $this->mRepo->getBugPath( $bugNo );
+		
+		return $this->makeExternalLink( $url, $text );
+	}
+	
+	function messageRevLink( $matches ) {
+		$text = $matches[0];
+		$rev = intval( $matches[1] );
+		
+		$repo = $this->mRepo->getName();
+		$title = SpecialPage::getTitleFor( 'Code', "$repo/$rev" );
+		
+		return $this->makeInternalLink( $title, $text );
+	}
+
+}
+
+class CodeCommentLinkerHtml extends CodeCommentLinker {
+	function makeExternalLink( $url, $text ) {
+		return $this->mSkin->makeExternalLink( $url, $text );
+	}
+	
+	function makeInternalLink( $title, $text ) {
+		return $this->mSkin->link( $title, $text );
+	}
+}
+
+class CodeCommentLinkerWiki extends CodeCommentLinker {
+	function makeExternalLink( $url, $text ) {
+		return "[$url $text]";
+	}
+	
+	function makeInternalLink( $title, $text ) {
+		return "[[" . $title->getPrefixedText() . "|$text]]";
 	}
 }
 
@@ -306,6 +341,7 @@ class CodeRevisionView extends CodeView {
 	
 	function formatComment( $comment ) {
 		global $wgOut, $wgLang;
+		$linker = new CodeCommentLinkerWiki( $this->mRepo );
 		return '<div class="mw-codereview-comment">' .
 			'<div class="mw-codereview-comment-meta">' .
 			wfMsgHtml( 'code-rev-comment-by' ) . ' ' .
@@ -315,7 +351,7 @@ class CodeRevisionView extends CodeView {
 			$wgLang->timeanddate( $comment->timestamp ) .
 			'</div>' .
 			'<div class="mw-codereview-comment-text">' .
-			$wgOut->parse( $comment->text ) .
+			$wgOut->parse( $linker->link( $comment->text ) ) .
 			'</div>' .
 			'</div>';
 	}
