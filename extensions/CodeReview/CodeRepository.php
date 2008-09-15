@@ -100,4 +100,9 @@ class CodeRepository {
 			throw new MWException( 'barf' );
 		return CodeRevision::newFromRow( $row );
 	}
+	
+	function getDiff( $rev ) {
+		$svn = SubversionAdaptor::newFromRepo( $this->mPath );
+		return $svn->getDiff( '', $rev - 1, $rev );
+	}
 }

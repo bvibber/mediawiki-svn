@@ -233,12 +233,16 @@ class CodeRevisionView extends CodeView {
 			$paths = "<ul>\n$paths</ul>";
 		}
 		$html = '<table>
-<tr><td>' . wfMsgHtml( 'code-rev-repo' ) . '</td><td>' . $repoLink . '</td></tr>
-<tr><td>' . wfMsgHtml( 'code-rev-rev' ) . '</td><td>' . $revText . '</td></tr>
-<tr><td>' . wfMsgHtml( 'code-rev-author' ) . '</td><td>' . $this->authorLink( $this->mRev->getAuthor() ) . '</td></tr>
-<tr><td>' . wfMsgHtml( 'code-rev-message' ) . '</td><td>' . $this->formatMessage( $this->mRev->getMessage() ) . '</td></tr>
-<tr><td>' . wfMsgHtml( 'code-rev-paths' ) . '</td><td>' . $paths . '</td></tr>
+<tr><td valign="top">' . wfMsgHtml( 'code-rev-repo' ) . '</td><td valign="top">' . $repoLink . '</td></tr>
+<tr><td valign="top">' . wfMsgHtml( 'code-rev-rev' ) . '</td><td valign="top">' . $revText . '</td></tr>
+<tr><td valign="top">' . wfMsgHtml( 'code-rev-author' ) . '</td><td valign="top">' . $this->authorLink( $this->mRev->getAuthor() ) . '</td></tr>
+<tr><td valign="top">' . wfMsgHtml( 'code-rev-message' ) . '</td><td valign="top">' . $this->formatMessage( $this->mRev->getMessage() ) . '</td></tr>
+<tr><td valign="top">' . wfMsgHtml( 'code-rev-paths' ) . '</td><td valign="top">' . $paths . '</td></tr>
 </table>';
+		$html .=
+			"<div class='mw-codereview-diff'>" .
+			$this->formatDiff() .
+			"</div>";
 		$wgOut->addHtml( $html );
 	}
 	
@@ -256,5 +260,10 @@ class CodeRevisionView extends CodeView {
 			$link = $encPath;
 		}
 		return "<li>$link ($desc)</li>\n";
+	}
+	
+	function formatDiff() {
+		$diff = $this->mRepo->getDiff( $this->mRev->getId() );
+		return "<pre>" . htmlspecialchars( $diff ) . "</pre>";
 	}
 }
