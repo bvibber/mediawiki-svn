@@ -74,7 +74,7 @@ abstract class CodeView {
 		$value = nl2br( htmlspecialchars( $value ) );
 		$value = preg_replace_callback( '/\br(\d+)\b/', array( $this, 'messageRevLink' ), $value );
 		$value = preg_replace_callback( '/\bbug (\d+)\b/i', array( $this, 'messageBugLink' ), $value );
-		return "<code>$value</code>";
+		return $value;
 	}
 
 	function messageBugLink( $arr ){
@@ -100,7 +100,7 @@ abstract class CodeView {
 		$lines = explode( "\n", $message, 2 );
 		$first = $lines[0];
 		$trimmed = $wgLang->truncate( $first, 60, '...' );
-		return htmlspecialchars( $trimmed );
+		return $this->formatMessage( $trimmed );
 	}
 }
 
@@ -214,9 +214,7 @@ class CodeRevisionView extends CodeView {
 		$paths = '';
 		$modifiedPaths = $this->mRev->getModifiedPaths();
 		foreach( $modifiedPaths as $row ){
-			$action = wfMsgHtml( 'code-rev-modified-'.strtolower( $row->cp_action ) );
-			$encPath = htmlspecialchars( $row->cp_path );
-			$paths .= "<li>$encPath ($action)</li>\n";
+			$paths .= $this->formatPathLine( $row->cp_path, $row->cp_action );
 		}
 		if( $paths ){
 			$paths = "<ul>\n$paths</ul>";
@@ -229,5 +227,21 @@ class CodeRevisionView extends CodeView {
 <tr><td>' . wfMsgHtml( 'code-rev-paths' ) . '</td><td>' . $paths . '</td></tr>
 </table>';
 		$wgOut->addHtml( $html );
+	}
+	
+	function formatPathLine( $path, $action ) {
+		$desc = wfMsgHtml( 'code-rev-modified-'.strtolower( $action ) );
+		$encPath = htmlspecialchars( $path );
+		$viewvc = $this->mRepo->getViewVcBase();
+		if( $viewvc ) {
+			$rev = $this->mRev->getId();
+			$safePath = wfUrlEncode( $path );
+			$link = $this->mSkin->makeExternalLink(
+				"$viewvc$safePath?view=markup&pathrev=$rev",
+				$encPath );
+		} else {
+			$link = $encPath;
+		}
+		return "<li>$link ($desc)</li>\n";
 	}
 }
