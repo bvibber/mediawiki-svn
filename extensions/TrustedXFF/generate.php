@@ -50,17 +50,6 @@ while ( !feof( $inFile ) ) {
 	if ( $start === false ) {
 		// Try DNS
 		$names[] = array( $lineNum, $line );
-		/*
-		// Is this a hostname?
-		$ips = gethostbynamel( $line );
-		if ( $ips === false ) {
-			echo "Not a valid host or IP address on line $lineNum: $line\n";
-		} else {
-			foreach ( $ips as $ip ) {
-				$hex = IP::toHex( $ip );
-				dba_insert( $hex, '1', $outFile );
-			}
-		}*/
 		continue;
 	}
 	$ranges[] = array( $lineNum, $start, $end );
@@ -121,7 +110,7 @@ foreach ( $ranges as $i => $range ) {
 		continue;
 	}
 	for ( $j = $startNum; $j <= $endNum; $j++ ) {
-		$hex = base_convert( $j, 10, 16 );
+		$hex = strtoupper( base_convert( $j, 10, 16 ) );
 		$hex = str_pad( $hex, $suffixLength, '0', STR_PAD_LEFT );
 		dba_insert( $prefix . $hex, '1', $outFile );
 		$numHosts++;
