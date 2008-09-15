@@ -145,6 +145,44 @@ def hashfile(fileName, algorithm):
 	f.close()
 	return hash.hexdigest()
 
+def export(branch, dir):
+	if os.path.exists(dir):
+		print "The directory " + dir + " already exists, I'm assuming it is still valid"
+	else:
+		print "Exporting %s..." % (branch)
+		proc = subprocess.Popen(['svn', 'export', '-q',
+			'http://svn.wikimedia.org/svnroot/mediawiki/' + branch + '/phase3', dir])
+		if proc.wait() != 0:
+			print "svn export failed, exiting"
+			sys.exit(1)
+		print "Done"
+
+def makePatch(patchFileName, dir1, dir2, type):
+	patchFile = open(patchFileName, 'w')
+	args = ['diff', '-ru']
+	if type == 'i18n':
+		print "Generating i18n patch file..."
+		dir1 += '/languages/messages'
+		dir2 += '/languages/messages'
+	else:
+		print "Generating normal patch file..."
+		args.extend(['-x', 'messages'])
+	
+	args.extend([dir1, dir2])
+	print ' '.join(args)
+	diffProc = subprocess.Popen(args, stdout = subprocess.PIPE)
+	gzipProc = subprocess.Popen(['gzip', '-9'], 
+		stdin = diffProc.stdout, stdout = patchFile)
+
+	diffStatus = diffProc.wait()
+
+	if diffStatus > 1 or gzipProc.wait() != 0:
+		print "diff failed, exiting"
+		sys.exit(1)
+	patchFile.close()
+	print "Done"
+	return diffStatus == 1
+
 def makeRelease(version, branch, dir, prevVersion = None, prevBranch = None):
 	if not os.path.exists(dir):
 		os.mkdir(dir)
@@ -152,16 +190,7 @@ def makeRelease(version, branch, dir, prevVersion = None, prevBranch = None):
 	package = 'mediawiki-' + version
 
 	# Export the target
-	if os.path.exists(package):
-		print "The directory " + package + " already exists, I'm assuming it is still valid"
-	else:
-		print "Exporting %s...\n" % (branch)
-		proc = subprocess.Popen(['svn', 'export', '-q',
-			'http://svn.wikimedia.org/svnroot/mediawiki/' + branch + '/phase3', package])
-		if proc.wait() != 0:
-			print "svn export failed, exiting"
-			sys.exit(1)
-		print "Done"
+	export(branch, package)
 	
 	# Generate the .tar.gz file
 	outFile = open(dir + '/' + package + '.tar.gz', 'w')
@@ -182,25 +211,16 @@ def makeRelease(version, branch, dir, prevVersion = None, prevBranch = None):
 
 	# Patch
 	if prevVersion != None:
-		patchFileName = dir + '/' + package + '.patch.gz'
+		prevDir = 'mediawiki-' + prevVersion
+		export(prevBranch, prevDir)
+		makePatch(dir + '/' + package + '.patch.gz', prevDir, package, 'normal')
 		outFiles.append(package + '.patch.gz')
-		if os.path.exists(patchFileName):
-			print patchFileName + " already exists, I'm assuming it's still valid"
+		i18nPatch = 'mediawiki-i18n-' + version + '.patch.gz'
+		if (makePatch(dir + '/' +  i18nPatch, prevDir, package, 'i18n')):
+			outFiles.append(i18nPatch)
+			haveI18n = True
 		else:
-			print "Generating patch file..."
-			patchFile = open(patchFileName, 'w')
-			svnProc = subprocess.Popen(['svn', 'diff', 
-				'http://svn.wikimedia.org/svnroot/mediawiki/'+prevBranch+'/phase3',
-				'http://svn.wikimedia.org/svnroot/mediawiki/'+branch+'/phase3'],
-				stdout = subprocess.PIPE)
-			gzipProc = subprocess.Popen(['gzip', '-9'], 
-				stdin = svnProc.stdout, stdout = patchFile)
-
-			if svnProc.wait() != 0 or gzipProc.wait() != 0:
-				print "svn diff failed, exiting"
-				sys.exit(1)
-			patchFile.close()
-			print "Done"
+			haveI18n = False
 	
 	# Sign
 	uploadFiles = []
@@ -233,9 +253,15 @@ def makeRelease(version, branch, dir, prevVersion = None, prevBranch = None):
 	print
 	
 	if prevVersion != None:
-		print "Patch to previous version (" + prevVersion + ")"
-		print 'http://download.wikimedia.org/mediawiki/' + dir + '/' + package + '.patch.gz'
-		print
+		if haveI18n:
+			print "Patch to previous version (" + prevVersion + "), without interface text:"
+			print 'http://download.wikimedia.org/mediawiki/' + dir + '/' + package + '.patch.gz'
+			print "Interface text changes:"
+			print 'http://download.wikimedia.org/mediawiki/' + dir + '/' + i18nPatch
+		else:
+			print "Patch to previous version (" + prevVersion + "):"
+			print 'http://download.wikimedia.org/mediawiki/' + dir + '/' + package + '.patch.gz'
+		print 
 
 	print 'GPG signatures:'
 	for fileName in outFiles:
