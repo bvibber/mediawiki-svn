@@ -6,10 +6,10 @@ if (!defined('MEDIAWIKI')) die();
  * @author Aaron Schulz
  * @author Alexandre Emsenhuber
  * @author Chad Horohoe
- * @copyright Copyright © 2008 Brion Vibber <brion@pobox.com>
- * @copyright Copyright © 2008 Chad Horohoe <innocentkiller@gmail.com>
- * @copyright Copyright © 2008 Aaron Schulz <JSchulz_4587@msn.com>
- * @copyright Copyright © 2008 Alexandre Emsenhuber <alex.emsenhuber@bluewin.ch>
+ * @copyright Copyright Â© 2008 Brion Vibber <brion@pobox.com>
+ * @copyright Copyright Â© 2008 Chad Horohoe <innocentkiller@gmail.com>
+ * @copyright Copyright Â© 2008 Aaron Schulz <JSchulz_4587@msn.com>
+ * @copyright Copyright Â© 2008 Alexandre Emsenhuber <alex.emsenhuber@bluewin.ch>
  * @license http://www.gnu.org/copyleft/gpl.html GNU General Public License 2.0 or later
  */
 
