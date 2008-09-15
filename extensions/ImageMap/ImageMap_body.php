@@ -256,7 +256,6 @@ class ImageMap {
 		$anchor = $imageNode->parentNode;
 		$parent = $anchor->parentNode;
 		$div = $parent->insertBefore( new DOMElement( 'div' ), $anchor );
-		$div->setAttribute( 'style', 'position: relative;' );
 		if ( $defaultLinkAttribs ) {
 			$defaultAnchor = $div->appendChild( new DOMElement( 'a' ) );
 			foreach ( $defaultLinkAttribs as $name => $value ) {
@@ -274,6 +273,8 @@ class ImageMap {
 		$xpath = new DOMXPath( $domDoc );
 		$magnify = $xpath->query( '//div[@class="magnify"]' );
 		if ( !$magnify->length && $descType != self::NONE ) {
+			$div->setAttribute( 'style', 'position: relative;' );
+
 			# Add image description link
 			if ( $descType == self::TOP_LEFT || $descType == self::BOTTOM_LEFT ) {
 				$descLeft = 0;
