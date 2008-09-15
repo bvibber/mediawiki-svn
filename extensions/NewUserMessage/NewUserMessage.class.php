@@ -21,23 +21,20 @@ class NewUserMessage {
 		$talk = $user->getTalkPage();
 
 		if (!$talk->exists()) {
-			global $wgUser, $wgNewUserMinorEdit;
+			global $wgUser, $wgNewUserMinorEdit, $wgNewUserSuppressRC;
 
 			wfLoadExtensionMessages( 'NewUserMessage' );
 
 			$article = new Article($talk);
 
-			// Need to make the edit on the user talk page in another
-			// user's context. Park the current user object and create
-			// a user object for $editingUser. If that user does not
-			// exist, create it.
-			$parkedWgUser = $wgUser;
-			$wgUser = User::newFromName( wfMsgForContent( 'newusermessage-editor' ) );
-			if ( !$wgUser->isLoggedIn() ) {
-				$wgUser->addToDatabase();
+			// Create a user object for the editing user and add it to the database 
+			// if it's not there already
+			$editor = User::newFromName( wfMsgForContent( 'newusermessage-editor' ) );
+			if ( !$editor->isLoggedIn() ) {
+				$editor->addToDatabase();
 			}
 
-			$flags = EDIT_NEW | EDIT_SUPPRESS_RC;
+			$flags = EDIT_NEW;
 			$templateTitleText = wfMsg( 'newusermessage-template' );
 			$templateTitle = Title::newFromText( $templateTitleText );
 			if ( !$templateTitle ) {
@@ -48,6 +45,7 @@ class NewUserMessage {
 				$templateTitleText = $templateTitle->getText();
 			}
 			if ($wgNewUserMinorEdit) $flags = $flags | EDIT_MINOR;
+			if ($wgNewUserSuppressRC) $flags = $flags | EDIT_SUPPRESS_RC;
 
 			$dbw = wfGetDB( DB_MASTER );
 			$dbw->begin();
@@ -65,7 +63,7 @@ class NewUserMessage {
 				}
 			}
 			try {
-				$article->doEdit( $text, wfMsgForContent( 'newuseredit-summary' ), $flags );
+				$article->doEdit( $text, wfMsgForContent( 'newuseredit-summary' ), $flags, false, $editor );
 			} catch ( DBQueryError $e ) {
 				$good = false;
 			}
@@ -79,7 +77,6 @@ class NewUserMessage {
 				wfDebug( __METHOD__. ": the article has already been created despite !\$talk->exists()\n" );
 				$dbw->rollback();
 			}
-			$wgUser = $parkedWgUser;
 		}
 		return true;
 	}
