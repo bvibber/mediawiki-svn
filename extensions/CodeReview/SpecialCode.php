@@ -357,16 +357,23 @@ class CodeRevisionView extends CodeView {
 	function formatComment( $comment, $replyForm='' ) {
 		global $wgOut, $wgLang;
 		$linker = new CodeCommentLinkerWiki( $this->mRepo );
+		
+		$repo = $this->mRepo->getName();
+		$rev = $this->mRev->getId();
+		$perma = SpecialPage::getTitleFor( 'Code', "$repo/$rev" );
+		$perma->setFragment( "#c{$comment->id}" );
+		
 		return Xml::openElement( 'div',
 			array(
 				'class' => 'mw-codereview-comment',
 				'id' => 'c' . intval( $comment->id ),
 				'style' => $this->commentStyle( $comment ) ) ) .
 			'<div class="mw-codereview-comment-meta">' .
-			wfMsgHtml( 'code-rev-comment-by' ) . ' ' .
-			$this->mSkin->userLink( $comment->user, $comment->userText ) .
-			$this->mSkin->userToolLinks( $comment->user, $comment->userText ) .
-			' ' .
+			$this->mSkin->link( $perma, "#" ) .
+			wfMsgHtml( 'code-rev-comment-by',
+				$this->mSkin->userLink( $comment->user, $comment->userText ) .
+				$this->mSkin->userToolLinks( $comment->user, $comment->userText ) ) .
+			' &nbsp; ' .
 			$wgLang->timeanddate( $comment->timestamp ) .
 			' ' .
 			$this->commentReplyLink( $comment->id ) .
