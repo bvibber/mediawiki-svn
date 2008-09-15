@@ -257,7 +257,11 @@ class CodeRevisionView extends CodeView {
 			return;
 		}
 
-		$this->checkPostings();
+		$redirectOnPost = $this->checkPostings();
+		if( $redirectOnPost ) {
+			$wgOut->redirect( $redirectOnPost );
+			return;
+		}
 
 		$repoLink = $wgUser->getSkin()->link( SpecialPage::getTitleFor( 'Code', $this->mRepo->getName() ),
 			htmlspecialchars( $this->mRepo->getName() ) );
@@ -293,6 +297,14 @@ class CodeRevisionView extends CodeView {
 		$html .=
 			"<h2>Comments</h2>" .
 			$this->formatComments();
+		
+		if( $this->mReplyTarget ) {
+			$id = intval( $this->mReplyTarget );
+			$html .= "<script>addOnloadHook(function(){" .
+				"document.getElementById('wpReplyTo$id').focus();" .
+				"});</script>";
+		}
+
 		$wgOut->addHtml( $html );
 	}
 
@@ -301,17 +313,22 @@ class CodeRevisionView extends CodeView {
 		if( $wgRequest->wasPosted()
 			&& $wgUser->matchEditToken( $wgRequest->getVal( 'wpEditToken' ) ) ) {
 			// Look for a posting...
-			$text = $wgRequest->getText( 'wpTextbox1' );
+			$text = $wgRequest->getText( 'wpReply' );
 			$parent = $wgRequest->getIntOrNull( 'wpParent' );
 			$review = $wgRequest->getInt( 'wpReview' );
 			$isPreview = $wgRequest->getCheck( 'wpCommentPreview' );
 			if( $isPreview ) {
 				// NYI
 			} else {
-				$this->mRev->saveComment( $text, $review, $parent );
-				// fixme -- won't show up in slave load
+				$id = $this->mRev->saveComment( $text, $review, $parent );
+				
+				// Redirect to the just-saved comment; this avoids POST
+				// horrors on forward/rewind. Hope we don't have slave issues?
+				$permaLink = $this->commentLink( $id );
+				return $permaLink->getFullUrl();
 			}
 		}
+		return false;
 	}
 
 	function formatPathLine( $path, $action ) {
@@ -354,14 +371,17 @@ class CodeRevisionView extends CodeView {
 		}
 	}
 	
+	function commentLink( $commentId ) {
+		$repo = $this->mRepo->getName();
+		$rev = $this->mRev->getId();
+		$title = SpecialPage::getTitleFor( 'Code', "$repo/$rev" );
+		$title->setFragment( "#c{$commentId}" );
+		return $title;
+	}
+	
 	function formatComment( $comment, $replyForm='' ) {
 		global $wgOut, $wgLang;
 		$linker = new CodeCommentLinkerWiki( $this->mRepo );
-		
-		$repo = $this->mRepo->getName();
-		$rev = $this->mRev->getId();
-		$perma = SpecialPage::getTitleFor( 'Code', "$repo/$rev" );
-		$perma->setFragment( "#c{$comment->id}" );
 		
 		return Xml::openElement( 'div',
 			array(
@@ -369,7 +389,7 @@ class CodeRevisionView extends CodeView {
 				'id' => 'c' . intval( $comment->id ),
 				'style' => $this->commentStyle( $comment ) ) ) .
 			'<div class="mw-codereview-comment-meta">' .
-			$this->mSkin->link( $perma, "#" ) .
+			$this->mSkin->link( $this->commentLink( $comment->id ), "#" ) .
 			wfMsgHtml( 'code-rev-comment-by',
 				$this->mSkin->userLink( $comment->user, $comment->userText ) .
 				$this->mSkin->userToolLinks( $comment->user, $comment->userText ) ) .
@@ -411,7 +431,12 @@ class CodeRevisionView extends CodeView {
 			Xml::hidden( 'wpEditToken', $wgUser->editToken() ) .
 			($parent ? Xml::hidden( 'wpParent', $parent ) : '') .
 			'<div>' .
-			Xml::textArea( 'wpTextbox1', '' ) .
+			Xml::openElement( 'textarea', array(
+				'name' => 'wpReply',
+				'id' => "wpReplyTo{$parent}",
+				'cols' => 40,
+				'rows' => 5 ) ) .
+			'</textarea>' .
 			'</div>' .
 			'<div>' .
 			Xml::submitButton( wfMsg( 'code-rev-comment-submit' ), array( 'name' => 'wpSave' ) ) .

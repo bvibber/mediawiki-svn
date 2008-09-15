@@ -95,6 +95,8 @@ class CodeRevision {
 				'cc_review' => $review,
 				'cc_sortkey' => $sortkey ),
 			__METHOD__ );
+		
+		return $dbw->insertId();
 	}
 
 	protected function threadedSortKey( $parent, $ts ) {
