@@ -132,6 +132,11 @@ class CodeRevisionListView extends CodeView {
 
 	function execute() {
 		global $wgOut;
+		if( !$this->mRepo ) {
+			$view = new CodeRepoListView();
+			$view->execute();
+			return;
+		}
 		$pager = new SvnRevTablePager( $this );
 		$wgOut->addHtml( $pager->getBody() . $pager->getNavigationBar() );
 	}
@@ -175,7 +180,9 @@ class SvnRevTablePager extends TablePager {
 		switch( $name ){
 		case 'cr_id':
 			global $wgUser;
-			return $wgUser->getSkin()->link( SpecialPage::getTitleFor( 'Code', $this->mRepo->getName() . '/' . $value ), htmlspecialchars( $value ) );
+			return $wgUser->getSkin()->link( 
+				SpecialPage::getTitleFor( 'Code', $this->mRepo->getName() . '/' . $value ), htmlspecialchars( $value )
+			);
 		case 'cr_author':
 			return $this->mView->authorLink( $value );
 		case 'cr_message':
@@ -197,12 +204,18 @@ class CodeRevisionView extends CodeView {
 	function __construct( $repoName, $rev ){
 		parent::__construct();
 		$this->mRepo = CodeRepository::newFromName( $repoName );
-		$this->mRev = $this->mRepo->getRevision( intval( $rev ) );
+		$this->mRev = $this->mRepo ? $this->mRepo->getRevision( intval( $rev ) ) : null;
 	}
 
 	function execute(){
 		global $wgOut, $wgUser;
-		$repoLink = $wgUser->getSkin()->link( SpecialPage::getTitleFor( 'Code', $this->mRepo->getName() ), htmlspecialchars( $this->mRepo->getName() ) );
+		if( !$this->mRepo || $this->mRev ) {
+			$view = new CodeRepoListView();
+			$view->execute();
+			return;
+		}
+		$repoLink = $wgUser->getSkin()->link( SpecialPage::getTitleFor( 'Code', $this->mRepo->getName() ), 
+			htmlspecialchars( $this->mRepo->getName() ) );
 		$rev = $this->mRev->getId();
 		$revText = htmlspecialchars( $rev );
 		$viewvc = $this->mRepo->getViewVcBase();
