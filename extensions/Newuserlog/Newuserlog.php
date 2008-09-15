@@ -22,7 +22,8 @@ $wgExtensionCredits['other'][] = array(
 );
 
 if( isset($wgNewUserLog) ) {
-	echo( "You must remove the newuserlog extension, as it is now in the core software!\n" );
+	trigger_error( "You must remove the newuserlog extension, as it is now in the core software!",
+	   E_USER_WARNING );
 } else {
 	# Run this hook on new account creation
 	$wgHooks['AddNewAccount'][] = 'wfNewuserlogHook';
