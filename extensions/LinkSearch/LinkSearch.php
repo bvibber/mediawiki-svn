@@ -21,5 +21,5 @@ $wgExtensionAliasesFiles['LinkSearch'] = $dir . 'LinkSearch.alias.php';
 
 $wgSpecialPages['LinkSearch'] = 'LinkSearchSpecialPage';
 $wgSpecialPageGroups['LinkSearch'] = 'redirects';
-$wgAutoloadClasses['LinkSearchPage'] = $dir . 'LinkSearch_body.php';
+$wgAutoloadClasses['LinkSearchPage'] = $dir . 'LinkSearchPage.php';
 $wgAutoloadClasses['LinkSearchSpecialPage'] = $dir . 'LinkSearch_body.php';
