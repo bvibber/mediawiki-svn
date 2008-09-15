@@ -73,7 +73,7 @@ abstract class CodeView {
 	function formatMessage( $value ){
 		$value = nl2br( htmlspecialchars( $value ) );
 		$value = preg_replace_callback( '/\br(\d+)\b/', array( $this, 'messageRevLink' ), $value );
-		$value = preg_replace_callback( '/\bbug (\d+)\b/i', array( $this, 'messageBugLink' ), $value );
+		$value = preg_replace_callback( '/\bbug #?(\d+)\b/i', array( $this, 'messageBugLink' ), $value );
 		return $value;
 	}
 
