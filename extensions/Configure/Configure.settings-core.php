@@ -598,8 +598,9 @@ $settings = array(
 			'wgDefaultUserOptions' => 'array',
 			'wgDisableAnonTalk' => 'bool',
 			'wgMaxNameChars' => 'int',
-			'wgMinimalPasswordLength' => 'int',
 			'wgMaxSigChars' => 'int',
+			'wgMinimalPasswordLength' => 'int',
+			'wgNewUserLog' => 'bool',
 			'wgReservedUsernames' => 'array',
 			'wgShowIPinHeader' => 'bool',
 			'wgBrowserBlackList' => 'array',
@@ -1168,6 +1169,7 @@ $settingsVersion = array(
 	'wgLinkHolderBatchSize' => array( array( '1.14alpha', '>=' ) ),
 	'wgEnableImageWhitelist' => array( array( '1.14alpha', '>=' ) ),
 	'wgSpecialPageCacheUpdates' => array( array( '1.14alpha', '>=' ) ),
+	'wgNewUserLog' => array( array( '1.14alpha', '>=' ) ),
 ## Obsolete
 	'wgProfileSampleRate' => array( array( '1.8alpha', '<' ) ),
 	'wgProfilerType' => array( array( '1.8alpha', '<' ) ),
