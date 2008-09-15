@@ -38,10 +38,14 @@ class SpecialCode extends SpecialPage {
 abstract class CodeView {
 	var $mRepo;
 
+	function __construct() {
+		global $wgUser;
+		$this->mSkin = $wgUser->getSkin();
+	}
+	
 	abstract function execute();
 
 	function authorLink( $author ) {
-		global $wgUser;
 		static $userLinks = array();
 		if( isset( $userLinks[$author] ) )
 			return $userLinks[$author];
@@ -60,7 +64,7 @@ abstract class CodeView {
 		if( $wikiUser )
 			$user = User::newFromName( $wikiUser );
 		if( $user instanceof User )
-			$link = $author . ' (' . $wgUser->getSkin()->userLink( $user->getId(), $user->getName() ) . ')';
+			$link = $author . ' (' . $this->mSkin->userLink( $user->getId(), $user->getName() ) . ')';
 		else
 			$link = htmlspecialchars( $author );
 		return $userLinks[$author] = $link;
@@ -68,14 +72,25 @@ abstract class CodeView {
 
 	function formatMessage( $value ){
 		$value = nl2br( htmlspecialchars( $value ) );
+		$value = preg_replace_callback( '/\br(\d+)\b/', array( $this, 'messageRevLink' ), $value );
 		$value = preg_replace_callback( '/\bbug (\d+)\b/', array( $this, 'messageBugLink' ), $value );
 		return "<code>$value</code>";
 	}
 
 	function messageBugLink( $arr ){
-		$bugNo = $arr[1];
+		$bugNo = intval( $arr[1] );
 		$url = $this->mRepo->getBugPath( $bugNo );
-		return "<a href=\"$url\" title=\"bug $bugNo\">bug $bugNo</a>";
+		return $this->mSkin->makeExternalLink( $url, "bug $bugNo" );
+	}
+	
+	function messageRevLink( $matches ) {
+		$text = $matches[0];
+		$rev = intval( $matches[1] );
+		
+		$repo = $this->mRepo->getName();
+		$title = SpecialPage::getTitleFor( 'Code', "$repo/$rev" );
+		
+		return $this->mSkin->link( $title, $text );
 	}
 
 	function messageFragment( $value ) {
@@ -90,8 +105,6 @@ abstract class CodeView {
 
 // Special:Code
 class CodeRepoListView {
-
-	function __construct() {}
 
 	function execute() {
 		global $wgOut;
@@ -112,6 +125,7 @@ class CodeRepoListView {
 // Special:Code/MediaWiki
 class CodeRevisionListView extends CodeView {
 	function __construct( $repoName ) {
+		parent::__construct();
 		$this->mRepo = CodeRepository::newFromName( $repoName );
 	}
 
@@ -180,6 +194,7 @@ class SvnRevTablePager extends TablePager {
 class CodeRevisionView extends CodeView {
 
 	function __construct( $repoName, $rev ){
+		parent::__construct();
 		$this->mRepo = CodeRepository::newFromName( $repoName );
 		$this->mRev = $this->mRepo->getRevision( intval( $rev ) );
 	}
