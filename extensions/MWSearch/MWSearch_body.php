@@ -604,10 +604,33 @@ class LuceneSearchSet extends SearchResultSet {
 	function termMatches() {		
 		$resq = preg_replace( "/\\[.*?\\]:/", " ", $this->mQuery ); # generic prefixes
 		$resq = preg_replace( "/all:/", " ", $resq ); 
-		$resq = trim( preg_replace( "/[ |\\[\\]()\"{}+\\-_@!?%&*=\\|:;><,.\\/]+/", " ", $resq ) );
-		$terms = array_map( array( &$this, 'regexQuote' ),
-			explode( ' ', $resq ) );
-		return $terms;
+		
+		// Fixme: this is ripped from SearchMySQL and probably kind of sucks,
+		// but it handles quoted phrase searches more or less correctly.
+		// Should encapsulate this stuff better.
+		
+		// FIXME: This doesn't handle parenthetical expressions.
+		$regexes = array();
+		$m = array();
+		$lc = SearchEngine::legalSearchChars();
+		if( preg_match_all( '/([-+<>~]?)(([' . $lc . ']+)(\*?)|"[^"]*")/',
+			  $resq, $m, PREG_SET_ORDER ) ) {
+			foreach( $m as $terms ) {
+				if( !empty( $terms[3] ) ) {
+					// Match individual terms in result highlighting...
+					$regexp = preg_quote( $terms[3], '/' );
+					if( $terms[4] ) $regexp .= "[0-9A-Za-z_]+";
+				} else {
+					// Match the quoted term in result highlighting...
+					$regexp = preg_quote( str_replace( '"', '', $terms[2] ), '/' );
+				}
+				$regexes[] = $regexp;
+			}
+			wfDebug( __METHOD__ . ': Match with /' . implode( '|', $regexes ) . "/\n" );
+		} else {
+			wfDebug( "Can't understand search query '{$resq}'\n" );
+		}
+		return $regexes;
 	}
 	
 	/**
