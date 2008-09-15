@@ -10,6 +10,7 @@ $messages = array();
 
 $messages['en'] = array(
 	'code' => 'Code Review',
+	'code-desc' => 'This tells you what I do on Special:Version. Provide links to special page(s) if possible',
 	'code-no-repo' => 'No repository configured!',
 	'code-field-id' => 'Revision',
 	'code-field-author' => 'Author',

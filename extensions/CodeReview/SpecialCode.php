@@ -43,7 +43,7 @@ abstract class CodeView {
 		global $wgUser;
 		$this->mSkin = $wgUser->getSkin();
 	}
-	
+
 	abstract function execute();
 
 	function authorLink( $author ) {
@@ -93,7 +93,7 @@ class CodeCommentLinker {
 		$this->mSkin = $wgUser->getSkin();
 		$this->mRepo = $repo;
 	}
-	
+
 	function link( $text ) {
 		$text = preg_replace_callback( '/\br(\d+)\b/', array( $this, 'messageRevLink' ), $text );
 		$text = preg_replace_callback( '/\bbug #?(\d+)\b/i', array( $this, 'messageBugLink' ), $text );
@@ -104,17 +104,17 @@ class CodeCommentLinker {
 		$text = $arr[0];
 		$bugNo = intval( $arr[1] );
 		$url = $this->mRepo->getBugPath( $bugNo );
-		
+
 		return $this->makeExternalLink( $url, $text );
 	}
-	
+
 	function messageRevLink( $matches ) {
 		$text = $matches[0];
 		$rev = intval( $matches[1] );
-		
+
 		$repo = $this->mRepo->getName();
 		$title = SpecialPage::getTitleFor( 'Code', "$repo/$rev" );
-		
+
 		return $this->makeInternalLink( $title, $text );
 	}
 
@@ -124,7 +124,7 @@ class CodeCommentLinkerHtml extends CodeCommentLinker {
 	function makeExternalLink( $url, $text ) {
 		return $this->mSkin->makeExternalLink( $url, $text );
 	}
-	
+
 	function makeInternalLink( $title, $text ) {
 		return $this->mSkin->link( $title, $text );
 	}
@@ -134,7 +134,7 @@ class CodeCommentLinkerWiki extends CodeCommentLinker {
 	function makeExternalLink( $url, $text ) {
 		return "[$url $text]";
 	}
-	
+
 	function makeInternalLink( $title, $text ) {
 		return "[[" . $title->getPrefixedText() . "|$text]]";
 	}
@@ -216,7 +216,7 @@ class SvnRevTablePager extends TablePager {
 		switch( $name ){
 		case 'cr_id':
 			global $wgUser;
-			return $wgUser->getSkin()->link( 
+			return $wgUser->getSkin()->link(
 				SpecialPage::getTitleFor( 'Code', $this->mRepo->getName() . '/' . $value ), htmlspecialchars( $value )
 			);
 		case 'cr_author':
@@ -250,10 +250,10 @@ class CodeRevisionView extends CodeView {
 			$view->execute();
 			return;
 		}
-		
+
 		$this->checkPostings();
-		
-		$repoLink = $wgUser->getSkin()->link( SpecialPage::getTitleFor( 'Code', $this->mRepo->getName() ), 
+
+		$repoLink = $wgUser->getSkin()->link( SpecialPage::getTitleFor( 'Code', $this->mRepo->getName() ),
 			htmlspecialchars( $this->mRepo->getName() ) );
 		$rev = $this->mRev->getId();
 		$revText = htmlspecialchars( $rev );
@@ -283,13 +283,13 @@ class CodeRevisionView extends CodeView {
 			"<div class='mw-codereview-diff'>" .
 			$this->formatDiff() .
 			"</div>";
-		
+
 		$html .=
 			"<h2>Comments</h2>" .
 			$this->formatComments();
 		$wgOut->addHtml( $html );
 	}
-	
+
 	function checkPostings() {
 		global $wgRequest, $wgUser;
 		if( $wgRequest->wasPosted()
@@ -307,7 +307,7 @@ class CodeRevisionView extends CodeView {
 			}
 		}
 	}
-	
+
 	function formatPathLine( $path, $action ) {
 		$desc = wfMsgHtml( 'code-rev-modified-'.strtolower( $action ) );
 		$encPath = htmlspecialchars( $path );
@@ -323,12 +323,12 @@ class CodeRevisionView extends CodeView {
 		}
 		return "<li>$link ($desc)</li>\n";
 	}
-	
+
 	function formatDiff() {
 		$diff = $this->mRepo->getDiff( $this->mRev->getId() );
 		return "<pre>" . htmlspecialchars( $diff ) . "</pre>";
 	}
-	
+
 	function formatComments() {
 		return "<div class='mw-codereview-comments'>" .
 			implode( "\n",
@@ -338,7 +338,7 @@ class CodeRevisionView extends CodeView {
 			$this->postCommentForm() .
 			"</div>";
 	}
-	
+
 	function formatComment( $comment ) {
 		global $wgOut, $wgLang;
 		$linker = new CodeCommentLinkerWiki( $this->mRepo );
@@ -355,7 +355,7 @@ class CodeRevisionView extends CodeView {
 			'</div>' .
 			'</div>';
 	}
-	
+
 	function postCommentForm( $parent=null ) {
 		global $wgUser;
 		return '<div class="mw-codereview-post-comment">' .

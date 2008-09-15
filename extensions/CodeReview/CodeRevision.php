@@ -76,12 +76,12 @@ class CodeRevision {
 			__METHOD__
 		);
 	}
-	
+
 	function saveComment( $text, $review, $parent=null ) {
 		global $wgUser;
 		$ts = wfTimestamp( TS_MW );
 		$sortkey = $this->threadedSortkey( $parent, $ts );
-		
+
 		$dbw = wfGetDB( DB_SLAVE );
 		$dbw->insert( 'code_comment',
 			array(
@@ -96,7 +96,7 @@ class CodeRevision {
 				'cc_sortkey' => $sortkey ),
 			__METHOD__ );
 	}
-	
+
 	protected function threadedSortKey( $parent, $ts ) {
 		if( $parent ) {
 			// We construct a threaded sort key by concatenating the timestamps
@@ -116,7 +116,7 @@ class CodeRevision {
 			return $ts;
 		}
 	}
-	
+
 	function getComments() {
 		$dbr = wfGetDB( DB_SLAVE );
 		$result = $dbr->select( 'code_comment',
@@ -134,7 +134,7 @@ class CodeRevision {
 			__METHOD__,
 			array(
 				'ORDER BY' => 'cc_sortkey' ) );
-		
+
 		$comments = array();
 		foreach( $result as $row ) {
 			$comments[] = new CodeComment( $this, $row );

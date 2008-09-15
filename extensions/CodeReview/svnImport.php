@@ -31,7 +31,7 @@ echo "Syncing repo {$args[0]} from r$lastStoredRev to HEAD...\n";
 while( $start <= $lastRev ) {
 	$log = $svn->getLog( '', $start, $start + $chunkSize - 1 );
 	if( empty($log) ) {
-		# Repo seems to give a blank when max rev is invalid, which 
+		# Repo seems to give a blank when max rev is invalid, which
 		# stops new revisions from being added. Try to avoid this
 		# by trying less at a time from the last point.
 		if( $chunkSize <= 1 ) {

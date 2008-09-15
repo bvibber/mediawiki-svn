@@ -1,10 +1,17 @@
 <?php
 if (!defined('MEDIAWIKI')) die();
 /**
- * Copyright (c) 2008 Brion Vibber <brion@pobox.com>
- * GPLv2
+ *
+ * @author Brion Vibber
+ * @author Aaron Schulz
+ * @author Alexandre Emsenhuber
+ * @author Chad Horohoe
+ * @copyright Copyright © 2008 Brion Vibber <brion@pobox.com>
+ * @copyright Copyright © 2008 Chad Horohoe <innocentkiller@gmail.com>
+ * @copyright Copyright © 2008 Aaron Schulz <JSchulz_4587@msn.com>
+ * @copyright Copyright © 2008 Alexandre Emsenhuber <alex.emsenhuber@bluewin.ch>
+ * @license http://www.gnu.org/copyleft/gpl.html GNU General Public License 2.0 or later
  */
-
 
 /*
 
@@ -19,6 +26,15 @@ What do I need out of SVN?
 http://pecl.php.net/package/svn
 
 */
+
+$wgExtensionCredits['other'][] = array(
+	'name' => 'CodeReview',
+	'svn-date' => '$LastChangedDate$',
+	'svn-revision' => '$LastChangedRevision$',
+	'url' => 'http://www.mediawiki.org/wiki/Extension:CodeReview',
+	'author' => array( 'Brion Vibber', 'Aaron Schulz', 'Alexandre Emsenhuber', 'Chad Horohoe' ),
+	'descriptionmsg' => 'code-desc',
+);
 
 $dir = dirname(__FILE__) . '/';
 

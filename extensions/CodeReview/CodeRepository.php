@@ -100,22 +100,22 @@ class CodeRepository {
 			throw new MWException( 'barf' );
 		return CodeRevision::newFromRow( $row );
 	}
-	
+
 	function getDiff( $rev ) {
 		global $wgMemc;
-		
+
 		$rev1 = $rev - 1;
 		$rev2 = $rev;
-		
+
 		$key = wfMemcKey( 'svn', md5( $this->mPath ), 'diff', $rev1, $rev2 );
 		$data = $wgMemc->get( $key );
-		
+
 		if( !$data ) {
 			$svn = SubversionAdaptor::newFromRepo( $this->mPath );
 			$data = $svn->getDiff( '', $rev1, $rev2 );
 			$wgMemc->add( $key, $data, 86400 );
 		}
-		
+
 		return $data;
 	}
 }

@@ -1,6 +1,6 @@
 <?php
 /**
- * Aliases for Special:AdvancedRandom
+ * Aliases for extension CodeReview
  *
  * @addtogroup Extensions
  */
