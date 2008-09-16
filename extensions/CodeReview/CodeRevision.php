@@ -183,14 +183,24 @@ class CodeRevision {
 			$data[] = array(
 				'ct_repo_id' => $this->mRepo,
 				'ct_rev_id' => $this->mId,
-				'ct_tag' => $tag );
+				'ct_tag' => $this->normalizeTag( $tag ) );
 		}
 		return $data;
 	}
 	
-	function isValidTag( $tag ) {
-		// fixme?
+	function normalizeTag( $tag ) {
+		global $wgContLang;
+		$lower = $wgContLang->lc( $tag );
+		
 		$title = Title::newFromText( $tag );
-		return $title && $title->getPrefixedText() === $tag;
+		if( $title && $tag === $wgContLang->lc( $title->getPrefixedText() ) ) {
+			return $lower;
+		} else {
+			return false;
+		}
+	}
+	
+	function isValidTag( $tag ) {
+		return ($this->normalizeTag( $tag ) !== false );
 	}
 }
