@@ -45,7 +45,7 @@ $messages['en'] = array(
 	'repoadmin-edit-bug' => 'Bugzilla path:',
 	'repoadmin-edit-view' => 'ViewVC path:',
 	'repoadmin-edit-button' => 'OK',
-	'repoadmin-edit-sucess' => 'The repository "$1" has been sucessfully modified.',
+	'repoadmin-edit-sucess' => 'The repository "[[Special:Code/$1|$1]]" has been sucessfully modified.',
 );
 
 $messages['fr'] = array(

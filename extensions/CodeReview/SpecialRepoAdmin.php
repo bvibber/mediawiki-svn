@@ -107,11 +107,14 @@ class RepoAdminRepoView {
 		$wgOut->addHtml(
 			Xml::fieldset( wfMsg( 'repoadmin-edit-legend', $this->mRepoName ) ) .
 			Xml::openElement( 'form', array( 'method' => 'post', 'action' => $this->mPage->getTitle( $this->mRepoName )->getLocalURL() ) ) .
-			'<table>'.
-			'<tr><td>' . Xml::label( wfMsg( 'repoadmin-edit-path' ), 'wpRepoPath' ) . '</td><td>' . Xml::input( 'wpRepoPath', false, $repoPath ) . '</td></tr>' .
-			'<tr><td>' . Xml::label( wfMsg( 'repoadmin-edit-bug' ), 'wpBugPath' ) . '</td><td>' . Xml::input( 'wpBugPath', false, $bugPath ) . '</td></tr>' .
-			'<tr><td>' . Xml::label( wfMsg( 'repoadmin-edit-view' ), 'wpViewPath' ) . '</td><td>' . Xml::input( 'wpViewPath', false, $viewPath ) . '</td></tr>' .
-			'</table>' .
+			Xml::buildForm(
+				array(
+					'repoadmin-edit-path' =>
+						Xml::input( 'wpRepoPath', 60, $repoPath ),
+					'repoadmin-edit-bug' =>
+						Xml::input( 'wpBugPath', 60, $bugPath ),
+					'repoadmin-edit-view' =>
+						Xml::input( 'wpViewPath', 60, $viewPath ) ) ) .
 			Xml::hidden( 'wpEditToken', $wgUser->editToken( $this->mRepoName ) ) .
 			Xml::submitButton( wfMsg( 'repoadmin-edit-button' ) ) .
 			'</form></fieldset>'
