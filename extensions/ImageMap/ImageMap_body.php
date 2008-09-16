@@ -71,8 +71,11 @@ class ImageMap {
 					return self::error( 'imagemap_bad_image' );
 				}
 				// Parse the options so we can use links and the like in the caption
-				$parsedoptions = $parser->recursiveTagParse( $options );
-				$imageHTML = $parser->makeImage( $imageTitle, $parsedoptions );
+				$parsedOptions = $parser->recursiveTagParse( $options );
+				$imageHTML = $parser->makeImage( $imageTitle, $parsedOptions );
+				$parser->replaceLinkHolders( $imageHTML );
+				$imageHTML = $parser->mStripState->unstripBoth( $imageHTML );
+				$imageHTML = Sanitizer::normalizeCharReferences( $imageHTML );
 				$parser->mOutput->addImage( $imageTitle->getDBkey() );
 
 				$domDoc = new DOMDocument();
