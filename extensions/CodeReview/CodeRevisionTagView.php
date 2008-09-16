@@ -25,4 +25,9 @@ class SvnRevTagTablePager extends SvnRevTablePager {
 		$info['conds']['ct_tag'] = $this->mTag; // fixme: normalize input?
 		return $info;
 	}
+
+	function getTitle(){
+		$repo = $this->mRepo->getName();
+		return SpecialPage::getTitleFor( 'Code', "$repo/tag/$this->mTag" );
+	}
 }

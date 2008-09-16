@@ -41,6 +41,7 @@ $dir = dirname(__FILE__) . '/';
 $wgAutoloadClasses['CodeRepository'] = $dir . 'CodeRepository.php';
 $wgAutoloadClasses['CodeRepoListView'] = $dir . 'CodeRepoListView.php';
 $wgAutoloadClasses['CodeRevision'] = $dir . 'CodeRevision.php';
+$wgAutoloadClasses['CodeRevisionAuthorView'] = $dir . 'CodeRevisionAuthorView.php';
 $wgAutoloadClasses['CodeRevisionListView'] = $dir . 'CodeRevisionListView.php';
 $wgAutoloadClasses['CodeRevisionTagger'] = $dir . 'CodeRevisionTagger.php';
 $wgAutoloadClasses['CodeRevisionTagView'] = $dir . 'CodeRevisionTagView.php';

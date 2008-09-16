@@ -29,6 +29,9 @@ class SpecialCode extends SpecialPage {
 				if( $params[1] == 'tag' ) {
 					$view = new CodeRevisionTagView( $params[0], $params[2] );
 					break;
+				} elseif( $params[1] == 'author' ) {
+					$view = new CodeRevisionAuthorView( $params[0], $params[2] );
+					break;
 				} else {
 					throw new MWException( "Unexpected number of parameters" );
 				}
@@ -69,6 +72,8 @@ abstract class CodeView {
 	abstract function execute();
 
 	function authorLink( $author ) {
+		/*
+		// Leave this for later for now...
 		static $userLinks = array();
 		if( isset( $userLinks[$author] ) )
 			return $userLinks[$author];
@@ -91,6 +96,11 @@ abstract class CodeView {
 		else
 			$link = htmlspecialchars( $author );
 		return $userLinks[$author] = $link;
+		*/
+		
+		$repo = $this->mRepo->getName();
+		$special = SpecialPage::getTitleFor( 'Code', "$repo/author/$author" );
+		return $this->mSkin->link( $special, htmlspecialchars( $author ) );
 	}
 
 	function formatMessage( $text ){
