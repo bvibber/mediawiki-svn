@@ -51,6 +51,7 @@ var mvPlayList = function(element) {
 };
 //set up the mvPlaylist object
 mvPlayList.prototype = {
+	instanceOf:'mvPlayList',
 	pl_duration:null,
 	update_tl_hook:null,
 	clip_ready_count:0,
@@ -213,7 +214,10 @@ mvPlayList.prototype = {
 		this.loading=false;
 		this.getHTML();
 	},
-	getPlDuration:function(regen){
+	/*
+	 * @@todo getDuration should replace getDuration
+	 */
+	getDuration:function(regen){			
 		//js_log("GET PL DURRATION for : "+ this.tracks[this.default_track_id].clips.length + 'clips');
 		if(!regen && this.pl_duration)
 			return this.pl_duration;
@@ -232,9 +236,9 @@ mvPlayList.prototype = {
 		//js_log("return dur: " + this.pl_duration);
 		return this.pl_duration;
 	},
-	getPlDurationNTP:function(){
+	getDurationNTP:function(){
 		//get duration in ms and return in NTP
-		return seconds2ntp(this.getPlDuration());
+		return seconds2ntp(this.getDuration());
 		//return 'wtf';
 	},
 	getDataSource:function(){	
@@ -368,6 +372,8 @@ mvPlayList.prototype = {
 					'</div>'+
 				'</div>'
 			);
+			//once the contorls are in the DOM add hooks: 
+			ctrlBuilder.addControlHooks(this);
 			//add the play button:						
 		  	$j('#dc_'+plObj.id).append(
 		  		this.cur_clip.embed.getPlayButton()
@@ -399,14 +405,52 @@ mvPlayList.prototype = {
 			this.updateBaseStatus();									
 		}
 	},
+	updateTimeThumb:function(perc){
+		//get float seconds:
+		var float_sec =  (this.getDuration()*perc)
+		js_log('float sec:' +  float_sec);
+	
+		//update display & cur_clip:
+		var pl_sum_time =0; 
+		var clip_float_sec=0;
+		for(var i in this.default_track.clips){
+			var clip = this.default_track.clips[i];
+			if( (clip.getDuration() + pl_sum_time) > float_sec ){
+				if(this.cur_clip.id != clip.id){					
+					$j('#clipDesc_'+this.cur_clip.id).hide();
+					this.cur_clip = clip;
+					$j('#clipDesc_'+this.cur_clip.id).show();
+				}								
+				break;
+			}
+			pl_sum_time+=clip.getDuration();
+		}	
+		//update start offset (@@todo should probably happen somewhere else like in getDuration() ) 
+		if(!this.cur_clip.embed.start_offset)
+			this.cur_clip.embed.start_offset=this.cur_clip.embed.media_element.selected_source.start_offset;	
+		
+		//render effects ontop:
+		//issue thumbnail update request: (if plugin supports it will render out  
+		this.cur_clip.embed.updateTimeThumb(perc);
+		
+		this.cur_clip.embed.currentTime = (float_sec -pl_sum_time)+this.cur_clip.embed.start_offset ;
+		this.cur_clip.embed.seek_time_sec = (float_sec -pl_sum_time );
+				
+		this.doSmilActions();
+		
+	},
 	updateBaseStatus:function(){
 		js_log('update title');
 		$j('#ptitle_'+this.id).html(''+
 			'<b>' + this.title + '</b> '+				
 			this.getClipCount()+' clips, <i>'+
-			this.getPlDurationNTP() + '</i>' );		
+			this.getDurationNTP() + '</i>' );		
 		//update status:
-		this.cur_clip.embed.setStatus('0:0:00/'+this.getPlDurationNTP());				
+		this.cur_clip.embed.setStatus('0:0:00/'+this.getDurationNTP());				
+	},
+	/*setStatus overide (could call the jquery directly) */
+	setStatus:function(value){
+		$j('#mv_time_'+this.id).html(value);
 	},
 	/*gets adds hidden desc to the #dc container*/
 	getAllClipDesc : function(){		
@@ -444,12 +488,12 @@ mvPlayList.prototype = {
 		}
 		var track_len = $j('#mv_seeker_'+this.id).css('width').replace(/px/, '');
 		//assume the duration is static and present at .duration during playback
-		var clip_perc = this.cur_clip.embed.duration / this.getPlDuration();
+		var clip_perc = this.cur_clip.embed.duration / this.getDuration();
 		var perc_offset =time_offset = 0;
 		for(var i in this.default_track.clips){
 			var clip = this.default_track.clips[i];
 			if(this.cur_clip.id ==clip.id)break;
-			perc_offset+=(clip.embed.duration /  plObj.getPlDuration());
+			perc_offset+=(clip.embed.duration /  plObj.getDuration());
 			time_offset+=clip.embed.duration;
 		} 		
 		//run any update time line hooks:		
@@ -601,14 +645,13 @@ mvPlayList.prototype = {
 	//next prev button and more status display
 	getControlsHTML:function(){
 		//get controls from current clip  (add some playlist specific controls:  		
-		this.cur_clip.embed.supports['prev_next']=true;
-		this.cur_clip.embed.supports['options_in_body']=true;
+		this.cur_clip.embed.supports['prev_next']=true;		
 		return ctrlBuilder.getControls(this.cur_clip.embed);
 	},	
 	//ads colors/dividers between tracks
 	colorPlayHead: function(){
 		//total duration:		
-		var pl_duration = this.getPlDuration();
+		var pl_duration = this.getDuration();
 		var track_len = $j('#slider_'+this.id).css('width').replace(/px/, '');
 		var cur_pixle=0;
 		
@@ -943,9 +986,7 @@ mvClip.prototype = {
 			}
 		}
 	},	
-	getDuration:function(){
-		//return duration if clips already has duration
-		if(this.duration)return this.duration;
+	getDuration:function(){		
 		if(!this.embed)this.setUpEmbedObj();		
 		return this.embed.getDuration();
 	},
@@ -1202,7 +1243,7 @@ PlMvEmbed.prototype = {
 			this.pe_setStatus(value);
 		}else{									
 			//js_log("set time via base offset:"+base_dur + ' curTime:'+plObj.cur_clip.embed.currentTime)				
-			this.pe_setStatus(seconds2ntp(plObj.cur_clip.dur_offset + plObj.cur_clip.embed.currentTime) + '/'+ plObj.getPlDurationNTP());
+			this.pe_setStatus(seconds2ntp(plObj.cur_clip.dur_offset + plObj.cur_clip.embed.currentTime) + '/'+ plObj.getDurationNTP());
 		}
 	},
 	setSliderValue:function(value){		
@@ -1210,10 +1251,10 @@ PlMvEmbed.prototype = {
 		//js_log('set slider value:c:'+this.id+' v:'+ value + ' trueVa:'+ sliderVal);
 		this.pe_setSliderValue(sliderVal);
 	},
-	activateSlider:function(){
+	/*activateSlider:function(){
 		//map the slider to the parent playlist slider id:
 		this.pe_activateSlider(this.pc.pp.id);
-	},
+	},*/
 	doSeek:function(v){
 		var plObj = this.pc.pp;
 		var prevClip=null;
@@ -1221,7 +1262,7 @@ PlMvEmbed.prototype = {
 		var perc_offset=0;
 		for(var i in plObj.default_track.clips){
 			var clip = plObj.default_track.clips[i];		
-			perc_offset+=(clip.embed.duration /  plObj.getPlDuration());
+			perc_offset+=(clip.embed.duration /  plObj.getDuration());
 			if(perc_offset > v ){	
 				if(this.playMovieAt){							
 					this.playMovieAt(i);				
@@ -1496,13 +1537,14 @@ mvPlayList.prototype.getOverlaySelector = function(_pClip, pre_var){
 //handles the rendering of overlays loaind of future clips (if nessesary)
 //@@todo could be lazy loaded if nessesary 
 mvPlayList.prototype.doSmilActions = function(){ 		
-	//js_log('f:doSmilActions');
+	//js_log('f:doSmilActions');	
 	var offSetTime = 0; //offset time should let us start a transition later on if we have to. 
 	_pClip = this.cur_clip;	
 	
-	//@@todo move some of this out of this loop
+		
+	//@@todo move some of this out of this loop (ie init should assure .dur
 	if(!_pClip.dur)
-		_pClip.dur = this.duration; 
+		_pClip.dur = _pClip.embed.getDuration(); 
 	
 	//check for duration actions / clip freze mode
 	if(_pClip.dur <= _pClip.embed.currentTime  && _pClip.order != _pClip.pp.getClipCount()-1 ){
@@ -1513,7 +1555,7 @@ mvPlayList.prototype.doSmilActions = function(){
 	}
 	
 	if(_pClip.dur >= _pClip.embed.currentTime ){
-		//@@todo freeze on onClipStop
+		//@@todo freeze-frame on onClipStop
 	}
 	
 	if(_pClip.begin){
@@ -1533,7 +1575,6 @@ mvPlayList.prototype.doSmilActions = function(){
 					var prev_pClip = _pClip.pp.getClip(-1);	
 					if(prev_pClip.id == this.cur_clip.id)
 						js_log('Error: transIn crossfade without previus media asset');
-																									
 					_pClip.transIn.overlay_selector_id = 'clipDesc_'+prev_pClip.id;
 				}else{
 					_pClip.transIn.overlay_selector_id =this.getOverlaySelector(_pClip, 'transIn_');																
@@ -1545,7 +1586,17 @@ mvPlayList.prototype.doSmilActions = function(){
 				//start running the transition animation (will stop once pClip time > transition duration	
 				js_log("ABOUT TO RUN transIn");
 				js_log("cid: "+_pClip.transIn.pClip.id);	
+				//if user seeking  don't start animations just update frame					
 				_pClip.transIn.run_animation();				
+			}else if(_pClip.transIn.animation_state==1 ){
+				//only update if userSlide (otherwise hanndled by internal transition timer) 
+				if(this.userSlide){
+					js_log('user slide update transition state:'+ _pClip.embed.currentTime );
+					_pClip.transIn.run_animation();
+				}
+			}else if(_pClip.transIn.animation_state==2){
+				//close up shop: 
+				$j('#'+_pClip.transIn.overlay_selector_id).remove();
 			}		
 		}
 	}	
@@ -1563,8 +1614,10 @@ mvPlayList.prototype.doSmilActions = function(){
 					if(next_pClip.id == this.cur_clip.id)
 						js_log('Error: transOut crossfade without subquent asset');
 						
-					//start playing the next clip	
-					next_pClip.embed.play();							
+					//start playing the next clip (if not user slide)
+					if(!this.userSlide){
+						next_pClip.embed.play();
+					}						
 					_pClip.transOut.overlay_selector_id = 'clipDesc_'+next_pClip.id;					
 					//mvTransLib.doTransition(_pClip.transOut, overlay_selector_id, pClip);
 					
@@ -1641,7 +1694,7 @@ var mvTransLib = {
 		//types:
 		fade:{
 			fadeFromColor:{
-				"init":function(tObj){										
+				'init':function(tObj){										
 					js_log('f:fadeFromColor: '+tObj.overlay_selector_id +' to color: '+ tObj.fadeColor);
 					if(!tObj.fadeColor)
 						return js_log('missing fadeColor');		
@@ -1653,9 +1706,10 @@ var mvTransLib = {
 						'background-color':tObj.fadeColor,
 						'opacity':"1",
 					});
-				},
+				},			
 				'u':function(tObj, percent){
-					//fade from color invert the percent
+					js_log(':fadeFromColor:update: '+ percent);
+					//fade from color (invert the percent)
 					var percent = 1- percent;
 					$j('#'+tObj.overlay_selector_id).css({
 						"opacity" : percent
@@ -1825,11 +1879,9 @@ mvSMILClip.prototype = {
 	 */
 	getDuration:function(){
 		//check for smil dur: 
-		if(this.dur)
-			return this.dur;
-		//else get the duration from the embed clip: 
-		if(this.embed.getDuration())
-			return this.embed.getDuration();				
+		if(!this.dur)
+			this.dur = this.embed.getDuration();
+		return this.dur;					
 	},
 	setUpEmbedObj:function(){
 		js_log('set up embed for smil based clip');
@@ -1908,7 +1960,8 @@ transitionObj.prototype = {
 		
 		if(percentage >= 1){
 			this.animation_state=2;
-			js_log("transition done");
+			js_log("transition done update with percentage "+percentage);		
+			clearInterval(this.timerId);	
 			return true;
 		}
 		//js_log('cur percentage: '+percentage);
@@ -1917,8 +1970,8 @@ transitionObj.prototype = {
 		
 		
 		this.interValCount++;
-		//setInterval in we are still in running state 
-		if(this.animation_state==1){
+		//setInterval in we are still in running state and user is not using the playhead 
+		if(this.animation_state==1 && !this.pClip.pp.userSlide){
 			if(!this.timerId){
 				this.timerId = setInterval('document.getElementById(\''+this.pClip.pp.id+'\').cur_clip.'+this.transAttrType+'.run_animation()',
 						 MV_ANIMATION_CB_RATE);

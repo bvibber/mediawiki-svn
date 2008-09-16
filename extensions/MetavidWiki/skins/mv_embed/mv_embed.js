@@ -169,11 +169,16 @@ var mvEmbed = {
   //plugin libs var names and paths:
   lib_jquery:{'window.jQuery':'jquery/jquery-1.2.6.min.js'},
   lib_plugins:{
+  	'$j.timer.global':'jquery/plugins/jquery.timers.js', //we may be able to remove the timer	
+  	'$j.ui.progressbar':'jquery/jquery-ui-personalized-1.6rc1.debug.js'
+  },
+  /*old lib includes: 
 	'$j.fn.offsetParent':'jquery/plugins/jquery.dimensions.js',
 	'$j.ui.mouseInteraction':'jquery/plugins/ui.mouse.js',
-	'$j.ui.slider':'jquery/plugins/ui.slider.js',
-	'$j.timer.global':'jquery/plugins/jquery.timers.js'
-  },
+	'$j.ui.slider':'jquery/plugins/ui.slider.js',	
+	'$j.ui.draggable':'jquery/plugins/ui.draggable.js', //include draggable
+	'$j.ui.droppable':'jquery/plugins/ui.droppable.js'
+   */
   pc:null, //used to store pointer to parent clip (when in playlist mode)
   load_libs:function(callback){
   	if(callback)this.load_callback = callback;
@@ -508,6 +513,57 @@ var ctrlBuilder = {
     	}
     	return o;
 	},
+	 /*
+     * addControlHooks
+     * to be run once controls are attached to the dom
+     */
+    addControlHooks:function(embedObj){        	    	
+    	var _this = embedObj;
+    	//add in drag/seek hooks: 
+		if(!_this.base_seeker_slider_offset &&  $j('#mv_seeker_slider_'+_this.id).get(0))
+        	_this.base_seeker_slider_offset = $j('#mv_seeker_slider_'+_this.id).get(0).offsetLeft;
+        
+        //if playlist always start at 0
+        _this.start_time_sec = (_this.instanceOf == 'mvPlayList')?0:
+        						_this.start_time_sec = ntp2seconds(_this.getTimeReq().split('/')[0]);        
+        
+        js_log('looking for: #mv_seeker_slider_'+_this.id + "\n " +
+        	 'start sec: '+_this.start_time_sec + ' base offset: '+_this.base_seeker_slider_offset);
+        
+        //buid dragable hook here:        
+	    $j('#mv_seeker_slider_'+_this.id).draggable({
+        	containment:'#seeker_bar_'+_this.id,
+        	axis:'x',
+        	opacity:.6,
+        	start:function(e, ui){
+        		_this.userSlide=true;
+        		js_log("started draging set userSlide"+_this.userSlide)
+        		var options = ui.options;      
+        		//remove "play button"   	
+        		$j('#big_play_link_'+_this.id).fadeOut('fast');
+        	},
+        	drag:function(e, ui){
+        		//@@todo get the -14 number from the skin somehow
+        		var perc = (($j('#mv_seeker_slider_'+_this.id).get(0).offsetLeft-_this.base_seeker_slider_offset)
+						/
+					($j('#mv_seeker_'+_this.id).width()-14));   							
+									 													
+				this.jump_time = seconds2ntp(parseInt(_this.getDuration()*perc)+ _this.start_time_sec);	
+				js_log('perc:' + perc + ' * ' + _this.getDuration() + ' jt:'+  this.jump_time);
+				_this.setStatus( getMsg('seek_to')+' '+this.jump_time );    
+				//update the thumbnail/ frame 
+				_this.updateTimeThumb(perc);					
+        	},
+        	stop:function(e, ui){
+        		_this.userSlide=false;
+        		js_log('do jump to: '+this.jump_time)
+        		//reset slider				
+        		_this.seek_time_sec=ntp2seconds(this.jump_time);
+        		//_this.stop();
+        		//_this.play();
+        	}
+        });
+    },
 	components:{
 		'borders':{
 			'w':8,
@@ -575,7 +631,7 @@ var ctrlBuilder = {
 			'w':0, //special case (takes up remaning space) 
 			'o':function(){
 				return '<div class="seeker" id="mv_seeker_'+ctrlBuilder.id+'" style="width: ' + (ctrlBuilder.avaliable_width - 18) + 'px;">'+           
-                    '		<div class="seeker_bar">'+
+                    '		<div id="seeker_bar_'+ctrlBuilder.id+'" class="seeker_bar">'+
                     '			<div class="seeker_bar_outer"></div>'+
                     '			<div id="mv_seeker_slider_'+ctrlBuilder.id+'" class="seeker_slider"></div>'+
                     '			<div class="seeker_bar_close"></div>'+
@@ -920,17 +976,12 @@ function mv_do_sequence(initObj){
 	mvEmbed.load_libs(function(){
 		//load playlist object and drag,drop,resize,hoverintent,libs
 		mvJsLoader.doLoad({
-				'mvPlayList':'mv_playlist.js',
-				'$j.ui.resizable':'jquery/plugins/ui.resizable.js',
-				'$j.ui.draggable':'jquery/plugins/ui.draggable.js',
-				'$j.ui.droppable':'jquery/plugins/ui.droppable.js'
+				'mvPlayList':'mv_playlist.js'
 				//'$j.ui.sortable':'jquery/plugins/ui.sortable.js'
 			},function(){
 				//load the sequencer and draggable ext
 				mvJsLoader.doLoad({
-						'mvSequencer':'mv_sequencer.js',
-						'$j.ui.draggable.prototype.plugins.drag':'jquery/plugins/ui.draggable.ext.js',
-						'$j.ui.droppable.prototype.plugins.over':'jquery/plugins/ui.droppable.ext.js'
+						'mvSequencer':'mv_sequencer.js'
 					},function(){
 						//init the sequence object (it will take over from there)
 						mvSeq = new mvSequencer(initObj);
@@ -1442,14 +1493,8 @@ mediaSource.prototype =
     getURI : function(seek_time_sec)
     {
     	if(!seek_time_sec)
-       		return this.src;
-		       		
-       	pSrc = parseUri(this.src);
-       	var new_url = pSrc.protocol +'://'+ pSrc.host + pSrc.path +'?';       	
-       	for(i in pSrc.queryKey){
-       		new_url +=(i=='t')?'t=' + seconds2ntp(seek_time_sec) +'/'+ this.end_ntp +'&' :
-    									 i+'='+ pSrc.queryKey[i]+'&';    	
-       	}
+       		return this.src;		       		       
+       	var new_url = getUpdateTimeURL(this.src,  seconds2ntp(seek_time_sec)+'/'+ this.end_ntp);   
        	return new_url;
     },
     /** Title accessor function.
@@ -1770,7 +1815,11 @@ embedVideo.prototype = {
 	seek_time_sec:0,
 	base_seeker_slider_offset:null,
 	onClipDone_disp:false,
-	supports:{},	
+	supports:{},
+	//for seek thumb updates:
+	cur_thumb_seek_time:0,
+	thumb_seek_interval:null,	
+		
 	//utility functions for property values:
 	hx : function ( s ) {
 		if ( typeof s != 'String' ) {
@@ -2209,8 +2258,9 @@ embedVideo.prototype = {
 			return;
 		}else{
 			$j('#mv_embedded_controls_'+this.id).html( this.getControlsHTML() );
+			this.addControlHooks();						
 		}		
-    },
+    },   
     getControlsHTML:function()
     {        	
     	return ctrlBuilder.getControls(this);
@@ -2239,44 +2289,10 @@ embedVideo.prototype = {
 	        }
         html_code += '</div>'; //videoPlayer div close        
         js_log('should set: '+this.id);
-        $j(this).html(html_code);      
-        
-        if(!_this.base_seeker_slider_offset)
-        	_this.base_seeker_slider_offset = $j('#mv_seeker_slider_'+_this.id).get(0).offsetLeft;
-        	
-        _this.start_time_sec = ntp2seconds(_this.getTimeReq().split('/')[0]);
-        
-        js_log('start sec: '+_this.start_time_sec + ' base offset: '+_this.base_seeker_slider_offset);
-        
-        //buid dragable hook here:
-        $j('#mv_seeker_slider_'+this.id).draggable({
-        	containment:'parent',
-        	axis:'x',
-        	opacity:.6,
-        	start:function(e, ui){
-        		_this.userSlide=true;
-        		js_log("started draging set userSlide"+_this.userSlide)
-        	},
-        	drag:function(e, ui){
-        		//@@todo get the -14 number from the skin somehow
-        		var perc = (($j('#mv_seeker_slider_'+_this.id).get(0).offsetLeft-_this.base_seeker_slider_offset)
-						/
-					($j('#mv_seeker_'+_this.id).width()-14));   
-					 													
-				this.jump_time = seconds2ntp(parseInt(_this.duration*perc)+ _this.start_time_sec);	
-				js_log('perc:' + perc + ' * ' + _this.duration + ' jt:'+  this.jump_time);
-				_this.setStatus( getMsg('seek_to')+' '+this.jump_time );    						
-        	},
-        	stop:function(e, ui){
-        		_this.userSlide=false;
-        		js_log('do jump to: '+this.jump_time)
-        		//reset slider				
-        		_this.seek_time_sec=ntp2seconds(this.jump_time);
-        		_this.stop();
-        		_this.play();
-        	}
-        });
-                  
+        $j(this).html(html_code);                    
+		//add hooks once Controls are in DOM
+		ctrlBuilder.addControlHooks(this);		
+		                  
         //js_log('set this to: ' + $j(this).html() );	
         //alert('stop');
         //if auto play==true directly embed the plugin
@@ -2318,6 +2334,19 @@ embedVideo.prototype = {
 	updateVideoSrc : function(src){
 		js_log("UPDATE SRC:"+src);
 		this.src = src;
+	},	
+	updateTimeThumb: function(perc){								   		
+		//do quick thumb update 
+		if(typeof org_thum_src=='undefined'){		
+			org_thum_src = this.media_element.getThumbnailURL();
+		}		
+		if(org_thum_src.indexOf('t=')!==-1){
+			this.updateThumbnail( getUpdateTimeURL(
+						seconds2ntp( (this.getDuration() * perc) + this.start_offset)
+					) 
+				);
+		}
+		js_log('f:doUpdateTimeThumb: update thumb to: '+ perc + ' os:'+ org_thum_src);		
 	},
 	//updates the thumbnail if the thumbnail is being displayed
 	updateThumbnail : function(src, quick_switch){
@@ -2790,7 +2819,7 @@ embedVideo.prototype = {
 		}
 		return null;
 	},
-	activateSlider : function(slider_id){
+	/*activateSlider : function(slider_id){
 		var id = (this.pc)?this.pc.pp.id:this.id;
 		var thisVid = this;
 		this.sliderVal=0;
@@ -2811,15 +2840,15 @@ embedVideo.prototype = {
 		});
 		//if(!slider_id)slider_id=this.id;
 		//get a pointer to this id (as this in onSlide context is not "this")
-		/*var parent_id = this.id;	*/	
-	},
+		/*var parent_id = this.id;		
+	},*/
 	setSliderValue: function(perc){
 		var id = (this.pc)?this.pc.pp.id:this.id;
 		//alinment offset: 
 		if(!this.mv_seeker_width)
 			this.mv_seeker_width = $j('#mv_seeker_slider_'+id).width();
 		
-		js_log('currentTime:'+ this.currentTime);
+		//js_log('currentTime:'+ this.currentTime);
 		
 		var val = Math.round( perc  * $j('#mv_seeker_'+id).width() - (this.mv_seeker_width*perc));
 		$j('#mv_seeker_slider_'+id).css('left', (val+41)+'px' );
@@ -2847,23 +2876,31 @@ function getTransparentPng(image){
 }
 
 /*
-* EMBED OBJECTS:
-* (dynamically included)
-*/
-
-/*
 * utility functions:
 */
+function getUpdateTimeURL(url, new_time){
+	pSrc = parseUri(url);
+	var new_url = pSrc.protocol +'://'+ pSrc.host + pSrc.path +'?';       	
+	var amp = '';
+	for(i in pSrc.queryKey){
+		new_url +=(i=='t')? amp + 't=' + new_time:
+					amp+i+'='+ pSrc.queryKey[i];
+		amp = '&';    	
+	}
+	return new_url;
+}
 function seconds2ntp(sec){	
-	sec = parseInt(sec);
-	hours = Math.floor(sec/ 3600);
-	minutes = Math.floor((sec/60) % 60);
-	seconds = sec % 60;
+	var sec = parseInt(sec);
+	var hours = Math.floor(sec/ 3600);
+	var minutes = Math.floor((sec/60) % 60);
+	var seconds = sec % 60;
 	if ( minutes < 10 ) minutes = "0" + minutes;
 	if ( seconds < 10 ) seconds = "0" + seconds;
 	return hours+":"+minutes+":"+seconds;
 }
-/* takes hh:mm:ss input returns number of seconds */
+/* 
+ * takes hh:mm:ss input returns number of seconds 
+ */
 function ntp2seconds(ntp){
 	if(!ntp){
 		js_log('ntp2seconds:not valid ntp:'+ntp);
