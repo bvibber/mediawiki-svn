@@ -39,7 +39,10 @@ $wgExtensionCredits['other'][] = array(
 $dir = dirname(__FILE__) . '/';
 
 $wgAutoloadClasses['CodeRepository'] = $dir . 'CodeRepository.php';
+$wgAutoloadClasses['CodeRepoListView'] = $dir . 'CodeRepoListView.php';
 $wgAutoloadClasses['CodeRevision'] = $dir . 'CodeRevision.php';
+$wgAutoloadClasses['CodeRevisionListView'] = $dir . 'CodeRevisionListView.php';
+$wgAutoloadClasses['CodeRevisionView'] = $dir . 'CodeRevisionView.php';
 $wgAutoloadClasses['CodeComment'] = $dir . 'CodeComment.php';
 $wgAutoloadClasses['SpecialCode'] = $dir . 'SpecialCode.php';
 $wgAutoloadClasses['SpecialRepoAdmin'] = $dir . 'SpecialRepoAdmin.php';
