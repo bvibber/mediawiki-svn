@@ -109,8 +109,11 @@ class CodeCommentLinker {
 		$text = $arr[0];
 		$bugNo = intval( $arr[1] );
 		$url = $this->mRepo->getBugPath( $bugNo );
-
-		return $this->makeExternalLink( $url, $text );
+		if( $url ) {
+			return $this->makeExternalLink( $url, $text );
+		} else {
+			return $text;
+		}
 	}
 
 	function messageRevLink( $matches ) {
