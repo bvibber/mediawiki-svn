@@ -25,6 +25,13 @@ class SpecialCode extends SpecialPage {
 			case 2:
 				$view = new CodeRevisionView( $params[0], $params[1] );
 				break;
+			case 3:
+				if( $params[1] == 'tag' ) {
+					$view = new CodeRevisionTagView( $params[0], $params[2] );
+					break;
+				} else {
+					throw new MWException( "Unexpected number of parameters" );
+				}
 			case 4:
 				if( $params[2] == 'reply' ) {
 					$view = new CodeRevisionView( $params[0], $params[1], $params[3] );

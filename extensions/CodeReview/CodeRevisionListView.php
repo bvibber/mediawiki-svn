@@ -14,8 +14,12 @@ class CodeRevisionListView extends CodeView {
 			$view->execute();
 			return;
 		}
-		$pager = new SvnRevTablePager( $this );
+		$pager = $this->getPager();
 		$wgOut->addHtml( $pager->getBody() . $pager->getNavigationBar() );
+	}
+	
+	function getPager() {
+		return new SvnRevTablePager( $this );
 	}
 }
 
