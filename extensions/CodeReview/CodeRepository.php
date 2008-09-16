@@ -106,6 +106,11 @@ class CodeRepository {
 
 		$rev1 = $rev - 1;
 		$rev2 = $rev;
+		
+		$revision = $this->getRevision( $rev );
+		if( !$revision->isDiffable() ) {
+			return false;
+		}
 
 		$key = wfMemcKey( 'svn', md5( $this->mPath ), 'diff', $rev1, $rev2 );
 		$data = $wgMemc->get( $key );
@@ -113,7 +118,7 @@ class CodeRepository {
 		if( !$data ) {
 			$svn = SubversionAdaptor::newFromRepo( $this->mPath );
 			$data = $svn->getDiff( '', $rev1, $rev2 );
-			$wgMemc->add( $key, $data, 86400 );
+			$wgMemc->set( $key, $data, 3600*24*3 );
 		}
 
 		return $data;

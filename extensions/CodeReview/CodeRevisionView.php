@@ -56,12 +56,14 @@ class CodeRevisionView extends CodeView {
 		}
 		$html .= '</table>';
 		
-		$html .=
-			"<h2>" . wfMsgHtml( 'code-rev-diff' ) . "</h2>" .
-			"<div class='mw-codereview-diff'>" .
-			$this->formatDiff() .
-			"</div>";
-
+		$diffHtml = $this->formatDiff();
+		if( $diffHtml ) {
+			$html .=
+				"<h2>" . wfMsgHtml( 'code-rev-diff' ) . "</h2>" .
+				"<div class='mw-codereview-diff'>" .
+				$diffHtml .
+				"</div>";
+		}
 		$html .=
 			'<h2>'. wfMsgHtml( 'code-comments' ) .'</h2>' .
 			$this->formatComments();
@@ -160,6 +162,9 @@ class CodeRevisionView extends CodeView {
 
 	function formatDiff() {
 		$diff = $this->mRepo->getDiff( $this->mRev->getId() );
+		if( !$diff ) {
+			return false;
+		}
 		return "<pre>" . htmlspecialchars( $diff ) . "</pre>";
 	}
 

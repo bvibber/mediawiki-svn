@@ -76,6 +76,14 @@ class CodeRevision {
 			__METHOD__
 		);
 	}
+	
+	function isDiffable() {
+		$paths = $this->getModifiedPaths();
+		if( !$paths->numRows() || $paths->numRows() > 20 ) {
+			return false; // things need to get done this year
+		}
+		return true;
+	}
 
 	function saveComment( $text, $review, $parent=null ) {
 		global $wgUser;

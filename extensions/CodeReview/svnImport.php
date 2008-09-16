@@ -35,7 +35,7 @@ while( $start <= $lastRev ) {
 		# stops new revisions from being added. Try to avoid this
 		# by trying less at a time from the last point.
 		if( $chunkSize <= 1 ) {
-			die(); // done!
+			break; // done!
 		}
 		$chunkSize = max( 1, floor($chunkSize/4) );
 	} else {
@@ -56,3 +56,17 @@ while( $start <= $lastRev ) {
 			$revSpeed );
 	}
 }
+
+echo "Pre-caching the latest 50 diffs...\n";
+$dbw = wfGetDB( DB_MASTER );
+$res = $dbw->select( 'code_rev', 'cr_id', 
+	array( 'cr_repo_id' => $repo->getId() ), 
+	__METHOD__, 
+	array( 'ORDER BY' => 'cr_id DESC', 'LIMIT' => 50 )
+);
+while( $row = $dbw->fetchObject( $res ) ) {
+	$rev = $repo->getRevision( $row->cr_id );
+	$diff = $repo->getDiff( $row->cr_id ); // trigger caching
+	echo "Diff r{$row->cr_id} done\n";
+}
+echo "Done!\n";
