@@ -14,12 +14,16 @@ $aliases['en'] = array(
 	'Watchers' => array( 'Watchers' ),
 );
 
-/** Arabic (العربية) */
+/** Arabic (العربية)
+ * @author Meno25
+ */
 $aliases['ar'] = array(
 	'Watchers' => array( 'مراقبون' ),
 );
 
-/** Egyptian Spoken Arabic (مصرى) */
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Meno25
+ */
 $aliases['arz'] = array(
 	'Watchers' => array( 'مراقبون' ),
 );
