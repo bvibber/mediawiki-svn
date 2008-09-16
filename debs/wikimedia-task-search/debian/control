@@ -7,7 +7,7 @@ Build-Depends: debhelper (>= 4.0.0)
 
 Package: wikimedia-task-search
 Architecture: all
-Depends: wikimedia-nis-client, wikimedia-lvs-realserver, openjdk-6-jdk (>= 6b11-2ubuntu2), ant, daemon
+Depends: wikimedia-nis-client, wikimedia-lvs-realserver, openjdk-6-jdk | java-sdk, ant
 Description: Wikimedia search server
  This package depends on all packages needed to setup a standard
  search server.

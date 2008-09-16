@@ -19,6 +19,9 @@ set -e
 
 case "$1" in
     configure)
+	# Create user account for lsearchd
+	adduser --system --home /var/lib/lsearch --ingroup search --disabled-password --shell /bin/sh lsearch
+
 	# Add a line to /etc/motd describing the task of this server
 	if [ -f /etc/motd.tail ]
 	then

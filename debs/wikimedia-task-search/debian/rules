@@ -49,6 +49,8 @@ install: build
 	dh_link
 	
 	install -m 0400 sudoers $(DESTDIR)/etc/
+	install -m 0755 debian/init.d $(DESTDIR)/etc/init.d/lsearchd
+	install debian/logrotate $(DESTDIR)/etc/logrotate.d/wikimedia-task-search
 
 # Build architecture-independent files here.
 binary-indep: build install

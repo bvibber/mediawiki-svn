@@ -1,0 +1,9 @@
+/a/search/log/log {
+    weekly
+    missingok
+    notifempty
+    rotate 2
+    postrotate
+        /etc/init.d/lsearchd restart >/dev/null 2>&1 || true
+    endscript
+}
