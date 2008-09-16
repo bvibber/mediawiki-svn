@@ -1,0 +1,5 @@
+wikimedia-task-search
+---------------------
+
+This package depends on all packages needed to setup a standard
+search server.
