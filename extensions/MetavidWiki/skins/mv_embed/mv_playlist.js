@@ -415,7 +415,7 @@ mvPlayList.prototype = {
 		var clip_float_sec=0;
 		for(var i in this.default_track.clips){
 			var clip = this.default_track.clips[i];
-			if( (clip.getDuration() + pl_sum_time) > float_sec ){
+			if( (clip.getDuration() + pl_sum_time) >= float_sec ){
 				if(this.cur_clip.id != clip.id){					
 					$j('#clipDesc_'+this.cur_clip.id).hide();
 					this.cur_clip = clip;
@@ -430,7 +430,7 @@ mvPlayList.prototype = {
 			this.cur_clip.embed.start_offset=this.cur_clip.embed.media_element.selected_source.start_offset;	
 		
 		//render effects ontop:
-		//issue thumbnail update request: (if plugin supports it will render out  
+		//issue thumbnail update request: (if plugin supports it will render out frame)  
 		this.cur_clip.embed.updateTimeThumb(perc);
 		
 		this.cur_clip.embed.currentTime = (float_sec -pl_sum_time)+this.cur_clip.embed.start_offset ;
@@ -1537,7 +1537,7 @@ mvPlayList.prototype.getOverlaySelector = function(_pClip, pre_var){
 //handles the rendering of overlays loaind of future clips (if nessesary)
 //@@todo could be lazy loaded if nessesary 
 mvPlayList.prototype.doSmilActions = function(){ 		
-	//js_log('f:doSmilActions');	
+	js_log('f:doSmilActions: ' + this.cur_clip.embed.currentTime);	
 	var offSetTime = 0; //offset time should let us start a transition later on if we have to. 
 	_pClip = this.cur_clip;	
 	
@@ -1592,7 +1592,7 @@ mvPlayList.prototype.doSmilActions = function(){
 				//only update if userSlide (otherwise hanndled by internal transition timer) 
 				if(this.userSlide){
 					js_log('user slide update transition state:'+ _pClip.embed.currentTime );
-					_pClip.transIn.run_animation();
+					mvTransLib.doUpdate(_pClip.transIn, (_pClip.embed.currentTime / _pClip.dur) );
 				}
 			}else if(_pClip.transIn.animation_state==2){
 				//close up shop: 
