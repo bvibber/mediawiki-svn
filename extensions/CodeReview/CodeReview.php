@@ -46,6 +46,7 @@ $wgAutoloadClasses['CodeRevisionTagger'] = $dir . 'CodeRevisionTagger.php';
 $wgAutoloadClasses['CodeRevisionView'] = $dir . 'CodeRevisionView.php';
 $wgAutoloadClasses['CodeComment'] = $dir . 'CodeComment.php';
 $wgAutoloadClasses['SpecialCode'] = $dir . 'SpecialCode.php';
+$wgAutoloadClasses['CodeView'] = $dir . 'SpecialCode.php';
 $wgAutoloadClasses['SpecialRepoAdmin'] = $dir . 'SpecialRepoAdmin.php';
 $wgAutoloadClasses['SubversionAdaptor'] = $dir . 'Subversion.php';
 
