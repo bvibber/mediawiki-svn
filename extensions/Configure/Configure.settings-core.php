@@ -200,6 +200,7 @@ $settings = array(
 			'wgHideInterlanguageLinks' => 'bool',
 			'wgLegalTitleChars' => 'text',
 			'wgMaxArticleSize' => 'int',
+			'wgMetadataWhitelist' => 'text',
 			'wgNoFollowLinks' => 'bool',
 			'wgPageShowWatchingUsers' => 'bool',
 			'wgRestrictionLevels' => 'array',
@@ -208,6 +209,7 @@ $settings = array(
 			'wgStyleVersion' => 'int',
 			'wgUrlProtocols' => 'array',
 			'wgUseExternalEditor' => 'bool',
+			'wgUseMetadataEdit' => 'bool',
 		),
 		'ajax' => array(
 			'wgUseAjax' => 'bool',
