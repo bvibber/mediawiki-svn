@@ -44,6 +44,11 @@ $aliases['id'] = array(
 	'Vote' => array( 'Beri suara' ),
 );
 
+/** Luxembourgish (Lëtzebuergesch) */
+$aliases['lb'] = array(
+	'Vote' => array( 'Ofstëmmen' ),
+);
+
 /** Dutch (Nederlands) */
 $aliases['nl'] = array(
 	'Vote' => array( 'Stemmen' ),

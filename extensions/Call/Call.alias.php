@@ -37,6 +37,11 @@ $aliases['fr'] = array(
 	'Call' => array( 'Appeler', 'Appels', 'Appel' ),
 );
 
+/** Luxembourgish (Lëtzebuergesch) */
+$aliases['lb'] = array(
+	'Call' => array( 'Call' ),
+);
+
 /** Dutch (Nederlands) */
 $aliases['nl'] = array(
 	'Call' => array( 'Aanroepen' ),

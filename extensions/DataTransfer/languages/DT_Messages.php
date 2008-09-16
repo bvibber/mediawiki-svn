@@ -278,6 +278,13 @@ $messages['got'] = array(
 	'dt_xml_namespace' => 'Seidofera',
 );
 
+/** Ancient Greek (Ἀρχαία ἑλληνικὴ)
+ * @author Crazymadlover
+ */
+$messages['grc'] = array(
+	'dt_xml_page' => 'Δέλτος',
+);
+
 /** Swiss German (Alemannisch)
  * @author J. 'mach' wust
  */

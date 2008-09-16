@@ -163,6 +163,13 @@ $messages['ru'] = array(
 	'trustedxff-desc' => 'Обработка списка доверенных прокси-адресов ([http://meta.wikimedia.org/wiki/XFF_project Проект XFF])',
 );
 
+/** Yakut (Саха тыла)
+ * @author HalanTul
+ */
+$messages['sah'] = array(
+	'trustedxff-desc' => 'Итэҕэйиллэр прокси-аадырыстар тиһиктэрин оҥоруу ([http://meta.wikimedia.org/wiki/XFF_project XFF бырайыак])',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

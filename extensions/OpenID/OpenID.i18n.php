@@ -1111,6 +1111,8 @@ $messages['lb'] = array(
 	'openidchoosemanual' => 'E Numm vun ärer Wiel:',
 	'openidchooseexisting' => 'E Benotzerkont den et op dëser Wiki scho gëtt:',
 	'openidchoosepassword' => 'Passwuert:',
+	'openidconvertyourstext' => 'Dat ass schon är OpenID.',
+	'openidconvertothertext' => 'Dëst ass engem anere seng OpenID.',
 	'openidnousername' => 'Kee Benotzernumm uginn.',
 	'openidbadusername' => 'Falsche Benotzernumm uginn.',
 );

@@ -32,6 +32,11 @@ $aliases['fi'] = array(
 	'ImportFreeImages' => array( 'Tuo vapaita kuvia' ),
 );
 
+/** Luxembourgish (Lëtzebuergesch) */
+$aliases['lb'] = array(
+	'ImportFreeImages' => array( 'Fräi Biller importéieren' ),
+);
+
 /** Dutch (Nederlands) */
 $aliases['nl'] = array(
 	'ImportFreeImages' => array( 'VrijeAfbeeldingenImporteren' ),

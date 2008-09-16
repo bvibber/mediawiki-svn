@@ -1122,8 +1122,10 @@ $messages['lb'] = array(
 	'sign-viewfield-reviewedby' => 'Reviseur',
 	'sign-viewfield-reviewcomment' => 'Bemierkung',
 	'sign-detail-strike' => 'Ënnerschreft duerchsträichen',
+	'sign-reviewsig' => 'Ënnerschrëft nokucken',
 	'sign-review-comment' => 'Bemierkung',
 	'sign-uniquequery-similarname' => 'Ähnleche Numm',
+	'sign-uniquequery-similaraddress' => 'Ähnlech Adress',
 	'sign-uniquequery-similarphone' => 'Ähnlech Telefonsnummer',
 	'sign-uniquequery-similaremail' => 'Ähnlech E-Mailadress',
 );

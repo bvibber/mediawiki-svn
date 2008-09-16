@@ -27,6 +27,11 @@ $aliases['arz'] = array(
 	'CountEdits' => array( 'عد_التعديلات' ),
 );
 
+/** Luxembourgish (Lëtzebuergesch) */
+$aliases['lb'] = array(
+	'CountEdits' => array( 'Ännerungen zielen' ),
+);
+
 /** Dutch (Nederlands) */
 $aliases['nl'] = array(
 	'CountEdits' => array( 'BewerkingenTellen' ),

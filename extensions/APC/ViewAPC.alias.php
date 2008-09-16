@@ -32,6 +32,11 @@ $aliases['fi'] = array(
 	'ViewAPC' => array( 'APC-tiedot' ),
 );
 
+/** Luxembourgish (Lëtzebuergesch) */
+$aliases['lb'] = array(
+	'ViewAPC' => array( 'APC weisen' ),
+);
+
 /** Dutch (Nederlands) */
 $aliases['nl'] = array(
 	'ViewAPC' => array( 'APCBekijken' ),

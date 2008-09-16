@@ -1187,6 +1187,9 @@ $allMessages['pt'] = array(
 	'whitelisttableview' => 'Ver',
 	'whitelisttablenewdate' => 'Nova Data:',
 	'whitelistbadtitle' => 'Titulo inválido -',
+	'whitelistrequestmsg' => '$1 requisitou acesso às seguintes páginas:
+
+$2',
 	'whitelistnever' => 'nunca',
 	'whitelistnummatches' => '  - $1 resultados',
 );

@@ -314,6 +314,7 @@ $messages['lb'] = array(
 	'onlinestatus-desc' => 'Setzt eng Astellung derbäi fir ze weisen ob de Benotzer op dëser Wiki zur Zäit online ass',
 	'onlinestatus-subtitle-offline' => 'Dëse Benotzer ass zur Zäit offline',
 	'onlinestatus-subtitle-online' => 'Dëse Benotzer ass zur Zäit online',
+	'onlinestatus-tab' => 'Status',
 	'onlinestatus-toggles-desc' => 'Äre Status:',
 	'onlinestatus-toggles-explain' => 'Dëst erlaabt et fir anere Benotzer ze weisen ob Dir zur Zäit online sidd wann si är Benotzersäit kucken.',
 	'onlinestatus-toggles-show' => 'Online-Status op menger Benotzersäit weisen',

@@ -1026,6 +1026,7 @@ $messages['es'] = array(
  * @author IAlex
  * @author Urhixidur
  * @author Verdy p
+ * @author Zetud
  */
 $messages['fr'] = array(
 	'metavid' => 'Page metavid',
@@ -1154,7 +1155,7 @@ $messages['fr'] = array(
 	'mv_advanced_edit' => 'Modification avancée',
 	'mv_basic_edit' => 'Modification de base',
 	'mv_remove_category' => 'Enlever la catégorie',
-	'mv_existing_categories' => 'Catégories :',
+	'mv_existing_categories' => 'catégories :',
 	'mv_add_category' => 'Ajouter une catégorisation',
 	'mv_basic_text_desc' => 'Description du texte (facultatif)',
 	'mv_viewnext' => 'Voir ($1)',
@@ -3245,6 +3246,7 @@ Para todos os metadados no intervalo de categorias, procure por $1",
 	'mv_start_desc' => 'Tempo de início',
 	'mv_end_desc' => 'Tempo de término',
 	'mv_of' => '&#32;de&#32;',
+	'mv_existing_categories' => 'categorias:',
 	'mediasearch' => 'Pesquisa de multimédia',
 	'mv_search_sel_t' => 'Seleccionar tipo de pesquisa',
 	'mv_add_filter' => 'Adicionar filtro',

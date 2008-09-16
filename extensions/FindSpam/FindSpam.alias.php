@@ -27,6 +27,11 @@ $aliases['arz'] = array(
 	'FindSpam' => array( 'إيجاد_السبام' ),
 );
 
+/** Luxembourgish (Lëtzebuergesch) */
+$aliases['lb'] = array(
+	'FindSpam' => array( 'Spam fannen' ),
+);
+
 /** Dutch (Nederlands) */
 $aliases['nl'] = array(
 	'FindSpam' => array( 'SpamVinden' ),

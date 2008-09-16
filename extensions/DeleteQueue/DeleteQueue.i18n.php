@@ -960,6 +960,13 @@ Pode rexistrar o seu propio apoio ou obxección na páxina da eliminación: [{{f
 	'deletequeue-list-header-discusspage' => 'Páxina de conversa',
 );
 
+/** Ancient Greek (Ἀρχαία ἑλληνικὴ)
+ * @author Crazymadlover
+ */
+$messages['grc'] = array(
+	'deletequeue-list-header-page' => 'Δέλτος',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */

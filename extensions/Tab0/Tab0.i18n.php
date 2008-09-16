@@ -109,6 +109,13 @@ $messages['km'] = array(
 	'tab0-desc' => 'ដាក់បន្ថែមថេប "0" តភ្ជាប់ទៅទំព័រដើម្បីកែប្រែផ្នែកដំបូងគេនៃទំព័រ',
 );
 
+/** Korean (한국어)
+ * @author ITurtle
+ */
+$messages['ko'] = array(
+	'tab0-desc' => '문서의 첫 부분만을 편집할 수 있도록 "0" 탭을 추가합니다.',
+);
+
 /** Ripoarisch (Ripoarisch)
  * @author Purodha
  */

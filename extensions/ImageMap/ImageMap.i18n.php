@@ -277,6 +277,13 @@ $messages['eo'] = array(
 	'imagemap_description' => 'Pri ĉi tiu bildo',
 );
 
+/** Spanish (Español)
+ * @author Remember the dot
+ */
+$messages['es'] = array(
+	'imagemap_description' => 'Acerca de esta imagen',
+);
+
 /** Basque (Euskara) */
 $messages['eu'] = array(
 	'imagemap_description' => 'Irudi honen inguruan',

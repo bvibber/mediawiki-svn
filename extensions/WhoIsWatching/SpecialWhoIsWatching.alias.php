@@ -25,6 +25,11 @@ $aliases['de'] = array(
 	'WhoIsWatching' => array( 'Wer beobachtet' ),
 );
 
+/** Luxembourgish (Lëtzebuergesch) */
+$aliases['lb'] = array(
+	'WhoIsWatching' => array( 'Wien iwwerwaacht' ),
+);
+
 /** Dutch (Nederlands) */
 $aliases['nl'] = array(
 	'WhoIsWatching' => array( 'WieVolgt' ),

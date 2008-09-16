@@ -188,6 +188,14 @@ $messages['gl'] = array(
 	'languageselector-setlang' => 'elixir',
 );
 
+/** Ancient Greek (Ἀρχαία ἑλληνικὴ)
+ * @author Crazymadlover
+ */
+$messages['grc'] = array(
+	'languageselector' => 'γλῶττα',
+	'languageselector-setlang' => 'Θετόν',
+);
+
 /** Manx (Gaelg)
  * @author MacTire02
  */

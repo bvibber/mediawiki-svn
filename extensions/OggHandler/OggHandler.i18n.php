@@ -268,6 +268,18 @@ $messages['avk'] = array(
 	'ogg-desc-link' => 'Icde bat iyeltak',
 );
 
+/** Samogitian (Žemaitėška)
+ * @author Hugo.arg
+ */
+$messages['bat-smg'] = array(
+	'ogg-play' => 'Gruotė',
+	'ogg-pause' => 'Pauzė',
+	'ogg-stop' => 'Sostabdītė',
+	'ogg-play-video' => 'Gruotė video',
+	'ogg-play-sound' => 'Gruotė garsa',
+	'ogg-download' => 'Atsėsiōstė faila',
+);
+
 /** Southern Balochi (بلوچی مکرانی)
  * @author Mostafadaneshvar
  */
@@ -409,11 +421,13 @@ $messages['br'] = array(
 );
 
 /** Catalan (Català)
+ * @author Aleator
  * @author Paucabot
  * @author SMP
  * @author Toniher
  */
 $messages['ca'] = array(
+	'ogg-desc' => 'Gestor de fitxers Ogg Theora i Vorbis, amb reproductor de Javascript',
 	'ogg-short-audio' => "Arxiu OGG d'àudio $1, $2",
 	'ogg-short-video' => 'Arxiu OGG de vídeo $1, $2',
 	'ogg-short-general' => 'Arxiu multimèdia OGG $1, $2',
@@ -1369,8 +1383,8 @@ $messages['ko'] = array(
 	'ogg-play-video' => '영상 재생하기',
 	'ogg-play-sound' => '소리 재생하기',
 	'ogg-no-player' => '죄송합니다. 이 시스템에는 재생을 지원하는 플레이어가 설치되지 않은 것 같습니다. <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">플레이어를 내려받으세요.</a>',
-	'ogg-no-xiphqt' => '퀵타임의 XiphQT 구성 요소가 없는 것 같습니다.
-퀵타임은 이 구성 요소 없이는 Ogg 파일을 재생할 수 없습니다.
+	'ogg-no-xiphqt' => 'QuickTime의 XiphQT 구성 요소가 없는 것 같습니다.
+QuickTime은 이 구성 요소 없이는 Ogg 파일을 재생할 수 없습니다.
 <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download"> XiphQT를 내려받거나</a> 다른 플레이어를 선택하십시오.',
 	'ogg-player-videoElement' => '기본 브라우저 지원',
 	'ogg-player-oggPlugin' => '브라우저 플러그인',
@@ -1380,7 +1394,7 @@ $messages['ko'] = array(
 	'ogg-use-player' => '사용할 플레이어:',
 	'ogg-more' => '더 보기...',
 	'ogg-dismiss' => '닫기',
-	'ogg-download' => '파일 내려받기',
+	'ogg-download' => '파일 다운로드',
 	'ogg-desc-link' => '파일 정보',
 );
 

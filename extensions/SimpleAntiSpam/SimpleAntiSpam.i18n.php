@@ -380,6 +380,16 @@ $messages['ru'] = array(
 	'simpleantispam-desc' => 'Добавляет на форму простую проверку на спам и ботов',
 );
 
+/** Yakut (Саха тыла)
+ * @author HalanTul
+ */
+$messages['sah'] = array(
+	'simpleantispam' => 'Эн көннөрүүҥ анти-спамы холбоото',
+	'simpleantispam-label' => "Анти-спам бэрэбиэркэтэ.
+Маны '''толорумаҥ'''!",
+	'simpleantispam-desc' => 'Спам уонна робот туттулларын билэр судургу бэрэбиэркэни эбэр',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

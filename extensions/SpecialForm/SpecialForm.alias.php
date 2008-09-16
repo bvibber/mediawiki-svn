@@ -29,6 +29,11 @@ $aliases['id'] = array(
 	'Form' => array( 'Formulir' ),
 );
 
+/** Luxembourgish (Lëtzebuergesch) */
+$aliases['lb'] = array(
+	'Form' => array( 'Formulaire' ),
+);
+
 /** Dutch (Nederlands) */
 $aliases['nl'] = array(
 	'Form' => array( 'Formulier' ),

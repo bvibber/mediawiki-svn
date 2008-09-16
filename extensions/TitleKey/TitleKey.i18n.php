@@ -260,6 +260,13 @@ $messages['ru'] = array(
 	'titlekey-desc' => 'Движок поисковых подсказок по первым буквам названия',
 );
 
+/** Yakut (Саха тыла)
+ * @author HalanTul
+ */
+$messages['sah'] = array(
+	'titlekey-desc' => 'Көрдүүргэ сатабыллаах буоллун диэн аат бастакы буукубаларыгар эбэн этэн биэрии движога',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

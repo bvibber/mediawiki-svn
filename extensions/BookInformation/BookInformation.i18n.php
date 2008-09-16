@@ -216,11 +216,13 @@ $messages['br'] = array(
 );
 
 /** Catalan (Català)
+ * @author Aleator
  * @author SMP
  * @author Toniher
  */
 $messages['ca'] = array(
 	'bookinfo-header' => 'Informació del llibre',
+	'bookinfo-desc' => "Expandeix la [[Special:Booksources|pàgina especial de fonts del llibre]] amb informació d'un servei web",
 	'bookinfo-result-title' => 'Títol:',
 	'bookinfo-result-author' => 'Autor:',
 	'bookinfo-result-publisher' => 'Editor:',

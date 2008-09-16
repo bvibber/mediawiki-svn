@@ -33,6 +33,11 @@ $aliases['fi'] = array(
 	'TaskListByProject' => array( 'Projektin tehtävälista' ),
 );
 
+/** Luxembourgish (Lëtzebuergesch) */
+$aliases['lb'] = array(
+	'TaskList' => array( 'Lëscht vun den Aufgaben' ),
+);
+
 /** Dutch (Nederlands) */
 $aliases['nl'] = array(
 	'TaskList' => array( 'Takenlijst' ),

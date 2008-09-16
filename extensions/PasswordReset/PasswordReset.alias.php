@@ -39,6 +39,7 @@ $aliases['de'] = array(
 /** Luxembourgish (Lëtzebuergesch) */
 $aliases['lb'] = array(
 	'PasswordReset' => array( 'Passwuert zrécksetzen' ),
+	'Disabledusers' => array( 'Desaktivéiert Benotzer' ),
 );
 
 /** Dutch (Nederlands) */

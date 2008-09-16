@@ -2696,6 +2696,13 @@ $messages['ps'] = array(
 	'viewapc-ls-limit-none' => 'ټول',
 );
 
+/** Portuguese (Português)
+ * @author Malafaya
+ */
+$messages['pt'] = array(
+	'viewapc-rps' => '$1 pedidos por segundo',
+);
+
 /** Tarifit (Tarifit)
  * @author Jose77
  */

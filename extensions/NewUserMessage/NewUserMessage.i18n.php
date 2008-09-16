@@ -198,7 +198,7 @@ $messages['id'] = array(
  */
 $messages['it'] = array(
 	'newusermessage-desc' => 'Aggiunge un messaggio nella pagina di discussione di un utente appena registrato',
-	'newuseredit-summary' => 'Aggiungo [[{{int:newusermessage-template}}|messaggio di benvenuto]] alla pagina di discussione del nuovo utente',
+	'newuseredit-summary' => 'Aggiungo [[{{int:newusermessage-template}}|messaggio di benvenuto]] alla pagina di discussione di un nuovo utente',
 );
 
 /** Japanese (日本語)

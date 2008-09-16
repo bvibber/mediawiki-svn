@@ -353,6 +353,7 @@ $messages['eo'] = array(
 );
 
 /** Spanish (Español)
+ * @author Remember the dot
  * @author Sanbec
  * @author לערי ריינהארט
  */
@@ -360,6 +361,10 @@ $messages['es'] = array(
 	'sitematrix' => 'Lista de wikis de Wikimedia',
 	'sitematrix-summary' => 'Esta página especial lista todos los wikis de Wikimedia',
 	'sitematrix-desc' => 'Muestra una [[Special:SiteMatrix|lista de wikis de Wikimedia]]',
+	'sitematrix-language' => 'Idioma',
+	'sitematrix-project' => 'Nombre del proyecto, enlace interproyecto y enlace interwiki',
+	'sitematrix-others' => 'Otros proyectos de Wikimedia',
+	'sitematrix-private' => 'privado',
 );
 
 /** Estonian (Eesti) */

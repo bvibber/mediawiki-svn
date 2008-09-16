@@ -29,6 +29,11 @@ $aliases['fi'] = array(
 	'RefreshSpecial' => array( 'Toimintosivun päivitys' ),
 );
 
+/** Luxembourgish (Lëtzebuergesch) */
+$aliases['lb'] = array(
+	'RefreshSpecial' => array( 'Spezialsäiten aktualiséieren' ),
+);
+
 /** Dutch (Nederlands) */
 $aliases['nl'] = array(
 	'RefreshSpecial' => array( 'SpeciaalVerversen' ),

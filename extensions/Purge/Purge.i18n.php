@@ -128,6 +128,14 @@ $messages['km'] = array(
 	'purge' => 'លុបបំបាត់',
 );
 
+/** Korean (한국어)
+ * @author ITurtle
+ */
+$messages['ko'] = array(
+	'purge' => '새로 고침',
+	'purge-desc' => '모든 일반 문서에 새로 고침 탭을 추가합니다. 그리고 캐시를 지우려고 하는 익명 사용자에 대한 확인 검사를 우회할 수 있도록 합니다.',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */

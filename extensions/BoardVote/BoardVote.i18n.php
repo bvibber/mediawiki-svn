@@ -963,6 +963,7 @@ Ur c'hemenn surentez diwall a-zivout un testeni disin a c'hallo dont war wel mar
 );
 
 /** Catalan (Català)
+ * @author Aleator
  * @author SMP
  */
 $messages['ca'] = array(
@@ -993,9 +994,13 @@ S\'assumeix que preferiu els candidat ordenats als que heu deixat sense ordenar 
 	'boardvote_intro_change' => '<p>Ja heu votat. Podeu canviar el vostre vot usant el següent formulari. Marqueu aquells candidats que voleu aprovar.</p>',
 	'boardvote_entered' => "Gràcies, el vostre vot ha estat registrat. A continuació podeu comprovar-ne els detalls. Les dades del vostre vot són: <pre>$1</pre> Ha estat codificat mitjançant la clau pública de l'administració electoral de Wikimedia: <pre>$2</pre> La versió encriptada resultant apareix a continuació. Serà mostrada públicament a [[Special:Boardvote/dump]]. <pre>$3</pre> [[Special:Boardvote/entry|Torna]]",
 	'boardvote_invalidentered' => "<p><strong>Error</strong>: Les preferències de candidats s'han d'expressar en nombres enters positius (1, 2, 3, ...), o bé deixar-ho en blanc.</p>",
-	'boardvote_nosession' => "No s'ha pogut determinar l'identificador del vostre compte Wikimedia. Si us plau, identifiqueu-vos al projecte en el que teniu dret a vot i aneu a <nowiki>[[Special:Boardvote]]</nowiki>. Recordeu que heu de tenir un mínim de $1 contribucions fetes abans del $2, i un mínim de $3 contribucions entre els dies $4 i $5.",
-	'boardvote_notloggedin' => "No esteu identificats dins d'un compte d'usuari. Per a votar, heu de tenir un compte amb un mínim de $1 contribucions fetes abans del dia $2, i un mínim de $3 contribucions entre els dies $4 i $5.",
-	'boardvote_notqualified' => 'No podeu votar en aquestes eleccions. Els requisits per a votar són tenir un compte registrat amb un mínim de $1 edicions fetes abans del dia $2, i amb un mínim de $3 contribucions entre els dies $4 i $5.',
+	'boardvote_nosession' => "No s'ha pogut determinar l'identificador del vostre compte Wikimedia.
+Si us plau, identifiqueu-vos al projecte en el que teniu dret a vot i aneu a <nowiki>[[Special:Boardvote]]</nowiki>.
+Recordeu que heu de tenir un mínim de $1 {{PLURAL:$1|contribució feta|contribucions fetes}} abans del $2, i un mínim de $3 {{PLURAL:$3|contribució|contribucions}} entre els dies $4 i $5.",
+	'boardvote_notloggedin' => "No esteu identificats dins d'un compte d'usuari.
+Per a votar, heu de tenir un compte amb un mínim de $1 {{PLURAL:$1|contribució feta|contribucions fetes}} abans del dia $2, i un mínim de $3 {{PLURAL:$3|contribució|contribucions}} entre els dies $4 i $5.",
+	'boardvote_notqualified' => 'No podeu votar en aquestes eleccions.
+Necessiteu un mínim de $1 {{PLURAL:$1|contribució feta|contribucions fetes}} abans del dia $2, i un mínim de $3 {{PLURAL:$3|contribució|contribucions}} entre els dies $4 i $5.',
 	'boardvote_novotes' => 'Encara no ha votat ningú.',
 	'boardvote_time' => 'Temps',
 	'boardvote_user' => 'Usuari',
@@ -1108,9 +1113,9 @@ Výsledná šifrovaná podoba následuje. Bude veřejně dostupná v [[Special:B
 
 [[Special:Boardvote/entry|Zpět]]',
 	'boardvote_invalidentered' => '<p><strong>Chyba</strong>: Preference kandidáta musí obsahovat pouze kladné celé číslo (1, 2, 3, …), nebo zůstat nevyplněná.</p>',
-	'boardvote_nosession' => 'Nemohu určit vaše ID uživatele Wikimedie. Přihlaste se na wiki, kde splňujete podmínky, a přejděte na stránku <nowiki>[[Special:Boardvote]]</nowiki>. Musíte mít učet s alespoň $1 editacemi před $2 a alespoň $3 editacemi mezi $4 a $5.',
-	'boardvote_notloggedin' => 'Nejste přihlášen(a). Pro hlasování musíte použít účet s nejméně $1 příspěvky před $2 a nejméně $3 editacemi mezi $4 a $5.',
-	'boardvote_notqualified' => 'V těchto volbách nejste oprávněn(a) hlasovat. Musíte mít nejméně $1 editací před $2 a nejméně $3 editací mezi $4 a $5.',
+	'boardvote_nosession' => 'Nepodařilo se určit vaše uživatelské ID na serverech nadace Wikimedia. Přihlaste se na wiki, kde splňujete podmínky, a přejděte na stránku <nowiki>[[Special:Boardvote]]</nowiki>. Musíte mít učet s alespoň $1 {{PLURAL:$1|editací|editacemi}} před $2 a alespoň $3 {{PLURAL:$3|editací|editacemi}} mezi $4 a $5.',
+	'boardvote_notloggedin' => 'Nejste přihlášen(a). Pro hlasování musíte použít účet s nejméně $1 {{PLURAL:$1|editací|editacemi}} před $2 a nejméně $3 {{PLURAL:$3|editací|editacemi}} mezi $4 a $5.',
+	'boardvote_notqualified' => 'V těchto volbách nejste oprávněn(a) hlasovat. Musel(a) byste mít nejméně $1 {{PLURAL:$1|editaci|editace|editací}} před $2 a nejméně $3 {{PLURAL:$3|editaci|editace|editací}} mezi $4 a $5.',
 	'boardvote_novotes' => 'Nikdo dosud nehlasoval.',
 	'boardvote_time' => 'Datum a čas',
 	'boardvote_user' => 'Uživatel',
@@ -2151,6 +2156,13 @@ Vai ser redirixido cara a este servidor externo en 20 segundos. [$1 Prema aquí]
 
 Pode que lle apareza unha advertencia de seguranza acerca dun certificado sen asinar.',
 	'right-boardvote' => 'Administrar as eleccións',
+);
+
+/** Ancient Greek (Ἀρχαία ἑλληνικὴ)
+ * @author Crazymadlover
+ */
+$messages['grc'] = array(
+	'boardvote_user' => 'χρήστης',
 );
 
 /** Manx (Gaelg)
@@ -3613,9 +3625,9 @@ Déi verschlësselt Versioun dovunner fannt dir ënnen. Si gëtt [[Special:Board
 Logged iech w.e.g. an déi Wiki an wou dir d'Bedingunge vun de Walen erfëllt a gitt op <nowiki>[[Special:Boardvote]]</nowiki>.
 Dir musst e Benotzerkont benotzen mat mindestens $1 {{PLURAL:$1|Kontributioun|Kontributiounen}} virum $2, an Dir musst mindestens $3 {{PLURAL:$1|Kontributioun|Kontributiounen}} tëschent dem $4 an dem $5 gemaach hun.",
 	'boardvote_notloggedin' => 'Dir sidd net agelogged.
-Fir ze wiele musst Dir e Benotzerkont benotze matt mindestens $1 Kontributioune virum $2, an Dir musst mindestens $3 Kontributiounen tëschent dem $4 a(n) $5 gemaach hunn.',
+Fir ze wiele musst Dir e Benotzerkont benotze matt mindestens $1 {{PLURAL:$1|Kontributioun|Kontributioune}} virum $2, an Dir musst mindestens $3 {{PLURAL:$1|Kontributioun|Kontributiounen}} tëschent dem $4 an dem $5 gemaach hunn.',
 	'boardvote_notqualified' => 'Dir sidd net berechtegt fir un dëser Wal deelzehuelen. 
-Dir musst mindestens $1 Kontributioune virum $2 gemaacht hunn, a mindestens $3 Kontrutiounen tëschent dem $4 a(n) $5 gemaach hun.',
+Dir musst mindestens $1 {{PLURAL:$1|Kontributioun|Kontributioune}} virum $2 gemaacht hunn, a mindestens $3 {{PLURAL:$1|Kontributioun|Kontributiounen}} tëschent dem $4 an dem $5 gemaach hun.',
 	'boardvote_novotes' => 'Et huet nach keen ofgestëmmt.',
 	'boardvote_time' => 'Zäit',
 	'boardvote_user' => 'Benotzer',
@@ -4926,11 +4938,11 @@ $messages['ru'] = array(
 	'boardvote_invalidentered' => '<p><strong>Ошибка.</strong> Предпочтение кандидата должно быть выражено положительным целым числом (1, 2, 3, ....) или оставлено пустым.</p>',
 	'boardvote_nosession' => 'Невозможно определить ваш идентификатор участника проектов Викимедиа.
 Пожалуйста, представьтесь в том проекте, где ваша учётная запись удовлетворяет предъявляемым требованиям, и перейдите на страницу <nowiki>[[Special:Boardvote]]</nowiki>.
-Вы должны быть зарегистрированным участником, сделавшим не менее $1 правок до $2, и не менее $3 правок с $4 до $5.',
+Вы должны быть зарегистрированным участником, сделавшим не менее $1 {{PLURAL:$1|правки|правок|правок}}до $2, и не менее $3 {{PLURAL:$3|правки|правок|правок}} с $4 по $5.',
 	'boardvote_notloggedin' => 'Вы не представились.
-Чтобы проголосовать, вы должны быть зарегистрированным участником и сделать не менее $1 правок до $2, и не менее $3 правок с $4 до $5.',
+Чтобы проголосовать, вы должны быть зарегистрированным участником и сделать не менее $1 {{PLURAL:$1|правки|правок|правок}} до $2, и не менее $3 {{PLURAL:$3|правки|правок|правок}} с $4 по $5.',
 	'boardvote_notqualified' => 'К сожалению, вы не можете принять участие в этих выборах.
-Чтобы проголосовать, вы должны быть зарегистрированным участником и сделать не менее $1 правок до $2, и не менее $3 правок с $4 до $5.',
+Чтобы проголосовать, вы должны быть зарегистрированным участником и сделать не менее $1 {{PLURAL:$1|правки|правок|правок}} до $2, и не менее $3 {{PLURAL:$3|правки|правок|правок}} с $4 по $5.',
 	'boardvote_novotes' => 'Никто ещё не проголосовал.',
 	'boardvote_time' => 'Время',
 	'boardvote_user' => 'Участник',
@@ -5076,11 +5088,11 @@ Nasleduje výsledná zašifrovaná verzia. [[Special:Boardvote/dump|Zobrazí sa 
 	'boardvote_invalidentered' => '<p><strong>Chyba</strong>: preferencie kandidátov je potrebné vyjadriť iba prirodzeným číslom (1, 2, 3, ...) alebo nechať nevyplnené.</p>',
 	'boardvote_nosession' => 'Nedá sa určiť váš používateľský ID na projekte Wikimedia.
 Prosím, prihláste sa na wiki, na ktorej ste oprávnení a choďte na <nowiki>[[Special:Boardvote]]</nowiki>.
-Musíte použiť účet s aspoň $1 príspevkami pred $2, ktorý urobil aspoň $3 úpravy medzi $4 a $5.',
+Musíte použiť účet s aspoň $1 príspevkami pred $2, ktorý urobil aspoň $3 {{PLURAL:$3|úpravu|úpravy|úprav}} medzi $4 a $5.',
 	'boardvote_notloggedin' => 'Nie ste prihlásený.
-Aby ste mohli hlasovať, musíte použiť účet s aspoň $1 príspevkami pred $2, ktorý urobil aspoň $3 úprav medzi $4 a $5.',
+Aby ste mohli hlasovať, musíte použiť účet s aspoň $1 príspevkami pred $2, ktorý urobil aspoň $3 {{PLURAL:$3|úpravu|úpravy|úprav}} medzi $4 a $5.',
 	'boardvote_notqualified' => 'Nemáte oprávnenie hlasovať v týchto voľbách.
-Museli by ste urobiť aspoň $1 úprav pred $2 a aspoň $3 úprav medzi $4 a $5.',
+Museli by ste urobiť aspoň $1 úprav pred $2 a aspoň $3 {{PLURAL:$3|úpravu|úpravy|úprav}} medzi $4 a $5.',
 	'boardvote_novotes' => 'Nikto ešte nevolil.',
 	'boardvote_time' => 'Čas',
 	'boardvote_user' => 'Používateľ',
@@ -5439,6 +5451,7 @@ Hiji peringatan kaamanan ngeunaan sértipikat teu nandaan meureun baris mecenghu
 );
 
 /** Swedish (Svenska)
+ * @author Boivie
  * @author Lejonel
  * @author M.M.S.
  * @author Sannab
@@ -5485,11 +5498,11 @@ Den resulterande krypterade versionen följer här. Den kommer att [[Special:Boa
 	'boardvote_invalidentered' => '<p><strong>Fel</strong>: rangordningen av kandidater måste anges med positiva heltal (1, 2, 3, ...), eller lämnas tomt.</p>',
 	'boardvote_nosession' => 'Ditt användar-ID på Wikimedia kunde inte verifieras.
 Logga in på den wiki där du är har rätt att rösta, och gå till <nowiki>[[Special:Boardvote]]</nowiki>.
-Du måste använda ett konto som har gjort minst $1 redigeringar före $2, och har gjort minst $3 redigeringar mellan $4 och $5.',
+Du måste använda ett konto som har gjort minst $1 {{PLURAL:$1|redigering|redigeringar}} före $2, och har gjort minst $3 {{PLURAL:$3|redigering|redigeringar}} mellan $4 och $5.',
 	'boardvote_notloggedin' => 'Du är inte inloggad.
-För att rösta måste du ha ett konto med minst $1 bidrag före $2, och ha gjort minst $3 redigeringar mellan $4 och $5.',
+För att rösta måste du använda ett konto med minst $1 {{PLURAL:$1|bidrag|bidrag}} före $2, och ha gjort minst $3 {{PLURAL:$3|redigering|redigeringar}} mellan $4 och $5.',
 	'boardvote_notqualified' => 'Du har inte rätt att rösta i det här valet.
-Du måste ha gjort minst $1 redigeringar före $2, och minst $3 redigeringar mellan $4 och $5.',
+Du måste ha gjort minst $1 {{PLURAL:$1|redigering|redigeringar}} före $2, och minst $3 {{PLURAL:$3|redigering|redigeringar}} mellan $4 och $5.',
 	'boardvote_novotes' => 'Ingen har röstat ännu.',
 	'boardvote_time' => 'Tid',
 	'boardvote_user' => 'Användare',

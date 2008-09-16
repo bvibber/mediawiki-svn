@@ -39,6 +39,11 @@ $aliases['fr'] = array(
 	'WhatIsMyIP' => array( 'Quelle est mon IP', 'QuelleEstMonIP' ),
 );
 
+/** Luxembourgish (Lëtzebuergesch) */
+$aliases['lb'] = array(
+	'WhatIsMyIP' => array( 'Wéi ass meng IP-Adress' ),
+);
+
 /** Dutch (Nederlands) */
 $aliases['nl'] = array(
 	'WhatIsMyIP' => array( 'WatIsMijnIPAdres' ),

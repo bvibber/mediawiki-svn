@@ -34,6 +34,11 @@ $aliases['fr'] = array(
 	'WhosOnline' => array( 'Qui est en ligne', 'QuiEstEnLigne' ),
 );
 
+/** Luxembourgish (Lëtzebuergesch) */
+$aliases['lb'] = array(
+	'WhosOnline' => array( 'Wien ass online' ),
+);
+
 /** Dutch (Nederlands) */
 $aliases['nl'] = array(
 	'WhosOnline' => array( 'WieIsErOnline' ),

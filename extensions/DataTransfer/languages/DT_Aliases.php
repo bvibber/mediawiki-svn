@@ -27,6 +27,11 @@ $aliases['arz'] = array(
 	'ViewXML' => array( 'عرض_إكس_إم_إل' ),
 );
 
+/** Luxembourgish (Lëtzebuergesch) */
+$aliases['lb'] = array(
+	'ViewXML' => array( 'XML weisen' ),
+);
+
 /** Dutch (Nederlands) */
 $aliases['nl'] = array(
 	'ViewXML' => array( 'XMLBekijken' ),

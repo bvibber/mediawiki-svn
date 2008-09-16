@@ -225,6 +225,14 @@ $messages['km'] = array(
 	'contributionseditcount-desc' => 'បង្ហាញការរាប់កំនែប្រែនៅ[[Special:Contributions|ការរួមចំនែករបស់អ្នកប្រើប្រាស់]]',
 );
 
+/** Korean (한국어)
+ * @author ITurtle
+ */
+$messages['ko'] = array(
+	'contributionseditcount' => '이 사용자는 $1번 편집했습니다.',
+	'contributionseditcount-desc' => '[[Special:Contributions|사용자 기여 목록]]에서 편집 횟수를 표시합니다.',
+);
+
 /** Ripoarisch (Ripoarisch)
  * @author Purodha
  */

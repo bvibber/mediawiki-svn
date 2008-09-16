@@ -1316,6 +1316,8 @@ $messages['ksh'] = array(
  */
 $messages['lb'] = array(
 	'math-desc' => 'MathML Resultat fir &lt;math&gt; Taggen',
+	'math_IllegalFinalBackslash' => 'D\'Zeechen "\\" kann net um Enn vun enger Saisie stoen',
+	'math_IllegalRedefinition' => 'D\'Uweisung "$1" ass schonn definéiert; Dir kënnt se net nach emol definéieren',
 	'math_InvalidColour' => 'D\'Faarw "$1" gëtt et net',
 	'math_MissingOpenBraceAtEnd' => 'Eng "{" feelt um Ënn vun der Saisie',
 	'math_NotEnoughArguments' => 'Dir hutt net genuch Parameter ugi fir "$1"',

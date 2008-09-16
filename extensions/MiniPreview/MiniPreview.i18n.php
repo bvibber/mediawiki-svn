@@ -410,8 +410,8 @@ $messages['ru'] = array(
  */
 $messages['sk'] = array(
 	'minipreview-desc' => 'MiniPreview zobrazuje vedľa obrázka miniatúrne náhľady ostatných multimediálnych súborov z rovnakých kategórií alebo z rovnakých stránok',
-	'minipreview-files_in_category' => 'V tejto kategórii je celkom $1 súborov.',
-	'minipreview-files_in_gallery' => 'V tejto galérii je celkom $1 súborov.',
+	'minipreview-files_in_category' => 'V tejto kategórii {{PLURAL:$1|je celkom $1 súbor|sú celkom $1 súbory|je celkom $1 súborov}}.',
+	'minipreview-files_in_gallery' => 'V tejto galérii {{PLURAL:$1|je celkom $1 súbor|sú celkom $1 súbory|je celkom $1 súborov}}.',
 	'minipreview-no_more_files_here' => 'V tomto smere sa nenachádza viac súborov.',
 	'minipreview-no_category_gallery' => 'Žiadne kategórie či galérie!',
 	'minipreview-ignore_categories' => 'Nasledovné je zoznam názvov kategórií alebo začiatkov názvov. Tieto kategórie nebude rozšírenie MiniPreview zobrazovať. Napríklad, "* PD-" nebude zobrazovať názvy kategórií, ktoré začínajú „PD-“ ako napríklad „PD-old“.
