@@ -42,6 +42,7 @@ $wgAutoloadClasses['CodeRepository'] = $dir . 'CodeRepository.php';
 $wgAutoloadClasses['CodeRepoListView'] = $dir . 'CodeRepoListView.php';
 $wgAutoloadClasses['CodeRevision'] = $dir . 'CodeRevision.php';
 $wgAutoloadClasses['CodeRevisionListView'] = $dir . 'CodeRevisionListView.php';
+$wgAutoloadClasses['CodeRevisionTagger'] = $dir . 'CodeRevisionTagger.php';
 $wgAutoloadClasses['CodeRevisionView'] = $dir . 'CodeRevisionView.php';
 $wgAutoloadClasses['CodeComment'] = $dir . 'CodeComment.php';
 $wgAutoloadClasses['SpecialCode'] = $dir . 'SpecialCode.php';
@@ -52,6 +53,11 @@ $wgExtensionMessagesFiles['CodeReview'] = $dir . 'CodeReview.i18n.php';
 $wgExtensionAliasesFiles['CodeReview'] = $dir . 'CodeReview.alias.php';
 
 $wgAvailableRights[] = 'repoadmin';
+$wgGroupPermissions['*']['codereview-add-tag'] = true;
+$wgGroupPermissions['*']['codereview-remove-tag'] = true;
+$wgGroupPermissions['*']['codereview-post-comment'] = true;
+
+$wgGroupPermissions['steward']['repoadmin'] = true; // temp
 
 $wgSpecialPages['Code'] = 'SpecialCode';
 $wgSpecialPages['RepoAdmin'] = 'SpecialRepoAdmin';

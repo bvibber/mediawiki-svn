@@ -26,6 +26,7 @@ $messages['en'] = array(
 	'code-rev-modified-c' => 'copied',
 	'code-rev-modified-d' => 'deleted',
 	'code-rev-modified-m' => 'modified',
+	'code-rev-tags' => 'Tags:',
 	'code-rev-comment-by' => 'Comment by $1',
 	'code-rev-comment-submit' => 'Submit comment',
 	'code-rev-comment-preview' => 'Preview',

@@ -42,13 +42,20 @@ class CodeRevisionView extends CodeView {
 		if( $paths ){
 			$paths = "<ul>\n$paths</ul>";
 		}
-		$html = '<table>
-<tr><td valign="top">' . wfMsgHtml( 'code-rev-repo' ) . '</td><td valign="top">' . $repoLink . '</td></tr>
-<tr><td valign="top">' . wfMsgHtml( 'code-rev-rev' ) . '</td><td valign="top">' . $revText . '</td></tr>
-<tr><td valign="top">' . wfMsgHtml( 'code-rev-author' ) . '</td><td valign="top">' . $this->authorLink( $this->mRev->getAuthor() ) . '</td></tr>
-<tr><td valign="top">' . wfMsgHtml( 'code-rev-message' ) . '</td><td valign="top">' . $this->formatMessage( $this->mRev->getMessage() ) . '</td></tr>
-<tr><td valign="top">' . wfMsgHtml( 'code-rev-paths' ) . '</td><td valign="top">' . $paths . '</td></tr>
-</table>';
+		$fields = array(
+			'code-rev-repo' => $repoLink,
+			'code-rev-rev' => $revText,
+			'code-rev-author' => $this->authorLink( $this->mRev->getAuthor() ),
+			'code-rev-message' => $this->formatMessage( $this->mRev->getMessage() ),
+			'code-rev-paths' => $paths,
+			'code-rev-tags' => $this->formatTags(),
+		);
+		$html = '<table class="mw-codereview-meta">';
+		foreach( $fields as $label => $data ) {
+			$html .= "<tr><td>" . wfMsgHtml( $label ) . "</td><td>$data</td></tr>\n";
+		}
+		$html .= '</table>';
+		
 		$html .=
 			"<h2>" . wfMsgHtml( 'code-rev-diff' ) . "</h2>" .
 			"<div class='mw-codereview-diff'>" .
@@ -106,6 +113,48 @@ class CodeRevisionView extends CodeView {
 			$link = $encPath;
 		}
 		return "<li>$link ($desc)</li>\n";
+	}
+	
+	function formatTags() {
+		global $wgUser;
+		
+		$tags = $this->mRev->getTags();
+		$list = implode( ", ",
+			array_map(
+				array( $this, 'formatTag' ),
+				$tags ) );
+		
+		if( $wgUser->isAllowed( 'codereview-add-tag' ) ) {
+			$list .= $this->addTagForm();
+		}
+		
+		return $list;
+	}
+	
+	function addTagForm() {
+		global $wgUser;
+		$repo = $this->mRepo->getName();
+		$rev = $this->mRev->getId();
+		$special = SpecialPage::getTitleFor( 'Code', "$repo/$rev/add/tag" );
+		return
+			Xml::openElement( 'form',
+				array(
+					'action' => $special->getLocalUrl(),
+					'method' => 'post' ) ) .
+			Xml::input( 'wpTag', '' ) .
+			Xml::hidden( 'wpEditToken', $wgUser->editToken() ) .
+			'&nbsp;' .
+			Xml::submitButton( 'Add tag' ) .
+			'</form>';
+	}
+	
+	function formatTag( $tag ) {
+		global $wgUser;
+		
+		$repo = $this->mRepo->getName();
+		$special = SpecialPage::getTitleFor( 'Code', "$repo/tag/$tag" );
+		
+		return $this->mSkin->link( $special, htmlspecialchars( $tag ) );
 	}
 
 	function formatDiff() {

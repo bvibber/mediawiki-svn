@@ -145,4 +145,52 @@ class CodeRevision {
 		$result->free();
 		return $comments;
 	}
+	
+	function getTags() {
+		$dbr = wfGetDB( DB_SLAVE );
+		$result = $dbr->select( 'code_tags',
+			array( 'ct_tag' ),
+			array(
+				'ct_repo_id' => $this->mRepo,
+				'ct_rev_id' => $this->mId ),
+			__METHOD__ );
+		
+		$tags = array();
+		foreach( $result as $row ) {
+			$tags[] = $row->ct_tag;
+		}
+		return $tags;
+	}
+	
+	function addTags( $tags ) {
+		$dbw = wfGetDB( DB_MASTER );
+		$result = $dbw->insert( 'code_tags',
+			$this->tagData( $tags ),
+			__METHOD__,
+			array( 'IGNORE' ) );
+	}
+	
+	function removeTags( $tags ) {
+		$dbw = wfGetDB( DB_MASTER );
+		$result = $dbw->delete( 'code_tags',
+			$this->tagData( $tags ),
+			__METHOD__ );
+	}
+	
+	protected function tagData( $tags ) {
+		$data = array();
+		foreach( $tags as $tag ) {
+			$data[] = array(
+				'ct_repo_id' => $this->mRepo,
+				'ct_rev_id' => $this->mId,
+				'ct_tag' => $tag );
+		}
+		return $data;
+	}
+	
+	function isValidTag( $tag ) {
+		// fixme?
+		$title = Title::newFromText( $tag );
+		return $title && $title->getPrefixedText() === $tag;
+	}
 }

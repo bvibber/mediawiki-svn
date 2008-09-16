@@ -29,6 +29,9 @@ class SpecialCode extends SpecialPage {
 				if( $params[2] == 'reply' ) {
 					$view = new CodeRevisionView( $params[0], $params[1], $params[3] );
 					break;
+				} elseif( $params[2] == 'add' && $params[3] == 'tag' ) {
+					$view = new CodeRevisionTagger( $params[0], $params[1] );
+					break;
 				}
 			default:
 				throw new MWException( "Unexpected number of parameters" );
@@ -47,6 +50,13 @@ abstract class CodeView {
 	function __construct() {
 		global $wgUser;
 		$this->mSkin = $wgUser->getSkin();
+	}
+	
+	function validPost( $permission ) {
+		global $wgRequest, $wgUser;
+		return $wgRequest->wasPosted()
+			&& $wgUser->matchEditToken( $wgRequest->getVal( 'wpEditToken' ) ) 
+			&& $wgUser->isAllowed( $permission );
 	}
 
 	abstract function execute();

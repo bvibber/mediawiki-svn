@@ -1,3 +1,7 @@
+table.mw-codereview-meta td {
+	vertical-align: top;
+}
+
 .mw-codereview-comment {
 	border: solid 1px #aaaab3;
 	padding: 0px;
