@@ -63,12 +63,13 @@ class CodeRevisionView extends CodeView {
 			"</div>";
 
 		$html .=
-			"<h2>Comments</h2>" .
+			'<h2>'. wfMsgHtml( 'code-comments' ) .'</h2>' .
 			$this->formatComments();
 		
 		if( $this->mReplyTarget ) {
+			global $wgJsMimeType;
 			$id = intval( $this->mReplyTarget );
-			$html .= "<script>addOnloadHook(function(){" .
+			$html .= "<script type=\"$wgJsMimeType\">addOnloadHook(function(){" .
 				"document.getElementById('wpReplyTo$id').focus();" .
 				"});</script>";
 		}
@@ -84,7 +85,7 @@ class CodeRevisionView extends CodeView {
 			$text = $wgRequest->getText( 'wpReply' );
 			$parent = $wgRequest->getIntOrNull( 'wpParent' );
 			$review = $wgRequest->getInt( 'wpReview' );
-			$isPreview = $wgRequest->getCheck( 'wpCommentPreview' );
+			$isPreview = $wgRequest->getCheck( 'wpPreview' );
 			if( $isPreview ) {
 				// NYI
 			} else {
@@ -144,7 +145,7 @@ class CodeRevisionView extends CodeView {
 			Xml::input( 'wpTag', '' ) .
 			Xml::hidden( 'wpEditToken', $wgUser->editToken() ) .
 			'&nbsp;' .
-			Xml::submitButton( 'Add tag' ) .
+			Xml::submitButton( wfMsg( 'code-rev-tag-add' ) ) .
 			'</form>';
 	}
 	
@@ -253,7 +254,7 @@ class CodeRevisionView extends CodeView {
 			' ' .
 			Xml::submitButton( wfMsg( 'code-rev-comment-preview' ), array( 'name' => 'wpPreview' ) ) .
 			'</div>' .
-			'</div>' .
-			'</form>';
+			'</form>' .
+			'</div>';
 	}
 }
