@@ -108,14 +108,16 @@ class CodeRevisionView extends CodeView {
 		$viewvc = $this->mRepo->getViewVcBase();
 		if( $viewvc ) {
 			$rev = $this->mRev->getId();
+			$prev = $rev - 1;
 			$safePath = wfUrlEncode( $path );
-			$link = $this->mSkin->makeExternalLink(
-				"$viewvc$safePath?view=markup&pathrev=$rev",
-				$encPath );
+			$link = $this->mSkin->makeExternalLink( "$viewvc$safePath?view=markup&pathrev=$rev", $encPath );
+			$diff = $this->mSkin->makeExternalLink( "$viewvc$safePath?&pathrev=$rev&r1=$prev&r2=$rev", 
+				wfMsgHtml('code-rev-diff') );
 		} else {
 			$link = $encPath;
+			$diff = wfMsgHtml('code-rev-diff');
 		}
-		return "<li>$link ($desc)</li>\n";
+		return "<li>$link ($desc) ($diff)</li>\n";
 	}
 	
 	function formatTags() {
