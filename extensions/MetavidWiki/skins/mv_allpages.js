@@ -2,7 +2,11 @@
 
 mv_addLoadEvent(mv_setup_allpage);
 var mv_setup_allpage_flag=false;
-var base_roe_url = wgServer + wgScript + '?title=Special:MvExportStream&feed_format=roe&stream_name=';
+if( wgServer && wgScript){
+	var base_roe_url = wgServer + wgScript + '?title=Special:MvExportStream&feed_format=roe&stream_name=';
+}else{
+	var base_roe_url='';
+}
 var gMvd={};
 function mv_setup_allpage(){
 	js_log("mv embed done loading now setup 'all page'");
