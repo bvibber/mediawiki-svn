@@ -294,6 +294,7 @@ $settings = array(
 			                              3 => 'Accel', 4 => 'DBA' ),
 			'wgEnableParserCache' => 'bool',
 			'wgEnableSidebarCache' => 'bool',
+			'wgRenderHashAppend' => 'text',
 			'wgSidebarCacheExpiry' => 'int',
 			'wgUseETag' => 'bool',
 		),
@@ -1172,6 +1173,7 @@ $settingsVersion = array(
 	'wgEnableImageWhitelist' => array( array( '1.14alpha', '>=' ) ),
 	'wgSpecialPageCacheUpdates' => array( array( '1.14alpha', '>=' ) ),
 	'wgNewUserLog' => array( array( '1.14alpha', '>=' ) ),
+	'wgRenderHashAppend' => array( array( '1.14alpha', '>=' ) ),
 ## Obsolete
 	'wgProfileSampleRate' => array( array( '1.8alpha', '<' ) ),
 	'wgProfilerType' => array( array( '1.8alpha', '<' ) ),
