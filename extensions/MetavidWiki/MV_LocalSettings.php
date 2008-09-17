@@ -9,6 +9,6 @@ include_once(dirname(__FILE__)  .'/includes/MV_DefaultSettings.php');
  * eventually we should have some documentation somewhere ;) 
  */
 $mvExternalImages = true;
-$mvExternalImgServerPath = 'http://metavid.ucsc.edu/mvw-exp/index.php';
+$mvExternalImgServerPath = 'http://metavid.ucsc.edu/wiki/index.php';
 
 ?>

@@ -329,11 +329,12 @@
 		}				
 			
 		$stream_web_url = $this->getWebStreamURL($mvDefaultVideoQualityKey);
+		$flash_stream_url = $this->getWebStreamURL($mvDefaultFlashQualityKey);
 		//print "lookign for q: $mvDefaultFlashQualityKey ";
 	
 		//print "FOUND: $flash_stream_url";		
 		$roe_url = 	$this->getROEURL();	
-		if($stream_web_url){
+		if($stream_web_url || $flash_stream_url){
 			$o='';		
 			/*if($this->dispVideoPlayerTime){				
 				$o.='<span id="mv_videoPlayerTime">'.$this->getStartTime().' to '.
@@ -355,8 +356,7 @@
 				$o.='<source type="'.
 					htmlspecialchars(MV_StreamFile::getTypeForQK($mvDefaultVideoQualityKey)) . 
 					'" src="'.$stream_web_url .'"></source>';
-			
-			$flash_stream_url = $this->getWebStreamURL($mvDefaultFlashQualityKey);
+						
 			if($flash_stream_url)
 				$o.='<source type="'.
 					htmlspecialchars(MV_StreamFile::getTypeForQK($mvDefaultFlashQualityKey)) .

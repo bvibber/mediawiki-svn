@@ -169,15 +169,15 @@ var mvEmbed = {
   //plugin libs var names and paths:
   lib_jquery:{'window.jQuery':'jquery/jquery-1.2.6.min.js'},
   lib_plugins:{
-  	'$j.timer.global':'jquery/plugins/jquery.timers.js', //we may be able to remove the timer	
-  	'$j.ui.progressbar':'jquery/jquery-ui-personalized-1.6rc1.debug.js'
-  },
-  /*old lib includes: 
-	'$j.fn.offsetParent':'jquery/plugins/jquery.dimensions.js',
+  	'$j.timer.global':'jquery/plugins/jquery.timers.js', //we should try and factor out the timer
+  	'$j.fn.offsetParent':'jquery/plugins/jquery.dimensions.js',
 	'$j.ui.mouseInteraction':'jquery/plugins/ui.mouse.js',
 	'$j.ui.slider':'jquery/plugins/ui.slider.js',	
 	'$j.ui.draggable':'jquery/plugins/ui.draggable.js', //include draggable
-	'$j.ui.droppable':'jquery/plugins/ui.droppable.js'
+	'$j.ui.droppable':'jquery/plugins/ui.droppable.js'	  	
+  },
+  /*old lib includes: 
+		'$j.ui.progressbar':'jquery/jquery-ui-personalized-1.6rc1.debug.js'
    */
   pc:null, //used to store pointer to parent clip (when in playlist mode)
   load_libs:function(callback){

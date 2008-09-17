@@ -12,7 +12,7 @@
  * something like:
  * /flvserver/my_file/start_time/end_time
  */
-define('BASE_LOCAL_CLIP_PATH', '/var/www/flv_clips');
+define('BASE_LOCAL_CLIP_PATH', '/metavid/video_archive');
 
 define('WEB_CLIP_PATH', '/flv_cips');
 define('FLASH_VIDEO_CONTENT_TYPE', 'video/x-flv');
