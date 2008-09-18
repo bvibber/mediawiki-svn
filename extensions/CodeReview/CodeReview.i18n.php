@@ -33,6 +33,7 @@ $messages['en'] = array(
 	'code-rev-comment-submit' => 'Submit comment',
 	'code-rev-comment-preview' => 'Preview',
 	'code-rev-diff' => 'Diff',
+	'code-rev-diff-link' => 'diff',
 	
 	'codereview-reply-link' => 'reply',
 
