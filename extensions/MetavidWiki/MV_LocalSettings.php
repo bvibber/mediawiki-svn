@@ -12,14 +12,12 @@ $mvExternalImages = true;
 $mvExternalImgServerPath = 'http://metavid.ucsc.edu/wiki/index.php';
 
 //for sunlight network annalysis we include google analytics 
-$mvExtraHeader = <<<'EOD'
-<script type="text/javascript">
+$mvExtraHeader = '<script type="text/javascript">
 var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
-document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+document.write(unescape("%3Cscript src=\'" + gaJsHost + "google-analytics.com/ga.js\' type=\'text/javascript\'%3E%3C/script%3E"));
 </script>
 <script type="text/javascript">
 var pageTracker = _gat._getTracker("UA-4281471-1");
 pageTracker._trackPageview();
-</script>
-EOD;
+</script>';
 ?>
