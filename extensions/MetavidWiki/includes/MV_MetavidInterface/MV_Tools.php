@@ -156,11 +156,10 @@
 		}
 		if($return_set=='both'||$return_set=='next'){
 			if($mvTitle->getDuration() != $mvTitle->getEndTimeSeconds()){
-				$next_time_start = 	$mvTitle->getStartTimeSeconds()+$mvDefaultStreamViewLength;
-				if($next_time_start > $mvTitle->getDuration()-$mvDefaultStreamViewLength)
-					$next_time_start = $mvTitle->getDuration()-$mvDefaultStreamViewLength;
+				$next_time_start = 	$mvTitle->getEndTimeSeconds();				
 				$next_time_end = $mvTitle->getEndTimeSeconds()+$mvDefaultStreamViewLength;
-				if($next_time_end >  $mvTitle->getDuration())$next_time_end=$mvTitle->getDuration();
+				if($next_time_end >  $mvTitle->getDuration())
+					$next_time_end=$mvTitle->getDuration();
 				$newTitle =Title::MakeTitle(MV_NS_STREAM, $mvTitle->getStreamName().'/'.seconds2ntp($next_time_start).'/'.seconds2ntp($next_time_end));
 				$next_link= $sk->makeKnownLinkObj($newTitle, 
 									'<img style="index:5" border="0" src="'.htmlspecialchars($mvgScriptPath).'/skins/images/results_next.png">',
