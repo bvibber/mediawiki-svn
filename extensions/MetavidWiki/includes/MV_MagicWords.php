@@ -125,7 +125,7 @@ class MV_MagicWords{
 					$conds, 				
 					__METHOD__,
 			 		$options 
-				);				
+				);						
 		if($dbr->numRows($result)==0){
  			return '';
  		}else{
@@ -254,6 +254,7 @@ class MV_MagicWords{
 		$conds = '`time` >= ' . $dbr->addQuotes($this->getStartTime());
 							
 		$options['GROUP BY']=$dbr->tableName('mv_search_digest').'.query_key';
+		$options['ORDER BY']='`hit_count`  DESC';
 		$options['LIMIT'] = $this->params['num_results'];
 		
 		$result = $dbr->select( $from_tables, 
@@ -261,7 +262,6 @@ class MV_MagicWords{
 			$conds,
 			__METHOD__, 
 			$options);		
-			
 		if($dbr->numRows($result)==0){
  			return '';
  		}else{	 	
@@ -273,7 +273,7 @@ class MV_MagicWords{
  			} 			
  			$mvms=new MV_SpecialMediaSearch();
  			$sTitle=Title::MakeTitle(NS_SPECIAL, 'MediaSearch');
- 			while($row = $dbr->fetchObject( $result )){ 	 				
+ 			while($row = $dbr->fetchObject( $result )){ 	 			
  				$title_desc = htmlspecialchars($row->hit_count).' '.wfMsg('mv_date_'.$this->params['time_range']);
  				$mvms->loadFiltersFromSerialized($row->filters); 				 	 				
  				$o.='<li><a title="'.$title_desc.'" href="'.$sTitle->escapeLocalURL($mvms->get_httpd_filters_query().'&tl=1'  ).'">'. 
@@ -283,7 +283,7 @@ class MV_MagicWords{
  			if($this->params['format']=='ul_list'){
  				$o.='</ul>';				 			 		
  			} 			
- 		}
+ 		} 		
  		return $o; 		
 	}
 }

@@ -41,6 +41,8 @@ var cur_mvd_over = false;
 var mv_flag_fdOver=false;
 var golobal_org_ptext=false;
 
+var mvTextScrollMonitorTimer = null;
+
 var mv_open_edit_mvd=null;
 if(!gMsg){var gMsg={};}
 
@@ -108,10 +110,10 @@ var mv_init_interface = {
 			$j('#big_play_link_embed_vid').attr('href', 'javascript:mv_do_play();');
 			//extend stop button on mv_embed:
 			//js_log("pre stop: " +ebvid['stop'].toString() );
-			if(ebvid['stop'].toString()!='function(){mv_do_stop();}'){
+			/*if(ebvid['stop'].toString()!='function(){mv_do_stop();}'){				
 				ebvid['org_eb_stop'] = ebvid['stop'];
 				ebvid['stop'] = function(){mv_do_stop();}
-			}
+			}*/
 			if(ebvid['play_or_pause'].toString()!='function(){mv_play_or_pause();}'){
 				ebvid['org_eb_play_or_pause'] = ebvid['play_or_pause'];
 				ebvid['play_or_pause'] = function(){mv_play_or_pause();}
@@ -119,8 +121,9 @@ var mv_init_interface = {
 			if(ebvid['showVideoDownload'].toString!='function(){mv_doShowVideoDownload();}'){
 				ebvid['org_showVideoDownload'] = ebvid['showVideoDownload'];
 				ebvid['showVideoDownload'] = function(){mv_doShowVideoDownload();}
-			}
-			
+			}			
+			//setup text scroll monitor: 
+			mv_doTextScrollMonitor();						
 			//js_log("post stop: " +ebvid['stop'].toString());
 		}
 		//call stop override
@@ -282,6 +285,41 @@ var mv_init_interface = {
 				}
 			}
 		}
+	}
+}
+function mv_doTextScrollMonitor(){
+	if(!mvTextScrollMonitorTimer)
+		mvTextScrollMonitorTimer=setInterval('mv_doTextScrollMonitor()',1000);
+	//if playing scrollupdate
+	var evid = $j('#embed_vid').get(0);
+	if( evid.isPlaying() ){
+		if(evid.currentTime!=0)
+			mv_scroll2Time(evid.currentTime);
+	}
+	if( evid.userSlide ){		
+		mv_scroll2Time( ntp2seconds(evid.jump_time) );
+	}
+	//if userScroll scroll/update
+}
+var previus_scroll2Time_time=null;
+var previus_scrollMvd_id=null;
+function mv_scroll2Time(sec_time){
+	if(previus_scroll2Time_time!=sec_time){
+		var scroll_mvd_id = null;
+		//init pMvd_id
+		var pMvd_id=$j('.mv_fd_mvd:first').attr("id").split('_').pop();
+		$j('.mv_fd_mvd').each(function(){		
+			var curTitle = get_titleObject($j(this).attr('name'));
+			if( curTitle.start_time >= sec_time ){
+				//js_log('found mvd pos: ' + curTitle.start_time + ' for sec time: ' + sec_time);				
+				if(previus_scrollMvd_id != pMvd_id){								
+					scroll_to_pos( pMvd_id ) ;
+					previus_scrollMvd_id = pMvd_id;
+				}
+				return false;//break out of for loop:		
+			}	
+			pMvd_id = $j(this).attr("id").split('_').pop();
+		});				
 	}
 }
 function mv_doShowVideoDownload(){
@@ -454,7 +492,7 @@ function mv_adjust_preview(mvd_id){
 	//if mv_embed state is "playing" swap preview button per html5 spec:
 	if($j('#embed_vid').get(0).isPlaying()){
 		//do stop swap preview button back
-		mv_do_stop();
+		$j('#embed_vid').get(0).stop();
 	}
 	//first time set up
 	//if(!golobal_org_ptext)golobal_org_ptext = $j('#wpPreview_'+mvd_id).val();
@@ -531,6 +569,7 @@ function mv_add_category(mvd_id, cat_name){
  * @@TODO add_autocomplete should be merged with generalized mv_helpers_ac
  */
 function add_autocomplete(mvd_id){
+		js_log("f:auto_comp_choices_:"+mvd_id);
 		//make sure the target elements exist:
 		//if(!document.getElementById("auto_comp_"+mvd_id))return ;
 		//if(!document.getElementById("auto_comp_choices_"+mvd_id))return ;
@@ -794,30 +833,29 @@ function mv_do_ajax_form_submit(mvd_id, edit_action){
 function mv_play_or_pause(){
 	 //issue a stop since we want mouse_overs to work 
 	 var ebvid = $j('#embed_vid').get(0);
-	 if(!ebvid.paused){
-	 	mv_do_stop();
+	 if( ebvid.isPlaying() ){
+	 	js_log('f:mv_play_or_pause:should stop');
+	 	ebvid.stop();
 	 	ebvid.pauseed=true;
-	 }else{	 	
+	 }else{
+	 	js_log('f:mv_play_or_pause:should play');	 		 	
 	 	mv_do_play();	 	
 	 }
 }
-function mv_do_stop(){
-	$j('#mv_videoPlayerTime').fadeIn('fast');
+/*function mv_do_stop(){
 	//re-enable interface:
 	mv_lock_vid_updates=false;
-	if($j('#embed_vid').get(0).thumbnail_disp){
+	if( $j('#embed_vid').get(0).isPlaying() ){
 		//already stoped
 		js_log('already stoped');
-	}else{
-		//hide the controls	thumbnail_disp
-		mv_disp_play_controls(false);
+	}else{		
 		js_log('mv_do_stop');
 		//run the original stop:
 		$j('#embed_vid').get(0).org_eb_stop();
 		//re-rewrite the play button:
 		$j('#big_play_link_embed_vid').attr('href', 'javascript:mv_do_play();');
 	}
-}
+}*/
 function mv_do_play(mvd_id){
 	//stop the current
 	$j('#embed_vid').get(0).stop();
@@ -826,11 +864,8 @@ function mv_do_play(mvd_id){
 	if(mvd_id){
 		do_video_mvd_update(mvd_id);
 	}
-	//fade out the time disp:
-	$j('#mv_videoPlayerTime').fadeOut("fast");
 	//disable interface actions (mouse in out etc)
 	mv_lock_vid_updates=true;
-
 	//update the src if nessesary and no mvd provided:
 	if(!mvd_id){
 		if(mv_init_interface.cur_mvd_id!=mv_init_interface.delay_cur_mvd_id){
@@ -838,9 +873,6 @@ function mv_do_play(mvd_id){
 			do_video_mvd_update(mv_init_interface.cur_mvd_id);
 		}
 	}
-
-	//show the controls:
-	mv_disp_play_controls(true);
 	//update the embed video actual play time
 	//time_chunk = $j('#embed_vid').get(0).src.split('t=');
 	//$j('#mv_videoPlayerTime').html( time_chunk[1] );
@@ -884,11 +916,20 @@ function mv_disp_play_controls(disp){
 		$j('#MV_StreamMeta,#MV_Tools').css({'top':org_top_tool_contain+'px'});
 	}
 }
-
+//hackish globals .. needs a rewrite
+var mv_currently_scroll_to_pos=false;
 function scroll_to_pos(mvd_id){
+	js_log('scroll_to_pos:'+mvd_id);
+	var speed = (mv_currently_scroll_to_pos)?'fast':'slow';
 	if( $j('#mv_fd_mvd_'+mvd_id).get(0)){		
 		//@@todo debug IE issues with scrolling
-		$j('#selectionsBox').animate({scrollTop: ($j('#mv_fd_mvd_'+mvd_id).get(0).offsetTop-40)}, 'slow');
+		$j('#selectionsBox').animate({
+			scrollTop: ($j('#mv_fd_mvd_'+mvd_id).get(0).offsetTop-40)
+			}, 
+			speed,
+			function(){
+				mv_currently_scroll_to_pos=false;
+			});
 	}	
 }
 function highlight_fd(mvd_id){

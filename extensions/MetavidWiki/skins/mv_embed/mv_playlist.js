@@ -621,7 +621,7 @@ mvPlayList.prototype = {
 	},
 	//playlist stops playback for the current clip (and resets state for start clips)
 	stop:function(){
-		js_log("pl stop:"+ this.start_clip.id + ' c:'+this.cur_clip.id);
+		/*js_log("pl stop:"+ this.start_clip.id + ' c:'+this.cur_clip.id);
 		//if start clip 
 		if(this.start_clip.id!=this.cur_clip.id){
 			//restore clipDesc visibility & hide desc for start clip: 
@@ -634,11 +634,12 @@ mvPlayList.prototype = {
 			this.start_clip.embed.thumbnail_disp=true;
 		}
 		//empty the play-back container
-		$j('#mv_ebct_'+this.id).empty();
-		//set the current clip desc to visable:
+		$j('#mv_ebct_'+this.id).empty();*/
+		
+		//make sure the current clip is visable:
 		$j('#clipDesc_'+this.cur_clip.id).css({display:'inline'});
 		
-		//do an animated stop of the current clip
+		//do stop current clip
 		this.cur_clip.embed.stop();
 	},
 	//gets playlist controls large control height for sporting 
@@ -1147,8 +1148,7 @@ PlMvEmbed.prototype = {
 		//set up connivance pointer to parent playlist
 		var plObj = this.pc.pp;
 		var plEmbed = this;					
-		
-		//now animate rezie back to small size:
+			
 		js_log('do stop');
 		var th=Math.round(pl_layout.clip_desc*plObj.height);	
 		var tw=Math.round(th*pl_layout.clip_aspect);
@@ -1580,9 +1580,7 @@ mvPlayList.prototype.doSmilActions = function(){
 					_pClip.transIn.overlay_selector_id =this.getOverlaySelector(_pClip, 'transIn_');																
 				}				
 						
-				js_log('selector element: '+$j('#'+_pClip.transIn.overlay_selector_id).length);	
-				
-				
+				js_log('selector element: '+$j('#'+_pClip.transIn.overlay_selector_id).length);									
 				//start running the transition animation (will stop once pClip time > transition duration	
 				js_log("ABOUT TO RUN transIn");
 				js_log("cid: "+_pClip.transIn.pClip.id);	

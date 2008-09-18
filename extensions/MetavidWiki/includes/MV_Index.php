@@ -156,7 +156,10 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
 		$or='';		
 		while($row=$dbr->fetchObject($result)){				
 			$ret_ary[$row->id]=$row;
+			//init array:			
 			if($do_cat_lookup){
+				if(!isset($ret_ary[$row->id]->category))
+					$ret_ary[$row->id]->category=array();	
 				if($do_cat_lookup){
 					$conds.=$or . ' cl_from ='.$dbr->addQuotes($row->id); 
 					$or=' OR ';
@@ -180,9 +183,7 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
 				$conds,
 				__METHOD__,
 				$options);			
-			while($cat_row=$dbr->fetchObject($result_cat)){		
-				if(!isset($ret_ary[$cat_row->cl_from]->category))
-					$ret_ary[$cat_row->cl_from]->category=array();						
+			while($cat_row=$dbr->fetchObject($result_cat)){											
 				$ret_ary[$cat_row->cl_from]->category[]=$cat_row->cl_to;			
 			}
 		}

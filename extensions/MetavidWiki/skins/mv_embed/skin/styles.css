@@ -162,6 +162,7 @@
 	height: 12px;
 	background: url(images/player_seek_bg_loaded.png) 0 1px repeat-x;
 	margin: 9px 0px 0 0px;
+	position:relative;
 }
 .videoPlayer .seeker .seeker_bar_outer {
 	width: 100%;
@@ -185,7 +186,7 @@
 	background: url(images/player_slider.png) 0 0 no-repeat;
 	width: 14px;
 	height: 14px;
-	position: absolute;
+	position: relative;
 	z-index: 2;
 	margin: -13px 0 0 0px;
 	cursor: pointer;

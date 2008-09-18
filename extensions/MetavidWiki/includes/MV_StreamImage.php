@@ -116,6 +116,7 @@ class MV_StreamImage{
 		if($ext=='jpg')header("Content-type: image/jpeg");
 		if($ext=='png')header("Content-type: image/png");
 		//print "img path: $img_path";
+		//@@todo a redirect to real image (will serv from cache that way) 
 		if(is_file($img_path)){						
 			//print "file present: $img_path";
 			@readfile($img_path);

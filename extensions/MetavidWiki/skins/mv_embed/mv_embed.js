@@ -14,8 +14,7 @@
  * (in cases where media will be hosted in a different place than the embbeding page)
  *
  */
-
-var MV_EMBED_VERSION = '1.0';
+var MV_EMBED_VERSION = '1.0rc1';
 var mv_embed_path = null;
 //whether or not to load java from an iframe.
 //note: this is necessary for remote embedding because of java security model)
@@ -170,14 +169,16 @@ var mvEmbed = {
   lib_jquery:{'window.jQuery':'jquery/jquery-1.2.6.min.js'},
   lib_plugins:{
   	'$j.timer.global':'jquery/plugins/jquery.timers.js', //we should try and factor out the timer
-  	'$j.fn.offsetParent':'jquery/plugins/jquery.dimensions.js',
-	'$j.ui.mouseInteraction':'jquery/plugins/ui.mouse.js',
-	'$j.ui.slider':'jquery/plugins/ui.slider.js',	
-	'$j.ui.draggable':'jquery/plugins/ui.draggable.js', //include draggable
-	'$j.ui.droppable':'jquery/plugins/ui.droppable.js'	  	
+	'$j.ui.mouse'	 :'jquery/jquery.ui-1.5.2/ui/minified/ui.core.min.js'	
   },
-  /*old lib includes: 
-		'$j.ui.progressbar':'jquery/jquery-ui-personalized-1.6rc1.debug.js'
+  lib_controlui:{
+  	'$j.ui.droppable':'jquery/jquery.ui-1.5.2/ui/minified/ui.droppable.min.js',
+	'$j.ui.draggable':'jquery/jquery.ui-1.5.2/ui/minified/ui.draggable.min.js',
+	'$j.ui.resizable':'jquery/jquery.ui-1.5.2/ui/minified/ui.resizable.min.js'		
+  },
+  /* @@todo move to single packaged jquery ui library:   
+	, //include draggable
+	'$j.ui.progressbar':'jquery/jquery-ui-personalized-1.6rc1.debug.js'	
    */
   pc:null, //used to store pointer to parent clip (when in playlist mode)
   load_libs:function(callback){
@@ -195,9 +196,13 @@ var mvEmbed = {
  		js_log('jquery loaded'); 		
  		
 		mvJsLoader.doLoad(_this.lib_plugins, function(){
-			js_log('plugins loaded');
-			mvEmbed.libs_loaded=true;
-			mvEmbed.init();
+			js_log('loaded ui core');
+			//load control ui after ui.core loaded
+			mvJsLoader.doLoad(_this.lib_controlui,function(){
+				js_log('plugins loaded');
+				mvEmbed.libs_loaded=true;
+				mvEmbed.init();
+			});
 		});
   	});
   },  
@@ -548,19 +553,20 @@ var ctrlBuilder = {
 						/
 					($j('#mv_seeker_'+_this.id).width()-14));   							
 									 													
-				this.jump_time = seconds2ntp(parseInt(_this.getDuration()*perc)+ _this.start_time_sec);	
-				js_log('perc:' + perc + ' * ' + _this.getDuration() + ' jt:'+  this.jump_time);
-				_this.setStatus( getMsg('seek_to')+' '+this.jump_time );    
+				_this.jump_time = seconds2ntp(parseInt(_this.getDuration()*perc)+ _this.start_time_sec);	
+				//js_log('perc:' + perc + ' * ' + _this.getDuration() + ' jt:'+  this.jump_time);
+				_this.setStatus( getMsg('seek_to')+' '+_this.jump_time );    
 				//update the thumbnail/ frame 
 				_this.updateTimeThumb(perc);					
         	},
         	stop:function(e, ui){
         		_this.userSlide=false;
-        		js_log('do jump to: '+this.jump_time)
+        		js_log('do jump to: '+_this.jump_time)
         		//reset slider				
-        		_this.seek_time_sec=ntp2seconds(this.jump_time);
-        		//_this.stop();
-        		//_this.play();
+        		_this.seek_time_sec=ntp2seconds(_this.jump_time);        		
+        		_this.stop();
+        		//do play in 300ms (give things time to "cool down") 
+        		setTimeout('$j(\'#'+_this.id+'\').get(0).play()',300);
         	}
         });
     },
@@ -1327,7 +1333,7 @@ textInterface.prototype = {
 			$j('#mmbody_'+this.pe.id +' .mvtt').each(function(){
 				if(ntp2seconds($j(this).attr('start')) == cur_time){
 					_this.prevTimeScroll=cur_time;
-					$j('#mmbody_'+_this.pe.id).animate({scrollTop: $j(this).position().top}, 'slow');
+					$j('#mmbody_'+_this.pe.id).animate({scrollTop: $j(this).get(0).offsetTop}, 'slow');
 				}
 			});
 		}
@@ -1519,7 +1525,7 @@ mediaSource.prototype =
 	 * supports media_url?t=ntp_start/ntp_end url request format
      */
     parseURLDuration : function(){
-        js_log('f:parseURLDuration() for:' + this.src);
+        //js_log('f:parseURLDuration() for:' + this.src);
         var index_time_val = false;
         if(this.src.indexOf('?t=')!=-1)index_time_val='?t=';
         if(this.src.indexOf('&t=')!=-1)index_time_val='&t=';
@@ -1998,8 +2004,9 @@ embedVideo.prototype = {
 			return default_time_req;		
 		return this.media_element.selected_source.start_ntp+'/'+this.media_element.selected_source.end_ntp;
 	},	
-    getDuration:function(){
+    getDuration:function(){    	
         this.duration = this.media_element.selected_source.duration;
+        this.start_offset = this.media_element.selected_source.start_offset;
         return this.duration;
     },
   	/* get the duration in ntp format */
@@ -2258,7 +2265,7 @@ embedVideo.prototype = {
 			return;
 		}else{
 			$j('#mv_embedded_controls_'+this.id).html( this.getControlsHTML() );
-			this.addControlHooks();						
+			ctrlBuilder.addControlHooks(this);						
 		}		
     },   
     getControlsHTML:function()
@@ -2335,18 +2342,19 @@ embedVideo.prototype = {
 		js_log("UPDATE SRC:"+src);
 		this.src = src;
 	},	
-	updateTimeThumb: function(perc){								   		
+	updateTimeThumb: function(perc){
+		var _this = this;								   		
 		//do quick thumb update 
 		if(typeof org_thum_src=='undefined'){		
 			org_thum_src = this.media_element.getThumbnailURL();
-		}		
+		}							
 		if(org_thum_src.indexOf('t=')!==-1){
-			this.updateThumbnail( getUpdateTimeURL(
-						seconds2ntp( (this.getDuration() * perc) + this.start_offset)
-					) 
-				);
-		}
-		js_log('f:doUpdateTimeThumb: update thumb to: '+ perc + ' os:'+ org_thum_src);		
+			this.last_thumb_url = getUpdateTimeURL(org_thum_src,seconds2ntp( (this.getDuration() * perc) + parseInt(this.start_offset)));									
+			if(!this.thumbnail_updating){				
+				this.updateThumbnail(this.last_thumb_url ,false);
+				this.last_thumb_url =null;
+			}
+		}				
 	},
 	//updates the thumbnail if the thumbnail is being displayed
 	updateThumbnail : function(src, quick_switch){
@@ -2358,8 +2366,7 @@ embedVideo.prototype = {
 			
 			//if still animating remove new_img_thumb_
 			if(this.thumbnail_updating==true)
-				$j('#new_img_thumb_'+this.id).stop().remove();
-			
+				$j('#new_img_thumb_'+this.id).stop().remove();			
 			if(this.thumbnail_disp){
 				this.thumbnail_updating=true;
 				$j('#dc_'+this.id).append('<img src="'+src+'" ' +
@@ -2374,9 +2381,14 @@ embedVideo.prototype = {
 						$j('#img_thumb_'+_this.id).css('zindex','1');
 						_this.thumbnail_updating=false;						
 						//js_log("done fadding in "+ $j('#img_thumb_'+_this.id).attr("src"));
+						
+						//if we have a thumb queued update to that
+						if(_this.last_thumb_url){
+							var src_url =_this.last_thumb_url;
+							_this.last_thumb_url=null;
+							_this.updateThumbnail(src_url);
+						}
 				});
-			}else{
-				//do a quick switch
 			}
 		}
 	},
@@ -2739,10 +2751,10 @@ embedVideo.prototype = {
 		return null
 	},
 	/*
-	 * base embed stop (should be overwritten by the plugin)
+	 * base embed stop (can be overwritten by the plugin)
 	 */
 	stop: function(){
-		js_log('base stop:'+this.id);
+		js_log('mvEmbed:stop:'+this.id);
 		//check if thumbnail is being displayed in which case do nothing
 		if(this.thumbnail_disp){
 			//already in stooped state
@@ -2751,6 +2763,7 @@ embedVideo.prototype = {
 			//rewrite the html to thumbnail disp
 			this.doThumbnailHTML();
 			this.setSliderValue(0);
+			this.setStatus(this.getTimeReq());
 		}
         if(this.update_interval)
         {
@@ -2851,7 +2864,7 @@ embedVideo.prototype = {
 		//js_log('currentTime:'+ this.currentTime);
 		
 		var val = Math.round( perc  * $j('#mv_seeker_'+id).width() - (this.mv_seeker_width*perc));
-		$j('#mv_seeker_slider_'+id).css('left', (val+41)+'px' );
+		$j('#mv_seeker_slider_'+id).css('left', (val)+'px' );
 		//js_log('perc in: ' + perc + ' * ' + $j('#mv_seeker_'+id).width() + ' = set to: '+ val + ' - '+ Math.round(this.mv_seeker_width*perc) );
 		//js_log('op:' + offset_perc + ' *('+perc+' * ' + $j('#slider_'+id).width() + ')');
 	},
@@ -2878,15 +2891,15 @@ function getTransparentPng(image){
 /*
 * utility functions:
 */
-function getUpdateTimeURL(url, new_time){
-	pSrc = parseUri(url);
+function getUpdateTimeURL(url, new_time){	
+	pSrc =parseUri(url);
 	var new_url = pSrc.protocol +'://'+ pSrc.host + pSrc.path +'?';       	
 	var amp = '';
 	for(i in pSrc.queryKey){
 		new_url +=(i=='t')? amp + 't=' + new_time:
 					amp+i+'='+ pSrc.queryKey[i];
 		amp = '&';    	
-	}
+	}	
 	return new_url;
 }
 function seconds2ntp(sec){	

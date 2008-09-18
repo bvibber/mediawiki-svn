@@ -279,7 +279,8 @@ class MV_SpecialMediaSearch {
 		{
 			$dbw = & wfGetDB(DB_WRITE);
 			$dbr = & wfGetDB(DB_READ);
-			//print "DO SEARCH FOR: ". $this->getFilterDesc($query_key = true) . "\n";
+			//print_r($this->filters);
+			//print "Adding to mv_search_digest : ". $this->getFilterDesc($query_key = true) . "\n";
 			//print var_dump(debug_backtrace());			
 			//@@todo non-blocking insert... is that supported in mysql/php?
 			$dbw->insert('mv_search_digest', array (
@@ -963,15 +964,17 @@ class MV_SpecialMediaSearch {
 		$o = $a = '';
 		$bo = ($query_key) ? '' : '<b>';
 		$bc = ($query_key) ? '' : '</b>';
-		foreach ($this->filters as $inx => $f) {
-			if ($inx != 0)
-				$a = ' ' . wfMsg('mv_search_' . $f['a']) . ' ';
-				if($f['t']!='match') //no desc for text search
-					$o .= ($query_key) ? $a : $a . wfMsg('mv_' . $f['t']) . ' ';
-			if ($f['t'] == 'date_range') { //handle special case of date range:
-				$o .= wfMsg('mv_time_separator', $bo . htmlspecialchars($f['vs']) . $bc, $bo . htmlspecialchars($f['ve']) . $bc);
-			} else {
-				$o .= $bo . str_replace('_', ' ', htmlspecialchars($f['v'])) . $bc;
+		if(is_array($this->filters)){
+			foreach ($this->filters as $inx => $f) {				
+				if ($inx != 0)
+					$a = ' ' . wfMsg('mv_search_' . $f['a']) . ' ';
+					if($f['t']!='match') //no desc for text search
+						$o .= ($query_key) ? $a : $a . wfMsg('mv_' . $f['t']) . ' ';
+				if ($f['t'] == 'date_range') { //handle special case of date range:
+					$o .= wfMsg('mv_time_separator', $bo . htmlspecialchars($f['vs']) . $bc, $bo . htmlspecialchars($f['ve']) . $bc);
+				} else {
+					$o .= $bo . str_replace('_', ' ', htmlspecialchars($f['v'])) . $bc;
+				}
 			}
 		}
 		return $o;
