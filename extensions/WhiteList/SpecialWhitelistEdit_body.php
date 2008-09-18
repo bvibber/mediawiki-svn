@@ -606,7 +606,7 @@ END;
         $wgOut->addHtml('<div class="NavFrame" style="padding:0px;border-style:none;">');
         $wgOut->addHtml('<div class="NavHead" style="background: #ffffff; text-align: left; font-size:100%;">');
         # this is a hack to make the [show]/[hide] always appear after the text
-        $wgOut->addWikiText("$headertext" . wfMsg('whitelistnummatches', $num_matches) . "&nbsp;<font color='#ffffff'>[show]</font>&nbsp;</div>");
+        $wgOut->addWikiText("$headertext" . wfMsgExt('whitelistnummatches', array( 'parsemag' ), array( $num_matches ) ) . "&nbsp;<font color='#ffffff'>[show]</font>&nbsp;</div>");
         $wgOut->addHtml('<div class="NavContent" style="display:none; font-size:normal; text-align:left">');
 
         foreach ($wildcard_match as $pageid)
