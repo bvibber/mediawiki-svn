@@ -23,7 +23,7 @@ class PasswordReset extends SpecialPage {
 		$this->setHeaders();
 
 		
-		if ( !$wgUser->isAllowed( 'passwordreset' ) || !$wgUser->isAllowed( 'passwordresetself' ) ) {
+		if ( !$wgUser->isAllowed( 'passwordreset' ) ) {
 			$wgOut->permissionRequired( 'passwordreset' );
 			return;
 		}
