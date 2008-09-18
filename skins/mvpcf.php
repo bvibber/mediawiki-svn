@@ -268,9 +268,9 @@ class MvpcfTemplate extends QuickTemplate {
 	<h5>Site</h5>
 		<ul>
 <?php
-// Generate additional footer links
+// Generate additional footer links removed: 'lastmod', 'viewcount'
 		$footerlinks = array(
-			'lastmod', 'viewcount', 'numberofwatchingusers', 'credits', 'copyright',
+			'numberofwatchingusers', 'credits', 'copyright',
 			'privacy', 'about', 'disclaimer', 'tagline',
 		);
 		foreach( $footerlinks as $aLink ) {
@@ -387,7 +387,7 @@ class MvpcfTemplate extends QuickTemplate {
 				<?php echo $sk->makeKnownLink('Main Page', 'home') ?>
 			</li>
 			<li>
-				<?php echo $sk->makeKnownLink('Community_Portal', 'community portal') ?>				
+				<?php echo $sk->makeKnownLink('Metavid Overview', 'metavid overview') ?>				
 			</li>
 			<li>
 				<?php
@@ -405,14 +405,8 @@ class MvpcfTemplate extends QuickTemplate {
 				<?php 
 				$cCat = Title::newFromText('Media Categories', NS_CATEGORY); 
 				echo $sk->makeKnownLinkObj($cCat, 'browse categories'); 
-				?>
-			</li>	
-			<li>				
-				<?php
-				$cHelp = Title::newFromText('Contents', NS_HELP);
-				echo $sk->makeKnownLinkObj($cHelp, 'help');
-				 ?>
-			</li>
+				?> 
+			</li>				
 			<li>
 				<a title="blog" href="/blog">blog</a>
 			</li>
