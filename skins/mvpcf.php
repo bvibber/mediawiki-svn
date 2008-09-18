@@ -387,7 +387,7 @@ class MvpcfTemplate extends QuickTemplate {
 				<?php echo $sk->makeKnownLink('Main Page', 'home') ?>
 			</li>
 			<li>
-				<?php echo $sk->makeKnownLink('Whats New', 'what\'s new') ?>				
+				<?php echo $sk->makeKnownLink('Community_Portal', 'community portal') ?>				
 			</li>
 			<li>
 				<?php
