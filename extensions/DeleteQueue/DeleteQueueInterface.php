@@ -90,18 +90,32 @@ class DeleteQueueInterface {
 		$reason2 = $wgRequest->getText( 'wpExtra' );
 
 		$reason = self::formatReason( $reason1, $reason2 );
+		
+		// Allow hooks to terminate
+		$error = '';
+		if (!wfRunHooks( 'AbortDeleteQueueNominate', array($wgUser, $article, $queue, $reason, &$error) ) ) {
+			$wgOut->addWikitext( $error );
+			return false;
+		}
 
 		// Transaction
 		$dbw = wfGetDB( DB_MASTER );
 		$dbw->begin();
+		
+		// Set in database.
+		$dqi = DeleteQueueItem::newFromArticle( $article );
+		
+		if ($dqi->getQueue()) {
+			$dbw->rollback();
+			$wgOut->addWikiMsg( 'deletequeue-nom-alreadyqueued' );
+			return false;
+		}
+		
+		$dqi->setQueue( $queue, $reason );
+		$dqi->addRole( 'nominator' );
 
 		$log = new LogPage( 'delete' );
 		$log->addEntry( "nominate", $article->mTitle, $reason, wfMsgNoTrans( 'deletequeue-queue-'.$queue) );
-
-		// Set in database.
-		$dqi = DeleteQueueItem::newFromArticle( $article );
-		$dqi->setQueue( $queue, $reason );
-		$dqi->addRole( 'nominator' );
 
 		$dbw->commit();
 

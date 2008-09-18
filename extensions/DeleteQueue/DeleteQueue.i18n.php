@@ -15,18 +15,23 @@ $messages['en'] = array(
 	'deletequeue-desc' => 'Creates a [[Special:DeleteQueue|queue-based system for managing deletion]]',
 
 	// Landing page
+	'deletequeue-action-queued' => 'Deletion',
 	'deletequeue-action' => 'Suggest deletion',
 	'deletequeue-action-title' => "Suggest deletion of \"$1\"",
 	'deletequeue-action-text' => "{{SITENAME}} has a number of processes for deleting pages:
 *If you believe that this page warrants ''speedy deletion'', you may suggest that [{{fullurl:{{FULLPAGENAME}}|action=delnom&queue=speedy}} here].
 *If this page does not warrant speedy deletion, but ''deletion will likely be uncontroversial'', you should [{{fullurl:{{FULLPAGENAME}}|action=delnom&queue=prod}} propose uncontested deletion].
 *If this page's deletion is ''likely to be contested'', you should [{{fullurl:{{FULLPAGENAME}}|action=delnom&queue=deletediscuss}} open a discussion].",
+	'deletequeue-action-text-queued' => "You may view the following pages for this deletion case:
+* [{{fullurl:{{FULLPAGENAME}}|action=delviewvotes}} View current endorsements and objections].
+* [{{fullurl:{{FULLPAGENAME}}|action=delvote}} Endorse or object to this page's deletion].",
 
 	// Permissions errors
 	'deletequeue-permissions-noedit' => "You must be able to edit a page to be able to affect its deletion status.",
 
 	// Nomination forms
 	'deletequeue-generic-reasons' => "* Generic reasons\n ** Vandalism\n ** Spam\n ** Maintenance\n ** Out of project scope",
+	'deletequeue-nom-alreadyqueued' => 'This page is already in a deletion queue.',
 
 	// Speedy deletion
 	'deletequeue-speedy-title' => 'Mark "$1" for speedy deletion',
@@ -60,6 +65,7 @@ You must select a reason for deletion from the drop-down list below, and add any
 	'right-prod-review' => 'Review uncontested deletion proposals',
 	'right-deletediscuss-nominate' => 'Start deletion discussions',
 	'right-deletediscuss-review' => 'Close deletion discussions',
+	'right-deletequeue-vote' => 'Endorse or object to deletions',
 
 	// Queue names
 	'deletequeue-queue-speedy' => 'Speedy deletion',
@@ -126,7 +132,6 @@ You may [{{fullurl:$1|action=delvote}} endorse or object] to deletion, or [{{ful
 	'deletequeue-role-vote-object' => 'objector to deletion',
 
 	// Endorsement and objection
-	'deletequeue-vote-tab' => 'Endorse/Object to deletion',
 	'deletequeue-vote-title' => 'Endorse or object to deletion of "$1"',
 	'deletequeue-vote-text' => "You may use this form to endorse or object to the deletion of \"'''$1'''\".
 This action will override any previous endorsements/objections you have given to deletion of this page.
