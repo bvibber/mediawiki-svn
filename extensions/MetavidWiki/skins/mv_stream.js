@@ -290,14 +290,16 @@ var mv_init_interface = {
 function mv_doTextScrollMonitor(){
 	if(!mvTextScrollMonitorTimer)
 		mvTextScrollMonitorTimer=setInterval('mv_doTextScrollMonitor()',1000);
-	//if playing scrollupdate
-	var evid = $j('#embed_vid').get(0);
-	if( evid.isPlaying() ){
-		if(evid.currentTime!=0)
-			mv_scroll2Time(evid.currentTime);
-	}
-	if( evid.userSlide ){		
-		mv_scroll2Time( ntp2seconds(evid.jump_time) );
+		
+	if(!mv_open_edit_mvd){
+		var evid = $j('#embed_vid').get(0);
+		if( evid.isPlaying() ){
+			if(evid.currentTime!=0)
+				mv_scroll2Time(evid.currentTime);
+		}
+		if( evid.userSlide ){		
+			mv_scroll2Time( ntp2seconds(evid.jump_time) );
+		}
 	}
 	//if userScroll scroll/update
 }

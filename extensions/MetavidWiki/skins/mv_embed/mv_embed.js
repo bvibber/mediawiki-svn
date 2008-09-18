@@ -2717,22 +2717,23 @@ embedVideo.prototype = {
 		}
 	},
 	play_or_pause : function(){
-		js_log('base play or pause');
-		var id = (this.pc!=null)?this.pc.pp.id:this.id;
+		js_log('embed:f:play_or_pause');
+		var this_id = (this.pc!=null)?this.pc.pp.id:this.id;
 
         //check state and set play or pause
         if(this.paused){
             js_log('do play');
+            js_log('set : #mv_play_pause_button_'+this_id + ' to pause_button');
+            $j("#mv_play_pause_button_"+this_id).attr('class', 'pause_button');
             //(paused) do play
             this.play();
-            this.paused=false;
-            $j("#mv_play_pause_button_"+this.id).attr('class', 'pause_button');
+            this.paused=false;        
         }else{
             js_log('do pause');
             //(playing) do pause
             this.pause();
             this.paused=true;
-            $j("#mv_play_pause_button_"+this.id).attr('class', 'play_button');
+            $j("#mv_play_pause_button_"+this_id).attr('class', 'play_button');
         }
 	},
 	//called when we play to the end of a stream (load the thumbnail)
