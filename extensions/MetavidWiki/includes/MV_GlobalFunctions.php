@@ -235,7 +235,7 @@ function mvMagicParserFunction_Render( &$parser ) {
 	 * enables linkback and autocomplete for search
 	 */
 function mvfAutoAllPageHeader(){
-	global $mvgScriptPath, $wgJsMimeType, $wgOut;	
+	global $mvgScriptPath, $wgJsMimeType, $wgOut, $mvExtraHeader;	
 	$mvgScriptPath = htmlspecialchars( $mvgScriptPath );
 	$wgJsMimeType = htmlspecialchars( $wgJsMimeType) ;	
 	/* (moved to on_dom ready)  but here as well*/ 
@@ -246,6 +246,8 @@ function mvfAutoAllPageHeader(){
 	$wgOut->addScript("<script type=\"{$wgJsMimeType}\" src=\"{$mvgScriptPath}/skins/mv_embed/mv_embed.js\"></script>");
 	$wgOut->addScript("<script type=\"{$wgJsMimeType}\" src=\"{$mvgScriptPath}/skins/mv_allpages.js\"></script>");
 	$wgOut->addScript("<script type=\"{$wgJsMimeType}\" src=\"{$mvgScriptPath}/skins/mv_search.js\"></script>");
+	
+	$wgOut->addScript($mvExtraHeader);
 	
 	$mvCssUrl = $mvgScriptPath . '/skins/mv_custom.css';
 	$wgOut->addLink(array(
