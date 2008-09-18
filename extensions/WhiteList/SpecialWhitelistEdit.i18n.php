@@ -79,7 +79,7 @@ $2",
 	'whitelistnonrestricted'      => "User '''$1''' is not a restricted user.
 This page is only applicable to restricted users",
 	'whitelistnever'              => 'never',
-	'whitelistnummatches'         => " - $1 matches",
+	'whitelistnummatches'         => " - {{PLURAL:$1|one match|$1 matches}}",
 );
 
 /** Message documentation (Message documentation)
