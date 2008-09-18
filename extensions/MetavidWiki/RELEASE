@@ -33,7 +33,7 @@ draft of the official release notes:
 == Updated compatibility to latest metavidWiki version *1.13* ==
 * Also see http://svn.wikimedia.org/svnroot/mediawiki/tags/REL1_13_0RC2/phase3/RELEASE-NOTES
 
-== Updated Compatibility to latest Semantic MediaWiki 1.2 == 
+== Updated Compatibility to Semantic MediaWiki 1.2 == 
 * faster, lazy loading of all classes, better db structure, + lots more
 * Also See http://semantic-mediawiki.org/wiki/SMW_1.2
 

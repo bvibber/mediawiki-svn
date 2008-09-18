@@ -247,15 +247,15 @@ function mvfAutoAllPageHeader(){
 	$wgOut->addScript("<script type=\"{$wgJsMimeType}\" src=\"{$mvgScriptPath}/skins/mv_allpages.js\"></script>");
 	$wgOut->addScript("<script type=\"{$wgJsMimeType}\" src=\"{$mvgScriptPath}/skins/mv_search.js\"></script>");
 	
-	$wgOut->addScript($mvExtraHeader);
-	
 	$mvCssUrl = $mvgScriptPath . '/skins/mv_custom.css';
 	$wgOut->addLink(array(
 			'rel'   => 'stylesheet',
 			'type'  => 'text/css',
 			'media' => 'all',
 			'href'  => $mvCssUrl
-	));								
+	));		
+	
+	$wgOut->addScript($mvExtraHeader);						
 }
 	/**
 	*  This method is in charge of inserting additional CSS, JScript, and meta tags

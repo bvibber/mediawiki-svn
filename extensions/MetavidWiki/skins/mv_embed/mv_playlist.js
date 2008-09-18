@@ -1688,6 +1688,7 @@ var mvTransLib = {
 	doUpdate:function(tObj, percent){
 		this['type'][tObj.type][tObj.subtype].u(tObj,percent);
 	},
+	//functional library mapping: 
 	type:{
 		//types:
 		fade:{
@@ -1716,7 +1717,7 @@ var mvTransLib = {
 			},
 			//corssFade
 			crossfade:{
-				"init":function(tObj, overlay_selector_id, offSetTime){
+				"init":function(tObj){
 					js_log('f:crossfade: '+overlay_selector_id);
 					if($j('#'+overlay_selector_id).length==0)
 						js_log("ERROR overlay selector not found: "+overlay_selector_id);
@@ -1907,7 +1908,7 @@ var mv_supported_transition_attr = new Array(
 	'fadeColor',
 	'dur'
 );
-
+//around 30 frames a second: 
 var MV_ANIMATION_CB_RATE = 34;
 var transitionObj = function(element) {		
 	this.init(element);
