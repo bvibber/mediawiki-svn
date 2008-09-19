@@ -368,6 +368,7 @@ class OnlineStatus {
 				$arr['status'] = array(
 					'text' => wfMsgHtml( 'onlinestatus-tab' ),
 					'href' => 'javascript:;',
+					'active' => false,
 				);
 			}
 			$arr[$key] = $val;
