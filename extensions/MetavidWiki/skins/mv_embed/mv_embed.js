@@ -1764,6 +1764,7 @@ mediaElement.prototype =
     */
     addROE:function(roe_data)
     {    	
+    	js_log('f:addROE');
     	this.addedROEData=true;
         var _this = this;        
         if(typeof roe_data == 'string')
@@ -2323,6 +2324,7 @@ embedVideo.prototype = {
 		return out + '</div>';
 	},
 	updateVideoTimeReq:function(time_req){
+		js_log('f:updateVideoTimeReq');
 		var time_parts =time_req.split('/');
 		this.updateVideoTime(time_parts[0], time_parts[1]);
 	},

@@ -118,10 +118,10 @@ var mv_init_interface = {
 				ebvid['org_eb_play_or_pause'] = ebvid['play_or_pause'];
 				ebvid['play_or_pause'] = function(){mv_play_or_pause();}
 			}
-			if(ebvid['showVideoDownload'].toString!='function(){mv_doShowVideoDownload();}'){
+			/*if(ebvid['showVideoDownload'].toString!='function(){mv_doShowVideoDownload();}'){
 				ebvid['org_showVideoDownload'] = ebvid['showVideoDownload'];
 				ebvid['showVideoDownload'] = function(){mv_doShowVideoDownload();}
-			}			
+			}*/			
 			//setup text scroll monitor: 
 			mv_doTextScrollMonitor();						
 			//js_log("post stop: " +ebvid['stop'].toString());
@@ -266,7 +266,7 @@ var mv_init_interface = {
 	},
 	/* based on a a mvd_id update the video thumbnail to the correct location
 	 */
-	doRestore:function(){
+	doRestore:function(){		
 		var vid_elm = $j('#embed_vid').get(0);
 		if(vid_elm){
 			if( vid_elm.isPlaying()){
@@ -324,11 +324,12 @@ function mv_scroll2Time(sec_time){
 		});				
 	}
 }
-function mv_doShowVideoDownload(){
+/*function mv_doShowVideoDownload(){
+	js_log('f:mv_doShowVideoDownload');
 	//restores orginal state before showing download links: 	
 	mv_init_interface.doRestore();
 	return $j('#embed_vid').get(0).org_showVideoDownload();
-}
+}*/
 /* the mvdObject
  *
  * eventually a lot of mvd_based functionality should be ported over to this structure.

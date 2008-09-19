@@ -66,7 +66,7 @@ var vlcEmbed = {
 	    	//if controls enabled start up javascript interface and monitor:
 			if(this.controls){				
 				//activate the slider: scriptaculus based)
-				this.activateSlider();  
+				//this.activateSlider();  
 				//start doing status updates every 1/10th of a second			   	    		
 			}		
 			setTimeout('$j(\'#'+this.id+'\').get(0).monitor()',100);						
