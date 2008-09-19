@@ -89,6 +89,8 @@ function DynamicPageList( $input ) {
 
 	$bNamespace = false;
 	$iNamespace = 0;
+	
+	$bShowCurId = false;
 
 	$bSuppressErrors = false;
 	$bShowNamespace = true;
@@ -270,6 +272,13 @@ function DynamicPageList( $input ) {
 			else
 				$bShowNamespace = true;
 		}
+		else if ('showcurid' == $sType )
+		{
+			if ('false' == $sArg)
+				$bShowCurId = false;
+			else
+				$bShowCurId = true;
+		}
 	}
 
 	$iCatCount = count($aCategories);
@@ -325,7 +334,7 @@ function DynamicPageList( $input ) {
 	$dbr =& wfGetDB( DB_SLAVE );
 	$sPageTable = $dbr->tableName( 'page' );
 	$categorylinks = $dbr->tableName( 'categorylinks' );
-	$sSqlSelectFrom = "SELECT page_namespace, page_title, c1.cl_timestamp FROM $sPageTable";
+	$sSqlSelectFrom = "SELECT page_namespace, page_title, page_id, c1.cl_timestamp FROM $sPageTable";
 
 	if (true == $bNamespace)
 		$sSqlWhere = ' WHERE page_namespace='.$iNamespace.' ';
@@ -422,9 +431,9 @@ function DynamicPageList( $input ) {
 	if ($dbr->numRows( $res ) == 0)
 	{
 		if (false == $bSuppressErrors)
-	return htmlspecialchars( wfMsg( 'intersection_noresults' ) );
+			return htmlspecialchars( wfMsg( 'intersection_noresults' ) );
 		else
-	return '';
+			return '';
 	}
 
 	//start unordered list
@@ -438,10 +447,15 @@ function DynamicPageList( $input ) {
 		if (true == $bAddFirstCategoryDate)
 			$output .= $wgLang->date($row->cl_timestamp) . ': ';
 
+		$query = '';
+		if (true == $bShowCurId)
+			$query = 'curid='.intval($row->page_id);
+
 		if (true == $bShowNamespace)
-	$output .= $sk->makeKnownLinkObj($title);
+			$output .= $sk->makeKnownLinkObj($title, htmlspecialchars($title->getPrefixedText()),$query);
 		else
-	$output .= $sk->makeKnownLinkObj($title, htmlspecialchars($title->getText()));
+			$output .= $sk->makeKnownLinkObj($title, htmlspecialchars($title->getText()),$query);
+
 		$output .= $sEndItem . "\n";
 	}
 
