@@ -866,3 +866,11 @@ p#copyInfo a:hover {color: #999;}
 	font-size:small;
 	font-weight:400;
 }
+.floatleft{
+	float:left;
+	padding-right:5px;
+}
+.floatright{
+	float:right;
+	padding-left:5px;
+}
