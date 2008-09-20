@@ -2,7 +2,7 @@ This file lists changes on this extension.
 Localisation updates are done on betawiki and aren't listed here.
 
 0.7.9 - 20 September 2008
-  Dropped $wgDBminWordLen, was obsolete since since MediaWiki 1.6.0.
+  Dropped $wgDBminWordLen, was obsolete since MediaWiki 1.6.0.
 
 0.7.8 - 17 September 2008
   Added $wgRenderHashAppend.
