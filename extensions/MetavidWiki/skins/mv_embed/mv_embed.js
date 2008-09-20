@@ -472,10 +472,10 @@ var setCookie = function ( name, value, expiry, path, domain, secure ) {
          expiryDate.setTime( expiryDate.getTime() + expiry );
      }
      document.cookie = name + "=" + escape(value) +
-     (expiryDate ? ("; expires=" + expiryDate.toGMTString()) : "") +
-     (path ? ("; path=" + path) : "") +
-     (domain ? ("; domain=" + domain) : "") +
-     (secure ? "; secure" : "");
+	    (expiryDate ? ("; expires=" + expiryDate.toGMTString()) : "") +
+	    (path ? ("; path=" + path) : "") +
+	    (domain ? ("; domain=" + domain) : "") +
+     	(secure ? "; secure" : "");
 }
 
 /* 
@@ -532,8 +532,8 @@ var ctrlBuilder = {
         _this.start_time_sec = (_this.instanceOf == 'mvPlayList')?0:
         						_this.start_time_sec = ntp2seconds(_this.getTimeReq().split('/')[0]);        
         
-        js_log('looking for: #mv_seeker_slider_'+_this.id + "\n " +
-        	 'start sec: '+_this.start_time_sec + ' base offset: '+_this.base_seeker_slider_offset);
+        //js_log('looking for: #mv_seeker_slider_'+_this.id + "\n " +
+		//		'start sec: '+_this.start_time_sec + ' base offset: '+_this.base_seeker_slider_offset);
         
         //buid dragable hook here:        
 	    $j('#mv_seeker_slider_'+_this.id).draggable({
@@ -566,7 +566,7 @@ var ctrlBuilder = {
         		_this.seek_time_sec=ntp2seconds(_this.jump_time);        		
         		_this.stop();
         		//do play in 300ms (give things time to "cool down") 
-        		setTimeout('$j(\'#'+_this.id+'\').get(0).play()',300);
+        		setTimeout('$j(\'#'+_this.id+'\').get(0).play()',300);        		
         	}
         });
     },
@@ -624,7 +624,7 @@ var ctrlBuilder = {
 		'volume_control':{
 			'w':22,
 			'o':function(){
-				return '<div id="volume_icon_'+ctrlBuilder.id+'" class="volume_icon"><a href="javascript:$j(\'#'+ctrlBuilder.id+'\').get(0).toggleMute();"></a></div>'
+				return '<div id="volume_icon_'+ctrlBuilder.id+'" class="volume_icon volume_on"><a href="javascript:$j(\'#'+ctrlBuilder.id+'\').get(0).toggleMute();"></a></div>'
 			}
 		},
 		'time_display':{
@@ -2202,35 +2202,41 @@ embedVideo.prototype = {
 		 	var clip =  this.anno_data_cache[clip_id];
 		 	//js_log('on clip:'+ clip_id);
 		 	//set prev_link (if cur_link is still empty)
-			if(s_sec < clip.start_time_sec && link.current=='') 
+			if( s_sec < clip.start_time_sec && e_sec < clip.start_time_sec && link.prev=='') 
 				link.prev = clip_id;
 				
-			//clip is encapsulated by the current clip add current link:
-			if(s_sec > clip.start_time_sec && e_sec < clip.end_time_sec )
+			//clip is not done e_sec < clip
+			if(  s_sec > clip.start_time_sec && e_sec < clip.end_time_sec )
 				link.current = clip_id;
 						
-			if(e_sec <  clip.start_time_sec && link.next=='')
+			if( e_sec >  clip.start_time_sec && link.next=='')
 				link.next = clip_id;
     	}   
     	var html='';   
     	for(var link_type in link){
     		var link_id = link[link_type];    		
     		if(link_id!=''){
-    			var clip = this.anno_data_cache[link_id];
-    			
+    			var clip = this.anno_data_cache[link_id];    			
     			var title_msg='';
 				for(var j in clip['meta']){
 					title_msg+=j.replace(/_/g,' ') +': ' +clip['meta'][j].replace(/_/g,' ') +" \n";
 				}    	
-				var time_req = 	clip.time_req;	
+				var time_req = 	clip.time_req;
 				if(link_type=='current') //if current start from end of current clip play to end of current meta: 				
-					time_req = curTime[1]+ '/' + seconds2ntp(clip.end_time_sec);
+					time_req = curTime[1]+ '/' + seconds2ntp( clip.end_time_sec );
 				
-	    		html+='<p><a href="#" title="' +title_msg + '" '+	    				 
-	    				'onClick="$j(\'#'+this.id+'\').get(0).playByTimeReq(\''+ 
-	    					time_req + '\'); return false; ">' +
+				//do special linkbacks for metavid content: 
+				var regTimeCheck = new RegExp(/[0-9]+:[0-9]+:[0-9]+\/[0-9]+:[0-9]+:[0-9]+/);				
+				html+='<p><a  ';
+				if( regTimeCheck.test( this.media_element.linkback ) ){
+					html+=' href="'+ this.media_element.linkback.replace(regTimeCheck,time_req) +'" '; 
+				}else{
+					html+=' href="#" onClick="$j(\'#'+this.id+'\').get(0).playByTimeReq(\''+ 
+	    					time_req + '\'); return false; "';				
+				}
+				html+=' title="' + title_msg + '">' + 
 	    	 		getMsg(link_type+'_clip_msg') + 	    	 	
-	    		'</a></p>';
+	    		'</a><br><span style="font-size:small">'+ title_msg +'<span></p>';
     		}    	    				
     	}
     	//js_log("should set html:"+ html);
@@ -2244,19 +2250,14 @@ embedVideo.prototype = {
     },
     doThumbnailHTML:function()
     {  	
-    	js_log('f:doThumbnailHTML');
-    	js_log('thum disp:'+this.thumbnail_disp);
+    	js_log('f:doThumbnailHTML'+ this.thumbnail_disp);
         this.closeDisplayedHTML();
         this.thumbnail_disp = true;
-        var embed_code = this.getThumbnailHTML();              
-        
-        //js_log("embed code: " + embed_code);
-        if($j('#mv_embedded_player_'+this.id).length==0)
-        	js_log("can't find mv_embedded_player_"+this.id);
-        	
-        $j('#mv_embedded_player_'+this.id).html(embed_code);
+
+        $j('#mv_embedded_player_'+this.id).html( this.getThumbnailHTML() );
 		this.paused = true;
-        $j("#mv_play_pause_button_"+this.id).attr('class', 'play_button');
+		if(!this.pc) //if not in playlist mode update the play_pause button: 
+        	$j("#mv_play_pause_button_"+this.id).attr('class', 'play_button');
     },
     refreshControlsHTML:function(){
     	js_log('refreshing controls HTML');
@@ -2407,16 +2408,17 @@ embedVideo.prototype = {
 	    //if(this.class)class_atr = ' class="'+this.class+'"';
 	    //if(this.style)style_atr = ' style="'+this.style+'"';
 	    //    else style_atr = 'overflow:hidden;height:'+this.height+'px;width:'+this.width+'px;';
-        var thumbnail = this.media_element.getThumbnailURL();
+        var thumbnail_src = this.media_element.getThumbnailURL();
 
 	    //put it all in the div container dc_id
 	    thumb_html+= '<div id="dc_'+this.id+'" style="position:relative;'+
 	    	' overflow:hidden; top:0px; left:0px; width:'+this.playerPixelWidth()+'px; height:'+this.playerPixelHeight()+'px; z-index:0;">'+
 	        '<img width="'+this.playerPixelWidth()+'" height="'+this.playerPixelHeight()+'" style="position:relative;width:'+this.playerPixelWidth()+';height:'+this.playerPixelHeight()+'"' +
-	        ' id="img_thumb_'+this.id+'" src="' + thumbnail + '">';
+	        ' id="img_thumb_'+this.id+'" src="' + thumbnail_src + '">';
 		
 	    if(this.play_button==true)
 		  	thumb_html+=this.getPlayButton();
+		  	
    	    thumb_html+='</div>';
 	    return thumb_html;
     },
@@ -2690,7 +2692,8 @@ embedVideo.prototype = {
 	*  base embed controls
 	*	the play button calls
 	*/
-	play : function(){
+	play: function(){
+		var this_id = (this.pc!=null)?this.pc.pp.id:this.id;
 		js_log("mv_embed play:"+this.id);		
 		js_log('thum disp:'+this.thumbnail_disp);
 		//check if thumbnail is being displayed and embed html
@@ -2702,20 +2705,25 @@ embedVideo.prototype = {
 				$j('#'+this.id).html(this.getPluginMissingHTML());
 			}else{
                 this.doEmbedHTML();
-                this.onClipDone_disp=false;
+                this.onClipDone_disp=false;               
+            	this.paused=false;
 			}
 		}else{
 			//the plugin is already being displayed
-			js_log("we are already playing" );
+			js_log("we are already playing..." );
 		}
+		 //update "paused state"      
+         $j("#mv_play_pause_button_"+this_id).attr('class', 'pause_button');
 	},
-	toggleMute:function(){		
+	toggleMute:function(){
+		var this_id = (this.pc!=null)?this.pc.pp.id:this.id;
+		js_log('f:toggleMute');		
 		if(this.muted){
 			this.muted=false;
-			$j('#volume_icon_'+this.id).removeClass('volume_off').addClass('volume_on');
+			$j('#volume_icon_'+this_id).removeClass('volume_off').addClass('volume_on');
 		}else{
 			this.muted=true;
-			$j('#volume_icon_'+this.id).removeClass('volume_on').addClass('volume_off');
+			$j('#volume_icon_'+this_id).removeClass('volume_on').addClass('volume_off');
 		}
 	},
 	play_or_pause : function(){
@@ -2724,17 +2732,18 @@ embedVideo.prototype = {
 
         //check state and set play or pause
         if(this.paused){
-            js_log('do play');
-            js_log('set : #mv_play_pause_button_'+this_id + ' to pause_button');
-            $j("#mv_play_pause_button_"+this_id).attr('class', 'pause_button');
+            //js_log('do play');            
             //(paused) do play
             this.play();
             this.paused=false;        
+            //update "paused state" onPlay	        
+	        $j("#mv_play_pause_button_"+this_id).attr('class', 'pause_button');
         }else{
             js_log('do pause');
             //(playing) do pause
             this.pause();
-            this.paused=true;
+            this.paused=true; 
+            //update "paused state"            	
             $j("#mv_play_pause_button_"+this_id).attr('class', 'play_button');
         }
 	},
@@ -2834,41 +2843,17 @@ embedVideo.prototype = {
 	        	return  document.embeds[this.pid];
 		}
 		return null;
-	},
-	/*activateSlider : function(slider_id){
-		var id = (this.pc)?this.pc.pp.id:this.id;
-		var thisVid = this;
-		this.sliderVal=0;
-		//js_log('parent id: '+ parent_id + ' id: ' + this.id);
-		$j('#slider_'+id).slider({
-				handle:'#playhead_'+id,
-				slide:function(e, ui) {
-					thisVid.userSlide=true;
-					thisVid.sliderVal=( ui.pixel/ ( $j('#slider_'+id).width()-
-					 $j('#playhead_'+id).width() ));
-					//js_log('user slide: ' +thisVid.sliderVal );
-				},
-				change: function(slider){
-					//js_log("change: " + thisVid.sliderVal);
-					thisVid.doSeek(thisVid.sliderVal);
-					thisVid.userSlide=false;
-				}
-		});
-		//if(!slider_id)slider_id=this.id;
-		//get a pointer to this id (as this in onSlide context is not "this")
-		/*var parent_id = this.id;		
-	},*/
+	},	
 	setSliderValue: function(perc){
-		var id = (this.pc)?this.pc.pp.id:this.id;
+		//js_log('setSliderValue:'+perc+' ct:'+ this.currentTime);
+		var this_id = (this.pc)?this.pc.pp.id:this.id;
 		//alinment offset: 
 		if(!this.mv_seeker_width)
-			this.mv_seeker_width = $j('#mv_seeker_slider_'+id).width();
+			this.mv_seeker_width = $j('#mv_seeker_slider_'+this_id).width();				
 		
-		//js_log('currentTime:'+ this.currentTime);
-		
-		var val = Math.round( perc  * $j('#mv_seeker_'+id).width() - (this.mv_seeker_width*perc));
-		$j('#mv_seeker_slider_'+id).css('left', (val)+'px' );
-		//js_log('perc in: ' + perc + ' * ' + $j('#mv_seeker_'+id).width() + ' = set to: '+ val + ' - '+ Math.round(this.mv_seeker_width*perc) );
+		var val = Math.round( perc  * $j('#mv_seeker_'+this_id).width() - (this.mv_seeker_width*perc));
+		$j('#mv_seeker_slider_'+this_id).css('left', (val)+'px' );
+		//js_log('set#mv_seeker_slider_'+this_id + ' perc in: ' + perc + ' * ' + $j('#mv_seeker_'+this_id).width() + ' = set to: '+ val + ' - '+ Math.round(this.mv_seeker_width*perc) );
 		//js_log('op:' + offset_perc + ' *('+perc+' * ' + $j('#slider_'+id).width() + ')');
 	},
 	setStatus:function(value){

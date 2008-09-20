@@ -35,8 +35,7 @@ var oggplayEmbed = {
 	},
 	postEmbedJS:function(){
 		 this.getOggElement();	
-		 if(this.controls){				
-			this.activateSlider();  
+		 if(this.controls){							 
 		    setTimeout('document.getElementById(\''+this.id+'\').monitor()',250);		    		
 		}
 		//check if in playlist mode: 

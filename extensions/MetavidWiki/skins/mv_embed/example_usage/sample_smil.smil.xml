@@ -28,7 +28,7 @@
 		transOut="xFade" 	
 		type="video/ogg" 	
 		fill="transition"
-		dur="10s"
+		dur="12s"
 		poster="sample_fish.jpg"/>	
 	
     <video src="sample_eclipse.ogg?t=0:0:0/0:0:06" 

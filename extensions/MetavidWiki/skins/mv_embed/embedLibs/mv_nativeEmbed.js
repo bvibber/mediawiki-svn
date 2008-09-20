@@ -38,12 +38,12 @@ var nativeEmbed = {
 	//@@todo : loading progress
 	postEmbedJS:function(){		
 		this.getVID();
-		if(this.vid){
+		if(typeof this.vid != 'undefined'){
 			this.vid.play();
 			//this.vid.load(); //does not seem to work so well	
 			setTimeout('$j(\'#'+this.id+'\').get(0).monitor()',100);		
 		}else{
-			js_log('could not grab vid obj:' + typeof this.vid);
+			js_log('could not grab vid obj trying again:' + typeof this.vid);
 			setTimeout('$j(\'#'+this.id+'\').get(0).postEmbedJS()',100);	
 		}		
 	},	
@@ -79,8 +79,6 @@ var nativeEmbed = {
 					this.setSliderValue(this.currentTime/this.duration );
 					this.setStatus( seconds2ntp(this.currentTime) + '/'+ seconds2ntp(this.duration ));
 				}				
-			}else{
-				this.setStatus('seek to: ' + seconds2ntp(Math.round( (this.sliderVal*this.duration)) ));
 			}
 		}					
 		//update load progress if nessisary f
