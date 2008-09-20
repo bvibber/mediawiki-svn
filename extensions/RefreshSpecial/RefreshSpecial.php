@@ -19,7 +19,7 @@ $wgExtensionCredits['specialpage'][] = array(
 	'author'         => 'Bartek Łapiński',
 	'version'        => '1.1',
 	'url'            => 'http://www.mediawiki.org/wiki/Extension:RefreshSpecial',
-	'description'    => 'Allows manual special page refresh of special pages'
+	'description'    => 'Allows manual special page refresh of special pages',
 	'descriptionmsg' => 'refreshspecial-desc',
 );
 

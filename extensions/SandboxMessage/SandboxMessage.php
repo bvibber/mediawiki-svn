@@ -27,7 +27,7 @@
 
 $wgHooks['ParserBeforeStrip'][] = 'addSandboxMessage';
 $wgSandboxNS = NS_PROJECT;
-$wgSandboxName = 'Sandbox'
+$wgSandboxName = 'Sandbox';
 
 function addSandboxMessage( &$parser, &$text, &$strip_state ) {
 	global $wgSandboxName, $wgSandboxNS;

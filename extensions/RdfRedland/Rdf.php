@@ -420,9 +420,8 @@ class MwRdf {
 			preg_replace( "/\.$/", "", $l );
 			if ( preg_match( "/^@prefix (.*) \.$/", $l, $matches ) ) {
 				$prefix .= "PREFIX {$matches[1]}\n";
-				} else {
-					$body .= "$l\n";
-				}
+			} else {
+				$body .= "$l\n";
 			}
 			return "{$prefix}ASK\nWHERE { $body }";
 		}

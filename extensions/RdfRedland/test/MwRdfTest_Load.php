@@ -49,7 +49,7 @@ class MwRdf_Load_Test extends PHPUnit_Framework_TestCase {
 
 		[[category:Test]] [[category:Rdf]]
 
-		EOT;
+EOT;
 		MwRdf_ModelingAgent_Test::setPageText( $pagename, $wikitext );
 		$this->title = Title::newFromText( $pagename, NS_USER );
 	}

@@ -115,6 +115,4 @@ abstract class RdfQueryPage extends QueryPage implements RdfQueryPageInterface {
 	 * You should pass this by reference: &$model , &$res
 	 */
 	function preprocessResults( $res ) { return $res; }
-
-	}
 }
