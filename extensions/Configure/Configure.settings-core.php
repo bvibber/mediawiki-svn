@@ -81,7 +81,6 @@ $settings = array(
 			'wgSlaveLagWarning' => 'int',
 		),
 		'mysql' => array(
-			'wgDBminWordLen' => 'int',
 			'wgDBmysql4' => 'bool',
 			'wgDBmysql5' => 'bool',
 			'wgDBprefix' => 'text',
@@ -886,7 +885,6 @@ $editRestricted = array(
 	'wgDBAvgStatusPoll',
 	'wgDBClusterTimeout',
 	'wgDBerrorLog',
-	'wgDBminWordLen',
 	'wgDBmwschema',
 	'wgDBmysql5',
 	'wgDBname',
