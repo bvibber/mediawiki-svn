@@ -1,3 +1,9 @@
+wikimedia-task-appserver (1.29) hardy; urgency=low
+
+  * Update /etc/apache2/envvars for Ubuntu 8.04
+
+ -- Tim Starling <tstarling@wikimedia.org>  Sun, 21 Sep 2008 01:14:43 +1000
+
 wikimedia-task-appserver (1.28) hardy; urgency=low
 
   * Allow mounting to fail in postinst; unmounting is allowed to fail in prerm

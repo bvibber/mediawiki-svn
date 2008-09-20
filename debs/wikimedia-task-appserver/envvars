@@ -9,3 +9,5 @@ if [ -e /etc/wikimedia-image-scaler ]; then
 	HTTPD="$HTTPD -DSCALER"
 fi
 
+# For Ubuntu 8.04+
+APACHE_HTTPD="$HTTPD"
