@@ -156,6 +156,8 @@ function efErrorHandler( $errType, $errMsg, $errFile, $errLine, $errVars ){
 			} else {
 				$func .= '()';
 			}
+			$func = htmlspecialchars( $func );
+			$file = htmlspecialchars( $file );
 
 			if( $internal )
 				$res = array( 'errorhandler-trace-line-internal', $func );
