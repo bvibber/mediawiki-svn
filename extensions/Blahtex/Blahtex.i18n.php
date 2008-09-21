@@ -490,6 +490,10 @@ Versuche weitere geschwungene Klammern „{ … }“ einzufügen, um die Eingabe
 	'math_CannotWritePngDirectory' => 'Das PNG-Verzeichnis ist nicht beschreibbar',
 	'math_CannotWriteTexFile' => 'Es war nicht möglich in die tex-Datei zu schreiben',
 	'math_CasesRowTooBig' => 'Es kann pro Zeile eines „cases“-Block bloß zwei Einträge geben',
+	'math_DoubleSubscript' => 'Es kamen zwei Indices an der gleichen Basis vor.
+Nur ein Index ist erlaubt.',
+	'math_DoubleSuperscript' => 'Es kamen zwei Exponenten an der gleichen Basis vor.
+Nur ein Index ist erlaubt.',
 	'math_IllegalCharacter' => 'Ungültiges Zeichen in der Eingabe',
 	'math_IllegalCommandInMathMode' => 'Im mathematischen Modus ist die Anweisung „$1“ nicht erlaubt',
 	'math_IllegalCommandInMathModeWithHint' => 'Im mathematischen Modus ist die Anweisung „$1“ nicht erlaubt.
@@ -972,9 +976,9 @@ $messages['hsb'] = array(
 	'math_MisplacedLimits' => 'Přikaz "$1" móže so jenož za operatorom math jewić (rozpomń wužiwanje přikaza "\\mathop")',
 	'math_MissingCommandAfterNewcommand' => 'Falowace abo njedowolene přikazowe mjeno za přikazom "\\newcommand" (dyrbi eksaktnje jedyn přikaz definowany być; dyrbi so z wróćosmužku "\\" započeć a smě jenož alfabetiske znamješka wobsahować)',
 	'math_MissingDelimiter' => 'Dźělatko zady "$1" faluje',
-	'math_MissingOpenBraceAfter' => 'Spočatna zhibowana spinka "{" za "$1" faluje',
-	'math_MissingOpenBraceAtEnd' => 'Spočatna zhibowana spinka "{" na kóncu zapodaća faluje',
-	'math_MissingOpenBraceBefore' => 'Spočatna zhibowana spinka "{" před "$1" faluje',
+	'math_MissingOpenBraceAfter' => 'Spočatna zhibowana spinka "&#x007B;" za "$1" faluje',
+	'math_MissingOpenBraceAtEnd' => 'Spočatna zhibowana spinka "&#x007B;" na kóncu zapodaća faluje',
+	'math_MissingOpenBraceBefore' => 'Spočatna zhibowana spinka "&#x007B;" před "$1" faluje',
 	'math_MissingOrIllegalParameterCount' => 'Falowace abo njedowolene parametrowe ličenje w definiciji "$1"  (dyrbi cyfra mjez 1 a inkluziwnje 9 być)',
 	'math_MissingOrIllegalParameterIndex' => 'Falowacy abo njedowoleny parametrowy indeks w definiciji "$1"',
 	'math_NonAsciiInMathMode' => 'Znamješka nje-ASCII smědźa so jenož w tekstowym modusu wužiwać (spytaj problematiske znamješka w "\\text{...}" zapřijeć)',
@@ -1958,6 +1962,10 @@ Fersäik wiedere swoangene Klammere „{ … }“ ientouföigjen, uum ju Iengoaw
 	'math_CannotWritePngDirectory' => 'Dät PNG-Ferteeknis is nit beschrieuwboar',
 	'math_CannotWriteTexFile' => 'Dät waas nit muugelk in ju tex-Doatäi tou schrieuwen',
 	'math_CasesRowTooBig' => 'Dät kon pro Riege fon n "cases"-Blok bloot twäin Iendraage reeke',
+	'math_DoubleSubscript' => 'Der koomen two Indices an dän glieke Basis foar.
+Der duur bloot een Index weese.',
+	'math_DoubleSuperscript' => 'Der koomen two Exponente an dän glieke Basis foar.
+Der duur bloot een Exponent weese.',
 	'math_IllegalCharacter' => 'Uungultich Teeken in ju Iengoawe',
 	'math_IllegalCommandInMathMode' => 'In dän mathematisken Modus is ju Anwiesenge „$1“ nit ferlööwed',
 	'math_IllegalCommandInMathModeWithHint' => 'In dän mathematiske Modus is ju Anwiesenge „$1“ nit ferlööwed.

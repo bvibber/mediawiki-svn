@@ -125,14 +125,15 @@ $messages['eo'] = array(
 /** French (Français)
  * @author Dereckson
  * @author Grondin
+ * @author McDutchie
  * @author Sherbrooke
  */
 $messages['fr'] = array(
 	'whoiswatching' => 'Utilisateurs regardant une page du wiki',
-	'whoiswatching-desc' => 'Fournit une liste des utilisateurs visionnant une page wiki',
+	'whoiswatching-desc' => 'Fournit une liste des utilisateurs qui suivent une page wiki',
 	'specialwhoiswatchingthepage' => 'Utilisateurs regardant %s',
 	'specialwhoiswatchingusage' => "Cette page spéciale ne peut être utilisée seule. Passez par [[MediaWiki:Number_of_watching_users_pageview]] pour définir un point d'entrée vers cette page spéciale.",
-	'specialwhoiswatchingaddusers' => 'Ajouter les utilisateurs pour voir la page',
+	'specialwhoiswatchingaddusers' => 'Ajouter les utilisateurs pour suivre la page',
 	'specialwhoiswatchingaddbtn' => 'Ajouter les utilisateurs sélectionnés',
 );
 
@@ -192,6 +193,19 @@ $messages['hu'] = array(
 	'specialwhoiswatchingaddbtn' => 'Összes kiválasztott felhasználó hozzáadása',
 );
 
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'whoiswatching' => 'Qui observa un pagina wiki',
+	'whoiswatching-desc' => 'Forni un lista de nomines de usatores qui observa un pagina wiki',
+	'specialwhoiswatchingthepage' => 'Qui observa %s',
+	'specialwhoiswatchingusage' => 'Iste pagina special non pote esser usate sol.
+Per favor usa le pagina [[MediaWiki:Number_of_watching_users_pageview]] pro definir un puncto de entrata verso iste pagina special.',
+	'specialwhoiswatchingaddusers' => 'Adder usatores pro observar le pagina',
+	'specialwhoiswatchingaddbtn' => 'Adder le usatores seligite',
+);
+
 /** Italian (Italiano)
  * @author Pietrodn
  */
@@ -228,6 +242,7 @@ $messages['km'] = array(
  */
 $messages['ksh'] = array(
 	'whoiswatching' => 'Wä op en Sigg oppass',
+	'whoiswatching-desc' => 'Jivv_en Leß met de Metmaacher ier Name, di op en Sigg em Wiki op am passe sin.',
 	'specialwhoiswatchingthepage' => 'Wä paß op „%s“ op',
 	'specialwhoiswatchingusage' => 'Die Sigg kann nit för sesch allein jebruch wäde.
 Bes esu joot un donn övver de Sigg
@@ -255,6 +270,19 @@ $messages['lt'] = array(
 	'whoiswatching' => 'Kas žiūri šį puslapį',
 	'specialwhoiswatchingthepage' => 'Kas žiūri %s',
 	'specialwhoiswatchingusage' => 'Šis specialus puslapis negali būti naudojamas paprastai. Prašome naudoti [[MediaWiki:Number_of_watching_users_pageview]] puslapį, kad apibrėžtumėte įėjimo punktą į šį specialųjį puslapį.',
+);
+
+/** Macedonian (Македонски)
+ * @author Brest
+ */
+$messages['mk'] = array(
+	'whoiswatching' => 'Кој набљудува вики страница',
+	'whoiswatching-desc' => 'Дава листа на корисници кои набљудуваат некоја вики страница',
+	'specialwhoiswatchingthepage' => 'Кој набљудува %s',
+	'specialwhoiswatchingusage' => 'Оваа специјална страница не може да се користи самостојно.
+За дефинирање на влезна точка кон оваа специјална страница, Ве молиме користете се со оваа страница [[MediaWiki:Number_of_watching_users_pageview|тука]].',
+	'specialwhoiswatchingaddusers' => 'Додади корисници за набљудување на страницата',
+	'specialwhoiswatchingaddbtn' => 'Додади избрани корисници',
 );
 
 /** Malayalam (മലയാളം)

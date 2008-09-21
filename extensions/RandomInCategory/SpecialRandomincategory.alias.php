@@ -25,8 +25,18 @@ $aliases['fi'] = array(
 	'RandomInCategory' => array( 'Satunnainen sivu luokasta' ),
 );
 
+/** Nedersaksisch (Nedersaksisch) */
+$aliases['nds-nl'] = array(
+	'RandomInCategory' => array( 'Willekeurig_in_kattegerie' ),
+);
+
 /** Dutch (Nederlands) */
 $aliases['nl'] = array(
 	'RandomInCategory' => array( 'WillekeurigeUitCategorie' ),
+);
+
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
+$aliases['no'] = array(
+	'RandomInCategory' => array( 'Tilfeldig fra kategori' ),
 );
 

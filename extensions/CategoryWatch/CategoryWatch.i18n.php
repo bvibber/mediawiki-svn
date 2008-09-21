@@ -53,6 +53,7 @@ $messages['arz'] = array(
  * @author Yekrats
  */
 $messages['eo'] = array(
+	'categorywatch-emailsubject' => 'Aktiveco pri atentata kategorio "$1"',
 	'categorywatch-catmovein' => 'movis $1 en kategorion $2 de $3',
 	'categorywatch-catmoveout' => 'movis $1 el kategorio $2 en $3',
 	'categorywatch-catadd' => 'aldonis $1 al kategorio $2',
@@ -86,6 +87,19 @@ Esta mensaxe serve para notificarlle que en $3 o usuario $4 $5.',
 	'categorywatch-catmoveout' => 'moveu $1 desde a categoría $2 á $3',
 	'categorywatch-catadd' => 'engadiu $1 á categoría $2',
 	'categorywatch-catsub' => 'eliminou $1 da categoría $2',
+);
+
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
+$messages['hsb'] = array(
+	'categorywatch-desc' => 'Rozšěrja funkcionalitu wobkedźbowanki wo zdźělenje wo změnach čłonstwa wobkedźbowanych kategorijow',
+	'categorywatch-emailbody' => 'Witaj $1, sy tutu powěsć dóstał, dokelž wobkedźbuješ kategoriju "$2". Tuta powěsć ći zdźěli, zo při $3 wužiwar $4 $5.',
+	'categorywatch-emailsubject' => 'Aktiwita inkluziwnje wobkedźbowaneje kategorije "$1"',
+	'categorywatch-catmovein' => 'přesuny $1 do kategorije $2 z $3',
+	'categorywatch-catmoveout' => 'přesuny $1 z kategorije $2 do $3',
+	'categorywatch-catadd' => 'přida $1 kategoriji $2',
+	'categorywatch-catsub' => 'wotstroni $1 z kategorije $2',
 );
 
 /** Interlingua (Interlingua)

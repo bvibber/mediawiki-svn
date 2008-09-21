@@ -204,6 +204,7 @@ $messages['rtm'] = array(
  * @author Сай
  */
 $messages['mhr'] = array(
+	'voctrain_logout' => 'лекташ',
 	'voctrain_User_name' => 'Пайдаланышын лӱмжӧ',
 );
 
@@ -746,13 +747,14 @@ $messages['fi'] = array(
 
 /** French (Français)
  * @author Grondin
+ * @author McDutchie
  */
 $messages['fr'] = array(
 	'voctrain_Hello_World' => 'BONJOUR !',
 	'voctrain_Permission_Denied' => 'Permission refusée',
 	'voctrain_try_again_' => 'essayer à nouveau ?',
 	'voctrain_Action_unknown' => 'Action inconnue',
-	'voctrain_I_don_t_know_what_to_do_with_action_' => 'Je sais quoi faire avec « %action »',
+	'voctrain_I_don_t_know_what_to_do_with_action_' => 'Je ne sais quoi faire avec « %action »',
 	'voctrain_User_added' => 'Utilisateur ajouté',
 	'voctrain_Hello_username_welcome_to_the_omega_language_trainer' => 'Salut, %username, bienvenue à l’entrainement des langues sur omega',
 	'voctrain_continue' => 'continuer',
@@ -895,8 +897,35 @@ $messages['gl'] = array(
  * @author McDutchie
  */
 $messages['ia'] = array(
+	'voctrain_Hello_World' => 'SALUTE WIKI!',
+	'voctrain_Permission_Denied' => 'Permission refusate',
+	'voctrain_try_again_' => 'reprovar?',
+	'voctrain_Action_unknown' => 'Action incognite',
+	'voctrain_I_don_t_know_what_to_do_with_action_' => "Io non sape que facer con '%action'.",
+	'voctrain_User_added' => 'Usator addite',
+	'voctrain_Hello_username_welcome_to_the_omega_language_trainer' => 'Salute, %username, benvenite al trainator de lingas omega',
+	'voctrain_continue' => 'continuar',
+	'voctrain_hello_place' => 'salute a %place',
+	'voctrain_bye' => 'a revider',
+	'voctrain_Set_up_your_exercise' => 'Configurar tu exercitio',
+	'voctrain_Number_of_questions' => 'Numero de questiones',
+	'voctrain_Languages' => 'Linguas',
+	'voctrain_Please_specify_the_languages_you_want_to_test_in' => 'Per favor specifica le linguas que tu vole testar in',
+	'voctrain_eg_eng_for_English_deu_for_Deutch_German_' => '(p.ex. eng pro anglese, deu pro germano).',
+	'voctrain_Depending_on_your_test_set_some_combinations_might_work_better_than_others_' => 'Dependente del configuration de tu test, alcun combinationes pote functionar melio que alteres.',
+	'voctrain_Questions' => 'Questiones',
+	'voctrain_Answers' => 'Responsas',
+	'voctrain_start_exercise' => 'initiar exercitio',
+	'voctrain_collection' => 'collection',
+	'voctrain_ISO_639_3_format' => 'formato ISO-639-3',
+	'voctrain_There_are_questions_remaining_questions_remaining_out_of_a_total_of_questions_total_' => 'Il remane %questions_remaining questiones, ex un total de %questions_total.',
+	'voctrain_Definition' => 'Definition',
+	'voctrain_Dictionary_definition_to_help_you' => 'Definition del dictionario pro adjutar te',
+	'voctrain_Word' => 'Parola',
+	'voctrain_Please_type_your_answer_here' => 'Entra tu responsa hic',
+	'voctrain_submit_answer' => 'submitter responsa',
 	'voctrain_User_name' => 'Nomine de usator',
-	'voctrain_Login' => 'Aperir un session',
+	'voctrain_Login' => 'Aperir session',
 	'voctrain_Log_in' => 'Aperir un session',
 );
 

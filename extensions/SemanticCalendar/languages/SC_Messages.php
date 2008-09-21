@@ -218,6 +218,13 @@ $messages['km'] = array(
 	'sc_gotomonth' => 'ទៅកាន់ខែ',
 );
 
+/** Ripoarisch (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'sc_today' => 'Hück',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */

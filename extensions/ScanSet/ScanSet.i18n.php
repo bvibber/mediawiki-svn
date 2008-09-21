@@ -168,10 +168,16 @@ $messages['br'] = array(
 );
 
 /** Catalan (Català)
+ * @author Aleator
  * @author Paucabot
  */
 $messages['ca'] = array(
+	'scanset_unrecognised_index_format' => 'Error: Format de fitxer desconegut',
 	'scanset_opendir_error' => 'Error: No es pot obrir el directori $1',
+	'scanset_no_files' => 'Error: No hi ha fitxers al directori especificat',
+	'scanset_missing_index_file' => "Error: Fitxer d'índex $1 no trobat",
+	'scanset_index_file_error' => "Error: Error al format del fitxer d'índex a la línia $1",
+	'scanset_invalid_volume' => 'Error: volum invàlid',
 	'scanset_next' => 'Següent &gt;',
 	'scanset_prev' => '&lt; Anterior',
 );
@@ -236,6 +242,14 @@ $messages['eo'] = array(
 	'scanset_invalid_volume' => 'Error: Nevalida datumportilo',
 	'scanset_next' => 'Sekva &gt;',
 	'scanset_prev' => '&lt; Antaŭa',
+);
+
+/** Spanish (Español)
+ * @author Remember the dot
+ */
+$messages['es'] = array(
+	'scanset_unrecognised_index_format' => 'Error: Índice de formato desconocido',
+	'scanset_opendir_error' => 'Error: No se puede abrir el directorio $1',
 );
 
 /** Persian (فارسی)

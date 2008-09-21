@@ -192,6 +192,15 @@ $messages['lb'] = array(
 	'right-forcepreviewexempt' => "Späicheren ouni ''Kucken oni ze späicheren'' ze weisen erlaben",
 );
 
+/** Macedonian (Македонски)
+ * @author Brest
+ */
+$messages['mk'] = array(
+	'forcepreview' => 'Зачувај страница (прво прегледај)',
+	'forcepreview-desc' => 'Форсирај преглед за непривилегирани корисници',
+	'right-forcepreviewexempt' => 'Може да зачува измени без прегледување',
+);
+
 /** Malayalam (മലയാളം)
  * @author Shijualex
  */

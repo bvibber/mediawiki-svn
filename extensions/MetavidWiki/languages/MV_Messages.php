@@ -3737,6 +3737,7 @@ $messages['su'] = array(
 /** Swedish (Svenska)
  * @author Lejonel
  * @author M.M.S.
+ * @author Najami
  */
 $messages['sv'] = array(
 	'metavid' => 'Metavid-sida',
@@ -3858,7 +3859,7 @@ Hoppa till dataflödesvisning: $2',
 	'mv_advanced_edit' => 'Avancerad redigering',
 	'mv_basic_edit' => 'Enkel redigering',
 	'mv_remove_category' => 'Ta bort kategori',
-	'mv_existing_categories' => 'Existerande kategorier:',
+	'mv_existing_categories' => 'kategorier:',
 	'mv_add_category' => 'Lägg till en kategorisering',
 	'mv_basic_text_desc' => 'Textbeskrivning (valfri)',
 	'mv_viewnext' => 'Visa ($1)',

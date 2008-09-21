@@ -42,9 +42,21 @@ $aliases['lb'] = array(
 	'Disabledusers' => array( 'Desaktivéiert Benotzer' ),
 );
 
+/** Nedersaksisch (Nedersaksisch) */
+$aliases['nds-nl'] = array(
+	'PasswordReset' => array( 'Wachwoord_opniej_instellen' ),
+	'Disabledusers' => array( 'Uut-eschaokelde_gebrukers' ),
+);
+
 /** Dutch (Nederlands) */
 $aliases['nl'] = array(
 	'PasswordReset' => array( 'WachtwoordOpnieuwInstellen' ),
 	'Disabledusers' => array( 'UitgeschakeldeGebruikers' ),
+);
+
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
+$aliases['no'] = array(
+	'PasswordReset' => array( 'Nullstill passord' ),
+	'Disabledusers' => array( 'Inaktive kontoer' ),
 );
 

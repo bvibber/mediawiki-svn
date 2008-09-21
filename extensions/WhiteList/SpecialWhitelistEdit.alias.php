@@ -27,6 +27,17 @@ $aliases['arz'] = array(
 	'WhitelistEdit' => array( 'تعديل_القائمة_البيضاء' ),
 );
 
+/** Macedonian (Македонски) */
+$aliases['mk'] = array(
+	'WhiteList' => array( 'БелаЛиста' ),
+);
+
+/** Nedersaksisch (Nedersaksisch) */
+$aliases['nds-nl'] = array(
+	'WhiteList' => array( 'Witte_lieste' ),
+	'WhitelistEdit' => array( 'Witte_lieste_bewarken' ),
+);
+
 /** Dutch (Nederlands) */
 $aliases['nl'] = array(
 	'WhiteList' => array( 'WitteLijst' ),

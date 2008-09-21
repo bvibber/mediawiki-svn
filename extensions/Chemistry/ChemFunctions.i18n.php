@@ -716,6 +716,8 @@ $messages['sr-el'] = array(
  */
 $messages['stq'] = array(
 	'chemicalsources' => 'Chemiske Wällen',
+	'chemicalsource-desc' => 'Stoalt dät <nowiki><chemform></nowiki>-Tag foar chemiske Formeln kloor',
+	'chemFunctions_ListPage' => 'Chemiske Wällen',
 	'chemFunctions_DataList' => 'Ätterfoulgjend fint me Links tou Sieden, do der eventuell Informatione uur chemiske Substanzen ounbjoode, ätter do Jie säike::<br /><br />
 * <a href="http://webbook.nist.gov/cgi/cbook.cgi?ID=$MIXCASNameFormula&amp;Units=SI">Ferbiendenge $MIXCASNameFormula ap NIST</a><br />
 * <a href="http://ptcl.chem.ox.ac.uk/MSDS/">MSDS an ju Oxford University (UK) (nit truchsäikboar)</a><br />',

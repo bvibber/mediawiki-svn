@@ -388,10 +388,12 @@ $messages['eo'] = array(
 /** Spanish (Español)
  * @author Icvav
  * @author Muro de Aguas
+ * @author Remember the dot
  * @author Spacebirdy
  */
 $messages['es'] = array(
 	'expandtemplates' => 'Sustituidor de plantillas',
+	'expand_templates_title' => 'Título para contexto, para {{PAGENAME}} etc.:',
 	'expand_templates_input' => 'Texto a expandir:',
 	'expand_templates_output' => 'Resultado:',
 	'expand_templates_xml_output' => 'Salida XML',

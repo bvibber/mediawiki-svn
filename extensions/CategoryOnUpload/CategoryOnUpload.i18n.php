@@ -149,6 +149,7 @@ $messages['he'] = array(
  * @author Michawiki
  */
 $messages['hsb'] = array(
+	'categoryonupload-desc' => 'Namołwja wužiwarja při nahraću dataje kategoriju wubrać',
 	'categoryonupload-label' => 'Kategorija:',
 );
 

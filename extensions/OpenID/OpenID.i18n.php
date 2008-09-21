@@ -486,6 +486,7 @@ $messages['eo'] = array(
 	'openidsuccess' => 'Atestado sukcesis.',
 	'openidsuccesstext' => 'Atestado de la OpenID URL-o sukcesis.',
 	'openidusernameprefix' => 'OpenID-Uzanto',
+	'openidserverlogininstructions' => 'Enigu vian pasvorton suben por ensaluti al $3 kiel uzanto $2 (uzulpaĝo $1).',
 	'openidtrustinstructions' => 'Kontroli se vi volas kunpermesigi datenojn kun $1.',
 	'openidallowtrust' => 'Rajtigi $1 fidi ĉi tiun uzulan konton.',
 	'openidnopolicy' => 'Retejo ne specifigis regularon pri privateco.',
@@ -516,6 +517,7 @@ Se vi volas utiligi OpenID por ensaluti estontece, vi povas [[Special:OpenIDConv
 	'tog-hideopenid' => 'Kaŝi viajn identigon <a href="http://openid.net/">OpenID</a> en via uzula paĝo, se vi ensalutas kun OpenID.',
 	'openidnousername' => 'Neniu salutnomo estis donita.',
 	'openidbadusername' => 'Fuŝa salutnomo donita.',
+	'openidclientonlytext' => 'Vi ne povas uzi kontojn de ĉi tiu vikio kiel OpenID-ojn en alia retejo.',
 	'openidloginlabel' => 'URL-o OpenID',
 );
 
@@ -665,6 +667,13 @@ Hai moitos [http://wiki.openid.net/Public_OpenID_providers proveedores públicos
 ; [http://openid.yahoo.com/ Yahoo!] : Se ten unha conta no Yahoo!, pode acceder ao sistema deste sitio tecleando o seu OpenID de Yahoo! proporcionado na caixa de enriba. Os URLs do Yahoo! para os OpenID son da seguinte maneira: ''<nowiki>https://me.yahoo.com/yourusername</nowiki>''.
 ; [http://dev.aol.com/aol-and-63-million-openids AOL] : Se ten unha conta con [http://www.aol.com/ AOL], como unha conta [http://www.aim.com/ AIM], pode acceder ao sistema de {{SITENAME}} tecleando o seu OpenID proporcionado polo AOL na caixa de enriba. Os URLs do AOL para os OpenID son da seguinte maneira: ''<nowiki>http://openid.aol.com/yourusername</nowiki>''. O seu nome de usuario debe estar en letras minúsculas e escrito sen espazos.
 ; [http://bloggerindraft.blogspot.com/2008/01/new-feature-blogger-as-openid-provicoder.html Blogger], [http://faq.wordpress.com/2007/03/06/what-is-openid/ Wordpress.com], [http://www.livejournal.com/openid/about.bml LiveJournal], [http://bradfitz.vox.com/library/post/openid-for-vox.html Vox] : Se ten un blogue nalgún destes servizos, teclee o URL do seu blogue na caixa de enriba. Por exemplo, ''<nowiki>http://yourusername.blogspot.com/</nowiki>'', ''<nowiki>http://yourusername.wordpress.com/</nowiki>'', ''<nowiki>http://yourusername.livejournal.com/</nowiki>'', ou ''<nowiki>http://yourusername.vox.com/</nowiki>''.",
+);
+
+/** Ancient Greek (Ἀρχαία ἑλληνικὴ)
+ * @author Crazymadlover
+ */
+$messages['grc'] = array(
+	'openidlanguage' => 'Γλῶττα',
 );
 
 /** Manx (Gaelg)

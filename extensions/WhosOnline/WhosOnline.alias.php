@@ -39,8 +39,18 @@ $aliases['lb'] = array(
 	'WhosOnline' => array( 'Wien ass online' ),
 );
 
+/** Nedersaksisch (Nedersaksisch) */
+$aliases['nds-nl'] = array(
+	'WhosOnline' => array( 'Wee_is_anwezig' ),
+);
+
 /** Dutch (Nederlands) */
 $aliases['nl'] = array(
 	'WhosOnline' => array( 'WieIsErOnline' ),
+);
+
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
+$aliases['no'] = array(
+	'WhosOnline' => array( 'Hvem er pålogget' ),
 );
 

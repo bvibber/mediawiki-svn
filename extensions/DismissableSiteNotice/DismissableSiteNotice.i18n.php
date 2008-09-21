@@ -570,6 +570,13 @@ $messages['sdc'] = array(
 	'sitenotice_close' => 'cua',
 );
 
+/** Sinhala (සිංහල)
+ * @author නන්දිමිතුරු
+ */
+$messages['si'] = array(
+	'sitenotice_close' => 'නිෂ්ප්‍රභ කරන්න',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

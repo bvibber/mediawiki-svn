@@ -37,8 +37,18 @@ $aliases['lb'] = array(
 	'ImportFreeImages' => array( 'Fräi Biller importéieren' ),
 );
 
+/** Nedersaksisch (Nedersaksisch) */
+$aliases['nds-nl'] = array(
+	'ImportFreeImages' => array( 'Vrieje_ofbeeldingen_invoeren' ),
+);
+
 /** Dutch (Nederlands) */
 $aliases['nl'] = array(
 	'ImportFreeImages' => array( 'VrijeAfbeeldingenImporteren' ),
+);
+
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
+$aliases['no'] = array(
+	'ImportFreeImages' => array( 'Importer frie bilder' ),
 );
 

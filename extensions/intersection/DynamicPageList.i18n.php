@@ -156,6 +156,16 @@ $messages['eo'] = array(
 	'intersection_noincludecats' => 'Error: Vi devas inkluzivi almenaŭ unu kategorion, aŭ specifigu nomspacon!',
 );
 
+/** Spanish (Español)
+ * @author Aleator
+ * @author Remember the dot
+ */
+$messages['es'] = array(
+	'intersection_toomanycats' => '¡Error: Demasiadas categorías!',
+	'intersection_noresults' => 'Error: ¡Sin resultados!',
+	'intersection_noincludecats' => 'Error: ¡Necesita incluir al menos una categoría, o especificar un namespace!',
+);
+
 /** Persian (فارسی)
  * @author Huji
  */

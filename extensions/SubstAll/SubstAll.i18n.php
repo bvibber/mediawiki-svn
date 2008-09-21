@@ -66,6 +66,13 @@ $messages['gl'] = array(
 	'substall-desc' => 'Crea unha etiqueta <nowiki><substall></nowiki> que expande todos os modelos en sintaxe wiki',
 );
 
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'substall-desc' => 'Crea un etiquetta <nowiki><substall></nowiki> que face expander tote le patronos in syntaxe wiki',
+);
+
 /** Indonesian (Bahasa Indonesia)
  * @author Rex
  */

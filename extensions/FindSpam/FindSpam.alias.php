@@ -32,8 +32,18 @@ $aliases['lb'] = array(
 	'FindSpam' => array( 'Spam fannen' ),
 );
 
+/** Nedersaksisch (Nedersaksisch) */
+$aliases['nds-nl'] = array(
+	'FindSpam' => array( 'Spam_vienen' ),
+);
+
 /** Dutch (Nederlands) */
 $aliases['nl'] = array(
 	'FindSpam' => array( 'SpamVinden' ),
+);
+
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
+$aliases['no'] = array(
+	'FindSpam' => array( 'Finn spam' ),
 );
 

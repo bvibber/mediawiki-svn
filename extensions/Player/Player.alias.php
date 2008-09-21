@@ -27,8 +27,18 @@ $aliases['arz'] = array(
 	'Player' => array( 'لاعب' ),
 );
 
+/** Nedersaksisch (Nedersaksisch) */
+$aliases['nds-nl'] = array(
+	'Player' => array( 'Mediaspeuler' ),
+);
+
 /** Dutch (Nederlands) */
 $aliases['nl'] = array(
 	'Player' => array( 'Mediaspeler' ),
+);
+
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
+$aliases['no'] = array(
+	'Player' => array( 'Medieavspiller' ),
 );
 

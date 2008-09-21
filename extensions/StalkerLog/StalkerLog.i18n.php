@@ -109,6 +109,17 @@ $messages['he'] = array(
 	'stalkerlog-log-text' => 'זהו יומן הכניסות והיציאות מהחשבון.',
 );
 
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'stalkerlog-desc' => 'Adde [[Special:Log/stalkerlog|un registro]] de apertura e clausura de sessiones de usatores',
+	'stalkerlog-log-login' => 'aperiva un session.',
+	'stalkerlog-log-logout' => 'claudeva le session.',
+	'stalkerlog-log-type' => 'Registro de identification de usatores',
+	'stalkerlog-log-text' => 'Isto es un registro de apertura e clausura del sessiones de usatores.',
+);
+
 /** Italian (Italiano)
  * @author Melos
  */

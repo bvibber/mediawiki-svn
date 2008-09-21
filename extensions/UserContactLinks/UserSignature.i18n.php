@@ -117,6 +117,14 @@ $messages['hsb'] = array(
 	'usercontactlink-desc' => 'Skići móžnosć jednorje a konsistentnje druhe wužiwarske mjena z pomocu syntaksy ^^^wužiwar^^^ přidać',
 );
 
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'usercontactlink-baduser' => 'nomine de usator incorrecte',
+	'usercontactlink-desc' => 'Permitte adder simple- e consistentemente altere nomines de usator con le syntaxe ^^^user^^^',
+);
+
 /** Javanese (Basa Jawa)
  * @author Meursault2004
  */

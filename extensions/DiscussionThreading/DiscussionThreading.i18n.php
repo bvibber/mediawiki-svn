@@ -58,6 +58,8 @@ $messages['de'] = array(
  * @author Yekrats
  */
 $messages['eo'] = array(
+	'discussionthreading-replysection' => 'respondo',
+	'discussionthreading-replysectionhint' => 'Respondi al ĉi tiu afiŝaĵo',
 	'discussionthreading-threadnewsection' => 'nova',
 	'discussionthreading-threadnewsectionhint' => 'Fari novan fadenon',
 );
@@ -172,6 +174,20 @@ $messages['sk'] = array(
 	'discussionthreading-replysectionhint' => 'Odpovedať na tento príspevok',
 	'discussionthreading-threadnewsection' => 'nové',
 	'discussionthreading-threadnewsectionhint' => 'Začať nové vlákno',
+);
+
+/** Swedish (Svenska)
+ * @author Najami
+ */
+$messages['sv'] = array(
+	'discussionthreading-threadnewsection' => 'ny',
+);
+
+/** Turkish (Türkçe)
+ * @author Mach
+ */
+$messages['tr'] = array(
+	'discussionthreading-threadnewsection' => 'yeni',
 );
 
 /** Vietnamese (Tiếng Việt)

@@ -534,12 +534,13 @@ A continuación amuésase la versión encriptada resultante. Va ser [[Special:Bo
 [[Special:Boardvote/entry|Volver]]',
 	'boardvote_invalidentered' => "<p><strong>Error</strong>: la preferencia de candidatu ha ser espresada namái per aciu d'un númberu enteru positivu (1, 2, 3, ....), o bien dexalo vacio.</p>",
 	'boardvote_nosession' => "Nun se pudo determinar el to númeru d'identificación d'usuariu de Wikimedia.
-Por favor, identifícate na wiki onde tas rexistráu y vete a <nowiki>[[Special:Boardvote]]</nowiki>.
-Tienes qu'usar una cuenta con a lo menos $1 contribuciones enantes de $2, y tener feches a lo menos $3 contribuciones entre $4 y $5.",
+Por favor, identifícate na wiki onde tas rexistráu pa votar y vete a <nowiki>[[Special:Boardvote]]</nowiki>.
+Tienes qu'usar una cuenta con a lo menos $1 {{PLURAL:$1|contribución|contribuciones}} enantes de $2, y tener feches a lo menos $3
+{{PLURAL:$3|contribución|contribuciones}} ente $4 y $5.",
 	'boardvote_notloggedin' => "Nun tas identificáu.
-Pa votar tienes qu'usar una cuenta con a lo menos $1 contribuciones enantes de $2, y teenr feches a lo menos $3 contribuciones entre $4 y $5.",
+Pa votar tienes qu'usar una cuenta con a lo menos $1 {{PLURAL:$1|contribución|contribuciones}} enantes de $2, y teenr feches a lo menos $3 {{PLURAL:$3|contribución|contribuciones}} entre $4 y $5.",
 	'boardvote_notqualified' => 'Nun cumples criterios pa votar nesta eleición.
-Necesites tener feches a lo menos $1 contribuciones enantes de $2, y tener feches a lo menos $3 contribuciones ente $4 y $5.',
+Necesites tener feches a lo menos $1 {{PLURAL:$1|contribución|contribuciones}} enantes de $2, y tener feches a lo menos $3 {{PLURAL:$3|contribución|contribuciones}} ente $4 y $5.',
 	'boardvote_novotes' => 'Naide votó tovía.',
 	'boardvote_time' => 'Hora',
 	'boardvote_user' => 'Usuariu',
@@ -1523,11 +1524,11 @@ La rezultanta ĉifrita versio sekvas. Ĝi estos [[Special:Boardvote/dump|publike
 	'boardvote_invalidentered' => '<p><strong>Eraro</strong>: Prefero de kandidato devas esti esprimita nur per pozitiva entjero (1, 2, 3, ....), aŭ lasite malplena.</p>',
 	'boardvote_nosession' => 'Via uzanto-identigo de WikiMedia ne estas determinebla.
 Bonvolu ensaluti la Vikion kie vi estas registrita kaj iri al <nowiki>[[Special:Boardvote]]</nowiki>.
-Vi devas uzi konton kun almenaŭ $1 kontribuoj antaŭ $2, kaj nepre esti farinta $3 kontribuojn inter $4 kaj $5.',
-	'boardvote_notloggedin' => 'Vi ne estas ensalutinta.
-Voĉdonu nepre el uzanto-konto kun almenaŭ $1 kontribuoj antaŭ $2, kie vi faris almenaŭ $3 kontribuojn inter $4 kaj $5.',
+Vi devas uzi konton kun almenaŭ $1 {{PLURAL:$1|kontribuo|kontribuoj}} antaŭ $2, kaj nepre esti farinta $3 {{PLURAL:$3|kontribuon|kontribuojn}} inter $4 kaj $5.',
+	'boardvote_notloggedin' => 'Vi ne estas ensalutita.
+Voĉdoni, nepre el uzanto-konto kun almenaŭ $1 {{PLURAL:$1|kontribuo|kontribuoj}} antaŭ $2, kie vi faris almenaŭ $3 {{PLURAL:$3|kontribuon|kontribuojn}} inter $4 kaj $5.',
 	'boardvote_notqualified' => 'Vi ne rajtas voĉdoni en ĉi tiu baloto.
-Vi nepre estu farinta almenaŭ $1 kontribuojn antaŭ $2, kaj almenaŭ $3 kontribuojn inter $4 kaj $5.',
+Vi nepre estu farinta almenaŭ $1 {{PLURAL:$1|kontribuon|kontribuojn}} antaŭ $2, kaj almenaŭ $3 {{PLURAL:$3|kontribuon|kontribuojn}} inter $4 kaj $5.',
 	'boardvote_novotes' => 'Neniu jam estas voĉdoninta.',
 	'boardvote_time' => 'Tempo',
 	'boardvote_user' => 'Uzanto',
@@ -1567,6 +1568,7 @@ Sekureca averto pri nevalida atesto eble estos montrata.',
  * @author Bengoa
  * @author Dalton2
  * @author Lin linao
+ * @author Remember the dot
  * @author Titoxd
  */
 $messages['es'] = array(
@@ -1618,6 +1620,7 @@ Necesitas tener $1 ediciones antes del $2, y haber hecho por lo menos $3 edicion
 	'boardvote_listintro' => '<p>Esta en una lista con todos los votos que hasta ahora han sido registrados.
 $1 para los datos codificados.</p>',
 	'boardvote_dumplink' => 'Haz click aquí',
+	'boardvote_submit' => 'Aceptar',
 	'boardvote_needadmin' => 'Sólo los administradores de la elección pueden realizar esta operación.',
 	'boardvote_sitenotice' => '<a href="{{localurle:Special:Boardvote/vote}}">Elecciones del Consejo de Administración de Wikimedia</a>:
 Votación abierta hasta el 22 de junio',
@@ -1879,6 +1882,7 @@ $messages['fo'] = array(
  * @author Lejonel
  * @author Sherbrooke
  * @author Verdy p
+ * @author Zetud
  */
 $messages['fr'] = array(
 	'boardvote' => 'Élection au conseil d’administration de la Wikimedia Foundation',
@@ -1919,12 +1923,12 @@ Suit la version cryptée ci-dessous, qui sera affichée publiquement sur [[Speci
 
 [[Special:Boardvote/entry|Retour]]',
 	'boardvote_invalidentered' => '<p><strong>Erreur :</strong> la préférence pour un candidat doit être exprimée uniquement par un nombre entier positif (1, 2, 3, etc.) ou bien être laissée vide.</p>',
-	'boardvote_nosession' => 'Impossible de déterminer votre identifiant Wikimedia.<br />
-Veuillez vous rendre sur votre wiki d’origine, vous enregistrer, puis vous rendre sur la page <nowiki>[[Special:Boardvote]]</nowiki>.<br />
+	'boardvote_nosession' => 'Votre identifiant Wikimedia ne peut être déterminé.<br />
+Veuillez vous rendre sur votre wiki d’origine où vous êtes habilité pour voter, puis rendez-vous sur la page <nowiki>[[Special:Boardvote]]</nowiki>.<br />
 Vous devez posséder un compte avec au moins $1 {{PLURAL:$1|contribution effectuée|contributions effectuées}} avant le $2 et au moins $3 {{PLURAL:$3|contribution effectuée|contributions effectuées}} entre le $4 et le $5.',
-	'boardvote_notloggedin' => 'Vous n’êtes actuellement pas authentifié.
+	'boardvote_notloggedin' => 'Vous n’êtes pas actuellement connecté.
 Pour voter, vous devez utiliser un compte avec au moins $1 {{PLURAL:$1|contribution effectuée|contributions effectuées}} avant le $2 et au moins $3 contribution{{PLURAL:$3||s}} entre le $4 et le $5.',
-	'boardvote_notqualified' => 'Désolé, mais vous ne répondez pas actuellement aux conditions requises pour voter lors de ce scrutin.
+	'boardvote_notqualified' => 'Vous ne répondez pas actuellement aux conditions requises pour voter lors de ce scrutin.
 Il vous est nécessaire d’avoir au moins $1 {{PLURAL:$1|contribution effectuée|contributions effectuées}} avant le $2 et au moins $3 {{PLURAL:$3|contribution effectuée|contributions effectuées}} entre le $4 et le $5.',
 	'boardvote_novotes' => 'Personne n’a encore voté.',
 	'boardvote_time' => 'Heure',
@@ -2492,9 +2496,11 @@ Slěduje nastata zaklučowana wersija. Budźe so na [[Special:Boardvote/dump|zja
 
 [[Special:Boardvote/entry|Wróćo]]',
 	'boardvote_invalidentered' => '<p><strong>Zmylk</strong> Porjad kandidatow dyrbi so přez pozitiwnu cyłu ličbu zwuraznić (1, 2, 3, ...) abo wostaj kašćiki prózdne.</p>',
-	'boardvote_nosession' => 'Twój wužiwarski ID za Wikimediju njehodźi so zwěsćić. Prošu přizjew so w tym wikiju, w kotrymž sy za wólbu dopušćeny a dźi tam k <nowiki>[[Special:Boardvote]]</nowiki>. Dyrbiš wužiwarske konto ze znajmjeńša $1 {{PLURAL:$1|přinoškom|přinoškomaj|přinoškami|přinoškami}} před $2 wužiwać a znajmjeńša $3 {{PLURAL:$3|přinošk|přinoškaj|přinoški|přinoškow}} mjez $4 a $5 dodać.',
-	'boardvote_notloggedin' => 'Njejsy so přizjewił. Zo by móhł hłosować, dyrbiš wužiwarske konto ze znajmjeńša $1 {{PLURAL:$1|přinoškom|přinoškomaj|přinoškami|přinoškami}} před $2 wužiwać a znajmjeńša $3 {{PLURAL:$3|přinošk|přinoškaj|přinoški|přinoškow}} mjez $4 a $5 dodać.',
-	'boardvote_notqualified' => 'Njejsy woprawnjeny so na tutej wólbje wobdźělić. Dyrbiš znajmjeńša $1 {{PLURAL:$1|změnu|změnje|změny|změnow}} před $2 činić a znajmjeńša $3 {{PLURAL:$3|změnu|změnje|změny|změnow}} mjez $4 a $5.',
+	'boardvote_nosession' => 'Twój wužiwarski ID za Wikimediju njehodźi so zwěsćić. Prošu přizjew so w tym wikiju, w kotrymž sy za wólbu dopušćeny a dźi tam k <nowiki>[[Special:Boardvote]]</nowiki>. 
+Dyrbiš wužiwarske konto ze znajmjeńša $1 {{PLURAL:$1|přinoškom|přinoškomaj|přinoškami|přinoškami}} před $2 wužiwać a znajmjeńša $3 {{PLURAL:$3|přinošk|přinoškaj|přinoški|přinoškow}} mjez $4 a $5 dodać.',
+	'boardvote_notloggedin' => 'Njejsy so přizjewił.
+Zo by móhł hłosować, dyrbiš wužiwarske konto ze znajmjeńša $1 {{PLURAL:$1|přinoškom|přinoškomaj|přinoškami|přinoškami}} před $2 wužiwać a znajmjeńša $3 {{PLURAL:$3|přinošk|přinoškaj|přinoški|přinoškow}} mjez $4 a $5 dodać.',
+	'boardvote_notqualified' => 'Njejsy woprawnjeny so na tutej wólbje wobdźělić. Dyrbiš znajmjeńša $1 {{PLURAL:$1|přinošk|přinoškaj|přinoški|přinoškow}} před $2 dodać a znajmjeńša $3 {{PLURAL:$3|přinošk|přinoškaj|přinoški|přinoškow}} mjez $4 a $5 dodać.',
 	'boardvote_novotes' => 'Dotal nichtó njeje hłosował.',
 	'boardvote_time' => 'Čas',
 	'boardvote_user' => 'Wužiwar',
@@ -3420,6 +3426,7 @@ The resulting encrypted version follows. It will be displayed publicly on [[Spec
 );
 
 /** Korean (한국어)
+ * @author Albamhandae
  * @author Ficell
  * @author Kwj2772
  */
@@ -3429,6 +3436,7 @@ $messages['ko'] = array(
 	'boardvote_entry' => '* [[Special:Boardvote/vote|투표]]
 * [[Special:Boardvote/list|투표한 날짜의 목록]]
 * [[Special:Boardvote/dump|암호화된 선거 기록의 덤프]]',
+	'grouppage-boardvote' => '{{ns:project}}:보드보트',
 	'boardvote_welcome' => "'''$1'''님 환영합니다!",
 	'boardvote_redirecting' => '보안 및 투명성을 향상시키기 위해, 투표는 독립적으로 관리되는 외부 서버에서 이루어집니다. 20초를 기다리시면 이 외부 서버로 자동으로 연결됩니다. 지금 바로 가시려면 [$1 여기를 누르세요]. 서명되지 않은 인증서에 관한 보안 경고가 나타날 수 있습니다.',
 	'right-boardvote' => '선거 관리',
@@ -3513,19 +3521,18 @@ dann jangk doh noh <nowiki>[[Special:Boardvote]]</nowiki>.
 
 För affshtemme ze dörrəve, moß de aanjemeldt un enjelog sinn,
 un Do moßß unger Dingem Metmmacher-Naam
-füür_em $2 minnßtenß $1 Bëijdrääsh,
-un zwesche em $4 un em $5 winnishßdenß $3 Bëijdrääsh
+füür_em $2 {{PLURAL:$1|minnßtenß eine Bëijdrach|minnßtenß $1 Bëijdrääsh|jaa keine Bëijdraach}},
+un zwesche em $4 un em $5 {{PLURAL:$3|winnishßdenß eine Bëijdraach|winnishßdenß $3 Bëijdrääsh|och keine Bëijdraach}}
 jemaat hann.',
 	'boardvote_notloggedin' => 'Do beß nit aanjemälldt.
 För affshtemme ze dörrəve, moß de aanjemelldt sinn,
 un Do moßß  unger Dingem Metmmacher-Naam
-füür_em $2 minnßtenß $1 Bëijdrääsh,
-un zwesche em $4 un em $5 winnishßdenß $3 Bëijdrääsh
-jemaat hann.',
+füür_em $2 {{PLURAL:$1|minnßtenß eine Bëijdrach|minnßtenß $1 Bëijdrääsh|jaa keine Bëijdrach}},
+un zwesche em $4 un em $5 {{PLURAL:$3|winnishßdenß eine Bëijdrach|winnishßdenß $3 Bëijdrääsh|och keine Bëijdrach}} jemaat hann.',
 	'boardvote_notqualified' => "'''Schaadt.'''
 Ding beßheerijje Bëijdrääsh füür_em $2 sin_nit jenooch.
-Mer moßß winnishßtenß $1 Bëijdrääsh füür dämm Shtėshdaach jeschrevve hann,
-un zwesche em $4 un em $5 winnishßdenß $3 Bëijdrääsh jemaat hann,
+Mer moßß {{PLURAL:$1|winnishßtenß eine Bëijdrach|winnishßtenß $1 Bëijdrääsh|jaa keine Bëijdrach}} füür dämm Shtėshdaach jeschrevve hann,
+un zwesche em $4 un em $5 {{PLURAL:$3|winnishßdenß eine Bëijdrach|winnishßdenß $3 Bëijdrääsh|och keine Bëijdrach}} jemaat hann,
 iih dat mer bëijem Affshtemme hee zohjelooße eß.
 Beß nit kott.
 Bëijm nääkße Mool klabb_et beshtemmp.",
@@ -4512,6 +4519,7 @@ $messages['pdt'] = array(
 
 /** Polish (Polski)
  * @author Derbeth
+ * @author Herr Kriss
  * @author Leinad
  * @author Saper
  * @author Sp5uhe
@@ -4531,7 +4539,7 @@ Będzie również decydować o tym, w jaki sposób zbierać pieniądze i na co j
 Każdy z kandydatów jest szanowanym użytkownikiem, który poświęcił swój czas i wysiłki dla rozwijania projektów, tak by dobrze służyły wolnemu rozpowszechnianiu ludzkiej wiedzy.</p>
 
 <p>Zagłosuj na kandydatów zgodnie ze swoimi przekonaniami, poprzez wpisanie liczby (1 = faworyt, 2 = drugi kandydat, ...)
-Możesz wystawić tą samą notę więcej niż jednemu kandydatowi, możesz również pozostawić kandydata bez oceny.
+Możesz wystawić tę samą notę więcej niż jednemu kandydatowi, możesz również pozostawić kandydata bez oceny.
 Interpretacja głosu będzie taka, że preferujesz każdego z tych, na których oddałeś głos, bardziej niż tych, którym oceny nie wystawiłeś oraz że wszyscy kandydaci bez oceny są Ci obojętni.</p>
 
 <p>Zwycięzca wyborów zostanie określony na podstawie obliczeń wykonanych metodą Schulze\'a. Więcej informacji odnajdziesz na oficjalnej stronie wyborów.</p>
@@ -4984,14 +4992,21 @@ $messages['sah'] = array(
 	'boardvote_entry' => '* [[Special:Boardvote/vote|Куоластыырга]]
 * [[Special:Boardvote/list|Куоластаабыттар испииһэктэрэ]]
 * [[Special:Boardvote/dump|Куоластааһын хаамыыта (ким туохха куоластаабыта көрдөрүллүбэт)]]',
-	'boardvote_intro' => '<p>«Викимедиа» пуондатын Сүбэтин (Совет поверенных, Wikimedia Board of Trustees) быыбарыгар нөрүөн нөргүй! Мы голосуем с целью избрать двух представителей сообществ участников различных проектов Викимедиа. Кинилэр биһиэхэ Викимедиа бырайыактарын кэскиллээх сайдыытын быһаарарга көмөлөһүөхтэрэ уонна <em>эһиги</em> иннигитин Сүбэҕэ көмүскүөхтэрэ. Кинилэр үбү булууну уонна үбү хайдах туһанар туһунан боппуруостары быһаарсыахтара.</p>
+	'boardvote_intro' => '<p>«Викимедиа» пуондатын Сүбэтин (Совет поверенных, Wikimedia Board of Trustees) быыбарыгар нөрүөн нөргүй! 
+Викимедиа бырайыактарыттан икки бэрэстэбиитэли талабыт. Кинилэр Викимедиа бырайыактарын кэскилин быһаарарга көмөлөһүөхтэрэ уонна <em>эһиги</em> кыһалҕаҕытын Сүбэҕэ көмүскүөхтэрэ. Сүбэ үбү булууну уонна үбү хайдах туһанары быһаарыаҕа.</p>
 
-<p>Бастаан кандидааттар этиилэрин уонна ыйытыыга хоруйдарын ааҕан баран куоластааҥ. Кандидааттар бары — бар дьоҥҥо билиини булар уонна биэрэр соруктаах биһиги бырайыактарбытын тупсарыыга элбэх сыраларын биэрбит ытыктанар дьон.</p>
+<p>Бастаан кандидааттар этиилэрин уонна ыйытыыга хоруйдарын ааҕан баран куоластааҥ. 
+Кандидааттар бары да — бар дьоҥҥо билиини булан биэрэр соруктаах биһиги бырайыактарбытын тупсарыыга элбэх сыраларын биэрбит, тус бэйэлэрин бириэмэлэрин кэрэйбэтэх, дириҥник ытыктанар дьон.</p>
 
-<p>Биир киһи хас баҕарар кандидаакка куоластыан сөп. Саамай элбэх куолаһы ылбыт кандидааттар кыайыыны ылыахтара. Куолас тэҥнэһэр түбэлтэтигэр иккистээн куоластааһын ыытыллыаҕа.</p>
+<p>Хас биирдии кандидаат таһыгар нүөмэр туруоран куоластыыгын (1 - саамай уһулуччулаах киһи, 2 - ол кэнниттэн кэлэр киһи, итинник бара тураҕын).
+Хас да киһиэхэ биир тэҥ нүөмэри туруорарыҥ эбэтэр олох да көтүтэриҥ бэйэҥ көҥүлүҥ. Ол аата сорох кандидааты тэҥҥэ көрөргүн биллэрэҕин уонна нүөмэрэ туруоруллубут кандидаат нүөмэрэ суох кандидааттааҕар ордугун биллэрэҕин.</p>
+
+<p>Кыайыылааҕы Шульц ньыматынан быһаарыллар. Сиһилии куоластааһын сирэйигэр ааҕыаххын сөп.</p>
 
 <p>Эбии маны көрүөххэ сөп:</p>
-<ul><li><a href="http://meta.wikimedia.org/wiki/Board_elections/2008" class="external">Быыбар туһунан элбэхтик бэриллэр ыйытыылар</a></li> <li><a href="http://meta.wikimedia.org/wiki/Board_elections/2008/Candidates/Ru" class="external">Кандидааттар</a></li></ul>',
+<ul><li><a href="http://meta.wikimedia.org/wiki/Board_elections/2008/ru" class="external">Сүбэҕэ быыбар 2008</a></li>
+<li><a href="http://meta.wikimedia.org/wiki/Board_elections/2008/Candidates/Ru" class="external">Кандидааттар</a></li>
+<li><a href="http://ru.wikipedia.org/wiki/Метод_Шульца" class="external">Метод Шульца</a> (<a href="http://ru.wikipedia.org/wiki/Парадокс_Кондорсе" class="external">Парадокс Кондорсе</a>)</li></ul>',
 	'boardvote_intro_change' => '<p>Эн куоластаабыккын. Ол гынан баран манна баар куорманы туһанан урукку быһаарыныыгын уларытыаххын сөп. Өйүөххүн баҕарар кандидааттаргын бэлиэтээ.</p>',
 	'boardvote_entered' => 'Махтал, эн куолаһыҥ ааҕылынна.
 
@@ -5010,7 +5025,8 @@ $messages['sah'] = array(
 [[Special:Boardvote/entry|Төнүн]]',
 	'boardvote_nosession' => 'Викимедияҕа кыттар идентификаторгын кыайан система булбата. Бука диэн көрдөбүллэргэ эппиэттиир ааккынан (атын Викимедиа бырайыактара да буоллун) киирэн баран маннык сирэйгэ киир <nowiki>[[Special:Boardvote]]</nowiki>. Көрдөбүллэр: $1 көннөрүүнү бу күҥҥэ $2 дылы оҥорбут буолуохтааххын, бастакы көннөрүүҥ баччаҕа $3 дылы оҥоһуллубут буолуохтаах.',
 	'boardvote_notloggedin' => 'Эн ааккын билиһиннэрбэтэххин. Куоластыаххын баҕарар буоллаххына бэлиэтэммит кыттааччы буолуохтааххын уонна $1 көннөрүүнү $2 дылы оҥорбут буолуохтааххын. Бастакы көннөрүүҥ баччаҕа $3 дылы оҥоһуллубут буолуохтаах.',
-	'boardvote_notqualified' => 'Эн бу аатынан бу күҥҥэ дылы $2 $3 көннөрүүнү эрэ оҥорбуккун. Куоластааһыҥҥа кыттарга $1 наада. Бастакы көннөрүүҥ $4 оҥоһуллубут, куоластааһыҥҥа баччаҕа $5 дылы бастакы көннөрүүнү оҥорбуттар кыттар кыахтаахтар.',
+	'boardvote_notqualified' => 'Бу быыбарга кыттар кыаҕыҥ суох. 
+Быыбарга кыттарга бу күҥҥэ дылы $2, бу аатынан $1 көннөрүүттэн аҕыйаҕа суоҕу оҥоруохтаах этиҥ, ол көннрүлэргиттэн $3 көннөрүүҥ баччатан $4 баччаҕа $5 дылы оҥоһуллуохтаах этэ.',
 	'boardvote_novotes' => 'Ким да куоластыы илик',
 	'boardvote_time' => 'Кэм',
 	'boardvote_user' => 'Кыттааччы',
@@ -5024,21 +5040,25 @@ $messages['sah'] = array(
 	'boardvote_strike' => 'Соторго',
 	'boardvote_unstrike' => 'Сотууну суох гынарга',
 	'boardvote_needadmin' => 'Бу дьайыыны быыбары тэрийээччилэр эрэ оҥорор кыахтаахтар.',
-	'boardvote_sitenotice' => '<a href="{{localurle:Special:Boardvote/vote}}">«Викимедиа» пуонда Сүбэтигэр быыбар </a>: Куоластааһын от ыйын 22 June дылы барар',
+	'boardvote_sitenotice' => '<a href="{{localurle:Special:Boardvote/vote}}">«Викимедиа» пуондатын Сүбэтигэр быыбар</a>: 
+Куоластааһын бэс ыйын 22 күнүгэр дылы барар',
 	'boardvote_notstarted' => 'Куоластааһын саҕалана илик',
-	'boardvote_closed' => 'Куоластааһын түмүктэннэ, [http://meta.wikimedia.org/wiki/Elections_for_the_Board_of_Trustees_of_the_Wikimedia_Foundation%2C_2008/En быыбар түмүгүн манна көр].',
+	'boardvote_closed' => 'Куоластааһын түмүктэннэ, [http://meta.wikimedia.org/wiki/Board_elections/2008/Results быыбар түмүгүн манна] көр.',
 	'boardvote_edits_many' => 'элбэх',
 	'group-boardvote' => 'Быыбар хамыыһыйатын чилиэннэрэ',
 	'group-boardvote-member' => 'Быыбар хамыыһыйатын чилиэнэ',
 	'grouppage-boardvote' => '{{ns:project}}:Быыбар хамыыһыйатын чилиэнэ',
 	'boardvote_blocked' => 'Бука диэн баалаама, эн бу биикигэ тугу эмит гынарыҥ бобуллубут. Онон сатаан куоластыыр кыаҕыҥ суох.',
+	'boardvote_bot' => 'Бука диэн баалаама, биики-бырайыакка руобат быһыытынан бэлиэтэнэ сылдьаҕын.
+Руобаттар куоластыыр бырааптара суох.',
 	'boardvote_welcome' => "Нөрүөн нөргүй, '''$1'''!",
-	'go_to_board_vote' => 'Викимедиа Сүбэтин быыбара - 2007',
+	'go_to_board_vote' => 'Викимедиа Сүбэтин быыбара - 2008',
 	'boardvote_redirecting' => 'Куттала суох буоллун уонна аһаҕас кэпсэтии таҕыстын диэн куоластааһыны атын сиэрбэргэ ыытабыт.
 
 Эн ол сиэрбэргэ 20 сөкүүндэннэн утаарыллыаҥ. [$1 Маны баттаатаххына], онно тута барыаҥ.
 
 Илии баттамматах сэртипикээт туһунан биллэрии тахсыан сөп.',
+	'right-boardvote' => 'Быыбары салайыы',
 );
 
 /** Slovak (Slovenčina)
@@ -5804,12 +5824,12 @@ $messages['uk'] = array(
 
 [[Special:Boardvote/entry|Назад]]',
 	'boardvote_invalidentered' => '<p><strong>Помилка:</strong> перевага кандидата повинна бути виражена додатним цілим числом (1, 2, 3, ....) або залишена порожньою.</p>',
-	'boardvote_nosession' => 'Неможливо визначити ваш ідентифікатор користувача Вікімедії.
-Будь ласка, ввійдіть до системи у проекті, де ваш обліковий запис задовольняє вимогам, і перейдіть на сторінку <nowiki>[[Special:Boardvote]]</nowiki>. Вимоги до облікового запису: $1 редагувань до $2, принаймні $3 редагувань між $4 і $5.',
+	'boardvote_nosession' => 'Неможливо визначити ваш ідентифікатор користувача Вікімедіа.
+Будь ласка, ввійдіть до системи у проекті, де ваш обліковий запис задовольняє вимогам, і перейдіть на сторінку <nowiki>[[Special:Boardvote]]</nowiki>. Вимоги до облікового запису: $1 {{PLURAL:$1|редагування|редагування|редагувань}} до $2, принаймні $3 {{PLURAL:$3|редагування|редагування|редагувань}} між $4 і $5.',
 	'boardvote_notloggedin' => 'Ви не ввійшли до системи.
-Щоб проголосувати, ви маєте бути зареєстрованим користувачем і зробити щонайменше $1 редагувань до $2, зробити щонайменше $3 редагувань між $4 і $5.',
+Щоб проголосувати, ви маєте бути зареєстрованим користувачем і зробити щонайменше $1 {{PLURAL:$1|редагування|редагування|редагувань}} до $2, зробити щонайменше $3 {{PLURAL:$3|редагування|редагування|редагувань}} між $4 і $5.',
 	'boardvote_notqualified' => 'У вас недостатньо редагувань для голосування на цих виборах.
-Ви повинні мати щонайменше $1 редагувань до $2 і принаймні $3 редагувань між $4 і $5.',
+Ви повинні мати щонайменше $1 {{PLURAL:$1|редагування|редагування|редагувань}} до $2 і принаймні $3 {{PLURAL:$3|редагування|редагування|редагувань}} між $4 і $5.',
 	'boardvote_novotes' => 'Ніхто ще не проголосував.',
 	'boardvote_time' => 'Час',
 	'boardvote_user' => 'Користувач',

@@ -42,6 +42,13 @@ $messages['arz'] = array(
 	'antibot-desc' => 'نظام بسيط ل السبام بوت والأحمال',
 );
 
+/** Asturian (Asturianu)
+ * @author Esbardu
+ */
+$messages['ast'] = array(
+	'antibot-desc' => "Entornu cenciellu pa les comprobaciones de bots de spam y l'activación de conteníos de descarga condicional automatizada.",
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  */
@@ -119,6 +126,13 @@ $messages['he'] = array(
  */
 $messages['hr'] = array(
 	'antibot-desc' => 'Jednostavan okvir za provjere spambotova i pokretanje identifikacije',
+);
+
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
+$messages['hsb'] = array(
+	'antibot-desc' => 'Jednory framework za kontrolu spambotow',
 );
 
 /** Interlingua (Interlingua)

@@ -410,3 +410,10 @@ Den här sidan kan också behöva din hjälp: $1.',
 	'tog-edit-similar' => 'Slå på förslag för liknande sidor',
 );
 
+/** Turkish (Türkçe)
+ * @author Mach
+ */
+$messages['tr'] = array(
+	'editsimilar-thankyou' => 'Katkılarınız için teşekkürler, $1!',
+);
+

@@ -261,6 +261,13 @@ $messages['ru'] = array(
 	'skinperpage-desc' => 'Добавляет тег <tt>&lt;skin&gt;</tt> для указания оформления страницы',
 );
 
+/** Yakut (Саха тыла)
+ * @author HalanTul
+ */
+$messages['sah'] = array(
+	'skinperpage-desc' => 'Сирэй тас көстүүтүн быһаарар <tt>&lt;skin&gt;</tt> тиэги эбэр',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

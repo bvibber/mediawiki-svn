@@ -300,6 +300,7 @@ $messages['ksh'] = array(
 	'onlinestatus-desc' => 'Erlaub en de Enstellunge för de Metmaacher e Krützje, öm op de Metmaachersigg ze zeije, of mer Online es odder nit.',
 	'onlinestatus-subtitle-offline' => 'Dä Metmaacher is em Momang nit doh',
 	'onlinestatus-subtitle-online' => 'Dä Metmaacher is jrad online',
+	'onlinestatus-tab' => 'Stattus',
 	'onlinestatus-toggles-desc' => 'Dinge Online-Stattus:',
 	'onlinestatus-toggles-explain' => 'Dat hee määt et müjjelich, dat ander Metmaacher om Dinge Metmaachersigg nohloore künne, of De online bes odder nit.',
 	'onlinestatus-toggles-show' => 'Zeich minge Online-Stattus op minge Metmachersigg',

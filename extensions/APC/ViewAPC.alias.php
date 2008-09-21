@@ -37,8 +37,18 @@ $aliases['lb'] = array(
 	'ViewAPC' => array( 'APC weisen' ),
 );
 
+/** Nedersaksisch (Nedersaksisch) */
+$aliases['nds-nl'] = array(
+	'ViewAPC' => array( 'APC_bekieken' ),
+);
+
 /** Dutch (Nederlands) */
 $aliases['nl'] = array(
 	'ViewAPC' => array( 'APCBekijken' ),
+);
+
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
+$aliases['no'] = array(
+	'ViewAPC' => array( 'Vis APC' ),
 );
 

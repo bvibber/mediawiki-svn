@@ -203,10 +203,12 @@ $messages['br'] = array(
 );
 
 /** Catalan (Català)
+ * @author Aleator
  * @author Paucabot
  * @author Toniher
  */
 $messages['ca'] = array(
+	'pdtest_page_missing' => "La pàgina especificada no s'ha trobat a la base de dades.",
 	'pdtest_no_changes' => "No s'han detectat canvis.",
 	'pdtest_ok' => "D'acord",
 	'pdtest_diff' => 'Diferències',

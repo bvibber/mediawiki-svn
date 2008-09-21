@@ -171,6 +171,21 @@ $messages['he'] = array(
 	'watchsubpages-desc' => '[[Special:WatchSubpages|הוספה מהירה של כל דפי המשנה]] של דף מסוים לרשימת המעקב',
 );
 
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'watchsubpages' => 'Observar subpaginas',
+	'watchsubpages-addedtowatchlist' => 'Lo sequente ha essite addite a tu observatorio.',
+	'watchsubpages-addtitles' => 'Adder paginas',
+	'watchsubpages-addtitlestowatchlist' => 'Adder paginas al observatorio',
+	'watchsubpages-desc' => '[[Special:WatchSubpages|Adder rapidemente tote le subpaginas]] de un pagina al observatorio',
+	'watchsubpages-form' => 'Selige infra le paginas pro adder a tu observatorio.
+Pro adder un pagina, marca le quadrato al latere de illo, e clicca "Adder paginas".
+
+Si tu vole marcar o dismarcar plure paginas, tu pote tener premite le clave Shift pro seliger quadratos consecutive per cliccar cata extremitate del intervallo a marcar.',
+);
+
 /** Italian (Italiano)
  * @author Darth Kule
  */
@@ -201,9 +216,11 @@ $messages['ksh'] = array(
 	'watchsubpages-addtitles' => 'Sigge dobei donn',
 	'watchsubpages-addtitlestowatchlist' => 'Sigge en de Oppassleß opnemme',
 	'watchsubpages-desc' => 'Ene flöcke Wääsch, all Ungersigge fun ene Sigg en de Oppassless [[Special:WatchSubpages|met opzenämme]].',
-	'watchsubpages-form' => '
-Donn di Sigge ußwähle, di De in Ding Oppassleß opjenumme hann wells.
-Wann de fädesch bes, klickß De op „{{int:watchsubpages-addtitles}}“',
+	'watchsubpages-form' => 'Donn di Sigge ußwähle, di De in Ding Oppassleß opjenumme hann wells.
+Öm en Sigg dobei ze donn, maach e Höksche donevve.
+Wann de fädesch bes, klickß De op „{{int:watchsubpages-addtitles}}“
+
+Wann De en Aanzahl Sigge aam Stöck häß, woh de e Höksche draan maache udder et Höksche fotnämme wells, doh kanns De dat eijfach han. Klick eets op der Aanfang, un dann halld de Taß för op Jrußschreff ömzeschalde faß, un klick norr_enß op et Engk, ih dat De de Taß widder loß löhß. Dat schallt de Höksche en däm janze Bereisch öm.',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

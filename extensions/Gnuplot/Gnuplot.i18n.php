@@ -11,6 +11,13 @@ $messages['en'] = array(
 	'gnuplot-desc' => 'Adds the tag <code><nowiki><gnuplot></nowiki></code> to use Gnuplot',
 );
 
+/** Message documentation (Message documentation)
+ * @author Purodha
+ */
+$messages['qqq'] = array(
+	'gnuplot-desc' => 'Shown in [[Special:Version]].',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */
@@ -98,6 +105,13 @@ $messages['jv'] = array(
  */
 $messages['km'] = array(
 	'gnuplot-desc' => 'ដាក់បន្ថែមប្លាក<code><nowiki><gnuplot></nowiki></code>ដើម្បីប្រើប្រាស់ Gnuplot',
+);
+
+/** Ripoarisch (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'gnuplot-desc' => 'Deiht dä Befähl <code><nowiki><gnuplot></nowiki></code> en et Wiki dobei, öm <i lang="en">Gnuplot</i> ze bruche.',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

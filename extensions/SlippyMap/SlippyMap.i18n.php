@@ -249,6 +249,25 @@ $messages['gl'] = array(
 	'slippymap_resetview' => 'Axustar a vista',
 );
 
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'slippymap_desc' => 'Permitte le uso del etiquetta <tt><nowiki>&lt;slippymap&gt;</nowiki></tt> pro monstrar un carta glissante de OpenLayers. Le cartas proveni de [http://openstreetmap.org openstreetmap.org]',
+	'slippymap_latmissing' => 'Valor lat mancante (pro le latitude).',
+	'slippymap_lonmissing' => 'Valor lon mancante (pro le longitude).',
+	'slippymap_zoommissing' => 'Valor z mancante (pro le nivello de zoom).',
+	'slippymap_longdepreciated' => "Per favor usa 'lon' in loco de 'long' (le parametro ha essite renominate).",
+	'slippymap_widthnan' => "Le valor '%1' del latitude (w) non es un numero integre valide",
+	'slippymap_heightnan' => "Le valor '%1' del altitude (h) non es un numero integre valide",
+	'slippymap_zoomnan' => "Le valor '%1' del zoom (z) non es un numero integre valide",
+	'slippymap_latnan' => "Le valor '%1' del latitude (lat) non es un numero valide",
+	'slippymap_lonnan' => "Le valor '%1' del longitude (lon) non es un numero valide",
+	'slippymap_widthbig' => 'Le valor del latitude (w) non pote exceder 1000',
+	'slippymap_widthsmall' => 'Le valor del latitude (w) non pote esser minus de 100',
+	'slippymap_heightbig' => 'Le valor del altitude (h) non pote esser plus de 1000',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */

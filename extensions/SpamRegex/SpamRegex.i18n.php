@@ -357,7 +357,34 @@ $messages['hsb'] = array(
  * @author McDutchie
  */
 $messages['ia'] = array(
+	'spamregex' => 'Regex antispam',
+	'spamregex-desc' => '[[Special:SpamRegex|Filtrar]] phrases non desirabile in paginas modificate, a base de expressiones regular',
+	'spamregex-error-unblocking' => 'Error durante le disblocada de "$1". Probabilemente non existe tal patrono.',
+	'spamregex-summary' => 'Le texto esseva trovate in le summario del pagina.',
+	'spamregex-intro' => 'Usa iste formulario pro effectivemente blocar certe expressiones de figurar in le texto de un pagina.
+Si le texto de un modification contine un expression date hic, le modification non es immagazinate, e un explication se monstra al usator qui voleva publicar le pagina.
+Caution avisate: le expressiones non debe esser troppo curte o troppo commun.',
+	'spamregex-page-title' => 'Blocada de expressiones non desirate per medio de regex antispam',
+	'spamregex-currently-blocked' => "'''Phrases actualmente blocate:'''",
+	'spamregex-move' => 'Le motivo que tu entrava contineva un phrase blocate.',
+	'spamregex-no-currently-blocked' => "'''Il non ha phrases blocate.'''",
+	'spamregex-log-1' => "* '''$1''' $2 ([{{SERVER}}$3&text=$4 retirar]) addite per",
+	'spamregex-log-2' => '  le $1',
+	'spamregex-page-title-1' => 'Blocar un phrase per medio de expressiones regular',
+	'spamregex-unblock-success' => 'Disblocada succedite',
+	'spamregex-unblock-message' => "Le phrase '''$1''' ha essite disblocate de figurar in modificationes.",
+	'spamregex-page-title-2' => 'Blocar phrases de esser publicate per medio de expressiones regular',
+	'spamregex-block-success' => 'Blocada succedite',
+	'spamregex-block-message' => "Le phrase '''$1''' ha essite blocate.",
+	'spamregex-warning-1' => 'Da un phrase a blocar.',
+	'spamregex-error-1' => 'Expression regular invalide.',
+	'spamregex-warning-2' => 'Per favor selige al minus un modo de blocada.',
 	'spamregex-already-blocked' => '"$1" es ja blocate',
+	'spamregex-phrase-block' => 'Phrase a blocar:',
+	'spamregex-phrase-block-text' => 'blocar phrase in texto de pagina',
+	'spamregex-phrase-block-summary' => 'blocar phrase in summario',
+	'spamregex-block-submit' => 'Blocar&nbsp;iste&nbsp;phrase',
+	'spamregex-text' => '(Texto)',
 	'spamregex-summary-log' => '(Summario)',
 );
 

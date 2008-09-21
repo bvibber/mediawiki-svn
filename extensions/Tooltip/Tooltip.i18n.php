@@ -87,6 +87,13 @@ $messages['hsb'] = array(
 	'tooltip-desc' => 'přidawa tafličku <nowiki><tooltip></nowiki> a <nowiki>{{#tooltip:}}</nowiki>',
 );
 
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'tooltip-desc' => 'Adde le etiquettas <tt><nowiki><tooltip></nowiki></tt> e <tt><nowiki>{{#tooltip:}}</nowiki></tt>',
+);
+
 /** Italian (Italiano)
  * @author Darth Kule
  */

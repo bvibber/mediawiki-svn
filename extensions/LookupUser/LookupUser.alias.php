@@ -32,8 +32,18 @@ $aliases['lb'] = array(
 	'LookupUser' => array( 'Benotzer nokucken' ),
 );
 
+/** Nedersaksisch (Nedersaksisch) */
+$aliases['nds-nl'] = array(
+	'LookupUser' => array( 'Gebruker_opzeuken' ),
+);
+
 /** Dutch (Nederlands) */
 $aliases['nl'] = array(
 	'LookupUser' => array( 'GebruikerOpzoeken' ),
+);
+
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
+$aliases['no'] = array(
+	'LookupUser' => array( 'Finn bruker' ),
 );
 

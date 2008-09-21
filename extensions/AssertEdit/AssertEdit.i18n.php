@@ -157,6 +157,15 @@ $messages['eo'] = array(
 	'assert_edit_message' => 'La specifigita aserto ($1) malsukcesis.',
 );
 
+/** Spanish (Español)
+ * @author Remember the dot
+ */
+$messages['es'] = array(
+	'assert_edit_title' => 'Una aserción fracasó',
+	'assert_edit_desc' => 'Añade aserciones de editar para el uso de los bots',
+	'assert_edit_message' => 'La aserción especificada ($1) fracasó.',
+);
+
 /** Persian (فارسی)
  * @author Huji
  */

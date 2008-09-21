@@ -24,6 +24,11 @@ $aliases['arz'] = array(
 	'StalePages' => array( 'صفحات_ميتة' ),
 );
 
+/** Nedersaksisch (Nedersaksisch) */
+$aliases['nds-nl'] = array(
+	'StalePages' => array( "Verouwerde_pagina's" ),
+);
+
 /** Dutch (Nederlands) */
 $aliases['nl'] = array(
 	'StalePages' => array( 'VerouderdePaginas', "VerouderdePagina's" ),

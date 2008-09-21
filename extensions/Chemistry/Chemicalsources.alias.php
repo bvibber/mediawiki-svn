@@ -32,8 +32,18 @@ $aliases['as'] = array(
 	'ChemicalSources' => array( 'ৰাসায়নিক উৎসসমূহ' ),
 );
 
+/** Nedersaksisch (Nedersaksisch) */
+$aliases['nds-nl'] = array(
+	'ChemicalSources' => array( 'Scheikundige_bronnen' ),
+);
+
 /** Dutch (Nederlands) */
 $aliases['nl'] = array(
 	'ChemicalSources' => array( 'ScheikundigeBronnen' ),
+);
+
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
+$aliases['no'] = array(
+	'ChemicalSources' => array( 'Kjemiske kilder' ),
 );
 

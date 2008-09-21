@@ -158,6 +158,16 @@ $messages['ht'] = array(
 	'templatelink_newtitle' => '$1 (mete paj sa anndan yon lòt paj)',
 );
 
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'templatelink' => 'Ligamine verso patrono',
+	'templatelink_desc' => 'Iste extension pote facer monstrar un patrono como un nove pagina',
+	'templatelink_empty' => 'Tu debe fornir un parametro.',
+	'templatelink_newtitle' => '$1 (transcludite)',
+);
+
 /** Javanese (Basa Jawa)
  * @author Meursault2004
  */

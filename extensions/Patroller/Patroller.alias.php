@@ -27,6 +27,11 @@ $aliases['arz'] = array(
 	'Patroller' => array( 'مراجع' ),
 );
 
+/** Nedersaksisch (Nedersaksisch) */
+$aliases['nds-nl'] = array(
+	'Patroller' => array( 'Contreleren' ),
+);
+
 /** Dutch (Nederlands) */
 $aliases['nl'] = array(
 	'Patroller' => array( 'Controleren' ),

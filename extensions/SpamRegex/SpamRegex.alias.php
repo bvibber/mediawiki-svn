@@ -35,6 +35,11 @@ $aliases['he'] = array(
 	'SpamRegex' => array( 'ביטויי_ספאם' ),
 );
 
+/** Nedersaksisch (Nedersaksisch) */
+$aliases['nds-nl'] = array(
+	'SpamRegex' => array( 'Spam_regeliere_expressie' ),
+);
+
 /** Dutch (Nederlands) */
 $aliases['nl'] = array(
 	'SpamRegex' => array( 'SpamReguliereExpressie' ),

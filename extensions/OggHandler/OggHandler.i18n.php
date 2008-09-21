@@ -73,6 +73,13 @@ Parameters are:
 	'ogg-more' => '{{Identical|More...}}',
 );
 
+/** Albaamo innaaɬiilka (Albaamo innaaɬiilka)
+ * @author Ulohnanne
+ */
+$messages['akz'] = array(
+	'ogg-more' => 'Maatàasasi...',
+);
+
 /** Afrikaans (Afrikaans)
  * @author Naudefj
  * @author SPQRobin
@@ -596,15 +603,32 @@ Bonvolu <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_downl
 );
 
 /** Spanish (Español)
+ * @author Aleator
  * @author Muro de Aguas
+ * @author Remember the dot
+ * @author Sanbec
  * @author Spacebirdy
  */
 $messages['es'] = array(
+	'ogg-short-audio' => 'Archivo de sonido Ogg $1, $2',
+	'ogg-short-video' => 'Archivo de video Ogg $1, $2',
+	'ogg-long-audio' => '(Archivo de sonido Ogg $1, tamaño $2, $3)',
+	'ogg-long-video' => '(Archivo de video Ogg $1, tamaño $2, $4×$5 píxeles, $3)',
+	'ogg-long-multiplexed' => '(Archivo Ogg de audio/video multiplexado, $1, tamaño $2, $4×$5 píxeles, $3 en todo)',
+	'ogg-long-error' => '(Archivo ogg no válido: $1)',
 	'ogg-play' => 'Reproducir',
 	'ogg-pause' => 'Pausar',
 	'ogg-stop' => 'Detener',
 	'ogg-play-video' => 'Reproducir vídeo',
 	'ogg-play-sound' => 'Reproducir sonido',
+	'ogg-no-player' => 'Lo sentimos, su sistema parece no tener disponible un programa para reproducción de archivos multimedia.
+Por favor <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">descargue un reproductor</a>.',
+	'ogg-player-videoElement' => 'Apoyo nativo de navegador',
+	'ogg-player-oggPlugin' => 'Complemento de navegador',
+	'ogg-player-thumbnail' => 'Únicamente imagen',
+	'ogg-player-soundthumb' => 'Ningún reproductor',
+	'ogg-player-selected' => '(seleccionado)',
+	'ogg-use-player' => 'Usar reproductor:',
 	'ogg-more' => 'Opciones...',
 	'ogg-dismiss' => 'Cerrar',
 	'ogg-download' => 'Bajar archivo',

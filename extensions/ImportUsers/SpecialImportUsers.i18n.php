@@ -541,7 +541,7 @@ $messages['krj'] = array(
  * @author Purodha
  */
 $messages['ksh'] = array(
-	'importusers-desc' => 'Donn Metmaacher em Knubbel fun en Datei [[Special:ImportUsers|emptotteere]], dat Fommaat es: <code lang="en">text/csv; encoding: UTF-8</code>',
+	'importusers-desc' => 'Donn Metmaacher em Knubbel fun en Datei [[Special:ImportUsers|emptotteere]], dat Fommaat es: <code lang="en">text/csv; charset: UTF-8</code>',
 	'importusers-log-summary-all' => 'All',
 	'importusers-realname' => 'Dinge richtije Name',
 );

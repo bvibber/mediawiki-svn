@@ -1647,9 +1647,12 @@ $messages['tg-cyrl'] = array(
 );
 
 /** Turkish (Türkçe)
+ * @author Mach
  * @author Suelnur
  */
 $messages['tr'] = array(
+	'crosswikiblock-reason' => 'Gerekçe:',
+	'crosswikiblock-submit' => 'Bu kullanıcıyı engelle',
 	'crosswikiunblock-reason' => 'Neden:',
 );
 

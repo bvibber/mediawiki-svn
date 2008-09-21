@@ -213,18 +213,23 @@ $messages['qqq'] = array(
  */
 $messages['ar'] = array(
 	'deletequeue-desc' => 'ينشئ [[Special:DeleteQueue|نظاما معتمدا على طابور للتحكم بالحذف]]',
+	'deletequeue-action-queued' => 'حذف',
 	'deletequeue-action' => 'اقتراح الحذف',
 	'deletequeue-action-title' => 'اقتراح الحذف ل"$1"',
 	'deletequeue-action-text' => "{{SITENAME}} لديه عدد من العمليات لحذف الصفحات:
 *لو أنك تعتقد أن هذه الصفحة تحتاج ''الحذف السريع''، يمكنك أن تقترح هذا هنا [{{fullurl:{{FULLPAGENAME}}|action=delnom&queue=speedy}} هنا].
 *لو أن هذه الصفحة لا تحتاج الحذف السريع، لكن ''الحذف سيكون على الأرجح غير خلافي''، ينبغي عليك أن [{{fullurl:{{FULLPAGENAME}}|action=delnom&queue=prod}} تقترح الحذف].
 *لو أن حذف هذه الصفحة ''على الأرجح سيتم الاعتراض عليه''، ينبغي عليك أن [{{fullurl:{{FULLPAGENAME}}|action=delnom&queue=deletediscuss}} تبدأ نقاشا].",
+	'deletequeue-action-text-queued' => 'أنت يمكنك رؤية الصفحات التالية لحالة الحذف هذه:
+* [{{fullurl:{{FULLPAGENAME}}|action=delviewvotes}} عرض عمليات التأييد والمعارضة الحالية].
+* [{{fullurl:{{FULLPAGENAME}}|action=delvote}} تأييد أو معارضة حذف هذه الصفحة].',
 	'deletequeue-permissions-noedit' => 'يجب أن تكون قادرا على تعديل الصفحة لتكون قادرا على التاثير على حالة حذفها.',
 	'deletequeue-generic-reasons' => '* أسباب متكررة
   ** تخريب
   ** سبام
   ** صيانة
   ** خارج نطاق المشروع',
+	'deletequeue-nom-alreadyqueued' => 'هذه الصفحة موجودة بالفعل في طابور حذف.',
 	'deletequeue-speedy-title' => 'علم على "$1" للحذف السريع',
 	'deletequeue-speedy-text' => "أنت يمكنك استخدام هذه الاستمارة للتعليم على الصفحة \"'''\$1'''\" للحذف السريع.
 
@@ -248,6 +253,7 @@ $messages['ar'] = array(
 	'right-prod-review' => 'مراجعة اقتراحات الحذف غير المعترض عليها',
 	'right-deletediscuss-nominate' => 'بدء نقاشات الحذف',
 	'right-deletediscuss-review' => 'إغلاق نقاشات الحذف',
+	'right-deletequeue-vote' => 'تأييد أو معارضة عمليات الحذف',
 	'deletequeue-queue-speedy' => 'حذف سريع',
 	'deletequeue-queue-prod' => 'حذف مقترح',
 	'deletequeue-queue-deletediscuss' => 'نقاش الحذف',
@@ -298,7 +304,6 @@ $messages['ar'] = array(
 	'deletequeue-role-nominator' => 'المرشح الأصلي للحذف',
 	'deletequeue-role-vote-endorse' => 'مؤيد للحذف',
 	'deletequeue-role-vote-object' => 'معترض على الحذف',
-	'deletequeue-vote-tab' => 'تأييد/معارضة الحذف',
 	'deletequeue-vote-title' => 'تأييد أو معارضة حذف "$1"',
 	'deletequeue-vote-text' => "أنت يمكنك استخدام هذه الاستمارة لتأييد أو معارضة حذف \"'''\$1'''\".
 هذا الفعل سيلغي أي تأييدات/اعتراضات قمت بها لحذف هذه الصفحة.
@@ -349,18 +354,23 @@ $messages['ar'] = array(
  */
 $messages['arz'] = array(
 	'deletequeue-desc' => 'ينشئ [[Special:DeleteQueue|نظاما معتمدا على طابور للتحكم بالحذف]]',
+	'deletequeue-action-queued' => 'حذف',
 	'deletequeue-action' => 'اقتراح الحذف',
 	'deletequeue-action-title' => 'اقتراح الحذف ل"$1"',
 	'deletequeue-action-text' => "{{SITENAME}} لديه عدد من العمليات لحذف الصفحات:
 *لو أنك تعتقد أن هذه الصفحة تحتاج ''الحذف السريع''، يمكنك أن تقترح هذا هنا [{{fullurl:{{FULLPAGENAME}}|action=delnom&queue=speedy}} هنا].
 *لو أن هذه الصفحة لا تحتاج الحذف السريع، لكن ''الحذف سيكون على الأرجح غير خلافي''، ينبغى عليك أن [{{fullurl:{{FULLPAGENAME}}|action=delnom&queue=prod}} تقترح الحذف].
 *لو أن حذف هذه الصفحة ''على الأرجح سيتم الاعتراض عليه''، ينبغى عليك أن [{{fullurl:{{FULLPAGENAME}}|action=delnom&queue=deletediscuss}} تبدأ نقاشا].",
+	'deletequeue-action-text-queued' => 'أنت يمكنك رؤية الصفحات التالية لحالة الحذف هذه:
+* [{{fullurl:{{FULLPAGENAME}}|action=delviewvotes}} عرض عمليات التأييد والمعارضة الحالية].
+* [{{fullurl:{{FULLPAGENAME}}|action=delvote}} تأييد أو معارضة حذف هذه الصفحة].',
 	'deletequeue-permissions-noedit' => 'يجب أن تكون قادرا على تعديل الصفحة لتكون قادرا على التاثير على حالة حذفها.',
 	'deletequeue-generic-reasons' => '* أسباب متكررة
   ** تخريب
   ** سبام
   ** صيانة
   ** خارج نطاق المشروع',
+	'deletequeue-nom-alreadyqueued' => 'هذه الصفحة موجودة بالفعل فى طابور حذف.',
 	'deletequeue-speedy-title' => 'علم على "$1" للحذف السريع',
 	'deletequeue-speedy-text' => "أنت يمكنك استخدام هذه الاستمارة للتعليم على الصفحة \"'''\$1'''\" للحذف السريع.
 
@@ -384,6 +394,7 @@ $messages['arz'] = array(
 	'right-prod-review' => 'مراجعة اقتراحات الحذف غير المعترض عليها',
 	'right-deletediscuss-nominate' => 'بدء نقاشات الحذف',
 	'right-deletediscuss-review' => 'إغلاق نقاشات الحذف',
+	'right-deletequeue-vote' => 'تأييد أو معارضة عمليات الحذف',
 	'deletequeue-queue-speedy' => 'حذف سريع',
 	'deletequeue-queue-prod' => 'حذف مقترح',
 	'deletequeue-queue-deletediscuss' => 'نقاش الحذف',
@@ -434,7 +445,6 @@ $messages['arz'] = array(
 	'deletequeue-role-nominator' => 'المرشح الأصلى للحذف',
 	'deletequeue-role-vote-endorse' => 'مؤيد للحذف',
 	'deletequeue-role-vote-object' => 'معترض على الحذف',
-	'deletequeue-vote-tab' => 'تأييد/معارضة الحذف',
 	'deletequeue-vote-title' => 'تأييد أو معارضة حذف "$1"',
 	'deletequeue-vote-text' => "أنت يمكنك استخدام هذه الاستمارة لتأييد أو معارضة حذف \"'''\$1'''\".
 هذا الفعل سيلغى أى تأييدات/اعتراضات قمت بها لحذف هذه الصفحة.
@@ -591,7 +601,6 @@ Du kannst die Löschung [{{fullurl:$1|action=delvote}} befürworten oder ablehne
 	'deletequeue-role-nominator' => 'ursprünglicher Löschantragsteller',
 	'deletequeue-role-vote-endorse' => 'Befürworter der Löschung',
 	'deletequeue-role-vote-object' => 'Gegner der Löschung',
-	'deletequeue-vote-tab' => 'Löschung befürworten/ablehnen',
 	'deletequeue-vote-title' => 'Löschung von „$1“ befürworten oder ablehnen',
 	'deletequeue-vote-text' => "Auf dieser Seite kannst du die Löschung von „'''$1'''“ befürworten oder ablehnen.
 Diese Aktion überschreibt alle Stimmen, die du vorher zur Löschung dieser Seite abgegeben hast.
@@ -641,6 +650,7 @@ Du kannst deine eigene Befürwortung oder Ablehnung der Löschung [{{fullurl:{{F
  * @author Yekrats
  */
 $messages['eo'] = array(
+	'deletequeue-action-queued' => 'Forigo',
 	'deletequeue-action' => 'Sugesti forigon',
 	'deletequeue-action-title' => 'Sugesti forigon de "$1"',
 	'deletequeue-generic-reasons' => '*Ĝeneralaj kialoj
@@ -677,7 +687,6 @@ $messages['eo'] = array(
 	'deletequeue-reviewdeletediscuss-tab' => 'Kontroli forigon',
 	'deletequeue-role-vote-endorse' => 'konsentanto de forigo',
 	'deletequeue-role-vote-object' => 'malkonsentanto de forigo',
-	'deletequeue-vote-tab' => 'Konsenti/Malkonsenti forigon',
 	'deletequeue-vote-legend' => 'Konsenti/Malkonsenti forigon.',
 	'deletequeue-vote-endorse' => 'Konsenti forigon.',
 	'deletequeue-vote-object' => 'Malkonsenti forigon.',
@@ -699,18 +708,23 @@ $messages['eo'] = array(
  */
 $messages['fr'] = array(
 	'deletequeue-desc' => 'Crée un [[Special:DeleteQueue|système de queue pour gérer les suppression]]',
+	'deletequeue-action-queued' => 'Suppression',
 	'deletequeue-action' => 'Suggérer la suppression',
 	'deletequeue-action-title' => 'Suggérer la suppression de « $1 »',
 	'deletequeue-action-text' => "{{SITENAME}} dispose d'un nombre de processus pour la suppression des pages :
 *Si vous croyez que cette page doit passer par une ''suppression immédiate'', vous pouvez en faire la demande [{{fullurl:{{FULLPAGENAME}}|action=delnom&queue=speedy}} ici].
 *Si cette page ne relève pas de la suppression immédiate, mais ''que cette suppression ne posera aucune controverse pour'', vous devrez [{{fullurl:{{FULLPAGENAME}}|action=delnom&queue=prod}} proposer une suppression non contestable].
 *Si la suppression de la page est ''sujète à controverses'', vous devrez [{{fullurl:{{FULLPAGENAME}}|action=delnom&queue=deletediscuss}} ouvrir une discussion].",
+	'deletequeue-action-text-queued' => 'Vous pouvez visionner les pages suivantes pour cette suppression :
+* [{{fullurl:{{FULLPAGENAME}}|action=delviewvotes}} Voir les acquiescements et les objections].
+* [{{fullurl:{{FULLPAGENAME}}|action=delvote}} Accepter ou objection pour la suppression de cette page].',
 	'deletequeue-permissions-noedit' => 'Vous devez être capable de modifier une page pour pourvoir affecter son statut de suppression.',
 	'deletequeue-generic-reasons' => '*Motifs les plus courants
 ** Vandalisme
 ** Pourriel
 ** Maintenance
 ** Hors critères',
+	'deletequeue-nom-alreadyqueued' => 'Cette page est déjà dans la queue des suppressions.',
 	'deletequeue-speedy-title' => 'Marquer « $1 » pour une suppression immédiate',
 	'deletequeue-speedy-text' => "Vous pouvez utiliser ce formulaire pour parquer la page « '''$1''' » pour une suppression immédiate.
 
@@ -734,6 +748,7 @@ Si, après cinq jours, personne n’a émis d’objection pour cela, elle sera s
 	'right-prod-review' => 'Revoir les propositions de suppression non contestées',
 	'right-deletediscuss-nominate' => 'Commencer les discussions sur la suppression',
 	'right-deletediscuss-review' => 'Clôturer les discussions sur la suppression',
+	'right-deletequeue-vote' => 'Acquiescer ou objecter pour les suppressions',
 	'deletequeue-queue-speedy' => 'Suppression immédiate',
 	'deletequeue-queue-prod' => 'Suppression proposée',
 	'deletequeue-queue-deletediscuss' => 'Discussion sur la suppression',
@@ -783,7 +798,6 @@ Vous pouvez [{{FULLURL:$1|action=delvote}} appuyez ou refuser] la suppression, o
 	'deletequeue-role-nominator' => 'initiateur original de la suppression',
 	'deletequeue-role-vote-endorse' => 'Partisan pour la suppression',
 	'deletequeue-role-vote-object' => 'Opposant à la suppression',
-	'deletequeue-vote-tab' => 'Appuyer/Refuser la suppression',
 	'deletequeue-vote-title' => 'Appuyer ou refuser la suppression de « $1 »',
 	'deletequeue-vote-text' => "Vous pouvez utiliser ce formulaire pour appuyer ou refuser la suppression de « '''$1''' ».
 Cette action écrasera les avis que vous avez émis auparavant dans cette discussion.
@@ -834,18 +848,23 @@ Vous pouvez enregistrer [{{FULLURL:{{FULLPAGENAME}}|action=delvote}} ici] votre 
  */
 $messages['gl'] = array(
 	'deletequeue-desc' => 'Crea un [[Special:DeleteQueue|sitema baseado na cola para xestionar as eliminacións]]',
+	'deletequeue-action-queued' => 'Borrado',
 	'deletequeue-action' => 'Suxestionar o borrado',
 	'deletequeue-action-title' => 'Suxestionar o borrado de "$1"',
 	'deletequeue-action-text' => "{{SITENAME}} ten un número de procesos para borrar páxinas:
 *Se cre que esta páxina posúe motivos xustificados para a súa ''eliminación rápida'', pode propoñelo [{{fullurl:{{FULLPAGENAME}}|action=delnom&queue=speedy}} aquí].
 *Se non os ten, pero a ''eliminación será probablemente sen controversia'', debería [{{fullurl:{{FULLPAGENAME}}|action=delnom&queue=prod}} propor un borrado non contestado].
 *Se esta páxina de eliminación ''será probablemente contestada'', debería [{{fullurl:{{FULLPAGENAME}}|action=delnom&queue=deletediscuss}} abrir unha conversa].",
+	'deletequeue-action-text-queued' => 'Pode ver as seguintes páxina para este caso de borrado:
+* [{{fullurl:{{FULLPAGENAME}}|action=delviewvotes}} Ver os apoios e as obxeccións actuais].
+* [{{fullurl:{{FULLPAGENAME}}|action=delvote}} Apoiar este borrado ou obxectar no mesmo].',
 	'deletequeue-permissions-noedit' => 'Debe ser capaz de editar unha páxina para poder afectar o seu status de borrado.',
 	'deletequeue-generic-reasons' => '* Razóns xenéricas
   ** Vandalismo
   ** Spam
   ** Mantemento
   ** Fóra dos límites do proxecto',
+	'deletequeue-nom-alreadyqueued' => 'Esta páxina xa está nunha cola de borrados.',
 	'deletequeue-speedy-title' => 'Marcar "$1" para o seu borrado rápido',
 	'deletequeue-speedy-text' => "Pode usar este formulario para marcar a páxina \"'''\$1'''\" para a súa eliminación rápida.
 
@@ -869,6 +888,7 @@ Se despois de cinco días ninguén dá contestación nesta páxina, será borrad
 	'right-prod-review' => 'Revisar as propostas de borrado non respostadas',
 	'right-deletediscuss-nominate' => 'Comezar discusións de borrado',
 	'right-deletediscuss-review' => 'Pechar discusións de borrado',
+	'right-deletequeue-vote' => 'Apoiar os borrados ou obxectar nos mesmos',
 	'deletequeue-queue-speedy' => 'Eliminación rápida',
 	'deletequeue-queue-prod' => 'Borrado proposto',
 	'deletequeue-queue-deletediscuss' => 'Discusión do borrado',
@@ -919,7 +939,6 @@ Pode [{{fullurl:$1|action=delvote}} apoiar ou obxectar] ou [{{fullurl:$1|action=
 	'deletequeue-role-nominator' => 'nominador orixinal da eliminación',
 	'deletequeue-role-vote-endorse' => 'partícipe da eliminación',
 	'deletequeue-role-vote-object' => 'obxector da eliminación',
-	'deletequeue-vote-tab' => 'Apoiar a/Obxectar na eliminación',
 	'deletequeue-vote-title' => 'Apoiar a/Obxectar na eliminación de "$1"',
 	'deletequeue-vote-text' => "Pode usar este formulario para apoiar ou obxectar na páxina de eliminación de \"'''\$1'''\".
 Esta acción ignorará calquera apoio/obxección anterior que teña dado na eliminación desta páxina.
@@ -977,18 +996,23 @@ $messages['grc'] = array(
  */
 $messages['ia'] = array(
 	'deletequeue-desc' => 'Crea un [[Special:DeleteQueue|systema con caudas pro gerer deletiones]]',
+	'deletequeue-action-queued' => 'Deletion',
 	'deletequeue-action' => 'Suggerer deletion',
 	'deletequeue-action-title' => 'Suggerer deletion de "$1"',
 	'deletequeue-action-text' => "{{SITENAME}} ha plure processos pro deler paginas:
 *Si tu crede que iste pagina merita un ''deletion rapide'', tu pote suggerer lo [{{fullurl:{{FULLPAGENAME}}|action=delnom&queue=speedy}} hic].
 *Si iste pagina non merita un deletion rapide, sed le ''deletion probabilemente non esserea controversial'', tu deberea [{{fullurl:{{FULLPAGENAME}}|action=delnom&queue=prod}} proponer un deletion non contestabile].
 *Si le deletion de iste pagina ''probabilemente esserea contestate'', tu deberea [{{fullurl:{{FULLPAGENAME}}|action=delnom&queue=deletediscuss}} initiar un discussion].",
+	'deletequeue-action-text-queued' => 'Tu pote vider le sequente paginas pro iste caso de deletion:
+* [{{fullurl:{{FULLPAGENAME}}|action=delviewvotes}} Vider le actual declarationes pro e contra].
+* [{{fullurl:{{FULLPAGENAME}}|action=delvote}} Declarar te pro o contra le deletion de iste pagina].',
 	'deletequeue-permissions-noedit' => 'Tu debe poter modificar un pagina pro poter afficer su stato de deletion.',
 	'deletequeue-generic-reasons' => '* Motivos generic
   ** Vandalismo
   ** Spam
   ** Mantenentia
   ** Foras del criterios del projecto',
+	'deletequeue-nom-alreadyqueued' => 'Iste pagina es ja in un cauda de deletiones.',
 	'deletequeue-speedy-title' => 'Marcar "$1" pro deletion rapide',
 	'deletequeue-speedy-text' => "Tu pote usar iste formulario pro marcar le pagina \"'''\$1'''\" pro deletion rapide.
 
@@ -1012,6 +1036,7 @@ Si, post cinque dies, necuno ha contestate le deletion de iste pagina, illo esse
 	'right-prod-review' => 'Revider le propositiones de deletion non contestate',
 	'right-deletediscuss-nominate' => 'Comenciar discussiones super deletiones',
 	'right-deletediscuss-review' => 'Clauder discussiones super deletiones',
+	'right-deletequeue-vote' => 'Declarar te pro o contra deletiones',
 	'deletequeue-queue-speedy' => 'Deletion rapide',
 	'deletequeue-queue-prod' => 'Deletion proponite',
 	'deletequeue-queue-deletediscuss' => 'Discussion super le deletion',
@@ -1063,7 +1088,6 @@ Tu pote [{{fullurl:$1|action=delvote}} declarar te pro o contra] le deletion, o 
 	'deletequeue-role-nominator' => 'nominator original pro deletion',
 	'deletequeue-role-vote-endorse' => 'appoiator del deletion',
 	'deletequeue-role-vote-object' => 'opponente del deletion',
-	'deletequeue-vote-tab' => 'Pro/contra deletion',
 	'deletequeue-vote-title' => 'Declarar se pro o contra le deletion de "$1"',
 	'deletequeue-vote-text' => "Tu pote usar iste formulario pro declarar te pro o contra le deletion de \"'''\$1'''\".
 Iste action ultrapassara omne previe declarationes pro/contra que tu ha date a proposito del deletion de iste pagina.
@@ -1187,7 +1211,6 @@ Se, dopo cinque giorni, non ci sono state opposizioni alla cancellazione della p
 	'deletequeue-role-nominator' => 'proponente della cancellazione',
 	'deletequeue-role-vote-endorse' => 'supporti alla cancellazione',
 	'deletequeue-role-vote-object' => 'opposizioni alla cancellazione',
-	'deletequeue-vote-tab' => 'Supporta/Opponiti alla cancellazione',
 	'deletequeue-vote-title' => 'Supporto o opposizione alla cancellazione di "$1"',
 	'deletequeue-vote-text' => "È possibile utilizzare questo modulo per sostenere oppure opporsi alla cancellazione di \"'''\$1'''\". Questa azione sostituirà qualsiasi supporto o opposizione precedentemente dati alla cancellazione di questa pagina. È possibile [{{fullurl:{{FULLPAGENAME}}|action=delviewvotes}} visualizzare] i supporti e le opposizioni già presenti. La motivazione fornita per la segnalazione di cancellazione è ''\$2''.",
 	'deletequeue-vote-legend' => 'Supporta/Opponiti alla cancellazione',
@@ -1232,6 +1255,13 @@ Se, dopo cinque giorni, non ci sono state opposizioni alla cancellazione della p
 $messages['km'] = array(
 	'deletequeue-review-newreason' => 'មូលហេតុថ្មី៖',
 	'deletequeue-review-newextra' => 'ពត៌មានបន្ថែម៖',
+);
+
+/** Krio (Krio)
+ * @author Jose77
+ */
+$messages['kri'] = array(
+	'deletequeue-list-search' => 'Luk foh am',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -1282,18 +1312,23 @@ $messages['myv'] = array(
  */
 $messages['nl'] = array(
 	'deletequeue-desc' => "Voegt een [[Special:DeleteQueue|wachtrij voor het beheren van te verwijderen pagina's]] toe",
+	'deletequeue-action-queued' => 'Verwijderverzoek',
 	'deletequeue-action' => 'Ter verwijdering voordragen',
 	'deletequeue-action-title' => '"$1" ter verwijdering voordragen',
 	'deletequeue-action-text' => "{{SITENAME}} heeft een aantal processen voor het verwijderen van pagina's:
 * Als u denkt dat deze pagina ''direct verwijderd'' kan worden, kunt u deze pagina voor [{{fullurl:{{FULLPAGENAME}}|action=delnom&queue=speedy}} direct verwijdering] voordragen.
 * Als deze pagina niet in aanmerking komt voor directe verwijdering, maar het verwijderen ''waarschijnlijk niet tot discussie leidt'', dan kunt u deze [{{fullurl:{{FULLPAGENAME}}|action=delnom&queue=prod}} voor verwijdering nomineren].
 * Als het verwijderen van deze pagina ''waarschijnlijk bezwaar oplevert'', dan kunt u [{{fullurl:{{FULLPAGENAME}}|action=delnom&queue=deletediscuss}} verwijderoverleg starten].",
+	'deletequeue-action-text-queued' => "Bij dit verwijderverzoek horen de volgende pagina's:
+* [{{fullurl:{{FULLPAGENAME}}|action=delviewvotes}} Overzicht steun en bezwaar].
+* [{{fullurl:{{FULLPAGENAME}}|action=delvote}} Het verwijderverzoek steunen of afwijzen].",
 	'deletequeue-permissions-noedit' => 'U moet rechten hebben een pagina te bewerken om de verwijderstatus te kunnen veranderen.',
 	'deletequeue-generic-reasons' => '* Algemene redenen
 ** Vandalisme
 ** Spam
 ** Onderhoud
 ** Buiten projectscope',
+	'deletequeue-nom-alreadyqueued' => 'Voor deze pagina bestaat al een verwijderverzoek.',
 	'deletequeue-speedy-title' => '"$1" voordragen voor directe verwijdering',
 	'deletequeue-speedy-text' => "U kunt dit formulier gebruiken om \"'''\$1'''\" voor te dragen voor directe verwijdering.
 
@@ -1317,6 +1352,7 @@ Als na vijf dagen niemand protest heeft aangetekend tegen de verwijdernominatie,
 	'right-prod-review' => 'Verwijderingsnominaties zonder bezwaar beoordelen',
 	'right-deletediscuss-nominate' => 'Verwijderoverleg starten',
 	'right-deletediscuss-review' => 'Verwijderoverleg sluiten',
+	'right-deletequeue-vote' => 'Verwijderverzoeken steunen of afwijzen',
 	'deletequeue-queue-speedy' => 'Snelle verwijdering',
 	'deletequeue-queue-prod' => 'Verwijderingsvoorstel',
 	'deletequeue-queue-deletediscuss' => 'Verwijderoverleg',
@@ -1366,7 +1402,6 @@ U kunt [{{FULLURL:$1|action=delvote}} steun of bezwaar] bij de verwijdernominati
 	'deletequeue-role-nominator' => 'indiener verwijdervoorstel',
 	'deletequeue-role-vote-endorse' => 'ondersteunt verwijdervoorstel',
 	'deletequeue-role-vote-object' => 'maakt bezwaar tegen verwijdervoorstel',
-	'deletequeue-vote-tab' => 'Bezwaar maken/Steun geven aan de verwijdernominatie',
 	'deletequeue-vote-title' => 'Bezwaar maken tegen of steun geven aan de verwijdernominatie voor "$1"',
 	'deletequeue-vote-text' => "U kunt dit formulier gebruiken om bezwaar te maken tegen de verwijdernominatie voor \"'''\$1'''\" of deze te steunen.
 Deze handeling komt in de plaats van eventuele eerdere uitspraken van steun of bezwaar bij de verwijdernominatie van deze pagina.
@@ -1592,7 +1627,6 @@ Podètz [{{FULLURL:$1|action=delvote}} sosténer o refusar] la supression, o [{{
 	'deletequeue-role-nominator' => 'iniciaire original de la supression',
 	'deletequeue-role-vote-endorse' => 'Partidari de la supression',
 	'deletequeue-role-vote-object' => 'Opausant a la supression',
-	'deletequeue-vote-tab' => 'Sosténer/Refusar la supression',
 	'deletequeue-vote-title' => 'Sosténer o refusar la supression de « $1 »',
 	'deletequeue-vote-text' => "Podètz utilizar aqueste formulari per apiejar o refusar la supression de « '''$1''' ».
 Aquesta accion espotirà los vejaires qu'avètz emeses deperabans dins aquesta discussion.
@@ -1664,18 +1698,23 @@ $messages['pt'] = array(
  */
 $messages['sk'] = array(
 	'deletequeue-desc' => 'Vytvára systém [[Special:DeleteQueue|frontu na správu mazaní]]',
+	'deletequeue-action-queued' => 'Zmazanie',
 	'deletequeue-action' => 'Navrhnúť zmazanie',
 	'deletequeue-action-title' => 'Navrhnúť zmazanie „$1”',
 	'deletequeue-action-text' => "{{SITENAME}} má niekoľko procesov mazania stránok:
 * Ak sa domnievate, že táto stránka je kandidátom na ''rýchle zmazanie'', môžete ho [{{fullurl:{{FULLPAGENAME}}|action=delnom&queue=speedy}} navrhnúť].
 *Ak táto stránka nie je kandidátom na rýchle zmazanie, ale ''zmazanie bude pravdepodobne nekontroverzné'', mali by ste [{{fullurl:{{FULLPAGENAME}}|action=delnom&queue=prod}} navrhnúť jej zmazanie].
 *Ak bude zmazanie tejto stránky ''pravdepodobne kontroverzné'', mali by ste o tom [{{fullurl:{{FULLPAGENAME}}|action=delnom&queue=deletediscuss}} začať diskusiu].",
+	'deletequeue-action-text-queued' => 'Nasledovné stránky obsahujú informácie týkajúce sa tohto prípadu na zmazanie:
+* [{{fullurl:{{FULLPAGENAME}}|action=delviewvotes}} Zobraziť aktuálne odporúčania a námietky].
+* [{{fullurl:{{FULLPAGENAME}}|action=delvote}} Odporučiť alebo namietnuť proti zmazaniu tejto strány].',
 	'deletequeue-permissions-noedit' => 'Aby ste mohli ovplyvniť stav zmazania stránky, musíte mať oprávnenie upravovať stránku.',
 	'deletequeue-generic-reasons' => '* Všeobecné dôvody
   ** Vandalizmus
   ** Spam
   ** Údržba
   ** Mimo rozsahu projektu',
+	'deletequeue-nom-alreadyqueued' => 'Táto stránka sa už nachádza vo fronte na správu mazaní.',
 	'deletequeue-speedy-title' => 'Označiť „$1” na rýchle zmazanie',
 	'deletequeue-speedy-text' => "Tento formulár slúži na označenie stránky „'''$1'''” na rýchle zmazanie.
 
@@ -1701,6 +1740,7 @@ Ak po piatich dňoch nikto nenapadne návrh na zmazanie tejto stránky, zmaže j
 	'right-prod-review' => 'Skontrolovať návrhy na zmazanie bez komentárov proti',
 	'right-deletediscuss-nominate' => 'Začať diskusiu o zmazaní',
 	'right-deletediscuss-review' => 'Uzavrieť diskusiu o zmazaní',
+	'right-deletequeue-vote' => 'Odporučiť alebo namietnuť proti zmazaniu',
 	'deletequeue-queue-speedy' => 'Rýchle zmazanie',
 	'deletequeue-queue-prod' => 'Navrhované zmazanie',
 	'deletequeue-queue-deletediscuss' => 'Diskusia o zmazaní',
@@ -1751,7 +1791,6 @@ Môžete [{{fullurl:$1|action=delvote}} podporiť alebo namietať proti] zmazani
 	'deletequeue-role-nominator' => 'pôvodný navrhovateľ zmazania',
 	'deletequeue-role-vote-endorse' => 'podporujúci zmazanie',
 	'deletequeue-role-vote-object' => 'namietajúci proti zmazaniu',
-	'deletequeue-vote-tab' => 'Podporiť/namietať proti zmazaniu',
 	'deletequeue-vote-title' => 'Podporiť alebo namietať proti zmazaniu stránky „$1”',
 	'deletequeue-vote-text' => "Tento formulár môžete použiť na podporenie alebo namietnutie proti návrhu na zmazanie stránky „'''$1'''”.
 Táto činnosť bude mať prednosť pred všetkými podporeniami/námietkami, ktoré ste už mohli k zmazaniu tejto stránky uviesť.
@@ -1859,6 +1898,16 @@ $messages['th'] = array(
 	'deletequeue-list-search' => 'ค้นหา',
 );
 
+/** Turkish (Türkçe)
+ * @author Mach
+ */
+$messages['tr'] = array(
+	'deletequeue-queue-speedy' => 'Hızlı silme',
+	'deletequeue-queue-deletediscuss' => 'Silme tartışması',
+	'deletequeue-review-newreason' => 'Yeni gerekçe:',
+	'deletequeue-list-header-page' => 'Sayfa',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
  */
@@ -1904,7 +1953,6 @@ $messages['vi'] = array(
 	'deletequeue-role-nominator' => 'người đầu tiên đề nghị xóa',
 	'deletequeue-role-vote-endorse' => 'người ủng hộ việc xóa',
 	'deletequeue-role-vote-object' => 'người phản đối việc xóa',
-	'deletequeue-vote-tab' => 'Ủng hộ/phản đối xóa',
 	'deletequeue-vote-title' => 'Ủng hộ hay phản đối việc xóa “$1”',
 	'deletequeue-vote-legend' => 'Ủng hộ/phản đối xóa',
 	'deletequeue-vote-action' => 'Lựa chọn:',

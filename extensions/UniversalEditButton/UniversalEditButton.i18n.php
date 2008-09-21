@@ -208,6 +208,13 @@ $messages['ru'] = array(
 	'universaleditbutton-desc' => 'Добавляет HTML-заголовок <code>&lt;link&gt;</code> для поддержки расширения браузера «Универсальная кнопка редактирования»',
 );
 
+/** Yakut (Саха тыла)
+ * @author HalanTul
+ */
+$messages['sah'] = array(
+	'universaleditbutton-desc' => 'Браузер «Көннөрүү дэгиттэр тимэҕин» өйүүр <code>&lt;link&gt;</code> HTML-баһын эбэр',
+);
+
 /** Slovak (Slovenčina)
  * @author Danny B.
  */

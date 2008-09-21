@@ -37,6 +37,13 @@ $messages['arz'] = array(
 	'charinsert-desc' => 'بيسمح بعمل صندوق JavaScript لـ [[MediaWiki:Edittools|تدخيل حروف مش قياسية]]',
 );
 
+/** Asturian (Asturianu)
+ * @author Esbardu
+ */
+$messages['ast'] = array(
+	'charinsert-desc' => "Permite la creación d'una caxa JavaScript pa [[MediaWiki:Edittools|enxertar carauteres non estándar]]",
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  */
@@ -192,6 +199,13 @@ $messages['lb'] = array(
 	'charinsert-desc' => 'Erlaabt et eng JavaScript-gesteiert Këscht ze maache fir [[MediaWiki:Edittools|Sonnerzeechen anzesetzen]]',
 );
 
+/** Macedonian (Македонски)
+ * @author Brest
+ */
+$messages['mk'] = array(
+	'charinsert-desc' => 'Дава можност за креирање на JavaScript кутија за [[MediaWiki:Edittools|вметнување на нестандардни знаци]]',
+);
+
 /** Marathi (मराठी)
  * @author Kaustubh
  */
@@ -246,6 +260,13 @@ $messages['pt'] = array(
  */
 $messages['ru'] = array(
 	'charinsert-desc' => 'Позволяет создать JavaScript-поле для [[MediaWiki:Edittools|вставки необычных символов]]',
+);
+
+/** Yakut (Саха тыла)
+ * @author HalanTul
+ */
+$messages['sah'] = array(
+	'charinsert-desc' => 'Оччо биллибэт, сэдэх бэлиэлэри [[MediaWiki:Edittools|туруорарга]] аналлаах JavaScript түннүгүн оҥорорго аналлаах',
 );
 
 /** Slovak (Slovenčina)

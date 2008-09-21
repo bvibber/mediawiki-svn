@@ -103,6 +103,13 @@ $messages['eo'] = array(
 	'doublewiki-desc' => 'Montras paĝon kaj ties tradukon de aliaj vikio kun du kolumnoj en la sama paĝo',
 );
 
+/** Spanish (Español)
+ * @author Sanbec
+ */
+$messages['es'] = array(
+	'doublewiki-desc' => 'Muestra una página y su traducción de otra wiki en dos columnas de la misma página',
+);
+
 /** Persian (فارسی)
  * @author Huji
  */

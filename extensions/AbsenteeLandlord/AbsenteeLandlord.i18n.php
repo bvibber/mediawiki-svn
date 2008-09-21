@@ -308,6 +308,14 @@ $messages['lmo'] = array(
 	'absenteelandlord-desc' => 'Auto-bloca la basa de data deò wiki se cas che i administradour i en inativ per vargun temp',
 );
 
+/** Macedonian (Македонски)
+ * @author Brest
+ */
+$messages['mk'] = array(
+	'absenteelandlord-reason' => 'Базата на податоци е автоматски заклучена поради неактивност на систем администраторите.',
+	'absenteelandlord-desc' => 'Автоматско заклучување на вики базата на податоци доколку систем администраторите се неактивни одредено време',
+);
+
 /** Malayalam (മലയാളം)
  * @author Shijualex
  */

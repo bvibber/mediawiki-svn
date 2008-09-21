@@ -79,12 +79,13 @@ $messages['bcc'] = array(
 
 /** Bulgarian (Български)
  * @author DCLXVI
+ * @author Spiritia
  */
 $messages['bg'] = array(
 	'simpleantispam' => 'Вашата редакция задейства механизма против спам',
 	'simpleantispam-label' => "Проверка за спам.
 Необходимо е да '''НЕ''' попълвате това поле!",
-	'simpleantispam-desc' => 'Добавя прост формуляр за проерка за спам/роботи',
+	'simpleantispam-desc' => 'Добавя прост формуляр за проверка за спам/роботи',
 );
 
 /** Bengali (বাংলা)

@@ -102,6 +102,13 @@ $messages['eo'] = array(
 	'mwsearch-desc' => "Etendilo ''MWSearch''",
 );
 
+/** Spanish (Español)
+ * @author Remember the dot
+ */
+$messages['es'] = array(
+	'mwsearch-desc' => 'Complemento MWSearch',
+);
+
 /** Persian (فارسی)
  * @author Huji
  */

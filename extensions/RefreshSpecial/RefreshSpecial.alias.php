@@ -34,8 +34,18 @@ $aliases['lb'] = array(
 	'RefreshSpecial' => array( 'Spezialsäiten aktualiséieren' ),
 );
 
+/** Nedersaksisch (Nedersaksisch) */
+$aliases['nds-nl'] = array(
+	'RefreshSpecial' => array( 'Speciaal_verniejen' ),
+);
+
 /** Dutch (Nederlands) */
 $aliases['nl'] = array(
 	'RefreshSpecial' => array( 'SpeciaalVerversen' ),
+);
+
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
+$aliases['no'] = array(
+	'RefreshSpecial' => array( 'Oppdater spesialsider' ),
 );
 

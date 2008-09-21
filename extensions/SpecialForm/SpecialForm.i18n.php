@@ -251,10 +251,11 @@ $messages['fi'] = array(
 
 /** French (Français)
  * @author Grondin
+ * @author McDutchie
  * @author Sherbrooke
  */
 $messages['fr'] = array(
-	'form-desc' => 'Un [[Special:Form|formulaire d’interface]] pour commencer des nouvelles pages',
+	'form-desc' => 'Une [[Special:Form|interface de formulaire]] pour commencer des nouvelles pages',
 	'form' => 'Formulaire',
 	'formnoname' => 'Aucun nom',
 	'formnonametext' => 'Veuillez spécifier le nom du formulaire, sous la forme "Special:Formulaire/NomDuFormulaire".',
@@ -340,7 +341,7 @@ $messages['hsb'] = array(
 	'formbadpagenametext' => 'Zapodate formularne daty tworja njedowolene mjeno strony: "$1".',
 	'formrequiredfieldpluralerror' => 'Pola $1 su trěbne pola. Prošu wupjelń je.',
 	'formrequiredfielderror' => 'Polo $1 je trěbne polo. Prošu wupjelń je.',
-	'formsavesummary' => 'Nowa strona, kotraž [[Special:Form/formular $1]] wužiwa.',
+	'formsavesummary' => 'Nowa strona, kotraž [[Special:Form/$1|formular $1]] wužiwa.',
 	'formsaveerror' => 'Zmylk při składowanju formulara',
 	'formsaveerrortext' => 'Bě njeznaty zmylk při składowanju nastawka "$1".',
 );
@@ -356,7 +357,29 @@ $messages['hu'] = array(
  * @author McDutchie
  */
 $messages['ia'] = array(
+	'form-desc' => 'Un [[Special:Form|interfacie de formulario]] pro initiar nove paginas',
+	'form' => 'Formulario',
+	'formnoname' => 'Nulle nomine del formulario',
+	'formnonametext' => 'Tu debe fornir un nomine pro le formulario, como "Special:Formulario/NomineDelFormulario".',
+	'formbadname' => 'Nomine de formulario invalide',
+	'formbadnametext' => 'Non existe un formulario con iste nomine.',
+	'formpattern' => 'formulario-$1',
+	'formtitlepattern' => 'Adder nove $1',
 	'formsave' => 'Immagazinar',
+	'formindexmismatch-title' => 'Non-correspondentia inter forma de nomine e patrono',
+	'formindexmismatch' => 'Iste formulario ha formas de nomine e patronos non correspondente a partir del indice $1.',
+	'formarticleexists' => 'Pagina existe',
+	'formarticleexiststext' => 'Le pagina [[$1]] existe ja.',
+	'formbadpagename' => 'Nomine de pagina invalide',
+	'formbadrecaptcha' => 'Valores incorrecte pro reCaptcha. Reprova.',
+	'formbadpagenametext' => 'Le datos de formulario que tu entrava resulta in un nomine de pagina invalide, "$1".',
+	'formrequiredfieldpluralerror' => 'Le campos $1 es requirite pro iste formulario.
+Per favor completa los.',
+	'formrequiredfielderror' => 'Le campo $1 es requirite pro iste formulario.
+Per favor completa lo.',
+	'formsavesummary' => 'Nove pagina con [[Special:Form/$1|le formulario $1]]',
+	'formsaveerror' => 'Error durante le immagazinage del formulario',
+	'formsaveerrortext' => "Il occurreva un error incognite durante le immagazinage del pagina '$1'.",
 );
 
 /** Indonesian (Bahasa Indonesia)

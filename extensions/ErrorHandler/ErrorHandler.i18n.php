@@ -142,6 +142,7 @@ $messages['eo'] = array(
 	'errorhandler-error-warning' => 'Averto',
 	'errorhandler-error-parse' => 'Eraro de sintaksa analizilo',
 	'errorhandler-error-notice' => 'Noto',
+	'errorhandler-error-deprecated' => 'Evitinda',
 	'errorhandler-error-core-error' => 'Fundamenta eraro',
 	'errorhandler-error-compile-error' => 'Tradukila eraro',
 	'errorhandler-error-compile-warning' => 'Tradukila averto',

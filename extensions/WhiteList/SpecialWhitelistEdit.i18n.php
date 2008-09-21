@@ -187,7 +187,7 @@ $2',
 	'whitelistnonrestricted' => "المستخدم '''$1''' ليس مستخدما محددا.
 هذه الصفحة مطبقة فقط على المستخدمين المحددين",
 	'whitelistnever' => 'أبدا',
-	'whitelistnummatches' => '  - $1 مطابقة',
+	'whitelistnummatches' => '  - {{PLURAL:$1|مطابقة واحدة|$1 مطابقة}}',
 );
 
 /** Egyptian Spoken Arabic (مصرى)
@@ -238,7 +238,7 @@ $2',
 	'whitelistnonrestricted' => "المستخدم '''$1''' ليس مستخدما محددا.
 هذه الصفحة مطبقة فقط على المستخدمين المحددين",
 	'whitelistnever' => 'أبدا',
-	'whitelistnummatches' => '  - $1 مطابقة',
+	'whitelistnummatches' => '  - {{PLURAL:$1|مطابقة واحده|$1 مطابقة}}',
 );
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
@@ -279,7 +279,7 @@ $allMessages['bg'] = array(
 $2',
 	'whitelistrequestconf' => 'Заявка за нови страници беше изпратена на $1',
 	'whitelistnever' => 'никога',
-	'whitelistnummatches' => ' - $1 съвпадения',
+	'whitelistnummatches' => '  - {{PLURAL:$1|едно съвпадение|$1 съвпадения}}',
 );
 
 /** Catalan (Català)
@@ -362,7 +362,7 @@ $2',
 	'whitelistnonrestricted' => "'''$1''' ist kein beschränkter Benutzer.
 Diese Seite gilt nur für beschränkte Bentzer.",
 	'whitelistnever' => 'niemals',
-	'whitelistnummatches' => ' - $1 Übereinstimmungen',
+	'whitelistnummatches' => ' - $1 {{PLURAL:$1|Übereinstimmung|Übereinstimmungen}}',
 );
 
 /** Zazaki (Zazaki)
@@ -460,6 +460,7 @@ $2',
 
 /** French (Français)
  * @author Grondin
+ * @author McDutchie
  * @author Zetud
  */
 $allMessages['fr'] = array(
@@ -480,14 +481,14 @@ $allMessages['fr'] = array(
 	'whitelisttableview' => 'Afficher',
 	'whitelisttablenewdate' => 'Nouvelle date :',
 	'whitelisttablechangedate' => 'Changer la date d’expiration',
-	'whitelisttablesetedit' => 'Paramètres pour l’édition',
-	'whitelisttablesetview' => 'Paramètres pour visionner',
+	'whitelisttablesetedit' => 'Activer modification',
+	'whitelisttablesetview' => 'Activer visualisation',
 	'whitelisttableremove' => 'Retirer',
 	'whitelistnewpagesfor' => 'Ajoute de nouvelles pages à la liste blanche de <b>$1</b><br />
 Utiliser soit le caractère * soit %',
 	'whitelistnewtabledate' => 'Date d’expiration :',
-	'whitelistnewtableedit' => 'Paramètres d‘édition',
-	'whitelistnewtableview' => 'Paramètres pour visionner',
+	'whitelistnewtableedit' => 'Activer modification',
+	'whitelistnewtableview' => 'Activer visualisation',
 	'whitelistnewtableprocess' => 'Traiter',
 	'whitelistnewtablereview' => 'Réviser',
 	'whitelistselectrestricted' => '== Sélectionner un nom d’utilisateur à accès restreint ==',
@@ -507,7 +508,7 @@ $2',
 	'whitelistnonrestricted' => "L'utilisateur  '''$1''' n’est pas avec des droits restreints.
 Cette page ne s’applique qu’aux utilisateurs disposant de droits restreints.",
 	'whitelistnever' => 'jamais',
-	'whitelistnummatches' => ' - $1 {{PLURAL:$1|occurence|occurences}}',
+	'whitelistnummatches' => '- {{PLURAL:$1|une occurence|$1 occurences}}',
 );
 
 /** Western Frisian (Frysk)
@@ -545,7 +546,7 @@ $allMessages['gl'] = array(
 	'whitelisttableremove' => 'Eliminar',
 	'whitelistnewpagesfor' => 'Engada novas páxinas á listaxe branca de <b>$1</b><br />
 Pode usar * ou %, como tamén o carácter "comodín"',
-	'whitelistnewtabledate' => 'Data de expiración:',
+	'whitelistnewtabledate' => 'Data de caducidade:',
 	'whitelistnewtableedit' => 'Preparar para editar',
 	'whitelistnewtableview' => 'Preparar para ver',
 	'whitelistnewtableprocess' => 'Proceso',
@@ -567,7 +568,7 @@ $2',
 	'whitelistnonrestricted' => "O usuario '''$1''' non é un usuario limitado.
 Esta páxina só é aplicable aos usuarios limitados",
 	'whitelistnever' => 'nunca',
-	'whitelistnummatches' => '  - $1 coincidencias',
+	'whitelistnummatches' => '  - {{PLURAL:$1|unha coincidencia|$1 coincidencias}}',
 );
 
 /** Gothic
@@ -635,10 +636,51 @@ $allMessages['hu'] = array(
  * @author McDutchie
  */
 $allMessages['ia'] = array(
+	'whitelist-desc' => 'Modificar le permissiones de accesso de usatores restringite',
+	'whitelistedit' => 'Editor de accesso al lista blanc',
+	'whitelist' => 'Adder paginas al lista blanc',
 	'mywhitelistpages' => 'Mi paginas',
+	'whitelistfor' => '<center>Informationes actual pro <b>$1</b></center>',
+	'whitelisttablemodify' => 'Modificar',
 	'whitelisttablemodifyall' => 'Totes',
+	'whitelisttablemodifynone' => 'Nulle',
+	'whitelisttablepage' => 'Pagina wiki',
+	'whitelisttabletype' => 'Typo de accesso',
+	'whitelisttableexpires' => 'Expira le',
+	'whitelisttablemodby' => 'Ultime modification per',
+	'whitelisttablemodon' => 'Ultime modification le',
 	'whitelisttableedit' => 'Modificar',
+	'whitelisttableview' => 'Vider',
+	'whitelisttablenewdate' => 'Nove data:',
+	'whitelisttablechangedate' => 'Cambiar le data de expiration',
+	'whitelisttablesetedit' => 'Activar modification',
+	'whitelisttablesetview' => 'Activar visualisation',
+	'whitelisttableremove' => 'Remover',
+	'whitelistnewpagesfor' => 'Adde nove paginas al lista blanc de <b>$1</b><br />
+Usa * o % como metacharacter',
+	'whitelistnewtabledate' => 'Data de expiration:',
+	'whitelistnewtableedit' => 'Activar modification',
+	'whitelistnewtableview' => 'Activar visualisation',
+	'whitelistnewtableprocess' => 'Processar',
+	'whitelistnewtablereview' => 'Revider',
+	'whitelistselectrestricted' => '== Seliger nomine de usator restringite ==',
+	'whitelistpagelist' => 'Paginas de {{SITENAME}} pro $1',
+	'whitelistnocalendar' => "<font color='red' size=3>Pare que [http://www.mediawiki.org/wiki/Extension:Usage_Statistics Extension:UsageStatistics], un prerequisito pro iste extension, non ha essite installate correctemente!</font>",
+	'whitelistbadtitle' => 'Titulo incorrecte -',
+	'whitelistoverview' => '== Summario de cambiamentos pro $1 ==',
+	'whitelistoverviewcd' => "* Modifica le data a '''$1''' pro [[:$2|$2]]",
+	'whitelistoverviewsa' => "* Configura le accesso a '''$1''' pro [[:$2|$2]]",
+	'whitelistoverviewrm' => '* Retira le accesso a [[:$1|$1]]',
+	'whitelistoverviewna' => "* Adde [[:$1|$1]] al lista blanc con accesso '''$2''' e data de expiration '''$3'''",
+	'whitelistrequest' => 'Requestar accesso a plus paginas',
+	'whitelistrequestmsg' => '$1 ha requestate accesso al sequente paginas:
+
+$2',
+	'whitelistrequestconf' => 'Le requesta de nove paginas esseva inviate a $1',
+	'whitelistnonrestricted' => "Le usator '''$1''' non es un usator restringite.
+Iste pagina es solmente applicabile al usatores restringite",
 	'whitelistnever' => 'nunquam',
+	'whitelistnummatches' => '  - {{PLURAL:$1|un occurrentia|$1 occurrentias}}',
 );
 
 /** Indonesian (Bahasa Indonesia)
@@ -975,7 +1017,7 @@ $2",
 	'whitelistnonrestricted' => "Gebruiker '''$1''' is geen gebruiker met beperkte rechten.
 Deze pagina is alleen van toepassing op gebruikers met beperkte rechten.",
 	'whitelistnever' => 'nooit',
-	'whitelistnummatches' => '- $1 resultaten',
+	'whitelistnummatches' => '- $1 {{PLURAL:$1|resultaat|resultaten}}',
 );
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
@@ -1035,7 +1077,7 @@ $2',
 	'whitelistnonrestricted' => "'''$1''' er ikke en begrenset bruker.
 Denne siden kan kun brukes på begrensede brukere.",
 	'whitelistnever' => 'aldri',
-	'whitelistnummatches' => '  - $1 treff',
+	'whitelistnummatches' => '- $1 {{PLURAL:$1|treff}}',
 );
 
 /** Occitan (Occitan)
@@ -1271,7 +1313,7 @@ $2',
 	'whitelistnonrestricted' => "Používateľ '''$1''' nie je obmedzený používateľ.
 Táto stránka sa týka iba obmedzneých používateľov.",
 	'whitelistnever' => 'nikdy',
-	'whitelistnummatches' => '  - $1 výsledkov',
+	'whitelistnummatches' => '  - $1 {{PLURAL:$1|výsledok|výsledky|výsledkov}}',
 );
 
 /** Serbian Cyrillic ekavian (ћирилица)

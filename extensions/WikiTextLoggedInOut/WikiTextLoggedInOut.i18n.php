@@ -63,6 +63,13 @@ $messages['gl'] = array(
 	'wikitextloggedinout-desc' => 'Dous hooks de análise, <tt>&lt;loggedin&gt;</tt> e mais <tt>&lt;loggedout&gt;</tt> para amosar textos diferentes dependendo do estado do rexistro do usuario',
 );
 
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'wikitextloggedinout-desc' => 'Duo functiones pro le analysator syntactic, <tt>&lt;loggedin&gt;</tt> e <tt>&lt;loggedout&gt;</tt>, pro monstrar texto differente secundo le stato de identification del usator',
+);
+
 /** Indonesian (Bahasa Indonesia)
  * @author Rex
  */

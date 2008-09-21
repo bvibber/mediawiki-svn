@@ -162,6 +162,15 @@ $messages['hsb'] = array(
 	'whatismyip-out' => 'Twoja IP:',
 );
 
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'whatismyip' => 'Que es mi adresse IP',
+	'whatismyip-desc' => 'Monstra le adresse IP del usator actual in [[Special:WhatIsMyIP]]',
+	'whatismyip-out' => 'Tu adresse IP:',
+);
+
 /** Italian (Italiano)
  * @author Darth Kule
  */

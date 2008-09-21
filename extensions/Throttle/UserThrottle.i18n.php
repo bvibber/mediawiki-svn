@@ -99,6 +99,17 @@ $messages['hsb'] = array(
 	'acct_creation_global_soft_throttle_hit-desc' => 'Haćenje wutworjenja wužiwarskich kontow',
 );
 
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'acct_creation_global_soft_throttle_hit' => 'Le creation de contos ha essite automaticamente suspendite durante alcun momentos, debite a un numero abnormal de tentativas recente de apertura de session.
+Per favor attende alcun minutas e reprova.',
+	'acct_creation_global_hard_throttle_hit' => "Le creation de contos ha essite automaticamente suspendite durante alcun secundas pro reducer le attaccos de registration in massa.
+Per favor attende un momento e preme 'recargar' in tu navigator pro resubmitter tu requesta.",
+	'acct_creation_global_soft_throttle_hit-desc' => 'Limita le frequentia de creation de usatores',
+);
+
 /** Javanese (Basa Jawa)
  * @author Meursault2004
  */

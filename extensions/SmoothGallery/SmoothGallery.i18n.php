@@ -163,6 +163,28 @@ $messages['hsb'] = array(
 	'smoothgallery-javascript-disabled' => 'Javascript je trjeba, zo by so tuta galerija prawje zwobrazniła.',
 );
 
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'smoothgallery' => 'SmoothGallery',
+	'smoothgallery-desc' => 'Permitte al usatores crear galerias con imagines que ha essite cargate.
+Permitte le major parte del optiones de SmoothGallery',
+	'smoothgallery-title' => 'SmoothGallery',
+	'smoothgallery-smoothgallerytitle' => 'SmoothGallery: $1',
+	'smoothgallery-error' => '<b>Error de SmoothGallery:</b>',
+	'smoothgallery-gallery-not-found' => 'Le galeria requestate non existe.',
+	'smoothgallery-not-found' => 'Nulle imagine esseva addite al galeria.
+Per favor adde al minus un imagine.',
+	'smoothgallery-no-images' => 'Nulle imagine esseva trovate in iste galeria.
+Assecura te que tote le imagines requestate existe.
+Le sequente imagines non esseva trovate: $1',
+	'smoothgallery-invalid-images' => 'Le sequente imagines requestate esseva de un typo invalide: $1',
+	'smoothgallery-unexpected-error' => 'Il occurreva un error non expectate.
+Per favor reporta isto como un error in le software.',
+	'smoothgallery-javascript-disabled' => 'JavaScript es requirite pro vider iste galeria correctemente.',
+);
+
 /** Javanese (Basa Jawa)
  * @author Meursault2004
  */

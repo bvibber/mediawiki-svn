@@ -220,6 +220,17 @@ $messages['hy'] = array(
 	'filelist-image-desc' => 'նկարագրություն',
 );
 
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'filelist' => 'Lista de files',
+	'filelist-desc' => '[[Special:Filelist|Pagina special]] pro listar files cargate',
+	'filelist-show-list' => 'Monstrar lista',
+	'filelist-show-gallery' => 'Monstrar galeria',
+	'filelist-image-desc' => 'desc',
+);
+
 /** Italian (Italiano)
  * @author Darth Kule
  */

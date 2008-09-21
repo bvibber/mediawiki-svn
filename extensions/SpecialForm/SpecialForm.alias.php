@@ -34,8 +34,18 @@ $aliases['lb'] = array(
 	'Form' => array( 'Formulaire' ),
 );
 
+/** Nedersaksisch (Nedersaksisch) */
+$aliases['nds-nl'] = array(
+	'Form' => array( 'Formelier' ),
+);
+
 /** Dutch (Nederlands) */
 $aliases['nl'] = array(
 	'Form' => array( 'Formulier' ),
+);
+
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
+$aliases['no'] = array(
+	'Form' => array( 'Skjema' ),
 );
 

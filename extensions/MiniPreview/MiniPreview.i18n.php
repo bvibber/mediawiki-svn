@@ -107,8 +107,8 @@ $messages['eo'] = array(
  */
 $messages['fr'] = array(
 	'minipreview-desc' => 'Affiche un mini-aperçu, à côté d’une image, d’autres médias appartenant aux mêmes catégories ou affichés dans les mêmes pages.',
-	'minipreview-files_in_category' => 'Il y {{PLURAL:$1|un fichier|$1 fichiers}} au total dans cette catégorie.',
-	'minipreview-files_in_gallery' => "Il y {{PLURAL:$1|un fichier|$1 fichiers}} au total dans cette galerie d'images.",
+	'minipreview-files_in_category' => 'Il y au total {{PLURAL:$1|un fichier|$1 fichiers}} dans cette catégorie.',
+	'minipreview-files_in_gallery' => "Il y a au total {{PLURAL:$1|un fichier|$1 fichiers}} dans cette galerie d'images.",
 	'minipreview-no_more_files_here' => 'Plus aucun fichier dans cette direction.',
 	'minipreview-no_category_gallery' => 'Pas de catégorie ni de galerie !',
 	'minipreview-ignore_categories' => "Ceci est la lsite des noms de catégorie ou de préfixes de nom. Ces catégories ne sont pas affichées par MiniPreview. Par exemple, « * PD- » n'affichera pas toutes les catégories dont le nom commence par « PD- », telle que « PD-old ».
@@ -153,8 +153,8 @@ $messages['hi'] = array(
  */
 $messages['hsb'] = array(
 	'minipreview-desc' => 'MiniPreview zwobraznja pódla wobraz małe přehlady druhich medijow w samsnych kategorijach abo kotrež so na samsnych stronach zwobraznjeja',
-	'minipreview-files_in_category' => '$1 datajow dohromady w tutej kategoriji.',
-	'minipreview-files_in_gallery' => '$1 datajow dohromady w tutej galeriji.',
+	'minipreview-files_in_category' => "'''$1''' {{PLURAL:$1|dataja|dataji|dataje|datajow}} dohromady w tutej kategoriji.",
+	'minipreview-files_in_gallery' => "'''$1''' {{PLURAL:$1|dataja|dataji|dataje|datajow}} dohromady w tutej galeriji.",
 	'minipreview-no_more_files_here' => 'Žane dalše dataje w tutym směrje.',
 	'minipreview-no_category_gallery' => 'Žane kategorije abo galerije!',
 	'minipreview-ignore_categories' => 'To je lisćina kategorijnych mjenow abo spočatkow mjenow. Tute kategorije so přez MiniPreview njepokazaja. Na přikład, "* PD-" njepokaza wšě kategorije, kotre so z "PD-" započinaja, kaž na př. "PD-stary".
@@ -225,8 +225,8 @@ $messages['km'] = array(
  */
 $messages['ksh'] = array(
 	'minipreview-desc' => 'De [[Special:MiniPreview|MiniVöransich]] zeisch bei enem Beld en Püngel klein Belscher als Vöransich fun de Belder in derselve Saachjrupp udder us derselve Sigg.',
-	'minipreview-files_in_category' => '{{PLURAL:$1|Ei Datei es|$1 Dateie sin insejesamp|Kei Datei}} en dä Saachjrupp.',
-	'minipreview-files_in_gallery' => '{{PLURAL:$1|Ei Beld es|$1 Bellder sin insejesamp|Kei Beld}} en dä Jalleri.',
+	'minipreview-files_in_category' => '{{PLURAL:$1|Ei Datei es|$1 Dateie sin insejesamp|Mer han kei Datei}} en dä Saachjrupp.',
+	'minipreview-files_in_gallery' => '{{PLURAL:$1|Ei Beld es|$1 Bellder sin insejesamp|Mer han kei Beld}} en dä Jallerih.',
 	'minipreview-no_more_files_here' => 'Kein Dateie mieh en dämm Verzeichnis.',
 	'minipreview-no_category_gallery' => 'Kei Saachjruppe udder Jallerie!',
 	'minipreview-ignore_categories' => 'Dat hee es en Leß met Aanfäng fun Name fun Saachjruppe.

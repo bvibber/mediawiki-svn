@@ -327,6 +327,14 @@ $messages['ru'] = array(
 	'newuseredit-summary' => 'Добавление [[{{int:newusermessage-template}}|приветствия]] на страницу обсуждения нового участника',
 );
 
+/** Yakut (Саха тыла)
+ * @author HalanTul
+ */
+$messages['sah'] = array(
+	'newusermessage-desc' => 'Саҥа бэлиэтэммит кыттааччы ырытыытын сирэйигэр биллэрии сурук эбэр',
+	'newuseredit-summary' => 'Саҥа кыттааччы ырытыытын сирэйигэр [[{{int:newusermessage-template}}|эҕэрдэ сурук]] эбэр',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */
@@ -373,7 +381,7 @@ $messages['uk'] = array(
  */
 $messages['vec'] = array(
 	'newusermessage-desc' => 'Zonta un messagio a le pagine de discussion dei utenti novi',
-	'newuseredit-summary' => "Zonto un [[{{MediaWiki:Newusermessage-template}}|mesajo de benvegnù]] a la pàxena de discussion de 'l novo utente",
+	'newuseredit-summary' => "Zonto un [[{{int:newusermessage-template}}|mesajo de benvegnù]] a la pàxena de discussion de 'l novo utente",
 );
 
 /** Vietnamese (Tiếng Việt)

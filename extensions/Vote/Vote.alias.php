@@ -54,6 +54,11 @@ $aliases['nl'] = array(
 	'Vote' => array( 'Stemmen' ),
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
+$aliases['no'] = array(
+	'Vote' => array( 'Avstemning' ),
+);
+
 /** Albanian (Shqip) */
 $aliases['sq'] = array(
 	'Vote' => array( 'Voto' ),

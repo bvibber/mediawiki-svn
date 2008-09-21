@@ -852,6 +852,7 @@ $messages['eo'] = array(
 	'configure-section-extension' => 'Etendiloj',
 	'configure-section-search' => 'Serĉi',
 	'configure-section-copyright' => 'Kopirajto',
+	'configure-section-htcp' => 'HTCP multsendaĵo',
 	'configure-section-misc' => 'Diversaĵoj',
 	'configure-section-mw-extensions' => 'Etendiloj de MediaWiki',
 	'configure-select-wiki' => 'Vikia selektaĵo',
@@ -863,6 +864,7 @@ $messages['eo'] = array(
 	'right-configure-all' => 'Konfiguri la preferojn de la vikio',
 	'right-configure-interwiki' => 'Konfiguri preferojn de ekstera vikio',
 	'right-extensions' => 'Konfiguri la etendilojn',
+	'right-extensions-all' => 'Progresa konfigurado de la etendiloj',
 	'right-extensions-interwiki' => 'Konfiguri eksterajn vikiajn etendilojn',
 	'right-viewconfig' => 'Rigardi vikian konfiguron',
 	'right-viewconfig-all' => 'Vidi ĉiujn vikiajn konfigurojn',
@@ -1582,6 +1584,7 @@ Leet e w.e.g un oder ännert en esou datt dës Erweiderung funktionéiert.",
 	'configure-section-enotif' => 'Informatioun per E-Mail',
 	'configure-section-localization' => 'Lokalisatioun',
 	'configure-section-timezone' => 'Zäitzon',
+	'configure-section-zh-conversion' => 'Chinesesch Konversioun',
 	'configure-section-css-js' => 'CSS a JavaScript',
 	'configure-section-namespaces' => 'Nummraim',
 	'configure-section-stats' => 'Statistike vum Site',
@@ -2839,12 +2842,19 @@ $messages['th'] = array(
 
 /** Turkish (Türkçe)
  * @author Karduelis
+ * @author Mach
  */
 $messages['tr'] = array(
 	'configure-desc-group' => 'Gruplar',
 	'configure-desc-ns' => 'İsim alanları',
 	'configure-js-remove' => 'Sil',
 	'configure-section-namespaces' => 'İsim alanları',
+	'configure-section-stats' => 'Site istatistikleri',
+	'configure-section-category' => 'Kategoriler',
+	'configure-section-block' => 'Engellemeler',
+	'configure-section-users' => 'Kullanıcılar',
+	'configure-section-search' => 'Ara',
+	'configure-section-copyright' => 'Telif hakları',
 );
 
 /** Ukrainian (Українська)

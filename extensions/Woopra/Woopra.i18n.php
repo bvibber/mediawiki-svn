@@ -58,9 +58,11 @@ $messages['eo'] = array(
 	'woopra-desc' => 'Ebligas la [http://www.woopra.com/ Aktualan Kontroladan Softvaron Woopra] funkcii en via MediaWiki programaro',
 );
 
-/** French (Français) */
+/** French (Français)
+ * @author McDutchie
+ */
 $messages['fr'] = array(
-	'woopra-desc' => 'Autorise pour [http://www.woopra.com/ le suivi en direct du logiciel Woopra] de travailler pour votre installation Mediawiki',
+	'woopra-desc' => 'Autorise pour le [http://www.woopra.com/ logicial pour suivi en direct Woopra] de travailler pour votre installation Mediawiki',
 );
 
 /** Galician (Galego)
@@ -82,6 +84,13 @@ $messages['hsb'] = array(
  */
 $messages['hu'] = array(
 	'woopra-desc' => 'Lehetővé teszi a [http://www.woopra.com/ Woopra Live Tracking Software] számára, hogy a MediaWikin dolgozzon',
+);
+
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'woopra-desc' => 'Permitte que le [http://www.woopra.com/ software pro traciamento in directo Woopra] functiona con tu installation de MediaWiki',
 );
 
 /** Khmer (ភាសាខ្មែរ)

@@ -546,6 +546,35 @@ $messages['hsb'] = array(
 	'usagestatistics-editpages' => 'Indiwiduelna statistika stronow wužiwarja $1',
 );
 
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'specialuserstats' => 'Statisticas de uso',
+	'usagestatistics' => 'Statisticas de uso',
+	'usagestatistics-desc' => 'Monstra statisticas del usator individual e del uso general del wiki',
+	'usagestatisticsfor' => '<h2>Statisticas de uso pro [[User:$1|$1]]</h2>',
+	'usagestatisticsforallusers' => '<h2>Statisticas de uso pro tote le usatores</h2>',
+	'usagestatisticsinterval' => 'Intervallo',
+	'usagestatisticstype' => 'Typo',
+	'usagestatisticsstart' => 'Data de initio',
+	'usagestatisticsend' => 'Data de fin',
+	'usagestatisticssubmit' => 'Generar statisticas',
+	'usagestatisticsnostart' => '* <font color=red>Per favor specifica un data de initio</font>',
+	'usagestatisticsnoend' => '* <font color=red>Per favor specifica un data de fin</font>',
+	'usagestatisticsbadstartend' => '<b>Mal data de <i>initio</i> e/o de <i>fin</i>!</b>',
+	'usagestatisticsintervalday' => 'Die',
+	'usagestatisticsintervalweek' => 'Septimana',
+	'usagestatisticsintervalmonth' => 'Mense',
+	'usagestatisticsincremental' => 'Incremental',
+	'usagestatisticsincremental-text' => 'incremental',
+	'usagestatisticscumulative' => 'Cumulative',
+	'usagestatisticscumulative-text' => 'cumulative',
+	'usagestatisticscalselect' => 'Seliger',
+	'usagestatistics-editindividual' => 'Statisticas $1 super le modificationes del usator individual',
+	'usagestatistics-editpages' => 'Statisticas $1 super le paginas del usator individual',
+);
+
 /** Icelandic (Íslenska) */
 $messages['is'] = array(
 	'usagestatisticsintervalday' => 'Dagur',

@@ -859,10 +859,13 @@ $messages['th'] = array(
 
 /** Turkish (Türkçe)
  * @author Karduelis
+ * @author Mach
  */
 $messages['tr'] = array(
+	'dt_viewxml_categories' => 'Kategoriler',
 	'dt_viewxml_namespaces' => 'İsim alanları',
 	'dt_xml_page' => 'Sayfa',
+	'dt_xml_name' => 'İsim',
 	'dt_xml_title' => 'Başlık',
 );
 

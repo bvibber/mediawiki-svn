@@ -32,6 +32,13 @@ $messages['arz'] = array(
 	'trustedxff-desc' => 'التعامل مع لستة عناوين البروكس الموثوق فيها ([http://meta.wikimedia.org/wiki/XFF_project XFF project])',
 );
 
+/** Asturian (Asturianu)
+ * @author Esbardu
+ */
+$messages['ast'] = array(
+	'trustedxff-desc' => "Xestión d'una llista de direiciones proxy d'enfotu ([http://meta.wikimedia.org/wiki/XFF_project proyeutu XFF])",
+);
+
 /** Czech (Česky)
  * @author Mormegil
  */

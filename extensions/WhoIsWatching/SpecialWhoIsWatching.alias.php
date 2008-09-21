@@ -30,6 +30,16 @@ $aliases['lb'] = array(
 	'WhoIsWatching' => array( 'Wien iwwerwaacht' ),
 );
 
+/** Macedonian (Македонски) */
+$aliases['mk'] = array(
+	'WhoIsWatching' => array( 'КојНабљудува' ),
+);
+
+/** Nedersaksisch (Nedersaksisch) */
+$aliases['nds-nl'] = array(
+	'WhoIsWatching' => array( 'Wee_volg' ),
+);
+
 /** Dutch (Nederlands) */
 $aliases['nl'] = array(
 	'WhoIsWatching' => array( 'WieVolgt' ),

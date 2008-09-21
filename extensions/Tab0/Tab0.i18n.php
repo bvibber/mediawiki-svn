@@ -88,6 +88,13 @@ $messages['hsb'] = array(
 	'tab0-desc' => 'Přidawa rajtark "0", kotryž na wobdźěłansku stronu prěnjeho wotrězka strony wotkazuje',
 );
 
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'tab0-desc' => 'Adde le scheda "0" que da accesso al pagina de modification del prime section del pagina',
+);
+
 /** Indonesian (Bahasa Indonesia)
  * @author Rex
  */

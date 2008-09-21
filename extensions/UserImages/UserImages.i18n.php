@@ -151,6 +151,15 @@ $messages['hsb'] = array(
 	'userimages-noimages' => '$1 nahraća wobrazow nima.',
 );
 
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'userimages-caption' => 'Imagines cargate per $1',
+	'userimages-noname' => 'Nomine de usator invalide o mancante.',
+	'userimages-noimages' => '$1 non ha cargate alcun imagine.',
+);
+
 /** Indonesian (Bahasa Indonesia) */
 $messages['id'] = array(
 	'userimages-caption' => 'Berkas yang dimuatkan oleh $1',

@@ -305,6 +305,33 @@ Zawěsć so, zo njeby cyle domejny blokował, kotrež wužiwarske konta hospoduj
 	'spamdifftool_submit_buttom' => 'Wotesłać',
 );
 
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'spamdifftool' => 'Gerer le lista nigre antispam',
+	'spamdifftool-desc' => 'Forni un modo simple de adder nove entratas al lista nigre antispam ab le comparation inter versiones',
+	'spamdifftool_cantedit' => 'Pardono - tu non ha le permission de modificar le lista nigre antispam.',
+	'spamdifftool_notext' => "Il non ha texto a adder al lista nigre antispam.
+Clicca <a href='$1'>hic</a> pro continuar.",
+	'spamdifftool_confirm' => "Confirma que tu vole adder iste entratas al lista nigre antispam.
+(Clicca <a href='$1' target='new'>hic</a> pro reportar un problema.)",
+	'spamdifftool_summary' => 'Addition al lista nigre antispam',
+	'spamdifftool_urls_detected' => 'Le sequente adresses URL esseva detegite in le modification(es). Quales vole tu adder al lista nigre antispam?
+Iste optiones es ordinate del plus restrictive al minus restrictive. Le blocada de un dominio integre blocara tote le ligamines verso omne cosa proveniente de ille dominio.
+
+Assecura te de non blocar dominios integre que alberga multe sitos de usatores, como blogspot.com, geocities.com, etc.',
+	'spamdifftool_no_urls_detected' => "Nulle adresse URL esseva detecite.
+Clicca <a href='$1'>hic</a> pro retornar.",
+	'spamdifftool_spam_link_text' => 'adder como spam',
+	'spamdifftool_option_domain' => 'totes ab iste dominio',
+	'spamdifftool_option_subdomain' => 'totes ab iste subdominio',
+	'spamdifftool_option_directory' => 'iste subdominio e directorio',
+	'spamdifftool_option_none' => 'nihil',
+	'spamdifftool_block' => 'Blocar:',
+	'spamdifftool_submit_buttom' => 'Submitter',
+);
+
 /** Icelandic (Íslenska) */
 $messages['is'] = array(
 	'spamdifftool_option_none' => 'ekkert',

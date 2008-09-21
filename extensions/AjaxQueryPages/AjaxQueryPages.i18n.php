@@ -166,6 +166,13 @@ $messages['li'] = array(
 	'ajax-qp-desc' => "Voog get AJAX bie aan QueryPAges wie [[Special:Shortpages|kótte pazjena's]]",
 );
 
+/** Macedonian (Македонски)
+ * @author Brest
+ */
+$messages['mk'] = array(
+	'ajax-qp-desc' => 'Додава AJAX при повикување на страници како што се [[Special:Shortpages|{{int:shortpages}}]]',
+);
+
 /** Marathi (मराठी)
  * @author Mahitgar
  */

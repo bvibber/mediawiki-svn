@@ -122,6 +122,15 @@ $messages['hsb'] = array(
 	'stalepages-summary' => 'To je lisćina stronow, kotrež njebuchu za {{PLURAL:$1|posledni $1 dźeń|poslednjeju $1 dnjow|posdlednje $1 dny|poslednych $1 dnjow}} změnjene.',
 );
 
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'stalepages' => 'Paginas stagnate',
+	'stalepages-desc' => 'Genera un [[Special:Stalepages|lista de paginas]] que non ha essite modificate recentemente',
+	'stalepages-summary' => 'Isto es un lista de paginas que non ha essite modificate durante le ultime $1 dies.',
+);
+
 /** Italian (Italiano)
  * @author Darth Kule
  */

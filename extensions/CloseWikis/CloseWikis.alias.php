@@ -32,8 +32,18 @@ $aliases['lb'] = array(
 	'CloseWiki' => array( 'Wiki zoumaachen' ),
 );
 
+/** Nedersaksisch (Nedersaksisch) */
+$aliases['nds-nl'] = array(
+	'CloseWiki' => array( 'Wiki_sluten' ),
+);
+
 /** Dutch (Nederlands) */
 $aliases['nl'] = array(
 	'CloseWiki' => array( 'WikiSluiten' ),
+);
+
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
+$aliases['no'] = array(
+	'CloseWiki' => array( 'Steng wiki' ),
 );
 

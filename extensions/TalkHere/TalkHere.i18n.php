@@ -292,6 +292,22 @@ Wothladowarjo tutoho websydła njemóža zamołwitosć za wobsah tajkich komenta
 	'talkhere-collapse' => 'Editor schować',
 );
 
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'talkhere-desc' => 'Incorpora le pagina de discussion in le articulo',
+	'talkhere-foottext' => 'Le commentos supra pote haber essite lassate per visitatores.
+
+Le gerentes de iste sito non pote acceptar responsabilitate del contento de tal commentos.',
+	'talkhere-talkpage' => 'pagina de discussion',
+	'talkhere-notalk' => "''(nulle commento ancora)''",
+	'talkhere-addcomment' => 'adder commento',
+	'talkhere-beforeinput' => 'Tu pote adder un commento infra',
+	'talkhere-loading' => 'cargamento del editor…',
+	'talkhere-collapse' => 'celar editor',
+);
+
 /** Indonesian (Bahasa Indonesia)
  * @author Rex
  */

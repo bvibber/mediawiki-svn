@@ -173,6 +173,7 @@ $messages['br'] = array(
 );
 
 /** Catalan (Català)
+ * @author Aleator
  * @author SMP
  * @author Toniher
  */
@@ -183,8 +184,8 @@ $messages['ca'] = array(
 	'contributors-target' => 'Títol:',
 	'contributors-submit' => 'Mostra',
 	'contributors-subtitle' => 'Principals contribuïdors a $1',
-	'contributors-others-long' => 'Hi ha $1 contribuïdors més en aquesta pàgina.',
-	'contributors-others' => 'i $1 més',
+	'contributors-others-long' => 'Hi ha {{PLURAL:$1|un contribuïdor|$1 contribuïdors}} més en aquesta pàgina.',
+	'contributors-others' => 'i {{PLURAL:$1|un altre|$1 més}}',
 	'contributors-badtitle' => 'El títol no és vàlid.',
 	'contributors-nosuchpage' => 'La pàgina «$1» no existeix.',
 );

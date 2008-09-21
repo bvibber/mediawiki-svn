@@ -29,3 +29,8 @@ $aliases['nl'] = array(
 	'ProfileMonitor' => array( 'ProfilingMonitor' ),
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
+$aliases['no'] = array(
+	'ProfileMonitor' => array( 'Profilmonitor' ),
+);
+

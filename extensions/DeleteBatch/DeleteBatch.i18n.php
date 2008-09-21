@@ -136,8 +136,13 @@ $messages['bg'] = array(
  * @author Revolus
  */
 $messages['de'] = array(
+	'deletebatch' => 'Eine Reihe von Seiten löschen',
+	'deletebatch-desc' => '[[Special:DeleteBatch|Lösche eine Reihe von Seiten]]',
 	'deletebatch-button' => 'Löschen',
 	'deletebatch-here' => '<b>hier</b>',
+	'deletebatch-help' => 'Lösche eine Reihe von Seiten. Du kannst einerseits eine einzelne Seite löschen, aber auch mehrere Seiten, die du in einer Datei aufzählst.
+Wähle einen Benutzer, der im Löschlogbuch angezeigt werden soll.
+Die hochzuladende Datei sollte pro Zeile einen Seitentitel und kann optional einen mit einem senkrechten Stich („|“) abgetrennten Löschgrund enthalten.',
 	'deletebatch-caption' => 'Dateiliste',
 	'deletebatch-as' => 'Das Skript ausführen als',
 	'deletebatch-both-modes' => 'Bitte wähle entweder eine spezifische Seite oder eine gegebene Liste von Seiten.',
@@ -654,6 +659,14 @@ $messages['te'] = array(
 	'deletebatch-or' => '<b>లేదా</b>',
 	'deletebatch-page' => 'తొలగించాల్సిన పేజీలు',
 	'deletebatch-reason' => 'తొలగింపునకు కారణం',
+);
+
+/** Turkish (Türkçe)
+ * @author Mach
+ */
+$messages['tr'] = array(
+	'deletebatch-button' => 'Sil',
+	'deletebatch-caption' => 'Sayfa listesi',
 );
 
 /** Ukrainian (Українська)

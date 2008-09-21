@@ -24,8 +24,18 @@ $aliases['arz'] = array(
 	'WatchSubpages' => array( 'مراقبة_الصفحات_الفرعية' ),
 );
 
+/** Nedersaksisch (Nedersaksisch) */
+$aliases['nds-nl'] = array(
+	'WatchSubpages' => array( "Subpagina's_op_volglieste" ),
+);
+
 /** Dutch (Nederlands) */
 $aliases['nl'] = array(
 	'WatchSubpages' => array( 'SubpaginasOpVolglijst', "Subpagina'sOpVolglijst" ),
+);
+
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
+$aliases['no'] = array(
+	'WatchSubpages' => array( 'Overvåk undersider' ),
 );
 

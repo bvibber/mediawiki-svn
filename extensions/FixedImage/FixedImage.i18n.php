@@ -109,6 +109,13 @@ $messages['eo'] = array(
 	'fixedimage-desc' => 'Aldonas etikedon <tt><nowiki><fundraising></nowiki></tt> kiel bildon',
 );
 
+/** Spanish (Español)
+ * @author Remember the dot
+ */
+$messages['es'] = array(
+	'fixedimage-desc' => 'Añade elemento <tt><nowiki><fundraising></nowiki></tt> como una imagen',
+);
+
 /** Persian (فارسی)
  * @author Huji
  */

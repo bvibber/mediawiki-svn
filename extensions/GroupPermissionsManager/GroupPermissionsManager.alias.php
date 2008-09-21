@@ -48,10 +48,24 @@ $aliases['lb'] = array(
 	'SortPermissions' => array( 'Rechter sortéieren' ),
 );
 
+/** Nedersaksisch (Nedersaksisch) */
+$aliases['nds-nl'] = array(
+	'GroupPermissions' => array( 'Groepsrechen' ),
+	'RemoveUnusedGroups' => array( 'Ongebruken_groepen_vortdoon' ),
+	'SortPermissions' => array( 'Rechen_sorteren' ),
+);
+
 /** Dutch (Nederlands) */
 $aliases['nl'] = array(
 	'GroupPermissions' => array( 'Groepsrechten' ),
 	'RemoveUnusedGroups' => array( 'OngebruikteGroepenVerwijderen' ),
 	'SortPermissions' => array( 'RechtenSorteren' ),
+);
+
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
+$aliases['no'] = array(
+	'GroupPermissions' => array( 'Gruppetillatelser' ),
+	'RemoveUnusedGroups' => array( 'Fjern ubrukte grupper' ),
+	'SortPermissions' => array( 'Sorter tillatelser' ),
 );
 

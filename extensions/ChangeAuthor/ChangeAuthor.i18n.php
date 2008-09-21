@@ -262,6 +262,7 @@ $messages['br'] = array(
 );
 
 /** Catalan (Català)
+ * @author Aleator
  * @author Jordi Roqué
  * @author SMP
  */
@@ -273,11 +274,11 @@ $messages['ca'] = array(
 	'changeauthor-pagename-or-revid' => 'Nom de la pàgina o referència de la revisió:',
 	'changeauthor-pagenameform-go' => 'Vés-hi',
 	'changeauthor-comment' => 'Comentari:',
-	'changeauthor-changeauthors-multi' => "Canvi d'autor(s)",
-	'changeauthor-explanation-multi' => "Amb aquesta pantalla es poden canviar autors de revisions.<br>
+	'changeauthor-changeauthors-multi' => "Canvi d'{{PLURAL:$1|autor|autors}}",
+	'changeauthor-explanation-multi' => "Amb aquest formulari es poden canviar autors de revisions.<br />
 Només cal que canvieu un o més noms d'usuaris de la llista, afegiu un comentari (opcional) i pitgeu el botó 'Canvi d'autor(s)'.",
 	'changeauthor-changeauthors-single' => "Canvi d'autor",
-	'changeauthor-explanation-single' => "Amb aquesta pantalla podeu canviar l'autor d'una revisió.<br>
+	'changeauthor-explanation-single' => "Amb aquest formulari podeu canviar l'autor d'una revisió.<br />
 Només cal que canvieu el nom de l'usuari, afegiu un comentari (opcional) i pitgeu el botó 'Canvi d'autor'.",
 	'changeauthor-invalid-username' => 'Nom d\'usuari "$1" invàlid.',
 	'changeauthor-nosuchuser' => 'L\'usuari "$1" no existeix.',

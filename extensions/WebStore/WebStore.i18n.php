@@ -542,6 +542,61 @@ $1',
 	'webstore_no_handler' => 'Žadyn rjadowak, zo by so tutón MIME-typ přetworił',
 );
 
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'inplace_access_disabled' => 'Le accesso a iste servicio ha essite disactivate pro tote le clientes.',
+	'inplace_access_denied' => 'Iste servicio es restringite per adresse IP de cliente.',
+	'inplace_scaler_no_temp' => 'Nulle directorio temporari valide.
+Defini $wgLocalTmpDirectory a un directorio scribibile.',
+	'inplace_scaler_not_enough_params' => 'Parametros insufficiente.',
+	'inplace_scaler_invalid_image' => 'Imagine invalide, non poteva determinar le grandor.',
+	'inplace_scaler_failed' => 'Un error esseva incontrate durante le scalamento del imagine: $1',
+	'inplace_scaler_no_handler' => 'Nulle gestor pro transformar iste typo MIME',
+	'inplace_scaler_no_output' => 'Nulle file de resultato del transformation esseva producite.',
+	'inplace_scaler_zero_size' => 'Le transformation produceva un file de resultato a grandor zero.',
+	'webstore_access' => 'Iste servicio es restringite per adresse IP de cliente.',
+	'webstore_path_invalid' => 'Le nomine del file esseva invalide.',
+	'webstore_dest_open' => 'Impossibile aperir le file de destination "$1".',
+	'webstore_dest_lock' => 'Impossibile serrar le file de destination "$1".',
+	'webstore_dest_mkdir' => 'Impossible crear le directorio de destination "$1".',
+	'webstore_archive_lock' => 'Impossibile serrar le file de archivo "$1".',
+	'webstore_archive_mkdir' => 'Impossibile crear le directorio de archivo "$1".',
+	'webstore_src_open' => 'Impossibile aperir le file de origine "$1".',
+	'webstore_src_close' => 'Error durante le clausura del file de origine "$1".',
+	'webstore_src_delete' => 'Error durante le deletion del file de origine "$1".',
+	'webstore_rename' => 'Error durante le renomination del file "$1" a "$2".',
+	'webstore_lock_open' => 'Error durante le apertura del file de serratura "$1".',
+	'webstore_lock_close' => 'Error durante le clausura del file de serratura "$1".',
+	'webstore_dest_exists' => 'Error, le file de destination "$1" existe ja.',
+	'webstore_temp_open' => 'Error durante le apertura del file temporari "$1".',
+	'webstore_temp_copy' => 'Error durante le copiar del file temporari "$1" verso le file de destination "$2".',
+	'webstore_temp_close' => 'Error durante le clausura del file temporari "$1".',
+	'webstore_temp_lock' => 'Error durante le serratura del file temporari "$1".',
+	'webstore_no_archive' => 'Le file de destination existe ja e nulle archivo esseva date.',
+	'webstore_no_file' => 'Nulle file esseva cargate.',
+	'webstore_move_uploaded' => 'Error durante le displaciamento del file cargate "$1" verso le location temporari "$2".',
+	'webstore_invalid_zone' => 'Zona "$1" invalide.',
+	'webstore_no_deleted' => 'Nulle directorio de archivo pro le files delite ha essite definite.',
+	'webstore_curl' => 'Error ab cURL: $1',
+	'webstore_404' => 'File non trovate.',
+	'webstore_php_warning' => 'Advertimento de PHP: $1',
+	'webstore_metadata_not_found' => 'File non trovate: $1',
+	'webstore_postfile_not_found' => 'File pro inviar non trovate.',
+	'webstore_scaler_empty_response' => 'Le scalator de imagines dava un responsa vacue con un codice de responsa 200.
+Isto pote esser debite a un error fatal de PHP in le scalator.',
+	'webstore_invalid_response' => 'Responsa invalide ab le servitor:
+
+$1',
+	'webstore_no_response' => 'Nulle responsa ab le servitor',
+	'webstore_backend_error' => 'Error ab le servitor de immagazinage:
+
+$1',
+	'webstore_php_error' => 'Errores de PHP esseva incontrate:',
+	'webstore_no_handler' => 'Nulle gestor pro transformar iste typo de MIME',
+);
+
 /** Italian (Italiano)
  * @author Darth Kule
  */
@@ -618,6 +673,18 @@ $messages['km'] = array(
  * @author Purodha
  */
 $messages['ksh'] = array(
+	'inplace_access_disabled' => 'Dä Zohjang noh hee dämm Deenß es ußjeschalldt för Alle.',
+	'inplace_access_denied' => 'Dä Deens hee es beschrängk op bestemmpte IP-Addräße.',
+	'inplace_scaler_no_temp' => 'Mer han kei Verzeijschneß för jet zweschezeshpeischere.
+Maach, dat <code>$wgLocalTmpDirectory</code> op e Verzeijschneß zeich,
+wo mer erin schrieve künne.',
+	'inplace_scaler_not_enough_params' => 'Nit jenooch Parammeetere.',
+	'inplace_scaler_invalid_image' => 'Dat Belld es kapott, mer kunnte nit eruß fenge, wi jruuß dat dat es.',
+	'inplace_scaler_failed' => 'Enne Fähler es opjedouch, wi mer hee dat Belld jrüüßer ov kleiner maache wullte: $1',
+	'inplace_scaler_no_handler' => 'Mer han keij Projramm för hee dä <i lang="en">MIME</i>-Tüp ömzewandelle.',
+	'inplace_scaler_no_output' => 'Beim Ömwandelle es kei Datei erus jekumme.',
+	'inplace_scaler_zero_size' => 'Beim Ömwandelle es en Datei met nix dren eruß jekumme.',
+	'webstore_access' => 'Dä Deens hee es beschrängk op bestemmpte IP-Addräße.',
 	'webstore_path_invalid' => 'Dä Name för di Datei es Kappes.',
 	'webstore_dest_open' => 'Mer künne di Ziel-Datei „$1“ nit opmaache.',
 	'webstore_dest_lock' => 'Mer künne de Ziel-Datei „$1“ nit sperre.',
@@ -637,13 +704,24 @@ $messages['ksh'] = array(
 	'webstore_temp_lock' => 'Mer künne de Zwesche-Datei „$1“ nit sperre.',
 	'webstore_no_archive' => 'De Zieldatei es ald do, un en Aschiiv-Datei wohr nit aanjejovve.',
 	'webstore_no_file' => 'Et wwod kei Datei huhjelade.',
+	'webstore_move_uploaded' => 'Et hät nit jeklapp, de neu huhjelade Datei fun „$1“ op „$2“, dä Name fum Zwescheshpeijscher, ömzedäufe.',
+	'webstore_invalid_zone' => 'Onjöltijje Bereisch — „$1“.',
+	'webstore_no_deleted' => 'Mer han kei Aschiiv-Verzeijschneß för fottjeschmeße Dateie ennjestellt.',
+	'webstore_curl' => 'Ene Fähler fum <code>cURL</code> es opjevalle: $1',
 	'webstore_404' => 'Datei nit jefunge.',
 	'webstore_php_warning' => 'PHP Warnung: $1',
 	'webstore_metadata_not_found' => 'Datei nit jefonge: $1',
+	'webstore_postfile_not_found' => 'De Dattei för huhzelade (met <i lang="en">post</i>) ham_mer nit jefonge.',
+	'webstore_scaler_empty_response' => 'Dat Projramm för Bellder ze Verjrüüßere ov ze Verkleijnere
+hät en Antwoot met enem <code>200-er Kood</code> jejovve.
+Dat künnt fun enem schlemme PHP-Fähler en dämm Projramm kumme.',
 	'webstore_invalid_response' => 'En onjöltije Antwoot fum Server:
 
 $1',
 	'webstore_no_response' => 'Kei Antwoot fun Server',
+	'webstore_backend_error' => 'Dä <i lang="en">server</i> för Dateie ze speijschere meldt ene Fähler:
+
+$1',
 	'webstore_php_error' => 'Et sin PHP Fähler opjetrodde:',
 	'webstore_no_handler' => 'Kei Projramm för et Ömwandelle för dä <i lang="en">MIME</i> tüp',
 );

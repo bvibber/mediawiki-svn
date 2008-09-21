@@ -32,8 +32,18 @@ $aliases['lb'] = array(
 	'ViewXML' => array( 'XML weisen' ),
 );
 
+/** Nedersaksisch (Nedersaksisch) */
+$aliases['nds-nl'] = array(
+	'ViewXML' => array( 'XML_bekieken' ),
+);
+
 /** Dutch (Nederlands) */
 $aliases['nl'] = array(
 	'ViewXML' => array( 'XMLBekijken' ),
+);
+
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
+$aliases['no'] = array(
+	'ViewXML' => array( 'Vis XML' ),
 );
 

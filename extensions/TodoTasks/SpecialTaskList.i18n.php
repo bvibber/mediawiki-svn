@@ -179,6 +179,7 @@ $messages['eo'] = array(
 
 /** French (Français)
  * @author Grondin
+ * @author McDutchie
  * @author Sherbrooke
  * @author Urhixidur
  */
@@ -195,7 +196,7 @@ $messages['fr'] = array(
 	'tasklistmytasks' => 'Mes tâches',
 	'tasklistbyprojectbad' => "Le projet '''%s''' n'est pas valide. Consulter la [[MediaWiki:TodoTasksValidProjects|liste des projets]].",
 	'tasklistbyprojname' => "Tâches assignées pour '''%s'''.",
-	'tasklistchooseproj' => 'Projet sélectionné :',
+	'tasklistchooseproj' => 'Sélectionnez un projet :',
 	'tasklistprojdisp' => 'Afficher',
 	'tasklistbyname' => '== Liste de tâches à faire pour %s ==',
 	'tasklistnoprojects' => "Erreur : il semble que vous ayez activé '''\$wgUseProjects''', mais sans avoir créé [[MediaWiki:TodoTasksValidProjects]]. Prière de lire les [http://www.mediawiki.org/wiki/Extension:Todo_Tasks#Step_8 instructions d'installation] pour plus de détails.",
@@ -285,6 +286,37 @@ Něchtó je nowy nadawk za tebje na %s připokazal.
 Zo by swoju dospołnu lisćinu nadawkow widźał, dźi k %s.
 
 Twój přećelny zdźělenski system %s.',
+);
+
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'tasklist' => 'Lista de cargas',
+	'tasklist-parser-desc' => 'Adde le function <nowiki>{{#todo:}}</nowiki> al analysator syntactic pro assignar cargas',
+	'tasklist-special-desc' => 'Adde un pagina special pro revider [[Special:TaskList|le lista de cargas assignate]]',
+	'tasklistbyproject' => 'Lista de cargas per projecto',
+	'tasklistunknownproject' => 'Projecto incognite',
+	'tasklistunspecuser' => 'Usator non specificate',
+	'tasklistincorrectuser' => 'Nomine de usator incorrecte',
+	'tasklistemail' => 'Car %s',
+	'tasklistemailsubject' => '[%s] Cambiamento al lista de cargas',
+	'tasklistmytasks' => 'Mi cargas',
+	'tasklistbyprojectbad' => "Le projecto '''%s''' non es valide.
+Pro un lista de projectos valide, consulta [[MediaWiki:TodoTasksValidProjects]].",
+	'tasklistbyprojname' => "Cargas assignate pro '''%s'''",
+	'tasklistchooseproj' => 'Selige projecto:',
+	'tasklistprojdisp' => 'Presentar',
+	'tasklistbyname' => '== Lista de cargas a facer pro %s ==',
+	'tasklistnoprojects' => "Error: Pare que tu ha activate '''\$wgUseProjects''' sin crear [[MediaWiki:TodoTasksValidProjects]]. Vide le [http://www.mediawiki.org/wiki/Extension:Todo_Tasks#Step_8 instructiones de installation] pro ulterior detalios.",
+	'tasklistemailbody' => ',
+
+Alcuno te ha assignate un nove carga in %s.
+
+Pro vider tu lista integre de cargas a facer, visita %s.
+
+Amicalmente,
+Le systema de notification de %s',
 );
 
 /** Javanese (Basa Jawa)

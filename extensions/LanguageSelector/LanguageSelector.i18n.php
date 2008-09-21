@@ -192,7 +192,7 @@ $messages['gl'] = array(
  * @author Crazymadlover
  */
 $messages['grc'] = array(
-	'languageselector' => 'γλῶττα',
+	'languageselector' => 'Γλῶττα',
 	'languageselector-setlang' => 'Θετόν',
 );
 

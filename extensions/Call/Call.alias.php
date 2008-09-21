@@ -42,6 +42,11 @@ $aliases['lb'] = array(
 	'Call' => array( 'Call' ),
 );
 
+/** Nedersaksisch (Nedersaksisch) */
+$aliases['nds-nl'] = array(
+	'Call' => array( 'Anreupen' ),
+);
+
 /** Dutch (Nederlands) */
 $aliases['nl'] = array(
 	'Call' => array( 'Aanroepen' ),

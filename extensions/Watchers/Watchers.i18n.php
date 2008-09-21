@@ -183,17 +183,20 @@ $messages['eo'] = array(
 );
 
 /** French (Français)
+ * @author Grondin
  * @author Sherbrooke
  * @author Urhixidur
+ * @author Zetud
  */
 $messages['fr'] = array(
 	'watchers' => 'Observateurs',
+	'watchers-desc' => 'Afficher [[Special:Watchers|les utilisateurs qui ont une page dans leur liste de suivi]]',
 	'watchers_link_title' => 'Qui suit cette page ?',
 	'watchers_error_article' => '<b>Erreur :</b> La page n’existe pas.',
-	'watchers_header' => 'Personnes qui suivent « $1 »',
+	'watchers_header' => '{{PLURAL:$2|Utilisateur qui suit|Utilisateurs qui suivent}} « $1 »',
 	'watchers_noone_watches' => 'Personne ne suit cette page.',
-	'watchers_x_or_more' => 'Au moins $1 utilisateur(s) sui(ven)t cette page.',
-	'watchers_less_than_x' => 'Moins de $1 utilisateurs suivent cette page.',
+	'watchers_x_or_more' => '$1 utilisateurs voire même {{PLURAL:$1|un autre|plusieurs autres}} ont cette page dans leur liste de suivi.',
+	'watchers_less_than_x' => 'Moins {{PLURAL:$1|d’un utilisateur suit|de $1 utilisateurs suivent}} cette page.',
 );
 
 /** Galician (Galego)
@@ -218,10 +221,10 @@ $messages['hsb'] = array(
 	'watchers' => 'Wobkedźbowarjo',
 	'watchers_link_title' => 'Štó tutu stronu wobkedźbuje?',
 	'watchers_error_article' => '<b>Zmylk:</b> Strona njeeksistuje.',
-	'watchers_header' => 'Wužiwarjo, kotřiž "$1" wobkedźbuja',
+	'watchers_header' => '{{PLURAL:$2|Wužiwar|Wužiwarjej|Wužiwarjo|Wužiwarjo}}, {{PLURAL:$2|kotryž|kotrajž|kotřiž|kotřiž}} "$1" {{PLURAL:$2|wobkedźbuje|wobkedźbujetaj|wobkedźbuja|wobkedźbuja}}',
 	'watchers_noone_watches' => 'Nichtó tutu stronu njewobkedźbuje.',
-	'watchers_x_or_more' => '$1 abo wjace ludźi tutu stronu wobkedźbuje.',
-	'watchers_less_than_x' => 'Mjenje hač $1 wužiwarjow tutu stronu wobkedźbuje.',
+	'watchers_x_or_more' => '$1 {{PLURAL:$1|wužiwar|wužiwarjej|wužiwarjo|wužiwarjow}} abo wjace {{PLURAL:$1|wobkedźbuje|wobkedźbujetej|wobkedźbuja|wobkedźbuje}} tutu stronu.',
+	'watchers_less_than_x' => 'Mjenje hač $1 {{PLURAL:$1|wužiwar|wužiwarjej|wužiwarjo|wužiwarjow}} {{PLURAL:$1|wobkedźbuje|wobkedźbujetaj|wobkedźbuja|wobkedźbuje}} tutu stronu.',
 );
 
 /** Interlingua (Interlingua)
@@ -229,12 +232,13 @@ $messages['hsb'] = array(
  */
 $messages['ia'] = array(
 	'watchers' => 'Observatores',
+	'watchers-desc' => 'Monstra [[Special:Watchers|le usatores qui ha un pagina in lor observatorios]]',
 	'watchers_link_title' => 'Qui observa iste pagina?',
 	'watchers_error_article' => '<b>Error:</b> Pagina non existe.',
-	'watchers_header' => 'Personas qui observa "$1"',
+	'watchers_header' => '{{PLURAL:$2|Usator|Usatores}} qui observa "$1"',
 	'watchers_noone_watches' => 'Necuno observa iste pagina.',
-	'watchers_x_or_more' => '$1 o plus personas observa iste pagina.',
-	'watchers_less_than_x' => 'Minus de $1 personas observa iste pagina.',
+	'watchers_x_or_more' => 'Al minus $1 {{PLURAL:$1|usator|usatores}} observa iste pagina.',
+	'watchers_less_than_x' => 'Minus de $1 {{PLURAL:$1|usator|usatores}} observa iste pagina.',
 );
 
 /** Italian (Italiano)
@@ -284,12 +288,13 @@ $messages['km'] = array(
  */
 $messages['ksh'] = array(
 	'watchers' => 'Oppasser',
+	'watchers-desc' => 'Zeich de [[Special:Watchers|Metmaacher, di_j_en Sigg op ier Oppaßleß shtonn han]].',
 	'watchers_link_title' => 'Wä paß op di Sigg op?',
 	'watchers_error_article' => '<b>Fähler:</b> Di Sigg ham_mer nit.',
-	'watchers_header' => 'Metmaacher, di op di Sigg „$1“ oppasse',
+	'watchers_header' => '{{PLURAL:$2|Dä Metmaacher, dä op di Sigg „$1“ oppaß|Metmaacher, die op di Sigg „$1“ oppasse donn|Keine Metmaacher paß op di Sigg „$1“ op}}.',
 	'watchers_noone_watches' => 'Keiner pass op di Sigg op.',
-	'watchers_x_or_more' => '$1 udder mieh Metmaacher passe op di Sigg op.',
-	'watchers_less_than_x' => 'Winnijer wi $1 Metmaacher passe op die Sigg op.',
+	'watchers_x_or_more' => 'Mieh wi {{PLURAL:$1|eine Metmaacher paß|$1 Metmaacher passe|keine Metmaacher paß}} op hee di Sigg op.',
+	'watchers_less_than_x' => 'Winnijer wi {{PLURAL:$1|eine Metmaacher paß|$1 Metmaacher passe|keine Metmaacher paß}} op hee di Sigg op.',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -304,6 +309,20 @@ $messages['lb'] = array(
 	'watchers_noone_watches' => 'Keen iwwerwaacht dës Säit.',
 	'watchers_x_or_more' => '$1 oder méi {{PLURAL:$1|Benotzer|Benotzer}} iwwerwaachen dës Säit.',
 	'watchers_less_than_x' => 'Manner wéi $1 {{PLURAL:$1|Benotzer iwwerwaacht|Benotzer iwwerwaachen}} dës Säit.',
+);
+
+/** Macedonian (Македонски)
+ * @author Brest
+ */
+$messages['mk'] = array(
+	'watchers' => 'Набљудувачи',
+	'watchers-desc' => 'Прикажува [[Special:Watchers|кои корисници имаат страници во својата листа на набљудувања]]',
+	'watchers_link_title' => 'Кој ја набљудува оваа страница?',
+	'watchers_error_article' => "'''Грешка:''' Страницата не постои.",
+	'watchers_header' => '{{PLURAL:$2|Корисник кој ја набљудува|Корисници кои ја набљудуваат}} "$1"',
+	'watchers_noone_watches' => 'Никој не ја набљудува оваа страница.',
+	'watchers_x_or_more' => '$1 или повеќе корисници ја имаат оваа страница во својата листа на набљудувања.',
+	'watchers_less_than_x' => 'Помалку од $1 {{PLURAL:$1|корисници|корисници}} ја имаат оваа страница во својата листа на набљудувања.',
 );
 
 /** Malayalam (മലയാളം)
@@ -437,12 +456,13 @@ $messages['sk'] = array(
 /** Swedish (Svenska)
  * @author Boivie
  * @author Lejonel
+ * @author Najami
  */
 $messages['sv'] = array(
 	'watchers' => 'Bevakare',
 	'watchers_link_title' => 'Användare som bevakar sidan',
 	'watchers_error_article' => '<b>Fel:</b> Sidan finns inte.',
-	'watchers_header' => 'Personer som bevakar "$1"',
+	'watchers_header' => '{{PLURAL:$2|Användare}} som bevakar "$1"',
 	'watchers_noone_watches' => 'Ingen bevakar denna sida.',
 	'watchers_x_or_more' => '$1 eller fler användare bevakar sidan.',
 	'watchers_less_than_x' => 'Färre än $1 användare bevakar sidan.',
@@ -466,9 +486,9 @@ $messages['vec'] = array(
 	'watchers' => 'Osservadori',
 	'watchers_link_title' => "Chi tien d'ocio sta pagina?",
 	'watchers_error_article' => '<b>Erór:</b> sta pagina no la esiste.',
-	'watchers_header' => 'Utenti che tien d\'ocio "$1"',
+	'watchers_header' => '{{PLURAL:$2|Utente|Utenti}} che tien d\'ocio "$1"',
 	'watchers_noone_watches' => "Nissuni tien d'ocio sta pagina.",
-	'watchers_x_or_more' => "$1 o più persone sta tegnendo d'ocio sta pagina.",
-	'watchers_less_than_x' => "Manco de $1 persone tien d'ocio sta pagina.",
+	'watchers_x_or_more' => "Almanco $1 {{PLURAL:$1|utente el|utenti i}} sta tegnendo d'ocio sta pagina.",
+	'watchers_less_than_x' => "Manco de $1 {{PLURAL:$1|utente el|utenti i}} tien d'ocio sta pagina.",
 );
 

@@ -411,6 +411,7 @@ $messages['br'] = array(
 );
 
 /** Catalan (Català)
+ * @author Aleator
  * @author Iradigalesc
  * @author Paucabot
  * @author SMP
@@ -418,6 +419,7 @@ $messages['br'] = array(
  */
 $messages['ca'] = array(
 	'hiderevision' => 'Oculta aquestes revisions permanentment',
+	'hiderevision-desc' => 'Amaga revisions individuals de tots els usuaris per raons legals, etc.',
 	'right-oversight' => 'Vegeu una revisió prèviament amagada',
 	'right-hiderevision' => 'Revisar i restaurar les versions amagades als administradors',
 	'hiderevision-prompt' => 'Número de la revisió a suprimir:',
@@ -615,11 +617,27 @@ Dono de ĉi tiu informo eble povus rezulti en daŭra malgajno de Kontrolanto-raj
 );
 
 /** Spanish (Español)
+ * @author Aleator
+ * @author Remember the dot
  * @author Sanbec
  * @author Titoxd
  */
 $messages['es'] = array(
+	'hiderevision' => 'Esconder revisiones permanentemente',
+	'hiderevision-desc' => 'Esconde revisiones individuales de todos los usuarios para motivos legales etc.',
+	'right-oversight' => 'Ver una revisión anteriormente escondida',
 	'right-hiderevision' => 'Revisar y restaurar revisiones ocultadas por los administradores',
+	'hiderevision-continue' => 'Seguir',
+	'hiderevision-submit' => 'Esconder estos datos permanentemente',
+	'hiderevision-tab' => 'Esconder revisión',
+	'hiderevision-norevisions' => 'No se han especificado revisiones para borrar.',
+	'hiderevision-status' => 'Revisión $1: $2',
+	'hiderevision-success' => 'Se archivó y se borró con éxito.',
+	'hiderevision-error-delete' => 'No se pudo archivar; ¿fue borrada anteriormente?',
+	'hiderevision-archive-status' => 'Revisión borrada de $1: $2',
+	'oversight-view' => 'detalles',
+	'oversight-difference' => '(Diferencia de revisión anterior restante)',
+	'oversight-hidden' => 'Revisión escondida',
 );
 
 /** Basque (Euskara) */
@@ -1568,12 +1586,14 @@ $messages['km'] = array(
 );
 
 /** Korean (한국어)
+ * @author Albamhandae
  * @author Kwj2772
  * @author Pi.C.Noizecehx
  */
 $messages['ko'] = array(
 	'group-oversight' => '오버사이트',
 	'group-oversight-member' => '오버사이트',
+	'grouppage-oversight' => '{{ns:project}}:오버사이트',
 	'right-hiderevision' => '관리자도 보지 못하도록 숨겨진 판의 확인 및 복구',
 );
 

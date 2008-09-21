@@ -29,8 +29,18 @@ $aliases['lb'] = array(
 	'TemplateLink' => array( 'Schabloune Link' ),
 );
 
+/** Nedersaksisch (Nedersaksisch) */
+$aliases['nds-nl'] = array(
+	'TemplateLink' => array( 'Sjabloonverwiezing' ),
+);
+
 /** Dutch (Nederlands) */
 $aliases['nl'] = array(
 	'TemplateLink' => array( 'Sjabloonverwijzing' ),
+);
+
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
+$aliases['no'] = array(
+	'TemplateLink' => array( 'Mallenke' ),
 );
 

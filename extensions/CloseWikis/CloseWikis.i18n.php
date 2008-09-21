@@ -178,9 +178,11 @@ $messages['de'] = array(
  * @author Yekrats
  */
 $messages['eo'] = array(
+	'closewikis-closed-default' => 'Ĉi tiu vikio estas fermita',
 	'closewikis-page' => 'Fermi vikion',
 	'closewikis-page-close' => 'Fermi vikion',
 	'closewikis-page-close-wiki' => 'Vikio:',
+	'closewikis-page-close-dreason' => 'Kialo (montrota):',
 	'closewikis-page-close-reason' => 'Kialo (protokolota):',
 	'closewikis-page-close-submit' => 'Fermi',
 	'closewikis-page-close-success' => 'Vikio estis sukcese fermita',
@@ -190,6 +192,9 @@ $messages['eo'] = array(
 	'closewikis-page-reopen-submit' => 'Remalfermi',
 	'closewikis-page-reopen-success' => 'Vikio estis sukcese remalfermita',
 	'closewikis-page-err-nowiki' => 'Nevalida vikio estis specifita',
+	'closewikis-page-err-closed' => 'Vikio estas jam fermita',
+	'closewikis-page-err-opened' => 'Vikio ne estas fermita',
+	'closewikis-log' => 'Protokolo pri vikia fermado',
 	'closewikis-log-close' => 'fermis $2',
 	'closewikis-log-reopen' => 'remalfermis $2',
 	'right-editclosedwikis' => 'Redakti fermitajn vikiojn',
@@ -250,6 +255,34 @@ $messages['gl'] = array(
 	'closewikis-log-close' => 'pechou "$2"',
 	'closewikis-log-reopen' => 'volveu abrir "$2"',
 	'right-editclosedwikis' => 'Editar wikis pechados',
+);
+
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
+$messages['hsb'] = array(
+	'closewikis-desc' => 'Zmóžnja začinjenje wikijowych sydłow we wikijowych farmach',
+	'closewikis-closed-default' => 'Tutón wikij je začinjeny',
+	'closewikis-page' => 'Wiki začinić',
+	'closewikis-page-close' => 'Wiki začinić',
+	'closewikis-page-close-wiki' => 'Wiki:',
+	'closewikis-page-close-dreason' => 'Zwobraznjena přičina:',
+	'closewikis-page-close-reason' => 'Protokolowana přičina:',
+	'closewikis-page-close-submit' => 'Začinić',
+	'closewikis-page-close-success' => 'Wiki wuspěšnje začinjeny',
+	'closewikis-page-reopen' => 'Wiki zaso wočinić',
+	'closewikis-page-reopen-wiki' => 'wiki:',
+	'closewikis-page-reopen-reason' => 'Přičina:',
+	'closewikis-page-reopen-submit' => 'Zaso wočinić',
+	'closewikis-page-reopen-success' => 'Wiki wuspěšnje zaso wočinjeny',
+	'closewikis-page-err-nowiki' => 'Njepłaćiwy wiki podaty',
+	'closewikis-page-err-closed' => 'Wiki je hižo začinjeny',
+	'closewikis-page-err-opened' => 'Wiki njeje začinjeny',
+	'closewikis-log' => 'Protokol začinjenjow wikijow',
+	'closewikis-log-header' => 'To je protokol wšěch začinjenjow a zasowočinjenjow wikijow, kotrež su stewardźa činili.',
+	'closewikis-log-close' => 'je $2 začinił',
+	'closewikis-log-reopen' => 'je $2 zaso wočinił',
+	'right-editclosedwikis' => 'Začinjene wikije wobdźěłać',
 );
 
 /** Interlingua (Interlingua)
@@ -469,8 +502,26 @@ $messages['sk'] = array(
 	'right-editclosedwikis' => 'Upravovať zatvorené wiki',
 );
 
+/** Seeltersk (Seeltersk)
+ * @author Pyt
+ */
+$messages['stq'] = array(
+	'closewikis-desc' => 'Moaket dät Sluuten muugelk fon eenpelde Wikis in ne Wikifarm',
+	'closewikis-closed' => '$1',
+	'closewikis-closed-default' => 'Dit Wiki is sleeten',
+	'closewikis-page' => 'Wiki sluute',
+	'closewikis-page-close' => 'Wiki sluute',
+	'closewikis-page-close-wiki' => 'Wiki:',
+	'closewikis-page-close-dreason' => 'Anwieseden Gruund:',
+	'closewikis-page-close-reason' => 'Gruund, die der in dät Logbouk iendrain wäd:',
+	'closewikis-page-close-submit' => 'Sluute',
+	'closewikis-page-close-success' => 'Wiki mäd Ärfoulch sleeten.',
+	'closewikis-page-reopen' => 'Wiki wier eepenje',
+);
+
 /** Swedish (Svenska)
  * @author M.M.S.
+ * @author Najami
  */
 $messages['sv'] = array(
 	'closewikis-closed-default' => 'Den här wikin är stängd',
@@ -478,6 +529,8 @@ $messages['sv'] = array(
 	'closewikis-page-close' => 'Stäng wiki',
 	'closewikis-page-close-wiki' => 'Wiki:',
 	'closewikis-page-close-submit' => 'Stäng',
+	'closewikis-page-reopen-wiki' => 'Wiki:',
+	'closewikis-page-reopen-reason' => 'Anledning:',
 );
 
 /** Vietnamese (Tiếng Việt)

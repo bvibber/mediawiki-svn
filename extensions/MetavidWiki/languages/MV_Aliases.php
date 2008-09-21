@@ -69,3 +69,8 @@ $aliases['nl'] = array(
 	'MvVideoFeed' => array( 'MvVideofeed' ),
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
+$aliases['no'] = array(
+	'MediaSearch' => array( 'Mediesøk' ),
+);
+

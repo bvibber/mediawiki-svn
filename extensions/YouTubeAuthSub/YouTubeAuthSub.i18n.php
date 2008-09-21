@@ -530,9 +530,41 @@ Kérlek várj türelemmel.',
 
 /** Interlingua (Interlingua)
  * @author Malafaya
+ * @author McDutchie
  */
 $messages['ia'] = array(
+	'youtubeauthsub' => 'Cargar un video in YouTube',
+	'youtubeauthsub-desc' => 'Permitte al usatores de [[Special:YouTubeAuthSub|cargar videos]] directemente in YouTube',
+	'youtubeauthsub_info' => 'Pro cargar un video in YouTube pro includer lo in un pagina, completa le sequente informationes:',
 	'youtubeauthsub_title' => 'Titulo',
+	'youtubeauthsub_description' => 'Description',
+	'youtubeauthsub_password' => 'Contrasigno de YouTube',
+	'youtubeauthsub_username' => 'Nomine de usator de YouTube',
+	'youtubeauthsub_keywords' => 'Parolas-clave',
+	'youtubeauthsub_category' => 'Categoria',
+	'youtubeauthsub_submit' => 'Submitter',
+	'youtubeauthsub_clickhere' => 'Clicca hic pro aperir un session in YouTube',
+	'youtubeauthsub_tokenerror' => 'Error durante le generation del indicio de autorisation; prova refrescar le pagina.',
+	'youtubeauthsub_success' => "Felicitationes!
+Tu video ha essite cargate.
+Pro vider tu video, clicca <a href='http://www.youtube.com/watch?v=$1'>hic</a>.
+Le processar de tu video in YouTube pote durar un poco, assi illo pote non esser ancora preste.
+
+Pro includer tu video in un pagina in le wiki, insere le sequente codice in un pagina:
+<code>{{&#35;ev:youtube|$1}}</code>",
+	'youtubeauthsub_authsubinstructions' => 'Pro cargar un video, tu debera primo aperir un session in YouTube.',
+	'youtubeauthsub_uploadhere' => 'Carga tu video ab hic:',
+	'youtubeauthsub_uploadbutton' => 'Cargar',
+	'youtubeauthsub_code' => '{{#ev:youtube|$1}}.
+
+Iste video pote esser vidite [http://www.youtube.com/watch?v=$1 hic]',
+	'youtubeauthsub_summary' => 'Cargamento de video YouTube',
+	'youtubeauthsub_uploading' => 'Tu video es in curso de esser cargate.
+Sia patiente.',
+	'youtubeauthsub_viewpage' => 'Alternativemente, tu pote vider tu video [[$1|hic]].',
+	'youtubeauthsub_jserror_nokeywords' => 'Per favor entra 1 o plus parolas-clave.',
+	'youtubeauthsub_jserror_notitle' => 'Per favor entra un titulo pro le video.',
+	'youtubeauthsub_jserror_nodesc' => 'Per favor entra un description pro le video.',
 );
 
 /** Indonesian (Bahasa Indonesia)

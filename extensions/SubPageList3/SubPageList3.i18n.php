@@ -126,6 +126,15 @@ $messages['hsb'] = array(
 	'spl3_nosubpages' => '$1 nima podstrony za lisćinu.',
 );
 
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'spl3-desc' => 'Crea automaticamente un lista del subpaginas de unpagina con le etiquetta <code><nowiki><splist /></nowiki></code>',
+	'spl3_debug' => 'Valor incognite pro le option $1.',
+	'spl3_nosubpages' => '$1 non ha subpaginas a listar.',
+);
+
 /** Italian (Italiano)
  * @author Darth Kule
  */

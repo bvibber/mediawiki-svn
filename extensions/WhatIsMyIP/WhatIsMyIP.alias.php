@@ -44,9 +44,19 @@ $aliases['lb'] = array(
 	'WhatIsMyIP' => array( 'Wéi ass meng IP-Adress' ),
 );
 
+/** Nedersaksisch (Nedersaksisch) */
+$aliases['nds-nl'] = array(
+	'WhatIsMyIP' => array( 'Wat_is_mien_IP-adres' ),
+);
+
 /** Dutch (Nederlands) */
 $aliases['nl'] = array(
 	'WhatIsMyIP' => array( 'WatIsMijnIPAdres' ),
+);
+
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
+$aliases['no'] = array(
+	'WhatIsMyIP' => array( 'Min IP' ),
 );
 
 /** Albanian (Shqip) */

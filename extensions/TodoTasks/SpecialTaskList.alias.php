@@ -38,9 +38,21 @@ $aliases['lb'] = array(
 	'TaskList' => array( 'Lëscht vun den Aufgaben' ),
 );
 
+/** Nedersaksisch (Nedersaksisch) */
+$aliases['nds-nl'] = array(
+	'TaskList' => array( 'Takenlieste' ),
+	'TaskListByProject' => array( 'Takenlieste_per_prejek' ),
+);
+
 /** Dutch (Nederlands) */
 $aliases['nl'] = array(
 	'TaskList' => array( 'Takenlijst' ),
 	'TaskListByProject' => array( 'TakenlijstPerProject' ),
+);
+
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
+$aliases['no'] = array(
+	'TaskList' => array( 'Oppgaveliste' ),
+	'TaskListByProject' => array( 'Oppgaveliste per prosjekt' ),
 );
 

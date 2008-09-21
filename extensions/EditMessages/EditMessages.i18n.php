@@ -758,6 +758,14 @@ $messages['th'] = array(
 	'editmsg-warning-file' => '* มีการอ่านไฟล์ผิดพลาดในภาษาดังกล่าว : $1',
 );
 
+/** Turkish (Türkçe)
+ * @author Mach
+ */
+$messages['tr'] = array(
+	'editmsg-search' => 'Ara',
+	'editmsg-new-search' => 'Yeni arama',
+);
+
 /** Ukrainian (Українська)
  * @author Ahonc
  */

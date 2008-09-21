@@ -32,8 +32,18 @@ $aliases['lb'] = array(
 	'CountEdits' => array( 'Ännerungen zielen' ),
 );
 
+/** Nedersaksisch (Nedersaksisch) */
+$aliases['nds-nl'] = array(
+	'CountEdits' => array( 'Bewarkingen_tellen' ),
+);
+
 /** Dutch (Nederlands) */
 $aliases['nl'] = array(
 	'CountEdits' => array( 'BewerkingenTellen' ),
+);
+
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
+$aliases['no'] = array(
+	'CountEdits' => array( 'Redigeringsteller' ),
 );
 

@@ -819,6 +819,7 @@ $wdMessages['da'] = array(
 );
 
 /** German (Deutsch)
+ * @author Purodha
  * @author Revolus
  */
 $wdMessages['de'] = array(
@@ -907,7 +908,7 @@ $wdMessages['de'] = array(
 	'ow_copy_successful' => '<h2>Kopieren erfolgreich</h2>Deine Daten scheinen erfolgreich kopiert worden zu sein. Bitte vergiss nicht nochmals zu prüfen um sicherzugehen!',
 	'ow_copy_unsuccessful' => '<h3>Kopieren nicht erfolgreich</h3> Es hat keine Kopieraktion stattgefunden.',
 	'ow_no_action_specified' => '<h3>Es wurde keine Aktion angegeben</h3> Vielleicht kamst du direkt zu dieser Seite?.',
-	'ow_db_consistency_not_found' => '<h2>Fehler</h2>Die Datenbank ist nicht mehr konsistent. Wikidate kann keine gültigen Daten zu der ID finden. Bitte kontaktiere den Server-Administrator.',
+	'ow_db_consistency_not_found' => '<h2>Fehler</h2>Die Datenbank ist nicht mehr konsistent. Wikidata kann keine gültigen Daten zu der ID finden. Bitte kontaktiere den Server-Administrator.',
 );
 
 /** Greek (Ελληνικά)
@@ -1607,21 +1608,111 @@ $wdMessages['hu'] = array(
  * @author McDutchie
  */
 $wdMessages['ia'] = array(
+	'datasearch' => 'Wikidatos: Recerca de datos',
+	'langman_title' => 'Gestion de linguas',
+	'languages' => 'Wikidatos: Gestion de linguas',
 	'ow_save' => 'Immagazinar',
 	'ow_history' => 'Historia',
+	'ow_datasets' => 'Selection de collection de datos',
+	'ow_noedit_title' => 'Nulle permission de modificar',
+	'ow_noedit' => 'Tu non ha le permission de modificar paginas in le collection de datos "$1".
+Per favor vide [[{{MediaWiki:Ow editing policy url}}|nostre politica de modification]].',
+	'ow_uipref_datasets' => 'Vista predefinite',
+	'ow_uiprefs' => 'Wikidatos',
 	'ow_none_selected' => '<Nihil seligite>',
+	'ow_conceptmapping_help' => '<p>actiones possibile: <ul>
+<li>&action=insert&<data_context_prefix>=<defined_id>&...  inserer un correspondentia</li>
+<li>&action=get&concept=<concept_id>  revider un correspondentia</li>
+<li>&action=list_sets  retornar un lista de possibile prefixos de contexto de datos e a que illos refere.</li>
+<li>&action=get_associated&dm=<defined_meaning_id>&dc=<dataset_context_prefix> pro un significato definite in un concepto, retornar tote le alteres</li>
+<li>&action=help  Monstrar adjuta utile.</li>
+</ul></p>',
+	'ow_conceptmapping_uitext' => '<p>Le carta de conceptos te permitte identificar qual significato definite in un collection de datos es identic a significatos definite in altere collectiones de datos.</p>',
+	'ow_conceptmapping_no_action_specified' => 'Pardono, io non sape facer "$1".',
 	'ow_dm_OK' => 'OK',
+	'ow_dm_not_present' => 'non entrate',
+	'ow_dm_not_found' => 'non trovate in le base de datos o mal formate',
+	'ow_mapping_successful' => 'Insereva tote le campos marcate con [OK]<br />',
+	'ow_mapping_unsuccessful' => 'Debe haber al minus duo significatos definite ante que io pote ligar los.',
+	'ow_will_insert' => 'Inserera lo sequente:',
+	'ow_contents_of_mapping' => 'Correspondentias',
+	'ow_available_contexts' => 'Contextos disponibile',
+	'ow_add_concept_link' => 'Adder un ligamine a altere conceptos',
+	'ow_concept_panel' => 'Pannello de conceptos',
+	'ow_dm_badtitle' => 'Iste pagina non puncta verso alcun Significato Definite (concepto).
+Per favor verifica le adresse web.',
+	'ow_dm_missing' => 'Iste pagina pare punctar verso un Significato Definite (concepto) non existente.
+Per favor verifica le adresse web.',
+	'ow_AlternativeDefinition' => 'Definition alternative',
+	'ow_AlternativeDefinitions' => 'Definitiones alternative',
+	'ow_Annotation' => 'Annotation',
+	'ow_ApproximateMeanings' => 'Significatos approximative',
+	'ow_ClassAttributeAttribute' => 'Attributo',
+	'ow_ClassAttributes' => 'Attributos de classe',
+	'ow_ClassAttributeLevel' => 'Nivello',
 	'ow_ClassAttributeType' => 'Typo',
+	'ow_ClassMembership' => 'Membrato de classe',
 	'ow_Collection' => 'Collection',
+	'ow_CollectionMembership' => 'Membrato de collection',
+	'ow_Definition' => 'Definition',
+	'ow_DefinedMeaningAttributes' => 'Annotation',
+	'ow_DefinedMeaning' => 'Significato definite',
+	'ow_DefinedMeaningReference' => 'Significato definite',
+	'ow_ExactMeanings' => 'Significatos exacte',
+	'ow_Expression' => 'Expression',
+	'ow_ExpressionMeanings' => 'Significatos de expression',
+	'ow_Expressions' => 'Expressiones',
+	'ow_IdenticalMeaning' => 'Significato identic?',
+	'ow_IncomingRelations' => 'Relationes entrante',
+	'ow_GotoSource' => 'Ir al fonte',
 	'ow_Language' => 'Lingua',
+	'ow_LevelAnnotation' => 'Annotation',
+	'ow_OptionAttribute' => 'Proprietate',
 	'ow_OptionAttributeOption' => 'Option',
 	'ow_OptionAttributeOptions' => 'Optiones',
+	'ow_OptionAttributeValues' => 'Valores de option',
+	'ow_OtherDefinedMeaning' => 'Altere significato definite',
+	'ow_PopupAnnotation' => 'Annotation',
+	'ow_Relations' => 'Relationes',
+	'ow_RelationType' => 'Typos de relation',
 	'ow_Spelling' => 'Orthographia',
 	'ow_Synonyms' => 'Synonymos',
+	'ow_SynonymsAndTranslations' => 'Synonymos e traductiones',
+	'ow_Source' => 'Fonte',
+	'ow_SourceIdentifier' => 'Identificator de fonte',
+	'ow_TextAttribute' => 'Proprietate',
 	'ow_Text' => 'Texto',
+	'ow_TextAttributeValues' => 'Textos simple',
+	'ow_TranslatedTextAttribute' => 'Proprietate',
+	'ow_TranslatedText' => 'Texto traducite',
 	'ow_TranslatedTextAttributeValue' => 'Texto',
+	'ow_TranslatedTextAttributeValues' => 'Textos traducibile',
+	'ow_LinkAttribute' => 'Proprietate',
 	'ow_LinkAttributeValues' => 'Ligamines',
+	'ow_Property' => 'Proprietate',
+	'ow_Value' => 'Valor',
 	'ow_meaningsoftitle' => 'Significatos de "$1"',
+	'ow_meaningsofsubtitle' => '<em>Ligamine Wiki:</em> [[$1]]',
+	'ow_Permission_denied' => '<h2>Permission refusate</h2>',
+	'ow_copy_no_action_specified' => 'Per favor specifica un action',
+	'ow_copy_help' => 'Alcun die, nos poterea adjutar te.',
+	'ow_please_proved_dmid' => 'Pare que manca un "?dmid=<ID>" a tu entrata (dmid=ID del Significato Definite)<br />
+Per favor contacta un administrator del servitor.',
+	'ow_please_proved_dc1' => 'Pare que manca un "?dc1=<alcun cosa>" a tu entrata (dc1=contexto de collection de datos 1, le collection de datos AB le qual se copia)<br />
+Per favor contacta un administrator de servitor.',
+	'ow_please_proved_dc2' => 'Pare que manca un "?dc2=<alcun cosa>" a tu entrata (dc2=contexto de collection de datos 2, le collection de datos VERSO le qual se copia)<br />
+Per favor contacta un administrator del servitor.',
+	'ow_copy_successful' => '<h2>Copia succedite</h2>
+Tu datos pare haber essite copiate con successo.
+Non oblida de verificar isto ben!',
+	'ow_copy_unsuccessful' => '<h3>Copia non succedite</h3>
+Nulle operation de copia ha essite executate.',
+	'ow_no_action_specified' => '<h3>Nulle action specificate</h3>
+Per favor tu ha venite a iste pagina directemente? Normalmente tu non necessita esser hic.',
+	'ow_db_consistency_not_found' => '<h2>Error</h2>
+Il ha un problema con le consistentia del base de datos. Wikidatos non pote trovar datos valide connectite a iste ID de significato definite.
+Illo pote esser perdite.
+Per favor contacta le operator o administrator del servitor.',
 );
 
 /** Indonesian (Bahasa Indonesia)
@@ -2045,22 +2136,31 @@ Don ens noh dä Webaddress loore.',
 	'ow_ClassAttributeType' => 'Tüp',
 	'ow_Collection' => 'Aansamlung',
 	'ow_DefinedMeaningAttributes' => 'Aanmerkung',
+	'ow_DefinedMeaning' => 'Bedüggning',
+	'ow_DefinedMeaningReference' => 'Bedüggning',
 	'ow_ExactMeanings' => 'Akoraat Bedüggninge',
 	'ow_Expression' => 'Ußdrok',
 	'ow_ExpressionMeanings' => 'Däm Ußdrok sing Bedüggninge',
 	'ow_Expressions' => 'Ußdrök',
+	'ow_IdenticalMeaning' => 'Akoraat ejaale Bedüggning?',
 	'ow_GotoSource' => 'Jangk noh de Quell',
-	'ow_Language' => 'Sproch',
+	'ow_Language' => 'Sprooch',
 	'ow_LevelAnnotation' => 'Aanmerkung',
 	'ow_OptionAttribute' => 'Eijeschaff',
+	'ow_OtherDefinedMeaning' => 'Ander Bedüggning',
+	'ow_PopupAnnotation' => 'Aanmerkung',
 	'ow_Spelling' => 'Schriefwieß',
+	'ow_Synonyms' => 'Wööt met ätwa de sellve Bedüggning',
+	'ow_SynonymsAndTranslations' => 'Övversätzunge, un Wööt met ätwa de sellve Bedüggning',
 	'ow_Source' => 'Quell',
+	'ow_TextAttribute' => 'Eijeschaff',
 	'ow_Text' => 'Tex',
+	'ow_TextAttributeValues' => 'Eijfach Tex',
 	'ow_TranslatedTextAttribute' => 'Eijeschaff',
 	'ow_TranslatedText' => 'Övversäzte Tex',
 	'ow_TranslatedTextAttributeValue' => 'Tex',
 	'ow_TranslatedTextAttributeValues' => 'Övvesazbaa Tex',
-	'ow_LinkAttribute' => 'Eiejeschaff',
+	'ow_LinkAttribute' => 'Eijeschaff',
 	'ow_LinkAttributeValues' => 'Links',
 	'ow_Property' => 'Eijeschaff',
 	'ow_Value' => 'Wäät',
@@ -2069,8 +2169,33 @@ Don ens noh dä Webaddress loore.',
 	'ow_Permission_denied' => '<h2>Nit Zojelohße</h2>',
 	'ow_copy_no_action_specified' => 'Beß esu joot un donn en Akßjuhn faßlääje',
 	'ow_copy_help' => 'Künnt sinn, mer künn Der spääder ens hellefe.',
+	'ow_please_proved_dmid' => "'''Verdammp!''' Et süht esu uß, wi wenn en Dingem Oprof hee en
+„<code>?dmid=<i>öhnzjät</i></code>“ fähle däät.
+Dat <code>dmid</code> bedügg de <i lang=\"en\">defined meaning id</i>,
+de Nommer fun dä Bedüggning, woh et dröm jeiht.<br />
+Bes esu joot, un saach dat enem Administrator fun däm Server.",
+	'ow_please_proved_dc1' => "'''Jösses!''' Et süht esu uß, wi wenn en Dingem Oprof hee en
+„<code>?dc1=<i>öhnzjät</i></code>“ fähle däät.
+Dat <code>dc1</code> bedügg <i lang=\"en\">dataset content 1</i>,
+dä Datesatz för fun ze kopeere.<br />
+Bes esu joot, un donn dat enem Administrator fun däm Server wigger sahre.",
+	'ow_please_proved_dc2' => "'''Auwieh!''' Et süht esu uß, wi wenn en Dingem Oprof hee en
+„<code>?dc2=<i>öhnzjät</i></code>“ fähle däät.
+Dat <code>dc2</code> bedügg <i lang=\"en\">dataset content 2</i>,
+dä Datesatz för drop ze kopeere.<br />
+Bes esu joot, un donn dat enem Administrator fun däm Server verzälle.",
+	'ow_copy_successful' => '<h2>Et Koppeere hät jeflupp</h2>
+Et süht esu uß, wi wenn Ding Date reschtesch koppeet woode wöhre.
+Dengk ävver draan, dat norr_enß nohzeloore!',
 	'ow_copy_unsuccessful' => '<h3>Et Kopeere es donevve jejange</h3>
 Kein Kopie es jemaat woode.',
+	'ow_no_action_specified' => '<h3>Do es keine Opdraach (<code>action</code>) aanjejovve</h3>
+Velleisch bes De tiräk op di Sigg hee jespronge?
+Nomaal sullt me hee nit hen kumme.',
+	'ow_db_consistency_not_found' => '<h2>Fähler</h2>
+De Datebangk es nit mieh konsistent.
+Wikidata kunnt kein jöltije Date fenge, di met dä Nommer för en DefindeMeaning zosamme passe däte.
+Bes esu joot, un saach dat enem Wiki-Köbes, udder ennem Administrator fun däm Server.',
 );
 
 /** Kurdish (Latin) (Kurdî / كوردی (Latin))

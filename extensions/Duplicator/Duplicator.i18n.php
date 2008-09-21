@@ -581,9 +581,37 @@ $messages['km'] = array(
 	'duplicator-source-invalid' => 'សូមផ្តល់មកនូវចំនងជើងប្រភពត្រឹមត្រូវ។',
 );
 
-/** Ripoarisch (Ripoarisch) */
+/** Ripoarisch (Ripoarisch)
+ * @author Purodha
+ */
 $messages['ksh'] = array(
-	'duplicator-desc' => 'Määt [[Special:Duplicate|Kopije fun Sigge]] met all ier ahle Versione.',
+	'duplicator' => 'En Sigg verdubbelle',
+	'duplicator-desc' => 'Määt extra [[Special:Duplicate|Kopije fun Sigge]] met all ier ahle Versione.',
+	'duplicator-toolbox' => 'Die Sigg hee verdubbelle',
+	'duplicator-header' => 'Hee di Söndersigg määd et müjjelesch, en Sigg ze verdubbelle,
+un dobei fun all ier Versione bes jätz en eijen Kopie aanzelääje.
+Dat es nötzlesch, wam_mer die zwei en ungerscheedlische Reschtunge
+wigger beärbeide, allsu opdeile, well.',
+	'duplicator-options' => 'Enstellunge',
+	'duplicator-source' => 'Tittel fun de Quell-Sigg:',
+	'duplicator-dest' => 'De Ziel-Sigg iere Tittel:',
+	'duplicator-dotalk' => 'Klaafsigg met koppeere, wann müjjelesch',
+	'duplicator-submit' => 'Kopeere!',
+	'duplicator-summary' => 'Kopeet fun „[[$1]]“',
+	'duplicator-success' => "<big>'''„[[$1]]“ es op „[[$2]]“ kopeet wode.'''</big>",
+	'duplicator-success-revisions' => '{{PLURAL:$1|Eijn Version es|$1 Versione sin|Kein Versione sin}} kopeet wode.',
+	'duplicator-success-talkcopied' => 'De Klaafsigg es och kopeet wode.',
+	'duplicator-success-talknotcopied' => 'De Klaafsigg kunnt nit kopeet wäde.',
+	'duplicator-failed' => 'Hee di Sigg kunnte mer leider nit verdubbelle.
+Ene unklohre Fähler es opjetrodde.',
+	'duplicator-source-invalid' => 'Beß esu joot, un jif ene jode Tittel för de Quell fum Kopeere aan.',
+	'duplicator-source-notexist' => 'En Sigg „[[$1]]“ ham_mer nit. Jiff ene Tittel aan fun en Sigg, di och doh es.',
+	'duplicator-dest-invalid' => 'Beß esu joot, un jif ene jode Tittel för et Ziel fum Kopeere aan.',
+	'duplicator-dest-exists' => 'De Sigg „[[$1]]“ es ald doh. Jiff ene Tittel aan fun en Sigg, di et noch nit jitt.',
+	'duplicator-toomanyrevisions' => 'De Sigg „[[$1]]“ hät {{PLURAL:$2|ein Version|$2 Versione|jaa kei Version}},
+un dat es ze fill, di künne mer nit verdubbelle.
+Mieh wie {{PLURAL:$3|ein Version|$3 Versione|jaa kei Version}}
+künne mer em Momang nit koppeere.',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

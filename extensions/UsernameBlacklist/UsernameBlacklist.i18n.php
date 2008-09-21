@@ -326,8 +326,10 @@ Bonvolu elekti alian nomon.',
  * @author Titoxd
  */
 $messages['es'] = array(
+	'usernameblacklist-desc' => 'Añade una [[MediaWiki:Usernameblacklist|lista negra de nombres de usuario]] para restringir la creación de cuentas de usuario que coinciden con una o más expresiones regulares',
 	'blacklistedusername' => 'Nombre de usuario no permitido',
 	'blacklistedusernametext' => 'El nombre de usuario que has seleccionado está en la [[MediaWiki:Usernameblacklist|lista de nombres no permitidos]]. Por favor, elige otro.',
+	'usernameblacklist-invalid-lines' => '{{PLURAL:$1|La siguiente línea|Las siguientes líneas}} en la lista negra de nombres de usuario no {{PLURAL:$1|es válida|son válidas}}; por favor, corríge{{PLURAL:la|las}} antes de guardar:',
 );
 
 /** Basque (Euskara) */
@@ -1124,6 +1126,7 @@ $messages['sah'] = array(
 # * [Bb]ar
 </pre>',
 	'usernameblacklist-invalid-lines' => 'Хара испииһэк бу {{PLURAL:$1|строкаата сыыһалаах|строкалара сыыһалаахтар}}; уларытыаҥ иннинэ ону көннөр:',
+	'right-uboverride' => 'Кыттааччылар "хара" испииһэктэрин ааххайыма',
 );
 
 /** Slovak (Slovenčina)

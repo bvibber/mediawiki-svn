@@ -289,6 +289,24 @@ $2',
 	'userrightsnotif-desc' => 'Sćele wužiwarjam e-mejlowu powěsće při změnjenju prawow',
 );
 
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'userrightsnotifysubject' => 'Cambiamento de appertinentia a gruppos in $1',
+	'userrightsnotifybody' => 'Salute $1,
+
+Isto es pro informar te que tu appertinentia al gruppos in $2 ha essite cambiate per $3 le $4.
+
+Addite: $5
+Retirate: $6
+
+Cordialmente,
+
+$2',
+	'userrightsnotif-desc' => 'Invia un notification per e-mail al usatores cuje derectos es cambiate',
+);
+
 /** Indonesian (Bahasa Indonesia)
  * @author Rex
  */

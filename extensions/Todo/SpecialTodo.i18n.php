@@ -239,6 +239,7 @@ $messages['eo'] = array(
 );
 
 /** French (Français)
+ * @author McDutchie
  * @author Urhixidur
  */
 $messages['fr'] = array(
@@ -261,7 +262,7 @@ $4",
 	'todo-item-list' => 'Vos articles',
 	'todo-no-item' => 'Aucune tâche à exécuter',
 	'todo-invalid-owner' => 'Propriétaire de cet article invalide',
-	'todo-add-queue' => 'Ajouter à la queue…',
+	'todo-add-queue' => 'Ajouter une queue…',
 	'todo-move-queue' => 'Déplacer vers la queue…',
 	'todo-list-for' => 'Liste des tâches à exécuter pour',
 	'todo-list-change' => 'Modifier',
@@ -371,6 +372,41 @@ $4',
  */
 $messages['hu'] = array(
 	'todo-new-queue' => 'új',
+);
+
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'todo' => 'Lista de cargas a facer',
+	'todo-desc' => 'Extension experimental pro un lista personal de [[Special:Todo|cargas a facer]]',
+	'todo-tab' => 'a facer',
+	'todo-new-queue' => 'nove',
+	'todo-mail-subject' => 'Action complite in le lista de cargas de $1',
+	'todo-mail-body' => 'Tu requestava confirmation per e-mail super le completion de un carga que tu submitteva al lista in-linea de cargas a facer de $1.
+
+Carga: $2
+Submittite: $3
+
+Iste action ha essite marcate como complite, con iste commento:
+$4',
+	'todo-invalid-item' => 'Carga mancante o invalide',
+	'todo-update-else-item' => 'Tentativa de actualisar le cargas de alcuno altere',
+	'todo-unrecognize-type' => 'Typo non recognoscite',
+	'todo-user-invalide' => 'Todo recipeva un usator invalide, mancante, o sin derectos requisite.',
+	'todo-item-list' => 'Tu cargas',
+	'todo-no-item' => 'Nulle cargas a facer.',
+	'todo-invalid-owner' => 'Le proprietario de iste carga es invalide',
+	'todo-add-queue' => 'Adder cauda…',
+	'todo-move-queue' => 'Displaciar verso cauda…',
+	'todo-list-for' => 'Lista de cargas a facer pro',
+	'todo-list-change' => 'Cambiar',
+	'todo-list-cancel' => 'Cancellar',
+	'todo-new-item' => 'Nove carga',
+	'todo-issue-summary' => 'Summario:',
+	'todo-form-details' => 'Detalios:',
+	'todo-form-email' => 'Pro reciper notification per e-mail quando le carga es claudite, entra tu adresse hic:',
+	'todo-form-submit' => 'Submitter requesta',
 );
 
 /** Indonesian (Bahasa Indonesia)

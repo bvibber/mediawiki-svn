@@ -465,7 +465,7 @@ Isto debería facerse só para previr vandalismo, e segundo a política e normas
 	'regexblock-block-success' => 'Bloqueo con éxito',
 	'regexblock-form-submit-empty' => 'Dar un nome de usuario ou un enderezo IP para bloquear.',
 	'regexblock-form-submit-regex' => 'Expresión regular non válida.',
-	'regexblock-form-submit-expiry' => 'Especifique un período de expiración.',
+	'regexblock-form-submit-expiry' => 'Especifique un período de caducidade.',
 	'regexblock-already-blocked' => '$1 xa está bloqueado.',
 	'regexblock-stats-title' => 'Estatíticas do bloqueo Regex',
 	'regexblock-stats-username' => 'De $1',

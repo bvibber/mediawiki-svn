@@ -18,8 +18,10 @@ $messages['en'] = array(
 
 /** Message documentation (Message documentation)
  * @author Jon Harald Søby
+ * @author Purodha
  */
 $messages['qqq'] = array(
+	'unicodeconverter-desc' => 'Shown in the special page [[Special:Version]] as a short description of the extension.',
 	'unicodeconverter-ok' => '{{Identical|OK}}',
 );
 
@@ -67,11 +69,12 @@ $messages['eo'] = array(
 );
 
 /** French (Français)
+ * @author McDutchie
  * @author Zetud
  */
 $messages['fr'] = array(
 	'unicodeconverter' => 'Convertisseur Unicode',
-	'unicodeconverter-desc' => 'Un simple exemple de mode de page spéciale. Donne une chaîne de caractères au format UTF-8, la convertit en entité HTML pour une page web en ISA 8859-1',
+	'unicodeconverter-desc' => "Un simple exemple d'un module de page spéciale. [[Special:UnicodeConverter|Étant donnée une chaîne de caractères au format UTF-8]], la convertit en entités HTML appropriés pour une page web en ISO 8859-1",
 	'unicodeconverter-ok' => 'Convertir',
 	'unicodeconverter-oldtext' => 'Texte d’origine :',
 	'unicodeconverter-newtext' => 'Texte une fois converti :',
@@ -88,6 +91,17 @@ $messages['gl'] = array(
 	'unicodeconverter-newtext' => 'Texto transformado:',
 );
 
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'unicodeconverter' => 'Convertitor de Unicode',
+	'unicodeconverter-desc' => 'Un exemplo simple de un modulo a pagina special.  [[Special:UnicodeConverter|Date un serie de characteres in UTF-8]], illo los converte a entitates HTML apte pro un pagina web in ISO 8859-1',
+	'unicodeconverter-ok' => 'OK',
+	'unicodeconverter-oldtext' => 'Texto original:',
+	'unicodeconverter-newtext' => 'Texto convertite:',
+);
+
 /** Khmer (ភាសាខ្មែរ)
  * @author Lovekhmer
  * @author គីមស៊្រុន
@@ -97,6 +111,20 @@ $messages['km'] = array(
 	'unicodeconverter-ok' => 'យល់ព្រម',
 	'unicodeconverter-oldtext' => 'អត្ថបទដើម៖',
 	'unicodeconverter-newtext' => 'អត្ថបទបំលែងរួច៖',
+);
+
+/** Ripoarisch (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'unicodeconverter' => 'Unicode Wandler',
+	'unicodeconverter-desc' => 'En eijfach Beijspöll för en Söndersigg.
+[[Special:UnicodeConverter|Jif ene Tex en UTF-8 en]],
+dä weed in <i lang="en">HTML entities</i> ömjewandelt.
+Dat deit för en ISO 8859-1 Websigg paße.',
+	'unicodeconverter-ok' => 'Loß jonn!',
+	'unicodeconverter-oldtext' => 'Ojinaal Tex:',
+	'unicodeconverter-newtext' => 'Ömjesaz Tex:',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
