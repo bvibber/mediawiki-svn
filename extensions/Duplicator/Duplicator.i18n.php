@@ -532,13 +532,14 @@ $messages['it'] = array(
 
 /** Japanese (日本語)
  * @author Aotake
+ * @author Fievarsty
  * @author JtFuruhata
  */
 $messages['ja'] = array(
 	'duplicator' => 'ページの複製',
 	'duplicator-desc' => '複製ページを全編集履歴とともに作成する',
 	'duplicator-toolbox' => 'このページを複製',
-	'duplicator-header' => 'ここではではページを複製することができます。履歴を含む同じ内容の複製が新たに作成されます。記事の分割などに利用してください。',
+	'duplicator-header' => 'ここではページを複製することができます。履歴を含む同じ内容の複製が新たに作成されます。記事の分割などに利用してください。',
 	'duplicator-options' => '設定',
 	'duplicator-source' => '複製元:',
 	'duplicator-dest' => '複製先:',

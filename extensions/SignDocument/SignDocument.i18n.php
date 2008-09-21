@@ -93,6 +93,16 @@ $messages['hsb'] = array(
 	'signaturelogentry' => 'je dokument $1 podpisał',
 );
 
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'signaturelogpage' => 'Registro de signaturas',
+	'signature-desc' => 'Permitte le [[Special:SignDocument|signatura]] de documentos',
+	'signaturelogpagetext' => 'Isto es un registro de [[Special:SignDocument|tote le signaturas addite a documentos]].',
+	'signaturelogentry' => 'signava le documento $1',
+);
+
 /** Javanese (Basa Jawa)
  * @author Meursault2004
  */

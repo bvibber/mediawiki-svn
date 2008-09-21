@@ -772,6 +772,7 @@ Se l'errore dovesse persistere, il database è probabilmente rotto.",
 
 /** Japanese (日本語)
  * @author Aotake
+ * @author Fievarsty
  * @author JtFuruhata
  */
 $messages['ja'] = array(
@@ -793,8 +794,8 @@ $messages['ja'] = array(
 	'changeauthor-weirderror' => '予測不能なエラーが発生しました。もう一度操作してください。それでもエラーが発生する場合は、恐らくデータベースが破壊されています。',
 	'changeauthor-invalidform' => '独自のフォームではなく、[[Special:ChangeAuthor|特定版編集者の変更]]が提供するフォームを利用してください。',
 	'changeauthor-success' => '要求された処理が完了しました。',
-	'changeauthor-logentry' => '編集者の変更 $1 の特定版 $2、$3 から $4 へ',
-	'changeauthor-logpagename' => '編集者の変更ログ',
+	'changeauthor-logentry' => '$1 の特定版 $2 を $3 から $4 へ投稿者を変更しました。',
+	'changeauthor-logpagename' => '投稿者変更記録',
 );
 
 /** Javanese (Basa Jawa)

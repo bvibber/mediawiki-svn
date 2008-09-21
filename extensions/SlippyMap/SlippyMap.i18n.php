@@ -266,6 +266,20 @@ $messages['ia'] = array(
 	'slippymap_widthbig' => 'Le valor del latitude (w) non pote exceder 1000',
 	'slippymap_widthsmall' => 'Le valor del latitude (w) non pote esser minus de 100',
 	'slippymap_heightbig' => 'Le valor del altitude (h) non pote esser plus de 1000',
+	'slippymap_heightsmall' => 'Le valor del altitude (h) non pote esser minus de 100',
+	'slippymap_latbig' => 'Le valor del latitude (lat) non pote exceder 90',
+	'slippymap_latsmall' => 'Le valor del latitude (lat) non pote esser minus de -90',
+	'slippymap_lonbig' => 'Le valor del longitude (lon) non pote exceder 100',
+	'slippymap_lonsmall' => 'Le valor del longitude (lon) non pote esser minus de -100',
+	'slippymap_zoomsmall' => 'Le valor del zoom (z) non pote esser minus de zero',
+	'slippymap_zoom18' => "Le valor del zoom (z) non pote exceder 17. Nota que iste extension de Mediawiki se installa in le strato 'osmarender' de OpenStreetMap, le qual non excede le nivello de zoom 17. Le strato Mapnik disponibile in openstreetmap.org ha un nivello de zoom maxime de 18.",
+	'slippymap_zoombig' => 'Le valor del zoom (z) non pote exceder 17.',
+	'slippymap_invalidlayer' => "Valor de 'strato' invalide '%1'",
+	'slippymap_maperror' => 'Error de carta:',
+	'slippymap_osmtext' => 'Vider iste carta in OpenStreetMap.org',
+	'slippymap_code' => 'Codice Wiki pro iste vista del carta:',
+	'slippymap_button_code' => 'Obtener codice wiki',
+	'slippymap_resetview' => 'Reinitialisar vista',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

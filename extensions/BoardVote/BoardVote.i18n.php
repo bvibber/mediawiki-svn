@@ -4441,7 +4441,9 @@ Seguís la version criptada çaijós, que serà afichada publicament sus [[Speci
 
 [[Special:Boardvote/entry|Retorn]]",
 	'boardvote_invalidentered' => '<p><strong>Error</strong> : la preferéncia per un candidat deu èsser exprimida unicament sus de nombres positius dins lor totalitat (1, 2, 3…) o alara daissada voida.</p>',
-	'boardvote_nosession' => 'Impossible de determinar vòstre identificant Wikimèdia. Rendètz-vos sus vòstre wiki d’origina, enregistratz-vos, e rendètz-vos sus la pagina <nowiki>[[Special:Boardvote]]</nowiki>. Vos cal aver un compte amb almens $1 contribucions efectuadas abans lo $2, e aver efectuat vòstra primièra edicion abans lo $3 e aver fach al mens $3 contribucions entre lo $4 e lo $5.',
+	'boardvote_nosession' => 'Vòstre identificant Wikimedia pòt pas èsser determinat.<br />
+Rendètz-vos sus vòstre wiki d’origina ont sètz abilitat per votar, puèi rendètz-vos sus la pagina <nowiki>[[Special:Boardvote]]</nowiki>.<br />
+Vos cal aver un compte amb al mens $1 {{PLURAL:$1|contribucion efectuada|contribucions efectuadas}} abans lo $2 e al mens $3 {{PLURAL:$3|contribucion efectuada|contribucions efectuadas}} entre lo $4 e lo $5.',
 	'boardvote_notloggedin' => 'Actualament sètz pas autentificat. Per votar, vos cal utilizar un compte comportant al mens $1 contribucions abans lo $2, e aver efectuar al mens $3 contribucions entre lo $4 e lo $5.',
 	'boardvote_notqualified' => "Respondètz pas a una de las condicions requesidas per votar a aqueste escrutin. Es necessari d’aver $3 contribucions abans lo $2, e n'avètz efectuadas $1. En otra, vòstra primièra modificacion data del $4, e deu aver estada facha abans lo $5.",
 	'boardvote_novotes' => 'Degun a pas encara votat.',

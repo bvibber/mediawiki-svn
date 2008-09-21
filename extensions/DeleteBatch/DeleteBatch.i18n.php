@@ -374,6 +374,19 @@ $messages['it'] = array(
 	'deletebatch-reason' => 'Motivo della cancellazione',
 );
 
+/** Japanese (日本語)
+ * @author Fievarsty
+ */
+$messages['ja'] = array(
+	'deletebatch' => 'ページを一括削除する',
+	'deletebatch-desc' => '[[Special:DeleteBatch|ページを一括削除する]]',
+	'deletebatch-button' => '削除',
+	'deletebatch-caption' => 'ページリスト',
+	'deletebatch-title' => '一括削除',
+	'deletebatch-or' => '<b>または</b>',
+	'deletebatch-page' => '削除するページ',
+);
+
 /** Khmer (ភាសាខ្មែរ)
  * @author Lovekhmer
  */
