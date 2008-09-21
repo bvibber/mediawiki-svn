@@ -323,9 +323,6 @@ $extensions = array(
 	),
 	array(
 		'name' => 'Citation',
-		'settings' => array(
-		
-		),
 	),
 	array(
 		'name' => 'Cite',
