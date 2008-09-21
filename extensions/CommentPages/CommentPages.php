@@ -18,6 +18,11 @@ $wgExtensionCredits['other'][] = array(
 $wgExtensionMessagesFiles['CommentPages'] = dirname(__FILE__) . '/CommentPages.i18n.php';
 $wgHooks['SkinTemplateTabs'][]  = 'wfCommentPagesSkinTemplateTabs';
 
+/**
+ * Namespace to use for comments
+ */
+$wgCommentPagesNS = 100;
+
 function wfCommentPagesSkinTemplateTabs ( &$skin, &$content_actions )
 {
 	global $wgContLang, $wgCommentPagesNS;
