@@ -40,7 +40,7 @@ class DeleteQueueReviewForm {
 		$queue = $dqi->getQueue( );
 
 		// Transaction
-		$dbw = wfGetDB();
+		$dbw = wfGetDB( DB_MASTER );
 		$dbw->begin();
 
 		switch ($action) {

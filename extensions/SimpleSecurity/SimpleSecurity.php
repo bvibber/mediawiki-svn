@@ -466,7 +466,7 @@ function wfSetupSimpleSecurity() {
 	# Request a DB connection to ensure the LoadBalancer is initialised,
 	# then change back to old DBtype since it won't be used for making connections again but can affect other operations
 	# such as $wgContLang->stripForSearch which is called by SearchMySQL::parseQuery
-	wfGetDB();
+	wfGetDB( DB_MASTER );
 	$wgDBtype = $wgOldDBtype;
 
 	# Add messages
