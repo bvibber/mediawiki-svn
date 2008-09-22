@@ -15,26 +15,36 @@
  *
  */
 var MV_EMBED_VERSION = '1.0rc1';
+
+//if you want to foce the path to the mv_embed folder 
 var mv_embed_path = null;
+
+//the name of the player skin (default is mvpcf)
+var mv_skin_name = 'mvpcf';
+
 //whether or not to load java from an iframe.
 //note: this is necessary for remote embedding because of java security model)
 var mv_java_iframe = true;
+
+//ogg chop links ( removes .anx from stream) should be deprecated shortly 
 var ogg_chop_links = true;
+
 //media_server mv_embed_path (the path on media servers to mv_embed for java iframe with leading and trailing slashes)
 var mv_media_iframe_path = '/mv_embed/';
+
+//the default height/width of the vidoe (if no style or width parm provided)
+var mv_default_video_size = '400x300'; 
+
+//this restricts playable sources to ROE xml media without start end time atttribute
+var mv_restrict_roe_time_source = true;
+
 
 var global_ogg_list = new Array();
 var global_req_cb = new Array();//the global request callback array
 var _global = this;
 var mv_init_done=false;
 
-//this restricts playable sources to ROE xml media without start end time atttribute
-var mv_restrict_roe_time_source = true;
 
-//the default height/width of the vidoe (if no style or width parm provided)
-var mv_default_video_size = '400x300'; 
-
-var debug_global_vid_ref=null;
 /*
  * its best if you just require all your external data sources to serve up json data.
  * or
@@ -167,17 +177,18 @@ var mvEmbed = {
   libs_loaded:false,
   //plugin libs var names and paths:
   lib_jquery:{'window.jQuery':'jquery/jquery-1.2.6.min.js'},
-  lib_plugins:{
-  	'$j.timer.global':'jquery/plugins/jquery.timers.js', //we should try and factor out the timer
+  lib_plugins:{  	
 	'$j.ui.mouse'	 :'jquery/jquery.ui-1.5.2/ui/minified/ui.core.min.js'	
   },
+  // not used: 
+  //'$j.timer.global':'jquery/plugins/jquery.timers.js',
   lib_controlui:{
   	'$j.ui.droppable':'jquery/jquery.ui-1.5.2/ui/minified/ui.droppable.min.js',
-	'$j.ui.draggable':'jquery/jquery.ui-1.5.2/ui/minified/ui.draggable.min.js',
-	'$j.ui.resizable':'jquery/jquery.ui-1.5.2/ui/minified/ui.resizable.min.js'		
+	'$j.ui.draggable':'jquery/jquery.ui-1.5.2/ui/minified/ui.draggable.min.js'		
   },
   /* @@todo move to single packaged jquery ui library:   
 	, //include draggable
+	'$j.ui.resizable':'jquery/jquery.ui-1.5.2/ui/minified/ui.resizable.min.js'
 	'$j.ui.progressbar':'jquery/jquery-ui-personalized-1.6rc1.debug.js'	
    */
   pc:null, //used to store pointer to parent clip (when in playlist mode)
@@ -210,11 +221,9 @@ var mvEmbed = {
   	this.flist.push(fn);
   },
   init: function(){
-    //load css:
-  	if(!styleSheetPresent(mv_embed_path+'mv_embed.css'))
-		loadExternalCss(mv_embed_path+'mv_embed.css');
-  	if(!styleSheetPresent(mv_embed_path+'skin/styles.css'))
-		loadExternalCss(mv_embed_path+'skin/styles.css');
+    //load mv_embed skin stylesheet: 
+  	if(!styleSheetPresent(mv_embed_path+'skins/'+mv_skin_name+'/styles.css'))
+		loadExternalCss(mv_embed_path+'skins/'+mv_skin_name+'/styles.css');
 
   	//call the callback:
   	if(this.load_callback)this.load_callback();
@@ -267,60 +276,34 @@ mediaPlayer.prototype =
 		if(this.loaded)
 		{
 			js_log('plugin loaded, scheduling immediate processing');
-			$j(document).oneTime(1, callback);
+			callback();
 		}
 		else
 		{
-			js_log('plugin not loaded, queing callback');
-			this.loading_callbacks.push(callback);
-			if(this.loading_callbacks.length==1)
-			{
-				var plugin_path = mv_embed_path + 'embedLibs/mv_'+this.library+'Embed.js';
-				js_log('requesting plugin: ' + plugin_path);
-				var _this = this;
-				//swaped for doLoad so that we use cache 
-				// getScript has cache disabled for some reason (probably could be set up at init to cache)
-				
-				//I am getting vlEmebed is not defined like 1/5 or 1/20th the time
-				//the load order should be more defined and ordered via callbacks  
-				$j.getScript(plugin_path, function(){				
-					js_log(_this.id + ' plugin loaded');
-					_this.execute_callbacks();
-				});
-/*				eval('var lib = {"'+this.library+'Embed":\'embedLibs/mv_'+this.library+'Embed.js\'}'); 
-				mvJsLoader.doLoad(lib,function(){
-					js_log(_this.id + ' plugin loaded');
-					_this.loaded = true;
-					//callback();	
-					for(var i in _this.loading_callbacks)
-						_this.loading_callbacks[i]();
-					_this.loading_callbacks = null;
-				});*/
-			}
-		}
-	},
-	execute_callbacks : function()
-	{
-		// make sure the object exists
-		if(eval('typeof '+this.library + 'Embed')!='undefined')
-		{
-			js_log(this.id + ' executing callbacks');
-			this.loaded = true;
-			for(var i in this.loading_callbacks)
-				this.loading_callbacks[i]();
-			this.loading_callbacks = null;
-		}
-		else
-		{
-			js_log(this.id + ' object not present, delay callbacks');
-			// if not, wait a little
 			var _this = this;
-			$j(document).oneTime(25, function()
-			{
-				_this.execute_callbacks();
+			var plugin_path = mv_embed_path + 'embedLibs/mv_'+this.library+'Embed.js';	
+			//add the callback: 
+			this.loading_callbacks.push(callback);
+
+			
+			js_log('plugin not loaded, queing callback');	
+			js_log('requesting plugin: ' + plugin_path);		
+			/*$j.getScript(plugin_path, function(){				
+				js_log(_this.id + ' plugin loaded');
+				_this.loaded = true;
+				callback();
+			});*/
+			eval('var lib = {"'+this.library+'Embed":\'embedLibs/mv_'+this.library+'Embed.js\'}'); 
+			mvJsLoader.doLoad(lib,function(){
+				js_log(_this.id + ' plugin loaded');
+				_this.loaded = true;
+				for(var i in _this.loading_callbacks)
+					_this.loading_callbacks[i]();	
+				_this.loading_callbacks = null;
+								
 			});
 		}
-	}
+	}	
 }
 
 var flowPlayer = new mediaPlayer('flowplayer',['video/x-flv'],'flash');
@@ -942,8 +925,7 @@ function mv_embed(){
     video_elements = document.getElementsByTagName("video");
     //js_log('found video '+ video_elements.length);
     if( video_elements.length > 0) {
-        for(var i = 0; i < video_elements.length; i++) {
-        	debug_global_vid_ref =video_elements[i];
+        for(var i = 0; i < video_elements.length; i++) {        	
             //grab id:
             vid_id = $j(video_elements[i]).attr("id");           
             //set id if empty:
@@ -1422,6 +1404,7 @@ mediaSource.prototype =
         this.src = $j(element).attr('src');
         if(ogg_chop_links)
             this.src = this.src.replace(".anx", '');
+            
         this.marked_default = false;
 
         var tag = element.tagName.toLowerCase();
@@ -2491,7 +2474,7 @@ embedVideo.prototype = {
 
 	        //fix for IE<7 and its lack of PNG support:
 		out+=getTransparentPng(new Object ({id:'play_'+id, width:play_btn_width, height:play_btn_height, border:"0",
-						src:mv_embed_path + '/skin/images/player_big_play_button.png' }));
+						src:mv_embed_path + '/skins/'+mv_skin_name+'/images/player_big_play_button.png' }));
 		out+='</a></div>';
 		return out;*/
 	},
@@ -2807,35 +2790,6 @@ embedVideo.prototype = {
 			return true;
 		}
 	},
-	//loads in the css and js for the extended interface (controls = true)
-	//depricated
-	/*get_interface_lib : function(doLoad){
-		//var doLoad = (doLoad==null)? true:doLoad;
-		//js_log('get interface:' + doLoad);
-		var loading_interface =false;
-
-		//grab the css file:
-		if(!styleSheetPresent(mv_embed_path+'mv_embed.css')){
-			if(doLoad) loadExternalCss(mv_embed_path+'mv_embed.css');
-			js_log('css und');
-			loading_interface=true;
-		}
-		if(loading_interface){
-			//call get_interface_lib (without requests) until interface is done loading:
-			setTimeout('document.getElementById(\''+this.id+'\').get_interface_lib(false)', 50);
-			//if loading interface is not yet available
-			return false;
-		}else{
-			//js_log('loading_interface = false');
-			//if it was a load request and it was already loaded return true
-			if(doLoad){
-				return true;
-			}else{
-				//non loading request means time has passed so we need to update the innerHTML
-				this.doEmbedHTML();
-			}
-		}
-	},*/
 	playlistSupport:function(){
 		//by default not supported (implemented in js)
 		return false;

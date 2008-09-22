@@ -50,6 +50,11 @@ var nativeEmbed = {
 	monitor : function(){
 		//js_log('native:monitor');
 		this.getVID(); //make shure we have .vid obj
+		if(!this.vid){
+			js_log('could not find video embed: '+this.id + ' stop monitor');
+			this.stopMonitor();			
+			return false;
+		}
 		//js_log('time loaded: ' + this.vid.TimeRanges );
 		//js_log('current time: '+ this.vid.currentTime  + ' dur: ' + this.duration);
 		

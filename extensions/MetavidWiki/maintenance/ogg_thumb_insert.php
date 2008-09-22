@@ -24,7 +24,7 @@ USAGE
  php ogg_thumb_insert.php stream_name filename interval duration
 
 EXAMPLE
- ogg_thumb_insert.php stream_name /var/www/localhost/htdocs/media/stream.ogg 20
+ ogg_thumb_insert.php stream_name stream.ogg 20
 
 Notes:
   if possible you want to use the source footage rather than the ogg to generate the thumbnails (ie the mpeg2 or dv)
@@ -42,7 +42,7 @@ $stream_id =$MV_Stream->getStreamId();
 
 $filedir='../stream_images/'.substr($stream_id, -1).'/'.$stream_id;
 $dbw =$dbr = wfGetDB(DB_MASTER);
-for($i=0;$i<$duration;$i+=$interval){
-  $dbw->query("INSERT INTO `mv_stream_images` (`stream_id`, `time`) VALUES ($stream_id, $i)");
+for($i=0;$i<$duration;$i+=$interval){  
   shell_exec("ffmpeg -ss $i -i {$filename} -vcodec mjpeg -vframes 1 -an -f rawvideo -y {$filedir}/{$i}.jpg");
+  $dbw->query("INSERT INTO `mv_stream_images` (`stream_id`, `time`) VALUES ($stream_id, $i)");
 }

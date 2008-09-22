@@ -135,6 +135,14 @@ mvPlayList.prototype = {
 		//grab "options" use current clip:
 		this.cur_clip.embed.doOptionsHTML();
 	},
+	//pulls up the video editor inline
+	doEditor:function(){
+		//black out the page: 
+		$j('body').append('<div id="overlay"/> '+
+						'<div id="modalbox" class="editor">');
+		$j('#modalbox').html('loading editor<blink>...</blink>');
+						
+	},
 	selectPlaybackMethod:function(){
 		this.cur_clip.embed.selectPlaybackMethod();
 	},
@@ -207,7 +215,7 @@ mvPlayList.prototype = {
 			this.getHTML();
 		}else{
 			js_log("only "+ _this.clip_ready_count +" clips done, scheduling callback:");
-			setTimeout('document.getElementById(\''+this.id+'\').doWhenParseDone(false)', 250);
+			setTimeout('document.getElementById(\''+this.id+'\').doWhenParseDone()', 250);
 		}				    	    	
 	},
 	doWhenClipLoadDone:function(){
@@ -439,7 +447,8 @@ mvPlayList.prototype = {
 		$j('#ptitle_'+this.id).html(''+
 			'<b>' + this.title + '</b> '+				
 			this.getClipCount()+' clips, <i>'+
-			seconds2ntp( this.getDuration() ) + '</i>' );		
+			seconds2ntp( this.getDuration() ) + '</i>' + 
+			'<a href="#" onclick="$j(\'#'+this.id+'\').get(0).doEditor();" style="float:right">edit</a>');		
 		//update status:
 		this.setStatus('0:0:00/'+seconds2ntp( this.getDuration() ));				
 	},
