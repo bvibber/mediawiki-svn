@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<configuration>
+	<creator-info>
+		Written by Mark Bergsma &lt;mark@nedworks.org&gt;
+	</creator-info>
+	<include filename="servertech-mib.xml"/>
+	<include filename="snmp-defs.xml"/>
+	
+	<datasources>
+		<subtree name="Power_strips">
+			<subtree name="ps1-a4-pmtpa">
+				<param name="system-id" value="ps1-a4-pmtpa"/>
+				<param name="data-dir" value="/var/lib/torrus/collector_rrd"/>
+				<apply-template name="snmp-defaults"/>
+				<param name="legend">
+					Location:Rack A4, pmtpa, Tampa, USA;
+					Contact:noc@wikimedia.org;
+					Uptime:4 days since 20-09-2008 23{COLON}15;
+					Description:Sentry Smart CDU;
+				</param>				
+				<param name="snmp-check-sysuptime" value="yes"/>
+				<param name="snmp-host" value="10.1.3.3"/>
+				<param name="snmp-version" value="2c"/>
+
+				<subtree name="System">
+					<apply-template name="servertech-systemgroup"/>
+				</subtree>
+									
+				<subtree name="Tower_A_Infeed_A">
+					<param name="tower" value="1"/>
+					<param name="infeed" value="1"/>
+					<apply-template name="servertech-infeed"/>
+					<param name="tokenset-member" value="ps1-a4-pmtpa_Tower_A"/>
+				</subtree>
+				<subtree name="Tower_A_Infeed_B">
+					<param name="tower" value="1"/>
+					<param name="infeed" value="2"/>
+					<apply-template name="servertech-infeed"/>
+					<param name="tokenset-member" value="ps1-a4-pmtpa_Tower_A"/>
+				</subtree>
+				<subtree name="Tower_A_Infeed_C">
+					<param name="tower" value="1"/>
+					<param name="infeed" value="3"/>
+					<apply-template name="servertech-infeed"/>
+					<param name="tokenset-member" value="ps1-a4-pmtpa_Tower_A"/>
+				</subtree>
+				
+				<subtree name="Tower_B_Infeed_A">
+					<param name="tower" value="2"/>
+					<param name="infeed" value="1"/>
+					<apply-template name="servertech-infeed"/>
+					<param name="tokenset-member" value="ps1-a4-pmtpa_Tower_B"/>
+				</subtree>
+				<subtree name="Tower_B_Infeed_B">
+					<param name="tower" value="2"/>
+					<param name="infeed" value="2"/>
+					<apply-template name="servertech-infeed"/>
+					<param name="tokenset-member" value="ps1-a4-pmtpa_Tower_B"/>
+				</subtree>
+				<subtree name="Tower_B_Infeed_C">
+					<param name="tower" value="2"/>
+					<param name="infeed" value="3"/>
+					<apply-template name="servertech-infeed"/>
+					<param name="tokenset-member" value="ps1-a4-pmtpa_Tower_B"/>
+				</subtree>
+				
+				<!-- Aggregates -->
+				<subtree name="Tower_A">
+					<param name="aggregate-id" value="tower1"/>
+					<param name="aggregate-name" value="Tower A"/>
+					<param name="tower" value="1"/>
+					<param name="precedence" value="60"/>
+					
+					<apply-template name="servertech-infeed-aggr"/>
+
+					<!-- Define the RPN expressions for all leaves -->
+					<param name="tower-path" value="../Tower_A"/>
+					<apply-template name="servertech-tower-aggregate-expressions"/>
+				</subtree>
+				<subtree name="Tower_B">
+					<param name="aggregate-id" value="tower2"/>
+					<param name="aggregate-name" value="Tower B"/>
+					<param name="tower" value="2"/>
+					<param name="precedence" value="60"/>
+					
+					<apply-template name="servertech-infeed-aggr"/>
+
+					<!-- Define the RPN expressions for all leaves -->
+					<param name="tower-path" value="../Tower_B"/>
+					<apply-template name="servertech-tower-aggregate-expressions"/>
+				</subtree>
+				
+				<subtree name="Sensor_1">
+					<param name="envmon" value="1"/>
+					<param name="th" value="1"/>
+					<apply-template name="servertech-temphumidity"/>
+				</subtree>
+			</subtree>
+		</subtree>
+		
+		<template name="servertech-tower-aggregate-expressions">
+			<param name="expr-Load_value" value="{%tower-path%_Infeed_A/Load_value},{%tower-path%_Infeed_B/Load_value},{%tower-path%_Infeed_C/Load_value},+,+"/>
+			<param name="expr-Load_high_threshold" value="{%tower-path%_Infeed_A/Load_high_threshold},{%tower-path%_Infeed_B/Load_high_threshold},{%tower-path%_Infeed_C/Load_high_threshold},MAX,MAX"/>
+			<param name="expr-Outlet_count" value="{%tower-path%_Infeed_A/Outlet_count},{%tower-path%_Infeed_B/Outlet_count},{%tower-path%_Infeed_C/Outlet_count},+,+"/>
+			<param name="expr-Capacity" value="{%tower-path%_Infeed_A/Capacity},{%tower-path%_Infeed_B/Capacity},{%tower-path%_Infeed_C/Capacity},MIN,MIN"/>
+			<param name="expr-Voltage" value="{%tower-path%_Infeed_A/Voltage},{%tower-path%_Infeed_B/Voltage},{%tower-path%_Infeed_C/Voltage},MAX,MAX"/>
+			<param name="expr-Power_value" value="{%tower-path%_Infeed_A/Power_value},{%tower-path%_Infeed_B/Power_value},{%tower-path%_Infeed_C/Power_value},+,+"/>
+			
+			<leaf name="Load_value">
+				<param name="rpn-expr" value="%expr-Load_value%"/>	
+			</leaf>
+			<leaf name="Load_high_threshold">
+				<param name="rpn-expr" value="%expr-Load_high_threshold%"/>
+			</leaf>
+			<leaf name="Outlet_count">
+				<param name="rpn-expr" value="%expr-Outlet_count%"/>
+			</leaf>
+			<leaf name="Capacity">
+				<param name="rpn-expr" value="%expr-Capacity%"/>
+			</leaf>
+			<leaf name="Voltage">
+				<param name="rpn-expr" value="%expr-Voltage%"/>
+			</leaf>
+			<leaf name="Power_value">
+				<param name="rpn-expr" value="%expr-Power_value%"/>
+			</leaf>
+			
+			<leaf name="Load">
+				<param name="ds-expr-Load" value="%expr-Load_value%"/>
+				<param name="ds-expr-HighThresh" value="%expr-Load_high_threshold%"/>
+				<param name="ds-expr-Capacity" value="%expr-Capacity%"/>
+			</leaf>
+			<leaf name="Power">
+				<param name="ds-expr-Power" value="%expr-Power_value%"/>
+				<param name="ds-expr-Capacity" value="%expr-Voltage%,%expr-Capacity%,*"/>
+			</leaf>
+		</template>
+		
+	</datasources>
+
+	<token-sets>		
+		<token-set name="ps1-a4-pmtpa_Tower_A">
+			<param name="comment" value="ps1-a4-pmtpa Tower A"/>
+		</token-set>
+		<token-set name="ps1-a4-pmtpa_Tower_B">
+			<param name="comment" value="ps1-a4-pmtpa Tower B"/>
+		</token-set>
+	</token-sets>
+</configuration>
+			
