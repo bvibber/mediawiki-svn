@@ -1,6 +1,9 @@
 This file lists changes on this extension.
 Localisation updates are done on betawiki and aren't listed here.
 
+0.7.11 - 22 September 2008
+  $wgCachedMessageArrays is obsolete since MediaWiki 1.8.0.
+
 0.7.10 - 21 September 2008
   * findSettings.php now works for extensions (--ext option)
   * Updated extensions settings

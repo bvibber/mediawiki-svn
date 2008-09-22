@@ -1177,6 +1177,7 @@ $settingsVersion = array(
 	'wgProfilerType' => array( array( '1.8alpha', '<' ) ),
 	'wgProfiling' => array( array( '1.8alpha', '<' ) ),
 	'wgUseXMLparser' => array( array( '1.8alpha', '<' ) ),
+	'wgCachedMessageArrays' => array( array( '1.8alpha', '<' ) ),
 	'wgUseWatchlistCache' => array( array( '1.9alpha', '<' ) ),
 	'wgWLCacheTimeout' => array( array( '1.9alpha', '<' ) ),
 	'wgUseImageResize' => array( array( '1.10alpha', '<' ) ),
